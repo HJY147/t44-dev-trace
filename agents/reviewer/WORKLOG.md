@@ -232,3 +232,5 @@
 - 真实P2 HISTORY-EVIDENCE-01：history.py:66普通evidence容器==把合法audit.kind整数1和schedule JSON.kind布尔true视为相等，违RFC保守匹配。先纯matcher实值检查，再唯一自有内存SQLite HTTP/TestClient/RowsGateway反例，无gateway/matcher mock；原986 fixture完整actor/task/微秒/5plan/versions不变。GET200、AuditEvent有效却错误追加reason，两表原行不变；assert应无投影真实红exit1，log/json完整保留。未把受控不一致旧JSON说成正常新写漏洞/越权。
 - 先报root/职责backend，root认可不放宽RFC并要求唯一本例确认后seal，不继续异常矩阵/native旁线。backend已读本岗明确发布证据，另做先设计勘误/窄修/原红绿；本岗不代修、42243原失败不覆盖。
 - PR21实时head7f89264，42243祖先且受审源/测试/契约diff空；COMMENT将显式42243。owner18/FE89/DB66含48和同2MySQL分别标开发，未重跑全套/CI/负载/浏览器/真实DB/872；根通知6303规模fail未重数。原CI/872绿不掩盖本语义红，无APPROVE/status/merge。
+
+- 原失败阶段7b2c4ffc2185023ae866c052997387a666431ff0已push exit0/[skip ci]；PR21 COMMENT5634370911显式原42243真实发布。插件body/COMMENTED与完整GET commit_id/body/state严格一致。URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911 ，回执github-comment.json。发布时root已前进bc5窄修，正文明确原失败封存/新源另审；不覆写原反例或原结论，无status/APPROVE/CItrigger/merge。

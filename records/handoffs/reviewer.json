@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
   "stage": "PR21 Issue28计划理由首审42243不通过：P2 HISTORY-EVIDENCE-01",
-  "implementation_status": "精确静态全链/唯一HTTP语义反例完成并报告root/backend；产品未改；COMMENT/readback待发布",
+  "implementation_status": "原42243不通过/唯一HTTP反例与PR21精确COMMENT及完整GET均归档；无产品修改；后续bc5另审",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -344,6 +344,10 @@
     {
       "command": "Inline pure matcher then one actualHTTP counterexample using original986 public fixture; static hashes; PR21 metadata+ancestor/source-equality",
       "result": "HTTP semanticassertred exit1:200and validresponse but wrong reason;14freeze/44Py20TSVue/36rawhash match; no fullsuite/MySQL/browser/CI/load"
+    },
+    {
+      "command": "PR21COMMENT explicit42243; pluginselectedlist and full gh GETreview5634370911",
+      "result": "OriginalNOT_PASSEDactuallypublished; exactcommit/body/state readback; first7bpush0/[skipci]; noAPPROVE/status/CI/merge"
     }
   ],
   "results": [
@@ -568,26 +572,25 @@
       "improvement_reason": "Treat JSON type identity as historical evidence value, not Python numeric equality; prove one realHTTP red on exactcandidate, preserve failure before owner narrowfix."
     }
   ],
-  "updated_at": "2026-10-23T20:56:21.467159+00:00",
+  "updated_at": "2026-10-23T20:58:25.910543+00:00",
   "review_outcome": "NOT_PASSED: HISTORY-EVIDENCE-01 Boolean-vs-integer evidence false match in historical projection",
   "github_evidence": {
-    "operator": "AI reviewer using authorized HJY147 account; not separate human",
-    "review_id": 5633760634,
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
-    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "operator": "AI reviewer; not student or separatehuman",
+    "review_id": 5634370911,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
+    "commit_id": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
     "state": "COMMENTED",
     "body_exact_match": true,
     "plugin_body_and_state_exact_match": true,
-    "readback_exit_code": 0,
-    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
-    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
-    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "full_specific_review_GET_exit_code": 0,
+    "readback_sha256": "e5fa29326fa6b7297b60d8c4dd7083e05fdb6f76d0333c071c79c2e7982d1aa2",
+    "body_sha256": "e8d8a89d2edaceb592633f704f5411a0748d7424fc96780830162728fd97f53f",
+    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0",
     "first_evidence_push_exit_code": 0,
-    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
-    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
+    "pr_head_at_publish": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope": "Original42243failure retained; currentbc5narrowfixnotreviewed bythisCOMMENT",
     "no_status_approve_or_merge": true,
-    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
-    "full_specific_review_GET_exit_code": 0
+    "verified_at_utc": "2026-10-23T20:58:25.910543+00:00"
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -1123,14 +1126,23 @@
     "evidence_commit": "927743ca092a30159a6ff62884bde8ddc7dd291d"
   },
   "previous_github_evidence": {
-    "exact_body_readback": true,
-    "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636",
+    "operator": "AI reviewer using authorized HJY147 account; not separate human",
+    "review_id": 5633760634,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
     "state": "COMMENTED",
-    "status_mutations": [],
-    "no_success_approve_or_merge": true,
-    "review_id": 5630038636,
-    "evidence": "agents/reviewer/evidence/read-uow-5dcb/github-verification.json"
+    "body_exact_match": true,
+    "plugin_body_and_state_exact_match": true,
+    "readback_exit_code": 0,
+    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
+    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "first_evidence_push_exit_code": 0,
+    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
+    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
+    "no_status_approve_or_merge": true,
+    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
+    "full_specific_review_GET_exit_code": 0
   },
   "capacity_feedback_review": {
     "head": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
@@ -1199,10 +1211,11 @@
     },
     "developer_results_rerun": false,
     "private_independent_accessed": false,
-    "github_comment": null,
-    "github_exact_body_and_commit_readback": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
+    "github_exact_body_and_commit_readback": true,
     "status_mutations": [],
     "approve": false,
-    "merged": false
+    "merged": false,
+    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0"
   }
 }

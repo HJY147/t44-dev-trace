@@ -141,3 +141,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现的精确组合42243已静态审。P2 HISTORY-EVIDENCE-01位于history.py:66：普通容器等值把audit.evidence.kind=1与候选旧schedule JSON.kind=true匹配；唯一原986内存SQLite HTTP反例无mock，GET200/响应Schema通过却追加理由，原两表未改。完整5plan/actor/微秒/versions保持，仅证据JSON类型不同，按RFC必须无投影。属于AI专审真实发现，不是学生发现或正常新写/越权漏洞；责任backend，root认可后交回先设计窄修，旧42243不通过保留。
 
 本岗不重跑18/89/66或CI/负载/真实DB/872，不读独立私密。三owner源/14freeze/44Python20TSVue/R1/UI002边界及36公开backendartifact摘要已核，旧986/985前缀保留。报告reports/reviews/21-42243eb23aedf0edda7541ad83fd87ec3d17b616.md，反例agents/reviewer/evidence/plan-reason-42243/evidence-kind-bool-http.json及log。PR21当前metadatahead7f为42243祖先源等值；准确COMMENT/读回按实际补入。全局规模6303fail来自root通知，其他门禁不解除，无APPROVE/status/merge。
+
+42243原失败发布回执：7b2c4ffc2185023ae866c052997387a666431ff0已push/[skip ci]；PR21 COMMENT5634370911及完整GET严格绑定42243/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911 。原反例/原不通过保留，root已前进bc5待另限定复审，不因owner修复预报改写此轮结论。
