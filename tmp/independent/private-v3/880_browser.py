@@ -291,6 +291,8 @@ def main():
 
         def history():
             context, page = fresh('m'); open_project(page, pname); open_task(page, a['title'])
+            one(page.get_by_role('button', name='关闭此对话框', exact=True), 'task drawer close control').click()
+            page.get_by_role('dialog').wait_for(state='hidden', timeout=10000)
             # Task history is exposed by the project's audit-record route and each record's
             # actual full-record disclosure, not the distinct schedule-differences tab.
             one(page.get_by_role('link', name='审计记录', exact=True), 'actual audit history route').click()
