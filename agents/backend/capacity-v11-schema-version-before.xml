@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.760" timestamp="2026-10-23T20:57:36.944324+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[1]" time="0.242"><failure message="AssertionError: {&quot;code&quot;:&quot;INTERNAL_ERROR&quot;,&quot;message&quot;:&quot;Internal error&quot;,&quot;request_id&quot;:&quot;b01da303-99dc-4331-ba99-a110f8283ab7&quot;,&quot;audit_id&quot;:null,&quot;current_version&quot;:null,&quot;current_state&quot;:null,&quot;original_error_code&quot;:null,&quot;violations&quot;:[]}&#10;assert 500 == 200&#10; +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code">tmp/backend/contracts/986_http.py:1776: in test_contract_validation_keeps_candidate_schema_version_separate_from_envelope
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"b01da303-99dc-4331-ba99-a110f8283ab7","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E   assert 500 == 200
+E    +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code</failure></testcase><testcase classname="" name="test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[2]" time="0.197"><failure message="AssertionError: {&quot;code&quot;:&quot;INTERNAL_ERROR&quot;,&quot;message&quot;:&quot;Internal error&quot;,&quot;request_id&quot;:&quot;80e2fd44-6210-4793-8ce7-77b90ee87cae&quot;,&quot;audit_id&quot;:null,&quot;current_version&quot;:null,&quot;current_state&quot;:null,&quot;original_error_code&quot;:null,&quot;violations&quot;:[]}&#10;assert 500 == 200&#10; +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code">tmp/backend/contracts/986_http.py:1776: in test_contract_validation_keeps_candidate_schema_version_separate_from_envelope
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"80e2fd44-6210-4793-8ce7-77b90ee87cae","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E   assert 500 == 200
+E    +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code</failure></testcase><testcase classname="" name="test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[3]" time="0.200"><failure message="AssertionError: {&quot;code&quot;:&quot;INTERNAL_ERROR&quot;,&quot;message&quot;:&quot;Internal error&quot;,&quot;request_id&quot;:&quot;c43817cb-4939-41d7-8488-dbedf4d35efd&quot;,&quot;audit_id&quot;:null,&quot;current_version&quot;:null,&quot;current_state&quot;:null,&quot;original_error_code&quot;:null,&quot;violations&quot;:[]}&#10;assert 500 == 200&#10; +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code">tmp/backend/contracts/986_http.py:1776: in test_contract_validation_keeps_candidate_schema_version_separate_from_envelope
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"c43817cb-4939-41d7-8488-dbedf4d35efd","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E   assert 500 == 200
+E    +  where 500 = &lt;Response [500 Internal Server Error]&gt;.status_code</failure></testcase></testsuite></testsuites>

@@ -9,3 +9,5 @@
 Agent-Role: backend
 Prompt-Ref: ROLE-backend-CAPACITY-V11-IMPLEMENT-v1
 Refs: #3 #12
+
+后续精确8f6源全CI实际391项/2失败（两个合法UTC候选），未通过；原因是服务误用外层契约版本作为冻结内层候选schema_version。本次直接读取内层const，Meta继续1.1.0，14冻结件不变；三类HTTP先3失败，再加UTC边界共10通过，新全CI待真实结果。原始日志/JUnit脱敏溯源和AI纠正过程完整保留，不把曾建议但撤回的1.1.1当实际版本。

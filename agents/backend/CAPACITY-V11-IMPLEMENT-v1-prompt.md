@@ -22,3 +22,11 @@ ROLE-backend-CAPACITY-V11-IMPLEMENT-v1：按人已采用、设计先审的顺序
 正式1.1冻结完成：189dc4a3196be0fb84b753f23284f2566d823ea0，records/spec-freezes/v1.1.json SHA c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c，14冻结文件/18review输入现行hash全匹配、父ae60/v1原11hash可恢复。限定审查证据117a69c，合同final a77a5cd6；无新守卫进入freeze。现在继续ROLE-backend-CAPACITY-V11-IMPLEMENT-v1业务实现和既定986+985真实MySQL回归，保留真实草稿先后。先合根189dc，别覆盖未提交自己草稿，明确冻结后验证源/hash。原错误优先级、1–5工时/成员1–5+7、全owner查询、项目锁与合法A→B后移除A双成功等全保留。只跑必要回归后精确CI全量，无需重复旧整套。新freeze文件不要改；自己责任内代码/日志/module/handoff/prompt/Issue3/PR16 phasecommit并push，告精确SHA与现行全量结果。之后独占quietwindow诊断仍另排，不与此并发。
 
 收到冻结后21项+7项真实MySQL结果。根核对975:247确是原嵌套pytest.raises与savepoint触SIM117；CI scripts/ci/ruff.toml原select不含SIM，所以这是backend更严格本地规则失败，勿称既有CI早已失败。总协调允许本次仅将该两层with合为一个with，原两个context进入/退出顺序及断言不变，属于无需接口协商的测试样式修正，不是DB业务变更；记录AI修复和原Ruff失败即可，不单独重跑全975，后续新SHA精确全量CI覆盖。不要降低任何lint/测试选项。若DB本人后续接手再告实际commit。
+
+## 实际AI协商：版本字段失败先核语义
+
+根先发：先暂停性能控制器负载，精确8f CI39956066523/73530已failure：frontend/static绿，contracts/coverage两旧UTC有效1000/9999用例500（不是容量规则失败）。根定位疑点：specs/contracts/openapi.json约24474仍有const:'1.0.0'，实际很可能ContractValidationResult.schema_version；Business.validateContractPayload返回VERSION1.1.0，响应precommit按旧const拒绝500。请先核实具体schema并保留原CI日志/JUnit，再最小修契约三处版本一致。189dc1.1freeze已存在，不得回写其hash：此为技术metadata erratum，候选1.1.1同时info/Meta.contract_version/ContractValidationResult.schema_version三处新版本，副本/README显式补说明，业务guard/DDl无新变化。先交contract-only补丁（和新增有意义metadata一致性回归/旧用例改前失败证据，原断言不降），待root限定审核+独立patchfreeze再跑精确CI；不需用户新业务判断。不要全局替换其它模板/规则版本1，别忙把这归产品容量缺陷或性能失败。根将请reviewer补丁审查，原1.1失败/manifest都保留。
+
+本岗在核对当前冻结const与未变候选输入后提出直接按该const输出，无需修改契约；根最终采纳并续派原文：
+
+同意你按已冻结const输出的最小修法；撤回我刚才暂定1.1.1 patch方向。现行契约明确ContractValidationResult.schema_version.const=1.0.0，候选主请求结构在1.1未改（只错误/容量业务和Meta版本演进），不应为了迁就错误的全局VERSION出参而改契约。请服务从冻结对应schema.const读schema_version=1.0.0，meta.contract_version继续1.1.0，README/代码必要简短说明两者范围，新增3category真实HTTP断言并保留CI原2失败→修复证据。14freeze和现规格不改，直接新生产SHA精确CI；别改API README冻结文件，说明放本岗日志/报告或代码docstring即可。实际过程如实记根先建议metadata补丁、owner指出内层const语义后根采纳最小代码修正，AI互纠不算学生识别。性能继续等此真问题修好。
