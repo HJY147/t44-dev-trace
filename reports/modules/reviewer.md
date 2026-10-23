@@ -185,3 +185,12 @@ metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开has
 准确dda3df8e15b0b5b655909dda37dc79a87f318924，先行add7363；prompt ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1。原归档命令复用同payload/manifest/declared9d6/拒绝断言，只SUT+harness适配并公开清单，一次exit0，真实selector未mock、只Git元数据，集合不符被拒绝。源码/可信helper SHA、完整正向集合/blob/mode+payload绑定、main自身repo限制及14freeze核对；perblob分支静态、不冒称实跑。仅关闭BUNDLE-SOURCE-BINDING-01，原9d6红/3cbcc/Issue38历史保持，实际包/4DOCX QA/原owner自由文本未验边界保持。报告reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md。无私密/独立资料或metadata/套件/CI/服务执行，未造实际包，不整体放行；真实Issue38/COMMENT/GET回执另补。
 
 实际发布：阶段证据d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2已push，Issue38comment6376506789完整GET body/归属/新SHA及PR21 COMMENT5635353850显式完整dda3和GET body/commit_id/COMMENTED严格相符exit0；回执github-comment.json。仅P2限定关闭，原9d6红/实际包未验保持，无APPROVE/status/CI/main/Issue自动关闭。
+
+
+## PR37有界serve新增范围与清理角色限定复审（2026-10-24）
+
+实际ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1，隔离root5408分支codex/review-bounded-demo。先冻结e30112a，再旧acdf/f159原方法内存反例exit1及报告37-f159...于c1f03c1封存，随后才读新62ac2f327e7523ffed69a2bd9f98c87ba2372931/SHA084618...；同fixture/断言只TARGET和输出名适配一次exit0，0服务/信号/HTTP/SQL/私密IO。新role过滤只排除runner元数据，仍所有应用代+APIchildren；其余AST/runtime/capture/旧测试保持，owner3方法/8role+5child残留证据静态核，不冒称本岗执行。
+
+原4ef唯一360真实exit1/cleanupfalse、ready/额外轮换1、外部wait后全停分列，原stdout不改。旧7端口保护不含5177/18086，未来root需新9项预检；本岗不查独立端口/数据。只限定关闭SERVE-CLEANUP-SCOPE-01，当前所列新增serve/stop/轮换有限静态未见其它新增实质阻断，证据尾16b不是另一次被测代码/360。报告reports/reviews/37-62ac2f327e7523ffed69a2bd9f98c87ba2372931.md，原失败报告单列。无新360/4h/用户demo准入、APPROVE/status/main/globalpass；Issue7+PR37精确COMMENT及GET实记后补。
+
+实际发布：报告阶段26b6cf16837cf1fd0dc73bf9cfab214658780fe5已push；Issue7comment6376797590完整GET body/归属/62ac及PR37 COMMENT5635499152显式完整62ac和GET commit_id/body/COMMENTED严格匹配exit0，github-comment.json。原f159失败/360false保持，仅P2有限关闭；不授予新360/4h/用户demo或整体通过，无APPROVE/status/CI/main。

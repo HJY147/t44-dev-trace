@@ -1,0 +1,41 @@
+{
+  "operator": "AI reviewer frozen synthetic state/ownership probe; not actual360 or independenttest",
+  "target": "acdf9dbc37466e18a260031d7c61b3432c019944",
+  "application_sha256": "942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07",
+  "method_AST_sha256": "7fe527e5c4cf396f093394b556370f4a914204469d389e0b950b3c6202366e00",
+  "frozen_fixture_sha256": "524150b55d9ae4badd3dba0615a030f46448b47b0ab6b0ce76ca5dddc141aa69",
+  "result": {
+    "action": "post_stop_processes",
+    "success": false,
+    "observations": [
+      {
+        "pid": 101,
+        "absent": true
+      },
+      {
+        "pid": 777,
+        "absent": false
+      },
+      {
+        "pid": 102,
+        "absent": true
+      },
+      {
+        "pid": 103,
+        "absent": true
+      }
+    ]
+  },
+  "observed_pids": [
+    101,
+    102,
+    103,
+    777
+  ],
+  "runner_checked_as_child": true,
+  "expected_all_child_generations_and_APIchildren_absent": true,
+  "expected_runner_remains_alive_until_external_wait": true,
+  "actual_service_processes_or_signals": 0,
+  "actual_HTTP_SQL_or_private_IO": false,
+  "simulated_monotonic_final": 10
+}
