@@ -1,5 +1,7 @@
 # deployment 初始化模块报告
 
+> 前文为已归档的初始化/M0历史；当前运行配置与CI实现状态见末尾“RUNTIME-v1”追加段。应用/容器集成仍未完成。
+
 ## 任务与依据
 - 阶段：团队建立与设计准备；`implementation_status` 为未实现。
 - 依据：`AGENTS.md`、本岗任务、团队规范和报告模板，以及 `specs/sources/` 三份原始材料。
@@ -55,3 +57,32 @@
 ## 问题与交接
 - 总协调需冻结云环境选择、组件版本、模块启动/持久化契约、备份恢复目标以及门禁范围，再派发实现任务。
 - 文档岗可直接引用上述三个真实产物；必须表述为初始化设计资料，不能写作软件交付、云资源已购买或性能已达标。
+
+## RUNTIME-v1：部署配置与真实门禁实现
+
+- 实际派工和后续澄清：`agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md`；本轮覆盖初始化不能写代码的旧范围，仍不租云机、不付费、不合并或发审核成功。
+- 独立worktree/分支为 `.agent-worktrees/deployment` / `codex/deployment-runtime`，基于 `4b3d6e5`；仅写本岗范围。
+- 实现 `compose.yaml`：MySQL8.4、RabbitMQ、4worker API、独立消息/调度、Nginx+前端，数据库/队列持久卷，宿主只映射loopback8080。
+- 镜像定义 `deployment/api.Dockerfile`、`web.Dockerfile` 及各自ignore，固定官方镜像摘要；`deployment/nginx/` 实现history fallback与保留/api/v1前缀。
+- Nginx日志仅request_id/status/耗时；API执行契约1MiB限制，代理2MiB上限统一JSON413、audit_id=null，不声称已审计。无新增未鉴权HTTP健康接口。
+- `deployment/ops.py` 实现私有随机凭据生成、显式目标校验、独立迁移/账号CLI包装、备份及新隔离项目恢复；无drop/reset/删卷功能。操作与TLS/SSH/发布回退说明见 `deployment/README.md`。
+- 备份拒绝空库、非InnoDB及未支持的可编程对象，SQL和清单校验和排他保存；恢复拒绝活库/已有目标卷，默认只输出计划。实际备份/恢复尚未执行。
+- `.github/workflows/product.yml` 实现static/contracts/coverage/frontend，真实MySQL/RabbitMQ服务、独立迁移、contract/integration/fault markers、原始日志/JUnit/逐文件覆盖率产物。
+- `scripts/ci/` 明确拒绝缺应用、空测试、跳过占位及未计入的生产文件；每语言完整生产源码只强制行覆盖率80%，分支/函数报告不额外设门槛，仅前端.d.ts声明文件公开排除。
+- 后端已确认未来API/模块/环境键和CLI设计，但尚未交付pyproject/哈希锁/应用/测试；迁移 `t44.cli migrate --database`、账号CLI及退出码仍待编码验证。
+- 部署安全测试11项、CI守卫测试6项、官方Compose schema、Ruff、actionlint及diff检查通过；证据 `agents/deployment/runtime-validation/`。这些不是业务测试或独立验收。
+- 本地产品static/contracts/coverage检查均因缺应用明确退出1；不能因配置检查通过宣称产品门禁已通过。无Docker，未拉镜像/构建/启动/跑Nginx/迁移/备份恢复/压测。
+- 跨岗实际Issue评论：#7/6358650740、#3/6358651374、#4/6358651899、#2/6358904057；正文在本岗runtime-*comment.md，前端测试接口尚未确认。
+- 当前主干保护仍由总协调维护；没有自行修改门禁保护、合并main或发布reviewer成功。云规格依旧不保证400并发/P95/吞吐达标。
+
+### RUNTIME-v1 远程收尾
+
+- 实现提交3857b2e55fcb7fe99b38fa2d85b086662b762f6c已push；草稿PR #15（base codex/team-bootstrap）已创建并attach，未合并。
+- 首次远程run39912067161四job均因缺应用/测试/前端manifest失败；Compose/Nginx语法步骤及真实服务初始化成功，但未执行产品用例或覆盖率。精确回执与日志见runtime-validation/remote-initial*。
+- api镜像加入authoritative specs/contracts白名单，不复制原始材料；实际路径、后端哈希锁和迁移/恢复仍待集成。结果Issue评论#7/6359033289，正文与PR正文均保存在本岗目录。
+
+### RUNTIME-HANDOFF-v1 当前结论
+
+- 运行配置最终修复6d713eb8fa5af419fe061c8c9b2061f2699472dc已push；原始日志gzip+SHA保真，阅读稿规范尾空白，diff检查通过；authoritative contracts COPY已核对，无sources。
+- 最新总协调保护回执为root records/github/protection-v2-response.json：main五项必需检查已配置，strict/enforce_admins=true；旧“只有reviewer/stage”不代表当前。本岗未改保护/重跑/合并。
+- 本次仅归档与回复CI真实pytest/JUnit/coverage命令；后端目前纯domain基础仍不是API完成。PR15保持草稿并已attach，首次run失败、缺应用和未本机构建的限制不变，待应用齐备后集成。

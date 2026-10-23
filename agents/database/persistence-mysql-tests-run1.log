@@ -1,0 +1,6 @@
+ROLE-database-PERSISTENCE-v1 first real MySQL module run
+Command: T44_TEST_CREDENTIALS=<ignored-private-file> PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q
+Actual exit: 1. Actual result: 3 failed, 26 passed in 0.95s.
+Failures: test_real_task_constraints_and_savepoint[changes0-check], [changes1-check], [changes2-check].
+Observed: MySQL rejected state=8, estimated_quarters=0, and state=3 without block fields; RowsGateway translated to PersistenceUnavailable instead of PersistenceIntegrityError(kind=check).
+Cause: PyMySQL maps MySQL CHECK code3819 to OperationalError, outside previous IntegrityError-only branch. Original rejection was enforced by MySQL; no schema constraint weakened. Fixed by recognizing that driver code in SQLAlchemyError branch. No raw SQL values, connection strings or private credentials are included in this log.
