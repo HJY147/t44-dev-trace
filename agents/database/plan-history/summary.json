@@ -63,7 +63,13 @@
     "actual_application_delta": 62,
     "baseline_application": 6124,
     "projected_application": 6186,
-    "final_committed_cloc": "pending product commit; original counting policy unchanged"
+    "final_committed_cloc": {
+      "commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+      "application_code": 6186,
+      "within_range": false,
+      "require_range_exit": 1,
+      "report": "final-committed-cloc.json"
+    }
   },
   "unverified": [
     "Exact new-source reviewer decision and root combined CI/coverage remain pending",
@@ -74,5 +80,17 @@
     "backend/t44/persistence/rows.py": "063ec7d2b8f70c1ab6436ff0ae6aead8e748a7626c5694541036b34c94e2817b",
     "tmp/backend/persistence/993_foundation.py": "6d6f1dc375799184265497fdc7f082d538f1a4d1e6b679a4d4d5a92bdf4516ee",
     "tmp/backend/persistence/988_mysql.py": "2d45544fc2cd5a5b5adb70b40e957f48a34bfb9f9af5b9562cddcbfc432b8d2c"
-  }
+  },
+  "product_commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+  "github_comments": [
+    {
+      "issue": 4,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6373901751"
+    },
+    {
+      "issue": 28,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163"
+    }
+  ],
+  "github_readback": "github-readback.json; exact comment API bodies equal local posted bodies"
 }

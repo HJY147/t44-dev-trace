@@ -11,6 +11,6 @@
 - 实际SQL及整数绑定/每case execute数见mysql-sql-ledger.json；不是正式性能。真实服务端失败受控为不存在owner表，不操作别人的表或服务器。
 - 原14冻结件与02c4b2a字节/摘要全同，16旧RowsGateway方法及两文件旧函数字节同原；unchanged-boundaries.json。通用rows/get/count/savepoint/UoW原语义未改。
 - 最终限定Ruff通过、rows定向Bandit0；无完整CI/coverage/HTTP/独立复测/负载结果，精确新源码审核及root组合CI待调度。
-- cloc预算18..30→设计35..50→实际rows237→299/净+62，均如实保留；基线应用6124，提交后同原统计确认最终值，仍超5100。不压行/移计数或削守卫。
+- cloc预算18..30→设计35..50→实际rows237→299/净+62，均如实保留；基线应用6124→产品提交3b7bc0c实测6186/--require-range退出1，仍超5100。不压行/移计数或削守卫。
 - summary.json及原始log/JUnit可核对真实结果；本岗自测不代独立验收，AI修改不计学生亲改，main仍保护。
-- Issue4/28实际发布及精确readback收尾归档；当前产品checkpoint待提交/push，未提前宣称远端成功。
+- 产品checkpoint 3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a已push；Issue4/28实际发布及comments/:id精确GET逐字readback已归档github-readback.json，评论6373901751/6373902163。

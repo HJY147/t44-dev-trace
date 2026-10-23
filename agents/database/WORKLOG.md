@@ -228,3 +228,7 @@
 - mysql-sql-ledger.json保留真实空0/100pairs1SQL100完整行/重复1/101拒绝0/跨项目pair1SQL0行/合法最大输入1SQL0行；含实际参数化语句与整数绑定。104条自有schedule夹具含2交叉干扰+另项目+iteration，长2000字/JSON/微秒UTC完整、查询前后相同，事务全回滚且自有username回查不存在；不清表、不改别人数据、不停库、不跑整套/负载。
 - Ruff首次新测试import I001保留，排序修复后最终限定3文件通过；rows.py定向Bandit0。14冻结件摘要与基线字节全同；16旧gateway/17旧foundation/17旧mysql函数源码字节相同；未改DDL/API/后端matcher/前端。
 - 最终rows.py固定cloc237→299/实际净+62，超过设计35..50和RFC18..30，已如实报root并保留各估算，不压行/弱守卫。基线6124、当前应用投影6186，提交后将同原脚本实测；源码规模仍不达标。root回复明确要求保留预算上修/夹具原失败、固定接口与重叠计数/SQL账本/14冻结和旧方法字节/Issue实际读回，不执行完整CI/负载。
+
+- 产品精确checkpoint 3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a已push，skip ci；root已收SHA待小审固定方法。随后原source_count.py/cloc2.10对该提交实测应用6186/within_range=false/--require-range退出1，final-committed-cloc.json；相对基线6124真实+62，不将归档成功说成规模通过。
+- 已通过GitHub connector在Issue4/28实际发完整阶段交接，再用各comments/:id精确GET读回，两个返回body与实际本地正文逐字相同；github-readback.json保留endpoint/id/body/时间/作者/equality。链接Issue4#issuecomment-6373901751、Issue28#issuecomment-6373902163。没有关Issue、开完整CI、设review成功或将本岗自测写成独立验收。
+- 当前收尾仅证据/记录，产品、两自测源码与3b7bc0c完全相同；本岗作用域完成并释放槽，后续精确review/后端接入/组合CI由root调度。

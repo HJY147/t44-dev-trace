@@ -534,6 +534,16 @@
       "path": "agents/database/plan-history/unchanged-boundaries.json",
       "kind": "14冻结与原方法/测试函数字节核对",
       "status": "全同"
+    },
+    {
+      "path": "agents/database/plan-history/final-committed-cloc.json",
+      "kind": "原口径精确提交应用统计",
+      "status": "3b7bc0c=6186/exit1，不达标"
+    },
+    {
+      "path": "agents/database/plan-history/github-readback.json",
+      "kind": "Issue4/28 actual POST and exact comment GET body equality",
+      "status": "已逐字核对"
     }
   ],
   "interfaces": [
@@ -804,7 +814,7 @@
   "unverified": [
     "后端页提取/matcher/投影和前端UI不属本岗实现，此模块不证明HTTP或Issue28整体完成",
     "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
-    "源码规模基线6124、DB净+62，仍超5100；最终提交计数待后续同口径记录"
+    "源码规模产品提交已同口径实测6186（基线6124/净+62），--require-range退出1，仍超5100；不压行或移计数"
   ],
   "questions": [
     {
@@ -973,26 +983,19 @@
       "improvement_reason": "在真实DDL/解码/异常边界上先提交精确有限接口，再在根准入范围实现；不绕gateway/不压计数/不造学生亲改"
     }
   ],
-  "updated_at": "2026-10-23T20:17:01.553681+00:00",
+  "updated_at": "2026-10-23T20:19:12.229146+00:00",
   "publication": {
-    "branch": "codex/database-runtime",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
-    "base": "codex/team-bootstrap",
-    "draft": true,
-    "attached": true,
-    "merged": false,
-    "scope": "Isolated DDL AST POC only; production/DDL/API/locks/freeze unchanged",
-    "pr_scope_updated_and_attached": true,
-    "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
-    "candidate_status": "No production admission;46/1 retained failure;0 actual savings",
-    "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
-    "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
-    "live_evidence": "agents/database/live-verify-v1/summary.json",
-    "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
-    "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
-    "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
-    "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    "branch": "codex/database-plan-history",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",
+    "design_commit": "e9a769a",
+    "product_commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+    "pull_request": null,
+    "scope": "fixed task history reader + owner selftests; root exact source small review before backend hookup",
+    "ci": "skip ci, root combined CI pending; no full/load started",
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6373901751",
+    "github_issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163",
+    "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
+    "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
   },
   "history": [
     {
@@ -1166,5 +1169,27 @@
       "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
       "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
     ]
-  }
+  },
+  "publication_history": [
+    {
+      "branch": "codex/database-runtime",
+      "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
+      "base": "codex/team-bootstrap",
+      "draft": true,
+      "attached": true,
+      "merged": false,
+      "scope": "Isolated DDL AST POC only; production/DDL/API/locks/freeze unchanged",
+      "pr_scope_updated_and_attached": true,
+      "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
+      "candidate_status": "No production admission;46/1 retained failure;0 actual savings",
+      "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+      "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
+      "live_evidence": "agents/database/live-verify-v1/summary.json",
+      "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
+      "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
+      "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
+      "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    }
+  ]
 }
