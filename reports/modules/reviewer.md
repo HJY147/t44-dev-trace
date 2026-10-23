@@ -110,3 +110,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 ## PR26会话清理专项（3c160c5，不通过）
 
 设计844先于产品363，最终head3c160c57c56af47eea2c524d93340a679eeb441b。统一清理/认证DOM卸载和成功响应保护有明确实现；19源/14冻结/7原gzip及开发9目标与39全套/覆盖率分母均核验。root授权895纯组件探针1红2绿：旧卸载表单403仍跨会话调用refreshConflict，context在unmount序号检查前清空新身份项目，孤儿读取503后project={}。P2 SESSION-R1阻断专项，责任frontend，由root转发；不报服务端越权，不修产品、不撤销原独立FAIL。报告reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md；证据agents/reviewer/evidence/session-3c160c5。正式性能/完整独立/6051超5100（总协调给定，未重算）仍未通过。
+
+实际发布：证据commit7a544794de3c9dcfca09b0590c89000ab8bb624a已push，PR26 COMMENT5633150236已发布并特定review REST读回commit_id=3c160c57c56af47eea2c524d93340a679eeb441b、COMMENTED、正文完全相符：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236。回执agents/reviewer/evidence/session-3c160c5/github-comment.json。
