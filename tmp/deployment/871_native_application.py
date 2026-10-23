@@ -429,6 +429,63 @@ class ServeGuards(unittest.TestCase):
                 patch.object(appmod.signal, "signal"):
             return self.app.serve(180)
 
+    def stopped_resource_fixture(self):
+        state = self.app.run / "state"
+        appmod.write_json(state / "serve-owner.json", self.identity)
+        records = []
+        for index, role in enumerate(("api", "consumer", "scanner", "ui")):
+            for generation in ("old", "current"):
+                record = {"role": role, "generation": generation, "pid": 1000 + len(records)}
+                records.append(record)
+                appmod.write_json(state / f"{role}-{generation}.json", record)
+            appmod.write_json(state / f"{role}-current-pointer.json", {"record": f"{role}-current.json"})
+        workers = [{"pid": 2000 + index} for index in range(4)]
+        tracker = [{"pid": 2010}]
+        appmod.write_json(state / "api-children.json", {"workers": workers, "tracker": tracker})
+        return records, workers + tracker
+
+    def mocked_stopped_observation(self, live_pid):
+        self.app.own = Mock(side_effect=lambda record, **_kwargs:
+                            self.identity if record["pid"] == live_pid else None)
+        with patch.object(appmod.time, "monotonic", side_effect=[0, 11]), \
+                patch.object(appmod.time, "sleep") as sleep, \
+                patch.object(appmod.os, "kill") as kill, \
+                patch.object(appmod, "process_identity") as identity:
+            result = self.app.verify_stopped()
+        sleep.assert_not_called()
+        kill.assert_not_called()
+        identity.assert_not_called()
+        return result
+
+    def test_stopped_resources_exclude_live_serve_runner(self):
+        records, children = self.stopped_resource_fixture()
+        result = self.mocked_stopped_observation(self.identity["pid"])
+        self.assertTrue(result["success"])
+        self.assertEqual({item["pid"] for item in result["observations"]},
+                         {record["pid"] for record in records + children})
+        self.assertEqual(len(self.app.own.call_args_list), len(records + children))
+        self.assertNotIn(call(self.identity, leader=True), self.app.own.call_args_list)
+
+    def test_stopped_resources_still_reject_live_role_in_any_generation(self):
+        records, _children = self.stopped_resource_fixture()
+        for record in records:
+            with self.subTest(role=record["role"], generation=record["generation"]):
+                result = self.mocked_stopped_observation(record["pid"])
+                self.assertFalse(result["success"])
+                self.assertEqual([item["pid"] for item in result["observations"] if not item["absent"]],
+                                 [record["pid"]])
+                self.assertIn(call(record, leader=True), self.app.own.call_args_list)
+
+    def test_stopped_resources_still_reject_live_api_worker_or_tracker(self):
+        _records, children = self.stopped_resource_fixture()
+        for record in children:
+            with self.subTest(pid=record["pid"]):
+                result = self.mocked_stopped_observation(record["pid"])
+                self.assertFalse(result["success"])
+                self.assertEqual([item["pid"] for item in result["observations"] if not item["absent"]],
+                                 [record["pid"]])
+                self.assertIn(call(record, leader=False), self.app.own.call_args_list)
+
     def test_duration_is_explicit_real_integer_in_range(self):
         for value in (True, False, 179, 14401, 180.0, "360", None):
             with self.assertRaises(ValueError):

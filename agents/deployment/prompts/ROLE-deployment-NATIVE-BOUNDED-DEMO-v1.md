@@ -23,3 +23,7 @@
 收到真实360退出1/自包含runner确定性原因；原失败必须保留。授权先原件封档→设计→窄修verify_stopped只选真实roles generations/APIchildren、external driver wait确认runner；同一自包含反例先红后绿、无OS动作即可。不要自主重跑360或长serve。最终交工具准确SHA+原360公共白名单结果/修复结果/源hash并FINAL，我再让独立专审agent复核，必要后授权一次新的360。所有受保护旧服务保持，当前本机窗口已释放。
 
 本人执行映射：先f1598b9封存原失败与独立postabsence，再补bounded-demo-design停机检查勘误；只现有871三类必要合成案例及verify_stopped角色generation选择，外部driver真实退出独立列证。没有第二实运行/HTTP/SQL，不把新源合成通过当360通过，完成GitHub准确回读后交根复核并结束。
+
+## 根对保护snapshot覆盖范围的实际纠正
+
+读到f159公共serve-run1摘要，原事实保留准确。发现protected_listener_exact_matches白名单是5173/18080/5175/18084/5176/18089/13306；当前独立v3实际保护端口应5177/18086（14262/14268），旧reason18089已退役，5176可能旧空。请不要把这7项匹配写成v3也已逐项核对。离线在设计/说明明确旧snapshot覆盖范围；下一次如获准360 preflight必须新增5177/18086的准确UID/start/argv hash基线保护。不要因此重跑/读取独立应用数据。root可另只读lsof核当前5177/18086仍在，但这不是过去全时未变证明。

@@ -215,3 +215,6 @@
 - 全部旧监听baseline/92源hash保持；根已释放窗口，只封档后先设计窄修与合成红绿，不再运行360/长serve/HTTP/SQL；新范围审核仍pending。
 
 - 原失败先封档f1598b9后，先行设计勘误仅选择四角色全部generation及APIchildren，runner外部wait单列；计划同例红绿/残留拒绝三类合成，当前尚未改工具或执行。
+
+- self-runner窄修在先行设计c191后完成：仅verify_stopped四角色全部generation/APIchildren选择；原942同例红→新源同guard绿，3新方法含8真实角色代/5APIchildren残留拒绝，Ruff绿，无OS动作/服务/新360。capture/runtime不变，新SHA见self-runner-source-scope，等待新增范围专审。
+- 旧snapshot7端口不包含v3的5177/18086，不是v3过去全时未变证据；只离线纠正，未来另准入须增补UID/start/argv hash基线，当前不补跑。

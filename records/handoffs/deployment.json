@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "native-bounded-demo-self-runner-fix-design",
+  "stage": "native-bounded-demo-self-runner-fix-synthetic-complete",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -740,7 +740,7 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "original360 failure sealed;stop resource selection amendment designed;code unchanged",
+    "status": "original360 failed preserved;verify_stopped resource selection narrowly fixed;3 synthetic methods/Ruff pass;new360 not run;targeted review pending",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
@@ -752,7 +752,7 @@
     "independent_material_read": false,
     "design_commit": "daaccb7",
     "controller": "deployment/native/application.py",
-    "source_sha256": "942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07",
+    "source_sha256": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
     "guard": "tmp/deployment/871_native_application.py ServeGuards only:17synthetic",
     "new_stop_command": "stop --run-dir with exact runner fingerprint; request not cleanup confirmation",
     "default_run_preserved": "CLI still calls run_cycle without serve control; new checks no-op without serve state",
@@ -778,6 +778,15 @@
     "original_failure_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
     "fix_design": "deployment/native/bounded-demo-design.md unique360 amendment",
     "planned_scope": "verify_stopped four role generations and API workers/tracker only;external runner wait separate",
-    "fix_actual_run": false
+    "fix_actual_run": false,
+    "fix_design_commit": "c19146c",
+    "fixed_controller_sha256": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
+    "fix_evidence": "agents/deployment/native-bounded-demo-validation/self-runner-source-scope.json",
+    "original_red_exit_code": 1,
+    "fixed_synthetic_exit_code": 0,
+    "affected_synthetic_tests": "3 methods;8role-generation and5APIchild residual subcases;allown/time/signal mocked",
+    "actual_runtime_code": "4ef57b6129c712c1fad88de56775c53b84009b15 only;new source has no actual360",
+    "protected_baseline_coverage": "only7listed ports;5177/18086 absent;no v3 pastinterval proof",
+    "future_baseline_requirement": "ifroot separately admits next run,add5177/18086 exact UID/start/argv hash baseline"
   }
 }

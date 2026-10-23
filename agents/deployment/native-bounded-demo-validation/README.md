@@ -17,3 +17,11 @@
 原就绪/首两扫描60.292813秒/额外轮换1次/全自有session撤销与原整体success=false、cleanup=false并列。旧verify_stopped包含serve-owner.json中仍活着的runner自己，是唯一post_stop_processes失败；external driver随后wait完成、全部角色/worker/runner/broker PID与新端口后置absence单列，不能倒填原成功。controller verified4条与DB同UTC真实8条completed分开；没有新outbox，旧16event/26通知不是本轮publish。
 
 此后根仅准入原件封档→设计→离线合成红绿的窄修；没有第二360或4h、服务/HTTP/SQL重跑授权。旧受保护监听与92源保持；后续专审及新实际准入仍需根决定。
+
+## self-runner窄修合成证据与保护范围勘误
+
+先行设计c19146c后，self-runner-red为原942源码相同断言真红exit1；self-runner-green在新源只执行3个新增ServeGuards方法，exit0；真实角色全部8个旧/当前代以及4workers+1tracker任一残留仍失败，own/身份/时钟/等待/信号全部替身，没有OS进程动作。红绿guard字节SHA完全相同。Ruff exit0，source-scope证明仅verify_stopped AST改变，capture/runtime/业务不变。
+
+新源尚未实际360验证。原运行的exit1/cleanupfalse及postabsence始终保持；external driver独立wait证明runner最终退出。本次没有第二360、4h、HTTP/SQL或无关套件。
+
+protected-baseline-coverage-note.json明确旧snapshot只覆盖所列7端口，不含当前v3的5177/18086；不能把旧列表匹配扩大为v3过去全时未变。只离线补说明，未因此读取独立应用数据/端口。下一次若另准入须预先增补准确监听身份基线，当前仍待根安排新增范围专审。

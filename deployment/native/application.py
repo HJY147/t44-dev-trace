@@ -673,7 +673,7 @@ class Application:
         records = []
         for path in (self.run / "state").glob("*.json"):
             value = json.loads(path.read_text())
-            if "pid" in value:
+            if value.get("role") in ("api", "consumer", "scanner", "ui") and "pid" in value:
                 records.append((value, True))
         children = self.run / "state/api-children.json"
         if children.exists():

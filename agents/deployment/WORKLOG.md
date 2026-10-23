@@ -283,3 +283,9 @@
 
 - 原失败封档f1598b9已push。按根新限定授权先补bounded-demo-design勘误：verify_stopped只检查四真实应用角色的全部generation与显式APIworkers/tracker；serve-owner runner须由外部driver wait独立确认，不能内部等待自己退出。10秒/身份/残留角色失败语义不放宽。
 - 仅计划现有871三类合成：同一live runner/已停应用先原红后修绿，真实旧代/当前代残留仍失败，API子进程残留仍失败；own/时钟/信号全替身，无OS动作或真实私密读取。当前尚未修改工具或运行新增案例；无第二360/4h/HTTP/SQL授权。
+
+### NATIVE-BOUNDED-DEMO-v1 self-runner窄修合成完成
+
+- 先设计c19146c后，原942源码在同一live runner/所有应用资源已停反例真实红exit1；仅verify_stopped增加已知api/consumer/scanner/ui role选择，仍保留各generation与显式APIchildren。相同guard字节不变，3个新增方法绿exit0：原self例通过、8个角色旧/当前代任一存活仍失败、4worker+tracker任一存活仍失败。own/时钟/等待/信号全mock，未发OS动作/读真实秘密；未重跑17旧serve/23旧application/capture/873/完整cycle。
+- Ruff exit0；AST仅verify_stopped改变、capture及runtime完全不变，源/guard/原红SHA和实际返回码见self-runner-*。新代码没有360验证，原360false保持；后续只GitHub/封档，第二360或4h均未获准。
+- 根纠正旧保护snapshot范围：仅5173/18080/5175/18084/5176/18089/13306匹配，不含v3当前5177/18086；不能把旧snapshot写成v3过去全时不变。只离线加coverage-note/设计边界，未为补证读独立应用数据或端口；未来另准入必须新增真实UID/start/argv hash基线。
