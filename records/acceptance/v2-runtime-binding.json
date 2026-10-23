@@ -14,9 +14,23 @@
   ],
   "developer_results_provided": false,
   "past_independent_results_provided": false,
-  "browser_whitebox_performance_execution": "separate authorization/runtime provisioning pending",
+  "browser_whitebox_performance_execution": "browser now separately authorized; whitebox and formal performance remain separate pending phases",
   "privacy": "Tester alone downloads/decrypts/reviews unpublished output. Coordinator/developers await explicitly published reports.",
   "local_openssl_cli": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler/bin/openssl",
   "local_openssl_version_observed": "OpenSSL 3.6.2 7 Apr 2026 (Library: OpenSSL 3.6.2 7 Apr 2026)",
-  "local_openssl_verified_scope": "version only; tester verifies decryption; no coordinator access to key/output"
+  "local_openssl_verified_scope": "version only; tester verifies decryption; no coordinator access to key/output",
+  "browser": {
+    "authorized": true,
+    "source_commit": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "web_url": "http://127.0.0.1:5175",
+    "api_url": "http://127.0.0.1:18084",
+    "new_database": "t44_ui_v2",
+    "private_accounts": ".agent-worktrees/.runtime/local-acceptance-v2/ui-credentials.json",
+    "private_select_only_audit": ".agent-worktrees/.runtime/local-acceptance-v2/ui-readonly.json",
+    "neutral_receipts": [
+      "records/validation/local-acceptance-v2-provisioning.json",
+      "records/validation/local-acceptance-v2-ui-runtime.json"
+    ],
+    "unpublished_screenshots_results": "tester only"
+  }
 }
