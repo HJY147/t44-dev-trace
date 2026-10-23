@@ -1,5 +1,7 @@
 """Conservative, response-only linkage of immutable task schedule history."""
 
+import json
+
 from t44.contracts import violations
 
 from .codes import State
@@ -63,7 +65,10 @@ def _matches(audit, snapshot, change, project_id):
         and change["to_version"] == new_schedule
         and audit["actor_id"] == change["changed_by"]
         and audit["created_at"] == wire(change["changed_at"])
-        and audit["evidence"] == change["evidence"]
+        and not violations(SCHEMAS["EvidenceRefs"], audit["evidence"])
+        and not violations(SCHEMAS["EvidenceRefs"], change["evidence"])
+        and json.dumps(audit["evidence"], sort_keys=True, ensure_ascii=False, allow_nan=False)
+        == json.dumps(change["evidence"], sort_keys=True, ensure_ascii=False, allow_nan=False)
         and isinstance(reason, str)
         and reason.strip()
         and len(reason) <= 2000

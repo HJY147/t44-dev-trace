@@ -2616,3 +2616,81 @@ def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
     ).json()["data"]
     record = next(row for row in result["items"] if row["id"] == identifier)
     assert record["after"] == legacy["after_values"]
+
+
+@pytest.mark.parametrize(
+    "case", ["boolean_kind", "float_kind", "exact", "reordered_keys", "changed_text", "array_order"]
+)
+def test_schedule_reason_evidence_json_types_and_exact_values(application, case):
+    import json
+    from copy import deepcopy
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+    evidence = [
+        {
+            "kind": 1,
+            "locator": "https://example.test/repo",
+            "revision": "fixed",
+            "description": "Same visible evidence except JSON type",
+        }
+    ]
+    if case == "array_order":
+        evidence.append({"kind": 2, "locator": "synthetic/additional", "description": "Second"})
+    candidate = deepcopy(evidence)
+    if case == "boolean_kind":
+        candidate[0]["kind"] = True
+    elif case == "float_kind":
+        candidate[0]["kind"] = 1.0
+    elif case == "reordered_keys":
+        candidate[0] = dict(reversed(list(candidate[0].items())))
+    elif case == "changed_text":
+        candidate[0]["description"] += " "
+    elif case == "array_order":
+        candidate.reverse()
+    evidence_schema = SPEC["components"]["schemas"]["EvidenceRefs"]
+    assert not violations(evidence_schema, evidence)
+    assert bool(violations(evidence_schema, candidate)) == (case == "boolean_kind")
+    if case in ("boolean_kind", "float_kind"):
+        assert evidence == candidate  # This is the old Python equality false-positive.
+    legacy["evidence"] = evidence
+    legacy["request_id"] = "evidence-type-fixture-" + uuid4().hex
+    with factory() as uow:
+        g = uow.gateway
+        # Own synthetic historical JSON only, not a normal API write or real observed dataset.
+        g.update("schedule_changes", {"id": schedule["id"]}, {"evidence": candidate})
+        audit_id = g.insert("audit_events", legacy)
+        before = [
+            json.dumps(g.get(table, identifier), sort_keys=True, default=str)
+            for table, identifier in (
+                ("audit_events", audit_id),
+                ("schedule_changes", schedule["id"]),
+            )
+        ]
+    response = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": task["id"]},
+        expect=200,
+    ).json()["data"]
+    record = next(row for row in response["items"] if row["id"] == audit_id)
+    expected = (
+        [{"field": "reason", "value": schedule["reason"]}]
+        if case in ("exact", "reordered_keys")
+        else []
+    )
+    assert [item for item in record["after"] if item["field"] == "reason"] == expected
+    assert record["evidence"] == evidence
+    with factory() as uow:
+        after = [
+            json.dumps(uow.gateway.get(table, identifier), sort_keys=True, default=str)
+            for table, identifier in (
+                ("audit_events", audit_id),
+                ("schedule_changes", schedule["id"]),
+            )
+        ]
+        assert after == before
