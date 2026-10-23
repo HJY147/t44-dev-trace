@@ -584,7 +584,8 @@
     "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
     "runtime_after_validation_changed": false,
     "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials",
-    "stage1_fields_are_historical_snapshot": true
+    "stage1_fields_are_historical_snapshot": true,
+    "pull_request_current_status": "PR31 merged2026-10-23T20:44:11Z; historical phase1 body unchanged"
   },
   "native_application": {
     "prompt": "ROLE-deployment-NATIVE-APPLICATION-v1",
@@ -643,6 +644,13 @@
       "formal performance",
       "cloud deployment",
       "production security"
-    ]
+    ],
+    "evidence_archive_commit": "e142470a8605991c10dfb26fe9e2e619a4190c97",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/34",
+    "draft": true,
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375242146",
+    "historical_pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/31#issuecomment-6375242564",
+    "github_readback": "agents/deployment/native-application-validation/github-phase2-readback-checks.json",
+    "next_action": "root existing reviewer targeted audit; deployment stops and releases slot; no additional service runs"
   }
 }

@@ -176,3 +176,5 @@
 
 - 实现0a6da88/SUTbc5a，新run2整体exit0/cycletrue/cleanuptrue；API4worker/consumer/UI5178proxy、新两扫描60.303070s、session4→5双项目TTL300轮换/新tick/锁/全回收及正常全停实际完成。源92SHA不变、新端口无监听、全部旧受保护监听baseline相同。
 - 正常16confirmed事件/26通知发生于run1（当轮整体exit1/cleanupfalse仍保留），二轮既有ID/收件人和manager可读10通知复核，不声称二轮新publish。证据native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871+3受影响873/Ruff/diff通过。不含完整浏览器业务、独立、性能或云结论，当前所有自有服务停机。
+
+- 证据封档e142470；新draft PR34 https://github.com/HJY147/t44-dev-trace/pull/34，Issue7/6375242146与已合并PR31/6375242564实际评论/PR34正文严格回读一致，PR31原历史正文逐字保留。现全停机并交根专项复核，不再运行cycle。
