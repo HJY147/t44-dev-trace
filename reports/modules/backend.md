@@ -92,3 +92,5 @@ Q002已用户采用、v1已冻结；真实实现入口为backend/t44/api.py和cl
 完整通知/升级默认组件已装配。38/38操作通过53次真实TCP HTTP＋MySQL请求和响应Schema；真实scanner→Pika关闭端口失败→消息CLI自动降级→通知读/处理与晚到去重、CLI身份/撤销/错库拒绝也通过。服务18080 PID14985，独立18081不触碰。证据为agents/backend/integration-38-http.json、integration-live-chain.json、integration-live-revocation.json。
 
 seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配置跳过；全部t44行2391/2724=87.78%，含分支85.36%，无omit。审计/状态显式码修复及重排回归、显式缺依赖503/默认200已交。真实去重保留全部守卫；总体规模仍超限。tmp测试迁移等待root SHA，未自行创建新测试文件；Rabbit成功CI、最终源码规模、性能和独立验收尚不宣称通过。
+
+测试迁移5e07887已合入，`pytest -c backend/pyproject.toml tmp/backend --collect-only`实际317项成功；新本岗路径为tmp/backend/contracts/985_mysql_http.py、986_http.py、987_faults.py和tmp/backend/backend/domain/994_transitions.py。旧运行日志保持原命令，不把机械收集成功说成新一轮全量执行。当前真实38HTTP/CLI证据checkpoint19750a9，仍待CI/Rabbit、最终规模和独立验收。

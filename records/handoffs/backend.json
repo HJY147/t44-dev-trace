@@ -402,7 +402,6 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "root test relocation",
     "Rabbit success real CI",
     "final source size",
     "performance",
@@ -547,8 +546,8 @@
       "reason": "actual GHA/code-map fixes, complete owner integration and full source coverage; no private acceptance contact"
     }
   ],
-  "updated_at": "2026-10-23T09:20:33.108437+00:00",
-  "current_stage": "ROLE-backend-INTEGRATION-v1; actual all38 success; test relocation and CI pending",
+  "updated_at": "2026-10-23T09:21:32.449376+00:00",
+  "current_stage": "ROLE-backend-INTEGRATION-v1 delivered checkpoint; all38 actual HTTP and CLI; awaiting coordinator CI/size/acceptance",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -599,13 +598,21 @@
       "agents/backend/integration-live-revocation.json"
     ],
     "still_required": [
-      "root test relocation",
       "Rabbit success real CI",
       "final source size",
       "performance",
       "independent acceptance"
     ],
     "all_http_operations": 38,
-    "actual_network_requests": 53
+    "actual_network_requests": 53,
+    "test_layout_commit": "5e07887",
+    "test_collection": "317 collected, integration-tmp-collection.log",
+    "current_test_command": "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend",
+    "owned_test_paths": [
+      "tmp/backend/contracts/985_mysql_http.py",
+      "tmp/backend/contracts/986_http.py",
+      "tmp/backend/contracts/987_faults.py",
+      "tmp/backend/backend/domain/994_transitions.py"
+    ]
   }
 }

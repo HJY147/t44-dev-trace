@@ -129,3 +129,5 @@
 - 实际TCP/MySQL+CLI故障链通过：项目10/任务15/event121，真实scheduler进程创建升级；实际Pika连关闭端口失败，消息CLI自动fallback，HTTP owner读/处理，task.version未变化、count1、晚到consume创建0；integration-live-chain.json。仅证明真实故障降级，未伪称本机Rabbit成功。
 - 实际CLI init-user/Argon2、两会话全撤销、单会话仅撤本token、撤销后旧同键重放401TOKEN_REVOKED、错库migrate拒绝都通过，integration-live-revocation.json；合成用户独立前缀，不清dev或演示数据。
 - 在不创建/编辑测试文件的前提下，用内存加载既有本岗旅程、私密演示账号和真实TCP API完成38/38操作成功、53请求逐响应Schema验证，integration-38-http.json；内部升级HTTP202为已持久事件重放，首次新建由上项scanner真实进程证明。不是独立验收/性能/正式MQ成功链。
+- 已merge根测试机械迁移5e07887，当前运行命令为`PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend ...`；实际collect-only 317 tests成功，integration-tmp-collection.log。保留先前真实运行的旧命令与原日志，不重写历史、不提前重复wholepass。未新增测试文件，不占970号；本岗测试现为tmp/backend/contracts/{985_mysql_http.py,986_http.py,987_faults.py}及tmp/backend/backend/domain/994_transitions.py，fixture保留conftest.py。
+- 本轮38HTTP/CLI实证checkpoint为19750a9920140f206452eb061f49f9dba0aace94，Issue阶段评论6361675371；PRedits仍draft，无self-approve。按根安排本阶段可释放槽位，下一阶段CI/Rabbit、最终规模与独立正式缺陷待根继续派工；不接触私有测试。
