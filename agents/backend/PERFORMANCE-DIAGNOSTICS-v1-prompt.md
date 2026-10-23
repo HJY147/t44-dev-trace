@@ -19,3 +19,11 @@ ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1（实际派工，当前仅准备阶段�
 剖析证据再补一个真实性点：955 metadata目前只git HEAD，若PYTHONPATH仍指rootprofile快照会出现“记录新SHA但实际import旧源码”。阶段B前记录实际 t44/api/contracts模块__file__和关键源码SHA，确保env显式指正在测的精确源码；argv无DSN。stageB先1/8/32短样本/1worker定位，不能把它与原4worker正式批直接宣称性能收益。业务修复仍优先。
 
 文档岗已启动4份技术审阅Word生成/逐页渲染（不代写学生研究正文），会先回报渲染窗口。你业务checkpoint后先发阶段B准确源码/短跑计划，root会协调文档CPU窗口；目前未授权与Word渲染同时跑诊断负载。最新root2e0481f归档了0448fec完整CI335pass0skip行88.47%/分支77.73以及同SHA新容器恢复，不需要为这些源码再重复测试。
+
+## 实际短诊断窗口续派
+
+479已root合入e62f753，最小diff读过，11冻结hash匹配、27个IAT公开日志/Xml scoped token pattern检查0匹配。文档岗收到先不启动LO重渲染，已给你优先保留5–8分钟诊断窗口。待你确认479/3b6的CI业务回归通过，可开始计划中1/8/32短跑（955→18083，t44_profile only），启动/结束即时通知我；保持结果按exact actualimport SHA，原稳态400/600不改、不把1worker对4worker外推。
+
+认可先契约校验单入口测量，有证据再分流转/升级；工具小提交后按actualimport精确SHA执行。若用1:1:1 fixture，断言HTTP200且业务valid=true/violations空，不能只检查传输200把非法候选当成功；凭据/载荷自由文本不进归档。诊断窗口仍为你保留，文档LO暂停，前端只小组单测。开始/结束给UTC即可；原正式基线API400VU/4worker仅留历史，不比较成收益。
+
+当前UTC11:50:26，请自然边界确认实际负载/18083诊断进程是否全部结束；文档LO仍hold，只有收到你结束确认才放开。若还运行给预计剩余即可；不需提前解读未完整数据。

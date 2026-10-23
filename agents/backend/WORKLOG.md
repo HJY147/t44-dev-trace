@@ -186,3 +186,17 @@
 - 真实最终986 HTTP/SQLite55passed，iat02-05-final.log/xml；Ruff全backend/t44+tmp/backend退出0，Bandit退出0；旧44pass/54pass中间结果如实保留。增加985真MySQL专项（含IAT01两邻接、非法ID独立审计、容量、完整2000字计划/错误码）并共享原fixture，没有删除原并发CAS断言；本机未运行这些新MySQL专项，交新源远端CI，不把SQLite当实库。旧65007a的远端39944613492已success，状态另存，不能代新源。
 - 955按root纠错改18083并记录实际port；原18082属于独立性能服务，从未绑定/停它。诊断启动前校验实际模块路径/关键文件SHA和脚本树Git HEAD/干净源码，拒绝PYTHONPATH旧快照；源工具未启动、未发诊断负载，仅格式和Ruff检查。Stage B须避Word渲染窗口，先报告精确SHA/1、8、32短阶梯，1worker结果不当4worker正式性能收益。原270ms/400/600秒不变、源码规模仍未解决。
 - checkpoint2实际Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608；PR16正文/标题按公开缺陷修复最终范围更新，仍draft。计划合根2e0481f已审核基础后交新源CI，不重跑根旧335结果。
+
+## IAT业务CI闭环与阶段B契约入口驱动准备
+
+- 479fc8fbb1c1abac1055a25f935d30c247c90f69真实product39946771417四任务均success；原始JUnit362/0failure/0error/0skip。985当前5项（原1+新增4，不是新增5），包含真实MySQL评估supersede两邻接、非法任务选择器/独立审计及容量/完整计划/错误码；原SQLiteless证据未冒充实库。contract64/integration56/fault7各自通过，可重叠。日志/覆盖JSON/JUnit见iat02-05-ci-*。
+- 全43个backend/t44，excluded0，2524/2850行88.5614%，分支78.1088%，含分支86.3335%。这是新业务源CI，不是独立复测/性能通过。root已允许第一阶段仅契约入口1:1:1短诊断，文档LO暂停让CPU窗口；按exactactualimport对齐，不比较原4worker正式批为收益。
+- 955同文件补public-API bootstrap和client模式，私密fixture0600只留ignored目录；客户端仅127.0.0.1:18083，候选登记/流转/评估循环，检查HTTP200、valid=true、business_guards_executed=false、对应operation/category、无violations；记录实际比例、E2E/Server-Timing/状态/请求ID/CPU，无Bearer/载荷。支持1/8/32线程闭环及profile少量请求上限，空worker/任何失败不算成功。静态Ruff通过，尚未启动新工具；业务backend/t44与479完全相同。开始前另告精确SHA/UTC。
+- 阶段B11:45首启f87d978真实失败（profile-first-launch-failure.json）：955误用当前FastAPI不存在的app.add_event_handler，AttributeError发生main400行、监听前，无HTTP/SQL请求；同源1秒debug再次确认，仅打印类型/帧不打印变量。静态实际检查router方法存在，现改app.router.add_event_handler。是后端AI未实测准备工具调用错误，不是产品性能结论/用户改码；新SHA后继续，backend/t44不动。
+
+## 阶段B首次运行收尾：无负载样本
+
+- 96e4e150a424fc6d6bf861649e2802bc256acd74修好startup hook后，两次18083/1worker baseline服务确实启动并正常退出（PID31358/31439，45.18秒/30.13秒）；metadata记录实际本树模块路径/hash、t44_profile、40线程令牌、5+10连接池。完整无凭据metadata归profile-bootstrap-attempts.json。baseline未挂逐请求记录器，record_count0不能单独证明没有请求。
+- public bootstrap未完成：登录阶段HTTPStatusError，安全debug确认非JSON502；另一次debug尝试解析该响应产生JSONDecodeError。失败摘要profile-bootstrap-failure.json保留状态/路径/调用帧，未存响应body或凭据。未生成fixture、未进入1/8/32主样本，没有CPU/SQL/延迟瓶颈数据，不把空闲进程CPU当负载指标。
+- HTTP_PROXY等八个环境变量均未设，但urllib.getproxies实际返回http/https/socks键；已安装HTTPX源码明确默认读取系统代理。现在仅工具两处Client改trust_env=False固定回环直连，先保存HTTP状态再解析JSON、metadata补UTC。代理是待直接重试验证的假设，未归因产品502或宣称修复已通过。未关闭TLS验证、未改生产代码/冻结件。
+- 静态误用根Ruff默认配置产生BLE001/format失败；使用显式--config backend/pyproject.toml的check/format及AST解析通过，原两种配置真实输出都保存profile-proxy-static.log。无pytest/build/DB/HTTP重试。已告root两服务/请求均结束，LO可解除hold；下一阶段需重新协调CPU窗口。

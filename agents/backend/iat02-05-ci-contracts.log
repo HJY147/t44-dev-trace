@@ -1,0 +1,1089 @@
+contracts	Set up job	﻿2026-10-23T11:32:21.9681239Z Current runner version: '2.338.0'
+contracts	Set up job	2026-10-23T11:32:21.9707093Z ##[group]Runner Image Provisioner
+contracts	Set up job	2026-10-23T11:32:21.9708059Z Hosted Compute Agent
+contracts	Set up job	2026-10-23T11:32:21.9708686Z Version: 20261012.601
+contracts	Set up job	2026-10-23T11:32:21.9709318Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+contracts	Set up job	2026-10-23T11:32:21.9710480Z Build Date: 2026-10-12T17:48:21Z
+contracts	Set up job	2026-10-23T11:32:21.9711180Z Worker ID: {d880c4f8-91c8-43d2-9c32-d3ffed3f4f55}
+contracts	Set up job	2026-10-23T11:32:21.9711873Z Region: westus
+contracts	Set up job	2026-10-23T11:32:21.9712481Z Cloud: Azure
+contracts	Set up job	2026-10-23T11:32:21.9713015Z ##[endgroup]
+contracts	Set up job	2026-10-23T11:32:21.9714667Z ##[group]Operating System
+contracts	Set up job	2026-10-23T11:32:21.9715327Z Ubuntu
+contracts	Set up job	2026-10-23T11:32:21.9715839Z 24.04.5
+contracts	Set up job	2026-10-23T11:32:21.9716416Z LTS
+contracts	Set up job	2026-10-23T11:32:21.9716935Z ##[endgroup]
+contracts	Set up job	2026-10-23T11:32:21.9717548Z ##[group]Runner Image
+contracts	Set up job	2026-10-23T11:32:21.9718162Z Image: ubuntu-24.04
+contracts	Set up job	2026-10-23T11:32:21.9718725Z Version: 20261012.334.1
+contracts	Set up job	2026-10-23T11:32:21.9720069Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+contracts	Set up job	2026-10-23T11:32:21.9721939Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+contracts	Set up job	2026-10-23T11:32:21.9722940Z ##[endgroup]
+contracts	Set up job	2026-10-23T11:32:21.9724073Z ##[group]GITHUB_TOKEN Permissions
+contracts	Set up job	2026-10-23T11:32:21.9725934Z Contents: read
+contracts	Set up job	2026-10-23T11:32:21.9726611Z Metadata: read
+contracts	Set up job	2026-10-23T11:32:21.9727301Z ##[endgroup]
+contracts	Set up job	2026-10-23T11:32:21.9729397Z Secret source: Actions
+contracts	Set up job	2026-10-23T11:32:21.9730657Z Cache mode: write
+contracts	Set up job	2026-10-23T11:32:21.9731395Z Prepare workflow directory
+contracts	Set up job	2026-10-23T11:32:22.0187912Z Prepare all required actions
+contracts	Set up job	2026-10-23T11:32:22.0236436Z Getting action download info
+contracts	Set up job	2026-10-23T11:32:22.4040638Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+contracts	Set up job	2026-10-23T11:32:22.5244833Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+contracts	Set up job	2026-10-23T11:32:22.9696280Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+contracts	Set up job	2026-10-23T11:32:23.5257629Z Complete job name: contracts
+contracts	Initialize containers	﻿2026-10-23T11:32:23.5923466Z ##[group]Checking docker version
+contracts	Initialize containers	2026-10-23T11:32:23.5937314Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+contracts	Initialize containers	2026-10-23T11:32:23.6785205Z '1.48'
+contracts	Initialize containers	2026-10-23T11:32:23.6800971Z Docker daemon API version: '1.48'
+contracts	Initialize containers	2026-10-23T11:32:23.6802903Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+contracts	Initialize containers	2026-10-23T11:32:23.6984178Z '1.48'
+contracts	Initialize containers	2026-10-23T11:32:23.7000337Z Docker client API version: '1.48'
+contracts	Initialize containers	2026-10-23T11:32:23.7006597Z ##[endgroup]
+contracts	Initialize containers	2026-10-23T11:32:23.7010463Z ##[group]Clean up resources from previous jobs
+contracts	Initialize containers	2026-10-23T11:32:23.7016953Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=47b670"
+contracts	Initialize containers	2026-10-23T11:32:23.7166014Z ##[command]/usr/bin/docker network prune --force --filter "label=47b670"
+contracts	Initialize containers	2026-10-23T11:32:23.7308839Z ##[endgroup]
+contracts	Initialize containers	2026-10-23T11:32:23.7310324Z ##[group]Create local container network
+contracts	Initialize containers	2026-10-23T11:32:23.7322487Z ##[command]/usr/bin/docker network create --label 47b670 github_network_28ded81bd528404a9f10f0fbe08642cc
+contracts	Initialize containers	2026-10-23T11:32:23.7852957Z 184d1044980f351ef591d21a780a3b51c36abfb5171cbb0084acc8de2a91eb4f
+contracts	Initialize containers	2026-10-23T11:32:23.7870332Z ##[endgroup]
+contracts	Initialize containers	2026-10-23T11:32:23.7898059Z ##[group]Starting mysql service container
+contracts	Initialize containers	2026-10-23T11:32:23.7921706Z ##[command]/usr/bin/docker pull mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+contracts	Initialize containers	2026-10-23T11:32:24.4273211Z docker.io/library/mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69: Pulling from library/mysql
+contracts	Initialize containers	2026-10-23T11:32:24.6935223Z 97347cf073b1: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6937660Z e8d4024251a9: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6939956Z ea1749d53e24: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6941820Z e99723a85985: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6943683Z 0c9ac1647849: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6945745Z 4730445dfddd: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6947461Z a3274015618b: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6949179Z 65fb9e68a2ac: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6951192Z 1ba383bbcb80: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6952942Z d14dbab65632: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:24.6954614Z 4730445dfddd: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6956149Z a3274015618b: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6957716Z 65fb9e68a2ac: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6959321Z 1ba383bbcb80: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6961175Z d14dbab65632: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6962242Z e99723a85985: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.6963075Z 0c9ac1647849: Waiting
+contracts	Initialize containers	2026-10-23T11:32:24.9237005Z e8d4024251a9: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:24.9240065Z e8d4024251a9: Download complete
+contracts	Initialize containers	2026-10-23T11:32:24.9317038Z ea1749d53e24: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:24.9319523Z ea1749d53e24: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.0789181Z 97347cf073b1: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.0791127Z 97347cf073b1: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.1531551Z 0c9ac1647849: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.1532881Z 0c9ac1647849: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.1698558Z e99723a85985: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.2885423Z 4730445dfddd: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.2888116Z 4730445dfddd: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.3814518Z 65fb9e68a2ac: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.3816924Z 65fb9e68a2ac: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.5521576Z a3274015618b: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.5524179Z a3274015618b: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.5905218Z d14dbab65632: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.5905713Z d14dbab65632: Download complete
+contracts	Initialize containers	2026-10-23T11:32:25.9795323Z 1ba383bbcb80: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:25.9796425Z 1ba383bbcb80: Download complete
+contracts	Initialize containers	2026-10-23T11:32:26.5878092Z 97347cf073b1: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:29.4594276Z e8d4024251a9: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:29.4793073Z ea1749d53e24: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:29.6799080Z e99723a85985: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:29.6909926Z 0c9ac1647849: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:29.7005352Z 4730445dfddd: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:30.5074216Z a3274015618b: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:30.5193364Z 65fb9e68a2ac: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:38.5139042Z 1ba383bbcb80: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:38.5257209Z d14dbab65632: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:38.5298230Z Digest: sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+contracts	Initialize containers	2026-10-23T11:32:38.5307363Z Status: Downloaded newer image for mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+contracts	Initialize containers	2026-10-23T11:32:38.5317114Z docker.io/library/mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+contracts	Initialize containers	2026-10-23T11:32:38.5381710Z ##[command]/usr/bin/docker create --name 5f6a7d81b13342e484db9cd110dae083_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_7c1c15 --label 47b670 --network github_network_28ded81bd528404a9f10f0fbe08642cc --network-alias mysql -p 127.0.0.1:3306:3306 --health-cmd "MYSQL_PWD=ci-root-disposable mysql --protocol=tcp --host=127.0.0.1 --user=root --execute='SELECT 1' --silent" --health-interval 10s --health-timeout 5s --health-retries 12 -e "MYSQL_ROOT_PASSWORD=ci-root-disposable" -e "MYSQL_DATABASE=t44_ci" -e "MYSQL_USER=t44" -e "MYSQL_PASSWORD=ci-app-disposable" -e GITHUB_ACTIONS=true -e CI=true mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+contracts	Initialize containers	2026-10-23T11:32:38.5734662Z 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:38.5758900Z ##[command]/usr/bin/docker start 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:38.8002304Z 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:38.8045507Z ##[command]/usr/bin/docker ps --all --filter id=9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+contracts	Initialize containers	2026-10-23T11:32:38.8195511Z 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32 Up Less than a second (health: starting)
+contracts	Initialize containers	2026-10-23T11:32:38.8218695Z ##[command]/usr/bin/docker port 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:38.8374967Z 3306/tcp -> 127.0.0.1:3306
+contracts	Initialize containers	2026-10-23T11:32:38.8432086Z ##[endgroup]
+contracts	Initialize containers	2026-10-23T11:32:38.8434565Z ##[group]Starting rabbitmq service container
+contracts	Initialize containers	2026-10-23T11:32:38.8436900Z ##[command]/usr/bin/docker pull rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+contracts	Initialize containers	2026-10-23T11:32:39.4324667Z docker.io/library/rabbitmq@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292: Pulling from library/rabbitmq
+contracts	Initialize containers	2026-10-23T11:32:39.6931275Z 7b229517ed22: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6935354Z e7bae20055be: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6936361Z 5aeca134e2ee: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6937305Z 6c541e85eb6a: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6938261Z 705ec0ba1a4f: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6939001Z 47978bf4a272: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6939981Z d2ac89bc4c9f: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6940723Z 91e56fb15809: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6941179Z a511ee8166df: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6942992Z 8446d9e7daad: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6943672Z ffe8fdfc35ff: Pulling fs layer
+contracts	Initialize containers	2026-10-23T11:32:39.6944125Z d2ac89bc4c9f: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6944503Z 91e56fb15809: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6944865Z a511ee8166df: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6945221Z 8446d9e7daad: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6945570Z ffe8fdfc35ff: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6945927Z 705ec0ba1a4f: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.6946274Z 47978bf4a272: Waiting
+contracts	Initialize containers	2026-10-23T11:32:39.9182827Z 7b229517ed22: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:39.9185319Z 7b229517ed22: Download complete
+contracts	Initialize containers	2026-10-23T11:32:39.9345292Z 5aeca134e2ee: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:39.9346984Z 5aeca134e2ee: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.1029036Z e7bae20055be: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.1030343Z e7bae20055be: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.1043354Z 7b229517ed22: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:40.1596002Z 6c541e85eb6a: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.1601876Z 6c541e85eb6a: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.2891452Z 705ec0ba1a4f: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.2892502Z 705ec0ba1a4f: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.3191492Z 47978bf4a272: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.3192451Z 47978bf4a272: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.3843661Z d2ac89bc4c9f: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.3845712Z d2ac89bc4c9f: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.5009617Z 91e56fb15809: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.5011823Z 91e56fb15809: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.5327020Z a511ee8166df: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.5327612Z a511ee8166df: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.6010860Z 8446d9e7daad: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.6011704Z 8446d9e7daad: Download complete
+contracts	Initialize containers	2026-10-23T11:32:40.7486215Z ffe8fdfc35ff: Verifying Checksum
+contracts	Initialize containers	2026-10-23T11:32:40.7487098Z ffe8fdfc35ff: Download complete
+contracts	Initialize containers	2026-10-23T11:32:41.0136504Z e7bae20055be: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:41.1953866Z 5aeca134e2ee: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:41.4040668Z 6c541e85eb6a: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.0650665Z 705ec0ba1a4f: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.0783928Z 47978bf4a272: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.0882328Z d2ac89bc4c9f: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.0977774Z 91e56fb15809: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.1092471Z a511ee8166df: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.1188735Z 8446d9e7daad: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.1962981Z ffe8fdfc35ff: Pull complete
+contracts	Initialize containers	2026-10-23T11:32:42.2001929Z Digest: sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+contracts	Initialize containers	2026-10-23T11:32:42.2008083Z Status: Downloaded newer image for rabbitmq@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+contracts	Initialize containers	2026-10-23T11:32:42.2014580Z docker.io/library/rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+contracts	Initialize containers	2026-10-23T11:32:42.2035557Z ##[command]/usr/bin/docker create --name 49b3a793f51345c5a9d7d2a88da6c337_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_3946da --label 47b670 --network github_network_28ded81bd528404a9f10f0fbe08642cc --network-alias rabbitmq -p 127.0.0.1:5672:5672 --health-cmd "rabbitmq-diagnostics -q ping" --health-interval 10s --health-timeout 5s --health-retries 12 -e "RABBITMQ_DEFAULT_USER=t44" -e "RABBITMQ_DEFAULT_PASS=ci-mq-disposable" -e "RABBITMQ_DEFAULT_VHOST=t44_ci" -e GITHUB_ACTIONS=true -e CI=true rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+contracts	Initialize containers	2026-10-23T11:32:42.2336728Z 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Initialize containers	2026-10-23T11:32:42.2357543Z ##[command]/usr/bin/docker start 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Initialize containers	2026-10-23T11:32:42.4076303Z 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Initialize containers	2026-10-23T11:32:42.4101192Z ##[command]/usr/bin/docker ps --all --filter id=45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+contracts	Initialize containers	2026-10-23T11:32:42.4289926Z 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f Up Less than a second (health: starting)
+contracts	Initialize containers	2026-10-23T11:32:42.4311114Z ##[command]/usr/bin/docker port 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Initialize containers	2026-10-23T11:32:42.4531198Z 5672/tcp -> 127.0.0.1:5672
+contracts	Initialize containers	2026-10-23T11:32:42.4563035Z ##[endgroup]
+contracts	Initialize containers	2026-10-23T11:32:42.4578553Z ##[group]Waiting for all services to be ready
+contracts	Initialize containers	2026-10-23T11:32:42.4600758Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:42.4845159Z starting
+contracts	Initialize containers	2026-10-23T11:32:42.4882085Z mysql service is starting, waiting 2 seconds before checking again.
+contracts	Initialize containers	2026-10-23T11:32:44.4889825Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:44.5067450Z starting
+contracts	Initialize containers	2026-10-23T11:32:44.5083644Z mysql service is starting, waiting 3 seconds before checking again.
+contracts	Initialize containers	2026-10-23T11:32:48.1590669Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:48.1719878Z starting
+contracts	Initialize containers	2026-10-23T11:32:48.1733911Z mysql service is starting, waiting 7 seconds before checking again.
+contracts	Initialize containers	2026-10-23T11:32:56.1681038Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Initialize containers	2026-10-23T11:32:56.1813431Z healthy
+contracts	Initialize containers	2026-10-23T11:32:56.1831153Z mysql service is healthy.
+contracts	Initialize containers	2026-10-23T11:32:56.1832013Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Initialize containers	2026-10-23T11:32:56.1956484Z healthy
+contracts	Initialize containers	2026-10-23T11:32:56.1970856Z rabbitmq service is healthy.
+contracts	Initialize containers	2026-10-23T11:32:56.1971551Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T11:32:56.2279269Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2280228Z with:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2280457Z   persist-credentials: false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2280738Z   repository: HJY147/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2283258Z   token: ***
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2283465Z   ssh-strict: true
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2283669Z   ssh-user: git
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2283858Z   clean: true
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2284060Z   sparse-checkout-cone-mode: true
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2284310Z   fetch-depth: 1
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2284510Z   fetch-tags: false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2284712Z   show-progress: true
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2284913Z   lfs: false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2285100Z   submodules: false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2285307Z   set-safe-directory: true
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2285549Z   allow-unsafe-pr-checkout: false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2286290Z env:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2286490Z   PYTHONPATH: backend
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2286974Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2287250Z   T44_DATABASE: t44_ci
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2287812Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2288202Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.2288440Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3304907Z Syncing repository: HJY147/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3306411Z ##[group]Getting Git version info
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3307061Z Working directory is '/home/runner/work/t44-dev-trace/t44-dev-trace'
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3307695Z [command]/usr/bin/git version
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3398057Z git version 2.55.0
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3421804Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3438469Z Temporarily overriding HOME='/home/runner/work/_temp/0e824297-b7f3-430d-97a2-793b213ea8dd' before making global git config changes
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3440274Z Adding repository directory to the temporary git global config as a safe directory
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3445966Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3498294Z Deleting the contents of '/home/runner/work/t44-dev-trace/t44-dev-trace'
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3502041Z ##[group]Determining repository object format
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3503804Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3504638Z ##[group]Initializing the repository
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3508504Z [command]/usr/bin/git init /home/runner/work/t44-dev-trace/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3622903Z hint: Using 'master' as the name for the initial branch. This default branch name
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3623859Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3624746Z hint: to use in all of your new repositories, which will suppress this warning,
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3625416Z hint: call:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3625722Z hint:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3626150Z hint: 	git config --global init.defaultBranch <name>
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3626721Z hint:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3627266Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3628146Z hint: 'development'. The just-created branch can be renamed via this command:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3628629Z hint:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3628831Z hint: 	git branch -m <name>
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3629060Z hint:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3629385Z hint: Disable this message with "git config set advice.defaultBranchName false"
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3630338Z Initialized empty Git repository in /home/runner/work/t44-dev-trace/t44-dev-trace/.git/
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3640813Z [command]/usr/bin/git remote add origin https://github.com/HJY147/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3706608Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3707283Z ##[group]Disabling automatic garbage collection
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3711239Z [command]/usr/bin/git config --local gc.auto 0
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3752611Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3753803Z ##[group]Setting up auth
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3754651Z Removing SSH command configuration
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3758606Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.3795912Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4195977Z Removing HTTP extra header
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4202227Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4240320Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4463429Z Removing includeIf entries pointing to credentials config files
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4468147Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4505389Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4738768Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4782569Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path /home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4818226Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4860885Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4904112Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4943888Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4944541Z ##[group]Fetching the repository
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:56.4951889Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cfd62a9be7f53dc739e305dafe9db48d24b547eb:refs/remotes/pull/16/merge
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3785272Z From https://github.com/HJY147/t44-dev-trace
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3785917Z  * [new ref]         cfd62a9be7f53dc739e305dafe9db48d24b547eb -> pull/16/merge
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3790892Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3791294Z ##[group]Determining the checkout info
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3792104Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3797132Z [command]/usr/bin/git sparse-checkout disable
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3876692Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3913709Z ##[group]Checking out the ref
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.3919487Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/16/merge
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5073759Z Note: switching to 'refs/remotes/pull/16/merge'.
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5074251Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5074606Z You are in 'detached HEAD' state. You can look around, make experimental
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5075574Z changes and commit them, and you can discard any commits you make in this
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5076428Z state without impacting any branches by switching back to a branch.
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5076928Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5077262Z If you want to create a new branch to retain commits you create, you may
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5077977Z do so (now or later) by using -c with the switch command. Example:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5078383Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5078554Z   git switch -c <new-branch-name>
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5078827Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5078977Z Or undo this operation with:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5079240Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5079376Z   git switch -
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5079592Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5080240Z Turn off this advice by setting config variable advice.detachedHead to false
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5080760Z 
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5081337Z HEAD is now at cfd62a9 Merge 479fc8fbb1c1abac1055a25f935d30c247c90f69 into 4dc5be92321bd7ee793656de16e1910fe4c80880
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5091959Z ##[endgroup]
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5143200Z [command]/usr/bin/git log -1 --format=%H
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5172656Z cfd62a9be7f53dc739e305dafe9db48d24b547eb
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5183207Z ##[group]Removing auth
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5183642Z Removing SSH command configuration
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5189235Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5226123Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5456567Z Removing HTTP extra header
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5461639Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5499823Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5735107Z Removing includeIf entries pointing to credentials config files
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5738926Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5772196Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5773374Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5774624Z includeif.gitdir:/github/workspace/.git.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5775682Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5783062Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5813271Z /home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5825708Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-c31dc584\-a39b\-46b6\-b553\-9c1c6480b6f2\.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5883793Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5910478Z /home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5921114Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-c31dc584\-a39b\-46b6\-b553\-9c1c6480b6f2\.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5958714Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5986955Z /github/runner_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.5996087Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-c31dc584\-a39b\-46b6\-b553\-9c1c6480b6f2\.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6034533Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6061358Z /github/runner_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6069325Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-c31dc584\-a39b\-46b6\-b553\-9c1c6480b6f2\.config
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6107004Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6335995Z Removing credentials config '/home/runner/work/_temp/git-credentials-c31dc584-a39b-46b6-b553-9c1c6480b6f2.config'
+contracts	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:57.6346158Z ##[endgroup]
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T11:32:57.6591559Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6591999Z with:
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6592200Z   python-version: 3.12
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6592433Z   check-latest: false
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6594829Z   token: ***
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6595159Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6595562Z   update-environment: true
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6595801Z   allow-prereleases: false
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6596027Z   freethreaded: false
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6596233Z env:
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6596415Z   PYTHONPATH: backend
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6596849Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6597108Z   T44_DATABASE: t44_ci
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6597406Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6597670Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.6598094Z ##[endgroup]
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.7759111Z ##[group]Installed versions
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.7848277Z Successfully set up CPython (3.12.15)
+contracts	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:32:57.7849243Z ##[endgroup]
+contracts	Run mkdir -p reports/ci/contracts	﻿2026-10-23T11:32:57.7983416Z ##[group]Run mkdir -p reports/ci/contracts
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.7983888Z ^[[36;1mmkdir -p reports/ci/contracts^[[0m
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8239100Z shell: /usr/bin/bash -e {0}
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8239414Z env:
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8239887Z   PYTHONPATH: backend
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8240529Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8240817Z   T44_DATABASE: t44_ci
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8241126Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8241387Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8241707Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8242205Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8242656Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8243064Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8243480Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8243888Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Run mkdir -p reports/ci/contracts	2026-10-23T11:32:57.8244283Z ##[endgroup]
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	﻿2026-10-23T11:32:57.8413484Z ##[group]Run python -m pip install --require-hashes -r scripts/ci/requirements.lock
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8414143Z ^[[36;1mpython -m pip install --require-hashes -r scripts/ci/requirements.lock^[[0m
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8477452Z shell: /usr/bin/bash -e {0}
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8477723Z env:
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8477927Z   PYTHONPATH: backend
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8478441Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8478744Z   T44_DATABASE: t44_ci
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8479073Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8479344Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8479866Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8480339Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8480789Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8481191Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8481584Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8482016Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:57.8482348Z ##[endgroup]
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:58.6879476Z Collecting attrs==26.1.0 (from -r scripts/ci/requirements.lock (line 3))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:58.7352217Z   Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:58.7667340Z Collecting bandit==1.9.4 (from -r scripts/ci/requirements.lock (line 9))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:58.7696559Z   Downloading bandit-1.9.4-py3-none-any.whl (134 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2253468Z Collecting coverage==7.17.0 (from -r scripts/ci/requirements.lock (line 13))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2294582Z   Downloading coverage-7.17.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (261 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2428110Z Collecting iniconfig==2.3.1 (from -r scripts/ci/requirements.lock (line 134))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2455055Z   Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2644632Z Collecting jsonschema==4.26.0 (from -r scripts/ci/requirements.lock (line 138))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2676633Z   Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2814003Z Collecting jsonschema-specifications==2025.9.1 (from -r scripts/ci/requirements.lock (line 142))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2839844Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2968610Z Collecting markdown-it-py==4.2.0 (from -r scripts/ci/requirements.lock (line 146))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.2999293Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3123911Z Collecting mdurl==0.1.2 (from -r scripts/ci/requirements.lock (line 150))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3151964Z   Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3280735Z Collecting packaging==26.3 (from -r scripts/ci/requirements.lock (line 154))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3309597Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3442466Z Collecting pluggy==1.7.0 (from -r scripts/ci/requirements.lock (line 158))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3468111Z   Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3627815Z Collecting pygments==2.21.0 (from -r scripts/ci/requirements.lock (line 162))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3659114Z   Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.3768268Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 139.9 MB/s  0:00:00
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4027412Z Collecting pytest==9.1.1 (from -r scripts/ci/requirements.lock (line 168))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4061329Z   Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4457944Z Collecting pyyaml==6.0.3 (from -r scripts/ci/requirements.lock (line 172))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4491080Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4566278Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 122.0 MB/s  0:00:00
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4747070Z Collecting referencing==0.37.0 (from -r scripts/ci/requirements.lock (line 249))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.4782208Z   Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.5067119Z Collecting rich==15.0.0 (from -r scripts/ci/requirements.lock (line 255))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.5099304Z   Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.7910709Z Collecting rpds-py==2026.9.1 (from -r scripts/ci/requirements.lock (line 259))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:32:59.7942632Z   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.1228540Z Collecting ruff==0.17.2 (from -r scripts/ci/requirements.lock (line 391))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.1262634Z   Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.5 MB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.1682603Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 260.2 MB/s  0:00:00
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.1928142Z Collecting stevedore==5.9.1 (from -r scripts/ci/requirements.lock (line 411))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.1954749Z   Downloading stevedore-5.9.1-py3-none-any.whl (54 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.2106828Z Collecting typing-extensions==4.16.0 (from -r scripts/ci/requirements.lock (line 415))
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.2135520Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.2934401Z Installing collected packages: typing-extensions, stevedore, ruff, rpds-py, pyyaml, pygments, pluggy, packaging, mdurl, iniconfig, coverage, attrs, referencing, pytest, markdown-it-py, rich, jsonschema-specifications, jsonschema, bandit
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.3373559Z 
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.3398679Z Successfully installed attrs-26.1.0 bandit-1.9.4 coverage-7.17.0 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.1.1 pyyaml-6.0.3 referencing-0.37.0 rich-15.0.0 rpds-py-2026.9.1 ruff-0.17.2 stevedore-5.9.1 typing-extensions-4.16.0
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.3408454Z 
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.3408876Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+contracts	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.3409352Z [notice] To update, run: pip install --upgrade pip
+contracts	Require real application and test files	﻿2026-10-23T11:33:02.4317549Z ##[group]Run python scripts/ci/preflight.py 2>&1 | tee reports/ci/contracts/preflight.log
+contracts	Require real application and test files	2026-10-23T11:33:02.4318227Z ^[[36;1mpython scripts/ci/preflight.py 2>&1 | tee reports/ci/contracts/preflight.log^[[0m
+contracts	Require real application and test files	2026-10-23T11:33:02.4383074Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Require real application and test files	2026-10-23T11:33:02.4383427Z env:
+contracts	Require real application and test files	2026-10-23T11:33:02.4383620Z   PYTHONPATH: backend
+contracts	Require real application and test files	2026-10-23T11:33:02.4384306Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Require real application and test files	2026-10-23T11:33:02.4384584Z   T44_DATABASE: t44_ci
+contracts	Require real application and test files	2026-10-23T11:33:02.4384887Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Require real application and test files	2026-10-23T11:33:02.4385339Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Require real application and test files	2026-10-23T11:33:02.4385639Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T11:33:02.4386080Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Require real application and test files	2026-10-23T11:33:02.4386509Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T11:33:02.4386894Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T11:33:02.4387277Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T11:33:02.4387692Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Require real application and test files	2026-10-23T11:33:02.4388011Z ##[endgroup]
+contracts	Install real application dependencies	﻿2026-10-23T11:33:02.4841198Z ##[group]Run python -m pip install --require-hashes -r backend/requirements.lock
+contracts	Install real application dependencies	2026-10-23T11:33:02.4841808Z ^[[36;1mpython -m pip install --require-hashes -r backend/requirements.lock^[[0m
+contracts	Install real application dependencies	2026-10-23T11:33:02.4904319Z shell: /usr/bin/bash -e {0}
+contracts	Install real application dependencies	2026-10-23T11:33:02.4904583Z env:
+contracts	Install real application dependencies	2026-10-23T11:33:02.4904775Z   PYTHONPATH: backend
+contracts	Install real application dependencies	2026-10-23T11:33:02.4905300Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Install real application dependencies	2026-10-23T11:33:02.4905578Z   T44_DATABASE: t44_ci
+contracts	Install real application dependencies	2026-10-23T11:33:02.4905952Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Install real application dependencies	2026-10-23T11:33:02.4906214Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Install real application dependencies	2026-10-23T11:33:02.4906527Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Install real application dependencies	2026-10-23T11:33:02.4906963Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Install real application dependencies	2026-10-23T11:33:02.4907401Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Install real application dependencies	2026-10-23T11:33:02.4907791Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Install real application dependencies	2026-10-23T11:33:02.4908184Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Install real application dependencies	2026-10-23T11:33:02.4908616Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Install real application dependencies	2026-10-23T11:33:02.4908951Z ##[endgroup]
+contracts	Install real application dependencies	2026-10-23T11:33:02.8938080Z Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+contracts	Install real application dependencies	2026-10-23T11:33:02.9510990Z Collecting annotated-doc==0.0.5 (from -r backend/requirements.lock (line 3))
+contracts	Install real application dependencies	2026-10-23T11:33:03.0157668Z   Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.0321643Z Collecting annotated-types==0.8.0 (from -r backend/requirements.lock (line 7))
+contracts	Install real application dependencies	2026-10-23T11:33:03.0362638Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.0624478Z Collecting anyio==4.15.1 (from -r backend/requirements.lock (line 11))
+contracts	Install real application dependencies	2026-10-23T11:33:03.0665049Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.1123367Z Collecting apscheduler==3.11.3 (from -r backend/requirements.lock (line 17))
+contracts	Install real application dependencies	2026-10-23T11:33:03.1165581Z   Downloading apscheduler-3.11.3-py3-none-any.whl (66 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.1490889Z Collecting argon2-cffi==25.1.0 (from -r backend/requirements.lock (line 21))
+contracts	Install real application dependencies	2026-10-23T11:33:03.1531168Z   Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.1696015Z Collecting argon2-cffi-bindings==26.1.0 (from -r backend/requirements.lock (line 25))
+contracts	Install real application dependencies	2026-10-23T11:33:03.1731124Z   Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.1942368Z Collecting arrow==1.4.0 (from -r backend/requirements.lock (line 68))
+contracts	Install real application dependencies	2026-10-23T11:33:03.1983343Z   Downloading arrow-1.4.0-py3-none-any.whl (68 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.2051495Z Requirement already satisfied: attrs==26.1.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 72)) (26.1.0)
+contracts	Install real application dependencies	2026-10-23T11:33:03.2057200Z Requirement already satisfied: bandit==1.9.4 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 79)) (1.9.4)
+contracts	Install real application dependencies	2026-10-23T11:33:03.2199775Z Collecting certifi==2026.10.19 (from -r backend/requirements.lock (line 83))
+contracts	Install real application dependencies	2026-10-23T11:33:03.2235014Z   Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.3777566Z Collecting cffi==2.1.1 (from -r backend/requirements.lock (line 89))
+contracts	Install real application dependencies	2026-10-23T11:33:03.3815842Z   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.4033030Z Collecting click==8.5.0 (from -r backend/requirements.lock (line 193))
+contracts	Install real application dependencies	2026-10-23T11:33:03.4088632Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.4131634Z Requirement already satisfied: coverage==7.17.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 203)) (7.17.0)
+contracts	Install real application dependencies	2026-10-23T11:33:03.6580697Z Collecting cryptography==50.0.2 (from -r backend/requirements.lock (line 324))
+contracts	Install real application dependencies	2026-10-23T11:33:03.6616618Z   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.6832511Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 241.5 MB/s  0:00:00
+contracts	Install real application dependencies	2026-10-23T11:33:03.7300908Z Collecting fastapi==0.161.1 (from -r backend/requirements.lock (line 385))
+contracts	Install real application dependencies	2026-10-23T11:33:03.7336475Z   Downloading fastapi-0.161.1-py3-none-any.whl (149 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.7500730Z Collecting fqdn==1.6.0 (from -r backend/requirements.lock (line 389))
+contracts	Install real application dependencies	2026-10-23T11:33:03.7534881Z   Downloading fqdn-1.6.0-py3-none-any.whl (12 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.7655206Z Collecting h11==0.16.0 (from -r backend/requirements.lock (line 393))
+contracts	Install real application dependencies	2026-10-23T11:33:03.7689053Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.7863884Z Collecting hatchling==1.32.4 (from -r backend/requirements.lock (line 399))
+contracts	Install real application dependencies	2026-10-23T11:33:03.7898593Z   Downloading hatchling-1.32.4-py3-none-any.whl (78 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8051098Z Collecting httpcore==1.0.9 (from -r backend/requirements.lock (line 403))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8082288Z   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8268737Z Collecting httpx==0.28.1 (from -r backend/requirements.lock (line 407))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8303310Z   Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8436583Z Collecting idna==3.20 (from -r backend/requirements.lock (line 411))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8471733Z   Downloading idna-3.20-py3-none-any.whl (69 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8515786Z Requirement already satisfied: iniconfig==2.3.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 418)) (2.3.1)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8593593Z Collecting isoduration==20.11.0 (from -r backend/requirements.lock (line 422))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8626576Z   Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8747564Z Collecting jsonpointer==3.4 (from -r backend/requirements.lock (line 426))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8777474Z   Downloading jsonpointer-3.4-py3-none-any.whl (9.0 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8812695Z Requirement already satisfied: jsonschema==4.26.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 430)) (4.26.0)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8897879Z Collecting jsonschema-path==0.5.0 (from -r backend/requirements.lock (line 437))
+contracts	Install real application dependencies	2026-10-23T11:33:03.8928940Z   Downloading jsonschema_path-0.5.0-py3-none-any.whl (24 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.8972676Z Requirement already satisfied: jsonschema-specifications==2025.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 441)) (2025.9.1)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9300801Z Collecting lazy-object-proxy==1.13.0 (from -r backend/requirements.lock (line 447))
+contracts	Install real application dependencies	2026-10-23T11:33:03.9344259Z   Downloading lazy_object_proxy-1.13.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (71 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9387492Z Requirement already satisfied: markdown-it-py==4.2.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 513)) (4.2.0)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9392307Z Requirement already satisfied: mdurl==0.1.2 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 517)) (0.1.2)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9492214Z Collecting openapi-schema-validator==0.9.0 (from -r backend/requirements.lock (line 521))
+contracts	Install real application dependencies	2026-10-23T11:33:03.9524061Z   Downloading openapi_schema_validator-0.9.0-py3-none-any.whl (19 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9668346Z Collecting openapi-spec-validator==0.9.0 (from -r backend/requirements.lock (line 525))
+contracts	Install real application dependencies	2026-10-23T11:33:03.9702462Z   Downloading openapi_spec_validator-0.9.0-py3-none-any.whl (50 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9881228Z Collecting opentelemetry-api==1.45.1 (from -r backend/requirements.lock (line 529))
+contracts	Install real application dependencies	2026-10-23T11:33:03.9918286Z   Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:03.9957516Z Requirement already satisfied: packaging==26.3 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 533)) (26.3)
+contracts	Install real application dependencies	2026-10-23T11:33:04.0040151Z Collecting pathable==0.6.0 (from -r backend/requirements.lock (line 539))
+contracts	Install real application dependencies	2026-10-23T11:33:04.0071652Z   Downloading pathable-0.6.0-py3-none-any.whl (18 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.0184344Z Collecting pathspec==1.1.1 (from -r backend/requirements.lock (line 543))
+contracts	Install real application dependencies	2026-10-23T11:33:04.0217986Z   Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.0372166Z Collecting pika==1.4.4 (from -r backend/requirements.lock (line 547))
+contracts	Install real application dependencies	2026-10-23T11:33:04.0401342Z   Downloading pika-1.4.4-py3-none-any.whl (165 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.0455942Z Requirement already satisfied: pluggy==1.7.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 551)) (1.7.0)
+contracts	Install real application dependencies	2026-10-23T11:33:04.0531545Z Collecting pycparser==3.12 (from -r backend/requirements.lock (line 557))
+contracts	Install real application dependencies	2026-10-23T11:33:04.0563341Z   Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.1543701Z Collecting pydantic==2.14.1 (from -r backend/requirements.lock (line 561))
+contracts	Install real application dependencies	2026-10-23T11:33:04.1581088Z   Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.8476564Z Collecting pydantic-core==2.50.1 (from -r backend/requirements.lock (line 569))
+contracts	Install real application dependencies	2026-10-23T11:33:04.8519891Z   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.8623066Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 240.8 MB/s  0:00:00
+contracts	Install real application dependencies	2026-10-23T11:33:04.8768165Z Collecting pydantic-settings==2.16.1 (from -r backend/requirements.lock (line 708))
+contracts	Install real application dependencies	2026-10-23T11:33:04.8801184Z   Downloading pydantic_settings-2.16.1-py3-none-any.whl (80 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.8848070Z Requirement already satisfied: pygments==2.21.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 714)) (2.21.0)
+contracts	Install real application dependencies	2026-10-23T11:33:04.8947398Z Collecting pymysql==1.2.3 (from -r backend/requirements.lock (line 720))
+contracts	Install real application dependencies	2026-10-23T11:33:04.8980025Z   Downloading pymysql-1.2.3-py3-none-any.whl (46 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9021212Z Requirement already satisfied: pytest==9.1.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 724)) (9.1.1)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9104583Z Collecting python-dateutil==3.0.0 (from -r backend/requirements.lock (line 728))
+contracts	Install real application dependencies	2026-10-23T11:33:04.9136973Z   Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9286704Z Collecting python-dotenv==1.2.4 (from -r backend/requirements.lock (line 732))
+contracts	Install real application dependencies	2026-10-23T11:33:04.9319373Z   Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9371214Z Requirement already satisfied: pyyaml==6.0.3 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 736)) (6.0.3)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9376919Z Requirement already satisfied: referencing==0.37.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 813)) (0.37.0)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9450333Z Collecting rfc3339-validator==0.1.4 (from -r backend/requirements.lock (line 821))
+contracts	Install real application dependencies	2026-10-23T11:33:04.9483868Z   Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9576476Z Collecting rfc3987==1.3.8 (from -r backend/requirements.lock (line 827))
+contracts	Install real application dependencies	2026-10-23T11:33:04.9612255Z   Downloading rfc3987-1.3.8-py2.py3-none-any.whl (13 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9651186Z Requirement already satisfied: rich==15.0.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 831)) (15.0.0)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9656986Z Requirement already satisfied: rpds-py==2026.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 835)) (2026.9.1)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9662742Z Requirement already satisfied: ruff==0.17.2 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 967)) (0.17.2)
+contracts	Install real application dependencies	2026-10-23T11:33:04.9743158Z Collecting six==1.17.0 (from -r backend/requirements.lock (line 987))
+contracts	Install real application dependencies	2026-10-23T11:33:04.9776188Z   Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.3000803Z Collecting sqlalchemy==2.1.6 (from -r backend/requirements.lock (line 993))
+contracts	Install real application dependencies	2026-10-23T11:33:05.3037281Z   Downloading sqlalchemy-2.1.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.3248935Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 262.6 MB/s  0:00:00
+contracts	Install real application dependencies	2026-10-23T11:33:05.3543633Z Collecting starlette==1.9.0 (from -r backend/requirements.lock (line 1067))
+contracts	Install real application dependencies	2026-10-23T11:33:05.3577304Z   Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.3626838Z Requirement already satisfied: stevedore==5.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 1071)) (5.9.1)
+contracts	Install real application dependencies	2026-10-23T11:33:05.3733550Z Collecting tomlkit==0.15.2 (from -r backend/requirements.lock (line 1075))
+contracts	Install real application dependencies	2026-10-23T11:33:05.3768202Z   Downloading tomlkit-0.15.2-py3-none-any.whl (52 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.3976584Z Collecting trove-classifiers==2026.9.21.13 (from -r backend/requirements.lock (line 1079))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4008722Z   Downloading trove_classifiers-2026.9.21.13-py3-none-any.whl (14 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4055086Z Requirement already satisfied: typing-extensions==4.16.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 1083)) (4.16.0)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4126036Z Collecting typing-inspection==0.4.4 (from -r backend/requirements.lock (line 1097))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4159661Z   Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4280328Z Collecting tzdata==2026.5 (from -r backend/requirements.lock (line 1104))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4315769Z   Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4482807Z Collecting tzlocal==5.4.5 (from -r backend/requirements.lock (line 1111))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4514704Z   Downloading tzlocal-5.4.5-py3-none-any.whl (18 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4614228Z Collecting uri-template==1.3.0 (from -r backend/requirements.lock (line 1115))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4646952Z   Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.4900408Z Collecting uvicorn==0.54.0 (from -r backend/requirements.lock (line 1119))
+contracts	Install real application dependencies	2026-10-23T11:33:05.4934232Z   Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.5054850Z Collecting webcolors==25.10.0 (from -r backend/requirements.lock (line 1123))
+contracts	Install real application dependencies	2026-10-23T11:33:05.5086286Z   Downloading webcolors-25.10.0-py3-none-any.whl (14 kB)
+contracts	Install real application dependencies	2026-10-23T11:33:05.6931710Z Installing collected packages: trove-classifiers, rfc3987, webcolors, uri-template, tzlocal, tzdata, typing-inspection, tomlkit, sqlalchemy, six, python-dotenv, pymysql, pydantic-core, pycparser, pika, pathspec, pathable, opentelemetry-api, lazy-object-proxy, jsonpointer, idna, h11, fqdn, click, certifi, annotated-types, annotated-doc, uvicorn, rfc3339-validator, python-dateutil, pydantic, jsonschema-path, httpcore, hatchling, cffi, apscheduler, anyio, starlette, pydantic-settings, httpx, cryptography, arrow, argon2-cffi-bindings, openapi-schema-validator, isoduration, fastapi, argon2-cffi, openapi-spec-validator
+contracts	Install real application dependencies	2026-10-23T11:33:09.1988852Z 
+contracts	Install real application dependencies	2026-10-23T11:33:09.2046699Z Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 apscheduler-3.11.3 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 arrow-1.4.0 certifi-2026.10.19 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 fastapi-0.161.1 fqdn-1.6.0 h11-0.16.0 hatchling-1.32.4 httpcore-1.0.9 httpx-0.28.1 idna-3.20 isoduration-20.11.0 jsonpointer-3.4 jsonschema-path-0.5.0 lazy-object-proxy-1.13.0 openapi-schema-validator-0.9.0 openapi-spec-validator-0.9.0 opentelemetry-api-1.45.1 pathable-0.6.0 pathspec-1.1.1 pika-1.4.4 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pydantic-settings-2.16.1 pymysql-1.2.3 python-dateutil-3.0.0 python-dotenv-1.2.4 rfc3339-validator-0.1.4 rfc3987-1.3.8 six-1.17.0 sqlalchemy-2.1.6 starlette-1.9.0 tomlkit-0.15.2 trove-classifiers-2026.9.21.13 typing-inspection-0.4.4 tzdata-2026.5 tzlocal-5.4.5 uri-template-1.3.0 uvicorn-0.54.0 webcolors-25.10.0
+contracts	Install real application dependencies	2026-10-23T11:33:09.2055432Z 
+contracts	Install real application dependencies	2026-10-23T11:33:09.2055695Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+contracts	Install real application dependencies	2026-10-23T11:33:09.2056327Z [notice] To update, run: pip install --upgrade pip
+contracts	Apply reviewed schema to explicitly selected disposable test database	﻿2026-10-23T11:33:09.3334238Z ##[group]Run python -m t44.cli migrate --database "$T44_DATABASE" 2>&1 | tee reports/ci/contracts/migration.log
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3335081Z ^[[36;1mpython -m t44.cli migrate --database "$T44_DATABASE" 2>&1 | tee reports/ci/contracts/migration.log^[[0m
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3398748Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3399097Z env:
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3399292Z   PYTHONPATH: backend
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3400156Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3400454Z   T44_DATABASE: t44_ci
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3400762Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3401020Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3401334Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3401773Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3402203Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3402602Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3403016Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3403403Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.3403728Z ##[endgroup]
+contracts	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:10.4537935Z {"version": 1, "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4", "already_applied": false, "tables": 18, "columns": 226, "defects": [], "passed": true}
+contracts	Run contract, integration and fault tests against real services	﻿2026-10-23T11:33:10.5344382Z ##[group]Run python scripts/ci/run_tests.py contracts 2>&1 | tee reports/ci/contracts/console.log
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5345086Z ^[[36;1mpython scripts/ci/run_tests.py contracts 2>&1 | tee reports/ci/contracts/console.log^[[0m
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5408567Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5408947Z env:
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5409160Z   PYTHONPATH: backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5409898Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5410238Z   T44_DATABASE: t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5410575Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5410859Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5411198Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5411664Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5412133Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5412552Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5413012Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5413438Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:33:10.5413796Z ##[endgroup]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3913936Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3914842Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3915621Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3916624Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3917222Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3917796Z collected 362 items / 298 deselected / 64 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3918257Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3918706Z backend/contracts/985_mysql_http.py .....                                [  7%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3920077Z backend/contracts/986_http.py .......................................... [ 73%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3920965Z .............                                                            [ 93%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3921875Z backend/contracts/987_faults.py ....                                     [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3922479Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3922786Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3923985Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3926129Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3927807Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3928295Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3928647Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3929884Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/contract.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3930918Z ================ 64 passed, 298 deselected, 1 warning in 26.27s ================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3931643Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3932306Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3933010Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3933605Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3933962Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3934322Z collected 362 items / 306 deselected / 56 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3934681Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3935027Z backend/contracts/985_mysql_http.py .....                                [  8%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3935894Z backend/messaging/976_process_mysql.py .                                 [ 10%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3936750Z backend/messaging/977_rabbit.py ...                                      [ 16%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3937596Z backend/messaging/979_facade.py ......                                   [ 26%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3938782Z backend/messaging/980_delivery.py ....                                   [ 33%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3940712Z backend/persistence/988_mysql.py ...............                         [ 60%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3941593Z backend/scheduling/974_application.py ......................             [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3942143Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3942415Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3943373Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3945119Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3946833Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3947350Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3947696Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3948780Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/integration.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3949922Z ================ 56 passed, 306 deselected, 1 warning in 35.00s ================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3950627Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3951545Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3952223Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3952805Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3953188Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3953605Z collected 362 items / 355 deselected / 7 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3953952Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3954287Z backend/contracts/987_faults.py ....                                     [ 57%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3955146Z backend/messaging/976_process_mysql.py .                                 [ 71%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3956000Z backend/messaging/977_rabbit.py ..                                       [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3956494Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3956725Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3957570Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3959333Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3961220Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3961689Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3962023Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3963030Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/fault.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T11:34:19.3963951Z ================= 7 passed, 355 deselected, 1 warning in 4.73s =================
+contracts	Preserve real dependency logs	﻿2026-10-23T11:34:19.4049334Z ##[group]Run docker logs "$MYSQL_SERVICE_ID" > reports/ci/contracts/mysql.log 2>&1
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4050237Z ^[[36;1mdocker logs "$MYSQL_SERVICE_ID" > reports/ci/contracts/mysql.log 2>&1^[[0m
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4050769Z ^[[36;1mdocker logs "$RABBITMQ_SERVICE_ID" > reports/ci/contracts/rabbitmq.log 2>&1^[[0m
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4113944Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4114341Z env:
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4114548Z   PYTHONPATH: backend
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4115064Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4115372Z   T44_DATABASE: t44_ci
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4115709Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4115992Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4116333Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4116806Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4117321Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4117806Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4118231Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4118661Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4119194Z   MYSQL_SERVICE_ID: 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4120221Z   RABBITMQ_SERVICE_ID: 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Preserve real dependency logs	2026-10-23T11:34:19.4120712Z ##[endgroup]
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	﻿2026-10-23T11:34:19.4590913Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4591376Z with:
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4591651Z   name: contracts-cfd62a9be7f53dc739e305dafe9db48d24b547eb
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4591984Z   path: reports/ci/
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4592198Z   if-no-files-found: error
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4592435Z   retention-days: 14
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4592647Z   compression-level: 6
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4592863Z   overwrite: false
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4593074Z   include-hidden-files: false
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4593306Z   archive: true
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4593502Z env:
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4593682Z   PYTHONPATH: backend
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4594145Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4594412Z   T44_DATABASE: t44_ci
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4594716Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4595173Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4595485Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4595910Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4596355Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4596740Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4597110Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4597487Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.4597830Z ##[endgroup]
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.6122836Z With the provided path, there will be 13 files uploaded
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.6140691Z Artifact name is valid!
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.6141732Z Root directory input is valid!
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.9944167Z Uploading artifact: contracts-cfd62a9be7f53dc739e305dafe9db48d24b547eb.zip
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:19.9985058Z Beginning upload of artifact content to blob storage
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:20.3804165Z Uploaded bytes 16684
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:20.4521877Z Finished uploading artifact content to blob storage!
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:20.4523010Z SHA256 digest of uploaded artifact is 5d0e6cdabd37bb2077438343baf277268362e8acb45d713b0a6ee2ebce1a6b11
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:20.4523757Z Finalizing artifact upload
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:21.1231715Z Artifact contracts-cfd62a9be7f53dc739e305dafe9db48d24b547eb successfully finalized. Artifact ID 12497544374
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:21.1233669Z Artifact contracts-cfd62a9be7f53dc739e305dafe9db48d24b547eb has been successfully uploaded! Final size is 16684 bytes. Artifact ID is 12497544374
+contracts	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:34:21.1236318Z Artifact download URL: https://github.com/HJY147/t44-dev-trace/actions/runs/39946771417/artifacts/12497544374
+contracts	Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T11:34:21.1426015Z Post job cleanup.
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T11:34:21.2724418Z Post job cleanup.
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3616083Z [command]/usr/bin/git version
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3661930Z git version 2.55.0
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3701343Z Temporarily overriding HOME='/home/runner/work/_temp/b0055e6e-3c79-4de1-b1c5-891cc351b22a' before making global git config changes
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3702658Z Adding repository directory to the temporary git global config as a safe directory
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3707865Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3741870Z Removing SSH command configuration
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3748926Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.3796938Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4038184Z Removing HTTP extra header
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4044495Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4081052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4352493Z Removing includeIf entries pointing to credentials config files
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4353673Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+contracts	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:34:21.4421802Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+contracts	Stop containers	﻿2026-10-23T11:34:21.4840524Z Print service container logs: 5f6a7d81b13342e484db9cd110dae083_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_7c1c15
+contracts	Stop containers	2026-10-23T11:34:21.4845627Z ##[command]/usr/bin/docker logs --details 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Stop containers	2026-10-23T11:34:21.4975742Z  2026-10-23T11:32:39.228940Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+contracts	Stop containers	2026-10-23T11:34:21.4977502Z  2026-10-23T11:32:39.230270Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.13) initializing of server in progress as process 80
+contracts	Stop containers	2026-10-23T11:34:21.4978814Z  2026-10-23 11:32:38+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+contracts	Stop containers	2026-10-23T11:34:21.4979983Z  2026-10-23 11:32:39+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+contracts	Stop containers	2026-10-23T11:34:21.4980869Z  2026-10-23 11:32:39+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+contracts	Stop containers	2026-10-23T11:34:21.4981569Z  2026-10-23T11:32:39.230272Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+contracts	Stop containers	2026-10-23T11:34:21.4982212Z  2026-10-23T11:32:39.235142Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+contracts	Stop containers	2026-10-23T11:34:21.4982771Z  2026-10-23T11:32:39.345218Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+contracts	Stop containers	2026-10-23T11:34:21.4983621Z  2026-10-23T11:32:40.089860Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+contracts	Stop containers	2026-10-23T11:34:21.4984476Z  2026-10-23T11:32:41.977684Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+contracts	Stop containers	2026-10-23T11:34:21.4985037Z  2026-10-23T11:32:42.021026Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+contracts	Stop containers	2026-10-23T11:34:21.4985650Z  2026-10-23T11:32:42.213705Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 121
+contracts	Stop containers	2026-10-23T11:34:21.4986294Z  2026-10-23T11:32:42.213710Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+contracts	Stop containers	2026-10-23T11:34:21.4987102Z  2026-10-23T11:32:42.225858Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+contracts	Stop containers	2026-10-23T11:34:21.4987687Z  2026-10-23T11:32:42.369823Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+contracts	Stop containers	2026-10-23T11:34:21.4988398Z  2026-10-23T11:32:42.619349Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+contracts	Stop containers	2026-10-23T11:34:21.4990431Z  2026-10-23T11:32:42.619389Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+contracts	Stop containers	2026-10-23T11:34:21.4992115Z  2026-10-23T11:32:42.621768Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+contracts	Stop containers	2026-10-23T11:34:21.4993212Z  2026-10-23T11:32:42.642702Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+contracts	Stop containers	2026-10-23T11:34:21.4994283Z  2026-10-23T11:32:42.642833Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+contracts	Stop containers	2026-10-23T11:34:21.4995343Z  2026-10-23T11:32:44.429677Z 13 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).
+contracts	Stop containers	2026-10-23T11:34:21.4996218Z  2026-10-23T11:32:45.007262Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.
+contracts	Stop containers	2026-10-23T11:34:21.4996930Z  2026-10-23T11:32:45.007278Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+contracts	Stop containers	2026-10-23T11:34:21.4997421Z  2026-10-23T11:32:45.450783Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+contracts	Stop containers	2026-10-23T11:34:21.4998008Z  2026-10-23T11:32:45.642424Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1
+contracts	Stop containers	2026-10-23T11:34:21.4998650Z  2026-10-23T11:32:45.642428Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+contracts	Stop containers	2026-10-23T11:34:21.4999479Z  2026-10-23T11:32:45.649775Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+contracts	Stop containers	2026-10-23T11:34:21.5000350Z  2026-10-23T11:32:45.778523Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+contracts	Stop containers	2026-10-23T11:34:21.5000926Z  2026-10-23T11:32:45.985305Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+contracts	Stop containers	2026-10-23T11:34:21.5001780Z  2026-10-23T11:32:45.985347Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+contracts	Stop containers	2026-10-23T11:34:21.5003186Z  2026-10-23T11:32:45.987894Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+contracts	Stop containers	2026-10-23T11:34:21.5004374Z  2026-10-23T11:32:46.015152Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+contracts	Stop containers	2026-10-23T11:34:21.5005507Z  2026-10-23T11:32:46.015239Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+contracts	Stop containers	2026-10-23T11:34:21.5006364Z  2026-10-23 11:32:39+00:00 [Note] [Entrypoint]: Initializing database files
+contracts	Stop containers	2026-10-23T11:34:21.5006807Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Database files initialized
+contracts	Stop containers	2026-10-23T11:34:21.5007240Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Starting temporary server
+contracts	Stop containers	2026-10-23T11:34:21.5007662Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Temporary server started.
+contracts	Stop containers	2026-10-23T11:34:21.5008074Z  '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+contracts	Stop containers	2026-10-23T11:34:21.5008481Z  2026-10-23 11:32:44+00:00 [Note] [Entrypoint]: Creating database t44_ci
+contracts	Stop containers	2026-10-23T11:34:21.5008886Z  2026-10-23 11:32:44+00:00 [Note] [Entrypoint]: Creating user t44
+contracts	Stop containers	2026-10-23T11:34:21.5009319Z  2026-10-23 11:32:44+00:00 [Note] [Entrypoint]: Giving user t44 access to schema t44_ci
+contracts	Stop containers	2026-10-23T11:34:21.5009955Z  
+contracts	Stop containers	2026-10-23T11:34:21.5010279Z  2026-10-23 11:32:44+00:00 [Note] [Entrypoint]: Stopping temporary server
+contracts	Stop containers	2026-10-23T11:34:21.5010727Z  2026-10-23 11:32:45+00:00 [Note] [Entrypoint]: Temporary server stopped
+contracts	Stop containers	2026-10-23T11:34:21.5011063Z  
+contracts	Stop containers	2026-10-23T11:34:21.5011384Z  2026-10-23 11:32:45+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+contracts	Stop containers	2026-10-23T11:34:21.5011778Z  
+contracts	Stop containers	2026-10-23T11:34:21.5017302Z Stop and remove container: 5f6a7d81b13342e484db9cd110dae083_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_7c1c15
+contracts	Stop containers	2026-10-23T11:34:21.5022738Z ##[command]/usr/bin/docker rm --force 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Stop containers	2026-10-23T11:34:21.6447488Z 9adee114c1803639abaf12406035cec101ac87c5f16a6243d31adc0ac65f5e32
+contracts	Stop containers	2026-10-23T11:34:21.6470043Z Print service container logs: 49b3a793f51345c5a9d7d2a88da6c337_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_3946da
+contracts	Stop containers	2026-10-23T11:34:21.6471592Z ##[command]/usr/bin/docker logs --details 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Stop containers	2026-10-23T11:34:21.6606757Z  2026-10-23 11:32:45.173410+00:00 [notice] <0.500.0> Application syslog exited with reason: stopped
+contracts	Stop containers	2026-10-23T11:34:21.6615451Z  2026-10-23 11:32:45.178661+00:00 [notice] <0.209.0> Logging: switching to configured handler(s); following messages may not be visible in this log output
+contracts	Stop containers	2026-10-23T11:34:21.6630879Z  ^[[38;5;87m2026-10-23 11:32:45.179176+00:00 [notice] <0.209.0> Logging: configured log handlers are now ACTIVE^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6632479Z  2026-10-23 11:32:45.185215+00:00 [info] <0.209.0> ra: starting system coordination^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6634014Z  2026-10-23 11:32:45.185327+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/coordination/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6635279Z  2026-10-23 11:32:45.191808+00:00 [info] <0.506.0> ra_coordination_log_ets: in system coordination initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,false}]^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6636580Z  2026-10-23 11:32:45.236313+00:00 [info] <0.512.0> ra system 'coordination' running pre init for 0 registered servers^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6637333Z  2026-10-23 11:32:45.239679+00:00 [info] <0.513.0> ra: meta data store initialised for system coordination. 0 record(s) recovered^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6638507Z  2026-10-23 11:32:45.243384+00:00 [info] <0.517.0> segment_writer: upgrading segment file names to new format in dirctory /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/coordination/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6639536Z  ^[[38;5;87m2026-10-23 11:32:45.252910+00:00 [notice] <0.519.0> WAL in coordination initialising with name ra_coordination_log_wal^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6640583Z  2026-10-23 11:32:45.260992+00:00 [info] <0.209.0> ra: starting system quorum_queues^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6641403Z  2026-10-23 11:32:45.261063+00:00 [info] <0.209.0> starting Ra system: quorum_queues in directory: /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/quorum/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6642478Z  2026-10-23 11:32:45.261587+00:00 [info] <0.523.0> ra_log_ets: in system quorum_queues initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,true}]^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6643370Z  2026-10-23 11:32:45.262299+00:00 [info] <0.527.0> ra system 'quorum_queues' running pre init for 0 registered servers^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6644138Z  2026-10-23 11:32:45.262933+00:00 [info] <0.528.0> ra: meta data store initialised for system quorum_queues. 0 record(s) recovered^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6645134Z  2026-10-23 11:32:45.263186+00:00 [info] <0.532.0> segment_writer: upgrading segment file names to new format in dirctory /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/quorum/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6646090Z  ^[[38;5;87m2026-10-23 11:32:45.263818+00:00 [notice] <0.534.0> WAL in quorum_queues initialising with name ra_log_wal^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6646920Z  2026-10-23 11:32:45.265732+00:00 [info] <0.536.0> ra_system_recover: ra system 'quorum_queues' server recovery strategy rabbit_quorum_queue:system_recover^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6647813Z  2026-10-23 11:32:45.265841+00:00 [info] <0.536.0> [rabbit_quorum_queue:system_recover/1] rabbit not booted, skipping queue recovery^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6648485Z  2026-10-23 11:32:45.266019+00:00 [info] <0.209.0> ra: starting system coordination^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6649302Z  2026-10-23 11:32:45.266057+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/coordination/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6650557Z  ^[[38;5;87m2026-10-23 11:32:45.382776+00:00 [notice] <0.538.0> RabbitMQ metadata store: candidate -> leader in term: 1 machine version: 4, last applied 0^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6651211Z  2026-10-23 11:32:45.386992+00:00 [info] <0.209.0> ^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6651657Z  2026-10-23 11:32:45.386992+00:00 [info] <0.209.0>  Starting RabbitMQ 4.4.0 on Erlang 29.1.2 [jit]^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6652284Z  2026-10-23 11:32:45.386992+00:00 [info] <0.209.0>  Copyright (c) 2007-2026 Broadcom Inc and/or its subsidiaries^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6653003Z  2026-10-23 11:32:45.386992+00:00 [info] <0.209.0>  Licensed under the MPL 2.0. Website: https://rabbitmq.com^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6653492Z  
+contracts	Stop containers	2026-10-23T11:34:21.6653683Z    ##  ##      RabbitMQ 4.4.0
+contracts	Stop containers	2026-10-23T11:34:21.6653929Z    ##  ##
+contracts	Stop containers	2026-10-23T11:34:21.6654218Z    ##########  Copyright (c) 2007-2026 Broadcom Inc and/or its subsidiaries
+contracts	Stop containers	2026-10-23T11:34:21.6654567Z    ######  ##
+contracts	Stop containers	2026-10-23T11:34:21.6654859Z    ##########  Licensed under the MPL 2.0. Website: https://rabbitmq.com
+contracts	Stop containers	2026-10-23T11:34:21.6655197Z  
+contracts	Stop containers	2026-10-23T11:34:21.6655379Z    Erlang:      29.1.2 [jit]
+contracts	Stop containers	2026-10-23T11:34:21.6655663Z    TLS Library: OpenSSL - OpenSSL 3.5.9 29 Sep 2026
+contracts	Stop containers	2026-10-23T11:34:21.6656127Z    Release series support status: see https://www.rabbitmq.com/release-information
+contracts	Stop containers	2026-10-23T11:34:21.6656696Z  
+contracts	Stop containers	2026-10-23T11:34:21.6656914Z    Doc guides:  https://www.rabbitmq.com/docs
+contracts	Stop containers	2026-10-23T11:34:21.6657261Z    Support:     https://www.rabbitmq.com/docs/contact
+contracts	Stop containers	2026-10-23T11:34:21.6657618Z    Tutorials:   https://www.rabbitmq.com/tutorials
+contracts	Stop containers	2026-10-23T11:34:21.6657983Z    Monitoring:  https://www.rabbitmq.com/docs/monitoring
+contracts	Stop containers	2026-10-23T11:34:21.6658363Z    Upgrading:   https://www.rabbitmq.com/docs/upgrade
+contracts	Stop containers	2026-10-23T11:34:21.6658773Z  
+contracts	Stop containers	2026-10-23T11:34:21.6658950Z    Logs: <stdout>
+contracts	Stop containers	2026-10-23T11:34:21.6659167Z  
+contracts	Stop containers	2026-10-23T11:34:21.6659400Z    Config file(s): /etc/rabbitmq/conf.d/10-defaults.conf
+contracts	Stop containers	2026-10-23T11:34:21.6660074Z  
+contracts	Stop containers	2026-10-23T11:34:21.6660374Z    Starting broker...2026-10-23 11:32:45.388589+00:00 [info] <0.209.0> ^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6660885Z  2026-10-23 11:32:45.388589+00:00 [info] <0.209.0>  node           : rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6661395Z  2026-10-23 11:32:45.388589+00:00 [info] <0.209.0>  home dir       : /var/lib/rabbitmq^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6661964Z  2026-10-23 11:32:45.388589+00:00 [info] <0.209.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6662510Z  2026-10-23 11:32:45.388589+00:00 [info] <0.209.0>  log(s)         : <stdout>^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6663051Z  2026-10-23 11:32:45.388589+00:00 [info] <0.209.0>  data dir       : /var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6663746Z  ^[[38;5;87m2026-10-23 11:32:45.533769+00:00 [notice] <0.541.0> Feature flags: attempt to enable `detailed_queues_endpoint`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6664457Z  ^[[38;5;87m2026-10-23 11:32:45.541666+00:00 [notice] <0.541.0> Feature flags: `detailed_queues_endpoint` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6665103Z  ^[[38;5;87m2026-10-23 11:32:45.541719+00:00 [notice] <0.541.0> Feature flags: attempt to enable `khepri_db`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6665706Z  ^[[38;5;87m2026-10-23 11:32:45.597541+00:00 [notice] <0.541.0> Feature flags: `khepri_db` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6666372Z  ^[[38;5;87m2026-10-23 11:32:45.597608+00:00 [notice] <0.541.0> Feature flags: attempt to enable `message_containers_deaths_v2`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6667106Z  ^[[38;5;87m2026-10-23 11:32:45.608700+00:00 [notice] <0.541.0> Feature flags: `message_containers_deaths_v2` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6667816Z  ^[[38;5;87m2026-10-23 11:32:45.608765+00:00 [notice] <0.541.0> Feature flags: attempt to enable `quorum_queue_non_voters`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6668504Z  ^[[38;5;87m2026-10-23 11:32:45.618999+00:00 [notice] <0.541.0> Feature flags: `quorum_queue_non_voters` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6669243Z  ^[[38;5;87m2026-10-23 11:32:45.619068+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbit_exchange_type_local_random`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6670353Z  ^[[38;5;87m2026-10-23 11:32:45.628372+00:00 [notice] <0.541.0> Feature flags: `rabbit_exchange_type_local_random` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6671055Z  ^[[38;5;87m2026-10-23 11:32:45.628440+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.0.0`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6671694Z  ^[[38;5;87m2026-10-23 11:32:45.638145+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.0.0` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6672325Z  ^[[38;5;87m2026-10-23 11:32:45.638209+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.1.0`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6672955Z  ^[[38;5;87m2026-10-23 11:32:45.649457+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.1.0` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6673594Z  ^[[38;5;87m2026-10-23 11:32:45.649511+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.2.0`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6674224Z  ^[[38;5;87m2026-10-23 11:32:45.659899+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.2.0` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6674823Z  2026-10-23 11:32:45.663805+00:00 [info] <0.209.0> Running boot step pre_boot defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6675463Z  2026-10-23 11:32:45.663861+00:00 [info] <0.209.0> Running boot step rabbit_global_counters defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6676143Z  2026-10-23 11:32:45.664347+00:00 [info] <0.209.0> Running boot step rabbit_osiris_metrics defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6676956Z  2026-10-23 11:32:45.664487+00:00 [info] <0.209.0> Running boot step rabbit_core_metrics defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6677582Z  2026-10-23 11:32:45.665091+00:00 [info] <0.209.0> Running boot step worker_pool defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6678168Z  2026-10-23 11:32:45.665199+00:00 [info] <0.540.0> Will use 4 processes for default worker pool^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6678891Z  2026-10-23 11:32:45.665299+00:00 [info] <0.540.0> Starting worker pool 'worker_pool' with 4 processes in it^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6679532Z  2026-10-23 11:32:45.672949+00:00 [info] <0.209.0> Running boot step rabbit_registry defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6680381Z  2026-10-23 11:32:45.673121+00:00 [info] <0.209.0> Running boot step database defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6681069Z  2026-10-23 11:32:45.673580+00:00 [info] <0.209.0> Peer discovery: configured backend: rabbit_peer_discovery_classic_config^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6681989Z  2026-10-23 11:32:45.673861+00:00 [info] <0.541.0> Feature flags: starting an unclustered node for the first time: all stable feature flags will be enabled by default^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6682896Z  ^[[38;5;87m2026-10-23 11:32:45.674215+00:00 [notice] <0.541.0> Feature flags: attempt to enable `topic_binding_projection_v4`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6683627Z  ^[[38;5;87m2026-10-23 11:32:45.679367+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.3.0`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6684270Z  ^[[38;5;87m2026-10-23 11:32:45.689913+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.3.0` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6684909Z  ^[[38;5;87m2026-10-23 11:32:45.886489+00:00 [notice] <0.541.0> Feature flags: `topic_binding_projection_v4` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6685629Z  ^[[38;5;87m2026-10-23 11:32:45.886608+00:00 [notice] <0.541.0> Feature flags: attempt to enable `topic_binding_projection_v5`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6686352Z  ^[[38;5;87m2026-10-23 11:32:45.900953+00:00 [notice] <0.541.0> Feature flags: `topic_binding_projection_v5` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6687141Z  ^[[38;5;87m2026-10-23 11:32:45.901052+00:00 [notice] <0.541.0> Feature flags: attempt to enable `tie_binding_to_dest_with_keep_while_cond`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6687943Z  ^[[38;5;87m2026-10-23 11:32:45.935580+00:00 [notice] <0.541.0> Feature flags: `tie_binding_to_dest_with_keep_while_cond` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6688658Z  ^[[38;5;87m2026-10-23 11:32:45.935626+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.4.0`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6689283Z  ^[[38;5;87m2026-10-23 11:32:45.943435+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.4.0` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6690129Z  ^[[38;5;87m2026-10-23 11:32:45.943481+00:00 [notice] <0.541.0> Feature flags: attempt to enable `track_qq_members_uids`...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6690829Z  ^[[38;5;87m2026-10-23 11:32:45.953131+00:00 [notice] <0.541.0> Feature flags: `track_qq_members_uids` enabled^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6691427Z  2026-10-23 11:32:45.953336+00:00 [info] <0.209.0> DB: virgin node -> run peer discovery^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6692145Z  ^[[38;5;214m2026-10-23 11:32:45.953725+00:00 [warning] <0.209.0> Classic peer discovery backend: list of nodes does not contain the local node []^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6692980Z  ^[[38;5;87m2026-10-23 11:32:45.953820+00:00 [notice] <0.209.0> Found the following metadata store members: [{rabbitmq_metadata,^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6693693Z  ^[[38;5;87m2026-10-23 11:32:45.953820+00:00 [notice] <0.209.0>                                               rabbit@45c9915cdcc4}]^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6694372Z  2026-10-23 11:32:45.972675+00:00 [info] <0.209.0> Running boot step tracking_metadata_store defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6695091Z  2026-10-23 11:32:45.972816+00:00 [info] <0.799.0> Setting up a table for connection tracking on this node: tracked_connection^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6695919Z  2026-10-23 11:32:45.972897+00:00 [info] <0.799.0> Setting up a table for per-vhost connection counting on this node: tracked_connection_per_vhost^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6696948Z  2026-10-23 11:32:45.972996+00:00 [info] <0.799.0> Setting up a table for per-user connection counting on this node: tracked_connection_per_user^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6697742Z  2026-10-23 11:32:45.973077+00:00 [info] <0.799.0> Setting up a table for channel tracking on this node: tracked_channel^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6698593Z  2026-10-23 11:32:45.973125+00:00 [info] <0.799.0> Setting up a table for channel tracking on this node: tracked_channel_per_user^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6699337Z  2026-10-23 11:32:45.973209+00:00 [info] <0.209.0> Running boot step networking_metadata_store defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6700278Z  2026-10-23 11:32:45.973274+00:00 [info] <0.209.0> Running boot step feature_flags defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6700901Z  2026-10-23 11:32:45.973612+00:00 [info] <0.209.0> Running boot step rabbit_alarm defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6701648Z  2026-10-23 11:32:45.982168+00:00 [info] <0.804.0> Memory high watermark set to 9593 MiB (10059848908 bytes) of 15989 MiB (16766414848 bytes) total^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6702514Z  2026-10-23 11:32:45.984659+00:00 [info] <0.806.0> Enabling free disk space monitoring (disk free space: 90846343168, total memory: 16766414848)^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6703191Z  2026-10-23 11:32:45.984705+00:00 [info] <0.806.0> Disk free limit set to 50MB^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6703785Z  2026-10-23 11:32:45.986209+00:00 [info] <0.209.0> Running boot step auth_backend_plugins_check defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6704480Z  2026-10-23 11:32:45.986270+00:00 [info] <0.209.0> Running boot step codec_correctness_check defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6705168Z  2026-10-23 11:32:45.986308+00:00 [info] <0.209.0> Running boot step external_infrastructure defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6705812Z  2026-10-23 11:32:45.986362+00:00 [info] <0.209.0> Running boot step rabbit_event defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6706498Z  2026-10-23 11:32:45.986509+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_amqplain defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6707241Z  2026-10-23 11:32:45.986619+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_anonymous defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6707966Z  2026-10-23 11:32:45.986738+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_cr_demo defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6708688Z  2026-10-23 11:32:45.986829+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_plain defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6709402Z  2026-10-23 11:32:45.986868+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_direct defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6710322Z  2026-10-23 11:32:45.986919+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_fanout defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6711042Z  2026-10-23 11:32:45.986991+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_headers defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6711776Z  2026-10-23 11:32:45.987059+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_local_random defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6712520Z  2026-10-23 11:32:45.987092+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_modulus_hash defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6713248Z  2026-10-23 11:32:45.987126+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_topic defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6713938Z  2026-10-23 11:32:45.987152+00:00 [info] <0.209.0> Running boot step rabbit_priority_queue defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6714606Z  2026-10-23 11:32:45.987220+00:00 [info] <0.209.0> Priority queues enabled, real BQ is rabbit_variable_queue^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6715244Z  2026-10-23 11:32:45.987276+00:00 [info] <0.209.0> Running boot step kernel_ready defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6715906Z  2026-10-23 11:32:45.987313+00:00 [info] <0.209.0> Running boot step pg_local_amqp091_connection defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6716756Z  2026-10-23 11:32:45.997712+00:00 [info] <0.209.0> Running boot step pg_local_non_amqp_connection defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6717457Z  2026-10-23 11:32:45.997945+00:00 [info] <0.209.0> Running boot step pg_local_amqp091_channel defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6718244Z  2026-10-23 11:32:45.998180+00:00 [info] <0.209.0> Running boot step pg_local_amqp_connection defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6718917Z  2026-10-23 11:32:45.998280+00:00 [info] <0.209.0> Running boot step pg_local_amqp_session defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6719582Z  2026-10-23 11:32:45.998365+00:00 [info] <0.209.0> Running boot step rabbit_sysmon_minder defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6720453Z  2026-10-23 11:32:45.998534+00:00 [info] <0.209.0> Running boot step rabbit_epmd_monitor defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6721201Z  2026-10-23 11:32:45.999336+00:00 [info] <0.817.0> epmd monitor knows us, inter-node communication (distribution) port: 25672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6721927Z  2026-10-23 11:32:45.999439+00:00 [info] <0.209.0> Running boot step guid_generator defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6722564Z  2026-10-23 11:32:46.000316+00:00 [info] <0.209.0> Running boot step rabbit_node_monitor defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6723144Z  2026-10-23 11:32:46.000460+00:00 [info] <0.821.0> Starting rabbit_node_monitor^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6723680Z  2026-10-23 11:32:46.000577+00:00 [info] <0.209.0> Running boot step delegate_sup defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6724285Z  2026-10-23 11:32:46.001131+00:00 [info] <0.209.0> Running boot step rabbit_chaos defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6724924Z  2026-10-23 11:32:46.001247+00:00 [info] <0.209.0> Running boot step rabbit_fifo_dlx_sup defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6725567Z  2026-10-23 11:32:46.001322+00:00 [info] <0.209.0> Running boot step core_initialized defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6726252Z  2026-10-23 11:32:46.001363+00:00 [info] <0.209.0> Running boot step rabbit_channel_tracking_handler defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6726972Z  2026-10-23 11:32:46.001430+00:00 [info] <0.209.0> Running boot step rabbit_classic_queue_type defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6727641Z  2026-10-23 11:32:46.001521+00:00 [info] <0.209.0> Running boot step rabbit_classic_queue defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6728353Z  2026-10-23 11:32:46.001631+00:00 [info] <0.209.0> Running boot step rabbit_connection_tracking_handler defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6729087Z  2026-10-23 11:32:46.001691+00:00 [info] <0.209.0> Running boot step rabbit_definitions_hashing defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6730027Z  2026-10-23 11:32:46.001772+00:00 [info] <0.209.0> Running boot step rabbit_exchange_parameters defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6730725Z  2026-10-23 11:32:46.002381+00:00 [info] <0.209.0> Running boot step rabbit_policies defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6731387Z  2026-10-23 11:32:46.002806+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue_type defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6732059Z  2026-10-23 11:32:46.002877+00:00 [info] <0.209.0> Running boot step rabbit_stream_queue defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6732702Z  2026-10-23 11:32:46.002913+00:00 [info] <0.209.0> Running boot step rabbit_policy defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6733379Z  2026-10-23 11:32:46.003008+00:00 [info] <0.209.0> Running boot step rabbit_quorum_event_subscriber defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6734068Z  2026-10-23 11:32:46.003053+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6734752Z  2026-10-23 11:32:46.003517+00:00 [info] <0.209.0> Running boot step quorum_memory_alarm_handler defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6735458Z  2026-10-23 11:32:46.003573+00:00 [info] <0.209.0> Running boot step rabbit_stream_coordinator defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6736266Z  2026-10-23 11:32:46.003814+00:00 [info] <0.209.0> Running boot step rabbit_vhost_limit defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6736988Z  2026-10-23 11:32:46.003902+00:00 [info] <0.209.0> Running boot step rabbit_mgmt_reset_handler defined by app rabbitmq_management^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6737785Z  2026-10-23 11:32:46.004010+00:00 [info] <0.209.0> Running boot step rabbit_mgmt_db_handler defined by app rabbitmq_management_agent^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6738580Z  2026-10-23 11:32:46.004074+00:00 [info] <0.209.0> Management plugin: using rates mode 'basic'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6739163Z  2026-10-23 11:32:46.004343+00:00 [info] <0.209.0> Running boot step recovery defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6740107Z  2026-10-23 11:32:46.004451+00:00 [info] <0.209.0> Running boot step channel_interceptor_priorities_check defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6740863Z  2026-10-23 11:32:46.004504+00:00 [info] <0.209.0> Running boot step rabbit_sole_conn defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6741510Z  2026-10-23 11:32:46.004669+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6742175Z  2026-10-23 11:32:46.004771+00:00 [info] <0.209.0> Running boot step rabbit_core_metrics_gc defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6742829Z  2026-10-23 11:32:46.004892+00:00 [info] <0.209.0> Running boot step background_gc defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6743515Z  2026-10-23 11:32:46.005085+00:00 [info] <0.209.0> Running boot step prevent_startup_if_node_was_reset defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6744201Z  2026-10-23 11:32:46.005134+00:00 [info] <0.209.0> Running boot step empty_db_check defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6744802Z  2026-10-23 11:32:46.005224+00:00 [info] <0.209.0> Will seed default virtual host and user...^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6745435Z  2026-10-23 11:32:46.005347+00:00 [info] <0.209.0> Adding vhost 't44_ci' (description: 'Default virtual host', tags: [])^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6746430Z  2026-10-23 11:32:46.009733+00:00 [info] <0.854.0> Making sure data directory '/var/lib/rabbitmq/mnesia/rabbit@45c9915cdcc4/msg_stores/vhosts/895RF1EH56U76MPBARYQ1FBEX' for vhost 't44_ci' exists^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6747434Z  2026-10-23 11:32:46.010624+00:00 [info] <0.854.0> Setting segment_entry_count for vhost 't44_ci' with 0 queues to '2048'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6748094Z  2026-10-23 11:32:46.019835+00:00 [info] <0.854.0> Starting message stores for vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6748699Z  2026-10-23 11:32:46.021087+00:00 [info] <0.854.0> Started message store of type transient for vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6749525Z  ^[[38;5;214m2026-10-23 11:32:46.041724+00:00 [warning] <0.866.0> Message store "895RF1EH56U76MPBARYQ1FBEX/msg_store_persistent": rebuilding indices from scratch^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6750503Z  2026-10-23 11:32:46.042601+00:00 [info] <0.854.0> Started message store of type persistent for vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6751163Z  2026-10-23 11:32:46.042753+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_classic_queue took 28ms^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6751798Z  2026-10-23 11:32:46.042810+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_quorum_queue took 0ms^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6752428Z  2026-10-23 11:32:46.042866+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_stream_queue took 0ms^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6752964Z  2026-10-23 11:32:46.043642+00:00 [info] <0.209.0> Created user 't44'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6753527Z  2026-10-23 11:32:46.058184+00:00 [info] <0.209.0> Successfully set user tags for user 't44' to [<<"administrator">>]^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6754293Z  2026-10-23 11:32:46.065279+00:00 [info] <0.209.0> Successfully set permissions for user 't44' in virtual host 't44_ci' to '.*', '.*', '.*'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6755100Z  2026-10-23 11:32:46.065364+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli_classic_queues defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6755991Z  2026-10-23 11:32:46.065427+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli_quorum_queues defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6756672Z  2026-10-23 11:32:46.065506+00:00 [info] <0.209.0> Running boot step routing_ready defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6757288Z  2026-10-23 11:32:46.065553+00:00 [info] <0.209.0> Running boot step pre_flight defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6758017Z  2026-10-23 11:32:46.065606+00:00 [info] <0.209.0> Running boot step direct_client defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6758640Z  2026-10-23 11:32:46.065766+00:00 [info] <0.209.0> Running boot step cluster_tags defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6759371Z  2026-10-23 11:32:46.066361+00:00 [info] <0.209.0> Running boot step rabbit_management_load_definitions defined by app rabbitmq_management^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6760234Z  2026-10-23 11:32:46.066396+00:00 [info] <0.209.0> Running boot step notify_cluster defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6760854Z  2026-10-23 11:32:46.066460+00:00 [info] <0.209.0> Running boot step networking defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6761599Z  2026-10-23 11:32:46.066528+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue_periodic_membership_reconciliation defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6762418Z  2026-10-23 11:32:46.066723+00:00 [info] <0.209.0> Running boot step definition_import_worker_pool defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6763153Z  2026-10-23 11:32:46.066793+00:00 [info] <0.540.0> Starting worker pool 'definition_import_pool' with 4 processes in it^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6763822Z  2026-10-23 11:32:46.067234+00:00 [info] <0.209.0> Running boot step cluster_name defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6764555Z  2026-10-23 11:32:46.067346+00:00 [info] <0.209.0> Initialising internal cluster ID to 'rabbitmq-cluster-id-9oct1Z-YGas2sX70vgNbpQ'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6765348Z  2026-10-23 11:32:46.067866+00:00 [info] <0.209.0> Running boot step virtual_host_reconciliation defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6766027Z  2026-10-23 11:32:46.068009+00:00 [info] <0.209.0> Running boot step logger_exchange defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6766702Z  2026-10-23 11:32:46.068090+00:00 [info] <0.209.0> Running boot step queue_type_registrations defined by app rabbit^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6767315Z  2026-10-23 11:32:46.068189+00:00 [info] <0.893.0> Resetting node maintenance status^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6768135Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0> Deprecated features: `management_metrics_collection`: Feature `management_metrics_collection` is deprecated.^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6769043Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0> By default, this feature can still be used for now.^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6770290Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0> Its use will not be permitted by default in a future minor RabbitMQ version and the feature will be removed from a future major RabbitMQ version; actual versions to be determined.^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6771648Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0> To continue using this feature when it is not permitted by default, set the following parameter in your configuration:^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6772628Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0>     "deprecated_features.permit.management_metrics_collection = true"^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6773473Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0> To test RabbitMQ as if the feature was removed, set this in your configuration:^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6774321Z  ^[[38;5;214m2026-10-23 11:32:46.077271+00:00 [warning] <0.913.0>     "deprecated_features.permit.management_metrics_collection = false"^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6775087Z  2026-10-23 11:32:46.102300+00:00 [info] <0.949.0> Prometheus metrics: HTTP (non-TLS) listener started on port 15692^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6775789Z  2026-10-23 11:32:46.106249+00:00 [info] <0.977.0> Management plugin: HTTP (non-TLS) listener started on port 15672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6776587Z  2026-10-23 11:32:46.106419+00:00 [info] <0.1005.0> Statistics database started.^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6777193Z  2026-10-23 11:32:46.106503+00:00 [info] <0.1004.0> Starting worker pool 'management_worker_pool' with 3 processes in it^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6777841Z  2026-10-23 11:32:46.106846+00:00 [info] <0.893.0> Ready to start client connection listeners^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6778490Z  2026-10-23 11:32:46.108261+00:00 [info] <0.1029.0> started TCP listener on [::]:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6778892Z   completed with 4 plugins.
+contracts	Stop containers	2026-10-23T11:34:21.6779277Z  2026-10-23 11:32:46.195200+00:00 [info] <0.893.0> Server startup complete; 4 plugins started.^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6779950Z  2026-10-23 11:32:46.195200+00:00 [info] <0.893.0>  * rabbitmq_management^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6780399Z  2026-10-23 11:32:46.195200+00:00 [info] <0.893.0>  * rabbitmq_prometheus^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6780864Z  2026-10-23 11:32:46.195200+00:00 [info] <0.893.0>  * rabbitmq_management_agent^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6781332Z  2026-10-23 11:32:46.195200+00:00 [info] <0.893.0>  * rabbitmq_web_dispatch^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6781800Z  2026-10-23 11:32:46.268955+00:00 [info] <0.10.0> Time to start RabbitMQ: 3519 ms^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6782371Z  2026-10-23 11:33:44.238855+00:00 [info] <0.1047.0> accepting AMQP connection 172.18.0.1:39290 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6782982Z  2026-10-23 11:33:44.240253+00:00 [info] <0.1047.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6783719Z  2026-10-23 11:33:44.241076+00:00 [info] <0.1047.0> connection 172.18.0.1:39290 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6784515Z  2026-10-23 11:33:44.331912+00:00 [info] <0.1068.0> accepting AMQP connection 172.18.0.1:39300 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6785114Z  2026-10-23 11:33:44.333228+00:00 [info] <0.1068.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6785849Z  2026-10-23 11:33:44.333953+00:00 [info] <0.1068.0> connection 172.18.0.1:39300 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6786780Z  2026-10-23 11:33:44.347414+00:00 [info] <0.1068.0> closing AMQP connection (172.18.0.1:39300 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '16ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6787604Z  2026-10-23 11:33:44.348842+00:00 [info] <0.1086.0> accepting AMQP connection 172.18.0.1:39312 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6788194Z  2026-10-23 11:33:44.349994+00:00 [info] <0.1086.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6788925Z  2026-10-23 11:33:44.350602+00:00 [info] <0.1086.0> connection 172.18.0.1:39312 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6789969Z  2026-10-23 11:33:44.364397+00:00 [info] <0.1047.0> closing AMQP connection (172.18.0.1:39290 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '126ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6790769Z  2026-10-23 11:33:44.367644+00:00 [info] <0.1104.0> accepting AMQP connection 172.18.0.1:39328 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6791367Z  2026-10-23 11:33:44.368750+00:00 [info] <0.1104.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6792089Z  2026-10-23 11:33:44.369395+00:00 [info] <0.1104.0> connection 172.18.0.1:39328 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6793010Z  2026-10-23 11:33:44.383663+00:00 [info] <0.1086.0> closing AMQP connection (172.18.0.1:39312 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '35ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6793924Z  2026-10-23 11:33:44.411637+00:00 [info] <0.1104.0> closing AMQP connection (172.18.0.1:39328 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '44ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6794708Z  2026-10-23 11:33:44.463831+00:00 [info] <0.1132.0> accepting AMQP connection 172.18.0.1:39332 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6795448Z  2026-10-23 11:33:44.465191+00:00 [info] <0.1132.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6796177Z  2026-10-23 11:33:44.465909+00:00 [info] <0.1132.0> connection 172.18.0.1:39332 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6797101Z  2026-10-23 11:33:44.521957+00:00 [info] <0.1132.0> closing AMQP connection (172.18.0.1:39332 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '58ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6798000Z  2026-10-23 11:33:44.533068+00:00 [info] <0.1158.0> accepting AMQP connection 172.18.0.1:39340 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6798634Z  2026-10-23 11:33:44.534321+00:00 [info] <0.1158.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6800065Z  2026-10-23 11:33:44.534990+00:00 [info] <0.1158.0> connection 172.18.0.1:39340 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6801438Z  2026-10-23 11:33:44.543027+00:00 [info] <0.1172.0> accepting AMQP connection 172.18.0.1:39346 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6802347Z  2026-10-23 11:33:44.544023+00:00 [info] <0.1172.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6803578Z  2026-10-23 11:33:44.544675+00:00 [info] <0.1172.0> connection 172.18.0.1:39346 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6805156Z  2026-10-23 11:33:44.580671+00:00 [info] <0.1172.0> closing AMQP connection (172.18.0.1:39346 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '37ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6806783Z  2026-10-23 11:33:44.592000+00:00 [info] <0.1158.0> closing AMQP connection (172.18.0.1:39340 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '58ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6808228Z  2026-10-23 11:33:44.642908+00:00 [info] <0.1196.0> accepting AMQP connection 172.18.0.1:39348 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6809344Z  2026-10-23 11:33:44.644242+00:00 [info] <0.1196.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6811012Z  2026-10-23 11:33:44.644930+00:00 [info] <0.1196.0> connection 172.18.0.1:39348 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6812441Z  2026-10-23 11:33:44.656341+00:00 [info] <0.1216.0> accepting AMQP connection 172.18.0.1:39354 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6813492Z  2026-10-23 11:33:44.657503+00:00 [info] <0.1216.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6814780Z  2026-10-23 11:33:44.658144+00:00 [info] <0.1216.0> connection 172.18.0.1:39354 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6816368Z  2026-10-23 11:33:44.686320+00:00 [info] <0.1216.0> closing AMQP connection (172.18.0.1:39354 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '30ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6817994Z  2026-10-23 11:33:44.697603+00:00 [info] <0.1196.0> closing AMQP connection (172.18.0.1:39348 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '55ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6819426Z  2026-10-23 11:34:18.770900+00:00 [info] <0.1252.0> accepting AMQP connection 172.18.0.1:47878 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6820767Z  2026-10-23 11:34:18.772365+00:00 [info] <0.1252.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6822103Z  2026-10-23 11:34:18.773112+00:00 [info] <0.1252.0> connection 172.18.0.1:47878 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6823537Z  2026-10-23 11:34:18.807937+00:00 [info] <0.1272.0> accepting AMQP connection 172.18.0.1:47884 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6824656Z  2026-10-23 11:34:18.809325+00:00 [info] <0.1272.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6826041Z  2026-10-23 11:34:18.810052+00:00 [info] <0.1272.0> connection 172.18.0.1:47884 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6828049Z  2026-10-23 11:34:18.823542+00:00 [info] <0.1272.0> closing AMQP connection (172.18.0.1:47884 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '16ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6830054Z  2026-10-23 11:34:18.825173+00:00 [info] <0.1290.0> accepting AMQP connection 172.18.0.1:47894 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6831240Z  2026-10-23 11:34:18.826503+00:00 [info] <0.1290.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6832862Z  2026-10-23 11:34:18.827192+00:00 [info] <0.1290.0> connection 172.18.0.1:47894 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6834769Z  2026-10-23 11:34:18.841471+00:00 [info] <0.1252.0> closing AMQP connection (172.18.0.1:47878 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '71ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6836248Z  2026-10-23 11:34:18.844648+00:00 [info] <0.1308.0> accepting AMQP connection 172.18.0.1:47904 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6837368Z  2026-10-23 11:34:18.845909+00:00 [info] <0.1308.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6838704Z  2026-10-23 11:34:18.846578+00:00 [info] <0.1308.0> connection 172.18.0.1:47904 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6840647Z  2026-10-23 11:34:18.861651+00:00 [info] <0.1290.0> closing AMQP connection (172.18.0.1:47894 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '36ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6842382Z  2026-10-23 11:34:18.873506+00:00 [info] <0.1308.0> closing AMQP connection (172.18.0.1:47904 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '29ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6843859Z  2026-10-23 11:34:18.927296+00:00 [info] <0.1332.0> accepting AMQP connection 172.18.0.1:47908 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6844967Z  2026-10-23 11:34:18.928616+00:00 [info] <0.1332.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6846327Z  2026-10-23 11:34:18.929301+00:00 [info] <0.1332.0> connection 172.18.0.1:47908 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6848026Z  2026-10-23 11:34:18.954569+00:00 [info] <0.1332.0> closing AMQP connection (172.18.0.1:47908 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '27ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6849534Z  2026-10-23 11:34:18.965706+00:00 [info] <0.1356.0> accepting AMQP connection 172.18.0.1:47922 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6850930Z  2026-10-23 11:34:18.966931+00:00 [info] <0.1356.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6852257Z  2026-10-23 11:34:18.967618+00:00 [info] <0.1356.0> connection 172.18.0.1:47922 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6853727Z  2026-10-23 11:34:18.975650+00:00 [info] <0.1370.0> accepting AMQP connection 172.18.0.1:47936 -> 172.18.0.3:5672^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6854826Z  2026-10-23 11:34:18.976793+00:00 [info] <0.1370.0> User 't44' authenticated successfully^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6856177Z  2026-10-23 11:34:18.977457+00:00 [info] <0.1370.0> connection 172.18.0.1:47936 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6857856Z  2026-10-23 11:34:19.014703+00:00 [info] <0.1370.0> closing AMQP connection (172.18.0.1:47936 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '39ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6859558Z  2026-10-23 11:34:19.026525+00:00 [info] <0.1356.0> closing AMQP connection (172.18.0.1:47922 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '61ms')^[[0m
+contracts	Stop containers	2026-10-23T11:34:21.6862775Z Stop and remove container: 49b3a793f51345c5a9d7d2a88da6c337_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_3946da
+contracts	Stop containers	2026-10-23T11:34:21.6864756Z ##[command]/usr/bin/docker rm --force 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Stop containers	2026-10-23T11:34:21.8449027Z 45c9915cdcc42c71387b73357e8d2131d484a3ce8f33b6acda8853a9e120e31f
+contracts	Stop containers	2026-10-23T11:34:21.8488296Z Remove container network: github_network_28ded81bd528404a9f10f0fbe08642cc
+contracts	Stop containers	2026-10-23T11:34:21.8493063Z ##[command]/usr/bin/docker network rm github_network_28ded81bd528404a9f10f0fbe08642cc
+contracts	Stop containers	2026-10-23T11:34:21.9448333Z github_network_28ded81bd528404a9f10f0fbe08642cc
+contracts	Complete job	﻿2026-10-23T11:34:21.9547984Z Cleaning up orphan processes

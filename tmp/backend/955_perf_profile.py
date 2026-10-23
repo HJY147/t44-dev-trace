@@ -12,11 +12,201 @@ import platform
 import subprocess
 import threading
 import time
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
+from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 from uuid import uuid4
 
 _RECORD = contextvars.ContextVar("profile_record", default=None)
+_URL = "http://127.0.0.1:18083/api/v1"
+
+
+def client_run(args, source_sha):
+    import httpx
+
+    args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
+    started_at = datetime.now(UTC).isoformat()
+    started, cpu = time.perf_counter_ns(), time.process_time_ns()
+    if args.mode == "bootstrap":
+        accounts = json.loads(args.credentials.read_text())["accounts"]
+        if json.loads(args.credentials.read_text())["database"] != "t44_profile":
+            raise ValueError("Neutral credentials must belong to profile")
+        with httpx.Client(base_url=_URL, timeout=30, trust_env=False) as client:
+            response = client.post(
+                _URL + "/auth/login",
+                json={key: accounts["manager"][key] for key in ("username", "password")},
+            )
+            response.raise_for_status()
+            token = response.json()["data"]["access_token"]
+            headers = {"Authorization": "Bearer " + token}
+
+            def create(path, payload):
+                result = client.post(
+                    _URL + path,
+                    json=payload,
+                    headers={
+                        **headers,
+                        "Idempotency-Key": uuid4().hex,
+                    },
+                )
+                result.raise_for_status()
+                return result.json()["data"]
+
+            pid = create("/projects", {"name": "Synthetic isolated profile " + uuid4().hex[:8]})[
+                "id"
+            ]
+            create(
+                f"/projects/{pid}/members",
+                {
+                    "username": accounts["developer"]["username"],
+                    "roles": [2],
+                    "reason": "Profile fixture",
+                },
+            )
+            evidence = [
+                {"kind": 2, "locator": "synthetic/profile", "description": "Diagnostic fixture"}
+            ]
+            plan = {
+                "planned_start": "2026-10-23T00:00:00Z",
+                "planned_end": "2026-10-25T00:00:00Z",
+                "buffer_hours": 1,
+                "delay_contingency": "Synthetic diagnostic plan",
+            }
+            iteration = create(
+                f"/projects/{pid}/iterations",
+                {
+                    **plan,
+                    "name": "Profile",
+                    "capacity": [
+                        {"user_id": accounts["developer"]["user_id"], "available_hours": 40}
+                    ],
+                },
+            )
+            registration = {
+                "title": "Synthetic profile task",
+                "owner_id": accounts["developer"]["user_id"],
+                "iteration_id": iteration["id"],
+                "plan": {**plan, "estimated_hours": 8},
+                "dependency_task_ids": [],
+            }
+            task = create(f"/projects/{pid}/tasks", registration)["task"]
+            assessment = {
+                "expected_version": task["version"],
+                "risks": [
+                    {
+                        "perspective": p,
+                        "severity": 1,
+                        "risk": "Synthetic risk",
+                        "mitigation": "Synthetic mitigation",
+                        "evidence": evidence,
+                    }
+                    for p in (1, 2, 3, 4)
+                ],
+                "rollback_plan": {
+                    "target_version": "synthetic-v0",
+                    "trigger": "Synthetic trigger",
+                    "steps": ["Synthetic restore"],
+                    "impact": "Synthetic impact",
+                    "verification": "Synthetic check",
+                    "responsible_user_id": accounts["manager"]["user_id"],
+                    "evidence": evidence,
+                },
+            }
+            fixture = {
+                "token": token,
+                "project_id": pid,
+                "task_id": task["id"],
+                "candidates": [
+                    {"category": 1, "payload": registration},
+                    {
+                        "category": 2,
+                        "task_id": task["id"],
+                        "payload": {"expected_version": task["version"], "action": 1},
+                    },
+                    {"category": 3, "task_id": task["id"], "payload": assessment},
+                ],
+            }
+            target = args.output / "fixture.json"
+            target.write_text(json.dumps(fixture))
+            target.chmod(0o600)
+            records = []
+    else:
+        fixture = json.loads(args.fixture.read_text())
+        deadline = time.perf_counter() + args.seconds
+
+        def worker(index):
+            rows, count = [], 0
+            with httpx.Client(base_url=_URL, timeout=30, trust_env=False) as client:
+                while time.perf_counter() < deadline and (
+                    not args.max_requests or count < args.max_requests
+                ):
+                    candidate = fixture["candidates"][(index + count) % 3]
+                    before = time.perf_counter_ns()
+                    row = {"worker": index, "ordinal": count, "category": candidate["category"]}
+                    try:
+                        result = client.post(
+                            _URL + f"/projects/{fixture['project_id']}/contract-validations",
+                            json=candidate,
+                            headers={"Authorization": "Bearer " + fixture["token"]},
+                        )
+                        row.update(
+                            status=result.status_code,
+                            request_id=result.headers.get("x-request-id"),
+                            server_timing=result.headers.get("server-timing"),
+                        )
+                        payload = result.json()
+                        row.update(
+                            valid=result.status_code == 200
+                            and payload.get("data", {}).get("valid") is True
+                            and payload["data"].get("business_guards_executed") is False
+                            and payload["data"].get("category") == candidate["category"]
+                            and payload["data"].get("validated_operation_id")
+                            == {1: "createTask", 2: "transitionTask", 3: "createReleaseAssessment"}[
+                                candidate["category"]
+                            ]
+                            and not payload.get("violations")
+                            and not payload["data"].get("violations"),
+                        )
+                    except Exception as error:
+                        row.update(valid=False, exception=type(error).__name__)
+                    row["e2e_ns"] = time.perf_counter_ns() - before
+                    rows.append(row)
+                    count += 1
+            return rows
+
+        with ThreadPoolExecutor(max_workers=args.concurrency) as executor:
+            records = [
+                row for batch in executor.map(worker, range(args.concurrency)) for row in batch
+            ]
+        with (args.output / "client.jsonl").open("x") as stream:
+            for row in records:
+                stream.write(json.dumps(row) + "\n")
+    metadata = {
+        "started_at": started_at,
+        "ended_at": datetime.now(UTC).isoformat(),
+        "source_sha": source_sha,
+        "mode": args.mode,
+        "concurrency": args.concurrency,
+        "requested_seconds": args.seconds,
+        "actual_wall_ns": time.perf_counter_ns() - started,
+        "process_cpu_ns": time.process_time_ns() - cpu,
+        "requests": len(records),
+        "failures": sum(not row["valid"] for row in records),
+        "pid": os.getpid(),
+        "category_counts": dict(Counter(row["category"] for row in records)),
+        "url": _URL,
+        "client_trust_env": False,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+    }
+    metadata["missing_workers"] = (
+        sorted(set(range(args.concurrency)) - {row["worker"] for row in records})
+        if args.mode == "client"
+        else []
+    )
+    (args.output / "client-metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
+    return int(bool(metadata["failures"] or metadata["missing_workers"]))
 
 
 def measured(name, function):
@@ -137,12 +327,22 @@ class ObservedASGI:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute-stage-b", action="store_true")
-    parser.add_argument("--mode", choices=("baseline", "timings", "profile"), required=True)
+    parser.add_argument(
+        "--mode", choices=("baseline", "timings", "profile", "bootstrap", "client"), required=True
+    )
     parser.add_argument("--seconds", type=int, default=30)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--credentials", type=Path)
+    parser.add_argument("--fixture", type=Path)
+    parser.add_argument("--concurrency", type=int, choices=(1, 8, 32), default=1)
+    parser.add_argument("--max-requests", type=int, default=0)
     args = parser.parse_args()
-    if not args.execute_stage_b or not 1 <= args.seconds <= 120:
+    if not args.execute_stage_b or not 1 <= args.seconds <= 120 or args.max_requests < 0:
         parser.error("Requires explicit stage-B execution and a 1..120 second diagnostic window")
+    if (args.mode == "bootstrap" and args.credentials is None) or (
+        args.mode == "client" and args.fixture is None
+    ):
+        parser.error("Bootstrap requires credentials; client requires a private fixture")
 
     import uvicorn
     from t44.api import create_app
@@ -192,6 +392,8 @@ def main():
     source_sha = subprocess.check_output(
         ["git", "-C", str(source_root), "rev-parse", "HEAD"], text=True
     ).strip()
+    if args.mode in ("bootstrap", "client"):
+        return client_run(args, source_sha)
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
     engine = create_mysql_engine(db)
     app = create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
@@ -202,7 +404,7 @@ def main():
 
         effective["thread_tokens"] = current_default_thread_limiter().total_tokens
 
-    app.add_event_handler("startup", observe_configuration)
+    app.router.add_event_handler("startup", observe_configuration)
     observer = None
     if args.mode != "baseline":
         instrument(app, engine, args.output, args.mode == "profile")
@@ -211,6 +413,7 @@ def main():
         uvicorn.Config(observer or app, host="127.0.0.1", port=18083, workers=1, access_log=False)
     )
     timer = threading.Timer(args.seconds, lambda: setattr(server, "should_exit", True))
+    started_at = datetime.now(UTC).isoformat()
     started, cpu = time.perf_counter_ns(), time.process_time_ns()
     timer.start()
     try:
@@ -219,6 +422,8 @@ def main():
         timer.cancel()
         engine.dispose()
         metadata = {
+            "started_at": started_at,
+            "ended_at": datetime.now(UTC).isoformat(),
             "mode": args.mode,
             "source_sha": source_sha,
             "imported_modules": sources,
@@ -250,6 +455,6 @@ def main():
 
 if __name__ == "__main__":
     try:
-        main()
+        raise SystemExit(main())
     except Exception as exc:
         raise SystemExit("Diagnostic failed: " + type(exc).__name__) from None
