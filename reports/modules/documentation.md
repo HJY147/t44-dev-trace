@@ -1,38 +1,32 @@
-# 文档汇总岗位报告｜M3-CONTRACTS-v1
+# 文档汇总岗位报告 M4 TESTS AND WORD
 
-## 任务与当前状态
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M4-TESTS-AND-WORD-v1；Refs #9。
 
-- Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1；Refs: #9。
-- 独立树documentation/分支codex/function-contracts，实际基线074fab7及R001来源5b3bf30。
-- 本轮可审MD：关键函数I/O、R001本人观点来源、M3八图/prompt证据同步；不是最终研究成品或验收。
-- 本项目先冻结OpenAPI/DDL再完整实现，与用户建议未来亲写def/#todo工作流分清；不倒填人工骨架/调试。
-- 封面具体值仅私密本地，日期空；最终DOCX/逐页QA仍未运行。
+## 当前产物和边界
 
-## 产物与输入输出
+- 独立codex/review-documents，内容主基线2e0481f，开发CI/容器证据0448fec；后续状态作为续记，不反复追头。
+- 新reports/final/test-results-report.md汇编模块/实库/CI/容器/审核/独立v1/正式性能，明确未通过最终验收。
+- 335后端/零跳过，43文件2493至2818行88.47%、分支77.73%；前端24/307至333行92.19%，均绑定0448fec。
+- 同SHA容器19表count/checksum恢复通过；旧317/88.16等历史分开，不混分母。
+- 独立v1只读公开两报告：900结果340/183/328/49，183含歧义不当183bug；38成功路径通过。
+- 三批400VU/600秒P95为3035/1908/5506ms失败，吞吐和稳态零失败通过；不外推云容量。
+- UI公开补充仅新增授权两文件：原e8测3/1/1，原900不改，不冒称测过b485；无私有截图读取。
+- C-P4四类限定关闭，5886超5100仍failure。IAT01已开发修复；后续IAT02至05 55HTTP/SQLite回归不当独立复测。
 
-- docs/function-contracts.md：FE API、HTTP/Runtime、Business/Workflow、domain、Rows/UoW/迁移、MQ/消费、扫描/升级、部署/管理CLI。
-- 每层说明真实签名与输入/输出形式、前后置、错误、事务/副作用和调用方；不伪造原函数类型注解。
-- docs/reports/M3-contract-sources.json：24源码哈希/真实函数签名行号，38冻结HTTP操作的request Schema/响应状态。
-- ai-development-report.md/学生模板/提交对照同步R001原话及provenance，不再写本人观点完全未提供。
-- ai-spec-guide.md加入函数I/O、root已渲染八图及提示词4226事实材料入口。
-- M3-collection.md/.json保存9条晚到M2真实答复与本轮对提示词岗回复原文；M2原档不改。
-- 本岗prompt实际原文在agents/documentation/prompts/ROLE-documentation-M3-CONTRACTS-v1.md。
+## 文档与工具
 
-## 来源与设计边界
+- 需规/概设详设/AI规格说明、AI证据/提交对照同步M4状态；R001原话归属与学生自写边界保留。
+- docs/function-contracts.md与M4-contract-sources.json锁准确2e完整SHA，49函数链接不承诺未来源码匹配。
+- scripts/docs/export_review_documents.py只处理自有MD、8图资产和私密封面，不搬业务逻辑。
+- 四技术Word仅root .submission-private/review-documents，0600文件/0700目录/Git忽略，日期空；学生研究正文不在其中。
+- 已读documents技能及创建/渲染说明，loader核实bundled Node/Python与指定LO。
+- 首次author前create marker成功一次，expected4/formatdocx；四份已轻量author，目前等待LO安静窗口与逐页QA。
+- 最终Word未逐页验收前不交付为合格；不调用用户桌面LO，公开记录不含个人封面值/截图。
 
-- R001原文hash/provenance一致，归属human reflection；不计人工改码/人工识别幻觉。
-- root M3八图CLI12/Chrome真实渲染/独立PNG查看有公开manifest；本岗只读证据，没有本轮重渲染或冒充看图。
-- 4226提示词事实包：CONTRACT已核2版，人工12/3/5本轮可证实0；事后ROOT目标文件不计实发版本。
-- e01完整审核四项failure仍保留；指定64b4开发CI317/0/0/0、whole Python88.16%不等于新产品审核通过。
-- 迁移check_schema在基线只比部分结构/名称，C-P4漏语义明确；新checker待责任岗验证，不宣称关闭。
-- 当前六岗有实际回复、消息/调度/指导三岗未回；既有公开报告可引用，未收到的不代写。
+## 来源记录和待办
 
-## 验证、错误与交接
-
-- 仅源码/AST/JSON/哈希/链接/Schema静态读取，无导入应用/业务请求/pytest/构建/渲染。
-- R001旧provenance路径不存在退出1；实际纠正R001-provenance后继续，原错误留WORKLOG。
-- 初猜pika_adapter.py不存在退出2，rg定位真实broker.py；不当作应用bug。
-- 文档校验、11冻结文件未改、M0/M1/M2原始记录未改及隐私结果见M3-contract-validation.json。
-- 正式性能/独立验收最终结论不在本轮读取范围；不联系测试或读取未发布黑盒/内部材料。
-- 学生最终研究文字/课程建议、真实人工记录、最终Word逐页QA继续待办。
-- f7afd15显式15本岗文件已push，草稿PR23已attach，真实评论6363196975已读回；最终head由Git确定；不merge main/发审核success。
+- M4-source-manifest.json固定公开来源、原CI归档摘要、marker与运行时；M0至M3原始收件/来源/失败不改。
+- 本轮未执行产品测试/业务请求/压测，不联系测试，也不跟随公开报告中的私有证据路径。
+- 精确阶段SHA/PR及最终页数/逐页QA结果按真实发布补，不预填通过。
+- 待quiet窗口结束后用skill render_docx.py渲染并自行检查全部页面，修正后重渲染。
+- 学生研究最终成文/课程建议和真实人工留痕、性能达标、独立复测、规模达标仍待后续。

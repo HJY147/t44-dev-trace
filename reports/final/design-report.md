@@ -1,6 +1,6 @@
 # T44概要设计与详细设计报告
 
-版本：M3图示修订工作稿 v0.3。**非最终验收。** 本稿沿冻结1.0.0与M2集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`说明，依据产品审核和当前实现纠正数据关系、重试与扫描时钟表述；新联调证据按准确SHA另补。公开稿不含私密封面个人信息，日期留空。M2补画、M3修订和渲染的时间边界见[修订说明](../../docs/reports/M3-diagrams.md)，不追溯声称开发前已全部形成。
+版本：M4技术审阅工作稿 v0.4。**非最终验收。** 本稿沿冻结1.0.0与M2集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`说明，依据产品审核和当前实现纠正数据关系、重试与扫描时钟表述；新联调证据按准确SHA另补。公开稿不含私密封面个人信息，日期留空。M2补画、M3修订和渲染的时间边界见[修订说明](../../docs/reports/M3-diagrams.md)，不追溯声称开发前已全部形成。
 
 Agent-Role: documentation
 Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
@@ -221,7 +221,7 @@ N任务、L规则、K事件、历史E、收件人R_i时，直接匹配O(NL)，�
 
 | 模块 | 已发布/实际收件范围 | 不能推出 |
 | --- | --- | --- |
-| frontend | 21交互测试、19源文件行92.21%；真实MySQL浏览器七态/改期/评审/评估/审计与1440/390 | 当前通知链尚需对应最新后端再验，非独立验收/性能 |
+| frontend | 21交互测试、19源文件行92.21%；真实MySQL浏览器七态/改期/评审/评估/审计与1440/390 | 后续b485有真实通知read/handle；独立UI补充未发布，非性能结论 |
 | backend | 纯domain106、实际HTTP/局部MySQL、TCP烟测；新收件报告全t44第二轮314通过/3本机Rabbit跳过、行87.78% | ec82已正式交接；265d89b四job CI成功另列，均非独立验收/性能 |
 | database | 18表迁移/Rows/约束/Outbox/Scan/seed；SQLite/mock与真MySQL分批记载 | synthetic 40项目/6000任务等不是人类评审事实；不是压测 |
 | messaging | 本岗28通过/3本地Rabbit未跑，11真MySQL；早期精确SHA上3真Rabbit托管CI通过 | 早期run不代表最新全产品CI；消费记录唯一不等于MQ网络恰一次 |
@@ -242,3 +242,9 @@ main要求reviewer/stage/static/contracts/coverage/frontend；准确新head需�
 M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)四job static/contracts/coverage/frontend成功；归档[JUnit汇总](../../records/ci/39931640641/junit-summary.json)显示覆盖率整套317通过、0失败/0错误/0跳过，whole Python行2399/2724=88.07%，前端行308/334=92.21%，见[M2回执](../../docs/reports/M2-ci-snapshot.json)。这是准确SHA的托管MySQL/Rabbit证据，不代表独立验收、400并发性能、其他版本Docker或代码规模通过。
 
 后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。
+
+## M4当前测试截止状态
+
+当前汇总截止集成2e0481f，完整结果见[测试结果技术报告](test-results-report.md)。指定0448fec开发CI335通过/零跳过，Python43文件2493/2818行88.47%、分支77.73%，前端24通过/307至333行92.19%；同SHA完整容器恢复通过。独立v1针对e8ceefe整体未通过，900结果340/183/328/49（183含歧义，非183bug），三个400VU/600秒P95为3035/1908/5506ms，均超270；吞吐和稳态零失败通过。C-P4仅在7c27限定关闭，5886超限786仍failure。IAT01开发修复已合，其他缺陷进行中，不是独立复测通过。
+
+八图沿用M3已渲染资产，图源代码不改；M3 manifest的整篇源文件hash属于当时快照，本轮新增文字另存M4源hash，不能将当时hash误当当前整篇一致。当前Word为截止技术审阅稿，不是最终验收或学生研究成品。

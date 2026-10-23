@@ -1,9 +1,9 @@
-# T44作业提交物对照表（M3阶段工作稿）
+# T44作业提交物对照表（M4阶段审阅稿）
 
 > **工作稿、非最终验收。** 本表只核对提交要求和当前去向，不把已有阶段代码/报告当作完整软件交付。
 
 Agent-Role: documentation
-Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1
+Prompt-Ref: ROLE-documentation-M4-TESTS-AND-WORD-v1
 
 ## 原件复核
 
@@ -13,8 +13,8 @@ Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1
 
 | 原件组别 | 必交物 | 当前去向与状态 | 尚需完成 |
 | --- | --- | --- | --- |
-| 1 软件开发最终产品 | 最终代码 | 当前文档基线074fab7，含M3八图/FE b485/BE3ee与4226提示词资料；指定源码64b4托管CI317通过、行88.16%，旧265证据保留 | 完整集成版本、冻结SHA、运行/构建说明；不是把几个基础PR当最终产品 |
-| 1 软件开发最终产品 | 测试结果文档 | 已有模块、真实MySQL/HTTP/局部MQ及新四job CI成功证据；历史失败保留 | **测试结果最终稿未完成**：需汇编准确版本的既有模块/实库/CI证据；托管Docker/隔离库恢复已补31f4dff证据，正式性能、独立验收和最终完整运行结果仍须准确版本出结论 |
+| 1 软件开发最终产品 | 最终代码 | 当前汇总基线2e0481f；指定0448fec开发CI335通过、行88.47%及同版容器恢复通过，旧317证据保留 | 完整集成版本、冻结SHA、运行/构建说明；不是把几个基础PR当最终产品 |
+| 1 软件开发最终产品 | 测试结果文档 | 已有模块、真实MySQL/HTTP/局部MQ及新四job CI成功证据；历史失败保留 | [测试技术报告](test-results-report.md)已汇编；**未通过最终验收**：独立v1已测未过/P95失败，修复后独立复测、性能达标与5886超限仍待完成 |
 | 2 中间产品 | 需求报告 | [requirements-report.md](requirements-report.md)，8FR/9AC、角色/路径/量化目标和状态 | 当前为阶段工作稿；D004已采用并冻结v1；当前SRS/M3八图与最终实现/验收映射持续更新 |
 | 2 中间产品 | 设计报告 | [design-report.md](design-report.md)，[architecture.md](../../docs/architecture.md)两组候选比较、门面DI/状态机/持久化/并发/MQ扫描/部署CI | 当前含概设/详设、真实渲染八图与[函数I/O契约](../../docs/function-contracts.md)；最终运行/审核/独立验收证据继续补齐 |
 | 3 衍生物 | AI可执行规格相关文件 | [AGENTS](../../AGENTS.md)、岗位任务、[业务规则](../../specs/business-rules.md)、[OpenAPI](../../specs/contracts/openapi.json)、[字典/DDL/持久契约](../../specs/database/persistence-contract.md)等 | 组织约束已存在，完整业务技术规格已冻结1.0.0，后续变化需审查与同步测试，不能只交AGENTS代替全部业务规格 |
@@ -37,3 +37,7 @@ Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1
 用户已在root私密0600文件提供姓名、学号、专业班级、指导教师等，本公开仓库不存具体值。课程名称为“软件设计与开发实验”；报告日期按用户要求留空。最终本地Word封面仅从私密来源填入，不猜值，不把姓名学号提交公开Git。
 
 当前已有M3八图真实渲染和独立PNG查看记录；最终DOCX未生成，Word逐页QA未完成。软件结果和学生本人研究文字齐备后，再使用documents技能渲染/逐页检查最终Word/PDF。原件末“科创班”不替代用户私密提供的具体班级。
+
+## M4本地审阅材料
+
+需规、概设详设、测试结果和AI可执行规格说明四份Word仅输出root .submission-private/review-documents，带用户私密封面且日期空，不提交Git。可复用导出器在scripts/docs；只以逐页PNG核对后的实际QA记录为准。学生研究正文不在四份之内，仍须本人写；R001原话已收不等于全文成稿。
