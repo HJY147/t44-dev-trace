@@ -402,11 +402,13 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "Q002字段/HTTP取舍按本轮派工仍待用户，契约/DDL复审及冻结不由本岗宣布",
-    "API路由/应用、身份会话/事务门面、资源加载与真实证据验证未实现",
-    "数据库连接/迁移/幂等/CAS/审计/依赖图锁、MQ/调度业务未实现或未集成",
-    "Linux运行、MySQL8.4真实认证、HTTP契约/集成/独立验收/性能未执行",
-    "完整产品3500～5100行、全项目覆盖率与门禁、维护性量化指标均未验证"
+    "messaging/scheduler facade integration",
+    "seed owner delivery",
+    "RabbitMQ",
+    "full t44 coverage",
+    "full workflow MySQL",
+    "performance",
+    "independent acceptance"
   ],
   "questions": [
     {
@@ -528,7 +530,52 @@
         "reports/modules/backend.md",
         "records/handoffs/backend.json"
       ]
+    },
+    {
+      "id": "ROLE-backend-APPLICATION-v1",
+      "archive_path": "agents/backend/APPLICATION-v1-prompt.md",
+      "reason": "full frozen application authorized after Q002; actual HTTP tests, no fake store",
+      "outputs": [
+        "backend/t44/api.py",
+        "backend/t44/cli.py",
+        "backend/t44/services/",
+        "backend/t44/contracts/",
+        "backend/t44/resources/review-template.json"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T15:00:20+08:00"
+  "updated_at": "2026-10-23T08:19:42.448640+00:00",
+  "current_stage": "ROLE-backend-APPLICATION-v1 staged delivery; owner integration pending",
+  "application_v1": {
+    "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
+    "entrypoints": [
+      "backend/t44/api.py",
+      "backend/t44/cli.py",
+      "backend/t44/services/",
+      "backend/t44/contracts/",
+      "backend/t44/resources/review-template.json"
+    ],
+    "tests": "agents/backend/application-contract-stage2.log",
+    "interface_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261",
+    "unverified": [
+      "messaging/scheduler facade integration",
+      "seed owner delivery",
+      "RabbitMQ",
+      "full t44 coverage",
+      "full workflow MySQL",
+      "performance",
+      "independent acceptance"
+    ],
+    "network_evidence": "agents/backend/application-network-smoke.json",
+    "service": {
+      "url": "http://127.0.0.1:18080/api/v1",
+      "pid": 9624,
+      "demo_project_id": 3,
+      "demo_iteration_id": 3,
+      "demo_task_id": 3,
+      "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository"
+    },
+    "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
+    "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
+  }
 }

@@ -87,3 +87,23 @@
 - 实际coverage仅source=t44.domain且含分支：331条语句、3未覆盖、48分支、3部分分支，综合约98%；日志及JSON为core-domain-coverage.*，不是全项目80%门禁通过。
 - 文档岗M1实际询问进度时本岗原文答复尚未提交、81测试通过/Ruff待修的即时事实，后续最终状态再单独发送，不能把早期快照改成当时已完成。
 - 本轮没有API应用/路由、DB/迁移、事务/幂等/CAS/图锁、成功或拒绝审计、MQ/调度；没有HTTP、MySQL实库、联调、独立验收或压测。Q002按派工时尚待用户，技术复审不由本岗宣称通过。
+
+## ROLE-backend-APPLICATION-v1 阶段1：冻结业务HTTP应用
+
+- 用户采用Q002，根冻结ae60dc3后实际授权完整应用；本树先merge冻结及6afd13f，再合入DB8095b6e/f3ea343。独立分支/PR16保留，不碰根索引、不读取独立测试私有资料。
+- 已实现api.py的38操作注册、同步DI、冻结Schema请求/成功data提交前/HTTP响应校验；integer1.0规范化同幂等摘要，bool/字符串拒绝，UTC1000～9999和额外字段严格验证，字段错误无input/凭据。Server-Timing覆盖三个主入口。
+- services实现opaque/Argon2会话、项目成员/迭代、任务与开始前依赖图、排期diff、评审八段十项、独立预案评审及发布/回滚/返工决策；调用既有纯领域decide。无SQL/ORM/第二存储。CLI真实适配账号hash-only/迁移，撤销当前或全部会话，服务Token0600文件；seed/messaging/scheduler仍待owner实际交付，不伪装成功。
+- runtime统一session→idem→project(需要时)→members按user_id→tasks按id；先身份/项目再重放再版本；短认领/租约owner换代、同内容重放/异内容409、CAS、成功审计/outbox/完成快照原子。拒绝回滚后新UoW审计/失败快照；审计失败503/null，DB全宕机仅脱敏运维日志。
+- 首次HTTP确实发现DB循环FK主键自增推断问题，交DB本人修ignore_fk并合入；原application-http-first.log保留（瞬时自测会话脱敏）。第二轮短幂等键测试输入不合冻结minLength，修测试输入未降契约，保留second.log。第三轮25实际TestClient+SQLite HTTP自测通过，覆盖完整交付/回滚/返工、改期旧批准失效、依赖环/开始守卫、角色/自审、幂等/旧版本/撤销、严格Schema及注入审计故障；不是MySQL/独立验收。
+- 首次Ruff9风格失败、format两处后补格式失败、Bandit两处协议/空租约误报都保留；移出字面量误报并复验Ruff/format/Bandit退出0。未新增依赖，68包hash锁未改。初次api导入漏PYTHONPATH后按部署约定修命令，非代码假成功。
+- 实际读Issue#3前端及#4公开状态；Issue4第一次GraphQL EOF后REST读取成功，body-file真实对接评论：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261 。
+- 当前缺口：调度/通知owner尚未接入，相关端点503；CLI seed等待DB；尚未执行本岗MySQL HTTP、Rabbit、网络服务、全t44覆盖率、性能或独立验收。接下来继续实际MySQL与owner联调，不以阶段commit结束完整任务。
+
+### APPLICATION-v1 阶段2：真实MySQL HTTP和本地服务交接
+
+- 合入DB f3ea343后，`T44_HTTP_TEST_CREDENTIALS=<ignored app四键文件> PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/contracts/test_mysql_http.py --tb=short -q` 实际退出0、1 passed；明确数据库t44_dev，未清空库/演示数据。实际MySQL登录、项目成员/迭代/任务、两并发改期只有一成功、另一409、独立拒绝审计、diff/outbox/idem最终完成request_id和提交评审均有断言。原始log/JUnit已存，不把SQLite当实库。
+- 补内部升级入口只接受服务身份，human先403 SERVICE_SCOPE_REQUIRED（owner尚缺时也不落到假成功/503）；会话过期用校验当下UTC。最终全部本岗HTTP测试27 passed：26 SQLite＋1 MySQL，`application-contract-stage2.log/xml`；Ruff/格式/Bandit最终退出0。
+- 真实Uvicorn在127.0.0.1:18080启动（本轮最终PID9624），DATABASE_URL仅内存env构造，不放argv/日志；ignored运行证据在.agent-worktrees/.runtime。账号文件api-demo-credentials.json为0600，三角色及项目3/迭代3/任务3真实创建，凭据未入仓库/消息。已把路径及非秘密资源ID交frontend/root。
+- 首次HTTPX网络烟测被本机环境代理截获：登录断言/非JSON诊断及随后ReadTimeout，Uvicorn无访问日志；改loopback直连trust_env=False后实际四项网络HTTP＋MySQL烟测通过（登录Schema、me/字典、422、401）。本岗仅对loopback绕过代理，未改TLS或全局环境；initial.log明确为诊断摘要，原工具输出保留会话。安全响应证据在application-network-smoke.json，无登录Token。
+- 根明确本轮可阶段收尾释放并行槽位，让scheduler/messaging实际接(g,c) DI；后续再恢复最终整合。当前seed、通知/升级门面及Rabbit未完成，全t44覆盖率、性能和独立验收未执行。现有真实代码与证据交接，不宣称整产品完成或审核成功。
+- 根复核发现MySQL HTTP fixture仅本机私密文件且硬编码dev会在CI跳过，已修为优先DATABASE_URL＋T44_DATABASE明确匹配；本机四键模式另须显式T44_HTTP_TEST_DATABASE；CI缺配置fail，不跳过。与DB真库fixture口径直接协商一致。实际用CI=true+URL env分支连接本地t44_dev再跑1 passed（application-mysql-url-fixture.log），不是GitHub Actions或t44_ci已运行。生产代码/断言未降级。
