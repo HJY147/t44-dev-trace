@@ -1,0 +1,15 @@
+flowchart TB
+  UI[浏览器 Vue业务页面] --> Nginx[Nginx 静态文件与同源api代理]
+  Nginx --> API[FastAPI API进程 配置4 workers]
+  API --> Services[Business门面与Runtime事务编排]
+  Services --> Domain[纯domain 状态机与typed命令]
+  Services --> Rows[注入UoW与RowsGateway]
+  Rows --> MySQL[(MySQL 18表)]
+  Sched[独立APScheduler进程] --> Scanner[Scanner与EscalationFacade]
+  Scanner --> Services
+  Worker[独立DeliveryWorker进程] --> Store[OutboxStore]
+  Store --> MySQL
+  Worker --> Rabbit[(RabbitMQ)]
+  Rabbit --> Worker
+  API --> Notify[NotificationFacade]
+  Notify --> Rows
