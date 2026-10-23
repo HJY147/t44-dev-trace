@@ -288,6 +288,8 @@ class Environment:
             "mq_transport": mq_transport,
             "python": sys.executable, "control_cli": str(Path(__file__).with_name("control.py")),
             "control_state": str(state), "harness_output_directory": str(self.output),
+            "runtime_metadata": {"control_command": "runtime-metadata", "read_only": True,
+                                 "collection": "explicit caller invocation only; single JSON; incomplete exits nonzero"},
             "service_credential": {"control_command": "service-credential", "scope": ["escalation:write"],
                                    "ttl_seconds_default": 300, "ttl_seconds_min": 60, "ttl_seconds_max": 900,
                                    "credential_directory": str(self.runtime / "tester-secrets"),

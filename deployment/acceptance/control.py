@@ -16,6 +16,7 @@ from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
+from deployment.acceptance import metadata  # noqa: E402
 
 SERVICES = ("mysql", "rabbitmq", "api", "consumer", "scheduler", "web")
 SERVICE_ISSUE_SCRIPT = """import json,os,subprocess,sys
@@ -337,6 +338,7 @@ def main():
     fault.add_argument("--lease-seconds", type=int, default=60)
     commands.add_parser("recover")
     commands.add_parser("audit-sql")
+    commands.add_parser("runtime-metadata")
     broker = commands.add_parser("broker")
     broker.add_argument("kind", choices=["queues", "connections"])
     account = commands.add_parser("init-user")
@@ -356,6 +358,10 @@ def main():
             controls.fault(args.service, args.action, args.lease_seconds)
         elif args.command == "recover":
             output = (json.dumps(controls.recover()) + "\n").encode()
+        elif args.command == "runtime-metadata":
+            value = metadata.collect(controls)
+            print(json.dumps(value))
+            return 0 if value["observation_complete"] else 1
         elif args.command == "audit-sql":
             output = controls.audit(sys.stdin.read())
         elif args.command == "broker":
@@ -373,6 +379,11 @@ def main():
         print(json.dumps(error.receipt))
         return 1
     except Exception:  # noqa: BLE001 -- private inputs and driver messages never enter public console
+        if args.command == "runtime-metadata":
+            value = metadata.incomplete()
+            value["finished_at"] = datetime.now(UTC).isoformat()
+            print(json.dumps(value))
+            return 1
         if args.command == "recover":
             receipt = recovery_receipt()
             receipt.update(finished_at=datetime.now(UTC).isoformat(), error="RECOVERY_CONTROL_UNAVAILABLE")

@@ -158,3 +158,10 @@
 - 实际Rabbit127.0.0.1:25674/35674；EPMD同时127.0.0.1及::1:24369，全回环，根接受相对原IPv4-only提案的技术澄清。nocookie短窗保守上界server0.275471s/CLI最大0.132151s，仅本地开发能力，不是生产安全批准。
 - 42public/373private非秘密outputs+args对3Cookie/2AMQP口令literal扫描均0，范围/输出SHA已存；dump保持0600ignored不解析/上传。所有旧环境和MySQL不在操作目标。
 - phase1归档后等待根最终SUT/schema/credentials；API/consumer/scanner/UI、正常消息/60秒真实扫描、独立/性能/云仍未验证。
+
+### RUNTIME-METADATA-v1 只读观测能力
+
+- 基点9fb24f1f0e173ef37d0cee8b14b080f190ca6d58；独立codex/deployment-runtime-metadata，新增metadata.py与control runtime-metadata，context仅声明不自动采集。六服务ID/标签校验、字段白名单，runner CPU/内存/cgroupv2、实际HostConfig/API数量/MySQL固定标量/Nginx投影/daemon关系；未知incomplete非零，无资源或业务修改。
+- 953共75合成边界通过、Ruff通过，原件agents/deployment/runtime-metadata-validation；首lint失败保留。没有Docker/GHA/正式压测或实际资源观测结论；原七命令及cf685d7修复保留，不读取独立资料。协议deployment/acceptance/README.md新增只读快照段，限定cgroupv2/可见范围/当前Nginx文件等边界。
+
+- 完整实现SHA b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0已推送；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388实际发布并API读回一致，回执另档。中性转交仅运行协议/命令与版本；开发日志/测试原件不供独立岗，实际runner快照待调用方显式取得。
