@@ -1,6 +1,6 @@
 {
   "role": "reviewer",
-  "stage": "M0审核岗位资料归档",
+  "stage": "首次失败设计审核证据归档",
   "implementation_status": "未实现",
   "artifacts": [
     "docs/reviews/review-protocol.md",
@@ -10,12 +10,17 @@
     "records/handoffs/reviewer.json",
     "agents/reviewer/dispatches/ROLE-reviewer-M0-COMMIT-v1.txt",
     "agents/reviewer/evidence/main-protection-20261023.json",
-    "agents/reviewer/github/issue-12-m0-comment.md"
+    "agents/reviewer/github/issue-12-m0-comment.md",
+    "reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md",
+    "agents/reviewer/github/issue-12-design-717cd65.md",
+    "agents/reviewer/evidence/design-gate-717cd65.json",
+    "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt",
+    "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-ARCHIVE-v1.txt"
   ],
   "interfaces": [
     {
       "peer": "总协调与开发责任岗",
-      "status": "Issue #12和草稿PR #13已存在，真实PR审核另行接收确切SHA",
+      "status": "717cd65完整SHA设计不通过；缺陷交总协调派发，待新SHA复审",
       "inputs": [
         "PR/Issue及完整base/head SHA",
         "原始需求和冻结规格/接口版本",
@@ -98,25 +103,48 @@
       "command": "gh api repos/HJY147/t44-dev-trace/branches/main/protection（筛选字段）",
       "exit_code": 0,
       "result": "实时GET确认严格要求reviewer/stage、管理员受约束、PR/讨论解决要求；证据见agents/reviewer/evidence/main-protection-20261023.json，未执行失败合并实验"
+    },
+    {
+      "command": "git show 717cd65ef73560fde7ff5bca2821c9fe2b20d68a:<path>；SHA-256及工作树字节比较12份设计/基线文件",
+      "exit_code": 0,
+      "result": "全部相同；数据库三件哈希与初查一致，报告绑定已提交内容，不自审本岗M0"
+    },
+    {
+      "command": "根.venv openapi_spec_validator.validate；Python18表/35FK/59CHECK文本结构与字典比对、41错误码映射；Draft202012Validator+FormatChecker例值检查",
+      "exit_code": 0,
+      "result": "规范与列/FK映射检查通过；101收件人触发maxItems，0001年完整TaskCreate通过Schema；全部为规范/静态检查，未运行HTTP或DDL"
+    },
+    {
+      "command": "查阅MySQL8.4官方datetime.html",
+      "result": "确认所选DATETIME承诺支持范围从1000年起；未插入数据库，不能冒记驱动执行失败"
+    },
+    {
+      "command": "多次gh pr view13核验远端head；gh issue comment12 --body-file；gh pr review13 --comment --body-file；gh api POST statuses/<完整SHA> state=failure context=reviewer/stage",
+      "exit_code": 0,
+      "result": "远端HEAD一直为目标；Issue/PR COMMENT和failure均成功，完整argv/退出码/返回见agents/reviewer/evidence/design-gate-717cd65.json"
+    },
+    {
+      "command": "git diff --cached --name-status；git rev-parse HEAD；git branch --show-current；限定本岗路径git status",
+      "exit_code": 0,
+      "result": "归档接管前索引为空；codex/team-bootstrap / 717cd65ef73560fde7ff5bca2821c9fe2b20d68a；获得本岗独占索引，后续只显式暂存审核证据"
     }
   ],
   "results": [
-    "已建立八段式与十项审核协议、岗位记录及旧草案静态反馈；未实现产品",
-    "旧无HEAD/未审定/未配置描述保留为各自历史；当前已有repo/HEAD、D001采用规则及已配置reviewer/stage",
-    "同账号使用COMMENT与提交状态，不伪装真人或自我APPROVE；本轮不自审、不发success",
-    "本轮实际派工原文及Issue阶段评论body-file存于本岗目录；提交/发布结果由工具与最终交接给出",
-    "未联系独立测试或读取其未发布资料，未改产品代码和共享规范"
+    "717cd65ef73560fde7ff5bca2821c9fe2b20d68a契约/DDL设计不通过；报告含八段十项及18表逐表判定",
+    "C1原请求ID持久源缺失；C2所有经理与100收件人上限冲突；C3时间支持域不一致；C4错误分支/注解语义不一致",
+    "该SHA已发布reviewer/stage=failure及角色标识COMMENT，首次失败报告保留，修复后新SHA另审",
+    "规范/字典静态检查通过不掩盖语义矛盾，也不冒称产品测试、DDL或性能通过",
+    "未改设计/实现/断言，未动Git索引、未提交或合并、未发布success或APPROVE，未接触独立测试内部资料"
   ],
   "unverified": [
-    "尚未按确切SHA审核真实PR #13或其新契约/DDL；不审核本岗自己的M0提交",
-    "产品实现、自测、联调、独立验收和性能",
-    "静态/契约/覆盖率CI尚未实施；运行命令、阈值统计与实际结果待核对",
-    "实际失败合并阻断实验及完整门禁运行路径尚未验证",
-    "新业务基线/契约/DDL的R1-R8闭合尚未复审；baseline-v0只绑定旧快照"
+    "尚未复审修复后的新SHA；当前四项设计阻断均未在本报告版本消除",
+    "MySQL真实DDL/SHOW CREATE TABLE/迁移与恢复未执行；不是本轮静态缺陷本身",
+    "HTTP、业务事务/权限/并发/MQ故障/扫描重启/覆盖率/性能待后续实现验证",
+    "实际失败合并阻断实验由总协调后续执行，本岗仅验证API发布failure成功"
   ],
   "questions": [
-    "请总协调完成本轮归档后提供他岗M0及新契约/DDL的确切SHA与中性证据包",
-    "请责任岗落实静态/契约/覆盖率CI与失败合并阻断实验证据；不能把reviewer/stage配置当作三CI已通过"
+    "请总协调按C1—C4派发责任岗修复，提供新完整SHA复审",
+    "实际拒合并实验由总协调单独执行，本岗不预写结论；归档提交SHA由实际工具和最终交接给出"
   ],
   "prompt_refs": [
     {
@@ -154,7 +182,44 @@
         "agents/reviewer/evidence/main-protection-20261023.json",
         "agents/reviewer/github/issue-12-m0-comment.md"
       ]
+    },
+    {
+      "id": "ROLE-reviewer-DESIGN-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt",
+      "reason": "对已提交且哈希一致的设计作八段十项/18表审核；保留首次失败，精确绑定SHA，区分静态设计与未运行产品",
+      "artifact_paths": [
+        "reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md",
+        "agents/reviewer/WORKLOG.md",
+        "records/handoffs/reviewer.json",
+        "agents/reviewer/github/issue-12-design-717cd65.md",
+        "agents/reviewer/evidence/design-gate-717cd65.json"
+      ]
+    },
+    {
+      "id": "ROLE-reviewer-DESIGN-ARCHIVE-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-ARCHIVE-v1.txt",
+      "reason": "获得根索引独占权限归档首次失败证据；保留717cd65目标，不自引用或自审；commit footer按授权仍引用DESIGN-v1",
+      "artifact_paths": [
+        "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt",
+        "agents/reviewer/dispatches/ROLE-reviewer-DESIGN-ARCHIVE-v1.txt",
+        "agents/reviewer/WORKLOG.md",
+        "reports/modules/reviewer.md",
+        "records/handoffs/reviewer.json"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T13:58:56+08:00"
+  "updated_at": "2026-10-23T14:21:51+08:00",
+  "review_target_sha": "717cd65ef73560fde7ff5bca2821c9fe2b20d68a",
+  "review_outcome": "不通过",
+  "github_evidence": {
+    "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358801740",
+    "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624655316",
+    "status": {
+      "id": 57066080416,
+      "state": "failure",
+      "context": "reviewer/stage",
+      "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358801740",
+      "url": "https://api.github.com/repos/HJY147/t44-dev-trace/statuses/717cd65ef73560fde7ff5bca2821c9fe2b20d68a"
+    }
+  }
 }

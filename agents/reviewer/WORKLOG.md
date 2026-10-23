@@ -33,3 +33,20 @@
 - 本岗真实prompt位置：本日志、交接单与本轮dispatch原文；历史实际ID为 `ROLE-reviewer-BOOTSTRAP-v1`、`ROLE-reviewer-BASELINE-v1`，本轮为 `ROLE-reviewer-M0-COMMIT-v1`。三个任务不自动计作同一提示词三版演进，也不计作用户亲改代码。
 - 串行操作边界：只显式add本岗路径，commit footer包含角色/本轮prompt/Refs #12，保存并使用 `agents/reviewer/github/issue-12-m0-comment.md` 发Issue阶段评论；不push/checkout/merge。提交SHA与评论URL由实际工具输出及最终交接给出，不能在提交前虚写成功。
 - 资料核对：Python检查索引为空、起始HEAD未变、八份本岗产物存在、交接必需字段与三个实际prompt ID、保护回执和协议八段/十项结构，退出0。仅资料检查，不是产品测试。
+
+## 2026-10-23 他岗契约/DDL设计审核 v1
+
+- 实际派工 `ROLE-reviewer-DESIGN-v1`。总协调最终指定 `717cd65ef73560fde7ff5bca2821c9fe2b20d68a`，纳入后端b893353、数据库3c0d55e及D003/目录约定；排除本岗自己的M0。未操作根Git索引，未改设计/实现/断言，未联系独立测试或读取其内部资料。
+- 读取原始T44/需求与业务基线、D001/D002/D003、实施目录及本岗协议；逐项审contracts两件、backend-design和database三件。用git show指定SHA读取12份提交文件并逐字节/SHA-256对照工作树，全部一致；gh pr view13实测相同head、base1996d44且draft。
+- 根.venv真实规范校验该提交OpenAPI通过；Python静态核对18表/35FK/59CHECK、字典逐列和41错误码映射无漂移。Schema-only例值核对显示101收件人事件超maxItems，而0001年完整TaskCreate被接受。只查阅MySQL8.4官方时间类型文档确认承诺支持范围；没有运行MySQL或HTTP。
+- 结论：4类真实设计阻断（原请求ID持久源、全体经理与100收件人上限冲突、API/DB时间支持域、错误注解/分支语义），详 `reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md`。报告八段/十项并18表逐表判定，保留首次失败，不随修复覆盖。
+- 尚未核对/未执行：DDL、SHOW CREATE TABLE、产品事务/权限/并发/MQ/HTTP、覆盖率和性能。这是后续阶段验证，不因缺产品代码要求假测试。本轮不能冻结/放行，修复后提供新完整SHA另审。
+- 总协调随后明确授权本轮Issue摘要、PR COMMENT及当前准确SHA的reviewer/stage=failure，禁止success/APPROVE/合并。评论body-file位于 `agents/reviewer/github/issue-12-design-717cd65.md`；执行前必须再次核对远端HEAD，实际命令/回执将保存本岗evidence，不把授权或待执行写成已完成。
+- 实际执行完成：发布前/PR COMMENT前/failure前/发布后均核对远端HEAD仍为717cd65完整SHA；Issue摘要 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358801740 ，PR COMMENT https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624655316 ，Review返回commit_id与目标一致。gh api对完整SHA发布reviewer/stage=failure成功（status ID57066080416），target_url为Issue摘要。全部argv/退出码/stdout/stderr存 `agents/reviewer/evidence/design-gate-717cd65.json`。未尝试合并；阻断实验由总协调另做。
+
+## 2026-10-23 14:21起 首次失败审核证据本人归档
+
+- 实际归档授权 `ROLE-reviewer-DESIGN-ARCHIVE-v1` 原文已保存，原设计派工亦补存本岗dispatches。它们来自总协调真实消息，不冒称用户原话或同一prompt自动演进。
+- 接管根索引前执行 `git diff --cached --name-status`，为空；分支codex/team-bootstrap、HEAD717cd65完整SHA。获得独占索引，仅显式暂存本轮失败报告、日志、回执、评论正文、派工记录、模块报告与交接，不纳入他岗/共享资料，不reset。
+- 本次仅归档证据，不修改被审规格或首次失败结论。报告继续绑定717cd65，不写自身归档commitSHA，避免自引用；footer按授权使用 `Agent-Role: reviewer`、`Prompt-Ref: ROLE-reviewer-DESIGN-v1`、`Refs #12 #13`。
+- 总协调将独立执行远端失败检查下的保护拒合并实验；本岗未执行/未预写其结果。后续修复新SHA另审；本岗不push/checkout/merge、不发success。提交完成后以实际工具结果交接完整SHA并立即释放根索引。

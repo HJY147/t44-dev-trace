@@ -36,3 +36,11 @@
 - 已实时GET主干保护API：严格要求 `reviewer/stage`，管理员受约束，要求PR与讨论解决；仅此审核上下文被列为必需状态，静态/契约/覆盖率CI尚未实施。API筛选证据见 `agents/reviewer/evidence/main-protection-20261023.json`；未做实际失败合并阻断实验。
 - 已执行资料读取和只读Git/GitHub核对；M0提交和Issue发布结果以工具输出及最终协调交接为准。未执行产品代码/测试、独立验收、覆盖率、性能或任何PR审核放行，不发reviewer成功状态。
 - 本轮实际派工存于 `agents/reviewer/dispatches/ROLE-reviewer-M0-COMMIT-v1.txt`；历史prompt为 `ROLE-reviewer-BOOTSTRAP-v1`、`ROLE-reviewer-BASELINE-v1`，本轮为 `ROLE-reviewer-M0-COMMIT-v1`。这是三个实际任务，未自动计为同一提示词的三版演进，未记作用户改码。
+
+## 他岗契约/DDL设计审核v1与证据归档（2026-10-23）
+
+- 被审准确head为 `717cd65ef73560fde7ff5bca2821c9fe2b20d68a`，PR #13、Issue #12。12份提交内容与所读工作树字节相同，数据库三件哈希一致；本岗自身M0排除。首次失败报告为 `reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md`，含八段十项与18表逐表判定。
+- 设计不通过的四类依据：幂等重放原请求ID缺持久源、全部经理收件人与100上限冲突、API/DB时间支持域不一致、只读接口错误分支/注解矛盾。修复由原责任岗执行，新SHA另审，不覆盖本报告。
+- 已实际通过OpenAPI规范/字典和FK静态核对；Schema例值核对复现两项输入输出边界。没有HTTP、DDL、产品测试、覆盖率或性能结果；缺少后续运行验证本身不是本轮设计缺陷。
+- 角色标识Issue摘要、PR COMMENT和该SHA的 `reviewer/stage=failure` 已实际发布，回执/完整命令在 `agents/reviewer/evidence/design-gate-717cd65.json`；不自我APPROVE、不发success。实际保护拒合并实验由总协调另行执行，本报告不预先宣称成功。
+- 设计实际派工与本轮独占索引归档授权原文分别存于 `agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt` 和 `ROLE-reviewer-DESIGN-ARCHIVE-v1.txt`。归档只提交本岗证据，不改规格、不push/checkout/merge。报告仍绑定717cd65，不嵌入本次证据提交SHA；提交结果通过工具和协调交接提供。
