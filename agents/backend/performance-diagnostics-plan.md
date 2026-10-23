@@ -47,3 +47,9 @@
 续派纠错：原准备提交c44bd33曾写18082，工具未运行；总协调确认该口为不可变原性能API PID16590后，工具/当前方案固定改18083，并在metadata记录port。原提交作为历史保留，不绑定/停止18082。业务IAT修复优先，阶段B仍未开始。
 
 续派真实性约束：955启动前按脚本自身所在Git树取HEAD并拒绝相关产品未提交修改；记录实际t44/api/contracts/runtime/tasks/projects/reviews/persistence.rows的__file__及文件SHA、实际openapi.json SHA，若PYTHONPATH导入别树则在创建Engine前拒绝。当前仅源码静态检查通过，未启动验证这些hook；Stage B待业务checkpoint及总协调避开Word渲染的明确窗口。
+
+## 首次实际窗口后的状态（历史准备稿不覆盖）
+
+业务修复CI362通过后获root独占短诊断窗口。首启工具startup hook失败已修；96e4源baseline服务实际启动两次并正常退出，但bootstrap登录收到非JSON502，尚未产生fixture或任何主样本。系统代理为待验证原因，两Client现固定trust_env=False，仅直连127.0.0.1:18083；这不改变TLS校验。响应JSON非法时仍记录实际HTTP状态。metadata补实际UTC起止，后续仍核exact source/import。
+
+两服务已停止并通知root释放LO；下一次服务/请求须在协调后的新窗口执行。下一步先直接bootstrap验证候选，再baseline1/8/32各10秒、timings同组、profile1并发最多3请求；只测契约入口且验证HTTP200和业务valid=true/无violations。没有主样本前不分析空闲CPU或把502当产品延迟失败。归档profile-bootstrap-*与profile-proxy-static.log。

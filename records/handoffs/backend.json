@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "IAT01-05 developer fixes confirmed by real-service CI362pass0skip; preparing first contract diagnostic window",
+  "stage": "IAT01-05 developer CI362pass0skip; first diagnostic setup stopped without workload samples",
   "implementation_status": "IAT01-05 frozen-scope fixes implemented with developer regressions; independent retest/performance pending",
   "artifacts": [
     {
@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T11:44:36.883636+00:00",
-  "current_stage": "IAT01-05 developer fixes confirmed by real-service CI362pass0skip; preparing first contract diagnostic window",
+  "updated_at": "2026-10-23T11:56:09.468238+00:00",
+  "current_stage": "IAT01-05 developer CI362pass0skip; first diagnostic setup stopped without workload samples",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -697,7 +697,7 @@
     "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
   },
   "performance_diagnostics_v1": {
-    "phase": "A preparation only",
+    "phase": "B setup attempted; no contract workload samples yet",
     "basis": "397bd7973cfd835c635634d32e0c98ae56d74949",
     "specified_parent_product": "43f51570e62e3160f7995c45bdddaf2f123242b3",
     "artifacts": [
@@ -705,27 +705,31 @@
       "agents/backend/performance-diagnostics-plan.md",
       "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
     ],
-    "tool_status": "server+public bootstrap+contract client prepared,Ruff passed; no server/load started yet",
+    "tool_status": "FastAPI startup hook fixed and two baseline servers started/stopped0; bootstrap received nonJSON502; direct-loopback proxy fix static-checked only",
     "production_changes": false,
-    "isolated_target": "t44_profile / 127.0.0.1:18083 /1worker/max120sec; not started",
+    "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; both processes exited0, no diagnostic load running",
     "blocked_execution_prerequisites": [
-      "coordinator authorizes stage B after published report with tested SHA",
-      "coordinator provisions t44_profile and neutral credentials",
-      "database drift work/resource overlap cleared"
+      "coordinator coordinates next CPU window after LO was explicitly released"
     ],
     "unverified": [
-      "tool syntax/import/hooks and effective timing accounting",
-      "client workload driver and neutral fixture selection",
-      "all baseline/CPU/SQL/queue/pool/lock/validation metrics",
+      "fixed direct-loopback bootstrap and fixture candidate validity",
+      "all baseline/CPU/SQL/queue/pool/lock/validation workload metrics",
       "any bottleneck or optimization benefit",
       "formal performance and final source range"
     ],
     "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
-    "next_priority": "coordinator has just published two allowed report files; stage A ends, IAT business fixes before stage B",
+    "next_priority": "Resume fixed bootstrap then contract-only1/8/32 short samples in coordinated CPU window; no production optimization before evidence",
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
-    "execution_gate": "after stable business checkpoint, report exact source+short1/8/32 plan and await coordinator CPU window separate from Word rendering",
+    "execution_gate": "Do not restart server/load until next coordinator CPU window; report exact committed source+actual imports+UTC.",
     "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
-    "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests"
+    "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests",
+    "setup_evidence": [
+      "agents/backend/profile-first-launch-failure.json",
+      "agents/backend/profile-bootstrap-failure.json",
+      "agents/backend/profile-bootstrap-attempts.json",
+      "agents/backend/profile-proxy-static.log"
+    ],
+    "resource_release": "Own18083 processes31358 and31439 exited0; no1/8/32 workload ran; root told LO may resume."
   },
   "iat_repairs_v1": {
     "source_report_verification": "agents/backend/iat-public-report-verification.json",

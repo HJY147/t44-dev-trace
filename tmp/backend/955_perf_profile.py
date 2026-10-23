@@ -14,6 +14,7 @@ import threading
 import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
+from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 from uuid import uuid4
@@ -26,12 +27,13 @@ def client_run(args, source_sha):
     import httpx
 
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
+    started_at = datetime.now(UTC).isoformat()
     started, cpu = time.perf_counter_ns(), time.process_time_ns()
     if args.mode == "bootstrap":
         accounts = json.loads(args.credentials.read_text())["accounts"]
         if json.loads(args.credentials.read_text())["database"] != "t44_profile":
             raise ValueError("Neutral credentials must belong to profile")
-        with httpx.Client(base_url=_URL, timeout=30) as client:
+        with httpx.Client(base_url=_URL, timeout=30, trust_env=False) as client:
             response = client.post(
                 _URL + "/auth/login",
                 json={key: accounts["manager"][key] for key in ("username", "password")},
@@ -136,7 +138,7 @@ def client_run(args, source_sha):
 
         def worker(index):
             rows, count = [], 0
-            with httpx.Client(base_url=_URL, timeout=30) as client:
+            with httpx.Client(base_url=_URL, timeout=30, trust_env=False) as client:
                 while time.perf_counter() < deadline and (
                     not args.max_requests or count < args.max_requests
                 ):
@@ -149,11 +151,13 @@ def client_run(args, source_sha):
                             json=candidate,
                             headers={"Authorization": "Bearer " + fixture["token"]},
                         )
-                        payload = result.json()
                         row.update(
                             status=result.status_code,
                             request_id=result.headers.get("x-request-id"),
                             server_timing=result.headers.get("server-timing"),
+                        )
+                        payload = result.json()
+                        row.update(
                             valid=result.status_code == 200
                             and payload.get("data", {}).get("valid") is True
                             and payload["data"].get("business_guards_executed") is False
@@ -180,6 +184,8 @@ def client_run(args, source_sha):
             for row in records:
                 stream.write(json.dumps(row) + "\n")
     metadata = {
+        "started_at": started_at,
+        "ended_at": datetime.now(UTC).isoformat(),
         "source_sha": source_sha,
         "mode": args.mode,
         "concurrency": args.concurrency,
@@ -191,6 +197,7 @@ def client_run(args, source_sha):
         "pid": os.getpid(),
         "category_counts": dict(Counter(row["category"] for row in records)),
         "url": _URL,
+        "client_trust_env": False,
         "scope": "short developer diagnostic,not formal400VU/600seconds",
     }
     metadata["missing_workers"] = (
@@ -406,6 +413,7 @@ def main():
         uvicorn.Config(observer or app, host="127.0.0.1", port=18083, workers=1, access_log=False)
     )
     timer = threading.Timer(args.seconds, lambda: setattr(server, "should_exit", True))
+    started_at = datetime.now(UTC).isoformat()
     started, cpu = time.perf_counter_ns(), time.process_time_ns()
     timer.start()
     try:
@@ -414,6 +422,8 @@ def main():
         timer.cancel()
         engine.dispose()
         metadata = {
+            "started_at": started_at,
+            "ended_at": datetime.now(UTC).isoformat(),
             "mode": args.mode,
             "source_sha": source_sha,
             "imported_modules": sources,
