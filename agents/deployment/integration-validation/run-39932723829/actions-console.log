@@ -1,0 +1,263 @@
+docker-application	Set up job	﻿2026-10-23T09:33:28.8037908Z Current runner version: '2.338.0'
+docker-application	Set up job	2026-10-23T09:33:28.8053836Z ##[group]Runner Image Provisioner
+docker-application	Set up job	2026-10-23T09:33:28.8054466Z Hosted Compute Agent
+docker-application	Set up job	2026-10-23T09:33:28.8054808Z Version: 20261012.601
+docker-application	Set up job	2026-10-23T09:33:28.8055195Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+docker-application	Set up job	2026-10-23T09:33:28.8055619Z Build Date: 2026-10-12T17:48:21Z
+docker-application	Set up job	2026-10-23T09:33:28.8056005Z Worker ID: {547ffee6-f7a2-4164-b55a-bba636dac02f}
+docker-application	Set up job	2026-10-23T09:33:28.8056466Z Region: westus2
+docker-application	Set up job	2026-10-23T09:33:28.8056783Z Cloud: Azure
+docker-application	Set up job	2026-10-23T09:33:28.8057083Z ##[endgroup]
+docker-application	Set up job	2026-10-23T09:33:28.8057975Z ##[group]Operating System
+docker-application	Set up job	2026-10-23T09:33:28.8058324Z Ubuntu
+docker-application	Set up job	2026-10-23T09:33:28.8058923Z 24.04.5
+docker-application	Set up job	2026-10-23T09:33:28.8059218Z LTS
+docker-application	Set up job	2026-10-23T09:33:28.8059508Z ##[endgroup]
+docker-application	Set up job	2026-10-23T09:33:28.8059984Z ##[group]Runner Image
+docker-application	Set up job	2026-10-23T09:33:28.8060332Z Image: ubuntu-24.04
+docker-application	Set up job	2026-10-23T09:33:28.8060778Z Version: 20261012.334.1
+docker-application	Set up job	2026-10-23T09:33:28.8061374Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+docker-application	Set up job	2026-10-23T09:33:28.8062589Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+docker-application	Set up job	2026-10-23T09:33:28.8063148Z ##[endgroup]
+docker-application	Set up job	2026-10-23T09:33:28.8063815Z ##[group]GITHUB_TOKEN Permissions
+docker-application	Set up job	2026-10-23T09:33:28.8065103Z Contents: read
+docker-application	Set up job	2026-10-23T09:33:28.8065476Z Metadata: read
+docker-application	Set up job	2026-10-23T09:33:28.8065792Z ##[endgroup]
+docker-application	Set up job	2026-10-23T09:33:28.8067022Z Secret source: Actions
+docker-application	Set up job	2026-10-23T09:33:28.8067623Z Cache mode: write
+docker-application	Set up job	2026-10-23T09:33:28.8067997Z Prepare workflow directory
+docker-application	Set up job	2026-10-23T09:33:28.8594441Z Prepare all required actions
+docker-application	Set up job	2026-10-23T09:33:28.8631747Z Getting action download info
+docker-application	Set up job	2026-10-23T09:33:29.1761534Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+docker-application	Set up job	2026-10-23T09:33:29.5596349Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+docker-application	Set up job	2026-10-23T09:33:30.2623634Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+docker-application	Set up job	2026-10-23T09:33:30.8168806Z Complete job name: docker-application
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T09:33:30.8578963Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8579580Z with:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8579802Z   persist-credentials: false
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8580060Z   repository: HJY147/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8582304Z   token: ***
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8582520Z   ssh-strict: true
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8582742Z   ssh-user: git
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8582884Z   clean: true
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583037Z   sparse-checkout-cone-mode: true
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583210Z   fetch-depth: 1
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583353Z   fetch-tags: false
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583497Z   show-progress: true
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583646Z   lfs: false
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583795Z   submodules: false
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8583942Z   set-safe-directory: true
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8584114Z   allow-unsafe-pr-checkout: false
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.8584453Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9185635Z Syncing repository: HJY147/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9186815Z ##[group]Getting Git version info
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9187288Z Working directory is '/home/runner/work/t44-dev-trace/t44-dev-trace'
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9187913Z [command]/usr/bin/git version
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9246539Z git version 2.55.0
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9254475Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9263011Z Temporarily overriding HOME='/home/runner/work/_temp/393c7721-3208-4c86-901f-7279583b95c6' before making global git config changes
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9263849Z Adding repository directory to the temporary git global config as a safe directory
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9269267Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9311925Z Deleting the contents of '/home/runner/work/t44-dev-trace/t44-dev-trace'
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9313790Z ##[group]Determining repository object format
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9314905Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9315157Z ##[group]Initializing the repository
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9318186Z [command]/usr/bin/git init /home/runner/work/t44-dev-trace/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9434904Z hint: Using 'master' as the name for the initial branch. This default branch name
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9439362Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9440452Z hint: to use in all of your new repositories, which will suppress this warning,
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9441164Z hint: call:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9441479Z hint:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9441811Z hint: 	git config --global init.defaultBranch <name>
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9442128Z hint:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9442421Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9442887Z hint: 'development'. The just-created branch can be renamed via this command:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9443272Z hint:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9443511Z hint: 	git branch -m <name>
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9443787Z hint:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9444110Z hint: Disable this message with "git config set advice.defaultBranchName false"
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9444639Z Initialized empty Git repository in /home/runner/work/t44-dev-trace/t44-dev-trace/.git/
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9447074Z [command]/usr/bin/git remote add origin https://github.com/HJY147/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9491018Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9491466Z ##[group]Disabling automatic garbage collection
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9499727Z [command]/usr/bin/git config --local gc.auto 0
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9528294Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9528876Z ##[group]Setting up auth
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9529172Z Removing SSH command configuration
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9532866Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9560526Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9832718Z Removing HTTP extra header
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9836379Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:30.9863826Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0023941Z Removing includeIf entries pointing to credentials config files
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0027251Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0054054Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0221029Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0250809Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path /home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0277672Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0306921Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0333813Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0359943Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0360376Z ##[group]Fetching the repository
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.0363776Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31f4dff935973162544951fe0660ce208edb7007:refs/remotes/origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5547838Z From https://github.com/HJY147/t44-dev-trace
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5549297Z  * [new ref]         31f4dff935973162544951fe0660ce208edb7007 -> origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5556178Z [command]/usr/bin/git branch --list --remote origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5579491Z   origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5584823Z [command]/usr/bin/git rev-parse refs/remotes/origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5605064Z 31f4dff935973162544951fe0660ce208edb7007
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5608012Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5608805Z ##[group]Determining the checkout info
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5609416Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5611747Z [command]/usr/bin/git sparse-checkout disable
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5655756Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5684869Z ##[group]Checking out the ref
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.5685434Z [command]/usr/bin/git checkout --progress --force -B codex/deployment-runtime refs/remotes/origin/codex/deployment-runtime
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6071146Z Switched to a new branch 'codex/deployment-runtime'
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6075270Z branch 'codex/deployment-runtime' set up to track 'origin/codex/deployment-runtime'.
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6080718Z ##[endgroup]
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6115647Z [command]/usr/bin/git log -1 --format=%H
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6138025Z 31f4dff935973162544951fe0660ce208edb7007
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6146869Z ##[group]Removing auth
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6147251Z Removing SSH command configuration
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6147606Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6174919Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6339880Z Removing HTTP extra header
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6342200Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6368152Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6530316Z Removing includeIf entries pointing to credentials config files
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6532708Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6558057Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6559171Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6559916Z includeif.gitdir:/github/workspace/.git.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6560703Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6565294Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6588207Z /home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6597455Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-299f1b12\-5ff2\-48dc\-8a9f\-f39805028646\.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6627151Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6648030Z /home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6669558Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-299f1b12\-5ff2\-48dc\-8a9f\-f39805028646\.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6688874Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6713523Z /github/runner_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6719841Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-299f1b12\-5ff2\-48dc\-8a9f\-f39805028646\.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6750148Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6772417Z /github/runner_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6779135Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-299f1b12\-5ff2\-48dc\-8a9f\-f39805028646\.config
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6809438Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6982836Z Removing credentials config '/home/runner/work/_temp/git-credentials-299f1b12-5ff2-48dc-8a9f-f39805028646.config'
+docker-application	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:33:31.6990515Z ##[endgroup]
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T09:33:31.7216374Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7216601Z with:
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7216713Z   python-version: 3.12
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7216833Z   check-latest: false
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7218273Z   token: ***
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7218634Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7218847Z   update-environment: true
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7218977Z   allow-prereleases: false
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7219100Z   freethreaded: false
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7219217Z ##[endgroup]
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7892880Z ##[group]Installed versions
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7948178Z Successfully set up CPython (3.12.15)
+docker-application	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T09:33:31.7948656Z ##[endgroup]
+docker-application	Prepare evidence directory	﻿2026-10-23T09:33:31.8066946Z ##[group]Run mkdir -p reports/docker-integration
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8067337Z ^[[36;1mmkdir -p reports/docker-integration^[[0m
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8420225Z shell: /usr/bin/bash -e {0}
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8420458Z env:
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8420639Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8420898Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8421132Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8421342Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8421553Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8421760Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+docker-application	Prepare evidence directory	2026-10-23T09:33:31.8421935Z ##[endgroup]
+docker-application	Real image build, Compose application, private service credential and isolated recovery	﻿2026-10-23T09:33:31.8544196Z ##[group]Run python tmp/deployment/972_compose_application.py
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8544492Z ^[[36;1mpython tmp/deployment/972_compose_application.py^[[0m
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8588935Z shell: /usr/bin/bash -e {0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8589074Z env:
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8589221Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8589450Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8589674Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8589874Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8590075Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8590277Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:31.8590448Z ##[endgroup]
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:32.0938921Z Created private configuration at /home/runner/work/t44-dev-trace/t44-dev-trace/.env; existing files are never overwritten.
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:32.0939558Z {"step": "docker-version", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:32.2661263Z {"step": "compose-version", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:33:53.3994948Z {"step": "build", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:17.9293893Z {"step": "infra", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:19.4939948Z {"step": "migration", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:20.8340340Z {"step": "init-user", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:22.2740572Z {"step": "seed", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:22.3435463Z {"step": "project-scopes", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:23.8732959Z {"step": "credential-issue", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:50.7289056Z {"step": "application-up", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:50.7827142Z {"step": "application-ps", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:50.9090485Z {"step": "four-api-workers", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:51.3307346Z {"step": "credential-permissions", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:52.0846401Z {"step": "shared-flock-probe", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:34:53.3766145Z {"step": "shared-flock-rejects-second-scanner", "exit_code": 1}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:16.2827751Z {"step": "credential-rotate", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:16.3514806Z {"step": "scheduler-progress", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:17.0525556Z {"step": "quiesce-writers", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:17.1214874Z {"step": "source-table-names", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:17.1925895Z {"step": "source-counts", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:17.2641482Z {"step": "source-checksums", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:17.6106216Z {"step": "backup", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:28.7096112Z {"step": "isolated-restore", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:28.7901177Z {"step": "recovered-table-names", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:28.8657066Z {"step": "recovered-counts", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:28.9382286Z {"step": "recovered-checksums", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:30.3067426Z {"step": "restored-schema", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:57.1034276Z {"step": "restart-primary", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:57.2252542Z {"step": "primary-logs", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:59.6219793Z {"step": "primary-stop", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:35:59.6739583Z {"step": "recovery-logs", "exit_code": 0}
+docker-application	Real image build, Compose application, private service credential and isolated recovery	2026-10-23T09:36:00.7237465Z {"step": "recovery-stop", "exit_code": 0}
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	﻿2026-10-23T09:36:00.7386367Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7386604Z with:
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7386771Z   name: docker-application-31f4dff935973162544951fe0660ce208edb7007
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7386981Z   path: reports/docker-integration/
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387127Z   if-no-files-found: error
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387253Z   retention-days: 14
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387370Z   compression-level: 6
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387485Z   overwrite: false
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387601Z   include-hidden-files: false
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387728Z   archive: true
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387834Z env:
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7387972Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7388196Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7388841Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7389058Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7389259Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7389488Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.7389657Z ##[endgroup]
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.8315683Z With the provided path, there will be 33 files uploaded
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.8319412Z Artifact name is valid!
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:00.8319651Z Root directory input is valid!
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.1717136Z Uploading artifact: docker-application-31f4dff935973162544951fe0660ce208edb7007.zip
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.1740533Z Beginning upload of artifact content to blob storage
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.5574519Z Uploaded bytes 29725
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.6286150Z Finished uploading artifact content to blob storage!
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.6286747Z SHA256 digest of uploaded artifact is 6b0942ded205eb2172973f3a8e87ea5a1708256558d062d6eb837f15896a7be5
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:01.6287127Z Finalizing artifact upload
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:02.2579992Z Artifact docker-application-31f4dff935973162544951fe0660ce208edb7007 successfully finalized. Artifact ID 12492592227
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:02.2580896Z Artifact docker-application-31f4dff935973162544951fe0660ce208edb7007 has been successfully uploaded! Final size is 29725 bytes. Artifact ID is 12492592227
+docker-application	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T09:36:02.2582238Z Artifact download URL: https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829/artifacts/12492592227
+docker-application	Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T09:36:02.2707180Z Post job cleanup.
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T09:36:02.3515682Z Post job cleanup.
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4037524Z [command]/usr/bin/git version
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4076446Z git version 2.55.0
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4097287Z Temporarily overriding HOME='/home/runner/work/_temp/c3871f83-ad62-4fa4-979e-a95b6e5c222c' before making global git config changes
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4098102Z Adding repository directory to the temporary git global config as a safe directory
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4100653Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4129634Z Removing SSH command configuration
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4130009Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4156153Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4340310Z Removing HTTP extra header
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4344123Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4371994Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4559129Z Removing includeIf entries pointing to credentials config files
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4564819Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-application	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T09:36:02.4593126Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-application	Complete job	﻿2026-10-23T09:36:02.4888272Z Cleaning up orphan processes

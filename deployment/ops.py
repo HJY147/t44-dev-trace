@@ -238,7 +238,7 @@ def main() -> int:
         elif args.operation == "migrate":
             check_primary(values, args.database)
             if not args.execute:
-                print("Plan only: reviewed backend t44.cli migrate --database <selected database>; implementation required.")
+                print("Plan only: backend t44.cli migrate --database <selected database>; --execute is required to run.")
             else:
                 compose(args.env_file, values, "--profile", "operations", "run", "--rm", "-T", "migrate")
         elif args.operation == "seed-demo":

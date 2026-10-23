@@ -1,12 +1,12 @@
 # 单机运行与恢复
 
-完整应用/哈希依赖锁/实际CLI现已合入部署联调基点。INTEGRATION-v1正在GitHub托管Linux上验证镜像构建、完整Compose和隔离恢复，结果以本岗handoff和精确Actions提交为准。本机没有Docker；不能把历史静态检查或本次配置修改写成完整运行成功，未租赁云资源。规格建议不是性能保证。
+完整应用/哈希依赖锁/实际CLI现已合入部署联调基点。INTEGRATION-v1已在GitHub托管Linux上验证镜像构建、完整Compose和隔离恢复：[run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)，精确应用提交31f4dff935973162544951fe0660ce208edb7007。本机没有Docker；不能把历史静态检查或本次配置修改写成完整运行成功，未租赁云资源。规格建议不是性能保证。
 
 ## 前提和边界
 
 - Linux 单机、Docker Engine 与支持 `up --wait` 的 Compose v2（建议至少2.24）；本项目没有集群或多地域。
 - Python3.12 用于 `deployment/ops.py`；操作工具只依赖标准库。生产镜像固定多架构摘要，版本更新需重新验证和留痕。
-- `backend/requirements.lock` 必须含全部依赖哈希；运行包为 `backend/t44/`，DDL为 `specs/database/`，运行时权威契约为 `specs/contracts/`；镜像只复制这些规格目录，不复制原始 `specs/sources`。后端实际资源加载路径仍待编码核对。API `t44.api:app` 使用4个 worker；消息与调度分别为 `python -m t44.messaging`、`python -m t44.scheduling`。
+- `backend/requirements.lock` 必须含全部依赖哈希；运行包为 `backend/t44/`，DDL为 `specs/database/`，运行时权威契约为 `specs/contracts/`；镜像只复制这些规格目录，不复制原始 `specs/sources`。已由真实镜像构建和应用启动验证资源路径。API `t44.api:app` 使用4个 worker；消息与调度分别为 `python -m t44.messaging`、`python -m t44.scheduling`。
 - Vue3/TypeScript/Element Plus，Node24、pnpm11.25.0，`frontend/pnpm-lock.yaml`、`pnpm run build` 输出 `dist/`；Nginx同源转发 `/api/v1`，保留完整前缀，支持HTML5 history路由。
 - 只有 `127.0.0.1:8080` 映射宿主。MySQL、RabbitMQ（包括管理面板）没有宿主端口；数据卷分别为 `<project>_mysql_data`、`<project>_rabbitmq_data`，另有私密凭据卷和共享锁卷。不要增加公网数据库/队列端口。
 
@@ -72,11 +72,11 @@ python3 deployment/ops.py restore --database t44_recovery --project t44-restore-
   --confirm-target t44-restore-20261023/t44_recovery --input backups/t44-20261023.sql --execute
 ```
 
-备份只选配置库，先拒绝空库、非InnoDB表、视图、触发器、例程及事件，避免不一致或静默遗漏；当前18表设计采用InnoDB。使用 `mysqldump --single-transaction`，不输出DROP/建库/USE，也不在备份期间自动执行迁移；备份时禁止并行DDL。SQL与SHA256清单以0600排他创建，拒绝覆盖。备份含业务数据，须在另行确认的加密介质/受限位置保存；保留周期、异机副本、RPO/RTO未决定，本工具不声称已满足灾备。
+备份只选配置库，先拒绝空库、非InnoDB表、视图、触发器、例程及事件，避免不一致或静默遗漏；当前18张业务表及1张迁移元数据表采用InnoDB。使用 `mysqldump --single-transaction`，不输出DROP/建库/USE，也不在备份期间自动执行迁移；备份时禁止并行DDL。SQL与SHA256清单以0600排他创建，拒绝覆盖。备份含业务数据，须在另行确认的加密介质/受限位置保存；保留周期、异机副本、RPO/RTO未决定，本工具不声称已满足灾备。
 
 恢复只接受本工具格式及匹配校验和，要求不同于业务库的显式目标库、新 `t44-restore-*` 项目和完整 `project/database` 确认；已存在目标卷一律拒绝。它仅启动全新隔离MySQL卷、确认目标空库并导入，随后核对表数，不替换运行中的数据库，不清理已有卷，不执行drop/reset。不要导入来源不明SQL。若导入失败，保留隔离实例调查，换新项目重新演练，不能清空已有目标。
 
-表数不是完整恢复验证：数据库岗还须核对迁移版本、SHOW CREATE TABLE/约束、业务行数及事务/权限/消息幂等，应用岗执行恢复回归。当前mysqldump和恢复尚未运行。队列卷持久化不等于可移植备份；RabbitMQ消息的灾后重投依赖数据库outbox/消费去重和消息岗恢复契约，目前不能承诺队列恢复达标。备份/恢复工具不做业务“已回滚”状态迁移。
+表数不是完整恢复验证：数据库岗还须核对迁移版本、SHOW CREATE TABLE/约束、业务行数及事务/权限/消息幂等，应用岗执行恢复回归。上述托管Linux演练已停写备份并恢复到新项目/隔离库；19表行数和EXTENDED内容checksum一致，恢复迁移复核18业务表/226列无缺陷。演练使用2项目40任务的synthetic数据，不能替代生产规模、异机介质或故障恢复验收。队列卷持久化不等于可移植备份；RabbitMQ消息的灾后重投依赖数据库outbox/消费去重和消息岗恢复契约，目前不能承诺队列恢复达标。备份/恢复工具不做业务“已回滚”状态迁移。
 
 ## 访问、日志与发布回退
 
@@ -90,4 +90,4 @@ python3 deployment/ops.py restore --database t44_recovery --project t44-restore-
 
 - [Compose健康依赖与独立步骤](https://docs.docker.com/compose/how-tos/startup-order/)
 - [官方Compose规范](https://github.com/compose-spec/compose-spec)，离线schema及固定来源见 `deployment/vendor/`。
-- [Docker Official Images](https://github.com/docker-library/official-images)，镜像tag及多架构摘要已在2026-10-23向官方registry核对；未拉取/构建。
+- [Docker Official Images](https://github.com/docker-library/official-images)，镜像tag及多架构摘要已在2026-10-23向官方registry核对；上述托管Linux run已真实拉取并构建。

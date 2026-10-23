@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "完整应用Docker联调执行checkpoint",
-  "implementation_status": "部署/CI及真实应用运维接线已实现；Docker application job待推送实际执行",
+  "stage": "完整应用部署联调完成；等待总协调整合/独立验收",
+  "implementation_status": "Compose/Docker/运维/CI已实现；托管Linux真实构建启动、凭据轮换、停写备份隔离恢复通过",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -69,7 +69,10 @@
     "tmp/deployment/972_compose_application.py",
     "agents/deployment/integration-validation/",
     "agents/deployment/integration-checkpoint-comment.md",
-    "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md"
+    "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
+    "agents/deployment/integration-validation/run-39932416571/",
+    "agents/deployment/integration-validation/run-39932723829/",
+    "agents/deployment/integration-final-comment.md"
   ],
   "interfaces": [
     {
@@ -285,11 +288,13 @@
     "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实"
   ],
   "unverified": [
-    "Docker真实镜像build/完整Compose应用/凭据轮换/备份隔离恢复待新job执行，本机无Docker",
-    "未租云资源，无云部署/独立验收/性能结论"
+    "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
+    "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
+    "未确认生产备份保留周期/异机加密介质/RPO/RTO；RabbitMQ卷可移植恢复与完整灾备未验证"
   ],
   "questions": [
-    "实际Docker联调结果尚待首次执行；失败按日志修复，不用配置检查替代"
+    "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
+    "管理员按实际expiry安排service凭据受控轮换，并明确正式部署TLS/备份运维责任"
   ],
   "prompt_refs": [
     {
@@ -349,7 +354,7 @@
       "reason": "基于已实现应用做真实Docker运行、私密凭据和备份恢复证据；统一tmp编号，保留严格全源码行覆盖率"
     }
   ],
-  "updated_at": "2026-10-23T06:44:10.857158+00:00",
+  "updated_at": "2026-10-23T09:39:11.297054+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -378,9 +383,22 @@
     "ci_path_checkpoint": "7e4dbda1e7afd82ce3c794dfdf025e6ca8870277",
     "parent_reported_product_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
     "product_sha": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
-    "product_jobs": "static/contracts/coverage/frontend success, reported by root",
+    "product_jobs": "static/contracts/coverage/frontend success; directly verified run JSON",
     "local_fe_lines": "308/334 92.21%",
     "local_guards": 23,
-    "docker_application": "not yet run"
+    "docker_application": "success",
+    "docker_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829",
+    "validated_application_sha": "31f4dff935973162544951fe0660ce208edb7007",
+    "product_runs": [
+      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723908",
+      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932729585"
+    ],
+    "restoration": "19 tables counts+EXTENDED checksums identical;18 business tables226 columns migration checks passed",
+    "credential_rotation": "JSON0600 UID10001 readonly directory;old session1 revoked,new3;shared flock rejects second scanner",
+    "runtime": "4APIworkers/consumer/scheduler/web;2successful scans16created;HTTP/SPA/413 verified",
+    "evidence": "agents/deployment/integration-validation/run-39932723829/",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100",
+    "pr_final": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531",
+    "archive_revision": "Final evidence/readability revision is resolved by actual Git commit; validated application SHA remains separate"
   }
 }

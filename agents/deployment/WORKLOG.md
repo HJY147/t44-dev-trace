@@ -82,3 +82,14 @@
 
 - 首次Docker run39932416571在f052fdd镜像build、infra、迁移、init-user、seed、私密service凭据和全Compose健康启动均退出0；4worker探针输出api_parents=2/workers=4后退出1，因init包装命令也含uvicorn误计。修正为python直接-m uvicorn位置参数判定，不减少worker断言。尚未进入HTTP/恢复阶段。首次原始产物按gzip+SHA保存于integration-validation/run-39932416571，不改写失败。
 - 本轮阶段Issue7评论6361856213、PR15评论6361856737已实际body-file发表。
+
+### INTEGRATION-v1 远程实际通过与交接
+
+- 真实Docker run https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829 在精确SHA31f4dff935973162544951fe0660ce208edb7007 success。已直接下载完整artifact/读取result.json，不仅依据状态灯；same SHA product39932723908及39932729585四job也直接读取确认success。
+- 两镜像真实build、显式库migrate/init-user/seed2项目40任务30依赖80记录、全Compose健康、/proc核对1API parent+4workers、401/登录/项目任务HTTP、SPA路由以及API1MiB/代理2MiB JSON413均通过。API拒绝audit_id=22；代理拒绝audit_id=null，不伪称已审计。
+- 凭据mode0600/UID10001/目录RO、共享flock额外容器验证成功，第二scanner预期退出1；停scheduler排空后轮换session1→3并撤销旧值、健康重启，持久scan完成2次/创建16条。未输出Token，redacted_secret_occurrences=0。
+- 停写一致性备份后恢复到新project t44-restore-39932723829/库t44_recovered，19张表逐表行数/EXTENDED checksum完全一致；恢复迁移复核18业务表226列/零defect/already_applied，源应用重启后同会话任务GET200。未覆盖活库、DROP、清卷或上传数据库dump。
+- 本地23guard/FE命令和远程首次失败/最终通过证据均保留原始gzip+SHA，阅读日志仅规范尾空白，未删改失败。README和迁移计划提示同步为实际已实现/已验证范围。本机无Docker，未租赁或云部署、正式TLS/性能/独立验收/异机队列灾备。
+
+- 最终真实结果body-file评论已发表：Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100 ；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531 。评论正文保存在integration-final-comment.md；PR15既有attach不重复创建。最终证据/说明收尾提交由实际Git元数据确定，精确被运行应用SHA仍31f4dff。
+- 最终证据暂存diff检查发现一份阅读日志末尾多余空行并正确停止，未先提交；原始gzip不动，仅规范阅读稿EOF空行，证据说明同步后重新diff检查。
