@@ -90,3 +90,19 @@ D005/D006及公开IAT01–05、FE计数修复的限定源审查未发现新实�
 ## 单UoW实现限定复审（5dcb）
 
 仅Runtime净+7的契约校验分支与已审3187设计一致，限定无新阻断；原18专项和精确CI412均核原件，checkout整tree亦对应5dcb。本岗没有重跑测试/负载或创建918脚本。4/5/5查询各1acquire是功能性计数，延迟收益未测；5980超880、正式性能及独立仍未闭环，整体不通过。报告reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md，真实prompt ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1，后续新源另审。
+
+## 暖米咖玻璃 UI 限定审核（840b1a8）
+
+精确实现 `840b1a88e6976f0ecfb0b0ba45676b208aae4d98`，设计 `326f97151970ec9b4ce77114de2c2170d24a681d`，公开开发证据 `63519c2b114bb4cb1c98dcc43e0f2358e65d0892`。五份生产前端差异仅涉及视觉与可选 Vite 缓存；关键业务 blob 与 5dcb 不变，设计提交先于 Vue 且为直接父提交。22 份源摘要、10 份 gzip 原日志全部一致；本岗实际查看最终 18 张原 PNG。390 下七标签、详情底部、长表单与关闭/取消/确认可读可触达，通知双计数未合并。限定范围未发现新增实质阻断。
+
+本岗未重复 27 项/构建/业务或负载，仅核公开开发原件（27/27、310/334 行，最终 build 留大 chunk 警告）。焦点陷阱/返回焦点等未完整运行；既存 `initial` 文本 true 留待前端新 SHA 修复另审。整产品、独立验收、性能与源码规模仍未通过；不发 reviewer/stage success、不 APPROVE、不合并。报告 `reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md`；实际 prompt `ROLE-reviewer-WARM-GLASS-v1`。自有 worktree/index，仅归档本岗资料；PR21 COMMENT 与回执由实际发布补记。
+
+## FE-INIT-01补充审核（75c3468）
+
+精确 `75c3468de07303cc47b9afd0e4a169664743470e` 相对840只有FieldEditor生产源修改，设计736先提交、公开621证据后归档。根因是Vue为Json联合推导的props把Boolean排在String前而强转空串，initial()本来正确；显式type:null/PropType保留原JSON值，schema/API/样式不改。3源hash、6原gzip/规范化可读日志一致；本岗实际看4原PNG。开发红2→绿6、受影响14通过、真实1440/390空字段与required阻止提交、20响应仅登录和GET均核原件。本岗未重跑，未将840覆盖率外推。
+
+FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5632356314保留当时历史。75补充报告 `reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md`，prompt `ROLE-reviewer-EMPTY-VALUE-SUPPLEMENT-v1`。整产品仍不通过；此时目标尚未纳入PR head8be，暂不COMMENT，待root push后绑定75，最终回执另补。
+
+发布补记：远端head后变为4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0、frontend/src及Vite与75差异为空。插件实际COMMENT5632472310已发布；gh只读特定review核commit_id=75、state=COMMENTED、正文逐字一致。回执 `agents/reviewer/evidence/empty-value-75c/github-comment.json`。没有发布任何status/APPROVE或合并。
+
+两轮最终公开留痕：840 COMMENT5632356314（报告d8bba16、回执e79fb5e）与75 COMMENT5632472310（报告67e051f、回执后续归档），均已发布并精确绑定各自source。documentation按M5实问索取后，已回复这两组准确SHA/链接/未测边界；未向其提供任何独立未发布材料。

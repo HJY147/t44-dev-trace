@@ -2,6 +2,8 @@
 
 ## 2026-10-23 初始化
 
+> 最新暖米咖 UI 审核见文末；历史各轮不回写。
+
 - 派工：`ROLE-reviewer-BOOTSTRAP-v1`；操作者为审核岗位 AI，总协调派工，未发生用户亲自改码或提示词迭代。
 - 范围：仅审核协议、此日志、模块报告和 JSON 交接；未修改产品代码或共享规范，未创建子 agent，未联系独立测试或读取其未发布资料。
 - 读取：根 `AGENTS.md`、本岗 `TASK.md`、团队/GitHub 协作规范和报告模板；参考部署岗已发布模块报告及交接字段，不视为本岗验证结果。
@@ -159,3 +161,24 @@
 - 规模5980超880仅核原计数/源等值，未重跑cloc；正式性能失败/无延迟收益、新独立SUT4c边界保持，整体不通过。后续GitHub COMMENT/回执以真实结果补入。
 
 - 主证据60a524dfff45d6022cf74a5daa02cc195ae7b172首次push遇SSL_ERROR_SYSCALL退出128；只读ls-remote恢复exit0且分支尚无，单次重试push退出0，原错误保存在github-publish.json。PR21 COMMENT真实发布并GET逐字读回、commit_id严格5dcb/stateCOMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636。无status写入/APPROVE/mainmerge；补回执后立即释放槽，不待未来负载。
+
+## 2026-10-24 暖米咖玻璃 UI 限定审核
+
+- 实际 prompt `ROLE-reviewer-WARM-GLASS-v1`；总协调原始/续派存 dispatches。先以根已提交19184建立独立codex/review-warm-glass，不动根索引/他树、不读取未提交owner文件、不扩编或接触独立测试/环境/凭据。
+- 固定业务基线5dcb、设计326、实现840b1a88e6976f0ecfb0b0ba45676b208aae4d98、公开证据63519c2b114bb4cb1c98dcc43e0f2358e65d0892。Git show/diff/log与shasum核五生产差异、设计顺序和两许可证摘要；22源hash、10原日志与gzip逐字节一致，9关键业务blob未变。
+- 使用view_image实际看完live-stable全部18原PNG，非本岗重新运行浏览器。390单列表单滚动client857/scroll1829/top972到底，header关闭可见，七标签/详情底部/通知双计数可读；开发40响应全200，仅2登录POST，其余GET，无业务写。验证JSON收录截图原hash。
+- 公开开发27/27、310/334行92.81、typecheck及最终build原件已核，本岗未重跑，不写成独立/学生手测。原refined关闭越界/verified隐藏选择器失败及过渡/CDP中间局限保持；最终build大chunk告警未压制。
+- 限定UI差异无新增实质阻断；原initial文本true在截图可见且contract源未改，留待owner新SHA。完整焦点陷阱/返回焦点/读屏/其他引擎未运行；整体独立/性能/规模与合并门禁仍未通过。报告八段十项，责任岗修复，本岗无产品改码。
+- PR首次插件GET为56f588旧head，目标不在PR，merge-base exit1，通知root后未尝试发布；root集成push后再次读回8be64056f1733eb99938aa3b7d9b1b22a53677a6，目标祖先exit0且840父精确326。仅准备绑定840的COMMENT；实际发布/自有commit/push回执随后补记，不发reviewer/stage成功、APPROVE或合并。
+
+- 实际阶段提交d8bba16a0e273e121d39ea9c3b58594521a39eac，自有分支push exit0；GitHub插件COMMENT成功review5632356314，list readback为COMMENTED/正文一致；插件未返回commit_id，故用gh只读GET特定review补核：commit_id精确840、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314。回执github-comment.json。无状态写入/APPROVE/合并。补归档时一次apply_patch同路径Delete/Add被拒（未改文件），改Update成功，不影响已发布正文或审核结论。
+
+## 2026-10-24 FE-INIT-01限定补充审核
+
+- 实际追加prompt ROLE-reviewer-EMPTY-VALUE-SUPPLEMENT-v1原文存dispatches；840报告/COMMENT已先交付，保持其历史结论。固定75c3468de07303cc47b9afd0e4a169664743470e/设计7369400d96ac1d2cb48ac8ce4b2701ac636dda0d与公开证据6212e5f0513e31e5e43e31caf4e8fdab8e5cc36e，未读取owner未提交文件。
+- 精确diff确认唯一生产源FieldEditor+7；原initial函数正确，Json联合在泛型props编译为Boolean-before-String，空串被组件强转，非CSS/API/默认值函数错误。改显式运行时type:null且保留TS PropType，默认值/props/emits/业务校验不变。
+- 3源hash与75相同，6份原gzip及可读hash/逐行尾空白规范化均一致；读红2失败/4通过、绿6、受影响14通过/16名称未选原件，不相加，不重跑、不改断言。本岗实际view_image看4张原PNG，20响应2login+18GET无业务写，三文本DOM为空/required阻止提交。原502/30s登录失败与新build大chunk警告保留，不外推840覆盖率。
+- FE-INIT-01在75范围可限定关闭，无新实质阻断；整产品独立/性能/规模门禁仍未通过。无账号/独立资料/5175访问或新脚本。首次PR仍8be，75祖先检查exit1，已通知root，暂不发COMMENT。归档报告后等待目标纳入PR，实际发布另记。
+
+- 75补充阶段67e051f0423f1da1b38bfb7d793ccbf8a5d0e480已commit/push exit0。随后插件实际读到PR head4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0，frontend/src与Vite同75无差异；root亦发来真实push确认。插件COMMENT5632472310成功，gh只读GET特定review核commit_id=75c3468完整SHA、COMMENTED、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310 。无status写入/APPROVE/合并。
+- documentation发M5真实资料问取，已回复两轮精确source/design/evidence/review SHA、公开报告及两个已发布COMMENT和未测边界；75回执当时刚发布尚待本次push，如实说明。未接触或传递独立未发布材料。root说明源码仍超上限，本岗没有重算或宣称规模通过。最终只补实际回执与阶段交接，不更改任何产品/测试源码。
