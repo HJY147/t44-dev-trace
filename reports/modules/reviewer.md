@@ -192,3 +192,5 @@ metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开has
 实际ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1，隔离root5408分支codex/review-bounded-demo。先冻结e30112a，再旧acdf/f159原方法内存反例exit1及报告37-f159...于c1f03c1封存，随后才读新62ac2f327e7523ffed69a2bd9f98c87ba2372931/SHA084618...；同fixture/断言只TARGET和输出名适配一次exit0，0服务/信号/HTTP/SQL/私密IO。新role过滤只排除runner元数据，仍所有应用代+APIchildren；其余AST/runtime/capture/旧测试保持，owner3方法/8role+5child残留证据静态核，不冒称本岗执行。
 
 原4ef唯一360真实exit1/cleanupfalse、ready/额外轮换1、外部wait后全停分列，原stdout不改。旧7端口保护不含5177/18086，未来root需新9项预检；本岗不查独立端口/数据。只限定关闭SERVE-CLEANUP-SCOPE-01，当前所列新增serve/stop/轮换有限静态未见其它新增实质阻断，证据尾16b不是另一次被测代码/360。报告reports/reviews/37-62ac2f327e7523ffed69a2bd9f98c87ba2372931.md，原失败报告单列。无新360/4h/用户demo准入、APPROVE/status/main/globalpass；Issue7+PR37精确COMMENT及GET实记后补。
+
+实际发布：报告阶段26b6cf16837cf1fd0dc73bf9cfab214658780fe5已push；Issue7comment6376797590完整GET body/归属/62ac及PR37 COMMENT5635499152显式完整62ac和GET commit_id/body/COMMENTED严格匹配exit0，github-comment.json。原f159失败/360false保持，仅P2有限关闭；不授予新360/4h/用户demo或整体通过，无APPROVE/status/CI/main。
