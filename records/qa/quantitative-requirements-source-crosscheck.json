@@ -27,7 +27,16 @@
       ],
       "derived_requirement": "coverage>=80%, full tests pass, prompt evolution>=6, human modifications>=12, hallucination list>=3",
       "result": "Original evidence quotas must be reported truthfully; AI edits/reviewer discoveries do not demonstrate student manual edits"
+    },
+    {
+      "source_lines": [
+        100,
+        101
+      ],
+      "derived_requirement": "At least5context-package→final-code comparisons explaining human changes/reasons; at least3hallucination items with human identification/correction process.",
+      "result": "Human participation is explicit here; AI self-correction/reviewer findings remain AI evidence and are not silently counted as student action."
     }
   ],
-  "no_test_rerun_or_source_change": true
+  "no_test_rerun_or_source_change": true,
+  "prompt_version_scope": "Line62 requires>=6prompt evolution versions but does not itself require six student-typed versions; meaningful actual AI refinements can be recorded with AI authorship. Different role labels or unexecuted rewrites are not automatically six evolution versions; evidence must be assessed separately."
 }
