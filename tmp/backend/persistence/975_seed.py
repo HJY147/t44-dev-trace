@@ -1,6 +1,7 @@
 """Synthetic fixtures are checked against business references and frozen JSON shapes."""
 
 import hashlib
+import json
 from datetime import UTC, datetime
 from importlib.resources import files
 
@@ -8,7 +9,7 @@ import pytest
 from sqlalchemy import create_engine, event
 from t44.contracts import validator
 from t44.persistence import SqlAlchemyUnitOfWorkFactory, StatementRejected
-from t44.persistence.schema import metadata
+from t44.persistence.schema import TABLES, metadata
 from t44.persistence.seed import seed_demo
 from t44.services.common import model, plan, task_model
 
@@ -138,7 +139,7 @@ def assert_consistent(factory):
     }
 
 
-def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_factory):
+def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_factory, record_property):
     args = dict(
         projects=2,
         tasks=20,
@@ -152,6 +153,15 @@ def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_facto
     assert any("UPDATE tasks" in sql and many for sql, many in seed_factory.seed_statements)
     assert first["reviews"] + first["decisions"] == 30
     assert_consistent(seed_factory)
+    with seed_factory() as uow:
+        snapshot = {name: uow.gateway.rows(name) for name in TABLES}
+    for user in snapshot["users"]:
+        del user["password_hash"]  # Random Argon2 salts/secrets deliberately are not reproducible.
+    canonical = json.dumps(
+        snapshot, sort_keys=True, separators=(",", ":"),
+        default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
+    )
+    record_property("seed_semantics_sha256", hashlib.sha256(canonical.encode()).hexdigest())
     assert seed_demo(seed_factory, **args)["already_seeded"]
     with pytest.raises(StatementRejected):
         seed_demo(seed_factory, **args, seed=45)

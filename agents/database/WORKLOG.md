@@ -154,3 +154,5 @@
 - 原始run39938428158（PR merge）及39938417442（branch3ed）都为static失败；下载原始job日志、run元数据及static artifact的bandit.json/static-console.log，保存在ci/review-fix-v2/。两者Ruff通过，Bandit B105唯一命中migrations.py:68，token与'('比较误判口令；contracts/coverage/frontend任务成功。
 - 修复只把解析器局部变量token改lexeme，词法/语义/断言不变，无nosec、无门禁或测试削弱。保存失败报告/hash和实际命令差错于original-failures.json；不把下载成功当测试通过。
 - 本checkpoint提交后交给托管CI；t44_review受控结构改动/重复迁移拒绝/恢复验证仍未执行，C-P4未关闭。seed去重在下一小阶段，当前未改seed。
+- 完整diff-check对原始GHA日志提示其上游尾空格，原字节保留；源码/报告/handoff/prompt限定diff-check另检，不冒称原始日志无尾空格。未通过改写证据规避提示。
+- 在原975测试保留全部断言并添加record_property业务行摘要（唯独排除故意随机生成的Argon2 hash），托管JUnit可提供重构前基线；不新增测试编号/文件，不把记录摘要本身算验证断言。
