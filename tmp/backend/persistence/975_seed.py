@@ -2,13 +2,23 @@
 
 import hashlib
 import json
+import os
+import tempfile
 from datetime import UTC, datetime
 from importlib.resources import files
+from pathlib import Path
 
 import pytest
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, text
 from t44.contracts import validator
-from t44.persistence import SqlAlchemyUnitOfWorkFactory, StatementRejected
+from t44.persistence import (
+    MySQLSettings,
+    PersistenceIntegrityError,
+    SqlAlchemyUnitOfWorkFactory,
+    StatementRejected,
+    create_mysql_engine,
+    migrations,
+)
 from t44.persistence.schema import TABLES, metadata
 from t44.persistence.seed import seed_demo
 from t44.services.common import model, plan, task_model
@@ -141,6 +151,18 @@ def assert_consistent(factory):
     }
 
 
+def persisted_digest(factory):
+    with factory() as uow:
+        snapshot = {name: uow.gateway.rows(name) for name in TABLES}
+    for user in snapshot["users"]:
+        del user["password_hash"]  # Random Argon2 salts/secrets deliberately are not reproducible.
+    canonical = json.dumps(
+        snapshot, sort_keys=True, separators=(",", ":"),
+        default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
+    )
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
 @pytest.mark.parametrize(
     "projects,tasks,dependencies,records,expected_digest",
     [
@@ -164,15 +186,7 @@ def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
     assert any("UPDATE tasks" in sql and many for sql, many in seed_factory.seed_statements)
     assert first["reviews"] + first["decisions"] == records
     assert_consistent(seed_factory)
-    with seed_factory() as uow:
-        snapshot = {name: uow.gateway.rows(name) for name in TABLES}
-    for user in snapshot["users"]:
-        del user["password_hash"]  # Random Argon2 salts/secrets deliberately are not reproducible.
-    canonical = json.dumps(
-        snapshot, sort_keys=True, separators=(",", ":"),
-        default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
-    )
-    digest = hashlib.sha256(canonical.encode()).hexdigest()
+    digest = persisted_digest(seed_factory)
     record_property("seed_semantics_sha256", digest)
     # Recorded from unchanged production seed in hosted run39940459708 before row refactoring.
     assert digest == expected_digest
@@ -188,3 +202,76 @@ def test_seed_impossible_dependency_count_rolls_back_entire_dataset(seed_factory
         seed_demo(seed_factory, projects=1, tasks=10, dependencies=1000, records=20)
     with seed_factory() as uow:
         assert uow.gateway.count("users") == uow.gateway.count("projects") == 0
+
+
+
+def run_mysql_seed(engine):
+    """Explicit fresh owner schema only; preserve data after every successful generation."""
+    database = "t44_seed_verify_v2"
+    if engine.dialect.name != "mysql" or engine.url.database != database:
+        raise ValueError("Seed live verification requires the dedicated t44_seed_verify_v2 schema")
+    result = dict(database=database, migration=migrations.migrate(engine, expected_database=database))
+    factory = SqlAlchemyUnitOfWorkFactory(engine)
+    with factory() as uow:
+        assert all(uow.gateway.count(name) == 0 for name in TABLES), "Fresh empty business schema required"
+    anchor = datetime(2026, 10, 23, tzinfo=UTC)
+    result["seed"] = seed_demo(factory, anchor_at=anchor)
+    result["consistency"] = assert_consistent(factory)
+    before = persisted_digest(factory)
+    result["persisted_sha256"] = before
+    assert before == "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3"
+    repeat = seed_demo(factory, anchor_at=anchor)
+    assert repeat["already_seeded"] and repeat["manifest_sha256"] == result["seed"]["manifest_sha256"]
+    result["repeat"] = repeat
+    with pytest.raises(StatementRejected, match="manifest differs") as rejected:
+        seed_demo(factory, anchor_at=anchor, seed=45)
+    result["changed_parameters_rejected"] = str(rejected.value)
+    with tempfile.TemporaryDirectory(prefix="t44-seed-verification-") as temporary:
+        changed = Path(temporary) / "rules.json"
+        changed.write_bytes(files("t44").joinpath("resources/escalation-rules.json").read_bytes() + b"\n")
+        with pytest.raises(StatementRejected, match="manifest differs") as rejected:
+            seed_demo(factory, anchor_at=anchor, rules_path=changed)
+        result["changed_config_hash_rejected"] = str(rejected.value)
+    violations = [
+        ("users", {"active": 2}, "check"),
+        ("users", {"username": "synthetic-developer"}, "duplicate"),
+        ("tasks", {"owner_id": 4294967295}, "foreign_key"),
+        ("tasks", {"state": 0}, "check"),
+        ("reviews", {"verdict": 0}, "check"),
+        ("release_assessments", {"status": 0}, "check"),
+        ("decisions", {"type": 0}, "check"),
+    ]
+    result["native_constraint_rejections"] = []
+    with factory() as uow:
+        for table, changes, kind in violations:
+            with pytest.raises(PersistenceIntegrityError) as rejected:
+                with uow.gateway.savepoint():
+                    uow.gateway.update(table, {"id": 1}, changes)
+            assert rejected.value.kind == kind
+            result["native_constraint_rejections"].append(dict(
+                table=table, where=dict(id=1), attempted=changes,
+                kind=kind, constraint=rejected.value.constraint, rolled_back=True,
+            ))
+    assert persisted_digest(factory) == before
+    result["unchanged_after_rejections"] = True
+    result["schema_after"] = migrations.check_schema(engine)
+    assert result["schema_after"]["passed"]
+    result["migration_repeat"] = migrations.migrate(engine, expected_database=database)
+    with engine.connect() as connection:
+        row = connection.execute(text(
+            "SELECT VERSION(),DATABASE(),@@session.time_zone,@@session.transaction_isolation,@@session.sql_mode"
+        )).one()
+        result["server"] = dict(zip(("version", "database", "time_zone", "isolation", "sql_mode"), row, strict=True))
+    return result
+
+
+if __name__ == "__main__":
+    private = json.loads(Path(os.environ["T44_SEED_VERIFY_CREDENTIALS"]).read_text())
+    engine = create_mysql_engine(MySQLSettings(
+        database="t44_seed_verify_v2",
+        **{key: private[key] for key in ("host", "port", "username", "password")},
+    ))
+    try:
+        print(json.dumps(run_mysql_seed(engine), ensure_ascii=False, indent=2))
+    finally:
+        engine.dispose()
