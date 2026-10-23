@@ -23,3 +23,18 @@
 - 本次实际 Prompt-Ref：`ROLE-guidance-M0-COMMIT-v1`，来源为 documentation 本次实际派工消息；约束仅归档本岗、发布真实阶段说明，不新增业务实现或提示词演进数量。初始 prompt 位于本岗 TASK，阶段 prompt 的执行证据为本节、交接单及 `github-stage-comment.md`。
 - 实际执行 `gh issue comment 10 --repo HJY147/t44-dev-trace --body-file agents/guidance/github-stage-comment.md`，返回阶段评论 https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6358357296 。未 push、checkout、merge 或宣布审核通过。
 - 提交前再次核对分支为 `codex/team-bootstrap` 且索引为空；本轮结构检查确认交接 JSON 有效、八份本岗产物存在、模块报告 58 行、业务实现状态仍为未实现。随后仅显式暂存本岗八份文件，提交结果由实际 Git SHA 及文档岗归档记录。
+
+## 2026-10-23 R001 审阅与调试指导（ROLE-guidance-R001-REVIEW-GUIDE-v1）
+
+- 实际派工来自 root；先读当前 AGENTS，当前根 HEAD 为 `f103600b0e98f8d60689d2db6dfd5211a9fd0f2a`，新建独立 worktree/分支 `.agent-worktrees/guidance-r001-review` / `codex/guidance-r001-review`。未使用其他岗位索引。
+- 只读 R001 原话/provenance、D001/D004、capacity pending、函数契约与实现约定、README 和相关公开模块说明；未读独立测试私有用例/工作日志，未联系独立测试。
+- root 限定性能诊断 quiet 窗口只轻量 MD/JSON；本轮没有运行产品、测试、浏览器或渲染，不导入产品模块。旧初始化产品未实现与未采用是历史，追加当前实现/决定，不倒填当时记录。
+- 实际回答 documentation 的 `ROLE-documentation-M2-QUALITY-v1` 问取：给出 R001/出处、D001/D004；R001 为本人观点而非教师课堂原话，研究正文/课程建议待本人；AI 过程、AI 发现/修复不等于学生独立收获或人工识别。没有提供姓名/学号值，没有代署名。
+- 新增函数索引和审阅/调试指南：真实 `decide`、Runtime/Workflow/CAS/UoW 与前端请求函数 I/O；配置按真实版本化 JSON 和 env 说明；仅 MD 未执行示例与空表，不创建脚本、不消耗 tmp 编号、不凑人工修改/幻觉配额。
+- 实际命令：git 状态/HEAD/worktree、`git worktree add -b`、cat/sed/nl/rg 只读源码/文档、gh 读取 #10/PR21、内联 Python 仅哈希/文本/JSON。R001 SHA 与 provenance 匹配，capacity 状态仍 awaiting_user_reply。
+- 两次初始只读路径探查包含不存在的 `domain/transitions.py`、`persistence/gateway.py`、`.vscode`，rg 返回 2；已按 `rg --files` 更正到 state_machine.py、rows.py，指南不声称已有 launch.json。没有因探查失败运行产品。
+- 一次合并补丁因同文件同时 delete/add 被 apply_patch 拒绝；没有部分写入，已拆分更正。这是本岗编辑过程错误，不是学生独立识别幻觉或产品缺陷。
+- 实际 prompt 原文与产物映射存 `agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md`；来源是 root 实际派工，不是用户新写的 prompt，也不自动算六版演进。
+- 必要事实核对结果：33 个本地链接存在，21 文件哈希/函数签名行号与索引一致，R001 哈希匹配出处，规则/模板 JSON 版本均1，capacity 仍 pending；`git diff --check` 退出0。仅文档核对，不是产品测试。
+- 已实际发表阶段评论：Issue #10 https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6364270074 ；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364271593 。正文存本岗 r001-stage-comment.md，未发审核成功或合并。
+- 提交前核对独立分支 codex/guidance-r001-review、索引为空；仅显式暂存 handoff 列出的10份本岗 MD/JSON。R001、D001/D004、pending 源文件和产品代码均未修改；不合并或发审核success。提交/推送准确SHA由 Git 回执和 root 交接登记。
