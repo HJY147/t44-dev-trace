@@ -1,9 +1,11 @@
 # T44概要设计与详细设计报告
 
-版本：M2可审工作稿 v0.2。**非最终验收。** 本稿描述冻结1.0.0与集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`的实现；新联调证据按准确SHA另补。公开稿不含私密封面个人信息，日期留空。图表在M2补画，不追溯声称开发前已全部形成。
+版本：M3图示修订工作稿 v0.3。**非最终验收。** 本稿沿冻结1.0.0与M2集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`说明，依据产品审核和当前实现纠正数据关系、重试与扫描时钟表述；新联调证据按准确SHA另补。公开稿不含私密封面个人信息，日期留空。M2补画、M3修订和渲染的时间边界见[修订说明](../../docs/reports/M3-diagrams.md)，不追溯声称开发前已全部形成。
 
 Agent-Role: documentation
 Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
+
+M3 Editor: coordinator_agent；Prompt-Ref: ROOT-documentation-M3-DIAGRAMS-v1。
 
 ## 1 设计依据与演进
 
@@ -42,7 +44,7 @@ flowchart TB
   Store --> MySQL
   Worker --> Rabbit[(RabbitMQ)]
   Rabbit --> Worker
-  API --> Notify[NotificationFacade]
+  Services --> Notify[NotificationFacade]
   Notify --> Rows
 ```
 
@@ -52,7 +54,7 @@ flowchart TB
 | --- | --- | --- |
 | frontend | src/api.ts、workspace.ts及业务组件；同源请求/错误/版本/幂等交互 | 不自行判权、决定状态出口或运行升级定时器 |
 | API/Runtime/Business | api.create_app、Runtime.execute、Business.dispatch | 鉴权/Schema/幂等/事务/统一错误收口；不直接创建表或改他岗模型 |
-| domain | domain.state_machine.decide及typed commands/models | 纯决策无IO，可信GuardContext由业务加载，内部Enum不等于数据库码 |
+| domain | domain.state_machine.decide及typed commands/models | 纯决策无IO，可信TransitionContext由业务加载，内部Enum不等于数据库码 |
 | persistence | Engine/UoW/RowsGateway、migrate/check_schema、OutboxStore/ScanStore、seed_demo | 参数化/锁/CAS/原子能力，业务合法边和证据语义由服务负责 |
 | messaging | NotificationFacade、DeliveryWorker、PikaBroker | 通知列表/已读/处理、confirm/消费/fallback，不另建通知系统 |
 | scheduling | EscalationFacade、Scanner.run/tick、build_scheduler | 版本化规则/最高级/扫描续扫；不绕Runtime直接改任务状态 |
@@ -87,7 +89,7 @@ erDiagram
   TASKS ||--o{ RELEASE_ASSESSMENTS : risk_plan
   TASKS ||--o{ DECISIONS : human_decision
   RELEASE_ASSESSMENTS o|--o{ DECISIONS : optional_assessment
-  TASKS ||--o{ OUTBOX_EVENTS : persistent_intent
+  TASKS o|--o{ OUTBOX_EVENTS : optional_task
   OUTBOX_EVENTS ||--o| ESCALATION_EVENTS : escalation_only
   OUTBOX_EVENTS ||--o{ NOTIFICATIONS : per_recipient
   TASKS {
@@ -117,7 +119,7 @@ erDiagram
   }
 ```
 
-图选择核心及通知关联，不声称只存在这些表；完整18表226列及FK/CHECK/索引见冻结字典/DDL。`UNIQUE(task_id,schedule_version,level)`约束业务升级一次；`UNIQUE(event_id,recipient_id)`约束通知记录一次；outbox与escalation可选1:1，普通变更事件没有升级ledger。决定的assessment引用可空，例如返工，图不把所有决定都画成必需预案引用。
+图选择核心及通知关联，不声称只存在这些表；完整18表226列及FK/CHECK/索引见冻结字典/DDL。`UNIQUE(task_id,schedule_version,level)`约束业务升级一次；`UNIQUE(event_id,recipient_id)`约束通知记录一次；outbox与escalation可选1:1，普通变更事件没有升级ledger。项目、成员和迭代变更的outbox不必关联task；决定的assessment引用也可空，例如返工。
 
 真实MySQL8.4已迁移/重复校验18表，并有Rows/约束/并发局部结果；SQLite玩具表仅覆盖通用生命周期，不能替代MySQL证据。列级CHECK/FK不负责合法状态边、图环、角色或证据真实性。`cli migrate --database`有明确目标；不在启动时create_all偷迁移。
 
@@ -168,11 +170,11 @@ sequenceDiagram
 | 并发加边与开始 | project锁、前驱按序、DFS | 自边/跨项目/环、依赖回滚后的开始/返工守卫 |
 | 拒绝审计故障 | 独立UoW，503/audit_id=null | 不因主事务回滚丢拒绝，也不在存储不可用时声称已持久化 |
 
-DFS为O(V+E)，检查D个前驱为O(D)，若应用另排序锁ID为O(D log D)；实际SQL计划/锁等待不能由复杂度代替。死锁/超时只有限重试完整事务并保留原key/hash。
+DFS为O(V+E)，检查D个前驱为O(D)，若应用另排序锁ID为O(D log D)；实际SQL计划/锁等待不能由复杂度代替。Runtime遇到数据库死锁/锁等待超时返回约定503，不在服务内部自动重跑完整事务；调用者须保留原key和内容再请求。Scanner只对版本或排期版本冲突重读候选并最多尝试三次，这不等于对任意数据库故障自动重试。
 
 ### 3.5 扫描、outbox与降级
 
-`Scanner.run/tick`加载真实版本化规则和原文hash，固定UTC cutoff并keyset分页；`EscalationFacade.create`经Runtime在锁内重验任务/排期/规则，只选当前最高档。20任务、重扫、改期与CLI退出后续扫已有调度模块证据；不是400并发性能结论。
+`Scanner.run/tick`加载真实版本化规则和原文hash，固定UTC cutoff限定本轮候选并keyset分页；每个候选请求取得当时clock，`EscalationFacade.create`经Runtime在锁内重验任务/排期/规则并按该时刻只选当前最高档。cutoff不是整轮所有事件共用的级别判定时刻。20任务、重扫、改期与CLI退出后续扫已有调度模块证据；不是400并发性能结论。
 
 ```mermaid
 sequenceDiagram
@@ -204,8 +206,9 @@ sequenceDiagram
 
 ```text
 持久start或resume run，记录cutoff和规则原文hash
-for keyset_page:
-  elapsed_us = 整数微秒(cutoff - planned_end)
+for keyset_page(候选范围由cutoff限定):
+  candidate_clock = 当前UTC时刻
+  elapsed_us = 整数微秒(candidate_clock - planned_end)
   level = 最高匹配规则  # 不构造end+24h，不截断完整收件人
   Runtime执行版本重验和UNIQUE(task,schedule_version,level)
   新建则事件/outbox/计数/version/审计/幂等同提交；重复不再增加

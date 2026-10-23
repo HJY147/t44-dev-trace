@@ -1,9 +1,11 @@
 # T44软件需求规格说明书
 
-版本：M2可审工作稿 v0.2。**非最终验收报告。** 本文由AI文档岗整理，公开版本不包含已私密提供的姓名、学号等封面资料；报告日期留空。基线为冻结规格1.0.0及集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`。完整运行结果仍以各自准确版本的证据为准。
+版本：M3图示修订工作稿 v0.3。**非最终验收报告。** 本文由AI文档岗整理、总协调依据实际审查补图修订；公开版本不包含已私密提供的姓名、学号等封面资料，报告日期留空。M2证据基线为冻结规格1.0.0及集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`；M3图示记录见[修订说明](../../docs/reports/M3-diagrams.md)。完整运行结果仍以各自准确版本的证据为准。
 
 Agent-Role: documentation
 Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
+
+M3 Editor: coordinator_agent；Prompt-Ref: ROOT-documentation-M3-DIAGRAMS-v1。
 
 ## 1 文档目的、读者与真实版本历史
 
@@ -17,6 +19,7 @@ Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
 | M1报告提交8cf92cb/a2a68d0 | 三份报告及两份说明以阶段工作稿提交 | M1原commit保留，不宣称本文的图表在开发前已全部成稿 |
 | 2026-10-23 15:15:12，ae60dc37 | 用户通过D004采用字段/错误码；总协调冻结1.0.0后派完整编码 | [冻结记录](../../records/spec-freezes/v1.json)及[D004](../../records/decisions/D004-field-errors-adopted.md)是当前准入基线 |
 | M2集成迭代 | 完整模块合入、enum/seed等真实联调修复后补充图与追踪 | 本文是随开发演进的需求表达和核查稿，不是倒造的开发前全量设计 |
+| M3图示与设计核对 | 依据产品审核修正说明，将主状态与阻塞路径拆图并实际渲染8图 | 成图检查与最终Word逐页检查分开，原M2的7图快照保留 |
 
 原始提取文本在根specs/sources只读，原DOCX不上传；不移植T29或他人经历。正式组织方式参考IEEE官方公开摘要中“需求属性、信息项和生命周期内迭代”的说明，本文是项目自行组织的SRS，**不声称读完标准正文或符合未核对的条款**。[IEEE/ISO/IEC 29148-2018官方摘要](https://standards.ieee.org/ieee/29148/6937/)、[ISO官方范围说明](https://www.iso.org/standard/72089.html)。
 
@@ -98,25 +101,39 @@ flowchart LR
 
 ```mermaid
 stateDiagram-v2
+  direction TB
+  state "待受理" as Pending
+  state "开发中" as Developing
+  state "待评审" as Review
+  state "待上线" as Release
+  state "已交付" as Delivered
+  state "已回滚" as RolledBack
   [*] --> Pending
-  Pending --> Developing: start 依赖全满足
-  Developing --> Review: submit_review
-  Review --> Release: approve_review 有效证据
-  Review --> Developing: reject_review 新评审轮次
-  Release --> Delivered: deliver 经理与当前预案批准
-  Delivered --> RolledBack: rollback 人的决定
-  RolledBack --> Developing: rework 新计划和新轮次
-  Pending --> Blocked: block 保存Pending
-  Developing --> Blocked: block 保存Developing
-  Review --> Blocked: block 保存Review
-  Release --> Blocked: block 保存Release
-  Blocked --> Pending: unblock 原态Pending
-  Blocked --> Developing: unblock 原态Developing且重查依赖
-  Blocked --> Review: unblock 原态Review
-  Blocked --> Release: unblock 原态Release
+  Pending --> Developing: 开始
+  Developing --> Review: 提交评审
+  Review --> Release: 评审通过
+  Review --> Developing: 评审退回
+  Release --> Delivered: 经理交付
+  Delivered --> RolledBack: 经理回滚
+  RolledBack --> Developing: 重新排期返工
 ```
 
-Pending/Developing/Blocked/Review/Release/Delivered/RolledBack分别对应待受理、开发中、阻塞、待评审、待上线、已交付、已回滚。图中九类动作及其变体外均拒绝；解除返回原态由服务端决定，不接收客户端通用target_state。阻塞不暂停延期计时，上游回滚不会自动改下游状态。
+图3表示主要交付路径。开始须满足全部前驱；评审通过须有当前有效证据；交付须由经理依据当前获审预案决定；返工须有新计划并更新轮次。阻塞路径另见图4，避免将全部往返边挤在一张图中。
+
+```mermaid
+flowchart LR
+  P[待受理] -->|阻塞| B[阻塞：保存原态、原因、责任环节]
+  D[开发中] -->|阻塞| B
+  R[待评审] -->|阻塞| B
+  L[待上线] -->|阻塞| B
+  B -->|有解除依据，返回保存的原态| G{服务端核对原态}
+  G -->|原态待受理| P
+  G -->|原态开发中，重查依赖| D
+  G -->|原态待评审| R
+  G -->|原态待上线| L
+```
+
+Pending/Developing/Blocked/Review/Release/Delivered/RolledBack分别对应待受理、开发中、阻塞、待评审、待上线、已交付、已回滚。两图合列七状态与九类动作，图外跳转均拒绝；解除返回原态由服务端决定，不接收客户端通用target_state。阻塞不暂停延期计时，上游回滚不会自动改下游状态。
 
 | 用例 | 成功前提与流程 | 必须验证的负向路径 |
 | --- | --- | --- |
