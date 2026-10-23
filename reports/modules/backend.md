@@ -235,3 +235,11 @@ AI专审员在42243/0549真实SQLite HTTP确认合法audit.kind1与schedule.kind
 隔离codex/backend-source-budget-profile基cee7，应用固定bc5。N07读取原6307/缺1207并交一页n07-source-budget-one-page.md：已实施净省0；旧C静态-10未应用，假设未来全可落也6297超1197；扫描run14字段/通知分页重叠不等于净省，尚无1207可信解。不改功能/类型/守卫/审计/统计根或3500–5100，重大选择留人。
 
 设计84fee744先行、工具964f4bb随后，只执行一次870纯合成诊断，exit0/main墙0.350673s/CPU0.350167s。19样本错误签名/全错误数一致/无效ref failclosed，570独立iter jobs每模式3450错误/30异常，输入/SPEC不变；不证明全38HTTP/线程安全。构造CPU3.670/0.438ms、iter95.267/87.347ms，构造只占此混合两段3.7094%；105错误样本偏重、固定顺序/未统计重复，不推真实P95或SQL/线程瓶颈。relative inclusive热点及原始JSON见agents/backend/source-budget-profile/{raw.json,summary.json,result.md}。原工具静态失败保留、import不跑基准，无HTTP/SQL/凭据/私密输入；生产/B/C/锁/14冻结/口径均未改。
+
+## bc5当前契约路径短诊断（生产无改动）
+
+设计08f8050d→工具231445d→唯一原批exit1；原baseline3766/0失败有效，timings包装与FastAPI keyword相撞导致工具500/连接异常、0进runtime。根明确准入未完成观测续跑，先44b9e8c设计/位置专用修复，再真实FastAPI/AnyIO离线一次证明，随后显式续跑exit0，3416 timings+3 profile全有效，不重复baseline/bootstrap/sanity。原失败和两个时间窗/方法/原49份gzip及SHA见agents/backend/bc5-contract-diagnostic/{result.md,summary.json,continuation-summary.json}；不是原批被改绿。
+
+bc5应用实际hash匹配；t44_profile/18083、单worker/40token/pool5+10保持，两次前后端口空/本库其它连接0，全部自有server正常退。baseline1/8/32 P95=3.681/24.383/87.779ms，timings4.199/25.010/89.705ms；逐request_id3419观测恰1acquire/auth/派发，三候选cursor SELECT4/5/5/0错。并发32 runtime wall28.630ms/threadCPU1.766ms、SQL wall9.239ms、acquire14.525ms、dispatch-to-entry6.123ms均值是重叠观测，不能加总/冒纯poolwait或锁等待。新连1/69/211是下一步可核生命周期观察，非已定位正式根因；schema构造约0.04ms/请求不支持立即C。
+
+未复现503、未跑transition/escalation、无MySQL server锁等待字段，不能解释已发表托管400×600三正式失败。没有优化生产、改池/锁/资源/阈值、重seed/清库或新全CI；14冻结和统计口径不变、固定6307/超1207保持。结论只是开发诊断，下一阶段由根另准入。

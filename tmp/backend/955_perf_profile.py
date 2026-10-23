@@ -36,11 +36,12 @@ def orchestrate(args, source_sha, sources):
         "argv": sys.argv,
         "started_at": datetime.now(UTC).isoformat(),
         "duration_limit_seconds": 160,
+        "continuation_observation_only": args.continue_observation,
         "commands": [],
         "servers": [],
     }
     command = [sys.executable, str(Path(__file__).resolve()), "--execute-stage-b"]
-    fixture = args.output / "bootstrap/fixture.json"
+    fixture = args.fixture if args.continue_observation else args.output / "bootstrap/fixture.json"
 
     def client(name, *options):
         argv = [*command, *options, "--output", str(args.output / name)]
@@ -67,7 +68,12 @@ def orchestrate(args, source_sha, sources):
         return data
 
     try:
-        for mode in ("baseline", "timings", "profile"):
+        modes = (
+            ("timings", "profile")
+            if args.continue_observation
+            else ("baseline", "timings", "profile")
+        )
+        for mode in modes:
             try:
                 with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
                     raise RuntimeError("Diagnostic port is already occupied")
@@ -307,6 +313,7 @@ def client_run(args, source_sha):
                         )
                         payload = result.json()
                         row.update(
+                            error_code=payload.get("code") if result.status_code >= 400 else None,
                             valid=result.status_code == 200
                             and payload.get("data", {}).get("valid") is True
                             and payload["data"].get("business_guards_executed") is False
@@ -376,10 +383,30 @@ def measured(name, function):
 
 
 def instrument(app, engine, output, profile):
+    import fastapi.routing
     from sqlalchemy import event
-    from t44 import api
+    from t44 import api, contracts
+    from t44.services import runtime as runtime_module
 
     runtime = app.state.runtime
+    runtime_module.authenticate = measured("authenticate", runtime_module.authenticate)
+    contracts.validator = measured("schema_construct", contracts.validator)
+    dispatch = fastapi.routing.run_in_threadpool
+
+    async def observed_dispatch(func, /, *args, **kwargs):
+        record = _RECORD.get()
+        submitted = time.perf_counter_ns()
+
+        @functools.wraps(func)
+        def entered(*inner_args, **inner_kwargs):
+            if record is not None:
+                record["endpoint_dispatch_count"] += 1
+                record["endpoint_dispatch_wait_ns"] += time.perf_counter_ns() - submitted
+            return func(*inner_args, **inner_kwargs)
+
+        return await dispatch(entered, *args, **kwargs)
+
+    fastapi.routing.run_in_threadpool = observed_dispatch
     for name in ("authorize", "claim", "locked_scope", "complete", "rejection", "audit"):
         setattr(runtime, name, measured(name, getattr(runtime, name)))
     for name in ("dispatch", "validate_data"):
@@ -387,10 +414,25 @@ def instrument(app, engine, output, profile):
     for name in ("validate_request", "violations", "wire"):
         setattr(api, name, measured("http_" + name, getattr(api, name)))
     engine.connect = measured("db_acquire_and_pre_ping", engine.connect)
+    for method, phase in (
+        ("connect", "dbapi_new_connection"),
+        ("do_ping", "dbapi_pre_ping"),
+        ("do_commit", "dbapi_commit"),
+        ("do_rollback", "dbapi_rollback"),
+    ):
+        setattr(engine.dialect, method, measured(phase, getattr(engine.dialect, method)))
+
+    @event.listens_for(engine, "checkout")
+    def checkout(_connection, _record, _proxy):
+        record = _RECORD.get()
+        if record is not None:
+            record["pool_checkouts"] += 1
 
     @event.listens_for(engine, "before_cursor_execute")
     def before(_conn, _cursor, _statement, _parameters, context, _many):
         context._t44_profile_started = time.perf_counter_ns()
+        context._t44_profile_cpu = time.thread_time_ns()
+        context._t44_profile_kind = _statement.lstrip().split(None, 1)[0].upper()
 
     def sql_finished(context, failed=False):
         record = _RECORD.get()
@@ -398,7 +440,10 @@ def instrument(app, engine, output, profile):
         if record is not None and started is not None:
             record["sql_count"] += 1
             record["sql_wall_ns"] += time.perf_counter_ns() - started
+            record["sql_thread_cpu_ns"] += time.thread_time_ns() - context._t44_profile_cpu
             record["sql_errors"] += int(failed)
+            kind = context._t44_profile_kind
+            record["sql_kinds"][kind] = record["sql_kinds"].get(kind, 0) + 1
 
     @event.listens_for(engine, "after_cursor_execute")
     def after(_conn, _cursor, _statement, _parameters, context, _many):
@@ -446,11 +491,24 @@ class ObservedASGI:
             "phases": {},
             "sql_count": 0,
             "sql_wall_ns": 0,
+            "sql_thread_cpu_ns": 0,
+            "sql_kinds": {},
             "sql_errors": 0,
+            "pool_checkouts": 0,
+            "endpoint_dispatch_count": 0,
+            "endpoint_dispatch_wait_ns": 0,
+            "receive_wait_ns": 0,
             "status": None,
             "response_bytes": 0,
         }
         token = _RECORD.set(record)
+
+        async def observed_receive():
+            before = time.perf_counter_ns()
+            try:
+                return await receive()
+            finally:
+                record["receive_wait_ns"] += time.perf_counter_ns() - before
 
         async def observed_send(message):
             if message["type"] == "http.response.start":
@@ -463,7 +521,7 @@ class ObservedASGI:
             await send(message)
 
         try:
-            await self.app(scope, receive, observed_send)
+            await self.app(scope, observed_receive, observed_send)
         finally:
             record["asgi_wall_ns"] = time.perf_counter_ns() - record.pop("asgi_started")
             _RECORD.reset(token)
@@ -485,6 +543,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--credentials", type=Path)
     parser.add_argument("--fixture", type=Path)
+    parser.add_argument("--continue-observation", action="store_true")
     parser.add_argument("--concurrency", type=int, choices=(1, 8, 32), default=1)
     parser.add_argument("--max-requests", type=int, default=0)
     args = parser.parse_args()
@@ -492,9 +551,15 @@ def main():
         parser.error("Requires explicit stage-B execution and a 1..120 second diagnostic window")
     if args.mode == "orchestrate" and args.seconds > 10:
         parser.error("Orchestrated diagnostic samples must be 1..10 seconds")
-    if (args.mode in ("bootstrap", "orchestrate") and args.credentials is None) or (
-        args.mode == "client" and args.fixture is None
-    ):
+    if args.continue_observation and (args.mode != "orchestrate" or args.fixture is None):
+        parser.error(
+            "Observation continuation requires orchestrate and an existing private fixture"
+        )
+    if (
+        args.mode in ("bootstrap", "orchestrate")
+        and not args.continue_observation
+        and args.credentials is None
+    ) or (args.mode == "client" and args.fixture is None):
         parser.error("Bootstrap requires credentials; client requires a private fixture")
 
     import uvicorn

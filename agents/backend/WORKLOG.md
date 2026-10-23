@@ -377,3 +377,14 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 分段570次构造CPU生产3.670ms/C0.438ms，iter95.267/87.347ms，预建成本另列；构造占该合成两段3.7094%，不是HTTP整体占比。固定模式顺序/一次样本/105错误偏重，iter差异不当因果/真实P95收益。cProfile5轮95次的inclusive热点iter_errors/descend/ref重叠不能相加，完整安全相对行/函数原值raw.json。raw SHA91fad27a367f546f2e38d294f9ec4372bf3b6b23ab673955c5f966df39eacb0d，actualimport/hash与工具Git对象均核对。
 - 只形成result.md/summary.json建议，不优先以C解决正式P95/N07，也不宣全等价/线程安全。B/C生产仍未应用，14冻结/全部应用/锁/统计脚本未变，不为补样本重跑本批。等待根决定；本阶段作者/操作者为后端AI，不冒充学生手改/quota或独立通过。
 - 实际Issue3总结已body-file发表并GET逐字readback：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6375961904。原始结果只有这一次，随后仅离线计算3.7094%与写报告，不改样本/轮次、未再跑诊断或全CI。提交本轮证据后结束释放，等待根决定。
+
+## bc5契约入口：一次原批与明确准入的未完成观测续跑
+
+- 当前独立树新分支codex/backend-bc5-diagnostics，应用仍逐字bc5。实际dispatch BC5-CONTRACT-DIAGNOSTICS-dispatch.md；先设计08f8050d，再955窄观测工具231445d。只读公开stage06 MD/JSON，不跟private引用/不联系独立岗。原正式三组失败不因开发诊断改写。
+- 22:35:01.756–22:35:19.146 UTC原批exit1。bootstrap及3类sanity成功，baseline1/8/32共3766有效/0失败；timings包装首参function与FastAPI真实function=转发相撞，2501非JSON500+2501连接异常，0进入runtime。是AI工具错误，不是产品500/503；原25份安全公件gzip/原SHA在bc5-contract-diagnostic/raw及manifest，原exit1不改。未重复baseline。
+- 根明确窄续跑后，追加设计/工具先提交44b9e8c，首参位置专用func；一次离线真实FastAPI.run_endpoint_function调用验证完整function=/arguments=形态、原返回值/AnyIO ContextVar和恰1派发，无HTTP/SQL。随后22:37:42.655–22:37:55.745 UTC显式continuation一次exit0/13.00s，仅timings1/8/32共3416有效+profile三类各1有效，跳过旧bootstrap/sanity/baseline，原fixture沿用。24份原件/3pstats在continuation-raw及manifest，不把续跑成功倒填原批。
+- 两次均启动前18083无监听、本库其他连接0，结束端口关闭/自有server全正常退出，无其它服务/库/资源变更。仅原bootstrap新增t44_profile合成project44/task6004及其迭代/成员/session；无reset/seed。私密fixture Token未入Git，公件已知口令/Token匹配0；实际import/resource与bc5 Git对象hash一致，14冻结/锁/规格/统计根不变。未发任何新的全CI/正式负载。
+- baseline P95=3.681/24.383/87.779ms，timings=4.199/25.010/89.705ms，样本nearest-rank。每个观测request_id恰1server/1线程入口/1acquire/1auth，3类实际cursor SELECT4/5/5。并发1→32 runtime wall2.471→28.630ms、threadCPU1.287→1.766ms，SQL wall1.212→9.239ms、acquire0.141→14.525ms、dispatch-to-entry0.059→6.123ms；inclusive重叠不能相加/叫纯排队。DBAPI新连1/69/211，不能据此改池或认定正式瓶颈。3pstats是elapsed inclusive且首类冷建连，非exclusiveCPU。
+- 结果result.md和summary/continuation-summary.json明确无503复现、未跑写入口/未测SQL锁字段、不能归因托管400×600。C/B仍未应用，schema构造绝对值约0.04ms/请求，不支持立即应用C；本轮生产净变更0，固定6307仍超1207。后续写路径/正式资源观察须根另准入，不再本轮负载。
+
+- 本阶段Issue3已body-file发表并GET逐字回读一致：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376181741；源码工具44b9e8c未再变，之后只有离线分析/证据归档，未重复运行。
