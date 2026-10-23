@@ -1,0 +1,332 @@
+{
+  "publication": "Explicitly released sanitized fault stage only; no private scripts/raw evidence released",
+  "round": "v2",
+  "phase": "BOUNDED_REAL_SERVICE_FAULT_SUBSETS",
+  "published_at": "2026-10-23T18:10:59.510398+00:00",
+  "operator": "Independent AI",
+  "overall": "NOT_ACCEPTED_INCOMPLETE",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "original_H": "27c9a0a6af10a21eb475ef42c9e98e13b8334a43",
+  "H3": "99906b1fb1ef376cc819c1a3af9558906331f8c0",
+  "H4": "2e1917e2e9e1c307bd0fab0ed74ee61de15a71d7",
+  "R5": "4d3033e9d1aeb89f150521ba89e38cf3304e3a25",
+  "environment_implementation": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+  "neutral_whitelist_commit": "6b681dd73694bf18430f1bce4bdf00ffd1ae762e",
+  "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original_cases_sha256": "1ba304140eb63774dc790c9a1a72eb5ccda76c22a5c5d6181086ea40c03c5ca2",
+  "entry_sha256": "9207a472c44291a50964233f10ac26be4a008300c3ca5ff47feb75bd0f936b58",
+  "adapter_manifest_sha256": "1d9d2c6ec66e31d5bb8d17ca5dfc9488407bbbee19d3f4f6531271fca4e81fd2",
+  "run_id": 39998518039,
+  "environment_ready": true,
+  "harness_started": true,
+  "harness_exit_code": 2,
+  "finally_recovery_completed": true,
+  "per_call_recovery_count": 5,
+  "per_call_recoveries": [
+    {
+      "recovery_id": "1949549c9a36428f8f23feeeecc6cead",
+      "started_at": "2026-10-23T17:55:43.251935+00:00",
+      "finished_at": "2026-10-23T17:56:04.565554+00:00",
+      "recovery_completed": true,
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T17:55:43.252058+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:55:43.346143+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T17:55:43.346174+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:55:43.961820+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T17:55:43.961847+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:56:04.565223+00:00"
+        }
+      ]
+    },
+    {
+      "recovery_id": "2f1f82756fea49949b0676e3386e683b",
+      "started_at": "2026-10-23T17:57:12.836252+00:00",
+      "finished_at": "2026-10-23T17:57:34.629128+00:00",
+      "recovery_completed": true,
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T17:57:12.836376+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:57:12.931678+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T17:57:12.931707+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:57:13.528080+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T17:57:13.528105+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:57:34.628830+00:00"
+        }
+      ]
+    },
+    {
+      "recovery_id": "e2bbf8d20bde4ebba4f1b43baaa3a770",
+      "started_at": "2026-10-23T17:59:48.997492+00:00",
+      "finished_at": "2026-10-23T17:59:56.450023+00:00",
+      "recovery_completed": true,
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T17:59:48.997616+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:59:49.096043+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T17:59:49.096074+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:59:55.340635+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T17:59:55.340661+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T17:59:56.449702+00:00"
+        }
+      ]
+    },
+    {
+      "recovery_id": "bd39a895d38b4001bb92f264201f4ce0",
+      "started_at": "2026-10-23T18:00:50.970319+00:00",
+      "finished_at": "2026-10-23T18:00:57.896530+00:00",
+      "recovery_completed": true,
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T18:00:50.970449+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:00:51.066958+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T18:00:51.066990+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:00:51.670962+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T18:00:51.670990+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:00:57.896206+00:00"
+        }
+      ]
+    },
+    {
+      "recovery_id": "ca63079b32d34621b98871973f434d38",
+      "started_at": "2026-10-23T18:01:01.951279+00:00",
+      "finished_at": "2026-10-23T18:01:08.919400+00:00",
+      "recovery_completed": true,
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T18:01:01.951411+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:01:02.059824+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T18:01:02.059858+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:01:07.812014+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T18:01:07.812042+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T18:01:08.919096+00:00"
+        }
+      ]
+    }
+  ],
+  "executed_results": [
+    {
+      "case_id": "SETUP",
+      "outcome": "PASS",
+      "detail": "All executed frozen assertions passed",
+      "elapsed_s": 10.740541517999986,
+      "validated_scope": "一次性真实账号/项目/角色fixture；不是产品验收。",
+      "complete_frozen_scenario_group": false
+    },
+    {
+      "case_id": "MQ-01-DUPLICATE-SUBSET",
+      "outcome": "BLOCKED",
+      "detail": "No safelyidentifiableoriginalMQmessagecaptured",
+      "elapsed_s": 101.99014686500004,
+      "validated_scope": "BLOCKED：实际升级/outbox关联已取得，但观察窗口内未安全捕获原队列消息；未执行重复发布后置断言。",
+      "complete_frozen_scenario_group": false
+    },
+    {
+      "case_id": "SCAN-01-SUBSET",
+      "outcome": "PASS",
+      "detail": "All executed frozen assertions passed",
+      "elapsed_s": 157.29961210100004,
+      "validated_scope": "20个真实逾期任务，含5个阻塞任务；首次最高级别2、完整收件人快照、各一次版本/升级计数；调度进程stop/recover后等待65秒再扫无重复。未证明中批崩溃/cursor恢复。",
+      "complete_frozen_scenario_group": false
+    },
+    {
+      "case_id": "MQ-01-SUBSET",
+      "outcome": "PASS",
+      "detail": "All executed frozen assertions passed",
+      "elapsed_s": 128.02020808199995,
+      "validated_scope": "RabbitMQ stop期间20个任务各取得标记fallback的本账号通知；读/处理区分且任务不变；恢复后无重复并保留读/处理；新事件得到非fallback通知。未证明全部收件人实际通知、确认歧义或迟到原消息。",
+      "complete_frozen_scenario_group": false
+    },
+    {
+      "case_id": "TX-01-RESTART-SUBSET",
+      "outcome": "PASS",
+      "detail": "All executed frozen assertions passed",
+      "elapsed_s": 8.321250648000046,
+      "validated_scope": "已提交任务开始开发后API stop/recover，任务快照完全一致；前后两条create/transition审计行的取回字节也一致。未证明事务中途、提交ACK丢失或audit-only故障。",
+      "complete_frozen_scenario_group": false
+    },
+    {
+      "case_id": "TX-01-DBDOWN-SUBSET",
+      "outcome": "PASS",
+      "detail": "All executed frozen assertions passed",
+      "elapsed_s": 10.799489513000026,
+      "validated_scope": "MySQL stop期间已授权读取返回503且audit_id=null，逐次恢复后任务完全一致。不是独立拒绝审计故障。",
+      "complete_frozen_scenario_group": false
+    }
+  ],
+  "http_records": 513,
+  "prior_fault_run": 39969411280,
+  "prior_fault_records_unchanged": true,
+  "completed_API_cases_rerun": false,
+  "recovery_scope_is_not_fault_coverage": true,
+  "confirmed_product_failures_in_this_stage": [],
+  "evidence_hashes": {
+    "artifact_zip": "0f66bb5863e6f40254250ad92157cb098f9220981c47e09fa16dc065089d0bd6",
+    "cms": "b7ce61a6b659e533ef6f26ba94208d934461f16eaaf65bb38353ab0562507b44",
+    "private_results": "4e12296a5dc3b758fe0e4d734834bf98cd620e0eebc228abdfa92e0d6a096b6a",
+    "private_events": "6b94eefcd6ff7df87449a4ff94f0c79b9d83d8b9cf4ebca0aa0363e193eec408"
+  },
+  "remaining": [
+    "Original safely captured message duplicate branch remains BLOCKED",
+    "Mid-batch cursor crash, commit ACK loss, transaction barriers and audit-only fault remain BLOCKED",
+    "101-recipient fanout, controlled-clock boundaries and full semantic/audit matrix remain incomplete",
+    "No formal performance, whitebox, CI/coverage or final acceptance claimed",
+    "Raw phase_artifact only retains last assigned dictionary; it is not used as evidence of earlier cases without their event records"
+  ]
+}
