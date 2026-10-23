@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "中性托管Linux环境能力复核完成；独立harness待冻结执行",
+  "stage": "逐次恢复JSON/MQ元数据实现；待有变化能力复核",
   "implementation_status": "既有部署/CI已实现；中性Linux环境已真实能力复核，未执行独立harness或profile",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
@@ -79,7 +79,10 @@
     "agents/deployment/acceptance-environment-validation/",
     "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
     "agents/deployment/acceptance-environment-comment.md",
-    "agents/deployment/acceptance-environment-result-comment.md"
+    "agents/deployment/acceptance-environment-result-comment.md",
+    "agents/deployment/recovery-receipt-validation/",
+    "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
+    "agents/deployment/recovery-mq-comment.md"
   ],
   "interfaces": [
     {
@@ -366,9 +369,14 @@
       "id": "ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
       "reason": "中性真实Linux能力和独立harness隔离，精确版本/受限控制/密文证据取回，不注入用例或绕main保护"
+    },
+    {
+      "id": "ROLE-deployment-RECOVERY-MQ-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
+      "reason": "实际新能力派工归档；逐次真实恢复回执及固定SUT的中性MQ传输事实，不涉及独立私有用例"
     }
   ],
-  "updated_at": "2026-10-23T13:32:21.058244+00:00",
+  "updated_at": "2026-10-23T14:59:40.857391+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -446,5 +454,16 @@
     "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6366093437",
     "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995",
     "neutral_handoff": "deployment/acceptance/README.md contains capabilities/run/retrieval only; developer results and failures remain separate role evidence"
+  },
+  "recovery_mq_capability": {
+    "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "request_revision": 3,
+    "local_checks": "953 49passed;Ruff/actionlint0",
+    "runtime_check": "pending",
+    "independent_harness_executed": false,
+    "profile_executed": false,
+    "ssh": "no target,no password use/storage",
+    "protocol": "deployment/acceptance/README.md",
+    "evidence": "agents/deployment/recovery-receipt-validation/"
   }
 }
