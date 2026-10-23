@@ -2,7 +2,7 @@
 
 本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
 
-截至2026年10月24日06:30（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续限定白盒/交付物核查已开始。
+截至2026年10月24日06:30（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
 
 本机最新预览为 `http://127.0.0.1:5173`，绑定准确bc5应用；仅API和网页在线，登录说明在本机私密提交目录。[入口核验](agents/frontend/latest-preview-validation.json)不代替消息/扫描常驻部署。
 
@@ -94,3 +94,5 @@
 后发[独立阶段04](reports/independent-v3/stage04-functional-browser.md)已把原功能推进到25/26整例通过，F08优先级未决保留，六浏览器整例/15原判据全部完成；额外三能力项与130/551错误响应观察各自单列，仍不等于全分支或整体放行。
 
 最新[M7夜间过程素材](docs/prompting/M7-night-process-evidence.md)以6ec为固定截止，记录机器输出协议、真实红绿修复、专审和并行协作错误；不代写学生研究正文，不补造人工改码证据。
+
+当前四技术Word为三份M6原稿27页加M7测试新稿8页，共35页；[M7后发核查附录](reports/final/M7-post-cutoff-audit-annex.md)区别独立岗位核过的M6旧33页，不把核验迁移到后发稿。[醒来后查看项目](docs/user-guide/wake-up-review.md)提供本机入口与材料位置。
