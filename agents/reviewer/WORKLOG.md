@@ -182,3 +182,11 @@
 
 - 75补充阶段67e051f0423f1da1b38bfb7d793ccbf8a5d0e480已commit/push exit0。随后插件实际读到PR head4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0，frontend/src与Vite同75无差异；root亦发来真实push确认。插件COMMENT5632472310成功，gh只读GET特定review核commit_id=75c3468完整SHA、COMMENTED、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310 。无status写入/APPROVE/合并。
 - documentation发M5真实资料问取，已回复两轮精确source/design/evidence/review SHA、公开报告及两个已发布COMMENT和未测边界；75回执当时刚发布尚待本次push，如实说明。未接触或传递独立未发布材料。root说明源码仍超上限，本岗没有重算或宣称规模通过。最终只补实际回执与阶段交接，不更改任何产品/测试源码。
+
+## 2026-10-24 SESSION-R1补修复审（babc60f）
+
+- 实际ROLE-reviewer-SESSION-R1-FOLLOWUP-v1，目标babc/产品9560/设计7df/证据36d；从babc建新隔离codex/review-session-r1，不把root源当目标，不改原3c报告或生产。
+- 静态核5源43增17删，API错误与解码时检查原token、表单/父view active+token、Login旧catch不撤新token、TaskDrawer卸载后不二次读；当前401/重试/幂等/服务端在途提交语义保持。
+- 原895 f42aef...与7a54479公开字节相等，目标上只重放一次3/3 exit0，orphanReads=[]、新user/token/project保留；原路由夹具警告保留，无新文件/全套/build/browser/服务/负载。
+- 19源/14冻结/10原gzip+可读hash全匹配，开发纠正await后的旧3c20源含CSShash及983最终hash匹配。最初邻接6行为红+3驱动错、提前48绿3驱动错、纠正旧3c真实3红、最终9绿/51绿均分开，不虚报旧产品51失败。完整19分母347/373行、755/868分支；浏览器正常链60响应+2driver撤销仅核JSON，不声称现实迟到403复现或本岗看图。
+- SESSION-R1在9560限定关闭，无新实质阻断；整体源码6051旧计数超限、正式P95失败、独立UI002/003与全验收未完成。新报告26-babc...；PR精确head已读取，COMMENT/commit回执实际完成后补。

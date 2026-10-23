@@ -106,3 +106,7 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 发布补记：远端head后变为4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0、frontend/src及Vite与75差异为空。插件实际COMMENT5632472310已发布；gh只读特定review核commit_id=75、state=COMMENTED、正文逐字一致。回执 `agents/reviewer/evidence/empty-value-75c/github-comment.json`。没有发布任何status/APPROVE或合并。
 
 两轮最终公开留痕：840 COMMENT5632356314（报告d8bba16、回执e79fb5e）与75 COMMENT5632472310（报告67e051f、回执后续归档），均已发布并精确绑定各自source。documentation按M5实问索取后，已回复这两组准确SHA/链接/未测边界；未向其提供任何独立未发布材料。
+
+## SESSION-R1补修限定复审（babc/9560）
+
+准确headbabc60f275ec780bcd3044be455acfddc4a49e60，产品9560e7bd23b68eddbdb733a5ee671999f46a44cd，设计7df→代码9560→证据36d。原895字节f42a...不变，本岗只定向一次3/3、孤儿读取空且新项目保留；API错误/JSON守卫和组件active+token阻断旧回调，当前401/失败重试/幂等及服务端提交语义不变。19源/14冻结/10gzip与开发真红/驱动错/最终51绿和分母分别核验，不重跑全套。SESSION-R1限定关闭，原3c报告/独立FAIL保留，整产品仍不通过（原规模超限/正式P95失败/独立UI002/003及完整验收）。报告reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md，证据agents/reviewer/evidence/session-r1-babc60f，真实prompt ROLE-reviewer-SESSION-R1-FOLLOWUP-v1。

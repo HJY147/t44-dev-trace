@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "暖米咖840及空文本75限定审核/COMMENT完成；整产品不放行",
-  "implementation_status": "审核资料已完成；无产品代码修改",
+  "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
+  "implementation_status": "限定源码复审和原895一次3绿完成；无生产修改；实际GitHub发布待补",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -69,7 +69,10 @@
     "agents/reviewer/evidence/empty-value-75c/pr-initial.json",
     "agents/reviewer/github/empty-value-75c-comment.md",
     "agents/reviewer/evidence/empty-value-75c/github-comment.json",
-    "agents/reviewer/evidence/empty-value-75c/pr-before-comment.json"
+    "agents/reviewer/evidence/empty-value-75c/pr-before-comment.json",
+    "reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md",
+    "agents/reviewer/evidence/session-r1-babc60f",
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt"
   ],
   "interfaces": [
     {
@@ -455,9 +458,14 @@
         "agents/reviewer/evidence/empty-value-75c/pr-initial.json",
         "agents/reviewer/github/empty-value-75c-comment.md"
       ]
+    },
+    {
+      "id": "ROLE-reviewer-SESSION-R1-FOLLOWUP-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
+      "improvement_reason": "Keep original probe bytes/red evidence; separate stale failures, current401 and driver corrections; limited closure is not whole-product acceptance."
     }
   ],
-  "updated_at": "2026-10-23T18:03:08.936970+00:00",
+  "updated_at": "2026-10-23T19:24:40.171592+00:00",
   "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
   "github_evidence": {
     "exact_body_readback": true,
@@ -914,5 +922,24 @@
       "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
     }
   },
-  "source_count_current_not_recomputed": true
+  "source_count_current_not_recomputed": true,
+  "session_r1_followup": {
+    "head": "babc60f275ec780bcd3044be455acfddc4a49e60",
+    "product": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "status": "SESSION-R1_CLOSED_WITHIN_SCOPE",
+    "overall": "NOT_ACCEPTED",
+    "probe_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
+    "probe_result": {
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0,
+      "runs": 1
+    },
+    "source_hashes_match": 19,
+    "frozen_hashes_match": 14,
+    "raw_logs_match": 10,
+    "independent_retest": false,
+    "full_suite_rerun": false,
+    "github_comment": "pending actual publication"
+  }
 }
