@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "INTEGRATION-FIX-v1：正式配置新库全量生成与旧库安全拒绝已实测",
-  "implementation_status": "产品e06已push/root整合；原两seed测试通过，正式新空t44_seed_verify全量40/6000/9000/11400+3600及7态校验/重复幂等通过，旧bench拒绝配置差异且保留数据；未改测试文件",
+  "stage": "REVIEW-FIX-v1：C-P4可审源码checkpoint，未运行待性能窗后验证",
+  "implementation_status": "migrations语义比较和956本岗回归已编写；性能窗口期间未跑pytest/真MySQL/迁移/seed/构建，不能标C-P4闭合",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -108,9 +108,10 @@
       "status": "已创建"
     },
     {
-      "path": "backend/tests/persistence/test_foundation.py",
+      "path": "tmp/backend/persistence/993_foundation.py",
       "kind": "foundation实际代码/自测/过程证据",
-      "status": "已创建"
+      "status": "已创建",
+      "historical_path": "backend/tests/persistence/test_foundation.py"
     },
     {
       "path": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
@@ -203,9 +204,10 @@
       "status": "已实现/真实记录"
     },
     {
-      "path": "backend/tests/persistence/test_mysql.py",
+      "path": "tmp/backend/persistence/988_mysql.py",
       "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
-      "status": "已实现/真实记录"
+      "status": "已实现/真实记录",
+      "historical_path": "backend/tests/persistence/test_mysql.py"
     },
     {
       "path": "agents/database/persistence-mysql-tests-run4.log",
@@ -263,9 +265,10 @@
       "status": "已实现或真实执行/记录"
     },
     {
-      "path": "backend/tests/persistence/test_seed.py",
+      "path": "tmp/backend/persistence/975_seed.py",
       "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
-      "status": "已实现或真实执行/记录"
+      "status": "已实现或真实执行/记录",
+      "historical_path": "backend/tests/persistence/test_seed.py"
     },
     {
       "path": "agents/database/seed-mysql-bench-run1.json",
@@ -366,6 +369,26 @@
       "path": "agents/database/integration-fix-comment.md",
       "kind": "正式配置真库验证/真实Issue回复",
       "status": "已执行或发表"
+    },
+    {
+      "path": "tmp/backend/persistence/956_schema_semantics.py",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "已编写，测试未运行"
+    },
+    {
+      "path": "agents/database/review-fix-stage-comment.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/review-fix-pr-body.md",
+      "kind": "当前draft候选PR正文",
+      "status": "真实说明未运行/待性能窗后验证"
     }
   ],
   "interfaces": [
@@ -558,15 +581,16 @@
     "INTEGRATION-FIX: 原seed两测试2通过；新t44_seed_verify官方MySQL8.4.11迁移18/226、生成40/6000/9000/11400+3600、7态全量一致性与重复同manifest通过；旧bench配置差异明确拒绝、前后计数与原manifest相同；无测试文件编辑。"
   ],
   "unverified": [
-    "最终整合SHA的单一全套运行/全局覆盖率/正式性能/独立验收未由本岗执行",
-    "本岗不声称RabbitMQ网络验证通过；MQ owner本人接线及后续验证分开",
-    "本checkpoint统计4582应用行仍旧FE/未全量MQ，最终整合规模须root统一统计"
+    "C-P4全部新增源码/956尚未运行；窗口结束后须验证/按失败修复",
+    "专属t44_review已建授权但尚未迁移或改变结构",
+    "seed公共row-builder减重复尚未开始；已知全局规模仍超5100，未宣称通过",
+    "不得用历史局部通过代替本轮/最终整合全套与独立验收"
   ],
   "questions": [
     {
-      "to": "coordinator/backend/messaging/scheduler",
-      "question": "已交生产9aeb697及恢复1602/公平性8b60；请在最终整合SHA跑实际运行门禁，不把模块结论代验收。",
-      "status": "本岗产品已交接，最终整合检查待责任人执行"
+      "to": "coordinator",
+      "question": "性能窗口结束后请正式恢复本岗验证/修复956与t44_review，并评估seed真实减重复。",
+      "status": "按root明确调度暂交接释放槽位，不自行启动测试"
     }
   ],
   "prompt_refs": [
@@ -682,20 +706,26 @@
       "id": "ROLE-database-INTEGRATION-FIX-v1",
       "archive": "agents/database/prompts/ROLE-database-INTEGRATION-FIX-v1.md",
       "improvement_reason": "实际整合暴露旧资源shape误用；只修真实字段与追溯metadata，不改资源或原测试/断言。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v1",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "improvement_reason": "实际审核C-P4要求语义比较，性能调度要求先保存未验证checkpoint，不虚构测试通过。"
     }
   ],
   "updated_at": "2026-10-23T09:01:42.384136+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
-    "product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
     "base": "codex/team-bootstrap",
     "draft": true,
     "attached": true,
     "merged": false,
-    "scope": "正式规则version/effective_at/decided_by映射修复，新库真验证与旧库不覆盖；最终全套由root/BE执行",
-    "pr_scope_updated_and_attached": true
+    "scope": "C-P4语义checker源码/956已编写未运行；待性能窗后验证，PR仍draft",
+    "pr_scope_updated_and_attached": true,
+    "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
+    "candidate_status": "本次C-P4候选未运行；实际提交SHA由Git返回并向root交接，不把候选记为已验证"
   },
   "history": [
     {
@@ -783,6 +813,15 @@
       "stage": "RECOVERY-SEED-v1：恢复/公平性/生产seed/冗余清理已实现并模块验证",
       "implementation_status": "本岗完整持久入口已实现；18表真实迁移、Rows、Outbox/Scan、confirmed恢复、claim公平性、七态全量seed已验证；业务编排/最终集成门禁由对应责任岗及root执行",
       "publication_product_commit": "9aeb69795f67239b04352125f4b7db0427ce1272"
+    },
+    {
+      "stage": "INTEGRATION-FIX-v1：正式配置新库全量生成与旧库安全拒绝已实测",
+      "implementation_status": "产品e06已push/root整合；原两seed测试通过，正式新空t44_seed_verify全量40/6000/9000/11400+3600及7态校验/重复幂等通过，旧bench拒绝配置差异且保留数据；未改测试文件",
+      "unverified": [
+        "最终整合SHA的单一全套运行/全局覆盖率/正式性能/独立验收未由本岗执行",
+        "本岗不声称RabbitMQ网络验证通过；MQ owner本人接线及后续验证分开",
+        "本checkpoint统计4582应用行仍旧FE/未全量MQ，最终整合规模须root统一统计"
+      ]
     }
   ],
   "refactor_removed": [
