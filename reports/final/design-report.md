@@ -223,7 +223,7 @@ N任务、L规则、K事件、历史E、收件人R_i时，直接匹配O(NL)，�
 | database | 18表迁移/Rows/约束/Outbox/Scan/seed；SQLite/mock与真MySQL分批记载 | synthetic 40项目/6000任务等不是人类评审事实；不是压测 |
 | messaging | 本岗28通过/3本地Rabbit未跑，11真MySQL；早期精确SHA上3真Rabbit托管CI通过 | 早期run不代表最新全产品CI；消费记录唯一不等于MQ网络恰一次 |
 | scheduler | 最终107通过，其中22真MySQL/ASGI/CLI；20超期/重复/进程退出续扫 | 无本机Rabbit网络/400并发/独立验收结论 |
-| deployment | 历史11安全+6守卫，当前23本岗guard/config及Ruff/actionlint；f052接线已发布，Docker job39932416571进行中 | 配置或修复commit不等于镜像构建/启动/恢复完成 |
+| deployment | 历史11安全+6守卫，当前23本岗guard/config及Ruff/actionlint；cfeda正式交接：31f4dff的Docker39932723829成功，旧run39932416571失败保留 | 托管Linux synthetic构建/启动/隔离恢复已证；非性能/独立验收或异机队列灾备 |
 
 每模块的入口、命令/原始结果、未跑项与FR对应见[M2追踪矩阵](../../docs/reports/M2-traceability.md)；不要相加不同版本测试数伪造一个全局总数。测试已由5e07887迁至tmp/999_递减路径；当前入口见映射，旧日志原命令不改写。
 
@@ -234,6 +234,8 @@ N任务、L规则、K事件、历史E、收件人R_i时，直接匹配O(NL)，�
 - 通知依赖：门面由缺失变为默认实现后，旧503故障用例需显式移除依赖；保留故障503并验证正常200，不把新功能当失败或降低断言。
 - confirmed恢复/claim公平性：数据库先留真实失败、同例修复后复测，避免只轮到完整事件而饿死缺失通知；不以发布确认当消费成功。
 
-main要求reviewer/stage/static/contracts/coverage/frontend；准确新head需重审，旧设计复审不放行新代码。正式400并发10分钟/P95/吞吐、有效LOC3500–5100（当前仍需压缩核算）、完整Docker集成/备份恢复和独立验收均按最终证据补齐。本稿和学生研究材料都不代替这些结论。
+main要求reviewer/stage/static/contracts/coverage/frontend；准确新head需重审，旧设计复审不放行新代码。正式400并发10分钟/P95/吞吐、有效LOC3500–5100（当前仍需压缩核算）、托管Docker/隔离库恢复已补准确证据；独立验收与正式性能均按最终结果补齐。本稿和学生研究材料都不代替这些结论。
 
-M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)四job static/contracts/coverage/frontend成功；归档[JUnit汇总](../../records/ci/39931640641/junit-summary.json)显示覆盖率整套317通过、0失败/0错误/0跳过，whole Python行2399/2724=88.07%，前端行308/334=92.21%，见[M2回执](../../docs/reports/M2-ci-snapshot.json)。这是准确SHA的托管MySQL/Rabbit证据，不代表独立验收、400并发性能、完整Docker或代码规模通过。
+M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)四job static/contracts/coverage/frontend成功；归档[JUnit汇总](../../records/ci/39931640641/junit-summary.json)显示覆盖率整套317通过、0失败/0错误/0跳过，whole Python行2399/2724=88.07%，前端行308/334=92.21%，见[M2回执](../../docs/reports/M2-ci-snapshot.json)。这是准确SHA的托管MySQL/Rabbit证据，不代表独立验收、400并发性能、其他版本Docker或代码规模通过。
+
+后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。

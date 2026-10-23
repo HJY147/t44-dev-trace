@@ -24,7 +24,7 @@
 | database | [模块报告](../../reports/modules/database.md)/handoff、已发布真实MySQL/seed结果 | 通用SQLite/mock与真MySQL分批；40项目6000任务9000依赖、11400评审+3600决定全为synthetic | tmp/backend/persistence；旧run1..日志仍保留旧命令，不能加总成最终验收 |
 | messaging | [模块报告](../../reports/modules/messaging.md)/handoff | 本地28通过/3真Rabbit未配；11真MySQL；早期b5a16e6三真Rabbit托管CI通过，整体run有其他失败 | tmp/backend/messaging；早期CI不套到最新head，新的成功网络/全CI需另证 |
 | scheduler | [模块报告](../../reports/modules/scheduler.md)/handoff | 107通过，22真MySQL/ASGI/CLI；20任务与进程退出续扫；83%仅scheduling且CLI子进程未汇入 | tmp/backend/scheduling；不是本机Rabbit网络/400并发/独立验收 |
-| deployment | 本轮实际回复f052及已发布报告 | 历史11安全+6守卫、当前23 guard/config；f052接线已发布，真实Docker job39932416571进行中，尚未报成功 | tmp/deployment/997_ops.py、tmp/ci/996_gates.py；265d89b四job成功；Docker运行结果待owner最终回执 |
+| deployment | 本轮最终实收cfeda及已发布报告 | 历史11安全+6守卫、当前23 guard/config；31f4dff实际Docker39932723829成功；旧run39932416571失败保留 | tmp/deployment/997_ops.py、tmp/ci/996_gates.py；265d89b四job成功；托管Docker/隔离恢复已收成功，不等于正式性能或独立验收 |
 | documentation | M2来源/冻结/链接/图表/隐私检查 | 只核对文档和证据，产品测试0 | M1旧校验迁至tmp/documentation/992_report_drafts.py；旧证据不改写，M2不拿文档检查计产品覆盖率 |
 
 编号与[迁移清单](../../records/validation/test-file-layout.json)、[tmp说明](../../tmp/README.md)一致：27脚本999..973按Git首引入时刻、同批按旧路径排序；conftest.py/__init__.py保留框架名，不含独立用例。新文件需领下一个编号，文档岗不改产品测试或私有验收用例。
@@ -34,3 +34,5 @@
 设计静态/Schema → 模块unit/SQLite/mock → 真实MySQL/HTTP → MQ网络/跨进程 → 集成整套 → CI门禁 → 独立验收/正式性能，各层分别记录。当前任何“通过”只对相应版本、命令、环境和范围有效；本表不以局部数据推断未运行层次通过。
 
 最新整合CI：265d89b / run39931640641四job成功，覆盖率整套317通过/0失败/0跳过，whole Python2399/2724=88.07%、前端308/334=92.21%；[归档](../../records/ci/39931640641/junit-summary.json)及[M2快照](M2-ci-snapshot.json)。这是迁移后的实际执行，不能反向改写岗位本机仅collect的快照。仍不代表独立验收/性能/最终LOC。
+
+部署最终证据：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。

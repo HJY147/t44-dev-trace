@@ -148,3 +148,13 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 补docs/architecture.md任务书命名入口：采用栈和M1 Supabase比较、M2追加Java/Spring候选分清时间，不编性能对照。
 - 本岗报告/handoff切到M2当前状态，M0/M1原始询答/来源/失败记录不改；学生自写模板不充当学生成品。
 - 本轮先显式提交checkpoint，草稿PR base codex/integration，实际发布记录随后追加。
+
+## M2实际发布与部署终件
+
+- checkpoint779a5dfa88a18c66164666589b9c7f69a3b00ce9已push，GitHub工具创建PR22草稿，base codex/integration，已attach；读回18文件及head匹配。
+- 合并最新integration86dfd7d，无冲突；产品变化仅来自上游合并，未自行编辑。
+- 实收部署cfeda/31f4dff最终原文并只读公开result/evidence：Docker39932723829成功、4worker、19表恢复checksum一致/18业务表226列复核。负向锁exit1为预期，旧Docker失败保留。
+- 仅补实收范围，不换用新SHA冒称265CI覆盖率、不将小synthetic恢复当40项目性能或独立验收。
+
+- 收尾前实收reviewer原文：四基础COMMENT绑定原SHA、完整产品审核未发布；归档原话，当前3岗回复/6岗待补，不代填最终结论。
+- 终件文档复查：30来源哈希、136链接、11冻结文件、10份M0/M1原记录均通过，产品测试0。
