@@ -1,6 +1,6 @@
 # 项目内 macOS 原生运行设计
 
-状态：设计与依赖能力准备，尚未启动 RabbitMQ、API、consumer 或 scanner。此目录属于部署岗；不改变 Docker Compose 技术基线，不替代云部署或独立验收。
+状态：下文保留初始设计与真实失败。新增 stage1 broker 能力已在精确源7e94258898404eff8890aae9dc6d419f0cbdd468验证并全部停机，见末尾；API、consumer、scanner、业务库和UI尚未启动。此目录属于部署岗，不改变 Docker Compose 技术基线，不替代云部署或独立验收。
 
 ## 准入与保护对象
 
@@ -22,7 +22,7 @@
 | CLI distribution | `127.0.0.1:45674–45683` | 新 CLI 范围 |
 | 节点 / vhost | `t44_native_demo_<runid>@localhost` / `t44.native.demo.<runid>` | 按目的新建；不克隆演示业务结果 |
 
-以上未监听、未做可用承诺。每次启动前只检查指定端口是否空闲；发现占用即失败，不杀占用者。AMQP、distribution 和 EPMD 都必须显式 loopback，不能只限制 API/AMQP。不开 management、Prometheus、stream、MQTT、STOMP 等额外插件/端口。
+以上为设计时尚未监听的提案，不倒填为早已验证。stage1实际结果见末尾，尤其EPMD还隐式监听IPv6回环::1。每次启动前只检查指定端口是否空闲；发现占用即失败，不杀占用者。AMQP、distribution 和 EPMD 都必须显式 loopback，不能只限制 API/AMQP。不开 management、Prometheus、stream、MQTT、STOMP 等额外插件/端口。
 
 ## 固定依赖与来源
 
@@ -80,3 +80,29 @@ scanner 凭据必须经真实 `python -m t44.cli service-token --name ... --proj
 5. 验证本环境 scanner 停启与service token轮换；操作前后记录自有进程/端口。上述是部署演示自检，未跑400并发/10分钟，不构成AC-07或独立fault/性能通过。
 
 后续供隔离岗位的材料只能由根从中性环境信息白名单生成：精确SUT、入口、库/端口、受限账号和能力；不包含本部署日志、开发发现、预期结果或私密 Cookie/Token。UI/性能环境必须重新建库和vhost，不能把本demo结果注入其中。
+
+
+## Stage1 实际结果与操作门面
+
+- 根7763402准入只验证新Rabbit/EPMD，不授权新业务库或应用进程。wrapper为`deployment/native/runtime.py`，守卫为根预留`tmp/deployment/873_native_runtime.py`；16项合成安全守卫、Ruff、diff检查通过。
+- 首次运行源7f48596：整体start=false，受拥有权保护的cleanup=true。真实Cookie/CLI局部成功，但官方env-conf中文路径shell trace产生Unicode转换诊断污染stdout，严格true门槛失败；原件与SHA索引保留于native-validation/stage1-run1*，不倒填成功。
+- 修正只将实际本环境cwd中的env-conf改成相对ASCII路径，并将确定性inspect错误移出readiness重试；没有放宽stdout/监听/权限/拥有权门槛。
+- run2在精确源`7e94258898404eff8890aae9dc6d419f0cbdd468`使用全新目录/全新Cookie，start、inspect、正常rabbitmqctl shutdown与EPMD停止均true。原始逐次回执私密保留，公开能力、索引和driver记录在`agents/deployment/native-validation/stage1-run2*`。
+- 实际Rabbit监听127.0.0.1:25674和127.0.0.1:35674。EPMD显式-address127.0.0.1后实际同时监听127.0.0.1:24369与[::1]:24369；均为回环，没有wildcard或非回环地址。原IPv4-only提案与此差异均保留，总协调已接受这一小技术澄清，未称其原先预期。
+- 已实证server前置setter marker、每个CLI前置marker、真实受认证RPC的server-cookie/file匹配、真实密码后端认证、新单vhost、唯一随机用户无guest/无tags、四资源精确regex权限。密码后端认证不是Pika AMQP客户端或业务消息演示；这些仍待应用阶段。
+- `-nocookie`初始化短窗仍存在：server保守上界0.275471秒（包含准备目录和EPMD），9个CLI从各自launch记录到setter marker最大0.132151秒。不是网络握手精确计时，也不构成生产安全批准；只适用于受wrapper管理的本地回环开发运行。
+- Rabbit PID11070、EPMD PID11063在最后停止后均不存在。所有失败/成功互不覆盖；三个已知随机Cookie、两个随机AMQP口令在42个本阶段公开文件和373个私有非秘密输出/args文件字面量匹配均0，dump未打开/提交。完整范围hash见stage1-final-secret-scan.json。
+
+wrapper仅提供`prepare/start/inspect/stop/cleanup-failed-start`，不包含API/DB/consumer/scanner/UI启动入口。prepare必须是新的run-id，不能覆盖已有环境；所有命令都要求明确项目根，返回JSON回执，失败非零。每个能力run保留数据、配置和原始日志用于追溯，不自动删除。后续要启动新的业务环境仍先由根绑定精确SUT及schema/凭据。
+
+```sh
+# 在包含本wrapper的已审查worktree中执行；本段只是stage1运维入口。
+T44_NATIVE_PROJECT='/Users/yang/Desktop/nothing/软件开发大作业'
+T44_NATIVE_ID="broker_$(date -u +%Y%m%d_%H%M%S)"
+T44_NATIVE_RUN="$T44_NATIVE_PROJECT/.agent-worktrees/.runtime/t44-native-broker/$T44_NATIVE_ID"
+python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" prepare --dependency-layout "$T44_NATIVE_PROJECT/.agent-worktrees/.runtime/native-mq-20261023/layout.json" --run-id "$T44_NATIVE_ID"
+python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" start --run-dir "$T44_NATIVE_RUN"
+python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" inspect --run-dir "$T44_NATIVE_RUN"
+python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" stop --run-dir "$T44_NATIVE_RUN"
+# 若start失败，显式运行cleanup-failed-start；其回执不改变start的false。
+```

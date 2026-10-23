@@ -1,8 +1,10 @@
-项目当前没有可直接使用的本机 Docker/Erlang 服务环境，本变更先交付可审查的项目内 macOS 原生运行设计。所有组件目录、Cookie、凭据与日志限定项目，AMQP/EPMD/distribution/CLI/API 全回环；演示使用新库与独立端口，旧预览与现有 MySQL 进程受保护。
+新增项目内 macOS 原生 broker 生命周期工具，提供 prepare/start/inspect/stop 与失败清理，限定项目0700目录、0600随机Cookie/账号/单vhost、全回环和精确拥有权；端口占用拒绝启动，不停止外部进程。保留完整环境设计，应用阶段仍等根绑定最终SUT与新schema/凭据。
 
-设计涵盖独立 API/consumer/scanner 入口、精确 SUT/依赖 hash、scope/TTL300/轮换、进程拥有权和真实逐次启停回执，以及根准入后最小消息与60秒调度验证。当前 Cookie early-init 仍需受控分布式能力验证：无分布式 crypto/ssl probe 成功，两次 Cookie 失败的原始结果均保留；不会将静态设计写成服务启动通过。
+精确运行实现 `7e94258898404eff8890aae9dc6d419f0cbdd468` 的run2实际start/inspect/正常stop全部true：标准args_file/-nocookie/-sname文件Cookie setter和真实CLI认证、密码后端、无guest/无tags、资源regex与回环listener验证，最终Rabbit/EPMD进程均不存在。EPMD实际含127.0.0.1和::1回环；原IPv4-only设计差异与根接受澄清如实保留。仅本地开发能力，初始化nocookie短窗明确记录，不是生产安全批准。
 
-验证：本岗 JSON/凭据未进入公开产物/diff 检查通过；无服务、数据库业务、UI、独立验收或性能运行。新文档与本岗记录不改变业务代码、契约、Compose、门禁或 main。后续服务启动等总协调对设计准入及最终 SUT 绑定。
+验证：16个本岗873合成安全守卫、Ruff、diff通过；原run1 start=false/cleanup=true及更早有限probe失败原件/SHA保留，未放宽严格输出/权限/监听/拥有权门槛。证据位于本岗native-validation/stage1-run1*、stage1-run2*，公开metadata/私有非秘密输出secret literal匹配0，dump不打开/上传。
+
+本阶段不含新schema、API、consumer、scanner、UI或Pika业务消息启动；无独立验收、正式性能或云部署结论。不改HOME、官方源码、业务代码、契约、Compose、门禁或main，旧预览和现有MySQL不在操作范围。
 
 Agent-Role: deployment
 Prompt-Ref: ROLE-deployment-NATIVE-v1

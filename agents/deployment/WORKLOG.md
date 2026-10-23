@@ -174,3 +174,17 @@
 
 - stage1 run1在7f48596真实start=false、cleanup-failed-start=true，原始public driver JSON、逐次私有原件SHA索引与分析已保留。新随机Cookie的server/CLI setter marker及check_running/远程cookie比较CLI exit0属局部事实；stdout却被官方env-conf的中文路径shelltrace Unicode转换诊断污染，严格true输出检查失败，不倒填整体成功。清理使用自有指纹后SIGTERM，随后Rabbit退出/EPMD无节点/退出均真；无业务负载。
 - 根准入同范围必要run2：核固定rabbit_env源normalize_path保持相对路径，把本环境cwd下实际config/rabbitmq-env.conf改为相对ASCII路径；严格输出、权限、listener/拥有权门槛均不变。将确定性inspect错误移出readiness重试，明确错误码；新增该必要守卫后873为16项/Ruff/diff通过。run2必须新目录和新Cookie，不覆盖run1原件。
+
+
+### NATIVE-v1 stage1 实际完成与停机交接
+
+- run2精确执行源7e94258898404eff8890aae9dc6d419f0cbdd468，使用stage1r2_20261023_203155_236619全新目录/全新Cookie，真实start/inspect/normal shutdown/stop均true。server/9个CLI前置marker及受认证远程cookie-file比较stricttrue、密码后端认证、唯一新vhost/随机用户无guest/无tags和四资源精确regex均实际验证。密码后端验证不是Pika AMQP客户端/业务消息，应用阶段仍待根。
+- 实际Rabbit127.0.0.1:25674/35674；EPMD显式IPv4参数后官方隐式另监听::1:24369，均回环、无wildcard。原IPv4-only设计与差异保留；根明确接受这项小技术澄清并将另行追加准入回执，不等待用户、不改全局配置。
+- 真实文件mtime给setter完成界：server从driver开始保守上界0.275471秒（包含准备/EPMD），9个CLI最大0.132151秒。公开cookie-window明确不是精确handshake，也不叫生产安全通过。
+- 正常rabbitmqctl shutdown实际exit0/markertrue后Rabbit退出，专有EPMD无注册节点后才给自有PGID SIGTERM；Rabbit11070/EPMD11063停后ps均不存在。所有原始逐次私密回执及stdout/stderr保留，公开能力projection/driver/SHA索引在stage1-run2*，不打开/上传dump。
+- 三个已知随机Cookie及两个随机AMQP口令在42个公开phase文件、373个私有非秘密outputs/args中实际匹配0；范围hash分别见stage1-final-secret-scan.json。旧probe与run1原件不覆盖，未修改任何旧端口/数据或MySQL进程。
+- 根要求phase1证据提交后释放槽；本轮不再启动任何服务或改运行源。API/consumer/scanner/UI、新schema与其凭据、最终Issue28组合SUT仍待根绑定。stage1仅本地部署能力，不宣称独立/性能/云/应用通过。
+
+- 收尾完整基线diff检查发现两份原始失败stderr的CRLF被判尾空白；之前只检查未暂存diff未覆盖这些已提交原字节。原始检查输出和真实非零保留archive-baseline-check-original.log；两份raw原字节gzip+SHA/roundtrip精确保存，.stderr明确作为仅换行/尾空白规范阅读稿，JSON引用改指raw gzip及原hash。dump未打开，运行源码不改、不重跑服务；完整暂存基线检查另行记录。
+
+- phase1实际结果已body-file发布Issue7/6374241039和PR31/6374241500，PR标题/正文按最终broker生命周期重写；两条comment与PR正文经API精确readback（仅规范CRLF/末换行）一致，原JSON与check在native-validation/github-stage1-*。仍为draft，未合并/设置reviewer成功；GitHub本分支CI仅保存真实snapshot，不用旧SHA结果代替当前门禁。

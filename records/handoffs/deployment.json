@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "NATIVE-v1 design checkpoint; prior runtime evidence retained separately",
-  "implementation_status": "原Compose/CI能力已交付；新增macOS项目内native环境仅设计与有限非分布式依赖probe，未启动服务",
+  "stage": "NATIVE-v1 stage1 complete and stopped; application stage pending",
+  "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -298,7 +298,8 @@
     "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
     "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
     "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证",
-    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实"
+    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实",
+    "NATIVE stage1: source7e94258 run2 start/inspect/normal stop true, full loopback, newCookie/randomuser/vhost/regex, 16 guards; first failure retained; all stopped; no application stage"
   ],
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
@@ -384,7 +385,7 @@
       "reason": "新macOS项目内原生环境派工；保护旧运行/独立隔离，保留真实失败并先设计准入后启动"
     }
   ],
-  "updated_at": "2026-10-23T20:26:30.289806+00:00",
+  "updated_at": "2026-10-23T20:36:03.750094+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -537,16 +538,14 @@
       "started": false
     },
     "future_v3": "root must bind exact SUT and allocate separate UI/perf databases/vhosts;18086/5177 unbound candidates",
-    "service_started": false,
+    "service_started": true,
     "production_source_changed": false,
     "independent_private_material_read": false,
     "new_test_file_created": false,
     "unverified": [
-      "cookie under actual distribution/server/CLI",
-      "Rabbit listener/user/vhost/isolation/lifecycle",
-      "final app source and new project database",
+      "final app source and new project schema/credentials",
       "API/consumer/scanner/UI integration",
-      "real message and 60-second periodic scan",
+      "Pika business message and real60-second periodic scan",
       "independent acceptance/performance/cloud deployment"
     ],
     "design_commit": "a772d922026ead791e3979b0ba6dd7c8e6d6d100",
@@ -556,8 +555,29 @@
     "stage1_admission": "root7763402 records/decisions/native-broker-capability-admission.json",
     "stage1_wrapper": "deployment/native/runtime.py",
     "stage1_guard": "tmp/deployment/873_native_runtime.py",
-    "stage1_local_checks": "16 guards/Ruff/diff pass after relative ASCII env-conf and no deterministic retry correction",
-    "stage1_broker_validation": "run1 start=false/cleanup=true; raw facts and failure preserved, necessary run2 pending",
-    "stage1_first_failure": "agents/deployment/native-validation/stage1-run1-analysis.json"
+    "stage1_local_checks": "16 deployment synthetic guards/Ruff/diff pass",
+    "stage1_broker_validation": "run1 start=false/cleanup=true retained; run2 start/inspect/normal stop=true",
+    "stage1_first_failure": "agents/deployment/native-validation/stage1-run1-analysis.json",
+    "stage1_implementation_commit": "7e94258898404eff8890aae9dc6d419f0cbdd468",
+    "stage1_capability_evidence": "agents/deployment/native-validation/stage1-run2-capability.json",
+    "stage1_cookie_window_evidence": "agents/deployment/native-validation/stage1-run2-cookie-window.json",
+    "stage1_secret_scan": "agents/deployment/native-validation/stage1-final-secret-scan.json",
+    "actual_epmd_listeners": [
+      "127.0.0.1:24369",
+      "[::1]:24369"
+    ],
+    "actual_rabbit_listeners": [
+      "127.0.0.1:25674",
+      "127.0.0.1:35674"
+    ],
+    "epmd_ipv6_clarification": "Actual implicit IPv6 loopback differs from initial IPv4-only proposal; root expressly accepts it; wildcard/nonloopback forbidden",
+    "all_owned_services_stopped_after_validation": true,
+    "application_started": false,
+    "password_auth_boundary": "Installed password backend over authenticated CLI RPC; not Pika client/business delivery",
+    "stage1_issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6374241039",
+    "stage1_pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/31#issuecomment-6374241500",
+    "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
+    "runtime_after_validation_changed": false,
+    "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials"
   }
 }

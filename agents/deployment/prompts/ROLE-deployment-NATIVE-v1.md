@@ -15,3 +15,10 @@
 ## 作用与产物
 
 本派工将本地原生依赖、全loopback、Cookie与凭据、精确源、进程拥有权、逐次回执及独立资料边界写入同一个可审查范围；不记作同一用户提示词的多次演进。产物为 deployment/native/、本岗 native-validation/、工作日志、模块报告和结构化交接单；实际执行失败与后续修正分开保存，未授权服务不提前启动。
+
+
+## Stage1 实际准入与收尾补充原文
+
+总协调：设计已全文审，根7763402新增 records/decisions/native-broker-capability-admission.json 准入stage1：实现wrapper+tmp/deployment/873_native_runtime.py守卫测试，然后一次自有回环EPMD+Rabbit新cookie/args-file-sname方案真实启动/鉴权/listeners/vhost无guest最小权限/拥有权安全停止能力验证。新schema/API/consumer/scanner/UI仍待根exactSUT/credentials，不在此阶段启动。实际cookie setter和CLI顺序必须试证、失败记录，不改HOME/官方源码，所有网络含EPMD/dist loopback。
+
+总协调：接受EPMD同时监听127.0.0.1与::1作为本地回环能力，属小技术澄清，不等用户；原IPv4-only文字和实际差异保留，我会追加准入澄清不回写成早已预期。禁止wildcard/非loopback原门槛不变。请归档run1整体false+cleanuptrue、run2真实start/inspect/stoptrue、42public/373private非秘密输出扫cookie/password0的范围与hash，不开dump、不上传凭据；实际监听列表明确两地址。完成phase1证据commit后释放槽并等下一阶段source/schema/credentials，暂别业务启动。MySQL新原生demo环境将由根协调提供，最终source尚待Issue28前后端组合和专审。

@@ -149,3 +149,12 @@
 - 当前只完成设计及有限依赖probe；没有broker、API、consumer、scanner、业务库或UI运行结论，没有新独立/性能/云通过声明。原始提示词/工作日志/JSON交接已同步；根审查后再推进受控能力阶段。
 
 - NATIVE stage1根7763402准入后，新增部署wrapper(runtime.py)与873合成守卫，15项/Ruff/diff通过；随机私密definitions、标准args-file Cookie setter、精确拥有权和逐次false回执已编码。现尚待一次自有全回环EPMD/Rabbit实际启动、CLI认证、监听/vhost/权限和安全停止验证；API等不在本阶段范围。
+
+
+### NATIVE-v1 stage1 最终能力
+
+- 精确运行实现7e94258898404eff8890aae9dc6d419f0cbdd468：run2真实start/inspect/正常stop均true，Rabbit11070/EPMD11063停后不存在；首次run1整体false/cleanuptrue原件保留。证据本岗native-validation/stage1-run1*、stage1-run2*。
+- 标准args-file/-nocookie/-sname后项目0600新Cookie setter与CLI实际顺序/认证得到证明；单随机用户无guest/tags、单新vhost、四资源regex及真实密码后端认证通过。未做Pika业务消息。16个部署合成守卫/Ruff/diff通过。
+- 实际Rabbit127.0.0.1:25674/35674；EPMD同时127.0.0.1及::1:24369，全回环，根接受相对原IPv4-only提案的技术澄清。nocookie短窗保守上界server0.275471s/CLI最大0.132151s，仅本地开发能力，不是生产安全批准。
+- 42public/373private非秘密outputs+args对3Cookie/2AMQP口令literal扫描均0，范围/输出SHA已存；dump保持0600ignored不解析/上传。所有旧环境和MySQL不在操作目标。
+- phase1归档后等待根最终SUT/schema/credentials；API/consumer/scanner/UI、正常消息/60秒真实扫描、独立/性能/云仍未验证。
