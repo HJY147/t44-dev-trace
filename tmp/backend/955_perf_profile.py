@@ -4,6 +4,8 @@ import argparse
 import contextvars
 import cProfile
 import functools
+import hashlib
+import importlib
 import json
 import os
 import platform
@@ -79,8 +81,10 @@ def instrument(app, engine, output, profile):
         profiler = cProfile.Profile() if profile else None
         run = measured("runtime", execute)
         try:
-            return profiler.runcall(run, call, *args, **kwargs) if profiler else run(
-                call, *args, **kwargs
+            return (
+                profiler.runcall(run, call, *args, **kwargs)
+                if profiler
+                else run(call, *args, **kwargs)
             )
         finally:
             if profiler:
@@ -149,6 +153,45 @@ def main():
     db = settings.mysql_settings()
     if os.environ.get("T44_DATABASE") != "t44_profile" or db.database != "t44_profile":
         raise ValueError("Only explicitly selected t44_profile is allowed")
+    source_root = Path(__file__).resolve().parents[2]
+    sources = {}
+    for name in (
+        "t44",
+        "t44.api",
+        "t44.contracts",
+        "t44.services.runtime",
+        "t44.services.tasks",
+        "t44.services.projects",
+        "t44.services.reviews",
+        "t44.persistence.rows",
+    ):
+        path = Path(importlib.import_module(name).__file__).resolve()
+        if not path.is_relative_to(source_root / "backend/t44"):
+            raise ValueError("Imported module differs from the selected diagnostic source tree")
+        sources[name] = {"file": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    contract = Path(sources["t44.contracts"]["file"]).with_name("openapi.json")
+    sources["openapi.json"] = {
+        "file": str(contract),
+        "sha256": hashlib.sha256(contract.read_bytes()).hexdigest(),
+    }
+    dirty = subprocess.check_output(
+        [
+            "git",
+            "-C",
+            str(source_root),
+            "status",
+            "--porcelain",
+            "--",
+            "backend/t44",
+            "tmp/backend/955_perf_profile.py",
+        ],
+        text=True,
+    )
+    if dirty:
+        raise ValueError("Diagnostic source must be committed before stage B")
+    source_sha = subprocess.check_output(
+        ["git", "-C", str(source_root), "rev-parse", "HEAD"], text=True
+    ).strip()
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
     engine = create_mysql_engine(db)
     app = create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
@@ -164,9 +207,9 @@ def main():
     if args.mode != "baseline":
         instrument(app, engine, args.output, args.mode == "profile")
         observer = ObservedASGI(app)
-    server = uvicorn.Server(uvicorn.Config(
-        observer or app, host="127.0.0.1", port=18082, workers=1, access_log=False
-    ))
+    server = uvicorn.Server(
+        uvicorn.Config(observer or app, host="127.0.0.1", port=18083, workers=1, access_log=False)
+    )
     timer = threading.Timer(args.seconds, lambda: setattr(server, "should_exit", True))
     started, cpu = time.perf_counter_ns(), time.process_time_ns()
     timer.start()
@@ -177,16 +220,20 @@ def main():
         engine.dispose()
         metadata = {
             "mode": args.mode,
-            "source_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+            "source_sha": source_sha,
+            "imported_modules": sources,
             "python": platform.python_version(),
             "machine": platform.machine(),
             "cpu_count": os.cpu_count(),
             "pid": os.getpid(),
             "workers": 1,
+            "port": 18083,
             "database": "t44_profile",
             "pool_size": db.pool_size,
             "max_overflow": db.max_overflow,
-            "packages": {name: version(name) for name in ("fastapi", "starlette", "sqlalchemy", "uvicorn")},
+            "packages": {
+                name: version(name) for name in ("fastapi", "starlette", "sqlalchemy", "uvicorn")
+            },
             **effective,
             "wall_ns": time.perf_counter_ns() - started,
             "process_cpu_ns": time.process_time_ns() - cpu,

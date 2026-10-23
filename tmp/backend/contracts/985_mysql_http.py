@@ -69,7 +69,8 @@ def real_application():
     engine.dispose()
 
 
-def test_real_mysql_atomic_workflow_and_competing_cas(real_application):
+@pytest.fixture
+def real_task(real_application):
     client, factory, users, tokens = real_application
     pid = request(
         client,
@@ -115,6 +116,11 @@ def test_real_mysql_atomic_workflow_and_competing_cas(real_application):
         },
         expect=201,
     ).json()["data"]["task"]
+    return client, factory, users, tokens, pid, iteration, task
+
+
+def test_real_mysql_atomic_workflow_and_competing_cas(real_task):
+    client, factory, users, tokens, pid, _, task = real_task
     body = {"expected_version": task["version"], "action": 1}
     first = request(
         client,
@@ -178,3 +184,223 @@ def test_real_mysql_atomic_workflow_and_competing_cas(real_application):
         },
         expect=200,
     )
+
+
+@pytest.mark.parametrize("old_approved", [True, False])
+def test_real_mysql_assessment_supersession_and_creation_replay(real_task, old_approved):
+    client, _, users, tokens, pid, _, task = real_task
+    task = _http.transition(client, tokens["developer"], pid, task, 1)
+    task = _http.transition(
+        client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+    )
+    reviewed = request(
+        client,
+        "createTaskReview",
+        token=tokens["reviewer"],
+        project_id=pid,
+        task_id=task["id"],
+        body=_http.review_payload(task),
+        expect=201,
+    ).json()["data"]
+    task = _http.transition(
+        client,
+        tokens["reviewer"],
+        pid,
+        reviewed["task"],
+        5,
+        review_id=reviewed["review"]["id"],
+        review_version=1,
+    )
+
+    def assess(current, key):
+        payload = _http.assessment_payload(current)
+        payload["rollback_plan"]["responsible_user_id"] = users["manager"]
+        return payload, request(
+            client,
+            "createReleaseAssessment",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            body=payload,
+            key=key,
+            expect=201,
+        ).json()["data"]
+
+    def approve(current, assessment, expect=200):
+        return request(
+            client,
+            "reviewReleaseAssessment",
+            token=tokens["reviewer"],
+            project_id=pid,
+            task_id=task["id"],
+            assessment_id=assessment["id"],
+            body={
+                "expected_version": current["version"],
+                "expected_assessment_version": assessment["version"],
+                "verdict": 1,
+                "reason": "Synthetic review",
+                "evidence": EVIDENCE,
+            },
+            expect=expect,
+        )
+
+    _, created = assess(task, str(uuid4()))
+    task, old = created["task"], created["assessment"]
+    if old_approved:
+        accepted = approve(task, old).json()["data"]
+        task, old = accepted["task"], accepted["assessment"]
+    key = str(uuid4())
+    payload, created = assess(task, key)
+    task, latest = created["task"], created["assessment"]
+    assert task["approved_assessment_id"] is None and task["approved_assessment_version"] is None
+    if not old_approved:
+        assert approve(task, old, 409).json()["code"] == "ASSESSMENT_BASELINE_MISMATCH"
+    approved = approve(task, latest).json()["data"]["task"]
+    replay = request(
+        client,
+        "createReleaseAssessment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=payload,
+        key=key,
+        expect=201,
+    )
+    assert replay.json()["meta"]["replayed"] is True and replay.json()["data"] == created
+    assert (
+        request(
+            client,
+            "getTask",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            expect=200,
+        ).json()["data"]
+        == approved
+    )
+
+
+def test_real_mysql_invalid_selectors_keep_independent_rejection_audits(real_task):
+    client, factory, _, tokens, pid, _, task = real_task
+    for invalid in (0, 4294967296):
+        for operation in (
+            "getTask",
+            "listTaskDependencies",
+            "listTaskReviews",
+            "listReleaseAssessments",
+            "listTaskDecisions",
+        ):
+            error = request(
+                client,
+                operation,
+                token=tokens["manager"],
+                project_id=pid,
+                task_id=invalid,
+                expect=422,
+            ).json()
+            assert error["code"] == "PARAMETER_INVALID" and error["audit_id"] is not None
+            with factory() as uow:
+                audit = uow.gateway.get("audit_events", error["audit_id"])
+                assert audit["task_id"] is None and audit["request_id"] == error["request_id"]
+                assert audit["attempted_task_id"] == (0 if invalid == 0 else None)
+    assert (
+        request(
+            client,
+            "getTask",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            expect=200,
+        ).json()["data"]
+        == task
+    )
+
+
+def test_real_mysql_capacity_plan_audit_and_input_errors(real_task):
+    client, factory, users, tokens, pid, iteration, task = real_task
+    request(
+        client,
+        "changeProjectMember",
+        token=tokens["manager"],
+        project_id=pid,
+        user_id=users["manager"],
+        body={"expected_version": 1, "roles": [1, 2], "reason": "Second synthetic developer"},
+        expect=200,
+    )
+    error = request(
+        client,
+        "createTask",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "title": "Absent capacity owner",
+            "owner_id": users["manager"],
+            "iteration_id": iteration["id"],
+            "plan": PLAN,
+            "dependency_task_ids": [],
+        },
+        expect=422,
+    ).json()
+    assert error["code"] == "CAPACITY_REFERENCE_INVALID" and error["audit_id"] is not None
+    with factory() as uow:
+        assert uow.gateway.count("tasks", {"project_id": pid}) == 1
+    for payload, operation, code in (
+        (
+            {
+                "expected_version": 1,
+                "action": 2,
+                "reason": "Waiting",
+                "responsibility_stage": 5,
+                "evidence": [],
+            },
+            "transitionTask",
+            "EVIDENCE_REQUIRED",
+        ),
+        (
+            {
+                "category": 2,
+                "task_id": task["id"],
+                "payload": {"expected_version": 1, "action": 1},
+                "client_actor_id": users["manager"],
+            },
+            "validateContractPayload",
+            "PARAMETER_INVALID",
+        ),
+    ):
+        error = request(
+            client,
+            operation,
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            body=payload,
+            expect=422,
+        ).json()
+        assert error["code"] == code and error["audit_id"] is not None
+    changed = request(
+        client,
+        "changeTaskPlan",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": 1,
+            "plan": {**PLAN, "delay_contingency": "合成" * 1000},
+            "reason": "Full plan evidence",
+            "evidence": EVIDENCE,
+        },
+        expect=200,
+    ).json()["data"]
+    audit = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": task["id"], "page_size": 100},
+        expect=200,
+    ).json()["data"]["items"]
+    audit = next(item for item in audit if item["id"] == changed["audit_id"])
+    for side, source in (("before", task), ("after", changed["task"])):
+        values = {entry["field"]: entry["value"] for entry in audit[side]}
+        for key, value in source["plan"].items():
+            assert values[key] == str(value)

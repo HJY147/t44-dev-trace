@@ -175,3 +175,14 @@
 - 真实32个HTTP/SQLite用例通过（iat01-after.log/xml），包括A批准/待审两情况、旧A不能交付/再激活、拒绝有audit_id、B批准后同key重放创建B只返回历史快照但不清现批准或另增记录；原complete delivery/rollback/rework保持通过。尚无本专项MySQL实库或独立复测结论。
 - 全backend/t44与tmp/backend Ruff最初发现955准备工具I001（iat01-ruff-initial.log），仅调导入排序后退出0（iat01-ruff.log）；Bandit退出0，无发现（iat01-bandit.*）。不运行955工具/性能负载，未重启或触18081/18082原验收实例。源码规模未解决。其余IAT02～05与性能IAT06待后续，不以32通过宣称全部修复。
 - IAT01实际阶段评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113；同账号仅COMMENT，不self-approve。
+
+## 已发布IAT修复 checkpoint 2：IAT02～05
+
+- 根确认仅createTask核owner属于该迭代capacity，不新增预算/工时耗尽；转派与capacity移除待用户新版本选择。根确认先完整公开任务/返工五计划字段+版本，iteration.capacity大数组表达未决，不截断或改冻结Schema。
+- 先新增本岗开发回归：02～04原码实际13failed/31deselected（含原完整返工旅程新增公开差异断言），iat02-04-before.*；05原码8failed/2passed/44deselected，iat05-before.*。均--tb=short防止pytest回显会话实参，凭据模式检查0，原始失败不覆盖。
+- tasks.createTask在已有owner/项目/迭代校验后核容量引用；runtime.audit将无效资源引用置null，task_id0不能绕过存在性检查，attempted引用有UINT32界限，expected_version也只保存可存储合法版本，拒绝独立事务保持。
+- schedule_diff在既有内部差异之外，把任务/返工的五计划字段及schedule_version完整写入公开before/after，保留cas的version、实际actor/evidence。2000字延期预案原字符串不JSON包引号、不截断；迭代capacity未扩大语义。
+- API按冻结oneOf内互斥const action/category选对应Schema，不改规则；仅必需证据的minItems/required错误返回该操作已列EVIDENCE_REQUIRED，其它错误仍PARAMETER_INVALID。只读contract-validation先分顶层壳错误PARAMETER_INVALID和候选payload非法CONTRACT_INVALID，保留候选结构/格式与最终响应/提交前data全校验；bool/string动作拒绝，1.0→1参与同语义幂等摘要回归通过。
+- 真实最终986 HTTP/SQLite55passed，iat02-05-final.log/xml；Ruff全backend/t44+tmp/backend退出0，Bandit退出0；旧44pass/54pass中间结果如实保留。增加985真MySQL专项（含IAT01两邻接、非法ID独立审计、容量、完整2000字计划/错误码）并共享原fixture，没有删除原并发CAS断言；本机未运行这些新MySQL专项，交新源远端CI，不把SQLite当实库。旧65007a的远端39944613492已success，状态另存，不能代新源。
+- 955按root纠错改18083并记录实际port；原18082属于独立性能服务，从未绑定/停它。诊断启动前校验实际模块路径/关键文件SHA和脚本树Git HEAD/干净源码，拒绝PYTHONPATH旧快照；源工具未启动、未发诊断负载，仅格式和Ruff检查。Stage B须避Word渲染窗口，先报告精确SHA/1、8、32短阶梯，1worker结果不当4worker正式性能收益。原270ms/400/600秒不变、源码规模仍未解决。
+- checkpoint2实际Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608；PR16正文/标题按公开缺陷修复最终范围更新，仍draft。计划合根2e0481f已审核基础后交新源CI，不重跑根旧335结果。

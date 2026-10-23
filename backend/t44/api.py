@@ -9,7 +9,7 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, violations
+from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, validator, violations
 from t44.messaging.facade import NotificationFacade
 from t44.persistence import PersistenceUnavailable, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
 from t44.scheduling.facade import EscalationFacade
@@ -58,6 +58,47 @@ def _parameters(operation):
         SPEC["components"]["parameters"][p["$ref"].removeprefix(_REF)] if "$ref" in p else p
         for p in operation.get("parameters", [])
     ]
+
+
+def _body_schema(schema, payload):
+    while "$ref" in schema:
+        schema = SPEC["components"]["schemas"][schema["$ref"].split("/")[-1]]
+    if isinstance(payload, dict):
+        for choice in schema.get("oneOf", []):
+            choice = _body_schema(choice, payload)
+            constants = {
+                key: item["const"]
+                for key, item in choice.get("properties", {}).items()
+                if "const" in item
+            }
+            if constants and all(payload.get(key) == value for key, value in constants.items()):
+                return choice
+    return schema
+
+
+def _body_error(schema, payload, operation):
+    if operation["operationId"] == "validateContractPayload":
+        if "payload" not in schema.get("properties", {}):
+            return "PARAMETER_INVALID"
+        outer = {**schema, "properties": {**schema["properties"], "payload": {}}}
+        return "PARAMETER_INVALID" if violations(outer, payload) else "CONTRACT_INVALID"
+    if "EVIDENCE_REQUIRED" in operation.get("x-business-error-codes", []):
+        errors = list(validator(schema).iter_errors(payload))
+
+        def evidence_only(error):
+            return (
+                error.validator == "minItems"
+                and error.instance == []
+                and list(error.absolute_path)[-1:] == ["evidence"]
+            ) or (
+                error.validator == "required"
+                and isinstance(error.instance, dict)
+                and set(error.validator_value) - set(error.instance) == {"evidence"}
+            )
+
+        if errors and all(evidence_only(error) for error in errors):
+            return "EVIDENCE_REQUIRED"
+    return "PARAMETER_INVALID"
 
 
 def validate_request(request, operation, c):
@@ -113,13 +154,12 @@ def validate_request(request, operation, c):
             )
         except (ValueError, UnicodeDecodeError):
             raise Rejected("INVALID_JSON") from None
-        schema = operation["requestBody"]["content"]["application/json"]["schema"]
-        errors = violations(schema, payload)
-        require(
-            not errors,
-            "CONTRACT_INVALID" if c.operation == "validateContractPayload" else "PARAMETER_INVALID",
-            violations=errors,
+        schema = _body_schema(
+            operation["requestBody"]["content"]["application/json"]["schema"], payload
         )
+        errors = violations(schema, payload)
+        if errors:
+            raise Rejected(_body_error(schema, payload, operation), violations=errors)
         c.body = normalized(payload)
         _security(c.body)
     elif operation["method"] != "get":

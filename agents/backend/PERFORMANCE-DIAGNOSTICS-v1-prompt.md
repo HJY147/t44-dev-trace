@@ -9,3 +9,13 @@ ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1（实际派工，当前仅准备阶段�
 ## 总协调实际续派：正式报告发布后先业务修复
 
 独立v1现已正式发布，允许你仅阅读 reports/independent-tests/v1-blackbox-report.md 和v1-blackbox-results.json（不要读其私有证据路径/脚本）；两文件root已核对publication_status=final_published，报告SHA edde6aa85653cc697c31d51f7c01d909a399cbc04d4cd40c577c4ed5706c99f8，结果SHA e88a2b30c2823c9fa5f6fd3a6eeaf5d960bc266edce8da98064dcfe519049e0d。优先级调整：先修IAT-v1-01..05中冻结规则明确的业务/契约缺陷（profile955准备可暂交但不先大优化）。root核实frozen createReleaseAssessment.description明确“创建...并清空旧上线批准引用”，IAT01真实违反；createTask的CAPACITY_REFERENCE_INVALID明确“任务人力...不匹配其迭代容量记录”。IAT03 task_id0审计503；IAT04 public审计只version不能重建计划（内部schedule_changes已有值不代表外部可见）；IAT05 evidence空应EVIDENCE_REQUIRED、contract-validations顶层附加字段PARAMETER_INVALID而候选payload非法CONTRACT_INVALID。请先按原契约独立复现，补开发回归，保持CAS/事务/幂等/冻结11不动；检查新评估B后旧A审批能否又激活、重放创建是否反复失效等邻接路径，勿扩大未定义业务。容量赋值等若发现真实契约范围歧义先列给root，不擅改冻结文件/发明错误码。新必须回归脚本可复用986/985；955继续专属诊断，全局下个954如需新文件先报备。修复IAT01可先小checkpoint并CI，再做其余；不读未公开独立用例，不联系测试岗。性能三批P95=3035/1908/5506ms，零稳态失败、吞吐均达标；公开报告含负载模型/同机背景限制，阶段B剖析在业务修复checkpoint后继续，最终独立复测另建无历史实例。
+
+## 总协调实际范围确认与运行纠错
+
+范围确认：02先仅冻结createTask明确的iteration.capacity匹配，不新增预算规则。changeTaskAssignment+changeIteration容量移除的生命周期已向用户提出具体业务二选一，待真实回复后再正式v1.1追加，当前不靠猜测改冻结11件。04先完整公开任务/返工五计划字段和版本，iteration.capacity完整公开差异另记录未决设计项，不为凑完整把大值截断或改成不可读摘要。03 bounded attempted引用保证拒绝审计持久化，原invalid数值若需额外记录用现有安全允许field/字符串且契约限制内，不能DDL扩宽。
+
+具体环境纠错：955当前代码/plan默认硬编码18082，该口仍是独立原性能API PID16590，不能绑定或停它。阶段B前把你自己的诊断tool固定改为18083（或显式受限port参数18083），更新plan和metadata实际port。不算生产源码优化；此工具目前未运行，保留原准备稿和后续修订原因。root只准备profile库/账号，没有诊断服务。
+
+剖析证据再补一个真实性点：955 metadata目前只git HEAD，若PYTHONPATH仍指rootprofile快照会出现“记录新SHA但实际import旧源码”。阶段B前记录实际 t44/api/contracts模块__file__和关键源码SHA，确保env显式指正在测的精确源码；argv无DSN。stageB先1/8/32短样本/1worker定位，不能把它与原4worker正式批直接宣称性能收益。业务修复仍优先。
+
+文档岗已启动4份技术审阅Word生成/逐页渲染（不代写学生研究正文），会先回报渲染窗口。你业务checkpoint后先发阶段B准确源码/短跑计划，root会协调文档CPU窗口；目前未授权与Word渲染同时跑诊断负载。最新root2e0481f归档了0448fec完整CI335pass0skip行88.47%/分支77.73以及同SHA新容器恢复，不需要为这些源码再重复测试。

@@ -17,6 +17,7 @@ class Tasks:
     def iteration(self, g, c, identifier):
         row = g.get("iterations", identifier)
         require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
+        return row
 
     def prestart(self, row):
         return row["state"] == State.PENDING or (
@@ -50,7 +51,11 @@ class Tasks:
     def createTask(self, g, c):
         c.manager()
         self.owner(g, c, c.body["owner_id"])
-        self.iteration(g, c, c.body["iteration_id"])
+        iteration = self.iteration(g, c, c.body["iteration_id"])
+        require(
+            any(entry["user_id"] == c.body["owner_id"] for entry in iteration["capacity"]),
+            "CAPACITY_REFERENCE_INVALID",
+        )
         values = plan_values(c.body["plan"])
         dependencies = c.body["dependency_task_ids"]
         # Project lock is held before task IDs are locked in ascending order.
