@@ -243,3 +243,13 @@
 - 本次源码commit只两文件；失败证据随后独立e6854adc49e9d738d98188c782c1097f85a1d374（无产品变更）归档，先未push避免取消4c20远端CI。原始失败JUnit含自身trace尾空格，非.log证据diff检查也曾退出2；保留原始XML，不改产品源或测试断言，不能把资料提交成功当格式检查通过。
 - 955在同一文件新增orchestrate模式：一个持续controller顺序启动3个独立baseline/timings/profile子服务，固定18083/profile库，逐次TCP ready→bootstrap→3类valid sanity→baseline/timings的1/8/32各10秒→profile1并发3类共3请求，组完成主动SIGTERM并等退出，finally保证异常清理，强制kill另记且run失败。服务安全timer120s、总deadline160s；记录实际argv/UTC/exitcode/PID，不将DSN/口令/Token放argv。实际import map补application/common/workflow。
 - 仅controller的Ruff/format/AST检查通过，profile-controller-static.log；未导入执行、未起服务/负载，下一root独占窗口才运行。生产backend/t44逐文件仍与CI绿4c20一致，不为工具修改再重跑旧全套；当前没有任何有效性能样本或优化结论。
+
+## Stage-B 第三窗口：有效子阶段与控制器失败分别归档
+
+- 实测工具245e56b，生产字节仍4c20f32（394全CI源），actual import关键路径/hash匹配本树。2026-10-23T13:18:49.973332Z–13:19:57.093091Z，仅t44_profile/18083/1worker，单exec完整驱动bootstrap/sanity/三独立服务/矩阵/finally收尾。三PID42015/42103/42148全部exit0、无forcedkill且不再存活，root即时收到窗口释放。
+- baseline1/8/32：2277/3631/3282请求、P95 5.444/33.143/149.208ms；timings2506/3418/3172、4.856/35.185/151.564ms。六组错误0；profile3和sanity3各三类1:1:1，valid/无violations。主样本18289，服务9099记录request_id完全匹配、dropped0/SQL错误0。统计仅10秒开发诊断，不代正式400/600/4worker。
+- 最后controller因错用bootstrap返回值执行profile断言而RuntimeError/exit1，原metadata未改。只修955两处赋值，原断言不降；依root指令不重跑负载，仅离线原metadata验证正确profile操作数/类别。逐类pstats初次两次离线ID映射KeyError后用sample_id→request_id正确匹配，非业务失败。修后Ruff/format/AST通过，没有import/服务/SQL/HTTP。
+- Inclusive cProfile合计execute35.007/rows27.158/authenticate24.111ms，三样本含冷TLS和等待，不能称纯CPU。并发增加时Runtime平均CPU2.081→2.553ms，连接获取与游标墙钟增长；缺纯poolwait/DB锁归因，未写生产优化或改pool/授权/guard/校验。原正式性能失败和源码超限保持。
+- 完整限定分析、命令、原38文件zip及SHA清单profile-contract-03-*，私密fixture排除且0600；归档凭据字面值检查0命中。完整outer stderr未单独重定向，真实工具session11938退出1与原metadata明确保留，不虚称已有原stderr文件。原失败不覆盖，修后整controller未实跑。
+- 最终离线完整核对exit0：38原文件大小/SHA、六组原JSONL nearest-rank P95、9099服务request_id匹配/错误0、actual imports/hash及历史PID均验证，profile-offline-validation.log。此exit0只指离线校验，不改原controller exit1。
+- 前次CI成功评论发表遇GraphQL EOF后，本轮body-file重试真实成功：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366169525；诊断阶段评论https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366172145。PR16按当前394CI/诊断整体失败/未决项重写正文，保持draft，不self-approve。

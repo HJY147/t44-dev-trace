@@ -33,3 +33,13 @@ ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1（实际派工，当前仅准备阶段�
 独占本地诊断窗口现在开始（UTC约12:50，预留3分钟，到约12:53）；你可执行所报45/40/10秒矩阵。DB已确认无本地负载并暂停安装/解析/测试；deploy已通知暂停本地测试，当前只实现/资料/远程GHA。根已正常SIGTERM收尾明确完成的旧e8测试服务15690/16590/27817，保留全部旧DB/私有证据不读取不改；MySQL13306和dev18080仍在。根窗口内不做测试/统计/渲染/构建，只轻量日志/GitHub元数据。任何bootstrap失败立即停留证据并释放窗口；成功后CPU/SQL各阶段可观测范围要严谨，不能将db_acquire_and_pre_ping纯说poolwait或pre_runtime纯说线程队列。完成正常退出/无本岗process后立即通知释放。
 
 收到，当前窗口释放；bootstrap成功但0业务样本，连接拒绝是测量生命周期错误，不是产品P95/业务失败。请保存首轮准确时序和失败。下轮必须单个持续运行控制器在一次exec_command里管理服务启动/ready→bootstrap(如已有fixture可复用但先valid sanity)→1/8/32矩阵→正常收尾；控制器不能依赖你下一工具调用才发请求。可在既有955加orchestrate模式或一次内联Python subprocess编排并保存实际argv；不再用45秒短服务跨工具等推理。现有服务上限120s可用，矩阵完成主动正常stop，异常finally清理，底层仍三个独立baseline/timings/profile服务。控制器本身先commit（源码/955干净）后再样本，明确生产字节仍8f，不必因此重复全CI。准备好单命令和预计≤3min后报我，再开quiet窗口；不要立刻负载。原502仅支持假设，记录准确。
+
+## 第三窗口实际授权与失败后范围（原文）
+
+quiet窗口现在开始（UTC约13:18，预留到13:21）可执行245e56b的单命令连续控制器，70–100s/总deadline160s。根已合245，application byte-identical4c（CI394pass/全43lines88.726已归档），14freeze不变。DB已完成释放且无进程，deploy暂停本地guard只远程/写代码，独立新实例纯计划无SUT负载，根不做测试/计数/构建/渲染。务必单个exec执行自动ready→sanity→矩阵→finally收尾，bootstrap/sanity任何失败就停留证据；不要因下一工具调用晚而空跑。结束无本岗进程后立即通知释放，raw fixture/token仍私密0600。
+
+窗口释放，已通知deploy。请只定位结尾RuntimeError/保存完整失败命令及原始metadata，先不重跑负载；若采样所有组内容/时间/计数/源hash真实有效，标“子阶段有效、整体controller失败”并用原件离线分析，不能把RuntimeError改成成功或丢弃已收有效样本。若是最后assert变量或写摘要异常，修工具后仅用已保存metadata验证汇总逻辑（另记录离线重处理），不应为绿色再重复整矩阵。诊断结论先基于可验证有效样本，CPU/SQL边界限定，原正式400/600失败仍历史。
+
+请先反馈可验证的最小观察：baseline/timings 1/8/32各请求数/P95/错误及3个cProfile最显著CPU热点（限定inclusive时间），不必等完整报告/压缩归档commit全部整理完才告诉根；随后再交完整证据。保留controller整体exit1与错变量根因，离线汇总修正不称重新运行成功。需要优化的话先据真实热点给最小方案，不改授权/guard/结果校验/数据库pool等无因果依据部分。这样根可调度下一步，避免日志整理堵住关键开发链。
+
+执行对应：root收到六组最小观察及逐类inclusive补充后，继续离线归档；两行赋值修复/static不运行负载，生产不变。原报告/控制器失败不覆盖，不将工具修复或AI互纠算用户亲改。

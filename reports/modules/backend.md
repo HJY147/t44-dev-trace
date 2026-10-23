@@ -163,3 +163,9 @@ D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副
 精确4c20f32的product39958165108/39958156337已success：394测试/0失败/错误/跳过，contract96/integration63/fault7分别通过；全43个t44文件、无excluded，行2542/2865=88.73%、分支78.55%、综合86.56%。原两个合法UTC及三category修复均在真实CI中，证据capacity-v11-ci-summary.json及该run原件。新1.1开发全量CI通过，不称独立验收、性能或源码规模达标。
 
 955单调用orchestrate控制器已准备，逐次管理3个独立服务的ready/bootstrap/valid sanity/1-8-32矩阵/正常stop，finally清理、全局160s、服务timer120s，实际argv/UTC/PID及import hash记录；生产字节与4c20一致。当前仅静态检查，尚未运行，等root另给quietwindow；原两个诊断失败保留。
+
+## Stage-B 契约校验短诊断 03
+
+工具245e56b、生产字节同CI394通过源4c20f32。13:18:49.973–13:19:57.093Z，t44_profile/18083/1worker完成baseline与timings各1/8/32并发10秒及3份profile；18289主样本另3sanity均有效，0业务/HTTP错误。baseline P95=5.444/33.143/149.208ms；timings=4.856/35.185/151.564ms。原38份metadata/JSONL/pstats/日志zip及SHA清单与限定分析见agents/backend/profile-contract-03-*。
+
+整体controller仍RuntimeError/exit1（最后断言错用bootstrap返回值），子阶段有效；三服务exit0、已释放窗口。两行工具赋值修复仅离线检查/Ruff/format/AST，不重跑负载，不能称修后控制器实际通过。cProfile inclusive合计execute35.007/rows27.158/authenticate24.111ms含等待/冷TLS；连接获取与SQL游标墙钟随并发增长，尚无纯poolwait/DB锁因果证据。未改生产pool/授权/guard/契约校验或正式性能条件，不宣称独立性能/规模通过。

@@ -101,7 +101,7 @@ def orchestrate(args, source_sha, sources):
                         except ConnectionRefusedError:
                             time.sleep(0.05)
                     if mode == "baseline":
-                        sample = client(
+                        client(
                             "bootstrap",
                             "--mode",
                             "bootstrap",
@@ -124,7 +124,7 @@ def orchestrate(args, source_sha, sources):
                                 "Sanity must validate all three candidate categories"
                             )
                     for concurrency in (1,) if mode == "profile" else (1, 8, 32):
-                        client(
+                        sample = client(
                             f"{mode}-{concurrency}",
                             "--mode",
                             "client",

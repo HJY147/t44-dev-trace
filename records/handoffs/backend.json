@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T13:15:12.806925+00:00",
-  "current_stage": "capacity1.1 exactsource4c20 fullCI394pass0skip; diagnosticcontrollerpreparednotrun",
+  "updated_at": "2026-10-23T13:35:28.205166+00:00",
+  "current_stage": "capacity 1.1 exact source 4c20 full CI 394 pass; diagnostic 03 substages valid but controller exit1; offline evidence handoff",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -697,30 +697,37 @@
     "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
   },
   "performance_diagnostics_v1": {
-    "phase": "B setup retried;0 validbusinesssamples;single-commandcontrollerrequiredbeforefurtherload",
+    "phase": "B contract validation short diagnostic executed; analysis only; no production optimization",
     "basis": "397bd7973cfd835c635634d32e0c98ae56d74949",
     "specified_parent_product": "43f51570e62e3160f7995c45bdddaf2f123242b3",
     "artifacts": [
       "tmp/backend/955_perf_profile.py",
       "agents/backend/performance-diagnostics-plan.md",
-      "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
+      "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md",
+      "agents/backend/profile-contract-03-analysis.md",
+      "agents/backend/profile-contract-03-summary.json",
+      "agents/backend/profile-contract-03-raw-manifest.json",
+      "agents/backend/profile-contract-03-metrics.zip",
+      "agents/backend/profile-offline-controller-check.json",
+      "agents/backend/profile-controller-fix-static.log",
+      "agents/backend/profile-offline-validation.log"
     ],
-    "tool_status": "orchestrate mode ready/statics only:oneinvocation starts/ready/checks/stops3independentservers;notexecutedyet",
+    "tool_status": "final assertion assignment fixed; original controller exit1 preserved; fixed controller not rerun",
     "production_changes": false,
-    "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; both processes exited0, no diagnostic load running",
+    "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; all three children exited0; no own load remains",
     "blocked_execution_prerequisites": [
-      "coordinator coordinates next CPU window after LO was explicitly released"
+      "new coordinator window and scope required for any further load"
     ],
     "unverified": [
-      "fixed direct-loopback bootstrap and fixture candidate validity",
-      "all baseline/CPU/SQL/queue/pool/lock/validation workload metrics",
-      "any bottleneck or optimization benefit",
-      "formal performance and final source range"
+      "pure pool checkout versus pre_ping/new connection versus driver/network scheduling",
+      "DB internal CPU/locks and write/escalation endpoint attribution",
+      "corrected controller runtime result",
+      "optimization benefit, formal performance and source-size compliance"
     ],
     "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
-    "next_priority": "getrootexclusivewindowthenrunthecommittedsinglecommand;stoponfirstinvalidsanity",
-    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
-    "execution_gate": "Do not restart server/load until next coordinator CPU window; report exact committed source+actual imports+UTC.",
+    "next_priority": "use retained valid samples; coordinator chooses next scoped measurement/optimization",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366172145",
+    "execution_gate": "No further live load without coordinator; offline only after RuntimeError",
     "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
     "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests",
     "setup_evidence": [
@@ -730,8 +737,8 @@
       "agents/backend/profile-proxy-static.log",
       "agents/backend/profile-window2-lifecycle-failure.json"
     ],
-    "resource_release": "Own18083 processes31358 and31439 exited0; no1/8/32 workload ran; root told LO may resume.",
-    "production_source": "4c20f32b71635016815420472b9d4bb4fa850df0 exactCI394pass;productionfilesunchangedbycontroller",
+    "resource_release": "PIDs42015/42103/42148 normal exit0, no forcedkill, root notified quiet window released",
+    "production_source": "4c20f32b71635016815420472b9d4bb4fa850df0 byte-identical; CI394 pass",
     "controller": {
       "mode": "orchestrate",
       "sample_seconds": 10,
@@ -745,7 +752,34 @@
       "overall_limit_seconds": 160,
       "normal_shutdown": "ownedchildSIGTERM+wait5s;finallycleanup;forcedkillrecordedandrunfails",
       "argv": "recordactualserver/clientargv+start/endUTC+exitcodes;noDSN/password/tokeninargv",
-      "static": "Ruff/format/ASTpassed;noimport/launch/loadexecuted"
+      "static": "post-fix Ruff/format/AST passed; offline original profile category assertion passes; no rerun"
+    },
+    "measured_run": {
+      "tool_source": "245e56b9866b34d5c75b5d0670ba735a5ee75249",
+      "window": {
+        "started_at": "2026-10-23T13:18:49.973332+00:00",
+        "ended_at": "2026-10-23T13:19:57.093091+00:00",
+        "wall_seconds": 67.11943487502867
+      },
+      "controller_exit": 1,
+      "failure": "RuntimeError: profile assertion used stale bootstrap metadata",
+      "valid_main_samples": 18289,
+      "sanity_samples": 3,
+      "errors": 0,
+      "records_matched": 9099,
+      "all_child_exits": 0,
+      "baseline_p95_ms": [
+        5.44375,
+        33.143209,
+        149.208
+      ],
+      "timings_p95_ms": [
+        4.856042,
+        35.18475,
+        151.56425
+      ],
+      "summary": "agents/backend/profile-contract-03-summary.json",
+      "raw_archive_sha256": "707ead0d4d6b6083ccafccbf7740b6468145554d966794eadb3a6b1a6c3c1a9d"
     }
   },
   "iat_repairs_v1": {
@@ -1065,7 +1099,8 @@
         "developmentCI not independentacceptance",
         "formalperformance notpassed",
         "source-size3500-5100notpassed"
-      ]
+      ],
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366169525"
     }
   }
 }
