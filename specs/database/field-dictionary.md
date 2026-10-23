@@ -1,6 +1,8 @@
-# 字段字典 v1冻结
+# 字段字典 v1.1存储语义（DDL沿用v1.0）
 
-状态：v1规格已冻结；用户D004采用字段/错误取舍，18表逐表审核及C1–C4修复复审证据保留。运行DDL/模型/迁移按后续实际结果记录，不由设计通过推定。实际操作者为数据库岗位AI；派工ROLE-database-DESIGN-v1。配套schema.sql与persistence-contract.md。原始材料只作需求依据，不随本稿复制发布。
+本次为D005/D006已采用、限定设计审查通过的人力生命周期显式1.1演进，实际派工ROLE-database-CAPACITY-V11-CONTRACTS-v1，操作者为数据库岗AI；只同步存储文档，未实现或验证1.1产品。旧1.0.0原文仍由父冻结提交`ae60dc3`及[原11项摘要](../../records/spec-freezes/v1.json)恢复，原manifest不改写。本文件与配套持久化契约的内容/摘要有意演进，不能再声称当前两文档逐字等于1.0；最终1.1冻结父链由总协调另行生成。
+
+仍为18表226列，无新增列、表、trigger、状态或错误码；[schema.sql](schema.sql)及运行打包DDL的SHA256均保留`c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4`。下列逐表“待审/未执行”保留1.0设计阶段原记录，不覆盖既有MySQL/checker实测；实际运行证据见[模块报告](../../reports/modules/database.md)及对应历史提交，本轮文档静态检查不算新运行结果。
 
 ## 全局标准与最小范围
 
@@ -11,6 +13,17 @@
 - 对外小时为Decimal的0.25倍；内部estimated_quarters MEDIUMINT UNSIGNED(最大400000)、buffer_quarters SMALLINT UNSIGNED(最大40000)，避免float误差/超配BIGINT。capacity JSON仍保存API可读小时快照。
 - 外键无级联删除，默认RESTRICT；用户/成员/业务历史不物理删除。复合外键防跨项目及跨任务引用；角色、环、状态出口、有效JSON证据均由事务内领域守卫承担。
 - JSON用于固定结构证据/快照，嵌套枚举仍为数值。DB CHECK守数组/对象及必要形状，不能替代JSON Schema、有效模板清单或逐项证据校验。列定义以下直接按当前DDL列出，CHECK/索引以同节列表与schema.sql为准。
+
+## 人力生命周期1.1的服务层不变量
+
+依据：[D005](../../records/decisions/D005-capacity-lifecycle-adopted.md)、[D006](../../records/decisions/D006-rolled-back-capacity-adopted.md)、[U015](../../records/prompts/U015-original.md)、[U016](../../records/prompts/U016-original.md)、[已审RFC](../changes/capacity-lifecycle-v1.1.md)及[限定设计报告](../../reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md)。
+
+- `iterations.capacity`是JSON快照，DB CHECK只守原有形状，不负责跨行人力关系。服务在同一project行锁保护下重读当前capacity、本迭代全部任务及有效developer，核对与业务写入同事务；禁止用锁前快照、另一Session或前端选项替代。
+- createTask的owner、changeTaskAssignment的接手人、状态7经rework恢复开发的owner，都必须是本项目有效developer并已在当前所属迭代capacity登记有效工时。转派仍仅状态1或状态3且blocked_from_state=1允许；其他状态保留原409边界。
+- changeIteration的新capacity必须保留该迭代所有状态1–5任务的owner，核对全量任务集合，不能只检查旧/新人员差集。状态6/7的owner可移出迭代capacity；7返工进入2前必须先补回有效人力并重验，缺失则拒绝，不产生返工决定或排期差异。
+- 迭代capacity移除与项目成员/开发角色移除是两套规则。后者继续保护状态1–5及7，仍不能撤掉最后经理；D002转派状态、现有字段范围和工时精度不变，不新增预算耗尽/自动平衡算法。
+- createTask、changeIteration、rework和新增项目锁的changeTaskAssignment统一遵循session/idem→project→按user_id有序成员→按id有序task。人力拒绝复用422 `CAPACITY_REFERENCE_INVALID`（审计稳定码30），不新增魔法码；原权限/状态/版本等守卫优先顺序不变，新增检查在业务CAS前完成。
+- 拒绝不写业务版本、plan/plan_version、task/cycle、decision或schedule_changes；既有成功事务、同key成功重放及回滚后独立拒绝审计不变，详细边界见[持久化契约](persistence-contract.md#人力生命周期11事务契约)。
 
 ## 集中枚举与映射
 
@@ -180,7 +193,7 @@
 | `name` | `VARCHAR(100) NOT NULL` | 显示名称；长度与API一致，非全局唯一业务编码 |
 | `planned_start` | `DATETIME(6) NOT NULL` | 计划开始UTC，API保持同名 |
 | `planned_end` | `DATETIME(6) NOT NULL` | 计划结束UTC；严格晚于开始，缓冲不改变此升级截止时刻 |
-| `capacity` | `JSON NOT NULL` | API CapacityEntry数组快照：user_id/available_hours；每用户唯一、当前项目成员与0.25h精度由服务校验 |
+| `capacity` | `JSON NOT NULL` | API CapacityEntry数组快照：user_id/available_hours；每用户唯一、有效developer及0.25h精度由服务校验；1.1在同一项目锁内核对全量受保护owner，见人力生命周期1.1节 |
 | `buffer_quarters` | `SMALLINT UNSIGNED NOT NULL` | 缓冲四分之一小时整数；0..40000，对外buffer_hours=值/4 |
 | `delay_contingency` | `VARCHAR(2000) NOT NULL` | 延期预案，非空白；API最多2000字符 |
 | `version` | `INT UNSIGNED NOT NULL DEFAULT 1` | API乐观版本，范围1..2147483647；成功写CAS后递增 |
@@ -203,7 +216,7 @@
 | `iteration_id` | `INT UNSIGNED NOT NULL` | 所属迭代ID；同项目外键，排期diff与task_id二选一 |
 | `title` | `VARCHAR(200) NOT NULL` | 任务标题，1..200字符且非空白 |
 | `description` | `VARCHAR(4000) NOT NULL` | 任务说明，最多4000字符，缺省补空串 |
-| `owner_id` | `INT UNSIGNED NOT NULL` | 同项目成员FK；必须active且含开发角色，编辑仅开始前 |
+| `owner_id` | `INT UNSIGNED NOT NULL` | 同项目成员FK；必须是有效developer，转派还须在当前迭代capacity登记工时；编辑状态仍按D002，不放宽 |
 | `state` | `TINYINT UNSIGNED NOT NULL DEFAULT 1` | 任务状态1..7，含义见集中字典；只能服务状态机改写 |
 | `version` | `INT UNSIGNED NOT NULL DEFAULT 1` | API乐观版本，范围1..2147483647；成功写CAS后递增 |
 | `schedule_version` | `INT UNSIGNED NOT NULL DEFAULT 1` | 任务排期版本；初始1，改期/返工+1；升级业务去重基线 |

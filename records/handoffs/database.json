@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "LIVE-VERIFY-v1：C-P4及新版seed真实MySQL模块验证完成，待审核复审",
-  "implementation_status": "review4类同名漂移/重复迁移拒绝/逐例恢复及最终接受均真实通过；新seed库默认全量与7原生约束拒绝、精确摘要、重复幂等/差异拒绝通过；18模块回归通过。C-P4本岗技术闭合，审核岗复审未执行。",
+  "stage": "CAPACITY-V11-CONTRACTS-v1：仅1.1存储字典/事务契约同步",
+  "implementation_status": "两份存储文档显式1.1演进；未改DDL或产品/API实现，静态对照/hash/19链接通过，非1.1产品验证。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -426,6 +426,17 @@
       "kind": "本轮真实MySQL结果/原失败/审核边界Issue正文",
       "status": "已body-file发表",
       "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107"
+    },
+    {
+      "path": "agents/database/capacity-v11-static-check.json",
+      "kind": "必要文档/本地链接/hash静态对照结果，非产品测试",
+      "status": "通过；不改旧freeze或DDL"
+    },
+    {
+      "path": "agents/database/capacity-v11-stage-comment.md",
+      "kind": "本轮1.1文档同步阶段评论原文",
+      "status": "已body-file发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327"
     }
   ],
   "interfaces": [
@@ -655,20 +666,26 @@
       "ruff": "Original I001 retained, fixed then passed",
       "bandit_findings": 0,
       "evidence": "agents/database/live-verify-v1/summary.json"
+    },
+    {
+      "stage": "CAPACITY-V11-CONTRACTS-v1",
+      "base": "eac253039cd85873d3b262e648b2b74d94d715a8",
+      "scope": "Documentation static checks only",
+      "result": "Original11 freeze hashes recoverable at ae60dc3, manifest unchanged; 18/226 and both DDL hashes unchanged; 226 column/type rows unchanged; stable error30 unchanged; 19 relative links/anchors valid; RFC hash matches reviewed object",
+      "evidence": "agents/database/capacity-v11-static-check.json",
+      "product_validation": false
     }
   ],
   "unverified": [
-    "最新集成SHA全套/全局覆盖率未由本岗重新运行；旧托管333通过属于0a历史SHA",
-    "本轮为owner模块验证，不是独立验收、正式性能或人工经历",
-    "7项针对性原生约束拒绝并非每个可能DDL变异/59CHECK逐项负测",
-    "总协调stage7应用cloc5866/exit1仍超5100，不改口径；本轮未重新统一统计",
-    "最终C-P4审核结论由审核岗复审最新集成SHA，owner不替代审核通过"
+    "本岗未实现或运行1.1产品行为；未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能",
+    "backend权威/运行API与代码1.1.0、root共享需求和新freeze父链由对应责任岗完成，本岗不代称已完成",
+    "旧1.0 11hash及ae60dc3历史保留，两存储文档当前摘要显式改变，新版整体审核/冻结仍另行进行"
   ],
   "questions": [
     {
-      "to": "coordinator/reviewer",
-      "question": "请绑定最终集成SHA复审C-P4，owner仅报告真实技术闭合；统一规模和最终门禁仍未完成",
-      "status": "待总协调派审"
+      "to": "root/backend",
+      "question": "按职责继续1.1 API实现及新版freeze/验证；本岗两份文档已对齐已审RFC，无新增字段/错误定义歧义",
+      "status": "本岗文档完成，余项归对应责任岗"
     }
   ],
   "prompt_refs": [
@@ -799,9 +816,14 @@
       "id": "ROLE-database-LIVE-VERIFY-v1",
       "archive": "agents/database/prompts/ROLE-database-LIVE-VERIFY-v1.md",
       "improvement_reason": "明确性能窗结束和两个隔离库授权后实测，真实失败驱动最小lexer修复及探针兼容；不以托管/SQLite替代MySQL。"
+    },
+    {
+      "id": "ROLE-database-CAPACITY-V11-CONTRACTS-v1",
+      "archive": "agents/database/prompts/ROLE-database-CAPACITY-V11-CONTRACTS-v1.md",
+      "improvement_reason": "人的D005/D006选择与AI实现/纠错分开；只同步已审1.1存储语义，保护旧freeze父链，静态检查不计产品通过。"
     }
   ],
-  "updated_at": "2026-10-23T11:04:29.937472+00:00",
+  "updated_at": "2026-10-23T12:21:58.115107+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
@@ -810,14 +832,16 @@
     "draft": true,
     "attached": true,
     "merged": false,
-    "scope": "Real MySQL C-P4 checker lexer normalization fix, controlled same-name drift/restoration and full seed verification; no frozen DDL/API change",
+    "scope": "Capacity1.1 storage-document evolution only, no DDL/product implementation",
     "pr_scope_updated_and_attached": true,
     "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
-    "candidate_status": "本岗真实技术验证完成，尚未独立审核通过",
+    "candidate_status": "静态文档同步通过，不计1.1产品/独立/性能通过",
     "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
     "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
     "live_evidence": "agents/database/live-verify-v1/summary.json",
-    "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107"
+    "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
+    "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
+    "current_validation": "Capacity1.1 docs: static comparison/link/hash checks only; no product validation"
   },
   "history": [
     {
@@ -924,6 +948,17 @@
         "全局规模仍超5100，C-P4增加与seed减少分别记录；最新整合全套/性能/独立验收不由本岗声称",
         "重构后的真实MySQL全量seed未运行；SQLite固定摘要不替代生产MySQL约束执行"
       ]
+    },
+    {
+      "stage": "LIVE-VERIFY-v1：C-P4及新版seed真实MySQL模块验证完成，待审核复审",
+      "implementation_status": "review4类同名漂移/重复迁移拒绝/逐例恢复及最终接受均真实通过；新seed库默认全量与7原生约束拒绝、精确摘要、重复幂等/差异拒绝通过；18模块回归通过。C-P4本岗技术闭合，审核岗复审未执行。",
+      "unverified": [
+        "最新集成SHA全套/全局覆盖率未由本岗重新运行；旧托管333通过属于0a历史SHA",
+        "本轮为owner模块验证，不是独立验收、正式性能或人工经历",
+        "7项针对性原生约束拒绝并非每个可能DDL变异/59CHECK逐项负测",
+        "总协调stage7应用cloc5866/exit1仍超5100，不改口径；本轮未重新统一统计",
+        "最终C-P4审核结论由审核岗复审最新集成SHA，owner不替代审核通过"
+      ]
     }
   ],
   "refactor_removed": [
@@ -937,9 +972,11 @@
     }
   ],
   "current_interfaces": {
-    "version": "frozen-v1",
-    "status": "现有Rows/UoW/Outbox/Scan/seed真实生产接线；本轮不改签名",
-    "contract": "backend/t44/persistence/README.md",
-    "historical_interfaces": "interfaces数组早期draft状态为当时记录，以本字段及当前报告为准"
+    "version": "capacity-lifecycle-v1.1 documentation",
+    "backend_confirmation": "全量state1–5 owner集合/assignment项目锁/CAS前守卫，原错误优先级和ID30/事务不变；见WORKLOG真实回复",
+    "contract": "specs/database/persistence-contract.md",
+    "implementation_owner": "backend",
+    "new_freeze_owner": "root",
+    "database_schema": "18/226 unchanged"
   }
 }
