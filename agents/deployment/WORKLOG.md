@@ -160,3 +160,5 @@
 - deployment/native/README.md给可审查设计：demo新t44_native_demo(2项目40任务)，API18088/UI5178；AMQP25674/EPMD24369/dist35674/CLI45674–45683全部loopback。未来v3的18086/5177仅候选不绑定。保护5173/18080、5175/18084、MySQL13306/PID7980及其数据，端口占用即失败不杀进程。
 - 标准-sname先初始化auth、项目args_file前置读取新0600Cookie再Rabbit boot/CLI是下一阶段候选；固定Rabbit源码分别接受同名预启动分布式和CLI already_started。必须根审查设计后准入一次受控分布式/实际认证，当前不能用静态链证明运行通过。deprecated cookie env仅备选且有debug泄密风险，未采用；不改HOME/官方源码。
 - 源、锁、角色/项目scope、TTL300与受控轮换、运行目录/属主权限、PID/PGID/启动时间核拥有权、逐次UTC/exit/needed/false失败回执和最小消息/实际60秒扫描计划已写；最终SUT/新库由根另行绑定，尚无任何Rabbit/API/consumer/scanner/DB业务或UI启动。未执行独立、性能、云部署或新测试文件；未改生产业务/契约/门禁。
+
+- 设计checkpoint a772d92已commit/push；实际Issue7评论https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6373861786、新草稿PR31 https://github.com/HJY147/t44-dev-trace/pull/31（base codex/integration/head a772d92）已创建，body-file内容经API精确readback（仅规范CRLF/末换行）一致，原响应与校验在native-validation/github-design-*。未合并、未设置reviewer成功。
