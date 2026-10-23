@@ -70,3 +70,5 @@
 - 已读取当前AGENTS、实现边界、实际 `t44.cli`/Settings、MQ和调度入口，以及Issue7实际交接6361329227。当前已有38API、迁移、seed、service-token真实实现，不沿用旧缺实现假设。
 - 首个checkpoint修复web构建目录：保留 `/build/frontend`，复制权威 `/build/specs/contracts`，最终静态产物改为 `/build/frontend/dist`；ignore只对白名单规格开放，不复制原始sources。此时尚未执行真实Docker build，后续Linux job必须验证。
 - 用户新增tmp编号规范已收到：不自行改原测试发现路径，新增测试号由总协调分配，待其迁移SHA后再对齐CI。
+
+- 已merge包含测试迁移5e07887及当前完整修复的codex/integration基点e8ceefe，保留本岗未提交生产接线且不触root索引。按登记映射将CI backend入口改tmp/backend、两个历史guard改pytest显式997_ops/996_gates；FE Vitest项目root为总项目，CLI include与outputFile同步frontend前缀，未排除生产源码或改阈值。新972真实Docker driver仅main显式执行，971凭据guard使用root预留号，未自动调用Docker。
