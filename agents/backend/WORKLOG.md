@@ -156,3 +156,13 @@
 - 本机性能窗口内仍仅编辑/读取/Git，未pytest/build/DB/HTTP/重启服务。Issue#3阶段6362735528，PR16保持draft；本交接提交只归档上述已验证源SHA证据，不新增产品变更。
 - 真实最终Issue#3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205；PR16正文已按当前远端结果更新，保持draft。
 - 归档git diff --cached --check曾退出2：原始GHA完整日志中的带时间戳空输出行有尾空格；为保存原始证据不改写日志，随后只对非.log文件执行同检查。此为证据格式检查，不是产品测试失败。
+
+## ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1 阶段A准备
+
+- 自干净3ee树快进397bd7973cfd835c635634d32e0c98ae56d74949，指定父产品43f51570e62e3160f7995c45bdddaf2f123242b3；只读源码/冻结Schema/业务规则/根ignored原始T44与官方文档。工作树specs/sources缺原始文件，定位根ignored来源后读取，未改原材料。未读未发布独立报告/脚本/私有内容、未联系测试。
+- 实际派工归档PERFORMANCE-DIAGNOSTICS-v1-prompt.md，根proposed历史不改。阶段A允许准备而不满足实际运行准入；报告未正式发布，t44_profile/中性账号未获交付，阶段B尚未授权执行。
+- 新建唯一tmp/backend/955_perf_profile.py（955已派专属，下一个954）：真实create_app+owner UoW诊断serve，baseline/timings/profile三模式；仅t44_profile、127.0.0.1:18082、1worker、最长120秒、新输出目录；无启动时自动建库/迁移/seed/登录/发业务请求，import不启动。记录ASGI/worker/线程CPU/阶段/SQL次数与游标墙钟/engine连接获取聚合，可选Runtime子树cProfile；不存参数/SQL/口令/Bearer，冻结HTTP响应原样。
+- 已列真实函数输入输出及三接口短跑分组，详performance-diagnostics-plan.md。现有Server-Timing排除worker之前区间；ASGI到Runtime不能当纯队列，engine.connect含pre-ping/初始化不能当纯pool等待，游标耗时含锁/网络不能直接拆锁。当前没有延迟/CPU/SQL/pool/锁指标或瓶颈结论，不先提速。DB内部观测需owner后续对齐，不私写第二套SQL。
+- 官方依据：Python3.12profile/time、SQLAlchemy2.1性能event、Starlette线程池；首次旧Starlette域502，改官方starlette.dev读取。脚本未运行/导入/编译/本机lint，无pytest/build/DB/HTTP/服务启动；仅Git文本diff检查不算程序验证。真正优化需证据，不更改生产、安全/状态/事务/完整契约校验。源码规模5866仍超5100，新增tmp诊断不用于改变分母。
+- 准备收尾时根正式通知v1报告发布，限定仅两份公开报告可读并要求先修IAT01～05。955准备先归档，不进入阶段B；下一业务修复实际续派另归原文，不能把本阶段未读报告的事实追写为已读。
+- 阶段A真实Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919；仅准备，无运行结果。
