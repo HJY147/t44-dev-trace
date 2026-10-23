@@ -20,7 +20,7 @@ export const dictionaries: Row = Object.fromEntries(Object.entries(enums).map(([
   return [key, (source.enum ?? [1, 2, 3]).map((value, index) => ({ value, name: source['x-enum-names']?.[index] ?? `fixture_${value}`, label: key === 'task_states' ? ['待受理', '开发中', '阻塞', '待评审', '待上线', '已交付', '已回滚'][index]! : key === 'transition_actions' ? ['开始开发', '记录阻塞', '解除阻塞', '提交评审', '通过评审', '退回开发', '确认交付', '记录回滚', '决定返工'][index]! : `夹具${key}${value}` }))]
 }))
 export const page = (items: Row[]): Row => ({ items, total: items.length, page: 1, page_size: 20 })
-export const envelope = (data: Json, replayed = false) => ({ data, meta: { replayed, request_id: 'fixture-request', contract_version: '1.0.0', server_time: '2026-10-23T00:00:00Z', original_request_id: replayed ? 'original-fixture' : null } })
+export const envelope = (data: Json, replayed = false) => ({ data, meta: { replayed, request_id: 'fixture-request', contract_version: frozen.info.version, server_time: '2026-10-23T00:00:00Z', original_request_id: replayed ? 'original-fixture' : null } })
 export function seed(): void {
   Object.assign(workspace, { user, projectId: 1, project, projects: [project], members: [member], iterations: [iteration], dictionaries, template, rules: { version: 1, scan_interval_seconds: 60, rules: [] }, taskChoices: [task], notice: '', contextWarning: '' })
   api.token = 'fixture-token-not-a-real-credential'

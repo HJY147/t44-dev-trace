@@ -1,0 +1,76 @@
+{
+  "target": "59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e",
+  "commands_and_readbacks": [
+    {
+      "read_argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/issues/12/comments?per_page=100"
+      ],
+      "exit_code": 0,
+      "matching_existing_ids": []
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "comment",
+        "12",
+        "--repo",
+        "HJY147/t44-dev-trace",
+        "--body-file",
+        "agents/reviewer/github/capacity-v11-freeze-comment.md"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852\n",
+      "stderr": ""
+    },
+    {
+      "published_to": 12,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852",
+      "readback_argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/issues/comments/6365052852"
+      ],
+      "exit_code": 0,
+      "body_equal": true
+    },
+    {
+      "read_argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/issues/21/comments?per_page=100"
+      ],
+      "exit_code": 0,
+      "matching_existing_ids": []
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "comment",
+        "21",
+        "--repo",
+        "HJY147/t44-dev-trace",
+        "--body-file",
+        "agents/reviewer/github/capacity-v11-freeze-comment.md"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101\n",
+      "stderr": ""
+    },
+    {
+      "published_to": 21,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101",
+      "readback_argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/issues/comments/6365054101"
+      ],
+      "exit_code": 0,
+      "body_equal": true
+    }
+  ],
+  "status_mutations": []
+}

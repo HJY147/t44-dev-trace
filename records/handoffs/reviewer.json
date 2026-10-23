@@ -52,7 +52,11 @@
     "reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md",
     "agents/reviewer/evidence/capacity-v11-freeze",
     "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1.txt",
-    "reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md"
+    "reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md",
+    "agents/reviewer/github/capacity-v11-freeze-comment.md",
+    "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json",
+    "tmp/reviewer/954_capacity_freeze_static.py",
+    "agents/reviewer/evidence/capacity-v11-freeze/path-migration-954.json"
   ],
   "interfaces": [
     {
@@ -228,6 +232,11 @@
       "command": "python3 agents/reviewer/evidence/capacity-v11-freeze/static_check.py 59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e agents/reviewer/evidence/capacity-v11-freeze/static-59daa2c.json；限定git diff与公开BE before/after日志只读hash",
       "exit_code": 0,
       "result": "129静态项通过，F-C1精修关闭；BE1130原件区分执行者，不执行产品测试"
+    },
+    {
+      "command": "Path.rename原校验脚本至root分配tmp/reviewer/954_capacity_freeze_static.py；与git show117a旧路径逐字/hash比较",
+      "exit_code": 0,
+      "result": "脚本/断言未变，历史命令/结果保留；未重跑129"
     }
   ],
   "results": [
@@ -382,7 +391,11 @@
         "reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md",
         "agents/reviewer/evidence/capacity-v11-freeze",
         "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1.txt",
-        "reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md"
+        "reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md",
+        "tmp/reviewer/954_capacity_freeze_static.py",
+        "agents/reviewer/evidence/capacity-v11-freeze/path-migration-954.json",
+        "agents/reviewer/github/capacity-v11-freeze-comment.md",
+        "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json"
       ]
     }
   ],
@@ -391,7 +404,9 @@
   "github_evidence": {
     "status_mutations": [],
     "no_success_status_published": true,
-    "this_round_comments": "pending_actual_publication"
+    "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852",
+    "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101",
+    "commands_and_readbacks": "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json"
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -656,5 +671,17 @@
     "target": "9aeb40c48c35139e29a5e997253d606e5c96139a",
     "report": "reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md",
     "outcome": "129结构通过，F-C1人工语义阻断，原失败保留"
+  },
+  "checker_path_migration": {
+    "task": "ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1",
+    "assignment": "root explicitly assigned 954; next953 maintained by root",
+    "previous_path": "agents/reviewer/evidence/capacity-v11-freeze/static_check.py",
+    "new_path": "tmp/reviewer/954_capacity_freeze_static.py",
+    "source_evidence_commit": "117a69c1745b29f0b5be9306abb348933521ff45",
+    "sha256_before_after_identical": "fb5a755828a28764ca37e140951b4d39edbe1936b14f7808d19bfe1a80f98ca2",
+    "contents_and_assertions_unchanged": true,
+    "reran_129_checks": false,
+    "historical_commands_results_unchanged": true,
+    "private_test_paths_not_touched": true
   }
 }

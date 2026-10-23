@@ -3,7 +3,7 @@ import { api, ApiError, intentFor, request } from '../../frontend/src/api'
 import { allPages, bootstrap, context, display, logout, workspace } from '../../frontend/src/workspace'
 import { asArray, initial, label, resolve, safeLink, schemas, validate } from '../../frontend/src/contract'
 import { formSchemas, presets, transitionSchema } from '../../frontend/src/forms'
-import { dictionaries, evidence, fixtureFetch, iteration, member, page, plan, project, seed, task, template, user } from './981_fixtures'
+import { dictionaries, envelope, evidence, fixtureFetch, iteration, member, page, plan, project, seed, task, template, user } from './981_fixtures'
 beforeEach(seed)
 afterEach(() => vi.unstubAllGlobals())
 describe('frozen API client', () => {
@@ -43,6 +43,7 @@ describe('frozen API client', () => {
 })
 describe('contract-driven forms and safe records', () => {
   it('validates real typed fields and evidence without treating strings as numbers or missing proof as approval', () => {
+    expect(envelope({}).meta.contract_version).toBe(schemas.Meta!.properties!.contract_version!.const)
     expect(validate('StartTransition', { expected_version: '1', action: 1 })).not.toEqual({})
     expect(validate('StartTransition', { expected_version: 1, action: 1 })).toEqual({})
     expect(validate('EvidenceRef', { kind: 1, locator: 'src/example.py', description: '版本缺失' })).not.toEqual({})
