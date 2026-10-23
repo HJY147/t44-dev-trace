@@ -1,0 +1,55 @@
+{
+  "kind": "design-only static validation",
+  "sut_bound": false,
+  "network_or_database_workload": false,
+  "application_imported_or_read": false,
+  "checks": [
+    {
+      "file": "866_escalation_notification.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "file": "867_contract_validation.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "file": "868_task_query.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "file": "decode_raw.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "file": "harness_common.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "file": "offline_check.py",
+      "ast_compile": true,
+      "application_import_absent": true
+    },
+    {
+      "frozen_contract_sha256": true,
+      "version_1_1_0": true,
+      "path_count_31": true
+    },
+    {
+      "fixture_algebra": true,
+      "dependency_predecessors_never_rolled": true
+    },
+    {
+      "offline_frozen_schema_examples": "not run: local jsonschema unavailable; no dependency installed"
+    },
+    {
+      "recipient_valid_at_least_one_hour": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}
