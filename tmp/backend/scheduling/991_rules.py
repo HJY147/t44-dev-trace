@@ -11,7 +11,7 @@ from t44.scheduling import (
     select_window,
 )
 
-RESOURCE = Path(__file__).parents[2] / "t44" / "resources" / "escalation-rules.json"
+RESOURCE = Path(__file__).parents[3] / "backend" / "t44" / "resources" / "escalation-rules.json"
 
 
 @pytest.mark.parametrize(

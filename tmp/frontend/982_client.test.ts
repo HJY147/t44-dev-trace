@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { api, ApiError, intentFor, request } from '../src/api'
-import { allPages, bootstrap, context, display, logout, workspace } from '../src/workspace'
-import { asArray, initial, label, resolve, safeLink, schemas, validate } from '../src/contract'
-import { formSchemas, presets, transitionSchema } from '../src/forms'
-import { dictionaries, evidence, fixtureFetch, member, page, plan, project, seed, task, template, user } from './fixtures'
+import { api, ApiError, intentFor, request } from '../../frontend/src/api'
+import { allPages, bootstrap, context, display, logout, workspace } from '../../frontend/src/workspace'
+import { asArray, initial, label, resolve, safeLink, schemas, validate } from '../../frontend/src/contract'
+import { formSchemas, presets, transitionSchema } from '../../frontend/src/forms'
+import { dictionaries, evidence, fixtureFetch, member, page, plan, project, seed, task, template, user } from './981_fixtures'
 beforeEach(seed)
 afterEach(() => vi.unstubAllGlobals())
 describe('frozen API client', () => {

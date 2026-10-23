@@ -1,9 +1,13 @@
 """Injected persistence faults over actual HTTP; no claim of real component failure."""
 
+from importlib import import_module
+
 import pytest
 from t44.persistence import CommitUncertain, PersistenceUnavailable
 
-from .test_http import login, request
+_http = import_module(".986_http", __package__)
+login = _http.login
+request = _http.request
 
 pytestmark = [pytest.mark.contract, pytest.mark.fault]
 
