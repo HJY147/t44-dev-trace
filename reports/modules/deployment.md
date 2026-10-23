@@ -167,3 +167,5 @@
 - controller/871、依赖安装与API4worker/consumer/60sscanner/UI、轮换/回收尚待实现/真实执行；本设计checkpoint不构成完整环境运行或独立/性能/云通过。
 
 - controller现已实现，871为19项合成守卫通过、Ruff通过；原fixture/静态失败已保留。最终源92文件与私密输入/端口预检通过，拥有权/源/secret/坏输入/真实flock守卫有效；依赖准备和实际应用周期尚未执行，不将编码能力写成运行通过。
+
+- 原checkpoint预检声明写早：真实controller首次计数错含部署/Vite文件而失败，未起服务；已按root业务目录口径修正，所有92文件照常核hash，新增守卫后20项/Ruff/真实预检通过，失败原件另存。

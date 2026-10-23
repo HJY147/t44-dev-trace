@@ -82,8 +82,10 @@ def verify_binding(project, path, expected=None):
         target = source / relative
         if target.is_symlink() or not target.is_file() or digest(target.read_bytes()) != sha:
             raise ValueError("SOURCE_HASH_MISMATCH")
-    py = sum(name.endswith(".py") for name in binding["source_files"])
-    ts = sum(name.endswith((".ts", ".vue")) for name in binding["source_files"])
+    # Coordinator denominators describe backend and frontend/src business source;
+    # deployment helpers and vite.config.ts remain hash-checked above.
+    py = sum(name.startswith("backend/") and name.endswith(".py") for name in binding["source_files"])
+    ts = sum(name.startswith("frontend/src/") and name.endswith((".ts", ".vue")) for name in binding["source_files"])
     if (py, ts) != (binding["python_file_count"], binding["ts_vue_file_count"]):
         raise ValueError("SOURCE_DENOMINATOR_MISMATCH")
     return binding, source

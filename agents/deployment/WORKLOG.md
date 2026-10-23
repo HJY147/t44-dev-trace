@@ -203,3 +203,5 @@
 - application.py已实现锁hash依赖准备、精确源/私密env副本、freshbroker、API4worker/consumer/scanner/UI启动、真实scan/outbox/notification取证、300秒双项目scope服务CLI签发/轮换/回收及finally拥有权停机。新增监听回环/端口检查与真实共享flock占用验证；源码与数据库配置拒绝旧环境、admin、bool项目ID及非自有进程信号。
 - 871合成守卫19项、Ruff0.17.2通过；最初Ruff unusedimport、17项fixture缺少broker username/vhost的错误及后续扩展静态检查失败均原样保留在native-application-validation，不将其倒填通过。异常边界只输出稳定错误码以免私密URL/Token泄露，并继续独立资源清理，不降低全局规则。
 - 本次最终bc5a的92文件SHA/44Py20TSVue、三个明确私密输入与新18088/5178空闲预检均通过，旧监听baseline已存。原42243仍未启动应用；截至该checkpoint尚未安装phase2依赖或启动服务。下一步才进行已获根准入的有限实际周期，产品CI/专审与独立/性能/云不由本岗推定。
+
+- 纠正4c3e4c4最后一条预检表述：实际该命令先以SOURCE_DENOMINATOR_MISMATCH退出1，后续记录写早；未开始依赖/服务。根清单44Py/20TSVue是backend与frontend/src口径，全清单另含2个deployment Py和vite.config.ts（总46Py/21TSVue）。已修正统计范围，92文件仍全部核SHA，新增额外部署/配置文件仍必须核hash的守卫；20守卫/Ruff及真实源/私密/端口预检现全部通过，原失败JSON保留。

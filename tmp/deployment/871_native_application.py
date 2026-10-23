@@ -92,6 +92,18 @@ class ApplicationGuards(unittest.TestCase):
         with self.assertRaises(ValueError):
             appmod.verify_binding(self.project, self.binding_file, self.commit)
 
+    def test_deployment_and_vite_files_are_hashed_but_not_business_denominator(self):
+        for name in ("deployment/guard_tool.py", "frontend/vite.config.ts"):
+            path = self.source / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b"# Extra hash-checked configuration fixture\n")
+            self.binding["source_files"][name] = digest_file(path)
+        self.write_binding()
+        appmod.verify_binding(self.project, self.binding_file, self.commit)
+        (self.source / "deployment/guard_tool.py").write_bytes(b"changed")
+        with self.assertRaises(ValueError):
+            appmod.verify_binding(self.project, self.binding_file, self.commit)
+
     def test_manifest_traversal_or_test_path_rejected_before_file_read(self):
         for name in ["../private.json", "tmp/independent/not_a_real_file.py"]:
             self.binding["source_files"] = {name: "0" * 64}

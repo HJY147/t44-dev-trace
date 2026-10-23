@@ -600,12 +600,15 @@
     "no_ddl_reset_seed": true,
     "private_input_modes": "0600",
     "controller_status": "implemented; actual dependency preparation and application cycle pending",
-    "guard": "tmp/deployment/871_native_application.py:19 synthetic guards passed",
+    "guard": "tmp/deployment/871_native_application.py:20 synthetic guards passed",
     "services_started": false,
     "independent_or_formal_load_executed": false,
     "controller": "deployment/native/application.py",
-    "checks": "19 guards/Ruff passed; original failed fixture/static checks retained",
+    "checks": "20 guards/Ruff and corrected actual preflight passed; all original failures retained",
     "preflight": "agents/deployment/native-application-validation/controller-preflight.json",
-    "design_commit": "3e05c60"
+    "design_commit": "3e05c60",
+    "controller_commit_first": "4c3e4c4",
+    "source_count_correction": "44 backend Py/20 frontend src TS+Vue; all92 files including deployment2Py and vite.config.ts hash-checked",
+    "preflight_first_failure": "agents/deployment/native-application-validation/controller-preflight-original-failure.json"
   }
 }
