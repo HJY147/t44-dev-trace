@@ -1,14 +1,14 @@
 {
-  "recorded_at": "2026-10-23T17:52:52.844274+00:00",
+  "recorded_at": "2026-10-23T19:38:05.395428+00:00",
   "web_url": "http://127.0.0.1:5173",
   "api_url": "http://127.0.0.1:18080",
-  "ui_source_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "ui_source_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
   "api_source_commit": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
   "backend_bytes_equal_between_commits": true,
   "database": "t44_demo_v11",
   "api_pid": 63514,
-  "frontend_pid": 64288,
-  "frontend_cache_dir": ".agent-worktrees/.runtime/demo-warm-glass/vite-cache-5173",
+  "frontend_pid": 72044,
+  "frontend_cache_dir": ".agent-worktrees/.runtime/demo-warm-glass/vite-cache-9560-5173",
   "web_status": 200,
   "launch": "detached processes; ignored 0600 logs; no credentials in argv/output",
   "temporary_idle_guard": {
@@ -20,9 +20,9 @@
   "independent_runtime_or_data_modified": false,
   "business_mutations": false,
   "messaging": "API/web preview only; local broker unavailable; hosted independent environment separate",
-  "previous_ui_source_commit": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
-  "previous_frontend_pid": 63515,
-  "reason": "separately committed text prop casting fix after theme checkpoint; API/database retained",
+  "previous_ui_source_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "previous_frontend_pid": 64288,
+  "reason": "Reviewed session cleanup/stale callback repair; exact source archive with contract dependency; own API and data retained",
   "frontend_module_status": 200,
   "snapshot_dependency_completion": {
     "at": "2026-10-23T17:56:27.068262+00:00",
@@ -33,14 +33,24 @@
     "first_error_followed_by_test": "shell continued after Python HTTP500; explicitly retained as coordinator process error",
     "causal_limit": "Combined environment correction succeeded; negative-resolution cache was a hypothesis, not independently proved"
   },
-  "browser_smoke": "agents/coordinator/demo-preview-audited/results.json",
+  "browser_smoke": "agents/coordinator/demo-session-fix-smoke/results.json",
   "browser_smoke_exit": 0,
   "source_identity_verified": true,
   "coordinator_visual_review": {
     "images": [
-      "agents/coordinator/demo-preview-ready/1440-workspace.png",
-      "agents/coordinator/demo-preview-ready/390-login.png"
+      "agents/coordinator/demo-session-fix-smoke/1440-workspace.png",
+      "agents/coordinator/demo-session-fix-smoke/390-login.png"
     ],
-    "scope": "two actual rendered samples; same application/runtime as later request-instrumented smoke; not independent acceptance"
-  }
+    "scope": "Two actual rendered samples reviewed after new exact9560 runtime; developer preview smoke only, not independent acceptance"
+  },
+  "runtime_history": [
+    {
+      "recorded_at": "2026-10-23T17:52:52.844274+00:00",
+      "ui_source_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+      "frontend_pid": 64288,
+      "cache": ".agent-worktrees/.runtime/demo-warm-glass/vite-cache-5173",
+      "smoke": "agents/coordinator/demo-preview-audited/results.json",
+      "note": "Historical75 preview; superseded only owned frontend, backend unchanged"
+    }
+  ]
 }
