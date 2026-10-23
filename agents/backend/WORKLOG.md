@@ -131,3 +131,28 @@
 - 在不创建/编辑测试文件的前提下，用内存加载既有本岗旅程、私密演示账号和真实TCP API完成38/38操作成功、53请求逐响应Schema验证，integration-38-http.json；内部升级HTTP202为已持久事件重放，首次新建由上项scanner真实进程证明。不是独立验收/性能/正式MQ成功链。
 - 已merge根测试机械迁移5e07887，当前运行命令为`PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend ...`；实际collect-only 317 tests成功，integration-tmp-collection.log。保留先前真实运行的旧命令与原日志，不重写历史、不提前重复wholepass。未新增测试文件，不占970号；本岗测试现为tmp/backend/contracts/{985_mysql_http.py,986_http.py,987_faults.py}及tmp/backend/backend/domain/994_transitions.py，fixture保留conftest.py。
 - 本轮38HTTP/CLI实证checkpoint为19750a9920140f206452eb061f49f9dba0aace94，Issue阶段评论6361675371；PRedits仍draft，无self-approve。按根安排本阶段可释放槽位，下一阶段CI/Rabbit、最终规模与独立正式缺陷待根继续派工；不接触私有测试。
+
+## ROLE-backend-REFACTOR-v1 checkpoint 1（性能窗口仅编辑）
+
+- 根003ef6b从干净树快进，未读取独立验收私有资料。按性能隔离要求只源码审查/编辑/Git，未跑pytest、构建、MySQL或任何业务请求。
+- 保守方案已回根：barrel约60行、受信创建上下文/insert→get helper约40～70行、同构转发/模型装配20～50行；总120～200行仅估计，不承诺填平整体约761行缺口。风险主要是创建字段/默认及审计归属差异，完整守卫不删，窗口结束再实测。
+- 实际搜索production无domain barrel消费者，仅本岗994_transitions.py；改为commands/models namespace和state_machine.decide直接导入，旧106用例与断言原样保留，仅符号限定名变化。删除domain/__init__.py重复re-export/__all__。typed类、构造、状态规则未变。当前只静态编辑，尚未运行验证，不宣称通过。
+- 前端未读待办询问已如实答复：manager id1在本岗全38旅程被处理，id2属developer，先前交接未及时更新；当前窗口禁止新业务/DB请求，因此未造记录、不要求前端降低read≠handle断言。
+
+## ROLE-backend-REFACTOR-v1 checkpoint 2（远端失败修复/真实复用）
+
+- 729344e681253443c45dfbbec0ece97f68d2080f 的远端GHA39937742613实际失败：Ruff I001/F823；覆盖任务18 failed/299 passed。原因是本岗namespace迁移把模块commands与既有局部commands字典重名，属于AI本次引入的真实回归，不是用户改码。完整原始失败保留refactor-ci-39937742613-failed.log，另一同SHA运行状态在refactor-ci-39937737014.json。现以cmd模块别名修复，拆分导入，原106用例/断言保留。
+- 受信Call.create统一显式业务字段以外的project/actor/created/updated及insert→get；仅用于既有已读回创建路径，不引入任意表/列客户端入口、不追加依赖批量循环读取；SQL已冻结默认version/active/plan_version与NULL沿用。项目/成员/迭代/任务/依赖/评审/预案守卫保持，CAS和事务门面未动。
+- login和CLI service-token共用issue_session：同事务只保存摘要，明文仅返回/0600文件一次；CLI既有身份/项目检查、审计、O_EXCL、fsync及失败清理保持，登录去除内部session_id后原冻结响应不变。
+- 对比003ef6b，本岗生产文件物理diff净减少112行；这是git diff，不是最终cloc、全产品规模或门禁结论。未压行、转移配置、删除安全/业务功能或降低断言。
+- 性能安静窗仍有效：本机只编辑（含Ruff格式化）、读取和Git diff --check；未跑pytest/build/MySQL/HTTP，也未重启18080/触碰18081。当前改动需远端CI或窗口后真实回归，不能把历史314通过/87.78%作为当前版本通过。
+
+## ROLE-backend-REFACTOR-v1 远端复验与交接
+
+- 真实被测源SHA64b4f891ee77eeb2b1054c3a40af084eb6691d5c，PR合并checkout f5e9904c339e204574fcf2f630af28b0a6779e94；GHA39938619826和39938612582均success，static/frontend/contracts/coverage四任务通过。失败729→cmd别名修复64b4→真实新CI通过，未改旧失败日志、用例或断言。
+- 下载原始CI artifact并解析JUnit：tests317、failures0、errors0、skipped0；contract35/integration52/fault7分别选择通过，标记可重叠，不能相加当总用例。Linux/Python3.12.15使用真实MySQL/Rabbit服务。原始logs/JSON/JUnit已归agents/backend/refactor-ci-39938619826-*，汇总refactor-validation-summary.json；两run状态JSON同目录。
+- 全backend/t44共43文件纳入，excluded_lines=0；行2406/2729=88.1641626969586%，分支76.47058823529412%，含分支综合85.73918094684868%。CLI仍0/101并在分母中，旧真实CLI实证单列不混入本次coverage；保留FastAPI TestClient/httpx弃用警告1条。
+- 远端检查已解决本次静态/断言回归，但不是独立验收或正式性能结论。全产品最终cloc仍待总协调核算；本岗没有把物理112行变化当cloc达标。无新测试文件（未占955号），未改他岗/审核957/959或私有验收资料。
+- 本机性能窗口内仍仅编辑/读取/Git，未pytest/build/DB/HTTP/重启服务。Issue#3阶段6362735528，PR16保持draft；本交接提交只归档上述已验证源SHA证据，不新增产品变更。
+- 真实最终Issue#3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205；PR16正文已按当前远端结果更新，保持draft。
+- 归档git diff --cached --check曾退出2：原始GHA完整日志中的带时间戳空输出行有尾空格；为保存原始证据不改写日志，随后只对非.log文件执行同检查。此为证据格式检查，不是产品测试失败。

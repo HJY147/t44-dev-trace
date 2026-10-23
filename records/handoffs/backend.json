@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "CORE-FOUNDATION-v1：纯领域/包基础已实现并本岗自测，API及集成待后续授权",
-  "implementation_status": "部分实现：纯领域状态机/包基础；API、DB、事务、消息、调度未实现",
+  "stage": "ROLE-backend-REFACTOR-v1：源64b4f89远端317项通过，证据交接；整体源码规模仍待统一核算",
+  "implementation_status": "冻结完整API/领域/门面/CLI与重复消除已实现；当前源64b4f89远端开发CI全成功，非独立验收/性能结论",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -402,23 +402,15 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "Rabbit success real CI",
-    "final source size",
-    "performance",
-    "independent acceptance"
+    "final whole-product cloc3500-5100",
+    "independent acceptance",
+    "formal performance conclusion",
+    "updated local live service after performance window"
   ],
   "questions": [
     {
-      "owner": "coordinator/user",
-      "question": "完成Q002及正式契约冻结后再派API/业务门面实现，不用纯域基础冒充已联调"
-    },
-    {
-      "owner": "database",
-      "question": "后续组合根注入已确认的MySQLSettings/Engine/UoW与CommitUncertain；本轮无连接"
-    },
-    {
-      "owner": "messaging/scheduler",
-      "question": "未来根据冻结契约接入outbox/通知/升级扫描，纯领域GuardContext必须来自服务端加载，不能用客户端声明"
+      "owner": "coordinator",
+      "question": "性能安静窗结束前不本机回归/更新服务；全产品源码cloc及独立验收/性能继续按各自实际证据核定"
     }
   ],
   "prompt_refs": [
@@ -544,10 +536,15 @@
       "id": "ROLE-backend-INTEGRATION-v1",
       "archive_path": "agents/backend/INTEGRATION-v1-prompt.md",
       "reason": "actual GHA/code-map fixes, complete owner integration and full source coverage; no private acceptance contact"
+    },
+    {
+      "id": "ROLE-backend-REFACTOR-v1",
+      "archive_path": "agents/backend/REFACTOR-v1-prompt.md",
+      "reason": "真实重复消除保持业务/安全/可读性；性能隔离期间仅编辑/Git，保留远端原失败与修复事实"
     }
   ],
-  "updated_at": "2026-10-23T09:21:32.449376+00:00",
-  "current_stage": "ROLE-backend-INTEGRATION-v1 delivered checkpoint; all38 actual HTTP and CLI; awaiting coordinator CI/size/acceptance",
+  "updated_at": "2026-10-23T10:26:53.547291+00:00",
+  "current_stage": "ROLE-backend-REFACTOR-v1：源64b4f89远端317项通过，证据交接；整体源码规模仍待统一核算",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -614,5 +611,81 @@
       "tmp/backend/contracts/987_faults.py",
       "tmp/backend/backend/domain/994_transitions.py"
     ]
+  },
+  "refactor_v1": {
+    "basis": "003ef6b",
+    "first_checkpoint": "729344e681253443c45dfbbec0ece97f68d2080f",
+    "remote_failure_run": "39937742613",
+    "remote_failure": "Ruff I001/F823;18 failed/299 passed; module namespace shadowed by local commands dict",
+    "failure_evidence": [
+      "agents/backend/refactor-ci-39937742613-failed.log",
+      "agents/backend/refactor-ci-39937737014.json"
+    ],
+    "changes": [
+      "direct domain module imports remove unused barrel",
+      "trusted Call.create shared context/insert-get",
+      "issue_session shared opaque session creation",
+      "cmd alias fixes observed namespace collision; assertions retained"
+    ],
+    "physical_line_delta_from_basis": -112,
+    "validation": "remote GHA39938619826 and39938612582 all four jobs success; local performance window quiet",
+    "unverified": [
+      "final whole-product cloc3500-5100",
+      "independent acceptance",
+      "formal performance conclusion",
+      "updated local live service after performance window"
+    ],
+    "tested_source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+    "remote_results": {
+      "source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+      "run_id": 39938619826,
+      "checkout_pr_merge_sha": "f5e9904c339e204574fcf2f630af28b0a6779e94",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826",
+      "junit": {
+        "tests": 317,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "python_files": 43,
+      "scope": "all backend/t44; excluded_lines=0",
+      "covered_lines": 2406,
+      "statements": 2729,
+      "line_percent": 88.1641626969586,
+      "branch_percent": 76.47058823529412,
+      "branch_inclusive_percent": 85.73918094684868,
+      "marker_passed": {
+        "contract": 35,
+        "integration": 52,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "jobs": {
+        "static": "success",
+        "contracts": "success",
+        "coverage": "success",
+        "frontend": "success"
+      },
+      "warning": "one StarletteDeprecationWarning for FastAPI TestClient/httpx",
+      "limits": [
+        "remote developer CI, not independent acceptance or performance",
+        "CLI remains in full coverage denominator with 0 covered lines; prior live CLI evidence is separate",
+        "no local pytest/build/DB/HTTP during formal performance window",
+        "whole-product final source cloc not established by this change"
+      ]
+    },
+    "evidence": [
+      "agents/backend/refactor-ci-39938619826.json",
+      "agents/backend/refactor-ci-39938612582.json",
+      "agents/backend/refactor-ci-39938619826-coverage.log",
+      "agents/backend/refactor-ci-39938619826-contracts.log",
+      "agents/backend/refactor-ci-39938619826-static.log",
+      "agents/backend/refactor-ci-39938619826-coverage.json",
+      "agents/backend/refactor-ci-39938619826-junit.xml",
+      "agents/backend/refactor-validation-summary.json"
+    ],
+    "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362735528",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
   }
 }

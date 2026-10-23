@@ -96,26 +96,33 @@ def login(g, call, settings):
     except (VerificationError, InvalidHashError):
         valid = False
     require(valid and user and user["active"], "INVALID_CREDENTIALS")
+    session = issue_session(
+        g, user_id=user["id"], clock=call.clock, ttl=settings.session_ttl_seconds
+    )
+    session.pop("session_id")
+    call.actor = {"actor_kind": 1, "actor_id": user["id"]}
+    return {**session, "token_type": BEARER_TYPE, "user": model("User", user)}
+
+
+def issue_session(
+    g, *, clock, ttl, user_id=None, service_account_id=None, project_ids=(), scopes=()
+):
+    """Issue within the caller's transaction; persist only a digest, return plaintext once."""
+    if (user_id is None) == (service_account_id is None):
+        raise ValueError("Exactly one session subject is required")
     token = secrets.token_urlsafe(32)
-    expires = call.clock + timedelta(seconds=settings.session_ttl_seconds)
-    g.insert(
+    expires = clock + timedelta(seconds=ttl)
+    identifier = g.insert(
         "auth_sessions",
         {
-            "actor_kind": 1,
-            "user_id": user["id"],
-            "service_account_id": None,
+            "actor_kind": 1 if user_id is not None else 2,
+            "user_id": user_id,
+            "service_account_id": service_account_id,
             "token_hash": token_digest(token),
-            "project_ids": [],
-            "scopes": [],
+            "project_ids": list(project_ids),
+            "scopes": list(scopes),
             "expires_at": expires,
-            "revoked_at": None,
-            "created_at": call.clock,
+            "created_at": clock,
         },
     )
-    call.actor = {"actor_kind": 1, "actor_id": user["id"]}
-    return {
-        "access_token": token,
-        "token_type": BEARER_TYPE,
-        "expires_at": expires,
-        "user": model("User", user),
-    }
+    return {"access_token": token, "session_id": identifier, "expires_at": expires}
