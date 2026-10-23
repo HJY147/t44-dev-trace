@@ -223,3 +223,23 @@
 - 额外版号上限回归发现本次AI草稿action9在version2147483647且缺容量时先422，旧CAS应409；实际1fail→在新增人力guard前复用原version上限检查→1pass，capacity-v11-ceiling-before/after.*保存。该最后源由随后精确CI统一覆盖全部22新SQLite项，当前本地证据为21项先验+上限1项后验，不说一次22项同源全跑。
 - 本地较严Ruff发现既有975_seed.py嵌套with的SIM117，原CI配置未启SIM，不声称原CI因此失败。经root明确授权仅合并pytest.raises/savepoint两个context，进入/退出顺序及全部断言不变，未另跑全975。全backend/t44+tmp/backend严格Ruff现通过、7本岗文件格式通过、Bandit通过；原失败及成功capacity-v11-ruff-*保存。冻结文件不动，验证源关键hash见capacity-v11-postfreeze-validation.json。
 - 不重启任何API、不运行955/负载；新全量CI、独立复测、性能及源码规模仍未宣称通过。FE责任岗已交6d6d095a的1.1机械fixture/说明同步，合入后将对精确新SHA做全量CI，旧479的362通过不代新源。
+
+### 精确全CI失败与候选Schema版本修正
+
+- 业务commit7eba1338fbe0892ad3c83b51f7153fc3bdce19ec后合ee21873（含FE责任岗1.1机械同步），精确源8f6e75d51b947f0fe5e5b5d503278f613288cc71；合根后验证关键源hash/14freeze全相同，已push。Issue3评论6365233683/PR16如实标CI待。真实GHA39956073530/39956066523均failure：static/frontend成功，contracts/coverage失败；JUnit391项/2失败/0error/skip，不能说全量通过。
+- 根与本岗各自读公开CI/当前冻结代码同时定位：合法1000/9999候选校验返回500，ContractValidationResult.schema_version.const仍1.0.0，而本岗服务错误复用外层VERSION1.1.0。新候选结构在1.1未变，内层Schema版本和外层契约版本有独立含义。根一度建议显式1.1.1 metadata erratum，本岗指出按已冻结const输出无需改规格，根最终采用最小代码修正；1.1.1未改盘/未提交，非用户业务判断/学生识别或亲改。
+- 新增三category实际HTTP正向回归，先3×500失败（capacity-v11-schema-version-before.*）；只改Application出参读取冻结对应const、去除误用VERSION导入及一行说明，Meta仍1.1.0。修后3类正向及原7个UTC合法/非法边界共10passed，原断言不降，严格Ruff通过。14freeze/APIREADME未变，等待新精确SHA全CI。
+- 原CI日志/JUnit的原件保留ignored0600，公开副本仅脱敏临时CI Token/DSN密码并记原/副本SHA，capacity-v11-ci-failure-provenance.json；原失败日志/XML不覆盖。旧合同aa748的39954015231也有同两边界失败，单独保留原件/出处，不能归作容量规则失败。实际PR checkout为8f66fb01…（artifact名），head为上述8f6。
+- 按root提速续派，先推源码checkpoint4c20f32b71635016815420472b9d4bb4fa850df0，仅application.py与986三类别回归两文件；本节大日志/脱敏溯源/报告/交接随后独立evidence-only commit，不能称已在源码commit中。全量CI针对该源码SHA，未等资料归档才启动。
+
+### 第二次诊断窗口的实际失败（没有负载样本）
+
+- root约12:50授权独占短窗口后，实际12:51:02启动955 baseline PID39648，实际45秒timer，12:51:47正常退出。固定回环直连的public bootstrap实际exit0并生成ignored0600 fixture；未据此说三类业务候选有效。下一次工具实际到12:51:54才发sanity的3请求，全部ConnectError/0HTTP响应/0valid，主1/8/32矩阵未启动。是本岗跨工具生命周期安排错误，不是产品P95/业务失败；准确metadata/时序profile-window2-lifecycle-failure.json。
+- 核本岗PID已退出、无负载后立即告root释放窗口。直连bootstrap成功仅支持原系统代理假设，不证明旧502唯一根因。根要求后续单个持续控制器一次exec内完成ready→bootstrap/sanity→三模式独立服务/矩阵→finally正常收尾，允许<=120s安全timer并主动stop；控制器先commit，下一独占窗口再测。目前工具未再启动，先解决上述真实CI问题。
+
+### 4c20精确CI闭环与单命令控制器准备
+
+- 源4c20f32b71635016815420472b9d4bb4fa850df0的product39958165108/39958156337均success。已取原始metadata/artifact/console/coverage/JUnit并解析：394tests/0fail/error/skip，contract96/integration63/fault7分别全过（重叠不可相加）。全43个t44文件精确对齐，excluded0，行2542/2865=88.7260%，分支608/774=78.5530%，综合86.5622%；原两个UTC及三category回归均包含。容量全量CI现已成立，非独立复测/正式性能/源码规模达标。
+- 本次源码commit只两文件；失败证据随后独立e6854adc49e9d738d98188c782c1097f85a1d374（无产品变更）归档，先未push避免取消4c20远端CI。原始失败JUnit含自身trace尾空格，非.log证据diff检查也曾退出2；保留原始XML，不改产品源或测试断言，不能把资料提交成功当格式检查通过。
+- 955在同一文件新增orchestrate模式：一个持续controller顺序启动3个独立baseline/timings/profile子服务，固定18083/profile库，逐次TCP ready→bootstrap→3类valid sanity→baseline/timings的1/8/32各10秒→profile1并发3类共3请求，组完成主动SIGTERM并等退出，finally保证异常清理，强制kill另记且run失败。服务安全timer120s、总deadline160s；记录实际argv/UTC/exitcode/PID，不将DSN/口令/Token放argv。实际import map补application/common/workflow。
+- 仅controller的Ruff/format/AST检查通过，profile-controller-static.log；未导入执行、未起服务/负载，下一root独占窗口才运行。生产backend/t44逐文件仍与CI绿4c20一致，不为工具修改再重跑旧全套；当前没有任何有效性能样本或优化结论。
