@@ -1,31 +1,46 @@
 import { reactive } from 'vue'
-import { api, request } from './api'
+import { api, checkSession, request } from './api'
 import { asArray, asRow, beijing, dictionaryFields, operationLabels } from './contract'
 import type { Json, Row } from './contract'
 
 export const workspace = reactive({ user: null as Row | null, projectId: null as number | null, project: {} as Row, projects: [] as Row[], members: [] as Row[], iterations: [] as Row[], taskChoices: [] as Row[], dictionaries: {} as Row, template: {} as Row, rules: {} as Row, notice: '', contextWarning: '' })
-api.unauthorized = () => { workspace.user = null; workspace.project = {}; workspace.projects = []; workspace.members = []; workspace.iterations = []; workspace.notice = '登录已失效，请重新登录。' }
+let contextSequence = 0
+function clearContext(): void {
+  workspace.project = {}; workspace.members = []; workspace.iterations = []; workspace.taskChoices = []; workspace.template = {}; workspace.rules = {}; workspace.contextWarning = ''
+}
+function clearSession(notice: string): void {
+  contextSequence++; api.token = ''; clearContext()
+  workspace.user = null; workspace.projectId = null; workspace.projects = []; workspace.dictionaries = {}; workspace.notice = notice
+}
+api.unauthorized = () => clearSession('登录已失效，请重新登录。')
 export async function allPages(operation: string, params: Row = {}): Promise<Row[]> {
-  const items: Row[] = []
+  const items: Row[] = [], token = api.token
   for (let page = 1; ; page++) {
+    checkSession(token)
     const data = asRow((await request(operation, params, { page, page_size: 100 })).data)
+    checkSession(token)
     const next = asArray(data.items).map(asRow)
     items.push(...next)
     if (items.length >= Number(data.total) || !next.length) return items
   }
 }
 export async function bootstrap(): Promise<void> {
+  const token = api.token
   const [me, dictionaries, projects] = await Promise.all([request('getMe'), request('getDictionaries'), allPages('listProjects')])
+  checkSession(token)
   workspace.user = asRow(me.data); workspace.dictionaries = asRow(dictionaries.data); workspace.projects = projects
   if (!projects.some((p) => p.id === workspace.projectId)) workspace.projectId = projects.length ? Number(projects[0]!.id) : null
 }
 export async function context(): Promise<void> {
-  const project_id = workspace.projectId
-  workspace.project = {}; workspace.members = []; workspace.iterations = []; workspace.taskChoices = []; workspace.template = {}; workspace.rules = {}; workspace.contextWarning = ''
+  const project_id = workspace.projectId, token = api.token, current = ++contextSequence
+  clearContext()
   if (!project_id) return
   const [project, members, iterations] = await Promise.all([request('getProject', { project_id }), allPages('listProjectMembers', { project_id }), allPages('listIterations', { project_id })])
+  checkSession(token)
+  if (current !== contextSequence || workspace.projectId !== project_id) return
   const [template, rules] = await Promise.allSettled([request('getReviewTemplate', { project_id }), request('getEscalationRules', { project_id })])
-  if (workspace.projectId !== project_id) return
+  checkSession(token)
+  if (current !== contextSequence || workspace.projectId !== project_id) return
   workspace.project = asRow(project.data); workspace.members = members; workspace.iterations = iterations
   workspace.template = template.status === 'fulfilled' ? asRow(template.value.data) : {}
   workspace.rules = rules.status === 'fulfilled' ? asRow(rules.value.data) : {}
@@ -50,5 +65,5 @@ export function display(value: Json | undefined, field = ''): string {
 }
 export async function logout(): Promise<void> {
   await request('logout')
-  api.token = ''; workspace.user = null; workspace.projectId = null; workspace.projects = []; workspace.notice = '已退出当前会话。'
+  clearSession('已退出当前会话。')
 }

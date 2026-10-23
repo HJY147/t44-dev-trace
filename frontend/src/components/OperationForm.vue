@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, shallowRef } from 'vue'
 import { ElButton, ElDialog } from 'element-plus'
-import { ApiError, intentFor, request } from '../api'
+import { api, ApiError, intentFor, request } from '../api'
 import type { Intent } from '../api'
 import { asArray, asRow, initial, label, operationLabels, resolve, schemas, validate } from '../contract'
 import type { Json, Row } from '../contract'
@@ -25,6 +25,7 @@ async function submit(checkOnly = false): Promise<void> {
   errors.value = validate(props.schemaName, draft.value)
   if (Object.keys(errors.value).length) return
   busy.value = true; failure.value = null
+  const token = api.token
   try {
     if (checkOnly) {
       const category = props.operation === 'createTask' ? 1 : props.operation === 'transitionTask' ? 2 : 3
@@ -35,6 +36,7 @@ async function submit(checkOnly = false): Promise<void> {
     const result = await request(props.operation, props.params, {}, draft.value, intent.value)
     workspace.notice = `${title.value}已完成${result.meta.replayed ? '（原请求结果已确认）' : ''}，正在读取最新记录。`
     await props.saved(asRow(result.data))
+    if (api.token !== token) return
     const action = props.operation === 'transitionTask' ? display(asRow(draft.value).action, 'action') : title.value
     workspace.notice = result.meta.replayed ? `${action}的历史结果已确认，最新记录已刷新。请以详情中的当前状态为准。` : `${action}已完成，最新记录已刷新。`
     emit('close')

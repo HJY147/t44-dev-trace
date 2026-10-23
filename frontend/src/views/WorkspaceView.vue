@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue'
 import { ElButton, ElDrawer } from 'element-plus'
 import { ApiError, request } from '../api'
 import { asArray, asRow } from '../contract'
@@ -24,11 +24,13 @@ const rows = computed(() => asArray(data.value.items).map(asRow))
 const needsProject = computed(() => !['projects', 'notifications'].includes(props.page))
 const taskPage = computed(() => ['overview', 'tasks', 'reviews'].includes(props.page))
 let sequence = 0
+onUnmounted(() => { sequence++ })
 async function refresh(reloadContext = false): Promise<void> {
   if (!workspace.user) return
   const current = ++sequence; busy.value = true; failure.value = null; data.value = { items: [], total: 0 }
   try {
     if (reloadContext) await context()
+    if (current !== sequence || !workspace.user) return
     if (needsProject.value && !workspace.projectId) return
     const params: Row = { project_id: workspace.projectId }, query: Row = { page: pageNumber.value, page_size: 20 }
     const operation = taskPage.value ? 'listTasks' : props.page === 'projects' ? 'listProjects' : props.page === 'schedule' ? 'listIterations' : props.page === 'audit' ? 'listProjectAuditEvents' : section.value === 'escalations' ? 'listEscalations' : 'listMyNotifications'

@@ -17,7 +17,7 @@ import type { Schema } from '../../frontend/src/contract'
 import { formSchemas, presets } from '../../frontend/src/forms'
 import { workspace } from '../../frontend/src/workspace'
 import { api } from '../../frontend/src/api'
-import { evidence, fixtureFetch, iteration, member, notification, page, seed, task, user } from './981_fixtures'
+import { evidence, fixtureFetch, iteration, member, notification, page, project, seed, task, user } from './981_fixtures'
 const global = { stubs: { teleport: true } }
 const settle = async () => { await flushPromises(); await nextTick(); await flushPromises() }
 const button = (wrapper: ReturnType<typeof mount>, text: string) => wrapper.findAll('button').find((node) => node.text() === text)!
@@ -144,6 +144,22 @@ describe('operation forms', () => {
   })
 })
 describe('session and user flows', () => {
+  it('unmounts authenticated DOM and overlays on logout and keeps them absent through history navigation', async () => {
+    const router = createRouter({ history: createMemoryHistory(), routes: navigation.map(item => ({ path: item.path, component: WorkspaceView, props: { page: item.key }, meta: { title: item.label } })) })
+    await router.push('/projects'); await router.isReady()
+    const wrapper = mount(App, { global: { ...global, plugins: [router] }, attachTo: document.body }); await settle()
+    await router.push('/tasks'); await settle()
+    await wrapper.get('.business-card h3 button').trigger('click'); await settle()
+    expect(wrapper.text()).toContain(project.name); expect(wrapper.text()).toContain(task.title)
+    await wrapper.get('button[aria-label="打开主导航"]').trigger('click'); await button(wrapper, '访问说明').trigger('click'); await settle()
+    await button(wrapper, '退出').trigger('click'); await settle()
+    expect(wrapper.get('form').text()).toContain('已退出当前会话')
+    expect(wrapper.find('.app-shell').exists()).toBe(false); expect(wrapper.text()).not.toContain(project.name); expect(wrapper.text()).not.toContain(task.title)
+    expect(wrapper.find('.el-drawer').exists()).toBe(false); expect(wrapper.find('.el-dialog').exists()).toBe(false)
+    router.back(); await settle(); expect(wrapper.text()).not.toContain(project.name); expect(wrapper.find('.app-shell').exists()).toBe(false)
+    seed(); await settle(); expect(wrapper.find('.app-shell').exists()).toBe(true); expect(wrapper.find('.el-dialog').exists()).toBe(false)
+    wrapper.unmount()
+  })
   it('logs in with transient password, hydrates workspace, clears password on rejection and success', async () => {
     workspace.user = null
     const { fetcher } = fixtureFetch()

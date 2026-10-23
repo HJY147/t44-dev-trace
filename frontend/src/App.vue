@@ -17,6 +17,7 @@ const mobileNavigation = ref(false)
 const showAccessInfo = ref(false)
 const currentTitle = computed(() => String(route.meta.title ?? '工作空间'))
 watch(() => route.fullPath, () => { mobileNavigation.value = false })
+watch(() => workspace.user, user => { if (!user) { mobileNavigation.value = false; showAccessInfo.value = false } })
 async function signOut(): Promise<void> {
   try { await logout() } catch (cause) { workspace.notice = cause instanceof Error ? cause.message : '退出尚未完成，请重试。' }
 }
@@ -25,7 +26,7 @@ async function signOut(): Promise<void> {
 <template>
   <ElConfigProvider :locale="zhCn">
     <a class="skip-link" href="#main-content">跳转到主要内容</a>
-    <div class="app-shell" :inert="!workspace.user">
+    <div v-if="workspace.user" class="app-shell">
       <aside class="sidebar" aria-label="工作空间侧栏"><SidebarNavigation /></aside>
       <div class="app-main">
         <header class="topbar">
@@ -46,11 +47,11 @@ async function signOut(): Promise<void> {
         </main>
       </div>
     </div>
-    <ElDrawer v-model="mobileNavigation" class="mobile-navigation" direction="ltr" size="272px" :with-header="false" title="主导航" :close-on-click-modal="true" :close-on-press-escape="true">
+    <ElDrawer v-if="workspace.user" v-model="mobileNavigation" class="mobile-navigation" direction="ltr" size="272px" :with-header="false" title="主导航" :close-on-click-modal="true" :close-on-press-escape="true">
       <ElButton class="drawer-close" circle :icon="Close" aria-label="关闭主导航" @click="mobileNavigation = false" />
       <SidebarNavigation @navigate="mobileNavigation = false" />
     </ElDrawer>
-    <ElDialog v-model="showAccessInfo" title="工作空间访问说明" width="min(460px, calc(100vw - 32px))">
+    <ElDialog v-if="workspace.user" v-model="showAccessInfo" title="工作空间访问说明" width="min(460px, calc(100vw - 32px))">
       <p class="access-description">当前工作空间仅展示你参与项目的任务、评审与交付记录。记录中的时间统一显示为北京时间。</p>
       <p class="access-description">涉及任务推进、发布和回滚的操作，需要相应项目权限与完整依据。</p>
       <template #footer><ElButton type="primary" @click="showAccessInfo = false">知道了</ElButton></template>
