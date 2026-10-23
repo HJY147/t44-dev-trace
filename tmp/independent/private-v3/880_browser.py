@@ -100,11 +100,18 @@ def main():
     # bound to observed runtime controls; ambiguity remains a navigation capability block.
     def one(locator, purpose):
         n = locator.count()
+        if n == 0:
+            try: locator.wait_for(state='visible', timeout=10000)
+            except Exception: pass
+            n = locator.count()
         if n != 1:
             raise S.Blocked('Frozen semantic UI navigation cannot uniquely bind ' + purpose + '; observed count=' + str(n))
         return locator
     def button(page, names):
             match = page.get_by_role('button', name=re.compile(names))
+            if match.count() == 0:
+                try: match.wait_for(state='visible', timeout=10000)
+                except Exception: pass
             if match.count() == 1: return match
             return one(page.get_by_role('link', name=re.compile(names)), names)
     def field(page, names):
