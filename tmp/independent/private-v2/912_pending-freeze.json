@@ -1,0 +1,41 @@
+{
+  "version": "independent-v2-pending-frozen-subconditions-1",
+  "frozen_at_utc": "2026-10-23T18:28:11.627128+00:00",
+  "parent_freeze": "920_fault-resume-freeze.json",
+  "parent_sha256": "1d9d2c6ec66e31d5bb8d17ca5dfc9488407bbbee19d3f4f6531271fca4e81fd2",
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original_H": "27c9a0a6af10a21eb475ef42c9e98e13b8334a43",
+  "H3": "99906b1fb1ef376cc819c1a3af9558906331f8c0",
+  "H4": "2e1917e2e9e1c307bd0fab0ed74ee61de15a71d7",
+  "preserved_runs": [
+    39972540073,
+    39998518039
+  ],
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "environment_implementation": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+  "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+  "selection": [
+    "LIFE-02 original missing phase/role/evidence matrix",
+    "DEP-01 predecessor delivery then rollback and unblock guard",
+    "STAFF-02 each state + blocked_from capacity matrix",
+    "IDEM-01 old success after later mutation, actor/operation/path scoping + durable row",
+    "AUTH-02 missing rolled-back owner protections and delivered otherwise-unused member removal/replay",
+    "PAGE-01 task205 subset only, other record families remain pending",
+    "NOTICE-01 other-recipient/former-member remaining subconditions",
+    "MQ-01 actual-row reconstructed wrapper replay subset, earlier original capture BLOCKED retained"
+  ],
+  "original_expectations_changed": false,
+  "completed_case_methods_selected": false,
+  "no_product_source_access": true,
+  "no_sql_mutation": true,
+  "no_local_load_test": true,
+  "static_validation": "ast.parse; frozen contract request/DDL table/column lookup only; no SUT execution",
+  "files_sha256": {
+    "913_pending-subconditions.py": "2da8cb2b9a33c5ee6a8ca54ecc17d7a1e90875bd61bf5eb5f05c7affc8a48bd6",
+    "939_runtime-adapter.py": "f70abecca1e22b58ed030839030b8c54751a539c5bb159e3c67e54bccdfe3056",
+    "949_harness.py": "30c2ccbc961f114edfe10d6bcd86f6b8259289ea11633c4c028b8843c2130e02",
+    "950_cases.json": "1ba304140eb63774dc790c9a1a72eb5ccda76c22a5c5d6181086ea40c03c5ca2",
+    "944_recipient.pem": "f2e156af05a4ce9e6128d64543a795b8385407935ffb4b80e43d55b5f1433139"
+  },
+  "execution_status": "NOT_YET_EXECUTED"
+}
