@@ -1,0 +1,8 @@
+首次真实 MySQL 自测的原始工具输出摘录（不是完整原始日志）：
+
+EEEEEEE                                                                  [100%]
+E           t44.persistence.errors.PersistenceIntegrityError: Database constraint rejected the operation
+13 deselected, 1 warning, 7 errors in 1.54s
+
+失败发生于本岗合成夹具插入 iterations，capacity=[] 违反冻结 ck_iterations_capacity 的 JSON_LENGTH BETWEEN 1 AND 100。
+处理：只修正本岗夹具为包含一个合法人力条目，不修改生产约束、断言或门禁。复跑结果见 mysql-run2.log。

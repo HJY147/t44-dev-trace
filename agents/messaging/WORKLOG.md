@@ -24,3 +24,21 @@
 - 已保存并执行 `gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/messaging/github-interface-question.md`，结果：https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6358168434；仅询问既有升级轮次/稳定幂等键口径，尚未收到确认。
 - 本轮追加两份评论原文；修改者为本岗 AI。提交范围限定为本岗日志、模块报告、交接及上述两份评论，不修改产品代码，不冻结业务接口，不发布审核通过状态。
 - `ROLE-messaging-M0-COMMIT-v1` 的作用是记录真实文档问答、GitHub 留痕与阶段提交，关联上述五份产物；不计作业务提示词优化或用户人工改码。
+
+
+## 2026-10-23 消息应用实现阶段（ROLE-messaging-APPLICATION-v1）
+
+- 总协调明确覆盖 M0 的仅设计限制，基于冻结 v1/D001/D004 授权业务实现；操作者为消息岗 AI，不冒记用户亲改。
+- 独立 worktree `.agent-worktrees/messaging`、分支 `codex/messaging-runtime`、base `12f7141026376763086e41a5b4db9ac1e82cfa33`；未使用根索引。
+- 读取根规则、implementation-layout、冻结 OpenAPI/persistence-contract、实际 application/api 签名、DB README/delivery 及必要开发测试夹具；未读取独立验收资料。
+- 查阅 Pika 官方现行 BlockingConnection 文档及 1.x 实现；锁内同步安装既有 requirements.lock 至本 worktree venv，实际 Pika 1.4.4；未修改依赖锁或 marker。
+- 已实现零参 NotificationFacade、Pika 持久拓扑/confirm/mandatory、手动 ACK、坏消息 DLQ、租约 publisher、升级 fallback/普通事件 retry，以及独立 CLI 进程。API 业务门面沿用调用方事务、统一鉴权/幂等/审计，不改任务状态、不建通知模型。
+- 实际调度岗来讯确认 outbox event_type=2/schema_version=1 与 ledger/recipient 快照，本岗回复只从权威 DB 事件读取接收人及级别，broker 仅传事件标识。
+- DB 对接：GitHub 首次 POST 返回 EOF（失败未当成功）；保存 `persistence-runtime-question.md` 后重试成功，Issue4 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360793043。根确认将调度 DB 补 recover_confirmed 原子恢复；本岗仅预留注入，不越权补 SQL，也不静默跳过缺失能力。
+- 首次本地基础自测 13 通过。首次真实 MySQL 自测 7 个夹具错误：capacity=[] 违反冻结 CHECK；仅修本岗合成数据，失败摘录留于 mysql-run1-failure.txt，未放松约束。复跑 7 通过见 mysql-run2.log。
+- 本轮 `PYTHONPATH=backend .venv/bin/coverage run --source=t44.messaging -m pytest backend/tests/messaging -q --tb=short`（配置本地 ignored 凭据路径与 t44_test）24 通过、3 真 Rabbit 因无 AMQP 配置跳过：16 基础/SQLite/fake 通道/进程配置，8 真实 MySQL（含 HTTP 与并发通知 CAS）；见 module-run4.log。
+- 局部 coverage 85%（226 statements，35 misses），见 coverage-run4.log；不是全产品覆盖率。Ruff check 通过，CLI --help 实际可运行。
+- 真 Rabbit 测试已编写实际 mandatory return、真实连接关闭后 redelivery、重复投递、终态 fallback 后迟到消息及新事件恢复、DLQ；未本地执行，CI 缺 AMQP/DB 直接 fail 不 skip。fake channel 结果不称真 MQ 故障结果。
+- 当前缺口：DB confirmed 超时恢复门面尚未进入本分支，默认 worker 依赖此能力，缺失时不能宣称完整运行；真实 Rabbit/托管 CI/独立验收/性能未验证。
+- 本轮提示词摘记见 agents/messaging/prompts/ROLE-messaging-APPLICATION-v1.md，实际派工原文来源为总协调消息；关联本岗代码、测试、记录及 PR，不计人工修改条目。
+- 额外运行既有 contracts 开发回归：25通过、1失败、1跳过，失败原文见 api-regression-run1.log。test_missing_notification_dependency_returns_real_503 使用默认自动发现组件的应用，消息门面已实现后返回200而非503；已向根报告要求BE显式注入缺失组件维持故障断言，本岗未改外岗测试。
