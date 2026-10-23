@@ -1,0 +1,191 @@
+"""Application facade. Component owners are injected; no alternate storage is created."""
+
+from t44.contracts import OPERATIONS, VERSION, violations
+
+from .common import SCHEMAS, model, page, plan_values
+from .errors import Rejected, require
+from .projects import Projects
+from .reviews import Reviews
+from .tasks import Tasks
+from .workflow import Workflow
+
+EMPTY_LEASE = None
+
+_DICTIONARIES = {
+    "task_states": "TaskState",
+    "project_roles": "ProjectRole",
+    "transition_actions": "TransitionAction",
+    "responsibility_stages": "ResponsibilityStage",
+    "review_judgments": "ReviewItemJudgment",
+    "risk_perspectives": "RiskPerspective",
+    "risk_severities": "RiskSeverity",
+    "delivery_dispositions": "DeliveryDisposition",
+    "evidence_kinds": "EvidenceRef",
+    "review_verdicts": "ReviewVerdict",
+    "assessment_statuses": "AssessmentStatus",
+    "decision_types": "DecisionType",
+    "audit_outcomes": "AuditOutcome",
+    "escalation_recipient_kinds": "EscalationRecipientKind",
+}
+
+
+class Business(Projects, Tasks, Reviews, Workflow):
+    def __init__(self, *, notifications=None, escalations=None):
+        self.notifications, self.escalations = notifications, escalations
+
+    def status(self, operation):
+        return next(int(s) for s in OPERATIONS[operation]["responses"] if s.startswith("2"))
+
+    def dispatch(self, g, call):
+        return getattr(self, call.operation)(g, call)
+
+    def finalize(self, result, call):
+        schema = OPERATIONS[call.operation]["responses"][str(self.status(call.operation))][
+            "content"
+        ]["application/json"]["schema"]
+        envelope = SCHEMAS[schema["$ref"].split("/")[-1]]
+        data = envelope["properties"]["data"]
+        fields = (
+            SCHEMAS[data["$ref"].split("/")[-1]]["properties"]
+            if "$ref" in data
+            else data["properties"]
+        )
+        if "audit_id" in fields:
+            result["audit_id"] = call.audit_id
+        return result
+
+    def validate_data(self, operation, result):
+        schema = OPERATIONS[operation]["responses"][str(self.status(operation))]["content"][
+            "application/json"
+        ]["schema"]
+        envelope = SCHEMAS[schema["$ref"].split("/")[-1]]
+        require(not violations(envelope["properties"]["data"], result), "INTERNAL_ERROR")
+
+    def outbox(self, c, project):
+        return {
+            "event_type": 1,
+            "schema_version": 1,
+            "project_id": project,
+            "task_id": c.path.get("task_id"),
+            "payload": {"operation_id": c.operation, "request_id": c.request_id},
+            "recipients": [],
+            "status": 1,
+            "attempts": 0,
+            "next_attempt_at": c.clock,
+            "lease_token": EMPTY_LEASE,
+            "lease_until": None,
+            "confirmed_at": None,
+            "fallback_at": None,
+            "last_error_code": None,
+            "created_at": c.clock,
+            "updated_at": c.clock,
+        }
+
+    def getMe(self, g, c):
+        return model("User", c.actor["identity"])
+
+    def getDictionaries(self, g, c):
+        result = {"version": 1, "error_codes": SCHEMAS["ErrorCode"]["enum"]}
+        for key, schema in _DICTIONARIES.items():
+            definition = SCHEMAS[schema]
+            if schema == "EvidenceRef":
+                definition = definition["properties"]["kind"]
+            names = definition["x-enum-names"]
+            result[key] = [
+                {"value": value, "name": name, "label": name}
+                for value, name in zip(definition["enum"], names, strict=True)
+            ]
+        result["escalation_levels"] = [
+            {"value": value, "name": name, "label": name}
+            for value, name in zip(
+                SCHEMAS["EscalationLevel"]["x-v1-values"],
+                SCHEMAS["EscalationLevel"]["x-v1-names"],
+                strict=True,
+            )
+        ]
+        return result
+
+    def validateContractPayload(self, g, c):
+        category, payload = c.body["category"], c.body["payload"]
+        if "task_id" in c.body:
+            task = g.get("tasks", c.body["task_id"])
+            require(task and task["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
+        if category == 1:
+            plan_values(payload["plan"])
+        elif category == 2 and payload["action"] == 9:
+            plan_values(payload["new_plan"])
+        return {
+            "valid": True,
+            "category": category,
+            "validated_operation_id": {
+                1: "createTask",
+                2: "transitionTask",
+                3: "createReleaseAssessment",
+            }[category],
+            "schema_version": VERSION,
+            "business_guards_executed": False,
+        }
+
+    def listProjectAuditEvents(self, g, c):
+        where = {
+            "project_id": c.project_id,
+            **{k: v for k, v in c.query.items() if k in ("task_id", "outcome")},
+        }
+        codes = SCHEMAS["ErrorCode"]["enum"]
+        return page(
+            g,
+            "audit_events",
+            where,
+            c.query,
+            lambda row: model(
+                "AuditEvent",
+                row,
+                before=row["before_values"],
+                after=row["after_values"],
+                reason_code=codes[row["reason_code"] - 1] if row["reason_code"] else None,
+            ),
+        )
+
+    def listMyNotifications(self, g, c):
+        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
+        return self.notifications.list(g, actor_id=c.actor_id, query=c.query)
+
+    def markNotificationRead(self, g, c):
+        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
+        return self.notifications.mark_read(
+            g,
+            actor_id=c.actor_id,
+            project_id=c.project_id,
+            notification_id=c.path["notification_id"],
+            version=c.body["expected_version"],
+            now=c.clock,
+        )
+
+    def handleNotification(self, g, c):
+        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
+        return self.notifications.handle(
+            g,
+            actor_id=c.actor_id,
+            project_id=c.project_id,
+            notification_id=c.path["notification_id"],
+            version=c.body["expected_version"],
+            note=c.body["note"],
+            evidence=c.body["evidence"],
+            now=c.clock,
+        )
+
+    def _escalation(self, method, g, c):
+        require(self.escalations is not None, "DEPENDENCY_UNAVAILABLE")
+        try:
+            return getattr(self.escalations, method)(g, c)
+        except Rejected:
+            raise
+
+    def getEscalationRules(self, g, c):
+        return self._escalation("rules", g, c)
+
+    def listEscalations(self, g, c):
+        return self._escalation("list", g, c)
+
+    def createEscalation(self, g, c):
+        return self._escalation("create", g, c)
