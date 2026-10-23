@@ -1,22 +1,22 @@
 # 留痕前端
 
-Vue 3、TypeScript、Element Plus 与 Vite 的工程基础。当前交付工作台、项目、任务、排期、评审与发布、通知、审计页面骨架；数据入口未接通，不发业务请求，不包含示例业务数据或写操作成功提示。
+Vue 3、TypeScript、Element Plus 与 Vite 实现的研发交付工作空间。业务请求对接冻结 OpenAPI 1.0.0：登录/退出、项目与成员、迭代容量、任务及依赖、七态流转、八段十项证据评审、上线评估与回滚预案、通知、升级历史、项目审计。表单按冻结输入结构生成中文控件，字典、模板和规则从服务读取；不包含固定业务数据或假成功。
 
-使用 Node 24、pnpm 11.25.0，在 `frontend/` 执行：
+Node 24、pnpm 11.25.0，在 `frontend/` 执行：
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm dev
 pnpm typecheck
-pnpm test
+pnpm test:coverage
 pnpm build
 pnpm preview
 ```
 
-`pnpm build` 先运行 `vue-tsc`，再生成 `frontend/dist`。`pnpm preview` 仅供本地检查，不作为生产服务。
+开发服务仅将同源 `/api/v1` 转发到本机 `http://127.0.0.1:18080`。生产构建输出 `frontend/dist`，由 Nginx 提供静态文件和同源 API 代理；非 API 页面需要回退至 `index.html`，API 错误不得回退为 HTML。`preview` 只检查静态构建，不替代生产反代。
 
-部署约定：站点基路径为 `/`；静态资源来自 `dist`；HTML5 路由需要静态服务将非 API 的页面请求回退至 `index.html`。后续业务调用统一使用同源 `/api/v1`，反向代理必须保留路径，API 失败不可回退成 HTML。本轮没有 API 客户端或访问令牌存储，未进入业务联调。
+会话仅保存在内存，刷新页面需重新登录；口令在请求后清空，不进入 URL、持久存储、日志或截图。写表单按真实操作生成幂等键，网络/503手动重试复用同一内容与键，修改内容才生成新操作；409保留表单并刷新，再由用户明确采用最新版本。相同操作重放后再次读取权威记录。角色、状态、依赖、审核与升级均由服务端判定。
 
-空态、未连接、加载中与失败反馈由 `DataState.vue` 区分；403 不提供重复访问按钮，409 只发出刷新记录事件，不自动重发业务操作或换幂等键。导航包含跳转到正文、可见键盘焦点及移动端抽屉；页面切换后焦点移至标题。业务枚举、项目权限、依赖与超期判定在后续读取冻结契约和服务端结果后接入。
+手机使用任务卡片和详情抽屉，不依赖横向表格。证据通过纯文本或经过协议校验的 HTTPS 链接展示，不渲染 HTML。通知已读与处理分别调用接口，不会自行解除阻塞。
 
-依赖方案已核对 [Vue TypeScript 指南](https://vuejs.org/guide/typescript/overview)、[Element Plus 按需导入](https://element-plus.org/en-US/guide/quickstart)、[Vite 静态部署](https://vite.dev/guide/static-deploy.html)、[Vue Router HTML5 路由](https://router.vuejs.org/guide/essentials/history-mode.html)。版本与解析依赖锁定于本目录的 `package.json` / `pnpm-lock.yaml`。
+自测包含整个 `src/**/*.{ts,vue}`，未排除未测页面；只对行覆盖率设置 80% 门槛，分支/函数另报。fetch 夹具测试与真实浏览器→FastAPI→MySQL 联调分开记录，均不是独立验收或性能测试。证据见 `agents/frontend/application-*`；真实通知/升级门面尚未接入时，界面明确展示 503。

@@ -2,6 +2,7 @@
 import { ElIcon } from 'element-plus'
 import { ArrowRight, Connection } from '@element-plus/icons-vue'
 import { navigation, navigationGroups } from '../navigation'
+import { workspace } from '../workspace'
 
 defineEmits<{ navigate: [] }>()
 </script>
@@ -13,7 +14,7 @@ defineEmits<{ navigate: [] }>()
   </RouterLink>
   <RouterLink class="project-switch" to="/projects" @click="$emit('navigate')">
     <span class="project-switch__avatar" aria-hidden="true">项</span>
-    <span><strong>选择项目</strong><small>尚未连接工作空间</small></span>
+    <span><strong>{{ workspace.project.name ?? '选择项目' }}</strong><small>{{ workspace.projectId ? '当前项目工作空间' : '从项目空间开始' }}</small></span>
     <ElIcon aria-hidden="true"><ArrowRight /></ElIcon>
   </RouterLink>
   <nav aria-label="主导航" class="navigation">

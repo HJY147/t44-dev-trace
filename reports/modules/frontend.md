@@ -1,50 +1,45 @@
-# 前端模块报告｜工程基础阶段
+# 前端模块报告｜完整业务接入阶段
 
-## 状态与依据
-- 实际派工：ROLE-frontend-FOUNDATION-v1；新授权覆盖初始化仅设计限制，不覆盖他岗边界。
-- 工作树：.agent-worktrees/frontend；分支 codex/frontend-app；基点 b893353c9bcf45e833f70f56bf6f72025f611271。
-- 已实现：可安装/构建的 Vue 3 + TypeScript + Element Plus 工程、留痕工作台与七个页面入口骨架。
-- 未实现：身份与业务数据接入、项目/任务/排期/评审发布/通知/审计的业务操作。
-- 契约与DDL仍在审核；未收到总协调冻结消息，未进入API联调。
-- 已读本树AGENTS、TASK、requirements、business-rules v1、contracts两件、backend-design，根D003与implementation-layout。
-- 本轮只支撑前端工程与交互基础，不将FR/AC业务要求记为完成。
+## 状态与边界
+- 实际派工 ROLE-frontend-APPLICATION-v1；安全快进合入6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73。
+- 冻结依据：OpenAPI1.0.0、D001/D004、v1冻结记录；本轮未改后端、部署或规格。
+- 已实现完整人类可见前端流程；内部服务升级入口不向人类账号提供操作按钮。
+- 通知/升级后端门面尚未接入，真实503如实显示；不能把UI或夹具通过写成其真实业务可用。
 
-## 代码及页面责任
-- frontend/package.json、pnpm-lock.yaml：真实依赖与精确版本；Node24、pnpm11.25.0。
-- frontend/vite.config.ts、tsconfig.json：严格TypeScript、Vue单文件组件、生产输出dist。
-- frontend/src/App.vue、components/SidebarNavigation.vue：桌面侧栏、手机抽屉、访问说明、正文跳转与键盘焦点。
-- frontend/src/navigation.ts、router.ts：工作台、项目、交付任务、迭代排期、评审发布、通知与审计路由，以及404。
-- frontend/src/views/WorkspaceView.vue：真实未连接态、无数据表格、禁用数据操作；没有示例任务或虚构统计。
-- frontend/src/components/DataState.vue：区分未连接、空、加载与失败；403不提供重复访问按钮，409只发出刷新记录事件。
-- frontend/src/styles.css：冷静蓝与浅色工作区、少量暖色连接提示、响应式布局和reduced-motion。
-- frontend/README.md：安装、开发、类型检查、构建及部署边界；产品界面不展示agent或技术栈细节。
+## 实际代码与流程
+- frontend/src/api.ts：统一operationId调用、同源/api/v1、内存Bearer、401失效和可恢复写意图。
+- workspace.ts：真实项目/成员/迭代/模板/字典/规则加载，分页收集上下文、拒绝后刷新。
+- contract.ts/forms.ts：引用冻结结构，AJV填写校验、中文标签与API枚举展示，未新增本地状态机。
+- LoginView/App：登录、口令清空、内存会话、失效提示、当前项目切换与真实退出。
+- WorkspaceView：项目创建与成员角色/移除、迭代与人力容量、任务登记/筛选/分页、通知及审计。
+- TaskDrawer：任务详情、负责人/排期/前置依赖、九种流转表单、评审/评估/决定/升级/差异历史。
+- OperationForm/FieldEditor：中文嵌套对象/数组、布尔、枚举、北京时间输入、证据和版本核对。
+- 评审按API模板初始化八段十项，不默认判通过；上线风险按API四视角，预案与审核分别提交。
+- RecordList/RecordView：手机卡片、完整只读记录与安全HTTPS链接，无v-html或固定成功数据。
 
-## 输入输出与上下游边界
-- 当前页面没有业务输入/输出和API请求，不保存Token、不模拟CRUD成功。
-- 后续只使用冻结的同源/api/v1契约；状态/动作字典、权限/依赖/超期等以服务器权威结果为准。
-- 前端不得自行决定任务出口或绕过403/409；不自动换幂等键重试；重放快照后须另查最新记录。
-- Task未含allowed_actions时的操作入口展示边界已向后端问询；未新增字段或本地权限状态机。
-- 消息列表仍由消息岗拥有业务契约；当前只有页面，不连接RabbitMQ、不承担扫描升级。
-- 部署约定提案：frontend/dist、站点根路径/、非API页面fallback到index.html；/api/v1保留路径且不得fallback成HTML。
-- 部署双向确认、后端问询回复及最终契约冻结均待总协调安排；不能把提案当作联调结果。
+## 错误、安全及上下游
+- 网络/503只在用户重试时复用同body同幂等键；修改内容才成为新操作，不自动换键重发。
+- 403解释权限；409保留表单并主动刷新，由用户明确采用新版本；422对应JSON Pointer字段提示。
+- 相同操作回放后另取最新记录；客户端不决定状态、权限、依赖满足或升级时机，不运行扫描定时器。
+- Token和口令不进URL/日志/截图/持久缓存；真实账号只从ignored0600文件在headless内存读取。
+- 后端实际询问及答复留application-interface.md；部署继续dist、生产同源/api/v1，dev代理18080。
+- 升级规则/通知暂503时不遮盖其他业务，也不把通知阅读当作解除阻塞或处理完成。
 
-## 实际验证与证据
-- agents/frontend/foundation-validation.log：pnpm install --frozen-lockfile、typecheck、test、build均exit0。
-- 类型检查为真实vue-tsc --noEmit；pnpm build再次类型检查后生成dist。
-- 5项责任岗模块自测通过：403与409反馈、加载/空/未连接区分、导航及禁用写入口。
-- 本轮无覆盖率数据，不声称全项目>=80%；后续测试须包含整个frontend/src业务源码，不排除未测组件。
-- 早期PATH/TS7兼容/CSS测试错误已如实保存 foundation-failures.md；由AI纠正，未降低断言。
-- CUA因Mac锁定不可用；按总协调建议改用Playwright+预装Chrome headless，不重复锁屏UI操作。
-- headless-foundation-check.mjs、headless-foundation-result.json：1440×1000和390×844基础空态/导航检查成功。
-- 桌面任务路由与标题焦点、禁用登记按钮、404、手机抽屉导航/关闭、无整页横向溢出；零浏览器错误、零API请求。
-- 真实截图：agents/frontend/screenshots/desktop.png、mobile.png；不是手机真机或业务验收。
-- 未运行：真实API契约/集成测试、身份与业务E2E、独立验收及性能测试。
+## 验证与证据
+- 冻结锁安装、vue-tsc/build通过：application-frozen-install.log、application-build-final2.log。
+- 21项Vue交互/状态/错误测试通过：application-test-coverage-final2.log；fetch夹具只代表模块自测。
+- src全部19个TS/Vue进入分母，无排除未测页面；行92.21%、分支86.13%、函数83.85%。
+- 只给行设置80%门槛；main/router仍0覆盖且留在分母；manifest/summary可核对完整文件列表。
+- 真浏览器→Vite→FastAPI→MySQL共282条HTTP：application-real-browser-result.json，含每次方法/路径/状态。
+- 实测任务登记、改期与依赖增删、经理越权403、阻塞/解除、开发者开始及提交、八段十项证据评审。
+- 实测四风险预案、不同账号审核、经理交付/回滚/返工，七态均真实发生；审计与手机卡片查询通过。
+- 真实截图application-screenshots/desktop-real.png、mobile-real.png，1440/390宽；无整页横向溢出。
+- JS pageerror为0；33条console资源错误对应预期403和未实现门面的503，未声称console零错误。
+- 所有初始失败日志/browser-failure保留：测试环境/日期/可选证据revision问题由AI修复并回归。
+- bundle约823kB/gzip162kB，有构建体积提示；未抬高阈值掩盖，后续可分块。
 
-## 过程与交接
-- 日志：agents/frontend/WORKLOG.md；交接：records/handoffs/frontend.json；原始初始化历史未改写。
-- 实际派工归档：records/prompts/ROLE-frontend-FOUNDATION-v1.md，含后续coverage/headless steering及上下文到代码映射。
-- 新代码和纠错由frontend AI执行，无用户亲自改码或人工逐项审定记录。
-- 阶段说明与后端问题的真实评论正文：agents/frontend/foundation-stage-comment.md、foundation-backend-question.md。
-- Issue #2：https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358871067；Issue #3：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358873565。
-- 后续：冻结并再派工后接入业务；补齐真实客户端错误/重试、权限提示、关键表单及全src覆盖率，不能用骨架检查替代。
-- 实现提交：5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；已推送codex/frontend-app；草稿PR：https://github.com/HJY147/t44-dev-trace/pull/14（已attach，未合并/未设审核通过）。
+## 交接与限制
+- 本岗WORKLOG、handoff、ROLE-frontend-APPLICATION-v1实际派工和Issue/PR正文一起提交。
+- 真浏览器数据是隔离演示项目的合成业务记录，不是人工生产发布/回滚决定。
+- 代码、纠错与测试由frontend AI执行；总协调静态反馈不算用户亲改或自动计作幻觉案例。
+- 后续消息/升级接好后另做完整页面回归；未做正式性能、安全全面实测或独立验收，不替代其结论。

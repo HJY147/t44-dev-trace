@@ -1,10 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { createMemoryHistory, createRouter } from 'vue-router'
 import DataState from '../src/components/DataState.vue'
-import App from '../src/App.vue'
-import WorkspaceView from '../src/views/WorkspaceView.vue'
-import { navigation } from '../src/navigation'
 
 afterEach(() => { document.body.innerHTML = '' })
 
@@ -44,29 +40,5 @@ describe('resource feedback', () => {
     expect(unavailable.find('button').exists()).toBe(false)
     unavailable.unmount()
     empty.unmount()
-  })
-})
-
-describe('workspace navigation', () => {
-  it('navigates among actual pages while leaving unavailable write controls disabled', async () => {
-    const router = createRouter({
-      history: createMemoryHistory(),
-      routes: navigation.map((item) => ({ path: item.path, component: WorkspaceView, props: { page: item.key }, meta: { title: item.label } })),
-    })
-    await router.push('/tasks')
-    await router.isReady()
-    const wrapper = mount(App, { global: { plugins: [router] }, attachTo: document.body })
-    expect(wrapper.get('h1').text()).toBe('交付任务')
-    expect(wrapper.get('button[aria-label="登记任务，连接后可用"]').attributes('disabled')).toBeDefined()
-    await wrapper.get('a[href="/reviews"].navigation__link').trigger('click')
-    await router.isReady()
-    await new Promise((resolve) => setTimeout(resolve, 0))
-    expect(wrapper.get('h1').text()).toBe('评审与发布')
-    await wrapper.get('a[href="/notifications"].navigation__link').trigger('click')
-    await new Promise((resolve) => setTimeout(resolve, 0))
-    expect(wrapper.get('h1').text()).toBe('通知中心')
-    expect(wrapper.findAll('tbody tr')).toHaveLength(0)
-    expect(wrapper.text()).not.toContain('保存成功')
-    wrapper.unmount()
   })
 })
