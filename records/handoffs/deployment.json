@@ -365,7 +365,7 @@
       "reason": "中性真实Linux能力和独立harness隔离，精确版本/受限控制/密文证据取回，不注入用例或绕main保护"
     }
   ],
-  "updated_at": "2026-10-23T12:59:40.239251+00:00",
+  "updated_at": "2026-10-23T13:25:07.174315+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -416,14 +416,19 @@
     "product_baseline_read": "189dc4a3196be0fb84b753f23284f2566d823ea0",
     "workflow": ".github/workflows/acceptance-environment.yml",
     "interface": "deployment/acceptance/README.md",
-    "local_guards": "953:25passed;Ruff/actionlint0",
-    "environment_check": "pending one hosted run",
+    "local_guards": "953:37passed;Ruff/actionlint0;original B904 failure retained",
+    "environment_check": "first39958418657 failure preserved; targeted revision2 pending",
     "independent_harness": "not frozen/selected/executed",
     "trigger": "strict branch+request path push;dispatch unavailable until normal default branch admission",
     "evidence": "tester CMS AES256GCM/RSAOAEP encrypted artifact14days;root/dev do not read unpublished plaintext",
     "implementation_checkpoint": "2d09ea8ec6d3b7b81ce83260fe66e4ff686a2c56",
     "environment_check_product_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
     "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6365506297",
-    "pr_stage": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6365506820"
+    "pr_stage": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6365506820",
+    "first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39958418657",
+    "first_run_recovery_completed": true,
+    "first_run_blocker": "combined host client failed; old diagnostics insufficient for specific exception; archive roundtrip failed",
+    "client_repair": "only after observed unreachable TCP/internal-only networks, own override bridge; auth not bypassed",
+    "service_bearer": "actual CLI, explicit projects/escalation:write,TTL60..900,private stdout or O_EXCL0600 JSON;metadata-only public ledger"
   }
 }

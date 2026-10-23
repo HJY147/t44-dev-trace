@@ -110,3 +110,6 @@
 - tester本地私钥、冻结接收证书，CMS AES256-GCM/RSA-OAEP加密stdout/stderr/固定输出；公开artifact不含.env/凭据/coverage/私有用例，14天内tester解密审查后自行发布。
 - dispatch当前因main无该workflow尚不可用，提供严格分支+request.json变更push入口；不改main保护。本岗953实际25guard/Ruff/actionlint通过；托管环境能力自检待执行，独立harness模式待tester冻结。
 - 过程/静态证据acceptance-environment-validation；不替代既有Docker联调、独立fault验收或正式性能。
+
+- 首次中性环境check39958418657失败：服务就绪及容器内审计通过、combined宿主client失败，具体异常原日志未记录；恢复=true，加密roundtrip未证明。原失败完整归档，不写作通过。
+- 必要复核已获授权：分阶段安全诊断后仅对实际观测的internal-only不可达监听修验收override；提前创建合成归档输出。新增service-credential真实CLI短TTL/escalation:write/显式project，私密stdout或0600文件；能力自检不调用业务案例。953现37guard/Ruff/actionlint通过，revision2/product4c20f32待真实复核，harness仍未选择执行。

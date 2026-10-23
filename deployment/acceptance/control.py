@@ -16,6 +16,34 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
 
 SERVICES = ("mysql", "rabbitmq", "api", "consumer", "scheduler", "web")
+SERVICE_ISSUE_SCRIPT = """import json,os,subprocess,sys
+from pathlib import Path
+from sqlalchemy import create_engine,text
+projects=sorted(set(int(value) for value in sys.argv[1:]))
+path=Path('/tmp/acceptance-harness-service.json')
+command=[sys.executable,'-m','t44.cli','service-token','--name','acceptance-harness','--token-file',str(path)]
+for project in projects: command+=['--project-id',str(project)]
+result=subprocess.run(command,capture_output=True,check=False)
+if result.returncode: raise SystemExit(1)
+credential=json.loads(path.read_text()); path.unlink()
+engine=create_engine(os.environ['DATABASE_URL'])
+with engine.connect() as connection:
+ row=connection.execute(text('SELECT actor_kind,project_ids,scopes,TIMESTAMPDIFF(SECOND,UTC_TIMESTAMP(6),expires_at) remaining FROM auth_sessions WHERE id=:id AND revoked_at IS NULL'),{'id':credential['session_id']}).mappings().one()
+ actual_projects=json.loads(row['project_ids']) if isinstance(row['project_ids'],str) else row['project_ids']
+ scopes=json.loads(row['scopes']) if isinstance(row['scopes'],str) else row['scopes']
+ if row['actor_kind']!=2 or sorted(actual_projects)!=projects or scopes!=['escalation:write'] or not 0<row['remaining']<=int(os.environ['T44_SESSION_TTL_SECONDS']): raise SystemExit(1)
+engine.dispose()
+print(json.dumps({**credential,'project_ids':projects,'scopes':scopes,'ttl_seconds':int(os.environ['T44_SESSION_TTL_SECONDS'])}))
+"""
+
+
+def validate_service_request(projects, ttl, output_name):
+    if not projects or any(type(value) is not int or not 1 <= value <= 4294967295 for value in projects):
+        raise ValueError("explicit project scopes required")
+    if type(ttl) is not int or not 60 <= ttl <= 900:
+        raise ValueError("service credential TTL must be 60..900 seconds")
+    if output_name is not None and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,58}\.json", output_name):
+        raise ValueError("controlled private JSON filename required")
 
 
 def private_json(path):
@@ -162,6 +190,52 @@ class Controls:
             self.event("scheduler-scope", project_count=len(set(projects)))
             return result.stdout
 
+    def service_credential(self, projects, ttl=300, output_name=None):
+        validate_service_request(projects, ttl, output_name)
+        projects = sorted(set(projects))
+        descriptor, path, created, completed = None, None, False, False
+        try:
+            if output_name:
+                directory = self.runtime / "tester-secrets"
+                directory.mkdir(mode=0o700, exist_ok=True)
+                if directory.is_symlink() or directory.stat().st_uid != os.getuid() or directory.stat().st_mode & 0o077:
+                    raise ValueError("private credential directory required")
+                path = directory / output_name
+                descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
+                created = True
+            # Bypass compose()'s raw environment log: this stdout contains an actual bearer, never a stored hash.
+            result = ops.compose(Path(self.state["env_file"]), self.values,
+                                 "--file", self.state["override_file"], "--profile", "operations", "run", "--rm", "-T",
+                                 "-e", f"T44_SESSION_TTL_SECONDS={ttl}", "--entrypoint", "python", "admin",
+                                 "-c", SERVICE_ISSUE_SCRIPT, *map(str, projects),
+                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=45)
+            credential = json.loads(result.stdout)
+            if (credential["project_ids"] != projects or credential["scopes"] != ["escalation:write"]
+                    or credential["ttl_seconds"] != ttl or not 32 <= len(credential["access_token"]) <= 512):
+                raise ValueError("issued service metadata does not match the explicit request")
+            metadata = {key: value for key, value in credential.items() if key != "access_token"}
+            if descriptor is not None:
+                with os.fdopen(descriptor, "w") as stream:
+                    descriptor = None
+                    json.dump(credential, stream)
+                    stream.write("\n")
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                metadata["credential_file"] = str(path)
+            self.event("service-credential", session_id=credential["session_id"], expires_at=credential["expires_at"],
+                       project_count=len(projects), ttl_seconds=ttl)
+            completed = True
+            return metadata if output_name else credential
+        except Exception as error:
+            self.event("service-credential-failed", code=getattr(error, "returncode", 1),
+                       exception_type=type(error).__name__, project_count=len(projects))
+            raise
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+            if path is not None and created and not completed:
+                path.unlink(missing_ok=True)
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -180,6 +254,10 @@ def main():
     account.add_argument("--display-name", required=True)
     scope = commands.add_parser("scheduler-scope")
     scope.add_argument("--project-id", type=int, action="append", required=True)
+    service = commands.add_parser("service-credential")
+    service.add_argument("--project-id", type=int, action="append", required=True)
+    service.add_argument("--ttl-seconds", type=int, default=300)
+    service.add_argument("--output-name")
     args = parser.parse_args()
     try:
         controls = Controls(args.state)
@@ -194,8 +272,11 @@ def main():
             output = controls.broker(args.kind)
         elif args.command == "init-user":
             output = controls.account(args.username, args.display_name, sys.stdin.readline().rstrip("\n"))
-        else:
+        elif args.command == "scheduler-scope":
             output = controls.scheduler_scope(args.project_id)
+        else:
+            output = (json.dumps(controls.service_credential(args.project_id, args.ttl_seconds, args.output_name))
+                      + "\n").encode()
         if output:
             sys.stdout.buffer.write(output)
     except Exception:  # noqa: BLE001 -- private inputs and driver messages never enter public console

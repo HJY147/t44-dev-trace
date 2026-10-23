@@ -105,3 +105,12 @@
 - 发现既有Docker整套在runtime分支任意push自动执行，为遵守本轮不重复旧整套，使用同一独立worktree新本岗分支codex/deployment-acceptance-environment，新workflow allowlist同步；不修改旧workflow/门禁，PR15以实际评论交接新checkpoint。总协调要求等待即将修正的完整v1.1产品SHA后才提交唯一environment-check请求，189dc4a只作已读冻结基线。
 - 实现checkpoint2d09ea8ec6d3b7b81ce83260fe66e4ff686a2c56已push；阶段正文实际body-file发表Issue7/6365506297与PR15/6365506820。
 - 总协调提供精确完整v1.1修复源4c20f32b71635016815420472b9d4bb4fa850df0，已GitHub API核远端存在；本轮唯一request.json选择该源、mode=environment-check，不含harness信息。提交前25guard/Ruff/actionlint重核通过；增加冻结接收证书私有副本稳定性及密文环境诊断，不改任何产品判据。真实环境结果等待push回执，独立harness仍未执行。
+
+### 环境首次失败与有变化必要复核
+
+- 唯一初次环境run39958418657在workflow44f0675/product4c20f32上failure，初次image/infra/迁移/空项目/账号/scanner凭据/全部worker健康与容器内SELECT/队列审计通过，combined宿主client阶段失败；原版未记录具体异常，公共artifact/console都不能诚实还原DB或AMQP及错误类型，保留未知。finally recovery_completed=true，尚未执行stop/pause案例能力。
+- 早失败时合成stdout未创建，roundtrip归档亦报archive_error；不把cipher存在当完整加密传输成功。首轮public artifact原字节+SHA、Actions原始gzip/阅读稿、run JSON在acceptance-environment-validation/run-39958418657，未读取任何独立资料。
+- 总协调明确授权修复后的必要环境复核，先前唯一check用于避免无变化重跑旧整套，不需再问用户。补安全异常类别/数值码、DB/AMQP分阶段、TCP监听/实际Docker端口/本project网络Internal观测；仅实际观测listener不可达且全internal时在本验收override加client bridge，保留原观测后复连；鉴权或其他状态不自动绕过，产品Compose不改。
+- 合成stdout提前创建，失败时仍独立尝试加密/解密传输，archive_error保留异常类别且失败不发布明文。必要复核请求revision2仍精确4c20f32，不选harness。
+- 根指出内部升级HTTP需要真实限定service bearer；现封装实际CLI service-token，显式projects/固定escalation:write/TTL60–900(默认300)，读实际session scope/expiry元数据验证。Token仅harness私密stdout或受控目录O_EXCL0600 JSON，绕过原始环境命令日志；公开ledger仅session/expiry/count/TTL，不读hash冒充bearer。能力自检只核元数据/权限，不调用业务案例。
+- 第二profilequiet期间只写代码/协议/只读与远程接口，明确窗口结束后才执行953。现37guard通过；Ruff首次B904后按from None修正、保留原失败，最终Ruff/actionlint通过。未运行独立harness，未改产品/门禁/统计，未租云。

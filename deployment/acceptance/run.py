@@ -9,6 +9,7 @@ import platform
 import re
 import secrets
 import signal
+import socket
 import stat
 import subprocess
 import sys
@@ -40,7 +41,7 @@ def harness_path(value):
 
 def validate_request(value):
     allowed = {"version", "mode", "product_source_sha", "harness_ref", "harness_path",
-               "recipient_certificate_path", "harness_timeout_seconds"}
+               "recipient_certificate_path", "harness_timeout_seconds", "request_revision"}
     if set(value) - allowed or value.get("version") != 1 or value.get("mode") not in ("environment-check", "harness"):
         raise ValueError("unsupported acceptance request")
     if not SHA.fullmatch(value.get("product_source_sha", "")):
@@ -57,7 +58,10 @@ def validate_request(value):
     timeout = value.get("harness_timeout_seconds", 900)
     if type(timeout) is not int or not 60 <= timeout <= 1200:
         raise ValueError("bounded harness timeout required")
-    return {**value, "harness_timeout_seconds": timeout}
+    revision = value.get("request_revision", 1)
+    if type(revision) is not int or not 1 <= revision <= 2147483647:
+        raise ValueError("positive request revision required")
+    return {**value, "harness_timeout_seconds": timeout, "request_revision": revision}
 
 
 def frozen_file(root, relative):
@@ -80,6 +84,11 @@ def archive_members(folder):
     if sum(path.stat().st_size for path in selected) > 100 * 1024 * 1024:
         raise ValueError("tester archive exceeds limit")
     return selected
+
+
+def repairable_client_network(diagnosis):
+    networks = diagnosis.get("networks_internal", {})
+    return not diagnosis["tcp_listener_reachable"] and bool(networks) and all(networks.values())
 
 
 def encrypt_archive(folder, certificate, destination):
@@ -120,10 +129,13 @@ class Environment:
         self.public.mkdir(parents=True, exist_ok=True)
         self.output = self.runtime / "tester-output"
         self.output.mkdir(mode=0o700)
+        if request["mode"] == "environment-check":
+            (self.output / "stdout.log").write_text("Synthetic environment archive transport check.\n")
         self.secrets = []
         self.controls = None
         self.certificate = None
         self.report = {"schema_version": 1, "mode": request["mode"], "product_source_sha": request["product_source_sha"],
+                       "request_revision": request["request_revision"],
                        "harness_ref": request.get("harness_ref"), "harness_path": request.get("harness_path"),
                        "workflow_sha": os.environ.get("GITHUB_SHA"), "steps": [], "environment_ready": False,
                        "harness_started": False, "harness_exit_code": None, "recovery_completed": False,
@@ -137,11 +149,24 @@ class Environment:
         print(json.dumps({"environment_step": name}), flush=True)
         try:
             value = operation()
-        except Exception:
-            self.report["steps"].append({"name": name, "completed": False})
+        except Exception as error:
+            self.report["steps"].append({"name": name, "completed": False, **self.safe_error(error)})
             raise
         self.report["steps"].append({"name": name, "completed": True})
         return value
+
+    @staticmethod
+    def safe_error(error):
+        code = error.args[0] if error.args and type(error.args[0]) is int else getattr(error, "errno", None)
+        return {"exception_type": type(error).__module__ + "." + type(error).__name__, "numeric_error_code": code}
+
+    def loopback_override(self, client_bridge=False):
+        network = "    networks: [data, acceptance_clients]\n" if client_bridge else ""
+        content = ('services:\n  mysql:\n    ports: ["127.0.0.1:13306:3306"]\n' + network
+                   + '  rabbitmq:\n    ports: ["127.0.0.1:15673:5672"]\n' + network)
+        if client_bridge:
+            content += "networks:\n  acceptance_clients: {}\n"
+        (self.runtime / "compose.acceptance.yaml").write_text(content)
 
     @staticmethod
     def result_json(result):
@@ -200,8 +225,7 @@ class Environment:
         for field in ("MYSQL_PASSWORD", "MYSQL_ROOT_PASSWORD", "RABBITMQ_DEFAULT_PASS"):
             self.mask(values[field])
         override = self.runtime / "compose.acceptance.yaml"
-        override.write_text('services:\n  mysql:\n    ports: ["127.0.0.1:13306:3306"]\n'
-                            '  rabbitmq:\n    ports: ["127.0.0.1:15673:5672"]\n')
+        self.loopback_override()
         state = self.runtime / "state.json"
         write_private(state, {"product_root": str(self.product), "env_file": str(env_file),
                               "override_file": str(override), "public_dir": str(self.public)})
@@ -243,6 +267,10 @@ class Environment:
             "amqp_url": f"amqp://{values['RABBITMQ_DEFAULT_USER']}:{values['RABBITMQ_DEFAULT_PASS']}@127.0.0.1:15673/t44",
             "python": sys.executable, "control_cli": str(Path(__file__).with_name("control.py")),
             "control_state": str(state), "harness_output_directory": str(self.output),
+            "service_credential": {"control_command": "service-credential", "scope": ["escalation:write"],
+                                   "ttl_seconds_default": 300, "ttl_seconds_min": 60, "ttl_seconds_max": 900,
+                                   "credential_directory": str(self.runtime / "tester-secrets"),
+                                   "delivery": "private harness stdout or --output-name O_EXCL0600 JSON; no public bearer"},
             "archive_output_whitelist": list(OUTPUT_NAMES), "per_file_limit_bytes": 20 * 1024 * 1024,
             "archive": {"artifact": "acceptance-" + os.environ["GITHUB_RUN_ID"], "file": "tester-output.cms",
                         "retention_days": 14, "plaintext": "runner temporary only; destroyed after job",
@@ -253,24 +281,78 @@ class Environment:
             "isolation": "disposable hosted runner/project, not an OS sandbox for a malicious harness",
         }
         write_private(self.runtime / "context.json", context)
+        self.step("loopback-client-readiness", self.ensure_loopback_clients)
         self.report["environment_ready"] = True
 
     def environment_check(self):
         # Capability checks only: no business assertions or independent acceptance cases.
         self.step("readonly-select-connectivity", lambda: self.controls.audit("SELECT 1"))
         self.step("rabbitmq-audit-connectivity", lambda: self.controls.broker("queues"))
-        self.step("loopback-database-amqp-clients", self.client_connections)
+        self.step("limited-service-credential", self.service_credential_capability)
         self.step("reversible-control", lambda: self.controls.fault("rabbitmq", "stop", 30))
         self.step("control-recovery", self.controls.recover)
-        self.step("recovered-loopback-clients", self.client_connections)
-        (self.output / "stdout.log").write_text("Synthetic environment archive transport check.\n")
+        self.step("recovered-readonly-database-client", self.database_client)
+        self.step("recovered-amqp-client", self.amqp_client)
         self.report["environment_capability_check_completed"] = True
 
-    def client_connections(self):
-        import pika
+    def service_credential_capability(self):
+        context = json.loads((self.runtime / "context.json").read_text())
+        metadata = self.controls.service_credential([context["bootstrap_project_id"]], 300, "capability.json")
+        path = Path(metadata["credential_file"])
+        credential = json.loads(path.read_text())
+        if stat.S_IMODE(path.stat().st_mode) != 0o600 or credential["scopes"] != ["escalation:write"]:
+            raise RuntimeError("private limited service credential is unavailable")
+        self.mask(credential["access_token"])
+        self.report["service_credential_capability"] = {
+            "session_id": metadata["session_id"], "project_count": len(metadata["project_ids"]),
+            "scopes": metadata["scopes"], "ttl_seconds": metadata["ttl_seconds"], "mode": "0o600",
+            "verification": "actual CLI issuance and SELECT of session scope/expiry metadata; no business case invoked",
+        }
+
+    def ensure_loopback_clients(self):
+        for component, port, method in [("mysql", 13306, self.database_client), ("rabbitmq", 15673, self.amqp_client)]:
+            try:
+                self.step("initial-client-" + component, method)
+            except Exception as error:
+                diagnosis = {"component": component, **self.safe_error(error)}
+                try:
+                    with socket.create_connection(("127.0.0.1", port), timeout=3):
+                        diagnosis["tcp_listener_reachable"] = True
+                except OSError as tcp_error:
+                    diagnosis.update(tcp_listener_reachable=False, tcp_errno=tcp_error.errno)
+                cid = self.controls.compose("ps", "-q", component).stdout.decode().strip()
+                result = subprocess.run(["docker", "--context", self.controls.values["T44_DOCKER_CONTEXT"],
+                                         "inspect", "--format", "{{json .NetworkSettings.Ports}}", cid],
+                                        capture_output=True, check=True, timeout=10)
+                ports = json.loads(result.stdout)
+                diagnosis["actual_port_bindings"] = ports
+                result = subprocess.run(["docker", "--context", self.controls.values["T44_DOCKER_CONTEXT"],
+                                         "inspect", "--format", "{{json .NetworkSettings.Networks}}", cid],
+                                        capture_output=True, check=True, timeout=10)
+                networks = {}
+                for network in json.loads(result.stdout):
+                    if not network.startswith(self.controls.values["COMPOSE_PROJECT_NAME"] + "_"):
+                        raise ValueError("unexpected network outside this disposable project") from None
+                    result = subprocess.run(["docker", "--context", self.controls.values["T44_DOCKER_CONTEXT"],
+                                             "network", "inspect", "--format", "{{.Internal}}", network],
+                                            capture_output=True, check=True, timeout=10)
+                    networks[network] = result.stdout.strip() == b"true"
+                diagnosis["networks_internal"] = networks
+                self.report.setdefault("client_diagnostics", []).append(diagnosis)
+                # Repair only observed unreachable TCP on exclusively internal networks. Never hide an auth failure.
+                if not repairable_client_network(diagnosis):
+                    raise
+                self.loopback_override(client_bridge=True)
+                self.controls.compose("stop", "scheduler", "consumer", "api", "web", timeout=60)
+                self.controls.recover()
+                self.report["client_bridge_repair"] = "test-only bridge added after observed unreachable internal-only listener"
+                self.step("repaired-readonly-database-client", self.database_client)
+                self.step("repaired-amqp-client", self.amqp_client)
+                return
+
+    def database_client(self):
         import pymysql
 
-        context = json.loads((self.runtime / "context.json").read_text())
         audit = json.loads((self.runtime / "audit.json").read_text())
         with pymysql.connect(host="127.0.0.1", port=13306, user="t44_audit", password=audit["password"],
                              database="t44_acceptance", connect_timeout=5, read_timeout=5) as connection:
@@ -278,6 +360,11 @@ class Environment:
                 cursor.execute("SELECT 1")
                 if cursor.fetchone() != (1,):
                     raise RuntimeError("read-only loopback client is unavailable")
+
+    def amqp_client(self):
+        import pika
+
+        context = json.loads((self.runtime / "context.json").read_text())
         parameters = pika.URLParameters(context["amqp_url"])
         parameters.socket_timeout, parameters.blocked_connection_timeout = 5, 5
         connection = pika.BlockingConnection(parameters)
@@ -344,8 +431,9 @@ class Environment:
                             raise RuntimeError("archive transport differs")
                     metadata["synthetic_roundtrip_verified"] = True
                 (self.public / "encrypted-archive.json").write_text(json.dumps(metadata, indent=2) + "\n")
-            except Exception:
+            except Exception as error:
                 self.report["archive_error"] = "ENCRYPTED_ARCHIVE_FAILED_NO_PLAINTEXT_PUBLISHED"
+                self.report["archive_error_type"] = self.safe_error(error)["exception_type"]
         if self.request["mode"] == "environment-check":
             path = self.runtime / "environment-commands.log"
             if path.exists():
