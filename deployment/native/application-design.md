@@ -62,3 +62,13 @@ Rabbit4.3.6 JSON的peer_host实际是inet整数tuple数组，client_properties�
 shutdown默认等待分支实际报告远端成功退出后CLI code_server badarg并超时exit-15；随后ps/getpgid观察竞态使broker最终回执未写，原cleanupfalse保持。固定官方v4.3.6 shutdown源码证明`--no-wait`同样调用`rabbit:stop_and_halt`终止整个VM；新wrapper仅改该标准参数，独立保留精确自有PID退出/EPMD空/退出/端口观察，CLI非零仍false。进程在ps与getpgid之间消失只表示absent，不授权任何信号。既有phase1 run2历史仍绑定7e942，不挪用新实现。
 
 根授权第二次fresh有限周期：新Cookie/user/vhost，复用同一未reset的新demo数据；显式`prepare --prior-run`核同源owner前run和私密只读关联hash，绑定既有16个eventIDs。二轮核这些真实ID/收件人/鉴权通知可读，明确不声称二轮新publish；新轮继续两真实60秒completed扫描、受控凭据轮换与完整正常清理。不得SQL改业务/去重或补seed来制造新消息。
+
+## NATIVE-CAPTURE-TIMEOUT-01 设计勘误（先于修复）
+
+审核c6883f2在归档5ef1bde/运行实现0a6da88的capture发现P2：首次communicate超时，受控子命令处理SIGTERM后以0退出，原工具丢失最初超时事实，正常返回exit_code0。审核唯一无真实进程反例exit1保持原样；原run2没有触发该超时，已有driver0/cycletrue/cleanuptrue不变。
+
+capture必须在第一次TimeoutExpired时立即保留timed_out=true；后续清理只用于回收子命令，不能恢复该步骤成功。正常完成的回执timed_out=false；超时后无论最终child returncode是0或非零，均写timed_out=true/success=false并抛OWNED_COMMAND_TIMEOUT，exit_code保留实际子进程返回码，不伪造124或覆盖成0。普通非零保持OWNED_COMMAND_FAILED。
+
+若清理等待也超时，仍写timed_out=true、stop_unconfirmed=true及实际exit_code（尚未退出则null），保存已取得的私密部分输出/摘要后抛既有COMMAND_STOP_UNCONFIRMED。正常回执stop_unconfirmed=false。原精确拥有权校验、仅向已匹配自有PID发SIGTERM、原始输出私密保留及稳定错误码边界不变；不增加重试、服务或额外功能。
+
+仅重放同一公开无进程反例，并在现有871增加/执行capture正常0、普通非零、超时后0、超时后非零及清理未确认五项合成边界。Popen、拥有权观察、等待和信号全部替身；不读取实际私密输入，不执行完整cycle/服务、其他既有守卫或中性环境套件。新修复源SHA和合成结果独立封档，不把0a6的实际cycle结果移植给新代码。

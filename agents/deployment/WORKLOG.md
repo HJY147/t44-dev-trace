@@ -225,3 +225,8 @@
 - 归档前扫描本阶段84公开文件/292私密非秘密outputs+args，对16个实际literal（DB/登录/两broker/用户/服务bearer与完整URL去重）匹配0，gzip解码后纳入；dump/秘密原件排除。范围与hash见final-secret-scan.json，后续GitHub文字另行终扫。没有另查list_bindings表；AMQP能力由固定Pika源码、真实连接和确认/通知关联限定，不补写未执行命令。
 
 - Phase2封档e142470已push；实时GitHub确认PR31已merge，保留其phase1正文逐字不变，另建draft PR34（base codex/integration）。Issue7评论6375242146/PR31评论6375242564及PR34正文经GitHub connector重新读取严格逐字相同，body/comment SHA与原JSON见github-phase2-readback-checks.json；未请求合main或标review成功。按根要求本轮只封档后结束释放槽，后续专项复核由既有审核岗安排，不再运行cycle或刷测试。
+
+## NATIVE-CAPTURE-TIMEOUT-v1 设计checkpoint
+
+- 按根新实际派工，仅修公开审核c6883f2的P2 NATIVE-CAPTURE-TIMEOUT-01；读精确报告/原红JSON和log。原根绝对路径report不存在真实exit1，随后从共享Git对象c688精确读取公开文件，未读私密资料。原红字节/SHA复制另档，不覆盖审核岗原件。
+- 先补现有application-design超时勘误：首次超时永久失败，保留actual child returncode；清理也超时仍写事实/未确认/null真实码；正常0/普通非零与稳定错误码分开。当前未改capture，只设计与实际prompt归档；历史0a6真实cycle结果保持，不移植给新代码。后续只现有871的五个capture合成边界与同一反例，不跑服务/cycle/其他守卫。

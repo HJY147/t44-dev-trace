@@ -178,3 +178,7 @@
 - 正常16confirmed事件/26通知发生于run1（当轮整体exit1/cleanupfalse仍保留），二轮既有ID/收件人和manager可读10通知复核，不声称二轮新publish。证据native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871+3受影响873/Ruff/diff通过。不含完整浏览器业务、独立、性能或云结论，当前所有自有服务停机。
 
 - 证据封档e142470；新draft PR34 https://github.com/HJY147/t44-dev-trace/pull/34，Issue7/6375242146与已合并PR31/6375242564实际评论/PR34正文严格回读一致，PR31原历史正文逐字保留。现全停机并交根专项复核，不再运行cycle。
+
+### NATIVE-CAPTURE-TIMEOUT-v1 设计待窄修
+
+- 审核c688发现capture首次超时后child清理exit0会误返回成功，精确5ef/0a6原红与历史run2成功并列保留。先补现有设计，实际prompt另存；仅计划capture超时事实/实际返回码修复及五个合成边界，不启动服务、不读取私密输入，当前尚未修复。
