@@ -306,3 +306,15 @@
 - 精确目标62ac、证据尾16b分开，PR37实时head16b/draft；原360只有4ef942的exit1，后置全停不倒填，新360未运行。新增serve/stop/轮换所列静态未确认其它P1/P2，限定关闭SERVE-CLEANUP-SCOPE-01。7项历史保护缺5177/18086保留，下次9项基线由root准入。报告37-62ac...和实际Issue7/COMMENT/GET交接随后封存，不启新360/4h、不APPROVE/status/main/globalpass。
 
 - 阶段证据26b6cf16837cf1fd0dc73bf9cfab214658780fe5已push exit0，[skip ci]。Issue7评论6376797590完整GET逐字body/Issue归属/显式62ac通过；PR37 COMMENT5635499152显式完整62ac，插件body/COMMENTED及REST特定review完整GET commit_id/body/state严格相符exit0，https://github.com/HJY147/t44-dev-trace/pull/37#pullrequestreview-5635499152。回执github-comment.json。原f159报告/原360false、七项范围缺口和旧红不改，无新360/4h、APPROVE/status/CI/main/globalpass。仅补自身回执后FINAL释放。
+
+
+## 2026-10-24 MySQL默认池候选有限专审（db87）
+
+- 实际ROLE-reviewer-POOL-DEFAULTS-v1，rootba555隔离codex/review-pool-defaults，先scope后源；精确候选db87/PR39 liveheaddb87draft，b9证据父链含候选不冒称root准入，demo仍bc5。不读独立私密/报告case、不联系tester，0本机HTTP/SQL/负载/套件/CI。
+- engine SHA8be81f...，只pool_size5→15/max_overflow10→0两个defaultConstant；精确字节替换和复原AST全同，其余运行roots/14freeze/原993930955保持；设计d4在产品前且未抢改engine。API LazyFactory/CLI/MQ/scanner配置传播、实时auth无缓存、锁事务/错误map原字节；源不变不承诺故障频率或503分布相同。
+- 五配置边界：默认15+0峰15；partial-size3+0峰3（旧13）；显式3+2/5+10保持；partial-overflow15+2峰17（旧7，已在DB设计与869声明）。不是全局硬cap15。六标准默认池峰90同/保留上界30→90/多最多60闲置，按需建；管理/健康/CLI/滚动实例另算，内存/FD/stale与故障频率未知不套151快照。
+- owner869实际QueuePool+合成DBAPI两波容量/返还/复用/overflowclose/dispose及真实Settings/lazyengine守卫有意义；生产等待10与测试即时timeout0、option注册与真实SQL执行分开，旧默认真红/10绿只核原件，不自动复跑。
+- root公开51gzip压缩/解压SHA及五官方ZIP既有digest回执核，未重开私密ZIP；实际Docker400a5双父70f+db87、166运行roots文件集/mode/blob/bytes等值，APIhead不当checkout。product520/0/0/0含86910、9300，44Py20TSVue准确分母/excluded0、行2638/2957/branch659/824/FE89核；marker重叠不累计，CI非本岗执行，930导入非负载。6307失败门槛不改/不重计。
+- 有限候选代码审核未发现新增实质阻断，不合root/替bc5/放性能或globalgate。报告39-db87...，实际Issue4+PR39显式db87 COMMENT/完整GET及commit/push回执随后封存，无APPROVE/status/main/CI触发。
+
+- 阶段证据f61a9768b45928bbd2637a382403d33538c40a1f已push exit0，[skip ci]。Issue4评论6377112892完整GET body/归属/显式db87严格核过；PR39 COMMENT5635646788绑定准确db87，插件逐字body/COMMENTED及REST完整GET commit_id/body/state相符exit0。回执github-comment.json。rawcoverage44/20实keysets与五官方digest元数据另直接核同；原ZIP未打开。无新增阻断仅限两默认/所列caller与公开证据，不给root准入/性能/globalgate；0本机测试HTTP_SQL负载/CI触发，封存自身metadata后FINAL释放。

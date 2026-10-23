@@ -1,0 +1,103 @@
+{
+  "operator": "AI reviewer static/public-archive audit only, zero test rerun",
+  "target": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+  "base": "5408c05377d4f0084c6ae4eb596351add2004b67",
+  "DB_evidence": "b9f8cb094afdcb6587a9196ebf97368415b1cc6f",
+  "source_SHA": "8be81f4499106a1047aa65cb30a0f8dd3af13736e30d6bd456eca7d026ce8744",
+  "only_two_default_literals_and_no_other_module_AST_delta": true,
+  "only_changed_runtime_root_file": [
+    "backend/t44/persistence/engine.py"
+  ],
+  "DB_evidence_parent_contains_candidate_and_is_not_root_admission": true,
+  "frozen14_and_original930993955_unchanged": true,
+  "configuration_I_O": {
+    "default": [
+      15,
+      0,
+      15
+    ],
+    "partial_size3": [
+      3,
+      0,
+      3
+    ],
+    "explicit3plus2": [
+      3,
+      2,
+      5
+    ],
+    "old_explicit5plus10": [
+      5,
+      10,
+      15
+    ],
+    "partial_overflow2": [
+      15,
+      2,
+      17
+    ],
+    "pool_timeout": 10,
+    "pool_recycle": 1800,
+    "positive_integer_and_nonnegative_overflow_validation_unchanged": true,
+    "no_universal_total15_validation": "Configured size+overflow bounds each QueuePool; positive explicit overflow can exceed15, as before overrides allowed",
+    "no_env_pool_mapping_added": true
+  },
+  "resource_budget": {
+    "default_processes": 6,
+    "default_peak_old_and_new": 90,
+    "retained_old_upper": 30,
+    "retained_new_upper": 90,
+    "extra_retained_upper": 60,
+    "on_demand_not_preallocated": true,
+    "admin_health_CLI_rollover_other_instances_extra": true,
+    "memory_FD_stale_connection_fault_frequency_not_measured": true
+  },
+  "869_effectiveness": "Two waves of actualQueuePool/syntheticDBAPI borrowcap+return+reuse+overflowclose+dispose and actual lazySettings/MySQLengine composition; no realDB/no claim runtimefaultfrequency",
+  "local_owner_default_red_and10green": "original rawlogs read, not reviewer rerun",
+  "CI": {
+    "product": 40039282322,
+    "product_source": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+    "docker": 40039333270,
+    "docker_actual_checkout": "400a5cac444be15565dc48fe4ee2a1869f31e9a3",
+    "docker_API_head_is_not_checkout": true,
+    "docker_parents": [
+      "70f4b7f4ee251830008c1c1a527f1ca05df1db66",
+      "db87d30449356f3473b645a5c246dcc6c21d7cbe"
+    ],
+    "166_runtime_roots_exact_bytes": true,
+    "full_520": {
+      "tests": 520,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "869_collected": 10,
+    "930_cases": 0,
+    "930_workload_run": false,
+    "Python_denominator": 44,
+    "TSVue_denominator": 20,
+    "backend_line": [
+      2638,
+      2957
+    ],
+    "backend_branch": [
+      659,
+      824
+    ],
+    "excluded_lines": 0,
+    "FE89": true,
+    "Docker_result_passed": true,
+    "selected_gzips_verified": 51,
+    "official_zip_digest_receipts": 5,
+    "CI_triggered_or_rerun": false,
+    "CI_archived_by_root_not_reviewer_execution": true,
+    "raw_coverage_Python44_and_TSVue20_keysets_independently_equal_Git": true,
+    "official_API_digest_metadata_matches_prior5ZIP_receipts": true
+  },
+  "source_size": "Owner originalcloc6307 unchanged,rangefailed;notreviewerrecount",
+  "new_P1_P2_confirmed": [],
+  "outcome": "No new material blocker identified within two-default/static callers/public evidence scope;not root merge,perf or overallapproval",
+  "localHTTP_SQL_load_or_tests": 0,
+  "independent_private_reportcases_or_tester_communication": false,
+  "new_test_files": []
+}
