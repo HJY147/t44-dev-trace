@@ -64,3 +64,11 @@ PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/
 ## C-P4限定关闭与规模审计v2
 
 精确7c27a5f62cc23db8545a28852ed01322a7e172b4，原957断言原样复验通过，DB公开live四类变异拒绝/恢复及18 owner用例来源hash一致，原C-P4限定技术关闭。原口径5886超上限786，仍failure/not approved；A/B/C/E方案预计净208–377且仍不足，不把D新AST依赖POC计收益，不修改口径或产品。完整八段十项报告catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md；本轮仅复验957/规模与公开原件核对，无实库写入/性能/全产品新验收，IAT修复另审。
+
+## 容量生命周期v1.1设计限定审查
+
+精确5fb1d7e0b180e754aba635487ebb0fa341e4f957，32输入与git show一致，11冻结hash及历史保持。U015真实采用；本岗AI发现root提案把现有成员1–5+7保护错说为1–5，root接受纠正并将capacity的7具体边界另问用户待答。除该边界外给全量owner检查、assignment项目锁、rework当前人力、错误与1.1版本同步的限定技术准入建议；不能正式冻结或放行依赖7的实现。报告capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md及静态JSON/AST证据，不含新产品运行结果；无产品修改/独立接触/status success/APPROVE/合并。最终源与测试另审。
+
+最新补答收口：02ecdea9ced90cd46cbca898f123d6409f45ba80 的U016/D006已真实采用capacity状态7可移出、返工前补回，原成员1–5+7保护不变。新RFC已更正AI提案错误并写具体版本同步。35份提交输入重hash、11原freeze不变，源码未改。限定设计可准入实施，无此边界待答；5fb首次报告保留，最终源/契约冻结/产品测试与gate另审。
+
+终稿限定差异：bbc4be681f19a386fbca40baf97a63ab902b3f89仅RFC第33行精确安全竞争语义：移除拟接手人冲突一方拒绝；先转派再移除原负责人允许依次成功。hash a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98；该RFC可准入实施，02全文论证/5fb历史均保留；无本轮设计阻断，产品源码/真实回归/最终gate另审。

@@ -105,3 +105,19 @@
 - 数量校正：初步口头806含已删除的58行domain barrel，当前实际相关组748；seed当前pointer已复用，旧context/add共享已实施，不能重复计收益。因此A/E保守下调，合计208–377且仍不足786。此为审计推算修正，非实施或产品指标改善。
 
 - 角色Issue/PR COMMENT实际发布：https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036；https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603，正文明确7c27和两项限定范围。没有任何status写入、没有APPROVE/合并，原e01 failure不改；实际argv/退出/URL在catalog-v2/github-comments.json。
+
+## 2026-10-23T12:04:42.111506+00:00 容量生命周期v1.1限定设计审查
+
+- 实际派工 ROLE-reviewer-CAPACITY-V11-DESIGN-v1 及后续纠错原文存dispatches；精确5fb1d7e建立codex/review-capacity-v11，不碰root索引或产品。
+- U015/D005/QA已真采用；不能再说整个D005待答。RFC误称成员保护仅1–5，本岗AI从Projects静态发现其实际1–5+7，root接受是其AI提案错误，不归为学生发现。状态7的capacity具体边界另问用户待答，不能代人定义。
+- 32输入逐字节对照git show，11原冻结hash与当前/ae60历史均一致，权威/后端副本一致；JSON/AST静态核对exit0，结果evidence/capacity-v11-design/static-audit.json。没有运行产品测试/实库/性能/CI刷新，没有独立测试接触。首次猜测D002名/FE config不存在已改读真实路径，失败不记通过。
+- 报告reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md：除7边界外给限定技术有条件准入；全量owner检查、assignment项目锁、返工再验、错误分支与info+Meta+后端+FE+manifest父链明确建议已由root采纳，仍须其改稿与用户具体答复后新SHA审；不能冻结1.1或放行依赖7的实现。
+- 本轮仅自己的报告/证据/日志/handoff/prompt/COMMENT，未发status、APPROVE或合并；后续源与测试另审。发布/提交实际返回另存证据并以完整SHA交接，不在报告自引用。
+
+- 2026-10-23T12:06:53.474177+00:00 最新续派与真实补答：02ecdea包含U016/D006/QA answered_adopted，capacity状态7边界现已明确采用，无此边界待答。直接git show新五件及35输入重hash，源码未改、11原freeze不变，exit0。新报告reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md更新限定结论：可准入责任岗实施，非冻结/产品通过；5fb原待答/事实错误报告保留历史不覆盖。实际续派原文已追加。
+
+- 真实GitHub COMMENT已发并先读回避重：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6364500677；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364501387。argv/返回见capacity-v11-design/github-comments.json，准确目标02；无状态写入/APPROVE/merge。
+
+- 2026-10-23T12:08:53.205142+00:00 最终RFC限定差异：准确bbc4be681f19a386fbca40baf97a63ab902b3f89的RFC仅L33澄清竞争目标人与原负责人的区别，hash a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98。真实git show/diff/逐行比较exit0，方向成立；新终稿报告reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md，可准入责任岗实施，无待答/本轮设计阻断，不扩审后续无关代码。02评论已真实发布，随后将追加此终稿绑定，不删除前一结论；源码/产品gate另审。
+
+- 最终RFC补记已追加到本轮Issue/PR两条原评论，并实际GET读回body一致；未删除02的原评论内容。命令/返回github-final-update.json，原02正文单独保留github/capacity-v11-design-02e-comment.md。
