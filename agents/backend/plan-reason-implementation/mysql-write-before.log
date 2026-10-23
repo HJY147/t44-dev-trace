@@ -1,0 +1,100 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 40 items / 36 deselected / 4 selected
+
+backend FFF.                                                             [100%]
+
+=================================== FAILURES ===================================
+____ test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[plan] _____
+
+real_task = (<starlette.testclient.TestClient object at 0x105e7f050>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0...GlAaoKLrFZl5D4rw9-hzentF5UfpEyKXV1Wk'}, 331, {'id': 324, 'project_id': 331, 'version': 1, 'plan_version': 1, ...}, ...)
+kind = 'plan'
+
+    @pytest.mark.parametrize("kind", ["plan", "rework", "iteration"])
+    def test_real_mysql_schedule_reason_new_write_and_replay_are_atomic(real_task, kind):
+        client, factory, _, tokens, pid, iteration, task = real_task
+        prefix = "2026-10-24\nchangeTaskPlan <literal> "
+        reason = prefix + "理" * (2000 - len(prefix))
+        operation, args, response = _http._reason_write(
+            client, factory, tokens, pid, iteration["id"], task, kind, reason, uuid4().hex
+        )
+        with factory() as uow:
+            g = uow.gateway
+            audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+            schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+>           assert [entry for entry in audit["after_values"] if entry["field"] == "reason"] == [
+                {"field": "reason", "value": reason}
+            ]
+E           AssertionError: assert [] == [{'field': 'r...理理理理理理理理理理理'}]
+E             
+E             Right contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan <literal> 理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理...理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理'}
+E             Use -v to get more diff
+
+tmp/backend/contracts/985_mysql_http.py:1388: AssertionError
+___ test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[rework] ____
+
+real_task = (<starlette.testclient.TestClient object at 0x105e7f050>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0...GlAaoKLrFZl5D4rw9-hzentF5UfpEyKXV1Wk'}, 332, {'id': 325, 'project_id': 332, 'version': 1, 'plan_version': 1, ...}, ...)
+kind = 'rework'
+
+    @pytest.mark.parametrize("kind", ["plan", "rework", "iteration"])
+    def test_real_mysql_schedule_reason_new_write_and_replay_are_atomic(real_task, kind):
+        client, factory, _, tokens, pid, iteration, task = real_task
+        prefix = "2026-10-24\nchangeTaskPlan <literal> "
+        reason = prefix + "理" * (2000 - len(prefix))
+        operation, args, response = _http._reason_write(
+            client, factory, tokens, pid, iteration["id"], task, kind, reason, uuid4().hex
+        )
+        with factory() as uow:
+            g = uow.gateway
+            audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+            schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+>           assert [entry for entry in audit["after_values"] if entry["field"] == "reason"] == [
+                {"field": "reason", "value": reason}
+            ]
+E           AssertionError: assert [] == [{'field': 'r...理理理理理理理理理理理'}]
+E             
+E             Right contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan <literal> 理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理...理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理'}
+E             Use -v to get more diff
+
+tmp/backend/contracts/985_mysql_http.py:1388: AssertionError
+__ test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[iteration] __
+
+real_task = (<starlette.testclient.TestClient object at 0x105e7f050>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0...GlAaoKLrFZl5D4rw9-hzentF5UfpEyKXV1Wk'}, 333, {'id': 326, 'project_id': 333, 'version': 1, 'plan_version': 1, ...}, ...)
+kind = 'iteration'
+
+    @pytest.mark.parametrize("kind", ["plan", "rework", "iteration"])
+    def test_real_mysql_schedule_reason_new_write_and_replay_are_atomic(real_task, kind):
+        client, factory, _, tokens, pid, iteration, task = real_task
+        prefix = "2026-10-24\nchangeTaskPlan <literal> "
+        reason = prefix + "理" * (2000 - len(prefix))
+        operation, args, response = _http._reason_write(
+            client, factory, tokens, pid, iteration["id"], task, kind, reason, uuid4().hex
+        )
+        with factory() as uow:
+            g = uow.gateway
+            audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+            schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+>           assert [entry for entry in audit["after_values"] if entry["field"] == "reason"] == [
+                {"field": "reason", "value": reason}
+            ]
+E           AssertionError: assert [] == [{'field': 'r...理理理理理理理理理理理'}]
+E             
+E             Right contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan <literal> 理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理...理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理理'}
+E             Use -v to get more diff
+
+tmp/backend/contracts/985_mysql_http.py:1388: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/plan-reason-implementation/mysql-write-before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[plan]
+FAILED backend::test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[rework]
+FAILED backend::test_real_mysql_schedule_reason_new_write_and_replay_are_atomic[iteration]
+============ 3 failed, 1 passed, 36 deselected, 1 warning in 0.65s =============

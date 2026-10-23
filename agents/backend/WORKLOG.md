@@ -347,3 +347,14 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 8组合成AuditEvent以冻结Schema+真实FormatChecker离线校验0错误，14hash一致/31path38ops，静态记录plan-reason-design-static.json；只是wire形状，不是matcher/HTTP/MySQL通过。首次检查manifest把files字典按0索引导致KeyError，已记录并修正离线遍历；无产品失败。未import应用/执行SQL/HTTP/pytest/CI/负载，未查独立私密资料。
 - 实际产品/测试/配置净变更0；方案预算是待实现估算+66..121有效行（后端/DB/FE各岗最终复核），不是源码节省/性能改进。原6108超5100缺口保留，不反复全项目统计。后续先根审设计、DB有限接口、后端986/985真红绿与新源检查，前端另派原文显示/缺失UI；未新建873脚本。
 - Issue28 body-file发表并API逐字readback：https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373605774，正文/回读分别plan-reason-github-design-comment.md及plan-reason-github-design-readback.json。根明确允许本次纯设计[skip ci]，避免未经要求全量CI；提交后释放本阶段槽位，等待准入，不自行实施/开负载。
+
+## Issue28后端实现checkpoint0549（证据随后独立归档）
+
+- 根02c4b2a准入且DB固定入口交付后，干净ff至6205；先在原source新增目标，before为5红1绿、mysql-before为3红，分别含一个错误sort=-id夹具红，不能全称业务红。旧接口没有sort，该新增测试驱动错误保留；改用原升序分页/合成padding，再在原application/projects字节上实得100页两红并finally恢复草稿。其它旧源新writer三红/回滚一绿也保留mysql-write-before。未更改冻结规格迎合夹具。
+- 生产仅schedule_diff多存一次after.reason、listProjectAuditEvents原页后接history.project_reasons、新history.py严格匹配。全部新plan/rework/iteration与原事务审计/outbox/幂等一并保存；旧史只对当前授权页做0/1有限批读，完整五plan/两种版本/actor/微秒time/evidence核对后添加响应副本，不写旧audit/幂等快照，不猜旧iteration。DB/runtime不改，原986/985前缀断言逐字不变。
+- 自查合成相同替代数字/UTC字形两目标在草稿真实红→要求原plan() float/六位Z字形；另无关legacy_note重复两目标红→只拒绝相关Plan/version/state重复，保留无关条目。canonical-draft-before/unrelated-draft-before保留。这是AI开发核对设计发现的草稿问题，非用户识别/改码，也非实际旧数据库观察；没有放宽关联恢复率。
+- 精确最终18/0fail/error/skip，11 SQLite HTTP（含原完整五计划旧用例）+7真实MySQL HTTP；final.xml/log。先前12/16/18中间验证重叠不相加。t44_test仅本岗UUID合成fixture，100当前页100distinctpairs/1追加SELECT，无候选页0追加读；原审计/schedule读前后不变，真实三类新写2000字符/重放不重复，受控写故障回滚全部变更，受控批读故障验证原UoW先closed、新UoW拒绝audit落库。不清共享数据/停库/访问独立库，不测延迟/启动服务或负载。
+- 严格Ruff/5文件format/Bandit通过、14冻结hash一致、原运行/DB字节保持。原I001新增导入排序失败保留。新helper增加生产文件，不能拿旧43文件覆盖率当当前结果。本岗变更文件固定cloc最终净+95，超RFC后端+38..71预算；根6186若其他字节不变投影6281，非全项目重数，规模仍失败，不压排版/移逻辑改口径。
+- 根要求源码先交免阻前端872，已先commit/push0549ea89ce218ecb945cd4346671f20d46fad215，仅5个源码/测试文件，[skip ci]遵守先不完整CI；本prompt/原件/日志不在该源码commit，以下独立证据提交随后归档不能倒填。依赖/迁移/配置无新增，仍t44.api:app、现hash锁、6205所含DB固定门面。完整CI/专审/同源UI/独立复验待根组合后调度。
+- 当前frontend_logout已真实收到位置非固定/原文/缺失范围，前端另阶段22组件及root转述89结果不作本岗执行或后端验收。指导岗问及execute_operation/save_task时已按实际endpoint.handle→Runtime.execute→Tasks.changeTaskPlan→CAS/schedule_diff纠正名称，指出业务返回不等于主事务已提交、outbox持久不等于已投递。未联系tester/读私密。
+- 阶段评论已body-file发表并逐字API回读：Issue28 https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374349961；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374350449。证据seal时产品/回归仍逐文件hash等于0549，44个生产Python文件清单数量已核，不提供旧43文件覆盖率。根已启动精确18089/安排FE872，不是本岗执行；此后不再重复18目标，证据提交后释放。
