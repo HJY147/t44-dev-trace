@@ -740,7 +740,7 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "one14400second userdemo admitted;readyandfirstextraTTL300rotation observed;running;finalexit/cleanup unknown",
+    "status": "ongoing14400;readyandfirstextraTTL300rotation proven;rootmonitors;finalexit/cleanupunknown",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
@@ -764,7 +764,7 @@
     "tool_implementation_commit": "4ef57b6129c712c1fad88de56775c53b84009b15",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/37",
     "draft": true,
-    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376963887",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377155221",
     "github_readback": "agents/deployment/native-bounded-demo-validation/github-tool-readback-checks.json",
     "window_gate": "single14400 native userdemo active;root monitors after agentFINAL;no performance orindependent claim",
     "actual_run": "app_20261023_234943_3f9bad",
@@ -788,11 +788,11 @@
     "protected_baseline_coverage": "only7listed ports;5177/18086 absent;no v3 pastinterval proof",
     "future_baseline_requirement": "ifroot separately admits next run,add5177/18086 exact UID/start/argv hash baseline",
     "fix_implementation_commit": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
-    "current_GitHub_readback": "agents/deployment/native-bounded-demo-validation/github-retest-readback-checks.json",
-    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6376964164",
-    "pr_body_updated": "full replacement:old360failure+new360success+tmp byteidentical migration+4h notadmitted",
-    "readback_observed_head": "13cd3d515c06b0408b5048c852a95a8f1b3ba9b2",
-    "archive_head_semantics": "finaldocs/GitHubreceipt-onlycommit;actualtool62ac/084618;runtimeevidence10182;migration13cd",
+    "current_GitHub_readback": "agents/deployment/native-bounded-demo-validation/github-user-demo-readback-checks.json",
+    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6377155474",
+    "pr_body_updated": "not changed after PR37merge;new ongoing14400 described onlyin supplemental comment",
+    "readback_observed_head": "PR37historical4ceea3ddb9e8499c313816fcface28c015ce43e9 merged;currentbranchinitialevidence dcad",
+    "archive_head_semantics": "finaldocs/readbacks only;runningtool62ac/084618;initialuserdemo evidence dcad;not a final4h proof",
     "current_services_running": true,
     "full_bounded_lifecycle_passed": null,
     "original360_run": "app_20261023_230429_cc2f5b",
@@ -840,6 +840,12 @@
     "userdemo_future_wait_receipt": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/serve-driver-receipt.json",
     "userdemo_future_postproof": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/post-run-proof.json",
     "userdemo_future_postreceipt": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/post-receipt.json",
-    "prior_retest360_lifecycle_passed": true
+    "prior_retest360_lifecycle_passed": true,
+    "userdemo_initial_evidence_commit": "dcad31d32eeeef33e48afe367f8b102c0f845886",
+    "pr_current_stage_mode": "postmerge supplementary comment only;PR37body/history preserved",
+    "private_driver_stdout": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/driver.stdout",
+    "private_driver_stderr": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/driver.stderr",
+    "private_controller_stdout": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/serve.stdout",
+    "private_controller_stderr": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/serve.stderr"
   }
 }

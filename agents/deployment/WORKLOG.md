@@ -312,3 +312,6 @@
 - Popen start_new_session后台driverPID43819，新fresh app_20261023_234943_3f9bad；23:49:43.904838Z起→2026-10-24 03:49:43.904838Z截止/北京时间11:49:43.904838。首次ready约23:50:54Z，源92逐SHA再核；首两新completed60.319299s，初始轮换及23:53:55.380033Z首个hold额外TTL300轮换/旧撤销/新tick/锁，API1/consumer1/UI1/scanner3代/4worker。九端口prepare前→serve前→ready身份逐项相同，未读独立应用数据。
 - root私密.submission-private/完整演示登录说明.md新建0600/父700，含普通合成登录3角色/双项目scope/准确入口版本截止/精确提前stop_argv/状态与futurewait路径，不输出密码、不提交Git；无旧文件覆盖。目标仍bc5，不将其他池候选或hosted测试混进本机事实。
 - user-demo-current-capability为初始时点白名单：driver/runner/四角色alive，readytrue/额外rotation1；历史16/26仅复核、无新publish声明，本长演示未另外查全量DB扫描/outbox数，wait_scans验证4条仅子集。最终exit/cleanup均null、finalwait/post文件不存在，4h进行中而非已完整通过。接下来仅时点secret扫/文档/Issue7回读后FINAL，root接管监测，不同步等4h、不擅自停当前已授权演示。
+
+- 初始进行中证据dcad31d32eeeef33e48afe367f8b102c0f845886已push；实时GET确认PR37已merged/closed、历史head4cee，故保留正文逐字不变，只在Issue7评论6377155221/PR37补充评论6377155474记录新获准14400进行中事实。两评论POST后GET逐字一致，merged历史正文/head再次GET不变，原回执另档。没有将dcad冒充旧PRhead或将正在运行当最终通过。
+- 本尾commit只文档/公开GitHub读回/当前秘密扫描；root接管driverPID43819监测。最终精确state路径和futurewait/post将随FINAL交付，持续保留当前服务，不同步等待4h。用户指南已私密保存，不再发账号；应用仍bc5，其他候选未并入本demo。

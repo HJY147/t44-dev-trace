@@ -55,3 +55,5 @@ user-demo-current-capability.json为初始交接时点白名单：ready、首两
 根私密.submission-private/完整演示登录说明.md已0600保存页面入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop和状态位置；公开不放密码。界面http://127.0.0.1:5178，API18088，与原5173并存。停止请用私密owner记录的精确stop_argv，只发拥有权请求；实际结束须看statusfinished/cleanup和外部wait/post。
 
 交接后root监测后台，不让agent同步等待四小时，也不把此进行中状态当云常驻、独立/性能/完整4h最终验证。所有进展记录均带观察时间，公开/私密输出secret扫描只覆盖当时已观察字节，未来新日志未被提前宣称扫描通过。
+
+初始进行中证据dcad31d已推送，Issue7#6377155221/已合并PR37#6377155474的补充评论均重新GET逐字一致；PR37历史正文与head4cee保持（github-user-demo-readback-checks.json）。末尾仅文档回执归档，root监测运行；当前进行中并不因提交/评论成功变成4h完成。
