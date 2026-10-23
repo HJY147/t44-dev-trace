@@ -63,3 +63,10 @@
 - 读取总协调root records/github/protection-v2-response.json，确认main必需reviewer/stage、static、contracts、coverage、frontend五项，strict/enforce_admins=true；此前“只有reviewer/stage”是当时快照。没有由本岗更改保护或重跑CI。
 - 后端开始基础包/哈希锁/纯domain实现，尚无API/DB集成，不当作API已完成。本岗实际回复标准pytest JUnit与coverage JSON，不依赖pytest-cov/json-report；tests/backend递归包含在backend/tests，严格markers各自仍需真实用例。回复经body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775 。
 - 最终交接经runtime-handoff-comment.md body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315 。PR15已attach不重建；记录首次真实run39912067161失败，不把配置/服务启动证据当应用测试。本机未构建/部署/迁移/恢复/压测，等待集成。随后只提交本段事实归档。
+
+## INTEGRATION-v1 完整应用联调
+
+- 实际派工见 `agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md`；在本岗独立树fast-forward至codex/integration完整基点 `ef79f04323e05326d0d5a14b44af8c5e0a474690`，未修改root索引或其他岗生产代码。
+- 已读取当前AGENTS、实现边界、实际 `t44.cli`/Settings、MQ和调度入口，以及Issue7实际交接6361329227。当前已有38API、迁移、seed、service-token真实实现，不沿用旧缺实现假设。
+- 首个checkpoint修复web构建目录：保留 `/build/frontend`，复制权威 `/build/specs/contracts`，最终静态产物改为 `/build/frontend/dist`；ignore只对白名单规格开放，不复制原始sources。此时尚未执行真实Docker build，后续Linux job必须验证。
+- 用户新增tmp编号规范已收到：不自行改原测试发现路径，新增测试号由总协调分配，待其迁移SHA后再对齐CI。
