@@ -98,7 +98,12 @@ class Reviews:
             },
             actor_field="created_by",
         )
-        changed = c.cas(g, "tasks", row, {})
+        changed = c.cas(
+            g,
+            "tasks",
+            row,
+            {"approved_assessment_id": None, "approved_assessment_version": None},
+        )
         return {"task": task_model(changed), "assessment": model("ReleaseAssessment", assessment)}
 
     def reviewReleaseAssessment(self, g, c):
@@ -112,8 +117,15 @@ class Reviews:
             "STATE_CONFLICT",
             current_state=row["state"],
         )
+        latest = g.rows(
+            "release_assessments",
+            {"task_id": row["id"]},
+            order_by=("-rollback_plan_version",),
+            limit=1,
+        )[0]
         require(
-            assessment["schedule_version"] == row["schedule_version"]
+            assessment["id"] == latest["id"]
+            and assessment["schedule_version"] == row["schedule_version"]
             and assessment["delivery_cycle"] == row["delivery_cycle"],
             "ASSESSMENT_BASELINE_MISMATCH",
         )

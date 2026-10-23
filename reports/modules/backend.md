@@ -107,3 +107,17 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 源SHA64b4f891ee77eeb2b1054c3a40af084eb6691d5c的product39938619826/39938612582四任务全成功。原始JUnit317测试、0失败/错误/跳过，contract35/integration52/fault7各自通过（会重叠）。全43个backend/t44文件、无excluded：2406/2729行88.1642%，分支76.4706%，含分支85.7392%；CLI0覆盖仍纳入分母。原始日志/覆盖JSON/JUnit和refactor-validation-summary.json在agents/backend/。
 
 729的真实18fail/I001/F823→后端AI修改cmd别名→64b4远端317通过关系有原始日志，未降低断言。当前仅后端重构/远端开发CI交接，不是独立验收或正式性能通过。最终全产品源码cloc仍待核算；本机性能窗未跑测试/构建/DB/HTTP，服务未重启。
+
+## ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1 阶段A
+
+实际基点397bd7973cfd835c635634d32e0c98ae56d74949（指定父产品43f51570）。仅源码/官方资料分析和准备，尚未获已发布性能报告及t44_profile/中性账号，不读取未发布黑盒文件。
+
+唯一新工具tmp/backend/955_perf_profile.py为独立诊断serve，基于真实API/UoW分开ASGI区间、Runtime/验证/序列化阶段、线程CPU、SQL游标及连接获取聚合，可选cProfile；限制profile库/18082/120秒/1worker，不建库不发负载、不改冻结响应或生产实现。真实函数I/O、指标含义与短跑组别见agents/backend/performance-diagnostics-plan.md。
+
+本轮工具未运行/导入/编译/本机lint，实验/基线/瓶颈/优化收益均无数据；旧CI317通过属于旧产品源，不当作新工具通过。阶段B待根继续派工和环境；目标阈值、安全/事务/校验、独立测试隔离与原源码统计范围均保留，5866仍超5100。
+
+## 已发布IAT修复 checkpoint 1：IAT01
+
+仅两份总协调许可公开报告已按SHA核验；不读私有脚本/证据，不接触独立测试。先开发HTTP复现2失败，再修新评估CAS清批准引用及仅评审最新风险版本；不删历史，不改冻结Schema/错误码/锁/幂等/事务。32项HTTP/SQLite通过，包括旧A批准与待审、旧A不能再激活、B创建重放不清B当前批准、拒绝audit_id。原始失败凭据脱敏+private0600原件SHA，成功/失败JUnit与Ruff/Bandit在agents/backend/iat01-*。
+
+本专项MySQL与独立复测尚未执行；IAT02～05仍待修，性能IAT06仍未通过且955阶段B未运行。955准备工具的静态导入I001由本岗发现修正，不是用户亲改。
