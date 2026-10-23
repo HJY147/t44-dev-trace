@@ -79,7 +79,7 @@
   "interfaces": {
     "inputs": [
       "冻结1.0.0及D004、M1原commit",
-      "9岗实际请求，backend/deployment原文回复；其他7岗未收",
+      "9岗实际请求，backend/deployment/reviewer原文回复；其他6岗未收",
       "已发布模块报告/handoff，CI265d89b在06b9e98归档",
       "测试仅两份公开冻结资料，无联系/私有用例",
       "私密封面仅本地读取，不记录具体值"
@@ -97,7 +97,9 @@
     "git show固定SHA报告/handoff；cat/rg只读规格/公开报告/真实代码用于图表",
     "官方IEEE/ISO公开摘要浏览；未读标准正文/宣称条款合规",
     "Python解析公开CI JUnit/gate/coverage-summary；无产品测试",
-    "本岗文档校验与git diff --check，结果见M2-validation.json"
+    "本岗文档校验与git diff --check，结果见M2-validation.json",
+    "git commit779a5df显式18本岗文件；push codex/reports-m2；GitHub工具建draft PR22并attach",
+    "git merge codex/integration至86dfd7d：只合上游，未手改产品；只读cfeda部署已发布结果"
   ],
   "results": {
     "report_stage": "M2可审MD，非最终验收",
@@ -106,8 +108,8 @@
     "mermaid_blocks": 7,
     "architecture_comparison_groups": 2,
     "real_roles_asked": 9,
-    "real_role_responses_received": 2,
-    "pending_role_responses": 7,
+    "real_role_responses_received": 3,
+    "pending_role_responses": 6,
     "product_tests_executed_by_documentation": 0,
     "ci_head": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
     "ci_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
@@ -122,12 +124,17 @@
     "independent_acceptance_passed": false,
     "m0_m1_raw_history_changed": false,
     "private_values_committed": false,
-    "word_rendered": false
+    "word_rendered": false,
+    "docker": {
+      "run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829",
+      "source_sha": "31f4dff935973162544951fe0660ce208edb7007",
+      "scope": "托管Linux synthetic构建/完整Compose/隔离库恢复成功，不是性能/独立验收/异机队列灾备"
+    }
   },
   "unverified": [
     "Mermaid未渲染，仅语法块结构/代码语义核对；最终DOCX须documents逐页QA",
-    "独立验收/正式性能/最终规模/完整Docker结果与准确SHA产品审核未收最终结论",
-    "7岗本轮回复未收，不冒充回答；已发布资料另引用",
+    "独立验收/正式性能/最终规模/异机队列灾备与准确SHA产品审核未收最终结论",
+    "6岗本轮回复未收，不冒充回答；已发布资料另引用",
     "学生自写研究成品、个人观点和真实人工证据仍待本人；不能AI代写署名"
   ],
   "questions": [
@@ -163,12 +170,17 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T17:38:44.485818+08:00",
+  "updated_at": "2026-10-23T17:41:15.787445+08:00",
   "delivery": {
     "branch": "codex/reports-m2",
     "base": "codex/integration",
-    "stage": "准备发布可审checkpoint；实际SHA/PR发布后补",
+    "checkpoint_commit": "779a5dfa88a18c66164666589b9c7f69a3b00ce9",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/22",
+    "draft": true,
+    "pushed": true,
+    "artifact_attached": true,
+    "integration_merged": "86dfd7d3f4c15e789d26abca6d39e46af3b2caf1",
     "previous_M1_final_commit": "a2a68d0e32a44f6f074048bf69aefd82cd058f52",
-    "previous_M1_PR": "https://github.com/HJY147/t44-dev-trace/pull/18"
+    "notes": "最终head由Git/PR确定，后续提交仅补实际部署收件与发布记录，不自包含自身SHA。"
   }
 }

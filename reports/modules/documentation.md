@@ -16,7 +16,7 @@
 - docs/reports/M2-traceability.md：FR→概设→实际函数→tmp模块测试及公开结果范围。
 - ai-development-report.md改为AI证据材料，student-study-template.md提供学生自写问题和空提纲。
 - submission-map.md及ai-spec-guide.md同步冻结v1、四组提交、私密封面及最终缺口。
-- M2-collection.md/.json留9岗实际请求全文，收到backend/deployment两岗原文；其余7岗未收，不代写。
+- M2-collection.md/.json留9岗实际请求全文，收到backend/deployment/reviewer三岗原文；其余6岗未收，不代写。
 - 已发布模块报告/交接与本轮亲自问答分开；不联系测试，只收两份公开冻结资料。
 
 ## 设计与过程证据
@@ -38,7 +38,7 @@
 
 ## 尚需交接
 
-- Docker39932416571尚未收成功回执；正式400并发10分钟/P95/吞吐、代码规模、独立验收最终结果未完成。
-- 7岗未有本轮回复，只使用已发布来源；待收到后可增补，不阻塞当前可审稿。
+- 实收cfeda/31f4dff，Docker39932723829托管构建/全Compose/隔离恢复成功；旧失败保留。正式400并发10分钟/P95/吞吐、规模、独立验收仍无最终结果。
+- 6岗未有本轮回复，只使用已发布来源；待收到后可增补，不阻塞当前可审稿。
 - 学生本人最终研究报告/个人思考/课程建议和真实人工证据待本人提供。
-- 本轮先提交/push可审checkpoint草稿PR，SHA/PR记录由实际发布后补，不merge main或发审核success。
+- checkpoint779a5df已push，PR22草稿/attach；随后仅合最新integration并补实收部署结果与发布记录，不merge main或发审核success。

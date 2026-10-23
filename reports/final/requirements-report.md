@@ -48,7 +48,7 @@ flowchart LR
 | 负责人且developer | 开始、开发阻塞/解除、提交评审 | 必须属于本项目并负责该任务，不能跳级或自审 |
 | reviewer/合格经理 | 发布带证据评审、通过/退回 | 代码评审者/批准者不能是task.owner；旧轮次证据不能复用 |
 | 评估创建者与审核者 | 四视角风险/回滚预案及独立审定 | 创建者不得自审，交付仍需经理决定 |
-| scope内服务主体 | 升级创建、扫描及通知处理 | 不冒充人类经理，不能跨项目调用服务入口 |
+| scope内服务主体 | 扫描按`escalation:write`创建升级 | HTTP service token不具有本人通知read/handle权限，不冒充人类经理或跨项目调用 |
 | 授权运维 | 配置/迁移/备份和新隔离目标恢复 | 明确目标、凭据保密，操作成功不等于业务验收 |
 
 ```mermaid
@@ -72,6 +72,8 @@ flowchart LR
     Notice
   end
 ```
+
+消息消费者作为独立进程将事件持久化为收件人通知；通知已读/处理由已鉴权的人类收件人对本人记录操作。两者与只具`escalation:write`的HTTP服务主体分开。
 
 图是业务职责分配，不代表每个角色拥有图中未连出的所有权限。最终动作守卫以冻结矩阵为准；页面禁用和提示不能替代服务端校验。
 
@@ -170,4 +172,6 @@ D001业务规则已采用，D004字段/错误码已采用，D002/D003仍标AI技
 
 本文只接收公开冻结的测试模块报告/交接，不联系独立测试或读取私有用例。学生研究报告成品由本人撰写；本仓库[AI证据材料](ai-development-report.md)和[自写模板](student-study-template.md)不能署为学生独立完成的最终研究报告。提交物与私密封面处理见[提交对照](submission-map.md)。
 
-M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)四job static/contracts/coverage/frontend成功；归档[JUnit汇总](../../records/ci/39931640641/junit-summary.json)显示覆盖率整套317通过、0失败/0错误/0跳过，whole Python行2399/2724=88.07%，前端行308/334=92.21%，见[M2回执](../../docs/reports/M2-ci-snapshot.json)。这是准确SHA的托管MySQL/Rabbit证据，不代表独立验收、400并发性能、完整Docker或代码规模通过。
+M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)四job static/contracts/coverage/frontend成功；归档[JUnit汇总](../../records/ci/39931640641/junit-summary.json)显示覆盖率整套317通过、0失败/0错误/0跳过，whole Python行2399/2724=88.07%，前端行308/334=92.21%，见[M2回执](../../docs/reports/M2-ci-snapshot.json)。这是准确SHA的托管MySQL/Rabbit证据，不代表独立验收、400并发性能、其他版本Docker或代码规模通过。
+
+后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。

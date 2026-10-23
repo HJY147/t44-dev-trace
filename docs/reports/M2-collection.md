@@ -136,3 +136,19 @@ ROLE-documentation-M2-QUALITY-v1真实问取：请提供已发布的当前审核
 ## 已归档托管CI读回
 
 本岗合并root06b9e98并亲读records/ci/39931640641的JUnit/gate/前端coverage-summary：覆盖率整套317通过、0失败/0错误/0跳过，whole Python2399/2724=88.07%，前端308/334=92.21%；四job成功绑定265d89b，不改本机87.78%/3skip及collect快照。Docker39932416571尚无已收成功回执，独立验收和正式性能未收最终公开结论。
+
+## 部署最终正式原文（checkpoint发布后实收）
+
+部署最终真实交付：最终发布cfeda743ec2118b0824313cf63c8526880bc79f1，精确运行应用31f4dff935973162544951fe0660ce208edb7007。Docker完整job39932723829 success；同SHA product39932723908/39932729585四job全部success。实跑build/fullCompose/API4worker/独立MQ+sched/HTTP+SPA+JSON413/0600只读token/跨容器flock/轮换撤销/停写备份→新隔离库19表行数+checksum一致/迁移18业务表226列复核/源重启HTTP200。原始证据agents/deployment/integration-validation/run-39932723829/result.json+evidence.json+gzip日志；旧失败run39932416571完整保留。报告reports/modules/deployment.md/handoff records/handoffs/deployment.json已更新，入口与tmp映射沿上一答。最终Issue7#6361990100、PR15#6361990531。只是托管Linux synthetic联调，本机无Docker，无云/性能/独立验收/异机队列灾备结论。
+
+文档岗已只读git show cfeda743ec2118b0824313cf63c8526880bc79f1的模块报告、handoff、result.json与evidence.json。result.passed=true，workers=4、restoration.matched=true、18表226列复核通过；拒绝第二scanner的exit1是预期负向结果。新结果与旧run39932416571失败分开，未将托管Linux synthetic环境写成云部署或独立验收。
+
+## 审核岗实收原文（收尾前）
+
+基础审核已发布四个绑定原SHA的COMMENT：PR14 f261cbf0ea94537ed9f0a1600770c93ee8109237 https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136 ；PR15 72e3275202273a60af3acc37b7a319f10eea99a7 /pull/15#pullrequestreview-5625100856；PR16 0bb4549c1b6e4fb7247dc58dd8a5fa675161d614 /pull/16#pullrequestreview-5625101488；PR17 4ae865b8dc554813c04aacbb3a5033aa2745c799 /pull/17#pullrequestreview-5625102002。公开摘要 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6359632833 。四者仅基础范围无阻断，非完整产品通过。报告在独立tree收尾commit/push中，最终SHA稍后给；初查Q002 pending保留历史，后来用户采用及ae60dc3冻结按总协调通知补记。本岗尚未审核完整实现、enum/seed修复或新主干绿灯；不能代替精确SHA产品审核。现恢复ROLE-reviewer-PRODUCT-v1，最终已发布产品报告待补，不为文档另行重审。
+
+当前3岗实际回复、6岗未收；四基础COMMENT不套用完整产品新SHA。产品审核未发布，继续标待补，不等待其完成以代填结论。
+
+## 审核岗最终基础归档原文
+
+基础审核最终归档已push：codex/review-foundations / 09dd3cf68171557ca13648296e9427571f5fe815，报告reports/reviews/foundations-v1.md及本岗evidence/foundations-v1。四基础范围通过，非完整产品；Q002采用最新补记 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362034250 。现在完整产品审核绑定e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef（含M2），尚无完整产品审核结论；后续精确SHA报告发布后再补，不为文档单独重审。

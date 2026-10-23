@@ -43,4 +43,6 @@ Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M2-QUALITY-v1。
 | 消息降级/恢复 | `messaging/worker.py`、`persistence/delivery.py` | 同事件/收件人唯一，消费提交后ACK；网络至少一次不等于网络恰一次 |
 | 本模块测试与FR | [M2追踪矩阵](reports/M2-traceability.md)及tmp/ | 模块成功与托管整套、Docker、独立验收和性能分别记录 |
 
-准确SHA265d89b的四产品CI已通过，整套317通过/零跳过、whole Python88.07%、前端92.21%；[归档回执](reports/M2-ci-snapshot.json)。正式性能、有效代码规模、完整Docker/恢复及最终独立验收仍以各自准确版本的公开证据为准，本文不提前宣告达标。
+准确SHA265d89b的四产品CI已通过，整套317通过/零跳过、whole Python88.07%、前端92.21%；[归档回执](reports/M2-ci-snapshot.json)。托管Docker/隔离库恢复已在31f4dff补证，正式性能、有效代码规模及最终独立验收仍以各自准确版本的公开证据为准，本文不提前宣告达标。
+
+后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。

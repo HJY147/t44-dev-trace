@@ -14,7 +14,7 @@ Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
 | 原件组别 | 必交物 | 当前去向与状态 | 尚需完成 |
 | --- | --- | --- | --- |
 | 1 软件开发最终产品 | 最终代码 | 各责任岗完整模块已集成265d89b并取得四job CI成功；各模块PR/记录保留 | 完整集成版本、冻结SHA、运行/构建说明；不是把几个基础PR当最终产品 |
-| 1 软件开发最终产品 | 测试结果文档 | 已有模块、真实MySQL/HTTP/局部MQ及新四job CI成功证据；历史失败保留 | **测试结果最终稿未完成**：需汇编准确版本的既有模块/实库/CI证据；正式性能、独立验收和最终完整运行结果仍未完成 |
+| 1 软件开发最终产品 | 测试结果文档 | 已有模块、真实MySQL/HTTP/局部MQ及新四job CI成功证据；历史失败保留 | **测试结果最终稿未完成**：需汇编准确版本的既有模块/实库/CI证据；托管Docker/隔离库恢复已补31f4dff证据，正式性能、独立验收和最终完整运行结果仍须准确版本出结论 |
 | 2 中间产品 | 需求报告 | [requirements-report.md](requirements-report.md)，8FR/9AC、角色/路径/量化目标和状态 | 当前为阶段工作稿；D004已采用并冻结v1；当前SRS/M2图与最终实现/验收映射持续更新 |
 | 2 中间产品 | 设计报告 | [design-report.md](design-report.md)，[architecture.md](../../docs/architecture.md)两组候选比较、门面DI/状态机/持久化/并发/MQ扫描/部署CI | 当前含概设/详设与实际模块；最终运行/审核/独立验收证据继续补齐 |
 | 3 衍生物 | AI可执行规格相关文件 | [AGENTS](../../AGENTS.md)、岗位任务、[业务规则](../../specs/business-rules.md)、[OpenAPI](../../specs/contracts/openapi.json)、[字典/DDL/持久契约](../../specs/database/persistence-contract.md)等 | 组织约束已存在，完整业务技术规格已冻结1.0.0，后续变化需审查与同步测试，不能只交AGENTS代替全部业务规格 |

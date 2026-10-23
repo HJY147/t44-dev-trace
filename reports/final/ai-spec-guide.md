@@ -36,4 +36,4 @@ Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
 - 测试只引用公开最终报告/交接，不联系实例或读取私有用例；新无历史实例用例冻结不等于已执行验收。
 - 学生研究成品本人写；[AI证据材料](ai-development-report.md)和[模板](student-study-template.md)不是学生署名成品。人工改码、识别和个人收获不由AI经历替代。
 
-当前为可审说明稿；完整Docker/恢复、正式性能、最终规模、产品审核和独立验收仍按最终准确证据补齐。Word/PDF待本人材料与软件结果齐备后按documents技能渲染逐页QA。
+当前为可审说明稿；托管Docker/隔离库恢复已取得31f4dff实证，正式性能、最终规模、产品审核和独立验收仍按最终准确证据补齐。Word/PDF待本人材料与软件结果齐备后按documents技能渲染逐页QA。
