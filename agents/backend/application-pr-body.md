@@ -1,9 +1,9 @@
-冻结v1的研发流程应用：实现38个HTTP操作的严格请求/响应适配、opaque身份会话、项目/成员/计划/依赖、评审/发布预案及经理决策，并通过数据库岗UoW统一幂等、CAS、审计和outbox原子提交。账号/迁移及会话撤销由CLI提供；成功data在提交前校验冻结Schema。
+冻结v1的完整研发流程应用：38个HTTP操作、严格请求/提交前data/响应Schema、opaque会话与撤销、项目/计划/依赖、评审/发布预案及经理决策，通过数据库岗UoW实现幂等、CAS、成功审计/outbox原子提交和独立拒绝审计。默认接入消息与调度门面，CLI提供账号、迁移、seed及凭据管理。
 
-当前为draft、分阶段交接：27项HTTP自测通过（26 SQLite＋1官方MySQL8.4.11）；真实MySQL覆盖登记、并发CAS、独立拒绝审计、diff/outbox/幂等完成来源及提交评审。真实Uvicorn loopback服务和4项TCP烟测可用。Ruff/格式/Bandit通过。首次自增元数据故障由DB修后合入，短幂等键测试输入及初始静态检查失败保留。MySQL fixture同时支持CI的DATABASE_URL＋T44_DATABASE显式校验，已以本地真库实际跑URL环境分支；不等于GitHub Actions已通过。
+实测：38/38操作共53次真实TCP＋MySQL请求逐响应Schema通过；真实scheduler＋Pika连接失败＋消息CLI降级、通知处理/去重及CLI会话泄露阻断链通过。全模块314通过、3本机Rabbit未配置跳过；全t44行87.78%（2391/2724），含分支85.36%，无omit。Ruff/Bandit通过。原GHA缺组件测试、审计枚举下标、seed旧规则字段等真实失败与修复证据保留；没有删断言或把AI修复当用户改码。
 
-未完成：消息/调度门面接入、seed owner交付、Rabbit联调、全部t44覆盖率、全流程MySQL、性能和独立验收。领域106测试/98%只代表domain。按总协调安排先交付可运行API阶段，随后恢复完整整合；此PR不声明审核或验收成功。
+保持draft：Rabbit成功投递由真实CI验证；测试正按用户要求机械迁至tmp/999递减；最终源码仍超限，继续删真冗余，不能用改分母/格式解决。性能和独立验收未由本岗宣称通过。18080开发服务可用，独立18081未触碰。
 
 Agent-Role: backend
-Prompt-Ref: ROLE-backend-APPLICATION-v1
+Prompt-Ref: ROLE-backend-INTEGRATION-v1
 Refs: #3 #4

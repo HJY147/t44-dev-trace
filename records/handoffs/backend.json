@@ -402,11 +402,9 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "messaging/scheduler facade integration",
-    "seed owner delivery",
-    "RabbitMQ",
-    "full t44 coverage",
-    "full workflow MySQL",
+    "root test relocation",
+    "Rabbit success real CI",
+    "final source size",
     "performance",
     "independent acceptance"
   ],
@@ -542,10 +540,15 @@
         "backend/t44/contracts/",
         "backend/t44/resources/review-template.json"
       ]
+    },
+    {
+      "id": "ROLE-backend-INTEGRATION-v1",
+      "archive_path": "agents/backend/INTEGRATION-v1-prompt.md",
+      "reason": "actual GHA/code-map fixes, complete owner integration and full source coverage; no private acceptance contact"
     }
   ],
-  "updated_at": "2026-10-23T09:06:01.834077+00:00",
-  "current_stage": "ROLE-backend-INTEGRATION-v1 checkpoint; test relocation pending",
+  "updated_at": "2026-10-23T09:20:33.108437+00:00",
+  "current_stage": "ROLE-backend-INTEGRATION-v1; actual all38 success; test relocation and CI pending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -569,35 +572,40 @@
     "network_evidence": "agents/backend/application-network-smoke.json",
     "service": {
       "url": "http://127.0.0.1:18080/api/v1",
-      "pid": 9624,
+      "pid": 14985,
       "demo_project_id": 3,
       "demo_iteration_id": 3,
       "demo_task_id": 3,
-      "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository"
+      "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository",
+      "snapshot": "b49a5de"
     },
     "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
     "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
   },
   "integration_v1": {
     "basis": "ef79f04323e05326d0d5a14b44af8c5e0a474690",
-    "result": "312 passed,2 failed(seed rules field),3 skipped(local Rabbit unavailable)",
+    "result": "314 passed,0 failed,3 skipped(local Rabbit unavailable)",
     "coverage_scope": "all backend/t44; no omit",
-    "statements": 2746,
-    "covered": 2317,
-    "line_percent": 84.37727603787327,
-    "branch_inclusive_percent": 81.16,
+    "statements": 2724,
+    "covered": 2391,
+    "line_percent": 87.77533039647577,
+    "branch_inclusive_percent": 85.36443148688046,
     "evidence": [
-      "agents/backend/integration-full-first.log",
-      "agents/backend/integration-full-first.xml",
-      "agents/backend/integration-coverage-first.json"
+      "agents/backend/integration-full-second.log",
+      "agents/backend/integration-full-second.xml",
+      "agents/backend/integration-coverage-second.json",
+      "agents/backend/integration-38-http.json",
+      "agents/backend/integration-live-chain.json",
+      "agents/backend/integration-live-revocation.json"
     ],
     "still_required": [
-      "seed owner fix",
       "root test relocation",
-      "all38 operation manifest",
-      "Rabbit real CI",
+      "Rabbit success real CI",
       "final source size",
+      "performance",
       "independent acceptance"
-    ]
+    ],
+    "all_http_operations": 38,
+    "actual_network_requests": 53
   }
 }
