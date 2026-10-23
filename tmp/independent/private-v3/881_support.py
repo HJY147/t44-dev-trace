@@ -115,9 +115,12 @@ class Recorder:
         except Exception as exc:
             # An infrastructure/driver error is not a product defect.
             item = {'id': case_id, 'status': 'execution_error', 'type': type(exc).__name__}
+            import traceback
+            self.event({'kind': 'private_driver_exception', 'id': case_id, 'traceback': traceback.format_exc()})
         item['elapsed_seconds'] = round(time.monotonic() - start, 6)
         self.results.append(item)
         self.event({'kind': 'case_result', **item})
+        self.active_case = 'between_case_preconditions'
         return item
 
     def finish(self, extra=None):
@@ -352,7 +355,7 @@ class Harness:
     def task(self, f, who='a', deps=None, timing=None, title=None):
         return self.data('createTask', ids=self.ids(f), expected=201, body={
             'title': title or 'Synthetic ' + key(), 'iteration_id': f['i'],
-            'owner_id': self.users[who], 'plan': timing or plan(), 'dependency_task_ids': deps or []})
+            'owner_id': self.users[who], 'plan': timing or plan(), 'dependency_task_ids': deps or []})['task']
 
     def get(self, f, t, actor='m'):
         return self.data('getTask', actor=actor, ids=self.ids(f, t), expected=200)

@@ -98,7 +98,9 @@ def main():
             raise S.Blocked('Frozen semantic UI navigation cannot uniquely bind ' + purpose + '; observed count=' + str(n))
         return locator
     def button(page, names):
-        return one(page.get_by_role('button', name=re.compile(names)), names)
+            match = page.get_by_role('button', name=re.compile(names))
+            if match.count() == 1: return match
+            return one(page.get_by_role('link', name=re.compile(names)), names)
     def field(page, names):
         return one(page.get_by_label(re.compile(names)), names)
     def text(page):
@@ -153,8 +155,11 @@ def main():
             context, page = fresh('m')
             S.check(not page.get_by_role('button', name=re.compile('^登录$|^Login$')).is_visible(), 'Login leaves the login form')
             snapshot(page, 'authenticated landing')
-            button(page, '退出登录|注销|Logout|^退出$').click(); page.wait_for_load_state('networkidle')
+            button(page, '退出登录|注销|Logout|^退出$').click()
+            page.get_by_role('button', name=re.compile('^登录$|^Login$')).wait_for(state='visible', timeout=10000)
+            page.wait_for_load_state('networkidle')
             page.go_back(); page.reload(wait_until='networkidle')
+            page.get_by_role('button', name=re.compile('^登录$|^Login$')).wait_for(state='visible', timeout=10000)
             S.check(page.get_by_role('button', name=re.compile('^登录$|^Login$')).is_visible(),
                     'Logout plus browser history/reload requires authentication')
             context.close()

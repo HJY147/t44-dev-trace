@@ -8,6 +8,117 @@ from pathlib import Path
 import subprocess
 import sys
 
+def offline_wire_selftest(output):
+    """Synthetic harness I/O checks only. All transport is replaced before any call."""
+    import copy
+    import importlib.util
+    import threading
+    from jsonschema import Draft202012Validator, FormatChecker
+    target = Path(output); target.mkdir(mode=0o700, parents=True, exist_ok=True)
+    spec = importlib.util.spec_from_file_location('own_offline_wire_support', HERE / '881_support.py')
+    S = importlib.util.module_from_spec(spec); spec.loader.exec_module(S)
+    h = object.__new__(S.Harness)
+    h.c = {'python': 'offline-python', 'control_cli': 'offline-control'}
+    h.rec = S.Recorder(target, 'offline-harness-wire-only')
+    h.validator_cls = Draft202012Validator; h.formats = FormatChecker()
+    h.base = 'http://offline.invalid/api/v1'; h.tokens = {'m': 'offline-synthetic-session'}
+    h.users = {'m': 1, 'a': 2, 'b': 3, 'r': 4, 'o': 5, 'n': 6}
+    h.credentials = {k: {'username': 'offline_' + k, 'password': 'offline-not-real'} for k in h.users}
+    h.local = threading.local(); h.covered = set()
+    now = '2026-10-24T00:00:00Z'
+    meta = {'request_id': 'offline-result-001', 'server_time': now, 'contract_version': '1.1.0',
+            'replayed': False, 'original_request_id': None}
+    project = {'id': 1, 'name': 'offline-project', 'description': '', 'version': 1,
+               'my_roles': [1], 'created_by': 1, 'created_at': now}
+    iteration = {'id': 2, 'project_id': 1, 'version': 1, 'plan_version': 1, 'plan': {
+        'name': 'offline-iteration', 'planned_start': now, 'planned_end': '2026-10-25T00:00:00Z',
+        'capacity': [{'user_id': 2, 'available_hours': 8}], 'buffer_hours': 1,
+        'delay_contingency': 'offline-contingency'}, 'created_at': now, 'updated_at': now}
+    task = {'id': 3, 'project_id': 1, 'iteration_id': 2, 'title': 'offline-task', 'description': '',
+        'owner_id': 2, 'state': 1, 'version': 1, 'schedule_version': 1, 'delivery_cycle': 1,
+        'review_cycle': 1, 'plan': S.plan(), 'blocked_from_state': None, 'block_reason': None,
+        'responsibility_stage': None, 'latest_review_id': None, 'approved_review_id': None,
+        'approved_assessment_id': None, 'approved_assessment_version': None, 'escalation_count': 0,
+        'created_at': now, 'updated_at': now, 'artifact_revision': None}
+    queue, results = [], []
+    def envelope(data): return {'data': data, 'meta': meta}
+    def enqueue(op, status, data): queue.append((op, status, envelope(data)))
+    class Response:
+        def __init__(self, status, value): self.status, self.value, self.headers = status, value, {'Content-Type': 'application/json'}
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def read(self): return self.value if isinstance(self.value, bytes) else json.dumps(self.value).encode()
+    def fake_open(request, timeout):
+        assert queue, 'Unexpected offline transport call'
+        op, status, value = queue.pop(0)
+        assert request.method == S.OPS[op][0]
+        return Response(status, value)
+    def passed(name): results.append({'id': name, 'status': 'pass'})
+    original_open, original_run = S.urllib.request.urlopen, S.subprocess.run
+    S.urllib.request.urlopen = fake_open
+    class Completed:
+        def __init__(self, code, stdout): self.returncode, self.stdout, self.stderr = code, stdout, ''
+    current = None
+    S.subprocess.run = lambda *args, **kwargs: current
+    try:
+        enqueue('createProject', 201, project)
+        for label, roles in [('a', [2, 3]), ('b', [2]), ('r', [3]), ('n', [1])]:
+            enqueue('addProjectMember', 201, {'project_id': 1, 'user': {'id': h.users[label],
+                'username': h.credentials[label]['username'], 'display_name': 'offline ' + label},
+                'roles': roles, 'version': 1, 'active': True})
+        enqueue('createIteration', 201, iteration)
+        fixture = h.fixture(); assert fixture['p'] == 1 and fixture['i'] == 2
+        enqueue('createTask', 201, {'task': task, 'audit_id': 1})
+        assert h.task(fixture) == task
+        enqueue('getTask', 200, task); assert h.get(fixture, task) == task
+        advanced = copy.deepcopy(task); advanced.update(state=2, version=2)
+        enqueue('transitionTask', 200, {'task': advanced, 'audit_id': 2, 'decision': None})
+        assert h.trans(fixture, task, 1) == advanced
+        passed('factory-project-member-iteration-task-get-transition-envelope-projection')
+        for name, value in [('incorrect-task-envelope', envelope(task)), ('non-json-response', b'<html>invalid</html>')]:
+            queue.append(('createTask', 201, value))
+            try: h.task(fixture)
+            except AssertionError: passed(name + '-rejected')
+            else: raise AssertionError(name + ' was accepted')
+        error = {'code': 'ACTION_FORBIDDEN', 'message': 'offline denied', 'request_id': 'offline-denied',
+                 'audit_id': 1, 'current_version': None, 'current_state': None,
+                 'original_error_code': None, 'violations': []}
+        queue.append(('createTask', 403, error))
+        assert h.request('createTask', ids={'project_id': 1}, body={}, expected=403, code='ACTION_FORBIDDEN') == error
+        passed('declared-error-response-remains-error')
+        for command in ('init-user', 'scheduler-scope', 'fault'):
+            current = Completed(0, ''); value = h.control(command)
+            assert value['exit_code'] == 0 and value['json_receipt_available'] is False
+            passed('explicit-exit-only-' + command)
+        for command in ('init-user', 'scheduler-scope', 'fault', 'audit-sql', 'recover', 'service-credential'):
+            for name, completed in [('nonzero', Completed(7, '{"recovery_completed":true}')),
+                                    ('ambiguous', Completed(0, 'nonempty-not-json'))]:
+                current = completed
+                try: h.control(command)
+                except S.Blocked: passed(name + '-' + command + '-blocked')
+                else: raise AssertionError(name + ' control was accepted')
+        current = Completed(0, '{"recovery_completed":false,"error":"RECOVERY_FAILED"}')
+        assert h.control('recover')['recovery_completed'] is False
+        passed('false-recovery-remains-false')
+        for value in ['{"rows":[{"id":3,"version":1}]}', '{"columns":["id","version"],"rows":[[3,1]]}']:
+            current = Completed(0, value); assert h.sql('SELECT id,version FROM tasks') == [{'id': 3, 'version': 1}]
+            passed('readonly-sql-receipt-projection')
+        current = Completed(0, '{"credential":{"access_token":"offline-wire-synthetic-bearer"}}')
+        h.service(1); assert h.tokens['s'] == 'offline-wire-synthetic-bearer'
+        passed('service-token-required-field-projection')
+        current = Completed(0, '{"session_id":1}')
+        try: h.service(1)
+        except S.Blocked: passed('absent-service-token-blocked')
+        else: raise AssertionError('Absent token was accepted')
+    finally:
+        S.urllib.request.urlopen, S.subprocess.run = original_open, original_run
+        (target / 'offline-wire-selftest.json').write_text(json.dumps({'scope': 'Independent harness synthetic wire only',
+            'network_used': False, 'application_imports': False, 'actual_SUT_cases': 0, 'results': results}, indent=2) + '\n')
+        (target / 'synthetic-wire-samples.json').write_text(json.dumps({'project': envelope(project),
+            'iteration': envelope(iteration), 'task_mutation': envelope({'task': task, 'audit_id': 1}),
+            'task_read': envelope(task)}, indent=2) + '\n')
+    return {'offline_wire_checks_passed': len(results), 'actual_SUT_cases': 0, 'network_used': False}
+
 HERE = Path(__file__).resolve().parent
 
 def digest(path):
@@ -75,7 +186,9 @@ def decode_trace(path, output):
                 (target / ('browser-' + str(number) + '.png')).write_bytes(value)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 4 and sys.argv[1] == '--decode-private-trace':
+    if len(sys.argv) == 3 and sys.argv[1] == '--offline-wire-selftest':
+        print(json.dumps(offline_wire_selftest(sys.argv[2]), sort_keys=True))
+    elif len(sys.argv) == 4 and sys.argv[1] == '--decode-private-trace':
         decode_trace(sys.argv[2], sys.argv[3])
     else:
         print(json.dumps(verify(), sort_keys=True))
