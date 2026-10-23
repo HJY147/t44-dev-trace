@@ -1,6 +1,6 @@
 {
   "original_case_freeze": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
-  "at_utc": "2026-10-23T21:08:45.712783+00:00",
+  "at_utc": "2026-10-23T21:14:57.341072+00:00",
   "kind": "mechanical environment transport adaptation after exact SUT binding",
   "original_browser_business_predicates_unchanged": true,
   "browser_predicate_count": 15,
@@ -12,5 +12,39 @@
     "Independent SELECT-only local connection restricted to exact t44_ui_v3, never DB write permission"
   ],
   "original_H_preserved": true,
-  "business_assertions_or_expected_errors_changed": false
+  "business_assertions_or_expected_errors_changed": false,
+  "mechanical_revision": 2,
+  "previous_mechanical_commit": "c5182af0258ccf7c60041bcc5734d37f9cded7d6",
+  "unchanged_business_file_hashes": {
+    "882_http.py": "a246c9d70ab92cd29daffc3ca83fb7d082a72ec831ec53236a369851d08116b3",
+    "876_load.py": "02808329c5211b32c55697d8ba70ae1ab154c812f2eaba244d3ce968963f7251",
+    "879_formal_transition.py": "ad2c1364744520c2d2e939156c4c3407dc01bb60d3881f76023a26a5085428a5",
+    "878_formal_contract.py": "5c09c5d1be6ccf2ebe995701aae1a4137fa29b7cf4ffca8d098488c95d5610ee",
+    "877_formal_escalation.py": "16fd3b83a911ccb8368a8a22b3be69d2e1aa5223149d7f60cf6d9b3dea8343cd"
+  },
+  "unchanged_support_business_function_names": [
+    "request",
+    "valid",
+    "fixture",
+    "task",
+    "trans",
+    "iteration_change",
+    "review_body",
+    "to_review",
+    "to_ready",
+    "assessment_body",
+    "assessed",
+    "delivered",
+    "rolled",
+    "unchanged",
+    "audit",
+    "service"
+  ],
+  "browser_business_predicates_unchanged": true,
+  "original_hosted_blocker_run_id": 40024056400,
+  "additional_changes": [
+    "Check control return code before parsing; preserve exit/byte-count observations; only documented non-JSON commands may yield explicit exit-only receipt; ambiguous nonempty output/nonzero and required JSON remain blocked",
+    "Wait for real login form disappearance before unchanged predicate; native select binding and actual logout label; original UI readiness diagnostic retained",
+    "Selected-case execution orchestration excludes already completed UI scope; no predicate change"
+  ]
 }

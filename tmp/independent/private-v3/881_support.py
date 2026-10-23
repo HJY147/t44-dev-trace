@@ -100,6 +100,10 @@ class Recorder:
 
     def run(self, case_id, fn):
         self.active_case = case_id
+        if getattr(self, 'case_filter', None) and case_id not in self.case_filter:
+            item = {'id': case_id, 'status': 'not_executed', 'reason': 'Bounded continuation excludes previously completed scope'}
+            self.results.append(item)
+            return item
         start = time.monotonic()
         try:
             fn()
@@ -145,6 +149,7 @@ class Harness:
         check(re.fullmatch(r'[0-9a-f]{40}', sha), 'Context requires exact product SHA')
         # Never infer or select the local HEAD as product version.
         self.rec = Recorder(self.c['harness_output_directory'], group)
+        self.rec.case_filter = self.c.get('selected_case_ids')
         global _OBSERVER
         _OBSERVER = self.rec
         self.rec.event({'kind': 'binding', 'product_source_sha': sha,
@@ -171,13 +176,19 @@ class Harness:
             env['T44_ACCEPTANCE_STATE'] = self.c['control_state']
         p = subprocess.run(argv, input=stdin, text=True, capture_output=True,
                            env=env, timeout=180)
+        self.rec.event({'kind': 'control_io_boundary', 'command': args[0], 'exit_code': p.returncode,
+                        'stdout_bytes': len(p.stdout.encode()), 'stderr_bytes': len(p.stderr.encode())})
+        if p.returncode:
+            raise Blocked('Neutral control failed with actual nonzero exit: ' + str(args[0]) + ':' + str(p.returncode))
         try:
             value = json.loads(p.stdout)
         except Exception:
+            if not p.stdout.strip() and args[0] in ('init-user', 'scheduler-scope', 'fault'):
+                # README does not promise JSON for these commands. This is an exact exit receipt,
+                # not a fabricated operation/business result. Account identity is separately
+                # established by real login; recovery/SQL/service-token keep strict JSON boundaries.
+                return {'command': args[0], 'exit_code': 0, 'json_receipt_available': False}
             raise Blocked('Control did not return the documented JSON receipt: ' + str(args[0]))
-        if p.returncode:
-            self.rec.event({'kind': 'control_failure', 'command': args[0], 'exit': p.returncode})
-            raise Blocked('Neutral control failed: ' + str(args[0]))
         return value
 
     def sql(self, query):

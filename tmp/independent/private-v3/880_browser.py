@@ -128,9 +128,16 @@ def main():
             field(page, '用户名|账号|Username').fill(h.credentials[actor]['username'])
             field(page, '密码|Password').fill(h.credentials[actor]['password'])
             button(page, '^登录$|^Login$').click()
+            page.get_by_role('button', name=re.compile('^登录$|^Login$')).wait_for(state='hidden', timeout=10000)
             page.wait_for_load_state('networkidle')
             return context, page
         def open_project(page, name):
+            native = page.locator('select').filter(has=page.get_by_role('option', name=name, exact=True))
+            if native.count() == 1:
+                native.select_option(label=name)
+                page.wait_for_timeout(100)
+                page.wait_for_load_state('networkidle')
+                return
             match = page.get_by_text(name, exact=True)
             if match.count() == 1:
                 match.click()
@@ -146,7 +153,7 @@ def main():
             context, page = fresh('m')
             S.check(not page.get_by_role('button', name=re.compile('^登录$|^Login$')).is_visible(), 'Login leaves the login form')
             snapshot(page, 'authenticated landing')
-            button(page, '退出登录|注销|Logout').click(); page.wait_for_load_state('networkidle')
+            button(page, '退出登录|注销|Logout|^退出$').click(); page.wait_for_load_state('networkidle')
             page.go_back(); page.reload(wait_until='networkidle')
             S.check(page.get_by_role('button', name=re.compile('^登录$|^Login$')).is_visible(),
                     'Logout plus browser history/reload requires authentication')
