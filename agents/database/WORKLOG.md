@@ -96,3 +96,10 @@
 - 本树显式暂存20份本岗文件并核对精确清单，git diff --cached --check退出0；实际产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc，footer Agent-Role database / Prompt-Ref ROLE-database-FOUNDATION-v1 / Refs #4。
 - git push -u origin codex/database-runtime实际成功；GitHub连接器用本岗foundation-pr-body.md同内容创建draft PR https://github.com/HJY147/t44-dev-trace/pull/17 ，base codex/team-bootstrap；attach_artifact实际成功。读回draft=true/merged=false/mergeable=true，不能据此声称审核通过。
 - 创建后本树status为空、暂存区为空、本地/远端SHA一致；本次补记只更新日志/报告/handoff，无产品变化，不重复已通过测试。完整最终提交SHA另交总协调与文档岗。
+
+## ROLE-database-PERSISTENCE-v1阶段1
+
+- 用户D004实际采用Q002后，按派工先无冲突merge ae60dc3并读冻结manifest/AGENTS；本轮已获18表完整实现及迁移授权，之前foundation限制保留为当时事实。
+- 与backend数分钟内确定实际RowsGateway/Pred/codec签名并实现：冻结18表226列Core元数据由打包冻结SQL/摘要构造；同名表/列白名单，查询/锁/insert生成ID/CAS条件update/delete/count/savepoint及完整错误分类。
+- 实际本地模块测试21 passed in0.26s；仅SQLite可移植夹具与mock，MySQL-only CHECK保留于生产元数据/原DDL，未假称SQLite验证MySQL CHECK或FOR UPDATE。阶段1暂未完成migration/seed/outbox专用操作，不报完整完成。
+- Ruff导入自动格式调整后按固定风格重排；未修改共享依赖锁/API/其他岗文件，未联系独立测试。准备先提交本阶段供backend直接互接，再继续其余能力。

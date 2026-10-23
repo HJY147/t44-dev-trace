@@ -7,7 +7,7 @@ from sqlalchemy import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from .errors import CommitUncertain, PersistenceUnavailable, TransactionStateError
-from .gateway import CoreGateway, TableBinding
+from .rows import RowsGateway
 
 
 class SqlAlchemyUnitOfWork:
@@ -16,6 +16,7 @@ class SqlAlchemyUnitOfWork:
         self._session: Session | None = None
         self._state = "new"
         self._rollback_only = False
+        self._gateway = RowsGateway(self._require_active, self._mark_failed)
 
     def __enter__(self) -> "SqlAlchemyUnitOfWork":
         if self._state != "new":
@@ -39,9 +40,10 @@ class SqlAlchemyUnitOfWork:
             raise TransactionStateError("Transaction requires rollback")
         return self._session
 
-    def gateway(self, binding: TableBinding) -> CoreGateway:
+    @property
+    def gateway(self) -> RowsGateway:
         self._require_active()
-        return CoreGateway(binding, self._require_active, self._mark_failed)
+        return self._gateway
 
     def _mark_failed(self) -> None:
         self._rollback_only = True
