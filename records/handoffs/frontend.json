@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "CSS真冗余清理、完整后端七态回归checkpoint",
-  "implementation_status": "业务前端已实现；迭代嵌套plan/重放提示修复，自测与真实通知回归分开",
+  "stage": "完整业务前端收尾完成：正式缺陷、CSS清理与完整后端通知回归",
+  "implementation_status": "业务前端已实现；24模块测试、真实七态/通知读处理分离/升级规则历史/审计验证完成；不代表独立验收或性能",
   "artifacts": [
     {
       "path": "frontend/",
@@ -48,8 +48,8 @@
       "status": "冻结锁安装"
     },
     {
-      "path": "agents/frontend/application-real-browser.mjs",
-      "status": "真实浏览器流程，可读环境变量凭据而不记录凭据"
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "用户统一迁入tmp；真实七态脚本，历史结果保留agents"
     },
     {
       "path": "agents/frontend/application-real-browser-result.json",
@@ -98,6 +98,26 @@
     {
       "path": "tmp/frontend/984_application-real-browser.mjs",
       "status": "迁移后的完整七态脚本，支持新证据输出目录"
+    },
+    {
+      "path": "agents/frontend/integration-notifications/",
+      "status": "真实read/handling及三次权威GET业务断言通过，随后即时resize失败保留"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-final/",
+      "status": "只读首轮多个drawer严格选择器失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-settled/",
+      "status": "稳定视口无溢出、折叠details文本断言失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-complete/",
+      "status": "最终114HTTP只读全成功，手机已处理截图，零浏览器/console错误"
+    },
+    {
+      "path": "agents/frontend/integration-browser/escalation-preparation.json",
+      "status": "仅新task20创建event173的真实202公共响应，无Token"
     }
   ],
   "interfaces": [
@@ -118,14 +138,14 @@
     },
     {
       "peer": "messaging",
-      "status": "UI已接契约、夹具已测，真实后端503待owner",
+      "status": "完整后端真实GET/read/handling已验证",
       "inputs": [
         "个人通知分页、已读、处理说明与证据"
       ],
       "outputs": [
         "API权威已读/处理状态"
       ],
-      "boundary": "阅读与处理分开，不自动解除任务阻塞；后续接好再回归"
+      "boundary": "新task20/event173/notification3，read后仍未处理，显式handling后完成；三次GET任务state1/version2；不重置旧项，worker由根执行，非Rabbit成功链。"
     },
     {
       "peer": "deployment",
@@ -240,29 +260,43 @@
     {
       "command": "pnpm test:coverage; pnpm build (separate processes)",
       "result": "24/24，完整src行92.19%、分支86.76%、函数83.78%，类型/构建通过"
+    },
+    {
+      "command": "958 PHASE=prepare; PHASE=escalate (separate runs)",
+      "result": "真UI创建task20/version1/schedule1；内部202创建event173；NodeResponse.ok误用导致记录后脚本exit1，未重试写，失败保留"
+    },
+    {
+      "command": "958 PHASE=final NOTIFICATION_TASK_ID=20",
+      "result": "通知3真实read/handling200，三次权威task state1/version2；随后即时resize断言失败，原证据保留"
+    },
+    {
+      "command": "958 PHASE=resume NOTIFICATION_TASK_ID=20, new output directory",
+      "result": "114HTTP全成功，pageerror/console0，稳定390无溢出、详情接收人/规则/审计通过；不重放写"
+    },
+    {
+      "command": "stop own Vite5173 via Ctrl-C",
+      "result": "预期exit130；Chrome均关闭，通知根可开始性能静默窗口"
     }
   ],
   "results": [
-    "完整业务UI和统一客户端已实现",
-    "21模块测试通过，19源文件全分母行92.21%",
-    "真实MySQL浏览器七态、改期依赖、评审评估及审计通过",
-    "1440/390截图与手机卡片通过",
-    "真实通知/升级503如实呈现",
-    "正式UI两缺陷修复；24项与全src行92.19%",
-    "完整后端七态282HTTP再次通过，pageerror0，预期403一条",
-    "真冗余83CSS删除，styles297→214；前后1440/390七页与rules全200",
-    "C-P1真实UI嵌套迭代容量8→12与名称验证"
+    "完整业务UI与同源客户端已实现",
+    "正式C-P1/C-P2修复；24项通过；19全src行92.19%、分支86.76%、函数83.78%",
+    "更新完整后端真实七态282 HTTP通过，pageerror0，只有预期403资源console",
+    "83条核实未用CSS删除(297→214行)，桌面/手机任务与手机通知PNG一致，业务/a11y保留",
+    "新通知3真实read后仍未处理→显式handling；3次GET task20 state1/version2不变",
+    "通知写运行后响应式同步断言失败保留；只读最终114HTTP全成功/零console，稳定390无横溢出"
   ],
   "unverified": [
     "覆盖率不代表断言完备；main/router仍0计入分母",
     "未做正式400并发/性能、全面安全或独立验收",
     "手机为headless viewport，非真机",
     "生产构建有约823kB chunk体积提示",
-    "通知GET/规则/历史已200；原未读通知被处理，正准备新任务/事件做真实read/handle，不重置旧记录"
+    "原写运行在业务断言之后的即时resize检查失败；最终只读复查通过，二者分开留证",
+    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证"
   ],
   "questions": [
-    "消息/升级owner接好后需另一次真实页面回归。",
-    "PR14保留既有草稿，分支基于6afd整合；总协调集成时核对base继承的其他岗位历史。"
+    "全产品生产代码行数由总协调统一统计；本岗真实删除83未用规则，未改计数范围。",
+    "审核959复验由owner负责；本岗未改其断言，不设置审核通过。"
   ],
   "prompt_refs": [
     {
@@ -323,13 +357,14 @@
       "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
     }
   ],
-  "updated_at": "2026-10-23T18:00:09+08:00",
+  "updated_at": "2026-10-23T18:11:07+08:00",
   "delivery": {
     "branch": "codex/frontend-app",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
     "base": "codex/team-bootstrap",
     "draft": true,
-    "basis_commit": "6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
-    "status": "本轮应用阶段最终SHA以PR HEAD和Git提交记录核对"
+    "basis_commit": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+    "status": "本轮最终提交见PR14 HEAD；只COMMENT，无APPROVE；已关闭本岗服务/浏览器",
+    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc"
   }
 }
