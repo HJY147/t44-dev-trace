@@ -110,3 +110,12 @@
 - 首脚本额外凭据键导致构造前TypeError，修为仅app连接键allowlist；从未使用root凭据、未输出连接串。首次真实测试3失败26通过（CHECK驱动错误分类），保留persistence-mysql-tests-run1.log，修为兼容PyMySQL3819 OperationalError后29通过。
 - 已修backend实际反馈的tasks循环FK主键生成：id显式autoincrement=ignore_fk；SQLite与MySQL真实insert/get返回整数ID。hash-only初始化已实现合法Argon2id校验，非法输入通过独立新UoW持久脱敏拒绝审计；首次此入口真库验证通过。
 - 证据：persistence-mysql-migration-run1.json、persistence-mysql-tests-run1.log、run2.log；Ruff format与check退出0。此阶段尚未宣称outbox/scan/seed、API联调、MQ、独立验收完成。
+
+## ROLE-database-PERSISTENCE-v1：供消息/调度的阶段2实际交接
+- 已实现OutboxStore claim/get/confirm/retry/consume/fallback、ScanStore start/get/recoverable/page/checkpoint及可选IdempotencyStore原语，精确签名/返回与事务边界在产品README。
+- 真MySQL新增同key并发唯一/租约owner换代与最终response_request_id、扫描并发UUID/新Store重启游标恢复、outbox租约过期/retry/confirm、consume/fallback并发仅1通知且迟到confirm失效。run3为33通过；格式/显式所有权更新修复后针对性run4仍33通过，Ruff check退出0。
+- 原执行失败：第一次追加测试apply_patch上下文与已格式化文件不同，未写入，随后按实际文件重做patch成功；无测试结果或代码失败被伪报通过。首次构造TypeError/真库3819分类失败记录均保留。
+- 按总协调实际要求先交可运行Store并释放槽位，不以报告等待全部seed。seed草稿移至本岗agents/database/drafts/（非产品入口，未执行，需补代表状态/轮次一致性），不称整体任务完成。
+- 实际Issue4/3 body-file评论URL分别6360580838/6360581522；未冒称消息/调度本人已确认。prompt归档本轮实际完整任务及阶段收口原文。
+- 用户D004选择已生效；旧日志Q002待回复保留为当时事实，当前报告/交接已更新。未触独立testing资料，不发审核成功。
+- 总协调与backend实际指出CI只给DATABASE_URL+T44_DATABASE=t44_ci且拒skip，已修改本岗fixture双环境、显式数据库一致/隔离库限制、CI缺配置fail及integration marker。本机路径须T44_TEST_DATABASE=t44_test。run5全33通过；另外用真实本机库但完全同CI环境变量入口12通过、无skip，保存persistence-ci-env-test.log，不冒充GitHub hosted CI结果。

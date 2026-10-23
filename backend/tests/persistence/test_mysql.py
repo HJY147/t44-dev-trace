@@ -1,4 +1,4 @@
-"""Opt-in real MySQL 8.4 module checks, restricted to the dedicated t44_test schema."""
+"""Real MySQL 8.4 module checks in an explicitly selected CI/local project test schema."""
 
 import hashlib
 import json
@@ -12,6 +12,7 @@ from uuid import uuid4
 import pytest
 from argon2 import PasswordHasher
 from sqlalchemy import text
+from sqlalchemy.engine import make_url
 from t44.persistence import (
     MySQLSettings,
     PersistenceIntegrityError,
@@ -20,18 +21,43 @@ from t44.persistence import (
 )
 from t44.persistence.accounts import PasswordHashRejected, initialize_user
 from t44.persistence.codecs import utc_now
+from t44.persistence.delivery import OutboxStore
+from t44.persistence.errors import StatementRejected
+from t44.persistence.idempotency import IdempotencyStore
 from t44.persistence.migrations import migrate
+from t44.persistence.scans import ScanStore
+
+pytestmark = pytest.mark.integration
 
 
 @pytest.fixture(scope="module")
 def mysql():
-    path = os.environ.get("T44_TEST_CREDENTIALS")
-    if not path:
-        pytest.skip("Set T44_TEST_CREDENTIALS for the dedicated real MySQL project schema")
-    secret = json.loads(Path(path).read_text())
-    app = {k: secret[k] for k in ("host", "port", "username", "password")}
-    engine = create_mysql_engine(MySQLSettings(database="t44_test", **app))
-    migrate(engine, expected_database="t44_test")
+    if source := os.environ.get("DATABASE_URL"):
+        url = make_url(source)
+        database = os.environ.get("T44_DATABASE")
+        if (
+            url.drivername != "mysql+pymysql"
+            or database != url.database
+            or database not in ("t44_ci", "t44_test")
+        ):
+            pytest.fail(
+                "DATABASE_URL requires the matching explicit disposable project test database"
+            )
+        app = dict(
+            host=url.host, port=url.port or 3306, username=url.username, password=url.password
+        )
+    elif path := os.environ.get("T44_TEST_CREDENTIALS"):
+        database = os.environ.get("T44_TEST_DATABASE")
+        if database != "t44_test":
+            pytest.fail("Local persistence checks require explicit T44_TEST_DATABASE=t44_test")
+        secret = json.loads(Path(path).read_text())
+        app = {k: secret[k] for k in ("host", "port", "username", "password")}
+    elif os.environ.get("CI"):
+        pytest.fail("Real MySQL CI configuration is missing; refusing to skip")
+    else:
+        pytest.skip("Set DATABASE_URL+T44_DATABASE or local app credentials+T44_TEST_DATABASE")
+    engine = create_mysql_engine(MySQLSettings(database=database, **app))
+    migrate(engine, expected_database=database)
     yield engine, SqlAlchemyUnitOfWorkFactory(engine)
     engine.dispose()
 
@@ -99,7 +125,7 @@ def fixture(mysql):
 
 def test_real_repeat_migration_utc_modes_and_core_shapes(mysql):
     engine, _ = mysql
-    result = migrate(engine, expected_database="t44_test")
+    result = migrate(engine, expected_database=engine.url.database)
     assert result["already_applied"] and result["passed"]
     assert (result["tables"], result["columns"]) == (18, 226)
     with engine.connect() as c:
@@ -196,3 +222,162 @@ def test_real_processing_json_null_and_unique_claim(mysql, fixture):
             ).scalar_one()
             == 1
         )
+
+
+def test_real_concurrent_claim_takeover_and_result_request_id(mysql, fixture):
+    _, factory = mysql
+    store, key, now = IdempotencyStore(factory), uuid4().hex, utc_now()
+    args = dict(
+        actor_kind=1,
+        actor_id=fixture["user"],
+        operation_id="claimFixture",
+        key=key,
+        request_hash=hashlib.sha256(b"same-payload").digest(),
+        now=now,
+        lease_seconds=1,
+    )
+    barrier = Barrier(2)
+
+    def claim():
+        barrier.wait(timeout=10)
+        return store.claim(**args)
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        results = list(pool.map(lambda _: claim(), range(2)))
+    assert sorted(r["disposition"] for r in results) == ["claimed", "in_progress"]
+    original = next(r["row"] for r in results if r["disposition"] == "claimed")
+    later = now + timedelta(seconds=2)
+    recovered = store.claim(**{**args, "now": later})["row"]
+    assert recovered["owner_token"] != original["owner_token"]
+    with factory() as uow:
+        with pytest.raises(StatementRejected):
+            store.lock_owner(uow.gateway, original["id"], original["owner_token"], now=later)
+        store.complete(
+            uow.gateway,
+            recovered["id"],
+            recovered["owner_token"],
+            now=later,
+            response_status=202,
+            response_body={"data": {"created": True}},
+            response_request_id="final-result-request",
+        )
+    replay = store.claim(**args)
+    assert replay["disposition"] == "replay"
+    assert replay["row"]["response_request_id"] == "final-result-request"
+    assert store.claim(**{**args, "request_hash": b"x" * 32})["disposition"] == "mismatch"
+
+
+def test_real_durable_scan_concurrent_start_and_cursor_recovery(mysql, fixture):
+    _, factory = mysql
+    store, run = ScanStore(factory), uuid4()
+    snapshot = {"rules": [{"level": 1, "start_offset_seconds": -86400}]}
+    args = dict(
+        rule_version=1,
+        rule_snapshot=snapshot,
+        rule_hash=hashlib.sha256(b"fixture-rule").digest(),
+        cutoff_at=utc_now() + timedelta(days=3),
+    )
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        ids = list(pool.map(lambda _: store.start(run, **args)["id"], range(2)))
+    assert ids[0] == ids[1]
+    assert fixture["task"] in [r["id"] for r in store.page(run, limit=1000)]
+    store.checkpoint(run, last_task_id=fixture["task"], scanned_delta=1, created_delta=1)
+    fresh = ScanStore(factory)
+    row = fresh.get(run)
+    assert row["last_task_id"] == fixture["task"] and row["created_count"] == 1
+    assert (
+        fresh.checkpoint(run, last_task_id=fixture["task"], created_delta=100)["created_count"] == 1
+    )
+    with pytest.raises(StatementRejected):
+        fresh.checkpoint(run, last_task_id=fixture["task"] - 1)
+    assert fresh.checkpoint(run, last_task_id=fixture["task"], finished=True)["status"] == 2
+    assert fresh.page(run) == []
+
+
+def escalation_fixture(factory, fixture):
+    now = utc_now()
+    run = ScanStore(factory).start(
+        uuid4(), rule_version=1, rule_snapshot={"rules": []}, rule_hash=b"r" * 32
+    )
+    with factory() as uow:
+        g = uow.gateway
+        task = g.get("tasks", fixture["task"])
+        task.pop("id")
+        task.update(title="synthetic notification fixture", escalation_count=1)
+        tid = g.insert("tasks", task)
+        event = g.insert(
+            "outbox_events",
+            dict(
+                event_type=2,
+                schema_version=1,
+                project_id=fixture["project"],
+                task_id=tid,
+                payload={"title": "合成升级", "message": "模块测试数据"},
+                recipients=[fixture["user"]],
+                status=1,
+                attempts=0,
+                next_attempt_at=now,
+                created_at=now,
+                updated_at=now,
+            ),
+        )
+        g.insert(
+            "escalation_events",
+            dict(
+                project_id=fixture["project"],
+                task_id=tid,
+                schedule_version=1,
+                level=1,
+                rule_version=1,
+                rule_snapshot={"rules": []},
+                rule_hash=b"r" * 32,
+                scan_run_id=run["id"],
+                planned_end=task["planned_end"],
+                observed_at=now,
+                event_id=event,
+            ),
+        )
+    return event
+
+
+def test_real_outbox_lease_expiry_retry_and_confirm(mysql, fixture):
+    _, factory = mysql
+    event = escalation_fixture(factory, fixture)
+    store, now = OutboxStore(factory), utc_now()
+    claimed = next(e for e in store.claim(now=now, limit=1000, lease_seconds=1) if e["id"] == event)
+    recovered = next(
+        e for e in store.claim(now=now + timedelta(seconds=2), limit=1000) if e["id"] == event
+    )
+    assert claimed["lease_token"] != recovered["lease_token"]
+    assert not store.confirm(event, claimed["lease_token"])
+    assert store.retry(event, recovered["lease_token"], delay_seconds=0)
+    again = next(e for e in store.claim(limit=1000) if e["id"] == event)
+    assert store.confirm(event, again["lease_token"])
+    assert store.consume(event)["created"] == 1
+    assert store.consume(event)["created"] == 0
+
+
+def test_real_fallback_races_consume_and_late_confirm_is_fenced(mysql, fixture):
+    _, factory = mysql
+    event = escalation_fixture(factory, fixture)
+    store = OutboxStore(factory)
+    claimed = next(e for e in store.claim(limit=1000) if e["id"] == event)
+    barrier = Barrier(2)
+
+    def consume():
+        barrier.wait(timeout=10)
+        return store.consume(event)
+
+    def fallback():
+        barrier.wait(timeout=10)
+        return store.fallback(event, lease_token=claimed["lease_token"])
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        futures = [pool.submit(consume), pool.submit(fallback)]
+        results = [f.result(timeout=10) for f in futures]
+    assert sum(r["created"] for r in results) == 1
+    assert not store.confirm(event, claimed["lease_token"])
+    assert store.consume(event)["created"] == 0
+    with factory() as uow:
+        assert uow.gateway.get("outbox_events", event)["status"] == 4
+        assert uow.gateway.count("notifications", {"event_id": event}) == 1

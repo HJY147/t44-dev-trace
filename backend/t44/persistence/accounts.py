@@ -6,7 +6,7 @@ from argon2 import extract_parameters
 from argon2.low_level import Type
 
 from .codecs import utc_now
-from .errors import PersistenceUnavailable
+from .errors import CommitUncertain, PersistenceUnavailable
 
 
 class PasswordHashRejected(ValueError):
@@ -59,6 +59,8 @@ def initialize_user(
                         created_at=utc_now(),
                     ),
                 )
+        except CommitUncertain:
+            raise
         except Exception:
             raise AuditUnavailable("Password-hash rejection audit could not persist") from None
         raise PasswordHashRejected("Only a valid Argon2id password hash may be persisted")
