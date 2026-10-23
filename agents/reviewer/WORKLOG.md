@@ -170,3 +170,5 @@
 - 公开开发27/27、310/334行92.81、typecheck及最终build原件已核，本岗未重跑，不写成独立/学生手测。原refined关闭越界/verified隐藏选择器失败及过渡/CDP中间局限保持；最终build大chunk告警未压制。
 - 限定UI差异无新增实质阻断；原initial文本true在截图可见且contract源未改，留待owner新SHA。完整焦点陷阱/返回焦点/读屏/其他引擎未运行；整体独立/性能/规模与合并门禁仍未通过。报告八段十项，责任岗修复，本岗无产品改码。
 - PR首次插件GET为56f588旧head，目标不在PR，merge-base exit1，通知root后未尝试发布；root集成push后再次读回8be64056f1733eb99938aa3b7d9b1b22a53677a6，目标祖先exit0且840父精确326。仅准备绑定840的COMMENT；实际发布/自有commit/push回执随后补记，不发reviewer/stage成功、APPROVE或合并。
+
+- 实际阶段提交d8bba16a0e273e121d39ea9c3b58594521a39eac，自有分支push exit0；GitHub插件COMMENT成功review5632356314，list readback为COMMENTED/正文一致；插件未返回commit_id，故用gh只读GET特定review补核：commit_id精确840、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314。回执github-comment.json。无状态写入/APPROVE/合并。补归档时一次apply_patch同路径Delete/Add被拒（未改文件），改Update成功，不影响已发布正文或审核结论。

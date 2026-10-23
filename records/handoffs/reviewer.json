@@ -61,7 +61,8 @@
     "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
     "agents/reviewer/evidence/warm-glass/verification.json",
     "agents/reviewer/evidence/warm-glass/pr-before-comment.json",
-    "agents/reviewer/github/warm-glass-840b1a8-comment.md"
+    "agents/reviewer/github/warm-glass-840b1a8-comment.md",
+    "agents/reviewer/evidence/warm-glass/github-comment.json"
   ],
   "interfaces": [
     {
@@ -835,11 +836,18 @@
     "new_material_blockers": [],
     "existing_issue": "initial string value true; future owner SHA needed",
     "github": {
-      "comment_state": "prepared; actual receipt to follow",
+      "comment_state": "COMMENTED",
       "status_mutations": [],
       "no_success_status_published": true,
       "approve": false,
-      "merged": false
+      "merged": false,
+      "review_id": 5632356314,
+      "review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314",
+      "commit_id": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+      "exact_body_readback": true,
+      "evidence": "agents/reviewer/evidence/warm-glass/github-comment.json",
+      "audit_commit": "d8bba16a0e273e121d39ea9c3b58594521a39eac",
+      "push_exit": 0
     }
   }
 }

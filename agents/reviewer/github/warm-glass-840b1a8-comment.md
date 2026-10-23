@@ -14,4 +14,4 @@ Published-Development-Evidence: 63519c2b114bb4cb1c98dcc43e0f2358e65d0892
 
 原空文本显示true仍保留，840未修改其相关业务逻辑，不能算CSS新增，也未在本报告关闭；后续新SHA修复另审。独立验收、正式性能、源码规模与整体门禁仍未通过。未读取独立未发布材料、访问5175/18084或读取账号；不发布reviewer/stage success、不APPROVE、不合并main。同账号岗位流程隔离不伪称独立真人。
 
-[八段/十项完整报告](https://github.com/HJY147/t44-dev-trace/blob/codex/review-warm-glass/reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md)；[摘要复核与截图hash](https://github.com/HJY147/t44-dev-trace/blob/codex/review-warm-glass/agents/reviewer/evidence/warm-glass/verification.json)。发布前PR读回8be64056f1733eb99938aa3b7d9b1b22a53677a6，目标840已在其祖先中；本结论只绑定所列范围和版本。
+[八段/十项完整报告](https://github.com/HJY147/t44-dev-trace/blob/d8bba16a0e273e121d39ea9c3b58594521a39eac/reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md)；[摘要复核与截图hash](https://github.com/HJY147/t44-dev-trace/blob/d8bba16a0e273e121d39ea9c3b58594521a39eac/agents/reviewer/evidence/warm-glass/verification.json)。发布前PR读回8be64056f1733eb99938aa3b7d9b1b22a53677a6，目标840已在其祖先中；本结论只绑定所列范围和版本。
