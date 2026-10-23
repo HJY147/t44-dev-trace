@@ -34,3 +34,5 @@ A=(pool_size5,max_overflow10)，B=(15,0)，每段一个engine/一个worker，因
 955复用原控制器、客户端、FastAPI透明包装和server收尾，新增固定pool-abba分支与阶段摘要，不新增编号/应用模块。warmup/steady各32个客户端先以Barrier就绪再开始1/4秒时钟，active wall与客户端整体CPU/wall分别保留；吞吐以实际active wall（含请求完成排空）为分母。新mode拒绝seconds/concurrency等覆盖，A/B标签只允许timings子进程本地设置副本。
 
 控制器过程内110秒SIGALRM中断活动并留下10秒finally清理；子client timeout、server自计时/TERM/有界wait/必要kill后查端口，任何失败保留。开始前只核当前app可见PROCESSLIST中的本库连接，不宣称跨账号全局无连接；root执行窗口还须协调没有其它运行者。fixture0600、各相位输入file hash与工具提交一致，不输出内容；实际SQLA池源hash、生产bc5字节及资源摘要也有运行拒绝守卫。当前仅AST/Ruff/字节静态检查，不是实测连接行为或HTTP。
+
+执行窗口准入后（仍先提交源）：root已明确独占本机开发负载，native等待本岗结束；仅补统一app可见本库连接计数helper供每段前及最终后检，不扩权限或查询别库。最终后检在控制器截止内，错误单独保留并使整次失败。22:35原fixture继续使用，无必要不刷新；所有payload保持原hash。

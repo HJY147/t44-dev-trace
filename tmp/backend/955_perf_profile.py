@@ -34,6 +34,25 @@ def pool_settings(settings, label):
     return replace(settings, pool_size=size, max_overflow=overflow)
 
 
+def profile_connections():
+    from sqlalchemy import text
+    from t44.persistence import create_mysql_engine
+    from t44.settings import Settings
+
+    probe = create_mysql_engine(Settings.from_env().mysql_settings())
+    try:
+        with probe.connect() as connection:
+            return connection.execute(
+                text(
+                    "SELECT COUNT(*) FROM information_schema.PROCESSLIST "
+                    "WHERE DB=:database AND ID<>CONNECTION_ID()"
+                ),
+                {"database": "t44_profile"},
+            ).scalar_one()
+    finally:
+        probe.dispose()
+
+
 def orchestrate(args, source_sha, sources):
     """Own each child lifecycle in one invocation; never depend on another tool call."""
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -120,32 +139,17 @@ def orchestrate(args, source_sha, sources):
             except ConnectionRefusedError:
                 pass
             if pool_abba:
-                from sqlalchemy import text
-                from t44.persistence import create_mysql_engine
-                from t44.settings import Settings
-
-                probe = create_mysql_engine(Settings.from_env().mysql_settings())
-                try:
-                    with probe.connect() as connection:
-                        others = connection.execute(
-                            text(
-                                "SELECT COUNT(*) FROM information_schema.PROCESSLIST "
-                                "WHERE DB=:database AND ID<>CONNECTION_ID()"
-                            ),
-                            {"database": "t44_profile"},
-                        ).scalar_one()
-                    receipt.setdefault("preflight", []).append(
-                        {
-                            "segment": mode,
-                            "other_profile_connections": others,
-                            "port_free": True,
-                            "visibility": "current app-visible PROCESSLIST; not cross-account proof",
-                        }
-                    )
-                    if others:
-                        raise RuntimeError("Another profile connection is active")
-                finally:
-                    probe.dispose()
+                others = profile_connections()
+                receipt.setdefault("preflight", []).append(
+                    {
+                        "segment": mode,
+                        "other_profile_connections": others,
+                        "port_free": True,
+                        "visibility": "current app-visible PROCESSLIST; not cross-account proof",
+                    }
+                )
+                if others:
+                    raise RuntimeError("Another profile connection is active")
             argv = [
                 *command,
                 "--mode",
@@ -266,6 +270,12 @@ def orchestrate(args, source_sha, sources):
         raise
     finally:
         if pool_abba:
+            try:
+                receipt["profile_connections_after"] = profile_connections()
+                if receipt["profile_connections_after"]:
+                    receipt["postcheck_error"] = "VisibleProfileConnectionsRemain"
+            except Exception as error:
+                receipt["postcheck_error"] = type(error).__name__
             signal.setitimer(signal.ITIMER_REAL, 0)
             signal.signal(signal.SIGALRM, previous_alarm)
         receipt.update(
@@ -281,6 +291,8 @@ def orchestrate(args, source_sha, sources):
         )
     if receipt.get("duration_budget_exceeded"):
         raise TimeoutError("ABBA controller exceeded its bounded window")
+    if receipt.get("postcheck_error"):
+        raise RuntimeError("Final profile connection check was not clean")
     return 0
 
 
