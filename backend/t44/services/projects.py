@@ -147,6 +147,25 @@ class Projects:
         row = g.get("iterations", c.path["iteration_id"], lock="update")
         require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
         values = self.capacity(g, c, c.body["plan"])
+        c.check_version(row)
+        owners = {entry["user_id"] for entry in values["capacity"]}
+        active = g.rows(
+            "tasks",
+            {
+                "project_id": c.project_id,
+                "iteration_id": row["id"],
+                "state": [
+                    State.PENDING,
+                    State.DEVELOPING,
+                    State.BLOCKED,
+                    State.PENDING_REVIEW,
+                    State.PENDING_RELEASE,
+                ],
+            },
+            order_by=("id",),
+            lock="update",
+        )
+        require(all(task["owner_id"] in owners for task in active), "CAPACITY_REFERENCE_INVALID")
         changed = c.cas(g, "iterations", row, {**values, "plan_version": row["plan_version"] + 1})
         self.schedule_diff(g, c, row, changed, iteration=True)
         return self.iteration_model(changed)

@@ -404,3 +404,183 @@ def test_real_mysql_capacity_plan_audit_and_input_errors(real_task):
         values = {entry["field"]: entry["value"] for entry in audit[side]}
         for key, value in source["plan"].items():
             assert values[key] == str(value)
+
+
+@pytest.mark.parametrize("action", ["assignment", "create", "rework"])
+@pytest.mark.parametrize("capacity_first", [True, False])
+def test_capacity_v11_real_mysql_activation_vs_capacity_removal(
+    real_task, monkeypatch, action, capacity_first
+):
+    from threading import Event
+
+    client, factory, users, tokens, pid, iteration, task = real_task
+    # Give the existing project manager a developer role as a second real owner.
+    request(
+        client,
+        "changeProjectMember",
+        token=tokens["manager"],
+        project_id=pid,
+        user_id=users["manager"],
+        body={"expected_version": 1, "roles": [1, 2], "reason": "Synthetic second developer"},
+        expect=200,
+    )
+    owners = [users["developer"], users["manager"]]
+    iteration = _http.capacity_change(client, tokens["manager"], pid, iteration, owners).json()[
+        "data"
+    ]
+    target = users["developer"] if action == "rework" else users["manager"]
+    if action == "rework":
+        # Synthetic terminal fixture, separate from the full real workflow test above.
+        with factory() as uow:
+            uow.gateway.update("tasks", {"id": task["id"]}, {"state": 7})
+        task["state"] = 7
+    operation = {
+        "assignment": "changeTaskAssignment",
+        "create": "createTask",
+        "rework": "transitionTask",
+    }[action]
+    first_operation = "changeIteration" if capacity_first else operation
+    locked, second_entered, second_scoped, release = (Event() for _ in range(4))
+    runtime = client.app.state.runtime
+    original = runtime.locked_scope
+
+    def controlled_scope(g, call):
+        if call.operation == first_operation:
+            original(g, call)
+            locked.set()
+            if not release.wait(10):
+                raise AssertionError("Capacity race release timed out")
+        else:
+            second_entered.set()
+            original(g, call)
+            second_scoped.set()
+
+    monkeypatch.setattr(runtime, "locked_scope", controlled_scope)
+
+    def activate():
+        body = {
+            "assignment": {
+                "expected_version": task["version"],
+                "owner_id": target,
+                "reason": "Synthetic handover",
+                "evidence": EVIDENCE,
+            },
+            "create": {
+                "title": "Concurrent synthetic registration",
+                "owner_id": target,
+                "iteration_id": iteration["id"],
+                "plan": PLAN,
+                "dependency_task_ids": [],
+            },
+            "rework": {
+                "expected_version": task["version"],
+                "action": 9,
+                "new_plan": PLAN,
+                "reason": "Synthetic reactivation",
+                "evidence": EVIDENCE,
+            },
+        }[action]
+        return request(
+            client,
+            operation,
+            token=tokens["manager"],
+            project_id=pid,
+            body=body,
+            **({} if action == "create" else {"task_id": task["id"]}),
+        )
+
+    def remove():
+        return _http.capacity_change(
+            client,
+            tokens["manager"],
+            pid,
+            iteration,
+            [owner for owner in owners if owner != target],
+            expect=None,
+        )
+
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("tasks", "outbox_events", "decisions", "schedule_changes")
+        }
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        first = executor.submit(remove if capacity_first else activate)
+        try:
+            assert locked.wait(10), "First writer did not reach its real lock boundary"
+            second = executor.submit(activate if capacity_first else remove)
+            assert second_entered.wait(10), "Second writer did not overlap the first transaction"
+            assert not second_scoped.wait(0.15), "Second writer bypassed the held project lock"
+        finally:
+            release.set()
+        first_response, second_response = first.result(timeout=15), second.result(timeout=15)
+    assert first_response.status_code == (201 if action == "create" and not capacity_first else 200)
+    assert second_response.status_code == 422
+    rejected = second_response.json()
+    assert rejected["code"] == "CAPACITY_REFERENCE_INVALID" and rejected["audit_id"] is not None
+    with factory() as uow:
+        g = uow.gateway
+        audit = g.get("audit_events", rejected["audit_id"])
+        assert audit["reason_code"] == 30 and audit["request_id"] == rejected["request_id"]
+        saved = g.get("iterations", iteration["id"])
+        present = {entry["user_id"] for entry in saved["capacity"]}
+        active = g.rows(
+            "tasks", {"project_id": pid, "iteration_id": iteration["id"], "state": [1, 2, 3, 4, 5]}
+        )
+        assert all(row["owner_id"] in present for row in active)
+        assert (target not in present) == capacity_first
+        current = g.get("tasks", task["id"])
+        assert current["version"] == task["version"] + int(
+            not capacity_first and action != "create"
+        )
+        assert g.count("tasks", {"project_id": pid}) == before["tasks"] + int(
+            not capacity_first and action == "create"
+        )
+        assert g.count("outbox_events", {"project_id": pid}) == before["outbox_events"] + 1
+        assert g.count("decisions", {"project_id": pid}) == before["decisions"] + int(
+            not capacity_first and action == "rework"
+        )
+        assert g.count("schedule_changes", {"project_id": pid}) == before["schedule_changes"] + int(
+            capacity_first or action == "rework"
+        )
+
+
+def test_capacity_v11_real_mysql_safe_handover_then_removal_both_commit(real_task):
+    client, factory, users, tokens, pid, iteration, task = real_task
+    request(
+        client,
+        "changeProjectMember",
+        token=tokens["manager"],
+        project_id=pid,
+        user_id=users["manager"],
+        body={"expected_version": 1, "roles": [1, 2], "reason": "Synthetic second developer"},
+        expect=200,
+    )
+    iteration = _http.capacity_change(
+        client, tokens["manager"], pid, iteration, [users["developer"], users["manager"]]
+    ).json()["data"]
+    handed = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": task["version"],
+            "owner_id": users["manager"],
+            "reason": "Synthetic safe handover",
+            "evidence": EVIDENCE,
+        },
+        expect=200,
+    ).json()["data"]["task"]
+    removed = _http.capacity_change(
+        client, tokens["manager"], pid, iteration, [users["manager"]]
+    ).json()["data"]
+    assert handed["owner_id"] == users["manager"]
+    assert removed["version"] == iteration["version"] + 1
+    with factory() as uow:
+        assert uow.gateway.get("tasks", task["id"])["owner_id"] == users["manager"]
+        assert (
+            uow.gateway.get("iterations", iteration["id"])["capacity"]
+            == removed["plan"]["capacity"]
+        )

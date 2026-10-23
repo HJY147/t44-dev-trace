@@ -149,3 +149,9 @@ D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副
 当前checkpoint不含新守卫生产实现、未部署，root建立新freeze后再继续；原v1摘要不回填。开发草稿回归旧码11失败/2通过（capacity-v11-before.*），已准备但未暂存的986及service草稿待后续。旧CI362仅属479源，不代新业务回归/真MySQL竞争/独立复测；性能仍暂不运行。
 
 冻结前责任岗增量：精确同步root9aeb40c的frozen-v1.1 metadata，仅修转派description区分无效developer的OWNER_NOT_PROJECT_DEVELOPER与缺capacity的CAPACITY_REFERENCE_INVALID；权威/运行副本一致。旧995设计夹具版本过期造成2个C2失败，改取SPEC.info.version和真实迁移命令后1130检查/38ops/0失败，101收件人等原断言保持，证据capacity-v11-995-before/after.log。仍未提交新守卫，父链freeze由root完成后继续；本次不是产品容量或MySQL测试结论。
+
+## 1.1正式冻结后业务实现
+
+合入189dc4a并核新manifest c95076a及14文件原hash，新增转派capacity守卫/项目锁、changeIteration全量state1–5 owner覆盖、返工前有效developer与capacity守卫；原角色/状态/版本/依赖错误及幂等/事务保持。原成员保护1–5+7不放宽，6/7工时可移出。未改freeze/DDL/输入字段，未部署。
+
+定向开发回归：冻结后21个新HTTP/SQLite项通过；7个新真实MySQL8.4/t44_test项通过，含三类动作各两种锁先后及合法转派后移除原owner双成功。追加版本上限回归先1失败再1通过，最后同源全量交后续CI；终态为明确合成fixture，非完整真实交付旅程或独立验收。严格本地Ruff/Bandit/格式通过；原975更严格SIM117样式失败经root授权只合并context，未降低规则/断言。原始失败、测试XML及冻结后源码hash在agents/backend/capacity-v11-*。新精确CI/独立复测/性能/源码规模尚待，955停止。

@@ -20,6 +20,7 @@ _PROJECT_LOCK = {
     "changeProjectMember",
     "removeProjectMember",
     "createTask",
+    "changeTaskAssignment",
     "addTaskDependency",
     "removeTaskDependency",
     "createIteration",

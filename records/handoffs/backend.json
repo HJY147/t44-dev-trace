@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "1.1 capacity contract checkpoint only; pending coordinator parent-chain freeze before business implementation",
+  "stage": "capacity1.1 guards implemented against formalfreeze189dc; localtargetedHTTP/MySQLpassed; same-source fullCIpending",
   "implementation_status": "IAT01-05 frozen-scope fixes implemented with developer regressions; independent retest/performance pending",
   "artifacts": [
     {
@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T12:24:39.159676+00:00",
-  "current_stage": "1.1 capacity contract checkpoint only; pending coordinator parent-chain freeze before business implementation",
+  "updated_at": "2026-10-23T12:45:47.373977+00:00",
+  "current_stage": "capacity1.1 guards implemented against formalfreeze189dc; localtargetedHTTP/MySQLpassed; same-source fullCIpending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -862,7 +862,7 @@
     "basis": "eac253039cd85873d3b262e648b2b74d94d715a8",
     "rfc": "bbc4be681f19a386fbca40baf97a63ab902b3f89",
     "rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
-    "status": "contract1.1.0 candidate only; no new production guards in checkpoint/no deployment",
+    "status": "production guards/locks implemented after formalfreeze merge; not deployed; fullCIpending",
     "paths": 31,
     "operations": 38,
     "DDL": "18tables226columns unchanged",
@@ -879,7 +879,19 @@
       "tmp/validation/995_contract_design_v2.py",
       "agents/backend/capacity-v11-995-before.log",
       "agents/backend/capacity-v11-995-after.log",
-      "agents/backend/capacity-v11-prefreeze-correction.json"
+      "agents/backend/capacity-v11-prefreeze-correction.json",
+      "agents/backend/capacity-v11-postfreeze-validation.json",
+      "agents/backend/capacity-v11-postfreeze-http.log",
+      "agents/backend/capacity-v11-postfreeze-http.xml",
+      "agents/backend/capacity-v11-postfreeze-mysql.log",
+      "agents/backend/capacity-v11-postfreeze-mysql.xml",
+      "agents/backend/capacity-v11-ceiling-before.log",
+      "agents/backend/capacity-v11-ceiling-before.xml",
+      "agents/backend/capacity-v11-ceiling-after.log",
+      "agents/backend/capacity-v11-ceiling-after.xml",
+      "agents/backend/capacity-v11-ruff-initial.log",
+      "agents/backend/capacity-v11-ruff-final.log",
+      "agents/backend/capacity-v11-bandit.json"
     ],
     "scope": [
       "assignment receiver must be current effective developer and in iteration.capacity",
@@ -891,24 +903,14 @@
     ],
     "checks": "real openapi_spec_validator+38operationerrorresponse/caseconsistency+copy/version/request/nonMeta invariance passed",
     "before_regression": "new986draft13cases onoldproduction logic11failed2passed55deselected;raw log/XML preserved",
-    "uncommitted_drafts": [
-      "backend/t44/services/common.py",
-      "backend/t44/services/tasks.py",
-      "backend/t44/services/projects.py",
-      "backend/t44/services/workflow.py",
-      "backend/t44/services/runtime.py",
-      "tmp/backend/contracts/986_http.py"
-    ],
     "unverified": [
-      "rootnewfreeze",
-      "officialpostfreezeimplementation/regression",
-      "trueMySQLcapacityraces",
-      "newfullCI",
-      "FE1.1fixture/readmebyFEowner",
+      "exactnewsourcefullCI",
+      "frontend1.1realcapacitylifecycleUI",
       "independentretest",
-      "performance"
+      "formalperformance",
+      "source-size3500-5100"
     ],
-    "next": "root merges contracts and DB specs, generates new parent-chain1.1freeze; then backend continues business guards/locks/tests. No955run.",
+    "next": "commit/push source and run exactsameSHAfullCI; frontend1.1fixtureownercommit to merge; then handoff",
     "prefreeze_correction": {
       "coordinator_metadata_source": "9aeb40c48c35139e29a5e997253d606e5c96139a",
       "only_delta_to_that_contract": "changeTaskAssignment.description separatesOWNER_NOT_PROJECT_DEVELOPERfromCAPACITY_REFERENCE_INVALID",
@@ -918,6 +920,30 @@
       "995_after": "1130checks/38ops/0fail; fixture usesSPEC.info.version; no old assertions removed",
       "guard_implementation_in_this_checkpoint": false,
       "new_parent_freeze": "pending coordinator manifest"
+    },
+    "formal_freeze": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "postfreeze_validation": {
+      "recorded_at": "2026-10-23T12:45:47.373977+00:00",
+      "postfreeze_base": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+      "manifest_sha256": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+      "all14_frozen_files_unchanged": true,
+      "contract_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "postfreeze_working_tree_files_sha256": {
+        "backend/t44/services/common.py": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+        "backend/t44/services/projects.py": "2449516069bd48b1b17e0cf946e4e6b4055071be87f9af3106e9fd7dd208d84e",
+        "backend/t44/services/runtime.py": "a43febb12e391588548a047674efbcae78d9f40d70d7713ba005713d3d31e942",
+        "backend/t44/services/tasks.py": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+        "backend/t44/services/workflow.py": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+        "tmp/backend/contracts/985_mysql_http.py": "fdf927abe36d348df065ed1b3e6894ba7cf398293b4a41592db1647be063072e",
+        "tmp/backend/contracts/986_http.py": "df85587bd71f8c430b81c791c16a1924343ed604262c682b7d1a4a369f147fe1",
+        "tmp/backend/persistence/975_seed.py": "82bc2089cf588e7c6129d658eeb9036944478159d91d08a42cafeddbd822223e"
+      },
+      "http_sqlite": "21 capacity+guardpriority cases passed on first postfreeze draft; added version-ceiling case failed once then passed after fix; final common source awaits CIall",
+      "mysql": "7newcases passed/5oldcases deselected;MySQL8.4officialprojectt44_test;own synthetic project prefixes only",
+      "race_cases": "assignment/create/rework x capacity-first/action-first with overlapping requests and actual held project lock; plus safehandover+oldownerremovalbothcommit",
+      "fixture_limit": "terminalstates set by explicit synthetic fixtures; not an end-to-end deliveryhistory claim",
+      "static": "full strict localRuff passed after root-authorized existing975contextstylefix;7changedfilesformatpassed;Banditpassed",
+      "scope": "development regression; not independent acceptance/performance/source-sizepass"
     }
   }
 }

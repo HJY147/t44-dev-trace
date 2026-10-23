@@ -6,13 +6,20 @@ from .errors import require
 
 
 class Tasks:
-    def owner(self, g, c, identifier):
+    def owner(self, g, c, identifier, *, code="OWNER_NOT_PROJECT_DEVELOPER"):
         rows = g.rows(
             "project_members",
             {"project_id": c.project_id, "user_id": identifier, "active": 1},
             limit=1,
         )
-        require(rows and rows[0]["roles_mask"] & 2, "OWNER_NOT_PROJECT_DEVELOPER")
+        require(rows and rows[0]["roles_mask"] & 2, code)
+
+    def capacity_owner(self, g, c, identifier, iteration_id):
+        iteration = self.iteration(g, c, iteration_id)
+        require(
+            any(entry["user_id"] == identifier for entry in iteration["capacity"]),
+            "CAPACITY_REFERENCE_INVALID",
+        )
 
     def iteration(self, g, c, identifier):
         row = g.get("iterations", identifier)
@@ -51,11 +58,7 @@ class Tasks:
     def createTask(self, g, c):
         c.manager()
         self.owner(g, c, c.body["owner_id"])
-        iteration = self.iteration(g, c, c.body["iteration_id"])
-        require(
-            any(entry["user_id"] == c.body["owner_id"] for entry in iteration["capacity"]),
-            "CAPACITY_REFERENCE_INVALID",
-        )
+        self.capacity_owner(g, c, c.body["owner_id"], c.body["iteration_id"])
         values = plan_values(c.body["plan"])
         dependencies = c.body["dependency_task_ids"]
         # Project lock is held before task IDs are locked in ascending order.
@@ -123,6 +126,8 @@ class Tasks:
         row = c.task(g)
         require(self.prestart(row), "ASSIGNMENT_EDIT_LOCKED", current_state=row["state"])
         self.owner(g, c, c.body["owner_id"])
+        c.check_version(row)
+        self.capacity_owner(g, c, c.body["owner_id"], row["iteration_id"])
         changed = c.cas(g, "tasks", row, {"owner_id": c.body["owner_id"]})
         return {"task": task_model(changed)}
 

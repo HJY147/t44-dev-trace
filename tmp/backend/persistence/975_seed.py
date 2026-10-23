@@ -244,9 +244,11 @@ def run_mysql_seed(engine):
     result["native_constraint_rejections"] = []
     with factory() as uow:
         for table, changes, kind in violations:
-            with pytest.raises(PersistenceIntegrityError) as rejected:
-                with uow.gateway.savepoint():
-                    uow.gateway.update(table, {"id": 1}, changes)
+            with (
+                pytest.raises(PersistenceIntegrityError) as rejected,
+                uow.gateway.savepoint(),
+            ):
+                uow.gateway.update(table, {"id": 1}, changes)
             assert rejected.value.kind == kind
             result["native_constraint_rejections"].append(dict(
                 table=table, where=dict(id=1), attempted=changes,

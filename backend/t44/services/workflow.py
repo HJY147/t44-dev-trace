@@ -193,6 +193,10 @@ class Workflow:
             raise Rejected(
                 DOMAIN_ERRORS.get(error.code, "EVIDENCE_REQUIRED"), current_state=row["state"]
             ) from None
+        if action == Action.REWORK:
+            c.check_version(row)
+            self.owner(g, c, row["owner_id"], code="CAPACITY_REFERENCE_INVALID")
+            self.capacity_owner(g, c, row["owner_id"], row["iteration_id"])
         values = {
             "state": DOMAIN_TO_STATE[decision.target.state],
             "blocked_from_state": DOMAIN_TO_STATE[decision.target.blocked_from]

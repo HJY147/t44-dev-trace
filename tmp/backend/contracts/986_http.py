@@ -1426,3 +1426,325 @@ def test_sessions_and_login_throttling(application):
         expect=429,
     )
     assert result.headers["retry-after"] == "60"
+
+
+def capacity_change(client, token, pid, iteration, owners, *, expect=200, key=None):
+    return request(
+        client,
+        "changeIteration",
+        token=token,
+        project_id=pid,
+        iteration_id=iteration["id"],
+        key=key,
+        body={
+            "expected_version": iteration["version"],
+            "plan": {
+                **iteration["plan"],
+                "capacity": [
+                    {"user_id": identifier, "available_hours": 40} for identifier in owners
+                ],
+            },
+            "reason": "Synthetic capacity lifecycle",
+            "evidence": EVIDENCE,
+        },
+        expect=expect,
+    )
+
+
+def capacity_team(client, tokens, pid):
+    request(
+        client,
+        "addProjectMember",
+        token=tokens["manager"],
+        project_id=pid,
+        body={"username": "outsider", "roles": [2], "reason": "Synthetic replacement developer"},
+        expect=201,
+    )
+    return request(
+        client, "listIterations", token=tokens["manager"], project_id=pid, expect=200
+    ).json()["data"]["items"][0]
+
+
+@pytest.mark.parametrize("blocked", [False, True])
+def test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal(
+    application, blocked
+):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    iteration = capacity_team(client, tokens, pid)
+    if blocked:
+        task = transition(
+            client,
+            tokens["manager"],
+            pid,
+            task,
+            2,
+            reason="Intake blocked",
+            responsibility_stage=1,
+            evidence=EVIDENCE,
+        )
+    key = str(uuid4())
+    body = {
+        "expected_version": task["version"],
+        "owner_id": 4,
+        "reason": "Synthetic handover",
+        "evidence": EVIDENCE,
+    }
+    rejected = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        key=key,
+        expect=422,
+    )
+    assert rejected.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+    assert rejected.json()["audit_id"] is not None
+    with factory() as uow:
+        stored = uow.gateway.get("tasks", task["id"])
+        assert (stored["owner_id"], stored["version"]) == (2, task["version"])
+        audit = uow.gateway.get("audit_events", rejected.json()["audit_id"])
+        assert audit["reason_code"] == 30
+    iteration = capacity_change(client, tokens["manager"], pid, iteration, [2, 4]).json()["data"]
+    replay = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        key=key,
+        expect=422,
+    )
+    assert replay.headers["idempotency-replayed"] == "true"
+    assert replay.json()["audit_id"] == rejected.json()["audit_id"]
+    accepted_key = str(uuid4())
+    accepted = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        key=accepted_key,
+        expect=200,
+    )
+    changed = accepted.json()["data"]["task"]
+    assert (changed["owner_id"], changed["version"]) == (4, task["version"] + 1)
+    removed = capacity_change(client, tokens["manager"], pid, iteration, [4]).json()["data"]
+    assert removed["plan"]["capacity"] == [{"user_id": 4, "available_hours": 40}]
+    replay = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        key=accepted_key,
+        expect=200,
+    )
+    assert replay.json()["data"] == accepted.json()["data"]
+    assert replay.json()["meta"]["replayed"] is True
+
+
+@pytest.mark.parametrize("state", range(1, 8))
+def test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity(
+    application, state
+):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    iteration = capacity_team(client, tokens, pid)
+    # Explicit synthetic state fixture isolates the capacity guard, not a workflow journey.
+    with factory() as uow:
+        uow.gateway.update(
+            "tasks",
+            {"id": task["id"]},
+            {
+                "state": state,
+                "blocked_from_state": 2 if state == 3 else None,
+                "block_reason": "Synthetic block" if state == 3 else None,
+                "responsibility_stage": 2 if state == 3 else None,
+            },
+        )
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("schedule_changes", "outbox_events")
+        }
+    response = capacity_change(
+        client,
+        tokens["manager"],
+        pid,
+        iteration,
+        [4],
+        expect=422 if state <= 5 else 200,
+    )
+    if state <= 5:
+        assert response.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+        assert response.json()["audit_id"] is not None
+        with factory() as uow:
+            saved = uow.gateway.get("iterations", iid)
+            assert (saved["version"], saved["plan_version"], saved["capacity"]) == (
+                iteration["version"],
+                iteration["plan_version"],
+                iteration["plan"]["capacity"],
+            )
+            assert before == {
+                table: uow.gateway.count(table, {"project_id": pid}) for table in before
+            }
+    else:
+        assert response.json()["data"]["version"] == iteration["version"] + 1
+    if state == 7:
+        member = request(
+            client, "listProjectMembers", token=tokens["manager"], project_id=pid, expect=200
+        ).json()["data"]["items"]
+        owner = next(m for m in member if m["user"]["id"] == 2)
+        protected = request(
+            client,
+            "removeProjectMember",
+            token=tokens["manager"],
+            project_id=pid,
+            user_id=2,
+            body={"expected_version": owner["version"], "reason": "Still rolled back"},
+            expect=409,
+        )
+        assert protected.json()["code"] == "MEMBER_IN_USE"
+
+
+def test_capacity_v11_iteration_checks_all_owners_not_only_removed_entries(application):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    create_task(client, tokens, pid, iid)
+    iteration = capacity_team(client, tokens, pid)
+    # Model an old inconsistent baseline: the proposed list removes nobody.
+    with factory() as uow:
+        uow.gateway.update(
+            "iterations", {"id": iid}, {"capacity": [{"user_id": 4, "available_hours": 40}]}
+        )
+    iteration["plan"]["capacity"] = [{"user_id": 4, "available_hours": 40}]
+    result = capacity_change(client, tokens["manager"], pid, iteration, [4], expect=422)
+    assert result.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+
+
+@pytest.mark.parametrize("missing", ["capacity", "inactive", "developer_role"])
+def test_capacity_v11_rework_requires_current_effective_owner_and_capacity(application, missing):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    iteration = capacity_team(client, tokens, pid)
+    with factory() as uow:
+        uow.gateway.update("tasks", {"id": task["id"]}, {"state": 7})
+        member = uow.gateway.rows("project_members", {"project_id": pid, "user_id": 2})[0]
+    task["state"] = 7
+    if missing == "capacity":
+        iteration = capacity_change(client, tokens["manager"], pid, iteration, [4]).json()["data"]
+    else:
+        with factory() as uow:
+            uow.gateway.update(
+                "project_members",
+                {"id": member["id"]},
+                {"active": 0} if missing == "inactive" else {"roles_mask": 4},
+            )
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("decisions", "schedule_changes", "outbox_events")
+        }
+    result = transition(
+        client,
+        tokens["manager"],
+        pid,
+        task,
+        9,
+        expect=422,
+        new_plan=PLAN,
+        reason="Synthetic reactivation",
+        evidence=EVIDENCE,
+    )
+    assert result.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+    with factory() as uow:
+        saved = uow.gateway.get("tasks", task["id"])
+        assert (
+            saved["state"],
+            saved["version"],
+            saved["delivery_cycle"],
+            saved["schedule_version"],
+        ) == (7, 1, 1, 1)
+        assert before == {table: uow.gateway.count(table, {"project_id": pid}) for table in before}
+        uow.gateway.update("project_members", {"id": member["id"]}, {"active": 1, "roles_mask": 2})
+    iteration = capacity_change(client, tokens["manager"], pid, iteration, [2, 4]).json()["data"]
+    changed = transition(
+        client,
+        tokens["manager"],
+        pid,
+        task,
+        9,
+        new_plan=PLAN,
+        reason="Synthetic reactivation",
+        evidence=EVIDENCE,
+    )
+    assert (changed["state"], changed["delivery_cycle"], changed["schedule_version"]) == (2, 2, 2)
+
+
+@pytest.mark.parametrize(
+    "case,code,status",
+    [
+        ("assignment_role", "ACTION_FORBIDDEN", 403),
+        ("assignment_version", "VERSION_CONFLICT", 409),
+        ("assignment_state", "ASSIGNMENT_EDIT_LOCKED", 409),
+        ("iteration_version", "VERSION_CONFLICT", 409),
+        ("rework_role", "ACTION_FORBIDDEN", 403),
+        ("rework_version", "VERSION_CONFLICT", 409),
+        ("rework_version_ceiling", "VERSION_CONFLICT", 409),
+        ("rework_state", "STATE_CONFLICT", 409),
+        ("rework_dependency", "DEPENDENCIES_UNSATISFIED", 409),
+    ],
+)
+def test_capacity_v11_keeps_original_guard_precedence(application, case, code, status):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    predecessor = create_task(client, tokens, pid, iid) if case == "rework_dependency" else None
+    task = create_task(client, tokens, pid, iid, [predecessor["id"]] if predecessor else [])
+    iteration = capacity_team(client, tokens, pid)
+    with factory() as uow:
+        if case.startswith("rework"):
+            uow.gateway.update(
+                "tasks", {"id": task["id"]}, {"state": 1 if case == "rework_state" else 7}
+            )
+            uow.gateway.update(
+                "iterations", {"id": iid}, {"capacity": [{"user_id": 4, "available_hours": 40}]}
+            )
+        if case == "assignment_state":
+            uow.gateway.update("tasks", {"id": task["id"]}, {"state": 2})
+        if case.endswith("version") or case == "rework_version_ceiling":
+            uow.gateway.update(
+                "iterations" if case == "iteration_version" else "tasks",
+                {"id": iid if case == "iteration_version" else task["id"]},
+                {"version": 2147483647 if case == "rework_version_ceiling" else 2},
+            )
+        if case == "rework_version_ceiling":
+            task["version"] = 2147483647
+    if case == "iteration_version":
+        response = capacity_change(client, tokens["manager"], pid, iteration, [4], expect=status)
+    else:
+        body = {
+            "expected_version": task["version"],
+            "reason": "Synthetic precedence",
+            "evidence": EVIDENCE,
+        }
+        body.update(
+            {"owner_id": 4} if case.startswith("assignment") else {"action": 9, "new_plan": PLAN}
+        )
+        response = request(
+            client,
+            "changeTaskAssignment" if case.startswith("assignment") else "transitionTask",
+            token=tokens["developer"] if case.endswith("role") else tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            body=body,
+            expect=status,
+        )
+    assert response.json()["code"] == code and response.json()["audit_id"] is not None

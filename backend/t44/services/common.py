@@ -140,7 +140,7 @@ class Call:
             values[actor_field] = self.actor_id
         return g.get(table, g.insert(table, values))
 
-    def cas(self, g, table, row, values, *, expected=None):
+    def check_version(self, row, *, expected=None):
         expected = self.body.get("expected_version") if expected is None else expected
         require(
             row["version"] == expected and row["version"] < 2147483647,
@@ -148,6 +148,10 @@ class Call:
             current_version=row["version"],
             current_state=row.get("state"),
         )
+        return expected
+
+    def cas(self, g, table, row, values, *, expected=None):
+        expected = self.check_version(row, expected=expected)
         values = {**values, "version": row["version"] + 1}
         if "updated_at" in row:
             values["updated_at"] = self.clock

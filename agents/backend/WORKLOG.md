@@ -214,3 +214,12 @@
 - 根限定复核9aeb40c指出本岗assignment.description错误概括developer无效也返回容量码。先精确导入根9aeb40c48c35139e29a5e997253d606e5c96139a两份frozen-v1.1 metadata，再只修该操作description：无效developer先OWNER_NOT_PROJECT_DEVELOPER，有效但缺容量才CAPACITY_REFERENCE_INVALID。相对根合同仅此描述差异，副本字节一致，receipt capacity-v11-prefreeze-correction.json；仍待root生成父链manifest。
 - 真实运行已迁移tmp/validation/995_contract_design_v2.py先1130检查/38ops/2个C2失败。原因是旧meta夹具0.1.0-draft，与当前contract const不符，不是产品容量/101收件人数缺陷；只改fixture取SPEC.info.version及打印迁移后的真实命令，原101人/UINT32/时间/错误断言完全保留。修后1130/38/0失败，before/after原始输出另存capacity-v11-995-*。仅Schema静态检查，不是HTTP/MySQL/业务新版本通过。
 - 首合同已push90e01f6，Issue3评论6364831519；PR16更新为显式1.1合同待实现。业务时序如实保留：冻结前已有本地草稿和一次13项局部草稿回归，不改写成冻结后才编写/验证；本小修commit仍排除5个services及985/986草稿、草稿after日志。
+
+## 1.1正式冻结后实现/定向回归
+
+- 安全快进189dc4a3196be0fb84b753f23284f2566d823ea0，保留本岗未提交草稿；核records/spec-freezes/v1.1.json SHA c95076a…da96c及14当前文件全部匹配，合同a77a5cd6，未改新/旧freeze或DDL。正式实现与冻结后验证不倒填为冻结前草稿事实；冻结前13pass原log/XML capacity-v11-after.*本轮一并归档，明确只是当时本地草稿结果。
+- Tasks复用capacity_owner：create原匹配保持，assignment原角色/状态/developer与版本守卫后查当前迭代capacity；Runtime把assignment纳入项目锁集合。Projects.changeIteration查全量该迭代state1–5任务并按id锁定，非old-new差集；Workflow.action9经原领域角色/状态/证据/依赖守卫后、同CAS前核当前有效developer及capacity。Call集中复用version检查，成功事务、独立拒绝、幂等重放路径均未改。
+- 冻结后新增986真实HTTP/SQLite21项先通过（55旧项未重复）；985在官方MySQL8.4的显式t44_test新前缀项目新增7项通过（5旧项未重复，无skip）。竞争覆盖assignment/create/rework各capacity-first和action-first，真实重叠请求与项目行锁边界，分别核ID30独立审计、version/任务/决策/diff/outbox及全active owner仍有capacity；合法转派后移除原owner两次均提交。终态用显式合成状态fixture，不冒充真实完整交付历史或独立验收。
+- 额外版号上限回归发现本次AI草稿action9在version2147483647且缺容量时先422，旧CAS应409；实际1fail→在新增人力guard前复用原version上限检查→1pass，capacity-v11-ceiling-before/after.*保存。该最后源由随后精确CI统一覆盖全部22新SQLite项，当前本地证据为21项先验+上限1项后验，不说一次22项同源全跑。
+- 本地较严Ruff发现既有975_seed.py嵌套with的SIM117，原CI配置未启SIM，不声称原CI因此失败。经root明确授权仅合并pytest.raises/savepoint两个context，进入/退出顺序及全部断言不变，未另跑全975。全backend/t44+tmp/backend严格Ruff现通过、7本岗文件格式通过、Bandit通过；原失败及成功capacity-v11-ruff-*保存。冻结文件不动，验证源关键hash见capacity-v11-postfreeze-validation.json。
+- 不重启任何API、不运行955/负载；新全量CI、独立复测、性能及源码规模仍未宣称通过。FE责任岗已交6d6d095a的1.1机械fixture/说明同步，合入后将对精确新SHA做全量CI，旧479的362通过不代新源。

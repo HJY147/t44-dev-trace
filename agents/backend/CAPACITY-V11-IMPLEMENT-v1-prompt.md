@@ -16,3 +16,9 @@ ROLE-backend-CAPACITY-V11-IMPLEMENT-v1：按人已采用、设计先审的顺序
 ## 实际续派：冻结前描述/夹具小修
 
 冻结前两个小修请owner单独提交（仍不含业务草稿）：1 审核9aeb40c指出changeTaskAssignment.description将无效developer也概括为CAPACITY，请改为先无效developer→OWNER_NOT_PROJECT_DEVELOPER，再有效但缺capacity→CAPACITY_REFERENCE_INVALID，权威+运行副本同步。根9aeb40c已仅将top/38ops x-status改frozen-v1.1和info/README/req说明，请精确同步这个commit的两份契约后再修描述，避免退回pending。2 根实跑995发现旧fixture meta.contract_version='0.1.0-draft'导致嵌套两个C2失败，其他1128检查好，日志records/validation/capacity-v11-contract-final.log保留。请995只改版本fixture取SPEC['info']['version']＋打印真实迁移后命令，原101收件人等断言不改，明确是旧测试metadata过期不是产品容量缺陷；保留失败及修复后输出。选择性commit后发hash，根合并让审核做差异。
+
+## 实际续派：正式冻结后继续
+
+正式1.1冻结完成：189dc4a3196be0fb84b753f23284f2566d823ea0，records/spec-freezes/v1.1.json SHA c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c，14冻结文件/18review输入现行hash全匹配、父ae60/v1原11hash可恢复。限定审查证据117a69c，合同final a77a5cd6；无新守卫进入freeze。现在继续ROLE-backend-CAPACITY-V11-IMPLEMENT-v1业务实现和既定986+985真实MySQL回归，保留真实草稿先后。先合根189dc，别覆盖未提交自己草稿，明确冻结后验证源/hash。原错误优先级、1–5工时/成员1–5+7、全owner查询、项目锁与合法A→B后移除A双成功等全保留。只跑必要回归后精确CI全量，无需重复旧整套。新freeze文件不要改；自己责任内代码/日志/module/handoff/prompt/Issue3/PR16 phasecommit并push，告精确SHA与现行全量结果。之后独占quietwindow诊断仍另排，不与此并发。
+
+收到冻结后21项+7项真实MySQL结果。根核对975:247确是原嵌套pytest.raises与savepoint触SIM117；CI scripts/ci/ruff.toml原select不含SIM，所以这是backend更严格本地规则失败，勿称既有CI早已失败。总协调允许本次仅将该两层with合为一个with，原两个context进入/退出顺序及断言不变，属于无需接口协商的测试样式修正，不是DB业务变更；记录AI修复和原Ruff失败即可，不单独重跑全975，后续新SHA精确全量CI覆盖。不要降低任何lint/测试选项。若DB本人后续接手再告实际commit。
