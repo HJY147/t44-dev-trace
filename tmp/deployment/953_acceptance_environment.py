@@ -1,6 +1,7 @@
 """Deployment environment boundaries only; no independent acceptance cases or product oracles."""
 
 import importlib.util
+import json
 import os
 import stat
 import subprocess
@@ -41,7 +42,7 @@ def test_entry_cannot_escape_frozen_directory(path):
 def test_modes_and_timeout_are_explicit():
     assert environment.validate_request(request())["harness_timeout_seconds"] == 900
     for changes in [{"mode": "environment-check"}, {"harness_timeout_seconds": True},
-                    {"harness_timeout_seconds": 1201}, {"unexpected": "input"}]:
+                    {"harness_timeout_seconds": 1201}, {"request_revision": 0}, {"unexpected": "input"}]:
         with pytest.raises(ValueError):
             environment.validate_request(request(**changes))
     assert environment.validate_request({"version": 1, "mode": "environment-check",
@@ -139,3 +140,60 @@ def test_audit_accepts_bounded_select_and_show():
     assert control.audit_statement("SELECT COUNT(*) FROM tasks;") == "SELECT COUNT(*) FROM tasks"
     assert control.audit_statement("SHOW CREATE TABLE tasks") == "SHOW CREATE TABLE tasks"
     assert not os.getenv("T44_ACCEPTANCE_CONTEXT")  # guards have no tester runtime context
+
+
+@pytest.mark.parametrize("reachable,networks,expected", [
+    (True, {"own_data": True}, False),
+    (False, {}, False),
+    (False, {"own_data": True, "other": False}, False),
+    (False, {"own_data": True}, True),
+])
+def test_client_network_repair_requires_observed_internal_only_unreachable_listener(reachable, networks, expected):
+    assert environment.repairable_client_network({"tcp_listener_reachable": reachable,
+                                                  "networks_internal": networks}) is expected
+
+
+@pytest.mark.parametrize("projects,ttl,name", [([], 300, None), ([0], 300, None), ([1], 59, None),
+                                              ([1], 901, None), ([1], True, None), ([1], 300, "../token.json")])
+def test_service_credential_limits_are_checked_before_cli(projects, ttl, name):
+    controls = control.Controls.__new__(control.Controls)
+    with pytest.raises(ValueError):
+        controls.service_credential(projects, ttl, name)
+
+
+def service_controls(tmp_path):
+    controls = control.Controls.__new__(control.Controls)
+    controls.runtime = tmp_path
+    controls.state = {"env_file": "synthetic.env", "override_file": "synthetic.yaml"}
+    controls.values = {}
+    controls.event = Mock()
+    controls.compose = Mock(side_effect=AssertionError("bearer must not enter raw environment logging"))
+    return controls
+
+
+def test_service_bearer_is_real_output_to_private_file_and_not_public_metadata(tmp_path):
+    controls = service_controls(tmp_path)
+    credential = {"access_token": "synthetic-bearer-" + "x" * 32, "session_id": 11,
+                  "expires_at": "2100-01-01T00:00:00Z", "scopes": ["escalation:write"],
+                  "project_ids": [2], "ttl_seconds": 300}
+    with patch.object(control.ops, "compose", return_value=subprocess.CompletedProcess([], 0, json.dumps(credential).encode())):
+        metadata = controls.service_credential([2], 300, "service.json")
+    saved = Path(metadata["credential_file"])
+    assert json.loads(saved.read_text()) == credential
+    assert stat.S_IMODE(saved.stat().st_mode) == 0o600
+    assert "access_token" not in metadata
+    assert credential["access_token"] not in str(controls.event.call_args)
+    controls.compose.assert_not_called()
+
+
+def test_existing_service_file_is_preserved_without_issuing_new_session(tmp_path):
+    controls = service_controls(tmp_path)
+    folder = tmp_path / "tester-secrets"
+    folder.mkdir(mode=0o700)
+    path = folder / "service.json"
+    path.write_text("existing synthetic credential")
+    with patch.object(control.ops, "compose") as command:
+        with pytest.raises(FileExistsError):
+            controls.service_credential([2], 300, "service.json")
+    assert path.read_text() == "existing synthetic credential"
+    command.assert_not_called()

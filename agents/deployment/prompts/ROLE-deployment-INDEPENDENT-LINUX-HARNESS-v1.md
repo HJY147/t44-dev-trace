@@ -17,3 +17,9 @@ ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1：先只读看根189dc4a及已有do
 
 - 追加实际约束：总协调要求不用189dc4a立即环境check，等待随后完整1.1产品修正的准确SHA；实现先独立commit/push，请求另交。为避免旧runtime push自动重跑整套，部署使用同worktree新本岗分支codex/deployment-acceptance-environment，既有门禁不改。
 - 总协调随后实际指定远端完整产品4c20f32b71635016815420472b9d4bb4fa850df0，只运行本轮唯一环境check/恢复/加密roundtrip；独立harness仍待冻结，不注入产品调试结论。
+
+## 必要修复与能力补充实际派工
+
+原失败保留。修复实际连接/早失败归档后，已授权一次有针对性的环境能力复核，不必再等或向用户要确认：先前“唯一check”是避免无变化重跑旧0448整套，失败后必要复验本就在职责内。只在新实际代码变更后提交新request触发一轮，不能虚称首轮通过。请先从公共diagnostics核具体异常/连接阶段（DB还是AMQP/拒绝or鉴权orDNS），不要仅凭internal网络猜因；日志只记录异常类别/安全状态，不泄临时凭据。继续保持产品Compose不改、仅本验收override中性环境，harness仍未运行。
+
+根读中性protocol发现all38ops的通用环境能力缺口：有scheduler-scope轮换CLI，但context只给manager/read-only/AMQP，未给tester用于内部升级HTTP入口的限定service bearer。请补一个中性service-credential/issue-service控制能力：仅本project显式project-id/scope(escalation:write)、短TTL，按现有真实CLI签发或读取受控scanner凭据并只输出给harness私密stdout/0600文件；公开control-events只记project_count/会话元数据，不记token，不能把reader查hash冒作能调用。不需要也不得问新tester要用例。该能力是既有接口鉴权所需，不是某缺陷复现夹具，protocol/953必要guard同步，环境check可验证返回metadata/有效scope但不泄密、不跑独立业务案例。如果实际已有未列的可用接口请说明并补README，而不要重复造能力。

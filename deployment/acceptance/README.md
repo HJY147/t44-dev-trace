@@ -33,11 +33,15 @@
 
 这是部署 JSON 请求，非测试脚本。新增实际测试脚本仍须遵守项目 tmp 编号登记。`workflow_dispatch` 待工作流以后经正常保护流程进入默认分支才作为可用入口，不绕过 main 保护。
 
+必要修复后的复核请求可递增正整数 `request_revision`（默认1）；精确产品/harness SHA不因此漂移，先前失败仍保留，不用无变化请求反复重跑。
+
 ## 初始条件与中性 context
 
 runner 建立独立 Compose project/数据库 `t44_acceptance`，随机生成256位数据库/队列凭据并以私有文件保存、GitHub mask。只为启动建立一个 synthetic manager 和一个空项目，**没有任务/独立案例**；实际 user/project ID 在 context 中，不能猜 ID。产品迁移仍是独立显式步骤。调度凭据使用真实 CLI，JSON0600，扫描容器只读挂载目录，共享持久 flock 卷。
 
 仅 runner loopback 开放 web18082、只读 SQL13306、AMQP15673；不映射队列管理面板、不购买或访问云/个人服务。SQL新建专用 `t44_audit`，只授目标库 SELECT；控制入口还设置只读事务和5秒语句上限。直接 AMQP 凭据只适用于本次一次性 synthetic vhost，允许 tester 自己的消息操作；它不提供任何业务预期或缺陷提示。
+
+客户端就绪分开核对SQL/AMQP。连接失败仅记录异常类别/数值码、TCP监听状态、Docker实际端口绑定和本项目网络Internal布尔；若实际观察到监听不可达且只连接internal网络，才在**本验收override**增设client bridge并受控重建/复连，保留原观测。鉴权失败或其他网络状态不自动绕过。产品Compose保持原样，绑定仍仅127.0.0.1。
 
 独立 Python 入口无额外参数，通过环境变量 `T44_ACCEPTANCE_CONTEXT` 读取0600 JSON，字段包括：
 
@@ -49,6 +53,7 @@ runner 建立独立 Compose project/数据库 `t44_acceptance`，随机生成256
 | readonly_database_url | SELECT-only 审计连接，不是应用写库凭据 |
 | amqp_url | 本轮真实 RabbitMQ/vhost |
 | python / control_cli / control_state | 固定中性操作入口和私有状态文件 |
+| service_credential | 限定escalation:write的真实bearer签发能力、短TTL和私有文件位置 |
 | harness_output_directory | tester主动准备的受限证据输出目录 |
 | archive / faults / isolation | 加密取回、控制租期及环境隔离边界 |
 
@@ -64,11 +69,14 @@ control.py broker queues                    # 当前队列元数据
 control.py broker connections               # 当前连接元数据
 control.py init-user --username NAME --display-name NAME  # stdin口令，真实CLI初始化
 control.py scheduler-scope --project-id ID [--project-id ID] # 受控替换授权scope并轮换
+control.py service-credential --project-id ID --ttl-seconds 300 --output-name bearer.json
 control.py fault --service rabbitmq --action stop --lease-seconds 60
 control.py recover
 ```
 
 fault服务白名单为 mysql/rabbitmq/api/consumer/scheduler/web，动作仅 stop/pause，租期1–120秒。拒绝任意 Docker命令、删卷、DROP/写SQL、外部地址及系统数据库。租期到期由环境进程恢复，显式recover和finally同样先恢复基础服务再恢复应用，记录控制动作/退出码，不记录 SQL/行数据/口令。恢复失败保留 failure，不以 finally 被调用冒充恢复成功。harness超时终止进程组后也尝试恢复、最后只 stop，不删卷。
+
+`service-credential`使用现有真实 `t44.cli service-token`，仅对本次项目库中**显式提供的项目ID**签发，scope固定 `escalation:write`，TTL60–900秒（默认300）。容器内只读查询实际session的actor/scope/project/expiry元数据后才返回；不会把数据库摘要当可用bearer。省略`--output-name`时真实Token仅返回harness私密stdout；指定时仅在context的受控0700目录内O_EXCL创建0600 JSON，stdout仅文件位置/会话元数据，拒绝覆盖已有文件。该操作绕过环境原始命令日志，公开control-events仅记project_count/session/expiry/TTL，永不记token。此能力支持内部升级接口的既有鉴权，由tester自行决定用例，不预置业务案例。
 
 这是方便审计的受限操作接口，**不是针对恶意 harness 的操作系统沙箱**。受信冻结 harness 运行在一次性 hosted runner；它拥有该runner通常的权限。强制取消、runner失联或平台硬超时可能打断finally，须读取实际 recovery_completed，不能假称每次已恢复。
 
@@ -90,6 +98,8 @@ runner将 stdout/stderr 收入私有目录，不输出到公开 Actions console�
 
 归档采用 [OpenSSL CMS](https://docs.openssl.org/3.0/man1/openssl-cms/) AES-256-GCM和RSA-OAEP/SHA256。公开artifact只包含 `tester-output.cms` 密文、密文/证书SHA256和环境/控制/退出元数据；`environment-check` 额外允许不含harness内容的脱敏环境诊断gzip。绝不上传明文tar、.env、context、Token JSON、完整workspace或coverage目录。密文保留14天，context明确给出artifact名与时效；runner临时明文随job销毁，**tester须在14天内下载密文**。
 
+本地解密需支持CMS AES-GCM/RSA-OAEP的OpenSSL3.x；本机默认LibreSSL未核验，不假设它可解密。托管Linux能力自检使用OpenSSL3实际加密/解密roundtrip，tester私钥仍须留在自己本地。
+
 ```sh
 # 由tester自行下载acceptance-<run_id>中的tester-output.cms；root/dev不下载或读取未发布明文。
 umask 077
@@ -101,6 +111,6 @@ tar -tzf tester-output.tar.gz
 
 环境步骤失败、harness非零、超时、加密失败及恢复失败都保留失败状态。若加密失败，宁可不发布明文；公开 execution.json 记录 archive_error，不能把丢失证据写成验收通过。加密是取回保密措施，不证明案例设计独立或覆盖fault。
 
-## 本岗核验与状态
+## 执行边界
 
-部署守卫为root登记的 `tmp/deployment/953_acceptance_environment.py`，只测请求/路径/只读接口/控制白名单/加密失败不漏明文；不是tester用例。环境一次能力自检的精确SHA、Actions URL和实际范围写入本岗handoff。独立模式在取得新tester自己冻结的H/入口/证书前保持**待运行**，不会用环境能力自检代替独立 fault 结论。
+环境check只核验服务和操作能力，不包含独立用例/产品通过判据。独立模式要求tester自己冻结入口和接收证书后才能执行；不得把环境状态、合成加密传输或控制命令成功当成独立fault覆盖。pause/自动租期路径属于可用接口，具体独立用例及覆盖结论仍由tester自己决定并实际运行。
