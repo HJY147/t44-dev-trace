@@ -1,0 +1,77 @@
+$ node scripts/prepare-tests.mjs && vitest run --coverage
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend-logout
+      Coverage enabled with v8
+
+ ❯ tmp/frontend/983_application.test.ts (24 tests | 3 failed) 595ms
+   ❯ operation forms (10)
+     × does not call parent callbacks after same-session form unmount with late HTTP 200 19ms
+     × does not call parent callbacks after same-session form unmount with late HTTP 403 4ms
+     × does not call parent callbacks after same-session form unmount with late HTTP 409 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/983_application.test.ts > operation forms > does not call parent callbacks after same-session form unmount with late HTTP 200
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2001; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="创建项目" aria-describedby="el-id-8245-1" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get ../../frontend/node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tmp/frontend/983_application.test.ts:71:19
+     69|     const refresh = vi.fn(async () => ({})), saved = vi.fn(async () =>…
+     70|     const wrapper = mount(OperationForm, { props: { operation: 'create…
+     71|     await wrapper.get('form').trigger('submit'); await settle(); wrapp…
+       |                   ^
+     72|     respond(new Response(JSON.stringify(status === 200 ? { data: proje…
+     73|     expect(refresh).not.toHaveBeenCalled(); expect(saved).not.toHaveBe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tmp/frontend/983_application.test.ts > operation forms > does not call parent callbacks after same-session form unmount with late HTTP 403
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2002; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="创建项目" aria-describedby="el-id-8245-3" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get ../../frontend/node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tmp/frontend/983_application.test.ts:71:19
+     69|     const refresh = vi.fn(async () => ({})), saved = vi.fn(async () =>…
+     70|     const wrapper = mount(OperationForm, { props: { operation: 'create…
+     71|     await wrapper.get('form').trigger('submit'); await settle(); wrapp…
+       |                   ^
+     72|     respond(new Response(JSON.stringify(status === 200 ? { data: proje…
+     73|     expect(refresh).not.toHaveBeenCalled(); expect(saved).not.toHaveBe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tmp/frontend/983_application.test.ts > operation forms > does not call parent callbacks after same-session form unmount with late HTTP 409
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2003; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="创建项目" aria-describedby="el-id-8245-5" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get ../../frontend/node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tmp/frontend/983_application.test.ts:71:19
+     69|     const refresh = vi.fn(async () => ({})), saved = vi.fn(async () =>…
+     70|     const wrapper = mount(OperationForm, { props: { operation: 'create…
+     71|     await wrapper.get('form').trigger('submit'); await settle(); wrapp…
+       |                   ^
+     72|     respond(new Response(JSON.stringify(status === 200 ? { data: proje…
+     73|     expect(refresh).not.toHaveBeenCalled(); expect(saved).not.toHaveBe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  3 failed | 48 passed (51)
+   Start at  03:06:14
+   Duration  2.03s (transform 36%, import 34%, tests 16%, environment 14%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

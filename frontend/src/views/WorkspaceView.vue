@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue'
 import { ElButton, ElDrawer } from 'element-plus'
-import { ApiError, request } from '../api'
+import { api, ApiError, request } from '../api'
 import { asArray, asRow } from '../contract'
 import type { Row } from '../contract'
 import type { WorkspacePage } from '../navigation'
@@ -24,11 +24,14 @@ const rows = computed(() => asArray(data.value.items).map(asRow))
 const needsProject = computed(() => !['projects', 'notifications'].includes(props.page))
 const taskPage = computed(() => ['overview', 'tasks', 'reviews'].includes(props.page))
 let sequence = 0
+let active = true
+onUnmounted(() => { active = false; sequence++ })
 async function refresh(reloadContext = false): Promise<void> {
-  if (!workspace.user) return
+  if (!active || !workspace.user) return
   const current = ++sequence; busy.value = true; failure.value = null; data.value = { items: [], total: 0 }
   try {
     if (reloadContext) await context()
+    if (current !== sequence || !workspace.user) return
     if (needsProject.value && !workspace.projectId) return
     const params: Row = { project_id: workspace.projectId }, query: Row = { page: pageNumber.value, page_size: 20 }
     const operation = taskPage.value ? 'listTasks' : props.page === 'projects' ? 'listProjects' : props.page === 'schedule' ? 'listIterations' : props.page === 'audit' ? 'listProjectAuditEvents' : section.value === 'escalations' ? 'listEscalations' : 'listMyNotifications'
@@ -51,11 +54,17 @@ function open(operation: string, record: Row = {}): void {
   form.value = { operation, schemaName: formSchemas[operation]!, params: { project_id: record.project_id ?? workspace.projectId, ...(record.user ? { user_id: asRow(record.user).id! } : {}), ...(operation === 'changeIteration' ? { iteration_id: record.id! } : {}), ...(['markNotificationRead', 'handleNotification'].includes(operation) ? { notification_id: record.id! } : {}) }, preset: presets(operation, record) }
 }
 async function saved(record: Row): Promise<void> {
-  if (form.value?.operation === 'createProject') { await bootstrap(); workspace.projectId = Number(record.id) }
-  revision.value++; await refresh(true); await taskDrawer.value?.refresh()
+  if (!active) return
+  const token = api.token
+  if (form.value?.operation === 'createProject') { await bootstrap(); if (!active || api.token !== token) return; workspace.projectId = Number(record.id) }
+  revision.value++; await refresh(true)
+  if (active && api.token === token) await taskDrawer.value?.refresh()
 }
 async function refreshConflict(): Promise<Row> {
+  if (!active) return {}
+  const token = api.token
   revision.value++; await Promise.all([refresh(true), taskDrawer.value?.refresh()])
+  if (!active || api.token !== token) return {}
   if (taskDrawer.value) return taskDrawer.value.task
   const params = form.value?.params ?? {}
   return workspace.members.find((m) => asRow(m.user).id === params.user_id) ?? workspace.iterations.find((i) => i.id === params.iteration_id) ?? rows.value.find((r) => r.id === params.notification_id) ?? {}
