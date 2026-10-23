@@ -27,10 +27,11 @@
   "snapshot_dependency_completion": {
     "at": "2026-10-23T17:56:27.068262+00:00",
     "first_failure": "frontend-only snapshot omitted exact frozen OpenAPI JSON dependency",
-    "second_attempt": "adding file without restart retained Vite negative resolution cache; original failure retained",
-    "correction": "same-commit JSON included; restart owned Vite with explicit frozen source/dependency read scope",
+    "second_attempt": "Exact JSON was added but resolver still returned500; no isolated cache versus file-scope attribution",
+    "correction": "Same-commit JSON included; owned Vite restarted with new dedicated cache and explicit frozen source/dependency read scope; module200 and browser smoke passed",
     "production_source_changed": false,
-    "first_error_followed_by_test": "shell continued after Python HTTP500; explicitly retained as coordinator process error"
+    "first_error_followed_by_test": "shell continued after Python HTTP500; explicitly retained as coordinator process error",
+    "causal_limit": "Combined environment correction succeeded; negative-resolution cache was a hypothesis, not independently proved"
   },
   "browser_smoke": "agents/coordinator/demo-preview-audited/results.json",
   "browser_smoke_exit": 0,
