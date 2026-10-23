@@ -256,3 +256,9 @@
 - 全部fake临时/proc文件，未读真实/proc/容器/独立私密输入，不跑Docker、产品进程或旧故障/正式压力；产品/资源/native不改。仅收尾提交与Issue7实际读回后结束。
 - 提交前diff-check真实exit2：原红JUnit内两行尾空格。保留原字节red-junit.xml.gz与原SHA，阅读XML只规范尾空白，变换说明raw-junit-preservation.json；不重跑测试、不改断言或失败内容，再检查后提交。
 - 实现c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push并交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442使用本岗body-file实际发布，再GET同comment核正文逐字一致，原回执另档。之后仅归档，无重复测试/服务/负载。
+
+## NATIVE-BOUNDED-DEMO-v1 本人设计checkpoint
+
+- 按根61b23e6 RFC开启新阶段，从实时root c1aff86新独立worktree/branch codex/deployment-bounded-demo，不改已merge旧PR31/34历史。已读当前AGENTS/任务/RFC/cd3限定报告，原0a6成功与b238未cycle边界保持；cd3短名无法解析与reviewer/prompts不存在的原查找失败后改用准确SHA/dispatch路径。未读独立或任何真实私密输入。
+- 本人设计bounded-demo-design.md已先成：serve显式180..14400秒/单次run、signal仅置标记安全点cleanup、API/consumer/UI一次启动、TTL300剩120秒轮换scanner/持久tick、ready用户会话提前回收、owned stop请求与完成分开、私密状态/公共白名单。默认cycle路径尽量保持。
+- 当前只设计/实际prompt，无新代码/服务/360秒实跑；下一步工具与必要合成边界完成后报告根。实际窗口与专职新增范围审核另准入，不提前启动，也不回填正式独立三组同次unknown。

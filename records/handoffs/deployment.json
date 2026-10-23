@@ -733,5 +733,22 @@
     "issue_readback": "agents/deployment/api-process-metadata-validation/issue-readback.json",
     "final_status": "complete;synthetic collector correction only;no real replay",
     "archive_revision": "final Git metadata identifies docs receipt;implementation SHA remains separately pinned"
+  },
+  "native_bounded_demo": {
+    "prompt": "ROLE-deployment-NATIVE-BOUNDED-DEMO-v1",
+    "baseline": "c1aff86d53019485b255ce2824dfddef8ccdd741",
+    "branch": "codex/deployment-bounded-demo",
+    "design": "deployment/native/bounded-demo-design.md",
+    "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
+    "status": "design checkpoint before implementation",
+    "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "duration_seconds_range": [
+      180,
+      14400
+    ],
+    "actual360second_run_admitted": false,
+    "services_started": false,
+    "new_scope_review_required": true,
+    "independent_material_read": false
   }
 }
