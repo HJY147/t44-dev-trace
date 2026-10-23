@@ -1,9 +1,9 @@
 # 数据库模块报告：C-P4源码checkpoint待验证
 
 ## 当前状态与范围
-- 岗位database，实际派工ROLE-database-REVIEW-FIX-v1；同步根7ce7171，不改冻结DDL/API或他岗源码。
+- 岗位database，实际派工ROLE-database-REVIEW-FIX-v2（续v1）；同步根7ce7171，不改冻结DDL/API或他岗源码。
 - 审核转派C-P4指出旧check_schema只比较索引/FK/CHECK名称，可能误收同名错误结构；这不是已经发生实库漂移。本岗未读改审核957或独立私有资料。
-- 已编写语义比较与唯一956自岗回归；**未运行、待性能窗后验证**，不得标C-P4已过或审核通过。
+- 已编写语义比较与唯一956自岗回归；3ed托管contracts/coverage成功，但static因Bandit B105误判解析器token失败。两次原日志/artifact保留于agents/database/ci/review-fix-v2；局部变量改lexeme，无门禁削弱。新远端结果待取，专库真实漂移恢复仍待性能窗后验证，C-P4未关闭。
 - root正式400并发及后续两个600秒性能批次期间仅允许源码编辑/Git记录；本岗没有执行pytest/真MySQL迁移/seed/构建。源格式化不等于lint或验证通过。
 
 ## 本轮源码
@@ -25,5 +25,5 @@
 
 ## 交接
 - 当前只可审源码保存，PR17仍draft，等待root窗口结束后正式续派验证/修复及有依据seed减重复。
-- 本岗日志agents/database/WORKLOG.md，实际prompt归档agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md，结构化交接records/handoffs/database.json。
+- 本岗日志agents/database/WORKLOG.md，实际prompt归档agents/database/prompts/ROLE-database-REVIEW-FIX-v2.md，结构化交接records/handoffs/database.json。
 - 未执行当前全套/覆盖率/真实MySQLC-P4/独立验收，不声称已完成产品审核；最终整合规模与门禁仍由root统一确认。

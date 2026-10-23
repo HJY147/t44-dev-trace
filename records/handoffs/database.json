@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "REVIEW-FIX-v1：C-P4可审源码checkpoint，未运行待性能窗后验证",
-  "implementation_status": "migrations语义比较和956本岗回归已编写；性能窗口期间未跑pytest/真MySQL/迁移/seed/构建，不能标C-P4闭合",
+  "stage": "REVIEW-FIX-v2：真实GHA原失败归档，Bandit误报最小修复待远端结果",
+  "implementation_status": "C-P4语义checker/956已编写；3ed托管contracts/coverage成功但static失败，局部token重命名修复；专库漂移恢复仍待安静窗后真实验证",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -389,6 +389,11 @@
       "path": "agents/database/review-fix-pr-body.md",
       "kind": "当前draft候选PR正文",
       "status": "真实说明未运行/待性能窗后验证"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/original-failures.json",
+      "kind": "两次真实GHA失败、原始日志、SHA256索引",
+      "status": "已下载，Bandit B105真实来源已确认"
     }
   ],
   "interfaces": [
@@ -711,6 +716,11 @@
       "id": "ROLE-database-REVIEW-FIX-v1",
       "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
       "improvement_reason": "实际审核C-P4要求语义比较，性能调度要求先保存未验证checkpoint，不虚构测试通过。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v2",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v2.md",
+      "improvement_reason": "先读取原始Bandit失败，保留门禁与断言；远端验证和专库实际变更恢复分开，不编造规模达标。"
     }
   ],
   "updated_at": "2026-10-23T09:01:42.384136+00:00",
@@ -725,7 +735,7 @@
     "scope": "C-P4语义checker源码/956已编写未运行；待性能窗后验证，PR仍draft",
     "pr_scope_updated_and_attached": true,
     "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
-    "candidate_status": "本次C-P4候选未运行；实际提交SHA由Git返回并向root交接，不把候选记为已验证"
+    "candidate_status": "本次最小修复待新托管CI；3ed原失败保留，t44_review尚未执行"
   },
   "history": [
     {

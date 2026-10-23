@@ -22,8 +22,8 @@ def _check_signature(expression):
         match = pattern.match(source, position)
         if not match:
             return None
-        token = match[1]
-        tokens.append(token if token.startswith("'") else token.strip("`").lower())
+        lexeme = match[1]
+        tokens.append(lexeme if lexeme.startswith("'") else lexeme.strip("`").lower())
         position = match.end()
     position = 0
     precedence = {
@@ -45,11 +45,11 @@ def _check_signature(expression):
 
     def pop(expected=None):
         nonlocal position
-        token = tokens[position]
+        lexeme = tokens[position]
         position += 1
-        if expected is not None and token != expected:
+        if expected is not None and lexeme != expected:
             raise ValueError("Unsupported CHECK syntax")
-        return token
+        return lexeme
 
     def peek():
         return tokens[position] if position < len(tokens) else None
@@ -64,12 +64,12 @@ def _check_signature(expression):
         return tuple(values)
 
     def parse(minimum=0):
-        token = pop()
-        if token == "(":
+        lexeme = pop()
+        if lexeme == "(":
             left = parse()
             pop(")")
         else:
-            left = ("call", token, arguments()) if peek() == "(" else token
+            left = ("call", lexeme, arguments()) if peek() == "(" else lexeme
         while peek() in precedence and precedence[peek()] >= minimum:
             operator = pop()
             priority = precedence[operator]

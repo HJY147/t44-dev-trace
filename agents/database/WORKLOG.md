@@ -148,3 +148,9 @@
 - 性能限制到达前只读查看过MySQL Inspector正常输出以核真实反射形状；root限制后没有跑pytest/真实MySQL迁移/seed/构建，只编辑、源格式化与Git/日志。源格式化不是lint或测试通过。t44_review已建但本岗尚未使用。
 - root明确性能窗口含400并发和后续两个600秒批次，要求先提交“未运行、待性能窗后验证”可审checkpoint并暂交接释放槽位；遵此不把C-P4标为已过。seed row-builder减重复未启动；当前统一规模仍超5100，不声明达标。
 - 文档岗M2真实问取已原文短答当前发布5849b10/e06及旧模块证据边界，并补同步后的路径993_foundation/989_rows/988_mysql/975_seed；旧日志命令保持当时真实路径。明确当前C-P4进行中，不为文档重测。
+
+## ROLE-database-REVIEW-FIX-v2：真实GHA失败与最小修复
+- 收到新续派并原样归档prompts/ROLE-database-REVIEW-FIX-v2.md。安静窗口未获结束通知；仅远端日志读取、源编辑和Git，不运行本机pytest/数据库/seed/HTTP/构建。
+- 原始run39938428158（PR merge）及39938417442（branch3ed）都为static失败；下载原始job日志、run元数据及static artifact的bandit.json/static-console.log，保存在ci/review-fix-v2/。两者Ruff通过，Bandit B105唯一命中migrations.py:68，token与'('比较误判口令；contracts/coverage/frontend任务成功。
+- 修复只把解析器局部变量token改lexeme，词法/语义/断言不变，无nosec、无门禁或测试削弱。保存失败报告/hash和实际命令差错于original-failures.json；不把下载成功当测试通过。
+- 本checkpoint提交后交给托管CI；t44_review受控结构改动/重复迁移拒绝/恢复验证仍未执行，C-P4未关闭。seed去重在下一小阶段，当前未改seed。
