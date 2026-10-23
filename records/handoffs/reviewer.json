@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
   "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
-  "implementation_status": "限定源码复审和原895一次3绿完成；无生产修改；实际GitHub发布待补",
+  "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -131,6 +131,12 @@
       "input": "Exact head3c160c5 / public Issue25 / developer source and raw evidence",
       "output": "P2 SESSION-R1, exact call chain, public895 failing component probe and raw log",
       "unresolved": "Owner must guard stale failure/unmounted callbacks and provide new SHA; original independent FAIL and full gates remain."
+    },
+    {
+      "peer": "coordinator -> frontend / next acceptance role",
+      "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
+      "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
+      "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
     }
   ],
   "commands_executed": [
@@ -287,6 +293,10 @@
     {
       "command": "895 targeted Vitest only; static source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633150236",
       "result": "Probe1failed/2passed exit1; 19source/14freeze match; COMMENTED exact body and target3c160c5 readback; own7a54479 push exit0."
+    },
+    {
+      "command": "Original895 targeted once; source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633421899",
+      "result": "3/3 exit0; 19source/14freeze/10raw logs match; current headbabc; COMMENTED exact body and commit; own19b9d1d push exit0."
     }
   ],
   "results": [
@@ -294,14 +304,16 @@
     "3源hash/6原gzip及可读规范化一致，红2→绿6和14受影响组证据真实保留",
     "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
     "FE-INIT-01限定关闭；不作为整产品放行",
-    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance."
+    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
+    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
     "75没有重新覆盖率，不复用84092.81为精确新覆盖率",
     "840原完整focus与其他引擎场景未运行边界保持",
     "独立/正式性能/源码规模与整产品门禁仍未闭环",
-    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here."
+    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
+    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review."
   ],
   "questions": [],
   "prompt_refs": [
@@ -486,7 +498,7 @@
       "improvement_reason": "Keep original probe bytes/red evidence; separate stale failures, current401 and driver corrections; limited closure is not whole-product acceptance."
     }
   ],
-  "updated_at": "2026-10-23T19:24:40.171592+00:00",
+  "updated_at": "2026-10-23T19:26:19.633660+00:00",
   "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
   "github_evidence": {
     "exact_body_readback": true,
@@ -980,7 +992,9 @@
     "raw_logs_match": 10,
     "independent_retest": false,
     "full_suite_rerun": false,
-    "github_comment": "pending actual publication"
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899",
+    "github_exact_body_and_commit_readback": true,
+    "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
   },
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical."
 }
