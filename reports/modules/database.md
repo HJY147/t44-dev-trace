@@ -13,4 +13,4 @@
 - 18083前后free，4自有server exit0且PID不存在；每段前app可见profile连接0，后检0，不能当跨账号全局证明，未扩权限。
 - summary/result、43份原件gzip及raw-manifest保留实际原始/gzip hash；已知口令/DSN/Token/Authorization扫描0，值未输出。
 - 只支持当次减少观察重建假设；B更多idle会话/内存代价如实，内存未测。未来配置/总预算/恢复/回滚另设计专审，当前不准入生产，原正式失败/规模6307超1207/人工材料缺口不改写。
-- Issue4/3实际交接/精确readback随收尾归档；本岗AI诊断不是独立验收或学生本人研究/手改。未完整CI/正式压力/额外采样。
+- 结果9d1deff已push；Issue4评论6376531906/Issue3评论6376532216已实际交接并精确GET逐字readback归档；本岗AI诊断不是独立验收或学生本人研究/手改。未完整CI/正式压力/额外采样。

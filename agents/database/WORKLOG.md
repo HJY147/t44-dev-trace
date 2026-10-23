@@ -253,3 +253,6 @@
 - 18083前后free，4自有server exit0且PID最终不存在；每段前app可见profile其他连接0，最终0，保留跨账号不可见局限，未扩权限。22:35原fixture未刷新/未修改，前后bytes hash及8个client相同。只有contract只读候选，无业务fixture创建/seed/清库。
 - 离线逐请求核10882（warmup2198/steady8684）全部client-server恰1关联、HTTP200/原valid守卫；恰1endpoint/runtime/authenticate/acquire/checkout，三候选cursor4/5/5全SELECT/SQL错误0。19实际应用/资源/池源hash与bc5/官方2.1.6一致；14冻结仍全同，生产净改0。
 - 43份实际原件按原bytes gzip存raw并以raw-manifest.json绑定原始与gzip SHA。扫描已知DB口令/完整DSN/fixtureToken/Authorization标记匹配0，未输出值；result.md/summary.json写真实4段原值、acquire inclusive与线程CPU、钩子/本机竞争/短样本限制、B每worker多10idle及未测内存。支持本次减少重建假设，不作正式根因/显著性/生产准入。
+
+- 实际结果9d1deff3592d12e169f30a25537540c93096abf0已push。随后通过GitHub connector向Issue4/3实际发表完整阶段交接，并各comments/:id精确GET读回，正文与真实提交和本地文件逐字一致：Issue4#issuecomment-6376531906、Issue3#issuecomment-6376532216；github-readback.json保留endpoint/id/body/time/actor/hash。没有设review成功或关Issue/改生产准入。
+- 收尾逐一解压43份public gzip并核原bytes/gzip SHA全同；summary补实际回执。955与执行源f75a8a4字节相同、生产仍bc5；本阶段已完成，只有离线归档，没有第二次比较或额外HTTP/SQL/本机负载，释放实例槽。

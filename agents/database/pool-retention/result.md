@@ -40,3 +40,6 @@ B当次每worker多保留10个空闲连接。服务端每连接内存未测，�
 18083前后均free，四自有server全部exit0且PID最终不存在；每段前当前app可见的本库其他连接0，后检0。该PROCESSLIST视图不证明跨账号全局无连接，没有扩权限。完成后已立即通知root释放窗口，此后仅离线分析/归档，没有第二次采样、额外profile/负载或HTTP/SQL。
 
 完整summary.json、43份原件gzip及raw-manifest.json保留原bytes/gzip SHA256；公件扫描已知DB口令、完整DSN、原fixture Token及Authorization标记匹配0，值未输出。工具初次I001与源读取CA问题、离线合成失败路径测试均保留，其合成计数不混入上述真实请求。Issue4/3实际协商与精确GET读回另附本岗收尾回执。
+
+
+已实际通过GitHub connector向[Issue4](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376531906)/[Issue3](https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376532216)交付上述事实与后端边界，再按各comments/:id精确GET读回；正文与实际提交/本地文件逐字一致（github-readback.json）。结果公开commit9d1deff3592d12e169f30a25537540c93096abf0，未设置review成功/关Issue或准入生产。本收尾只补文档/回执，955/生产与实际执行源字节不变。
