@@ -199,9 +199,19 @@ def main():
             context.close()
         h.rec.run(ids[0], login_logout)
 
-        f = h.fixture(title='Independent visible A ' + S.key())
-        g = h.fixture(title='Independent visible B ' + S.key())
-        a = h.task(f, title='Visible task A ' + S.key()); b = h.task(g, title='Visible task B ' + S.key())
+        reuse = h.c.get('browser_fixture_reuse')
+        if reuse:
+            if set(h.c.get('selected_case_ids', [])) != {ids[4]}:
+                raise S.Blocked('Read-only UI fixture continuation is restricted to original history case')
+            f = {'p': reuse['project_id']}; g = {'p': reuse['other_project_id']}
+            a = h.get(f, reuse['task_id']); b = h.get(g, reuse['other_task_id'])
+            f['i'] = a['iteration_id']; g['i'] = b['iteration_id']
+            h.rec.event({'kind': 'read_only_UI_fixture_continuation', 'source_execution': reuse['source_execution'],
+                         'task_id': a['id'], 'authoritative_task_version': a['version']})
+        else:
+            f = h.fixture(title='Independent visible A ' + S.key())
+            g = h.fixture(title='Independent visible B ' + S.key())
+            a = h.task(f, title='Visible task A ' + S.key()); b = h.task(g, title='Visible task B ' + S.key())
         pname = h.data('getProject', ids=h.ids(f), expected=200)['name']
         gname = h.data('getProject', ids=h.ids(g), expected=200)['name']
         def project_switch():
@@ -281,8 +291,19 @@ def main():
 
         def history():
             context, page = fresh('m'); open_project(page, pname); open_task(page, a['title'])
-            one(page.get_by_text('变更与排期差异', exact=True), 'task history tab').click()
+            # Task history is exposed by the project's audit-record route and each record's
+            # actual full-record disclosure, not the distinct schedule-differences tab.
+            one(page.get_by_role('link', name='审计记录', exact=True), 'actual audit history route').click()
+            field(page, '^任务编号$').fill(str(a['id'])); page.keyboard.press('Tab')
+            records = h.data('listProjectAuditEvents', ids=h.ids(f), query={'task_id': a['id']}, expected=200)['items']
+            records = [r for r in records if r.get('task_id') == a['id']]
+            if not records: raise S.Blocked('Actual task audit record is not available for history navigation')
+            latest = max(records, key=lambda r: r['id'])
+            article = one(page.locator('article').filter(has=page.get_by_text('编号 ' + str(latest['id']), exact=True)),
+                          'latest authoritative task audit card')
+            one(article.locator('summary'), 'full audit record disclosure').click()
             page.wait_for_load_state('networkidle')
+            h.rec.event({'kind': 'task_history_binding', 'audit_id': latest['id'], 'task_id': a['id']})
             S.check(bool(re.search('原因|依据|操作者|操作人', text(page))), 'History exposes provenance labels')
             current = h.get(f, a)
             S.check(str(current['version']) in text(page), 'Task page/history has latest authoritative version evidence')
