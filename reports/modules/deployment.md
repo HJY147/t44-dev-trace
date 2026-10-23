@@ -227,3 +227,4 @@
 - README及成功/不完整合成JSON列格式和语义：cache扣除非RSS、PIDs含线程、格式累计IO非速率、CPU非600秒、非原子/峰值及真实调用开销。
 - 新865共15合成guard/0.04s及Ruff通过；CLI缺失红/首lint失败保留在agents/deployment/runtime-usage-validation。无真实Docker或runner采样/性能结论，不重复旧suite，不读独立资料；由后续准确环境调用验证。
 - 实现SHA8983e4c098849c7e9be8869c3bb42bc2697ccadd已push，Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376973663实际发布/完整GET一致；工具阶段封档，真实环境绑定/采样待调用方。
+- 预算勘明：六项各Compose10s+inspect15s，stats15s，非整体≤15秒；调用方超时覆盖多步骤/实测整体wall。仅README封档、不改逻辑或重测；补充Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376985104全文GET一致，源/检查/文件SHA见runtime-usage-validation/seal.json。
