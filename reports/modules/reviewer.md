@@ -106,3 +106,7 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 发布补记：远端head后变为4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0、frontend/src及Vite与75差异为空。插件实际COMMENT5632472310已发布；gh只读特定review核commit_id=75、state=COMMENTED、正文逐字一致。回执 `agents/reviewer/evidence/empty-value-75c/github-comment.json`。没有发布任何status/APPROVE或合并。
 
 两轮最终公开留痕：840 COMMENT5632356314（报告d8bba16、回执e79fb5e）与75 COMMENT5632472310（报告67e051f、回执后续归档），均已发布并精确绑定各自source。documentation按M5实问索取后，已回复这两组准确SHA/链接/未测边界；未向其提供任何独立未发布材料。
+
+## PR26会话清理专项（3c160c5，不通过）
+
+设计844先于产品363，最终head3c160c57c56af47eea2c524d93340a679eeb441b。统一清理/认证DOM卸载和成功响应保护有明确实现；19源/14冻结/7原gzip及开发9目标与39全套/覆盖率分母均核验。root授权895纯组件探针1红2绿：旧卸载表单403仍跨会话调用refreshConflict，context在unmount序号检查前清空新身份项目，孤儿读取503后project={}。P2 SESSION-R1阻断专项，责任frontend，由root转发；不报服务端越权，不修产品、不撤销原独立FAIL。报告reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md；证据agents/reviewer/evidence/session-3c160c5。正式性能/完整独立/6051超5100（总协调给定，未重算）仍未通过。

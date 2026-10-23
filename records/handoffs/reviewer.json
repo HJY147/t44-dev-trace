@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "暖米咖840及空文本75限定审核/COMMENT完成；整产品不放行",
-  "implementation_status": "审核资料已完成；无产品代码修改",
+  "stage": "PR26精确3c160c5会话清理专项：P2 SESSION-R1阻断，需前端修复",
+  "implementation_status": "审核报告/纯夹具探针完成；无生产代码修改；GitHub发布回执待实际补记",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -69,7 +69,11 @@
     "agents/reviewer/evidence/empty-value-75c/pr-initial.json",
     "agents/reviewer/github/empty-value-75c-comment.md",
     "agents/reviewer/evidence/empty-value-75c/github-comment.json",
-    "agents/reviewer/evidence/empty-value-75c/pr-before-comment.json"
+    "agents/reviewer/evidence/empty-value-75c/pr-before-comment.json",
+    "reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md",
+    "agents/reviewer/evidence/session-3c160c5",
+    "tmp/frontend/895_session_lifecycle_probe.test.ts",
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt"
   ],
   "interfaces": [
     {
@@ -455,9 +459,14 @@
         "agents/reviewer/evidence/empty-value-75c/pr-initial.json",
         "agents/reviewer/github/empty-value-75c-comment.md"
       ]
+    },
+    {
+      "id": "ROLE-reviewer-SESSION-CLEANUP-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt",
+      "improvement_reason": "Separate success response guards from late error callbacks after unmount; verify through real component chain; do not overclaim server bypass."
     }
   ],
-  "updated_at": "2026-10-23T18:03:08.936970+00:00",
+  "updated_at": "2026-10-23T18:58:22.206907+00:00",
   "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
   "github_evidence": {
     "exact_body_readback": true,
@@ -914,5 +923,22 @@
       "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
     }
   },
-  "source_count_current_not_recomputed": true
+  "source_count_current_not_recomputed": true,
+  "session_cleanup_review": {
+    "head": "3c160c57c56af47eea2c524d93340a679eeb441b",
+    "product": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+    "status": "NOT_PASSED",
+    "finding": "P2 SESSION-R1: unmounted old form error invokes new-session context refresh; 503 erases new project cache",
+    "probe_result": {
+      "passed": 2,
+      "failed": 1,
+      "exit_code": 1,
+      "network": false
+    },
+    "source_hashes_match": 19,
+    "frozen_hashes_match": 14,
+    "full_suite_rerun": false,
+    "independent_retest": false,
+    "github_comment": "pending actual publication"
+  }
 }
