@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "部署/CI工程实现；待应用集成",
-  "implementation_status": "部署配置、操作脚本与CI配置已实现；应用和容器集成未验证",
+  "stage": "完整应用Docker联调执行checkpoint",
+  "implementation_status": "部署/CI及真实应用运维接线已实现；Docker application job待推送实际执行",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -37,7 +37,6 @@
     "deployment/nginx/nginx.conf",
     "deployment/ops.py",
     "deployment/runtime_probe.py",
-    "deployment/tests/test_ops.py",
     "deployment/vendor/SOURCE.json",
     "deployment/vendor/compose-spec.LICENSE",
     "deployment/vendor/compose-spec.json",
@@ -52,7 +51,6 @@
     "scripts/ci/ruff.toml",
     "scripts/ci/run_tests.py",
     "scripts/ci/static.py",
-    "scripts/ci/tests/test_gates.py",
     "scripts/ci/validate_config.py",
     "agents/deployment/runtime-pr-body.md",
     "agents/deployment/runtime-result-comment.md",
@@ -62,7 +60,16 @@
     "agents/deployment/runtime-validation/remote-log-provenance.json",
     "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
     "agents/deployment/runtime-handoff-comment.md",
-    "agents/deployment/runtime-pytest-reply.md"
+    "agents/deployment/runtime-pytest-reply.md",
+    "deployment/credential_admin.py",
+    ".github/workflows/docker-integration.yml",
+    "tmp/deployment/997_ops.py",
+    "tmp/ci/996_gates.py",
+    "tmp/deployment/971_credentials.py",
+    "tmp/deployment/972_compose_application.py",
+    "agents/deployment/integration-validation/",
+    "agents/deployment/integration-checkpoint-comment.md",
+    "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md"
   ],
   "interfaces": [
     {
@@ -278,19 +285,11 @@
     "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实"
   ],
   "unverified": [
-    "本机无Docker：镜像拉取/构建、Nginx执行、Compose启动和服务连通均未验证",
-    "应用包、哈希锁、迁移/账号CLI和真实模块测试尚未交付，本岗产品入口退出1",
-    "真正MySQL/RabbitMQ集成、故障、全量覆盖率及frontend真实测试尚未运行",
-    "备份/隔离恢复未实跑，迁移版本/表约束/业务数据/队列恢复尚待验证；RPO/RTO未决定",
-    "无服务器租赁、产品部署、独立验收或400并发/P95/吞吐数据",
-    "首次workflow已真实结束但失败于缺应用；后续PR自动运行状态以精确提交为准，不能当产品测试或覆盖率已通过"
+    "Docker真实镜像build/完整Compose应用/凭据轮换/备份隔离恢复待新job执行，本机无Docker",
+    "未租云资源，无云部署/独立验收/性能结论"
   ],
   "questions": [
-    "后端何时交付哈希锁、t44应用、CLI退出行为和三类marker真实测试？",
-    "数据库迁移--database参数、镜像DDL路径、迁移版本及恢复核对命令尚待正式实现确认",
-    "前端test:coverage的真实Vitest参数/报告接口尚未确认，需覆盖所有TS/Vue生产源码",
-    "消息/调度持久化、故障回执、跨进程幂等及续扫须责任岗实现；不能以进程健康替代",
-    "main五项门禁已由总协调配置，产品真实测试/行覆盖率与独立审核未通过前不得合入；部署岗等待集成"
+    "实际Docker联调结果尚待首次执行；失败按日志修复，不用配置检查替代"
   ],
   "prompt_refs": [
     {
@@ -343,6 +342,11 @@
         "agents/deployment/runtime-pytest-reply.md",
         "agents/deployment/runtime-handoff-comment.md"
       ]
+    },
+    {
+      "id": "ROLE-deployment-INTEGRATION-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
+      "reason": "基于已实现应用做真实Docker运行、私密凭据和备份恢复证据；统一tmp编号，保留严格全源码行覆盖率"
     }
   ],
   "updated_at": "2026-10-23T06:44:10.857158+00:00",
@@ -368,5 +372,15 @@
     "final_issue_handoff": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315",
     "pytest_reply": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
     "handoff_revision": "最终事实记录所在提交由Git元数据/PR确定；final_implementation_commit是运行配置修复提交"
+  },
+  "integration_delivery": {
+    "web_checkpoint": "8e8c839e6f3aeb29b51f05a5a8a22a36995e4298",
+    "ci_path_checkpoint": "7e4dbda1e7afd82ce3c794dfdf025e6ca8870277",
+    "parent_reported_product_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+    "product_sha": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+    "product_jobs": "static/contracts/coverage/frontend success, reported by root",
+    "local_fe_lines": "308/334 92.21%",
+    "local_guards": 23,
+    "docker_application": "not yet run"
   }
 }

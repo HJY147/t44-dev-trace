@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
-def check_database() -> None:
+def check_database(role: str) -> None:
     import pymysql
 
     url = urlsplit(os.environ["DATABASE_URL"])
@@ -26,6 +26,17 @@ def check_database() -> None:
         cursor.execute("SELECT 1")
         if cursor.fetchone() != (1,):
             raise RuntimeError("database probe failed")
+        if role == "scheduler":
+            from t44.scheduling.rules import load_rules
+
+            max_age = max(180, load_rules().scan_interval_seconds * 3)
+            cursor.execute(
+                "SELECT status,error_code,TIMESTAMPDIFF(SECOND,heartbeat_at,UTC_TIMESTAMP(6)) "
+                "FROM scan_runs ORDER BY id DESC LIMIT 1"
+            )
+            progress = cursor.fetchone()
+            if not progress or progress[0] not in (1, 2) or progress[1] or not 0 <= progress[2] <= max_age:
+                raise RuntimeError("scheduler progress is missing, stale or failed")
 
 
 def check_process(module: str) -> None:
@@ -49,7 +60,7 @@ def main() -> int:
             check_process({"consumer": "t44.messaging", "scheduler": "t44.scheduling"}[role])
         else:
             raise ValueError("unknown probe role")
-        check_database()
+        check_database(role)
     except Exception:  # noqa: BLE001 -- fail closed and redact driver-specific connection details
         # Exception text can include a database URL or driver connection details.
         print("local process/dependency check failed", file=sys.stderr)

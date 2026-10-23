@@ -15,10 +15,12 @@ def main() -> None:
     schema = json.loads((ROOT / "deployment/vendor/compose-spec.json").read_text())
     jsonschema.Draft7Validator(schema).validate(document)
     services = document["services"]
-    assert {"mysql", "rabbitmq", "api", "consumer", "scheduler", "web", "migrate", "admin"} == set(services)
+    assert {"mysql", "rabbitmq", "api", "consumer", "scheduler", "web", "migrate", "admin", "credential-admin"} == set(services)
     assert all("ports" not in value for key, value in services.items() if key != "web")
     assert services["web"]["ports"] == ["127.0.0.1:${T44_HTTP_PORT:-8080}:8080"]
-    assert {"mysql_data", "rabbitmq_data"} == set(document["volumes"])
+    assert {"mysql_data", "rabbitmq_data", "scheduler_secrets", "scheduler_locks"} == set(document["volumes"])
+    assert "scheduler_secrets:/run/t44-secrets:ro" in services["scheduler"]["volumes"]
+    assert "scheduler_locks:/var/lib/t44-scheduler" in services["scheduler"]["volumes"]
     assert "service_healthy" in json.dumps(services["api"]["depends_on"])
     assert services["migrate"]["profiles"] == ["operations"]
     assert services["api"]["command"].count("4") == 1

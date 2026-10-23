@@ -11,8 +11,8 @@ def main() -> int:
     REPORTS.mkdir(parents=True, exist_ok=True)
     commands = [
         [sys.executable, "scripts/ci/validate_config.py"],
-        [sys.executable, "-m", "pytest", "-c", "backend/pyproject.toml", "tmp/deployment/997_ops.py", "tmp/ci/996_gates.py", "-q"],
-        [sys.executable, "-m", "ruff", "check", "--config", "scripts/ci/ruff.toml", "deployment", "scripts/ci"],
+        [sys.executable, "-m", "pytest", "-c", "backend/pyproject.toml", "tmp/deployment/997_ops.py", "tmp/deployment/971_credentials.py", "tmp/ci/996_gates.py", "-q"],
+        [sys.executable, "-m", "ruff", "check", "--config", "scripts/ci/ruff.toml", "deployment", "scripts/ci", "tmp/deployment", "tmp/ci"],
     ]
     missing = require_application()
     if not missing:

@@ -13,7 +13,7 @@ x-application: &application
   security_opt: [no-new-privileges:true]
   stop_grace_period: 30s
   networks: [data]
-  environment:
+  environment: &application-environment
     PYTHONPATH: /app/backend
     DATABASE_URL: mysql+pymysql://${MYSQL_USER:-t44}:${MYSQL_PASSWORD:?Generate .env first}@mysql:3306/${MYSQL_DATABASE:?Select database}
     T44_DATABASE: ${MYSQL_DATABASE:?Select database}
@@ -93,6 +93,13 @@ services:
   scheduler:
     <<: *application
     command: [python, -m, t44.scheduling]
+    environment:
+      <<: *application-environment
+      T44_SCHEDULER_TOKEN_FILE: /run/t44-secrets/scheduler-token.json
+      T44_SCHEDULER_LOCK_FILE: /var/lib/t44-scheduler/scan.lock
+    volumes:
+      - scheduler_secrets:/run/t44-secrets:ro
+      - scheduler_locks:/var/lib/t44-scheduler
     depends_on:
       mysql: {condition: service_healthy}
     healthcheck:
@@ -116,6 +123,16 @@ services:
     restart: "no"
     entrypoint: [python, -m, t44.cli]
     command: [--help]
+    depends_on:
+      mysql: {condition: service_healthy}
+
+  credential-admin:
+    <<: *application
+    profiles: [operations]
+    restart: "no"
+    entrypoint: [python, /app/deployment/credential_admin.py]
+    command: [--help]
+    volumes: [scheduler_secrets:/run/t44-secrets]
     depends_on:
       mysql: {condition: service_healthy}
 
@@ -145,6 +162,8 @@ services:
 volumes:
   mysql_data:
   rabbitmq_data:
+  scheduler_secrets:
+  scheduler_locks:
 
 networks:
   data: {internal: true}

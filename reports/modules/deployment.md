@@ -86,3 +86,11 @@
 - 运行配置最终修复6d713eb8fa5af419fe061c8c9b2061f2699472dc已push；原始日志gzip+SHA保真，阅读稿规范尾空白，diff检查通过；authoritative contracts COPY已核对，无sources。
 - 最新总协调保护回执为root records/github/protection-v2-response.json：main五项必需检查已配置，strict/enforce_admins=true；旧“只有reviewer/stage”不代表当前。本岗未改保护/重跑/合并。
 - 本次仅归档与回复CI真实pytest/JUnit/coverage命令；后端目前纯domain基础仍不是API完成。PR15保持草稿并已attach，首次run失败、缺应用和未本机构建的限制不变，待应用齐备后集成。
+
+### INTEGRATION-v1 当前checkpoint
+
+- web构建路径8e8、CI编号迁移7e4已发布；统一集成265d89bd的run39931640641四项真绿由总协调通知，不代替本岗Docker联调。
+- 已接真实service-token CLI，scheduler目录只读/JSON0600、共享flock持久卷；操作包装先停scanner再轮换撤销/启动。凭据不入.env或公开输出。
+- 新Docker application job/972 driver将真实build/up/迁移/seed/4worker/HTTP/SPA/413/凭据轮换/停写备份和隔离恢复；尚未执行，本机无Docker。
+- 本地23 guard、配置/Ruff/actionlint通过；FE新CI命令真实通过whole-src行92.21%。原始证据在agents/deployment/integration-validation。
+- tmp路径为tmp/backend、tmp/deployment/997_ops.py、tmp/ci/996_gates.py，新增971凭据guard/972独立Docker driver。无云部署、性能或独立验收结论。
