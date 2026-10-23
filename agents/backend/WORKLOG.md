@@ -200,3 +200,11 @@
 - public bootstrap未完成：登录阶段HTTPStatusError，安全debug确认非JSON502；另一次debug尝试解析该响应产生JSONDecodeError。失败摘要profile-bootstrap-failure.json保留状态/路径/调用帧，未存响应body或凭据。未生成fixture、未进入1/8/32主样本，没有CPU/SQL/延迟瓶颈数据，不把空闲进程CPU当负载指标。
 - HTTP_PROXY等八个环境变量均未设，但urllib.getproxies实际返回http/https/socks键；已安装HTTPX源码明确默认读取系统代理。现在仅工具两处Client改trust_env=False固定回环直连，先保存HTTP状态再解析JSON、metadata补UTC。代理是待直接重试验证的假设，未归因产品502或宣称修复已通过。未关闭TLS验证、未改生产代码/冻结件。
 - 静态误用根Ruff默认配置产生BLE001/format失败；使用显式--config backend/pyproject.toml的check/format及AST解析通过，原两种配置真实输出都保存profile-proxy-static.log。无pytest/build/DB/HTTP重试。已告root两服务/请求均结束，LO可解除hold；下一阶段需重新协调CPU窗口。
+
+## ROLE-backend-CAPACITY-V11-IMPLEMENT-v1 checkpoint 1：只交合同
+
+- 干净652树快进eac253039cd85873d3b262e648b2b74d94d715a8，读取D005/D006、U015/U016、最终RFC及bbc限定设计审核，SHA a6271e…d98匹配。按root实际收紧续派，先合同→root新freeze→业务实现；实际原文CAPACITY-V11-IMPLEMENT-v1-prompt.md。未联系tester/读私有资料，性能955未运行。
+- 权威及运行副本info.version/Meta.const同步1.1.0，明确pending-v1.1-freeze；assignment及transition补ID30/422的response枚举、业务注解和触发依据，createTask保留既有语义，changeIteration写全量owner检查。README/design写明capacity1–5与成员1–5+7两套边界、rework补回、锁序及合法串行双成功。31paths/38ops、请求字段/参数/权限scope、非Meta组件均未变；原v1清单不改，DDL18/226不动。
+- 真实openapi_spec_validator.validate及所有38操作error cases-response HTTP-enum、只读无幂等错误、运行副本一致检查通过，capacity-v11-contract-validation.log/json。此为合同静态检查，不是新业务已实现/部署/HTTP通过；新freeze由root生成。
+- 先在现有986写13个新版开发回归，旧生产逻辑实际11failed/2passed/55deselected，原日志/XML capacity-v11-before.*保存；2通过仅状态6/7原本可移出。随后曾开始未提交业务草稿，收到root收紧前已启动一次局部草稿执行，13passed/55deselected，结果保留工作树capacity-v11-after.*但排除本合同checkpoint；不以此绕过接口先冻结。5个service草稿和986新用例均不暂存，等root新freeze后再继续/正式验证。
+- 只读发现FE fixture/README写死1.0，已向frontend提出1.1需求；其当前仅获旧1.0复验，须root后续派其同步。本岗不改FE或DB规格/共享台账，不推定旧362CI等于新源通过。
