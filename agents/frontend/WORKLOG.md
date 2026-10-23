@@ -66,3 +66,12 @@
 - documentation M2真实问取：当前最终发布SHA、模块报告/handoff、页面/真实API、模块测试、debug证据、缺口及tmp迁移路径。实际短答：已发布bd13414b92ac56faea010463b03ab74b2a01e52c，报告reports/modules/frontend.md、交接records/handoffs/frontend.json；21项92.21%，七态真API已跑，通知/升级当时503待补；测试已迁tmp/frontend/998、983、982与981，浏览器984；本轮fast-forward ff83但尚无新增提交。该短答为当时事实，通知接入与新测试以后续证据为准。
 - 当前仍待：完整后端通知/升级/审计浏览器回归与真冗余CSS清理；本checkpoint不宣称此两项已完成。
 - 最终 pnpm test:coverage：24/24通过，完整src 19文件行92.19%(307/333)、分支86.76%、函数83.78%；pnpm build含vue-tsc通过，保留bundle>500kB提示。原始输出gzip及可读日志integration-ui-regression-final/integration-ui-build。
+
+### 2026-10-23T18:00:09+08:00｜CSS/完整后端七态 checkpoint
+- 完整后端18080已合消息/调度。984脚本改真实通知200检查，输出以FRONTEND_BROWSER_OUTPUT指定新integration-full目录，不覆盖application历史。真实跑282 HTTP；七态/返工、八段十项、四风险/不同人审核、经理403、改期依赖/审计再次通过；pageerror0，console仅一条预期403资源错误。
+- 958删除前/后1440/390七页面与rules各94次HTTP均成功、pageerror/console均0，无整页横向溢出。83候选规则涉及32 own class：19 TS/Vue源码无引用，检查动态类和ElementPlus祖先；所有运行DOM0命中后才删除。styles297→214行，未压缩、未改计数范围/业务/a11y。清单integration-css-removal.json；完整0命中原JSON压gzip并存hash，摘要保留每页83规则计数。
+- 前后桌面与手机任务PNG字节完全一致，手机通知PNG亦一致；桌面通知人工核对布局一致但PNG不同不冒称像素相同；排期因新增合成迭代内容变多，手机布局/入口和文字完整，无横溢出。comparison与真实截图存integration-browser。
+- C-P1真实UI→HTTP创建迭代、嵌套完整预填容量8→12、权威响应/下拉名称均通过。原经理通知已读已处理，958在未读断言停止未执行通知写；两次失败保留。总协调授权新任务准备，后续只对新任务生成事件，不重置旧记录。
+- 958初次等待文案写成“扫描间隔”而实际“扫描间隔（秒）”超时，修改精确选择器后布局检查通过；原失败保留。输出路径曾用URL.pathname编码中文，已以fileURLToPath修正并把本人产物迁回正确目录；无凭据写入。Python图像比较因未装PIL未运行，改为PNG字节hash和真实图片人工核对，不编造像素分析。
+- CSS后pnpm build含vue-tsc通过；CSS55.30→49.99kB（gzip10.36→9.19），JS822.65kB提示保留；TS/Vue未进一步改变，最近24项/行92.19%结果仍有效。
+- CSS checkpoint暂存检查发现原browser-before日志EOF空行，commit未执行；原字节先存raw gzip，再规范可读日志尾空白后重检。真实UI新建task20/version1/schedule_version1供新通知事件，prepare首轮误把TaskMutationResult当Task读取失败但已创建task19，失败保留；后轮按data.task读取成功。不重置旧任务或事件。

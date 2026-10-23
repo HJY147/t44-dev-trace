@@ -46,3 +46,5 @@
 
 本轮收尾 checkpoint：冻结 Iteration 的 plan/name/capacity 嵌套预填与历史幂等重放提示已修；新增回归先复现3失败21通过，日志 agents/frontend/integration-ui-regression-before.log（raw gzip保留）。完整后端通知/升级浏览器与CSS清理尚待本轮后续，不将模块修复等同独立验收。
 本checkpoint最终验证：24项通过；全src行92.19%、分支86.76%、函数83.78%；vue-tsc/build通过。真实后端页面回归未在该checkpoint宣称完成。
+
+收尾CSS/完整后端checkpoint：真实删除83条旧规则(297→214行)，before/layout各94 HTTP全成功、零浏览器错误；七态完整后端再跑282 HTTP通过，只有预期经理403资源错误。C-P1真HTTP迭代容量8→12已证实；通知GET200、写回归等待新合成事件，原失败保留。CSS构建49.99kB，vue-tsc/build通过；细节agents/frontend/integration-*。
