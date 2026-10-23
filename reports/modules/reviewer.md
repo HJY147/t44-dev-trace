@@ -153,3 +153,12 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 本岗只此1次HTTP绿，未跑owner6/7/旧18/89/66/CI/browser/DB/负载。公开3580的11原件hash/精确源/旧反例引用hash匹配，开发6案2红4绿→7绿分开记录；14freeze/44Py20TSVue/旧986前缀与函数保持。元数据实核准确bc5 productpush40023062800四job成功，dockerpush成功，初PRproduct快照仍跑，不宣称全门禁。history有效+4（92→96）与物理净+6区别已向root说明，整体规模仍失败。报告reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md；证据agents/reviewer/evidence/plan-reason-evidence-bc5；实际prompt ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1。COMMENT/readback实发后补，无APPROVE/status/merge。
 
 窄修实际发布：2ff0f1c6717d849538a11be02001ef41f2557e69已push/[skip ci]；PR21 COMMENT5634448127及完整GET严格绑定bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。封存前同源PR product40023068752已success，初pending快照仍保留；本岗不重核全量CI原件，不影响整体未放行。原42243失败/原红/5634370911保持。
+
+
+## PR34原生应用与root中性stdout专项（2026-10-24）
+
+精确A archive5ef1bde95e511c14dcff7b5fa0af2449de83836c / implementation0a6da88c404c04515c3c07039f0e231908fddc0e / appSUTbc5，与B cf685d7b745774fe29ddc4884606edae6836e961 / evidence189分开绑定。自有隔离分支codex/review-native-application，实际prompt ROLE-reviewer-NATIVE-APPLICATION-v1先归档，不改产品/部署/原测试。
+
+发现P2 NATIVE-CAPTURE-TIMEOUT-01：capture初次超时后cleanup退出0被正常返回且无超时事实。唯一无进程精确AST反例真实exit1，交deployment窄修；A不通过。run1原失败与run2无超时真实成功均保持，未重启cycle。B所列静态差量/公开原件未见新增实质阻断；63绿及23/3属于开发执行，本岗仅核30摘要/14冻结和旧953前缀。报告reports/reviews/34-5ef1bde95e511c14dcff7b5fa0af2449de83836c.md，证据agents/reviewer/evidence/native-application-189a4e2。没有私有/独立资料读取、套件/DB/负载/CI重跑、APPROVE/状态/整体放行或合并；实际COMMENT回执另补。
+
+实际发布：阶段证据8454da244ed0d3dbea84f6aca0630c003c787a44已push；PR34 COMMENT5634837225显式绑定完整5ef，插件list与完整REST GET逐字核body/commit_id/COMMENTED，exit0，回执github-comment.json。A仍不通过，不把run2改记失败；无状态/APPROVE/CI/merge。

@@ -247,3 +247,15 @@
 - 八段十项新报告21-bc5及自有一次绿/公开原件hash归档；PR21准确bc5 COMMENT/完整GET按实际完成补记，无APPROVE/status/CItrigger/merge。
 
 - 窄修阶段证据2ff0f1c6717d849538a11be02001ef41f2557e69已push exit0/[skip ci]；最终同源productPR40023068752也completed/success，与push40023062800四job及dockerpushsuccess分开保存初/末metadata。PR21 COMMENT5634448127真实发布并完整GET严格核bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。原42243失败及其COMMENT5634370911不改。只补回执后释放槽，无APPROVE/status/CItrigger/merge。
+
+
+## 2026-10-24 原生应用与中性stdout专项审核（5ef/0a6 + cf685/189）
+
+- 实际ROLE-reviewer-NATIVE-APPLICATION-v1及唯一反例追加派工存dispatches；从root189建隔离codex/review-native-application，先scope后静态。不改生产/部署/原测试/冻结，不读私有凭据/dump/运行输出/独立资料，不扩编。
+- A准确archive5ef、implementation0a6、appSUTbc5分开；A业务树相对真实30d66分支基线不改，不能把archive旧业务树当实际copy SUT。B准确cf685及189证据、先行RFC分开。精确PID/cwd/pgid/uid/start/command、源hash/path、argv/log、stop/rotation/finally逐路径读。
+- 证实P2 NATIVE-CAPTURE-TIMEOUT-01（application.py:138–155）：TimeoutExpired后受控进程处理SIGTERM exit0，capture正常返回且receipt无timed_out。唯一无进程AST反例预期拒绝断言真实exit1；实际新进程/信号0。已即时报root交deployment窄修；不自行修，不重启cycle。
+- A公开30份源/原件摘要、shutdown2gzip压缩解压SHA及14freeze核对通过；run1 exit1/cleanupfalse与后置absent分开，run2 driver0/cycletrue/cleanuptrue仍真实保留，新scan3/4间隔60.303070s、轮换4→5 TTL300/scan5、既有16events26notices复核不是新publish。无私有源副本/秘密重查，不补staging前后byte证明。
+- B只compose/account AST变化，原953前缀保留，其余Controls方法AST不变；3源9原件hash及XML旧11项10红→63全绿核实，实际CI-config Ruff绿/默认4既有诊断保留。不把owner运行当本岗执行；B所列静态差量未见新实质阻断。
+- 本岗未跑871/873/953套件、全量/build/browser/真实DB/负载/服务/CI。八段十项报告34-5ef...结论A不通过、整体不放行。初次读不存在role AGENTS文件exit1仅路径探查，不记产品失败。GitHub COMMENT/完整GET及commit/push实际回执随后追加。
+
+- 阶段证据8454da244ed0d3dbea84f6aca0630c003c787a44已commit/push exit0，[skip ci]；PR34 COMMENT5634837225真实发布，插件list正文/COMMENTED逐字匹配，gh完整特定review GET再严格核完整5ef commit_id/body/state，exit0：https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634837225。回执github-comment.json；原反例/run1失败/run2真实成功均保留，无APPROVE/status/CI/merge。仅补自身回执后释放槽位。
