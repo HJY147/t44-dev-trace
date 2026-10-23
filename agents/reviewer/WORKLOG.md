@@ -223,3 +223,12 @@
 - 八段十项报告30-c56及static-audit/execution/13case原件完成；插件实时PR30 draft/baseintegration/headc56。整体及旧独立FAIL不因本轮放行；UI003不混入。真实COMMENT/完整GET回执将在实际发布后补，无APPROVE/status/merge。
 
 - 自有阶段证据b40b28b1136f4c5673b234d09055a37dede78ee3已push exit0；PR30 COMMENT5633760634真实发布，插件正文逐字匹配/COMMENTED，gh只读完整GET特定review准确commit_id=c56及正文严格相同，exit0：https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634。github-comment.json完整回执。无APPROVE/status/CI触发/merge；只补发布归档后释放槽位。
+
+
+## 2026-10-24 Issue28计划理由全链首审（42243，不通过）
+
+- 实际ROLE-reviewer-PLAN-REASON-v1原派工及root版本/窄范围续派存dispatches；独立codex/review-plan-reason从42243建立。不改产品/冻结/开发测试，不读tmp/independent或私密独立/v3内容、不联系tester、不新增编号测试。
+- 先读RFC/root准入，追DB3b7精确pairs→backend0549页投影/同Tx新reason→FEc79字面呈现。三owner源字节与42243一致、14freeze匹配、44Py/20TSVue分母实核；Runtime/R1/UI002已审源保持，backend公开5b96的36artifact及源码/测试摘要匹配，986/985旧前缀完整。
+- 真实P2 HISTORY-EVIDENCE-01：history.py:66普通evidence容器==把合法audit.kind整数1和schedule JSON.kind布尔true视为相等，违RFC保守匹配。先纯matcher实值检查，再唯一自有内存SQLite HTTP/TestClient/RowsGateway反例，无gateway/matcher mock；原986 fixture完整actor/task/微秒/5plan/versions不变。GET200、AuditEvent有效却错误追加reason，两表原行不变；assert应无投影真实红exit1，log/json完整保留。未把受控不一致旧JSON说成正常新写漏洞/越权。
+- 先报root/职责backend，root认可不放宽RFC并要求唯一本例确认后seal，不继续异常矩阵/native旁线。backend已读本岗明确发布证据，另做先设计勘误/窄修/原红绿；本岗不代修、42243原失败不覆盖。
+- PR21实时head7f89264，42243祖先且受审源/测试/契约diff空；COMMENT将显式42243。owner18/FE89/DB66含48和同2MySQL分别标开发，未重跑全套/CI/负载/浏览器/真实DB/872；根通知6303规模fail未重数。原CI/872绿不掩盖本语义红，无APPROVE/status/merge。

@@ -134,3 +134,10 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 本岗只现有13目标一次13绿/52未选；不跑全65/build/browser/DB/CI，不新增编号测试。9raw及可读hash、19源/coverage集合、旧测试命名声明16+22原字节核合；开发9红4绿→13绿、矩阵后65与首次类型失败/最终build分别保留，不冒称本岗实跑或截图复验。报告reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md；证据agents/reviewer/evidence/capacity-feedback-c56a5a5；真实prompt ROLE-reviewer-CAPACITY-FEEDBACK-v1。阶段提交及PR30准确c56 COMMENT/readback另补，无APPROVE/status/merge。
 
 实际发布：阶段证据b40b28b1136f4c5673b234d09055a37dede78ee3已push；PR30 COMMENT5633760634真实发布，插件body/COMMENTED及REST完整GET的c56 commit_id/body均严格读回。URL https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634 ，回执agents/reviewer/evidence/capacity-feedback-c56a5a5/github-comment.json。没有APPROVE/status/CI触发/merge。
+
+
+## PR21 Issue28全链首审42243：不通过
+
+DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现的精确组合42243已静态审。P2 HISTORY-EVIDENCE-01位于history.py:66：普通容器等值把audit.evidence.kind=1与候选旧schedule JSON.kind=true匹配；唯一原986内存SQLite HTTP反例无mock，GET200/响应Schema通过却追加理由，原两表未改。完整5plan/actor/微秒/versions保持，仅证据JSON类型不同，按RFC必须无投影。属于AI专审真实发现，不是学生发现或正常新写/越权漏洞；责任backend，root认可后交回先设计窄修，旧42243不通过保留。
+
+本岗不重跑18/89/66或CI/负载/真实DB/872，不读独立私密。三owner源/14freeze/44Python20TSVue/R1/UI002边界及36公开backendartifact摘要已核，旧986/985前缀保留。报告reports/reviews/21-42243eb23aedf0edda7541ad83fd87ec3d17b616.md，反例agents/reviewer/evidence/plan-reason-42243/evidence-kind-bool-http.json及log。PR21当前metadatahead7f为42243祖先源等值；准确COMMENT/读回按实际补入。全局规模6303fail来自root通知，其他门禁不解除，无APPROVE/status/merge。

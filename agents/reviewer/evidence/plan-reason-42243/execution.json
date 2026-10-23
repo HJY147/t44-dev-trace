@@ -1,0 +1,44 @@
+{
+  "operator": "AI reviewer; not student manual edit or independent acceptance",
+  "target": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
+  "recorded_at_utc": "2026-10-23T20:53:12.076091+00:00",
+  "commands": [
+    {
+      "action": "Inline pure matcher evidence-kind type counterexample",
+      "exit_code": 0,
+      "result": "Python equalityTrue; EvidenceRef rejects schedulekindtrue; _snapshoteligible and _matchesTrue"
+    },
+    {
+      "action": "Single HTTP counterexample using original public986 fixture; no gateway/matcher mock",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend <existing-backend-python> - <<PY; import public conftest/986; next(application.__wrapped__()); originalsetup_project/create_task/_legacy_reason_fixture; insertlegacy audit evidencekind1, updateowned in-memoryschedule evidencekindtrue; GET listProjectAuditEvents(task_id); assert projectedreasons==[]; PY",
+      "exit_code": 1,
+      "result": "Expected semantic red: HTTP200,validAuditEvent envelope, wrongly appended reason; audit/scheduleimmutability retained",
+      "log": "evidence-kind-bool-http.log",
+      "json": "evidence-kind-bool-http.json"
+    },
+    {
+      "action": "Static source/frozen/publicbackendartifact hashes and existing tests prefix",
+      "exit_code": 0,
+      "result": "DB/backend/FE owner bytes match,14freeze,44Python/20TSVue,36publicbackendartifact hashes,986/985 oldprefix retained",
+      "json": "static-audit.json"
+    },
+    {
+      "action": "PR21 remote ancestry and affectedsource equality",
+      "exit_code": 0,
+      "observed_head": "7f89264434512d6f74f98140488e3f9acc3ef629",
+      "result": "42243ancestor; production/contract/existingtest diffempty"
+    }
+  ],
+  "lookup_failures": [
+    "Initial abbreviated revision3b7 ambiguous/notfound; resolvedactual3b7bc0c from pathlog.",
+    "Exploratory optional995/style globs absent; shell refused matching, no tests executed or product files changed."
+  ],
+  "new_test_files": [],
+  "not_run": [
+    "full suites/CI/load",
+    "MySQL/externalDB",
+    "browser/FE872",
+    "native stage2/deployment probe"
+  ],
+  "scope_stop": "After soleHTTPconfirmation root instructed exactfirstfailureseal, no unrelated invalid-data matrix."
+}
