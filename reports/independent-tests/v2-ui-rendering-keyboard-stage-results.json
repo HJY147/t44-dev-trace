@@ -1,0 +1,107 @@
+{
+  "operator": "independent AI acceptance role",
+  "published_at_utc": "2026-10-23T19:30:20.385417+00:00",
+  "overall": "NOT_ACCEPTED_INCOMPLETE",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "product_source_changed": false,
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original8_payload_aggregate_sha256": "56a3db8a76bdbcf4506fba430e13ba166c333c3dfbbd485b9111086c5d05bdb5",
+  "original_assertions_changed": false,
+  "completed_cases_rerun": false,
+  "source_access": false,
+  "SQL_write": false,
+  "formal_performance_or_whitebox_claim": false,
+  "version": "independent-v2-ui-rendering-keyboard-stage-reviewed-1",
+  "environment": {
+    "web_base": "http://127.0.0.1:5175",
+    "API_port": 18084,
+    "database_identity": "t44_ui_v2",
+    "browser": "Chrome156.0.8078.47",
+    "headless": true,
+    "viewport": {
+      "width": 1360,
+      "height": 980
+    },
+    "timezone": "Asia/Shanghai",
+    "exact_original_snapshot_confirmed_by_neutral_records": true,
+    "local_functional_only": true
+  },
+  "mechanical_supplements": {
+    "rendering902_sha256": "903654e3773af5eef2e369dd2cc29c63c54f5bbd1eaadff8ca6add75bd967c2c",
+    "freeze901_sha256": "71c7c98533831097bb9f99a9cebb8737d9e16ac9594273d22a4048e566f8e811",
+    "keyboard898_sha256": "239eef59c0b2e4f4f8a11e1e430d6682de4f7a6b6034ec95797bef890b6ea4f3",
+    "freeze897_sha256": "6b2e8b4424c6c834dae98c375f1240cb03c3512bc1c37ffde24ef632c4a8ea36",
+    "limited_keyboard_method894_sha256": "ed8dabf61c269c70bed9e47b251e31b4bbfc1d2a05f27af5dea930c25d77a364",
+    "original_protocol946_sha256": "1855efd4bd18d7d725305ff7d62fbf6f6c7ee9d53a0412feaa60a245b38a1e7d"
+  },
+  "private_evidence_hashes": {
+    "rendering_jsonl": "db2c8543ec9643d174e258e28b8284e199d9418d5eebd880da31bd62f2f1a36b",
+    "keyboard_jsonl": "6ced2673b8f43ba00aa45d1c3db92d68b45f6f29a28a68845587dcb724b499e5",
+    "rendering_screenshot": "396dca74485ce16905caf6b7e5d9271be35d49a333b0826280030f5fb4928820",
+    "keyboard_focus_screenshot": "80a4d2003fcf7e1625f42612a91f9574c63751921008dbd2387fb47f7edc8e26"
+  },
+  "counts": {
+    "rendering_event_rows": 253,
+    "rendering_API_responses": 41,
+    "rendering_resource_requests": 93,
+    "keyboard_event_rows": 271,
+    "keyboard_API_responses": 24,
+    "keyboard_preserved_driver_errors": 7,
+    "browser_page_or_console_errors": 0,
+    "new_confirmed_product_defects": 0
+  },
+  "cases": [
+    {
+      "id": "UI09-EXECUTED-RENDERING-SUBSET",
+      "outcome": "PASS_EXECUTED_SCOPE_ORIGINAL_CASE_PARTIAL",
+      "proved": [
+        "Ordinary apostrophe/SQL prose plus inert image/onerror marker stored in task title and rendered literally. No local marker attribute or /x client request appears in observed snapshots/resource trace.",
+        "javascript: locator as web-link evidence is rejected by client before transition POST. The task remains version1 until a later valid evidence-kind submission.",
+        "Document evidence with javascript: literal and inert image marker, plus repository file with fixed revision, is accepted in one block transition200. Expanded change record renders all literal references and revision; no unsafe-scheme href among sampled visible controls and no marker execution.",
+        "All93 observed browser resource requests are same origin5175. Actual console contains only2 Vite debug messages; no page/console error in observed flow."
+      ],
+      "limits": [
+        "No exhaustive title/description/evidence context, scheme or browser coverage; no claim all UI security requirements passed.",
+        "No backend automatic HTTPS fetch observation or server/displayed-log audit.",
+        "Console flag matched_known_secret was itself scrubbed to <redacted>; it cannot establish known-secret absence. Only actual2 debug message texts reviewed.",
+        "Screenshot is private, reviewed and retained; the complete proof list is DOM evidence, not all simultaneously in captured viewport."
+      ]
+    },
+    {
+      "id": "UI10-PRESELECTED-ACTION-KEYBOARD-ACTIVATION-SUBSET",
+      "outcome": "PASS_EXECUTED_SCOPE_ORIGINAL_CASE_PARTIAL",
+      "actions": [
+        "开始开发",
+        "记录阻塞",
+        "解除阻塞",
+        "提交评审",
+        "通过评审",
+        "退回开发",
+        "确认交付",
+        "记录回滚",
+        "决定返工"
+      ],
+      "proved": [
+        "Tab reaches task-action select and, once an action is selected in explicit Playwright selectOption setup, reaches the basis button.",
+        "For each of9 preselected actions, Enter opens corresponding form with matching actual action label; Escape closes form and focus returns to basis button.",
+        "No task business transition is submitted in keyboard session. Latest visible task remains state3/version2.",
+        "End-of-session focus screenshot retained; browser closed and driver exited0."
+      ],
+      "limits": [
+        "ArrowDown/Enter and Space/ArrowDown/Enter attempts did not change native select value in this headless environment. Full keyboard choice navigation remains unproved; no confirmed product defect inferred.",
+        "7 driver errors, wrong-form attempts and asynchronous close assumptions remain in raw trace, including2 malformed recovery commands. They are not product rejection verdicts.",
+        "No full keyboard-only lifecycle, accessibility conformance or9 business-action pass. Existing UI10 timezone/narrow/outage observations remain separate and do not close whole UI10."
+      ]
+    }
+  ],
+  "original_cases": {
+    "UI09": "PARTIAL_NOT_ACCEPTED",
+    "UI10": "PARTIAL_NOT_ACCEPTED"
+  },
+  "preserved_prior_findings": [
+    "V2-UI-001",
+    "V2-UI-002",
+    "V2-UI-003"
+  ],
+  "publication_boundary": "Only this reviewed JSON and same-stage Markdown; no private scripts, logs, screenshots or credentials released."
+}
