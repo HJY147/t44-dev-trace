@@ -1,0 +1,160 @@
+{
+  "verified_at": "2026-10-23T18:59:29.907322+00:00",
+  "analyst": "backend AI; offline only",
+  "execution_operator": "root coordinator; backend did not execute load",
+  "publication_commit": "072bc4e",
+  "publication_file": "agents/backend/contract-abba-night-01/publication.json",
+  "category_analysis": "agents/coordinator/contract-abba-category-analysis.json",
+  "tool_commit": "97413238cfc13b51f4d1154bc7c944f462e6db11",
+  "archive_files_verified": 36,
+  "source_import_config_fixture_validated": true,
+  "new_requests": 0,
+  "started_at": "2026-10-23T18:38:01.582847+00:00",
+  "ended_at": "2026-10-23T18:38:41.463305+00:00",
+  "controller_exit_code": 0,
+  "wall_seconds": 39.88048508297652,
+  "port_closed_observation": "root observation in publication, not independently re-probed",
+  "phases": [
+    {
+      "phase": "1-A",
+      "requests": 3180,
+      "errors": 0,
+      "p95_ms": 31.206208,
+      "request_rate": 396.82275787680777,
+      "categories": [
+        {
+          "category": 1,
+          "n": 1060,
+          "errors": 0,
+          "p50_ms": 18.256,
+          "p95_ms": 31.511291,
+          "max_ms": 47.374084
+        },
+        {
+          "category": 2,
+          "n": 1060,
+          "errors": 0,
+          "p50_ms": 19.327333,
+          "p95_ms": 30.603459,
+          "max_ms": 50.496292
+        },
+        {
+          "category": 3,
+          "n": 1060,
+          "errors": 0,
+          "p50_ms": 19.896791,
+          "p95_ms": 31.527042,
+          "max_ms": 41.358666
+        }
+      ]
+    },
+    {
+      "phase": "2-B",
+      "requests": 4601,
+      "errors": 0,
+      "p95_ms": 23.974292,
+      "request_rate": 574.6017293823842,
+      "categories": [
+        {
+          "category": 1,
+          "n": 1532,
+          "errors": 0,
+          "p50_ms": 12.2505,
+          "p95_ms": 22.6975,
+          "max_ms": 44.94675
+        },
+        {
+          "category": 2,
+          "n": 1534,
+          "errors": 0,
+          "p50_ms": 13.556542,
+          "p95_ms": 25.6485,
+          "max_ms": 38.681167
+        },
+        {
+          "category": 3,
+          "n": 1535,
+          "errors": 0,
+          "p50_ms": 13.712167,
+          "p95_ms": 20.397875,
+          "max_ms": 40.406875
+        }
+      ]
+    },
+    {
+      "phase": "3-B",
+      "requests": 4642,
+      "errors": 0,
+      "p95_ms": 23.389625,
+      "request_rate": 579.6651269441809,
+      "categories": [
+        {
+          "category": 1,
+          "n": 1548,
+          "errors": 0,
+          "p50_ms": 12.323208,
+          "p95_ms": 23.389625,
+          "max_ms": 41.380667
+        },
+        {
+          "category": 2,
+          "n": 1547,
+          "errors": 0,
+          "p50_ms": 13.517083,
+          "p95_ms": 25.075542,
+          "max_ms": 33.170916
+        },
+        {
+          "category": 3,
+          "n": 1547,
+          "errors": 0,
+          "p50_ms": 13.627084,
+          "p95_ms": 18.683917,
+          "max_ms": 44.699042
+        }
+      ]
+    },
+    {
+      "phase": "4-A",
+      "requests": 3134,
+      "errors": 0,
+      "p95_ms": 31.358125,
+      "request_rate": 391.1118704277822,
+      "categories": [
+        {
+          "category": 1,
+          "n": 1044,
+          "errors": 0,
+          "p50_ms": 18.775541,
+          "p95_ms": 31.059917,
+          "max_ms": 53.634875
+        },
+        {
+          "category": 2,
+          "n": 1045,
+          "errors": 0,
+          "p50_ms": 19.770917,
+          "p95_ms": 30.755416,
+          "max_ms": 51.194209
+        },
+        {
+          "category": 3,
+          "n": 1045,
+          "errors": 0,
+          "p50_ms": 20.047459,
+          "p95_ms": 31.659625,
+          "max_ms": 43.37775
+        }
+      ]
+    }
+  ],
+  "interpretation": "Both B phases lower P95 and greater closed-loop throughput in this one sequential8concurrency/1worker comparison; no confidence interval or isolated SQL causality",
+  "limits": [
+    "Developer diagnostic only: 1 worker,8concurrency,8seconds per phase; not formal400VU/600seconds/4worker or independent acceptance",
+    "Single host sequential ABBA, no statistical significance claim",
+    "CPU includes import/startup/sanity/warmup/sample/shutdown, not sample-only",
+    "First A created own synthetic API fixture in t44_profile; same fixture SHA all four; no independent data touched",
+    "Private bootstrap fixture/token/credential files and full application snapshots excluded from public archive",
+    "No automatic retry; first and only execution exit0; source size/performance final gates remain open"
+  ]
+}

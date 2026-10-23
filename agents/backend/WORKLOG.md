@@ -298,3 +298,11 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - 尚未运行服务/负载/真实清理，不能把静态成功称性能证明。待精确工具commit/push后向根交单命令，必须再等明确quiet窗口授权。原03整体exit1/正式性能失败/6051规模超限保留，后续write候选RFC另阶段，未改生产。
 
 930准备工具5b0e1529e5e56e1e76aef557012da79807ad8e04已push新分支。真实body-file阶段评论已发表Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6371903455 及PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6371904025，正文abba-tool-github-comment.md。此后仅补证据归档，不改工具；尚未获quiet窗口，不启动。
+
+## root单次ABBA结果的本岗复核（无新负载）
+
+- root实际操作者执行tool974，18:38:01.58–18:38:41.46Z、整体exit0/39.88秒，root观察18083已关；本岗没有执行或复跑该负载。072bc4e归档36原件，本次轻量合root e850af5到专用树后建codex/backend-runtime-plan，后端仍5dcb。
+- 离线验证36份gzip/raw SHA与长度、15557主请求/0错、4phase actualimport/source/config、同fixture和sanity/warmup；重算总体和各payload类P95，均一致。A31.206/31.358ms，B23.974/23.390ms，见contract-abba-interpretation.md/json。只是单机1worker/8并发/8秒一次ABBA的开发证据，不平均P95/推断pool因果/外推三正式类别或400×600。
+- 保留03整体exit1及正式性能失败，6051源码超限。此后先写候选RFC而非生产编辑；未发HTTP/SQL/测试/新服务/负载。
+
+结果阶段真实评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372543944；PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372544653。正文abba-result-github-comment.md；原任务书定量要求由root记录source-crosscheck，本岗不据ABBA更改它们。

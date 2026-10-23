@@ -187,3 +187,7 @@ write-path-static-ledger.md给出三次鉴权/3UoW的新写分阶段账本、真
 ## 夜间930有界ABBA工具准备
 
 新分支codex/backend-contract-abba保留05623c并合75c，生产仍精确5dcb。tmp/backend/930_contract_abba.py实现独占进程组连续ABBA控制、90秒监督上限、Git/actualimport双身份、相同profile fixture与未包裹API；每阶段3类sanity、均衡120预热、8并发8秒。说明及静态证据abba-tool-preparation.md、abba-tool-static.*；离线11项通过，显式项目Ruff/format通过，首次隐式配置失败原文保留。未启动应用/SQL/HTTP/负载，真实生命周期和收益待根窗口；历史03整体exit1、正式400×600失败、源码6051超限保持。不是新的全量CI/独立性能通过。
+
+## ABBA一次成功执行后的限定解释
+
+root操作者在已协调窗口单次执行tool974，整体exit0/39.88秒，18083由root观察关闭；本岗只离线复核072bc4e的36份原件和15557主请求，0错，SHA/actualimport/fixture/config均一致。A两阶段P95=31.206/31.358ms，B=23.974/23.390ms，三个payload类别同向；完整解释contract-abba-interpretation.md/json。支持唯一契约校验单UoW在本次短条件下改善，不能证明池/SQL因果、transition/escalation收益、正式400×600/独立验收或6051规模达标。后续静态RFC待审，不启动新负载/产品修改。
