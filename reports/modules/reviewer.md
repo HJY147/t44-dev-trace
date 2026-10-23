@@ -176,3 +176,5 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 准确9d6ead5fa3e1494946f2bb8d7ef33c1a97758077，prompt ROLE-reviewer-COURSEWORK-BUNDLE-v1。P2 BUNDLE-SOURCE-BINDING-01真实内存ZIP反例exit1：自洽manifest不等于真实Git tree映射，假api.py blob被verify_source_archive接受。信任上游生成器及外部选择SHA可排除此输入的前提单列，不指控真实包；工具未构建实际包，不读私密DOCX/cover/R002或独立资料。
 
 metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开hash/旧95343节点/2红→4绿与rawgzip，不重跑四项，不推定stage05实际原因。14冻结相符，A不通过、B所列静态未见新增阻断，整体验收/包/人工交付不放行。报告reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md，证据agents/reviewer/evidence/coursework-bundle-9d6；后续dda3窄修另审，不覆盖原失败，实际Issue/COMMENT/GET后补。
+
+实际发布：阶段证据9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af已push；Issue38完整GET body/open、PR21 COMMENT5635299006显式完整9d6及完整GET commit_id/body/COMMENTED严格相符exit0。当前PRheadf866不改变原9d6失败，后续dda3未获本报告复审。回执github-comment.json；无Issue关闭/APPROVE/status/CI/mainmerge或实际包。

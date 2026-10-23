@@ -1,0 +1,126 @@
+{
+  "issue_publish": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "issue": {
+        "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+        "title": "[P2] BUNDLE-SOURCE-BINDING-01: inner ZIP self-hash is not Git tree binding",
+        "issue_number": 38,
+        "body": "Agent-Role: reviewer\nPrompt-Ref: ROLE-reviewer-COURSEWORK-BUNDLE-v1\nTarget: 9d6ead5fa3e1494946f2bb8d7ef33c1a97758077\nFile: scripts/packaging/build_coursework_review.py:92–107, 137–142\nBuilder SHA256: a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b\n\nP2 BUNDLE-SOURCE-BINDING-01：verify_source_archive只核内层source_commit字符串及自洽SHA/size/git_blob，main只确认commit存在，没有验证路径/blob/mode映射属于所声明Git tree。因此“源码已复核”可在没有真实Git绑定时成立。\n\n唯一内存ZIP反例直接调用精确未改函数：声明真实9d6，backend/t44/api.py的目标tree blob为1eee200e034cc8a4e52423aa52cc40729995c413，合成内容/manifest自洽blob为60ff7f429c5080a5dddae83ee8d06e5364c837b8，函数仍返回1；预期拒绝断言真实exit1。没有落盘ZIP、构建实际审阅包或读取私密Word/cover/R002/登录/独立资料。\n\n信任边界：可信build_source_review生成器加独立可信的selection SHA可排除此合成输入；本问题针对新builder独立复核准确Git源的承诺，不指控上游或真实已有包遭篡改。root在执行前也提出同一静态疑点，不记学生发现。\n\n[准确9d6报告](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md)\n[原红JSON](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.json)\n[原断言失败日志](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.log)\n\n责任方root已另报先行设计add7363/窄修dda3df8e15b0b5b655909dda37dc79a87f318924；本Issue只记录原9d6失败，修复尚未获本次复审。复审需绑定准确新源、同一内存反例与可信selector完整正向映射。原失败保留，实际审阅包尚未构建，不提供全局验收/性能/规模/人工材料放行。",
+        "state": "open",
+        "user": {
+          "login": "HJY147",
+          "name": "HJY147",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+          "id": 204539444
+        },
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-10-23T22:58:42Z",
+        "updated_at": "2026-10-23T22:58:42Z",
+        "closed_at": null,
+        "display_url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+        "display_title": "[P2] BUNDLE-SOURCE-BINDING-01: inner ZIP self-hash is not Git tree binding"
+      },
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+      "title": "[P2] BUNDLE-SOURCE-BINDING-01: inner ZIP self-hash is not Git tree binding",
+      "display_url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+      "display_title": "[P2] BUNDLE-SOURCE-BINDING-01: inner ZIP self-hash is not Git tree binding"
+    },
+    "isError": false
+  },
+  "review_publish": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "review_id": 5635299006
+    },
+    "isError": false
+  },
+  "review_plugin_readback": {
+    "projection": "Matching review only; full specific REST GET is archived separately",
+    "reviews": [
+      {
+        "id": "PRR_kwDOVUR6Q88AAAABT-PWvg",
+        "state": "COMMENTED",
+        "body": "Agent-Role: reviewer\nPrompt-Ref: ROLE-reviewer-COURSEWORK-BUNDLE-v1\nReview target: 9d6ead5fa3e1494946f2bb8d7ef33c1a97758077\nBuilder SHA256: a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b\nMetadata scope: c0a5e89b2442da2a9149e1d37c2a424d52aff7c0 / evidence6c81ee9960ef08dc35fe8146fcdd4ab5cabb39d4 integrated in9d6\nCurrent PRhead f866bd5 is a descendant; this COMMENT retains the original9d6 result, not a review of laterdda3.\n\nA 打包工具专项不通过，P2 BUNDLE-SOURCE-BINDING-01，见[Issue38](https://github.com/HJY147/t44-dev-trace/issues/38)。build_coursework_review.py:92–107只核内层source_commit字符串及自洽SHA/size/git_blob，137–142只确认commit存在，未把成员映射绑定到实际Git tree。唯一内存ZIP反例直接调用精确函数：宣称真实9d6，backend/t44/api.py目标blob1eee200e034cc8a4e52423aa52cc40729995c413，但合成payload/内部manifest自洽blob60ff7f429c5080a5dddae83ee8d06e5364c837b8，函数仍返回1；预期拒绝断言真实exit1。\n\n可信build_source_review上游加独立可信selection SHA可排除此合成输入；这是新builder独立Git绑定承诺不足，不指控上游或真实已有包遭篡改。root也在执行前指出同一静态疑点，不能记学生发现。没有落盘ZIP或构建实际审阅包，没有读取私密Word/cover/R002/登录、公开private refs或独立未发布资料。后续dda3窄修另轮复审，原9d6红不改绿。\n\nA其余有限静态：正向路径拒绝逃逸/逐级symlink，四技术DOCX严格M6三稿+M7测试/非空QA声明，无QA PDF/PNG或R002原文白名单；新ZIP/sidecar/receipt使用0600/O_EXCL，输出leaf0700，外层重开核成员/CRC/SHA。未验证实际四稿/截止/逐页QA/包；已有私有父目录owner/mode无显式同等校验，自由文本provenance/QA/missing安全依赖受审选单，未另立未经反例证实的安全P2或给全文件系统保证。工具尚未实际构建包，不能称包通过。\n\nB metadata wrapper排除的限定专审未见新增实质阻断：模块仅API_SCRIPT变，明确Python可执行名+相邻-m uvicorn t44.api:app排除init wrapper；api_projection/strict supervisor_count==1及其余module AST全同。核14公开owner原件SHA、两wrapper例2红→最终相关4绿XML/rawgzip和可读规范化、旧953的43函数/class节点保持、14冻结hash相符。原SyntaxWarning与最终纠正分开；root先前静态没有冒充本岗专审。没有重跑四项/其他套件、真实/proc/Docker/旧故障/压力/CI；不把合成wrapper解释推定成原stage05/H11原因，原不明原因及正式结果保留。\n\n[八段十项报告](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md)\n[原红JSON](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.json)\n[原断言失败日志](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.log)\n[有限静态与原件核对](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/static-audit.json)\n\n仅COMMENT，不APPROVE、不发global reviewer/stage成功、不合main；不提供包/全局独立/性能/规模或人工提交物放行。",
+        "submitted_at": "2026-10-23T22:59:38Z",
+        "author": {
+          "login": "HJY147",
+          "name": "HJY147",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+          "id": null
+        }
+      }
+    ]
+  },
+  "review_explicit_parameters": {
+    "repo_full_name": "HJY147/t44-dev-trace",
+    "pr_number": 21,
+    "action": "COMMENT",
+    "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "review": "Agent-Role: reviewer\nPrompt-Ref: ROLE-reviewer-COURSEWORK-BUNDLE-v1\nReview target: 9d6ead5fa3e1494946f2bb8d7ef33c1a97758077\nBuilder SHA256: a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b\nMetadata scope: c0a5e89b2442da2a9149e1d37c2a424d52aff7c0 / evidence6c81ee9960ef08dc35fe8146fcdd4ab5cabb39d4 integrated in9d6\nCurrent PRhead f866bd5 is a descendant; this COMMENT retains the original9d6 result, not a review of laterdda3.\n\nA 打包工具专项不通过，P2 BUNDLE-SOURCE-BINDING-01，见[Issue38](https://github.com/HJY147/t44-dev-trace/issues/38)。build_coursework_review.py:92–107只核内层source_commit字符串及自洽SHA/size/git_blob，137–142只确认commit存在，未把成员映射绑定到实际Git tree。唯一内存ZIP反例直接调用精确函数：宣称真实9d6，backend/t44/api.py目标blob1eee200e034cc8a4e52423aa52cc40729995c413，但合成payload/内部manifest自洽blob60ff7f429c5080a5dddae83ee8d06e5364c837b8，函数仍返回1；预期拒绝断言真实exit1。\n\n可信build_source_review上游加独立可信selection SHA可排除此合成输入；这是新builder独立Git绑定承诺不足，不指控上游或真实已有包遭篡改。root也在执行前指出同一静态疑点，不能记学生发现。没有落盘ZIP或构建实际审阅包，没有读取私密Word/cover/R002/登录、公开private refs或独立未发布资料。后续dda3窄修另轮复审，原9d6红不改绿。\n\nA其余有限静态：正向路径拒绝逃逸/逐级symlink，四技术DOCX严格M6三稿+M7测试/非空QA声明，无QA PDF/PNG或R002原文白名单；新ZIP/sidecar/receipt使用0600/O_EXCL，输出leaf0700，外层重开核成员/CRC/SHA。未验证实际四稿/截止/逐页QA/包；已有私有父目录owner/mode无显式同等校验，自由文本provenance/QA/missing安全依赖受审选单，未另立未经反例证实的安全P2或给全文件系统保证。工具尚未实际构建包，不能称包通过。\n\nB metadata wrapper排除的限定专审未见新增实质阻断：模块仅API_SCRIPT变，明确Python可执行名+相邻-m uvicorn t44.api:app排除init wrapper；api_projection/strict supervisor_count==1及其余module AST全同。核14公开owner原件SHA、两wrapper例2红→最终相关4绿XML/rawgzip和可读规范化、旧953的43函数/class节点保持、14冻结hash相符。原SyntaxWarning与最终纠正分开；root先前静态没有冒充本岗专审。没有重跑四项/其他套件、真实/proc/Docker/旧故障/压力/CI；不把合成wrapper解释推定成原stage05/H11原因，原不明原因及正式结果保留。\n\n[八段十项报告](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md)\n[原红JSON](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.json)\n[原断言失败日志](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/source-tree-binding-probe.log)\n[有限静态与原件核对](https://github.com/HJY147/t44-dev-trace/blob/9f3c7fa/agents/reviewer/evidence/coursework-bundle-9d6/static-audit.json)\n\n仅COMMENT，不APPROVE、不发global reviewer/stage成功、不合main；不提供包/全局独立/性能/规模或人工提交物放行。"
+  },
+  "pre_publish_PR": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/21",
+      "number": 21,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": true,
+      "body": "本系统“留痕”为中小软件外包团队提供迭代人力与排期、七状态任务、证据评审、上线评估、经理发布/回滚/返工决定、三级提醒、通知及审计，共38项冻结API。人的选择先进入需规和概设/详设，再按1.1冻结实现。米咖玻璃界面先形成OpenDesign本地原型，再导入Vue。十一固定岗位分别提交、对接和报告；测试实例不继承开发上下文，原案例在接触产品前冻结。\n\n准确应用仍为bc5aef9c62393134582affb7a690acb33ac2b833（后端bcb0、前端c79）。后续6ec8d3c仅集成部署控制与记录，76个应用/资源/包清单文件逐字节与bc5相同。6ec的product push40031843354四job和Docker40031843200成功：后端510项、全部44文件行2638/2957=89.21%、分支659/824=79.98%、无排除；前端89项、全部20文件行364/390=93.33%、分支821/932=88.09%。五个官方artifact ZIP摘要及51份选定原件已核，见records/validation/composite-6ec8d3c-ci.json。自动PR触发单列，不重复计数。后发metadata wrapper窄修另以精确新head触发检查，不把6ec检查移植为其通过。\n\nIssue28遵循先RFC再实现：新理由同事务保存、旧历史有限页精确配对并保守只读投影、前端显示字面原文或诚实缺失提示。开发岗专属合成项目验证桌面/手机2000字理由和原历史行不变。原42243虽504项CI绿，专审仍发现evidence.kind的true和1误等；原HTTP反例、失败报告和COMMENT保留。补设计后bcb0严格验证双方Schema及JSON结构/类型/原文，原反例一次复查绿；bc5限定审核仅关闭HISTORY-EVIDENCE-01。退出迟到响应、容量拒绝解释和写预检等先前红绿链同样按精确源分别保存，不能当整体批准。\n\n独立v3黑盒已封存并明确发表stage04/05/06：26功能整例25通过，F08同时命中两守卫的错误优先级规范未决，原断言失败及未执行尾段保留；6浏览器整例/15原判据通过，4可执行粗粒故障整例通过。另3功能规范/观察能力项、5精确事务/消息切点能力项、421未观察错误响应组合单列。原4白盒及4交付物范围已在黑盒封存后另行解除限定访问，正在核查，不能冒作8项已经通过。\n\n三组原正式入口均在独立空环境经公开HTTP准备40项目/6000任务/9000依赖/15000合成评审记录，完整400活动VU、15秒预热及600秒稳态，未超时且最终恢复true。流转/契约/升级P95分别9512.069/3086.148/8272.364ms，均超过270ms；成功目标吞吐5301.6/11149.8/2291.3每分钟均达1000。组内失败1021/0/2，两组采样密度也未达原门槛，故三组整例均未通过。原CSV未留批量失败具体code/body，同次服务资源部分未知，不归因、不用后发快照回填、不放宽阈值。见reports/independent-v3/stage06-formal-blackbox.md/.json；原v1结果仍保留。\n\nLinux合成容器演练完成四worker、真实扫描及19表恢复行数/checksum一致，预期第二scanner flock拒绝exit1保留。本地原生OTP/Rabbit+API/consumer/scanner/UI的0a6有限run2实际cycle/cleanup成功，真实60秒扫描与TTL300凭据轮换；run1失败保留。专审发现未触发的capture超时误记成功P2，b238窄修及cc6限定复审只关闭该项，未重跑完整周期；原run2不是新代码全验收或常驻部署。最新5173→18080用户预览准确bc5，仅API+网页在线，907一次20请求无业务写；账号说明私密保存。\n\n需规、概设/详设、模块测试及需求→设计→实现→反馈证据持续更新。M6四技术Word完成33页逐页QA，原M4及排版迭代保留；M7正仅增量更新有实质新结果的测试报告/Word。M6提示词包核实三条真实反馈链共六个实际版本，M7按固定截止记录真实调试及协作错误，不新增虚构版本；优先展示用户原创U001多岗位组织和U002 GitHub留痕。全部AI执行与人的实际原话分别标注。学生亲写最终研究报告、至少12人工修改对比、5上下文→代码人工映射、3人工识别纠正幻觉的规定证据仍未证明，不由AI补造。\n\n固定cloc有效生产代码6307行，超过5100上限1207，原require-range失败保留。离线C原型的有限CPU比较不是HTTP收益、线程安全或等价性证明，未应用生产；没有可信1207行削减方案，不压行、不移计量根、不删守卫。正式性能、规模和本人材料缺口继续处理，重大规则留待本人返回确认。\n\n本PR保持draft，main仍为受保护基础版本；不发布全局reviewer/stage成功、不合并未达完整门禁的产品。公开开源代码与真实过程记录可审，个人封面、原始第三方材料、运行凭据、tester私钥及未审查明文输出不提交。共享文件系统属于流程隔离，未声称操作系统级隔离；GitHub同账号COMMENT也不冒作另一真人批准。\n",
+      "title": "feat: 研发交付留痕与上线评估系统（1.1 人力规则，验收中）",
+      "base": "main",
+      "base_sha": "1996d44425e09930b5ba3ae5391b728980241f55",
+      "head": "codex/integration",
+      "head_sha": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+      "head_repo_id": 1430551107,
+      "head_repo_full_name": "HJY147/t44-dev-trace",
+      "merge_commit_sha": "38f3fb7b185f7fc8cc7c18914d7e180e9a284f3b",
+      "user": {
+        "login": "HJY147",
+        "name": "HJY147",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+        "id": 204539444
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-23T09:34:56Z",
+      "updated_at": "2026-10-23T22:57:31Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 508,
+      "changed_files": 3057,
+      "additions": 276720,
+      "deletions": 39,
+      "display_url": "https://github.com/HJY147/t44-dev-trace/pull/21",
+      "display_title": "feat: 研发交付留痕与上线评估系统（1.1 人力规则，验收中）"
+    },
+    "isError": false
+  }
+}
