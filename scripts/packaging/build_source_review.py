@@ -29,6 +29,7 @@ def allowed(name):
     path = PurePosixPath(name)
     return (not path.is_absolute() and ".." not in path.parts
             and not FORBIDDEN_PARTS.intersection(path.parts)
+            and not name.startswith("agents/testing/")
             and not path.name.startswith(".env") or name == "deployment/.env.example")
 
 
