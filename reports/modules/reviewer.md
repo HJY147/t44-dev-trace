@@ -160,3 +160,5 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 精确A archive5ef1bde95e511c14dcff7b5fa0af2449de83836c / implementation0a6da88c404c04515c3c07039f0e231908fddc0e / appSUTbc5，与B cf685d7b745774fe29ddc4884606edae6836e961 / evidence189分开绑定。自有隔离分支codex/review-native-application，实际prompt ROLE-reviewer-NATIVE-APPLICATION-v1先归档，不改产品/部署/原测试。
 
 发现P2 NATIVE-CAPTURE-TIMEOUT-01：capture初次超时后cleanup退出0被正常返回且无超时事实。唯一无进程精确AST反例真实exit1，交deployment窄修；A不通过。run1原失败与run2无超时真实成功均保持，未重启cycle。B所列静态差量/公开原件未见新增实质阻断；63绿及23/3属于开发执行，本岗仅核30摘要/14冻结和旧953前缀。报告reports/reviews/34-5ef1bde95e511c14dcff7b5fa0af2449de83836c.md，证据agents/reviewer/evidence/native-application-189a4e2。没有私有/独立资料读取、套件/DB/负载/CI重跑、APPROVE/状态/整体放行或合并；实际COMMENT回执另补。
+
+实际发布：阶段证据8454da244ed0d3dbea84f6aca0630c003c787a44已push；PR34 COMMENT5634837225显式绑定完整5ef，插件list与完整REST GET逐字核body/commit_id/COMMENTED，exit0，回执github-comment.json。A仍不通过，不把run2改记失败；无状态/APPROVE/CI/merge。
