@@ -2,6 +2,10 @@
 
 本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
 
+截至2026年10月24日06:30（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续限定白盒/交付物核查已开始。
+
+本机最新预览为 `http://127.0.0.1:5173`，绑定准确bc5应用；仅API和网页在线，登录说明在本机私密提交目录。[入口核验](agents/frontend/latest-preview-validation.json)不代替消息/扫描常驻部署。
+
 ## 功能与运行
 
 支持项目成员与角色、迭代产能和排期、任务依赖、七状态流转、八段十项评审、四视角上线风险和回滚预案、经理交付/回滚/返工决定、三级延期提醒、通知已读/处理和审计追踪。发布和回滚记录人的决定，不替人操作外部生产系统。
@@ -12,7 +16,7 @@
 
 ## 界面与设计过程
 
-界面采用用户指定的米色、浅咖啡色、多圆角与玻璃层次。[OpenDesign来源与视觉规范](docs/ui/warm-glass/DESIGN.md)、[可点击原型](docs/ui/warm-glass/prototype.html)先形成设计提交326f971，再以840b1a8导入Vue；使用的是官方本地agent技能/模板工作流。可查看[实际桌面](agents/coordinator/demo-session-fix-smoke/1440-workspace.png)与[手机](agents/coordinator/demo-session-fix-smoke/390-workspace.png)截图，合成数据明确标记。
+界面采用用户指定的米色、浅咖啡色、多圆角与玻璃层次。[OpenDesign来源与视觉规范](docs/ui/warm-glass/DESIGN.md)、[可点击原型](docs/ui/warm-glass/prototype.html)先形成设计提交326f971，再以840b1a8导入Vue；使用的是官方本地agent技能/模板工作流。可查看[实际桌面](agents/frontend/latest-preview-smoke/1440-workspace.png)与[手机](agents/frontend/latest-preview-smoke/390-workspace.png)截图，合成数据明确标记。
 
 浏览器检查发现的既存空文本强转true另以7369400设计、75c3468修复及6212e5f证据留痕；[视觉审核](reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md)与[初值补充审核](reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md)分开记录。开发验证、审核和独立验收保持不同范围。
 
@@ -20,8 +24,10 @@
 
 | 范围 | 实际证据 | 边界 |
 | --- | --- | --- |
-| 最新修后组合CI | `bc5aef9`的[run40023062800](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062800)四job成功：后端510项、全部44文件行2638/2957=89.21%、分支659/824=79.98%；前端89项、全部20文件行364/390=93.33%、分支821/932=88.09%；[完整原件及源对应](records/validation/composite-bc5a-ci.json) | 新后端严格历史证据匹配bcb0、前端字面理由c79；新文件均纳入分母、无排除。是开发CI，独立v3另行执行、正式性能和规模仍待达标 |
-| 最新同源容器演练 | 同一`bc5aef9`的[run40023062786](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062786)四API worker、真实扫描、19表恢复行数/checksum完全相同，18业务表226字段复核通过 | 合成2项目40任务；预期第二scanner flock拒绝exit1保留，不是租云、正式负载或独立验收 |
+| 最新集成工具组合CI | `6ec8d3c`的[product40031843354](https://github.com/HJY147/t44-dev-trace/actions/runs/40031843354)四job及[Docker40031843200](https://github.com/HJY147/t44-dev-trace/actions/runs/40031843200)成功；510BE/89FE，全44Python/20TSVue分母；[五ZIP摘要及51份原件](records/validation/composite-6ec8d3c-ci.json)已核 | 应用及包清单76文件字节仍为bc5；集成native超时修复和只读metadata。helper定向测试另计，不冒作510项内执行 |
+| 独立v3正式黑盒 | [stage06](reports/independent-v3/stage06-formal-blackbox.md)：3组各完整400VU/600秒；P95流转9512.069、契约3086.148、升级8272.364ms，均超270；组内失败1021/0/2 | 三组吞吐均达标，但整体原判据均未通过；两组采样密度也未达。资源同次缺失保留unknown、503根因未定，后续4白盒/4交付物范围另行核查 |
+| 前一准确应用组合CI | `bc5aef9`的[run40023062800](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062800)四job成功：后端510项、全部44文件行2638/2957=89.21%、分支659/824=79.98%；前端89项、全部20文件行364/390=93.33%、分支821/932=88.09%；[完整原件及源对应](records/validation/composite-bc5a-ci.json) | 新后端严格历史证据匹配bcb0、前端字面理由c79；新文件均纳入分母、无排除。是开发CI，独立v3另行执行、正式性能和规模仍待达标 |
+| 前一准确应用容器演练 | 同一`bc5aef9`的[run40023062786](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062786)四API worker、真实扫描、19表恢复行数/checksum完全相同，18业务表226字段复核通过 | 合成2项目40任务；预期第二scanner flock拒绝exit1保留，不是租云、正式负载或独立验收 |
 | 历史理由开发与审核反例 | [UI003实际证据](agents/frontend/plan-reason-validation.json)验证新42项目的旧理由投影/桌面手机各2000字原文；[42243原审核不通过](reports/reviews/21-42243eb23aedf0edda7541ad83fd87ec3d17b616.md)发现bool/数字证据误等，原HTTP红保留；先勘误后bcb0窄修 | 原42243 CI504绿未挡住语义缺陷。[bc5限定复审](reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md)原反例复查绿；不得把旧0549浏览器结果移植为新后端完整验收 |
 | 本地完整服务有限周期 | [公开5ef归档](https://github.com/HJY147/t44-dev-trace/blob/5ef1bde/agents/deployment/native-application-validation/README.md)绑定控制器0a6/SUTbc5：run2实际cycle/cleanup成功、真实60秒扫描与凭据轮换，首轮16事件26通知；二轮仅复核既有ID | 全部自有服务已停。原run1失败保留；[原专项审核](reports/reviews/34-5ef1bde95e511c14dcff7b5fa0af2449de83836c.md)发现超时可误记成功P2；b238窄修和[cc6复审](reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md)仅关闭该项，新代码未重跑完整cycle，不把原run2成功当全面放行或持续在线/云部署 |
 | 前一组合CI | `8323692`的[run40016165656](https://github.com/HJY147/t44-dev-trace/actions/runs/40016165656)四job成功：后端437项、全43文件行2558/2878=88.88%、分支612/778=78.66%；前端65项、全19文件行353/379=93.13%、分支783/894=87.58%；[原件与适用版本](records/validation/composite-832-ci.json) | 后端A产品153b9c8、前端容量说明3628ee1，完整分母无排除；开发CI不等于独立复验、正式性能或规模达标。另一次自动PR触发的同head CI状态单列，不重复计测试 |
@@ -49,7 +55,7 @@
 | 契约优化短对照 | [单次ABBA原始样本与来源](agents/backend/contract-abba-night-01/publication.json)：旧4c两轮P95为31.206/31.358ms，新5dcb两轮23.974/23.390ms，均0错误 | 1worker、8并发、每轮8秒，仅开发诊断；不是400VU/600秒正式性能通过，不平均P95伪造统计值 |
 | 需求、设计和技术Word | M6[SRS](reports/final/requirements-report.md)、[概设/详设](reports/final/design-report.md)、[三张新增当前图](docs/reports/diagrams/M6-render-manifest.json)和[四份Word的33页QA](docs/reports/M6-word-qa.md) | 文档AI实际逐页看33页，协调AI抽看3图页；封面私密、日期空。原M4四稿/28页和后续迭代原件保留，新结果按截止附录区分；学生研究正文仍本人写 |
 
-有效生产源码3500–5100行目标尚未达到；[本次最新计数](records/metrics/source-count-strict-evidence-combination.json)为6307，超1207；前一832组合6124、旧理由组合6303计数均保留；旧1.1的5973和只读改动后的5980计数保留；[计数口径](docs/metrics/source-counting.md)不因超限改变。SQL解析库替换[原型](agents/database/ddl-ast-poc/research.md)未准入生产，实际节省0行。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。当前正在修复和剖析，未将开发回归当独立复测通过；准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
+有效生产源码3500–5100行目标尚未达到；[本次最新计数](records/metrics/source-count-strict-evidence-combination.json)为6307，超1207；前一832组合6124、旧理由组合6303计数均保留；旧1.1的5973和只读改动后的5980计数保留；[计数口径](docs/metrics/source-counting.md)不因超限改变。SQL解析库替换[原型](agents/database/ddl-ast-poc/research.md)未准入生产，实际节省0行。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。上述为旧v1截止结果；新版v3正式结果见顶部stage06，三组仍未达。继续定位与限定核查，未将开发回归当独立复测通过。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
 
 用户采用D005/D006后，[需规](specs/requirements.md)与[业务规则](specs/business-rules.md)先补人力生命周期和流程图，再经限定审查，于`189dc4a`形成[1.1独立冻结清单](records/spec-freezes/v1.1.json)。状态1至5负责人须保留迭代工时，6/7可移出，7返工前补回有效人力；项目成员/开发角色保护仍含7。旧1.0原文和摘要保留。1.1只读校验的`data.schema_version`继续按已冻候选结构为1.0.0，外层`meta.contract_version`为1.1.0，两者用途不同。新无父会话独立实例已依据[中性输入包](records/acceptance/v2-neutral-inputs.json)先冻结8载荷，再绑定4c20执行托管黑盒/故障与独立浏览器；[冻结元数据](records/acceptance/v2-case-freeze-receipt.json)不包含用例内容，[本人报告发布索引](reports/independent-tests/v2-stage-publication.json)保留独立岗位自己的阶段提交，未完成整体验收。[托管验收运行协议](deployment/acceptance/README.md)最新能力核验为f118/run39977039692，不把环境自检当验收。M5 Markdown及三张新增成图已以772895d检查点提交；[来源清单](docs/reports/M5-source-manifest.json)和[图验证](docs/reports/diagrams/M5-render-manifest.json)按其截止版本解释，旧M5时点私密Word为M4；现在M6四技术Word已另导并完成33页QA，旧M4已原字节归档。
 
@@ -83,6 +89,8 @@
 
 新的独立v3先于SUT冻结真实用例，随后按[中性运行绑定](records/acceptance/v3-runtime-binding.json)开始执行固定`bc5aef9`；独立新UI库与合成身份单独准备，不预设通过。M6[提示词事实包](docs/prompting/M6-process-checkpoint.md)核到三条真实反馈链共六个实际演进版本，并勘误旧M4/M5单族限制；六条均为AI实际派工，不当作学生亲写或人工改码。[新手阅读与检查指南](docs/guidance/M6-learner-guide.md)含真实AI问答，学生练习仍明确待本人完成。
 
-独立v3现已明确发表[阶段03](reports/independent-v3/stage03-functional-continuation.md)：bc5/H3原26功能整例14过、11 SQL驱动阻塞、1多守卫错误优先级未决，浏览器6整例3过；不把10,701次重复子断言当用例数或无缺陷证明。后续只续未完范围，原三个正式入口已请求各自空环境，当前未有新正式结果发表。[代码规模待审事实](docs/reviews/source-budget-decision-options.md)与[私密源码审阅包回执](records/validation/source-review-package-first.json)分别保留未通过出口；包完整性不等于产品验收。
+旧截止快照：独立v3曾明确发表[阶段03](reports/independent-v3/stage03-functional-continuation.md)：bc5/H3原26功能整例14过、11 SQL驱动阻塞、1多守卫错误优先级未决，浏览器6整例3过；不把10,701次重复子断言当用例数或无缺陷证明。后续只续未完范围，原三个正式入口已请求各自空环境，该旧截止尚无新正式结果；现已发表stage06且三组未通过。[代码规模待审事实](docs/reviews/source-budget-decision-options.md)与[私密源码审阅包回执](records/validation/source-review-package-first.json)分别保留未通过出口；包完整性不等于产品验收。
 
 后发[独立阶段04](reports/independent-v3/stage04-functional-browser.md)已把原功能推进到25/26整例通过，F08优先级未决保留，六浏览器整例/15原判据全部完成；额外三能力项与130/551错误响应观察各自单列，仍不等于全分支或整体放行。
+
+最新[M7夜间过程素材](docs/prompting/M7-night-process-evidence.md)以6ec为固定截止，记录机器输出协议、真实红绿修复、专审和并行协作错误；不代写学生研究正文，不补造人工改码证据。
