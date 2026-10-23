@@ -298,3 +298,5 @@
 
 - 实际ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1，root5408独立codex/review-bounded-demo；只git blob读取初版4ef/封档acdf与RFC/设计，不读owner未提交/private资料，不启停服务。
 - 在未读取最终fix前独立冻结最小内存state/own/time反例：api generation101及APIchildren102/103均absent，serve-owner runner777仍alive；只验childscope应成功且不得等待runner。parent已传owner360疑因，本设计是AI代码审核，不冒称独立发现/学生/黑盒。冻结JSON含完整输入、预期与0服务/信号边界，随后精确原AST执行红，再待准确fix同例。
+
+- 冻结e30112a已push exit0；随后对acdf verify_stopped精确AST唯一执行真实断言红exit1，0服务/信号/HTTP/SQL/私密IO，模拟时钟到10s不真实等待。公开f159源同4ef/acdf SHA942，22公开原件hash（20工具+cap/原stdoutgzip2）、capture/runtime及原两class AST核对；owner17绿仅核原件。原360 driver1/cleanupfalse与后置全停分开，7项基线缺5177/18086观察范围明确。原报告37-f159...先seal，root刚给62ac fix元数据但本阶段未读其源。
