@@ -1,7 +1,7 @@
 {
   "role": "documentation",
-  "stage": "M5技术报告与过程素材checkpoint",
-  "implementation_status": "Markdown及三新图已完成；未导M5 Word；产品最终验收/规模/正式性能未通过",
+  "stage": "M6先行技术文档设计检查点",
+  "implementation_status": "M6设计已记录；七MD/新图/四Word尚待本阶段执行",
   "artifacts": [
     {
       "path": "reports/final/requirements-report.md",
@@ -145,23 +145,22 @@
       "id": "ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1",
       "status": "used; actual recovery scope summary, not verbatim user prompt",
       "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1.md"
+    },
+    {
+      "id": "ROLE-documentation-M6-TECHNICAL-REPORTS-v1",
+      "status": "used; actual scope summary",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M6-TECHNICAL-REPORTS-v1.md"
     }
   ],
   "delivery": {
-    "branch": "codex/reports-m5",
-    "base_content": "6ba9f94",
-    "stage": "M5 checkpoint e70d219已push；Issue9/已合并M4 PR24实际评论并GET正文一致；仅补公开回执后释放",
-    "Word": "待稳定截止单独恢复，不丢弃M4四私密审阅稿",
-    "checkpoint_commit": "e70d219a5cfa7333c26b761c80e4648151e9f659",
-    "original_content_commit": "56c2a1b72fe3b11755e31864d23261c61d790111",
-    "comment_urls": [
-      "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6372845257",
-      "https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6372846583"
-    ],
-    "readback": "exact ID GET bodies match saved comment",
-    "final_receipt_commit": "resolved from branch Git HEAD; not self-referentially embedded"
+    "branch": "codex/documentation-m6",
+    "base_content": "ceed2d8126405c86016fa05c892249c045534754",
+    "production_cutoff": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "stage": "design checkpoint before authoring",
+    "Word": "M4 preserved; M6 not authored yet",
+    "PR24": "merged M4 only"
   },
-  "updated_at": "2026-10-24T03:19:05.359289+08:00",
+  "updated_at": "2026-10-24T05:15:43.699994+08:00",
   "recovery": {
     "operator": "AI /root/documentation_checkpoint",
     "previous_author": "previous documentation AI instance",
