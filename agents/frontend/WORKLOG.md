@@ -39,3 +39,6 @@
 - 当前业务仍未实现，未收到契约冻结消息，未进行 API 联调、真实业务测试或独立验收；未联系或读取独立测试。
 - 操作者 frontend AI；用户亲改与用户逐项审定未发生。后续按总协调另派开展完整业务接入和覆盖整个src的实质测试。
 - 总协调AI已实际查看两张截图并确认基础布局可保留；要求本轮提交后结束。后续业务阶段手机任务列表优先卡片或明确内表横向滚动提示；这不是用户亲自改码或业务验收。
+- Git实际结果：显式暂存本岗30文件，通过cached diff --check后提交 5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；正文含 Agent-Role frontend、Prompt-Ref ROLE-frontend-FOUNDATION-v1、Refs #2；随后git push -u origin codex/frontend-app成功。
+- 实际创建草稿PR #14：https://github.com/HJY147/t44-dev-trace/pull/14，base codex/team-bootstrap；gh核验创建时head=5437f169d5430a023aa5e5cbfc0c398c1c03a9e3、isDraft=true，diff仅本岗文件；已调用attach_artifact。未合入main、未设置审核通过状态。
+- 临时Vite preview在截图后已通过Ctrl-C停止（预期exit130）；不作为生产服务运行。代码验证无需因本次纯文档交接追加而重跑。
