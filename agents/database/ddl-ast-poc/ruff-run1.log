@@ -1,0 +1,44 @@
+F401 [*] `collections.Counter` imported but unused
+ --> tmp/backend/persistence/952_ddl_ast_poc.py:6:25
+  |
+4 | import hashlib
+5 | import json
+6 | from collections import Counter
+  |                         ^^^^^^^
+7 | from pathlib import Path
+  |
+help: Remove unused import: `collections.Counter`
+  |
+5 | import json
+  - from collections import Counter
+6 | from pathlib import Path
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> tmp/backend/persistence/952_ddl_ast_poc.py:175:5
+    |
+173 |   def main():
+174 |       global sg, ex, allowed
+175 | /     import sqlglot
+176 | |     from sqlglot import exp
+177 | |     from sqlalchemy.dialects import mysql
+178 | |     from t44.persistence.schema import TABLES
+179 | |     from t44.persistence.migrations import _check_signature
+    | |___________________________________________________________^
+180 |
+181 |       sg, ex = sqlglot, exp
+    |
+help: Organize imports
+    |
+175 |     import sqlglot
+176 +     from sqlalchemy.dialects import mysql
+177 |     from sqlglot import exp
+    -     from sqlalchemy.dialects import mysql
+178 +     from t44.persistence.migrations import _check_signature
+179 |     from t44.persistence.schema import TABLES
+    -     from t44.persistence.migrations import _check_signature
+180 |
+    |
+
+Found 2 errors.
+[*] 2 fixable with `--fix`.

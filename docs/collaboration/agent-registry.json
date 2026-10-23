@@ -8,7 +8,7 @@
       "label": "提示词工程",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/prompt_engineering/TASK.md",
       "agent_id": "/root/prompt_engineering",
-      "status": "bootstrap_completed",
+      "status": "M3_public_evidence_checkpoint_handed_off",
       "prompt_id": "ROLE-prompt_engineering-BOOTSTRAP-v1",
       "fork_turns": "none",
       "started_at": "2026-10-23T11:40:51+08:00",
@@ -16,14 +16,17 @@
       "handoff": "records/handoffs/prompt_engineering.json",
       "github_issue": 11,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/11",
-      "m0_commit": "d1191002594ce58107ad0855b542fa31b1cafec4"
+      "m0_commit": "d1191002594ce58107ad0855b542fa31b1cafec4",
+      "historical_status_at_previous_snapshot": "bootstrap_completed",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "4226cf8ec349dda87dca25961fb00cb292240d18"
     },
     {
       "role": "guidance",
       "label": "用户指导",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/guidance/TASK.md",
       "agent_id": "/root/guidance",
-      "status": "bootstrap_completed",
+      "status": "bootstrap_complete_personal_reflection_requested",
       "prompt_id": "ROLE-guidance-BOOTSTRAP-v1",
       "fork_turns": "none",
       "started_at": "2026-10-23T11:40:51+08:00",
@@ -31,14 +34,16 @@
       "handoff": "records/handoffs/guidance.json",
       "github_issue": 10,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/10",
-      "m0_commit": "e31f555c3b0d2da7eaef1e1a5229d54ba3dda7c6"
+      "m0_commit": "e31f555c3b0d2da7eaef1e1a5229d54ba3dda7c6",
+      "historical_status_at_previous_snapshot": "bootstrap_completed",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00"
     },
     {
       "role": "frontend",
       "label": "前端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/frontend/TASK.md",
       "agent_id": "/root/frontend",
-      "status": "foundation_completed",
+      "status": "integration_regression_complete_independent_acceptance_pending",
       "prompt_id": "ROLE-frontend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:45:38+08:00",
@@ -50,14 +55,20 @@
       "worktree": ".agent-worktrees/frontend",
       "branch": "codex/frontend-app",
       "foundation_head": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
-      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14"
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
+      "current_prompt": "ROLE-frontend-APPLICATION-v1",
+      "application_head": "bd13414b92ac56faea010463b03ab74b2a01e52c",
+      "updated_at": "2026-10-23T17:02:02+08:00",
+      "historical_status_at_previous_snapshot": "application_stage_completed_integration_regression_pending",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "b485279909720dac0adf1fb1bfbe9b23ef35dd39"
     },
     {
       "role": "backend",
       "label": "后端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/backend/TASK.md",
       "agent_id": "/root/backend",
-      "status": "full_application_in_progress",
+      "status": "refactor_remote_ci_passed_local_performance_window_respected",
       "prompt_id": "ROLE-backend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:47:23+08:00",
@@ -71,16 +82,22 @@
       "repair_commit": "72c6c0064e52cb091e8ca4533a1cb862fc46866d",
       "worktree": ".agent-worktrees/backend",
       "branch": "codex/backend-core",
-      "current_prompt": "ROLE-backend-APPLICATION-v1",
+      "current_prompt": "ROLE-backend-INTEGRATION-v1",
       "foundation_head": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
-      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/16"
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/16",
+      "application_head": "ec82b08832f1bc3dc3fcb42807cd3bba6644d747",
+      "integration_checkpoint": "ba1018a7cb44df9c8333da6d950f0a43e18d175c",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "historical_status_at_previous_snapshot": "integrated_application_stage_completed",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "3ee07251a5179208d720235e699a6855f46e8c8c"
     },
     {
       "role": "database",
       "label": "数据库",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/database/TASK.md",
       "agent_id": "/root/database",
-      "status": "full_persistence_in_progress",
+      "status": "live_review_and_new_mysql_seed_verification_running",
       "prompt_id": "ROLE-database-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:45:38+08:00",
@@ -93,16 +110,22 @@
       "repair_commit": "2ca79af796bf17aed6a2e76de75545623c0d0566",
       "worktree": ".agent-worktrees/database",
       "branch": "codex/database-runtime",
-      "current_prompt": "ROLE-database-PERSISTENCE-v1",
+      "current_prompt": "ROLE-database-RECOVERY-SEED-v1",
       "foundation_head": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
-      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17"
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
+      "application_checkpoint": "9aeb69795f67239b04352125f4b7db0427ce1272",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "application_head": "5849b107c5f87a4d21a858a64bb93606c9648d2a",
+      "historical_status_at_previous_snapshot": "integrated_seed_fix_stage_completed",
+      "status_updated_at": "2026-10-23T10:57:16.021231+00:00",
+      "latest_owner_checkpoint": "94b18b2790a8c6a0828587caa516cca099c65701"
     },
     {
       "role": "messaging",
       "label": "消息与通知",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/messaging/TASK.md",
       "agent_id": "/root/messaging",
-      "status": "bootstrap_completed",
+      "status": "implemented_module_evidence_handed_off",
       "prompt_id": "ROLE-messaging-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:49:00+08:00",
@@ -110,14 +133,23 @@
       "handoff": "records/handoffs/messaging.json",
       "github_issue": 5,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/5",
-      "m0_commit": "decc2fa4339b1c00959daefe9fa75b0785ff3032"
+      "m0_commit": "decc2fa4339b1c00959daefe9fa75b0785ff3032",
+      "current_prompt": "ROLE-messaging-APPLICATION-v1",
+      "worktree": ".agent-worktrees/messaging",
+      "branch": "codex/messaging-runtime",
+      "application_head": "9481e079fb3c3db9ddb7db7b7ac684596ef454e7",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/20",
+      "updated_at": "2026-10-23T17:02:02+08:00",
+      "historical_status_at_previous_snapshot": "application_stage_completed_unified_ci_pending",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "9481e079fb3c3db9ddb7db7b7ac684596ef454e7"
     },
     {
       "role": "scheduler",
       "label": "定时调度",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/scheduler/TASK.md",
       "agent_id": "/root/scheduler",
-      "status": "scheduler_foundation_in_progress",
+      "status": "implemented_real_mysql_restart_evidence_handed_off",
       "prompt_id": "ROLE-scheduler-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:49:00+08:00",
@@ -126,15 +158,23 @@
       "github_issue": 6,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/6",
       "m0_commit": "253276093ba0557d9446aab358bb02faeb03d845",
-      "current_prompt": "ROLE-scheduler-FOUNDATION-v1",
-      "branch": "codex/scheduler-core"
+      "current_prompt": "ROLE-scheduler-APPLICATION-v1",
+      "branch": "codex/scheduler-core",
+      "foundation_head": "879a0de003feee796ed13601e9a8e5858989fdd2",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/19",
+      "worktree": ".agent-worktrees/scheduler",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "application_head": "a8b491e62bb2cca2f9b77b151fba3187e553aea6",
+      "historical_status_at_previous_snapshot": "integrated_application_stage_completed",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "a8b491e62bb2cca2f9b77b151fba3187e553aea6"
     },
     {
       "role": "deployment",
       "label": "部署",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/deployment/TASK.md",
       "agent_id": "/root/deployment",
-      "status": "runtime_foundation_completed",
+      "status": "hosted_linux_compose_restore_rehearsal_complete_cloud_not_rented",
       "prompt_id": "ROLE-deployment-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:50:47+08:00",
@@ -147,14 +187,20 @@
       "branch": "codex/deployment-runtime",
       "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
       "runtime_implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
-      "runtime_head": "72e3275202273a60af3acc37b7a319f10eea99a7"
+      "runtime_head": "72e3275202273a60af3acc37b7a319f10eea99a7",
+      "current_prompt": "ROLE-deployment-INTEGRATION-v1",
+      "application_checkpoint": "f052fdd8e57ef0ffbf350772a9e3d8b39a700eee",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "historical_status_at_previous_snapshot": "docker_application_rehearsal_in_progress",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "cfeda743ec2118b0824313cf63c8526880bc79f1"
     },
     {
       "role": "documentation",
       "label": "文档汇总",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/documentation/TASK.md",
       "agent_id": "/root/documentation",
-      "status": "reports_draft_completed",
+      "status": "M3_contracts_and_human_reflection_source_complete_final_word_pending",
       "prompt_id": "ROLE-documentation-BOOTSTRAP-v1",
       "github_issue": 9,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/9",
@@ -162,16 +208,20 @@
       "handoff": "records/handoffs/documentation.json",
       "worktree": ".agent-worktrees/documentation",
       "branch": "codex/reports-draft",
-      "current_prompt": "ROLE-documentation-REPORTS-DRAFT-v1",
+      "current_prompt": "ROLE-documentation-M2-QUALITY-v1",
       "reports_head": "a2a68d0e32a44f6f074048bf69aefd82cd058f52",
-      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/18"
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/18",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "historical_status_at_previous_snapshot": "requirements_design_process_evidence_m2_in_progress",
+      "status_updated_at": "2026-10-23T10:57:16.021231+00:00",
+      "latest_owner_checkpoint": "6b4b599253f27f7b34e94a01ab3d7870dc64b210"
     },
     {
       "role": "testing",
       "label": "独立测试",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/testing/TASK.md",
-      "agent_id": "/root/independent_test_bootstrap",
-      "status": "bootstrap_completed",
+      "agent_id": "/root/independent_acceptance_v1",
+      "status": "three_formal_load_batches_stopped_final_blackbox_report_not_announced",
       "prompt_id": "ROLE-testing-BOOTSTRAP-v1",
       "fork_turns": "none",
       "communication_policy": "仅向总协调提交最终结果，不接受其他agent消息",
@@ -184,14 +234,26 @@
       "github_issue": 8,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/8",
       "archive_commit": "baa9a5816504b8439e170b274bc962da3f7143d9",
-      "archive_issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/8#issuecomment-6358032355"
+      "archive_issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/8#issuecomment-6358032355",
+      "neutral_input_manifest": "records/validation/independent-input-v1.json",
+      "execution_status": "not_started",
+      "updated_at": "2026-10-23T17:32:44+08:00",
+      "current_prompt": "ROLE-testing-CASE-FREEZE-v1",
+      "historical_status_at_previous_snapshot": "independent_case_freeze_in_progress",
+      "status_updated_at": "2026-10-23T10:57:16.021231+00:00",
+      "current_instance": {
+        "agent_id": "/root/independent_acceptance_v1",
+        "fork_turns": "none",
+        "public_case_freeze": "reports/independent-tests/v1-case-freeze.json",
+        "developer_access": "unpublished cases and reports forbidden"
+      }
     },
     {
       "role": "reviewer",
       "label": "审核",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/reviewer/TASK.md",
       "agent_id": "/root/reviewer",
-      "status": "foundation_review_evidence_pending_capacity_resume",
+      "status": "exact_e01_product_review_failed_new_head_retest_pending",
       "prompt_id": "ROLE-reviewer-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T13:16:40+08:00",
@@ -203,7 +265,11 @@
       "reviewed_head": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
       "review_evidence_commit": "5d0c087f63812b0e00c7284afeafe4ec6a00c110",
       "current_prompt": "ROLE-reviewer-FOUNDATIONS-v1",
-      "branch": "codex/review-foundations"
+      "branch": "codex/review-foundations",
+      "worktree": ".agent-worktrees/review-foundations",
+      "historical_status_at_previous_snapshot": "foundation_evidence_paused_for_development_queue",
+      "status_updated_at": "2026-10-23T10:32:02.250582+00:00",
+      "latest_owner_checkpoint": "ddaa0350d428d140f6f8f6030123a9dd1b217be2"
     }
   ],
   "repository": {
@@ -223,7 +289,7 @@
         "frontend"
       ],
       "enforce_admins": true,
-      "product_ci": "implemented_on_deployment_branch; first product checks failed on missing implementation",
+      "product_ci": "all four real CI jobs passed at 265d89bd; later commits require fresh checks; reviewer/product acceptance pending",
       "evidence": "records/github/protection-v2-response.json"
     }
   },
@@ -236,5 +302,36 @@
       "D004"
     ],
     "manifest": "records/spec-freezes/v1.json"
-  }
+  },
+  "integration": {
+    "branch": "codex/integration",
+    "foundation_head": "6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+    "main_merged": false,
+    "real_mysql": {
+      "version": "8.4.11",
+      "address": "127.0.0.1:13306",
+      "scope": "project-local new test databases"
+    },
+    "current_checkpoint": "43f51570e62e3160f7995c45bdddaf2f123242b3",
+    "whole_product_acceptance": "blackbox_execution_in_progress_no_report_announced_as_published",
+    "performance": "three_400_VU_600_second_batches_completed_at_10:52:33Z_official_report_pending",
+    "source_count_latest": "records/metrics/source-count-stage7.json",
+    "latest_source_count_scope": "Exact committed 43f51570; original pinned physical-source policy unchanged",
+    "ci_passed_commit": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+    "ci_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+    "ci_contexts_passed": [
+      "static",
+      "contracts",
+      "coverage",
+      "frontend"
+    ],
+    "source_count": 5866,
+    "source_count_passed": false,
+    "previous_foundation_module_test_count": 201,
+    "integration_pr": "https://github.com/HJY147/t44-dev-trace/pull/21",
+    "latest_integration_ci_passed_commit": "8fb74cdf893d83413338f966156274fe58caf22b",
+    "latest_integration_ci_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938407255",
+    "student_personal_reflection": "records/reflections/R001-original.md"
+  },
+  "updated_at": "2026-10-23T10:57:16.021231+00:00"
 }

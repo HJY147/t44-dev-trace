@@ -1,0 +1,14 @@
+COMMAND ["pnpm", "run", "build"]
+CWD /var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/t44-review-front-92za799d/frontend
+EXIT 0
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 1648 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.63 kB │ gzip:   0.43 kB
+dist/assets/index-CM8xbj20.css  121.23 kB │ gzip:  18.26 kB
+dist/assets/index-CIh_WRcJ.js   413.81 kB │ gzip: 144.39 kB
+
+✓ built in 745ms
+$ vue-tsc --noEmit && vite build

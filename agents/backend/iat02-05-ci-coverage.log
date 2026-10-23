@@ -1,0 +1,1095 @@
+coverage	Set up job	﻿2026-10-23T11:32:20.9635007Z Current runner version: '2.338.0'
+coverage	Set up job	2026-10-23T11:32:20.9651475Z ##[group]Runner Image Provisioner
+coverage	Set up job	2026-10-23T11:32:20.9652028Z Hosted Compute Agent
+coverage	Set up job	2026-10-23T11:32:20.9652656Z Version: 20261012.601
+coverage	Set up job	2026-10-23T11:32:20.9653081Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+coverage	Set up job	2026-10-23T11:32:20.9653572Z Build Date: 2026-10-12T17:48:21Z
+coverage	Set up job	2026-10-23T11:32:20.9653996Z Worker ID: {493684d4-42d8-4abe-bc1c-5df73e3afc6c}
+coverage	Set up job	2026-10-23T11:32:20.9654414Z Region: centralus
+coverage	Set up job	2026-10-23T11:32:20.9654839Z Cloud: Azure
+coverage	Set up job	2026-10-23T11:32:20.9655180Z ##[endgroup]
+coverage	Set up job	2026-10-23T11:32:20.9655963Z ##[group]Operating System
+coverage	Set up job	2026-10-23T11:32:20.9656348Z Ubuntu
+coverage	Set up job	2026-10-23T11:32:20.9656678Z 24.04.5
+coverage	Set up job	2026-10-23T11:32:20.9657066Z LTS
+coverage	Set up job	2026-10-23T11:32:20.9657413Z ##[endgroup]
+coverage	Set up job	2026-10-23T11:32:20.9657783Z ##[group]Runner Image
+coverage	Set up job	2026-10-23T11:32:20.9658167Z Image: ubuntu-24.04
+coverage	Set up job	2026-10-23T11:32:20.9658550Z Version: 20261012.334.1
+coverage	Set up job	2026-10-23T11:32:20.9659215Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+coverage	Set up job	2026-10-23T11:32:20.9660263Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+coverage	Set up job	2026-10-23T11:32:20.9660848Z ##[endgroup]
+coverage	Set up job	2026-10-23T11:32:20.9661589Z ##[group]GITHUB_TOKEN Permissions
+coverage	Set up job	2026-10-23T11:32:20.9663032Z Contents: read
+coverage	Set up job	2026-10-23T11:32:20.9663400Z Metadata: read
+coverage	Set up job	2026-10-23T11:32:20.9663807Z ##[endgroup]
+coverage	Set up job	2026-10-23T11:32:20.9665087Z Secret source: Actions
+coverage	Set up job	2026-10-23T11:32:20.9665745Z Cache mode: write
+coverage	Set up job	2026-10-23T11:32:20.9666159Z Prepare workflow directory
+coverage	Set up job	2026-10-23T11:32:21.1098681Z Prepare all required actions
+coverage	Set up job	2026-10-23T11:32:21.1142994Z Getting action download info
+coverage	Set up job	2026-10-23T11:32:21.3105257Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+coverage	Set up job	2026-10-23T11:32:21.5785068Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+coverage	Set up job	2026-10-23T11:32:22.7836065Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+coverage	Set up job	2026-10-23T11:32:23.7402718Z Complete job name: coverage
+coverage	Initialize containers	﻿2026-10-23T11:32:23.7725622Z ##[group]Checking docker version
+coverage	Initialize containers	2026-10-23T11:32:23.7733790Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+coverage	Initialize containers	2026-10-23T11:32:23.8546525Z '1.48'
+coverage	Initialize containers	2026-10-23T11:32:23.8557327Z Docker daemon API version: '1.48'
+coverage	Initialize containers	2026-10-23T11:32:23.8557641Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+coverage	Initialize containers	2026-10-23T11:32:23.8669368Z '1.48'
+coverage	Initialize containers	2026-10-23T11:32:23.8679537Z Docker client API version: '1.48'
+coverage	Initialize containers	2026-10-23T11:32:23.8683518Z ##[endgroup]
+coverage	Initialize containers	2026-10-23T11:32:23.8684749Z ##[group]Clean up resources from previous jobs
+coverage	Initialize containers	2026-10-23T11:32:23.8688445Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=cce5b1"
+coverage	Initialize containers	2026-10-23T11:32:23.8789630Z ##[command]/usr/bin/docker network prune --force --filter "label=cce5b1"
+coverage	Initialize containers	2026-10-23T11:32:23.8882091Z ##[endgroup]
+coverage	Initialize containers	2026-10-23T11:32:23.8882527Z ##[group]Create local container network
+coverage	Initialize containers	2026-10-23T11:32:23.8888265Z ##[command]/usr/bin/docker network create --label cce5b1 github_network_b54bbf3f13c14cc5bc2cffceb8541361
+coverage	Initialize containers	2026-10-23T11:32:23.9427840Z 74eb0ccdfa2b9a4b69730f9624312c328c98a538660ba43af02bc333cdfa2574
+coverage	Initialize containers	2026-10-23T11:32:23.9452129Z ##[endgroup]
+coverage	Initialize containers	2026-10-23T11:32:23.9468942Z ##[group]Starting mysql service container
+coverage	Initialize containers	2026-10-23T11:32:23.9484229Z ##[command]/usr/bin/docker pull mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+coverage	Initialize containers	2026-10-23T11:32:24.3270412Z docker.io/library/mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69: Pulling from library/mysql
+coverage	Initialize containers	2026-10-23T11:32:24.4985017Z 97347cf073b1: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4986017Z e8d4024251a9: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4986357Z ea1749d53e24: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4986646Z e99723a85985: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4986964Z 0c9ac1647849: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4987666Z 4730445dfddd: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4987936Z a3274015618b: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4988194Z 65fb9e68a2ac: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4988474Z 1ba383bbcb80: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4988719Z d14dbab65632: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:24.4988889Z 0c9ac1647849: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989045Z 4730445dfddd: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989250Z a3274015618b: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989433Z 65fb9e68a2ac: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989580Z 1ba383bbcb80: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989727Z d14dbab65632: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.4989872Z e99723a85985: Waiting
+coverage	Initialize containers	2026-10-23T11:32:24.6351268Z e8d4024251a9: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.6864322Z e8d4024251a9: Download complete
+coverage	Initialize containers	2026-10-23T11:32:24.6864663Z ea1749d53e24: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.6864936Z ea1749d53e24: Download complete
+coverage	Initialize containers	2026-10-23T11:32:24.8367524Z 0c9ac1647849: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.8368233Z 0c9ac1647849: Download complete
+coverage	Initialize containers	2026-10-23T11:32:24.8554508Z e99723a85985: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.8554852Z e99723a85985: Download complete
+coverage	Initialize containers	2026-10-23T11:32:24.8892868Z 97347cf073b1: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.8893184Z 97347cf073b1: Download complete
+coverage	Initialize containers	2026-10-23T11:32:24.9831424Z 4730445dfddd: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:24.9831992Z 4730445dfddd: Download complete
+coverage	Initialize containers	2026-10-23T11:32:25.0181644Z 65fb9e68a2ac: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:25.0182989Z 65fb9e68a2ac: Download complete
+coverage	Initialize containers	2026-10-23T11:32:25.1421323Z d14dbab65632: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:25.1421740Z d14dbab65632: Download complete
+coverage	Initialize containers	2026-10-23T11:32:25.2387380Z a3274015618b: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:25.2387766Z a3274015618b: Download complete
+coverage	Initialize containers	2026-10-23T11:32:25.5347618Z 1ba383bbcb80: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:25.5348032Z 1ba383bbcb80: Download complete
+coverage	Initialize containers	2026-10-23T11:32:26.1626561Z 97347cf073b1: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:32.8157270Z e8d4024251a9: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:32.8440764Z ea1749d53e24: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:33.0765264Z e99723a85985: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:33.0916058Z 0c9ac1647849: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:33.0988572Z 4730445dfddd: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:34.4255884Z a3274015618b: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:34.4334504Z 65fb9e68a2ac: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:41.7781069Z 1ba383bbcb80: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:41.7912227Z d14dbab65632: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:41.7940771Z Digest: sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+coverage	Initialize containers	2026-10-23T11:32:41.7946721Z Status: Downloaded newer image for mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+coverage	Initialize containers	2026-10-23T11:32:41.7953753Z docker.io/library/mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+coverage	Initialize containers	2026-10-23T11:32:41.8008227Z ##[command]/usr/bin/docker create --name f8991d91b19a44bb89a365f850a81833_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_c20a89 --label cce5b1 --network github_network_b54bbf3f13c14cc5bc2cffceb8541361 --network-alias mysql -p 127.0.0.1:3306:3306 --health-cmd "MYSQL_PWD=ci-root-disposable mysql --protocol=tcp --host=127.0.0.1 --user=root --execute='SELECT 1' --silent" --health-interval 10s --health-timeout 5s --health-retries 12 -e "MYSQL_ROOT_PASSWORD=ci-root-disposable" -e "MYSQL_DATABASE=t44_ci" -e "MYSQL_USER=t44" -e "MYSQL_PASSWORD=ci-app-disposable" -e GITHUB_ACTIONS=true -e CI=true mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+coverage	Initialize containers	2026-10-23T11:32:41.8298002Z 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:41.8314714Z ##[command]/usr/bin/docker start 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:41.9897082Z 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:41.9921508Z ##[command]/usr/bin/docker ps --all --filter id=2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+coverage	Initialize containers	2026-10-23T11:32:42.0011896Z 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee Up Less than a second (health: starting)
+coverage	Initialize containers	2026-10-23T11:32:42.0028142Z ##[command]/usr/bin/docker port 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:42.0126955Z 3306/tcp -> 127.0.0.1:3306
+coverage	Initialize containers	2026-10-23T11:32:42.0167273Z ##[endgroup]
+coverage	Initialize containers	2026-10-23T11:32:42.0168277Z ##[group]Starting rabbitmq service container
+coverage	Initialize containers	2026-10-23T11:32:42.0169317Z ##[command]/usr/bin/docker pull rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+coverage	Initialize containers	2026-10-23T11:32:42.8265643Z docker.io/library/rabbitmq@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292: Pulling from library/rabbitmq
+coverage	Initialize containers	2026-10-23T11:32:43.0165463Z 7b229517ed22: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0165732Z e7bae20055be: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0165880Z 5aeca134e2ee: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0166069Z 6c541e85eb6a: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0166287Z 705ec0ba1a4f: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0166624Z 47978bf4a272: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0166841Z d2ac89bc4c9f: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0167064Z 91e56fb15809: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0169890Z a511ee8166df: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0170686Z 8446d9e7daad: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0170938Z ffe8fdfc35ff: Pulling fs layer
+coverage	Initialize containers	2026-10-23T11:32:43.0171086Z d2ac89bc4c9f: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171207Z 8446d9e7daad: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171328Z ffe8fdfc35ff: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171445Z 6c541e85eb6a: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171613Z 705ec0ba1a4f: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171798Z 91e56fb15809: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.0171925Z a511ee8166df: Waiting
+coverage	Initialize containers	2026-10-23T11:32:43.2914633Z 7b229517ed22: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.2915378Z 7b229517ed22: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.3463045Z 5aeca134e2ee: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.4070625Z 7b229517ed22: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:43.4457605Z e7bae20055be: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.4458179Z e7bae20055be: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.5386361Z 6c541e85eb6a: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.5387017Z 6c541e85eb6a: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.5790370Z 47978bf4a272: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.5791646Z 47978bf4a272: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.6748534Z d2ac89bc4c9f: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.6749562Z d2ac89bc4c9f: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.7388173Z 705ec0ba1a4f: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.7390115Z 705ec0ba1a4f: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.7403585Z 91e56fb15809: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.7403940Z 91e56fb15809: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.8211843Z a511ee8166df: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.8212205Z a511ee8166df: Download complete
+coverage	Initialize containers	2026-10-23T11:32:43.8686366Z 8446d9e7daad: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:43.8686734Z 8446d9e7daad: Download complete
+coverage	Initialize containers	2026-10-23T11:32:44.0214672Z ffe8fdfc35ff: Verifying Checksum
+coverage	Initialize containers	2026-10-23T11:32:44.0215031Z ffe8fdfc35ff: Download complete
+coverage	Initialize containers	2026-10-23T11:32:44.9558475Z e7bae20055be: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:45.2582892Z 5aeca134e2ee: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:45.4393812Z 6c541e85eb6a: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0378516Z 705ec0ba1a4f: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0449933Z 47978bf4a272: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0497651Z d2ac89bc4c9f: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0553986Z 91e56fb15809: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0610410Z a511ee8166df: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.0683851Z 8446d9e7daad: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.1666150Z ffe8fdfc35ff: Pull complete
+coverage	Initialize containers	2026-10-23T11:32:46.1693495Z Digest: sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+coverage	Initialize containers	2026-10-23T11:32:46.1699066Z Status: Downloaded newer image for rabbitmq@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+coverage	Initialize containers	2026-10-23T11:32:46.1706380Z docker.io/library/rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+coverage	Initialize containers	2026-10-23T11:32:46.1721494Z ##[command]/usr/bin/docker create --name 90aa76fee36a456db6673260c35bf3ba_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_1c1a1d --label cce5b1 --network github_network_b54bbf3f13c14cc5bc2cffceb8541361 --network-alias rabbitmq -p 127.0.0.1:5672:5672 --health-cmd "rabbitmq-diagnostics -q ping" --health-interval 10s --health-timeout 5s --health-retries 12 -e "RABBITMQ_DEFAULT_USER=t44" -e "RABBITMQ_DEFAULT_PASS=ci-mq-disposable" -e "RABBITMQ_DEFAULT_VHOST=t44_ci" -e GITHUB_ACTIONS=true -e CI=true rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292
+coverage	Initialize containers	2026-10-23T11:32:46.1901047Z 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:46.1910730Z ##[command]/usr/bin/docker start 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:46.3157926Z 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:46.3172544Z ##[command]/usr/bin/docker ps --all --filter id=9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+coverage	Initialize containers	2026-10-23T11:32:46.3280591Z 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6 Up Less than a second (health: starting)
+coverage	Initialize containers	2026-10-23T11:32:46.3295233Z ##[command]/usr/bin/docker port 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:46.3430026Z 5672/tcp -> 127.0.0.1:5672
+coverage	Initialize containers	2026-10-23T11:32:46.3442190Z ##[endgroup]
+coverage	Initialize containers	2026-10-23T11:32:46.3455004Z ##[group]Waiting for all services to be ready
+coverage	Initialize containers	2026-10-23T11:32:46.3467130Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:46.3581369Z starting
+coverage	Initialize containers	2026-10-23T11:32:46.3600775Z mysql service is starting, waiting 2 seconds before checking again.
+coverage	Initialize containers	2026-10-23T11:32:48.3601365Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:48.3744098Z starting
+coverage	Initialize containers	2026-10-23T11:32:48.3764422Z mysql service is starting, waiting 4 seconds before checking again.
+coverage	Initialize containers	2026-10-23T11:32:52.7251553Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Initialize containers	2026-10-23T11:32:52.7347785Z healthy
+coverage	Initialize containers	2026-10-23T11:32:52.7361473Z mysql service is healthy.
+coverage	Initialize containers	2026-10-23T11:32:52.7362176Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:52.7444363Z starting
+coverage	Initialize containers	2026-10-23T11:32:52.7454889Z rabbitmq service is starting, waiting 2 seconds before checking again.
+coverage	Initialize containers	2026-10-23T11:32:54.7447337Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:54.7535638Z starting
+coverage	Initialize containers	2026-10-23T11:32:54.7546939Z rabbitmq service is starting, waiting 3 seconds before checking again.
+coverage	Initialize containers	2026-10-23T11:32:58.7485618Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Initialize containers	2026-10-23T11:32:58.7577496Z healthy
+coverage	Initialize containers	2026-10-23T11:32:58.7592767Z rabbitmq service is healthy.
+coverage	Initialize containers	2026-10-23T11:32:58.7593403Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T11:32:58.7771078Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7771388Z with:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7771517Z   persist-credentials: false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7771672Z   repository: HJY147/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7773345Z   token: ***
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7773462Z   ssh-strict: true
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7773581Z   ssh-user: git
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7773697Z   clean: true
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7773822Z   sparse-checkout-cone-mode: true
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774150Z   fetch-depth: 1
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774267Z   fetch-tags: false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774387Z   show-progress: true
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774510Z   lfs: false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774621Z   submodules: false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774743Z   set-safe-directory: true
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7774885Z   allow-unsafe-pr-checkout: false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775122Z env:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775232Z   PYTHONPATH: backend
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775495Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775642Z   T44_DATABASE: t44_ci
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775829Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7775975Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.7776114Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8458124Z Syncing repository: HJY147/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8458918Z ##[group]Getting Git version info
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8459157Z Working directory is '/home/runner/work/t44-dev-trace/t44-dev-trace'
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8459489Z [command]/usr/bin/git version
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8518006Z git version 2.55.0
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8532621Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8541731Z Temporarily overriding HOME='/home/runner/work/_temp/223e05b5-546f-4948-bc3e-db44d63c461b' before making global git config changes
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8542901Z Adding repository directory to the temporary git global config as a safe directory
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8546482Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8589005Z Deleting the contents of '/home/runner/work/t44-dev-trace/t44-dev-trace'
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8596091Z ##[group]Determining repository object format
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8596704Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8597277Z ##[group]Initializing the repository
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8599478Z [command]/usr/bin/git init /home/runner/work/t44-dev-trace/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8706131Z hint: Using 'master' as the name for the initial branch. This default branch name
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8706718Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8707175Z hint: to use in all of your new repositories, which will suppress this warning,
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8707567Z hint: call:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8707742Z hint:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8708010Z hint: 	git config --global init.defaultBranch <name>
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8708349Z hint:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8708632Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8709126Z hint: 'development'. The just-created branch can be renamed via this command:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8709495Z hint:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8709680Z hint: 	git branch -m <name>
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8709916Z hint:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8710248Z hint: Disable this message with "git config set advice.defaultBranchName false"
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8711584Z Initialized empty Git repository in /home/runner/work/t44-dev-trace/t44-dev-trace/.git/
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8719952Z [command]/usr/bin/git remote add origin https://github.com/HJY147/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8764749Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8765237Z ##[group]Disabling automatic garbage collection
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8768083Z [command]/usr/bin/git config --local gc.auto 0
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8797728Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8798067Z ##[group]Setting up auth
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8798325Z Removing SSH command configuration
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8802745Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.8833907Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9138816Z Removing HTTP extra header
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9142489Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9169606Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9349808Z Removing includeIf entries pointing to credentials config files
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9353621Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9382007Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9559272Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9590909Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path /home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9622664Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9657390Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9688900Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9718715Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9719081Z ##[group]Fetching the repository
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:58.9725082Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cfd62a9be7f53dc739e305dafe9db48d24b547eb:refs/remotes/pull/16/merge
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9855757Z From https://github.com/HJY147/t44-dev-trace
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9856120Z  * [new ref]         cfd62a9be7f53dc739e305dafe9db48d24b547eb -> pull/16/merge
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9861292Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9861652Z ##[group]Determining the checkout info
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9862122Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9866399Z [command]/usr/bin/git sparse-checkout disable
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9913829Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9942669Z ##[group]Checking out the ref
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:32:59.9945854Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/16/merge
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0792476Z Note: switching to 'refs/remotes/pull/16/merge'.
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0792748Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0792878Z You are in 'detached HEAD' state. You can look around, make experimental
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0793149Z changes and commit them, and you can discard any commits you make in this
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0793414Z state without impacting any branches by switching back to a branch.
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0793569Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0793681Z If you want to create a new branch to retain commits you create, you may
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0793943Z do so (now or later) by using -c with the switch command. Example:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794093Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794163Z   git switch -c <new-branch-name>
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794263Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794325Z Or undo this operation with:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794414Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794481Z   git switch -
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794553Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794673Z Turn off this advice by setting config variable advice.detachedHead to false
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0794849Z 
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0795065Z HEAD is now at cfd62a9 Merge 479fc8fbb1c1abac1055a25f935d30c247c90f69 into 4dc5be92321bd7ee793656de16e1910fe4c80880
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0808041Z ##[endgroup]
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0851584Z [command]/usr/bin/git log -1 --format=%H
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0875317Z cfd62a9be7f53dc739e305dafe9db48d24b547eb
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0885059Z ##[group]Removing auth
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0885347Z Removing SSH command configuration
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0893099Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.0915155Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1092912Z Removing HTTP extra header
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1095870Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1124130Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1302060Z Removing includeIf entries pointing to credentials config files
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1304797Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1329514Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1330471Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1330885Z includeif.gitdir:/github/workspace/.git.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1331284Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1336669Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1359203Z /home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1367486Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-d4344ac7\-e1ce\-4bdd\-ab8e\-84bb84837afb\.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1401054Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1427355Z /home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1434075Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-d4344ac7\-e1ce\-4bdd\-ab8e\-84bb84837afb\.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1464849Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1488320Z /github/runner_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1493673Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-d4344ac7\-e1ce\-4bdd\-ab8e\-84bb84837afb\.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1523726Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1547712Z /github/runner_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1553354Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-d4344ac7\-e1ce\-4bdd\-ab8e\-84bb84837afb\.config
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1582708Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1757464Z Removing credentials config '/home/runner/work/_temp/git-credentials-d4344ac7-e1ce-4bdd-ab8e-84bb84837afb.config'
+coverage	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:33:00.1764855Z ##[endgroup]
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T11:33:00.1937668Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1937901Z with:
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1938026Z   python-version: 3.12
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1938159Z   check-latest: false
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1939534Z   token: ***
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1939724Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1939952Z   update-environment: true
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1940097Z   allow-prereleases: false
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1940233Z   freethreaded: false
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1940481Z env:
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1940591Z   PYTHONPATH: backend
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1940854Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1941005Z   T44_DATABASE: t44_ci
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1954944Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1955248Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.1955464Z ##[endgroup]
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.2727331Z ##[group]Installed versions
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.2785377Z Successfully set up CPython (3.12.15)
+coverage	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-23T11:33:00.2785888Z ##[endgroup]
+coverage	Run mkdir -p reports/ci/coverage	﻿2026-10-23T11:33:00.2895093Z ##[group]Run mkdir -p reports/ci/coverage
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.2895339Z ^[[36;1mmkdir -p reports/ci/coverage^[[0m
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3100704Z shell: /usr/bin/bash -e {0}
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3100917Z env:
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3101053Z   PYTHONPATH: backend
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3101509Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3101666Z   T44_DATABASE: t44_ci
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3101850Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3102021Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3102205Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3102692Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3102936Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3103156Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3103378Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3103597Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run mkdir -p reports/ci/coverage	2026-10-23T11:33:00.3103824Z ##[endgroup]
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	﻿2026-10-23T11:33:00.3235240Z ##[group]Run python -m pip install --require-hashes -r scripts/ci/requirements.lock
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3235610Z ^[[36;1mpython -m pip install --require-hashes -r scripts/ci/requirements.lock^[[0m
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3284940Z shell: /usr/bin/bash -e {0}
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3285085Z env:
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3285202Z   PYTHONPATH: backend
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3285556Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3285710Z   T44_DATABASE: t44_ci
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3285893Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3286043Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3286224Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3286470Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3286716Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3286935Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3287155Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3287392Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:00.3287579Z ##[endgroup]
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.0637808Z Collecting attrs==26.1.0 (from -r scripts/ci/requirements.lock (line 3))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.1241468Z   Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.1657780Z Collecting bandit==1.9.4 (from -r scripts/ci/requirements.lock (line 9))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.1755190Z   Downloading bandit-1.9.4-py3-none-any.whl (134 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5014936Z Collecting coverage==7.17.0 (from -r scripts/ci/requirements.lock (line 13))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5117187Z   Downloading coverage-7.17.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (261 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5554129Z Collecting iniconfig==2.3.1 (from -r scripts/ci/requirements.lock (line 134))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5652176Z   Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5889811Z Collecting jsonschema==4.26.0 (from -r scripts/ci/requirements.lock (line 138))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.5988333Z   Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.6260499Z Collecting jsonschema-specifications==2025.9.1 (from -r scripts/ci/requirements.lock (line 142))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.6359042Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.6569754Z Collecting markdown-it-py==4.2.0 (from -r scripts/ci/requirements.lock (line 146))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.6668189Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.6948179Z Collecting mdurl==0.1.2 (from -r scripts/ci/requirements.lock (line 150))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.7046300Z   Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.7270015Z Collecting packaging==26.3 (from -r scripts/ci/requirements.lock (line 154))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.7367896Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.7677004Z Collecting pluggy==1.7.0 (from -r scripts/ci/requirements.lock (line 158))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.7775051Z   Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.8007707Z Collecting pygments==2.21.0 (from -r scripts/ci/requirements.lock (line 162))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.8105432Z   Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.8989094Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 14.9 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.9254754Z Collecting pytest==9.1.1 (from -r scripts/ci/requirements.lock (line 168))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.9352882Z   Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.9866695Z Collecting pyyaml==6.0.3 (from -r scripts/ci/requirements.lock (line 172))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:01.9966009Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.0347921Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 20.4 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.0592477Z Collecting referencing==0.37.0 (from -r scripts/ci/requirements.lock (line 249))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.0692046Z   Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.0976411Z Collecting rich==15.0.0 (from -r scripts/ci/requirements.lock (line 255))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.1074932Z   Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.2794683Z Collecting rpds-py==2026.9.1 (from -r scripts/ci/requirements.lock (line 259))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.2896292Z   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.4788397Z Collecting ruff==0.17.2 (from -r scripts/ci/requirements.lock (line 391))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.4890316Z   Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.5 MB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.7348057Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 43.5 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.7636917Z Collecting stevedore==5.9.1 (from -r scripts/ci/requirements.lock (line 411))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.7735501Z   Downloading stevedore-5.9.1-py3-none-any.whl (54 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.7955598Z Collecting typing-extensions==4.16.0 (from -r scripts/ci/requirements.lock (line 415))
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.8054472Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:02.8569930Z Installing collected packages: typing-extensions, stevedore, ruff, rpds-py, pyyaml, pygments, pluggy, packaging, mdurl, iniconfig, coverage, attrs, referencing, pytest, markdown-it-py, rich, jsonschema-specifications, jsonschema, bandit
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:04.1054112Z 
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:04.1068005Z Successfully installed attrs-26.1.0 bandit-1.9.4 coverage-7.17.0 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.1.1 pyyaml-6.0.3 referencing-0.37.0 rich-15.0.0 rpds-py-2026.9.1 ruff-0.17.2 stevedore-5.9.1 typing-extensions-4.16.0
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:04.1073787Z 
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:04.1073950Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+coverage	Run python -m pip install --require-hashes -r scripts/ci/requirements.lock	2026-10-23T11:33:04.1074328Z [notice] To update, run: pip install --upgrade pip
+coverage	Require real application and test files	﻿2026-10-23T11:33:04.1759776Z ##[group]Run python scripts/ci/preflight.py 2>&1 | tee reports/ci/coverage/preflight.log
+coverage	Require real application and test files	2026-10-23T11:33:04.1760162Z ^[[36;1mpython scripts/ci/preflight.py 2>&1 | tee reports/ci/coverage/preflight.log^[[0m
+coverage	Require real application and test files	2026-10-23T11:33:04.1816861Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Require real application and test files	2026-10-23T11:33:04.1817066Z env:
+coverage	Require real application and test files	2026-10-23T11:33:04.1817187Z   PYTHONPATH: backend
+coverage	Require real application and test files	2026-10-23T11:33:04.1817684Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Require real application and test files	2026-10-23T11:33:04.1817838Z   T44_DATABASE: t44_ci
+coverage	Require real application and test files	2026-10-23T11:33:04.1818022Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Require real application and test files	2026-10-23T11:33:04.1818172Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Require real application and test files	2026-10-23T11:33:04.1818355Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T11:33:04.1818605Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Require real application and test files	2026-10-23T11:33:04.1818851Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T11:33:04.1819076Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T11:33:04.1819295Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T11:33:04.1819541Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Require real application and test files	2026-10-23T11:33:04.1819729Z ##[endgroup]
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	﻿2026-10-23T11:33:04.2137687Z ##[group]Run python -m pip install --require-hashes -r backend/requirements.lock
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2138024Z ^[[36;1mpython -m pip install --require-hashes -r backend/requirements.lock^[[0m
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2185124Z shell: /usr/bin/bash -e {0}
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2185268Z env:
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2185382Z   PYTHONPATH: backend
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2185690Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2185846Z   T44_DATABASE: t44_ci
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2186073Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2186224Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2186405Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2186656Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2186901Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2187124Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2187349Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2187591Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.2187780Z ##[endgroup]
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.4598557Z Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.5357269Z Collecting annotated-doc==0.0.5 (from -r backend/requirements.lock (line 3))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.6042061Z   Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.6248735Z Collecting annotated-types==0.8.0 (from -r backend/requirements.lock (line 7))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.6401215Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.6702519Z Collecting anyio==4.15.1 (from -r backend/requirements.lock (line 11))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.6856189Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.7366193Z Collecting apscheduler==3.11.3 (from -r backend/requirements.lock (line 17))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.7517511Z   Downloading apscheduler-3.11.3-py3-none-any.whl (66 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.7833235Z Collecting argon2-cffi==25.1.0 (from -r backend/requirements.lock (line 21))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.7983664Z   Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.8202153Z Collecting argon2-cffi-bindings==26.1.0 (from -r backend/requirements.lock (line 25))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.8430555Z   Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.8834999Z Collecting arrow==1.4.0 (from -r backend/requirements.lock (line 68))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.8987101Z   Downloading arrow-1.4.0-py3-none-any.whl (68 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.9042813Z Requirement already satisfied: attrs==26.1.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 72)) (26.1.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.9046065Z Requirement already satisfied: bandit==1.9.4 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 79)) (1.9.4)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.9257187Z Collecting certifi==2026.10.19 (from -r backend/requirements.lock (line 83))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:04.9408222Z   Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.0501454Z Collecting cffi==2.1.1 (from -r backend/requirements.lock (line 89))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.0655718Z   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.1038126Z Collecting click==8.5.0 (from -r backend/requirements.lock (line 193))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.1193213Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.1236226Z Requirement already satisfied: coverage==7.17.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 203)) (7.17.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.2455970Z Collecting cryptography==50.0.2 (from -r backend/requirements.lock (line 324))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.2607322Z   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.3641534Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 46.7 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4003215Z Collecting fastapi==0.161.1 (from -r backend/requirements.lock (line 385))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4161451Z   Downloading fastapi-0.161.1-py3-none-any.whl (149 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4382399Z Collecting fqdn==1.6.0 (from -r backend/requirements.lock (line 389))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4532835Z   Downloading fqdn-1.6.0-py3-none-any.whl (12 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4731018Z Collecting h11==0.16.0 (from -r backend/requirements.lock (line 393))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.4884148Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.5112783Z Collecting hatchling==1.32.4 (from -r backend/requirements.lock (line 399))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.5263544Z   Downloading hatchling-1.32.4-py3-none-any.whl (78 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.5481850Z Collecting httpcore==1.0.9 (from -r backend/requirements.lock (line 403))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.5633621Z   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.5865645Z Collecting httpx==0.28.1 (from -r backend/requirements.lock (line 407))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6017759Z   Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6228050Z Collecting idna==3.20 (from -r backend/requirements.lock (line 411))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6378509Z   Downloading idna-3.20-py3-none-any.whl (69 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6406963Z Requirement already satisfied: iniconfig==2.3.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 418)) (2.3.1)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6574488Z Collecting isoduration==20.11.0 (from -r backend/requirements.lock (line 422))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6725663Z   Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.6926634Z Collecting jsonpointer==3.4 (from -r backend/requirements.lock (line 426))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7078254Z   Downloading jsonpointer-3.4-py3-none-any.whl (9.0 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7101851Z Requirement already satisfied: jsonschema==4.26.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 430)) (4.26.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7446813Z Collecting jsonschema-path==0.5.0 (from -r backend/requirements.lock (line 437))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7597766Z   Downloading jsonschema_path-0.5.0-py3-none-any.whl (24 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7626738Z Requirement already satisfied: jsonschema-specifications==2025.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 441)) (2025.9.1)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.7918665Z Collecting lazy-object-proxy==1.13.0 (from -r backend/requirements.lock (line 447))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8077497Z   Downloading lazy_object_proxy-1.13.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (71 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8105109Z Requirement already satisfied: markdown-it-py==4.2.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 513)) (4.2.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8108157Z Requirement already satisfied: mdurl==0.1.2 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 517)) (0.1.2)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8297119Z Collecting openapi-schema-validator==0.9.0 (from -r backend/requirements.lock (line 521))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8449291Z   Downloading openapi_schema_validator-0.9.0-py3-none-any.whl (19 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8662127Z Collecting openapi-spec-validator==0.9.0 (from -r backend/requirements.lock (line 525))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.8818976Z   Downloading openapi_spec_validator-0.9.0-py3-none-any.whl (50 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9047845Z Collecting opentelemetry-api==1.45.1 (from -r backend/requirements.lock (line 529))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9199687Z   Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9224769Z Requirement already satisfied: packaging==26.3 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 533)) (26.3)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9400675Z Collecting pathable==0.6.0 (from -r backend/requirements.lock (line 539))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9556205Z   Downloading pathable-0.6.0-py3-none-any.whl (18 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9753503Z Collecting pathspec==1.1.1 (from -r backend/requirements.lock (line 543))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:05.9906835Z   Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.0120393Z Collecting pika==1.4.4 (from -r backend/requirements.lock (line 547))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.0290588Z   Downloading pika-1.4.4-py3-none-any.whl (165 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.0321394Z Requirement already satisfied: pluggy==1.7.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 551)) (1.7.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.0495156Z Collecting pycparser==3.12 (from -r backend/requirements.lock (line 557))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.0652751Z   Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.1289096Z Collecting pydantic==2.14.1 (from -r backend/requirements.lock (line 561))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.1442925Z   Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.5495303Z Collecting pydantic-core==2.50.1 (from -r backend/requirements.lock (line 569))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.5655487Z   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.5796160Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 160.5 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6057224Z Collecting pydantic-settings==2.16.1 (from -r backend/requirements.lock (line 708))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6208088Z   Downloading pydantic_settings-2.16.1-py3-none-any.whl (80 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6238374Z Requirement already satisfied: pygments==2.21.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 714)) (2.21.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6424112Z Collecting pymysql==1.2.3 (from -r backend/requirements.lock (line 720))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6576466Z   Downloading pymysql-1.2.3-py3-none-any.whl (46 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6602459Z Requirement already satisfied: pytest==9.1.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 724)) (9.1.1)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6786753Z Collecting python-dateutil==3.0.0 (from -r backend/requirements.lock (line 728))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.6942570Z   Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7216896Z Collecting python-dotenv==1.2.4 (from -r backend/requirements.lock (line 732))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7365163Z   Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7401167Z Requirement already satisfied: pyyaml==6.0.3 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 736)) (6.0.3)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7404275Z Requirement already satisfied: referencing==0.37.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 813)) (0.37.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7579383Z Collecting rfc3339-validator==0.1.4 (from -r backend/requirements.lock (line 821))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7732617Z   Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.7938316Z Collecting rfc3987==1.3.8 (from -r backend/requirements.lock (line 827))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8117160Z   Downloading rfc3987-1.3.8-py2.py3-none-any.whl (13 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8255375Z Requirement already satisfied: rich==15.0.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 831)) (15.0.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8272152Z Requirement already satisfied: rpds-py==2026.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 835)) (2026.9.1)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8273407Z Requirement already satisfied: ruff==0.17.2 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 967)) (0.17.2)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8453517Z Collecting six==1.17.0 (from -r backend/requirements.lock (line 987))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:06.8609008Z   Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.1130013Z Collecting sqlalchemy==2.1.6 (from -r backend/requirements.lock (line 993))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.1285811Z   Downloading sqlalchemy-2.1.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.1642841Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 130.8 MB/s  0:00:00
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.1942758Z Collecting starlette==1.9.0 (from -r backend/requirements.lock (line 1067))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2095338Z   Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2125981Z Requirement already satisfied: stevedore==5.9.1 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 1071)) (5.9.1)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2314500Z Collecting tomlkit==0.15.2 (from -r backend/requirements.lock (line 1075))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2466659Z   Downloading tomlkit-0.15.2-py3-none-any.whl (52 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2748248Z Collecting trove-classifiers==2026.9.21.13 (from -r backend/requirements.lock (line 1079))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2898216Z   Downloading trove_classifiers-2026.9.21.13-py3-none-any.whl (14 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.2921004Z Requirement already satisfied: typing-extensions==4.16.0 in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from -r backend/requirements.lock (line 1083)) (4.16.0)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3089098Z Collecting typing-inspection==0.4.4 (from -r backend/requirements.lock (line 1097))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3240479Z   Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3439925Z Collecting tzdata==2026.5 (from -r backend/requirements.lock (line 1104))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3592886Z   Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3819907Z Collecting tzlocal==5.4.5 (from -r backend/requirements.lock (line 1111))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.3973008Z   Downloading tzlocal-5.4.5-py3-none-any.whl (18 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.4162562Z Collecting uri-template==1.3.0 (from -r backend/requirements.lock (line 1115))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.4315727Z   Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.4570180Z Collecting uvicorn==0.54.0 (from -r backend/requirements.lock (line 1119))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.4722618Z   Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.5022490Z Collecting webcolors==25.10.0 (from -r backend/requirements.lock (line 1123))
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.5173231Z   Downloading webcolors-25.10.0-py3-none-any.whl (14 kB)
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:07.6184958Z Installing collected packages: trove-classifiers, rfc3987, webcolors, uri-template, tzlocal, tzdata, typing-inspection, tomlkit, sqlalchemy, six, python-dotenv, pymysql, pydantic-core, pycparser, pika, pathspec, pathable, opentelemetry-api, lazy-object-proxy, jsonpointer, idna, h11, fqdn, click, certifi, annotated-types, annotated-doc, uvicorn, rfc3339-validator, python-dateutil, pydantic, jsonschema-path, httpcore, hatchling, cffi, apscheduler, anyio, starlette, pydantic-settings, httpx, cryptography, arrow, argon2-cffi-bindings, openapi-schema-validator, isoduration, fastapi, argon2-cffi, openapi-spec-validator
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:09.7328512Z 
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:09.7359962Z Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 apscheduler-3.11.3 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 arrow-1.4.0 certifi-2026.10.19 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 fastapi-0.161.1 fqdn-1.6.0 h11-0.16.0 hatchling-1.32.4 httpcore-1.0.9 httpx-0.28.1 idna-3.20 isoduration-20.11.0 jsonpointer-3.4 jsonschema-path-0.5.0 lazy-object-proxy-1.13.0 openapi-schema-validator-0.9.0 openapi-spec-validator-0.9.0 opentelemetry-api-1.45.1 pathable-0.6.0 pathspec-1.1.1 pika-1.4.4 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pydantic-settings-2.16.1 pymysql-1.2.3 python-dateutil-3.0.0 python-dotenv-1.2.4 rfc3339-validator-0.1.4 rfc3987-1.3.8 six-1.17.0 sqlalchemy-2.1.6 starlette-1.9.0 tomlkit-0.15.2 trove-classifiers-2026.9.21.13 typing-inspection-0.4.4 tzdata-2026.5 tzlocal-5.4.5 uri-template-1.3.0 uvicorn-0.54.0 webcolors-25.10.0
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:09.7368104Z 
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:09.7368386Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+coverage	Run python -m pip install --require-hashes -r backend/requirements.lock	2026-10-23T11:33:09.7368641Z [notice] To update, run: pip install --upgrade pip
+coverage	Apply reviewed schema to explicitly selected disposable test database	﻿2026-10-23T11:33:09.8311560Z ##[group]Run python -m t44.cli migrate --database "$T44_DATABASE" 2>&1 | tee reports/ci/coverage/migration.log
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8312477Z ^[[36;1mpython -m t44.cli migrate --database "$T44_DATABASE" 2>&1 | tee reports/ci/coverage/migration.log^[[0m
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8385223Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8385537Z env:
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8385717Z   PYTHONPATH: backend
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8386219Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8386459Z   T44_DATABASE: t44_ci
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8386737Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8386992Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8387276Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8387673Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8388064Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8388410Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8388798Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8389158Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:09.8389460Z ##[endgroup]
+coverage	Apply reviewed schema to explicitly selected disposable test database	2026-10-23T11:33:10.5691660Z {"version": 1, "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4", "already_applied": false, "tables": 18, "columns": 226, "defects": [], "passed": true}
+coverage	Run full suite and cover every production t44 Python module	﻿2026-10-23T11:33:10.6276544Z ##[group]Run python scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6277208Z ^[[36;1mpython scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log^[[0m
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6331160Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6331359Z env:
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6331476Z   PYTHONPATH: backend
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6331808Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6331961Z   T44_DATABASE: t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6332141Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6332436Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6332627Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6332870Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6333110Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6333330Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6333579Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6333798Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:33:10.6334141Z ##[endgroup]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0671291Z ============================= test session starts ==============================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0671647Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0671900Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0672108Z configfile: pyproject.toml
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0672253Z plugins: anyio-4.15.1
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0672609Z collected 362 items
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0672715Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0672905Z backend/backend/domain/994_transitions.py .............................. [  8%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0673198Z ........................................................................ [ 28%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0673405Z ....                                                                     [ 29%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0673669Z backend/contracts/985_mysql_http.py .....                                [ 30%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0673941Z backend/contracts/986_http.py .......................................... [ 42%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0674165Z .............                                                            [ 45%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0674395Z backend/contracts/987_faults.py ....                                     [ 46%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0674655Z backend/messaging/976_process_mysql.py .                                 [ 47%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0674913Z backend/messaging/977_rabbit.py ...                                      [ 48%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0675170Z backend/messaging/978_process.py ....                                    [ 49%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0675430Z backend/messaging/979_facade.py ..........                               [ 51%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0675692Z backend/messaging/980_delivery.py .............                          [ 55%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0675959Z backend/persistence/956_schema_semantics.py ...............              [ 59%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0676228Z backend/persistence/975_seed.py ...                                      [ 60%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0676490Z backend/persistence/988_mysql.py ...............                         [ 64%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0676747Z backend/persistence/989_rows.py ...                                      [ 65%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0677007Z backend/persistence/993_foundation.py ..................                 [ 70%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0677276Z backend/scheduling/973_extensible_rules.py ......                        [ 72%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0677547Z backend/scheduling/974_application.py ......................             [ 78%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0677815Z backend/scheduling/990_runtime.py ............                           [ 81%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0678076Z backend/scheduling/991_rules.py ........................................ [ 92%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0678309Z ...........................                                              [100%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0678654Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0678738Z =============================== warnings summary ===============================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0679047Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0679678Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0680211Z     from starlette.testclient import TestClient as TestClient  # noqa
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0680398Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0680744Z persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[2-20-20-30-aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0681386Z persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[40-6000-9000-15000-6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0682009Z   ../tmp/backend/persistence/975_seed.py:166: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0682605Z     @pytest.mark.parametrize(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0682707Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0682837Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0683163Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/coverage/junit.xml -
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0683473Z ================= 362 passed, 3 warnings in 124.41s (0:02:04) ==================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0683697Z Wrote XML report to reports/ci/coverage/coverage.xml
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0683905Z Wrote JSON report to reports/ci/coverage/coverage.json
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0684117Z Wrote HTML report to reports/ci/coverage/html/index.html
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0684335Z Name                                    Stmts   Miss Branch BrPart   Cover   Missing
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0684584Z ------------------------------------------------------------------------------------
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0684839Z backend/t44/__init__.py                     0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0685111Z backend/t44/api.py                        163     14     74      4  90.72%   66->76, 82, 133-134, 176-184, 254-255
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0685383Z backend/t44/cli.py                        101    101     26      0   0.00%   3-161
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0685625Z backend/t44/contracts/__init__.py          33      0     10      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0685874Z backend/t44/domain/__init__.py              0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0686120Z backend/t44/domain/commands.py             43      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0686382Z backend/t44/domain/models.py              161      3     22      3  96.72%   8, 121, 150
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0686657Z backend/t44/domain/state_machine.py       111      1     28      1  98.56%   215
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0686918Z backend/t44/messaging/__init__.py           0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0687188Z backend/t44/messaging/__main__.py          43     18      8      2  52.94%   27-45, 53, 57
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0687534Z backend/t44/messaging/broker.py           104     10     26      8  86.15%   24, 26, 89, 101-102, 105->exit, 115->119, 117-118, 133, 135, 140
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0687866Z backend/t44/messaging/facade.py            34      1      2      0  97.22%   25
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0688152Z backend/t44/messaging/worker.py            57      5     12      1  88.41%   39-40, 68, 69->81, 88-89
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0688432Z backend/t44/persistence/__init__.py         5      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0688702Z backend/t44/persistence/accounts.py        28      4      2      0  86.67%   62-65
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0688996Z backend/t44/persistence/codecs.py          27      6      8      4  71.43%   14, 17, 27, 30, 35, 43
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0689315Z backend/t44/persistence/delivery.py        85      5     26      6  90.09%   22, 74, 77, 111, 124->121, 144
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0689743Z backend/t44/persistence/engine.py          48      5     12      5  83.33%   22, 49, 59, 61, 63
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0690024Z backend/t44/persistence/errors.py           9      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0690402Z backend/t44/persistence/migrations.py     181     40     78     15  75.68%   59, 103-104, 150-151, 154, 158, 170, 172, 178, 180, 231, 247, 256, 264, 282, 287, 294-336, 344-345
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0690862Z backend/t44/persistence/rows.py           170     17     74     17  86.07%   40, 71, 79, 89, 142, 174, 179, 182, 184, 186, 198, 224, 230, 233, 239, 243, 264
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0691245Z backend/t44/persistence/scans.py           66      9     20      6  82.56%   17, 48, 51, 59-60, 75->81, 78-79, 100, 106
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0691558Z backend/t44/persistence/schema.py          69      2     36      2  96.19%   31, 53
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0691860Z backend/t44/persistence/seed.py           123      7     56      7  92.18%   46, 134, 316, 322, 360, 365, 382
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0692168Z backend/t44/persistence/uow.py             83      3     18      4  93.07%   40, 68, 78->84, 82
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0692662Z backend/t44/scheduling/__init__.py          3      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0692939Z backend/t44/scheduling/__main__.py         76     25     14      4  63.33%   32, 41, 60-98, 104, 108
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0693230Z backend/t44/scheduling/facade.py           72      5     12      1  90.48%   96-99, 202
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0693506Z backend/t44/scheduling/rules.py            97      1     28      0  99.20%   47
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0693763Z backend/t44/scheduling/runtime.py          23      0      6      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0694063Z backend/t44/scheduling/scanner.py          86     21     26      4  70.54%   17-18, 42, 62-64, 90-100, 126-131, 132->137
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0694360Z backend/t44/services/__init__.py            0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0694643Z backend/t44/services/application.py        74      6     14      2  88.64%   110-111, 114-115, 163-164
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0694926Z backend/t44/services/codes.py              26      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0695180Z backend/t44/services/common.py            102      1     20      1  98.36%   24
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0695432Z backend/t44/services/errors.py             15      0      2      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0695700Z backend/t44/services/identity.py           76      4     14      4  91.11%   35, 40, 87, 112
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0695986Z backend/t44/services/projects.py           81      2     12      2  95.70%   71, 74
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0696264Z backend/t44/services/reviews.py            56      0      2      1  98.28%   146->151
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0696552Z backend/t44/services/runtime.py           142      6     44      1  96.24%   164, 275-276, 279-281
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0696838Z backend/t44/services/tasks.py              84      0     10      1  98.94%   47->44
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0697100Z backend/t44/services/workflow.py           66      0     24      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0697364Z backend/t44/settings.py                    27      4      6      3  78.79%   21, 33, 36, 46
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0697625Z ------------------------------------------------------------------------------------
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T11:35:18.0697851Z TOTAL                                    2850    326    772    109  86.33%
+coverage	Preserve real dependency logs	﻿2026-10-23T11:35:18.0766613Z ##[group]Run docker logs "$MYSQL_SERVICE_ID" > reports/ci/coverage/mysql.log 2>&1
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0766966Z ^[[36;1mdocker logs "$MYSQL_SERVICE_ID" > reports/ci/coverage/mysql.log 2>&1^[[0m
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0767262Z ^[[36;1mdocker logs "$RABBITMQ_SERVICE_ID" > reports/ci/coverage/rabbitmq.log 2>&1^[[0m
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0821547Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0821746Z env:
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0821863Z   PYTHONPATH: backend
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0822186Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0822500Z   T44_DATABASE: t44_ci
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0822677Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0822836Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0823015Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0823262Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0823506Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0823751Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0823978Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0824202Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0824476Z   MYSQL_SERVICE_ID: 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0824805Z   RABBITMQ_SERVICE_ID: 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Preserve real dependency logs	2026-10-23T11:35:18.0825049Z ##[endgroup]
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	﻿2026-10-23T11:35:18.1151138Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1151413Z with:
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1151711Z   name: coverage-cfd62a9be7f53dc739e305dafe9db48d24b547eb
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1151902Z   path: reports/ci/
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1152030Z   if-no-files-found: error
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1152167Z   retention-days: 14
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1152674Z   compression-level: 6
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1152812Z   overwrite: false
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1152939Z   include-hidden-files: false
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153077Z   archive: true
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153192Z env:
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153303Z   PYTHONPATH: backend
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153623Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153776Z   T44_DATABASE: t44_ci
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1153954Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1154102Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1154281Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1154522Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1154785Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1155006Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1155224Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1155475Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.1155664Z ##[endgroup]
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.2157259Z With the provided path, there will be 66 files uploaded
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.2161300Z Artifact name is valid!
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.2161565Z Root directory input is valid!
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.4792992Z Uploading artifact: coverage-cfd62a9be7f53dc739e305dafe9db48d24b547eb.zip
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.4815798Z Beginning upload of artifact content to blob storage
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.8151457Z Uploaded bytes 325934
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.8509606Z Finished uploading artifact content to blob storage!
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.8510253Z SHA256 digest of uploaded artifact is b18ada3c733790072fa80168da65b793c3c20197216cfa7d59e5d0e85edb54a5
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:18.8510679Z Finalizing artifact upload
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:19.3696337Z Artifact coverage-cfd62a9be7f53dc739e305dafe9db48d24b547eb successfully finalized. Artifact ID 12497954468
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:19.3697192Z Artifact coverage-cfd62a9be7f53dc739e305dafe9db48d24b547eb has been successfully uploaded! Final size is 325934 bytes. Artifact ID is 12497954468
+coverage	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-23T11:35:19.3698964Z Artifact download URL: https://github.com/HJY147/t44-dev-trace/actions/runs/39946771417/artifacts/12497954468
+coverage	Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-23T11:35:19.3883532Z Post job cleanup.
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T11:35:19.4768183Z Post job cleanup.
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5349607Z [command]/usr/bin/git version
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5383501Z git version 2.55.0
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5407456Z Temporarily overriding HOME='/home/runner/work/_temp/b72ebdc8-984d-4884-8ec5-e80eb51888e0' before making global git config changes
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5408246Z Adding repository directory to the temporary git global config as a safe directory
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5410943Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5439086Z Removing SSH command configuration
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5446994Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5476409Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5670708Z Removing HTTP extra header
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5676036Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5717142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5944882Z Removing includeIf entries pointing to credentials config files
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5954674Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+coverage	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T11:35:19.5991496Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+coverage	Stop containers	﻿2026-10-23T11:35:19.6284722Z Print service container logs: f8991d91b19a44bb89a365f850a81833_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_c20a89
+coverage	Stop containers	2026-10-23T11:35:19.6287699Z ##[command]/usr/bin/docker logs --details 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Stop containers	2026-10-23T11:35:19.6383677Z  2026-10-23T11:32:42.275741Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+coverage	Stop containers	2026-10-23T11:35:19.6384255Z  2026-10-23 11:32:41+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+coverage	Stop containers	2026-10-23T11:35:19.6384753Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+coverage	Stop containers	2026-10-23T11:35:19.6385120Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+coverage	Stop containers	2026-10-23T11:35:19.6385491Z  2026-10-23 11:32:42+00:00 [Note] [Entrypoint]: Initializing database files
+coverage	Stop containers	2026-10-23T11:35:19.6385878Z  2026-10-23 11:32:46+00:00 [Note] [Entrypoint]: Database files initialized
+coverage	Stop containers	2026-10-23T11:35:19.6386287Z  2026-10-23 11:32:46+00:00 [Note] [Entrypoint]: Starting temporary server
+coverage	Stop containers	2026-10-23T11:35:19.6386625Z  2026-10-23 11:32:47+00:00 [Note] [Entrypoint]: Temporary server started.
+coverage	Stop containers	2026-10-23T11:35:19.6386869Z  '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+coverage	Stop containers	2026-10-23T11:35:19.6387106Z  2026-10-23 11:32:48+00:00 [Note] [Entrypoint]: Creating database t44_ci
+coverage	Stop containers	2026-10-23T11:35:19.6387337Z  2026-10-23 11:32:48+00:00 [Note] [Entrypoint]: Creating user t44
+coverage	Stop containers	2026-10-23T11:35:19.6387588Z  2026-10-23 11:32:48+00:00 [Note] [Entrypoint]: Giving user t44 access to schema t44_ci
+coverage	Stop containers	2026-10-23T11:35:19.6387801Z  
+coverage	Stop containers	2026-10-23T11:35:19.6387953Z  2026-10-23 11:32:48+00:00 [Note] [Entrypoint]: Stopping temporary server
+coverage	Stop containers	2026-10-23T11:35:19.6388197Z  2026-10-23 11:32:50+00:00 [Note] [Entrypoint]: Temporary server stopped
+coverage	Stop containers	2026-10-23T11:35:19.6388387Z  
+coverage	Stop containers	2026-10-23T11:35:19.6388565Z  2026-10-23 11:32:50+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+coverage	Stop containers	2026-10-23T11:35:19.6388787Z  
+coverage	Stop containers	2026-10-23T11:35:19.6389277Z  2026-10-23T11:32:42.276627Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.13) initializing of server in progress as process 80
+coverage	Stop containers	2026-10-23T11:35:19.6389827Z  2026-10-23T11:32:42.276633Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+coverage	Stop containers	2026-10-23T11:35:19.6390289Z  2026-10-23T11:32:42.279861Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+coverage	Stop containers	2026-10-23T11:35:19.6390764Z  2026-10-23T11:32:43.160552Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+coverage	Stop containers	2026-10-23T11:35:19.6391367Z  2026-10-23T11:32:43.727614Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+coverage	Stop containers	2026-10-23T11:35:19.6391967Z  2026-10-23T11:32:46.857566Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+coverage	Stop containers	2026-10-23T11:35:19.6392590Z  2026-10-23T11:32:46.894006Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+coverage	Stop containers	2026-10-23T11:35:19.6393272Z  2026-10-23T11:32:47.063746Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 121
+coverage	Stop containers	2026-10-23T11:35:19.6393831Z  2026-10-23T11:32:47.063750Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+coverage	Stop containers	2026-10-23T11:35:19.6394331Z  2026-10-23T11:32:47.073345Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+coverage	Stop containers	2026-10-23T11:35:19.6394813Z  2026-10-23T11:32:47.267143Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+coverage	Stop containers	2026-10-23T11:35:19.6395309Z  2026-10-23T11:32:47.454398Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+coverage	Stop containers	2026-10-23T11:35:19.6396025Z  2026-10-23T11:32:47.454424Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+coverage	Stop containers	2026-10-23T11:35:19.6397102Z  2026-10-23T11:32:47.456385Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+coverage	Stop containers	2026-10-23T11:35:19.6397827Z  2026-10-23T11:32:47.487991Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+coverage	Stop containers	2026-10-23T11:35:19.6398401Z  2026-10-23T11:32:47.488093Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+coverage	Stop containers	2026-10-23T11:35:19.6398955Z  2026-10-23T11:32:48.453904Z 13 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).
+coverage	Stop containers	2026-10-23T11:35:19.6399422Z  2026-10-23T11:32:49.890289Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.
+coverage	Stop containers	2026-10-23T11:35:19.6399795Z  2026-10-23T11:32:49.890304Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+coverage	Stop containers	2026-10-23T11:35:19.6400070Z  2026-10-23T11:32:50.466859Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+coverage	Stop containers	2026-10-23T11:35:19.6400395Z  2026-10-23T11:32:50.630183Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1
+coverage	Stop containers	2026-10-23T11:35:19.6400750Z  2026-10-23T11:32:50.630187Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+coverage	Stop containers	2026-10-23T11:35:19.6401063Z  2026-10-23T11:32:50.633846Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+coverage	Stop containers	2026-10-23T11:35:19.6401387Z  2026-10-23T11:32:50.819614Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+coverage	Stop containers	2026-10-23T11:35:19.6401697Z  2026-10-23T11:32:50.959444Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+coverage	Stop containers	2026-10-23T11:35:19.6402135Z  2026-10-23T11:32:50.959470Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+coverage	Stop containers	2026-10-23T11:35:19.6403000Z  2026-10-23T11:32:50.960596Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+coverage	Stop containers	2026-10-23T11:35:19.6403708Z  2026-10-23T11:32:50.976036Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+coverage	Stop containers	2026-10-23T11:35:19.6404296Z  2026-10-23T11:32:50.976096Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+coverage	Stop containers	2026-10-23T11:35:19.6407844Z Stop and remove container: f8991d91b19a44bb89a365f850a81833_mysql84sha25676f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69_c20a89
+coverage	Stop containers	2026-10-23T11:35:19.6410876Z ##[command]/usr/bin/docker rm --force 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Stop containers	2026-10-23T11:35:19.8078386Z 2c869dbbcb348c3a15310fe711fb801bf75199ed1c4391cacdbc0e93c9d742ee
+coverage	Stop containers	2026-10-23T11:35:19.8097574Z Print service container logs: 90aa76fee36a456db6673260c35bf3ba_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_1c1a1d
+coverage	Stop containers	2026-10-23T11:35:19.8098520Z ##[command]/usr/bin/docker logs --details 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Stop containers	2026-10-23T11:35:19.8190995Z  2026-10-23 11:32:47.742094+00:00 [notice] <0.500.0> Application syslog exited with reason: stopped
+coverage	Stop containers	2026-10-23T11:35:19.8191862Z  2026-10-23 11:32:47.745452+00:00 [notice] <0.209.0> Logging: switching to configured handler(s); following messages may not be visible in this log output
+coverage	Stop containers	2026-10-23T11:35:19.8193019Z  ^[[38;5;87m2026-10-23 11:32:47.746032+00:00 [notice] <0.209.0> Logging: configured log handlers are now ACTIVE^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8193912Z  2026-10-23 11:32:47.750111+00:00 [info] <0.209.0> ra: starting system coordination^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8195044Z  2026-10-23 11:32:47.750164+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/coordination/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8196173Z  2026-10-23 11:32:47.755166+00:00 [info] <0.506.0> ra_coordination_log_ets: in system coordination initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,false}]^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8196811Z  2026-10-23 11:32:47.786966+00:00 [info] <0.512.0> ra system 'coordination' running pre init for 0 registered servers^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8197220Z  2026-10-23 11:32:47.789644+00:00 [info] <0.513.0> ra: meta data store initialised for system coordination. 0 record(s) recovered^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8197767Z  2026-10-23 11:32:47.792299+00:00 [info] <0.517.0> segment_writer: upgrading segment file names to new format in dirctory /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/coordination/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8198319Z  ^[[38;5;87m2026-10-23 11:32:47.799529+00:00 [notice] <0.519.0> WAL in coordination initialising with name ra_coordination_log_wal^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8198677Z  2026-10-23 11:32:47.804979+00:00 [info] <0.209.0> ra: starting system quorum_queues^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8199109Z  2026-10-23 11:32:47.805003+00:00 [info] <0.209.0> starting Ra system: quorum_queues in directory: /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/quorum/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8199685Z  2026-10-23 11:32:47.805484+00:00 [info] <0.523.0> ra_log_ets: in system quorum_queues initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,true}]^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8200162Z  2026-10-23 11:32:47.806068+00:00 [info] <0.527.0> ra system 'quorum_queues' running pre init for 0 registered servers^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8200565Z  2026-10-23 11:32:47.806492+00:00 [info] <0.528.0> ra: meta data store initialised for system quorum_queues. 0 record(s) recovered^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8201097Z  2026-10-23 11:32:47.806657+00:00 [info] <0.532.0> segment_writer: upgrading segment file names to new format in dirctory /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/quorum/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8201709Z  ^[[38;5;87m2026-10-23 11:32:47.807034+00:00 [notice] <0.534.0> WAL in quorum_queues initialising with name ra_log_wal^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8202162Z  2026-10-23 11:32:47.808657+00:00 [info] <0.536.0> ra_system_recover: ra system 'quorum_queues' server recovery strategy rabbit_quorum_queue:system_recover^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8202825Z  2026-10-23 11:32:47.808725+00:00 [info] <0.536.0> [rabbit_quorum_queue:system_recover/1] rabbit not booted, skipping queue recovery^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8203233Z  2026-10-23 11:32:47.808817+00:00 [info] <0.209.0> ra: starting system coordination^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8203708Z  2026-10-23 11:32:47.808835+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/coordination/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8204265Z  ^[[38;5;87m2026-10-23 11:32:47.887258+00:00 [notice] <0.538.0> RabbitMQ metadata store: candidate -> leader in term: 1 machine version: 4, last applied 0^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8204618Z  2026-10-23 11:32:47.889861+00:00 [info] <0.209.0> ^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8204875Z  2026-10-23 11:32:47.889861+00:00 [info] <0.209.0>  Starting RabbitMQ 4.4.0 on Erlang 29.1.2 [jit]^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8205223Z  2026-10-23 11:32:47.889861+00:00 [info] <0.209.0>  Copyright (c) 2007-2026 Broadcom Inc and/or its subsidiaries^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8205665Z  2026-10-23 11:32:47.889861+00:00 [info] <0.209.0>  Licensed under the MPL 2.0. Website: https://rabbitmq.com^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8205923Z  
+coverage	Stop containers	2026-10-23T11:35:19.8206039Z    ##  ##      RabbitMQ 4.4.0
+coverage	Stop containers	2026-10-23T11:35:19.8206177Z    ##  ##
+coverage	Stop containers	2026-10-23T11:35:19.8206341Z    ##########  Copyright (c) 2007-2026 Broadcom Inc and/or its subsidiaries
+coverage	Stop containers	2026-10-23T11:35:19.8206538Z    ######  ##
+coverage	Stop containers	2026-10-23T11:35:19.8206702Z    ##########  Licensed under the MPL 2.0. Website: https://rabbitmq.com
+coverage	Stop containers	2026-10-23T11:35:19.8206894Z  
+coverage	Stop containers	2026-10-23T11:35:19.8207108Z    Erlang:      29.1.2 [jit]
+coverage	Stop containers	2026-10-23T11:35:19.8207279Z    TLS Library: OpenSSL - OpenSSL 3.5.9 29 Sep 2026
+coverage	Stop containers	2026-10-23T11:35:19.8207536Z    Release series support status: see https://www.rabbitmq.com/release-information
+coverage	Stop containers	2026-10-23T11:35:19.8207883Z  
+coverage	Stop containers	2026-10-23T11:35:19.8208013Z    Doc guides:  https://www.rabbitmq.com/docs
+coverage	Stop containers	2026-10-23T11:35:19.8208207Z    Support:     https://www.rabbitmq.com/docs/contact
+coverage	Stop containers	2026-10-23T11:35:19.8208406Z    Tutorials:   https://www.rabbitmq.com/tutorials
+coverage	Stop containers	2026-10-23T11:35:19.8208616Z    Monitoring:  https://www.rabbitmq.com/docs/monitoring
+coverage	Stop containers	2026-10-23T11:35:19.8208825Z    Upgrading:   https://www.rabbitmq.com/docs/upgrade
+coverage	Stop containers	2026-10-23T11:35:19.8208990Z  
+coverage	Stop containers	2026-10-23T11:35:19.8209092Z    Logs: <stdout>
+coverage	Stop containers	2026-10-23T11:35:19.8209208Z  
+coverage	Stop containers	2026-10-23T11:35:19.8209342Z    Config file(s): /etc/rabbitmq/conf.d/10-defaults.conf
+coverage	Stop containers	2026-10-23T11:35:19.8209510Z  
+coverage	Stop containers	2026-10-23T11:35:19.8209670Z    Starting broker...2026-10-23 11:32:47.890788+00:00 [info] <0.209.0> ^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8209946Z  2026-10-23 11:32:47.890788+00:00 [info] <0.209.0>  node           : rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8210231Z  2026-10-23 11:32:47.890788+00:00 [info] <0.209.0>  home dir       : /var/lib/rabbitmq^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8210544Z  2026-10-23 11:32:47.890788+00:00 [info] <0.209.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8210845Z  2026-10-23 11:32:47.890788+00:00 [info] <0.209.0>  log(s)         : <stdout>^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8211146Z  2026-10-23 11:32:47.890788+00:00 [info] <0.209.0>  data dir       : /var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8211526Z  ^[[38;5;87m2026-10-23 11:32:47.983261+00:00 [notice] <0.541.0> Feature flags: attempt to enable `detailed_queues_endpoint`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8211907Z  ^[[38;5;87m2026-10-23 11:32:47.989394+00:00 [notice] <0.541.0> Feature flags: `detailed_queues_endpoint` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8212261Z  ^[[38;5;87m2026-10-23 11:32:47.989445+00:00 [notice] <0.541.0> Feature flags: attempt to enable `khepri_db`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8212905Z  ^[[38;5;87m2026-10-23 11:32:48.022271+00:00 [notice] <0.541.0> Feature flags: `khepri_db` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8213477Z  ^[[38;5;87m2026-10-23 11:32:48.022319+00:00 [notice] <0.541.0> Feature flags: attempt to enable `message_containers_deaths_v2`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8213935Z  ^[[38;5;87m2026-10-23 11:32:48.028397+00:00 [notice] <0.541.0> Feature flags: `message_containers_deaths_v2` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8214320Z  ^[[38;5;87m2026-10-23 11:32:48.028435+00:00 [notice] <0.541.0> Feature flags: attempt to enable `quorum_queue_non_voters`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8214695Z  ^[[38;5;87m2026-10-23 11:32:48.033801+00:00 [notice] <0.541.0> Feature flags: `quorum_queue_non_voters` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8215088Z  ^[[38;5;87m2026-10-23 11:32:48.033844+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbit_exchange_type_local_random`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8215503Z  ^[[38;5;87m2026-10-23 11:32:48.039677+00:00 [notice] <0.541.0> Feature flags: `rabbit_exchange_type_local_random` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8215882Z  ^[[38;5;87m2026-10-23 11:32:48.039706+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.0.0`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8216236Z  ^[[38;5;87m2026-10-23 11:32:48.045585+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.0.0` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8216583Z  ^[[38;5;87m2026-10-23 11:32:48.045613+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.1.0`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8216930Z  ^[[38;5;87m2026-10-23 11:32:48.050882+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.1.0` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8217274Z  ^[[38;5;87m2026-10-23 11:32:48.050915+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.2.0`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8217614Z  ^[[38;5;87m2026-10-23 11:32:48.056082+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.2.0` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8217939Z  2026-10-23 11:32:48.058543+00:00 [info] <0.209.0> Running boot step pre_boot defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8218387Z  2026-10-23 11:32:48.058573+00:00 [info] <0.209.0> Running boot step rabbit_global_counters defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8219333Z  2026-10-23 11:32:48.058894+00:00 [info] <0.209.0> Running boot step rabbit_osiris_metrics defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8219832Z  2026-10-23 11:32:48.058997+00:00 [info] <0.209.0> Running boot step rabbit_core_metrics defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8220178Z  2026-10-23 11:32:48.059542+00:00 [info] <0.209.0> Running boot step worker_pool defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8220495Z  2026-10-23 11:32:48.059630+00:00 [info] <0.540.0> Will use 4 processes for default worker pool^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8220829Z  2026-10-23 11:32:48.059689+00:00 [info] <0.540.0> Starting worker pool 'worker_pool' with 4 processes in it^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8221181Z  2026-10-23 11:32:48.063644+00:00 [info] <0.209.0> Running boot step rabbit_registry defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8221515Z  2026-10-23 11:32:48.063685+00:00 [info] <0.209.0> Running boot step database defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8221881Z  2026-10-23 11:32:48.063999+00:00 [info] <0.209.0> Peer discovery: configured backend: rabbit_peer_discovery_classic_config^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8222502Z  2026-10-23 11:32:48.064161+00:00 [info] <0.541.0> Feature flags: starting an unclustered node for the first time: all stable feature flags will be enabled by default^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8222959Z  ^[[38;5;87m2026-10-23 11:32:48.064468+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.4.0`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8223330Z  ^[[38;5;87m2026-10-23 11:32:48.066752+00:00 [notice] <0.541.0> Feature flags: attempt to enable `rabbitmq_4.3.0`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8223673Z  ^[[38;5;87m2026-10-23 11:32:48.072932+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.3.0` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8223996Z  ^[[38;5;87m2026-10-23 11:32:48.076337+00:00 [notice] <0.541.0> Feature flags: `rabbitmq_4.4.0` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8224371Z  ^[[38;5;87m2026-10-23 11:32:48.076382+00:00 [notice] <0.541.0> Feature flags: attempt to enable `topic_binding_projection_v5`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8224780Z  ^[[38;5;87m2026-10-23 11:32:48.078939+00:00 [notice] <0.541.0> Feature flags: attempt to enable `topic_binding_projection_v4`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8225170Z  ^[[38;5;87m2026-10-23 11:32:48.197164+00:00 [notice] <0.541.0> Feature flags: `topic_binding_projection_v4` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8225563Z  ^[[38;5;87m2026-10-23 11:32:48.203696+00:00 [notice] <0.541.0> Feature flags: `topic_binding_projection_v5` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8225943Z  ^[[38;5;87m2026-10-23 11:32:48.203736+00:00 [notice] <0.541.0> Feature flags: attempt to enable `track_qq_members_uids`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8226314Z  ^[[38;5;87m2026-10-23 11:32:48.209082+00:00 [notice] <0.541.0> Feature flags: `track_qq_members_uids` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8226717Z  ^[[38;5;87m2026-10-23 11:32:48.209114+00:00 [notice] <0.541.0> Feature flags: attempt to enable `tie_binding_to_dest_with_keep_while_cond`...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8227154Z  ^[[38;5;87m2026-10-23 11:32:48.233096+00:00 [notice] <0.541.0> Feature flags: `tie_binding_to_dest_with_keep_while_cond` enabled^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8227517Z  2026-10-23 11:32:48.233266+00:00 [info] <0.209.0> DB: virgin node -> run peer discovery^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8227906Z  ^[[38;5;214m2026-10-23 11:32:48.233325+00:00 [warning] <0.209.0> Classic peer discovery backend: list of nodes does not contain the local node []^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8228353Z  ^[[38;5;87m2026-10-23 11:32:48.233374+00:00 [notice] <0.209.0> Found the following metadata store members: [{rabbitmq_metadata,^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8228741Z  ^[[38;5;87m2026-10-23 11:32:48.233374+00:00 [notice] <0.209.0>                                               rabbit@9fd37f1b5ad3}]^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8229179Z  2026-10-23 11:32:48.248332+00:00 [info] <0.209.0> Running boot step tracking_metadata_store defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8229924Z  2026-10-23 11:32:48.248429+00:00 [info] <0.799.0> Setting up a table for connection tracking on this node: tracked_connection^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8230610Z  2026-10-23 11:32:48.248472+00:00 [info] <0.799.0> Setting up a table for per-vhost connection counting on this node: tracked_connection_per_vhost^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8231328Z  2026-10-23 11:32:48.248529+00:00 [info] <0.799.0> Setting up a table for per-user connection counting on this node: tracked_connection_per_user^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8231765Z  2026-10-23 11:32:48.248579+00:00 [info] <0.799.0> Setting up a table for channel tracking on this node: tracked_channel^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8232166Z  2026-10-23 11:32:48.248602+00:00 [info] <0.799.0> Setting up a table for channel tracking on this node: tracked_channel_per_user^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8232725Z  2026-10-23 11:32:48.248655+00:00 [info] <0.209.0> Running boot step networking_metadata_store defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8233091Z  2026-10-23 11:32:48.248691+00:00 [info] <0.209.0> Running boot step feature_flags defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8233431Z  2026-10-23 11:32:48.248763+00:00 [info] <0.209.0> Running boot step rabbit_alarm defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8233835Z  2026-10-23 11:32:48.255356+00:00 [info] <0.804.0> Memory high watermark set to 9593 MiB (10059848908 bytes) of 15989 MiB (16766414848 bytes) total^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8234303Z  2026-10-23 11:32:48.257097+00:00 [info] <0.806.0> Enabling free disk space monitoring (disk free space: 90825056256, total memory: 16766414848)^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8234666Z  2026-10-23 11:32:48.257144+00:00 [info] <0.806.0> Disk free limit set to 50MB^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8234988Z  2026-10-23 11:32:48.258139+00:00 [info] <0.209.0> Running boot step auth_backend_plugins_check defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8235392Z  2026-10-23 11:32:48.258187+00:00 [info] <0.209.0> Running boot step codec_correctness_check defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8235785Z  2026-10-23 11:32:48.258206+00:00 [info] <0.209.0> Running boot step external_infrastructure defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8236145Z  2026-10-23 11:32:48.258225+00:00 [info] <0.209.0> Running boot step rabbit_event defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8236517Z  2026-10-23 11:32:48.258420+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_amqplain defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8236916Z  2026-10-23 11:32:48.258897+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_anonymous defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8237312Z  2026-10-23 11:32:48.258935+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_cr_demo defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8237700Z  2026-10-23 11:32:48.258963+00:00 [info] <0.209.0> Running boot step rabbit_auth_mechanism_plain defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8238088Z  2026-10-23 11:32:48.259009+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_direct defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8238476Z  2026-10-23 11:32:48.259037+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_fanout defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8238863Z  2026-10-23 11:32:48.259059+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_headers defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8239260Z  2026-10-23 11:32:48.259099+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_local_random defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8239668Z  2026-10-23 11:32:48.259127+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_modulus_hash defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8240064Z  2026-10-23 11:32:48.259161+00:00 [info] <0.209.0> Running boot step rabbit_exchange_type_topic defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8240439Z  2026-10-23 11:32:48.259192+00:00 [info] <0.209.0> Running boot step rabbit_priority_queue defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8240799Z  2026-10-23 11:32:48.259217+00:00 [info] <0.209.0> Priority queues enabled, real BQ is rabbit_variable_queue^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8241242Z  2026-10-23 11:32:48.259251+00:00 [info] <0.209.0> Running boot step kernel_ready defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8241610Z  2026-10-23 11:32:48.259270+00:00 [info] <0.209.0> Running boot step pg_local_amqp091_connection defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8242076Z  2026-10-23 11:32:48.265325+00:00 [info] <0.209.0> Running boot step pg_local_non_amqp_connection defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8242585Z  2026-10-23 11:32:48.265440+00:00 [info] <0.209.0> Running boot step pg_local_amqp091_channel defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8242958Z  2026-10-23 11:32:48.265495+00:00 [info] <0.209.0> Running boot step pg_local_amqp_connection defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8243327Z  2026-10-23 11:32:48.265543+00:00 [info] <0.209.0> Running boot step pg_local_amqp_session defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8243689Z  2026-10-23 11:32:48.265587+00:00 [info] <0.209.0> Running boot step rabbit_sysmon_minder defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8244052Z  2026-10-23 11:32:48.265659+00:00 [info] <0.209.0> Running boot step rabbit_epmd_monitor defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8244440Z  2026-10-23 11:32:48.266301+00:00 [info] <0.817.0> epmd monitor knows us, inter-node communication (distribution) port: 25672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8244821Z  2026-10-23 11:32:48.266427+00:00 [info] <0.209.0> Running boot step guid_generator defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8245170Z  2026-10-23 11:32:48.267011+00:00 [info] <0.209.0> Running boot step rabbit_node_monitor defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8245481Z  2026-10-23 11:32:48.267078+00:00 [info] <0.821.0> Starting rabbit_node_monitor^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8245784Z  2026-10-23 11:32:48.267120+00:00 [info] <0.209.0> Running boot step delegate_sup defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8246118Z  2026-10-23 11:32:48.267403+00:00 [info] <0.209.0> Running boot step rabbit_chaos defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8246466Z  2026-10-23 11:32:48.267458+00:00 [info] <0.209.0> Running boot step rabbit_fifo_dlx_sup defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8246820Z  2026-10-23 11:32:48.267486+00:00 [info] <0.209.0> Running boot step core_initialized defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8247200Z  2026-10-23 11:32:48.267511+00:00 [info] <0.209.0> Running boot step rabbit_channel_tracking_handler defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8247589Z  2026-10-23 11:32:48.267535+00:00 [info] <0.209.0> Running boot step rabbit_classic_queue_type defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8247959Z  2026-10-23 11:32:48.267582+00:00 [info] <0.209.0> Running boot step rabbit_classic_queue defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8248345Z  2026-10-23 11:32:48.267632+00:00 [info] <0.209.0> Running boot step rabbit_connection_tracking_handler defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8248742Z  2026-10-23 11:32:48.267661+00:00 [info] <0.209.0> Running boot step rabbit_definitions_hashing defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8249127Z  2026-10-23 11:32:48.267688+00:00 [info] <0.209.0> Running boot step rabbit_exchange_parameters defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8249492Z  2026-10-23 11:32:48.268207+00:00 [info] <0.209.0> Running boot step rabbit_policies defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8249856Z  2026-10-23 11:32:48.268412+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue_type defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8250223Z  2026-10-23 11:32:48.268461+00:00 [info] <0.209.0> Running boot step rabbit_stream_queue defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8250571Z  2026-10-23 11:32:48.268481+00:00 [info] <0.209.0> Running boot step rabbit_policy defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8250941Z  2026-10-23 11:32:48.268521+00:00 [info] <0.209.0> Running boot step rabbit_quorum_event_subscriber defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8251314Z  2026-10-23 11:32:48.268542+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8251779Z  2026-10-23 11:32:48.268857+00:00 [info] <0.209.0> Running boot step quorum_memory_alarm_handler defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8252164Z  2026-10-23 11:32:48.268878+00:00 [info] <0.209.0> Running boot step rabbit_stream_coordinator defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8252801Z  2026-10-23 11:32:48.268987+00:00 [info] <0.209.0> Running boot step rabbit_vhost_limit defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8253190Z  2026-10-23 11:32:48.269017+00:00 [info] <0.209.0> Running boot step rabbit_mgmt_reset_handler defined by app rabbitmq_management^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8253622Z  2026-10-23 11:32:48.269045+00:00 [info] <0.209.0> Running boot step rabbit_mgmt_db_handler defined by app rabbitmq_management_agent^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8253997Z  2026-10-23 11:32:48.269082+00:00 [info] <0.209.0> Management plugin: using rates mode 'basic'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8254315Z  2026-10-23 11:32:48.269188+00:00 [info] <0.209.0> Running boot step recovery defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8254695Z  2026-10-23 11:32:48.269261+00:00 [info] <0.209.0> Running boot step channel_interceptor_priorities_check defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8255083Z  2026-10-23 11:32:48.269291+00:00 [info] <0.209.0> Running boot step rabbit_sole_conn defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8255436Z  2026-10-23 11:32:48.269367+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8255798Z  2026-10-23 11:32:48.269398+00:00 [info] <0.209.0> Running boot step rabbit_core_metrics_gc defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8256150Z  2026-10-23 11:32:48.269493+00:00 [info] <0.209.0> Running boot step background_gc defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8256524Z  2026-10-23 11:32:48.269629+00:00 [info] <0.209.0> Running boot step prevent_startup_if_node_was_reset defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8256897Z  2026-10-23 11:32:48.269646+00:00 [info] <0.209.0> Running boot step empty_db_check defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8257224Z  2026-10-23 11:32:48.269721+00:00 [info] <0.209.0> Will seed default virtual host and user...^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8257575Z  2026-10-23 11:32:48.269804+00:00 [info] <0.209.0> Adding vhost 't44_ci' (description: 'Default virtual host', tags: [])^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8258113Z  2026-10-23 11:32:48.273280+00:00 [info] <0.854.0> Making sure data directory '/var/lib/rabbitmq/mnesia/rabbit@9fd37f1b5ad3/msg_stores/vhosts/895RF1EH56U76MPBARYQ1FBEX' for vhost 't44_ci' exists^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8258650Z  2026-10-23 11:32:48.273770+00:00 [info] <0.854.0> Setting segment_entry_count for vhost 't44_ci' with 0 queues to '2048'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8259004Z  2026-10-23 11:32:48.279865+00:00 [info] <0.854.0> Starting message stores for vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8259334Z  2026-10-23 11:32:48.280803+00:00 [info] <0.854.0> Started message store of type transient for vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8259787Z  ^[[38;5;214m2026-10-23 11:32:48.295576+00:00 [warning] <0.866.0> Message store "895RF1EH56U76MPBARYQ1FBEX/msg_store_persistent": rebuilding indices from scratch^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8260238Z  2026-10-23 11:32:48.296171+00:00 [info] <0.854.0> Started message store of type persistent for vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8260594Z  2026-10-23 11:32:48.296262+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_classic_queue took 20ms^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8260945Z  2026-10-23 11:32:48.296289+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_quorum_queue took 0ms^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8261290Z  2026-10-23 11:32:48.296313+00:00 [info] <0.854.0> Recovering 0 queues of type rabbit_stream_queue took 0ms^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8261584Z  2026-10-23 11:32:48.296814+00:00 [info] <0.209.0> Created user 't44'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8261899Z  2026-10-23 11:32:48.308531+00:00 [info] <0.209.0> Successfully set user tags for user 't44' to [<<"administrator">>]^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8262442Z  2026-10-23 11:32:48.314017+00:00 [info] <0.209.0> Successfully set permissions for user 't44' in virtual host 't44_ci' to '.*', '.*', '.*'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8263004Z  2026-10-23 11:32:48.314066+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli_classic_queues defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8263500Z  2026-10-23 11:32:48.314150+00:00 [info] <0.209.0> Running boot step rabbit_observer_cli_quorum_queues defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8263872Z  2026-10-23 11:32:48.314183+00:00 [info] <0.209.0> Running boot step routing_ready defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8264207Z  2026-10-23 11:32:48.314195+00:00 [info] <0.209.0> Running boot step pre_flight defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8264542Z  2026-10-23 11:32:48.314352+00:00 [info] <0.209.0> Running boot step direct_client defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8264875Z  2026-10-23 11:32:48.314453+00:00 [info] <0.209.0> Running boot step cluster_tags defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8265273Z  2026-10-23 11:32:48.314892+00:00 [info] <0.209.0> Running boot step rabbit_management_load_definitions defined by app rabbitmq_management^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8265675Z  2026-10-23 11:32:48.314920+00:00 [info] <0.209.0> Running boot step notify_cluster defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8266007Z  2026-10-23 11:32:48.314942+00:00 [info] <0.209.0> Running boot step networking defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8266415Z  2026-10-23 11:32:48.314956+00:00 [info] <0.209.0> Running boot step rabbit_quorum_queue_periodic_membership_reconciliation defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8266856Z  2026-10-23 11:32:48.315042+00:00 [info] <0.209.0> Running boot step definition_import_worker_pool defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8267255Z  2026-10-23 11:32:48.315082+00:00 [info] <0.540.0> Starting worker pool 'definition_import_pool' with 4 processes in it^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8267622Z  2026-10-23 11:32:48.315432+00:00 [info] <0.209.0> Running boot step cluster_name defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8268013Z  2026-10-23 11:32:48.315493+00:00 [info] <0.209.0> Initialising internal cluster ID to 'rabbitmq-cluster-id-j0pB_rbVGmmVXv_k2NNQ5Q'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8268429Z  2026-10-23 11:32:48.315925+00:00 [info] <0.209.0> Running boot step virtual_host_reconciliation defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8268820Z  2026-10-23 11:32:48.316015+00:00 [info] <0.209.0> Running boot step logger_exchange defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8269185Z  2026-10-23 11:32:48.316047+00:00 [info] <0.209.0> Running boot step queue_type_registrations defined by app rabbit^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8269513Z  2026-10-23 11:32:48.316099+00:00 [info] <0.893.0> Resetting node maintenance status^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8269953Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0> Deprecated features: `management_metrics_collection`: Feature `management_metrics_collection` is deprecated.^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8270438Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0> By default, this feature can still be used for now.^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8271103Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0> Its use will not be permitted by default in a future minor RabbitMQ version and the feature will be removed from a future major RabbitMQ version; actual versions to be determined.^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8271838Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0> To continue using this feature when it is not permitted by default, set the following parameter in your configuration:^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8272513Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0>     "deprecated_features.permit.management_metrics_collection = true"^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8272975Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0> To test RabbitMQ as if the feature was removed, set this in your configuration:^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8273424Z  ^[[38;5;214m2026-10-23 11:32:48.322774+00:00 [warning] <0.913.0>     "deprecated_features.permit.management_metrics_collection = false"^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8273946Z  2026-10-23 11:32:48.345079+00:00 [info] <0.949.0> Prometheus metrics: HTTP (non-TLS) listener started on port 15692^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8274332Z  2026-10-23 11:32:48.348051+00:00 [info] <0.977.0> Management plugin: HTTP (non-TLS) listener started on port 15672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8274740Z  2026-10-23 11:32:48.348144+00:00 [info] <0.1005.0> Statistics database started.^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8275078Z  2026-10-23 11:32:48.348189+00:00 [info] <0.1004.0> Starting worker pool 'management_worker_pool' with 3 processes in it^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8275430Z  2026-10-23 11:32:48.348410+00:00 [info] <0.893.0> Ready to start client connection listeners^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8275724Z  2026-10-23 11:32:48.349374+00:00 [info] <0.1029.0> started TCP listener on [::]:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8275949Z   completed with 4 plugins.
+coverage	Stop containers	2026-10-23T11:35:19.8276171Z  2026-10-23 11:32:48.407110+00:00 [info] <0.893.0> Server startup complete; 4 plugins started.^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8276514Z  2026-10-23 11:32:48.407110+00:00 [info] <0.893.0>  * rabbitmq_management^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8276814Z  2026-10-23 11:32:48.407110+00:00 [info] <0.893.0>  * rabbitmq_prometheus^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8277070Z  2026-10-23 11:32:48.407110+00:00 [info] <0.893.0>  * rabbitmq_management_agent^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8277329Z  2026-10-23 11:32:48.407110+00:00 [info] <0.893.0>  * rabbitmq_web_dispatch^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8277591Z  2026-10-23 11:32:48.516460+00:00 [info] <0.10.0> Time to start RabbitMQ: 2039 ms^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8277906Z  2026-10-23 11:33:35.554526+00:00 [info] <0.1045.0> accepting AMQP connection 172.18.0.1:47984 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8278232Z  2026-10-23 11:33:35.556031+00:00 [info] <0.1045.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8278632Z  2026-10-23 11:33:35.556728+00:00 [info] <0.1045.0> connection 172.18.0.1:47984 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8279058Z  2026-10-23 11:33:35.616393+00:00 [info] <0.1066.0> accepting AMQP connection 172.18.0.1:47986 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8279380Z  2026-10-23 11:33:35.617344+00:00 [info] <0.1066.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8279777Z  2026-10-23 11:33:35.617819+00:00 [info] <0.1066.0> connection 172.18.0.1:47986 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8280269Z  2026-10-23 11:33:35.628561+00:00 [info] <0.1066.0> closing AMQP connection (172.18.0.1:47986 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '12ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8280690Z  2026-10-23 11:33:35.629705+00:00 [info] <0.1084.0> accepting AMQP connection 172.18.0.1:47994 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8281015Z  2026-10-23 11:33:35.630497+00:00 [info] <0.1084.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8281405Z  2026-10-23 11:33:35.630910+00:00 [info] <0.1084.0> connection 172.18.0.1:47994 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8281897Z  2026-10-23 11:33:35.641109+00:00 [info] <0.1045.0> closing AMQP connection (172.18.0.1:47984 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '87ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8282436Z  2026-10-23 11:33:35.643447+00:00 [info] <0.1102.0> accepting AMQP connection 172.18.0.1:48010 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8282760Z  2026-10-23 11:33:35.644179+00:00 [info] <0.1102.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8283151Z  2026-10-23 11:33:35.644592+00:00 [info] <0.1102.0> connection 172.18.0.1:48010 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8283638Z  2026-10-23 11:33:35.655013+00:00 [info] <0.1084.0> closing AMQP connection (172.18.0.1:47994 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '26ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8284125Z  2026-10-23 11:33:35.674784+00:00 [info] <0.1102.0> closing AMQP connection (172.18.0.1:48010 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '31ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8284647Z  2026-10-23 11:33:35.718710+00:00 [info] <0.1130.0> accepting AMQP connection 172.18.0.1:48018 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8285050Z  2026-10-23 11:33:35.719859+00:00 [info] <0.1130.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8285444Z  2026-10-23 11:33:35.720346+00:00 [info] <0.1130.0> connection 172.18.0.1:48018 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8285932Z  2026-10-23 11:33:35.761495+00:00 [info] <0.1130.0> closing AMQP connection (172.18.0.1:48018 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '43ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8286354Z  2026-10-23 11:33:35.771507+00:00 [info] <0.1156.0> accepting AMQP connection 172.18.0.1:48028 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8286681Z  2026-10-23 11:33:35.772604+00:00 [info] <0.1156.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8287073Z  2026-10-23 11:33:35.773054+00:00 [info] <0.1156.0> connection 172.18.0.1:48028 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8297203Z  2026-10-23 11:33:35.778397+00:00 [info] <0.1170.0> accepting AMQP connection 172.18.0.1:48030 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8297569Z  2026-10-23 11:33:35.779119+00:00 [info] <0.1170.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8297969Z  2026-10-23 11:33:35.779547+00:00 [info] <0.1170.0> connection 172.18.0.1:48030 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8298471Z  2026-10-23 11:33:35.822727+00:00 [info] <0.1170.0> closing AMQP connection (172.18.0.1:48030 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '44ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8298960Z  2026-10-23 11:33:35.830751+00:00 [info] <0.1156.0> closing AMQP connection (172.18.0.1:48028 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '59ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8299385Z  2026-10-23 11:33:35.876093+00:00 [info] <0.1194.0> accepting AMQP connection 172.18.0.1:48032 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8299715Z  2026-10-23 11:33:35.877281+00:00 [info] <0.1194.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8300108Z  2026-10-23 11:33:35.877803+00:00 [info] <0.1194.0> connection 172.18.0.1:48032 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8300532Z  2026-10-23 11:33:35.886709+00:00 [info] <0.1214.0> accepting AMQP connection 172.18.0.1:48040 -> 172.18.0.3:5672^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8300855Z  2026-10-23 11:33:35.887472+00:00 [info] <0.1214.0> User 't44' authenticated successfully^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8301242Z  2026-10-23 11:33:35.887870+00:00 [info] <0.1214.0> connection 172.18.0.1:48040 -> 172.18.0.3:5672: user 't44' authenticated and granted access to vhost 't44_ci'^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8301735Z  2026-10-23 11:33:35.892784+00:00 [info] <0.1214.0> closing AMQP connection (172.18.0.1:48040 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '6ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8302218Z  2026-10-23 11:33:35.900547+00:00 [info] <0.1194.0> closing AMQP connection (172.18.0.1:48032 -> 172.18.0.3:5672, vhost: 't44_ci', user: 't44', duration: '24ms')^[[0m
+coverage	Stop containers	2026-10-23T11:35:19.8303398Z Stop and remove container: 90aa76fee36a456db6673260c35bf3ba_rabbitmq4managementalpinesha2560452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292_1c1a1d
+coverage	Stop containers	2026-10-23T11:35:19.8304061Z ##[command]/usr/bin/docker rm --force 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Stop containers	2026-10-23T11:35:19.9678564Z 9fd37f1b5ad328786cf0d27e200b6573d391677d8eea263cb5b5d624f5ee23a6
+coverage	Stop containers	2026-10-23T11:35:19.9700927Z Remove container network: github_network_b54bbf3f13c14cc5bc2cffceb8541361
+coverage	Stop containers	2026-10-23T11:35:19.9703965Z ##[command]/usr/bin/docker network rm github_network_b54bbf3f13c14cc5bc2cffceb8541361
+coverage	Stop containers	2026-10-23T11:35:20.0509117Z github_network_b54bbf3f13c14cc5bc2cffceb8541361
+coverage	Complete job	﻿2026-10-23T11:35:20.0562227Z Cleaning up orphan processes

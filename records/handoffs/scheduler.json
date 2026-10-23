@@ -1,38 +1,76 @@
 {
   "role": "scheduler",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "APPLICATION 完整规则/升级/扫描/进程模块实现",
+  "implementation_status": "已实现并完成模块/真实MySQL验证；跨岗产品集成、真实MQ网络、性能与独立验收未完成",
   "artifacts": [
     "agents/scheduler/WORKLOG.md",
     "reports/modules/scheduler.md",
     "records/handoffs/scheduler.json",
-    "agents/scheduler/github-stage-comment.md",
-    "agents/scheduler/github-interface-question.md"
+    "agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+    "agents/scheduler/foundation-validation.log",
+    "agents/scheduler/foundation-coverage.json",
+    "agents/scheduler/foundation-issue-comment.md",
+    "agents/scheduler/foundation-pr-body.md",
+    "backend/t44/scheduling/__init__.py",
+    "backend/t44/scheduling/rules.py",
+    "backend/t44/scheduling/runtime.py",
+    "backend/t44/scheduling/README.md",
+    "backend/t44/resources/escalation-rules.json",
+    "backend/tests/scheduling/test_rules.py",
+    "backend/tests/scheduling/test_runtime.py",
+    "agents/scheduler/ROLE-scheduler-APPLICATION-v1.md",
+    "agents/scheduler/application-validation.log",
+    "agents/scheduler/application-bandit.json",
+    "agents/scheduler/application-tests.xml",
+    "agents/scheduler/application-coverage.json",
+    "agents/scheduler/application-ci-env.log",
+    "agents/scheduler/application-ci-env-tests.xml",
+    "agents/scheduler/application-rule-change.json",
+    "agents/scheduler/application-rule-extension.diff",
+    "agents/scheduler/application-rule-extension.json",
+    "agents/scheduler/application-interface-question.md",
+    "backend/t44/scheduling/facade.py",
+    "backend/t44/scheduling/scanner.py",
+    "backend/t44/scheduling/__main__.py",
+    "backend/tests/scheduling/conftest.py",
+    "backend/tests/scheduling/test_application.py",
+    "backend/tests/scheduling/test_extensible_rules.py",
+    "agents/scheduler/application-stage-comment.md",
+    "agents/scheduler/application-deployment-comment.md",
+    "agents/scheduler/application-pr-body.md"
   ],
   "interfaces": [
     {
-      "peer": "backend",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "任务/项目、计划及其版本、状态及其版本、责任人与项目经理、规则上下文",
-      "output": "扫描/升级处理结果；调度不得直接修改任务状态",
-      "errors": "候选过期、任务删除、版本冲突、接收人缺失的处理口径待定",
-      "version": "未分配"
+      "peer": "backend/API",
+      "version": "frozen v1/D001/D004",
+      "status": "已按真实源码实现并获总协调确认，默认零参API组件已真库ASGI验证",
+      "input": "EscalationFacade.rules(g,c),list(g,c),create(g,c)；Call/Runtime.execute",
+      "output": "冻结EscalationRule/Page/Accepted data，audit_id由Business.finalize补；create同UoW不私自commit",
+      "errors": "冻结版本/排期/规则/窗口/服务scope冲突由Rejected经Runtime持久拒绝审计"
     },
     {
       "peer": "database",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "按计划时间/状态分页查询；任务与计划版本二次校验",
-      "output": "持久扫描批次/检查点、唯一升级业务键、次数、处理记录与待发送记录",
-      "errors": "查询/事务失败不可记作完成；唯一键冲突转为重复处理；具体错误码待定",
-      "version": "未分配"
+      "version": "12f7141已确认RowsGateway/ScanStore",
+      "status": "真实MySQL8.4.11已验证",
+      "input": "固定cutoff、UUID、raw UTF8hash/完整snapshot、keyset分页/确定后checkpoint",
+      "output": "升级outbox+ledger+task+Runtime audit/idem原子；硬键task/schedule/level；恢复计数",
+      "errors": "未知结果/暂态失败留running不前移；不同hash不重解释；savepoint恢复唯一冲突"
     },
     {
       "peer": "messaging",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "稳定事件标识与升级业务键、任务/项目/计划版本、规则/版本、级别、接收人、时间、批次",
-      "output": "可靠接收/待发/已发/失败或可重试回执；RabbitMQ 不可用降级站内待办并留标记",
-      "errors": "重投/消费重复不得再次计升级次数；最终重试与回执语义待定",
-      "version": "未分配"
+      "version": "event_type2/schema_version1",
+      "status": "双方实际对接，DB fallback已验证；无本机RabbitMQ网络结果",
+      "input": "稳定outbox.id、ledger.level、recipients快照、规则/任务/时间payload",
+      "output": "消费者/降级按DB权威记录和唯一event/recipient；104收件人完整",
+      "errors": "Broker故障由消息岗沿同事件fallback终态，不重复提醒"
+    },
+    {
+      "peer": "deployment",
+      "version": "python -m t44.scheduling",
+      "status": "实际once/resume/锁/生命周期已验证，Compose待部署岗接入",
+      "input": "DATABASE_URL/T44_DATABASE、T44_SCHEDULER_TOKEN_FILE私密文件、可选T44_ESCALATION_RULES/T44_SCHEDULER_LOCK_FILE",
+      "output": "专用单实例APScheduler UTC默认60s/coalesce/max_instances1；once/resume真实统计，0成功1失败",
+      "errors": "flock只同主机/共享路径；不同hash旧run需原配置恢复/审核，示例decided_by映射须初始化责任岗核对"
     }
   ],
   "commands_executed": [
@@ -83,28 +121,74 @@
     {
       "command": "gh issue comment 5 --repo HJY147/t44-dev-trace --body-file agents/scheduler/github-interface-question.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6358215339"
+    },
+    {
+      "command": "git worktree add .agent-worktrees/scheduler -b codex/scheduler-core c5c14aa5504fc3671c040768359570518a3c7507",
+      "result": "独立worktree和索引创建成功"
+    },
+    {
+      "command": "uv venv .venv --python /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "result": "Python3.12.10环境创建成功"
+    },
+    {
+      "command": "uv pip sync --python .venv/bin/python --require-hashes ../backend/backend/requirements.lock",
+      "result": "67包已同步，APScheduler3.11.3；共享锁未改"
+    },
+    {
+      "command": "Ruff / pytest / coverage exact commands in agents/scheduler/foundation-validation.log; environment PYTHONPATH=backend",
+      "result": "保留首次Ruff exit1和修复；最终Ruff exit0、77passed0.35s；129语句/46分支100%，仅本模块"
+    },
+    {
+      "command": "git show --stat --oneline ae60dc3; git show ae60dc3:specs/human-review.md",
+      "result": "核对D004/U006字段/错误码已采用；未将此视为配置结构人类审批"
+    },
+    {
+      "command": "gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/scheduler/foundation-issue-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6359652643"
+    },
+    {
+      "command": "git merge --no-edit 12f7141026376763086e41a5b4db9ac1e82cfa33",
+      "result": "Fast-forward成功"
+    },
+    {
+      "command": "uv pip sync --python .venv/bin/python --require-hashes backend/requirements.lock",
+      "result": "67包检查通过，未改锁"
+    },
+    {
+      "command": "Ruff/Bandit/pytest/coverage exact commands in agents/scheduler/application-validation.log",
+      "result": "原Ruff unused import失败保留；最终107passed17.49s、静态通过、仅本岗综合覆盖83%"
+    },
+    {
+      "command": "CI=1 plus DATABASE_URL/T44_DATABASE entry; exact command/application-ci-env.log",
+      "result": "系统python缺sqlalchemy编排失败后锁内环境真库1passed0.56s；非托管CI"
+    },
+    {
+      "command": "gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/scheduler/application-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6361327486"
+    },
+    {
+      "command": "gh issue comment 7 --repo HJY147/t44-dev-trace --body-file agents/scheduler/application-deployment-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361329227"
     }
   ],
   "results": [
-    "创建三份本岗初始化资料，明确职责和数据库/消息/后端接口需求",
-    "向总协调回报接口草案和未实现状态；所有接口仍未冻结",
-    "提出基于持久升级记录的续扫、去重、计次与可靠消息交接边界；尚无实现或运行证据",
-    "未安装调度器，未写产品代码，未改共享或其他岗文件，未联系或读取独立测试岗内容",
-    "资料完整性检查通过：三份文件存在、JSON可解析且必需字段齐全、报告47行；不构成业务测试结果",
-    "已记录文档岗真实询问及本岗回答；保存并发表阶段评论和消息岗接口问题，均明确未实现/未冻结，尚未取得接口确认"
+    "零参冻结API门面、同Runtime事务升级、持久扫描/恢复与实际CLI已实现",
+    "20项全覆盖/重复/实际进程退出后CLI恢复不重复；107项最终通过，其中22项真MySQL/ASGI/CLI",
+    "rule_version不绕硬键；改期开新版本允许新事件；真实savepoint1062无outbox孤儿；回滚/拒绝审计已验证",
+    "104完整收件人/权威投递状态与handled_count，独立消息消费继续由消息岗负责",
+    "配置原文hash/snapshot/原新变更/合成metadata边界与实际扩展diff已归档；没有虚构人的审批/修改",
+    "原始失败完整保留，无独立测试接触，无跨岗源码/共享锁改动",
+    "Issue6实际阶段更新 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6361327486",
+    "Issue7真实CLI/env/服务凭据/锁交接 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361329227"
   ],
   "unverified": [
-    "模块自测、集成验证、独立验收均未执行",
-    "AC-07 的 20 条超期任务全量升级、重复扫描幂等及重启续扫尚未验证",
-    "数据库事务/唯一约束、消息降级、并发扫描、改期冲突与故障恢复均未实现",
-    "扫描/通知伪代码、复杂度分析、最终规则与运行配置尚未交付"
+    "完整产品整合/前端全链、真实RabbitMQ网络、400并发/P95、独立验收未执行",
+    "全产品3500–5100行与全局覆盖率未达标声明；总协调后续真实去重重构/复测",
+    "正式部署需初始化服务会话、单服务/共享锁路径及实际decided_by身份映射；不同hash旧run需原配置恢复或审核处置"
   ],
   "questions": [
-    "总协调需冻结扫描频率、临期阈值、时间边界、时区、参与状态、阻塞计时与级别接收人映射",
-    "后端需确认计划/状态版本与接收人门面，以及改期/终态处理语义",
-    "数据库需确认候选分页、唯一升级键、扫描记录和升级登记/待发送记录的原子事务边界",
-    "消息岗需确认可靠交接、回执、消费去重、站内待办降级和升级计次责任",
-    "规则版本变化、跨级、同级提醒、补扫与重试范围的业务去重口径待冻结"
+    "部署岗按真实CLI/env接Compose与服务token初始化/轮换，保证单实例/共享lock路径",
+    "根整合fcaf509后的全模块兼容/CI/性能/规模由总协调组织；本岗按后续真实缺陷修复，不改变验收条件"
   ],
   "prompt_refs": [
     {
@@ -129,7 +213,54 @@
         "agents/scheduler/github-interface-question.md"
       ],
       "improvement_reason": "真实问答与串行Git索引边界留痕，仅归档既有设计资料与未确认接口问题，不新设计或实现"
+    },
+    {
+      "id": "ROLE-scheduler-FOUNDATION-v1",
+      "source": "总协调实际派工，原文在agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+      "task_file": "agents/scheduler/TASK.md（阶段只设计限制已由明确派工覆盖）",
+      "artifacts": [
+        "agents/scheduler/WORKLOG.md",
+        "reports/modules/scheduler.md",
+        "records/handoffs/scheduler.json",
+        "agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+        "agents/scheduler/foundation-validation.log",
+        "agents/scheduler/foundation-coverage.json",
+        "agents/scheduler/foundation-issue-comment.md",
+        "agents/scheduler/foundation-pr-body.md",
+        "backend/t44/scheduling/__init__.py",
+        "backend/t44/scheduling/rules.py",
+        "backend/t44/scheduling/runtime.py",
+        "backend/t44/scheduling/README.md",
+        "backend/t44/resources/escalation-rules.json",
+        "backend/tests/scheduling/test_rules.py",
+        "backend/tests/scheduling/test_runtime.py"
+      ],
+      "improvement_reason": "先实现纯窗口与显式生命周期，分开模块结果和未实现的持久业务能力；记录真实失败，不虚构人类审批或独立验收"
+    },
+    {
+      "id": "ROLE-scheduler-APPLICATION-v1",
+      "source": "总协调实际派工，原文与AI误判纠正见agents/scheduler/ROLE-scheduler-APPLICATION-v1.md",
+      "artifacts": [
+        "agents/scheduler/ROLE-scheduler-APPLICATION-v1.md",
+        "agents/scheduler/application-validation.log",
+        "agents/scheduler/application-bandit.json",
+        "agents/scheduler/application-tests.xml",
+        "agents/scheduler/application-coverage.json",
+        "agents/scheduler/application-ci-env.log",
+        "agents/scheduler/application-ci-env-tests.xml",
+        "agents/scheduler/application-rule-change.json",
+        "agents/scheduler/application-rule-extension.diff",
+        "agents/scheduler/application-rule-extension.json",
+        "agents/scheduler/application-interface-question.md",
+        "backend/t44/scheduling/facade.py",
+        "backend/t44/scheduling/scanner.py",
+        "backend/t44/scheduling/__main__.py",
+        "backend/tests/scheduling/conftest.py",
+        "backend/tests/scheduling/test_application.py",
+        "backend/tests/scheduling/test_extensible_rules.py"
+      ],
+      "improvement_reason": "依据真实Runtime/DB签名复用统一边界，区分合成metadata/人的规则采用/真实MySQL与未运行MQ验收；原失败保留"
     }
   ],
-  "updated_at": "2026-10-23T13:35:59+08:00"
+  "updated_at": "2026-10-23T17:01:09+08:00"
 }

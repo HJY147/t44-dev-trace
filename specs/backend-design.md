@@ -1,4 +1,19 @@
-# 后端设计草案 v1
+# 后端设计：1.1容量生命周期增量与v1历史
+
+本增量依据D005/U015、D006/U016及限定审核通过的最终RFC bbc4be681f19a386fbca40baf97a63ab902b3f89（SHA256 a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98）。当前只交1.1.0合同/设计，待总协调新freeze后继续业务实现；不把设计准入称产品通过。原v1下文保留历史，旧冻结11摘要不回填；实际已实现范围以本岗报告/交接中的精确源码及执行证据为准。
+
+## 1.1守卫与锁设计
+
+- createTask保留负责人属于当前迭代capacity；changeTaskAssignment仍仅待受理/blocked-from-pending，目标有效developer检查后核同迭代capacity。沿用原角色/状态/版本与幂等重放优先顺序，新容量守卫不代替已有错误。
+- changeIteration在同一项目锁内查询所属迭代**全部**状态1–5任务，以id有序锁定任务并核新capacity覆盖每个owner；不能仅比较旧/新移除名单。6/7可移出capacity，项目成员/开发角色移除原保护1–5及7不变。
+- action9返工经原角色/版本/合法状态/证据/依赖守卫后、同一次CAS前，重新核当前owner为有效项目developer且属于当前capacity。缺失时422 CAPACITY_REFERENCE_INVALID，任务、delivery/review/schedule计数、决策与计划差异不变。只复用稳定ID30；不新增状态边、开发后转派或工时预算算法。
+- assignment新增project FOR UPDATE；与createTask/createIteration/changeIteration/rework统一session共享锁→idem更新锁→project更新锁→user_id有序成员→id有序任务。容量/owner必须获项目锁后重读，业务、审计、outbox、幂等结果仍在同一主事务完成，不另开提前提交事务；拒绝仍回滚后独立审计。
+- 移除拟接手人/创建owner/返工owner容量与对应动作竞争，顺序决定一方因最新人力规则拒绝，不能产生active owner缺capacity。先将A任务合法转给已登记B再移除A容量可都成功；无关人员的安全变更不强制互斥为只一次成功。
+- 权威及运行OpenAPI info.version/Meta.const同步1.1.0、31paths/38ops、/api/v1、DDL18/226不变。assignment及transition补422容量声明与触发依据；父版本1.0.0按ae60dc3/原清单恢复，新freeze由总协调生成。
+
+后续开发回归在现有tmp/backend/contracts/986_http.py及985_mysql_http.py追加：全7态边界、缺人/补回/重放、完整owner集合、原成员保护、真MySQL竞争与合法串行双成功。当前改前开发红测已保存，不代表1.1已实现或已验收。
+
+## v1设计历史（原阶段叙述）
 
 状态：v1规格已冻结，进入完整实现和联调；冻结不是运行验收；实际派工 `ROLE-backend-CONTRACT-v1`。业务出口依据用户采用business-rules v1，开始前编辑范围依据协调者D002；下列技术细节须跨岗及审核岗复核。契约见 `contracts/openapi.json` / `contracts/README.md`，数据库DDL/持久契约由数据库岗提供。
 

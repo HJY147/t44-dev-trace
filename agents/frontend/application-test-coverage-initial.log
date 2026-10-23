@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend/frontend
+      Coverage enabled with v8
+
+ ❯ tests/client.test.ts (0 test)
+ ❯ tests/application.test.ts (0 test)
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  4 passed (4)
+   Start at  16:15:50
+   Duration  3.25s (transform 55%, environment 24%, import 17%, worker 2%, tests 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
+$ vitest run --coverage
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application.test.ts [ tests/application.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'map')
+ ❯ tests/fixtures.ts:20:29
+
+ ❯ tests/fixtures.ts:17:75
+ ❯ tests/application.test.ts:20:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/client.test.ts [ tests/client.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'map')
+ ❯ tests/fixtures.ts:20:29
+
+ ❯ tests/fixtures.ts:17:75
+ ❯ tests/client.test.ts:6:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯

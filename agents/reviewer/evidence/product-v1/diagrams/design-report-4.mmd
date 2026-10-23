@@ -1,0 +1,21 @@
+sequenceDiagram
+  participant S as Scanner
+  participant RT as Runtime及EscalationFacade
+  participant DB as MySQL
+  participant W as DeliveryWorker
+  participant MQ as RabbitMQ
+  S->>RT: 候选 version schedule_version rule_version run_id
+  RT->>DB: 原子事件 ledger 计数 审计 outbox
+  DB-->>RT: COMMIT或已存在created=false
+  RT-->>S: 确定结果后持久游标
+  W->>DB: 短事务claim租约
+  W->>MQ: 业务事务外publish mandatory confirm
+  alt confirm ACK且无return
+    W->>DB: 核token标confirmed
+  else 失败或模糊确认
+    W->>DB: 同outbox锁下补缺失fallback通知并置终态
+  end
+  MQ-->>W: 可能重复或晚到的delivery
+  W->>DB: consume 同event锁 只插缺失通知 保留read/handled
+  DB-->>W: COMMIT
+  W->>MQ: basic_ack

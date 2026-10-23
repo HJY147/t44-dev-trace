@@ -1,7 +1,7 @@
 {
   "role": "messaging",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "冻结 v1 完整消息应用及真实MySQL/进程验证",
+  "implementation_status": "完整实现与DB恢复已接线；首阶段真Rabbit三项CI通过，最新快照全产品CI待验证",
   "artifacts": [
     {
       "path": "agents/messaging/WORKLOG.md",
@@ -22,36 +22,136 @@
     {
       "path": "agents/messaging/github-interface-question.md",
       "status": "已保存并发表；调度接口问题尚未确认"
+    },
+    {
+      "path": "backend/t44/messaging/",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "backend/tests/messaging/",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/prompts/ROLE-messaging-APPLICATION-v1.md",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/persistence-runtime-question.md",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/mysql-run1-failure.txt",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/mysql-run2.log",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/module-run3.log",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/module-run4.log",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "agents/messaging/coverage-run4.log",
+      "status": "本轮实际产物；状态详见模块报告"
+    },
+    {
+      "path": "backend/t44/messaging/README.md",
+      "status": "实际进程与CI操作边界"
+    },
+    {
+      "path": "agents/messaging/api-regression-run1.log",
+      "status": "既有contracts回归原失败保留"
+    },
+    {
+      "path": "agents/messaging/coverage-run5.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/coverage-run7.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/coverage-run9.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/facade-run6.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/module-run5.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/module-run7.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/module-run9.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/runtime-process-run8.log",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/runtime-pr-body.md",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/runtime-stage-comment.md",
+      "status": "本轮实际运行/评论/PR证据"
+    },
+    {
+      "path": "agents/messaging/module-run10.log",
+      "status": "实际追加证据，不覆盖原失败"
+    },
+    {
+      "path": "agents/messaging/module-run11.log",
+      "status": "实际追加证据，不覆盖原失败"
+    },
+    {
+      "path": "agents/messaging/runtime-recovery-comment.md",
+      "status": "实际追加证据，不覆盖原失败"
+    },
+    {
+      "path": "agents/messaging/ci/",
+      "status": "实际追加证据，不覆盖原失败"
     }
   ],
   "interfaces": [
     {
+      "with": "backend",
+      "status": "按冻结v1及实际API实现",
+      "input": "RowsGateway和actor_id/query或通知version命令",
+      "output": "冻结Notification/NotificationPage；Rejected错误",
+      "boundary": "Runtime统一鉴权/idem/成功事务及审计；Facade复核recipient与active membership"
+    },
+    {
+      "with": "database",
+      "status": "claim/get/confirm/retry/consume/fallback/recover_confirmed均接入；默认恢复已真MySQL验证",
+      "input": "既有UoW工厂、稳定event_id、lease_token",
+      "output": "单套持久通知及投递状态",
+      "boundary": "DB全部SQL与事务、唯一约束；消息只在事务外broker IO"
+    },
+    {
       "with": "scheduler",
-      "status": "草案未冻结",
-      "input": "临期/超期升级事件与稳定业务幂等键",
-      "output": "持久接受、重复、降级或未接受的可区分结果",
-      "boundary": "调度拥有扫描/规则/升级计数幂等，本岗拥有投递/消费去重"
-    },
-    {
-      "with": "backend/database",
-      "status": "草案未冻结",
-      "input": "项目权限、任务/接收人依据、唯一约束和事务能力",
-      "output": "一套持久通知/站内待办及处理结果",
-      "boundary": "后端统一鉴权与事务，数据库岗拥有数据模型；本岗不另建通知模型"
-    },
-    {
-      "with": "frontend/backend",
-      "status": "草案未冻结",
-      "input": "鉴权后的本人项目范围内查询及已读请求",
-      "output": "分页消息、未读状态、幂等已读结果与错误",
-      "boundary": "本岗拥有列表/已读业务契约，前端拥有页面，后端拥有鉴权入口"
+      "status": "实际来讯已确认event_type=2/schema1及ledger/recipients快照",
+      "input": "原子outbox+ledger事件",
+      "output": "幂等消费与降级结果",
+      "boundary": "不改扫描/升级规则，不信broker中任意业务正文"
     },
     {
       "with": "deployment",
-      "status": "草案未冻结",
-      "input": "RabbitMQ 连接、持久化、确认与恢复配置",
-      "output": "发布/消费故障状态与恢复需求",
-      "boundary": "本岗实现消费/投递逻辑，部署岗负责运行配置；重试和恢复口径待冻结"
+      "status": "真实Rabbit测试已写；本机无Rabbit",
+      "input": "DATABASE_URL/T44_DATABASE/AMQP_URL",
+      "output": "独立python -m t44.messaging",
+      "boundary": "CI缺配置fail，未给出真实broker通过结论"
     }
   ],
   "commands_executed": [
@@ -91,41 +191,72 @@
     {
       "command": "gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/messaging/github-interface-question.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6358168434"
+    },
+    {
+      "command": "uv venv .venv; uv pip sync --python .venv/bin/python --require-hashes backend/requirements.lock",
+      "result": "本worktree独立环境安装成功，Pika1.4.4；未改共享锁"
+    },
+    {
+      "command": "PYTHONPATH=backend .venv/bin/coverage run --source=t44.messaging -m pytest backend/tests/messaging -q --tb=short",
+      "result": "本地t44_test配置：24 passed/3 Rabbit skipped，见module-run4.log"
+    },
+    {
+      "command": ".venv/bin/coverage report -m; .venv/bin/ruff check backend/t44/messaging backend/tests/messaging",
+      "result": "局部85%，Ruff通过；见coverage-run4.log"
+    },
+    {
+      "command": "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/messaging/persistence-runtime-question.md",
+      "result": "首次EOF失败后重试成功：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360793043"
+    },
+    {
+      "command": "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/contracts -q --tb=short",
+      "result": "25passed/1failed/1skipped；原失败api-regression-run1.log，已报告根，未越权改测试"
+    },
+    {
+      "command": "git cherry-pick 1602f3597408d3b477dd9ef55a33145565556e12",
+      "result": "本分支76000e2，DB原子恢复门面已接入"
+    },
+    {
+      "command": "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/messaging/test_process_mysql.py -q --tb=short",
+      "result": "实际子进程/真MySQL/真实TCP失败降级与SIGTERM通过；见runtime-process-run8.log"
+    },
+    {
+      "command": "PYTHONPATH=backend .venv/bin/coverage run --source=t44.messaging -m pytest backend/tests/messaging -q --tb=short",
+      "result": "最终本轮28passed/3未跑Rabbit；局部84%，见module-run9.log与coverage-run9.log"
+    },
+    {
+      "command": "gh run view 39925978579/39925904582 --repo HJY147/t44-dev-trace --json databaseId,headSha,conclusion,url,jobs；gh api对应run/logs",
+      "result": "下载原始archive与元数据，详细job/step结论见ci/AUDIT.md；SHA见ci/checksums.json"
+    },
+    {
+      "command": "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/messaging -q --tb=short",
+      "result": "run10:1failed/27passed；仅修测试批次后run11:28passed/3本地Rabbit未跑，原文保留"
     }
   ],
   "results": [
-    "确认本岗负责 RabbitMQ 投递/消费、通知去重、故障降级、列表查询及已读业务",
-    "记录事件字段、业务幂等键、消费 ACK、降级持久化与恢复重投的待确认边界",
-    "只创建本岗三份记录；未写产品代码、DDL、共享规范或其他岗文件",
-    "未联系或读取独立测试岗内容",
-    "已向文档岗回传真实资料短答并记录询问/回答",
-    "已发布本岗阶段评论及调度稳定业务键问题，后者尚未确认"
+    "NotificationFacade实际HTTP/真MySQL/通知并发CAS与成员撤权并发验证通过",
+    "28项本岗验证通过：17基础/SQLite/fake/配置、11真实MySQL；3真Rabbit本地未执行",
+    "独立真实消息子进程+MySQL+TCP拒绝完成fallback，SIGTERM退出0；非真Rabbit成功证据",
+    "消息模块语句覆盖84%，Ruff通过；首轮85%事实保留",
+    "DB1602f359恢复门面已接入；完整事件不误标，缺失恢复后不二提醒",
+    "首阶段b5a16e6已push至draft PR20并attach_artifact",
+    "已真实核对b5a16e6两次Actions：三项真Rabbit执行通过；整体run仍因BE旧夹具/FE缺脚本失败，原始ZIP/gzip+SHA保留",
+    "run10本岗dispatch测试容量假设失败已只修夹具；run11复跑28通过/3本地Rabbit未跑"
   ],
   "unverified": [
-    "事件契约、API/错误码、通知数据模型与事务方案均未冻结",
-    "RabbitMQ、数据库及服务未启动；未验证实际连接、可靠投递或恢复",
-    "模块自测、集成验证、独立验收及性能测试均未执行"
+    "当前后续快照的真实Rabbit/托管CI尚需重新执行；b5阶段三项真Rabbit已有通过证据",
+    "既有contracts依赖缺失夹具待BE显式注入，原回归1失败证据保留",
+    "全产品覆盖率/规模门禁、独立验收、正式性能未验证；根实测规模超范围",
+    "普通业务重试积压时升级事件领取公平性记录为待核风险，未凭首批无目标事件冒认为已证实生产故障"
   ],
   "questions": [
     {
-      "owner": "scheduler/backend",
-      "question": "临期/超期、再次延期和接收人变更如何定义升级轮次及稳定业务键？"
+      "owner": "backend/root",
+      "question": "提供依赖缺失故障夹具修正SHA后复跑原contracts回归，保持原503断言"
     },
     {
-      "owner": "backend/database/scheduler",
-      "question": "升级计数、处理结果和投递意图采用何种原子提交方案，是否采用事务发件箱？"
-    },
-    {
-      "owner": "database",
-      "question": "统一通知/待办记录的唯一约束、降级标记、投递状态与已读字段如何定义？"
-    },
-    {
-      "owner": "backend/frontend",
-      "question": "列表分页/筛选、已读范围、权限拒绝留痕及错误码如何冻结？"
-    },
-    {
-      "owner": "deployment/scheduler",
-      "question": "MQ 恢复是否补投已处理待办，如何定义确认、重试、死信和恢复操作？"
+      "owner": "deployment/root",
+      "question": "在真实Rabbit+MySQL配置的CI执行本岗integration/fault测试并保留原结果"
     }
   ],
   "prompt_refs": [
@@ -152,15 +283,36 @@
         "agents/messaging/github-stage-comment.md",
         "agents/messaging/github-interface-question.md"
       ]
+    },
+    {
+      "id": "ROLE-messaging-APPLICATION-v1",
+      "source": "总协调实际消息",
+      "task_file": "agents/messaging/prompts/ROLE-messaging-APPLICATION-v1.md",
+      "reason": "冻结后真实实现与可区分模块/真实组件验证；覆盖M0限制",
+      "artifacts": [
+        "backend/t44/messaging/",
+        "backend/tests/messaging/",
+        "agents/messaging/prompts/ROLE-messaging-APPLICATION-v1.md",
+        "agents/messaging/persistence-runtime-question.md",
+        "agents/messaging/mysql-run1-failure.txt",
+        "agents/messaging/mysql-run2.log",
+        "agents/messaging/module-run3.log",
+        "agents/messaging/module-run4.log",
+        "agents/messaging/coverage-run4.log"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T13:31:50+08:00",
+  "updated_at": "2026-10-23T16:43:28+08:00",
   "github": {
     "repo": "HJY147/t44-dev-trace",
     "issue": 5,
     "stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6358168111",
     "interface_issue": 6,
     "interface_comment": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6358168434",
-    "interface_status": "尚未确认"
+    "interface_status": "DB恢复签名已确认实现；真实Rabbit待验证",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/20",
+    "application_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6360951760",
+    "database_recovery_reply": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360999718",
+    "recovery_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6361084142"
   }
 }

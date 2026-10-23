@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-23T18:04:18.059396+08:00",
+  "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+  "commands": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21",
+        "--jq",
+        "{head:.head.sha,base:.base.sha,draft,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base\":\"1996d44425e09930b5ba3ae5391b728980241f55\",\"draft\":true,\"head\":\"ff83bc98b27d0e671a8d000cfd72c29b27dea669\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+        "ff83bc98b27d0e671a8d000cfd72c29b27dea669"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "comment",
+        "12",
+        "--repo",
+        "HJY147/t44-dev-trace",
+        "--body-file",
+        "agents/reviewer/github/product-v1-e01-final.md"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/21/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5626761770,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT2GSKg\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-PRODUCT-v1\\nReviewed-SHA: e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\\nSummary-Key: product-v1-e01-final\\n\\n首次完整产品审核收口：不通过，保留初失败。\\n\\nC-P1 [P2] 前端消费Iteration.plan位置错误（forms.ts:15、FieldEditor.vue:17），真实契约形状丢原计划/容量预填；981夹具准确行为第10行，纠正checkpoint误写12行。C-P2 [P2] OperationForm.vue:37-40刷新后仍把幂等原快照state2/v2说成当前状态，959已复现权威state6/v9却提示开发中。C-P3 [P1] 原统计脚本/cloc精确e01为5944，超上限844，require-range退出1。C-P4 [P2] migrations.py:57-77只比index/FK/CHECK名称；957隔离Inspector语义变化仍passed=true，未操作或声称实库已漂移。\\n\\n完整八段十项报告：reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md，归档分支codex/review-product-v1；957/959原断言和失败输出保留。五方向真实减量候选估计270–400行，仍不足844；不建议minify、改分母/政策、搬业务规避或删功能/守卫。7个Mermaid已真实渲染，Outbox可选Task/调用方原key重试/候选cutoff与当前clock三项文档语义交root修。\\n\\n已复核冻结11hash、265d89b的317pass/0skip与覆盖率原件、31f4dff Docker4worker/凭据轮换/flock/隔离恢复19表checksum原件及差异范围。属于公开原件核对，非本岗新跑/独立验收/正式性能。e01实时门禁仅static/frontend成功，contracts/coverage取消；main strict五门禁且管理员受约束。本岗仅对原e01设置reviewer/stage=failure，不APPROVE/合并；PR最新head已变化，此报告不冒充新head通过。原owner修复后给新完整SHA差异复审，旧e01失败不覆盖。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/21\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/21\"}},\"submitted_at\":\"2026-10-23T10:04:23Z\",\"commit_id\":\"e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/statuses/e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/statuses/e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\",\"avatar_url\":\"https://avatars.githubusercontent.com/oa/1157143?v=4\",\"id\":57079614110,\"node_id\":\"SC_kwDOVUR6Q88AAAANSjXKng\",\"state\":\"failure\",\"description\":\"e01 product review failed: UI contract/replay, schema semantics, LOC >5100\",\"target_url\":\"https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845\",\"context\":\"reviewer/stage\",\"created_at\":\"2026-10-23T10:04:24Z\",\"updated_at\":\"2026-10-23T10:04:24Z\",\"creator\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false}}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef/status",
+        "--jq",
+        "{state,statuses:[.statuses[]|{context,state,target_url}]}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"state\":\"failure\",\"statuses\":[{\"context\":\"reviewer/stage\",\"state\":\"failure\",\"target_url\":\"https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845\"}]}\n",
+      "stderr": ""
+    }
+  ],
+  "pr_at_publication": {
+    "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+    "draft": true,
+    "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+  },
+  "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+  "review": {
+    "id": 5626761770,
+    "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+    "state": "COMMENTED",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770"
+  },
+  "status": {
+    "id": 57079614110,
+    "state": "failure",
+    "context": "reviewer/stage",
+    "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+    "description": "e01 product review failed: UI contract/replay, schema semantics, LOC >5100"
+  },
+  "status_readback": {
+    "state": "failure",
+    "statuses": [
+      {
+        "context": "reviewer/stage",
+        "state": "failure",
+        "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845"
+      }
+    ]
+  }
+}

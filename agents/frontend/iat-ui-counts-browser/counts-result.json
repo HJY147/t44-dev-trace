@@ -1,0 +1,566 @@
+{
+  "frontend_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
+  "backend_sha": "02ecdea9ced90cd46cbca898f123d6409f45ba80",
+  "source": "real browser/Vite same-origin → root-ready dev API18080 → t44_dev; no fake response/status",
+  "scope": "前端开发回归，非独立复测；network error由一次真实请求abort控制注入",
+  "project_id": 10,
+  "notification_id": 5,
+  "task_id": 21,
+  "task_versions": [
+    2,
+    2,
+    2
+  ],
+  "task_states": [
+    1,
+    1,
+    1
+  ],
+  "snapshots": [
+    {
+      "step": "initial",
+      "request_id": "bca17f1d-99d7-48b7-9901-76b4d51eaa8f",
+      "project_id": 10,
+      "unread_count": 1,
+      "unhandled_count": 1,
+      "total": 3,
+      "visible_rows": 3
+    },
+    {
+      "step": "handled-but-unread",
+      "request_id": "8d8450b2-b4b1-4684-94bd-6c2417cf872e",
+      "project_id": 10,
+      "unread_count": 1,
+      "unhandled_count": 0,
+      "total": 3,
+      "visible_rows": 3
+    },
+    {
+      "step": "read-and-handled",
+      "request_id": "c7630a44-b2e3-4fa8-9b11-24db39687e65",
+      "project_id": 10,
+      "unread_count": 0,
+      "unhandled_count": 0,
+      "total": 3,
+      "visible_rows": 3
+    },
+    {
+      "step": "alternate-project",
+      "request_id": "e8e3df57-f6c3-4199-a333-2471201913db",
+      "project_id": 3,
+      "unread_count": 0,
+      "unhandled_count": 0,
+      "total": 0,
+      "visible_rows": 0
+    },
+    {
+      "step": "restored-project",
+      "request_id": "f7dd94f5-b8cc-4b6e-8ac3-d250afe3f1be",
+      "project_id": 10,
+      "unread_count": 0,
+      "unhandled_count": 0,
+      "total": 3,
+      "visible_rows": 3
+    },
+    {
+      "step": "recovered-real-api",
+      "request_id": "cb91c3c1-66ac-4d9a-90dd-7021576ceee5",
+      "project_id": 10,
+      "unread_count": 0,
+      "unhandled_count": 0,
+      "total": 3,
+      "visible_rows": 3
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "request_id": "b6818df5-cac4-4f7f-9ac7-2c27236fc526"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200,
+      "request_id": "fca07684-8879-47d9-a92f-1d3a415f1d9a"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "request_id": "d121e3d3-701b-4d7c-9508-825c59d117ca"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "request_id": "6218af53-434d-42c7-95ce-e711ccbe09f5"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3",
+      "status": 200,
+      "request_id": "c59e80f7-8573-4114-8329-dd61ad5bae47"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/iterations",
+      "status": 200,
+      "request_id": "4439d5c5-f6e7-42ea-b9ae-1dc8bd461df6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/members",
+      "status": 200,
+      "request_id": "502e0953-c623-4450-afa1-85c74ab94e9b"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "03ae4253-b611-49dc-802a-e723049bbf3d"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "98a4c5d2-d1fd-43e2-9441-be6886dd7990"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "f2970333-9c79-44c6-b9e9-84898b595634"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "1ddc98af-53a7-4524-b383-9901e44b19bf"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/review-template",
+      "status": 200,
+      "request_id": "7c871adb-e9e9-48c4-b2b1-0dcbeeea56cc"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "a09f8f0d-d971-4389-b662-7e8365cf88d7"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "50d58b76-b895-48dd-af8d-a68f76e1f75f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/escalation-rules",
+      "status": 200,
+      "request_id": "7754e072-bcee-4756-ad87-c4ddd1e44d9b"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "c7517db6-c9d8-4359-8f6f-749bc77fd142"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "6c3776bb-2e53-487a-a03a-f1b26fe30aa5"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "b0498f2f-8b12-4250-b7e9-8344b6c15393"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "11867782-6b0b-4ea5-addd-7ef9d23eb063"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200,
+      "request_id": "c8a23c8b-b387-49b0-aec0-31d13c9ecf00"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200,
+      "request_id": "072a0c0e-4c8c-43d4-a347-63a0794aa9f6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "d952e1bd-e739-4917-bf6f-cdec71247a56"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "128fc81e-dffd-4bc1-822e-df74a5025160"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "4f8b8844-e802-461e-9d5d-1a291c1e2fa4"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "58c40a9f-956e-49ca-9b32-65f249ae9f4a"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "b068f999-deda-411b-a4df-1b7016820751"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "97802911-cf69-46cb-9162-9aa54541fb76"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "bca17f1d-99d7-48b7-9901-76b4d51eaa8f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks/21",
+      "status": 200,
+      "request_id": "e8d882d6-62d4-47f0-bc3d-6ceda7fdc5da"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/10/notifications/5/handling",
+      "status": 200,
+      "request_id": "0f319fe5-006f-457a-a806-e0d5c8c959b4"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "cf7bb510-ca59-487b-a956-f0a3e83b8ab0"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "453094cb-beb3-4acd-a72d-cb5f18e8446f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "b34ce70a-42b7-46f3-91c4-ac2eaf319483"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "99ecc52f-5bcf-44ec-936a-b17d80a74487"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "08c15510-95f6-46ec-875c-1e7171b32e23"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "6525f8c2-a37c-4dfb-841c-cb54cc8ac4b6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "118b361e-6145-4ed3-9d3b-e77b27513e08"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "91c762de-6107-491a-9ba0-2a4513a428fa"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "0e1785ed-9d33-4d40-b848-b137a785fd88"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "c145d440-2d3c-4ab8-99e0-9c3c6f02e6d5"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "29dac69f-5b76-4b4a-ace6-f948250462ce"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "8d8450b2-b4b1-4684-94bd-6c2417cf872e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks/21",
+      "status": 200,
+      "request_id": "3ac62df0-f240-43f8-b0b8-4a31bcfb0dc1"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/10/notifications/5/read",
+      "status": 200,
+      "request_id": "6c4ceb0c-96bc-46aa-9a7d-b6f83e71a836"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "424203bc-1e49-4deb-8175-cc29cad2cfab"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "21e5a522-2937-4599-8f39-3ff0e1863ea9"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "cd2e44b2-6e5b-4709-9f71-69f1b8fd0bad"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "653545fd-8879-4a33-af19-06ca579d2867"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "f1301181-6685-47da-8b02-9d12f5924b39"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "95d1977c-1dc7-4c15-abbd-645ab2f9bbee"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "b9c52ebb-a0e9-41d6-92c8-c43f08461ee9"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "e4cc2e4e-1142-4f54-8557-8d84207a91c6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "63ead5ca-34fc-466e-96ee-c424a979d83e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "c9a97845-e589-4e0d-845d-bcb099a23be4"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "9818bbf4-ff64-4505-9546-411a871035b6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "c7630a44-b2e3-4fa8-9b11-24db39687e65"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks/21",
+      "status": 200,
+      "request_id": "c902664c-f135-47c0-b339-9b6ad8b9cd8e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/iterations",
+      "status": 200,
+      "request_id": "ad31a7fb-1f3a-4d6e-8a20-fd48700c7a23"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3",
+      "status": 200,
+      "request_id": "d89629b5-4be9-4533-a25b-397620388b70"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/members",
+      "status": 200,
+      "request_id": "059f066c-fa0e-4f9e-834f-6ddbfed4df90"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/review-template",
+      "status": 200,
+      "request_id": "3e384fed-f3c8-45a1-a3c7-1385b029b8e4"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/escalation-rules",
+      "status": 200,
+      "request_id": "bb2d2b6f-861c-433d-b1d0-3516355fe980"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "e8e3df57-f6c3-4199-a333-2471201913db"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "511beb14-5672-490b-8971-c4b5843abedc"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "44c62445-5df8-4d06-b39b-73288abd8a02"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "c6a2106b-f2b8-4891-a3bd-3982066b0b07"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "d789f99a-7319-434f-9a0b-0d7ed97f324d"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "6d9846c7-fe77-4a8b-b424-13fcafbd5270"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "f7dd94f5-b8cc-4b6e-8ac3-d250afe3f1be"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "f12ff4aa-297a-49b3-9c22-c0e677a89f25"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "8430cdeb-dad5-47e4-8ded-40f7127e686c"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "c6d28eb5-9ff6-4fa3-80c1-0cebabb5e15b"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "ba13aacc-0cdf-4870-af93-88eda7896462"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "63d88f92-7fe5-466a-ae2f-6b1703f406e6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200,
+      "request_id": "e5b65774-5335-4eaa-8ce4-766baf35663e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200,
+      "request_id": "e41ffb32-9087-444b-9290-4b30b83df09e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200,
+      "request_id": "d9ce5f62-6247-43d8-951b-096e117a490e"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200,
+      "request_id": "74b4e3c6-898d-4bfc-806b-0df7d8e9049f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200,
+      "request_id": "6ac54d44-af82-404e-aa07-ae2fa9f97468"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200,
+      "request_id": "cb91c3c1-66ac-4d9a-90dd-7021576ceee5"
+    }
+  ],
+  "browserErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "screenshots": [
+    "counts-desktop-initial.png",
+    "counts-mobile-handled-unread.png",
+    "counts-network-error-hidden.png"
+  ]
+}

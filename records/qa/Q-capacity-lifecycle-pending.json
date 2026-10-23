@@ -1,0 +1,19 @@
+{
+  "id": "Q-capacity-lifecycle",
+  "asked_at": "2026-10-23T11:17:55.269492+00:00",
+  "status": "answered_adopted",
+  "source": "coordinator async user clarification; no answer inferred from elapsed time",
+  "question": "某迭代已登记张三的可用工时并给他安排了任务，如果要转派给尚未登记工时的李四，或从产能表移除仍有未结项任务的张三，应怎样处理？",
+  "options": [
+    "要求先补全人力安排：李四登记工时后才能接任务；张三的未结项任务转走后才能移除（推荐）",
+    "允许直接转派或移除，产能表只作参考"
+  ],
+  "reason": "Frozen createTask explicitly declares CAPACITY_REFERENCE_INVALID; changeTaskAssignment does not declare it. Capacity lifecycle under assignment/removal is not explicit. Clear IAT02 createTask fix proceeds independently.",
+  "frozen_files_edited": false,
+  "implementation_of_unanswered_choice": false,
+  "recorded_answer_at": "2026-10-23T11:56:31.546867+00:00",
+  "source_question_item_id": "call_723fcd0f78c84d2a8799cc76ba9dcb2c/0",
+  "answer": "要求先补全人力安排：李四登记工时后才能接任务；张三的未结项任务转走后才能移除（推荐）",
+  "decision_ref": "records/decisions/D005-capacity-lifecycle-adopted.md",
+  "implementation_of_choice": "not yet implemented; explicit v1.1 change review follows"
+}

@@ -60,3 +60,77 @@
 - 人工与门禁边界：据总协调本轮派工Q002仍pending，不记用户已采用字段/错误码或冻结；实时main严格要求reviewer/stage/static/contracts/coverage/frontend且管理员受约束；bc check-runs查询返回[]，无当前产品门禁通过证据。旧保护拒合并历史实证在records/github针对717cd65，不能冒称新SHA已通过。未执行DDL/HTTP/产品事务/MQ/覆盖率/性能。
 - 本轮仅角色标识COMMENT技术结论/待人审/未实现，不发布success、APPROVE或合并。评论正文保存 `agents/reviewer/github/issue-12-design-v2-bc0cd34.md`；只本岗显式提交，不push/checkout/merge，实际评论/提交回执随后交接并释放索引。
 - 实际PR COMMENT已发布：https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437 ，回执commit_id=bc0cd34完整SHA，前后远端head一致。首轮读取review回执GET发生EOF（退出1）；未重复提交COMMENT，只读重试成功，失败与恢复均保留在 `agents/reviewer/evidence/design-v2-bc0cd34.json`。该SHA combined status=pending、statuses=[]，未发布success或其他提交状态。
+
+## 2026-10-23 基础模块代码审核与独立分支收尾
+
+- 实际派工`ROLE-reviewer-FOUNDATIONS-v1`及DB追加、收尾消息原文存本岗dispatches。独立worktree `.agent-worktrees/review-foundations`，分支`codex/review-foundations`，base `8f0f6b7738d07aa60591eb72274364ea8f4bcd25`；未使用root索引/分支，未修改owner代码，未联系独立测试或读取其私有资料。
+- 对象精确绑定PR14 frontend `f261cbf0ea94537ed9f0a1600770c93ee8109237`、PR15 deployment `72e3275202273a60af3acc37b7a319f10eea99a7`、PR16 domain `0bb4549c1b6e4fb7247dc58dd8a5fa675161d614`、PR17 DB foundation `4ae865b8dc554813c04aacbb3a5033aa2745c799`（产品7caa2eff）。60份已提交源码/配置/测试文件逐字节及SHA-256对应，清单targets.json；作者报告不代替复验。
+- 真实复验：frontend指定SHA导出到临时目录，clone既有依赖后离线frozen-lockfile、typecheck、5项组件测试、build均退出0；backend无cache写入运行106项domain断言通过；DB自有环境18项SQLite生命周期/故障注入＋mock MySQL通过；deployment11项运维守卫＋6项CI守卫通过，Compose离线schema校验退出0。完整命令/输出或明确标注摘录在evidence/foundations-v1。Node初始PATH缺失、借后端已安装包遮蔽DB命名空间、root环境无pytest均保留；恢复后结果不抹掉初始环境失败。收尾按续派未重跑已过测试。
+- 代码结论：四基础当前未见范围内实质阻断。D001纯领域守卫/不可变效果、DB吞SQL错误后rollback-only/不确定commit不伪称回滚/资源归还、参数绑定与可信列白名单、秘密与隔离恢复包装均有真实依据。后续须补前端coverage脚本、统一环境导入整合、真实MySQL/项目DDL、Docker/备份恢复、HTTP/事务/MQ/调度与全产品门禁；尚未授权实现不作为本阶段缺陷。
+- 远端真实核验：四PR原head相符；PR15 static job120281228653中hash工具安装和Compose＋官方Nginx容器语法步骤success，整个四产品门禁failure。其他三个head没有完整产品绿灯。Linux锁解析不等于Linux安装，现有下载日志证书失败；本机无Docker，没有执行容器或真实恢复。未自我APPROVE/发reviewer成功状态/合并。
+- 四PR COMMENT与Issue摘要已实际发布，完整argv/返回在github-verification.json；收尾先只读读回，避免重复Review。八段十项报告reports/reviews/foundations-v1.md，评论正文单独保存；接下来的显式commit/push仅本岗证据，SHA以命令回执交接，不在报告自引用。
+- 时间补记：初查/评论准备时Q002 pending；收尾收到总协调转述用户原文“采用推荐方案，继续开发”，D004/U006与v1冻结清单在其所报ae60dc3。按通知记新事实，不重审metadata、不把采用归因为本岗决定、不回写旧pending历史为已知。四个被审head不变；APPLICATION与PR19不加本轮。
+
+- 队列恢复收尾：四PR及Issue摘要只读读回确认成功，未重复Review；补记评论 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362034250 已发布，记录用户采用更新及基础结论边界。读回/返回见comment-readback-resumed.json与closeout-comment.json。本次没有重新运行既有基础测试。
+
+## 2026-10-23T17:50:21.210986+08:00 完整产品审核v1首次checkpoint
+
+- 基础历史归档本人09dd3cf68171557ca13648296e9427571f5fe815已push并核对远端，四旧head结论不扩大。
+- 新任务ROLE-reviewer-PRODUCT-v1原文/目标/编号授权存dispatch；从精确e01建立codex/review-product-v1独立树，审核整个产品/M2，未沿用基础模块排除项。
+- 已实际复现C-P1嵌套Iteration计划丢预填与C-P2重放历史状态误报当前；959 Vitest正确行为2断言失败，原输出和命令保留，非独立验收/非liveHTTP。原统计政策复算5944，require-range退出1。先交实质问题，不等待报告metadata或独立最终稿。
+- 未修改owner实现/既有断言、未读取私有独立用例/日志或联系testing。完整审核继续；957另领用于Schema检查器语义复现。
+
+- 957隔离Inspector替身：列类型/名称相同但改变索引/FK/CHECK语义仍passed=true；正确拒绝断言失败，登记C-P4，不声称实库漂移。首发PR Review精确e01被GitHub422拒绝（远端仍86dfd7d，目标不在PR），只读查无重复后未错绑。Issue checkpoint已发布 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769；评论与真实返回见checkpoint-github.json。
+
+- root将目标推入PR21祖先后，先读回确认无旧Review，再绑定原e01发布COMMENT成功：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867。原422保留。Git样式检查识别原始Vitest stdout末尾空行；保留原始输出，资料检查仅对blank-at-eof作命令级豁免，未改产品断言/门禁。
+
+## 2026-10-23T18:03:25.714031+08:00 完整产品e01首次审核收口
+
+- 首次checkpoint本人e9abf8899e31cfe1853344cdead37e4824f0663a已push，root整合其记录但本报告仍只绑定e01；完整八段十项报告另写，不覆盖checkpoint。C-P1夹具准确行10，先前行12误指在完整报告明确校正。
+- 已复核冻结11hash、输入目标manifest、公开CI gzip原XML哈希/计数、Docker19表恢复原件与相关diff；区别265源码一致范围与static/config变化、31f4至e01仅ops plan文字和README变化。自己未重跑已有基础测试或冒记CI。
+- 已真实渲染7图，保存Mermaid11.12 bundle URL/hash及Chrome版本/源块hash/SVG/PNG/尺寸，目视样查事务图。三项图文语义问题报root，root已接收；打印/Word逐页QA不在此虚报。
+- 跨层减量候选为旧CSS/重复内部出口与长导入/seed重复基字段/旧兼容属性及重复工具；保守270–400行不是已实施或足够844；不改统计政策/分母、不搬业务规避、不删功能/守卫。
+- 最终判e01不通过，四类问题与未验证边界详报告；后续修复差异新SHA另审，不覆盖原失败。已实读main五必需上下文及e01两成功两取消；最终status仅对原e01发failure，实际发布结果随后记录。
+
+- 最终实际发布：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845；PR COMMENT https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770，commit_id严格e01；reviewer/stage=failure ID57079614110，target_url指向Issue，读回确认failure。发布前确认e01为当前PR祖先，当前head另存回执，未错当最新head结论；无success/APPROVE/合并。命令/返回final-github.json。
+
+## 2026-10-23T19:23:59.930033+08:00 原C-P4复审与架构减量审计v2
+
+- 实际派工及收尾续派原文agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-AND-CATALOG-v2.txt；root当前7c27完整SHA含0e3e999，以此建立独立codex/review-catalog-v2树。未修改产品或root索引，不扩审IAT/运行重负载。
+- 原957与ddaa035字节/hash一致，复跑exit0，baseline接受而同名索引/FK/CHECK语义变异拒绝。DB公开live14文件/5源码hash一致、18 owner测试0失败0跳过、四类实际DDL拒绝/恢复/重复迁移与原失败历史核对完成，限定关闭原C-P4，不声称本岗新跑实库。
+- 原统计脚本固定cloc精确7c27=5886，超上限786；旧stage7=5866只是历史。架构只读方案A删除双表示/中转层180–280，B同一run事务体收口28–47，C事件推进重复20–35，E现seed仅0–15，D新AST库只POC不计收益；合计仍不足786，不强凑或改口径。root明确A后置，B/C由owner做，E不夸大。
+- 只读正式公开黑盒报告与v1-blackbox-results.json，未跟随私有路径/读tmp/independent或联系testing；保留其旧被测SHA/实际未通过与性能范围。本轮未复审后端修复或重跑性能。
+- 八段十项报告reports/reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md及catalog-v2证据落盘；最终仍failure/not approved，旧e01门禁不重写，不发success或合并。
+
+- 数量校正：初步口头806含已删除的58行domain barrel，当前实际相关组748；seed当前pointer已复用，旧context/add共享已实施，不能重复计收益。因此A/E保守下调，合计208–377且仍不足786。此为审计推算修正，非实施或产品指标改善。
+
+- 角色Issue/PR COMMENT实际发布：https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036；https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603，正文明确7c27和两项限定范围。没有任何status写入、没有APPROVE/合并，原e01 failure不改；实际argv/退出/URL在catalog-v2/github-comments.json。
+
+## 2026-10-23T12:04:42.111506+00:00 容量生命周期v1.1限定设计审查
+
+- 实际派工 ROLE-reviewer-CAPACITY-V11-DESIGN-v1 及后续纠错原文存dispatches；精确5fb1d7e建立codex/review-capacity-v11，不碰root索引或产品。
+- U015/D005/QA已真采用；不能再说整个D005待答。RFC误称成员保护仅1–5，本岗AI从Projects静态发现其实际1–5+7，root接受是其AI提案错误，不归为学生发现。状态7的capacity具体边界另问用户待答，不能代人定义。
+- 32输入逐字节对照git show，11原冻结hash与当前/ae60历史均一致，权威/后端副本一致；JSON/AST静态核对exit0，结果evidence/capacity-v11-design/static-audit.json。没有运行产品测试/实库/性能/CI刷新，没有独立测试接触。首次猜测D002名/FE config不存在已改读真实路径，失败不记通过。
+- 报告reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md：除7边界外给限定技术有条件准入；全量owner检查、assignment项目锁、返工再验、错误分支与info+Meta+后端+FE+manifest父链明确建议已由root采纳，仍须其改稿与用户具体答复后新SHA审；不能冻结1.1或放行依赖7的实现。
+- 本轮仅自己的报告/证据/日志/handoff/prompt/COMMENT，未发status、APPROVE或合并；后续源与测试另审。发布/提交实际返回另存证据并以完整SHA交接，不在报告自引用。
+
+- 2026-10-23T12:06:53.474177+00:00 最新续派与真实补答：02ecdea包含U016/D006/QA answered_adopted，capacity状态7边界现已明确采用，无此边界待答。直接git show新五件及35输入重hash，源码未改、11原freeze不变，exit0。新报告reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md更新限定结论：可准入责任岗实施，非冻结/产品通过；5fb原待答/事实错误报告保留历史不覆盖。实际续派原文已追加。
+
+- 真实GitHub COMMENT已发并先读回避重：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6364500677；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364501387。argv/返回见capacity-v11-design/github-comments.json，准确目标02；无状态写入/APPROVE/merge。
+
+- 2026-10-23T12:08:53.205142+00:00 最终RFC限定差异：准确bbc4be681f19a386fbca40baf97a63ab902b3f89的RFC仅L33澄清竞争目标人与原负责人的区别，hash a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98。真实git show/diff/逐行比较exit0，方向成立；新终稿报告reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md，可准入责任岗实施，无待答/本轮设计阻断，不扩审后续无关代码。02评论已真实发布，随后将追加此终稿绑定，不删除前一结论；源码/产品gate另审。
+
+- 最终RFC补记已追加到本轮Issue/PR两条原评论，并实际GET读回body一致；未删除02的原评论内容。命令/返回github-final-update.json，原02正文单独保留github/capacity-v11-design-02e-comment.md。
+
+## 2026-10-23T12:33:24.888712+00:00 容量1.1冻结前一致性初查
+
+- 真实派工ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1及两次续派见dispatches；本岗独立树从d7快进到a787、再快进9aeb40c48c35139e29a5e997253d606e5c96139a，索引原为空，root索引不动。
+- 轻量静态读取指定规格/契约/DB文档与D005/D006/bbc；18输入提交hash、129标准库JSON/hash结构项通过，31/38/130、DDL18/226、Meta/info1.1、两副本字节一致、原v1 manifest及11历史hash保持。没有导入或运行产品/测试、启服务/DB、读取未提交BE草稿或任何独立私有材料。
+- 本岗AI发现F-C1：assignment description合并无效developer和缺capacity为CAPACITY错误，与原OWNER_NOT_PROJECT_DEVELOPER优先分支矛盾；两文件9406行。root接受并派BE原owner仅修两句。报告reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md保留首次不通过；新版manifest在9aeb尚不存在，未来生成不冒记已审。
+- root另报其1130设计脚本两C2 envelope旧fixture meta版本失配，属于其真实执行而非本岗。保留旧时间/源结论，不通过新schema错误抹历史；本岗未读/重跑用例。
+- 正式静态脚本evidence/capacity-v11-freeze/static_check.py及初查JSON保存；初步DDL正则2空格误计0列已据原DDL更正4空格，正式检查18/226，不是产品失败。
+
+- 2026-10-23T12:36:14.404420+00:00 59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e精修复核：两契约仅同一句description改先OWNER再CAPACITY、hash均a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f；F-C1限定关闭。再次129静态项通过，18提交输入绑定，源码业务守卫未审/未运行；完整新报告reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md。可生成1.1新manifest，但该SHA尚无清单，本岗不冒记已冻结完成。
+- 只读已提交995两行fixture/路径diff及BE before/after原件hash：1130/38/2fail→0fail，归BE设计校验而非本岗/产品结果，原断言未降、旧时期结果不抹。实际续派原文追加，首次9aeb报告保留。
+
+- root明确优先提交既有完整报告/129证据，不等网络评论；本证据commit时本轮GitHub COMMENT尚未发布/回读，后续另补实际回执commit，不预写成功。当前无新增检查或scope。

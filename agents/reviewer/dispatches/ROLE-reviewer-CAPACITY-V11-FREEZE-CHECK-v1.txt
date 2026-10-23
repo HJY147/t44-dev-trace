@@ -1,0 +1,15 @@
+ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1。请在自己worktree合并root当前54?以实际codex/integration最新HEAD为准（刚合并DB705e7b7和BE90e01f6，根需规42d3515），做轻量只读合约一致性复核；不启动服务/测试/DB，不触及独立私有材料。范围AGENTS/specs requirements/business/backenddesign/OpenAPI+运行副本/README/DB dictionary+persistence 与已审bbc RFC、D005/D006，检查38ops/31paths/130schema、DDL18/226、v1.1 Meta版本/错误新增分支/1–5工时与1–5+7成员、锁序、原错误优先级。新契约目前pending-v1.1-freeze，根即将统一状态并生成独立1.1freeze（保留原v1清单/历史摘要）。你先检查语义有无blocker，报告具体文件；不要把设计通过等同产品通过，也不要读取BE未提交草稿或私有测试。最多轻量脚本检查。自身日志/report/handoff/prompt和GitHub实际阶段评论，独立commit；若并行根改冻结状态，明确你审的源commit/hash。先快速反馈阻断点，再交证据。
+
+后续精确目标（总协调）：
+最终待冻结源已到9aeb40c（rootbranch），请审这个精确commit；root仅元数据状态改为frozen-v1.1（top与38ops），info说明/README/需规指向即将生成的records/spec-freezes/v1.1.json，权威/运行副本相同。共同三份根文档已在42d3515落地，人力流程图明确不改变原错误优先级。请先反馈有无语义blocker；尚未正式发新freeze给BE，业务草稿未提交。manifest写入会在你的限定检查后做，避免把状态文字当已实现。
+
+收到阻断后的真实回应（总协调）：
+收到description阻断，已派BE owner仅两份契约说明精修、仍hold业务守卫。另根实跑原995设计脚本1130checks时两个C2 envelope失败，定位该公开旧fixture meta.contract_version仍'0.1.0-draft'而schema当前1.1，不是101收件人被新增max限制；原失败日志保留records/validation/capacity-v11-contract-final.log，BE仅更新fixture取SPEC info.version、真实路径打印，原断言不降。待owner新hash通知你差异复核。请不要以这次版本化fixture修复否定历史当时脚本结果，按源和时间各自记录。
+
+最终真实精修续派（总协调）：
+最终修订已合入根59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e（owner aa748d1）；仅description先OWNER再CAPACITY，合同SHA a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f，两份一致。merge仅该相同行双重编辑冲突，显式采用owner两份完整合同（已先同步根9aeb metadata），无其它业务变化。995的两行fixture/命令更新，owner before2failed→after1130/38/0fail原件公开agents/backend/capacity-v11-995-{before,after}.log。请对59daa最终差异复核并交限定结论/commit，根后生成freeze。
+
+收尾优先级真实续派（总协调）：
+快速无blocker结论已收到；请尽快交你自己的报告/129项证据+评论commit，可不等待根manifest（报告已明确59daa无manifest）。根freeze将引用你的精确证据commit，之后你释放槽给BE完成代码。README根4ba0bda仅更新真实362CI/FE27及80HTTP/Word28页和5940失败，不改已审冻结文件。
+
+无需再扩验证。请优先现在提交已完成的最终报告/证据，把精确commit发我；若GitHub评论尚未回读，可后续补一个证据commit，不要让已通过的冻结源等待网络评论。根业务链正在等该证据SHA，已有129项和差异检查足够本轮限定范围。

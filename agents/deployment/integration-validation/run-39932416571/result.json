@@ -1,0 +1,122 @@
+{
+  "source_sha": "f052fdd8e57ef0ffbf350772a9e3d8b39a700eee",
+  "runner": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+  "steps": [
+    {
+      "name": "docker-version",
+      "exit_code": 0
+    },
+    {
+      "name": "compose-version",
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "exit_code": 0
+    },
+    {
+      "name": "infra",
+      "exit_code": 0
+    },
+    {
+      "name": "migration",
+      "exit_code": 0
+    },
+    {
+      "name": "init-user",
+      "exit_code": 0
+    },
+    {
+      "name": "seed",
+      "exit_code": 0
+    },
+    {
+      "name": "project-scopes",
+      "exit_code": 0
+    },
+    {
+      "name": "credential-issue",
+      "exit_code": 0
+    },
+    {
+      "name": "application-up",
+      "exit_code": 0
+    },
+    {
+      "name": "application-ps",
+      "exit_code": 0
+    },
+    {
+      "name": "four-api-workers",
+      "exit_code": 1
+    },
+    {
+      "name": "primary-logs",
+      "exit_code": 0
+    },
+    {
+      "name": "primary-stop",
+      "exit_code": 0
+    },
+    {
+      "name": "recovery-logs",
+      "exit_code": 0
+    },
+    {
+      "name": "recovery-stop",
+      "exit_code": 0
+    }
+  ],
+  "http": [],
+  "passed": false,
+  "synthetic_user": {
+    "user_id": 1
+  },
+  "seed": {
+    "already_seeded": false,
+    "projects": 2,
+    "tasks": 40,
+    "dependencies": 30,
+    "reviews": 56,
+    "decisions": 24,
+    "assessments": 24,
+    "states": {
+      "6": 16,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 4,
+      "5": 4,
+      "7": 4
+    },
+    "manifest": {
+      "version": 1,
+      "seed": 44,
+      "anchor_at": "2026-10-23T09:31:50+00:00",
+      "projects": 2,
+      "tasks": 40,
+      "dependencies": 30,
+      "records": 80,
+      "template_version": 1,
+      "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+      "rule_version": 1,
+      "rule_effective_at": "2026-10-23T05:33:29Z",
+      "rule_decided_by": 1,
+      "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+      "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+      "synthetic": true
+    },
+    "manifest_sha256": "58d37b148aee41aabdecd684a13af1603114c0bc7ee9561401eefd33ded77ab7"
+  },
+  "service_session": {
+    "session_id": 1,
+    "expires_at": "2026-10-23T10:31:52.422289Z",
+    "credential_written": true,
+    "rotated": false,
+    "previous_session_revoked": false,
+    "previous_session_already_inactive": false
+  },
+  "error": "RuntimeError",
+  "redacted_secret_occurrences": 0
+}

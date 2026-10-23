@@ -1,0 +1,104 @@
+{
+  "transport": "actual TCP HTTP 18080 + MySQL8.4.11 + real scheduler/messaging CLI",
+  "mq_success_not_claimed": true,
+  "fault": "closed loopback port; real Pika connect failure",
+  "resources": {
+    "project_id": 10,
+    "iteration_id": 10,
+    "task_id": 15,
+    "event_id": 121,
+    "notification_id": 2
+  },
+  "scan": {
+    "id": 1,
+    "rule_version": 1,
+    "cutoff_at": "2026-10-23T09:15:08.440114Z",
+    "status": 2,
+    "last_task_id": 15,
+    "scanned_count": 2,
+    "created_count": 1,
+    "duplicate_count": 0,
+    "started_at": "2026-10-23T09:15:08.440114Z",
+    "heartbeat_at": "2026-10-23T09:15:08.463050Z",
+    "finished_at": "2026-10-23T09:15:08.463050Z",
+    "error_code": null
+  },
+  "messaging_cycles": [
+    {
+      "exit": 2,
+      "fault": "actual Pika connection to closed loopback port"
+    },
+    {
+      "exit": 2,
+      "fault": "actual Pika connection to closed loopback port"
+    },
+    {
+      "exit": 2,
+      "fault": "actual Pika connection to closed loopback port"
+    }
+  ],
+  "operations": [
+    {
+      "operation": "login",
+      "status": 200,
+      "request_id": "725428c6-3400-43bb-9c87-31b2b64e8341"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "request_id": "20b5aa60-8d05-493e-bc88-908dfa182d46"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "request_id": "da2b79b8-04cb-4960-ab26-6c78e3914dc0"
+    },
+    {
+      "operation": "createProject",
+      "status": 201,
+      "request_id": "64c0eb7f-00a3-44b3-8076-07f75487bc98"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "request_id": "fc0feea6-9c99-477b-beb2-bc6b2ce56256"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "request_id": "cd17d7ff-b361-4d7f-a652-217cbfa6d795"
+    },
+    {
+      "operation": "createIteration",
+      "status": 201,
+      "request_id": "a0d7d1c4-cf95-417a-b42f-a335a3a3cc3f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "request_id": "138e466a-5601-4462-84df-0771222d53f0"
+    },
+    {
+      "operation": "listMyNotifications",
+      "status": 200,
+      "request_id": "420e46cb-2b0c-41cb-bd8c-a94c42579605"
+    },
+    {
+      "operation": "markNotificationRead",
+      "status": 200,
+      "request_id": "8ad7c37f-7963-4fcd-a5e7-ac325b6a4ce5"
+    },
+    {
+      "operation": "handleNotification",
+      "status": 200,
+      "request_id": "3633042c-88bc-4308-867a-9a2e11960729"
+    },
+    {
+      "operation": "listEscalations",
+      "status": 200,
+      "request_id": "f88de94f-50aa-4b94-b956-945fa24ee3fb"
+    }
+  ],
+  "late_consume_created": 0,
+  "notification_task_version_unchanged": true
+}
