@@ -2194,3 +2194,425 @@ def test_preflight_write_auth_precedes_invalid_json(application, identity):
         assert uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
         assert uow.gateway.count("idempotency_requests", {"idempotency_key": key}) == 0
         assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+
+
+def _reason_write(client, factory, tokens, pid, iid, task, kind, reason, key):
+    if kind == "iteration":
+        iteration = request(
+            client, "listIterations", token=tokens["manager"], project_id=pid, expect=200
+        ).json()["data"]["items"][0]
+        operation, path = "changeIteration", {"iteration_id": iid}
+        body = {"expected_version": iteration["version"], "plan": iteration["plan"]}
+    else:
+        operation, path = "changeTaskPlan", {"task_id": task["id"]}
+        body = {"expected_version": task["version"], "plan": PLAN}
+        if kind == "rework":
+            # Explicit synthetic terminal fixture, not an end-to-end release history.
+            with factory() as uow:
+                uow.gateway.update("tasks", {"id": task["id"]}, {"state": 7})
+            operation = "transitionTask"
+            body = {"expected_version": task["version"], "action": 9, "new_plan": PLAN}
+    body.update(reason=reason, evidence=EVIDENCE)
+    args = {"token": tokens["manager"], "project_id": pid, "body": body, "key": key, **path}
+    return operation, args, request(client, operation, **args, expect=200)
+
+
+@pytest.mark.parametrize("kind", ["plan", "rework", "iteration"])
+def test_schedule_reason_new_write_atomic_and_replay(application, kind):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    prefix = "2026-10-24\nchangeTaskPlan <b>原文</b> "
+    reason = prefix + "理" * (2000 - len(prefix))
+    operation, args, response = _reason_write(
+        client, factory, tokens, pid, iid, task, kind, reason, uuid4().hex
+    )
+    with factory() as uow:
+        g = uow.gateway
+        audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+        schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+        assert [d for d in audit["after_values"] if d["field"] == "reason"] == [
+            {"field": "reason", "value": reason}
+        ]
+        assert schedule["reason"] == reason and schedule["changed_at"] == audit["created_at"]
+        before = {
+            table: g.rows(table, {"project_id": pid})
+            for table in ("audit_events", "schedule_changes", "outbox_events", "decisions")
+        }
+    replay = request(client, operation, **args, expect=200)
+    assert replay.json()["meta"]["replayed"] and replay.json()["data"] == response.json()["data"]
+    result = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"page_size": 100},
+        expect=200,
+    ).json()["data"]
+    saved = next(a for a in result["items"] if a["id"] == audit["id"])
+    assert saved["after"] == audit["after_values"]
+    with factory() as uow:
+        assert {table: uow.gateway.rows(table, {"project_id": pid}) for table in before} == before
+
+
+def _legacy_reason_fixture(client, factory, tokens, pid, task):
+    from copy import deepcopy
+
+    changed = request(
+        client,
+        "changeTaskPlan",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": task["version"],
+            "plan": PLAN,
+            "reason": "2026-10-24\nchangeTaskPlan <literal> historical reason",
+            "evidence": EVIDENCE,
+        },
+        expect=200,
+    )
+    with factory() as uow:
+        audit = uow.gateway.get("audit_events", changed.json()["data"]["audit_id"])
+        schedule = uow.gateway.rows("schedule_changes", {"task_id": task["id"]})[0]
+    legacy = deepcopy(audit)
+    legacy.pop("id")
+    legacy["after_values"] = [d for d in legacy["after_values"] if d["field"] != "reason"]
+    return legacy, schedule
+
+
+def _check_legacy_reason_cases(client, factory, tokens, pid, task):
+    from copy import deepcopy
+    from datetime import timedelta
+
+    legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+    variants = {}
+    for name in (
+        "exact",
+        "actor",
+        "time",
+        "from",
+        "to",
+        "expected",
+        "task_version",
+        "missing_plan",
+        "duplicate_plan",
+        "plan_text",
+        "numeric_spelling",
+        "evidence",
+        "non_plan",
+        "reject",
+        "iteration",
+        "full50",
+        "existing",
+        "duplicate_reason",
+        "unrelated_duplicate",
+    ):
+        row = deepcopy(legacy)
+        row["request_id"] = "reason-fixture-" + uuid4().hex
+        before, after = row["before_values"], row["after_values"]
+
+        def replace(side, field, value):
+            next(d for d in side if d["field"] == field)["value"] = value
+
+        if name == "actor":
+            row["actor_id"] += 1
+        elif name == "time":
+            row["created_at"] += timedelta(microseconds=1)
+        elif name in ("from", "to"):
+            replace(before if name == "from" else after, "schedule_version", "3")
+        elif name == "expected":
+            row["expected_version"] += 1
+        elif name == "task_version":
+            replace(after, "version", "3")
+        elif name == "missing_plan":
+            before.pop()
+        elif name == "duplicate_plan":
+            after.append(deepcopy(after[-1]))
+        elif name == "plan_text":
+            replace(after, "delay_contingency", "Another plan")
+        elif name == "numeric_spelling":
+            replace(after, "estimated_hours", "8")
+        elif name == "evidence":
+            row["evidence"] = []
+        elif name == "non_plan":
+            row["operation_id"] = "transitionTask"
+            before.append({"field": "state", "value": "2"})
+            after.append({"field": "state", "value": "3"})
+        elif name == "reject":
+            row.update(outcome=2, reason_code=13)
+        elif name == "iteration":
+            row.update(operation_id="changeIteration", task_id=None)
+        elif name == "full50":
+            after.extend({"field": f"legacy_{n}", "value": "keep"} for n in range(50 - len(after)))
+        elif name == "unrelated_duplicate":
+            after.extend(
+                [{"field": "legacy_note", "value": "one"}, {"field": "legacy_note", "value": "two"}]
+            )
+        elif name in ("existing", "duplicate_reason"):
+            row["created_at"] += timedelta(seconds=1)
+            after.append({"field": "reason", "value": "Existing literal reason"})
+            if name == "duplicate_reason":
+                after.append({"field": "reason", "value": "Second literal reason"})
+        with factory() as uow:
+            identifier = uow.gateway.insert("audit_events", row)
+        variants[name] = identifier, row
+    page = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"page_size": 100},
+        expect=200,
+    ).json()["data"]
+    found = {a["id"]: a for a in page["items"]}
+    for name, (identifier, row) in variants.items():
+        expected = row["after_values"] + (
+            [{"field": "reason", "value": schedule["reason"]}]
+            if name in ("exact", "unrelated_duplicate")
+            else []
+        )
+        assert found[identifier]["after"] == expected, name
+        with factory() as uow:
+            persisted = uow.gateway.get("audit_events", identifier)
+            assert {k: v for k, v in persisted.items() if k != "id"} == row
+    with factory() as uow:
+        assert uow.gateway.get("schedule_changes", schedule["id"]) == schedule
+
+
+def test_schedule_reason_legacy_exact_and_mismatched_history(application):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    _check_legacy_reason_cases(client, factory, tokens, pid, task)
+
+
+def _check_reason_page_bound(client, factory, tokens, pid, task, monkeypatch):
+    from copy import deepcopy
+
+    from t44.persistence.rows import RowsGateway
+
+    legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+    with factory() as uow:
+        g = uow.gateway
+        task_row = g.get("tasks", task["id"])
+        task_row.pop("id")
+        count = g.count("audit_events", {"project_id": pid})
+        # Audit GET has no sort parameter. Align the next 100-row ascending page.
+        padding = (-count) % 100
+        for _ in range(padding):
+            g.insert(
+                "audit_events",
+                {
+                    **deepcopy(legacy),
+                    "request_id": uuid4().hex,
+                    "operation_id": "createTask",
+                    "before_values": [],
+                    "after_values": [],
+                    "expected_version": None,
+                },
+            )
+        page_number = (count + padding) // 100 + 1
+        for _ in range(100):
+            tid = g.insert("tasks", task_row)
+            row = {**deepcopy(schedule), "task_id": tid}
+            row.pop("id")
+            g.insert("schedule_changes", row)
+            audit = {**deepcopy(legacy), "task_id": tid, "request_id": uuid4().hex}
+            g.insert("audit_events", audit)
+        before = g.rows("audit_events", {"project_id": pid})
+    calls = []
+    original = RowsGateway.task_schedule_changes
+
+    def read(g, project_id, pairs):
+        calls.append((project_id, pairs))
+        return original(g, project_id, pairs)
+
+    monkeypatch.setattr(RowsGateway, "task_schedule_changes", read)
+    first = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"page_size": 100, "page": page_number},
+        expect=200,
+    ).json()["data"]
+    assert len(first["items"]) == 100 and first["total"] == len(before)
+    assert len(calls) == 1 and calls[0][0] == pid and len(calls[0][1]) == 100
+    assert len(set(calls[0][1])) == 100
+    assert all(
+        a["after"][-1] == {"field": "reason", "value": schedule["reason"]} for a in first["items"]
+    )
+    offset = (page_number - 1) * 100
+    assert [a["id"] for a in first["items"]] == sorted(a["id"] for a in before)[
+        offset : offset + 100
+    ]
+    calls.clear()
+    first_page = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"page_size": 100, "page": 1},
+        expect=200,
+    ).json()["data"]
+    assert first_page["total"] == first["total"] and calls == []
+    assert not ({a["id"] for a in first_page["items"]} & {a["id"] for a in first["items"]})
+    with factory() as uow:
+        assert uow.gateway.rows("audit_events", {"project_id": pid}) == before
+    return legacy, schedule
+
+
+def test_schedule_reason_100_row_current_page_uses_one_exact_batch(application, monkeypatch):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    _check_reason_page_bound(client, factory, tokens, pid, task, monkeypatch)
+
+
+def test_schedule_reason_failed_write_rolls_back_reason_and_plan(application, monkeypatch):
+    from t44.persistence.errors import PersistenceUnavailable
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    with factory() as uow:
+        original_task = uow.gateway.get("tasks", task["id"])
+        original_outbox = uow.gateway.rows("outbox_events", {"task_id": task["id"]})
+    runtime = client.app.state.runtime
+    audit = runtime.audit
+
+    def fail_success(g, call, error=None):
+        if call.operation == "changeTaskPlan" and error is None:
+            raise PersistenceUnavailable("Controlled post-schedule failure")
+        return audit(g, call, error)
+
+    monkeypatch.setattr(runtime, "audit", fail_success)
+    response = request(
+        client,
+        "changeTaskPlan",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": task["version"],
+            "plan": {**PLAN, "delay_contingency": "Must not persist changed plan"},
+            "reason": "Must roll back",
+            "evidence": EVIDENCE,
+        },
+        expect=503,
+    )
+    with factory() as uow:
+        assert uow.gateway.get("tasks", task["id"]) == original_task
+        assert uow.gateway.rows("outbox_events", {"task_id": task["id"]}) == original_outbox
+        assert not uow.gateway.rows("schedule_changes", {"task_id": task["id"]})
+        rejected = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert rejected["outcome"] == 2 and rejected["after_values"] == []
+
+
+def test_schedule_reason_authorization_and_empty_page_do_not_load_history(application, monkeypatch):
+    from t44.persistence.rows import RowsGateway
+
+    client, _ = application
+    tokens, pid, _ = setup_project(client)
+    calls = []
+
+    def forbidden_batch(*args):
+        calls.append(1)
+        raise AssertionError("History read was not needed/authorized")
+
+    monkeypatch.setattr(RowsGateway, "task_schedule_changes", forbidden_batch)
+    valid = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": 4294967295},
+        expect=200,
+    )
+    assert valid.json()["data"]["items"] == [] and valid.json()["data"]["total"] == 0
+    rejected = request(
+        client, "listProjectAuditEvents", token=tokens["outsider"], project_id=pid, expect=403
+    )
+    assert rejected.json()["code"] == "PROJECT_ACCESS_DENIED" and calls == []
+
+
+def test_schedule_reason_malformed_candidate_plan_is_unverifiable_not_guessed(
+    application, monkeypatch
+):
+    from copy import deepcopy
+
+    from t44.persistence.rows import RowsGateway
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+    legacy["request_id"] = uuid4().hex
+    with factory() as uow:
+        identifier = uow.gateway.insert("audit_events", legacy)
+    # Controlled returned-payload corruption only; original database rows stay unchanged.
+    for bad in (
+        None,
+        {},
+        {**schedule["before_plan"], "unexpected": "extra"},
+        {**schedule["before_plan"], "estimated_hours": True},
+        {**schedule["before_plan"], "buffer_hours": "1.0"},
+        {**schedule["before_plan"], "planned_start": "0001-01-01T00:00:00Z"},
+    ):
+
+        def malformed(_g, _project_id, _pairs, plan=bad):
+            return [{**deepcopy(schedule), "before_plan": plan}]
+
+        monkeypatch.setattr(RowsGateway, "task_schedule_changes", malformed)
+        response = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in response["items"] if row["id"] == identifier)
+        assert record["after"] == legacy["after_values"]
+    with factory() as uow:
+        assert uow.gateway.get("schedule_changes", schedule["id"]) == schedule
+
+
+@pytest.mark.parametrize("legacy_format", ["integer_hours", "short_utc"])
+def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
+    application, monkeypatch, legacy_format
+):
+    from copy import deepcopy
+
+    from t44.persistence.rows import RowsGateway
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+    legacy["request_id"] = uuid4().hex
+    if legacy_format == "integer_hours":
+        field, value, text = "estimated_hours", 8, "8"
+    else:
+        field = "planned_start"
+        value = text = schedule["before_plan"][field].replace(".000000Z", "Z")
+    next(d for d in legacy["before_values"] if d["field"] == field)["value"] = text
+    with factory() as uow:
+        identifier = uow.gateway.insert("audit_events", legacy)
+
+    # This is synthetic identical alternate spelling, not an observed legacy database format.
+    def old_format(_g, _project_id, _pairs):
+        return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+
+    monkeypatch.setattr(RowsGateway, "task_schedule_changes", old_format)
+    result = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": task["id"]},
+        expect=200,
+    ).json()["data"]
+    record = next(row for row in result["items"] if row["id"] == identifier)
+    assert record["after"] == legacy["after_values"]

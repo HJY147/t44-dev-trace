@@ -1293,3 +1293,148 @@ def test_preflight_real_mysql_rejection_closes_before_fresh_audit(real_task, mon
     assert (records[0]["commits"], records[0]["rollbacks"]) == (
         (0, 1) if failure == "input" else (1, 0)
     )
+
+
+def test_real_mysql_schedule_reason_exact_and_mismatched_history(real_task):
+    client, factory, _, tokens, pid, _, task = real_task
+    _http._check_legacy_reason_cases(client, factory, tokens, pid, task)
+
+
+def test_real_mysql_schedule_reason_100_row_page_has_one_select(real_task, monkeypatch):
+    from sqlalchemy import event
+
+    client, factory, _, tokens, pid, _, task = real_task
+    engine = factory._sessions.kw["bind"]
+    selects = []
+
+    def statement(_connection, _cursor, sql, _parameters, _context, _many):
+        if sql.lstrip().upper().startswith("SELECT") and "FROM schedule_changes" in sql:
+            selects.append(1)
+
+    event.listen(engine, "before_cursor_execute", statement)
+    try:
+        _http._check_reason_page_bound(client, factory, tokens, pid, task, monkeypatch)
+    finally:
+        event.remove(engine, "before_cursor_execute", statement)
+    # One fixture SELECT, then exactly one page enrichment SELECT for 100 distinct pairs.
+    assert len(selects) == 2
+
+
+@pytest.mark.fault
+def test_real_mysql_schedule_reason_batch_failure_closes_before_rejection(real_task, monkeypatch):
+    from t44.persistence.errors import PersistenceUnavailable
+    from t44.persistence.rows import RowsGateway
+
+    client, factory, _, tokens, pid, _, task = real_task
+    legacy, _ = _http._legacy_reason_fixture(client, factory, tokens, pid, task)
+    legacy["request_id"] = "synthetic-legacy-" + uuid4().hex
+    with factory() as uow:
+        identifier = uow.gateway.insert("audit_events", legacy)
+    runtime = client.app.state.runtime
+    created, failed, audits = [], [], []
+
+    def tracked_factory():
+        uow = factory()
+        created.append(uow)
+        return uow
+
+    def unavailable(g, _project_id, _pairs):
+        owner = next(uow for uow in created if uow._gateway is g)
+        failed.append(owner)
+        g._failed()
+        raise PersistenceUnavailable("Controlled bounded history read failure")
+
+    audit = runtime.audit
+
+    def rejection(g, call, error=None):
+        if error and call.operation == "listProjectAuditEvents" and failed:
+            assert failed[-1]._state == "closed" and failed[-1]._session is None
+            assert g is not failed[-1]._gateway
+            audits.append(call.request_id)
+        return audit(g, call, error)
+
+    monkeypatch.setattr(runtime, "factory", tracked_factory)
+    monkeypatch.setattr(runtime, "audit", rejection)
+    monkeypatch.setattr(RowsGateway, "task_schedule_changes", unavailable)
+    response = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": task["id"]},
+        expect=503,
+    )
+    assert response.json()["code"] == "DEPENDENCY_UNAVAILABLE"
+    assert audits == [response.json()["request_id"]] and len(failed) == 1
+    with factory() as uow:
+        saved = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert saved["outcome"] == 2 and saved["request_id"] == audits[0]
+        unchanged = uow.gateway.get("audit_events", identifier)
+        assert {k: v for k, v in unchanged.items() if k != "id"} == legacy
+
+
+@pytest.mark.parametrize("kind", ["plan", "rework", "iteration"])
+def test_real_mysql_schedule_reason_new_write_and_replay_are_atomic(real_task, kind):
+    client, factory, _, tokens, pid, iteration, task = real_task
+    prefix = "2026-10-24\nchangeTaskPlan <literal> "
+    reason = prefix + "理" * (2000 - len(prefix))
+    operation, args, response = _http._reason_write(
+        client, factory, tokens, pid, iteration["id"], task, kind, reason, uuid4().hex
+    )
+    with factory() as uow:
+        g = uow.gateway
+        audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+        schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+        assert [entry for entry in audit["after_values"] if entry["field"] == "reason"] == [
+            {"field": "reason", "value": reason}
+        ]
+        assert schedule["reason"] == reason and schedule["changed_at"] == audit["created_at"]
+        original = {
+            table: g.rows(table, {"project_id": pid})
+            for table in ("audit_events", "schedule_changes", "outbox_events", "decisions")
+        }
+    replay = request(client, operation, **args, expect=200)
+    assert replay.json()["meta"]["replayed"] and replay.json()["data"] == response.json()["data"]
+    with factory() as uow:
+        assert {
+            table: uow.gateway.rows(table, {"project_id": pid}) for table in original
+        } == original
+
+
+@pytest.mark.fault
+def test_real_mysql_schedule_reason_failed_write_rolls_back_all_changes(real_task, monkeypatch):
+    from t44.persistence.errors import PersistenceUnavailable
+
+    client, factory, _, tokens, pid, _, task = real_task
+    with factory() as uow:
+        original = uow.gateway.get("tasks", task["id"])
+        outbox = uow.gateway.rows("outbox_events", {"task_id": task["id"]})
+    runtime = client.app.state.runtime
+    audit = runtime.audit
+
+    def fail_success(g, call, error=None):
+        if call.operation == "changeTaskPlan" and error is None:
+            raise PersistenceUnavailable("Controlled post-schedule write failure")
+        return audit(g, call, error)
+
+    monkeypatch.setattr(runtime, "audit", fail_success)
+    response = request(
+        client,
+        "changeTaskPlan",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": task["version"],
+            "plan": {**PLAN, "delay_contingency": "Must roll back"},
+            "reason": "Must roll back",
+            "evidence": EVIDENCE,
+        },
+        expect=503,
+    )
+    with factory() as uow:
+        assert uow.gateway.get("tasks", task["id"]) == original
+        assert uow.gateway.rows("outbox_events", {"task_id": task["id"]}) == outbox
+        assert not uow.gateway.rows("schedule_changes", {"task_id": task["id"]})
+        saved = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert saved["outcome"] == 2 and saved["after_values"] == []

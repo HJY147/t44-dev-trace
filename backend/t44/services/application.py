@@ -5,6 +5,7 @@ from t44.contracts import OPERATIONS, violations
 from .codes import ERROR_CODES, Action
 from .common import SCHEMAS, model, page, plan_values
 from .errors import require
+from .history import project_reasons
 from .projects import Projects
 from .reviews import Reviews
 from .tasks import Tasks
@@ -133,7 +134,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
             "project_id": c.project_id,
             **{k: v for k, v in c.query.items() if k in ("task_id", "outcome")},
         }
-        return page(
+        result = page(
             g,
             "audit_events",
             where,
@@ -146,6 +147,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
                 reason_code=ERROR_CODES[row["reason_code"]] if row["reason_code"] else None,
             ),
         )
+        return project_reasons(g, c.project_id, result)
 
     def listMyNotifications(self, g, c):
         require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
