@@ -28,3 +28,15 @@
 `<backend-venv-python> tmp/backend/955_perf_profile.py --execute-stage-b --mode orchestrate --seconds 3 --credentials <既有0600profile-credentials.json> --output <ignored本岗新目录>`
 
 实际argv无DSN；外围捕获exit与UTC、占用预检和生产字节核验，最终只查自有18083是否关闭。不启动930/870，不调SQL/锁/池/线程或生产，不把缺失503记已定位。结果若完整则离线按request_id关联client/server、nearest-rank P95、逐请求相同分母的phase均值/CPU与分类cProfile；若controller失败保留原件并仅解释可核子阶段。所有结论限定一次3秒开发诊断。
+
+## 原批失败及明确续跑准入（原结果不改）
+
+231445d工具在22:35:01.756–22:35:19.146 UTC唯一整批exit1。baseline975/1562/1229全有效；timings-1的2501次非JSON500+2501次连接异常均在endpoint/runtime之前。FastAPI0.161.1真实run_endpoint_function将`_run_sync_endpoint`作为位置参，并转发`function=dependant.call, arguments=values`；本工具新包装以function为首参错误截获keyword，产生TypeError，不是产品500/503。静态检查只证实模块入口存在，没核完整调用签名，是本岗AI工具错误。
+
+总协调收到原失败后明确准入（非重复整批）：
+
+> 同意先保存这次真实工具失败，明确0进入runtime、不是产品500/503；baseline三段完成不重复。工具首参位置专用修复先commit，离线合成一次真实兼容FastAPI转发形态（含function=关键词和arguments=）验证透明调用/ContextVar，不能只写与实现相同的简化调用。如果证明后还有时间，授权仅继续原未完成timings1/8/32各3秒及profile3类各单次，保留原整批exit1不改；使用显式continuation，跳过bootstrap/sanity/baseline已完成范围。先把续跑设计/受限生命周期写入同一设计append并commit再执行一次；新失败保留停止，不再整批刷。
+
+仅工具包装首参改为`func, /`，其它keyword原样交给原FastAPI `_run_sync_endpoint`。先commit，再离线通过真实FastAPI `run_endpoint_function(Dependant(...),values,is_coroutine=False)`调用一次合成endpoint，断言原返回值、恰1派发和线程中ContextVar同一record；仅进程内AnyIO线程，不发HTTP/SQL，不启动服务。失败则停止。
+
+成功后新增显式`--continue-observation --fixture <原私密fixture>`，orchestrate只创建timings/profile服务、只跑timings1/8/32各3秒及profile1的三类别单请求，不再bootstrap/sanity/baseline、无新增业务fixture写。沿用原必要新增项目44/task6004，Token只私密读取。新的私密output必须不存在、独立完整receipt/actual import hash、160秒上限及finally收尾保持。启动前再核18083空闲/本库无其它连接，异常停止，不第三批。原exit1原件、原工具SHA和本次修订SHA分别绑定；续跑成功不改称原批成功。

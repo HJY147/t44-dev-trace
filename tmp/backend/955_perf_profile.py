@@ -36,11 +36,12 @@ def orchestrate(args, source_sha, sources):
         "argv": sys.argv,
         "started_at": datetime.now(UTC).isoformat(),
         "duration_limit_seconds": 160,
+        "continuation_observation_only": args.continue_observation,
         "commands": [],
         "servers": [],
     }
     command = [sys.executable, str(Path(__file__).resolve()), "--execute-stage-b"]
-    fixture = args.output / "bootstrap/fixture.json"
+    fixture = args.fixture if args.continue_observation else args.output / "bootstrap/fixture.json"
 
     def client(name, *options):
         argv = [*command, *options, "--output", str(args.output / name)]
@@ -67,7 +68,12 @@ def orchestrate(args, source_sha, sources):
         return data
 
     try:
-        for mode in ("baseline", "timings", "profile"):
+        modes = (
+            ("timings", "profile")
+            if args.continue_observation
+            else ("baseline", "timings", "profile")
+        )
+        for mode in modes:
             try:
                 with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
                     raise RuntimeError("Diagnostic port is already occupied")
@@ -387,16 +393,16 @@ def instrument(app, engine, output, profile):
     contracts.validator = measured("schema_construct", contracts.validator)
     dispatch = fastapi.routing.run_in_threadpool
 
-    async def observed_dispatch(function, *args, **kwargs):
+    async def observed_dispatch(func, /, *args, **kwargs):
         record = _RECORD.get()
         submitted = time.perf_counter_ns()
 
-        @functools.wraps(function)
+        @functools.wraps(func)
         def entered(*inner_args, **inner_kwargs):
             if record is not None:
                 record["endpoint_dispatch_count"] += 1
                 record["endpoint_dispatch_wait_ns"] += time.perf_counter_ns() - submitted
-            return function(*inner_args, **inner_kwargs)
+            return func(*inner_args, **inner_kwargs)
 
         return await dispatch(entered, *args, **kwargs)
 
@@ -537,6 +543,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--credentials", type=Path)
     parser.add_argument("--fixture", type=Path)
+    parser.add_argument("--continue-observation", action="store_true")
     parser.add_argument("--concurrency", type=int, choices=(1, 8, 32), default=1)
     parser.add_argument("--max-requests", type=int, default=0)
     args = parser.parse_args()
@@ -544,9 +551,15 @@ def main():
         parser.error("Requires explicit stage-B execution and a 1..120 second diagnostic window")
     if args.mode == "orchestrate" and args.seconds > 10:
         parser.error("Orchestrated diagnostic samples must be 1..10 seconds")
-    if (args.mode in ("bootstrap", "orchestrate") and args.credentials is None) or (
-        args.mode == "client" and args.fixture is None
-    ):
+    if args.continue_observation and (args.mode != "orchestrate" or args.fixture is None):
+        parser.error(
+            "Observation continuation requires orchestrate and an existing private fixture"
+        )
+    if (
+        args.mode in ("bootstrap", "orchestrate")
+        and not args.continue_observation
+        and args.credentials is None
+    ) or (args.mode == "client" and args.fixture is None):
         parser.error("Bootstrap requires credentials; client requires a private fixture")
 
     import uvicorn
