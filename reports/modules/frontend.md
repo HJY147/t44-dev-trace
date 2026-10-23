@@ -50,3 +50,8 @@
 - 实际prompt、WORKLOG、handoff与GitHub评论正文齐；原C-P1/C-P2/通知即时resize失败均保持旧阶段事实。
 - Chrome与本岗5173已关闭；无独立复测/正式性能/全面安全或Rabbit成功链结论。
 - 后续契约演进和资源深链需求另派；本轮不以开发回归撤销原独立失败/阻塞。
+
+## 米咖玻璃设计阶段（ROLE-frontend-WARM-GLASS-v1）
+- 基于5815a4d，按用户要求先做OpenDesign官方本地技能/模板驱动的设计；来源固定e03d5c23，非桌面/MCP调用。DESIGN、来源与Apache许可在docs/ui/warm-glass。
+- 原型包含登录、工作台、详情和表单错误；合成数据醒目标识，不接API。1440/390的8图已看，布局与示意交互无错误。内部五维自评不算独立审核。
+- 此checkpoint生产源码未改；下一步映射Vue/ElementPlus视觉，保留请求、权限、状态、错误、通知双计数。实际产品测试和真实业务浏览器检查尚未执行。
