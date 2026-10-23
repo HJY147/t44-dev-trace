@@ -16,3 +16,15 @@ ROLE-frontend-INDEPENDENT-UI-FIX-v1：固定前端岗继续。根目录 /Users/y
 ## 阶段结束实际追加派工
 
 收到。请先阶段commit/push最小修复+原失败/3pass日志+本岗状态，明确全套/覆盖/build/浏览器未跑，然后本轮结束释放slot，避免纯等待占并发。诊断quiet结束后我会用followup_task续同一岗执行必要完整FE验证，不另换上下文。资源深链能力边界写公开本岗报告（当前没有项目/任务资源URL，只区域路由），不编造修复。根会先集成你的明确阶段产物并保留未验证状态。
+
+## 续派验证原文
+
+ROLE-frontend-INDEPENDENT-UI-FIX-v1续派验证：quiet已实际结束，当前BE无诊断服务/负载，文档在LO串行渲染（非性能窗口），可做必要FE验证。你的f654最小修复root已合入，仍只开发3目标case通过，全套未据本地声称。请先查f654准确CI，若完整27用例/typecheck/build/全src覆盖已真正绿且源码未新改，可直接归档原CI证据，不为同SHA重复跑；若CI未覆盖/失败再跑对应必要检查。原3先红后绿日志不改。
+真实浏览器双计数需要18080的新准确backend和实际通知fixture。我现在正准备把root拥有的旧dev API18080从b49替换为含IAT01～05的固定快照（t44_dev、DDL不变），不会动tester18081/18082/5174。浏览器写之前等我发ready SHA/metadata；你可先CI/文档轻量工作。沿用本岗958工具/根私密账号，不写新test文件；如需新编号先申请。你自己设计通过公开API创建新通知fixture，root可签发限定dev项目的服务token并用真实messaging进程broker失败fallback落站内通知。请告诉我选用已有专属dev项目ID（之前10）和何时事件就绪，我配合，不直接SQL伪造通知。计数测试须读/处理独立、完整服务端count、刷新/错误/项目切换，不改任务状态来假演示。
+新用户D005刚采用容量生命周期规则，root5fb有提案且技术审查中，本轮不要改冻结11/引入1.1逻辑，继续精确f654 UI验证；以后契约演进另派。现仍无任务资源URL的公开边界保留。所有日志/报告/handoff/真实prompt和GitHub阶段交流更新，只有实际browser证据到位才写通过，不称独立复测。
+
+## 实际dev就绪与worker回执原文
+
+Dev ready：18080新API PID34045，固定源02ecdea9ced90cd46cbca898f123d6409f45ba80，backend字节等价3b6dab5（IAT01～05已修，runtime契约仍1.0.0，D005/D006未实现）。t44_dev重复迁移18/226通过，旧root14985已正常停；没有触碰tester服务/库。中性metadata root .agent-worktrees/.runtime/dev-api.json，公开receipt records/validation/dev-api-runtime-v2.json（待root commit）。普通账号仍根 .runtime/api-demo-credentials.json 0600、实际字段沿用旧；project10限定新service token已签到 .runtime/frontend-counts-service.json 0600，仅escalation:write/project10，session_id在metadata，不打印token。可起你自己的5173/headless并用958创建新超期task/升级事件，回报event_id/task_id和大致created_at；root再真实messaging --once触发fallback，不SQL造通知。f654 CI27/92.79已确认归档，无需重复。
+
+真实worker就绪：t44_dev event179 status4终态fallback，已真实生成notifications5→recipient4、6→recipient5，均read_at=null/handled_at=null。task21前后保持state1/version2。用源02ec快照 python -m t44.messaging --once 真实连接本机13307失败后处理，未直接SQL写通知，原始cycle日志与receipt records/validation/frontend-counts-worker.json在root（待commit）。可继续公开API/真实5173 UI双计数验证，不重置旧通知。

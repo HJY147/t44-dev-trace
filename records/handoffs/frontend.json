@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "已发布独立UI计数缺陷修复：针对性checkpoint",
-  "implementation_status": "IAT-UI-v1-01已最小实现；针对3项开发回归通过，全套/构建/真浏览器待quiet窗口结束",
+  "stage": "IAT-UI-v1-01修复后开发验证完成：精确CI与真实双计数",
+  "implementation_status": "f654产品修复已完成；精确CI27全过/类型构建/全src覆盖已核验，真实新后端双计数浏览器通过；非独立复测",
   "artifacts": [
     {
       "path": "frontend/",
@@ -134,12 +134,24 @@
     {
       "path": "agents/frontend/iat-ui-01-targeted-after.log",
       "status": "修后3项针对性通过，非全套"
+    },
+    {
+      "path": "agents/frontend/iat-ui-ci-f654/",
+      "status": "原CI ZIP摘要校验、metadata、27测试/全19源码覆盖和类型构建log"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-browser/",
+      "status": "新真实fixture、升级响应、80HTTP双计数/任务不变/错误恢复与1440/390截图"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-runtime.json",
+      "status": "新dev SHA/端口/库/公开worker receipt哈希，无凭据"
     }
   ],
   "interfaces": [
     {
       "peer": "backend",
-      "status": "冻结1.0.0已实际对接，真HTTP七态闭环通过",
+      "status": "真实02ec快照18080（字节等价3b6dab5），IAT01～05修复；runtime1.0.0",
       "inputs": [
         "Bearer内存身份",
         "冻结operationId、schema和版本/证据",
@@ -150,18 +162,18 @@
         "403/409刷新、422字段提示",
         "最新权威任务与审计"
       ],
-      "evidence": "agents/frontend/application-real-browser-result.json"
+      "evidence": "agents/frontend/iat-ui-counts-runtime.json / iat-ui-counts-browser/counts-result.json"
     },
     {
       "peer": "messaging",
-      "status": "完整后端真实GET/read/handling已验证",
+      "status": "event179根真实故障worker生成新通知5/6；通知5先处理后阅读及总计通过",
       "inputs": [
         "个人通知分页、已读、处理说明与证据"
       ],
       "outputs": [
         "API权威已读/处理状态"
       ],
-      "boundary": "新task20/event173/notification3，read后仍未处理，显式handling后完成；三次GET任务state1/version2；不重置旧项，worker由根执行，非Rabbit成功链。"
+      "boundary": "不SQL伪造/不重置旧项；三次task21 state1/version2；非Rabbit成功链，worker由根执行。"
     },
     {
       "peer": "deployment",
@@ -292,15 +304,26 @@
     {
       "command": "stop own Vite5173 via Ctrl-C",
       "result": "预期exit130；Chrome均关闭，通知根可开始性能静默窗口"
+    },
+    {
+      "command": "gh run list --commit f654...; gh run view39948047446; download artifact12498618830 ZIP",
+      "result": "准确headSHA和success、原ZIPdigest匹配、27/27零skip、类型构建、19全源码分母92.79%；无重复本地全套"
+    },
+    {
+      "command": "958 counts-prepare/escalate/counts using new output directory",
+      "result": "真实task21/event179/notification5，80HTTP且exit0；计数1/1→1/0→0/0、task不变、scope/错误恢复通过"
+    },
+    {
+      "command": "stop own Vite5173 Ctrl-C",
+      "result": "exit130预期停止，Chrome关闭，未碰tester服务"
     }
   ],
   "results": [
-    "完整业务UI与同源客户端已实现",
-    "正式C-P1/C-P2修复；24项通过；19全src行92.19%、分支86.76%、函数83.78%",
-    "更新完整后端真实七态282 HTTP通过，pageerror0，只有预期403资源console",
-    "83条核实未用CSS删除(297→214行)，桌面/手机任务与手机通知PNG一致，业务/a11y保留",
-    "新通知3真实read后仍未处理→显式handling；3次GET task20 state1/version2不变",
-    "通知写运行后响应式同步断言失败保留；只读最终114HTTP全成功/零console，稳定390无横溢出"
+    "IAT-UI-v1-01独立双总计读取服务端；新3项先红后绿且原日志不变",
+    "精确f654原CI27/27零跳过、typecheck/build通过；全19src行92.79%、分支87.88%、函数84.68%，未重复本地跑",
+    "新18080真实浏览器80HTTP：notification5双计数1/1→1/0→0/0；task21三次state1/version2",
+    "当前本人/project scope切换/刷新与一次控制网络abort后的隐藏/恢复已验证；pageerror0，console仅注入ERR_FAILED1条",
+    "1440/390截图已看无横溢出；前端产品源码未在验证阶段改变"
   ],
   "unverified": [
     "覆盖率不代表断言完备；main/router仍0计入分母",
@@ -308,12 +331,11 @@
     "手机为headless viewport，非真机",
     "生产构建有约823kB chunk体积提示",
     "原写运行在业务断言之后的即时resize检查失败；最终只读复查通过，二者分开留证",
-    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证",
-    "本轮全套/覆盖/构建与修复后真实API UI待profile诊断quiet窗口结束"
+    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证"
   ],
   "questions": [
-    "全产品生产代码行数由总协调统一统计；本岗真实删除83未用规则，未改计数范围。",
-    "审核959复验由owner负责；本岗未改其断言，不设置审核通过。"
+    "资源深链目前未实现参数约定；若产品需要另立需求，不把环境阻塞当已证权限漏洞。",
+    "D005/D006后续契约技术审查中，本轮保持1.0.0，未改冻结11件。"
   ],
   "prompt_refs": [
     {
@@ -384,14 +406,15 @@
       "improvement_reason": "正式独立报告仅作缺陷输入；先复现再最小修复，保护private证据和诊断quiet窗口，不把开发回归当独立复测。"
     }
   ],
-  "updated_at": "2026-10-23T19:41:49+08:00",
+  "updated_at": "2026-10-23T20:12:57+08:00",
   "delivery": {
     "branch": "codex/frontend-app",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
     "base": "codex/team-bootstrap",
     "draft": true,
     "basis_commit": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
-    "status": "本轮最终提交见PR14 HEAD；只COMMENT，无APPROVE；已关闭本岗服务/浏览器",
-    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc"
+    "status": "产品源码不再改；本轮证据提交见PR14 HEAD，只有COMMENT无APPROVE",
+    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc",
+    "product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280"
   }
 }
