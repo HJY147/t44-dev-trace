@@ -367,3 +367,13 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 窄修后6新案+1原正常legacy相邻用例7/0failure/error/skip，after.log/xml，不能与旧18/504相加。严格Ruff/2format/Bandit、14hash及原986前缀核对通过；未跑MySQL/旧18/504全套/浏览器/服务/负载，无新依赖/配置。单生产文件固定cloc净+4，本Issue后端累计+99（不是全项目重数，规模仍失败）。
 - 产品先commit/push bcb0e1bbb1440df958a04e87afea0e5b015d2f17 [skip ci]给根/审核员，源码commit已含先行ad6设计/原prompt；本轮执行日志/总结在后纯证据提交seal。根已报告42243旧CI504绿/44文件完整分母，与HISTORY-EVIDENCE-01不通过并列，不推翻反例/移植为新源通过；根另调新源组合CI/专审，不为此重跑FE872原0549浏览器。
 - 窄修阶段Issue28 https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374617443 与Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374617903 已body-file发表/按准确comment ID修正prompt归档时序措辞并GET逐字回读。设计/prompt确在ad6先行，执行原件在后seal，不倒填；原源码/测试hash仍bcb0。审核员另报告bc5上同一原SQLite反例一次重放绿，操作者是审核员，限定结论由其本人提交，本岗不替写通过或重跑全套。
+
+## N07静态可行性与870离线C原型（无生产准入）
+
+- 新隔离树backend-source-budget-profile/分支codex/backend-source-budget-profile从cee7a574fb2061c76123070e304655b6c12db967建立，固定应用与bc5aef9c62393134582affb7a690acb33ac2b833逐字等同。只读固定cloc6307/缺1207、根source-budget-decision-options与M6函数I/O、本方源码，不读独立资料。实际prompt SOURCE-BUDGET-PROFILE-dispatch.md，先设计/N07一页提交84fee744再写870，不改生产/锁/规格/统计口径。
+- N07一页只量化旧未应用C文本55→45（-10，当前源hash仍同）；实际生产净省0，即使未来这10行全证明/落地也只到6297仍超1197。扫描run两处实际AST同14字段、通知分页有职责重叠，但helper/call/锁/COUNT/错误差异未成等价稿，不把毛片段/整大文件扣成净省。无1207可信方案，重大架构/课程范围由人回来决定，不压行/去类型守卫/移seed迁移/转计量根。
+- 锁与实际包jsonschema4.26.0/referencing0.37.0，查官方公开evolve/Registry及本机源；仅工具内根evolve，每次独立validator/generator，原型FormatChecker共享只读，非线程保证。870 static import不导入t44/不跑基准，首F401/B023/F821静态错误原log保留并窄修，Ruff/format后提交工具964f4bb4796c6bcfa546f3ccba157ce2c5b88515；静态边界初用bc5比整个spec目录检出基点已有协调RFC，改以cee核共享spec、bc5核应用，未使用无关内容。
+- 随后唯一opt-in执行exit0，总main墙0.350673s/CPU0.350167s，未触15s墙/软12硬15CPU。19有限样本完整错误数/原序前100(path,rule,message)全同，unknown local ref同异常failclosed，105错误确遍历105/只映射100。各模式570独立iter jobs/3450错误/30异常；SPEC/输入/checker集合未变。未测全38HTTP/线程/真实负载，未读凭据/发HTTP/SQL/起服务或外部进程负载。
+- 分段570次构造CPU生产3.670ms/C0.438ms，iter95.267/87.347ms，预建成本另列；构造占该合成两段3.7094%，不是HTTP整体占比。固定模式顺序/一次样本/105错误偏重，iter差异不当因果/真实P95收益。cProfile5轮95次的inclusive热点iter_errors/descend/ref重叠不能相加，完整安全相对行/函数原值raw.json。raw SHA91fad27a367f546f2e38d294f9ec4372bf3b6b23ab673955c5f966df39eacb0d，actualimport/hash与工具Git对象均核对。
+- 只形成result.md/summary.json建议，不优先以C解决正式P95/N07，也不宣全等价/线程安全。B/C生产仍未应用，14冻结/全部应用/锁/统计脚本未变，不为补样本重跑本批。等待根决定；本阶段作者/操作者为后端AI，不冒充学生手改/quota或独立通过。
+- 实际Issue3总结已body-file发表并GET逐字readback：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6375961904。原始结果只有这一次，随后仅离线计算3.7094%与写报告，不改样本/轮次、未再跑诊断或全CI。提交本轮证据后结束释放，等待根决定。
