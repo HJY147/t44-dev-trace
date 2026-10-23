@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
+  cacheDir: process.env.T44_VITE_CACHE_DIR ?? 'node_modules/.vite',
   plugins: [vue()],
   publicDir: fileURLToPath(new URL('./public', import.meta.url)),
   base: '/',

@@ -190,3 +190,25 @@
 - 本轮未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能，不将文档静态通过计为产品通过。API info.version/Meta.const及权威/运行副本1.1.0由backend完成，root负责需求/业务规则/AGENTS与新freeze父链，现均不代为声称完成。
 - 提示词岗真实问取原文：“ROLE-prompt_engineering-M4-REAL-PROCESS-v1 实际问取：请异步给本轮已发布真实prompt原文与C-P4/catalog修正、capacity生命周期设计/实现（若有）的产物→失败→修正→验证、完整SHA/Issue/PR/实际操作者。只需公开现成来源，不执行产品验证，不读独立测试私有资料；未完成/未回如实pending，不把AI改码记学生亲改。”已异步答复既有0e3e999/0a676ee真实prompt、原失败→修正→证据路径与Issue/PR，并明确当前capacity仅未提交文档、无本岗实现/测试；人的D005/D006选择与AI纠错改码分别记录，完稿后补最终SHA。
 - 本轮真实阶段评论已body-file发表：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327 ，正文capacity-v11-stage-comment.md；PR17按本次文档scope更新标题/正文并attach，未设审核通过。git diff对eac的backend/DDL/v1.json为空，确认无产品/旧freeze改动。
+
+## ROLE-database-DDL-AST-POC-v1：隔离研究进行中
+- 干净fast-forward正式freeze189dc4a3196be0fb84b753f23284f2566d823ea0；实际派工原文归档prompts/ROLE-database-DDL-AST-POC-v1.md。只改952隔离原型/本岗记录，未改生产、DDL/API、freeze或backend依赖/975。957要点仅使用root公开描述，未读原文件/独立私有资料。
+- 官方当前PyPI/release核为SQLGlot30.24.0（2026-10-20）、Python>=3.9、MIT，基础无强制依赖；官方文档明确parser宽松、非validator，MINOR也可破坏兼容。纯Pythonwheel按官方sha948882...验证后仅解包ignored runtime/database-ast-poc/package，未进入backend环境/锁；原元数据与setup日志保留。
+- 首次真实纯解析权威DDL得到18 CREATE/2 ALTER/226列/59CHECK。初版952矩阵run1为29通过/2差异，原失败保留；静态主源确认本岗adapter误把显式NULL的NotNullColumnConstraint(allow_null=True)当NOT NULL，已编辑修复，但尚未重跑。没有把这两个adapter失败说成库缺陷或生产问题。
+- root随后明确BE独占短性能诊断窗口；已报告无本地负载，暂停包安装/批解析/测试/DB/seed，现仅阅读失败/官方源与编辑原型，待root明确窗口结束再跑952。
+- root明确短诊断窗口结束后才恢复952；run2=36通过/1失败保留，run3=40/1，run4=46/1（各<1s轻量解析）。NULL adapter已更正，18/226及列/索引/FK/59CHECK/PK/表选项静态差分一致；仅余13处SQLGlot把IS NOT NULL生成为NOT x IS NULL导致旧checker无法解析，原old-CHECK-reference失败持续保留，不改生产旧checker迁就库。
+- 在952区分候选新AST自身59roundtrip稳定与混用旧parser的13文本不兼容；额外补unsigned/时间精度、索引type位置/排序、FK源/目标/库/动作、恒真/扩张/OR、字符串/函数/优先级及严格拒绝观察。不是一般SQL有效性/等价性证明，没有实际反射倒造预期。
+- 固定cloc2.10同文件函数片段：生产schema117/migrations321；旧可替换语法+构造上界171，新AST提取规范化114，完整Core assembler+type+接入保护尚估60–110，联合可能增加3–53行；CHECK-only潜在约39–46行亦未实现。line-estimate.json不算生产已删；实际节省0。
+- 最终建议不准入生产整对替换，不改依赖锁；研究report及可重复952CLI供root/reviewer决定。Ruff初次F401/I001原失败保留，仅952整理imports后通过，不为风格再刷矩阵；没有触碰975授权样式修复。
+- 本轮以body-file实际发表Issue4阶段说明：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045；正文ddl-ast-poc-stage-comment.md。PR17标题/正文改为本轮未准入POC范围并attach，保持draft。没有把952失败或BE其他集成失败改写为通过。
+
+## ROLE-database-SCAN-RUN-DEDUP-RFC-v1：联合预算净增1，否决实施
+- 从当时集成162305f888ac094e38448ef95d4748248ae57bfc独立创建codex/database-scan-dedup/worktree，读AGENTS、本岗/调度交接、既有架构审核和实际Rows/savepoint/UoW/scanner/facade；不读取独立未发布用例/报告，不联系测试实例。
+- 本轮明确先设计，不修改生产。草案保存agents/database/scan-run-rfc/candidate-v1.patch及candidate-v2.patch，ignored scratch内生成候选文本；helper不拥有UoW，只在传入g中处理原完整初值/唯一冲突savepoint/版本hash校验。scanner与API的查询顺序、重复后锁、返回投影及规则冲突错误保持明确区分。
+- 首次scratch Ruff未带项目配置，实际用了默认88列，顺带重排旧行；该计数314→346被否决，不能充当最终候选。重新取原源+限定方法，显式--config backend/pyproject.toml（100列）；最终真实固定cloc2.10：scans109→129，facade205→186，联合314→315/净增1；工具hash核对通过。不能只记facade减19行。
+- 最终候选还发现API duplicate后找不到run的内部异常由原IndexError变为StatementRejected，虽然当前Runtime都转INTERNAL_ERROR，仍未证明内部异常等价；不以广泛捕获StatementRejected掩盖问题。既已不省行，不再增加适配复杂度去维持该罕见旧分支。完整设计说明这份补丁不能直接投产。
+- git apply --check candidate-v2.patch退出0；两候选ast.parse通过；这只是补丁/语法检查，无pytest/MySQL/HTTP/MQ/seed/CI/覆盖率/性能运行，没有新增脚本和编号。生产/DDL/14冻结件/依赖/他岗源码和断言均不改。
+- 总协调明确接受净增1的否决建议、不批准实施，不必等待调度岗。当前实际生产节省0；旧28–47只是预估，另含tick/recoverable的旧建议不冒记本轮收益。root最新5dcb73c全局5980/超880为其报告，本岗不冒充全局新跑；git diff确认两目标文件与本基线相同。
+- 实发prompt原文及后续消息归档prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md；操作者为AI，不是学生改码/亲写研究。GitHub阶段沟通与最终SHA另随本轮收尾回执，不设置review成功。
+- 首次收尾git diff --check退出2，只报告两个原始.patch文件的空上下文行（标准unified diff以单个空格表示），没有执行后续stage/commit/push。保留原补丁逐字内容；后续仅对这两个原件路径做资料级空白检查排除，其他本岗文档继续完整diff检查；不是产品检查/门禁放宽。
+- 本轮设计提交6aeb7e67d90767b7408967a6782e13c569e9d423已push codex/database-scan-dedup；通过GitHub connector逐条真实发表Issue4/6，再用精确comment API GET读回，正文与本地逐字相同；回执github-post-receipts.json/github-readback.json。链接：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884, https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440。未另开实施PR或设置审核通过。

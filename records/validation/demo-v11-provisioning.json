@@ -1,0 +1,69 @@
+{
+  "prepared_at": "2026-10-23T14:56:50.186750+00:00",
+  "source_commit": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "database": "t44_demo_v11",
+  "snapshot": ".agent-worktrees/.runtime/demo-v11/source/5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "purpose": "User demo separate from independent SUT and data",
+  "commands": [
+    {
+      "arguments": [
+        "migrate",
+        "--database",
+        "t44_demo_v11"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"version\": 1, \"sha256\": \"c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4\", \"already_applied\": false, \"tables\": 18, \"columns\": 226, \"defects\": [], \"passed\": true}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-manager",
+        "--display-name",
+        "[synthetic] 演示_manager",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 1}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-developer",
+        "--display-name",
+        "[synthetic] 演示_developer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 2}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-reviewer",
+        "--display-name",
+        "[synthetic] 演示_reviewer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 3}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "seed-demo"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"already_seeded\": false, \"projects\": 40, \"tasks\": 6000, \"dependencies\": 9000, \"reviews\": 11400, \"decisions\": 3600, \"assessments\": 3600, \"states\": {\"6\": 2400, \"1\": 600, \"2\": 600, \"3\": 600, \"4\": 600, \"5\": 600, \"7\": 600}, \"manifest\": {\"version\": 1, \"seed\": 44, \"anchor_at\": \"2026-10-23T14:56:46+00:00\", \"projects\": 40, \"tasks\": 6000, \"dependencies\": 9000, \"records\": 15000, \"template_version\": 1, \"template_sha256\": \"4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199\", \"rule_version\": 1, \"rule_effective_at\": \"2026-10-23T05:33:29Z\", \"rule_decided_by\": 1, \"rules_sha256\": \"63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41\", \"artifact_revision\": \"a83fe2806a68ec8dc938748d623bf28c9a16b293\", \"synthetic\": true}, \"manifest_sha256\": \"002b12b829e3ff29509bc34a54ff26e48cd3f27322dea00de37ccf5118e02832\"}\n",
+      "stderr": ""
+    }
+  ],
+  "independent_databases_read_or_modified": false,
+  "private_files": "ignored demo-v11/environment.json and credentials.json 0600",
+  "process_started": false
+}

@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-23T14:57:59.960383+00:00",
+  "source_commit": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "web_url": "http://127.0.0.1:5173",
+  "api_url": "http://127.0.0.1:18080",
+  "api_pid": 50608,
+  "web_status": 200,
+  "synthetic_login_capabilities": [
+    {
+      "role": "manager",
+      "http_status": 200,
+      "contract_version": "1.1.0",
+      "request_id": "4b552e37-15ff-4ad0-bb58-14afadd4056b"
+    },
+    {
+      "role": "developer",
+      "http_status": 200,
+      "contract_version": "1.1.0",
+      "request_id": "bb495337-5439-40b8-9cf8-f89bfb88c5a8"
+    },
+    {
+      "role": "reviewer",
+      "http_status": 200,
+      "contract_version": "1.1.0",
+      "request_id": "843a7992-fd76-4eb3-afcd-b2f0246c8b19"
+    }
+  ],
+  "private_guide": ".submission-private/演示登录说明.md",
+  "guide_mode": "0o600",
+  "independent_runtime_or_data_modified": false,
+  "business_actions_executed": false,
+  "local_messaging": "No real local RabbitMQ; this demo launch starts API/web only. Hosted independent environment has real broker.",
+  "frontend_pid_after_cache_isolation": 50726,
+  "frontend_cache_dir": ".agent-worktrees/.runtime/demo-v11/vite-cache",
+  "frontend_restart_reason": "Avoid shared node_modules/.vite optimization cache with independent UI runtime",
+  "source_and_database_unchanged_during_cache_isolation": true,
+  "browser_smoke": "records/validation/demo-v11-browser-ready.json"
+}

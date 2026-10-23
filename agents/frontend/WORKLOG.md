@@ -125,3 +125,24 @@
 - 实际prompt文件records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md；只改本岗记录，不并写共享prompt ledger，完成后通知根。
 - root随后发布正式1.1 freeze189dc4a3196be0fb84b753f23284f2566d823ea0。先核对本岗未提交路径与incoming无交集后安全fast-forward，未stash/覆盖；authority SHA仍a77a5cd6，前述7项/类型针对同字节输入，无新增重复检查。未改14冻结文件/18review输入，旧f654浏览器不当作1.1实现验收。
 - Issue2真实阶段对接 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6365092584，正文先存contract-v11-stage-comment.md再body-file发布；PR14同步范围和历史cutoff后提交，只COMMENT不审核通过。
+
+## 2026-10-23T23:25:00+08:00｜ROLE-frontend-WARM-GLASS-v1｜先设计 checkpoint
+- 新建独立 codex/frontend-warm-glass worktree，基于5815a4d；根目录U017/U018未提交资料未动。实际读取官方OpenDesign固定e03d5c23的AGENTS、dashboard/critique模板、frontend-design/design-brief技能与apple/warm-editorial DESIGN，文件hash/Apache许可已记录。apple-hig/design-review只是引导stub，不声称完整运行，未启动App/MCP/Cloud。
+- 按用户米咖/玻璃/圆角优先覆盖上游通用色板与禁玻璃规则，先写DESIGN.md和合成数据可点击prototype.html；当前尚未改生产Vue/CSS。浏览器918已root分配，实际1440/390登录/工作台/详情/表单共8PNG逐张看过，无横向溢出/pageerror，登录示意/筛选/本地错误/Esc交互通过。
+- 内部自评critique.html分开记7/7/6/6/5；预览工具栏手机换行与浮层49px冲突、表单星号单行及原型无完整焦点陷阱如实列出，生产保留Element Plus位置与焦点管理，不能拿原型当真实业务验证。
+- 两次依赖路径glob因zsh no matches中止，改读已知绝对Playwright路径；一次functions.exec变量r重复声明使整段解析失败，无写入，随后以独立变量重试。均不是产品测试失败。
+- 原型检查命令：Node tmp/frontend/918_warm_glass_browser.mjs prototype，exit0；结果agents/frontend/warm-glass-browser/prototype/results.json。测试岗私有目录/端口/图片没有访问。
+
+## 2026-10-23T23:37:53.419133+08:00｜ROLE-frontend-WARM-GLASS-v1｜Vue导入与实际视检
+- 先设计326f971后实现840b1a88e6976f0ecfb0b0ba45676b208aae4d98；生产6文件235新增/170删除，其中CSS214→271物理行，其他是登录展示结构、data-state、暖咖favicon和Vite可选隔离cacheDir。未压缩源码凑行，源规模仍待root按原口径计数。API/权限/状态/CAS/幂等/通知业务未改。
+- 本地typecheck/既有27项及完整19源文件coverage通过：310/334=92.81%，分支687/782=87.85%，函数188/222=84.68%；后续仅CSS与检查脚本修正，最终build再含typecheck通过。CSS54.74kB/gzip10.00，JS825.22kB/gzip163.08；保留>500kB警告。
+- 自身5176明确独立cacheDir，授权manager凭据只内存读取。live-refined真实检查发现ElementPlus后加载同权重规则覆盖dialog边距/按钮圆角，长表单header越界；失败原JSON/PNG保留，限定body .el-dialog/theme权重并正文独立滚动修复，无新增!important。
+- live-verified检查错误匹配背景折叠的.record-detail隐藏项，30s超时；限定visible drawer后通过，不算产品缺陷。中间截图有Vue过渡未稳定的问题，最终capture等待两帧和有限动画完成；早期Playwright未知reducedTransparency参数未证明媒体生效，改CDP并实际matchMedia=true，原记录明确为中间证据。
+- 对比度计算原muted #82756a在paper/canvas为4.396/3.873，主动加深#77695d到5.216/4.594；不是完整WCAG认证。无backdrop支持fallback只源码检查，未伪造不支持引擎执行。
+- 最终live-stable 1440/390共18PNG亲自逐张看；40真实HTTP全200，仅2登录POST其余GET，无业务写。pageerror0、页面横溢出0；长form body849/1118滚动269、857/1829滚动972均到底且关闭可见；手机7tab可达/详情底部可读；初始焦点3px；通知0/0分别显示；减少透明度实匹配。
+- 观察原空表单字符串初始值为true，已仅交root请求后续排查initial/schema，视觉轮未越界改业务；没有传给独立tester。
+- Chrome finally关闭；自己5176Ctrl-C，pnpm实际exit1为主动停止，不写为exit130。一次误用/usr/bin/lsof路径127，后续不以此宣称端口检查成功；真实会话退出已确定。
+- 证据/当前源hash匹配840b1a8见warm-glass-validation.json；所有原失败/中间结果保留，不当独立验收、学生发现或手工测试。
+
+### 2026-10-24｜米咖阶段发布检查纠正
+- 63519c2前git diff --cached --check实际报构建/覆盖率日志尾空白，但shell仍执行了commit；不能记为该检查已通过。原始log.gz字节已在635保留，现在只规范公开可读log的行尾空白，并区分raw_sha256/readable_sha256；不改测试内容、结果或840产品。后续将检查与commit分开执行。

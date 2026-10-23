@@ -80,3 +80,13 @@ PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/
 59daa最终限定复核：F-C1仅description由owner精修，先OWNER_NOT_PROJECT_DEVELOPER后CAPACITY，权威/运行hash均a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f。129轻量结构项再次通过，31/38/130、18/226、旧v1历史保持；可生成新manifest，无本轮剩余语义阻断。manifest在该SHA尚不存在，产品源码/回归另审；仅只读owner1130设计脚本before/after原件并分清执行者，无本岗服务/DB/测试/产品gate。
 
 编号归档补记：按root正式分配954，静态脚本原样迁至`tmp/reviewer/954_capacity_freeze_static.py`，hash `fb5a755828a28764ca37e140951b4d39edbe1936b14f7808d19bfe1a80f98ca2` 与117a原文件相同，无断言变更/重跑；历史实际旧路径及结果保留。GitHub本轮Issue/PR COMMENT已实际发布并读回，回执后补归档，不影响117a作为冻结源审核证据。
+
+## 1.1实现复审（绑定4c20f32）
+
+D005/D006及公开IAT01–05、FE计数修复的限定源审查未发现新实质问题；50SQLite HTTP通过、原959两断言完成通过（exit元数据未保存）、通知3子项通过，原工具cwd错误保留。64源码等同集成415d，14freezehash吻合；CI394仅开发门禁。原C-P1/C-P2限定关闭，C-P3仍5973超873、正式性能/新独立未闭环，整体不通过。详reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md。
+
+跨岗候选仅契约校验默认RC单UoW，RFC hash8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a，静态设计无阻断，净+7行未应用、4/5/5查询与1acquire未实测，写路径不变；后续精确新SHA另审。真实prompt为ROLE-reviewer-V11-IMPLEMENTATION-v1，AI审核与AI工具纠错不计学生识别/亲改。
+
+## 单UoW实现限定复审（5dcb）
+
+仅Runtime净+7的契约校验分支与已审3187设计一致，限定无新阻断；原18专项和精确CI412均核原件，checkout整tree亦对应5dcb。本岗没有重跑测试/负载或创建918脚本。4/5/5查询各1acquire是功能性计数，延迟收益未测；5980超880、正式性能及独立仍未闭环，整体不通过。报告reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md，真实prompt ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1，后续新源另审。

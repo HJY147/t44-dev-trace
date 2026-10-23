@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { PropType } from 'vue'
 import { asArray, asRow, initial, label, resolve } from '../contract'
 import type { Json, Schema } from '../contract'
 import { display, options, workspace } from '../workspace'
 
-const props = withDefaults(defineProps<{ schema: Schema; modelValue: Json; name?: string; path?: string; errors?: Record<string, string> }>(), { name: '', path: '', errors: () => ({}) })
+const props = defineProps({
+  schema: { type: Object as PropType<Schema>, required: true },
+  modelValue: { type: null as unknown as PropType<Json>, required: true },
+  name: { type: String, default: '' },
+  path: { type: String, default: '' },
+  errors: { type: Object as PropType<Record<string, string>>, default: () => ({}) },
+})
 const emit = defineEmits<{ 'update:modelValue': [value: Json] }>()
 const part = computed(() => resolve(props.schema))
 const entries = computed(() => Object.entries(part.value.properties ?? {}))

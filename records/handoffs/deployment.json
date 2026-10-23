@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "完整应用部署联调完成；等待总协调整合/独立验收",
-  "implementation_status": "Compose/Docker/运维/CI已实现；托管Linux真实构建启动、凭据轮换、停写备份隔离恢复通过",
+  "stage": "中性托管Linux环境能力复核完成；独立harness待冻结执行",
+  "implementation_status": "既有部署/CI已实现；中性Linux环境已真实能力复核，未执行独立harness或profile",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -72,7 +72,14 @@
     "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
     "agents/deployment/integration-validation/run-39932416571/",
     "agents/deployment/integration-validation/run-39932723829/",
-    "agents/deployment/integration-final-comment.md"
+    "agents/deployment/integration-final-comment.md",
+    "deployment/acceptance/",
+    ".github/workflows/acceptance-environment.yml",
+    "tmp/deployment/953_acceptance_environment.py",
+    "agents/deployment/acceptance-environment-validation/",
+    "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
+    "agents/deployment/acceptance-environment-comment.md",
+    "agents/deployment/acceptance-environment-result-comment.md"
   ],
   "interfaces": [
     {
@@ -290,7 +297,9 @@
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
-    "未确认生产备份保留周期/异机加密介质/RPO/RTO；RabbitMQ卷可移植恢复与完整灾备未验证"
+    "未确认生产备份保留周期/异机加密介质/RPO/RTO；RabbitMQ卷可移植恢复与完整灾备未验证",
+    "独立harness尚未冻结/选择/执行，tester真实证书与报告加密取回待其后续执行",
+    "本次仅Rabbit stop/recover能力检查；没有独立pause/自动租期fault或正式profile/性能结论"
   ],
   "questions": [
     "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
@@ -352,9 +361,14 @@
       "id": "ROLE-deployment-INTEGRATION-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
       "reason": "基于已实现应用做真实Docker运行、私密凭据和备份恢复证据；统一tmp编号，保留严格全源码行覆盖率"
+    },
+    {
+      "id": "ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
+      "reason": "中性真实Linux能力和独立harness隔离，精确版本/受限控制/密文证据取回，不注入用例或绕main保护"
     }
   ],
-  "updated_at": "2026-10-23T09:39:11.297054+00:00",
+  "updated_at": "2026-10-23T13:32:21.058244+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -400,5 +414,37 @@
     "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100",
     "pr_final": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531",
     "archive_revision": "Final evidence/readability revision is resolved by actual Git commit; validated application SHA remains separate"
+  },
+  "acceptance_environment": {
+    "product_baseline_read": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "workflow": ".github/workflows/acceptance-environment.yml",
+    "interface": "deployment/acceptance/README.md",
+    "local_guards": "953:37passed;Ruff/actionlint0;original B904 failure retained",
+    "environment_check": "success: targeted revision2; initial failure preserved",
+    "independent_harness": "not frozen/selected/executed",
+    "trigger": "strict branch+request path push;dispatch unavailable until normal default branch admission",
+    "evidence": "agents/deployment/acceptance-environment-validation/run-39961035953/",
+    "implementation_checkpoint": "2d09ea8ec6d3b7b81ce83260fe66e4ff686a2c56",
+    "environment_check_product_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6365506297",
+    "pr_stage": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6365506820",
+    "first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39958418657",
+    "first_run_recovery_completed": true,
+    "first_run_blocker": "combined host client failed; old diagnostics insufficient for specific exception; archive roundtrip failed",
+    "client_repair": "only after observed unreachable TCP/internal-only networks, own override bridge; auth not bypassed",
+    "service_bearer": "actual CLI, explicit projects/escalation:write,TTL60..900,private stdout or O_EXCL0600 JSON;metadata-only public ledger",
+    "environment_source_sha": "68b3bb2c532db8b14ddc57e0a219657ec026cad0",
+    "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "environment_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39961035953",
+    "profile_executed": false,
+    "harness_executed": false,
+    "client_observation": "MySQL2003,TCP111,actual_ports empty,own data internal;test-only bridge then DB/AMQP connected",
+    "service_capability": "actual CLI session3;one project;escalation:write;TTL300;0600;metadata verified,no business call",
+    "recovery": "Rabbit stop/recover,clients after recovery,finally recovery_completed=true",
+    "encryption": "synthetic CMS AES256GCM/RSAOAEP roundtrip verified;tester real cert/harness retrieval pending",
+    "final_archive_revision": "actual Git metadata resolves the final receipt commit; validated environment SHA remains separate",
+    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6366093437",
+    "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995",
+    "neutral_handoff": "deployment/acceptance/README.md contains capabilities/run/retrieval only; developer results and failures remain separate role evidence"
   }
 }

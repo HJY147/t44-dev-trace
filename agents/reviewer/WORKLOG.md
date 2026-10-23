@@ -138,3 +138,24 @@
 - 主证据117a69c1745b29f0b5be9306abb348933521ff45先交root用于freeze引用后，GitHub本轮COMMENT实际发布并GET读回全文相符：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101。回执capacity-v11-freeze/github-comments.json。仅补评论证据commit，无新增检查/业务/status/APPROVE/合并。
 
 - 总协调正式分配954后，原静态校验脚本迁至tmp/reviewer/954_capacity_freeze_static.py，与主证据117a原文件字节完全一致、hash fb5a755828a28764ca37e140951b4d39edbe1936b14f7808d19bfe1a80f98ca2。仅位置迁移，无断言/内容变化、无129重跑，保留旧路径实际执行记录和原结果；报告只追加归档说明。未操作共享ledger（root维护next953），未触独立预留/私有目录。
+
+## 2026-10-23T14:26:49.496512+00:00 1.1实现与公开IAT修复限定复审
+
+- 实际派工ROLE-reviewer-V11-IMPLEMENTATION-v1及941续派存dispatches；新独立worktree从415d建立，不用root索引，不改owner产品、不触独立私有内容/不联系tester。
+- 精确4c20与415d的64个应用源码字节相同、14冻结hash全匹配。静态审人力1–5/成员1–5+7、返工有效身份/工时、旧优先级、project与session/idem锁序、成功先回放/拒绝事务；所列差异未发现新实质阻断。
+- 真实986针对50项SQLite HTTP通过exit0；941先领号再建，仅配置原959两断言，原件hash未变，两断言完成通过但工具丢失后台exit元数据，记未知不编造。通知计数3通过/24未选exit0；第一次错误cwd0收集exit1与两次实际JUnit原件保留，报告路径按test.root产生，复制后仅删本岗自有stray文件。未跑全套/DDL/MySQL/性能。
+- pinned cloc原口径5973超873，require-range exit1；真GET CI39958165108绑定4c20四job成功，原件394/0/0/0、43源/0excluded/88.726%行覆盖。全量门禁/独立/正式性能不据此放行，旧v1失败和原e01 failure不改。
+- 与BE实际互询只读优化：S锁候选收敛默认RC单UoW，仅validateContractPayload，确切RFC hash8cdfc9b...及未应用patch净+7，无锁/无生产diff，限定设计无阻断但收益未测、新源码另审。曾提S后撤回不是用户发现或产品安全漏洞。
+- 报告八段十项与命令/原件/hash/工具失败限制已落盘；原C-P1/C-P2限定关闭，整体不通过。GitHub COMMENT/提交以实际回执后补，不预写网络成功。
+
+- 主证据ff1486422cd1a32812a568f634f373015e401fae已push；PR21真实COMMENT已发布并GET读回commit_id严格4c20、state=COMMENTED、body完全相符：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373。连接器返回review_id5629687373；无status写入/APPROVE/merge。只补本岗回执后立即释放槽，不等后续新产品或重复全套。
+
+## 2026-10-23T14:51:36.178506+00:00 单UoW实现限定复审
+
+- 实际续派ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1原文已存；独立codex/reviewer-read-uow从46190建立，只读5dcb及22647原件，无产品修改/私有测试接触/新增编号脚本/重跑负载。
+- 实际git/标准库hash核64应用字节、14冻结摘要与RFC、原986/985完整prefix保留；仅Runtime8增1删净+7，auth→validate→freshnow→dispatch/with退出后返回，原异常映射和写路径不变。
+- 18新增断言与原件前9fail/9pass→18pass已逐项核，MySQL4/5/5SELECT各1acquire、session/member先提交新拒绝和在途暂停撤销提交后旧200/新拒绝、fault注入closed→不同Session独立audit均对应；不冒充本岗新执行或真实宕机。
+- 真实live API四job success，原JUnit412/0/0/0、43源/0excluded/88.7883%行覆盖；合成checkout320272 tree与5dcb整tree相同。root当时暂缺22647文件改用git show精确节点读取，root确认随后合入，不记产品失败。
+- 规模5980超880仅核原计数/源等值，未重跑cloc；正式性能失败/无延迟收益、新独立SUT4c边界保持，整体不通过。后续GitHub COMMENT/回执以真实结果补入。
+
+- 主证据60a524dfff45d6022cf74a5daa02cc195ae7b172首次push遇SSL_ERROR_SYSCALL退出128；只读ls-remote恢复exit0且分支尚无，单次重试push退出0，原错误保存在github-publish.json。PR21 COMMENT真实发布并GET逐字读回、commit_id严格5dcb/stateCOMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636。无status写入/APPROVE/mainmerge；补回执后立即释放槽，不待未来负载。

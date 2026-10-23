@@ -93,3 +93,33 @@
 
 - 最终真实结果body-file评论已发表：Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100 ；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531 。评论正文保存在integration-final-comment.md；PR15既有attach不重复创建。最终证据/说明收尾提交由实际Git元数据确定，精确被运行应用SHA仍31f4dff。
 - 最终证据暂存diff检查发现一份阅读日志末尾多余空行并正确停止，未先提交；原始gzip不动，仅规范阅读稿EOF空行，证据说明同步后重新diff检查。
+
+## INDEPENDENT-LINUX-HARNESS-v1 中性环境能力
+
+- 总协调实际派工归档agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md。只读核对根189dc4a3196be0fb84b753f23284f2566d823ea0的AGENTS与公开v1.1冻结清单、既有Compose/workflow；未读任何独立私有用例/内部记录、未联系tester，也未读取published报告之外的独立资料（本轮无需读取报告内容）。未改业务或现有四门禁/覆盖率口径。
+- 已向总协调反馈可执行方案和限制后，实现新acceptance-environment workflow与deployment/acceptance运行/控制入口：精确产品与独立冻结harness双checkout，真实固定镜像服务，单个synthetic空项目/manager，私有runner context，SQL专用SELECT账户、受限stop/pause租期和自动/最终恢复，账号初始化及调度scope真实CLI。
+- 普通公开artifact无tester专用ACL，因此只上传CMS AES256-GCM/RSA-OAEP密文和中性元数据；接收证书跟harness冻结，私钥本地自持，14天内tester自行下载解密/脱敏后显式发布。stdout/stderr不进公开console，输出仅固定文件白名单；加密失败不发布明文。加密不是案例独立性证明。
+- 官方GitHub说明dispatch文件须在default branch，实查main无workflow404；新增严格codex/deployment-acceptance-environment或codex/independent-harness-*分支且仅deployment/acceptance/request.json变动的push入口，本轮以environment-check请求触发一次，不绕main保护。
+- 总协调已登记953；profile独占窗口期间未跑本机负载，收到窗口结束后实测953共25guard通过（0.07s），Ruff/actionlint通过。首次Ruff缺SERVICES导入已修正并保留事实；证据acceptance-environment-validation/local-*。本机LibreSSL，CMS真实传输/服务能力尚待托管Linux自检。
+- 目前没有选择或执行独立harness，不宣称独立MQ/fault已覆盖；未租云/购买/触个人服务。将先提交可review实现，等待总协调新的完整v1.1产品SHA后，再单独提交environment-check请求，避免每次实现修改触发重复运行。
+- 发现既有Docker整套在runtime分支任意push自动执行，为遵守本轮不重复旧整套，使用同一独立worktree新本岗分支codex/deployment-acceptance-environment，新workflow allowlist同步；不修改旧workflow/门禁，PR15以实际评论交接新checkpoint。总协调要求等待即将修正的完整v1.1产品SHA后才提交唯一environment-check请求，189dc4a只作已读冻结基线。
+- 实现checkpoint2d09ea8ec6d3b7b81ce83260fe66e4ff686a2c56已push；阶段正文实际body-file发表Issue7/6365506297与PR15/6365506820。
+- 总协调提供精确完整v1.1修复源4c20f32b71635016815420472b9d4bb4fa850df0，已GitHub API核远端存在；本轮唯一request.json选择该源、mode=environment-check，不含harness信息。提交前25guard/Ruff/actionlint重核通过；增加冻结接收证书私有副本稳定性及密文环境诊断，不改任何产品判据。真实环境结果等待push回执，独立harness仍未执行。
+
+### 环境首次失败与有变化必要复核
+
+- 唯一初次环境run39958418657在workflow44f0675/product4c20f32上failure，初次image/infra/迁移/空项目/账号/scanner凭据/全部worker健康与容器内SELECT/队列审计通过，combined宿主client阶段失败；原版未记录具体异常，公共artifact/console都不能诚实还原DB或AMQP及错误类型，保留未知。finally recovery_completed=true，尚未执行stop/pause案例能力。
+- 早失败时合成stdout未创建，roundtrip归档亦报archive_error；不把cipher存在当完整加密传输成功。首轮public artifact原字节+SHA、Actions原始gzip/阅读稿、run JSON在acceptance-environment-validation/run-39958418657，未读取任何独立资料。
+- 总协调明确授权修复后的必要环境复核，先前唯一check用于避免无变化重跑旧整套，不需再问用户。补安全异常类别/数值码、DB/AMQP分阶段、TCP监听/实际Docker端口/本project网络Internal观测；仅实际观测listener不可达且全internal时在本验收override加client bridge，保留原观测后复连；鉴权或其他状态不自动绕过，产品Compose不改。
+- 合成stdout提前创建，失败时仍独立尝试加密/解密传输，archive_error保留异常类别且失败不发布明文。必要复核请求revision2仍精确4c20f32，不选harness。
+- 根指出内部升级HTTP需要真实限定service bearer；现封装实际CLI service-token，显式projects/固定escalation:write/TTL60–900(默认300)，读实际session scope/expiry元数据验证。Token仅harness私密stdout或受控目录O_EXCL0600 JSON，绕过原始环境命令日志；公开ledger仅session/expiry/count/TTL，不读hash冒充bearer。能力自检只核元数据/权限，不调用业务案例。
+- 第二profilequiet期间只写代码/协议/只读与远程接口，明确窗口结束后才执行953。现37guard通过；Ruff首次B904后按from None修正、保留原失败，最终Ruff/actionlint通过。未运行独立harness，未改产品/门禁/统计，未租云。
+
+### 必要复核实际通过与最终交接
+
+- run39961035953真实success，环境源68b3bb2c532db8b14ddc57e0a219657ec026cad0，产品源4c20f32b71635016815420472b9d4bb4fa850df0。直接读取公共execution与回执、校验cipher SHA，未将环境success当产品四门禁/独立验收。原始公共artifact未改字节，console gzip+SHA保真。
+- 本轮实际先观测mysql pymysql.err.OperationalError2003、TCP errno111、actual_port_bindings={}、仅本project data Internal=true；按观测仅验收override加client bridge后SQL和AMQP客户端连通。该观测属于复核，不回写旧run的未知具体异常。初始失败步骤仍在execution.json保留。
+- 实际CLI签发service session3，project_count1、escalation:write、TTL300、0600文件与实际session元数据核验通过，未调用内部升级业务案例。公开ledger无Token/Hash，令牌/账号/上下文/私钥文件不上传。
+- Rabbit stop(30秒租期)→显式recover成功，恢复后两客户端成功，finally recovery_completed=true；synthetic CMS AES256-GCM/RSA-OAEP roundtrip verified。未执行profile/独立harness(harness_started=false/null ref)，未实测独立pause/自动租期fault案例、正式性能或独立验收。
+- 首败39958418657和所有本岗静态失败保持原样；中性README只给运行能力/取回约定，不带开发缺陷/案例预期。总协调明确本轮不再重复能力核验，收尾仅归档/Issue/PR15交接后释放槽，不联系新tester或查看其文件。
+- 最终body-file实际评论：Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6366093437 ；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995 。实际环境/失败/开发guard回执只留本岗报告和证据；交新tester的README保持中性能力/运行/取回约定，不注入开发结果或旧缺陷，不引导其读取本岗内部记录。
