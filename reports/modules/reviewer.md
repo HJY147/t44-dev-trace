@@ -132,3 +132,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 ## PR34 capture超时窄修复审（2026-10-24）
 
 实际prompt ROLE-reviewer-NATIVE-CAPTURE-FIX-v1，精确cc6a211bb1692460ffba09f7ee764c64545602ee/b23897879142de3bd77190c67d4947eccf1c8263，设计7f4845e。唯一原事件/原拒绝断言语义重放一次exit0，0真实进程/信号；超时后actualrc0仍OWNED_COMMAND_TIMEOUT/timed_outtrue/successfalse。26公开hash、14冻结、原两红副本、其余AST/runtime/旧ApplicationGuards不变，owner5边界原件核实但未重跑。P2限定关闭；原5ef失败、0a6 cycle历史保持，新代码未有完整cycle验证。报告reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md。无生产改动、私有/独立读取、套件/服务/CI/负载运行或整体放行；实际COMMENT/GET回执另补。
+
+实际发布：证据阶段8c415c16e384f6af17694fd2719608d3510916bc已push，PR34 COMMENT5634940377显式绑定完整cc6；插件逐字body/COMMENTED与完整REST GET commit_id/body/state严格一致exit0，回执github-comment.json。仅关闭P2，原5ef失败与0a6真实cycle保持，无APPROVE/status/CI/mainmerge或整体放行。
