@@ -193,3 +193,9 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 首次DOCX author前按技能用bundled Node运行create marker一次，expected4/formatdocx，exit0；随后轻量生成4份私密DOCX，chmod0600、目录0700、Git忽略。没有代写学生研究正文。
 - 首次author参数误用了未经Git核实的完整cutoff字符串，未交付/未QA；随即用git rev-parse取真实2e值，导出器加入强制解析/验证，重新生成四份，marker未重复。进一步将新文档链接ref与产品cutoff拆开，避免新增报告链接指向旧提交不存在的文件。
 - 已通知root：LO渲染等待其明确quiet窗口结束，当前未调用LO或用户桌面应用。最终Word QA尚pending，不能交付为合格。
+
+- 收到root明确诊断quiet UTC11:45至预计11:49，等待实际结束通知，不以预计时间当许可；未启动LO。新362/88.56开发CI只记后续消息，不宣称当前2e/0448 Word已含。指导岗M2晚到实际答复归档M4-later-checkpoints，不改原收件快照。
+
+- root通知诊断首次工具入口错误在bind前失败，quiet顺延；继续等待实际结束，不将预计结束当许可，未调用LO。轻量校对区分M3当时Word未QA与本轮审阅Word QA记录。
+
+- root澄清封面“不上传”指公开GitHub/公共附件，允许本任务view_image直接看私密原封面；后续按技能每页含真实封面查看。先前脱敏helper仅写未运行，已撤掉，不引入额外图片编辑。公开记录只页数/hash/结论，不抄个人值或上传原图/Word。
