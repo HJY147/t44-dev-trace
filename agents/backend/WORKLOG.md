@@ -388,3 +388,11 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 结果result.md和summary/continuation-summary.json明确无503复现、未跑写入口/未测SQL锁字段、不能归因托管400×600。C/B仍未应用，schema构造绝对值约0.04ms/请求，不支持立即应用C；本轮生产净变更0，固定6307仍超1207。后续写路径/正式资源观察须根另准入，不再本轮负载。
 
 - 本阶段Issue3已body-file发表并GET逐字回读一致：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376181741；源码工具44b9e8c未再变，之后只有离线分析/证据归档，未重复运行。
+
+## pool默认候选：后端有限静态兼容交接
+
+- 根派工后新分支codex/backend-pool-compat，从干净ff7起；先只读ac826cb9候选RFC并提交范围/真实prompt e534dee，再完整静态审查。应用仍bc5，生产/测试/955/930/锁/规格/原ff7证据均不改。native360独占期间无本机SQL/业务HTTP/负载/安装/pytest/服务，只AST/源码/GitHub公开评论。
+- static-receipt.json记录8个MySQLSettings直接构造点；生产Settings只传凭据/库，API LazyFactory、CLI、MQ/scanner继承默认，显式factory独立。993仅pool_size3省略overflow将13峰变3；直接SQLite1+1无关。旧930固定5+10必须保留历史。猜测旧deploy/compose路径与Dockerfile glob的只读失败在receipt如实记录，改读真实deployment/README及api.Dockerfile，没有动态探测部署。
+- 交接caller-handoff.md要求两默认之外零差异；实时auth/撤销/锁序/CAS/幂等/audit/outbox/ACK不明处理保持，但连接失败仍可能在auth/拒绝audit完成前503，不保证分布不变。6默认池峰90不变、保留上界30→90，多闲置连接内存/FD/全局余量未知；额外CLI/探针/滚动实例另算，不套151快照。静态发现CLI无显式dispose（独立进程退出回收），MQ/scanner有finally dispose，未冒称已测资源回收/新漏洞。
+- 已实际对当前database_plan_history问取：owner确认只交9d1deff/e03a95c ABBA诊断，尚无默认候选SHA/尚待下一阶段派工，已收到partial override关注。Issue4具体输入6376569009已发表/逐字GET读回；owner公开ABBA评论6376531906/6376532216已实际GET，不把诊断当候选实施/CI。Issue3阶段总结6376597757亦已发表并回读。没有改旧断言、造候选绿或复用旧CI。
+- 意见仅“未见必须改后端API的静态阻断”，保留资源/故障/准确源完整CI/专审待项；不自主合候选或盲测。固定6307超1207未改/未重数，作者后端AI，非学生亲改。阶段封档后释放。

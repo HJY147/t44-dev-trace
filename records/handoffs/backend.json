@@ -1551,5 +1551,29 @@
     "next": "seal and release;future write-path diagnostic requires root admission;no automatic load",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376181741",
     "readback_matches": true
+  },
+  "pool_retention_compatibility": {
+    "branch": "codex/backend-pool-compat",
+    "application": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope_first": "e534dee090f9de841dc1eb5612f668fd452d7f90",
+    "prompt": "agents/backend/POOL-RETENTION-COMPAT-dispatch.md",
+    "rfc_reviewed": "ac826cb9",
+    "one_page": "agents/backend/pool-retention-compat/caller-handoff.md",
+    "static_receipt": "agents/backend/pool-retention-compat/static-receipt.json",
+    "MySQLSettings_direct_calls": 8,
+    "explicit_concerns": [
+      "partial pool_size3 follows new overflow0,peak13->3",
+      "old930 fixed5+10 must not relax",
+      "CLI no explicit dispose,standaloneprocess exits;MQ/scanner finallydispose",
+      "6defaultpool peak90 retainedupper30->90;others extra"
+    ],
+    "semantics": "auth/lock/txn/idem/audit/outbox/ACKunknown code unchanged;availability/errorfrequency not proven",
+    "owner_state": "database_plan_history confirmed diagnostics only,no candidateSHA yet;requirements received",
+    "issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376569009",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376597757",
+    "readback_matches": true,
+    "runtime_SQL_HTTP_load_tests": false,
+    "production_tests_tools_specs_unchanged": true,
+    "decision": "static no backendAPI wiring blocker;candidate source/fullCI/dedicatedreview/root decision pending;not approval"
   }
 }
