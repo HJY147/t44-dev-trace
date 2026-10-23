@@ -193,6 +193,56 @@ describe('staffing rejection feedback', () => {
     wrapper.unmount()
   })
 })
+describe('literal plan history reasons', () => {
+  const event = (changes: Row = {}): Row => ({ id: 11, project_id: 1, task_id: 1, actor_id: 1, actor_kind: 1, request_id: '00000000-0000-4000-8000-000000000011', operation_id: 'changeTaskPlan', outcome: 1, reason_code: null, expected_version: 1, observed_version: 2, before: [{ field: 'version', value: '1' }, { field: 'schedule_version', value: '1' }, { field: 'planned_end', value: plan.planned_end! }], after: [{ field: 'version', value: '2' }, { field: 'schedule_version', value: '2' }, { field: 'planned_end', value: '2026-10-25T00:00:00.000000Z' }], evidence: [evidence], created_at: '2026-10-23T01:00:00.000000Z', ...changes })
+  it.each([
+    '  第一行理由\n第二行保留空格  ',
+    '2026-10-24T12:34:56Z',
+    '2026-10-24T12:34:56Z 是理由原文的一部分，不能解析成日期',
+    'changeTaskPlan',
+    '<img src=x onerror="window.planReasonExecuted=true">\n<b>原文</b>',
+    '字'.repeat(2000),
+    '🙂'.repeat(2000),
+  ])('shows a unique reason as complete literal text without formatting or HTML execution: %#', reason => {
+    const row = event(); (row.after as Row[]).push({ field: 'reason', value: reason }); const original = JSON.stringify(row)
+    const wrapper = mount(RecordView, { props: { value: row } })
+    expect(wrapper.element.textContent).toContain(reason)
+    expect(wrapper.text()).toContain('原因与决定依据')
+    expect(wrapper.get('[data-plan-reason] dd').element.textContent).toBe(reason)
+    expect(wrapper.find('[data-plan-reason-missing]').exists()).toBe(false); expect(wrapper.find('img').exists()).toBe(false); expect(wrapper.find('b').exists()).toBe(false)
+    expect(wrapper.text()).toContain('操作者'); expect(wrapper.text()).toContain('创建时间'); expect(wrapper.text()).toContain('变更前'); expect(wrapper.text()).toContain('变更后'); expect(wrapper.get('a').attributes('href')).toBe(evidence.locator)
+    expect(JSON.stringify(row)).toBe(original); wrapper.unmount()
+  })
+  it.each([
+    { operation_id: 'changeTaskPlan' },
+    { operation_id: 'changeIteration', task_id: null },
+    { operation_id: 'transitionTask', before: [{ field: 'state', value: '7' }], after: [{ field: 'state', value: '2' }] },
+    { after: [{ field: 'reason', value: '第一条' }, { field: 'reason', value: '第二条' }] },
+    { after: [{ field: 'reason', value: '相同原文' }, { field: 'reason', value: '相同原文' }] },
+    { after: [{ field: 'reason', value: '2026-10-24T12:34:56Z' }, { field: 'reason', value: 'changeTaskPlan' }] },
+    { after: [{ field: 'reason', value: '有效原文' }, { field: 'reason', value: null }] },
+    { after: [{ field: 'reason', value: ' \n ' }] },
+    { after: [{ field: 'reason', value: 42 }] },
+    { after: [{ field: 'reason', value: '字'.repeat(2001) }] },
+  ] as Row[])('marks related history without a unique valid reason honestly: %#', changes => {
+    const row = event(changes), original = JSON.stringify(row); const wrapper = mount(RecordView, { props: { value: row } })
+    expect(wrapper.findAll('[data-plan-reason-missing]')).toHaveLength(1); expect(wrapper.text()).toContain('此历史记录未提供可核对的变更理由')
+    expect(wrapper.find('[data-plan-reason]').exists()).toBe(false)
+    for (const item of (changes.after ?? []) as Row[]) if (item.field === 'reason' && typeof item.value === 'string') expect(wrapper.element.textContent).toContain(item.value)
+    expect(JSON.stringify(row)).toBe(original); wrapper.unmount()
+  })
+  it.each([
+    { outcome: 2 },
+    { operation_id: 'createTask' },
+    { operation_id: 'transitionTask', before: [{ field: 'state', value: '1' }], after: [{ field: 'state', value: '2' }] },
+    { operation_id: 'transitionTask', before: [], after: [{ field: 'state', value: '2' }] },
+    { operation_id: 'transitionTask', before: [{ field: 'state', value: '7' }, { field: 'state', value: '7' }], after: [{ field: 'state', value: '2' }] },
+    { operation_id: 'transitionTask', before: [{ field: 'state', value: '7' }], after: [{ field: 'state', value: '2' }, { field: 'state', value: '2' }] },
+    { operation_id: 'transitionTask', before: [{ field: 'state', value: 7 }], after: [{ field: 'state', value: '2' }] },
+  ] as Row[])('does not guess a missing reason for failed, non-plan or ambiguous transition history: %#', changes => {
+    const wrapper = mount(RecordView, { props: { value: event(changes) } }); expect(wrapper.find('[data-plan-reason-missing]').exists()).toBe(false); wrapper.unmount()
+  })
+})
 describe('session and user flows', () => {
   it('does not let an unmounted login bootstrap failure clear a newer session token', async () => {
     workspace.user = null
