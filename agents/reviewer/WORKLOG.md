@@ -202,3 +202,15 @@
 - SESSION-R1在9560限定关闭，无新实质阻断；整体源码6051旧计数超限、正式P95失败、独立UI002/003与全验收未完成。新报告26-babc...；PR精确head已读取，COMMENT/commit回执实际完成后补。
 
 - 自有阶段证据19b9d1dd04005cfd1def2bee163a311b1197ed79已commit/push exit0；插件PR26 COMMENT5633421899真实发布，list逐字匹配COMMENTED，再gh只读特定review GET核commit_id精确babc、正文一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899。github-comment.json归档。无APPROVE/status/mainmerge；仅补回执后释放槽给下一岗位。
+
+
+## 2026-10-24 A写预检合并限定代码审核（7584/153b）
+
+- 实际ROLE-reviewer-BACKEND-PREFLIGHT-v1派工/续派存dispatches；基于7584建独立codex/review-backend-preflight，不改生产/冻结/原测试、不读私有独立资料、不联系tester、不新增编号测试或扩编。
+- Runtime唯一生产差异；51跟踪文件含43Python、14freeze摘要及基线字节一致。6原Runtime方法AST不变、旧claim算法提取到_claim AST等价、5dcb特殊只读分支相同；18幂等写合并、3鉴权、原SQL/锁/主Tx/独立拒绝审计/不确定提交均保留。scanner:61和988旧入口实际存在，不沿用原错误结论。
+- 本岗只用候选源定向运行986的11个preflight例，11绿/91未选；首次根.venv无pytest未启动退出1保留，改用已有backend环境后退出0；既有Starlette告警保留。静态首遍猜974_mysql路径失败后rg定位974_application纠正。未运行MySQL/全套/负载、未操作demo/独立DB。
+- 核公开15raw摘要与6summary XML摘要一致；14结构红/11语义绿、原25绿后caller2红、修入口7绿1CAS作用域红、强化两实际key且均COMPLETE/HTTPrequest_id后2绿分阶段保留。985仅原CAS函数作用域收紧，无原业务断言删除；986原定义、988/974原字节不变。
+- 首次实时PR16旧head05623不含候选，真实报root；后端随后另建draft PR29，插件实核head7584/baseintegration。CI40012517513四job success与run精确head7584已实时只读核，完整437/覆盖率数据属开发通知、原件由backend归档，本岗不记成自己的全套执行。
+- 限定代码审核未发现新增实质阻断；总体不放行：root/backend最新6108规模超过5100，本岗未重数；无A性能收益数据，独立/正式性能未获本审核通过。报告29-7584与static-audit/execution/11case原件齐全，真实COMMENT/逐字读回将在实际发布后补记；无status success/APPROVE/merge。
+
+- 自有阶段证据927743ca092a30159a6ff62884bde8ddc7dd291d已commit/push exit0；PR29 COMMENT5633640531真实发布，插件list正文逐字COMMENTED，gh只读特定review再核commit_id=7584完整SHA及正文严格一致：https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531。github-comment.json完整回执。connector初始字段名/无效action探针仅schema校验拒绝无写入；本次唯一成功COMMENT，无status/APPROVE/merge。只补本岗发布回执后释放槽位。
