@@ -207,3 +207,9 @@
 - bounded serve/stop工具已实现：固定bc5/current新run、显式时限、信号安全点、TTL300前轮换/新tick、owned runner请求及公共白名单；17项新范围合成/Ruff/CLIhelp通过。只工具阶段，无真实服务/360秒实跑，等待根压力窗口及新增范围专审；旧cycle/P2历史不移植。
 
 - 新draftPR37/Issue7#6376409216真实发布并精确回读，工具实现4ef57b6；root明确先给DB比较窗口，本岗仍全未启动，待其清理完成和root另准入360秒。没有新增运行/正式性能结论。
+
+### NATIVE-BOUNDED-DEMO-v1 唯一360秒实跑失败
+
+- 根独占窗口准入后，4ef57b6真实360秒保持已就绪、两扫描60.292813秒、1次额外TTL300轮换/新tick；API/consumer/UI各1次，3自有服务会话全撤销，原16事件只复核无新publish。
+- 原exit1/cleanupfalse：旧verify_stopped误把仍写终稿的serve runner自身计入。各应用/broker停止局部true、external driver已wait退出及全部PID/端口后置absence单列，不回写原成功。证据native-bounded-demo-validation/serve-run1-*。
+- 全部旧监听baseline/92源hash保持；根已释放窗口，只封档后先设计窄修与合成红绿，不再运行360/长serve/HTTP/SQL；新范围审核仍pending。

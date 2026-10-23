@@ -271,3 +271,10 @@
 - 工具源hash与scope原件见native-bounded-demo-validation/source-scope.json；新360秒实跑未准入/未执行，现提交后报告根等压力比较窗口，新增范围还需专职审后另准入。
 
 - 工具4ef57b6129c712c1fad88de56775c53b84009b15已push；新draft PR37 https://github.com/HJY147/t44-dev-trace/pull/37 与Issue7评论6376409216已真实发布，PR当前head4ef/draft/body及Issue正文均GET逐字相同。root明确DB岗先用≤120秒本机窗口，本岗保持全未启动，等其结束/清理转达后才另给360秒准入；实际窗口未到不自行推定。实际prompt已补原约束。
+
+### NATIVE-BOUNDED-DEMO-v1 唯一360秒实际运行原失败封档
+
+- 根在DB955 ABBA结束/全清后明确转交独占窗口，准入一次360秒；先前等待窗口表述是历史checkpoint，现由actual-admission-start/coordinator-preflight-public记新准入。精确工具4ef57b6/SHA942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07，新app_20261023_230429_cc2f5b、固定bc5/92源逐SHA，复用原hash锁依赖/现有专属库，未安装/迁移/reset/seed。
+- 控制阶段23:04:57.316057Z→deadline23:10:57.316057Z（独立prepare命令23:04:29不含于controller360秒，未隐藏）；全就绪/首两scan60.292813秒、API/consumer/UI各启动1次、scanner3代、额外TTL300轮换1次/新tick和锁、3个双项目scope服务凭据及ready会话全撤销属真实局部事实。控制器wait_scans验证4条，私密DB同UTC实际8条completed，口径分开。原16confirmed/26通知仅复核，当前新outbox=0，不称新publish。
+- 原整体actualexit1/summaryfalse/cleanupfalse真实保留：各应用stop与brokerstop局部true，post_stop_processes把serve-owner.json中的仍在写终稿的runner自己纳入，等10秒后唯一失败是self PID；不能将独立driver随后已wait退出和23:11:33后置全部PID/新端口gone倒填为原cleanup成功。原stdout字节gzip/实际driver返回码/私密原件SHA索引/公共白名单分别归档。
+- 后置源92SHA不变，旧5173/18080/5175/18084/5176/18089/MySQL13306监听baseline逐项相同。私密0600原件不上传，dump不读，已知literal扫描结果/范围hash另档；根已释放本机窗口，此后仅离线封档。原运行缺陷已即时上报，当前工具尚未修正，不再起服务、HTTP/SQL或第二360/4h。

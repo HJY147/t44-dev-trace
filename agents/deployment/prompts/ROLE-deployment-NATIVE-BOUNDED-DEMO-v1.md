@@ -13,3 +13,7 @@
 ## 工具完成后根的实际窗口约束
 
 本机负载窗口先给DB岗：其955 ABBA commit+离线完成后立即一次≤120s，总体当前还在静态末段。你保持所有服务未启动，等root转发其结束/清理确认后才给360秒新serve实运行。你工具4ef已收到，将先快速静态核新增范围；继续本岗PR/Issue/回读封档即可，勿扩HTTP负载或提前长时serve。360秒目标只证明新生命周期/额外轮换/到时回收，不重记旧cycle套件或已有16事件为新发布。
+
+## 根转交独占窗口与一次360秒实际准入原文
+
+准入原一次360秒有限serve实运行。DB已明确结束：23:02:14.376665Z–23:02:53.234248Z，38.842s exit0，18083已空、4own server全退出/本库可见连接0，后续只离线不发HTTP/SQL。本机窗口现在给native独占。root静态预检已commit records/validation/native-bounded-serve-coordinator-preflight.json，code exact4ef57b6129c712c1fad88de56775c53b84009b15 SHA942354...且capture AST=cc6。请新fresh run/准确controller prepare，复用已有受限依赖和bc5只读92files/t44_native_demo现有数据/原prior事件链接，不迁移/seed/reset；duration360从启动到到期包括准备实际以controller定义记录。证明ready、首两次真实60秒扫描、至少一次额外TTL300轮换/旧撤销/新tick、APIconsumerUI单次启动及自动到时ownedcleanup。原run1/2不回改，不把旧16事件当本轮新publish。遇小环境问题可查本人raw后窄修留痕，勿循环全跑刷绿；故障/清理失败立即上报事实。仅这次360，尚未准入长时4hserve；实际阶段封档后由专审新增范围才决定。运行中发start/ready/结束事实，日志私密0600、公件扫已知秘密，写Issue7/PR37阶段commit回读。

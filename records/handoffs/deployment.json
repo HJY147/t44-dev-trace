@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "api-process-metadata-synthetic-fix-complete",
+  "stage": "native-bounded-demo-original360-failure-sealed",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -740,14 +740,14 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "tool implemented;17new ServeGuards/Ruff/CLIhelp pass; awaiting root actual window and later targeted audit",
+    "status": "original single360 exited1/cleanupfalse;sealed before design/fix;window released;no second run",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
       14400
     ],
-    "actual360second_run_admitted": false,
-    "services_started": false,
+    "actual360second_run_admitted": true,
+    "services_started": true,
     "new_scope_review_required": true,
     "independent_material_read": false,
     "design_commit": "daaccb7",
@@ -758,14 +758,22 @@
     "default_run_preserved": "CLI still calls run_cycle without serve control; new checks no-op without serve state",
     "capture_unchanged": true,
     "runtime_unchanged": true,
-    "private_inputs_read": false,
-    "actual360second_run_executed": false,
+    "private_inputs_read": true,
+    "actual360second_run_executed": true,
     "evidence": "agents/deployment/native-bounded-demo-validation/README.md",
     "tool_implementation_commit": "4ef57b6129c712c1fad88de56775c53b84009b15",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/37",
     "draft": true,
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376409216",
     "github_readback": "agents/deployment/native-bounded-demo-validation/github-tool-readback-checks.json",
-    "window_gate": "DB955ABBA <=120s first; await root explicit ended/cleanup and360s admission"
+    "window_gate": "root explicitly admitted one360 after DB complete;now released",
+    "actual_run": "app_20261023_230429_cc2f5b",
+    "actual_exit_code": 1,
+    "actual_cleanup_success": false,
+    "actual_controller_sha256": "942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07",
+    "actual_evidence": "agents/deployment/native-bounded-demo-validation/serve-run1-capability-and-failure.json",
+    "failure": "verify_stopped includes live serve runner in state/serve-owner.json",
+    "post_runner_exit_and_all_absence": "separate external wait/read-only observation;does not rewrite original cleanup",
+    "second360_or4h_admitted": false
   }
 }
