@@ -235,7 +235,9 @@ class NativeBroker:
             "ERL_ZFLAGS": "", "ERL_CRASH_DUMP": str(self.run / "logs" / (uuid4().hex + ".dump")),
             "RABBITMQ_HOME": self.layout["rabbitmq_binary"],
             "RABBITMQ_NODENAME": self.manifest["node"],
-            "RABBITMQ_CONF_ENV_FILE": str(self.run / "config/rabbitmq-env.conf"),
+            # Every child runs in self.run. The official env loader preserves this
+            # relative path, avoiding Darwin shell xtrace Unicode conversion errors.
+            "RABBITMQ_CONF_ENV_FILE": "config/rabbitmq-env.conf",
             "RABBITMQ_CONFIG_FILE": str(self.run / "config/rabbitmq.conf"),
             "RABBITMQ_ADVANCED_CONFIG_FILE": str(self.run / "config/advanced.config"),
             "RABBITMQ_ENABLED_PLUGINS_FILE": str(self.run / "config/enabled_plugins"),
@@ -449,24 +451,33 @@ class NativeBroker:
                        self.env(args_file), self.manifest["node"])
             deadline = time.monotonic() + 45
             failures = []
+            ready = False
             while time.monotonic() < deadline:
                 try:
                     self.execute("rabbitmq-diagnostics", ["check_running"], timeout=10)
-                    if not marker.exists():
-                        raise RuntimeError("SERVER_COOKIE_INIT_MARKER_ABSENT")
-                    inspection = self.inspect()
-                    return self.receipt("start", success=True, cookie_setter_completed=True,
-                                        inspection_receipt=inspection["receipt_id"],
-                                        prior_readiness_attempts=len(failures),
-                                        cookie_args_sha256=digest(args_file.read_bytes()))
+                    ready = True
+                    break
                 except RuntimeError:
                     failures.append(utc())
                     _record, actual = self.owner("rabbit")
                     if actual is None:
                         break
                     time.sleep(0.5)
-            return self.receipt("start", success=False, error="BROKER_READINESS_FAILED",
-                                readiness_attempts=len(failures))
+            if not ready:
+                return self.receipt("start", success=False, error="BROKER_READINESS_FAILED",
+                                    readiness_attempts=len(failures))
+            try:
+                if not marker.exists():
+                    raise RuntimeError("SERVER_COOKIE_INIT_MARKER_ABSENT")
+                inspection = self.inspect()
+            except Exception as error:
+                code = str(error) if re.fullmatch(r"[A-Z_]+", str(error)) else type(error).__name__
+                return self.receipt("start", success=False, error="BROKER_INSPECTION_FAILED",
+                                    inspection_error=code, readiness_attempts=len(failures))
+            return self.receipt("start", success=True, cookie_setter_completed=True,
+                                inspection_receipt=inspection["receipt_id"],
+                                prior_readiness_attempts=len(failures),
+                                cookie_args_sha256=digest(args_file.read_bytes()))
 
     def signal_owned(self, role):
         record, actual = self.owner(role)

@@ -556,7 +556,8 @@
     "stage1_admission": "root7763402 records/decisions/native-broker-capability-admission.json",
     "stage1_wrapper": "deployment/native/runtime.py",
     "stage1_guard": "tmp/deployment/873_native_runtime.py",
-    "stage1_local_checks": "15 synthetic deployment guards/Ruff/diff pass; agents/deployment/native-validation/stage1-ready-checks.json",
-    "stage1_broker_validation": "pending"
+    "stage1_local_checks": "16 guards/Ruff/diff pass after relative ASCII env-conf and no deterministic retry correction",
+    "stage1_broker_validation": "run1 start=false/cleanup=true; raw facts and failure preserved, necessary run2 pending",
+    "stage1_first_failure": "agents/deployment/native-validation/stage1-run1-analysis.json"
   }
 }

@@ -171,3 +171,6 @@
 - args文件只存-nocookie/唯一-sname/loopback kernel选项/ASCII codepoint file setter，实际Cookie既不进argv也不进环境；HOME/home/CODEX_HOME原值保留，其他继承服务秘密/debug键被丢弃。所有dump目标项目内、umask077，原probe值不复用。
 - PID/UID/lstart/PGID/command SHA逐项比较后才信号；端口占用不停止占用者；Rabbit停止后需确认自有EPMD无注册节点再停；部分失败回执false。实际CLI先file setter写唯一marker再escript、远程eval只返回Cookie匹配/密码后端认证bool，原输出保留私密并扫描secret。
 - 本岗873合成安全守卫15项、复用本岗旧部署venv Ruff0.17.2、diff检查真实通过；初始14项与随后补入EPMD就绪顺序的15项记录分开保留。未安装全局工具，未更改生产业务/锁/契约/门禁。全部代码仍待一次真实stage1 broker验证，不声称认证/监听/停止已通过。
+
+- stage1 run1在7f48596真实start=false、cleanup-failed-start=true，原始public driver JSON、逐次私有原件SHA索引与分析已保留。新随机Cookie的server/CLI setter marker及check_running/远程cookie比较CLI exit0属局部事实；stdout却被官方env-conf的中文路径shelltrace Unicode转换诊断污染，严格true输出检查失败，不倒填整体成功。清理使用自有指纹后SIGTERM，随后Rabbit退出/EPMD无节点/退出均真；无业务负载。
+- 根准入同范围必要run2：核固定rabbit_env源normalize_path保持相对路径，把本环境cwd下实际config/rabbitmq-env.conf改为相对ASCII路径；严格输出、权限、listener/拥有权门槛均不变。将确定性inspect错误移出readiness重试，明确错误码；新增该必要守卫后873为16项/Ruff/diff通过。run2必须新目录和新Cookie，不覆盖run1原件。

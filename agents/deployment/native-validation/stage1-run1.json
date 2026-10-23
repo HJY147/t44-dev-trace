@@ -1,0 +1,61 @@
+{
+  "started_at_utc": "2026-10-23T20:27:16.953617+00:00",
+  "source_commit": "7f48596dbe6251ce9b4373f7777b4c435eb30ca7",
+  "wrapper_sha256": "630d7f212b04e2fc84ee63f6162951670a97d276249e42c2bd51b4440ae021a9",
+  "admission": "root7763402",
+  "run_id": "stage1_20261023_202716_607dc9",
+  "scope": "stage1 only; no app/schema/consumer/scanner/UI",
+  "steps": [
+    {
+      "phase": "prepare",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/runtime.py",
+        "--project-root",
+        "/Users/yang/Desktop/nothing/软件开发大作业",
+        "prepare",
+        "--dependency-layout",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-mq-20261023/layout.json",
+        "--run-id",
+        "stage1_20261023_202716_607dc9"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"success\": true, \"run_dir\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/.runtime/t44-native-broker/stage1_20261023_202716_607dc9\", \"manifest_sha256\": \"49e972914642288dc95835d73c14ef6ee2d15a563dbde91bcc309b72d2c9af03\"}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "start",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/runtime.py",
+        "--project-root",
+        "/Users/yang/Desktop/nothing/软件开发大作业",
+        "start",
+        "--run-dir",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-broker/stage1_20261023_202716_607dc9"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"receipt_id\": \"dacc5c3b389c4e5fa87305b983d0d318\", \"at_utc\": \"2026-10-23T20:28:03.774537+00:00\", \"action\": \"start\", \"run_id\": \"stage1_20261023_202716_607dc9\", \"success\": false, \"error\": \"BROKER_READINESS_FAILED\", \"readiness_attempts\": 40}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "stop",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/runtime.py",
+        "--project-root",
+        "/Users/yang/Desktop/nothing/软件开发大作业",
+        "cleanup-failed-start",
+        "--run-dir",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-broker/stage1_20261023_202716_607dc9"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"receipt_id\": \"8b07ab7dce5243ffa0d05fb01ced0908\", \"at_utc\": \"2026-10-23T20:28:04.908118+00:00\", \"action\": \"stop\", \"run_id\": \"stage1_20261023_202716_607dc9\", \"success\": true, \"failed_start_cleanup\": true, \"steps\": [{\"role\": \"rabbit\", \"needed\": true, \"signal_sent\": true, \"success\": true}, {\"action\": \"rabbit_exit_observed\", \"success\": true}, {\"action\": \"epmd_registered_nodes_empty\", \"success\": true, \"registered_node_count\": 0}, {\"role\": \"epmd\", \"needed\": true, \"signal_sent\": true, \"success\": true}, {\"action\": \"epmd_exit_observed\", \"success\": true}]}\n",
+      "stderr": ""
+    }
+  ],
+  "fresh_cookie_differs_from_probe": true,
+  "ended_at_utc": "2026-10-23T20:28:04.914115+00:00",
+  "run_dir": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-broker/stage1_20261023_202716_607dc9",
+  "overall_success": false
+}

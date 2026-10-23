@@ -98,6 +98,8 @@ class NativeGuards(unittest.TestCase):
             self.assertEqual(env["RABBITMQ_LOG"], "warning")
             self.assertEqual(os.environ["RABBITMQ_LOG"], "debug")
             self.assertEqual(env["ERL_EPMD_ADDRESS"], "127.0.0.1")
+            self.assertEqual(env["RABBITMQ_CONF_ENV_FILE"], "config/rabbitmq-env.conf")
+            self.assertTrue((broker.run / env["RABBITMQ_CONF_ENV_FILE"]).is_file())
 
     def test_run_path_traversal_and_foreign_dependencies_rejected(self):
         with self.assertRaises(ValueError):
@@ -189,6 +191,21 @@ class NativeGuards(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 broker.start()
         self.assertEqual([call.args[0] for call in spawn.call_args_list], ["epmd"])
+
+    def test_deterministic_inspection_failure_is_not_retried(self):
+        broker = self.prepare()
+        path, marker = broker.make_args(server=True)
+        marker.write_text("ready")
+        with patch.object(native, "assert_ports_free"), \
+                patch.object(broker, "make_args", return_value=(path, marker)), \
+                patch.object(broker, "spawn"), patch.object(broker, "wait_epmd_ready"), \
+                patch.object(broker, "execute", return_value=("", {})) as execute, \
+                patch.object(broker, "inspect", side_effect=RuntimeError("DETERMINISTIC_FAILURE")) as inspect:
+            result = broker.start()
+        self.assertFalse(result["success"])
+        self.assertEqual(result["inspection_error"], "DETERMINISTIC_FAILURE")
+        self.assertEqual(execute.call_count, 1)
+        self.assertEqual(inspect.call_count, 1)
 
 
 if __name__ == "__main__":
