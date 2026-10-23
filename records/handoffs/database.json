@@ -1,6 +1,6 @@
 {
   "role": "database",
-  "stage": "字段无关持久化基础已实现，待draft PR审核；Q002未定",
+  "stage": "字段无关基础已提交push并创建draft PR #17；Q002待定",
   "implementation_status": "Engine/UoW/受限CoreGateway基础已实现；18表ORM/迁移/业务仓储/API未实现",
   "artifacts": [
     {
@@ -287,7 +287,13 @@
     "uv pip install --system-certs --python .venv/bin/python --require-hashes -r 后端树requirements.lock",
     "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q（3轮，原始run日志）",
     ".venv/bin/ruff check --select E4,E7,E9,F,I,UP,B,SIM --target-version py312 backend/t44/persistence backend/tests/persistence（3轮）",
-    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md"
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md",
+    "本独立树显式git add20份本岗文件；git diff --cached --check退出0",
+    "git commit（Agent-Role database/Prompt-Ref ROLE-database-FOUNDATION-v1/Refs #4）",
+    "git push -u origin codex/database-runtime",
+    "GitHub create_pull_request：draft=true/base codex/team-bootstrap/head codex/database-runtime",
+    "codex-app attach_artifact：pull_request #17",
+    "git status --short; git rev-parse HEAD; git rev-parse origin/codex/database-runtime; git diff --cached --name-only"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -315,7 +321,9 @@
     "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。",
     "FOUNDATION-v1真实Engine/UoW/受限CoreGateway基础落盘，没有业务仓储占位成功实现。",
     "首轮pytest15通过；首轮Ruff7风格问题保留；最终18项本岗SQLite/mock测试通过，Ruff通过；SQLAlchemy2.1.6/PyMySQL1.2.3来自backend只读hash锁。",
-    "Issue阶段说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 已发表；文档岗原文问答与当时未提交状态已记录。"
+    "Issue阶段说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 已发表；文档岗原文问答与当时未提交状态已记录。",
+    "产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc已push；draft PR#17已创建并attach，未合并/未发reviewer成功。",
+    "PR创建后本树和索引干净，本地远端SHA一致；当前仅补实际发布记录，无产品变化。"
   ],
   "unverified": [
     "MySQL8.4真实连接初始化、模式/隔离、约束与事务未验证。",
@@ -470,5 +478,15 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T15:04:00+08:00"
+  "updated_at": "2026-10-23T15:06:24+08:00",
+  "publication": {
+    "branch": "codex/database-runtime",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
+    "product_commit": "7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
+    "base": "codex/team-bootstrap",
+    "draft": true,
+    "attached": true,
+    "merged": false
+  }
 }

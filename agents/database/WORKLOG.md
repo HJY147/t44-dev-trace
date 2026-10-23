@@ -90,3 +90,9 @@
 - 文档岗M1问取：分支/SHA/实际DDL迁移模型仓储/事务幂等图锁边界、命令结果、C1–C4与Q002状态、接口和日志。已原文回答“当前database-runtime树、起点bc0cd349...尚未提交；18表226列仅静态设计；通用基础进行中，新测试尚未运行；无MySQL/模型/迁移/API，C1–C4技术结论与Q002人的取舍分别记录”，该回答是当时事实；现已完成18项自测，待提交后补SHA/PR给文档岗。
 - 已实际发表gh issue comment4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md，退出0，URL https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 。
 - Q002人的字段/错误码选择仍待回复，当前只有基础层实现；用户未亲自改码，本轮AI修改不当作人工改码留痕。未联系或读取独立测试，未操作根工作树索引。准备仅显式提交本树本岗文件，再push独立分支/draft PR，不merge或发布reviewer成功。
+
+### 2026-10-23T15:06:24+08:00 foundation实际提交与draft PR
+
+- 本树显式暂存20份本岗文件并核对精确清单，git diff --cached --check退出0；实际产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc，footer Agent-Role database / Prompt-Ref ROLE-database-FOUNDATION-v1 / Refs #4。
+- git push -u origin codex/database-runtime实际成功；GitHub连接器用本岗foundation-pr-body.md同内容创建draft PR https://github.com/HJY147/t44-dev-trace/pull/17 ，base codex/team-bootstrap；attach_artifact实际成功。读回draft=true/merged=false/mergeable=true，不能据此声称审核通过。
+- 创建后本树status为空、暂存区为空、本地/远端SHA一致；本次补记只更新日志/报告/handoff，无产品变化，不重复已通过测试。完整最终提交SHA另交总协调与文档岗。

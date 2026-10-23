@@ -36,3 +36,5 @@
 - 实际prompt归档agents/database/prompts/ROLE-database-FOUNDATION-v1.md；操作者为AI，不记用户亲改。
 - 文档岗M1已真实问取，本岗原文回答基础进行中/无MySQL/未提交事实，保留在WORKLOG；完成SHA/PR另行补送。
 - 下一步先确认Q002与字段/错误码冻结，再另行派ORM/迁移/业务仓库及真实MySQL验证；消息/调度门面适配尚未实现。
+
+已实际push codex/database-runtime并创建/attach草稿PR https://github.com/HJY147/t44-dev-trace/pull/17 （base codex/team-bootstrap）；产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc，后续仅补过程记录。未合并或发布审核成功。
