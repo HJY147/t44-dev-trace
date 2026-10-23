@@ -193,3 +193,9 @@
 - NATIVE-CAPTURE-TIMEOUT-01已窄修：首超时永久失败、保留actual childrc；清理未确认也留回执。原同例真实红→绿，五项capture合成/Ruff/diff通过，应用除capture AST/原守卫/runtime未变。未读凭据/起服务/跑cycle，历史0a6结果不移植，新代码等待根复审。
 
 - 修复实现b238978（application SHA5ed6844d…），PR34当前代码/正文已更新；Issue7/6375565697、PR34/6375566016及正文精确回读，原公开P2失败保留。现封档待根复审，不声明审核放行或新代码cycle通过。
+
+### API-PROCESS-METADATA-v1 识别边界窄修
+
+- 原脚本的两种fake init-wrapper树均红（2 supervisors）；修为明确Python -m uvicorn模块前缀，保留strict==1。相同反例及多真实supervisor拒绝/原投影4相关项通过、Ruff通过；只API_SCRIPT变更，证明/红绿原件agents/deployment/api-process-metadata-validation。
+- 仅合成边界，无真实进程/Docker/旧故障/压力重测。不是stage05实际原因结论；b3ee/H11 incomplete及封存正式结果不更改、不倒填。
+- 实现SHA c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442已GET读回一致。后续仅资料收尾，真实stage05原因及原资源incomplete仍未由本轮验证。

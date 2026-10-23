@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "NATIVE-APPLICATION-v1 phase2 design checkpoint",
+  "stage": "api-process-metadata-synthetic-fix-complete",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -714,5 +714,24 @@
     "final_status": "complete:implementation validated;neutral handoff published;archive only;no rerun",
     "post_validation_runtime_changed": false
   },
-  "parallel_neutral_runtime_metadata_stage": "runtime-metadata-implementation-complete"
+  "parallel_neutral_runtime_metadata_stage": "runtime-metadata-implementation-complete",
+  "api_process_metadata_fix": {
+    "base_sha": "5148733398868002eb4eafad6a9ea207defe0412",
+    "branch": "codex/deployment-api-process-metadata",
+    "prompt_ref": "ROLE-deployment-API-PROCESS-METADATA-v1",
+    "design": "agents/deployment/api-process-metadata-design.md",
+    "evidence": "agents/deployment/api-process-metadata-validation/",
+    "red": "2 wrapper fake-proc counterexamples fail with supervisor_count2",
+    "fix": "Only API_SCRIPT Python module argv shape recognition;strict==1 unchanged",
+    "green": "4 targeted synthetic guards;74 unrelated deselected;Ruff passed",
+    "actual_stage05_cause": "unknown;not established by synthetic reproduction",
+    "actual_process_docker_pressure_replayed": false,
+    "historical_incomplete_results": "preserved unchanged",
+    "github": "body-file published;GET body verified identical",
+    "implementation_sha": "c0a5e89b2442da2a9149e1d37c2a424d52aff7c0",
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442",
+    "issue_readback": "agents/deployment/api-process-metadata-validation/issue-readback.json",
+    "final_status": "complete;synthetic collector correction only;no real replay",
+    "archive_revision": "final Git metadata identifies docs receipt;implementation SHA remains separately pinned"
+  }
 }

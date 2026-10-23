@@ -1,12 +1,13 @@
 """Deployment environment boundaries only; no independent acceptance cases or product oracles."""
 
 import importlib.util
+import io
 import json
 import os
 import stat
 import subprocess
 import sys
-from contextlib import nullcontext
+from contextlib import nullcontext, redirect_stdout
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -525,3 +526,37 @@ def test_runtime_metadata_scopes_all_reads_and_never_logs_nginx_dump():
     assert all(call.args[0] == 'ps' for call in controls.compose.call_args_list)
     assert all('.Config.Env' not in ' '.join(command) for command in seen)
     controls.audit.assert_called_once_with('SELECT @@max_connections')
+
+
+def fake_api_process_snapshot(tmp_path, supervisor_argv):
+    fake_proc = tmp_path / "synthetic-proc"
+    fake_proc.mkdir()
+    rows = [*supervisor_argv, *[["/usr/local/bin/python", "-c",
+             "from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=8, pipe_handle=10)",
+             "--multiprocessing-fork"] for _ in range(4)]]
+    for index, argv in enumerate(rows, start=1):
+        process = fake_proc / str(index)
+        process.mkdir()
+        (process / "cmdline").write_bytes(b"\0".join(arg.encode() for arg in argv) + b"\0")
+    output = io.StringIO()
+    with patch("pathlib.Path", return_value=fake_proc) as path, redirect_stdout(output):
+        exec(control.metadata.API_SCRIPT, {"__name__": "synthetic_process_probe"})
+    path.assert_called_once_with("/proc")
+    return json.loads(output.getvalue())
+
+
+@pytest.mark.parametrize("wrapper", ["/sbin/docker-init", "/sbin/tini"])
+def test_api_probe_fake_proc_excludes_init_wrapper(tmp_path, wrapper):
+    supervisor = ["/usr/local/bin/python", "-m", "uvicorn", "t44.api:app", "--workers", "4"]
+    value = fake_api_process_snapshot(tmp_path, [[wrapper, "--", *supervisor], supervisor])
+    assert value == {"supervisor_count": 1, "configured_workers": [4], "spawn_main_process_count": 4,
+                     "unreadable_process_count": 0}
+    assert control.metadata.api_projection(json.dumps(value)) == value
+
+
+def test_api_probe_fake_proc_two_real_supervisors_remain_rejected(tmp_path):
+    supervisor = ["/usr/local/bin/python", "-m", "uvicorn", "t44.api:app", "--workers", "4"]
+    value = fake_api_process_snapshot(tmp_path, [supervisor, supervisor])
+    assert value["supervisor_count"] == 2
+    with pytest.raises(ValueError):
+        control.metadata.api_projection(json.dumps(value))
