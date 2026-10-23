@@ -20,7 +20,6 @@ from .models import (
     Decision,
     DomainViolation,
     Effect,
-    GuardContext,
     ProjectRole,
     ReleaseGate,
     ResponsibilityStage,
@@ -29,6 +28,7 @@ from .models import (
     RollbackGate,
     TaskPosition,
     TaskState,
+    TransitionContext,
     Violation,
 )
 
@@ -49,7 +49,7 @@ def _evidence(values: tuple[str, ...]) -> None:
     )
 
 
-def _stage_role(state: TaskState, context: GuardContext) -> None:
+def _stage_role(state: TaskState, context: TransitionContext) -> None:
     if state is TaskState.DEVELOPING:
         _require(ProjectRole.DEVELOPER in context.roles, Violation.ROLE_FORBIDDEN)
         _require(context.actor_is_owner, Violation.OWNER_REQUIRED)
@@ -62,14 +62,14 @@ def _stage_role(state: TaskState, context: GuardContext) -> None:
         _require(ProjectRole.MANAGER in context.roles, Violation.ROLE_FORBIDDEN)
 
 
-def _dependencies(context: GuardContext) -> None:
+def _dependencies(context: TransitionContext) -> None:
     _require(
         all(state is TaskState.DELIVERED for state in context.dependency_states),
         Violation.DEPENDENCIES_UNSATISFIED,
     )
 
 
-def _review(reference: str, outcome: ReviewOutcome, context: GuardContext) -> ReviewGate:
+def _review(reference: str, outcome: ReviewOutcome, context: TransitionContext) -> ReviewGate:
     gate = context.review
     _require(gate is not None and _present(reference), Violation.REVIEW_REQUIRED)
     gate = cast(ReviewGate, gate)  # Runtime rejection above remains active under python -O.
@@ -87,7 +87,7 @@ def _review(reference: str, outcome: ReviewOutcome, context: GuardContext) -> Re
     return gate
 
 
-def decide(position: TaskPosition, command: Command, context: GuardContext) -> Decision:
+def decide(position: TaskPosition, command: Command, context: TransitionContext) -> Decision:
     """Return an immutable decision; never apply it or map errors to HTTP.
 
     Transaction/CAS, audit, idempotency, plan parsing and proof loading belong to a later

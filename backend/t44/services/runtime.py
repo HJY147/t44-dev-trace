@@ -148,11 +148,7 @@ class Runtime:
                                 "owner_token": secrets.token_bytes(16),
                                 "lease_until": call.clock
                                 + timedelta(seconds=self.settings.idempotency_lease_seconds),
-                                "response_status": None,
-                                "response_body": None,
-                                "response_request_id": None,
                                 "created_at": call.clock,
-                                "completed_at": None,
                             },
                         )
                     call.idem = g.get("idempotency_requests", identifier)

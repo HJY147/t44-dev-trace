@@ -64,20 +64,6 @@ class Tasks:
                 "title": c.body["title"],
                 "description": c.body.get("description", ""),
                 "owner_id": c.body["owner_id"],
-                "state": State.PENDING,
-                "version": 1,
-                "schedule_version": 1,
-                "delivery_cycle": 1,
-                "review_cycle": 1,
-                "blocked_from_state": None,
-                "block_reason": None,
-                "responsibility_stage": None,
-                "artifact_revision": None,
-                "latest_review_id": None,
-                "approved_review_id": None,
-                "approved_assessment_id": None,
-                "approved_assessment_version": None,
-                "escalation_count": 0,
                 "created_at": c.clock,
                 "updated_at": c.clock,
             },
@@ -135,16 +121,6 @@ class Tasks:
         self.owner(g, c, c.body["owner_id"])
         changed = c.cas(g, "tasks", row, {"owner_id": c.body["owner_id"]})
         return {"task": task_model(changed)}
-
-    def listTaskDependencies(self, g, c):
-        c.task(g)
-        return page(
-            g,
-            "task_dependencies",
-            {"project_id": c.project_id, "task_id": c.path["task_id"]},
-            c.query,
-            lambda r: self.dependency_model(g, r),
-        )
 
     def addTaskDependency(self, g, c):
         c.manager()

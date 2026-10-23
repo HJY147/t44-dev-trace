@@ -58,3 +58,14 @@ OPERATIONS = {
     for path, methods in SPEC["paths"].items()
     for method, operation in methods.items()
 }
+
+# Resolve each success payload once; both pre-commit validation and HTTP use this contract.
+for operation in OPERATIONS.values():
+    status = next(code for code in operation["responses"] if code.startswith("2"))
+    schema = operation["responses"][status]["content"]["application/json"]["schema"]
+    data = SPEC["components"]["schemas"][schema["$ref"].split("/")[-1]]["properties"]["data"]
+    operation["success_status"] = int(status)
+    operation["data_schema"] = data
+    operation["data_fields"] = (
+        SPEC["components"]["schemas"][data["$ref"].split("/")[-1]] if "$ref" in data else data
+    )["properties"]

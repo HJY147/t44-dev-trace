@@ -10,7 +10,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, violations
-from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+from t44.messaging.facade import NotificationFacade
+from t44.persistence import PersistenceUnavailable, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+from t44.scheduling.facade import EscalationFacade
 from t44.services.application import Business
 from t44.services.common import Call, now, wire
 from t44.services.errors import Rejected, require
@@ -134,31 +136,26 @@ class LazyFactory:
         if self.factory is None:
             with self.lock:
                 if self.factory is None:
-                    require(bool(self.settings.database_url), "DEPENDENCY_UNAVAILABLE")
-                    engine = create_mysql_engine(self.settings.mysql_settings())
-                    self.factory = SqlAlchemyUnitOfWorkFactory(engine)
+                    try:
+                        engine = create_mysql_engine(self.settings.mysql_settings())
+                        self.factory = SqlAlchemyUnitOfWorkFactory(engine)
+                    except Exception:
+                        raise PersistenceUnavailable("Database configuration unavailable") from None
         return self.factory()
 
 
-def _component(module, name):
-    try:
-        loaded = __import__(module, fromlist=[name])
-    except ModuleNotFoundError as error:
-        if error.name == module or module.startswith(error.name + "."):
-            return None
-        raise
-    return getattr(loaded, name)()
+_DEFAULT = object()
 
 
-def create_app(*, factory=None, settings=None, notifications=None, escalations=None):
+def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalations=_DEFAULT):
     settings = settings or Settings.from_env()
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
     runtime = Runtime(
         factory or LazyFactory(settings),
         settings,
         Business(
-            notifications=notifications or _component("t44.messaging.facade", "NotificationFacade"),
-            escalations=escalations or _component("t44.scheduling.facade", "EscalationFacade"),
+            notifications=NotificationFacade() if notifications is _DEFAULT else notifications,
+            escalations=EscalationFacade() if escalations is _DEFAULT else escalations,
         ),
     )
     app.state.runtime = runtime
