@@ -99,7 +99,12 @@
     "agents/reviewer/evidence/coursework-bundle-9d6",
     "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
     "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1.txt",
-    "agents/reviewer/evidence/coursework-source-fix-dda3"
+    "agents/reviewer/evidence/coursework-source-fix-dda3",
+    "agents/reviewer/dispatches/ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1.txt",
+    "agents/reviewer/dispatches/ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1-followup.txt",
+    "reports/reviews/37-f1598b91b710ca897cffcc81c52f2e3a79a33cbd.md",
+    "reports/reviews/37-62ac2f327e7523ffed69a2bd9f98c87ba2372931.md",
+    "agents/reviewer/evidence/native-bounded-demo"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -561,7 +566,7 @@
     "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635353850",
     "verified_at_utc": "2026-10-23T23:07:30.168374+00:00"
   },
-  "implementation_status": "原归档内存反例一次绿/可信selector窄AST与14freeze/Issue38评论及PR21精确dda3 COMMENT完整GET封存；仅P2关闭，无实际包或产品修改",
+  "implementation_status": "先冻结→原同例红→62ac同例绿/公开原件及窄AST核对完成；待Issue7/PR37 COMMENT和完整GET；原360失败保持，无服务动作",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -653,8 +658,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/coursework-source-fix-dda3/static-audit.json",
-  "latest_review_report": "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+  "latest_review_evidence": "agents/reviewer/evidence/native-bounded-demo/fixed-static-audit.json",
+  "latest_review_report": "reports/reviews/37-62ac2f327e7523ffed69a2bd9f98c87ba2372931.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1428,7 +1433,8 @@
     "ROLE-reviewer-NATIVE-APPLICATION-v1",
     "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1",
     "ROLE-reviewer-COURSEWORK-BUNDLE-v1",
-    "ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1"
+    "ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1",
+    "ROLE-reviewer-NATIVE-BOUNDED-DEMO-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1471,9 +1477,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-warm-glass",
-  "review_outcome": "BUNDLE-SOURCE-BINDING-01 CLOSED_WITHIN_DELTA; actualbundle UNVERIFIED; overall NOT_ACCEPTED",
+  "review_outcome": "SERVE-CLEANUP-SCOPE-01 CLOSED_WITHIN_SOURCE_DELTA; no other confirmed newP1/P2 in listed staticserve/stop/rotation scope;new360UNVERIFIED;overallNOT_ACCEPTED",
   "review_scope": "Only bcb0 strictJSON evidence identity delta and originalHTTP counterexample replay",
-  "review_target_sha": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+  "review_target_sha": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
   "review_targets": [
     {
       "pr": 14,
@@ -1555,7 +1561,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "PR21 dda3 BUNDLE-SOURCE-BINDING-01窄修限定关闭；实际包与整体不放行",
+  "stage": "PR37 boundedserve新增范围有限审与62ac清理角色P2限定关闭；新实测/整体不放行",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1603,6 +1609,56 @@
       "evidence": "agents/reviewer/evidence/warm-glass/github-comment.json",
       "audit_commit": "d8bba16a0e273e121d39ea9c3b58594521a39eac",
       "push_exit": 0
+    }
+  },
+  "previous_phase_before_native_bounded": {
+    "stage": "PR21 dda3 BUNDLE-SOURCE-BINDING-01窄修限定关闭；实际包与整体不放行",
+    "implementation_status": "原归档内存反例一次绿/可信selector窄AST与14freeze/Issue38评论及PR21精确dda3 COMMENT完整GET封存；仅P2关闭，无实际包或产品修改",
+    "review_outcome": "BUNDLE-SOURCE-BINDING-01 CLOSED_WITHIN_DELTA; actualbundle UNVERIFIED; overall NOT_ACCEPTED",
+    "review_target_sha": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+    "latest_review_report": "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+    "latest_review_evidence": "agents/reviewer/evidence/coursework-source-fix-dda3/static-audit.json"
+  },
+  "native_bounded_review": {
+    "initial_tool": "4ef57b6129c712c1fad88de56775c53b84009b15",
+    "original360_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
+    "target": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
+    "sourceSHA": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
+    "evidence_tail": "16b6887cc16500f88134c9482283b4eafc653a37",
+    "freeze_commit": "e30112ab63cd0d3ba93c49ed32f5d9ed98aa7e9c",
+    "original_failure_commit": "c1f03c119956cf7e15833ef63cb888c69a7468fb",
+    "probe": {
+      "old_runs": 1,
+      "old_exit": 1,
+      "new_runs": 1,
+      "new_exit": 0,
+      "same_frozen_fixture_and_assertions": true,
+      "real_service_signal_HTTP_SQL": 0
+    },
+    "finding": "SERVE-CLEANUP-SCOPE-01_CLOSED_WITHIN_SOURCE_DELTA",
+    "other_confirmed_new_P1_P2": [],
+    "owner_tests_not_reviewer_exec": {
+      "old_tool": 17,
+      "new_methods": 3,
+      "live_role_residuals": 8,
+      "live_APIchild_residuals": 5
+    },
+    "original360_exit1_cleanupfalse_preserved": true,
+    "old_protected_port_count": 7,
+    "old_missing_ports": [
+      5177,
+      18086
+    ],
+    "new_actual360_or4h_run": false,
+    "private221_payload_or_independent_material_read": false,
+    "capture_runtime_old_guards_unchanged": true,
+    "source_business_frozen14_unchanged": true,
+    "overall": "NOT_ACCEPTED",
+    "github": {
+      "state": "PENDING_REAL_ISSUE7_AND_PR37_COMMENTS",
+      "approve": false,
+      "status_mutations": [],
+      "merged": false
     }
   }
 }

@@ -300,3 +300,7 @@
 - 在未读取最终fix前独立冻结最小内存state/own/time反例：api generation101及APIchildren102/103均absent，serve-owner runner777仍alive；只验childscope应成功且不得等待runner。parent已传owner360疑因，本设计是AI代码审核，不冒称独立发现/学生/黑盒。冻结JSON含完整输入、预期与0服务/信号边界，随后精确原AST执行红，再待准确fix同例。
 
 - 冻结e30112a已push exit0；随后对acdf verify_stopped精确AST唯一执行真实断言红exit1，0服务/信号/HTTP/SQL/私密IO，模拟时钟到10s不真实等待。公开f159源同4ef/acdf SHA942，22公开原件hash（20工具+cap/原stdoutgzip2）、capture/runtime及原两class AST核对；owner17绿仅核原件。原360 driver1/cleanupfalse与后置全停分开，7项基线缺5177/18086观察范围明确。原报告37-f159...先seal，root刚给62ac fix元数据但本阶段未读其源。
+
+- 原f159不通过/原红先c1f03c1提交push exit0后才读fix62ac。冻结同例只换TARGET和结果文件名新跑一次exit0，fixture SHA524150...不变，child101/102/103仍查询，runner777排除，0真实服务/信号/HTTP/SQL/私密IO。
+- 新084618...仅verify_stopped role白名单一行，完整其余module AST/capture/runtime不变，source角色filter没有新generation文件名真实性验证，不夸大；保持全部代及APIchildren。owner原1红→新3方法绿（8role/5child残留）source/guard/log SHA核过，未重跑其3方法。原actualcap/gzip在f159/62ac/16b字节不变；14freeze/业务源不改。
+- 精确目标62ac、证据尾16b分开，PR37实时head16b/draft；原360只有4ef942的exit1，后置全停不倒填，新360未运行。新增serve/stop/轮换所列静态未确认其它P1/P2，限定关闭SERVE-CLEANUP-SCOPE-01。7项历史保护缺5177/18086保留，下次9项基线由root准入。报告37-62ac...和实际Issue7/COMMENT/GET交接随后封存，不启新360/4h、不APPROVE/status/main/globalpass。
