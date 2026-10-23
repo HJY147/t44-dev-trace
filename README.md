@@ -1,6 +1,27 @@
 # T44 软件开发大作业
 
-本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”。公开仓库：https://github.com/HJY147/t44-dev-trace ，采用MIT许可证。当前v1接口及DDL规格已经冻结，完整应用正在实现；前端、部署/CI、后端领域和数据库事务基础分别见PR #14–#17，文档阶段稿见PR #18。冻结不是产品验收，模块检查不能当作全系统测试结果。
+本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
+
+## 功能与运行
+
+支持项目成员与角色、迭代产能和排期、任务依赖、七状态流转、八段十项评审、四视角上线风险和回滚预案、经理交付/回滚/返工决定、三级延期提醒、通知已读/处理和审计追踪。发布和回滚记录人的决定，不替人操作外部生产系统。
+
+技术栈：Vue 3 / TypeScript / Element Plus，FastAPI / Python 3.12，MySQL 8.4，RabbitMQ，APScheduler，Docker Compose。单体分层，API、消息和扫描分别运行；不将多agent开发岗位当作业务微服务。
+
+请按[单机运行与恢复说明](deployment/README.md)配置、构建、显式迁移、初始化账号和签发调度身份。凭据随机生成并私密保存，不提供可直接公开登录的默认密码。部署说明包含停写备份、新隔离目标恢复和SSH隧道访问步骤。
+
+## 可核对的阶段证据
+
+| 范围 | 实际证据 | 边界 |
+| --- | --- | --- |
+| 集成CI | `265d89bd`的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)，四job成功；317通过/0跳过；Python行88.07%、前端92.21% | 仅对该SHA；不是独立验收或性能结论 |
+| 容器和恢复 | `31f4dff9`的[run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)，真实镜像/Compose、4 API workers、隔离库19表行数和checksum一致 | 托管Linux、2项目40任务的synthetic演练；非已租云服务器 |
+| 前端修复与浏览器 | [b485279报告](https://github.com/HJY147/t44-dev-trace/blob/b485279909720dac0adf1fb1bfbe9b23ef35dd39/reports/modules/frontend.md)，24测试、完整源码行92.19%；真实通知读/处理、114 HTTP只读回归 | 历史失败保留；开发侧验证，不冒称独立测试 |
+| 后端等价重构 | `64b4f891`的[run39938619826](https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826)，四job成功；317通过/0跳过，全部43个t44文件行88.16% | 创建上下文和会话发行复用；前一版测试命名遮蔽失败保留；不是性能改善结论 |
+| 完整产品审核 | [e01审核报告](reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md)，发现表单/重放提示、Schema语义漏检和代码规模问题，真实failure门禁 | 前端已修复；其余修复及新完整SHA仍须复审，未发布success |
+| 需求与设计 | [SRS](reports/final/requirements-report.md)、[概设/详设](reports/final/design-report.md)、[8张成图和源文件](docs/diagrams/README.md) | 随开发补充的M3工作稿；独立成图已查看，Word逐页QA未完成 |
+
+有效生产源码3500–5100行目标尚未达到；[计数口径和历史结果](docs/metrics/source-counting.md)不因超限改变。正式400并发性能、独立验收、准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)和[本人自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
 
 ## 从哪里开始
 
@@ -14,13 +35,15 @@
 - [用户问题与选择](records/qa/)：只记录真实问题、回答和用户实际决定。
 - [独立测试资料](reports/independent-tests/)：独立岗位生成；开发岗不得读取未发布的独立用例与测试工作记录。
 
-## 本轮完成边界
+## 协作与过程边界
 
-本轮把用户提出的六个开发岗位，以及独立测试、文档汇总、用户指导、提示词工程四个岗位落地为独立任务和记录。各开发岗位后续仍负责本模块代码、必要自测、跨岗对接、过程日志及模块报告，文档岗负责主动收集事实后汇总。
+用户提出六个开发岗位，以及独立测试、文档汇总、用户指导、提示词工程四个岗位，随后追加审核岗。各岗分别保存代码、必要自测、对接、日志、模块报告和阶段commit，文档岗主动收集公开事实后汇总；实际并行上限为总协调加三个子agent，岗位按批次执行。
 
 用户随后追加审核岗与GitHub开源协作。用户原创的两段组织/版本管理prompt作为亮点候选保存，最终以实际执行证据说明效果。原始第三方材料、凭据、本地数据与尚未发布的独立验收用例不随代码提交；发布后的测试结果与可复现代码另行归档。
 
 独立测试实例以无父会话方式创建，只接收中性材料，不与开发岗位互通消息。共享文件系统未实施操作系统级访问隔离，报告会如实说明。
+
+测试文件统一在`tmp/`，按首次引入先后从`999_xxx`向下递减；[分配表](records/validation/test-file-layout.json)记录迁移与新增编号。旧命令和失败日志保持原样，不把改名后的路径倒填为当时执行路径。
 
 专职审核对旧设计717cd65给出四项阻断，责任岗分别修复后，C1–C4在bc0cd34上限定复审通过；这不代表产品验收。用户已通过D004采用字段/错误码方案，v1冻结及逐文件哈希见records/spec-freezes/v1.json，冻结commit为ae60dc3。完整业务API、项目库迁移和联调已授权继续；主干五项必需检查及拒合并实证见records/github/。
 
