@@ -27,3 +27,16 @@
 - 已执行 `gh issue comment 5 --repo HJY147/t44-dev-trace --body-file agents/scheduler/github-interface-question.md`，返回 https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6358215339 。两条命令退出码均为 0，接口问题尚无回复。
 - 本次仅归档已有资料并发表已授权评论；产品实现、模块自测、集成、独立验收和接口冻结仍未完成；不推送、不切分支、不合并、不设置审核成功。
 - 提交前再次以 `git branch --show-current` 与 `git diff --cached --name-only` 核对分支为 `codex/team-bootstrap`、暂存区为空；标准库校验 handoff 的 5 个产物均存在且实现状态仍为“未实现”，模块报告 47 行。将只显式暂存这 5 个本岗文件；实际提交 SHA 由提交后输出交文档岗登记，不在提交前预写成功。
+
+## 2026-10-23T15:18:53+08:00 FOUNDATION 实际实现
+
+- 派工：`ROLE-scheduler-FOUNDATION-v1`，原文与对应关系见本岗同名文件。独立 worktree `.agent-worktrees/scheduler`、分支 `codex/scheduler-core`、base `c5c14aa5504fc3671c040768359570518a3c7507`。
+- 已读根规则/D001/实现布局/human-review，先查官方 APScheduler 3.x User guide、BlockingScheduler、BaseScheduler（来源见模块README）。只读后端 requirements.lock/pyproject，未改共享锁。uv venv/sync实际命令见交接；Python3.12.10、APScheduler3.11.3，参考锁SHA256 `3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30`。
+- 实际代码：版本化JSON三级规则、严格UTC/六位小数输入、最高窗口纯判定、独立进程显式调度生命周期；README列后续真实扫描/持久幂等边界和复杂度，没有伪成功CLI。配置结构由本岗AI选择，无人类技术审批或亲自改码事实。
+- 原始Ruff检查exit1（B004、两项导入顺序）保留，修复后76项通过；自查发现run重入会经finally停止原所有者，补前置保护+1项真实生命周期回归，最终77 passed in0.35s、Ruff通过。仅本模块129语句/46分支覆盖100%。最终后只更新说明文字，没有再改逻辑或刷测试次数。
+- 一次文档apply_patch因同路径Delete/Add冲突被拒，未写入文件；改为Update后成功，此失败不属于测试失败。
+- 实际验证完整输出：`agents/scheduler/foundation-validation.log`；覆盖原始数据：`agents/scheduler/foundation-coverage.json`。测试含真实APScheduler回调/错误事件/等待关闭与两个独立解释器导入无线程，不是MySQL/MQ联调。
+- 开发中收到总协调真实通知：用户现采用Q002推荐方案，D004/U006冻结于ae60dc3；已用git show核对。初读时待定的事实保留，不倒写为早已批准；当前报告改为D004已采用，实际业务门面仍未确认。
+- 已实际在Issue6回复消息岗/部署岗：`https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6359652643`；评论正文为本岗foundation-issue-comment.md。D001去重范围为任务+排期版本+级别，跨进程/重启安全仍需持久约束；max_instances仅限本进程。
+- 尚未实现DB候选扫描、原子升级/审计/去重、通知、正式CLI/停机信号组合根；未执行真实MySQL/RabbitMQ/HTTP、AC07、产品覆盖率/性能或独立验收，未联系或读取测试私有资料。
+- 本轮将自己显式commit/push并建draft PR（base codex/team-bootstrap）；提交后SHA/URL由实际工具结果交总协调，不预写成功或自行设置审核状态。
