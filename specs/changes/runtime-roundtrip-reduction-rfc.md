@@ -126,3 +126,7 @@ root已在816ba60记录并准入窄修正：恢复原authorize(call)四行作为
 修正提案未应用patch为agents/backend/runtime-plan-preflight-corrected-not-applied.patch；静态AST/格式/Ruff与固定cloc结果preflight-caller-correction-design.json。相对原5dcb，runtime物理289→297（+8），有效270→276（+6），取代此前原A草案-1节省结论。现在不能宣称A减少源码；6051基准即便其它字节不变也会增至6057，此只是预算，不是整项目已实测新总数。原-1预算/patch按历史保留，不能拿它做当前规模结论。
 
 本勘误先单独提交，再应用窄修正并重放原988/974及必要新目标；25绿/2caller红和前置14结构红全部保留。新源完整CI、限定独立审核/性能窗口都仍待后续，不自动负载。
+
+### 勘误后的实施状态补记
+
+先于修正提交的勘误为5a19f80；之后已按root准入实现两旧入口并验证原caller。原设计patch和其“未应用”记录保留为历史，不代表当前A仍未实施；B/C仍未应用。各阶段原25绿/2红/7绿1红及CAS隔离强化后2绿见agents/backend/preflight-validation-summary.json，不能相互替换或冒称完整CI。新源/净+6行的完整CI及独立审核仍待，未运行性能工具。

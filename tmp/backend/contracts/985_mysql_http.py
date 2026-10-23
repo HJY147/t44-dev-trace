@@ -134,13 +134,16 @@ def test_real_mysql_atomic_workflow_and_competing_cas(real_task):
     )
     task = first.json()["data"]["task"]
 
-    def competing_change(_):
+    race_keys = [uuid4().hex, uuid4().hex]
+
+    def competing_change(index):
         return request(
             client,
             "changeTaskPlan",
             token=tokens["manager"],
             project_id=pid,
             task_id=task["id"],
+            key=race_keys[index],
             body={
                 "expected_version": task["version"],
                 "plan": PLAN,
@@ -164,9 +167,18 @@ def test_real_mysql_atomic_workflow_and_competing_cas(real_task):
         assert uow.gateway.count("outbox_events", {"task_id": task["id"]}) == 3
         completed = uow.gateway.rows(
             "idempotency_requests",
-            {"actor_id": users["manager"], "operation_id": "changeTaskPlan", "status": 2},
+            {
+                "actor_id": users["manager"],
+                "operation_id": "changeTaskPlan",
+                "idempotency_key": race_keys,
+            },
         )
         assert len(completed) == 2 and all(r["response_request_id"] for r in completed)
+        assert all(r["status"] == 2 for r in completed)
+        assert {r["idempotency_key"] for r in completed} == set(race_keys)
+        assert {r["response_request_id"] for r in completed} == {
+            r.headers["x-request-id"] for r in responses
+        }
     task = request(
         client, "getTask", token=tokens["manager"], project_id=pid, task_id=task["id"], expect=200
     ).json()["data"]
@@ -759,4 +771,525 @@ def test_read_uow_real_mysql_revocation_and_new_request_order(
                 "database": factory._sessions.kw["bind"].url.database,
             }
         )
+    )
+
+
+@pytest.mark.parametrize("case", ["block", "unblock", "plan", "escalation", "replay"])
+def test_preflight_real_mysql_transaction_and_unchanged_sql_ledger(real_task, monkeypatch, case):
+    from collections import Counter
+    from datetime import timedelta
+
+    from sqlalchemy import event
+    from t44.services import runtime as runtime_module
+    from t44.services.common import now, wire
+    from t44.services.identity import issue_session
+
+    client, factory, users, tokens, pid, _, task = real_task
+    runtime = client.app.state.runtime
+    token, operation, body = (
+        tokens["manager"],
+        "transitionTask",
+        {
+            "expected_version": task["version"],
+            "action": 2,
+            "reason": "Ledger block",
+            "responsibility_stage": 1,
+            "evidence": EVIDENCE,
+        },
+    )
+    key = uuid4().hex
+    if case == "unblock":
+        task = _http.transition(
+            client,
+            token,
+            pid,
+            task,
+            2,
+            reason="Before unblock",
+            responsibility_stage=1,
+            evidence=EVIDENCE,
+        )
+        body = {
+            "expected_version": task["version"],
+            "action": 3,
+            "basis": "Resolved",
+            "evidence": EVIDENCE,
+        }
+    elif case in ("plan", "replay"):
+        operation, body = (
+            "changeTaskPlan",
+            {
+                "expected_version": task["version"],
+                "plan": PLAN,
+                "reason": "Ledger plan",
+                "evidence": EVIDENCE,
+            },
+        )
+        if case == "replay":
+            request(
+                client,
+                operation,
+                token=token,
+                project_id=pid,
+                task_id=task["id"],
+                body=body,
+                key=key,
+                expect=200,
+            )
+    elif case == "escalation":
+        clock = now()
+        task = request(
+            client,
+            "changeTaskPlan",
+            token=token,
+            project_id=pid,
+            task_id=task["id"],
+            body={
+                "expected_version": task["version"],
+                "plan": {
+                    **PLAN,
+                    "planned_start": wire(clock - timedelta(hours=2)),
+                    "planned_end": wire(clock - timedelta(hours=1)),
+                },
+                "reason": "Eligible synthetic event",
+                "evidence": EVIDENCE,
+            },
+            expect=200,
+        ).json()["data"]["task"]
+        with factory() as uow:
+            g = uow.gateway
+            service = g.insert(
+                "service_accounts",
+                {"name": "preflight-" + uuid4().hex, "active": 1, "created_at": clock},
+            )
+            token = issue_session(
+                g,
+                clock=clock,
+                ttl=3600,
+                service_account_id=service,
+                project_ids=[pid],
+                scopes=["escalation:write"],
+            )["access_token"]
+        operation, body = (
+            "createEscalation",
+            {
+                "expected_version": task["version"],
+                "schedule_version": task["schedule_version"],
+                "rule_version": 1,
+                "scan_run_id": str(uuid4()),
+            },
+        )
+    records = _http._preflight_transactions(runtime, factory, monkeypatch)
+    engine = factory._sessions.kw["bind"]
+    statements, acquires, auth_locks = [], [], []
+    connect, authenticate = engine.connect, runtime_module.authenticate
+
+    def acquire(*args, **kwargs):
+        acquires.append(1)
+        return connect(*args, **kwargs)
+
+    def authorize(g, call, **kwargs):
+        auth_locks.append(kwargs.get("lock"))
+        return authenticate(g, call, **kwargs)
+
+    def statement(_connection, _cursor, _sql, _parameters, context, _many):
+        stmt = context.compiled.statement
+        statements.append(
+            (
+                stmt.__visit_name__,
+                tuple(t.name for t in stmt.get_final_froms()) if stmt.is_select else (),
+            )
+        )
+
+    monkeypatch.setattr(engine, "connect", acquire)
+    monkeypatch.setattr(runtime_module, "authenticate", authorize)
+    event.listen(engine, "before_cursor_execute", statement)
+    try:
+        response = request(
+            client,
+            operation,
+            token=token,
+            project_id=pid,
+            task_id=task["id"],
+            body=body,
+            key=key,
+            expect=202 if case == "escalation" else 200,
+        )
+    finally:
+        event.remove(engine, "before_cursor_execute", statement)
+        monkeypatch.setattr(engine, "connect", connect)
+    counts = Counter(kind for kind, _ in statements)
+    expected = {
+        "block": (22, 5, 2),
+        "unblock": (24, 5, 2),
+        "plan": (20, 6, 2),
+        "escalation": (26, 7, 6),
+        "replay": (9, 0, 0),
+    }[case]
+    actual = (
+        counts["select"],
+        sum(counts[k] for k in ("insert", "update", "delete")),
+        sum(counts[k] for k in ("savepoint", "release_savepoint", "rollback_to_savepoint")),
+    )
+    print(
+        json.dumps(
+            {
+                "case": case,
+                "SELECT_DML_control": actual,
+                "uows": len(records),
+                "acquires": len(acquires),
+                "commits": sum(r["commits"] for r in records),
+                "database": engine.url.database,
+            }
+        )
+    )
+    assert actual == expected
+    assert auth_locks == ([None, "share"] if case == "replay" else [None, "share", "share"])
+    assert all(r["closed"] and r["commits"] == 1 and r["rollbacks"] == 0 for r in records)
+    assert response.json()["meta"]["replayed"] == (case == "replay")
+    # Only the boundary shrinks: all real authentication and original SQL above remain.
+    assert len(records) == len(acquires) == (1 if case == "replay" else 2)
+
+
+@pytest.mark.parametrize("revocation", ["session", "membership"])
+@pytest.mark.parametrize("pause", ["validation", "claim"])
+def test_preflight_real_mysql_rc_rechecks_revocation_in_both_write_phases(
+    real_task, monkeypatch, revocation, pause
+):
+    from threading import Event
+
+    from sqlalchemy import event
+    from t44 import api
+    from t44.services import runtime as runtime_module
+    from t44.services.common import now
+    from t44.services.identity import issue_session
+
+    client, factory, users, tokens, pid, _, task = real_task
+    runtime = client.app.state.runtime
+    with factory() as uow:
+        token = issue_session(uow.gateway, clock=now(), ttl=3600, user_id=users["reviewer"])[
+            "access_token"
+        ]
+    entered, release, revoke_done, writer_started, writer_acquired = (Event() for _ in range(5))
+    original_validate, original_auth, original_scope = (
+        api.validate_request,
+        runtime_module.authenticate,
+        runtime.locked_scope,
+    )
+    authentications, isolations = [], []
+    engine = factory._sessions.kw["bind"]
+
+    def gate():
+        entered.set()
+        assert release.wait(10), "Bounded preflight barrier was not released"
+
+    def validate(request_, op, call):
+        if pause == "validation" and call.token == token and call.operation == "changeTaskPlan":
+            gate()
+        return original_validate(request_, op, call)
+
+    def authenticate(g, call, **kwargs):
+        actor = original_auth(g, call, **kwargs)
+        if call.token == token and call.operation == "changeTaskPlan":
+            authentications.append(g._session())
+            # Explicit diagnostic DBAPI metadata query, not part of the separate SQL ledger test.
+            isolations.append(g._session().connection().get_isolation_level())
+            if pause == "claim" and kwargs.get("lock") == "share":
+                gate()
+        return actor
+
+    def scope(g, call):
+        if pause == "claim" and call.token == token and call.operation == "changeTaskPlan":
+            assert revoke_done.wait(10), "Revocation did not commit before main recheck"
+        return original_scope(g, call)
+
+    def before_cursor(_c, _cursor, _sql, _params, context, _many):
+        stmt = context.compiled.statement
+        lock = getattr(stmt, "_for_update_arg", None)
+        if (
+            stmt.is_select
+            and lock is not None
+            and not lock.read
+            and any(t.name == "auth_sessions" for t in stmt.get_final_froms())
+        ):
+            writer_started.set()
+
+    def after_cursor(_c, _cursor, _sql, _params, context, _many):
+        stmt = context.compiled.statement
+        lock = getattr(stmt, "_for_update_arg", None)
+        if (
+            stmt.is_select
+            and lock is not None
+            and not lock.read
+            and any(t.name == "auth_sessions" for t in stmt.get_final_froms())
+        ):
+            writer_acquired.set()
+
+    monkeypatch.setattr(api, "validate_request", validate)
+    monkeypatch.setattr(runtime_module, "authenticate", authenticate)
+    monkeypatch.setattr(runtime, "locked_scope", scope)
+    event.listen(engine, "before_cursor_execute", before_cursor)
+    event.listen(engine, "after_cursor_execute", after_cursor)
+    key = uuid4().hex
+
+    def change():
+        return request(
+            client,
+            "changeTaskPlan",
+            token=token,
+            project_id=pid,
+            task_id=task["id"],
+            key=key,
+            body={
+                "expected_version": task["version"],
+                "plan": PLAN,
+                "reason": "Revocation barrier",
+                "evidence": EVIDENCE,
+            },
+        )
+
+    def revoke():
+        response = (
+            request(client, "logout", token=token, expect=200)
+            if revocation == "session"
+            else request(
+                client,
+                "removeProjectMember",
+                token=tokens["manager"],
+                project_id=pid,
+                user_id=users["reviewer"],
+                body={"expected_version": 1, "reason": "Synthetic write revocation"},
+                expect=200,
+            )
+        )
+        revoke_done.set()
+        return response
+
+    try:
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            writing = executor.submit(change)
+            try:
+                assert entered.wait(10)
+                revoking = executor.submit(revoke)
+                if pause == "claim" and revocation == "session":
+                    assert writer_started.wait(10)
+                    assert not writer_acquired.wait(0.2), "Session X unexpectedly passed held S"
+                    assert not revoking.done()
+                else:
+                    assert revoking.result(timeout=10).status_code == 200
+                    assert not writing.done()
+            finally:
+                release.set()
+            assert revoking.result(timeout=10).status_code == 200
+            response = writing.result(timeout=10)
+    finally:
+        event.remove(engine, "before_cursor_execute", before_cursor)
+        event.remove(engine, "after_cursor_execute", after_cursor)
+    code = "TOKEN_REVOKED" if revocation == "session" else "PROJECT_ACCESS_DENIED"
+    assert (response.status_code, response.json()["code"]) == (
+        401 if revocation == "session" else 403,
+        code,
+    )
+    assert isolations and set(isolations) == {"READ COMMITTED"}
+    if pause == "claim":
+        # New structural goal: both preflight reads use one real app Session, not cached rows.
+        assert len(authentications) == 2 and authentications[0] is authentications[1]
+    new_response = change()
+    assert (
+        new_response.json()["code"] == code
+        and new_response.json()["audit_id"] != response.json()["audit_id"]
+    )
+    with factory() as uow:
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+        audit = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert audit["outcome"] == 2 and audit["request_id"] == response.json()["request_id"]
+        idem = uow.gateway.rows("idempotency_requests", {"idempotency_key": key})
+        assert len(idem) == int(pause == "claim")
+        if idem:
+            assert idem[0]["status"] == 2 and idem[0]["response_status"] == response.status_code
+    print(
+        json.dumps(
+            {
+                "revocation": revocation,
+                "pause": pause,
+                "isolation": isolations,
+                "database": engine.url.database,
+                "session_writer_waited_for_S": pause == "claim" and revocation == "session",
+            }
+        )
+    )
+
+
+@pytest.mark.fault
+@pytest.mark.parametrize("lost_commit", ["claim", "main"])
+def test_preflight_real_mysql_commit_ack_loss_recovers_from_persisted_state(
+    real_task, monkeypatch, lost_commit
+):
+    from datetime import timedelta
+
+    from t44.persistence import CommitUncertain
+    from t44.services import runtime as runtime_module
+    from t44.services.common import now
+
+    client, factory, users, tokens, pid, _, task = real_task
+    runtime = client.app.state.runtime
+    observed, original = [], runtime_module.authenticate
+    owned_commits, injected = [], []
+
+    def authorize(g, call, **kwargs):
+        observed[:] = [call]
+        return original(g, call, **kwargs)
+
+    def acknowledged_commit(record):
+        if observed and observed[0].idem:
+            owned_commits.append(record)
+            if len(owned_commits) == (1 if lost_commit == "claim" else 2) and not injected:
+                injected.append(True)
+                raise CommitUncertain("Controlled ACK loss after real successful commit")
+
+    monkeypatch.setattr(runtime_module, "authenticate", authorize)
+    records = _http._preflight_transactions(runtime, factory, monkeypatch, acknowledged_commit)
+    key, body = (
+        uuid4().hex,
+        {
+            "expected_version": task["version"],
+            "plan": PLAN,
+            "reason": "ACK injection",
+            "evidence": EVIDENCE,
+        },
+    )
+
+    def change():
+        return request(
+            client,
+            "changeTaskPlan",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            key=key,
+            body=body,
+        )
+
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("audit_events", "outbox_events", "schedule_changes")
+        }
+    first = change()
+    assert (
+        first.status_code == 503
+        and first.json()["code"] == "TRANSACTION_UNCERTAIN"
+        and injected == [True]
+    )
+    with factory() as uow:
+        idem = uow.gateway.rows("idempotency_requests", {"idempotency_key": key})[0]
+        assert idem["status"] == (1 if lost_commit == "claim" else 2)
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"] + int(
+            lost_commit == "main"
+        )
+        if lost_commit == "claim":
+            # Explicit isolated fixture lease expiry, not a claim of elapsed wall clock.
+            uow.gateway.update(
+                "idempotency_requests",
+                {"id": idem["id"]},
+                {"lease_until": now() - timedelta(seconds=1)},
+            )
+    recovered = change()
+    assert recovered.status_code == 200
+    assert recovered.json()["meta"]["replayed"] == (lost_commit == "main")
+    replay = change()
+    assert replay.status_code == 200 and replay.json()["meta"]["replayed"] is True
+    expected_request_id = (
+        first.json()["request_id"]
+        if lost_commit == "main"
+        else recovered.json()["meta"]["request_id"]
+    )
+    assert replay.json()["meta"]["original_request_id"] == expected_request_id
+    with factory() as uow:
+        idem = uow.gateway.rows("idempotency_requests", {"idempotency_key": key})[0]
+        assert idem["status"] == 2 and idem["response_request_id"] == expected_request_id
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"] + 1
+        for table, count in before.items():
+            assert uow.gateway.count(table, {"project_id": pid}) == count + 1
+    assert all(r["closed"] for r in records)
+    print(
+        json.dumps(
+            {
+                "lost_commit": lost_commit,
+                "injection": "after real commit, not network fault",
+                "database": factory._sessions.kw["bind"].url.database,
+                "business_applications": 1,
+            }
+        )
+    )
+
+
+@pytest.mark.parametrize("failure", ["input", "version", "dependency"])
+def test_preflight_real_mysql_rejection_closes_before_fresh_audit(real_task, monkeypatch, failure):
+    from t44.persistence import PersistenceUnavailable
+
+    client, factory, _, tokens, pid, _, task = real_task
+    runtime = client.app.state.runtime
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("audit_events", "outbox_events", "schedule_changes")
+        }
+    records = _http._preflight_transactions(runtime, factory, monkeypatch)
+    original_audit = runtime.audit
+
+    def audit(g, call, error=None):
+        assert all(r["closed"] for r in records[:-1])
+        assert len({id(r["session"]) for r in records}) == len(records)
+        return original_audit(g, call, error)
+
+    def failed_dispatch(*_):
+        raise PersistenceUnavailable("Controlled business dependency failure before commit")
+
+    monkeypatch.setattr(runtime, "audit", audit)
+    if failure == "dependency":
+        monkeypatch.setattr(runtime.business, "dispatch", failed_dispatch)
+    key = uuid4().hex
+    response = request(
+        client,
+        "changeTaskPlan",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        key=key,
+        body={
+            "expected_version": task["version"] + int(failure == "version"),
+            "plan": PLAN,
+            "reason": "Independent rejection",
+            "evidence": EVIDENCE,
+            **({"unexpected": True} if failure == "input" else {}),
+        },
+        expect={"input": 422, "version": 409, "dependency": 503}[failure],
+    )
+    assert (
+        response.json()["code"]
+        == {
+            "input": "PARAMETER_INVALID",
+            "version": "VERSION_CONFLICT",
+            "dependency": "DEPENDENCY_UNAVAILABLE",
+        }[failure]
+    )
+    with factory() as uow:
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+        for table, count in before.items():
+            assert uow.gateway.count(table, {"project_id": pid}) == count + int(
+                table == "audit_events"
+            )
+        audit_row = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert (
+            audit_row["outcome"] == 2 and audit_row["request_id"] == response.json()["request_id"]
+        )
+        idem = uow.gateway.rows("idempotency_requests", {"idempotency_key": key})
+        assert len(idem) == int(failure != "input")
+        if idem:
+            assert idem[0]["status"] == (2 if failure == "version" else 1)
+    assert all(r["closed"] for r in records)
+    assert len(records) == (2 if failure == "input" else 3)
+    assert (records[0]["commits"], records[0]["rollbacks"]) == (
+        (0, 1) if failure == "input" else (1, 0)
     )

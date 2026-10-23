@@ -199,3 +199,7 @@ specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给
 ## A设计调用者勘误（先设计，修正未应用）
 
 原A的25新定向绿未覆盖scanner真实authorize入口，扩检原988/974两项因AttributeError真实红。原RFC无其它调用者判断错误，root审查亦遗漏，AI纠错不是学生发现。root816ba60窄准入恢复authorize原4行并保留claim(call)薄包装→_claim(g,call)，prepare直接同UoW调_claim；不改调度或DB断言。修正patch/预算preflight-caller-correction-design.json先归档，尚未应用；runtime实际草案有效270→276(+6)，旧净减1不能再作当前结论。
+
+## A已实现：保留真实caller，等待精确CI
+
+勘误5a19f80后仅runtime.py恢复authorize与claim(call)薄包装，prepare直接_claim同UoW；原scanner/DB988均不改，B/C/14冻结不动。有效源码净+6而非减1。旧5dcb新增目标14结构红/11语义绿→精确原A25绿（11SQLite HTTP+14真MySQL）→扩caller2红→修正后原caller2+新账本5绿；同次CAS场景查询隔离1红保留，改为实际两keys、不预筛状态、恰2COMPLETE并对应两HTTP request_id，plan先→CAS后2绿。阶段明细preflight-validation-summary.json及原log/xml，不冒当前完整CI通过。RC实连接/实时撤销/独立审计/真实commit后ACK受控注入范围明确，没有时延或设备故障证明；严格静态通过。root组合6102基准+A6仍超5100，待合根后精确数，未解决规模。新源CI/限定审核及独立性能均待。

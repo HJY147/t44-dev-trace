@@ -320,3 +320,12 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 
 - 精确原A新25项通过后扩查发现真实scanner.authorize与DB直接claim调用，本岗原RFC“无其它调用者”错误，root设计审查也漏看。原988/974两项实际AttributeError失败，preflight-caller-before.log/xml；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373012722、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373013279真实公开。不能把25绿当整合通过，更不能记学生发现/改码。
 - root816ba60窄修正准入要求保留两旧接口：authorize原4行供scanner；claim(call)自有UoW薄包装→_claim(g,call)，prepare同合并UoW直接调_claim，不改scheduler/DB988。修正提案patch及AST/Ruff/cloc实数receipt先提交，生产修正暂未应用。预算有效+6，旧-1节省结论失效；无B/C/冻结变化/负载。
+
+## A窄修正实现与必要正确性验证（新源CI待跑）
+
+- 先提交勘误5a19f80，再恢复原authorize与claim(call)薄包装，prepare同首UoW直接_claim；仅runtime.py生产变更，hash与修正提案一致。DB988及scheduler生产/测试原字节不改，B/C和14冻结不动。修正实际270→276有效行(+6)、289→297物理(+8)，不再声称A节省1行。
+- 原25定向绿保留，caller修后原988/974+5账本实际7pass；同次额外原CAS测试1fail因按共享actor/operation查到其它本轮完成历史，原preflight-caller-after.log/xml保留7绿1红。本岗985改为两个实际Idempotency-Key定位场景全部记录、不预筛COMPLETE，仍断言恰2且全COMPLETE/原actor/operation及response_request_id集合等于两次实际HTTP；没有清表/降断言。首按response_id限定2pass后，root要求更强key定位，再plan先→CAS后2pass，分别保留preflight-cas-scope-after与preflight-cas-keys-after原件。
+- 真库仅t44_test、有界独立合成fixture；首A25项中14真MySQL覆盖RC实际连接、session/member两时序、ACK在真实commit之后受控注入、独立拒绝审计；它们不是故障设备或整库宕机。新结构账本BLOCK22/5/2、UNBLOCK24/5/2、plan20/6/2、escalation26/7/6，原SELECT/auth不减，新写2UoW，重放1。共机普通UI可能运行，未测任何时延收益或跑930/955/服务/正式负载。
+- 新源码严格Ruff/格式/Bandit通过、14hash一致；原日志/XML已检查已知DB口令/opaqueBearer匹配0。preflight-validation-summary.json区分各源/各阶段而非把25绿移植为当前完整整合通过。原Starlette TestClient弃用警告保留，不借此升级依赖。
+- root最新组合基准6102超上限1002（其树9560），A+6尚待合根后精确重数；不拿本岗较旧6051作当前组合通过。新全量CI/独立审核/验收/正式性能/规模均待，完整CI只在新源push后启动一轮。
+- 真实阶段Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804，正文preflight-implementation-github-comment.md。
