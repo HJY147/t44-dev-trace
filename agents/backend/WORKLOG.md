@@ -131,3 +131,10 @@
 - 在不创建/编辑测试文件的前提下，用内存加载既有本岗旅程、私密演示账号和真实TCP API完成38/38操作成功、53请求逐响应Schema验证，integration-38-http.json；内部升级HTTP202为已持久事件重放，首次新建由上项scanner真实进程证明。不是独立验收/性能/正式MQ成功链。
 - 已merge根测试机械迁移5e07887，当前运行命令为`PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend ...`；实际collect-only 317 tests成功，integration-tmp-collection.log。保留先前真实运行的旧命令与原日志，不重写历史、不提前重复wholepass。未新增测试文件，不占970号；本岗测试现为tmp/backend/contracts/{985_mysql_http.py,986_http.py,987_faults.py}及tmp/backend/backend/domain/994_transitions.py，fixture保留conftest.py。
 - 本轮38HTTP/CLI实证checkpoint为19750a9920140f206452eb061f49f9dba0aace94，Issue阶段评论6361675371；PRedits仍draft，无self-approve。按根安排本阶段可释放槽位，下一阶段CI/Rabbit、最终规模与独立正式缺陷待根继续派工；不接触私有测试。
+
+## ROLE-backend-REFACTOR-v1 checkpoint 1（性能窗口仅编辑）
+
+- 根003ef6b从干净树快进，未读取独立验收私有资料。按性能隔离要求只源码审查/编辑/Git，未跑pytest、构建、MySQL或任何业务请求。
+- 保守方案已回根：barrel约60行、受信创建上下文/insert→get helper约40～70行、同构转发/模型装配20～50行；总120～200行仅估计，不承诺填平整体约761行缺口。风险主要是创建字段/默认及审计归属差异，完整守卫不删，窗口结束再实测。
+- 实际搜索production无domain barrel消费者，仅本岗994_transitions.py；改为commands/models namespace和state_machine.decide直接导入，旧106用例与断言原样保留，仅符号限定名变化。删除domain/__init__.py重复re-export/__all__。typed类、构造、状态规则未变。当前只静态编辑，尚未运行验证，不宣称通过。
+- 前端未读待办询问已如实答复：manager id1在本岗全38旅程被处理，id2属developer，先前交接未及时更新；当前窗口禁止新业务/DB请求，因此未造记录、不要求前端降低read≠handle断言。
