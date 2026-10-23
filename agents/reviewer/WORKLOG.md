@@ -223,3 +223,13 @@
 - 八段十项报告30-c56及static-audit/execution/13case原件完成；插件实时PR30 draft/baseintegration/headc56。整体及旧独立FAIL不因本轮放行；UI003不混入。真实COMMENT/完整GET回执将在实际发布后补，无APPROVE/status/merge。
 
 - 自有阶段证据b40b28b1136f4c5673b234d09055a37dede78ee3已push exit0；PR30 COMMENT5633760634真实发布，插件正文逐字匹配/COMMENTED，gh只读完整GET特定review准确commit_id=c56及正文严格相同，exit0：https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634。github-comment.json完整回执。无APPROVE/status/CI触发/merge；只补发布归档后释放槽位。
+
+
+## 2026-10-24 HISTORY-EVIDENCE-01窄修复审（bc5/bcb0）
+
+- 实际ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1续派存dispatches，先在另一独立branch把原42243报告/HTTP红/COMMENT5634370911完整seal；再从准确bc5另建codex/review-plan-reason-evidence-fix，不覆盖原报告/反例、不修产品/原测试，不读独立私密或v3、不联系tester。
+- 相对42243只有history生产变化：双方冻结EvidenceRefs验证后sort_keys/ensure_asciiFalse/allow_nanFalse JSON比对。静态核对象键序无关、数组顺序/strings原文保留、true/1及历史1.0/1保守区分，normalization/runtime/DB/FE等全字节不变。44Py/20TSVue/14freeze保持，原986前缀和全部原函数AST不改，只加6参数案。
+- 本岗同一原SQLiteHTTP反例只重放一次exit0，fixture/helpers/JSON.kind1对true/末尾应无reason断言不改，仅SUT目标/输出目录元数据更新。HTTP200/响应Schema有效、actualreason=[]、原audit/schedule不变；旧422JSON与新结果的全部fixture/错误/immutable字段相同，只有误投影1→0。HISTORY-EVIDENCE-01在bc5限定关闭，原422失败继续保持，不等于Issue28独立/整体通过。
+- 核公开35803229的11artifact摘要、精确源/测试hash及引用本岗旧两原件hash一致；before6案2红4绿→after6新+1原正常legacy7绿，不计成本岗7例或累加旧18/504。没有再跑六相邻/全套/CI/872/真实DB/负载/新增测试文件。
+- 只读准确bc5 CI：productpush40023062800及其4jobs success，dockerpush40023062786success；初快照PRproduct40023068752仍跑，不提前称所有检查完成。本岗未重核全量CIartifact。owner固定cloc有效92→96净+4，root原消息+6为物理净行，已勘误通知；不把条件总数当重计或规模通过。
+- 八段十项新报告21-bc5及自有一次绿/公开原件hash归档；PR21准确bc5 COMMENT/完整GET按实际完成补记，无APPROVE/status/CItrigger/merge。

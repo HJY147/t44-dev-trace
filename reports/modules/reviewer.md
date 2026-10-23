@@ -134,3 +134,10 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 本岗只现有13目标一次13绿/52未选；不跑全65/build/browser/DB/CI，不新增编号测试。9raw及可读hash、19源/coverage集合、旧测试命名声明16+22原字节核合；开发9红4绿→13绿、矩阵后65与首次类型失败/最终build分别保留，不冒称本岗实跑或截图复验。报告reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md；证据agents/reviewer/evidence/capacity-feedback-c56a5a5；真实prompt ROLE-reviewer-CAPACITY-FEEDBACK-v1。阶段提交及PR30准确c56 COMMENT/readback另补，无APPROVE/status/merge。
 
 实际发布：阶段证据b40b28b1136f4c5673b234d09055a37dede78ee3已push；PR30 COMMENT5633760634真实发布，插件body/COMMENTED及REST完整GET的c56 commit_id/body均严格读回。URL https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634 ，回执agents/reviewer/evidence/capacity-feedback-c56a5a5/github-comment.json。没有APPROVE/status/CI触发/merge。
+
+
+## HISTORY-EVIDENCE-01窄修复审（准确bc5/bcb0）
+
+先封存原42243不通过与COMMENT5634370911，再在独立codex/review-plan-reason-evidence-fix复审新bc5。唯一生产history改为双方冻结EvidenceRefs有效后JSON排序对象键的精确比较；数组/字符串原文不改、true不等1、历史1与1.0保守不同，原请求normalization/runtime/DB/FE/R1/UI002不变。原HTTP相同fixture/断言一次重放exit0，GET200且无误投影、原行不变，HISTORY-EVIDENCE-01在准确新源限定关闭；原422失败不覆盖，不作为Issue28独立/整体通过。
+
+本岗只此1次HTTP绿，未跑owner6/7/旧18/89/66/CI/browser/DB/负载。公开3580的11原件hash/精确源/旧反例引用hash匹配，开发6案2红4绿→7绿分开记录；14freeze/44Py20TSVue/旧986前缀与函数保持。元数据实核准确bc5 productpush40023062800四job成功，dockerpush成功，初PRproduct快照仍跑，不宣称全门禁。history有效+4（92→96）与物理净+6区别已向root说明，整体规模仍失败。报告reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md；证据agents/reviewer/evidence/plan-reason-evidence-bc5；实际prompt ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1。COMMENT/readback实发后补，无APPROVE/status/merge。
