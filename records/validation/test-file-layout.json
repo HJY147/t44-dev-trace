@@ -190,12 +190,6 @@
       "first_added_commit": "a8b491e62bb2cca2f9b77b151fba3187e553aea6",
       "number": 973,
       "new_path": "tmp/backend/scheduling/973_extensible_rules.py"
-    },
-    {
-      "number": 870,
-      "role": "backend",
-      "path": "tmp/backend/870_validator_profile.py",
-      "status": "reserved before creation for bounded opt-in pure contract CPU diagnostic and offline candidate C equivalence; no production/HTTP/SQL/independent data"
     }
   ],
   "framework_support_files": "conftest.py and __init__.py contain fixtures/package setup, not test cases; retained required names under tmp/backend",
@@ -731,8 +725,15 @@
       "role": "deployment",
       "path": "tmp/deployment/871_native_application.py",
       "status": "reserved before creation for native app lifecycle/source/credential/ownership guards, no independent test access"
+    },
+    {
+      "number": 870,
+      "role": "backend",
+      "path": "tmp/backend/870_validator_profile.py",
+      "status": "reserved before creation for bounded opt-in pure contract CPU diagnostic and offline candidate C equivalence; no production/HTTP/SQL/independent data"
     }
   ],
   "previous_next_number_before_reservation_reconciliation": 884,
-  "next_number_note": "Coordinator reconciled contiguous original reservations883..871, including private v3 and explicit deployment871, without opening any private files."
+  "next_number_note": "Coordinator reconciled contiguous original reservations883..871, including private v3 and explicit deployment871, without opening any private files.",
+  "latest_bookkeeping_correction": "Reservation870 was first appended to migration files by overly generic list selection in a4c71dc; moved to explicit reservations before helper creation. No file/test/product was affected."
 }
