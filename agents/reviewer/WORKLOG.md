@@ -149,3 +149,13 @@
 - 报告八段十项与命令/原件/hash/工具失败限制已落盘；原C-P1/C-P2限定关闭，整体不通过。GitHub COMMENT/提交以实际回执后补，不预写网络成功。
 
 - 主证据ff1486422cd1a32812a568f634f373015e401fae已push；PR21真实COMMENT已发布并GET读回commit_id严格4c20、state=COMMENTED、body完全相符：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373。连接器返回review_id5629687373；无status写入/APPROVE/merge。只补本岗回执后立即释放槽，不等后续新产品或重复全套。
+
+## 2026-10-23T14:51:36.178506+00:00 单UoW实现限定复审
+
+- 实际续派ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1原文已存；独立codex/reviewer-read-uow从46190建立，只读5dcb及22647原件，无产品修改/私有测试接触/新增编号脚本/重跑负载。
+- 实际git/标准库hash核64应用字节、14冻结摘要与RFC、原986/985完整prefix保留；仅Runtime8增1删净+7，auth→validate→freshnow→dispatch/with退出后返回，原异常映射和写路径不变。
+- 18新增断言与原件前9fail/9pass→18pass已逐项核，MySQL4/5/5SELECT各1acquire、session/member先提交新拒绝和在途暂停撤销提交后旧200/新拒绝、fault注入closed→不同Session独立audit均对应；不冒充本岗新执行或真实宕机。
+- 真实live API四job success，原JUnit412/0/0/0、43源/0excluded/88.7883%行覆盖；合成checkout320272 tree与5dcb整tree相同。root当时暂缺22647文件改用git show精确节点读取，root确认随后合入，不记产品失败。
+- 规模5980超880仅核原计数/源等值，未重跑cloc；正式性能失败/无延迟收益、新独立SUT4c边界保持，整体不通过。后续GitHub COMMENT/回执以真实结果补入。
+
+- 主证据60a524dfff45d6022cf74a5daa02cc195ae7b172首次push遇SSL_ERROR_SYSCALL退出128；只读ls-remote恢复exit0且分支尚无，单次重试push退出0，原错误保存在github-publish.json。PR21 COMMENT真实发布并GET逐字读回、commit_id严格5dcb/stateCOMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636。无status写入/APPROVE/mainmerge；补回执后立即释放槽，不待未来负载。
