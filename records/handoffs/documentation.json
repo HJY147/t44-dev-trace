@@ -1,7 +1,7 @@
 {
   "role": "documentation",
-  "stage": "M6 technical MD diagrams and four private Word layout checkpoint",
-  "implementation_status": "seven current MD, source/I-O/test mapping, three diagrams and four technical Word files complete; 33 final pages individually viewed by this AI; final software acceptance not passed",
+  "stage": "M7 design checkpoint before test evidence update",
+  "implementation_status": "design only; M7 report and Word not yet authored; M6 33-page checkpoint preserved",
   "actor": "AI /root/documentation_checkpoint; current M6 author/check/render operator",
   "previous_M5_author": "previous documentation AI; this same instance only recovered M5",
   "artifacts": [
@@ -165,10 +165,15 @@
       "id": "ROLE-documentation-M6-TECHNICAL-REPORTS-v1",
       "status": "used; actual task scope summary and explicit rendering continuation permission",
       "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M6-TECHNICAL-REPORTS-v1.md"
+    },
+    {
+      "id": "ROLE-documentation-M7-TEST-INCREMENT-v1",
+      "status": "used",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M7-TEST-INCREMENT-v1.md"
     }
   ],
   "delivery": {
-    "branch": "codex/documentation-m6",
+    "branch": "codex/documentation-m7",
     "documentation_base": "ceed2d8126405c86016fa05c892249c045534754",
     "production_cutoff": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "design_checkpoint": "a7eef3a",
@@ -189,7 +194,9 @@
     "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6375470296",
     "PR35_comment": "https://github.com/HJY147/t44-dev-trace/pull/35#issuecomment-6375470690",
     "GitHub_readback": "agents/documentation/github-M6-word-qa-readback.json; both exact comment IDs GET and saved body match; PR35 title/body/head verified",
-    "no_main_merge_or_approval": true
+    "no_main_merge_or_approval": true,
+    "M6_final_history": "126df9364171c7f0bece976fd2694a6d6517b193 local and remote codex/documentation-m6 preserved",
+    "M7_base": "3dadfb954f9f11274b324fa544d14c841eb4849a"
   },
-  "updated_at": "2026-10-24T05:52:33.503681+08:00"
+  "updated_at": "2026-10-24T06:34:40.926726+08:00"
 }

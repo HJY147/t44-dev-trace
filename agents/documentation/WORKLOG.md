@@ -283,3 +283,9 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 更新PR33前沿用早先draft状态假设，工具返回才发现root已集成历史head13465cc、21:41:30Z自动merged461553b。误将后续Word范围短暂写入旧PR正文后立即通知root，恢复其原MD/图正文并GET逐字核对，不继续改变历史。后续不冒充Word已合入。
 - GitHub工具新建draft PR35，base codex/integration、head39ef7d0，GET title/body/head匹配、open/draft/unmerged、mergeable true。公开Issue9评论6375470296及PR35评论6375470690，经两个精确ID各GET，正文与保存副本逐字一致。完整正文/范围/状态回执在github-M6-word-qa-readback.json。
 - 这笔仅提交发布回执/交接；没有APPROVE、success或mainmerge，也不再读新独立报告或追native修订。最终receipt SHA由git HEAD和远端核实后回传，释放本岗索引/槽位。
+
+## 2026-10-24T06:34:40.926726+08:00 M7 先行设计
+
+- 本实例保留M6本地/远端126df历史且工作树干净，从root明确3dadfb9切新codex/documentation-m7。读AGENTS/本岗历史及明确公开stage04/05/06 MD，未跟私密ref。
+- 先保存M7设计与实际任务摘要，再更新测试正文、提交清单、必要过程索引和单份测试Word；其他三稿M6hash复用。原白盒/交付物8项尚无已发表结果，不能补造通过。
+- 已复读既有documents技能；M4 marker一次事实保留，不重复。M7无产品测试、负载或新图计划。
