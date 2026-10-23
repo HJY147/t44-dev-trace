@@ -139,19 +139,22 @@ def assert_consistent(factory):
     }
 
 
-def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_factory, record_property):
+@pytest.mark.parametrize("projects,tasks,dependencies,records", [(2, 20, 20, 30), (40, 6000, 9000, 15000)])
+def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
+    seed_factory, record_property, projects, tasks, dependencies, records
+):
     args = dict(
-        projects=2,
-        tasks=20,
-        dependencies=20,
-        records=30,
+        projects=projects,
+        tasks=tasks,
+        dependencies=dependencies,
+        records=records,
         anchor_at=datetime(2026, 10, 23, tzinfo=UTC),
     )
     first = seed_demo(seed_factory, **args)
     assert len(seed_factory.seed_commits) == 1
     assert any("INSERT INTO tasks" in sql and many for sql, many in seed_factory.seed_statements)
     assert any("UPDATE tasks" in sql and many for sql, many in seed_factory.seed_statements)
-    assert first["reviews"] + first["decisions"] == 30
+    assert first["reviews"] + first["decisions"] == records
     assert_consistent(seed_factory)
     with seed_factory() as uow:
         snapshot = {name: uow.gateway.rows(name) for name in TABLES}
@@ -166,7 +169,7 @@ def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_facto
     with pytest.raises(StatementRejected):
         seed_demo(seed_factory, **args, seed=45)
     with seed_factory() as uow:
-        assert uow.gateway.count("tasks") == 20
+        assert uow.gateway.count("tasks") == tasks
 
 
 def test_seed_impossible_dependency_count_rolls_back_entire_dataset(seed_factory):
