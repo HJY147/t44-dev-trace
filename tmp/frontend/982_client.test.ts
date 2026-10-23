@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { api, ApiError, intentFor, request } from '../../frontend/src/api'
 import { allPages, bootstrap, context, display, logout, workspace } from '../../frontend/src/workspace'
 import { asArray, initial, label, resolve, safeLink, schemas, validate } from '../../frontend/src/contract'
-import { formSchemas, presets, transitionSchema } from '../../frontend/src/forms'
+import { businessRejection, formSchemas, presets, transitionSchema } from '../../frontend/src/forms'
 import { dictionaries, envelope, evidence, fixtureFetch, iteration, member, page, plan, project, seed, task, template, user } from './981_fixtures'
 beforeEach(seed)
 afterEach(() => vi.unstubAllGlobals())
@@ -103,6 +103,18 @@ describe('session cleanup boundaries', () => {
   })
 })
 describe('contract-driven forms and safe records', () => {
+  it('limits staffing explanations to the frozen status, operation and rework context', () => {
+    for (const [status, code, operation, schemaName] of [
+      [0, 'SESSION_CHANGED', 'changeIteration', 'IterationChange'],
+      [0, 'NETWORK_UNCERTAIN', 'changeIteration', 'IterationChange'],
+      [503, 'CAPACITY_REFERENCE_INVALID', 'changeIteration', 'IterationChange'],
+      [422, 'PARAMETER_INVALID', 'changeIteration', 'IterationChange'],
+      [422, 'CAPACITY_REFERENCE_INVALID', 'transitionTask', 'StartTransition'],
+      [409, 'MEMBER_IN_USE', 'changeTaskPlan', 'TaskPlanChange'],
+      [422, 'OWNER_NOT_PROJECT_DEVELOPER', 'changeIteration', 'IterationChange'],
+    ] as const) expect(businessRejection(status, code, operation, schemaName)).toBeUndefined()
+    expect(businessRejection(422, 'CAPACITY_REFERENCE_INVALID', 'transitionTask', 'ReworkTransition')?.message).toContain('补回工时')
+  })
   it('leaves text and unspecified schemas empty while preserving explicit boolean and const values', () => {
     expect(initial({ type: 'string' })).toBe('')
     expect(initial({})).toBe('')
