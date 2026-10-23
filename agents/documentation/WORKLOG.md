@@ -249,3 +249,17 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本笔只保存实际发布回执和交接，不再扩写/看图/渲染/导Word或运行产品。最终收据commit由Git HEAD确定，完成push与远端核实后释放本岗索引/槽位。
 
 - 收据阶段暂存检查另发现新评论副本末尾空行exit2，这次set-e正确阻止commit；仅删副本多余空行，公开已发布正文和GET原文不改。该格式差异不影响评论读回逐字校验；副本采用单末尾换行。
+
+
+## 2026-10-24T05:15:43.699994+08:00 M6 先行设计检查点
+
+- 本实例续固定文档岗，根授权从ceed2d8新建独立documentation-m6 worktree/branch；已读AGENTS/TASK/历史、M6提示词与指导公开资料，源码固定bc5。根未提交的v3性能环境文件只见status名称，未读取/纳入。
+- 对六指定非测试角色实际send_message短问，工具均送达；native已回阶段1成功与阶段2尚未应用执行的范围，其他等回复不阻塞。没有联系测试或读其内部。
+- 先保存M6-design-checkpoint和本次实际派工范围摘要，再执行当前七稿/来源/新三图。已用workspace loader确认bundle26.1017.22136，读取documents技能；M4 marker已一次，本轮不重复。
+- root实际授权本机三图Chrome及后续Word/LO，无需再等；未来本机正式窗口再暂停。不把原v3仅freeze/binding当执行结论。
+
+- 来源构建首次错误假定native阶段2设计已在ceed，git show deployment/native/application-design.md退出128；已用明确发布3e05c60将设计/prompt作post-cutoff annex绑定，未merge未来生产。此前64源静态索引已写；修正后63公开来源与三张图源写出，无产品执行。
+
+- 本实例M6实际写七类当前MD、64源静态AST/声明索引、38接口表、23后端函数I/O及前端边界、FR/AC/模块映射；只解析同源归档JUnit510分布，不跑测试。旧七稿绑定ceed历史hash，M4/M5旧manifest不改。
+- 新三图六输出均exit0，用独立Chrome profile，完成新增headless0；逐张view_image original实看。两流程图初版过高影响Word比例，保留首次源/成图/日志，改分组后仅重渲相应四输出并实看，中文/箭头/边缘完整。Word尚未开始，marker未重复。
+- 根后公开v3 stage01两文件/receipt只作为590673c附录：实际JSON核0PASS/0FAIL/26NOTRUN、环境/恢复true；不跟私密ref。75d75da原始研究阅读索引只供本人选读，不写本人结论/计人工。
