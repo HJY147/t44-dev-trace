@@ -41,7 +41,8 @@
     "docs/prompting/M6-document-checks.json",
     "records/prompts/ROLE-prompt_engineering-M6-CHECKPOINT-v1.md",
     "agents/prompt_engineering/github-m6-stage-comment.md",
-    "docs/prompting/M6-issue11-readback.json"
+    "docs/prompting/M6-issue11-readback.json",
+    "docs/prompting/M6-publication.json"
   ],
   "interfaces": {
     "inputs": [
@@ -90,7 +91,9 @@
     ],
     "m4_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031",
     "m6_comment_status": "Published and exact body readback matched",
-    "m6_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6374082306"
+    "m6_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6374082306",
+    "m6_checkpoint_commit": "dfa39537f6f375a93c773cceee5f0831d61f3fa7",
+    "m6_publication_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6374104135"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -167,7 +170,8 @@
     "Three actual replies, three no replies by cutoff; empty send tool receipt not invented delivery/answer",
     "M5 MD/diagrams commits separate from M4 Word/PR24 merge; no private Word/cover/R002 content read",
     "No product tests, fullCI, build, browser, DB, load, rendering, production/freeze/other-role/ledger changes",
-    "M6 Issue11 comment6374082306 actually published by GitHub plugin and fetch_issue_comments exact body match"
+    "M6 Issue11 comment6374082306 actually published by GitHub plugin and fetch_issue_comments exact body match",
+    "M6 dfa39537f6f375a93c773cceee5f0831d61f3fa7 pushed and ls-remote matched; Issue11 followup6374104135 exact body readback matched; receipt-only followup excludes production/tests/config"
   ],
   "unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -313,7 +317,7 @@
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
     }
   ],
-  "updated_at": "2026-10-23T20:28:50.680896+00:00",
+  "updated_at": "2026-10-23T20:29:55.874320+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",

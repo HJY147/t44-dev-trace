@@ -104,3 +104,4 @@
 - 本轮未运行产品/全CI/构建/浏览器/数据库/负载/渲染。人工12修改/3幻觉人工识别/5人工校正映射仍无完成证据；学生最终正文未创建或覆盖。
 - 本岗报告增补、handoff及Issue11正文同步；只提交本岗文件，[skip ci]避免重复既绿整套。Issue实发/回读、commit/push结果在实际完成后继续追加。
 - GitHub插件`add_comment_to_issue`真实发布Issue11评论6374082306，随后`fetch_issue_comments`按ID找到且正文逐字匹配；公开回执M6-issue11-readback.json。没有APPROVE/合并或CI触发。
+- 实质checkpoint实际commit/push `dfa39537f6f375a93c773cceee5f0831d61f3fa7`，12个本岗文件；随后`git ls-remote`核远端精确匹配、独立树当时clean。Issue11续帖6374104135真实发布并按ID读回正文逐字一致；M6-publication.json保存回执。此后仅补本岗发布记录，产品/测试/配置未变，不重复整套CI。
