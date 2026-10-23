@@ -1,6 +1,7 @@
 """Export four private technical review DOCX files from the project's own Markdown.
 
-Run only with the bundled Python after the documents create marker succeeds.
+Run only with the bundled Python. This session already completed the four-DOCX
+create marker in M4; M6 incrementally continues that operation without repeating it.
 No product imports, requests, tests or generic document templates are used.
 """
 from __future__ import annotations
@@ -19,6 +20,7 @@ from xml.sax.saxutils import escape
 
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
+from docx.enum.section import WD_SECTION, WD_ORIENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -32,6 +34,7 @@ REPORTS = [
     ('test-results-report.md', 'test-results-review.docx', 'T44测试结果技术报告'),
     ('ai-spec-guide.md', 'ai-spec-guide-review.docx', 'T44 AI可执行规格相关文件说明'),
 ]
+ASSET_HASHES = {}
 
 
 def font(run, size=None, bold=None):
@@ -106,6 +109,9 @@ def inline(paragraph, text, source, root, cutoff, size=None):
 def paragraph(doc, text, source, root, cutoff, *, style=None):
     p = doc.add_paragraph(style=style)
     inline(p, text, source, root, cutoff)
+    p.paragraph_format.widow_control = True
+    if len(text) <= 260:
+        p.paragraph_format.keep_together = True
     return p
 
 
@@ -234,12 +240,59 @@ def figure(doc, f, number, root):
     inline_shape.set('descr',name+' 复用M3已渲染图，非本轮重绘')
 
 
+def image_figure(doc, source, root, target, title, number):
+    asset = (source.parent / target).resolve()
+    relative = asset.relative_to(root).as_posix()
+    if relative not in ASSET_HASHES or hashlib.sha256(asset.read_bytes()).hexdigest() != ASSET_HASHES[relative]:
+        raise ValueError('Markdown figure is absent from the verified diagram manifests')
+    w, h = Image.open(asset).size
+    wide = w / h > 1.45 or asset.stem in ('m6-reason-projection', 'm6-quality-feedback')
+    preceding_heading = None
+    if wide:
+        last = doc.paragraphs[-1]
+        if last.style.name.startswith('Heading'):
+            preceding_heading = (last.text, last.style)
+            last._element.getparent().remove(last._element)
+        sec = doc.add_section(WD_SECTION.NEW_PAGE)
+        sec.orientation = WD_ORIENT.LANDSCAPE
+        sec.page_width, sec.page_height = Inches(11), Inches(8.5)
+        sec.different_first_page_header_footer = False
+        if preceding_heading:
+            doc.add_paragraph(preceding_heading[0], preceding_heading[1])
+    maximum_width, maximum_height = (9.4, 6.0 if preceding_heading else 6.3) if wide else (6.85, 7.7)
+    if asset.stem == 'requirements-report-03-states':
+        maximum_height = 7.0
+    width = min(maximum_width, maximum_height * w / h)
+    height = width * h / w
+    caption = doc.add_paragraph()
+    caption.paragraph_format.keep_with_next = True
+    caption.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    font(caption.add_run('图 ' + str(number) + ' ' + plain(title)), 10, True)
+    para = doc.add_paragraph()
+    para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    para.paragraph_format.line_spacing = 1.0
+    para.add_run().add_picture(str(asset), width=Inches(width), height=Inches(height))
+    para.paragraph_format.space_after = Pt(5)
+    para._p.xpath('.//wp:docPr')[0].set('descr', plain(title))
+    if wide:
+        sec = doc.add_section(WD_SECTION.NEW_PAGE)
+        sec.orientation = WD_ORIENT.PORTRAIT
+        sec.page_width, sec.page_height = Inches(8.5), Inches(11)
+        sec.different_first_page_header_footer = False
+
+
 def body(doc, source, root, cutoff, figures):
-    lines=source.read_text().splitlines(); i=0; fig=0
+    lines=source.read_text().splitlines(); i=0; fig=0; image_count=0
     while i<len(lines):
         line=lines[i].strip()
         if not line:i+=1;continue
         if line.startswith('# '):i+=1;continue
+        image = re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', line)
+        if image:
+            image_count += 1
+            image_figure(doc, source, root, image[2], image[1], image_count)
+            i += 1
+            continue
         if line.startswith('```'):
             lang=line[3:].strip();j=i+1
             while j<len(lines) and not lines[j].strip().startswith('```'):j+=1
@@ -266,7 +319,8 @@ def body(doc, source, root, cutoff, figures):
         elif re.match(r'^\d+\. ',line):paragraph(doc,re.sub(r'^\d+\. ','',line),source,root,cutoff,style='List Number')
         else:paragraph(doc,line,source,root,cutoff)
         i+=1
-    if fig!=len(figures):raise ValueError('Existing diagram count differs from Markdown')
+    if fig and fig!=len(figures):raise ValueError('Existing diagram count differs from Markdown')
+    return image_count + fig
 
 
 def main():
@@ -275,6 +329,8 @@ def main():
     parser.add_argument('--private-root',type=Path,required=True)
     parser.add_argument('--cutoff',required=True)
     parser.add_argument('--documentation-ref',default='HEAD')
+    parser.add_argument('--stage', choices=['M6'], required=True)
+    parser.add_argument('--only', nargs='+', choices=[row[0] for row in REPORTS])
     args=parser.parse_args();root=args.root.resolve();private=args.private_root.resolve()
     args.cutoff = subprocess.check_output(['git','rev-parse','--verify',args.cutoff+'^{commit}'],cwd=root,text=True).strip()
     args.documentation_ref = subprocess.check_output(['git','rev-parse','--verify',args.documentation_ref+'^{commit}'],cwd=root,text=True).strip()
@@ -284,7 +340,9 @@ def main():
     cover_file=private/'cover-info.json'
     if stat.S_IMODE(cover_file.stat().st_mode)!=0o600:raise ValueError('Private cover must have mode0600')
     info=json.loads(cover_file.read_text());os.umask(0o077)
-    out=private/'review-documents';out.mkdir(parents=True,exist_ok=True);out.chmod(0o700)
+    if not (private/'review-documents'/'M4'/'archive-integrity.json').exists():
+        raise ValueError('Archive the original M4 files byte-identically before M6 authoring')
+    out=private/'review-documents'/args.stage;out.mkdir(parents=True,exist_ok=True);out.chmod(0o700)
     # Bundled LO uses a private fontconfig override; no global user font settings change.
     bundled_fonts = RUNTIME/'native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/Resources/fonts/truetype'
     config = ('<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n'
@@ -294,18 +352,34 @@ def main():
               '<alias><family>sans-serif</family><prefer><family>Songti SC</family></prefer></alias>\n'
               '<alias><family>serif</family><prefer><family>Songti SC</family></prefer></alias>\n</fontconfig>\n')
     (out/'fontconfig.xml').write_text(config)
-    figures=json.loads((root/'docs/diagrams/manifest.json').read_text())['figures'];records=[]
+    figures=json.loads((root/'docs/diagrams/manifest.json').read_text())['figures']
+    for item in figures:
+        ASSET_HASHES[item['artifacts']['png']['path']] = item['artifacts']['png']['sha256']
+    for name in ['M5-render-manifest.json', 'M6-render-manifest.json']:
+        for item in json.loads((root/'docs/reports/diagrams'/name).read_text())['artifacts']:
+            if item['output'].endswith('.png'): ASSET_HASHES[item['output']] = item['sha256']
+    prior_path = out/'export-manifest.json'
+    records = json.loads(prior_path.read_text())['reports'] if prior_path.exists() else []
+    exporter_hash = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     for name,target,title in REPORTS:
+        if args.only and name not in args.only: continue
         source=root/'reports/final'/name;doc=Document();configure(doc,title);cover(doc,title,info,args.cutoff)
         selected=[f for f in figures if f['source']==source.relative_to(root).as_posix()]
-        body(doc,source,root,args.documentation_ref,selected)
+        source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+        prior = next((row for row in records if row['source'] == source.relative_to(root).as_posix()), None)
+        if prior and prior['source_sha256'] == source_hash and prior.get('exporter_sha256') == exporter_hash and (out/target).exists():
+            continue
+        figure_count = body(doc,source,root,args.documentation_ref,selected)
         output=out/target;doc.save(output);output.chmod(0o600)
-        records.append({'source':source.relative_to(root).as_posix(),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+        records = [row for row in records if row['source'] != source.relative_to(root).as_posix()]
+        records.append({'source':source.relative_to(root).as_posix(),'source_sha256':source_hash,
                         'output':target,'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest(),
-                        'figures':len(selected),'cutoff':args.cutoff,'documentation_ref':args.documentation_ref,'date_blank':True})
+                        'figures':figure_count,'cutoff':args.cutoff,'documentation_ref':args.documentation_ref,'date_blank':True,
+                        'exporter_sha256':exporter_hash,'visual_QA':'pending rendering and every-page inspection'})
     (out/'export-manifest.json').write_text(json.dumps({'reports':records,'private_cover_used':True,
+        'stage':args.stage,'M4_archive_preserved':True,'marker_repeated':False,
         'student_research_authored':False,'visual_QA':'pending rendering and every-page inspection'},ensure_ascii=False,indent=2)+'\n')
-    print('Four private technical review DOCX files authored; render and every-page QA still required.')
+    print('Selected private technical review DOCX sources exported incrementally; render and every-page QA still required.')
 
 
 if __name__=='__main__':main()

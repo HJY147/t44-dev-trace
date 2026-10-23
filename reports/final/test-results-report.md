@@ -67,7 +67,7 @@ UI001/002/003对应开发修复和窄审在新版中有证据，但不篡改原4
 
 同bc5 Docker实际4worker、2项目40任务、19表停写备份/新隔离库恢复行数与checksum完全一致，18业务表226字段复核，scanner completed2。共享flock第二扫描器exit1是预期负向检查，不作run失败；Docker是synthetic Linux集成，不是native桌面完整周期、异机灾备或正式性能。
 
-native阶段1公开30d66/实际7e94258：run2认证、回环和正常停机通过，EPMD为127.0.0.1及::1，root接受该技术澄清；run1 false但cleanup true和cookie前置失败保留。曾有短nocookie窗口及后续防泄露守卫，仅按公开局限解释。阶段2已有3e05设计、bc5源绑定及控制器开发；当前没有API/consumer/scanner/UI完整真实周期通过，后续owner勘误/守卫失败不能当应用失败或通过。
+native阶段1公开30d66/实际7e94258：run2认证、回环和正常停机通过，EPMD为127.0.0.1及::1，root接受该技术澄清；run1 false但cleanup true和cookie前置失败保留。曾有短nocookie窗口及后续防泄露守卫，仅按公开局限解释。阶段2已有3e05设计、bc5源绑定及控制器开发；13465cc检查点时尚无API/consumer/scanner/UI完整真实周期回执，后续owner勘误/守卫失败不能当应用失败或通过。
 
 ## 7 正式性能 规模和最终出口
 
@@ -76,3 +76,11 @@ native阶段1公开30d66/实际7e94258：run2认证、回环和正常停机通�
 固定[cloc原件](../../records/metrics/source-count-strict-evidence-combination.json)和bc5组合回执记录有效源6307，目标3500至5100，超1207。history有效代码92→96净+4，物理净+6不是有效代码，不能改统计根或压行称达标。
 
 整体出口还需新独立完整矩阵、性能、规模、最终准确头审核及学生正文/真实人工材料。root历史JSON合并KeyError/误stage被diff gate阻止的[流程记录](../../records/validation/reviewer-history-merge-resolution.json)是AI协作失败，不是产品bug或学生识别幻觉。M4 Word QA也只证明当时技术稿排版，不证明软件通过。
+
+## 8 MD检查点后的明确公开附录
+
+原13465cc的应用/技术快照不回改；以下来源各自绑定公开提交，不改变bc5生产源。2e2bffa发布独立v3 stage02两文件：H2的functional、operational-faults和三formal入口共五段都在账号初始化控制stdout歧义前置阻塞，环境ready/最终恢复true；26功能整例、4故障整例、3正式组仍未完成，600秒稳态未启动，无产品PASS/FAIL或性能结论。24项离线wire驱动检查不算SUT用例；H3机械修正的源码/断言未变是测试岗声明，未由本岗读取私密载荷核验。
+
+部署岗后明确发布5ef1bde（主证据e142470、实现0a6da88、SUTbc5）的native有限周期：唯一修正fresh run2 exit0/cycletrue/cleanuptrue；4 API workers、回环18088与UI5178proxy，两实际扫描周期60.303070秒完成、scoped会话轮换撤销与最终停机/受保护监听器旧基线核对。首轮run1 exit1/cleanupfalse保留；16事件26通知实际发生于首轮，二轮只复核既有ID与manager10通知，不能写二轮重新发布了这些消息。它证明该有限本地应用生命周期，不证明浏览器全业务、独立、正式性能、云或产品最终验收。
+
+[独立stage02公开回执](https://github.com/HJY147/t44-dev-trace/blob/2e2bffa/reports/independent-v3/stage02-driver-binding.md)与[native阶段2公开入口](https://github.com/HJY147/t44-dev-trace/blob/5ef1bde/agents/deployment/native-application-validation/README.md)仅引明确公开材料，未跟随任何私密ref。

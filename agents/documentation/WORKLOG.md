@@ -263,3 +263,6 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本实例M6实际写七类当前MD、64源静态AST/声明索引、38接口表、23后端函数I/O及前端边界、FR/AC/模块映射；只解析同源归档JUnit510分布，不跑测试。旧七稿绑定ceed历史hash，M4/M5旧manifest不改。
 - 新三图六输出均exit0，用独立Chrome profile，完成新增headless0；逐张view_image original实看。两流程图初版过高影响Word比例，保留首次源/成图/日志，改分组后仅重渲相应四输出并实看，中文/箭头/边缘完整。Word尚未开始，marker未重复。
 - 根后公开v3 stage01两文件/receipt只作为590673c附录：实际JSON核0PASS/0FAIL/26NOTRUN、环境/恢复true；不跟私密ref。75d75da原始研究阅读索引只供本人选读，不写本人结论/计人工。
+
+- M6四Word首轮author/render均exit0，11/15/6/3共35页已由本实例逐页view_image original实看，含四原私密封面；未向GitHub发布个人值/原Word/PNG。发现设计2.4和第4章标题因横向section被留在前页（含一页只有标题），另有短段跨页拆词；首轮DOCX/PNG/PDF保留。修exporter将紧邻横图的标题移入横页、短段keep_together、states图适度留足正文，理由横图增可读尺寸；这是实见版式问题修正，不因元数据重导。
+- 新明确发布2e2bffa stage02两报告和5ef1bde native有限周期只作test报告明示附录，设计末段改为13465当时状态与附录指引；仍不改bc5源/冻结/原失败，不追未来未发布结果。
