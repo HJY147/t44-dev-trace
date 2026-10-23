@@ -1,5 +1,6 @@
 """Project membership and iteration planning, using the injected parameterized gateway."""
 
+from .codes import State
 from .common import mask, model, page, plan, plan_values, roles
 from .errors import require
 
@@ -118,7 +119,14 @@ class Projects:
                 {
                     "project_id": c.project_id,
                     "owner_id": row["user_id"],
-                    "state": [1, 2, 3, 4, 5, 7],
+                    "state": [
+                        State.PENDING,
+                        State.DEVELOPING,
+                        State.BLOCKED,
+                        State.PENDING_REVIEW,
+                        State.PENDING_RELEASE,
+                        State.ROLLED_BACK,
+                    ],
                 },
                 lock="update",
             )

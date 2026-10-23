@@ -2,8 +2,9 @@
 
 from t44.contracts import OPERATIONS, VERSION, violations
 
+from .codes import ERROR_CODES, Action
 from .common import SCHEMAS, model, page, plan_values
-from .errors import Rejected, require
+from .errors import require
 from .projects import Projects
 from .reviews import Reviews
 from .tasks import Tasks
@@ -112,7 +113,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
             require(task and task["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
         if category == 1:
             plan_values(payload["plan"])
-        elif category == 2 and payload["action"] == 9:
+        elif category == 2 and payload["action"] == Action.REWORK:
             plan_values(payload["new_plan"])
         return {
             "valid": True,
@@ -131,7 +132,6 @@ class Business(Projects, Tasks, Reviews, Workflow):
             "project_id": c.project_id,
             **{k: v for k, v in c.query.items() if k in ("task_id", "outcome")},
         }
-        codes = SCHEMAS["ErrorCode"]["enum"]
         return page(
             g,
             "audit_events",
@@ -142,7 +142,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
                 row,
                 before=row["before_values"],
                 after=row["after_values"],
-                reason_code=codes[row["reason_code"] - 1] if row["reason_code"] else None,
+                reason_code=ERROR_CODES[row["reason_code"]] if row["reason_code"] else None,
             ),
         )
 
@@ -176,10 +176,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
 
     def _escalation(self, method, g, c):
         require(self.escalations is not None, "DEPENDENCY_UNAVAILABLE")
-        try:
-            return getattr(self.escalations, method)(g, c)
-        except Rejected:
-            raise
+        return getattr(self.escalations, method)(g, c)
 
     def getEscalationRules(self, g, c):
         return self._escalation("rules", g, c)

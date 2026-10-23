@@ -72,4 +72,13 @@ def test_outbox_failure_rolls_back_business_change_and_leaves_retryable_key(appl
 def test_missing_notification_dependency_returns_real_503(application):
     client, _ = application
     token = login(client)
+    client.app.state.runtime.business.notifications = None
     request(client, "listMyNotifications", token=token, expect=503)
+
+
+def test_default_notification_component_returns_empty_page(application):
+    client, _ = application
+    token = login(client)
+    result = request(client, "listMyNotifications", token=token, expect=200)
+    assert result.json()["data"]["items"] == []
+    assert result.json()["data"]["unread_count"] == 0

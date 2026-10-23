@@ -107,3 +107,11 @@
 - 首次HTTPX网络烟测被本机环境代理截获：登录断言/非JSON诊断及随后ReadTimeout，Uvicorn无访问日志；改loopback直连trust_env=False后实际四项网络HTTP＋MySQL烟测通过（登录Schema、me/字典、422、401）。本岗仅对loopback绕过代理，未改TLS或全局环境；initial.log明确为诊断摘要，原工具输出保留会话。安全响应证据在application-network-smoke.json，无登录Token。
 - 根明确本轮可阶段收尾释放并行槽位，让scheduler/messaging实际接(g,c) DI；后续再恢复最终整合。当前seed、通知/升级门面及Rabbit未完成，全t44覆盖率、性能和独立验收未执行。现有真实代码与证据交接，不宣称整产品完成或审核成功。
 - 根复核发现MySQL HTTP fixture仅本机私密文件且硬编码dev会在CI跳过，已修为优先DATABASE_URL＋T44_DATABASE明确匹配；本机四键模式另须显式T44_HTTP_TEST_DATABASE；CI缺配置fail，不跳过。与DB真库fixture口径直接协商一致。实际用CI=true+URL env分支连接本地t44_dev再跑1 passed（application-mysql-url-fixture.log），不是GitHub Actions或t44_ci已运行。生产代码/断言未降级。
+
+## ROLE-backend-INTEGRATION-v1 checkpoint 1
+
+- 按根实际派工从干净47c21f5快进fcaf509，再合入根6111e180（含DB9aeb697完整seed/Rows冗余清理），不碰root索引。下一步待scheduler完整交付后再全38操作验证。
+- 修根/MQ真实GHA失败：故障测试显式将business.notifications=None，保留真实503断言；另测自动装配NotificationFacade返回200空页。未删故障用例或降低断言，原MQ失败留原岗证据不改写。
+- 审计码改为services/codes.py显式41项稳定双向映射，按冻结field-dictionary逐码核对，不再enumerate/下标。状态/API动作集中命名，domain↔API状态/角色/责任环节及决策类型显式映射，不依赖Enum顺序/相减。
+- 新HTTP回归真实重排ErrorCode展示清单和三个领域Enum迭代顺序、reload映射，仍写入DB ACTION_FORBIDDEN=6、GET正确反解、开发状态仍2。checkpoint第二轮29 HTTP测试通过（含原1真实MySQL），日志integration-checkpoint-first/second.log；没有宣称全38或全t44门禁已经通过。
+- 以上为AI协调发现的实际AI实现偏差，由AI修复，不记为用户亲改/人类幻觉。根已澄清租约仅超时无人接管不构成缺陷，本轮不添加新拒绝语义。

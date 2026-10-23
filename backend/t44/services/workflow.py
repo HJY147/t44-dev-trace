@@ -15,23 +15,27 @@ from t44.domain.models import (
     Cycle,
     DomainViolation,
     Effect,
-    ProjectRole,
     ReleaseGate,
-    ResponsibilityStage,
     ReviewGate,
     ReviewOutcome,
     RollbackGate,
     TaskPosition,
-    TaskState,
     TransitionContext,
     Violation,
 )
 from t44.domain.state_machine import decide
 
+from .codes import (
+    DECISION_TYPE,
+    DOMAIN_TO_STATE,
+    ROLE_TO_DOMAIN,
+    STAGE_TO_DOMAIN,
+    STATE_TO_DOMAIN,
+    Action,
+)
 from .common import model, page, plan_values, roles, task_model
 from .errors import Rejected, require
 
-STATES = tuple(TaskState)
 DOMAIN_ERRORS = {
     Violation.PROJECT_ACCESS_REQUIRED: "PROJECT_ACCESS_DENIED",
     Violation.INVALID_TRANSITION: "STATE_CONFLICT",
@@ -68,11 +72,15 @@ class Workflow:
         deps = g.rows("task_dependencies", {"task_id": row["id"]})
         predecessor_ids = [d["depends_on_task_id"] for d in deps]
         predecessors = g.rows("tasks", {"project_id": c.project_id, "id": predecessor_ids})
-        review_id = b.get("review_id") if action in (5, 6) else row["approved_review_id"]
+        review_id = (
+            b.get("review_id")
+            if action in (Action.APPROVE_REVIEW, Action.REJECT_REVIEW)
+            else row["approved_review_id"]
+        )
         review = g.get("reviews", review_id) if review_id else None
         if review:
             require(review["task_id"] == row["id"], "RESOURCE_NOT_FOUND")
-            if action in (5, 6):
+            if action in (Action.APPROVE_REVIEW, Action.REJECT_REVIEW):
                 require(review["version"] == b["review_version"], "REVIEW_BASELINE_MISMATCH")
         assessment = (
             g.get("release_assessments", b["assessment_id"]) if "assessment_id" in b else None
@@ -92,7 +100,7 @@ class Workflow:
             else None
         )
         release_gate, rollback_gate = None, None
-        if action == 7 and assessment:
+        if action == Action.DELIVER and assessment:
             require(
                 b["assessment_version"] == assessment["version"], "ASSESSMENT_BASELINE_MISMATCH"
             )
@@ -110,7 +118,7 @@ class Workflow:
                 assessment["status"] == 2,
                 assessment["created_by"] == assessment["reviewed_by"],
             )
-        if action == 8 and assessment:
+        if action == Action.ROLLBACK and assessment:
             delivery = g.rows(
                 "decisions",
                 {"task_id": row["id"], "delivery_cycle": row["delivery_cycle"], "type": 1},
@@ -131,12 +139,12 @@ class Workflow:
                     and delivery[0]["rollback_plan_version"] == b["rollback_plan_version"]
                 ),
             )
-        new_plan = plan_values(b["new_plan"]) if action == 9 else None
+        new_plan = plan_values(b["new_plan"]) if action == Action.REWORK else None
         context = TransitionContext(
             True,
-            frozenset(tuple(ProjectRole)[r - 1] for r in roles(c.membership["roles_mask"])),
+            frozenset(ROLE_TO_DOMAIN[r] for r in roles(c.membership["roles_mask"])),
             c.actor_id == row["owner_id"],
-            tuple(STATES[t["state"] - 1] for t in predecessors),
+            tuple(STATE_TO_DOMAIN[t["state"]] for t in predecessors),
             Cycle(row["delivery_cycle"], row["review_cycle"]),
             row["schedule_version"],
             row["artifact_revision"],
@@ -148,34 +156,36 @@ class Workflow:
             "new-plan" if new_plan else None,
         )
         commands = {
-            1: lambda: StartDevelopment(),
-            2: lambda: RecordBlock(
-                b["reason"], tuple(ResponsibilityStage)[b["responsibility_stage"] - 1], evidence
+            Action.START: lambda: StartDevelopment(),
+            Action.BLOCK: lambda: RecordBlock(
+                b["reason"], STAGE_TO_DOMAIN[b["responsibility_stage"]], evidence
             ),
-            3: lambda: ResolveBlock(b["basis"], evidence),
-            4: lambda: SubmitForReview(b["artifact_revision"], evidence),
-            5: lambda: AcceptReview(reference(b["review_id"], b["review_version"])),
-            6: lambda: ReturnForChanges(
+            Action.UNBLOCK: lambda: ResolveBlock(b["basis"], evidence),
+            Action.SUBMIT_REVIEW: lambda: SubmitForReview(b["artifact_revision"], evidence),
+            Action.APPROVE_REVIEW: lambda: AcceptReview(
+                reference(b["review_id"], b["review_version"])
+            ),
+            Action.REJECT_REVIEW: lambda: ReturnForChanges(
                 reference(b["review_id"], b["review_version"]), b["reason"]
             ),
-            7: lambda: ApproveDelivery(
+            Action.DELIVER: lambda: ApproveDelivery(
                 reference(b["assessment_id"], b["assessment_version"]),
                 b["release_version"],
                 b["reason"],
                 evidence,
             ),
-            8: lambda: RecordRollback(
+            Action.ROLLBACK: lambda: RecordRollback(
                 b["reason"],
                 b["impact"],
                 b["target_version"],
                 reference(b["assessment_id"], b["rollback_plan_version"]),
                 evidence,
             ),
-            9: lambda: AuthorizeRework("new-plan", b["reason"], evidence),
+            Action.REWORK: lambda: AuthorizeRework("new-plan", b["reason"], evidence),
         }
         position = TaskPosition(
-            STATES[row["state"] - 1],
-            STATES[row["blocked_from_state"] - 1] if row["blocked_from_state"] else None,
+            STATE_TO_DOMAIN[row["state"]],
+            STATE_TO_DOMAIN[row["blocked_from_state"]] if row["blocked_from_state"] else None,
         )
         try:
             decision = decide(position, commands[action](), context)
@@ -184,16 +194,16 @@ class Workflow:
                 DOMAIN_ERRORS.get(error.code, "EVIDENCE_REQUIRED"), current_state=row["state"]
             ) from None
         values = {
-            "state": STATES.index(decision.target.state) + 1,
-            "blocked_from_state": STATES.index(decision.target.blocked_from) + 1
+            "state": DOMAIN_TO_STATE[decision.target.state],
+            "blocked_from_state": DOMAIN_TO_STATE[decision.target.blocked_from]
             if decision.target.blocked_from
             else None,
-            "block_reason": b["reason"] if action == 2 else None,
-            "responsibility_stage": b["responsibility_stage"] if action == 2 else None,
+            "block_reason": b["reason"] if action == Action.BLOCK else None,
+            "responsibility_stage": b["responsibility_stage"] if action == Action.BLOCK else None,
         }
-        if action == 4:
+        if action == Action.SUBMIT_REVIEW:
             values["artifact_revision"] = b["artifact_revision"]
-        if action == 5:
+        if action == Action.APPROVE_REVIEW:
             values["approved_review_id"] = b["review_id"]
         if Effect.CLEAR_APPROVALS in decision.effects:
             values.update(
@@ -213,16 +223,16 @@ class Workflow:
                 **new_plan,
             )
         changed = c.cas(g, "tasks", row, values)
-        if action == 9:
+        if action == Action.REWORK:
             self.schedule_diff(g, c, row, changed)
         saved_decision = None
-        if action >= 7:
+        if action in DECISION_TYPE:
             identifier = g.insert(
                 "decisions",
                 {
                     "project_id": c.project_id,
                     "task_id": row["id"],
-                    "type": action - 6,
+                    "type": DECISION_TYPE[action],
                     "decided_by": c.actor_id,
                     "delivery_cycle": changed["delivery_cycle"],
                     "reason": b["reason"],

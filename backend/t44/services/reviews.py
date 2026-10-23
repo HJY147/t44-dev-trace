@@ -4,6 +4,7 @@ import hashlib
 import json
 from importlib.resources import files
 
+from .codes import State
 from .common import model, page, task_model
 from .errors import require
 
@@ -28,7 +29,7 @@ class Reviews:
         c.reviewer()
         row = c.task(g)
         require(c.actor_id != row["owner_id"], "ACTION_FORBIDDEN")
-        require(row["state"] == 4, "STATE_CONFLICT", current_state=row["state"])
+        require(row["state"] == State.PENDING_REVIEW, "STATE_CONFLICT", current_state=row["state"])
         require(
             c.body["template_version"] == TEMPLATE["version"]
             and c.body["artifact_revision"] == row["artifact_revision"],
@@ -78,7 +79,7 @@ class Reviews:
     def createReleaseAssessment(self, g, c):
         c.manager()
         row = c.task(g)
-        require(row["state"] == 5, "STATE_CONFLICT", current_state=row["state"])
+        require(row["state"] == State.PENDING_RELEASE, "STATE_CONFLICT", current_state=row["state"])
         require(
             sorted(r["perspective"] for r in c.body["risks"]) == [1, 2, 3, 4], "PARAMETER_INVALID"
         )
@@ -141,7 +142,7 @@ class Reviews:
         require(assessment and assessment["task_id"] == row["id"], "RESOURCE_NOT_FOUND")
         require(c.actor_id != assessment["created_by"], "ACTION_FORBIDDEN")
         require(
-            row["state"] == 5 and assessment["status"] == 1,
+            row["state"] == State.PENDING_RELEASE and assessment["status"] == 1,
             "STATE_CONFLICT",
             current_state=row["state"],
         )

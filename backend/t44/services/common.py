@@ -11,7 +11,6 @@ from t44.persistence.codecs import hours_to_quarters
 from .errors import require
 
 SCHEMAS = SPEC["components"]["schemas"]
-ERROR_IDS = {name: index for index, name in enumerate(SCHEMAS["ErrorCode"]["enum"], 1)}
 
 
 def now():
