@@ -191,3 +191,7 @@ write-path-static-ledger.md给出三次鉴权/3UoW的新写分阶段账本、真
 ## ABBA一次成功执行后的限定解释
 
 root操作者在已协调窗口单次执行tool974，整体exit0/39.88秒，18083由root观察关闭；本岗只离线复核072bc4e的36份原件和15557主请求，0错，SHA/actualimport/fixture/config均一致。A两阶段P95=31.206/31.358ms，B=23.974/23.390ms，三个payload类别同向；完整解释contract-abba-interpretation.md/json。支持唯一契约校验单UoW在本次短条件下改善，不能证明池/SQL因果、transition/escalation收益、正式400×600/独立验收或6051规模达标。后续静态RFC待审，不启动新负载/产品修改。
+
+## 减少往返RFC：待准入、生产不变
+
+specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给出可复核静态Tx/SQL与净LOC预算。推荐只先A：保留authorize普通读和claim session S两次实时鉴权，但同一首UoW；18幂等写3→2事务，SELECT不减少、主锁/成功原子/拒绝独立/commit-ACK不明保护不变。校验跨普通连接及read-commit故障点移除明确列为语义差异，需定向真MySQL证据。B依赖按需+空集合跳过净+6、C根解析evolve净-10独立候选不混用；A仅净-1，未解决6051超限。草案AST/Ruff/format、patch匹配和14hash通过，无候选运行/HTTP/SQL/新负载；精确CI/性能待实现准入后另排。

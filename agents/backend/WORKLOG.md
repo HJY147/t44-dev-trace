@@ -306,3 +306,12 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - 保留03整体exit1及正式性能失败，6051源码超限。此后先写候选RFC而非生产编辑；未发HTTP/SQL/测试/新服务/负载。
 
 结果阶段真实评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372543944；PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372544653。正文abba-result-github-comment.md；原任务书定量要求由root记录source-crosscheck，本岗不据ABBA更改它们。
+
+## 下一轮减少事务/查询的内部RFC（未实现）
+
+- specs/changes/runtime-roundtrip-reduction-rfc.md建议只先选A：authorize普通读→原validate→claim的原session S鉴权共用首UoW，主事务原样；18幂等写3→2UoW/checkout/commit，仍原3次总鉴权和原SELECT。明确RC语句新快照、校验持普通连接更久、输入拒绝由read-commit变rollback及移除独立read-commit故障点，不声称故障逐条输出等同。commit确认丢失、重放前身份/输入、主事务锁序及独立rejection全部保留，须实库时序证明后准入。
+- B按需依赖仅START/UNBLOCK回开发/REWORK并跳空IN，BLOCK静态少2SELECT、需要但空集合少1；全部锁阶段/项目X不删，净+6，不能称覆盖升级/校验。C公开evolve派生独立validator删ref递归净-10，但root+$id/oneOf/evidence/format/并发引用须独立验证，不宣称共享validator线程安全。普通read单UoW、单auth扩大S、join、审计省查均延后。
+- 三个未应用patch分别保存runtime-plan-{preflight,dependencies,validator}-not-applied.patch，固定cloc真实草案A270→269(-1)，B247→253(+6)，C55→45(-10)；不是压行/应用/一起准入，生产当前delta0、6051超限仍未解。AST/既有项目Ruff/format、patch --check与14冻结hash核对通过；未执行候选代码/测试/SQL/HTTP/负载，不占新脚本号。
+- 主来源仅官方MySQL8.4 RC、SQLAlchemy2.0 pre_ping、jsonschema4.26 evolve与referencing0.37不可变Registry；链接和有限推断边界在RFC。没有为设计重跑412或用ABBA外推正式三接口。
+
+RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511；PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155。根实际读RFC倾向A并要求先提交，本提交仍全未应用，等待其精确技术准入。标准未应用unified patch包含必要context空白前缀，常规文本diff检查排除这3个patch语法文件；各patch本身git apply --check已通过，未变更任何产品lint或断言。
