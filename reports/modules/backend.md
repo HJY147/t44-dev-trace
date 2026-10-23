@@ -243,3 +243,9 @@ AI专审员在42243/0549真实SQLite HTTP确认合法audit.kind1与schedule.kind
 bc5应用实际hash匹配；t44_profile/18083、单worker/40token/pool5+10保持，两次前后端口空/本库其它连接0，全部自有server正常退。baseline1/8/32 P95=3.681/24.383/87.779ms，timings4.199/25.010/89.705ms；逐request_id3419观测恰1acquire/auth/派发，三候选cursor SELECT4/5/5/0错。并发32 runtime wall28.630ms/threadCPU1.766ms、SQL wall9.239ms、acquire14.525ms、dispatch-to-entry6.123ms均值是重叠观测，不能加总/冒纯poolwait或锁等待。新连1/69/211是下一步可核生命周期观察，非已定位正式根因；schema构造约0.04ms/请求不支持立即C。
 
 未复现503、未跑transition/escalation、无MySQL server锁等待字段，不能解释已发表托管400×600三正式失败。没有优化生产、改池/锁/资源/阈值、重seed/清库或新全CI；14冻结和统计口径不变、固定6307/超1207保持。结论只是开发诊断，下一阶段由根另准入。
+
+## pool默认15+0候选的后端静态兼容意见
+
+本轮只读ac826cb9 RFC与8处构造点，范围先提交e534dee；一页交接agents/backend/pool-retention-compat/caller-handoff.md。Settings→API/CLI/MQ/scanner采用默认，显式factory不覆盖；993的partial override由3+10变3+0，旧930硬5+10保持历史，不改测试凑绿。CLI无显式dispose/MQ及scanner有finally dispose的生命周期事实列入额外预算，未新测。
+
+两默认之外auth/401角色逻辑、撤销/锁序/CAS/幂等/audit/outbox/commit-ACK异常应原样；池/DB不可用仍可能在auth或拒绝audit完成前503，不能保证原错误分布。标准6池峰90相同，温态保留上界30→90，内存/FD/其它连接及滚动实例代价未知。Issue4具体兼容输入6376569009/Issue3总结6376597757已发表回读，DBowner真实确认当时只有诊断、无默认候选SHA。只认静态无API接线阻断，不作候选CI/专审/性能或合入批准；本机0SQL/业务HTTP/负载/套件，生产bc5/旧ff7/14冻结/6307缺口保持。
