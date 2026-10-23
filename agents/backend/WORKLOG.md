@@ -70,3 +70,20 @@
 - 实际命令 `.venv/bin/python agents/backend/validate_contract_design_v2.py`：修复前退出1、90项失败（`contract-v2-before-fix.log`）；修复后退出0，1130项检查、38操作、0失败（`contract-v2-validation.log`）。真实FormatChecker和pattern验证0001/0999拒绝、1000/9999通过、7位微秒/非Z拒绝；101收件人及嵌套、UINT32计数、逐操作注解一致性均在脚本内核对。不是HTTP或MySQL结果。
 - `gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md` 两次均退出0；实际答复为 `https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358981390`、`https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358981840`。
 - 操作者为AI后端岗位，缺陷来自先前AI设计，由reviewer指出；本轮AI修复不记为用户亲改。所有接口仍草案，未冻结、未实现，无HTTP/业务/数据库/消息/调度/性能测试。
+
+## ROLE-backend-CORE-FOUNDATION-v1 纯领域基础实现
+
+- 独立树 `/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend`，分支codex/backend-core，起点bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68；本轮只在该树写本岗路径。实际派工原文在CORE-FOUNDATION-v1-prompt.md。
+- 已读本树AGENTS、implementation-layout、business-rules和修复后契约；D003首次按错误旧名定位失败，随后rg找到并读实际D003-permission-and-extension-design.md。未读独立测试私有资料。
+- 实现真实Python包 `backend/t44/domain/`：集中内部Enum、九种typed command、只读可信GuardContext/TransitionContext、七状态纯decide及不可变Decision/Effect；不导入ORM或HTTP，不直接应用状态、不提供target_state通道。
+- 与总协调确认依赖仅start、unblock到develop、rework三处；reject_review不新增检查。角色、阻塞来源、证据、轮次、当前上线批准和已审回滚计划均有领域守卫，事务/资源加载留给后续门面。
+- 与database确认MySQLSettings/create_mysql_engine、SqlAlchemyUnitOfWorkFactory和CommitUncertain命名边界；本轮不实现、不调用这些持久组件。CommitUncertain后rollback只清理，不能推断未提交。
+- 与deployment确认strict contract/integration/fault标记和pytest内置JUnit、coverage CLI JSON；domain单元不冒充真实HTTP/集成/故障测试，不加pytest-json插件。pytest9.1.1、coverage7.17.0纳入锁。
+- 已查PyMySQL官方安装说明，caching_sha2_password需要PyMySQL[rsa]；pyproject声明extra且实际锁含cryptography。没有JWT，argon2-cffi仅依赖已安装，不宣称认证已实现。
+- 实际 `uv pip compile ... --extra dev --python-version3.12 --universal --generate-hashes` 退出0，生成68包hash锁；uv0.12.17。Linux目标另解析67包，全部同版本；core-lock-check.log核对每包精确pin/hash。未在Linux执行程序。
+- 首次 `.venv/bin/python -m pip install --require-hashes -r backend/requirements.lock` 及Linux pip wheel下载因本机证书链失败退出1（core-install.log、core-linux-wheel-check.log），不是应用缺陷；未trusted-host、关闭TLS或修改全局证书。后续 `uv pip install --require-hashes` 正常TLS安装退出0（core-uv-install.log）。
+- `pip install --no-deps --no-build-isolation ./backend` 实际构建/安装本地wheel退出0；pip check通过，实际PyMySQL cryptography后端导入成功，未连接MySQL（core-package-install/check.log）。
+- 初次pytest81通过；初次Ruff两处I001失败，保留core-ruff-initial.log；Ruff --fix和format后补纯上下文边界检查，最终pytest106通过，JUnit core-domain-final.xml；Ruff检查及格式检查均退出0，Bandit退出0/无发现。
+- 实际coverage仅source=t44.domain且含分支：331条语句、3未覆盖、48分支、3部分分支，综合约98%；日志及JSON为core-domain-coverage.*，不是全项目80%门禁通过。
+- 文档岗M1实际询问进度时本岗原文答复尚未提交、81测试通过/Ruff待修的即时事实，后续最终状态再单独发送，不能把早期快照改成当时已完成。
+- 本轮没有API应用/路由、DB/迁移、事务/幂等/CAS/图锁、成功或拒绝审计、MQ/调度；没有HTTP、MySQL实库、联调、独立验收或压测。Q002按派工时尚待用户，技术复审不由本岗宣称通过。
