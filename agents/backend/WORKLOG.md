@@ -275,3 +275,9 @@
 - 实现阶段真实Issue3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611。下一步仅精确新源CI/交接；根提出写路径重复装载/联查的后续议题，不在本生产提交实施或预报收益。
 
 Source checkpoint cached --check initially exited2 on original pytest E-lines containing trailing blanks in the four before.log/before.xml artifacts. Preserve exact original logs and recorded SHA; check all other staged text separately. Runtime/tests Ruff, format and source diff checks remain unchanged and passed.
+
+## 5dcb精确CI最小交接
+
+- product39970988113整体success，原JUnit412/0failure/0error/0skip；标记contract114/integration70/fault11各自通过（可重叠）。全部43个t44文件集合精确一致，excluded0，行2550/2872=88.7883%、分支611/776=78.7371%、综合86.6502%。原coverage/JUnit、run/artifact metadata与source5dcb/PRcheckout320272映射保存read-uow-ci-*。
+- 本evidence-only提交不改产品/回归，不为归档再跑任何用例或负载。根需部署槽位，本岗先最小交接结束；写路径静态账本另续派，性能短对照另协调窗口。原03 controller整体exit1/正式性能失败与5980源码超限（根计数）均不改写，不称独立验收通过。
+- 精确CI最终Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367573515；PR16正文同步412实际结果，保持draft。
