@@ -41,3 +41,5 @@
 
 
 后续真实回复补记（总协调）：指导岗上文的capacity pending属于其f103600来源时点。用户随后已采用推荐选项，见[本人决定D005](../decisions/D005-capacity-lifecycle-adopted.md)及[原回复U015](../prompts/U015-original.md)。技术细化先走v1.1提案审查，尚未把该选择记成代码实现或人工改码。
+
+补充边界：用户随后通过[D006](../decisions/D006-rolled-back-capacity-adopted.md)明确已回滚任务允许移出迭代工时，返工前补回；不移除项目成员。来源[U016](../prompts/U016-original.md)，不是AI推定。
