@@ -53,3 +53,32 @@
 业务修复CI362通过后获root独占短诊断窗口。首启工具startup hook失败已修；96e4源baseline服务实际启动两次并正常退出，但bootstrap登录收到非JSON502，尚未产生fixture或任何主样本。系统代理为待验证原因，两Client现固定trust_env=False，仅直连127.0.0.1:18083；这不改变TLS校验。响应JSON非法时仍记录实际HTTP状态。metadata补实际UTC起止，后续仍核exact source/import。
 
 两服务已停止并通知root释放LO；下一次服务/请求须在协调后的新窗口执行。下一步先直接bootstrap验证候选，再baseline1/8/32各10秒、timings同组、profile1并发最多3请求；只测契约入口且验证HTTP200和业务valid=true/无violations。没有主样本前不分析空闲CPU或把502当产品延迟失败。归档profile-bootstrap-*与profile-proxy-static.log。
+
+## 修正后的单调用方案（待新quiet窗口，尚未运行）
+
+前两次setup真实失败保留；第二次bootstrap已成功，但下一工具调用晚于45s服务自停，3个sanity只有ConnectError。root要求改成一个持续控制器，不能让请求启动依赖下一次模型调用。源码4c20候选Schema版本修正已获394项完整CI通过，生产代码当前保持该字节。
+
+955 `--mode orchestrate --seconds 10` 在一次exec内顺序管理三个独立子服务，服务每个120s安全上限、完成矩阵即主动正常SIGTERM+wait，异常finally清理；若强制kill则标run失败。全局160s，预计约70–100s，预留≤3分钟。baseline阶段先bootstrap再1并发3请求，严格核三类HTTP200/valid=true/无violations；之后baseline和timings各1/8/32并发10秒，profile仅1并发3类各1请求。任何失败停止后续阶段；实际argv/起止UTC/exitcode/PID、actual imports/hash写入metadata，不记录DSN/口令/Token。baseline与timings测量范围不同，不把hook开销扣除或外推正式4worker/400/600秒收益。
+
+以下单命令仅为准备稿，提交controller后收到root新窗口才执行，输出目录每轮新建：
+
+```sh
+PYTHONPATH=backend .venv/bin/python - <<'PY'
+import json, os, runpy, sys
+from pathlib import Path
+work = Path.cwd()
+private = work.parent / '.runtime'
+env = json.loads((private / 'profile-environment.json').read_text())
+env['PYTHONPATH'] = str(work / 'backend')
+os.environ.update(env)
+os.umask(0o077)
+sys.path.insert(0, str(work / 'backend'))
+script = work / 'tmp/backend/955_perf_profile.py'
+sys.argv = [str(script), '--execute-stage-b', '--mode', 'orchestrate', '--seconds', '10',
+            '--credentials', str(private / 'profile-credentials.json'),
+            '--output', str(private / 'backend-profile-orchestrated-contract-03')]
+runpy.run_path(str(script), run_name='__main__')
+PY
+```
+
+准备时controller仅Ruff/format/AST通过，没有运行/性能样本。归档profile-controller-static.log；不重复跑已验证生产代码全套。

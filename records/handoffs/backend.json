@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "capacity1.1 business implemented; fullCI8f6 failed2 candidate-version responses; minimal frozenconstfix awaits newCI",
+  "stage": "capacity1.1 exactsource4c20 fullCI394pass0skip; diagnosticcontrollerpreparednotrun",
   "implementation_status": "capacity1.1 guards/locks implemented; candidate schema_version output fixed without changing14freeze files; not deployed",
   "artifacts": [
     {
@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T12:45:47.373977+00:00",
-  "current_stage": "capacity1.1 business implemented; fullCI8f6 failed2 candidate-version responses; minimal frozenconstfix awaits newCI",
+  "updated_at": "2026-10-23T13:15:12.806925+00:00",
+  "current_stage": "capacity1.1 exactsource4c20 fullCI394pass0skip; diagnosticcontrollerpreparednotrun",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -705,7 +705,7 @@
       "agents/backend/performance-diagnostics-plan.md",
       "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
     ],
-    "tool_status": "direct-loopback public bootstrap succeeded;45sserver expired before next tool-call sanity,3ConnectError;allprocesses stopped",
+    "tool_status": "orchestrate mode ready/statics only:oneinvocation starts/ready/checks/stops3independentservers;notexecutedyet",
     "production_changes": false,
     "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; both processes exited0, no diagnostic load running",
     "blocked_execution_prerequisites": [
@@ -718,7 +718,7 @@
       "formal performance and final source range"
     ],
     "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
-    "next_priority": "fix realCI candidate-version output then prepare committed single-process lifecycle controller; nextrootexclusivewindowrequired",
+    "next_priority": "getrootexclusivewindowthenrunthecommittedsinglecommand;stoponfirstinvalidsanity",
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
     "execution_gate": "Do not restart server/load until next coordinator CPU window; report exact committed source+actual imports+UTC.",
     "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
@@ -730,7 +730,23 @@
       "agents/backend/profile-proxy-static.log",
       "agents/backend/profile-window2-lifecycle-failure.json"
     ],
-    "resource_release": "Own18083 processes31358 and31439 exited0; no1/8/32 workload ran; root told LO may resume."
+    "resource_release": "Own18083 processes31358 and31439 exited0; no1/8/32 workload ran; root told LO may resume.",
+    "production_source": "4c20f32b71635016815420472b9d4bb4fa850df0 exactCI394pass;productionfilesunchangedbycontroller",
+    "controller": {
+      "mode": "orchestrate",
+      "sample_seconds": 10,
+      "baseline_and_timings_concurrency": [
+        1,
+        8,
+        32
+      ],
+      "sanity_and_profile": "1worker3validrequests,categories1/2/3",
+      "server_max_lifetime_seconds": 120,
+      "overall_limit_seconds": 160,
+      "normal_shutdown": "ownedchildSIGTERM+wait5s;finallycleanup;forcedkillrecordedandrunfails",
+      "argv": "recordactualserver/clientargv+start/endUTC+exitcodes;noDSN/password/tokeninargv",
+      "static": "Ruff/format/ASTpassed;noimport/launch/loadexecuted"
+    }
   },
   "iat_repairs_v1": {
     "source_report_verification": "agents/backend/iat-public-report-verification.json",
@@ -905,13 +921,12 @@
     "checks": "real openapi_spec_validator+38operationerrorresponse/caseconsistency+copy/version/request/nonMeta invariance passed",
     "before_regression": "new986draft13cases onoldproduction logic11failed2passed55deselected;raw log/XML preserved",
     "unverified": [
-      "exactnewsourcefullCI",
-      "frontend1.1realcapacitylifecycleUI",
+      "frontendrealcapacitylifecycleUI",
       "independentretest",
       "formalperformance",
       "source-size3500-5100"
     ],
-    "next": "push minimal source fix and verify exactnew fullCI; performance controller prep only, no workload",
+    "next": "handoff capacity implementation; committed toolcontroller awaits separate rootquietwindow",
     "prefreeze_correction": {
       "coordinator_metadata_source": "9aeb40c48c35139e29a5e997253d606e5c96139a",
       "only_delta_to_that_contract": "changeTaskAssignment.description separatesOWNER_NOT_PROJECT_DEVELOPERfromCAPACITY_REFERENCE_INVALID",
@@ -963,6 +978,94 @@
         "tmp/backend/contracts/986_http.py"
       ],
       "evidence_checkpoint": "following separate evidence-only commit; not contained in source checkpoint"
+    },
+    "combined_ci": {
+      "source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "run": 39958165108,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39958165108",
+      "status": "allfourjobs success",
+      "junit": {
+        "tests": 394,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "markers": {
+        "contract": {
+          "tests": 96,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "integration": {
+          "tests": 63,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "fault": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "marker_counts_overlap": true,
+      "production_python_files": 43,
+      "coverage_totals": {
+        "covered_lines": 2542,
+        "num_statements": 2865,
+        "percent_covered": 86.56224237427865,
+        "percent_covered_display": "86.56",
+        "missing_lines": 323,
+        "excluded_lines": 0,
+        "percent_statements_covered": 88.7260034904014,
+        "percent_statements_covered_display": "88.73",
+        "num_branches": 774,
+        "num_partial_branches": 108,
+        "covered_branches": 608,
+        "missing_branches": 166,
+        "percent_branches_covered": 78.55297157622739,
+        "percent_branches_covered_display": "78.55"
+      },
+      "full_source_coverage_denominator": true,
+      "excluded_lines": 0,
+      "new_metadata_cases": [
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[1]",
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[2]",
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[3]"
+      ],
+      "original_failed_boundary_cases_now_pass": [
+        "test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True]",
+        "test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True]"
+      ],
+      "provenance": [
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-coverage.json",
+          "sha256": "4ce9324f9403528b79ba713a86793b46d65bc0803dc87a13412c75d0c9b686d8",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/coverage.json"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-junit.xml",
+          "sha256": "3797240e47d6751f8d052d6c410790d45ca188709492ca5a500b44f5db0088b6",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/junit.xml"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-coverage.log",
+          "sha256": "0c20d0e0a920104f4753f6c139b865241b579b161a5d4b5884ef175fc3714e97",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/console.log"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-contracts.log",
+          "sha256": "d3134c226a3382df2587764763ec726ee9f5e258feaad13957650545967da2e5",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/contracts/contracts-54ef6787d2ece62c977280d7367a569c520a36a5/contracts/console.log"
+        }
+      ],
+      "limits": [
+        "developmentCI not independentacceptance",
+        "formalperformance notpassed",
+        "source-size3500-5100notpassed"
+      ]
     }
   }
 }

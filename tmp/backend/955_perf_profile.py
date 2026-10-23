@@ -9,7 +9,10 @@ import importlib
 import json
 import os
 import platform
+import signal
+import socket
 import subprocess
+import sys
 import threading
 import time
 from collections import Counter
@@ -21,6 +24,152 @@ from uuid import uuid4
 
 _RECORD = contextvars.ContextVar("profile_record", default=None)
 _URL = "http://127.0.0.1:18083/api/v1"
+
+
+def orchestrate(args, source_sha, sources):
+    """Own each child lifecycle in one invocation; never depend on another tool call."""
+    args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
+    started, deadline = time.perf_counter(), time.perf_counter() + 160
+    receipt = {
+        "source_sha": source_sha,
+        "imported_modules": sources,
+        "argv": sys.argv,
+        "started_at": datetime.now(UTC).isoformat(),
+        "duration_limit_seconds": 160,
+        "commands": [],
+        "servers": [],
+    }
+    command = [sys.executable, str(Path(__file__).resolve()), "--execute-stage-b"]
+    fixture = args.output / "bootstrap/fixture.json"
+
+    def client(name, *options):
+        argv = [*command, *options, "--output", str(args.output / name)]
+        entry = {"argv": argv, "started_at": datetime.now(UTC).isoformat()}
+        receipt["commands"].append(entry)
+        try:
+            with (args.output / f"{name}.log").open("x") as log:
+                result = subprocess.run(
+                    argv,
+                    stdout=log,
+                    stderr=subprocess.STDOUT,
+                    timeout=max(0.1, min(45, deadline - time.perf_counter() - 5)),
+                )
+            entry["exit_code"] = result.returncode
+        except subprocess.TimeoutExpired:
+            entry["exit_code"] = "timeout"
+            raise
+        finally:
+            entry["ended_at"] = datetime.now(UTC).isoformat()
+        if result.returncode:
+            raise RuntimeError("Diagnostic child failed; preserve output and stop")
+        data = json.loads((args.output / name / "client-metadata.json").read_text())
+        print(f"{name}: requests={data['requests']} failures={data['failures']}", flush=True)
+        return data
+
+    try:
+        for mode in ("baseline", "timings", "profile"):
+            try:
+                with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
+                    raise RuntimeError("Diagnostic port is already occupied")
+            except ConnectionRefusedError:
+                pass
+            argv = [
+                *command,
+                "--mode",
+                mode,
+                "--seconds",
+                "120",
+                "--output",
+                str(args.output / f"server-{mode}"),
+            ]
+            with (args.output / f"server-{mode}.log").open("x") as log:
+                server = subprocess.Popen(argv, stdout=log, stderr=subprocess.STDOUT)
+                entry = {
+                    "argv": argv,
+                    "pid": server.pid,
+                    "started_at": datetime.now(UTC).isoformat(),
+                }
+                receipt["servers"].append(entry)
+                try:
+                    ready_by = min(deadline - 5, time.perf_counter() + 8)
+                    while True:
+                        if server.poll() is not None or time.perf_counter() >= ready_by:
+                            raise RuntimeError("Diagnostic server did not become ready")
+                        try:
+                            with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
+                                break
+                        except ConnectionRefusedError:
+                            time.sleep(0.05)
+                    if mode == "baseline":
+                        sample = client(
+                            "bootstrap",
+                            "--mode",
+                            "bootstrap",
+                            "--credentials",
+                            str(args.credentials),
+                        )
+                        sanity = client(
+                            "sanity",
+                            "--mode",
+                            "client",
+                            "--fixture",
+                            str(fixture),
+                            "--seconds",
+                            "5",
+                            "--max-requests",
+                            "3",
+                        )
+                        if sanity["category_counts"] != {"1": 1, "2": 1, "3": 1}:
+                            raise RuntimeError(
+                                "Sanity must validate all three candidate categories"
+                            )
+                    for concurrency in (1,) if mode == "profile" else (1, 8, 32):
+                        client(
+                            f"{mode}-{concurrency}",
+                            "--mode",
+                            "client",
+                            "--fixture",
+                            str(fixture),
+                            "--concurrency",
+                            str(concurrency),
+                            "--seconds",
+                            str(args.seconds),
+                            "--max-requests",
+                            "3" if mode == "profile" else "0",
+                        )
+                        if mode == "profile" and sample["category_counts"] != {
+                            "1": 1,
+                            "2": 1,
+                            "3": 1,
+                        }:
+                            raise RuntimeError(
+                                "Profile must contain three valid candidate categories"
+                            )
+                finally:
+                    if server.poll() is None:
+                        server.send_signal(signal.SIGTERM)
+                    try:
+                        server.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        entry["forced_kill"] = True
+                        server.kill()
+                        server.wait(timeout=5)
+                    entry.update(
+                        exit_code=server.returncode, ended_at=datetime.now(UTC).isoformat()
+                    )
+                if server.returncode or entry.get("forced_kill"):
+                    raise RuntimeError("Diagnostic server did not stop normally")
+    except Exception as error:
+        receipt["failure"] = type(error).__name__
+        raise
+    finally:
+        receipt.update(
+            ended_at=datetime.now(UTC).isoformat(), wall_seconds=time.perf_counter() - started
+        )
+        (args.output / "orchestrator-metadata.json").write_text(
+            json.dumps(receipt, indent=2) + "\n"
+        )
+    return 0
 
 
 def client_run(args, source_sha):
@@ -328,7 +477,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute-stage-b", action="store_true")
     parser.add_argument(
-        "--mode", choices=("baseline", "timings", "profile", "bootstrap", "client"), required=True
+        "--mode",
+        choices=("baseline", "timings", "profile", "bootstrap", "client", "orchestrate"),
+        required=True,
     )
     parser.add_argument("--seconds", type=int, default=30)
     parser.add_argument("--output", type=Path, required=True)
@@ -339,7 +490,9 @@ def main():
     args = parser.parse_args()
     if not args.execute_stage_b or not 1 <= args.seconds <= 120 or args.max_requests < 0:
         parser.error("Requires explicit stage-B execution and a 1..120 second diagnostic window")
-    if (args.mode == "bootstrap" and args.credentials is None) or (
+    if args.mode == "orchestrate" and args.seconds > 10:
+        parser.error("Orchestrated diagnostic samples must be 1..10 seconds")
+    if (args.mode in ("bootstrap", "orchestrate") and args.credentials is None) or (
         args.mode == "client" and args.fixture is None
     ):
         parser.error("Bootstrap requires credentials; client requires a private fixture")
@@ -359,10 +512,13 @@ def main():
         "t44",
         "t44.api",
         "t44.contracts",
+        "t44.services.application",
+        "t44.services.common",
         "t44.services.runtime",
         "t44.services.tasks",
         "t44.services.projects",
         "t44.services.reviews",
+        "t44.services.workflow",
         "t44.persistence.rows",
     ):
         path = Path(importlib.import_module(name).__file__).resolve()
@@ -394,6 +550,8 @@ def main():
     ).strip()
     if args.mode in ("bootstrap", "client"):
         return client_run(args, source_sha)
+    if args.mode == "orchestrate":
+        return orchestrate(args, source_sha, sources)
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
     engine = create_mysql_engine(db)
     app = create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
@@ -415,10 +573,13 @@ def main():
     timer = threading.Timer(args.seconds, lambda: setattr(server, "should_exit", True))
     started_at = datetime.now(UTC).isoformat()
     started, cpu = time.perf_counter_ns(), time.process_time_ns()
+    # Uvicorn re-raises SIGTERM after graceful shutdown; let this tool write its metadata.
+    previous_term = signal.signal(signal.SIGTERM, lambda *_: setattr(server, "should_exit", True))
     timer.start()
     try:
         server.run()
     finally:
+        signal.signal(signal.SIGTERM, previous_term)
         timer.cancel()
         engine.dispose()
         metadata = {

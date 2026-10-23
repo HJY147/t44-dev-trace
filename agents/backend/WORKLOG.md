@@ -236,3 +236,10 @@
 
 - root约12:50授权独占短窗口后，实际12:51:02启动955 baseline PID39648，实际45秒timer，12:51:47正常退出。固定回环直连的public bootstrap实际exit0并生成ignored0600 fixture；未据此说三类业务候选有效。下一次工具实际到12:51:54才发sanity的3请求，全部ConnectError/0HTTP响应/0valid，主1/8/32矩阵未启动。是本岗跨工具生命周期安排错误，不是产品P95/业务失败；准确metadata/时序profile-window2-lifecycle-failure.json。
 - 核本岗PID已退出、无负载后立即告root释放窗口。直连bootstrap成功仅支持原系统代理假设，不证明旧502唯一根因。根要求后续单个持续控制器一次exec内完成ready→bootstrap/sanity→三模式独立服务/矩阵→finally正常收尾，允许<=120s安全timer并主动stop；控制器先commit，下一独占窗口再测。目前工具未再启动，先解决上述真实CI问题。
+
+### 4c20精确CI闭环与单命令控制器准备
+
+- 源4c20f32b71635016815420472b9d4bb4fa850df0的product39958165108/39958156337均success。已取原始metadata/artifact/console/coverage/JUnit并解析：394tests/0fail/error/skip，contract96/integration63/fault7分别全过（重叠不可相加）。全43个t44文件精确对齐，excluded0，行2542/2865=88.7260%，分支608/774=78.5530%，综合86.5622%；原两个UTC及三category回归均包含。容量全量CI现已成立，非独立复测/正式性能/源码规模达标。
+- 本次源码commit只两文件；失败证据随后独立e6854adc49e9d738d98188c782c1097f85a1d374（无产品变更）归档，先未push避免取消4c20远端CI。原始失败JUnit含自身trace尾空格，非.log证据diff检查也曾退出2；保留原始XML，不改产品源或测试断言，不能把资料提交成功当格式检查通过。
+- 955在同一文件新增orchestrate模式：一个持续controller顺序启动3个独立baseline/timings/profile子服务，固定18083/profile库，逐次TCP ready→bootstrap→3类valid sanity→baseline/timings的1/8/32各10秒→profile1并发3类共3请求，组完成主动SIGTERM并等退出，finally保证异常清理，强制kill另记且run失败。服务安全timer120s、总deadline160s；记录实际argv/UTC/exitcode/PID，不将DSN/口令/Token放argv。实际import map补application/common/workflow。
+- 仅controller的Ruff/format/AST检查通过，profile-controller-static.log；未导入执行、未起服务/负载，下一root独占窗口才运行。生产backend/t44逐文件仍与CI绿4c20一致，不为工具修改再重跑旧全套；当前没有任何有效性能样本或优化结论。

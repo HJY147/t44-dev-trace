@@ -159,3 +159,7 @@ D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副
 精确8f6源39956073530/66523真实全CI失败：391项/2失败/0error/skip，static/frontend绿。两合法UTC候选的500根因是服务把外层1.1.0错误用为冻结内层schema_version.const1.0.0。根采纳本岗按内层冻结const输出的最小修法，未实施曾建议的1.1.1；14冻结文件/APIREADME不改。三category HTTP先3失败，修后加原7个UTC边界共10通过，等待新SHA全CI；原日志/JUnit私密原件与公开脱敏副本SHA、失败关系在capacity-v11-ci-failure-provenance.json。
 
 第二诊断窗口仅public bootstrap成功，45秒服务在跨工具间隙已退出后才发3个sanity，故3ConnectError、0有效业务样本；本岗测量生命周期错误，非产品性能结论。服务正常退出且root已释放窗口；下轮须一次控制器管理全部生命周期并先提交，955/负载现在停止。
+
+精确4c20f32的product39958165108/39958156337已success：394测试/0失败/错误/跳过，contract96/integration63/fault7分别通过；全43个t44文件、无excluded，行2542/2865=88.73%、分支78.55%、综合86.56%。原两个合法UTC及三category修复均在真实CI中，证据capacity-v11-ci-summary.json及该run原件。新1.1开发全量CI通过，不称独立验收、性能或源码规模达标。
+
+955单调用orchestrate控制器已准备，逐次管理3个独立服务的ready/bootstrap/valid sanity/1-8-32矩阵/正常stop，finally清理、全局160s、服务timer120s，实际argv/UTC/PID及import hash记录；生产字节与4c20一致。当前仅静态检查，尚未运行，等root另给quietwindow；原两个诊断失败保留。
