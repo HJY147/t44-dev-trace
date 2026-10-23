@@ -256,3 +256,39 @@
 - 全部fake临时/proc文件，未读真实/proc/容器/独立私密输入，不跑Docker、产品进程或旧故障/正式压力；产品/资源/native不改。仅收尾提交与Issue7实际读回后结束。
 - 提交前diff-check真实exit2：原红JUnit内两行尾空格。保留原字节red-junit.xml.gz与原SHA，阅读XML只规范尾空白，变换说明raw-junit-preservation.json；不重跑测试、不改断言或失败内容，再检查后提交。
 - 实现c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push并交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442使用本岗body-file实际发布，再GET同comment核正文逐字一致，原回执另档。之后仅归档，无重复测试/服务/负载。
+
+## NATIVE-BOUNDED-DEMO-v1 本人设计checkpoint
+
+- 按根61b23e6 RFC开启新阶段，从实时root c1aff86新独立worktree/branch codex/deployment-bounded-demo，不改已merge旧PR31/34历史。已读当前AGENTS/任务/RFC/cd3限定报告，原0a6成功与b238未cycle边界保持；cd3短名无法解析与reviewer/prompts不存在的原查找失败后改用准确SHA/dispatch路径。未读独立或任何真实私密输入。
+- 本人设计bounded-demo-design.md已先成：serve显式180..14400秒/单次run、signal仅置标记安全点cleanup、API/consumer/UI一次启动、TTL300剩120秒轮换scanner/持久tick、ready用户会话提前回收、owned stop请求与完成分开、私密状态/公共白名单。默认cycle路径尽量保持。
+- 当前只设计/实际prompt，无新代码/服务/360秒实跑；下一步工具与必要合成边界完成后报告根。实际窗口与专职新增范围审核另准入，不提前启动，也不回填正式独立三组同次unknown。
+
+### NATIVE-BOUNDED-DEMO-v1工具/必要合成已完成
+
+- 先设计daaccb7后实现serve/stop；serve只接受bc5/current-controller新prepare/未用run与180..14400秒，登记私密runner/截止/stop参数；默认run仍无serve控制。信号只置标记，检查点/到期进入旧拥有权cleanup；请求已发与清理已确认分开。
+- 首周期后API/consumer/UI不重建，控制器ready登录会话先回收；TTL300剩120秒时排空scanner→真实签发/原子发布→撤销旧→新scanner→持久tick/锁后才计额外轮换。已确认撤销的旧会话保留原件但不重复耗时清理。公共结果只计数/源/UTC/端口/清理布尔，不含账户/凭据/通知个人内容。
+- 仅执行871新ServeGuards：初14项绿，补source/controller拒绝、cleanupfalse不转true、ready自有会话回收后最终17项绿；Ruff绿/CLI帮助解析0。Popen/DB/身份/信号全替身，未读真实私密输入、未起服务/发真实信号、未跑旧守卫/完整cycle。capture AST、runtime与业务/锁/规则不变。
+- 工具源hash与scope原件见native-bounded-demo-validation/source-scope.json；新360秒实跑未准入/未执行，现提交后报告根等压力比较窗口，新增范围还需专职审后另准入。
+
+- 工具4ef57b6129c712c1fad88de56775c53b84009b15已push；新draft PR37 https://github.com/HJY147/t44-dev-trace/pull/37 与Issue7评论6376409216已真实发布，PR当前head4ef/draft/body及Issue正文均GET逐字相同。root明确DB岗先用≤120秒本机窗口，本岗保持全未启动，等其结束/清理转达后才另给360秒准入；实际窗口未到不自行推定。实际prompt已补原约束。
+
+### NATIVE-BOUNDED-DEMO-v1 唯一360秒实际运行原失败封档
+
+- 根在DB955 ABBA结束/全清后明确转交独占窗口，准入一次360秒；先前等待窗口表述是历史checkpoint，现由actual-admission-start/coordinator-preflight-public记新准入。精确工具4ef57b6/SHA942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07，新app_20261023_230429_cc2f5b、固定bc5/92源逐SHA，复用原hash锁依赖/现有专属库，未安装/迁移/reset/seed。
+- 控制阶段23:04:57.316057Z→deadline23:10:57.316057Z（独立prepare命令23:04:29不含于controller360秒，未隐藏）；全就绪/首两scan60.292813秒、API/consumer/UI各启动1次、scanner3代、额外TTL300轮换1次/新tick和锁、3个双项目scope服务凭据及ready会话全撤销属真实局部事实。控制器wait_scans验证4条，私密DB同UTC实际8条completed，口径分开。原16confirmed/26通知仅复核，当前新outbox=0，不称新publish。
+- 原整体actualexit1/summaryfalse/cleanupfalse真实保留：各应用stop与brokerstop局部true，post_stop_processes把serve-owner.json中的仍在写终稿的runner自己纳入，等10秒后唯一失败是self PID；不能将独立driver随后已wait退出和23:11:33后置全部PID/新端口gone倒填为原cleanup成功。原stdout字节gzip/实际driver返回码/私密原件SHA索引/公共白名单分别归档。
+- 后置源92SHA不变，旧5173/18080/5175/18084/5176/18089/MySQL13306监听baseline逐项相同。私密0600原件不上传，dump不读，已知literal扫描结果/范围hash另档；根已释放本机窗口，此后仅离线封档。原运行缺陷已即时上报，当前工具尚未修正，不再起服务、HTTP/SQL或第二360/4h。
+
+### NATIVE-BOUNDED-DEMO-v1 原件封档后先行窄修设计
+
+- 原失败封档f1598b9已push。按根新限定授权先补bounded-demo-design勘误：verify_stopped只检查四真实应用角色的全部generation与显式APIworkers/tracker；serve-owner runner须由外部driver wait独立确认，不能内部等待自己退出。10秒/身份/残留角色失败语义不放宽。
+- 仅计划现有871三类合成：同一live runner/已停应用先原红后修绿，真实旧代/当前代残留仍失败，API子进程残留仍失败；own/时钟/信号全替身，无OS动作或真实私密读取。当前尚未修改工具或运行新增案例；无第二360/4h/HTTP/SQL授权。
+
+### NATIVE-BOUNDED-DEMO-v1 self-runner窄修合成完成
+
+- 先设计c19146c后，原942源码在同一live runner/所有应用资源已停反例真实红exit1；仅verify_stopped增加已知api/consumer/scanner/ui role选择，仍保留各generation与显式APIchildren。相同guard字节不变，3个新增方法绿exit0：原self例通过、8个角色旧/当前代任一存活仍失败、4worker+tracker任一存活仍失败。own/时钟/等待/信号全mock，未发OS动作/读真实秘密；未重跑17旧serve/23旧application/capture/873/完整cycle。
+- Ruff exit0；AST仅verify_stopped改变、capture及runtime完全不变，源/guard/原红SHA和实际返回码见self-runner-*。新代码没有360验证，原360false保持；后续只GitHub/封档，第二360或4h均未获准。
+- 根纠正旧保护snapshot范围：仅5173/18080/5175/18084/5176/18089/13306匹配，不含v3当前5177/18086；不能把旧snapshot写成v3过去全时不变。只离线加coverage-note/设计边界，未为补证读独立应用数据或端口；未来另准入必须新增真实UID/start/argv hash基线。
+
+- 窄修代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931已push，application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。PR37整体替换正文（不是只追加旧“未准入/未执行”的冲突段）后GET严格逐字一致，实测当时head完整62ac/drafttrue；Issue7评论6376718503、PR37评论6376718790再次GET逐字一致。旧tool-stage GET正文为历史原件保留。
+- 末尾归档仅含文档/脱敏GitHub回执，最终head会区别于代码/evidence62ac；实际唯一360仍为4ef/942且exit1/cleanupfalse，新084只合成3项/Ruff绿，无第二运行。当前交根安排专职新增范围复核，本岗结束释放槽，不继续刷验证或读取端口/DB。

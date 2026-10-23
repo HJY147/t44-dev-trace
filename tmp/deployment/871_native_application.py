@@ -2,6 +2,7 @@
 
 import hashlib
 import importlib.util
+import io
 import json
 import os
 import tempfile
@@ -9,7 +10,7 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from typing import ClassVar
-from unittest.mock import patch
+from unittest.mock import Mock, call, patch
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = importlib.util.spec_from_file_location("native_application", ROOT / "deployment/native/application.py")
@@ -390,6 +391,307 @@ class CaptureGuards(unittest.TestCase):
         self.assertIs(result["receipt"].get("stop_unconfirmed"), True)
         self.assertEqual(result["receipt"]["stdout_sha256"], hashlib.sha256(b"synthetic partial stdout").hexdigest())
         self.assertEqual(result["receipt"]["stderr_sha256"], hashlib.sha256(b"synthetic partial stderr").hexdigest())
+
+
+class ServeGuards(unittest.TestCase):
+    """New serve control only; no Application constructor, real signal or service."""
+
+    def setUp(self):
+        base = ROOT / ".agent-worktrees/.runtime/native-bounded-serve-guards"
+        base.mkdir(mode=0o700, parents=True, exist_ok=True)
+        temporary = tempfile.TemporaryDirectory(dir=base)
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        self.app = object.__new__(appmod.Application)
+        self.app.project = self.root
+        self.app.run = self.root / "fresh_run"
+        (self.app.run / "state").mkdir(mode=0o700, parents=True)
+        self.app.python = Path("/synthetic/python")
+        self.app.manifest = {"source_commit": appmod.NATIVE_DEMO_SOURCE,
+                             "controller_sha256": digest_file(ROOT / "deployment/native/application.py")}
+        self.app.binding = {"source_commit": appmod.NATIVE_DEMO_SOURCE}
+        self.app.current_record = Mock(return_value=None)
+        self.app.receipt = Mock(side_effect=lambda action, **fields: {"action": action, **fields})
+        self.app._serve_control = None
+        self.app.issued = []
+        self.identity = {"pid": 123, "uid": os.getuid(), "pgid": 456, "started": "synthetic-start",
+                         "command_sha256": "synthetic-command"}
+
+    def prepared_serve(self, *, ready=True, cleanup=True):
+        def cycle(*, serve_control):
+            serve_control.ready = ready
+            serve_control.reason = "duration_elapsed"
+            serve_control.cleaning = True
+            return {"success": ready and cleanup, "error": None, "actions": [], "cleanup": {"success": cleanup}}
+        self.app.run_cycle = Mock(side_effect=cycle)
+        with patch.object(appmod, "process_identity", return_value=self.identity), \
+                patch.object(appmod, "current_cwd", return_value=self.root), \
+                patch.object(appmod.signal, "signal"):
+            return self.app.serve(180)
+
+    def stopped_resource_fixture(self):
+        state = self.app.run / "state"
+        appmod.write_json(state / "serve-owner.json", self.identity)
+        records = []
+        for index, role in enumerate(("api", "consumer", "scanner", "ui")):
+            for generation in ("old", "current"):
+                record = {"role": role, "generation": generation, "pid": 1000 + len(records)}
+                records.append(record)
+                appmod.write_json(state / f"{role}-{generation}.json", record)
+            appmod.write_json(state / f"{role}-current-pointer.json", {"record": f"{role}-current.json"})
+        workers = [{"pid": 2000 + index} for index in range(4)]
+        tracker = [{"pid": 2010}]
+        appmod.write_json(state / "api-children.json", {"workers": workers, "tracker": tracker})
+        return records, workers + tracker
+
+    def mocked_stopped_observation(self, live_pid):
+        self.app.own = Mock(side_effect=lambda record, **_kwargs:
+                            self.identity if record["pid"] == live_pid else None)
+        with patch.object(appmod.time, "monotonic", side_effect=[0, 11]), \
+                patch.object(appmod.time, "sleep") as sleep, \
+                patch.object(appmod.os, "kill") as kill, \
+                patch.object(appmod, "process_identity") as identity:
+            result = self.app.verify_stopped()
+        sleep.assert_not_called()
+        kill.assert_not_called()
+        identity.assert_not_called()
+        return result
+
+    def test_stopped_resources_exclude_live_serve_runner(self):
+        records, children = self.stopped_resource_fixture()
+        result = self.mocked_stopped_observation(self.identity["pid"])
+        self.assertTrue(result["success"])
+        self.assertEqual({item["pid"] for item in result["observations"]},
+                         {record["pid"] for record in records + children})
+        self.assertEqual(len(self.app.own.call_args_list), len(records + children))
+        self.assertNotIn(call(self.identity, leader=True), self.app.own.call_args_list)
+
+    def test_stopped_resources_still_reject_live_role_in_any_generation(self):
+        records, _children = self.stopped_resource_fixture()
+        for record in records:
+            with self.subTest(role=record["role"], generation=record["generation"]):
+                result = self.mocked_stopped_observation(record["pid"])
+                self.assertFalse(result["success"])
+                self.assertEqual([item["pid"] for item in result["observations"] if not item["absent"]],
+                                 [record["pid"]])
+                self.assertIn(call(record, leader=True), self.app.own.call_args_list)
+
+    def test_stopped_resources_still_reject_live_api_worker_or_tracker(self):
+        _records, children = self.stopped_resource_fixture()
+        for record in children:
+            with self.subTest(pid=record["pid"]):
+                result = self.mocked_stopped_observation(record["pid"])
+                self.assertFalse(result["success"])
+                self.assertEqual([item["pid"] for item in result["observations"] if not item["absent"]],
+                                 [record["pid"]])
+                self.assertIn(call(record, leader=False), self.app.own.call_args_list)
+
+    def test_duration_is_explicit_real_integer_in_range(self):
+        for value in (True, False, 179, 14401, 180.0, "360", None):
+            with self.assertRaises(ValueError):
+                appmod.BoundedServe(value)
+        for value in (180, 360, 14400):
+            self.assertEqual(appmod.BoundedServe(value).duration, value)
+
+    def test_signal_only_marks_and_handlers_restore_even_on_failure(self):
+        control = appmod.BoundedServe(180)
+        with patch.object(appmod.signal, "signal", return_value="synthetic-previous") as change, \
+                patch.object(appmod.os, "kill") as kill:
+            with self.assertRaisesRegex(RuntimeError, "synthetic-failure"), control.signals():
+                control.request_stop(appmod.signal.SIGTERM)
+                self.assertEqual(control.reason, "SIGTERM")
+                control.request_stop(appmod.signal.SIGINT)
+                self.assertEqual(control.reason, "SIGTERM")
+                with self.assertRaises(appmod.ServeStopRequested):
+                    control.check()
+                control.cleaning = True
+                control.check()
+                raise RuntimeError("synthetic-failure")
+            kill.assert_not_called()
+        self.assertEqual(change.call_args_list[-2:], [call(appmod.signal.SIGINT, "synthetic-previous"),
+                                                     call(appmod.signal.SIGTERM, "synthetic-previous")])
+
+    def test_monotonic_deadline_requests_stop(self):
+        with patch.object(appmod.time, "monotonic", return_value=100):
+            control = appmod.BoundedServe(180)
+        with patch.object(appmod.time, "monotonic", return_value=280), self.assertRaises(appmod.ServeStopRequested):
+            control.check()
+        self.assertEqual(control.reason, "duration_elapsed")
+
+    def test_early_stop_and_runtime_failure_both_reach_owned_cleanup(self):
+        for failure in (appmod.ServeStopRequested("SERVE_STOP_REQUESTED"), RuntimeError("SERVE_ROTATION_FAILED")):
+            control = appmod.BoundedServe(180)
+            control.reason = "SIGINT"
+            control.retired_sessions = {1}
+            self.app.issued = [1, 2]
+            self.app.check_serve_stop = Mock(side_effect=failure)
+            self.app.cleanup = Mock(return_value={"success": True})
+            result = self.app.run_cycle(serve_control=control)
+            self.assertFalse(result["success"])
+            self.assertTrue(result["cleanup"]["success"])
+            self.app.cleanup.assert_called_once_with(broker_started=False)
+            self.assertTrue(control.cleaning)
+            self.assertEqual(self.app.issued, [2])
+
+    def test_serve_wrapper_registers_once_and_reports_ready_separately(self):
+        result = self.prepared_serve()
+        self.assertTrue(result["success"])
+        self.assertTrue(result["cleanup_success"])
+        self.assertIsNone(self.app._serve_control)
+        owner = self.app.run / "state/serve-owner.json"
+        self.assertEqual(owner.stat().st_mode & 0o777, 0o600)
+        self.assertIn("stop", json.loads(owner.read_text())["stop_argv"])
+        with patch.object(appmod, "process_identity", return_value=self.identity), \
+                patch.object(appmod, "current_cwd", return_value=self.root), self.assertRaises(FileExistsError):
+            self.app.serve(180)
+        self.app.run_cycle.assert_called_once()
+
+    def test_pre_ready_stop_never_claims_capability_success(self):
+        result = self.prepared_serve(ready=False)
+        self.assertFalse(result["success"])
+        self.assertFalse(result["capability_ready"])
+        self.assertTrue(result["cleanup_success"])
+
+    def test_cleanup_failure_remains_false_after_ready(self):
+        result = self.prepared_serve(cleanup=False)
+        self.assertFalse(result["success"])
+        self.assertTrue(result["capability_ready"])
+        self.assertFalse(result["cleanup_success"])
+
+    def test_invalid_source_controller_or_used_role_rejected_before_runner(self):
+        original = dict(self.app.manifest)
+        cases = [("source_commit", "a" * 40), ("controller_sha256", "0" * 64), ("used_role", True)]
+        for field, value in cases:
+            self.app.manifest = dict(original)
+            self.app.current_record = Mock(return_value={"pid": 123} if field == "used_role" else None)
+            if field != "used_role":
+                self.app.manifest[field] = value
+            with patch.object(appmod, "process_identity") as identity, self.assertRaises(ValueError):
+                self.app.serve(180)
+            identity.assert_not_called()
+        self.assertFalse((self.app.run / "state/serve-owner.json").exists())
+
+    def test_ready_login_reclaims_only_own_session_before_long_hold(self):
+        self.app.user_token = "synthetic-readiness-bearer"
+        appmod.write_json(self.app.run / "state/user-session.json", {"session_id": 17})
+        self.app.http = Mock(return_value=(200, {}))
+        self.app.revoke_service = Mock(return_value={"success": True})
+        result = self.app.release_serve_login()
+        self.assertTrue(result["success"])
+        self.app.revoke_service.assert_called_once_with(17)
+        self.assertIsNone(self.app.user_token)
+        self.assertEqual(json.loads((self.app.run / "state/user-session-reclaimed.json").read_text()), {"session_id": 17})
+
+    def test_stop_matches_exact_runner_pid_without_group_signal(self):
+        self.prepared_serve()
+        with patch.object(appmod, "process_identity", return_value=self.identity), \
+                patch.object(appmod, "current_cwd", return_value=self.root), \
+                patch.object(appmod.os, "kill") as kill, patch.object(appmod.os, "killpg") as killpg:
+            result = self.app.stop_serve()
+        kill.assert_called_once_with(123, appmod.signal.SIGTERM)
+        killpg.assert_not_called()
+        self.assertTrue(result["signal_sent"])
+        self.assertFalse(result["cleanup_confirmed"])
+
+    def test_stop_identity_or_cwd_mismatch_never_signals(self):
+        self.prepared_serve()
+        for identity, cwd in (({**self.identity, "started": "reused-pid"}, self.root),
+                              (self.identity, Path("/synthetic/foreign"))):
+            with patch.object(appmod, "process_identity", return_value=identity), \
+                    patch.object(appmod, "current_cwd", return_value=cwd), patch.object(appmod.os, "kill") as kill:
+                with self.assertRaises(ValueError):
+                    self.app.stop_serve()
+                kill.assert_not_called()
+
+    def test_absent_runner_is_not_cleanup_confirmation(self):
+        self.prepared_serve()
+        appmod.replace_json(self.app.run / "state/serve-status.json", {"phase": "stopping", "cleanup_success": False})
+        with patch.object(appmod, "process_identity", return_value=None), patch.object(appmod.os, "kill") as kill:
+            result = self.app.stop_serve()
+            self.assertFalse(result["success"])
+            self.assertFalse(result["cleanup_confirmed"])
+            kill.assert_not_called()
+
+    def rotation_fixture(self):
+        events = []
+        self.app.check_serve_stop = Mock()
+        self.app.stop_role = Mock(side_effect=lambda role: events.append("drain:" + role) or {"success": True})
+        self.app.select = Mock(return_value=[{"id": 12}])
+        self.app.issue_service = Mock(side_effect=lambda projects: events.append("issue_atomic_publish") or
+                                      {"success": True, "session_id": 2})
+        self.app.revoke_service = Mock(side_effect=lambda session: events.append("revoke_old") or {"success": True})
+        self.app.spawn = Mock(side_effect=lambda role: events.append("spawn:" + role))
+        self.app.wait_scans = Mock(side_effect=lambda *args, **kwargs: events.append("persisted_tick") or {"success": True})
+        self.app.scanner_lock = Mock(side_effect=lambda: events.append("lock_held") or {"success": True})
+        return events
+
+    def test_rotation_order_and_only_scanner_restarts(self):
+        events = self.rotation_fixture()
+        control = appmod.BoundedServe(360)
+        replacement = self.app.rotate_serve_scanner(control, [1, 2], {"session_id": 1}, [])
+        self.assertEqual(events, ["drain:scanner", "issue_atomic_publish", "revoke_old", "spawn:scanner",
+                                  "persisted_tick", "lock_held"])
+        self.app.spawn.assert_called_once_with("scanner")
+        self.assertEqual(replacement["session_id"], 2)
+        self.assertEqual(control.retired_sessions, {1})
+        self.assertEqual(control.additional_rotations, 1)
+
+    def test_rotation_failures_do_not_restart_or_claim_completion(self):
+        for phase in ("drain", "revoke", "tick"):
+            self.rotation_fixture()
+            control = appmod.BoundedServe(360)
+            if phase == "drain":
+                self.app.stop_role.side_effect = None
+                self.app.stop_role.return_value = {"success": False}
+            elif phase == "revoke":
+                self.app.revoke_service.side_effect = None
+                self.app.revoke_service.return_value = {"success": False}
+            else:
+                self.app.wait_scans.side_effect = RuntimeError("PERSISTED_SCANS_TIMEOUT")
+            with self.assertRaises(RuntimeError):
+                self.app.rotate_serve_scanner(control, [1, 2], {"session_id": 1}, [])
+            self.assertEqual(control.additional_rotations, 0)
+            if phase != "tick":
+                self.app.spawn.assert_not_called()
+
+    def test_hold_rotates_only_with_expiry_margin(self):
+        for seconds, rotate in ((240, False), (60, True)):
+            control = appmod.BoundedServe(360)
+            control.check = Mock(side_effect=[None, appmod.ServeStopRequested("SERVE_STOP_REQUESTED")])
+            self.app.release_serve_login = Mock(return_value={"success": True})
+            self.app.current_record = Mock(return_value={"pid": 123})
+            self.app.own = Mock(return_value={"pid": 123})
+            self.app.rotate_serve_scanner = Mock(return_value={"expires_at": appmod.datetime.now(appmod.UTC)
+                                                             + appmod.timedelta(seconds=300)})
+            self.app.http = Mock(side_effect=[(401, {}), (200, b"<html></html>")])
+            self.app.api_workers = Mock(return_value={"success": True})
+            self.app.serve_status = Mock()
+            with patch.object(appmod.time, "sleep"), self.assertRaises(appmod.ServeStopRequested):
+                self.app.serve_hold(control, [1, 2], {"expires_at": appmod.datetime.now(appmod.UTC)
+                                                    + appmod.timedelta(seconds=seconds)}, [])
+            self.assertEqual(self.app.rotate_serve_scanner.call_count, int(rotate))
+
+    def test_public_summary_omits_nested_accounts_and_personal_content(self):
+        control = appmod.BoundedServe(180)
+        control.ready = True
+        cycle = {"success": True, "error": None, "cleanup": {"success": True}, "actions": [
+            {"action": "start", "users": [{"user": "synthetic-private-account"}], "cookie": "synthetic-cookie"},
+            {"action": "existing_normal_delivery", "success": True, "origin_run": "app_synthetic_origin",
+             "confirmed_events": 16, "notification_count": 26, "new_publish_by_this_cycle_claimed": False,
+             "recipients": ["synthetic-personal-name"], "access_token": "synthetic-bearer"}]}
+        encoded = json.dumps(self.app.serve_summary(control, cycle))
+        for value in ("synthetic-private-account", "synthetic-cookie", "synthetic-personal-name", "synthetic-bearer"):
+            self.assertNotIn(value, encoded)
+
+    def test_default_run_cli_still_calls_original_cycle_without_control(self):
+        app = Mock()
+        app.run_cycle.return_value = {"success": True}
+        argv = ["application.py", "--project-root", str(self.root), "run", "--run-dir", str(self.app.run)]
+        with patch.object(appmod.sys, "argv", argv), patch.object(appmod, "Application", return_value=app), \
+                patch.object(appmod.sys, "stdout", io.StringIO()):
+            self.assertEqual(appmod.main(), 0)
+        app.run_cycle.assert_called_once_with()
+        app.serve.assert_not_called()
 
 
 if __name__ == "__main__":

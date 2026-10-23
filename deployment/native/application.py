@@ -17,7 +17,8 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import UTC, datetime
+from contextlib import contextmanager
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
 
@@ -35,6 +36,49 @@ UV = Path("/Users/yang/Library/Application Support/MinerU/tools/uv")
 PYTHON = Path("/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12")
 APP_PORTS = {"api": 18088, "ui": 5178}
 ALLOWED_ROOTS = {"backend", "frontend", "specs", "deployment"}
+NATIVE_DEMO_SOURCE = "bc5aef9c62393134582affb7a690acb33ac2b833"
+
+
+class ServeStopRequested(RuntimeError):
+    """Raised only at a safe control point, never by the OS signal handler."""
+
+
+class BoundedServe:
+    def __init__(self, duration):
+        if type(duration) is not int or not 180 <= duration <= 14400:
+            raise ValueError("EXPLICIT_BOUNDED_DURATION_REQUIRED")
+        self.duration = duration
+        self.started = datetime.now(UTC)
+        self.deadline = time.monotonic() + duration
+        self.deadline_utc = self.started + timedelta(seconds=duration)
+        self.reason, self.requested_at = None, None
+        self.cleaning, self.ready = False, False
+        self.additional_rotations = 0
+        self.retired_sessions = set()
+
+    def request_stop(self, signum, _frame=None):
+        if self.reason is None:
+            self.reason = signal.Signals(signum).name
+            self.requested_at = utc()
+
+    def check(self):
+        if self.cleaning:
+            return
+        if self.reason is None and time.monotonic() >= self.deadline:
+            self.reason, self.requested_at = "duration_elapsed", utc()
+        if self.reason is not None:
+            raise ServeStopRequested("SERVE_STOP_REQUESTED")
+
+    @contextmanager
+    def signals(self):
+        previous = {}
+        try:
+            for signum in (signal.SIGINT, signal.SIGTERM):
+                previous[signum] = signal.signal(signum, self.request_stop)
+            yield
+        finally:
+            for signum, handler in previous.items():
+                signal.signal(signum, handler)
 
 
 def json_bytes(value):
@@ -323,6 +367,7 @@ class Application:
             raise ValueError("EXACT_APPLICATION_PYTHONPATH_REQUIRED")
         self.broker = broker_runtime.NativeBroker(self.project, Path(self.manifest["broker_run"]))
         self.processes = {}
+        self._serve_control = None
         user = self.run / "secrets/manager-session.json"
         reclaimed = self.run / "state/user-session-reclaimed.json"
         self.user_token = json.loads(user.read_text())["data"]["access_token"] if user.exists() and not reclaimed.exists() else None
@@ -446,6 +491,7 @@ class Application:
             return cursor.fetchall()
 
     def http(self, path, *, method="GET", body=None, token=None, ui=False):
+        self.check_serve_stop()
         headers = {"X-Request-ID": str(uuid4())}
         if token:
             headers["Authorization"] = "Bearer " + token
@@ -465,6 +511,7 @@ class Application:
         return status, json.loads(payload) if payload.startswith(b"{") else payload
 
     def cli(self, *args):
+        self.check_serve_stop()
         self.safe_public({"argv": list(args)})
         output, command = capture([str(self.python), "-m", "t44.cli", *args],
                                   self.source, self.env(), self.run / "logs", timeout=20)
@@ -495,6 +542,7 @@ class Application:
         return actual
 
     def spawn(self, role):
+        self.check_serve_stop()
         previous = self.current_record(role)
         if previous is not None and self.own(previous) is not None:
             raise ValueError("OWNED_ROLE_ALREADY_RUNNING")
@@ -625,7 +673,7 @@ class Application:
         records = []
         for path in (self.run / "state").glob("*.json"):
             value = json.loads(path.read_text())
-            if "pid" in value:
+            if value.get("role") in ("api", "consumer", "scanner", "ui") and "pid" in value:
                 records.append((value, True))
         children = self.run / "state/api-children.json"
         if children.exists():
@@ -691,6 +739,7 @@ class Application:
     def wait_scans(self, baseline, *, count=2, timeout=140):
         deadline = time.monotonic() + timeout
         while time.monotonic() < deadline:
+            self.check_serve_stop()
             if self.own(self.current_record("scanner")) is None:
                 raise RuntimeError("SCANNER_EXITED")
             rows = self.scan_rows(baseline)
@@ -716,6 +765,7 @@ class Application:
     def delivery(self, baseline, prior=None):
         deadline = time.monotonic() + 20
         while time.monotonic() < deadline:
+            self.check_serve_stop()
             parameters = prior["event_ids"] if prior else (baseline,)
             predicate = " IN (" + ",".join(["%s"] * len(parameters)) + ")" if prior else ">%s"
             events = self.select("SELECT id,recipients,status,confirmed_at,fallback_at FROM outbox_events "
@@ -740,9 +790,10 @@ class Application:
             time.sleep(0.2)
         raise RuntimeError("NORMAL_PIKA_DELIVERY_UNCONFIRMED")
 
-    def run_cycle(self):
+    def run_cycle(self, *, serve_control=None):
         actions, failure, broker_started = [], None, False
         try:
+            self.check_serve_stop()
             verify_copy(self.binding, self.source)
             assert_app_ports_free()
             imports, command = capture([str(self.python), "-c",
@@ -767,6 +818,7 @@ class Application:
             broker_started = status["success"]
             if not broker_started:
                 raise RuntimeError("FRESH_BROKER_START_FAILED")
+            self.check_serve_stop()
             self.spawn("api")
             deadline = time.monotonic() + 25
             while time.monotonic() < deadline:
@@ -848,14 +900,182 @@ class Application:
             actions.append(self.wait_scans(before_rotation, count=1, timeout=20))
             actions.append(self.scanner_lock())
             actions.append(self.api_workers())
+            if serve_control is not None:
+                serve_control.retired_sessions.add(issued["session_id"])
+                self.serve_hold(serve_control, projects, replacement, actions)
+        except ServeStopRequested:
+            failure = None if serve_control is not None and serve_control.ready else "SERVE_STOP_BEFORE_READY"
+            actions.append(self.receipt("serve_stop_requested", success=True,
+                                        reason=serve_control.reason if serve_control else "unknown"))
         except Exception as error:  # noqa: BLE001 - every runtime failure must reach owned cleanup
             message = str(error)
             failure = message if re.fullmatch(r"[A-Z_]+", message) else type(error).__name__
             actions.append(self.receipt("cycle_failure", success=False, error=failure))
         finally:
+            if serve_control is not None:
+                serve_control.cleaning = True
+                self.issued = [session for session in self.issued if session not in serve_control.retired_sessions]
+                try:
+                    self.serve_status(serve_control, "stopping")
+                except OSError:
+                    pass  # Status failure must never skip owned cleanup.
             cleanup = self.cleanup(broker_started=broker_started)
         return self.receipt("application_cycle", success=failure is None and cleanup["success"],
                             error=failure, actions=actions, cleanup=cleanup)
+
+    def check_serve_stop(self):
+        control = getattr(self, "_serve_control", None)
+        if control is not None:
+            control.check()
+
+    def serve_status(self, control, phase, **fields):
+        replace_json(self.run / "state/serve-status.json", {
+            "phase": phase, "at_utc": utc(), "source_commit": self.manifest["source_commit"],
+            "started_at_utc": control.started.isoformat(), "deadline_at_utc": control.deadline_utc.isoformat(),
+            "duration_seconds": control.duration, "capability_ready": control.ready,
+            "stop_reason": control.reason, "additional_rotations": control.additional_rotations, **fields,
+        })
+
+    def release_serve_login(self):
+        code, _body = self.http("/api/v1/auth/logout", method="POST", token=self.user_token)
+        user_id = json.loads((self.run / "state/user-session.json").read_text())["session_id"]
+        revoked = self.revoke_service(user_id)
+        if code != 200 or not revoked["success"]:
+            raise RuntimeError("SERVE_READY_LOGIN_RECLAIM_FAILED")
+        replace_json(self.run / "state/user-session-reclaimed.json", {"session_id": user_id})
+        self.user_token = None
+        return self.receipt("serve_ready_login_reclaimed", success=True)
+
+    def rotate_serve_scanner(self, control, projects, current, actions):
+        self.check_serve_stop()
+        stopped = self.stop_role("scanner")
+        actions.append(stopped)
+        if not stopped["success"]:
+            raise RuntimeError("SCANNER_DRAIN_FAILED")
+        self.check_serve_stop()
+        before = self.select("SELECT COALESCE(MAX(id),0) AS id FROM scan_runs")[0]["id"]
+        replacement = self.issue_service(projects)
+        actions.append(replacement)
+        if not replacement["success"]:
+            raise RuntimeError("SERVE_CREDENTIAL_UNCONFIRMED")
+        revoked = self.revoke_service(current["session_id"])
+        actions.append(revoked)
+        if not revoked["success"]:
+            raise RuntimeError("SERVE_REVOCATION_UNCONFIRMED")
+        control.retired_sessions.add(current["session_id"])
+        self.check_serve_stop()
+        self.spawn("scanner")
+        actions.append(self.wait_scans(before, count=1, timeout=20))
+        actions.append(self.scanner_lock())
+        control.additional_rotations += 1
+        actions.append(self.receipt("serve_rotation", success=True, ttl_seconds=300,
+                                    completed_rotation_count=control.additional_rotations))
+        return replacement
+
+    def serve_hold(self, control, projects, current, actions):
+        actions.append(self.release_serve_login())
+        control.ready = True
+        next_health = 0.0
+        while True:
+            control.check()
+            for role in ("api", "consumer", "scanner", "ui"):
+                record = self.current_record(role)
+                if record is None or self.own(record) is None:
+                    raise RuntimeError("SERVE_OWNED_ROLE_EXITED")
+            expiry = current["expires_at"]
+            if isinstance(expiry, str):
+                expiry = datetime.fromisoformat(expiry)
+            if expiry.tzinfo is None:
+                expiry = expiry.replace(tzinfo=UTC)
+            if (expiry - datetime.now(UTC)).total_seconds() <= 120:
+                current = self.rotate_serve_scanner(control, projects, current, actions)
+            if time.monotonic() >= next_health:
+                code, _body = self.http("/api/v1/projects")
+                ui_code, html = self.http("/", ui=True)
+                if code != 401 or ui_code != 200 or not isinstance(html, bytes) or b"<html" not in html.lower():
+                    raise RuntimeError("SERVE_READINESS_LOST")
+                actions.append(self.api_workers())
+                next_health = time.monotonic() + 30
+            self.serve_status(control, "serving")
+            time.sleep(min(5, max(0, control.deadline - time.monotonic())))
+
+    def serve_summary(self, control, cycle):
+        # Do not publish nested broker users, account/session IDs, notification
+        # recipients/text, private paths or any raw API response.
+        actions = cycle.get("actions", [])
+        scans = [row for row in actions if row.get("action") == "persisted_scans" and row.get("success")]
+        messages = next((row for row in actions if row.get("action") in
+                         ("normal_delivery", "existing_normal_delivery") and row.get("success")), {})
+        return self.receipt("bounded_serve", success=bool(cycle.get("success") and control.ready),
+            error=cycle.get("error"), controller_sha256=digest(Path(__file__).read_bytes()),
+            duration_seconds=control.duration, started_at_utc=control.started.isoformat(),
+            deadline_at_utc=control.deadline_utc.isoformat(), finished_at_utc=utc(),
+            stop_reason=control.reason, stop_requested_at_utc=control.requested_at,
+            capability_ready=control.ready, ports=APP_PORTS,
+            ui_url="http://127.0.0.1:5178", api_url="http://127.0.0.1:18088",
+            completed_scan_count=sum(len(row["completed"]) for row in scans),
+            first_actual_interval_seconds=scans[0]["actual_first_interval_seconds"] if scans else None,
+            message_origin=messages.get("origin_run", "not_observed"),
+            confirmed_event_count=messages.get("confirmed_events", 0),
+            notification_count=messages.get("notification_count", 0),
+            new_publish_by_this_run_claimed=messages.get("new_publish_by_this_cycle_claimed", False),
+            additional_rotations=control.additional_rotations, ttl_seconds=300,
+            cleanup_success=bool(cycle.get("cleanup", {}).get("success")))
+
+    def serve(self, duration):
+        control = BoundedServe(duration)
+        if self.manifest["source_commit"] != NATIVE_DEMO_SOURCE or self.binding["source_commit"] != NATIVE_DEMO_SOURCE:
+            raise ValueError("ADMITTED_NATIVE_DEMO_SOURCE_REQUIRED")
+        if self.manifest["controller_sha256"] != digest(Path(__file__).read_bytes()):
+            raise ValueError("PREPARE_WITH_CURRENT_CONTROLLER_REQUIRED")
+        if any(self.current_record(role) is not None for role in ("api", "consumer", "scanner", "ui")):
+            raise ValueError("FRESH_SERVE_RUN_REQUIRED")
+        runner = process_identity(os.getpid())
+        if runner is None or runner["uid"] != os.getuid():
+            raise RuntimeError("SERVE_RUNNER_IDENTITY_UNCONFIRMED")
+        owner = {key: value for key, value in runner.items() if key != "command"}
+        owner.update(cwd=str(current_cwd(runner["pid"])), run_dir=str(self.run),
+                     source_commit=NATIVE_DEMO_SOURCE, controller_sha256=digest(Path(__file__).read_bytes()),
+                     deadline_at_utc=control.deadline_utc.isoformat(),
+                     stop_argv=[str(self.python), str(Path(__file__).resolve()), "--project-root", str(self.project),
+                                "stop", "--run-dir", str(self.run)])
+        write_json(self.run / "state/serve-owner.json", owner)  # Exclusive: one serve per fresh run.
+        self.serve_status(control, "starting")
+        cycle = {"success": False, "error": "SERVE_LIFECYCLE_UNCONFIRMED", "cleanup": {"success": False}}
+        with control.signals():
+            self._serve_control = control
+            try:
+                cycle = self.run_cycle(serve_control=control)
+            except Exception:  # noqa: BLE001 - keep cleanup uncertainty private and never leak URLs/tokens
+                cycle["error"] = "SERVE_LIFECYCLE_UNCONFIRMED"
+            finally:
+                control.cleaning = True
+                self._serve_control = None
+        summary = self.serve_summary(control, cycle)
+        self.serve_status(control, "finished", cleanup_success=summary["cleanup_success"], success=summary["success"])
+        return summary
+
+    def stop_serve(self):
+        path = self.run / "state/serve-owner.json"
+        require_private(path)
+        record = json.loads(path.read_text())
+        if record.get("run_dir") != str(self.run) or record.get("source_commit") != NATIVE_DEMO_SOURCE \
+                or record.get("controller_sha256") != digest(Path(__file__).read_bytes()) \
+                or type(record.get("pid")) is not int or record["pid"] < 2:
+            raise ValueError("SERVE_RUNNER_RECORD_REJECTED")
+        actual = process_identity(record["pid"])
+        if actual is None:
+            status = self.run / "state/serve-status.json"
+            require_private(status)
+            final = json.loads(status.read_text())
+            confirmed = final.get("phase") == "finished" and final.get("cleanup_success") is True
+            return self.receipt("serve_stop_request", success=confirmed, needed=False,
+                                signal_sent=False, runner_absent=True, cleanup_confirmed=confirmed)
+        if not matches_process(record, actual, leader=False) or current_cwd(record["pid"]) != Path(record["cwd"]):
+            raise ValueError("SERVE_RUNNER_OWNER_MISMATCH")
+        os.kill(record["pid"], signal.SIGTERM)
+        return self.receipt("serve_stop_request", success=True, needed=True, signal_sent=True,
+                            runner_absent=False, cleanup_confirmed=False)
 
     def cleanup(self, *, broker_started=True):
         steps = []
@@ -907,6 +1127,10 @@ def main():
     prepare.add_argument("--prior-run", type=Path)
     for command in ("run", "cleanup"):
         commands.add_parser(command).add_argument("--run-dir", type=Path, required=True)
+    serve = commands.add_parser("serve")
+    serve.add_argument("--run-dir", type=Path, required=True)
+    serve.add_argument("--duration", type=int, required=True)
+    commands.add_parser("stop").add_argument("--run-dir", type=Path, required=True)
     args = parser.parse_args()
     os.umask(0o077)
     try:
@@ -918,7 +1142,14 @@ def main():
             result = {"success": True, "run_dir": str(app.run), "source_commit": args.expected_source}
         else:
             app = Application(project, args.run_dir)
-            result = app.run_cycle() if args.command == "run" else app.cleanup()
+            if args.command == "run":
+                result = app.run_cycle()
+            elif args.command == "serve":
+                result = app.serve(args.duration)
+            elif args.command == "stop":
+                result = app.stop_serve()
+            else:
+                result = app.cleanup()
         print(json.dumps(result, ensure_ascii=False, default=str))
         return 0 if result["success"] else 1
     except Exception:  # noqa: BLE001 - CLI emits no exception text that could contain a private URL/token

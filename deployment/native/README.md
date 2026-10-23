@@ -118,3 +118,11 @@ python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" stop -
 第二轮新broker/Cookie/user/vhost的app_20261023_212959_fc2dc9真实exit0/cycletrue/cleanuptrue：API4workers/回环18088、consumer、UI5178 HTML与18088代理、两新completed扫描实际60.303070秒、双项目TTL300服务凭据受控轮换后新tick与共享锁均通过。首轮既有16事件/26通知明确只读复核；当前manager鉴权可读对应10条通知，不声称二轮重新publish。所有本轮服务/用户会话已撤销，全部登记应用/workers及Rabbit/EPMD已停，新端口无监听；旧端口/进程监听baseline逐项相同。
 
 证据为agents/deployment/native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871合成守卫与3项受影响873守卫、Ruff通过，原失败全部保留。只验证本地部署与HTTP UI/proxy；没有完整浏览器业务、独立验收、性能或云部署结论。现保持停机，后续环境必须由根重新绑定，不把本demo内部资料直接交独立岗位。
+
+## 有界serve工具（尚待实际窗口/新增范围审核）
+
+新阶段工具在新codex/deployment-bounded-demo工作区实现，不改旧PR31/34历史。`serve --run-dir NEW_PREPARED_RUN --duration SECONDS`要求180..14400整秒、固定bc5精确源与当前controller新prepare的单次run；默认`run`仍走原有限cycle。`stop --run-dir RUN`只向完整身份匹配的runner PID请求停止，不把signal_sent当清理完成。精确停止参数写在该run私密state/serve-owner.json，状态/截止/最终cleanup写state/serve-status.json。
+
+API/consumer/UI仅初始启动；原两扫描/消息事实/初次轮换后保持，到TTL300剩120秒排空并轮换scanner，验证新持久tick与锁。先回收控制器自己的ready登录会话，避免5分钟到期影响最终清理；不代撤销用户自行登录的会话。SIGINT/SIGTERM只置标记，在安全检查点进入拥有权清理；duration到时开始清理，实际结束UTC如实单列。公共stdout仅白名单计数/源/UTC/URL/清理布尔，不输出账户、cookie、token、连接串或通知个人内容。
+
+设计与I/O：bounded-demo-design.md。工具阶段只执行现有871的ServeGuards（17项新范围合成）及Ruff；未运行任何新serve/服务/360秒演示。新增实跑须根确认与本机压力比较不重叠的窗口，随后专职新增范围审核通过才可另准入用户演示，不以旧cycle/旧P2限定关闭替代新运行结论。

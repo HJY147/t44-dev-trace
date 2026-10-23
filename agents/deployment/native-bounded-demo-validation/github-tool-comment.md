@@ -1,0 +1,15 @@
+新有界演示工具草稿：https://github.com/HJY147/t44-dev-trace/pull/37
+
+新增显式有界serve入口，让已prepare的新native专属run在180..14400秒内维持API/consumer/UI，时间到或收到SIGINT/SIGTERM后进入精确拥有权清理。stop仅向指纹/cwd/UID/开始时间/PGID均匹配的runner PID发送停止请求，并明确请求不等于cleanup完成；不修改系统服务、业务、锁、规则或既有独立环境。
+
+先行本人设计 `daaccb7`，工具实现 `4ef57b6129c712c1fad88de56775c53b84009b15`，application SHA256 `942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07`。新worktree/branch从实时root c1aff86建立，固定应用SUTbc5的92文件和原native专属t44_native_demo/回环端口；旧PR31/34、原run1失败/0a6 run2成功及cd3仅关闭capture P2的历史均保持。
+
+serve使用信号标记和安全检查点，不在任意capture中异步抛异常；默认run仍不传serve控制，capture AST和runtime.py不变。首周期后只轮换scanner：TTL300剩120秒时排空→新私密凭据原子发布→撤销旧→新scanner→持久tick/锁确认；API/consumer/UI不重复启动。控制器自己的ready登录会话先回收，已确认撤销的旧服务会话保留原件而不反复拖长最后清理。私密状态/截止/停止说明与公共白名单汇总分开，公共结果不含账户、token、cookie、连接串或通知个人内容。
+
+仅工具阶段验证：现有871中新增ServeGuards最终17项合成通过，涵盖时限、signal handler恢复、到时/早停/失败清理、单run/固定源拒绝、轮换顺序与失败、stop拥有权与请求/完成分离、公开白名单及默认run分支；Ruff、CLI帮助解析、diff通过。所有被测Popen/DB/身份/信号均替身，没有读取真实凭据、启动真实服务、执行新serve/完整cycle或重跑旧套件。证据入口 `agents/deployment/native-bounded-demo-validation/README.md`；函数I/O与边界见 `deployment/native/bounded-demo-design.md`。
+
+**360秒实际演示尚未准入、尚未执行**，须根确认与本机压力比较不重叠的窗口。随后还需专职新增范围审核，才可另准入用户不超过4小时演示。工具/旧cycle/旧P2关闭都不代替新增运行，资源后增能力不回填独立正式三组同次unknown；无独立/性能/云或整体放行结论。本PR保持draft。
+
+Agent-Role: deployment
+Prompt-Ref: ROLE-deployment-NATIVE-BOUNDED-DEMO-v1
+Refs #7

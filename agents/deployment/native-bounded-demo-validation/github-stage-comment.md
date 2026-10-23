@@ -1,0 +1,5 @@
+NATIVE-BOUNDED-DEMO-v1阶段交接：当前待审代码62ac2f327e7523ffed69a2bd9f98c87ba2372931，application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。原4ef唯一360确已准入并执行，原exit1/cleanupfalse保留（f159封档）：ready、60.292813秒两扫描、额外TTL300轮换/全own会话撤销属局部事实；旧16事件/26通知仅复核，新outbox0。旧停机检查纳入still-live runner自己造成唯一失败，外部driver wait退出与全PID/端口后置absence不回填原成功。
+
+先设计c191，再仅verify_stopped选择四角色全部generation/APIchildren；同guard原942红exit1→新源3必要合成方法绿exit0，8角色代/5API子进程残留仍拒绝，Ruff绿，capture/runtime/其余函数AST不变。新源未实跑360，不准入第二360/4h；本机窗口已释放，没有新增服务/HTTP/SQL。旧保护snapshot7端口不含v3当前5177/18086，不证明其过去全时不变；下一次如另准入须新增准确UID/start/argv hash基线。
+
+证据agents/deployment/native-bounded-demo-validation/README.md；实际prompt ROLE-deployment-NATIVE-BOUNDED-DEMO-v1；PR37正文已整体重写为真实失败与当前限定验证，历史原件不改。PR37保持draft、待根安排专职新增范围复核，无独立/性能/云或整体通过。此次GET回读与随后metadata尾提交将另档，实际代码仍以62ac/084618为准。

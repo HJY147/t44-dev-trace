@@ -199,3 +199,24 @@
 - 原脚本的两种fake init-wrapper树均红（2 supervisors）；修为明确Python -m uvicorn模块前缀，保留strict==1。相同反例及多真实supervisor拒绝/原投影4相关项通过、Ruff通过；只API_SCRIPT变更，证明/红绿原件agents/deployment/api-process-metadata-validation。
 - 仅合成边界，无真实进程/Docker/旧故障/压力重测。不是stage05实际原因结论；b3ee/H11 incomplete及封存正式结果不更改、不倒填。
 - 实现SHA c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442已GET读回一致。后续仅资料收尾，真实stage05原因及原资源incomplete仍未由本轮验证。
+
+### NATIVE-BOUNDED-DEMO-v1设计
+
+- 新codex/deployment-bounded-demo基于rootc1aff，先本人函数I/O/stop/rotation设计，原PR31/34和运行历史保持；只bc5新native专属库/端口。当前尚未实现/运行serve，工具/必要合成后等根压力窗口与新增范围专审；不回填独立/性能结论。
+
+- bounded serve/stop工具已实现：固定bc5/current新run、显式时限、信号安全点、TTL300前轮换/新tick、owned runner请求及公共白名单；17项新范围合成/Ruff/CLIhelp通过。只工具阶段，无真实服务/360秒实跑，等待根压力窗口及新增范围专审；旧cycle/P2历史不移植。
+
+- 新draftPR37/Issue7#6376409216真实发布并精确回读，工具实现4ef57b6；root明确先给DB比较窗口，本岗仍全未启动，待其清理完成和root另准入360秒。没有新增运行/正式性能结论。
+
+### NATIVE-BOUNDED-DEMO-v1 唯一360秒实跑失败
+
+- 根独占窗口准入后，4ef57b6真实360秒保持已就绪、两扫描60.292813秒、1次额外TTL300轮换/新tick；API/consumer/UI各1次，3自有服务会话全撤销，原16事件只复核无新publish。
+- 原exit1/cleanupfalse：旧verify_stopped误把仍写终稿的serve runner自身计入。各应用/broker停止局部true、external driver已wait退出及全部PID/端口后置absence单列，不回写原成功。证据native-bounded-demo-validation/serve-run1-*。
+- 全部旧监听baseline/92源hash保持；根已释放窗口，只封档后先设计窄修与合成红绿，不再运行360/长serve/HTTP/SQL；新范围审核仍pending。
+
+- 原失败先封档f1598b9后，先行设计勘误仅选择四角色全部generation及APIchildren，runner外部wait单列；计划同例红绿/残留拒绝三类合成，当前尚未改工具或执行。
+
+- self-runner窄修在先行设计c191后完成：仅verify_stopped四角色全部generation/APIchildren选择；原942同例红→新源同guard绿，3新方法含8真实角色代/5APIchildren残留拒绝，Ruff绿，无OS动作/服务/新360。capture/runtime不变，新SHA见self-runner-source-scope，等待新增范围专审。
+- 旧snapshot7端口不包含v3的5177/18086，不是v3过去全时未变证据；只离线纠正，未来另准入须增补UID/start/argv hash基线，当前不补跑。
+
+- 待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931（源084618…）已push；PR37新正文/当时head62ac/drafttrue及Issue7#6376718503、PR37#6376718790均GET逐字一致，末尾仅文档回执归档，最终head另报。原4ef唯一360false保留，新源未实跑；交根专项复核后本轮结束。
