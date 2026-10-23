@@ -1,6 +1,6 @@
 {
   "role": "reviewer",
-  "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
+  "stage": "单UoW实现限定复审完成；整体不通过",
   "implementation_status": "审核资料已完成；无产品修改",
   "artifacts": [
     "docs/reviews/review-protocol.md",
@@ -398,19 +398,15 @@
         "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json"
       ]
     },
-    "ROLE-reviewer-V11-IMPLEMENTATION-v1"
+    "ROLE-reviewer-V11-IMPLEMENTATION-v1",
+    "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1"
   ],
-  "updated_at": "2026-10-23T14:26:49.496512+00:00",
-  "review_outcome": "所列源码限定未见新阻断；原C-P1/C-P2限定关闭；source5973超873/正式性能及新独立未闭环，不放行",
+  "updated_at": "2026-10-23T14:51:36.178506+00:00",
+  "review_outcome": "限定diff未见新阻断，准入协调后短测不等于性能通过；5980超880/正式与独立未闭环，不放行",
   "github_evidence": {
+    "pending_comment": true,
     "status_mutations": [],
-    "no_success_status_published": true,
-    "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373",
-    "review_id": 5629687373,
-    "commit_id": "4c20f32b71635016815420472b9d4bb4fa850df0",
-    "state": "COMMENTED",
-    "exact_body_readback": true,
-    "evidence": "agents/reviewer/evidence/implementation-v11/github-verification.json"
+    "no_success_status_published": true
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -461,14 +457,14 @@
       "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
     }
   ],
-  "review_branch": "codex/reviewer-v11-implementation",
+  "review_branch": "codex/reviewer-read-uow",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
     "reported_freeze_commit": "ae60dc3",
     "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "review_target_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "review_target_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
   "previous_foundation_review": {
     "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
     "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
@@ -640,10 +636,10 @@
     }
   },
   "unresolved_items": [
-    "有效代码5973超上限873，原口径不改",
-    "旧源正式三P95失败，当前源尚无正式通过",
-    "新独立验收未发布；个人研究及人工参与配额未证实",
-    "959完成两断言，但首次工具调用未留exit元数据，未知不能伪写0"
+    "source5980超上限880",
+    "正式400并发600秒三组仍未通过，本候选未测延迟收益",
+    "独立v2固定4c20 SUT；不得拿5dcb412开发CI覆盖其结论",
+    "后续性能/架构改动须新源另审"
   ],
   "previous_capacity_design_review": {
     "review_target_sha": "5fb1d7e0b180e754aba635487ebb0fa341e4f957",
@@ -655,7 +651,7 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "review_scope": "D005/D006 implementation, published IAT01–05 and FEcounts; RC UoW candidate design only",
+  "review_scope": "Only contract-validation single-UoW implementation diff and exact22647 published development evidence",
   "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
   "previous_capacity_rfc_review": {
     "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
@@ -707,8 +703,8 @@
       "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
     ]
   },
-  "latest_review_report": "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
-  "latest_review_evidence": "agents/reviewer/evidence/implementation-v11/verification.json",
+  "latest_review_report": "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
+  "latest_review_evidence": "agents/reviewer/evidence/read-uow-5dcb/verification.json",
   "readonly_uow_design": {
     "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
     "applied": false,
@@ -729,6 +725,54 @@
         "agents/reviewer/evidence/implementation-v11",
         "tmp/reviewer/941_v11_review.config.mts"
       ]
+    },
+    {
+      "id": "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1.txt",
+      "reason": "承接已审设计、只核精确新分支和真实既有测试/CI，避免重复负载且不混独立SUT",
+      "artifact_paths": [
+        "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
+        "agents/reviewer/evidence/read-uow-5dcb"
+      ]
     }
-  ]
+  ],
+  "previous_v11_implementation_review": {
+    "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
+    "review_target_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "review_branch": "codex/reviewer-v11-implementation",
+    "review_scope": "D005/D006 implementation, published IAT01–05 and FEcounts; RC UoW candidate design only",
+    "review_outcome": "所列源码限定未见新阻断；原C-P1/C-P2限定关闭；source5973超873/正式性能及新独立未闭环，不放行",
+    "github_evidence": {
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373",
+      "review_id": 5629687373,
+      "commit_id": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "state": "COMMENTED",
+      "exact_body_readback": true,
+      "evidence": "agents/reviewer/evidence/implementation-v11/github-verification.json"
+    },
+    "latest_review_report": "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
+    "latest_review_evidence": "agents/reviewer/evidence/implementation-v11/verification.json",
+    "unresolved_items": [
+      "有效代码5973超上限873，原口径不改",
+      "旧源正式三P95失败，当前源尚无正式通过",
+      "新独立验收未发布；个人研究及人工参与配额未证实",
+      "959完成两断言，但首次工具调用未留exit元数据，未知不能伪写0"
+    ]
+  },
+  "readonly_uow_implementation": {
+    "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
+    "ci_run": 39970988113,
+    "junit": {
+      "tests": 412,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "only_runtime_changed": true,
+    "test_rerun_by_reviewer": false,
+    "latency_improvement_measured": false
+  }
 }
