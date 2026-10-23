@@ -203,3 +203,5 @@
 - 桌面1440/手机390各通过真实UI保存2000字一次200，audit121/124、task version/schedule1→2(legacy)→3→4，owner2/state1保持；每次理由DOM/API/预期SHA一致，HTML样式不执行、ISO日期+operation名不转写，尾部真实滚动可见。共7业务写入（4新建+1legacy+2UI），control14响应10×200/4×201，browser61响应全200，认证login/logout另列；不把auth写入或setup混作只读。
 - 6PNG逐张实际查看，1440/390无整页横溢出，pageerror0。新fixture及审计全部保留，不删除/reset，不改旧41/用户/独立数据；三次当前session正常logout均记录。自身Chrome与Vite5176在20:47:30.402UTC关闭，端口实查无listener；新18089留根管理。本轮没有浏览器/产品失败；两次只读rg引用不存在fields.ts/SchemaFields.vue返回2，核实际路径纠正，无测试/HTTP副作用。
 - 原22红绿/全89/构建/浏览器5原日志先gzip归档再规范可读尾空白，raw/readable SHA和全20源/14冻结hash见plan-reason-validation.json。缺失/重复/返工/迭代范围仅组件夹具，不伪造真实missing E2E或填SQL；准确新HEAD专审、组合CI、新无历史隔离验收仍待总协调安排，不称独立通过或学生人工经历。
+
+- 70f2e06证据阶段已commit/push；Issue28真实评论6374496391、新draftPR32已创建并精确GET正文匹配。实际base7f892644已含c79产品（git ancestry核实），PR差异为29证据文件，因此已将PR标题/正文改为证据交付而非第二次产品修复；初建mergeable=false后独立GET为true。未APPROVE/合main/自判验收；回执plan-reason-github-verification.json。
