@@ -15,7 +15,12 @@
   "frontend_source_tree_matches_75c3468": true,
   "production_files_edited": false,
   "all_changed_public_JSON_parsed": true,
-  "diff_whitespace_check": "git diff --check exit 0",
+  "diff_whitespace_check": {
+    "initial_tracked_diff": "exit 0 before staging",
+    "first_staged_diff": "exit 2: M5-diagrams.md new blank line at EOF; untracked file was absent from first tracked-only check",
+    "checkpoint_commit": "56c2a1b72fe3b11755e31864d23261c61d790111 was pushed despite staged whitespace failure because a later separate shell command continued; recovery operator error, not product failure",
+    "correction": "removed only extra final blank; full cutoff-to-index check required before corrective commit"
+  },
   "privacy_check": {
     "scope": "only existing changed public responsibility files; credential/private-key pattern scan",
     "alerts": 0,

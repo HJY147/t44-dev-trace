@@ -237,3 +237,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 看图声明仅引原manifest的上一AI记录及root另看3PNG/c7918bf收据；本实例没有重新看图或渲染。原失败/两次不足窗口/过程事实保留，未把新导航修复回填6ba/75。
 - GitHub工具GET发现PR24已合并M4，head9e9e23d，2026-10-23T12:18:10Z；本轮M5将另推codex/reports-m5，并在Issue9及原PR24说明后续检查点，不改其历史、不当M5已合入。
 - ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1是本次恢复摘要而非伪造用户原话/同族六版；M5-validation公开记录本实例实际核对边界。阶段提交和交流读回在后条记录。
+
+- 实际首个checkpoint 56c2a1b72fe3b11755e31864d23261c61d790111已commit/push。暂存检查首次发现M5-diagrams末尾多一空行（exit2）；此前tracked-only diff未包含新文件。shell后续独立行仍运行commit，是本恢复实例检查编排错误，保留失败而不冒称全过。仅删除该多余空行，随后对6ba→完整index再检查，公开来源/图hash不变。
