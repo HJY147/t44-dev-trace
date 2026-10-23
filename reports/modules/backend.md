@@ -223,3 +223,9 @@ specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给
 最终18开发目标通过（11 SQLite HTTP含1原计划回归、7真实MySQL HTTP），原失败与摘要位于agents/backend/plan-reason-implementation。原sort=-id夹具422、修正后旧源2红、三类新writer旧源红、AI草稿字形/无关重复两组红均保留；不拿旧12/16重复相加，不记学生亲改。真MySQL仅自有t44_test，100pair单SELECT/空页0读、原行不变、三类新写2000字/幂等重放、写失败全回滚及GET退出后独立拒绝audit等边界有目标证据。无UI/完整CI/性能/独立验收通过声明。
 
 严格静态通过，14hash一致，原986/985断言前缀保持；本岗生产固定cloc实测净+95，高于RFC后端预算，6186基线仅派生6281且仍超5100，未重跑全局计数。新生产文件需纳入下一组合全覆盖分母，旧43文件百分比不沿用。源码checkpoint先提交给前端，依赖/迁移/配置均无需新增；本次证据随后独立提交，完整同源CI/专审/UI由根接续，未启动任何新runtime或负载。
+
+## HISTORY-EVIDENCE-01窄修：源码bcb0，目标7绿
+
+AI专审员在42243/0549真实SQLite HTTP确认合法audit.kind1与schedule.kindtrue因Python容器相等被错误关联；正常新写原Schema已拒绝true，问题在旧历史候选。原审查不通过保留，旧504 CI绿色不能替代未覆盖反例。后端先设计ad6a9b3归档，再原986无mock实际JSON/HTTP得2红4绿，窄修源码bcb0e1bbb1440df958a04e87afea0e5b015d2f17改为双方EvidenceRefs合法+JSON精确类型/原文值比较；6案+1原正常历史回归7绿。证据agents/backend/plan-reason-evidence-type/summary.json，均属AI开发/审核行为，不是学生纠错或独立验收。
+
+无冻结/DB/runtime/正常写/输入normalization/依赖配置变化，旧行不写回；对象键序无关、array有序、字符串不正规化，历史1与1.0保守不猜。严格静态通过/14hash一致/原986前缀保留；单源文件净+4，本Issue后端累计+99，规模继续未过。此轮没有MySQL/全套/浏览器/性能重跑；新源44生产文件全CI、专审和独立复验待根安排，不能沿用旧43分母或旧504结果称通过。
