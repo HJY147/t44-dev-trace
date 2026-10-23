@@ -232,3 +232,10 @@
 - 产品精确checkpoint 3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a已push，skip ci；root已收SHA待小审固定方法。随后原source_count.py/cloc2.10对该提交实测应用6186/within_range=false/--require-range退出1，final-committed-cloc.json；相对基线6124真实+62，不将归档成功说成规模通过。
 - 已通过GitHub connector在Issue4/28实际发完整阶段交接，再用各comments/:id精确GET读回，两个返回body与实际本地正文逐字相同；github-readback.json保留endpoint/id/body/时间/作者/equality。链接Issue4#issuecomment-6373901751、Issue28#issuecomment-6373902163。没有关Issue、开完整CI、设review成功或将本岗自测写成独立验收。
 - 当前收尾仅证据/记录，产品、两自测源码与3b7bc0c完全相同；本岗作用域完成并释放槽，后续精确review/后端接入/组合CI由root调度。
+
+
+## ROLE-database-POOL-RETENTION-v1：同15峰值的保留池诊断先设计
+- 从root当前2a0f091（含ff7ffa8公开backend诊断证据）创建独立codex/database-pool-retention/worktree，根索引与未跟踪打包工具未动。读根61b23e6先行RFC及公开bc5 result/continuation；未读独立私密材料。
+- 核锁backend requirements与实际backend/.venv SQLAlchemy2.1.6，本机pool impl.py/base.py与官方rel_2_1_6 raw逐字/hash相同；source-verification.json保留实际方法行号/hash。首次系统CA失败后使用既有certifi CA保持验证成功，不绕TLS；未用不匹配版本文档代替实际代码。
+- 真实QueuePool按返还队列满时close/减少overflow，懒建连接且A5+10/B15+0同15峰值；B最多保留更多空闲会话/内存，不是零成本。acquire inclusive不是纯pool等待，旧并发32新连211不能回填正式三组根因。
+- 先提交精确工具设计/命令/预算，955仅最小扩展pool-abba、固定A/B与预热/稳态/清理阶段和真实DBAPI计数；不改生产/默认池/SQL/锁/线程/全局参数。实际比较须root窗口，当前没有HTTP/SQL/负载。

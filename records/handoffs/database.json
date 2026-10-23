@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "PLAN-HISTORY-v1：固定有限历史读取实现与数据库owner自测",
-  "implementation_status": "固定方法已实现；旧源真实红，新目标48/993全66（重叠）、MySQL两个新增目标通过；精确新源码review/root组合CI与后端接入待调度，不称Issue28全局关闭。",
+  "stage": "POOL-RETENTION-v1：同15峰值保留池受限诊断设计",
+  "implementation_status": "已核实际2.1.6池源码与官方tag一致；设计先提交，955扩展/离线验证待做，实际ABBA等待root窗口未执行。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -544,6 +544,16 @@
       "path": "agents/database/plan-history/github-readback.json",
       "kind": "Issue4/28 actual POST and exact comment GET body equality",
       "status": "已逐字核对"
+    },
+    {
+      "path": "agents/database/pool-retention/design.md",
+      "kind": "固定ABBA生命周期与连接预算设计",
+      "status": "先设计未执行"
+    },
+    {
+      "path": "agents/database/pool-retention/source-verification.json",
+      "kind": "实际锁定池源码与官方tag逐字/hash对照",
+      "status": "2files equal; 2.1.6"
     }
   ],
   "interfaces": [
@@ -812,9 +822,9 @@
     "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained."
   ],
   "unverified": [
-    "后端页提取/matcher/投影和前端UI不属本岗实现，此模块不证明HTTP或Issue28整体完成",
-    "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
-    "源码规模产品提交已同口径实测6186（基线6124/净+62），--require-range退出1，仍超5100；不压行或移计数"
+    "955工具扩展尚未完成/离线验证",
+    "实际ABBA/HTTP/SQL/负载未执行，必须等root窗口",
+    "未准入生产池修改；正式压力/源码规模/人工材料原缺口不改变"
   ],
   "questions": [
     {
@@ -981,9 +991,14 @@
       "id": "ROLE-database-PLAN-HISTORY-v1",
       "archive": "agents/database/prompts/ROLE-database-PLAN-HISTORY-v1.md",
       "improvement_reason": "在真实DDL/解码/异常边界上先提交精确有限接口，再在根准入范围实现；不绕gateway/不压计数/不造学生亲改"
+    },
+    {
+      "id": "ROLE-database-POOL-RETENTION-v1",
+      "archive": "agents/database/prompts/ROLE-database-POOL-RETENTION-v1.md",
+      "improvement_reason": "新假设先核锁定真实源码和同峰值/空闲代价，工具先提交并隔离真实执行窗口，不把短段归因为正式根因"
     }
   ],
-  "updated_at": "2026-10-23T20:19:12.229146+00:00",
+  "updated_at": "2026-10-23T22:50:10.582133+00:00",
   "publication": {
     "branch": "codex/database-plan-history",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",
@@ -1133,6 +1148,15 @@
         "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省",
         "本轮未实施共享helper，不存在新运行行为/并发/死锁/故障恢复/覆盖率/性能通过结论；未新增测试脚本，下一号码由root统筹。"
       ]
+    },
+    {
+      "stage": "PLAN-HISTORY-v1：固定有限历史读取实现与数据库owner自测",
+      "implementation_status": "固定方法已实现；旧源真实红，新目标48/993全66（重叠）、MySQL两个新增目标通过；精确新源码review/root组合CI与后端接入待调度，不称Issue28全局关闭。",
+      "unverified": [
+        "后端页提取/matcher/投影和前端UI不属本岗实现，此模块不证明HTTP或Issue28整体完成",
+        "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
+        "源码规模产品提交已同口径实测6186（基线6124/净+62），--require-range退出1，仍超5100；不压行或移计数"
+      ]
     }
   ],
   "refactor_removed": [
@@ -1146,15 +1170,11 @@
     }
   ],
   "current_interfaces": {
-    "task_schedule_changes": "(project_id:int,pairs:tuple[tuple[int,int],...])->list[dict] complete codec rows",
-    "bounds": "input <=100 before dedup; ID1..4294967295; version1..2147483647; strict int/tuple",
-    "read": "fixed schedule_changes/project_id/iteration IS NULL/exact tuple-IN/order task_id,to_version,id; empty0/nonempty1 execute; no LIMIT",
-    "errors": "invalid input StatementRejected; DB/error output scope/duplicate/structure failure PersistenceUnavailable rollback-only; no new HTTP code",
-    "contract": "agents/database/plan-history/design.md",
-    "backend_owner": "authorized-page pair extraction/matcher/projection; no SQL bypass",
-    "schema": "18/226 unchanged",
-    "status": "implemented and development-selftested; exact source review pending root",
-    "source": "backend/t44/persistence/rows.py:RowsGateway.task_schedule_changes"
+    "scope": "tool-only A(5,10) vs B(15,0), peak<=15 per singleengine/worker",
+    "mode": "955 --mode pool-abba, fixed32 concurrency and1s warmup4s steady eachA1B1B2A2",
+    "source": "bc5 application bytes unchanged; SQLAlchemy2.1.6 verified",
+    "execution_admission": "pending explicit root window; no actual HTTP/SQL/load yet",
+    "contract": "agents/database/pool-retention/design.md"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
