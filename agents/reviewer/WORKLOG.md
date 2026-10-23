@@ -147,3 +147,5 @@
 - pinned cloc原口径5973超873，require-range exit1；真GET CI39958165108绑定4c20四job成功，原件394/0/0/0、43源/0excluded/88.726%行覆盖。全量门禁/独立/正式性能不据此放行，旧v1失败和原e01 failure不改。
 - 与BE实际互询只读优化：S锁候选收敛默认RC单UoW，仅validateContractPayload，确切RFC hash8cdfc9b...及未应用patch净+7，无锁/无生产diff，限定设计无阻断但收益未测、新源码另审。曾提S后撤回不是用户发现或产品安全漏洞。
 - 报告八段十项与命令/原件/hash/工具失败限制已落盘；原C-P1/C-P2限定关闭，整体不通过。GitHub COMMENT/提交以实际回执后补，不预写网络成功。
+
+- 主证据ff1486422cd1a32812a568f634f373015e401fae已push；PR21真实COMMENT已发布并GET读回commit_id严格4c20、state=COMMENTED、body完全相符：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373。连接器返回review_id5629687373；无status写入/APPROVE/merge。只补本岗回执后立即释放槽，不等后续新产品或重复全套。
