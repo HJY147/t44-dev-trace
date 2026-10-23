@@ -94,3 +94,11 @@
 - 新Docker application job/972 driver将真实build/up/迁移/seed/4worker/HTTP/SPA/413/凭据轮换/停写备份和隔离恢复；尚未执行，本机无Docker。
 - 本地23 guard、配置/Ruff/actionlint通过；FE新CI命令真实通过whole-src行92.21%。原始证据在agents/deployment/integration-validation。
 - tmp路径为tmp/backend、tmp/deployment/997_ops.py、tmp/ci/996_gates.py，新增971凭据guard/972独立Docker driver。无云部署、性能或独立验收结论。
+
+### INTEGRATION-v1 真实运行结论
+
+- 精确应用SHA `31f4dff935973162544951fe0660ce208edb7007`：Docker run39932723829 success；同SHA product39932723908/39932729585 static/contracts/coverage/frontend四job均success。原始证据在integration-validation/run-39932723829。
+- 实际build两镜像、迁移/账号/seed2项目40任务、全Compose健康、API4worker、401/登录/项目任务HTTP、SPA history fallback和双层JSON413均通过。API超1MiB拒绝有audit_id；代理超2MiB为null。
+- 真实0600/UID10001私密凭据只读挂载、跨容器flock拒绝第二scanner、受控轮换撤销旧session、2次持久扫描创建16条记录通过。Token未出公开输出，产物不含.env/私密JSON/数据库dump。
+- 停写备份→新项目/隔离库恢复：19表行数/内容checksum一致；恢复迁移18业务表226列passed/already_applied，源重启HTTP可读。首次探针误计docker-init失败完整保留，修正识别而未降低4worker断言。
+- 本机仍无Docker；这是托管Linux synthetic联调，无服务器租赁、公网TLS部署、队列异机灾备、生产RPO/RTO、性能或独立验收结论。
