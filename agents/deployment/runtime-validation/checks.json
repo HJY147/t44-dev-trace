@@ -1,0 +1,85 @@
+{
+  "scope": "deployment configuration and CI guard tests only",
+  "checks": [
+    {
+      "command": [
+        "deployment/.venv/bin/python",
+        "scripts/ci/validate_config.py"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-0.log"
+    },
+    {
+      "command": [
+        "deployment/.venv/bin/ruff",
+        "check",
+        "--config",
+        "scripts/ci/ruff.toml",
+        "deployment",
+        "scripts/ci"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-1.log"
+    },
+    {
+      "command": [
+        "deployment/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "deployment/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-2.log"
+    },
+    {
+      "command": [
+        "deployment/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/ci/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-3.log"
+    },
+    {
+      "command": [
+        "/tmp/t44-deployment-tools/actionlint",
+        ".github/workflows/product.yml"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-4.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "agents/deployment/runtime-validation/check-5.log"
+    }
+  ],
+  "container_build_executed": false,
+  "application_tests_executed": false,
+  "expected_product_failures": [
+    {
+      "command": "scripts/ci/static.py",
+      "exit_code": 1
+    },
+    {
+      "command": "scripts/ci/run_tests.py contracts",
+      "exit_code": 1
+    },
+    {
+      "command": "scripts/ci/run_tests.py coverage",
+      "exit_code": 1
+    }
+  ],
+  "failure_reason": "Missing application implementation/dependencies/tests in this isolated worktree; product tests did not run."
+}
