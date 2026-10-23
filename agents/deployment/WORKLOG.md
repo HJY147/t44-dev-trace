@@ -269,3 +269,5 @@
 - 首周期后API/consumer/UI不重建，控制器ready登录会话先回收；TTL300剩120秒时排空scanner→真实签发/原子发布→撤销旧→新scanner→持久tick/锁后才计额外轮换。已确认撤销的旧会话保留原件但不重复耗时清理。公共结果只计数/源/UTC/端口/清理布尔，不含账户/凭据/通知个人内容。
 - 仅执行871新ServeGuards：初14项绿，补source/controller拒绝、cleanupfalse不转true、ready自有会话回收后最终17项绿；Ruff绿/CLI帮助解析0。Popen/DB/身份/信号全替身，未读真实私密输入、未起服务/发真实信号、未跑旧守卫/完整cycle。capture AST、runtime与业务/锁/规则不变。
 - 工具源hash与scope原件见native-bounded-demo-validation/source-scope.json；新360秒实跑未准入/未执行，现提交后报告根等压力比较窗口，新增范围还需专职审后另准入。
+
+- 工具4ef57b6129c712c1fad88de56775c53b84009b15已push；新draft PR37 https://github.com/HJY147/t44-dev-trace/pull/37 与Issue7评论6376409216已真实发布，PR当前head4ef/draft/body及Issue正文均GET逐字相同。root明确DB岗先用≤120秒本机窗口，本岗保持全未启动，等其结束/清理转达后才另给360秒准入；实际窗口未到不自行推定。实际prompt已补原约束。

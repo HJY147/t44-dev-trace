@@ -9,3 +9,7 @@
 ## 本次作用与映射
 
 先读root RFC/当前AGENTS与cd3限定关闭，再从实时root c1aff86建立codex/deployment-bounded-demo。本人先补deployment/native/bounded-demo-design.md，明确函数I/O、信号安全点、TTL轮换、owned stop/cleanup、公共白名单与实运行等待窗口。随后仅控制器/现有871受影响合成边界；工具/设计不冒充新实际serve、独立或性能结论。
+
+## 工具完成后根的实际窗口约束
+
+本机负载窗口先给DB岗：其955 ABBA commit+离线完成后立即一次≤120s，总体当前还在静态末段。你保持所有服务未启动，等root转发其结束/清理确认后才给360秒新serve实运行。你工具4ef已收到，将先快速静态核新增范围；继续本岗PR/Issue/回读封档即可，勿扩HTTP负载或提前长时serve。360秒目标只证明新生命周期/额外轮换/到时回收，不重记旧cycle套件或已有16事件为新发布。

@@ -205,3 +205,5 @@
 - 新codex/deployment-bounded-demo基于rootc1aff，先本人函数I/O/stop/rotation设计，原PR31/34和运行历史保持；只bc5新native专属库/端口。当前尚未实现/运行serve，工具/必要合成后等根压力窗口与新增范围专审；不回填独立/性能结论。
 
 - bounded serve/stop工具已实现：固定bc5/current新run、显式时限、信号安全点、TTL300前轮换/新tick、owned runner请求及公共白名单；17项新范围合成/Ruff/CLIhelp通过。只工具阶段，无真实服务/360秒实跑，等待根压力窗口及新增范围专审；旧cycle/P2历史不移植。
+
+- 新draftPR37/Issue7#6376409216真实发布并精确回读，工具实现4ef57b6；root明确先给DB比较窗口，本岗仍全未启动，待其清理完成和root另准入360秒。没有新增运行/正式性能结论。
