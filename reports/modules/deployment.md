@@ -80,3 +80,9 @@
 - 实现提交3857b2e55fcb7fe99b38fa2d85b086662b762f6c已push；草稿PR #15（base codex/team-bootstrap）已创建并attach，未合并。
 - 首次远程run39912067161四job均因缺应用/测试/前端manifest失败；Compose/Nginx语法步骤及真实服务初始化成功，但未执行产品用例或覆盖率。精确回执与日志见runtime-validation/remote-initial*。
 - api镜像加入authoritative specs/contracts白名单，不复制原始材料；实际路径、后端哈希锁和迁移/恢复仍待集成。结果Issue评论#7/6359033289，正文与PR正文均保存在本岗目录。
+
+### RUNTIME-HANDOFF-v1 当前结论
+
+- 运行配置最终修复6d713eb8fa5af419fe061c8c9b2061f2699472dc已push；原始日志gzip+SHA保真，阅读稿规范尾空白，diff检查通过；authoritative contracts COPY已核对，无sources。
+- 最新总协调保护回执为root records/github/protection-v2-response.json：main五项必需检查已配置，strict/enforce_admins=true；旧“只有reviewer/stage”不代表当前。本岗未改保护/重跑/合并。
+- 本次仅归档与回复CI真实pytest/JUnit/coverage命令；后端目前纯domain基础仍不是API完成。PR15保持草稿并已attach，首次run失败、缺应用和未本机构建的限制不变，待应用齐备后集成。

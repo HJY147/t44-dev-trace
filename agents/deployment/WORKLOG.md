@@ -55,3 +55,11 @@
 - 实际结果评论 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289 已通过runtime-result-comment.md的body-file发表；PR正文由runtime-pr-body.md通过gh pr edit同步真实状态。随后仅提交上述收尾配置和事实记录。
 
 - 收尾diff --check实际因下载日志4行传输尾空格退出2；工具编排未据该失败停止，随后已形成收尾commit9720e78。这是本岗编排失误。现保留原始日志字节为remote-initial-failure.log.gz，并记录SHA256/转换说明；阅读稿仅去行尾space/tab，不删改失败结果，补交修复后再确认diff检查。不修改或降低门禁。
+
+## RUNTIME-HANDOFF-v1 最终交接
+
+- 实际收尾派工归档于agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md。原始字节保留与尾空白修复commit为6d713eb8fa5af419fe061c8c9b2061f2699472dc，已push；diff检查通过，工作树和暂存区空。
+- 核对该运行配置提交中的api镜像确已COPY specs/contracts与specs/database，ignore只白名单这些规格，不复制specs/sources。
+- 读取总协调root records/github/protection-v2-response.json，确认main必需reviewer/stage、static、contracts、coverage、frontend五项，strict/enforce_admins=true；此前“只有reviewer/stage”是当时快照。没有由本岗更改保护或重跑CI。
+- 后端开始基础包/哈希锁/纯domain实现，尚无API/DB集成，不当作API已完成。本岗实际回复标准pytest JUnit与coverage JSON，不依赖pytest-cov/json-report；tests/backend递归包含在backend/tests，严格markers各自仍需真实用例。回复经body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775 。
+- 最终交接经runtime-handoff-comment.md body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315 。PR15已attach不重建；记录首次真实run39912067161失败，不把配置/服务启动证据当应用测试。本机未构建/部署/迁移/恢复/压测，等待集成。随后只提交本段事实归档。

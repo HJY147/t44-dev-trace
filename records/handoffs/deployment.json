@@ -59,7 +59,10 @@
     "agents/deployment/runtime-validation/remote-initial-failure.log",
     "agents/deployment/runtime-validation/remote-initial.json",
     "agents/deployment/runtime-validation/remote-initial-failure.log.gz",
-    "agents/deployment/runtime-validation/remote-log-provenance.json"
+    "agents/deployment/runtime-validation/remote-log-provenance.json",
+    "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
+    "agents/deployment/runtime-handoff-comment.md",
+    "agents/deployment/runtime-pytest-reply.md"
   ],
   "interfaces": [
     {
@@ -240,6 +243,21 @@
     {
       "command": "gh issue comment 7 --repo HJY147/t44-dev-trace --body-file agents/deployment/runtime-result-comment.md；gh pr edit 15 --body-file agents/deployment/runtime-pr-body.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289；PR正文已更新"
+    },
+    {
+      "command": "git diff --check；核对gzip还原字节；git commit并push修复",
+      "result": "6d713eb8fa5af419fe061c8c9b2061f2699472dc 已push；原始字节SHA见remote-log-provenance.json，检查通过、工作区/暂存区空"
+    },
+    {
+      "command": "只读总协调protection-v2响应；核对当前api.Dockerfile及ignore",
+      "result": "main五项required checks+strict/enforce_admins=true；contracts资源已COPY且不含sources；不改保护或重跑"
+    },
+    {
+      "command": "gh issue comment 3/7 --body-file 本岗runtime-pytest-reply.md / runtime-handoff-comment.md",
+      "result": [
+        "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
+        "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315"
+      ]
     }
   ],
   "results": [
@@ -272,7 +290,7 @@
     "数据库迁移--database参数、镜像DDL路径、迁移版本及恢复核对命令尚待正式实现确认",
     "前端test:coverage的真实Vitest参数/报告接口尚未确认，需覆盖所有TS/Vue生产源码",
     "消息/调度持久化、故障回执、跨进程幂等及续扫须责任岗实现；不能以进程健康替代",
-    "首个产品合入前由总协调在真实运行后把四项CI加入main必需门禁；不由部署岗发审核成功"
+    "main五项门禁已由总协调配置，产品真实测试/行覆盖率与独立审核未通过前不得合入；部署岗等待集成"
   ],
   "prompt_refs": [
     {
@@ -312,9 +330,22 @@
         ".github/workflows/product.yml",
         "agents/deployment/runtime-validation/"
       ]
+    },
+    {
+      "id": "ROLE-deployment-RUNTIME-HANDOFF-v1",
+      "source": "总协调实际收尾派工",
+      "archive": "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
+      "reason": "只收尾原始证据保真、准确提交/PR/CI限制及最新保护事实；不扩展设计，不计作提示词演进",
+      "artifact_paths": [
+        "agents/deployment/WORKLOG.md",
+        "reports/modules/deployment.md",
+        "records/handoffs/deployment.json",
+        "agents/deployment/runtime-pytest-reply.md",
+        "agents/deployment/runtime-handoff-comment.md"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T14:36:11+08:00",
+  "updated_at": "2026-10-23T06:44:10.857158+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -324,6 +355,18 @@
     "initial_actions_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161",
     "initial_conclusion": "failure: missing application/tests/frontend manifest",
     "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289",
-    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit"
+    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit",
+    "final_implementation_commit": "6d713eb8fa5af419fe061c8c9b2061f2699472dc",
+    "main_required_checks": [
+      "reviewer/stage",
+      "static",
+      "contracts",
+      "coverage",
+      "frontend"
+    ],
+    "protection_evidence": "总协调root records/github/protection-v2-response.json（只读核对，不加入本岗提交）",
+    "final_issue_handoff": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315",
+    "pytest_reply": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
+    "handoff_revision": "最终事实记录所在提交由Git元数据/PR确定；final_implementation_commit是运行配置修复提交"
   }
 }
