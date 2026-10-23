@@ -32,5 +32,40 @@
       "records/validation/local-acceptance-v2-ui-runtime.json"
     ],
     "unpublished_screenshots_results": "tester only"
+  },
+  "follow_up_metadata": {
+    "received_at": "2026-10-23T14:42:49.086917+00:00",
+    "supplementary_harness_commit_reported": "c0d8192bac700f966e68447f94e2637da4debace",
+    "blackbox_request_commit_reported": "2335c2a72fbd50362f4869aac1ac08f8c0a9a32b",
+    "fault_request_commit_reported": "734fd6a3de8cc322e0d336dfae8314fa114af0a7",
+    "reported_runs": [
+      39963650474,
+      39969411769,
+      39969411280
+    ],
+    "public_product_conclusion": "not yet published; coordinator has not read plaintext or case diffs",
+    "control_recover_current_contract": "exit0/empty stdout plus action ledger; finally recovery_completed is overall, not a per-call JSON response",
+    "requested_capability_upgrade": "structured per-call recovery receipt; pending deployment role",
+    "amqp_transport": {
+      "implementation_basis": "product4c20 default BrokerSettings; hosted environment does not override defaults",
+      "exchange": "t44.events",
+      "queue": "t44.notifications",
+      "routing_key": "t44.notifications",
+      "quarantine_exchange": "t44.events.quarantine",
+      "quarantine_queue": "t44.notifications.quarantine",
+      "json_fields": [
+        "event_id",
+        "schema_version",
+        "event_type"
+      ],
+      "field_values": "use actual outbox record; no expected business result supplied",
+      "properties": {
+        "content_type": "application/json",
+        "delivery_mode": 2,
+        "message_id": "str(event_id)",
+        "type": "t44.event.v1"
+      },
+      "mandatory": true
+    }
   }
 }
