@@ -205,3 +205,15 @@
 - 原22红绿/全89/构建/浏览器5原日志先gzip归档再规范可读尾空白，raw/readable SHA和全20源/14冻结hash见plan-reason-validation.json。缺失/重复/返工/迭代范围仅组件夹具，不伪造真实missing E2E或填SQL；准确新HEAD专审、组合CI、新无历史隔离验收仍待总协调安排，不称独立通过或学生人工经历。
 
 - 70f2e06证据阶段已commit/push；Issue28真实评论6374496391、新draftPR32已创建并精确GET正文匹配。实际base7f892644已含c79产品（git ancestry核实），PR差异为29证据文件，因此已将PR标题/正文改为证据交付而非第二次产品修复；初建mergeable=false后独立GET为true。未APPROVE/合main/自判验收；回执plan-reason-github-verification.json。
+
+
+## 2026-10-24T06:12+08:00｜ROLE-frontend-LATEST-PREVIEW-v1
+- root授权只更新本机API+Web，不改产品。新隔离worktree/branch codex/frontend-latest-preview从c18fcd5，先设计627e627；固定应用bc5aef9c62393134582affb7a690acb33ac2b833，不使用工作树浮动源码。原UI003红绿/原独立结论保持历史；root公告CI510/89与stage04，本岗本轮不重跑/扩大结论。
+- 新git archive只backend/frontend/权威OpenAPI，85 tracked文件逐项SHA与bc5一致，权限file0444/dir0555，依赖符号链接仍指现有锁环境，独立Vitecache；运行后hash再次全相同。Python3.12.10/uvicorn0.54.0复用backend worktree.venv，不resolve成系统Python；Node24.19.0及原pnpm锁依赖未安装/更版。旧私密environment复制仅改PYTHONPATH，不输出值；旧源码副本/启动器/账号说明副本保留。
+- 首次准备systemPython tarfile不支持filter参数，exit1在停服务前，原失败latest-preview-preparation-first.log保存；改校验每个archive成员仅安全相对regular file/dir再解压。初次误试root.venv缺uvicorn与若干只读路径探针失败也如实记validation；旧服务一直保留，无数据/HTTP副作用。
+- 两次核63514/72044 UID501、starttime、PGID=self、command、cwd完全对应旧demo-v11/5dcb和demo-warm-glass/9560后才逐个SIGTERM正常退出；不是按端口杀。2026-10-23T22:07:15UTC新APIparent24604、4worker24608/24607/24606/24609+resource-tracker24605、新Vite24610启动；显式bc5snapshot backend/PYTHONPATH、12718080四worker和5173→18080。unauth/auth/me401、Web200，未触发rollback，PID/cwd/命令/原始启动log已存receipt。
+- 既有907脚本与bc5逐字未改，一次1440/390只读smoke exit0，20API请求=2login POST+18GET、businessMutations0、failedResponses0、pageerror0，每宽20cards/无横溢出；4PNG（登录+工作台）逐张实际看。907只记请求及>=400事件，不记录每个成功status，因此不能美化成逐条20×200原件。Chrome关闭，907无logout，context关闭不等于撤销token，按原TTL过期。
+- 私密.submission-private/演示登录说明.md保留0600与账号密码原样，只更新当前bc5/入口/API+Web范围，旧版私密副本留runtime。公开本岗新产物含解压rawlogs和PNG字节对私密password/full DB/AMQP URL内存精确扫描零匹配（非全面安全审计）。未公开私密值或把私密文件加入Git。
+- 新API/Web继续运行等待用户，未启MQ/scanner/DDL/migrate/seed/reset，未业务写/改独立端口库或读取tester私密材料。当前仅API+Web预览，不是完整部署/消息成功链/容量理由新独立验收。验证入口latest-preview-validation.json、switch/prepared receipts、907原JSON与启动原log gzip；全部AI运维/开发行为，不计学生人工工作。
+
+- c5e79e0证据已本岗commit/push；Issue2实际评论6375754006已按精确ID GET回读，正文逐字相同，回执latest-preview-github-verification.json。仅预览运维/证据，无需新产品PR，不发布APPROVE/独立状态；API/Web继续运行，后续由root统一向用户说明。

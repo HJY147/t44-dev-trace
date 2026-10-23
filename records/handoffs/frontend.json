@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "ui003-plan-reason-developer-validated-awaiting-exact-review",
-  "implementation_status": "UI003产品c79，原文/诚实缺失提示组件89全绿及准确新后端限定真实872完成；专审/组合CI/新隔离验收待总协调，不自称通过。",
+  "stage": "latest-preview-bc5-api-web-running",
+  "implementation_status": "用户本机5173→18080已更新精确bc5，只API+Web，907一次只读smoke通过；服务继续运行，源码未改，不称完整部署。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -182,6 +182,22 @@
     {
       "path": "agents/frontend/plan-reason-browser/first/",
       "status": "原始真实结果/原文/6PNG"
+    },
+    {
+      "path": "docs/ui/latest-preview-update.md",
+      "status": "切换范围/回滚设计"
+    },
+    {
+      "path": "agents/frontend/latest-preview-validation.json",
+      "status": "准确运行身份与只读smoke"
+    },
+    {
+      "path": "agents/frontend/latest-preview-smoke/",
+      "status": "实际907原JSON/4PNG"
+    },
+    {
+      "path": "agents/frontend/latest-preview-secret-scan.json",
+      "status": "本岗公开产物精确密钥扫描"
     }
   ],
   "interfaces": [
@@ -364,22 +380,29 @@
     {
       "command": "Node tmp/frontend/872_plan_reason_browser.mjs, exact BE source env and private credential path only",
       "result": "一次exit0；新project42/iter42/task6002，7businesswrites，真实legacy+两次2000字；61browser全200/14control，Chrome/Vite5176关闭"
+    },
+    {
+      "command": "git archive bc5 backend frontend specs/contracts/openapi.json; exact hash verify; chmod source readonly",
+      "result": "85trackedfiles match before/after; old snapshots retained"
+    },
+    {
+      "command": "UID/starttime/PGID/command/cwd checks; SIGTERM exact old PIDs; Popen backend.venv uvicorn workers4 and Node Vite",
+      "result": "new24604/24610 running on same ownpreview URLs, API401/Web200; no rollback needed"
+    },
+    {
+      "command": "Node tmp/frontend/907_demo_preview_smoke.mjs with private credentials path and unique output",
+      "result": "once exit0,1440/390 fourimages viewed,20requests/0businesswrites; browser closed, servers continue"
     }
   ],
   "results": [
-    "UI003设计41776d0→产品c79cd99；22目标旧15红7绿→22绿；2额外字面变体后全前端89/89",
-    "20源全分母93.33%行/88.09%分支；类型构建通过，原chunk警告保留",
-    "872FEc79/BE0549/sourcehash绑定，唯一新project42/iter42/task6002，7成功业务写入；旧audit119投影/2000字新audit121与124真实API/DOM相同",
-    "1440/390六图已看，0pageerror/横溢出；5176/Chrome已关，18089根管理；既有阶段结果保留历史用途"
+    "85文件不可变archive前后hash同bc5，原锁依赖/旧副本保留",
+    "旧63514/72044核身份后退役；APIparent24604/四worker、Vite24610新运行",
+    "907原样一次20API请求（2login+18GET）/0businesswrites/failedResponses/pageerror；1440/390四图已看",
+    "私密本机说明0600账号不变；公开新产物密钥精确扫描零匹配"
   ],
   "unverified": [
-    "Independent acceptance and formal400VU performance not performed by this role",
-    "Headless viewport is not a physical phone",
-    "Non-backdrop supporting engine not executed; fallback source-inspected",
-    "JS825.22kB chunk warning remains",
-    "Source-size gate still failing before this visual change; same-policy recount belongs to root",
-    "FullWCAG audit not claimed; token contrast computed and muted color darkened",
-    "CurrentUI003 exact newHEAD review, combined CI and fresh isolated independent retest pending; missing/rework/iteration display only component fixtures, no false real E2E claim."
+    "Current preview only API+Web, MQ/scanner not started; not full deployment or new functional independent acceptance.",
+    "907 only records requests and error-status response events, not all completed success response statuses."
   ],
   "questions": [
     "1.1正式freeze189dc4a已收到；后端新守卫刚准入，本轮不宣称容量行为或真实1.1通过。",
@@ -528,20 +551,21 @@
       ],
       "improvement_reason": "按冻结状态/码/操作解释人力业务约束，保留未知/字段/503/session退路，不把数据保护成功当界面验收通过。"
     },
-    "records/prompts/ROLE-frontend-PLAN-REASON-v1.md"
+    "records/prompts/ROLE-frontend-PLAN-REASON-v1.md",
+    "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md"
   ],
-  "updated_at": "2026-10-23T20:50:24.541874+00:00",
+  "updated_at": "2026-10-23T22:10:05.188563+00:00",
   "delivery": {
-    "branch": "codex/frontend-plan-reason",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/32",
+    "branch": "codex/frontend-latest-preview",
+    "pull_request": null,
     "base": "codex/integration",
     "draft": true,
-    "basis_commit": "3f59d881e5336d9a00964533e7beb8d914b29432",
-    "status": "UI003 evidence70f2 pushed, draftPR32/Issue28 actual comment readbacks match; productc79 already root integrated, PR current difference is evidence only; exact combined review/CI/independent pending",
-    "latest_checkpoint": "70f2e06e82035c79fc38f05d9711841ca8109eb0",
-    "product_source_note": "Only new audit.ts and RecordView literal unique reason/scoped missing; API/session/R1/UI002/frozen contracts unchanged.",
+    "basis_commit": "c18fcd554efe7dc22038f6afa29e3646e7dd11b2",
+    "status": "Latest bc5 API+Web preview left running; evidencec5e79 pushed and Issue2 comment6375754006 exactGET body matched; no product modification or new acceptance claim",
+    "latest_checkpoint": "c5e79e0c44beb9a61bb4a9d9a5fd5079493d7a72",
+    "product_source_note": "No product modification; exact bc5 runtime snapshot only.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
-    "application_commit": "c79cd9930febadfa77cb2d0eede7626d4039c305",
+    "application_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "stage_comments": {
       "warm_glass_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127",
       "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
@@ -553,14 +577,18 @@
       "logout_readback": "agents/frontend/logout-github-verification.json",
       "plan_reason_issue": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374496391",
       "plan_reason_pr": "https://github.com/HJY147/t44-dev-trace/pull/32",
-      "plan_reason_readback": "agents/frontend/plan-reason-github-verification.json"
+      "plan_reason_readback": "agents/frontend/plan-reason-github-verification.json",
+      "latest_preview_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6375754006",
+      "latest_preview_readback": "agents/frontend/latest-preview-github-verification.json"
     },
     "previous_warm_glass_branch": "codex/frontend-warm-glass",
     "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14",
     "previous_session_branch": "codex/frontend-logout",
     "previous_pr26": "https://github.com/HJY147/t44-dev-trace/pull/26",
     "previous_business_feedback_branch": "codex/frontend-business-feedback",
-    "previous_pr30": "https://github.com/HJY147/t44-dev-trace/pull/30"
+    "previous_pr30": "https://github.com/HJY147/t44-dev-trace/pull/30",
+    "previous_plan_reason_branch": "codex/frontend-plan-reason",
+    "previous_pr32": "https://github.com/HJY147/t44-dev-trace/pull/32"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -727,6 +755,33 @@
       "task_id": 6002
     },
     "real_business_writes": 7,
+    "independent_acceptance_claimed": false
+  },
+  "historical_results_before_latest_preview": [
+    "UI003设计41776d0→产品c79cd99；22目标旧15红7绿→22绿；2额外字面变体后全前端89/89",
+    "20源全分母93.33%行/88.09%分支；类型构建通过，原chunk警告保留",
+    "872FEc79/BE0549/sourcehash绑定，唯一新project42/iter42/task6002，7成功业务写入；旧audit119投影/2000字新audit121与124真实API/DOM相同",
+    "1440/390六图已看，0pageerror/横溢出；5176/Chrome已关，18089根管理；既有阶段结果保留历史用途"
+  ],
+  "historical_unverified_before_latest_preview": [
+    "Independent acceptance and formal400VU performance not performed by this role",
+    "Headless viewport is not a physical phone",
+    "Non-backdrop supporting engine not executed; fallback source-inspected",
+    "JS825.22kB chunk warning remains",
+    "Source-size gate still failing before this visual change; same-policy recount belongs to root",
+    "FullWCAG audit not claimed; token contrast computed and muted color darkened",
+    "CurrentUI003 exact newHEAD review, combined CI and fresh isolated independent retest pending; missing/rework/iteration display only component fixtures, no false real E2E claim."
+  ],
+  "latest_preview": {
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "validation": "agents/frontend/latest-preview-validation.json",
+    "api_parent_pid": 24604,
+    "frontend_pid": 24610,
+    "frontend_url": "http://127.0.0.1:5173",
+    "api_url": "http://127.0.0.1:18080",
+    "api_workers": 4,
+    "services_left_running": true,
+    "scope": "API+Web local preview only; no business writes",
     "independent_acceptance_claimed": false
   }
 }
