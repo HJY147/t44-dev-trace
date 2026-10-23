@@ -82,3 +82,9 @@ PY
 ```
 
 准备时controller仅Ruff/format/AST通过，没有运行/性能样本。归档profile-controller-static.log；不重复跑已验证生产代码全套。
+
+## 第三窗口实际结果（不覆盖前文准备与失败）
+
+工具245在13:18:49.973332Z–13:19:57.093091Z实际完成所有子阶段，最终profile断言错变量导致整体exit1。18289主样本+3sanity均HTTP200且有效，三服务正常exit0。真实命令、原始metadata/JSONL/pstats/子日志与指标在profile-contract-03-*；原metadata不改。工具赋值修后仅离线正确操作数检查及Ruff/format/AST，不再次负载。
+
+六组短P95与阶段inclusive/线程CPU见analysis/summary；仅初步看到鉴权持久访问及连接获取/游标墙钟增长，尚无纯poolwait/数据库内部锁因果证据，3份冷cProfile不算CPU-only或稳态收益。后续测量/优化由root另派并协调窗口，不自动继续。正式400/600/4worker条件与失败、源码超限均保持。

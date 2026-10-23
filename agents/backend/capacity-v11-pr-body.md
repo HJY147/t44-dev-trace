@@ -1,15 +1,11 @@
-完整工作流后端包含38个HTTP操作、严格JSON Schema、opaque会话撤销、状态/证据/预案/决策及UoW幂等/CAS/审计/outbox。旧IAT01–05修复源479fc8f真实CI362通过、0失败/错误/跳过；该结果不代替本次1.1源。
+后端实现38个冻结HTTP操作、严格JSON Schema、opaque会话撤销、状态/证据/预案/决策及UoW幂等/CAS/审计/outbox。此PR当前包含按D005/D006、bbc设计审查和189dc4a正式冻结实现的1.1容量生命周期：转派接手人先有本迭代工时，capacity覆盖全部状态1–5 owner，6/7可移出、返工前补回有效developer与capacity。原成员保护1–5+7、开始前转派范围、错误优先级、幂等重放和事务原子性保持，项目锁保护创建/转派/迭代变更/返工竞争。
 
-按D005/D006用户采用、bbc设计审查、189dc4a正式1.1父链冻结后，实现容量生命周期：接手人必须先登记当前迭代工时；新capacity覆盖全部状态1–5任务owner；6/7可移出、返工前补回有效developer与capacity。成员保护仍1–5+7，开始前转派范围不变。assignment新增项目锁，创建/迭代变更/返工同序保护；成功审计/outbox/幂等快照与业务原子，拒绝独立审计、旧成功重放及原错误优先级保持。不改冻结14文件/18表226列。
+8f6全量CI真实391项/2失败，根因是服务误把外层1.1.0用于内层候选schema_version。最小源码4c20f32b71635016815420472b9d4bb4fa850df0读取冻结内层const1.0.0，Meta仍1.1.0；原失败、三类HTTP改前失败与修复留存，14freeze和18表226列未改。精确新product39958165108/39958156337均success：394项、0失败/错误/跳过，contract96/integration63/fault7分别通过（标记可重叠）；全部43个t44文件、无excluded，2542/2865行88.7260%、分支78.5530%。含7项新增真实MySQL项目锁竞争及合法转派后移除旧owner双成功；终态fixture为明确合成，不冒充完整实际旅程。证据agents/backend/capacity-v11-ci-summary.json。
 
-冻结前合同/夹具修复单独提交，真实草稿时序保留。冻结后定向21项HTTP/SQLite与7项MySQL8.4/t44_test通过，后者含三类动作各两种真实项目锁先后及合法转派后移除旧owner双成功。版本上限错误优先级追加用例先1失败后修复1通过，最后统一源等待全量CI。终态采用明确合成fixture，不冒充完整实际交付历史。严格本地Ruff/Bandit/格式通过；root授权只合并975既有两个with，原上下文顺序/断言保持。原失败及源码hash在agents/backend/capacity-v11-*。
+工具245e56b的隔离单worker契约校验短诊断收18289主样本+3sanity，0业务/HTTP错误；controller最终错变量RuntimeError/exit1保留，子阶段有效，三服务exit0。955两行修复仅离线原metadata及静态检查，不重跑负载；生产字节仍4c20。六组P95和38份原始记录见agents/backend/profile-contract-03-*。cProfile含冷TLS/等待，尚不足以改pool或归因为DB锁，未作生产性能优化。
 
-当前未部署新业务；精确新SHA全量CI、独立复测/正式性能/3500–5100源码范围尚待。955回环直连仍待后续独占窗口验证，当前不运行负载。PR保持draft。
+PR保持draft；上述为开发CI与限定短诊断，独立复测、正式400VU/600s/4worker性能及3500–5100源码规模尚未通过。冻结前曾有本地业务草稿及局部草稿回归，正式contract-only提交、后续freeze和代码/验证真实先后均在日志保留。
 
 Agent-Role: backend
-Prompt-Ref: ROLE-backend-CAPACITY-V11-IMPLEMENT-v1
+Prompt-Ref: ROLE-backend-CAPACITY-V11-IMPLEMENT-v1; ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1
 Refs: #3 #12
-
-后续精确8f6源全CI实际391项/2失败（两个合法UTC候选），未通过；原因是服务误用外层契约版本作为冻结内层候选schema_version。本次直接读取内层const，Meta继续1.1.0，14冻结件不变；三类HTTP先3失败，再加UTC边界共10通过，新全CI待真实结果。原始日志/JUnit脱敏溯源和AI纠正过程完整保留，不把曾建议但撤回的1.1.1当实际版本。
-
-新源4c20f32 product39958165108/39958156337均success：394测试、0失败/错误/跳过；全43个t44文件，无excluded，行88.73%、分支78.55%、综合86.56%。原失败→修正→新CI关系在capacity-v11-ci-summary.json与原件中。1.1开发CI完成，独立复测/正式性能/源码规模尚待；955控制器准备完成但未运行。
