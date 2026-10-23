@@ -366,7 +366,9 @@ def seed_demo(
             records=records,
             template_version=template["version"],
             template_sha256=template_hash,
-            rule_version=rules["rule_version"],
+            rule_version=rules["version"],
+            rule_effective_at=rules["effective_at"],
+            rule_decided_by=rules["decided_by"],
             rules_sha256=rules_hash,
             artifact_revision=ARTIFACT,
             synthetic=True,
@@ -376,7 +378,10 @@ def seed_demo(
         ).hexdigest()
         if prior:
             if prior != manifest:
-                raise StatementRejected("Different synthetic seed already committed; no overwrite")
+                raise StatementRejected(
+                    "Seed manifest differs in configuration/version/parameters; existing dataset "
+                    "preserved, choose a new empty project schema"
+                )
             return dict(already_seeded=True, manifest=manifest, manifest_sha256=digest)
         if any(g.count(table) for table in ("projects", "tasks", "reviews", "decisions")):
             raise StatementRejected("Seed requires an empty project dataset; no delete/overwrite")
