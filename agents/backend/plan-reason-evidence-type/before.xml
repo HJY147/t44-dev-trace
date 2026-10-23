@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="1.518" timestamp="2026-10-24T04:54:24.789196+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[boolean_kind]" time="0.214"><failure message="AssertionError: assert [{'field': 'r...ical reason'}] == []&#10;  &#10;  Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}&#10;  Use -v to get more diff">application = (&lt;starlette.testclient.TestClient object at 0x1089fc740&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x10882b020&gt;)
+case = 'boolean_kind'
+
+    @pytest.mark.parametrize(
+        "case", ["boolean_kind", "float_kind", "exact", "reordered_keys", "changed_text", "array_order"]
+    )
+    def test_schedule_reason_evidence_json_types_and_exact_values(application, case):
+        import json
+        from copy import deepcopy
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        evidence = [
+            {
+                "kind": 1,
+                "locator": "https://example.test/repo",
+                "revision": "fixed",
+                "description": "Same visible evidence except JSON type",
+            }
+        ]
+        if case == "array_order":
+            evidence.append({"kind": 2, "locator": "synthetic/additional", "description": "Second"})
+        candidate = deepcopy(evidence)
+        if case == "boolean_kind":
+            candidate[0]["kind"] = True
+        elif case == "float_kind":
+            candidate[0]["kind"] = 1.0
+        elif case == "reordered_keys":
+            candidate[0] = dict(reversed(list(candidate[0].items())))
+        elif case == "changed_text":
+            candidate[0]["description"] += " "
+        elif case == "array_order":
+            candidate.reverse()
+        evidence_schema = SPEC["components"]["schemas"]["EvidenceRefs"]
+        assert not violations(evidence_schema, evidence)
+        assert bool(violations(evidence_schema, candidate)) == (case == "boolean_kind")
+        if case in ("boolean_kind", "float_kind"):
+            assert evidence == candidate  # This is the old Python equality false-positive.
+        legacy["evidence"] = evidence
+        legacy["request_id"] = "evidence-type-fixture-" + uuid4().hex
+        with factory() as uow:
+            g = uow.gateway
+            # Own synthetic historical JSON only, not a normal API write or real observed dataset.
+            g.update("schedule_changes", {"id": schedule["id"]}, {"evidence": candidate})
+            audit_id = g.insert("audit_events", legacy)
+            before = [
+                json.dumps(g.get(table, identifier), sort_keys=True, default=str)
+                for table, identifier in (
+                    ("audit_events", audit_id),
+                    ("schedule_changes", schedule["id"]),
+                )
+            ]
+        response = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in response["items"] if row["id"] == audit_id)
+        expected = (
+            [{"field": "reason", "value": schedule["reason"]}]
+            if case in ("exact", "reordered_keys")
+            else []
+        )
+&gt;       assert [item for item in record["after"] if item["field"] == "reason"] == expected
+E       AssertionError: assert [{'field': 'r...ical reason'}] == []
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2686: AssertionError</failure></testcase><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[float_kind]" time="0.207"><failure message="AssertionError: assert [{'field': 'r...ical reason'}] == []&#10;  &#10;  Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}&#10;  Use -v to get more diff">application = (&lt;starlette.testclient.TestClient object at 0x1090b29c0&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108950b30&gt;)
+case = 'float_kind'
+
+    @pytest.mark.parametrize(
+        "case", ["boolean_kind", "float_kind", "exact", "reordered_keys", "changed_text", "array_order"]
+    )
+    def test_schedule_reason_evidence_json_types_and_exact_values(application, case):
+        import json
+        from copy import deepcopy
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        evidence = [
+            {
+                "kind": 1,
+                "locator": "https://example.test/repo",
+                "revision": "fixed",
+                "description": "Same visible evidence except JSON type",
+            }
+        ]
+        if case == "array_order":
+            evidence.append({"kind": 2, "locator": "synthetic/additional", "description": "Second"})
+        candidate = deepcopy(evidence)
+        if case == "boolean_kind":
+            candidate[0]["kind"] = True
+        elif case == "float_kind":
+            candidate[0]["kind"] = 1.0
+        elif case == "reordered_keys":
+            candidate[0] = dict(reversed(list(candidate[0].items())))
+        elif case == "changed_text":
+            candidate[0]["description"] += " "
+        elif case == "array_order":
+            candidate.reverse()
+        evidence_schema = SPEC["components"]["schemas"]["EvidenceRefs"]
+        assert not violations(evidence_schema, evidence)
+        assert bool(violations(evidence_schema, candidate)) == (case == "boolean_kind")
+        if case in ("boolean_kind", "float_kind"):
+            assert evidence == candidate  # This is the old Python equality false-positive.
+        legacy["evidence"] = evidence
+        legacy["request_id"] = "evidence-type-fixture-" + uuid4().hex
+        with factory() as uow:
+            g = uow.gateway
+            # Own synthetic historical JSON only, not a normal API write or real observed dataset.
+            g.update("schedule_changes", {"id": schedule["id"]}, {"evidence": candidate})
+            audit_id = g.insert("audit_events", legacy)
+            before = [
+                json.dumps(g.get(table, identifier), sort_keys=True, default=str)
+                for table, identifier in (
+                    ("audit_events", audit_id),
+                    ("schedule_changes", schedule["id"]),
+                )
+            ]
+        response = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in response["items"] if row["id"] == audit_id)
+        expected = (
+            [{"field": "reason", "value": schedule["reason"]}]
+            if case in ("exact", "reordered_keys")
+            else []
+        )
+&gt;       assert [item for item in record["after"] if item["field"] == "reason"] == expected
+E       AssertionError: assert [{'field': 'r...ical reason'}] == []
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2686: AssertionError</failure></testcase><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[exact]" time="0.278" /><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[reordered_keys]" time="0.229" /><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[changed_text]" time="0.231" /><testcase classname="" name="test_schedule_reason_evidence_json_types_and_exact_values[array_order]" time="0.227" /></testsuite></testsuites>

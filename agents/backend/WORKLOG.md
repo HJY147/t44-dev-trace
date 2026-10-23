@@ -358,3 +358,12 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 根要求源码先交免阻前端872，已先commit/push0549ea89ce218ecb945cd4346671f20d46fad215，仅5个源码/测试文件，[skip ci]遵守先不完整CI；本prompt/原件/日志不在该源码commit，以下独立证据提交随后归档不能倒填。依赖/迁移/配置无新增，仍t44.api:app、现hash锁、6205所含DB固定门面。完整CI/专审/同源UI/独立复验待根组合后调度。
 - 当前frontend_logout已真实收到位置非固定/原文/缺失范围，前端另阶段22组件及root转述89结果不作本岗执行或后端验收。指导岗问及execute_operation/save_task时已按实际endpoint.handle→Runtime.execute→Tasks.changeTaskPlan→CAS/schedule_diff纠正名称，指出业务返回不等于主事务已提交、outbox持久不等于已投递。未联系tester/读私密。
 - 阶段评论已body-file发表并逐字API回读：Issue28 https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374349961；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374350449。证据seal时产品/回归仍逐文件hash等于0549，44个生产Python文件清单数量已核，不提供旧43文件覆盖率。根已启动精确18089/安排FE872，不是本岗执行；此后不再重复18目标，证据提交后释放。
+
+## HISTORY-EVIDENCE-01：AI审核反例与窄修
+
+- review_backend_preflight在根组合42243/本岗0549发现Python evidence容器==混同bool/int，真实SQLite HTTP候选audit.kind1合法/schedule.kindtrue非法仍投影理由，P2审查不通过。根转派后本岗实际对话，只读审核员明确公开的evidence-kind-bool-http.json/.log，不改其反例/报告、不读独立私密；正常新写Schema没有此异常，不记学生识别/亲改。
+- 先提交设计勘误ad6a9b3f63b1bd810df1e71cfef39cb2cc134baf与实际派工PLAN-REASON-EVIDENCE-dispatch.md，产品尚0549；后原986真实SQLite JSON/RowsGateway/TestClient新增6案得2红4绿（原bool反例+相邻1/1.0历史字形）；before.log/xml保留。无matcher/gateway mock；其余plan/actor/task/time来自原API helper。
+- 仅history.py在原比较位先校验双方冻结EvidenceRefs，再sort_keys JSON原文结构/值比较；bool不等数值、对象键序无关/数组序有关、字符串不trim或Unicode正规化。1.0可合法满足Schema，历史与1保守不同字形，原新请求normalization不改。没有修正常写/身份/事务/DB/冻结；非法候选仍原响应副本/缺失不猜，GET前后原行类型和值均不变。
+- 窄修后6新案+1原正常legacy相邻用例7/0failure/error/skip，after.log/xml，不能与旧18/504相加。严格Ruff/2format/Bandit、14hash及原986前缀核对通过；未跑MySQL/旧18/504全套/浏览器/服务/负载，无新依赖/配置。单生产文件固定cloc净+4，本Issue后端累计+99（不是全项目重数，规模仍失败）。
+- 产品先commit/push bcb0e1bbb1440df958a04e87afea0e5b015d2f17 [skip ci]给根/审核员，源码commit已含先行ad6设计/原prompt；本轮执行日志/总结在后纯证据提交seal。根已报告42243旧CI504绿/44文件完整分母，与HISTORY-EVIDENCE-01不通过并列，不推翻反例/移植为新源通过；根另调新源组合CI/专审，不为此重跑FE872原0549浏览器。
+- 窄修阶段Issue28 https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374617443 与Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374617903 已body-file发表/按准确comment ID修正prompt归档时序措辞并GET逐字回读。设计/prompt确在ad6先行，执行原件在后seal，不倒填；原源码/测试hash仍bcb0。审核员另报告bc5上同一原SQLite反例一次重放绿，操作者是审核员，限定结论由其本人提交，本岗不替写通过或重跑全套。
