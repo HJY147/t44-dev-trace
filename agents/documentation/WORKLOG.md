@@ -182,3 +182,14 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - GitHub工具创建草稿PR23 https://github.com/HJY147/t44-dev-trace/pull/23（base codex/integration），初始head匹配并attach。PR初始17文件另含上游root5b3bf30的R001两来源，不是本岗改写/暂存来源。
 - 实际阶段评论 https://github.com/HJY147/t44-dev-trace/pull/23#issuecomment-6363196975 ，工具返回ID后gh api核对URL/正文。
 - 本笔仅追加实际发布记录，未运行产品/渲染，最后head由Git元数据确定；完成后释放槽位。
+
+## M4 TESTS AND WORD
+
+- 实际收到M4派工，核对冻结AGENTS与documents全文/创建/渲染说明、writing_quality；用load_workspace_dependencies确认bundled运行时。合2e0481f并建独立codex/review-documents，未使用根index。
+- 仅公开读取独立v1两报告及明确新增的102f2c9 UI两报告；未跟随私有路径/截图、未联系实例。公开JSON含inventory字段只是报告元数据，未据此打开任何私有文件。
+- 读0448fec CI335/43文件/2493至2818/88.47及同SHA19表checksum恢复，原95/33附件清单/归档摘要分别固定。独立900与UI3/1/1、183歧义、正式P95失败/吞吐及稳态零失败分开。
+- 更新当前技术MD与function-contracts，源码锚点明确锁2e0481f346e8db228473f0f3cd66a7b1b053e5c0；M3原索引/历史不改，C-P4限定关闭/5886仍failure。
+- exporter仅文档工具，24源码索引静态，无业务逻辑搬移。bundled缺markdown_it，初查ModuleNotFoundError保留，改用受限Markdown解析，无安装依赖。
+- 首次DOCX author前按技能用bundled Node运行create marker一次，expected4/formatdocx，exit0；随后轻量生成4份私密DOCX，chmod0600、目录0700、Git忽略。没有代写学生研究正文。
+- 首次author参数误用了未经Git核实的完整cutoff字符串，未交付/未QA；随即用git rev-parse取真实2e值，导出器加入强制解析/验证，重新生成四份，marker未重复。进一步将新文档链接ref与产品cutoff拆开，避免新增报告链接指向旧提交不存在的文件。
+- 已通知root：LO渲染等待其明确quiet窗口结束，当前未调用LO或用户桌面应用。最终Word QA尚pending，不能交付为合格。
