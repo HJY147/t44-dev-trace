@@ -15,6 +15,7 @@ import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import quote
+from xml.sax.saxutils import escape
 
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
@@ -34,14 +35,14 @@ REPORTS = [
 
 
 def font(run, size=None, bold=None):
-    run.font.name = 'Arial'
+    run.font.name = 'Songti SC'
     run.font.color.rgb = RGBColor(0, 0, 0)
     rpr = run._element.get_or_add_rPr()
     fonts = rpr.rFonts
     if fonts is None:
         fonts = OxmlElement('w:rFonts')
         rpr.insert(0, fonts)
-    for key, val in [('ascii', 'Arial'), ('hAnsi', 'Arial'), ('eastAsia', 'Songti SC')]:
+    for key, val in [('ascii', 'Songti SC'), ('hAnsi', 'Songti SC'), ('eastAsia', 'Songti SC')]:
         fonts.set(qn('w:' + key), val)
     if size is not None:
         run.font.size = Pt(size)
@@ -72,7 +73,7 @@ def link(paragraph, label, target, source, root, cutoff, size=None):
     r = OxmlElement('w:r')
     rp = OxmlElement('w:rPr')
     rf = OxmlElement('w:rFonts')
-    for k, v in [('ascii', 'Arial'), ('hAnsi', 'Arial'), ('eastAsia', 'Songti SC')]:
+    for k, v in [('ascii', 'Songti SC'), ('hAnsi', 'Songti SC'), ('eastAsia', 'Songti SC')]:
         rf.set(qn('w:' + k), v)
     rp.append(rf)
     color = OxmlElement('w:color'); color.set(qn('w:val'), '1F4E79'); rp.append(color)
@@ -118,10 +119,12 @@ def configure(doc, title):
     for name, size in [('Normal', 11), ('Title', 26), ('Subtitle', 14),
                        ('Heading 1', 16), ('Heading 2', 13), ('Heading 3', 11.5)]:
         st = doc.styles[name]
-        st.font.name = 'Arial'; st.font.size = Pt(size); st.font.color.rgb = RGBColor(0, 0, 0)
+        st.font.name = 'Songti SC'; st.font.size = Pt(size); st.font.color.rgb = RGBColor(0, 0, 0)
         st._element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'), 'Songti SC')
         st.paragraph_format.space_after = Pt(7 if name == 'Normal' else 9)
-        st.paragraph_format.line_spacing = 1.16
+        st.paragraph_format.line_spacing = Pt(16 if name == 'Normal' else size * 1.25)
+        ppr = st._element.get_or_add_pPr()
+        snap = OxmlElement('w:snapToGrid'); snap.set(qn('w:val'), '0'); ppr.append(snap)
         if name.startswith('Heading'):
             st.paragraph_format.space_before = Pt(14)
             st.paragraph_format.keep_with_next = True
@@ -131,6 +134,12 @@ def configure(doc, title):
     font(footer.add_run('第 '), 9)
     f = OxmlElement('w:fldSimple'); f.set(qn('w:instr'), 'PAGE'); footer._p.append(f)
     font(footer.add_run(' 页'), 9)
+    for style in doc.styles:
+        for border in style._element.xpath('.//w:pBdr'):
+            border.getparent().remove(border)
+        if style.style_id == 'Title':
+            for underline in style._element.xpath('.//w:u'):
+                underline.getparent().remove(underline)
     props = doc.core_properties
     props.title = title; props.subject = '截止版本技术审阅材料 未通过最终验收'
     props.author = 'AI文档岗整理'; props.last_modified_by = 'AI文档岗整理'
@@ -176,6 +185,8 @@ def table(doc, lines, source, root, cutoff):
     for column, fraction in zip(t.columns, fractions): column.width = Inches(width*fraction)
     for index, values in enumerate(data):
         cells = t.add_row().cells
+        no_split = OxmlElement('w:cantSplit')
+        t.rows[-1]._tr.get_or_add_trPr().append(no_split)
         for i,c in enumerate(cells):
             c.width = Inches(width*fractions[i]); c.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
             tcpr = c._tc.get_or_add_tcPr()
@@ -189,7 +200,7 @@ def table(doc, lines, source, root, cutoff):
             tcpr.append(borders)
             if index == 0:
                 shading=OxmlElement('w:shd');shading.set(qn('w:fill'),'E8EEF3');tcpr.append(shading)
-            para=c.paragraphs[0];para.paragraph_format.space_after=Pt(0);para.paragraph_format.line_spacing=1.12
+            para=c.paragraphs[0];para.paragraph_format.space_after=Pt(0);para.paragraph_format.line_spacing=Pt(14)
             if i == 0 and len(plain(values[i])) < 20:para.alignment=WD_ALIGN_PARAGRAPH.CENTER
             inline(para,values[i],source,root,cutoff,size=10 if n>=5 else 10.5)
             if index==0:
@@ -204,7 +215,8 @@ def figure(doc, f, number, root):
     if hashlib.sha256(asset.read_bytes()).hexdigest()!=f['artifacts']['png']['sha256']:
         raise ValueError('Diagram asset checksum mismatch')
     w,h=Image.open(asset).size
-    width=min(6.85,7.1*w/h);height=width*h/w
+    maximum_height = 6.0 if Path(f['mermaid']).stem.endswith('use-cases') else 7.1
+    width=min(6.85,maximum_height*w/h);height=width*h/w
     caption=doc.add_paragraph();caption.paragraph_format.keep_with_next=True
     caption.alignment=WD_ALIGN_PARAGRAPH.CENTER
     labels={'context':'系统边界','use-cases':'角色和主要用例','states':'主要状态流转',
@@ -214,6 +226,7 @@ def figure(doc, f, number, root):
     name=next((v for k,v in labels.items() if stem.endswith(k)),stem)
     font(caption.add_run('图 '+str(number)+' '+name),10,True)
     para=doc.add_paragraph();para.alignment=WD_ALIGN_PARAGRAPH.CENTER
+    para.paragraph_format.line_spacing = 1.0  # Inline drawings must set their own full line height.
     para.add_run().add_picture(str(asset),width=Inches(width),height=Inches(height))
     para.paragraph_format.keep_with_next=False
     para.paragraph_format.space_after=Pt(9)
@@ -272,6 +285,15 @@ def main():
     if stat.S_IMODE(cover_file.stat().st_mode)!=0o600:raise ValueError('Private cover must have mode0600')
     info=json.loads(cover_file.read_text());os.umask(0o077)
     out=private/'review-documents';out.mkdir(parents=True,exist_ok=True);out.chmod(0o700)
+    # Bundled LO uses a private fontconfig override; no global user font settings change.
+    bundled_fonts = RUNTIME/'native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/Resources/fonts/truetype'
+    config = ('<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n'
+              '<fontconfig>\n<dir>/System/Library/Fonts/Supplemental</dir>\n'
+              '<dir>/System/Library/Fonts</dir>\n<dir>' + escape(str(bundled_fonts)) + '</dir>\n'
+              '<cachedir>' + escape(str(out/'font-cache')) + '</cachedir>\n'
+              '<alias><family>sans-serif</family><prefer><family>Songti SC</family></prefer></alias>\n'
+              '<alias><family>serif</family><prefer><family>Songti SC</family></prefer></alias>\n</fontconfig>\n')
+    (out/'fontconfig.xml').write_text(config)
     figures=json.loads((root/'docs/diagrams/manifest.json').read_text())['figures'];records=[]
     for name,target,title in REPORTS:
         source=root/'reports/final'/name;doc=Document();configure(doc,title);cover(doc,title,info,args.cutoff)

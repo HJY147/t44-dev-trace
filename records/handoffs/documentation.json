@@ -1,7 +1,7 @@
 {
   "role": "documentation",
   "stage": "M4-TESTS-AND-WORD-v1技术汇编和私密Word审阅材料",
-  "implementation_status": "公开测试技术MD已形成；四私密DOCX已author，LO/逐页QA待quiet窗口，尚不交付为合格；产品最终验收未通过",
+  "implementation_status": "测试技术汇编与四份私密Word审阅材料完成；bundled LO渲染28页逐页原图QA完成；产品最终验收未通过",
   "artifacts": [
     {
       "path": "reports/final/test-results-report.md",
@@ -65,23 +65,31 @@
     },
     {
       "path": ".submission-private/review-documents/requirements-review.docx",
-      "status": "root私密/Git忽略，已author未QA，非最终验收",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
       "git_tracked": false
     },
     {
       "path": ".submission-private/review-documents/design-review.docx",
-      "status": "root私密/Git忽略，已author未QA，非最终验收",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
       "git_tracked": false
     },
     {
       "path": ".submission-private/review-documents/test-results-review.docx",
-      "status": "root私密/Git忽略，已author未QA，非最终验收",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
       "git_tracked": false
     },
     {
       "path": ".submission-private/review-documents/ai-spec-guide-review.docx",
-      "status": "root私密/Git忽略，已author未QA，非最终验收",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
       "git_tracked": false
+    },
+    {
+      "path": "docs/reports/M4-word-qa.json",
+      "status": "公开页数/hash/缺陷修正与排版QA结论，无个人值/原图"
+    },
+    {
+      "path": "docs/reports/M4-word-qa.md",
+      "status": "公开页数/hash/缺陷修正与排版QA结论，无个人值/原图"
     }
   ],
   "interfaces": {
@@ -93,7 +101,7 @@
     ],
     "outputs": [
       "test-results-report及当前技术MD、准确函数I/O索引",
-      "四私密Word，视觉QA完成前pending"
+      "四私密Word，28页逐页原图QA完成，技术审阅范围"
     ],
     "frozen_status": "冻结11文件不改",
     "responsibility_boundary": "本岗docs/reports/agents/handoff和scripts/docs文档工具；不改产品/测试、不联系独立实例、不读私有证据"
@@ -104,7 +112,7 @@
     "只读公开CI/容器/审核/独立报告及明确UI补充，未跟私有路径",
     "bundled Node marker create expected4 docx，成功一次；bundled Python轻量author4",
     "首次完整cutoff参数未核实，在未交付前修正并加git验证；新文档ref与产品cutoff分开",
-    "未启动LO，等待root明确quiet窗口结束"
+    "root明确解除quiet后，指定bundled LO/skill render_docx.py渲染；qa-v4四份共28原PNG逐页打开，原封面也查看"
   ],
   "results": {
     "content_cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
@@ -123,14 +131,27 @@
     "marker_executions": 1,
     "marker_success": true,
     "private_docx_count": 4,
-    "Word_visual_QA": "pending quiet window",
+    "Word_visual_QA": "complete4 documents/28 original pages, including4 covers; technical review only",
     "student_research_authored": false,
-    "product_tests_executed_by_documentation": 0
+    "product_tests_executed_by_documentation": 0,
+    "Word_page_counts": {
+      "requirements-review": 10,
+      "design-review": 9,
+      "test-results-review": 6,
+      "ai-spec-guide-review": 3
+    },
+    "private_docx_hashes": {
+      "requirements-review.docx": "7c20757c0f2b4f54909360d9cb222308161c4b9852ea70efdc798aefce70d13e",
+      "design-review.docx": "cd3cc59b6f5875898d6395ef955e40e7ac10d4881cb56b72fd7b99dafe53db7f",
+      "test-results-review.docx": "db5003a5f35af77784f30b63cb14f6692e5f244c65d9741e86800fe8d450e627",
+      "ai-spec-guide-review.docx": "5545c4adba0ed0f2e96b41d9d7c773fb4c766b95bee41accf8c260238b1b8c49"
+    },
+    "qa_record": "docs/reports/M4-word-qa.json"
   },
   "unverified": [
-    "四DOCX逐页渲染QA尚pending，未交付为合格",
     "最终独立复测/正式性能达标/5886减量/新SHA审核仍未通过",
-    "学生本人完整研究正文/课程建议/真实人工留痕未齐"
+    "学生本人完整研究正文/课程建议/真实人工留痕未齐",
+    "四Word是固定2e/0448技术审阅版；后续新源码/新规则/独立复测不自动包含"
   ],
   "questions": [],
   "prompt_refs": [
@@ -157,10 +178,12 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T19:42:46.729816+08:00",
+  "updated_at": "2026-10-23T20:07:05.158621+08:00",
   "delivery": {
     "branch": "codex/review-documents",
     "base": "codex/integration",
-    "stage": "准备先发布MD/exporter checkpoint，Word逐页QA后再收尾"
+    "stage": "M4技术MD及四私密Word逐页QA完成，准备最终commit/push",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/24",
+    "draft": true
   }
 }

@@ -9,3 +9,5 @@
 ## 指导岗晚到问答原文
 
 ROLE-documentation-M2-QUALITY-v1 实际问取答复：已收到真实本人反思，逐字原拼写见 records/reflections/R001-original.md，来源/哈希/边界见 R001-provenance.json（human_reflection_provided=true；human_code_edit=false；human_hallucination_identification=false）。R001明确提出人把关需求含糊处、模块/函数I/O、长期复用代码审阅和测试要求/过程/结果/决策，这是用户本人的观点，不能当课堂教师原话，也不能当其已亲写框架或断点操作。已发布用户决定：D001采用业务规则、D004采用字段/错误语义；均不是亲自改码，不延伸为其他AI技术选择逐项批准。研究正文与课程建议尚待本人提供；AI过程材料、已有AI定位/修复证据不可冒记成学生独立收获或人工识别。Q-capacity-lifecycle-pending.json仍awaiting_user_reply，不能替选。本轮我补简明审阅/调试指南和空白记录表，由root转达，原话文件只读且不改。未提供姓名学号值，不代署名或学生口吻成文；无新增课堂原始强调材料。
+
+指导岗后续已发布0f9a8f5，真实原文另见JSON：审阅/调试指南及21源哈希，仍无本人改码/断点/独立识别证据。其capacity pending属于答复当时时点，root后续新采用决定另走版本变更，不倒改本快照。四Word不因此追头。
