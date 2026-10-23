@@ -140,3 +140,30 @@
 - 已请求root新建t44_seed_verify及同app权限供新资源真库生成验证；最小产品修复先交，不以尚未建库拖延BE全套回归。测试统一tmp迁移由root负责，本岗未新增/改测试文件。
 - root实际建库并授权t44_seed_verify后，用同app四键凭据（不输出连接串）真实首次迁移/默认40项目6000任务9000依赖11400评审+3600决定成功，七态全量JSON/引用/轮次/指针/容量/DAG核验通过；正式rule_version1/effective_at/decided_by与实际资源逐项相符，rawhash63bda0d3...，重复manifest幂等。生成3.835s、校验24.554s仍仅模块执行耗时。完整integration-formal-seed-mysql.json。
 - 旧bench当前新资源调用明确拒绝，前后计数与manifest完全不变，integration-old-bench-guard.json；不更写旧hash。未改测试文件/路径、未清现有库。根已先merge e06，此次只证据/报告/交接元数据checkpoint，随后释放槽位。
+
+## ROLE-database-REVIEW-FIX-v1：C-P4源码checkpoint，未运行
+- 收到root转派审核C-P4：旧checker名称集合会误收同名结构变化，这是检查器错误接受而不是已发生实库漂移。没有读取/改动tmp/reviewer/957或任何独立tmp/private-*资料。
+- 干净fast-forward同步7ce7171；限定语义比对有序索引列/unique/排序/前缀、index/unique双视图冲突，FK源列/目标schema/表/列/动作，CHECK用冻结语法AST规范化保留AND/OR优先级、字符串大小写与函数参数，无法识别则拒。MySQL NO ACTION/RESTRICT及同schema引用合理归一化；不靠去掉所有括号宽松比较。
+- 956已先向root占号，实际文件tmp/backend/persistence/956_schema_semantics.py以纳入现有tmp/backend收集；含自岗Inspector形状回归与仅显式t44_review且业务表为空的变更/恢复探针。未改957或冻结DDL/API。
+- 性能限制到达前只读查看过MySQL Inspector正常输出以核真实反射形状；root限制后没有跑pytest/真实MySQL迁移/seed/构建，只编辑、源格式化与Git/日志。源格式化不是lint或测试通过。t44_review已建但本岗尚未使用。
+- root明确性能窗口含400并发和后续两个600秒批次，要求先提交“未运行、待性能窗后验证”可审checkpoint并暂交接释放槽位；遵此不把C-P4标为已过。seed row-builder减重复未启动；当前统一规模仍超5100，不声明达标。
+- 文档岗M2真实问取已原文短答当前发布5849b10/e06及旧模块证据边界，并补同步后的路径993_foundation/989_rows/988_mysql/975_seed；旧日志命令保持当时真实路径。明确当前C-P4进行中，不为文档重测。
+
+## ROLE-database-REVIEW-FIX-v2：真实GHA失败与最小修复
+- 收到新续派并原样归档prompts/ROLE-database-REVIEW-FIX-v2.md。安静窗口未获结束通知；仅远端日志读取、源编辑和Git，不运行本机pytest/数据库/seed/HTTP/构建。
+- 原始run39938428158（PR merge）及39938417442（branch3ed）都为static失败；下载原始job日志、run元数据及static artifact的bandit.json/static-console.log，保存在ci/review-fix-v2/。两者Ruff通过，Bandit B105唯一命中migrations.py:68，token与'('比较误判口令；contracts/coverage/frontend任务成功。
+- 修复只把解析器局部变量token改lexeme，词法/语义/断言不变，无nosec、无门禁或测试削弱。保存失败报告/hash和实际命令差错于original-failures.json；不把下载成功当测试通过。
+- 本checkpoint提交后交给托管CI；t44_review受控结构改动/重复迁移拒绝/恢复验证仍未执行，C-P4未关闭。seed去重在下一小阶段，当前未改seed。
+- 完整diff-check对原始GHA日志提示其上游尾空格，原字节保留；源码/报告/handoff/prompt限定diff-check另检，不冒称原始日志无尾空格。未通过改写证据规避提示。
+- 在原975测试保留全部断言并添加record_property业务行摘要（唯独排除故意随机生成的Argon2 hash），托管JUnit可提供重构前基线；不新增测试编号/文件，不把记录摘要本身算验证断言。
+- 托管4301a68/run39940121559四job success，最小Bandit修复不再报B105；该SHA仍旧seed实现，带全行摘要基线。958此前被下一push取消总体状态，虽其测试步骤成功也不称整次run通过。
+- 原975参数化保留原2/20/20/30组并新增默认40/6000/9000/15000组（完整JSON/轮次/七态/容量/指针/幂等/不覆盖断言同样执行），为待合并受信row-builder提供真实等价基线；本机未执行。格式编辑不作为lint成功。
+- 原生产seed完整基线2dc2e6d：PR run39940459708四job success，333 passed/0failed/0skipped，原JUnit及日志存ci/review-fix-v2/2dc2-baseline。持久行摘要小组aa4f3aff.../默认全量6d56de11...，含manifest/全部表，只排随机password_hash。
+- 将真实基线摘要固定为原975两组额外等价断言，再提交生产row-builder；原所有断言保留。assert_consistent把反复扫描review/decision列表改预先按task分组，校验条件完全相同，避免默认全量组平方扫描。
+- 生产去重：受信add集中created/updated/project/task/cycle上下文，仍由冻结TABLES过滤可继承字段，显式值覆盖且最终Rows参数绑定/字段校验；省略冻结server defaults的重复声明；task初始NULL指针只构造一次。新增task对象即加入列表但列表直到完整构建后才批量写入；后续version变更仍修改该同一对象。
+- 保留原业务配置、synthetic标记、规则/模板原bytes hash、manifest、7态分布、轮次、容量、证据与单UoW批次；未知等价结果待托管CI，专库MySQL仍未执行。仅源格式编辑并恢复无关原代码排版，不把格式差额用于宣称减量。
+- 0a676ee6f7c287893153cdca0c6c6823aacca8a1生产去重checkpoint已push，PR17重新发布范围；远端PR run39941263169进行中。基线artifact的coverage子目录被.gitignore规则命中，已识别并仅显式-f暂存8份本岗下载的JUnit/pytest/migration/gate文件，避免索引引用而缺原证据；未改共享ignore。
+- 仅基于Git已提交文本差异：seed.py为88插入/115删除，净减27物理行；这不是cloc最终应用主口径结论，C-P4新增与全局超5100事实保留。新版真实MySQL全量seed未跑，不能用SQLite精确摘要替代。
+- 最终产品0a676ee：PR run39941263169与push39941255427均success；下载原始0a676-result证据，JUnit333passed/0failed/0errors/0skipped，两原始行摘要完全一致。Bandit results0，Ruff真实远端通过；覆盖门禁2480/2807行、无漏测生产文件（仅该托管SHA，非独立验收）。
+- Issue4已以body-file发表本轮真实失败→修复→结果/边界：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981 ，正文review-fix-v2-comment.md。PR17保持OPEN/draft、base codex/team-bootstrap、head codex/database-runtime，正文按最终范围更新并重新attach。
+- 本轮收尾时仍未收到窗口结束通知；不启动本机pytest/MySQL/seed/HTTP/构建，t44_review仍未操作，C-P4不关闭。重构后MySQL全量seed未跑，统一cloc/最新整合/正式性能/独立验收未由本岗执行。产品/测试与已验证0a676ee完全相同，本次只追加原始证据/日志/报告/handoff。

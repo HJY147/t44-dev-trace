@@ -1,6 +1,7 @@
 """Synthetic fixtures are checked against business references and frozen JSON shapes."""
 
 import hashlib
+import json
 from datetime import UTC, datetime
 from importlib.resources import files
 
@@ -8,7 +9,7 @@ import pytest
 from sqlalchemy import create_engine, event
 from t44.contracts import validator
 from t44.persistence import SqlAlchemyUnitOfWorkFactory, StatementRejected
-from t44.persistence.schema import metadata
+from t44.persistence.schema import TABLES, metadata
 from t44.persistence.seed import seed_demo
 from t44.services.common import model, plan, task_model
 
@@ -39,6 +40,11 @@ def assert_consistent(factory):
         reviews = {r["id"]: r for r in g.rows("reviews")}
         assessments = {a["id"]: a for a in g.rows("release_assessments")}
         decisions = g.rows("decisions")
+        histories, decision_types = {tid: [] for tid in tasks}, {tid: set() for tid in tasks}
+        for review in reviews.values():
+            histories[review["task_id"]].append(review)
+        for decision in decisions:
+            decision_types[decision["task_id"]].add(decision["type"])
         template_hash = hashlib.sha256(
             files("t44").joinpath("resources/review-template.json").read_bytes()
         ).digest()
@@ -54,10 +60,7 @@ def assert_consistent(factory):
         }
         for task in tasks.values():
             checks["Task"].validate(task_model(task))
-            history = sorted(
-                (r for r in reviews.values() if r["task_id"] == task["id"]),
-                key=lambda r: r["review_cycle"],
-            )
+            history = sorted(histories[task["id"]], key=lambda r: r["review_cycle"])
             assert [r["review_cycle"] for r in history] == list(range(1, len(history) + 1))
             if task["state"] in (1, 2, 3):
                 assert (
@@ -65,7 +68,7 @@ def assert_consistent(factory):
                 )
             if task["state"] in (6, 7):
                 assert task["approved_review_id"] and task["approved_assessment_id"]
-                types = {d["type"] for d in decisions if d["task_id"] == task["id"]}
+                types = decision_types[task["id"]]
                 assert types == ({1} if task["state"] == 6 else {1, 2})
             if task["latest_review_id"]:
                 r = reviews[task["latest_review_id"]]
@@ -138,25 +141,46 @@ def assert_consistent(factory):
     }
 
 
-def test_seed_references_json_states_capacity_repeat_and_no_overwrite(seed_factory):
+@pytest.mark.parametrize(
+    "projects,tasks,dependencies,records,expected_digest",
+    [
+        (2, 20, 20, 30, "aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29"),
+        (40, 6000, 9000, 15000, "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3"),
+    ],
+)
+def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
+    seed_factory, record_property, projects, tasks, dependencies, records, expected_digest
+):
     args = dict(
-        projects=2,
-        tasks=20,
-        dependencies=20,
-        records=30,
+        projects=projects,
+        tasks=tasks,
+        dependencies=dependencies,
+        records=records,
         anchor_at=datetime(2026, 10, 23, tzinfo=UTC),
     )
     first = seed_demo(seed_factory, **args)
     assert len(seed_factory.seed_commits) == 1
     assert any("INSERT INTO tasks" in sql and many for sql, many in seed_factory.seed_statements)
     assert any("UPDATE tasks" in sql and many for sql, many in seed_factory.seed_statements)
-    assert first["reviews"] + first["decisions"] == 30
+    assert first["reviews"] + first["decisions"] == records
     assert_consistent(seed_factory)
+    with seed_factory() as uow:
+        snapshot = {name: uow.gateway.rows(name) for name in TABLES}
+    for user in snapshot["users"]:
+        del user["password_hash"]  # Random Argon2 salts/secrets deliberately are not reproducible.
+    canonical = json.dumps(
+        snapshot, sort_keys=True, separators=(",", ":"),
+        default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
+    )
+    digest = hashlib.sha256(canonical.encode()).hexdigest()
+    record_property("seed_semantics_sha256", digest)
+    # Recorded from unchanged production seed in hosted run39940459708 before row refactoring.
+    assert digest == expected_digest
     assert seed_demo(seed_factory, **args)["already_seeded"]
     with pytest.raises(StatementRejected):
         seed_demo(seed_factory, **args, seed=45)
     with seed_factory() as uow:
-        assert uow.gateway.count("tasks") == 20
+        assert uow.gateway.count("tasks") == tasks
 
 
 def test_seed_impossible_dependency_count_rolls_back_entire_dataset(seed_factory):

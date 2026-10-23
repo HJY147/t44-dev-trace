@@ -1,6 +1,5 @@
 """Explicit MySQL 8.4 initialization. DDL is not transactional or automatically dropped."""
 
-import hashlib
 import re
 
 from sqlalchemy import inspect, text
@@ -12,6 +11,127 @@ from .schema import DDL_SHA256, SCHEMA_VERSION, TABLES, ddl_text
 
 class MigrationError(RuntimeError):
     pass
+
+
+def _check_signature(expression):
+    """Parse frozen CHECK grammar; preserve precedence, literals and function arguments."""
+    source = re.sub(r"\b_utf8mb4(?=\s*')", "", str(expression), flags=re.I).strip()
+    pattern = re.compile(r"\s*(`[^`]+`|'(?:''|\\.|[^'])*'|[a-zA-Z_]\w*|\d+|<=|>=|<>|!=|[=<>+(),-])")
+    tokens, position = [], 0
+    while position < len(source):
+        match = pattern.match(source, position)
+        if not match:
+            return None
+        lexeme = match[1]
+        tokens.append(lexeme if lexeme.startswith("'") else lexeme.strip("`").lower())
+        position = match.end()
+    position = 0
+    precedence = {
+        "or": 1,
+        "and": 2,
+        "=": 3,
+        "<>": 3,
+        "!=": 3,
+        "<": 3,
+        ">": 3,
+        "<=": 3,
+        ">=": 3,
+        "is": 3,
+        "in": 3,
+        "between": 3,
+        "+": 4,
+        "-": 4,
+    }
+
+    def pop(expected=None):
+        nonlocal position
+        lexeme = tokens[position]
+        position += 1
+        if expected is not None and lexeme != expected:
+            raise ValueError("Unsupported CHECK syntax")
+        return lexeme
+
+    def peek():
+        return tokens[position] if position < len(tokens) else None
+
+    def arguments():
+        pop("(")
+        values = [parse()]
+        while peek() == ",":
+            pop(",")
+            values.append(parse())
+        pop(")")
+        return tuple(values)
+
+    def parse(minimum=0):
+        lexeme = pop()
+        if lexeme == "(":
+            left = parse()
+            pop(")")
+        else:
+            left = ("call", lexeme, arguments()) if peek() == "(" else lexeme
+        while peek() in precedence and precedence[peek()] >= minimum:
+            operator = pop()
+            priority = precedence[operator]
+            if operator == "in":
+                left = (operator, left, arguments())
+            elif operator == "between":
+                lower = parse(priority + 1)
+                pop("and")
+                left = (operator, left, lower, parse(priority + 1))
+            elif operator == "is":
+                negate = peek() == "not"
+                if negate:
+                    pop("not")
+                pop("null")
+                left = (operator, left, negate)
+            else:
+                left = ("<>" if operator == "!=" else operator, left, parse(priority + 1))
+        return left
+
+    try:
+        result = parse()
+        return result if position == len(tokens) else None
+    except (IndexError, ValueError):
+        return None
+
+
+def _index_signature(index):
+    options = index.get("dialect_options", {})
+    sorting = {
+        k: tuple(v for v in values if v.lower() != "asc")
+        for k, values in index.get("column_sorting", {}).items()
+    }
+    return (
+        tuple(index["column_names"]),
+        bool(index.get("unique")),
+        {k: v for k, v in sorting.items() if v},
+        options.get("mysql_length"),
+        (options.get("mysql_using") or "BTREE").upper(),
+    )
+
+
+def _foreign_signature(foreign, database):
+    options = foreign.get("options", {})
+    actions = tuple(
+        "RESTRICT"
+        if (options.get(key) or "RESTRICT").upper() in ("NO ACTION", "RESTRICT")
+        else options[key].upper()
+        for key in ("ondelete", "onupdate")
+    )
+    schema = foreign.get("referred_schema")
+    return (
+        tuple(foreign["constrained_columns"]),
+        None if schema == database else schema,
+        foreign["referred_table"],
+        tuple(foreign["referred_columns"]),
+        actions,
+        {
+            key: value
+            for key, value in options.items()
+            if key not in ("ondelete", "onupdate") and value is not None
+        },
+    )
 
 
 def check_schema(engine) -> dict:
@@ -50,23 +170,61 @@ def check_schema(engine) -> dict:
                 defects.append(f"{name}.{c.name}:default")
         if inspector.get_pk_constraint(name)["constrained_columns"] != ["id"]:
             defects.append(f"{name}:primary_key")
-        actual_keys = {x["name"] for x in inspector.get_indexes(name)}
-        actual_keys |= {x["name"] for x in inspector.get_unique_constraints(name)}
-        expected_keys = {x.name for x in expected.indexes}
-        expected_keys |= {
-            x.name for x in expected.constraints if x.__class__.__name__ == "UniqueConstraint"
+        actual_keys = {x["name"]: _index_signature(x) for x in inspector.get_indexes(name)}
+        for unique in inspector.get_unique_constraints(name):
+            signature = _index_signature({**unique, "unique": True})
+            if unique["name"] in actual_keys and actual_keys[unique["name"]] != signature:
+                defects.append(f"{name}.{unique['name']}:index_catalog_conflict")
+            actual_keys.setdefault(unique["name"], signature)
+        keys = {
+            x.name: _index_signature(
+                dict(column_names=[c.name for c in x.columns], unique=x.unique)
+            )
+            for x in expected.indexes
         }
-        if not expected_keys <= actual_keys:
-            defects.append(f"{name}:indexes")
-        actual_constraints = {x["name"] for x in inspector.get_foreign_keys(name)}
-        actual_constraints |= {x["name"] for x in inspector.get_check_constraints(name)}
-        expected_constraints = {
-            x.name
+        keys.update(
+            {
+                x.name: _index_signature(
+                    dict(column_names=[c.name for c in x.columns], unique=True)
+                )
+                for x in expected.constraints
+                if x.__class__.__name__ == "UniqueConstraint"
+            }
+        )
+        for key, signature in keys.items():
+            if actual_keys.get(key) != signature:
+                defects.append(f"{name}.{key}:index_definition")
+        if {k for k, v in actual_keys.items() if v[1]} != {k for k, v in keys.items() if v[1]}:
+            defects.append(f"{name}:unique_set")
+        database = getattr(getattr(engine, "url", None), "database", None)
+        foreigns = {
+            x.name: _foreign_signature(
+                dict(
+                    constrained_columns=[c.name for c in x.columns],
+                    referred_table=x.referred_table.name,
+                    referred_schema=x.referred_table.schema,
+                    referred_columns=[e.column.name for e in x.elements],
+                ),
+                database,
+            )
+            for x in expected.foreign_key_constraints
+        }
+        actual_foreigns = {
+            x["name"]: _foreign_signature(x, database) for x in inspector.get_foreign_keys(name)
+        }
+        if actual_foreigns != foreigns:
+            defects.append(f"{name}:foreign_key_definition")
+        checks = {
+            x.name: _check_signature(x.sqltext)
             for x in expected.constraints
-            if x.__class__.__name__ in ("ForeignKeyConstraint", "CheckConstraint")
+            if x.__class__.__name__ == "CheckConstraint"
         }
-        if not expected_constraints <= actual_constraints:
-            defects.append(f"{name}:constraints")
+        if None in checks.values():
+            raise MigrationError("Frozen CHECK grammar is unsupported")
+        if {
+            x["name"]: _check_signature(x["sqltext"]) for x in inspector.get_check_constraints(name)
+        } != checks:
+            defects.append(f"{name}:check_definition")
     return {
         "tables": len(TABLES),
         "columns": sum(len(t.c) for t in TABLES.values()),
@@ -161,7 +319,7 @@ def migrate(engine, *, expected_database: str) -> dict:
             connection.commit()
             return {
                 "version": SCHEMA_VERSION,
-                "sha256": hashlib.sha256(sql.encode()).hexdigest(),
+                "sha256": DDL_SHA256,
                 "already_applied": False,
                 **report,
             }

@@ -1,46 +1,30 @@
-# 数据库模块报告：恢复与合成数据交付
+# 数据库模块报告：C-P4远端修复与seed等价去重
 
-## 当前范围
-- 岗位database；实际prompt ROLE-database-RECOVERY-SEED-v1，沿D004/v1冻结实现；初始化TASK限制已被总协调后续实际派工更新，旧日志保留当时事实。
-- 独立树.agent-worktrees/database / codex/database-runtime；产品checkpoint 9aeb69795f67239b04352125f4b7db0427ce1272，PR17仍draft，未宣布审核或独立验收通过。
-- 18表226列Core元数据、真实迁移、受限Rows/Pred、hash-only入口、outbox/通知与持久scan已实现；本轮补confirmed恢复、claim公平性、生产seed。
-- 未改冻结DDL、共享锁/pyproject/其他岗代码，未接触独立testing资料；只merge总协调12f7141获取实际CLI与真实资源。
+## 当前事实
+- 岗位database；本轮ROLE-database-REVIEW-FIX-v2，续3ed源码checkpoint；只改本岗目录，冻结DDL/API不变。
+- C-P4为检查器误收同名错误结构，不是实库已漂移。本岗未读改审核957或独立私有资料。
+- 原两run39938428158/39938417442真实失败是Bandit B105：解析器token与'('比较被误判口令。原job日志、artifact和hash保留agents/database/ci/review-fix-v2；958仅改局部名lexeme，无nosec/门禁或断言削弱。
+- 4301a68托管product39940121559四job success，后端332 passed/0 failed/0 skipped；含15项956自岗回归与CI真实MySQL初始化接受。958总体run被后续push取消，不能称整次通过。
+- 2dc2e6d保留原975小夹具及全部断言，增加默认40/6000/9000/15000组取得重构前全行摘要；其PR run39940459708四job成功，333 passed/0failed/0skip，小/默认全量摘要已取得；row-builder 0a676ee在PR run39941263169及push39941255427均success，333passed/0failed/0errors/0skipped，两组固定行摘要精确相同。
+- 同机安静窗口尚未获结束通知；本岗不运行本机pytest/MySQL迁移/seed/HTTP/构建。格式编辑不等于lint通过。
 
-## 入口与事务
-- backend/t44/persistence/README.md列精确签名；migrate(engine,expected_database=...)只初始化明确项目空库并核版本/摘要，重复不破坏数据；技术版本表为非业务例外。
-- factory每次独立Session；每新连接UTC/严格SQL/READ COMMITTED，正常commit/失败rollback/总close。CommitUncertain保留，cleanup不证明未提交。
-- Rows支持固定表列、绑定值、查询/分页/锁/CAS/update/delete/count/savepoint，以及同形参数insert_many/update_many；未知标识符/表达式/无where写拒绝。
-- session→idem→必要project→members user_id→tasks id→children锁序不变；依赖变更先项目锁串行查环。成功业务/audit/outbox/idem同事务，拒绝先主UoW释放再独立审计由backend Runtime编排。
-- 已移除无生产调用的CoreGateway/TableBinding（105行）及可选IdempotencyStore（124行）；原断言迁实际Rows/Runtime，不删功能或弱化测试。
-- 新owner接管换token必须fence旧worker；纯租约到期不自动新增业务拒绝，已按root澄清撤回早先缺陷推断，未越界改服务。
+## C-P4实现与仍待验证
+- migrations.py比较索引有序列/unique/排序/前缀及反射冲突、FK有序源/目标schema/表/列与动作、CHECK优先级/字面量/函数参数语义；未知CHECK语法拒绝。
+- 仅规范化合理MySQL表示差异；额外普通非unique索引允许（含FK自动支持索引）。自岗956包含13个同名语义变化及正例/解析优先级回归。
+- root已新建授权t44_review，本岗尚未触碰。窗口后须真实执行正确结构接受、同名列序/unique/FK目标/CHECK漂移拒绝、错误结构重复迁移拒绝及恢复接受；现有run_mysql_review入口限定此库且业务行必须为空。
+- 托管CI、Inspector夹具不能替代此专库实际变更/恢复；C-P4不标关闭，也不设审核通过。
 
-## 消息/扫描实际对接
-- recover_confirmed(*,confirmed_before,now=None,limit=100)由固定MySQL JSON_TABLE+NOT EXISTS先排除完整旧事件，不占候选limit；同event锁内复查，仅真补缺才3→4。
-- consumer/fallback/recovery沿相同事件锁序，完整消费保持confirmed，原通知已读/处理不改，旧token为stale_owner、迟到confirm不能回退。
-- claim公平性先真库复现旧低ID事件反复retry致后升级3轮饥饿，再改pending next_attempt_at,id / leased lease_until,id；沿已有索引、SKIP LOCKED和token fencing，不改DDL。
-- ScanStore start/get/recoverable/page/checkpoint沿UUID唯一、规则快照、固定cutoff、单调游标；升级/游标分事务靠唯一(task,schedule,level)重扫去重。
-- MQ本人已接线并实际cherry-pick恢复；直接交1602f3597408d3b477dd9ef55a33145565556e12与8b60b7146f6bb33a850be697edb39995347f5c14；接口未改签名。
+## seed去重与已有产品边界
+- 受信add(row)集中时间/项目任务外键上下文，显式业务值仍走Rows校验；version/active/plan_version/escalation_count采用既有冻结server defaults，批准指针初始NULL构造复用。状态/轮次/JSON证据/manifest/批量单UoW语义保持。
+- 等价回归摘要包含所有持久行及manifest，只排除故意随机的Argon2 hash；原七态、DAG/前驱、JSON模板、容量、批准指针/轮次、重复幂等、不覆盖和失败回滚断言保留。原数据全量基线和重构后托管结果均已得，两组精确相等，原始JUnit/日志及hash归档0a676-result；该结论限托管SQLite数据等价。
+- 该去重未搬业务到配置、未压行或改变统计口径；C-P4增加代码且全局仍超5100，不声明达标，seed源码Git差异净减27物理行，精确cloc等待统一统计。
+- 已有18表226列Core/Rows/Engine/UoW/hash-only入口、版本迁移、OutboxStore/ScanStore、confirmed缺通知恢复和claim公平性；业务事务及拒绝独立审计由backend Runtime编排，CommitUncertain不被rollback清理解释为未提交。
+- 历史产品e06/记录5849已真实在新t44_seed_verify生成40项目/6000任务/9000DAG/11400评审+3600决定、3600预案及7态一致性/重复幂等；正式rule.version/effective_at/decided_by及原bytes hash入manifest。
+- 旧t44_bench配置不同会拒绝且计数/manifest保留；integration-old-bench-guard.json、integration-formal-seed-mysql.json是真实历史模块证据，非本次重构结果。
+- 全部数据synthetic，非真人review/交付、正式性能或独立验收。
 
-## 生产合成数据
-- seed_demo(factory,*,projects=40,tasks=6000,dependencies=9000,records=15000,manager_username='synthetic-manager',seed=44,anchor_at=None,template_path=None,rules_path=None,batch_size=250)；真实backend CLI seed-demo已接线并执行退出0。
-- 新t44_bench真MySQL首次迁移/250批单UoW生成40项目、6000任务、9000同项目DAG依赖；11400review+3600decision=15000，预案另3600。
-- 七态6=2400，其余1/2/3/4/5/7各600；全量JSON模型、八段十项、四风险视角、轮次/批准指针/决定引用、自审身份分离、依赖父已交付且时间先于后继、人力容量核验通过。
-- 模板raw SHA256=4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199；旧bench规则raw SHA256=279c55934adf59362cb0119e59f8ca41aeb826611fabafb7f006d0000bdb8720；当前正式新verify规则raw SHA256=63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41，均来自当时实际配置，不伪造占位hash。
-- 返回seed/version/anchor/配置hash的manifest_sha256；这是生成描述摘要，不冒称整库内容或随机密码hash可重现。重复同描述幂等、不同seed拒绝，无删除覆盖。
-- 所有对象及证据明确synthetic，SYNTHETIC-DATA.md说明不代表真人评审/真实交付；函数无明文密码参数，新账户只持久合法Argon2id hash，不输出秘密。
-
-## 真实执行与边界
-- 官方MySQL8.4.11 app权限；test用于恢复14项回归通过，bench用于真实全量生成/校验、Runtime和公平性；未动acceptance，未清空dev/test。
-- 恢复首轮2失败12通过源于共享库旧缺通知影响夹具断言；原记录保留，隔离confirmed时间窗后14通过，不删他岗数据。公平性修前真实失败/修后通过各自归档。
-- 当前Rows迁移后的原18基础断言+3Rows+2seed共23通过；实际Runtime同key并发/接管/旧owner/final-request/冲突真库回归通过。不同批验证未合称最终SHA单次全套通过。
-- 实际全量生成3.781s、增强一致性核验24.014s仅模块执行耗时，非正式性能结论。真实CLI重复入口exit0、不同seed拒绝；日志seed-mysql-bench-run1/final.json。
-- Ruff final退出0；SQLite仅可移植夹具/生命周期、mock仅连接初始化，不能代替MySQL约束。CI双环境保持DATABASE_URL+T44_DATABASE，缺配置fail不skip。
-- cloc2.10按公开政策核9aeb697应用4582行，本岗持久Python1500行；此树仍旧FE且未全量MQ，不替代最终整合总计，未调整格式/统计口径凑范围。
-- 未运行本轮最终全局suite、RabbitMQ网络、全局覆盖率、正式压测或独立验收；下游/总协调须在最终整合SHA实际执行，不能用本岗模块证据代替。
-
-## 记录与交接
-- 日志agents/database/WORKLOG.md，实际prompt归档ROLE-database-RECOVERY-SEED-v1.md，交接records/handoffs/database.json；AI实际改码与用户采用方案分别记录。
-- 实际Issue4恢复回复6360999718、公平性回复6361197315；seed最终正文seed-stage-comment.md已发表，具体URL见交接。
-- 本岗实现/模块验证已交产品checkpoint，后续等待根整合、最终规模和运行门禁结果；不联系独立测试或发审核成功。
-
-ROLE-database-INTEGRATION-FIX-v1：真实BE全整合312通过/2失败/3本地Rabbit跳过揭示seed仍读旧rule_version；最小修复e06ac3b已映射正式version/effective_at/decided_by，资源/原测试均未修改。原两seed测试仅执行2通过、Ruff通过；新规则hash63bda0d3...调用旧bench明确拒绝，40/6000/9000/11400/3600及旧manifest前后未变（integration-old-bench-guard.json）。root已另建t44_seed_verify授权同app；新正式配置40/6000/9000/11400+3600全量生成/七态一致性及重复幂等通过，rule_version1/effective_at/decided_by与资源一致，证据integration-formal-seed-mysql.json。本修复不声称新全套已通过，测试tmp机械迁移由root执行。
+## 交接与路径
+- 产品入口backend/t44/persistence/{migrations,rows,delivery,scans,seed}.py；契约README.md，CLI由backend适配。
+- 本岗测试当前tmp/backend/persistence/{993_foundation,989_rows,988_mysql,975_seed,956_schema_semantics}.py；旧日志backend/tests路径保留当时事实。
+- 日志agents/database/WORKLOG.md；本轮实际prompt agents/database/prompts/ROLE-database-REVIEW-FIX-v2.md；交接records/handoffs/database.json；PR17保持draft并已重新attach。
+- 尚缺：专库真实C-P4漂移恢复、重构后真实MySQL全量seed、最新整合SHA全套/统一规模；独立验收与正式性能不由本岗宣称。

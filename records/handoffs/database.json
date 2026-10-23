@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "INTEGRATION-FIX-v1：正式配置新库全量生成与旧库安全拒绝已实测",
-  "implementation_status": "产品e06已push/root整合；原两seed测试通过，正式新空t44_seed_verify全量40/6000/9000/11400+3600及7态校验/重复幂等通过，旧bench拒绝配置差异且保留数据；未改测试文件",
+  "stage": "REVIEW-FIX-v2：原失败修复/seed精确等价托管通过，专库漂移恢复待窗口",
+  "implementation_status": "0a676ee PR39941263169/push39941255427 success；333passed/0failed/0errors/0skipped，原975小/默认全量固定持久行摘要相等；专库真实C-P4漂移/恢复及重构后MySQL全量seed未运行，C-P4不关闭",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -108,9 +108,10 @@
       "status": "已创建"
     },
     {
-      "path": "backend/tests/persistence/test_foundation.py",
+      "path": "tmp/backend/persistence/993_foundation.py",
       "kind": "foundation实际代码/自测/过程证据",
-      "status": "已创建"
+      "status": "已创建",
+      "historical_path": "backend/tests/persistence/test_foundation.py"
     },
     {
       "path": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
@@ -203,9 +204,10 @@
       "status": "已实现/真实记录"
     },
     {
-      "path": "backend/tests/persistence/test_mysql.py",
+      "path": "tmp/backend/persistence/988_mysql.py",
       "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
-      "status": "已实现/真实记录"
+      "status": "已实现/真实记录",
+      "historical_path": "backend/tests/persistence/test_mysql.py"
     },
     {
       "path": "agents/database/persistence-mysql-tests-run4.log",
@@ -263,9 +265,10 @@
       "status": "已实现或真实执行/记录"
     },
     {
-      "path": "backend/tests/persistence/test_seed.py",
+      "path": "tmp/backend/persistence/975_seed.py",
       "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
-      "status": "已实现或真实执行/记录"
+      "status": "已实现或真实执行/记录",
+      "historical_path": "backend/tests/persistence/test_seed.py"
     },
     {
       "path": "agents/database/seed-mysql-bench-run1.json",
@@ -366,6 +369,52 @@
       "path": "agents/database/integration-fix-comment.md",
       "kind": "正式配置真库验证/真实Issue回复",
       "status": "已执行或发表"
+    },
+    {
+      "path": "tmp/backend/persistence/956_schema_semantics.py",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "已编写，测试未运行"
+    },
+    {
+      "path": "agents/database/review-fix-stage-comment.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/review-fix-pr-body.md",
+      "kind": "当前draft候选PR正文",
+      "status": "真实说明未运行/待性能窗后验证"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/original-failures.json",
+      "kind": "两次真实GHA失败、原始日志、SHA256索引",
+      "status": "已下载，Bandit B105真实来源已确认"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/4301-baseline/evidence.json",
+      "kind": "Hosted 332pass baseline with raw logs/JUnit",
+      "status": "已下载，原文件hash保留"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/2dc2-baseline/evidence.json",
+      "kind": "Hosted 333pass full original seed baseline with exact row digests",
+      "status": "已下载，原文件hash保留"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/0a676-result/evidence.json",
+      "kind": "Actual final hosted result + raw JUnit/static/migration logs with hash index",
+      "status": "已下载，333通过/无失败错误跳过及精确行摘要相等"
+    },
+    {
+      "path": "agents/database/review-fix-v2-comment.md",
+      "kind": "本轮Issue4真实结果/边界评论正文",
+      "status": "已以body-file真实发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981"
     }
   ],
   "interfaces": [
@@ -521,7 +570,12 @@
     "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/persistence/test_foundation.py backend/tests/persistence/test_rows.py backend/tests/persistence/test_seed.py -q --tb=short",
     "真实bench inline Python：migrate -> seed_demo -> assert_consistent -> repeat；另真实环境变量subprocess python -m t44.cli seed-demo，详细参数/统计见seed-mysql-bench-run1/final.json",
     "root公开source_count.py通过runpy加载仅ROOT覆盖为本worktree，固定cloc2.10哈希校验，归档9aeb697统计至agents/database/recovery-seed-source-count.json",
-    "gh issue comment 4/3 --repo HJY147/t44-dev-trace --body-file agents/database/seed-stage-comment.md"
+    "gh issue comment 4/3 --repo HJY147/t44-dev-trace --body-file agents/database/seed-stage-comment.md",
+    "Remote original reads: GitHub workflow jobs/logs + gh run download39938428158/39938417442 static artifacts",
+    "Hosted GitHub Actions: product39940121559,39940459708,39941263169; local machine ran no pytest/MySQL/seed/HTTP/build",
+    "Local source-only: ruff format for editing, restored unrelated prior formatting; not reported as lint execution",
+    "git diff --check on changed source/docs; upstream raw job logs retain their original trailing whitespace",
+    "Explicit own-path git commits/push codex/database-runtime; gh pr edit17 --body-file agents/database/review-fix-pr-body.md"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -555,18 +609,44 @@
     "PERSISTENCE-stage2最后33项通过：21 SQLite/mock + 12真实MySQL8.4.11；首次3失败26通过保留后修CHECK分类。首次/重复迁移18表226列通过；未用admin，未触acceptance/bench。",
     "CI兼容入口修复后run5全模块33 passed；本机DATABASE_URL+T44_DATABASE入口12真库passed，无skip，非GitHub CI结果。",
     "真实t44_bench首次迁移/seed40项目6000任务9000依赖11400评审+3600决定，7态；全量引用/JSON/轮次/容量校验通过、真实CLI重复exit0；Rows/原安全事务/seed23项通过；实际Runtime幂等真库通过；confirmed14项通过；claim公平性先真失败后同例通过。",
-    "INTEGRATION-FIX: 原seed两测试2通过；新t44_seed_verify官方MySQL8.4.11迁移18/226、生成40/6000/9000/11400+3600、7态全量一致性与重复同manifest通过；旧bench配置差异明确拒绝、前后计数与原manifest相同；无测试文件编辑。"
+    "INTEGRATION-FIX: 原seed两测试2通过；新t44_seed_verify官方MySQL8.4.11迁移18/226、生成40/6000/9000/11400+3600、7态全量一致性与重复同manifest通过；旧bench配置差异明确拒绝、前后计数与原manifest相同；无测试文件编辑。",
+    {
+      "stage": "REVIEW-FIX-v2 hosted correctness",
+      "head": "4301a68ce379292f68ef1c5c8f9644540fa25274",
+      "run": 39940121559,
+      "result": "4 jobs success; 332 passed / 0 failed / 0 skipped",
+      "boundary": "Hosted schema initialization and 956 Inspector tests; not dedicated t44_review drift/recovery",
+      "evidence": "agents/database/ci/review-fix-v2/4301-baseline/evidence.json"
+    },
+    {
+      "stage": "REVIEW-FIX-v2 full original seed baseline",
+      "head": "2dc2e6d785958fd7386fd91faa9f4b781b934bf5",
+      "run": 39940459708,
+      "result": "4 jobs success; 333 passed / 0 failed / 0 skipped; small and default full fixture digests recorded",
+      "evidence": "agents/database/ci/review-fix-v2/2dc2-baseline/evidence.json",
+      "boundary": "SQLite full synthetic fixture and hosted whole suite; not actual MySQL seed refactor verification"
+    },
+    {
+      "stage": "REVIEW-FIX-v2 final hosted product",
+      "head": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+      "run": 39941263169,
+      "push_run": 39941255427,
+      "result": "4 jobs success; 333 passed / 0 failed / 0 errors / 0 skipped; both exact original persisted-row digests equal; Bandit zero/Ruff pass",
+      "evidence": "agents/database/ci/review-fix-v2/0a676-result/evidence.json",
+      "boundary": "Hosted full suite + SQLite full fixture equivalence; dedicated MySQL controlled drift/recovery and full seed not executed"
+    }
   ],
   "unverified": [
-    "最终整合SHA的单一全套运行/全局覆盖率/正式性能/独立验收未由本岗执行",
-    "本岗不声称RabbitMQ网络验证通过；MQ owner本人接线及后续验证分开",
-    "本checkpoint统计4582应用行仍旧FE/未全量MQ，最终整合规模须root统一统计"
+    "安静窗口未结束，本岗不得执行本机pytest/MySQL迁移/seed/HTTP/构建",
+    "t44_review尚未迁移/改动；真实受控漂移、错误重复迁移拒绝、恢复接受未验证，C-P4不关闭",
+    "全局规模仍超5100，C-P4增加与seed减少分别记录；最新整合全套/性能/独立验收不由本岗声称",
+    "重构后的真实MySQL全量seed未运行；SQLite固定摘要不替代生产MySQL约束执行"
   ],
   "questions": [
     {
-      "to": "coordinator/backend/messaging/scheduler",
-      "question": "已交生产9aeb697及恢复1602/公平性8b60；请在最终整合SHA跑实际运行门禁，不把模块结论代验收。",
-      "status": "本岗产品已交接，最终整合检查待责任人执行"
+      "to": "coordinator",
+      "question": "窗口结束明确授权后继续执行956内t44_review真实受控漂移/重复迁移拒绝/恢复；C-P4现不关闭，最新整合/统一cloc由root复核",
+      "status": "仍遵守安静窗口，只在托管CI验证当前源码"
     }
   ],
   "prompt_refs": [
@@ -682,20 +762,33 @@
       "id": "ROLE-database-INTEGRATION-FIX-v1",
       "archive": "agents/database/prompts/ROLE-database-INTEGRATION-FIX-v1.md",
       "improvement_reason": "实际整合暴露旧资源shape误用；只修真实字段与追溯metadata，不改资源或原测试/断言。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v1",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "improvement_reason": "实际审核C-P4要求语义比较，性能调度要求先保存未验证checkpoint，不虚构测试通过。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v2",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v2.md",
+      "improvement_reason": "先读取原始Bandit失败，保留门禁与断言；远端验证和专库实际变更恢复分开，不编造规模达标。"
     }
   ],
-  "updated_at": "2026-10-23T09:01:42.384136+00:00",
+  "updated_at": "2026-10-23T10:50:59.521481+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
-    "product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
     "base": "codex/team-bootstrap",
     "draft": true,
     "attached": true,
     "merged": false,
-    "scope": "正式规则version/effective_at/decided_by映射修复，新库真验证与旧库不覆盖；最终全套由root/BE执行",
-    "pr_scope_updated_and_attached": true
+    "scope": "C-P4语义checker/原Bandit失败修复与受信seed去重；产品0a托管全绿，现仅追加证据，不宣称专库实测闭合",
+    "pr_scope_updated_and_attached": true,
+    "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
+    "candidate_status": "产品0a托管已过；当前仅记录归档追加，不把专库实际漂移恢复标为已过",
+    "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+    "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981"
   },
   "history": [
     {
@@ -783,6 +876,15 @@
       "stage": "RECOVERY-SEED-v1：恢复/公平性/生产seed/冗余清理已实现并模块验证",
       "implementation_status": "本岗完整持久入口已实现；18表真实迁移、Rows、Outbox/Scan、confirmed恢复、claim公平性、七态全量seed已验证；业务编排/最终集成门禁由对应责任岗及root执行",
       "publication_product_commit": "9aeb69795f67239b04352125f4b7db0427ce1272"
+    },
+    {
+      "stage": "INTEGRATION-FIX-v1：正式配置新库全量生成与旧库安全拒绝已实测",
+      "implementation_status": "产品e06已push/root整合；原两seed测试通过，正式新空t44_seed_verify全量40/6000/9000/11400+3600及7态校验/重复幂等通过，旧bench拒绝配置差异且保留数据；未改测试文件",
+      "unverified": [
+        "最终整合SHA的单一全套运行/全局覆盖率/正式性能/独立验收未由本岗执行",
+        "本岗不声称RabbitMQ网络验证通过；MQ owner本人接线及后续验证分开",
+        "本checkpoint统计4582应用行仍旧FE/未全量MQ，最终整合规模须root统一统计"
+      ]
     }
   ],
   "refactor_removed": [
@@ -794,5 +896,11 @@
       "path": "backend/t44/persistence/idempotency.py",
       "reason": "无生产调用重复实现；断言分别迁到真实Rows/Runtime，未删覆盖意图"
     }
-  ]
+  ],
+  "current_interfaces": {
+    "version": "frozen-v1",
+    "status": "现有Rows/UoW/Outbox/Scan/seed真实生产接线；本轮不改签名",
+    "contract": "backend/t44/persistence/README.md",
+    "historical_interfaces": "interfaces数组早期draft状态为当时记录，以本字段及当前报告为准"
+  }
 }
