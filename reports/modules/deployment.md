@@ -171,3 +171,8 @@
 - 原checkpoint预检声明写早：真实controller首次计数错含部署/Vite文件而失败，未起服务；已按root业务目录口径修正，所有92文件照常核hash，新增守卫后20项/Ruff/真实预检通过，失败原件另存。
 
 - phase2依赖attempt2锁hash/pipcheck/frozenfrontend/types/build全exit0；run1两真实completed/60.383994s、API4worker/UIproxy/TTL300/flock/Pika局部真，整体exit1/cleanupfalse（DTO解析错误、shutdown CLI超时）；原失败保持。只读16confirmed事件/26通知精确关联，后置全PID/端口gone另列。根准入一次freshcycle以既有eventIDs复核、补轮换与正常清理；当前未开始二轮，不宣称完整通过。
+
+### NATIVE-APPLICATION-v1 phase2实际交付
+
+- 实现0a6da88/SUTbc5a，新run2整体exit0/cycletrue/cleanuptrue；API4worker/consumer/UI5178proxy、新两扫描60.303070s、session4→5双项目TTL300轮换/新tick/锁/全回收及正常全停实际完成。源92SHA不变、新端口无监听、全部旧受保护监听baseline相同。
+- 正常16confirmed事件/26通知发生于run1（当轮整体exit1/cleanupfalse仍保留），二轮既有ID/收件人和manager可读10通知复核，不声称二轮新publish。证据native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871+3受影响873/Ruff/diff通过。不含完整浏览器业务、独立、性能或云结论，当前所有自有服务停机。

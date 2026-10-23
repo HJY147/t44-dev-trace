@@ -583,7 +583,8 @@
     "stage1_pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/31#issuecomment-6374241500",
     "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
     "runtime_after_validation_changed": false,
-    "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials"
+    "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials",
+    "stage1_fields_are_historical_snapshot": true
   },
   "native_application": {
     "prompt": "ROLE-deployment-NATIVE-APPLICATION-v1",
@@ -599,12 +600,12 @@
     "database": "t44_native_demo",
     "no_ddl_reset_seed": true,
     "private_input_modes": "0600",
-    "controller_status": "implemented, run1 exit1/cleanupfalse; mechanical correction/freshcycle pending",
-    "guard": "871:23 synthetic passed;873:3 affected stop guards passed",
+    "controller_status": "implemented; run1 failed retained; corrected run2 complete and all owned services stopped",
+    "guard": "871:23 synthetic pass;873:3 affected stop guards pass; unchanged phase1 guards not rerun",
     "services_started": true,
     "independent_or_formal_load_executed": false,
     "controller": "deployment/native/application.py",
-    "checks": "20 guards/Ruff and corrected actual preflight passed; all original failures retained",
+    "checks": "Ruff and complete phase2 baseline diff pass; actual final92sourcehashes match",
     "preflight": "agents/deployment/native-application-validation/controller-preflight.json",
     "design_commit": "3e05c60",
     "controller_commit_first": "4c3e4c4",
@@ -616,6 +617,32 @@
     "run1_actual_cleanup_success": false,
     "run1_post_stop_absence": "agents/deployment/native-application-validation/run1-post-stop-absence.json",
     "run1_delivery": "16confirmed events/26normalnotifications exactscan/UTC/recipient association",
-    "phase1_runtime_changed_for_phase2": "shutdown --no-wait + ps/getpgid disappearance race; original7e942 historical result retained"
+    "phase1_runtime_changed_for_phase2": "shutdown --no-wait + ps/getpgid disappearance race; original7e942 historical result retained",
+    "controller_implementation_commit": "0a6da88c404c04515c3c07039f0e231908fddc0e",
+    "actual_run2": "app_20261023_212959_fc2dc9",
+    "actual_run2_driver_exit_code": 0,
+    "actual_run2_cycle_success": true,
+    "actual_run2_cleanup_success": true,
+    "actual_periodic_interval_seconds": 60.30307,
+    "actual_second_cycle_scan_ids": [
+      3,
+      4
+    ],
+    "actual_rotated_tick_scan_id": 5,
+    "run2_evidence": "agents/deployment/native-application-validation/run2-capability.json",
+    "normal_delivery_origin": "run1:16confirmed outbox/26normalnotifications; run2 explicitly rechecks existingIDs and manager10notificationIDs, no newpublish claim",
+    "rotation": "session4→5;2actualprojects1/2;escalation:write;TTL300;drain/atomicpublish/revoke/restart/newtick;all5ownsessions revoked",
+    "all_owned_services_stopped": true,
+    "all_new_ports_unbound": true,
+    "all_protected_listener_baselines_exact_match": true,
+    "production_business_source_changed": false,
+    "application_runtime_changed_after_success": false,
+    "unverified": [
+      "full browser business acceptance",
+      "independent acceptance",
+      "formal performance",
+      "cloud deployment",
+      "production security"
+    ]
   }
 }

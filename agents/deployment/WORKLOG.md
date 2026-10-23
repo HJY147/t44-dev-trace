@@ -213,3 +213,13 @@
 - phase2 run1精确controller427b097实际exit1/cleanupfalse；API4worker/proxy/TTL300/两completed间隔60.383994s/flock局部真。两Pika实际CLI输出为inet数组/typed triples，本岗误按字符串/字典解析失败；原JSON同字节离线历史真红/修正真绿。只读精确关联16事件/16confirmed outbox/26无fallback通知，收件人集合一致且scan/UTC相符；查询曾误用不存在escalations表1146和UTC字符串格式比较失败，均只读且真实记录，不改变DB。
 - shutdown实际远端停后CLI code_server badarg/超时exit-15，ps/getpgid消失竞态令最终broker stop receipt缺失；原cleanupfalse绝不倒填。后置全自有PID/端口gone单列。固定官方4.3.6主源允许shutdown --no-wait终止整个VM，wrapper另核PID/EPMD；只修该参数和竞态，无关phase1守卫未重跑，受影响3项873与23项871/Ruff通过（扩展Ruff原失败保留）。
 - 根已准入一次第二freshcycle，绑定首轮既有16eventIDs只读关联，不宣称二轮新publish，继续实际扫描/凭据轮换/正常完整清理；新小设计勘误已写，尚未重启。run1 public/native输出secret扫描0，dump不读取/提交，旧环境不动。
+
+### NATIVE-APPLICATION-v1 phase2真实完成并全停
+
+- 运行实现0a6da88c404c04515c3c07039f0e231908fddc0e，SUTbc5a，fresh app_20261023_212959_fc2dc9整体exit0/cycletrue/cleanuptrue；新broker/新Cookie/user/vhost，源92文件逐SHA不变。API4workers/18088loopback、consumer、UI5178 HTML与代理鉴权、两completed scans IDs3/4实际60.303070s；新Pika真实1连接，首轮2连接保留。
+- 二轮明确只读复核首轮16个真实eventIDs/26无fallback通知与收件人；当前manager鉴权API可读对应10个notificationIDs，不称二轮新publish。服务session4→5均TTL300/escalation:write/项目1和2；排空scanner→新0600凭据→原子发布→撤销4→重启完成scan5/锁持有；finally回收4/5及user3，连同首轮session1/2全5会话只读确认revoked_at非空。
+- 官方shutdown --no-wait真实CLIexit0/markertrue；wrapper独立观察Rabbit退出、EPMD注册0再自有SIGTERM/退出。全部10个登记应用/workers PID消失，brokerPID也无，新5端口无监听；5173/18080/5175/18084/5176/18089/13306旧baseline逐项精确相同。原run1false不改，不再起服务或改运行源。
+- 后置projector最初错误用0549完整SHA是否在staging PYTHONPATH判断“保留”，该路径实际为plan-reason-api/source/backend而不编码SHA；初始false投影和纠正均保存，实际owner PYTHONPATH正确绑定本run/bc5a。未捕获staging输入运行前后bytehash，所以不声称该额外证明；controller无staging写操作且相应合成守卫通过。
+- 新873两项必要守卫在历史427b代码均真实红、修后绿，原无关phase1守卫未重复；23项871与3项受影响873/Ruff绿，完整phase2基线diff检查绿。结果仅本地开发部署能力/HTTP UI代理，不是完整浏览器业务、独立、性能、云或生产安全批准。接下来只归档/secret扫描和GitHub实际对话。
+
+- 归档前扫描本阶段84公开文件/292私密非秘密outputs+args，对16类实际literal（DB/登录/两broker/用户/服务bearer与完整URL去重）匹配0，gzip解码后纳入；dump/秘密原件排除。范围与hash见final-secret-scan.json，后续GitHub文字另行终扫。没有另查list_bindings表；AMQP能力由固定Pika源码、真实连接和确认/通知关联限定，不补写未执行命令。
