@@ -201,3 +201,5 @@ metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开has
 准确db87d30449356f3473b645a5c246dcc6c21d7cbe，实际prompt ROLE-reviewer-POOL-DEFAULTS-v1；隔离rootba555分支codex/review-pool-defaults。只两defaultConstant，其他AST/运行源/14freeze/原993930955保持。真实caller与I/O五配置已核，包括两种partial峰13→3及7→17，不泛称硬15cap；六标准默认池峰90同、retained30→90，资源/故障频率未知。owner869真实QueuePool合成DBAPI10绿/旧默认红有效但非本岗执行、非真实SQL/性能验证。
 
 51公开gzip回验、五ZIP既有官方digest回执（不打开私密ZIP）、Docker实际400a5=70f+db87及166运行roots字节一致，product520/0/0/0含86910/9300、44Py20TSVue/excluded0覆盖分母核准。有限专审未发现新增实质阻断，b9证据含候选不等root准入、demo仍bc5。报告reports/reviews/39-db87d30449356f3473b645a5c246dcc6c21d7cbe.md。无本机HTTP/SQL/负载/测试/CI或独立资料访问；6307/正式性能/人工材料未放行，实际Issue4/COMMENT/GET后补。
+
+实际发布：证据f61a9768b45928bbd2637a382403d33538c40a1f已push；Issue4评论6377112892与PR39 COMMENT5635646788准确db87，完整GET逐字body/归属或commit_id/state均严格通过。回执pool-defaults-db87/github-comment.json；仅有限代码审核无新增阻断，非root/性能/整体放行。无测试/服务/CI/APPROVE/main操作。
