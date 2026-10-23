@@ -208,3 +208,9 @@
 - 真实openapi_spec_validator.validate及所有38操作error cases-response HTTP-enum、只读无幂等错误、运行副本一致检查通过，capacity-v11-contract-validation.log/json。此为合同静态检查，不是新业务已实现/部署/HTTP通过；新freeze由root生成。
 - 先在现有986写13个新版开发回归，旧生产逻辑实际11failed/2passed/55deselected，原日志/XML capacity-v11-before.*保存；2通过仅状态6/7原本可移出。随后曾开始未提交业务草稿，收到root收紧前已启动一次局部草稿执行，13passed/55deselected，结果保留工作树capacity-v11-after.*但排除本合同checkpoint；不以此绕过接口先冻结。5个service草稿和986新用例均不暂存，等root新freeze后再继续/正式验证。
 - 只读发现FE fixture/README写死1.0，已向frontend提出1.1需求；其当前仅获旧1.0复验，须root后续派其同步。本岗不改FE或DB规格/共享台账，不推定旧362CI等于新源通过。
+
+### 冻结前责任岗修正（仍无业务提交）
+
+- 根限定复核9aeb40c指出本岗assignment.description错误概括developer无效也返回容量码。先精确导入根9aeb40c48c35139e29a5e997253d606e5c96139a两份frozen-v1.1 metadata，再只修该操作description：无效developer先OWNER_NOT_PROJECT_DEVELOPER，有效但缺容量才CAPACITY_REFERENCE_INVALID。相对根合同仅此描述差异，副本字节一致，receipt capacity-v11-prefreeze-correction.json；仍待root生成父链manifest。
+- 真实运行已迁移tmp/validation/995_contract_design_v2.py先1130检查/38ops/2个C2失败。原因是旧meta夹具0.1.0-draft，与当前contract const不符，不是产品容量/101收件人数缺陷；只改fixture取SPEC.info.version及打印迁移后的真实命令，原101人/UINT32/时间/错误断言完全保留。修后1130/38/0失败，before/after原始输出另存capacity-v11-995-*。仅Schema静态检查，不是HTTP/MySQL/业务新版本通过。
+- 首合同已push90e01f6，Issue3评论6364831519；PR16更新为显式1.1合同待实现。业务时序如实保留：冻结前已有本地草稿和一次13项局部草稿回归，不改写成冻结后才编写/验证；本小修commit仍排除5个services及985/986草稿、草稿after日志。

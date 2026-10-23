@@ -9403,7 +9403,7 @@
           "workflow"
         ],
         "summary": "经理调整负责人",
-        "description": "v1.1 D005：经理仅在待受理或阻塞前为待受理时调整负责人；进入开发后409 ASSIGNMENT_EDIT_LOCKED。接手人须为本项目有效developer且已登记在当前迭代capacity，否则422 CAPACITY_REFERENCE_INVALID。项目锁内重读，task.version递增，不新增开发后转派或同级重提醒。",
+        "description": "v1.1 D005：经理仅在待受理或阻塞前为待受理时调整负责人；进入开发后409 ASSIGNMENT_EDIT_LOCKED。先检查接手人为本项目有效developer，无效时422 OWNER_NOT_PROJECT_DEVELOPER；有效但未登记在任务当前迭代capacity时422 CAPACITY_REFERENCE_INVALID。项目锁内重读，task.version递增，不新增开发后转派或同级重提醒。",
         "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {

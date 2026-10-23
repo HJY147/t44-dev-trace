@@ -875,7 +875,11 @@
       "agents/backend/capacity-v11-contract-validation.log",
       "agents/backend/capacity-v11-contract-validation.json",
       "agents/backend/capacity-v11-before.log",
-      "agents/backend/capacity-v11-before.xml"
+      "agents/backend/capacity-v11-before.xml",
+      "tmp/validation/995_contract_design_v2.py",
+      "agents/backend/capacity-v11-995-before.log",
+      "agents/backend/capacity-v11-995-after.log",
+      "agents/backend/capacity-v11-prefreeze-correction.json"
     ],
     "scope": [
       "assignment receiver must be current effective developer and in iteration.capacity",
@@ -904,6 +908,16 @@
       "independentretest",
       "performance"
     ],
-    "next": "root merges contracts and DB specs, generates new parent-chain1.1freeze; then backend continues business guards/locks/tests. No955run."
+    "next": "root merges contracts and DB specs, generates new parent-chain1.1freeze; then backend continues business guards/locks/tests. No955run.",
+    "prefreeze_correction": {
+      "coordinator_metadata_source": "9aeb40c48c35139e29a5e997253d606e5c96139a",
+      "only_delta_to_that_contract": "changeTaskAssignment.description separatesOWNER_NOT_PROJECT_DEVELOPERfromCAPACITY_REFERENCE_INVALID",
+      "runtime_copy_identical": true,
+      "sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "995_before": "1130checks/38ops/2fail due to obsolete0.1.0-draft fixture",
+      "995_after": "1130checks/38ops/0fail; fixture usesSPEC.info.version; no old assertions removed",
+      "guard_implementation_in_this_checkpoint": false,
+      "new_parent_freeze": "pending coordinator manifest"
+    }
   }
 }

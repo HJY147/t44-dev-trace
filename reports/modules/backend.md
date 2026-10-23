@@ -147,3 +147,5 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副本/README/design：1.1.0、31paths/38ops、/api/v1、DDL18/226不变；新增assignment/rework的ID30容量分支，全量active owner、capacity1–5/终态6/7与原成员保护1–5+7、项目锁与原幂等/事务顺序均明确。所有请求字段/参数/权限scope及非Meta组件保持，真实规范校验与38操作错误一致性检查通过，证据capacity-v11-contract-validation.*。
 
 当前checkpoint不含新守卫生产实现、未部署，root建立新freeze后再继续；原v1摘要不回填。开发草稿回归旧码11失败/2通过（capacity-v11-before.*），已准备但未暂存的986及service草稿待后续。旧CI362仅属479源，不代新业务回归/真MySQL竞争/独立复测；性能仍暂不运行。
+
+冻结前责任岗增量：精确同步root9aeb40c的frozen-v1.1 metadata，仅修转派description区分无效developer的OWNER_NOT_PROJECT_DEVELOPER与缺capacity的CAPACITY_REFERENCE_INVALID；权威/运行副本一致。旧995设计夹具版本过期造成2个C2失败，改取SPEC.info.version和真实迁移命令后1130检查/38ops/0失败，101收件人等原断言保持，证据capacity-v11-995-before/after.log。仍未提交新守卫，父链freeze由root完成后继续；本次不是产品容量或MySQL测试结论。
