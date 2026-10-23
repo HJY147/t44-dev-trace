@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
   "stage": "PR21 HISTORY-EVIDENCE-01窄修复审bc5/bcb0：限定关闭，整体不放行",
-  "implementation_status": "唯一原HTTP反例一次绿/窄差量与公开原件核对完成；准确COMMENT/readback待发布；原422失败保留",
+  "implementation_status": "原反例一次绿/窄差量与公开原件核对/PR21准确bc5 COMMENT及完整GET已完成；原42243不通过保留；整体不放行",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -344,6 +344,10 @@
     {
       "command": "One identical originalSQLiteHTTP counterexample; source/AST/hash and published11artifact check; read-only CI/PRmetadata",
       "result": "Onegreen exit0, reason1→0 and rowsimmutable;14freeze/44Py20TSVue same; owner2red4pass→7pass separate; pushCI4success, PRsnapshotpending"
+    },
+    {
+      "command": "GitHubpluginCOMMENT explicitbc5; pluginselectedreadback and completeghGETreview5634448127",
+      "result": "exactbody/COMMENTED/bc5commit verified, first2ffpush0; finalsameSHA3runssuccess metadata, not ownfulltestrun; old42243NOT_PASSEDpreserved"
     }
   ],
   "results": [
@@ -357,7 +361,8 @@
     "PR29 COMMENT5633640531 actually published; exact body/state/commit_id readback verified; overall product still NOT_ACCEPTED.",
     "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56.",
     "PR30 COMMENT5633760634 actually published; exact body/state/fullcommit_id verified through complete GET. UI002 limited code review is not independent/global acceptance.",
-    "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass."
+    "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
+    "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
@@ -568,26 +573,24 @@
       "improvement_reason": "Preserve originalHTTPred and onlyreview exactnarrowfix, replay samefixture once; separate decodedJSONstructure/type identity from Python== and globalgates."
     }
   ],
-  "updated_at": "2026-10-23T21:05:31.819450+00:00",
+  "updated_at": "2026-10-23T21:07:41.894185+00:00",
   "review_outcome": "HISTORY-EVIDENCE-01 CLOSED_WITHIN_EXACT_DELTA; overall NOT_ACCEPTED",
   "github_evidence": {
-    "operator": "AI reviewer using authorized HJY147 account; not separate human",
-    "review_id": 5633760634,
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
-    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "operator": "AI reviewer, not studentmanual or independentaccount",
+    "review_id": 5634448127,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127",
+    "commit_id": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "state": "COMMENTED",
     "body_exact_match": true,
     "plugin_body_and_state_exact_match": true,
-    "readback_exit_code": 0,
-    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
-    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
-    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "full_specific_review_GET_exit_code": 0,
+    "readback_sha256": "bff5abf1b6f30f06e943a72b8077aeb5e56cce37a71a7eb2df8bdfdc22844433",
+    "body_sha256": "d867b172b5642ccc1dd62f26731cfaf5caa3e3ad2eda958bf7c5c4a549116361",
+    "evidence_commit": "2ff0f1c6717d849538a11be02001ef41f2557e69",
     "first_evidence_push_exit_code": 0,
-    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
-    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
-    "no_status_approve_or_merge": true,
-    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
-    "full_specific_review_GET_exit_code": 0
+    "scope": "HISTORY-EVIDENCE-01closedwithinspecificbc5delta; old42243NOT_PASSEDpreserved; overallNOT_ACCEPTED",
+    "no_status_approve_ci_trigger_or_merge": true,
+    "verified_at_utc": "2026-10-23T21:07:41.894185+00:00"
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -1123,14 +1126,23 @@
     "evidence_commit": "927743ca092a30159a6ff62884bde8ddc7dd291d"
   },
   "previous_github_evidence": {
-    "exact_body_readback": true,
-    "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636",
+    "operator": "AI reviewer using authorized HJY147 account; not separate human",
+    "review_id": 5633760634,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
     "state": "COMMENTED",
-    "status_mutations": [],
-    "no_success_approve_or_merge": true,
-    "review_id": 5630038636,
-    "evidence": "agents/reviewer/evidence/read-uow-5dcb/github-verification.json"
+    "body_exact_match": true,
+    "plugin_body_and_state_exact_match": true,
+    "readback_exit_code": 0,
+    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
+    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "first_evidence_push_exit_code": 0,
+    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
+    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
+    "no_status_approve_or_merge": true,
+    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
+    "full_specific_review_GET_exit_code": 0
   },
   "capacity_feedback_review": {
     "head": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
@@ -1251,10 +1263,27 @@
     "ci_triggered": false,
     "private_independent_accessed": false,
     "new_test_files": [],
-    "github_comment": null,
-    "github_exact_body_and_commit_readback": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127",
+    "github_exact_body_and_commit_readback": true,
     "status_mutations": [],
     "approve": false,
-    "merged": false
+    "merged": false,
+    "evidence_commit": "2ff0f1c6717d849538a11be02001ef41f2557e69",
+    "ci_metadata": {
+      "push_product": {
+        "id": 40023062800,
+        "conclusion": "success",
+        "jobs_success": 4
+      },
+      "pr_product": {
+        "id": 40023068752,
+        "conclusion": "success"
+      },
+      "push_docker": {
+        "id": 40023062786,
+        "conclusion": "success"
+      },
+      "full_raw_artifacts_reaudited": false
+    }
   }
 }

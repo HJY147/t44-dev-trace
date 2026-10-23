@@ -141,3 +141,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 先封存原42243不通过与COMMENT5634370911，再在独立codex/review-plan-reason-evidence-fix复审新bc5。唯一生产history改为双方冻结EvidenceRefs有效后JSON排序对象键的精确比较；数组/字符串原文不改、true不等1、历史1与1.0保守不同，原请求normalization/runtime/DB/FE/R1/UI002不变。原HTTP相同fixture/断言一次重放exit0，GET200且无误投影、原行不变，HISTORY-EVIDENCE-01在准确新源限定关闭；原422失败不覆盖，不作为Issue28独立/整体通过。
 
 本岗只此1次HTTP绿，未跑owner6/7/旧18/89/66/CI/browser/DB/负载。公开3580的11原件hash/精确源/旧反例引用hash匹配，开发6案2红4绿→7绿分开记录；14freeze/44Py20TSVue/旧986前缀与函数保持。元数据实核准确bc5 productpush40023062800四job成功，dockerpush成功，初PRproduct快照仍跑，不宣称全门禁。history有效+4（92→96）与物理净+6区别已向root说明，整体规模仍失败。报告reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md；证据agents/reviewer/evidence/plan-reason-evidence-bc5；实际prompt ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1。COMMENT/readback实发后补，无APPROVE/status/merge。
+
+窄修实际发布：2ff0f1c6717d849538a11be02001ef41f2557e69已push/[skip ci]；PR21 COMMENT5634448127及完整GET严格绑定bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。封存前同源PR product40023068752已success，初pending快照仍保留；本岗不重核全量CI原件，不影响整体未放行。原42243失败/原红/5634370911保持。

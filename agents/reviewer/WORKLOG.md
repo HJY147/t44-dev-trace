@@ -233,3 +233,5 @@
 - 核公开35803229的11artifact摘要、精确源/测试hash及引用本岗旧两原件hash一致；before6案2红4绿→after6新+1原正常legacy7绿，不计成本岗7例或累加旧18/504。没有再跑六相邻/全套/CI/872/真实DB/负载/新增测试文件。
 - 只读准确bc5 CI：productpush40023062800及其4jobs success，dockerpush40023062786success；初快照PRproduct40023068752仍跑，不提前称所有检查完成。本岗未重核全量CIartifact。owner固定cloc有效92→96净+4，root原消息+6为物理净行，已勘误通知；不把条件总数当重计或规模通过。
 - 八段十项新报告21-bc5及自有一次绿/公开原件hash归档；PR21准确bc5 COMMENT/完整GET按实际完成补记，无APPROVE/status/CItrigger/merge。
+
+- 窄修阶段证据2ff0f1c6717d849538a11be02001ef41f2557e69已push exit0/[skip ci]；最终同源productPR40023068752也completed/success，与push40023062800四job及dockerpushsuccess分开保存初/末metadata。PR21 COMMENT5634448127真实发布并完整GET严格核bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。原42243失败及其COMMENT5634370911不改。只补回执后释放槽，无APPROVE/status/CItrigger/merge。
