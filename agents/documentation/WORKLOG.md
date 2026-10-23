@@ -131,3 +131,20 @@ backend 接到 ROLE-backend-CONTRACT-v1。请告知 M0 串行提交队列何时�
 gh pr create --draft --base codex/team-bootstrap --head codex/reports-draft --body-file agents/documentation/reports-draft-pr.md实际返回https://github.com/HJY147/t44-dev-trace/pull/18；attach_artifact成功。gh pr view18读回head=8cf92cb07319e16b31ddf6bde28095d3b213eb9c、base=codex/team-bootstrap、draft=true、state=OPEN。
 
 本条仅补实际发布证据，不新增润色/来源/产品验证。最终记录提交与远端head会在最终回复回传；三报告+提交对照+独立AI规格说明均为阶段工作稿，Q002仍pending。未合并main、未发布审核success、未上传原DOCX、未执行产品测试。
+
+## 2026-10-23T17:31:42.559659+08:00 M2-QUALITY checkpoint
+
+由M1干净树快进codex/integration f3235ba，建codex/reports-m2，再依root指令快进5e07887及265d89b。冻结11文件逐哈希一致，只读；merge集成源不等于本岗修改产品。九岗实际send_message原文已档；现收BE/部署回复及BE ec82最终交接，其他本轮未回复如实待补，未followup或联系独立测试。
+
+只读私密cover-info（0600），未输出/写入姓名学号，公开日期空。浏览IEEE/ISO官方公开摘要/范围，引用不超已读内容，不猜标准条款。Mermaid/mermaid-cli不在bundled runtime，当前仅MD语法/人工源码语义核对，不声称已渲染或逐页QA。
+
+SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核心ER/成功拒绝/消息时序；FR8到实际代码与tmp模块用例映射完成。原AI稿改AI整理证据材料，新增学生自写模板。M1 commit和M0原文不改；需求审查→D004冻结→完整编码→enum/seed联调修复时间线明确。
+
+新run39931640641精确head265d89b的四job成功已gh核对；coverage artifact数字待root归档，不猜。root新独立测试仅用例冻结，本岗不接触。先提交本轮可审checkpoint，再收后续已发布artifact证据。
+
+## M2可审checkpoint收口
+
+- 合并06b9e98并只读CI原始归档：317通过/0跳过，Python2399/2724=88.07%，FE308/334=92.21%；不替换早先本机快照。
+- 补docs/architecture.md任务书命名入口：采用栈和M1 Supabase比较、M2追加Java/Spring候选分清时间，不编性能对照。
+- 本岗报告/handoff切到M2当前状态，M0/M1原始询答/来源/失败记录不改；学生自写模板不充当学生成品。
+- 本轮先显式提交checkpoint，草稿PR base codex/integration，实际发布记录随后追加。

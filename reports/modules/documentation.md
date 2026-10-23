@@ -1,49 +1,44 @@
-# 文档汇总岗位报告｜REPORTS-DRAFT-v1
+# 文档汇总岗位报告｜M2-QUALITY-v1
 
-## 阶段与范围
+## 任务、依据与状态
 
-- Agent-Role: documentation；Prompt-Ref: ROLE-documentation-REPORTS-DRAFT-v1。
-- 独立树.agent-worktrees/documentation，codex/reports-draft，base5d0c087f63812b0e00c7284afeafe4ec6a00c110。
-- 三份中文报告加提交对照/独立AI规格说明阶段稿已形成；不是软件交付、最终验收或学生本人总结。
-- 只修改本岗报告/资料/过程/prompt，不改产品/共享台账或M0实际收集历史。
-- 封面姓名学号未提供，不猜；本轮不做Word/PDF导出；亲读原提交DOCX的29非空段，SHA/文字与缓存一致。
+- Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M2-QUALITY-v1；Refs: #9。
+- 独立树documentation，分支codex/reports-m2；从M1报告历史合入integration及06b9e98归档。
+- 当前为可审Markdown工作稿；本岗不实现产品、不执行产品测试、不替学生署名研究报告。
+- 冻结1.0.0的11文件只读；D004已采用，不再将当前Q002列pending；M1当时pending历史不改。
+- 私密封面已读，姓名学号等具体值不提交公开Git，日期留空；未生成DOCX/PDF或宣称逐页QA。
 
-## 真实问取与来源
+## 产物及对接
 
-- 用send_message实际问backend/database，收到两条即时原文答复；未唤醒空闲角色。
-- 后端正式0bb4549c1b6e4fb7247dc58dd8a5fa675161d614/PR16：106领域测试，仅domain含分支约98%；非HTTP/事务/CAS。
-- 数据库正式4ae865b8dc554813c04aacbb3a5033aa2745c799/PR17：Engine/UoW/CoreGateway及18项SQLite/mock、Ruff通过；无ORM/业务仓储/MySQL。
-- 即时/最终原文及收尾消息存M1-collection.md和.json；保留81/未收尾为历史，当前两岗最终SHA已收。
-- 前端f261cbf0ea94537ed9f0a1600770c93ee8109237、部署72e3275202273a60af3acc37b7a319f10eea99a7仅引用已发布模块报告/交接。
-- 已用git show核对上述报告/交接字节；不冒充本轮亲自询问。
-- 原始T44/提交/作业三来源只读根specs/sources，不复制原件、不移植T29。
-- 测试只读本树公开modules/testing.md和handoffs/testing.json，未联系测试/读内部资料。
+- reports/final/requirements-report.md：正式SRS组织、角色/成功拒绝、8FR/9AC、3个Mermaid图和真实版本历史。
+- reports/final/design-report.md：概设/详设、ER/进程/两核心时序共4图、DI/稳定码/事务/锁/扫描复杂度。
+- docs/architecture.md：任务书命名入口，两组候选按性能/成本/可维护性比较；补充候选时间明确、无假实测。
+- docs/reports/M2-traceability.md：FR→概设→实际函数→tmp模块测试及公开结果范围。
+- ai-development-report.md改为AI证据材料，student-study-template.md提供学生自写问题和空提纲。
+- submission-map.md及ai-spec-guide.md同步冻结v1、四组提交、私密封面及最终缺口。
+- M2-collection.md/.json留9岗实际请求全文，收到backend/deployment两岗原文；其余7岗未收，不代写。
+- 已发布模块报告/交接与本轮亲自问答分开；不联系测试，只收两份公开冻结资料。
 
-## 工作稿产物
+## 设计与过程证据
 
-- requirements-report.md：8FR/9AC、角色、成功/拒绝路径、量化目标与状态。
-- design-report.md：两方案、门面DI/状态机/版本/表/事务/锁、扫描outbox降级伪码复杂度、部署CI。
-- ai-development-report.md：用户原创U001/U002亮点、实际Issue/commit/PR、AI错误与AI纠正及人的缺口。
-- 三稿及submission-map.md、ai-spec-guide.md均位于reports/final/，标明工作稿、非最终验收；引用证据，不复制几千行日志。
-- docs/reports/M1-source-manifest.json：只读来源固定SHA/哈希及读取边界。
-- docs/reports/M1-github-snapshot.json：PR14/15 draft/head、首次Actions及两条Review准确SHA。
-- docs/reports/M1-validation.json及本岗校验脚本：JSON/本地链接/外部链接来源/边界检查。
-- 实际派工原文：records/prompts/ROLE-documentation-REPORTS-DRAFT-v1.md。
+- 717首次审查失败→bc0 C1–C4限定技术通过→D004/ae60冻结→完整编码→enum/seed联调修复→M2图表。
+- 图在开发中补充，不倒填为开发前已全部成稿；M0/M1原记录和失败日志保持历史。
+- ISO/IEEE只读官方公开摘要，引用需求信息项/迭代范围，不声称读完标准或符合未读条款。
+- REA仅引用root公开调研的候选工具/证据分析定位，不称教师评分器或REA运行通过。
+- 学生本人观点、人工改码/识别幻觉/校正映射须真实来源，AI互改不改标签凑数。
 
-## 状态与验证边界
+## 验证与范围
 
-- C1–C4在bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68技术复审通过；Q002仍pending。
-- 1130为设计断言，不是HTTP产品用例；没有冻结/迁移/实库或产品验收结论。
-- PR14/15实时均draft/open；Actions39912067161在3857b2e上completed/failure。
-- 前端5模块测试/构建/headless、部署17本模块检查分别限定，未借用为产品门禁通过。
-- 本岗只核对文档/JSON/链接/来源/提交范围，不运行产品测试或发布审核success。
+- 本岗检查JSON、来源SHA、11冻结哈希、本地链接、7个Mermaid块结构、8FR/9AC及隐私；不运行产品命令。
+- Mermaid运行库未提供，语义与实际代码人工核对；未声称已渲染图或完成Word逐页QA。
+- 06b9e98中的CI原始JUnit/gate已读：265d89b四job成功，覆盖率整套317通过/0失败/0跳过。
+- whole Python2399/2724=88.07%，前端308/334=92.21%；非本机87.78%/3skip，历史分开。
+- 当前测试入口tmp/backend、tmp/frontend及递减编号；5e机械迁移不改写旧日志命令。
+- 模块结果、托管整套、Docker、准确SHA审核、独立验收与正式性能分层；不能互相替代。
 
-## 真实留痕与未完成
+## 尚需交接
 
-- D001是用户采用，D002/D003是AI技术选择，Q002不以等待/默认项代替人审。
-- C1–C4由AI发现/修复，不改记用户亲改或人类识别幻觉。
-- 六版prompt、十二人工对照、三人工识别幻觉、五人工校正映射均未证明达标。
-- 全项目覆盖率、400并发10分钟/P95/吞吐、有效LOC、独立验收均待实测。
-- 本人观点/真实改码/亲历踩坑/课程建议/课件完整清单/封面资料待本人提供。
-- 两岗最终基础SHA已收；冻结技术版本、业务集成、测试最终稿/最终规格说明仍须后续补证。
-- 本轮独立显式commit/push并建base codex/team-bootstrap的草稿PR，最终SHA/PR另行回传。
+- Docker39932416571尚未收成功回执；正式400并发10分钟/P95/吞吐、代码规模、独立验收最终结果未完成。
+- 7岗未有本轮回复，只使用已发布来源；待收到后可增补，不阻塞当前可审稿。
+- 学生本人最终研究报告/个人思考/课程建议和真实人工证据待本人提供。
+- 本轮先提交/push可审checkpoint草稿PR，SHA/PR记录由实际发布后补，不merge main或发审核success。
