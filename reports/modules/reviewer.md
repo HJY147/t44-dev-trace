@@ -44,3 +44,7 @@
 - 已实际通过OpenAPI规范/字典和FK静态核对；Schema例值核对复现两项输入输出边界。没有HTTP、DDL、产品测试、覆盖率或性能结果；缺少后续运行验证本身不是本轮设计缺陷。
 - 角色标识Issue摘要、PR COMMENT和该SHA的 `reviewer/stage=failure` 已实际发布，回执/完整命令在 `agents/reviewer/evidence/design-gate-717cd65.json`；不自我APPROVE、不发success。实际保护拒合并实验由总协调另行执行，本报告不预先宣称成功。
 - 设计实际派工与本轮独占索引归档授权原文分别存于 `agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt` 和 `ROLE-reviewer-DESIGN-ARCHIVE-v1.txt`。归档只提交本岗证据，不改规格、不push/checkout/merge。报告仍绑定717cd65，不嵌入本次证据提交SHA；提交结果通过工具和协调交接提供。
+
+## 完整产品审核v1 checkpoint
+
+精确e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef全产品/M2审核进行中，非放行。959组件复现确认C-P1嵌套Iteration消费错误、C-P2幂等历史状态误报当前；两正确行为断言失败。原脚本复算5944有效行，超上限844。首次报告及真实输出在reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef-checkpoint.md和本岗evidence/product-v1；原owner修复，新SHA复审。基础历史09dd3cf已独立push，不以其范围结论放行完整产品。

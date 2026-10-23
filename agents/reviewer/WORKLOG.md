@@ -60,3 +60,14 @@
 - 人工与门禁边界：据总协调本轮派工Q002仍pending，不记用户已采用字段/错误码或冻结；实时main严格要求reviewer/stage/static/contracts/coverage/frontend且管理员受约束；bc check-runs查询返回[]，无当前产品门禁通过证据。旧保护拒合并历史实证在records/github针对717cd65，不能冒称新SHA已通过。未执行DDL/HTTP/产品事务/MQ/覆盖率/性能。
 - 本轮仅角色标识COMMENT技术结论/待人审/未实现，不发布success、APPROVE或合并。评论正文保存 `agents/reviewer/github/issue-12-design-v2-bc0cd34.md`；只本岗显式提交，不push/checkout/merge，实际评论/提交回执随后交接并释放索引。
 - 实际PR COMMENT已发布：https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437 ，回执commit_id=bc0cd34完整SHA，前后远端head一致。首轮读取review回执GET发生EOF（退出1）；未重复提交COMMENT，只读重试成功，失败与恢复均保留在 `agents/reviewer/evidence/design-v2-bc0cd34.json`。该SHA combined status=pending、statuses=[]，未发布success或其他提交状态。
+
+## 2026-10-23T17:50:21.210986+08:00 完整产品审核v1首次checkpoint
+
+- 基础历史归档本人09dd3cf68171557ca13648296e9427571f5fe815已push并核对远端，四旧head结论不扩大。
+- 新任务ROLE-reviewer-PRODUCT-v1原文/目标/编号授权存dispatch；从精确e01建立codex/review-product-v1独立树，审核整个产品/M2，未沿用基础模块排除项。
+- 已实际复现C-P1嵌套Iteration计划丢预填与C-P2重放历史状态误报当前；959 Vitest正确行为2断言失败，原输出和命令保留，非独立验收/非liveHTTP。原统计政策复算5944，require-range退出1。先交实质问题，不等待报告metadata或独立最终稿。
+- 未修改owner实现/既有断言、未读取私有独立用例/日志或联系testing。完整审核继续；957另领用于Schema检查器语义复现。
+
+- 957隔离Inspector替身：列类型/名称相同但改变索引/FK/CHECK语义仍passed=true；正确拒绝断言失败，登记C-P4，不声称实库漂移。首发PR Review精确e01被GitHub422拒绝（远端仍86dfd7d，目标不在PR），只读查无重复后未错绑。Issue checkpoint已发布 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769；评论与真实返回见checkpoint-github.json。
+
+- root将目标推入PR21祖先后，先读回确认无旧Review，再绑定原e01发布COMMENT成功：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867。原422保留。Git样式检查识别原始Vitest stdout末尾空行；保留原始输出，资料检查仅对blank-at-eof作命令级豁免，未改产品断言/门禁。
