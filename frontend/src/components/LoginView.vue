@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import { ElButton } from 'element-plus'
 import { api, request } from '../api'
 import { asRow } from '../contract'
@@ -8,15 +8,20 @@ const username = ref('')
 const password = ref('')
 const busy = ref(false)
 const error = ref('')
+let active = true
+onUnmounted(() => { active = false })
 async function login(): Promise<void> {
+  if (!active || busy.value) return
   if (!username.value || !password.value) { error.value = '请填写账号和密码。'; return }
   busy.value = true; error.value = ''
+  let token = api.token
   try {
     const result = asRow((await request('login', {}, {}, { username: username.value, password: password.value })).data)
-    api.token = String(result.access_token)
+    if (!active || api.token !== token) return
+    api.token = token = String(result.access_token)
     await bootstrap()
-    workspace.notice = '已登录，工作空间已同步。'
-  } catch (cause) { api.token = ''; error.value = cause instanceof Error ? cause.message : '登录暂未完成，请稍后再试。' }
+    if (api.token === token) workspace.notice = '已登录，工作空间已同步。'
+  } catch (cause) { if (!active || api.token !== token) return; api.token = ''; error.value = cause instanceof Error ? cause.message : '登录暂未完成，请稍后再试。' }
   finally { password.value = ''; busy.value = false }
 }
 </script>

@@ -25,13 +25,14 @@ export async function request(operation: string, params: Row = {}, query: Row = 
   if (intent) headers['Idempotency-Key'] = intent.key
   let response: Response
   try { response = await fetch(`/api/v1${path}${search.size ? '?' + search : ''}`, { method: op.method, headers, body: body === undefined ? undefined : JSON.stringify(body), cache: 'no-store' }) }
-  catch { throw new ApiError(0, { code: 'NETWORK_UNCERTAIN', message: '网络中断，操作结果尚待确认。请保留原内容，使用原请求重试。' }) }
+  catch { if (operation !== 'login') checkSession(token); throw new ApiError(0, { code: 'NETWORK_UNCERTAIN', message: '网络中断，操作结果尚待确认。请保留原内容，使用原请求重试。' }) }
+  if (operation !== 'login') checkSession(token)
   if (response.status === 401 && operation !== 'login' && api.token === token) { api.token = ''; api.unauthorized() }
   let payload: unknown
-  try { payload = await response.json() } catch { throw new ApiError(response.status, { code: 'INVALID_RESPONSE', message: '服务暂未返回可识别的记录，请稍后重试。' }) }
+  try { payload = await response.json() } catch { if (operation !== 'login' && response.status !== 401) checkSession(token); throw new ApiError(response.status, { code: 'INVALID_RESPONSE', message: '服务暂未返回可识别的记录，请稍后重试。' }) }
+  if (operation !== 'login' && response.status !== 401) checkSession(token)
   if (!response.ok) {
     throw new ApiError(response.status, payload as Row)
   }
-  if (operation !== 'login') checkSession(token)
   return payload as Envelope
 }

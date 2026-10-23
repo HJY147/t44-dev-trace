@@ -63,6 +63,15 @@ describe('typed editor interactions', () => {
   })
 })
 describe('operation forms', () => {
+  it.each([200, 403, 409])('does not call parent callbacks after same-session form unmount with late HTTP %s', async status => {
+    let respond!: (response: Response) => void
+    vi.stubGlobal('fetch', vi.fn(() => new Promise<Response>(resolve => { respond = resolve })))
+    const refresh = vi.fn(async () => ({})), saved = vi.fn(async () => {})
+    const wrapper = mount(OperationForm, { props: { operation: 'createProject', schemaName: 'ProjectCreate', params: {}, preset: { name: '待创建夹具', description: '' }, refresh, saved }, global })
+    await settle(); await wrapper.get('form').trigger('submit'); await settle(); wrapper.unmount(); workspace.notice = '当前页面提示'
+    respond(new Response(JSON.stringify(status === 200 ? { data: project, meta: { replayed: false } } : { message: '原表单已失效', current_version: 2 }), { status })); await settle()
+    expect(refresh).not.toHaveBeenCalled(); expect(saved).not.toHaveBeenCalled(); expect(workspace.notice).toBe('当前页面提示')
+  })
   it('shows untouched task text fields as empty and submits no request when required fields are missing', async () => {
     const { calls } = fixtureFetch()
     const wrapper = mount(OperationForm, { props: { operation: 'createTask', schemaName: 'TaskCreate', params: { project_id: 1 }, preset: presets('createTask'), refresh: async () => {}, saved: async () => {} }, global })
@@ -144,6 +153,26 @@ describe('operation forms', () => {
   })
 })
 describe('session and user flows', () => {
+  it('does not let an unmounted login bootstrap failure clear a newer session token', async () => {
+    workspace.user = null
+    const { fetcher } = fixtureFetch(); const base = fetcher.getMockImplementation()!
+    let respond!: (response: Response) => void
+    fetcher.mockImplementation((url, init) => String(url).endsWith('/auth/me') ? new Promise<Response>(resolve => { respond = resolve }) : base(url, init))
+    const wrapper = mount(LoginView, { global }); await wrapper.get('#login-username').setValue('fixture-user'); await wrapper.get('#login-password').setValue('synthetic-password'); await wrapper.get('form').trigger('submit'); await settle()
+    expect(respond).toBeTypeOf('function'); wrapper.unmount(); api.token = 'new-fixture-session'; workspace.user = { ...user, id: 2 }; workspace.notice = '新会话已同步'
+    respond(new Response(JSON.stringify({ message: '旧登录的读取失败' }), { status: 503 })); await settle()
+    expect(api.token).toBe('new-fixture-session'); expect(workspace.user?.id).toBe(2); expect(workspace.notice).toBe('新会话已同步')
+  })
+  it('does not start a second task-detail read after drawer unmount in the same session', async () => {
+    const { fetcher, calls } = fixtureFetch(); const base = fetcher.getMockImplementation()!
+    const wrapper = mount(TaskDrawer, { props: { projectId: 1, taskId: 1, revision: 0 }, global }); await settle()
+    let respond!: (response: Response) => void
+    fetcher.mockImplementation((url, init) => String(url).endsWith('/tasks/1') ? new Promise<Response>(resolve => { respond = resolve }) : base(url, init))
+    await button(wrapper, '前置依赖').trigger('click'); await settle(); expect(respond).toBeTypeOf('function'); wrapper.unmount()
+    const before = calls.length
+    respond(new Response(JSON.stringify({ data: task, meta: { replayed: false } }))); await settle()
+    expect(calls.slice(before).some(call => call.path.endsWith('/dependencies'))).toBe(false)
+  })
   it('unmounts authenticated DOM and overlays on logout and keeps them absent through history navigation', async () => {
     const router = createRouter({ history: createMemoryHistory(), routes: navigation.map(item => ({ path: item.path, component: WorkspaceView, props: { page: item.key }, meta: { title: item.label } })) })
     await router.push('/projects'); await router.isReady()

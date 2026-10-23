@@ -61,7 +61,7 @@ describe('session cleanup boundaries', () => {
   it('does not allow a late previous-session 401 to revoke a new session', async () => {
     let respond!: (response: Response) => void
     vi.stubGlobal('fetch', vi.fn(() => new Promise<Response>(resolve => { respond = resolve })))
-    const pending = request('getMe'); const rejected = expect(pending).rejects.toMatchObject({ status: 401 })
+    const pending = request('getMe'); const rejected = expect(pending).rejects.toMatchObject({ status: 0, detail: { code: 'SESSION_CHANGED' } })
     api.token = 'new-fixture-session'; workspace.user = { ...user, id: 2 }
     respond(new Response(JSON.stringify({ message: '旧会话已失效' }), { status: 401 })); await rejected
     expect(api.token).toBe('new-fixture-session'); expect(workspace.user?.id).toBe(2)
@@ -92,6 +92,14 @@ describe('session cleanup boundaries', () => {
     await logout(); api.token = 'new-fixture-session'; workspace.user = { ...user, id: 2 }; workspace.projectId = 1; workspace.project = { ...project, name: '新会话上下文' }
     respond(new Response(JSON.stringify(envelope(project)))); await pending
     expect(workspace.project.name).toBe('新会话上下文'); expect(workspace.members).toEqual([])
+  })
+  it.each([403, 409, 422, 503])('discards a late previous-session HTTP %s before current-session error recovery', async status => {
+    let respond!: (response: Response) => void
+    vi.stubGlobal('fetch', vi.fn(() => new Promise<Response>(resolve => { respond = resolve })))
+    const pending = request('createProject', {}, {}, { name: '旧会话待创建', description: '' }); const rejected = expect(pending).rejects.toMatchObject({ status: 0, detail: { code: 'SESSION_CHANGED' } })
+    api.token = 'new-fixture-session'; workspace.user = { ...user, id: 2 }
+    respond(new Response(JSON.stringify({ message: '旧操作错误' }), { status })); await rejected
+    expect(api.token).toBe('new-fixture-session'); expect(workspace.user?.id).toBe(2)
   })
 })
 describe('contract-driven forms and safe records', () => {
