@@ -1,0 +1,53 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_real_pool_capacity_return_reuse_and_dispose[default] ___________
+
+overrides = {}, retained = 15, overflow = 0
+
+    @pytest.mark.parametrize("overrides,retained,overflow", CASES)
+    def test_real_pool_capacity_return_reuse_and_dispose(overrides, retained, overflow):
+        settings = MySQLSettings("synthetic", "t44_unit", "synthetic", "synthetic", **overrides)
+        created = []
+    
+        class SyntheticConnection:
+            def __init__(self):
+                self.closes = 0
+    
+            def rollback(self):
+                pass  # QueuePool reset calls a synthetic DBAPI method; there is no SQL implementation.
+    
+            def close(self):
+                self.closes += 1
+    
+        def creator():
+            connection = SyntheticConnection()
+            created.append(connection)
+            return connection
+    
+        pool = QueuePool(
+            creator, pool_size=settings.pool_size, max_overflow=settings.max_overflow, timeout=0
+        )
+        peak = retained + overflow
+        try:
+            assert created == []  # Construction remains lazy.
+            for wave in range(2):
+                borrowed = []
+                try:
+                    for _ in range(peak):
+                        borrowed.append(pool.connect())
+                    with pytest.raises(PoolTimeout):
+                        pool.connect()  # No waiting in this synthetic test; production timeout is below.
+                    assert pool.checkedout() == peak
+                finally:
+                    for connection in borrowed:
+                        connection.close()
+                assert pool.checkedout() == 0
+>               assert pool.checkedin() == retained
+E               assert 5 == 15
+E                +  where 5 = checkedin()
+E                +    where checkedin = <sqlalchemy.pool.impl.QueuePool object at 0x1058f2a20>.checkedin
+
+tmp/backend/persistence/869_pool_defaults.py:61: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_real_pool_capacity_return_reuse_and_dispose[default] - a...
+1 failed in 0.24s

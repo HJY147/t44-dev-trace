@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "POOL-DEFAULT-CANDIDATE-v1：两常量独立候选设计",
-  "implementation_status": "仅设计/接口输入/范围先提交，未改产品；869已root预留，旧源红与两常量/精确源CI待后续，不能当生产准入。",
+  "stage": "POOL-DEFAULT-CANDIDATE-v1：精确两literal候选实现",
+  "implementation_status": "两默认已实现/869真实合成QueuePool10案例通过、旧配置真实红保留；原字节边界核通过。准确head push/PR/hosted工作流待触发，不合integration。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -589,6 +589,21 @@
       "path": "agents/database/pool-default-candidate/backend-input.json",
       "kind": "实际GET Issue4 backend兼容输入",
       "status": "原文已读"
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "kind": "exact two default literals only",
+      "status": "candidate not production admitted"
+    },
+    {
+      "path": "tmp/backend/persistence/869_pool_defaults.py",
+      "kind": "root reserved real QueuePool synthetic behavior + actual lazy Settings composition",
+      "status": "10passed incloldredtarget; noHTTP/SQL/network"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/exact-diff.json",
+      "kind": "twoAST literals/allotherapp+frozen14+old993930955bytes",
+      "status": "exact pass"
     }
   ],
   "interfaces": [
@@ -859,9 +874,9 @@
     "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "产品两literal候选及869尚未实现/未运行",
-    "准确新源hosted全套/真实MySQLMQ故障/全生产分母/容器恢复/专审未完成",
-    "标准预算保留上界增加、partial峰改变和资源未知保留；非正式性能/盲测/生产准入"
+    "准确新candidate hosted product/docker workflows尚未触发/未完成，不能移植旧CI或ABBA",
+    "原9300本地collect-only；hosted实际JUnit待核，不改硬5+10历史guard",
+    "标准idle上界增加/partial峰改变/资源未知、原正式压力/源码超限/人工材料缺口仍在"
   ],
   "questions": [
     {
@@ -1040,7 +1055,7 @@
       "improvement_reason": "独立精确两常量候选/partial成本/历史不改/真实QueuePool行为与准确源CI，不借ABBA或改断言自证"
     }
   ],
-  "updated_at": "2026-10-23T23:19:29.744633+00:00",
+  "updated_at": "2026-10-23T23:22:12.642521+00:00",
   "publication": {
     "branch": "codex/database-pool-retention",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-retention",

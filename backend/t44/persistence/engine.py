@@ -29,8 +29,8 @@ class MySQLSettings:
     username: str
     password: str = field(repr=False)
     port: int = 3306
-    pool_size: int = 5
-    max_overflow: int = 10
+    pool_size: int = 15
+    max_overflow: int = 0
     pool_timeout: int = 10
     pool_recycle: int = 1800
     connect_timeout: int = 10
