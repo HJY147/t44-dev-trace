@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import TYPE_CHECKING, Protocol
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .commands import Command
@@ -182,29 +182,6 @@ class RollbackGate:
     def __post_init__(self) -> None:
         _positive_counter(self.delivery_cycle)
         _boolean_flags(self.approved, self.used_for_delivery)
-
-
-class GuardContext(Protocol):
-    """Trusted, already-loaded values; implementations must not perform I/O here.
-
-    Membership, roles, ownership and proof flags come from server-side policy checks,
-    never directly from client claims. The future facade resolves opaque references,
-    checks real evidence/template coverage, locks and then builds this context.
-    """
-
-    project_member: bool
-    roles: frozenset[ProjectRole]
-    actor_is_owner: bool
-    dependency_states: tuple[TaskState, ...]
-    cycle: Cycle
-    schedule_version: int
-    artifact_reference: str | None
-    latest_review_reference: str | None
-    approved_review_reference: str | None
-    review: ReviewGate | None
-    release: ReleaseGate | None
-    rollback: RollbackGate | None
-    validated_rework_plan_reference: str | None
 
 
 @dataclass(frozen=True, slots=True)

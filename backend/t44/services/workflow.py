@@ -33,7 +33,7 @@ from .codes import (
     STATE_TO_DOMAIN,
     Action,
 )
-from .common import model, page, plan_values, roles, task_model
+from .common import model, plan_values, roles, task_model
 from .errors import Rejected, require
 
 DOMAIN_ERRORS = {
@@ -250,13 +250,3 @@ class Workflow:
         c.before.append({"field": "state", "value": str(row["state"])})
         c.after.append({"field": "state", "value": str(changed["state"])})
         return {"task": task_model(changed), "decision": saved_decision}
-
-    def listTaskDecisions(self, g, c):
-        c.task(g)
-        return page(
-            g,
-            "decisions",
-            {"project_id": c.project_id, "task_id": c.path["task_id"]},
-            c.query,
-            lambda r: model("Decision", r),
-        )

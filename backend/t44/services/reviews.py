@@ -5,7 +5,7 @@ import json
 from importlib.resources import files
 
 from .codes import State
-from .common import model, page, task_model
+from .common import model, task_model
 from .errors import require
 
 _TEMPLATE_BYTES = files("t44").joinpath("resources/review-template.json").read_bytes()
@@ -66,16 +66,6 @@ class Reviews:
             "review": model("Review", g.get("reviews", identifier)),
         }
 
-    def listTaskReviews(self, g, c):
-        c.task(g)
-        return page(
-            g,
-            "reviews",
-            {"project_id": c.project_id, "task_id": c.path["task_id"]},
-            c.query,
-            lambda r: model("Review", r),
-        )
-
     def createReleaseAssessment(self, g, c):
         c.manager()
         row = c.task(g)
@@ -104,17 +94,12 @@ class Reviews:
             {
                 "project_id": c.project_id,
                 "task_id": row["id"],
-                "version": 1,
                 "schedule_version": row["schedule_version"],
                 "delivery_cycle": row["delivery_cycle"],
-                "status": 1,
                 "risks": c.body["risks"],
                 "rollback_plan": c.body["rollback_plan"],
                 "rollback_plan_version": last[0]["rollback_plan_version"] + 1 if last else 1,
                 "created_by": c.actor_id,
-                "reviewed_by": None,
-                "reviewed_at": None,
-                "review_reason": None,
                 "review_evidence": [],
                 "created_at": c.clock,
             },
@@ -124,16 +109,6 @@ class Reviews:
             "task": task_model(changed),
             "assessment": model("ReleaseAssessment", g.get("release_assessments", identifier)),
         }
-
-    def listReleaseAssessments(self, g, c):
-        c.task(g)
-        return page(
-            g,
-            "release_assessments",
-            {"project_id": c.project_id, "task_id": c.path["task_id"]},
-            c.query,
-            lambda r: model("ReleaseAssessment", r),
-        )
 
     def reviewReleaseAssessment(self, g, c):
         c.reviewer()

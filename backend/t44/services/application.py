@@ -10,8 +10,6 @@ from .reviews import Reviews
 from .tasks import Tasks
 from .workflow import Workflow
 
-EMPTY_LEASE = None
-
 _DICTIONARIES = {
     "task_states": "TaskState",
     "project_roles": "ProjectRole",
@@ -35,49 +33,49 @@ class Business(Projects, Tasks, Reviews, Workflow):
         self.notifications, self.escalations = notifications, escalations
 
     def status(self, operation):
-        return next(int(s) for s in OPERATIONS[operation]["responses"] if s.startswith("2"))
+        return OPERATIONS[operation]["success_status"]
 
     def dispatch(self, g, call):
+        collections = {
+            "listTaskDependencies": ("task_dependencies", "Dependency"),
+            "listTaskReviews": ("reviews", "Review"),
+            "listReleaseAssessments": ("release_assessments", "ReleaseAssessment"),
+            "listTaskDecisions": ("decisions", "Decision"),
+        }
+        if call.operation in collections:
+            call.task(g)
+            table, schema = collections[call.operation]
+            serialize = (
+                (lambda row: self.dependency_model(g, row))
+                if schema == "Dependency"
+                else (lambda row: model(schema, row))
+            )
+            return page(
+                g,
+                table,
+                {"project_id": call.project_id, "task_id": call.path["task_id"]},
+                call.query,
+                serialize,
+            )
         return getattr(self, call.operation)(g, call)
 
     def finalize(self, result, call):
-        schema = OPERATIONS[call.operation]["responses"][str(self.status(call.operation))][
-            "content"
-        ]["application/json"]["schema"]
-        envelope = SCHEMAS[schema["$ref"].split("/")[-1]]
-        data = envelope["properties"]["data"]
-        fields = (
-            SCHEMAS[data["$ref"].split("/")[-1]]["properties"]
-            if "$ref" in data
-            else data["properties"]
-        )
+        fields = OPERATIONS[call.operation]["data_fields"]
         if "audit_id" in fields:
             result["audit_id"] = call.audit_id
         return result
 
     def validate_data(self, operation, result):
-        schema = OPERATIONS[operation]["responses"][str(self.status(operation))]["content"][
-            "application/json"
-        ]["schema"]
-        envelope = SCHEMAS[schema["$ref"].split("/")[-1]]
-        require(not violations(envelope["properties"]["data"], result), "INTERNAL_ERROR")
+        require(not violations(OPERATIONS[operation]["data_schema"], result), "INTERNAL_ERROR")
 
     def outbox(self, c, project):
         return {
             "event_type": 1,
-            "schema_version": 1,
             "project_id": project,
             "task_id": c.path.get("task_id"),
             "payload": {"operation_id": c.operation, "request_id": c.request_id},
             "recipients": [],
-            "status": 1,
-            "attempts": 0,
             "next_attempt_at": c.clock,
-            "lease_token": EMPTY_LEASE,
-            "lease_until": None,
-            "confirmed_at": None,
-            "fallback_at": None,
-            "last_error_code": None,
             "created_at": c.clock,
             "updated_at": c.clock,
         }

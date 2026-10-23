@@ -122,3 +122,6 @@
 - 全source=backend/t44，无omit/覆盖率排除：2746语句，2317已覆、429未覆，行84.38%；coverage报告含分支综合81.16%。此运行有真实失败/skip，不能说全局门禁通过。原始integration-full-first.log/xml、integration-coverage-first.json/log保留。
 - 新HTTP错误分支原始首轮34pass1fail：自依赖预期409是本岗测试错，冻结实际为422，已修预期未改服务/契约。该首轮错误保留integration-http-errors-first.log；修正后的用例进入上述全量运行。
 - 根转达用户要求测试统一迁入tmp/并按创建顺序999递减命名；本checkpoint先提交现有测试/证据，暂停编辑测试文件，待root机械迁移SHA后merge并更新运行命令，断言不删。
+- 完整基线＋DB e06修复＋本岗实际去重后，全量第二次314 passed、3本机Rabbit未配置skip、0失败，integration-full-second.log/xml；全t44行2391/2724=87.78%，含分支综合85.36%。CLI子进程未纳coverage，未通过缩小source/omit提高分母。仍不能把本机skip当CI真实MQ通过。
+- 实际去重：唯一TransitionContext替代无运行调用的重复Protocol字段；4个任务子记录分页共用同一处理；成功Schema每operation加载时解析一次；移除临时可选组件加载器并支持显式None DI；仅SQL已冻结默认值/可空值不重复初始化，未删状态/权限/证据/事务守卫。净删82行（按git物理diff，不冒充cloc最终值）。配置失败统一映射PersistenceUnavailable，实际无DB TestClient得503 AUDIT_UNAVAILABLE/null，避免拒绝审计再次抛业务异常逃逸。
+- Bandit首次把审计码表TOKEN_EXPIRED=3/TOKEN_REVOKED=4误报硬编码口令，原integration-reduction-bandit.log保留；改为同样显式稳定DB码→字符串表，反向按显式值构造，无抑制/降低规则，最终退出0。
