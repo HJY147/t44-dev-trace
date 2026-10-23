@@ -3,7 +3,7 @@
 from uuid import uuid4
 
 import pytest
-from t44.contracts import OPERATIONS, violations
+from t44.contracts import OPERATIONS, SPEC, violations
 from t44.services.reviews import TEMPLATE
 
 pytestmark = pytest.mark.contract
@@ -1748,3 +1748,54 @@ def test_capacity_v11_keeps_original_guard_precedence(application, case, code, s
             expect=status,
         )
     assert response.json()["code"] == code and response.json()["audit_id"] is not None
+
+
+@pytest.mark.parametrize("category", [1, 2, 3])
+def test_contract_validation_keeps_candidate_schema_version_separate_from_envelope(
+    application, category
+):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    candidates = {
+        1: {
+            "title": "Synthetic readonly registration",
+            "owner_id": 2,
+            "iteration_id": iid,
+            "plan": PLAN,
+            "dependency_task_ids": [],
+        },
+        2: {"expected_version": task["version"], "action": 1},
+        3: assessment_payload(task),
+    }
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table)
+            for table in ("tasks", "audit_events", "outbox_events", "idempotency_requests")
+        }
+    response = request(
+        client,
+        "validateContractPayload",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "category": category,
+            "payload": candidates[category],
+            **({"task_id": task["id"]} if category != 1 else {}),
+        },
+        expect=200,
+    )
+    result = response.json()
+    assert result["data"]["valid"] is True
+    assert result["data"]["business_guards_executed"] is False
+    assert result["data"]["category"] == category
+    assert (
+        result["data"]["schema_version"]
+        == SPEC["components"]["schemas"]["ContractValidationResult"]["properties"][
+            "schema_version"
+        ]["const"]
+    )
+    assert result["meta"]["contract_version"] == SPEC["info"]["version"]
+    with factory() as uow:
+        assert before == {table: uow.gateway.count(table) for table in before}
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]

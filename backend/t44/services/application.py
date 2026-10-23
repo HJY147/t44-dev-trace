@@ -1,6 +1,6 @@
 """Application facade. Component owners are injected; no alternate storage is created."""
 
-from t44.contracts import OPERATIONS, VERSION, violations
+from t44.contracts import OPERATIONS, violations
 
 from .codes import ERROR_CODES, Action
 from .common import SCHEMAS, model, page, plan_values
@@ -105,6 +105,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
         return result
 
     def validateContractPayload(self, g, c):
+        """Report the candidate Schema version independently from the envelope version."""
         category, payload = c.body["category"], c.body["payload"]
         if "task_id" in c.body:
             task = g.get("tasks", c.body["task_id"])
@@ -121,7 +122,9 @@ class Business(Projects, Tasks, Reviews, Workflow):
                 2: "transitionTask",
                 3: "createReleaseAssessment",
             }[category],
-            "schema_version": VERSION,
+            "schema_version": SCHEMAS["ContractValidationResult"]["properties"]["schema_version"][
+                "const"
+            ],
             "business_guards_executed": False,
         }
 
