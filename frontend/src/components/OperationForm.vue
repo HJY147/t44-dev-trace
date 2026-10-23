@@ -35,9 +35,8 @@ async function submit(checkOnly = false): Promise<void> {
     const result = await request(props.operation, props.params, {}, draft.value, intent.value)
     workspace.notice = `${title.value}已完成${result.meta.replayed ? '（原请求结果已确认）' : ''}，正在读取最新记录。`
     await props.saved(asRow(result.data))
-    const task = asRow(asRow(result.data).task)
     const action = props.operation === 'transitionTask' ? display(asRow(draft.value).action, 'action') : title.value
-    workspace.notice = `${action}已完成${task.state ? '，任务现为' + display(task.state, 'state') : ''}${result.meta.replayed ? '（同一操作结果已确认）' : ''}，最新记录已刷新。`
+    workspace.notice = result.meta.replayed ? `${action}的历史结果已确认，最新记录已刷新。请以详情中的当前状态为准。` : `${action}已完成，最新记录已刷新。`
     emit('close')
   } catch (cause) {
     failure.value = cause instanceof ApiError ? cause : new ApiError(0, { message: '最新记录暂时无法读取，请刷新确认。' })

@@ -57,3 +57,12 @@
 - 生产bundle约823kB（gzip约162kB），构建有>500kB提示，未调大警告阈值掩盖；后续可分块优化。本轮按总协调要求先交付并结束，消息/升级接好后另回归。
 - 实际阶段评论：#2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6360887040；#3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359801743。正文和最终PR说明已保存在本岗目录。提交前逐文本扫描确认无真实账号口令字面量；未读取独立测试内部资料。
 - 提交前diff --check实际因命令原始输出的尾空格/EOF空行拒绝，第一次commit未执行；随后一次push只同步了既有整合基线。现将所有application日志原始字节压入application-raw-logs/并记录SHA256，文本版仅去尾空白便于Git检查，失败内容未删除；代码/断言未放宽。
+
+## 2026-10-23T17:52:30+08:00｜ROLE-frontend-INTEGRATION-v1｜UI 缺陷 checkpoint
+- 工作树干净后安全 fast-forward 合入 codex/integration ff83bc98b27d0e671a8d000cfd72c29b27dea669；未读取独立测试内部内容。
+- 总协调正式转交审核 C-P1/C-P2 后，仅只读获准959复现脚本/日志，不修改审核用例。旧错误flattened迭代fixture由Git历史保留；新fixture通过冻结Iteration验证，增加迭代完整plan/容量预填与下拉名称、重放历史结果回归。修复前24项中3失败21通过，原始gzip与可读日志integration-ui-regression-before保留。
+- 产品修复：changeIteration读取record.plan；迭代下拉与记录标题读取plan.name；重放完成提示明确历史结果，以详情当前状态为准，不用历史snapshot冒充当前状态。
+- 首次修复后新增表单提交测试遗漏必填reason/evidence而失败（23通过1失败），记录integration-ui-regression-fixed；补真实必填交互后复跑，未降低断言。
+- documentation M2真实问取：当前最终发布SHA、模块报告/handoff、页面/真实API、模块测试、debug证据、缺口及tmp迁移路径。实际短答：已发布bd13414b92ac56faea010463b03ab74b2a01e52c，报告reports/modules/frontend.md、交接records/handoffs/frontend.json；21项92.21%，七态真API已跑，通知/升级当时503待补；测试已迁tmp/frontend/998、983、982与981，浏览器984；本轮fast-forward ff83但尚无新增提交。该短答为当时事实，通知接入与新测试以后续证据为准。
+- 当前仍待：完整后端通知/升级/审计浏览器回归与真冗余CSS清理；本checkpoint不宣称此两项已完成。
+- 最终 pnpm test:coverage：24/24通过，完整src 19文件行92.19%(307/333)、分支86.76%、函数83.78%；pnpm build含vue-tsc通过，保留bundle>500kB提示。原始输出gzip及可读日志integration-ui-regression-final/integration-ui-build。

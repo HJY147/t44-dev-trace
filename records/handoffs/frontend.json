@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "完整业务前端与真实MySQL浏览器联调",
-  "implementation_status": "人类可见前端已实现；通知/升级真实后端待接入",
+  "stage": "完整后端接入收尾：正式UI缺陷checkpoint",
+  "implementation_status": "业务前端已实现；迭代嵌套plan/重放提示修复，自测与真实通知回归分开",
   "artifacts": [
     {
       "path": "frontend/",
@@ -58,6 +58,26 @@
     {
       "path": "agents/frontend/application-screenshots/",
       "status": "1440/390真实截图"
+    },
+    {
+      "path": "tmp/frontend/981_fixtures.ts",
+      "status": "冻结Iteration嵌套结构；原错误结构在Git历史保留"
+    },
+    {
+      "path": "tmp/frontend/982_client.test.ts",
+      "status": "冻结plan预填与schema回归"
+    },
+    {
+      "path": "tmp/frontend/983_application.test.ts",
+      "status": "实际组件交互及历史重放回归"
+    },
+    {
+      "path": "agents/frontend/integration-ui-regression-before.log",
+      "status": "修复前真实3失败21通过；对应raw gzip留存"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "status": "实际派工和正式缺陷转交原文"
     }
   ],
   "interfaces": [
@@ -192,6 +212,14 @@
     {
       "command": "Node application-real-browser.mjs with PLAYWRIGHT_MODULE and DEMO_CREDENTIALS env",
       "result": "真实浏览器→18080→MySQL，282 HTTP，七态+返工；pageerror0，33资源console错误为403/503；不输出凭据"
+    },
+    {
+      "command": "pnpm test (new regression before fix)",
+      "result": "24项3失败21通过，原始失败保留"
+    },
+    {
+      "command": "pnpm test:coverage; pnpm build (separate processes)",
+      "result": "24/24，完整src行92.19%、分支86.76%、函数83.78%，类型/构建通过"
     }
   ],
   "results": [
@@ -259,9 +287,19 @@
         "records/handoffs/frontend.json"
       ],
       "improvement_reason": "从骨架推进真实契约业务，并明确模块夹具/真MySQL联调/独立验收边界；凭据不进入产物。"
+    },
+    {
+      "id": "ROLE-frontend-INTEGRATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "tmp/frontend/",
+        "agents/frontend/integration-*"
+      ],
+      "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
     }
   ],
-  "updated_at": "2026-10-23T16:33:20+08:00",
+  "updated_at": "2026-10-23T17:52:30+08:00",
   "delivery": {
     "branch": "codex/frontend-app",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",

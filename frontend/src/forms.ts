@@ -12,7 +12,7 @@ export function presets(operation: string, record: Row = {}, task: Row = {}): Ro
   if (operation === 'changeTaskPlan') return { ...base, plan: task.plan! }
   if (operation === 'changeTaskAssignment') return { ...base, owner_id: task.owner_id! }
   if (operation === 'changeProjectMember') return { ...base, roles: record.roles! }
-  if (operation === 'changeIteration') return { ...base, plan: Object.fromEntries(Object.keys(schemas.IterationCreate!.properties!).map((key) => [key, record[key]!])) }
+  if (operation === 'changeIteration') return { ...base, plan: record.plan! }
   if (operation === 'createTaskReview') return { ...base, template_version: workspace.template.version ?? null, artifact_revision: task.artifact_revision ?? '', sections: asArray(workspace.template.sections).map(asRow).map((s) => ({ section_id: s.section_id!, content: '', evidence: [] })), checklist: asArray(workspace.template.items).map(asRow).map((s) => ({ item_id: s.item_id!, judgment: null, rationale: '', evidence: [] })) }
   if (operation === 'createReleaseAssessment') return { ...base, risks: options('perspective').map((p) => ({ ...asRow(initial(schemas.RiskItem!)), perspective: p.value! })) }
   if (operation === 'reviewReleaseAssessment') return { ...base, expected_assessment_version: record.version! }

@@ -7,7 +7,7 @@ import { workspace } from '../../frontend/src/workspace'
 export const user: Row = { id: 1, username: 'fixture-user', display_name: '夹具用户' }
 export const project: Row = { id: 1, name: '夹具项目', description: '仅模块测试使用', version: 1, my_roles: [1, 2, 3], created_by: 1, created_at: '2026-10-23T00:00:00Z' }
 export const plan: Row = { planned_start: '2026-10-23T00:00:00Z', planned_end: '2026-10-24T00:00:00Z', estimated_hours: 8, buffer_hours: 2, delay_contingency: '由经理记录新计划与依据' }
-export const iteration: Row = { id: 1, project_id: 1, version: 1, name: '夹具迭代', ...plan, capacity: [{ user_id: 1, available_hours: 8 }] }
+export const iteration: Row = { id: 1, project_id: 1, version: 3, plan_version: 2, plan: { name: '夹具迭代', planned_start: plan.planned_start!, planned_end: plan.planned_end!, buffer_hours: 2, delay_contingency: '由经理记录新计划与依据', capacity: [{ user_id: 1, available_hours: 8 }] }, created_at: '2026-10-23T00:00:00Z', updated_at: '2026-10-23T00:00:00Z' }
 export const member: Row = { user, project_id: 1, roles: [1, 2, 3], version: 1, active: true }
 export const task: Row = { id: 1, project_id: 1, iteration_id: 1, title: '夹具交付任务', description: '可追踪 fetch 夹具，不是后端数据', owner_id: 1, state: 2, version: 1, schedule_version: 1, delivery_cycle: 1, review_cycle: 1, plan, blocked_from_state: null, block_reason: null, responsibility_stage: null, latest_review_id: null, approved_review_id: null, approved_assessment_id: null, approved_assessment_version: null, escalation_count: 0, created_at: '2026-10-23T00:00:00Z', updated_at: '2026-10-23T00:00:00Z', artifact_revision: 'a'.repeat(40) }
 export const evidence: Row = { kind: 3, locator: 'https://example.com/evidence', description: '模块测试证据' }

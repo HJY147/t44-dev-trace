@@ -14,7 +14,7 @@ const id = computed(() => 'field' + props.path.replaceAll('/', '-'))
 const locked = computed(() => part.value.const !== undefined || ['expected_version', 'expected_assessment_version', 'template_version', 'section_id', 'item_id', 'perspective'].includes(props.name))
 const choices = computed(() => {
   if (['owner_id', 'user_id', 'responsible_user_id'].includes(props.name)) return workspace.members.filter((m) => m.active).map((m) => ({ value: asRow(m.user).id, label: asRow(m.user).display_name }))
-  if (props.name === 'iteration_id') return workspace.iterations.map((i) => ({ value: i.id, label: i.name }))
+  if (props.name === 'iteration_id') return workspace.iterations.map((i) => ({ value: i.id, label: asRow(i.plan).name }))
   return options(props.name)
 })
 const localTime = computed(() => { const time = new Date(String(props.modelValue)).getTime(); return props.modelValue && Number.isFinite(time) ? new Date(time + 8 * 3600_000).toISOString().slice(0, 16) : '' })
