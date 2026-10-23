@@ -31,3 +31,5 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M5-REPORTS-v1；Refs #9
 - 原M5正文/三图作者为上一文档AI实例；本次AI /root/documentation_checkpoint仅在root报告网络中断后恢复核对、提交推送与公开交流，不冒充学生或原渲染操作者。
 - 亲核70来源/14冻结/30函数源码/6成图hash、164相对链接及责任scope均通过；M5-validation记范围。未重渲染、未重新看图、未导Word、未执行产品。
 - PR24经GET已合并M4，本轮M5是独立codex/reports-m5检查点。后续Word可读排版（尤其宽导航图）、学生最终研究、真实人工证据、规模/性能/完整验收继续待办。
+
+- 恢复已实际push e70d219，Issue9/PR24两评论精确ID GET与保存正文一致；回执在本岗github-M5-checkpoint-readback.json。完整6ba→index空白检查修正后通过，首个暂存空行失败和shell继续提交错误已保留，非产品缺陷。阶段结束释放，最终收据SHA以Git HEAD为准。

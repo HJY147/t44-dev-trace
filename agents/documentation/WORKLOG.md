@@ -239,3 +239,13 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1是本次恢复摘要而非伪造用户原话/同族六版；M5-validation公开记录本实例实际核对边界。阶段提交和交流读回在后条记录。
 
 - 实际首个checkpoint 56c2a1b72fe3b11755e31864d23261c61d790111已commit/push。暂存检查首次发现M5-diagrams末尾多一空行（exit2）；此前tracked-only diff未包含新文件。shell后续独立行仍运行commit，是本恢复实例检查编排错误，保留失败而不冒称全过。仅删除该多余空行，随后对6ba→完整index再检查，公开来源/图hash不变。
+
+
+## 2026-10-24T03:19:05.359289+08:00 M5 恢复实际发布及释放
+
+- e70d219a5cfa7333c26b761c80e4648151e9f659修正提交已push；完整6ba→index空白及37责任文件范围检查实际通过。首批56c2a1b保留，未重写已推历史。
+- 本实例经GitHub插件实际发布Issue9评论6372845257与既有PR24评论6372846583；随后对两个精确ID各GET读回，正文与保存副本逐字一致，URL见github-M5-checkpoint-readback.json。
+- PR24是已合并M4，本轮M5没有新建/合并PR、不APPROVE、不发布success状态；这两个评论不构成审核通过。
+- 本笔只保存实际发布回执和交接，不再扩写/看图/渲染/导Word或运行产品。最终收据commit由Git HEAD确定，完成push与远端核实后释放本岗索引/槽位。
+
+- 收据阶段暂存检查另发现新评论副本末尾空行exit2，这次set-e正确阻止commit；仅删副本多余空行，公开已发布正文和GET原文不改。该格式差异不影响评论读回逐字校验；副本采用单末尾换行。

@@ -66,6 +66,22 @@
     {
       "path": "docs/reports/M5-validation.json",
       "status": "本岗技术报告/来源/过程"
+    },
+    {
+      "path": "docs/reports/diagrams/M5-render-manifest.json",
+      "status": "M5图/恢复实际记录/公开协作回执"
+    },
+    {
+      "path": "agents/documentation/prompts/ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1.md",
+      "status": "M5图/恢复实际记录/公开协作回执"
+    },
+    {
+      "path": "agents/documentation/github-M5-checkpoint-comment.md",
+      "status": "M5图/恢复实际记录/公开协作回执"
+    },
+    {
+      "path": "agents/documentation/github-M5-checkpoint-readback.json",
+      "status": "M5图/恢复实际记录/公开协作回执"
     }
   ],
   "interfaces": {
@@ -134,10 +150,18 @@
   "delivery": {
     "branch": "codex/reports-m5",
     "base_content": "6ba9f94",
-    "stage": "恢复核对通过；准备M5独立分支commit/push和Issue9/已合并M4 PR24补充评论",
-    "Word": "待稳定截止单独恢复，不丢弃M4四私密审阅稿"
+    "stage": "M5 checkpoint e70d219已push；Issue9/已合并M4 PR24实际评论并GET正文一致；仅补公开回执后释放",
+    "Word": "待稳定截止单独恢复，不丢弃M4四私密审阅稿",
+    "checkpoint_commit": "e70d219a5cfa7333c26b761c80e4648151e9f659",
+    "original_content_commit": "56c2a1b72fe3b11755e31864d23261c61d790111",
+    "comment_urls": [
+      "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6372845257",
+      "https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6372846583"
+    ],
+    "readback": "exact ID GET bodies match saved comment",
+    "final_receipt_commit": "resolved from branch Git HEAD; not self-referentially embedded"
   },
-  "updated_at": "2026-10-24T03:16:41.873244+08:00",
+  "updated_at": "2026-10-24T03:19:05.359289+08:00",
   "recovery": {
     "operator": "AI /root/documentation_checkpoint",
     "previous_author": "previous documentation AI instance",
@@ -146,6 +170,6 @@
     "fresh_render_or_visual_inspection": false,
     "student_authored": false,
     "GitHub_PR24": "M4 already merged; M5 checkpoint separate branch",
-    "stage": "verified; preparing own commit/push and Issue9/PR24 comments"
+    "stage": "complete; commit/push and exact comment GET readback done; final receipt commit follows"
   }
 }
