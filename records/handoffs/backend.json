@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "A implemented with real caller compatibility; targeted evidence complete, exact new source CI pending",
-  "implementation_status": "onlyruntime.py changed from5dcb;3to2UoW with original3auth/SELECT;14freeze/B/C preserved",
+  "stage": "A source7584 exactCI437passed archived; draftPR29, dedicatedCOMMENTreview pending",
+  "implementation_status": "onlyruntime.py A+realcaller compatibility;14freeze/B/C preserved; no performance/size acceptance",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -1340,7 +1340,36 @@
     "database": "t44_test isolated fixtures only; no performance samples",
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344",
     "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804",
-    "CI": "pending exactnewsource once",
-    "next": "commit product, merge latestroot safely, push once and report exactCI metadata; no performance or Issue28 mixed"
+    "CI": {
+      "summary": "agents/backend/preflight-ci-summary.json",
+      "source": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+      "run": 40012517513,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40012517513",
+      "status": "all4jobs success",
+      "tests": 437,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "markers": {
+        "contract": 139,
+        "integration": 84,
+        "fault": 17
+      },
+      "marker_counts_overlap": true,
+      "files": 43,
+      "excluded_lines": 0,
+      "line": "2558/2878=88.881167%",
+      "branch": "612/778=78.663239%",
+      "archive": "agents/backend/preflight-ci-40012517513",
+      "source_count": 6108,
+      "within_range": false
+    },
+    "next": "root dedicated review and integration; Issue28 separate design-only branch, no performance without window",
+    "PR29": "https://github.com/HJY147/t44-dev-trace/pull/29",
+    "actual_review_target": "review_backend_preflight COMMENT on7584, not oldreviewer_v11_implementation",
+    "old_PR16": "history only; not forceupdated",
+    "CI_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698",
+    "CI_PR": "https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190",
+    "metadata_commit_scope": "evidence-only [skip ci] permitted byroot; production/tests/config byteidentical7584"
   }
 }

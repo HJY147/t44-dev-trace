@@ -1,0 +1,134 @@
+{
+  "archived_at": "2026-10-23T19:44:31.906825+00:00",
+  "run_id": 40012517513,
+  "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40012517513",
+  "source_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+  "product_checkpoint": "153b9c8c72acc76c5295ae3890236a2ac279b476",
+  "design_erratum": "5a19f80f314f13f66eb0ece8f23f3db1d4abd381",
+  "jobs": {
+    "static": "success",
+    "frontend": "success",
+    "coverage": "success",
+    "contracts": "success"
+  },
+  "junit": {
+    "tests": 437,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "markers": {
+    "contract": {
+      "tests": 139,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "tests": 84,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "fault": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "marker_counts_overlap": true,
+  "production_python_files": 43,
+  "files_equal_git_production_set": true,
+  "coverage_totals": {
+    "covered_lines": 2558,
+    "num_statements": 2878,
+    "percent_covered": 86.70678336980306,
+    "percent_covered_display": "86.71",
+    "missing_lines": 320,
+    "excluded_lines": 0,
+    "percent_statements_covered": 88.88116747741488,
+    "percent_statements_covered_display": "88.88",
+    "num_branches": 778,
+    "num_partial_branches": 108,
+    "covered_branches": 612,
+    "missing_branches": 166,
+    "percent_branches_covered": 78.66323907455013,
+    "percent_branches_covered_display": "78.66"
+  },
+  "coverage_percent": {
+    "line": 88.88116747741486,
+    "branch": 78.66323907455013
+  },
+  "selected_originals": [
+    {
+      "source": "run.json",
+      "archive": "agents/backend/preflight-ci-40012517513/run.json.gz",
+      "bytes": 18568,
+      "sha256": "817cf64b0c77abea777f9b7cdc0cda8cc92cc0dcd920a9ed28d1eca0ff640b17",
+      "gzip_sha256": "eb9867c932c60bb8c0e485dfcfa9a4d0678dda283b0be972998b9b753128f9c2"
+    },
+    {
+      "source": "artifacts/coverage-7584cd31f0abfd6727d552b5fef31a9303247d58/coverage/coverage.json",
+      "archive": "agents/backend/preflight-ci-40012517513/coverage.json.gz",
+      "bytes": 320335,
+      "sha256": "80ce2dad4395153af93a2308c4269c30d1a53ba736b82493c458fb7012ccdb32",
+      "gzip_sha256": "05a9549d8275b376a5965e76274fd7d6f4845512f1e2a609a83a176d4b17179c"
+    },
+    {
+      "source": "artifacts/coverage-7584cd31f0abfd6727d552b5fef31a9303247d58/coverage/junit.xml",
+      "archive": "agents/backend/preflight-ci-40012517513/junit.xml.gz",
+      "bytes": 1113364,
+      "sha256": "708dd1f6e8fe6982b1d8ca96771d53b03c2ae0831983e96dfdefdaea9d65a502",
+      "gzip_sha256": "b8e05d6420abb82f59a89df9307b47391433550a0895930584958af6fff3fd6e"
+    },
+    {
+      "source": "artifacts/coverage-7584cd31f0abfd6727d552b5fef31a9303247d58/coverage/gate.json",
+      "archive": "agents/backend/preflight-ci-40012517513/coverage-gate.json.gz",
+      "bytes": 703,
+      "sha256": "f64997200647dc21620cfa0cea9f432e548d0892bd8ec443f2b39d848dbca753",
+      "gzip_sha256": "921178308161574ded1607f8255e910296816184d83dbd83e10d054afeb2ff48"
+    },
+    {
+      "source": "artifacts/contracts-7584cd31f0abfd6727d552b5fef31a9303247d58/contracts/gate.json",
+      "archive": "agents/backend/preflight-ci-40012517513/contract-gate.json.gz",
+      "bytes": 243,
+      "sha256": "0cd723ceace28e0097e5258e8ffb9da0df1576429f4ce4a9be443ddb1fe365ce",
+      "gzip_sha256": "7e46ee09bd3356795a2d32f736fba1868bf9dc2d11290e4f5760d54016ac46de"
+    },
+    {
+      "source": "artifacts/contracts-7584cd31f0abfd6727d552b5fef31a9303247d58/contracts/contract.xml",
+      "archive": "agents/backend/preflight-ci-40012517513/contract.xml.gz",
+      "bytes": 1068053,
+      "sha256": "ed03d3576bb7f86cbd84a8c8434638d57cf1f3ab69ed22e1382a8a47b0c7366b",
+      "gzip_sha256": "8f68533e671b73b845770168f7b094642453b1ea44874564a63f6542623f15bf"
+    },
+    {
+      "source": "artifacts/contracts-7584cd31f0abfd6727d552b5fef31a9303247d58/contracts/integration.xml",
+      "archive": "agents/backend/preflight-ci-40012517513/integration.xml.gz",
+      "bytes": 11632,
+      "sha256": "93013227eefbcb3ed9ad810691700934d7f35eac6bd8d1ba2f852eb5cb7f067f",
+      "gzip_sha256": "02932f253af44873631c574afec49435caf88cb3949624981cdffafe9cea7020"
+    },
+    {
+      "source": "artifacts/contracts-7584cd31f0abfd6727d552b5fef31a9303247d58/contracts/fault.xml",
+      "archive": "agents/backend/preflight-ci-40012517513/fault.xml.gz",
+      "bytes": 2588,
+      "sha256": "aea5acc89ff973fffe289d09b2b0b40803a96328a435d1e581f8d26caed40f09",
+      "gzip_sha256": "c9f92b517e484cda3287dff09a5212fafcca547a082d4e8e3e63dc7f4f1a74d4"
+    }
+  ],
+  "full_download_location": "ignored private runtime, not republished wholesale",
+  "source_count": {
+    "file": "agents/backend/preflight-source-count.json",
+    "application_code": 6108,
+    "within_range": false,
+    "A_delta": 6
+  },
+  "limits": [
+    "Exactsource developmentCI,not independentcode review/blackbox acceptance",
+    "no performance load/latency gain measured",
+    "source-size3500-5100notpassed",
+    "futureevidence-onlyHEADmustnotbeclaimedasdistinctfullytestedproductsource"
+  ]
+}

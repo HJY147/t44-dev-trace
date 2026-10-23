@@ -329,3 +329,12 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 新源码严格Ruff/格式/Bandit通过、14hash一致；原日志/XML已检查已知DB口令/opaqueBearer匹配0。preflight-validation-summary.json区分各源/各阶段而非把25绿移植为当前完整整合通过。原Starlette TestClient弃用警告保留，不借此升级依赖。
 - root最新组合基准6102超上限1002（其树9560），A+6尚待合根后精确重数；不拿本岗较旧6051作当前组合通过。新全量CI/独立审核/验收/正式性能/规模均待，完整CI只在新源push后启动一轮。
 - 真实阶段Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804，正文preflight-implementation-github-comment.md。
+
+## A精确新源CI与单独草稿PR29
+
+- 产品commit153b9c8c72acc76c5295ae3890236a2ac279b476；安全合根499a2a后精确7584cd31f0abfd6727d552b5fef31a9303247d58一次push，product40012517513四job全success。原JUnit437/0失败/0错误/0跳过；markers contract139/integration84/fault17各自通过（重叠）。全43个生产文件集合精确等于Git，excluded0，行2558/2878=88.881167%，分支612/778=78.663239%。不为此再跑本地/旧全套或负载。
+- 选定8份原coverage/JUnit/marker/gate/run压缩原件、raw及gzip SHA和MCP artifact/job metadata归档preflight-ci-40012517513、preflight-ci-summary.json。完整下载保留ignored私密运行目录；GitHub connector取得远端文件引用后，需落本机目录时使用gh原artifact下载，无独立材料。6108固定cloc报告preflight-source-count.json绑定7584，仍超5100计1008；源码A净+6，旧减1结论已撤回。
+- root指出旧PR16的head仍backend-core056，不能靠COMMENT假绑定新实现。按要求新建并attach草稿PR29 https://github.com/HJY147/t44-dev-trace/pull/29，base codex/integration/head当时7584；正文绑定153产品/5a勘误/完整原失败与CI边界。旧PR16仅加转移通知，不强推/改head。新源仅允许专职COMMENT，不自APPROVE/main合并或全局验收通过。
+- 尝试给历史旧frontend/reviewer_v11_implementation id发设计/PR消息均工具返回agent thread limit reached，未送达；root纠正当前frontend_logout/review_backend_preflight后已送达正确实例，前端已真实回复Issue28字段需求。不是对方拒绝或已完成旧消息；失败过程保留。Issue28仅public report/Issue/本方源静态分析，无产品改动，另阶段设计。
+- 本次后续纯证据commit经root明确允许[skip ci]：无生产/测试/配置变化，避免重复完整CI；7584才是437精确源，metadata新HEAD不冒充另一次测试。当前严格14hash保持，仍未独立审核/黑盒复验/正式性能/规模通过。
+- CI归档真实Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698、PR29 https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190；PR16历史cutoff https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373352606。

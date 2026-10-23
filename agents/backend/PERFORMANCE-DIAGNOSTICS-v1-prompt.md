@@ -119,3 +119,11 @@ root已读RFC原文（8cdfc9b2...）、审核岗限定设计意见，准入仅va
 窄修正7pass与CAS测试隔离耦合1fail分类收到。你本岗985允许把校验范围限定到该CAS场景实际发出的两次请求（优先两个实际Idempotency-Key/唯一请求标识，并同时验证两条response_request_id对应实际HTTP；不要只筛出想要的状态再数）。保留恰2条完成快照、成功/拒绝业务断言、原角色/operation匹配；保留原7绿1红，不清共享表、不靠顺序或删断言。按plan先→CAS后2项验证隔离修正合理，再一次新源CI。source当前root9560新实数6102超5100计1002，A+6将再增6；报告真实写，不凑指标。
 
 对应：原985作用域收紧为实际两keys、返回状态随后断言全2，request_id集合对应HTTP，原竞争成功/409拒绝等断言保留；2项通过，不改DB988/调度原文件。
+
+### 新PR绑定与纯证据提交实际指令（原文）
+
+审核岗发现PR16当前head仍backend-core056/basebootstrap，并未绑定7584，新实现只是COMMENT叙述。请在本岗CI400125终态之后，为codex/backend-runtime-plan→codex/integration新建单独草稿PR（别改旧PR16 head强推；旧PR保留历史），正文精确7584/153/设计5a和原caller红绿、+6/6108、CI边界、AI修正非学生操作。已有同head PR则更新该PR。告诉审核岗及我新PR号，他在精确7584上COMMENT，不许APPROVE。新证据commit可在CI终态后提交，明确产品源链和app字节未变。
+
+允许纯证据commit [skip ci]（只报告/原件/计数/日志，无生产/测试/配置变化），明确7584才是完成437测试的精确源，metadata新HEAD不冒充CI新源。保持draft/不global stage成功；此举也不视为main可合并。前端28需求已真实对接很好，等设计-only阶段提交后给根准入；root可快速审。当前rootcd02297只添新独立中性包与883–874编号，不碰source。
+
+对应：全CI终态后创建/attach PR29，MCP/gh原件核对后最小证据提交；437精确source7584单独记录、应用/测试/配置均不变，不将metadata HEAD称另测，不碰独立私密/中性新包。
