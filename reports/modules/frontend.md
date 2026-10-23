@@ -1,58 +1,49 @@
-# 前端模块初始化报告
+# 前端模块报告｜工程基础阶段
 
-## 任务与依据
-- 岗位：frontend；阶段：团队建立与设计准备；业务代码未实现。
-- 依据：AGENTS.md、docs/collaboration/team.md、docs/collaboration/report-template.md。
-- 原始需求：specs/sources/T44-taskbook.txt、submission-notes.txt、homework-requirements.txt。
-- 对应 FR-01、03～07；重点支撑 AC-01、03～06、07 的界面与交互，不能代替验收。
-- 本文全部页面、字段与行为为未冻结草案；接口冻结前不得联调。
+## 状态与依据
+- 实际派工：ROLE-frontend-FOUNDATION-v1；新授权覆盖初始化仅设计限制，不覆盖他岗边界。
+- 工作树：.agent-worktrees/frontend；分支 codex/frontend-app；基点 b893353c9bcf45e833f70f56bf6f72025f611271。
+- 已实现：可安装/构建的 Vue 3 + TypeScript + Element Plus 工程、留痕工作台与七个页面入口骨架。
+- 未实现：身份与业务数据接入、项目/任务/排期/评审发布/通知/审计的业务操作。
+- 契约与DDL仍在审核；未收到总协调冻结消息，未进入API联调。
+- 已读本树AGENTS、TASK、requirements、business-rules v1、contracts两件、backend-design，根D003与implementation-layout。
+- 本轮只支撑前端工程与交互基础，不将FR/AC业务要求记为完成。
 
-## 职责与实际产物
-- 长期负责 frontend/ 下 Vue 3 + TypeScript + Element Plus 页面、交互和前端必要自测。
-- 本轮只创建 agents/frontend/WORKLOG.md、reports/modules/frontend.md、records/handoffs/frontend.json。
-- 未创建 frontend/ 项目、组件、API 客户端、测试或依赖；无可运行前端入口。
-- AI 执行设计整理和文件写入；未发生用户审定、用户改码或业务决策。
+## 代码及页面责任
+- frontend/package.json、pnpm-lock.yaml：真实依赖与精确版本；Node24、pnpm11.25.0。
+- frontend/vite.config.ts、tsconfig.json：严格TypeScript、Vue单文件组件、生产输出dist。
+- frontend/src/App.vue、components/SidebarNavigation.vue：桌面侧栏、手机抽屉、访问说明、正文跳转与键盘焦点。
+- frontend/src/navigation.ts、router.ts：工作台、项目、交付任务、迭代排期、评审发布、通知与审计路由，以及404。
+- frontend/src/views/WorkspaceView.vue：真实未连接态、无数据表格、禁用数据操作；没有示例任务或虚构统计。
+- frontend/src/components/DataState.vue：区分未连接、空、加载与失败；403不提供重复访问按钮，409只发出刷新记录事件。
+- frontend/src/styles.css：冷静蓝与浅色工作区、少量暖色连接提示、响应式布局和reduced-motion。
+- frontend/README.md：安装、开发、类型检查、构建及部署边界；产品界面不展示agent或技术栈细节。
 
-## 页面责任草案
-- 鉴权与项目入口：登录、参与项目切换；可见数据和项目权限由后端判定。
-- 流程登记与契约视图：展示三类接口输入输出、错误码、版本及冻结状态，不把草案显示为正式契约。
-- 排期与依赖页：迭代项、负责人、产能、计划时间、缓冲、延期预案与变更前后差异。
-- 任务列表/详情：七个业务状态、阻塞原因及责任环节、解除依据、依赖状态、版本与流转留痕。
-- 评审页：按冻结后的八段式模板和十项清单展示证据与判定；缺证据不得在界面判通过。
-- 上线评估页：数据、权限、外部依赖、观测四类风险与应对、回滚预案、评审及拍板人。
-- 站内消息/待办页：通知列表、已读状态、升级级别、处理结果及故障降级标记。
+## 输入输出与上下游边界
+- 当前页面没有业务输入/输出和API请求，不保存Token、不模拟CRUD成功。
+- 后续只使用冻结的同源/api/v1契约；状态/动作字典、权限/依赖/超期等以服务器权威结果为准。
+- 前端不得自行决定任务出口或绕过403/409；不自动换幂等键重试；重放快照后须另查最新记录。
+- Task未含allowed_actions时的操作入口展示边界已向后端问询；未新增字段或本地权限状态机。
+- 消息列表仍由消息岗拥有业务契约；当前只有页面，不连接RabbitMQ、不承担扫描升级。
+- 部署约定提案：frontend/dist、站点根路径/、非API页面fallback到index.html；/api/v1保留路径且不得fallback成HTML。
+- 部署双向确认、后端问询回复及最终契约冻结均待总协调安排；不能把提案当作联调结果。
 
-## 与后端的输入输出需求草案
-- 查询输入：鉴权上下文、project_id、筛选、分页；输出：可访问数据、分页信息、稳定标识与时间格式。
-- 任务详情输出建议含 state、version、依赖满足情况及 allowed_actions；具体字段名与枚举待后端/数据库确认。
-- 状态操作输入建议含 task_id、expected_version、幂等键、目标操作及按操作必填的原因/责任环节/依据。
-- 操作成功输出需含权威状态、当前版本、留痕标识；前端展示服务端结果，不自行判定状态迁移。
-- 排期、评审、上线评估提交需要版本、证据引用、变更理由；输出需可追溯记录与审核/决策状态。
-- 后端负责鉴权、项目隔离、状态机、并发拒绝、事务及拒绝留痕；前端校验只改善输入体验。
-- 400/422：按冻结错误表展示字段错误；401：提示重新登录；403：显示无权限并停止本次操作。
-- 404：按后端错误策略显示资源不可用；403/404 不通过界面额外探测资源是否存在。
-- 409：说明状态或版本冲突，保持未成功的表单草稿，重新读取权威状态，不展示更新成功或静默强制覆盖。
-- 网络超时：显示结果待确认，后续查询或按同一业务操作幂等键重试；不能直接认定提交失败。
-- 待冻结项：URL/方法、请求响应模式、枚举编码、错误码、幂等语义、时间/分页及权限矩阵。
+## 实际验证与证据
+- agents/frontend/foundation-validation.log：pnpm install --frozen-lockfile、typecheck、test、build均exit0。
+- 类型检查为真实vue-tsc --noEmit；pnpm build再次类型检查后生成dist。
+- 5项责任岗模块自测通过：403与409反馈、加载/空/未连接区分、导航及禁用写入口。
+- 本轮无覆盖率数据，不声称全项目>=80%；后续测试须包含整个frontend/src业务源码，不排除未测组件。
+- 早期PATH/TS7兼容/CSS测试错误已如实保存 foundation-failures.md；由AI纠正，未降低断言。
+- CUA因Mac锁定不可用；按总协调建议改用Playwright+预装Chrome headless，不重复锁屏UI操作。
+- headless-foundation-check.mjs、headless-foundation-result.json：1440×1000和390×844基础空态/导航检查成功。
+- 桌面任务路由与标题焦点、禁用登记按钮、404、手机抽屉导航/关闭、无整页横向溢出；零浏览器错误、零API请求。
+- 真实截图：agents/frontend/screenshots/desktop.png、mobile.png；不是手机真机或业务验收。
+- 未运行：真实API契约/集成测试、身份与业务E2E、独立验收及性能测试。
 
-## 与消息岗的边界草案
-- 消息岗拥有站内通知查询、已读/处理动作及降级业务契约；前端只拥有页面、展示和调用。
-- 查询输入建议含 project_id、分页、未读筛选；输出建议含通知 ID、任务/项目引用、级别、时间、状态及降级标记。
-- 已读/处理输入为通知 ID、目标动作及版本/幂等信息（是否需要待确认）；输出返回权威状态及错误。
-- 后端/消息岗确定动作路由及归属，前端不建立重复消息数据源，不接 RabbitMQ，不以浏览器定时器承担延期升级。
-- 刷新方式、未读计数、处理与已读是否独立、跨项目跳转权限和去重显示规则均待确认。
-
-## 执行、记录及交接
-- 实际执行：读取上述任务/规范/三份来源；检索本岗与 records 路径；读取时间；写入并校验本岗三份文件。
-- 模块自测、集成验证、独立验收均未运行；本轮仅校验文档存在、JSON 字段和状态，不声称功能通过。
-- 提示词：ROLE-frontend-BOOTSTRAP-v1；任务入口 agents/frontend/TASK.md；实际派工来自总协调消息。
-- 改进意图：收紧写入范围、明确草案与代码边界，防止把岗位初始化误记成业务实现；不是另一次提示词迭代。
-- 待总协调安排后端确认状态/错误/并发与鉴权契约，消息岗确认查询/处理及降级字段，再冻结并派发编码。
-- 尚无接口双方确认记录；本稿仅为前端需求清单。文档岗可引用三份产物及未实现状态；未联系或读取独立测试岗内容。
-
-## GitHub 阶段留痕追加（2026-10-23T13:25:35+08:00）
-- 文档岗已真实问取资料，原文短答、当前 HEAD/分支/空暂存区检查及未冻结状态记入本岗 WORKLOG；初始历史保留。
-- 本次新增两份评论正文：agents/frontend/github-stage-comment.md、agents/frontend/github-backend-interface-question.md。
-- 阶段说明：https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358078032；接口问询：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122。
-- 本轮 Prompt-Ref：ROLE-frontend-M0-COMMIT-v1；询问幂等重试与旧版本冲突的校验顺序，仍待后端确认。
-- 仅归档本岗文档与 GitHub 证据；业务未实现，接口未冻结，所有业务测试及联调未运行。
+## 过程与交接
+- 日志：agents/frontend/WORKLOG.md；交接：records/handoffs/frontend.json；原始初始化历史未改写。
+- 实际派工归档：records/prompts/ROLE-frontend-FOUNDATION-v1.md，含后续coverage/headless steering及上下文到代码映射。
+- 新代码和纠错由frontend AI执行，无用户亲自改码或人工逐项审定记录。
+- 阶段说明与后端问题的真实评论正文：agents/frontend/foundation-stage-comment.md、foundation-backend-question.md。
+- Issue #2：https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358871067；Issue #3：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358873565。
+- 后续：冻结并再派工后接入业务；补齐真实客户端错误/重试、权限提示、关键表单及全src覆盖率，不能用骨架检查替代。
