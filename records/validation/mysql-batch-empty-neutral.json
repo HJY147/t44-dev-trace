@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-10-23T21:52:38.165668+00:00",
+  "actor": "coordinator AI neutral deployment maintainer",
+  "client": "MySQL8.4.11 macOS native",
+  "scope": "two fixed constant read-only SELECTs, no product data or independent cases",
+  "business_writes": 0,
+  "credentials_published": false,
+  "observations": [
+    {
+      "case": "empty",
+      "sql": "SELECT 1 AS neutral_probe WHERE 1=0;",
+      "exit_code": 0,
+      "stdout_bytes": 0,
+      "stdout_utf8": "",
+      "stderr_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "one",
+      "sql": "SELECT 1 AS neutral_probe;",
+      "exit_code": 0,
+      "stdout_bytes": 16,
+      "stdout_utf8": "neutral_probe\n1\n",
+      "stderr_bytes": 0,
+      "stdout_sha256": "97c38426970c93ea3b2b7d3373b544a001ddbf333996be43ea5d9812b62644b8"
+    }
+  ],
+  "meaning": "mysql --batch successful zero-row SELECT can emit exactly zero stdout; nonempty row emits header and TSV; empty output is not a control failure if exit0. This does not infer a business row count or pass any case."
+}
