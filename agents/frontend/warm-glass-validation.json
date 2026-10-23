@@ -1,0 +1,255 @@
+{
+  "updated_at": "2026-10-23T23:37:53.419133+08:00",
+  "design_commit": "326f971",
+  "application_commit": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+  "branch": "codex/frontend-warm-glass",
+  "api": "http://127.0.0.1:18080/api/v1",
+  "ui": "http://127.0.0.1:5176",
+  "database_label": "t44_demo_v11",
+  "api_product_basis": "5dcb; full exact runtime identity managed by root",
+  "source": [
+    {
+      "path": "frontend/src/App.vue",
+      "sha256": "285312e117e1c16bfdd40278cb660fc33f0c42798d7aac1b655eb5d898fc03db",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "sha256": "9af671286d7447b533b55d00a4c8650ac1610926c72a6003e859b945d33a100b",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/DataState.vue",
+      "sha256": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "sha256": "1cdf6e137be1a5eef3a5ea5841124285e56dd40bdfb8ae7542706d4360608939",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/LoginView.vue",
+      "sha256": "9bb8253595f26bdbb379bdc57f4e9e58a48e153e1a9fc6f9542a27ddb5428f70",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/OperationForm.vue",
+      "sha256": "25cf085fce2152a532aadf750656915de1d8dad83da8b918179223581a6bc678",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/PageHeading.vue",
+      "sha256": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/RecordList.vue",
+      "sha256": "1b088ad8bea3b88cc7f03a91f10a47d106c5318cbedb61533ef296d9b4ac234b",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/RecordView.vue",
+      "sha256": "ece5fb17e4fa3643d609e8703cfbf2a02f165eab01b851b219f81e126cc7a9cc",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/SidebarNavigation.vue",
+      "sha256": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/components/TaskDrawer.vue",
+      "sha256": "7c29b5ab05a012648f289844ffe3ab6b5fb7cfd90b5855261e818817d1fe7b82",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/contract.ts",
+      "sha256": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/forms.ts",
+      "sha256": "0c0031e1caa4565a391976b53298c0ad05f2e4e9979f03dd2bb5ff2acc695b54",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "sha256": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/navigation.ts",
+      "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/router.ts",
+      "sha256": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "f4adf20db3e5b6af7a7e8a4c761e12a370c0fb5af878d6d45fbb70e70fe4406a",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/views/NotFoundView.vue",
+      "sha256": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/views/WorkspaceView.vue",
+      "sha256": "9956bea8f5cc4155c1f7f42c838b4f00544746f27a2c4317963114f16b6298e5",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/src/workspace.ts",
+      "sha256": "4bc467b15a253d287be6d13af7f8428ac7f34b35fd8104b4cbd761c3fcd03457",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "489336f5282c36e34548e25c43d79532f24292de575eb677d5213471554a8262",
+      "matches_commit": true
+    },
+    {
+      "path": "frontend/public/favicon.svg",
+      "sha256": "3669595682c362f4c605548a528ecc553161355100e50e63c648276a655ab402",
+      "matches_commit": true
+    }
+  ],
+  "validation": {
+    "typecheck_exit": 0,
+    "existing_tests": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "coverage_scope": "all frontend/src TS/Vue; no exclusions",
+      "source_file_count": 19,
+      "lines": {
+        "total": 334,
+        "covered": 310,
+        "skipped": 0,
+        "pct": 92.81
+      },
+      "branches": {
+        "total": 782,
+        "covered": 687,
+        "skipped": 0,
+        "pct": 87.85
+      },
+      "functions": {
+        "total": 222,
+        "covered": 188,
+        "skipped": 0,
+        "pct": 84.68
+      }
+    },
+    "build_final_exit": 0,
+    "build_warning": "JS chunk 825.22kB >500kB; not suppressed",
+    "final_browser_result": "agents/frontend/warm-glass-browser/live-stable/results.json",
+    "final_screenshots_reviewed": 18,
+    "real_http_responses": 40,
+    "all_http_200": true,
+    "business_mutation_requests": 0,
+    "login_posts": 2,
+    "page_errors": [],
+    "horizontal_overflows": [],
+    "media_reduced_transparency_confirmed": true,
+    "css_fallback_without_backdrop": "implemented and source-inspected; unsupported engine not executed"
+  },
+  "failures_preserved": [
+    {
+      "phase": "live-refined",
+      "result": "Form close button outside viewport; fixed component theme specificity and internal body scrolling"
+    },
+    {
+      "phase": "live-verified",
+      "result": "locator matched hidden background details; scoped to visible drawer; not product failure"
+    }
+  ],
+  "interim_limitations": [
+    {
+      "phase": "live",
+      "note": "full-page capture downscaled long list; replaced by viewport captures"
+    },
+    {
+      "phase": "live-final",
+      "note": "unchecked reducedTransparency option not proof of media emulation; later CDP matchMedia true"
+    },
+    {
+      "phase": "live-complete",
+      "note": "early transition snapshots; final stable capture waits finite animations and scoped loaded details"
+    }
+  ],
+  "contrast": {
+    "formula": "WCAG sRGB luminance, computed from declared foreground/background tokens; not full page audit",
+    "muted_before": "#82756a: 4.396 paper / 3.873 canvas, below4.5",
+    "muted_final": "#77695d: 5.216 paper / 4.594 canvas"
+  },
+  "runtime_shutdown": {
+    "chrome": "closed in finally",
+    "vite_5176": "Ctrl-C; pnpm returned exit1; expected operator shutdown, not build failure",
+    "shared_cache_used": false
+  },
+  "not_claimed": [
+    "independent acceptance",
+    "formal performance",
+    "student manual edits or bug discovery",
+    "all accessibility scenarios",
+    "legacy 1.0 evidence retest"
+  ],
+  "raw_logs": [
+    {
+      "path": "agents/frontend/warm-glass-browser-live-complete.log",
+      "sha256": "5dc890d73f222177d05a494032f0716478ded1f2ae9cc76294b44bdbf142d4f9",
+      "raw_copy": "agents/frontend/warm-glass-browser-live-complete.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-browser-live-final.log",
+      "sha256": "1f0351987591bcce78d76b6e995d8998acd9e3b538202515f405e6b081fd799b",
+      "raw_copy": "agents/frontend/warm-glass-browser-live-final.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-browser-live-refined.log",
+      "sha256": "c48175addd238a4b2ad19ad6ed1048c6c9d3ee0f631a376404d2b310bb2b77b6",
+      "raw_copy": "agents/frontend/warm-glass-browser-live-refined.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-browser-live-stable.log",
+      "sha256": "b2257f4a44dd1a03d1ad9bff3657fe8bd669cb3ef67fa069649f74b25562b15d",
+      "raw_copy": "agents/frontend/warm-glass-browser-live-stable.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-browser-live-verified.log",
+      "sha256": "ba8e36e08f4967d7bc570d3361edd306ccd48131e16e606b6e37abab6bf923b4",
+      "raw_copy": "agents/frontend/warm-glass-browser-live-verified.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-browser-live.log",
+      "sha256": "94a5c36fadd228996c79f1e7ed70bab356add107f281300feef09f4eac34f0f5",
+      "raw_copy": "agents/frontend/warm-glass-browser-live.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-build-final.log",
+      "sha256": "95c1a116a66daf5eac5a2fccf4ccf58e9771e09014172bab8a62ab2ab01138b8",
+      "raw_copy": "agents/frontend/warm-glass-build-final.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-build.log",
+      "sha256": "ab646653380bb0abfd79246ce6652a03193c489bba3ff1f9aaaaa55c96a941bd",
+      "raw_copy": "agents/frontend/warm-glass-build.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-tests.log",
+      "sha256": "59d32473dcdc4e370dcac855368d4da42effb93cc541a33ed744e0da62e563f8",
+      "raw_copy": "agents/frontend/warm-glass-tests.log.gz"
+    },
+    {
+      "path": "agents/frontend/warm-glass-typecheck.log",
+      "sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e",
+      "raw_copy": "agents/frontend/warm-glass-typecheck.log.gz"
+    }
+  ]
+}
