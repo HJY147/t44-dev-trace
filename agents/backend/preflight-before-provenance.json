@@ -1,0 +1,37 @@
+{
+  "recorded_before_application_at": "2026-10-23T19:23:32.519152+00:00",
+  "base_head": "13dd9cadf7b4fbafefa85d3154e9492899f2d4e4",
+  "production_byte_identical": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "patch_sha256": "f5aac2429fa4a2e16f8434ef21b78ecdd10d879b5f7191482697c43fbac8662b",
+  "tests": "incremental uncommitted additions to existing986/985, first17 then8 supplemental; final files hash captured here; no fabricated initial full-file hash",
+  "files_sha256": {
+    "backend/t44/services/runtime.py": "73fa26b60ac9cf78fe8398afac49dc30f85091b393627d6f2fadd720a4a2ac58",
+    "tmp/backend/contracts/986_http.py": "2f08c2273212d2030484fa56d585d3cf75c883771ec42c60cb8f1793c945c539",
+    "tmp/backend/contracts/985_mysql_http.py": "c959e9680b3a816a9c5dac2e6f3a73b67ae478c13aeea093d759820c832a8473"
+  },
+  "before_results": [
+    {
+      "log": "agents/backend/preflight-before.log",
+      "xml": "agents/backend/preflight-before.xml",
+      "failed": 11,
+      "passed": 6
+    },
+    {
+      "log": "agents/backend/preflight-before-supplement.log",
+      "xml": "agents/backend/preflight-before-supplement.xml",
+      "failed": 3,
+      "passed": 5
+    }
+  ],
+  "interpretation": "14new structural goals red,11preserved semantic/fault goals pass; not14oldbusinessdefects",
+  "database": "t44_test; existing authorized4-key private credentials; no other database or shared server stopped",
+  "local_context": "ordinary independent UI may share host; correctness-only, no latency or performance measurement",
+  "not_run": [
+    "930",
+    "955",
+    "formal load",
+    "B",
+    "C",
+    "Issue28 product change"
+  ]
+}

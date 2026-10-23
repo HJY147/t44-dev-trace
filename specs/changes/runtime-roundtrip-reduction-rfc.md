@@ -116,3 +116,17 @@ SQL/Tx为0变化；可能减少每次schema递归复制/FormatChecker分配，�
 三者合计-5只是账本加和，不是批准一起应用；第一推荐A仅-1。原6051即使三者全部未来等价通过也仅条件性6046，仍超5100，当前绝不能称规模改善已实现或达标。没有压行、挪业务到配置/工具或删除必需逻辑；C删的是递归ref转换，A删的是重复事务所有权，B为明确守卫条件增加代码。以后源码增长/审核反馈以精确新SHA重数。
 
 根选择一项→限定设计审查→明确准入→先保留新增目标真实红→最小生产改动→定向真MySQL/HTTP/静态→精确CI→另协调quiet短测。任何阶段如遇锁/错误/响应差异，保留失败并停止扩大；14冻结文件/旧原始日志及正式失败不改写。普通read合并、一次auth扩大S窗口、鉴权join、project SHARE、审计FK查验省略、task行跨事务缓存均不在本轮准入请求。
+
+## A调用者勘误与窄修正（2026-10-23，尚未应用修正）
+
+前文“生产没有其它claim/authorize调用者”的静态结论错误，不能沿用。backend本次扩检发现真实scheduler/scanner.py:61调用authorize(probe)，probe.operation=createEscalation；tmp/backend/persistence/988_mysql.py:258等直接调用authorize/claim。root设计审查也遗漏，属于AI对AI设计/代码的真实纠错，不是学生发现。精确原A虽25项新定向通过，但原988认领接管和974重复扫描2项真实AttributeError失败，原日志preflight-caller-before.log/xml保留，不称完整整合通过。
+
+root已在816ba60记录并准入窄修正：恢复原authorize(call)四行作为真实调度接口；保留claim(call)三行薄包装自建UoW委托_claim(g,call)；prepare直接在合并UoW调用_claim，不调用旧claim包装、不开额外事务。不改scheduler生产或DB原988断言/字节，不把claim变成会做输入校验/分流的prepare。原算法、错误优先、三鉴权/原SELECT及3→2UoW均保持，B/C仍不应用。
+
+修正提案未应用patch为agents/backend/runtime-plan-preflight-corrected-not-applied.patch；静态AST/格式/Ruff与固定cloc结果preflight-caller-correction-design.json。相对原5dcb，runtime物理289→297（+8），有效270→276（+6），取代此前原A草案-1节省结论。现在不能宣称A减少源码；6051基准即便其它字节不变也会增至6057，此只是预算，不是整项目已实测新总数。原-1预算/patch按历史保留，不能拿它做当前规模结论。
+
+本勘误先单独提交，再应用窄修正并重放原988/974及必要新目标；25绿/2caller红和前置14结构红全部保留。新源完整CI、限定独立审核/性能窗口都仍待后续，不自动负载。
+
+### 勘误后的实施状态补记
+
+先于修正提交的勘误为5a19f80；之后已按root准入实现两旧入口并验证原caller。原设计patch和其“未应用”记录保留为历史，不代表当前A仍未实施；B/C仍未应用。各阶段原25绿/2红/7绿1红及CAS隔离强化后2绿见agents/backend/preflight-validation-summary.json，不能相互替换或冒称完整CI。新源/净+6行的完整CI及独立审核仍待，未运行性能工具。

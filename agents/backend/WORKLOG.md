@@ -315,3 +315,26 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - 主来源仅官方MySQL8.4 RC、SQLAlchemy2.0 pre_ping、jsonschema4.26 evolve与referencing0.37不可变Registry；链接和有限推断边界在RFC。没有为设计重跑412或用ABBA外推正式三接口。
 
 RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511；PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155。根实际读RFC倾向A并要求先提交，本提交仍全未应用，等待其精确技术准入。标准未应用unified patch包含必要context空白前缀，常规文本diff检查排除这3个patch语法文件；各patch本身git apply --check已通过，未变更任何产品lint或断言。
+
+## A caller遗漏勘误先交付（修正尚未应用）
+
+- 精确原A新25项通过后扩查发现真实scanner.authorize与DB直接claim调用，本岗原RFC“无其它调用者”错误，root设计审查也漏看。原988/974两项实际AttributeError失败，preflight-caller-before.log/xml；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373012722、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373013279真实公开。不能把25绿当整合通过，更不能记学生发现/改码。
+- root816ba60窄修正准入要求保留两旧接口：authorize原4行供scanner；claim(call)自有UoW薄包装→_claim(g,call)，prepare同合并UoW直接调_claim，不改scheduler/DB988。修正提案patch及AST/Ruff/cloc实数receipt先提交，生产修正暂未应用。预算有效+6，旧-1节省结论失效；无B/C/冻结变化/负载。
+
+## A窄修正实现与必要正确性验证（新源CI待跑）
+
+- 先提交勘误5a19f80，再恢复原authorize与claim(call)薄包装，prepare同首UoW直接_claim；仅runtime.py生产变更，hash与修正提案一致。DB988及scheduler生产/测试原字节不改，B/C和14冻结不动。修正实际270→276有效行(+6)、289→297物理(+8)，不再声称A节省1行。
+- 原25定向绿保留，caller修后原988/974+5账本实际7pass；同次额外原CAS测试1fail因按共享actor/operation查到其它本轮完成历史，原preflight-caller-after.log/xml保留7绿1红。本岗985改为两个实际Idempotency-Key定位场景全部记录、不预筛COMPLETE，仍断言恰2且全COMPLETE/原actor/operation及response_request_id集合等于两次实际HTTP；没有清表/降断言。首按response_id限定2pass后，root要求更强key定位，再plan先→CAS后2pass，分别保留preflight-cas-scope-after与preflight-cas-keys-after原件。
+- 真库仅t44_test、有界独立合成fixture；首A25项中14真MySQL覆盖RC实际连接、session/member两时序、ACK在真实commit之后受控注入、独立拒绝审计；它们不是故障设备或整库宕机。新结构账本BLOCK22/5/2、UNBLOCK24/5/2、plan20/6/2、escalation26/7/6，原SELECT/auth不减，新写2UoW，重放1。共机普通UI可能运行，未测任何时延收益或跑930/955/服务/正式负载。
+- 新源码严格Ruff/格式/Bandit通过、14hash一致；原日志/XML已检查已知DB口令/opaqueBearer匹配0。preflight-validation-summary.json区分各源/各阶段而非把25绿移植为当前完整整合通过。原Starlette TestClient弃用警告保留，不借此升级依赖。
+- root最新组合基准6102超上限1002（其树9560），A+6尚待合根后精确重数；不拿本岗较旧6051作当前组合通过。新全量CI/独立审核/验收/正式性能/规模均待，完整CI只在新源push后启动一轮。
+- 真实阶段Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804，正文preflight-implementation-github-comment.md。
+
+## A精确新源CI与单独草稿PR29
+
+- 产品commit153b9c8c72acc76c5295ae3890236a2ac279b476；安全合根499a2a后精确7584cd31f0abfd6727d552b5fef31a9303247d58一次push，product40012517513四job全success。原JUnit437/0失败/0错误/0跳过；markers contract139/integration84/fault17各自通过（重叠）。全43个生产文件集合精确等于Git，excluded0，行2558/2878=88.881167%，分支612/778=78.663239%。不为此再跑本地/旧全套或负载。
+- 选定8份原coverage/JUnit/marker/gate/run压缩原件、raw及gzip SHA和MCP artifact/job metadata归档preflight-ci-40012517513、preflight-ci-summary.json。完整下载保留ignored私密运行目录；GitHub connector取得远端文件引用后，需落本机目录时使用gh原artifact下载，无独立材料。6108固定cloc报告preflight-source-count.json绑定7584，仍超5100计1008；源码A净+6，旧减1结论已撤回。
+- root指出旧PR16的head仍backend-core056，不能靠COMMENT假绑定新实现。按要求新建并attach草稿PR29 https://github.com/HJY147/t44-dev-trace/pull/29，base codex/integration/head当时7584；正文绑定153产品/5a勘误/完整原失败与CI边界。旧PR16仅加转移通知，不强推/改head。新源仅允许专职COMMENT，不自APPROVE/main合并或全局验收通过。
+- 尝试给历史旧frontend/reviewer_v11_implementation id发设计/PR消息均工具返回agent thread limit reached，未送达；root纠正当前frontend_logout/review_backend_preflight后已送达正确实例，前端已真实回复Issue28字段需求。不是对方拒绝或已完成旧消息；失败过程保留。Issue28仅public report/Issue/本方源静态分析，无产品改动，另阶段设计。
+- 本次后续纯证据commit经root明确允许[skip ci]：无生产/测试/配置变化，避免重复完整CI；7584才是437精确源，metadata新HEAD不冒充另一次测试。当前严格14hash保持，仍未独立审核/黑盒复验/正式性能/规模通过。
+- CI归档真实Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698、PR29 https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190；PR16历史cutoff https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373352606。

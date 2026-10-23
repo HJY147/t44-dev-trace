@@ -195,3 +195,15 @@ root操作者在已协调窗口单次执行tool974，整体exit0/39.88秒，1808
 ## 减少往返RFC：待准入、生产不变
 
 specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给出可复核静态Tx/SQL与净LOC预算。推荐只先A：保留authorize普通读和claim session S两次实时鉴权，但同一首UoW；18幂等写3→2事务，SELECT不减少、主锁/成功原子/拒绝独立/commit-ACK不明保护不变。校验跨普通连接及read-commit故障点移除明确列为语义差异，需定向真MySQL证据。B依赖按需+空集合跳过净+6、C根解析evolve净-10独立候选不混用；A仅净-1，未解决6051超限。草案AST/Ruff/format、patch匹配和14hash通过，无候选运行/HTTP/SQL/新负载；精确CI/性能待实现准入后另排。
+
+## A设计调用者勘误（先设计，修正未应用）
+
+原A的25新定向绿未覆盖scanner真实authorize入口，扩检原988/974两项因AttributeError真实红。原RFC无其它调用者判断错误，root审查亦遗漏，AI纠错不是学生发现。root816ba60窄准入恢复authorize原4行并保留claim(call)薄包装→_claim(g,call)，prepare直接同UoW调_claim；不改调度或DB断言。修正patch/预算preflight-caller-correction-design.json先归档，尚未应用；runtime实际草案有效270→276(+6)，旧净减1不能再作当前结论。
+
+## A已实现：保留真实caller，等待精确CI
+
+勘误5a19f80后仅runtime.py恢复authorize与claim(call)薄包装，prepare直接_claim同UoW；原scanner/DB988均不改，B/C/14冻结不动。有效源码净+6而非减1。旧5dcb新增目标14结构红/11语义绿→精确原A25绿（11SQLite HTTP+14真MySQL）→扩caller2红→修正后原caller2+新账本5绿；同次CAS场景查询隔离1红保留，改为实际两keys、不预筛状态、恰2COMPLETE并对应两HTTP request_id，plan先→CAS后2绿。阶段明细preflight-validation-summary.json及原log/xml，不冒当前完整CI通过。RC实连接/实时撤销/独立审计/真实commit后ACK受控注入范围明确，没有时延或设备故障证明；严格静态通过。root组合6102基准+A6仍超5100，待合根后精确数，未解决规模。新源CI/限定审核及独立性能均待。
+
+## A精确7584 CI归档与PR29
+
+精确7584（产品153、先行勘误5a）product40012517513四任务成功：437/0failure/error/skip，markers139/84/17重叠；43文件集合与生产Git完全相同、excluded0，行88.881167%、分支78.663239%。原件/SHA见preflight-ci-40012517513及preflight-ci-summary.json；固定cloc6108超5100计1008。新草稿PR29绑定此实现，旧PR16仅历史；root指定review_backend_preflight对7584 COMMENT，未APPROVE或全局通过。后续纯证据[skip ci]经root允许、产品/测试/配置字节仍7584，不冒称新metadata HEAD另测；未运行任何新性能负载。Issue28只有设计对接，另阶段。

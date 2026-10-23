@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "ABBA interpretation checkpoint complete; runtime RFC prepared, all candidates UNAPPLIED",
-  "implementation_status": "production byte-identical5dcb;412exact-source CI historical; no new production/frozen change",
+  "stage": "A source7584 exactCI437passed archived; draftPR29, dedicatedCOMMENTreview pending",
+  "implementation_status": "onlyruntime.py A+realcaller compatibility;14freeze/B/C preserved; no performance/size acceptance",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -1310,6 +1310,66 @@
     "next": "root choose one and limited review/admission; no automatic implementation or load",
     "size": "A-1/B+6/C-10 are draft text counts only;6051baseline still exceeds5100",
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511",
-    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155"
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155",
+    "caller_erratum": {
+      "report": "agents/backend/preflight-caller-correction-design.json",
+      "patch": "agents/backend/runtime-plan-preflight-corrected-not-applied.patch",
+      "old_missing_caller_statement": "incorrect; actualscanner.authorize andDB oldclaim callers",
+      "original_A_targeted": "25passed",
+      "caller_before": "2failed AttributeError,preflight-caller-before.log/xml",
+      "root_correction": "816ba60",
+      "proposal": "restoreauthorize + claim(call)thin UoW wrapper/private_claim; no DB/scheduler edit",
+      "corrected_cloc_delta": 6,
+      "status": "designerratum5a19f80 committed before correction; correction now implemented"
+    }
+  },
+  "runtime_preflight_implementation": {
+    "summary": "agents/backend/preflight-validation-summary.json",
+    "before": "14newstructuralfail/11semanticpass on5dcb",
+    "original_A": "25pass",
+    "caller_before": "2AttributeError fail",
+    "corrected": "2originalcaller+5newledger passed; samebatch1CASfixtureisolation fail retained",
+    "final_CAS_keys": "2pass plan-before-CAS with actual2keys/allCOMPLETE/exactresponse_request_id",
+    "production": "runtime.py only, +6cloc/+8physical",
+    "frozen14": "unchanged",
+    "unchanged_cross_owner": [
+      "backend/t44/scheduling",
+      "tmp/backend/persistence/988_mysql.py"
+    ],
+    "static": "Ruff/format/Bandit passed",
+    "database": "t44_test isolated fixtures only; no performance samples",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804",
+    "CI": {
+      "summary": "agents/backend/preflight-ci-summary.json",
+      "source": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+      "run": 40012517513,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40012517513",
+      "status": "all4jobs success",
+      "tests": 437,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "markers": {
+        "contract": 139,
+        "integration": 84,
+        "fault": 17
+      },
+      "marker_counts_overlap": true,
+      "files": 43,
+      "excluded_lines": 0,
+      "line": "2558/2878=88.881167%",
+      "branch": "612/778=78.663239%",
+      "archive": "agents/backend/preflight-ci-40012517513",
+      "source_count": 6108,
+      "within_range": false
+    },
+    "next": "root dedicated review and integration; Issue28 separate design-only branch, no performance without window",
+    "PR29": "https://github.com/HJY147/t44-dev-trace/pull/29",
+    "actual_review_target": "review_backend_preflight COMMENT on7584, not oldreviewer_v11_implementation",
+    "old_PR16": "history only; not forceupdated",
+    "CI_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698",
+    "CI_PR": "https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190",
+    "metadata_commit_scope": "evidence-only [skip ci] permitted byroot; production/tests/config byteidentical7584"
   }
 }

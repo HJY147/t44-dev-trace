@@ -100,3 +100,30 @@ root已读RFC原文（8cdfc9b2...）、审核岗限定设计意见，准入仅va
 收到并赞同区分：3→2UoW但保留两次实时auth就仍原SELECT，不能写少鉴权/少查询；普通RC同Tx二次查询是否仍观察撤销、独立rejection事务和未知commit的分类需逐项说明及回归。单auth扩大S锁窗口先不准。evolve是另一个可读简化候选，根资源$id/registry/ref上下文、oneOf/evidence错误分类、format验证/各类path+schema、并发每次独立实例要确证；不声称共享validator线程安全。请先提交RFC/未应用patch/真实物理净LOC预算与最小推荐路线，root会审后准入其中一项，不同时混两个语义轴。不要为951指标选风险较大方案。
 
 对应：三个独立未应用patch，推荐仅A为第一准入请求；B/C列后续，不一起应用，不用行数缺口为C高影响范围辩护。所有新静态产物归本岗，生产/冻结delta0。
+
+## A明确实现准入实际派工（原文）
+
+明确准入：root已将精确RFC0b725899合入，并在13dd9ca records/decisions/A-runtime-preflight-implementation-admission.json记录AI技术决定。只准A patch SHA f5aac2429fa4a2e16f8434ef21b78ecdd10d879b5f7191482697c43fbac8662b进入实现+必要正确性验证，B/C保持未应用，Issue28后续另阶段设计，不混当前patch。不是性能/源码审核/完整发布通过，不改14冻结。
+请你自己的分支继续：先按RFC新增结构目标与必要错误/撤销/幂等/审计/未知提交开发回归在原5dcb上取得真实红（结构红不是业务漏洞）、再应用最小A，定向真实MySQL验证后commit产品，完整受影响CI仅新源一次。复用现有986/985，不占894新号。保留三次authenticate与SELECT，3→2UoW而非少鉴权；READ COMMITTED要从真实app连接证明。当前没有本地性能计时，只独立普通UI，允许你有界的自有测试库正确性HTTP/SQL/并发屏障测试，记录共机影响但不测延迟或开负载；不要触用户18080/t44_demo_v11、独立18084/t44_ui_v2/t44_perf_v2或其它业务库。沿用你本岗已授权测试环境/隔离fixture，不够就先报root中性资源需求，root解决不找用户。不得为故障注入停共享MySQL；使用明确标识的受控故障包装，真实commit成功后模拟ACK丢失，不能冒充网络设备故障或全库宕机。代码/测试阶段来源、原失败、UoW账和锁序/各类审计清楚留痕，不能给参数/口令/Token进日志。新完整产品需独立审核、冻结后新无历史黑盒实例，先只回报实际定向结果/限制。不要自动执行930/955或400×600，再负载需root新窗口。执行小问题自行解，业务大取舍记录不变更规范。
+
+执行对应（阶段中间事实）：合13dd9ca后原5dcb先增17项（11red/6pass）再补8项（3red/5pass）；14结构目标红不记旧业务漏洞。随后仅应用获准A，25项全pass（11SQLite HTTP+14真MySQL）；扩检实际调用者发现原RFC错误遗漏scanner.authorize和DB旧claim调用，原2项受影响模块真实复现均AttributeError失败，正在请求窄接口修正，不覆盖25pass/原失败，不将它们称完整整合通过。
+
+### A真实caller遗漏后的root窄修正实际准入（原文）
+
+已实查并记录更正816ba60（含root设计审查也漏看真实scanner调用，不记学生发现）。授权窄修正但选择保留两旧接口，不改DB拥有的原988：先提交RFC勘误/真实2caller红，再恢复原authorize(call)4行供scanner/旧调用者；保留claim(call)薄包装自己开UoW，委托共享内部_claim(g,call)，prepare在合并Tx内调_claim(g,call)。算法A仍3→2UoW/原auth及SELECT不变，不让prepare另开claim事务。这样原988直接claim竞争/接管/fence/最终request_id断言可以原字节继续跑，无跨岗测试适配。不要把旧claim偷偷变成prepare丢validate职责。实际有效LOC会由-1变正（约+6，以实数为准），改预算和报告，不能保留节省1行结论。允许你先设计勘误commit再最小实现这两个兼容入口并只重放原受影响988/974+必要新目标；保留25绿与2调用者红。没有新负载/停库/调度生产变更授权。若发现更大接口差异，先记录后向root报告，其他工作继续。
+
+对应：先归档勘误及2caller原失败；正确预算297物理/276有效行（对5dcb+8/+6）；不改DB988或scheduler生产，不降低任何原断言，再实施并定向复验。
+
+### CAS场景隔离窄修正实际确认（原文）
+
+窄修正7pass与CAS测试隔离耦合1fail分类收到。你本岗985允许把校验范围限定到该CAS场景实际发出的两次请求（优先两个实际Idempotency-Key/唯一请求标识，并同时验证两条response_request_id对应实际HTTP；不要只筛出想要的状态再数）。保留恰2条完成快照、成功/拒绝业务断言、原角色/operation匹配；保留原7绿1红，不清共享表、不靠顺序或删断言。按plan先→CAS后2项验证隔离修正合理，再一次新源CI。source当前root9560新实数6102超5100计1002，A+6将再增6；报告真实写，不凑指标。
+
+对应：原985作用域收紧为实际两keys、返回状态随后断言全2，request_id集合对应HTTP，原竞争成功/409拒绝等断言保留；2项通过，不改DB988/调度原文件。
+
+### 新PR绑定与纯证据提交实际指令（原文）
+
+审核岗发现PR16当前head仍backend-core056/basebootstrap，并未绑定7584，新实现只是COMMENT叙述。请在本岗CI400125终态之后，为codex/backend-runtime-plan→codex/integration新建单独草稿PR（别改旧PR16 head强推；旧PR保留历史），正文精确7584/153/设计5a和原caller红绿、+6/6108、CI边界、AI修正非学生操作。已有同head PR则更新该PR。告诉审核岗及我新PR号，他在精确7584上COMMENT，不许APPROVE。新证据commit可在CI终态后提交，明确产品源链和app字节未变。
+
+允许纯证据commit [skip ci]（只报告/原件/计数/日志，无生产/测试/配置变化），明确7584才是完成437测试的精确源，metadata新HEAD不冒充CI新源。保持draft/不global stage成功；此举也不视为main可合并。前端28需求已真实对接很好，等设计-only阶段提交后给根准入；root可快速审。当前rootcd02297只添新独立中性包与883–874编号，不碰source。
+
+对应：全CI终态后创建/attach PR29，MCP/gh原件核对后最小证据提交；437精确source7584单独记录、应用/测试/配置均不变，不将metadata HEAD称另测，不碰独立私密/中性新包。
