@@ -103,3 +103,10 @@
 - 与backend数分钟内确定实际RowsGateway/Pred/codec签名并实现：冻结18表226列Core元数据由打包冻结SQL/摘要构造；同名表/列白名单，查询/锁/insert生成ID/CAS条件update/delete/count/savepoint及完整错误分类。
 - 实际本地模块测试21 passed in0.26s；仅SQLite可移植夹具与mock，MySQL-only CHECK保留于生产元数据/原DDL，未假称SQLite验证MySQL CHECK或FOR UPDATE。阶段1暂未完成migration/seed/outbox专用操作，不报完整完成。
 - Ruff导入自动格式调整后按固定风格重排；未修改共享依赖锁/API/其他岗文件，未联系独立测试。准备先提交本阶段供backend直接互接，再继续其余能力。
+
+## ROLE-database-PERSISTENCE-v1：真实迁移与门面修复阶段
+- 用户D004采用后合并ae60dc3，随后合并总协调集成6afd13f；本岗未改共享锁或其他岗源码。
+- 真实官方MySQL8.4.11 / t44_test：首次迁移成功，18表226列与冻结SQL摘要核对无缺陷；重复迁移返回already_applied=true，未drop/重建既有表。新增t44_schema_migrations仅技术版本记录，不算第19张业务表。
+- 首脚本额外凭据键导致构造前TypeError，修为仅app连接键allowlist；从未使用root凭据、未输出连接串。首次真实测试3失败26通过（CHECK驱动错误分类），保留persistence-mysql-tests-run1.log，修为兼容PyMySQL3819 OperationalError后29通过。
+- 已修backend实际反馈的tasks循环FK主键生成：id显式autoincrement=ignore_fk；SQLite与MySQL真实insert/get返回整数ID。hash-only初始化已实现合法Argon2id校验，非法输入通过独立新UoW持久脱敏拒绝审计；首次此入口真库验证通过。
+- 证据：persistence-mysql-migration-run1.json、persistence-mysql-tests-run1.log、run2.log；Ruff format与check退出0。此阶段尚未宣称outbox/scan/seed、API联调、MQ、独立验收完成。

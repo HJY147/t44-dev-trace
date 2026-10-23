@@ -105,10 +105,14 @@ class RowsGateway:
                 if mode == "id":
                     return int(result.inserted_primary_key[0])
                 return result.scalar_one() if mode == "count" else result.rowcount
-        except IntegrityError as error:
+        except SQLAlchemyError as error:
             self._failed()
-            code = error.orig.args[0] if error.orig.args else None
-            message = str(error.orig)
+            original = getattr(error, "orig", None)
+            code = original.args[0] if original is not None and original.args else None
+            message = str(original)
+            # PyMySQL reports MySQL CHECK 3819 as OperationalError, not IntegrityError.
+            if not isinstance(error, IntegrityError) and code != 3819:
+                raise PersistenceUnavailable("Database operation failed") from None
             kind = (
                 "duplicate"
                 if code == 1062 or "UNIQUE constraint" in message
@@ -125,9 +129,6 @@ class RowsGateway:
             raise PersistenceIntegrityError(
                 "Database constraint rejected the operation", kind=kind, constraint=constraint
             ) from None
-        except SQLAlchemyError:
-            self._failed()
-            raise PersistenceUnavailable("Database operation failed") from None
 
     def _failed(self):
         if self._scopes:
