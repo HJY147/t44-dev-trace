@@ -1,0 +1,759 @@
+{
+  "commit": "221bfe3510b129e9c1bbbeeef14207539eb0d8f5",
+  "tool": "cloc 2.10",
+  "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+  "metric": "physical nonblank noncomment committed application source lines",
+  "range": [
+    3500,
+    5100
+  ],
+  "within_range": false,
+  "groups": {
+    "application": {
+      "summary": {
+        "blank": 631,
+        "comment": 116,
+        "code": 6303,
+        "nFiles": 66
+      },
+      "files": {
+        "backend/t44/persistence/seed.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 370,
+          "language": "Python"
+        },
+        "backend/t44/persistence/migrations.py": {
+          "blank": 22,
+          "comment": 2,
+          "code": 321,
+          "language": "Python"
+        },
+        "backend/t44/persistence/rows.py": {
+          "blank": 30,
+          "comment": 10,
+          "code": 299,
+          "language": "Python"
+        },
+        "backend/t44/services/runtime.py": {
+          "blank": 17,
+          "comment": 4,
+          "code": 276,
+          "language": "Python"
+        },
+        "frontend/src/styles.css": {
+          "blank": 3,
+          "comment": 1,
+          "code": 267,
+          "language": "CSS"
+        },
+        "backend/t44/services/workflow.py": {
+          "blank": 7,
+          "comment": 2,
+          "code": 247,
+          "language": "Python"
+        },
+        "backend/t44/api.py": {
+          "blank": 34,
+          "comment": 4,
+          "code": 244,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/facade.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 205,
+          "language": "Python"
+        },
+        "backend/t44/domain/state_machine.py": {
+          "blank": 19,
+          "comment": 5,
+          "code": 193,
+          "language": "Python"
+        },
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 182,
+          "language": "Python"
+        },
+        "backend/t44/domain/models.py": {
+          "blank": 45,
+          "comment": 2,
+          "code": 177,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 168,
+          "language": "Python"
+        },
+        "backend/t44/persistence/delivery.py": {
+          "blank": 12,
+          "comment": 3,
+          "code": 167,
+          "language": "Python"
+        },
+        "backend/t44/cli.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 147,
+          "language": "Python"
+        },
+        "backend/t44/services/tasks.py": {
+          "blank": 15,
+          "comment": 3,
+          "code": 146,
+          "language": "Python"
+        },
+        "backend/t44/services/reviews.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 145,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/scanner.py": {
+          "blank": 12,
+          "comment": 5,
+          "code": 141,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/rules.py": {
+          "blank": 25,
+          "comment": 6,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/common.py": {
+          "blank": 36,
+          "comment": 2,
+          "code": 132,
+          "language": "Python"
+        },
+        "backend/t44/messaging/broker.py": {
+          "blank": 17,
+          "comment": 3,
+          "code": 129,
+          "language": "Python"
+        },
+        "backend/t44/persistence/schema.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 117,
+          "language": "Python"
+        },
+        "backend/t44/services/identity.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 111,
+          "language": "Python"
+        },
+        "backend/t44/persistence/scans.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 109,
+          "language": "Python"
+        },
+        "frontend/src/views/WorkspaceView.vue": {
+          "blank": 0,
+          "comment": 0,
+          "code": 101,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/__main__.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/messaging/facade.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 95,
+          "language": "Python"
+        },
+        "backend/t44/persistence/engine.py": {
+          "blank": 13,
+          "comment": 3,
+          "code": 93,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 8,
+          "comment": 3,
+          "code": 92,
+          "language": "Python"
+        },
+        "backend/t44/persistence/uow.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 86,
+          "language": "Python"
+        },
+        "backend/t44/messaging/worker.py": {
+          "blank": 9,
+          "comment": 2,
+          "code": 84,
+          "language": "Python"
+        },
+        "frontend/src/contract.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 83,
+          "language": "TypeScript"
+        },
+        "backend/t44/services/codes.py": {
+          "blank": 8,
+          "comment": 1,
+          "code": 82,
+          "language": "Python"
+        },
+        "frontend/src/components/OperationForm.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 75,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/persistence/accounts.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 69,
+          "language": "Python"
+        },
+        "frontend/src/workspace.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 68,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/TaskDrawer.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 62,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/components/FieldEditor.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 61,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/App.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 59,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/contracts/__init__.py": {
+          "blank": 14,
+          "comment": 2,
+          "code": 55,
+          "language": "Python"
+        },
+        "backend/t44/domain/commands.py": {
+          "blank": 23,
+          "comment": 5,
+          "code": 53,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__main__.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 49,
+          "language": "Python"
+        },
+        "frontend/src/components/LoginView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 47,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/runtime.py": {
+          "blank": 10,
+          "comment": 9,
+          "code": 39,
+          "language": "Python"
+        },
+        "frontend/src/components/DataState.vue": {
+          "blank": 3,
+          "comment": 0,
+          "code": 38,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/api.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 37,
+          "language": "TypeScript"
+        },
+        "backend/t44/settings.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "frontend/src/forms.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 33,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/SidebarNavigation.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 31,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/services/errors.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "backend/t44/persistence/codecs.py": {
+          "blank": 15,
+          "comment": 1,
+          "code": 27,
+          "language": "Python"
+        },
+        "frontend/src/router.ts": {
+          "blank": 2,
+          "comment": 0,
+          "code": 26,
+          "language": "TypeScript"
+        },
+        "backend/t44/persistence/__init__.py": {
+          "blank": 2,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__init__.py": {
+          "blank": 3,
+          "comment": 3,
+          "code": 21,
+          "language": "Python"
+        },
+        "frontend/src/components/RecordList.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/components/RecordView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/index.html": {
+          "blank": 0,
+          "comment": 0,
+          "code": 15,
+          "language": "HTML"
+        },
+        "frontend/src/navigation.ts": {
+          "blank": 3,
+          "comment": 0,
+          "code": 15,
+          "language": "TypeScript"
+        },
+        "frontend/src/audit.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 14,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/PageHeading.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 13,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/persistence/errors.py": {
+          "blank": 13,
+          "comment": 7,
+          "code": 9,
+          "language": "Python"
+        },
+        "frontend/src/views/NotFoundView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 8,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/main.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 6,
+          "language": "TypeScript"
+        },
+        "backend/t44/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/domain/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/services/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    },
+    "deployment_ci": {
+      "summary": {
+        "blank": 203,
+        "comment": 68,
+        "code": 1939,
+        "nFiles": 11
+      },
+      "files": {
+        "deployment/native/runtime.py": {
+          "blank": 47,
+          "comment": 11,
+          "code": 521,
+          "language": "Python"
+        },
+        "deployment/acceptance/run.py": {
+          "blank": 42,
+          "comment": 19,
+          "code": 494,
+          "language": "Python"
+        },
+        "deployment/acceptance/control.py": {
+          "blank": 34,
+          "comment": 23,
+          "code": 325,
+          "language": "Python"
+        },
+        "deployment/ops.py": {
+          "blank": 22,
+          "comment": 5,
+          "code": 268,
+          "language": "Python"
+        },
+        "deployment/credential_admin.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 99,
+          "language": "Python"
+        },
+        "scripts/ci/run_tests.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 63,
+          "language": "Python"
+        },
+        "deployment/runtime_probe.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 58,
+          "language": "Python"
+        },
+        "scripts/ci/validate_config.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 39,
+          "language": "Python"
+        },
+        "scripts/ci/static.py": {
+          "blank": 6,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "scripts/ci/check_frontend_coverage.py": {
+          "blank": 6,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "scripts/ci/preflight.py": {
+          "blank": 6,
+          "comment": 1,
+          "code": 20,
+          "language": "Python"
+        }
+      }
+    },
+    "contracts_rules": {
+      "summary": {
+        "blank": 0,
+        "comment": 0,
+        "code": 25529,
+        "nFiles": 1
+      },
+      "files": {
+        "specs/contracts/openapi.json": {
+          "blank": 0,
+          "comment": 0,
+          "code": 25529,
+          "language": "JSON"
+        }
+      }
+    },
+    "schema": {
+      "summary": {
+        "blank": 20,
+        "comment": 6,
+        "code": 459,
+        "nFiles": 1
+      },
+      "files": {
+        "specs/database/schema.sql": {
+          "blank": 20,
+          "comment": 6,
+          "code": 459,
+          "language": "SQL"
+        }
+      }
+    },
+    "tests": {
+      "summary": {
+        "blank": 1043,
+        "comment": 139,
+        "code": 10912,
+        "nFiles": 36
+      },
+      "files": {
+        "tmp/backend/contracts/986_http.py": {
+          "blank": 182,
+          "comment": 9,
+          "code": 2427,
+          "language": "Python"
+        },
+        "tmp/backend/contracts/985_mysql_http.py": {
+          "blank": 106,
+          "comment": 11,
+          "code": 1323,
+          "language": "Python"
+        },
+        "tmp/backend/persistence/988_mysql.py": {
+          "blank": 60,
+          "comment": 3,
+          "code": 645,
+          "language": "Python"
+        },
+        "tmp/backend/955_perf_profile.py": {
+          "blank": 40,
+          "comment": 3,
+          "code": 578,
+          "language": "Python"
+        },
+        "tmp/backend/backend/domain/994_transitions.py": {
+          "blank": 59,
+          "comment": 1,
+          "code": 556,
+          "language": "Python"
+        },
+        "tmp/backend/930_contract_abba.py": {
+          "blank": 46,
+          "comment": 6,
+          "code": 548,
+          "language": "Python"
+        },
+        "tmp/backend/scheduling/974_application.py": {
+          "blank": 57,
+          "comment": 16,
+          "code": 449,
+          "language": "Python"
+        },
+        "tmp/backend/persistence/993_foundation.py": {
+          "blank": 67,
+          "comment": 2,
+          "code": 412,
+          "language": "Python"
+        },
+        "tmp/frontend/983_application.test.ts": {
+          "blank": 2,
+          "comment": 0,
+          "code": 399,
+          "language": "TypeScript"
+        },
+        "tmp/backend/persistence/956_schema_semantics.py": {
+          "blank": 22,
+          "comment": 6,
+          "code": 304,
+          "language": "Python"
+        },
+        "tmp/deployment/953_acceptance_environment.py": {
+          "blank": 67,
+          "comment": 1,
+          "code": 289,
+          "language": "Python"
+        },
+        "tmp/backend/persistence/975_seed.py": {
+          "blank": 17,
+          "comment": 3,
+          "code": 259,
+          "language": "Python"
+        },
+        "tmp/backend/persistence/952_ddl_ast_poc.py": {
+          "blank": 21,
+          "comment": 4,
+          "code": 245,
+          "language": "Python"
+        },
+        "tmp/deployment/972_compose_application.py": {
+          "blank": 18,
+          "comment": 37,
+          "code": 223,
+          "language": "Python"
+        },
+        "tmp/backend/messaging/979_facade.py": {
+          "blank": 19,
+          "comment": 0,
+          "code": 200,
+          "language": "Python"
+        },
+        "tmp/deployment/873_native_runtime.py": {
+          "blank": 23,
+          "comment": 1,
+          "code": 188,
+          "language": "Python"
+        },
+        "tmp/backend/messaging/conftest.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 177,
+          "language": "Python"
+        },
+        "tmp/backend/scheduling/conftest.py": {
+          "blank": 10,
+          "comment": 2,
+          "code": 177,
+          "language": "Python"
+        },
+        "tmp/backend/scheduling/991_rules.py": {
+          "blank": 26,
+          "comment": 0,
+          "code": 158,
+          "language": "Python"
+        },
+        "tmp/frontend/982_client.test.ts": {
+          "blank": 0,
+          "comment": 0,
+          "code": 151,
+          "language": "TypeScript"
+        },
+        "tmp/backend/scheduling/990_runtime.py": {
+          "blank": 44,
+          "comment": 15,
+          "code": 149,
+          "language": "Python"
+        },
+        "tmp/backend/messaging/980_delivery.py": {
+          "blank": 17,
+          "comment": 3,
+          "code": 124,
+          "language": "Python"
+        },
+        "tmp/backend/messaging/977_rabbit.py": {
+          "blank": 15,
+          "comment": 5,
+          "code": 113,
+          "language": "Python"
+        },
+        "tmp/backend/persistence/989_rows.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 104,
+          "language": "Python"
+        },
+        "tmp/deployment/997_ops.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 101,
+          "language": "Python"
+        },
+        "tmp/backend/scheduling/973_extensible_rules.py": {
+          "blank": 10,
+          "comment": 2,
+          "code": 89,
+          "language": "Python"
+        },
+        "tmp/deployment/971_credentials.py": {
+          "blank": 13,
+          "comment": 1,
+          "code": 75,
+          "language": "Python"
+        },
+        "tmp/frontend/895_session_lifecycle_probe.test.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 69,
+          "language": "TypeScript"
+        },
+        "tmp/backend/contracts/987_faults.py": {
+          "blank": 22,
+          "comment": 1,
+          "code": 65,
+          "language": "Python"
+        },
+        "tmp/backend/messaging/978_process.py": {
+          "blank": 11,
+          "comment": 0,
+          "code": 63,
+          "language": "Python"
+        },
+        "tmp/ci/996_gates.py": {
+          "blank": 13,
+          "comment": 1,
+          "code": 62,
+          "language": "Python"
+        },
+        "tmp/frontend/981_fixtures.ts": {
+          "blank": 0,
+          "comment": 0,
+          "code": 58,
+          "language": "TypeScript"
+        },
+        "tmp/backend/messaging/976_process_mysql.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 57,
+          "language": "Python"
+        },
+        "tmp/frontend/998_foundation.test.ts": {
+          "blank": 5,
+          "comment": 0,
+          "code": 39,
+          "language": "TypeScript"
+        },
+        "tmp/backend/contracts/conftest.py": {
+          "blank": 4,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "tmp/backend/contracts/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "cloc treats Python docstrings as comments, including runtime multiline strings",
+    "Vue embedded languages use cloc's Vue file counter",
+    "DDL, configuration, tests and operational tooling are separate",
+    "Package copies of OpenAPI/DDL and generated/vendor files are excluded"
+  ]
+}
