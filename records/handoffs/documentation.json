@@ -1,189 +1,174 @@
 {
   "role": "documentation",
-  "stage": "REPORTS-DRAFT-v1：需求/设计/AI时代研究报告阶段工作稿",
-  "implementation_status": "三份阶段工作稿已形成；本岗未实现产品，未执行产品测试或最终验收",
+  "stage": "M2-QUALITY-v1可审文档checkpoint",
+  "implementation_status": "SRS/概设详设/架构/AI证据与学生自写引导已形成；本岗产品实现和产品测试0，非最终验收",
   "artifacts": [
     {
       "path": "reports/final/requirements-report.md",
-      "status": "本岗文档/证据，不表示软件已交付"
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
       "path": "reports/final/design-report.md",
-      "status": "本岗文档/证据，不表示软件已交付"
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
       "path": "reports/final/ai-development-report.md",
-      "status": "本岗文档/证据，不表示软件已交付"
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
-      "path": "docs/reports/M1-collection.md",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "docs/reports/M1-collection.json",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "docs/reports/M1-source-manifest.json",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "docs/reports/M1-github-snapshot.json",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "docs/reports/M1-validation.json",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "agents/documentation/WORKLOG.md",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "agents/documentation/validate_report_drafts.py",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "agents/documentation/reports-draft-pr.md",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "reports/modules/documentation.md",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "records/handoffs/documentation.json",
-      "status": "本岗文档/证据，不表示软件已交付"
-    },
-    {
-      "path": "records/prompts/ROLE-documentation-REPORTS-DRAFT-v1.md",
-      "status": "本岗文档/证据，不表示软件已交付"
+      "path": "reports/final/student-study-template.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
       "path": "reports/final/submission-map.md",
-      "status": "本岗阶段说明/内容复核证据，不表示最终交付"
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
       "path": "reports/final/ai-spec-guide.md",
-      "status": "本岗阶段说明/内容复核证据，不表示最终交付"
+      "status": "本岗文档/公开证据；非最终软件交付"
     },
     {
-      "path": "docs/reports/M1-submission-source-review.json",
-      "status": "本岗阶段说明/内容复核证据，不表示最终交付"
+      "path": "docs/architecture.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-traceability.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-collection.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-collection.json",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-source-manifest.json",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-ci-snapshot.json",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "docs/reports/M2-validation.json",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "agents/documentation/prompts/ROLE-documentation-M2-QUALITY-v1.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "agents/documentation/WORKLOG.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "agents/documentation/reports-m2-pr.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "reports/modules/documentation.md",
+      "status": "本岗文档/公开证据；非最终软件交付"
+    },
+    {
+      "path": "records/handoffs/documentation.json",
+      "status": "本岗文档/公开证据；非最终软件交付"
     }
   ],
   "interfaces": {
     "inputs": [
-      "根三份T44/提交/作业提取文本，只读不提交",
-      "本树规格、D001/D002/D003、Q002及C1–C4准确SHA复审",
-      "前端f261cbf0ea94537ed9f0a1600770c93ee8109237及部署72e3275202273a60af3acc37b7a319f10eea99a7已发布报告/交接",
-      "backend/database实际send_message即时及最终原文，PR16/17正式基础SHA已收",
-      "测试限本树公开reports/modules/testing.md和records/handoffs/testing.json",
-      "亲读根作业提交注意事项.docx，29非空段，SHA及归一文字与缓存一致；不上传原件"
+      "冻结1.0.0及D004、M1原commit",
+      "9岗实际请求，backend/deployment原文回复；其他7岗未收",
+      "已发布模块报告/handoff，CI265d89b在06b9e98归档",
+      "测试仅两份公开冻结资料，无联系/私有用例",
+      "私密封面仅本地读取，不记录具体值"
     ],
     "outputs": [
-      "三份标明工作稿/非最终验收的中文报告",
-      "M1原文问取、来源哈希、GitHub快照及文档校验"
+      "8FR/9AC、7图、FR实现模块测试追踪、两组架构候选",
+      "AI证据材料与学生自写模板；非代学生研究成品"
     ],
-    "frozen_status": "D001已采用；Q002 pending；C1–C4只技术设计复审通过，不是冻结/迁移/HTTP测试",
-    "responsibility_boundary": "只本岗文件；不改产品/共享台账/M0实际问取历史，不联系测试或唤醒空闲角色"
+    "frozen_status": "1.0.0已用户采用并冻结，11文件未改",
+    "responsibility_boundary": "只本岗报告/docs/过程/交接；不改产品/测试/共享台账、不联系独立测试"
   },
   "commands_executed": [
-    "git status --short --branch；git worktree list --porcelain：独立树和base核对",
-    "cat/rg/sed：限定读取本树已发布规格/报告与根三原始文本；测试仅两份公开资料",
-    "collaboration.send_message：向正在工作的backend/database真实问取并接收即时原文，另发收尾前状态消息",
-    "git show <固定SHA>:reports/modules/<role>.md及handoff：前端/部署发布字节一致核对",
-    "gh pr view 14/15 --json；gh run view 39912067161：实际PR head/draft和首次失败run",
-    "gh api pulls/13/reviews/<id>：两条Review URL及717cd65/bc0cd34准确commit_id核对",
-    "Python标准库生成三工作稿、M1证据及交接；无产品命令/测试",
-    "documents技能及read_review说明只读应用；load_workspace_dependencies解析bundled Python",
-    "bundled Python ZIP/XML只读原提交DOCX，29非空段及附加文字部件，SHA/归一文本与缓存一致；无DOCX创建/修改/上传",
-    "git show后端0bb.../数据库4ae...已发布报告/交接，gh pr view16/17核对最终head；保存最终原文问答",
-    "python3 agents/documentation/validate_report_drafts.py：5稿/29来源哈希/115链接/两岗真实问取/8FR9AC/M0未改检查通过；git diff --check通过",
-    "git add -- <handoff列出的17显式自身文件>；git diff --cached --check：范围与空白检查通过",
-    "git commit --file /tmp/t44-documentation-reports-commit.txt：8cf92cb07319e16b31ddf6bde28095d3b213eb9c，17文件，无原件/产品/共享台账",
-    "git push --set-upstream origin codex/reports-draft：成功",
-    "gh pr create --draft --base codex/team-bootstrap --head codex/reports-draft --body-file agents/documentation/reports-draft-pr.md：PR18",
-    "attach_artifact PR18：成功；gh pr view18读回draft/open/base/head匹配"
+    "git merge --no-edit codex/integration、5e07887、265d89b、06b9e98：fast-forward",
+    "collaboration.send_message：9岗实际中性问取，未唤醒空闲岗",
+    "git show固定SHA报告/handoff；cat/rg只读规格/公开报告/真实代码用于图表",
+    "官方IEEE/ISO公开摘要浏览；未读标准正文/宣称条款合规",
+    "Python解析公开CI JUnit/gate/coverage-summary；无产品测试",
+    "本岗文档校验与git diff --check，结果见M2-validation.json"
   ],
   "results": {
-    "report_drafts": 3,
+    "report_stage": "M2可审MD，非最终验收",
     "fr_mapped": 8,
     "ac_mapped": 9,
-    "real_roles_asked": [
-      "backend",
-      "database"
-    ],
+    "mermaid_blocks": 7,
+    "architecture_comparison_groups": 2,
+    "real_roles_asked": 9,
     "real_role_responses_received": 2,
-    "published_roles_without_new_inquiry": [
-      "frontend",
-      "deployment"
-    ],
-    "q002": "pending",
-    "c1_c4": "技术设计复审通过；不放行",
-    "backend_snapshot": "正式0bb4549c1b6e4fb7247dc58dd8a5fa675161d614 / PR16，106领域单测及Ruff/format/Bandit通过，仅domain含分支约98%；非全后端/HTTP/集成",
-    "database_snapshot": "正式4ae865b8dc554813c04aacbb3a5033aa2745c799 / PR17，产品7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc，18项SQLite/mock和Ruff通过，无MySQL/项目表/业务仓储",
-    "source_manifest_count": 29,
-    "m0_history_changed": false,
+    "pending_role_responses": 7,
     "product_tests_executed_by_documentation": 0,
+    "ci_head": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+    "ci_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+    "ci_four_product_jobs": "success",
+    "ci_coverage_suite": {
+      "passed": 317,
+      "failed": 0,
+      "skipped": 0
+    },
+    "whole_python_lines": "2399/2724=88.07%",
+    "frontend_lines": "308/334=92.21%",
     "independent_acceptance_passed": false,
-    "supporting_report_drafts": 2,
-    "original_submission_docx_reviewed": true,
-    "original_submission_docx_sha256": "c688f2a25c8a1c73803e7e958e8c50681a0484ef1f34a679fa8b100ce2d64f32",
-    "draft_documents_total": 5,
-    "validated_source_hashes": 29,
-    "validated_links": 115,
-    "ai_spec_guide_lines": 51,
-    "own_artifacts": 17
+    "m0_m1_raw_history_changed": false,
+    "private_values_committed": false,
+    "word_rendered": false
   },
   "unverified": [
-    "Q002人的真实取舍、技术冻结与迁移/HTTP/实库/消息调度集成未完成",
-    "全项目覆盖率≥80%、400并发10分钟/P95/吞吐、最终有效LOC未测量",
-    "六版真实演进、十二人工修改、三人工识别幻觉、五人工校正映射未证明达标",
-    "个人信息/个人思考/亲历改码踩坑/课程建议/课件完整边界清单待本人提供",
-    "三报告不是最终验收版；Word/PDF待软件和本人材料齐备后再渲染导出"
+    "Mermaid未渲染，仅语法块结构/代码语义核对；最终DOCX须documents逐页QA",
+    "独立验收/正式性能/最终规模/完整Docker结果与准确SHA产品审核未收最终结论",
+    "7岗本轮回复未收，不冒充回答；已发布资料另引用",
+    "学生自写研究成品、个人观点和真实人工证据仍待本人；不能AI代写署名"
   ],
   "questions": [
     {
-      "owner": "coordinator/user",
-      "question": "补入Q002真实选择、冻结版本及本人信息/思考/真实人工修改与课程建议；不由AI冒充。"
+      "owner": "student",
+      "question": "依据真实经历自行写研究报告，补个人思考/课程建议/实际人工判断，不能将AI互改计人工。"
     }
   ],
   "prompt_refs": [
     {
-      "id": "ROLE-documentation-REPORTS-DRAFT-v1",
+      "id": "ROLE-documentation-M2-QUALITY-v1",
       "status": "used",
-      "actual_prompt": "records/prompts/ROLE-documentation-REPORTS-DRAFT-v1.md",
-      "improvement_reason": "从M0组织汇总转为需求/设计/研究三稿，固定来源边界、真实问取与人的待补缺口；不是同一prompt六版演进",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M2-QUALITY-v1.md",
       "artifacts": [
         "reports/final/requirements-report.md",
         "reports/final/design-report.md",
         "reports/final/ai-development-report.md",
-        "docs/reports/M1-collection.md",
-        "docs/reports/M1-collection.json",
-        "docs/reports/M1-source-manifest.json",
-        "docs/reports/M1-github-snapshot.json",
-        "docs/reports/M1-validation.json",
+        "reports/final/student-study-template.md",
+        "reports/final/submission-map.md",
+        "reports/final/ai-spec-guide.md",
+        "docs/architecture.md",
+        "docs/reports/M2-traceability.md",
+        "docs/reports/M2-collection.md",
+        "docs/reports/M2-collection.json",
+        "docs/reports/M2-source-manifest.json",
+        "docs/reports/M2-ci-snapshot.json",
+        "docs/reports/M2-validation.json",
+        "agents/documentation/prompts/ROLE-documentation-M2-QUALITY-v1.md",
         "agents/documentation/WORKLOG.md",
-        "agents/documentation/validate_report_drafts.py",
-        "agents/documentation/reports-draft-pr.md",
+        "agents/documentation/reports-m2-pr.md",
         "reports/modules/documentation.md",
-        "records/handoffs/documentation.json",
-        "records/prompts/ROLE-documentation-REPORTS-DRAFT-v1.md"
+        "records/handoffs/documentation.json"
       ]
     }
   ],
-  "updated_at": "2026-10-23T15:11:46.550209+08:00",
+  "updated_at": "2026-10-23T17:38:44.485818+08:00",
   "delivery": {
-    "implementation_commit": "8cf92cb07319e16b31ddf6bde28095d3b213eb9c",
-    "branch": "codex/reports-draft",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/18",
-    "base": "codex/team-bootstrap",
-    "draft": true,
-    "pushed": true,
-    "artifact_attached": true,
-    "initial_pr_head_verified": "8cf92cb07319e16b31ddf6bde28095d3b213eb9c",
-    "own_changed_files": 17,
-    "notes": "后续仅补本条实际发布记录和WORKLOG；最终HEAD由Git/PR元数据确定，不自包含自身SHA。未合并main或发布审核success。"
+    "branch": "codex/reports-m2",
+    "base": "codex/integration",
+    "stage": "准备发布可审checkpoint；实际SHA/PR发布后补",
+    "previous_M1_final_commit": "a2a68d0e32a44f6f074048bf69aefd82cd058f52",
+    "previous_M1_PR": "https://github.com/HJY147/t44-dev-trace/pull/18"
   }
 }
