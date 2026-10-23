@@ -229,3 +229,9 @@ specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给
 AI专审员在42243/0549真实SQLite HTTP确认合法audit.kind1与schedule.kindtrue因Python容器相等被错误关联；正常新写原Schema已拒绝true，问题在旧历史候选。原审查不通过保留，旧504 CI绿色不能替代未覆盖反例。后端先设计ad6a9b3归档，再原986无mock实际JSON/HTTP得2红4绿，窄修源码bcb0e1bbb1440df958a04e87afea0e5b015d2f17改为双方EvidenceRefs合法+JSON精确类型/原文值比较；6案+1原正常历史回归7绿。证据agents/backend/plan-reason-evidence-type/summary.json，均属AI开发/审核行为，不是学生纠错或独立验收。
 
 无冻结/DB/runtime/正常写/输入normalization/依赖配置变化，旧行不写回；对象键序无关、array有序、字符串不正规化，历史1与1.0保守不猜。严格静态通过/14hash一致/原986前缀保留；单源文件净+4，本Issue后端累计+99，规模继续未过。此轮没有MySQL/全套/浏览器/性能重跑；新源44生产文件全CI、专审和独立复验待根安排，不能沿用旧43分母或旧504结果称通过。
+
+## N07与870离线C：有限观察，生产不改
+
+隔离codex/backend-source-budget-profile基cee7，应用固定bc5。N07读取原6307/缺1207并交一页n07-source-budget-one-page.md：已实施净省0；旧C静态-10未应用，假设未来全可落也6297超1197；扫描run14字段/通知分页重叠不等于净省，尚无1207可信解。不改功能/类型/守卫/审计/统计根或3500–5100，重大选择留人。
+
+设计84fee744先行、工具964f4bb随后，只执行一次870纯合成诊断，exit0/main墙0.350673s/CPU0.350167s。19样本错误签名/全错误数一致/无效ref failclosed，570独立iter jobs每模式3450错误/30异常，输入/SPEC不变；不证明全38HTTP/线程安全。构造CPU3.670/0.438ms、iter95.267/87.347ms，构造只占此混合两段3.7094%；105错误样本偏重、固定顺序/未统计重复，不推真实P95或SQL/线程瓶颈。relative inclusive热点及原始JSON见agents/backend/source-budget-profile/{raw.json,summary.json,result.md}。原工具静态失败保留、import不跑基准，无HTTP/SQL/凭据/私密输入；生产/B/C/锁/14冻结/口径均未改。

@@ -1,0 +1,4230 @@
+{
+  "status": "completed_limited_samples",
+  "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "tool_commit": "964f4bb4796c6bcfa546f3ccba157ce2c5b88515",
+  "tool_sha256": "74821a006749b623aba8bdc2a5c3af65a7b101f6213b1d713acc6e7bad2ed5e4",
+  "scope": "single sequential pure synthetic CPU batch, not HTTP/SQL/load/thread safety",
+  "limits": {
+    "wall_seconds": 15,
+    "cpu_soft_seconds": 12,
+    "cpu_hard_seconds": 15
+  },
+  "rounds": 30,
+  "profile_rounds": 5,
+  "phases": {
+    "production": {
+      "construct": {
+        "wall_seconds": 0.003670250007417053,
+        "cpu_seconds": 0.0036699999999999927,
+        "result": {
+          "instances_constructed": 570
+        }
+      },
+      "iterate_setup_excluded": {
+        "wall_seconds": 0.003896125010214746,
+        "cpu_seconds": 0.0038950000000000096
+      },
+      "iter_errors": {
+        "wall_seconds": 0.09528945799684152,
+        "cpu_seconds": 0.09526699999999999,
+        "result": {
+          "jobs": 570,
+          "errors": 3450,
+          "referencing_exceptions": 30
+        }
+      },
+      "profile": {
+        "clock": "cProfile default elapsed timer; inclusive values overlap",
+        "calls": 95,
+        "functions": [
+          {
+            "file": "tmp/backend/870_validator_profile.py",
+            "line": 120,
+            "function": "signature",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 0.000442299,
+            "inclusive_seconds": 0.049121288000000006
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 349,
+            "function": "iter_errors",
+            "primitive_calls": 670,
+            "total_calls": 810,
+            "exclusive_seconds": 0.000409701,
+            "inclusive_seconds": 0.046696468000000005
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 396,
+            "function": "descend",
+            "primitive_calls": 1185,
+            "total_calls": 4995,
+            "exclusive_seconds": 0.005021022,
+            "inclusive_seconds": 0.043586582000000006
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 274,
+            "function": "ref",
+            "primitive_calls": 1190,
+            "total_calls": 2345,
+            "exclusive_seconds": 0.0006746590000000001,
+            "inclusive_seconds": 0.04253212
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 59,
+            "function": "items",
+            "primitive_calls": 575,
+            "total_calls": 575,
+            "exclusive_seconds": 0.000245917,
+            "inclusive_seconds": 0.022571283
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 459,
+            "function": "_validate_reference",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00032906600000000004,
+            "inclusive_seconds": 0.018221286
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 653,
+            "function": "lookup",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.0010979750000000002,
+            "inclusive_seconds": 0.017889386
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 290,
+            "function": "properties",
+            "primitive_calls": 425,
+            "total_calls": 515,
+            "exclusive_seconds": 0.00035813,
+            "inclusive_seconds": 0.016564707
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 351,
+            "function": "oneOf",
+            "primitive_calls": 30,
+            "total_calls": 40,
+            "exclusive_seconds": 0.000181079,
+            "inclusive_seconds": 0.014093962000000002
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 254,
+            "function": "pointer",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.003153037,
+            "inclusive_seconds": 0.008227073
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 339,
+            "function": "evolve",
+            "primitive_calls": 2505,
+            "total_calls": 2505,
+            "exclusive_seconds": 0.002340275,
+            "inclusive_seconds": 0.005088907
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 282,
+            "function": "type",
+            "primitive_calls": 2020,
+            "total_calls": 2020,
+            "exclusive_seconds": 0.001049527,
+            "inclusive_seconds": 0.004966182
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 452,
+            "function": "is_type",
+            "primitive_calls": 4805,
+            "total_calls": 4805,
+            "exclusive_seconds": 0.000759339,
+            "inclusive_seconds": 0.003580091
+          },
+          {
+            "file": "<attrs generated methods jsonschema.validators.create.<locals>.Validator>",
+            "line": 26,
+            "function": "__init__",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.00046671900000000004,
+            "inclusive_seconds": 0.003323261
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 165,
+            "function": "_set",
+            "primitive_calls": 3205,
+            "total_calls": 3205,
+            "exclusive_seconds": 0.0020019160000000003,
+            "inclusive_seconds": 0.0032871750000000003
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 485,
+            "function": "is_valid",
+            "primitive_calls": 70,
+            "total_calls": 70,
+            "exclusive_seconds": 0.000108528,
+            "inclusive_seconds": 0.0032863330000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.next>",
+            "primitive_calls": 70,
+            "total_calls": 70,
+            "exclusive_seconds": 1.1920000000000001e-05,
+            "inclusive_seconds": 0.0031235890000000004
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 282,
+            "function": "__attrs_post_init__",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.001352827,
+            "inclusive_seconds": 0.002856542
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 94,
+            "function": "is_type",
+            "primitive_calls": 4805,
+            "total_calls": 4805,
+            "exclusive_seconds": 0.001442747,
+            "inclusive_seconds": 0.002820752
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 628,
+            "function": "urldefrag",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.0005033980000000001,
+            "inclusive_seconds": 0.0026968670000000004
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.any>",
+            "primitive_calls": 1430,
+            "total_calls": 1430,
+            "exclusive_seconds": 0.000275409,
+            "inclusive_seconds": 0.0025769
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.isinstance>",
+            "primitive_calls": 22550,
+            "total_calls": 22550,
+            "exclusive_seconds": 0.0016525630000000001,
+            "inclusive_seconds": 0.002571386
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 559,
+            "function": "urljoin",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.000489314,
+            "inclusive_seconds": 0.002453663
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 374,
+            "function": "urlparse",
+            "primitive_calls": 1845,
+            "total_calls": 1845,
+            "exclusive_seconds": 0.0013230560000000002,
+            "inclusive_seconds": 0.002395598
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 285,
+            "function": "<genexpr>",
+            "primitive_calls": 2860,
+            "total_calls": 2860,
+            "exclusive_seconds": 0.00108594,
+            "inclusive_seconds": 0.002393576
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 165,
+            "function": "create_resource",
+            "primitive_calls": 4700,
+            "total_calls": 4700,
+            "exclusive_seconds": 0.0011918080000000001,
+            "inclusive_seconds": 0.002273713
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 716,
+            "function": "_evolve",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00047446600000000005,
+            "inclusive_seconds": 0.0020978940000000003
+          },
+          {
+            "file": "site-packages/attr/_make.py",
+            "line": 587,
+            "function": "evolve",
+            "primitive_calls": 1275,
+            "total_calls": 1275,
+            "exclusive_seconds": 0.000753355,
+            "inclusive_seconds": 0.0019155690000000002
+          },
+          {
+            "file": "backend/t44/contracts/__init__.py",
+            "line": 18,
+            "function": "validator",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 9.2244e-05,
+            "inclusive_seconds": 0.0018517890000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.getattr>",
+            "primitive_calls": 24470,
+            "total_calls": 24470,
+            "exclusive_seconds": 0.001436652,
+            "inclusive_seconds": 0.001436652
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 119,
+            "function": "_coerce_args",
+            "primitive_calls": 4305,
+            "total_calls": 4305,
+            "exclusive_seconds": 0.001083648,
+            "inclusive_seconds": 0.0013953280000000001
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 55,
+            "function": "__init__",
+            "primitive_calls": 1180,
+            "total_calls": 1180,
+            "exclusive_seconds": 0.001215413,
+            "inclusive_seconds": 0.001215413
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 525,
+            "function": "urlunparse",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.000270148,
+            "inclusive_seconds": 0.0011496990000000001
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 36,
+            "function": "additionalProperties",
+            "primitive_calls": 330,
+            "total_calls": 330,
+            "exclusive_seconds": 0.000245916,
+            "inclusive_seconds": 0.001108952
+          },
+          {
+            "file": "<frozen abc>",
+            "line": 117,
+            "function": "__instancecheck__",
+            "primitive_calls": 4345,
+            "total_calls": 4345,
+            "exclusive_seconds": 0.000526733,
+            "inclusive_seconds": 0.001088027
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resource>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 4700,
+            "total_calls": 4700,
+            "exclusive_seconds": 0.001081905,
+            "inclusive_seconds": 0.001081905
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 410,
+            "function": "get_or_retrieve",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00048269000000000003,
+            "inclusive_seconds": 0.0010467150000000001
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 700,
+            "function": "in_subresource",
+            "primitive_calls": 1355,
+            "total_calls": 1355,
+            "exclusive_seconds": 0.00022518100000000002,
+            "inclusive_seconds": 0.00098849
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 227,
+            "function": "id",
+            "primitive_calls": 1450,
+            "total_calls": 1450,
+            "exclusive_seconds": 0.000278567,
+            "inclusive_seconds": 0.000851478
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'get' of 'dict' objects>",
+            "primitive_calls": 8885,
+            "total_calls": 8885,
+            "exclusive_seconds": 0.0008483760000000001,
+            "inclusive_seconds": 0.0008483760000000001
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 550,
+            "function": "combine",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 0.00010976,
+            "inclusive_seconds": 0.000762043
+          },
+          {
+            "file": "site-packages/referencing/jsonschema.py",
+            "line": 287,
+            "function": "maybe_in_subresource",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.0005164130000000001,
+            "inclusive_seconds": 0.000720954
+          },
+          {
+            "file": "site-packages/attr/_make.py",
+            "line": 1891,
+            "function": "fields",
+            "primitive_calls": 1275,
+            "total_calls": 1275,
+            "exclusive_seconds": 0.00042708000000000004,
+            "inclusive_seconds": 0.000710343
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 158,
+            "function": "maximum",
+            "primitive_calls": 785,
+            "total_calls": 785,
+            "exclusive_seconds": 0.00013037700000000002,
+            "inclusive_seconds": 0.000688219
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 149,
+            "function": "minimum",
+            "primitive_calls": 730,
+            "total_calls": 730,
+            "exclusive_seconds": 0.00012744,
+            "inclusive_seconds": 0.000670418
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 304,
+            "function": "required",
+            "primitive_calls": 590,
+            "total_calls": 590,
+            "exclusive_seconds": 0.000194717,
+            "inclusive_seconds": 0.000663341
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'join' of 'str' objects>",
+            "primitive_calls": 1470,
+            "total_calls": 1470,
+            "exclusive_seconds": 0.000357101,
+            "inclusive_seconds": 0.000607143
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 536,
+            "function": "urlunsplit",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.000346089,
+            "inclusive_seconds": 0.0005999600000000001
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'replace' of 'str' objects>",
+            "primitive_calls": 6510,
+            "total_calls": 6510,
+            "exclusive_seconds": 0.000598062,
+            "inclusive_seconds": 0.000598062
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 45,
+            "function": "is_number",
+            "primitive_calls": 1790,
+            "total_calls": 1790,
+            "exclusive_seconds": 0.000255289,
+            "inclusive_seconds": 0.0005885640000000001
+          },
+          {
+            "file": "site-packages/referencing/jsonschema.py",
+            "line": 47,
+            "function": "_dollar_id",
+            "primitive_calls": 1450,
+            "total_calls": 1450,
+            "exclusive_seconds": 0.00032829100000000003,
+            "inclusive_seconds": 0.0005616180000000001
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method _abc._abc_instancecheck>",
+            "primitive_calls": 4345,
+            "total_calls": 4345,
+            "exclusive_seconds": 0.000461917,
+            "inclusive_seconds": 0.000561294
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 586,
+            "function": "resolver_with_root",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 6.124e-05,
+            "inclusive_seconds": 0.000539458
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 223,
+            "function": "format",
+            "primitive_calls": 115,
+            "total_calls": 115,
+            "exclusive_seconds": 3.0871e-05,
+            "inclusive_seconds": 0.000530919
+          },
+          {
+            "file": "site-packages/jsonschema/_format.py",
+            "line": 111,
+            "function": "check",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.2918000000000005e-05,
+            "inclusive_seconds": 0.000493549
+          },
+          {
+            "file": "<string>",
+            "line": 1,
+            "function": "<lambda>",
+            "primitive_calls": 1845,
+            "total_calls": 1845,
+            "exclusive_seconds": 0.000272651,
+            "inclusive_seconds": 0.00047127000000000003
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 332,
+            "function": "allOf",
+            "primitive_calls": 10,
+            "total_calls": 10,
+            "exclusive_seconds": 8.626e-06,
+            "inclusive_seconds": 0.000460042
+          },
+          {
+            "file": "site-packages/jsonschema/_format.py",
+            "line": 398,
+            "function": "is_datetime",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.8344e-05,
+            "inclusive_seconds": 0.000447172
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 197,
+            "function": "<lambda>",
+            "primitive_calls": 805,
+            "total_calls": 805,
+            "exclusive_seconds": 0.00020812100000000002,
+            "inclusive_seconds": 0.00043228
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 85,
+            "function": "const",
+            "primitive_calls": 265,
+            "total_calls": 265,
+            "exclusive_seconds": 8.2836e-05,
+            "inclusive_seconds": 0.000427699
+          },
+          {
+            "file": "site-packages/rfc3339_validator.py",
+            "line": 36,
+            "function": "validate_rfc3339",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 0.00010479,
+            "inclusive_seconds": 0.000381501
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 514,
+            "function": "with_resource",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 2.5876e-05,
+            "inclusive_seconds": 0.000361049
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'update' of 'rpds.HashTrieMap' objects>",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 0.000186712,
+            "inclusive_seconds": 0.000355916
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 382,
+            "function": "if_",
+            "primitive_calls": 20,
+            "total_calls": 20,
+            "exclusive_seconds": 1.6494e-05,
+            "inclusive_seconds": 0.000354748
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resolver>",
+            "line": 31,
+            "function": "__init__",
+            "primitive_calls": 1180,
+            "total_calls": 1180,
+            "exclusive_seconds": 0.00034903,
+            "inclusive_seconds": 0.00034903
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'appendleft' of 'collections.deque' objects>",
+            "primitive_calls": 3475,
+            "total_calls": 3475,
+            "exclusive_seconds": 0.000344963,
+            "inclusive_seconds": 0.000344963
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 520,
+            "function": "with_resources",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 7.1061e-05,
+            "inclusive_seconds": 0.000335173
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.setattr>",
+            "primitive_calls": 4720,
+            "total_calls": 4720,
+            "exclusive_seconds": 0.00032077500000000003,
+            "inclusive_seconds": 0.00032077500000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'items' of 'dict' objects>",
+            "primitive_calls": 3600,
+            "total_calls": 3600,
+            "exclusive_seconds": 0.000309891,
+            "inclusive_seconds": 0.000309891
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'append' of 'list' objects>",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.000296139,
+            "inclusive_seconds": 0.000296139
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resolved>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 1080,
+            "total_calls": 1080,
+            "exclusive_seconds": 0.00028959200000000003,
+            "inclusive_seconds": 0.00028959200000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'startswith' of 'str' objects>",
+            "primitive_calls": 2265,
+            "total_calls": 2265,
+            "exclusive_seconds": 0.00028414900000000003,
+            "inclusive_seconds": 0.00028414900000000003
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Retrieved>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000283541,
+            "inclusive_seconds": 0.000283541
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'get' of 'rpds.HashTrieMap' objects>",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000280484,
+            "inclusive_seconds": 0.000280484
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 69,
+            "function": "find_additional_properties",
+            "primitive_calls": 580,
+            "total_calls": 580,
+            "exclusive_seconds": 0.00018222,
+            "inclusive_seconds": 0.000277206
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method __new__ of type object at 0x105938a30>",
+            "primitive_calls": 2460,
+            "total_calls": 2460,
+            "exclusive_seconds": 0.000268519,
+            "inclusive_seconds": 0.000268519
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 692,
+            "function": "unquote",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00019283,
+            "inclusive_seconds": 0.000266889
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 95,
+            "function": "ensure_list",
+            "primitive_calls": 1430,
+            "total_calls": 1430,
+            "exclusive_seconds": 0.00019786,
+            "inclusive_seconds": 0.000263862
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 127,
+            "function": "equal",
+            "primitive_calls": 165,
+            "total_calls": 165,
+            "exclusive_seconds": 9.4856e-05,
+            "inclusive_seconds": 0.000251614
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 1335,
+            "function": "validator_for",
+            "primitive_calls": 2505,
+            "total_calls": 2505,
+            "exclusive_seconds": 0.000247698,
+            "inclusive_seconds": 0.000247698
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 215,
+            "function": "pattern",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.9249e-05,
+            "inclusive_seconds": 0.00023683300000000001
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 52,
+            "function": "is_object",
+            "primitive_calls": 1295,
+            "total_calls": 1295,
+            "exclusive_seconds": 0.000147291,
+            "inclusive_seconds": 0.00021806600000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'setdefault' of 'dict' objects>",
+            "primitive_calls": 2505,
+            "total_calls": 2505,
+            "exclusive_seconds": 0.00021274100000000002,
+            "inclusive_seconds": 0.00021274100000000002
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 167,
+            "function": "monthrange",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.8993000000000003e-05,
+            "inclusive_seconds": 0.00020666800000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.iter>",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.000204541,
+            "inclusive_seconds": 0.000204541
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 108,
+            "function": "_noop",
+            "primitive_calls": 4305,
+            "total_calls": 4305,
+            "exclusive_seconds": 0.00019327800000000002,
+            "inclusive_seconds": 0.00019327800000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 231,
+            "function": "minLength",
+            "primitive_calls": 210,
+            "total_calls": 210,
+            "exclusive_seconds": 5.6130000000000006e-05,
+            "inclusive_seconds": 0.00019255000000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 237,
+            "function": "maxLength",
+            "primitive_calls": 210,
+            "total_calls": 210,
+            "exclusive_seconds": 5.3656e-05,
+            "inclusive_seconds": 0.00018362
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 286,
+            "function": "<genexpr>",
+            "primitive_calls": 1180,
+            "total_calls": 1180,
+            "exclusive_seconds": 0.00012048100000000001,
+            "inclusive_seconds": 0.00017616700000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 34,
+            "function": "is_integer",
+            "primitive_calls": 805,
+            "total_calls": 805,
+            "exclusive_seconds": 0.000116867,
+            "inclusive_seconds": 0.00017304400000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'split' of 'str' objects>",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00016578600000000001,
+            "inclusive_seconds": 0.00016578600000000001
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 167,
+            "function": "multipleOf",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.4435000000000004e-05,
+            "inclusive_seconds": 0.00015696700000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 87,
+            "function": "extras_msg",
+            "primitive_calls": 65,
+            "total_calls": 65,
+            "exclusive_seconds": 2.7497e-05,
+            "inclusive_seconds": 0.000146413
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 156,
+            "function": "weekday",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 7.3714e-05,
+            "inclusive_seconds": 0.000146255
+          },
+          {
+            "file": "stdlib/re/__init__.py",
+            "line": 174,
+            "function": "search",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.8713e-05,
+            "inclusive_seconds": 0.00012909
+          },
+          {
+            "file": "site-packages/jsonschema/_format.py",
+            "line": 49,
+            "function": "__init__",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 0.0001177,
+            "inclusive_seconds": 0.00012728900000000002
+          },
+          {
+            "file": "backend/t44/contracts/__init__.py",
+            "line": 26,
+            "function": "_absolute_refs",
+            "primitive_calls": 95,
+            "total_calls": 135,
+            "exclusive_seconds": 8.6506e-05,
+            "inclusive_seconds": 0.000122924
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'push_front' of 'rpds.List' objects>",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.00012193100000000001,
+            "inclusive_seconds": 0.00012193100000000001
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Registry>",
+            "line": 18,
+            "function": "__init__",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 0.00010108400000000001,
+            "inclusive_seconds": 0.00011979400000000001
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 56,
+            "function": "is_string",
+            "primitive_calls": 740,
+            "total_calls": 740,
+            "exclusive_seconds": 7.8458e-05,
+            "inclusive_seconds": 0.00011221500000000001
+          },
+          {
+            "file": "site-packages/attr/_compat.py",
+            "line": 95,
+            "function": "get_generic_base",
+            "primitive_calls": 1275,
+            "total_calls": 1275,
+            "exclusive_seconds": 0.00010819700000000001,
+            "inclusive_seconds": 0.00010819700000000001
+          },
+          {
+            "file": "<frozen abc>",
+            "line": 121,
+            "function": "__subclasscheck__",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 2.5343e-05,
+            "inclusive_seconds": 9.937700000000001e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.repr>",
+            "primitive_calls": 905,
+            "total_calls": 905,
+            "exclusive_seconds": 8.356100000000001e-05,
+            "inclusive_seconds": 8.356100000000001e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method _abc._abc_subclasscheck>",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 5.8693e-05,
+            "inclusive_seconds": 7.4034e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 92,
+            "function": "<genexpr>",
+            "primitive_calls": 380,
+            "total_calls": 380,
+            "exclusive_seconds": 4.6e-05,
+            "inclusive_seconds": 7.3875e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'update' of 'rpds.HashTrieSet' objects>",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 6.9168e-05,
+            "inclusive_seconds": 6.9168e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 127,
+            "function": "exclusiveMinimum",
+            "primitive_calls": 55,
+            "total_calls": 55,
+            "exclusive_seconds": 1.0464e-05,
+            "inclusive_seconds": 6.791700000000001e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 269,
+            "function": "enum",
+            "primitive_calls": 15,
+            "total_calls": 15,
+            "exclusive_seconds": 9.251e-06,
+            "inclusive_seconds": 6.2501e-05
+          },
+          {
+            "file": "stdlib/enum.py",
+            "line": 720,
+            "function": "__call__",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.5298e-05,
+            "inclusive_seconds": 6.0916000000000004e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 206,
+            "function": "uniqueItems",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 1.3162e-05,
+            "inclusive_seconds": 6.0124e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'match' of 're.Pattern' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 5.4417000000000004e-05,
+            "inclusive_seconds": 5.4417000000000004e-05
+          },
+          {
+            "file": "stdlib/re/__init__.py",
+            "line": 280,
+            "function": "_compile",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.0878000000000005e-05,
+            "inclusive_seconds": 4.9912000000000006e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.len>",
+            "primitive_calls": 725,
+            "total_calls": 725,
+            "exclusive_seconds": 4.9411000000000005e-05,
+            "inclusive_seconds": 4.9411000000000005e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.all>",
+            "primitive_calls": 10,
+            "total_calls": 10,
+            "exclusive_seconds": 4.332e-06,
+            "inclusive_seconds": 4.7666e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 270,
+            "function": "<genexpr>",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 8.374e-06,
+            "inclusive_seconds": 4.3959000000000004e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.sorted>",
+            "primitive_calls": 90,
+            "total_calls": 90,
+            "exclusive_seconds": 4.0501000000000004e-05,
+            "inclusive_seconds": 4.2874e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'search' of 're.Pattern' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.0465e-05,
+            "inclusive_seconds": 4.0465e-05
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 132,
+            "function": "absolute_path",
+            "primitive_calls": 550,
+            "total_calls": 550,
+            "exclusive_seconds": 4.0121000000000004e-05,
+            "inclusive_seconds": 4.0121000000000004e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 156,
+            "function": "uniq",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 1.9752e-05,
+            "inclusive_seconds": 3.325e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 194,
+            "function": "minItems",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 8.871e-06,
+            "inclusive_seconds": 3.1876000000000004e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 200,
+            "function": "maxItems",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 9.002000000000001e-06,
+            "inclusive_seconds": 3.0669e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 26,
+            "function": "is_array",
+            "primitive_calls": 175,
+            "total_calls": 175,
+            "exclusive_seconds": 1.8382e-05,
+            "inclusive_seconds": 2.688e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'insert' of 'rpds.HashTrieMap' objects>",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 2.6700000000000002e-05,
+            "inclusive_seconds": 2.6700000000000002e-05
+          },
+          {
+            "file": "stdlib/enum.py",
+            "line": 1128,
+            "function": "__new__",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 2.5618e-05,
+            "inclusive_seconds": 2.5618e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'insert' of 'rpds.HashTrieSet' objects>",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 2.4836e-05,
+            "inclusive_seconds": 2.4836e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 145,
+            "function": "unbool",
+            "primitive_calls": 290,
+            "total_calls": 290,
+            "exclusive_seconds": 2.1842000000000002e-05,
+            "inclusive_seconds": 2.1842000000000002e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'rstrip' of 'str' objects>",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 1.9124000000000002e-05,
+            "inclusive_seconds": 1.9124000000000002e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'disable' of '_lsprof.Profiler' objects>",
+            "primitive_calls": 1,
+            "total_calls": 1,
+            "exclusive_seconds": 1.9083e-05,
+            "inclusive_seconds": 1.9083e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method convert>",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 1.8710000000000002e-05,
+            "inclusive_seconds": 1.8710000000000002e-05
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Registry>",
+            "line": 1,
+            "function": "__eq__",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 1.7872e-05,
+            "inclusive_seconds": 1.7872e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'groups' of 're.Match' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.5626000000000003e-05,
+            "inclusive_seconds": 1.5626000000000003e-05
+          },
+          {
+            "file": "<frozen _collections_abc>",
+            "line": 435,
+            "function": "__subclasshook__",
+            "primitive_calls": 190,
+            "total_calls": 190,
+            "exclusive_seconds": 1.5341e-05,
+            "inclusive_seconds": 1.5341e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'extend' of 'list' objects>",
+            "primitive_calls": 105,
+            "total_calls": 105,
+            "exclusive_seconds": 1.4037000000000001e-05,
+            "inclusive_seconds": 1.4037000000000001e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'upper' of 'str' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.2167e-05,
+            "inclusive_seconds": 1.2167e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'weekday' of 'datetime.date' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.1625000000000001e-05,
+            "inclusive_seconds": 1.1625000000000001e-05
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 163,
+            "function": "_validate_month",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.0378000000000001e-05,
+            "inclusive_seconds": 1.0378000000000001e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'keys' of 'dict' objects>",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 9.589000000000001e-06,
+            "inclusive_seconds": 9.589000000000001e-06
+          },
+          {
+            "file": "<attrs generated methods referencing.exceptions.PointerToNowhere>",
+            "line": 16,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 6.625e-06,
+            "inclusive_seconds": 6.625e-06
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 306,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 3.4590000000000003e-06,
+            "inclusive_seconds": 3.4590000000000003e-06
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 242,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 2.8340000000000003e-06,
+            "inclusive_seconds": 2.8340000000000003e-06
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 164,
+            "function": "<genexpr>",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 2.373e-06,
+            "inclusive_seconds": 2.373e-06
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 143,
+            "function": "isleap",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 1.0420000000000001e-06,
+            "inclusive_seconds": 1.0420000000000001e-06
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'is_integer' of 'float' objects>",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 9.59e-07,
+            "inclusive_seconds": 9.59e-07
+          }
+        ]
+      }
+    },
+    "prototypeC": {
+      "construct": {
+        "wall_seconds": 0.0004384579951874912,
+        "cpu_seconds": 0.00043800000000004946,
+        "result": {
+          "instances_constructed": 570
+        }
+      },
+      "iterate_setup_excluded": {
+        "wall_seconds": 0.0004913750453852117,
+        "cpu_seconds": 0.0004919999999999924
+      },
+      "iter_errors": {
+        "wall_seconds": 0.0873453330132179,
+        "cpu_seconds": 0.08734699999999995,
+        "result": {
+          "jobs": 570,
+          "errors": 3450,
+          "referencing_exceptions": 30
+        }
+      },
+      "profile": {
+        "clock": "cProfile default elapsed timer; inclusive values overlap",
+        "calls": 95,
+        "functions": [
+          {
+            "file": "tmp/backend/870_validator_profile.py",
+            "line": 120,
+            "function": "signature",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 0.000366035,
+            "inclusive_seconds": 0.041723291
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 349,
+            "function": "iter_errors",
+            "primitive_calls": 670,
+            "total_calls": 810,
+            "exclusive_seconds": 0.00040713200000000005,
+            "inclusive_seconds": 0.040976866
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 396,
+            "function": "descend",
+            "primitive_calls": 1185,
+            "total_calls": 4995,
+            "exclusive_seconds": 0.0050410260000000005,
+            "inclusive_seconds": 0.038687849
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 274,
+            "function": "ref",
+            "primitive_calls": 1190,
+            "total_calls": 2345,
+            "exclusive_seconds": 0.000654822,
+            "inclusive_seconds": 0.036796042
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 59,
+            "function": "items",
+            "primitive_calls": 575,
+            "total_calls": 575,
+            "exclusive_seconds": 0.00023911300000000003,
+            "inclusive_seconds": 0.017704663000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 290,
+            "function": "properties",
+            "primitive_calls": 425,
+            "total_calls": 515,
+            "exclusive_seconds": 0.000350081,
+            "inclusive_seconds": 0.016594733
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 351,
+            "function": "oneOf",
+            "primitive_calls": 30,
+            "total_calls": 40,
+            "exclusive_seconds": 0.00017402000000000002,
+            "inclusive_seconds": 0.014056332000000001
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 459,
+            "function": "_validate_reference",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00031084300000000005,
+            "inclusive_seconds": 0.01287219
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 653,
+            "function": "lookup",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000890885,
+            "inclusive_seconds": 0.012559304
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 254,
+            "function": "pointer",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.003199473,
+            "inclusive_seconds": 0.008349828
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 339,
+            "function": "evolve",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.002425257,
+            "inclusive_seconds": 0.005290408
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 282,
+            "function": "type",
+            "primitive_calls": 2020,
+            "total_calls": 2020,
+            "exclusive_seconds": 0.0010519890000000001,
+            "inclusive_seconds": 0.004399575
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 452,
+            "function": "is_type",
+            "primitive_calls": 4805,
+            "total_calls": 4805,
+            "exclusive_seconds": 0.0007602920000000001,
+            "inclusive_seconds": 0.003575
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 165,
+            "function": "_set",
+            "primitive_calls": 3205,
+            "total_calls": 3205,
+            "exclusive_seconds": 0.002257798,
+            "inclusive_seconds": 0.0035568300000000004
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 485,
+            "function": "is_valid",
+            "primitive_calls": 70,
+            "total_calls": 70,
+            "exclusive_seconds": 0.000108838,
+            "inclusive_seconds": 0.00332042
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.next>",
+            "primitive_calls": 70,
+            "total_calls": 70,
+            "exclusive_seconds": 1.2960000000000001e-05,
+            "inclusive_seconds": 0.0031545830000000003
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 94,
+            "function": "is_type",
+            "primitive_calls": 4805,
+            "total_calls": 4805,
+            "exclusive_seconds": 0.0014368710000000002,
+            "inclusive_seconds": 0.002814708
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.isinstance>",
+            "primitive_calls": 15340,
+            "total_calls": 15340,
+            "exclusive_seconds": 0.001326504,
+            "inclusive_seconds": 0.002253175
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 165,
+            "function": "create_resource",
+            "primitive_calls": 4605,
+            "total_calls": 4605,
+            "exclusive_seconds": 0.001179547,
+            "inclusive_seconds": 0.002251794
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 716,
+            "function": "_evolve",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00046708300000000003,
+            "inclusive_seconds": 0.002059875
+          },
+          {
+            "file": "<attrs generated methods jsonschema.validators.create.<locals>.Validator>",
+            "line": 26,
+            "function": "__init__",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.00044558000000000005,
+            "inclusive_seconds": 0.00187882
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.any>",
+            "primitive_calls": 1430,
+            "total_calls": 1430,
+            "exclusive_seconds": 0.00027498700000000003,
+            "inclusive_seconds": 0.00183978
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 285,
+            "function": "<genexpr>",
+            "primitive_calls": 2860,
+            "total_calls": 2860,
+            "exclusive_seconds": 0.000362548,
+            "inclusive_seconds": 0.001660337
+          },
+          {
+            "file": "site-packages/attr/_make.py",
+            "line": 587,
+            "function": "evolve",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000561906,
+            "inclusive_seconds": 0.0014890410000000002
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.getattr>",
+            "primitive_calls": 24470,
+            "total_calls": 24470,
+            "exclusive_seconds": 0.0014498360000000001,
+            "inclusive_seconds": 0.0014498360000000001
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 282,
+            "function": "__attrs_post_init__",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.0012734620000000002,
+            "inclusive_seconds": 0.0014332400000000001
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 55,
+            "function": "__init__",
+            "primitive_calls": 1180,
+            "total_calls": 1180,
+            "exclusive_seconds": 0.001356599,
+            "inclusive_seconds": 0.001356599
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 36,
+            "function": "additionalProperties",
+            "primitive_calls": 330,
+            "total_calls": 330,
+            "exclusive_seconds": 0.00023383800000000002,
+            "inclusive_seconds": 0.001084195
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resource>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 4605,
+            "total_calls": 4605,
+            "exclusive_seconds": 0.0010722470000000001,
+            "inclusive_seconds": 0.0010722470000000001
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 700,
+            "function": "in_subresource",
+            "primitive_calls": 1355,
+            "total_calls": 1355,
+            "exclusive_seconds": 0.00022364000000000002,
+            "inclusive_seconds": 0.000992126
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 410,
+            "function": "get_or_retrieve",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000457142,
+            "inclusive_seconds": 0.000990416
+          },
+          {
+            "file": "<frozen abc>",
+            "line": 117,
+            "function": "__instancecheck__",
+            "primitive_calls": 4155,
+            "total_calls": 4155,
+            "exclusive_seconds": 0.000506337,
+            "inclusive_seconds": 0.000926671
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'get' of 'dict' objects>",
+            "primitive_calls": 8790,
+            "total_calls": 8790,
+            "exclusive_seconds": 0.0008436240000000001,
+            "inclusive_seconds": 0.0008436240000000001
+          },
+          {
+            "file": "site-packages/referencing/_core.py",
+            "line": 227,
+            "function": "id",
+            "primitive_calls": 1355,
+            "total_calls": 1355,
+            "exclusive_seconds": 0.000243016,
+            "inclusive_seconds": 0.0007684860000000001
+          },
+          {
+            "file": "site-packages/referencing/jsonschema.py",
+            "line": 287,
+            "function": "maybe_in_subresource",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.000525329,
+            "inclusive_seconds": 0.0007401630000000001
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 158,
+            "function": "maximum",
+            "primitive_calls": 785,
+            "total_calls": 785,
+            "exclusive_seconds": 0.00012956100000000002,
+            "inclusive_seconds": 0.000679089
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 149,
+            "function": "minimum",
+            "primitive_calls": 730,
+            "total_calls": 730,
+            "exclusive_seconds": 0.000126918,
+            "inclusive_seconds": 0.000666661
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 304,
+            "function": "required",
+            "primitive_calls": 590,
+            "total_calls": 590,
+            "exclusive_seconds": 0.000191478,
+            "inclusive_seconds": 0.0006550120000000001
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'replace' of 'str' objects>",
+            "primitive_calls": 6510,
+            "total_calls": 6510,
+            "exclusive_seconds": 0.000616331,
+            "inclusive_seconds": 0.000616331
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'join' of 'str' objects>",
+            "primitive_calls": 1470,
+            "total_calls": 1470,
+            "exclusive_seconds": 0.000357606,
+            "inclusive_seconds": 0.0006125620000000001
+          },
+          {
+            "file": "site-packages/attr/_make.py",
+            "line": 1891,
+            "function": "fields",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00035995300000000004,
+            "inclusive_seconds": 0.000605704
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 45,
+            "function": "is_number",
+            "primitive_calls": 1790,
+            "total_calls": 1790,
+            "exclusive_seconds": 0.00026504800000000004,
+            "inclusive_seconds": 0.0005947480000000001
+          },
+          {
+            "file": "site-packages/referencing/jsonschema.py",
+            "line": 47,
+            "function": "_dollar_id",
+            "primitive_calls": 1355,
+            "total_calls": 1355,
+            "exclusive_seconds": 0.000315306,
+            "inclusive_seconds": 0.00052547
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 223,
+            "function": "format",
+            "primitive_calls": 115,
+            "total_calls": 115,
+            "exclusive_seconds": 2.9759e-05,
+            "inclusive_seconds": 0.000515551
+          },
+          {
+            "file": "site-packages/jsonschema/_format.py",
+            "line": 111,
+            "function": "check",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.0839e-05,
+            "inclusive_seconds": 0.00047996000000000003
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 332,
+            "function": "allOf",
+            "primitive_calls": 10,
+            "total_calls": 10,
+            "exclusive_seconds": 8.999e-06,
+            "inclusive_seconds": 0.00046691600000000005
+          },
+          {
+            "file": "site-packages/jsonschema/_format.py",
+            "line": 398,
+            "function": "is_datetime",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 5.1323e-05,
+            "inclusive_seconds": 0.000435955
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 85,
+            "function": "const",
+            "primitive_calls": 265,
+            "total_calls": 265,
+            "exclusive_seconds": 8.1492e-05,
+            "inclusive_seconds": 0.000428204
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method _abc._abc_instancecheck>",
+            "primitive_calls": 4155,
+            "total_calls": 4155,
+            "exclusive_seconds": 0.000420334,
+            "inclusive_seconds": 0.000420334
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 197,
+            "function": "<lambda>",
+            "primitive_calls": 805,
+            "total_calls": 805,
+            "exclusive_seconds": 0.00019846000000000002,
+            "inclusive_seconds": 0.00041853
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 382,
+            "function": "if_",
+            "primitive_calls": 20,
+            "total_calls": 20,
+            "exclusive_seconds": 1.5457e-05,
+            "inclusive_seconds": 0.00036458300000000003
+          },
+          {
+            "file": "site-packages/rfc3339_validator.py",
+            "line": 36,
+            "function": "validate_rfc3339",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 9.8875e-05,
+            "inclusive_seconds": 0.00036015900000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'appendleft' of 'collections.deque' objects>",
+            "primitive_calls": 3475,
+            "total_calls": 3475,
+            "exclusive_seconds": 0.000355231,
+            "inclusive_seconds": 0.000355231
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.setattr>",
+            "primitive_calls": 4720,
+            "total_calls": 4720,
+            "exclusive_seconds": 0.00032251000000000003,
+            "inclusive_seconds": 0.00032251000000000003
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resolver>",
+            "line": 31,
+            "function": "__init__",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000321431,
+            "inclusive_seconds": 0.000321431
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'items' of 'dict' objects>",
+            "primitive_calls": 3490,
+            "total_calls": 3490,
+            "exclusive_seconds": 0.000303215,
+            "inclusive_seconds": 0.000303215
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'append' of 'list' objects>",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.000298504,
+            "inclusive_seconds": 0.000298504
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Retrieved>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.00028063000000000003,
+            "inclusive_seconds": 0.00028063000000000003
+          },
+          {
+            "file": "<attrs generated methods referencing._core.Resolved>",
+            "line": 29,
+            "function": "__init__",
+            "primitive_calls": 1080,
+            "total_calls": 1080,
+            "exclusive_seconds": 0.000278973,
+            "inclusive_seconds": 0.000278973
+          },
+          {
+            "file": "stdlib/urllib/parse.py",
+            "line": 692,
+            "function": "unquote",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000197313,
+            "inclusive_seconds": 0.000276574
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 95,
+            "function": "ensure_list",
+            "primitive_calls": 1430,
+            "total_calls": 1430,
+            "exclusive_seconds": 0.000198597,
+            "inclusive_seconds": 0.000269177
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 69,
+            "function": "find_additional_properties",
+            "primitive_calls": 580,
+            "total_calls": 580,
+            "exclusive_seconds": 0.00017965600000000002,
+            "inclusive_seconds": 0.00026889700000000004
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'startswith' of 'str' objects>",
+            "primitive_calls": 2170,
+            "total_calls": 2170,
+            "exclusive_seconds": 0.0002683,
+            "inclusive_seconds": 0.0002683
+          },
+          {
+            "file": "site-packages/jsonschema/validators.py",
+            "line": 1335,
+            "function": "validator_for",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.000259681,
+            "inclusive_seconds": 0.000259681
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 127,
+            "function": "equal",
+            "primitive_calls": 165,
+            "total_calls": 165,
+            "exclusive_seconds": 9.536800000000001e-05,
+            "inclusive_seconds": 0.00025271800000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'get' of 'rpds.HashTrieMap' objects>",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000252644,
+            "inclusive_seconds": 0.000252644
+          },
+          {
+            "file": "tmp/backend/870_validator_profile.py",
+            "line": 287,
+            "function": "<lambda>",
+            "primitive_calls": 95,
+            "total_calls": 95,
+            "exclusive_seconds": 2.2627000000000002e-05,
+            "inclusive_seconds": 0.00024542600000000003
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 215,
+            "function": "pattern",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.0105e-05,
+            "inclusive_seconds": 0.00023279000000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'setdefault' of 'dict' objects>",
+            "primitive_calls": 2600,
+            "total_calls": 2600,
+            "exclusive_seconds": 0.000229341,
+            "inclusive_seconds": 0.000229341
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 52,
+            "function": "is_object",
+            "primitive_calls": 1295,
+            "total_calls": 1295,
+            "exclusive_seconds": 0.00014619600000000002,
+            "inclusive_seconds": 0.00021922300000000003
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.iter>",
+            "primitive_calls": 3250,
+            "total_calls": 3250,
+            "exclusive_seconds": 0.000214834,
+            "inclusive_seconds": 0.000214834
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 231,
+            "function": "minLength",
+            "primitive_calls": 210,
+            "total_calls": 210,
+            "exclusive_seconds": 5.8267e-05,
+            "inclusive_seconds": 0.00019695000000000002
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 167,
+            "function": "monthrange",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.5862e-05,
+            "inclusive_seconds": 0.000195162
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 237,
+            "function": "maxLength",
+            "primitive_calls": 210,
+            "total_calls": 210,
+            "exclusive_seconds": 5.3912e-05,
+            "inclusive_seconds": 0.000186453
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 286,
+            "function": "<genexpr>",
+            "primitive_calls": 1180,
+            "total_calls": 1180,
+            "exclusive_seconds": 0.00012086900000000001,
+            "inclusive_seconds": 0.00017726500000000002
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 34,
+            "function": "is_integer",
+            "primitive_calls": 805,
+            "total_calls": 805,
+            "exclusive_seconds": 0.00011864900000000001,
+            "inclusive_seconds": 0.000172179
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'split' of 'str' objects>",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 0.000166322,
+            "inclusive_seconds": 0.000166322
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 167,
+            "function": "multipleOf",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 4.3413000000000006e-05,
+            "inclusive_seconds": 0.00015829
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 87,
+            "function": "extras_msg",
+            "primitive_calls": 65,
+            "total_calls": 65,
+            "exclusive_seconds": 2.7463e-05,
+            "inclusive_seconds": 0.000151084
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 156,
+            "function": "weekday",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 6.733100000000001e-05,
+            "inclusive_seconds": 0.000139211
+          },
+          {
+            "file": "stdlib/re/__init__.py",
+            "line": 174,
+            "function": "search",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.883e-05,
+            "inclusive_seconds": 0.000123341
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 56,
+            "function": "is_string",
+            "primitive_calls": 740,
+            "total_calls": 740,
+            "exclusive_seconds": 8.1883e-05,
+            "inclusive_seconds": 0.00011846300000000001
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'push_front' of 'rpds.List' objects>",
+            "primitive_calls": 615,
+            "total_calls": 615,
+            "exclusive_seconds": 0.000103751,
+            "inclusive_seconds": 0.000103751
+          },
+          {
+            "file": "site-packages/attr/_compat.py",
+            "line": 95,
+            "function": "get_generic_base",
+            "primitive_calls": 1085,
+            "total_calls": 1085,
+            "exclusive_seconds": 8.7602e-05,
+            "inclusive_seconds": 8.7602e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.repr>",
+            "primitive_calls": 905,
+            "total_calls": 905,
+            "exclusive_seconds": 8.435800000000001e-05,
+            "inclusive_seconds": 8.435800000000001e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 92,
+            "function": "<genexpr>",
+            "primitive_calls": 380,
+            "total_calls": 380,
+            "exclusive_seconds": 4.9729000000000004e-05,
+            "inclusive_seconds": 7.7691e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 127,
+            "function": "exclusiveMinimum",
+            "primitive_calls": 55,
+            "total_calls": 55,
+            "exclusive_seconds": 1.0296000000000001e-05,
+            "inclusive_seconds": 6.7167e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 269,
+            "function": "enum",
+            "primitive_calls": 15,
+            "total_calls": 15,
+            "exclusive_seconds": 8.333000000000001e-06,
+            "inclusive_seconds": 6.0958e-05
+          },
+          {
+            "file": "stdlib/enum.py",
+            "line": 720,
+            "function": "__call__",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.4921e-05,
+            "inclusive_seconds": 6.0586000000000006e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 206,
+            "function": "uniqueItems",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 1.1377000000000001e-05,
+            "inclusive_seconds": 5.7584e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'match' of 're.Pattern' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 5.0331e-05,
+            "inclusive_seconds": 5.0331e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.len>",
+            "primitive_calls": 725,
+            "total_calls": 725,
+            "exclusive_seconds": 4.9671000000000006e-05,
+            "inclusive_seconds": 4.9671000000000006e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.all>",
+            "primitive_calls": 10,
+            "total_calls": 10,
+            "exclusive_seconds": 4.672e-06,
+            "inclusive_seconds": 4.7209e-05
+          },
+          {
+            "file": "stdlib/re/__init__.py",
+            "line": 280,
+            "function": "_compile",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 2.9484e-05,
+            "inclusive_seconds": 4.5096e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 270,
+            "function": "<genexpr>",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 7.827e-06,
+            "inclusive_seconds": 4.3078e-05
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 132,
+            "function": "absolute_path",
+            "primitive_calls": 550,
+            "total_calls": 550,
+            "exclusive_seconds": 4.1812000000000006e-05,
+            "inclusive_seconds": 4.1812000000000006e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<built-in method builtins.sorted>",
+            "primitive_calls": 90,
+            "total_calls": 90,
+            "exclusive_seconds": 3.8038000000000004e-05,
+            "inclusive_seconds": 4.0125e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'search' of 're.Pattern' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 3.9415e-05,
+            "inclusive_seconds": 3.9415e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 194,
+            "function": "minItems",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 9.209000000000001e-06,
+            "inclusive_seconds": 3.2668e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 156,
+            "function": "uniq",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 1.9415e-05,
+            "inclusive_seconds": 3.2624000000000005e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_keywords.py",
+            "line": 200,
+            "function": "maxItems",
+            "primitive_calls": 35,
+            "total_calls": 35,
+            "exclusive_seconds": 9.078e-06,
+            "inclusive_seconds": 3.1248e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_types.py",
+            "line": 26,
+            "function": "is_array",
+            "primitive_calls": 175,
+            "total_calls": 175,
+            "exclusive_seconds": 1.8621e-05,
+            "inclusive_seconds": 2.6873000000000002e-05
+          },
+          {
+            "file": "stdlib/enum.py",
+            "line": 1128,
+            "function": "__new__",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 2.5665000000000002e-05,
+            "inclusive_seconds": 2.5665000000000002e-05
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 145,
+            "function": "unbool",
+            "primitive_calls": 290,
+            "total_calls": 290,
+            "exclusive_seconds": 2.0851e-05,
+            "inclusive_seconds": 2.0851e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'upper' of 'str' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.8923e-05,
+            "inclusive_seconds": 1.8923e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'disable' of '_lsprof.Profiler' objects>",
+            "primitive_calls": 1,
+            "total_calls": 1,
+            "exclusive_seconds": 1.7500000000000002e-05,
+            "inclusive_seconds": 1.7500000000000002e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'groups' of 're.Match' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.5791000000000002e-05,
+            "inclusive_seconds": 1.5791000000000002e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'extend' of 'list' objects>",
+            "primitive_calls": 105,
+            "total_calls": 105,
+            "exclusive_seconds": 1.3379e-05,
+            "inclusive_seconds": 1.3379e-05
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'weekday' of 'datetime.date' objects>",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 1.1294e-05,
+            "inclusive_seconds": 1.1294e-05
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 163,
+            "function": "_validate_month",
+            "primitive_calls": 110,
+            "total_calls": 110,
+            "exclusive_seconds": 9.131000000000001e-06,
+            "inclusive_seconds": 9.131000000000001e-06
+          },
+          {
+            "file": "<attrs generated methods referencing.exceptions.PointerToNowhere>",
+            "line": 16,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 4.791e-06,
+            "inclusive_seconds": 4.791e-06
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 306,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 3.1660000000000003e-06,
+            "inclusive_seconds": 3.1660000000000003e-06
+          },
+          {
+            "file": "site-packages/jsonschema/_utils.py",
+            "line": 164,
+            "function": "<genexpr>",
+            "primitive_calls": 25,
+            "total_calls": 25,
+            "exclusive_seconds": 2.087e-06,
+            "inclusive_seconds": 2.087e-06
+          },
+          {
+            "file": "site-packages/jsonschema/exceptions.py",
+            "line": 242,
+            "function": "__init__",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 2.043e-06,
+            "inclusive_seconds": 2.043e-06
+          },
+          {
+            "file": "stdlib/calendar.py",
+            "line": 143,
+            "function": "isleap",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 9.58e-07,
+            "inclusive_seconds": 9.58e-07
+          },
+          {
+            "file": "~",
+            "line": 0,
+            "function": "<method 'is_integer' of 'float' objects>",
+            "primitive_calls": 5,
+            "total_calls": 5,
+            "exclusive_seconds": 9.160000000000001e-07,
+            "inclusive_seconds": 9.160000000000001e-07
+          }
+        ]
+      }
+    }
+  },
+  "actual_import": {
+    "module": "backend/t44/contracts/__init__.py",
+    "contracts_sha256": "ee2a72d0ee435a63686e80548da2fdc1b0b2df05c399820e19973f8100dc8cdc",
+    "spec_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0"
+  },
+  "prototype_one_off_root": {
+    "wall_seconds": 4.641601117327809e-05,
+    "cpu_seconds": 4.600000000000437e-05
+  },
+  "samples": [
+    {
+      "name": "plan-valid",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "2026-10-24T00:00:00Z",
+        "planned_end": "2026-10-25T00:00:00Z",
+        "estimated_hours": 8,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic"
+      },
+      "expected": true
+    },
+    {
+      "name": "plan-extra",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "2026-10-24T00:00:00Z",
+        "planned_end": "2026-10-25T00:00:00Z",
+        "estimated_hours": 8,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic",
+        "extra": 1
+      },
+      "expected": false
+    },
+    {
+      "name": "plan-calendar",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "2026-10-24T00:00:00Z",
+        "planned_end": "2026-02-30T00:00:00Z",
+        "estimated_hours": 8,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic"
+      },
+      "expected": false
+    },
+    {
+      "name": "plan-year1000",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "1000-01-01T00:00:00Z",
+        "planned_end": "1000-01-02T00:00:00Z",
+        "estimated_hours": 8,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic"
+      },
+      "expected": true
+    },
+    {
+      "name": "plan-year9999",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "9999-01-01T00:00:00Z",
+        "planned_end": "9999-01-02T00:00:00Z",
+        "estimated_hours": 8,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic"
+      },
+      "expected": true
+    },
+    {
+      "name": "plan-boolean-hours",
+      "schema": {
+        "$ref": "#/components/schemas/Plan"
+      },
+      "value": {
+        "planned_start": "2026-10-24T00:00:00Z",
+        "planned_end": "2026-10-25T00:00:00Z",
+        "estimated_hours": true,
+        "buffer_hours": 1,
+        "delay_contingency": "Synthetic local diagnostic"
+      },
+      "expected": false
+    },
+    {
+      "name": "id-boolean",
+      "schema": {
+        "$ref": "#/components/schemas/Id"
+      },
+      "value": true,
+      "expected": false
+    },
+    {
+      "name": "id-integral-float",
+      "schema": {
+        "$ref": "#/components/schemas/Id"
+      },
+      "value": 1.0,
+      "expected": true
+    },
+    {
+      "name": "evidence-valid",
+      "schema": {
+        "$ref": "#/components/schemas/EvidenceRefs"
+      },
+      "value": [
+        {
+          "kind": 2,
+          "locator": "synthetic/profile",
+          "description": "Synthetic"
+        }
+      ],
+      "expected": true
+    },
+    {
+      "name": "evidence-boolean",
+      "schema": {
+        "$ref": "#/components/schemas/EvidenceRefs"
+      },
+      "value": [
+        {
+          "kind": true,
+          "locator": "synthetic/profile",
+          "description": "Synthetic"
+        }
+      ],
+      "expected": false
+    },
+    {
+      "name": "task-valid",
+      "schema": {
+        "$ref": "#/components/schemas/TaskCreate"
+      },
+      "value": {
+        "title": "Synthetic",
+        "iteration_id": 1,
+        "owner_id": 1,
+        "plan": {
+          "planned_start": "2026-10-24T00:00:00Z",
+          "planned_end": "2026-10-25T00:00:00Z",
+          "estimated_hours": 8,
+          "buffer_hours": 1,
+          "delay_contingency": "Synthetic local diagnostic"
+        },
+        "dependency_task_ids": []
+      },
+      "expected": true
+    },
+    {
+      "name": "task-nested-invalid",
+      "schema": {
+        "$ref": "#/components/schemas/TaskCreate"
+      },
+      "value": {
+        "title": "Synthetic",
+        "iteration_id": 1,
+        "owner_id": true,
+        "plan": {
+          "planned_start": "2026-10-24T00:00:00Z",
+          "planned_end": "2026-10-25T00:00:00Z",
+          "estimated_hours": 8,
+          "buffer_hours": 1,
+          "delay_contingency": "Synthetic local diagnostic",
+          "extra": 1
+        },
+        "dependency_task_ids": []
+      },
+      "expected": false
+    },
+    {
+      "name": "transition-valid",
+      "schema": {
+        "$ref": "#/components/schemas/TransitionRequest"
+      },
+      "value": {
+        "expected_version": 1,
+        "action": 1
+      },
+      "expected": true
+    },
+    {
+      "name": "transition-invalid",
+      "schema": {
+        "$ref": "#/components/schemas/TransitionRequest"
+      },
+      "value": {
+        "expected_version": true,
+        "action": 0
+      },
+      "expected": false
+    },
+    {
+      "name": "contract-valid",
+      "schema": {
+        "$ref": "#/components/schemas/ContractValidationRequest"
+      },
+      "value": {
+        "category": 1,
+        "payload": {
+          "title": "Synthetic",
+          "iteration_id": 1,
+          "owner_id": 1,
+          "plan": {
+            "planned_start": "2026-10-24T00:00:00Z",
+            "planned_end": "2026-10-25T00:00:00Z",
+            "estimated_hours": 8,
+            "buffer_hours": 1,
+            "delay_contingency": "Synthetic local diagnostic"
+          },
+          "dependency_task_ids": []
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "contract-invalid",
+      "schema": {
+        "$ref": "#/components/schemas/ContractValidationRequest"
+      },
+      "value": {
+        "category": 1,
+        "payload": {
+          "title": "Synthetic",
+          "iteration_id": 1,
+          "owner_id": 1,
+          "plan": {
+            "planned_start": "2026-10-24T00:00:00Z",
+            "planned_end": "2026-10-25T00:00:00Z",
+            "estimated_hours": 8,
+            "buffer_hours": 1,
+            "delay_contingency": "Synthetic local diagnostic"
+          },
+          "dependency_task_ids": [],
+          "extra": 1
+        }
+      },
+      "expected": false
+    },
+    {
+      "name": "generated-wrapper",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/TaskCreate"
+          }
+        },
+        "required": [
+          "body"
+        ],
+        "additionalProperties": false
+      },
+      "value": {
+        "body": {
+          "title": "Synthetic",
+          "iteration_id": 1,
+          "owner_id": 1,
+          "plan": {
+            "planned_start": "2026-10-24T00:00:00Z",
+            "planned_end": "2026-10-25T00:00:00Z",
+            "estimated_hours": 8,
+            "buffer_hours": 1,
+            "delay_contingency": "Synthetic local diagnostic"
+          },
+          "dependency_task_ids": []
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "all105-errors",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Id"
+        }
+      },
+      "value": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected": false
+    },
+    {
+      "name": "unknown-local-ref",
+      "schema": {
+        "$ref": "#/components/schemas/ProfileMissing"
+      },
+      "value": {},
+      "expected": "raise"
+    }
+  ],
+  "equivalence": [
+    {
+      "case": "plan-valid",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "plan-extra",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "additionalProperties",
+            "Does not satisfy additionalProperties"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "additionalProperties",
+            "Does not satisfy additionalProperties"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "plan-calendar",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/planned_end",
+            "format",
+            "Does not satisfy format"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/planned_end",
+            "format",
+            "Does not satisfy format"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "plan-year1000",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "plan-year9999",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "plan-boolean-hours",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/estimated_hours",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/estimated_hours",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "id-boolean",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "id-integral-float",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "evidence-valid",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "evidence-boolean",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 2,
+        "violations": [
+          [
+            "/0/kind",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/0/kind",
+            "enum",
+            "Does not satisfy enum"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 2,
+        "violations": [
+          [
+            "/0/kind",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/0/kind",
+            "enum",
+            "Does not satisfy enum"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "task-valid",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "task-nested-invalid",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 2,
+        "violations": [
+          [
+            "/owner_id",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/plan",
+            "additionalProperties",
+            "Does not satisfy additionalProperties"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 2,
+        "violations": [
+          [
+            "/owner_id",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/plan",
+            "additionalProperties",
+            "Does not satisfy additionalProperties"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "transition-valid",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "transition-invalid",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "oneOf",
+            "Does not satisfy oneOf"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "oneOf",
+            "Does not satisfy oneOf"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "contract-valid",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "contract-invalid",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "oneOf",
+            "Does not satisfy oneOf"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 1,
+        "violations": [
+          [
+            "/",
+            "oneOf",
+            "Does not satisfy oneOf"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "generated-wrapper",
+      "production": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "prototypeC": {
+        "outcome": "valid",
+        "total_errors": 0,
+        "violations": []
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "all105-errors",
+      "production": {
+        "outcome": "invalid",
+        "total_errors": 105,
+        "violations": [
+          [
+            "/0",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/1",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/2",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/3",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/4",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/5",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/6",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/7",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/8",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/9",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/10",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/11",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/12",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/13",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/14",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/15",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/16",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/17",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/18",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/19",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/20",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/21",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/22",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/23",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/24",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/25",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/26",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/27",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/28",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/29",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/30",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/31",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/32",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/33",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/34",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/35",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/36",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/37",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/38",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/39",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/40",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/41",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/42",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/43",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/44",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/45",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/46",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/47",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/48",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/49",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/50",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/51",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/52",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/53",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/54",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/55",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/56",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/57",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/58",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/59",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/60",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/61",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/62",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/63",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/64",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/65",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/66",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/67",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/68",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/69",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/70",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/71",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/72",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/73",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/74",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/75",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/76",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/77",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/78",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/79",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/80",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/81",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/82",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/83",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/84",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/85",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/86",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/87",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/88",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/89",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/90",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/91",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/92",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/93",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/94",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/95",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/96",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/97",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/98",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/99",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "prototypeC": {
+        "outcome": "invalid",
+        "total_errors": 105,
+        "violations": [
+          [
+            "/0",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/1",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/2",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/3",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/4",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/5",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/6",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/7",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/8",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/9",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/10",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/11",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/12",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/13",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/14",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/15",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/16",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/17",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/18",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/19",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/20",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/21",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/22",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/23",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/24",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/25",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/26",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/27",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/28",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/29",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/30",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/31",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/32",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/33",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/34",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/35",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/36",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/37",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/38",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/39",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/40",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/41",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/42",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/43",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/44",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/45",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/46",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/47",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/48",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/49",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/50",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/51",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/52",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/53",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/54",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/55",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/56",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/57",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/58",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/59",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/60",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/61",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/62",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/63",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/64",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/65",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/66",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/67",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/68",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/69",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/70",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/71",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/72",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/73",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/74",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/75",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/76",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/77",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/78",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/79",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/80",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/81",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/82",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/83",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/84",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/85",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/86",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/87",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/88",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/89",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/90",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/91",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/92",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/93",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/94",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/95",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/96",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/97",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/98",
+            "type",
+            "Does not satisfy type"
+          ],
+          [
+            "/99",
+            "type",
+            "Does not satisfy type"
+          ]
+        ]
+      },
+      "equal": true,
+      "expected_met": true
+    },
+    {
+      "case": "unknown-local-ref",
+      "production": {
+        "outcome": "exception",
+        "exception": "jsonschema.exceptions._WrappedReferencingError"
+      },
+      "prototypeC": {
+        "outcome": "exception",
+        "exception": "jsonschema.exceptions._WrappedReferencingError"
+      },
+      "equal": true,
+      "expected_met": true
+    }
+  ],
+  "instance_boundaries": {
+    "production": {
+      "distinct_validators": true,
+      "distinct_interleaved_generators": true,
+      "format_checker_shared_between_derived": false
+    },
+    "prototypeC": {
+      "distinct_validators": true,
+      "distinct_interleaved_generators": true,
+      "format_checker_shared_between_derived": true
+    }
+  },
+  "checker_names_unchanged": true,
+  "spec_and_inputs_unchanged": true,
+  "total_wall_seconds": 0.3506727909552865,
+  "total_cpu_seconds": 0.350167
+}
