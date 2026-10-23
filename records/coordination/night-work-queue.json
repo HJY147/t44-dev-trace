@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T18:01:38.818544+00:00",
+  "updated_at": "2026-10-23T18:39:48.844197+00:00",
   "authorization": "records/prompts/U019-original.md",
   "window_observed_start_utc": "2026-10-23T17:43:01Z",
   "deadline_utc": "2026-10-24T01:43:00Z",
@@ -22,7 +22,7 @@
     {
       "id": "N03",
       "task": "Limited new UI audit by reviewer; no overall release",
-      "status": "840_review_published_75_supplement_awaits_remote_COMMENT"
+      "status": "complete_limited_840_and_75_reviews_COMMENTS_retained_dce940a"
     },
     {
       "id": "N04",
@@ -32,12 +32,12 @@
     {
       "id": "N05",
       "task": "Independent tester continues original pre-frozen unfinished stages with neutral f118 capability; no completed-case rerun",
-      "status": "original_unfinished_R5_hosted39998518039_UI_restored_no_data_reset"
+      "status": "R6_hosted40003603947_recovered_tester_reviewing_original_unfinished_cases_UI_P2_published"
     },
     {
       "id": "N06",
       "task": "Bounded developer contract ABBA90s comparison after UI quiet; not formal performance; design before write optimization",
-      "status": "queued_backend_role"
+      "status": "single_ABBA_complete_exit0_39.88sec_18_38_01_to_18_38_41UTC_pending_backend_analysis_not_formal"
     },
     {
       "id": "N07",
@@ -47,12 +47,17 @@
     {
       "id": "N08",
       "task": "M5 living technical reports, requirement/design evolution and diagrams, function I/O and module tests, genuine AI prompt/debug traces",
-      "status": "documentation_M5_role_running"
+      "status": "M5_MD_in_progress_three_diagram_sources_ready_render_pending"
     },
     {
       "id": "N09",
       "task": "Private Word update and visual QA only after stable content; student study remains original human prose",
       "status": "queued_after_M5_markdown"
+    },
+    {
+      "id": "N10",
+      "task": "Fix independently published V2-UI-001 logout DOM context residue via design/regression/minimal implementation/review",
+      "status": "frontend_logout_role_designing_Issue25"
     }
   ],
   "constraints": [
@@ -63,5 +68,15 @@
     "Reuse prior passed checks unless changed source or unresolved concern requires new checks",
     "Small implementation issues resolved autonomously; record large business decisions and continue other work"
   ],
-  "temporary_agent_usage_errors": "reviewer and tester resumed on one retry; no fake results and no developer takeover of private tests"
+  "temporary_agent_usage_errors": "reviewer and tester resumed on one retry; no fake results and no developer takeover of private tests",
+  "latest_developer_CI": {
+    "source": "6ba9f94ad23ac96380269aaefa8726f8b535b450",
+    "run": 39999929187,
+    "result": "success",
+    "backend": 412,
+    "frontend": 30,
+    "docker_run": 39999920326,
+    "raw_archive_commit": "b9f7fbd",
+    "not_final_acceptance": true
+  }
 }
