@@ -1,0 +1,34 @@
+{
+  "started_at_utc": "2026-10-23T19:57:02.004004+00:00",
+  "operator": "AI coordinator",
+  "source_release": "OTP-28.5.0.7",
+  "source_asset_sha256": "ddf17db6d3e9b7a7cfac0d72238ddc8ea040fedc5e3dfad82fc90675319d6c93",
+  "source": ".agent-worktrees/.runtime/native-mq-20261023/otp_src_28.5.0.7",
+  "prefix": ".agent-worktrees/.runtime/native-mq-20261023/erlang-28.5.0.7",
+  "openssl": "existing bundled OpenSSL3.6.2, headers and library; no system change",
+  "compiler_jobs": 4,
+  "total_budget_seconds": 1800,
+  "steps": [
+    {
+      "phase": "configure",
+      "argv": [
+        "./configure",
+        "--prefix=/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-mq-20261023/erlang-28.5.0.7",
+        "--with-ssl=/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler",
+        "--with-ssl-rpath=/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler/lib",
+        "--enable-dynamic-ssl-lib",
+        "--without-javac",
+        "--without-wx",
+        "--without-odbc"
+      ],
+      "started_at_utc": "2026-10-23T19:57:02.004552+00:00",
+      "log": ".agent-worktrees/.runtime/native-mq-20261023/configure.log",
+      "exit_code": 1,
+      "ended_at_utc": "2026-10-23T19:57:31.072799+00:00",
+      "log_sha256": "f034d7c41a131902736d71afb35cb1492b06f15ff4b6bbefd035dd7e054b5752",
+      "log_bytes": 34406
+    }
+  ],
+  "server_started": false,
+  "status": "failed"
+}

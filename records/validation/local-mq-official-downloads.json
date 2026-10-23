@@ -1,0 +1,31 @@
+{
+  "prior_attempt": {
+    "exit_code": 1,
+    "client": "system Python3.12 urllib",
+    "error": "SSLCertVerificationError unable to get local issuer certificate before any asset opened",
+    "evidence": "actual tool call output retained, not a separately captured raw log",
+    "correction": "Use macOS curl with ordinary system certificate validation; no TLS bypass or trust-store mutation"
+  },
+  "assets": [
+    {
+      "repository": "erlang/otp",
+      "tag": "OTP-28.5.0.7",
+      "asset": "otp_src_28.5.0.7.tar.gz",
+      "url": "https://github.com/erlang/otp/releases/download/OTP-28.5.0.7/otp_src_28.5.0.7.tar.gz",
+      "sha256": "ddf17db6d3e9b7a7cfac0d72238ddc8ea040fedc5e3dfad82fc90675319d6c93",
+      "bytes": 105472700,
+      "verified_against": "official GitHub release asset API digest",
+      "at_utc": "2026-10-23T19:54:45.033454+00:00"
+    },
+    {
+      "repository": "rabbitmq/rabbitmq-server",
+      "tag": "v4.3.6",
+      "asset": "rabbitmq-server-generic-unix-4.3.6.tar.xz",
+      "url": "https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.3.6/rabbitmq-server-generic-unix-4.3.6.tar.xz",
+      "sha256": "aa0ff5de9ff0136dc42eba21dc3a973cc3b286437cdba0f45556e890509c1614",
+      "bytes": 23779592,
+      "verified_against": "official GitHub release asset API digest",
+      "at_utc": "2026-10-23T19:54:49.510880+00:00"
+    }
+  ]
+}
