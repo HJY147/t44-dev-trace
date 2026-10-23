@@ -220,3 +220,10 @@
 - 旧snapshot7端口不包含v3的5177/18086，不是v3过去全时未变证据；只离线纠正，未来另准入须增补UID/start/argv hash基线，当前不补跑。
 
 - 待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931（源084618…）已push；PR37新正文/当时head62ac/drafttrue及Issue7#6376718503、PR37#6376718790均GET逐字一致，末尾仅文档回执归档，最终head另报。原4ef唯一360false保留，新源未实跑；交根专项复核后本轮结束。
+
+### NATIVE-BOUNDED-DEMO-v1 新唯一360复验全停
+
+- 根在a7bad限定复审/1e9整合后另准入新fresh360，工具仍62ac/084618、应用bc5/92SHA、runtime未改。app_20261023_233238_345882真实exit0/summarytrue/cycletrue/cleanuptrue；原4ef360失败原件不改。
+- 首两扫描60.324684s/额外TTL300轮换1次，API/consumer/UI各1/scanner3代/4worker，3服务凭据+ready会话全撤销；controller验证4条/DB同UTC8completed分口径，旧16/26只复核/新outbox0。
+- 截止23:38:39.043824Z→实际停止请求23:38:39.044609Z→summary23:38:41.688950Z→外部wait实际exit0；12登记PID含workers/runner及Rabbit/EPMD全gone，新端口closed，九端口三个观察点身份全等（本次补充，非旧snapshot或全时监控证明）。
+- 后置提取原bytes JSON失败exit1单独保留，窄转hex后只读提取exit0，无服务重跑。证据serve-retest-*；窗口已释放，4h尚未准入，独立/性能/云不推定。

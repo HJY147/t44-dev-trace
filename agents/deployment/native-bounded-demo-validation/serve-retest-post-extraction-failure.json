@@ -1,0 +1,16 @@
+{
+  "attempt": 1,
+  "actual_exit_code": 1,
+  "phase": "post proof JSON serialization after readonly queries;actual serve driver alreadyexit0",
+  "error": "PUBLIC_JSON_TYPE_REJECTED",
+  "cause": "raw scan_runs.rule_hash is bytes and application.json_bytes supports datetime only",
+  "source_sha256": "c9251f0f0ad436f4dc735fce371f720fc5ba34a0754a4d485aca1d1a0a2ea362",
+  "actual_controller_changed": false,
+  "runtime_repeated": false,
+  "actual_corrected_extract_exit_code": 0,
+  "correction": "rule_hash bytes -> hex only;native SELECTs rerun after controller exited;no service restart",
+  "raw_exception_capture_file_exists": false,
+  "observed_exception_retained_in_tool_transcript": true,
+  "original_source_byte_copy": "serve-retest-post-attempt1.py",
+  "new_source_byte_copy": "serve-retest-post.py"
+}

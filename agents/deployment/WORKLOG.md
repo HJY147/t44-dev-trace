@@ -292,3 +292,11 @@
 
 - 窄修代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931已push，application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。PR37整体替换正文（不是只追加旧“未准入/未执行”的冲突段）后GET严格逐字一致，实测当时head完整62ac/drafttrue；Issue7评论6376718503、PR37评论6376718790再次GET逐字一致。旧tool-stage GET正文为历史原件保留。
 - 末尾归档仅含文档/脱敏GitHub回执，最终head会区别于代码/evidence62ac；实际唯一360仍为4ef/942且exit1/cleanupfalse，新084只合成3项/Ruff绿，无第二运行。当前交根安排专职新增范围复核，本岗结束释放槽，不继续刷验证或读取端口/DB。
+
+## NATIVE-BOUNDED-DEMO-v1 根另准入的唯一新360复验
+
+- 根确认a7bad288精确62ac专审仅限定关闭SERVE-CLEANUP-SCOPE-01，root1e9a081整合后另准入新一次360独占本机窗口，4h仍未准入。实际prompt追加原文，不改已审application084618/runtimea251/871，固定bc5/92文件与既有hash锁依赖。外部独立operational driver只读取端口监听元数据，九端口含原7+5177/18086，在freshprepare前→serve前严格相同，v3两监听确实存在；未读取独立应用资料。
+- fresh app_20261023_233238_345882，新manifest/cookie/vhost；23:32:39.043824Z起、23:38:39.043824Z截止，ready23:33:48.542961Z、首两completed60.324684s，额外TTL300轮换23:36:50.234711Z完成；API/consumer/UI各1次/scanner3代/4worker；3双项目scope服务凭据及ready会话均撤销。controller wait_scans4条与DB同UTC8条真实completed分口径；全部ruleshash匹配。旧16事件/26通知只复核，新增outbox0，仍2项目40任务，不声称新publish。
+- deadline实际触发duration_elapsed23:38:39.044609Z，summary结束23:38:41.688950Z；外部driver wait23:38:42.502726Z真实exit0，summary/cycle/cleanup全true。后置12登记PID（含APIchildren/runner）全部absent、Rabbit/EPMDgone、新5端口closed；九端口三个观察点listenerPID/UID/start/commandSHA全等。此补充三时点观察不回写原七端口历史，不是全时连续监控证明。原360 exit1/cleanupfalse及所有原件永久保持。
+- 后置证据提取首次真实exit1（rule_hash bytes不受json_bytes支持，未写出proof），保留原post脚本字节/SHA及observed failure receipt；仅将rule_hash转hex后重做native只读提取exit0。无controller代码变动/服务重跑；此提取失败不混为serve实际exit。原异常在tool transcript保留，未伪造不存在的raw stderr文件。
+- 源92SHA在后置复核不变，私密226非秘密outputs+args对旧失败/新复验合计19个实际secret literal匹配0；gzip/public投影另扫，cookie/token/账户/DBURL不进入公开白名单。dump不读。已将真实exit/全停报告根释放窗口，此后只离线归档，不发HTTP/SQL/再跑360或4h。

@@ -27,3 +27,9 @@
 ## 根对保护snapshot覆盖范围的实际纠正
 
 读到f159公共serve-run1摘要，原事实保留准确。发现protected_listener_exact_matches白名单是5173/18080/5175/18084/5176/18089/13306；当前独立v3实际保护端口应5177/18086（14262/14268），旧reason18089已退役，5176可能旧空。请不要把这7项匹配写成v3也已逐项核对。离线在设计/说明明确旧snapshot覆盖范围；下一次如获准360 preflight必须新增5177/18086的准确UID/start/argv hash基线保护。不要因此重跑/读取独立应用数据。root可另只读lsof核当前5177/18086仍在，但这不是过去全时未变证明。
+
+## 根专审整合后的唯一新360实际复验准入原文
+
+精确62ac专审a7bad288完成（原SERVE-CLEANUP-SCOPE-01仅限定关闭，同冻结反例一红一绿、无另确认新增P1/P2），root已正确merge16b+a7，HEAD1e9a081703f42dba5fba793c1706a7486933bbdc、appstillbc5。现在授权唯一【新360秒实际复验】绑定62ac/084618工具，不授权4h yet。你own worktree controller/source固定，按原prepare新fresh run/manifest/cookie/vhost，原failedrun不改/不复用；新增外部read-only基线必须含5177/18086+旧7共9端口的listener PID/UID/start/command hash，fresh prepare前→serve前→结束后逐项相同；这是补充观察而非回写旧七端口。不要为加端口修改已审controller/runtime代码，可在本次外部operational driver精确观察，原baseline与额外9项分别标注。当前本机无负载比较，root给予此360唯一runtime窗口；其他agent只offline或hosted，禁止触及独立数据。检查真实ready/两60s新持久ticks/TTL300额外轮换≥1/角色spawncounts、deadline触发、真实exit与cleanup/allownPIDs/workers/brokergone/新portsclosed/9protectedexactmatch；旧16/26勿称新publish、新outbox0如实。每个阶段消息报实际事实，原360 exit1永保留。若新运行失败先seal并只读定位/窄修需报告，不盲重跑。实际结束封档公共白名单+秘密scan+真实私密位置/源SHA/Issue7交接后FINAL。若完全通过，另等root授权最多4h有界用户演示，不自行提前。
+
+本人执行：不改已审工具084618/runtimea251；独立外部operational driver在freshprepare前/serve前/实际结束后对九端口监听PID/UID/start/commandSHA逐项比对，只读监听元数据，不接触独立应用资料。仅一次fresh360，阶段消息如实；私密driver/日志0600，公共只白名单/源hash/实际返回码与基线匹配范围，原failedrun不改。

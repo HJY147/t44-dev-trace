@@ -22,8 +22,20 @@
 
 先行设计c19146c后，self-runner-red为原942源码相同断言真红exit1；self-runner-green在新源只执行3个新增ServeGuards方法，exit0；真实角色全部8个旧/当前代以及4workers+1tracker任一残留仍失败，own/身份/时钟/等待/信号全部替身，没有OS进程动作。红绿guard字节SHA完全相同。Ruff exit0，source-scope证明仅verify_stopped AST改变，capture/runtime/业务不变。
 
-新源尚未实际360验证。原运行的exit1/cleanupfalse及postabsence始终保持；external driver独立wait证明runner最终退出。本次没有第二360、4h、HTTP/SQL或无关套件。
+窄修checkpoint当时新源尚未实际360验证，后续根另准入的一次复验见下节。原运行的exit1/cleanupfalse及postabsence始终保持；external driver独立wait证明runner最终退出。本次没有第二360、4h、HTTP/SQL或无关套件。
 
 protected-baseline-coverage-note.json明确旧snapshot只覆盖所列7端口，不含当前v3的5177/18086；不能把旧列表匹配扩大为v3过去全时未变。只离线补说明，未因此读取独立应用数据/端口。下一次若另准入须预先增补准确监听身份基线，当前仍待根安排新增范围专审。
 
-当前待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931，源SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。GitHub新正文整体替换/Issue7#6376718503/PR37#6376718790均PATCH/POST后重新GET逐字相同，head62ac/drafttrue的实际观察见github-stage-readback-checks.json；之后仅文档/回执末尾commit，最终head另报，运行代码与新候选不混同。此处交根专职新增范围审核；本轮不再进行服务/端口/DB检查或新360。
+当前待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931，源SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。GitHub新正文整体替换/Issue7#6376718503/PR37#6376718790均PATCH/POST后重新GET逐字相同，head62ac/drafttrue的实际观察见github-stage-readback-checks.json；之后仅文档/回执末尾commit，最终head另报，运行代码与新候选不混同。该checkpoint交根专职新增范围审核后结束；后续实际复验来自根的新明确准入，见下节。
+
+## 根另准入的唯一新360复验：真实通过并全停
+
+原62ac专审a7bad288仅限定关闭SERVE-CLEANUP-SCOPE-01，同冻结反例一红一绿/无另确认P1P2；根整合1e9a081后另准入一次新fresh360。工具/应用源固定：62ac的application08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25、runtimea251、应用bc5的92文件，未修改已审controller/runtime/guard。新app_20261023_233238_345882，不复用原失败run/manifest/cookie/vhost。
+
+原serve-run1-*保持exit1/cleanupfalse；新的serve-retest-*独立命名。新serve起点23:32:39.043824Z/deadline23:38:39.043824Z，duration_elapsed请求23:38:39.044609Z，summary结束23:38:41.688950Z；外部driver wait23:38:42.502726Z得到真实exit0，summary/cycle/cleanup均true。就绪/首两新scan60.324684s、额外TTL300轮换1次/新tick/锁，API/consumer/UI各1次、scanner3代、4worker，3自有service凭据/ready会话全撤销。控制器wait_scans验证4条与DB同UTC实际8条completed明确分开，全部冻结rulehash匹配。旧16confirmed/26通知仅复核，本轮新outbox0/不称新publish，专属库仍2项目40任务。
+
+外部driver在freshprepare前→serve前→runner wait后分别观察九端口（旧7加5177/18086），仅listenerPID/UID/start/PGID/commandSHA及地址，无独立应用数据读取；三个时点每端口逐项相同。它只证明本次补充观察，不回写原7端口snapshot，也不是全时连续监控。后置12个登记应用generation/APIworkers/tracker/runner全消失，Rabbit/EPMDgone，新5端口closed，源92逐SHA不变。
+
+serve-retest-summary.raw.json.gz为原公共stdout exact gzip；serve-retest-capability.json白名单投影；serve-retest-original-index.json记录226个私密非秘密原件SHA，秘密/原dump不上传。operational-driver/post是此次实际外部运维脚本原字节，未纳入控制器。后置提取attempt1因rule_hash bytes不能直接JSON真实exit1，原source/failure保留；仅转hex后重新只读提取exit0，不重跑服务，不将它写为原controller失败或隐藏。
+
+此新360结果只给有限本机开发演示能力；4h用户演示仍未准入，独立/性能/云及资源unknown不回填。根收到退出/清理后窗口释放，此后仅离线封档/秘密扫描/GitHub，禁止自行再起服务。

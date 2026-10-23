@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "native-bounded-demo-sealed-for-targeted-review",
+  "stage": "native-bounded-demo-new360-complete-and-stopped",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -740,7 +740,7 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "sealed:original single360 failed;fix62ac mock-only verified;targeted review pending;no further runtime admission",
+    "status": "new separately admitted fresh360 passed andallstopped;old360failure preserved;4h not admitted",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
@@ -778,7 +778,7 @@
     "original_failure_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
     "fix_design": "deployment/native/bounded-demo-design.md unique360 amendment",
     "planned_scope": "verify_stopped four role generations and API workers/tracker only;external runner wait separate",
-    "fix_actual_run": false,
+    "fix_actual_run": true,
     "fix_design_commit": "c19146c",
     "fixed_controller_sha256": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
     "fix_evidence": "agents/deployment/native-bounded-demo-validation/self-runner-source-scope.json",
@@ -795,6 +795,21 @@
     "readback_observed_head": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
     "archive_head_semantics": "final docs/GitHub receipt-only commit differs from code/evidence62ac;report separately",
     "current_services_running": false,
-    "full_bounded_lifecycle_passed": false
+    "full_bounded_lifecycle_passed": true,
+    "original360_run": "app_20261023_230429_cc2f5b",
+    "original360_actual_exit_code": 1,
+    "original360_cleanup_success": false,
+    "actual_retest_run": "app_20261023_233238_345882",
+    "actual_retest_source_implementation": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
+    "actual_retest_exit_code": 0,
+    "actual_retest_cleanup_success": true,
+    "actual_retest_proof": "agents/deployment/native-bounded-demo-validation/serve-retest-capability.json",
+    "actual_retest_private_dir": ".agent-worktrees/.runtime/native-demo-20261023/bounded-retest-20261023",
+    "actual_retest_review_basis": "a7bad288 limitedSERVE-CLEANUP-SCOPE-01 closure/root1e9admission",
+    "new360_one_explicitly_admitted_and_executed": true,
+    "long4h_admitted": false,
+    "full_bounded_lifecycle_scope": "new360 only;no4h/noindependent/performance/cloud",
+    "current_protected9_coverage": "beforefreshprepare -> beforeserve -> afterexternalwait:9exactmatches including5177/18086;onlythree observations;doesnotrewriteold7",
+    "post_extract_failure": "attempt1actualexit1 rawrulehashbytesJSON;preserved originalsource;hexprojectionthenreadonlyextractexit0;nocontrollerchangeorservicererun"
   }
 }
