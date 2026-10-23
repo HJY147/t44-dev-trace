@@ -1,0 +1,56 @@
+{
+  "operator": "AI reviewer, one original semantic counterexample replay; no service or independenttest",
+  "target": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+  "code": "b23897879142de3bd77190c67d4947eccf1c8263",
+  "source_path": "deployment/native/application.py",
+  "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
+  "capture_ast_sha256": "6c61acd63d983cab32f478b6e1777a26a9217f816200528dde499f5f92e87d85",
+  "original_failure_commit": "c6883f2bd4e860737f4aede4002f4499d2a7e479",
+  "semantic_input_unchanged": {
+    "argv": [
+      "synthetic-owned-command"
+    ],
+    "cwd": "/synthetic-owned-source",
+    "pid": 424242,
+    "first_communicate": "TimeoutExpired",
+    "second_communicate": "controlled owned child exits0 after mocked SIGTERM",
+    "communicate_timeouts": [
+      1,
+      5
+    ],
+    "ownership_matches": true,
+    "expectation": "reject initial timeout irrespective cleanup exit0"
+  },
+  "fixture_note": "Original inline command was not separately archived; event transition and rejection assertion reconstructed from original published JSON/log. This claims semantic replay, not byte-identical command or output strings.",
+  "communicate_timeouts": [
+    1,
+    5
+  ],
+  "actual_returned_normally": false,
+  "expected_rejected_timeout": true,
+  "actual_rejected_timeout": true,
+  "error": "OWNED_COMMAND_TIMEOUT",
+  "actual_receipt": {
+    "started_at_utc": "2026-10-23T22:02:14.173608+00:00",
+    "ended_at_utc": "2026-10-23T22:02:14.174005+00:00",
+    "argv": [
+      "synthetic-owned-command"
+    ],
+    "cwd": "/synthetic-owned-source",
+    "exit_code": 0,
+    "timed_out": true,
+    "stop_unconfirmed": false,
+    "success": false,
+    "stdout_sha256": "377726a215625edab480966bf3c3991d01d2e0272d3e06c1d7d53af738055c43",
+    "stderr_sha256": "4e49bcbae575c562aa975b9fce1e17bd5eda7f0b642c7c52edf374596f8d0421",
+    "private_output_id": "fcf0a01d1add4289bfbcd7f9f6432196"
+  },
+  "timeout_marker_present": true,
+  "actual_os_processes_started": 0,
+  "actual_os_signals_sent": 0,
+  "mocked_signal_requested": true,
+  "private_source_inputs_or_outputs_read": false,
+  "existing_run2_receipts_modified": false,
+  "new_test_files": []
+}
+Original timeout rejection assertion passed; timeout fact and actual child exit0 preserved.

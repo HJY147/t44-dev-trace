@@ -214,3 +214,12 @@
 - 限定代码审核未发现新增实质阻断；总体不放行：root/backend最新6108规模超过5100，本岗未重数；无A性能收益数据，独立/正式性能未获本审核通过。报告29-7584与static-audit/execution/11case原件齐全，真实COMMENT/逐字读回将在实际发布后补记；无status success/APPROVE/merge。
 
 - 自有阶段证据927743ca092a30159a6ff62884bde8ddc7dd291d已commit/push exit0；PR29 COMMENT5633640531真实发布，插件list正文逐字COMMENTED，gh只读特定review再核commit_id=7584完整SHA及正文严格一致：https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531。github-comment.json完整回执。connector初始字段名/无效action探针仅schema校验拒绝无写入；本次唯一成功COMMENT，无status/APPROVE/merge。只补本岗发布回执后释放槽位。
+
+
+## 2026-10-24 NATIVE-CAPTURE-TIMEOUT-01窄修复审（cc6/b238）
+
+- 实际ROLE-reviewer-NATIVE-CAPTURE-FIX-v1只归档收到的派工/补齐；root首次工具上限未送达消息不算实际对话。从cc6建隔离codex/review-native-capture-fix，先scope后源，不改产品/部署/测试/冻结，不读私有或独立资料，不扩编。
+- cc6候选、b238代码、7f4845e先行设计；application SHA5ed6844d.../capture AST6c61...精确。源码仅capture物理12增3删（15行变，净+9），其余module AST/旧ApplicationGuards/runtime保持，业务/前端/规格及旧cycle归档字节不变，14freeze相符。
+- 原超时后cleanup0语义反例只重放一次exit0：OWNED_COMMAND_TIMEOUT、receipt actualrc0/timed_outtrue/successfalse/stop_unconfirmedfalse；真实进程/信号0。原inline未独立存脚本，按c688公开JSON/log重建原事件与拒绝断言，明确不谎称脚本/合成输出逐字节相同；新inline命令全文已归档txt。原两红副本与c688逐字节相同。
+- 核26份owner公开原件hash、旧1红→最终5绿和五observation全部边界/实际码/部分输出摘要；ClassVar初始诊断与最终Ruff绿分开保留。上述5绿非本岗执行，不刷871/873/953/63/cycle/服务/全套/DB/browser/负载/CI。
+- 只限定关闭P2；原5ef不通过/COMMENT5634837225、0a6真实cycle与run1失败不改，不移植给新b238。八段十项报告34-cc6...，精确COMMENT/完整GET和commit/push实记后补，无APPROVE/status/merge/整体放行。
