@@ -112,3 +112,5 @@
 - 1440桌面初始与390“未读·已处理”截图已经本岗实际看过，统计与按钮可见、无整页横向溢出。原三项先红后绿日志保持；此次不是独立复测，也不改变e8公开独立报告的原失败/环境阻塞。
 - Chrome关闭，本岗5173 Ctrl-C退出130；告知根不再发业务请求/运行构建。随后仅本岗记录/Git/真实GitHub交流。
 - 真实GitHub续派验证说明已发布#2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6364612818；#3后端版本/1/1→1/0样例确认 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6364613456。正文先存本岗再body-file，不发布APPROVE。
+- 提交核对发现原CI ZIP和coverage子目录被仓库通用ignore规则排除，20082da只含可读log/metadata；现对3个本岗明确证据路径显式force-add追加归档提交，原ZIP保持GitHubdigest，未改检查内容或重跑测试。
+- backend随后提示其正在执行1.1容量实现，已明确回复本轮root授权仅f654/02ec的1.0验证；981/README等版本同步待root另派，未把1.0 CI/HTTP结果当作1.1验证。
