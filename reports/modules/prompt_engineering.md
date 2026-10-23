@@ -82,3 +82,14 @@
 - M6 Word33页文档AI全看、根3samples、M7本岗未看私密原件；源码审阅私密包只读公开provenance，不当最终作业交付。
 - U001/U002仍优先作为用户原创亮点；夜间新链只AI素材，附学生自行分析问题，不写第一人称答案/效率效果百分比。人工12/3/5与最终学生正文未证。
 - 无产品测试/服务/基准/全CI/Word重导/新图；Issue11一条具体交接及GET回读、仅本岗阶段commit/push后结束。
+
+## M8 增补：固定f521有限事实
+
+- 实际ROLE-prompt_engineering-M8-CHECKPOINT-v1，独立codex/prompt-m8-checkpoint；先范围记录，固定f521不追后发。
+- 主入口docs/prompting/M8-limited-process-evidence.md；32公开源hash、四v3摘要白名单、一次实问/AI原样答复、必要JSON/Git检查。M6六版保持/新计0，M7/Word/冻结/别岗不改。
+- v3完成限定白盒/交付物范围仍NOT_ACCEPTED；package红→设计→窄修/限定绿仍无新bundle；selector只元数据排除testing四文件，不读正文或指控泄露。
+- DB单次ABBA与多idle未知成本、db87未准入/partialoverride峰值变化、candidateCI520/89/原ZIP和实际mergecheckout各自分开，无新性能通过。
+- native失败360/自等自己→c191/62ac→审核冻结红绿→新360exit0/cleanuptrue/九端口三时点；后置JSON错误/原字节迁移不算再运行，4h尚无完整证明。
+- usage15合成/root静态非actualstats/RSS/峰值/物理同机；v4仅公开H/M元数据且SUT未发，未开H树/私密引用。
+- M7早期native应用run1误绑0a6在M8追加勘误为427b097，旧历史不覆盖。人工12/5/3及最终学生研究正文未证，U001/U002仍首选原创亮点。
+- 仅本岗文档/Issue11评论GET/commit push；无产品、CI触发、服务、测试、Word或私密材料读取。

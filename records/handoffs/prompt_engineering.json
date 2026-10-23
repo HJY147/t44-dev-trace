@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "M7 night public-process supplement, fixed6ec content cutoff",
+  "stage": "M8 fixed f521 limited process checkpoint",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -50,7 +50,15 @@
     "docs/prompting/M7-document-checks.json",
     "docs/prompting/M7-source-inquiries.json",
     "agents/prompt_engineering/github-m7-stage-comment.md",
-    "docs/prompting/M7-publication.json"
+    "docs/prompting/M7-publication.json",
+    "docs/prompting/M8-scope-checkpoint.md",
+    "records/prompts/ROLE-prompt_engineering-M8-CHECKPOINT-v1.md",
+    "docs/prompting/M8-limited-process-evidence.md",
+    "docs/prompting/M8-source-index.json",
+    "docs/prompting/M8-source-inquiry.json",
+    "docs/prompting/M8-document-checks.json",
+    "agents/prompt_engineering/github-m8-stage-comment.md",
+    "docs/prompting/M8-publication.json"
   ],
   "interfaces": {
     "inputs": [
@@ -71,7 +79,7 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "M7-night-process-v1",
+    "version": "M8-limited-process-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
@@ -116,7 +124,12 @@
     ],
     "M7_Issue11_status": "One comment6375901006 actually published; GET exact body matched",
     "M7_Issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6375901006",
-    "M7_material_commit": "dffd71f53f33e622a2d88c5eb45c04736f5b09cd"
+    "M7_material_commit": "dffd71f53f33e622a2d88c5eb45c04736f5b09cd",
+    "M8_fixed_cutoff": "f5214a27af4ec4886c30ce36de38a70def479efd",
+    "M8_read_scope": "Only four explicitly published v3stage07/08 summaries plus root v4 public metadata/receipt; no H tree/private refs",
+    "M8_material_commit": "1d78907efae18f1e90d2d3c021ad1f14418da598",
+    "M8_Issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6377116979",
+    "M8_Issue11_status": "Actually published; GET exact body matched"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -162,7 +175,11 @@
     "Stage design and actual prompt commit4c476c6/push before four fixed-role send_message queries",
     "Read only explicitly public v3 stage01/02/03/04 MD+JSON; no private followup or tester contact",
     "git show and SHA58 public source objects; XML11/10red and63green, public QA33-page sum, five Git ancestry checks",
-    "Read neutral stdout/capture/merge resolution and source package provenance only; no services/test/benchmark/Word export/new diagrams"
+    "Read neutral stdout/capture/merge resolution and source package provenance only; no services/test/benchmark/Word export/new diagrams",
+    "M8 git worktree add isolated codex/prompt-m8-checkpoint at fixedf521; scope/prompt recorded before source collection",
+    "Read32 public source objects; fourv3 hashes matched explicit publication receipt; v4 onlymetadata at root commit notH tree",
+    "One deployment fixedrole send_message and actual verbatim AI reply archived",
+    "Necessary JSON/SHA/Git checks only; add736->dda3,c191->62ac,db7->8983 ancestryverified; no CI/service/tests/Word"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -207,19 +224,26 @@
     "Concurrent public histories/JSON merge receipts and wrong870 reservation location kept as AI process errors, not student/product defects",
     "Preview2e583 exactbc5 read-only20requests not20verified200; M6 Word33 pages inspected by documentationAI/root3samples only",
     "Four M7 send requests accepted without explicit delivery receipts; no new replies observed at current recordingcutoff; public-source fallback explicit",
-    "M7 design4c476c6 and materialdffd71f actually pushed; one Issue11 comment6375901006 specific source/cycle/semantic-replay handoff, GET exact body match; receipt-only followup no product/test/config change"
+    "M7 design4c476c6 and materialdffd71f actually pushed; one Issue11 comment6375901006 specific source/cycle/semantic-replay handoff, GET exact body match; receipt-only followup no product/test/config change",
+    "M8 process material records publishedv3 NOT_ACCEPTED and human12/3/5 incompletion; M6 six used versions maintained/new count0",
+    "Package9d6 P2red/designadd736/ddafix/limitedgreen separate from actualbundle notcreated; selector excludes4 testing operationalfiles using metadata only, no content leakage allegation",
+    "DB single boundedABBA0failure/idlecostunknown/defaultcandidateunmerged; backend445 partialoverrides and exactcandidateCI520/89/5ZIP51raw/Dockeractualmergecheckout distinct",
+    "Native old360failed/selfrunner->design/62acfix/reviewcounterexample->separatelyadmittednew360success/cleanuptrue and9port3points; extractionerror/migration notservice rerun;4h no complete proof",
+    "Usage15synthetic/rootstatic notactualstats; noRSS/peak/physicalcolocation/backfillunknown; v4 H/M/SUTunbound separate without Htree access",
+    "M7 native first applicationrun1 actual427b097 not0a6: add attribution erratum only, preserve oldM7 cutoff/files",
+    "M8 material1d78907 actually committed/pushed; Issue11 comment6377116979 and GET exact body matched; receipt-only followup no product/test/CI/service changes"
   ],
   "unverified": [
-    "Student final research prose and human12/3/5 completion remain unproven; no new confirmed manual count",
-    "M7 four role queries have no new reply observed at recordingcutoff; prior messages not relabelled interviews",
-    "At6ec cutoff new combinedCI and three formal runs still pending, F08 priority/3 capability-spec items/full error matrix and fault scopes unresolved",
-    "Application6307 exceeds5100 by1207; no counting policy or behavior relaxed",
-    "New b238 native capture code has no fullcycle; old successful cycle binds0a6/SUTbc5 only",
-    "Source-review private archive is review snapshot, not final coursework submission; private ZIP/Word/cover/R002 original not opened"
+    "Actual new courseworkbundle notbuilt; oldarchives unchanged",
+    "PoolcandidatePR39 notrootadmitted,partialoverride peaks differ and servermemory/idlecost/formalresult unproved; overflow-only7->17 from root message, reportpath not independently obtained",
+    "Full4h demo notcomplete atfixedcutoff; nineportstripleobservation notcontinuousmonitor",
+    "Usage actualstats notsampled/RSS/fullpeak/physicalcolocation notproved; historicalunknown retained",
+    "V4 SUT notsupplied/runtime NOT_RUN; no privatecase/Htree/manifest/output verification",
+    "Student final research prose and manual12/humanhallucination3/context5 remain no completed evidence"
   ],
   "questions": [
-    "Downstream documentation should distinguish native source/semantic replay/fullcycle and fixedcutoff formal status; no backfilled pass",
-    "Student chooses and writes analysis using U001/U002 first; no AI firstperson research or invented human work"
+    "Student should useU001/U002 original highlights and distinguish AI process from personal actions; no AI final research prose",
+    "Downstream keep fixedcutoff and explicit native/source/candidate/actualbundle boundaries; later states separate"
   ],
   "prompt_refs": [
     {
@@ -366,9 +390,24 @@
       ],
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/11",
       "reason": "Bounded night process evidence supplement; no new evolution count"
+    },
+    {
+      "id": "ROLE-prompt_engineering-M8-CHECKPOINT-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-M8-CHECKPOINT-v1.md",
+      "artifact_refs": [
+        "docs/prompting/M8-scope-checkpoint.md",
+        "records/prompts/ROLE-prompt_engineering-M8-CHECKPOINT-v1.md",
+        "docs/prompting/M8-limited-process-evidence.md",
+        "docs/prompting/M8-source-index.json",
+        "docs/prompting/M8-source-inquiry.json",
+        "docs/prompting/M8-document-checks.json"
+      ],
+      "reason": "Short fixedcutoff factual supplement, not new evolution version",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
     }
   ],
-  "updated_at": "2026-10-23T22:22:13.199359+00:00",
+  "updated_at": "2026-10-23T23:55:02.149573+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -377,15 +416,14 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "content_cutoff": "6ec8d3c93f4ff5283d3db62ae7993e66c4c54ca2",
-    "M6_count_maintained": 6,
+    "fixed_cutoff": "f5214a27af4ec4886c30ce36de38a70def479efd",
+    "public_source_objects": 32,
+    "v3_public_summaries": 4,
+    "M6_versions_maintained": 6,
     "new_versions_counted": 0,
-    "public_source_hashes": 58,
-    "new_v3_public_files_read": 8,
-    "M7_actual_role_queries": 4,
-    "M7_new_replies_observed": 0,
-    "prior_results_are_historical": true,
-    "implementation_status_scope": "No product code implemented by prompt role"
+    "actual_fixedrole_queries": 1,
+    "actual_AI_answers": 1,
+    "student_manual_completion_no_new_evidence": true
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -394,5 +432,13 @@
     "Full independent acceptance/formal400x600 performance/source3500-5100 remain unpassed;8326124 and DB6186 are separate sources",
     "Native broker/CLI real authentication/listen/lifecycle and API/consumer/scanner/UI pending in published evidence",
     "Issue28 DB gateway only is not completed backend/frontend projection or independently retested UI003"
+  ],
+  "previous_m7_unverified": [
+    "Student final research prose and human12/3/5 completion remain unproven; no new confirmed manual count",
+    "M7 four role queries have no new reply observed at recordingcutoff; prior messages not relabelled interviews",
+    "At6ec cutoff new combinedCI and three formal runs still pending, F08 priority/3 capability-spec items/full error matrix and fault scopes unresolved",
+    "Application6307 exceeds5100 by1207; no counting policy or behavior relaxed",
+    "New b238 native capture code has no fullcycle; old successful cycle binds0a6/SUTbc5 only",
+    "Source-review private archive is review snapshot, not final coursework submission; private ZIP/Word/cover/R002 original not opened"
   ]
 }
