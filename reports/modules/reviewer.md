@@ -56,3 +56,7 @@ PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/
 ## 完整产品审核v1 checkpoint
 
 精确e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef全产品/M2审核进行中，非放行。959组件复现确认C-P1嵌套Iteration消费错误、C-P2幂等历史状态误报当前；两正确行为断言失败。原脚本复算5944有效行，超上限844。首次报告及真实输出在reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef-checkpoint.md和本岗evidence/product-v1；原owner修复，新SHA复审。基础历史09dd3cf已独立push，不以其范围结论放行完整产品。
+
+## 完整产品e01首次审核结论
+
+完整报告reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md：不通过，C-P1 Iteration嵌套消费、C-P2重放状态误报、C-P3原口径5944超限844、C-P4结构检查只比名漏语义。959/957正确行为断言真实失败；冻结11hash和公开CI/Docker原件核对、7图实际渲染有本岗证据，不是独立验收/正式性能。跨层减量给owner保守270–400行候选且承认仍不足，未私改产品。旧基础/首checkpoint保留，后续新SHA差异复审。

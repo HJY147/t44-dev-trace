@@ -83,3 +83,13 @@
 - 957隔离Inspector替身：列类型/名称相同但改变索引/FK/CHECK语义仍passed=true；正确拒绝断言失败，登记C-P4，不声称实库漂移。首发PR Review精确e01被GitHub422拒绝（远端仍86dfd7d，目标不在PR），只读查无重复后未错绑。Issue checkpoint已发布 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769；评论与真实返回见checkpoint-github.json。
 
 - root将目标推入PR21祖先后，先读回确认无旧Review，再绑定原e01发布COMMENT成功：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867。原422保留。Git样式检查识别原始Vitest stdout末尾空行；保留原始输出，资料检查仅对blank-at-eof作命令级豁免，未改产品断言/门禁。
+
+## 2026-10-23T18:03:25.714031+08:00 完整产品e01首次审核收口
+
+- 首次checkpoint本人e9abf8899e31cfe1853344cdead37e4824f0663a已push，root整合其记录但本报告仍只绑定e01；完整八段十项报告另写，不覆盖checkpoint。C-P1夹具准确行10，先前行12误指在完整报告明确校正。
+- 已复核冻结11hash、输入目标manifest、公开CI gzip原XML哈希/计数、Docker19表恢复原件与相关diff；区别265源码一致范围与static/config变化、31f4至e01仅ops plan文字和README变化。自己未重跑已有基础测试或冒记CI。
+- 已真实渲染7图，保存Mermaid11.12 bundle URL/hash及Chrome版本/源块hash/SVG/PNG/尺寸，目视样查事务图。三项图文语义问题报root，root已接收；打印/Word逐页QA不在此虚报。
+- 跨层减量候选为旧CSS/重复内部出口与长导入/seed重复基字段/旧兼容属性及重复工具；保守270–400行不是已实施或足够844；不改统计政策/分母、不搬业务规避、不删功能/守卫。
+- 最终判e01不通过，四类问题与未验证边界详报告；后续修复差异新SHA另审，不覆盖原失败。已实读main五必需上下文及e01两成功两取消；最终status仅对原e01发failure，实际发布结果随后记录。
+
+- 最终实际发布：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845；PR COMMENT https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770，commit_id严格e01；reviewer/stage=failure ID57079614110，target_url指向Issue，读回确认failure。发布前确认e01为当前PR祖先，当前head另存回执，未错当最新head结论；无success/APPROVE/合并。命令/返回final-github.json。
