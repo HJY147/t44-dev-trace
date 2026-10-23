@@ -396,3 +396,14 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 交接caller-handoff.md要求两默认之外零差异；实时auth/撤销/锁序/CAS/幂等/audit/outbox/ACK不明处理保持，但连接失败仍可能在auth/拒绝audit完成前503，不保证分布不变。6默认池峰90不变、保留上界30→90，多闲置连接内存/FD/全局余量未知；额外CLI/探针/滚动实例另算，不套151快照。静态发现CLI无显式dispose（独立进程退出回收），MQ/scanner有finally dispose，未冒称已测资源回收/新漏洞。
 - 已实际对当前database_plan_history问取：owner确认只交9d1deff/e03a95c ABBA诊断，尚无默认候选SHA/尚待下一阶段派工，已收到partial override关注。Issue4具体输入6376569009已发表/逐字GET读回；owner公开ABBA评论6376531906/6376532216已实际GET，不把诊断当候选实施/CI。Issue3阶段总结6376597757亦已发表并回读。没有改旧断言、造候选绿或复用旧CI。
 - 意见仅“未见必须改后端API的静态阻断”，保留资源/故障/准确源完整CI/专审待项；不自主合候选或盲测。固定6307超1207未改/未重数，作者后端AI，非学生亲改。阶段封档后释放。
+
+## db87候选开发CI：官方原件与准确checkout归档
+
+- 从根稳定8df658ac新分支codex/backend-pool-ci-evidence，先提交实际prompt7669346；仅归档product40039282322/Docker40039333270，不读取独立job/密文或运行本机业务/SQL/负载。原托管由GitHub Actions执行，本岗AI只下载/验证/离线汇总，不作学生人工验证。
+- 两run实际官方终态success；先存官方metadata/digest，再gh API五ZIP到ignored私密runtime，全部实际SHA256匹配后才ZipFile只读选定18+33原件。选择口径来自40034577627/77586旧manifest文件名，结果全部新读；51原/gzip SHA和实际解压roundtrip核实，原ZIP不提交。记录分别records/ci/40039282322、40039333270。
+- JUnit520/0failure/error/skip；869十个离线QueuePool/合成DBAPI+Settings测试实际收集，9300case/AST0testfunc/opt-in main不运行，导入不能叫负载执行。marker162/93/19重叠不加总。全44Python与准确Git文件集完全相同、excluded0，行2638/2957=89.2120%、分支659/824=79.9757%；raw combined87.199%另列不冒行覆盖。FE89/0失败pending，20TS/Vue与Git全同、行93.33/branch88.09，不扩为CSS/HTML。
+- Docker API head db87不等于checkout；result.source_sha取GITHUB_SHA，不能单独证明。官方job120706441971实际checkout PR39/merge、git log -1完整400a5cac已选原行gzip及行号/整个原log SHA；此log无官方artifact digest，不混五ZIP。初gh读取被ANSI保护exit1保留，官方--allow-escape-sequences仅落私密文件后选安全原行；不是CI或应用失败。初本地缺merge对象exit128后只fetch准确对象，实际父70f4b7+db87核实。
+- 候选与merge明确完整运行roots共166文件mode/blob/独立内容SHA256全同（backend/frontend/deployment/scripts/.github/compose、运行specs、972和tmp/backend），不泛称整提交相同。Docker实际4workers、scanner16/2、19表全量counts/checksums恢复一致，18业务226列；第二scanner flock拒绝exit1是唯一预期非零。没有容器pool活跃连接观测/正式性能结论。
+- 新汇总records/validation/composite-db87-pool-ci.json，不覆盖旧；本岗源码仍bc5，6307超1207未新cloc/未改口径。没有触发CI/改业务/合候选；专审/准入/盲测另决。本轮seal后释放，准确新520不与旧510相加。
+
+- 准确CI归档Issue3已body-file发表并GET逐字回读：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376880468；只作归档，不自APPROVE或合候选。
