@@ -70,3 +70,58 @@
 - 实际命令 `.venv/bin/python agents/backend/validate_contract_design_v2.py`：修复前退出1、90项失败（`contract-v2-before-fix.log`）；修复后退出0，1130项检查、38操作、0失败（`contract-v2-validation.log`）。真实FormatChecker和pattern验证0001/0999拒绝、1000/9999通过、7位微秒/非Z拒绝；101收件人及嵌套、UINT32计数、逐操作注解一致性均在脚本内核对。不是HTTP或MySQL结果。
 - `gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md` 两次均退出0；实际答复为 `https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358981390`、`https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358981840`。
 - 操作者为AI后端岗位，缺陷来自先前AI设计，由reviewer指出；本轮AI修复不记为用户亲改。所有接口仍草案，未冻结、未实现，无HTTP/业务/数据库/消息/调度/性能测试。
+
+## ROLE-backend-CORE-FOUNDATION-v1 纯领域基础实现
+
+- 独立树 `/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend`，分支codex/backend-core，起点bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68；本轮只在该树写本岗路径。实际派工原文在CORE-FOUNDATION-v1-prompt.md。
+- 已读本树AGENTS、implementation-layout、business-rules和修复后契约；D003首次按错误旧名定位失败，随后rg找到并读实际D003-permission-and-extension-design.md。未读独立测试私有资料。
+- 实现真实Python包 `backend/t44/domain/`：集中内部Enum、九种typed command、只读可信GuardContext/TransitionContext、七状态纯decide及不可变Decision/Effect；不导入ORM或HTTP，不直接应用状态、不提供target_state通道。
+- 与总协调确认依赖仅start、unblock到develop、rework三处；reject_review不新增检查。角色、阻塞来源、证据、轮次、当前上线批准和已审回滚计划均有领域守卫，事务/资源加载留给后续门面。
+- 与database确认MySQLSettings/create_mysql_engine、SqlAlchemyUnitOfWorkFactory和CommitUncertain命名边界；本轮不实现、不调用这些持久组件。CommitUncertain后rollback只清理，不能推断未提交。
+- 与deployment确认strict contract/integration/fault标记和pytest内置JUnit、coverage CLI JSON；domain单元不冒充真实HTTP/集成/故障测试，不加pytest-json插件。pytest9.1.1、coverage7.17.0纳入锁。
+- 已查PyMySQL官方安装说明，caching_sha2_password需要PyMySQL[rsa]；pyproject声明extra且实际锁含cryptography。没有JWT，argon2-cffi仅依赖已安装，不宣称认证已实现。
+- 实际 `uv pip compile ... --extra dev --python-version3.12 --universal --generate-hashes` 退出0，生成68包hash锁；uv0.12.17。Linux目标另解析67包，全部同版本；core-lock-check.log核对每包精确pin/hash。未在Linux执行程序。
+- 首次 `.venv/bin/python -m pip install --require-hashes -r backend/requirements.lock` 及Linux pip wheel下载因本机证书链失败退出1（core-install.log、core-linux-wheel-check.log），不是应用缺陷；未trusted-host、关闭TLS或修改全局证书。后续 `uv pip install --require-hashes` 正常TLS安装退出0（core-uv-install.log）。
+- `pip install --no-deps --no-build-isolation ./backend` 实际构建/安装本地wheel退出0；pip check通过，实际PyMySQL cryptography后端导入成功，未连接MySQL（core-package-install/check.log）。
+- 初次pytest81通过；初次Ruff两处I001失败，保留core-ruff-initial.log；Ruff --fix和format后补纯上下文边界检查，最终pytest106通过，JUnit core-domain-final.xml；Ruff检查及格式检查均退出0，Bandit退出0/无发现。
+- 实际coverage仅source=t44.domain且含分支：331条语句、3未覆盖、48分支、3部分分支，综合约98%；日志及JSON为core-domain-coverage.*，不是全项目80%门禁通过。
+- 文档岗M1实际询问进度时本岗原文答复尚未提交、81测试通过/Ruff待修的即时事实，后续最终状态再单独发送，不能把早期快照改成当时已完成。
+- 本轮没有API应用/路由、DB/迁移、事务/幂等/CAS/图锁、成功或拒绝审计、MQ/调度；没有HTTP、MySQL实库、联调、独立验收或压测。Q002按派工时尚待用户，技术复审不由本岗宣称通过。
+
+## ROLE-backend-APPLICATION-v1 阶段1：冻结业务HTTP应用
+
+- 用户采用Q002，根冻结ae60dc3后实际授权完整应用；本树先merge冻结及6afd13f，再合入DB8095b6e/f3ea343。独立分支/PR16保留，不碰根索引、不读取独立测试私有资料。
+- 已实现api.py的38操作注册、同步DI、冻结Schema请求/成功data提交前/HTTP响应校验；integer1.0规范化同幂等摘要，bool/字符串拒绝，UTC1000～9999和额外字段严格验证，字段错误无input/凭据。Server-Timing覆盖三个主入口。
+- services实现opaque/Argon2会话、项目成员/迭代、任务与开始前依赖图、排期diff、评审八段十项、独立预案评审及发布/回滚/返工决策；调用既有纯领域decide。无SQL/ORM/第二存储。CLI真实适配账号hash-only/迁移，撤销当前或全部会话，服务Token0600文件；seed/messaging/scheduler仍待owner实际交付，不伪装成功。
+- runtime统一session→idem→project(需要时)→members按user_id→tasks按id；先身份/项目再重放再版本；短认领/租约owner换代、同内容重放/异内容409、CAS、成功审计/outbox/完成快照原子。拒绝回滚后新UoW审计/失败快照；审计失败503/null，DB全宕机仅脱敏运维日志。
+- 首次HTTP确实发现DB循环FK主键自增推断问题，交DB本人修ignore_fk并合入；原application-http-first.log保留（瞬时自测会话脱敏）。第二轮短幂等键测试输入不合冻结minLength，修测试输入未降契约，保留second.log。第三轮25实际TestClient+SQLite HTTP自测通过，覆盖完整交付/回滚/返工、改期旧批准失效、依赖环/开始守卫、角色/自审、幂等/旧版本/撤销、严格Schema及注入审计故障；不是MySQL/独立验收。
+- 首次Ruff9风格失败、format两处后补格式失败、Bandit两处协议/空租约误报都保留；移出字面量误报并复验Ruff/format/Bandit退出0。未新增依赖，68包hash锁未改。初次api导入漏PYTHONPATH后按部署约定修命令，非代码假成功。
+- 实际读Issue#3前端及#4公开状态；Issue4第一次GraphQL EOF后REST读取成功，body-file真实对接评论：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261 。
+- 当前缺口：调度/通知owner尚未接入，相关端点503；CLI seed等待DB；尚未执行本岗MySQL HTTP、Rabbit、网络服务、全t44覆盖率、性能或独立验收。接下来继续实际MySQL与owner联调，不以阶段commit结束完整任务。
+
+### APPLICATION-v1 阶段2：真实MySQL HTTP和本地服务交接
+
+- 合入DB f3ea343后，`T44_HTTP_TEST_CREDENTIALS=<ignored app四键文件> PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/contracts/test_mysql_http.py --tb=short -q` 实际退出0、1 passed；明确数据库t44_dev，未清空库/演示数据。实际MySQL登录、项目成员/迭代/任务、两并发改期只有一成功、另一409、独立拒绝审计、diff/outbox/idem最终完成request_id和提交评审均有断言。原始log/JUnit已存，不把SQLite当实库。
+- 补内部升级入口只接受服务身份，human先403 SERVICE_SCOPE_REQUIRED（owner尚缺时也不落到假成功/503）；会话过期用校验当下UTC。最终全部本岗HTTP测试27 passed：26 SQLite＋1 MySQL，`application-contract-stage2.log/xml`；Ruff/格式/Bandit最终退出0。
+- 真实Uvicorn在127.0.0.1:18080启动（本轮最终PID9624），DATABASE_URL仅内存env构造，不放argv/日志；ignored运行证据在.agent-worktrees/.runtime。账号文件api-demo-credentials.json为0600，三角色及项目3/迭代3/任务3真实创建，凭据未入仓库/消息。已把路径及非秘密资源ID交frontend/root。
+- 首次HTTPX网络烟测被本机环境代理截获：登录断言/非JSON诊断及随后ReadTimeout，Uvicorn无访问日志；改loopback直连trust_env=False后实际四项网络HTTP＋MySQL烟测通过（登录Schema、me/字典、422、401）。本岗仅对loopback绕过代理，未改TLS或全局环境；initial.log明确为诊断摘要，原工具输出保留会话。安全响应证据在application-network-smoke.json，无登录Token。
+- 根明确本轮可阶段收尾释放并行槽位，让scheduler/messaging实际接(g,c) DI；后续再恢复最终整合。当前seed、通知/升级门面及Rabbit未完成，全t44覆盖率、性能和独立验收未执行。现有真实代码与证据交接，不宣称整产品完成或审核成功。
+- 根复核发现MySQL HTTP fixture仅本机私密文件且硬编码dev会在CI跳过，已修为优先DATABASE_URL＋T44_DATABASE明确匹配；本机四键模式另须显式T44_HTTP_TEST_DATABASE；CI缺配置fail，不跳过。与DB真库fixture口径直接协商一致。实际用CI=true+URL env分支连接本地t44_dev再跑1 passed（application-mysql-url-fixture.log），不是GitHub Actions或t44_ci已运行。生产代码/断言未降级。
+
+## ROLE-backend-INTEGRATION-v1 checkpoint 1
+
+- 按根实际派工从干净47c21f5快进fcaf509，再合入根6111e180（含DB9aeb697完整seed/Rows冗余清理），不碰root索引。下一步待scheduler完整交付后再全38操作验证。
+- 修根/MQ真实GHA失败：故障测试显式将business.notifications=None，保留真实503断言；另测自动装配NotificationFacade返回200空页。未删故障用例或降低断言，原MQ失败留原岗证据不改写。
+- 审计码改为services/codes.py显式41项稳定双向映射，按冻结field-dictionary逐码核对，不再enumerate/下标。状态/API动作集中命名，domain↔API状态/角色/责任环节及决策类型显式映射，不依赖Enum顺序/相减。
+- 新HTTP回归真实重排ErrorCode展示清单和三个领域Enum迭代顺序、reload映射，仍写入DB ACTION_FORBIDDEN=6、GET正确反解、开发状态仍2。checkpoint第二轮29 HTTP测试通过（含原1真实MySQL），日志integration-checkpoint-first/second.log；没有宣称全38或全t44门禁已经通过。
+- 以上为AI协调发现的实际AI实现偏差，由AI修复，不记为用户亲改/人类幻觉。根已澄清租约仅超时无人接管不构成缺陷，本轮不添加新拒绝语义。
+
+### INTEGRATION-v1 完整基线首次覆盖（未通过）
+
+- 合入完整scheduler至ef79f043；全backend/tests一次实际运行312 passed、2 failed、3 skipped（本机未配置Rabbit，CI必须真实执行）；2失败均seed.py:369还读旧rules['rule_version']，新冻结资源已为version整数。已向数据库本人和根送最小位置；不改他岗或降断言。
+- 全source=backend/t44，无omit/覆盖率排除：2746语句，2317已覆、429未覆，行84.38%；coverage报告含分支综合81.16%。此运行有真实失败/skip，不能说全局门禁通过。原始integration-full-first.log/xml、integration-coverage-first.json/log保留。
+- 新HTTP错误分支原始首轮34pass1fail：自依赖预期409是本岗测试错，冻结实际为422，已修预期未改服务/契约。该首轮错误保留integration-http-errors-first.log；修正后的用例进入上述全量运行。
+- 根转达用户要求测试统一迁入tmp/并按创建顺序999递减命名；本checkpoint先提交现有测试/证据，暂停编辑测试文件，待root机械迁移SHA后merge并更新运行命令，断言不删。
+- 完整基线＋DB e06修复＋本岗实际去重后，全量第二次314 passed、3本机Rabbit未配置skip、0失败，integration-full-second.log/xml；全t44行2391/2724=87.78%，含分支综合85.36%。CLI子进程未纳coverage，未通过缩小source/omit提高分母。仍不能把本机skip当CI真实MQ通过。
+- 实际去重：唯一TransitionContext替代无运行调用的重复Protocol字段；4个任务子记录分页共用同一处理；成功Schema每operation加载时解析一次；移除临时可选组件加载器并支持显式None DI；仅SQL已冻结默认值/可空值不重复初始化，未删状态/权限/证据/事务守卫。净删82行（按git物理diff，不冒充cloc最终值）。配置失败统一映射PersistenceUnavailable，实际无DB TestClient得503 AUDIT_UNAVAILABLE/null，避免拒绝审计再次抛业务异常逃逸。
+- Bandit首次把审计码表TOKEN_EXPIRED=3/TOKEN_REVOKED=4误报硬编码口令，原integration-reduction-bandit.log保留；改为同样显式稳定DB码→字符串表，反向按显式值构造，无抑制/降低规则，最终退出0。

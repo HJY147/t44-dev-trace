@@ -1,59 +1,103 @@
 {
   "role": "frontend",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "完整业务前端与真实MySQL浏览器联调",
+  "implementation_status": "人类可见前端已实现；通知/升级真实后端待接入",
   "artifacts": [
     {
+      "path": "frontend/",
+      "status": "实际业务代码、pnpm锁与测试"
+    },
+    {
       "path": "agents/frontend/WORKLOG.md",
-      "status": "本岗初始化日志"
+      "status": "保留历史并追加真实应用阶段"
     },
     {
       "path": "reports/modules/frontend.md",
-      "status": "未冻结的页面责任及接口需求草案"
+      "status": "当前模块报告"
     },
     {
       "path": "records/handoffs/frontend.json",
-      "status": "本岗结构化交接单"
+      "status": "当前交接"
     },
     {
-      "path": "agents/frontend/github-stage-comment.md",
-      "status": "已发布的本岗阶段说明正文",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358078032"
+      "path": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "status": "实际派工与后续steering"
     },
     {
-      "path": "agents/frontend/github-backend-interface-question.md",
-      "status": "已发布、待后端确认的接口问询正文",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122"
+      "path": "agents/frontend/application-interface.md",
+      "status": "真实后端问询正文"
+    },
+    {
+      "path": "agents/frontend/application-test-coverage-final2.log",
+      "status": "21测试与覆盖率原始结果"
+    },
+    {
+      "path": "agents/frontend/application-coverage-summary.json",
+      "status": "全源覆盖率摘要"
+    },
+    {
+      "path": "agents/frontend/application-coverage-manifest.json",
+      "status": "19文件完整分母"
+    },
+    {
+      "path": "agents/frontend/application-build-final2.log",
+      "status": "真实类型检查与构建"
+    },
+    {
+      "path": "agents/frontend/application-frozen-install.log",
+      "status": "冻结锁安装"
+    },
+    {
+      "path": "agents/frontend/application-real-browser.mjs",
+      "status": "真实浏览器流程，可读环境变量凭据而不记录凭据"
+    },
+    {
+      "path": "agents/frontend/application-real-browser-result.json",
+      "status": "282条真实HTTP与错误结果"
+    },
+    {
+      "path": "agents/frontend/application-screenshots/",
+      "status": "1440/390真实截图"
     }
   ],
   "interfaces": [
     {
       "peer": "backend",
-      "status": "未冻结，尚无双方确认",
+      "status": "冻结1.0.0已实际对接，真HTTP七态闭环通过",
       "inputs": [
-        "鉴权及项目上下文、筛选分页",
-        "task_id、expected_version、幂等键及目标操作",
-        "阻塞原因、责任环节、解除依据及证据引用"
+        "Bearer内存身份",
+        "冻结operationId、schema和版本/证据",
+        "同body同key恢复"
       ],
       "outputs": [
-        "权威业务状态、版本、操作结果及留痕标识",
-        "稳定错误码和字段错误",
-        "排期差异、评审及上线决策记录"
+        "data/meta及Error",
+        "403/409刷新、422字段提示",
+        "最新权威任务与审计"
       ],
-      "boundary": "后端负责权限、状态机、并发拒绝、事务与拒绝留痕；前端只做展示、输入校验和调用。403 停止操作；409 保留草稿并刷新权威状态。"
+      "evidence": "agents/frontend/application-real-browser-result.json"
     },
     {
       "peer": "messaging",
-      "status": "未冻结，尚无双方确认",
+      "status": "UI已接契约、夹具已测，真实后端503待owner",
       "inputs": [
-        "项目及分页筛选",
-        "通知 ID 与已读/处理动作"
+        "个人通知分页、已读、处理说明与证据"
       ],
       "outputs": [
-        "通知列表、级别、状态、时间、降级标记",
-        "已读/处理权威结果及错误"
+        "API权威已读/处理状态"
       ],
-      "boundary": "消息岗拥有通知数据与契约；前端拥有消息页面；无前端 RabbitMQ 连接或延期升级定时任务。"
+      "boundary": "阅读与处理分开，不自动解除任务阻塞；后续接好再回归"
+    },
+    {
+      "peer": "deployment",
+      "status": "沿用dist及同源API；实际dev代理18080已联调",
+      "inputs": [
+        "frontend/pnpm-lock.yaml",
+        "pnpm build"
+      ],
+      "outputs": [
+        "frontend/dist"
+      ],
+      "boundary": "未改部署；生产路径由Nginx保留，dev代理仅本地"
     }
   ],
   "commands_executed": [
@@ -96,27 +140,77 @@
     {
       "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/github-backend-interface-question.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122"
+    },
+    {
+      "command": "absolute Node + pnpm add exact Vue/ElementPlus/router and build/test tooling; pin typescript@5.9.3",
+      "result": "依赖真实安装并生成frontend/pnpm-lock.yaml；初次TS7兼容失败如实记录"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm typecheck; pnpm test; pnpm build (separate subprocesses with Node bin in PATH)",
+      "result": "全部exit0；5测试通过；dist生成；完整输出agents/frontend/foundation-validation.log"
+    },
+    {
+      "command": "CUA getState",
+      "result": "Mac锁定，无可用浏览器；未继续重复锁屏操作"
+    },
+    {
+      "command": "pnpm preview --port 4173 --strictPort; Node agents/frontend/headless-foundation-check.mjs (PLAYWRIGHT_MODULE=runtime playwright)",
+      "result": "根据后续明确建议使用预装Chrome headless；1440/390检查通过；截图与JSON保存；无业务请求"
+    },
+    {
+      "command": "gh issue comment 2 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358871067"
+    },
+    {
+      "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-backend-question.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358873565"
+    },
+    {
+      "command": "git diff --cached --check; git commit with role/prompt/issue footer",
+      "result": "各步骤顺序执行；实现提交 5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；30文件仅本岗范围"
+    },
+    {
+      "command": "git push -u origin codex/frontend-app",
+      "result": "成功推送新分支并建立upstream"
+    },
+    {
+      "command": "GitHub create_pull_request draft=true base=codex/team-bootstrap head=codex/frontend-app; gh pr list; attach_artifact; gh pr diff 14 --name-only",
+      "result": "草稿PR https://github.com/HJY147/t44-dev-trace/pull/14；isDraft=true；创建HEAD=5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；已attach；diff仅本岗30文件"
+    },
+    {
+      "command": "stop temporary Vite preview with Ctrl-C",
+      "result": "截图完成后预期exit130，不是构建失败"
+    },
+    {
+      "command": "git merge --no-edit 6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+      "result": "干净工作树安全fast-forward"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm build; pnpm test:coverage (separate subprocesses)",
+      "result": "安装/类型/构建成功；21测试通过；行92.21/分支86.13/函数83.85，19源文件全分母"
+    },
+    {
+      "command": "Node application-real-browser.mjs with PLAYWRIGHT_MODULE and DEMO_CREDENTIALS env",
+      "result": "真实浏览器→18080→MySQL，282 HTTP，七态+返工；pageerror0，33资源console错误为403/503；不输出凭据"
     }
   ],
   "results": [
-    "完成页面及接口需求草案，全部标明未冻结",
-    "仅写入允许的本岗三份文件",
-    "文档校验不是功能测试或独立验收",
-    "文档岗真实问取及回答已记录",
-    "发布本岗阶段说明和后端接口问题；尚无接口确认结果"
+    "完整业务UI和统一客户端已实现",
+    "21模块测试通过，19源文件全分母行92.21%",
+    "真实MySQL浏览器七态、改期依赖、评审评估及审计通过",
+    "1440/390截图与手机卡片通过",
+    "真实通知/升级503如实呈现"
   ],
   "unverified": [
-    "前端项目及全部页面未实现",
-    "API 路径、字段、状态编码、错误码及权限矩阵未冻结",
-    "无后端/消息岗双方确认及联调",
-    "模块自测、集成验证、独立验收均未运行"
+    "通知/升级门面尚未接入，真实已读/处理/规则/升级历史成功场景待owner",
+    "覆盖率不代表断言完备；main/router仍0计入分母",
+    "未做正式400并发/性能、全面安全或独立验收",
+    "手机为headless viewport，非真机",
+    "生产构建有约823kB chunk体积提示"
   ],
   "questions": [
-    "请后端确认状态机操作模型、expected_version/幂等键和 403/409/参数错误契约。",
-    "请后端/数据库确认项目权限矩阵、枚举、分页和时间字段。",
-    "请消息岗确认查询、已读/处理的归属、去重、降级标记及刷新方式。",
-    "请总协调冻结三类接口和页面字段后再安排前端编码。",
-    "后端 #3 已问询：相同幂等键和相同请求携带旧 expected_version 重试时，回放原结果与 409 校验顺序如何约定？尚未确认。"
+    "消息/升级owner接好后需另一次真实页面回归。",
+    "PR14保留既有草稿，分支基于6afd整合；总协调集成时核对base继承的其他岗位历史。"
   ],
   "prompt_refs": [
     {
@@ -142,7 +236,38 @@
         "agents/frontend/github-backend-interface-question.md"
       ],
       "improvement_reason": "记录本岗实际资料回答、评论证据及隔离提交边界；不新增产品设计，不将未冻结草案记为已实现。"
+    },
+    {
+      "id": "ROLE-frontend-FOUNDATION-v1",
+      "task": "agents/frontend/TASK.md（初始化限制由本轮明确派工覆盖）",
+      "actual_dispatch": "records/prompts/ROLE-frontend-FOUNDATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "将仅设计阶段推进为独立可构建工程，冻结前不联调，记录真实失败/修复/验证而不虚报业务与覆盖率。"
+    },
+    {
+      "id": "ROLE-frontend-APPLICATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/application-*",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "从骨架推进真实契约业务，并明确模块夹具/真MySQL联调/独立验收边界；凭据不进入产物。"
     }
   ],
-  "updated_at": "2026-10-23T13:25:35+08:00"
+  "updated_at": "2026-10-23T16:33:20+08:00",
+  "delivery": {
+    "branch": "codex/frontend-app",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
+    "base": "codex/team-bootstrap",
+    "draft": true,
+    "basis_commit": "6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+    "status": "本轮应用阶段最终SHA以PR HEAD和Git提交记录核对"
+  }
 }

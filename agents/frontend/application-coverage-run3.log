@@ -1,0 +1,38 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend/frontend
+      Coverage enabled with v8
+
+ ❯ tests/application.test.ts (10 tests | 1 failed) 400ms
+   ❯ typed editor interactions (2)
+     × emits boolean, integer, date, text, enum and array changes as proper JSON values 24ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 19 passed (20)
+   Start at  16:18:54
+   Duration  2.01s (transform 37%, import 34%, environment 16%, tests 13%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
+$ vitest run --coverage
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application.test.ts > typed editor interactions > emits boolean, integer, date, text, enum and array changes as proper JSON values
+AssertionError: expected [ null ] to deeply equal [ 2 ]
+
+- Expected
++ Received
+
+  [
+-   2,
++   null,
+  ]
+
+ ❯ tests/application.test.ts:38:54
+     36|     await wrapper.get('#field-owner_id').setValue('1'); expect(asRow(w…
+     37|     await button(wrapper, '添加项目角色').trigger('click'); await wrapper.ge…
+     38|     expect(asRow(wrapper.props('modelValue')).roles).toEqual([2])
+       |                                                      ^
+     39|     await wrapper.findAll('button').find((node) => node.text() === '移除…
+     40|     expect(asRow(wrapper.props('modelValue')).roles).toEqual([])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

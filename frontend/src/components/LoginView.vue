@@ -1,0 +1,36 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { ElButton } from 'element-plus'
+import { api, request } from '../api'
+import { asRow } from '../contract'
+import { bootstrap, workspace } from '../workspace'
+const username = ref('')
+const password = ref('')
+const busy = ref(false)
+const error = ref('')
+async function login(): Promise<void> {
+  if (!username.value || !password.value) { error.value = '请填写账号和密码。'; return }
+  busy.value = true; error.value = ''
+  try {
+    const result = asRow((await request('login', {}, {}, { username: username.value, password: password.value })).data)
+    api.token = String(result.access_token)
+    await bootstrap()
+    workspace.notice = '已登录，工作空间已同步。'
+  } catch (cause) { api.token = ''; error.value = cause instanceof Error ? cause.message : '登录暂未完成，请稍后再试。' }
+  finally { password.value = ''; busy.value = false }
+}
+</script>
+
+<template>
+  <section class="login-page" aria-label="登录留痕">
+    <form class="login-card" @submit.prevent="login">
+      <div class="brand"><img src="/favicon.svg" width="42" height="42" alt="" /><span><strong>留痕</strong><small>研发交付工作空间</small></span></div>
+      <h1>登录工作空间</h1><p>使用已开通的团队账号，继续你的交付工作。</p>
+      <div v-if="workspace.notice" class="inline-notice">{{ workspace.notice }}</div>
+      <label for="login-username">账号</label><input id="login-username" v-model="username" autocomplete="username" maxlength="64" autofocus :disabled="busy" />
+      <label for="login-password">密码</label><input id="login-password" v-model="password" type="password" autocomplete="off" maxlength="128" :disabled="busy" />
+      <p v-if="error" class="field-error" role="alert">{{ error }}</p>
+      <ElButton type="primary" native-type="submit" :loading="busy" class="login-submit">登录</ElButton><small>账号由团队管理员开通。仅可访问你参与的项目。</small>
+    </form>
+  </section>
+</template>
