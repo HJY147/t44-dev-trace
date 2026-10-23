@@ -1,0 +1,22 @@
+flowchart TB
+  Human[用户U015及U016
+D005与D006明确业务取舍] --> Requirement[42d3515需求与业务变更
+DB705e和BE90e合同同步]
+  Requirement --> Review[bbc4设计准入与59daa冻结前复核
+保留失败和夹具勘误]
+  Review --> Freeze[189dc4a冻结1.1.0
+14文件摘要及1.0父链]
+  Freeze --> Code[4c20正式容量守卫实现
+本地早期草稿披露另存]
+  Code --> CI[开发CI394零失败错误跳过
+模块与并发回归]
+  Code --> IAT[独立v2固定4c20
+38成功操作与部分API断言]
+  CI --> Remaining[精确新SHA仍需审核
+性能 规模和整体验收未通过]
+  IAT --> Remaining
+  Freeze --> RFC[3187单接口读UoW设计
+未改14冻结文件]
+  RFC --> Next[5dcb实现及412开发CI
+不能套给独立4c20结果]
+  Next --> Remaining

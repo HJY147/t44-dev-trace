@@ -1,9 +1,9 @@
 # T44概要设计与详细设计报告
 
-版本：M4技术审阅工作稿 v0.4。**非最终验收。** 本稿沿冻结1.0.0与M2集成checkpoint `265d89bd004de626a025d7efe7102fe68b5b2dd3`说明，依据产品审核和当前实现纠正数据关系、重试与扫描时钟表述；新联调证据按准确SHA另补。公开稿不含私密封面个人信息，日期留空。M2补画、M3修订和渲染的时间边界见[修订说明](../../docs/reports/M3-diagrams.md)，不追溯声称开发前已全部形成。
+版本：M5概要/详细设计工作稿 v0.5。**未通过最终验收。** 生产内容固定6ba9f94，冻结1.1.0/14文件；后端5dcb、前端75。M0–M4原提交与失败、八旧图和M4私密Word/QA保留；新图和函数I/O是据当前规格/代码持续补充，不倒填开发前全部成稿。公开无个人封面值，日期空。
 
 Agent-Role: documentation
-Prompt-Ref: ROLE-documentation-M2-QUALITY-v1
+Prompt-Ref: ROLE-documentation-M5-REPORTS-v1
 
 M3 Editor: coordinator_agent；Prompt-Ref: ROOT-documentation-M3-DIAGRAMS-v1。
 
@@ -11,7 +11,7 @@ M3 Editor: coordinator_agent；Prompt-Ref: ROOT-documentation-M3-DIAGRAMS-v1。
 
 需求见[SRS](requirements-report.md)。早期规范在717cd65被判C1–C4不通过，修复后bc0cd34限定技术复审通过；用户D004采用后，`ae60dc37fdaefecaca33e734a354add6ba9ebe29`冻结1.0.0并派完整实现。M1仍待Q002的历史commit不改写；当前不再把Q002列为待采用。冻结只证明设计准入，不证明软件测试/性能/独立验收通过。
 
-本报告分“概要设计：模块/进程/边界”和“详细设计：数据/函数/协议/时序/异常”，再给模块测试与联调修复。冻结11文件只读，真实结果、历史路径和后续tmp迁移见[M2收集](../../docs/reports/M2-collection.md)。
+本报告分“概要设计：模块/进程/边界”和“详细设计：数据/函数/协议/时序/异常”，再给模块测试与联调修复。当前1.1的14冻结文件只读，1.0父链11项历史保留，真实结果、历史路径和后续tmp迁移见[M2收集](../../docs/reports/M2-collection.md)。
 
 ## 2 概要设计
 
@@ -60,7 +60,13 @@ flowchart TB
 | scheduling | EscalationFacade、Scanner.run/tick、build_scheduler | 版本化规则/最高级/扫描续扫；不绕Runtime直接改任务状态 |
 | deployment/CI | compose.yaml、Dockerfiles、ops.py、product.yml和ci脚本 | 明确目标运维与真实检查，不伪造产品通过、不修改验收条件 |
 
-依赖从组合根注入工厂/门面；数据库连接、消息连接不在领域函数内部随意构造，网络等待不占业务事务锁。具体签名与源文件在[M2追踪](../../docs/reports/M2-traceability.md)。
+依赖从组合根注入工厂/门面；数据库连接、消息连接不在领域函数内部随意构造，broker网络IO在业务事务外；5dcb单只读分支持连接跨本地校验CPU的代价须另测。具体签名与源文件在[M2追踪](../../docs/reports/M2-traceability.md)。
+
+### 2.3 当前UI信息架构和设计到实现
+
+真实导航源navigation.ts定义七个入口：`/`、`/projects`、`/tasks`、`/schedule`、`/reviews`、`/notifications`、`/audit`，router映射到同一WorkspaceView及page prop。App通过workspace.user控制登录覆盖和app-shell inert；这不是服务端授权保证，也没有据此新增资源级权限深链。图源见[M5 UI导航](../../docs/reports/M5-diagrams.md#3-当前真实ui导航)。
+
+[D007](../../records/decisions/D007-visual-direction.md)来自U017/U018。设计326先提交DESIGN、可点击三场景合成原型、来源/Apache许可及8原型图，协调者实看4样本后才导入840。使用固定OpenDesign e03d/0.25.1的官方本地技能/模板，不是桌面App、MCP或外部模型；具体色值/间距是AI设计选择，不冒记用户逐项采用。后端契约/权限/七态/通知双计数保持。详见[设计](../../docs/ui/warm-glass/DESIGN.md)、[来源](../../docs/ui/warm-glass/sources.json)、[许可说明](../../docs/ui/warm-glass/NOTICE.md)。
 
 ## 3 详细设计
 
@@ -217,7 +223,25 @@ for keyset_page(候选范围由cutoff限定):
 
 N任务、L规则、K事件、历史E、收件人R_i时，直接匹配O(NL)，索引去重通常O(K log(E+1))，展开O(ΣR_i)，分页内存O(B+R_max)；v1三档可视L常量。不能把整次扫描写O(1)。阻塞不暂停；rule_version不加入硬去重键绕过同排期同级一次规则。
 
+### 3.6 1.1人力守卫和单接口只读事务
+
+`Tasks.capacity_owner(g,c,identifier,iteration_id)`读取当前迭代并要求负责人存在capacity；创建/允许阶段转派和Workflow返工调用它。Projects.changeIteration读取该迭代状态1–5的**全部**任务负责人集合，要求新capacity全包含；同一project锁协调与创建/转派/返工竞争。项目成员保护仍含7，不与工时规则混同。缺失抛CAPACITY_REFERENCE_INVALID，原鉴权/状态/版本/OWNER先后不改，拒绝不更新计划/任务/轮次/差异。
+
+5dcb仅给validateContractPayload增加单自有UoW：普通RC authenticate→原validate→fresh now过期复核→原dispatch→退出with→wire/status。其它17只读、全部写/claim/锁/CAS/outbox字节不由此优化；成功不写task/audit/outbox/idem。三类成功账本实测4/5/5 SELECT及各一次acquire，COM_PING、初始化SET、提交/rollback不在此账本，不能换算总网络往返或正式P95收益。
+
+每个新请求重新查询会话/主体/成员/项目；四表各自语句快照，不是原子授权快照。已鉴权在途读允许完成，撤销提交后的新请求必须401/403；不增加session/member S锁。合法输入后才以fresh now复核到期，保证到复核点而非发送瞬间；输入非法仍保留原错误先后。异常先退出/关闭原UoW，再用原独立拒绝审计；审计不可用明确503，提交不确定不谎称确定回滚。
+
+### 3.7 组件和函数I/O
+
+[M5函数契约](../../docs/reports/M5-function-contracts.md)及[源码索引](../../docs/reports/M5-function-sources.json)锁完整6ba SHA，列真实签名、输入输出、调用者、前后置、异常、事务与副作用；旧M3/M4索引不改。核心链仍为FE request→API Call→Runtime→Business/Workflow→纯domain Decision→Rows/UoW；通知和扫描通过各自门面注入。
+
+FieldEditor75输入仍schema/Json modelValue/name/path/errors，输出update:modelValue；运行时显式props的modelValue type:null保留JSON原类型及TypeScript PropType，取消Boolean-before-String对空串的true强转。initial()本来正确，未改默认业务值/Schema/API；组件回归同时检查纯初始化、真实控件和OperationForm，以跨边界输入输出核对定位问题。
+
 ## 4 各模块测试与集成证据
+
+当前逐模块映射和真实边界见[M5追踪矩阵](../../docs/reports/M5-traceability.md)与[测试技术报告](test-results-report.md)：6ba后发同源组合CI412后端/30前端、零失败错误跳过，全43Python行88.7883%、19前端310/334行92.81%；840历史27和75当轮定向14/20HTTP/4图分时保留。独立API固定4c20，仅所列子集，不是完整通过。下表保留M2历史收件，不能当M5当前统一分母。
+
+### M2历史模块快照
 
 | 模块 | 已发布/实际收件范围 | 不能推出 |
 | --- | --- | --- |
@@ -243,8 +267,14 @@ M2新CI证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](http
 
 后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。
 
-## M4当前测试截止状态
+## M4历史截止快照 原文保留
 
 当前汇总截止集成2e0481f，完整结果见[测试结果技术报告](test-results-report.md)。指定0448fec开发CI335通过/零跳过，Python43文件2493/2818行88.47%、分支77.73%，前端24通过/307至333行92.19%；同SHA完整容器恢复通过。独立v1针对e8ceefe整体未通过，900结果340/183/328/49（183含歧义，非183bug），三个400VU/600秒P95为3035/1908/5506ms，均超270；吞吐和稳态零失败通过。C-P4仅在7c27限定关闭，5886超限786仍failure。IAT01开发修复已合，其他缺陷进行中，不是独立复测通过。
 
 八图沿用M3已渲染资产，图源代码不改；M3 manifest的整篇源文件hash属于当时快照，本轮新增文字另存M4源hash，不能将当时hash误当当前整篇一致。当前Word为截止技术审阅稿，不是最终验收或学生研究成品。
+
+## M5工程状态
+
+当前6051行/超951不合3500–5100，性能无新正式通过；原400VU/600秒P95失败仍保留。DB scan-run去重候选净增1、DDL AST原型46/1且无净减行收益均未准入生产，不能算已节省。5dcb限定审查、840/75后收到的限定公告不放行整个产品。M4 Word排版通过与软件通过分开，本轮M5不导出。需求审查→设计→实现→debug的真实prompt与人机归属见[M5过程材料](../../docs/reports/M5-process-evidence.md)，本人研究正文不由AI代写。
+
+M5收件后的同源组合结果另见测试报告第10节：6ba准确组合CI后端412、前端30/310至334行92.81%、分支87.97%及同源Docker恢复通过；840/75各阶段原本未跑的项目仍保留当时状态。独立4c后续UI公告有P2 DOM清理失败，修复/复测不在本cutoff；正式性能和6051超951未达标。

@@ -1,45 +1,36 @@
 # T44 AI可执行规格相关文件说明
 
-版本：M4技术审阅说明，非最终验收。D001/D004已由用户采用，总协调ae60dc37冻结1.0.0；M1时Q002待定是历史事实，当前不再待采用。公开稿不含私密封面值，日期留空。
+M5技术工作稿，非最终验收；生产内容固定6ba9f94，当前1.1.0/14冻结文件，旧1.0/11文件和M4历史可恢复。AI文档岗整理，公开无个人封面值，日期空。
 
-Agent-Role: documentation
-Prompt-Ref: ROLE-documentation-M4-TESTS-AND-WORD-v1
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M5-REPORTS-v1；Refs #9。
 
-## 文件用途与读序
+## 文件用途与正确读序
 
-| 文件 | 约束作用 | 正确使用 |
+| 顺序/文件 | 约束作用 | 给AI的使用边界 |
 | --- | --- | --- |
-| [AGENTS](../../AGENTS.md) | 岗位/可写目录、真实记录、隔离测试和版本协作 | 先读本次授权及岗位任务；不把组织规则代替业务规格 |
-| [implementation-layout](../../docs/collaboration/implementation-layout.md) | t44包、门面/进程、依赖锁责任与目录 | 只改本岗，跨岗接口由责任岗确认修改 |
-| [requirements](../../specs/requirements.md)和[SRS](requirements-report.md) | FR/AC、角色/成功拒绝路径、量化要求 | SRS开发中持续优化，不倒填早期全量成稿 |
-| [business-rules](../../specs/business-rules.md)、D001/D004 | 人采用的状态、延期、字段与错误取舍 | 人采用不是亲改代码；实际交付/回滚仍需经理决定 |
-| [OpenAPI](../../specs/contracts/openapi.json)/[错误说明](../../specs/contracts/README.md) | 38操作输入输出/错误/幂等/时间域 | 使用冻结1.0.0；真实HTTP测试不能由Schema静态通过替代 |
-| [字典](../../specs/database/field-dictionary.md)/[DDL](../../specs/database/schema.sql) | 18表226列、类型/约束/索引 | 迁移有明确目标；不关FK/CHECK、不启动偷建表 |
-| [持久契约](../../specs/database/persistence-contract.md) | 版本、锁、成功/拒绝事务、outbox/续扫 | 与真实UoW/Rows/Outbox/Scan实现和本模块测试对应 |
-| [后端设计](../../specs/backend-design.md)/[M2概设详设](design-report.md) | 模块、状态、数据、时序和复杂度 | 冻结文件不由文档岗改；M2说明实际实现与残余风险 |
-| [review-template](../../backend/t44/resources/review-template.json)/[escalation-rules](../../backend/t44/resources/escalation-rules.json) | 已存在的v1真实配置，八段十项与三级规则 | 读取实际原文/hash/版本；synthetic metadata不是新的人的批准 |
-| [评审协议](../../docs/reviews/review-protocol.md) | 八段十项、准确SHA、缺证据不放行 | 新head重新审核；技术复审不替产品/性能验收 |
+| 本次授权、[AGENTS](../../AGENTS.md)、岗位TASK、[layout](../../docs/collaboration/implementation-layout.md) | 责任目录、真实留痕、进程/依赖和隔离规则 | 组织约束不替代业务规格；只改本岗，不触独立私密内容 |
+| 原始T44及[requirements](../../specs/requirements.md)、[SRS](requirements-report.md) | 8FR/9AC、角色、输入输出、异常、非功能和追踪 | 原任务文本只读；需规开发前先形成，开发中补图/细化不倒填时间 |
+| [business-rules](../../specs/business-rules.md)、D001/D004/D005/D006 | 人采用的状态/延期/字段与工时边界 | 容量1–5、成员1–5+7不同；6/7可移工时，返工再验；不猜预算算法 |
+| [v1.1冻结清单](../../records/spec-freezes/v1.1.json)及[父清单](../../records/spec-freezes/v1.json) | 当前14项hash、1.0父链、采用/审查/时序 | 189dc冻结后正式实现；早期草稿披露保留，冻结非软件验收 |
+| [OpenAPI](../../specs/contracts/openapi.json)/[错误说明](../../specs/contracts/README.md) | 31路径/38操作/130 Schema；输入输出/错误/幂等/时域 | 外层1.1.0、候选结果schema_version仍1.0.0；不擅改1.1.1 |
+| [字典](../../specs/database/field-dictionary.md)/[DDL](../../specs/database/schema.sql)/[持久契约](../../specs/database/persistence-contract.md) | 18表226列、类型/约束/锁/事务/outbox/续扫 | 参数化和显式迁移；DDL本次不变；不关约束、不启动偷迁移 |
+| [概设详设](design-report.md)/[冻结后端设计](../../specs/backend-design.md)/[M5真实函数I/O](../../docs/reports/M5-function-contracts.md) | 模块进程、函数、时序/副作用/错误和复杂度 | 函数索引锁6ba，不保证未来行号匹配；它是AI据实现补充，非本人预写骨架 |
+| [评审模板](../../backend/t44/resources/review-template.json)/[升级规则](../../backend/t44/resources/escalation-rules.json) | 真实八段十项/三级配置，原文hash及版本 | 配置扩展实验证据与生产默认分开；synthetic metadata不当人的新批准 |
+| [D007](../../records/decisions/D007-visual-direction.md)/[视觉设计](../../docs/ui/warm-glass/DESIGN.md)/[来源许可](../../docs/ui/warm-glass/NOTICE.md) | 人定暖色/玻璃/圆角、先设计再导入；AI定细节 | 官方OpenDesign本地技能/模板，非App/MCP；原型不连接真实API |
+| [评审协议](../../docs/reviews/review-protocol.md)/[测试报告](test-results-report.md) | 准确SHA、八段十项、全源码覆盖与分层结果 | 技术限定复审不替整体、性能、规模或独立验收 |
 
-先读原始T44与用户决定，再读冻结记录和跨模块接口/字段，随后读本岗实际代码与已发布交接；每次派工列出输入版本、目录、输出和验证。需求到概设、详设、实现、本模块测试映射见[M2追踪](../../docs/reports/M2-traceability.md)。
+## 修改与冻结规则
 
-## 变更、审核与冻结
+跨模块变化先由人明确业务含糊处、记原值/新值/影响/决定者；责任岗同步需求、接口、字段/存储及调用方/模块测试，准确设计SHA审核后由总协调冻结独立版本再正式实施。没有新冻结就不将未准入合同用于联调，不暗改旧清单。文档岗仅在报告/附录补图与过程，不修改14冻结件。
 
-冻结11文件哈希见[1.0.0记录](../../records/spec-freezes/v1.json)。M2不改这些文件。新业务/字段/规则变化须记录原值、新值、生效时间、影响和决定者，责任岗同步契约/调用方/DDL及测试，总协调组织准确新SHA审核和版本更新；不能为让代码通过暗改旧要求。
+当前真实顺序与早期草稿限制见[M5过程材料](../../docs/reports/M5-process-evidence.md)、[三新图](../../docs/reports/M5-diagrams.md)。M3八图已有渲染与PNG检查；本轮只新三图，是否已渲染以本轮manifest为准，不重跑未变旧图。
 
-冻结前禁止联调；本项目已在D004采用及冻结后授权完整业务实现和联调。独立基础前置与完整编码分阶段，真实规范审查→冻结→编码→联调debug→文档迭代历史保留。AI技术选择D002/D003不冒充用户原话。
+## 执行、测试与验收证据
 
-## 执行与验收证据
+模块入口、函数I/O及FR映射见[M5追踪](../../docs/reports/M5-traceability.md)；完整准确版本结果见[测试技术报告](test-results-report.md)。5dcb开发412/全43文件0排除、独立v2固定4c的已发布子集、旧e8/P95失败、同源6ba后收到的组合CI与Docker分别记录。当前6051超951，性能/整体验收无新通过，不由单次CI替代。
 
-- 当前测试技术结果见[独立测试结果汇编](test-results-report.md)：0448fec开发CI后端335通过/零跳过、Python行88.47%、前端24/行92.19%；同SHA容器恢复通过。旧317/88.16等是历史，不替换分母。
-- 独立v1公开两报告已发布，e8ceefe整体未通过，900结果340/183/328/49；三批正式P95超线，不能继续写“尚未执行”。183含歧义不当183bug，失败修复不当独立复测。
-- 7c27的C-P4四类同名语义检查限定关闭；原口径5886超限786仍failure。精简估计不当已达标。
-- 测试路径统一tmp/，历史命令保持执行时点。只读独立公开报告/JSON，不联系实例或跟随私有证据路径；UI独立补充已公开：原e8测3通过/1失败/1阻塞，原900不改，非b485复测。
-- [R001原话](../../records/reflections/R001-original.md)已提供本人观点，研究正文及课程建议仍由本人完成；AI证据/模板不当学生署名成品，人工12/3/5不可由AI动作凑数。
+独立只读明确发布的脱敏报告，私密hash/路径不提供读取许可；不联系独立实例。R001本人观点与R002课程建议已收，研究正文仍本人写；人工12/3/5和单族六版不得由AI活动凑数。
 
-本轮Word是准确截止版本的技术审阅材料，不是最终验收稿；逐页QA独立记录，未QA不交付为合格。封面仅私密本地使用，日期留空。
+## Word与历史
 
-## M3 输入输出与图示补充
-
-[function-contracts.md](../../docs/function-contracts.md)据当前真实签名逐层说明FE API、Runtime四元组、Business数据、纯domain决策、Rows/UoW/迁移、MQ提交后ACK、Scanner/升级及部署CLI的输入输出/错误/事务副作用；[源码索引](../../docs/reports/M3-contract-sources.json)固定行号/哈希和38操作Schema。它是现有实现的M3说明，不是本人预写骨架或新增冻结规格。
-
-[M3八图及修订](../../docs/reports/M3-diagrams.md)已由root真实渲染/独立PNG查看，M3当时最终Word未逐页QA，本轮M4技术审阅Word的QA另记；M2未渲染记录不改。[提示词事实包](../../docs/prompting/M3-evidence-checkpoint.md)区分实发/建议/事后重述。[R001本人原话](../../records/reflections/R001-original.md)是观点来源，未来人工def/#todo工作流与本项目已冻结OpenAPI/DDL实践分开，不倒填人工执行。
+M4四份私密技术Word共28原页已完成排版QA，内容仅2e/0448；[QA记录](../../docs/reports/M4-word-qa.json)不覆盖M5。M5先交Markdown，未导Word/未调用LO/未重复marker。后续稳定截止和授权后再按documents技能导出并逐页检查，封面仅私密本地，日期空。
