@@ -52,3 +52,7 @@
 PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/调度、真实备份恢复、统一依赖整合及全源覆盖率未验证。四PR已发绑定SHA的COMMENT并读回，不重复发，不APPROVE、不发reviewer/stage success、不合并。owner代码和root索引未动。仅提交并push本岗报告、原始派工、日志、证据、评论正文及handoff；实际归档SHA由命令回执交接。
 
 时间补记：初查与评论准备时Q002 pending，随后总协调明确通知用户“采用推荐方案，继续开发”，D004/U006与v1冻结清单在其所报ae60dc3。该最新事实不改原四个被审版本或追溯产品通过；本轮未重审metadata、APPLICATION或PR19。实际prompt为ROLE-reviewer-FOUNDATIONS-v1，追加派工原文在本岗dispatches，未虚构提示词演进或用户改码。
+
+## 完整产品审核v1 checkpoint
+
+精确e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef全产品/M2审核进行中，非放行。959组件复现确认C-P1嵌套Iteration消费错误、C-P2幂等历史状态误报当前；两正确行为断言失败。原脚本复算5944有效行，超上限844。首次报告及真实输出在reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef-checkpoint.md和本岗evidence/product-v1；原owner修复，新SHA复审。基础历史09dd3cf已独立push，不以其范围结论放行完整产品。
