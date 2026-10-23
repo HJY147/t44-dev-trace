@@ -276,3 +276,10 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 一次查询误猜旧图manifest在docs/reports/diagrams/render-manifest.json导致head退出1；定位既有docs/diagrams/manifest.json后继续，只是文件定位错误，无产品执行。
 - root后通知native capture超时P2审查进行中与stage03新公开许可；本次四Word保持e8998d6文档cutoff，不读取stage03或无限追改，不宣称native专项审核通过。后续只增补受影响测试稿。
 - 公开source76、冻结14、应用64、历史7、旧图与新图hash、私密原件忽略和个人值不落公开记录等最终静态复核另存M6-final-validation。GitHub实际发布/读回将在下一条记准确SHA与URL。
+
+## 2026-10-24T05:52:33.503681+08:00 M6 Word 实际发布与释放
+
+- Word/QA实现39ef7d0d857e9c1fa0b5b4c23d378a7b53ec9050本人commit/push完成，full staged base diff空白通过；未修改生产或再次导出。
+- 更新PR33前沿用早先draft状态假设，工具返回才发现root已集成历史head13465cc、21:41:30Z自动merged461553b。误将后续Word范围短暂写入旧PR正文后立即通知root，恢复其原MD/图正文并GET逐字核对，不继续改变历史。后续不冒充Word已合入。
+- GitHub工具新建draft PR35，base codex/integration、head39ef7d0，GET title/body/head匹配、open/draft/unmerged、mergeable true。公开Issue9评论6375470296及PR35评论6375470690，经两个精确ID各GET，正文与保存副本逐字一致。完整正文/范围/状态回执在github-M6-word-qa-readback.json。
+- 这笔仅提交发布回执/交接；没有APPROVE、success或mainmerge，也不再读新独立报告或追native修订。最终receipt SHA由git HEAD和远端核实后回传，释放本岗索引/槽位。

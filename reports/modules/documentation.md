@@ -22,5 +22,5 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M6-TECHNICAL-REPORTS-v1
 
 - 六指定非测试角色各实际送问；native实收四答、reviewer一答，另四岗截至checkpoint无直接回复，已发布来源不冒充其答复。
 - 首轮35页、二轮34页均逐页实看，保留标题孤页/短段拆词及残留空白页的失败版；修后仅设计重导14页，其余三稿沿用已通过二轮。未因元数据重复导出。
-- 新 draft PR33 是本次M6，PR24已合并M4，不冒充M6已合并；发布后保存正文/head/comment精确读回，再释放本岗槽位。
+- PR24是历史M4；PR33已合并M6的MD/三图head13465cc，原正文已恢复并GET核对。后续Word新draft PR35的body/head39ef7d0及Issue9/PR35两条评论均实际读回一致；不把Word称为已合入。最终收据push后释放本岗槽位。
 - 后续只按新明确公开证据增补受影响测试稿；完整独立/正式性能/规模门禁及学生亲写研究与真实人工练习仍未完成。
