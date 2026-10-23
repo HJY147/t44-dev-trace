@@ -132,3 +132,9 @@
 - 标准cloc2.10按root公开source-counting政策/原脚本（只覆盖ROOT为本worktree，固定工具hash校验）从已提交9aeb697归档统计：应用4582，本岗persistence Python1500；此树仍旧FE/未全量MQ，不能声称最终整合规模通过。完整逐文件证据recovery-seed-source-count.json。
 - 真实seed body-file评论Issue4 URL6361347920、Issue3 URL6361348378；BE确认正在merge9aeb697。恢复/公平性源码早已独立交MQ，不因最终报告延迟下游。当前文档归档只说明真实边界，不新增实现。
 - GitHub connector已实际重写PR17标题/正文为完整MySQL持久、恢复与生产合成数据范围，并再次attach_artifact成功，仍保持draft，不设审核通过。本轮代码已9aeb697交接，下面仅归档本岗报告/提示词/统计/评论与状态，结束释放槽位。
+
+## ROLE-database-INTEGRATION-FIX-v1：实际整合规则字段缺陷
+- BE实际全量整合报告312通过/2失败/3本地Rabbit跳过，两个seed失败为仍读旧内部rules.rule_version；原失败由BE保留integration-full-first.log，不将旧独立树seed通过等同正式整合通过。
+- 干净fast-forward merge codex/integration 6217b8c，实际正式资源为version/effective_at/decided_by；仅seed.py映射rule_version=version并显式保存rule_effective_at/rule_decided_by，未改资源或测试文件。
+- 旧t44_bench清单/hash不修改；资源/版本/参数不同明确StatementRejected并要求新空项目schema，绝不覆盖。原test_seed两个断言不编辑，仅实际执行2通过；Ruff check通过。
+- 已请求root新建t44_seed_verify及同app权限供新资源真库生成验证；最小产品修复先交，不以尚未建库拖延BE全套回归。测试统一tmp迁移由root负责，本岗未新增/改测试文件。
