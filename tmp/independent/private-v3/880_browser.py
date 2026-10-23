@@ -232,7 +232,7 @@ def main():
                     'Browser explains blocker reason and responsibility stage')
             snapshot(page, 'blocked task')
             task_action(page, '解除阻塞')
-            field(page, '^原因与决定依据').fill('Browser-visible synthetic resolved dependency')
+            field(page, '^解除依据').fill('Browser-visible synthetic resolved dependency')
             evidence_form(page, 'independent-v3/browser-resolved', 'Synthetic resolved reference')
             submit(page, '确认推进交付任务')
             current = h.get(f, a)
@@ -250,17 +250,28 @@ def main():
             matches = [selectors.nth(i) for i in range(selectors.count())
                        if selectors.nth(i).input_value() == str(h.users['a'])]
             if len(matches) != 1: raise S.Blocked('Owner capacity control is not unique')
-            row = one(matches[0].locator('xpath=ancestor::div[.//button[normalize-space()="移除这一项"]][1]'),
+            row = one(matches[0].locator('xpath=ancestor::fieldset[1]'),
                       'owner capacity form item')
             one(row.get_by_role('button', name='移除这一项', exact=True), 'remove owner capacity').click()
             field(page, '^原因与决定依据').fill('Synthetic forbidden owner capacity removal')
             evidence_form(page, 'independent-v3/browser-capacity', 'Synthetic forbidden capacity evidence')
             before = h.data('listIterations', ids=h.ids(f), expected=200)['items']
-            # Rejection keeps this form visible; wait for the actual HTTP response through page traffic.
+            # Binding is complete only after a real response, not client-side form validation.
             one(page.get_by_role('button', name='确认调整迭代与容量', exact=True), 'capacity submit').click()
-            page.wait_for_timeout(1000); page.wait_for_load_state('networkidle')
             if isinstance(page, NodeRemote):
-                h.rec.event({'kind': 'actual_ui_transport', 'responses': json.loads(page.bridge.call(page.ref, '$traffic', []))})
+                import time
+                deadline = time.monotonic() + 10; observed = None
+                method, route, _ = S.OPS['changeIteration']
+                route = re.sub(r'{project_id}', str(f['p']), route)
+                route = re.sub(r'{iteration_id}', str(f['i']), route)
+                while time.monotonic() < deadline:
+                    traffic = json.loads(page.bridge.call(page.ref, '$traffic', []))
+                    observed = next((r for r in traffic if r['method'] == method and r['path'].endswith(route)), None)
+                    if observed: break
+                    page.wait_for_timeout(100)
+                h.rec.event({'kind': 'actual_ui_transport', 'responses': traffic})
+                if not observed: raise S.Blocked('Capacity form did not reach its actual public HTTP operation')
+            page.wait_for_load_state('networkidle')
             after = h.data('listIterations', ids=h.ids(f), expected=200)['items']
             S.check(after == before, 'Browser rejected capacity removal preserves complete iteration plan and versions')
             S.check(bool(re.search('人力|工时|产能|未结项|CAPACITY_REFERENCE_INVALID', text(page))),
@@ -270,7 +281,7 @@ def main():
 
         def history():
             context, page = fresh('m'); open_project(page, pname); open_task(page, a['title'])
-            one(page.get_by_role('button', name='变更与排期差异', exact=True), 'task history tab').click()
+            one(page.get_by_text('变更与排期差异', exact=True), 'task history tab').click()
             page.wait_for_load_state('networkidle')
             S.check(bool(re.search('原因|依据|操作者|操作人', text(page))), 'History exposes provenance labels')
             current = h.get(f, a)
