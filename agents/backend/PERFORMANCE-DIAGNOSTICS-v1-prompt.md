@@ -86,3 +86,11 @@ root已读RFC原文（8cdfc9b2...）、审核岗限定设计意见，准入仅va
 资源协调：tester给文档18:20–18:21 UTC一次60秒三图渲染，root已允许；这段你保持静态准备，不负载/构建。你930准备好给精确toolSHA/命令后我另协调120秒窗口。当前组合6ba CI已412+前端30全通过，新Docker6ba也pass，后端字节仍5dcb，不会把这些当性能证明。
 
 执行对应：创建本岗新分支并merge75c；930先实现静态核对，未发SQL/HTTP/负载，等待明确窗口。未接触独立私密材料、未联系tester；已验证中性资料存在及600，只记录选择/权限，不输出敏感值。
+
+## ABBA后静态RFC实际续派（原文）
+
+槽已释放，请恢复后端下一轮。根目录codex/integration现在e850af5附近，app仍75/后端5dcb。你当前worktreecodex/backend-contract-abba HEAD9741323，原Tool930及两helper字节执行绑定974；单次root操作者ABBA事实已18:38:01.58–18:38:41.46UTC整体exit0/39.88s，4phase均0错/18083已关。root已merge你的974历史并归档agents/backend/contract-abba-night-01/publication.json+36原始gzip于072bc4e；coordinator只读原样本按3payload类别再算P95在agents/coordinator/contract-abba-category-analysis.json（e850af5），没有新负载。你可轻量merge最新root到你专用分支或建codex/backend-runtime-plan，不碰root工作树、独立private、demo18080/独立18084。
+先完成你本人对ABBA的解释/限制/模块报告/Issue3/PR16阶段评论+commit（明确执行操作者root，不冒称你执行）。再先写下轮性能RFC，实际静态查询/Tx账与净LOC预算、错误优先级/锁序/撤销/幂等/审计/outbox/commit确认丢失语义保护及回归计划，再给root准入实现。候选不是预定结论：authorize+claim首事务合并（auth→输入验证→idem仍同次序）、普通read借鉴已审5dcb单UoW（在途读取/过期语义明确）、guard按需依赖加载避免空查询、静态schema validator复用（需官方主来源/线程语义验证）。不要更改已冻结项目X锁为SHARE，不可身份缓存或弱化当前membership/revoke校验。正确性优先，任何新设计都要先声明语义差异，而不是为了性能回写冻结规范。
+当前6051源超5100上限951（新FE安全修复还未root合入），只接受语义简化的真实净节省，禁止压缩物理行/改分母/业务移到配置或计数外。先设计不写生产，方案务求小而可审且能改善真实三类路径，不需一轮凑到951。现无本地时序测试，但前端审核/独立普通UI可能共机；未经root新明确窗口不要运行新HTTP/SQL负载、服务、400×600。offline静态/必要小探针需新文件号先申请（下个894），不重复既绿412全套。无需问用户，小问题自行查原需求解决，大规则差异记录再报告root。
+
+对应执行：合e850af5，新分支codex/backend-runtime-plan；先离线复核原公开开发归档，不接触独立私密材料，不把root负载执行记成本岗。新RFC只设计，无新脚本号/生产实现/负载。
