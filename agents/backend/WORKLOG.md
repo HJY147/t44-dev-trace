@@ -87,3 +87,14 @@
 - 实际coverage仅source=t44.domain且含分支：331条语句、3未覆盖、48分支、3部分分支，综合约98%；日志及JSON为core-domain-coverage.*，不是全项目80%门禁通过。
 - 文档岗M1实际询问进度时本岗原文答复尚未提交、81测试通过/Ruff待修的即时事实，后续最终状态再单独发送，不能把早期快照改成当时已完成。
 - 本轮没有API应用/路由、DB/迁移、事务/幂等/CAS/图锁、成功或拒绝审计、MQ/调度；没有HTTP、MySQL实库、联调、独立验收或压测。Q002按派工时尚待用户，技术复审不由本岗宣称通过。
+
+## ROLE-backend-APPLICATION-v1 阶段1：冻结业务HTTP应用
+
+- 用户采用Q002，根冻结ae60dc3后实际授权完整应用；本树先merge冻结及6afd13f，再合入DB8095b6e/f3ea343。独立分支/PR16保留，不碰根索引、不读取独立测试私有资料。
+- 已实现api.py的38操作注册、同步DI、冻结Schema请求/成功data提交前/HTTP响应校验；integer1.0规范化同幂等摘要，bool/字符串拒绝，UTC1000～9999和额外字段严格验证，字段错误无input/凭据。Server-Timing覆盖三个主入口。
+- services实现opaque/Argon2会话、项目成员/迭代、任务与开始前依赖图、排期diff、评审八段十项、独立预案评审及发布/回滚/返工决策；调用既有纯领域decide。无SQL/ORM/第二存储。CLI真实适配账号hash-only/迁移，撤销当前或全部会话，服务Token0600文件；seed/messaging/scheduler仍待owner实际交付，不伪装成功。
+- runtime统一session→idem→project(需要时)→members按user_id→tasks按id；先身份/项目再重放再版本；短认领/租约owner换代、同内容重放/异内容409、CAS、成功审计/outbox/完成快照原子。拒绝回滚后新UoW审计/失败快照；审计失败503/null，DB全宕机仅脱敏运维日志。
+- 首次HTTP确实发现DB循环FK主键自增推断问题，交DB本人修ignore_fk并合入；原application-http-first.log保留（瞬时自测会话脱敏）。第二轮短幂等键测试输入不合冻结minLength，修测试输入未降契约，保留second.log。第三轮25实际TestClient+SQLite HTTP自测通过，覆盖完整交付/回滚/返工、改期旧批准失效、依赖环/开始守卫、角色/自审、幂等/旧版本/撤销、严格Schema及注入审计故障；不是MySQL/独立验收。
+- 首次Ruff9风格失败、format两处后补格式失败、Bandit两处协议/空租约误报都保留；移出字面量误报并复验Ruff/format/Bandit退出0。未新增依赖，68包hash锁未改。初次api导入漏PYTHONPATH后按部署约定修命令，非代码假成功。
+- 实际读Issue#3前端及#4公开状态；Issue4第一次GraphQL EOF后REST读取成功，body-file真实对接评论：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261 。
+- 当前缺口：调度/通知owner尚未接入，相关端点503；CLI seed等待DB；尚未执行本岗MySQL HTTP、Rabbit、网络服务、全t44覆盖率、性能或独立验收。接下来继续实际MySQL与owner联调，不以阶段commit结束完整任务。

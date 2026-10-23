@@ -12,6 +12,10 @@ class PersistenceUnavailable(PersistenceError):
 class PersistenceIntegrityError(PersistenceError):
     """A constraint rejected a statement; the whole UoW must roll back."""
 
+    def __init__(self, message, *, kind="other", constraint=None):
+        super().__init__(message)
+        self.kind, self.constraint = kind, constraint
+
 
 class CommitUncertain(PersistenceError):
     """Commit acknowledgement failed; rollback cannot establish non-commit."""
