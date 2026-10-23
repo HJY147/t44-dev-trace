@@ -149,7 +149,7 @@ class ComposeApplication:
         worker_code = """import json
 from pathlib import Path
 commands={p.parent.name:p.read_bytes().split(b'\\0') for p in Path('/proc').glob('[0-9]*/cmdline')}
-parents=[pid for pid,args in commands.items() if b'uvicorn' in args and b't44.api:app' in args]
+parents=[pid for pid,args in commands.items() if args[1:4]==[b'-m',b'uvicorn',b't44.api:app']]
 workers=0
 for pid,args in commands.items():
  if b'spawn_main' not in b' '.join(args): continue

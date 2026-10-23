@@ -79,3 +79,6 @@
 - 本机实际执行新的FE CI命令成功，whole frontend/src行308/334=92.21%；23项本岗部署/CI guard、Ruff、Compose离线schema和actionlint均通过。命令/退出码与原始gzip日志在integration-validation/，并非独立验收。
 - 当前增加真实CLI凭据管理、只读0700目录/0600JSON挂载、共享flock卷、轮换排空以及已完成扫描DB就绪检查；Docker application独立job和预留972 driver负责实际构建/全应用/HTTP/恢复，971仅私有凭据guard。尚未运行Docker，推送后按真实失败继续修复。
 - 文档岗ROLE-documentation-M2-QUALITY-v1实际询问最新SHA、报告/交接、入口、真实检查/GHA、debug/缺口及tmp迁移。已答复当时发布8e8、历史72，旧3857 run仅基础配置成功而应用缺失，当前凭据/新Docker尚未发布；本段补充现在7e与FE验证和tmp实际路径。未为文档重跑或重写旧失败。
+
+- 首次Docker run39932416571在f052fdd镜像build、infra、迁移、init-user、seed、私密service凭据和全Compose健康启动均退出0；4worker探针输出api_parents=2/workers=4后退出1，因init包装命令也含uvicorn误计。修正为python直接-m uvicorn位置参数判定，不减少worker断言。尚未进入HTTP/恢复阶段。首次原始产物按gzip+SHA保存于integration-validation/run-39932416571，不改写失败。
+- 本轮阶段Issue7评论6361856213、PR15评论6361856737已实际body-file发表。
