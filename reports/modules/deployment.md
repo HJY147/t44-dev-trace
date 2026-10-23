@@ -198,3 +198,4 @@
 
 - 原脚本的两种fake init-wrapper树均红（2 supervisors）；修为明确Python -m uvicorn模块前缀，保留strict==1。相同反例及多真实supervisor拒绝/原投影4相关项通过、Ruff通过；只API_SCRIPT变更，证明/红绿原件agents/deployment/api-process-metadata-validation。
 - 仅合成边界，无真实进程/Docker/旧故障/压力重测。不是stage05实际原因结论；b3ee/H11 incomplete及封存正式结果不更改、不倒填。
+- 实现SHA c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442已GET读回一致。后续仅资料收尾，真实stage05原因及原资源incomplete仍未由本轮验证。

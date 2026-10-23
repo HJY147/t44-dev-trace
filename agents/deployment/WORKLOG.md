@@ -255,3 +255,4 @@
 - 窄修仅API_SCRIPT：明确Python executable basename及紧邻-m uvicorn t44.api:app前缀，不读/输出argv，不放宽strict==1；原spawn计数/投影等其余AST完全一致。相同两wrapper、两个真正supervisor仍拒绝、原API投影共4项0.04s通过（74其他项未跑），Ruff通过。首green有无效转义warning，原件保留，改[.]后同四项无warning通过。
 - 全部fake临时/proc文件，未读真实/proc/容器/独立私密输入，不跑Docker、产品进程或旧故障/正式压力；产品/资源/native不改。仅收尾提交与Issue7实际读回后结束。
 - 提交前diff-check真实exit2：原红JUnit内两行尾空格。保留原字节red-junit.xml.gz与原SHA，阅读XML只规范尾空白，变换说明raw-junit-preservation.json；不重跑测试、不改断言或失败内容，再检查后提交。
+- 实现c0a5e89b2442da2a9149e1d37c2a424d52aff7c0已push并交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376040442使用本岗body-file实际发布，再GET同comment核正文逐字一致，原回执另档。之后仅归档，无重复测试/服务/负载。
