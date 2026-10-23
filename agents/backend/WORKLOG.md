@@ -338,3 +338,12 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 尝试给历史旧frontend/reviewer_v11_implementation id发设计/PR消息均工具返回agent thread limit reached，未送达；root纠正当前frontend_logout/review_backend_preflight后已送达正确实例，前端已真实回复Issue28字段需求。不是对方拒绝或已完成旧消息；失败过程保留。Issue28仅public report/Issue/本方源静态分析，无产品改动，另阶段设计。
 - 本次后续纯证据commit经root明确允许[skip ci]：无生产/测试/配置变化，避免重复完整CI；7584才是437精确源，metadata新HEAD不冒充另一次测试。当前严格14hash保持，仍未独立审核/黑盒复验/正式性能/规模通过。
 - CI归档真实Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698、PR29 https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190；PR16历史cutoff https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373352606。
+
+## Issue28计划历史理由：独立设计阶段
+
+- 从根982623381e9cfa1d6a7bad1de222e160503cbf08新建codex/backend-plan-reason，旧A分支保留。A集成/437CI是前阶段精确7584的事实，本轮不重跑/移植为新设计通过。实际派工归档PLAN-REASON-DESIGN-dispatch.md，没有臆造新的ROLE编号。
+- RFC specs/changes/plan-history-reason-projection-rfc.md约定现after reason差异、新schedule共享点原事务保存、旧任务历史唯一pair+actor/微秒时间/五项完整plan/evidence的保守只读核对；明确请求外键缺失的证明边界。changeIteration不批改任务；旧迭代审计无法定位，不猜/不向任务传播。缺失提示、2000字符、after50/page100、已有reason/重复理由/非计划/跨项目等边界明确，无新冻结字段/DDL/API。
+- 通用Rows仅AND/单列IN，无法一次精确pair且行数≤100，提出DB owner固定task_schedule_changes(project_id,pairs)入口，空集0SQL、非空1批参数化、完整rows、稳定排序/唯一上界/显式异常。不以交叉IN+任意limit冒充正确。尝试给旧/database消息返回agent thread limit reached未送达；根明确将恢复新DB实例实施接口，不记已确认。当前frontend_logout已收到设计范围，之前真实Issue28字段需求保留，未指示本轮改码/测试。
+- 8组合成AuditEvent以冻结Schema+真实FormatChecker离线校验0错误，14hash一致/31path38ops，静态记录plan-reason-design-static.json；只是wire形状，不是matcher/HTTP/MySQL通过。首次检查manifest把files字典按0索引导致KeyError，已记录并修正离线遍历；无产品失败。未import应用/执行SQL/HTTP/pytest/CI/负载，未查独立私密资料。
+- 实际产品/测试/配置净变更0；方案预算是待实现估算+66..121有效行（后端/DB/FE各岗最终复核），不是源码节省/性能改进。原6108超5100缺口保留，不反复全项目统计。后续先根审设计、DB有限接口、后端986/985真红绿与新源检查，前端另派原文显示/缺失UI；未新建873脚本。
+- Issue28 body-file发表并API逐字readback：https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373605774，正文/回读分别plan-reason-github-design-comment.md及plan-reason-github-design-readback.json。根明确允许本次纯设计[skip ci]，避免未经要求全量CI；提交后释放本阶段槽位，等待准入，不自行实施/开负载。
