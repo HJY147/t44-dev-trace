@@ -1,0 +1,137 @@
+{
+  "version": "independent-v2-pending-stage-reviewed-1",
+  "published_at_utc": "2026-10-23T18:40:08.670353+00:00",
+  "overall": "NOT_ACCEPTED_INCOMPLETE",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "operator": "independent AI; blackbox public HTTP, read-only SQL, actual AMQP metadata only",
+  "source_changed": false,
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original8_payload_aggregate_sha256": "56a3db8a76bdbcf4506fba430e13ba166c333c3dfbbd485b9111086c5d05bdb5",
+  "OpenAPI_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+  "DDL_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "execution_binding": {
+    "H5": "bfe81d546c812f3708eb1346e34df7690c8e0020",
+    "R6": "f6f46e46771ffb782bd130df21e33dfba0e4f077",
+    "run_id": 40003603947,
+    "artifact_id": 12522104543,
+    "artifact_zip_sha256": "b691e3fcead9696a418b7ffb27c934299c95c834d7932f79a98110b9bc92b2e5",
+    "ciphertext_sha256": "f606ef6f2811f3623c75d62e83c83f023509488cd45c0f7838a3019876f21264",
+    "CMS_authenticated_decryption": true,
+    "recipient_certificate_sha256": "f2e156af05a4ce9e6128d64543a795b8385407935ffb4b80e43d55b5f1433139",
+    "private_key_only_local_mode0600": true,
+    "environment_source": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+    "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+    "environment_ready": true,
+    "harness_started": true,
+    "harness_exit_code": 1,
+    "final_recovery_completed": true,
+    "final_recovery_id": "219a176b837940e1957a2fdfb08278f2",
+    "recovery_is_not_product_pass": true,
+    "script913_sha256": "2da8cb2b9a33c5ee6a8ca54ecc17d7a1e90875bd61bf5eb5f05c7affc8a48bd6",
+    "supplement_freeze912_sha256": "4c9a2aadc99b2908fac661bd1a8c95ae816a983935ca7d2c000333002992b7c2",
+    "preserved_earlier_runs": [
+      39972540073,
+      39998518039
+    ]
+  },
+  "private_evidence_hashes": {
+    "results.json": "7cae7c9e73c3e8ffeae3d9ee88f9db96a155e9e1329e377acf8c36ad9d845bcd",
+    "events.jsonl": "23cb628484d23d6e497ee166227b879f543bdb907fffe1b0100a078430984119"
+  },
+  "counts": {
+    "HTTP_schema_checked": 788,
+    "readonly_SQL_calls": 355,
+    "actual_durable_audit_references_verified": 315,
+    "child_passes": 6,
+    "raw_frozen_assertion_failures": 1,
+    "blocked_self_preconditions": 1,
+    "new_confirmed_product_defects": 0
+  },
+  "cases": [
+    {
+      "id": "LIFE-02",
+      "raw_outcome": "FAIL",
+      "reviewed_outcome": "BLOCKED_ASSERTION_SCOPE",
+      "actual": {
+        "rejection": {
+          "code": "ACTION_FORBIDDEN",
+          "message": "Action forbidden",
+          "request_id": "16812eeb-d52f-4f33-92ca-2e438cd3b6da",
+          "audit_id": 17,
+          "current_version": null,
+          "current_state": 1,
+          "original_error_code": null,
+          "violations": []
+        },
+        "actor": "same-project developer_b; not task owner and not manager",
+        "request_header_id": "iav2_97306be9-5f06776446b329ab",
+        "path": "/projects/2/tasks/1/transitions",
+        "body_shape": "expected_version1/action2/reason/nonempty evidence/responsibility_stage5",
+        "raw_failure_title": "Unauthorized resource version leak"
+      },
+      "adjudication": "Original949 requires both current_version/current_state null for every401/403. Actual403 ACTION_FORBIDDEN has current_version=null, current_state=1. Frozen Error schema permits state; description forbids unauthorized-project data; README says no resource version on lack of authority. Actor remains a project member entitled to read this task. A state-disclosure prohibition for this already-readable resource is not explicit enough to label a product authorization defect. Original assertion and FAIL remain unchanged; no retest/threshold relaxation. Phase1 positive and remaining phase/role/evidence matrix did not execute. Its returned audit17 was not separately read because original call raised first.",
+      "spec_hashes_reverified": {
+        "specs/contracts/README.md": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+        "specs/business-rules.md": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2"
+      }
+    },
+    {
+      "id": "DEP-01",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "Pending predecessor rejects downstream start409; legitimate predecessor delivery enables start; predecessor rollback does not auto-mutate downstream; blocked-from-development unblock again rejects409 with exact unchanged task. Actual returned audit references checked."
+    },
+    {
+      "id": "STAFF-02",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "Ten separate iterations: states1,2,4,5,6,7 and blocked-from1/2/4/5. Removing A capacity rejected1..5/blocked with unchanged iteration/version/plan/diff; allowed6/7. Changing unrelated B hours39.75 succeeds while retaining protected ownerA. Actual stored capacity user set and task unchanged checked.",
+      "scope": "A is responsible in each matrix fixture; B is the unrelated capacity member. Does not claim every owner×state Cartesian combination or all transaction races."
+    },
+    {
+      "id": "IDEM-01",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "Old successful start replay after a newer block returns original data/original_request_id with fresh request_id/replayed=true, no second success audit/task mutation. Changed body/path409; another actor same key succeeds; same manager key across transition/createTask succeeds. Actual idempotency row COMPLETE/response status/original request id/hash presence checked.",
+      "scope": "Hash content normalization algorithm not independently recomputed from storage; selective PROCESSING/commit-ACK lease cases remain separate."
+    },
+    {
+      "id": "AUTH-02-REMAINING",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "State7 owner cannot lose developer role or membership even after allowed capacity removal. State6 otherwise-unused owner can be removed after capacity removal; valid former token cannot GET or replay old successful start. Task remains unchanged.",
+      "scope": "Earlier completed sole-manager/current membership cases retain their original published evidence and were not rerun."
+    },
+    {
+      "id": "PAGE-01-TASK-SUBSET",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "205 actual tasks with tied planned_end; full page unions size1/20/100 equal read-only SQL id list with total205, no gaps/duplicates. id/planned_end/updated_at ordered with id tie-break where tied. Invalid0/101422; outsider403; nonexistent optional owner filter empty200.",
+      "scope": "Task pages only. More-than100 members/other record-family pagination remains unexecuted."
+    },
+    {
+      "id": "NOTICE-01-REMAINING",
+      "raw_outcome": "PASS",
+      "reviewed_outcome": "PASS_EXECUTED_SCOPE",
+      "proved": "Four actual recipient notices; another recipient cannot read/handle a foreign notice via mutation403 and own list remains personal. Read/handled separate, handling unchanged task. Removing otherwise-unused manager recipient rejects project-filtered list, old-key read replay and handle; unfiltered personal list hides former-project notice. Historical4 notification rows remain without task mutation.",
+      "scope": "Does not establish all-manager fanout>100, duplicate consume/fallback race, or browser UI notice rendering."
+    },
+    {
+      "id": "MQ-01-ACTUAL-ROW-REPLAY-SUBSET",
+      "raw_outcome": "BLOCKED",
+      "reviewed_outcome": "BLOCKED_HARNESS_PRECONDITION",
+      "actual": "Actual outbox row and notification fixture established. Passive queue declaration consumer_count=0 caused a tester-added precondition stop before any duplicate publishes.",
+      "adjudication": "AMQP subscription count alone does not establish absence of a polling consumer. This stop is a tester observation premise, not proof of missing environment capability or product defect. No reconstructed replay postconditions executed. Earlier original-message safe-capture BLOCKED also remains unchanged."
+    }
+  ],
+  "publication": {
+    "allowed_files": [
+      "reports/independent-tests/v2-pending-stage-report.md",
+      "reports/independent-tests/v2-pending-stage-results.json"
+    ],
+    "private_scripts_or_logs_released": false,
+    "raw_screenshots_released": false,
+    "private_key_released": false
+  },
+  "remaining": "Original uncompleted LIFE02 matrix, other record-family pages, MQ original capture/duplicate/fallback races and full frozen phases retain incomplete status; no total acceptance."
+}
