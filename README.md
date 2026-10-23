@@ -20,6 +20,7 @@
 
 | 范围 | 实际证据 | 边界 |
 | --- | --- | --- |
+| 最新组合CI与恢复 | `6ba9f94`的[run39999929187](https://github.com/HJY147/t44-dev-trace/actions/runs/39999929187)四job成功：后端412项、全43文件行2550/2872=88.79%，前端30项、全19文件行310/334=92.81%；[原始证据索引](records/validation/composite-6ba-ci.json)。同源[容器run39999920326](https://github.com/HJY147/t44-dev-trace/actions/runs/39999920326)四worker/19表备份恢复一致 | 应用字节等于75c3468；开发CI及2项目40任务合成演练，不是独立整体验收、正式压力测试或已租云部署 |
 | 集成CI | `0448fecb`的[run39945098961](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098961)，四job成功；335通过/0跳过；全部43个t44文件Python行2493/2818=88.47%、前端307/333=92.19% | Python分支77.73%另报；仅对该SHA；不是独立验收或性能结论。原265d89证据保留 |
 | 独立缺陷的开发修复 | `479fc8fb`的[run39946771417](https://github.com/HJY147/t44-dev-trace/actions/runs/39946771417)，IAT01–05修复后的全量362通过/0跳过，Python全43文件行2524/2850=88.56% | 评估批准失效、创建任务人力、无效ID审计、任务排期差异、结构/证据错误分类；开发回归通过，尚非新独立实例复测 |
 | 1.1人力规则与版本回归 | `4c20f32b`的[run39958165108](https://github.com/HJY147/t44-dev-trace/actions/runs/39958165108)，四job成功；后端394通过/0失败/0跳过，全43文件行2542/2865=88.73%，分支608/774=78.55% | 人力规则含真实MySQL竞争；前一版8f6全量391项中2项合法校验返回500，按冻结内层schema版本修正后通过，原失败保留；不是独立复测或性能通过 |
@@ -35,11 +36,13 @@
 | 独立黑盒验收 | 原版本`e8ceefe6`的[正式报告](reports/independent-tests/v1-blackbox-report.md)及[结果](reports/independent-tests/v1-blackbox-results.json)：38个成功路径通过，整体验收未通过；确认业务/契约问题及三类性能延迟超标 | 900条结果为340通过、183断言失败、328环境阻塞、49未执行；断言失败含解释歧义，不等于183个产品缺陷。原件和哈希保留，修复须新实例复测 |
 | 独立界面补充 | 原`e8ceefe6`的[UI补充原报告](reports/independent-tests/v1-ui-addendum.md)：3通过/1失败/1环境阻塞，发现缺未读/未处理总数 | 不重写原900计数；完整资源深链接在当前路由未定义，记录边界；f654开发修复不倒填旧报告 |
 | 独立v2 API阶段 | 固定`4c20f32b`的[明确发布报告](reports/independent-tests/v2-api-stage-report.md)：38操作有实际成功响应，1596次响应Schema检查，已执行部分通过 | 149个错误码/Schema观察尚非完整语义/拒绝审计通过；其余故障/UI/性能/白盒不由本阶段推导，整体未完成 |
+| 独立v2故障/UI阶段 | [故障报告](reports/independent-tests/v2-fault-stage-report.md)4个明确子集通过、消息捕获子集阻塞；[UI报告](reports/independent-tests/v2-ui-stage-report.md)确认退出后侧栏DOM残留项目名，[Issue25](https://github.com/HJY147/t44-dev-trace/issues/25)专项修复中 | 固定4c；UI无整个案例通过，不扩大为服务端授权绕过。通用停止恢复不替代提交确认丢失或audit-only故障；整体仍未完成 |
+| 契约优化短对照 | [单次ABBA原始样本与来源](agents/backend/contract-abba-night-01/publication.json)：旧4c两轮P95为31.206/31.358ms，新5dcb两轮23.974/23.390ms，均0错误 | 1worker、8并发、每轮8秒，仅开发诊断；不是400VU/600秒正式性能通过，不平均P95伪造统计值 |
 | 需求、设计和技术Word | [SRS](reports/final/requirements-report.md)、[概设/详设](reports/final/design-report.md)、[8张成图](docs/diagrams/README.md)及[四份Word的28页QA](docs/reports/M4-word-qa.md) | 四份本地技术审阅Word均逐页查看，含私密封面、日期留空；M4内容有明确cutoff，后续1.1及最终验收须另更新；学生研究正文仍由本人写 |
 
 有效生产源码3500–5100行目标尚未达到；[本次最新计数](records/metrics/source-count-empty-text-fix.json)为6051，超951；旧1.1的5973和只读改动后的5980计数保留；[计数口径](docs/metrics/source-counting.md)不因超限改变。SQL解析库替换[原型](agents/database/ddl-ast-poc/research.md)未准入生产，实际节省0行。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。当前正在修复和剖析，未将开发回归当独立复测通过；准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
 
-用户采用D005/D006后，[需规](specs/requirements.md)与[业务规则](specs/business-rules.md)先补人力生命周期和流程图，再经限定审查，于`189dc4a`形成[1.1独立冻结清单](records/spec-freezes/v1.1.json)。状态1至5负责人须保留迭代工时，6/7可移出，7返工前补回有效人力；项目成员/开发角色保护仍含7。旧1.0原文和摘要保留。1.1只读校验的`data.schema_version`继续按已冻候选结构为1.0.0，外层`meta.contract_version`为1.1.0，两者用途不同。新无父会话独立实例已依据[中性输入包](records/acceptance/v2-neutral-inputs.json)先冻结8载荷，再绑定4c20执行托管黑盒/故障与独立浏览器；[冻结元数据](records/acceptance/v2-case-freeze-receipt.json)不包含用例内容，现仅公开API阶段报告，未完成整体验收。[托管验收运行协议](deployment/acceptance/README.md)最新能力核验为f118/run39977039692，不把环境自检当验收。最新过程增补见[M5进行中检查点](docs/reports/M5-in-progress-checkpoint.md)。
+用户采用D005/D006后，[需规](specs/requirements.md)与[业务规则](specs/business-rules.md)先补人力生命周期和流程图，再经限定审查，于`189dc4a`形成[1.1独立冻结清单](records/spec-freezes/v1.1.json)。状态1至5负责人须保留迭代工时，6/7可移出，7返工前补回有效人力；项目成员/开发角色保护仍含7。旧1.0原文和摘要保留。1.1只读校验的`data.schema_version`继续按已冻候选结构为1.0.0，外层`meta.contract_version`为1.1.0，两者用途不同。新无父会话独立实例已依据[中性输入包](records/acceptance/v2-neutral-inputs.json)先冻结8载荷，再绑定4c20执行托管黑盒/故障与独立浏览器；[冻结元数据](records/acceptance/v2-case-freeze-receipt.json)不包含用例内容，[本人报告发布索引](reports/independent-tests/v2-stage-publication.json)保留独立岗位自己的阶段提交，未完成整体验收。[托管验收运行协议](deployment/acceptance/README.md)最新能力核验为f118/run39977039692，不把环境自检当验收。最新过程增补见[M5进行中检查点](docs/reports/M5-in-progress-checkpoint.md)。
 
 ## 从哪里开始
 
