@@ -1,0 +1,125 @@
+{
+  "retrieved_at_utc": "2026-10-23T20:07:34.150817+00:00",
+  "retriever": "macOS curl normal TLS verification; no bypass",
+  "sources": [
+    {
+      "id": "otp_auth",
+      "url": "https://raw.githubusercontent.com/erlang/otp/OTP-28.5.0.7/lib/kernel/src/auth.erl",
+      "sha256": "e97a0457ee1f2fd71c45e8ca2024b81b133c68ad28bba0d2b4db5018c10fb320",
+      "bytes": 18611,
+      "finding": "-nocookie prevents normal cookie file read/create; duplicate home falls through basedir"
+    },
+    {
+      "id": "otp_filename",
+      "url": "https://raw.githubusercontent.com/erlang/otp/OTP-28.5.0.7/lib/stdlib/src/filename.erl",
+      "sha256": "8a1580664b0c47fe04c8f818de3e18b1a66c0557b837b96cd1807aa7b6f9a62b",
+      "bytes": 51237,
+      "finding": "Darwin user_config is Library/Application Support and does not use XDG_CONFIG_HOME"
+    },
+    {
+      "id": "otp_init",
+      "url": "https://raw.githubusercontent.com/erlang/otp/OTP-28.5.0.7/erts/preloaded/src/init.erl",
+      "sha256": "8bd28cbb97aeddda7cf840bbd388559b293510da4e8dfba8e5055034d4829f82",
+      "bytes": 62246,
+      "finding": "ERL_AFLAGS are prepended; -args_file supports structured early initialization"
+    },
+    {
+      "id": "otp_erlexec",
+      "url": "https://raw.githubusercontent.com/erlang/otp/OTP-28.5.0.7/erts/etc/common/erlexec.c",
+      "sha256": "4edb5c89ce483126156c969c2dec48fa7134913d3e8e474cc53eb31ad0d6c3d9",
+      "bytes": 60322,
+      "finding": "Unix launcher adds default -home from existing HOME; explicit -home adds another value"
+    },
+    {
+      "id": "rabbit_server_launcher",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit/scripts/rabbitmq-server",
+      "sha256": "7539f0250dfc228d9b112d3666ce72575c391f0a465adc9a57bbe8dadcfe525a",
+      "bytes": 5729,
+      "finding": "Normal node execution is erl with Rabbit initialization; foreground mode can exec directly"
+    },
+    {
+      "id": "rabbit_env_launcher",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit/scripts/rabbitmq-env",
+      "sha256": "4593a53a99e9115feaeddb272e206b1d39c22fb9532f9c143fc682e78c9d62af",
+      "bytes": 7117,
+      "finding": "CLI distribution range and CTL_ERL_ARGS are configurable"
+    },
+    {
+      "id": "rabbit_schema",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit/priv/schema/rabbit.schema",
+      "sha256": "7f4cc9d009eb994468fee623e5b63e4df8b29913abf35f957b0d8b4eb66dd6ee",
+      "bytes": 110969,
+      "finding": "Explicit definitions import and distribution listener interface are supported"
+    },
+    {
+      "id": "rabbit_env",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit_common/src/rabbit_env.erl",
+      "sha256": "f4b07a2679a4a1a770e81002b42fcda0f50ed5c52c0d1a6e039dda3f0f90166e",
+      "bytes": 80482,
+      "finding": "Environment cookie override exists but process env and context can enter debug logs; avoid secret env cookie when early file init works"
+    },
+    {
+      "id": "rabbit_cli_distribution",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbitmq_cli/lib/rabbitmq/cli/core/distribution.ex",
+      "sha256": "d12d43e0b61f6c190b5fbaa1c9a0a5a4a0b7ddd16224155b393d476886545867",
+      "bytes": 3262,
+      "finding": "CLI only overrides an existing cookie when erlang_cookie option is set"
+    },
+    {
+      "id": "rabbit_add_user",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbitmq_cli/lib/rabbitmq/cli/ctl/commands/add_user_command.ex",
+      "sha256": "858bdef28a163b236db0acde7688269c67689a68812e8c4950933e13c93cabd6",
+      "bytes": 6037,
+      "finding": "Omitting password argument obtains it via Input.infer_password; stdin supported"
+    },
+    {
+      "id": "rabbit_prelaunch_dist",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbitmq_prelaunch/src/rabbit_prelaunch_dist.erl",
+      "sha256": "b4c2b988a549ac9d1d5a0994698d74b07c8e3f7a539966db9c7ca5fd14d97077",
+      "bytes": 5722,
+      "finding": "L18-30 accepts distribution already started with expected node; setter candidate still requires root admission and real authentication"
+    },
+    {
+      "id": "rabbit_version_command",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbitmq_cli/lib/rabbitmq/cli/ctl/commands/version_command.ex",
+      "sha256": "411c928f4d4d917038c711fbb1b5fe914032470e22466c199ec9a5e19f068509",
+      "bytes": 1206,
+      "finding": "Local CLI version implementation; not yet invoked in this stage"
+    },
+    {
+      "id": "rabbit_password",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit_common/src/rabbit_password.erl",
+      "sha256": "58d96ae98ecbe1aaa239ee6a9dfb060d5237c750660cf78d245efc367c99f185",
+      "bytes": 1551,
+      "finding": "Salt is4 random bytes; store salt plus SHA256(salt+password)"
+    },
+    {
+      "id": "rabbit_boot_defaults",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit/src/rabbit.erl",
+      "sha256": "4301e8c960110397ba4496ddaab1120247fe4b2c697d11b5cbb6f35c48ffd42c",
+      "bytes": 67093,
+      "finding": "maybe_insert_default_data skips default user/vhost when definitions are configured"
+    },
+    {
+      "id": "rabbit_password_sha256",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit_common/src/rabbit_password_hashing_sha256.erl",
+      "sha256": "d0d7b128f0f0acc489508158c1e5b476ebd94a8e73cbf8cc2d76698669f1bbe5",
+      "bytes": 511,
+      "finding": "Hashing implementation delegates crypto:hash(sha256, binary)"
+    }
+  ],
+  "web_verified_pages": [
+    {
+      "url": "https://www.rabbitmq.com/docs/4.3/which-erlang",
+      "finding": "Exact 4.3.6 compatibility matrix lists OTP min27.0/max28.x; newer generic prose separately calls 4.3.7 fully supported"
+    },
+    {
+      "url": "https://www.rabbitmq.com/docs/install-generic-unix",
+      "finding": "Generic UNIX supports macOS, project location without sudo, CLI lifecycle"
+    },
+    {
+      "url": "https://www.erlang.org/doc/apps/erts/erl_cmd.html",
+      "finding": "-nocookie, -args_file and cookie setters; exact behavior further pinned to OTP28 source"
+    }
+  ]
+}

@@ -148,3 +148,43 @@
 
 - 按根最终白名单要求，先独立commit/push中性归档6b681dd73694bf18430f1bce4bdf00ffd1ae762e并核远端同SHA；manifest=deployment/acceptance/neutral-handoff/manifest.json，SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅README/protocol、MQ元数据、成功execution投影、三次逐次成功JSON投影和合成crypto元数据，共7文件；投影明确省略逐轮health观察、不是原始完整日志。原始字节保持另档，agents/开发报告/prompt/失败详情/凭据/密文不供tester，根已收到精确清单。未再运行环境/测试。
 - 实际body-file发布Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787 和PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363，正文agents/deployment/recovery-mq-comment.md。最终仅归档；运行实现仍f118/产品仍4c，不把收尾资料commit当受验运行源。索引显式限定本岗文件，diff-check作为提交前检查。
+
+
+## NATIVE-v1 设计checkpoint（2026-10-23 UTC）
+
+- 实际派工ROLE-deployment-NATIVE-v1，原文与范围归档agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md。从根275dd3e建立独立worktree/分支codex/deployment-native，不操作根索引；不是独立测试实例，未读取任何未发布独立用例/日志/私钥，不联系tester。
+- 已读根AGENTS/本岗TASK/团队规范/实现目录/GitHub规范和本岗历史报告、交接与门面；worktree的原始specs/sources因gitignored缺失，cat真实exit1，随后仅在根指定sources读取成功，不将缺材料错当业务失败。只读根允许的依赖下载/编译记录与layout，未并行重编译。
+- 官方实时主源核对Rabbit4.3.6矩阵允许OTP27.0–28.x；12个固定tag源取得实际SHA/字节，记录native-validation/official-source-map.json。generic UNIX适用于无sudo的Mac项目内依赖，但不等于节点已运行。部分官网curl取回403、首轮CLI独立repo错误tag404均保持在实际工具输出，改为monorepo固定tag原始源，未绕TLS。
+- 根明确授权一次-nocookie/-noshell/无distribution能力probe；真实exit0，OTP28/ERTS16.4.0.6、crypto/ssl成功、OpenSSL3.6.2。真实ERL_FLAGS=-home附加后home出现两值；OTP auth会走basedir，Darwin filename实现不采用Linux XDG_CONFIG_HOME，因此该cookie隔离方案不采用。原stdout/stderr/argv/hash：native-validation/erlang-capability.*。
+- 根另准入有限args_file/file setter非分布式probe及必要纠正：首次JSON式嵌套引用/UTF8表达式词法失败exit1；改为无引号ASCII codepoint路径后词法修正，但真实distribution_not_started exit1。固定auth.erl只在auth进程存在时接受setter，不能把解析修正写成cookie能力通过。两次原始记录cookie-init-probe.*、cookie-init-attempt2.*保留。两个dump均原样转入ignored项目runtime、0600，只计算SHA、不解析/提交；从未输出Cookie。后续broker必须另生Cookie，不复用probe值。
+- deployment/native/README.md给可审查设计：demo新t44_native_demo(2项目40任务)，API18088/UI5178；AMQP25674/EPMD24369/dist35674/CLI45674–45683全部loopback。未来v3的18086/5177仅候选不绑定。保护5173/18080、5175/18084、MySQL13306/PID7980及其数据，端口占用即失败不杀进程。
+- 标准-sname先初始化auth、项目args_file前置读取新0600Cookie再Rabbit boot/CLI是下一阶段候选；固定Rabbit源码分别接受同名预启动分布式和CLI already_started。必须根审查设计后准入一次受控分布式/实际认证，当前不能用静态链证明运行通过。deprecated cookie env仅备选且有debug泄密风险，未采用；不改HOME/官方源码。
+- 源、锁、角色/项目scope、TTL300与受控轮换、运行目录/属主权限、PID/PGID/启动时间核拥有权、逐次UTC/exit/needed/false失败回执和最小消息/实际60秒扫描计划已写；最终SUT/新库由根另行绑定，尚无任何Rabbit/API/consumer/scanner/DB业务或UI启动。未执行独立、性能、云部署或新测试文件；未改生产业务/契约/门禁。
+
+- 设计checkpoint a772d92已commit/push；实际Issue7评论https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6373861786、新草稿PR31 https://github.com/HJY147/t44-dev-trace/pull/31（base codex/integration/head a772d92）已创建，body-file内容经API精确readback（仅规范CRLF/末换行）一致，原响应与校验在native-validation/github-design-*。未合并、未设置reviewer成功。
+
+
+### NATIVE-v1 stage1 实现待实际能力验证
+
+- 根7763402原生broker能力准入文件已只读核对：仅新自有全回环EPMD/Rabbit、873本岗守卫，不授权任何新库/API/consumer/scanner/UI。873号已由根明确预留；未读取883–874或任何独立私密文件。
+- 实现deployment/native/runtime.py的prepare/start/inspect/stop/cleanup-failed-start门面；项目0700/0600排他配置、新256bit Cookie、新随机AMQP用户/口令及单vhost definitions；官方salt4byte+SHA256算法固定源已核。无guest或管理tags，仅四个既有业务资源regex权限。
+- args文件只存-nocookie/唯一-sname/loopback kernel选项/ASCII codepoint file setter，实际Cookie既不进argv也不进环境；HOME/home/CODEX_HOME原值保留，其他继承服务秘密/debug键被丢弃。所有dump目标项目内、umask077，原probe值不复用。
+- PID/UID/lstart/PGID/command SHA逐项比较后才信号；端口占用不停止占用者；Rabbit停止后需确认自有EPMD无注册节点再停；部分失败回执false。实际CLI先file setter写唯一marker再escript、远程eval只返回Cookie匹配/密码后端认证bool，原输出保留私密并扫描secret。
+- 本岗873合成安全守卫15项、复用本岗旧部署venv Ruff0.17.2、diff检查真实通过；初始14项与随后补入EPMD就绪顺序的15项记录分开保留。未安装全局工具，未更改生产业务/锁/契约/门禁。全部代码仍待一次真实stage1 broker验证，不声称认证/监听/停止已通过。
+
+- stage1 run1在7f48596真实start=false、cleanup-failed-start=true，原始public driver JSON、逐次私有原件SHA索引与分析已保留。新随机Cookie的server/CLI setter marker及check_running/远程cookie比较CLI exit0属局部事实；stdout却被官方env-conf的中文路径shelltrace Unicode转换诊断污染，严格true输出检查失败，不倒填整体成功。清理使用自有指纹后SIGTERM，随后Rabbit退出/EPMD无节点/退出均真；无业务负载。
+- 根准入同范围必要run2：核固定rabbit_env源normalize_path保持相对路径，把本环境cwd下实际config/rabbitmq-env.conf改为相对ASCII路径；严格输出、权限、listener/拥有权门槛均不变。将确定性inspect错误移出readiness重试，明确错误码；新增该必要守卫后873为16项/Ruff/diff通过。run2必须新目录和新Cookie，不覆盖run1原件。
+
+
+### NATIVE-v1 stage1 实际完成与停机交接
+
+- run2精确执行源7e94258898404eff8890aae9dc6d419f0cbdd468，使用stage1r2_20261023_203155_236619全新目录/全新Cookie，真实start/inspect/normal shutdown/stop均true。server/9个CLI前置marker及受认证远程cookie-file比较stricttrue、密码后端认证、唯一新vhost/随机用户无guest/无tags和四资源精确regex均实际验证。密码后端验证不是Pika AMQP客户端/业务消息，应用阶段仍待根。
+- 实际Rabbit127.0.0.1:25674/35674；EPMD显式IPv4参数后官方隐式另监听::1:24369，均回环、无wildcard。原IPv4-only设计与差异保留；根明确接受这项小技术澄清并将另行追加准入回执，不等待用户、不改全局配置。
+- 真实文件mtime给setter完成界：server从driver开始保守上界0.275471秒（包含准备/EPMD），9个CLI最大0.132151秒。公开cookie-window明确不是精确handshake，也不叫生产安全通过。
+- 正常rabbitmqctl shutdown实际exit0/markertrue后Rabbit退出，专有EPMD无注册节点后才给自有PGID SIGTERM；Rabbit11070/EPMD11063停后ps均不存在。所有原始逐次私密回执及stdout/stderr保留，公开能力projection/driver/SHA索引在stage1-run2*，不打开/上传dump。
+- 三个已知随机Cookie及两个随机AMQP口令在42个公开phase文件、373个私有非秘密outputs/args中实际匹配0；范围hash分别见stage1-final-secret-scan.json。旧probe与run1原件不覆盖，未修改任何旧端口/数据或MySQL进程。
+- 根要求phase1证据提交后释放槽；本轮不再启动任何服务或改运行源。API/consumer/scanner/UI、新schema与其凭据、最终Issue28组合SUT仍待根绑定。stage1仅本地部署能力，不宣称独立/性能/云/应用通过。
+
+- 收尾完整基线diff检查发现两份原始失败stderr的CRLF被判尾空白；之前只检查未暂存diff未覆盖这些已提交原字节。原始检查输出和真实非零保留archive-baseline-check-original.log；两份raw原字节gzip+SHA/roundtrip精确保存，.stderr明确作为仅换行/尾空白规范阅读稿，JSON引用改指raw gzip及原hash。dump未打开，运行源码不改、不重跑服务；完整暂存基线检查另行记录。
+
+- phase1实际结果已body-file发布Issue7/6374241039和PR31/6374241500，PR标题/正文按最终broker生命周期重写；两条comment与PR正文经API精确readback（仅规范CRLF/末换行）一致，原JSON与check在native-validation/github-stage1-*。仍为draft，未合并/设置reviewer成功；GitHub本分支CI仅保存真实snapshot，不用旧SHA结果代替当前门禁。

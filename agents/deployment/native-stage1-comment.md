@@ -1,0 +1,16 @@
+Agent-Role: deployment
+Prompt-Ref: ROLE-deployment-NATIVE-v1
+
+项目内原生 broker stage1 已完成并全部停机。精确运行实现 `7e94258898404eff8890aae9dc6d419f0cbdd468`，run2 的 start / inspect / 正常 stop 均 true；本阶段只起自有 EPMD 与 Rabbit，没有新 schema、API、consumer、scanner 或 UI。
+
+实际验证标准 `-nocookie` / 唯一 `-sname` / 项目 args_file 前置读取全新0600 Cookie，server 与9个CLI的唯一初始化 marker、真实受认证RPC严格 Cookie/file 比较、已安装密码后端认证、新单vhost、唯一随机用户无guest/无tags及四个既有资源的精确regex权限。密码后端RPC不代替Pika客户端或业务消息验证。
+
+实际 Rabbit 监听 `127.0.0.1:25674`、`127.0.0.1:35674`。EPMD显式IPv4参数后官方隐式同时监听 `127.0.0.1:24369` 与 `[::1]:24369`，均为回环，无wildcard/非回环；原IPv4-only提案与实际差异保留，总协调明确接受这一小技术澄清。初始化nocookie窗口的保守上界为server0.275471秒（含目录准备和EPMD）、CLI最大0.132151秒，并非握手精确计时或生产安全批准。
+
+正常 `rabbitmqctl shutdown` 后 Rabbit11070退出；确认自有EPMD无注册节点再停止EPMD11063，两者最后ps均不存在。拥有权由PID/UID/启动时间/PGID/命令SHA精确核对。16项本岗873合成守卫、Ruff与diff检查通过，运行源码之后未再更改。
+
+首次7f48596/run1整体start=false、cleanup=true完整保留：官方env-conf中文路径shell trace Unicode转换诊断污染stdout，虽然局部认证输出尾部true，严格输出门槛仍失败。修正为实际项目cwd相对ASCII env-conf、确定性inspect不重试后，以新目录/全新Cookie完成run2；未放宽任何门槛或倒填初次结果。
+
+证据 `agents/deployment/native-validation/stage1-run1*`、`stage1-run2*`；原始逐次私密回执/输出保留，公开能力/driver/SHA索引不含秘密。3个已知随机Cookie、2个AMQP口令在42个公开阶段文件、373个私有非秘密outputs/args中literal匹配均0，范围hash见stage1-final-secret-scan.json；dump不打开/上传。旧预览/业务库/MySQL进程未作为操作目标。
+
+phase1完成后按根要求交接并释放执行槽；最终应用SUT/schema/credentials仍待根提供，正常消息/60秒周期扫描、独立验收、正式性能和云部署均未验证。本地开发生命周期由部署wrapper管理，不改HOME/官方源码/业务代码/契约/门禁或main。

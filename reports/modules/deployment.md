@@ -137,3 +137,24 @@
 - 本次harness/profile=false，不接触独立内容、不评价其私密结果；无SSH。后续仅交接，不重跑或改实现。
 
 - 中性白名单checkpoint 6b681dd73694bf18430f1bce4bdf00ffd1ae762e已push：deployment/acceptance/neutral-handoff/manifest.json列7文件和逐文件SHA256，manifest SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅成功元数据投影及协议/MQ/crypto；开发过程、失败详情与原始日志排除，供根单向转交。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363。本轮结束等待集成，无新增环境或测试运行。
+
+
+### NATIVE-v1：项目内macOS原生设计checkpoint
+
+- 本轮基点275dd3e/独立codex/deployment-native；实际派工ROLE-deployment-NATIVE-v1。本地开发运行设计deployment/native/README.md涵盖Rabbit/API/consumer/APScheduler、全loopback与独立生命周期，不替代Compose/云部署。
+- 根完成OTP28.5.0.7项目prefix编译，固定官方Rabbit4.3.6/OTP下载SHA沿用根真实证据。12个版本主源SHA、一次无分布式crypto/ssl成功probe、实际双home结果见agents/deployment/native-validation。
+- Cookie early-init两次真实失败均保留：先引用/UTF8词法，再auth未初始化的distribution_not_started。Darwin不读Linux XDG后备。下一阶段候选为独立-sname先初始化auth后项目args_file读取新随机Cookie，必须根准入真实认证；无secret argv/env、无HOME/官方源码修改。失败dump0600ignored不公开，broker不得复用probe Cookie。
+- 演示候选新t44_native_demo(2项目40任务)/API18088/UI5178，AMQP25674/EPMD24369/dist35674/CLI45674–45683全loopback；未来v3/UI与perf必须另库/vhost，由根冻结。旧5173→18080、5175→18084、MySQL13306/PID7980及业务数据受保护。
+- 设计列明最终精确SUT/锁/关键源SHA、私密账号与scope/TTL300/轮换、PID/PGID/UID/启动时间拥有权、逐次false失败回执、最小真实消息与60秒周期扫描验证。数据库权限/初始化由根协调，现未读取旧秘密或启动服务。
+- 当前只完成设计及有限依赖probe；没有broker、API、consumer、scanner、业务库或UI运行结论，没有新独立/性能/云通过声明。原始提示词/工作日志/JSON交接已同步；根审查后再推进受控能力阶段。
+
+- NATIVE stage1根7763402准入后，新增部署wrapper(runtime.py)与873合成守卫，15项/Ruff/diff通过；随机私密definitions、标准args-file Cookie setter、精确拥有权和逐次false回执已编码。现尚待一次自有全回环EPMD/Rabbit实际启动、CLI认证、监听/vhost/权限和安全停止验证；API等不在本阶段范围。
+
+
+### NATIVE-v1 stage1 最终能力
+
+- 精确运行实现7e94258898404eff8890aae9dc6d419f0cbdd468：run2真实start/inspect/正常stop均true，Rabbit11070/EPMD11063停后不存在；首次run1整体false/cleanuptrue原件保留。证据本岗native-validation/stage1-run1*、stage1-run2*。
+- 标准args-file/-nocookie/-sname后项目0600新Cookie setter与CLI实际顺序/认证得到证明；单随机用户无guest/tags、单新vhost、四资源regex及真实密码后端认证通过。未做Pika业务消息。16个部署合成守卫/Ruff/diff通过。
+- 实际Rabbit127.0.0.1:25674/35674；EPMD同时127.0.0.1及::1:24369，全回环，根接受相对原IPv4-only提案的技术澄清。nocookie短窗保守上界server0.275471s/CLI最大0.132151s，仅本地开发能力，不是生产安全批准。
+- 42public/373private非秘密outputs+args对3Cookie/2AMQP口令literal扫描均0，范围/输出SHA已存；dump保持0600ignored不解析/上传。所有旧环境和MySQL不在操作目标。
+- phase1归档后等待根最终SUT/schema/credentials；API/consumer/scanner/UI、正常消息/60秒真实扫描、独立/性能/云仍未验证。

@@ -1,0 +1,67 @@
+{
+  "scope": "Only-local developer initialization; bounded nocookie interval, not production/security approval",
+  "interpretation": "Actual distribution begins after wrapper launch and cookie setter completes before marker write. Bounds include process setup; network handshake timestamps were not captured. No AMQP listener is started until subsequent Rabbit boot.",
+  "server": {
+    "wrapper_driver_started_at_utc": "2026-10-23T20:31:55.994187+00:00",
+    "cookie_setter_marker_at_utc": "2026-10-23T20:31:56.269658+00:00",
+    "conservative_upper_bound_seconds": 0.275471,
+    "bound_includes": "private preparation and EPMD launch before server process"
+  },
+  "cli": [
+    {
+      "receipt_id": "23ac1d38b4704ec8be7ade986c8fd9dd",
+      "launch_recorded_at_utc": "2026-10-23T20:31:57.844252+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:57.976403+00:00",
+      "upper_bound_seconds": 0.132151
+    },
+    {
+      "receipt_id": "41fd3a7ccdd14dad8a5283699443cda2",
+      "launch_recorded_at_utc": "2026-10-23T20:31:58.971402+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:59.071969+00:00",
+      "upper_bound_seconds": 0.100567
+    },
+    {
+      "receipt_id": "669e2b4251414b97800144b6a1c148e6",
+      "launch_recorded_at_utc": "2026-10-23T20:31:57.008318+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:57.127376+00:00",
+      "upper_bound_seconds": 0.119058
+    },
+    {
+      "receipt_id": "6a521608c6254c6f8e73914cdbacf6f2",
+      "launch_recorded_at_utc": "2026-10-23T20:31:59.627955+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:59.726500+00:00",
+      "upper_bound_seconds": 0.098545
+    },
+    {
+      "receipt_id": "6a8048f7e2094276b585508a8739d1fe",
+      "launch_recorded_at_utc": "2026-10-23T20:31:58.407615+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:58.507832+00:00",
+      "upper_bound_seconds": 0.100217
+    },
+    {
+      "receipt_id": "807f216d856e44838b16321e52ae30a5",
+      "launch_recorded_at_utc": "2026-10-23T20:31:59.255629+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:59.359223+00:00",
+      "upper_bound_seconds": 0.103594
+    },
+    {
+      "receipt_id": "bfc73228b28540d093132d3c65c442c8",
+      "launch_recorded_at_utc": "2026-10-23T20:31:58.140142+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:58.239673+00:00",
+      "upper_bound_seconds": 0.099531
+    },
+    {
+      "receipt_id": "d226d32a9f5247d0b12ed5d7f441cf42",
+      "launch_recorded_at_utc": "2026-10-23T20:31:56.188239+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:56.306692+00:00",
+      "upper_bound_seconds": 0.118453
+    },
+    {
+      "receipt_id": "f628f57e955149d4b16053cef9b31262",
+      "launch_recorded_at_utc": "2026-10-23T20:31:58.675354+00:00",
+      "file_setter_marker_at_utc": "2026-10-23T20:31:58.781301+00:00",
+      "upper_bound_seconds": 0.105947
+    }
+  ],
+  "max_cli_upper_bound_seconds": 0.132151
+}
