@@ -125,3 +125,10 @@
 - 实际prompt文件records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md；只改本岗记录，不并写共享prompt ledger，完成后通知根。
 - root随后发布正式1.1 freeze189dc4a3196be0fb84b753f23284f2566d823ea0。先核对本岗未提交路径与incoming无交集后安全fast-forward，未stash/覆盖；authority SHA仍a77a5cd6，前述7项/类型针对同字节输入，无新增重复检查。未改14冻结文件/18review输入，旧f654浏览器不当作1.1实现验收。
 - Issue2真实阶段对接 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6365092584，正文先存contract-v11-stage-comment.md再body-file发布；PR14同步范围和历史cutoff后提交，只COMMENT不审核通过。
+
+## 2026-10-23T23:25:00+08:00｜ROLE-frontend-WARM-GLASS-v1｜先设计 checkpoint
+- 新建独立 codex/frontend-warm-glass worktree，基于5815a4d；根目录U017/U018未提交资料未动。实际读取官方OpenDesign固定e03d5c23的AGENTS、dashboard/critique模板、frontend-design/design-brief技能与apple/warm-editorial DESIGN，文件hash/Apache许可已记录。apple-hig/design-review只是引导stub，不声称完整运行，未启动App/MCP/Cloud。
+- 按用户米咖/玻璃/圆角优先覆盖上游通用色板与禁玻璃规则，先写DESIGN.md和合成数据可点击prototype.html；当前尚未改生产Vue/CSS。浏览器918已root分配，实际1440/390登录/工作台/详情/表单共8PNG逐张看过，无横向溢出/pageerror，登录示意/筛选/本地错误/Esc交互通过。
+- 内部自评critique.html分开记7/7/6/6/5；预览工具栏手机换行与浮层49px冲突、表单星号单行及原型无完整焦点陷阱如实列出，生产保留Element Plus位置与焦点管理，不能拿原型当真实业务验证。
+- 两次依赖路径glob因zsh no matches中止，改读已知绝对Playwright路径；一次functions.exec变量r重复声明使整段解析失败，无写入，随后以独立变量重试。均不是产品测试失败。
+- 原型检查命令：Node tmp/frontend/918_warm_glass_browser.mjs prototype，exit0；结果agents/frontend/warm-glass-browser/prototype/results.json。测试岗私有目录/端口/图片没有访问。
