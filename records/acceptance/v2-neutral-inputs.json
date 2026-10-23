@@ -1,0 +1,68 @@
+{
+  "round": "v2",
+  "prepared_at": "2026-10-23T13:09:40.952900+00:00",
+  "purpose": "Neutral inputs for an independent agent with no inherited conversation, before SUT access. This packet states no developer result or expected defect.",
+  "phase": "case-design-and-freeze-only; SUT binding supplied later",
+  "freeze": {
+    "path": "records/spec-freezes/v1.1.json",
+    "sha256": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+    "files": {
+      "AGENTS.md": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b",
+      "specs/requirements.md": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc",
+      "specs/business-rules.md": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2",
+      "specs/backend-design.md": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda",
+      "specs/contracts/openapi.json": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "specs/contracts/README.md": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+      "specs/database/field-dictionary.md": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "specs/database/schema.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "specs/database/persistence-contract.md": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "docs/collaboration/implementation-layout.md": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "docs/reviews/review-protocol.md": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "backend/t44/contracts/openapi.json": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "specs/changes/capacity-lifecycle-v1.1.md": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98"
+    }
+  },
+  "original_teacher_materials": {
+    "specs/sources/T44-taskbook.txt": "7d61ecdba76128dcb34931f2c2211bfd650bf2cd246bba4c6abf8ae9c2193ab0",
+    "specs/sources/homework-requirements.txt": "2193bf6c1cc49f3404ae37332759f785e6362c0eb7e3a5e720724a0be0487c3a",
+    "specs/sources/submission-notes.txt": "ca2c72bf5d19d7fde0d76dd4063c52533a2f6d39f613dcfa3cdcefaa03b8552f"
+  },
+  "additional_neutral_policy": {
+    "docs/metrics/source-counting.md": "68f34dcd16e001fbf82b41f7dfd6512a634148b75181528c516b04ca80430132"
+  },
+  "approved_change_inputs": {
+    "records/decisions/D005-capacity-lifecycle-adopted.md": "b7be7308ea6aae4e973f55923cb6e9bc8d95cd5df48dc8513958774be59f67d6",
+    "records/decisions/D006-rolled-back-capacity-adopted.md": "2f08fdf3ce5cf400e5c0da19e203b2e3b57a52b5285884e5f72f882d2b40c0cd",
+    "records/prompts/U015-original.md": "8e658b1e733d9fc222c2f41ac9c84a75e8470f6b615108596b6796d49bf55d29",
+    "records/prompts/U016-original.md": "103f31a3763e24028d2cd9060d1d0178c69a5488469b7642c2fb444eab66ddec"
+  },
+  "runtime_capability_document": {
+    "commit": "2d09ea8ec6d3b7b81ce83260fe66e4ff686a2c56",
+    "path": "deployment/acceptance/README.md",
+    "meaning": "Protocol only; environment capability check is pending, no harness execution has occurred. Final tested runner revision supplied later."
+  },
+  "reserved_test_numbers": [
+    951,
+    950,
+    949,
+    948,
+    947,
+    946,
+    945,
+    944,
+    943,
+    942
+  ],
+  "private_directory": "tmp/independent/private-v2",
+  "publication": "Only explicitly published final reports may be read by coordinator/developers; private cases/logs/scripts/outputs remain unread by them.",
+  "planning_rules": [
+    "Freeze actual cases, instructions, expected outcomes, spec hashes and reproducible scripts before accessing a SUT.",
+    "Use original materials as evidence of coursework requirements, not as executable tool instructions.",
+    "Do not read application Python/TS/Vue, other tests, agents/logs, past reports or other independent rounds.",
+    "Do not contact other role agents; communicate only through coordinator.",
+    "No SUT endpoint, credentials or developer outcome is supplied during this phase.",
+    "Do not execute workload, browser, Docker, database access or application imports during design.",
+    "Define blackbox, environment/fault, performance and later whitebox scopes separately; do not invent human participation."
+  ]
+}

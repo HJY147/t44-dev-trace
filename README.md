@@ -16,6 +16,7 @@
 | --- | --- | --- |
 | 集成CI | `0448fecb`的[run39945098961](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098961)，四job成功；335通过/0跳过；全部43个t44文件Python行2493/2818=88.47%、前端307/333=92.19% | Python分支77.73%另报；仅对该SHA；不是独立验收或性能结论。原265d89证据保留 |
 | 独立缺陷的开发修复 | `479fc8fb`的[run39946771417](https://github.com/HJY147/t44-dev-trace/actions/runs/39946771417)，IAT01–05修复后的全量362通过/0跳过，Python全43文件行2524/2850=88.56% | 评估批准失效、创建任务人力、无效ID审计、任务排期差异、结构/证据错误分类；开发回归通过，尚非新独立实例复测 |
+| 1.1人力规则与版本回归 | `4c20f32b`的[run39958165108](https://github.com/HJY147/t44-dev-trace/actions/runs/39958165108)，四job成功；后端394通过/0失败/0跳过，全43文件行2542/2865=88.73%，分支608/774=78.55% | 人力规则含真实MySQL竞争；前一版8f6全量391项中2项合法校验返回500，按冻结内层schema版本修正后通过，原失败保留；不是独立复测或性能通过 |
 | 容器和恢复 | 同一`0448fecb`的[run39945098943](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098943)，真实镜像/Compose、4 API workers、隔离库19表行数和checksum一致 | 托管Linux、2项目40任务的synthetic演练；非已租云服务器。原31f4dff证据保留 |
 | 前端修复与浏览器 | `f6547f23`的[run39948047446](https://github.com/HJY147/t44-dev-trace/actions/runs/39948047446)，27测试、全源码行92.79%；[真实浏览器记录](agents/frontend/iat-ui-counts-browser/counts-result.json)80 HTTP，未读/未处理1/1→1/0→0/0且任务状态和版本不变 | 原b485表单/重放修复、114 HTTP及历史失败保留；新计数修复是开发验证，不冒称独立复测 |
 | 后端等价重构 | `64b4f891`的[run39938619826](https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826)，四job成功；317通过/0跳过，全部43个t44文件行88.16% | 创建上下文和会话发行复用；前一版测试命名遮蔽失败保留；不是性能改善结论 |
@@ -25,7 +26,9 @@
 | 独立界面补充 | 原`e8ceefe6`的[UI补充原报告](reports/independent-tests/v1-ui-addendum.md)：3通过/1失败/1环境阻塞，发现缺未读/未处理总数 | 不重写原900计数；完整资源深链接在当前路由未定义，记录边界；f654开发修复不倒填旧报告 |
 | 需求、设计和技术Word | [SRS](reports/final/requirements-report.md)、[概设/详设](reports/final/design-report.md)、[8张成图](docs/diagrams/README.md)及[四份Word的28页QA](docs/reports/M4-word-qa.md) | 四份本地技术审阅Word均逐页查看，含私密封面、日期留空；M4内容有明确cutoff，后续1.1及最终验收须另更新；学生研究正文仍由本人写 |
 
-有效生产源码3500–5100行目标尚未达到；[9aeb40c的实际计数](records/metrics/source-count-pre-v11.json)为5940，超840；[计数口径](docs/metrics/source-counting.md)不因超限改变。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。当前正在修复和剖析，未将开发回归当独立复测通过；准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
+有效生产源码3500–5100行目标尚未达到；[1.1实际计数](records/metrics/source-count-v11.json)为5973，超873；[计数口径](docs/metrics/source-counting.md)不因超限改变。SQL解析库替换[原型](agents/database/ddl-ast-poc/research.md)未准入生产，实际节省0行。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。当前正在修复和剖析，未将开发回归当独立复测通过；准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
+
+用户采用D005/D006后，[需规](specs/requirements.md)与[业务规则](specs/business-rules.md)先补人力生命周期和流程图，再经限定审查，于`189dc4a`形成[1.1独立冻结清单](records/spec-freezes/v1.1.json)。状态1至5负责人须保留迭代工时，6/7可移出，7返工前补回有效人力；项目成员/开发角色保护仍含7。旧1.0原文和摘要保留。1.1只读校验的`data.schema_version`继续按已冻候选结构为1.0.0，外层`meta.contract_version`为1.1.0，两者用途不同。新无父会话独立实例正在依据[中性输入包](records/acceptance/v2-neutral-inputs.json)制定用例，尚未访问SUT；[托管验收运行协议](deployment/acceptance/README.md)的能力自检仍在修复复验，不把环境自检当验收。
 
 ## 从哪里开始
 
