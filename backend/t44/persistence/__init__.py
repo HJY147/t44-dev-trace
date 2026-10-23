@@ -10,6 +10,7 @@ from .errors import (
     TransactionStateError,
 )
 from .gateway import TableBinding
+from .rows import Pred
 from .uow import SqlAlchemyUnitOfWork, SqlAlchemyUnitOfWorkFactory
 
 __all__ = [
@@ -18,6 +19,7 @@ __all__ = [
     "PersistenceError",
     "PersistenceIntegrityError",
     "PersistenceUnavailable",
+    "Pred",
     "SqlAlchemyUnitOfWork",
     "SqlAlchemyUnitOfWorkFactory",
     "StatementRejected",
