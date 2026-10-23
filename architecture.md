@@ -18,6 +18,24 @@
 
 调度作为同一代码库的独立进程扫描数据库，经门面生成幂等升级事件和待发送记录；消息岗发布到RabbitMQ、消费入站内通知，失败转可追溯待办。API多进程不各自启动一份调度器；模块依赖通过注入传入，不在业务函数里随意构造。
 
+```mermaid
+flowchart LR
+    Browser[浏览器 Vue 界面] --> Proxy[Nginx 静态页面与反向代理]
+    Proxy --> API[FastAPI 鉴权与业务门面]
+    API --> DB[(MySQL 任务与证据)]
+    Timer[APScheduler 独立进程] --> Scan[扫描与升级门面]
+    Scan --> DB
+    DB --> Outbox[待发送事件]
+    Outbox --> Worker[Pika 消息进程]
+    Worker --> MQ[(RabbitMQ)]
+    MQ --> Consumer[幂等消费]
+    Consumer --> DB
+    Worker --> Fallback[故障时生成有标记的站内待办]
+    Fallback --> DB
+```
+
+图中均属于同一单机系统、同一业务代码库；独立进程用于持续工作，不是拆为多个业务微服务。浏览器读取站内通知，不能代替后端调度扫描。
+
 任务、依赖、评审、决策四表统一整数主键；状态/布尔集中枚举与最小整型存储；任务版本用于竞争控制，请求幂等标识用于重试，两者分开。成功更新和留痕原子提交，拒绝留痕单独确保可提交。
 
 ## 部署与验证
