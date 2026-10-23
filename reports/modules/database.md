@@ -25,7 +25,7 @@
 - seed_demo(factory,*,projects=40,tasks=6000,dependencies=9000,records=15000,manager_username='synthetic-manager',seed=44,anchor_at=None,template_path=None,rules_path=None,batch_size=250)；真实backend CLI seed-demo已接线并执行退出0。
 - 新t44_bench真MySQL首次迁移/250批单UoW生成40项目、6000任务、9000同项目DAG依赖；11400review+3600decision=15000，预案另3600。
 - 七态6=2400，其余1/2/3/4/5/7各600；全量JSON模型、八段十项、四风险视角、轮次/批准指针/决定引用、自审身份分离、依赖父已交付且时间先于后继、人力容量核验通过。
-- 模板raw SHA256=4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199；规则raw SHA256=279c55934adf59362cb0119e59f8ca41aeb826611fabafb7f006d0000bdb8720，来自实际配置，不编造占位hash。
+- 模板raw SHA256=4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199；旧bench规则raw SHA256=279c55934adf59362cb0119e59f8ca41aeb826611fabafb7f006d0000bdb8720；当前正式新verify规则raw SHA256=63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41，均来自当时实际配置，不伪造占位hash。
 - 返回seed/version/anchor/配置hash的manifest_sha256；这是生成描述摘要，不冒称整库内容或随机密码hash可重现。重复同描述幂等、不同seed拒绝，无删除覆盖。
 - 所有对象及证据明确synthetic，SYNTHETIC-DATA.md说明不代表真人评审/真实交付；函数无明文密码参数，新账户只持久合法Argon2id hash，不输出秘密。
 
@@ -42,3 +42,5 @@
 - 日志agents/database/WORKLOG.md，实际prompt归档ROLE-database-RECOVERY-SEED-v1.md，交接records/handoffs/database.json；AI实际改码与用户采用方案分别记录。
 - 实际Issue4恢复回复6360999718、公平性回复6361197315；seed最终正文seed-stage-comment.md已发表，具体URL见交接。
 - 本岗实现/模块验证已交产品checkpoint，后续等待根整合、最终规模和运行门禁结果；不联系独立测试或发审核成功。
+
+ROLE-database-INTEGRATION-FIX-v1：真实BE全整合312通过/2失败/3本地Rabbit跳过揭示seed仍读旧rule_version；最小修复e06ac3b已映射正式version/effective_at/decided_by，资源/原测试均未修改。原两seed测试仅执行2通过、Ruff通过；新规则hash63bda0d3...调用旧bench明确拒绝，40/6000/9000/11400/3600及旧manifest前后未变（integration-old-bench-guard.json）。root已另建t44_seed_verify授权同app；新正式配置40/6000/9000/11400+3600全量生成/七态一致性及重复幂等通过，rule_version1/effective_at/decided_by与资源一致，证据integration-formal-seed-mysql.json。本修复不声称新全套已通过，测试tmp机械迁移由root执行。

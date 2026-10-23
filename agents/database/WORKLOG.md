@@ -138,3 +138,5 @@
 - 干净fast-forward merge codex/integration 6217b8c，实际正式资源为version/effective_at/decided_by；仅seed.py映射rule_version=version并显式保存rule_effective_at/rule_decided_by，未改资源或测试文件。
 - 旧t44_bench清单/hash不修改；资源/版本/参数不同明确StatementRejected并要求新空项目schema，绝不覆盖。原test_seed两个断言不编辑，仅实际执行2通过；Ruff check通过。
 - 已请求root新建t44_seed_verify及同app权限供新资源真库生成验证；最小产品修复先交，不以尚未建库拖延BE全套回归。测试统一tmp迁移由root负责，本岗未新增/改测试文件。
+- root实际建库并授权t44_seed_verify后，用同app四键凭据（不输出连接串）真实首次迁移/默认40项目6000任务9000依赖11400评审+3600决定成功，七态全量JSON/引用/轮次/指针/容量/DAG核验通过；正式rule_version1/effective_at/decided_by与实际资源逐项相符，rawhash63bda0d3...，重复manifest幂等。生成3.835s、校验24.554s仍仅模块执行耗时。完整integration-formal-seed-mysql.json。
+- 旧bench当前新资源调用明确拒绝，前后计数与manifest完全不变，integration-old-bench-guard.json；不更写旧hash。未改测试文件/路径、未清现有库。根已先merge e06，此次只证据/报告/交接元数据checkpoint，随后释放槽位。
