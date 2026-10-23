@@ -114,3 +114,12 @@
 - 合成stdout提前创建，失败时仍独立尝试加密/解密传输，archive_error保留异常类别且失败不发布明文。必要复核请求revision2仍精确4c20f32，不选harness。
 - 根指出内部升级HTTP需要真实限定service bearer；现封装实际CLI service-token，显式projects/固定escalation:write/TTL60–900(默认300)，读实际session scope/expiry元数据验证。Token仅harness私密stdout或受控目录O_EXCL0600 JSON，绕过原始环境命令日志；公开ledger仅session/expiry/count/TTL，不读hash冒充bearer。能力自检只核元数据/权限，不调用业务案例。
 - 第二profilequiet期间只写代码/协议/只读与远程接口，明确窗口结束后才执行953。现37guard通过；Ruff首次B904后按from None修正、保留原失败，最终Ruff/actionlint通过。未运行独立harness，未改产品/门禁/统计，未租云。
+
+### 必要复核实际通过与最终交接
+
+- run39961035953真实success，环境源68b3bb2c532db8b14ddc57e0a219657ec026cad0，产品源4c20f32b71635016815420472b9d4bb4fa850df0。直接读取公共execution与回执、校验cipher SHA，未将环境success当产品四门禁/独立验收。原始公共artifact未改字节，console gzip+SHA保真。
+- 本轮实际先观测mysql pymysql.err.OperationalError2003、TCP errno111、actual_port_bindings={}、仅本project data Internal=true；按观测仅验收override加client bridge后SQL和AMQP客户端连通。该观测属于复核，不回写旧run的未知具体异常。初始失败步骤仍在execution.json保留。
+- 实际CLI签发service session3，project_count1、escalation:write、TTL300、0600文件与实际session元数据核验通过，未调用内部升级业务案例。公开ledger无Token/Hash，令牌/账号/上下文/私钥文件不上传。
+- Rabbit stop(30秒租期)→显式recover成功，恢复后两客户端成功，finally recovery_completed=true；synthetic CMS AES256-GCM/RSA-OAEP roundtrip verified。未执行profile/独立harness(harness_started=false/null ref)，未实测独立pause/自动租期fault案例、正式性能或独立验收。
+- 首败39958418657和所有本岗静态失败保持原样；中性README只给运行能力/取回约定，不带开发缺陷/案例预期。总协调明确本轮不再重复能力核验，收尾仅归档/Issue/PR15交接后释放槽，不联系新tester或查看其文件。
+- 最终body-file实际评论：Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6366093437 ；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995 。实际环境/失败/开发guard回执只留本岗报告和证据；交新tester的README保持中性能力/运行/取回约定，不注入开发结果或旧缺陷，不引导其读取本岗内部记录。

@@ -111,6 +111,6 @@ tar -tzf tester-output.tar.gz
 
 环境步骤失败、harness非零、超时、加密失败及恢复失败都保留失败状态。若加密失败，宁可不发布明文；公开 execution.json 记录 archive_error，不能把丢失证据写成验收通过。加密是取回保密措施，不证明案例设计独立或覆盖fault。
 
-## 本岗核验与状态
+## 执行边界
 
-部署守卫为root登记的 `tmp/deployment/953_acceptance_environment.py`，只测请求/路径/只读接口/控制白名单/加密失败不漏明文；不是tester用例。环境一次能力自检的精确SHA、Actions URL和实际范围写入本岗handoff。独立模式在取得新tester自己冻结的H/入口/证书前保持**待运行**，不会用环境能力自检代替独立 fault 结论。
+环境check只核验服务和操作能力，不包含独立用例/产品通过判据。独立模式要求tester自己冻结入口和接收证书后才能执行；不得把环境状态、合成加密传输或控制命令成功当成独立fault覆盖。pause/自动租期路径属于可用接口，具体独立用例及覆盖结论仍由tester自己决定并实际运行。
