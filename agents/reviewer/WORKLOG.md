@@ -172,3 +172,10 @@
 - PR首次插件GET为56f588旧head，目标不在PR，merge-base exit1，通知root后未尝试发布；root集成push后再次读回8be64056f1733eb99938aa3b7d9b1b22a53677a6，目标祖先exit0且840父精确326。仅准备绑定840的COMMENT；实际发布/自有commit/push回执随后补记，不发reviewer/stage成功、APPROVE或合并。
 
 - 实际阶段提交d8bba16a0e273e121d39ea9c3b58594521a39eac，自有分支push exit0；GitHub插件COMMENT成功review5632356314，list readback为COMMENTED/正文一致；插件未返回commit_id，故用gh只读GET特定review补核：commit_id精确840、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314。回执github-comment.json。无状态写入/APPROVE/合并。补归档时一次apply_patch同路径Delete/Add被拒（未改文件），改Update成功，不影响已发布正文或审核结论。
+
+## 2026-10-24 FE-INIT-01限定补充审核
+
+- 实际追加prompt ROLE-reviewer-EMPTY-VALUE-SUPPLEMENT-v1原文存dispatches；840报告/COMMENT已先交付，保持其历史结论。固定75c3468de07303cc47b9afd0e4a169664743470e/设计7369400d96ac1d2cb48ac8ce4b2701ac636dda0d与公开证据6212e5f0513e31e5e43e31caf4e8fdab8e5cc36e，未读取owner未提交文件。
+- 精确diff确认唯一生产源FieldEditor+7；原initial函数正确，Json联合在泛型props编译为Boolean-before-String，空串被组件强转，非CSS/API/默认值函数错误。改显式运行时type:null且保留TS PropType，默认值/props/emits/业务校验不变。
+- 3源hash与75相同，6份原gzip及可读hash/逐行尾空白规范化均一致；读红2失败/4通过、绿6、受影响14通过/16名称未选原件，不相加，不重跑、不改断言。本岗实际view_image看4张原PNG，20响应2login+18GET无业务写，三文本DOM为空/required阻止提交。原502/30s登录失败与新build大chunk警告保留，不外推840覆盖率。
+- FE-INIT-01在75范围可限定关闭，无新实质阻断；整产品独立/性能/规模门禁仍未通过。无账号/独立资料/5175访问或新脚本。首次PR仍8be，75祖先检查exit1，已通知root，暂不发COMMENT。归档报告后等待目标纳入PR，实际发布另记。
