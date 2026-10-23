@@ -177,3 +177,5 @@ RFC specs/changes/contract-validation-read-uow-rfc.md仅对validateContractPaylo
 ## 单UoW契约校验已实现，等待精确CI
 
 设计父3187后仅runtime.py净+7行实现唯一接口单UoW：默认RC鉴权→原验证→fresh-now到期复核→原dispatch，退出后原异常独立审计。冻结14文件/全部写路径/其余17只读/池/Schema保持。新增回归原目标9fail/9pass，改后18pass（SQLite HTTP11+真实MySQL7）；真库实际4/5/5SELECT、各1acquire，session/member两种撤销时序与新请求401/403通过。原断言仅追加不删改，故障注入不冒真宕机。证据read-uow-validation-summary.json及before/after原日志/XML。此为定向开发验证；精确全CI/全覆盖率待运行，原394只属旧源，尚无性能收益/独立验收/源码规模通过。
+
+精确5dcb源product39970988113四任务全部success：412项/0失败错误跳过，contract114/integration70/fault11分别通过；全43个t44且excluded0，行2550/2872=88.7883%、分支78.7371%。原coverage/JUnit/metadata与summary见agents/backend/read-uow-ci-*。本轮唯一接口交付，evidence-only收尾后释放岗位；没有性能收益或规模达标结论，后续写路径账本/短对照另派。

@@ -552,7 +552,7 @@
     }
   ],
   "updated_at": "2026-10-23T14:34:19.871498+00:00",
-  "current_stage": "single-UoW contract validation implemented;18 targeted regressions pass, exact new CI pending",
+  "current_stage": "single-UoW contract validation exact source5dcb complete CI412pass; evidence-only handoff, no active load",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -782,7 +782,7 @@
       "raw_archive_sha256": "707ead0d4d6b6083ccafccbf7740b6468145554d966794eadb3a6b1a6c3c1a9d"
     },
     "optimization_design": {
-      "status": "implemented after design-parent3187; targeted18 pass; exact new full CI pending",
+      "status": "exact source5dcb full CI412pass; only one readonly endpoint changed; no latency benefit measured",
       "basis": "c83f627331acf43fb508fac7e16525a48c0389ab",
       "rfc": "specs/changes/contract-validation-read-uow-rfc.md",
       "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
@@ -812,7 +812,7 @@
       ],
       "write_paths": "byte-identical existing write path; only added contract-validation branch and now import",
       "execution": "no production edits, HTTP/DB/service/load or pytest in design phase",
-      "next": "push exact source for normal product CI; request separate coordinator window before any performance comparison",
+      "next": "release slot; coordinator may later request write-path static ledger or separately schedule profile comparison",
       "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169",
       "implementation": {
         "design_parent": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
@@ -843,11 +843,72 @@
           "agents/backend/read-uow-static.log"
         ],
         "unverified": [
-          "exact new product CI/full43file coverage",
-          "latency benefit and formal performance",
-          "final source-size compliance"
+          "latency benefit/formal performance",
+          "source-size compliance",
+          "independent acceptance"
         ],
-        "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611"
+        "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611",
+        "ci": {
+          "source_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+          "run": 39970988113,
+          "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39970988113",
+          "status": "allfourjobs success",
+          "junit": {
+            "tests": 412,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "markers": {
+            "fault": {
+              "tests": 11,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "integration": {
+              "tests": 70,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "contract": {
+              "tests": 114,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          "marker_counts_overlap": true,
+          "production_python_files": 43,
+          "excluded_lines": 0,
+          "coverage_totals": {
+            "covered_lines": 2550,
+            "num_statements": 2872,
+            "percent_covered": 86.65021929824562,
+            "percent_covered_display": "86.65",
+            "missing_lines": 322,
+            "excluded_lines": 0,
+            "percent_statements_covered": 88.7883008356546,
+            "percent_statements_covered_display": "88.79",
+            "num_branches": 776,
+            "num_partial_branches": 107,
+            "covered_branches": 611,
+            "missing_branches": 165,
+            "percent_branches_covered": 78.73711340206185,
+            "percent_branches_covered_display": "78.74"
+          },
+          "line_coverage_percent": 88.7883008356546,
+          "branch_coverage_percent": 78.73711340206185,
+          "artifact_checkout": "320272ca1d11f103367af6780b725fb15332cf6d",
+          "original_files_sha256": {
+            "coverage.json": "811c226ce19c2e5703a247b1ded0c80987d3a04141cb34f5b3339d2605da05d3",
+            "junit.xml": "0b439b64e2364d0f45e1ed1f6dc12099c41c423eec3e4b9dd4d6e44d0805d3f9"
+          },
+          "scope": "exact-source Linux CI with real MySQL/Rabbit services; not independent acceptance or performance/size pass",
+          "minimal_archive": "full downloaded originals retained ignored private runtime; selected raw coverage/JUnit plus metadata archived now; no latency rerun",
+          "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367573515"
+        }
       }
     }
   },
