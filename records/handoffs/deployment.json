@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "native-bounded-demo-new360-complete-and-stopped",
+  "stage": "native-bounded-demo-retest-sealed-complete-and-stopped",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -740,7 +740,7 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "new separately admitted fresh360 passed andallstopped;old360failure preserved;4h not admitted",
+    "status": "sealed:new separatelyadmitted fresh360 exit0/cleanuptrue/allownedstopped;old360failure preserved;4h notadmitted",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
@@ -764,17 +764,16 @@
     "tool_implementation_commit": "4ef57b6129c712c1fad88de56775c53b84009b15",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/37",
     "draft": true,
-    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376718503",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376963887",
     "github_readback": "agents/deployment/native-bounded-demo-validation/github-tool-readback-checks.json",
-    "window_gate": "root explicitly admitted one360 after DB complete;now released",
-    "actual_run": "app_20261023_230429_cc2f5b",
-    "actual_exit_code": 1,
-    "actual_cleanup_success": false,
+    "window_gate": "new360 sole window completed and released;no morelocalworkload or4h authorization",
+    "actual_run": "app_20261023_233238_345882",
+    "actual_exit_code": 0,
+    "actual_cleanup_success": true,
     "actual_controller_sha256": "942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07",
     "actual_evidence": "agents/deployment/native-bounded-demo-validation/serve-run1-capability-and-failure.json",
     "failure": "verify_stopped includes live serve runner in state/serve-owner.json",
     "post_runner_exit_and_all_absence": "separate external wait/read-only observation;does not rewrite original cleanup",
-    "second360_or4h_admitted": false,
     "original_failure_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
     "fix_design": "deployment/native/bounded-demo-design.md unique360 amendment",
     "planned_scope": "verify_stopped four role generations and API workers/tracker only;external runner wait separate",
@@ -785,15 +784,15 @@
     "original_red_exit_code": 1,
     "fixed_synthetic_exit_code": 0,
     "affected_synthetic_tests": "3 methods;8role-generation and5APIchild residual subcases;allown/time/signal mocked",
-    "actual_runtime_code": "4ef57b6129c712c1fad88de56775c53b84009b15 only;new source has no actual360",
+    "actual_runtime_code": "62ac/084618 fresh retest passed;original4ef/942 failed360 unchanged",
     "protected_baseline_coverage": "only7listed ports;5177/18086 absent;no v3 pastinterval proof",
     "future_baseline_requirement": "ifroot separately admits next run,add5177/18086 exact UID/start/argv hash baseline",
     "fix_implementation_commit": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
-    "current_GitHub_readback": "agents/deployment/native-bounded-demo-validation/github-stage-readback-checks.json",
-    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6376718790",
-    "pr_body_updated": "replaced whole body with actual360 failure/current fix synthetic limits;old body historical only",
-    "readback_observed_head": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
-    "archive_head_semantics": "final docs/GitHub receipt-only commit differs from code/evidence62ac;report separately",
+    "current_GitHub_readback": "agents/deployment/native-bounded-demo-validation/github-retest-readback-checks.json",
+    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6376964164",
+    "pr_body_updated": "full replacement:old360failure+new360success+tmp byteidentical migration+4h notadmitted",
+    "readback_observed_head": "13cd3d515c06b0408b5048c852a95a8f1b3ba9b2",
+    "archive_head_semantics": "finaldocs/GitHubreceipt-onlycommit;actualtool62ac/084618;runtimeevidence10182;migration13cd",
     "current_services_running": false,
     "full_bounded_lifecycle_passed": true,
     "original360_run": "app_20261023_230429_cc2f5b",
@@ -820,6 +819,13 @@
     ],
     "script_bytes_unchanged": true,
     "actual_private_execution_paths_unchanged": true,
-    "archive_migration_rerun": false
+    "archive_migration_rerun": false,
+    "issue_migration_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376983708",
+    "pr_migration_comment": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6376984017",
+    "retry_and_longdemo_admission_separate": {
+      "new_fresh360_admitted_executed": true,
+      "long4h_admitted": false,
+      "earlier_checkpoint_combined_false_was_historical": true
+    }
   }
 }

@@ -41,3 +41,5 @@ serve-retest-summary.raw.json.gz为原公共stdout exact gzip；serve-retest-cap
 此新360结果只给有限本机开发演示能力；4h用户演示仍未准入，独立/性能/云及资源unknown不回填。根收到退出/清理后窗口释放，此后仅离线封档/秘密扫描/GitHub，禁止自行再起服务。
 
 复验含验证逻辑的三份公共可执行副本依根预留号逐字节迁移到 `tmp/deployment/864_native_serve_driver.py`、`863_native_serve_post_attempt1.py`、`862_native_serve_post.py`；SHA及旧公开路径/当时私密执行路径/现归档路径映射见serve-retest-script-path-migration.json。实际运行时的私密路径、argv、hash和原失败均不改写，历史扫描scope仍保留当时路径。仅目录整理，无运行重做。
+
+本次GitHub正文/head13cd/drafttrue及4条新结果/迁移评论均重新GET逐字核对（github-retest-readback-checks.json）；Issue7结果6376963887/迁移6376983708，PR37结果6376964164/迁移6376984017。最后仅文档/回执封档，实际运行工具62ac/084618、运行证据10182、目录迁移13cd分别固定；最终docs HEAD另报，不代表运行代码变化。当前全停，4h用户演示仍待根另准入。

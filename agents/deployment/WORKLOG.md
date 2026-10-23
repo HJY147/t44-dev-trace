@@ -302,3 +302,6 @@
 - 源92SHA在后置复核不变，私密226非秘密outputs+args对旧失败/新复验合计19个实际secret literal匹配0；gzip/public投影另扫，cookie/token/账户/DBURL不进入公开白名单。dump不读。已将真实exit/全停报告根释放窗口，此后只离线归档，不发HTTP/SQL/再跑360或4h。
 
 - 证据10182b79906d60379e1ece6b37d0c8b9727f7b0a已push；root纠正三份验证driver公共副本应放tmp并预留864/863/862。本岗仅git mv逐字节迁移，三个SHA前后一致，mapping单列旧公开路径/现归档路径/实际私密执行路径，原argv/hash/异常和历史scan范围不倒改。未运行这些副本、未再查端口/HTTP/SQL/服务。
+
+- 目录迁移13cd3d515c06b0408b5048c852a95a8f1b3ba9b2已push，三份副本SHA逐字节保持；归档正文修改初次apply_patch因同路径delete+add被工具拒绝，未产生文件或GitHub写入，改为单段Update后成功，未涉运行。PR37正文已整体重写新360真实通过/原失败保持/4h未准入及tmp迁移，PATCH后GET逐字一致，观察head13cd/drafttrue；新结果Issue7#6376963887/PR37#6376964164、迁移Issue7#6376983708/PR37#6376984017四条均重新GET逐字一致。原stage正文历史快照不改。
+- 本尾commit只文档/脱敏GitHub回执/最终扫描，最终head另报；运行工具仍62ac/084618，真实新360证据10182，目录迁移13cd无字节改变。所有自有服务保持停机，不再发HTTP/SQL/端口观察，也不自行准入4h。按根要求本轮封档后FINAL释放槽。
