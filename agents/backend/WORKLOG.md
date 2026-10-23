@@ -281,3 +281,11 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - product39970988113整体success，原JUnit412/0failure/0error/0skip；标记contract114/integration70/fault11各自通过（可重叠）。全部43个t44文件集合精确一致，excluded0，行2550/2872=88.7883%、分支611/776=78.7371%、综合86.6502%。原coverage/JUnit、run/artifact metadata与source5dcb/PRcheckout320272映射保存read-uow-ci-*。
 - 本evidence-only提交不改产品/回归，不为归档再跑任何用例或负载。根需部署槽位，本岗先最小交接结束；写路径静态账本另续派，性能短对照另协调窗口。原03 controller整体exit1/正式性能失败与5980源码超限（根计数）均不改写，不称独立验收通过。
 - 精确CI最终Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367573515；PR16正文同步412实际结果，保持draft。
+
+## 静态写账本与ABBA计划交接（未实现/未运行）
+
+- 基于22647b4（生产同已审5dcb）逐调用读Runtime/Identity/Rows/UoW、workflow/domain、tasks、success/rejection audit、升级facade及安装驱动。正常新key BLOCK22+R SELECT/5DML/2控制，UNBLOCK24+R/5/2；改期20/6/2；服务新事件24+M SELECT、6+N DML、4+2N控制，所有新写3UoW/acquire/commit；GET task9SELECT/2UoW。R/M/N明确分支，不猜正式项目分布/经理数/run复用。CAS当前已合并dict，无CAS后GET可删；空依赖前驱查询仍真实进入execute。完整阶段与拒绝/replay账本write-path-static-ledger.md，非实测性能。
+- 最小未实现候选：仅领域守卫需要才加载依赖、空ID跳过前驱SQL；BLOCK静态可少2，保留project X/锁序/原角色版本证据状态优先与审计事务。主Tx locked-task复用及成功audit受信scope只列后续更高证明成本议题，拒绝audit必须重新查库/界限处理；不跨Tx缓存，不实施join FOR SHARE或S/X分层。
+- bounded plan已先通知根：4c/5dcb精确生产仅runtime差异，同profile fixture/18083/1worker、同预热120有效请求，ABBA四phase各8并发8秒、总deadline90秒，actualimport/object SHA独立标tool/app。无矩阵重跑/正式400×600结论；contract-short-compare-plan.md。930仅预留未创建，根因UI优先收方案后要求本轮自然结束，不等quiet窗口、不启动。
+- 本轮没有生产/测试/冻结修改、SQL/HTTP/服务/pytest/压测，原03 controller整体exit1、正式性能失败/源码超限保持。仅Git/源码读取与文本检查，不拿历史412CI当这份计划执行结果。
+- 静态材料真实Issue3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6368102715；生产/测试/冻结diff为0，文本diff检查退出0。

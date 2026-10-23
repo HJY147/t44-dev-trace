@@ -65,3 +65,11 @@ root已读RFC原文（8cdfc9b2...）、审核岗限定设计意见，准入仅va
 本checkpoint只归设计/RFC/未应用patch，先发SHA后才开始产品与回归变更；不改RFC8cdf内容来倒填准入状态。
 
 用户已澄清SSH密码消息发错对话，与本项目无关。取消前条关于可能新增远程环境的提示；不使用/不记录该密码，不据此连接任何主机。继续本地/托管既有计划。
+
+## 412CI与限定审查后的静态写账本/短对照续派（原文）
+
+新源5dcb专职限定审核已完成dbda315e74162e0de7262d7ef799709a09d8be61，无新阻断，可协调短对照；root稍后merge。续派性能定位阶段，先做静态写路径SQL/UoW账本和一个有界短对照方案，不立即生产编辑/启动负载。目标覆盖实际transition block/unblock与escalation（旧公开报告：每轮GET→block/unblock；升级GET→经理改期开启新schedule_version→服务创建新事件；400独立任务，报告未给项目分布，禁止读私有原脚本/DB来猜）。静态列authorize→claim(auth)→locked_scope(auth)→domain/audit/outbox/idem全部SELECT/DML/连接/事务次数，区分空依赖是否真发SQL/COM_PING/commit计数，不凭估计。另评估已在同Tx持锁且验证后的重复task装载/无守卫时依赖查询等真正可消除重复，先明确对独立拒绝audit和成功audit、CAS/版本错误优先的影响。注意写全局project X用于start/unblock/rework可能串行无关任务，但当前1.1 backend-design明确project UPDATE，不能偷换SHARE/去锁；若提出S/X分层，仅做新RFC，证明与capacity/图编辑X、session→idem→project→members→orderedtasks相容，并记录须显式设计增量，不改冻结14件或现源码。不要把这当已证实原性能瓶颈，项目分布未测。与此同时给一个最小契约校验前后短对照计划：精确旧4c/新5dcb、同自有t44_profile fixture、相同workers/并发/预热、相同stat和上下文、记录资源，时间有界，不重复整03矩阵/不能当正式400×600达标。先提计划给root，等安静窗口授权；独立tester正本机UI，需root协调暂停，不抢CPU。无root许可不负载。新脚本930早前已预留，如必要实际创建按此号在tmp；新下一918但先请求。需要实际prompt/日志/报告/hand off/GitHubIssue3留痕。当前优先证据和最小真正方案，别再做无收益大归档/纸面万能优化，预算负载之前自然边界先通知。
+
+用户新要求UI改米色/浅咖啡、苹果液态玻璃和更多圆角，并建议先用OpenDesign设计再接入。当前优先安排前端岗，需要你在静态账本+有界对照计划的自然边界提交本岗材料并释放槽；930若未编写可留预留/明确未运行，不为等待安静窗口占槽。暂不允许负载或新生产改动。你给的8并发ABBA90s计划已收，保留为待运行，等独立UI/新主题落定后协调。部署recover升级仍进行，tester仍隔离；不要联系它们或读其结果。新UI不会改变后端契约，此条只说明调度优先级。
+
+对应事实：只读生产源码及本机安装驱动源码，未读独立私有资料/DB或联系tester，未创建930/运行负载/编辑生产。静态账本与计划随本次资料commit结束，不等quiet窗口占槽。
