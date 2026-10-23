@@ -40,6 +40,11 @@ def assert_consistent(factory):
         reviews = {r["id"]: r for r in g.rows("reviews")}
         assessments = {a["id"]: a for a in g.rows("release_assessments")}
         decisions = g.rows("decisions")
+        histories, decision_types = {tid: [] for tid in tasks}, {tid: set() for tid in tasks}
+        for review in reviews.values():
+            histories[review["task_id"]].append(review)
+        for decision in decisions:
+            decision_types[decision["task_id"]].add(decision["type"])
         template_hash = hashlib.sha256(
             files("t44").joinpath("resources/review-template.json").read_bytes()
         ).digest()
@@ -55,10 +60,7 @@ def assert_consistent(factory):
         }
         for task in tasks.values():
             checks["Task"].validate(task_model(task))
-            history = sorted(
-                (r for r in reviews.values() if r["task_id"] == task["id"]),
-                key=lambda r: r["review_cycle"],
-            )
+            history = sorted(histories[task["id"]], key=lambda r: r["review_cycle"])
             assert [r["review_cycle"] for r in history] == list(range(1, len(history) + 1))
             if task["state"] in (1, 2, 3):
                 assert (
@@ -66,7 +68,7 @@ def assert_consistent(factory):
                 )
             if task["state"] in (6, 7):
                 assert task["approved_review_id"] and task["approved_assessment_id"]
-                types = {d["type"] for d in decisions if d["task_id"] == task["id"]}
+                types = decision_types[task["id"]]
                 assert types == ({1} if task["state"] == 6 else {1, 2})
             if task["latest_review_id"]:
                 r = reviews[task["latest_review_id"]]
@@ -139,9 +141,15 @@ def assert_consistent(factory):
     }
 
 
-@pytest.mark.parametrize("projects,tasks,dependencies,records", [(2, 20, 20, 30), (40, 6000, 9000, 15000)])
+@pytest.mark.parametrize(
+    "projects,tasks,dependencies,records,expected_digest",
+    [
+        (2, 20, 20, 30, "aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29"),
+        (40, 6000, 9000, 15000, "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3"),
+    ],
+)
 def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
-    seed_factory, record_property, projects, tasks, dependencies, records
+    seed_factory, record_property, projects, tasks, dependencies, records, expected_digest
 ):
     args = dict(
         projects=projects,
@@ -164,7 +172,10 @@ def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
         snapshot, sort_keys=True, separators=(",", ":"),
         default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
     )
-    record_property("seed_semantics_sha256", hashlib.sha256(canonical.encode()).hexdigest())
+    digest = hashlib.sha256(canonical.encode()).hexdigest()
+    record_property("seed_semantics_sha256", digest)
+    # Recorded from unchanged production seed in hosted run39940459708 before row refactoring.
+    assert digest == expected_digest
     assert seed_demo(seed_factory, **args)["already_seeded"]
     with pytest.raises(StatementRejected):
         seed_demo(seed_factory, **args, seed=45)

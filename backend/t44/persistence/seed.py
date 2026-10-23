@@ -12,6 +12,7 @@ from argon2 import PasswordHasher
 
 from .codecs import from_db_time, to_db_time, utc_now
 from .errors import StatementRejected
+from .schema import TABLES
 
 VERSION = 1
 OPERATION = "syntheticSeedV1"
@@ -61,6 +62,16 @@ def _populate(g, manifest, template, actors, batch_size):
             "audit_events",
         )
     }
+    context = dict(
+        created_at=created, updated_at=at, delivery_cycle=1, schedule_version=1
+    )
+
+    def add(table, **values):
+        # Context is trusted fixture construction; explicit values still pass Rows validation.
+        row = {**{k: v for k, v in context.items() if k in TABLES[table].c}, **values}
+        tables[table].append(row)
+        return row
+
     pointers, review_index = [], 0
     sections = [
         dict(
@@ -82,47 +93,33 @@ def _populate(g, manifest, template, actors, batch_size):
     failed = [{**item, "judgment": 3, "rationale": "[synthetic] 待验证分支"} for item in passed]
     for p in range(projects):
         pid = p + 1
-        tables["projects"].append(
-            dict(
-                id=pid,
-                name=f"[synthetic] 项目 {pid:02}",
-                description="程序合成演示/压测夹具，不代表真实项目经历",
-                version=1,
-                created_by=manager,
-                created_at=created,
-                updated_at=at,
-            )
+        context["project_id"] = pid
+        add(
+            "projects",
+            id=pid,
+            name=f"[synthetic] 项目 {pid:02}",
+            description="程序合成演示/压测夹具，不代表真实项目经历",
+            created_by=manager,
         )
         for uid, role in zip(actors, (1, 2, 4), strict=True):
-            tables["project_members"].append(
-                dict(
-                    project_id=pid,
-                    user_id=uid,
-                    roles_mask=role,
-                    active=1,
-                    version=1,
-                    created_at=created,
-                    updated_at=at,
-                )
+            add(
+                "project_members",
+                user_id=uid,
+                roles_mask=role,
             )
-        tables["iterations"].append(
-            dict(
-                id=pid,
-                project_id=pid,
-                name="[synthetic] 迭代",
-                planned_start=created,
-                planned_end=at + timedelta(days=14),
-                capacity=[dict(user_id=developer, available_hours=per_project * 1.25 + 20)],
-                buffer_quarters=40,
-                delay_contingency="[synthetic] 延期时保存差异、重新评审并调整计划",
-                version=1,
-                plan_version=1,
-                created_at=created,
-                updated_at=at,
-            )
+        add(
+            "iterations",
+            id=pid,
+            name="[synthetic] 迭代",
+            planned_start=created,
+            planned_end=at + timedelta(days=14),
+            capacity=[dict(user_id=developer, available_hours=per_project * 1.25 + 20)],
+            buffer_quarters=40,
+            delay_contingency="[synthetic] 延期时保存差异、重新评审并调整计划",
         )
         for local, state in enumerate(states):
             tid = p * per_project + local + 1
+            context["task_id"] = tid
             start = (
                 at - timedelta(days=12) + timedelta(hours=local * 2)
                 if state == 6
@@ -143,17 +140,22 @@ def _populate(g, manifest, template, actors, batch_size):
             version = {1: 1, 2: 2, 3: 3}.get(
                 state, 3 * count + {4: 1, 5: 2, 6: 5, 7: 6}.get(state, 0)
             )
-            task = dict(
+            pointer = dict(
                 id=tid,
-                project_id=pid,
+                latest_review_id=None,
+                approved_review_id=None,
+                approved_assessment_id=None,
+                approved_assessment_version=None,
+            )
+            task = add(
+                "tasks",
+                **pointer,
                 iteration_id=pid,
                 title=f"[synthetic] 任务 {tid:05}",
                 description="Synthetic fixture; no human delivery/review claim",
                 owner_id=developer,
                 state=state,
                 version=version,
-                schedule_version=1,
-                delivery_cycle=1,
                 review_cycle=count or 1,
                 planned_start=start,
                 planned_end=end,
@@ -164,40 +166,21 @@ def _populate(g, manifest, template, actors, batch_size):
                 block_reason="[synthetic] 外部接口待确认" if state == 3 else None,
                 responsibility_stage=2 if state == 3 else None,
                 artifact_revision=ARTIFACT if count else None,
-                latest_review_id=None,
-                approved_review_id=None,
-                approved_assessment_id=None,
-                approved_assessment_version=None,
-                escalation_count=0,
-                created_at=created,
-                updated_at=at,
-            )
-            pointer = dict(
-                id=tid,
-                latest_review_id=None,
-                approved_review_id=None,
-                approved_assessment_id=None,
-                approved_assessment_version=None,
             )
             for cycle in range(1, count + 1):
                 rid = len(tables["reviews"]) + 1
-                tables["reviews"].append(
-                    dict(
-                        id=rid,
-                        project_id=pid,
-                        task_id=tid,
-                        version=1,
-                        delivery_cycle=1,
-                        review_cycle=cycle,
-                        template_version=template["version"],
-                        template_hash=bytes.fromhex(manifest["template_sha256"]),
-                        artifact_revision=ARTIFACT,
-                        sections=sections,
-                        checklist=passed if cycle == count else failed,
-                        verdict=1 if cycle == count else 2,
-                        reviewer_id=reviewer,
-                        created_at=start + timedelta(minutes=cycle * 3),
-                    )
+                add(
+                    "reviews",
+                    id=rid,
+                    review_cycle=cycle,
+                    template_version=template["version"],
+                    template_hash=bytes.fromhex(manifest["template_sha256"]),
+                    artifact_revision=ARTIFACT,
+                    sections=sections,
+                    checklist=passed if cycle == count else failed,
+                    verdict=1 if cycle == count else 2,
+                    reviewer_id=reviewer,
+                    created_at=start + timedelta(minutes=cycle * 3),
                 )
                 pointer["latest_review_id"] = rid
             if count:
@@ -206,13 +189,10 @@ def _populate(g, manifest, template, actors, batch_size):
                 pointer["approved_review_id"] = pointer["latest_review_id"]
                 aid = len(tables["release_assessments"]) + 1
                 status = (1, 2, 3)[(local // 6) % 3] if state == 5 else 2
-                assessment = dict(
+                add(
+                    "release_assessments",
                     id=aid,
-                    project_id=pid,
-                    task_id=tid,
                     version=1 if status == 1 else 2,
-                    schedule_version=1,
-                    delivery_cycle=1,
                     status=status,
                     risks=[
                         dict(
@@ -243,45 +223,40 @@ def _populate(g, manifest, template, actors, batch_size):
                     review_evidence=[] if status == 1 else EVIDENCE,
                     created_at=start + timedelta(minutes=20),
                 )
-                tables["release_assessments"].append(assessment)
                 if status == 2:
                     pointer.update(approved_assessment_id=aid, approved_assessment_version=2)
                 if state == 5:
                     task["version"] += 1 + (status != 1)
                 for dtype in (1, 2) if state == 7 else (1,) if state == 6 else ():
-                    tables["decisions"].append(
-                        dict(
-                            project_id=pid,
-                            task_id=tid,
-                            type=dtype,
-                            decided_by=manager,
-                            delivery_cycle=1,
-                            reason="[synthetic] 合成发布/回滚决定，非真人操作",
-                            impact="[synthetic] 仅演示数据" if dtype == 2 else None,
-                            target_version="synthetic-baseline" if dtype == 2 else "synthetic-v1",
-                            assessment_id=aid,
-                            rollback_plan_version=1,
-                            evidence=EVIDENCE,
-                            decided_at=start + timedelta(minutes=30 if dtype == 1 else 40),
-                        )
+                    add(
+                        "decisions",
+                        type=dtype,
+                        decided_by=manager,
+                        reason="[synthetic] 合成发布/回滚决定，非真人操作",
+                        impact="[synthetic] 仅演示数据" if dtype == 2 else None,
+                        target_version="synthetic-baseline"
+                        if dtype == 2
+                        else "synthetic-v1",
+                        assessment_id=aid,
+                        rollback_plan_version=1,
+                        evidence=EVIDENCE,
+                        decided_at=start + timedelta(minutes=30 if dtype == 1 else 40),
                     )
-            tables["tasks"].append(task)
             pointers.append(pointer)
-        tables["audit_events"].append(
-            dict(
-                project_id=pid,
-                actor_kind=3,
-                actor_id=None,
-                request_id=f"synthetic-seed-v1-{pid}",
-                operation_id=OPERATION,
-                outcome=1,
-                before_values=[],
-                after_values=[
-                    dict(field="seed_manifest", value=json.dumps(manifest, sort_keys=True))
-                ],
-                evidence=EVIDENCE,
-                created_at=at,
-            )
+        add(
+            "audit_events",
+            task_id=None,
+            actor_kind=3,
+            actor_id=None,
+            request_id=f"synthetic-seed-v1-{pid}",
+            operation_id=OPERATION,
+            outcome=1,
+            before_values=[],
+            after_values=[
+                dict(field="seed_manifest", value=json.dumps(manifest, sort_keys=True))
+            ],
+            evidence=EVIDENCE,
+            created_at=at,
         )
     edges = tables["task_dependencies"]
     for distance in range(1, delivered + 1):
@@ -289,14 +264,12 @@ def _populate(g, manifest, template, actors, batch_size):
             for local in range(1, per_project):
                 predecessor = min(local, delivered) - distance
                 if predecessor >= 0 and len(edges) < dependencies:
-                    edges.append(
-                        dict(
-                            project_id=p + 1,
-                            task_id=p * per_project + local + 1,
-                            depends_on_task_id=p * per_project + predecessor + 1,
-                            created_by=manager,
-                            created_at=created,
-                        )
+                    add(
+                        "task_dependencies",
+                        project_id=p + 1,
+                        task_id=p * per_project + local + 1,
+                        depends_on_task_id=p * per_project + predecessor + 1,
+                        created_by=manager,
                     )
         if len(edges) == dependencies:
             break

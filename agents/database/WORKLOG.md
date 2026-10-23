@@ -158,3 +158,7 @@
 - 在原975测试保留全部断言并添加record_property业务行摘要（唯独排除故意随机生成的Argon2 hash），托管JUnit可提供重构前基线；不新增测试编号/文件，不把记录摘要本身算验证断言。
 - 托管4301a68/run39940121559四job success，最小Bandit修复不再报B105；该SHA仍旧seed实现，带全行摘要基线。958此前被下一push取消总体状态，虽其测试步骤成功也不称整次run通过。
 - 原975参数化保留原2/20/20/30组并新增默认40/6000/9000/15000组（完整JSON/轮次/七态/容量/指针/幂等/不覆盖断言同样执行），为待合并受信row-builder提供真实等价基线；本机未执行。格式编辑不作为lint成功。
+- 原生产seed完整基线2dc2e6d：PR run39940459708四job success，333 passed/0failed/0skipped，原JUnit及日志存ci/review-fix-v2/2dc2-baseline。持久行摘要小组aa4f3aff.../默认全量6d56de11...，含manifest/全部表，只排随机password_hash。
+- 将真实基线摘要固定为原975两组额外等价断言，再提交生产row-builder；原所有断言保留。assert_consistent把反复扫描review/decision列表改预先按task分组，校验条件完全相同，避免默认全量组平方扫描。
+- 生产去重：受信add集中created/updated/project/task/cycle上下文，仍由冻结TABLES过滤可继承字段，显式值覆盖且最终Rows参数绑定/字段校验；省略冻结server defaults的重复声明；task初始NULL指针只构造一次。新增task对象即加入列表但列表直到完整构建后才批量写入；后续version变更仍修改该同一对象。
+- 保留原业务配置、synthetic标记、规则/模板原bytes hash、manifest、7态分布、轮次、容量、证据与单UoW批次；未知等价结果待托管CI，专库MySQL仍未执行。仅源格式编辑并恢复无关原代码排版，不把格式差额用于宣称减量。
