@@ -835,3 +835,132 @@ def test_display_order_never_changes_persisted_audit_or_domain_state(application
     assert any(row["reason_code"] == "ACTION_FORBIDDEN" for row in audit.json()["data"]["items"])
     task = transition(client, tokens["developer"], pid, task, 1)
     assert task["state"] == 2
+
+
+@pytest.mark.parametrize(
+    "content,content_type,status,code",
+    [
+        ('{"name":NaN}', "application/json", 400, "INVALID_JSON"),
+        ('{"name":"a","name":"b"}', "application/json", 400, "INVALID_JSON"),
+        ('{"name":"a"}', "text/plain", 400, "INVALID_JSON"),
+        ('{"name":"' + "a" * 1048576 + '"}', "application/json", 413, "PAYLOAD_TOO_LARGE"),
+    ],
+)
+def test_raw_http_json_and_size_errors_are_audited(
+    application, content, content_type, status, code
+):
+    client, factory = application
+    token = login(client)
+    result = client.post(
+        "/api/v1/projects",
+        content=content,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": content_type,
+            "Idempotency-Key": str(uuid4()),
+        },
+    )
+    assert result.status_code == status
+    assert result.json()["code"] == code
+    assert not violations(
+        OPERATIONS["createProject"]["responses"][str(status)]["content"]["application/json"][
+            "schema"
+        ],
+        result.json(),
+    )
+    with factory() as uow:
+        assert uow.gateway.get("audit_events", result.json()["audit_id"])["outcome"] == 2
+        assert uow.gateway.count("projects") == 0
+
+
+def test_query_selectors_and_project_reference_errors(application):
+    client, _ = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    headers = {"Authorization": f"Bearer {tokens['manager']}"}
+    for query, status, code in [
+        ("page=true", 422, "PARAMETER_INVALID"),
+        ("page=1&page=2", 422, "PARAMETER_INVALID"),
+        ("unrecognized=1", 422, "PARAMETER_INVALID"),
+        ("sort=%27%20OR%201%3D1--", 400, "SECURITY_INPUT_REJECTED"),
+    ]:
+        result = client.get(f"/api/v1/projects/{pid}/tasks?{query}", headers=headers)
+        assert result.status_code == status
+        assert result.json()["code"] == code
+    request(
+        client, "getTask", token=tokens["manager"], project_id=pid, task_id=4294967295, expect=404
+    )
+    result = request(
+        client,
+        "changeTaskAssignment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": 1,
+            "owner_id": 1,
+            "reason": "Manager lacks developer",
+            "evidence": EVIDENCE,
+        },
+        expect=422,
+    )
+    assert result.json()["code"] == "OWNER_NOT_PROJECT_DEVELOPER"
+    result = request(
+        client,
+        "createIteration",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "name": "Bad capacity",
+            **{k: v for k, v in PLAN.items() if k != "estimated_hours"},
+            "capacity": [{"user_id": 1, "available_hours": 10}],
+        },
+        expect=422,
+    )
+    assert result.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+    result = request(
+        client,
+        "addTaskDependency",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={"expected_version": 1, "depends_on_task_id": task["id"], "reason": "Self edge"},
+        expect=422,
+    )
+    assert result.json()["code"] == "DEPENDENCY_SELF_REFERENCE"
+
+
+def test_sessions_and_login_throttling(application):
+    from datetime import timedelta
+
+    from t44.services.common import now
+    from t44.services.identity import token_digest
+
+    client, factory = application
+    first, second = login(client), login(client)
+    request(client, "logout", token=first, expect=200)
+    request(client, "getMe", token=first, expect=401)
+    request(client, "getMe", token=second, expect=200)
+    with factory() as uow:
+        uow.gateway.update(
+            "auth_sessions",
+            {"token_hash": token_digest(second)},
+            {"expires_at": now() - timedelta(seconds=1)},
+        )
+    result = request(client, "getMe", token=second, expect=401)
+    assert result.json()["code"] == "TOKEN_EXPIRED"
+    client.app.state.runtime.limiter.attempts = 1
+    request(client, "login", body={"username": "manager", "password": "wrong-password"}, expect=429)
+    request(
+        client,
+        "login",
+        body={"username": "unknown-login", "password": "wrong-password"},
+        expect=401,
+    )
+    result = request(
+        client,
+        "login",
+        body={"username": "unknown-login", "password": "wrong-password"},
+        expect=429,
+    )
+    assert result.headers["retry-after"] == "60"

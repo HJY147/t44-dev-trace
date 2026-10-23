@@ -115,3 +115,10 @@
 - 审计码改为services/codes.py显式41项稳定双向映射，按冻结field-dictionary逐码核对，不再enumerate/下标。状态/API动作集中命名，domain↔API状态/角色/责任环节及决策类型显式映射，不依赖Enum顺序/相减。
 - 新HTTP回归真实重排ErrorCode展示清单和三个领域Enum迭代顺序、reload映射，仍写入DB ACTION_FORBIDDEN=6、GET正确反解、开发状态仍2。checkpoint第二轮29 HTTP测试通过（含原1真实MySQL），日志integration-checkpoint-first/second.log；没有宣称全38或全t44门禁已经通过。
 - 以上为AI协调发现的实际AI实现偏差，由AI修复，不记为用户亲改/人类幻觉。根已澄清租约仅超时无人接管不构成缺陷，本轮不添加新拒绝语义。
+
+### INTEGRATION-v1 完整基线首次覆盖（未通过）
+
+- 合入完整scheduler至ef79f043；全backend/tests一次实际运行312 passed、2 failed、3 skipped（本机未配置Rabbit，CI必须真实执行）；2失败均seed.py:369还读旧rules['rule_version']，新冻结资源已为version整数。已向数据库本人和根送最小位置；不改他岗或降断言。
+- 全source=backend/t44，无omit/覆盖率排除：2746语句，2317已覆、429未覆，行84.38%；coverage报告含分支综合81.16%。此运行有真实失败/skip，不能说全局门禁通过。原始integration-full-first.log/xml、integration-coverage-first.json/log保留。
+- 新HTTP错误分支原始首轮34pass1fail：自依赖预期409是本岗测试错，冻结实际为422，已修预期未改服务/契约。该首轮错误保留integration-http-errors-first.log；修正后的用例进入上述全量运行。
+- 根转达用户要求测试统一迁入tmp/并按创建顺序999递减命名；本checkpoint先提交现有测试/证据，暂停编辑测试文件，待root机械迁移SHA后merge并更新运行命令，断言不删。
