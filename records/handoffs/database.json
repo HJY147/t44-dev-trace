@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "DDL-AST-POC-v1：纯解析隔离原型46/1，不准入生产",
-  "implementation_status": "952和公开研究/原失败/行数预算已交付；不改生产/DDL/API/freeze/依赖/975。最终矩阵46通过/1保留兼容失败，生产节省0。",
+  "stage": "SCAN-RUN-DEDUP-RFC-v1：联合候选314→315，否决实施",
+  "implementation_status": "仅设计/未应用补丁及真实逐文件cloc预算；总协调明确不批准实施。生产改动0、实际节省0，未运行产品验证。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -454,6 +454,41 @@
       "kind": "本轮真实GitHub阶段正文",
       "status": "已发表/更新",
       "url": "https://github.com/HJY147/t44-dev-trace/pull/17"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/design.md",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/candidate-v1.patch",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/candidate-v2.patch",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/before-cloc.json",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/candidate-v2-cloc.json",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/line-budget.json",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md",
+      "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
+      "status": "仅设计，不准入生产"
     }
   ],
   "interfaces": [
@@ -558,6 +593,14 @@
         "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6361347920",
         "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6361348378"
       ]
+    },
+    {
+      "peer": "scheduler",
+      "version": "SCAN-RUN-DEDUP-RFC-v1-not-admitted",
+      "status": "草案不省行，root明确不批准实施，不需等待固定调度岗消费",
+      "contract": "agents/database/scan-run-rfc/design.md",
+      "ownership": "DB仅persistence，调度岗才可消费facade；本轮双方生产文件均未改",
+      "transaction": "helper不拥有UoW/commit，仅原调用者g/savepoint；API业务副作用不能另提交"
     }
   ],
   "commands_executed": [
@@ -614,7 +657,12 @@
     "Hosted GitHub Actions: product39940121559,39940459708,39941263169; local machine ran no pytest/MySQL/seed/HTTP/build",
     "Local source-only: ruff format for editing, restored unrelated prior formatting; not reported as lint execution",
     "git diff --check on changed source/docs; upstream raw job logs retain their original trailing whitespace",
-    "Explicit own-path git commits/push codex/database-runtime; gh pr edit17 --body-file agents/database/review-fix-pr-body.md"
+    "Explicit own-path git commits/push codex/database-runtime; gh pr edit17 --body-file agents/database/review-fix-pr-body.md",
+    "git worktree add .agent-worktrees/database-scan-dedup -b codex/database-scan-dedup 162305f888ac094e38448ef95d4748248ae57bfc",
+    "只读原ScanStore/EscalationFacade/RowsGateway/UoW及相关公开审核、既有模块断言",
+    "scratch候选Ruff首次默认88列，拒绝；最终 --config backend/pyproject.toml 为100列，逐文件cloc2.10（固定工具hash）",
+    "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
+    "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -699,13 +747,17 @@
       "evidence": "agents/database/ddl-ast-poc/summary.json",
       "production_ready": false,
       "production_savings": 0
-    }
+    },
+    "SCAN-RUN候选两文件314→315净增1，生产实际改动/节省0；总协调明确否决实施",
+    "仅补丁适用性与AST语法通过，不将此当运行测试；未改变规模口径/冻结件/DDL/产品/独立测试资料",
+    "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产"
   ],
   "unverified": [
     "完整SQLAlchemy Core assembler未实现，候选不能直接替换整对模块",
     "13 CHECK文本不兼容旧checker仍保留，未改旧checker迁就库",
     "没有新MySQL/实际反射/SQLite metadata接入/CAS/产品全套/coverage/独立/性能证明",
-    "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省"
+    "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省",
+    "本轮未实施共享helper，不存在新运行行为/并发/死锁/故障恢复/覆盖率/性能通过结论；未新增测试脚本，下一号码由root统筹。"
   ],
   "questions": [
     {
@@ -852,9 +904,24 @@
       "id": "ROLE-database-DDL-AST-POC-v1",
       "archive": "agents/database/prompts/ROLE-database-DDL-AST-POC-v1.md",
       "improvement_reason": "先证成熟库兼容/许可/真实替换边界，保留失败与0节省，不凑数改生产或锁。"
+    },
+    {
+      "id": "ROLE-database-SCAN-RUN-DEDUP-RFC-v1",
+      "source": "总协调实际派工及两次后续消息原文",
+      "task_file": "agents/database/prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md",
+      "artifacts": [
+        "agents/database/scan-run-rfc/design.md",
+        "agents/database/scan-run-rfc/candidate-v1.patch",
+        "agents/database/scan-run-rfc/candidate-v2.patch",
+        "agents/database/scan-run-rfc/before-cloc.json",
+        "agents/database/scan-run-rfc/candidate-v2-cloc.json",
+        "agents/database/scan-run-rfc/line-budget.json",
+        "agents/database/prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md"
+      ],
+      "improvement_reason": "先比较事务差异与真实联合净收益再决定是否共享；拒绝为旧估算凑行数，未制造人工经历"
     }
   ],
-  "updated_at": "2026-10-23T13:07:00.586515+00:00",
+  "updated_at": "2026-10-23T14:43:32.919672+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
@@ -1019,5 +1086,16 @@
     "implementation_owner": "backend",
     "new_freeze_owner": "root",
     "database_schema": "18/226 unchanged"
+  },
+  "scan_run_rfc": {
+    "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
+    "later_runtime_source": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "target_files_identical_to_later_source": true,
+    "before": 314,
+    "candidate": 315,
+    "delta": 1,
+    "actual_production_change": 0,
+    "admission": "explicitly_rejected_by_root",
+    "published_github_comments": []
   }
 }

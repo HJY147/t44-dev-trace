@@ -201,3 +201,13 @@
 - 固定cloc2.10同文件函数片段：生产schema117/migrations321；旧可替换语法+构造上界171，新AST提取规范化114，完整Core assembler+type+接入保护尚估60–110，联合可能增加3–53行；CHECK-only潜在约39–46行亦未实现。line-estimate.json不算生产已删；实际节省0。
 - 最终建议不准入生产整对替换，不改依赖锁；研究report及可重复952CLI供root/reviewer决定。Ruff初次F401/I001原失败保留，仅952整理imports后通过，不为风格再刷矩阵；没有触碰975授权样式修复。
 - 本轮以body-file实际发表Issue4阶段说明：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045；正文ddl-ast-poc-stage-comment.md。PR17标题/正文改为本轮未准入POC范围并attach，保持draft。没有把952失败或BE其他集成失败改写为通过。
+
+## ROLE-database-SCAN-RUN-DEDUP-RFC-v1：联合预算净增1，否决实施
+- 从当时集成162305f888ac094e38448ef95d4748248ae57bfc独立创建codex/database-scan-dedup/worktree，读AGENTS、本岗/调度交接、既有架构审核和实际Rows/savepoint/UoW/scanner/facade；不读取独立未发布用例/报告，不联系测试实例。
+- 本轮明确先设计，不修改生产。草案保存agents/database/scan-run-rfc/candidate-v1.patch及candidate-v2.patch，ignored scratch内生成候选文本；helper不拥有UoW，只在传入g中处理原完整初值/唯一冲突savepoint/版本hash校验。scanner与API的查询顺序、重复后锁、返回投影及规则冲突错误保持明确区分。
+- 首次scratch Ruff未带项目配置，实际用了默认88列，顺带重排旧行；该计数314→346被否决，不能充当最终候选。重新取原源+限定方法，显式--config backend/pyproject.toml（100列）；最终真实固定cloc2.10：scans109→129，facade205→186，联合314→315/净增1；工具hash核对通过。不能只记facade减19行。
+- 最终候选还发现API duplicate后找不到run的内部异常由原IndexError变为StatementRejected，虽然当前Runtime都转INTERNAL_ERROR，仍未证明内部异常等价；不以广泛捕获StatementRejected掩盖问题。既已不省行，不再增加适配复杂度去维持该罕见旧分支。完整设计说明这份补丁不能直接投产。
+- git apply --check candidate-v2.patch退出0；两候选ast.parse通过；这只是补丁/语法检查，无pytest/MySQL/HTTP/MQ/seed/CI/覆盖率/性能运行，没有新增脚本和编号。生产/DDL/14冻结件/依赖/他岗源码和断言均不改。
+- 总协调明确接受净增1的否决建议、不批准实施，不必等待调度岗。当前实际生产节省0；旧28–47只是预估，另含tick/recoverable的旧建议不冒记本轮收益。root最新5dcb73c全局5980/超880为其报告，本岗不冒充全局新跑；git diff确认两目标文件与本基线相同。
+- 实发prompt原文及后续消息归档prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md；操作者为AI，不是学生改码/亲写研究。GitHub阶段沟通与最终SHA另随本轮收尾回执，不设置review成功。
+- 首次收尾git diff --check退出2，只报告两个原始.patch文件的空上下文行（标准unified diff以单个空格表示），没有执行后续stage/commit/push。保留原补丁逐字内容；后续仅对这两个原件路径做资料级空白检查排除，其他本岗文档继续完整diff检查；不是产品检查/门禁放宽。
