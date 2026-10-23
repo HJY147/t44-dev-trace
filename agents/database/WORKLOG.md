@@ -211,3 +211,4 @@
 - 总协调明确接受净增1的否决建议、不批准实施，不必等待调度岗。当前实际生产节省0；旧28–47只是预估，另含tick/recoverable的旧建议不冒记本轮收益。root最新5dcb73c全局5980/超880为其报告，本岗不冒充全局新跑；git diff确认两目标文件与本基线相同。
 - 实发prompt原文及后续消息归档prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md；操作者为AI，不是学生改码/亲写研究。GitHub阶段沟通与最终SHA另随本轮收尾回执，不设置review成功。
 - 首次收尾git diff --check退出2，只报告两个原始.patch文件的空上下文行（标准unified diff以单个空格表示），没有执行后续stage/commit/push。保留原补丁逐字内容；后续仅对这两个原件路径做资料级空白检查排除，其他本岗文档继续完整diff检查；不是产品检查/门禁放宽。
+- 本轮设计提交6aeb7e67d90767b7408967a6782e13c569e9d423已push codex/database-scan-dedup；通过GitHub connector逐条真实发表Issue4/6，再用精确comment API GET读回，正文与本地逐字相同；回执github-post-receipts.json/github-readback.json。链接：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884, https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440。未另开实施PR或设置审核通过。

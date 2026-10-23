@@ -489,6 +489,21 @@
       "path": "agents/database/prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md",
       "kind": "SCAN-RUN-DEDUP-RFC-v1真实研究原件",
       "status": "仅设计，不准入生产"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/github-comment.md",
+      "kind": "本轮实际GitHub评论正文/回执",
+      "status": "Issue4/6已发表并逐字GET读回核对"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/github-post-receipts.json",
+      "kind": "本轮实际GitHub评论正文/回执",
+      "status": "Issue4/6已发表并逐字GET读回核对"
+    },
+    {
+      "path": "agents/database/scan-run-rfc/github-readback.json",
+      "kind": "本轮实际GitHub评论正文/回执",
+      "status": "Issue4/6已发表并逐字GET读回核对"
     }
   ],
   "interfaces": [
@@ -750,7 +765,9 @@
     },
     "SCAN-RUN候选两文件314→315净增1，生产实际改动/节省0；总协调明确否决实施",
     "仅补丁适用性与AST语法通过，不将此当运行测试；未改变规模口径/冻结件/DDL/产品/独立测试资料",
-    "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产"
+    "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产",
+    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
+    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
   ],
   "unverified": [
     "完整SQLAlchemy Core assembler未实现，候选不能直接替换整对模块",
@@ -921,7 +938,7 @@
       "improvement_reason": "先比较事务差异与真实联合净收益再决定是否共享；拒绝为旧估算凑行数，未制造人工经历"
     }
   ],
-  "updated_at": "2026-10-23T14:43:32.919672+00:00",
+  "updated_at": "2026-10-23T14:45:30.145327+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
@@ -1096,6 +1113,9 @@
     "delta": 1,
     "actual_production_change": 0,
     "admission": "explicitly_rejected_by_root",
-    "published_github_comments": []
+    "published_github_comments": [
+      "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
+      "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
+    ]
   }
 }
