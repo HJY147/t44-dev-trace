@@ -57,7 +57,9 @@
     "agents/deployment/runtime-pr-body.md",
     "agents/deployment/runtime-result-comment.md",
     "agents/deployment/runtime-validation/remote-initial-failure.log",
-    "agents/deployment/runtime-validation/remote-initial.json"
+    "agents/deployment/runtime-validation/remote-initial.json",
+    "agents/deployment/runtime-validation/remote-initial-failure.log.gz",
+    "agents/deployment/runtime-validation/remote-log-provenance.json"
   ],
   "interfaces": [
     {
@@ -254,7 +256,8 @@
     "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷",
     "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
     "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
-    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证"
+    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证",
+    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实"
   ],
   "unverified": [
     "本机无Docker：镜像拉取/构建、Nginx执行、Compose启动和服务连通均未验证",

@@ -53,3 +53,5 @@
 - 后续PR自动触发同SHA运行时为in_progress；没有手工重跑或等应用，后续结果按准确提交读取。当前开发机仍无Docker，未在本机构建/启动/迁移/恢复或压测。
 - 总协调追加运行资源约束后，api镜像白名单纳入authoritative specs/contracts，与specs/database并列，不复制原始specs/sources；后端实际资源加载路径和全部hash的requirements.lock仍待编码集成验证。vendor/schema/镜像元数据不计入应用有效代码规模。
 - 实际结果评论 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289 已通过runtime-result-comment.md的body-file发表；PR正文由runtime-pr-body.md通过gh pr edit同步真实状态。随后仅提交上述收尾配置和事实记录。
+
+- 收尾diff --check实际因下载日志4行传输尾空格退出2；工具编排未据该失败停止，随后已形成收尾commit9720e78。这是本岗编排失误。现保留原始日志字节为remote-initial-failure.log.gz，并记录SHA256/转换说明；阅读稿仅去行尾space/tab，不删改失败结果，补交修复后再确认diff检查。不修改或降低门禁。
