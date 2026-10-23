@@ -170,3 +170,39 @@ print(json.dumps({'new_threads': len(after - before),
             [sys.executable, "-c", code], check=True, text=True, capture_output=True
         )
         assert json.loads(result.stdout) == {"new_threads": 0, "global_scheduler": False}
+
+
+def test_private_service_token_file_and_single_instance_process_lock(tmp_path):
+    from t44.scheduling.__main__ import read_token, single_instance
+
+    token_file = tmp_path / "token.json"
+    token_file.write_text(json.dumps({"access_token": "synthetic-token-" + "x" * 32}))
+    token_file.chmod(0o644)
+    with pytest.raises(ValueError, match="private"):
+        read_token(token_file)
+    token_file.chmod(0o600)
+    assert len(read_token(token_file)) > 32
+    lock = tmp_path / "scanner.lock"
+    script = """
+import sys
+from t44.scheduling.__main__ import single_instance
+try:
+    with single_instance(sys.argv[1]): pass
+except BlockingIOError:
+    raise SystemExit(17)
+"""
+    with single_instance(lock):
+        result = subprocess.run([sys.executable, "-c", script, str(lock)], capture_output=True)
+        assert result.returncode == 17
+    assert (
+        subprocess.run([sys.executable, "-c", script, str(lock)], capture_output=True).returncode
+        == 0
+    )
+
+
+def test_real_cli_missing_configuration_exits_failure(monkeypatch, capsys):
+    from t44.scheduling.__main__ import main
+
+    monkeypatch.delenv("T44_SCHEDULER_TOKEN_FILE", raising=False)
+    assert main(["--once"]) == 1
+    assert json.loads(capsys.readouterr().err) == {"error": "SCHEDULER_FAILED"}

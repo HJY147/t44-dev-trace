@@ -18,13 +18,13 @@ RESOURCE = Path(__file__).parents[2] / "t44" / "resources" / "escalation-rules.j
     ("elapsed", "level", "code"),
     [
         (timedelta(days=-1, microseconds=-1), None, None),
-        (timedelta(days=-1), 1, "near_due"),
-        (timedelta(microseconds=-1), 1, "near_due"),
-        (timedelta(0), 1, "near_due"),
-        (timedelta(microseconds=1), 2, "overdue"),
-        (timedelta(days=1, microseconds=-1), 2, "overdue"),
-        (timedelta(days=1), 3, "severely_overdue"),
-        (timedelta(days=20), 3, "severely_overdue"),
+        (timedelta(days=-1), 1, "临期"),
+        (timedelta(microseconds=-1), 1, "临期"),
+        (timedelta(0), 1, "临期"),
+        (timedelta(microseconds=1), 2, "超期"),
+        (timedelta(days=1, microseconds=-1), 2, "超期"),
+        (timedelta(days=1), 3, "严重超期"),
+        (timedelta(days=20), 3, "严重超期"),
     ],
 )
 def test_d001_exact_boundaries_and_highest_window(elapsed, level, code):
@@ -33,7 +33,7 @@ def test_d001_exact_boundaries_and_highest_window(elapsed, level, code):
     result = select_window(end + elapsed, end, rules)
     assert ((result.level, result.code) if result else (None, None)) == (level, code)
     if result:
-        assert result.rule_version == "D001-v1"
+        assert result.rule_version == 1
         assert result.recipient_roles == (
             ("assignee",) if level == 1 else ("assignee", "project_manager")
         )
@@ -103,51 +103,51 @@ def write_rules(tmp_path, raw):
 
 def test_json_changes_window_thresholds_and_version(tmp_path):
     raw = json.loads(RESOURCE.read_text())
-    raw["rule_version"] = "project-rule-v2"
-    raw["levels"][0]["after_planned_end_seconds"] = -3600
-    raw["levels"][2]["after_planned_end_seconds"] = 7200
+    raw["version"] = 2
+    raw["rules"][0]["start_offset_seconds"] = -3600
+    raw["rules"][2]["start_offset_seconds"] = 7200
     rules = load_rules(write_rules(tmp_path, raw))
     end = datetime(2026, 10, 23, tzinfo=UTC)
     assert select_window(end - timedelta(hours=2), end, rules) is None
     match = select_window(end + timedelta(hours=2), end, rules)
-    assert (match.rule_version, match.level) == ("project-rule-v2", 3)
+    assert (match.rule_version, match.level) == (2, 3)
 
 
 @pytest.mark.parametrize(
     ("target", "field", "value"),
     [
-        (None, "schema_version", 2),
-        (None, "schema_version", True),
-        (None, "rule_version", ""),
-        (None, "rule_version", "version with spaces"),
+        (None, "version", 0),
+        (None, "version", True),
+        (None, "version", ""),
+        (None, "version", "version with spaces"),
         (None, "scan_interval_seconds", 0),
         (None, "scan_interval_seconds", True),
-        (None, "scan_interval_seconds", 61),
-        (None, "levels", []),
-        (None, "levels", {}),
+        (None, "scan_interval_seconds", 3601),
+        (None, "rules", []),
+        (None, "rules", {}),
         (0, "level", 2),
         (0, "level", True),
-        (0, "code", ""),
-        (0, "code", "overdue"),
-        (0, "after_planned_end_seconds", 0),
-        (1, "after_planned_end_seconds", 1),
-        (2, "after_planned_end_seconds", -1),
-        (0, "after_planned_end_seconds", -86400.0),
-        (0, "after_planned_end_seconds", True),
-        (2, "after_planned_end_seconds", 10**30),
-        (1, "inclusive", True),
-        (0, "inclusive", 1),
-        (2, "inclusive", False),
-        (0, "recipient_roles", []),
-        (0, "recipient_roles", "assignee"),
-        (0, "recipient_roles", ["assignee", "assignee"]),
-        (0, "recipient_roles", ["unknown"]),
-        (0, "recipient_roles", [[]]),
+        (0, "label", ""),
+        (0, "priority", 2),
+        (0, "start_offset_seconds", 1),
+        (1, "end_offset_seconds", -1),
+        (2, "end_offset_seconds", -2),
+        (0, "start_offset_seconds", -86400.0),
+        (0, "start_offset_seconds", True),
+        (2, "start_offset_seconds", 10**30),
+        (1, "start_inclusive", "true"),
+        (0, "start_inclusive", 1),
+        (2, "end_inclusive", True),
+        (0, "recipient_kinds", []),
+        (0, "recipient_kinds", "assignee"),
+        (0, "recipient_kinds", [1, 1]),
+        (0, "recipient_kinds", ["unknown"]),
+        (0, "recipient_kinds", [[]]),
     ],
 )
 def test_invalid_config_fields_fail_closed(tmp_path, target, field, value):
     raw = json.loads(RESOURCE.read_text())
-    (raw if target is None else raw["levels"][target])[field] = value
+    (raw if target is None else raw["rules"][target])[field] = value
     with pytest.raises(RuleConfigurationError):
         load_rules(write_rules(tmp_path, raw))
 
@@ -160,7 +160,7 @@ def test_missing_or_unknown_root_fields_rejected(tmp_path, raw):
 
 def test_unknown_window_fields_rejected(tmp_path):
     raw = json.loads(RESOURCE.read_text())
-    raw["levels"][0]["ui_threshold"] = 1
+    raw["rules"][0]["ui_threshold"] = 1
     with pytest.raises(RuleConfigurationError):
         load_rules(write_rules(tmp_path, raw))
 
