@@ -1,0 +1,88 @@
+{
+  "stage": "implemented after design-only3187; exact new full CI pending",
+  "design_parent": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
+  "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
+  "only_changed_production_file": "backend/t44/services/runtime.py",
+  "production_line_delta": 7,
+  "new_test_cases": 18,
+  "existing_assertions": "only appended test blocks; existing assertions untouched",
+  "targeted": {
+    "http-before": {
+      "tests": 11,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "65a88c1d802e63886763adec425fe5dde2490e0b5f5308933873ede42c91bc7f"
+    },
+    "mysql-before": {
+      "tests": 7,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a8875644e0ae0ca26b0ffca653b0bac4ed702b6515f3a4337dbd4f4e78703c9b"
+    },
+    "http-after": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "baae2e68974030ebc508bb3de3ac7ce04336f45016b4ddb37ac8881535da58bc"
+    },
+    "mysql-after": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a83c2cc1c81b8d75ca231bc8c2e42b22bfd018502db9dc0932874d485a100b01"
+    }
+  },
+  "source_sha256": {
+    "backend/t44/services/runtime.py": "73fa26b60ac9cf78fe8398afac49dc30f85091b393627d6f2fadd720a4a2ac58",
+    "tmp/backend/contracts/986_http.py": "fa3d0707da2bcde19648c3072be71c8907ea3ee2296093b115fc318cd456a99b",
+    "tmp/backend/contracts/985_mysql_http.py": "34f83464cd5f9c84fc52b482b575adeaae71308c64b8d36b230dcda6668704d7"
+  },
+  "freeze_14_hashes_match": true,
+  "mysql_actual_ledger": {
+    "category1": {
+      "selects": 4,
+      "acquires": 1
+    },
+    "category2": {
+      "selects": 5,
+      "acquires": 1
+    },
+    "category3": {
+      "selects": 5,
+      "acquires": 1
+    }
+  },
+  "mysql_scope": "real local project t44_test; HTTP TestClient with actual MySQL transactions",
+  "scope_limits": [
+    "4 fault cases are explicitly injected dependency/audit faults, not a MySQL outage",
+    "Before failures are new optimization assertions/in-flight read semantics, not nine old business defects",
+    "No performance matrix or latency benefit measured",
+    "New per-request live RC authorization; no session/member read locks; writes unchanged",
+    "Only18 targeted cases run; old394 CI cannot stand for this source",
+    "Test fault marker added after targeted run only for CI selection; original assertions unchanged"
+  ],
+  "log_credential_pattern_scan": {
+    "files": [
+      "read-uow-http-after.log",
+      "read-uow-http-after.xml",
+      "read-uow-http-before.log",
+      "read-uow-http-before.xml",
+      "read-uow-mysql-after.log",
+      "read-uow-mysql-after.xml",
+      "read-uow-mysql-before.log",
+      "read-uow-mysql-before.xml",
+      "read-uow-static.log"
+    ],
+    "matches": 0
+  },
+  "commands": {
+    "http": "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend/contracts/986_http.py -k read_uow --tb=short --junitxml=agents/backend/read-uow-http-{before|after}.xml",
+    "mysql": "PYTHONPATH=backend T44_HTTP_TEST_CREDENTIALS=<project ignored app credentials path> T44_HTTP_TEST_DATABASE=t44_test .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend/contracts/985_mysql_http.py -k read_uow --tb=short -s --junitxml=agents/backend/read-uow-mysql-{before|after}.xml"
+  },
+  "python_interpreter": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/bin/python",
+  "load": "none; no diagnostic/API process started"
+}

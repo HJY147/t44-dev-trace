@@ -173,3 +173,7 @@ D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副
 ## 只读契约校验优化设计（待准入，非实现）
 
 RFC specs/changes/contract-validation-read-uow-rfc.md仅对validateContractPayload合并两个UoW，默认普通RC实时鉴权、验证后fresh-now复核到期，保留已在途读可完成/撤销提交后新请求拒绝的最低语义。原先S锁提议经根/审核讨论撤回；全部写路径、17其它只读及池/安全/Schema不动。SQL8/9/9→4/5/5与2acquire→1仅静态预期；无负载/收益结论。未应用patch净+7物理行，生产delta0，尚未编写/运行新回归。精确源行号、网络/事务边界和986/985撤销竞态测试计划在RFC；原controller exit1、正式性能失败及源码超限保持。
+
+## 单UoW契约校验已实现，等待精确CI
+
+设计父3187后仅runtime.py净+7行实现唯一接口单UoW：默认RC鉴权→原验证→fresh-now到期复核→原dispatch，退出后原异常独立审计。冻结14文件/全部写路径/其余17只读/池/Schema保持。新增回归原目标9fail/9pass，改后18pass（SQLite HTTP11+真实MySQL7）；真库实际4/5/5SELECT、各1acquire，session/member两种撤销时序与新请求401/403通过。原断言仅追加不删改，故障注入不冒真宕机。证据read-uow-validation-summary.json及before/after原日志/XML。此为定向开发验证；精确全CI/全覆盖率待运行，原394只属旧源，尚无性能收益/独立验收/源码规模通过。

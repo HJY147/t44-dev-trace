@@ -264,3 +264,14 @@
 - 本候选实际Issue3交流：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169；仅设计准入/未应用，不称实现或性能通过。
 - 设计归档首次cached --check退出2：未应用标准diff附件的三条空context行必须保留前导空格，作为被新增的补丁文件内容被报尾空格。保留审核过的有效patch/SHA原样，仅对其余暂存文本另作同检查；未改任何生产lint/断言。真实输出profile-read-uow-design-static.log。
 - 根澄清SSH消息属于误发，与本项目无关；未取得/保存/使用密码，未连接任何远程主机。本项目仅原本地/托管计划。
+
+## 单UoW契约校验实现 checkpoint（尚待精确全CI）
+
+- 设计-only父3187bc6615a821f1123ef10f64d99b7a39a9862d已push并先通知根/审核，才追加986/985回归并应用已准入patch。生产仅runtime.py 8add/1delete净+7行，不减源码；无新锁/池参数/Identity/Rows/UoW/写路径变更。freeze14当前SHA全部匹配。未新建测试脚本、不占930。
+- 新18项改前实际：986四个新UoW次数目标失败、7通过；985三类账本和两条在途撤销语义目标失败、2通过，共9fail/9pass。这不是旧产品9个业务缺陷或安全漏洞，而是新优化目标和明确在途语义的开发回归，原日志/XML read-uow-*-before保留。
+- 改后同18项：986 HTTP/SQLite11通过；985真实MySQL/t44_test7通过，三类实际4/5/5 SELECT且各1acquire，session/member撤销提交后新请求401/403；在途读暂停于真实鉴权之后，HTTP注销/另一manager撤销成员能在释放读前提交，旧读200，新读拒绝。事件屏障和实际SQL证明无新S锁，不把mock当真锁。
+- 986明确依赖/审计故障注入4项证明主UoW closed之后才新Session独立审计，审计不可用503；不是实际MySQL宕机。另5项认证先于非法JSON、2项fresh-now/非法参数优先保持；3类别真库HTTP继续核内1.0/外1.1、成功无业务/audit/outbox/idem写和任务version不变。仅追加新测试块，原断言未动。故障marker最后仅作CI选择注解，未改用例输入/断言。
+- 受影响文件Ruff/format、Runtime Bandit与源diff检查通过，read-uow-static.log；11/7 before/after原日志/JUnit及源码SHA、freeze/凭据模式核对汇总read-uow-validation-summary.json，scoped凭据模式0命中。当前没有新全量CI/覆盖率或任何性能收益；没启动诊断服务/矩阵/触tester库。已知正式transition/escalation P95与源码超限未解决。
+- 实现阶段真实Issue3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611。下一步仅精确新源CI/交接；根提出写路径重复装载/联查的后续议题，不在本生产提交实施或预报收益。
+
+Source checkpoint cached --check initially exited2 on original pytest E-lines containing trailing blanks in the four before.log/before.xml artifacts. Preserve exact original logs and recorded SHA; check all other staged text separately. Runtime/tests Ruff, format and source diff checks remain unchanged and passed.

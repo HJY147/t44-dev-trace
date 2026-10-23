@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T13:51:18.677875+00:00",
-  "current_stage": "read-UoW design admitted by coordinator; design-only checkpoint before production implementation",
+  "updated_at": "2026-10-23T14:34:19.871498+00:00",
+  "current_stage": "single-UoW contract validation implemented;18 targeted regressions pass, exact new CI pending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -782,7 +782,7 @@
       "raw_archive_sha256": "707ead0d4d6b6083ccafccbf7740b6468145554d966794eadb3a6b1a6c3c1a9d"
     },
     "optimization_design": {
-      "status": "reviewer limited static no-blocker and coordinator implementation admission received; this checkpoint design only",
+      "status": "implemented after design-parent3187; targeted18 pass; exact new full CI pending",
       "basis": "c83f627331acf43fb508fac7e16525a48c0389ab",
       "rfc": "specs/changes/contract-validation-read-uow-rfc.md",
       "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
@@ -800,20 +800,55 @@
         5
       ],
       "predicted_acquires": 1,
-      "production_delta_lines": 0,
+      "production_delta_lines": 7,
       "draft_net_lines": 7,
       "new_read_locks": false,
       "retracted_option": "Initially proposed session/member S locks; withdrawn after coordinator/reviewer clarified minimum in-flight semantics; not a discovered vulnerability",
-      "tests": "planned meaningful expansions of existing986/985 only; not written/run; no new930 script",
+      "tests": "appended18 meaningful cases: HTTP/SQLite11 + real MySQL7; before9failed9passed; after18pass; no original assertion changed",
       "risks": [
         "no overall four-table atomic authorization snapshot; in-flight reads may finish",
         "connection held during CPU-only validation; throughput benefit unproven",
         "future identity.active management requires separate review"
       ],
-      "write_paths": "unchanged session/idem/project/members/tasks locks, CAS/idem/audit/outbox; no write optimization",
+      "write_paths": "byte-identical existing write path; only added contract-validation branch and now import",
       "execution": "no production edits, HTTP/DB/service/load or pytest in design phase",
-      "next": "commit/push design and report SHA, then implement only this endpoint and real targeted regressions",
-      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169"
+      "next": "push exact source for normal product CI; request separate coordinator window before any performance comparison",
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169",
+      "implementation": {
+        "design_parent": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
+        "only_file": "backend/t44/services/runtime.py",
+        "line_delta": 7,
+        "actual_mysql_selects": [
+          4,
+          5,
+          5
+        ],
+        "actual_mysql_acquires": [
+          1,
+          1,
+          1
+        ],
+        "no_new_read_locks": true,
+        "freeze14_match": true,
+        "summary": "agents/backend/read-uow-validation-summary.json",
+        "logs": [
+          "agents/backend/read-uow-http-before.log",
+          "agents/backend/read-uow-http-before.xml",
+          "agents/backend/read-uow-mysql-before.log",
+          "agents/backend/read-uow-mysql-before.xml",
+          "agents/backend/read-uow-http-after.log",
+          "agents/backend/read-uow-http-after.xml",
+          "agents/backend/read-uow-mysql-after.log",
+          "agents/backend/read-uow-mysql-after.xml",
+          "agents/backend/read-uow-static.log"
+        ],
+        "unverified": [
+          "exact new product CI/full43file coverage",
+          "latency benefit and formal performance",
+          "final source-size compliance"
+        ],
+        "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611"
+      }
     }
   },
   "iat_repairs_v1": {

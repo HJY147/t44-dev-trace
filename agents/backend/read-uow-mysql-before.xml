@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="7" time="1.317" timestamp="2026-10-23T22:29:35.416085+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_read_uow_real_mysql_success_statement_and_acquire_ledger[1]" time="0.479"><failure message="AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...('projects',)]&#10;  &#10;  Left contains 4 more items, first extra item: ('auth_sessions',)&#10;  Use -v to get more diff">tmp/backend/contracts/985_mysql_http.py:646: in test_read_uow_real_mysql_success_statement_and_acquire_ledger
+    assert statements == expected_tables + ([("tasks",)] if category != 1 else [])
+E   AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...('projects',)]
+E     
+E     Left contains 4 more items, first extra item: ('auth_sessions',)
+E     Use -v to get more diff</failure></testcase><testcase classname="" name="test_read_uow_real_mysql_success_statement_and_acquire_ledger[2]" time="0.091"><failure message="AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...), ('tasks',)]&#10;  &#10;  At index 4 diff: ('auth_sessions',) != ('tasks',)&#10;  Left contains 4 more items, first extra item: ('users',)&#10;  Use -v to get more diff">tmp/backend/contracts/985_mysql_http.py:646: in test_read_uow_real_mysql_success_statement_and_acquire_ledger
+    assert statements == expected_tables + ([("tasks",)] if category != 1 else [])
+E   AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...), ('tasks',)]
+E     
+E     At index 4 diff: ('auth_sessions',) != ('tasks',)
+E     Left contains 4 more items, first extra item: ('users',)
+E     Use -v to get more diff</failure></testcase><testcase classname="" name="test_read_uow_real_mysql_success_statement_and_acquire_ledger[3]" time="0.118"><failure message="AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...), ('tasks',)]&#10;  &#10;  At index 4 diff: ('auth_sessions',) != ('tasks',)&#10;  Left contains 4 more items, first extra item: ('users',)&#10;  Use -v to get more diff">tmp/backend/contracts/985_mysql_http.py:646: in test_read_uow_real_mysql_success_statement_and_acquire_ledger
+    assert statements == expected_tables + ([("tasks",)] if category != 1 else [])
+E   AssertionError: assert [('auth_sessi...users',), ...] == [('auth_sessi...), ('tasks',)]
+E     
+E     At index 4 diff: ('auth_sessions',) != ('tasks',)
+E     Left contains 4 more items, first extra item: ('users',)
+E     Use -v to get more diff</failure></testcase><testcase classname="" name="test_read_uow_real_mysql_revocation_and_new_request_order[False-session]" time="0.093" /><testcase classname="" name="test_read_uow_real_mysql_revocation_and_new_request_order[False-membership]" time="0.137" /><testcase classname="" name="test_read_uow_real_mysql_revocation_and_new_request_order[True-session]" time="0.099"><failure message="assert (401 == 200)&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">tmp/backend/contracts/985_mysql_http.py:738: in test_read_uow_real_mysql_revocation_and_new_request_order
+    assert result.status_code == 200 and result.json()["data"]["valid"] is True
+E   assert (401 == 200)
+E    +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code</failure></testcase><testcase classname="" name="test_read_uow_real_mysql_revocation_and_new_request_order[True-membership]" time="0.136"><failure message="assert (403 == 200)&#10; +  where 403 = &lt;Response [403 Forbidden]&gt;.status_code">tmp/backend/contracts/985_mysql_http.py:738: in test_read_uow_real_mysql_revocation_and_new_request_order
+    assert result.status_code == 200 and result.json()["data"]["valid"] is True
+E   assert (403 == 200)
+E    +  where 403 = &lt;Response [403 Forbidden]&gt;.status_code</failure></testcase></testsuite></testsuites>
