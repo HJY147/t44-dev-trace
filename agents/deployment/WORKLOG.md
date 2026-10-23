@@ -247,3 +247,11 @@
 - AST核application除capture全部相同，原ApplicationGuards类相同，runtime.py无变化；实际新application SHA 5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98。原0a6真实cycle成功保持，新修复没有cycle验证。原审核红/SHA、同例红绿、五项实际receipt和退出码、源/AST/diff证据见native-capture-timeout-validation。下一步仅commit/push与PR34/Issue7准确更新/readback后交根复审。
 
 - 窄修实现b23897879142de3bd77190c67d4947eccf1c8263已push。PR34题/正文准确改写，GitHub GET确认当时head完整b238978/drafttrue/body逐字一致；Issue7评论6375565697、PR34评论6375566016均再次GET逐字一致，原响应/readback/SHA另档。原review COMMENT5634837225和5ef原失败不改，根复审pending。此次全程未读实际秘密，也未将先前16-literal扫描结果冒充新扫描；新材料仅公开源码/已发表反例/合成输出。只封档后释放槽，不再跑检查或服务。
+
+## API-PROCESS-METADATA-v1
+
+- 依实际root派工从5148733398868002eb4eafad6a9ea207defe0412建独立codex/deployment-api-process-metadata/worktree，先写设计/原metadata SHA再红；仅读本岗源码/规则，不打开私密材料或旧raw。最初Git worktree inventory意外列出独立worktree路径名，未打开/遍历其内容，此后不再枚举全局worktree；不把路径名当测试证据。
+- 原API_SCRIPT在953 fake /proc实际执行，docker-init/tini两个wrapper与Python模块进程同含命令，两反例exit1红，实得2supervisors/workers[4,4]/4spawn。只证明合成误计，不确认stage05实际原因。原stdout/stderr/JUnit与设计SHA另档api-process-metadata-validation，b3ee/H11 incomplete和旧封存结果不改。
+- 窄修仅API_SCRIPT：明确Python executable basename及紧邻-m uvicorn t44.api:app前缀，不读/输出argv，不放宽strict==1；原spawn计数/投影等其余AST完全一致。相同两wrapper、两个真正supervisor仍拒绝、原API投影共4项0.04s通过（74其他项未跑），Ruff通过。首green有无效转义warning，原件保留，改[.]后同四项无warning通过。
+- 全部fake临时/proc文件，未读真实/proc/容器/独立私密输入，不跑Docker、产品进程或旧故障/正式压力；产品/资源/native不改。仅收尾提交与Issue7实际读回后结束。
+- 提交前diff-check真实exit2：原红JUnit内两行尾空格。保留原字节red-junit.xml.gz与原SHA，阅读XML只规范尾空白，变换说明raw-junit-preservation.json；不重跑测试、不改断言或失败内容，再检查后提交。

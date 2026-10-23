@@ -16,7 +16,7 @@ INSPECT_TEMPLATE = ('{"id":{{json .Id}},"project":{{json (index .Config.Labels "
                     ','.join('"' + key + '":{{json .HostConfig.' + key + '}}' for key in RESOURCE_FIELDS) +
                     '},"health_interval_ns":{{if .Config.Healthcheck}}{{json .Config.Healthcheck.Interval}}'
                     '{{else}}null{{end}}}')
-API_SCRIPT = '''import json,os
+API_SCRIPT = '''import json,re
 from pathlib import Path
 supervisors=[]; spawned=0; unreadable=0
 for p in Path('/proc').iterdir():
@@ -24,7 +24,7 @@ for p in Path('/proc').iterdir():
  try: args=(p/'cmdline').read_bytes().split(b'\\0'); args=[a.decode('utf-8',errors='replace') for a in args if a]
  except FileNotFoundError: continue
  except (PermissionError,OSError): unreadable+=1; continue
- if 't44.api:app' in args and 'uvicorn' in args:
+ if len(args)>=4 and re.fullmatch(r'python(?:[0-9]+(?:[.][0-9]+)*)?',args[0].rsplit('/',1)[-1]) and args[1:4]==['-m','uvicorn','t44.api:app']:
   try: workers=int(args[args.index('--workers')+1])
   except (ValueError,IndexError): workers=None
   supervisors.append(workers)
