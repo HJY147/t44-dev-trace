@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from contextlib import contextmanager
 from dataclasses import dataclass
 
-from sqlalchemy import DateTime, delete, func, insert, select, text, update
+from sqlalchemy import DateTime, bindparam, delete, func, insert, select, text, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.sql import ClauseElement
 
@@ -15,7 +15,6 @@ from .errors import (
     StatementRejected,
     TransactionStateError,
 )
-from .gateway import CoreGateway, TableBinding
 from .schema import TABLES
 
 
@@ -30,9 +29,6 @@ class RowsGateway:
     def __init__(self, active_session, mark_failed):
         self._session, self._mark_failed = active_session, mark_failed
         self._scopes = []
-
-    def __call__(self, binding: TableBinding) -> CoreGateway:
-        return CoreGateway(binding, self._session, self._mark_failed)
 
     def _table(self, name):
         if not isinstance(name, str) or name not in TABLES:
@@ -94,9 +90,9 @@ class RowsGateway:
             clauses.append(clause)
         return clauses
 
-    def _execute(self, statement, mode):
+    def _execute(self, statement, mode, parameters=None):
         try:
-            with self._session().execute(statement) as result:
+            with self._session().execute(statement, parameters) as result:
                 if mode == "rows":
                     return [
                         {k: from_db_time(v) if hasattr(v, "tzinfo") else v for k, v in row.items()}
@@ -227,6 +223,29 @@ class RowsGateway:
         if not values:
             raise StatementRejected("Insert requires bound values")
         return self._execute(insert(t).values(**self._fields(t, values)), "id")
+
+    def insert_many(self, table, values):
+        t = self._table(table)
+        if not values:
+            return 0
+        fields = [self._fields(t, row) for row in values]
+        if not fields[0] or any(set(row) != set(fields[0]) for row in fields):
+            raise StatementRejected("Batch inserts require identical nonempty fields")
+        return self._execute(insert(t), "count_rows", fields)
+
+    def update_many(self, table, values):
+        t = self._table(table)
+        if not values:
+            return 0
+        fields = [self._fields(t, row) for row in values]
+        keys = set(fields[0]) - {"id"}
+        if not keys or any(set(row) != keys | {"id"} for row in fields):
+            raise StatementRejected("Batch updates require IDs and identical nonempty changes")
+        parameters = [{"_pk": row["id"], **{k: row[k] for k in keys}} for row in fields]
+        statement = (
+            update(t).where(t.c.id == bindparam("_pk")).values({k: bindparam(k) for k in keys})
+        )
+        return self._execute(statement, "count_rows", parameters)
 
     def update(self, table, where, values, *, predicates=()):
         t = self._table(table)

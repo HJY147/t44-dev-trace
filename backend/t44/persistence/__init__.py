@@ -9,7 +9,6 @@ from .errors import (
     StatementRejected,
     TransactionStateError,
 )
-from .gateway import TableBinding
 from .rows import Pred
 from .uow import SqlAlchemyUnitOfWork, SqlAlchemyUnitOfWorkFactory
 
@@ -23,7 +22,6 @@ __all__ = [
     "SqlAlchemyUnitOfWork",
     "SqlAlchemyUnitOfWorkFactory",
     "StatementRejected",
-    "TableBinding",
     "TransactionStateError",
     "create_mysql_engine",
 ]
