@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "ABBA result interpreted offline; next runtime optimization RFC only",
+  "stage": "ABBA interpretation checkpoint complete; runtime RFC prepared, all candidates UNAPPLIED",
   "implementation_status": "production byte-identical5dcb;412exact-source CI historical; no new production/frozen change",
   "artifacts": [
     {
@@ -1286,5 +1286,30 @@
     "errors": 0,
     "result_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372543944",
     "result_pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372544653"
+  },
+  "runtime_roundtrip_rfc": {
+    "path": "specs/changes/runtime-roundtrip-reduction-rfc.md",
+    "base_production": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "recommendation": "A preflight only first: preserve two auth in first UoW and original main auth;3to2UoW,SELECTunchanged",
+    "patch_budget": "agents/backend/runtime-plan-loc-budget.json",
+    "static": "agents/backend/runtime-plan-static.json",
+    "patches": [
+      "agents/backend/runtime-plan-preflight-not-applied.patch",
+      "agents/backend/runtime-plan-dependencies-not-applied.patch",
+      "agents/backend/runtime-plan-validator-not-applied.patch"
+    ],
+    "semantics": [
+      "RC statement snapshots, no identity cache",
+      "ordinary connection held during local validation, no earlier S lock",
+      "read commit fault point removed; validation rollback differs",
+      "main locks/CAS/owner fence/audit/outbox/uncertain commit preserved"
+    ],
+    "new_code_execution": "none",
+    "production_delta": 0,
+    "frozen14": "unchanged",
+    "next": "root choose one and limited review/admission; no automatic implementation or load",
+    "size": "A-1/B+6/C-10 are draft text counts only;6051baseline still exceeds5100",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155"
   }
 }
