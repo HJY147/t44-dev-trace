@@ -1,6 +1,8 @@
-# 持久化契约 v1冻结
+# 持久化契约 v1.1人力生命周期演进
 
-状态：v1规格已冻结，用户D004采用字段/错误取舍且设计限定复审通过；授权在明确选择的项目测试/部署库实现版本迁移。不是已迁移、实现或运行结果。实际派工 `ROLE-database-DESIGN-v1`。配套 `field-dictionary.md`、`schema.sql`。依据 `specs/requirements.md`、`specs/business-rules.md`、D001、D002、原始T44任务书及 `specs/contracts/openapi.json` 当轮草案。MySQL 8.4 / Python 3.12 / FastAPI同步 / SQLAlchemy 2 + PyMySQL。
+本次只同步D005/D006与[已审RFC](../changes/capacity-lifecycle-v1.1.md)的存储语义，实际派工ROLE-database-CAPACITY-V11-CONTRACTS-v1，操作者数据库岗AI。旧1.0.0由父提交`ae60dc3`及[原11项冻结摘要](../../records/spec-freezes/v1.json)保留；本文件和[字段字典](field-dictionary.md)的1.1内容/摘要显式变化，不回写旧manifest或历史验收。最终1.1.0权威/运行API元数据由后端同步，新freeze父链由总协调生成，本轮不声称已完成冻结或产品实现。
+
+结构仍18表226列，不新增列/表/trigger/魔法码；[schema.sql](schema.sql)和打包DDL SHA256仍为`c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4`。既有MySQL/checker修复及原实测不重写，本轮只做文档静态对照，不重跑全套/coverage。MySQL8.4/Python3.12/FastAPI同步/SQLAlchemy2+PyMySQL基线不变。
 
 ## 责任与输入输出
 
@@ -33,14 +35,34 @@
 2. 每个写事务先对当前auth_sessions行FOR SHARE并重核有效期、revoked_at及主体active，再锁自己的idempotency_requests行。需要项目级不变量的操作再锁project行；随后按成员user_id升序锁相关membership，再按task.id升序锁任务；最后按ID锁评审/评估/其他子记录。禁止拿到task后补取project或反向取另一任务。会话撤销CLI只对session行FOR UPDATE，不反锁业务行；在途已授权写与撤销以锁提交先后线性化。
 3. 同项目依赖新增/删除持有project `FOR UPDATE` 到提交，读图、验证同项目/自依赖/环、写边与task CAS同事务。A→B和B→A不能同时通过互不相见的查环。
 4. start、unblock回到开发、rework同样先project锁；在同一锁序内锁目标及全部前驱任务，确认每个前驱state=6，再检查expected_version并CAS目标。前驱之后回滚不自动修改其他任务；该次开始的审计保留当时证据。
-5. 负责人/依赖只允许state=1，或state=3且blocked_from_state=1；其余409，拒绝留痕。依赖编辑与CAS、审计、outbox同事务，禁止半套边关系。
-6. 成员角色/撤销先project锁，再 `FOR UPDATE` 锁成员和需检查的负责任务。撤销经理或经理角色必须仍有至少一个active经理；撤销active负责人或开发角色若仍负责非终态任务则拒绝。成员仅active=0软撤销，保留外键历史。
-7. 普通单任务写不必全项目串行，但在task锁前，对操作者/负责人/此次快照经理等相关membership行按user_id顺序 `FOR SHARE`，重验active/roles；成员变更与并发写以锁的先后顺序确定权限。普通路径不得事后补取project锁。
+5. 负责人/依赖只允许state=1，或state=3且blocked_from_state=1；其余409，拒绝留痕。1.1的changeTaskAssignment在锁成员/任务前新增project锁，与迭代capacity变更串行。依赖编辑与CAS、审计、outbox同事务，禁止半套边关系。
+6. 成员角色/撤销先project锁，再 `FOR UPDATE` 锁成员和需检查的负责任务。撤销经理或经理角色必须仍有至少一个active经理；撤销active负责人或开发角色若仍负责state=1–5或7的任务则拒绝；该成员保护不能与1.1仅保护1–5的迭代capacity规则混同。成员仅active=0软撤销，保留外键历史。
+7. 除1.1四类人力路径和原本需要project锁的操作外，普通单任务写不必全项目串行，但在task锁前，对操作者/负责人/此次快照经理等相关membership行按user_id顺序 `FOR SHARE`，重验active/roles；成员变更与并发写以锁的先后顺序确定权限。普通路径不得事后补取project锁。
 8. 项目创建与创建者经理成员记录同事务。roles_mask为内部位集合，API仍ProjectRole数组；所有查询显式join active membership过滤project_id，经理身份不绕过过滤。通知再限制recipient_id=当前主体。
 
 认证辅助数据仅增加service_accounts与auth_sessions：稳定服务主体ID与用户ID分scope；token只存SHA-256摘要及过期/撤销，服务会话存project_ids/scopes白名单，个人会话实时查项目成员。服务scope不等于经理角色。登录仅首次返回高熵不透明token；日志、命令行参数和URL禁止token原文。
 
 账号初始化持久层公开边界 `initialize_user(hash_only)` 必须解析并验证合法Argon2id编码/参数，拒绝非hash或不合法hash，独立提交脱敏安全审计 `SECURITY_INPUT_REJECTED`；失败返回503且不声称已记录。CLI接收口令、在内存哈希后调用该入口属于正常流程；审计只保存请求ID与原因分类，不保存原口令或原hash。DDL的hash形状CHECK只是额外防线；任意恶意直连不被宣称能自动生成独立审计。后续自测必须从真实持久层入口触发此拒绝路径。
+
+## 人力生命周期1.1事务契约
+
+人已选择的范围见[D005](../../records/decisions/D005-capacity-lifecycle-adopted.md)/[U015](../../records/prompts/U015-original.md)、[D006](../../records/decisions/D006-rolled-back-capacity-adopted.md)/[U016](../../records/prompts/U016-original.md)及[限定设计通过报告](../../reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md)。这是1.1新增守卫，不倒称旧1.0已有全部行为。
+
+| 操作 | 同一项目锁内的服务层核对 |
+| --- | --- |
+| createTask | 沿用已有owner匹配迭代capacity守卫；负责人必须是本项目有效developer且在当前所属迭代登记有效工时 |
+| changeTaskAssignment | 新增project `FOR UPDATE`；保留原角色/允许状态/版本守卫，目标有效developer检查后核对当前迭代capacity |
+| changeIteration | 同项目事务内重读本迭代全部任务，按id有序锁定相关任务；新capacity各项有效/唯一，且包含全量state=1–5任务owner，不只核对旧/新人员差集 |
+| transitionTask action9 rework | 保留原经理、状态/版本/证据/排期/依赖守卫，在CAS前重验当前owner是有效developer且已补回当前迭代capacity；state7尚未返工时允许移出capacity |
+
+1. 四操作统一session `FOR SHARE`/idem→project `FOR UPDATE`→相关membership按user_id升序→相关task按id升序；依赖任务/子记录继续原锁序。获得project锁后读取当前capacity及受保护owner，不使用锁前缓存或另一事务预检结果，项目锁持有到提交/回滚。assignment不得先拿task再补project。
+2. capacity JSON不增加跨行CHECK、trigger或外键；数据/SQL能力仍由既有持久门面提供，集合及有效developer校验由后端服务在同一事务编排，不隐式创建连接或提前提交。
+3. 新capacity保留本迭代state1–5全部owner；6/7可移出，7进入2前先补回有效人力再按原证明/版本/依赖条件返工。项目成员/开发角色移除仍保护1–5+7；D002转派只允许1或从1进入3，不新增状态出口或预算算法。
+4. 新人力失败复用422 `CAPACITY_REFERENCE_INVALID`及原稳定审计码30；不改变原权限、状态、版本等错误优先级。失败不递增业务版本、不写plan/plan_version、task/cycle、decision或schedule_changes，主事务先回滚释放，再按下文独立拒绝事务记录审计和原key错误快照；审计失败仍503。
+5. 成功的业务变更、审计、outbox和幂等快照仍一次提交。已有COMPLETE成功key先回放原结果，不因当前capacity变化重跑新增守卫或再增版本；访问权重验及同key内容冲突规则不变，提交不明仍沿原key恢复。
+6. 并发与移除目标人capacity竞争时，若移除先提交，后续向该人创建/转派/返工按最新快照拒绝；若激活任务先提交，后续移除该state1–5 owner拒绝。先合法将A的可转派任务交给已登记B，再移除不再拥有受保护任务的A，可以依次都成功；不把所有跨资源安全更新一概限制为一次成功。仅为锁原理契约，本轮未做真实竞争测试。
+
+API路径保持`/api/v1`，契约信息版本由后端同时更新`info.version`与`Meta.contract_version.const`至1.1.0；本岗不代改权威/运行OpenAPI。新版本清单须另记父1.0及差异，不能通过改写原11hash制造“旧冻结未变化”的表述。
 
 ## 请求幂等、CAS与成功事务
 
@@ -84,7 +106,9 @@
 - 过期leased恢复依然核token并加行锁；可重新投递原event_id，消费唯一键兜底。已fallback为终态，MQ恢复不重发同event；新event正常投递。非升级business.changed发布失败保持pending/重试，不伪造无收件人的站内待办。
 - handled_at/handling_note/evidence与read_at分别写入、各次成功更新notification.version；处理通知不解除任务阻塞、不改变task.state。消息/调度代码必须通过数据库门面，不自行建第二套通知表。
 
-## 迁移、运行与审核门禁
+## 迁移、运行与审核门禁（v1历史设计记录）
+
+以下“本轮/当前未运行”指1.0设计轮当时状态，保留原记录；既有运行证据见模块记录。本次1.1文档同步不执行DDL或重写MySQL/checker验证。
 
 - schema.sql是可供MySQL 8.4执行的完整DDL提案，选择空schema后按文件顺序建18表和补循环外键；本轮未执行。没有DROP/数据库创建/种子数据/DDL事务回滚承诺。
 - SQLAlchemy模型必须逐字段实现本规范并走评审，不得在应用启动时create_all偷偷迁移。迁移另行派工、逐表审核、备份和恢复预演后进行；InnoDB、外键检查和CHECK不可关闭以绕过错误。

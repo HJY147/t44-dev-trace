@@ -180,3 +180,13 @@
 - Ruff首次I001仅新owner CLI import排序，ruff-run1.log保留；仅该文件I001 fix后ruff-run2通过；migrations.py定向Bandit findings0。必要范围完成，未重复全套/全局覆盖或扩展性能测试。
 - 本岗C-P4数据库技术验证闭合，仍需审核岗对最终集成SHA复审，未代其设置审核通过。根stage7 cloc5866/exit1为当时事实，仍超5100，不改口径/为数字破坏结构。全部seed数据synthetic，不是人工评审/交付或独立验收。
 - 本轮Issue4已以body-file发表：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107 ，正文live-verify-stage-comment.md；PR17标题/正文已按真实MySQL最终范围重写并attach，保持draft。
+
+## ROLE-database-CAPACITY-V11-CONTRACTS-v1：显式1.1存储文档同步
+- 干净树fast-forward指定eac253039cd85873d3b262e648b2b74d94d715a8，已读AGENTS、D005/D006、U015/U016、capacity-lifecycle-v1.1.md与bbc限定设计报告（reviewer d7c46a6）；实际派工原文存prompts/ROLE-database-CAPACITY-V11-CONTRACTS-v1.md。
+- 只改field-dictionary.md/persistence-contract.md及本岗记录，未动DDL、产品、API/运行契约或旧freeze。文档标显式1.1演进，旧ae60dc3原1.0及11hash保留，当前两文档摘要有意改变；不称当前仍逐字等于1.0。原逐表/迁移设计时期未执行句式加历史范围说明，既有MySQL/checker修复实测不重写。
+- 明确capacity JSON为服务层跨行不变量：项目锁内重读当前有效developer及本迭代全部任务owner，state1–5必须保留，6/7可移出、7返工前补回；成员/开发角色保护仍1–5+7，D002转派边界不变，无预算算法。assignment新增project锁，四路径统一session/idem→project→有序成员→有序task，失败不写业务版本/plan/diff，成功/重放/独立拒绝审计仍原事务边界。
+- 已向backend真实同步上述输入输出；backend原回复：“一致，后端正在986/985先补回归，随后assignment加入项目锁；changeIteration在项目锁内查全量该迭代state1–5 owner并锁task按id，不能只查old-new名单；rework在现有版本/权限/状态/证据/依赖守卫通过后、CAS前核有效developer+capacity，缺失用ID30。保留成员保护1–5+7、18/226与SQL不变。为保原版本错误优先，新guard前复用集中version检查，成功/拒绝/重放事务编排不变。”据此保留原错误优先级，未越界改backend源码。
+- 必要静态对照/相对链接/hash检查通过：原11项摘要均可从ae60dc3恢复，v1.json未改；DDL/打包副本均c0e740...，18表226列；字典226项字段名/SQL声明与eac基线完全一致，原ID30不变，19个本地链接/锚点有效，RFC SHA=a6271e...与已审对象一致。结果capacity-v11-static-check.json。初次查找records/user-feedback目录不存在，已用rg --files records定位实际records/prompts，未据此推断业务失败。
+- 本轮未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能，不将文档静态通过计为产品通过。API info.version/Meta.const及权威/运行副本1.1.0由backend完成，root负责需求/业务规则/AGENTS与新freeze父链，现均不代为声称完成。
+- 提示词岗真实问取原文：“ROLE-prompt_engineering-M4-REAL-PROCESS-v1 实际问取：请异步给本轮已发布真实prompt原文与C-P4/catalog修正、capacity生命周期设计/实现（若有）的产物→失败→修正→验证、完整SHA/Issue/PR/实际操作者。只需公开现成来源，不执行产品验证，不读独立测试私有资料；未完成/未回如实pending，不把AI改码记学生亲改。”已异步答复既有0e3e999/0a676ee真实prompt、原失败→修正→证据路径与Issue/PR，并明确当前capacity仅未提交文档、无本岗实现/测试；人的D005/D006选择与AI纠错改码分别记录，完稿后补最终SHA。
+- 本轮真实阶段评论已body-file发表：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327 ，正文capacity-v11-stage-comment.md；PR17按本次文档scope更新标题/正文并attach，未设审核通过。git diff对eac的backend/DDL/v1.json为空，确认无产品/旧freeze改动。
