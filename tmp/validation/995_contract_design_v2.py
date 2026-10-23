@@ -111,7 +111,7 @@ def annotations(path: str, method: str, operation: dict) -> None:
         check("422" not in responses, f"C4 {oid}: no typed input to reject as 422")
 
 
-print("Command: .venv/bin/python agents/backend/validate_contract_design_v2.py", flush=True)
+print("Command: .venv/bin/python tmp/validation/995_contract_design_v2.py", flush=True)
 try:
     validate(SPEC)
     print("OpenAPI 3.1 normative validation: PASS")
@@ -126,7 +126,7 @@ event = {
     "created_at": "2026-10-23T06:00:00Z", "handled_count": 101,
 }
 meta = {"request_id": "current-request", "server_time": "2026-10-23T06:00:00Z",
-        "contract_version": "0.1.0-draft", "replayed": False, "original_request_id": None}
+        "contract_version": SPEC["info"]["version"], "replayed": False, "original_request_id": None}
 accepted = {"event": event, "created": True, "audit_id": 1, "task_version": 2}
 for name, payload in (
     ("EscalationEvent", event), ("EscalationAccepted", accepted),

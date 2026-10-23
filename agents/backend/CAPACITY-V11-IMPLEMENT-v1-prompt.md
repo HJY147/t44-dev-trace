@@ -12,3 +12,7 @@ ROLE-backend-CAPACITY-V11-IMPLEMENT-v1：按人已采用、设计先审的顺序
 ## 实际续派：先合同冻结再业务实现
 
 执行顺序再收紧以满足任务书“接口先冻结”：请先交第一checkpoint只含权威OpenAPI1.1/后端运行副本/README/backend-design（可含基于RFC准备的新回归及改前失败，但业务守卫生产实现暂缓），不要把契约和新业务实现混成第一commit。DB岗正在先交2份存储规格，root更新business-rules/requirements/AGENTS；这些合同/设计合并后root先生成单独v1.1父链冻结清单并通知你，再继续实际守卫/锁/回归实现。你的新测试可先按已审RFC设计，不需要等人再问；正式新业务代码等新合同freeze后，旧v1清单不改。若已开始改业务，请保留未提交草稿但先选择性提交合同部分，明确其尚未实现/未部署。
+
+## 实际续派：冻结前描述/夹具小修
+
+冻结前两个小修请owner单独提交（仍不含业务草稿）：1 审核9aeb40c指出changeTaskAssignment.description将无效developer也概括为CAPACITY，请改为先无效developer→OWNER_NOT_PROJECT_DEVELOPER，再有效但缺capacity→CAPACITY_REFERENCE_INVALID，权威+运行副本同步。根9aeb40c已仅将top/38ops x-status改frozen-v1.1和info/README/req说明，请精确同步这个commit的两份契约后再修描述，避免退回pending。2 根实跑995发现旧fixture meta.contract_version='0.1.0-draft'导致嵌套两个C2失败，其他1128检查好，日志records/validation/capacity-v11-contract-final.log保留。请995只改版本fixture取SPEC['info']['version']＋打印真实迁移后命令，原101收件人等断言不改，明确是旧测试metadata过期不是产品容量缺陷；保留失败及修复后输出。选择性commit后发hash，根合并让审核做差异。
