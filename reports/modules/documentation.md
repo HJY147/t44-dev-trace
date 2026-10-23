@@ -10,5 +10,5 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M7-TEST-INCREMENT-v1；
 - native旧0a6有限周期与新b238五合成/cd3限定关闭分版本，新代码未完整cycle。2e58381预览只API+Web/20请求无业务写，不称20×200或持续部署。
 - 24公开来源+3 M6历史稿、14冻结、64应用源、28相对链接、JSON/隐私/差异检查通过；本岗无产品执行或新图。
 - 向prompt/frontend/deployment/reviewer四非测试岗实送短问；截至MDcheckpoint无M7直接回复，M6迟到答复另记，不联系tester或读私密ref。
-- M7只新导出测试Word至私密M7，其他3稿10/14/3页复用M6原hash；当前导出/逐页QA为下一步，不重复marker。
+- M7只新导出测试Word至私密M7，其他3稿10/14/3页复用M6原hash；新测试稿8页已全部original逐页实看，首轮8页编号拆行问题保留并单稿重导修正，最终qa-v2通过；当前组合35页，不假称本轮重看复用27页，不重复marker。
 - 学生研究正文本人写，人工12修改/3幻觉/5映射无完成证据，6307超1207和正式失败保留；白盒/交付4+4尚无本轮开放结果。

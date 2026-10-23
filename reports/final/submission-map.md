@@ -26,7 +26,7 @@
 
 ## 3 Word和历史
 
-四份技术Word为需规、概设详设、测试结果、AI规格说明，不含学生研究正文。M6最终126df的33页为需规10/设计14/测试6/AI规格3，本文档AI全部逐页original实看，root仅另看3页sample，不能记成root全看。M7只导出实质变化的测试Word到新私密M7目录，其余三稿原M6文件与hash复用、不重导；最终页数与hash见M7-word-qa公开收据。M4四稿原28页QA属于2e/0448快照；M5只有七类MD和三图，772收据不代表新Word或PR24合入。M6先保存MD/图，再将旧M4 DOCX/manifest/render PDF原样私密归档，M6另目录导出，逐页实际PNG QA；宽图按可读尺度安排。
+四份技术Word为需规、概设详设、测试结果、AI规格说明，不含学生研究正文。M6最终126df的33页为需规10/设计14/测试6/AI规格3，本文档AI全部逐页original实看，root仅另看3页sample，不能记成root全看。M7只导出实质变化的测试Word到新私密M7目录，其余三稿原M6文件与hash复用、不重导；M7新测试稿8页加27页复用，共35页；页数/hash/新旧状态见[M7交付清单](../../docs/reports/M7-deliverable-manifest.json)与[逐页QA](../../docs/reports/M7-word-qa.json)。M4四稿原28页QA属于2e/0448快照；M5只有七类MD和三图，772收据不代表新Word或PR24合入。M6先保存MD/图，再将旧M4 DOCX/manifest/render PDF原样私密归档，M6另目录导出，逐页实际PNG QA；宽图按可读尺度安排。
 
 个人封面值只来自private cover-info，日期空，原Word/QA/个人值不公开。PR24为已合并M4，本阶段独立branch/draftPR与准确head/readback另记。公开[M6来源](../../docs/reports/M6-source-manifest.json)、[历史七稿索引](../../docs/reports/M6-historical-report-index.json)和图manifest供追溯，不以排版QA替代软件通过。
 
