@@ -14,14 +14,16 @@
 
 | 范围 | 实际证据 | 边界 |
 | --- | --- | --- |
-| 集成CI | `265d89bd`的[run39931640641](https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641)，四job成功；317通过/0跳过；Python行88.07%、前端92.21% | 仅对该SHA；不是独立验收或性能结论 |
-| 容器和恢复 | `31f4dff9`的[run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)，真实镜像/Compose、4 API workers、隔离库19表行数和checksum一致 | 托管Linux、2项目40任务的synthetic演练；非已租云服务器 |
+| 集成CI | `0448fecb`的[run39945098961](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098961)，四job成功；335通过/0跳过；全部43个t44文件Python行2493/2818=88.47%、前端307/333=92.19% | Python分支77.73%另报；仅对该SHA；不是独立验收或性能结论。原265d89证据保留 |
+| 容器和恢复 | 同一`0448fecb`的[run39945098943](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098943)，真实镜像/Compose、4 API workers、隔离库19表行数和checksum一致 | 托管Linux、2项目40任务的synthetic演练；非已租云服务器。原31f4dff证据保留 |
 | 前端修复与浏览器 | [b485279报告](https://github.com/HJY147/t44-dev-trace/blob/b485279909720dac0adf1fb1bfbe9b23ef35dd39/reports/modules/frontend.md)，24测试、完整源码行92.19%；真实通知读/处理、114 HTTP只读回归 | 历史失败保留；开发侧验证，不冒称独立测试 |
 | 后端等价重构 | `64b4f891`的[run39938619826](https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826)，四job成功；317通过/0跳过，全部43个t44文件行88.16% | 创建上下文和会话发行复用；前一版测试命名遮蔽失败保留；不是性能改善结论 |
 | 完整产品审核 | [e01审核报告](reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md)，发现表单/重放提示、Schema语义漏检和代码规模问题，真实failure门禁 | 前端已修复；其余修复及新完整SHA仍须复审，未发布success |
+| 数据库限定复审 | [7c27a5f复核](reports/reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md)，原957探针未改；结合真实MySQL变异/恢复证据关闭C-P4原四类漏检 | 精确计数5886，仍超786；整体仍failure，不代表全部可能DDL变异均已验证 |
+| 独立黑盒验收 | 原版本`e8ceefe6`的[正式报告](reports/independent-tests/v1-blackbox-report.md)及[结果](reports/independent-tests/v1-blackbox-results.json)：38个成功路径通过，整体验收未通过；确认业务/契约问题及三类性能延迟超标 | 900条结果为340通过、183断言失败、328环境阻塞、49未执行；断言失败含解释歧义，不等于183个产品缺陷。原件和哈希保留，修复须新实例复测 |
 | 需求与设计 | [SRS](reports/final/requirements-report.md)、[概设/详设](reports/final/design-report.md)、[8张成图和源文件](docs/diagrams/README.md) | 随开发补充的M3工作稿；独立成图已查看，Word逐页QA未完成 |
 
-有效生产源码3500–5100行目标尚未达到；[计数口径和历史结果](docs/metrics/source-counting.md)不因超限改变。正式400并发性能、独立验收、准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)和[本人自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
+有效生产源码3500–5100行目标尚未达到；[计数口径和历史结果](docs/metrics/source-counting.md)不因超限改变。独立测试已完成原版本三类400活动VU、各600秒稳态压测：流转/契约/升级P95为3035/1908/5506ms，均超过270ms；稳态失败均为0，吞吐均达标。当前正在修复和剖析，未将开发回归当独立复测通过；准确新版完整审核及最终提交文档仍在进行。研究报告正文由学生本人撰写；[AI过程材料](reports/final/ai-development-report.md)、[本人原话](records/reflections/R001-original.md)和[自写模板](reports/final/student-study-template.md)分别保存，不冒充个人经历。
 
 ## 从哪里开始
 

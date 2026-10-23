@@ -93,3 +93,15 @@
 - 最终判e01不通过，四类问题与未验证边界详报告；后续修复差异新SHA另审，不覆盖原失败。已实读main五必需上下文及e01两成功两取消；最终status仅对原e01发failure，实际发布结果随后记录。
 
 - 最终实际发布：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845；PR COMMENT https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770，commit_id严格e01；reviewer/stage=failure ID57079614110，target_url指向Issue，读回确认failure。发布前确认e01为当前PR祖先，当前head另存回执，未错当最新head结论；无success/APPROVE/合并。命令/返回final-github.json。
+
+## 2026-10-23T19:23:59.930033+08:00 原C-P4复审与架构减量审计v2
+
+- 实际派工及收尾续派原文agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-AND-CATALOG-v2.txt；root当前7c27完整SHA含0e3e999，以此建立独立codex/review-catalog-v2树。未修改产品或root索引，不扩审IAT/运行重负载。
+- 原957与ddaa035字节/hash一致，复跑exit0，baseline接受而同名索引/FK/CHECK语义变异拒绝。DB公开live14文件/5源码hash一致、18 owner测试0失败0跳过、四类实际DDL拒绝/恢复/重复迁移与原失败历史核对完成，限定关闭原C-P4，不声称本岗新跑实库。
+- 原统计脚本固定cloc精确7c27=5886，超上限786；旧stage7=5866只是历史。架构只读方案A删除双表示/中转层180–280，B同一run事务体收口28–47，C事件推进重复20–35，E现seed仅0–15，D新AST库只POC不计收益；合计仍不足786，不强凑或改口径。root明确A后置，B/C由owner做，E不夸大。
+- 只读正式公开黑盒报告与v1-blackbox-results.json，未跟随私有路径/读tmp/independent或联系testing；保留其旧被测SHA/实际未通过与性能范围。本轮未复审后端修复或重跑性能。
+- 八段十项报告reports/reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md及catalog-v2证据落盘；最终仍failure/not approved，旧e01门禁不重写，不发success或合并。
+
+- 数量校正：初步口头806含已删除的58行domain barrel，当前实际相关组748；seed当前pointer已复用，旧context/add共享已实施，不能重复计收益。因此A/E保守下调，合计208–377且仍不足786。此为审计推算修正，非实施或产品指标改善。
+
+- 角色Issue/PR COMMENT实际发布：https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036；https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603，正文明确7c27和两项限定范围。没有任何status写入、没有APPROVE/合并，原e01 failure不改；实际argv/退出/URL在catalog-v2/github-comments.json。
