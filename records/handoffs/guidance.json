@@ -1,174 +1,133 @@
 {
   "role": "guidance",
-  "stage": "R001 审阅与调试指导 / 只读源码及轻量 MD、JSON",
-  "implementation_status": "指导资料已更新；产品由开发责任岗实现，本岗未编写产品代码，未运行产品/测试/浏览器/渲染",
-  "source_commit": "f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
-  "branch": "codex/guidance-r001-review",
+  "stage": "M6 初学者阅读/检查指南与真实AI问答",
+  "implementation_status": "指导文稿已编写；本岗无产品实现/运行/测试/浏览器/渲染；学生练习未完成",
+  "source_commit": "0783a42b26038d7d3e5a1fe07ae8219a47f06493",
+  "branch": "codex/guidance-m6",
   "artifacts": [
-    "docs/user-guide/project-basics.md",
-    "docs/user-guide/review-and-debug.md",
+    "docs/guidance/M6-learner-guide.md",
+    "docs/guidance/M6-actual-qa.md",
+    "docs/guidance/M6-source-manifest.json",
+    "docs/guidance/M6-issue10-readback.json",
+    "docs/guidance/M6-document-checks.json",
     "records/qa/question-log.md",
-    "records/qa/decision-log.md",
-    "records/qa/R001-guide-sources.json",
     "agents/guidance/WORKLOG.md",
     "reports/modules/guidance.md",
     "records/handoffs/guidance.json",
-    "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
-    "agents/guidance/r001-stage-comment.md"
+    "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
+    "agents/guidance/m6-stage-comment.md"
   ],
   "interfaces": {
-    "version": "gqa-v1（指导内部格式）；业务 v1 已冻结，本岗未改",
+    "version": "M6 guidance checkpoint; business contract 1.1.0 unchanged",
     "inputs": [
-      "R001 本人原话及出处",
-      "D001/D004 已采用决定",
-      "准确源码/函数契约/公开证据版本",
-      "capacity 生命周期 pending 来源"
+      "R001真实公开原话",
+      "R002公开provenance only",
+      "固定源码0783与准确832公开验证",
+      "两次真实AI教学询答",
+      "root报告422新组合CI刚触发"
     ],
     "outputs": [
-      "简明审阅与调试解释",
-      "未执行 AI 示例和本人空白表",
-      "旧时点与当前状态分开的问答/决定",
-      "21 文件哈希/函数行号索引"
+      "中文学习路线与真实函数I/O",
+      "5项未完成练习和本人空表",
+      "逐字AI询答及纠错",
+      "45来源SHA与40函数位置",
+      "Issue10真实评论/readback"
     ],
     "errors": [
-      "无来源不记人工经历",
-      "AI 修复不能算用户改码/识别",
-      "推荐和沉默不算待答问题选择"
+      "无来源不写本人经历",
+      "旧CI不背书新源码",
+      "候选自测不计独立验收",
+      "scanner不是MQ下游消费者"
     ],
     "handoff_to": [
       "root",
       "documentation",
       "prompt_engineering"
     ],
-    "human_decisions": [
-      "D001",
-      "D004"
-    ],
-    "pending_question": "Q-capacity-lifecycle: awaiting_user_reply",
-    "independent_testing_contact": "未联系；未读私有用例或工作记录"
+    "independent_testing_contact": "none; no unpublished/private test inputs read"
   },
   "commands_executed": [
     {
-      "command": "git rev-parse HEAD / branch / status / worktree list；cat AGENTS.md",
-      "result": "确认当前基点和责任边界"
+      "command": "git status/branch/worktree/rev-parse; git worktree add -b codex/guidance-m6",
+      "result": "独立worktree及0783固定基点"
     },
     {
-      "command": "git worktree add -b codex/guidance-r001-review .agent-worktrees/guidance-r001-review f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
-      "result": "独立 worktree/分支已建立"
+      "command": "rg/cat/nl/sed; inline Python JSON/hash/text",
+      "result": "只读源码与公开材料；候选不存在目录探查更正；45hash/40函数"
     },
     {
-      "command": "cat / sed / nl / rg 读取源码和公开文档",
-      "result": "核对真实函数 I/O；初始不存在路径探查返回2后按真实清单更正"
+      "command": "collaboration.send_message to backend and frontend_logout",
+      "result": "各1个真实教学问题并收到回复；逐字归档，非人类访谈"
     },
     {
-      "command": "apply_patch / Python 文本、JSON、哈希处理",
-      "result": "只写本岗 MD/JSON；一次重复目标补丁拒绝后更正，无产品导入或执行"
+      "command": "GitHub connector fetch_issue 10 / add_comment_to_issue / fetch_issue_comments",
+      "result": "评论6374412075精确id/body/url/login readback一致"
     },
     {
-      "command": "内联 Python 本地链接/文本签名/哈希核对；git diff --check",
-      "result": "33 本地链接、21 文件哈希与函数位置、R001 原文哈希、JSON v1、capacity pending 均核对；diff退出0；不是产品测试"
-    },
-    {
-      "command": "gh issue comment 10 --repo HJY147/t44-dev-trace --body-file agents/guidance/r001-stage-comment.md",
-      "result": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6364270074"
-    },
-    {
-      "command": "gh pr comment 21 --repo HJY147/t44-dev-trace --body-file agents/guidance/r001-stage-comment.md",
-      "result": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364271593"
+      "command": "inline Python document/link/hash checks; git diff --check",
+      "result": "实际数值见M6-document-checks.json；非产品测试"
     }
   ],
   "results": [
-    "本人反思已收并保留原拼写；研究正文/课程建议尚待本人",
-    "D001/D004 已采用，不重复索要批准，不冒记人工改码或逐项技术确认",
-    "当前已实现的 UI/API/持久化/消息/扫描/部署与历史初始化状态分开",
-    "指南绑定真实函数与 f103600 来源；MD 示例未创建脚本、不消耗 tmp 编号、不记用户操作",
-    "documentation 真实询问已据 R001/D001/D004 答复；无新增教师原话或学生私密值",
-    "Issue/PR 阶段评论已发表；提交推送结果由实际 Git 回执与 root 台账登记，不自引用本文件 SHA"
+    "真实Vue/38op/FastAPI/SQL/outbox/MQ/scanner链路与版本/审核/验证范围已解释",
+    "R001哈希与出处一致；R002原文/封面/独立私密内容未读",
+    "AI入口泛称纠正与学生行动分开",
+    "最近完整绿色仍绑定832，root后报422组合仅写待验时点",
+    "Issue10阶段评论已发表并精确回读"
   ],
   "unverified": [
-    "本人亲自审阅/改码/断点/独立识别幻觉尚无新证据",
-    "研究成文与课程建议尚未提供",
-    "capacity 生命周期用户尚未答复",
-    "VS Code/调试示例本轮未执行，未创建脚本",
-    "本岗未运行产品/测试/浏览器/渲染；公开 CI 仅对应其准确旧 SHA，未声称新版独立复测或性能通过"
+    "学生本人阅读、练习、改码、断点、亲测与独立识别幻觉无新增证据",
+    "最终学生研究正文未由本岗撰写或收到",
+    "Issue28新组合422在本轮只收到CI刚触发状态，无整体通过结论",
+    "6186+pending规模、正式P95、v2整体与v3执行未由本岗解决",
+    "本岗没有运行产品/测试/负载/浏览器/渲染"
   ],
   "questions": [
     {
       "owner": "root",
-      "question": "简明指导建议由总协调转达；若本人实际审阅/调试，记录真实版本、动作和原始证据"
+      "question": "将指南转达学生；实际学习记录只按本人真实行动补录，本轮不向睡眠中的用户追问"
     },
     {
-      "owner": "用户（由root转交）",
-      "question": "capacity 生命周期问题保持 pending，不替选"
-    },
-    {
-      "owner": "用户本人",
-      "question": "继续本人研究正文和课程建议；AI 材料不代署名或独立收获"
-    },
-    {
-      "owner": "root",
-      "question": "若以后落盘运行练习，先分配 tmp 递减编号并选择窗口；本轮未申请编号"
+      "owner": "documentation",
+      "question": "后续汇总应保留0783源码截止/832完整验证/422新组合待验时点，勿套旧绿灯"
     }
   ],
   "prompt_refs": [
     {
-      "id": "ROLE-guidance-BOOTSTRAP-v1",
-      "task_file": "agents/guidance/TASK.md",
-      "dispatch_source": "总协调本次实际派工消息",
+      "id": "ROLE-guidance-M6-v1",
+      "task_file": "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
+      "dispatch_source": "root actual new-task message",
       "status": "实际执行",
-      "rationale": "限定初始化范围、真实证据来源及用户决定与 AI 操作边界",
+      "rationale": "固定源码讲解真实I/O，隔离私密资料与真人经历，保留验证时点",
       "artifacts": [
-        "records/qa/",
-        "docs/user-guide/project-basics.md",
-        "agents/guidance/WORKLOG.md",
-        "reports/modules/guidance.md",
-        "records/handoffs/guidance.json"
-      ],
-      "counts_as_prompt_evolution": false
-    },
-    {
-      "id": "ROLE-guidance-M0-COMMIT-v1",
-      "task_file": "agents/guidance/TASK.md（责任边界）；本次实际范围以 documentation 派工消息为准",
-      "dispatch_source": "documentation 本次实际问取及唯一 Git 索引授权消息",
-      "status": "实际执行",
-      "rationale": "保留初查历史，补真实问取和 D001 用户决定，仅归档本岗并发布阶段事实",
-      "artifacts": [
-        "agents/guidance/WORKLOG.md",
-        "reports/modules/guidance.md",
-        "records/handoffs/guidance.json",
-        "records/qa/",
-        "docs/user-guide/project-basics.md",
-        "agents/guidance/github-stage-comment.md"
-      ],
-      "counts_as_prompt_evolution": false
-    },
-    {
-      "id": "ROLE-guidance-R001-REVIEW-GUIDE-v1",
-      "task_file": "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
-      "dispatch_source": "root 实际派工与后续静默窗口/编号约束",
-      "status": "实际执行",
-      "rationale": "用当前源码事实解释接口与副作用，保留本人原话和未操作边界，不代填人工配额",
-      "artifacts": [
-        "docs/user-guide/project-basics.md",
-        "docs/user-guide/review-and-debug.md",
+        "docs/guidance/M6-learner-guide.md",
+        "docs/guidance/M6-actual-qa.md",
+        "docs/guidance/M6-source-manifest.json",
+        "docs/guidance/M6-issue10-readback.json",
+        "docs/guidance/M6-document-checks.json",
         "records/qa/question-log.md",
-        "records/qa/decision-log.md",
-        "records/qa/R001-guide-sources.json",
         "agents/guidance/WORKLOG.md",
         "reports/modules/guidance.md",
         "records/handoffs/guidance.json",
-        "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
-        "agents/guidance/r001-stage-comment.md"
+        "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
+        "agents/guidance/m6-stage-comment.md"
       ],
       "counts_as_prompt_evolution": false
     }
   ],
+  "github": {
+    "issue": 10,
+    "comment_url": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6374412075",
+    "body_exact_readback": true,
+    "review_success_posted": false
+  },
   "history": [
     {
-      "stage": "M0 团队建立与设计准备 / GitHub 阶段归档",
-      "implementation_status": "未实现",
-      "note": "初始化/M0 时点；原记录见 e31f555c3b0d2da7eaef1e1a5229d54ba3dda7c6，本轮不当作当前产品状态"
+      "stage": "R001 审阅与调试指导 / 只读源码及轻量 MD、JSON",
+      "branch": "codex/guidance-r001-review",
+      "source_commit": "f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
+      "note": "R001旧阶段完整事实见0783父历史；不把当时pending/课程反馈未收当当前结论"
     }
   ],
-  "updated_at": "2026-10-23T19:55:17+08:00"
+  "updated_at": "2026-10-23T20:48:17.873015+00:00"
 }

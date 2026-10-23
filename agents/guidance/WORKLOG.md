@@ -38,3 +38,15 @@
 - 必要事实核对结果：33 个本地链接存在，21 文件哈希/函数签名行号与索引一致，R001 哈希匹配出处，规则/模板 JSON 版本均1，capacity 仍 pending；`git diff --check` 退出0。仅文档核对，不是产品测试。
 - 已实际发表阶段评论：Issue #10 https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6364270074 ；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364271593 。正文存本岗 r001-stage-comment.md，未发审核成功或合并。
 - 提交前核对独立分支 codex/guidance-r001-review、索引为空；仅显式暂存 handoff 列出的10份本岗 MD/JSON。R001、D001/D004、pending 源文件和产品代码均未修改；不合并或发审核success。提交/推送准确SHA由 Git 回执和 root 交接登记。
+
+## 2026-10-24 M6 初学者检查点（ROLE-guidance-M6-v1）
+
+- root实际派工存`agents/guidance/prompts/ROLE-guidance-M6-v1.md`。先读AGENTS及本岗TASK/WORKLOG/report/handoff；从最新codex/integration的0783a42独立建`.agent-worktrees/guidance-m6`/`codex/guidance-m6`，只用自己的索引。
+- 只读R001原文与provenance（哈希匹配）；R002只读公开provenance，不读私密原文、封面、任何tmp/independent内容、未发布测试或测试内部消息。只读已明确发布的v3冻结元数据，没有打开其中引用的私密路径。
+- 用rg定位后按实际backend/t44与specs/contracts读取源码；初始探查backend/src、docs/contracts和新docs/guidance不存在，rg返回2后更正，不据错误候选路径编造入口。
+- 向backend和frontend_logout各发1个实际教学澄清，收到两条AI回复并逐字存M6-actual-qa.md；没有人类访谈或测试岗联系。backend纠正本岗提问中的execute_operation/save_task/未提交泛称；实际入口为endpoint.handle→Runtime.execute→Business.dispatch→changeTaskPlan→cas/schedule_diff，后端候选已有0549提交。不是学生发现幻觉。
+- 新建M6中文指南及5项待本人完成练习/空表，解释Vue与38op契约、FastAPI、SQL主事务/claim/拒绝audit、outbox/MQ/ACK、scanner另一入口、Git/审核/自测/独立验收差别；不写学生最终研究正文，无亲改/断点/实测新证据。
+- 源码截止0783；45文件SHA和40函数位置归档M6-source-manifest.json，权威/运行OpenAPI字节一致、1.1.0/31paths/38ops。当前完整绿色仅832的437BE/65FE及Docker；DB3b7计数6186超5100，P95原失败和v2未完、v3冻结0执行保留。root后报Issue28新组合42243eb合并并触发CI，仅加时点补记，不等待或预判。
+- GitHub连接器核对Issue10为本岗thread后，按已有授权发表阶段评论https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6374412075；再次fetch全部评论，仅存新评论的精确正文/id/url/login并逐字比较为true，证据M6-issue10-readback.json。没有发审核success或合并。
+- 实际执行仅git只读/worktree创建、rg/cat/nl/sed、内联Python文本/JSON/哈希、apply_patch及上述GitHub读写；未导入/启动产品、未运行测试/负载/浏览器/渲染，未申请或创建tmp练习脚本编号。
+- 收尾只做文档本地链接、源码hash/函数位置、JSON、R001出处、问答原文/Issue评论一致与git diff核对；不是产品测试。结构核对的实际数值见docs/guidance/M6-document-checks.json。最终仅显式暂存本岗产物并commit [skip ci]/push自身分支，准确SHA与范围由Git回执交root。
