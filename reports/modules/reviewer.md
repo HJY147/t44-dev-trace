@@ -162,3 +162,10 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 发现P2 NATIVE-CAPTURE-TIMEOUT-01：capture初次超时后cleanup退出0被正常返回且无超时事实。唯一无进程精确AST反例真实exit1，交deployment窄修；A不通过。run1原失败与run2无超时真实成功均保持，未重启cycle。B所列静态差量/公开原件未见新增实质阻断；63绿及23/3属于开发执行，本岗仅核30摘要/14冻结和旧953前缀。报告reports/reviews/34-5ef1bde95e511c14dcff7b5fa0af2449de83836c.md，证据agents/reviewer/evidence/native-application-189a4e2。没有私有/独立资料读取、套件/DB/负载/CI重跑、APPROVE/状态/整体放行或合并；实际COMMENT回执另补。
 
 实际发布：阶段证据8454da244ed0d3dbea84f6aca0630c003c787a44已push；PR34 COMMENT5634837225显式绑定完整5ef，插件list与完整REST GET逐字核body/commit_id/COMMENTED，exit0，回执github-comment.json。A仍不通过，不把run2改记失败；无状态/APPROVE/CI/merge。
+
+
+## PR34 capture超时窄修复审（2026-10-24）
+
+实际prompt ROLE-reviewer-NATIVE-CAPTURE-FIX-v1，精确cc6a211bb1692460ffba09f7ee764c64545602ee/b23897879142de3bd77190c67d4947eccf1c8263，设计7f4845e。唯一原事件/原拒绝断言语义重放一次exit0，0真实进程/信号；超时后actualrc0仍OWNED_COMMAND_TIMEOUT/timed_outtrue/successfalse。26公开hash、14冻结、原两红副本、其余AST/runtime/旧ApplicationGuards不变，owner5边界原件核实但未重跑。P2限定关闭；原5ef失败、0a6 cycle历史保持，新代码未有完整cycle验证。报告reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md。无生产改动、私有/独立读取、套件/服务/CI/负载运行或整体放行；实际COMMENT/GET回执另补。
+
+实际发布：证据阶段8c415c16e384f6af17694fd2719608d3510916bc已push，PR34 COMMENT5634940377显式绑定完整cc6；插件逐字body/COMMENTED与完整REST GET commit_id/body/state严格一致exit0，回执github-comment.json。仅关闭P2，原5ef失败与0a6真实cycle保持，无APPROVE/status/CI/mainmerge或整体放行。

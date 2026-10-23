@@ -1,0 +1,43 @@
+import ast,hashlib,json,subprocess as real_subprocess,signal
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock
+from uuid import uuid4
+from datetime import datetime,timezone
+TARGET='cc6a211bb1692460ffba09f7ee764c64545602ee'
+CODE='b23897879142de3bd77190c67d4947eccf1c8263'
+OUTPUT=Path('agents/reviewer/evidence/native-capture-fix-cc6')
+source=Path('deployment/native/application.py').read_bytes()
+sha=lambda value:hashlib.sha256(value).hexdigest()
+assert sha(source)=='5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98'
+tree=ast.parse(source);function=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='capture')
+# Same original transition/ownership/assertion: first TimeoutExpired, then child exits0.
+process=SimpleNamespace(pid=424242,returncode=None)
+timeouts=[]
+def communicate(*,timeout):
+    timeouts.append(timeout)
+    if len(timeouts)==1:
+        raise real_subprocess.TimeoutExpired('synthetic-owned-command',timeout)
+    process.returncode=0
+    return b'synthetic stdout',b'synthetic stderr'
+process.communicate=communicate
+identity={'pid':424242,'uid':501,'pgid':424242,'started':'synthetic-start','command_sha256':'synthetic-command'}
+popen=Mock(return_value=process);kill=Mock();private_write=Mock();write_json=Mock()
+scope={'subprocess':SimpleNamespace(Popen=popen,TimeoutExpired=real_subprocess.TimeoutExpired,DEVNULL=real_subprocess.DEVNULL,PIPE=real_subprocess.PIPE),'time':SimpleNamespace(sleep=Mock()),'process_identity':Mock(return_value=identity),'broker_runtime':SimpleNamespace(same_owner=lambda saved,actual:saved==actual),'os':SimpleNamespace(kill=kill),'signal':signal,'uuid4':uuid4,'utc':lambda:datetime.now(timezone.utc).isoformat(),'digest':sha,'private_write':private_write,'write_json':write_json}
+exec(compile(ast.Module(body=[function],type_ignores=[]),'exact-capture-cc6','exec'),scope)
+returned=False;error=None
+try:
+    scope['capture'](['synthetic-owned-command'],Path('/synthetic-owned-source'),{},Path('/synthetic-private-logs'),timeout=1)
+    returned=True
+except RuntimeError as failure:
+    error=str(failure)
+receipt=write_json.call_args.args[1] if write_json.call_args else None
+rejected=not returned and error is not None
+result={'operator':'AI reviewer, one original semantic counterexample replay; no service or independenttest','target':TARGET,'code':CODE,'source_path':'deployment/native/application.py','source_sha256':sha(source),'capture_ast_sha256':sha(ast.dump(function,include_attributes=False).encode()),'original_failure_commit':'c6883f2bd4e860737f4aede4002f4499d2a7e479','semantic_input_unchanged':{'argv':['synthetic-owned-command'],'cwd':'/synthetic-owned-source','pid':424242,'first_communicate':'TimeoutExpired','second_communicate':'controlled owned child exits0 after mocked SIGTERM','communicate_timeouts':[1,5],'ownership_matches':True,'expectation':'reject initial timeout irrespective cleanup exit0'},'fixture_note':'Original inline command was not separately archived; event transition and rejection assertion reconstructed from original published JSON/log. This claims semantic replay, not byte-identical command or output strings.','communicate_timeouts':timeouts,'actual_returned_normally':returned,'expected_rejected_timeout':True,'actual_rejected_timeout':rejected,'error':error,'actual_receipt':receipt,'timeout_marker_present':receipt is not None and receipt.get('timed_out') is True,'actual_os_processes_started':0,'actual_os_signals_sent':0,'mocked_signal_requested':kill.called,'private_source_inputs_or_outputs_read':False,'existing_run2_receipts_modified':False,'new_test_files':[]}
+(OUTPUT/'original-counterexample-replay.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(result,ensure_ascii=False,indent=2))
+assert rejected, 'NATIVE-CAPTURE-TIMEOUT-01: initial TimeoutExpired followed by cleanup exit0 was returned as successful command without timeout marker'
+assert timeouts==[1,5] and error=='OWNED_COMMAND_TIMEOUT'
+assert receipt['exit_code']==0 and receipt['timed_out'] is True and receipt['success'] is False and receipt['stop_unconfirmed'] is False
+popen.assert_called_once();kill.assert_called_once_with(424242,signal.SIGTERM);assert private_write.call_count==2 and write_json.call_count==1
+print('Original timeout rejection assertion passed; timeout fact and actual child exit0 preserved.')
