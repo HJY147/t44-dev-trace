@@ -10,7 +10,7 @@ from t44.contracts import OPERATIONS
 from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
 
 from .codes import ERROR_IDS, Action
-from .common import wire
+from .common import now, wire
 from .errors import Rejected, require
 from .identity import LoginLimiter, authenticate, login
 
@@ -223,6 +223,13 @@ class Runtime:
 
     def execute(self, call, validate, source="unknown"):
         try:
+            if call.operation == "validateContractPayload":
+                with self.factory() as uow:
+                    authenticate(uow.gateway, call)
+                    validate(call)
+                    require(call.actor["expires_at"] > now(), "TOKEN_EXPIRED")
+                    result = self.business.dispatch(uow.gateway, call)
+                return self.business.status(call.operation), wire(result), False, None
             self.authorize(call)
             validate(call)
             if call.operation == "login":

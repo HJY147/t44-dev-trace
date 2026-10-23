@@ -584,3 +584,179 @@ def test_capacity_v11_real_mysql_safe_handover_then_removal_both_commit(real_tas
             uow.gateway.get("iterations", iteration["id"])["capacity"]
             == removed["plan"]["capacity"]
         )
+
+
+@pytest.mark.parametrize("category", [1, 2, 3])
+def test_read_uow_real_mysql_success_statement_and_acquire_ledger(real_task, monkeypatch, category):
+    from sqlalchemy import event
+
+    client, factory, users, tokens, pid, iteration, task = real_task
+    engine = factory._sessions.kw["bind"]
+    statements, acquires = [], []
+    connect = engine.connect
+
+    def acquire(*args, **kwargs):
+        acquires.append(1)
+        return connect(*args, **kwargs)
+
+    def statement(_connection, _cursor, _statement, _parameters, context, _many):
+        statements.append(
+            tuple(table.name for table in context.compiled.statement.get_final_froms())
+        )
+
+    candidates = {
+        1: {
+            "title": "Read statement ledger",
+            "owner_id": users["developer"],
+            "iteration_id": iteration["id"],
+            "plan": PLAN,
+            "dependency_task_ids": [],
+        },
+        2: {"expected_version": task["version"], "action": 1},
+        3: _http.assessment_payload(task),
+    }
+    with factory() as uow:
+        before = {
+            table: uow.gateway.count(table, {"project_id": pid})
+            for table in ("tasks", "audit_events", "outbox_events", "idempotency_requests")
+            if table != "idempotency_requests"
+        }
+        idem_before = uow.gateway.count("idempotency_requests")
+    monkeypatch.setattr(engine, "connect", acquire)
+    event.listen(engine, "before_cursor_execute", statement)
+    try:
+        response = request(
+            client,
+            "validateContractPayload",
+            token=tokens["manager"],
+            project_id=pid,
+            body={
+                "category": category,
+                "payload": candidates[category],
+                **({"task_id": task["id"]} if category != 1 else {}),
+            },
+            expect=200,
+        )
+    finally:
+        event.remove(engine, "before_cursor_execute", statement)
+        monkeypatch.setattr(engine, "connect", connect)
+    expected_tables = [
+        (name,) for name in ("auth_sessions", "users", "project_members", "projects")
+    ]
+    assert statements == expected_tables + ([("tasks",)] if category != 1 else [])
+    assert len(acquires) == 1
+    result = response.json()
+    assert result["data"]["valid"] is True and result["data"]["business_guards_executed"] is False
+    assert (
+        result["data"]["schema_version"]
+        == _http.SPEC["components"]["schemas"]["ContractValidationResult"]["properties"][
+            "schema_version"
+        ]["const"]
+    )
+    assert result["meta"]["contract_version"] == _http.SPEC["info"]["version"]
+    with factory() as uow:
+        assert before == {table: uow.gateway.count(table, {"project_id": pid}) for table in before}
+        assert uow.gateway.count("idempotency_requests") == idem_before
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+    print(
+        json.dumps(
+            {
+                "category": category,
+                "actual_selects": len(statements),
+                "actual_acquires": len(acquires),
+                "database": engine.url.database,
+            }
+        )
+    )
+
+
+@pytest.mark.parametrize("revocation", ["session", "membership"])
+@pytest.mark.parametrize("inflight", [False, True])
+def test_read_uow_real_mysql_revocation_and_new_request_order(
+    real_task, monkeypatch, revocation, inflight
+):
+    from threading import Event
+
+    from t44 import api
+    from t44.services.common import now
+    from t44.services.identity import issue_session
+
+    client, factory, users, tokens, pid, _, task = real_task
+    with factory() as uow:
+        # Isolated synthetic session for the real reviewer; shared module tokens stay usable.
+        reader = issue_session(uow.gateway, clock=now(), ttl=3600, user_id=users["reviewer"])[
+            "access_token"
+        ]
+    entered, release = Event(), Event()
+    original = api.validate_request
+
+    def gate(request_, operation, call):
+        if (
+            call.operation == "validateContractPayload"
+            and call.token == reader
+            and not entered.is_set()
+        ):
+            entered.set()
+            if not release.wait(10):
+                raise AssertionError("Read validation release timed out")
+        return original(request_, operation, call)
+
+    monkeypatch.setattr(api, "validate_request", gate)
+    body = {
+        "category": 2,
+        "task_id": task["id"],
+        "payload": {"expected_version": task["version"], "action": 1},
+    }
+
+    def read():
+        return request(client, "validateContractPayload", token=reader, project_id=pid, body=body)
+
+    def revoke():
+        if revocation == "session":
+            return request(client, "logout", token=reader, expect=200)
+        return request(
+            client,
+            "removeProjectMember",
+            token=tokens["manager"],
+            project_id=pid,
+            user_id=users["reviewer"],
+            body={"expected_version": 1, "reason": "Synthetic concurrent read revocation"},
+            expect=200,
+        )
+
+    if inflight:
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            prior_read = executor.submit(read)
+            try:
+                assert entered.wait(10), "Reader never completed its first live authorization"
+                # Actual HTTP writer must commit before releasing the reader, proving no new S lock.
+                revoked = executor.submit(revoke).result(timeout=10)
+                assert revoked.status_code == 200 and not prior_read.done()
+            finally:
+                release.set()
+            result = prior_read.result(timeout=10)
+        assert result.status_code == 200 and result.json()["data"]["valid"] is True
+    else:
+        release.set()
+        revoke()
+    after = read()
+    assert (after.status_code, after.json()["code"]) == (
+        (401, "TOKEN_REVOKED") if revocation == "session" else (403, "PROJECT_ACCESS_DENIED")
+    )
+    with factory() as uow:
+        audit = uow.gateway.get("audit_events", after.json()["audit_id"])
+        assert (
+            audit["request_id"] == after.json()["request_id"]
+            and audit["actor_id"] == users["reviewer"]
+        )
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+    print(
+        json.dumps(
+            {
+                "revocation": revocation,
+                "old_read_inflight": inflight,
+                "new_request_status": after.status_code,
+                "database": factory._sessions.kw["bind"].url.database,
+            }
+        )
+    )

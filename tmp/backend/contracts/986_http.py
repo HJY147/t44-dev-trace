@@ -1799,3 +1799,202 @@ def test_contract_validation_keeps_candidate_schema_version_separate_from_envelo
     with factory() as uow:
         assert before == {table: uow.gateway.count(table) for table in before}
         assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+
+
+@pytest.mark.parametrize("identity", ["missing", "revoked", "expired", "nonmember", "service"])
+def test_read_uow_auth_still_precedes_invalid_json(application, identity):
+    from datetime import timedelta
+
+    from t44.services.common import now
+    from t44.services.identity import issue_session, token_digest
+
+    client, factory = application
+    tokens, pid, _ = setup_project(client)
+    token = tokens["outsider"] if identity == "nonmember" else tokens["manager"]
+    if identity == "missing":
+        token = None
+    elif identity in ("revoked", "expired", "service"):
+        with factory() as uow:
+            g, clock = uow.gateway, now()
+            if identity == "service":
+                service = g.insert(
+                    "service_accounts", {"name": "readonly-test", "active": 1, "created_at": clock}
+                )
+                token = issue_session(
+                    g,
+                    clock=clock,
+                    ttl=3600,
+                    service_account_id=service,
+                    project_ids=[pid],
+                    scopes=["escalation:write"],
+                )["access_token"]
+            else:
+                session = g.rows("auth_sessions", {"token_hash": token_digest(token)})[0]
+                values = (
+                    {"revoked_at": clock}
+                    if identity == "revoked"
+                    else {
+                        "created_at": clock - timedelta(days=2),
+                        "expires_at": clock - timedelta(days=1),
+                    }
+                )
+                g.update("auth_sessions", {"id": session["id"]}, values)
+    response = client.post(
+        f"/api/v1/projects/{pid}/contract-validations",
+        content="{",
+        headers={
+            "Content-Type": "application/json",
+            **({"Authorization": f"Bearer {token}"} if token else {}),
+        },
+    )
+    expected = {
+        "missing": (401, "AUTH_REQUIRED"),
+        "revoked": (401, "TOKEN_REVOKED"),
+        "expired": (401, "TOKEN_EXPIRED"),
+        "nonmember": (403, "PROJECT_ACCESS_DENIED"),
+        "service": (403, "ACTION_FORBIDDEN"),
+    }[identity]
+    assert (response.status_code, response.json()["code"]) == expected
+    with factory() as uow:
+        audit = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert audit["request_id"] == response.json()["request_id"] and audit["outcome"] == 2
+
+
+@pytest.mark.parametrize("valid_body", [True, False])
+def test_read_uow_fresh_expiry_check_preserves_parameter_error_priority(
+    application, monkeypatch, valid_body
+):
+    from datetime import timedelta
+
+    from t44 import api
+    from t44.services import identity, runtime
+    from t44.services.common import now
+    from t44.services.identity import token_digest
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    clock = [now()]
+    with factory() as uow:
+        session = uow.gateway.rows(
+            "auth_sessions", {"token_hash": token_digest(tokens["manager"])}
+        )[0]
+        expiry = clock[0] + timedelta(minutes=1)
+        uow.gateway.update("auth_sessions", {"id": session["id"]}, {"expires_at": expiry})
+    monkeypatch.setattr(identity, "now", lambda: clock[0])
+    monkeypatch.setattr(runtime, "now", lambda: clock[0], raising=False)
+    original = api.validate_request
+
+    def advance_after_validation(*args):
+        try:
+            return original(*args)
+        finally:
+            clock[0] = expiry + timedelta(microseconds=1)
+
+    monkeypatch.setattr(api, "validate_request", advance_after_validation)
+    dispatched = []
+    original_dispatch = client.app.state.runtime.business.dispatch
+
+    def track_dispatch(g, c):
+        dispatched.append(c.operation)
+        return original_dispatch(g, c)
+
+    monkeypatch.setattr(client.app.state.runtime.business, "dispatch", track_dispatch)
+    response = request(
+        client,
+        "validateContractPayload",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "category": 1,
+            "payload": {
+                "title": "Expiry test",
+                "owner_id": 2,
+                "iteration_id": iid,
+                "plan": PLAN,
+                "dependency_task_ids": [],
+            },
+        }
+        if valid_body
+        else {},
+        expect=401 if valid_body else 422,
+    )
+    assert response.json()["code"] == ("TOKEN_EXPIRED" if valid_body else "PARAMETER_INVALID")
+    assert not dispatched
+    with factory() as uow:
+        assert uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+
+
+@pytest.mark.fault
+@pytest.mark.parametrize("dependency_fault", [False, True])
+@pytest.mark.parametrize("audit_available", [False, True])
+def test_read_uow_closes_before_fresh_rejection_transaction(
+    application, monkeypatch, dependency_fault, audit_available
+):
+    from t44.persistence import PersistenceUnavailable
+    from t44.services.errors import Rejected
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    runtime = client.app.state.runtime
+    events, sessions = [], []
+
+    def tracked_factory():
+        uow, index = factory(), len(sessions)
+
+        class Scope:
+            def __enter__(self):
+                uow.__enter__()
+                sessions.append(uow._session)
+                events.append(("enter", index))
+                return uow
+
+            def __exit__(self, *args):
+                try:
+                    return uow.__exit__(*args)
+                finally:
+                    assert uow._state == "closed"
+                    events.append(("closed", index))
+
+        return Scope()
+
+    def fail_dispatch(g, call):
+        if dependency_fault:
+            raise PersistenceUnavailable("Injected read dependency failure")
+        raise Rejected("CONTRACT_INVALID")
+
+    original_audit = runtime.audit
+
+    def audit(g, call, error=None):
+        if not audit_available:
+            raise PersistenceUnavailable("Injected audit failure")
+        return original_audit(g, call, error)
+
+    monkeypatch.setattr(runtime, "factory", tracked_factory)
+    monkeypatch.setattr(runtime.business, "dispatch", fail_dispatch)
+    monkeypatch.setattr(runtime, "audit", audit)
+    response = request(
+        client,
+        "validateContractPayload",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "category": 1,
+            "payload": {
+                "title": "Rejected read",
+                "owner_id": 2,
+                "iteration_id": iid,
+                "plan": PLAN,
+                "dependency_task_ids": [],
+            },
+        },
+        expect=422 if audit_available and not dependency_fault else 503,
+    )
+    expected = "DEPENDENCY_UNAVAILABLE" if dependency_fault else "CONTRACT_INVALID"
+    assert response.json()["code"] == (expected if audit_available else "AUDIT_UNAVAILABLE")
+    assert events == [("enter", 0), ("closed", 0), ("enter", 1), ("closed", 1)]
+    assert sessions[0] is not sessions[1]
+    with factory() as uow:
+        rows = uow.gateway.rows("audit_events", {"request_id": response.json()["request_id"]})
+        assert len(rows) == int(audit_available)
+        assert uow.gateway.count("tasks", {"project_id": pid}) == 0
+    assert (response.json()["audit_id"] is not None) == audit_available
