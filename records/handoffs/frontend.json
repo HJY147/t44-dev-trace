@@ -1,6 +1,6 @@
 {
   "role": "frontend",
-  "stage": "完整后端接入收尾：正式UI缺陷checkpoint",
+  "stage": "CSS真冗余清理、完整后端七态回归checkpoint",
   "implementation_status": "业务前端已实现；迭代嵌套plan/重放提示修复，自测与真实通知回归分开",
   "artifacts": [
     {
@@ -78,6 +78,26 @@
     {
       "path": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
       "status": "实际派工和正式缺陷转交原文"
+    },
+    {
+      "path": "agents/frontend/integration-browser/",
+      "status": "94HTTP布局、真实迭代与失败记录、前后截图"
+    },
+    {
+      "path": "agents/frontend/integration-full/",
+      "status": "完整后端七态282HTTP新证据，不覆盖历史"
+    },
+    {
+      "path": "agents/frontend/integration-css-removal.json",
+      "status": "83规则删除依据与哈希"
+    },
+    {
+      "path": "tmp/frontend/958_integration-browser.mjs",
+      "status": "根分配编号；真实模块联调脚本"
+    },
+    {
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "迁移后的完整七态脚本，支持新证据输出目录"
     }
   ],
   "interfaces": [
@@ -227,14 +247,18 @@
     "21模块测试通过，19源文件全分母行92.21%",
     "真实MySQL浏览器七态、改期依赖、评审评估及审计通过",
     "1440/390截图与手机卡片通过",
-    "真实通知/升级503如实呈现"
+    "真实通知/升级503如实呈现",
+    "正式UI两缺陷修复；24项与全src行92.19%",
+    "完整后端七态282HTTP再次通过，pageerror0，预期403一条",
+    "真冗余83CSS删除，styles297→214；前后1440/390七页与rules全200",
+    "C-P1真实UI嵌套迭代容量8→12与名称验证"
   ],
   "unverified": [
-    "通知/升级门面尚未接入，真实已读/处理/规则/升级历史成功场景待owner",
     "覆盖率不代表断言完备；main/router仍0计入分母",
     "未做正式400并发/性能、全面安全或独立验收",
     "手机为headless viewport，非真机",
-    "生产构建有约823kB chunk体积提示"
+    "生产构建有约823kB chunk体积提示",
+    "通知GET/规则/历史已200；原未读通知被处理，正准备新任务/事件做真实read/handle，不重置旧记录"
   ],
   "questions": [
     "消息/升级owner接好后需另一次真实页面回归。",
@@ -299,7 +323,7 @@
       "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
     }
   ],
-  "updated_at": "2026-10-23T17:52:30+08:00",
+  "updated_at": "2026-10-23T18:00:09+08:00",
   "delivery": {
     "branch": "codex/frontend-app",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",

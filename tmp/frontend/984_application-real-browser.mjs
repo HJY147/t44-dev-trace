@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
 const credentials = JSON.parse(await readFile(process.env.DEMO_CREDENTIALS, 'utf8'))
 const redact = (message) => Object.values(credentials).filter(v => v && typeof v === 'object' && v.password).reduce((text, role) => text.replaceAll(role.password, '[REDACTED]'), message)
-const output = new URL('../../agents/frontend/', import.meta.url).pathname
+const output = process.env.FRONTEND_BROWSER_OUTPUT || fileURLToPath(new URL('../../agents/frontend/', import.meta.url))
 await mkdir(join(output, 'application-screenshots'), { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome', headless: true })
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, locale: 'zh-CN', reducedMotion: 'reduce' })
@@ -188,10 +188,12 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
   await page.screenshot({ path: join(output, 'application-screenshots', 'mobile-real.png'), fullPage: true })
   checks.push('390px真实任务卡片、手机导航与无整页横向溢出')
+  const notificationsPending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/v1/me/notifications')
   await page.getByRole('button', { name: '打开主导航' }).click()
   await page.getByRole('dialog', { name: '主导航' }).getByRole('link', { name: '通知中心', exact: true }).click()
-  await page.getByText('暂时无法加载', { exact: true }).waitFor()
-  checks.push('通知尚未接入的真实503如实显示')
+  assert.equal((await notificationsPending).status(), 200)
+  await page.locator('.data-state--loading').waitFor({ state: 'hidden' })
+  checks.push('完整后端个人通知真实200，允许真实空列表')
   assert.equal(errors.length, 0)
   const result = { taskTitle: title, source: 'real browser → Vite same-origin proxy → FastAPI → real project MySQL', scope: '责任岗联调，不是独立验收或正式性能测试', checks, http, browserErrors: errors, consoleErrors, screenshots: ['application-screenshots/desktop-real.png', 'application-screenshots/mobile-real.png'] }
   await writeFile(join(output, 'application-real-browser-result.json'), JSON.stringify(result, null, 2) + '\n')
