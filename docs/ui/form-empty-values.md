@@ -14,6 +14,14 @@ TaskCreate.title/description 与 Plan.delay_contingency 在已冻结契约中是
 
 若回归证实上述转换，最小修正是显式声明 modelValue 的运行时 prop 接收任意 Json、保留 TypeScript PropType，避免 Vue 自动 Boolean casting；其余 schema/name/path/errors 默认保持原样。不得改 initial()/schema 业务含义、API、校验、状态或独立用例。
 
+## 已验证根因与修正
+
+真实 Vue SFC 编译结果为 `modelValue: { type: [null, Boolean, Number, String, Array, Object], required: true }`，Boolean 排在 String 之前。现有测试新增3项：纯 initial() 通过，FieldEditor 空字符串和 TaskCreate 控件两项失败，控件实际值确为 `true`。改前命令共2失败/4通过/24未选，原始日志保留。
+
+FieldEditor 改为显式运行时 props，modelValue 的 `type: null as unknown as PropType<Json>` 只接收原 JSON、不做 Boolean casting；其余 schema/name/path/errors 接口和默认值相同。原同组6通过/24未选；进一步受影响的文本/布尔编辑、业务表单和契约初始化组14通过/16未选。未选项不是删除或断言降低。构建含类型检查通过，既有大 chunk 提示保留。
+
+第一次受影响浏览器复验在登录时收到现有 demo API 的502，未进入表单、未产生业务写；其30秒超时结果作为环境阻塞保留，不算新修正通过。后续可在总协调恢复的演示环境针对空字段复验，无需再改规格。
+
 ## 验证范围
 
 保留改前测试失败，再执行同一组改后；必要 typecheck/build、受影响新建任务表单真实浏览器验证。米咖840b1a8与其原证据不覆盖。未涉及的全业务测试、状态流转与正式性能不重复。若回归不支持根因，记录结果再调整设计，不预先改产品。

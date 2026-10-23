@@ -25,6 +25,20 @@ beforeEach(() => { seed(); fixtureFetch() })
 afterEach(() => { vi.unstubAllGlobals(); document.body.innerHTML = '' })
 
 describe('typed editor interactions', () => {
+  it('keeps empty text as empty through Vue props without casting it to boolean true', () => {
+    for (const schema of [{ type: 'string' }, {}]) {
+      const editor = mount(FieldEditor, { props: { schema, modelValue: '' }, global })
+      expect(editor.get('input').element).toHaveProperty('value', '')
+      expect(editor.props('modelValue')).toBe('')
+      editor.unmount()
+    }
+    for (const value of [false, true]) {
+      const editor = mount(FieldEditor, { props: { schema: { type: 'boolean' }, modelValue: value }, global })
+      expect(editor.get('input').element).toHaveProperty('checked', value)
+      expect(editor.props('modelValue')).toBe(value)
+      editor.unmount()
+    }
+  })
   it('emits boolean, integer, date, text, enum and array changes as proper JSON values', async () => {
     const schema: Schema = { type: 'object', required: ['approved'], properties: { approved: { type: 'boolean' }, count: { type: 'integer' }, planned_start: { $ref: '#/components/schemas/UtcTime' }, description: { type: 'string', maxLength: 2000 }, owner_id: { type: 'integer' }, roles: { type: 'array', items: { type: 'integer' }, maxItems: 3 }, dependency_task_ids: { type: 'array', items: { type: 'integer' }, maxItems: 5 } } }
     const wrapper = mount(FieldEditor, { props: { schema, modelValue: { approved: false, count: 1, planned_start: '', description: '', owner_id: null, roles: [], dependency_task_ids: [1] }, 'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }) }, global })
@@ -49,6 +63,17 @@ describe('typed editor interactions', () => {
   })
 })
 describe('operation forms', () => {
+  it('shows untouched task text fields as empty and submits no request when required fields are missing', async () => {
+    const { calls } = fixtureFetch()
+    const wrapper = mount(OperationForm, { props: { operation: 'createTask', schemaName: 'TaskCreate', params: { project_id: 1 }, preset: presets('createTask'), refresh: async () => {}, saved: async () => {} }, global })
+    await settle()
+    for (const field of ['title', 'description', 'plan-delay_contingency']) expect(wrapper.get('#field-' + field).element).toHaveProperty('value', '')
+    await wrapper.get('form').trigger('submit'); await settle()
+    expect(wrapper.find('[role="alert"]').exists()).toBe(true)
+    expect(calls).toHaveLength(0)
+    expect(wrapper.emitted('close')).toBeUndefined()
+    wrapper.unmount()
+  })
   it('prefills and submits the frozen nested iteration plan, and names the iteration selector', async () => {
     const { calls } = fixtureFetch()
     const wrapper = mount(OperationForm, { props: { operation: 'changeIteration', schemaName: 'IterationChange', params: { project_id: 1, iteration_id: 1 }, preset: presets('changeIteration', iteration), refresh: async () => {}, saved: async () => {} }, global })
