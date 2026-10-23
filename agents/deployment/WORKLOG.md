@@ -72,3 +72,10 @@
 - 用户新增tmp编号规范已收到：不自行改原测试发现路径，新增测试号由总协调分配，待其迁移SHA后再对齐CI。
 
 - 已merge包含测试迁移5e07887及当前完整修复的codex/integration基点e8ceefe，保留本岗未提交生产接线且不触root索引。按登记映射将CI backend入口改tmp/backend、两个历史guard改pytest显式997_ops/996_gates；FE Vitest项目root为总项目，CLI include与outputFile同步frontend前缀，未排除生产源码或改阈值。新972真实Docker driver仅main显式执行，971凭据guard使用root预留号，未自动调用Docker。
+
+### INTEGRATION-v1 Docker执行checkpoint
+
+- 已发布CI路径checkpoint `7e4dbda1e7afd82ce3c794dfdf025e6ca8870277`，总协调实际通知集成SHA `265d89bd004de626a025d7efe7102fe68b5b2dd3` 的run39931640641四job static/contracts/coverage/frontend均success；这是总协调转交的精确远程结果，本岗未将其当作Docker运行证据。
+- 本机实际执行新的FE CI命令成功，whole frontend/src行308/334=92.21%；23项本岗部署/CI guard、Ruff、Compose离线schema和actionlint均通过。命令/退出码与原始gzip日志在integration-validation/，并非独立验收。
+- 当前增加真实CLI凭据管理、只读0700目录/0600JSON挂载、共享flock卷、轮换排空以及已完成扫描DB就绪检查；Docker application独立job和预留972 driver负责实际构建/全应用/HTTP/恢复，971仅私有凭据guard。尚未运行Docker，推送后按真实失败继续修复。
+- 文档岗ROLE-documentation-M2-QUALITY-v1实际询问最新SHA、报告/交接、入口、真实检查/GHA、debug/缺口及tmp迁移。已答复当时发布8e8、历史72，旧3857 run仅基础配置成功而应用缺失，当前凭据/新Docker尚未发布；本段补充现在7e与FE验证和tmp实际路径。未为文档重跑或重写旧失败。

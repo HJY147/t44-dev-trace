@@ -3,11 +3,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/app/backend
 WORKDIR /app
 COPY backend/requirements.lock /tmp/requirements.lock
 RUN python -m pip install --no-cache-dir --require-hashes -r /tmp/requirements.lock \
-    && groupadd --gid 10001 t44 && useradd --uid 10001 --gid t44 --no-create-home t44
+    && groupadd --gid 10001 t44 && useradd --uid 10001 --gid t44 --no-create-home t44 \
+    && install -d -m 0700 -o 10001 -g 10001 /run/t44-secrets /var/lib/t44-scheduler
 COPY backend/ /app/backend/
 COPY specs/database/ /app/specs/database/
 COPY specs/contracts/ /app/specs/contracts/
-COPY deployment/runtime_probe.py /app/deployment/runtime_probe.py
+COPY deployment/runtime_probe.py deployment/credential_admin.py /app/deployment/
 USER 10001:10001
 EXPOSE 8000
 CMD ["python", "-m", "uvicorn", "t44.api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--no-access-log", "--no-proxy-headers"]

@@ -194,7 +194,7 @@ def main() -> int:
     sub = parser.add_subparsers(dest="operation", required=True)
     generate = sub.add_parser("init-env")
     generate.add_argument("--output", type=Path, default=ROOT / ".env")
-    for name in ["infra", "start", "stop", "status", "config-check"]:
+    for name in ["build", "infra", "start", "stop", "status", "config-check"]:
         sub.add_parser(name)
     migrate = sub.add_parser("migrate")
     migrate.add_argument("--database", required=True)
@@ -208,6 +208,14 @@ def main() -> int:
     recover.add_argument("--confirm-target", required=True)
     recover.add_argument("--input", type=Path, required=True)
     recover.add_argument("--execute", action="store_true")
+    scheduler_token = sub.add_parser("scheduler-token")
+    scheduler_token.add_argument("--name", default="scheduler")
+    scheduler_token.add_argument("--project-id", type=int, action="append", required=True)
+    scheduler_token.add_argument("--rotate", action="store_true")
+    seed = sub.add_parser("seed-demo")
+    seed.add_argument("--database", required=True)
+    for name, default in [("projects", 40), ("tasks", 6000), ("dependencies", 9000), ("records", 15000)]:
+        seed.add_argument("--" + name, type=int, default=default)
     account = sub.add_parser("account")
     account_sub = account.add_subparsers(dest="action", required=True)
     initialize = account_sub.add_parser("init-user")
@@ -233,6 +241,28 @@ def main() -> int:
                 print("Plan only: reviewed backend t44.cli migrate --database <selected database>; implementation required.")
             else:
                 compose(args.env_file, values, "--profile", "operations", "run", "--rm", "-T", "migrate")
+        elif args.operation == "seed-demo":
+            check_primary(values, args.database)
+            command = ["seed-demo"]
+            for name in ["projects", "tasks", "dependencies", "records"]:
+                command += ["--" + name, str(getattr(args, name))]
+            compose(args.env_file, values, "--profile", "operations", "run", "--rm", "-T", "admin", *command)
+        elif args.operation == "scheduler-token":
+            running = False
+            if args.rotate:
+                listing = compose(args.env_file, values, "ps", "--services", "--status", "running",
+                                  stdout=subprocess.PIPE, text=True)
+                running = "scheduler" in listing.stdout.splitlines()
+                if running:
+                    compose(args.env_file, values, "stop", "scheduler")
+            command = ["--name", args.name]
+            for project in args.project_id:
+                command += ["--project-id", str(project)]
+            if args.rotate:
+                command.append("--rotate")
+            compose(args.env_file, values, "--profile", "operations", "run", "--rm", "-T", "credential-admin", *command)
+            if running:
+                compose(args.env_file, values, "up", "-d", "--no-deps", "--wait", "scheduler")
         elif args.operation == "account":
             command = [args.action]
             password = None
@@ -250,7 +280,8 @@ def main() -> int:
             compose(args.env_file, values, "--profile", "operations", "run", "--rm", "-T", "admin", *command,
                     input=(password + "\n").encode() if password else None)
         else:
-            commands = {"infra": ["up", "-d", "--wait", "mysql", "rabbitmq"],
+            commands = {"build": ["build", "api", "web"],
+                        "infra": ["up", "-d", "--wait", "mysql", "rabbitmq"],
                         "start": ["up", "-d", "--build", "--wait", "api", "consumer", "scheduler", "web"],
                         "stop": ["stop"], "status": ["ps"], "config-check": ["config", "--quiet"]}
             compose(args.env_file, values, *commands[args.operation])

@@ -1,6 +1,6 @@
 # 单机运行与恢复
 
-这些文件已实现部署配置；应用包、哈希依赖锁、迁移/账号 CLI、前端构建入口须由对应岗位交付后才能构建。本轮开发机没有 Docker，未构建镜像、启动 Compose、执行迁移/恢复或压测。规格建议不是性能保证。
+完整应用/哈希依赖锁/实际CLI现已合入部署联调基点。INTEGRATION-v1正在GitHub托管Linux上验证镜像构建、完整Compose和隔离恢复，结果以本岗handoff和精确Actions提交为准。本机没有Docker；不能把历史静态检查或本次配置修改写成完整运行成功，未租赁云资源。规格建议不是性能保证。
 
 ## 前提和边界
 
@@ -8,7 +8,7 @@
 - Python3.12 用于 `deployment/ops.py`；操作工具只依赖标准库。生产镜像固定多架构摘要，版本更新需重新验证和留痕。
 - `backend/requirements.lock` 必须含全部依赖哈希；运行包为 `backend/t44/`，DDL为 `specs/database/`，运行时权威契约为 `specs/contracts/`；镜像只复制这些规格目录，不复制原始 `specs/sources`。后端实际资源加载路径仍待编码核对。API `t44.api:app` 使用4个 worker；消息与调度分别为 `python -m t44.messaging`、`python -m t44.scheduling`。
 - Vue3/TypeScript/Element Plus，Node24、pnpm11.25.0，`frontend/pnpm-lock.yaml`、`pnpm run build` 输出 `dist/`；Nginx同源转发 `/api/v1`，保留完整前缀，支持HTML5 history路由。
-- 只有 `127.0.0.1:8080` 映射宿主。MySQL、RabbitMQ（包括管理面板）没有宿主端口；持久卷分别为 `<project>_mysql_data` 和 `<project>_rabbitmq_data`。不要增加公网数据库/队列端口。
+- 只有 `127.0.0.1:8080` 映射宿主。MySQL、RabbitMQ（包括管理面板）没有宿主端口；数据卷分别为 `<project>_mysql_data`、`<project>_rabbitmq_data`，另有私密凭据卷和共享锁卷。不要增加公网数据库/队列端口。
 
 ## 配置、迁移与运行
 
@@ -17,19 +17,21 @@
 ```sh
 python3 deployment/ops.py init-env
 python3 deployment/ops.py config-check
+python3 deployment/ops.py build
 python3 deployment/ops.py infra
 python3 deployment/ops.py migrate --database t44
-# 先确认DDL评审、明确目标、迁移CLI已实现；上条仅输出计划。
+# 确认DDL评审与明确目标；上条只输出计划。
 python3 deployment/ops.py migrate --database t44 --execute
-python3 deployment/ops.py start
+# 初始化账号后，可先启动API/前端创建真实项目，或在空演示库执行seed-demo。
+# 在下方签发真实项目scope的scheduler凭据后，才启动全部进程。
 python3 deployment/ops.py status
 ```
 
 `init-env` 独立随机生成256位数据库应用/管理员和队列凭据，以0600权限排他创建 `.env`，拒绝覆盖。模板 `deployment/.env.example` 只含占位值，不能当真实配置。不要贴出 `docker compose config` 完整结果；`config-check` 仅用 `--quiet`。`.env` 不提交。工具校验显式库名与配置相同，禁止系统库和重复/不安全值；不从 shell 读取任意覆盖值。Docker目标明确使用 `.env` 中 `T44_DOCKER_CONTEXT=default`，更改前核对 `docker context inspect <name>`，不让继承的 `DOCKER_HOST` 悄悄改变目标。
 
-迁移是独立的显式步骤；应用容器不会自动修改DDL。未来入口 `python -m t44.cli migrate --database <name>` 尚未实现/核对退出码，部署包装会原样失败，不用占位成功。迁移前备份、确认版本和逐表评审，由数据库岗交付正式核对命令。只有迁移成功才能启动应用；直接跳过该步骤不是支持的操作流程。
+迁移是独立的显式步骤；应用容器不会自动修改DDL。实际入口为 `python -m t44.cli migrate --database <name>`，已实现显式库名、MySQL8.4、冻结版本/摘要/字段约束核对，重复执行不重建数据。迁移前备份、确认版本和逐表评审；只有迁移成功才能启动应用，不使用占位成功。
 
-应用健康检查在容器内部检查TCP/进程与数据库 `SELECT 1`，没有公开未鉴权探针。它不能证明业务状态机正确、队列消息已消费或扫描已续跑。API和调度不以RabbitMQ初始就绪作为启动条件，保留队列故障降级路径；消费者等待队列健康。独立调度只启动一份，仍需调度岗实现跨进程防重/重入控制，不能用Compose副本数替代幂等。
+应用健康检查在容器内部检查TCP/进程与数据库 `SELECT 1`，没有公开未鉴权探针。调度还检查最新scan_runs的status/error_code/持久heartbeat，按实际扫描间隔三倍（至少180秒）判定陈旧；它不能代替业务状态机、消费或恢复用例。API和调度不以RabbitMQ初始就绪作为启动条件，保留故障降级路径；消费者等待队列健康。独立调度只启动一份，并共享持久flock路径；数据库业务唯一键另兜底，不能以副本数替代幂等。
 
 ## 账号和会话
 
@@ -39,7 +41,24 @@ python3 deployment/ops.py account revoke-sessions --user-id 1
 python3 deployment/ops.py account revoke-session --session-id 1
 ```
 
-初始化要求交互终端，两次读取口令，经stdin送入后端CLI，不放在命令行参数或环境日志中。只包装后端的 `init-user --password-stdin`、`revoke-sessions`、`revoke-session`，不新增用户管理API。后端使用不透明会话摘要，不使用JWT密钥；这些CLI当前仍待实现和联调。
+初始化要求交互终端，两次读取口令，经stdin送入后端实际CLI，不放在命令行参数或环境日志中。只包装 `init-user --password-stdin`、`revoke-sessions`、`revoke-session`，不新增用户管理API。后端使用不透明会话摘要，不使用JWT密钥。
+
+## 调度服务凭据、锁与受控续期
+
+首次必须从已初始化项目取得真实ID，不猜ID1代表用户。空演示库可先用 `ops.py seed-demo --database t44` 生成明确synthetic数据；已有项目集时seed会拒绝覆盖。正式自建项目可先用 `docker --context default compose --env-file .env up -d --wait api consumer web` 启动界面，登录创建项目，再签发仅覆盖获授权项目的service scope。
+
+```sh
+python3 deployment/ops.py scheduler-token --project-id REAL_ID --project-id ANOTHER_REAL_ID
+python3 deployment/ops.py start
+# 在到期前、保留相同或经审定的新project scopes，执行受控轮换：
+python3 deployment/ops.py scheduler-token --project-id REAL_ID --project-id ANOTHER_REAL_ID --rotate
+```
+
+`credential-admin`只在operations profile显式运行，通过真实 `t44.cli service-token --name scheduler --project-id ... --token-file ...` 写JSON。私密目录卷初始化为UID/GID10001、0700，文件0600；scheduler将整个目录只读挂载，固定 `T44_SCHEDULER_TOKEN_FILE=/run/t44-secrets/scheduler-token.json`，不把Token放 `.env`、Compose值、命令行或公开日志。stdout只显示session_id/expiry/操作结果，不显示access_token。
+
+目录挂载使原子替换后的新inode可见；不单独bind一个文件而钉住旧凭据。CLI在私密目录串行加锁，新文件先由后端O_EXCL生成并校验，初次拒绝覆盖，轮换才原子替换并撤销旧session。已过期文件也可显式轮换。ops先停掉正在运行的scheduler，等回调排空/锁释放，再轮换并启动，避免旧凭据请求与撤销竞态；失败不假装重启成功，检查脱敏错误后恢复。TTL实际来自T44_SESSION_TTL_SECONDS（默认3600），本工具不自动延长TTL或加未经授权的定时续签，管理员须在expiry前安排轮换。
+
+锁卷统一挂到 `/var/lib/t44-scheduler`，`T44_SCHEDULER_LOCK_FILE=/var/lib/t44-scheduler/scan.lock`。同主机多个容器/手动一次扫描必须共享这个目录，flock并非分布式租约；不共享路径就不能声称互斥。`python -m t44.scheduling --once --resume-run UUID` 是已实现的指定UUID恢复入口，执行前须停周期进程以释放锁；不可恢复旧hash时按原规则快照处置，不改写历史记录。
 
 ## 备份与隔离恢复
 
