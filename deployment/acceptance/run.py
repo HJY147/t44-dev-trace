@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
 
 OUTPUT_NAMES = ("report.md", "results.json", "events.jsonl", "trace.log")
+INTERNAL_OUTPUT_NAMES = ("environment-control.log",)
 SHA = re.compile(r"[0-9a-f]{40}\Z")
 
 
@@ -68,7 +69,7 @@ def frozen_file(root, relative):
 
 def archive_members(folder):
     selected = []
-    for name in ("stdout.log", "stderr.log", *OUTPUT_NAMES):
+    for name in ("stdout.log", "stderr.log", *OUTPUT_NAMES, *INTERNAL_OUTPUT_NAMES):
         path = folder / name
         if path.is_symlink():
             raise ValueError("output links cannot be archived")
@@ -163,10 +164,14 @@ class Environment:
 
     def prepare_recipient(self):
         if self.request["mode"] == "harness":
-            self.certificate = frozen_file(self.harness, self.request["recipient_certificate_path"])
+            frozen_certificate = frozen_file(self.harness, self.request["recipient_certificate_path"])
             frozen_file(self.harness, self.request["harness_path"])
-            if b"PRIVATE KEY" in self.certificate.read_bytes():
+            certificate_bytes = frozen_certificate.read_bytes()
+            if len(certificate_bytes) > 65536 or b"PRIVATE KEY" in certificate_bytes:
                 raise ValueError("only a recipient certificate may be committed")
+            # Keep the frozen recipient stable if a harness later modifies its own checkout.
+            self.certificate = self.runtime / "tester-recipient.pem"
+            self.certificate.write_bytes(certificate_bytes)
         else:
             self.certificate = self.runtime / "environment-check-recipient.pem"
             subprocess.run(["openssl", "req", "-x509", "-newkey", "rsa:3072", "-nodes", "-days", "1",
@@ -318,6 +323,14 @@ class Environment:
                 self.report["stop_error"] = "ENVIRONMENT_STOP_FAILED"
         if self.certificate:
             try:
+                commands = self.runtime / "environment-commands.log"
+                if commands.exists():
+                    if commands.stat().st_size > 20 * 1024 * 1024:
+                        raise ValueError("environment command evidence exceeds archive limit")
+                    descriptor = os.open(self.output / "environment-control.log",
+                                         os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
+                    with os.fdopen(descriptor, "wb") as stream:
+                        stream.write(commands.read_bytes())
                 metadata = encrypt_archive(self.output, self.certificate, self.public / "tester-output.cms")
                 if self.request["mode"] == "environment-check":
                     recovered = self.runtime / "transport-check.tar.gz"

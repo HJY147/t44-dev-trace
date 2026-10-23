@@ -86,6 +86,8 @@ openssl req -x509 -newkey rsa:3072 -sha256 -days 30 \
 
 runner将 stdout/stderr 收入私有目录，不输出到公开 Actions console。另只收集输出目录中固定白名单 `report.md`、`results.json`、`events.jsonl`、`trace.log`；拒绝符号链接、目录、单文件>20MiB或总计>100MiB，其他文件全部忽略。禁止把整个workspace、.env、凭据文件、coverage或私有用例复制到输出目录。stdout可能误含临时凭据，所以**即使加密取回，也须tester本地审查/脱敏后才显式发布**。
 
+部署侧另在归档前写入保留名 `environment-control.log`，仅供tester在密文中取回环境控制失败的原始诊断；harness不得使用该保留文件名。环境诊断不会在harness模式下明文发布。
+
 归档采用 [OpenSSL CMS](https://docs.openssl.org/3.0/man1/openssl-cms/) AES-256-GCM和RSA-OAEP/SHA256。公开artifact只包含 `tester-output.cms` 密文、密文/证书SHA256和环境/控制/退出元数据；`environment-check` 额外允许不含harness内容的脱敏环境诊断gzip。绝不上传明文tar、.env、context、Token JSON、完整workspace或coverage目录。密文保留14天，context明确给出artifact名与时效；runner临时明文随job销毁，**tester须在14天内下载密文**。
 
 ```sh

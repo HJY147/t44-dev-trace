@@ -16,3 +16,4 @@ ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1：先只读看根189dc4a及已有do
 新增deployment/acceptance/{run.py,control.py,README.md,request.json}、新workflow、953守卫及本岗日志/报告/handoff。能力和独立用例分开；精确双SHA、只读SQL、受限故障/恢复、密文取回和公开artifact白名单均是运行边界，不是独立用例或验收结论。不把跨岗新派工算同一提示词六版演进，不虚构用户亲自改码。
 
 - 追加实际约束：总协调要求不用189dc4a立即环境check，等待随后完整1.1产品修正的准确SHA；实现先独立commit/push，请求另交。为避免旧runtime push自动重跑整套，部署使用同worktree新本岗分支codex/deployment-acceptance-environment，既有门禁不改。
+- 总协调随后实际指定远端完整产品4c20f32b71635016815420472b9d4bb4fa850df0，只运行本轮唯一环境check/恢复/加密roundtrip；独立harness仍待冻结，不注入产品调试结论。
