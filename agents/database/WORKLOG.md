@@ -162,3 +162,8 @@
 - 将真实基线摘要固定为原975两组额外等价断言，再提交生产row-builder；原所有断言保留。assert_consistent把反复扫描review/decision列表改预先按task分组，校验条件完全相同，避免默认全量组平方扫描。
 - 生产去重：受信add集中created/updated/project/task/cycle上下文，仍由冻结TABLES过滤可继承字段，显式值覆盖且最终Rows参数绑定/字段校验；省略冻结server defaults的重复声明；task初始NULL指针只构造一次。新增task对象即加入列表但列表直到完整构建后才批量写入；后续version变更仍修改该同一对象。
 - 保留原业务配置、synthetic标记、规则/模板原bytes hash、manifest、7态分布、轮次、容量、证据与单UoW批次；未知等价结果待托管CI，专库MySQL仍未执行。仅源格式编辑并恢复无关原代码排版，不把格式差额用于宣称减量。
+- 0a676ee6f7c287893153cdca0c6c6823aacca8a1生产去重checkpoint已push，PR17重新发布范围；远端PR run39941263169进行中。基线artifact的coverage子目录被.gitignore规则命中，已识别并仅显式-f暂存8份本岗下载的JUnit/pytest/migration/gate文件，避免索引引用而缺原证据；未改共享ignore。
+- 仅基于Git已提交文本差异：seed.py为88插入/115删除，净减27物理行；这不是cloc最终应用主口径结论，C-P4新增与全局超5100事实保留。新版真实MySQL全量seed未跑，不能用SQLite精确摘要替代。
+- 最终产品0a676ee：PR run39941263169与push39941255427均success；下载原始0a676-result证据，JUnit333passed/0failed/0errors/0skipped，两原始行摘要完全一致。Bandit results0，Ruff真实远端通过；覆盖门禁2480/2807行、无漏测生产文件（仅该托管SHA，非独立验收）。
+- Issue4已以body-file发表本轮真实失败→修复→结果/边界：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981 ，正文review-fix-v2-comment.md。PR17保持OPEN/draft、base codex/team-bootstrap、head codex/database-runtime，正文按最终范围更新并重新attach。
+- 本轮收尾时仍未收到窗口结束通知；不启动本机pytest/MySQL/seed/HTTP/构建，t44_review仍未操作，C-P4不关闭。重构后MySQL全量seed未跑，统一cloc/最新整合/正式性能/独立验收未由本岗执行。产品/测试与已验证0a676ee完全相同，本次只追加原始证据/日志/报告/handoff。
