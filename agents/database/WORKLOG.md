@@ -220,3 +220,11 @@
 - 先设计阶段产品净改0。安全输入与结果范围/重复检查净cloc预估由18..30修正35..50；按原source_count.py+校验hash的cloc2.10，对02c4b2a实测应用6124/within_range=false（baseline-cloc.json），口头6108与本次归档计数不同已报告root，不改口径凑数。
 - GitHub connector实际读取Issue4/28当前公开正文，未追读其私密案例/SQL/截图；稍后阶段评论与精确API读回另存回执。实际派工完整归档prompts/ROLE-database-PLAN-HISTORY-v1.md，操作者AI不是学生亲改。
 - 设计先commit后实施；将仅复用993/988新增目标旧源红、SQLite/真MySQL有限自有t44_test fixture，完整CI/精确源码审核由root调度。此设计checkpoint无pytest/MySQL/HTTP/覆盖率/性能通过声明。
+
+- 设计checkpoint e9a769a已push（skip ci）。随后复用993增加目标先实跑旧源：首命令误用根.venv缺pytest（red-environment-run1.log），改用本岗既有database/.venv后真实AttributeError旧源红（red-old-source.log），没有把环境失败算功能红。
+- 实现固定task_schedule_changes，保持原通用16方法及全部原测试函数逐字（unchanged-boundaries.json）。空不取session；输入最多100先验后去重；参数化精确tuple-IN；固定project/iteration IS NULL/排序；完整codec行，不limit/截断；结构/范围/重复或硬bound违约_failed+PersistenceUnavailable。
+- 新SQLite/mock目标48通过（sqlite-run1.log），最终原993整文件66通过（含同48，foundation-regression.log），没有删改旧断言。真MySQL首轮自有fixture漏project_members触发任务owner FK失败（mysql-run1.log），仅补自有成员关系后1通过（mysql-run2.log），产品未因夹具失败改动。
+- 另加真实服务器故障目标：仅本测试进程替换registry为不存在的owner表，真实MySQL SELECT失败转脱敏PersistenceUnavailable/rollback-only，1通过（mysql-server-error.log）。为实际SQL账本新增可选环境证据出口后，仅重跑同两个新增MySQL目标2通过（mysql-evidence-run.log/JUnit）；不把48+66+1+1+2累加成新独立例。
+- mysql-sql-ledger.json保留真实空0/100pairs1SQL100完整行/重复1/101拒绝0/跨项目pair1SQL0行/合法最大输入1SQL0行；含实际参数化语句与整数绑定。104条自有schedule夹具含2交叉干扰+另项目+iteration，长2000字/JSON/微秒UTC完整、查询前后相同，事务全回滚且自有username回查不存在；不清表、不改别人数据、不停库、不跑整套/负载。
+- Ruff首次新测试import I001保留，排序修复后最终限定3文件通过；rows.py定向Bandit0。14冻结件摘要与基线字节全同；16旧gateway/17旧foundation/17旧mysql函数源码字节相同；未改DDL/API/后端matcher/前端。
+- 最终rows.py固定cloc237→299/实际净+62，超过设计35..50和RFC18..30，已如实报root并保留各估算，不压行/弱守卫。基线6124、当前应用投影6186，提交后将同原脚本实测；源码规模仍不达标。root回复明确要求保留预算上修/夹具原失败、固定接口与重叠计数/SQL账本/14冻结和旧方法字节/Issue实际读回，不执行完整CI/负载。

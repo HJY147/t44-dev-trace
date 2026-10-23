@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "PLAN-HISTORY-v1：固定有限pair读取设计复核",
-  "implementation_status": "设计已确认原提案；尚未改产品或运行新增目标测试，先提交设计checkpoint后按根准入实施。",
+  "stage": "PLAN-HISTORY-v1：固定有限历史读取实现与数据库owner自测",
+  "implementation_status": "固定方法已实现；旧源真实红，新目标48/993全66（重叠）、MySQL两个新增目标通过；精确新源码review/root组合CI与后端接入待调度，不称Issue28全局关闭。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -514,6 +514,26 @@
       "path": "agents/database/plan-history/baseline-cloc.json",
       "kind": "原口径真实基线计数",
       "status": "02c4b2a应用6124，超5100"
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "kind": "固定有限task history batch reader",
+      "status": "本岗实现、自测通过；精确review待root"
+    },
+    {
+      "path": "agents/database/plan-history/summary.json",
+      "kind": "真实结果/失败/范围/预算汇总",
+      "status": "已保存"
+    },
+    {
+      "path": "agents/database/plan-history/mysql-sql-ledger.json",
+      "kind": "真实MySQL实际SQL参数与次数账本",
+      "status": "自有fixture回滚，非性能"
+    },
+    {
+      "path": "agents/database/plan-history/unchanged-boundaries.json",
+      "kind": "14冻结与原方法/测试函数字节核对",
+      "status": "全同"
     }
   ],
   "interfaces": [
@@ -687,7 +707,8 @@
     "只读原ScanStore/EscalationFacade/RowsGateway/UoW及相关公开审核、既有模块断言",
     "scratch候选Ruff首次默认88列，拒绝；最终 --config backend/pyproject.toml 为100列，逐文件cloc2.10（固定工具hash）",
     "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
-    "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）"
+    "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）",
+    "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml."
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -777,12 +798,13 @@
     "仅补丁适用性与AST语法通过，不将此当运行测试；未改变规模口径/冻结件/DDL/产品/独立测试资料",
     "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
-    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
+    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
+    "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained."
   ],
   "unverified": [
-    "新增入口尚未实现；993/988旧源红/SQLite/真MySQL目标回归未运行",
-    "精确新源码审核、root组合CI/全局coverage/独立复测/正式性能未运行",
-    "规模基线6124已超5100，本修复预估再增加35..50，未解决规模门禁"
+    "后端页提取/matcher/投影和前端UI不属本岗实现，此模块不证明HTTP或Issue28整体完成",
+    "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
+    "源码规模基线6124、DB净+62，仍超5100；最终提交计数待后续同口径记录"
   ],
   "questions": [
     {
@@ -951,7 +973,7 @@
       "improvement_reason": "在真实DDL/解码/异常边界上先提交精确有限接口，再在根准入范围实现；不绕gateway/不压计数/不造学生亲改"
     }
   ],
-  "updated_at": "2026-10-23T20:09:17.110735+00:00",
+  "updated_at": "2026-10-23T20:17:01.553681+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
@@ -1127,7 +1149,9 @@
     "errors": "invalid input StatementRejected; DB/error output scope/duplicate/structure failure PersistenceUnavailable rollback-only; no new HTTP code",
     "contract": "agents/database/plan-history/design.md",
     "backend_owner": "authorized-page pair extraction/matcher/projection; no SQL bypass",
-    "schema": "18/226 unchanged"
+    "schema": "18/226 unchanged",
+    "status": "implemented and development-selftested; exact source review pending root",
+    "source": "backend/t44/persistence/rows.py:RowsGateway.task_schedule_changes"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",

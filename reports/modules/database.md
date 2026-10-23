@@ -1,14 +1,16 @@
-# 数据库模块报告：Issue28有限精确pair读取（设计阶段）
+# 数据库模块报告：Issue28固定有限历史读取已实现并自测
 
-- Agent-Role database；Prompt-Ref ROLE-database-PLAN-HISTORY-v1；基线02c4b2a59cdcc3b3dc6bc7981735f4c1b74f181a；独立codex/database-plan-history。
-- 本阶段只做真实DDL/RowsGateway/codec/异常/UoW复核与接口设计，产品净改0，未宣称实现、独立验收或全局通过。
-- 真实schedule_changes12列，uq_schedule_task_version(task_id,to_version)支持每精确pair最多一行；无需DDL/API/14冻结件修改。
-- 精确接口RowsGateway.task_schedule_changes(project_id:int,pairs:tuple[tuple[int,int],...])->完整codec解码list[dict]；输入≤100（去重前）、合法uint ID/Version，bool/串拒绝StatementRejected。
-- 固定project_id+iteration_id IS NULL+精确tuple-IN，稳定task_id/to_version/id排序；空0execute、有1execute、无LIMIT/跨乘积/N+1/连接或提交。
-- 结果完整列、ID/项目/pair/iteration范围、重复pair/id、硬bound违约显式PersistenceUnavailable并rollback-only；计划/理由/evidence业务匹配由后端拥有。
-- 下游只从授权audit当前页提取pairs，在原GET UoW读取；后端matcher/UI不在本岗实现范围，故障不能转成缺理由成功。
-- 生产预算因严格输入/结果校验上修净+35..50 cloc；最终以实测为准。原source_count.py+cloc2.10对基线实测6124行，仍超5100；不压行或改口径。
-- 详细设计/输入输出/回归范围见agents/database/plan-history/design.md；基线计数见baseline-cloc.json。
-- 自测将仅复用本岗993/988，先旧源真实红，再SQLite和真MySQL有限t44_test自有fixture；不清表/停库/读独立资料/跑完整CI或负载。
-- 实际Issue4/28正文已用connector读取；阶段发布/精确读回在实施后归档，不提前写成功。
-- 过程与真实prompt/交接已更新；AI修改不计学生亲改。精确源码审核与最终组合CI由root另调度，main仍保护。
+- Agent-Role database；Prompt-Ref ROLE-database-PLAN-HISTORY-v1；基线02c4b2a59cdcc3b3dc6bc7981735f4c1b74f181a；设计checkpoint e9a769a，独立codex/database-plan-history。
+- 只实现RowsGateway.task_schedule_changes，完整契约见agents/database/plan-history/design.md；后端matcher/响应投影及UI仍由其责任岗拥有，本岗不称Issue28已关闭。
+- 输入project_id/int与tuple[tuple[int,int],...]最多100（去重前）；严格int拒bool/串等，ID1..4294967295/Version1..2147483647，非法StatementRejected且0SQL。
+- 固定schedule_changes完整codec行、project与iteration IS NULL、精确tuple-IN、稳定task/to_version/id排序；空0execute/有1execute；无LIMIT、跨乘积、N+1、额外连接/事务/提交/锁/cache。
+- 完整列/ID范围/项目与pair/iteration/重复pair或id/硬bound违约PersistenceUnavailable并rollback-only。数据快照/理由/evidence的业务匹配归后端，不能把DB失败降成缺理由成功。
+- 旧源目标真实AttributeError红；新SQLite/mock48通过，原993整文件66通过且包含同48；MySQL新增主读目标1通过、服务器异常目标1通过，最终为SQL账本同两目标2通过。数字重叠/重复，不能相加成独立案例。
+- 原环境缺pytest、夹具漏project_members导致真实FK失败、I001排序失败均保留；只修环境选择/自有夹具/import，不改原断言/DDL/产品错误处理。
+- MySQL仅t44_test自有有限随机名夹具，100精确pairs完整返回/交叉干扰/跨项目/iteration/0与1SQL/101/最大输入/长文JSON微秒UTC/不变性；104history及关联数据最后整事务回滚，用户不存在。
+- 实际SQL及整数绑定/每case execute数见mysql-sql-ledger.json；不是正式性能。真实服务端失败受控为不存在owner表，不操作别人的表或服务器。
+- 原14冻结件与02c4b2a字节/摘要全同，16旧RowsGateway方法及两文件旧函数字节同原；unchanged-boundaries.json。通用rows/get/count/savepoint/UoW原语义未改。
+- 最终限定Ruff通过、rows定向Bandit0；无完整CI/coverage/HTTP/独立复测/负载结果，精确新源码审核及root组合CI待调度。
+- cloc预算18..30→设计35..50→实际rows237→299/净+62，均如实保留；基线应用6124，提交后同原统计确认最终值，仍超5100。不压行/移计数或削守卫。
+- summary.json及原始log/JUnit可核对真实结果；本岗自测不代独立验收，AI修改不计学生亲改，main仍保护。
+- Issue4/28实际发布及精确readback收尾归档；当前产品checkpoint待提交/push，未提前宣称远端成功。
