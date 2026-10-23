@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "ABBA interpretation checkpoint complete; runtime RFC prepared, all candidates UNAPPLIED",
+  "stage": "A original25targetedpassed but2caller regressions failed; corrected design first, production correction pending",
   "implementation_status": "production byte-identical5dcb;412exact-source CI historical; no new production/frozen change",
   "artifacts": [
     {
@@ -1310,6 +1310,17 @@
     "next": "root choose one and limited review/admission; no automatic implementation or load",
     "size": "A-1/B+6/C-10 are draft text counts only;6051baseline still exceeds5100",
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511",
-    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155"
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155",
+    "caller_erratum": {
+      "report": "agents/backend/preflight-caller-correction-design.json",
+      "patch": "agents/backend/runtime-plan-preflight-corrected-not-applied.patch",
+      "old_missing_caller_statement": "incorrect; actualscanner.authorize andDB oldclaim callers",
+      "original_A_targeted": "25passed",
+      "caller_before": "2failed AttributeError,preflight-caller-before.log/xml",
+      "root_correction": "816ba60",
+      "proposal": "restoreauthorize + claim(call)thin UoW wrapper/private_claim; no DB/scheduler edit",
+      "corrected_cloc_delta": 6,
+      "status": "design only; correction not yet applied"
+    }
   }
 }

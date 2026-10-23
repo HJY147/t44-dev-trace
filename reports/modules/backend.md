@@ -195,3 +195,7 @@ root操作者在已协调窗口单次执行tool974，整体exit0/39.88秒，1808
 ## 减少往返RFC：待准入、生产不变
 
 specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给出可复核静态Tx/SQL与净LOC预算。推荐只先A：保留authorize普通读和claim session S两次实时鉴权，但同一首UoW；18幂等写3→2事务，SELECT不减少、主锁/成功原子/拒绝独立/commit-ACK不明保护不变。校验跨普通连接及read-commit故障点移除明确列为语义差异，需定向真MySQL证据。B依赖按需+空集合跳过净+6、C根解析evolve净-10独立候选不混用；A仅净-1，未解决6051超限。草案AST/Ruff/format、patch匹配和14hash通过，无候选运行/HTTP/SQL/新负载；精确CI/性能待实现准入后另排。
+
+## A设计调用者勘误（先设计，修正未应用）
+
+原A的25新定向绿未覆盖scanner真实authorize入口，扩检原988/974两项因AttributeError真实红。原RFC无其它调用者判断错误，root审查亦遗漏，AI纠错不是学生发现。root816ba60窄准入恢复authorize原4行并保留claim(call)薄包装→_claim(g,call)，prepare直接同UoW调_claim；不改调度或DB断言。修正patch/预算preflight-caller-correction-design.json先归档，尚未应用；runtime实际草案有效270→276(+6)，旧净减1不能再作当前结论。

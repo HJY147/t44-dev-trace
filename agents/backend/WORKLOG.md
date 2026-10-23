@@ -315,3 +315,8 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - 主来源仅官方MySQL8.4 RC、SQLAlchemy2.0 pre_ping、jsonschema4.26 evolve与referencing0.37不可变Registry；链接和有限推断边界在RFC。没有为设计重跑412或用ABBA外推正式三接口。
 
 RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511；PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155。根实际读RFC倾向A并要求先提交，本提交仍全未应用，等待其精确技术准入。标准未应用unified patch包含必要context空白前缀，常规文本diff检查排除这3个patch语法文件；各patch本身git apply --check已通过，未变更任何产品lint或断言。
+
+## A caller遗漏勘误先交付（修正尚未应用）
+
+- 精确原A新25项通过后扩查发现真实scanner.authorize与DB直接claim调用，本岗原RFC“无其它调用者”错误，root设计审查也漏看。原988/974两项实际AttributeError失败，preflight-caller-before.log/xml；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373012722、PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373013279真实公开。不能把25绿当整合通过，更不能记学生发现/改码。
+- root816ba60窄修正准入要求保留两旧接口：authorize原4行供scanner；claim(call)自有UoW薄包装→_claim(g,call)，prepare同合并UoW直接调_claim，不改scheduler/DB988。修正提案patch及AST/Ruff/cloc实数receipt先提交，生产修正暂未应用。预算有效+6，旧-1节省结论失效；无B/C/冻结变化/负载。
