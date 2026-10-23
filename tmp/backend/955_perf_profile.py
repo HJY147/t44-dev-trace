@@ -7,6 +7,7 @@ import functools
 import hashlib
 import importlib
 import json
+import math
 import os
 import platform
 import signal
@@ -17,6 +18,7 @@ import threading
 import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import replace
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
@@ -24,36 +26,85 @@ from uuid import uuid4
 
 _RECORD = contextvars.ContextVar("profile_record", default=None)
 _URL = "http://127.0.0.1:18083/api/v1"
+_POOL_CHOICES = {"A": (5, 10), "B": (15, 0)}
+
+
+def pool_settings(settings, label):
+    size, overflow = _POOL_CHOICES[label]
+    return replace(settings, pool_size=size, max_overflow=overflow)
+
+
+def profile_connections():
+    from sqlalchemy import text
+    from t44.persistence import create_mysql_engine
+    from t44.settings import Settings
+
+    probe = create_mysql_engine(Settings.from_env().mysql_settings())
+    try:
+        with probe.connect() as connection:
+            return connection.execute(
+                text(
+                    "SELECT COUNT(*) FROM information_schema.PROCESSLIST "
+                    "WHERE DB=:database AND ID<>CONNECTION_ID()"
+                ),
+                {"database": "t44_profile"},
+            ).scalar_one()
+    finally:
+        probe.dispose()
 
 
 def orchestrate(args, source_sha, sources):
     """Own each child lifecycle in one invocation; never depend on another tool call."""
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
-    started, deadline = time.perf_counter(), time.perf_counter() + 160
+    pool_abba = args.mode == "pool-abba"
+    duration_limit = 120 if pool_abba else 160
+    started, deadline = time.perf_counter(), time.perf_counter() + duration_limit
     receipt = {
         "source_sha": source_sha,
         "imported_modules": sources,
         "argv": sys.argv,
         "started_at": datetime.now(UTC).isoformat(),
-        "duration_limit_seconds": 160,
+        "duration_limit_seconds": duration_limit,
+        "pool_abba": pool_abba,
         "continuation_observation_only": args.continue_observation,
         "commands": [],
         "servers": [],
+        "pool_segments": [],
     }
     command = [sys.executable, str(Path(__file__).resolve()), "--execute-stage-b"]
-    fixture = args.fixture if args.continue_observation else args.output / "bootstrap/fixture.json"
+    fixture = (
+        args.fixture
+        if args.continue_observation or pool_abba
+        else args.output / "bootstrap/fixture.json"
+    )
+    previous_alarm = None
+    if pool_abba:
+        if signal.getitimer(signal.ITIMER_REAL)[0]:
+            raise RuntimeError("ABBA controller cannot replace an existing process deadline")
+        if fixture.stat().st_mode & 0o077:
+            raise ValueError("Existing profile fixture must remain private")
+        receipt["fixture_sha256"] = hashlib.sha256(fixture.read_bytes()).hexdigest()
+
+        def cleanup_deadline(_signum, _frame):
+            raise TimeoutError("ABBA active window ended; reserved cleanup time begins")
+
+        previous_alarm = signal.signal(signal.SIGALRM, cleanup_deadline)
+        signal.setitimer(signal.ITIMER_REAL, duration_limit - 10)
 
     def client(name, *options):
         argv = [*command, *options, "--output", str(args.output / name)]
         entry = {"argv": argv, "started_at": datetime.now(UTC).isoformat()}
         receipt["commands"].append(entry)
         try:
+            remaining = deadline - time.perf_counter() - (10 if pool_abba else 5)
+            if remaining <= 0:
+                raise TimeoutError("Controller cleanup reserve reached")
             with (args.output / f"{name}.log").open("x") as log:
                 result = subprocess.run(
                     argv,
                     stdout=log,
                     stderr=subprocess.STDOUT,
-                    timeout=max(0.1, min(45, deadline - time.perf_counter() - 5)),
+                    timeout=min(45, remaining),
                 )
             entry["exit_code"] = result.returncode
         except subprocess.TimeoutExpired:
@@ -64,14 +115,22 @@ def orchestrate(args, source_sha, sources):
         if result.returncode:
             raise RuntimeError("Diagnostic child failed; preserve output and stop")
         data = json.loads((args.output / name / "client-metadata.json").read_text())
+        if pool_abba and (
+            data["fixture_sha256"] != receipt["fixture_sha256"] or data["source_sha"] != source_sha
+        ):
+            raise RuntimeError("ABBA source or private fixture changed during the comparison")
         print(f"{name}: requests={data['requests']} failures={data['failures']}", flush=True)
         return data
 
     try:
         modes = (
-            ("timings", "profile")
-            if args.continue_observation
-            else ("baseline", "timings", "profile")
+            ("A1", "B1", "B2", "A2")
+            if pool_abba
+            else (
+                ("timings", "profile")
+                if args.continue_observation
+                else ("baseline", "timings", "profile")
+            )
         )
         for mode in modes:
             try:
@@ -79,15 +138,29 @@ def orchestrate(args, source_sha, sources):
                     raise RuntimeError("Diagnostic port is already occupied")
             except ConnectionRefusedError:
                 pass
+            if pool_abba:
+                others = profile_connections()
+                receipt.setdefault("preflight", []).append(
+                    {
+                        "segment": mode,
+                        "other_profile_connections": others,
+                        "port_free": True,
+                        "visibility": "current app-visible PROCESSLIST; not cross-account proof",
+                    }
+                )
+                if others:
+                    raise RuntimeError("Another profile connection is active")
             argv = [
                 *command,
                 "--mode",
-                mode,
+                "timings" if pool_abba else mode,
                 "--seconds",
-                "120",
+                "30" if pool_abba else "120",
                 "--output",
                 str(args.output / f"server-{mode}"),
             ]
+            if pool_abba:
+                argv.extend(("--pool-retention", mode[0]))
             with (args.output / f"server-{mode}.log").open("x") as log:
                 server = subprocess.Popen(argv, stdout=log, stderr=subprocess.STDOUT)
                 entry = {
@@ -97,7 +170,7 @@ def orchestrate(args, source_sha, sources):
                 }
                 receipt["servers"].append(entry)
                 try:
-                    ready_by = min(deadline - 5, time.perf_counter() + 8)
+                    ready_by = min(deadline - (10 if pool_abba else 5), time.perf_counter() + 8)
                     while True:
                         if server.poll() is not None or time.perf_counter() >= ready_by:
                             raise RuntimeError("Diagnostic server did not become ready")
@@ -106,7 +179,22 @@ def orchestrate(args, source_sha, sources):
                                 break
                         except ConnectionRefusedError:
                             time.sleep(0.05)
-                    if mode == "baseline":
+                    if pool_abba:
+                        for phase, seconds in (("warmup", 1), ("steady", 4)):
+                            client(
+                                f"{mode}-{phase}",
+                                "--mode",
+                                "client",
+                                "--fixture",
+                                str(fixture),
+                                "--concurrency",
+                                "32",
+                                "--seconds",
+                                str(seconds),
+                                "--sample-phase",
+                                phase,
+                            )
+                    elif mode == "baseline":
                         client(
                             "bootstrap",
                             "--mode",
@@ -129,7 +217,9 @@ def orchestrate(args, source_sha, sources):
                             raise RuntimeError(
                                 "Sanity must validate all three candidate categories"
                             )
-                    for concurrency in (1,) if mode == "profile" else (1, 8, 32):
+                    for concurrency in (
+                        () if pool_abba else (1,) if mode == "profile" else (1, 8, 32)
+                    ):
                         sample = client(
                             f"{mode}-{concurrency}",
                             "--mode",
@@ -159,23 +249,118 @@ def orchestrate(args, source_sha, sources):
                     except subprocess.TimeoutExpired:
                         entry["forced_kill"] = True
                         server.kill()
-                        server.wait(timeout=5)
+                        server.wait(timeout=1 if pool_abba else 5)
                     entry.update(
                         exit_code=server.returncode, ended_at=datetime.now(UTC).isoformat()
                     )
+                    if pool_abba:
+                        try:
+                            with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
+                                entry["port_free_after"] = False
+                        except ConnectionRefusedError:
+                            entry["port_free_after"] = True
                 if server.returncode or entry.get("forced_kill"):
                     raise RuntimeError("Diagnostic server did not stop normally")
+                if pool_abba:
+                    if not entry["port_free_after"]:
+                        raise RuntimeError("Diagnostic port remains occupied")
+                    receipt["pool_segments"].append(pool_segment_summary(args.output, mode))
     except Exception as error:
         receipt["failure"] = type(error).__name__
         raise
     finally:
+        if pool_abba:
+            try:
+                receipt["profile_connections_after"] = profile_connections()
+                if receipt["profile_connections_after"]:
+                    receipt["postcheck_error"] = "VisibleProfileConnectionsRemain"
+            except Exception as error:
+                receipt["postcheck_error"] = type(error).__name__
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            signal.signal(signal.SIGALRM, previous_alarm)
         receipt.update(
             ended_at=datetime.now(UTC).isoformat(), wall_seconds=time.perf_counter() - started
         )
+        receipt["all_own_children_exited"] = all(
+            "exit_code" in server for server in receipt["servers"]
+        )
+        if pool_abba and receipt["wall_seconds"] > duration_limit:
+            receipt["duration_budget_exceeded"] = True
         (args.output / "orchestrator-metadata.json").write_text(
             json.dumps(receipt, indent=2) + "\n"
         )
+    if receipt.get("duration_budget_exceeded"):
+        raise TimeoutError("ABBA controller exceeded its bounded window")
+    if receipt.get("postcheck_error"):
+        raise RuntimeError("Final profile connection check was not clean")
     return 0
+
+
+def distribution_ns(values):
+    ordered = sorted(values)
+    return {
+        "count": len(ordered),
+        "mean_ms": sum(ordered) / len(ordered) / 1e6 if ordered else None,
+        "p95_ms": ordered[math.ceil(0.95 * len(ordered)) - 1] / 1e6 if ordered else None,
+    }
+
+
+def pool_segment_summary(output, name):
+    server = output / f"server-{name}"
+    metadata = json.loads((server / "metadata.json").read_text())
+    observed = [json.loads(line) for line in (server / "requests.jsonl").read_text().splitlines()]
+    lifecycle = json.loads((server / "pool-lifecycle.json").read_text())
+    result = {
+        "segment": name,
+        "pool_size": metadata["pool_size"],
+        "max_overflow": metadata["max_overflow"],
+        "phases": {},
+        "lifecycle": lifecycle["summary"],
+        "server_metadata": metadata,
+    }
+    for phase in ("warmup", "steady"):
+        client = output / f"{name}-{phase}"
+        info = json.loads((client / "client-metadata.json").read_text())
+        rows = [json.loads(line) for line in (client / "client.jsonl").read_text().splitlines()]
+        ids = [row.get("request_id") for row in rows]
+        records = [row for row in observed if row["sample_phase"] == phase]
+        matched = (
+            None not in ids
+            and len(ids) == len(set(ids))
+            and Counter(ids) == Counter(row.get("request_id") for row in records)
+        )
+        if (
+            not matched
+            or metadata["dropped_records"]
+            or any(
+                row["endpoint_dispatch_count"] != 1 or "runtime" not in row["phases"]
+                for row in records
+            )
+        ):
+            raise RuntimeError("Pool diagnostic request observations are incomplete")
+        acquire = [row["phases"].get("db_acquire_and_pre_ping", [0, 0, 0]) for row in records]
+        if any(value[0] != 1 for value in acquire):
+            raise RuntimeError("Pool diagnostic acquire count is not exactly one per request")
+        result["phases"][phase] = {
+            **info,
+            "e2e": distribution_ns(row["e2e_ns"] for row in rows),
+            "success_throughput_per_second": sum(row["valid"] for row in rows)
+            / (info["sample_active_wall_ns"] / 1e9),
+            "error_codes": dict(
+                Counter(str(row.get("error_code")) for row in rows if not row["valid"])
+            ),
+            "exceptions": dict(Counter(row["exception"] for row in rows if "exception" in row)),
+            "request_id_matches_exact": matched,
+            "acquire_inclusive_wall": distribution_ns(value[1] for value in acquire),
+            "acquire_thread_cpu": distribution_ns(value[2] for value in acquire),
+        }
+    if lifecycle["summary"]["open_after_dispose"] or lifecycle["summary"]["peak_open"] > 15:
+        raise RuntimeError("Pool physical connection budget or cleanup violated")
+    if lifecycle["summary"]["phase_counts"]["unclassified"]:
+        raise RuntimeError("Pool events have no reliable warmup/steady attribution")
+    if lifecycle["summary"]["failed_calls"] or lifecycle["summary"]["ping_returned_false"]:
+        raise RuntimeError("Pool diagnostic observed a failed DBAPI lifecycle call")
+    return result
 
 
 def client_run(args, source_sha):
@@ -288,13 +473,26 @@ def client_run(args, source_sha):
             target.chmod(0o600)
             records = []
     else:
-        fixture = json.loads(args.fixture.read_text())
-        deadline = time.perf_counter() + args.seconds
+        fixture_bytes = args.fixture.read_bytes()
+        fixture = json.loads(fixture_bytes)
+        clock = {"deadline": time.perf_counter() + args.seconds}
+
+        def release_workers():
+            clock["active_started_ns"] = time.perf_counter_ns()
+            clock["deadline"] = time.perf_counter() + args.seconds
+
+        gate = (
+            threading.Barrier(args.concurrency, action=release_workers)
+            if args.sample_phase
+            else None
+        )
 
         def worker(index):
             rows, count = [], 0
             with httpx.Client(base_url=_URL, timeout=30, trust_env=False) as client:
-                while time.perf_counter() < deadline and (
+                if gate:
+                    gate.wait(timeout=5)
+                while time.perf_counter() < clock["deadline"] and (
                     not args.max_requests or count < args.max_requests
                 ):
                     candidate = fixture["candidates"][(index + count) % 3]
@@ -304,7 +502,14 @@ def client_run(args, source_sha):
                         result = client.post(
                             _URL + f"/projects/{fixture['project_id']}/contract-validations",
                             json=candidate,
-                            headers={"Authorization": "Bearer " + fixture["token"]},
+                            headers={
+                                "Authorization": "Bearer " + fixture["token"],
+                                **(
+                                    {"X-T44-Pool-Phase": args.sample_phase}
+                                    if args.sample_phase
+                                    else {}
+                                ),
+                            },
                         )
                         row.update(
                             status=result.status_code,
@@ -336,6 +541,7 @@ def client_run(args, source_sha):
             records = [
                 row for batch in executor.map(worker, range(args.concurrency)) for row in batch
             ]
+        clock["active_ended_ns"] = time.perf_counter_ns()
         with (args.output / "client.jsonl").open("x") as stream:
             for row in records:
                 stream.write(json.dumps(row) + "\n")
@@ -346,7 +552,14 @@ def client_run(args, source_sha):
         "mode": args.mode,
         "concurrency": args.concurrency,
         "requested_seconds": args.seconds,
+        "sample_phase": args.sample_phase,
+        "fixture_sha256": hashlib.sha256(fixture_bytes).hexdigest()
+        if args.mode == "client"
+        else None,
         "actual_wall_ns": time.perf_counter_ns() - started,
+        "sample_active_wall_ns": clock["active_ended_ns"] - clock.get("active_started_ns", started)
+        if args.mode == "client"
+        else None,
         "process_cpu_ns": time.process_time_ns() - cpu,
         "requests": len(records),
         "failures": sum(not row["valid"] for row in records),
@@ -380,6 +593,80 @@ def measured(name, function):
                 phase[2] += time.thread_time_ns() - cpu
 
     return invoke
+
+
+class PoolLifecycle:
+    """Only the diagnostic engine's actual DBAPI calls, including final disposal."""
+
+    def __init__(self, engine):
+        self.phase, self.events, self.open, self.peak = "startup", [], set(), 0
+        self.lock = threading.Lock()
+        for method, kind in (("connect", "connect"), ("do_ping", "ping"), ("do_close", "close")):
+            setattr(engine.dialect, method, self.wrap(kind, getattr(engine.dialect, method)))
+
+    def wrap(self, kind, function):
+        @functools.wraps(function)
+        def call(*args, **kwargs):
+            record = _RECORD.get()
+            phase = record["sample_phase"] if record is not None else self.phase
+            before, cpu, success, value = time.perf_counter_ns(), time.thread_time_ns(), False, None
+            error_name = None
+            try:
+                value = function(*args, **kwargs)
+                success = True
+                return value
+            except BaseException as error:
+                error_name = type(error).__name__
+                raise
+            finally:
+                wall, thread_cpu = time.perf_counter_ns() - before, time.thread_time_ns() - cpu
+                with self.lock:
+                    if success and kind == "connect":
+                        self.open.add(id(value))
+                        self.peak = max(self.peak, len(self.open))
+                    elif success and kind == "close":
+                        self.open.discard(id(args[0]))
+                    self.events.append(
+                        {
+                            "kind": kind,
+                            "phase": phase,
+                            "success": success,
+                            "ping_returned_false": kind == "ping" and value is False,
+                            "error_class": error_name,
+                            "wall_ns": wall,
+                            "thread_cpu_ns": thread_cpu,
+                            "at_monotonic_ns": before,
+                        }
+                    )
+
+        return call
+
+    def save(self, output, before_dispose):
+        summary = {
+            "phase_counts": {
+                phase: dict(
+                    Counter(event["kind"] for event in self.events if event["phase"] == phase)
+                )
+                for phase in ("startup", "warmup", "steady", "cleanup", "unclassified")
+            },
+            "failed_calls": sum(not event["success"] for event in self.events),
+            "ping_returned_false": sum(event["ping_returned_false"] for event in self.events),
+            "peak_open": self.peak,
+            "open_after_dispose": len(self.open),
+            "before_dispose": before_dispose,
+        }
+        (output / "pool-lifecycle.json").write_text(
+            json.dumps(
+                {
+                    "summary": summary,
+                    "events": self.events,
+                    "units": "actual dialect DBAPI call attempts; failures and cleanup separate",
+                },
+                indent=2,
+            )
+            + "\n"
+        )
+        return summary
 
 
 def instrument(app, engine, output, profile):
@@ -484,8 +771,10 @@ class ObservedASGI:
     async def __call__(self, scope, receive, send):
         if scope["type"] != "http":
             return await self.app(scope, receive, send)
+        phase = dict(scope.get("headers", [])).get(b"x-t44-pool-phase", b"")
         record = {
             "sample_id": uuid4().hex,
+            "sample_phase": {b"warmup": "warmup", b"steady": "steady"}.get(phase, "unclassified"),
             "asgi_started": time.perf_counter_ns(),
             "operation": None,
             "phases": {},
@@ -536,7 +825,15 @@ def main():
     parser.add_argument("--execute-stage-b", action="store_true")
     parser.add_argument(
         "--mode",
-        choices=("baseline", "timings", "profile", "bootstrap", "client", "orchestrate"),
+        choices=(
+            "baseline",
+            "timings",
+            "profile",
+            "bootstrap",
+            "client",
+            "orchestrate",
+            "pool-abba",
+        ),
         required=True,
     )
     parser.add_argument("--seconds", type=int, default=30)
@@ -544,6 +841,8 @@ def main():
     parser.add_argument("--credentials", type=Path)
     parser.add_argument("--fixture", type=Path)
     parser.add_argument("--continue-observation", action="store_true")
+    parser.add_argument("--pool-retention", choices=tuple(_POOL_CHOICES))
+    parser.add_argument("--sample-phase", choices=("warmup", "steady"))
     parser.add_argument("--concurrency", type=int, choices=(1, 8, 32), default=1)
     parser.add_argument("--max-requests", type=int, default=0)
     args = parser.parse_args()
@@ -555,6 +854,27 @@ def main():
         parser.error(
             "Observation continuation requires orchestrate and an existing private fixture"
         )
+    if args.pool_retention and args.mode != "timings":
+        parser.error("A/B settings are restricted to a diagnostic timings server")
+    if args.sample_phase and args.mode != "client":
+        parser.error("Warmup/steady tags are restricted to a diagnostic client")
+    if args.mode == "pool-abba" and (
+        args.fixture is None
+        or any(
+            argument.split("=", 1)[0]
+            in (
+                "--seconds",
+                "--concurrency",
+                "--max-requests",
+                "--credentials",
+                "--pool-retention",
+                "--sample-phase",
+                "--continue-observation",
+            )
+            for argument in sys.argv[1:]
+        )
+    ):
+        parser.error("ABBA requires an existing fixture and fixed32/1s+4s/A-B-B-A settings")
     if (
         args.mode in ("bootstrap", "orchestrate")
         and not args.continue_observation
@@ -585,6 +905,8 @@ def main():
         "t44.services.reviews",
         "t44.services.workflow",
         "t44.persistence.rows",
+        "t44.persistence.engine",
+        "t44.persistence.uow",
     ):
         path = Path(importlib.import_module(name).__file__).resolve()
         if not path.is_relative_to(source_root / "backend/t44"):
@@ -595,6 +917,16 @@ def main():
         "file": str(contract),
         "sha256": hashlib.sha256(contract.read_bytes()).hexdigest(),
     }
+    for resource in (
+        "resources/review-template.json",
+        "resources/escalation-rules.json",
+        "persistence/schema_v1.sql",
+    ):
+        path = source_root / "backend/t44" / resource
+        sources[resource] = {
+            "file": str(path),
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
     dirty = subprocess.check_output(
         [
             "git",
@@ -610,14 +942,43 @@ def main():
     )
     if dirty:
         raise ValueError("Diagnostic source must be committed before stage B")
+    if args.mode == "pool-abba" or args.pool_retention:
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(source_root),
+                "diff",
+                "--exit-code",
+                "bc5aef9c62393134582affb7a690acb33ac2b833",
+                "--",
+                "backend/t44",
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+        )
+        if version("sqlalchemy") != "2.1.6":
+            raise ValueError("Pool diagnosis requires the verified SQLAlchemy2.1.6 runtime")
+        verified = json.loads(
+            (source_root / "agents/database/pool-retention/source-verification.json").read_text()
+        )
+        for filename in ("impl.py", "base.py"):
+            name = "sqlalchemy.pool." + filename.removesuffix(".py")
+            path = Path(importlib.import_module(name).__file__).resolve()
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest != verified["sources"][filename]["official_sha256"]:
+                raise ValueError("Actual pool source differs from verified official2.1.6 bytes")
+            sources[name] = {"file": str(path), "sha256": digest}
     source_sha = subprocess.check_output(
         ["git", "-C", str(source_root), "rev-parse", "HEAD"], text=True
     ).strip()
     if args.mode in ("bootstrap", "client"):
         return client_run(args, source_sha)
-    if args.mode == "orchestrate":
+    if args.mode in ("orchestrate", "pool-abba"):
         return orchestrate(args, source_sha, sources)
     args.output.mkdir(mode=0o700, parents=False, exist_ok=False)
+    if args.pool_retention:
+        db = pool_settings(db, args.pool_retention)
     engine = create_mysql_engine(db)
     app = create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
     effective = {}
@@ -632,6 +993,9 @@ def main():
     if args.mode != "baseline":
         instrument(app, engine, args.output, args.mode == "profile")
         observer = ObservedASGI(app)
+    if args.pool_retention and (engine.pool.checkedin() or engine.pool.checkedout()):
+        raise RuntimeError("Diagnostic lifecycle observer must precede any connection")
+    lifecycle = PoolLifecycle(engine) if args.pool_retention else None
     server = uvicorn.Server(
         uvicorn.Config(observer or app, host="127.0.0.1", port=18083, workers=1, access_log=False)
     )
@@ -646,7 +1010,21 @@ def main():
     finally:
         signal.signal(signal.SIGTERM, previous_term)
         timer.cancel()
-        engine.dispose()
+        before_dispose = {
+            "checked_out": engine.pool.checkedout(),
+            "checked_in": engine.pool.checkedin(),
+            "overflow": engine.pool.overflow(),
+            "retained_capacity": engine.pool.size(),
+            "overflow_capacity": engine.pool._max_overflow,
+        }
+        if lifecycle:
+            lifecycle.phase = "cleanup"
+        cleanup_error = None
+        try:
+            engine.dispose()
+        except Exception as error:
+            cleanup_error = type(error).__name__
+        pool_summary = lifecycle.save(args.output, before_dispose) if lifecycle else None
         metadata = {
             "started_at": started_at,
             "ended_at": datetime.now(UTC).isoformat(),
@@ -662,6 +1040,12 @@ def main():
             "database": "t44_profile",
             "pool_size": db.pool_size,
             "max_overflow": db.max_overflow,
+            "pool_retention_label": args.pool_retention,
+            "pool_pre_ping": engine.pool._pre_ping,
+            "pool_use_lifo": engine.pool._pool.use_lifo,
+            "pool_reset_on_return": str(engine.pool._reset_on_return),
+            "pool_lifecycle": pool_summary,
+            "cleanup_error_class": cleanup_error,
             "packages": {
                 name: version(name) for name in ("fastapi", "starlette", "sqlalchemy", "uvicorn")
             },
@@ -677,6 +1061,15 @@ def main():
             with (args.output / "requests.jsonl").open("x") as stream:
                 for record in observer.records:
                     stream.write(json.dumps(record) + "\n")
+        if cleanup_error or (
+            lifecycle
+            and (
+                before_dispose["checked_out"]
+                or pool_summary["open_after_dispose"]
+                or pool_summary["peak_open"] > 15
+            )
+        ):
+            raise RuntimeError("Diagnostic engine cleanup or connection budget failed")
 
 
 if __name__ == "__main__":

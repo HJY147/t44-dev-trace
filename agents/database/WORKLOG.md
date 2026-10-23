@@ -232,3 +232,27 @@
 - 产品精确checkpoint 3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a已push，skip ci；root已收SHA待小审固定方法。随后原source_count.py/cloc2.10对该提交实测应用6186/within_range=false/--require-range退出1，final-committed-cloc.json；相对基线6124真实+62，不将归档成功说成规模通过。
 - 已通过GitHub connector在Issue4/28实际发完整阶段交接，再用各comments/:id精确GET读回，两个返回body与实际本地正文逐字相同；github-readback.json保留endpoint/id/body/时间/作者/equality。链接Issue4#issuecomment-6373901751、Issue28#issuecomment-6373902163。没有关Issue、开完整CI、设review成功或将本岗自测写成独立验收。
 - 当前收尾仅证据/记录，产品、两自测源码与3b7bc0c完全相同；本岗作用域完成并释放槽，后续精确review/后端接入/组合CI由root调度。
+
+
+## ROLE-database-POOL-RETENTION-v1：同15峰值的保留池诊断先设计
+- 从root当前2a0f091（含ff7ffa8公开backend诊断证据）创建独立codex/database-pool-retention/worktree，根索引与未跟踪打包工具未动。读根61b23e6先行RFC及公开bc5 result/continuation；未读独立私密材料。
+- 核锁backend requirements与实际backend/.venv SQLAlchemy2.1.6，本机pool impl.py/base.py与官方rel_2_1_6 raw逐字/hash相同；source-verification.json保留实际方法行号/hash。首次系统CA失败后使用既有certifi CA保持验证成功，不绕TLS；未用不匹配版本文档代替实际代码。
+- 真实QueuePool按返还队列满时close/减少overflow，懒建连接且A5+10/B15+0同15峰值；B最多保留更多空闲会话/内存，不是零成本。acquire inclusive不是纯pool等待，旧并发32新连211不能回填正式三组根因。
+- 先提交精确工具设计/命令/预算，955仅最小扩展pool-abba、固定A/B与预热/稳态/清理阶段和真实DBAPI计数；不改生产/默认池/SQL/锁/线程/全局参数。实际比较须root窗口，当前没有HTTP/SQL/负载。
+
+- 设计42a8bcb已push后仅编辑955：新增固定pool-abba复用原控制器/客户端/仪表/server；同步32客户端后1/4秒相位计时，分别记录warmup/steady/cleanup；A/B只替换本地db副本，旧生产与默认不动。增加真实DBAPI connect/ping/do_close尝试及异常类/false ping/线程CPU，完整request_id/acquire计数和最近秩P95，不平均四段。
+- 过程内110秒截止预留10秒清理、子进程finally与端口检查；fixture0600/hash、2.1.6版本/官方源hash、已提交工具与bc5全部应用字节守卫。预检只有app可见本库PROCESSLIST0，已向root明确不能当跨账号全局无连接证明。
+- 工具静态首轮I001仅新增dataclasses import顺序，ruff-tool-run1.log保留；整理及格式化后最终限定Ruff通过，AST与生产bc5/14冻结hash全同（production-boundaries.json）。首次一个apply_patch上下文因格式化插空行未命中，无文件部分改动；定位后修正。尚未导入工具、HTTP/SQL/负载，工具commit后才做离线合成检查。
+
+- 工具checkpoint14490fe已push后完成离线验证（offline-validation.json/log）：导入零网络/进程；实际QueuePool2.1.6+合成DBAPI两波15借用证A5保留/10溢出与B15保留/0溢出，峰值15/最终open0；透明ASGI、4类CLI拒绝、mock固定ABBA8相位32/1s4s及首失败停止/清理、nearest-rank均通过。不是MySQL/HTTP或负载样本。
+- root明确授予独占执行窗口且native等待；先补统一profile_connections前/后计数helper并提交0f6fdf5，随后offline-final-probe验证绑定只查t44_profile/总dispose、startup异常后仍后检；旧离线已覆盖的9函数/类源码相同，当前工具hash与source边界已保存。仍没有实际HTTP/SQL/ABBA。
+- 具体执行argv/私密env路径/源hash/外层116+2+1秒进程组清理计划execution-plan.json先commit；22:35既有fixture原样使用，不刷新session、不改旧fixture/TTL或业务数据。将先报startUTC再运行一次，完成或失败立即释放窗口。
+
+- 原唯一ABBA实际2026-10-23T23:02:14.376665Z–23:02:53.234248Z/38.842秒含清理/exit0，源f75a8a4，实际argv已先冻结。start前通知root，结束清理后立即通知root释放窗口，之后没有第二次样本、额外profile/HTTP/SQL。native可随后启动。
+- 实际A1/B1/B2/A2稳态2079/2255/2237/2113请求、全部失败0，nearest-rank P95(ms)91.591041/74.471792/72.908250/92.600542分别保留不平均。稳态新建436/0/0/427、关闭436/0/0/427、ping1643/2255/2237/1686；预热新建112/15/15/109未删，清理关闭5/15/15/5。观察峰值全15、dispose前checkedout0/idle5或15、dispose后open0。
+- 18083前后free，4自有server exit0且PID最终不存在；每段前app可见profile其他连接0，最终0，保留跨账号不可见局限，未扩权限。22:35原fixture未刷新/未修改，前后bytes hash及8个client相同。只有contract只读候选，无业务fixture创建/seed/清库。
+- 离线逐请求核10882（warmup2198/steady8684）全部client-server恰1关联、HTTP200/原valid守卫；恰1endpoint/runtime/authenticate/acquire/checkout，三候选cursor4/5/5全SELECT/SQL错误0。19实际应用/资源/池源hash与bc5/官方2.1.6一致；14冻结仍全同，生产净改0。
+- 43份实际原件按原bytes gzip存raw并以raw-manifest.json绑定原始与gzip SHA。扫描已知DB口令/完整DSN/fixtureToken/Authorization标记匹配0，未输出值；result.md/summary.json写真实4段原值、acquire inclusive与线程CPU、钩子/本机竞争/短样本限制、B每worker多10idle及未测内存。支持本次减少重建假设，不作正式根因/显著性/生产准入。
+
+- 实际结果9d1deff3592d12e169f30a25537540c93096abf0已push。随后通过GitHub connector向Issue4/3实际发表完整阶段交接，并各comments/:id精确GET读回，正文与真实提交和本地文件逐字一致：Issue4#issuecomment-6376531906、Issue3#issuecomment-6376532216；github-readback.json保留endpoint/id/body/time/actor/hash。没有设review成功或关Issue/改生产准入。
+- 收尾逐一解压43份public gzip并核原bytes/gzip SHA全同；summary补实际回执。955与执行源f75a8a4字节相同、生产仍bc5；本阶段已完成，只有离线归档，没有第二次比较或额外HTTP/SQL/本机负载，释放实例槽。
