@@ -1,0 +1,98 @@
+{
+  "version": "1.1.0",
+  "frozen_at": "2026-10-23T20:38:48.801605+08:00",
+  "coordinator": "AI /root",
+  "source_commit": "b13888a77a4e95a8fef4c806b5e7a36454c7fec0",
+  "parent": {
+    "version": "1.0.0",
+    "freeze_commit": "ae60dc37fdaefecaca33e734a354add6ba9ebe29",
+    "manifest": "records/spec-freezes/v1.json",
+    "manifest_sha256": "af4fba17980568da8407c7ecfbe0523a1074dc610ba10e4fde599032428b4b19",
+    "all_11_historical_hashes_recoverable": true
+  },
+  "human_decisions": [
+    "D001",
+    "D004",
+    "D005",
+    "D006"
+  ],
+  "human_change_inputs": {
+    "records/decisions/D005-capacity-lifecycle-adopted.md": "b7be7308ea6aae4e973f55923cb6e9bc8d95cd5df48dc8513958774be59f67d6",
+    "records/decisions/D006-rolled-back-capacity-adopted.md": "2f08fdf3ce5cf400e5c0da19e203b2e3b57a52b5285884e5f72f882d2b40c0cd",
+    "records/prompts/U015-original.md": "8e658b1e733d9fc222c2f41ac9c84a75e8470f6b615108596b6796d49bf55d29",
+    "records/prompts/U016-original.md": "103f31a3763e24028d2cd9060d1d0178c69a5488469b7642c2fb444eab66ddec"
+  },
+  "reviewed_design_head": "59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e",
+  "review_evidence_commit": "117a69c1745b29f0b5be9306abb348933521ff45",
+  "review_report": "reports/reviews/capacity-v11-freeze-59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e.md",
+  "review_scope": "Limited requirements/API/persistence consistency admission; not product approval. All reviewed input hashes still match.",
+  "semantic_changes": [
+    "Assignment target must have current iteration capacity after valid-developer validation; retain OWNER_NOT_PROJECT_DEVELOPER error precedence.",
+    "Iteration plan changes must preserve all owners of states1-5 tasks in that iteration, not only removed old entries.",
+    "States6/7 may leave iteration capacity; rework from7 must revalidate effective staffing before activation. Project member protection1-5+7 and D002 assignment states unchanged.",
+    "Assignment joins project lock scope; preserve auth/idempotency/CAS/audit/transaction and all prior error ordering.",
+    "Reuse CAPACITY_REFERENCE_INVALID; add assignment/rework 422 declarations; metadata info.version and Meta.contract_version.const become1.1.0."
+  ],
+  "intentionally_changed_parent_files": [
+    "AGENTS.md",
+    "specs/requirements.md",
+    "specs/business-rules.md",
+    "specs/backend-design.md",
+    "specs/contracts/openapi.json",
+    "specs/contracts/README.md",
+    "specs/database/field-dictionary.md",
+    "specs/database/persistence-contract.md"
+  ],
+  "invariants": {
+    "paths": 31,
+    "operations": 38,
+    "schemas": 130,
+    "api_prefix": "/api/v1",
+    "business_tables": 18,
+    "columns": 226,
+    "ddl_unchanged": true,
+    "new_error_codes": false,
+    "budget_algorithm_added": false
+  },
+  "files": {
+    "AGENTS.md": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b",
+    "specs/requirements.md": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc",
+    "specs/business-rules.md": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2",
+    "specs/backend-design.md": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda",
+    "specs/contracts/openapi.json": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+    "specs/contracts/README.md": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+    "specs/database/field-dictionary.md": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+    "specs/database/schema.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "specs/database/persistence-contract.md": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+    "docs/collaboration/implementation-layout.md": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+    "docs/reviews/review-protocol.md": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+    "backend/t44/contracts/openapi.json": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+    "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "specs/changes/capacity-lifecycle-v1.1.md": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98"
+  },
+  "checkpoint_timing": {
+    "requirements_commit": "42d3515",
+    "database_contract_commit": "705e7b7ce63f15b583ba1a7d943ae1e4ae8bfed1",
+    "api_contract_checkpoint": "90e01f6f38bf8c51550a3576809f6ee6af082f99",
+    "owner_description_and_fixture_correction": "aa748d126a6c27a985fa6f8092198538f8f85c35",
+    "new_business_guards_committed_or_deployed_at_freeze": false,
+    "uncommitted_draft_disclosure": "After approved RFC, backend had local guard/test drafts and one local draft regression before the stricter contract-first sequencing message. Those drafts were excluded from both contract checkpoints and runtime; not described as post-freeze execution. New actual implementation/verification follows this freeze."
+  },
+  "design_validation": {
+    "owner_checks": 1130,
+    "owner_failed_checks_after_fixture_sync": 0,
+    "owner_after_log": "agents/backend/capacity-v11-995-after.log",
+    "reviewer_structural_checks": 129,
+    "original_root_failure_receipt": "records/validation/capacity-v11-contract-final-attempt1.json",
+    "meaning": "Design/schema-only; obsolete fixture version corrected without lowering original assertions."
+  },
+  "does_not_prove": [
+    "implementation completion",
+    "migration execution",
+    "independent acceptance",
+    "coverage",
+    "performance",
+    "source-size compliance",
+    "student-authored research or human-edit quotas"
+  ]
+}

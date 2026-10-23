@@ -1,0 +1,157 @@
+{
+  "prompt_ref": "ROLE-database-CAPACITY-V11-CONTRACTS-v1",
+  "base": "eac253039cd85873d3b262e648b2b74d94d715a8",
+  "scope": "Static document/relative-link/hash checks only; no product tests, MySQL, migration, coverage or performance execution",
+  "original_v1": {
+    "parent": "ae60dc3",
+    "version": "1.0.0",
+    "manifest_unchanged": true,
+    "eleven_original_hashes_match_parent": {
+      "AGENTS.md": true,
+      "specs/requirements.md": true,
+      "specs/business-rules.md": true,
+      "specs/backend-design.md": true,
+      "specs/contracts/openapi.json": true,
+      "specs/contracts/README.md": true,
+      "specs/database/field-dictionary.md": true,
+      "specs/database/schema.sql": true,
+      "specs/database/persistence-contract.md": true,
+      "docs/collaboration/implementation-layout.md": true,
+      "docs/reviews/review-protocol.md": true
+    }
+  },
+  "ddl": {
+    "tables": 18,
+    "columns": 226,
+    "authoritative_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "packaged_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "unchanged_from_base": true
+  },
+  "dictionary_column_types_unchanged": true,
+  "audit_reason30_unchanged": true,
+  "changed_document_sha256": {
+    "specs/database/field-dictionary.md": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+    "specs/database/persistence-contract.md": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23"
+  },
+  "local_links": [
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../records/spec-freezes/v1.json",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "schema.sql",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../reports/modules/database.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../records/decisions/D005-capacity-lifecycle-adopted.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../records/decisions/D006-rolled-back-capacity-adopted.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../records/prompts/U015-original.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../records/prompts/U016-original.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../changes/capacity-lifecycle-v1.1.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "../../reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/field-dictionary.md",
+      "target": "persistence-contract.md#人力生命周期11事务契约",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../changes/capacity-lifecycle-v1.1.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../records/spec-freezes/v1.json",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "field-dictionary.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "schema.sql",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../records/decisions/D005-capacity-lifecycle-adopted.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../records/prompts/U015-original.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../records/decisions/D006-rolled-back-capacity-adopted.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../records/prompts/U016-original.md",
+      "exists": true,
+      "anchor_ok": true
+    },
+    {
+      "source": "specs/database/persistence-contract.md",
+      "target": "../../reports/reviews/capacity-v11-design-bbc4be681f19a386fbca40baf97a63ab902b3f89.md",
+      "exists": true,
+      "anchor_ok": true
+    }
+  ],
+  "rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+  "api_version_observed_in_base": "1.0.0",
+  "target_backend_managed_version": "1.1.0",
+  "api_not_modified_by_database_role": true,
+  "command_note": "Initial records/user-feedback lookup directory absent; corrected via rg --files records to records/prompts/U015/U016. No product failure inferred."
+}

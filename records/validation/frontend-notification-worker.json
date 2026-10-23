@@ -1,0 +1,26 @@
+{
+  "scope": "development database only",
+  "event": {
+    "id": 173,
+    "status": 4
+  },
+  "notifications": [
+    {
+      "id": "3",
+      "event_id": "173",
+      "recipient_id": "4",
+      "read_at": "2026-10-23 10:06:27.872931",
+      "handled_at": "2026-10-23 10:06:28.223407"
+    },
+    {
+      "id": "4",
+      "event_id": "173",
+      "recipient_id": "5",
+      "read_at": null,
+      "handled_at": null
+    }
+  ],
+  "prior_operator_error": "Initial receipt query incorrectly used is_read/is_handled; actual schema uses read_at/handled_at. Worker cycles had already executed; no event was recreated.",
+  "worker_command": "python -m t44.messaging --once with explicit t44_dev and refused localhost broker",
+  "original_cycle_logs_retained": false
+}

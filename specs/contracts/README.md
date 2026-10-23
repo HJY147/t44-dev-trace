@@ -1,6 +1,23 @@
-# T44 API 契约 1.0.0
+# T44 API 契约 1.1.0
 
-状态：**v1规格已冻结**。用户D001/D004已采用业务及字段/错误取舍，C1–C4限定技术复审通过。`openapi.json` 为 OpenAPI 3.1 / JSON Schema 2020-12，含31路径、38操作；进入完整实现与联调。冻结不表示HTTP、功能、性能或验收已经通过；冻结摘要见records/spec-freezes/v1.json。
+状态：D005/U015、D006/U016业务选择已采用，最终RFC bbc4be6已获限定设计准入。本次显式演进为1.1.0，权威OpenAPI与后端运行副本同步；规格独立冻结清单见`../../records/spec-freezes/v1.1.json`；冻结后才继续业务守卫实现。本合同checkpoint不含新业务生产实现或部署。OpenAPI 3.1 / JSON Schema 2020-12仍含31路径、38操作，路径保持/api/v1，DDL18表226列不变。原1.0.0冻结仍可由ae60dc3及records/spec-freezes/v1.json的11摘要恢复，不改写旧清单或旧验收结论。
+
+## 1.1 容量生命周期增量
+
+依据D005/D006及已审specs/changes/capacity-lifecycle-v1.1.md：接手人先登记当前迭代工时才能转派；仍有本迭代状态1–5任务的负责人必须留在capacity，6/7可移出；7返工前补回有效人力。项目成员/开发角色保护仍为1–5及7，D002禁止开发后转派不放宽，不新增预算耗尽或自动工时分配。
+
+| 操作 | 新版本规则与错误 |
+| --- | --- |
+| createTask | 保留已有负责人有效developer及capacity匹配，不改变原错误分支 |
+| changeTaskAssignment | 仅待受理/blocked-from-pending；原有效developer检查后，在项目锁内核当前迭代capacity，缺失422 CAPACITY_REFERENCE_INVALID |
+| changeIteration | 新capacity包含该迭代所有状态1–5任务owner，查询全量而非old-new差集；缺失422 CAPACITY_REFERENCE_INVALID，不写计划/版本/diff |
+| transitionTask action9 | 保留原权限/版本/状态/证据/依赖守卫，CAS前核当前有效developer及迭代capacity，缺失422 CAPACITY_REFERENCE_INVALID，不写任务/轮次/决策/diff |
+
+复用稳定错误码ID30，不新增枚举。assignment与transition的422 response枚举、x-business-error-codes、x-error-cases及可触发条件同步；info.version与Meta.contract_version.const均为1.1.0，后端运行副本字节一致，前端仍直接导入权威源。
+
+并发顺序为session/idem→project FOR UPDATE→user_id有序members→id有序tasks；assignment加入与createTask/createIteration/changeIteration/rework相同项目锁范围，获锁后重读capacity/owner。移除目标人容量与向其创建/转派/返工竞争，不得留下active owner缺capacity；先合法转派A→B后移除A可依次成功，不能把所有跨资源合法更新强制只成功一次。成功审计/outbox/幂等快照同事务、拒绝独立审计、先重放后新守卫均保持。
+
+下列v1通用表示、状态和事务约定继续沿用；其中历史设计/验证叙述不代替本次1.1实现与验收证据。
 
 ## 依据与范围
 

@@ -1,0 +1,59 @@
+{
+  "verified_at": "2026-10-23T17:28:54.105336+08:00",
+  "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+  "headSha": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083421"
+    },
+    {
+      "name": "frontend",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083555"
+    },
+    {
+      "name": "static",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083717"
+    },
+    {
+      "name": "coverage",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083724"
+    }
+  ],
+  "artifact_coverage_numbers": {
+    "python": {
+      "covered_lines": 2399,
+      "total_lines": 2724,
+      "percent": 88.07,
+      "denominator": "whole backend/t44"
+    },
+    "frontend": {
+      "covered_lines": 308,
+      "total_lines": 334,
+      "percent": 92.21
+    },
+    "coverage_suite": {
+      "passed": 317,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "scope": "已读根归档的JUnit/gate/coverage-summary；四产品job和准确SHA覆盖率结论，不推定独立验收/性能/有效LOC/完整Docker达标",
+  "artifact_archive_commit": "06b9e98",
+  "artifact_sources": [
+    "records/ci/39931640641/junit-summary.json",
+    "records/ci/39931640641/coverage-265d89bd004de626a025d7efe7102fe68b5b2dd3__coverage__gate.json",
+    "records/ci/39931640641/frontend-265d89bd004de626a025d7efe7102fe68b5b2dd3__frontend__coverage__coverage-summary.json"
+  ]
+}

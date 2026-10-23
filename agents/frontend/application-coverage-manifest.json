@@ -1,0 +1,64 @@
+{
+  "include": [
+    "src/**/*.{ts,vue}"
+  ],
+  "exclude": [],
+  "source_files": [
+    "src/App.vue",
+    "src/api.ts",
+    "src/components/DataState.vue",
+    "src/components/FieldEditor.vue",
+    "src/components/LoginView.vue",
+    "src/components/OperationForm.vue",
+    "src/components/PageHeading.vue",
+    "src/components/RecordList.vue",
+    "src/components/RecordView.vue",
+    "src/components/SidebarNavigation.vue",
+    "src/components/TaskDrawer.vue",
+    "src/contract.ts",
+    "src/forms.ts",
+    "src/main.ts",
+    "src/navigation.ts",
+    "src/router.ts",
+    "src/views/NotFoundView.vue",
+    "src/views/WorkspaceView.vue",
+    "src/workspace.ts"
+  ],
+  "files_in_denominator": 19,
+  "thresholds": {
+    "lines": 80
+  },
+  "totals": {
+    "lines": {
+      "total": 334,
+      "covered": 308,
+      "skipped": 0,
+      "pct": 92.21
+    },
+    "statements": {
+      "total": 612,
+      "covered": 540,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "functions": {
+      "total": 223,
+      "covered": 187,
+      "skipped": 0,
+      "pct": 83.85
+    },
+    "branches": {
+      "total": 779,
+      "covered": 671,
+      "skipped": 0,
+      "pct": 86.13
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "limitations": "V8 executable-line coverage, not assertion completeness or independent acceptance. main/router are included at zero."
+}

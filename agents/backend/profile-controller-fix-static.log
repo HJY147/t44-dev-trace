@@ -1,0 +1,13 @@
+Commands (no import, service, DB, HTTP or load):
+.venv/bin/ruff check --config backend/pyproject.toml tmp/backend/955_perf_profile.py
+All checks passed!
+exit0
+.venv/bin/ruff format --config backend/pyproject.toml --check tmp/backend/955_perf_profile.py
+1 file already formatted
+exit0
+.venv/bin/python: ast.parse(Path("tmp/backend/955_perf_profile.py").read_text())
+AST valid
+exit0
+Offline archive verification: 38 files; fixture excluded; 5 known secret literals checked with no values printed; zero matches; archive SHA matches manifest.
+Production diff --quiet 4c20f32 HEAD -- backend/t44: exit0.
+No load rerun after final RuntimeError.

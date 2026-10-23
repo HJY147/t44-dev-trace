@@ -1,146 +1,198 @@
 {
   "role": "documentation",
-  "stage": "团队建立与设计准备；M0本人提交与资料归档",
-  "implementation_status": "未实现",
+  "stage": "M4-TESTS-AND-WORD-v1技术汇编和私密Word审阅材料",
+  "implementation_status": "测试技术汇编与四份私密Word审阅材料完成；bundled LO渲染28页逐页原图QA完成；产品最终验收未通过",
   "artifacts": [
     {
+      "path": "reports/final/test-results-report.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "reports/final/requirements-report.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "reports/final/design-report.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "reports/final/ai-spec-guide.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "reports/final/ai-development-report.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "reports/final/submission-map.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "docs/function-contracts.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "docs/reports/M4-contract-sources.json",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "docs/reports/M4-source-manifest.json",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "scripts/docs/export_review_documents.py",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
+      "path": "agents/documentation/prompts/ROLE-documentation-M4-TESTS-AND-WORD-v1.md",
+      "status": "本岗公开文档/工具/过程"
+    },
+    {
       "path": "agents/documentation/WORKLOG.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "status": "本岗公开文档/工具/过程"
     },
     {
       "path": "reports/modules/documentation.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "status": "本岗公开文档/工具/过程"
     },
     {
       "path": "records/handoffs/documentation.json",
-      "status": "本岗真实归档；不表示产品完成"
+      "status": "本岗公开文档/工具/过程"
     },
     {
-      "path": "agents/documentation/github-stage-comment.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": "agents/documentation/review-documents-pr.md",
+      "status": "本岗公开文档/工具/过程"
     },
     {
-      "path": "docs/reports/collection-log.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": ".submission-private/review-documents/requirements-review.docx",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
+      "git_tracked": false
     },
     {
-      "path": "docs/reports/collection-events.json",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": ".submission-private/review-documents/design-review.docx",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
+      "git_tracked": false
     },
     {
-      "path": "docs/reports/ai-specification-guide.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": ".submission-private/review-documents/test-results-review.docx",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
+      "git_tracked": false
     },
     {
-      "path": "docs/reports/github-comment-verification.json",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": ".submission-private/review-documents/ai-spec-guide-review.docx",
+      "status": "root私密/Git忽略，逐页QA完成的技术审阅材料，非最终验收",
+      "git_tracked": false
     },
     {
-      "path": "docs/reports/documentation-validation.json",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": "docs/reports/M4-word-qa.json",
+      "status": "公开页数/hash/缺陷修正与排版QA结论，无个人值/原图"
     },
     {
-      "path": "reports/final/team-bootstrap-summary.md",
-      "status": "本岗真实归档；不表示产品完成"
+      "path": "docs/reports/M4-word-qa.md",
+      "status": "公开页数/hash/缺陷修正与排版QA结论，无个人值/原图"
+    },
+    {
+      "path": "agents/documentation/github-M4-word-qa-comment.md",
+      "status": "实际已发布评论原文，URL读回核对"
     }
   ],
   "interfaces": {
     "inputs": [
-      "原始T44/作业提交要求",
-      "组织和岗位规范、真实注册表/Issue映射",
-      "八岗真实问答、本人SHA和GitHub评论",
-      "已发布reports/modules/testing.md和records/handoffs/testing.json",
-      "总协调D001业务采用/主干保护/草稿PR最新事实"
+      "内容主基线2e0481f；开发335/88.47和同版容器恢复0448fec原归档",
+      "独立仅公开v1 MD/JSON，以及102f2c9已发布UI MD/JSON",
+      "7c27 C-P4限定复审/5886规模failure；R001原话和M3八图",
+      "私密0600封面仅本地用，不记录具体值"
     ],
     "outputs": [
-      "完整收集原文和失败派工",
-      "AI规格文件说明",
-      "阶段初始化汇总和未实施清单"
+      "test-results-report及当前技术MD、准确函数I/O索引",
+      "四私密Word，28页逐页原图QA完成，技术审阅范围"
     ],
-    "unresolved": [
-      {
-        "role": "reviewer",
-        "status": "followup_task失败，未收到真实答复/本人M0 SHA/评论",
-        "error": "agent thread limit reached",
-        "owner": "coordinator",
-        "authorization": "总协调明确要求不循环重试并接管补派"
-      }
-    ],
-    "testing_boundary": "仅冻结公开报告/交接；未读内部用例/日志，未发消息"
+    "frozen_status": "冻结11文件不改",
+    "responsibility_boundary": "本岗docs/reports/agents/handoff和scripts/docs文档工具；不改产品/测试、不联系独立实例、不读私有证据"
   },
   "commands_executed": [
-    "cat/rg：读取规定来源、规则、本岗TASK、注册表与Issue映射、九岗现有交接；测试限公开两文件",
-    "git status --short --branch；git diff --cached --name-only：逐轮记录分支/暂存区",
-    "git show --format=fuller --stat <本人SHA>：核对八岗footer和文件",
-    "collaboration.followup_task：八岗成功问取；reviewer一次失败，未重试",
-    "python3 /tmp/t44_documentation_collection.py：逐条原文与登记时间归档",
-    "python3 /tmp/t44_documentation_verify_comments.py：gh API核对返回评论与commit正文",
-    "python3 /tmp/t44_documentation_summary.py：根据真实事件生成阶段汇总",
-    "gh issue comment 9 --repo HJY147/t44-dev-trace --body-file agents/documentation/github-stage-comment.md：实际发表并返回URL",
-    "python3 /tmp/t44_documentation_validate.py：文档/JSON/版本证据检查成功，软件测试0",
-    "gh api repos/HJY147/t44-dev-trace/issues/comments/6358459870：本岗阶段评论与正文精确比对成功"
+    "git merge2e0481f fast-forward；switch codex/review-documents",
+    "read AGENTS/documents/create_edit/verify_render/writing_quality；load_workspace_dependencies",
+    "只读公开CI/容器/审核/独立报告及明确UI补充，未跟私有路径",
+    "bundled Node marker create expected4 docx，成功一次；bundled Python轻量author4",
+    "首次完整cutoff参数未核实，在未交付前修正并加git验证；新文档ref与产品cutoff分开",
+    "root明确解除quiet后，指定bundled LO/skill render_docx.py渲染；qa-v4四份共28原PNG逐页打开，原封面也查看"
   ],
   "results": {
-    "completed_role_collections": 8,
-    "requested_roles": 9,
-    "failed_dispatches": 1,
-    "role_commits": [
-      "005ce55dec988a9038c6cc8df91e85698ad84989",
-      "dbd6d0a0b4a6f706a8f096b0cdb36b0d5ecfcc0f",
-      "decc2fa4339b1c00959daefe9fa75b0785ff3032",
-      "253276093ba0557d9446aab358bb02faeb03d845",
-      "9824923236d017a4d288f8be2eed7b36b1650a57",
-      "29ec3401564243dc34f41e6a1bcca81b73528455",
-      "e31f555c3b0d2da7eaef1e1a5229d54ba3dda7c6",
-      "d1191002594ce58107ad0855b542fa31b1cafec4"
-    ],
-    "returned_comments_verified": 15,
-    "product_tests_executed": 0,
-    "acceptance_passed": false,
-    "coverage": null,
-    "performance": null,
-    "reviewer_m0_complete": false,
-    "github_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6358459870",
-    "documentation_validation": "8本人提交父链/范围/footer、15返回评论、公开测试两文件与冻结归档、53行报告和必需JSON字段均核对；无产品测试"
+    "content_cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+    "ci_source": "0448fecb68679978fe6b99483cf2f257821c5e44",
+    "backend_tests": 335,
+    "backend_skip": 0,
+    "python_files": 43,
+    "python_line": "2493/2818=88.47%",
+    "python_branch_percent": 77.73,
+    "frontend_tests": 24,
+    "frontend_line": "307/333=92.19%",
+    "independent_original": "e8ceefe，340/183/328/49，不通过",
+    "independent_UI_addendum": "同e8，3pass/1fail/1blocked，原900不改",
+    "C_P4": "7c27四类限定关闭，整体仍failure",
+    "source_size": "5886，超5100上限786",
+    "marker_executions": 1,
+    "marker_success": true,
+    "private_docx_count": 4,
+    "Word_visual_QA": "complete4 documents/28 original pages, including4 covers; technical review only",
+    "student_research_authored": false,
+    "product_tests_executed_by_documentation": 0,
+    "Word_page_counts": {
+      "requirements-review": 10,
+      "design-review": 9,
+      "test-results-review": 6,
+      "ai-spec-guide-review": 3
+    },
+    "private_docx_hashes": {
+      "requirements-review.docx": "7c20757c0f2b4f54909360d9cb222308161c4b9852ea70efdc798aefce70d13e",
+      "design-review.docx": "cd3cc59b6f5875898d6395ef955e40e7ac10d4881cb56b72fd7b99dafe53db7f",
+      "test-results-review.docx": "db5003a5f35af77784f30b63cb14f6692e5f244c65d9741e86800fe8d450e627",
+      "ai-spec-guide-review.docx": "5545c4adba0ed0f2e96b41d9d7c773fb4c766b95bee41accf8c260238b1b8c49"
+    },
+    "qa_record": "docs/reports/M4-word-qa.json"
   },
   "unverified": [
-    "reviewer真实问取/本人M0提交/本轮Issue评论待总协调补派",
-    "产品功能、集成、独立验收、安全/并发/可靠性/性能均未验证",
-    "完整API/数据库技术契约、代码、运行门禁和最终报告待后续",
-    "真实AI演进、人工改码、幻觉、代码映射和个人经历不能由初始化数量替代",
-    "本岗最终提交是否push、PR最终审核与合并由总协调后续执行"
+    "最终独立复测/正式性能达标/5886减量/新SHA审核仍未通过",
+    "学生本人完整研究正文/课程建议/真实人工留痕未齐",
+    "四Word是固定2e/0448技术审阅版；后续新源码/新规则/独立复测不自动包含"
   ],
-  "questions": [
-    {
-      "owner": "coordinator",
-      "question": "请在槽位空出后补派reviewer问取/本人M0提交及Issue #12评论，再按最终SHA组织正式审核；不要将本轮缺项当作已完成。"
-    }
-  ],
+  "questions": [],
   "prompt_refs": [
     {
-      "id": "ROLE-documentation-BOOTSTRAP-v1",
-      "task_file": "agents/documentation/TASK.md",
-      "actual_dispatch": "agents/documentation/WORKLOG.md",
+      "id": "ROLE-documentation-M4-TESTS-AND-WORD-v1",
+      "status": "used",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M4-TESTS-AND-WORD-v1.md",
       "artifacts": [
+        "reports/final/test-results-report.md",
+        "reports/final/requirements-report.md",
+        "reports/final/design-report.md",
+        "reports/final/ai-spec-guide.md",
+        "reports/final/ai-development-report.md",
+        "reports/final/submission-map.md",
+        "docs/function-contracts.md",
+        "docs/reports/M4-contract-sources.json",
+        "docs/reports/M4-source-manifest.json",
+        "scripts/docs/export_review_documents.py",
+        "agents/documentation/prompts/ROLE-documentation-M4-TESTS-AND-WORD-v1.md",
         "agents/documentation/WORKLOG.md",
         "reports/modules/documentation.md",
         "records/handoffs/documentation.json",
-        "agents/documentation/github-stage-comment.md",
-        "docs/reports/collection-log.md",
-        "docs/reports/collection-events.json",
-        "docs/reports/ai-specification-guide.md",
-        "docs/reports/github-comment-verification.json",
-        "docs/reports/documentation-validation.json",
-        "reports/final/team-bootstrap-summary.md"
+        "agents/documentation/review-documents-pr.md"
       ]
-    },
-    {
-      "id": "ROLE-documentation-M0-COMMIT-v1",
-      "task_file": "agents/documentation/TASK.md",
-      "actual_dispatch": "TASK中GitHub阶段提交与实际问取规则；总协调后续调整见WORKLOG",
-      "event_evidence": "docs/reports/collection-log.md",
-      "note": "各岗M0是不同真实事件，不计为同一prompt六次演进"
     }
   ],
-  "updated_at": "2026-10-23T13:55:31.638080+08:00"
+  "updated_at": "2026-10-23T20:10:35.410765+08:00",
+  "delivery": {
+    "branch": "codex/review-documents",
+    "base": "codex/integration",
+    "stage": "M4已push：技术汇编与四私密Word全28页QA完成，发布记录补齐",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/24",
+    "draft": true,
+    "technical_QA_commit": "26fcb665fe7db620db0ea09a330ac8267ae4dff3",
+    "stage_comment": "https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257",
+    "head_readback_at_QA_commit": "26fcb665fe7db620db0ea09a330ac8267ae4dff3",
+    "merge_performed": false,
+    "review_status_set": false
+  }
 }

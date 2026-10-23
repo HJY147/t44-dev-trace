@@ -1,0 +1,101 @@
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (state,project_id,id)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (project_id,state,id)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD INDEX uq_users_username (username)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD UNIQUE INDEX uq_users_username (username)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (1=1)"}
+{"event": "ddl", "database": "t44_review", "sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (active IN (0,1))"}
+{
+  "migration": {
+    "version": 1,
+    "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "already_applied": true,
+    "tables": 18,
+    "columns": 226,
+    "defects": [],
+    "passed": true
+  },
+  "cases": [
+    {
+      "case": "index_column_order",
+      "database": "t44_review",
+      "change_sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (state,project_id,id)",
+      "restore_sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (project_id,state,id)",
+      "rejected": true,
+      "defects": [
+        "tasks.ix_tasks_project_state:index_definition"
+      ],
+      "repeat_rejection": "Applied database structure differs from frozen v1",
+      "restored": {
+        "tables": 18,
+        "columns": 226,
+        "defects": [],
+        "passed": true
+      }
+    },
+    {
+      "case": "unique_attribute",
+      "database": "t44_review",
+      "change_sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD INDEX uq_users_username (username)",
+      "restore_sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD UNIQUE INDEX uq_users_username (username)",
+      "rejected": true,
+      "defects": [
+        "users.uq_users_username:index_definition",
+        "users:unique_set"
+      ],
+      "repeat_rejection": "Applied database structure differs from frozen v1",
+      "restored": {
+        "tables": 18,
+        "columns": 226,
+        "defects": [],
+        "passed": true
+      }
+    },
+    {
+      "case": "foreign_target",
+      "database": "t44_review",
+      "change_sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)",
+      "restore_sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)",
+      "rejected": true,
+      "defects": [
+        "projects:foreign_key_definition"
+      ],
+      "repeat_rejection": "Applied database structure differs from frozen v1",
+      "restored": {
+        "tables": 18,
+        "columns": 226,
+        "defects": [],
+        "passed": true
+      }
+    },
+    {
+      "case": "check_expression",
+      "database": "t44_review",
+      "change_sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (1=1)",
+      "restore_sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (active IN (0,1))",
+      "rejected": true,
+      "defects": [
+        "users:check_definition"
+      ],
+      "repeat_rejection": "Applied database structure differs from frozen v1",
+      "restored": {
+        "tables": 18,
+        "columns": 226,
+        "defects": [],
+        "passed": true
+      }
+    }
+  ],
+  "repeat": {
+    "version": 1,
+    "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "already_applied": true,
+    "tables": 18,
+    "columns": 226,
+    "defects": [],
+    "passed": true
+  }
+}

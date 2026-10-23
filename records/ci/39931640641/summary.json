@@ -1,0 +1,658 @@
+{
+  "run": "39931640641",
+  "commit": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+  "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083421"
+    },
+    {
+      "name": "frontend",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083555"
+    },
+    {
+      "name": "static",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083717"
+    },
+    {
+      "name": "coverage",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641/job/120341083724"
+    }
+  ],
+  "raw_logs_sha256": "7ac086fdf92ba8c19be5d735641dbaed9fc8eaafdbd9622d98d7e221d0b7b2fc",
+  "artifact_files": [
+    {
+      "path": "contracts-265d89bd004de626a025d7efe7102fe68b5b2dd3/contracts/gate.json",
+      "sha256": "0cd723ceace28e0097e5258e8ffb9da0df1576429f4ce4a9be443ddb1fe365ce",
+      "data": [
+        {
+          "marker": "contract",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "marker": "integration",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "marker": "fault",
+          "exit_code": 0,
+          "real_success": true
+        }
+      ]
+    },
+    {
+      "path": "coverage-265d89bd004de626a025d7efe7102fe68b5b2dd3/coverage/gate.json",
+      "sha256": "dea11a59c4d2c9ecf8964a02d76d980ac4fd824a034f2ef43b312ad9b13f5ea5",
+      "data": [
+        {
+          "suite": "all",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "xml",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "json",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "html",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "report",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "unmeasured_production_files": [],
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "metric": "line_coverage",
+          "covered_lines": 2399,
+          "total_lines": 2724,
+          "threshold_percent": 80,
+          "branch_coverage": "reported without an extra threshold",
+          "exit_code": 0,
+          "real_success": true
+        }
+      ]
+    },
+    {
+      "path": "frontend-265d89bd004de626a025d7efe7102fe68b5b2dd3/frontend/coverage/coverage-summary.json",
+      "sha256": "8c46c8490907bcbbfe2a718bdc5013538eddd7e93279d6a76cc2c22288076714",
+      "data": {
+        "total": {
+          "lines": {
+            "total": 334,
+            "covered": 308,
+            "skipped": 0,
+            "pct": 92.21
+          },
+          "statements": {
+            "total": 612,
+            "covered": 540,
+            "skipped": 0,
+            "pct": 88.23
+          },
+          "functions": {
+            "total": 223,
+            "covered": 187,
+            "skipped": 0,
+            "pct": 83.85
+          },
+          "branches": {
+            "total": 779,
+            "covered": 671,
+            "skipped": 0,
+            "pct": 86.13
+          },
+          "branchesTrue": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/App.vue": {
+          "lines": {
+            "total": 23,
+            "covered": 20,
+            "skipped": 0,
+            "pct": 86.95
+          },
+          "functions": {
+            "total": 20,
+            "covered": 16,
+            "skipped": 0,
+            "pct": 80
+          },
+          "statements": {
+            "total": 36,
+            "covered": 31,
+            "skipped": 0,
+            "pct": 86.11
+          },
+          "branches": {
+            "total": 42,
+            "covered": 40,
+            "skipped": 0,
+            "pct": 95.23
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/api.ts": {
+          "lines": {
+            "total": 17,
+            "covered": 17,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 7,
+            "covered": 6,
+            "skipped": 0,
+            "pct": 85.71
+          },
+          "statements": {
+            "total": 30,
+            "covered": 30,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 28,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 89.28
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/contract.ts": {
+          "lines": {
+            "total": 31,
+            "covered": 31,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 15,
+            "covered": 15,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 55,
+            "covered": 54,
+            "skipped": 0,
+            "pct": 98.18
+          },
+          "branches": {
+            "total": 49,
+            "covered": 45,
+            "skipped": 0,
+            "pct": 91.83
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/forms.ts": {
+          "lines": {
+            "total": 12,
+            "covered": 12,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 7,
+            "covered": 7,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 25,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 29,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 86.2
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/main.ts": {
+          "lines": {
+            "total": 1,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          },
+          "functions": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 1,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          },
+          "branches": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/navigation.ts": {
+          "lines": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 1,
+            "covered": 1,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 3,
+            "covered": 3,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/router.ts": {
+          "lines": {
+            "total": 8,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          },
+          "functions": {
+            "total": 3,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          },
+          "statements": {
+            "total": 8,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          },
+          "branches": {
+            "total": 4,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 0
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/workspace.ts": {
+          "lines": {
+            "total": 35,
+            "covered": 35,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 12,
+            "covered": 12,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 71,
+            "covered": 68,
+            "skipped": 0,
+            "pct": 95.77
+          },
+          "branches": {
+            "total": 65,
+            "covered": 50,
+            "skipped": 0,
+            "pct": 76.92
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/DataState.vue": {
+          "lines": {
+            "total": 14,
+            "covered": 14,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 5,
+            "covered": 5,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 21,
+            "covered": 20,
+            "skipped": 0,
+            "pct": 95.23
+          },
+          "branches": {
+            "total": 30,
+            "covered": 29,
+            "skipped": 0,
+            "pct": 96.66
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/FieldEditor.vue": {
+          "lines": {
+            "total": 27,
+            "covered": 27,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 26,
+            "covered": 26,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 47,
+            "covered": 47,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 90,
+            "covered": 81,
+            "skipped": 0,
+            "pct": 90
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/LoginView.vue": {
+          "lines": {
+            "total": 17,
+            "covered": 17,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 4,
+            "covered": 4,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 22,
+            "covered": 22,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 26,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 96.15
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/OperationForm.vue": {
+          "lines": {
+            "total": 41,
+            "covered": 41,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 16,
+            "covered": 14,
+            "skipped": 0,
+            "pct": 87.5
+          },
+          "statements": {
+            "total": 55,
+            "covered": 53,
+            "skipped": 0,
+            "pct": 96.36
+          },
+          "branches": {
+            "total": 73,
+            "covered": 58,
+            "skipped": 0,
+            "pct": 79.45
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/PageHeading.vue": {
+          "lines": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 3,
+            "covered": 3,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 1,
+            "covered": 1,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/RecordList.vue": {
+          "lines": {
+            "total": 5,
+            "covered": 5,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 4,
+            "covered": 3,
+            "skipped": 0,
+            "pct": 75
+          },
+          "statements": {
+            "total": 9,
+            "covered": 8,
+            "skipped": 0,
+            "pct": 88.88
+          },
+          "branches": {
+            "total": 40,
+            "covered": 34,
+            "skipped": 0,
+            "pct": 85
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/RecordView.vue": {
+          "lines": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 3,
+            "covered": 3,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 13,
+            "covered": 13,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/SidebarNavigation.vue": {
+          "lines": {
+            "total": 9,
+            "covered": 7,
+            "skipped": 0,
+            "pct": 77.77
+          },
+          "functions": {
+            "total": 9,
+            "covered": 7,
+            "skipped": 0,
+            "pct": 77.77
+          },
+          "statements": {
+            "total": 11,
+            "covered": 9,
+            "skipped": 0,
+            "pct": 81.81
+          },
+          "branches": {
+            "total": 16,
+            "covered": 16,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/components/TaskDrawer.vue": {
+          "lines": {
+            "total": 31,
+            "covered": 30,
+            "skipped": 0,
+            "pct": 96.77
+          },
+          "functions": {
+            "total": 28,
+            "covered": 26,
+            "skipped": 0,
+            "pct": 92.85
+          },
+          "statements": {
+            "total": 62,
+            "covered": 57,
+            "skipped": 0,
+            "pct": 91.93
+          },
+          "branches": {
+            "total": 68,
+            "covered": 61,
+            "skipped": 0,
+            "pct": 89.7
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/views/NotFoundView.vue": {
+          "lines": {
+            "total": 1,
+            "covered": 1,
+            "skipped": 0,
+            "pct": 100
+          },
+          "functions": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          },
+          "statements": {
+            "total": 3,
+            "covered": 3,
+            "skipped": 0,
+            "pct": 100
+          },
+          "branches": {
+            "total": 2,
+            "covered": 2,
+            "skipped": 0,
+            "pct": 100
+          }
+        },
+        "/home/runner/work/t44-dev-trace/t44-dev-trace/frontend/src/views/WorkspaceView.vue": {
+          "lines": {
+            "total": 56,
+            "covered": 45,
+            "skipped": 0,
+            "pct": 80.35
+          },
+          "functions": {
+            "total": 62,
+            "covered": 41,
+            "skipped": 0,
+            "pct": 66.12
+          },
+          "statements": {
+            "total": 147,
+            "covered": 104,
+            "skipped": 0,
+            "pct": 70.74
+          },
+          "branches": {
+            "total": 203,
+            "covered": 166,
+            "skipped": 0,
+            "pct": 81.77
+          }
+        }
+      }
+    },
+    {
+      "path": "contracts-265d89bd004de626a025d7efe7102fe68b5b2dd3/preflight.json",
+      "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01",
+      "data": {
+        "missing": [],
+        "ready": true
+      }
+    },
+    {
+      "path": "coverage-265d89bd004de626a025d7efe7102fe68b5b2dd3/preflight.json",
+      "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01",
+      "data": {
+        "missing": [],
+        "ready": true
+      }
+    },
+    {
+      "path": "static-265d89bd004de626a025d7efe7102fe68b5b2dd3/preflight.json",
+      "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01",
+      "data": {
+        "missing": [],
+        "ready": true
+      }
+    }
+  ]
+}

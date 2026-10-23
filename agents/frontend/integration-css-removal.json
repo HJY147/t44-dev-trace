@@ -1,0 +1,510 @@
+{
+  "scope": "只删除人工核对候选规则，不重排/压缩/改变计数范围；业务样式和可访问性保留",
+  "before_sha256": "6b8cb51ae8935b26bb8c03f1e8e9764ef5ec38a4f0ce2d05214467a5cd76bf02",
+  "after_sha256": "bbbf8244d4fe7fbb462556a051c142d25f7b9140147835d46316960405c5b499",
+  "before_lines": 297,
+  "after_lines": 214,
+  "removed_rules": 83,
+  "static_review": "19 TS/Vue；32个own class均无使用；动态DataState/FieldEditor、Vue router active类保留；vendor cell仅位于不存在records-table祖先下",
+  "runtime_evidence": "integration-browser/before-result.json：1440/390七页+rules，83规则均0命中",
+  "removed": [
+    {
+      "original_line": 73,
+      "selector": ".connection-badge",
+      "removed_rule": ".connection-badge { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; color: #947543; border: 1px solid #e8decd; background: #fcf9f2; border-radius: 20px; padding: 7px 11px; font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 74,
+      "selector": ".connection-badge > span",
+      "removed_rule": ".connection-badge > span { width: 5px; height: 5px; background: #b99258; border-radius: 50%; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 75,
+      "selector": ".connection-notice",
+      "removed_rule": ".connection-notice { display: flex; gap: 11px; align-items: center; border: 1px solid #dce7f5; background: #edf3fb; border-radius: 8px; padding: 13px 16px; margin-bottom: 24px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 76,
+      "selector": ".connection-notice__icon",
+      "removed_rule": ".connection-notice__icon { display: flex; color: #577baa; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 77,
+      "selector": ".connection-notice strong",
+      "removed_rule": ".connection-notice strong { color: #536e92; font-size: 12px; font-weight: 600; margin-right: 13px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 78,
+      "selector": ".connection-notice div > span",
+      "removed_rule": ".connection-notice div > span { color: #7c8fa8; font-size: 12px; line-height: 1.8; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 81,
+      "selector": ".metric-card__top",
+      "removed_rule": ".metric-card__top { display: flex; justify-content: space-between; align-items: center; color: #64738a; font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 82,
+      "selector": ".metric-card__icon",
+      "removed_rule": ".metric-card__icon { display: inline-flex; padding: 8px; border-radius: 8px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 83,
+      "selector": ".tone-blue",
+      "removed_rule": ".tone-blue { color: #4f7db9; background: #edf3fb; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 84,
+      "selector": ".tone-cyan",
+      "removed_rule": ".tone-cyan { color: #548d9a; background: #edf6f7; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 85,
+      "selector": ".tone-violet",
+      "removed_rule": ".tone-violet { color: #8b7fae; background: #f2eff8; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 86,
+      "selector": ".tone-amber",
+      "removed_rule": ".tone-amber { color: #b08b50; background: #fbf5e9; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 89,
+      "selector": ".content-grid",
+      "removed_rule": ".content-grid { display: grid; grid-template-columns: minmax(0, 1fr) 286px; align-items: start; gap: 22px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 90,
+      "selector": ".content-grid--single",
+      "removed_rule": ".content-grid--single { grid-template-columns: 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 92,
+      "selector": ".panel-heading",
+      "removed_rule": ".panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 21px 22px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 93,
+      "selector": ".panel-heading h2, .attention-card h2, .context-card h2",
+      "removed_rule": ".panel-heading h2, .attention-card h2, .context-card h2 { font-size: 14px; color: #32455f; font-weight: 600; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 94,
+      "selector": ".panel-heading p",
+      "removed_rule": ".panel-heading p { font-size: 12px; color: #748197; margin-top: 7px; line-height: 1.6; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 95,
+      "selector": ".panel-heading .el-button",
+      "removed_rule": ".panel-heading .el-button { font-size: 12px; height: 30px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 98,
+      "selector": ".filter-bar",
+      "removed_rule": ".filter-bar { display: flex; align-items: end; gap: 12px; margin: 0 22px 20px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 99,
+      "selector": ".filter-field",
+      "removed_rule": ".filter-field { width: 240px; min-width: 0; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 100,
+      "selector": ".filter-field label",
+      "removed_rule": ".filter-field label { display: block; font-size: 12px; color: #6e7e94; margin-bottom: 7px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 101,
+      "selector": ".filter-field .el-input, .filter-field .el-select",
+      "removed_rule": ".filter-field .el-input, .filter-field .el-select { width: 100%; font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 102,
+      "selector": ".filter-field--select",
+      "removed_rule": ".filter-field--select { width: 150px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 103,
+      "selector": ".filter-field .el-input__wrapper, .filter-field .el-select__wrapper",
+      "removed_rule": ".filter-field .el-input__wrapper, .filter-field .el-select__wrapper { min-height: 32px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 104,
+      "selector": ".records-table",
+      "removed_rule": ".records-table { width: 100%; overflow-x: auto; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 105,
+      "selector": ".records-table .el-table",
+      "removed_rule": ".records-table .el-table { --el-table-header-bg-color: #f8f9fc; --el-table-border-color: #eef1f5; --el-table-header-text-color: #66768d; --el-table-row-hover-bg-color: #f5f8fc; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 106,
+      "selector": ".records-table th.el-table__cell",
+      "removed_rule": ".records-table th.el-table__cell { height: 41px; font-size: 12px; font-weight: 500; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 107,
+      "selector": ".records-table .el-table__empty-block",
+      "removed_rule": ".records-table .el-table__empty-block { min-height: 300px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 108,
+      "selector": ".records-table .el-table__empty-text",
+      "removed_rule": ".records-table .el-table__empty-text { width: 100%; line-height: normal; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 109,
+      "selector": ".records-table .el-table__inner-wrapper::before",
+      "removed_rule": ".records-table .el-table__inner-wrapper::before { display: none; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 110,
+      "selector": ".records-table .el-table .cell",
+      "removed_rule": ".records-table .el-table .cell { padding: 0 22px; white-space: nowrap; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 111,
+      "selector": ".panel-footnote",
+      "removed_rule": ".panel-footnote { border-top: 1px solid #edf0f5; padding: 14px 22px; display: flex; align-items: center; gap: 7px; font-size: 11px; color: #95a0af; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 112,
+      "selector": ".neutral-dot",
+      "removed_rule": ".neutral-dot { background: #bac5d3; width: 4px; height: 4px; border-radius: 50%; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 113,
+      "selector": ".panel-footnote__right",
+      "removed_rule": ".panel-footnote__right { margin-left: auto; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 121,
+      "selector": ".context-column",
+      "removed_rule": ".context-column { display: grid; gap: 18px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 122,
+      "selector": ".quick-start .panel-heading",
+      "removed_rule": ".quick-start .panel-heading { padding-bottom: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 123,
+      "selector": ".section-index",
+      "removed_rule": ".section-index { color: #a7b2c1; font-size: 11px; letter-spacing: 1px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 124,
+      "selector": ".shortcut",
+      "removed_rule": ".shortcut { display: flex; align-items: center; gap: 12px; padding: 19px 22px; border-bottom: 1px solid #f1f3f7; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 125,
+      "selector": ".shortcut:last-child",
+      "removed_rule": ".shortcut:last-child { border-bottom: 0; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 126,
+      "selector": ".shortcut:hover",
+      "removed_rule": ".shortcut:hover { background: #f8fafd; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 127,
+      "selector": ".shortcut__number",
+      "removed_rule": ".shortcut__number { display: grid; place-items: center; width: 28px; height: 28px; flex-shrink: 0; font-size: 12px; color: #7995b9; background: #f1f5fb; border-radius: 7px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 128,
+      "selector": ".shortcut strong",
+      "removed_rule": ".shortcut strong { font-size: 12px; color: #5f728d; font-weight: 500; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 129,
+      "selector": ".shortcut p",
+      "removed_rule": ".shortcut p { font-size: 11px; line-height: 1.7; margin-top: 5px; color: #9ba6b5; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 130,
+      "selector": ".shortcut__arrow",
+      "removed_rule": ".shortcut__arrow { color: #a8b8cc; margin-left: auto; font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 131,
+      "selector": ".attention-card",
+      "removed_rule": ".attention-card { padding: 24px 22px; background: #eaf0f8; border: 1px solid #dee7f3; border-radius: 10px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 132,
+      "selector": ".attention-card__eyebrow",
+      "removed_rule": ".attention-card__eyebrow { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #829ab8; margin-bottom: 17px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 133,
+      "selector": ".attention-card h2",
+      "removed_rule": ".attention-card h2 { color: #536f94; font-size: 14px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 134,
+      "selector": ".attention-card p",
+      "removed_rule": ".attention-card p { font-size: 12px; color: #8196b2; line-height: 2.1; margin: 11px 0 17px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 135,
+      "selector": ".context-card",
+      "removed_rule": ".context-card { padding: 24px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 136,
+      "selector": ".context-card__icon",
+      "removed_rule": ".context-card__icon { display: inline-flex; padding: 12px; background: #edf3fb; color: #7895b9; border-radius: 10px; margin-bottom: 18px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 137,
+      "selector": ".context-card p",
+      "removed_rule": ".context-card p { font-size: 12px; line-height: 2; color: #8392a7; margin-top: 13px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 138,
+      "selector": ".context-card p.context-card__note",
+      "removed_rule": ".context-card p.context-card__note { font-size: 12px; color: #76849a; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 139,
+      "selector": ".context-divider",
+      "removed_rule": ".context-divider { height: 1px; background: #ebeff5; margin: 21px 0; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 140,
+      "selector": ".record-tabs",
+      "removed_rule": ".record-tabs { padding: 0 22px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 141,
+      "selector": ".record-tabs .el-tabs__item",
+      "removed_rule": ".record-tabs .el-tabs__item { font-size: 13px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 142,
+      "selector": ".record-tabs .el-tabs__nav-wrap::after",
+      "removed_rule": ".record-tabs .el-tabs__nav-wrap::after { height: 1px; background: #eef1f5; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 150,
+      "selector": ".content-grid",
+      "removed_rule": "  .content-grid { grid-template-columns: minmax(0, 1fr) 320px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 151,
+      "selector": ".content-grid--single",
+      "removed_rule": "  .content-grid--single { grid-template-columns: 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 152,
+      "selector": ".records-table .el-table__empty-block",
+      "removed_rule": "  .records-table .el-table__empty-block { min-height: 350px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 159,
+      "selector": ".content-grid",
+      "removed_rule": "  .content-grid { grid-template-columns: minmax(0, 1fr) 255px; gap: 16px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 160,
+      "selector": ".content-grid--single",
+      "removed_rule": "  .content-grid--single { grid-template-columns: 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 162,
+      "selector": ".shortcut",
+      "removed_rule": "  .shortcut { padding-inline: 16px; gap: 8px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 165,
+      "selector": ".content-grid",
+      "removed_rule": "  .content-grid { grid-template-columns: 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 166,
+      "selector": ".context-column",
+      "removed_rule": "  .context-column { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 168,
+      "selector": ".metric-card__top",
+      "removed_rule": "  .metric-card__top { gap: 4px; font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 169,
+      "selector": ".metric-card__icon",
+      "removed_rule": "  .metric-card__icon { padding: 5px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 171,
+      "selector": ".connection-notice strong",
+      "removed_rule": "  .connection-notice strong { display: block; margin-bottom: 3px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 186,
+      "selector": ".connection-badge",
+      "removed_rule": "  .connection-badge { font-size: 11px; padding: 6px 9px; margin-top: 23px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 189,
+      "selector": ".metric-card__top",
+      "removed_rule": "  .metric-card__top { font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 192,
+      "selector": ".context-column",
+      "removed_rule": "  .context-column { grid-template-columns: 1fr 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 193,
+      "selector": ".panel-heading",
+      "removed_rule": "  .panel-heading { padding: 18px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 194,
+      "selector": ".filter-bar",
+      "removed_rule": "  .filter-bar { margin-inline: 18px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 195,
+      "selector": ".filter-field",
+      "removed_rule": "  .filter-field { flex: 1; width: auto; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 196,
+      "selector": ".filter-field--select",
+      "removed_rule": "  .filter-field--select { max-width: 140px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 197,
+      "selector": ".panel-footnote",
+      "removed_rule": "  .panel-footnote { padding-inline: 18px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 198,
+      "selector": ".panel-footnote__right",
+      "removed_rule": "  .panel-footnote__right { display: none; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 200,
+      "selector": ".records-table .el-table__empty-block",
+      "removed_rule": "  .records-table .el-table__empty-block { min-height: 280px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 206,
+      "selector": ".context-column",
+      "removed_rule": "  .context-column { grid-template-columns: 1fr; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 207,
+      "selector": ".connection-notice",
+      "removed_rule": "  .connection-notice { padding: 12px; gap: 9px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 208,
+      "selector": ".connection-notice div > span",
+      "removed_rule": "  .connection-notice div > span { font-size: 12px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 209,
+      "selector": ".panel-heading h2",
+      "removed_rule": "  .panel-heading h2 { font-size: 14px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 210,
+      "selector": ".filter-bar",
+      "removed_rule": "  .filter-bar { gap: 8px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    },
+    {
+      "original_line": 211,
+      "selector": ".filter-field--select",
+      "removed_rule": "  .filter-field--select { max-width: 120px; }",
+      "basis": "旧foundation布局已被业务卡片/工具栏取代；19个TS/Vue无该own class；检查动态class和ElementPlus scoped祖先；1440/390七页+rules真实DOM均0命中"
+    }
+  ]
+}

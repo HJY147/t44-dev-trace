@@ -1,0 +1,402 @@
+{
+  "prompt_ref": "ROLE-database-LIVE-VERIFY-v1",
+  "base": "43f51570e62e3160f7995c45bdddaf2f123242b3",
+  "scope": {
+    "write_databases": [
+      "t44_review",
+      "t44_seed_verify_v2"
+    ],
+    "other_databases_written": false
+  },
+  "review": {
+    "cases": [
+      {
+        "case": "index_column_order",
+        "database": "t44_review",
+        "change_sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (state,project_id,id)",
+        "restore_sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (project_id,state,id)",
+        "rejected": true,
+        "defects": [
+          "tasks.ix_tasks_project_state:index_definition"
+        ],
+        "repeat_rejection": "Applied database structure differs from frozen v1",
+        "restored": {
+          "tables": 18,
+          "columns": 226,
+          "defects": [],
+          "passed": true
+        }
+      },
+      {
+        "case": "unique_attribute",
+        "database": "t44_review",
+        "change_sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD INDEX uq_users_username (username)",
+        "restore_sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD UNIQUE INDEX uq_users_username (username)",
+        "rejected": true,
+        "defects": [
+          "users.uq_users_username:index_definition",
+          "users:unique_set"
+        ],
+        "repeat_rejection": "Applied database structure differs from frozen v1",
+        "restored": {
+          "tables": 18,
+          "columns": 226,
+          "defects": [],
+          "passed": true
+        }
+      },
+      {
+        "case": "foreign_target",
+        "database": "t44_review",
+        "change_sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)",
+        "restore_sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)",
+        "rejected": true,
+        "defects": [
+          "projects:foreign_key_definition"
+        ],
+        "repeat_rejection": "Applied database structure differs from frozen v1",
+        "restored": {
+          "tables": 18,
+          "columns": 226,
+          "defects": [],
+          "passed": true
+        }
+      },
+      {
+        "case": "check_expression",
+        "database": "t44_review",
+        "change_sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (1=1)",
+        "restore_sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (active IN (0,1))",
+        "rejected": true,
+        "defects": [
+          "users:check_definition"
+        ],
+        "repeat_rejection": "Applied database structure differs from frozen v1",
+        "restored": {
+          "tables": 18,
+          "columns": 226,
+          "defects": [],
+          "passed": true
+        }
+      }
+    ],
+    "migration": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "final_repeat": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "actual_ddl": [
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (state,project_id,id)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD INDEX ix_tasks_project_state (project_id,state,id)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD INDEX uq_users_username (username)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE users DROP INDEX uq_users_username, ADD UNIQUE INDEX uq_users_username (username)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (1=1)"
+      },
+      {
+        "event": "ddl",
+        "database": "t44_review",
+        "sql": "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK (active IN (0,1))"
+      }
+    ]
+  },
+  "seed": {
+    "database": "t44_seed_verify_v2",
+    "migration": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": false,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "seed": {
+      "already_seeded": false,
+      "projects": 40,
+      "tasks": 6000,
+      "dependencies": 9000,
+      "reviews": 11400,
+      "decisions": 3600,
+      "assessments": 3600,
+      "states": {
+        "6": 2400,
+        "1": 600,
+        "2": 600,
+        "3": 600,
+        "4": 600,
+        "5": 600,
+        "7": 600
+      },
+      "manifest": {
+        "version": 1,
+        "seed": 44,
+        "anchor_at": "2026-10-23T00:00:00+00:00",
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "records": 15000,
+        "template_version": 1,
+        "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+        "rule_version": 1,
+        "rule_effective_at": "2026-10-23T05:33:29Z",
+        "rule_decided_by": 1,
+        "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+        "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+        "synthetic": true
+      },
+      "manifest_sha256": "42641278024c700325eceeef9b323d0dd6ae5389e44003a1a8bde52775fb0931"
+    },
+    "consistency": {
+      "tasks": 6000,
+      "reviews": 11400,
+      "decisions": 3600,
+      "states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "persisted_sha256": "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3",
+    "repeat": {
+      "already_seeded": true,
+      "manifest": {
+        "version": 1,
+        "seed": 44,
+        "anchor_at": "2026-10-23T00:00:00+00:00",
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "records": 15000,
+        "template_version": 1,
+        "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+        "rule_version": 1,
+        "rule_effective_at": "2026-10-23T05:33:29Z",
+        "rule_decided_by": 1,
+        "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+        "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+        "synthetic": true
+      },
+      "manifest_sha256": "42641278024c700325eceeef9b323d0dd6ae5389e44003a1a8bde52775fb0931"
+    },
+    "changed_parameters_rejected": "Seed manifest differs in configuration/version/parameters; existing dataset preserved, choose a new empty project schema",
+    "changed_config_hash_rejected": "Seed manifest differs in configuration/version/parameters; existing dataset preserved, choose a new empty project schema",
+    "native_constraint_rejections": [
+      {
+        "table": "users",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "active": 2
+        },
+        "kind": "check",
+        "constraint": "ck_users_active",
+        "rolled_back": true
+      },
+      {
+        "table": "users",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "username": "synthetic-developer"
+        },
+        "kind": "duplicate",
+        "constraint": "uq_users_username",
+        "rolled_back": true
+      },
+      {
+        "table": "tasks",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "owner_id": 4294967295
+        },
+        "kind": "foreign_key",
+        "constraint": "fk_tasks_owner",
+        "rolled_back": true
+      },
+      {
+        "table": "tasks",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "state": 0
+        },
+        "kind": "check",
+        "constraint": "ck_tasks_state",
+        "rolled_back": true
+      },
+      {
+        "table": "reviews",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "verdict": 0
+        },
+        "kind": "check",
+        "constraint": "ck_reviews_verdict",
+        "rolled_back": true
+      },
+      {
+        "table": "release_assessments",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "status": 0
+        },
+        "kind": "check",
+        "constraint": "ck_assessments_review",
+        "rolled_back": true
+      },
+      {
+        "table": "decisions",
+        "where": {
+          "id": 1
+        },
+        "attempted": {
+          "type": 0
+        },
+        "kind": "check",
+        "constraint": "ck_decisions_payload",
+        "rolled_back": true
+      }
+    ],
+    "unchanged_after_rejections": true,
+    "schema_after": {
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "migration_repeat": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "server": {
+      "version": "8.4.11",
+      "database": "t44_seed_verify_v2",
+      "time_zone": "+00:00",
+      "isolation": "READ-COMMITTED",
+      "sql_mode": "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    }
+  },
+  "tests": {
+    "items": 18,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "bandit_findings": 0,
+  "original_failures": [
+    {
+      "path": "review-run1.log",
+      "cause": "Actual MySQL ALTER-index rebuild changes CHECK literal introducer to _ascii; lexer rejected unchanged expression",
+      "fixed_by": "Tokenize supported introducers only outside quoted literal; ASCII guard and regression assertions"
+    },
+    {
+      "path": "review-run2.log",
+      "cause": "MySQL1826 rejects same-name FK DROP/ADD in a single ALTER",
+      "fixed_by": "Owner probe separates FK DROP and ADD; restore handles partial application"
+    },
+    {
+      "path": "ruff-run1.log",
+      "cause": "New owner seed CLI imports unsorted",
+      "fixed_by": "Targeted I001 import fix; ruff-run2 success"
+    }
+  ],
+  "boundaries": [
+    "Owner module verification; not independent acceptance or performance",
+    "Four controlled catalog mutation classes; seven targeted native constraint negative cases, not every possible DDL mutation",
+    "All fixture rows synthetic; exact digest intentionally excludes randomized password hashes",
+    "No frozen DDL/API or production business rules changed"
+  ],
+  "files_sha256": {
+    "bandit-console.log": "9ae0d800c5b0e7bd569d703b9bc0d1dff517ea911097ee4b0576c92af679783d",
+    "bandit.json": "aa856ae1af9193578d7b4d33a0626ef0756f6e969a96c338600219d6a81248ca",
+    "review-after-failure.json": "4f080684b35bf646d22b6d9fa59125024c8eebaf56999d7ac7b4d3b2821b6357",
+    "review-check-rewrite.json": "1ebae3c1ada380f0d733a52ce78490d0b96ecbc36ae67d8eeaaa005401800208",
+    "review-run1.log": "bb1c2fb03a54e45f4e79a663048d129e271a4abb5d0ae1eef888297904425155",
+    "review-run2.log": "e4eed7229698324104a3da8572feddaee4801eae6433d3629d875450f4cdb399",
+    "review-run3.log": "2e2b46a8c64347deca94295f828e17b4b2012b2fccd5800118ef5af2da466f29",
+    "ruff-import-fix.log": "aac3a0503d8b95052cc85fb9f1717dc82b74aa55853a5aa9749b41e30275d472",
+    "ruff-run1.log": "f78334f161cd62f6324cf7168dafa3cb0e44cf2709e527db9ed4604f72ee959c",
+    "ruff-run2.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "schema-regression.log": "750e8fc7f82d0362413c811a25dd8018e93a29cf821384a50d297e2ffbfb3cfa",
+    "seed-run1.log": "1b4ddd753babd4281775fccfd18dd3d479afb9ae07ec43c01382913a4260e66a",
+    "targeted-junit.xml": "b684cff33fcbba4ec26edc5f870ef54c540511d4181b3fd29c671ef2ab3d2a92",
+    "targeted-tests.log": "ff689bed0e2071ca5fc8f139b97137ab7141717a844d44bc4276f47de01c54dd"
+  },
+  "source_sha256": {
+    "backend/t44/persistence/migrations.py": "2f0a908e1c984502aa1e9027cec09eae92d6513972bcc0653431240d5da33d1a",
+    "tmp/backend/persistence/956_schema_semantics.py": "fbc4ea51a55c664daecf015ae68f8ccbe851f8f584fea6ea43685ad9432e7b37",
+    "tmp/backend/persistence/975_seed.py": "676fb28137a4c277d60b8dacdff1cef19efde8ed4d9bdce91d911d2973985946",
+    "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "specs/database/schema.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4"
+  }
+}
