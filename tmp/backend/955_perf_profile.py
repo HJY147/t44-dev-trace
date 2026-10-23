@@ -397,7 +397,7 @@ def main():
 
         effective["thread_tokens"] = current_default_thread_limiter().total_tokens
 
-    app.add_event_handler("startup", observe_configuration)
+    app.router.add_event_handler("startup", observe_configuration)
     observer = None
     if args.mode != "baseline":
         instrument(app, engine, args.output, args.mode == "profile")
