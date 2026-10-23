@@ -307,6 +307,7 @@ def client_run(args, source_sha):
                         )
                         payload = result.json()
                         row.update(
+                            error_code=payload.get("code") if result.status_code >= 400 else None,
                             valid=result.status_code == 200
                             and payload.get("data", {}).get("valid") is True
                             and payload["data"].get("business_guards_executed") is False
@@ -376,10 +377,30 @@ def measured(name, function):
 
 
 def instrument(app, engine, output, profile):
+    import fastapi.routing
     from sqlalchemy import event
-    from t44 import api
+    from t44 import api, contracts
+    from t44.services import runtime as runtime_module
 
     runtime = app.state.runtime
+    runtime_module.authenticate = measured("authenticate", runtime_module.authenticate)
+    contracts.validator = measured("schema_construct", contracts.validator)
+    dispatch = fastapi.routing.run_in_threadpool
+
+    async def observed_dispatch(function, *args, **kwargs):
+        record = _RECORD.get()
+        submitted = time.perf_counter_ns()
+
+        @functools.wraps(function)
+        def entered(*inner_args, **inner_kwargs):
+            if record is not None:
+                record["endpoint_dispatch_count"] += 1
+                record["endpoint_dispatch_wait_ns"] += time.perf_counter_ns() - submitted
+            return function(*inner_args, **inner_kwargs)
+
+        return await dispatch(entered, *args, **kwargs)
+
+    fastapi.routing.run_in_threadpool = observed_dispatch
     for name in ("authorize", "claim", "locked_scope", "complete", "rejection", "audit"):
         setattr(runtime, name, measured(name, getattr(runtime, name)))
     for name in ("dispatch", "validate_data"):
@@ -387,10 +408,25 @@ def instrument(app, engine, output, profile):
     for name in ("validate_request", "violations", "wire"):
         setattr(api, name, measured("http_" + name, getattr(api, name)))
     engine.connect = measured("db_acquire_and_pre_ping", engine.connect)
+    for method, phase in (
+        ("connect", "dbapi_new_connection"),
+        ("do_ping", "dbapi_pre_ping"),
+        ("do_commit", "dbapi_commit"),
+        ("do_rollback", "dbapi_rollback"),
+    ):
+        setattr(engine.dialect, method, measured(phase, getattr(engine.dialect, method)))
+
+    @event.listens_for(engine, "checkout")
+    def checkout(_connection, _record, _proxy):
+        record = _RECORD.get()
+        if record is not None:
+            record["pool_checkouts"] += 1
 
     @event.listens_for(engine, "before_cursor_execute")
     def before(_conn, _cursor, _statement, _parameters, context, _many):
         context._t44_profile_started = time.perf_counter_ns()
+        context._t44_profile_cpu = time.thread_time_ns()
+        context._t44_profile_kind = _statement.lstrip().split(None, 1)[0].upper()
 
     def sql_finished(context, failed=False):
         record = _RECORD.get()
@@ -398,7 +434,10 @@ def instrument(app, engine, output, profile):
         if record is not None and started is not None:
             record["sql_count"] += 1
             record["sql_wall_ns"] += time.perf_counter_ns() - started
+            record["sql_thread_cpu_ns"] += time.thread_time_ns() - context._t44_profile_cpu
             record["sql_errors"] += int(failed)
+            kind = context._t44_profile_kind
+            record["sql_kinds"][kind] = record["sql_kinds"].get(kind, 0) + 1
 
     @event.listens_for(engine, "after_cursor_execute")
     def after(_conn, _cursor, _statement, _parameters, context, _many):
@@ -446,11 +485,24 @@ class ObservedASGI:
             "phases": {},
             "sql_count": 0,
             "sql_wall_ns": 0,
+            "sql_thread_cpu_ns": 0,
+            "sql_kinds": {},
             "sql_errors": 0,
+            "pool_checkouts": 0,
+            "endpoint_dispatch_count": 0,
+            "endpoint_dispatch_wait_ns": 0,
+            "receive_wait_ns": 0,
             "status": None,
             "response_bytes": 0,
         }
         token = _RECORD.set(record)
+
+        async def observed_receive():
+            before = time.perf_counter_ns()
+            try:
+                return await receive()
+            finally:
+                record["receive_wait_ns"] += time.perf_counter_ns() - before
 
         async def observed_send(message):
             if message["type"] == "http.response.start":
@@ -463,7 +515,7 @@ class ObservedASGI:
             await send(message)
 
         try:
-            await self.app(scope, receive, observed_send)
+            await self.app(scope, observed_receive, observed_send)
         finally:
             record["asgi_wall_ns"] = time.perf_counter_ns() - record.pop("asgi_started")
             _RECORD.reset(token)
