@@ -15,6 +15,11 @@ def main():
     h = S.Harness('functional-http-and-storage')
     setup = h.rec.run('preconditions-neutral-accounts-and-auth', h.setup_users)
     if setup['status'] == 'pass':
+        selection = HERE / 'continuation-selection.json'
+        if selection.exists():
+            plan = json.loads(selection.read_text())
+            S.check(plan['product_source_sha'] == h.c['product_source_sha'], 'Continuation stays on the exact same SUT')
+            h.rec.case_filter = plan['functional_case_ids']
         own('882_http.py', 'iv3_http_cases').run(h, S)
     else:
         catalog = json.loads((HERE / 'cases.json').read_text())
