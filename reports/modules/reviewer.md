@@ -174,3 +174,5 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 ## PR21源码绑定P2窄修复审（2026-10-24）
 
 准确dda3df8e15b0b5b655909dda37dc79a87f318924，先行add7363；prompt ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1。原归档命令复用同payload/manifest/declared9d6/拒绝断言，只SUT+harness适配并公开清单，一次exit0，真实selector未mock、只Git元数据，集合不符被拒绝。源码/可信helper SHA、完整正向集合/blob/mode+payload绑定、main自身repo限制及14freeze核对；perblob分支静态、不冒称实跑。仅关闭BUNDLE-SOURCE-BINDING-01，原9d6红/3cbcc/Issue38历史保持，实际包/4DOCX QA/原owner自由文本未验边界保持。报告reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md。无私密/独立资料或metadata/套件/CI/服务执行，未造实际包，不整体放行；真实Issue38/COMMENT/GET回执另补。
+
+实际发布：阶段证据d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2已push，Issue38comment6376506789完整GET body/归属/新SHA及PR21 COMMENT5635353850显式完整dda3和GET body/commit_id/COMMENTED严格相符exit0；回执github-comment.json。仅P2限定关闭，原9d6红/实际包未验保持，无APPROVE/status/CI/main/Issue自动关闭。
