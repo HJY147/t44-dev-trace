@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-23T06:06:46.852929+00:00",
+  "role": "database",
+  "prompt_ref": "ROLE-database-DESIGN-v1",
+  "status": "static_checks_passed",
+  "tables": 18,
+  "columns": 225,
+  "foreign_keys": 35,
+  "named_constraints": 94,
+  "explicit_error_mappings": 41,
+  "checks": [
+    "uniform INT UNSIGNED primary keys",
+    "all columns represented in dictionary",
+    "FK integer types and explicit unique referenced keys",
+    "unique constraint names",
+    "idempotency/escalation/consumer unique keys",
+    "extensible tinyint levels",
+    "no destructive DML/DDL or seed data",
+    "OpenAPI Id range and explicit ErrorCode mapping"
+  ],
+  "mysql_ddl_executed": false,
+  "mysql_syntax_or_runtime_validated": false,
+  "models_or_migrations_implemented": false,
+  "git_index_touched": false,
+  "unverified": [
+    "MySQL8.4 actual CREATE/ALTER execution",
+    "CHECK/foreign-key behavior in MySQL",
+    "transaction/deadlock/concurrency/recovery",
+    "MQ confirm/fallback/consumer races",
+    "performance and acceptance"
+  ],
+  "files": {
+    "specs/database/schema.sql": "73c265461d375e9314ed706f8faf1af2480f0167b13dc93c089967eb4ce067cb",
+    "specs/database/field-dictionary.md": "e1cf73fa3dd4c81369bd719789cb563e5c416c4494adea2fc804073448d83414",
+    "specs/database/persistence-contract.md": "7b32344024aec51fd2d7c7af95ed4af40b7a3b23ee2b3e9df8580883da81a54b",
+    "specs/contracts/openapi.json": "81b8ee7ea1af0937e42f72adff800313545c21b255b0ecdbaea784464b703ba8"
+  }
+}

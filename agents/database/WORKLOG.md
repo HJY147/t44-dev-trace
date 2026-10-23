@@ -39,3 +39,25 @@
 - 实际执行 `gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/database/github-backend-interface-question.md`，退出0，接口问询：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358121197 。
 - 本轮未新增设计、研究或产品代码，未运行数据库与业务测试；仅在本岗目录保存评论并补充实际问答/交接。提交前再次核对分支和暂存区，提交结果以总协调/文档岗收到的完整SHA为准，不把准备提交写成已经提交。
 - 提交前资料复核：`python3` 解析当前交接单，确认5份本岗产物与2个实际提示词引用，报告55行；退出0。`git diff --check --` 本岗5文件退出0；再次核实分支正确、暂存区为空、HEAD仍为上述frontend提交。仅为资料检查，非业务测试。
+
+## 2026-10-23T14:08:13+08:00 完整设计 ROLE-database-DESIGN-v1
+
+- 收到用户采用规则后的完整设计派工及续作要求；实际原文归档 agents/database/prompts/ROLE-database-DESIGN-v1.md。初始化/阶段提交历史保留；现在已生成DDL文本，与M0当时“没有DDL”的事实分阶段，不宣称执行。
+- 已读AGENTS、requirements、business-rules、D001/D002、原始T44任务书及review-protocol；backend草案初始不存在，向责任岗索取后读取specs/contracts/openapi.json与specs/backend-design.md；后读implementation-layout。未读取测试内部材料。
+- 与backend直接讨论并确认：统一INT IDs/cycle、角色/工时映射、会话辅助表、session→idem→project→members→tasks锁序、持久幂等租约/owner代次、拒绝独立连接失败503、首次升级CAS及重复无增量、自审守卫与hash-only安全入口。总协调追加规则扩展要求后改level范围1..255，v1仍3级；未擅加业务级别。
+- 实际设计产物：specs/database/field-dictionary.md、schema.sql、persistence-contract.md；18表225列，含四核心和必要辅助表。统一PK，审计原因码显式映射41项；模板/升级配置可追溯hash。
+- 使用官方MySQL8.4 CHECK/FK/DATETIME及SQLAlchemy2事务文档核对设计限制；引用链接在contract。未查阅其他题目或独立测试内容。
+- 执行Python文档生成，输出18表225列；随后Python静态自查退出0，结果agents/database/design-static-check.json：35外键引用显式唯一键、94命名约束不重名、41错误映射与OpenAPI相符，关键唯一键/level/ID范围一致。此非MySQL语法解析或运行测试。
+- 生成中的两次多文件补丁因不存在的匹配行被工具拒绝，无部分修改；已用准确补丁完成。其余文件创建/读取及资料检查的真实输出在本轮工具记录。
+- 真实发表命令：gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-confirmation.md；退出0，URL https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358608869 。随后gh issue view 4核验backend确认回复，URL https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437 。双方都注明未冻结、未实现，不替代审核。
+- deployment真实问迁移入口/版本及备份恢复：本岗答复DDL路径、未实现入口，建议统一t44.cli适配；根随后明确persistence/migrations/tests责任路径与统一CLI。精确迁移命令/版本元数据留后续派工，未执行备份恢复。
+- 未执行DDL/迁移/数据库连接，未写模型或其他产品代码；未运行模块自测、联调、验收或性能。未碰根Git索引，无add/commit/push/checkout。
+- 待审：四核心及辅助逐表类型/索引/约束、配置原文归档/加载、消息confirm/fallback/消费与续扫、审计故障运维恢复介质、所有真实MySQL并发和性能验证。
+
+## 2026-10-23T14:12:20+08:00 设计归档独占时段
+
+- 实际派工ROLE-database-DESIGN-COMMIT-v1，原文追加本岗prompts/ROLE-database-DESIGN-v1.md；总协调指定commit footer引用ROLE-database-DESIGN-v1。本轮只归档已有设计，无新设计/实现。
+- 首检分支codex/team-bootstrap、暂存区为空、HEAD为backend b893353c9bcf45e833f70f56bf6f72025f611271；核对该提交正文与13文件。未加入总协调/其他岗共享改动。
+- 读取并复核设计静态摘要：schema、字段字典、contract和当前OpenAPI的SHA均一致；backend会话认证→幂等→project如需→members→tasks锁序与本岗contract一致。原失败记录保留。
+- 实际执行gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-stage-comment.md，退出0；范围/待审核评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 。
+- 准备仅显式暂存本轮10份本岗变化文件并核对暂存清单；commit结果/完整SHA在完成后直接交总协调，不提前记作已提交。DDL/迁移/模型/运行验证仍未执行。
