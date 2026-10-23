@@ -98,3 +98,11 @@
 - 首次Ruff9风格失败、format两处后补格式失败、Bandit两处协议/空租约误报都保留；移出字面量误报并复验Ruff/format/Bandit退出0。未新增依赖，68包hash锁未改。初次api导入漏PYTHONPATH后按部署约定修命令，非代码假成功。
 - 实际读Issue#3前端及#4公开状态；Issue4第一次GraphQL EOF后REST读取成功，body-file真实对接评论：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261 。
 - 当前缺口：调度/通知owner尚未接入，相关端点503；CLI seed等待DB；尚未执行本岗MySQL HTTP、Rabbit、网络服务、全t44覆盖率、性能或独立验收。接下来继续实际MySQL与owner联调，不以阶段commit结束完整任务。
+
+### APPLICATION-v1 阶段2：真实MySQL HTTP和本地服务交接
+
+- 合入DB f3ea343后，`T44_HTTP_TEST_CREDENTIALS=<ignored app四键文件> PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/contracts/test_mysql_http.py --tb=short -q` 实际退出0、1 passed；明确数据库t44_dev，未清空库/演示数据。实际MySQL登录、项目成员/迭代/任务、两并发改期只有一成功、另一409、独立拒绝审计、diff/outbox/idem最终完成request_id和提交评审均有断言。原始log/JUnit已存，不把SQLite当实库。
+- 补内部升级入口只接受服务身份，human先403 SERVICE_SCOPE_REQUIRED（owner尚缺时也不落到假成功/503）；会话过期用校验当下UTC。最终全部本岗HTTP测试27 passed：26 SQLite＋1 MySQL，`application-contract-stage2.log/xml`；Ruff/格式/Bandit最终退出0。
+- 真实Uvicorn在127.0.0.1:18080启动（本轮最终PID9624），DATABASE_URL仅内存env构造，不放argv/日志；ignored运行证据在.agent-worktrees/.runtime。账号文件api-demo-credentials.json为0600，三角色及项目3/迭代3/任务3真实创建，凭据未入仓库/消息。已把路径及非秘密资源ID交frontend/root。
+- 首次HTTPX网络烟测被本机环境代理截获：登录断言/非JSON诊断及随后ReadTimeout，Uvicorn无访问日志；改loopback直连trust_env=False后实际四项网络HTTP＋MySQL烟测通过（登录Schema、me/字典、422、401）。本岗仅对loopback绕过代理，未改TLS或全局环境；initial.log明确为诊断摘要，原工具输出保留会话。安全响应证据在application-network-smoke.json，无登录Token。
+- 根明确本轮可阶段收尾释放并行槽位，让scheduler/messaging实际接(g,c) DI；后续再恢复最终整合。当前seed、通知/升级门面及Rabbit未完成，全t44覆盖率、性能和独立验收未执行。现有真实代码与证据交接，不宣称整产品完成或审核成功。

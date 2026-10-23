@@ -10,7 +10,7 @@ from datetime import timedelta
 from argon2 import PasswordHasher
 from argon2.exceptions import InvalidHashError, VerificationError
 
-from .common import model
+from .common import model, now
 from .errors import require
 
 BEARER_TYPE = "Bearer"
@@ -47,8 +47,14 @@ def authenticate(g, call, *, lock=None):
     rows = g.rows("auth_sessions", {"token_hash": token_digest(call.token)}, lock=lock, limit=1)
     require(rows, "AUTH_REQUIRED")
     session = rows[0]
+    call.actor = {
+        **session,
+        "actor_id": session["user_id"]
+        if session["actor_kind"] == 1
+        else session["service_account_id"],
+    }
     require(session["revoked_at"] is None, "TOKEN_REVOKED")
-    require(session["expires_at"] > call.clock, "TOKEN_EXPIRED")
+    require(session["expires_at"] > now(), "TOKEN_EXPIRED")
     kind = session["actor_kind"]
     identity = g.get(
         "users" if kind == 1 else "service_accounts",
@@ -57,6 +63,8 @@ def authenticate(g, call, *, lock=None):
     require(identity and identity["active"], "TOKEN_REVOKED")
     actor_id = identity["id"]
     call.actor = {**session, "actor_id": actor_id, "identity": identity}
+    if call.operation == "createEscalation":
+        require(kind == 2, "SERVICE_SCOPE_REQUIRED")
     if call.project_id is not None:
         if kind == 2:
             require(call.operation == "createEscalation", "ACTION_FORBIDDEN")

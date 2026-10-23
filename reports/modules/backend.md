@@ -76,3 +76,9 @@
 Q002已用户采用、v1已冻结；真实实现入口为backend/t44/api.py和cli.py，38操作已注册，services组合既有domain和DB参数化UoW。已具鉴权/opaque撤销、严格请求响应Schema、任务/计划/依赖/评审/预案/经理决策、统一幂等CAS与成功/拒绝事务编排。review-template.json是实际v1八段十项配置。
 
 25项真实TestClient+SQLite HTTP自测通过；首次DB自增缺陷由DB修复后合入，短幂等键测试错误修正，原失败保留。Ruff/format/Bandit最终通过；协议字面量/空租约的Bandit初次误报保留。不是MySQL或独立验收。消息/升级门面及seed等待owner，相关依赖缺失返回503；后续真实MySQL HTTP、Rabbit、全后端覆盖率和性能仍待做，不拿domain98%代替。
+
+### 阶段2补充
+
+已在官方MySQL8.4.11、明确t44_dev执行真实HTTP＋并发CAS/独立拒绝审计测试，1项通过；合并本岗HTTP共27通过（26 SQLite＋1 MySQL）。真实Uvicorn127.0.0.1:18080运行，四项TCP HTTP烟测与Schema通过，演示项目/迭代/任务均ID3；三角色账号仅在ignored0600私密JSON。网络首测受环境代理影响的失败诊断保留，loopback直连修正未改TLS。Ruff/format/Bandit最终通过。
+
+按总协调阶段安排先交接服务与代码，让消息/调度owner接线；它们仍依赖缺失503，CLI seed等待DB。没有Rabbit、全t44覆盖率、全流程MySQL、性能或独立验收通过结论。下一轮继续完整整合，而非把本阶段自测当全产品完成。

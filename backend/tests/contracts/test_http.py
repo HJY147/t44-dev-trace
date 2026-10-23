@@ -778,3 +778,24 @@ def test_security_boundary_keeps_legitimate_quotes(application, body, status, co
     response = request(client, "createProject", token=token, body=body, expect=status)
     if code:
         assert response.json()["code"] == code
+
+
+def test_internal_escalation_rejects_human_before_missing_owner(application):
+    client, _ = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    result = request(
+        client,
+        "createEscalation",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body={
+            "expected_version": 1,
+            "schedule_version": 1,
+            "rule_version": 1,
+            "scan_run_id": str(uuid4()),
+        },
+        expect=403,
+    )
+    assert result.json()["code"] == "SERVICE_SCOPE_REQUIRED"
