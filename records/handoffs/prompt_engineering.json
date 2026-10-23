@@ -1,0 +1,167 @@
+{
+  "role": "prompt_engineering",
+  "stage": "M0 提示词资料归档与阶段提交",
+  "implementation_status": "未实现",
+  "artifacts": [
+    "records/prompts/U001-optimized.md",
+    "records/prompts/U001-changes.md",
+    "records/prompts/ROLE-prompt_engineering-BOOTSTRAP-v1.md",
+    "docs/prompting/prompt-recording.md",
+    "agents/prompt_engineering/WORKLOG.md",
+    "reports/modules/prompt_engineering.md",
+    "records/handoffs/prompt_engineering.json",
+    "records/prompts/prompt_engineering-bootstrap-validation.json",
+    "records/prompts/U002-optimized.md",
+    "records/prompts/U002-changes.md",
+    "records/prompts/ROLE-prompt_engineering-GITHUB-v1.md",
+    "docs/prompting/highlight-candidates.md",
+    "records/prompts/prompt_engineering-github-validation.json",
+    "agents/prompt_engineering/github-stage-comment.md",
+    "records/prompts/ROLE-prompt_engineering-M0-COMMIT-v1.md"
+  ],
+  "interfaces": {
+    "inputs": [
+      "用户原文",
+      "实际派工正文",
+      "任务文件",
+      "上下文版本",
+      "产物与验证证据",
+      "实际作者和决定者",
+      "U002 GitHub 协作原文",
+      "U003 公开开源补充"
+    ],
+    "outputs": [
+      "原文与优化稿",
+      "逐项修改说明",
+      "提示词台账字段规范",
+      "真实迭代及上下文映射规范",
+      "待登记 prompt 引用",
+      "用户原创亮点候选及所需实际证据清单"
+    ],
+    "version": "prompt-recording-v1 / U001-O1 / U002-O1",
+    "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
+    "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
+    "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077"
+  },
+  "commands_executed": [
+    "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
+    "cat AGENTS.md",
+    "cat agents/prompt_engineering/TASK.md",
+    "cat records/prompts/U001-original.md && rg --files agents/prompt_engineering records standards docs | head -120",
+    "cat docs/collaboration/team.md && cat docs/collaboration/report-template.md",
+    "cat specs/sources/T44-taskbook.txt && cat specs/sources/submission-notes.txt && cat specs/sources/homework-requirements.txt",
+    "ls -la records/handoffs reports/modules agents/prompt_engineering docs/prompting records/prompts && cat records/prompts/ledger.jsonl",
+    "apply_patch: 创建本轮岗位资料",
+    "date -Iseconds && shasum -a 256 records/prompts/U001-original.md",
+    "python3: 内联文档静态校验脚本，结果保存在 records/prompts/prompt_engineering-bootstrap-validation.json",
+    "cat records/prompts/U002-original.md && cat records/prompts/U003-original.md && cat docs/collaboration/team.md",
+    "cat docs/collaboration/github-workflow.md && shasum -a 256 records/prompts/U002-original.md records/prompts/U003-original.md && git rev-parse --show-toplevel",
+    "apply_patch / python3: 创建 U002 资料与本岗阶段记录",
+    "python3: 本轮资料静态校验，证据为 records/prompts/prompt_engineering-github-validation.json",
+    "git branch --show-current && git diff --cached --name-only && git status --short",
+    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-stage-comment.md",
+    "git add -- agents/prompt_engineering/WORKLOG.md agents/prompt_engineering/github-stage-comment.md docs/prompting/highlight-candidates.md docs/prompting/prompt-recording.md records/handoffs/prompt_engineering.json records/prompts/ROLE-prompt_engineering-BOOTSTRAP-v1.md records/prompts/ROLE-prompt_engineering-GITHUB-v1.md records/prompts/ROLE-prompt_engineering-M0-COMMIT-v1.md records/prompts/U001-changes.md records/prompts/U001-optimized.md records/prompts/U002-changes.md records/prompts/U002-optimized.md records/prompts/prompt_engineering-bootstrap-validation.json records/prompts/prompt_engineering-github-validation.json reports/modules/prompt_engineering.md",
+    "git diff --cached --name-only",
+    "git diff --cached --check"
+  ],
+  "results": [
+    "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
+    "已保存本轮实际派工正文与岗位任务引用",
+    "已建立真实版本、人工改码、幻觉、上下文映射及规则变更规范",
+    "探索性文件搜索提示 standards 目录不存在，不影响本轮指定资料读取",
+    "未实现业务代码，未修改原文和共享台账，未联系独立测试",
+    "文档静态校验 14 项全部通过，模块报告 50 行；此检查不代表软件测试通过",
+    "已生成 U002-O1 与变更说明，关联 U003 公开补充，状态仍 proposed",
+    "已将 U001/U002 列为用户原创亮点候选，列出真实 Issue/PR/commit 及效果证据要求",
+    "按总协调本轮安排不操作 Git 索引，后续再分配本岗 Issue、分支和独占提交时段",
+    "本轮资料静态校验 15 项全部通过，报告 53 行，U002/U003 原文摘要未变",
+    "当前已分配 Issue #11、codex/team-bootstrap 与本岗唯一 Git 索引时段，历史未分配记录保留",
+    "已向文档岗实际回答产物、产品未实现、未运行测试、proposed/used 边界和待补证据；问答已写 WORKLOG",
+    "M0 阶段评论已发表：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
+    "M0 暂存清单与交接列明的 15 个本岗文件完全一致，暂存差异格式检查通过"
+  ],
+  "unverified": [
+    "业务功能、模块自测、集成与独立验收均未运行",
+    "六版真实提示词演进、十二条人工修改、三条真实幻觉、五处最终代码映射尚未达标",
+    "U001-O1 优化稿尚未实际派工或由用户审定",
+    "其他岗位实际 prompt 与后续产物的对应关系待责任岗提供",
+    "U002-O1 尚未作为实际派工使用；跨岗 Issue/PR/commit、审核与效果证据待后续补齐",
+    "仓库创建与克隆由总协调告知，本岗未远端复核"
+  ],
+  "questions": [
+    "后续据实提供审核、效果、真实演进、人工修改、幻觉及最终代码映射证据；当前无需开发岗接口提问",
+    "M0 本岗提交后的完整 SHA 交文档岗保存，提交内不预填自身 SHA"
+  ],
+  "prompt_refs": [
+    {
+      "id": "ROLE-prompt_engineering-BOOTSTRAP-v1",
+      "status": "used",
+      "task_file": "agents/prompt_engineering/TASK.md",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-BOOTSTRAP-v1.md",
+      "reason": "本轮实际收到的岗位初始化派工，约束原文忠实优化、规范及本岗交接",
+      "artifact_refs": [
+        "records/prompts/U001-optimized.md",
+        "records/prompts/U001-changes.md",
+        "docs/prompting/prompt-recording.md",
+        "agents/prompt_engineering/WORKLOG.md",
+        "reports/modules/prompt_engineering.md",
+        "records/handoffs/prompt_engineering.json"
+      ]
+    },
+    {
+      "id": "U001-O1",
+      "status": "proposed",
+      "derived_from": "U001",
+      "path": "records/prompts/U001-optimized.md",
+      "change_refs": [
+        "records/prompts/U001-changes.md"
+      ],
+      "reason": "忠实整理当前用户的多岗协作与真实留痕要求；不是实际派工版本"
+    },
+    {
+      "id": "ROLE-prompt_engineering-GITHUB-v1",
+      "status": "used",
+      "task_file": "agents/prompt_engineering/TASK.md",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-GITHUB-v1.md",
+      "reason": "追加 GitHub 协作与用户原创亮点候选整理，保持原文及独立测试边界",
+      "artifact_refs": [
+        "records/prompts/U002-optimized.md",
+        "records/prompts/U002-changes.md",
+        "records/prompts/ROLE-prompt_engineering-GITHUB-v1.md",
+        "docs/prompting/highlight-candidates.md",
+        "agents/prompt_engineering/WORKLOG.md",
+        "reports/modules/prompt_engineering.md",
+        "records/handoffs/prompt_engineering.json"
+      ]
+    },
+    {
+      "id": "U002-O1",
+      "status": "proposed",
+      "derived_from": "U002",
+      "related_refs": [
+        "U003"
+      ],
+      "path": "records/prompts/U002-optimized.md",
+      "change_refs": [
+        "records/prompts/U002-changes.md"
+      ],
+      "reason": "忠实整理 GitHub 阶段提交、跨岗对接、专门审核与原创亮点要求"
+    },
+    {
+      "id": "ROLE-prompt_engineering-M0-COMMIT-v1",
+      "status": "used",
+      "task_file": "agents/prompt_engineering/TASK.md",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-M0-COMMIT-v1.md",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/11",
+      "reason": "文档岗实际问取与本岗独占 Git 索引授权，执行 M0 评论及仅本岗资料提交",
+      "artifact_refs": [
+        "agents/prompt_engineering/github-stage-comment.md",
+        "records/prompts/ROLE-prompt_engineering-M0-COMMIT-v1.md",
+        "agents/prompt_engineering/WORKLOG.md",
+        "reports/modules/prompt_engineering.md",
+        "records/handoffs/prompt_engineering.json"
+      ]
+    }
+  ],
+  "updated_at": "2026-10-23T13:51:01+08:00"
+}
