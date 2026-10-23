@@ -9,11 +9,11 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "typecheck": "vue-tsc --noEmit",
-    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "node scripts/prepare-tests.mjs && vue-tsc --noEmit",
+    "build": "node scripts/prepare-tests.mjs && vue-tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test": "node scripts/prepare-tests.mjs && vitest run",
+    "test:coverage": "node scripts/prepare-tests.mjs && vitest run --coverage"
   },
   "dependencies": {
     "@element-plus/icons-vue": "2.3.2",

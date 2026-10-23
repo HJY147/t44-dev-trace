@@ -22,7 +22,7 @@ def classify(name):
     path = Path(name)
     if name.startswith(("backend/t44/", "frontend/src/")) or name == "frontend/index.html":
         return "application" if path.suffix in EXTENSIONS else None
-    if name.startswith(("backend/tests/", "frontend/tests/")):
+    if name.startswith(("tmp/backend/", "tmp/frontend/", "tmp/ci/", "tmp/deployment/")):
         return "tests" if path.suffix in EXTENSIONS else None
     if name.startswith(("deployment/", "scripts/ci/")):
         return "deployment_ci" if path.suffix in EXTENSIONS else None
@@ -42,8 +42,8 @@ def main():
     if hashlib.sha256(args.cloc.read_bytes()).hexdigest() != TOOL_HASH:
         raise SystemExit("cloc differs from the verified v2.10 release asset")
     head = git("rev-parse", "HEAD").decode().strip()
-    roots = ["backend/t44", "frontend/src", "frontend/index.html", "backend/tests",
-             "frontend/tests", "deployment", "scripts/ci", "specs/database/schema.sql",
+    roots = ["backend/t44", "frontend/src", "frontend/index.html", "tmp/backend",
+             "tmp/frontend", "tmp/ci", "tmp/deployment", "deployment", "scripts/ci", "specs/database/schema.sql",
              "specs/contracts/openapi.json"]
     tracked = git("ls-tree", "-r", "--name-only", head, "--", *roots).decode().splitlines()
     groups = {}

@@ -1,9 +1,9 @@
 import { vi } from 'vitest'
 import frozen from '../../specs/contracts/openapi.json'
-import { asRow, schemas } from '../src/contract'
-import type { Json, Row } from '../src/contract'
-import { api } from '../src/api'
-import { workspace } from '../src/workspace'
+import { asRow, schemas } from '../../frontend/src/contract'
+import type { Json, Row } from '../../frontend/src/contract'
+import { api } from '../../frontend/src/api'
+import { workspace } from '../../frontend/src/workspace'
 export const user: Row = { id: 1, username: 'fixture-user', display_name: '夹具用户' }
 export const project: Row = { id: 1, name: '夹具项目', description: '仅模块测试使用', version: 1, my_roles: [1, 2, 3], created_by: 1, created_at: '2026-10-23T00:00:00Z' }
 export const plan: Row = { planned_start: '2026-10-23T00:00:00Z', planned_end: '2026-10-24T00:00:00Z', estimated_hours: 8, buffer_hours: 2, delay_contingency: '由经理记录新计划与依据' }

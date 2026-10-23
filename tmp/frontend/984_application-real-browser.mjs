@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
 const credentials = JSON.parse(await readFile(process.env.DEMO_CREDENTIALS, 'utf8'))
 const redact = (message) => Object.values(credentials).filter(v => v && typeof v === 'object' && v.password).reduce((text, role) => text.replaceAll(role.password, '[REDACTED]'), message)
-const output = dirname(fileURLToPath(import.meta.url))
+const output = new URL('../../agents/frontend/', import.meta.url).pathname
 await mkdir(join(output, 'application-screenshots'), { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome', headless: true })
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, locale: 'zh-CN', reducedMotion: 'reduce' })
@@ -14,7 +14,7 @@ page.on('pageerror', error => errors.push(redact(error.message)))
 page.on('console', message => { if (message.type() === 'error') consoleErrors.push(redact(message.text())) })
 page.on('response', response => { const url = new URL(response.url()); if (url.pathname.startsWith('/api/v1')) http.push({ method: response.request().method(), path: url.pathname, status: response.status() }) })
 const title = '浏览器联调交付 ' + Date.now()
-const evidenceLocator = 'agents/frontend/application-real-browser.mjs'
+const evidenceLocator = 'tmp/frontend/984_application-real-browser.mjs'
 async function login(role) {
   await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' })
   await page.locator('#login-username').fill(credentials[role].username)

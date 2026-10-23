@@ -3,6 +3,7 @@
 import json
 import os
 from concurrent.futures import ThreadPoolExecutor
+from importlib import import_module
 from pathlib import Path
 from uuid import uuid4
 
@@ -15,7 +16,10 @@ from t44.persistence.migrations import migrate
 from t44.services.identity import HASHER
 from t44.settings import Settings
 
-from .test_http import EVIDENCE, PLAN, request
+_http = import_module(".986_http", __package__)
+EVIDENCE = _http.EVIDENCE
+PLAN = _http.PLAN
+request = _http.request
 
 pytestmark = [pytest.mark.contract, pytest.mark.integration]
 

@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
-const directory = dirname(fileURLToPath(import.meta.url))
+const directory = new URL('../../agents/frontend/', import.meta.url).pathname
 const screenshots = join(directory, 'screenshots')
 await mkdir(screenshots, { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome', headless: true })

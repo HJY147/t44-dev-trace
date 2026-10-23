@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import DataState from '../src/components/DataState.vue'
+import DataState from '../../frontend/src/components/DataState.vue'
 
 afterEach(() => { document.body.innerHTML = '' })
 
