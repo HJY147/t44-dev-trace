@@ -135,3 +135,6 @@
 - revision3/run39974397951真实failure已保留公共artifact原字节、console gzip+SHA及run.json。MQ镜像metadata/source hash匹配固定4c，真实绑定通过；stop后的显式JSON true。pause后的真实unpause0，但随即up --wait因RabbitMQ现有health=unhealthy退出1，新逐次JSON和finally都如实false，未被调用充成功。未读取独立私有资料。
 - 依据该真实公共诊断，部署AI补最小观测等待：仅实际unpaused服务最多60秒只读检查运行/健康，更新后才执行原up --wait；不restart、不扩大动作/服务范围，超时或任何真实步骤失败仍false且保留租期。新增两项必要953守卫覆盖先unhealthy后healthy及超时不继续up/不清租期，51项0.09秒通过，Ruff/actionlint通过。
 - revision4仍产品4c，只在实际修正后进行必要复核，不更改产品/业务/现有门禁；旧68通过、旧44/f0失败均完整保留。
+
+- revision4/run39975896833在d8f5fbe上真实success：stop/pause两次独立CLI JSON均true、IDs不同，暂停后实际健康观测由unhealthy更新healthy再up --wait0，final receipt=true，MQ源hash匹配4c/真实绑定通过。首轮artifact下载EOF后一次依赖读取失败，改为check=True串行重取再核回执；不把下载错误当产品失败或有效证据。
+- 部署AI另在自身代码复核补一项必要依赖顺序守卫：被暂停应用必须在DB等基础依赖恢复后才等待health，防止框架先等待依赖未起的API；这不是tester案例信息。保持原基础→应用恢复顺序，每个实际unpaused依赖批次只读等待最多60秒，不新增mutating动作。52guard/Ruff/actionlint通过。为最终实现SHA准确受验，以有实际变化revision5做最后必要复核，同4c且不增业务/独立案例；之后只归档不再改实现。

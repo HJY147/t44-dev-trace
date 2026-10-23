@@ -457,9 +457,9 @@
   },
   "recovery_mq_capability": {
     "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
-    "request_revision": 4,
-    "local_checks": "953 51passed;Ruff/actionlint0",
-    "runtime_check": "targeted readiness修正后待复核",
+    "request_revision": 5,
+    "local_checks": "953 52passed;Ruff/actionlint0",
+    "runtime_check": "final dependency-order implementation待同4c复核",
     "independent_harness_executed": false,
     "profile_executed": false,
     "ssh": "no target,no password use/storage",
@@ -468,6 +468,8 @@
     "implementation_checkpoint": "f0a20baab241e93d90bad85a9568c694caee2fea",
     "incremental_first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39974397951",
     "incremental_first_result": "failure preserved:stop receipt true,pause unpause0/upwait1;per-call/finalfalse;MQ metadata/topology verified",
-    "readiness": "only actually unpaused services;read-only healthy observation<=60seconds before original up--wait;failures remain false"
+    "readiness": "only actually unpaused services;read-only healthy observation<=60seconds before original up--wait;failures remain false",
+    "intermediate_pass": "https://github.com/HJY147/t44-dev-trace/actions/runs/39975896833",
+    "intermediate_environment_sha": "d8f5fbe79d1a4e314fb5052f537f9c5fc07790da"
   }
 }

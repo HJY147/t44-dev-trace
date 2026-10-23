@@ -127,3 +127,5 @@
 - 原953扩至49guard/Ruff/actionlint通过；revision3能力复核待远程执行，harness/profile不执行，旧回执保留。
 
 - 增量revision3/run39974397951失败如实保留：stop恢复true；pause后unpause0但up --wait1(unhealthy)，逐次/最终回执false，MQ metadata/绑定通过。依真实诊断增加unpause后的60秒有界只读健康观测，原服务/动作范围不变；51guard/Ruff/actionlint通过，revision4固定4c待必要复核。
+
+- revision4/run39975896833真实通过逐次stop/pause/最终JSON和MQ metadata/绑定。另补保留基础→应用依赖顺序的必要守卫，52项通过；最终实现revision5待同4c复核，旧各次原始回执分目录保留。

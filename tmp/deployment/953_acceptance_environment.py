@@ -209,7 +209,9 @@ def recovery_controls(tmp_path, *, paused=b"rabbitmq\n", failed_step=None, healt
 
     def compose(*args, **kwargs):
         if args[0] == "ps" and "--format" in args:
-            name, output = "unpaused-health", json.dumps({"Service": "rabbitmq", "State": "running", "Health": health}).encode()
+            name, output = "unpaused-health", json.dumps([
+                {"Service": service, "State": "running", "Health": health} for service in paused.decode().split()
+            ]).encode()
         elif args[0] == "ps":
             name, output = "inspect-paused", paused
         elif args[0] == "unpause":
@@ -345,3 +347,11 @@ def test_recovery_health_timeout_is_false_without_starting_later_phases(tmp_path
     assert caught.value.receipt["recovery_completed"] is False
     assert not any(call.args[0] == "up" for call in controls.compose.call_args_list)
     assert control.private_json(tmp_path / "fault-leases.json") == {"rabbitmq": 1}
+
+
+def test_paused_application_health_is_checked_after_its_database_dependencies(tmp_path):
+    controls = recovery_controls(tmp_path, paused=b"api\n")
+    receipt = controls.recover()
+    names = [step["name"] for step in receipt["steps"]]
+    assert receipt["recovery_completed"] is True
+    assert names.index("infrastructure-ready") < names.index("unpaused-health") < names.index("application-ready")

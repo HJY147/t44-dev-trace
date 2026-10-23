@@ -322,7 +322,7 @@ class Environment:
     def recover_cli_capability(self):
         result = subprocess.run([sys.executable, str(Path(__file__).with_name("control.py")),
                                  "--state", str(self.runtime / "state.json"), "recover"],
-                                capture_output=True, check=False, timeout=450)
+                                capture_output=True, check=False, timeout=600)
         receipt = json.loads(result.stdout)
         self.report.setdefault("explicit_recovery_receipts", []).append(receipt)
         if (result.returncode or receipt["recovery_completed"] is not True

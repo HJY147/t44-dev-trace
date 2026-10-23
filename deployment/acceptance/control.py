@@ -139,6 +139,38 @@ class Controls:
             receipt["restored_services"].extend(restored)
             return result
 
+        def wait_unpaused(targets):
+            nonlocal phase
+            if not targets:
+                return
+            deadline = time.monotonic() + 60
+            while True:
+                state = command("unpaused-health", "ps", "--all", "--format", "json", *targets,
+                                timeout=30).stdout.decode()
+                try:
+                    decoded = json.loads(state)
+                    rows = decoded if isinstance(decoded, list) else [decoded]
+                except json.JSONDecodeError:
+                    rows = [json.loads(line) for line in state.splitlines() if line.strip()]
+                observed = []
+                for row in rows:
+                    if row.get("Service") not in targets:
+                        continue
+                    status, health = row.get("State", ""), row.get("Health", "")
+                    observed.append({"service": row["Service"],
+                                     "state": status if status in {"running", "paused", "created", "exited",
+                                                                   "restarting", "dead", "removing"} else "unknown",
+                                     "health": health if health in {"healthy", "unhealthy", "starting", ""}
+                                     else "unknown"})
+                receipt["steps"][-1]["observed_health"] = observed
+                if ({row["service"] for row in observed} == set(targets)
+                        and all(row["state"] == "running" and row["health"] == "healthy" for row in observed)):
+                    return
+                if time.monotonic() >= deadline:
+                    phase = "unpaused-health-timeout"
+                    raise RuntimeError("RECOVERY_READINESS_TIMEOUT")
+                time.sleep(1)
+
         try:
             with self.locked():
                 leases = private_json(self.runtime / "fault-leases.json")
@@ -151,37 +183,12 @@ class Controls:
                 receipt["paused_services"] = sorted(set(paused))
                 if paused:
                     command("unpause", "unpause", *sorted(set(paused)), timeout=30)
-                    deadline = time.monotonic() + 60
-                    while True:
-                        state = command("unpaused-health", "ps", "--all", "--format", "json", *sorted(set(paused)),
-                                        timeout=30).stdout.decode()
-                        try:
-                            decoded = json.loads(state)
-                            rows = decoded if isinstance(decoded, list) else [decoded]
-                        except json.JSONDecodeError:
-                            rows = [json.loads(line) for line in state.splitlines() if line.strip()]
-                        observed = []
-                        for row in rows:
-                            if row.get("Service") not in paused:
-                                continue
-                            status, health = row.get("State", ""), row.get("Health", "")
-                            observed.append({"service": row["Service"],
-                                             "state": status if status in {"running", "paused", "created", "exited",
-                                                                           "restarting", "dead", "removing"} else "unknown",
-                                             "health": health if health in {"healthy", "unhealthy", "starting", ""}
-                                             else "unknown"})
-                        receipt["steps"][-1]["observed_health"] = observed
-                        if ({row["service"] for row in observed} == set(paused)
-                                and all(row["state"] == "running" and row["health"] == "healthy" for row in observed)):
-                            break
-                        if time.monotonic() >= deadline:
-                            phase = "unpaused-health-timeout"
-                            raise RuntimeError("RECOVERY_READINESS_TIMEOUT")
-                        time.sleep(1)
+                    wait_unpaused(sorted(set(paused) & {"mysql", "rabbitmq"}))
                 else:
                     receipt["steps"].append({"name": "unpause", "needed": False, "exit_code": None})
                 command("infrastructure-ready", "up", "-d", "--no-deps", "--wait", "--wait-timeout", "150",
                         "mysql", "rabbitmq", restored=("mysql", "rabbitmq"))
+                wait_unpaused(sorted(set(paused) - {"mysql", "rabbitmq"}))
                 command("application-ready", "up", "-d", "--no-deps", "--wait", "--wait-timeout", "150",
                         "api", "consumer", "scheduler", "web", restored=("api", "consumer", "scheduler", "web"))
                 phase = "clear-fault-leases"

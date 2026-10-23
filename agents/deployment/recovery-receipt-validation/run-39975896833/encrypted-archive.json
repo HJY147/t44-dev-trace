@@ -1,0 +1,13 @@
+{
+  "format": "OpenSSL CMS AuthEnvelopedData AES-256-GCM/RSA-OAEP-SHA256",
+  "ciphertext_sha256": "ac19dce4525244bbd127858a3b29e2b8b288abee2296a307e254c3e0191f06c9",
+  "ciphertext_bytes": 12760,
+  "recipient_certificate_sha256": "f3a1d75a05833f1156eab59799c41c193c7ebd50c53e6eeeee35f286e0afe50e",
+  "plaintext_files": [
+    "stdout.log",
+    "environment-control.log"
+  ],
+  "retention_days": 14,
+  "access": "Ciphertext is downloadable; only the tester-held private key decrypts it. Root/developers must not download or read unpublished tester plaintext.",
+  "synthetic_roundtrip_verified": true
+}
