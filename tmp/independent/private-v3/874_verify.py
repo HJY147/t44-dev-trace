@@ -185,6 +185,39 @@ def offline_wire_selftest(output):
         try: h.service(1)
         except S.Blocked: passed('absent-service-token-blocked')
         else: raise AssertionError('Absent token was accepted')
+        h.c['control_state'] = 'offline-state'
+        for name, code, output, expected in [
+                ('complete', 0, '{"observation_complete":true,"runner":{"cpu":4}}', True),
+                ('incomplete', 1, '{"observation_complete":false,"runner":null}', False),
+                ('false-zero-exit', 0, '{"observation_complete":false}', False),
+                ('ambiguous', 0, '{"observation_complete":true}{"observation_complete":true}', False)]:
+            current = Completed(code, output); item = h.runtime_snapshot('offline-' + name)
+            assert item['observation_complete'] is expected
+            assert calls[-1]['argv'] == ['offline-python','offline-control','--state','offline-state','runtime-metadata']
+            if name == 'incomplete': assert item['receipt']['runner'] is None and item['exit_code'] == 1
+            passed('separate-resource-observation-' + name)
+        import sqlite3
+        db = sqlite3.connect(':memory:'); db.row_factory = sqlite3.Row
+        db.execute('CREATE TABLE tasks(id INTEGER, project_id INTEGER, escalation_count INTEGER)')
+        db.execute('INSERT INTO tasks VALUES(3,1,1)')
+        try: db.execute('SELECT task_id,escalation_count FROM tasks WHERE project_id=1 ORDER BY task_id')
+        except sqlite3.OperationalError: passed('original-observer-column-mismatch-preserved')
+        else: raise AssertionError('Original nonexistent task_id column unexpectedly available')
+        row = db.execute('SELECT id AS task_id,escalation_count FROM tasks WHERE project_id=1 ORDER BY id').fetchone()
+        assert dict(row) == {'task_id': 3, 'escalation_count': 1}
+        frozen = json.loads((HERE / 'storage-expectations.json').read_text())
+        assert 'id' in {x['name'] for x in frozen['tasks']} and 'task_id' not in {x['name'] for x in frozen['tasks']}
+        passed('observer-identity-alias-from-frozen-dictionary')
+        db.close()
+        executed = []; h.rec.case_filter = []
+        assert h.rec.run('offline-no-cases-selected', lambda: executed.append(1))['status'] == 'not_executed'
+        assert executed == []
+        passed('empty-explicit-case-selection-executes-none')
+        h.rec.case_filter = ['offline-one-case-selected']
+        h.rec.run('offline-excluded-case', lambda: executed.append(2))
+        assert h.rec.run('offline-one-case-selected', lambda: executed.append(3))['status'] == 'pass'
+        assert executed == [3]
+        passed('single-case-continuation-excludes-completed-scope')
 
     finally:
         S.urllib.request.urlopen, S.subprocess.run = original_open, original_run

@@ -100,7 +100,7 @@ class Recorder:
 
     def run(self, case_id, fn):
         self.active_case = case_id
-        if getattr(self, 'case_filter', None) and case_id not in self.case_filter:
+        if getattr(self, 'case_filter', None) is not None and case_id not in self.case_filter:
             item = {'id': case_id, 'status': 'not_executed', 'reason': 'Bounded continuation excludes previously completed scope'}
             self.results.append(item)
             return item
@@ -216,6 +216,31 @@ class Harness:
         elif command == 'recover' and type(value.get('recovery_completed')) is not bool:
             raise Blocked('Neutral recovery receipt requires an actual boolean completion field')
         return value
+
+    def runtime_snapshot(self, label):
+        """Separate readonly environmental observation; never substitutes for a business verdict."""
+        if not hasattr(self, 'runtime_observations'): self.runtime_observations = []
+        item = {'label': label, 'observation_complete': False}
+        try:
+            argv = [self.c['python'], self.c['control_cli'], '--state', self.c['control_state'], 'runtime-metadata']
+            completed = subprocess.run(argv, input='', text=True, capture_output=True, timeout=180)
+            item.update(exit_code=completed.returncode, stderr_bytes=len(completed.stderr.encode()))
+            def unique_object(pairs):
+                value = {}
+                for name, entry in pairs:
+                    if name in value: raise ValueError('Ambiguous resource JSON')
+                    value[name] = entry
+                return value
+            value = json.loads(completed.stdout, object_pairs_hook=unique_object)
+            if not isinstance(value, dict) or type(value.get('observation_complete')) is not bool:
+                raise ValueError('Resource observation needs documented completion boolean')
+            item['receipt'] = value
+            item['observation_complete'] = completed.returncode == 0 and value['observation_complete'] is True
+        except Exception as exc:
+            item['observation_error_type'] = type(exc).__name__
+        self.runtime_observations.append(item)
+        self.rec.event({'kind': 'separate_runtime_metadata_observation', **item})
+        return item
 
     def sql(self, query):
         check(query.lstrip().upper().startswith(('SELECT ', 'SHOW ', 'EXPLAIN ')),

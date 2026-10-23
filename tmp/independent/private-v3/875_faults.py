@@ -117,14 +117,14 @@ def run(h, S):
             return rows if len(rows) == 20 else None
         rows = h.wait(twenty, seconds=150, interval=1)
         C(all(r['n'] == 1 for r in rows), 'All twenty overdue tasks including blocker upgrade once')
-        before = h.sql('SELECT task_id,escalation_count FROM tasks WHERE project_id=' + str(f['p']) + ' ORDER BY task_id')
+        before = h.sql('SELECT id AS task_id,escalation_count FROM tasks WHERE project_id=' + str(f['p']) + ' ORDER BY id')
         h.control('fault', '--service', 'scheduler', '--action', 'stop', '--lease-seconds', 60)
         recover()
         # Observe a real additional scan after restart through durable scan_runs.
         last = h.sql('SELECT MAX(id) AS n FROM scan_runs')[0]['n'] or 0
         h.wait(lambda: (h.sql('SELECT MAX(id) AS n FROM scan_runs')[0]['n'] or 0) > last,
                seconds=150, interval=1)
-        C(h.sql('SELECT task_id,escalation_count FROM tasks WHERE project_id=' + str(f['p']) + ' ORDER BY task_id') == before,
+        C(h.sql('SELECT id AS task_id,escalation_count FROM tasks WHERE project_id=' + str(f['p']) + ' ORDER BY id') == before,
           'Restart and rescan cannot increment existing upgrade counts')
         C(all(r['n'] == 1 for r in twenty()), 'Restart preserves unique upgrade ledger')
     h.rec.run('O04-twenty-overdue-tasks-and-scheduler-restart', scanner)
@@ -143,7 +143,13 @@ def run(h, S):
 def main():
     S = support(); h = S.Harness('operational-faults')
     try:
-        h.setup_users(); run(h, S)
+        h.setup_users()
+        selection = Path(__file__).with_name('continuation-selection.json')
+        if selection.exists():
+            h.rec.case_filter = json.loads(selection.read_text()).get('operational_case_ids')
+        h.runtime_snapshot('before-remaining-original-fault-case')
+        run(h, S)
+        h.runtime_snapshot('after-remaining-original-fault-case')
     finally:
         try:
             receipt = h.control('recover')
@@ -152,7 +158,7 @@ def main():
                 h.rec.results.append({'id': 'O-final-recovery', 'status': 'execution_error'})
         except Exception as exc:
             h.rec.results.append({'id': 'O-final-recovery', 'status': 'execution_error', 'type': type(exc).__name__})
-    return h.rec.finish({'limitations': 'Exact commit/confirm/ACK and lease cutpoints remain separately blocked'})
+    return h.rec.finish({'runtime_observations': getattr(h, 'runtime_observations', []), 'limitations': 'Exact commit/confirm/ACK and lease cutpoints remain separately blocked'})
 
 if __name__ == '__main__':
     raise SystemExit(main())
