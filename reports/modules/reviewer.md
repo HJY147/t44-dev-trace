@@ -90,3 +90,9 @@ D005/D006及公开IAT01–05、FE计数修复的限定源审查未发现新实�
 ## 单UoW实现限定复审（5dcb）
 
 仅Runtime净+7的契约校验分支与已审3187设计一致，限定无新阻断；原18专项和精确CI412均核原件，checkout整tree亦对应5dcb。本岗没有重跑测试/负载或创建918脚本。4/5/5查询各1acquire是功能性计数，延迟收益未测；5980超880、正式性能及独立仍未闭环，整体不通过。报告reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md，真实prompt ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1，后续新源另审。
+
+## 暖米咖玻璃 UI 限定审核（840b1a8）
+
+精确实现 `840b1a88e6976f0ecfb0b0ba45676b208aae4d98`，设计 `326f97151970ec9b4ce77114de2c2170d24a681d`，公开开发证据 `63519c2b114bb4cb1c98dcc43e0f2358e65d0892`。五份生产前端差异仅涉及视觉与可选 Vite 缓存；关键业务 blob 与 5dcb 不变，设计提交先于 Vue 且为直接父提交。22 份源摘要、10 份 gzip 原日志全部一致；本岗实际查看最终 18 张原 PNG。390 下七标签、详情底部、长表单与关闭/取消/确认可读可触达，通知双计数未合并。限定范围未发现新增实质阻断。
+
+本岗未重复 27 项/构建/业务或负载，仅核公开开发原件（27/27、310/334 行，最终 build 留大 chunk 警告）。焦点陷阱/返回焦点等未完整运行；既存 `initial` 文本 true 留待前端新 SHA 修复另审。整产品、独立验收、性能与源码规模仍未通过；不发 reviewer/stage success、不 APPROVE、不合并。报告 `reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md`；实际 prompt `ROLE-reviewer-WARM-GLASS-v1`。自有 worktree/index，仅归档本岗资料；PR21 COMMENT 与回执由实际发布补记。

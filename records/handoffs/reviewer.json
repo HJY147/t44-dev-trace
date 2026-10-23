@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "单UoW实现限定复审完成；整体不通过",
-  "implementation_status": "审核资料已完成；无产品修改",
+  "stage": "暖米咖玻璃UI限定审核完成；整产品不放行",
+  "implementation_status": "审核资料已完成；无产品代码修改",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -56,7 +56,12 @@
     "agents/reviewer/github/capacity-v11-freeze-comment.md",
     "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json",
     "tmp/reviewer/954_capacity_freeze_static.py",
-    "agents/reviewer/evidence/capacity-v11-freeze/path-migration-954.json"
+    "agents/reviewer/evidence/capacity-v11-freeze/path-migration-954.json",
+    "agents/reviewer/dispatches/ROLE-reviewer-WARM-GLASS-v1.txt",
+    "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
+    "agents/reviewer/evidence/warm-glass/verification.json",
+    "agents/reviewer/evidence/warm-glass/pr-before-comment.json",
+    "agents/reviewer/github/warm-glass-840b1a8-comment.md"
   ],
   "interfaces": [
     {
@@ -237,18 +242,25 @@
       "command": "Path.rename原校验脚本至root分配tmp/reviewer/954_capacity_freeze_static.py；与git show117a旧路径逐字/hash比较",
       "exit_code": 0,
       "result": "脚本/断言未变，历史命令/结果保留；未重跑129"
+    },
+    {
+      "command": "git show/diff/log/merge-base; shasum; Python standard-library source/raw-gzip verification; view_image 18 committed final screenshots; GitHub plugin PR metadata",
+      "exit_code": 0,
+      "result": "绑定840/635；22源和10原日志一致；最终18PNG已实际视检；初次PR目标未纳入的merge-base exit1如实保留，8be后exit0；无产品测试重跑/账号/独立环境访问"
     }
   ],
   "results": [
-    "原957未改断言复验exit0，原C-P4四类限定关闭",
-    "DB公开实库四类变异/恢复及18测试证据hash一致，执行者为DB，不冒记本岗运行",
-    "固定原口径5886超5100上限786",
-    "架构A/B/C/E预计净318–477仍不足；D仅POC不计收益；无产品改码"
+    "5个生产frontend差异不改变业务脚本/接口；9关键业务blob与5dcb相同",
+    "设计326为实现840直接父，先设计后Vue导入成立",
+    "22源hash/10原日志及gzip全部一致；实际视检18原PNG",
+    "390长表单滚动972到底且关闭可见，七tab/详情底部/通知双标签可读",
+    "公开开发27/27、行310/334及build/typecheck原件已核；本岗未重跑"
   ],
   "unverified": [
-    "后端IAT01–05后续修复与诊断不在本轮复审",
-    "全产品新独立验收/性能/全套和覆盖率未由本岗执行，公开旧结果不外推",
-    "所有减量方案尚未实施/计数，不能把预算写成达标"
+    "焦点陷阱/关闭返回触发点/读屏和全部视口未完整运行",
+    "不支持backdrop引擎只审源，forced-colors只静态看",
+    "既存initial文本true需要责任岗新SHA修复回归另审",
+    "本轮不覆盖全产品新独立、正式性能、源码规模达标或整产品门禁"
   ],
   "questions": [],
   "prompt_refs": [
@@ -399,10 +411,21 @@
       ]
     },
     "ROLE-reviewer-V11-IMPLEMENTATION-v1",
-    "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1"
+    "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1",
+    {
+      "id": "ROLE-reviewer-WARM-GLASS-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-WARM-GLASS-v1.txt",
+      "reason": "绑定设计/实现/公开原证据，限定视觉和契约保持，明确未执行场景且不混独立SUT",
+      "artifact_paths": [
+        "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
+        "agents/reviewer/evidence/warm-glass/verification.json",
+        "agents/reviewer/evidence/warm-glass/pr-before-comment.json",
+        "agents/reviewer/github/warm-glass-840b1a8-comment.md"
+      ]
+    }
   ],
-  "updated_at": "2026-10-23T14:51:36.178506+00:00",
-  "review_outcome": "限定diff未见新阻断，准入协调后短测不等于性能通过；5980超880/正式与独立未闭环，不放行",
+  "updated_at": "2026-10-23T17:51:48.238225+00:00",
+  "review_outcome": "限定UI差异未发现新增实质阻断；既存initial=true待新SHA；独立/性能/规模与整体门禁不放行",
   "github_evidence": {
     "exact_body_readback": true,
     "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
@@ -462,14 +485,14 @@
       "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
     }
   ],
-  "review_branch": "codex/reviewer-read-uow",
+  "review_branch": "codex/review-warm-glass",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
     "reported_freeze_commit": "ae60dc3",
     "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "review_target_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "review_target_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
   "previous_foundation_review": {
     "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
     "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
@@ -656,7 +679,7 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "review_scope": "Only contract-validation single-UoW implementation diff and exact22647 published development evidence",
+  "review_scope": "U017/U018 frontend visual import only; published 63519c2 evidence and 18 screenshots; no independent or full product retest",
   "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
   "previous_capacity_rfc_review": {
     "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
@@ -708,8 +731,8 @@
       "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
     ]
   },
-  "latest_review_report": "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
-  "latest_review_evidence": "agents/reviewer/evidence/read-uow-5dcb/verification.json",
+  "latest_review_report": "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
+  "latest_review_evidence": "agents/reviewer/evidence/warm-glass/verification.json",
   "readonly_uow_design": {
     "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
     "applied": false,
@@ -779,5 +802,44 @@
     "only_runtime_changed": true,
     "test_rerun_by_reviewer": false,
     "latency_improvement_measured": false
+  },
+  "previous_read_uow_review": {
+    "stage": "单UoW实现限定复审完成；整体不通过",
+    "review_target_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "review_outcome": "限定diff未见新阻断，准入协调后短测不等于性能通过；5980超880/正式与独立未闭环，不放行",
+    "review_scope": "Only contract-validation single-UoW implementation diff and exact22647 published development evidence",
+    "latest_review_report": "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
+    "latest_review_evidence": "agents/reviewer/evidence/read-uow-5dcb/verification.json",
+    "readonly_uow_implementation": {
+      "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+      "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
+      "ci_run": 39970988113,
+      "junit": {
+        "tests": 412,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "only_runtime_changed": true,
+      "test_rerun_by_reviewer": false,
+      "latency_improvement_measured": false
+    }
+  },
+  "warm_glass_review": {
+    "application_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+    "design_sha": "326f97151970ec9b4ce77114de2c2170d24a681d",
+    "evidence_sha": "63519c2b114bb4cb1c98dcc43e0f2358e65d0892",
+    "base_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "reviewer_tests_rerun": false,
+    "screenshots_viewed": 18,
+    "new_material_blockers": [],
+    "existing_issue": "initial string value true; future owner SHA needed",
+    "github": {
+      "comment_state": "prepared; actual receipt to follow",
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "approve": false,
+      "merged": false
+    }
   }
 }
