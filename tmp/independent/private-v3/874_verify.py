@@ -59,7 +59,13 @@ def offline_wire_selftest(output):
     class Completed:
         def __init__(self, code, stdout): self.returncode, self.stdout, self.stderr = code, stdout, ''
     current = None
-    S.subprocess.run = lambda *args, **kwargs: current
+    calls = []
+    def fake_run(argv, **kwargs):
+        calls.append({'argv': argv, 'stdin': kwargs.get('input'), 'timeout': kwargs.get('timeout'),
+                      'capture_output': kwargs.get('capture_output')})
+        if isinstance(current, Exception): raise current
+        return current
+    S.subprocess.run = fake_run
     try:
         enqueue('createProject', 201, project)
         for label, roles in [('a', [2, 3]), ('b', [2]), ('r', [3]), ('n', [1])]:
@@ -86,30 +92,97 @@ def offline_wire_selftest(output):
         queue.append(('createTask', 403, error))
         assert h.request('createTask', ids={'project_id': 1}, body={}, expected=403, code='ACTION_FORBIDDEN') == error
         passed('declared-error-response-remains-error')
-        for command in ('init-user', 'scheduler-scope', 'fault'):
-            current = Completed(0, ''); value = h.control(command)
-            assert value['exit_code'] == 0 and value['json_receipt_available'] is False
-            passed('explicit-exit-only-' + command)
-        for command in ('init-user', 'scheduler-scope', 'fault', 'audit-sql', 'recover', 'service-credential'):
-            for name, completed in [('nonzero', Completed(7, '{"recovery_completed":true}')),
-                                    ('ambiguous', Completed(0, 'nonempty-not-json'))]:
-                current = completed
+        samples = {
+            'init-user': '{"user_id":2}',
+            'scheduler-scope': '{"session_id":3,"expires_at":"2026-10-24T01:00:00Z","credential_written":true,"rotated":true,"previous_session_revoked":true,"previous_session_already_inactive":false}',
+            'service-credential': '{"credential":{"access_token":"offline-wire-synthetic-bearer"}}',
+            'recover': '{"schema_version":1,"recovery_completed":true,"steps":[]}',
+            'audit-sql': 'id\tversion\n3\t1\n',
+            'broker': 'Listing queues for vhost / ...\nname\tmessages\nt44.notifications\t0\n',
+            'fault': ''}
+        inputs = {
+            'init-user': (['--username', 'offline_a', '--display-name', 'Offline a'], 'offline-not-real\n'),
+            'scheduler-scope': (['--project-id', 1], ''),
+            'service-credential': (['--project-id', 1, '--ttl-seconds', 900], ''),
+            'recover': ([], ''), 'audit-sql': ([], 'SELECT id,version FROM tasks'),
+            'broker': (['queues'], ''),
+            'fault': (['--service', 'api', '--action', 'stop', '--lease-seconds', 60], '')}
+        for command, output in samples.items():
+            argv, stdin = inputs[command]
+            current = Completed(0, output); value = h.control(command, *argv, stdin=stdin)
+            assert calls[-1] == {'argv': ['offline-python', 'offline-control', command, *map(str, argv)],
+                'stdin': stdin, 'timeout': 180, 'capture_output': True}
+            if command in ('audit-sql', 'broker'): assert value['native_text'] == output
+            if command == 'fault': assert value['exit_code'] == 0 and value['json_receipt_available'] is False
+            passed('documented-input-output-' + command)
+            for name, failure in [('nonzero', Completed(7, output)),
+                                  ('timeout', S.subprocess.TimeoutExpired(['offline-control'], 180))]:
+                current = failure
+                try: h.control(command, *argv, stdin=stdin)
+                except (S.Blocked, S.subprocess.TimeoutExpired): passed(name + '-' + command + '-blocked')
+                else: raise AssertionError(name + ' control was accepted')
+        for command in ('init-user', 'scheduler-scope', 'recover', 'service-credential'):
+            for name, output in [('empty', ''), ('mixed-text-json', 'progress\n' + samples[command]),
+                    ('two-json-objects', samples[command] + samples[command]),
+                    ('duplicate-key', '{"user_id":1,"user_id":2}'), ('array', '[]')]:
+                current = Completed(0, output)
                 try: h.control(command)
                 except S.Blocked: passed(name + '-' + command + '-blocked')
-                else: raise AssertionError(name + ' control was accepted')
+                else:
+                    # A duplicate key is always rejected; documented object requirements differ.
+                    raise AssertionError(name + ' control was accepted')
+        for output in ['{}', '{"user_id":true}', '{"user_id":1.0}', '{"user_id":0}',
+                       '{"user_id":4294967296}', '{"user_id":1,"extra":2}']:
+            current = Completed(0, output)
+            try: h.control('init-user')
+            except S.Blocked: passed('init-user-invalid-id-or-fields-blocked')
+            else: raise AssertionError('Invalid user_id accepted')
+        current = Completed(0, '{}')
+        try: h.control('scheduler-scope')
+        except S.Blocked: passed('scheduler-missing-fields-blocked')
+        else: raise AssertionError('Missing scheduler fields accepted')
+        for output in ['{}', '{"recovery_completed":1}', '{"recovery_completed":"true"}']:
+            current = Completed(0, output)
+            try: h.control('recover')
+            except S.Blocked: passed('recovery-non-boolean-or-missing-blocked')
+            else: raise AssertionError('Invalid recovery completion accepted')
         current = Completed(0, '{"recovery_completed":false,"error":"RECOVERY_FAILED"}')
         assert h.control('recover')['recovery_completed'] is False
         passed('false-recovery-remains-false')
-        for value in ['{"rows":[{"id":3,"version":1}]}', '{"columns":["id","version"],"rows":[[3,1]]}']:
-            current = Completed(0, value); assert h.sql('SELECT id,version FROM tasks') == [{'id': 3, 'version': 1}]
-            passed('readonly-sql-receipt-projection')
-        current = Completed(0, '{"credential":{"access_token":"offline-wire-synthetic-bearer"}}')
+        current = Completed(0, '{}')
+        try: h.control('fault')
+        except S.Blocked: passed('fault-nonempty-stdout-blocked')
+        else: raise AssertionError('Nonempty fault receipt accepted')
+        for command in ('audit-sql', 'broker'):
+            current = Completed(0, '')
+            try: h.control(command)
+            except S.Blocked: passed('empty-native-text-' + command + '-blocked')
+            else: raise AssertionError('Absent native receipt accepted')
+        current = Completed(0, samples['audit-sql'])
+        assert h.sql('SELECT id,version FROM tasks') == [{'id': 3, 'version': 1}]
+        passed('mysql-batch-integer-typed-from-frozen-storage')
+        current = Completed(0, 'id\tversion\n')
+        assert h.sql('SELECT id,version FROM tasks') == []
+        passed('mysql-batch-header-only-empty-result')
+        current = Completed(0, 'id\tread_at\thandling_note\tdigest\n3\tNULL\tline1\\nline2\\tend\\\\path\t1234\n')
+        assert h.sql('SELECT id,read_at,handling_note FROM notifications') == [
+            {'id': 3, 'read_at': None, 'handling_note': 'line1\nline2\tend\\path', 'digest': '1234'}]
+        passed('mysql-batch-null-escape-and-text-digit-preservation')
+        for name, output in [('missing-header', ''), ('duplicate-columns', 'id\tid\n1\t2\n'),
+                ('wrong-field-count', 'id\tversion\n1\n'), ('progress-prefix', 'warning text\nid\n1\n'),
+                ('invalid-integer', 'id\nnot-an-id\n'), ('unknown-escape', 'handling_note\nabc\\q\n')]:
+            current = Completed(0, output)
+            try: h.sql('SELECT id FROM tasks')
+            except S.Blocked: passed('mysql-batch-' + name + '-blocked')
+            else: raise AssertionError('Ambiguous SQL batch output accepted: ' + name)
+        current = Completed(0, samples['service-credential'])
         h.service(1); assert h.tokens['s'] == 'offline-wire-synthetic-bearer'
         passed('service-token-required-field-projection')
         current = Completed(0, '{"session_id":1}')
         try: h.service(1)
         except S.Blocked: passed('absent-service-token-blocked')
         else: raise AssertionError('Absent token was accepted')
+
     finally:
         S.urllib.request.urlopen, S.subprocess.run = original_open, original_run
         (target / 'offline-wire-selftest.json').write_text(json.dumps({'scope': 'Independent harness synthetic wire only',

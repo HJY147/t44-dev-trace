@@ -1,6 +1,6 @@
 {
   "original_case_freeze": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
-  "at_utc": "2026-10-23T21:28:53.424083+00:00",
+  "at_utc": "2026-10-23T21:40:46.832740+00:00",
   "kind": "mechanical environment transport adaptation after exact SUT binding",
   "original_browser_business_predicates_unchanged": true,
   "browser_predicate_count": 15,
@@ -13,8 +13,8 @@
   ],
   "original_H_preserved": true,
   "business_assertions_or_expected_errors_changed": false,
-  "mechanical_revision": 3,
-  "previous_mechanical_commit": "c5182af0258ccf7c60041bcc5734d37f9cded7d6",
+  "mechanical_revision": 4,
+  "previous_mechanical_commit": "68ce0174d4f1a3f7430d9e9affdab0a1af833af1",
   "unchanged_business_file_hashes": {
     "882_http.py": "a246c9d70ab92cd29daffc3ca83fb7d082a72ec831ec53236a369851d08116b3",
     "875_faults.py": "61b52b8f7f8ce97ff208731e0e6493b079112c24e8b78a6e2b4cbfe32a133409",
@@ -54,9 +54,16 @@
     "projected_value": "data.task",
     "criteria_changed": false
   },
-  "offline_synthetic_wire_check_count": 24,
-  "offline_wire_result_sha256": "80482a30969dcd3e78a1786c0cb852180a22bcacd378912c63128962db197d5a",
+  "offline_synthetic_wire_check_count": 70,
+  "offline_wire_result_sha256": "92a708f8d708c32e0b1e6625864b3b91e29426b29a0d268d2a400dd70670d9f5",
   "browser_business_predicate_count": 15,
   "hosted_control_ambiguous_stdout_remains_blocked": true,
-  "UI_readiness_and_private_exception_observability_only": true
+  "UI_readiness_and_private_exception_observability_only": true,
+  "neutral_control_protocol": {
+    "commit": "cf685d7b745774fe29ddc4884606edae6836e961",
+    "path": "deployment/acceptance/README.md",
+    "sha256": "79d902ff46720c68605965c3d75469adaf72da10ebffc2f9ef888363a7699730"
+  },
+  "controls": "All seven commands offline-bound: strict exit status; init/scheduler/service/recover JSON, audit-sql escaped column-header TSV typed from original frozen storage dictionary, broker uninterpreted native receipt, fault empty stdout",
+  "browser_bindings": "Observed real task-route title button, action selector/form, labelled evidence, capacity form item, actual confirmation labels, task-history tab; create two actual authenticated SPA history entries before logout; capture response path/status/code without auth content"
 }

@@ -183,15 +183,38 @@ class Harness:
                         'stdout_bytes': len(p.stdout.encode()), 'stderr_bytes': len(p.stderr.encode())})
         if p.returncode:
             raise Blocked('Neutral control failed with actual nonzero exit: ' + str(args[0]) + ':' + str(p.returncode))
+        command = args[0]
+        if command == 'fault':
+            if p.stdout.strip():
+                raise Blocked('Neutral fault success requires empty stdout')
+            return {'command': command, 'exit_code': 0, 'json_receipt_available': False}
+        if command in ('audit-sql', 'broker'):
+            if not p.stdout.strip():
+                raise Blocked('Neutral native-text control returned no observable receipt: ' + command)
+            return {'native_text': p.stdout, 'format': 'mysql-batch' if command == 'audit-sql' else 'rabbitmqctl'}
+        def unique_object(items):
+            value = {}
+            for name, item in items:
+                if name in value: raise ValueError('Duplicate control JSON key')
+                value[name] = item
+            return value
         try:
-            value = json.loads(p.stdout)
+            value = json.loads(p.stdout, object_pairs_hook=unique_object)
         except Exception:
-            if not p.stdout.strip() and args[0] in ('init-user', 'scheduler-scope', 'fault'):
-                # README does not promise JSON for these commands. This is an exact exit receipt,
-                # not a fabricated operation/business result. Account identity is separately
-                # established by real login; recovery/SQL/service-token keep strict JSON boundaries.
-                return {'command': args[0], 'exit_code': 0, 'json_receipt_available': False}
-            raise Blocked('Control did not return the documented JSON receipt: ' + str(args[0]))
+            raise Blocked('Control did not return one unambiguous documented JSON receipt: ' + command)
+        if not isinstance(value, dict):
+            raise Blocked('Neutral JSON control receipt must be an object: ' + command)
+        if command == 'init-user':
+            uid = value.get('user_id')
+            if set(value) != {'user_id'} or type(uid) is not int or not 1 <= uid <= 4294967295:
+                raise Blocked('Neutral init-user receipt requires one unsigned integer user_id')
+        elif command == 'scheduler-scope':
+            required = {'session_id', 'expires_at', 'credential_written', 'rotated',
+                        'previous_session_revoked', 'previous_session_already_inactive'}
+            if not required <= set(value):
+                raise Blocked('Neutral scheduler-scope receipt is missing documented fields')
+        elif command == 'recover' and type(value.get('recovery_completed')) is not bool:
+            raise Blocked('Neutral recovery receipt requires an actual boolean completion field')
         return value
 
     def sql(self, query):
@@ -210,28 +233,42 @@ class Harness:
                     return list(cursor.fetchall())
             finally:
                 conn.close()
-        value = self.control('audit-sql', stdin=query)
-        # Operational receipt envelope is unspecified. Accept common JSON row envelopes;
-        # no value normalization or expected-result substitution occurs here.
-        def rows_from(rows, envelope):
-            if rows and isinstance(rows[0], (list, tuple)):
-                cols = envelope.get('columns') if isinstance(envelope, dict) else None
-                if not isinstance(cols, list):
-                    raise Blocked('SQL positional row receipt needs neutral columns binding')
-                names = [x if isinstance(x, str) else x.get('name') for x in cols]
-                if not all(isinstance(x, str) for x in names):
-                    raise Blocked('SQL column metadata names unavailable')
-                return [dict(zip(names, row)) for row in rows]
-            return rows
-        if isinstance(value, list):
-            return rows_from(value, {})
-        if isinstance(value, dict):
-            for k in ('rows', 'result', 'data'):
-                if isinstance(value.get(k), list):
-                    return rows_from(value[k], value)
-                if isinstance(value.get(k), dict) and isinstance(value[k].get('rows'), list):
-                    return rows_from(value[k]['rows'], value[k])
-        raise Blocked('SQL receipt row envelope needs neutral schema binding')
+        receipt = self.control('audit-sql', stdin=query)
+        value = receipt['native_text']
+        lines = value.splitlines()
+        if not lines:
+            raise Blocked('MySQL batch receipt lacks its column header')
+        columns = lines[0].split('\t')
+        if len(set(columns)) != len(columns) or not all(re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*', col) for col in columns):
+            raise Blocked('MySQL batch receipt has an ambiguous/non-column header')
+        schema = json.loads((HERE / 'storage-expectations.json').read_text())
+        types = {}
+        for fields in schema.values():
+            for col in fields: types.setdefault(col['name'], set()).add(col['type'].split('(')[0].split()[0])
+        integer_names = {name for name, kinds in types.items() if kinds <= {'int', 'tinyint', 'smallint', 'bigint'}} | {'n'}
+        escapes = {'0': '\0', 'n': '\n', 'r': '\r', 't': '\t', '\\': '\\'}
+        def cell(raw, column):
+            if raw == 'NULL': return None
+            decoded, index = [], 0
+            while index < len(raw):
+                if raw[index] != '\\': decoded.append(raw[index]); index += 1; continue
+                index += 1
+                if index >= len(raw) or raw[index] not in escapes:
+                    raise Blocked('MySQL batch receipt contains an unrecognized escape')
+                decoded.append(escapes[raw[index]]); index += 1
+            result = ''.join(decoded)
+            if column in integer_names:
+                if not re.fullmatch(r'-?[0-9]+', result):
+                    raise Blocked('MySQL batch integer field is not an integer: ' + column)
+                return int(result)
+            return result
+        rows = []
+        for line in lines[1:]:
+            fields = line.split('\t')
+            if len(fields) != len(columns):
+                raise Blocked('MySQL batch receipt has a mismatched field count')
+            rows.append({col: cell(raw, col) for col, raw in zip(columns, fields)})
+        return rows
 
     def valid(self, schema, value):
         root = {'$schema': 'https://json-schema.org/draft/2020-12/schema',
