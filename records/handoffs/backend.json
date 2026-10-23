@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "capacity1.1 exactsource4c20 fullCI394pass0skip; diagnosticcontrollerpreparednotrun",
-  "implementation_status": "capacity1.1 guards/locks implemented; candidate schema_version output fixed without changing14freeze files; not deployed",
+  "stage": "night930 ABBA tool prepared; static-only, await coordinator load window",
+  "implementation_status": "production byte-identical5dcb;412exact-source CI historical; no new production/frozen change",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -1253,5 +1253,28 @@
       ],
       "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366169525"
     }
+  },
+  "night_abba_tool": {
+    "branch": "codex/backend-contract-abba",
+    "merge_base": "2a34243476461f4aab0c29ec383aa37766b93c9c",
+    "tool": "tmp/backend/930_contract_abba.py",
+    "sources": {
+      "A": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "B": "5dcb73cc10c38deb14fae68d33318b04d538fecf"
+    },
+    "plan": "agents/backend/contract-short-compare-plan.md",
+    "preparation": "agents/backend/abba-tool-preparation.md",
+    "static": "agents/backend/abba-tool-static.json",
+    "checks": "11offline helperchecks+explicit projectRuff/format passed; implicit defaultconfig failure preserved",
+    "execution": "NOT RUN; no app/HTTP/SQL/load or real lifecycle proof; root explicit quiet window required",
+    "scope": "own t44_profile/18083/1worker/40threads/pool5+10,ABBA4x8s at8concurrency,deadline90s",
+    "production_delta": 0,
+    "unresolved": [
+      "formal performance",
+      "actual ABBA result",
+      "source6051exceeds5100",
+      "independent acceptance"
+    ],
+    "next": "commit/push exacttoolSHA and command; wait coordinator explicit120s window"
   }
 }

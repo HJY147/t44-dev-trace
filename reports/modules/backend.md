@@ -183,3 +183,7 @@ RFC specs/changes/contract-validation-read-uow-rfc.md仅对validateContractPaylo
 ## 写路径定位静态材料交接
 
 write-path-static-ledger.md给出三次鉴权/3UoW的新写分阶段账本、真实空依赖SQL、success/rejection audit与幂等/提交边界；项目分布和R/M/N未知，不称瓶颈已定位。只提出无守卫依赖读取可跳过的最小候选，现源码/项目X锁/冻14不变。contract-short-compare-plan.md为4c/5dcb同fixture/8并发ABBA、90秒有界待运行方案；930未创建、无负载/新生产改动。因前端调度优先本轮资料提交后释放槽位，后续由根重新授权，不等待窗口。
+
+## 夜间930有界ABBA工具准备
+
+新分支codex/backend-contract-abba保留05623c并合75c，生产仍精确5dcb。tmp/backend/930_contract_abba.py实现独占进程组连续ABBA控制、90秒监督上限、Git/actualimport双身份、相同profile fixture与未包裹API；每阶段3类sanity、均衡120预热、8并发8秒。说明及静态证据abba-tool-preparation.md、abba-tool-static.*；离线11项通过，显式项目Ruff/format通过，首次隐式配置失败原文保留。未启动应用/SQL/HTTP/负载，真实生命周期和收益待根窗口；历史03整体exit1、正式400×600失败、源码6051超限保持。不是新的全量CI/独立性能通过。

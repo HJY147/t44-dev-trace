@@ -289,3 +289,10 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - bounded plan已先通知根：4c/5dcb精确生产仅runtime差异，同profile fixture/18083/1worker、同预热120有效请求，ABBA四phase各8并发8秒、总deadline90秒，actualimport/object SHA独立标tool/app。无矩阵重跑/正式400×600结论；contract-short-compare-plan.md。930仅预留未创建，根因UI优先收方案后要求本轮自然结束，不等quiet窗口、不启动。
 - 本轮没有生产/测试/冻结修改、SQL/HTTP/服务/pytest/压测，原03 controller整体exit1、正式性能失败/源码超限保持。仅Git/源码读取与文本检查，不拿历史412CI当这份计划执行结果。
 - 静态材料真实Issue3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6368102715；生产/测试/冻结diff为0，文本diff检查退出0。
+
+## 夜间930工具准备（静态，未运行）
+
+- 依据根实际夜间续派，创建codex/backend-contract-abba，保留本岗05623c并合75c3468（merge2a3424）。只新增tmp/backend/930_contract_abba.py；生产同5dcb、冻结14未改。文档18:20–18:21Z渲染窗口保持无负载/构建/应用启动。
+- 工具按既有ABBA计划：Git对象/actualimport双核验，自己的profile/18083/1worker/40线程/5+10，四阶段sanity3+warm120+8并发8秒，单连续控制器/独占PG/90秒有界finally。底层未包裹API，不改pool/验证/权限/业务。900编号按根正式预留930使用，无其它新脚本。
+- 11项离线helper检查通过（Git归档、错误路径/篡改拒绝、namespace、执行开关、600输入）；不import t44、不发SQL/HTTP。首次隐式Ruff使用外部默认配置失败已留原文，显式backend/pyproject.toml既有lint/format均退出0，未降低选项。见abba-tool-static.*和preparation.md。
+- 尚未运行服务/负载/真实清理，不能把静态成功称性能证明。待精确工具commit/push后向根交单命令，必须再等明确quiet窗口授权。原03整体exit1/正式性能失败/6051规模超限保留，后续write候选RFC另阶段，未改生产。
