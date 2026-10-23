@@ -247,3 +247,9 @@
 - 工具checkpoint14490fe已push后完成离线验证（offline-validation.json/log）：导入零网络/进程；实际QueuePool2.1.6+合成DBAPI两波15借用证A5保留/10溢出与B15保留/0溢出，峰值15/最终open0；透明ASGI、4类CLI拒绝、mock固定ABBA8相位32/1s4s及首失败停止/清理、nearest-rank均通过。不是MySQL/HTTP或负载样本。
 - root明确授予独占执行窗口且native等待；先补统一profile_connections前/后计数helper并提交0f6fdf5，随后offline-final-probe验证绑定只查t44_profile/总dispose、startup异常后仍后检；旧离线已覆盖的9函数/类源码相同，当前工具hash与source边界已保存。仍没有实际HTTP/SQL/ABBA。
 - 具体执行argv/私密env路径/源hash/外层116+2+1秒进程组清理计划execution-plan.json先commit；22:35既有fixture原样使用，不刷新session、不改旧fixture/TTL或业务数据。将先报startUTC再运行一次，完成或失败立即释放窗口。
+
+- 原唯一ABBA实际2026-10-23T23:02:14.376665Z–23:02:53.234248Z/38.842秒含清理/exit0，源f75a8a4，实际argv已先冻结。start前通知root，结束清理后立即通知root释放窗口，之后没有第二次样本、额外profile/HTTP/SQL。native可随后启动。
+- 实际A1/B1/B2/A2稳态2079/2255/2237/2113请求、全部失败0，nearest-rank P95(ms)91.591041/74.471792/72.908250/92.600542分别保留不平均。稳态新建436/0/0/427、关闭436/0/0/427、ping1643/2255/2237/1686；预热新建112/15/15/109未删，清理关闭5/15/15/5。观察峰值全15、dispose前checkedout0/idle5或15、dispose后open0。
+- 18083前后free，4自有server exit0且PID最终不存在；每段前app可见profile其他连接0，最终0，保留跨账号不可见局限，未扩权限。22:35原fixture未刷新/未修改，前后bytes hash及8个client相同。只有contract只读候选，无业务fixture创建/seed/清库。
+- 离线逐请求核10882（warmup2198/steady8684）全部client-server恰1关联、HTTP200/原valid守卫；恰1endpoint/runtime/authenticate/acquire/checkout，三候选cursor4/5/5全SELECT/SQL错误0。19实际应用/资源/池源hash与bc5/官方2.1.6一致；14冻结仍全同，生产净改0。
+- 43份实际原件按原bytes gzip存raw并以raw-manifest.json绑定原始与gzip SHA。扫描已知DB口令/完整DSN/fixtureToken/Authorization标记匹配0，未输出值；result.md/summary.json写真实4段原值、acquire inclusive与线程CPU、钩子/本机竞争/短样本限制、B每worker多10idle及未测内存。支持本次减少重建假设，不作正式根因/显著性/生产准入。

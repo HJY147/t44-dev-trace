@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "POOL-RETENTION-v1：同15峰值保留池受限诊断设计",
-  "implementation_status": "工具0f6fdf5已提交，真实QueuePool合成/ASGI/CLI/固定ABBA mock与故障后检离线通过；root已授予窗口，具体源/命令先commit，真实HTTP/SQL/比较尚未开始。",
+  "stage": "POOL-RETENTION-v1：唯一同15峰值ABBA开发诊断完成",
+  "implementation_status": "955受限工具/离线边界及唯一真实ABBA完成；四段原值保留，38.842s含清理exit0，生产bc5/默认/冻结未改，当前不准入生产或正式结论。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -559,6 +559,21 @@
       "path": "tmp/backend/955_perf_profile.py",
       "kind": "复用既有编号的固定ABBA诊断扩展",
       "status": "工具先提交；未运行HTTP/SQL/负载"
+    },
+    {
+      "path": "agents/database/pool-retention/result.md",
+      "kind": "唯一ABBA原值/代价/局限",
+      "status": "真实完成，不正式归因"
+    },
+    {
+      "path": "agents/database/pool-retention/summary.json",
+      "kind": "实际各阶段关联/生命周期/源hash/退出证据",
+      "status": "10882含warmup2198/steady8684，失败0"
+    },
+    {
+      "path": "agents/database/pool-retention/raw-manifest.json",
+      "kind": "43份原件bytes/gzip SHA256",
+      "status": "knownsecret scan0"
     }
   ],
   "interfaces": [
@@ -733,7 +748,8 @@
     "scratch候选Ruff首次默认88列，拒绝；最终 --config backend/pyproject.toml 为100列，逐文件cloc2.10（固定工具hash）",
     "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
     "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）",
-    "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml."
+    "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml.",
+    "POOL-RETENTION: official tag bytes/hash2files; existing955 fixedpool_ABBA source and exactargv committed; offline synthetic proof; execution-plan once at23:02:14..53; offline exactsource/request/rawhash/secretscan after release. No secondload/HTTP/SQL."
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -824,12 +840,13 @@
     "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
-    "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained."
+    "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained.",
+    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "离线必要边界检查通过；真实ABBA仍未开始，不当性能/正式归因证明",
-    "实际ABBA/HTTP/SQL/负载未执行，必须等root窗口",
-    "未准入生产池修改；正式压力/源码规模/人工材料原缺口不改变"
+    "不证明正式400VU600秒270ms/原503根因/统计显著性或无观测钩子的生产收益",
+    "app可见PROCESSLIST不证明跨账号全局连接；未测每连接内存/未来多worker资源总预算",
+    "未准入任何生产池/默认配置变化，原正式压力失败/源码规模/人工材料缺口保留"
   ],
   "questions": [
     {
@@ -1003,19 +1020,21 @@
       "improvement_reason": "新假设先核锁定真实源码和同峰值/空闲代价，工具先提交并隔离真实执行窗口，不把短段归因为正式根因"
     }
   ],
-  "updated_at": "2026-10-23T23:01:49.184981+00:00",
+  "updated_at": "2026-10-23T23:07:45.204283+00:00",
   "publication": {
-    "branch": "codex/database-plan-history",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",
-    "design_commit": "e9a769a",
-    "product_commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+    "branch": "codex/database-pool-retention",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-retention",
+    "design_commit": "42a8bcb",
+    "tool_commits": [
+      "14490fe",
+      "0f6fdf5126d004d582e84af02fd4da9e94135b08"
+    ],
+    "execution_source_commit": "f75a8a419d04531a30788a734e56d2dda64baed0",
     "pull_request": null,
-    "scope": "fixed task history reader + owner selftests; root exact source small review before backend hookup",
-    "ci": "skip ci, root combined CI pending; no full/load started",
-    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6373901751",
-    "github_issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163",
-    "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
-    "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
+    "scope": "tool-only one bounded developer ABBA; no production admission; root execution window released",
+    "ci": "skip ci; no full CI/extra load",
+    "github_issue4": "pending actual result post/readback",
+    "github_issue3": "pending actual result post/readback"
   },
   "history": [
     {
@@ -1178,8 +1197,10 @@
     "scope": "tool-only A(5,10) vs B(15,0), peak<=15 per singleengine/worker",
     "mode": "955 --mode pool-abba, fixed32 concurrency and1s warmup4s steady eachA1B1B2A2",
     "source": "bc5 application bytes unchanged; SQLAlchemy2.1.6 verified",
-    "execution_admission": "explicit root sole local load window granted; exact execution-plan.json committed before actual run",
-    "contract": "agents/database/pool-retention/design.md"
+    "execution_admission": "root sole window used once23:02:14.376665Z–23:02:53.234248Z; released immediately after cleanup; no further load",
+    "contract": "agents/database/pool-retention/design.md",
+    "result": "A1/B1/B2/A2 P95ms91.591041/74.471792/72.908250/92.600542; steady connects436/0/0/427; no P95 average or formal cause",
+    "cost": "B retains10 additional idle connections per worker here; memory not measured; future global/multiworker budget and production admission need separate design"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
@@ -1215,6 +1236,19 @@
       "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
       "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
       "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    },
+    {
+      "branch": "codex/database-plan-history",
+      "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",
+      "design_commit": "e9a769a",
+      "product_commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+      "pull_request": null,
+      "scope": "fixed task history reader + owner selftests; root exact source small review before backend hookup",
+      "ci": "skip ci, root combined CI pending; no full/load started",
+      "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6373901751",
+      "github_issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163",
+      "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
+      "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
     }
   ]
 }
