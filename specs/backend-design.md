@@ -1,6 +1,6 @@
 # 后端设计草案 v1
 
-状态：未冻结、未实现；实际派工 `ROLE-backend-CONTRACT-v1`。业务出口依据用户采用business-rules v1，开始前编辑范围依据协调者D002；下列技术细节须跨岗及审核岗复核。契约见 `contracts/openapi.json` / `contracts/README.md`，数据库DDL/持久契约由数据库岗提供。
+状态：v1规格已冻结，进入完整实现和联调；冻结不是运行验收；实际派工 `ROLE-backend-CONTRACT-v1`。业务出口依据用户采用business-rules v1，开始前编辑范围依据协调者D002；下列技术细节须跨岗及审核岗复核。契约见 `contracts/openapi.json` / `contracts/README.md`，数据库DDL/持久契约由数据库岗提供。
 
 ## 包、进程与依赖边界
 

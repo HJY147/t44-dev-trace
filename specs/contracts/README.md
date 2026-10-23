@@ -1,13 +1,13 @@
-# T44 API 契约草案 0.1.0
+# T44 API 契约 1.0.0
 
-状态：**未冻结、未实现**。`openapi.json` 为 OpenAPI 3.1 / JSON Schema 2020-12 草案，含31个路径、38个操作和完整请求/响应类型。总协调及审核岗复核后才能冻结、进入联调；目前的规范校验通过不表示HTTP实现、功能、性能或验收通过。
+状态：**v1规格已冻结**。用户D001/D004已采用业务及字段/错误取舍，C1–C4限定技术复审通过。`openapi.json` 为 OpenAPI 3.1 / JSON Schema 2020-12，含31路径、38操作；进入完整实现与联调。冻结不表示HTTP、功能、性能或验收已经通过；冻结摘要见records/spec-freezes/v1.json。
 
 ## 依据与范围
 
 - 用户采用的业务出口与通知规则：`../business-rules.md`、`../../records/decisions/D001-business-rules.md`。
 - 协调者的开始前编辑范围：`../../records/decisions/D002-prestart-edit-boundaries.md`，不是用户逐条原话。
 - 需求与架构：`../requirements.md`、`../../architecture.md`、原始T44任务书；评审内容来自 `../../docs/reviews/review-protocol.md` 及总协调给定稳定ID。
-- 技术方案：同步FastAPI、SQLAlchemy 2 / PyMySQL、MySQL、Pika、独立APScheduler进程；数据库岗负责持久实现与DDL。本轮不生成ORM、迁移或产品代码。
+- 技术方案：同步FastAPI、SQLAlchemy 2 / PyMySQL、MySQL、Pika、独立APScheduler进程；数据库岗负责持久实现与DDL。当前授权实现ORM、版本迁移及产品代码，按本规格和审核门禁验证。
 
 三类主接口分别是 `POST /api/v1/projects/{project_id}/tasks`、`POST /api/v1/projects/{project_id}/tasks/{task_id}/transitions` 和 `POST /api/v1/projects/{project_id}/tasks/{task_id}/release-assessments`。辅助操作覆盖登录/撤销当前会话、本人身份、字典、项目/成员、迭代产能、排期差异、开始前负责人及依赖、评审模板/证据、预案批准、经理决策、升级历史、通知已读/处理和项目只读审计。没有通用状态PATCH、无鉴权注册、全局账号枚举或外部自动部署/回滚执行接口。
 
@@ -42,7 +42,7 @@ JSON Schema的integer不接受字符串或布尔；JSON数值 `1.0` 在标准语
 
 幂等PROCESSING由独立短事务认领，持久owner_token/租约；主事务锁该行再执行并原子完成快照。其他请求仍处理中返回409及Retry-After，不能换键重试。恢复者需加锁等旧主事务终止，再CAS租约所有者；旧worker提交前核对owner_token。拒绝回滚后，独立事务同时写拒绝审计和错误快照。v1提案不自动清理已完成记录，避免无声明重试窗导致二次动作。
 
-C1修订采用持久字段 `idempotency_requests.response_request_id`：COMPLETE结果必须非空，值是**实际生成已保存结果的请求ID**；租约恢复后最终完成时才定格也合法，不一定是首次认领ID。成功结果与该字段同主事务完成，拒绝结果与该字段同独立拒绝审计事务完成；回放 `meta.original_request_id` 取该字段，`meta.request_id/server_time/replayed`按当前请求重新构造。只保存业务data/状态码及该标识，不存整个旧meta、Token或凭据。数据库列/约束由数据库岗下一轮另行修改和验证；本轮仅后端设计明确采用该来源。
+C1修订采用持久字段 `idempotency_requests.response_request_id`：COMPLETE结果必须非空，值是**实际生成已保存结果的请求ID**；租约恢复后最终完成时才定格也合法，不一定是首次认领ID。成功结果与该字段同主事务完成，拒绝结果与该字段同独立拒绝审计事务完成；回放 `meta.original_request_id` 取该字段，`meta.request_id/server_time/replayed`按当前请求重新构造。只保存业务data/状态码及该标识，不存整个旧meta、Token或凭据。对应列及成组约束已在v2设计修复并复审；运行验证另行记录。
 
 ## 可触发错误与验证责任
 

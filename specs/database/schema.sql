@@ -1,5 +1,6 @@
--- T44 database design v2-draft; MySQL 8.4 / InnoDB.
--- REVIEW REQUIRED. This file has NOT been executed or migrated.
+-- T44 schema v1 frozen; MySQL 8.4 / InnoDB.
+-- Per-table design review and C1-C4 re-review passed; D004 adopted by user.
+-- Frozen specification only: execution/migration results are recorded separately.
 -- Run only in an explicitly selected empty schema after per-table approval.
 -- No DROP, seed data, database creation, triggers, or implicit application state machine.
 -- All connections must use UTC and strict SQL mode; set by runtime connection bootstrap.
