@@ -195,3 +195,5 @@
 - 新增单JSON runtime-metadata，无参数/任意SQL/任意命令入口；逐服务ps-q唯一64hex+project/service标签核验，inspect字段白名单，不取Env/完整inspect。实际API进程数量/worker配置、固定max_connections标量、Nginx-T内存投影；不保存完整config/argv/私密行。runner可见CPU/内存/cgroupv2祖先原值和daemon transport只描述观察范围，不推无限硬件/物理同机/无其他流量。
 - run.py仅context声明，不自动采集；保留cf685d7分离stdout/stderr与严格user_id JSON、原七命令、成功零行audit行为。没有运行Docker/GHA/产品/压测，不生成伪runner资源结论。Linux cgroup v2不支持或必需controller不可见时incomplete非零；Nginx-T仅验证当前文件，不冒称证明最后reload内存完全相同。
 - 扩既有953的ID/project/字段无secret/固定SQL/缺失unknown非零/六服务只读投影守卫，原63项均保留；最终75项0.10s通过，CI配置Ruff针对全部改动文件通过。首次UP022原诊断重现留lint-before.json，手工改capture_output后通过；两轮原始工具stdout/stderr/JUnit及SHA在runtime-metadata-validation。只做合成能力边界核验，未观测实际runner容器。
+
+- 实现b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0已push并立即交根供正式入口采用；随后使用body-file发布Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388，通过固定comments API读回并逐字核正文一致，原始JSON存runtime-metadata-validation/issue-readback.json。只在此记录GitHub对接；没有新增Docker/资源/正式负载执行。后续为评论/档案收尾，受验实现SHA仍b3ee0ac。
