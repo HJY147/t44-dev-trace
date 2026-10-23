@@ -200,7 +200,7 @@ def test_existing_service_file_is_preserved_without_issuing_new_session(tmp_path
     command.assert_not_called()
 
 
-def recovery_controls(tmp_path, *, paused=b"rabbitmq\n", failed_step=None):
+def recovery_controls(tmp_path, *, paused=b"rabbitmq\n", failed_step=None, health="healthy"):
     controls = control.Controls.__new__(control.Controls)
     controls.runtime = tmp_path
     controls.locked = lambda: nullcontext()
@@ -208,7 +208,9 @@ def recovery_controls(tmp_path, *, paused=b"rabbitmq\n", failed_step=None):
     control.write_private(tmp_path / "fault-leases.json", {"rabbitmq": 1})
 
     def compose(*args, **kwargs):
-        if args[0] == "ps":
+        if args[0] == "ps" and "--format" in args:
+            name, output = "unpaused-health", json.dumps({"Service": "rabbitmq", "State": "running", "Health": health}).encode()
+        elif args[0] == "ps":
             name, output = "inspect-paused", paused
         elif args[0] == "unpause":
             name, output = "unpause", b"private driver detail"
@@ -310,3 +312,36 @@ def test_cli_recovery_bad_private_state_is_structured_and_redacted(capfd):
     assert receipt["recovery_completed"] is False
     assert receipt["error"] == "RECOVERY_CONTROL_UNAVAILABLE"
     assert "synthetic-private-value" not in output.out + output.err
+
+
+def test_recovery_waits_for_observed_health_after_successful_unpause(tmp_path):
+    controls = recovery_controls(tmp_path)
+    original = controls.compose.side_effect
+    health_calls = 0
+
+    def compose(*args, **kwargs):
+        nonlocal health_calls
+        result = original(*args, **kwargs)
+        if "--format" in args:
+            health_calls += 1
+            if health_calls == 1:
+                result.stdout = json.dumps({"Service": "rabbitmq", "State": "running", "Health": "unhealthy"}).encode()
+        return result
+
+    controls.compose.side_effect = compose
+    with patch.object(control.time, "sleep") as sleep:
+        receipt = controls.recover()
+    assert receipt["recovery_completed"] is True
+    observations = [step for step in receipt["steps"] if step["name"] == "unpaused-health"]
+    assert [step["observed_health"][0]["health"] for step in observations] == ["unhealthy", "healthy"]
+    sleep.assert_called_once_with(1)
+
+
+def test_recovery_health_timeout_is_false_without_starting_later_phases(tmp_path):
+    controls = recovery_controls(tmp_path, health="unhealthy")
+    with patch.object(control.time, "monotonic", side_effect=[0, 61]), pytest.raises(control.RecoveryFailure) as caught:
+        controls.recover()
+    assert caught.value.receipt["failed_step"] == "unpaused-health-timeout"
+    assert caught.value.receipt["recovery_completed"] is False
+    assert not any(call.args[0] == "up" for call in controls.compose.call_args_list)
+    assert control.private_json(tmp_path / "fault-leases.json") == {"rabbitmq": 1}

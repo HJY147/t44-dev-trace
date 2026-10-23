@@ -376,7 +376,7 @@
       "reason": "实际新能力派工归档；逐次真实恢复回执及固定SUT的中性MQ传输事实，不涉及独立私有用例"
     }
   ],
-  "updated_at": "2026-10-23T14:59:40.857391+00:00",
+  "updated_at": "2026-10-23T15:09:45.150890+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -457,13 +457,17 @@
   },
   "recovery_mq_capability": {
     "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
-    "request_revision": 3,
-    "local_checks": "953 49passed;Ruff/actionlint0",
-    "runtime_check": "pending",
+    "request_revision": 4,
+    "local_checks": "953 51passed;Ruff/actionlint0",
+    "runtime_check": "targeted readiness修正后待复核",
     "independent_harness_executed": false,
     "profile_executed": false,
     "ssh": "no target,no password use/storage",
     "protocol": "deployment/acceptance/README.md",
-    "evidence": "agents/deployment/recovery-receipt-validation/"
+    "evidence": "agents/deployment/recovery-receipt-validation/",
+    "implementation_checkpoint": "f0a20baab241e93d90bad85a9568c694caee2fea",
+    "incremental_first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39974397951",
+    "incremental_first_result": "failure preserved:stop receipt true,pause unpause0/upwait1;per-call/finalfalse;MQ metadata/topology verified",
+    "readiness": "only actually unpaused services;read-only healthy observation<=60seconds before original up--wait;failures remain false"
   }
 }

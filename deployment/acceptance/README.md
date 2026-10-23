@@ -84,10 +84,10 @@ control.py recover
 | started_at / finished_at | UTC ISO时间 |
 | requested_services / restored_services | 固定服务范围 / 对应批次up --wait成功后才列入的服务 |
 | paused_services | 实际Compose ps查询到的暂停服务 |
-| steps | 逐步名称、实际退出码和执行时间；不需要unpause时needed=false/exit_code=null |
+| steps | 逐步名称、实际退出码和执行时间；不需要unpause时needed=false/exit_code=null；未取得命令结果也保留null，不能按0解释 |
 | error / failed_step | 失败时稳定错误RECOVERY_FAILED及阶段；控制状态不可用为RECOVERY_CONTROL_UNAVAILABLE |
 
-先查询白名单服务的paused状态，只对确实暂停的服务执行unpause；随后基础服务和应用分别up --wait。任一必须步骤非零就保留false/真实步骤退出码，不清除尚待恢复的租期。部分服务已恢复时仍可返回整体false。显式、到期租期、最终恢复仍使用相同服务范围与动作；execution中的final_recovery_receipt只代表最终那次，不能代替harness拿到的各次CLI回执。Docker健康/运行状态恢复不代表业务故障场景已通过。
+先查询白名单服务的paused状态，只对确实暂停的服务执行unpause；unpause后最多60秒只读观测实际运行/健康状态，等待健康检查更新，再分别执行基础服务和应用up --wait。任一必须步骤非零就保留false/真实步骤退出码，不清除尚待恢复的租期。部分服务已恢复时仍可返回整体false。显式、到期租期、最终恢复仍使用相同服务范围与动作；execution中的final_recovery_receipt只代表最终那次，不能代替harness拿到的各次CLI回执。Docker健康/运行状态恢复不代表业务故障场景已通过。
 
 fault服务白名单为 mysql/rabbitmq/api/consumer/scheduler/web，动作仅 stop/pause，租期1–120秒。拒绝任意 Docker命令、删卷、DROP/写SQL、外部地址及系统数据库。租期到期由环境进程恢复，显式recover和finally同样先恢复基础服务再恢复应用，记录控制动作/退出码，不记录 SQL/行数据/口令。恢复失败保留 failure，不以 finally 被调用冒充恢复成功。harness超时终止进程组后也尝试恢复、最后只 stop，不删卷。
 

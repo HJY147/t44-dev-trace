@@ -131,3 +131,7 @@
 - recover新逐次唯一ID/UTC时间/step exit/批次恢复服务JSON；先查询实际paused，只对暂停白名单服务unpause，避免忽略not-paused非零。所有必须up --wait/unpause成功才true；失败CLI非零/JSON false/稳定error，不含原异常/凭据，租期只全成功才清空。自动租期的触发条件和finally/服务范围不改，最终报告保存那次真实receipt而非用被调用充成功。
 - 只扩原953新增成功/部分失败/原退出码/不清租期/唯一回执/CLI结构化失败及原服务范围守卫；49项0.08秒通过，Ruff/actionlint通过。未为低风险文档写测试，不新增未领号脚本。证据recovery-receipt-validation/local-*。
 - 新环境请求revision3仍4c源、无harness，一次有变化能力复核将真实验证stop及pause后的CLI逐次JSON、最终receipt、镜像实际MQ元数据/真实绑定；不发布业务消息或跑独立案例，不重复旧Docker业务整套。旧失败/通过回执不动。
+
+- revision3/run39974397951真实failure已保留公共artifact原字节、console gzip+SHA及run.json。MQ镜像metadata/source hash匹配固定4c，真实绑定通过；stop后的显式JSON true。pause后的真实unpause0，但随即up --wait因RabbitMQ现有health=unhealthy退出1，新逐次JSON和finally都如实false，未被调用充成功。未读取独立私有资料。
+- 依据该真实公共诊断，部署AI补最小观测等待：仅实际unpaused服务最多60秒只读检查运行/健康，更新后才执行原up --wait；不restart、不扩大动作/服务范围，超时或任何真实步骤失败仍false且保留租期。新增两项必要953守卫覆盖先unhealthy后healthy及超时不继续up/不清租期，51项0.09秒通过，Ruff/actionlint通过。
+- revision4仍产品4c，只在实际修正后进行必要复核，不更改产品/业务/现有门禁；旧68通过、旧44/f0失败均完整保留。

@@ -9,3 +9,7 @@
 ## 对应产物
 
 仅deployment/acceptance中性能力、原953部署守卫和本岗记录；不造tester用例，不读取项目tmp/independent或其密钥/未发布结果。无SSH目标，不使用/保存密码。固定4c20f32产品源；新增逐次恢复JSON和MQ真实默认wire元数据，不改变产品/门禁/覆盖率或租期/finally操作范围。
+
+## 实际失败后的部署AI实现决定
+
+revision3实际观测pause后unpause0、但up --wait立即因现有health=unhealthy退出1，新逐次/最终回执均false。为完成授权的中性恢复能力，部署AI保留该失败，增加只读的unpaused服务健康观测(<=60秒)，不增加服务/动作权限或重启策略，失败/超时保留false，固定4c源revision4必要复核。此段是AI据真实诊断的实现决定，不伪记用户改码或新tester案例。
