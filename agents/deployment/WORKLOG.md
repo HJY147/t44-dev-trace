@@ -236,3 +236,5 @@
 - 先行设计7f4845e后，仅改application.capture：首次超时即记timed_out=true，清理后actual childrc即使0仍写success=false并抛OWNED_COMMAND_TIMEOUT；普通非零保持OWNED_COMMAND_FAILED；再次超时记录stop_unconfirmed/null真实码与部分输出摘要，抛既有COMMAND_STOP_UNCONFIRMED。原PID拥有权/信号范围不变。
 - 同一公开原断言在原5ef源码重现真实红1项exit1，修后仅CaptureGuards五项（正常0、普通7、超时后0、超时后-15、清理仍超时/null）全绿。Popen/身份/等待/信号全部mock，真实OS进程/信号0，未读任何真实私密输入；未跑原ApplicationGuards、873、63中性、服务或cycle。Ruff初classvar诊断保留，补ClassVar及部分输出断言后五项/Ruff绿。
 - AST核application除capture全部相同，原ApplicationGuards类相同，runtime.py无变化；实际新application SHA 5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98。原0a6真实cycle成功保持，新修复没有cycle验证。原审核红/SHA、同例红绿、五项实际receipt和退出码、源/AST/diff证据见native-capture-timeout-validation。下一步仅commit/push与PR34/Issue7准确更新/readback后交根复审。
+
+- 窄修实现b23897879142de3bd77190c67d4947eccf1c8263已push。PR34题/正文准确改写，GitHub GET确认当时head完整b238978/drafttrue/body逐字一致；Issue7评论6375565697、PR34评论6375566016均再次GET逐字一致，原响应/readback/SHA另档。原review COMMENT5634837225和5ef原失败不改，根复审pending。此次全程未读实际秘密，也未将先前16-literal扫描结果冒充新扫描；新材料仅公开源码/已发表反例/合成输出。只封档后释放槽，不再跑检查或服务。
