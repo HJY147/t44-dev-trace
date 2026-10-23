@@ -1,6 +1,6 @@
-# 字段字典 v2-draft
+# 字段字典 v1冻结
 
-状态：数据库完整设计提案，未冻结、未审核放行、未执行DDL、无模型/迁移。实际操作者为数据库岗位AI；派工ROLE-database-DESIGN-v1。配套schema.sql与persistence-contract.md。原始材料只作需求依据，不随本稿复制发布。
+状态：v1规格已冻结；用户D004采用字段/错误取舍，18表逐表审核及C1–C4修复复审证据保留。运行DDL/模型/迁移按后续实际结果记录，不由设计通过推定。实际操作者为数据库岗位AI；派工ROLE-database-DESIGN-v1。配套schema.sql与persistence-contract.md。原始材料只作需求依据，不随本稿复制发布。
 
 ## 全局标准与最小范围
 
