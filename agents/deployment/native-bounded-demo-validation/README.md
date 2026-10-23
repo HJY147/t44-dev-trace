@@ -43,3 +43,15 @@ serve-retest-summary.raw.json.gz为原公共stdout exact gzip；serve-retest-cap
 复验含验证逻辑的三份公共可执行副本依根预留号逐字节迁移到 `tmp/deployment/864_native_serve_driver.py`、`863_native_serve_post_attempt1.py`、`862_native_serve_post.py`；SHA及旧公开路径/当时私密执行路径/现归档路径映射见serve-retest-script-path-migration.json。实际运行时的私密路径、argv、hash和原失败均不改写，历史扫描scope仍保留当时路径。仅目录整理，无运行重做。
 
 本次GitHub正文/head13cd/drafttrue及4条新结果/迁移评论均重新GET逐字核对（github-retest-readback-checks.json）；Issue7结果6376963887/迁移6376983708，PR37结果6376964164/迁移6376984017。最后仅文档/回执封档，实际运行工具62ac/084618、运行证据10182、目录迁移13cd分别固定；最终docs HEAD另报，不代表运行代码变化。当前全停，4h用户演示仍待根另准入。
+
+## 一次14400秒用户演示：后台进行中，最终清理未发生
+
+根f1e530e合入新360/目录整理后，明确另准入一次14400秒后台用户演示；固定工具62ac/084618、runtimea251与应用bc5/92源，未采用其他候选源/规则/TTL。fresh app_20261023_234943_3f9bad，新manifest/cookie/vhost；2026-10-23 23:49:43.904838 UTC开始，2026-10-24 03:49:43.904838 UTC（北京时间11:49:43.904838）截止，届时开始自动清理，最终finished可晚于deadline。
+
+user-demo-current-capability.json为初始交接时点白名单：ready、首两新扫描60.319299秒、初始+首次hold额外TTL300轮换/新tick/锁，API/consumer/UI各1次、scanner3代、4workers，旧service回收/ready会话回收。已有16confirmed/26通知仅复核，不称新publish；本长演示未另外查询全量DB扫描/outbox计数，不把wait_scans4条当全部扫描。九端口prepare前→serve前→ready身份逐项相同，仅三个时点，不是后续全时保证。
+
+外部detached driver PID43819，仅新ignored user-demo-20261023目录内复制参数化既有864/862运维编排：14400duration/15000外部等待上界，追加ready身份快照，真实退出后才做最终wait/九端口比较/只读post，记录所有实际返回码；不是新增测试案例，不新增公共.py或覆盖原件。用途/私密sourceSHA见user-demo-operational-binding.json。最终serve-driver-receipt/post-run-proof/post-receipt尚未产生，cleanup_success/actual_exit=null，不能称4h完成或通过。
+
+根私密.submission-private/完整演示登录说明.md已0600保存页面入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop和状态位置；公开不放密码。界面http://127.0.0.1:5178，API18088，与原5173并存。停止请用私密owner记录的精确stop_argv，只发拥有权请求；实际结束须看statusfinished/cleanup和外部wait/post。
+
+交接后root监测后台，不让agent同步等待四小时，也不把此进行中状态当云常驻、独立/性能/完整4h最终验证。所有进展记录均带观察时间，公开/私密输出secret扫描只覆盖当时已观察字节，未来新日志未被提前宣称扫描通过。

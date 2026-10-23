@@ -305,3 +305,10 @@
 
 - 目录迁移13cd3d515c06b0408b5048c852a95a8f1b3ba9b2已push，三份副本SHA逐字节保持；归档正文修改初次apply_patch因同路径delete+add被工具拒绝，未产生文件或GitHub写入，改为单段Update后成功，未涉运行。PR37正文已整体重写新360真实通过/原失败保持/4h未准入及tmp迁移，PATCH后GET逐字一致，观察head13cd/drafttrue；新结果Issue7#6376963887/PR37#6376964164、迁移Issue7#6376983708/PR37#6376984017四条均重新GET逐字一致。原stage正文历史快照不改。
 - 本尾commit只文档/脱敏GitHub回执/最终扫描，最终head另报；运行工具仍62ac/084618，真实新360证据10182，目录迁移13cd无字节改变。所有自有服务保持停机，不再发HTTP/SQL/端口观察，也不自行准入4h。按根要求本轮封档后FINAL释放槽。
+
+## NATIVE-BOUNDED-DEMO-v1 根另准入14400秒后台用户演示
+
+- 根f1e530e合入新360事实/13cd目录整理/4cee回执后，明确另准入一次14400秒用户演示。工具62ac/084618、runtimea251与bc5/92源不改，未采用其他候选源/更改规则或TTL。新私密user-demo-20261023目录复制864/862只作后台运维编排（duration14400/外部wait15000、ready九端口快照、实际结束后wait/九端口最终比较/只读post），无新增案例、无agents公共.py、不覆盖原件。原360失败/新360成功分别保持。
+- Popen start_new_session后台driverPID43819，新fresh app_20261023_234943_3f9bad；23:49:43.904838Z起→2026-10-24 03:49:43.904838Z截止/北京时间11:49:43.904838。首次ready约23:50:54Z，源92逐SHA再核；首两新completed60.319299s，初始轮换及23:53:55.380033Z首个hold额外TTL300轮换/旧撤销/新tick/锁，API1/consumer1/UI1/scanner3代/4worker。九端口prepare前→serve前→ready身份逐项相同，未读独立应用数据。
+- root私密.submission-private/完整演示登录说明.md新建0600/父700，含普通合成登录3角色/双项目scope/准确入口版本截止/精确提前stop_argv/状态与futurewait路径，不输出密码、不提交Git；无旧文件覆盖。目标仍bc5，不将其他池候选或hosted测试混进本机事实。
+- user-demo-current-capability为初始时点白名单：driver/runner/四角色alive，readytrue/额外rotation1；历史16/26仅复核、无新publish声明，本长演示未另外查全量DB扫描/outbox数，wait_scans验证4条仅子集。最终exit/cleanup均null、finalwait/post文件不存在，4h进行中而非已完整通过。接下来仅时点secret扫/文档/Issue7回读后FINAL，root接管监测，不同步等4h、不擅自停当前已授权演示。
