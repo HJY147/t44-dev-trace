@@ -1,0 +1,27 @@
+SIM117 Use a single `with` statement with multiple contexts instead of nested `with` statements
+  --> tmp/deployment/953_acceptance_environment.py:90:5
+   |
+88 |       certificate.write_text("public synthetic test marker")
+89 |       destination = tmp_path / "tester-output.cms"
+90 | /     with patch.object(environment.subprocess, "run", return_value=subprocess.CompletedProcess([], 1)):
+91 | |         with pytest.raises(RuntimeError):
+   | |_________________________________________^
+92 |               environment.encrypt_archive(folder, certificate, destination)
+93 |       assert not (tmp_path / "tester-output.tar.gz").exists()
+   |
+help: Combine `with` statements
+
+SIM117 Use a single `with` statement with multiple contexts instead of nested `with` statements
+   --> tmp/deployment/953_acceptance_environment.py:196:5
+    |
+194 |       path = folder / "service.json"
+195 |       path.write_text("existing synthetic credential")
+196 | /     with patch.object(control.ops, "compose") as command:
+197 | |         with pytest.raises(FileExistsError):
+    | |____________________________________________^
+198 |               controls.service_credential([2], 300, "service.json")
+199 |       assert path.read_text() == "existing synthetic credential"
+    |
+help: Combine `with` statements
+
+Found 2 errors.

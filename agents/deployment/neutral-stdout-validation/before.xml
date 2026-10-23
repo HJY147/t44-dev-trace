@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="11" time="0.096" timestamp="2026-10-24T05:34:58.896629+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_compose_separates_progress_from_machine_stdout" time="0.001"><failure message="assert -2 == -1&#10; +  where -1 = subprocess.PIPE">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_compose_separates0')
+
+    def test_neutral_compose_separates_progress_from_machine_stdout(tmp_path):
+        controls = stdout_controls(tmp_path)
+        wire = b'{"user_id":7}\n'
+        progress = b'[+] Creating isolated synthetic admin container\n'
+        with patch.object(control.ops, "compose", return_value=subprocess.CompletedProcess([], 0, wire, progress)) as call:
+            result = controls.compose("synthetic-no-execution")
+&gt;       assert call.call_args.kwargs["stderr"] == subprocess.PIPE
+E       assert -2 == -1
+E        +  where -1 = subprocess.PIPE
+
+tmp/deployment/953_acceptance_environment.py:375: AssertionError</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_compose_failure_preserves_separate_streams[nonzero-7]" time="0.001"><failure message="AssertionError: assert (b'synthetic stdout' == b'synthetic stdout'&#10;  &#10;  Use -v to get more diff and None == b'synthetic stderr')&#10; +  where None = CompletedProcess(args=[], returncode=7, stdout=b'synthetic stdout').stderr">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_compose_failure_p0')
+failure = 'nonzero', expected_code = 7
+
+    @pytest.mark.parametrize("failure,expected_code", [("nonzero", 7), ("timeout", 124)])
+    def test_neutral_compose_failure_preserves_separate_streams(tmp_path, failure, expected_code):
+        controls = stdout_controls(tmp_path)
+        error = (subprocess.CalledProcessError(7, [], output=b'synthetic stdout', stderr=b'synthetic stderr')
+                 if failure == "nonzero" else
+                 subprocess.TimeoutExpired([], 1, output=b'synthetic stdout', stderr=b'synthetic stderr'))
+        with patch.object(control.ops, "compose", side_effect=error):
+            result = controls.compose("synthetic-no-execution", check=False)
+        assert result.returncode == expected_code
+&gt;       assert result.stdout == b'synthetic stdout' and result.stderr == b'synthetic stderr'
+E       AssertionError: assert (b'synthetic stdout' == b'synthetic stdout'
+E         
+E         Use -v to get more diff and None == b'synthetic stderr')
+E        +  where None = CompletedProcess(args=[], returncode=7, stdout=b'synthetic stdout').stderr
+
+tmp/deployment/953_acceptance_environment.py:389: AssertionError</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_compose_failure_preserves_separate_streams[timeout-124]" time="0.001"><failure message="AssertionError: assert (b'synthetic stdout' == b'synthetic stdout'&#10;  &#10;  Use -v to get more diff and None == b'synthetic stderr')&#10; +  where None = CompletedProcess(args=[], returncode=124, stdout=b'synthetic stdout').stderr">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_compose_failure_p1')
+failure = 'timeout', expected_code = 124
+
+    @pytest.mark.parametrize("failure,expected_code", [("nonzero", 7), ("timeout", 124)])
+    def test_neutral_compose_failure_preserves_separate_streams(tmp_path, failure, expected_code):
+        controls = stdout_controls(tmp_path)
+        error = (subprocess.CalledProcessError(7, [], output=b'synthetic stdout', stderr=b'synthetic stderr')
+                 if failure == "nonzero" else
+                 subprocess.TimeoutExpired([], 1, output=b'synthetic stdout', stderr=b'synthetic stderr'))
+        with patch.object(control.ops, "compose", side_effect=error):
+            result = controls.compose("synthetic-no-execution", check=False)
+        assert result.returncode == expected_code
+&gt;       assert result.stdout == b'synthetic stdout' and result.stderr == b'synthetic stderr'
+E       AssertionError: assert (b'synthetic stdout' == b'synthetic stdout'
+E         
+E         Use -v to get more diff and None == b'synthetic stderr')
+E        +  where None = CompletedProcess(args=[], returncode=124, stdout=b'synthetic stdout').stderr
+
+tmp/deployment/953_acceptance_environment.py:389: AssertionError</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[{&quot;user_id&quot;:true}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a0')
+wire = b'{"user_id":true}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[{&quot;user_id&quot;:0}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a1')
+wire = b'{"user_id":0}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[{&quot;user_id&quot;:4294967296}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a2')
+wire = b'{"user_id":4294967296}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[{&quot;user_id&quot;:&quot;7&quot;}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a3')
+wire = b'{"user_id":"7"}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[{&quot;user_id&quot;:7,&quot;unexpected&quot;:1}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a4')
+wire = b'{"user_id":7,"unexpected":1}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[progress\n{&quot;user_id&quot;:7}]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a5')
+wire = b'progress\n{"user_id":7}'
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_rejects_ambiguous_or_invalid_id_stdout[]" time="0.000"><failure message="Failed: DID NOT RAISE any of (ValueError, TypeError)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-47/test_neutral_account_rejects_a6')
+wire = b''
+
+    @pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                      b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                      b'progress\n{"user_id":7}', b''])
+    def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+        controls = stdout_controls(tmp_path)
+        controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+&gt;       with pytest.raises((ValueError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (ValueError, TypeError)
+
+tmp/deployment/953_acceptance_environment.py:401: Failed</failure></testcase><testcase classname="tmp.deployment.953_acceptance_environment" name="test_neutral_account_returns_only_exact_valid_id_json" time="0.000" /></testsuite></testsuites>

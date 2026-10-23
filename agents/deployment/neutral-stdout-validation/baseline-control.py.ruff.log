@@ -1,0 +1,30 @@
+RUF100 [*] Unused `noqa` directive (non-enabled: `E402`)
+  --> deployment/acceptance/control.py:18:29
+   |
+17 | sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+18 | from deployment import ops  # noqa: E402
+   |                             ^^^^^^^^^^^^
+19 |
+20 | SERVICES = ("mysql", "rabbitmq", "api", "consumer", "scheduler", "web")
+   |
+help: Remove unused `noqa` directive
+   |
+17 | sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+   - from deployment import ops  # noqa: E402
+18 + from deployment import ops
+19 |
+   |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> deployment/acceptance/control.py:200:16
+    |
+198 |                 self.event("lease-recovery" if expired_only else "recovery", recovery_receipt=receipt)
+199 |                 return receipt
+200 |         except Exception:
+    |                ^^^^^^^^^
+201 |             receipt.update(recovery_completed=False, finished_at=datetime.now(UTC).isoformat(),
+202 |                            error="RECOVERY_FAILED", failed_step=phase)
+    |
+
+Found 2 errors.
+[*] 1 fixable with `--fix`.

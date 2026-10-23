@@ -355,3 +355,57 @@ def test_paused_application_health_is_checked_after_its_database_dependencies(tm
     names = [step["name"] for step in receipt["steps"]]
     assert receipt["recovery_completed"] is True
     assert names.index("infrastructure-ready") < names.index("unpaused-health") < names.index("application-ready")
+
+
+def stdout_controls(tmp_path):
+    controls = control.Controls.__new__(control.Controls)
+    controls.runtime = tmp_path
+    controls.state = {"env_file": "synthetic.env", "override_file": "synthetic.yaml"}
+    controls.values = {}
+    controls.event = Mock()
+    return controls
+
+
+def test_neutral_compose_separates_progress_from_machine_stdout(tmp_path):
+    controls = stdout_controls(tmp_path)
+    wire = b'{"user_id":7}\n'
+    progress = b'[+] Creating isolated synthetic admin container\n'
+    with patch.object(control.ops, "compose", return_value=subprocess.CompletedProcess([], 0, wire, progress)) as call:
+        result = controls.compose("synthetic-no-execution")
+    assert call.call_args.kwargs["stderr"] == subprocess.PIPE
+    assert result.stdout == wire and result.stderr == progress
+    assert progress in (tmp_path / "environment-commands.log").read_bytes()
+
+
+@pytest.mark.parametrize("failure,expected_code", [("nonzero", 7), ("timeout", 124)])
+def test_neutral_compose_failure_preserves_separate_streams(tmp_path, failure, expected_code):
+    controls = stdout_controls(tmp_path)
+    error = (subprocess.CalledProcessError(7, [], output=b'synthetic stdout', stderr=b'synthetic stderr')
+             if failure == "nonzero" else
+             subprocess.TimeoutExpired([], 1, output=b'synthetic stdout', stderr=b'synthetic stderr'))
+    with patch.object(control.ops, "compose", side_effect=error):
+        result = controls.compose("synthetic-no-execution", check=False)
+    assert result.returncode == expected_code
+    assert result.stdout == b'synthetic stdout' and result.stderr == b'synthetic stderr'
+    assert b'synthetic stderr' in (tmp_path / "environment-commands.log").read_bytes()
+    with patch.object(control.ops, "compose", side_effect=error), pytest.raises(RuntimeError):
+        controls.compose("synthetic-no-execution")
+
+
+@pytest.mark.parametrize("wire", [b'{"user_id":true}', b'{"user_id":0}', b'{"user_id":4294967296}',
+                                  b'{"user_id":"7"}', b'{"user_id":7,"unexpected":1}',
+                                  b'progress\n{"user_id":7}', b''])
+def test_neutral_account_rejects_ambiguous_or_invalid_id_stdout(tmp_path, wire):
+    controls = stdout_controls(tmp_path)
+    controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, wire))
+    with pytest.raises((ValueError, TypeError)):
+        controls.account("synthetic_account", "Synthetic", "synthetic-password")
+    controls.event.assert_not_called()
+
+
+def test_neutral_account_returns_only_exact_valid_id_json(tmp_path):
+    controls = stdout_controls(tmp_path)
+    controls.compose = Mock(return_value=subprocess.CompletedProcess([], 0, b'{"user_id":4294967295}\n'))
+    assert json.loads(controls.account("synthetic_account", "Synthetic", "synthetic-password")) == {"user_id":4294967295}
+    assert controls.compose.call_args.kwargs["data"] == b'synthetic-password\n'
+    assert controls.event.call_args.args == ("account-initialization",)

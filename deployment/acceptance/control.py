@@ -112,13 +112,14 @@ class Controls:
         try:
             result = ops.compose(Path(self.state["env_file"]), self.values,
                                  "--file", self.state["override_file"], *arguments,
-                                 input=data, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout)
+                                 input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout)
         except subprocess.CalledProcessError as error:
-            result = subprocess.CompletedProcess(error.cmd, error.returncode, error.stdout)
+            result = subprocess.CompletedProcess(error.cmd, error.returncode, error.stdout, error.stderr)
         except subprocess.TimeoutExpired as error:
-            result = subprocess.CompletedProcess(error.cmd, 124, error.stdout or b"")
+            result = subprocess.CompletedProcess(error.cmd, 124, error.stdout or b"", error.stderr or b"")
         with (self.runtime / "environment-commands.log").open("ab") as stream:
             stream.write(result.stdout or b"")
+            stream.write(result.stderr or b"")
         if check and result.returncode:
             raise RuntimeError("environment command failed")
         return result
@@ -259,8 +260,12 @@ class Controls:
         result = self.compose("--profile", "operations", "run", "--rm", "-T", "admin", "init-user",
                               "--username", username, "--display-name", display_name, "--password-stdin",
                               data=(password + "\n").encode())
+        receipt = json.loads(result.stdout)
+        if (not isinstance(receipt, dict) or set(receipt) != {"user_id"}
+                or type(receipt["user_id"]) is not int or not 1 <= receipt["user_id"] <= 4294967295):
+            raise ValueError("invalid account initialization receipt")
         self.event("account-initialization")
-        return result.stdout
+        return (json.dumps(receipt) + "\n").encode()
 
     def scheduler_scope(self, projects):
         if not projects or any(type(value) is not int or not 1 <= value <= 4294967295 for value in projects):

@@ -148,3 +148,19 @@ tar -tzf tester-output.tar.gz
 ## 执行边界
 
 环境check只核验服务和操作能力，不包含独立用例/产品通过判据。独立模式要求tester自己冻结入口和接收证书后才能执行；不得把环境状态、合成加密传输或控制命令成功当成独立fault覆盖。pause/自动租期路径属于可用接口，具体独立用例及覆盖结论仍由tester自己决定并实际运行。
+
+## stdout 精确约定补充（中性输出修订）
+
+容器进度/诊断 stderr 仅写私有环境命令日志，不混入控制 stdout。非零退出或超时仍是失败，不应忽略非空但不可识别的输出。此修订不改变任何产品用例或判据。
+
+| 命令 | 成功 stdout |
+| --- | --- |
+| init-user | 单个JSON对象，仅 `user_id`，实际整数1..4294967295；严格校验后返回 |
+| scheduler-scope | credential-admin 的单个JSON：`session_id, expires_at, credential_written, rotated, previous_session_revoked, previous_session_already_inactive`；无bearer |
+| service-credential | 上文定义的JSON；是否含bearer取决于是否指定output-name；只供tester私密读取 |
+| recover | 上文定义的单个结构化恢复回执；必须同时检查退出码和recovery_completed |
+| audit-sql | MySQL原生批量表格文本（制表符分隔，含列名），不是JSON |
+| broker queues / connections | rabbitmqctl原生制表符文本，不是JSON |
+| fault | 成功无stdout；退出码仍须检查 |
+
+五次H2控制输出歧义在公开stage02报告原样保留。该修订的合成回归不是独立业务通过；实际托管控制仍须由冻结的独立入口验证。
