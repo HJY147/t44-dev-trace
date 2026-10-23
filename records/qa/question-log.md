@@ -77,3 +77,12 @@
 后续真实回复补记（总协调）：指导岗上文的capacity pending属于其f103600来源时点。用户随后已采用推荐选项，见[本人决定D005](../decisions/D005-capacity-lifecycle-adopted.md)及[原回复U015](../prompts/U015-original.md)。技术细化先走v1.1提案审查，尚未把该选择记成代码实现或人工改码。
 
 补充边界：用户随后通过[D006](../decisions/D006-rolled-back-capacity-adopted.md)明确已回滚任务允许移出迭代工时，返工前补回；不移除项目成员。来源[U016](../prompts/U016-original.md)，不是AI推定。
+
+## QA-010：M6 初学者怎样读懂与检查真实实现
+
+- 来源：root实际派工`ROLE-guidance-M6-v1`，AI指导岗本轮整理；不是学生新增原始提问或访谈。主稿[学习指南](../../docs/guidance/M6-learner-guide.md)，源码截止0783a42。
+- 实际询答：向后端、前端AI岗各问1项教学问题，两次真实回复逐字见[M6问答](../../docs/guidance/M6-actual-qa.md)；后端纠正了指导AI的入口泛称，不计学生识别幻觉。所有练习仍待学生本人完成。
+- 当前来源补记：QA-009原pending按历史时点保留，用户随后真实D005/D006已采用并形成v1.1，不能再当当前未答；R002公开provenance表明课程反馈已提供，私密原文未由本岗读取，最终学生研究正文仍未提供。
+- 解释范围：Vue表单/契约请求、真实handle/Runtime/业务函数、UoW提交、outbox与MQ、扫描器共用Runtime、版本/审核/各类验证差别。AI编写不计本人改码、打断点、亲测或最终研究成文。
+- 验证边界：832为最近完整验证组合，root后报422新组合CI刚触发，不移植旧绿色；6186+pending超5100、正式P95原失败、v3冻结0执行保持。本岗只文稿/来源核对，无产品/测试/负载/浏览器/渲染。
+- 阶段Issue10[真实评论及readback](../../docs/guidance/M6-issue10-readback.json)已归档；后续由root转达指南，学生未提交本轮答卷。
