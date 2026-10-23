@@ -1,0 +1,235 @@
+F401 [*] `t44.persistence.MySQLSettings` imported but unused
+  --> backend/t44/api.py:13:29
+   |
+12 | from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, violations
+13 | from t44.persistence import MySQLSettings, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+   |                             ^^^^^^^^^^^^^
+14 | from t44.services.application import Business
+15 | from t44.services.common import Call, now, wire
+   |
+help: Remove unused import: `t44.persistence.MySQLSettings`
+   |
+12 | from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, violations
+   - from t44.persistence import MySQLSettings, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+13 + from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+14 | from t44.services.application import Business
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/t44/services/application.py:3:1
+   |
+ 1 |   """Application facade. Component owners are injected; no alternate storage is created."""
+ 2 |
+ 3 | / from t44.contracts import OPERATIONS, VERSION, violations
+ 4 | | from .common import SCHEMAS, model, page, plan_values
+ 5 | | from .errors import Rejected, require
+ 6 | | from .projects import Projects
+ 7 | | from .reviews import Reviews
+ 8 | | from .tasks import Tasks
+ 9 | | from .workflow import Workflow
+   | |______________________________^
+10 |
+11 |   _DICTIONARIES = {
+   |
+help: Organize imports
+  |
+3 | from t44.contracts import OPERATIONS, VERSION, violations
+4 +
+5 | from .common import SCHEMAS, model, page, plan_values
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/t44/services/common.py:3:1
+   |
+ 1 |   """Explicit persistence-to-contract codecs and request context."""
+ 2 |
+ 3 | / from dataclasses import dataclass, field
+ 4 | | from datetime import UTC, datetime
+ 5 | | from decimal import Decimal
+ 6 | | from uuid import UUID
+ 7 | |
+ 8 | | from t44.contracts import SPEC
+ 9 | | from t44.persistence.codecs import hours_to_quarters
+10 | | from .errors import require
+   | |___________________________^
+11 |
+12 |   SCHEMAS = SPEC['components']['schemas']
+   |
+help: Organize imports
+   |
+9  | from t44.persistence.codecs import hours_to_quarters
+10 +
+11 | from .errors import require
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/t44/services/runtime.py:3:1
+   |
+ 1 |   """One transaction boundary for audit, idempotency, sessions, and application writes."""
+ 2 |
+ 3 | / import hashlib
+ 4 | | import json
+ 5 | | import logging
+ 6 | | import secrets
+ 7 | | from datetime import timedelta
+ 8 | |
+ 9 | | from t44.contracts import OPERATIONS
+10 | | from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
+11 | | from .common import ERROR_IDS, wire
+12 | | from .errors import Rejected, require
+13 | | from .identity import LoginLimiter, authenticate, login
+   | |_______________________________________________________^
+14 |
+15 |   _LOG = logging.getLogger('t44.audit')
+   |
+help: Organize imports
+   |
+10 | from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
+11 +
+12 | from .common import ERROR_IDS, wire
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/t44/services/workflow.py:3:1
+   |
+ 1 |   """Resolve persisted proofs, ask the pure state machine, and apply one CAS decision."""
+ 2 |
+ 3 | / from t44.domain.commands import (AcceptReview, ApproveDelivery, AuthorizeRework, RecordBlock,
+ 4 | |     RecordRollback, ResolveBlock, ReturnForChanges, StartDevelopment, SubmitForReview)
+ 5 | | from t44.domain.models import (Cycle, DomainViolation, Effect, ProjectRole, ReleaseGate,
+ 6 | |     ResponsibilityStage, ReviewGate, ReviewOutcome, RollbackGate, TaskPosition, TaskState,
+ 7 | |     TransitionContext, Violation)
+ 8 | | from t44.domain.state_machine import decide
+ 9 | | from .common import model, page, plan_values, roles, task_model
+10 | | from .errors import Rejected, require
+   | |_____________________________________^
+11 |
+12 |   STATES = tuple(TaskState)
+   |
+help: Organize imports
+   |
+2  |
+   - from t44.domain.commands import (AcceptReview, ApproveDelivery, AuthorizeRework, RecordBlock,
+   -     RecordRollback, ResolveBlock, ReturnForChanges, StartDevelopment, SubmitForReview)
+   - from t44.domain.models import (Cycle, DomainViolation, Effect, ProjectRole, ReleaseGate,
+   -     ResponsibilityStage, ReviewGate, ReviewOutcome, RollbackGate, TaskPosition, TaskState,
+   -     TransitionContext, Violation)
+3  + from t44.domain.commands import (
+4  +     AcceptReview,
+5  +     ApproveDelivery,
+6  +     AuthorizeRework,
+7  +     RecordBlock,
+8  +     RecordRollback,
+9  +     ResolveBlock,
+10 +     ReturnForChanges,
+11 +     StartDevelopment,
+12 +     SubmitForReview,
+13 + )
+14 + from t44.domain.models import (
+15 +     Cycle,
+16 +     DomainViolation,
+17 +     Effect,
+18 +     ProjectRole,
+19 +     ReleaseGate,
+20 +     ResponsibilityStage,
+21 +     ReviewGate,
+22 +     ReviewOutcome,
+23 +     RollbackGate,
+24 +     TaskPosition,
+25 +     TaskState,
+26 +     TransitionContext,
+27 +     Violation,
+28 + )
+29 | from t44.domain.state_machine import decide
+30 +
+31 | from .common import model, page, plan_values, roles, task_model
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> backend/t44/settings.py:3:1
+  |
+1 |   """Process settings. Database connections are created only by the persistence owner."""
+2 |
+3 | / import os
+4 | | from sqlalchemy.engine import make_url
+5 | | from t44.persistence import MySQLSettings
+6 | | from dataclasses import dataclass
+  | |_________________________________^
+help: Organize imports
+  |
+3 | import os
+4 + from dataclasses import dataclass
+5 +
+6 | from sqlalchemy.engine import make_url
+7 +
+8 | from t44.persistence import MySQLSettings
+  - from dataclasses import dataclass
+9 |
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/tests/contracts/conftest.py:3:1
+   |
+ 1 |   """SQLite-backed HTTP self-tests; not evidence of MySQL locking/constraints or acceptance."""
+ 2 |
+ 3 | / from datetime import UTC, datetime
+ 4 | |
+ 5 | | import pytest
+ 6 | | from fastapi.testclient import TestClient
+ 7 | | from sqlalchemy import create_engine
+ 8 | | from sqlalchemy.pool import StaticPool
+ 9 | |
+10 | | from t44.api import create_app
+11 | | from t44.persistence import SqlAlchemyUnitOfWorkFactory
+12 | | from t44.persistence.schema import metadata
+13 | | from t44.services.identity import HASHER
+14 | | from t44.settings import Settings
+   | |_________________________________^
+help: Organize imports
+  |
+8 | from sqlalchemy.pool import StaticPool
+  -
+9 | from t44.api import create_app
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/tests/contracts/test_http.py:3:1
+   |
+ 1 |   """Actual TestClient requests/responses and committed SQLite application state."""
+ 2 |
+ 3 | / from copy import deepcopy
+ 4 | | from uuid import uuid4
+ 5 | |
+ 6 | | import pytest
+ 7 | |
+ 8 | | from t44.contracts import OPERATIONS, violations
+ 9 | | from t44.services.reviews import TEMPLATE
+   | |_________________________________________^
+10 |
+11 |   pytestmark = pytest.mark.contract
+   |
+help: Organize imports
+  |
+6 | import pytest
+  -
+7 | from t44.contracts import OPERATIONS, violations
+  |
+
+F401 [*] `copy.deepcopy` imported but unused
+ --> backend/tests/contracts/test_http.py:3:18
+  |
+1 | """Actual TestClient requests/responses and committed SQLite application state."""
+2 |
+3 | from copy import deepcopy
+  |                  ^^^^^^^^
+4 | from uuid import uuid4
+  |
+help: Remove unused import: `copy.deepcopy`
+  |
+2 |
+  - from copy import deepcopy
+3 | from uuid import uuid4
+  |
+
+Found 9 errors.
+[*] 9 fixable with `--fix`.
