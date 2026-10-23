@@ -1,0 +1,33 @@
+import ast,hashlib,importlib.util,io,json,re,subprocess,zipfile
+from pathlib import Path,PurePosixPath
+TARGET='9d6ead5fa3e1494946f2bb8d7ef33c1a97758077'
+SUT='dda3df8e15b0b5b655909dda37dc79a87f318924'
+ROOT=Path.cwd()
+OUT=Path('agents/reviewer/evidence/coursework-source-fix-dda3')
+source=Path('scripts/packaging/build_coursework_review.py').read_bytes()
+assert source==subprocess.check_output(['git','show',SUT+':scripts/packaging/build_coursework_review.py'])
+sha256=lambda data:hashlib.sha256(data).hexdigest()
+node=next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name=='verify_source_archive')
+scope={'__file__':str(Path('scripts/packaging/build_coursework_review.py').resolve()),'Path':Path,'importlib':importlib,'re':re,'zipfile':zipfile,'io':io,'json':json,'PurePosixPath':PurePosixPath,'hashlib':hashlib,'sha256':sha256}
+exec(compile(ast.Module(body=[node],type_ignores=[]),'exact-dda3-verify_source_archive','exec'),scope)
+member='backend/t44/api.py'
+fake=b'# Synthetic source binding counterexample only; never a working-tree change.\n'
+actual_git_blob=subprocess.check_output(['git','rev-parse',TARGET+':'+member],text=True).strip()
+fake_blob=hashlib.sha1(b'blob '+str(len(fake)).encode()+b'\0'+fake,usedforsecurity=False).hexdigest()
+assert fake_blob!=actual_git_blob
+manifest={'schema_version':1,'source_commit':TARGET,'files':{member:{'mode':'100644','git_blob':fake_blob,'size':len(fake),'sha256':sha256(fake)}}}
+buffer=io.BytesIO()
+with zipfile.ZipFile(buffer,'w',zipfile.ZIP_DEFLATED) as archive:
+    archive.writestr(member,fake)
+    archive.writestr('REVIEW-PACKAGE-MANIFEST.json',json.dumps(manifest))
+resolved_commit=subprocess.check_output(['git','rev-parse',TARGET+'^{commit}'],text=True).strip()
+accepted_count=None;error=None
+try:
+    accepted_count=scope['verify_source_archive'](buffer.getvalue(),TARGET)
+except (ValueError,KeyError,zipfile.BadZipFile) as failure:
+    error=type(failure).__name__+': '+str(failure)
+result={'operator':'AI reviewer; synthetic in-memory helper counterexample, not real bundle/independenttest','hypothesis_source':'Root separately flagged same static trust question before this confirmation; no student discovery','target':TARGET,'builder_sha256':sha256(source),'function_ast_sha256':sha256(ast.dump(node,include_attributes=False).encode()),'member':member,'declared_source_commit':TARGET,'git_commit_resolves_exactly':resolved_commit==TARGET,'actual_tree_blob':actual_git_blob,'declared_and_payload_blob':fake_blob,'payload_not_in_declared_tree':fake_blob!=actual_git_blob,'internal_SHA256_size_git_blob_self_consistent':True,'archive_members':zipfile.ZipFile(io.BytesIO(buffer.getvalue())).namelist(),'actual_accepted_count':accepted_count,'actual_error':error,'expected_reject_unbound_source':True,'actual_rejected_unbound_source':error is not None,'actual_review_bundle_created':False,'actual_private_source_ZIP_DOCX_cover_R002_or_independent_material_read':False,'disk_ZIP_files_written':[],'trust_boundary':'Trusted output from build_source_review plus externally trusted selection SHA would exclude the synthetic artifact. This demonstrates the new verifier does not independently establish its claimed Git tree binding; no claim that upstream generator or a real existing package is corrupt.'}
+result.update(target=SUT, original_declared_source_commit=TARGET, original_command_sha256='6179ed13816291e6cae064cf7a41866b1e1a0f1e01f3306f805943c1cfa58aae', replay_semantics='Same archived original payload/manifest declaration9d6/member/size/hash/blob and rejection assertion. Only SUT/harness globals/output metadata adapted; no byte-identical command or ZIPtimestamp claim.', trust_boundary='The new independent selector rejects the original self-consistent but unbound input. Trusted upstream generation remains useful; no claim any real package was built or tampered.')
+(OUT/'source-tree-binding-probe.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(result,ensure_ascii=False,indent=2))
+assert error is not None, 'BUNDLE-SOURCE-BINDING-01: a self-consistent inner ZIP with a real source_commit but a different Git blob was accepted as verified source'

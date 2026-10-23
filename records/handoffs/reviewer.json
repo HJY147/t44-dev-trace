@@ -1,128 +1,4 @@
 {
-  "previous_plan_reason_evidence_phase": {
-    "stage": "PR21 HISTORY-EVIDENCE-01窄修复审bc5/bcb0：限定关闭，整体不放行",
-    "implementation_status": "原反例一次绿/窄差量与公开原件核对/PR21准确bc5 COMMENT及完整GET已完成；原42243不通过保留；整体不放行",
-    "review_outcome": "HISTORY-EVIDENCE-01 CLOSED_WITHIN_EXACT_DELTA; overall NOT_ACCEPTED",
-    "review_target_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
-    "latest_review_report": "reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md",
-    "latest_review_evidence": "agents/reviewer/evidence/plan-reason-evidence-bc5/original-evidence-kind-http-replay.json"
-  },
-  "user_choice_update": {
-    "source": "总协调真实派工通知",
-    "quote": "采用推荐方案，继续开发",
-    "reported_freeze_commit": "ae60dc3",
-    "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
-  },
-  "questions": [],
-  "review_branch": "codex/review-warm-glass",
-  "stage": "PR21 9d6私密审阅包A不通过；metadata wrapper B有限静态未见新阻断",
-  "native_application_review": {
-    "archive": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
-    "implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
-    "application_SUT": "bc5aef9c62393134582affb7a690acb33ac2b833",
-    "neutral_product": "cf685d7b745774fe29ddc4884606edae6836e961",
-    "neutral_evidence": "189a4e2231a6e3a2095497e36d26564a4e3e3c99",
-    "finding": {
-      "id": "NATIVE-CAPTURE-TIMEOUT-01",
-      "priority": 2,
-      "file": "deployment/native/application.py",
-      "line": 138,
-      "result": "TimeoutExpired then cleanup exit0 returned normally, no timeout marker"
-    },
-    "single_synthetic_probe": {
-      "runs": 1,
-      "exit_code": 1,
-      "actual_processes": 0,
-      "actual_signals": 0
-    },
-    "published_artifact_hashes_verified": 30,
-    "frozen14_unchanged": true,
-    "run1_failure_preserved": true,
-    "run2_real_success_preserved": true,
-    "neutral953_original_prefix_preserved": true,
-    "native_cycle_repeated": false,
-    "suite_rerun": false,
-    "private_material_read": false,
-    "new_test_files": [],
-    "github": {
-      "operator": "AI reviewer using authorized HJY147 account; not student or separatehuman",
-      "review_id": 5634837225,
-      "url": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634837225",
-      "commit_id": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
-      "state": "COMMENTED",
-      "body_exact_match": true,
-      "plugin_body_and_state_exact_match": true,
-      "full_specific_review_GET_exit_code": 0,
-      "body_sha256": "a6d313bd119eebc2163289ce251a584bd83b469a240a4e6446ad302d0b1e0839",
-      "readback_sha256": "bb326e96b4348743c79a032859d3e0735b8242a21028dac9d4bb97a6ac247f23",
-      "evidence_commit": "8454da244ed0d3dbea84f6aca0630c003c787a44",
-      "first_evidence_push_exit_code": 0,
-      "pr_head_at_publish": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
-      "no_status_approve_or_merge": true,
-      "CI_triggered": false,
-      "verified_at_utc": "2026-10-23T21:51:28.577428+00:00"
-    },
-    "evidence_commit": "8454da244ed0d3dbea84f6aca0630c003c787a44"
-  },
-  "previous_product_review": {
-    "stage": "完整产品e01首次审核不通过，等待原owner修复后新SHA复审",
-    "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
-    "review_outcome": "不通过：C-P1/C-P2/C-P4真实复现，C-P3 5944>5100",
-    "github_evidence": {
-      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
-      "review_state": "COMMENTED",
-      "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
-      "required_contexts": [
-        "reviewer/stage",
-        "static",
-        "contracts",
-        "coverage",
-        "frontend"
-      ],
-      "current_check_runs": [],
-      "current_status_projection": {
-        "state": "pending",
-        "statuses": []
-      },
-      "no_success_status_published": true,
-      "product_checkpoint_issue": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769",
-      "product_review_publish": "首次remote未push返回422已保留；root push包含e01后绑定原SHA COMMENT成功",
-      "product_checkpoint_review": {
-        "id": 5626647867,
-        "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
-        "state": "COMMENTED",
-        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867"
-      },
-      "gate_readback": "agents/reviewer/evidence/product-v1/gate-readback.json",
-      "product_final": {
-        "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
-        "review": {
-          "id": 5626761770,
-          "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
-          "state": "COMMENTED",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770"
-        },
-        "status": {
-          "id": 57079614110,
-          "state": "failure",
-          "context": "reviewer/stage",
-          "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
-          "description": "e01 product review failed: UI contract/replay, schema semantics, LOC >5100"
-        },
-        "pr_at_publication": {
-          "base": "1996d44425e09930b5ba3ae5391b728980241f55",
-          "draft": true,
-          "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
-        }
-      }
-    }
-  },
-  "previous_prefreeze_check": {
-    "target": "9aeb40c48c35139e29a5e997253d606e5c96139a",
-    "report": "reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md",
-    "outcome": "129结构通过，F-C1人工语义阻断，原失败保留"
-  },
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -220,202 +96,80 @@
     "reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md",
     "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-BUNDLE-v1.txt",
     "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-BUNDLE-v1-followup.txt",
-    "agents/reviewer/evidence/coursework-bundle-9d6"
+    "agents/reviewer/evidence/coursework-bundle-9d6",
+    "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+    "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1.txt",
+    "agents/reviewer/evidence/coursework-source-fix-dda3"
   ],
-  "plan_reason_review": {
-    "head": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
-    "status": "NOT_PASSED",
-    "finding": {
-      "id": "HISTORY-EVIDENCE-01",
-      "priority": 2,
-      "file": "backend/t44/services/history.py",
-      "line": 66,
-      "trigger": "Legacyaudit.kind integer1 versus scheduleJSON.kind booleantrue; all other exactlinkage equal",
-      "result": "HTTP200/schema-valid wrong reason projection; old rows notmutated",
-      "owner": "backend"
-    },
-    "source_denominator": {
-      "python": 44,
-      "tsvue": 20
-    },
+  "backend_preflight_review": {
+    "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+    "product": "153b9c8c72acc76c5295ae3890236a2ac279b476",
+    "base": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "pr": 29,
+    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
+    "overall": "NOT_ACCEPTED",
+    "new_findings": [],
     "frozen14_unchanged": true,
-    "r1_ui002_unchanged": true,
-    "counterexample": {
-      "pureprobe_runs": 1,
-      "http_runs": 1,
-      "expected_assertion_exit_code": 1,
-      "actual_http_status": 200,
-      "new_test_files": []
+    "source_python_files": 43,
+    "targeted_tests": {
+      "passed": 11,
+      "deselected": 91,
+      "runs": 1,
+      "exit_code": 0
     },
-    "developer_results_rerun": false,
-    "private_independent_accessed": false,
-    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
+    "initial_environment_failure_retained": true,
+    "mysql_rerun": false,
+    "full_suite_rerun": false,
+    "new_test_files": [],
+    "ci_metadata": {
+      "run_id": 40012517513,
+      "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+      "jobs_success": 4,
+      "full_originals_reaudited": false
+    },
+    "source_count": {
+      "value": 6108,
+      "source": "Coordinator/backend notice, not reviewer recount",
+      "passed": false
+    },
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531",
     "github_exact_body_and_commit_readback": true,
     "status_mutations": [],
     "approve": false,
     "merged": false,
-    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0"
+    "evidence_commit": "927743ca092a30159a6ff62884bde8ddc7dd291d"
   },
-  "results": [
-    "75仅FieldEditor运行时props显式接收JSON，initial/schema/API/style未改",
-    "3源hash/6原gzip及可读规范化一致，红2→绿6和14受影响组证据真实保留",
-    "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
-    "FE-INIT-01限定关闭；不作为整产品放行",
-    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
-    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged.",
-    "A7584/153b bounded code review: no new material blocker; old scanner/claim caller omission corrected; overall not accepted. PR29 exact head confirmed; COMMENT awaiting actual publication.",
-    "PR29 COMMENT5633640531 actually published; exact body/state/commit_id readback verified; overall product still NOT_ACCEPTED.",
-    "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56.",
-    "PR30 COMMENT5633760634 actually published; exact body/state/fullcommit_id verified through complete GET. UI002 limited code review is not independent/global acceptance.",
-    "Issue28 exact42243 NOT_PASSED: P2HISTORY-EVIDENCE-01; root/backend notified and owner corrective phase separate; no production fix by reviewer.",
-    "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
-    "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
-  ],
-  "unresolved_items": [
-    "source5980超上限880",
-    "正式400并发600秒三组仍未通过，本候选未测延迟收益",
-    "独立v2固定4c20 SUT；不得拿5dcb412开发CI覆盖其结论",
-    "后续性能/架构改动须新源另审"
-  ],
-  "original_history_failure_github": {
-    "operator": "AI reviewer; not student or separatehuman",
-    "review_id": 5634370911,
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
-    "commit_id": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
-    "state": "COMMENTED",
-    "body_exact_match": true,
-    "plugin_body_and_state_exact_match": true,
-    "full_specific_review_GET_exit_code": 0,
-    "readback_sha256": "e5fa29326fa6b7297b60d8c4dd7083e05fdb6f76d0333c071c79c2e7982d1aa2",
-    "body_sha256": "e8d8a89d2edaceb592633f704f5411a0748d7424fc96780830162728fd97f53f",
-    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0",
-    "first_evidence_push_exit_code": 0,
-    "pr_head_at_publish": "bc5aef9c62393134582affb7a690acb33ac2b833",
-    "scope": "Original42243failure retained; currentbc5narrowfixnotreviewed bythisCOMMENT",
-    "no_status_approve_or_merge": true,
-    "verified_at_utc": "2026-10-23T20:58:25.910543+00:00"
-  },
-  "review_scope": "Only bcb0 strictJSON evidence identity delta and originalHTTP counterexample replay",
-  "github_evidence": {
-    "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
-    "review_id": 5635299006,
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006",
-    "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
-    "state": "COMMENTED",
-    "body_exact_match": true,
-    "plugin_body_and_state_exact_match": true,
-    "full_specific_review_GET_exit_code": 0,
-    "readback_sha256": "08d81a49ee5f310ef77d45b00ec690024320a49904ad715a7b2addd011086e29",
-    "body_sha256": "9412f73b580de1e56196ce96401deea252ed81ab152c1a14d8815fa1d7080076",
-    "issue": {
-      "number": 38,
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
-      "state": "open",
-      "body_exact_match": true,
-      "full_GET_exit_code": 0,
-      "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
-      "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
-    },
-    "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af",
-    "first_evidence_push_exit_code": 0,
-    "pr_head_at_publish": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
-    "target_is_ancestor_of_current_PR_head": true,
-    "later_dda3_fix_not_reviewed": true,
-    "no_status_approve_or_merge": true,
-    "CI_triggered": false,
-    "verified_at_utc": "2026-10-23T23:00:36.272348+00:00"
-  },
-  "empty_value_review": {
-    "application_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
-    "design_sha": "7369400d96ac1d2cb48ac8ce4b2701ac636dda0d",
-    "evidence_sha": "6212e5f0513e31e5e43e31caf4e8fdab8e5cc36e",
-    "defect_id": "FE-INIT-01",
-    "outcome": "限定关闭",
-    "test_rerun": false,
-    "screenshots_actually_viewed": 4,
-    "github": {
-      "state": "COMMENTED",
-      "status_mutations": [],
-      "no_success_status_published": true,
-      "approve": false,
-      "merged": false,
-      "review_id": 5632472310,
-      "review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310",
-      "commit_id": "75c3468de07303cc47b9afd0e4a169664743470e",
-      "exact_body_readback": true,
-      "evidence": "agents/reviewer/evidence/empty-value-75c/github-comment.json",
-      "report_commit": "67e051f0423f1da1b38bfb7d793ccbf8a5d0e480",
-      "report_push_exit": 0,
-      "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
-    }
-  },
-  "latest_review_evidence": "agents/reviewer/evidence/coursework-bundle-9d6/static-audit.json",
-  "native_capture_fix_review": {
-    "target": "cc6a211bb1692460ffba09f7ee764c64545602ee",
-    "code": "b23897879142de3bd77190c67d4947eccf1c8263",
-    "design": "7f4845ea63ef363bb526bf85cc88e232cc496a67",
-    "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
-    "status": "NATIVE-CAPTURE-TIMEOUT-01_CLOSED_WITHIN_DELTA",
+  "capacity_feedback_integration_note": "Coordinator preserved both backend7584 and frontendc56 review histories from parallel branches; generic latest-stage metadata uses capacity review, original source reports/raw evidence unchanged. Neither limited review grants whole product acceptance.",
+  "capacity_feedback_review": {
+    "head": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "product": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+    "base": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "pr": 30,
+    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
     "overall": "NOT_ACCEPTED",
-    "original_failure_review_commit": "c6883f2bd4e860737f4aede4002f4499d2a7e479",
-    "original_failure_comment": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634837225",
-    "original_failure_and_0a6cycle_preserved": true,
-    "semantic_replay": {
+    "new_findings": [],
+    "source_hashes": 19,
+    "frozen_hashes": 14,
+    "raw_logs": 9,
+    "original_named_test_declarations_retained": 38,
+    "targeted_test_result": {
+      "passed": 13,
+      "skipped_or_deselected": 52,
       "runs": 1,
-      "exit_code": 0,
-      "actual_processes": 0,
-      "actual_signals": 0,
-      "not_claiming_byte_identical_inline_command": true
+      "exit_code": 0
     },
-    "owner_artifacts_verified": 26,
-    "owner_five_boundaries_rerun": false,
-    "full_cycle_rerun": false,
-    "private_independent_material_read": false,
+    "full_suite_rerun": false,
+    "browser_rerun": false,
+    "realDB_rerun": false,
+    "ci_triggered": false,
     "new_test_files": [],
-    "github": {
-      "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
-      "review_id": 5634940377,
-      "url": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634940377",
-      "commit_id": "cc6a211bb1692460ffba09f7ee764c64545602ee",
-      "state": "COMMENTED",
-      "body_exact_match": true,
-      "plugin_body_and_state_exact_match": true,
-      "full_specific_review_GET_exit_code": 0,
-      "readback_sha256": "7d2648327dc5a23a6e102cb0042f4e543c1b0616acaf3d32b3bcf5c6a5ddb3d0",
-      "body_sha256": "a05d9342b5e7fc820509ae7e77e06a618ad66e2021d19758371834c5e9a922dd",
-      "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc",
-      "first_evidence_push_exit_code": 0,
-      "pr_head_at_publish": "cc6a211bb1692460ffba09f7ee764c64545602ee",
-      "original_failure_comment_preserved": 5634837225,
-      "limited_defect_closure_only": true,
-      "no_status_approve_or_merge": true,
-      "CI_triggered": false,
-      "verified_at_utc": "2026-10-23T22:06:24.558622+00:00"
-    },
-    "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc"
-  },
-  "implementation_status": "原9d6内存反例真实红/metadata有限专审与公开原件核对/Issue38及PR21精确9d6 COMMENT完整GET封存；后续dda3另轮；无实际包或产品改动",
-  "previous_warm_glass_scope": {
-    "stage": "暖米咖玻璃UI限定审核完成；整产品不放行",
-    "review_target_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
-    "review_outcome": "限定UI差异未发现新增实质阻断；既存initial=true待新SHA；独立/性能/规模与整体门禁不放行",
-    "review_scope": "U017/U018 frontend visual import only; published 63519c2 evidence and 18 screenshots; no independent or full product retest",
-    "latest_review_report": "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
-    "latest_review_evidence": "agents/reviewer/evidence/warm-glass/verification.json"
-  },
-  "readonly_uow_implementation": {
-    "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
-    "ci_run": 39970988113,
-    "junit": {
-      "tests": 412,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0
-    },
-    "only_runtime_changed": true,
-    "test_rerun_by_reviewer": false,
-    "latency_improvement_measured": false
+    "private_independent_accessed": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "github_exact_body_and_commit_readback": true,
+    "status_mutations": [],
+    "approve": false,
+    "merged": false,
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3"
   },
   "checker_path_migration": {
     "task": "ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1",
@@ -429,59 +183,6 @@
     "historical_commands_results_unchanged": true,
     "private_test_paths_not_touched": true
   },
-  "previous_design_review": {
-    "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
-    "review_target_sha": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
-    "review_outcome": "C1-C4限定技术设计通过；Q002待人审，未放行",
-    "github_evidence": {
-      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
-      "review_state": "COMMENTED",
-      "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
-      "required_contexts": [
-        "reviewer/stage",
-        "static",
-        "contracts",
-        "coverage",
-        "frontend"
-      ],
-      "current_check_runs": [],
-      "current_status_projection": {
-        "state": "pending",
-        "statuses": []
-      },
-      "no_success_status_published": true
-    }
-  },
-  "source_count_current_not_recomputed": true,
-  "previous_capacity_feedback_phase": {
-    "stage": "PR30 UI002人力拒绝说明限定代码审核c56/3628；整体不放行",
-    "implementation_status": "限定代码审核/现有13目标一次/公开原件hash及PR30精确c56 COMMENT和完整GET读回完成；无生产修改",
-    "review_outcome": "No new material blocker in UI002 presentation mapping; overall NOT_ACCEPTED",
-    "review_target_sha": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
-    "latest_review_report": "reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md",
-    "latest_review_evidence": "agents/reviewer/evidence/capacity-feedback-c56a5a5/static-audit.json"
-  },
-  "prompt_iterations": [
-    {
-      "id": "ROLE-reviewer-V11-IMPLEMENTATION-v1",
-      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-V11-IMPLEMENTATION-v1.txt",
-      "reason": "复审精确新业务源与公开缺陷；按941定向复现、公开边界/真实失败保留；只读优化先设计再改码",
-      "artifact_paths": [
-        "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
-        "agents/reviewer/evidence/implementation-v11",
-        "tmp/reviewer/941_v11_review.config.mts"
-      ]
-    },
-    {
-      "id": "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1",
-      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1.txt",
-      "reason": "承接已审设计、只核精确新分支和真实既有测试/CI，避免重复负载且不混独立SUT",
-      "artifact_paths": [
-        "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
-        "agents/reviewer/evidence/read-uow-5dcb"
-      ]
-    }
-  ],
   "commands_executed": [
     {
       "command": "pwd；祖先AGENTS.md检查；rg --files定位规则及本岗任务",
@@ -674,43 +375,401 @@
       "result": "exactbody/COMMENTED/bc5commit verified, first2ffpush0; finalsameSHA3runssuccess metadata, not ownfulltestrun; old42243NOT_PASSEDpreserved"
     }
   ],
-  "source_reduction_candidates": {
-    "estimated_net_lines": [
-      208,
-      377
-    ],
-    "implemented": false,
-    "enough_to_cover_786": false,
-    "A": "180-280; high risk, after IAT fixes/diagnosis",
-    "B": "28-47; shared transaction-local scan_run creation",
-    "C": "20-35; preserve outbox phase semantics",
-    "D": "POC only, zero counted benefit",
-    "E": "0-15; existing seed context/add/pointer reuse not counted twice"
+  "coursework_bundle_review": {
+    "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "builder_sha256": "a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b",
+    "finding": {
+      "id": "BUNDLE-SOURCE-BINDING-01",
+      "priority": 2,
+      "file": "scripts/packaging/build_coursework_review.py",
+      "line": 92,
+      "result": "Real declaredcommit but non-tree blob accepted when inner hashes self-consistent"
+    },
+    "single_memory_counterexample": {
+      "runs": 1,
+      "exit_code": 1,
+      "disk_ZIP_files": [],
+      "actual_review_bundle_created": false
+    },
+    "trust_precondition_separated": true,
+    "metadata": {
+      "code": "c0a5e89b2442da2a9149e1d37c2a424d52aff7c0",
+      "evidence": "6c81ee9960ef08dc35fe8146fcdd4ab5cabb39d4",
+      "dedicated_static_outcome": "NO_NEW_MATERIAL_BLOCKER_WITHIN_WRAPPER_DELTA",
+      "strict_count1_AST_unchanged": true,
+      "owner_artifacts_verified": 14,
+      "owner_test_result": "2red to4green,notreviewerrun",
+      "stage05_actual_cause": "UNKNOWN_PRESERVED"
+    },
+    "frozen14_unchanged": true,
+    "private_or_independent_material_read": false,
+    "actual_bundle_built": false,
+    "suites_proc_Docker_fault_load_CI_rerun": false,
+    "new_persistent_tmp_testfiles": [],
+    "later_dda3_fix_not_covered": true,
+    "github": {
+      "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
+      "review_id": 5635299006,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006",
+      "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "plugin_body_and_state_exact_match": true,
+      "full_specific_review_GET_exit_code": 0,
+      "readback_sha256": "08d81a49ee5f310ef77d45b00ec690024320a49904ad715a7b2addd011086e29",
+      "body_sha256": "9412f73b580de1e56196ce96401deea252ed81ab152c1a14d8815fa1d7080076",
+      "issue": {
+        "number": 38,
+        "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+        "state": "open",
+        "body_exact_match": true,
+        "full_GET_exit_code": 0,
+        "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
+        "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
+      },
+      "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af",
+      "first_evidence_push_exit_code": 0,
+      "pr_head_at_publish": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+      "target_is_ancestor_of_current_PR_head": true,
+      "later_dda3_fix_not_reviewed": true,
+      "no_status_approve_or_merge": true,
+      "CI_triggered": false,
+      "verified_at_utc": "2026-10-23T23:00:36.272348+00:00"
+    },
+    "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af"
   },
-  "previous_catalog_review": {
-    "stage": "C-P4四类限定关闭；架构减量审计完成，整体failure/not approved",
-    "review_target_sha": "7c27a5f62cc23db8545a28852ed01322a7e172b4",
-    "review_outcome": "原957通过且DB live支持关闭C-P4；5886超786，仍不放行",
-    "github_evidence": {
-      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036",
-      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603",
+  "coursework_source_fix_review": {
+    "target": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+    "design": "add7363a074ad09c4617caf0fe95620442ac6110",
+    "source_SHA": "b767ebda28e5bac4ea5e2cad78a193f98ca93e8ad4e936d577628471484f585b",
+    "selector_SHA": "540fe63ddedcdb3184b923cd176da493da9e80384599d0684164d6f477de6faf",
+    "status": "BUNDLE-SOURCE-BINDING-01_CLOSED_WITHIN_DELTA",
+    "actual_review_bundle": "UNVERIFIED_NOT_BUILT",
+    "overall": "NOT_ACCEPTED",
+    "original_failure_target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "original_failure_commit": "3cbcc2abeb93b8b11fbc4ae2accc70095450db2e",
+    "original_failure_preserved": true,
+    "replay": {
+      "runs": 1,
+      "exit_code": 0,
+      "original_command_archived": true,
+      "same_input_and_rejection_assertion": true,
+      "perblob_mode_branch": "static_only",
+      "real_selector_not_mocked": true
+    },
+    "frozen14_unchanged": true,
+    "private_or_independent_material_read": false,
+    "metadata_or_full_suite_rerun": false,
+    "new_persistent_tmp_testfiles": [],
+    "github": {
+      "operator": "AI reviewer, authorized HJY147 account; not student or separatehuman",
+      "review_id": 5635353850,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635353850",
+      "commit_id": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "plugin_body_and_state_exact_match": true,
+      "full_specific_review_GET_exit_code": 0,
+      "body_sha256": "3931d06f802605d64df7eece92ca8e303ca00fd0d46f3353d5d2f002528875a1",
+      "readback_sha256": "7f65640918c746ca5a0174f76d47c82e4d84d61ba8cf9d3ecefb0e8495ed4e16",
+      "issue_comment": {
+        "issue": 38,
+        "comment_id": 6376506789,
+        "url": "https://github.com/HJY147/t44-dev-trace/issues/38#issuecomment-6376506789",
+        "body_exact_match": true,
+        "explicit_target_present": true,
+        "full_GET_exit_code": 0,
+        "readback_sha256": "3b6606c393dbbc654b01af1e0b6a56e130d664692372bc1b3f95d3cfa803b7ce"
+      },
+      "evidence_commit": "d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2",
+      "first_evidence_push_exit_code": 0,
+      "pr_head_at_check": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+      "target_ancestor_checked": true,
+      "original9d6_failure_preserved": true,
+      "limited_P2_closure_only": true,
+      "actual_review_bundle_built": false,
+      "no_issue_close_status_approve_or_mainmerge": true,
+      "CI_triggered": false,
+      "verified_at_utc": "2026-10-23T23:07:30.168374+00:00"
+    },
+    "evidence_commit": "d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2"
+  },
+  "empty_value_review": {
+    "application_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "design_sha": "7369400d96ac1d2cb48ac8ce4b2701ac636dda0d",
+    "evidence_sha": "6212e5f0513e31e5e43e31caf4e8fdab8e5cc36e",
+    "defect_id": "FE-INIT-01",
+    "outcome": "限定关闭",
+    "test_rerun": false,
+    "screenshots_actually_viewed": 4,
+    "github": {
+      "state": "COMMENTED",
       "status_mutations": [],
       "no_success_status_published": true,
-      "historical_e01_failure_unchanged": true
-    },
-    "source_reduction_candidates": {
-      "estimated_net_lines": [
-        208,
-        377
-      ],
-      "implemented": false,
-      "enough_to_cover_786": false,
-      "A": "180-280; high risk, after IAT fixes/diagnosis",
-      "B": "28-47; shared transaction-local scan_run creation",
-      "C": "20-35; preserve outbox phase semantics",
-      "D": "POC only, zero counted benefit",
-      "E": "0-15; existing seed context/add/pointer reuse not counted twice"
+      "approve": false,
+      "merged": false,
+      "review_id": 5632472310,
+      "review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310",
+      "commit_id": "75c3468de07303cc47b9afd0e4a169664743470e",
+      "exact_body_readback": true,
+      "evidence": "agents/reviewer/evidence/empty-value-75c/github-comment.json",
+      "report_commit": "67e051f0423f1da1b38bfb7d793ccbf8a5d0e480",
+      "report_push_exit": 0,
+      "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
     }
+  },
+  "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+  "github_evidence": {
+    "CI_triggered": false,
+    "actual_review_bundle_built": false,
+    "body_exact_match": true,
+    "body_sha256": "3931d06f802605d64df7eece92ca8e303ca00fd0d46f3353d5d2f002528875a1",
+    "commit_id": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+    "evidence_commit": "d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2",
+    "first_evidence_push_exit_code": 0,
+    "full_specific_review_GET_exit_code": 0,
+    "issue": {
+      "number": 38,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+      "state": "open",
+      "body_exact_match": true,
+      "full_GET_exit_code": 0,
+      "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
+      "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
+    },
+    "issue_comment": {
+      "issue": 38,
+      "comment_id": 6376506789,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/38#issuecomment-6376506789",
+      "body_exact_match": true,
+      "explicit_target_present": true,
+      "full_GET_exit_code": 0,
+      "readback_sha256": "3b6606c393dbbc654b01af1e0b6a56e130d664692372bc1b3f95d3cfa803b7ce"
+    },
+    "later_dda3_fix_not_reviewed": true,
+    "limited_P2_closure_only": true,
+    "no_issue_close_status_approve_or_mainmerge": true,
+    "operator": "AI reviewer, authorized HJY147 account; not student or separatehuman",
+    "original9d6_failure_preserved": true,
+    "plugin_body_and_state_exact_match": true,
+    "pr_head_at_check": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+    "readback_sha256": "7f65640918c746ca5a0174f76d47c82e4d84d61ba8cf9d3ecefb0e8495ed4e16",
+    "review_id": 5635353850,
+    "state": "COMMENTED",
+    "target_ancestor_checked": true,
+    "target_is_ancestor_of_current_PR_head": true,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635353850",
+    "verified_at_utc": "2026-10-23T23:07:30.168374+00:00"
+  },
+  "implementation_status": "原归档内存反例一次绿/可信selector窄AST与14freeze/Issue38评论及PR21精确dda3 COMMENT完整GET封存；仅P2关闭，无实际包或产品修改",
+  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
+  "interfaces": [
+    {
+      "peer": "总协调与开发责任岗",
+      "status": "bc0cd34完整SHA的C1-C4技术闭合；COMMENT已发；Q002及产品门禁仍待收口",
+      "inputs": [
+        "PR/Issue及完整base/head SHA",
+        "原始需求和冻结规格/接口版本",
+        "变更说明及原始执行证据"
+      ],
+      "outputs": [
+        "绑定SHA的八段审核报告与十项判定（真实PR审核尚未执行）",
+        "Agent-Role评论及审核状态，不能自审或同账号自我APPROVE",
+        "失败/缺证据清单与复审要求"
+      ]
+    },
+    {
+      "peer": "deployment与总协调",
+      "status": "reviewer/stage已配置；三项产品CI未实施，运行及阻断演练待验证",
+      "inputs": [
+        "静态/契约/覆盖率真实检查命令与结果",
+        "覆盖率范围及阈值",
+        "实际主干规则和状态配置证据"
+      ],
+      "outputs": [
+        "门禁证据审核；不代替配置或声称生效"
+      ]
+    },
+    {
+      "peer": "documentation与prompt_engineering",
+      "status": "可交接初始化事实",
+      "inputs": [
+        "具体资料询问"
+      ],
+      "outputs": [
+        "本岗八份实际产物及prompt位置",
+        "M0资料归档不等于产品实现或真实PR审核"
+      ]
+    },
+    {
+      "peer": "documentation",
+      "stage": "M5 factual collection",
+      "status": "实问后已回复840/75 source/design/evidence/review commits、两个已发布PR COMMENT及限定边界",
+      "outputs": [
+        "840报告d8bba16/回执e79fb5e/COMMENT5632356314",
+        "75报告67e051f/COMMENT5632472310/回执本次归档",
+        "不把开发测试或图片审核算独立/学生验收，不复用840覆盖率为75精确覆盖率"
+      ]
+    },
+    {
+      "peer": "coordinator -> frontend",
+      "input": "Exact head3c160c5 / public Issue25 / developer source and raw evidence",
+      "output": "P2 SESSION-R1, exact call chain, public895 failing component probe and raw log",
+      "unresolved": "Owner must guard stale failure/unmounted callbacks and provide new SHA; original independent FAIL and full gates remain."
+    },
+    {
+      "peer": "coordinator -> frontend / next acceptance role",
+      "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
+      "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
+      "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
+    },
+    {
+      "peer": "coordinator/backend -> reviewer",
+      "input": "Exact7584/product153b/base5dcb and public developer evidence; PR16 old head corrected by newdraftPR29",
+      "output": "Limited code review no new material blocker;14freeze match/11targetedpass/legacy interfaces maintained",
+      "unresolved": "Full CI originals remain backend archival;6108 size over5100; performance and independent acceptance not granted"
+    },
+    {
+      "peer": "coordinator/frontend -> reviewer",
+      "input": "Exactc56/product3628/base9560 and explicitly public9red4fallback/13green+matrix evidence",
+      "output": "No new material blocker; own13passonce;19source/14freeze/9raw match; original38named test declarations retained",
+      "unresolved": "New isolated acceptance and root combinedCI/global gates remain; no fullsuite/build/browser/DB/CI rerun"
+    },
+    {
+      "peer": "reviewer -> coordinator/backend",
+      "input": "Exact42243 and admittedRFC; public DB/backend/FE sources only",
+      "output": "P2 HISTORY-EVIDENCE-01, sole real SQLiteHTTP200 wrong reason projection on evidencekindtrue versus1; original rows immutable",
+      "unresolved": "Backend must narrow fix under originalRFC, preserve original red and provide exactnewSHA/publicdelta; original42243 NOT_PASSED"
+    },
+    {
+      "peer": "backend/coordinator -> reviewer",
+      "input": "Exactbc5/productbcb0/designad6, published3580 originalredgreen and unchanged originalreviewcounterexample",
+      "output": "OriginalHTTPcounterexample1pass; HISTORY-EVIDENCE-01closedwithindelta; original42243NOT_PASSEDpreserved",
+      "unresolved": "Issue28 independent/global acceptance, fullCIoriginal archival/performance/size remain coordinator work"
+    }
+  ],
+  "intermediate_capacity_design_review": {
+    "review_target_sha": "02ecdea9ced90cd46cbca898f123d6409f45ba80",
+    "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
+    "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
+  },
+  "latest_review_evidence": "agents/reviewer/evidence/coursework-source-fix-dda3/static-audit.json",
+  "latest_review_report": "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+  "merge_provenance": {
+    "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
+    "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
+    "product_final": "ddaa0350d428d140f6f8f6030123a9dd1b217be2",
+    "resolution": "Keep complete chronological evidence and latest exact-target rejection; no review result or raw log rewritten."
+  },
+  "native_application_review": {
+    "archive": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
+    "implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
+    "application_SUT": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "neutral_product": "cf685d7b745774fe29ddc4884606edae6836e961",
+    "neutral_evidence": "189a4e2231a6e3a2095497e36d26564a4e3e3c99",
+    "finding": {
+      "id": "NATIVE-CAPTURE-TIMEOUT-01",
+      "priority": 2,
+      "file": "deployment/native/application.py",
+      "line": 138,
+      "result": "TimeoutExpired then cleanup exit0 returned normally, no timeout marker"
+    },
+    "single_synthetic_probe": {
+      "runs": 1,
+      "exit_code": 1,
+      "actual_processes": 0,
+      "actual_signals": 0
+    },
+    "published_artifact_hashes_verified": 30,
+    "frozen14_unchanged": true,
+    "run1_failure_preserved": true,
+    "run2_real_success_preserved": true,
+    "neutral953_original_prefix_preserved": true,
+    "native_cycle_repeated": false,
+    "suite_rerun": false,
+    "private_material_read": false,
+    "new_test_files": [],
+    "github": {
+      "operator": "AI reviewer using authorized HJY147 account; not student or separatehuman",
+      "review_id": 5634837225,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634837225",
+      "commit_id": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "plugin_body_and_state_exact_match": true,
+      "full_specific_review_GET_exit_code": 0,
+      "body_sha256": "a6d313bd119eebc2163289ce251a584bd83b469a240a4e6446ad302d0b1e0839",
+      "readback_sha256": "bb326e96b4348743c79a032859d3e0735b8242a21028dac9d4bb97a6ac247f23",
+      "evidence_commit": "8454da244ed0d3dbea84f6aca0630c003c787a44",
+      "first_evidence_push_exit_code": 0,
+      "pr_head_at_publish": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
+      "no_status_approve_or_merge": true,
+      "CI_triggered": false,
+      "verified_at_utc": "2026-10-23T21:51:28.577428+00:00"
+    },
+    "evidence_commit": "8454da244ed0d3dbea84f6aca0630c003c787a44"
+  },
+  "native_capture_fix_review": {
+    "target": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+    "code": "b23897879142de3bd77190c67d4947eccf1c8263",
+    "design": "7f4845ea63ef363bb526bf85cc88e232cc496a67",
+    "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
+    "status": "NATIVE-CAPTURE-TIMEOUT-01_CLOSED_WITHIN_DELTA",
+    "overall": "NOT_ACCEPTED",
+    "original_failure_review_commit": "c6883f2bd4e860737f4aede4002f4499d2a7e479",
+    "original_failure_comment": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634837225",
+    "original_failure_and_0a6cycle_preserved": true,
+    "semantic_replay": {
+      "runs": 1,
+      "exit_code": 0,
+      "actual_processes": 0,
+      "actual_signals": 0,
+      "not_claiming_byte_identical_inline_command": true
+    },
+    "owner_artifacts_verified": 26,
+    "owner_five_boundaries_rerun": false,
+    "full_cycle_rerun": false,
+    "private_independent_material_read": false,
+    "new_test_files": [],
+    "github": {
+      "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
+      "review_id": 5634940377,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634940377",
+      "commit_id": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "plugin_body_and_state_exact_match": true,
+      "full_specific_review_GET_exit_code": 0,
+      "readback_sha256": "7d2648327dc5a23a6e102cb0042f4e543c1b0616acaf3d32b3bcf5c6a5ddb3d0",
+      "body_sha256": "a05d9342b5e7fc820509ae7e77e06a618ad66e2021d19758371834c5e9a922dd",
+      "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc",
+      "first_evidence_push_exit_code": 0,
+      "pr_head_at_publish": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+      "original_failure_comment_preserved": 5634837225,
+      "limited_defect_closure_only": true,
+      "no_status_approve_or_merge": true,
+      "CI_triggered": false,
+      "verified_at_utc": "2026-10-23T22:06:24.558622+00:00"
+    },
+    "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc"
+  },
+  "original_history_failure_github": {
+    "operator": "AI reviewer; not student or separatehuman",
+    "review_id": 5634370911,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
+    "commit_id": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
+    "state": "COMMENTED",
+    "body_exact_match": true,
+    "plugin_body_and_state_exact_match": true,
+    "full_specific_review_GET_exit_code": 0,
+    "readback_sha256": "e5fa29326fa6b7297b60d8c4dd7083e05fdb6f76d0333c071c79c2e7982d1aa2",
+    "body_sha256": "e8d8a89d2edaceb592633f704f5411a0748d7424fc96780830162728fd97f53f",
+    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0",
+    "first_evidence_push_exit_code": 0,
+    "pr_head_at_publish": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope": "Original42243failure retained; currentbc5narrowfixnotreviewed bythisCOMMENT",
+    "no_status_approve_or_merge": true,
+    "verified_at_utc": "2026-10-23T20:58:25.910543+00:00"
   },
   "plan_reason_evidence_fix_review": {
     "head": "bc5aef9c62393134582affb7a690acb33ac2b833",
@@ -762,78 +821,250 @@
       "full_raw_artifacts_reaudited": false
     }
   },
-  "warm_glass_review": {
-    "application_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
-    "design_sha": "326f97151970ec9b4ce77114de2c2170d24a681d",
-    "evidence_sha": "63519c2b114bb4cb1c98dcc43e0f2358e65d0892",
-    "base_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "reviewer_tests_rerun": false,
-    "screenshots_viewed": 18,
-    "new_material_blockers": [],
-    "existing_issue": "initial string value true; future owner SHA needed",
-    "github": {
-      "comment_state": "COMMENTED",
+  "plan_reason_integration_note": "Coordinator resolved parallel append-only reviewer branches, preserving original42243 NOT_PASSED and exactbc5 narrow closure separately; latest generic metadata uses bc5. Original reports/counterexample bytes unchanged.",
+  "plan_reason_review": {
+    "head": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
+    "status": "NOT_PASSED",
+    "finding": {
+      "id": "HISTORY-EVIDENCE-01",
+      "priority": 2,
+      "file": "backend/t44/services/history.py",
+      "line": 66,
+      "trigger": "Legacyaudit.kind integer1 versus scheduleJSON.kind booleantrue; all other exactlinkage equal",
+      "result": "HTTP200/schema-valid wrong reason projection; old rows notmutated",
+      "owner": "backend"
+    },
+    "source_denominator": {
+      "python": 44,
+      "tsvue": 20
+    },
+    "frozen14_unchanged": true,
+    "r1_ui002_unchanged": true,
+    "counterexample": {
+      "pureprobe_runs": 1,
+      "http_runs": 1,
+      "expected_assertion_exit_code": 1,
+      "actual_http_status": 200,
+      "new_test_files": []
+    },
+    "developer_results_rerun": false,
+    "private_independent_accessed": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911",
+    "github_exact_body_and_commit_readback": true,
+    "status_mutations": [],
+    "approve": false,
+    "merged": false,
+    "evidence_commit": "7b2c4ffc2185023ae866c052997387a666431ff0"
+  },
+  "previous_capacity_design_review": {
+    "review_target_sha": "5fb1d7e0b180e754aba635487ebb0fa341e4f957",
+    "report": "reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md",
+    "review_outcome": "当时有条件技术准入、状态7具体待答；原root AI提案误述保留，已由02+U016解决"
+  },
+  "previous_capacity_feedback_phase": {
+    "stage": "PR30 UI002人力拒绝说明限定代码审核c56/3628；整体不放行",
+    "implementation_status": "限定代码审核/现有13目标一次/公开原件hash及PR30精确c56 COMMENT和完整GET读回完成；无生产修改",
+    "review_outcome": "No new material blocker in UI002 presentation mapping; overall NOT_ACCEPTED",
+    "review_target_sha": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "latest_review_report": "reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md",
+    "latest_review_evidence": "agents/reviewer/evidence/capacity-feedback-c56a5a5/static-audit.json"
+  },
+  "previous_capacity_freeze_review": {
+    "stage": "1.1冻结源轻量契约一致性复核完成，F-C1关闭，可生成manifest",
+    "review_target_sha": "59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e",
+    "review_outcome": "限定契约/规格语义源准入，无剩余本轮阻断；新manifest在源SHA尚不存在，产品另审",
+    "github_evidence": {
       "status_mutations": [],
       "no_success_status_published": true,
-      "approve": false,
-      "merged": false,
-      "review_id": 5632356314,
-      "review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314",
-      "commit_id": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
-      "exact_body_readback": true,
-      "evidence": "agents/reviewer/evidence/warm-glass/github-comment.json",
-      "audit_commit": "d8bba16a0e273e121d39ea9c3b58594521a39eac",
-      "push_exit": 0
+      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852",
+      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101",
+      "commands_and_readbacks": "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json"
+    },
+    "review_scope": "指定规格与OpenAPI/运行副本/DB文档轻量一致性，不审业务草稿或产品运行",
+    "unresolved_items": [
+      "root随后生成v1.1 manifest，需核父链与精确源hash；59daa源不含manifest",
+      "新业务源码/真实成功拒绝/幂等/并发回归及产品gate后续精确SHA另审",
+      "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
+    ]
+  },
+  "previous_capacity_rfc_review": {
+    "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
+    "review_target_sha": "bbc4be681f19a386fbca40baf97a63ab902b3f89",
+    "review_scope": "capacity lifecycle RFC only; final L33 diff against 02; original source reasoning bound to02",
+    "review_outcome": "最终RFC技术设计可准入责任岗实施，无本轮阻断/业务待答；源码/冻结/产品测试/gate另审",
+    "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+    "github_evidence": {
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "comment_results": "agents/reviewer/evidence/capacity-v11-design/github-comments.json",
+      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6364500677",
+      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364501387",
+      "final_rfc_update": "agents/reviewer/evidence/capacity-v11-design/github-final-update.json"
     }
   },
-  "unverified": [
-    "本岗未重跑14项/build/browser，开发原件不当独立验收",
-    "75没有重新覆盖率，不复用84092.81为精确新覆盖率",
-    "840原完整focus与其他引擎场景未运行边界保持",
-    "独立/正式性能/源码规模与整产品门禁仍未闭环",
-    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
-    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review.",
-    "No reviewer MySQL/full-suite/CI-artifact/full-performance/independent rerun;437 and coverage detail currently developer notification;6108 source count coordinator/backend-provided, not recounted.",
-    "Developer65 suite/build/browser outcomes were not rerun by reviewer; no private v3/independent evidence read; no CI triggered or global/independent pass.",
-    "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
-    "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
-  ],
-  "readonly_uow_design": {
-    "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
-    "applied": false,
-    "production_changes": false,
-    "admission": "限定设计无阻断；总协调决策后实现，新源复审",
-    "physical_line_net_prediction": 7,
-    "measured_performance_improvement": false,
-    "design_commit": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
-    "coordinator_admitted_implementation": true
-  },
-  "review_targets": [
-    {
-      "pr": 14,
-      "sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
-      "outcome": "授权基础范围通过，非产品放行",
-      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
+  "previous_catalog_review": {
+    "stage": "C-P4四类限定关闭；架构减量审计完成，整体failure/not approved",
+    "review_target_sha": "7c27a5f62cc23db8545a28852ed01322a7e172b4",
+    "review_outcome": "原957通过且DB live支持关闭C-P4；5886超786，仍不放行",
+    "github_evidence": {
+      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036",
+      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603",
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "historical_e01_failure_unchanged": true
     },
-    {
-      "pr": 15,
-      "sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
-      "outcome": "授权基础范围通过，非产品放行",
-      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
-    },
-    {
-      "pr": 16,
-      "sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
-      "outcome": "授权基础范围通过，非产品放行",
-      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
-    },
-    {
-      "pr": 17,
-      "sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
-      "outcome": "授权基础范围通过，非产品放行",
-      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
+    "source_reduction_candidates": {
+      "estimated_net_lines": [
+        208,
+        377
+      ],
+      "implemented": false,
+      "enough_to_cover_786": false,
+      "A": "180-280; high risk, after IAT fixes/diagnosis",
+      "B": "28-47; shared transaction-local scan_run creation",
+      "C": "20-35; preserve outbox phase semantics",
+      "D": "POC only, zero counted benefit",
+      "E": "0-15; existing seed context/add/pointer reuse not counted twice"
     }
-  ],
+  },
+  "previous_design_review": {
+    "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
+    "review_target_sha": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
+    "review_outcome": "C1-C4限定技术设计通过；Q002待人审，未放行",
+    "github_evidence": {
+      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
+      "review_state": "COMMENTED",
+      "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
+      "required_contexts": [
+        "reviewer/stage",
+        "static",
+        "contracts",
+        "coverage",
+        "frontend"
+      ],
+      "current_check_runs": [],
+      "current_status_projection": {
+        "state": "pending",
+        "statuses": []
+      },
+      "no_success_status_published": true
+    }
+  },
+  "previous_foundation_review": {
+    "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
+    "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
+    "review_targets": [
+      {
+        "pr": 14,
+        "sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+        "outcome": "授权基础范围通过，非产品放行",
+        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
+      },
+      {
+        "pr": 15,
+        "sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+        "outcome": "授权基础范围通过，非产品放行",
+        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
+      },
+      {
+        "pr": 16,
+        "sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+        "outcome": "授权基础范围通过，非产品放行",
+        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
+      },
+      {
+        "pr": 17,
+        "sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+        "outcome": "授权基础范围通过，非产品放行",
+        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
+      }
+    ],
+    "github_evidence": {
+      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6359632833",
+      "pr_reviews": [
+        {
+          "id": 5625100136,
+          "commit_id": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
+        },
+        {
+          "id": 5625100856,
+          "commit_id": "72e3275202273a60af3acc37b7a319f10eea99a7",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
+        },
+        {
+          "id": 5625101488,
+          "commit_id": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
+        },
+        {
+          "id": 5625102002,
+          "commit_id": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
+        }
+      ],
+      "evidence_file": "agents/reviewer/evidence/foundations-v1/github-verification.json",
+      "readback_file": "agents/reviewer/evidence/foundations-v1/comment-readback.json",
+      "no_success_status_published": true,
+      "deployment_product_checks": "failure",
+      "closeout_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362034250",
+      "resumed_readback_file": "agents/reviewer/evidence/foundations-v1/comment-readback-resumed.json"
+    },
+    "review_branch": "codex/review-foundations",
+    "user_choice_update": {
+      "source": "总协调真实派工通知",
+      "quote": "采用推荐方案，继续开发",
+      "reported_freeze_commit": "ae60dc3",
+      "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
+    }
+  },
+  "previous_github_evidence": {
+    "operator": "AI reviewer using authorized HJY147 account; not separate human",
+    "review_id": 5633760634,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "state": "COMMENTED",
+    "body_exact_match": true,
+    "plugin_body_and_state_exact_match": true,
+    "readback_exit_code": 0,
+    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
+    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "first_evidence_push_exit_code": 0,
+    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
+    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
+    "no_status_approve_or_merge": true,
+    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
+    "full_specific_review_GET_exit_code": 0
+  },
+  "previous_phase_before_coursework_bundle": {
+    "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+    "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+    "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+    "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+    "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
+    "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json"
+  },
+  "previous_phase_before_coursework_source_fix": {
+    "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+    "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+    "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+    "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+    "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
+    "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json"
+  },
+  "previous_phase_before_native_capture_followup": {
+    "stage": "PR29 A预检合并限定代码审核7584/153b；无新阻断，整产品不放行",
+    "implementation_status": "限定静态/11现有小测/公开原件及CI元数据核对完成；PR29精确7584 COMMENT及逐字读回完成；无生产修改",
+    "review_outcome": "No new material blockers in bounded A runtime change; overall NOT_ACCEPTED",
+    "review_target_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+    "latest_review_report": "reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md",
+    "latest_review_evidence": "agents/reviewer/evidence/backend-preflight-7584cd3/static-audit.json"
+  },
   "previous_phase_from_base": {
     "stage": "PR30 UI002人力拒绝说明限定代码审核c56/3628；整体不放行",
     "implementation_status": "限定代码审核/现有13目标一次/公开原件hash及PR30精确c56 COMMENT和完整GET读回完成；无生产修改",
@@ -842,8 +1073,95 @@
     "latest_review_report": "reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md",
     "latest_review_evidence": "agents/reviewer/evidence/capacity-feedback-c56a5a5/static-audit.json"
   },
-  "plan_reason_integration_note": "Coordinator resolved parallel append-only reviewer branches, preserving original42243 NOT_PASSED and exactbc5 narrow closure separately; latest generic metadata uses bc5. Original reports/counterexample bytes unchanged.",
-  "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+  "previous_plan_reason_evidence_phase": {
+    "stage": "PR21 HISTORY-EVIDENCE-01窄修复审bc5/bcb0：限定关闭，整体不放行",
+    "implementation_status": "原反例一次绿/窄差量与公开原件核对/PR21准确bc5 COMMENT及完整GET已完成；原42243不通过保留；整体不放行",
+    "review_outcome": "HISTORY-EVIDENCE-01 CLOSED_WITHIN_EXACT_DELTA; overall NOT_ACCEPTED",
+    "review_target_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "latest_review_report": "reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md",
+    "latest_review_evidence": "agents/reviewer/evidence/plan-reason-evidence-bc5/original-evidence-kind-http-replay.json"
+  },
+  "previous_prefreeze_check": {
+    "target": "9aeb40c48c35139e29a5e997253d606e5c96139a",
+    "report": "reports/reviews/capacity-v11-freeze-9aeb40c48c35139e29a5e997253d606e5c96139a.md",
+    "outcome": "129结构通过，F-C1人工语义阻断，原失败保留"
+  },
+  "previous_product_review": {
+    "stage": "完整产品e01首次审核不通过，等待原owner修复后新SHA复审",
+    "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+    "review_outcome": "不通过：C-P1/C-P2/C-P4真实复现，C-P3 5944>5100",
+    "github_evidence": {
+      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
+      "review_state": "COMMENTED",
+      "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
+      "required_contexts": [
+        "reviewer/stage",
+        "static",
+        "contracts",
+        "coverage",
+        "frontend"
+      ],
+      "current_check_runs": [],
+      "current_status_projection": {
+        "state": "pending",
+        "statuses": []
+      },
+      "no_success_status_published": true,
+      "product_checkpoint_issue": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769",
+      "product_review_publish": "首次remote未push返回422已保留；root push包含e01后绑定原SHA COMMENT成功",
+      "product_checkpoint_review": {
+        "id": 5626647867,
+        "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867"
+      },
+      "gate_readback": "agents/reviewer/evidence/product-v1/gate-readback.json",
+      "product_final": {
+        "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+        "review": {
+          "id": 5626761770,
+          "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770"
+        },
+        "status": {
+          "id": 57079614110,
+          "state": "failure",
+          "context": "reviewer/stage",
+          "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+          "description": "e01 product review failed: UI contract/replay, schema semantics, LOC >5100"
+        },
+        "pr_at_publication": {
+          "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+          "draft": true,
+          "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+        }
+      }
+    }
+  },
+  "previous_read_uow_review": {
+    "stage": "单UoW实现限定复审完成；整体不通过",
+    "review_target_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "review_outcome": "限定diff未见新阻断，准入协调后短测不等于性能通过；5980超880/正式与独立未闭环，不放行",
+    "review_scope": "Only contract-validation single-UoW implementation diff and exact22647 published development evidence",
+    "latest_review_report": "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
+    "latest_review_evidence": "agents/reviewer/evidence/read-uow-5dcb/verification.json",
+    "readonly_uow_implementation": {
+      "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+      "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
+      "ci_run": 39970988113,
+      "junit": {
+        "tests": 412,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "only_runtime_changed": true,
+      "test_rerun_by_reviewer": false,
+      "latency_improvement_measured": false
+    }
+  },
   "previous_session_r1_phase": {
     "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
     "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
@@ -852,33 +1170,60 @@
     "latest_review_report": "reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md",
     "latest_review_evidence": "agents/reviewer/evidence/empty-value-75c/verification.json"
   },
-  "merge_provenance": {
-    "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
-    "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
-    "product_final": "ddaa0350d428d140f6f8f6030123a9dd1b217be2",
-    "resolution": "Keep complete chronological evidence and latest exact-target rejection; no review result or raw log rewritten."
-  },
-  "session_r1_followup": {
-    "head": "babc60f275ec780bcd3044be455acfddc4a49e60",
-    "product": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
-    "status": "SESSION-R1_CLOSED_WITHIN_SCOPE",
-    "overall": "NOT_ACCEPTED",
-    "probe_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
-    "probe_result": {
-      "passed": 3,
-      "failed": 0,
-      "exit_code": 0,
-      "runs": 1
+  "previous_v11_implementation_review": {
+    "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
+    "review_target_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "review_branch": "codex/reviewer-v11-implementation",
+    "review_scope": "D005/D006 implementation, published IAT01–05 and FEcounts; RC UoW candidate design only",
+    "review_outcome": "所列源码限定未见新阻断；原C-P1/C-P2限定关闭；source5973超873/正式性能及新独立未闭环，不放行",
+    "github_evidence": {
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373",
+      "review_id": 5629687373,
+      "commit_id": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "state": "COMMENTED",
+      "exact_body_readback": true,
+      "evidence": "agents/reviewer/evidence/implementation-v11/github-verification.json"
     },
-    "source_hashes_match": 19,
-    "frozen_hashes_match": 14,
-    "raw_logs_match": 10,
-    "independent_retest": false,
-    "full_suite_rerun": false,
-    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899",
-    "github_exact_body_and_commit_readback": true,
-    "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
+    "latest_review_report": "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
+    "latest_review_evidence": "agents/reviewer/evidence/implementation-v11/verification.json",
+    "unresolved_items": [
+      "有效代码5973超上限873，原口径不改",
+      "旧源正式三P95失败，当前源尚无正式通过",
+      "新独立验收未发布；个人研究及人工参与配额未证实",
+      "959完成两断言，但首次工具调用未留exit元数据，未知不能伪写0"
+    ]
   },
+  "previous_warm_glass_scope": {
+    "stage": "暖米咖玻璃UI限定审核完成；整产品不放行",
+    "review_target_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+    "review_outcome": "限定UI差异未发现新增实质阻断；既存initial=true待新SHA；独立/性能/规模与整体门禁不放行",
+    "review_scope": "U017/U018 frontend visual import only; published 63519c2 evidence and 18 screenshots; no independent or full product retest",
+    "latest_review_report": "reports/reviews/warm-glass-840b1a88e6976f0ecfb0b0ba45676b208aae4d98.md",
+    "latest_review_evidence": "agents/reviewer/evidence/warm-glass/verification.json"
+  },
+  "prompt_iterations": [
+    {
+      "id": "ROLE-reviewer-V11-IMPLEMENTATION-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-V11-IMPLEMENTATION-v1.txt",
+      "reason": "复审精确新业务源与公开缺陷；按941定向复现、公开边界/真实失败保留；只读优化先设计再改码",
+      "artifact_paths": [
+        "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
+        "agents/reviewer/evidence/implementation-v11",
+        "tmp/reviewer/941_v11_review.config.mts"
+      ]
+    },
+    {
+      "id": "ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-READ-UOW-IMPLEMENTATION-v1.txt",
+      "reason": "承接已审设计、只核精确新分支和真实既有测试/CI，避免重复负载且不混独立SUT",
+      "artifact_paths": [
+        "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
+        "agents/reviewer/evidence/read-uow-5dcb"
+      ]
+    }
+  ],
   "prompt_refs": [
     {
       "id": "ROLE-reviewer-BOOTSTRAP-v1",
@@ -1082,229 +1427,80 @@
     },
     "ROLE-reviewer-NATIVE-APPLICATION-v1",
     "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1",
-    "ROLE-reviewer-COURSEWORK-BUNDLE-v1"
+    "ROLE-reviewer-COURSEWORK-BUNDLE-v1",
+    "ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1"
   ],
-  "previous_v11_implementation_review": {
-    "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
-    "review_target_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
-    "review_branch": "codex/reviewer-v11-implementation",
-    "review_scope": "D005/D006 implementation, published IAT01–05 and FEcounts; RC UoW candidate design only",
-    "review_outcome": "所列源码限定未见新阻断；原C-P1/C-P2限定关闭；source5973超873/正式性能及新独立未闭环，不放行",
-    "github_evidence": {
-      "status_mutations": [],
-      "no_success_status_published": true,
-      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5629687373",
-      "review_id": 5629687373,
-      "commit_id": "4c20f32b71635016815420472b9d4bb4fa850df0",
-      "state": "COMMENTED",
-      "exact_body_readback": true,
-      "evidence": "agents/reviewer/evidence/implementation-v11/github-verification.json"
-    },
-    "latest_review_report": "reports/reviews/implementation-v11-4c20f32b71635016815420472b9d4bb4fa850df0.md",
-    "latest_review_evidence": "agents/reviewer/evidence/implementation-v11/verification.json",
-    "unresolved_items": [
-      "有效代码5973超上限873，原口径不改",
-      "旧源正式三P95失败，当前源尚无正式通过",
-      "新独立验收未发布；个人研究及人工参与配额未证实",
-      "959完成两断言，但首次工具调用未留exit元数据，未知不能伪写0"
-    ]
+  "questions": [],
+  "readonly_uow_design": {
+    "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
+    "applied": false,
+    "production_changes": false,
+    "admission": "限定设计无阻断；总协调决策后实现，新源复审",
+    "physical_line_net_prediction": 7,
+    "measured_performance_improvement": false,
+    "design_commit": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
+    "coordinator_admitted_implementation": true
   },
-  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
-  "backend_preflight_review": {
-    "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
-    "product": "153b9c8c72acc76c5295ae3890236a2ac279b476",
-    "base": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "pr": 29,
-    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
-    "overall": "NOT_ACCEPTED",
-    "new_findings": [],
-    "frozen14_unchanged": true,
-    "source_python_files": 43,
-    "targeted_tests": {
-      "passed": 11,
-      "deselected": 91,
-      "runs": 1,
-      "exit_code": 0
+  "readonly_uow_implementation": {
+    "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
+    "ci_run": 39970988113,
+    "junit": {
+      "tests": 412,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
-    "initial_environment_failure_retained": true,
-    "mysql_rerun": false,
-    "full_suite_rerun": false,
-    "new_test_files": [],
-    "ci_metadata": {
-      "run_id": 40012517513,
-      "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
-      "jobs_success": 4,
-      "full_originals_reaudited": false
-    },
-    "source_count": {
-      "value": 6108,
-      "source": "Coordinator/backend notice, not reviewer recount",
-      "passed": false
-    },
-    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531",
-    "github_exact_body_and_commit_readback": true,
-    "status_mutations": [],
-    "approve": false,
-    "merged": false,
-    "evidence_commit": "927743ca092a30159a6ff62884bde8ddc7dd291d"
+    "only_runtime_changed": true,
+    "test_rerun_by_reviewer": false,
+    "latency_improvement_measured": false
   },
-  "previous_capacity_rfc_review": {
-    "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
-    "review_target_sha": "bbc4be681f19a386fbca40baf97a63ab902b3f89",
-    "review_scope": "capacity lifecycle RFC only; final L33 diff against 02; original source reasoning bound to02",
-    "review_outcome": "最终RFC技术设计可准入责任岗实施，无本轮阻断/业务待答；源码/冻结/产品测试/gate另审",
-    "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
-    "github_evidence": {
-      "status_mutations": [],
-      "no_success_status_published": true,
-      "comment_results": "agents/reviewer/evidence/capacity-v11-design/github-comments.json",
-      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6364500677",
-      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364501387",
-      "final_rfc_update": "agents/reviewer/evidence/capacity-v11-design/github-final-update.json"
+  "results": [
+    "75仅FieldEditor运行时props显式接收JSON，initial/schema/API/style未改",
+    "3源hash/6原gzip及可读规范化一致，红2→绿6和14受影响组证据真实保留",
+    "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
+    "FE-INIT-01限定关闭；不作为整产品放行",
+    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
+    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged.",
+    "A7584/153b bounded code review: no new material blocker; old scanner/claim caller omission corrected; overall not accepted. PR29 exact head confirmed; COMMENT awaiting actual publication.",
+    "PR29 COMMENT5633640531 actually published; exact body/state/commit_id readback verified; overall product still NOT_ACCEPTED.",
+    "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56.",
+    "PR30 COMMENT5633760634 actually published; exact body/state/fullcommit_id verified through complete GET. UI002 limited code review is not independent/global acceptance.",
+    "Issue28 exact42243 NOT_PASSED: P2HISTORY-EVIDENCE-01; root/backend notified and owner corrective phase separate; no production fix by reviewer.",
+    "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
+    "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
+  ],
+  "review_branch": "codex/review-warm-glass",
+  "review_outcome": "BUNDLE-SOURCE-BINDING-01 CLOSED_WITHIN_DELTA; actualbundle UNVERIFIED; overall NOT_ACCEPTED",
+  "review_scope": "Only bcb0 strictJSON evidence identity delta and originalHTTP counterexample replay",
+  "review_target_sha": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+  "review_targets": [
+    {
+      "pr": 14,
+      "sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+      "outcome": "授权基础范围通过，非产品放行",
+      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
+    },
+    {
+      "pr": 15,
+      "sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+      "outcome": "授权基础范围通过，非产品放行",
+      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
+    },
+    {
+      "pr": 16,
+      "sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+      "outcome": "授权基础范围通过，非产品放行",
+      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
+    },
+    {
+      "pr": 17,
+      "sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+      "outcome": "授权基础范围通过，非产品放行",
+      "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
     }
-  },
-  "previous_github_evidence": {
-    "operator": "AI reviewer using authorized HJY147 account; not separate human",
-    "review_id": 5633760634,
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
-    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
-    "state": "COMMENTED",
-    "body_exact_match": true,
-    "plugin_body_and_state_exact_match": true,
-    "readback_exit_code": 0,
-    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
-    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
-    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
-    "first_evidence_push_exit_code": 0,
-    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
-    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
-    "no_status_approve_or_merge": true,
-    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
-    "full_specific_review_GET_exit_code": 0
-  },
-  "review_outcome": "A NOT_PASSED P2 BUNDLE-SOURCE-BINDING-01; B no new material blocker within wrapper delta; overall NOT_ACCEPTED",
-  "capacity_feedback_integration_note": "Coordinator preserved both backend7584 and frontendc56 review histories from parallel branches; generic latest-stage metadata uses capacity review, original source reports/raw evidence unchanged. Neither limited review grants whole product acceptance.",
-  "previous_phase_before_native_capture_followup": {
-    "stage": "PR29 A预检合并限定代码审核7584/153b；无新阻断，整产品不放行",
-    "implementation_status": "限定静态/11现有小测/公开原件及CI元数据核对完成；PR29精确7584 COMMENT及逐字读回完成；无生产修改",
-    "review_outcome": "No new material blockers in bounded A runtime change; overall NOT_ACCEPTED",
-    "review_target_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
-    "latest_review_report": "reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md",
-    "latest_review_evidence": "agents/reviewer/evidence/backend-preflight-7584cd3/static-audit.json"
-  },
-  "previous_capacity_freeze_review": {
-    "stage": "1.1冻结源轻量契约一致性复核完成，F-C1关闭，可生成manifest",
-    "review_target_sha": "59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e",
-    "review_outcome": "限定契约/规格语义源准入，无剩余本轮阻断；新manifest在源SHA尚不存在，产品另审",
-    "github_evidence": {
-      "status_mutations": [],
-      "no_success_status_published": true,
-      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852",
-      "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101",
-      "commands_and_readbacks": "agents/reviewer/evidence/capacity-v11-freeze/github-comments.json"
-    },
-    "review_scope": "指定规格与OpenAPI/运行副本/DB文档轻量一致性，不审业务草稿或产品运行",
-    "unresolved_items": [
-      "root随后生成v1.1 manifest，需核父链与精确源hash；59daa源不含manifest",
-      "新业务源码/真实成功拒绝/幂等/并发回归及产品gate后续精确SHA另审",
-      "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
-    ]
-  },
+  ],
   "role": "reviewer",
-  "previous_read_uow_review": {
-    "stage": "单UoW实现限定复审完成；整体不通过",
-    "review_target_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "review_outcome": "限定diff未见新阻断，准入协调后短测不等于性能通过；5980超880/正式与独立未闭环，不放行",
-    "review_scope": "Only contract-validation single-UoW implementation diff and exact22647 published development evidence",
-    "latest_review_report": "reports/reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md",
-    "latest_review_evidence": "agents/reviewer/evidence/read-uow-5dcb/verification.json",
-    "readonly_uow_implementation": {
-      "product_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-      "evidence_sha": "22647b4eef87f7486293c64dc6d0b3d6809b1a53",
-      "ci_run": 39970988113,
-      "junit": {
-        "tests": 412,
-        "failures": 0,
-        "errors": 0,
-        "skipped": 0
-      },
-      "only_runtime_changed": true,
-      "test_rerun_by_reviewer": false,
-      "latency_improvement_measured": false
-    }
-  },
-  "previous_foundation_review": {
-    "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
-    "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
-    "review_targets": [
-      {
-        "pr": 14,
-        "sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
-        "outcome": "授权基础范围通过，非产品放行",
-        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
-      },
-      {
-        "pr": 15,
-        "sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
-        "outcome": "授权基础范围通过，非产品放行",
-        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
-      },
-      {
-        "pr": 16,
-        "sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
-        "outcome": "授权基础范围通过，非产品放行",
-        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
-      },
-      {
-        "pr": 17,
-        "sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
-        "outcome": "授权基础范围通过，非产品放行",
-        "comment_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
-      }
-    ],
-    "github_evidence": {
-      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6359632833",
-      "pr_reviews": [
-        {
-          "id": 5625100136,
-          "commit_id": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
-          "state": "COMMENTED",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
-        },
-        {
-          "id": 5625100856,
-          "commit_id": "72e3275202273a60af3acc37b7a319f10eea99a7",
-          "state": "COMMENTED",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
-        },
-        {
-          "id": 5625101488,
-          "commit_id": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
-          "state": "COMMENTED",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
-        },
-        {
-          "id": 5625102002,
-          "commit_id": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
-          "state": "COMMENTED",
-          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
-        }
-      ],
-      "evidence_file": "agents/reviewer/evidence/foundations-v1/github-verification.json",
-      "readback_file": "agents/reviewer/evidence/foundations-v1/comment-readback.json",
-      "no_success_status_published": true,
-      "deployment_product_checks": "failure",
-      "closeout_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362034250",
-      "resumed_readback_file": "agents/reviewer/evidence/foundations-v1/comment-readback-resumed.json"
-    },
-    "review_branch": "codex/review-foundations",
-    "user_choice_update": {
-      "source": "总协调真实派工通知",
-      "quote": "采用推荐方案，继续开发",
-      "reported_freeze_commit": "ae60dc3",
-      "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
-    }
-  },
   "session_cleanup_review": {
     "head": "3c160c57c56af47eea2c524d93340a679eeb441b",
     "product": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
@@ -1324,204 +1520,89 @@
     "github_exact_body_and_commit_readback": true,
     "evidence_commit": "7a544794de3c9dcfca09b0590c89000ab8bb624a"
   },
-  "updated_at": "2026-10-23T21:07:41.894185+00:00",
-  "capacity_feedback_review": {
-    "head": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
-    "product": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
-    "base": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
-    "pr": 30,
-    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
+  "session_r1_followup": {
+    "head": "babc60f275ec780bcd3044be455acfddc4a49e60",
+    "product": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "status": "SESSION-R1_CLOSED_WITHIN_SCOPE",
     "overall": "NOT_ACCEPTED",
-    "new_findings": [],
-    "source_hashes": 19,
-    "frozen_hashes": 14,
-    "raw_logs": 9,
-    "original_named_test_declarations_retained": 38,
-    "targeted_test_result": {
-      "passed": 13,
-      "skipped_or_deselected": 52,
-      "runs": 1,
-      "exit_code": 0
+    "probe_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
+    "probe_result": {
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0,
+      "runs": 1
     },
+    "source_hashes_match": 19,
+    "frozen_hashes_match": 14,
+    "raw_logs_match": 10,
+    "independent_retest": false,
     "full_suite_rerun": false,
-    "browser_rerun": false,
-    "realDB_rerun": false,
-    "ci_triggered": false,
-    "new_test_files": [],
-    "private_independent_accessed": false,
-    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899",
     "github_exact_body_and_commit_readback": true,
-    "status_mutations": [],
-    "approve": false,
-    "merged": false,
-    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3"
+    "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
   },
-  "latest_review_report": "reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md",
-  "review_target_sha": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
-  "interfaces": [
-    {
-      "peer": "总协调与开发责任岗",
-      "status": "bc0cd34完整SHA的C1-C4技术闭合；COMMENT已发；Q002及产品门禁仍待收口",
-      "inputs": [
-        "PR/Issue及完整base/head SHA",
-        "原始需求和冻结规格/接口版本",
-        "变更说明及原始执行证据"
-      ],
-      "outputs": [
-        "绑定SHA的八段审核报告与十项判定（真实PR审核尚未执行）",
-        "Agent-Role评论及审核状态，不能自审或同账号自我APPROVE",
-        "失败/缺证据清单与复审要求"
-      ]
-    },
-    {
-      "peer": "deployment与总协调",
-      "status": "reviewer/stage已配置；三项产品CI未实施，运行及阻断演练待验证",
-      "inputs": [
-        "静态/契约/覆盖率真实检查命令与结果",
-        "覆盖率范围及阈值",
-        "实际主干规则和状态配置证据"
-      ],
-      "outputs": [
-        "门禁证据审核；不代替配置或声称生效"
-      ]
-    },
-    {
-      "peer": "documentation与prompt_engineering",
-      "status": "可交接初始化事实",
-      "inputs": [
-        "具体资料询问"
-      ],
-      "outputs": [
-        "本岗八份实际产物及prompt位置",
-        "M0资料归档不等于产品实现或真实PR审核"
-      ]
-    },
-    {
-      "peer": "documentation",
-      "stage": "M5 factual collection",
-      "status": "实问后已回复840/75 source/design/evidence/review commits、两个已发布PR COMMENT及限定边界",
-      "outputs": [
-        "840报告d8bba16/回执e79fb5e/COMMENT5632356314",
-        "75报告67e051f/COMMENT5632472310/回执本次归档",
-        "不把开发测试或图片审核算独立/学生验收，不复用840覆盖率为75精确覆盖率"
-      ]
-    },
-    {
-      "peer": "coordinator -> frontend",
-      "input": "Exact head3c160c5 / public Issue25 / developer source and raw evidence",
-      "output": "P2 SESSION-R1, exact call chain, public895 failing component probe and raw log",
-      "unresolved": "Owner must guard stale failure/unmounted callbacks and provide new SHA; original independent FAIL and full gates remain."
-    },
-    {
-      "peer": "coordinator -> frontend / next acceptance role",
-      "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
-      "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
-      "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
-    },
-    {
-      "peer": "coordinator/backend -> reviewer",
-      "input": "Exact7584/product153b/base5dcb and public developer evidence; PR16 old head corrected by newdraftPR29",
-      "output": "Limited code review no new material blocker;14freeze match/11targetedpass/legacy interfaces maintained",
-      "unresolved": "Full CI originals remain backend archival;6108 size over5100; performance and independent acceptance not granted"
-    },
-    {
-      "peer": "coordinator/frontend -> reviewer",
-      "input": "Exactc56/product3628/base9560 and explicitly public9red4fallback/13green+matrix evidence",
-      "output": "No new material blocker; own13passonce;19source/14freeze/9raw match; original38named test declarations retained",
-      "unresolved": "New isolated acceptance and root combinedCI/global gates remain; no fullsuite/build/browser/DB/CI rerun"
-    },
-    {
-      "peer": "reviewer -> coordinator/backend",
-      "input": "Exact42243 and admittedRFC; public DB/backend/FE sources only",
-      "output": "P2 HISTORY-EVIDENCE-01, sole real SQLiteHTTP200 wrong reason projection on evidencekindtrue versus1; original rows immutable",
-      "unresolved": "Backend must narrow fix under originalRFC, preserve original red and provide exactnewSHA/publicdelta; original42243 NOT_PASSED"
-    },
-    {
-      "peer": "backend/coordinator -> reviewer",
-      "input": "Exactbc5/productbcb0/designad6, published3580 originalredgreen and unchanged originalreviewcounterexample",
-      "output": "OriginalHTTPcounterexample1pass; HISTORY-EVIDENCE-01closedwithindelta; original42243NOT_PASSEDpreserved",
-      "unresolved": "Issue28 independent/global acceptance, fullCIoriginal archival/performance/size remain coordinator work"
-    }
+  "source_count_current_not_recomputed": true,
+  "source_reduction_candidates": {
+    "estimated_net_lines": [
+      208,
+      377
+    ],
+    "implemented": false,
+    "enough_to_cover_786": false,
+    "A": "180-280; high risk, after IAT fixes/diagnosis",
+    "B": "28-47; shared transaction-local scan_run creation",
+    "C": "20-35; preserve outbox phase semantics",
+    "D": "POC only, zero counted benefit",
+    "E": "0-15; existing seed context/add/pointer reuse not counted twice"
+  },
+  "stage": "PR21 dda3 BUNDLE-SOURCE-BINDING-01窄修限定关闭；实际包与整体不放行",
+  "unresolved_items": [
+    "source5980超上限880",
+    "正式400并发600秒三组仍未通过，本候选未测延迟收益",
+    "独立v2固定4c20 SUT；不得拿5dcb412开发CI覆盖其结论",
+    "后续性能/架构改动须新源另审"
   ],
-  "intermediate_capacity_design_review": {
-    "review_target_sha": "02ecdea9ced90cd46cbca898f123d6409f45ba80",
-    "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
-    "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
+  "unverified": [
+    "本岗未重跑14项/build/browser，开发原件不当独立验收",
+    "75没有重新覆盖率，不复用84092.81为精确新覆盖率",
+    "840原完整focus与其他引擎场景未运行边界保持",
+    "独立/正式性能/源码规模与整产品门禁仍未闭环",
+    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
+    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review.",
+    "No reviewer MySQL/full-suite/CI-artifact/full-performance/independent rerun;437 and coverage detail currently developer notification;6108 source count coordinator/backend-provided, not recounted.",
+    "Developer65 suite/build/browser outcomes were not rerun by reviewer; no private v3/independent evidence read; no CI triggered or global/independent pass.",
+    "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
+    "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
+  ],
+  "updated_at": "2026-10-23T21:07:41.894185+00:00",
+  "user_choice_update": {
+    "source": "总协调真实派工通知",
+    "quote": "采用推荐方案，继续开发",
+    "reported_freeze_commit": "ae60dc3",
+    "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "previous_capacity_design_review": {
-    "review_target_sha": "5fb1d7e0b180e754aba635487ebb0fa341e4f957",
-    "report": "reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md",
-    "review_outcome": "当时有条件技术准入、状态7具体待答；原root AI提案误述保留，已由02+U016解决"
-  },
-  "previous_phase_before_coursework_bundle": {
-    "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
-    "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
-    "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
-    "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
-    "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
-    "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json"
-  },
-  "coursework_bundle_review": {
-    "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
-    "builder_sha256": "a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b",
-    "finding": {
-      "id": "BUNDLE-SOURCE-BINDING-01",
-      "priority": 2,
-      "file": "scripts/packaging/build_coursework_review.py",
-      "line": 92,
-      "result": "Real declaredcommit but non-tree blob accepted when inner hashes self-consistent"
-    },
-    "single_memory_counterexample": {
-      "runs": 1,
-      "exit_code": 1,
-      "disk_ZIP_files": [],
-      "actual_review_bundle_created": false
-    },
-    "trust_precondition_separated": true,
-    "metadata": {
-      "code": "c0a5e89b2442da2a9149e1d37c2a424d52aff7c0",
-      "evidence": "6c81ee9960ef08dc35fe8146fcdd4ab5cabb39d4",
-      "dedicated_static_outcome": "NO_NEW_MATERIAL_BLOCKER_WITHIN_WRAPPER_DELTA",
-      "strict_count1_AST_unchanged": true,
-      "owner_artifacts_verified": 14,
-      "owner_test_result": "2red to4green,notreviewerrun",
-      "stage05_actual_cause": "UNKNOWN_PRESERVED"
-    },
-    "frozen14_unchanged": true,
-    "private_or_independent_material_read": false,
-    "actual_bundle_built": false,
-    "suites_proc_Docker_fault_load_CI_rerun": false,
-    "new_persistent_tmp_testfiles": [],
-    "later_dda3_fix_not_covered": true,
+  "warm_glass_review": {
+    "application_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+    "design_sha": "326f97151970ec9b4ce77114de2c2170d24a681d",
+    "evidence_sha": "63519c2b114bb4cb1c98dcc43e0f2358e65d0892",
+    "base_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "reviewer_tests_rerun": false,
+    "screenshots_viewed": 18,
+    "new_material_blockers": [],
+    "existing_issue": "initial string value true; future owner SHA needed",
     "github": {
-      "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
-      "review_id": 5635299006,
-      "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006",
-      "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
-      "state": "COMMENTED",
-      "body_exact_match": true,
-      "plugin_body_and_state_exact_match": true,
-      "full_specific_review_GET_exit_code": 0,
-      "readback_sha256": "08d81a49ee5f310ef77d45b00ec690024320a49904ad715a7b2addd011086e29",
-      "body_sha256": "9412f73b580de1e56196ce96401deea252ed81ab152c1a14d8815fa1d7080076",
-      "issue": {
-        "number": 38,
-        "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
-        "state": "open",
-        "body_exact_match": true,
-        "full_GET_exit_code": 0,
-        "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
-        "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
-      },
-      "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af",
-      "first_evidence_push_exit_code": 0,
-      "pr_head_at_publish": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
-      "target_is_ancestor_of_current_PR_head": true,
-      "later_dda3_fix_not_reviewed": true,
-      "no_status_approve_or_merge": true,
-      "CI_triggered": false,
-      "verified_at_utc": "2026-10-23T23:00:36.272348+00:00"
-    },
-    "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af"
+      "comment_state": "COMMENTED",
+      "status_mutations": [],
+      "no_success_status_published": true,
+      "approve": false,
+      "merged": false,
+      "review_id": 5632356314,
+      "review_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632356314",
+      "commit_id": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+      "exact_body_readback": true,
+      "evidence": "agents/reviewer/evidence/warm-glass/github-comment.json",
+      "audit_commit": "d8bba16a0e273e121d39ea9c3b58594521a39eac",
+      "push_exit": 0
+    }
   }
 }

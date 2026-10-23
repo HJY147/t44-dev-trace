@@ -281,3 +281,14 @@
 - 14freeze相符，本轮八段十项报告21-9d6...为A不通过、B所列限定静态未见新增阻断；整体不放行。GitHub Issue/精确COMMENT及GET、stage commit/push实记后补。未占未分配869，无新持久tmp测试脚本、无APPROVE/status/mainmerge。
 
 - 阶段证据9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af已push exit0，[skip ci]。Issue38真实创建并完整GET逐字body/open通过；PR21 COMMENT5635299006显式绑定完整9d6，插件逐字body/COMMENTED、gh特定review完整GET再核commit_id/body/state均通过exit0。发布时headf866且9d6祖先exit0，正文不覆盖后续dda3。回执github-comment.json，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006。没有关闭Issue/状态/APPROVE/CI/mainmerge/真实包，原失败先seal后释放，未来窄修另轮。
+
+
+## 2026-10-24 BUNDLE-SOURCE-BINDING-01窄修复审（dda3）
+
+- 实际ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1，隔离codex/review-coursework-source-fix直接从dda3，先scope后设计/源码，不改产品/测试/冻结/原9d6报告，不读私密包/Word/R002/独立原件，不扩编。
+- sourceSHA b767...、helperSHA540f...同准确提交/9d6helper；source新增14行，只有verify_source_archive/main AST变，main只新增自身repo guard，其余函数/常量/metadata/953/业务/前端/规格不变，14freeze匹配，先行add7363在dda3前。
+- 原3cbcc命令已归档并逐字节复制；同原declared9d6、同payload/manifest/成员/blob与原拒绝断言，只SUT/harness实际selector globals/output适配，变化清单公开，不声称新命令/ZIPtimestamp逐字相同。同反例只重放一次exit0，真实同目录selector未mock，仅Git ls-tree元数据，集合不符拒绝；blob/mode分支只静态核，不冒称已运行。
+- 精确Git完整正向集合+blob/mode再核payload，修复原自洽不等于Git绑定缺口；仅限定关闭P2。原9d6失败/3cbcc/Issue38/COMMENT5635299006不改，原私有父目录/自由文本/实际四稿QA和包未验范围保持。未构建实际包/磁盘ZIP，无metadata/4项/套件/CI/服务/浏览器/DB重跑或新持久tmp脚本。
+- PR21 liveheadf866/draft及dda3祖先exit0；八段十项报告21-dda3...，Issue38与显式dda3 COMMENT/完整GET、commit/push真实回执后补。无APPROVE/status/main/Issue自动关闭/整体pass。
+
+- 阶段证据d55335ee6d2e913c7b103a2bb2d3a8ac5b7ff7f2已push exit0，[skip ci]。Issue38评论6376506789完整GET body/Issue归属/显式dda3严格核过；PR21 COMMENT5635353850显式完整dda3，插件逐字body/COMMENTED及REST完整GET commit_id/body/state通过exit0，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635353850。回执github-comment.json；原9d6红/3cbcc保持，仅P2限定关闭，无实际包/Issue自动关闭/APPROVE/status/CI/mainmerge/整体pass。只补自身回执后释放。
