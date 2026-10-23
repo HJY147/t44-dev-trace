@@ -1,0 +1,41 @@
+Command: .venv/bin/python; openapi_spec_validator.validate(specs/contracts/openapi.json)
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/referencing/_core.py", line 276, in pointer
+    contents = contents[segment]  # type: ignore[reportUnknownArgumentType]
+               ~~~~~~~~^^^^^^^^^
+KeyError: 'components'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/validators.py", line 462, in _validate_reference
+    resolved = self._resolver.lookup(ref)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/referencing/_core.py", line 690, in lookup
+    return retrieved.value.pointer(pointer=fragment, resolver=resolver)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/referencing/_core.py", line 279, in pointer
+    raise error from lookup_error
+referencing.exceptions.PointerToNowhere: '/components/schemas/UtcTime' does not exist within {'$id': 'urn:t44:openapi:draft', 'type': 'object', 'additionalProperties': False, 'properties': {'planned_start': {'$ref': '#/components/schemas/UtcTime'}, 'planned_end': {'$ref': '#/components/schemas/UtcTime'}, 'estimated_hours': {'type': 'number', 'exclusiveMinimum': 0, 'maximum': 100000, 'multipleOf': 0.25}, 'buffer_hours': {'type': 'number', 'minimum': 0, 'maximum': 10000, 'multipleOf': 0.25}, 'delay_contingency': {'type': 'string', 'minLength': 1, 'maxLength': 2000}}, 'required': ['planned_start', 'planned_end', 'estimated_hours', 'buffer_hours', 'delay_contingency'], 'description': 'planned_end必须晚于planned_start；缓冲是计划说明，不自动改变临期/超期的planned_end口径。', 'examples': [{'planned_start': '2026-10-23T06:00:00Z', 'planned_end': '2026-10-25T06:00:00Z', 'estimated_hours': 8, 'buffer_hours': 2, 'delay_contingency': '外部依赖延期时经理重新排期并保留差异'}]}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 23, in <module>
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/validators.py", line 449, in validate
+    for error in self.iter_errors(*args, **kwargs):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/validators.py", line 383, in iter_errors
+    for error in errors:
+                 ^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/_keywords.py", line 296, in properties
+    yield from validator.descend(
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/_keywords.py", line 275, in ref
+    yield from validator._validate_reference(ref=ref, instance=instance)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/jsonschema/validators.py", line 464, in _validate_reference
+    raise exceptions._WrappedReferencingError(err) from err
+jsonschema.exceptions._WrappedReferencingError: PointerToNowhere: '/components/schemas/UtcTime' does not exist within {'$id': 'urn:t44:openapi:draft', 'type': 'object', 'additionalProperties': False, 'properties': {'planned_start': {'$ref': '#/components/schemas/UtcTime'}, 'planned_end': {'$ref': '#/components/schemas/UtcTime'}, 'estimated_hours': {'type': 'number', 'exclusiveMinimum': 0, 'maximum': 100000, 'multipleOf': 0.25}, 'buffer_hours': {'type': 'number', 'minimum': 0, 'maximum': 10000, 'multipleOf': 0.25}, 'delay_contingency': {'type': 'string', 'minLength': 1, 'maxLength': 2000}}, 'required': ['planned_start', 'planned_end', 'estimated_hours', 'buffer_hours', 'delay_contingency'], 'description': 'planned_end必须晚于planned_start；缓冲是计划说明，不自动改变临期/超期的planned_end口径。', 'examples': [{'planned_start': '2026-10-23T06:00:00Z', 'planned_end': '2026-10-25T06:00:00Z', 'estimated_hours': 8, 'buffer_hours': 2, 'delay_contingency': '外部依赖延期时经理重新排期并保留差异'}]}
