@@ -190,3 +190,5 @@
 - root分配895后执行3个无网络定向探针，1红2绿exit1。确认P2 SESSION-R1：旧表单卸载后迟到403触发refreshConflict→refresh(true)在sequence守卫前context()，新登录身份上下文先清空再用新token发3GET，503后project={}；新user/token未变。原红日志、probe和源hash保留，不扩称后端越权。其余生命周期疑点未复现不报缺陷。
 - 已即时送root，由root转frontend修复；八段十项报告reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md，专项不通过，整产品正式性能/独立/规模仍不放行。本岗设置cwd错误与路由夹具警告单列，不冒充产品失败。GitHub/commit/push实际回执后补。
 - 首次暂存diff检查因Markdown换行尾空格及可读log末尾空行退出2，未发生commit/push；仅规范可读格式并保留原gzip及原hash后继续。
+
+- 阶段证据自有commit7a544794de3c9dcfca09b0590c89000ab8bb624a已push exit0；GitHub插件PR26 COMMENT实际发布review5633150236，GraphQL逐字读回stateCOMMENTED；因其省略commit_id，用gh只读特定review GET补核完整3c160c5与正文严格一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236。回执github-comment.json；无APPROVE/status/merge。仅补本岗发布回执后释放槽，由root安排owner修复。
