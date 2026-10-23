@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T13:35:28.205166+00:00",
-  "current_stage": "capacity 1.1 exact source 4c20 full CI 394 pass; diagnostic 03 substages valid but controller exit1; offline evidence handoff",
+  "updated_at": "2026-10-23T13:51:18.677875+00:00",
+  "current_stage": "read-UoW design admitted by coordinator; design-only checkpoint before production implementation",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -780,6 +780,40 @@
       ],
       "summary": "agents/backend/profile-contract-03-summary.json",
       "raw_archive_sha256": "707ead0d4d6b6083ccafccbf7740b6468145554d966794eadb3a6b1a6c3c1a9d"
+    },
+    "optimization_design": {
+      "status": "reviewer limited static no-blocker and coordinator implementation admission received; this checkpoint design only",
+      "basis": "c83f627331acf43fb508fac7e16525a48c0389ab",
+      "rfc": "specs/changes/contract-validation-read-uow-rfc.md",
+      "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
+      "unapplied_patch": "agents/backend/drafts/contract-validation-read-uow.patch",
+      "receipt": "agents/backend/profile-read-uow-design-receipt.json",
+      "only_operation": "validateContractPayload",
+      "old_selects": [
+        8,
+        9,
+        9
+      ],
+      "predicted_selects": [
+        4,
+        5,
+        5
+      ],
+      "predicted_acquires": 1,
+      "production_delta_lines": 0,
+      "draft_net_lines": 7,
+      "new_read_locks": false,
+      "retracted_option": "Initially proposed session/member S locks; withdrawn after coordinator/reviewer clarified minimum in-flight semantics; not a discovered vulnerability",
+      "tests": "planned meaningful expansions of existing986/985 only; not written/run; no new930 script",
+      "risks": [
+        "no overall four-table atomic authorization snapshot; in-flight reads may finish",
+        "connection held during CPU-only validation; throughput benefit unproven",
+        "future identity.active management requires separate review"
+      ],
+      "write_paths": "unchanged session/idem/project/members/tasks locks, CAS/idem/audit/outbox; no write optimization",
+      "execution": "no production edits, HTTP/DB/service/load or pytest in design phase",
+      "next": "commit/push design and report SHA, then implement only this endpoint and real targeted regressions",
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169"
     }
   },
   "iat_repairs_v1": {

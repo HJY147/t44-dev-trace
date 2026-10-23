@@ -169,3 +169,7 @@ D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副
 工具245e56b、生产字节同CI394通过源4c20f32。13:18:49.973–13:19:57.093Z，t44_profile/18083/1worker完成baseline与timings各1/8/32并发10秒及3份profile；18289主样本另3sanity均有效，0业务/HTTP错误。baseline P95=5.444/33.143/149.208ms；timings=4.856/35.185/151.564ms。原38份metadata/JSONL/pstats/日志zip及SHA清单与限定分析见agents/backend/profile-contract-03-*。
 
 整体controller仍RuntimeError/exit1（最后断言错用bootstrap返回值），子阶段有效；三服务exit0、已释放窗口。两行工具赋值修复仅离线检查/Ruff/format/AST，不重跑负载，不能称修后控制器实际通过。cProfile inclusive合计execute35.007/rows27.158/authenticate24.111ms含等待/冷TLS；连接获取与SQL游标墙钟随并发增长，尚无纯poolwait/DB锁因果证据。未改生产pool/授权/guard/契约校验或正式性能条件，不宣称独立性能/规模通过。
+
+## 只读契约校验优化设计（待准入，非实现）
+
+RFC specs/changes/contract-validation-read-uow-rfc.md仅对validateContractPayload合并两个UoW，默认普通RC实时鉴权、验证后fresh-now复核到期，保留已在途读可完成/撤销提交后新请求拒绝的最低语义。原先S锁提议经根/审核讨论撤回；全部写路径、17其它只读及池/安全/Schema不动。SQL8/9/9→4/5/5与2acquire→1仅静态预期；无负载/收益结论。未应用patch净+7物理行，生产delta0，尚未编写/运行新回归。精确源行号、网络/事务边界和986/985撤销竞态测试计划在RFC；原controller exit1、正式性能失败及源码超限保持。
