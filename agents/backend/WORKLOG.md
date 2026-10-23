@@ -125,3 +125,9 @@
 - 完整基线＋DB e06修复＋本岗实际去重后，全量第二次314 passed、3本机Rabbit未配置skip、0失败，integration-full-second.log/xml；全t44行2391/2724=87.78%，含分支综合85.36%。CLI子进程未纳coverage，未通过缩小source/omit提高分母。仍不能把本机skip当CI真实MQ通过。
 - 实际去重：唯一TransitionContext替代无运行调用的重复Protocol字段；4个任务子记录分页共用同一处理；成功Schema每operation加载时解析一次；移除临时可选组件加载器并支持显式None DI；仅SQL已冻结默认值/可空值不重复初始化，未删状态/权限/证据/事务守卫。净删82行（按git物理diff，不冒充cloc最终值）。配置失败统一映射PersistenceUnavailable，实际无DB TestClient得503 AUDIT_UNAVAILABLE/null，避免拒绝审计再次抛业务异常逃逸。
 - Bandit首次把审计码表TOKEN_EXPIRED=3/TOKEN_REVOKED=4误报硬编码口令，原integration-reduction-bandit.log保留；改为同样显式稳定DB码→字符串表，反向按显式值构造，无抑制/降低规则，最终退出0。
+- 18080安全更新至b49a5de，核对记录PID的argv确为本岗uvicorn/18080才SIGTERM，现PID14985；独立18081未触碰。所有凭据仅ignored0600原文件与进程env，不放argv/公开输出。
+- 实际TCP/MySQL+CLI故障链通过：项目10/任务15/event121，真实scheduler进程创建升级；实际Pika连关闭端口失败，消息CLI自动fallback，HTTP owner读/处理，task.version未变化、count1、晚到consume创建0；integration-live-chain.json。仅证明真实故障降级，未伪称本机Rabbit成功。
+- 实际CLI init-user/Argon2、两会话全撤销、单会话仅撤本token、撤销后旧同键重放401TOKEN_REVOKED、错库migrate拒绝都通过，integration-live-revocation.json；合成用户独立前缀，不清dev或演示数据。
+- 在不创建/编辑测试文件的前提下，用内存加载既有本岗旅程、私密演示账号和真实TCP API完成38/38操作成功、53请求逐响应Schema验证，integration-38-http.json；内部升级HTTP202为已持久事件重放，首次新建由上项scanner真实进程证明。不是独立验收/性能/正式MQ成功链。
+- 已merge根测试机械迁移5e07887，当前运行命令为`PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend ...`；实际collect-only 317 tests成功，integration-tmp-collection.log。保留先前真实运行的旧命令与原日志，不重写历史、不提前重复wholepass。未新增测试文件，不占970号；本岗测试现为tmp/backend/contracts/{985_mysql_http.py,986_http.py,987_faults.py}及tmp/backend/backend/domain/994_transitions.py，fixture保留conftest.py。
+- 本轮38HTTP/CLI实证checkpoint为19750a9920140f206452eb061f49f9dba0aace94，Issue阶段评论6361675371；PRedits仍draft，无self-approve。按根安排本阶段可释放槽位，下一阶段CI/Rabbit、最终规模与独立正式缺陷待根继续派工；不接触私有测试。

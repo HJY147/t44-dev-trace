@@ -1,0 +1,328 @@
+{
+  "snapshot": "b49a5de",
+  "transport": "real TCP API18080 + MySQL8.4.11",
+  "declared_operations": 38,
+  "successful_operations": 38,
+  "requests": [
+    {
+      "operation": "login",
+      "status": 200,
+      "code": null,
+      "request_id": "9fb2b904-985a-491b-94b9-3685d85dab47"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "code": null,
+      "request_id": "867f6fb9-1f2d-4991-a553-564777f0ef67"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "code": null,
+      "request_id": "f1a27409-f56c-4132-98a4-8baf18f174dd"
+    },
+    {
+      "operation": "createProject",
+      "status": 201,
+      "code": null,
+      "request_id": "a3963fb4-1e55-4d98-98a6-98afaeb81c1d"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "code": null,
+      "request_id": "9b6f7d30-8dad-4c68-850d-1886a2d136bb"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "code": null,
+      "request_id": "ba17e0ff-ad81-49bf-9c87-782dd4db419c"
+    },
+    {
+      "operation": "createIteration",
+      "status": 201,
+      "code": null,
+      "request_id": "054a3a98-bba0-4e9a-8d70-a398453e742f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "code": null,
+      "request_id": "fc1301f1-ed20-45e8-a3ae-71522678c90d"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "request_id": "74a5ec82-ed7f-4832-b1cf-683c30aeeea4"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "029efefe-2b15-47c6-b8fd-953992bf32a7"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "545dbea2-e708-4aed-a92b-2eb1c4e9ab30"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "8d8cfd0a-70b1-4715-aba6-32f5ca0afb76"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "be4c99fc-3da0-429c-81c1-11d854c51be7"
+    },
+    {
+      "operation": "createTaskReview",
+      "status": 201,
+      "code": null,
+      "request_id": "2a52860a-fc1f-4308-9a27-70ae6958ce24"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "83df122c-7f54-483c-9a7b-046a22379c53"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "status": 201,
+      "code": null,
+      "request_id": "01ddfecf-aee9-47af-ad15-9615b68e9a8b"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "request_id": "e0d5f84c-6533-4d4c-b01f-152dd160decb"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "status": 200,
+      "code": null,
+      "request_id": "a72a8b7a-dd39-4b2c-91fd-f9ef20e873b0"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "e32073ce-e007-4b47-8b44-60dc4d55bab5"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "1f767fe0-c463-4b15-b709-229b122bd16a"
+    },
+    {
+      "operation": "transitionTask",
+      "status": 200,
+      "code": null,
+      "request_id": "f304ce9e-2eb6-4b68-b3d6-a745c710cb16"
+    },
+    {
+      "operation": "getMe",
+      "status": 200,
+      "code": null,
+      "request_id": "81417b59-9f3a-4872-a5b6-6a36c9cdd2d3"
+    },
+    {
+      "operation": "getDictionaries",
+      "status": 200,
+      "code": null,
+      "request_id": "56b9be0a-8892-4638-889f-db0089eeccfc"
+    },
+    {
+      "operation": "listProjects",
+      "status": 200,
+      "code": null,
+      "request_id": "94394669-788c-4e0c-b8da-0154414a655a"
+    },
+    {
+      "operation": "getProject",
+      "status": 200,
+      "code": null,
+      "request_id": "7a753e67-008d-4ff2-b262-d9e14e8dfccb"
+    },
+    {
+      "operation": "listProjectMembers",
+      "status": 200,
+      "code": null,
+      "request_id": "db83995d-57c5-4310-9139-0475ce94b437"
+    },
+    {
+      "operation": "listIterations",
+      "status": 200,
+      "code": null,
+      "request_id": "1cc239c4-41ce-4a2a-bfcd-1f8c43df20ec"
+    },
+    {
+      "operation": "listTasks",
+      "status": 200,
+      "code": null,
+      "request_id": "2bdc41b9-9d57-4879-bde7-8cc12536685e"
+    },
+    {
+      "operation": "getTask",
+      "status": 200,
+      "code": null,
+      "request_id": "5ffd9d98-67db-4950-a10f-92467c39e51d"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "status": 200,
+      "code": null,
+      "request_id": "c8c43fb9-ea8b-436d-ab1a-8d2dd77ae646"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "status": 200,
+      "code": null,
+      "request_id": "b3ad0e67-94d6-48d3-ae7d-196a0644206c"
+    },
+    {
+      "operation": "listTaskReviews",
+      "status": 200,
+      "code": null,
+      "request_id": "9c776b78-4b3d-497b-9c96-3d86c2945312"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "status": 200,
+      "code": null,
+      "request_id": "1c6583e6-309e-4b74-9ea0-c919257b8f3b"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "status": 200,
+      "code": null,
+      "request_id": "243411de-fd26-4b74-82d9-37d9639e1a97"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "status": 200,
+      "code": null,
+      "request_id": "966ae9e1-9a69-4d24-887c-1100ff9b2d02"
+    },
+    {
+      "operation": "getEscalationRules",
+      "status": 200,
+      "code": null,
+      "request_id": "42a4793c-e718-4012-b540-b96214312957"
+    },
+    {
+      "operation": "listEscalations",
+      "status": 200,
+      "code": null,
+      "request_id": "78b35cea-f27d-4119-9186-fa8616646dc4"
+    },
+    {
+      "operation": "changeIteration",
+      "status": 200,
+      "code": null,
+      "request_id": "b08dae66-7d98-4c6c-8715-3a62a73de553"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "status": 200,
+      "code": null,
+      "request_id": "58eaacee-5ff6-4bde-ac5f-23eda4c9278b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "code": null,
+      "request_id": "ddd35837-8cad-4560-b820-30a4ba3e8166"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "status": 200,
+      "code": null,
+      "request_id": "8358ff48-5266-4b9b-970b-963e5a2ea476"
+    },
+    {
+      "operation": "addTaskDependency",
+      "status": 201,
+      "code": null,
+      "request_id": "bb5b93a9-d532-4b46-bc5f-95fe1a3b0f7c"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "status": 200,
+      "code": null,
+      "request_id": "d59f2084-3993-4339-a13c-4b0447ab5614"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "code": null,
+      "request_id": "c3762623-faae-45ee-93e6-d6a4ccd713ab"
+    },
+    {
+      "operation": "changeProjectMember",
+      "status": 200,
+      "code": null,
+      "request_id": "c35d676e-6b4a-4f54-9383-96cba0245d12"
+    },
+    {
+      "operation": "removeProjectMember",
+      "status": 200,
+      "code": null,
+      "request_id": "cdacd148-8883-4511-ab1d-e36f66b2fd31"
+    },
+    {
+      "operation": "validateContractPayload",
+      "status": 200,
+      "code": null,
+      "request_id": "d0a2fe89-283b-485f-a06a-f98e4846245b"
+    },
+    {
+      "operation": "getTask",
+      "status": 200,
+      "code": null,
+      "request_id": "1e58ed38-dd2d-41c5-a47d-9b5834878fdf"
+    },
+    {
+      "operation": "createEscalation",
+      "status": 202,
+      "code": null,
+      "request_id": "5a320f90-348c-45aa-aec6-77ed7859faea"
+    },
+    {
+      "operation": "listMyNotifications",
+      "status": 200,
+      "code": null,
+      "request_id": "b1240faf-a80d-40e7-abb9-2c63efd5ad74"
+    },
+    {
+      "operation": "markNotificationRead",
+      "status": 200,
+      "code": null,
+      "request_id": "3430f793-493a-414e-80b3-9f634d3b736b"
+    },
+    {
+      "operation": "handleNotification",
+      "status": 200,
+      "code": null,
+      "request_id": "d84956d3-78d4-4f7c-9a56-3715b588855b"
+    },
+    {
+      "operation": "logout",
+      "status": 200,
+      "code": null,
+      "request_id": "81082782-faf6-4806-a83f-2fad5368db53"
+    }
+  ],
+  "credentials": "not captured",
+  "scope": "developer self-check, not independent acceptance; internal escalation replayed existing durable event; Rabbit success not claimed"
+}
