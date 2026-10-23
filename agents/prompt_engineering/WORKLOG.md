@@ -53,3 +53,20 @@
 - `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-stage-comment.md`：成功发表评论 https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077。
 - 已显式 `git add --` 本岗交接列明的 15 个文件；`git diff --cached --name-only` 与清单完全一致，`git diff --cached --check` 通过。未加入用户原文、共享 ledger 或其他岗文件。
 - 本条记录随 M0 提交归档；完整提交 SHA 由提交返回后交文档岗记录，不在提交内预填自身 SHA。未授权 push、checkout、merge 或审核通过。
+
+## M3 真实 AI 使用留痕 checkpoint
+
+- 实际派工 ROLE-prompt_engineering-M3-EVIDENCE-v1；已读最新 AGENTS/本岗 TASK，性能窗口仅做文档、Git 和远端只读取证。
+- `git worktree add .agent-worktrees/prompt-engineering-m3-evidence -b codex/prompt-engineering-m3-evidence 8fb74cdf893d83413338f966156274fe58caf22b`：成功；不操作根索引。
+- 向 documentation/frontend/reviewer/backend 实际 send_message 索取已公开 prompt→产物→问题→修正；仅 backend 本轮已回，其他暂未收到，不使用 followup 唤醒所有岗。
+- 已向文档岗回答 M2 实际问取：给真实需求→设计链、人/AI边界、未达标缺口及本人写报告限制，出处见 M3-source-inquiries。
+- 读取 U010–U014、公开 CONTRACT-v1/v2、FE INTEGRATION 续派、精确 e01 审核/M2/M3 资料；未联系独立测试、未读未发布黑盒/私有资料。
+- 基线未包含 REFACTOR-v1，首次合并读取提示缺文件；后据 backend 实回在已发布64b4 Git对象读取。D004猜测文件名未找到，经rg确认正式D004-field-errors-adopted；不把缺文件写成验证通过。
+- `git ls-remote --heads origin codex/integration` 确认8fb74；`gh issue/pr view`、`gh api .../status` 只读公开资料，精确e01 failure仍在。
+- `gh api .../actions/runs?head_sha=...` 与 `gh run view ... --log` 回读FE b485/BE64b4指定原件，两条run四job success、原日志317通过；不是本岗运行测试。
+- 只读解析backend公开3ee证据提交JUnit，确认317/0失败/0错误/0跳过；源64b与证据SHA分开。
+- 公开CI副本省去凭据赋值/连接信息相关行，保留远端原件来源、原始hash及脱敏副本hash；本次实际派工仅将具体学生姓名替换[学生本人]并明确非逐字完整原文。
+- 建立30源manifest、真实族/9条AI映射/人工12、3、5缺口；单一族六版未核实。未把AI行为或事后M3重述算人工/实际演进。
+- 文档JSON/引用、30公开来源、公开JUnit317/0/0/0、脱敏副本及 `git diff --check` 静态核对通过；不是产品测试。
+- `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m3-stage-comment.md` 成功：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450。
+- 本次仅显式暂存本岗13文件，在独立分支阶段commit/push；实际提交结果由返回SHA及Issue更新核对，提交内不预填自身SHA。
