@@ -35,4 +35,4 @@
 - 文档校验、11冻结文件未改、M0/M1/M2原始记录未改及隐私结果见M3-contract-validation.json。
 - 正式性能/独立验收最终结论不在本轮读取范围；不联系测试或读取未发布黑盒/内部材料。
 - 学生最终研究文字/课程建议、真实人工记录、最终Word逐页QA继续待办。
-- 阶段commit/push/草稿PR及GitHub对接记录按真实发布后补；不merge main/发审核success。
+- f7afd15显式15本岗文件已push，草稿PR23已attach，真实评论6363196975已读回；最终head由Git确定；不merge main/发审核success。

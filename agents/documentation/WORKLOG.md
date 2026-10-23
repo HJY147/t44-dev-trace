@@ -175,3 +175,10 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 首轮文档静态校验误把root M3已更新的活动M2-traceability.md纳入“原始历史字节不变”，在该文件断言失败；纠正为M0/M1/M2原始收件/来源/校验记录，未修改活动追踪文件来迎合检查。复核通过，具体计数见M3-contract-validation.json。此为本岗检查范围错误，不计产品失败/人工识别。
 
 - 阶段静态核对通过：24文件/172真实签名、49精确函数锚点、38操作、135链接、11冻结文件、15原历史文件、8图源/产物hash；隐私检查无具体封面值，产品执行0。
+
+## M3-CONTRACTS实际发布
+
+- 实现f7afd158011615a70d3762a2bb953210145b3abc，显式15本岗文件，已push codex/function-contracts。
+- GitHub工具创建草稿PR23 https://github.com/HJY147/t44-dev-trace/pull/23（base codex/integration），初始head匹配并attach。PR初始17文件另含上游root5b3bf30的R001两来源，不是本岗改写/暂存来源。
+- 实际阶段评论 https://github.com/HJY147/t44-dev-trace/pull/23#issuecomment-6363196975 ，工具返回ID后gh api核对URL/正文。
+- 本笔仅追加实际发布记录，未运行产品/渲染，最后head由Git元数据确定；完成后释放槽位。
