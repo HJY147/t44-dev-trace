@@ -212,3 +212,23 @@
 - 实发prompt原文及后续消息归档prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md；操作者为AI，不是学生改码/亲写研究。GitHub阶段沟通与最终SHA另随本轮收尾回执，不设置review成功。
 - 首次收尾git diff --check退出2，只报告两个原始.patch文件的空上下文行（标准unified diff以单个空格表示），没有执行后续stage/commit/push。保留原补丁逐字内容；后续仅对这两个原件路径做资料级空白检查排除，其他本岗文档继续完整diff检查；不是产品检查/门禁放宽。
 - 本轮设计提交6aeb7e67d90767b7408967a6782e13c569e9d423已push codex/database-scan-dedup；通过GitHub connector逐条真实发表Issue4/6，再用精确comment API GET读回，正文与本地逐字相同；回执github-post-receipts.json/github-readback.json。链接：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884, https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440。未另开实施PR或设置审核通过。
+
+
+## ROLE-database-PLAN-HISTORY-v1：固定有限批读设计复核
+- 从指定02c4b2a创建独立codex/database-plan-history/worktree，根索引未动；只读AGENTS/本岗TASK/协作规范/真实schema、rows/codecs/UoW、准入记录和已集成RFC，不读独立私密资料、不联系tester。
+- 真实表为12列，uq_schedule_task_version(task_id,to_version)及项目复合FK/target CHECK已有；确认完整select复用现JSON/UTC解码，新增固定tuple-IN入口，不改通用rows/DDL/API/14冻结件/历史audit。精确输入/输出/错误/事务/行数/SQL次数契约见plan-history/design.md。
+- 先设计阶段产品净改0。安全输入与结果范围/重复检查净cloc预估由18..30修正35..50；按原source_count.py+校验hash的cloc2.10，对02c4b2a实测应用6124/within_range=false（baseline-cloc.json），口头6108与本次归档计数不同已报告root，不改口径凑数。
+- GitHub connector实际读取Issue4/28当前公开正文，未追读其私密案例/SQL/截图；稍后阶段评论与精确API读回另存回执。实际派工完整归档prompts/ROLE-database-PLAN-HISTORY-v1.md，操作者AI不是学生亲改。
+- 设计先commit后实施；将仅复用993/988新增目标旧源红、SQLite/真MySQL有限自有t44_test fixture，完整CI/精确源码审核由root调度。此设计checkpoint无pytest/MySQL/HTTP/覆盖率/性能通过声明。
+
+- 设计checkpoint e9a769a已push（skip ci）。随后复用993增加目标先实跑旧源：首命令误用根.venv缺pytest（red-environment-run1.log），改用本岗既有database/.venv后真实AttributeError旧源红（red-old-source.log），没有把环境失败算功能红。
+- 实现固定task_schedule_changes，保持原通用16方法及全部原测试函数逐字（unchanged-boundaries.json）。空不取session；输入最多100先验后去重；参数化精确tuple-IN；固定project/iteration IS NULL/排序；完整codec行，不limit/截断；结构/范围/重复或硬bound违约_failed+PersistenceUnavailable。
+- 新SQLite/mock目标48通过（sqlite-run1.log），最终原993整文件66通过（含同48，foundation-regression.log），没有删改旧断言。真MySQL首轮自有fixture漏project_members触发任务owner FK失败（mysql-run1.log），仅补自有成员关系后1通过（mysql-run2.log），产品未因夹具失败改动。
+- 另加真实服务器故障目标：仅本测试进程替换registry为不存在的owner表，真实MySQL SELECT失败转脱敏PersistenceUnavailable/rollback-only，1通过（mysql-server-error.log）。为实际SQL账本新增可选环境证据出口后，仅重跑同两个新增MySQL目标2通过（mysql-evidence-run.log/JUnit）；不把48+66+1+1+2累加成新独立例。
+- mysql-sql-ledger.json保留真实空0/100pairs1SQL100完整行/重复1/101拒绝0/跨项目pair1SQL0行/合法最大输入1SQL0行；含实际参数化语句与整数绑定。104条自有schedule夹具含2交叉干扰+另项目+iteration，长2000字/JSON/微秒UTC完整、查询前后相同，事务全回滚且自有username回查不存在；不清表、不改别人数据、不停库、不跑整套/负载。
+- Ruff首次新测试import I001保留，排序修复后最终限定3文件通过；rows.py定向Bandit0。14冻结件摘要与基线字节全同；16旧gateway/17旧foundation/17旧mysql函数源码字节相同；未改DDL/API/后端matcher/前端。
+- 最终rows.py固定cloc237→299/实际净+62，超过设计35..50和RFC18..30，已如实报root并保留各估算，不压行/弱守卫。基线6124、当前应用投影6186，提交后将同原脚本实测；源码规模仍不达标。root回复明确要求保留预算上修/夹具原失败、固定接口与重叠计数/SQL账本/14冻结和旧方法字节/Issue实际读回，不执行完整CI/负载。
+
+- 产品精确checkpoint 3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a已push，skip ci；root已收SHA待小审固定方法。随后原source_count.py/cloc2.10对该提交实测应用6186/within_range=false/--require-range退出1，final-committed-cloc.json；相对基线6124真实+62，不将归档成功说成规模通过。
+- 已通过GitHub connector在Issue4/28实际发完整阶段交接，再用各comments/:id精确GET读回，两个返回body与实际本地正文逐字相同；github-readback.json保留endpoint/id/body/时间/作者/equality。链接Issue4#issuecomment-6373901751、Issue28#issuecomment-6373902163。没有关Issue、开完整CI、设review成功或将本岗自测写成独立验收。
+- 当前收尾仅证据/记录，产品、两自测源码与3b7bc0c完全相同；本岗作用域完成并释放槽，后续精确review/后端接入/组合CI由root调度。

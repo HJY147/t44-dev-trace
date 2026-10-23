@@ -11,12 +11,14 @@ from uuid import uuid4
 
 import pytest
 from argon2 import PasswordHasher
-from sqlalchemy import text
+from sqlalchemy import MetaData, event, text
 from sqlalchemy.engine import make_url
 from t44.persistence import (
     MySQLSettings,
     PersistenceIntegrityError,
+    PersistenceUnavailable,
     SqlAlchemyUnitOfWorkFactory,
+    TransactionStateError,
     create_mysql_engine,
 )
 from t44.persistence.accounts import PasswordHashRejected, initialize_user
@@ -25,6 +27,7 @@ from t44.persistence.delivery import OutboxStore
 from t44.persistence.errors import StatementRejected
 from t44.persistence.migrations import migrate
 from t44.persistence.scans import ScanStore
+from t44.persistence.schema import TABLES
 
 pytestmark = pytest.mark.integration
 
@@ -120,6 +123,204 @@ def fixture(mysql):
         )
         assert isinstance(tid, int) and g.get("tasks", tid)["id"] == tid
     return dict(user=uid, project=pid, iteration=iid, task=tid)
+
+
+def test_real_task_schedule_changes_exact_pairs_one_bounded_read(mysql):
+    engine, factory = mysql
+    suffix = uuid4().hex[:12]
+    now = datetime(2026, 10, 23, 20, 0, 1, 123456, tzinfo=UTC)
+    plan = {"planned_start": "2026-10-23T20:00:00.000000Z", "nested": {"中文": [1, 2]}}
+    with factory() as uow:
+        gateway = uow.gateway
+        try:
+            uid = gateway.insert(
+                "users",
+                dict(
+                    username=f"schedule-{suffix}",
+                    display_name="数据库自有合成夹具",
+                    password_hash=PasswordHasher().hash(uuid4().hex),
+                    created_at=now,
+                    updated_at=now,
+                ),
+            )
+            projects, iterations = [], []
+            for index in range(2):
+                pid = gateway.insert(
+                    "projects",
+                    dict(
+                        name=f"schedule-{suffix}-{index}",
+                        description="有限合成夹具，将回滚",
+                        created_by=uid,
+                        created_at=now,
+                        updated_at=now,
+                    ),
+                )
+                projects.append(pid)
+                gateway.insert(
+                    "project_members",
+                    dict(
+                        project_id=pid,
+                        user_id=uid,
+                        roles_mask=7,
+                        created_at=now,
+                        updated_at=now,
+                    ),
+                )
+                iterations.append(
+                    gateway.insert(
+                        "iterations",
+                        dict(
+                            project_id=pid,
+                            name="synthetic",
+                            planned_start=now,
+                            planned_end=now + timedelta(days=3),
+                            capacity=[{"user_id": uid, "quarters": 400}],
+                            buffer_quarters=0,
+                            delay_contingency="合成预案",
+                            created_at=now,
+                            updated_at=now,
+                        ),
+                    )
+                )
+            tasks = []
+            for index in (0, 0, 1):
+                tasks.append(
+                    gateway.insert(
+                        "tasks",
+                        dict(
+                            project_id=projects[index],
+                            iteration_id=iterations[index],
+                            title="synthetic",
+                            description="有限夹具",
+                            owner_id=uid,
+                            planned_start=now,
+                            planned_end=now + timedelta(days=2),
+                            estimated_quarters=4,
+                            buffer_quarters=0,
+                            delay_contingency="合成预案",
+                            created_at=now,
+                            updated_at=now,
+                        ),
+                    )
+                )
+            wanted = tuple((tasks[0], v) for v in range(2, 101)) + ((tasks[1], 101),)
+            rows = []
+            for task, version in (*wanted, (tasks[0], 101), (tasks[1], 2), (tasks[2], 2)):
+                row = dict(
+                    project_id=projects[1] if task == tasks[2] else projects[0],
+                    task_id=task,
+                    iteration_id=None,
+                    from_version=version - 1,
+                    to_version=version,
+                    before_plan=plan,
+                    after_plan={**plan, "after": True},
+                    reason="原因\n" + "中" * 1997,
+                    evidence=[{"url": "https://example.test/evidence"}],
+                    changed_by=uid,
+                    changed_at=now,
+                )
+                row["id"] = gateway.insert("schedule_changes", row)
+                rows.append(row)
+            gateway.insert(
+                "schedule_changes",
+                {
+                    **rows[0],
+                    "id": None,
+                    "task_id": None,
+                    "iteration_id": iterations[0],
+                },
+            )
+            original = gateway.rows("schedule_changes", {"project_id": projects})
+            commands = []
+            ledger = []
+
+            def record_case(name, input_count, result_count):
+                ledger.append(
+                    {
+                        "case": name,
+                        "input_pairs": input_count,
+                        "returned_rows": result_count,
+                        "execute_count": len(commands),
+                        "statements": [
+                            {"sql": sql, "bound_parameters": params} for sql, params in commands
+                        ],
+                    }
+                )
+
+            def capture(conn, cursor, statement, parameters, context, executemany):
+                commands.append((statement, parameters))
+
+            event.listen(engine, "before_cursor_execute", capture)
+            try:
+                assert gateway.task_schedule_changes(projects[0], ()) == []
+                assert commands == []
+                record_case("empty", 0, 0)
+                result = gateway.task_schedule_changes(projects[0], tuple(reversed(wanted)))
+                assert result == rows[:100]
+                assert len(result) == 100 and len(commands) == 1
+                record_case("100_exact_with_cross_interference", 100, 100)
+                sql, parameters = commands[0]
+                assert "LIMIT" not in sql and "FOR UPDATE" not in sql
+                assert len(parameters) == 201 and len(result[0]["reason"]) == 2000
+                assert result[0]["changed_at"] == now
+                commands.clear()
+                assert (
+                    gateway.task_schedule_changes(projects[0], (wanted[0], wanted[0])) == rows[:1]
+                )
+                assert len(commands) == 1
+                record_case("duplicate_input", 2, 1)
+                commands.clear()
+                with pytest.raises(StatementRejected):
+                    gateway.task_schedule_changes(projects[0], wanted + (wanted[0],))
+                assert commands == []
+                record_case("101_rejected", 101, None)
+                assert gateway.task_schedule_changes(projects[0], ((tasks[2], 2),)) == []
+                assert len(commands) == 1
+                record_case("other_project_pair", 1, 0)
+                commands.clear()
+                assert gateway.task_schedule_changes(4294967295, ((4294967295, 2147483647),)) == []
+                assert len(commands) == 1
+                record_case("valid_upper_bounds", 1, 0)
+            finally:
+                event.remove(engine, "before_cursor_execute", capture)
+            assert gateway.rows("schedule_changes", {"project_id": projects}) == original
+        finally:
+            uow.rollback()  # Only this test's own user/projects/tasks/history; no shared cleanup.
+    with factory() as check:
+        assert check.gateway.rows("users", {"username": f"schedule-{suffix}"}) == []
+    if output := os.environ.get("T44_PLAN_HISTORY_EVIDENCE"):
+        Path(output).write_text(
+            json.dumps(
+                {
+                    "scope": "real MySQL owner selftest in t44_test; own fixture fully rolled back",
+                    "fixture": {"projects": projects, "tasks": tasks, "schedule_rows": 104},
+                    "ledger": ledger,
+                    "original_schedule_rows_unchanged": True,
+                    "own_fixture_rolled_back_and_user_absent": True,
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n"
+        )
+
+
+def test_real_task_schedule_changes_server_error_is_unavailable(mysql, monkeypatch):
+    _, factory = mysql
+    import t44.persistence.rows as rows_module
+
+    missing = "owner_missing_schedule_" + uuid4().hex[:12]
+    # A local registry substitution makes this fixed query hit a nonexistent own test table.
+    table = TABLES["schedule_changes"].to_metadata(MetaData(), name=missing)
+    monkeypatch.setattr(rows_module, "TABLES", {"schedule_changes": table})
+    with factory() as uow:
+        with pytest.raises(PersistenceUnavailable) as error:
+            uow.gateway.task_schedule_changes(1, ((1, 2),))
+        assert missing not in str(error.value)
+        with pytest.raises(TransactionStateError):
+            uow.gateway.task_schedule_changes(1, ((1, 2),))
+        with pytest.raises(TransactionStateError):
+            uow.commit()
 
 
 def test_real_repeat_migration_utc_modes_and_core_shapes(mysql):

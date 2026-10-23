@@ -16,6 +16,7 @@ with factory() as uow:
 - rows(table, where=None, *, columns=None, order_by=('id',), limit=None, offset=0, lock=None, skip_locked=False, predicates=())；get(table,id,*,lock=None)。rows/get返回物化dict，查询结果在事务内关闭。排序字段前缀-代表降序，锁share/update。
 - insert(table,values)返回本事务生成整数ID；update(table,where,values,*,predicates=())（别名update_where）及delete(table,where)返回影响行数；count(table,where=None,*,predicates=())返回整数。
 - Pred(column,op,value=None)支持eq/ne/lt/le/gt/ge/in/is_null；ne(None)为IS NOT NULL，空IN为[]/0。savepoint()允许预期唯一冲突回滚局部操作；其他未恢复执行失败使UoW只可rollback。
+- task_schedule_changes(project_id:int,pairs:tuple[tuple[int,int],...])->list[dict]：固定schedule_changes完整解码行，project_id与iteration_id IS NULL及精确(task_id,to_version) tuple-IN，按task_id/to_version/id排序；空0execute、非空1execute，无LIMIT。输入tuple最多100项（去重前），ID为严格int且1..4294967295、Version为严格int且1..2147483647，拒bool/字符串等StatementRejected。唯一pair键支持最多distinct pair数行；完整列/ID与项目pair范围/iteration/重复pair或id/硬上界违约PersistenceUnavailable且rollback-only。调用方在已授权页的原UoW使用，不另连/锁/提交；业务理由与快照匹配由后端负责，原audit不变。精确契约见agents/database/plan-history/design.md。
 - PersistenceIntegrityError.kind为duplicate/foreign_key/check/other，constraint仅从已知约束名匹配；不传出SQL/值/驱动原异常。MySQL3819在PyMySQL属于OperationalError，亦正确分类check。
 
 锁序由服务遵守：session FOR SHARE → idem FOR UPDATE → 必要project FOR UPDATE → members按user_id → tasks按id → children。依赖变更必须先锁project再查环，普通路径不得反向追加project锁。成功业务+audit+outbox+幂等快照在同一UoW。拒绝先rollback并close主UoW，才新UoW保存拒绝审计及错误快照；审计失败不能返回正常业务拒绝。权限、状态机、依赖环、同key摘要、升级首次CAS及通知版本语义由backend编排，不把裸gateway调用声称为业务原子性。

@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from contextlib import contextmanager
 from dataclasses import dataclass
 
-from sqlalchemy import DateTime, bindparam, delete, func, insert, select, text, update
+from sqlalchemy import DateTime, bindparam, delete, func, insert, select, text, tuple_, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.sql import ClauseElement
 
@@ -191,6 +191,74 @@ class RowsGateway:
     def get(self, table, id, *, lock=None):
         rows = self.rows(table, {"id": id}, limit=1, lock=lock)
         return rows[0] if rows else None
+
+    def task_schedule_changes(
+        self, project_id: int, pairs: tuple[tuple[int, int], ...]
+    ) -> list[dict]:
+        """Read exact task/version pairs within one already authorized project page."""
+
+        def integer(value, maximum):
+            return type(value) is int and 1 <= value <= maximum
+
+        if not integer(project_id, 4294967295) or type(pairs) is not tuple or len(pairs) > 100:
+            raise StatementRejected("Schedule history requires a project and at most 100 pairs")
+        if any(
+            type(pair) is not tuple
+            or len(pair) != 2
+            or not integer(pair[0], 4294967295)
+            or not integer(pair[1], 2147483647)
+            for pair in pairs
+        ):
+            raise StatementRejected(
+                "Schedule history pairs require bounded integer IDs and versions"
+            )
+        wanted = tuple(dict.fromkeys(pairs))
+        if not wanted:
+            return []
+        table = TABLES["schedule_changes"]
+        result = self._execute(
+            select(table)
+            .where(
+                table.c.project_id == project_id,
+                table.c.iteration_id.is_(None),
+                tuple_(table.c.task_id, table.c.to_version).in_(wanted),
+            )
+            .order_by(table.c.task_id, table.c.to_version, table.c.id),
+            "rows",
+        )
+
+        def unavailable():
+            self._failed()
+            raise PersistenceUnavailable(
+                "Schedule history result violated its bounded read contract"
+            )
+
+        if type(result) is not list or len(result) > len(wanted):
+            unavailable()
+        seen, ids = set(), set()
+        for row in result:
+            if (
+                not isinstance(row, dict)
+                or set(row) != set(table.c.keys())
+                or any(
+                    not integer(row[key], maximum)
+                    for key, maximum in (
+                        ("id", 4294967295),
+                        ("project_id", 4294967295),
+                        ("task_id", 4294967295),
+                        ("to_version", 2147483647),
+                    )
+                )
+                or row["project_id"] != project_id
+                or row["iteration_id"] is not None
+            ):
+                unavailable()
+            pair = row["task_id"], row["to_version"]
+            if pair not in wanted or pair in seen or row["id"] in ids:
+                unavailable()
+            seen.add(pair)
+            ids.add(row["id"])
+        return result
 
     def confirmed_missing(self, *, confirmed_before, limit):
         """Fixed MySQL query: complete old events must not consume the recovery limit."""

@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "SCAN-RUN-DEDUP-RFC-v1：联合候选314→315，否决实施",
-  "implementation_status": "仅设计/未应用补丁及真实逐文件cloc预算；总协调明确不批准实施。生产改动0、实际节省0，未运行产品验证。",
+  "stage": "PLAN-HISTORY-v1：固定有限历史读取实现与数据库owner自测",
+  "implementation_status": "固定方法已实现；旧源真实红，新目标48/993全66（重叠）、MySQL两个新增目标通过；精确新源码review/root组合CI与后端接入待调度，不称Issue28全局关闭。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -504,6 +504,46 @@
       "path": "agents/database/scan-run-rfc/github-readback.json",
       "kind": "本轮实际GitHub评论正文/回执",
       "status": "Issue4/6已发表并逐字GET读回核对"
+    },
+    {
+      "path": "agents/database/plan-history/design.md",
+      "kind": "数据库精确有限接口契约与预算",
+      "status": "已复核，产品待实现"
+    },
+    {
+      "path": "agents/database/plan-history/baseline-cloc.json",
+      "kind": "原口径真实基线计数",
+      "status": "02c4b2a应用6124，超5100"
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "kind": "固定有限task history batch reader",
+      "status": "本岗实现、自测通过；精确review待root"
+    },
+    {
+      "path": "agents/database/plan-history/summary.json",
+      "kind": "真实结果/失败/范围/预算汇总",
+      "status": "已保存"
+    },
+    {
+      "path": "agents/database/plan-history/mysql-sql-ledger.json",
+      "kind": "真实MySQL实际SQL参数与次数账本",
+      "status": "自有fixture回滚，非性能"
+    },
+    {
+      "path": "agents/database/plan-history/unchanged-boundaries.json",
+      "kind": "14冻结与原方法/测试函数字节核对",
+      "status": "全同"
+    },
+    {
+      "path": "agents/database/plan-history/final-committed-cloc.json",
+      "kind": "原口径精确提交应用统计",
+      "status": "3b7bc0c=6186/exit1，不达标"
+    },
+    {
+      "path": "agents/database/plan-history/github-readback.json",
+      "kind": "Issue4/28 actual POST and exact comment GET body equality",
+      "status": "已逐字核对"
     }
   ],
   "interfaces": [
@@ -677,7 +717,8 @@
     "只读原ScanStore/EscalationFacade/RowsGateway/UoW及相关公开审核、既有模块断言",
     "scratch候选Ruff首次默认88列，拒绝；最终 --config backend/pyproject.toml 为100列，逐文件cloc2.10（固定工具hash）",
     "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
-    "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）"
+    "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）",
+    "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml."
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -767,14 +808,13 @@
     "仅补丁适用性与AST语法通过，不将此当运行测试；未改变规模口径/冻结件/DDL/产品/独立测试资料",
     "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
-    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
+    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
+    "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained."
   ],
   "unverified": [
-    "完整SQLAlchemy Core assembler未实现，候选不能直接替换整对模块",
-    "13 CHECK文本不兼容旧checker仍保留，未改旧checker迁就库",
-    "没有新MySQL/实际反射/SQLite metadata接入/CAS/产品全套/coverage/独立/性能证明",
-    "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省",
-    "本轮未实施共享helper，不存在新运行行为/并发/死锁/故障恢复/覆盖率/性能通过结论；未新增测试脚本，下一号码由root统筹。"
+    "后端页提取/matcher/投影和前端UI不属本岗实现，此模块不证明HTTP或Issue28整体完成",
+    "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
+    "源码规模产品提交已同口径实测6186（基线6124/净+62），--require-range退出1，仍超5100；不压行或移计数"
   ],
   "questions": [
     {
@@ -936,28 +976,26 @@
         "agents/database/prompts/ROLE-database-SCAN-RUN-DEDUP-RFC-v1.md"
       ],
       "improvement_reason": "先比较事务差异与真实联合净收益再决定是否共享；拒绝为旧估算凑行数，未制造人工经历"
+    },
+    {
+      "id": "ROLE-database-PLAN-HISTORY-v1",
+      "archive": "agents/database/prompts/ROLE-database-PLAN-HISTORY-v1.md",
+      "improvement_reason": "在真实DDL/解码/异常边界上先提交精确有限接口，再在根准入范围实现；不绕gateway/不压计数/不造学生亲改"
     }
   ],
-  "updated_at": "2026-10-23T14:45:30.145327+00:00",
+  "updated_at": "2026-10-23T20:19:12.229146+00:00",
   "publication": {
-    "branch": "codex/database-runtime",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
-    "base": "codex/team-bootstrap",
-    "draft": true,
-    "attached": true,
-    "merged": false,
-    "scope": "Isolated DDL AST POC only; production/DDL/API/locks/freeze unchanged",
-    "pr_scope_updated_and_attached": true,
-    "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
-    "candidate_status": "No production admission;46/1 retained failure;0 actual savings",
-    "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
-    "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
-    "live_evidence": "agents/database/live-verify-v1/summary.json",
-    "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
-    "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
-    "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
-    "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    "branch": "codex/database-plan-history",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",
+    "design_commit": "e9a769a",
+    "product_commit": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+    "pull_request": null,
+    "scope": "fixed task history reader + owner selftests; root exact source small review before backend hookup",
+    "ci": "skip ci, root combined CI pending; no full/load started",
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6373901751",
+    "github_issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163",
+    "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
+    "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
   },
   "history": [
     {
@@ -1084,6 +1122,17 @@
         "backend权威/运行API与代码1.1.0、root共享需求和新freeze父链由对应责任岗完成，本岗不代称已完成",
         "旧1.0 11hash及ae60dc3历史保留，两存储文档当前摘要显式改变，新版整体审核/冻结仍另行进行"
       ]
+    },
+    {
+      "stage": "SCAN-RUN-DEDUP-RFC-v1：联合候选314→315，否决实施",
+      "implementation_status": "仅设计/未应用补丁及真实逐文件cloc预算；总协调明确不批准实施。生产改动0、实际节省0，未运行产品验证。",
+      "unverified": [
+        "完整SQLAlchemy Core assembler未实现，候选不能直接替换整对模块",
+        "13 CHECK文本不兼容旧checker仍保留，未改旧checker迁就库",
+        "没有新MySQL/实际反射/SQLite metadata接入/CAS/产品全套/coverage/独立/性能证明",
+        "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省",
+        "本轮未实施共享helper，不存在新运行行为/并发/死锁/故障恢复/覆盖率/性能通过结论；未新增测试脚本，下一号码由root统筹。"
+      ]
     }
   ],
   "refactor_removed": [
@@ -1097,12 +1146,15 @@
     }
   ],
   "current_interfaces": {
-    "version": "capacity-lifecycle-v1.1 documentation",
-    "backend_confirmation": "全量state1–5 owner集合/assignment项目锁/CAS前守卫，原错误优先级和ID30/事务不变；见WORKLOG真实回复",
-    "contract": "specs/database/persistence-contract.md",
-    "implementation_owner": "backend",
-    "new_freeze_owner": "root",
-    "database_schema": "18/226 unchanged"
+    "task_schedule_changes": "(project_id:int,pairs:tuple[tuple[int,int],...])->list[dict] complete codec rows",
+    "bounds": "input <=100 before dedup; ID1..4294967295; version1..2147483647; strict int/tuple",
+    "read": "fixed schedule_changes/project_id/iteration IS NULL/exact tuple-IN/order task_id,to_version,id; empty0/nonempty1 execute; no LIMIT",
+    "errors": "invalid input StatementRejected; DB/error output scope/duplicate/structure failure PersistenceUnavailable rollback-only; no new HTTP code",
+    "contract": "agents/database/plan-history/design.md",
+    "backend_owner": "authorized-page pair extraction/matcher/projection; no SQL bypass",
+    "schema": "18/226 unchanged",
+    "status": "implemented and development-selftested; exact source review pending root",
+    "source": "backend/t44/persistence/rows.py:RowsGateway.task_schedule_changes"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
@@ -1117,5 +1169,27 @@
       "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
       "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440"
     ]
-  }
+  },
+  "publication_history": [
+    {
+      "branch": "codex/database-runtime",
+      "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
+      "base": "codex/team-bootstrap",
+      "draft": true,
+      "attached": true,
+      "merged": false,
+      "scope": "Isolated DDL AST POC only; production/DDL/API/locks/freeze unchanged",
+      "pr_scope_updated_and_attached": true,
+      "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
+      "candidate_status": "No production admission;46/1 retained failure;0 actual savings",
+      "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+      "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
+      "live_evidence": "agents/database/live-verify-v1/summary.json",
+      "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
+      "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
+      "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
+      "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    }
+  ]
 }

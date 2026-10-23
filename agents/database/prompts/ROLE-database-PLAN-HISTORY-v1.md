@@ -1,0 +1,16 @@
+# ROLE-database-PLAN-HISTORY-v1：真实派工与后续
+
+来源：总协调当前实例实际派工。操作者数据库岗AI，不是学生亲改；本岗未另冒称优化提示词已执行。
+
+> 你是T44固定数据库岗新阶段实例，不是独立测试。唯一目录 /Users/yang/Desktop/nothing/软件开发大作业 。先读AGENTS、agents/database/TASK、specs/database/persistence-contract.md、schema.sql和 root records/decisions/plan-history-reason-implementation-admission.json、specs/changes/plan-history-reason-projection-rfc.md。根02c4b2a59cdcc3b3dc6bc7981735f4c1b74f181a已集成设计，后端设计commit5e8e3bc632d8a0b3a558713731589e181f3a029c；尚无Issue28产品实现。请自己worktree/branch codex/database-plan-history 从根02c4b2a开始，固定数据库门面接口设计复核/小实现，不改根索引。目标供授权audit页≤100条记录一次精确查已存计划历史，不N+1/不task IN×version IN+limit。提案RowsGateway.task_schedule_changes(project_id:int,pairs:tuple[(task_id,to_version),...])->完整codec解码row list，固定schedule_changes+project_id+iteration_id IS NULL、精确tuple-IN或参数化OR、输入≤100/去重/空0execute/稳定(task,to_version,id)排序、唯一键硬bound，结果范围/重复等违约显式PersistenceUnavailable，输入沿StatementRejected/现UINT bounds含bool/串拒绝，SQL参数化，不改通用rows/DDL/冻结14文件。先独立复核真实schema/RowsGateway/错误边界，短设计/净LOC预算/下游精确契约阶段commit之后可在此根明确准入范围内实施（若需改变提案数据契约先报根，不等用户）。测试复用自己原tmp/backend/persistence/993_foundation.py与988_mysql.py等现存责任文件，先新目标旧源真实红，再SQLite/真MySQL自有合成t44_test有限fixture精确pairs/交叉干扰/跨项目/空SQL0/有1/101拒绝/类型上界/异常路径；不清共享表、改独立数据、停MySQL或重跑整套。若新test文件需873起先根分配，883–874全是新独立v3私密禁止读；所有tmp/independent/其他independent worktree私密不读不联系tester。后端将自己实现matcher/投影，你只门面+自测+接口交接，别后端越界。保持原audit不可改。新源码精确review/最终组合CI由根调度，勿发重复完整CI/负载。自己的WORKLOG/module/handoff/真实prompt与Issue4/28对接和实际GitHub读回记录，分阶段commit/push。当前后端候选A源码153/7584、当前前端UI002产品3628已在root8323692组合；root未发布全局成功/main仍protected。计数6108已超5100，本修复预估会增加，必须同cloc报告真实差异，不能压行/转移计数逻辑。小技术问题自主修，8小时截止2026-10-24 01:43UTC前继续，不问睡觉用户。
+
+改进理由：真实问题已获根技术准入；先核真实DDL/解码/错误边界并提交精确有限接口，使后端不绕gateway写SQL。新任务不是旧prompt虚构演进。实际设计将结果范围检查预算上修35..50；基线固定cloc实测6124，保留超限事实。
+
+产物对应：agents/database/plan-history/design.md、baseline-cloc.json；随后rows.py、README与993/988自测及本岗真实证据。尚未实现/执行部分按阶段记录，不能提前写通过。
+
+
+## 总协调实际收尾要求（原文）
+
+> 收到实际+62/6186，必须保留预计上修全过程，不能压行/弱化守卫凑数。MySQL首失败归fixture、补project_members后绿，保持原日志与产品不因夹具变化。请收尾精确产品/证据commit、固定method最终契约与真实48专项/66文件/1MySQL（可重叠不相加为115独立例）的范围、一次实际SQL账本、14冻结/通用rows旧字节或差异验证、Issue28/4交接实际readback后释放槽。不完整CI/负载；根会先小审该固定DB方法再给后端接入。
+
+实际追加验证：在主读1项外补本岗真实MySQL服务器故障1项；最终仅两新增目标为SQL账本再跑2通过，不相加。额外故障仍是本岗有限t44_test读取/错误边界，不改任何数据库实体或服务配置。所有数字和旧失败如实保留。

@@ -1,5 +1,6 @@
 """Controlled SQLite lifecycle and mock driver tests, never MySQL acceptance tests."""
 
+from datetime import UTC, datetime
 from unittest.mock import Mock
 
 import pytest
@@ -28,6 +29,8 @@ from t44.persistence import (
     create_mysql_engine,
 )
 from t44.persistence.engine import initialize_mysql_session
+from t44.persistence.rows import RowsGateway
+from t44.persistence.schema import TABLES
 
 
 @pytest.fixture
@@ -275,3 +278,204 @@ def test_mock_mysql_initialization_failure_redacts_and_closes():
         initialize_mysql_session(connection, None)
     assert "synthetic-secret" not in str(error.value)
     connection.cursor().close.assert_called_once()
+
+
+@pytest.fixture
+def schedule_store(tmp_path):
+    engine = create_engine(f"sqlite:///{tmp_path / 'schedule.sqlite'}")
+    TABLES["schedule_changes"].create(engine)
+    factory = SqlAlchemyUnitOfWorkFactory(engine)
+    now = datetime(2026, 10, 23, 20, 0, 1, 123456, tzinfo=UTC)
+    plan = {"planned_start": "2026-10-23T20:00:00.000000Z", "nested": {"中文": [1, 2]}}
+    records = []
+    with factory() as uow:
+        for id, project, task, version, iteration in (
+            (1, 1, 11, 2, None),
+            (2, 1, 11, 3, None),
+            (3, 1, 12, 2, None),
+            (4, 1, 12, 3, None),
+            (5, 2, 21, 2, None),
+            (6, 1, None, 2, 31),
+        ):
+            row = dict(
+                id=id,
+                project_id=project,
+                task_id=task,
+                iteration_id=iteration,
+                from_version=version - 1,
+                to_version=version,
+                before_plan=plan,
+                after_plan={**plan, "unchanged": False},
+                reason="原因\n" + "中" * 1997,
+                evidence=[{"url": "https://example.test/evidence"}],
+                changed_by=1,
+                changed_at=now,
+            )
+            uow.gateway.insert("schedule_changes", row)
+            records.append(row)
+    yield engine, factory, records
+    assert engine.pool.checkedout() == 0
+    engine.dispose()
+
+
+def test_task_schedule_changes_exact_pairs_complete_codec_and_no_mutation(schedule_store):
+    _, factory, original = schedule_store
+    with factory() as uow:
+        gateway = uow.gateway
+        result = gateway.task_schedule_changes(1, ((12, 3), (11, 2), (12, 3)))
+        assert result == [original[0], original[3]]
+        assert all(set(row) == set(TABLES["schedule_changes"].c.keys()) for row in result)
+        assert result[0]["changed_at"].tzinfo is UTC
+        assert len(result[0]["reason"]) == 2000
+        assert gateway.task_schedule_changes(1, ((21, 2),)) == []
+        assert gateway.task_schedule_changes(2, ((21, 2), (11, 2))) == [original[4]]
+        assert gateway.rows("schedule_changes") == original
+
+
+def test_task_schedule_changes_empty_and_invalid_never_acquire_session():
+    session = Mock(side_effect=AssertionError("No SQL/session expected"))
+    gateway = RowsGateway(session, Mock())
+    assert gateway.task_schedule_changes(1, ()) == []
+    with pytest.raises(StatementRejected):
+        gateway.task_schedule_changes(True, ())
+    session.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "project,pairs",
+    [(value, ((1, 2),)) for value in (0, -1, 4294967296, True, "1", None, 1.0)]
+    + [(1, value) for value in (None, [], [(1, 2)], ((1,),), ((1, 2, 3),), ([1, 2],))]
+    + [(1, ((value, 2),)) for value in (0, -1, 4294967296, True, "1", None, 1.0)]
+    + [(1, ((1, value),)) for value in (0, -1, 2147483648, True, "2", None, 2.0)]
+    + [(1, ((1, 2),) * 101)],
+)
+def test_task_schedule_changes_rejects_bad_input_before_sql(project, pairs):
+    session = Mock(side_effect=AssertionError("Invalid input must not execute"))
+    with pytest.raises(StatementRejected):
+        RowsGateway(session, Mock()).task_schedule_changes(project, pairs)
+    session.assert_not_called()
+
+
+def test_task_schedule_changes_one_bound_read_and_hundred_limit(schedule_store):
+    engine, factory, _ = schedule_store
+    commands = []
+
+    def capture(conn, cursor, statement, parameters, context, executemany):
+        commands.append((statement, parameters))
+
+    event.listen(engine, "before_cursor_execute", capture)
+    try:
+        with factory() as uow:
+            gateway = uow.gateway
+            assert gateway.task_schedule_changes(1, ()) == []
+            assert commands == []
+            result = gateway.task_schedule_changes(1, ((11, 2), (12, 3)))
+            assert [row["id"] for row in result] == [1, 4]
+            assert len(commands) == 1
+            sql, parameters = commands[0]
+            assert "LIMIT" not in sql and "FOR UPDATE" not in sql
+            assert "schedule_changes.iteration_id IS NULL" in sql
+            assert "(schedule_changes.task_id, schedule_changes.to_version) IN" in sql
+            assert tuple(parameters) == (1, 11, 2, 12, 3)
+            commands.clear()
+            assert gateway.task_schedule_changes(4294967295, ((4294967295, 2147483647),)) == []
+            assert len(commands) == 1
+            commands.clear()
+            assert [
+                row["id"]
+                for row in gateway.task_schedule_changes(1, tuple((11, v) for v in range(1, 101)))
+            ] == [1, 2]
+            assert len(commands) == 1
+    finally:
+        event.remove(engine, "before_cursor_execute", capture)
+
+
+@pytest.mark.parametrize(
+    "violation",
+    [
+        "duplicate_pair",
+        "duplicate_id",
+        "project",
+        "task",
+        "version",
+        "iteration",
+        "bool_project",
+        "bool_task",
+        "bool_version",
+        "bad_id",
+        "missing_column",
+        "extra_column",
+        "too_many",
+        "not_dict",
+        "not_list",
+    ],
+)
+def test_task_schedule_changes_result_violation_is_failure(schedule_store, monkeypatch, violation):
+    _, factory, records = schedule_store
+    rows = [dict(records[0]), dict(records[3])]
+    if violation == "duplicate_pair":
+        rows[1] = {**rows[0], "id": 99}
+    elif violation == "duplicate_id":
+        rows[1]["id"] = rows[0]["id"]
+    elif violation == "missing_column":
+        del rows[0]["reason"]
+    elif violation == "extra_column":
+        rows[0]["extra"] = "not in frozen table"
+    elif violation == "too_many":
+        rows.append(dict(rows[0]))
+    elif violation == "not_dict":
+        rows[0] = None
+    elif violation == "not_list":
+        rows = tuple(rows)
+    else:
+        column, value = {
+            "project": ("project_id", 2),
+            "task": ("task_id", 13),
+            "version": ("to_version", 4),
+            "iteration": ("iteration_id", 31),
+            "bool_project": ("project_id", True),
+            "bool_task": ("task_id", True),
+            "bool_version": ("to_version", True),
+            "bad_id": ("id", 4294967296),
+        }[violation]
+        rows[0][column] = value
+    with factory() as uow:
+        monkeypatch.setattr(uow.gateway, "_execute", Mock(return_value=rows))
+        with pytest.raises(PersistenceUnavailable) as error:
+            uow.gateway.task_schedule_changes(1, ((11, 2), (12, 3)))
+        assert "not in frozen table" not in str(error.value)
+        with pytest.raises(TransactionStateError):
+            uow.commit()
+
+
+def test_task_schedule_changes_returns_all_hundred_rows(schedule_store):
+    _, factory, records = schedule_store
+    expected = [
+        {
+            **records[0],
+            "id": 100 + version,
+            "task_id": 99,
+            "from_version": version - 1,
+            "to_version": version,
+        }
+        for version in range(2, 102)
+    ]
+    with factory() as uow:
+        gateway = uow.gateway
+        gateway.insert_many("schedule_changes", expected)
+        assert (
+            gateway.task_schedule_changes(1, tuple((99, v) for v in range(101, 1, -1))) == expected
+        )
+
+
+def test_task_schedule_changes_driver_failure_is_sanitized_and_rollback_only():
+    session = Mock(spec=Session)
+    session.execute.side_effect = OperationalError("secret SQL", {}, Exception("secret driver"))
+    with SqlAlchemyUnitOfWork(lambda: session) as uow:
+        with pytest.raises(PersistenceUnavailable) as error:
+            uow.gateway.task_schedule_changes(1, ((11, 2),))
+        assert "secret" not in str(error.value)
+        with pytest.raises(TransactionStateError):
+            uow.gateway.rows("schedule_changes")
+        with pytest.raises(TransactionStateError):
+            uow.commit()
