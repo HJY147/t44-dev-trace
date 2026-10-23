@@ -167,3 +167,16 @@
 - 最终产品0a676ee：PR run39941263169与push39941255427均success；下载原始0a676-result证据，JUnit333passed/0failed/0errors/0skipped，两原始行摘要完全一致。Bandit results0，Ruff真实远端通过；覆盖门禁2480/2807行、无漏测生产文件（仅该托管SHA，非独立验收）。
 - Issue4已以body-file发表本轮真实失败→修复→结果/边界：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981 ，正文review-fix-v2-comment.md。PR17保持OPEN/draft、base codex/team-bootstrap、head codex/database-runtime，正文按最终范围更新并重新attach。
 - 本轮收尾时仍未收到窗口结束通知；不启动本机pytest/MySQL/seed/HTTP/构建，t44_review仍未操作，C-P4不关闭。重构后MySQL全量seed未跑，统一cloc/最新整合/正式性能/独立验收未由本岗执行。产品/测试与已验证0a676ee完全相同，本次只追加原始证据/日志/报告/handoff。
+
+## ROLE-database-LIVE-VERIFY-v1：安静窗口结束后的真实专库验证
+- 收到总协调明确窗口结束（最后批次10:52:33Z）及两个项目专库授权；原文归档prompts/ROLE-database-LIVE-VERIFY-v1.md。干净树fast-forward43f51570e62e3160f7995c45bdddaf2f123242b3，不改冻结DDL/API/他岗源码，不读改957或独立私有资料。复用956/975，没有新增955。
+- 仅t44_review和新空t44_seed_verify_v2可写；使用app四键私密文件，仅构造Engine、不打印/提交值或DSN；未读取admin文件、未写dev/acceptance/perf/旧seed库。
+- 实际命令：T44_REVIEW_CREDENTIALS=<ignored四键文件> PYTHONPATH=backend .venv/bin/python tmp/backend/persistence/956_schema_semantics.py。review-run1.log保留初始真实迁移与失败：索引恢复后MySQL8.4把ck_users_hash_shape字面量引导符改为_ascii，旧parser误报users:check_definition。review-after-failure.json/review-check-rewrite.json记录实际Inspector与冻结期望，未掩盖失败。
+- 生产修复仅在词法阶段识别_utf8mb4/_ascii字面量，_ascii非ASCII拒绝，字符串内部相似内容不被全局regex改写；追加956正/负断言，schema-regression.log为15 passed。
+- review-run2.log保留探针实际1826：MySQL同条ALTER DROP/ADD同名FK被拒绝。只修owner探针分步DROP/ADD及部分失败恢复，不放宽checker。review-run3.log最终四类实际漂移（列序、unique、FK目标、CHECK1=1）均被checker和重复migrate拒绝；每例恢复后18表226列defects=[]，最终重复migrate accepted；日志和summary含每条实际SQL/目标库/结果。
+- 实际命令：T44_SEED_VERIFY_CREDENTIALS=<ignored四键文件> PYTHONPATH=backend .venv/bin/python tmp/backend/persistence/975_seed.py。seed-run1.log首轮真实MySQL成功：新库迁移、40项目/6000任务/9000同项目DAG/11400review+3600decision、3600预案及7态引用/轮次/批准指针/八段十项/四视角/容量全量检查；全持久行SHA256=6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3，与原全量基线精确相同（排随机password_hash）。
+- 同manifest重复seed幂等；seed=45和合法规则JSON仅原bytes hash变化均拒绝，不覆盖原数据。7项原生unique/FK/CHECK拒绝（含四核心表）逐项savepoint回滚，之后全行摘要不变；最终结构检查与重复迁移通过。实库8.4.11、UTC、READ-COMMITTED、严格SQL模式。该受信校验脚本只允许新专库且业务表为空，重跑写阶段会安全拒绝；生产seed_demo本身已验证重复幂等。
+- 必要模块回归：PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend/persistence/956_schema_semantics.py tmp/backend/persistence/975_seed.py --junitxml=agents/database/live-verify-v1/targeted-junit.xml -q，18 passed/0failed/0errors/0skip，2条原record_property/xunit2兼容性警告保留；24.10s仅模块命令耗时，非正式性能。
+- Ruff首次I001仅新owner CLI import排序，ruff-run1.log保留；仅该文件I001 fix后ruff-run2通过；migrations.py定向Bandit findings0。必要范围完成，未重复全套/全局覆盖或扩展性能测试。
+- 本岗C-P4数据库技术验证闭合，仍需审核岗对最终集成SHA复审，未代其设置审核通过。根stage7 cloc5866/exit1为当时事实，仍超5100，不改口径/为数字破坏结构。全部seed数据synthetic，不是人工评审/交付或独立验收。
+- 本轮Issue4已以body-file发表：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107 ，正文live-verify-stage-comment.md；PR17标题/正文已按真实MySQL最终范围重写并attach，保持draft。

@@ -15,14 +15,22 @@ class MigrationError(RuntimeError):
 
 def _check_signature(expression):
     """Parse frozen CHECK grammar; preserve precedence, literals and function arguments."""
-    source = re.sub(r"\b_utf8mb4(?=\s*')", "", str(expression), flags=re.I).strip()
-    pattern = re.compile(r"\s*(`[^`]+`|'(?:''|\\.|[^'])*'|[a-zA-Z_]\w*|\d+|<=|>=|<>|!=|[=<>+(),-])")
+    source = str(expression).strip()
+    pattern = re.compile(
+        r"\s*(`[^`]+`|(?:(?:_utf8mb4|_ascii)\s*)?'(?:''|\\.|[^'])*'|[a-zA-Z_]\w*|\d+|<=|>=|<>|!=|[=<>+(),-])",
+        re.I,
+    )
     tokens, position = [], 0
     while position < len(source):
         match = pattern.match(source, position)
         if not match:
             return None
         lexeme = match[1]
+        if lexeme.startswith("_") and "'" in lexeme:
+            charset, quoted = lexeme.split("'", 1)
+            if charset.strip().lower() == "_ascii" and not quoted.isascii():
+                return None
+            lexeme = "'" + quoted
         tokens.append(lexeme if lexeme.startswith("'") else lexeme.strip("`").lower())
         position = match.end()
     position = 0

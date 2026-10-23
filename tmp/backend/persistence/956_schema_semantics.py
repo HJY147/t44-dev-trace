@@ -7,6 +7,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
+from sqlalchemy import event
 from t44.persistence import MySQLSettings, create_mysql_engine, migrations
 from t44.persistence.schema import TABLES
 
@@ -136,6 +137,12 @@ def test_956_frozen_catalog_and_mysql_normalization_are_accepted(catalog):
         dialect_options={"mysql_using": "BTREE"},
     )
     assert report()["passed"]
+    # MySQL 8.4 rebuild after restoring a unique index emits this actual ASCII introducer.
+    catalog.change(
+        "get_check_constraints", "users", "ck_users_hash_shape",
+        sqltext="((left(`password_hash`,10) = _ascii'$argon2id$') and (char_length(`password_hash`) > 30))",
+    )
+    assert report()["passed"]
 
 
 @pytest.mark.parametrize(
@@ -222,6 +229,9 @@ def test_956_check_normalization_preserves_boolean_precedence_and_literal_case()
     )
     assert normalize("left(value,10) = 1") != normalize("left(value,11) = 1")
     assert normalize("a = 1 /* unparsed suffix */") is None
+    assert normalize("value=_ascii'é'") is None
+    assert normalize("value='_utf8mb4''ARRAY'") != normalize("value='ARRAY'")
+    assert normalize("value='_ascii''ARRAY'") != normalize("value='ARRAY'")
 
 
 def run_mysql_review(engine):
@@ -252,8 +262,8 @@ def run_mysql_review(engine):
         ),
         (
             "foreign_target",
-            "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator, ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)",
-            "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator, ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)",
+            "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES service_accounts(id)",
+            "ALTER TABLE projects DROP FOREIGN KEY fk_projects_creator; ALTER TABLE projects ADD CONSTRAINT fk_projects_creator FOREIGN KEY (created_by) REFERENCES users(id)",
         ),
         (
             "check_expression",
@@ -265,20 +275,38 @@ def run_mysql_review(engine):
         applied = False
         try:
             with engine.begin() as connection:
-                connection.exec_driver_sql(change)
-            applied = True
+                for sql in change.split(";"):
+                    connection.exec_driver_sql(sql.strip())
+                    applied = True
             changed = migrations.check_schema(engine)
             assert not changed["passed"] and changed["defects"], label
-            with pytest.raises(migrations.MigrationError, match="structure differs"):
+            with pytest.raises(migrations.MigrationError, match="structure differs") as rejected:
                 migrations.migrate(engine, expected_database="t44_review")
             result["cases"].append(
-                dict(case=label, rejected=True, defects=changed["defects"])
+                dict(
+                    case=label,
+                    database="t44_review",
+                    change_sql=change,
+                    restore_sql=restore,
+                    rejected=True,
+                    defects=changed["defects"],
+                    repeat_rejection=str(rejected.value),
+                )
             )
         finally:
             if applied:
                 with engine.begin() as connection:
-                    connection.exec_driver_sql(restore)
-        assert migrations.check_schema(engine)["passed"], label + " restore"
+                    for sql in restore.split(";"):
+                        # If an ADD failed after DROP, restore the missing FK without dropping twice.
+                        if "DROP FOREIGN KEY" in sql and not any(
+                            fk["name"] == "fk_projects_creator"
+                            for fk in migrations.inspect(connection).get_foreign_keys("projects")
+                        ):
+                            continue
+                        connection.exec_driver_sql(sql.strip())
+        restored = migrations.check_schema(engine)
+        assert restored["passed"], label + " restore"
+        result["cases"][-1]["restored"] = restored
     result["repeat"] = migrations.migrate(engine, expected_database="t44_review")
     return result
 
@@ -292,6 +320,13 @@ if __name__ == "__main__":
         )
     )
     try:
+        event.listen(
+            engine,
+            "before_cursor_execute",
+            lambda conn, cursor, sql, parameters, context, many: print(
+                json.dumps(dict(event="ddl", database="t44_review", sql=sql)), flush=True
+            ) if sql.lstrip().upper().startswith(("CREATE", "ALTER")) else None,
+        )
         print(json.dumps(run_mysql_review(engine), ensure_ascii=False, indent=2))
     finally:
         engine.dispose()
