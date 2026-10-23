@@ -12,7 +12,7 @@ import TaskDrawer from '../../frontend/src/components/TaskDrawer.vue'
 import NotFoundView from '../../frontend/src/views/NotFoundView.vue'
 import WorkspaceView from '../../frontend/src/views/WorkspaceView.vue'
 import { navigation } from '../../frontend/src/navigation'
-import { asRow, schemas } from '../../frontend/src/contract'
+import { asRow, schemas, validate } from '../../frontend/src/contract'
 import type { Schema } from '../../frontend/src/contract'
 import { formSchemas, presets } from '../../frontend/src/forms'
 import { workspace } from '../../frontend/src/workspace'
@@ -49,6 +49,33 @@ describe('typed editor interactions', () => {
   })
 })
 describe('operation forms', () => {
+  it('prefills and submits the frozen nested iteration plan, and names the iteration selector', async () => {
+    const { calls } = fixtureFetch()
+    const wrapper = mount(OperationForm, { props: { operation: 'changeIteration', schemaName: 'IterationChange', params: { project_id: 1, iteration_id: 1 }, preset: presets('changeIteration', iteration), refresh: async () => {}, saved: async () => {} }, global })
+    await settle(); expect(wrapper.get('#field-plan-name').element).toHaveProperty('value', '夹具迭代')
+    expect(wrapper.get('#field-plan-capacity-0-available_hours').element).toHaveProperty('value', '8')
+    await wrapper.get('#field-plan-capacity-0-available_hours').setValue(12)
+    await wrapper.get('#field-reason').setValue('核对容量后调整')
+    await wrapper.get('#field-evidence-0-kind').setValue('3'); await wrapper.get('#field-evidence-0-locator').setValue('https://example.com/capacity'); await wrapper.get('#field-evidence-0-description').setValue('容量核对记录')
+    await wrapper.get('form').trigger('submit'); await settle()
+    const write = calls.find((call) => call.method !== 'GET')!
+    expect(validate('IterationChange', write.body)).toEqual({}); expect(asRow(write.body.plan).name).toBe('夹具迭代'); expect(asRow(write.body.plan).capacity).toEqual([{ user_id: 1, available_hours: 12 }]); expect(write.body.expected_version).toBe(3)
+    wrapper.unmount()
+    const editor = mount(FieldEditor, { props: { schema: schemas.TaskCreate!, modelValue: presets('createTask') }, global })
+    expect(editor.get('#field-iteration_id option[value="1"]').text()).toBe('夹具迭代'); editor.unmount()
+    const list = mount(RecordList, { props: { rows: [iteration], total: 1, page: 1 }, global })
+    expect(list.get('h3').text()).toBe('夹具迭代'); list.unmount()
+  })
+  it('distinguishes a replayed historical response from the refreshed authoritative task', async () => {
+    let current = { ...task, state: 2, version: 2 }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ data: { task: current }, meta: { replayed: true } }))))
+    const saved = vi.fn(async () => { current = { ...task, state: 6, version: 9 }; workspace.notice = '已刷新：当前任务已交付，版本9' })
+    const wrapper = mount(OperationForm, { props: { operation: 'transitionTask', schemaName: 'StartTransition', params: { project_id: 1, task_id: 1 }, preset: { expected_version: 1, action: 1 }, refresh: async () => current, saved }, global })
+    await settle(); await wrapper.get('form').trigger('submit'); await settle()
+    expect(saved).toHaveBeenCalledOnce(); expect(current).toMatchObject({ state: 6, version: 9 })
+    expect(workspace.notice).not.toContain('任务现为开发中'); expect(workspace.notice).toContain('历史结果'); expect(workspace.notice).toContain('当前状态')
+    expect(wrapper.emitted('close')).toHaveLength(1); wrapper.unmount()
+  })
   it('submits a filled blocking form with optional document revision left blank', async () => {
     const { calls } = fixtureFetch()
     const wrapper = mount(OperationForm, { props: { operation: 'transitionTask', schemaName: 'BlockTransition', params: { project_id: 1, task_id: 1 }, preset: { expected_version: 1, action: 2 }, refresh: async () => {}, saved: async () => {} }, global })

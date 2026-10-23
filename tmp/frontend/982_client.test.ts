@@ -3,7 +3,7 @@ import { api, ApiError, intentFor, request } from '../../frontend/src/api'
 import { allPages, bootstrap, context, display, logout, workspace } from '../../frontend/src/workspace'
 import { asArray, initial, label, resolve, safeLink, schemas, validate } from '../../frontend/src/contract'
 import { formSchemas, presets, transitionSchema } from '../../frontend/src/forms'
-import { dictionaries, evidence, fixtureFetch, member, page, plan, project, seed, task, template, user } from './981_fixtures'
+import { dictionaries, evidence, fixtureFetch, iteration, member, page, plan, project, seed, task, template, user } from './981_fixtures'
 beforeEach(seed)
 afterEach(() => vi.unstubAllGlobals())
 describe('frozen API client', () => {
@@ -58,8 +58,12 @@ describe('contract-driven forms and safe records', () => {
     for (let action = 1; action <= 9; action++) expect(schemas[transitionSchema(action)]!.properties!.action!.const).toBe(action)
     expect(presets('createProject')).toEqual({}); expect(presets('createTask').dependency_task_ids).toEqual([])
     expect(presets('changeTaskPlan', {}, task).plan).toEqual(plan); expect(presets('changeTaskAssignment', {}, task).owner_id).toBe(1)
-    expect(presets('changeProjectMember', member).roles).toEqual([1, 2, 3]); expect(presets('changeIteration', { ...plan, name: '迭代', version: 2, capacity: [] }).expected_version).toBe(2)
+    expect(presets('changeProjectMember', member).roles).toEqual([1, 2, 3])
     expect(presets('reviewReleaseAssessment', { version: 3 }, task).expected_assessment_version).toBe(3); expect(formSchemas.handleNotification).toBe('HandleNotificationRequest')
     expect(template.version).toBe(1); expect(dictionaries.task_states).toBeDefined()
+  })
+  it('uses the frozen nested iteration plan without losing capacity or version', () => {
+    expect(validate('Iteration', iteration)).toEqual({})
+    expect(JSON.parse(JSON.stringify(presets('changeIteration', iteration)))).toEqual({ expected_version: 3, plan: iteration.plan })
   })
 })

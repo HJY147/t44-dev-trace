@@ -43,3 +43,6 @@
 - 真浏览器数据是隔离演示项目的合成业务记录，不是人工生产发布/回滚决定。
 - 代码、纠错与测试由frontend AI执行；总协调静态反馈不算用户亲改或自动计作幻觉案例。
 - 后续消息/升级接好后另做完整页面回归；未做正式性能、安全全面实测或独立验收，不替代其结论。
+
+本轮收尾 checkpoint：冻结 Iteration 的 plan/name/capacity 嵌套预填与历史幂等重放提示已修；新增回归先复现3失败21通过，日志 agents/frontend/integration-ui-regression-before.log（raw gzip保留）。完整后端通知/升级浏览器与CSS清理尚待本轮后续，不将模块修复等同独立验收。
+本checkpoint最终验证：24项通过；全src行92.19%、分支86.76%、函数83.78%；vue-tsc/build通过。真实后端页面回归未在该checkpoint宣称完成。

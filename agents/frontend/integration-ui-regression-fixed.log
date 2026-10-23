@@ -1,0 +1,25 @@
+$ node scripts/prepare-tests.mjs && vitest run --coverage
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend
+      Coverage enabled with v8
+
+ ❯ tmp/frontend/983_application.test.ts (13 tests | 1 failed) 557ms
+   ❯ operation forms (6)
+     × prefills and submits the frozen nested iteration plan, and names the iteration selector 40ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/983_application.test.ts > operation forms > prefills and submits the frozen nested iteration plan, and names the iteration selector
+TypeError: Cannot read properties of undefined (reading 'body')
+ ❯ tmp/frontend/983_application.test.ts:60:46
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 23 passed (24)
+   Start at  17:51:19
+   Duration  3.88s (transform 59%, import 25%, tests 9%, environment 7%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
