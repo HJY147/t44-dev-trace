@@ -121,3 +121,15 @@
 - 只读路径探索时一次zsh无匹配`*STDOUT*`退出1；随后按已观察文件列表精确读，作为工具路径查找失败，不写成产品错误。
 - 未运行产品/服务/数据库/浏览器/基准/全CI/Word重导/新图，未改产品/冻结/他岗/共享ledger。M7 Issue11一条具体交接和GET逐字回读/阶段commit push在实际完成后补记。
 - M7实质材料实际commit/push`dffd71f53f33e622a2d88c5eb45c04736f5b09cd`，此前设计4c476c6；Issue11只发一条本轮具体下游交接评论6375901006，GitHub插件GET按ID核正文逐字相同，回执M7-publication.json。随后仅补发布记录，本岗无产品/测试/配置变化。
+
+## 2026-10-24 M8 固定f521有限事实检查点
+
+- 根clean/HEAD精确f5214a27af4ec4886c30ce36de38a70def479efd；独立codex/prompt-m8-checkpoint，不用根索引。先记录M8范围与实际派工原文，后取公开证据，M7固定截止/旧六版/Word不改。
+- 只读明确发表v3stage07/08各MD/JSON并按根publication receipt逐项核hash；不读其私密引用。v4只根metadata/receipt，H与M不同/SUT未发，不开H树或payload/manifest/script/output/key/ciphertext，不联系tester。
+- 只问deployment_native一个公开事实，实际AI答复原样存M8-source-inquiry.json；没有人类访谈/新prompt版本。根关于partialoverride的实发补充保存在actualprompt，overflow-only报告路径本轮未另取得，不谎称独立核验。
+- 核package9d6红/先设计add736/dda3窄修/同payload限定绿，无新actualbundle；source selector只Git元数据排除四testing工作区文件，未读正文或声称泄露，旧包不改。
+- 核DB单次四段ABBA及成本未测、db87候选/PR39未合根；backend445caller/partialoverride和b081 exact520/89、5ZIP51raw/实际Dockermergecheckout仅原记录，不取CI触发/新测试。
+- 核原4ef失败360自等自己、c191->62ac修复及审核冻结/红绿、根另准入新360/cleanuptrue/9端口三观察点；post bytesJSON失败/转hex与864863862原字节迁移不算重跑；4h截止无完整证明。
+- 核usage db7RFC->8983/861合成15/root3f静态，无actualstats/RSS/全段峰值/物理同机与旧unknown回填。
+- M7封档后owner纠正早期应用run1实现427b097，当前run1-analysis也匹配；M8追加归属勘误，M7原文件不动；不混该应用阶段与更晚360。
+- 32公开源SHA/Git blob/JSON、四发表摘要hash及三设计先行祖先关系必要核对；无产品/测试代码/CI/服务/基准/Word操作，无人工12/5/3或学生正文补造。Issue11真实评论/GET、commit push实际后补。
