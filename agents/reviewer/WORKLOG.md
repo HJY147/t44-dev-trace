@@ -182,3 +182,11 @@
 
 - 75补充阶段67e051f0423f1da1b38bfb7d793ccbf8a5d0e480已commit/push exit0。随后插件实际读到PR head4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0，frontend/src与Vite同75无差异；root亦发来真实push确认。插件COMMENT5632472310成功，gh只读GET特定review核commit_id=75c3468完整SHA、COMMENTED、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310 。无status写入/APPROVE/合并。
 - documentation发M5真实资料问取，已回复两轮精确source/design/evidence/review SHA、公开报告及两个已发布COMMENT和未测边界；75回执当时刚发布尚待本次push，如实说明。未接触或传递独立未发布材料。root说明源码仍超上限，本岗没有重算或宣称规模通过。最终只补实际回执与阶段交接，不更改任何产品/测试源码。
+
+## 2026-10-24 PR26会话清理专项审核（3c160c5）
+
+- 实际ROLE-reviewer-SESSION-CLEANUP-v1；隔离codex/review-session固定3c160c5，设计844/产品363/公开443证据。不改生产、冻结14或计数，不读独立未发布材料，不开服务或全套。
+- 19源/3脚本摘要、14冻结摘要和7原gzip均吻合；精确核9项7红2绿→9绿、开发39/39、完整19文件327/351行及706/804分支；原chunk告警和独立FAIL保留。
+- root分配895后执行3个无网络定向探针，1红2绿exit1。确认P2 SESSION-R1：旧表单卸载后迟到403触发refreshConflict→refresh(true)在sequence守卫前context()，新登录身份上下文先清空再用新token发3GET，503后project={}；新user/token未变。原红日志、probe和源hash保留，不扩称后端越权。其余生命周期疑点未复现不报缺陷。
+- 已即时送root，由root转frontend修复；八段十项报告reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md，专项不通过，整产品正式性能/独立/规模仍不放行。本岗设置cwd错误与路由夹具警告单列，不冒充产品失败。GitHub/commit/push实际回执后补。
+- 首次暂存diff检查因Markdown换行尾空格及可读log末尾空行退出2，未发生commit/push；仅规范可读格式并保留原gzip及原hash后继续。
