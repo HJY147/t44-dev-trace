@@ -1,0 +1,26 @@
+{
+  "operator": "AI reviewer; synthetic in-memory helper counterexample, not real bundle/independenttest",
+  "hypothesis_source": "Root separately flagged same static trust question before this confirmation; no student discovery",
+  "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+  "builder_sha256": "a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b",
+  "function_ast_sha256": "a4e05892b39423ab114b41661a5e4a78387a75f90535e3c2dc628ee34a720fa6",
+  "member": "backend/t44/api.py",
+  "declared_source_commit": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+  "git_commit_resolves_exactly": true,
+  "actual_tree_blob": "1eee200e034cc8a4e52423aa52cc40729995c413",
+  "declared_and_payload_blob": "60ff7f429c5080a5dddae83ee8d06e5364c837b8",
+  "payload_not_in_declared_tree": true,
+  "internal_SHA256_size_git_blob_self_consistent": true,
+  "archive_members": [
+    "backend/t44/api.py",
+    "REVIEW-PACKAGE-MANIFEST.json"
+  ],
+  "actual_accepted_count": 1,
+  "actual_error": null,
+  "expected_reject_unbound_source": true,
+  "actual_rejected_unbound_source": false,
+  "actual_review_bundle_created": false,
+  "actual_private_source_ZIP_DOCX_cover_R002_or_independent_material_read": false,
+  "disk_ZIP_files_written": [],
+  "trust_boundary": "Trusted output from build_source_review plus externally trusted selection SHA would exclude the synthetic artifact. This demonstrates the new verifier does not independently establish its claimed Git tree binding; no claim that upstream generator or a real existing package is corrupt."
+}

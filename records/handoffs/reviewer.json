@@ -15,7 +15,7 @@
   },
   "questions": [],
   "review_branch": "codex/review-warm-glass",
-  "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+  "stage": "PR21 9d6私密审阅包A不通过；metadata wrapper B有限静态未见新阻断",
   "native_application_review": {
     "archive": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
     "implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
@@ -216,7 +216,11 @@
     "agents/reviewer/evidence/native-application-189a4e2",
     "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
     "agents/reviewer/dispatches/ROLE-reviewer-NATIVE-CAPTURE-FIX-v1.txt",
-    "agents/reviewer/evidence/native-capture-fix-cc6"
+    "agents/reviewer/evidence/native-capture-fix-cc6",
+    "reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md",
+    "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-BUNDLE-v1.txt",
+    "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-BUNDLE-v1-followup.txt",
+    "agents/reviewer/evidence/coursework-bundle-9d6"
   ],
   "plan_reason_review": {
     "head": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
@@ -293,24 +297,33 @@
   },
   "review_scope": "Only bcb0 strictJSON evidence identity delta and originalHTTP counterexample replay",
   "github_evidence": {
-    "plugin_body_and_state_exact_match": true,
-    "verified_at_utc": "2026-10-23T22:06:24.558622+00:00",
-    "readback_sha256": "7d2648327dc5a23a6e102cb0042f4e543c1b0616acaf3d32b3bcf5c6a5ddb3d0",
     "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
-    "CI_triggered": false,
-    "commit_id": "cc6a211bb1692460ffba09f7ee764c64545602ee",
-    "full_specific_review_GET_exit_code": 0,
-    "original_failure_comment_preserved": 5634837225,
-    "first_evidence_push_exit_code": 0,
-    "limited_defect_closure_only": true,
+    "review_id": 5635299006,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006",
+    "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
     "state": "COMMENTED",
-    "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc",
-    "url": "https://github.com/HJY147/t44-dev-trace/pull/34#pullrequestreview-5634940377",
-    "pr_head_at_publish": "cc6a211bb1692460ffba09f7ee764c64545602ee",
     "body_exact_match": true,
-    "body_sha256": "a05d9342b5e7fc820509ae7e77e06a618ad66e2021d19758371834c5e9a922dd",
-    "review_id": 5634940377,
-    "no_status_approve_or_merge": true
+    "plugin_body_and_state_exact_match": true,
+    "full_specific_review_GET_exit_code": 0,
+    "readback_sha256": "08d81a49ee5f310ef77d45b00ec690024320a49904ad715a7b2addd011086e29",
+    "body_sha256": "9412f73b580de1e56196ce96401deea252ed81ab152c1a14d8815fa1d7080076",
+    "issue": {
+      "number": 38,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+      "state": "open",
+      "body_exact_match": true,
+      "full_GET_exit_code": 0,
+      "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
+      "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
+    },
+    "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af",
+    "first_evidence_push_exit_code": 0,
+    "pr_head_at_publish": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+    "target_is_ancestor_of_current_PR_head": true,
+    "later_dda3_fix_not_reviewed": true,
+    "no_status_approve_or_merge": true,
+    "CI_triggered": false,
+    "verified_at_utc": "2026-10-23T23:00:36.272348+00:00"
   },
   "empty_value_review": {
     "application_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
@@ -336,7 +349,7 @@
       "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
     }
   },
-  "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json",
+  "latest_review_evidence": "agents/reviewer/evidence/coursework-bundle-9d6/static-audit.json",
   "native_capture_fix_review": {
     "target": "cc6a211bb1692460ffba09f7ee764c64545602ee",
     "code": "b23897879142de3bd77190c67d4947eccf1c8263",
@@ -381,7 +394,7 @@
     },
     "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc"
   },
-  "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+  "implementation_status": "原9d6内存反例真实红/metadata有限专审与公开原件核对/Issue38及PR21精确9d6 COMMENT完整GET封存；后续dda3另轮；无实际包或产品改动",
   "previous_warm_glass_scope": {
     "stage": "暖米咖玻璃UI限定审核完成；整产品不放行",
     "review_target_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
@@ -1068,7 +1081,8 @@
       "improvement_reason": "Preserve originalHTTPred and onlyreview exactnarrowfix, replay samefixture once; separate decodedJSONstructure/type identity from Python== and globalgates."
     },
     "ROLE-reviewer-NATIVE-APPLICATION-v1",
-    "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1"
+    "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1",
+    "ROLE-reviewer-COURSEWORK-BUNDLE-v1"
   ],
   "previous_v11_implementation_review": {
     "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
@@ -1168,7 +1182,7 @@
     "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
     "full_specific_review_GET_exit_code": 0
   },
-  "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+  "review_outcome": "A NOT_PASSED P2 BUNDLE-SOURCE-BINDING-01; B no new material blocker within wrapper delta; overall NOT_ACCEPTED",
   "capacity_feedback_integration_note": "Coordinator preserved both backend7584 and frontendc56 review histories from parallel branches; generic latest-stage metadata uses capacity review, original source reports/raw evidence unchanged. Neither limited review grants whole product acceptance.",
   "previous_phase_before_native_capture_followup": {
     "stage": "PR29 A预检合并限定代码审核7584/153b；无新阻断，整产品不放行",
@@ -1342,8 +1356,8 @@
     "merged": false,
     "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3"
   },
-  "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
-  "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+  "latest_review_report": "reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md",
+  "review_target_sha": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
   "interfaces": [
     {
       "peer": "总协调与开发责任岗",
@@ -1438,5 +1452,76 @@
     "review_target_sha": "5fb1d7e0b180e754aba635487ebb0fa341e4f957",
     "report": "reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md",
     "review_outcome": "当时有条件技术准入、状态7具体待答；原root AI提案误述保留，已由02+U016解决"
+  },
+  "previous_phase_before_coursework_bundle": {
+    "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+    "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+    "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+    "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+    "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
+    "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json"
+  },
+  "coursework_bundle_review": {
+    "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "builder_sha256": "a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b",
+    "finding": {
+      "id": "BUNDLE-SOURCE-BINDING-01",
+      "priority": 2,
+      "file": "scripts/packaging/build_coursework_review.py",
+      "line": 92,
+      "result": "Real declaredcommit but non-tree blob accepted when inner hashes self-consistent"
+    },
+    "single_memory_counterexample": {
+      "runs": 1,
+      "exit_code": 1,
+      "disk_ZIP_files": [],
+      "actual_review_bundle_created": false
+    },
+    "trust_precondition_separated": true,
+    "metadata": {
+      "code": "c0a5e89b2442da2a9149e1d37c2a424d52aff7c0",
+      "evidence": "6c81ee9960ef08dc35fe8146fcdd4ab5cabb39d4",
+      "dedicated_static_outcome": "NO_NEW_MATERIAL_BLOCKER_WITHIN_WRAPPER_DELTA",
+      "strict_count1_AST_unchanged": true,
+      "owner_artifacts_verified": 14,
+      "owner_test_result": "2red to4green,notreviewerrun",
+      "stage05_actual_cause": "UNKNOWN_PRESERVED"
+    },
+    "frozen14_unchanged": true,
+    "private_or_independent_material_read": false,
+    "actual_bundle_built": false,
+    "suites_proc_Docker_fault_load_CI_rerun": false,
+    "new_persistent_tmp_testfiles": [],
+    "later_dda3_fix_not_covered": true,
+    "github": {
+      "operator": "AI reviewer using authorized HJY147 account, not student or separatehuman",
+      "review_id": 5635299006,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635299006",
+      "commit_id": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "plugin_body_and_state_exact_match": true,
+      "full_specific_review_GET_exit_code": 0,
+      "readback_sha256": "08d81a49ee5f310ef77d45b00ec690024320a49904ad715a7b2addd011086e29",
+      "body_sha256": "9412f73b580de1e56196ce96401deea252ed81ab152c1a14d8815fa1d7080076",
+      "issue": {
+        "number": 38,
+        "url": "https://github.com/HJY147/t44-dev-trace/issues/38",
+        "state": "open",
+        "body_exact_match": true,
+        "full_GET_exit_code": 0,
+        "readback_sha256": "97e319dd2ff93397af3e930967ef97b5183633a16324f25907aae3518092fcf7",
+        "body_sha256": "c2ba672979b77d76fbd500741c69196f43bcea0d62af3f530fd787b48fdf7807"
+      },
+      "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af",
+      "first_evidence_push_exit_code": 0,
+      "pr_head_at_publish": "f866bd5e8107c0edcf179a5a0de1e55ef71a0a33",
+      "target_is_ancestor_of_current_PR_head": true,
+      "later_dda3_fix_not_reviewed": true,
+      "no_status_approve_or_merge": true,
+      "CI_triggered": false,
+      "verified_at_utc": "2026-10-23T23:00:36.272348+00:00"
+    },
+    "evidence_commit": "9f3c7fa9bfbfdb3d4074daccdc4ed50a53f6e6af"
   }
 }
