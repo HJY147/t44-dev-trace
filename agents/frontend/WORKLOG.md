@@ -190,3 +190,4 @@
 - 最终4PNG逐张查看、无pageerror/横溢出；长解释在手机完整换行、追踪号可见。Chrome19:43:11.666UTC退出，本岗5176 Ctrl-C exit130。新资源/拒绝记录保留不删审计；早期失败登录不是“已撤销全部旧session”的证明，最终只注销各当前token。不动用户5173/独立5175/18084/原项目/全局用户。
 - Issue28真实协商评论6373191287及6373333383均逐字回读匹配；已直接回backend。通用RecordView会完整渲染after，但Diff.field reason当前未中文化且value通用display可能转换用户原文，需UI003另阶段按纯文本/中文/缺失说明处理，未混进UI002。不能冒称字段已有label就代表Diff显示已满足。
 - 全19源hash、14冻结hash、原始gzip、类型与驱动错误、唯一资源写清单见business-feedback-validation.json。本阶段AI开发回归，待准确新SHA审核及新隔离独立复测，旧独立FAIL/正式性能/规模/人工作业门禁不解除。
+- 631988c证据已push；Issue27评论6373406222及draft PR30均真实发布、正文逐字回读匹配，见business-feedback-github-verification.json。未发APPROVE/审核成功/合并；结束仅移除自身worktree依赖符号链接，根依赖目录不动。
