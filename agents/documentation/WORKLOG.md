@@ -283,3 +283,23 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 更新PR33前沿用早先draft状态假设，工具返回才发现root已集成历史head13465cc、21:41:30Z自动merged461553b。误将后续Word范围短暂写入旧PR正文后立即通知root，恢复其原MD/图正文并GET逐字核对，不继续改变历史。后续不冒充Word已合入。
 - GitHub工具新建draft PR35，base codex/integration、head39ef7d0，GET title/body/head匹配、open/draft/unmerged、mergeable true。公开Issue9评论6375470296及PR35评论6375470690，经两个精确ID各GET，正文与保存副本逐字一致。完整正文/范围/状态回执在github-M6-word-qa-readback.json。
 - 这笔仅提交发布回执/交接；没有APPROVE、success或mainmerge，也不再读新独立报告或追native修订。最终receipt SHA由git HEAD和远端核实后回传，释放本岗索引/槽位。
+
+## 2026-10-24T06:34:40.926726+08:00 M7 先行设计
+
+- 本实例保留M6本地/远端126df历史且工作树干净，从root明确3dadfb9切新codex/documentation-m7。读AGENTS/本岗历史及明确公开stage04/05/06 MD，未跟私密ref。
+- 先保存M7设计与实际任务摘要，再更新测试正文、提交清单、必要过程索引和单份测试Word；其他三稿M6hash复用。原白盒/交付物8项尚无已发表结果，不能补造通过。
+- 已复读既有documents技能；M4 marker一次事实保留，不重复。M7无产品测试、负载或新图计划。
+
+- M7正文更新测试稿第1/5/6/7节、提交清单和必要AI过程出口，需规/设计/AI规格源不变；24明确公开来源、3历史稿、14冻结、64应用源hash/引用/隐私通过。独立仅stage04/05/06六文件，原始JSON大输出曾截断，随即改取精确结果字段/组指标，不据截断声称已读全部私密原件。
+- 四相关非测试岗各实际送问，无送达错误；当前尚无M7直接答复，另M6迟到三岗答复只在M7收件记，未回写M6当时未回状态。导出器仅支持M7单份测试稿并强制复用三M6 hash，尚未开始新Word渲染。
+
+- M7唯一测试Word首轮author/render exit0共8页，本实例全部original逐页查看；原私密封面/日期空、宽图/表行/结果指标完整。仅CI表Docker标签紧接11位ID导致末位单字拆行，未裁字但不便读；保留首轮DOCX/manifest/PNG/PDF，仅加标签与编号间空格，再重导该稿。其他3M6 Word不动，marker未重复。
+
+- 2026-10-24T06:42:30.803856+08:00 M7最终qa-v2 8页由本实例全部original逐页打开，Docker编号完整，中文/图注/宽图边缘/整行/续表/页码/原封面日期空通过。仅测试Word两轮，三M6原稿10/14/3共27页hash复用，组合35页；不称本轮全35页重看。公开M7-word-qa与deliverable-manifest记录新旧文件/hash。无重复marker/产品请求/负载。
+
+## 2026-10-24T06:44:08.493753+08:00 M7 发布读回与释放
+
+- QA实现6d9ca738ee29d9115bc862d03218c659f3e959c4本人commit/push。新draftPR36用GitHub工具建立，精确body/head6d9 GET匹配，open/draft/unmerged且mergeabletrue。Issue9评论6376203768与PR36评论6376204042均对精确ID GET，正文与保存副本逐字一致。
+- 当前M7四实问仍无直接回复，未唤醒/扩编/循环等待；M6迟到信息仅明确列M7收件。未读新未发表独立白盒/私密引用或R002原文。本笔只保存交流回执和交接，不追改稿/重导/重跑；最终receipt SHA由Git HEAD/远端核实回传后释放本岗索引槽位。
+
+- 2026-10-24T06:44:55.483183+08:00 两条阶段评论发布并GET后，deployment实际M7短答到达：cd3限定关闭、旧0a6成功不移植新b238、资源unknown不回填，与既有公开内容一致。收件原文/时间追加M7-collection；其他3岗仍未直接回。原评论“截止本版无回复”保留为发布时事实，当前收尾明确4送/1后到/3未回；无正文变化，不再导Word。
