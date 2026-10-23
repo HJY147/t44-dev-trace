@@ -1,8 +1,8 @@
 """Stage-B-only isolated observer; no workload, connection or server starts on import."""
 
 import argparse
-import cProfile
 import contextvars
+import cProfile
 import functools
 import json
 import os

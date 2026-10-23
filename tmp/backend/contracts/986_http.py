@@ -154,6 +154,125 @@ def assessment_payload(task):
     }
 
 
+@pytest.mark.parametrize("old_approved", [True, False])
+def test_new_assessment_supersedes_old_approval_without_replay_side_effects(
+    application, old_approved
+):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    task = transition(client, tokens["developer"], pid, task, 1)
+    task = transition(
+        client,
+        tokens["developer"],
+        pid,
+        task,
+        4,
+        artifact_revision="a" * 40,
+        evidence=EVIDENCE,
+    )
+    reviewed = request(
+        client,
+        "createTaskReview",
+        token=tokens["reviewer"],
+        project_id=pid,
+        task_id=task["id"],
+        body=review_payload(task),
+        expect=201,
+    ).json()["data"]
+    task = transition(
+        client,
+        tokens["reviewer"],
+        pid,
+        reviewed["task"],
+        5,
+        review_id=reviewed["review"]["id"],
+        review_version=1,
+    )
+
+    def assess(current, *, body=None, key=None):
+        return request(
+            client,
+            "createReleaseAssessment",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            body=body or assessment_payload(current),
+            key=key,
+            expect=201,
+        )
+
+    def approve(current, assessment, expect=200):
+        return request(
+            client,
+            "reviewReleaseAssessment",
+            token=tokens["reviewer"],
+            project_id=pid,
+            task_id=task["id"],
+            assessment_id=assessment["id"],
+            body={
+                "expected_version": current["version"],
+                "expected_assessment_version": assessment["version"],
+                "verdict": 1,
+                "reason": "Synthetic independent review",
+                "evidence": EVIDENCE,
+            },
+            expect=expect,
+        )
+
+    created_a = assess(task).json()["data"]
+    task, old = created_a["task"], created_a["assessment"]
+    if old_approved:
+        accepted = approve(task, old).json()["data"]
+        task, old = accepted["task"], accepted["assessment"]
+        assert task["approved_assessment_id"] == old["id"]
+    body, key = assessment_payload(task), str(uuid4())
+    created_b = assess(task, body=body, key=key).json()["data"]
+    task, latest = created_b["task"], created_b["assessment"]
+    assert task["approved_assessment_id"] is None
+    assert task["approved_assessment_version"] is None
+    assert task["state"] == 5
+    if not old_approved:
+        assert approve(task, old, 409).json()["code"] == "ASSESSMENT_BASELINE_MISMATCH"
+    rejected = transition(
+        client,
+        tokens["manager"],
+        pid,
+        task,
+        7,
+        expect=409,
+        assessment_id=old["id"],
+        assessment_version=old["version"],
+        release_version="synthetic-v1",
+        reason="Old approval must not release",
+        evidence=EVIDENCE,
+    )
+    assert rejected.json()["code"] == "RELEASE_APPROVAL_REQUIRED"
+    assert rejected.json()["audit_id"] is not None
+    accepted = approve(task, latest).json()["data"]
+    task, latest = accepted["task"], accepted["assessment"]
+    assert task["approved_assessment_id"] == latest["id"]
+    assert task["approved_assessment_version"] == latest["version"]
+    old_response = approve(task, old, 409)
+    assert old_response.json()["code"] == (
+        "STATE_CONFLICT" if old_approved else "ASSESSMENT_BASELINE_MISMATCH"
+    )
+    replay = assess(task, body=body, key=key)
+    assert replay.json()["meta"]["replayed"] is True
+    assert replay.json()["data"] == created_b
+    current = request(
+        client,
+        "getTask",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        expect=200,
+    ).json()["data"]
+    assert current == task
+    with factory() as uow:
+        assert uow.gateway.count("release_assessments", {"task_id": task["id"]}) == 2
+
+
 def test_complete_delivery_rollback_rework_http(application):
     client, factory = application
     tokens, pid, iid = setup_project(client)

@@ -166,3 +166,12 @@
 - 官方依据：Python3.12profile/time、SQLAlchemy2.1性能event、Starlette线程池；首次旧Starlette域502，改官方starlette.dev读取。脚本未运行/导入/编译/本机lint，无pytest/build/DB/HTTP/服务启动；仅Git文本diff检查不算程序验证。真正优化需证据，不更改生产、安全/状态/事务/完整契约校验。源码规模5866仍超5100，新增tmp诊断不用于改变分母。
 - 准备收尾时根正式通知v1报告发布，限定仅两份公开报告可读并要求先修IAT01～05。955准备先归档，不进入阶段B；下一业务修复实际续派另归原文，不能把本阶段未读报告的事实追写为已读。
 - 阶段A真实Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919；仅准备，无运行结果。
+
+## 已发布IAT-v1业务修复 checkpoint 1
+
+- 根正式续派优先修IAT01～05，实际原文追加PERFORMANCE-DIAGNOSTICS-v1-prompt.md。仅两份公开报告读取且SHA/publication_status核对完全匹配，iat-public-report-verification.json；目标e8ceefe为独立被测版本，不能把本岗当前源当原被测源。未沿报告内私有证据路径读取、未联系测试岗。
+- 原冻结createReleaseAssessment要求清旧批准，review要求当前风险评估。先在986新增开发HTTP回归，旧码实际2failed/30deselected（iat01-before.log/xml）：A批准后新B仍指A；旧pending A在新B后仍HTTP200批准。不是独立验收用例。pytest默认trace带临时SQLite token，原件保存ignored0600，公开副本仅凭据脱敏+SHA见iat01-failure-provenance.json，未改断言/业务输出。
+- 最小产品修复reviews.py：新建评估与同一task CAS清approved_assessment_id/version；评审只接受最新rollback_plan_version对应评估，旧pending评估返回已冻结ASSESSMENT_BASELINE_MISMATCH，历史评估不删。保持session/idem/任务锁、CAS、成功事务、outbox及独立拒绝审计不变，冻结11件未修改。
+- 真实32个HTTP/SQLite用例通过（iat01-after.log/xml），包括A批准/待审两情况、旧A不能交付/再激活、拒绝有audit_id、B批准后同key重放创建B只返回历史快照但不清现批准或另增记录；原complete delivery/rollback/rework保持通过。尚无本专项MySQL实库或独立复测结论。
+- 全backend/t44与tmp/backend Ruff最初发现955准备工具I001（iat01-ruff-initial.log），仅调导入排序后退出0（iat01-ruff.log）；Bandit退出0，无发现（iat01-bandit.*）。不运行955工具/性能负载，未重启或触18081/18082原验收实例。源码规模未解决。其余IAT02～05与性能IAT06待后续，不以32通过宣称全部修复。
+- IAT01实际阶段评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113；同账号仅COMMENT，不self-approve。

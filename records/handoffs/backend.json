@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1 stage A prepared; no experiment executed",
-  "implementation_status": "完整产品保留；仅新增未执行诊断工具/计划，无生产优化",
+  "stage": "Published IAT repair checkpoint1: IAT01 developer HTTP regression passed;02-05 pending",
+  "implementation_status": "Full product retained; IAT01 minimal approval invalidation/current-assessment guard fixed, no performance optimization",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -402,11 +402,13 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "tool syntax/import/hooks and effective timing accounting",
-    "client workload driver and neutral fixture selection",
-    "all baseline/CPU/SQL/queue/pool/lock/validation metrics",
-    "any bottleneck or optimization benefit",
-    "formal performance and final source range"
+    "IAT-v1-02",
+    "IAT-v1-03",
+    "IAT-v1-04",
+    "IAT-v1-05",
+    "this finding on MySQL",
+    "independent retest",
+    "performance thresholds and source range"
   ],
   "questions": [
     {
@@ -549,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T11:06:55.723936+00:00",
-  "current_stage": "ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1 stage A prepared; no experiment executed",
+  "updated_at": "2026-10-23T11:13:17.399121+00:00",
+  "current_stage": "Published IAT repair checkpoint1: IAT01 developer HTTP regression passed;02-05 pending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -721,5 +723,38 @@
     "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
     "next_priority": "coordinator has just published two allowed report files; stage A ends, IAT business fixes before stage B",
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919"
+  },
+  "iat_repairs_v1": {
+    "source_report_verification": "agents/backend/iat-public-report-verification.json",
+    "IAT-v1-01": {
+      "status": "fixed with32 HTTP/SQLite tests passed; original2fail preserved",
+      "changes": [
+        "new assessment clears approval pointers within existing task CAS",
+        "only latest rollback_plan_version can be reviewed",
+        "replay returns saved snapshot without repeated invalidation"
+      ],
+      "evidence": [
+        "agents/backend/iat01-before.log",
+        "agents/backend/iat01-before.xml",
+        "agents/backend/iat01-failure-provenance.json",
+        "agents/backend/iat01-after.log",
+        "agents/backend/iat01-after.xml",
+        "agents/backend/iat01-ruff-initial.log",
+        "agents/backend/iat01-ruff.log",
+        "agents/backend/iat01-bandit.json"
+      ],
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113"
+    },
+    "pending": [
+      "IAT-v1-02",
+      "IAT-v1-03",
+      "IAT-v1-04",
+      "IAT-v1-05"
+    ],
+    "unverified": [
+      "this finding on MySQL",
+      "independent retest",
+      "performance thresholds and source range"
+    ]
   }
 }
