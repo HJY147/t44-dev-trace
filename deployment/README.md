@@ -91,3 +91,7 @@ python3 deployment/ops.py restore --database t44_recovery --project t44-restore-
 - [Compose健康依赖与独立步骤](https://docs.docker.com/compose/how-tos/startup-order/)
 - [官方Compose规范](https://github.com/compose-spec/compose-spec)，离线schema及固定来源见 `deployment/vendor/`。
 - [Docker Official Images](https://github.com/docker-library/official-images)，镜像tag及多架构摘要已在2026-10-23向官方registry核对；上述托管Linux run已真实拉取并构建。
+
+## 独立 harness 托管环境
+
+下一轮隔离tester可使用[中性托管Linux环境](acceptance/README.md)。它使用精确产品/harness提交、私密凭据和只读SQL/受限故障控制；不包含独立用例。普通artifact仅存环境元数据及tester接收证书加密的密文，由tester自行审查发布报告。环境能力自检不等于独立验收或性能通过。
