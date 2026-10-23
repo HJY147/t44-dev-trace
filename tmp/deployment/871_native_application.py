@@ -221,6 +221,12 @@ class ApplicationGuards(unittest.TestCase):
                 appmod.assert_app_ports_free()
             kill.assert_not_called()
 
+    def test_short_command_identity_race_means_absent_never_signal(self):
+        with patch.object(appmod.broker_runtime, "process_identity", side_effect=ProcessLookupError), \
+                patch.object(appmod.os, "kill") as kill:
+            self.assertIsNone(appmod.process_identity(123))
+            kill.assert_not_called()
+
     def test_sql_writer_is_rejected_before_driver_import(self):
         app = self.prepare()
         for sql in ("DELETE FROM tasks", "DROP DATABASE t44_native_demo", "UPDATE tasks SET state=6"):

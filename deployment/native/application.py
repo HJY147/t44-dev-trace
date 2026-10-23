@@ -30,7 +30,7 @@ digest = broker_runtime.digest
 utc = broker_runtime.utc
 
 NODE = Path("/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node")
-PNPM = NODE.parent / "node_modules/pnpm/bin/pnpm.mjs"
+PNPM = NODE.parent.parent / "node_modules/pnpm/bin/pnpm.mjs"
 UV = Path("/Users/yang/Library/Application Support/MinerU/tools/uv")
 PYTHON = Path("/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12")
 APP_PORTS = {"api": 18088, "ui": 5178}
@@ -117,17 +117,26 @@ def clean_env(extra=None):
     return env
 
 
+def process_identity(pid):
+    # ps and getpgid are separate observations: a finite command can exit between
+    # them. Absence never grants signal ownership.
+    try:
+        return broker_runtime.process_identity(pid)
+    except ProcessLookupError:
+        return None
+
+
 def capture(argv, cwd, env, logs, *, timeout=180):
     """Every argv must already be credential-free. Raw output remains private."""
     start = utc()
     process = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
     time.sleep(0.05)
-    identity = broker_runtime.process_identity(process.pid)
+    identity = process_identity(process.pid)
     try:
         stdout, stderr = process.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
-        actual = broker_runtime.process_identity(process.pid)
+        actual = process_identity(process.pid)
         if identity is not None and broker_runtime.same_owner(identity, actual):
             os.kill(process.pid, signal.SIGTERM)
         try:
@@ -155,12 +164,15 @@ def prepare_dependencies(project, binding_path):
     backend_lock = binding["source_files"]["backend/requirements.lock"]
     frontend_lock = binding["source_files"]["frontend/pnpm-lock.yaml"]
     target = base / (backend_lock[:16] + "_" + frontend_lock[:16])
-    if target.exists():
+    if target.exists() and (target / "ready.json").exists():
         require_private(target, directory=True)
         ready = json.loads((target / "ready.json").read_text())
         if ready["backend_lock_sha256"] != backend_lock or ready["frontend_lock_sha256"] != frontend_lock:
             raise ValueError("DEPENDENCY_BINDING_MISMATCH")
         return {"success": True, "reused": True, "dependency_dir": str(target), **ready}
+    if target.exists():
+        # Never overwrite a failed preparation or infer it was complete.
+        target = target.with_name(target.name + "_attempt_" + uuid4().hex[:8])
     target.mkdir(mode=0o700)
     logs = target / "logs"
     logs.mkdir(mode=0o700)
@@ -420,7 +432,7 @@ class Application:
         process = self.processes.get(record["pid"])
         if process is not None:
             process.poll()
-        actual = broker_runtime.process_identity(record["pid"])
+        actual = process_identity(record["pid"])
         if actual is not None and (not matches_process(record, actual, leader=leader)
                                    or current_cwd(record["pid"]) != Path(record["cwd"])):
             raise ValueError("APPLICATION_PROCESS_OWNER_MISMATCH")
@@ -457,7 +469,7 @@ class Application:
             for file in files:
                 file.close()
         time.sleep(0.1)
-        actual = broker_runtime.process_identity(process.pid)
+        actual = process_identity(process.pid)
         if actual is None or actual["uid"] != os.getuid() or actual["pgid"] != process.pid:
             raise RuntimeError("APPLICATION_EARLY_EXIT")
         record = {key: value for key, value in actual.items() if key != "command"}
@@ -477,7 +489,7 @@ class Application:
                                 capture_output=True, text=True, check=False)
         workers, tracker = [], []
         for text in result.stdout.split():
-            actual = broker_runtime.process_identity(int(text))
+            actual = process_identity(int(text))
             if actual is None or actual["uid"] != os.getuid() or actual["pgid"] != parent["pgid"]:
                 raise ValueError("API_CHILD_OWNER_MISMATCH")
             if current_cwd(actual["pid"]) != self.source:
