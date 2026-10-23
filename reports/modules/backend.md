@@ -61,3 +61,12 @@
 - C1后端文档采用数据库下一轮response_request_id字段作为重放original_request_id来源；该列和COMPLETE约束由数据库岗另修，不代其宣称通过。
 - 新增 `agents/backend/validate_contract_design_v2.py`；真实修复前退出1/90项失败，修复后1130项设计检查、38操作、0失败；前后日志及Issue#3/#12正文见交接单。
 - 仍是未冻结设计、业务未实现；没有HTTP、MySQL、消息/调度运行或性能结论，等待合并后新SHA复审。
+
+## CORE-FOUNDATION-v1：纯领域代码已存在
+- 在独立树/分支codex/backend-core实现 `backend/t44/domain/`：内部Enum、typed命令、可信纯上下文协议、七状态九动作的decide及不可变决定/效果。外部字段和HTTP取舍未绑定。
+- 真实入口 `t44.domain.decide(position, command, context)`；I/O、资源加载、事务/CAS/幂等/审计/outbox由以后门面负责，本轮未接入。没有API占位路由。
+- 所有合法边、非法跳级、阻塞来源与解除、角色/证据/轮次、三处依赖（start/unblock到develop/rework）有参数化单元测试；评审拒绝不偷加依赖限制。
+- 实际uv universal/Python3.12生成68包hash锁，含PyMySQL[rsa]/cryptography、argon2-cffi，不含JWT；本机hash安装、wheel安装和pip check通过，Linux67包目标解析一致，未执行Linux运行。
+- 最终106项领域单元测试通过、Ruff/format/Bandit退出0；仅领域含分支覆盖约98%，非HTTP/集成/独立验收或全项目门禁。SSL与初次Ruff失败原始证据保留。
+- 详细接口/命令/限制在agents/backend/core-interface-notes.md；本轮实际prompt在CORE-FOUNDATION-v1-prompt.md。原始JUnit、coverage JSON及日志列于handoff。
+- API、DB/迁移、事务/幂等/CAS/审计、消息/调度、联调/性能仍未实现；Q002与正式规格冻结由用户/协调者/审核流程另行决定，AI自测不替代。
