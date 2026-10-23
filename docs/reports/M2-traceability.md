@@ -36,3 +36,12 @@
 最新整合CI：265d89b / run39931640641四job成功，覆盖率整套317通过/0失败/0跳过，whole Python2399/2724=88.07%、前端308/334=92.21%；[归档](../../records/ci/39931640641/junit-summary.json)及[M2快照](M2-ci-snapshot.json)。这是迁移后的实际执行，不能反向改写岗位本机仅collect的快照。仍不代表独立验收/性能/最终LOC。
 
 部署最终证据：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。
+
+## 最终图清单与渲染边界
+
+| 文件 | Mermaid图 | 当前检查 |
+| --- | --- | --- |
+| requirements-report.md | 产品边界flowchart、角色用例flowchart、七状态九动作stateDiagram-v2 | 源码块结构/实现语义核对，未渲染 |
+| design-report.md | 进程架构flowchart、核心与事件ER、成功/重放/拒绝sequenceDiagram、扫描/outbox/MQ/fallback sequenceDiagram | 源码块结构/实现语义核对，未渲染 |
+
+共7图，保留可审源码。正式Word应由后续documents流程真实渲染图并逐页QA；当前没有“看过成图/布局通过”结论。服务主体只具escalation:write，消息进程落通知与人类本人已读/处理分开。
