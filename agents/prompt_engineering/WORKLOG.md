@@ -105,3 +105,18 @@
 - 本岗报告增补、handoff及Issue11正文同步；只提交本岗文件，[skip ci]避免重复既绿整套。Issue实发/回读、commit/push结果在实际完成后继续追加。
 - GitHub插件`add_comment_to_issue`真实发布Issue11评论6374082306，随后`fetch_issue_comments`按ID找到且正文逐字匹配；公开回执M6-issue11-readback.json。没有APPROVE/合并或CI触发。
 - 实质checkpoint实际commit/push `dfa39537f6f375a93c773cceee5f0831d61f3fa7`，12个本岗文件；随后`git ls-remote`核远端精确匹配、独立树当时clean。Issue11续帖6374104135真实发布并按ID读回正文逐字一致；M6-publication.json保存回执。此后仅补本岗发布记录，产品/测试/配置未变，不重复整套CI。
+
+## 2026-10-24 M7 夜间固定cutoff补充
+
+- 收到根实际续派后核根clean/HEAD`6ec8d3c93f4ff5283d3db62ae7993e66c4c54ca2`、AGENTS/TASK；独立worktree/branch`codex/prompt-night-checkpoint`，未动根索引。M6及旧M4/M5历史保持。
+- 先写本轮实际派工原文与`M7-design-checkpoint.md`，仅两文件commit/push`4c476c634d019e74ef41a27c10deeb9bc4c5a07b`，再进行责任岗问取与事实收集；设计阶段明确只读八件v3公开文件和无运行边界。
+- 向native/FE/docs/reviewer四固定岗分别send_message一次，同时实际回答文档岗此前M6资料问取。返回均空且无错误，不能伪造送达；本轮收集记录时没有新M7回答。此前M6晚到答复/发布通知与新问答分开，其他材料据公开文件。
+- 读U001/U002/U019、M6事实包、公开RFC/夜间队列/源审阅包provenance、M6公开Word QA及根3samples receipt。私密ZIP/Word/封面/图片/R002原文均未打开。
+- 独立只读明确开放stage01/02/03/04各MD+JSON，未跟任何private refs/入口/日志/keys/密文、未联系tester。记录25/26、6浏览器15判据和F08规范优先级未决；三正式仍运行/待判读，无本cutoff结果，不取后发成绩倒填。
+- 核stdout2e2→cf685/189a官方CI配置补核；公开XML实为11项10红、63绿，原默认Ruff1不倒写0。中性TSV/零行和独立factory/浏览器机械错误分开，不当产品bug。
+- 核native原0a6/5ef run1false与run2true、c688唯一无进程反例、7f设计→b238实现→cc6封档/cd3限定复审；只读公开报告/原件/已存命令，不执行命令或反例。原inline未独立归档，明确仅语义重建，新capture未完整cycle。
+- 核三份公共记录冲突receipt与cee7a57原diff，保留JSON KeyError/暂存冲突被diffcheck拒commit、870误files数组纠正为AI过程错误；源码/测试不因解决公共记录冲突变化。
+- `git ls-remote`核FE2e583公开分支后只`git show`其prompt/validation，不进其worktree或私密账号。907一次20requests不等20个200；85源hash/准备失败/源进程身份等只读，不重新验证服务。
+- 创建短事实/可选亮点/学生自写问题、58源精确commit/blob/hash/URL、五Git祖先核对及JSON/XML必要核验。无新提示词版本计数，无人工12/3/5或最终研究正文补造。
+- 只读路径探索时一次zsh无匹配`*STDOUT*`退出1；随后按已观察文件列表精确读，作为工具路径查找失败，不写成产品错误。
+- 未运行产品/服务/数据库/浏览器/基准/全CI/Word重导/新图，未改产品/冻结/他岗/共享ledger。M7 Issue11一条具体交接和GET逐字回读/阶段commit push在实际完成后补记。

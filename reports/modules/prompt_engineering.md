@@ -68,3 +68,17 @@
 - 必要JSON/hash/XML/6祖先核对；继承189dc14笔误首次失败，git log核真189dc4a后纠正，历史不覆盖。本岗无产品/构建/浏览器/DB/负载/渲染或整套CI。
 - 人工12/3/5仍没有完成证据、本轮可确认0；完整独立/正式性能/规模不因六版计数、限定专审或开发绿通过。
 - 本岗Issue11实发评论与精确readback、纯文档阶段commit/push以实际回执补入交接；不自行发布审核成功或合并。
+
+## M7 增补：夜间真实过程材料
+
+- 本轮实际prompt`ROLE-prompt_engineering-M7-NIGHT-CHECKPOINT-v1`；独立`codex/prompt-night-checkpoint`，内容cutoff6ec8d3c，不动根索引。
+- 先真实任务/设计commit并push`4c476c634d019e74ef41a27c10deeb9bc4c5a07b`，再向native/FE/docs/reviewer四固定岗各问一次；收集时未观测新M7回复，用公开Git文件不冒充访谈。
+- 主产物`docs/prompting/M7-night-process-evidence.md`；58源commit/blob/SHA/URL、五祖先核对、真实问取及实际任务另存。M6六版不增计，历史勘误不改。
+- stdout2e2先设计→cf685严格JSON/两路分流；原11合成10红/全63绿，默认Ruff1与正式CI配置补核0分开。独立factory/TSV/零行/页面绑定错误仅按八件公开v3文件记录。
+- 原0a6 run1失败/run2成功→c688无进程超时反例P2→7f/b238窄修→cd3原语义反例限定关闭；不谎称inline命令逐字相同，不把旧cycle倒填新代码。
+- 公共Markdown/JSON并行合并的原KeyError/冲突门禁拒commit和双方历史保留、870错数组纠正均记AI过程错误，无学生识别或产品bug推定。
+- 独立仅开放stage01–04各MD+JSON；25/26功能整例、6浏览器/15原判据、130/551组合观察各自准确；F08原断言未改、优先级未决。正式三组及新6ec CI在cutoff无结果，不追后发。
+- 应用bc5开发CI510/89、全44Python/20前端源与6307超1207保留；预览2e583只20requests/0业务写，不称20个200或业务重验。
+- M6 Word33页文档AI全看、根3samples、M7本岗未看私密原件；源码审阅私密包只读公开provenance，不当最终作业交付。
+- U001/U002仍优先作为用户原创亮点；夜间新链只AI素材，附学生自行分析问题，不写第一人称答案/效率效果百分比。人工12/3/5与最终学生正文未证。
+- 无产品测试/服务/基准/全CI/Word重导/新图；Issue11一条具体交接及GET回读、仅本岗阶段commit/push后结束。
