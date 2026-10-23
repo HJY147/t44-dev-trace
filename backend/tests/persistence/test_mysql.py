@@ -23,7 +23,6 @@ from t44.persistence.accounts import PasswordHashRejected, initialize_user
 from t44.persistence.codecs import utc_now
 from t44.persistence.delivery import OutboxStore
 from t44.persistence.errors import StatementRejected
-from t44.persistence.idempotency import IdempotencyStore
 from t44.persistence.migrations import migrate
 from t44.persistence.scans import ScanStore
 
@@ -225,46 +224,70 @@ def test_real_processing_json_null_and_unique_claim(mysql, fixture):
 
 
 def test_real_concurrent_claim_takeover_and_result_request_id(mysql, fixture):
+    from t44.services.common import Call
+    from t44.services.errors import Rejected
+    from t44.services.runtime import Runtime
+    from t44.settings import Settings
+
     _, factory = mysql
-    store, key, now = IdempotencyStore(factory), uuid4().hex, utc_now()
-    args = dict(
-        actor_kind=1,
-        actor_id=fixture["user"],
-        operation_id="claimFixture",
-        key=key,
-        request_hash=hashlib.sha256(b"same-payload").digest(),
-        now=now,
-        lease_seconds=1,
-    )
+    runtime = Runtime(factory, Settings(idempotency_lease_seconds=1), None)
+    key, now, token = uuid4().hex, utc_now(), uuid4().hex + uuid4().hex
+    with factory() as uow:
+        uow.gateway.insert(
+            "auth_sessions",
+            dict(
+                actor_kind=1,
+                user_id=fixture["user"],
+                token_hash=hashlib.sha256(token.encode()).digest(),
+                project_ids=[],
+                scopes=[],
+                expires_at=now + timedelta(hours=1),
+                created_at=now,
+            ),
+        )
+
+    def call(*, clock=now, request_id=None, body=None):
+        value = Call(
+            "createProject",
+            request_id or uuid4().hex,
+            token,
+            key=key,
+            body=body or {"name": "synthetic"},
+            clock=clock,
+        )
+        runtime.authorize(value)
+        return value
+
     barrier = Barrier(2)
 
     def claim():
+        value = call()
         barrier.wait(timeout=10)
-        return store.claim(**args)
+        try:
+            runtime.claim(value)
+            return "claimed", value
+        except Rejected as error:
+            assert error.code == "IDEMPOTENCY_IN_PROGRESS"
+            return "in_progress", value
 
     with ThreadPoolExecutor(max_workers=2) as pool:
         results = list(pool.map(lambda _: claim(), range(2)))
-    assert sorted(r["disposition"] for r in results) == ["claimed", "in_progress"]
-    original = next(r["row"] for r in results if r["disposition"] == "claimed")
-    later = now + timedelta(seconds=2)
-    recovered = store.claim(**{**args, "now": later})["row"]
-    assert recovered["owner_token"] != original["owner_token"]
+    assert sorted(result[0] for result in results) == ["claimed", "in_progress"]
+    original = next(value for status, value in results if status == "claimed")
+    recovered = call(clock=now + timedelta(seconds=2), request_id="final-result-request")
+    assert runtime.claim(recovered) is None
+    assert recovered.idem["owner_token"] != original.idem["owner_token"]
     with factory() as uow:
-        with pytest.raises(StatementRejected):
-            store.lock_owner(uow.gateway, original["id"], original["owner_token"], now=later)
-        store.complete(
-            uow.gateway,
-            recovered["id"],
-            recovered["owner_token"],
-            now=later,
-            response_status=202,
-            response_body={"data": {"created": True}},
-            response_request_id="final-result-request",
-        )
-    replay = store.claim(**args)
-    assert replay["disposition"] == "replay"
-    assert replay["row"]["response_request_id"] == "final-result-request"
-    assert store.claim(**{**args, "request_hash": b"x" * 32})["disposition"] == "mismatch"
+        with pytest.raises(Rejected) as error:
+            runtime.locked_scope(uow.gateway, original)
+        assert error.value.code == "IDEMPOTENCY_IN_PROGRESS"
+        runtime.locked_scope(uow.gateway, recovered)
+        runtime.complete(uow.gateway, recovered, 202, {"data": {"created": True}})
+    replay = runtime.claim(call())
+    assert replay["status"] == 2 and replay["response_request_id"] == "final-result-request"
+    with pytest.raises(Rejected) as error:
+        runtime.claim(call(body={"name": "different"}))
+    assert error.value.code == "IDEMPOTENCY_CONTENT_CONFLICT"
 
 
 def test_real_durable_scan_concurrent_start_and_cursor_recovery(mysql, fixture):

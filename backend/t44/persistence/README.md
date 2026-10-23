@@ -4,7 +4,7 @@
 
 组合根构造MySQLSettings、create_mysql_engine(settings)、SqlAlchemyUnitOfWorkFactory(engine)，进程退出dispose Engine。每条新物理连接UTC、严格SQL、READ COMMITTED；池pre_ping/回收/超时，隐藏参数。with factory() as uow正常commit、异常rollback、总close；工厂每次新Session。CommitUncertain表示提交确认丢失，后续rollback只清理，服务必须沿原key恢复，不重新执行已完成请求。
 
-uow.gateway是RowsGateway，也兼容旧gateway(TableBinding)。只允许冻结表/列、参数绑定和固定谓词；拒未知标识符、SQL表达式、无where写入。此门面只供可信应用内部，不作为用户可选表名的CRUD API。DATETIME写入要求aware并转UTC naive，读取aware UTC，年份1000..9999；JSON直接dict/list，Python None写SQL NULL。codecs提供to_db_time/from_db_time、hours_to_quarters/quarters_to_hours、uuid_to_bytes/bytes_to_uuid。主键统一INT UNSIGNED，tasks循环FK仍显式生成id。
+uow.gateway是RowsGateway。只允许冻结表/列、参数绑定和固定谓词；拒未知标识符、SQL表达式、无where写入。此门面只供可信应用内部，不作为用户可选表名的CRUD API。DATETIME写入要求aware并转UTC naive，读取aware UTC，年份1000..9999；JSON直接dict/list，Python None写SQL NULL。codecs提供to_db_time/from_db_time、hours_to_quarters/quarters_to_hours、uuid_to_bytes/bytes_to_uuid。主键统一INT UNSIGNED，tasks循环FK仍显式生成id。
 
 ```python
 with factory() as uow:
@@ -34,12 +34,14 @@ OutboxStore(factory)各方法使用独立UoW，MQ网络I/O必须在方法外。
 
 ScanStore(factory)：start(run_id,*,rule_version,rule_snapshot,rule_hash,cutoff_at=None)返回持久行；run_id字符串/UUID映射run_key bytes16与整数id；相同UUID并发唯一，同UUID改版本/hash拒绝。get(run_id)、recoverable(*,heartbeat_before,limit=100)取未完成旧心跳行。page(run_id,*,limit=200)按id返回state1..5及快照窗口候选，固定cutoff，id大于游标。checkpoint(run_id,*,last_task_id,scanned_delta=0,created_delta=0,duplicate_delta=0,finished=False,error_code=None)单调推进并返回持久行；相同游标不重复计数、逆向拒绝。进程崩溃status1可用原UUID重启续扫；升级提交与游标分开，崩溃重扫由unique(task_id,schedule_version,level)去重，不能假称两次HTTP与checkpoint一个事务。规则判定/HTTP调用/定时器由调度岗负责。
 
-IdempotencyStore(factory)提供可选claim、lock_owner、complete、reject_after_rollback原语；backend可继续使用已确认Rows编排。claim并发唯一、摘要先匹配、COMPLETE重放；过期恢复加行锁等待旧主事务结束并换owner_token。主事务必须先lock_owner持有至commit，complete再次检查token及未过期租约；记录实际生成结果的response_request_id，回放original_request_id从该列读取，不保存旧meta/凭据。不自动删除旧key。reject_after_rollback调用前主UoW必须已释放锁；CommitUncertain原样传播。
+幂等事务统一由backend Runtime使用Rows编排；已移除没有生产调用的可选IdempotencyStore以及早期CoreGateway/TableBinding，原并发/租约/final-request断言迁到实际Runtime，原18项基础安全/事务断言迁到Rows，保持全部验证意图。
 
 ## 实测边界
 
 本机T44_TEST_CREDENTIALS指向ignored app凭据文件且显式T44_TEST_DATABASE=t44_test时：`PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q`。仅t44_test；不触及acceptance/bench。CI使用DATABASE_URL+匹配T44_DATABASE（t44_ci），无本机私密文件依赖，CI缺配置直接fail；测试模块标记integration。本机实际复跑该环境变量入口12项通过，非GitHub托管CI结果。当前33项通过，其中21项SQLite/mock、12项真实官方MySQL8.4.11案例。首次真库29项中3项错误分类失败保留原日志，修复后通过。真库覆盖首次/重复迁移、SHOW CREATE核心表、UTC/strict/RC、约束、生成ID、并发CAS/幂等租约、独立拒绝审计、outbox降级并发与扫描恢复。不等于RabbitMQ网络、API全链、性能、全局覆盖率或独立验收通过。
 
-seed仍在本岗agents/database/drafts/，尚无生产seed_demo入口、未执行。需补代表状态与轮次一致性后交接，不能调用草稿或把其合成评审当真人证据。
+seed.seed_demo(factory,*,projects=40,tasks=6000,dependencies=9000,records=15000,manager_username="synthetic-manager",seed=44,anchor_at=None,template_path=None,rules_path=None,batch_size=250)已实现，CLI现有seed-demo直接调用。单UoW绑定批量插入/主键更新，空项目集限定、重复同manifest幂等、不同描述拒绝，真实配置raw hash及seed/version/anchor入manifest，首次返回全部统计。默认40/6000/9000/11400reviews+3600decisions/7态，另3600预案；真MySQLbench已全量核引用、JSON模型、批准指针/轮次/容量及DAG/当前前驱。全部synthetic，见SYNTHETIC-DATA.md。旧agents/database/drafts只历史未执行版本，不是当前生产入口。
 
 recover_confirmed(*,confirmed_before,now=None,limit=100)只返回本轮真正补缺并从confirmed转fallback的event_id/created/fallback字典。固定MySQL JSON_TABLE+NOT EXISTS在候选阶段排除完整通知事件，完整旧事件不占limit；FOR UPDATE SKIP LOCKED与consumer/fallback锁同事件，锁内复查后created>0才变终态。默认超时由消息进程传入，不新增升级规则；已齐通知不误标降级，旧token仍stale_owner，迟到confirm不回退。
+
+Rows新增insert_many(table,values)与update_many(table,values)：同形绑定参数批量，update每行必须有id与非空变更，不提供无条件批量写。seed使用batch_size分批但一个外层事务，不逐行建事务。
