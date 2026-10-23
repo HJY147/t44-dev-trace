@@ -1503,5 +1503,53 @@
     "next": "root decide only after formal results;separate design/review before anyproductionC;no automaticB/C/load",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6375961904",
     "readback_matches": true
+  },
+  "bc5_contract_diagnostics": {
+    "branch": "codex/backend-bc5-diagnostics",
+    "application": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "prompt": "agents/backend/BC5-CONTRACT-DIAGNOSTICS-dispatch.md",
+    "design_first": "08f8050d44b5bcc2786192514f65fa35fc1c6975",
+    "first_tool": "231445d61f708894cb73fa7a51d740d065870e29",
+    "continuation_design_tool": "44b9e8c48e2beb2c0ed52fb4b2d92787d46ef48a",
+    "result": "agents/backend/bc5-contract-diagnostic/result.md",
+    "summaries": [
+      "agents/backend/bc5-contract-diagnostic/summary.json",
+      "agents/backend/bc5-contract-diagnostic/continuation-summary.json"
+    ],
+    "raw_manifests": [
+      "agents/backend/bc5-contract-diagnostic/raw-manifest.json",
+      "agents/backend/bc5-contract-diagnostic/continuation-raw-manifest.json"
+    ],
+    "operator": "backend AI",
+    "first_execution": "22:35:01.756-22:35:19.146Z exit1;3766 valid baseline,tool500/connection errors0runtime",
+    "continuation_execution": "22:37:42.655-22:37:55.745Z exit0;3419 valid observation incl3profile;no repeated bootstrap/sanity/baseline",
+    "baseline_p95_ms": [
+      3.680709,
+      24.382625,
+      87.778666
+    ],
+    "timings_p95_ms": [
+      4.198625,
+      25.010167,
+      89.705125
+    ],
+    "actual_counts": "1auth/acquire/checkout/dispatch;categories4/5/5SELECT;0SQLerrors",
+    "observation": "concurrency32 runtimewall28.630/threadCPU1.766ms;cursor9.239/acquire14.525/dispatch6.123ms inclusive;newconnections1/69/211",
+    "bounds": "onlyt44_profile/18083;portfree beforeafter;otherprofileconnections0;allownserversnormalexit;noreset/seed/resourceschange",
+    "private_fixture": "excluded;knownpassword/token matches0",
+    "source_size": "production0change;fixed6307gap1207 remains",
+    "frozen_files": "14unchanged",
+    "unverified": [
+      "formal503cause",
+      "hosted400x600attribution",
+      "SQLserverlockwait",
+      "purepoolwait/queue",
+      "transition/escalationphases",
+      "productionC/B",
+      "N07pass"
+    ],
+    "next": "seal and release;future write-path diagnostic requires root admission;no automatic load",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376181741",
+    "readback_matches": true
   }
 }
