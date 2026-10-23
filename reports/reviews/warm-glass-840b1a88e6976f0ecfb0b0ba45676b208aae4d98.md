@@ -54,6 +54,7 @@ Vite 仅增加 `cacheDir: process.env.T44_VITE_CACHE_DIR ?? 'node_modules/.vite'
 5. 最终开发实测：1440 下 form body client/scroll/top=849/1118/269；390 下=857/1829/972，均 atBottom=true、关闭可见；18 次页面宽度检查无横溢出，pageerror=[]。40 个 API 响应全 200，仅两次登录 POST，其余 GET，无业务写入。
 6. 首次 GitHub 元数据读回 PR draft、未合并，head=56f588e7049fd8e050ca67ed7c92b9297e7230b4，尚不含 840（merge-base exit1，属版本不同而非测试失败）。已通知总协调，COMMENT 必须等待含目标的 PR 提交并绑定 840；实际发布回执另归档。
 7. 总协调集成 push 后再次通过插件读回 PR head=`8be64056f1733eb99938aa3b7d9b1b22a53677a6`、base=`1996d44425e09930b5ba3ae5391b728980241f55`、draft=true、merged=false。`git merge-base --is-ancestor 840… 8be…` exit0，目标已在 PR 内；`git rev-parse 840^` 精确等于设计 326。回执 `agents/reviewer/evidence/warm-glass/pr-before-comment.json`；本报告不冒称审核了整个 8be HEAD。
+8. 实际发布后补记：插件PR21 COMMENT5632356314成功，gh只读GET该review核commit_id精确840、COMMENTED、正文逐字一致，回执 `agents/reviewer/evidence/warm-glass/github-comment.json`；未写提交状态或APPROVE。原报告首归档d8bba16、回执归档e79fb5e均已自有分支push。
 
 ## 7. 问题与门禁判定
 

@@ -179,3 +179,6 @@
 - 精确diff确认唯一生产源FieldEditor+7；原initial函数正确，Json联合在泛型props编译为Boolean-before-String，空串被组件强转，非CSS/API/默认值函数错误。改显式运行时type:null且保留TS PropType，默认值/props/emits/业务校验不变。
 - 3源hash与75相同，6份原gzip及可读hash/逐行尾空白规范化均一致；读红2失败/4通过、绿6、受影响14通过/16名称未选原件，不相加，不重跑、不改断言。本岗实际view_image看4张原PNG，20响应2login+18GET无业务写，三文本DOM为空/required阻止提交。原502/30s登录失败与新build大chunk警告保留，不外推840覆盖率。
 - FE-INIT-01在75范围可限定关闭，无新实质阻断；整产品独立/性能/规模门禁仍未通过。无账号/独立资料/5175访问或新脚本。首次PR仍8be，75祖先检查exit1，已通知root，暂不发COMMENT。归档报告后等待目标纳入PR，实际发布另记。
+
+- 75补充阶段67e051f0423f1da1b38bfb7d793ccbf8a5d0e480已commit/push exit0。随后插件实际读到PR head4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0，frontend/src与Vite同75无差异；root亦发来真实push确认。插件COMMENT5632472310成功，gh只读GET特定review核commit_id=75c3468完整SHA、COMMENTED、正文逐字一致，URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5632472310 。无status写入/APPROVE/合并。
+- documentation发M5真实资料问取，已回复两轮精确source/design/evidence/review SHA、公开报告及两个已发布COMMENT和未测边界；75回执当时刚发布尚待本次push，如实说明。未接触或传递独立未发布材料。root说明源码仍超上限，本岗没有重算或宣称规模通过。最终只补实际回执与阶段交接，不更改任何产品/测试源码。

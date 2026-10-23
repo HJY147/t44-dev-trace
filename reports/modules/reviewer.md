@@ -102,3 +102,7 @@ D005/D006及公开IAT01–05、FE计数修复的限定源审查未发现新实�
 精确 `75c3468de07303cc47b9afd0e4a169664743470e` 相对840只有FieldEditor生产源修改，设计736先提交、公开621证据后归档。根因是Vue为Json联合推导的props把Boolean排在String前而强转空串，initial()本来正确；显式type:null/PropType保留原JSON值，schema/API/样式不改。3源hash、6原gzip/规范化可读日志一致；本岗实际看4原PNG。开发红2→绿6、受影响14通过、真实1440/390空字段与required阻止提交、20响应仅登录和GET均核原件。本岗未重跑，未将840覆盖率外推。
 
 FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5632356314保留当时历史。75补充报告 `reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md`，prompt `ROLE-reviewer-EMPTY-VALUE-SUPPLEMENT-v1`。整产品仍不通过；此时目标尚未纳入PR head8be，暂不COMMENT，待root push后绑定75，最终回执另补。
+
+发布补记：远端head后变为4d9da050de2e91dfd3f37ff915c2872c55d52888，75祖先检查exit0、frontend/src及Vite与75差异为空。插件实际COMMENT5632472310已发布；gh只读特定review核commit_id=75、state=COMMENTED、正文逐字一致。回执 `agents/reviewer/evidence/empty-value-75c/github-comment.json`。没有发布任何status/APPROVE或合并。
+
+两轮最终公开留痕：840 COMMENT5632356314（报告d8bba16、回执e79fb5e）与75 COMMENT5632472310（报告67e051f、回执后续归档），均已发布并精确绑定各自source。documentation按M5实问索取后，已回复这两组准确SHA/链接/未测边界；未向其提供任何独立未发布材料。

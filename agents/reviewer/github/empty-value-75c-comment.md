@@ -14,4 +14,4 @@ FE-INIT-01在75所列范围限定关闭，未发现新增实质阻断；整产�
 
 本岗未重跑14项/build/浏览器或整套业务、没有账号/独立未发布资料/5175访问。只限源审和已提交开发原件核验，不是独立验收/学生手测；正式性能、源码规模和整体门禁仍未通过。不写reviewer/stage success，不APPROVE，不合并main。
 
-[八段十项补充报告](https://github.com/HJY147/t44-dev-trace/blob/codex/review-warm-glass/reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md)；[原件摘要核验](https://github.com/HJY147/t44-dev-trace/blob/codex/review-warm-glass/agents/reviewer/evidence/empty-value-75c/verification.json)。
+[八段十项补充报告](https://github.com/HJY147/t44-dev-trace/blob/67e051f0423f1da1b38bfb7d793ccbf8a5d0e480/reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md)；[原件摘要核验](https://github.com/HJY147/t44-dev-trace/blob/67e051f0423f1da1b38bfb7d793ccbf8a5d0e480/agents/reviewer/evidence/empty-value-75c/verification.json)。
