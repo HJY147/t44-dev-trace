@@ -32,3 +32,9 @@
 - U002 的真实沟通见[前端幂等问题](https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122)、[设计审查失败](https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358801740)、[后端修订答复](https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358981840)及 PR14/16/21；阶段 commit 和精确 SHA 审核实际存在。e01 failure 保留，不能把同账号 AI 岗位审核包装成另一真人 APPROVE。
 - 最新公开仓库可见性/MIT、FE b485 与 BE64b4 的指定远端 CI 已在 `M3-source-manifest.json` 实读；`M3-evidence-checkpoint.md` 区分修复、开发回归、人工归属与仍缺资料，不编提效数字或总体通过。
 - 上文“尚未取得”的项目是当时记录，本节仅覆盖明确新增证据；U001-O1/U002-O1 仍 proposed，用户原创归属不变，个人研究正文仍由学生本人写。
+
+## M4新增本人来源与执行边界
+
+R001原文/provenance（5b3bf30）是本人关于架构、封装、函数I/O、需求和测试把关的真实观点；D005/D006是后续真实业务选择。它们补足“人提出什么/决定什么”的来源，不充抵亲自改码12条或人工识别3条。U001/U002亮点仍以原文、M0实际commit与Issue、设计/产品审核的精确SHA和真实失败/修正链展示，不编提效数字。
+
+新增 `M4-real-process-evidence.md` 将原e8独立失败、BE479/FEf654开发验证、容量三阶段设计和Word私密QA分开；`PROPOSED-human-skeleton-review-v1` 是AI据R001主题提出的新建议，未使用。学生研究正文仍由本人写。

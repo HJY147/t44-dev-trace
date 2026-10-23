@@ -1,53 +1,54 @@
-# 提示词工程岗位 M3 事实材料报告
+# 提示词工程岗位 M4 真实过程报告
 
 ## 任务与边界
 
-- 岗位：prompt_engineering；实际派工 ROLE-prompt_engineering-M3-EVIDENCE-v1。
-- 已读根 AGENTS 与本岗 TASK；本轮只整理已公开来源，不实现或修改产品代码。
-- 独立树 `.agent-worktrees/prompt-engineering-m3-evidence`；分支 `codex/prompt-engineering-m3-evidence`。
-- 基线 8fb74cdf893d83413338f966156274fe58caf22b，增量来源分别标完整 SHA。
-- 性能窗口内无本机测试、构建、渲染、业务请求；不占根索引。
+- 实际派工 ROLE-prompt_engineering-M4-REAL-PROCESS-v1；actor 提示词岗AI。
+- 已核根AGENTS、本岗TASK与既有归属规范，只做公开文档/Git/只读取证。
+- 独立树 `.agent-worktrees/prompt-engineering-m4-real-process`，分支同名codex前缀。
+- 公开基线32f58132cb670c9f4c0b2bb22e4b574ac6deb4b8，DB705e增量单独绑定。
+- 不运行产品/负载/浏览器/构建/渲染，不联系tester，不读其私有证据。
 
-## 当前产物
+## 实际产物
 
-- `docs/prompting/M3-evidence-checkpoint.md`：需求到设计、真实 prompt 族、9 条 AI/工具事实映射与缺口。
-- `docs/prompting/M3-source-inquiries.md`：四岗真实异步问取，backend 已回复，其他未收到，不代填。
-- `docs/prompting/M3-source-manifest.json`：30 处已发布 Git 对象/hash、公开仓库/状态/CI/JUnit 回读。
-- `docs/prompting/evidence/gha-39937368245.*`、`gha-39938619826.*`：指定 FE/BE 远端元数据及明确脱敏副本。
-- `docs/prompting/highlight-candidates.md`：补 U001/U002 的真实 Issue、PR、commit 证据。
-- `records/prompts/ROLE-prompt_engineering-M3-EVIDENCE-v1.md`：实际派工脱敏快照，学生具体姓名不公开。
-- 本岗 WORKLOG、handoff、GitHub M3 评论正文同步更新；旧原始记录保留。
+- `docs/prompting/M4-real-process-evidence.md`：本人输入、12条真实AI过程映射、演进族与缺口。
+- `docs/prompting/M4-source-inquiries.md`：六岗实问，BE/DB/FE/reviewer已回，docs/guidance pending。
+- `docs/prompting/M4-source-manifest.json`：49处公开对象/hash及CI、JUnit、独立报告限定摘要。
+- `records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md`：实际派工原文，used。
+- `records/prompts/PROPOSED-human-skeleton-review-v1.md`：据R001主题提出的可复用建议，未使用。
+- 本岗WORKLOG/report/handoff/GitHub M4评论正文及亮点候选增量同步。
+- 原用户原文、D005/D006、他岗文件、共享ledger均不由本岗修改。
 
-## 事实与归属
+## 归属与需求事实
 
-- U001/U002 原创归用户，U003 是公开补充；U001-O1/U002-O1 仍 proposed。
-- D001/D004 是实际用户采用决定，不计用户亲改代码或本人识别缺陷。
-- CONTRACT-v1→审核失败→CONTRACT-v2 是两版同一设计任务；不足六版。
-- FE 集成的实质反馈与编号/身份/数据准备续条分列，不把协调消息凑优化版本。
-- ROOT-documentation-M3-DIAGRAMS-v1 明确为事后目标重述，不计实际派工演进。
-- C-P1/P2/P4 是审核 AI 复现，C-P3 为原政策统计超限；owner 修复不是学生亲改。
-- 学生研究正文及个人收获只能本人写；本岗仅给事实、来源和问题提纲。
+- R001本人反思已收到，hash与provenance一致；不再称个人观点完全未提供。
+- R001不证明本人已写骨架/断点/改码，研究正文仍由本人写，本岗仅事实与提纲。
+- U015/D005与U016/D006是本人选择；旧pending和后续采用分别记录。
+- capacity保护1–5、成员保护1–5+7；root提案错误由reviewer AI纠正，不记学生识别。
+- 5fb/02/bbc三阶段技术设计准入不等于产品实现、冻结、并发验证或总验收。
+- U001/U002原创归人、真实Issue/PR/commit可查；优化稿仍proposed。
 
-## 公开证据与验证范围
+## 验证与版本边界
 
-- 精确 e01 的 reviewer/stage=failure 已远端回读，保留原失败，不覆盖为新 HEAD 通过。
-- FE b485 的 run39937368245、BE64b4 的 run39938619826 四 product job success，原日志均317通过。
-- BE 发布 JUnit 已只读解析为317、0失败/错误/跳过；不把它记为本岗执行测试。
-- 原日志 SHA-256 和远端链接保留，公开副本删除凭据相关行并注明脱敏，不称逐字原件。
-- 资料仅做 JSON/引用/差异格式静态核对，不以产品测试冒本岗验证。
-- 未联系测试，未读取未发布黑盒文件或私有用例；尚未收明确发布的独立最终报告。
+- 只读明确发布的四个独立报告文件，不跟随其私有路径或截图。
+- 原e8独立整体未过：38成功路径通过，900为340/183/328/49，183含歧义不是183bug。
+- UI补充3通过/1失败/1阻塞，原900不改；三批400VU600秒P95失败，稳态零失败/吞吐达标。
+- BE开发55HTTP/SQLite、479远端362/0skip/88.56%；985专项总5=原1+新增4。
+- FE f654远端27/92.79%，02ec开发真80HTTP；它们不是修复后独立复测。
+- 955 hook错误/非JSON502/Ruff误配原失败保留，代理仍是假设，无性能样本或提效结论。
+- M4公开QA为文档AI四批迭代后28页；私密Word/封面/截图本岗未读，学生正文未代写。
 
 ## 输入输出与交接
 
-- 输入：用户原文、实际派工、已发布 owner/reviewer 资料、公开 Issue/PR/CI。
-- 输出：事实 checkpoint、作者边界、演进族和缺口，交总协调及文档岗。
-- 未收到的异步回复按状态注明；后续消息作为新补充，不倒填历史问答。
-- 本轮没有新增业务接口、冻结规范或规则决定，不改原文/他岗文件/共享 ledger。
-- GitHub Issue11 记录真实交流；仅在本岗树显式暂存，阶段 commit/push 后交完整 SHA。
+- 输入为用户原文、已发布责任岗实际prompt/日志/报告/CI和四件独立最终资料。
+- 输出为可引用事实、归属、演进族和真实缺口，供总协调及文档岗使用。
+- 49来源轻量hash/链接/JSON/XML核对足够，不创建形式化测试，不把资料核对称产品验证。
+- 本轮问取回执保留首次未提交→后来DB705e发布的变化；其他未回不代填。
+- 仅本岗树显式暂存，维护Issue11真实交流，阶段commit/push交完整SHA。
 
 ## 未达标与限制
 
-- 单一 prompt 六版尚未核实；人工修改≥12、本人人工识别≥3、人工校正映射≥5的本轮可证实数均0。
-- 9 条 AI/工具映射仅为事实素材，不充抵人的经历；数字只指本轮已收证据。
-- 产品实现已由各岗推进，本岗实现状态“未实现”仅指未实现产品代码，不表示全项目没有代码。
-- 新 SHA 审核、最终规模、正式性能、独立验收及学生成稿分别待证，不宣称总验收。
+- 单族六版尚未核实，不把角色分工、工具重试、Word批次或被审SHA凑数。
+- 本轮学生亲改12/亲自识别3/人工校正映射5的可证实完成数均0，AI映射不充抵。
+- 已有本人观点和选择，不据此推定本人研究成稿或课程建议已完成。
+- v1.1后续实现/冻结/测试、最新完整审核/独立复测/性能/规模仍需各自证据。
+- implementation_status未实现仅指本岗未实现产品代码，非全项目没有代码。

@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "M3 已公开AI使用留痕事实checkpoint",
+  "stage": "M4 公开真实过程与本人输入事实整理",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -26,7 +26,13 @@
     "docs/prompting/evidence/gha-39937368245.json",
     "docs/prompting/evidence/gha-39937368245.redacted.log.gz",
     "docs/prompting/evidence/gha-39938619826.json",
-    "docs/prompting/evidence/gha-39938619826.redacted.log.gz"
+    "docs/prompting/evidence/gha-39938619826.redacted.log.gz",
+    "docs/prompting/M4-real-process-evidence.md",
+    "docs/prompting/M4-source-inquiries.md",
+    "docs/prompting/M4-source-manifest.json",
+    "records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md",
+    "records/prompts/PROPOSED-human-skeleton-review-v1.md",
+    "agents/prompt_engineering/github-m4-stage-comment.md"
   ],
   "interfaces": {
     "inputs": [
@@ -47,12 +53,19 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "M3-evidence-checkpoint-v1",
+    "version": "M4-real-process-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
     "implementation_scope": "未实现仅指本岗未实现产品代码，全项目实际产品状态由责任岗/审核/验收证据分别判断",
-    "m3_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450"
+    "m3_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450",
+    "independent_published_read_boundary": [
+      "reports/independent-tests/v1-blackbox-report.md",
+      "reports/independent-tests/v1-blackbox-results.json",
+      "reports/independent-tests/v1-ui-addendum.md",
+      "reports/independent-tests/v1-ui-addendum.json"
+    ],
+    "m4_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -81,7 +94,14 @@
     "gh run view 39937368245/39938619826 --log：只读取远端既有执行，存脱敏副本及原hash",
     "python3：公开JUnit与文档JSON/引用解析，不执行产品测试",
     "python3: 文档JSON/引用/30公开来源/JUnit/脱敏副本静态核对；git diff --check",
-    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m3-stage-comment.md"
+    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m3-stage-comment.md",
+    "git worktree add 独立codex/prompt-engineering-m4-real-process，从公开32f5813建立",
+    "send_message: BE/DB/FE/documentation/guidance/reviewer六岗公开事实问取，不向tester发送",
+    "git show/sha256：49公开来源及5fb/02/bbc历史绑定",
+    "python3：R001 provenance hash、公开独立四报告限定摘要、JUnit/JSON读取",
+    "gh api actions/runs/39946771417 与39948047446只读远端元数据",
+    "python3: 必要文档引用/hash/JSON/XML与used-proposed核对；git diff --check",
+    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m4-stage-comment.md"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -103,18 +123,26 @@
     "指定FE b485与BE64b远端product成功，e01审核failure仍保留，两者不同SHA/范围",
     "本轮未执行本机测试/构建/渲染/业务请求，未接触未发布独立测试资料",
     "M3文档静态核对通过，明确非产品验证",
-    "M3 Issue11阶段评论已发表：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450"
+    "M3 Issue11阶段评论已发表：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450",
+    "R001本人反思与D005/D006本人选择已核，原文/决定文件未修改，亲改/调试/识别归属未推定",
+    "六岗实际问取，BE/DB/reviewer已回，FE/docs/guidance本轮pending；DB705e公开文档与原未提交时点分别记",
+    "49公开对象/hash、362原JUnit与FE27摘要及远端run核对，不运行产品验证",
+    "只读四件明确发布独立报告，不联系tester、不跟随其私有路径；整体未过与开发后续修复分开",
+    "成稿后root新契约/fixture失败/5940超限/guard草稿先后仅作明确cutoff后交接附注，不冒充49源已核或正式1.1通过",
+    "必要文档引用/hash/JSON/XML/格式检查通过，无产品验证",
+    "M4阶段评论已发布：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031",
+    "Issue评论后commit前收到FE实际回执，当前BE/DB/FE/reviewer已回；docs/guidance pending，不倒改评论历史"
   ],
   "unverified": [
-    "单一prompt六版真实演进未核实",
-    "本轮用户亲改≥12、用户亲自识别≥3、人工校正映射≥5的可证实数均0，AI事例不充抵",
-    "其他三岗本轮异步回复尚未收到，不代表其产物未完成",
-    "新SHA最终审核、总体规模、正式性能与独立验收未确认完成",
-    "学生本人研究报告/个人收获最终成稿未收到"
+    "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
+    "docs/guidance本轮异步回执pending，不表示角色没有产物",
+    "v1.1后续源码/冻结/测试、最新完整审核与修复后独立复测仍待独立证据",
+    "正式性能未达标，955无有效样本，代理假设未确认；规模不宣称通过",
+    "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "questions": [
-    "请总协调/文档岗以checkpoint为事实素材，学生本人形成研究正文；不重分类AI行为为人工",
-    "新发布证据/异步回复随后另补；不为数量制造prompt或个人经历"
+    "文档岗可引用M4事实和R001原文，学生本人形成研究正文；新事实按时点另补",
+    "共享ledger本岗未追加；请总协调据实际派工与产物登记，proposed模板不计曾使用"
   ],
   "prompt_refs": [
     {
@@ -205,7 +233,31 @@
         "docs/prompting/evidence/gha-39938619826.redacted.log.gz"
       ],
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
+    },
+    {
+      "id": "ROLE-prompt_engineering-M4-REAL-PROCESS-v1",
+      "status": "used",
+      "task_file": "agents/prompt_engineering/TASK.md",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md",
+      "reason": "收集公开真实过程、本人输入与AI行为边界，保留独立结论及未达标缺口",
+      "artifact_refs": [
+        "docs/prompting/M4-real-process-evidence.md",
+        "docs/prompting/M4-source-inquiries.md",
+        "docs/prompting/M4-source-manifest.json",
+        "records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md",
+        "records/prompts/PROPOSED-human-skeleton-review-v1.md",
+        "agents/prompt_engineering/github-m4-stage-comment.md"
+      ],
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
+    },
+    {
+      "id": "PROPOSED-human-skeleton-review-v1",
+      "status": "proposed",
+      "path": "records/prompts/PROPOSED-human-skeleton-review-v1.md",
+      "derived_from": "R001主题（AI整理，非本人原文）",
+      "used_at": null,
+      "reason": "供后续本人先审模块/函数I/O与骨架后再派AI实现，不声称过去用过"
     }
   ],
-  "updated_at": "2026-10-23T18:33:05+08:00"
+  "updated_at": "2026-10-23T20:35:27+08:00"
 }
