@@ -1,16 +1,11 @@
-# 数据库模块报告：唯一同15峰值池ABBA开发诊断完成
+# 数据库模块报告：两默认独立候选已实现，准确源CI待触发
 
-- Agent-Role database；Prompt-Ref ROLE-database-POOL-RETENTION-v1；基点2a0f091，分支codex/database-pool-retention；设计42a8bcb→工具14490fe/0f6fdf5→离线/精确命令f75a8a4→唯一实际比较，均先commit。
-- 只改原955诊断工具与本岗记录，无新编号；生产backend/t44逐字bc5/14冻结相同，默认池/SQL/锁/线程/全局资源不变，应用净改0。
-- 实际SQLAlchemy2.1.6池impl.py/base.py与官方tag bytes/hash相同；source-verification.json。I001和系统CA初失败保留，均不是产品或实际负载失败。
-- 必要离线导入/设置副本/真实QueuePool+合成DBAPI/透明ASGI/CLI拒绝/mock固定控制器与首失败清理/最终probe已通过，无HTTP/SQL，不能计入真实请求。
-- root独占窗口后唯一运行2026-10-23T23:02:14.376665Z–23:02:53.234248Z，38.842秒含清理/exit0；32并发、每段1s预热4s稳态、A1B1B2A2，峰值同15，1worker/40线程tokens。
-- 只t44_profile/18083/22:35既有私密fixture，未刷新session/改旧fixture/业务字段或seed清库；payload/file hash全程/之后相同。完成后已立即释放窗口，此后仅离线归档。
-- 稳态requests2079/2255/2237/2113、失败全0；4段nearest-rank P95(ms)91.591041/74.471792/72.908250/92.600542，不平均。
-- 稳态DBAPI新建436/0/0/427、关闭436/0/0/427、ping1643/2255/2237/1686；预热新建112/15/15/109完整保留，cleanup close5/15/15/5。全部峰值15、dispose前checkedout0、dispose后open0，B每worker多10idle。
-- acquire inclusive均值ms15.761/2.561/2.916/15.357及同线程CPU在result.md，不能叫纯poolwait或分配全部延迟差。连接钩子开销/本机client竞争未独立校准，只有一次4短段。
-- 实际总10882（预热2198/稳态8684），全部client-server唯一关联、原valid与HTTP200、恰1auth/runtime/endpoint/acquire/checkout，cursor类别4/5/5全SELECT0错误；19源/资源hash吻合。
-- 18083前后free，4自有server exit0且PID不存在；每段前app可见profile连接0，后检0，不能当跨账号全局证明，未扩权限。
-- summary/result、43份原件gzip及raw-manifest保留实际原始/gzip hash；已知口令/DSN/Token/Authorization扫描0，值未输出。
-- 只支持当次减少观察重建假设；B更多idle会话/内存代价如实，内存未测。未来配置/总预算/恢复/回滚另设计专审，当前不准入生产，原正式失败/规模6307超1207/人工材料缺口不改写。
-- 结果9d1deff已push；Issue4评论6376531906/Issue3评论6376532216已实际交接并精确GET逐字readback归档；本岗AI诊断不是独立验收或学生本人研究/手改。未完整CI/正式压力/额外采样。
+- Agent-Role database；Prompt-Ref ROLE-database-POOL-DEFAULT-CANDIDATE-v1；基点5408c05377d4f0084c6ae4eb596351add2004b67，设计d4e152f，独立codex/database-pool-default-candidate。
+- 产品只改MySQLSettings默认pool_size5→15、max_overflow10→0；exact-diff.json核严格两Constant/两行，其他应用/SQL锁鉴权/超时/14冻结/993/930/955原字节不变。
+- 参数名/种类/字段次序和显式override保持；默认15峰不变，partial size3峰13→3、partial overflow2峰7→17；双显式3+2或旧5+10保持，不能泛称所有调用者峰不变。
+- 标准六默认池峰90仍同、温态保留上界30→90，多最多60idle；额外CLI/健康/迁移/备份/滚动实例另计，内存/FD/全局余量未知，不能承诺503归零/错误分布不变。
+- root正式预留869；旧配置新default目标真实红，实际返还5而非15。候选10案例绿（含同目标），实际QueuePool合成DBAPI证容量拒绝/返还/复用/overflow关闭/dispose及Settings真实lazy构造原选项；无HTTP/SQL/真实连接/压测。
+- 限定Ruff通过。原930硬5+10不改；matching filename但无test函数，单独collect-only0/exit5，未执行历史负载，hosted实际JUnit待核。
+- 原cloc基线6307/--require-range退出1；两默认预计行净0，候选提交后同固定脚本实测。原正式失败/人工材料缺口不变。
+- 准确源将普通push触发product全suite/真实MySQLMQ/全部生产coverage，draftPR到integration触发既有docker恢复工作流，各一次；不复用ABBA/旧CI、不合root。精确候选head保持，CI证据另分支归档。
+- 本阶段AI实现非学生亲改；准确候选SHA/PR/run/Issue3/4回执随收尾，当前不预先宣称CI通过/正式性能或生产准入。

@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "POOL-RETENTION-v1：唯一同15峰值ABBA开发诊断完成",
-  "implementation_status": "955受限工具/离线边界及唯一真实ABBA完成；四段原值保留，38.842s含清理exit0，生产bc5/默认/冻结未改，当前不准入生产或正式结论。",
+  "stage": "POOL-DEFAULT-CANDIDATE-v1：精确两literal候选实现",
+  "implementation_status": "两默认已实现/869真实合成QueuePool10案例通过、旧配置真实红保留；原字节边界核通过。准确head push/PR/hosted工作流待触发，不合integration。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -579,6 +579,31 @@
       "path": "agents/database/pool-retention/github-readback.json",
       "kind": "Actual Issue4/3 POST and exact comments/:id GET body equality",
       "status": "actual published/verified"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/design.md",
+      "kind": "严格两literal候选范围/partial兼容/准确源CI设计",
+      "status": "先设计"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/backend-input.json",
+      "kind": "实际GET Issue4 backend兼容输入",
+      "status": "原文已读"
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "kind": "exact two default literals only",
+      "status": "candidate not production admitted"
+    },
+    {
+      "path": "tmp/backend/persistence/869_pool_defaults.py",
+      "kind": "root reserved real QueuePool synthetic behavior + actual lazy Settings composition",
+      "status": "10passed incloldredtarget; noHTTP/SQL/network"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/exact-diff.json",
+      "kind": "twoAST literals/allotherapp+frozen14+old993930955bytes",
+      "status": "exact pass"
     }
   ],
   "interfaces": [
@@ -849,9 +874,9 @@
     "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "不证明正式400VU600秒270ms/原503根因/统计显著性或无观测钩子的生产收益",
-    "app可见PROCESSLIST不证明跨账号全局连接；未测每连接内存/未来多worker资源总预算",
-    "未准入任何生产池/默认配置变化，原正式压力失败/源码规模/人工材料缺口保留"
+    "准确新candidate hosted product/docker workflows尚未触发/未完成，不能移植旧CI或ABBA",
+    "原9300本地collect-only；hosted实际JUnit待核，不改硬5+10历史guard",
+    "标准idle上界增加/partial峰改变/资源未知、原正式压力/源码超限/人工材料缺口仍在"
   ],
   "questions": [
     {
@@ -1023,9 +1048,14 @@
       "id": "ROLE-database-POOL-RETENTION-v1",
       "archive": "agents/database/prompts/ROLE-database-POOL-RETENTION-v1.md",
       "improvement_reason": "新假设先核锁定真实源码和同峰值/空闲代价，工具先提交并隔离真实执行窗口，不把短段归因为正式根因"
+    },
+    {
+      "id": "ROLE-database-POOL-DEFAULT-CANDIDATE-v1",
+      "archive": "agents/database/prompts/ROLE-database-POOL-DEFAULT-CANDIDATE-v1.md",
+      "improvement_reason": "独立精确两常量候选/partial成本/历史不改/真实QueuePool行为与准确源CI，不借ABBA或改断言自证"
     }
   ],
-  "updated_at": "2026-10-23T23:09:30.794457+00:00",
+  "updated_at": "2026-10-23T23:22:12.642521+00:00",
   "publication": {
     "branch": "codex/database-pool-retention",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-retention",
@@ -1189,6 +1219,15 @@
         "精确新源review、root组合CI/全局coverage/独立复测/正式性能未运行",
         "源码规模产品提交已同口径实测6186（基线6124/净+62），--require-range退出1，仍超5100；不压行或移计数"
       ]
+    },
+    {
+      "stage": "POOL-RETENTION-v1：唯一同15峰值ABBA开发诊断完成",
+      "implementation_status": "955受限工具/离线边界及唯一真实ABBA完成；四段原值保留，38.842s含清理exit0，生产bc5/默认/冻结未改，当前不准入生产或正式结论。",
+      "unverified": [
+        "不证明正式400VU600秒270ms/原503根因/统计显著性或无观测钩子的生产收益",
+        "app可见PROCESSLIST不证明跨账号全局连接；未测每连接内存/未来多worker资源总预算",
+        "未准入任何生产池/默认配置变化，原正式压力失败/源码规模/人工材料缺口保留"
+      ]
     }
   ],
   "refactor_removed": [
@@ -1202,13 +1241,12 @@
     }
   ],
   "current_interfaces": {
-    "scope": "tool-only A(5,10) vs B(15,0), peak<=15 per singleengine/worker",
-    "mode": "955 --mode pool-abba, fixed32 concurrency and1s warmup4s steady eachA1B1B2A2",
-    "source": "bc5 application bytes unchanged; SQLAlchemy2.1.6 verified",
-    "execution_admission": "root sole window used once23:02:14.376665Z–23:02:53.234248Z; released immediately after cleanup; no further load",
-    "contract": "agents/database/pool-retention/design.md",
-    "result": "A1/B1/B2/A2 P95ms91.591041/74.471792/72.908250/92.600542; steady connects436/0/0/427; no P95 average or formal cause",
-    "cost": "B retains10 additional idle connections per worker here; memory not measured; future global/multiworker budget and production admission need separate design"
+    "scope": "engine.py defaults5/10->15/0 only; all other production bytes unchanged",
+    "partial": "size3 only13->3 peak; overflow2 only7->17 peak; both-explicit preserved",
+    "standard_budget": "6default pools peak90 same/retained30->90,extra engines separate",
+    "tests": "root reserved tmp/backend/persistence/869_pool_defaults.py; old993/930 bytes retained; no local HTTP/SQL/load",
+    "ci": "once push product + once draftPR integration docker, exactcandidate SHA then separate evidence branch",
+    "contract": "agents/database/pool-default-candidate/design.md"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",

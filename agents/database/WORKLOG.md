@@ -256,3 +256,16 @@
 
 - 实际结果9d1deff3592d12e169f30a25537540c93096abf0已push。随后通过GitHub connector向Issue4/3实际发表完整阶段交接，并各comments/:id精确GET读回，正文与真实提交和本地文件逐字一致：Issue4#issuecomment-6376531906、Issue3#issuecomment-6376532216；github-readback.json保留endpoint/id/body/time/actor/hash。没有设review成功或关Issue/改生产准入。
 - 收尾逐一解压43份public gzip并核原bytes/gzip SHA全同；summary补实际回执。955与执行源f75a8a4字节相同、生产仍bc5；本阶段已完成，只有离线归档，没有第二次比较或额外HTTP/SQL/本机负载，释放实例槽。
+
+
+## ROLE-database-POOL-DEFAULT-CANDIDATE-v1：独立候选先设计
+- 从root推荐5408c05377d4f0084c6ae4eb596351add2004b67建立独立codex/database-pool-default-candidate，不改根索引。读ac826 RFC及445015f一页caller handoff；只按公开交接读内容，不合并其无关worklog；实际GET Issue4评论6376569009并保留backend-input.json。
+- 严格只准MySQLSettings默认5/10→15/0两literal，其他生产/配置/依赖/14冻结件零字节差异；partial size3峰13→3、onlyoverflow2峰7→17，双显式保持。仅标准六默认池峰90不变，温态保留30→90；内存/FD/全局余量未知，额外实例另预算，不能保证503分布不变。
+- root已正式预留869（next868），拟新增真实QueuePool+合成DBAPI满池拒绝/返还保留/复用/关闭/Settings组合回归，不修改原993/930硬配置历史或955/ABBA原件。不发本机HTTP/SQL/压测；先旧配置新目标真实红，再两常量候选。
+- 固定原source_count.py/cloc2.10对5408c05实测6307/--require-range退出1（baseline-cloc.json），候选预计净0但提交后再测，不提前记达标。一次普通push触发product，draftPR目标integration只另触发docker（避免product重复），候选精确HEAD在CI后保持、证据另分支。
+- 初次只读误猜930_pool_probe.py不存在，改读实际930_contract_abba.py:161，不当产品失败；真实派工/预留消息完整归档。已向backend回执partial及历史/预算要求，候选尚未实现/SHA待后续，未借ABBA冒通过。
+
+- 设计d4e152f已commit/push skipci后新增root预留869，不改旧测试。旧配置default真实红old-configuration-red.log在真实QueuePool借满15/额外拒绝之后，返还只留5而非新目标15；原失败保留，非环境失败/常量自证。
+- 产品仅engine.py两literal改15/0，869全10参数化案例通过（869-green.log，包含旧红同目标，不相加），用实际QueuePool+合成DBAPI两波借满/即时额外拒绝/返还保留/第二波复用/overflow关闭/最终dispose全部关闭，覆盖默认/partial size/双显式/显式旧配置/partial overflow。Settings真实组合与lazy MySQL engine核原timeout10/recycle1800/pre_ping/LIFO/rollback/RC/UTC callback/隐藏参数，pymysql.connect从未被调用。
+- 限定engine/869 Ruff通过；exact-diff.json证产品仅两个Constant/两行替换、其他整个应用零字节变化，14冻结及993/930/955字节全同。原930 matching numeric filename但无test函数，本机仅其collect-only显示0项/exit5（930-collection-only.log），没有运行历史负载/修改guard；hosted实际收集/JUnit待真实CI回执确认。
+- 本地只869合成和lazy构造，无HTTP/SQL/压测/真实服务。候选普通push将触发一次现有product，draftPR到integration只另触发容器workflow；不合root，CI状态未开始/不能提前通过。精确候选head后保持，后续证据另分支以免再次触发。
