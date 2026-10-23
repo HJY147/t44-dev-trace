@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "合同设计草案完成，待跨岗/审核复核冻结；业务未实现",
+  "stage": "CONTRACT-v2：后端C2/C3/C4设计修复完成，C1来源说明已对齐，待新SHA复审；业务未实现",
   "implementation_status": "未实现",
   "artifacts": [
     {
@@ -66,6 +66,26 @@
     {
       "path": "agents/backend/contract-final-check.log",
       "status": "最终规范/草案状态/产物核对及三规格SHA256，非产品测试"
+    },
+    {
+      "path": "agents/backend/validate_contract_design_v2.py",
+      "status": "可重复设计/Schema/逐操作错误一致性校验，非产品测试"
+    },
+    {
+      "path": "agents/backend/contract-v2-before-fix.log",
+      "status": "修复前真实退出1，90项设计失败，原样保留"
+    },
+    {
+      "path": "agents/backend/contract-v2-validation.log",
+      "status": "修复后真实退出0，1130项设计检查/38操作/0失败"
+    },
+    {
+      "path": "agents/backend/CONTRACT-v2-prompt.md",
+      "status": "本轮实际派工原文归档"
+    },
+    {
+      "path": "agents/backend/contract-v2-response.md",
+      "status": "Issue#3/#12实际答复正文"
     }
   ],
   "interfaces": [
@@ -178,6 +198,18 @@
     {
       "command": ".venv/bin/python 最终规范及产物核对",
       "result": "退出0，日志contract-final-check.log；没有产品或HTTP运行结论"
+    },
+    {
+      "command": ".venv/bin/python agents/backend/validate_contract_design_v2.py（修复前）",
+      "result": "退出1；90项设计失败，contract-v2-before-fix.log；未改v1审核/证据"
+    },
+    {
+      "command": ".venv/bin/python agents/backend/validate_contract_design_v2.py（修复后）",
+      "result": "退出0；1130项设计检查、38操作、0失败；不是HTTP/MySQL/调度运行结果"
+    },
+    {
+      "command": "gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md",
+      "result": "均退出0；Issue#3评论6358981390，Issue#12评论6358981840，见WORKLOG"
     }
   ],
   "results": [
@@ -186,14 +218,20 @@
     "模块自测、集成验证、独立验收、性能指标均无运行结果",
     "完成三份完整合同/后端设计草案，所有接口未冻结、业务未实现",
     "已依协调者指令收敛开发最小权限/非自审/开始前编辑/改期评估失效/版本化规则可扩展性",
-    "数据库对齐cycle/INT UNSIGNED/租约幂等/会话锁/升级CAS；还需正式交叉审核"
+    "数据库对齐cycle/INT UNSIGNED/租约幂等/会话锁/升级CAS；还需正式交叉审核",
+    "C2完整收件人集合不设人数上限，handled_count UINT32，创建/历史嵌套共用事件Schema",
+    "C3共享1000～9999/UTC Z/≤6微秒时间域，真实FormatChecker和Plan/TaskCreate/只读候选边界验证，扫描now−end不做end+24h",
+    "C4逐操作注解/response枚举/HTTP/触发条件设计一致性验证通过，GET/只读无幂等错误；全局字典无虚构项目/资源分支",
+    "C1后端采用response_request_id作为最终实际生成已保存结果请求ID来源；数据库字段/COMPLETE约束由数据库岗另交，不冒称整体复审通过"
   ],
   "unverified": [
     "所有实际HTTP请求/响应与错误分支",
     "业务/安全/事务/并发/消息/调度/重启行为与契约一致性",
     "DDL逐表审核、ORM/迁移及MySQL执行",
     "拒绝审计不可用时的持久故障介质与恢复操作",
-    "集成/独立验收/覆盖率/400并发性能与维护改动指标"
+    "集成/独立验收/覆盖率/400并发性能与维护改动指标",
+    "修复后合并新SHA的reviewer复审，C1数据库独立提交及完整接口/DDL一致性",
+    "所有C2/C3/C4设计约束的实际HTTP/持久化/调度运行行为"
   ],
   "questions": [
     {
@@ -252,7 +290,26 @@
         "reports/modules/backend.md",
         "records/handoffs/backend.json"
       ]
+    },
+    {
+      "id": "ROLE-backend-CONTRACT-v2",
+      "source": "总协调针对reviewer不通过报告的实际定向修复派工",
+      "archive_path": "agents/backend/CONTRACT-v2-prompt.md",
+      "reason": "只修本岗C2/C3/C4及C1后端说明，保留原失败并增加真正设计一致性检查，不宣称产品通过",
+      "outputs": [
+        "specs/contracts/openapi.json",
+        "specs/contracts/README.md",
+        "specs/backend-design.md",
+        "agents/backend/validate_contract_design_v2.py",
+        "agents/backend/contract-v2-before-fix.log",
+        "agents/backend/contract-v2-validation.log",
+        "agents/backend/CONTRACT-v2-prompt.md",
+        "agents/backend/contract-v2-response.md",
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T14:09:46+08:00"
+  "updated_at": "2026-10-23T14:33:57+08:00"
 }

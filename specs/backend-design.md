@@ -86,6 +86,8 @@ on commit confirmation lost: 503 TRANSACTION_UNCERTAIN; retry original key
 
 幂等scope为(actor_kind,actor_id,operationId,key)，摘要包含规范化path/body和expected_version。幂等快照存业务data/状态码，重放时重新构造当前请求meta；原task快照不会冒充现在的版本。认领短事务+owner_token/lease避免拒绝回滚与审计落库间被同键重执；恢复者先锁行等待旧事务结束，再CAS换代，旧worker不能过期后提交。v1不自动清理完成记录。
 
+C1采用 `idempotency_requests.response_request_id` 作为重放溯源持久来源，COMPLETE时必须非空；保存实际生成已存结果的请求ID，可以是owner恢复后的最终完成请求，不强行使用首次租约认领ID。成功与完成快照同主事务定格该字段，拒绝与错误快照/审计同独立事务定格；重放original_request_id读取它，当前request_id/server_time/replayed现场构造。不保存整个旧meta或凭据；DDL列与CHECK由数据库岗下一轮落实，本轮不改数据库文件。
+
 拒绝审计是独立数据库事务，和成功事务分开但不改任务现状；独立审计失败返回503、audit_id=null并脱敏告警。持久故障介质/补偿恢复仍待部署确认，不能声称单数据库宕机时拒绝审计仍一定落库。普通查询与输入/越权失败也需相应安全记录。
 
 锁顺序：会话认证保护 → 自身幂等行 → 项目行（仅需要图/成员/依赖一致性的操作）→ 成员行按id → 任务行按id → 关联业务记录。加删依赖、开始、解除回开发、返工先锁project；读取并锁前驱任务后验state=已交付；同项目A→B/B→A串行查环。普通单任务写不额外串行整个项目，以成员FOR SHARE重核资格后锁task；成员撤销走project→membership FOR UPDATE→活动负责任务。任何路径拿到membership/task后不能再追加project锁。数据库岗对上述固定序和CAS提供统一门面。
@@ -98,6 +100,9 @@ every 60 seconds, UTC:
   for each candidate:
     service POST escalation(expected_version, schedule_version, rule_version, scan_run_id)
     reload current plan/time/rule in transaction
+    elapsed = server_now_utc - planned_end_utc
+    elapsed_us = (elapsed.days*86400 + elapsed.seconds)*1000000 + elapsed.microseconds
+    compare elapsed_us with rule second offsets * 1000000
     choose only highest currently eligible level
     unique(task_id, schedule_version, level): existing -> no new count/event
     new -> persist event + recipient snapshot + outbox + success audit atomically
@@ -109,6 +114,8 @@ new events after recovery -> normal MQ delivery
 ```
 
 临期为0≤结束时刻−now≤24h；超期为0<now−结束时刻<24h；严重超期为差值≥24h。首次跳级只生成当前最高级别，不补低级；过往已发生级别保留。业务去重键不加rule_version来绕过同排期同级一次规则。通知按事件与接收人去重，已读/已处理独立。新事件成功CAS task.version并增加升级计数，和event/outbox/audit同事务。不同键旧版本409；同键优先原快照；业务重复且版本有效返回created=false，不再增加count/version。通知已读/处理仅notification.version，不占任务版本。事件+outbox接受的HTTP 202只覆盖可靠提交，消息送达延时另测。fallback_terminal是处理语义，最终存储编码与消息岗确认，不新增任务状态。
+
+C2收件人必须包含负责人和全部有效经理去重，不静默截断，也不新增人数上限；event.recipient_ids无数组长度上限，handled_count覆盖INT UNSIGNED域，创建/历史嵌套响应引用同一Schema。C3所有请求、响应及只读候选时间先经UtcTime限制1000～9999年、UTC Z、微秒≤6并用FormatChecker核对真实日期，再比较起止。调度按上面的now−end差值比较窗口，禁止计算planned_end+24h；9999年末仍可作差，不能因构造超出9999年的阈值而溢出。已通知总协调将该约定交给后续调度岗。
 
 扫描使用计划时间索引/主键续扫，N任务、K本批候选时一次完整扫描最坏O(N)，事件唯一查询O(log E)或索引查找、收件人数R时生成通知O(R)；不能把每批索引提取成本冒称整次扫描O(1)。依赖环检查按项目图DFS为O(V+E)，使用project锁防并发写破坏结果；开始检查D个前驱为O(D)数据检查并按主键批量锁。实际SQL计划和性能仍未验证。
 
@@ -125,3 +132,5 @@ ReviewItemId使用R[0-9]{2,3}，有效template_version精确规定当前必需�
 数据库对齐：INT UNSIGNED ID、四计数cycle命名、阻塞原状态、迭代产能/计划diff、独立拒绝审计、租约幂等、事件/outbox和通知唯一键；scan_run_id对外UUID，持久层映射scan_runs整数PK。消息/调度岗须复核事件字段、fallback_terminal与服务调用口径。待审项包括审计故障持久介质、所有DDL/API字段和锁序一致性；无自审最低机器防线不能代替真实作者/证据内容判断。没有新增业务状态出口，没有产品实现或冻结声明。
 
 总协调最后收口：DB完全不可用时不能宣称DB审计成功，返回503，部署承接脱敏stderr/文件运维记录及后续恢复；不为此增加第二套审计系统。实现和实际故障验证仍未开始。
+
+CONTRACT-v2只修审核C2/C3/C4和C1后端来源说明；C4新增逐操作错误/HTTP/触发条件一致性检查，GET与只读校验无幂等错误，字典无虚构项目/资源错误。验证脚本位于agents/backend/validate_contract_design_v2.py，真实修复前/后输出独立留存；没有执行实际HTTP、MySQL、消息、调度或性能测试，原不通过报告仍有效直至新SHA复审。

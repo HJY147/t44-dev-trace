@@ -58,3 +58,15 @@
 待审：拒绝审计数据库完全不可用时的持久故障介质/恢复操作、契约与DDL字段及锁序交叉审核；真实作者与证据质量不是API字段存在性可证明。下一轮实现、全部业务与性能验证未完成。
 
 - 本轮最后收口：总协调明确DB完全宕机无法DB审计是事实限制，部署承接脱敏stderr/文件运维记录，不新增第二套业务审计；具体实现待下一轮。最终规范及产物核对退出0，见contract-final-check.log。
+
+## ROLE-backend-CONTRACT-v2 审核缺陷修复（仅设计）
+
+- 实际派工/范围归档于 `CONTRACT-v2-prompt.md`。已读取reviewer真实不通过报告 `reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md`；原报告和v1失败/成功日志原样保留。
+- 本轮开始核对分支codex/team-bootstrap、空暂存区、HEAD `0e0a10b739c9b14e9ee42c8e8f70b16da24cba6e`；总协调授权唯一索引时段，只本岗定向设计修复，不含root gate-probe或其他岗位。
+- C2：取消EscalationEvent.recipient_ids长度上限，完整包含全部有效经理与负责人；handled_count改UINT32域，创建/历史嵌套引用同一Schema，无新增人数上限。
+- C3：共享UtcTime年份1000～9999、UTC Z、≤6位微秒；Plan/TaskCreate/只读候选共用域；扫描用now−end差值及整数微秒比较，不构造end+24h。当前无可见活跃scheduler，已向总协调发送明确转交要求，并写入设计。
+- C4：GET/只读校验移除幂等错误；逐操作business注解、response code枚举、HTTP和实际触发条件对齐；字典/身份/项目集合入口移除无项目/无资源错误。新检查脚本验证这些语义，不只做OpenAPI解析。
+- C1只完成后端设计采用response_request_id作为实际最终完成结果的请求标识来源，非首次认领ID；数据库岗已答复将另改列和COMPLETE非空约束，本岗未动数据库，不宣称整体C1放行。
+- 实际命令 `.venv/bin/python agents/backend/validate_contract_design_v2.py`：修复前退出1、90项失败（`contract-v2-before-fix.log`）；修复后退出0，1130项检查、38操作、0失败（`contract-v2-validation.log`）。真实FormatChecker和pattern验证0001/0999拒绝、1000/9999通过、7位微秒/非Z拒绝；101收件人及嵌套、UINT32计数、逐操作注解一致性均在脚本内核对。不是HTTP或MySQL结果。
+- `gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md` 两次均退出0；实际答复为 `https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358981390`、`https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358981840`。
+- 操作者为AI后端岗位，缺陷来自先前AI设计，由reviewer指出；本轮AI修复不记为用户亲改。所有接口仍草案，未冻结、未实现，无HTTP/业务/数据库/消息/调度/性能测试。

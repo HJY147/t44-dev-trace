@@ -18,7 +18,7 @@
 | 基址 | 同源 `/api/v1`；生产使用TLS，当前不代表已有服务 |
 | ID | 正整数，范围1～4294967295，与数据库INT UNSIGNED对齐 |
 | 版本 | 正整数至2147483647；任务关联写统一 `expected_version`，成功递增 `task.version` |
-| 时间 | UTC RFC3339、仅Z后缀，最多6位小数；页面转北京时间；结束必须晚于开始 |
+| 时间 | MySQL DATETIME(6)共同域：1000-01-01T00:00:00Z～9999-12-31T23:59:59.999999Z，UTC RFC3339仅Z、最多6位微秒；真实FormatChecker验证；页面转北京时间；结束必须晚于开始 |
 | 字典 | 状态、角色、动作等整数集中在components.schemas和 `/dictionaries`，名称/标签不作数据库状态 |
 | 分页 | `page>=1`，`page_size`默认20、上限100；items/total/page/page_size；只允许列举排序，id打破并列 |
 | 成功 | `data` 加 `meta(request_id,server_time,contract_version,replayed,original_request_id)`；不返回凭据摘要 |
@@ -41,6 +41,8 @@ JSON Schema的integer不接受字符串或布尔；JSON数值 `1.0` 在标准语
 请求顺序为：身份及项目权限 → 结构/安全输入校验 → 同主体、operationId、幂等键查找 → 相同摘要回放原结果 → 当前动作角色/责任人/状态/版本/业务守卫 → 事务提交。摘要包括路径ID和规范化完整请求体（含旧expected_version），排除Token、口令及请求追踪头。同键异参409；相同成功请求重试优先返回首次快照，不因旧版本变409；重放响应后必须另GET权威最新任务。
 
 幂等PROCESSING由独立短事务认领，持久owner_token/租约；主事务锁该行再执行并原子完成快照。其他请求仍处理中返回409及Retry-After，不能换键重试。恢复者需加锁等旧主事务终止，再CAS租约所有者；旧worker提交前核对owner_token。拒绝回滚后，独立事务同时写拒绝审计和错误快照。v1提案不自动清理已完成记录，避免无声明重试窗导致二次动作。
+
+C1修订采用持久字段 `idempotency_requests.response_request_id`：COMPLETE结果必须非空，值是**实际生成已保存结果的请求ID**；租约恢复后最终完成时才定格也合法，不一定是首次认领ID。成功结果与该字段同主事务完成，拒绝结果与该字段同独立拒绝审计事务完成；回放 `meta.original_request_id` 取该字段，`meta.request_id/server_time/replayed`按当前请求重新构造。只保存业务data/状态码及该标识，不存整个旧meta、Token或凭据。数据库列/约束由数据库岗下一轮另行修改和验证；本轮仅后端设计明确采用该来源。
 
 ## 可触发错误与验证责任
 
@@ -74,6 +76,10 @@ JSON Schema的integer不接受字符串或布尔；JSON数值 `1.0` 在标准语
 
 SQL注入防护始终依赖参数化查询、整数ID及排序白名单；明确选择器攻击拒绝并记录。自由文本可含正常引号和SQL讨论，不能依赖关键词黑名单替代参数化。所有拒绝路径的安全记录需排除口令、Authorization和完整原始body。
 
+C4修订：每操作 `x-business-error-codes` 等于其response允许code扣除通用认证/输入/基础设施错误的集合；`x-error-cases`逐码提供适用HTTP及触发条件，并与response的code枚举精确一致。GET和只读契约校验没有幂等头/幂等错误。`/dictionaries`没有项目范围、资源ID或可验证输入，不声明PROJECT_ACCESS_DENIED、RESOURCE_NOT_FOUND、422；403 ACTION_FORBIDDEN仅用于已识别服务身份访问人类专用入口，不伪造项目拒绝。
+
+所有计划先验证共享UtcTime的数据库时间域，再比较起止；只读契约校验与写入使用同域，不能只因0001/0999年的起止有序就判为有效。升级事件完整包含负责人和全部有效经理，不截断、不新增人数上限；recipient_ids不设maxItems，handled_count为0～4294967295，创建响应及历史分页嵌套共用该事件Schema。事件分页大小100是每页事件数，不是项目人数或单事件收件人数上限。
+
 ## 三个真实性能入口
 
 | 测量类 | 入口 | 测量到哪里 |
@@ -93,3 +99,7 @@ SQL注入防护始终依赖参数化查询、整数ID及排序白名单；明确
 实际规范校验使用根 `.venv/bin/python` 的 `openapi_spec_validator.validate`。初稿因共享参数列表导致Idempotency-Key重复，失败输出保留 `../../agents/backend/openapi-validation-failure.log`；修复后实际通过，成功输出在 `../../agents/backend/openapi-validation-success.log`，同时核对operationId/参数唯一、业务写幂等头恰一个及GET无此头。该缺陷由AI草案生成造成，由总协调指出、AI修复，不计为用户人工改码。
 
 仍待审核：审计不可用的持久故障介质、幂等恢复实现、字段/DDL与API一致性；证据内容真实性与SHA真实作者仍是明确的机器核验限制。尚无产品代码、HTTP验证、集成、独立验收、覆盖率或性能结论。
+
+## CONTRACT-v2 修复自检
+
+原审核 `reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md` 的不通过结论原样保留。新增可重复运行 `.venv/bin/python agents/backend/validate_contract_design_v2.py`：真实FormatChecker检查0001/0999拒绝、1000/9999边界接受和≤6位微秒；校验101名收件人的事件、创建/历史嵌套及UINT32计数域；逐操作检查错误注解、response Schema、HTTP、触发条件和只读无幂等错误。修复前后的输出另存本岗 `contract-v2-before-fix.log` / `contract-v2-validation.log`，不覆盖v1证据。这些是设计/Schema验证，不是业务HTTP、MySQL或调度运行测试；仍须新SHA复审，不能据此宣称冻结或产品通过。
