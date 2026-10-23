@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "v2 C1/C3修复归档获授权，待新SHA复审",
-  "implementation_status": "未实现",
+  "stage": "字段无关持久化基础已实现，待draft PR审核；Q002未定",
+  "implementation_status": "Engine/UoW/受限CoreGateway基础已实现；18表ORM/迁移/业务仓储/API未实现",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -81,6 +81,91 @@
       "kind": "C1/C3实际Issue回复正文",
       "status": "已创建",
       "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+    },
+    {
+      "path": "backend/t44/persistence/__init__.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/errors.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/gateway.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/uow.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/README.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/tests/persistence/test_foundation.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-validation.json",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-pr-body.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-stage-comment.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run1.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run2.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run3.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run1.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run2.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run3.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
     }
   ],
   "interfaces": [
@@ -149,6 +234,20 @@
         "重复升级",
         "扫描期间任务版本或计划变更"
       ]
+    },
+    {
+      "peer": "backend",
+      "version": "foundation-v1",
+      "status": "工厂/异常名已直接确认，未API联调",
+      "input": "组合根注入Engine与可信TableBinding",
+      "output": "MySQLSettings/create_mysql_engine、SqlAlchemyUnitOfWorkFactory/单次UoW及脱敏基础异常",
+      "errors": [
+        "CommitUncertain",
+        "PersistenceUnavailable",
+        "PersistenceIntegrityError",
+        "TransactionStateError",
+        "StatementRejected"
+      ]
     }
   ],
   "commands_executed": [
@@ -182,7 +281,13 @@
     "python3：v2静态检查精确字典/DDL列定义、C1新列/CHECK、FK/unique/原因码与hash",
     "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-v2-c1-response.md",
     "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git show --format=fuller --stat 72c6c0064e52cb091e8ca4533a1cb862fc46866d",
-    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA"
+    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA",
+    "本独立树读取AGENTS/implementation-layout/persistence-contract、git branch/status确认",
+    "python3.12 -m venv .venv",
+    "uv pip install --system-certs --python .venv/bin/python --require-hashes -r 后端树requirements.lock",
+    "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q（3轮，原始run日志）",
+    ".venv/bin/ruff check --select E4,E7,E9,F,I,UP,B,SIM --target-version py312 backend/t44/persistence backend/tests/persistence（3轮）",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -207,16 +312,17 @@
     "原失败审核717cd65报告保持原样；新设计尚待新SHA复审，未宣称通过。",
     "本修复轮根索引仍由backend持有，数据库岗未操作Git/未提交，等待总协调授权。",
     "获ROLE-database-DESIGN-v2-COMMIT后核验codex/team-bootstrap、空暂存区及父HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；所有设计/OpenAPI/time-check hash一致，原失败报告未变。",
-    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。"
+    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。",
+    "FOUNDATION-v1真实Engine/UoW/受限CoreGateway基础落盘，没有业务仓储占位成功实现。",
+    "首轮pytest15通过；首轮Ruff7风格问题保留；最终18项本岗SQLite/mock测试通过，Ruff通过；SQLAlchemy2.1.6/PyMySQL1.2.3来自backend只读hash锁。",
+    "Issue阶段说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 已发表；文档岗原文问答与当时未提交状态已记录。"
   ],
   "unverified": [
-    "设计v1-draft未获总协调冻结/逐表审核放行。",
-    "未执行DDL，未验证MySQL8.4完整语法、CHECK/外键运行或迁移/恢复。",
-    "未验证事务/CAS/幂等接管/撤销/双向并发加边/成员守卫。",
-    "消息confirm/fallback/消费竞争、调度续扫/配置归档仍待责任岗确认及运行验证。",
-    "拒绝审计故障恢复介质、迁移版本元数据/精确CLI仍待后续派工。",
-    "模块自测、联调、独立验收、性能均未运行；未联系或读取独立测试岗内容。",
-    "v2 response_request_id的真实持久保存/租约接管后重放行为尚未实现或运行；待新SHA独立审核。"
+    "MySQL8.4真实连接初始化、模式/隔离、约束与事务未验证。",
+    "项目DDL/18表ORM/迁移/业务仓库/成功拒绝审计/幂等CAS/依赖图锁未实现或执行。",
+    "MQ/调度/API联调、性能/覆盖率/独立验收未运行。",
+    "Q002人的字段/错误码取舍未收到；C1–C4技术复审转述不替代人的决定。",
+    "SQLite测试仅玩具夹具，mock只核对初始化逻辑；不能视作MySQL或独立验收。"
   ],
   "questions": [
     {
@@ -334,7 +440,35 @@
         "reports/modules/database.md",
         "records/handoffs/database.json"
       ]
+    },
+    {
+      "id": "ROLE-database-FOUNDATION-v1",
+      "archive": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+      "actual_prompt_source": "总协调字段无关基础实现派工及CommitUncertain补充",
+      "improvement_reason": "用户字段/错误码尚待选择时先实现不依赖业务字段的真实生命周期与安全边界；非AI填充空壳或用户亲自改码。",
+      "outputs": [
+        "backend/t44/persistence/__init__.py",
+        "backend/t44/persistence/engine.py",
+        "backend/t44/persistence/errors.py",
+        "backend/t44/persistence/gateway.py",
+        "backend/t44/persistence/uow.py",
+        "backend/t44/persistence/README.md",
+        "backend/tests/persistence/test_foundation.py",
+        "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+        "agents/database/foundation-validation.json",
+        "agents/database/foundation-pr-body.md",
+        "agents/database/foundation-stage-comment.md",
+        "agents/database/foundation-lint-run1.log",
+        "agents/database/foundation-lint-run2.log",
+        "agents/database/foundation-lint-run3.log",
+        "agents/database/foundation-test-run1.log",
+        "agents/database/foundation-test-run2.log",
+        "agents/database/foundation-test-run3.log",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T14:35:55+08:00"
+  "updated_at": "2026-10-23T15:04:00+08:00"
 }

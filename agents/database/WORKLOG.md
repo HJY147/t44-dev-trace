@@ -78,3 +78,15 @@
 - 已核验codex/team-bootstrap、暂存区为空、HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；后端v2提交正文与11文件已核对。当前设计/OpenAPI/time-check hash一致，原失败审核SHA不变。
 - backend已直接回复确认最终完成者response_request_id与README/backend-design一致；保留本岗已有Issue回复，不发重复评论。
 - 本次仅显式暂存已列10份本岗修复资料；提交前核对精确清单及diff-check。实际commit完整SHA由提交后回报，不提前宣称已提交；未执行DDL/模型/迁移或运行测试。
+
+## 2026-10-23T15:04:00+08:00 ROLE-database-FOUNDATION-v1通用基础
+
+- 实际派工原文agents/database/prompts/ROLE-database-FOUNDATION-v1.md；本树codex/database-runtime起点bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68。只读本树AGENTS/implementation-layout/持久契约；本轮不写18表ORM/项目迁移，不接API。
+- 已实现backend/t44/persistence下Engine/UoW/CoreGateway/内部异常和README，模块自测位于backend/tests/persistence。与backend直接确认工厂签名/CommitUncertain；提交确认失败后的rollback仅资源清理，不推断未提交。
+- 只读backend树pyproject/requirements.lock，以python3.12 -m venv .venv及uv pip install --system-certs --python .venv/bin/python --require-hashes -r 后端锁实际安装67依赖，退出0；未改锁。实际SQLAlchemy2.1.6/PyMySQL1.2.3/pytest9.1.1。
+- 首轮pytest15通过；Ruff首次7个风格失败（SIM105、I001、5个SIM117）原文foundation-lint-run1.log保留。修复后测试17通过/ruff通过；又补进入中断关闭资源的针对性检查，最终run3为18 passed in0.16s，Ruff All checks passed，退出0。所有输出原样存本岗run日志，不将风格失败删去或冒充产品缺陷。
+- 测试范围为受控SQLite玩具表生命周期、绑定值及allowlist、mock MySQL初始化SQL/脱敏；测试夹具使用SQLite建表，不执行项目schema.sql。没有MySQL实库、事务隔离/CAS/约束/迁移/HTTP/性能或独立验收结果。
+- 真实故障注入先commit再抛确认异常，行确实已存在，CommitUncertain在rollback和close失败后仍保留；同时测捕获驱动异常不允许部分提交及连接归还。环境/源码SHA见foundation-validation.json。
+- 文档岗M1问取：分支/SHA/实际DDL迁移模型仓储/事务幂等图锁边界、命令结果、C1–C4与Q002状态、接口和日志。已原文回答“当前database-runtime树、起点bc0cd349...尚未提交；18表226列仅静态设计；通用基础进行中，新测试尚未运行；无MySQL/模型/迁移/API，C1–C4技术结论与Q002人的取舍分别记录”，该回答是当时事实；现已完成18项自测，待提交后补SHA/PR给文档岗。
+- 已实际发表gh issue comment4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md，退出0，URL https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 。
+- Q002人的字段/错误码选择仍待回复，当前只有基础层实现；用户未亲自改码，本轮AI修改不当作人工改码留痕。未联系或读取独立测试，未操作根工作树索引。准备仅显式提交本树本岗文件，再push独立分支/draft PR，不merge或发布reviewer成功。
