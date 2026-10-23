@@ -19,32 +19,19 @@ class Projects:
         )
 
     def createProject(self, g, c):
-        identifier = g.insert(
+        c.project = c.create(
+            g,
             "projects",
-            {
-                "name": c.body["name"],
-                "description": c.body.get("description", ""),
-                "version": 1,
-                "created_by": c.actor_id,
-                "created_at": c.clock,
-                "updated_at": c.clock,
-            },
+            {"name": c.body["name"], "description": c.body.get("description", "")},
+            actor_field="created_by",
+            updated=True,
+            project=False,
         )
-        mid = g.insert(
-            "project_members",
-            {
-                "project_id": identifier,
-                "user_id": c.actor_id,
-                "roles_mask": 1,
-                "active": 1,
-                "version": 1,
-                "created_at": c.clock,
-                "updated_at": c.clock,
-            },
+        c.path["project_id"] = c.project["id"]
+        member = c.create(
+            g, "project_members", {"user_id": c.actor_id, "roles_mask": 1}, updated=True
         )
-        c.project = g.get("projects", identifier)
-        c.path["project_id"] = identifier
-        return self.project_model(c.project, g.get("project_members", mid))
+        return self.project_model(c.project, member)
 
     def listProjects(self, g, c):
         memberships = g.rows("project_members", {"user_id": c.actor_id, "active": 1})
@@ -82,21 +69,11 @@ class Projects:
         )
         if existing and existing[0]["active"]:
             return self.member_model(g, existing[0])
-        values = {"roles_mask": mask(c.body["roles"]), "active": 1, "updated_at": c.clock}
+        values = {"roles_mask": mask(c.body["roles"]), "active": 1}
         if existing:
             row = c.cas(g, "project_members", existing[0], values, expected=existing[0]["version"])
         else:
-            identifier = g.insert(
-                "project_members",
-                {
-                    **values,
-                    "project_id": c.project_id,
-                    "user_id": user_id,
-                    "version": 1,
-                    "created_at": c.clock,
-                },
-            )
-            row = g.get("project_members", identifier)
+            row = c.create(g, "project_members", {**values, "user_id": user_id}, updated=True)
         return self.member_model(g, row)
 
     def _change_member(self, g, c, remove):
@@ -159,19 +136,8 @@ class Projects:
 
     def createIteration(self, g, c):
         c.manager()
-        values = self.capacity(g, c, c.body)
-        identifier = g.insert(
-            "iterations",
-            {
-                **values,
-                "project_id": c.project_id,
-                "version": 1,
-                "plan_version": 1,
-                "created_at": c.clock,
-                "updated_at": c.clock,
-            },
-        )
-        return self.iteration_model(g.get("iterations", identifier))
+        row = c.create(g, "iterations", self.capacity(g, c, c.body), updated=True)
+        return self.iteration_model(row)
 
     def listIterations(self, g, c):
         return page(g, "iterations", {"project_id": c.project_id}, c.query, self.iteration_model)

@@ -94,3 +94,10 @@ Q002已用户采用、v1已冻结；真实实现入口为backend/t44/api.py和cl
 seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配置跳过；全部t44行2391/2724=87.78%，含分支85.36%，无omit。审计/状态显式码修复及重排回归、显式缺依赖503/默认200已交。真实去重保留全部守卫；总体规模仍超限。tmp测试迁移等待root SHA，未自行创建新测试文件；Rabbit成功CI、最终源码规模、性能和独立验收尚不宣称通过。
 
 测试迁移5e07887已合入，`pytest -c backend/pyproject.toml tmp/backend --collect-only`实际317项成功；新本岗路径为tmp/backend/contracts/985_mysql_http.py、986_http.py、987_faults.py和tmp/backend/backend/domain/994_transitions.py。旧运行日志保持原命令，不把机械收集成功说成新一轮全量执行。当前真实38HTTP/CLI证据checkpoint19750a9，仍待CI/Rabbit、最终规模和独立验收。
+
+## ROLE-backend-REFACTOR-v1 当前阶段
+
+- 代码存在：删无production消费者的domain重复re-export/__all__，typed命令/模型/decide保持原实现；受信Call.create共享创建上下文与读回，issue_session共享人类/服务会话发行。冻结API、稳定码、权限/证据/锁序/CAS/幂等及独立拒绝事务未改。
+- 远端实际失败：729344e的GHA39937742613出现namespace遮蔽（18 failed/299 passed）及Ruff I001/F823；原日志在agents/backend/refactor-ci-39937742613-failed.log。当前修正cmd别名，保留全部原断言。
+- 当前验证：本机性能隔离期间未运行pytest/build/DB/HTTP；Ruff格式化只算编辑。等待新SHA远端CI。生产git物理diff相对003ef6b净减112行，最终统一cloc和3500–5100要求仍待总协调核算，不能宣称规模已达标。
+- 旧完整HTTP/事务/覆盖率证据仍为上轮快照；当前重构不等于独立验收或正式性能通过，18080/18081均未重启。

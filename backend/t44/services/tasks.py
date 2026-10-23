@@ -55,32 +55,31 @@ class Tasks:
         dependencies = c.body["dependency_task_ids"]
         # Project lock is held before task IDs are locked in ascending order.
         self.check_graph(g, c, None, dependencies)
-        identifier = g.insert(
+        row = c.create(
+            g,
             "tasks",
             {
                 **values,
-                "project_id": c.project_id,
                 "iteration_id": c.body["iteration_id"],
                 "title": c.body["title"],
                 "description": c.body.get("description", ""),
                 "owner_id": c.body["owner_id"],
-                "created_at": c.clock,
-                "updated_at": c.clock,
             },
+            updated=True,
         )
         for predecessor in dependencies:
             g.insert(
                 "task_dependencies",
                 {
                     "project_id": c.project_id,
-                    "task_id": identifier,
+                    "task_id": row["id"],
                     "depends_on_task_id": predecessor,
                     "created_by": c.actor_id,
                     "created_at": c.clock,
                 },
             )
-        c.path["task_id"] = identifier
-        return {"task": task_model(g.get("tasks", identifier))}
+        c.path["task_id"] = row["id"]
+        return {"task": task_model(row)}
 
     def listTasks(self, g, c):
         where = {
@@ -133,20 +132,13 @@ class Tasks:
         require(not existing, "STATE_CONFLICT")
         self.check_graph(g, c, row["id"], [predecessor])
         changed = c.cas(g, "tasks", row, {})
-        identifier = g.insert(
+        edge = c.create(
+            g,
             "task_dependencies",
-            {
-                "project_id": c.project_id,
-                "task_id": row["id"],
-                "depends_on_task_id": predecessor,
-                "created_by": c.actor_id,
-                "created_at": c.clock,
-            },
+            {"task_id": row["id"], "depends_on_task_id": predecessor},
+            actor_field="created_by",
         )
-        return {
-            "task": task_model(changed),
-            "dependency": self.dependency_model(g, g.get("task_dependencies", identifier)),
-        }
+        return {"task": task_model(changed), "dependency": self.dependency_model(g, edge)}
 
     def removeTaskDependency(self, g, c):
         c.manager()

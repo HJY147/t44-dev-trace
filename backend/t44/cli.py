@@ -6,12 +6,11 @@ import os
 import re
 import secrets
 import sys
-from datetime import timedelta
 from getpass import getpass
 
 from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
 from t44.services.common import Call, now, wire
-from t44.services.identity import HASHER, token_digest
+from t44.services.identity import HASHER, issue_session
 from t44.services.runtime import Runtime
 from t44.settings import Settings
 
@@ -128,36 +127,23 @@ def main(argv=None):
                     )
                     if rows and not rows[0]["active"]:
                         raise ValueError("Service account is inactive")
-                    token = secrets.token_urlsafe(32)
-                    expiry = timestamp + timedelta(seconds=settings.session_ttl_seconds)
-                    session_id = g.insert(
-                        "auth_sessions",
-                        {
-                            "actor_kind": 2,
-                            "user_id": None,
-                            "service_account_id": sid,
-                            "token_hash": token_digest(token),
-                            "project_ids": projects,
-                            "scopes": ["escalation:write"],
-                            "expires_at": expiry,
-                            "revoked_at": None,
-                            "created_at": timestamp,
-                        },
+                    session = issue_session(
+                        g,
+                        clock=timestamp,
+                        ttl=settings.session_ttl_seconds,
+                        service_account_id=sid,
+                        project_ids=projects,
+                        scopes=["escalation:write"],
                     )
                     Runtime(factory, settings, None).audit(
                         g, Call("service-token", secrets.token_hex(16), None)
                     )
                 with os.fdopen(descriptor, "w") as output:
                     descriptor = None
-                    json.dump(
-                        wire(
-                            {"access_token": token, "session_id": session_id, "expires_at": expiry}
-                        ),
-                        output,
-                    )
+                    json.dump(wire(session), output)
                     output.flush()
                     os.fsync(output.fileno())
-                result = {"session_id": session_id, "credential_written": True}
+                result = {"session_id": session["session_id"], "credential_written": True}
             except BaseException:
                 if descriptor is not None:
                     os.close(descriptor)

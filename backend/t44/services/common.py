@@ -129,6 +129,17 @@ class Call:
         require(row and row["project_id"] == self.project_id, "RESOURCE_NOT_FOUND")
         return row
 
+    def create(self, g, table, values, *, actor_field=None, updated=False, project=True):
+        """Trusted handler fields only; request bodies never choose a table or context field."""
+        values = {**values, "created_at": self.clock}
+        if project:
+            values["project_id"] = self.project_id
+        if updated:
+            values["updated_at"] = self.clock
+        if actor_field:
+            values[actor_field] = self.actor_id
+        return g.get(table, g.insert(table, values))
+
     def cas(self, g, table, row, values, *, expected=None):
         expected = self.body.get("expected_version") if expected is None else expected
         require(

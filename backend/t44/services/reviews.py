@@ -45,26 +45,21 @@ class Reviews:
             "PARAMETER_INVALID",
         )
         require(c.body["verdict"] != 1 or self.review_complete(c.body), "EVIDENCE_REQUIRED")
-        identifier = g.insert(
+        review = c.create(
+            g,
             "reviews",
             {
-                "project_id": c.project_id,
                 "task_id": row["id"],
-                "version": 1,
                 "delivery_cycle": row["delivery_cycle"],
                 "review_cycle": row["review_cycle"],
                 "template_version": TEMPLATE["version"],
                 "template_hash": TEMPLATE_HASH,
                 **{k: c.body[k] for k in ("artifact_revision", "sections", "checklist", "verdict")},
-                "reviewer_id": c.actor_id,
-                "created_at": c.clock,
             },
+            actor_field="reviewer_id",
         )
-        changed = c.cas(g, "tasks", row, {"latest_review_id": identifier})
-        return {
-            "task": task_model(changed),
-            "review": model("Review", g.get("reviews", identifier)),
-        }
+        changed = c.cas(g, "tasks", row, {"latest_review_id": review["id"]})
+        return {"task": task_model(changed), "review": model("Review", review)}
 
     def createReleaseAssessment(self, g, c):
         c.manager()
@@ -89,26 +84,22 @@ class Reviews:
             order_by=("-rollback_plan_version",),
             limit=1,
         )
-        identifier = g.insert(
+        assessment = c.create(
+            g,
             "release_assessments",
             {
-                "project_id": c.project_id,
                 "task_id": row["id"],
                 "schedule_version": row["schedule_version"],
                 "delivery_cycle": row["delivery_cycle"],
                 "risks": c.body["risks"],
                 "rollback_plan": c.body["rollback_plan"],
-                "rollback_plan_version": last[0]["rollback_plan_version"] + 1 if last else 1,
-                "created_by": c.actor_id,
                 "review_evidence": [],
-                "created_at": c.clock,
+                "rollback_plan_version": last[0]["rollback_plan_version"] + 1 if last else 1,
             },
+            actor_field="created_by",
         )
         changed = c.cas(g, "tasks", row, {})
-        return {
-            "task": task_model(changed),
-            "assessment": model("ReleaseAssessment", g.get("release_assessments", identifier)),
-        }
+        return {"task": task_model(changed), "assessment": model("ReleaseAssessment", assessment)}
 
     def reviewReleaseAssessment(self, g, c):
         c.reviewer()

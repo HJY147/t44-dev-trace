@@ -3,20 +3,27 @@
 from dataclasses import FrozenInstanceError, replace
 
 import pytest
-from t44.domain import commands, models as domain
+from t44.domain import commands as cmd
+from t44.domain import models as domain
 from t44.domain.state_machine import decide
 
 PROOF = ("fixed-evidence-reference",)
-BLOCK = commands.RecordBlock("external service unavailable", domain.ResponsibilityStage.EXTERNAL_DEPENDENCY, PROOF)
-UNBLOCK = commands.ResolveBlock("external service verified available", PROOF)
-SUBMIT = commands.SubmitForReview("fixed-source-revision", PROOF)
-ACCEPT = commands.AcceptReview("review-A")
-REJECT = commands.ReturnForChanges("review-A", "required checks failed")
-DELIVER = commands.ApproveDelivery("assessment-A", "release-A", "approved for delivery", PROOF)
-ROLLBACK = commands.RecordRollback(
+BLOCK = cmd.RecordBlock(
+    "external service unavailable",
+    domain.ResponsibilityStage.EXTERNAL_DEPENDENCY,
+    PROOF,
+)
+UNBLOCK = cmd.ResolveBlock("external service verified available", PROOF)
+SUBMIT = cmd.SubmitForReview("fixed-source-revision", PROOF)
+ACCEPT = cmd.AcceptReview("review-A")
+REJECT = cmd.ReturnForChanges("review-A", "required checks failed")
+DELIVER = cmd.ApproveDelivery(
+    "assessment-A", "release-A", "approved for delivery", PROOF
+)
+ROLLBACK = cmd.RecordRollback(
     "production fault", "affected orders recorded", "release-old", "plan-A", PROOF
 )
-REWORK = commands.AuthorizeRework("new-plan-A", "manager authorizes rework", PROOF)
+REWORK = cmd.AuthorizeRework("new-plan-A", "manager authorizes rework", PROOF)
 
 
 def context_for(state: domain.TaskState) -> domain.TransitionContext:
@@ -34,7 +41,11 @@ def context_for(state: domain.TaskState) -> domain.TransitionContext:
         latest_review_reference="review-A",
         approved_review_reference="review-A",
         review=domain.ReviewGate(
-            "review-A", domain.Cycle(), "fixed-source-revision", domain.ReviewOutcome.ACCEPTED, True
+            "review-A",
+            domain.Cycle(),
+            "fixed-source-revision",
+            domain.ReviewOutcome.ACCEPTED,
+            True,
         ),
         release=domain.ReleaseGate("assessment-A", 1, 1, True, True, True),
         rollback=domain.RollbackGate("plan-A", 1, True, True),
@@ -42,18 +53,31 @@ def context_for(state: domain.TaskState) -> domain.TransitionContext:
     )
 
 
-def command_context(state: domain.TaskState, command: object) -> domain.TransitionContext:
-    context = context_for(domain.TaskState.DEVELOPING if isinstance(command, commands.StartDevelopment) else state)
-    if isinstance(command, commands.ReturnForChanges):
+def command_context(
+    state: domain.TaskState, command: object
+) -> domain.TransitionContext:
+    context = context_for(
+        domain.TaskState.DEVELOPING
+        if isinstance(command, cmd.StartDevelopment)
+        else state
+    )
+    if isinstance(command, cmd.ReturnForChanges):
         assert context.review is not None
-        return replace(context, review=replace(context.review, outcome=domain.ReviewOutcome.REJECTED))
+        return replace(
+            context,
+            review=replace(context.review, outcome=domain.ReviewOutcome.REJECTED),
+        )
     return context
 
 
 @pytest.mark.parametrize(
     ("source", "command", "target"),
     [
-        (domain.TaskState.PENDING, commands.StartDevelopment(), domain.TaskState.DEVELOPING),
+        (
+            domain.TaskState.PENDING,
+            cmd.StartDevelopment(),
+            domain.TaskState.DEVELOPING,
+        ),
         (domain.TaskState.DEVELOPING, SUBMIT, domain.TaskState.PENDING_REVIEW),
         (domain.TaskState.PENDING_REVIEW, ACCEPT, domain.TaskState.PENDING_RELEASE),
         (domain.TaskState.PENDING_REVIEW, REJECT, domain.TaskState.DEVELOPING),
@@ -62,7 +86,9 @@ def command_context(state: domain.TaskState, command: object) -> domain.Transiti
         (domain.TaskState.ROLLED_BACK, REWORK, domain.TaskState.DEVELOPING),
     ],
 )
-def test_permitted_business_paths_return_decisions_without_applying_them(source, command, target):
+def test_permitted_business_paths_return_decisions_without_applying_them(
+    source, command, target
+):
     position = domain.TaskPosition(source)
     context = command_context(source, command)
     decision = decide(position, command, context)
@@ -84,7 +110,9 @@ def test_permitted_business_paths_return_decisions_without_applying_them(source,
         domain.TaskState.PENDING_RELEASE,
     ],
 )
-def test_block_round_trip_preserves_real_origin_and_does_not_reset_approval_cycles(source):
+def test_block_round_trip_preserves_real_origin_and_does_not_reset_approval_cycles(
+    source,
+):
     context = context_for(source)
     original = domain.TaskPosition(source)
     blocked = decide(original, BLOCK, context)
@@ -104,7 +132,7 @@ def test_block_round_trip_preserves_real_origin_and_does_not_reset_approval_cycl
         (domain.TaskState.PENDING, ACCEPT),
         (domain.TaskState.PENDING_REVIEW, ROLLBACK),
         (domain.TaskState.PENDING_RELEASE, SUBMIT),
-        (domain.TaskState.ROLLED_BACK, commands.StartDevelopment()),
+        (domain.TaskState.ROLLED_BACK, cmd.StartDevelopment()),
         (domain.TaskState.DELIVERED, REWORK),
         (domain.TaskState.DEVELOPING, UNBLOCK),
         (domain.TaskState.DELIVERED, BLOCK),
@@ -112,8 +140,13 @@ def test_block_round_trip_preserves_real_origin_and_does_not_reset_approval_cycl
         (domain.TaskState.BLOCKED, BLOCK),
     ],
 )
-def test_forbidden_skips_and_terminal_exits_leave_original_position_unchanged(source, command):
-    position = domain.TaskPosition(source, domain.TaskState.DEVELOPING if source is domain.TaskState.BLOCKED else None)
+def test_forbidden_skips_and_terminal_exits_leave_original_position_unchanged(
+    source, command
+):
+    position = domain.TaskPosition(
+        source,
+        domain.TaskState.DEVELOPING if source is domain.TaskState.BLOCKED else None,
+    )
     with pytest.raises(domain.DomainViolation) as error:
         decide(position, command, context_for(source))
     assert error.value.code is domain.Violation.INVALID_TRANSITION
@@ -138,14 +171,24 @@ def test_only_the_three_dependency_guarded_operations_refuse_undelivered_predece
 ):
     positions = {
         "start": domain.TaskPosition(domain.TaskState.PENDING),
-        "unblock-to-develop": domain.TaskPosition(domain.TaskState.BLOCKED, domain.TaskState.DEVELOPING),
+        "unblock-to-develop": domain.TaskPosition(
+            domain.TaskState.BLOCKED, domain.TaskState.DEVELOPING
+        ),
         "rework": domain.TaskPosition(domain.TaskState.ROLLED_BACK),
     }
-    commands = {"start": commands.StartDevelopment(), "unblock-to-develop": UNBLOCK, "rework": REWORK}
+    commands = {
+        "start": cmd.StartDevelopment(),
+        "unblock-to-develop": UNBLOCK,
+        "rework": REWORK,
+    }
     context = context_for(
-        domain.TaskState.PENDING_RELEASE if operation == "rework" else domain.TaskState.DEVELOPING
+        domain.TaskState.PENDING_RELEASE
+        if operation == "rework"
+        else domain.TaskState.DEVELOPING
     )
-    context = replace(context, dependency_states=(domain.TaskState.DELIVERED, dependency))
+    context = replace(
+        context, dependency_states=(domain.TaskState.DELIVERED, dependency)
+    )
     with pytest.raises(domain.DomainViolation) as error:
         decide(positions[operation], commands[operation], context)
     assert error.value.code is domain.Violation.DEPENDENCIES_UNSATISFIED
@@ -154,9 +197,13 @@ def test_only_the_three_dependency_guarded_operations_refuse_undelivered_predece
 def test_review_rejection_does_not_invent_a_dependency_guard_or_change_upstream_state():
     context = command_context(domain.TaskState.PENDING_REVIEW, REJECT)
     context = replace(context, dependency_states=(domain.TaskState.ROLLED_BACK,))
-    result = decide(domain.TaskPosition(domain.TaskState.PENDING_REVIEW), REJECT, context)
+    result = decide(
+        domain.TaskPosition(domain.TaskState.PENDING_REVIEW), REJECT, context
+    )
     assert result.target.state is domain.TaskState.DEVELOPING
-    assert result.effects == frozenset({domain.Effect.ADVANCE_REVIEW_CYCLE, domain.Effect.CLEAR_APPROVALS})
+    assert result.effects == frozenset(
+        {domain.Effect.ADVANCE_REVIEW_CYCLE, domain.Effect.CLEAR_APPROVALS}
+    )
     assert context.dependency_states == (domain.TaskState.ROLLED_BACK,)
     assert context.cycle == domain.Cycle()
 
@@ -171,11 +218,13 @@ def test_review_rejection_does_not_invent_a_dependency_guard_or_change_upstream_
 @pytest.mark.parametrize(
     ("position", "command"),
     [
-        (domain.TaskPosition(domain.TaskState.PENDING), commands.StartDevelopment()),
+        (domain.TaskPosition(domain.TaskState.PENDING), cmd.StartDevelopment()),
         (domain.TaskPosition(domain.TaskState.DEVELOPING), SUBMIT),
     ],
 )
-def test_manager_or_reviewer_role_alone_cannot_advance_development(roles, position, command):
+def test_manager_or_reviewer_role_alone_cannot_advance_development(
+    roles, position, command
+):
     context = replace(context_for(domain.TaskState.DEVELOPING), roles=roles)
     with pytest.raises(domain.DomainViolation) as error:
         decide(position, command, context)
@@ -188,7 +237,11 @@ def test_manager_who_also_is_the_assigned_developer_can_start():
         roles=frozenset({domain.ProjectRole.MANAGER, domain.ProjectRole.DEVELOPER}),
     )
     assert (
-        decide(domain.TaskPosition(domain.TaskState.PENDING), commands.StartDevelopment(), context).target.state
+        decide(
+            domain.TaskPosition(domain.TaskState.PENDING),
+            cmd.StartDevelopment(),
+            context,
+        ).target.state
         is domain.TaskState.DEVELOPING
     )
 
@@ -204,7 +257,7 @@ def test_current_project_membership_and_task_ownership_are_required(change, code
     with pytest.raises(domain.DomainViolation) as error:
         decide(
             domain.TaskPosition(domain.TaskState.PENDING),
-            commands.StartDevelopment(),
+            cmd.StartDevelopment(),
             replace(context_for(domain.TaskState.DEVELOPING), **change),
         )
     assert error.value.code is code
@@ -214,20 +267,31 @@ def test_current_project_membership_and_task_ownership_are_required(change, code
     ("command", "code"),
     [
         (replace(BLOCK, reason=" \n"), domain.Violation.BLOCK_REASON_REQUIRED),
-        (replace(BLOCK, responsibility_stage=None), domain.Violation.RESPONSIBILITY_STAGE_REQUIRED),
+        (
+            replace(BLOCK, responsibility_stage=None),
+            domain.Violation.RESPONSIBILITY_STAGE_REQUIRED,
+        ),
         (replace(BLOCK, evidence=()), domain.Violation.EVIDENCE_REQUIRED),
         (replace(BLOCK, evidence=(" ",)), domain.Violation.EVIDENCE_REQUIRED),
     ],
 )
 def test_block_requires_reason_actual_responsibility_stage_and_evidence(command, code):
     with pytest.raises(domain.DomainViolation) as error:
-        decide(domain.TaskPosition(domain.TaskState.DEVELOPING), command, context_for(domain.TaskState.DEVELOPING))
+        decide(
+            domain.TaskPosition(domain.TaskState.DEVELOPING),
+            command,
+            context_for(domain.TaskState.DEVELOPING),
+        )
     assert error.value.code is code
 
 
 def test_claiming_external_or_review_responsibility_does_not_bypass_stage_authorization():
     with pytest.raises(domain.DomainViolation) as error:
-        decide(domain.TaskPosition(domain.TaskState.DEVELOPING), BLOCK, context_for(domain.TaskState.PENDING_REVIEW))
+        decide(
+            domain.TaskPosition(domain.TaskState.DEVELOPING),
+            BLOCK,
+            context_for(domain.TaskState.PENDING_REVIEW),
+        )
     assert error.value.code is domain.Violation.ROLE_FORBIDDEN
 
 
@@ -252,8 +316,14 @@ def test_unblock_requires_actual_basis_and_evidence(command, code):
     ("change", "code"),
     [
         ({"review": None}, domain.Violation.REVIEW_REQUIRED),
-        ({"latest_review_reference": "old-review"}, domain.Violation.REVIEW_BASELINE_STALE),
-        ({"artifact_reference": "changed-source"}, domain.Violation.REVIEW_BASELINE_STALE),
+        (
+            {"latest_review_reference": "old-review"},
+            domain.Violation.REVIEW_BASELINE_STALE,
+        ),
+        (
+            {"artifact_reference": "changed-source"},
+            domain.Violation.REVIEW_BASELINE_STALE,
+        ),
         ({"cycle": domain.Cycle(2, 1)}, domain.Violation.REVIEW_BASELINE_STALE),
         ({"cycle": domain.Cycle(1, 2)}, domain.Violation.REVIEW_BASELINE_STALE),
         ({"actor_is_owner": True}, domain.Violation.SELF_REVIEW_FORBIDDEN),
@@ -274,10 +344,15 @@ def test_code_review_cannot_reuse_stale_proof_or_be_approved_by_owner(change, co
     [
         ({"evidence_complete": False}, domain.Violation.EVIDENCE_REQUIRED),
         ({"reviewer_is_owner": True}, domain.Violation.SELF_REVIEW_FORBIDDEN),
-        ({"outcome": domain.ReviewOutcome.REJECTED}, domain.Violation.REVIEW_OUTCOME_MISMATCH),
+        (
+            {"outcome": domain.ReviewOutcome.REJECTED},
+            domain.Violation.REVIEW_OUTCOME_MISMATCH,
+        ),
     ],
 )
-def test_review_acceptance_checks_the_underlying_proof_not_only_the_approver(change, code):
+def test_review_acceptance_checks_the_underlying_proof_not_only_the_approver(
+    change, code
+):
     context = context_for(domain.TaskState.PENDING_REVIEW)
     assert context.review is not None
     with pytest.raises(domain.DomainViolation) as error:
@@ -300,7 +375,9 @@ def test_review_acceptance_checks_the_underlying_proof_not_only_the_approver(cha
         ({"reviewer_is_creator": True}, domain.Violation.RELEASE_SELF_REVIEW_FORBIDDEN),
     ],
 )
-def test_delivery_needs_current_independently_reviewed_assessment_and_plan(change, code):
+def test_delivery_needs_current_independently_reviewed_assessment_and_plan(
+    change, code
+):
     context = context_for(domain.TaskState.PENDING_RELEASE)
     assert context.release is not None
     with pytest.raises(domain.DomainViolation) as error:
@@ -322,7 +399,9 @@ def test_reschedule_needs_new_assessment_but_keeps_current_code_review():
     assert updated.release is not None
     updated = replace(updated, release=replace(updated.release, schedule_version=2))
     assert (
-        decide(domain.TaskPosition(domain.TaskState.PENDING_RELEASE), DELIVER, updated).target.state
+        decide(
+            domain.TaskPosition(domain.TaskState.PENDING_RELEASE), DELIVER, updated
+        ).target.state
         is domain.TaskState.DELIVERED
     )
 
@@ -361,7 +440,9 @@ def test_delivery_rollback_and_rework_require_manager(state, command):
         decide(
             domain.TaskPosition(state),
             command,
-            replace(context_for(state), roles=frozenset({domain.ProjectRole.DEVELOPER})),
+            replace(
+                context_for(state), roles=frozenset({domain.ProjectRole.DEVELOPER})
+            ),
         )
     assert error.value.code is domain.Violation.ROLE_FORBIDDEN
 
@@ -401,19 +482,51 @@ def test_inconsistent_block_origin_is_rejected_before_any_decision(position):
 @pytest.mark.parametrize(
     ("state", "command", "code"),
     [
-        (domain.TaskState.DEVELOPING, replace(SUBMIT, artifact_reference=""), domain.Violation.ARTIFACT_REQUIRED),
-        (domain.TaskState.DEVELOPING, replace(SUBMIT, evidence=()), domain.Violation.EVIDENCE_REQUIRED),
-        (domain.TaskState.PENDING_REVIEW, replace(REJECT, reason=""), domain.Violation.DECISION_DETAILS_REQUIRED),
+        (
+            domain.TaskState.DEVELOPING,
+            replace(SUBMIT, artifact_reference=""),
+            domain.Violation.ARTIFACT_REQUIRED,
+        ),
+        (
+            domain.TaskState.DEVELOPING,
+            replace(SUBMIT, evidence=()),
+            domain.Violation.EVIDENCE_REQUIRED,
+        ),
+        (
+            domain.TaskState.PENDING_REVIEW,
+            replace(REJECT, reason=""),
+            domain.Violation.DECISION_DETAILS_REQUIRED,
+        ),
         (
             domain.TaskState.PENDING_RELEASE,
             replace(DELIVER, reason=""),
             domain.Violation.DECISION_DETAILS_REQUIRED,
         ),
-        (domain.TaskState.PENDING_RELEASE, replace(DELIVER, evidence=()), domain.Violation.EVIDENCE_REQUIRED),
-        (domain.TaskState.DELIVERED, replace(ROLLBACK, impact=""), domain.Violation.DECISION_DETAILS_REQUIRED),
-        (domain.TaskState.DELIVERED, replace(ROLLBACK, evidence=()), domain.Violation.EVIDENCE_REQUIRED),
-        (domain.TaskState.ROLLED_BACK, replace(REWORK, reason=""), domain.Violation.DECISION_DETAILS_REQUIRED),
-        (domain.TaskState.ROLLED_BACK, replace(REWORK, evidence=()), domain.Violation.EVIDENCE_REQUIRED),
+        (
+            domain.TaskState.PENDING_RELEASE,
+            replace(DELIVER, evidence=()),
+            domain.Violation.EVIDENCE_REQUIRED,
+        ),
+        (
+            domain.TaskState.DELIVERED,
+            replace(ROLLBACK, impact=""),
+            domain.Violation.DECISION_DETAILS_REQUIRED,
+        ),
+        (
+            domain.TaskState.DELIVERED,
+            replace(ROLLBACK, evidence=()),
+            domain.Violation.EVIDENCE_REQUIRED,
+        ),
+        (
+            domain.TaskState.ROLLED_BACK,
+            replace(REWORK, reason=""),
+            domain.Violation.DECISION_DETAILS_REQUIRED,
+        ),
+        (
+            domain.TaskState.ROLLED_BACK,
+            replace(REWORK, evidence=()),
+            domain.Violation.EVIDENCE_REQUIRED,
+        ),
     ],
 )
 def test_missing_artifact_decision_details_and_evidence_reject_without_mutation(
@@ -455,10 +568,16 @@ def test_rollback_cannot_bypass_missing_plan():
 
 def test_no_dependencies_is_a_valid_start_and_no_direct_target_override_exists():
     context = replace(context_for(domain.TaskState.DEVELOPING), dependency_states=())
-    result = decide(domain.TaskPosition(domain.TaskState.PENDING), commands.StartDevelopment(), context)
+    result = decide(
+        domain.TaskPosition(domain.TaskState.PENDING),
+        cmd.StartDevelopment(),
+        context,
+    )
     assert result.target.state is domain.TaskState.DEVELOPING
     with pytest.raises(TypeError):
-        commands.ResolveBlock(basis="verified", evidence=PROOF, target_state=domain.TaskState.DELIVERED)
+        cmd.ResolveBlock(
+            basis="verified", evidence=PROOF, target_state=domain.TaskState.DELIVERED
+        )
 
 
 @pytest.mark.parametrize(
@@ -473,7 +592,9 @@ def test_no_dependencies_is_a_valid_start_and_no_direct_target_override_exists()
         {"cycle": None},
     ],
 )
-def test_trusted_context_still_refuses_truthy_strings_and_mutable_or_external_types(change):
+def test_trusted_context_still_refuses_truthy_strings_and_mutable_or_external_types(
+    change,
+):
     with pytest.raises(TypeError):
         replace(context_for(domain.TaskState.DEVELOPING), **change)
 
