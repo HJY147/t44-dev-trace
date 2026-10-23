@@ -1,36 +1,31 @@
-# 调度基础模块与尚未接入的业务扫描
+# 扫描、升级门面与进程
 
-依据是用户已采用的 `specs/business-rules.md`（D001）。D004 的字段/错误码取舍已由用户采用（ae60dc3）；本模块仍没有业务 API、DDL 或数据库调用。
+基于 D001 三级窗口、D004 与冻结 v1；`EscalationFacade()` 为 API 零参组件，三个方法 `rules(g,c)`、`list(g,c)`、`create(g,c)` 返回冻结 `data`。create 不提交 UoW；Runtime 统一服务认证、幂等认领、任务/成员锁、审计、finalize 的 audit_id 和完成快照，202 只代表可靠提交。
 
-`load_rules(path=None) -> EscalationRules` 读取 `t44/resources/escalation-rules.json`。schema 1 校验版本标识、严格字段、三个有序且代码不重复的级别、阈值、收件人角色和 D001 的 60 秒周期；重复 JSON 键、未知字段、布尔冒充整数和不能表示的阈值均拒绝。资源的默认值是真正执行的 D001 三级规则，临期/严重超期阈值由 JSON 给出。
+`load_rules` 读取唯一 JSON 配置，校验冻结 EscalationRule（正整数 version、selection、显式起止/包含边界、priority、recipient_kinds、effective_at/decided_by），级别和优先级不可重复，窗口必须有效。解释器按最高匹配 priority 工作，没有固定三级 switch。默认仍只有采用的 24h/到期/24h 三档、60 秒。`select_window` 用 `now-planned_end` 避免年末加 24h 溢出，时间接受 UTC-aware datetime 或最多六位小数 UTC ISO 文本、1000–9999 年；不截断超精度。
 
-`select_window(now, planned_end, rules) -> WindowMatch | None` 只返回当前最高窗口及规则版本/收件人角色，不声称创建了升级或送达通知。两项时间接受 UTC-aware `datetime` 或 `YYYY-MM-DDTHH:MM:SS[.1至6位]Z/+00:00` 文本；拒绝非 UTC、无时区、超出 1000–9999 年或超过六位的小数，不把输入截断成微秒。到期时刻尚属临期，晚 1 微秒即超期，超期满 24 小时属严重超期。计算仅使用 `now - planned_end`，不会对年末的计划时间做 `+24h`。这是内部边界，不代表 HTTP/数据库接入已经实现或验证。
+配置的 decided_by=1 沿用冻结契约的**合成示例身份**，不声称数据库 ID1 就是实际用户或有人逐条批准配置例值；effective_at 对应 D001 采用时刻。正式部署须由初始化责任岗核对/记录实际身份映射。测试临时配置则明确映射本测试新建的合成经理 ID，绝不作为人类审批证据。D001 阈值由用户采用，配置结构及此示例映射为 AI 技术选择。
 
-`build_scheduler(scan_callback, rules=None) -> BlockingScheduler` 接收同步无参扫描回调，返回未启动实例；UTC、60 秒 interval、coalesce、max_instances=1。`run_scheduler(scheduler)` 在专用进程中阻塞运行，KeyboardInterrupt 时等待执行中的回调结束，其他错误继续向上传播。进程组合根未来负责将停机信号接到 `scheduler.shutdown(wait=True)`。已有运行实例拒绝再次交给 run，且不会关闭原来的运行实例。
+升级事务重新检查服务 scope、state1–5、expected_version、schedule_version、rule_version 与当前窗口；阻塞不停表，已交付/已回滚拒绝。快照 owner 与全部 active 经理（临期仅 owner）并去重。outbox(event_type2)、ledger、task.version/escalation_count、Runtime 审计/幂等快照同一事务；硬键仅 task/schedule/level。业务重复仍检查当前版本，返回 created=false 不加计数/版本；唯一冲突用 savepoint 回滚临时 outbox 后回读。事件与 scan_runs 均保存完整快照及原始 UTF-8 字节 SHA-256，不用 JSON 重排后的 hash 冒充原文。历史规则从持久扫描快照读取，配置原/新及操作者记录在本岗 application-rule-change.json。
 
-导入包不构造或启动调度器。不要在 FastAPI import/lifespan 中启动它；API 多 worker 不拥有扫描器。本轮故意没有 `__main__` 或空扫描 CLI：正式 `python -m t44.scheduling` 入口要在真实存储与消息回调可接入后由本岗补齐。内存 job store 只保存可重建的周期任务，不保存业务恢复/去重状态；max_instances 仅限制本进程，不能代替跨进程持久去重。
+`Scanner` 调用实际 `Runtime.execute(Call, validate_call)`，不造 JWT 或第二套事务。服务 token 的 project_ids 先经 Runtime 认证，扫描只处理其范围，每次升级再由 Runtime 重验会话/权限。ScanStore 提供 UUID run、固定 cutoff、keyset 页、游标/心跳/计数；确定成功、业务重复或已不符合后才推进，未知失败保留 running 供恢复。提交后崩溃但未写游标时，按 ledger 原 run UUID 在重扫推进时补计一次创建。run UUID 统一标准格式，避免大小写使计数出错。
 
-后续调用约定（业务语义依据 D001/D004，实际接入门面签名仍待责任岗确认）：
+周期 tick 恢复当前原文 hash 下心跳超过120秒的最多100个旧 run，再新开本轮；使用已确认 RowsGateway 的 hash+heartbeat 谓词在 LIMIT 前筛选，避免其他/旧配置记录阻塞恢复队列。不同原文的历史 run 不被静默改成新规则；可用原配置显式恢复或由运维审核处置。新 run 会从0重扫，业务唯一键保护旧升级。查询/升级与 checkpoint 是分开的真实事务，不声称一次 HTTP 就与游标原子提交。
 
-1. 每批使用一个 UTC `now` 和已加载规则快照，通过数据库门面分页读取未交付、未回滚任务；阻塞不暂停计时。候选携带任务、排期版本、状态/版本、计划结束和收件人标识。
-2. 调用纯函数只得最高窗口；无匹配则跳过。事务内重新核对任务/排期与状态，再以“任务 + 排期版本 + 升级级别”登记唯一升级并同时保存待发送记录。规则版本用于审计，不独立授权同排期同级重复升级。改期保留差异并产生新排期版本。
-3. 数据库岗提供唯一约束/原子登记，消息岗提供可靠接收/发布确认与消费确认；消息按事件与收件人去重。MQ 不可用时生成有标记的站内待办，同一事件恢复后不再提醒。调度不直接改业务状态。
-4. 升级次数由成功持久登记决定，不能因扫描/投递重试再加一次；拒绝、重复、失败与批次统计分别留痕。重启重新扫描并重试未完成持久记录，不能仅前移内存游标而永久跳过失败项。
+初始化服务凭据使用后端现有命令（PROJECT_ID 必须是真实授权项目；此处是命令说明，非已执行的生产初始化）：
 
-上述业务扫描、事务登记、幂等键唯一约束、留痕、重启补扫和消息降级均**尚未实现**。需要数据库/后端/消息责任岗共同确认接入契约，未进入联调，未做 MySQL/RabbitMQ/HTTP/AC-07 独立验收。
-
-伪代码（仅约定，不是当前运行结果）：
-
-```text
-snapshot_now, rules = utc_clock(), load_rules()
-for page in candidate_facade.pages(snapshot_now):
-    for candidate in page:
-        window = select_window(snapshot_now, candidate.planned_end, rules)
-        if window is None: continue
-        transaction.revalidate_and_record_once(candidate, window, pending_delivery=True)
-message_facade.retry_pending_deliveries()  # 同一事件沿用原稳定标识
+```sh
+PYTHONPATH=backend .venv/bin/python -m t44.cli service-token --name scheduler --project-id "$PROJECT_ID" --token-file /private/scheduler-token.json
+PYTHONPATH=backend .venv/bin/python -m t44.scheduling --token-file /private/scheduler-token.json
+PYTHONPATH=backend .venv/bin/python -m t44.scheduling --once --resume-run "$RUN_UUID" --token-file /private/scheduler-token.json
 ```
 
-读取/验证配置时间和空间为 O(C)，C 为配置长度；每个纯判定 O(R) 时间、O(1) 额外空间，当前 R=3，因此为常数。未来扫描 N 个候选时判定为 O(NR)，分页内存 O(B+R)（B 为页大小）；数据库筛选、唯一键查询、事务争用和消息重试的代价取决于未接入的索引/实现，此处不把它们宣称为 O(1) 或给出吞吐实测。
+环境为 `DATABASE_URL`/匹配 `T44_DATABASE`；token 文件可由 `T44_SCHEDULER_TOKEN_FILE` 提供，必须为私密 regular file（无 group/other 权限），每次调用重新读取以支持轮换；不打印 token。`--once` 执行真实扫描并输出持久统计；`--resume-run` 必须已存在且配合 once。`--rules`/`T44_ESCALATION_RULES` 可提供已采用配置。启动/once 配置或扫描错误退出1，成功返回0；定时回调失败由 APScheduler 记录并保留未完成 run，不能据进程仍在就声称扫描成功。
 
-官方参考（2026-10-23 查阅，安装版本 APScheduler 3.11.3）：[User guide](https://apscheduler.readthedocs.io/en/3.x/userguide.html)、[BlockingScheduler](https://apscheduler.readthedocs.io/en/3.x/modules/schedulers/blocking.html)、[BaseScheduler](https://apscheduler.readthedocs.io/en/3.x/modules/schedulers/base.html)。选择 BlockingScheduler 对应专用进程；coalesce/实例限制/关闭等待按这些接口实现，未使用 APScheduler 4 API。
+进程显式构造 BlockingScheduler：UTC、60秒默认、coalesce、max_instances=1；SIGTERM 等待运行回调退出。导入/API 多 worker 不启动 timer。单机用 flock（默认临时目录内按库命名，`T44_SCHEDULER_LOCK_FILE` 可指定）防同一锁路径的重复进程；单机 Compose 必须只运行一个调度服务，若分容器启动须共享锁文件路径。它不是数据库分布式租约，max_instances 也不是跨进程幂等；持久唯一约束兜底。
+
+规则加载 O(C+R log R)，单纯判定 O(R)；每页 B 个候选，内存包含 B、配置及最大收件人集合。实际每次 create 还包含配置校验、收件人展开及数据库/审计/幂等调用；DB 索引查询、锁争用和网络代价没有被说成 O(1)。未做400并发/P95或产品压测。
+
+验证：`PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/scheduling -q`。本机另显式设置 T44_SCHEDULER_TEST_CREDENTIALS/T44_SCHEDULER_TEST_DATABASE=t44_test；CI 必须给真实 DATABASE_URL/T44_DATABASE，缺配置 fail 不 skip。107项通过，其中22项真实MySQL8.4.11/ASGI-HTTP/CLI验证，其余含保留的77基础用例；实际进程突然退出后用正式CLI恢复20项、并发CAS、硬去重/savepoint、改期、终态排除、blocked计时、104收件人、原子回滚、冻结GET/202均有证据。规则扩展实验只变一个临时配置、解释模块不变，未将实验第四级启用到生产默认值。
+
+仅本模块覆盖率83%（357语句/86分支；实际CLI子进程未汇入覆盖统计）；原始失败、XML/覆盖数据在 agents/scheduler/application-*。1项 CI 环境入口在本机真库通过，不冒称GitHub托管CI结果。消息通知 DB fallback 使用数据库岗真实门面已验证；本机无RabbitMQ网络，未做真实MQ、前端全链、独立验收或全局代码规模/覆盖率达标声明。

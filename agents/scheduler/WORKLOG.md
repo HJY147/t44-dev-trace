@@ -40,3 +40,18 @@
 - 已实际在Issue6回复消息岗/部署岗：`https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6359652643`；评论正文为本岗foundation-issue-comment.md。D001去重范围为任务+排期版本+级别，跨进程/重启安全仍需持久约束；max_instances仅限本进程。
 - 尚未实现DB候选扫描、原子升级/审计/去重、通知、正式CLI/停机信号组合根；未执行真实MySQL/RabbitMQ/HTTP、AC07、产品覆盖率/性能或独立验收，未联系或读取测试私有资料。
 - 本轮将自己显式commit/push并建draft PR（base codex/team-bootstrap）；提交后SHA/URL由实际工具结果交总协调，不预写成功或自行设置审核状态。
+
+## 2026-10-23T16:59:01+08:00 APPLICATION 真实实现与验证
+
+- 实际派工ROLE-scheduler-APPLICATION-v1原文在本岗同名文件；干净树git merge --no-edit 12f7141026376763086e41a5b4db9ac1e82cfa33为FF。只读冻结OpenAPI/backend-design/persistence-contract、Runtime/Call/application和DB README/Rows/ScanStore，不沿旧口头签名实现。
+- 已写真实零参EscalationFacade/frozen data、事务内create、ScanStore+Runtime扫描和正式__main__。复用统一认证/idem/审计；没有第二套JWT或事务。配置改为冻结shape，按priority解释，不硬switch三级；原UTF8hash及快照持久化。
+- Issue3真实问取为 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6360769538 。总协调确认现有service-token CLI已经存在；纠正原“尚缺”误判为AI对AI纠正，未计为用户识别或人工改码。测试实用该命令初始化服务session。消息岗确认按DB权威event/ledger与recipients消费。
+- 编辑时三次apply_patch上下文/格式不匹配被原子拒绝，未改他岗文件，改用准确Update/本岗整文件写入恢复。最初Ruff unused os失败保留于application-validation.log；修正后100项通过。
+- 补真实子进程os._exit(73)故障后以正式CLI恢复20项、104收件人、旧心跳恢复、跨规则版本去重与锁/私密文件检查后106项通过；再发现UUID大小写会误计本run创建，规范化并加回归，最终107 passed17.49s。重复运行均对应新增实际风险/代码修复与覆盖采集，不刷次数。产品逻辑此后未改。
+- 最终Ruff/Bandit通过；覆盖仅scheduling357语句/86分支综合83%，CLI子进程未汇入，不伪报基础100%或全局80%。原始日志/覆盖/107项XML均在本岗application-*。
+- 22项真实MySQL8.4.11/ASGI/CLI测试使用t44_test及sch-*合成前缀，未清空其他模块表；20条升级、重复/进程崩溃后恢复、并发202/409、改期、终态/blocked、savepoint真实1062及写后回滚/独立拒绝审计均已实际执行。故障注入不等于mock数据库。
+- CI环境入口额外1项：初用系统python3编排缺sqlalchemy，测试尚未运行，错误原文保留application-ci-env.log；改用锁内.venv后以CI=1、DATABASE_URL/匹配库名、无私密fixture变量在本机真库通过。不是GitHub托管CI结果，未打印secret。
+- 原/新配置、原文hash、文件时间/影响/AI操作者在application-rule-change.json；decided_by=1为契约示例合成映射，未声称用户实际DB ID或逐条批准例值。规则扩展实验真实diff只变1配置/0解释模块，第四级未进生产默认。
+- 单机进程使用token文件与flock、逐调用重验scope、游标确定后推进；当前hash旧心跳恢复在LIMIT前筛选，避免旧规则饥饿。不同hash旧run不静默重解释；部署须原配置恢复/审核处置及真实身份映射。
+- 无真实RabbitMQ网络、前端全链、400并发/P95或独立验收结果；产品代码规模超限提醒已收到，不改统计口径/弱化功能。随后仅本岗显式commit/push更新PR19并交真实SHA/URL，不自行审核成功或合并。
+- 已实际发表Issue6阶段评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6361327486；已向部署Issue7交具体CLI/env/初始化/锁/轮换要求 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361329227，命令退出码0，评论正文归本岗归档。
