@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T18:53:27.732899+00:00",
+  "updated_at": "2026-10-23T18:59:21.911273+00:00",
   "authorization": "records/prompts/U019-original.md",
   "window_observed_start_utc": "2026-10-23T17:43:01Z",
   "deadline_utc": "2026-10-24T01:43:00Z",
@@ -51,7 +51,7 @@
     {
       "id": "N06",
       "task": "Bounded developer contract ABBA90s comparison after UI quiet; not formal performance; design before write optimization",
-      "status": "single_ABBA_complete_exit0_39.88sec_18_38_01_to_18_38_41UTC_pending_backend_analysis_not_formal"
+      "status": "ABBA_archived072_by_root_backend_role_resumed_analysis_and_next_RFC_design_only"
     },
     {
       "id": "N07",
@@ -61,7 +61,7 @@
     {
       "id": "N08",
       "task": "M5 living technical reports, requirement/design evolution and diagrams, function I/O and module tests, genuine AI prompt/debug traces",
-      "status": "M5_MD_active_three_new_diagrams_rendered18_40_14_to18_40_19UTC_QA_in_progress"
+      "status": "M5_MD_three_QA_diagrams_preserved_uncommitted_doc_remote_compact_failed_recovery_interrupted18_58_for_fresh_checkpoint_resume"
     },
     {
       "id": "N09",
@@ -71,7 +71,7 @@
     {
       "id": "N10",
       "task": "Fix independently published V2-UI-001 logout DOM context residue via design/regression/minimal implementation/review",
-      "status": "frontend_design844bf71_code363ac4d_39_developer_tests_and_browser_pass_evidence_pending_review"
+      "status": "frontend3c160c5_developer_green_but_reviewer_895_confirmed_stale_error_callback_P2_blocks_integration_repair_queued"
     }
   ],
   "constraints": [
@@ -92,5 +92,12 @@
     "docker_run": 39999920326,
     "raw_archive_commit": "b9f7fbd",
     "not_final_acceptance": true
+  },
+  "latest_confirmed_reviewer_finding": {
+    "source": "3c160c57c56af47eea2c524d93340a679eeb441b",
+    "scope": "Old unmounted form error callback may clear new authenticated project context; no backend authorization bypass proved",
+    "probe": "tmp/frontend/895_session_lifecycle_probe.test.ts",
+    "counts": "1failed2passed",
+    "status": "reviewer_publication_pending_then_frontend_fix"
   }
 }
