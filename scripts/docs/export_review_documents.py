@@ -253,7 +253,15 @@ def image_figure(doc, source, root, target, title, number):
         if last.style.name.startswith('Heading'):
             preceding_heading = (last.text, last.style)
             last._element.getparent().remove(last._element)
+            # A table's spacer must not survive alone before the section break.
+            while doc.paragraphs and not doc.paragraphs[-1].text and not doc.paragraphs[-1]._p.xpath('.//w:sectPr|.//w:drawing'):
+                empty = doc.paragraphs[-1]._element
+                empty.getparent().remove(empty)
         sec = doc.add_section(WD_SECTION.NEW_PAGE)
+        boundary = doc.paragraphs[-1].paragraph_format
+        boundary.space_before = boundary.space_after = Pt(0)
+        boundary.line_spacing = Pt(1)
+        boundary.keep_with_next = boundary.keep_together = False
         sec.orientation = WD_ORIENT.LANDSCAPE
         sec.page_width, sec.page_height = Inches(11), Inches(8.5)
         sec.different_first_page_header_footer = False
@@ -276,6 +284,10 @@ def image_figure(doc, source, root, target, title, number):
     para._p.xpath('.//wp:docPr')[0].set('descr', plain(title))
     if wide:
         sec = doc.add_section(WD_SECTION.NEW_PAGE)
+        boundary = doc.paragraphs[-1].paragraph_format
+        boundary.space_before = boundary.space_after = Pt(0)
+        boundary.line_spacing = Pt(1)
+        boundary.keep_with_next = boundary.keep_together = False
         sec.orientation = WD_ORIENT.PORTRAIT
         sec.page_width, sec.page_height = Inches(8.5), Inches(11)
         sec.different_first_page_header_footer = False
