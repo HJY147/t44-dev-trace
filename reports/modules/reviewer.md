@@ -110,3 +110,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 ## SESSION-R1补修限定复审（babc/9560）
 
 准确headbabc60f275ec780bcd3044be455acfddc4a49e60，产品9560e7bd23b68eddbdb733a5ee671999f46a44cd，设计7df→代码9560→证据36d。原895字节f42a...不变，本岗只定向一次3/3、孤儿读取空且新项目保留；API错误/JSON守卫和组件active+token阻断旧回调，当前401/失败重试/幂等及服务端提交语义不变。19源/14冻结/10gzip与开发真红/驱动错/最终51绿和分母分别核验，不重跑全套。SESSION-R1限定关闭，原3c报告/独立FAIL保留，整产品仍不通过（原规模超限/正式P95失败/独立UI002/003及完整验收）。报告reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md，证据agents/reviewer/evidence/session-r1-babc60f，真实prompt ROLE-reviewer-SESSION-R1-FOLLOWUP-v1。
+
+发布回执：本岗证据19b9d1dd04005cfd1def2bee163a311b1197ed79已push；PR26 COMMENT5633421899真实发布并特定review REST核commit_id=babc完整SHA、COMMENTED与正文逐字一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899。回执agents/reviewer/evidence/session-r1-babc60f/github-comment.json。
