@@ -1,0 +1,35 @@
+{
+  "version": "independent-v2-fault-resume-runtime-1",
+  "frozen_at": "2026-10-23T17:50:10.051945+00:00",
+  "original_H": "27c9a0a6af10a21eb475ef42c9e98e13b8334a43",
+  "H2": "c0d8192bac700f966e68447f94e2637da4debace",
+  "H3": "99906b1fb1ef376cc819c1a3af9558906331f8c0",
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "preserved_run": 39969411280,
+  "SUT": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "environment_implementation": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+  "neutral_whitelist_commit": "6b681dd73694bf18430f1bce4bdf00ffd1ae762e",
+  "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+  "neutral_all7_hashes_and_bytes_verified": true,
+  "original_files_unchanged": true,
+  "product_assertions_changed": false,
+  "thresholds_changed": false,
+  "only_previously_incomplete_fault_cases_selected": true,
+  "runtime_adaptations": [
+    "Parse actual read-only MySQL TSV for actual-row message identity only",
+    "Validate actual per-call structured recover schema/service scope/step exits; environment capability failure remains BLOCKED",
+    "Replace task-id substring guessing with actual escalation to outbox join and exact neutral three-field wrapper match",
+    "Republish captured original with its actual properties via neutral exchange/routing; no fabricated business message",
+    "No driver wrapper PASS around nested case result",
+    "Use fresh queue first for original duplicate-message probe; API blackbox methods not selected"
+  ],
+  "files_sha256": {
+    "921_fault-resume.py": "9207a472c44291a50964233f10ac26be4a008300c3ca5ff47feb75bd0f936b58",
+    "947_faults.py": "f249d2c81c3a557b6924bda117f7b9d2a39c8564f96eed0780eb2139c5ba5cc6",
+    "949_harness.py": "30c2ccbc961f114edfe10d6bcd86f6b8259289ea11633c4c028b8843c2130e02",
+    "950_cases.json": "1ba304140eb63774dc790c9a1a72eb5ccda76c22a5c5d6181086ea40c03c5ca2",
+    "939_runtime-adapter.py": "f70abecca1e22b58ed030839030b8c54751a539c5bb159e3c67e54bccdfe3056",
+    "944_recipient.pem": "f2e156af05a4ce9e6128d64543a795b8385407935ffb4b80e43d55b5f1433139"
+  },
+  "execution_status": "NOT_YET_EXECUTED"
+}
