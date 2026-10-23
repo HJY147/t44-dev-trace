@@ -1,6 +1,6 @@
 # 性能诊断准备 A：未运行实验
 
-实际派工ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1。工作树已快进397bd7973cfd835c635634d32e0c98ae56d74949（指定父产品43f51570e62e3160f7995c45bdddaf2f123242b3）。原proposed提示词保留原状态；本次实际dispatch另归档。独立正式报告尚未获发布路径/被测SHA，未读取其文件/脚本，不推定瓶颈。原始目标仍为400并发、600秒、P95≤270ms及≥1000次/分钟，诊断短跑不代替正式验收。
+实际派工ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1。工作树已快进397bd7973cfd835c635634d32e0c98ae56d74949（指定父产品43f51570e62e3160f7995c45bdddaf2f123242b3）。原proposed提示词保留原状态；本次实际dispatch另归档。阶段A准备时独立正式报告尚未发布，未读其文件/脚本；随后根正式授权两件公开报告，已核SHA并仅阅读这两件，优先修IAT01～05，不推定性能瓶颈。原始目标仍为400并发、600秒、P95≤270ms及≥1000次/分钟，诊断短跑不代替正式验收。
 
 ## 真实入口与观测边界
 
@@ -22,7 +22,7 @@
 
 `tmp/backend/955_perf_profile.py`已写，仅准备、未执行/导入/编译/静态验证。无test用例，不占独立验收脚本；955本岗专属，下个编号954。当前仅提供诊断serve包装，不生成业务数据、不迁移/seed、不登录、不发负载；中性HTTP驱动在环境/公开报告到位后补到同一文件或使用根授权驱动，不能借独立测试私有脚本。
 
-运行时必须显式`--execute-stage-b`、DATABASE_URL所选库和T44_DATABASE均为t44_profile；只绑定127.0.0.1:18082、单worker，最长120秒，输出目录必须新建。baseline模式使用真实create_app+owner UoW，不加观测hook；timings/profile模式只在本诊断进程包裹方法和SQLAlchemy event，不修改生产文件、业务字段、冻结响应或Server-Timing语义。
+运行时必须显式`--execute-stage-b`、DATABASE_URL所选库和T44_DATABASE均为t44_profile；只绑定127.0.0.1:18083、单worker，最长120秒，输出目录必须新建。baseline模式使用真实create_app+owner UoW，不加观测hook；timings/profile模式只在本诊断进程包裹方法和SQLAlchemy event，不修改生产文件、业务字段、冻结响应或Server-Timing语义。
 
 输出metadata.json（SHA/机器/Python/进程/worker/pool/CPU/窗口）、requests.jsonl（随机样本ID/服务request_id/operation/status/字节数/含子调用阶段计数与耗时/SQL数）、可选pstats（函数名/调用时间，不含实参）。无口令、Bearer、DSN、自由文本或SQL参数。输出在ignored运行目录，归档前只取脱敏指标。最多50000条详细样本，多出计dropped_records，不把丢样本当完整结果。profile在Runtime结束后写pstats会拖慢HTTP，该模式绝不能用于性能达标判断。
 
@@ -43,3 +43,7 @@
 - Starlette同步endpoint经anyio.to_thread.run_sync，共享默认40令牌；这是框架默认，阶段B应记录实际值，不先调大线程数。[线程池](https://starlette.dev/threadpool/)。旧www.starlette.io/threadpool抓取502后改用官方新域，未据失败页面作结论。
 
 阶段A没有延迟、CPU、SQL、pool/锁等待数值，没有优化收益或性能结论；3500–5100源码目标仍未满足。诊断文件在既定tmp范围，未搬移业务逻辑、改变统计口径或删必需功能。
+
+续派纠错：原准备提交c44bd33曾写18082，工具未运行；总协调确认该口为不可变原性能API PID16590后，工具/当前方案固定改18083，并在metadata记录port。原提交作为历史保留，不绑定/停止18082。业务IAT修复优先，阶段B仍未开始。
+
+续派真实性约束：955启动前按脚本自身所在Git树取HEAD并拒绝相关产品未提交修改；记录实际t44/api/contracts/runtime/tasks/projects/reviews/persistence.rows的__file__及文件SHA、实际openapi.json SHA，若PYTHONPATH导入别树则在创建Engine前拒绝。当前仅源码静态检查通过，未启动验证这些hook；Stage B待业务checkpoint及总协调避开Word渲染的明确窗口。

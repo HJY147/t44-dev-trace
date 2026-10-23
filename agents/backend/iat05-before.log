@@ -1,0 +1,95 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 54 items / 44 deselected / 10 selected
+
+backend FFFFFFFF..                                                       [100%]
+
+=================================== FAILURES ===================================
+_______ test_empty_required_evidence_keeps_frozen_business_error[block] ________
+tmp/backend/contracts/986_http.py:999: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("transitionTask", {"expected_version": task["version"], "action": 2,
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+_______ test_empty_required_evidence_keeps_frozen_business_error[review] _______
+tmp/backend/contracts/986_http.py:1022: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createTaskReview", body, token="reviewer")
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+________ test_empty_required_evidence_keeps_frozen_business_error[risk] ________
+tmp/backend/contracts/986_http.py:1031: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createReleaseAssessment", body)
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+______ test_empty_required_evidence_keeps_frozen_business_error[rollback] ______
+tmp/backend/contracts/986_http.py:1031: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createReleaseAssessment", body)
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+______ test_empty_required_evidence_keeps_frozen_business_error[approval] ______
+tmp/backend/contracts/986_http.py:1036: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("reviewReleaseAssessment", {"expected_version": task["version"],
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+____ test_empty_required_evidence_keeps_frozen_business_error[notification] ____
+tmp/backend/contracts/986_http.py:1011: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("handleNotification", {"expected_version": 1, "note": "Checked", "evidence": []},
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)
+_ test_contract_validation_outer_shape_is_distinct_from_candidate[outer-extra-PARAMETER_INVALID] _
+tmp/backend/contracts/986_http.py:1063: in test_contract_validation_outer_shape_is_distinct_from_candidate
+    assert response["code"] == code and response["audit_id"] is not None
+E   AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'
+E     
+E     - PARAMETER_INVALID
+E     + CONTRACT_INVALID)
+_ test_contract_validation_outer_shape_is_distinct_from_candidate[outer-task-PARAMETER_INVALID] _
+tmp/backend/contracts/986_http.py:1063: in test_contract_validation_outer_shape_is_distinct_from_candidate
+    assert response["code"] == code and response["audit_id"] is not None
+E   AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'
+E     
+E     - PARAMETER_INVALID
+E     + CONTRACT_INVALID)
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/iat05-before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[block]
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[review]
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[risk]
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[rollback]
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[approval]
+FAILED backend::test_empty_required_evidence_keeps_frozen_business_error[notification]
+FAILED backend::test_contract_validation_outer_shape_is_distinct_from_candidate[outer-extra-PARAMETER_INVALID]
+FAILED backend::test_contract_validation_outer_shape_is_distinct_from_candidate[outer-task-PARAMETER_INVALID]
+============ 8 failed, 2 passed, 44 deselected, 1 warning in 2.50s =============

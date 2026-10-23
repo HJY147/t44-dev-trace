@@ -153,6 +153,10 @@ class Projects:
 
     def schedule_diff(self, g, c, before, after, *, iteration=False):
         key = "plan_version" if iteration else "schedule_version"
+        before_plan, after_plan = (
+            plan(before, iteration=iteration),
+            plan(after, iteration=iteration),
+        )
         g.insert(
             "schedule_changes",
             {
@@ -161,11 +165,17 @@ class Projects:
                 "iteration_id": before["id"] if iteration else None,
                 "from_version": before[key],
                 "to_version": after[key],
-                "before_plan": plan(before, iteration=iteration),
-                "after_plan": plan(after, iteration=iteration),
+                "before_plan": before_plan,
+                "after_plan": after_plan,
                 "reason": c.body["reason"],
                 "evidence": c.body["evidence"],
                 "changed_by": c.actor_id,
                 "changed_at": c.clock,
             },
         )
+        if not iteration:
+            for side, row, value in ((c.before, before, before_plan), (c.after, after, after_plan)):
+                side.extend(
+                    {"field": field, "value": str(item)}
+                    for field, item in {key: row[key], **value}.items()
+                )

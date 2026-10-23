@@ -19,13 +19,17 @@ PLAN = {
 }
 
 
-def request(client, operation, *, token=None, body=None, key=None, expect=None, **path):
+def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
     op = OPERATIONS[operation]
     headers = {"Authorization": f"Bearer {token}"} if token else {}
     if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
         headers["Idempotency-Key"] = key or str(uuid4())
     response = client.request(
-        op["method"], "/api/v1" + op["path"].format(**path), headers=headers, json=body
+        op["method"],
+        "/api/v1" + op["path"].format(**path),
+        headers=headers,
+        json=body,
+        params=query,
     )
     if expect is not None:
         assert response.status_code == expect, response.text
@@ -391,6 +395,22 @@ def test_complete_delivery_rollback_rework_http(application):
     with factory() as uow:
         assert uow.gateway.count("decisions", {"task_id": task["id"]}) == 3
         assert uow.gateway.count("schedule_changes", {"task_id": task["id"]}) == 1
+    audit = request(
+        client,
+        "listProjectAuditEvents",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"task_id": task["id"], "page_size": 100},
+        expect=200,
+    ).json()["data"]["items"]
+    rework = next(
+        a
+        for a in audit
+        if any(v == {"field": "version", "value": str(task["version"])} for v in a["after"])
+    )
+    assert {v["field"]: v["value"] for v in rework["after"]}["delay_contingency"] == PLAN[
+        "delay_contingency"
+    ]
 
 
 def test_idempotency_versions_revocation_and_independent_rejection(application):
@@ -834,6 +854,329 @@ def test_integer_equivalence_normalizes_idempotency_hash(application):
     )
     assert replay.json()["meta"]["replayed"] is True
     assert replay.json()["data"] == first.json()["data"]
+
+
+def test_task_owner_must_be_in_selected_iteration_capacity(application):
+    client, factory = application
+    tokens, pid, _ = setup_project(client)
+    request(
+        client,
+        "addProjectMember",
+        token=tokens["manager"],
+        project_id=pid,
+        body={"username": "outsider", "roles": [2], "reason": "Second developer"},
+        expect=201,
+    )
+    iteration = request(
+        client,
+        "createIteration",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "name": "Only another developer",
+            **{k: v for k, v in PLAN.items() if k != "estimated_hours"},
+            "capacity": [{"user_id": 4, "available_hours": 40}],
+        },
+        expect=201,
+    ).json()["data"]
+    response = request(
+        client,
+        "createTask",
+        token=tokens["manager"],
+        project_id=pid,
+        body={
+            "title": "Owner absent from iteration capacity",
+            "owner_id": 2,
+            "iteration_id": iteration["id"],
+            "plan": PLAN,
+            "dependency_task_ids": [],
+        },
+        expect=422,
+    )
+    assert response.json()["code"] == "CAPACITY_REFERENCE_INVALID"
+    assert response.json()["audit_id"] is not None
+    with factory() as uow:
+        assert uow.gateway.count("tasks", {"project_id": pid}) == 0
+
+
+@pytest.mark.parametrize(
+    "operation",
+    [
+        "getTask",
+        "listTaskDependencies",
+        "listTaskReviews",
+        "listReleaseAssessments",
+        "listTaskDecisions",
+    ],
+)
+@pytest.mark.parametrize("invalid", [0, 4294967296])
+def test_invalid_task_selector_retains_parameter_rejection_audit(application, operation, invalid):
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    response = request(
+        client,
+        operation,
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=invalid,
+        expect=422,
+    )
+    error = response.json()
+    assert error["code"] == "PARAMETER_INVALID" and error["audit_id"] is not None
+    with factory() as uow:
+        row = uow.gateway.get("audit_events", error["audit_id"])
+        assert row["task_id"] is None and row["request_id"] == error["request_id"]
+        assert row["attempted_task_id"] == (0 if invalid == 0 else None)
+    assert (
+        request(
+            client,
+            "getTask",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            expect=200,
+        ).json()["data"]
+        == task
+    )
+
+
+def test_task_schedule_audit_exposes_complete_untruncated_plan(application):
+    client, _ = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    for text in ("前" * 2000, "后" * 2000):
+        before = task
+        changed = request(
+            client,
+            "changeTaskPlan",
+            token=tokens["manager"],
+            project_id=pid,
+            task_id=task["id"],
+            body={
+                "expected_version": task["version"],
+                "plan": {**PLAN, "delay_contingency": text},
+                "reason": "Synthetic complete schedule evidence",
+                "evidence": EVIDENCE,
+            },
+            expect=200,
+        ).json()["data"]
+        task = changed["task"]
+        audit = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"], "page_size": 100},
+            expect=200,
+        ).json()["data"]["items"]
+        saved = next(a for a in audit if a["id"] == changed["audit_id"])
+        for side, source in (("before", before), ("after", task)):
+            values = {item["field"]: item["value"] for item in saved[side]}
+            for key, value in source["plan"].items():
+                assert values[key] == (value if isinstance(value, str) else str(value))
+            assert values["version"] == str(source["version"])
+            assert values["schedule_version"] == str(source["schedule_version"])
+        assert saved["actor_id"] == 1 and saved["evidence"] == EVIDENCE
+
+
+@pytest.mark.parametrize(
+    "kind", ["block", "review", "risk", "rollback", "approval", "notification"]
+)
+def test_empty_required_evidence_keeps_frozen_business_error(application, kind):
+    from t44.services.common import now
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+
+    def rejected(operation, body, token="manager", **path):
+        result = request(
+            client,
+            operation,
+            token=tokens[token],
+            project_id=pid,
+            task_id=task["id"],
+            body=body,
+            expect=422,
+            **path,
+        ).json()
+        assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+
+    if kind == "block":
+        rejected(
+            "transitionTask",
+            {
+                "expected_version": task["version"],
+                "action": 2,
+                "reason": "Waiting",
+                "responsibility_stage": 5,
+                "evidence": [],
+            },
+        )
+        return
+    if kind == "notification":
+        with factory() as uow:
+            event = uow.gateway.rows("outbox_events", {"task_id": task["id"]}, limit=1)[0]
+            notification = uow.gateway.insert(
+                "notifications",
+                {
+                    "project_id": pid,
+                    "task_id": task["id"],
+                    "event_id": event["id"],
+                    "recipient_id": 1,
+                    "level": 1,
+                    "title": "Synthetic input-validation fixture",
+                    "message": "Synthetic notification",
+                    "fallback": 1,
+                    "handling_evidence": [],
+                    "created_at": now(),
+                },
+            )
+        rejected(
+            "handleNotification",
+            {"expected_version": 1, "note": "Checked", "evidence": []},
+            notification_id=notification,
+        )
+        with factory() as uow:
+            assert uow.gateway.get("notifications", notification)["handled_at"] is None
+        return
+    task = transition(client, tokens["developer"], pid, task, 1)
+    task = transition(
+        client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+    )
+    body = review_payload(task)
+    if kind == "review":
+        body["checklist"][0]["evidence"] = []
+        rejected("createTaskReview", body, token="reviewer")
+        return
+    reviewed = request(
+        client,
+        "createTaskReview",
+        token=tokens["reviewer"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        expect=201,
+    ).json()["data"]
+    task = transition(
+        client,
+        tokens["reviewer"],
+        pid,
+        reviewed["task"],
+        5,
+        review_id=reviewed["review"]["id"],
+        review_version=1,
+    )
+    body = assessment_payload(task)
+    if kind in ("risk", "rollback"):
+        (body["risks"][0] if kind == "risk" else body["rollback_plan"])["evidence"] = []
+        rejected("createReleaseAssessment", body)
+        return
+    created = request(
+        client,
+        "createReleaseAssessment",
+        token=tokens["manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        expect=201,
+    ).json()["data"]
+    task = created["task"]
+    rejected(
+        "reviewReleaseAssessment",
+        {
+            "expected_version": task["version"],
+            "expected_assessment_version": 1,
+            "verdict": 1,
+            "reason": "Checked",
+            "evidence": [],
+        },
+        token="reviewer",
+        assessment_id=created["assessment"]["id"],
+    )
+
+
+@pytest.mark.parametrize(
+    "case,code",
+    [
+        ("outer-extra", "PARAMETER_INVALID"),
+        ("outer-task", "PARAMETER_INVALID"),
+        ("payload-extra", "CONTRACT_INVALID"),
+        ("payload-evidence", "CONTRACT_INVALID"),
+    ],
+)
+def test_contract_validation_outer_shape_is_distinct_from_candidate(application, case, code):
+    client, _ = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    body = {
+        "category": 2,
+        "task_id": task["id"],
+        "payload": {
+            "expected_version": 1,
+            "action": 2,
+            "reason": "Waiting",
+            "responsibility_stage": 5,
+            "evidence": EVIDENCE,
+        },
+    }
+    if case == "outer-extra":
+        body["client_actor_id"] = 1
+    elif case == "outer-task":
+        body["task_id"] = 0
+    elif case == "payload-extra":
+        body["payload"]["client_actor_id"] = 1
+    else:
+        body["payload"]["evidence"] = []
+    response = request(
+        client,
+        "validateContractPayload",
+        token=tokens["manager"],
+        project_id=pid,
+        body=body,
+        expect=422,
+    ).json()
+    assert response["code"] == code and response["audit_id"] is not None
+
+
+def test_transition_union_stays_strict_and_normalizes_equivalent_integers(application):
+    client, _ = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    for action in (True, "1", 999):
+        error = request(
+            client,
+            "transitionTask",
+            token=tokens["developer"],
+            project_id=pid,
+            task_id=task["id"],
+            body={"expected_version": 1, "action": action},
+            expect=422,
+        ).json()
+        assert error["code"] == "PARAMETER_INVALID" and error["audit_id"] is not None
+    key = str(uuid4())
+    first = request(
+        client,
+        "transitionTask",
+        token=tokens["developer"],
+        project_id=pid,
+        task_id=task["id"],
+        body={"expected_version": 1.0, "action": 1.0},
+        key=key,
+        expect=200,
+    ).json()["data"]
+    replay = request(
+        client,
+        "transitionTask",
+        token=tokens["developer"],
+        project_id=pid,
+        task_id=task["id"],
+        body={"expected_version": 1, "action": 1},
+        key=key,
+        expect=200,
+    ).json()
+    assert replay["meta"]["replayed"] is True and replay["data"] == first
 
 
 def test_dependency_remove_and_last_manager_guard(application):

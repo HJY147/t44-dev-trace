@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "Published IAT repair checkpoint1: IAT01 developer HTTP regression passed;02-05 pending",
-  "implementation_status": "Full product retained; IAT01 minimal approval invalidation/current-assessment guard fixed, no performance optimization",
+  "stage": "Published IAT01-05 developer repair checkpoint2;55 HTTP/SQLite passed; new MySQL cases await CI",
+  "implementation_status": "IAT01-05 frozen-scope fixes implemented with developer regressions; independent retest/performance pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -402,18 +402,18 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "IAT-v1-02",
-    "IAT-v1-03",
-    "IAT-v1-04",
-    "IAT-v1-05",
-    "this finding on MySQL",
+    "new combined source real MySQL regression and whole-source CI/coverage",
     "independent retest",
     "performance thresholds and source range"
   ],
   "questions": [
     {
+      "owner": "coordinator/user",
+      "question": "assignment/capacity removal lifecycle and full iteration.capacity public differences remain undecided; frozen11unchanged"
+    },
+    {
       "owner": "coordinator",
-      "question": "阶段B需已发布报告/被测SHA、t44_profile中性环境及资源空闲/运行授权；阶段A交接即结束，不自行发负载"
+      "question": "after CI-stable checkpoint coordinate profile1/8/32 diagnostic window away from Word rendering; no diagnostic load yet"
     }
   ],
   "prompt_refs": [
@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T11:13:17.399121+00:00",
-  "current_stage": "Published IAT repair checkpoint1: IAT01 developer HTTP regression passed;02-05 pending",
+  "updated_at": "2026-10-23T11:31:12.536848+00:00",
+  "current_stage": "Published IAT01-05 developer repair checkpoint2;55 HTTP/SQLite passed; new MySQL cases await CI",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -705,9 +705,9 @@
       "agents/backend/performance-diagnostics-plan.md",
       "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
     ],
-    "tool_status": "written only; not run/imported/compiled/linted; no workload driver or measurements",
+    "tool_status": "written/formatted/Ruff passed; no CLI invocation/server/workload",
     "production_changes": false,
-    "isolated_target": "t44_profile / 127.0.0.1:18082 / 1 worker / max120seconds; not started",
+    "isolated_target": "t44_profile / 127.0.0.1:18083 /1worker/max120sec; not started",
     "blocked_execution_prerequisites": [
       "coordinator authorizes stage B after published report with tested SHA",
       "coordinator provisions t44_profile and neutral credentials",
@@ -722,7 +722,9 @@
     ],
     "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
     "next_priority": "coordinator has just published two allowed report files; stage A ends, IAT business fixes before stage B",
-    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919"
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
+    "execution_gate": "after stable business checkpoint, report exact source+short1/8/32 plan and await coordinator CPU window separate from Word rendering",
+    "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code"
   },
   "iat_repairs_v1": {
     "source_report_verification": "agents/backend/iat-public-report-verification.json",
@@ -743,18 +745,39 @@
         "agents/backend/iat01-ruff.log",
         "agents/backend/iat01-bandit.json"
       ],
-      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113"
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113",
+      "remote_ci": "65007a source product39944613492 success; newer combined fixes need fresh CI"
     },
-    "pending": [
-      "IAT-v1-02",
-      "IAT-v1-03",
-      "IAT-v1-04",
-      "IAT-v1-05"
-    ],
+    "pending": [],
     "unverified": [
-      "this finding on MySQL",
+      "new combined source real MySQL regression and whole-source CI/coverage",
       "independent retest",
       "performance thresholds and source range"
-    ]
+    ],
+    "IAT-v1-02..05": {
+      "status": "55 real HTTP/SQLite cases passed; Ruff/Bandit passed",
+      "scope": [
+        "owner is listed in createTask iteration.capacity only",
+        "invalid resource/attempted references bounded for independent rejection audit",
+        "complete public task/rework plan fields and versions,2000chars retained",
+        "required evidence vs parameter vs candidate error branches per frozen operation"
+      ],
+      "before": [
+        "13 failed for02-04",
+        "8failed/2passed for05"
+      ],
+      "evidence": [
+        "agents/backend/iat02-04-before.log",
+        "agents/backend/iat02-04-before.xml",
+        "agents/backend/iat05-before.log",
+        "agents/backend/iat05-before.xml",
+        "agents/backend/iat02-05-final.log",
+        "agents/backend/iat02-05-final.xml",
+        "agents/backend/iat02-05-ruff-final.log",
+        "agents/backend/iat02-05-bandit-final.json"
+      ],
+      "mysql_cases": "added in existing985, not run locally; awaiting new source CI",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608"
+    }
   }
 }

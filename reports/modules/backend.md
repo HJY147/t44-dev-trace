@@ -121,3 +121,11 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 仅两份总协调许可公开报告已按SHA核验；不读私有脚本/证据，不接触独立测试。先开发HTTP复现2失败，再修新评估CAS清批准引用及仅评审最新风险版本；不删历史，不改冻结Schema/错误码/锁/幂等/事务。32项HTTP/SQLite通过，包括旧A批准与待审、旧A不能再激活、B创建重放不清B当前批准、拒绝audit_id。原始失败凭据脱敏+private0600原件SHA，成功/失败JUnit与Ruff/Bandit在agents/backend/iat01-*。
 
 本专项MySQL与独立复测尚未执行；IAT02～05仍待修，性能IAT06仍未通过且955阶段B未运行。955准备工具的静态导入I001由本岗发现修正，不是用户亲改。
+
+## 已发布IAT修复 checkpoint 2：IAT02～05
+
+按根限定范围修复：createTask负责人须在迭代capacity（不新增预算/生命周期规则）；非法任务0及越界attempted引用不会击穿独立拒绝审计；任务/返工公开audit包含完整五计划字段与版本（2000字原文保留）；空必需证据及只读验证顶层/候选错误依冻结分支分类。oneOf的bool/string拒绝、1.0规范化同键重放保持。冻结11件、SQL/DDL、锁序/CAS/幂等/事务/outbox均未改。
+
+新增开发回归先13失败、另8失败/2通过，再最终55个HTTP/SQLite通过，日志/JUnit在agents/backend/iat02-*及iat05-*；全Ruff/Bandit通过。985已补真MySQL专项但本机尚未执行，等待新源CI；不把本岗修复称独立复测通过。IAT01旧65007a远端CI已成功，不能当新源结果。容量转派/移除及大iteration.capacity公开差异待正式取舍。
+
+955诊断进程固定18083并记录实际import文件/关键SHA，防PYTHONPATH旧源误记新HEAD；未启动。原18082/验收/perf库未触碰。业务checkpoint后先协调Word渲染的CPU空闲窗口再1/8/32短样本，性能阈值与5866超5100事实未解决。

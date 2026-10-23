@@ -27,6 +27,10 @@ _PROJECT_LOCK = {
 }
 
 
+def _audit_integer(value, maximum, minimum=0):
+    return value if type(value) is int and minimum <= value <= maximum else None
+
+
 class Runtime:
     def __init__(self, factory, settings, business):
         self.factory, self.settings, self.business = factory, settings, business
@@ -40,7 +44,7 @@ class Runtime:
     def audit(self, g, call, error=None):
         project = call.project_id if call.project and g.get("projects", call.project_id) else None
         task_id = call.path.get("task_id")
-        if task_id and not (
+        if task_id is not None and not (
             project and g.rows("tasks", {"id": task_id, "project_id": project}, limit=1)
         ):
             task_id = None
@@ -49,15 +53,17 @@ class Runtime:
             {
                 "project_id": project,
                 "task_id": task_id,
-                "attempted_project_id": call.path.get("project_id"),
-                "attempted_task_id": call.path.get("task_id"),
+                "attempted_project_id": _audit_integer(call.project_id, 4294967295),
+                "attempted_task_id": _audit_integer(call.path.get("task_id"), 4294967295),
                 "actor_kind": call.actor["actor_kind"] if call.actor else 3,
                 "actor_id": call.actor_id,
                 "request_id": call.request_id,
                 "operation_id": call.operation,
                 "outcome": 2 if error else 1,
                 "reason_code": ERROR_IDS[error.code] if error else None,
-                "expected_version": call.body.get("expected_version"),
+                "expected_version": _audit_integer(
+                    call.body.get("expected_version"), 2147483647, 1
+                ),
                 "observed_version": error.current_version if error else None,
                 "before_values": [] if error else call.before,
                 "after_values": [] if error else call.after,
