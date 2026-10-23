@@ -1,6 +1,6 @@
-# T44 API 契约 1.1.0（待新冻结）
+# T44 API 契约 1.1.0
 
-状态：D005/U015、D006/U016业务选择已采用，最终RFC bbc4be6已获限定设计准入。本次显式演进为1.1.0，权威OpenAPI与后端运行副本同步；新冻结清单由总协调建立后才继续业务守卫实现，本checkpoint不含新业务生产实现或部署。OpenAPI 3.1 / JSON Schema 2020-12仍含31路径、38操作，路径保持/api/v1，DDL18表226列不变。原1.0.0冻结仍可由ae60dc3及records/spec-freezes/v1.json的11摘要恢复，不改写旧清单或旧验收结论。
+状态：D005/U015、D006/U016业务选择已采用，最终RFC bbc4be6已获限定设计准入。本次显式演进为1.1.0，权威OpenAPI与后端运行副本同步；规格独立冻结清单见`../../records/spec-freezes/v1.1.json`；冻结后才继续业务守卫实现。本合同checkpoint不含新业务生产实现或部署。OpenAPI 3.1 / JSON Schema 2020-12仍含31路径、38操作，路径保持/api/v1，DDL18表226列不变。原1.0.0冻结仍可由ae60dc3及records/spec-freezes/v1.json的11摘要恢复，不改写旧清单或旧验收结论。
 
 ## 1.1 容量生命周期增量
 

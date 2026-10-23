@@ -4,7 +4,7 @@
   "info": {
     "title": "T44 研发流程留痕与上线评估 API",
     "version": "1.1.0",
-    "description": "1.1.0显式变更候选：D005/D006容量生命周期业务已采用且RFC已审，待总协调新冻结后实现；父版本1.0.0冻结及原验收保持历史。同步FastAPI + SQLAlchemy2/PyMySQL；Pika消息进程；APScheduler独立进程。示例均为合成。"
+    "description": "1.1.0显式人力生命周期变更：D005/D006业务已采用，RFC限定设计审查通过；规格独立冻结清单见records/spec-freezes/v1.1.json。父版本1.0.0与原验收保持历史，规格冻结不等于业务实现或验收通过。同步FastAPI + SQLAlchemy2/PyMySQL；Pika消息进程；APScheduler独立进程。示例均为合成。"
   },
   "servers": [
     {
@@ -61,7 +61,7 @@
         ],
         "summary": "凭部署初始化账号登录",
         "description": "无Bearer的唯一凭据入口；验证口令摘要后签发短期不透明Token，失败限速并安全留痕。默认有效期3600秒（技术草案，可配置且有变更记录）；登录不接受幂等键且不持久化明文口令。429仅该凭据入口启用真实进程内token-bucket限流后产生，默认同源IP+标准化账号每60秒10次；多进程配额为每进程，不能声称全局总限额。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "登录凭据校验入口，限人类账号",
         "responses": {
           "200": {
@@ -532,7 +532,7 @@
         ],
         "summary": "撤销当前会话",
         "description": "以Token本身定位会话，原子撤销；首次成功后该Token不再能访问任何业务API。重复已撤销Token返回401，非需幂等键的业务写。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "已认证当前人类主体",
         "responses": {
           "200": {
@@ -773,7 +773,7 @@
         ],
         "summary": "查询当前身份",
         "description": "查询当前身份",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "已认证人类主体",
         "responses": {
           "200": {
@@ -1070,7 +1070,7 @@
         ],
         "summary": "查询统一枚举字典",
         "description": "查询统一枚举字典",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "已认证人类主体读取公共业务字典，无项目范围/资源选择器；服务身份若调用返回ACTION_FORBIDDEN",
         "responses": {
           "200": {
@@ -1367,7 +1367,7 @@
         ],
         "summary": "创建项目并成为经理",
         "description": "创建项目、经理成员关系、成功审计、幂等结果同事务提交；不允许指定他人作为未经验证的创建者。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "已认证人类主体",
         "responses": {
           "201": {
@@ -1933,7 +1933,7 @@
         ],
         "summary": "分页查询本人参与项目",
         "description": "分页查询本人参与项目",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "已认证人类主体，仅当前有效成员项目",
         "responses": {
           "200": {
@@ -2349,7 +2349,7 @@
         ],
         "summary": "查询项目",
         "description": "查询项目",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -2825,7 +2825,7 @@
         ],
         "summary": "查询本项目成员",
         "description": "查询本项目成员",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -3305,7 +3305,7 @@
         ],
         "summary": "添加已初始化账号为成员",
         "description": "按精确username定位已有账号，不支持目录枚举；不存在账号只返回ACCOUNT_NOT_INITIALIZED，成员写入及审计同事务。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "201": {
@@ -3947,7 +3947,7 @@
         ],
         "summary": "修改成员角色",
         "description": "修改成员角色",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -4608,7 +4608,7 @@
         ],
         "summary": "移除项目成员",
         "description": "不得移除最后一位经理或仍负责活动任务者；由经理先转移任务负责人。撤销后停止其项目访问及相关通知访问，保留历史身份快照。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -5269,7 +5269,7 @@
         ],
         "summary": "登记迭代与人力产能",
         "description": "登记迭代与人力产能",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "201": {
@@ -5917,7 +5917,7 @@
         ],
         "summary": "查询迭代",
         "description": "查询迭代",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -6399,7 +6399,7 @@
         ],
         "summary": "修改迭代计划并留差异",
         "description": "v1.1 D005/D006：修改迭代计划并留差异。新capacity必须包含该迭代全部状态1–5任务的负责人，查询全量负责人而非仅比较移除名单；缺失422 CAPACITY_REFERENCE_INVALID且不写计划/版本/差异。状态6/7可移出；项目成员/开发角色保护仍为1–5及7，不随容量规则放宽。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -7060,7 +7060,7 @@
         ],
         "summary": "研发流程登记（三类主接口之一）",
         "description": "登记交付任务、迭代、人力估算、排期、缓冲、延期预案及依赖。初始state=1，version/schedule_version/delivery_cycle/review_cycle均1；任务、依赖、成功留痕和幂等快照同事务。 负责人须为本项目有效developer且已登记在所选迭代capacity，沿用既有错误分支。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "201": {
@@ -7740,7 +7740,7 @@
         ],
         "summary": "分页查询项目任务",
         "description": "排序只接受列举值，不接受任意字段/SQL。稳定排序以id打破并列；所有过滤资源须属当前项目。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -8264,7 +8264,7 @@
         ],
         "summary": "查询权威最新任务快照",
         "description": "查询权威最新任务快照",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -8743,7 +8743,7 @@
         ],
         "summary": "经理改期并保留前后差异",
         "description": "经理改期并保留前后差异",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -9404,7 +9404,7 @@
         ],
         "summary": "经理调整负责人",
         "description": "v1.1 D005：经理仅在待受理或阻塞前为待受理时调整负责人；进入开发后409 ASSIGNMENT_EDIT_LOCKED。接手人须为本项目有效developer且已登记在当前迭代capacity，否则422 CAPACITY_REFERENCE_INVALID。项目锁内重读，task.version递增，不新增开发后转派或同级重提醒。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -10081,7 +10081,7 @@
         ],
         "summary": "查询依赖与当前满足情况",
         "description": "查询依赖与当前满足情况",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -10564,7 +10564,7 @@
         ],
         "summary": "添加依赖并拒绝环/自依赖",
         "description": "协调者技术范围v1：仅任务待受理或阻塞前为待受理时经理可编辑；进入开发后409 DEPENDENCY_EDIT_LOCKED。每次验证同项目、自依赖和全图无环；项目级图变更串行化防止并发造环。不自动开始/退回任务，成功写与审计同事务且task.version递增。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "201": {
@@ -11233,7 +11233,7 @@
         ],
         "summary": "删除依赖关系并留依据",
         "description": "协调者技术范围v1：仅任务待受理或阻塞前为待受理时经理可编辑；进入开发后409 DEPENDENCY_EDIT_LOCKED。每次验证同项目、自依赖和全图无环；项目级图变更串行化防止并发造环。不自动开始/退回任务，成功写与审计同事务且task.version递增。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理",
         "responses": {
           "200": {
@@ -11889,7 +11889,7 @@
         ],
         "summary": "服务端状态流转（三类主接口之一）",
         "description": "禁止直接写状态。先认证/项目权限、结构校验、幂等回放，再版本/角色/状态/证据守卫；CAS成功仅一次，成功留痕同事务；不同请求冲突及非法迁移独立持久化拒绝审计。data是操作时快照，重放后另GET任务。 v1.1 D006：action9返工在CAS前重新核有效developer及当前迭代capacity，缺失422 CAPACITY_REFERENCE_INVALID；不改变状态出口。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "start/submit_review仅负责人developer；block/unblock按原阶段：待受理manager、开发负责人developer、评审reviewer/manager、上线manager；approve_review非owner；deliver/rollback/rework仅manager",
         "responses": {
           "200": {
@@ -12614,7 +12614,7 @@
         ],
         "summary": "查询带版本八段式与十项模板",
         "description": "默认当前模板，v1八段ID及R01～R10来自docs/reviews/review-protocol.md和总协调技术方案；无在线任意模板编辑接口。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -13099,7 +13099,7 @@
         ],
         "summary": "发布带证据代码评审",
         "description": "发布不可变评审并递增任务version，但状态改变仍统一由transitions引用当前评审执行。评审绑定delivery_cycle/review_cycle及审核对象SHA；不能使用旧轮次批准。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目reviewer/manager，且不得为task.owner_id；仅待评审阶段",
         "responses": {
           "201": {
@@ -13766,7 +13766,7 @@
         ],
         "summary": "查询完整评审历史",
         "description": "查询完整评审历史",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -14251,7 +14251,7 @@
         ],
         "summary": "四视角上线评估（三类主接口之一）",
         "description": "创建当前schedule_version+delivery_cycle的风险/预案版本并清空旧上线批准引用；任务version递增，状态不变，需另评审。不得用旧排期批准交付。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目经理，待上线或阻塞前为待上线阶段",
         "responses": {
           "201": {
@@ -14910,7 +14910,7 @@
         ],
         "summary": "查询评估及预案版本历史",
         "description": "查询评估及预案版本历史",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -15395,7 +15395,7 @@
         ],
         "summary": "评审当前风险评估及回滚预案",
         "description": "评审当前风险评估及回滚预案",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目reviewer/manager，且不得为assessment.created_by；仅上线评估阶段",
         "responses": {
           "200": {
@@ -16067,7 +16067,7 @@
         ],
         "summary": "查询经理交付/回滚/返工决定",
         "description": "查询经理交付/回滚/返工决定",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -16552,7 +16552,7 @@
         ],
         "summary": "真实契约校验性能入口",
         "description": "对三类主接口请求执行真实结构/字段/枚举/时间关系校验；不写业务、不需要幂等键，不调用空循环或固定成功替身。无效候选返回422 CONTRACT_INVALID及字段路径。对象项目归属仍需验证；验证通过不代替后续写请求的状态/权限/版本守卫。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目成员",
         "responses": {
           "200": {
@@ -17127,7 +17127,7 @@
         ],
         "summary": "查询当前或历史升级规则版本",
         "description": "查询当前或历史升级规则版本",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -17612,7 +17612,7 @@
         ],
         "summary": "查询本项目升级记录及处理计数",
         "description": "查询本项目升级记录及处理计数",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "项目成员只读",
         "responses": {
           "200": {
@@ -18112,7 +18112,7 @@
         ],
         "summary": "服务身份升级通知性能入口",
         "description": "APScheduler独立进程触发。服务端重新获取当前UTC、计划及规则，只创建当前最高符合级别。事件、outbox、升级次数与成功审计同事务；业务键(task,schedule_version,level)唯一，重复扫描不新增。返回202不等待MQ，不代表送达；MQ故障异步转站内待办，同事件恢复不重提醒。 新事件与升级计数、task.version递增同事务；业务重复不增，已有事件仍需有效expected_version，响应task_version是操作快照。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "仅服务主体scope=escalation:write，且project_id在服务允许范围内",
         "responses": {
           "202": {
@@ -18788,7 +18788,7 @@
         ],
         "summary": "查询本人当前可访问通知",
         "description": "total/unread_count/unhandled_count仅计算可访问的本人通知。项目经理不因此获得他人个人收件箱写权限。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "仅本人收件通知且当前仍有项目成员资格；各项目分别授权",
         "responses": {
           "200": {
@@ -19294,7 +19294,7 @@
         ],
         "summary": "标记本人通知已读",
         "description": "标记本人通知已读",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "当前项目成员且为该通知收件人",
         "responses": {
           "200": {
@@ -19939,7 +19939,7 @@
         ],
         "summary": "记录本人通知处理结果",
         "description": "记录本人通知处理结果",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "当前项目成员且为该通知收件人",
         "responses": {
           "200": {
@@ -20592,7 +20592,7 @@
         ],
         "summary": "只读查询本项目审计和计划差异",
         "description": "无修改/删除审计接口；普通成员不能读取未加入项目及其拒绝审计内容；部署/安全运维全局日志不经本接口暴露。",
-        "x-contract-status": "pending-v1.1-freeze",
+        "x-contract-status": "frozen-v1.1",
         "x-role-scope": "本项目成员只读，安全敏感字段脱敏",
         "responses": {
           "200": {
@@ -25498,7 +25498,7 @@
       }
     }
   },
-  "x-contract-status": "frozen-v1",
+  "x-contract-status": "frozen-v1.1",
   "x-source-references": [
     "specs/requirements.md",
     "specs/business-rules.md",
