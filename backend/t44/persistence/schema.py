@@ -62,7 +62,7 @@ def _type(spec: str):
         return mysql.BINARY(int(size)).with_variant(LargeBinary(int(size)), "sqlite")
     if name == "DATETIME":
         return mysql.DATETIME(fsp=int(size)).with_variant(DateTime(), "sqlite")
-    return mysql.JSON().with_variant(JSON(), "sqlite")
+    return mysql.JSON(none_as_null=True).with_variant(JSON(none_as_null=True), "sqlite")
 
 
 def _foreign_key(part: str) -> ForeignKeyConstraint:
@@ -109,6 +109,7 @@ def build_metadata() -> MetaData:
                         field,
                         _type(spec),
                         primary_key=field == "id",
+                        autoincrement="ignore_fk" if field == "id" else "auto",
                         nullable="NOT NULL" not in spec,
                         server_default=text(default[1]) if default else None,
                     )

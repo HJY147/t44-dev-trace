@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 import pytest
 from sqlalchemy import create_engine, event, text
@@ -53,6 +53,44 @@ def test_generated_id_json_time_cas_and_empty_in(database):
         assert g.rows("users", {"id": []}) == []
         assert g.count("users", {"id": []}) == 0
         assert g.count("users", predicates=(Pred("id", "ge", uid),)) == 1
+        now = datetime.now(UTC)
+        g.insert(
+            "project_members",
+            dict(project_id=pid, user_id=uid, roles_mask=3, created_at=now, updated_at=now),
+        )
+        iteration = g.insert(
+            "iterations",
+            dict(
+                project_id=pid,
+                name="fixture",
+                planned_start=now,
+                planned_end=now + timedelta(days=1),
+                capacity=[],
+                buffer_quarters=0,
+                delay_contingency="fixture",
+                created_at=now,
+                updated_at=now,
+            ),
+        )
+        task = g.insert(
+            "tasks",
+            dict(
+                project_id=pid,
+                iteration_id=iteration,
+                title="fixture",
+                description="synthetic",
+                owner_id=uid,
+                planned_start=now,
+                planned_end=now + timedelta(hours=1),
+                estimated_quarters=1,
+                buffer_quarters=0,
+                delay_contingency="fixture",
+                created_at=now,
+                updated_at=now,
+            ),
+        )
+        assert isinstance(task, int) and task > 0
+        assert g.get("tasks", task)["id"] == task
 
 
 def test_savepoint_duplicate_can_be_recovered_without_poisoning_uow(database):
