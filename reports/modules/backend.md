@@ -141,3 +141,9 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 96e4源两次18083 baseline服务正常启动/退出，但public bootstrap登录收到非JSON502，未创建fixture或进入1/8/32样本。首次错误FastAPI hook、后续502及debug JSON解析失败均另留证据，未改原件。HTTPX默认使用本机系统代理是当前待验证假设；工具已改trust_env=False回环直连并保留非JSON状态，后端配置Ruff/format及AST通过，尚未运行重试。生产backend/t44与业务CI362通过源479一致。
 
 两诊断服务已退出且无负载运行，总协调收到解除LO hold通知。性能归因/优化收益尚无数据，未改原性能阈值或运行不可变验收实例；下轮执行需重新协调CPU窗口。记录见agents/backend/profile-bootstrap-{failure,attempts}.json、profile-proxy-static.log。
+
+## 1.1容量生命周期合同 checkpoint（尚未新冻结/部署）
+
+D005/D006真实用户选择与bbc限定设计审核后，先交OpenAPI/运行副本/README/design：1.1.0、31paths/38ops、/api/v1、DDL18/226不变；新增assignment/rework的ID30容量分支，全量active owner、capacity1–5/终态6/7与原成员保护1–5+7、项目锁与原幂等/事务顺序均明确。所有请求字段/参数/权限scope及非Meta组件保持，真实规范校验与38操作错误一致性检查通过，证据capacity-v11-contract-validation.*。
+
+当前checkpoint不含新守卫生产实现、未部署，root建立新freeze后再继续；原v1摘要不回填。开发草稿回归旧码11失败/2通过（capacity-v11-before.*），已准备但未暂存的986及service草稿待后续。旧CI362仅属479源，不代新业务回归/真MySQL竞争/独立复测；性能仍暂不运行。
