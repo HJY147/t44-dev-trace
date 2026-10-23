@@ -165,3 +165,5 @@
 - 根ec3e6b0准入有限新demo应用生命周期；设计application-design.md/实际prompt已归档。根给修后精确bc5aef9c62393134582affb7a690acb33ac2b833，92文件SHA/44Py20TSVue核对一致，旧42243从未起app。
 - 已显式允许的t44_native_demo私密三JSON均0600，只CRUD用户、不读admin，不DDL/reset/seed；private环境需复制后改PYTHONPATH。原Vite18080 proxy/Node PATH缺失风险已识别，计划owner overlay与bundled Node，不改源/锁。
 - controller/871、依赖安装与API4worker/consumer/60sscanner/UI、轮换/回收尚待实现/真实执行；本设计checkpoint不构成完整环境运行或独立/性能/云通过。
+
+- controller现已实现，871为19项合成守卫通过、Ruff通过；原fixture/静态失败已保留。最终源92文件与私密输入/端口预检通过，拥有权/源/secret/坏输入/真实flock守卫有效；依赖准备和实际应用周期尚未执行，不将编码能力写成运行通过。

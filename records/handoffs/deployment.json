@@ -599,9 +599,13 @@
     "database": "t44_native_demo",
     "no_ddl_reset_seed": true,
     "private_input_modes": "0600",
-    "controller_status": "design only, not implemented",
-    "guard": "tmp/deployment/871_native_application.py root-reserved, not created yet",
+    "controller_status": "implemented; actual dependency preparation and application cycle pending",
+    "guard": "tmp/deployment/871_native_application.py:19 synthetic guards passed",
     "services_started": false,
-    "independent_or_formal_load_executed": false
+    "independent_or_formal_load_executed": false,
+    "controller": "deployment/native/application.py",
+    "checks": "19 guards/Ruff passed; original failed fixture/static checks retained",
+    "preflight": "agents/deployment/native-application-validation/controller-preflight.json",
+    "design_commit": "3e05c60"
   }
 }

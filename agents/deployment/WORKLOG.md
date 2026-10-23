@@ -197,3 +197,9 @@
 - 设计deployment/native/application-design.md：依赖准备、显式final bind、有限run/finallystop分开；私密env副本替换旧PYTHONPATH，freshbroker；API4worker18088/consumer/60sscanner/UI5178；真实两project IDs签发TTL300 scoped服务会话并受控轮换/回收；周期扫描和Pika/outbox/notification证据需实际完成。
 - 入口风险已报根：原Vite proxy硬指18080，需要owner frontend副本及部署overlay指18088/5178/专用cache，原源码/锁不改；原build脚本会准备tmp测试软链，部署路径不读取独立资料。node不在当前PATH（真实command not found），pnpm wrapper11.25.0指向已存在bundled Node；仅核该明确工具路径，不全局安装。
 - 当前只设计/源hash核对，尚未安装phase2依赖、实现controller/871或启动任何应用/DB/broker；stage1全停机保持。下一步设计commit后实现与本岗合成守卫，实际执行前所有源/私密/端口/拥有权预检必须通过。
+
+### NATIVE-APPLICATION-v1 controller checkpoint
+
+- application.py已实现锁hash依赖准备、精确源/私密env副本、freshbroker、API4worker/consumer/scanner/UI启动、真实scan/outbox/notification取证、300秒双项目scope服务CLI签发/轮换/回收及finally拥有权停机。新增监听回环/端口检查与真实共享flock占用验证；源码与数据库配置拒绝旧环境、admin、bool项目ID及非自有进程信号。
+- 871合成守卫19项、Ruff0.17.2通过；最初Ruff unusedimport、17项fixture缺少broker username/vhost的错误及后续扩展静态检查失败均原样保留在native-application-validation，不将其倒填通过。异常边界只输出稳定错误码以免私密URL/Token泄露，并继续独立资源清理，不降低全局规则。
+- 本次最终bc5a的92文件SHA/44Py20TSVue、三个明确私密输入与新18088/5178空闲预检均通过，旧监听baseline已存。原42243仍未启动应用；截至该checkpoint尚未安装phase2依赖或启动服务。下一步才进行已获根准入的有限实际周期，产品CI/专审与独立/性能/云不由本岗推定。
