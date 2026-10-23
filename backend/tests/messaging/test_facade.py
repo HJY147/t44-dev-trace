@@ -1,5 +1,5 @@
-from concurrent.futures import ThreadPoolExecutor
-from threading import Barrier
+from concurrent.futures import ThreadPoolExecutor, TimeoutError
+from threading import Barrier, Event
 
 import pytest
 from fastapi.testclient import TestClient
@@ -189,3 +189,31 @@ def test_real_mysql_concurrent_notification_cas_exactly_one_update(case):
     with ThreadPoolExecutor(max_workers=2) as pool:
         outcomes = list(pool.map(lambda _: update(), range(2)))
     assert outcomes.count(2) == 1 and outcomes.count("VERSION_CONFLICT") == 1
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize("factory", ["mysql"], indirect=True)
+def test_real_mysql_list_scope_serializes_with_membership_revocation(case):
+    notices(case)
+    started = Event()
+
+    def revoke():
+        with case.factory() as uow:
+            started.set()
+            uow.gateway.update(
+                "project_members",
+                {"project_id": case.project, "user_id": case.user},
+                {"active": 0},
+            )
+
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        with case.factory() as uow:
+            result = NotificationFacade().list(uow.gateway, actor_id=case.user, query={})
+            assert result["total"] == 1
+            pending = pool.submit(revoke)
+            assert started.wait(2)
+            with pytest.raises(TimeoutError):
+                pending.result(timeout=0.1)
+        pending.result(timeout=3)
+    with case.factory() as uow:
+        assert NotificationFacade().list(uow.gateway, actor_id=case.user, query={})["total"] == 0

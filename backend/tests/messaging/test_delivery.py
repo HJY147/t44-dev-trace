@@ -93,10 +93,16 @@ def test_worker_failed_broker_fallback_terminal_non_escalation_retry_and_lease(c
     store, publisher, consumer = OutboxStore(case.factory), Mock(), Mock()
     publisher.publish.side_effect = BrokerUnavailable("REAL_BROKER_NOT_USED_IN_THIS_TEST")
     consumer.get.return_value = None
-    worker = DeliveryWorker(store, publisher, consumer, confirmed_recovery=lambda **_: [])
+    with case.factory() as uow:
+        fixture_batch = uow.gateway.count("outbox_events") + 1
+    # This case verifies dispatch, not that our new IDs happen to be in the first production page.
+    worker = DeliveryWorker(
+        store, publisher, consumer, batch_size=fixture_batch, confirmed_recovery=lambda **_: []
+    )
     result = worker.cycle()
     assert result["fallback"] >= 1 and result["retried"] >= 1
     assert store.get(escalation)["status"] == 4 and store.get(changed)["status"] == 1
+    assert store.get(changed)["attempts"] >= 1
     assert all(e["id"] != escalation for e in store.claim(now=utc_now() + timedelta(seconds=10)))
     assert store.consume(escalation)["created"] == 0
     with case.factory() as uow:
@@ -115,3 +121,24 @@ def test_stale_lease_cannot_confirm_and_recovery_injection(case):
     result = DeliveryWorker(store, Mock(), consumer, confirmed_recovery=recovery).cycle()
     assert result["recovered"] == 1
     assert recovery.call_args.kwargs["limit"] == 50
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize("factory", ["mysql"], indirect=True)
+def test_real_mysql_worker_default_confirmed_recovery_preserves_complete_event(case):
+    missing, complete = case.event(), case.event()
+    store = OutboxStore(case.factory)
+    claimed = {row["id"]: row for row in store.claim(limit=10000)}
+    old = utc_now() - timedelta(seconds=180)
+    for eid in (missing, complete):
+        assert store.confirm(eid, claimed[eid]["lease_token"], now=old)
+    store.consume(complete)
+    consumer = Mock()
+    consumer.get.return_value = None
+    # Real DB method, not the temporary injected recovery callback used in isolated unit tests.
+    result = DeliveryWorker(store, Mock(), consumer).cycle()
+    assert result["recovered"] >= 1 and store.get(missing)["status"] == 4
+    assert store.get(complete)["status"] == 3
+    with case.factory() as uow:
+        assert uow.gateway.count("notifications", {"event_id": missing}) == 1
+    assert DeliveryWorker(OutboxStore(case.factory), Mock(), consumer).cycle()["recovered"] == 0

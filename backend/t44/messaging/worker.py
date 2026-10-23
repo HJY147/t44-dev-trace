@@ -34,6 +34,10 @@ class DeliveryWorker:
         counts = dict(
             confirmed=0, fallback=0, recovered=0, retried=0, consumed=0, quarantined=0, errors=0
         )
+        try:
+            self.publisher.keepalive()
+        except BrokerUnavailable:
+            counts["errors"] += 1
         now = utc_now()
         recovered = self.recover_confirmed(
             confirmed_before=now - timedelta(seconds=self.confirmation_timeout),
