@@ -16,3 +16,13 @@
 - 主干保护已配置 reviewer/stage 且对管理员生效；静态/契约/覆盖率流水线尚未完成，不宣称产品门禁通过。
 - 创建草稿 PR #13，已附加到当前任务。D001 记录用户采用业务规则，D002 是 AI 协调者限定开始前编辑的技术选择。
 - 后端和数据库设计并行，不把草案当冻结规格。尚无业务测试、云部署或性能结果。
+
+## 设计审核与保护实证
+
+- 审核岗在717cd65完整SHA上发现四项真实设计不一致，发表Issue/PR COMMENT并设置reviewer/stage=failure；0e0a10b为其本人失败证据归档，不覆盖原报告。
+- 总协调核验远端head、失败状态及enforce_admins保护后，临时把PR转待审并尝试普通合并（无admin/auto）。CLI明确返回base branch policy prohibits the merge，前后main均为1996d44425e09930b5ba3ae5391b728980241f55，随后恢复draft。原始回执在records/github/protected-merge-probe.json。
+- 首次探测在只读main引用查询遇GitHub EOF，尚未转换PR；失败另存attempt1。第二次仅对EOF做有限重试，没有绕过保护。
+- 前端岗完成独立树基础页面、真实构建及无界面桌面/手机检查；总协调实际查看两图。不是业务运行或独立验收。部署岗已写独立进程/持久卷/反代等配置，容器运行仍未验证。
+- 产品行覆盖率口径明确为每语言完整生产源码分别至少80%；分支/函数完整报告，但不把额外四项80当教师要求。不排除未测模块提高分母。
+- 实测Actions run39912067161的job名称为static/contracts/coverage/frontend，配置和Nginx步骤通过，应用缺失前置检查失败，未执行产品测试。main保护追加这四个真实检查并保留reviewer/stage，API回执验证5项及enforce_admins均正确。
+- Q002向用户提供字段/错误码一页推荐供人的取舍，尚未收到回复，不按预选项或时间推定采用；业务规则D001继续有效，独立基础/部署/设计修复可继续。

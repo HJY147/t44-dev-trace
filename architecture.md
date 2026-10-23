@@ -48,4 +48,6 @@ flowchart LR
 
 各岗Issue提出依赖，分支及阶段commit保留角色/提示词引用；PR由独立审核岗针对准确SHA检查。静态、契约、覆盖率三项门禁须真实执行后才能宣称通过，主干保护以平台配置与失败合并实验证据为准。
 
-当前已创建并克隆公开仓库 HJY147/t44-dev-trace，各岗正在逐项归档。主干已要求 PR、解决讨论及绑定提交的 `reviewer/stage` 检查，并对管理员生效；配置回执见 records/github/protection-response.json。静态、契约、覆盖率流水线尚未实现，产品代码、冻结接口和性能结果尚不存在。后续由责任岗细化并交叉检查设计，再进入各自 worktree 实现。
+当前已创建并克隆公开仓库 HJY147/t44-dev-trace，各岗分别提交阶段成果。main要求 PR、解决讨论及 `reviewer/stage`、`static`、`contracts`、`coverage`、`frontend` 五个实际检查，对管理员生效；新配置回执见 records/github/protection-v2-response.json，原配置回执保留为历史。失败审核的普通合并已实测被策略拒绝，main前后未变，PR恢复草稿。
+
+前端基础在PR #14完成真实构建与桌面/手机无界面检查，尚未接业务；部署/CI在PR #15已有实现，真实Actions证明Compose/Nginx语法检查通过，其余产品检查因缺完整应用而失败，不能宣称功能/覆盖率通过。契约/字段修复待复审与用户取舍，性能尚无结果。业务编码和联调按冻结基线继续。

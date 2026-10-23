@@ -38,7 +38,7 @@
       "label": "前端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/frontend/TASK.md",
       "agent_id": "/root/frontend",
-      "status": "foundation_in_progress",
+      "status": "foundation_completed",
       "prompt_id": "ROLE-frontend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:45:38+08:00",
@@ -48,14 +48,16 @@
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/2",
       "m0_commit": "005ce55dec988a9038c6cc8df91e85698ad84989",
       "worktree": ".agent-worktrees/frontend",
-      "branch": "codex/frontend-app"
+      "branch": "codex/frontend-app",
+      "foundation_head": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14"
     },
     {
       "role": "backend",
       "label": "后端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/backend/TASK.md",
       "agent_id": "/root/backend",
-      "status": "contract_design_completed",
+      "status": "contract_repair_completed",
       "prompt_id": "ROLE-backend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:47:23+08:00",
@@ -64,14 +66,16 @@
       "github_issue": 3,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3",
       "m0_commit": "29ec3401564243dc34f41e6a1bcca81b73528455",
-      "design_commit": "b893353c9bcf45e833f70f56bf6f72025f611271"
+      "design_commit": "b893353c9bcf45e833f70f56bf6f72025f611271",
+      "repair_prompt": "ROLE-backend-CONTRACT-v2",
+      "repair_commit": "72c6c0064e52cb091e8ca4533a1cb862fc46866d"
     },
     {
       "role": "database",
       "label": "数据库",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/database/TASK.md",
       "agent_id": "/root/database",
-      "status": "database_design_completed",
+      "status": "database_repair_completed",
       "prompt_id": "ROLE-database-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:45:38+08:00",
@@ -80,7 +84,8 @@
       "github_issue": 4,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/4",
       "m0_commit": "dbd6d0a0b4a6f706a8f096b0cdb36b0d5ecfcc0f",
-      "design_commit": "3c0d55ec854102c84d8a7b7e364ba0b34a2b819c"
+      "design_commit": "3c0d55ec854102c84d8a7b7e364ba0b34a2b819c",
+      "repair_commit": "2ca79af796bf17aed6a2e76de75545623c0d0566"
     },
     {
       "role": "messaging",
@@ -117,7 +122,7 @@
       "label": "部署",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/deployment/TASK.md",
       "agent_id": "/root/deployment",
-      "status": "runtime_dispatch_retry_pending",
+      "status": "runtime_handoff_pending_capacity_retry",
       "prompt_id": "ROLE-deployment-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:50:47+08:00",
@@ -127,7 +132,9 @@
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7",
       "m0_commit": "9824923236d017a4d288f8be2eed7b36b1650a57",
       "worktree": ".agent-worktrees/deployment",
-      "branch": "codex/deployment-runtime"
+      "branch": "codex/deployment-runtime",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
+      "runtime_implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c"
     },
     {
       "role": "documentation",
@@ -166,7 +173,7 @@
       "label": "审核",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/reviewer/TASK.md",
       "agent_id": "/root/reviewer",
-      "status": "design_review_in_progress",
+      "status": "design_review_failed",
       "prompt_id": "ROLE-reviewer-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T13:16:40+08:00",
@@ -174,7 +181,9 @@
       "handoff": "records/handoffs/reviewer.json",
       "github_issue": 12,
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/12",
-      "m0_commit": "4b3d6e5e5ca21627db03c308a23f95744a35c717"
+      "m0_commit": "4b3d6e5e5ca21627db03c308a23f95744a35c717",
+      "reviewed_head": "717cd65ef73560fde7ff5bca2821c9fe2b20d68a",
+      "review_evidence_commit": "0e0a10b739c9b14e9ee42c8e8f70b16da24cba6e"
     }
   ],
   "repository": {
@@ -187,11 +196,15 @@
     "bootstrap_pr": "https://github.com/HJY147/t44-dev-trace/pull/13",
     "protection": {
       "required_status_contexts": [
-        "reviewer/stage"
+        "reviewer/stage",
+        "static",
+        "contracts",
+        "coverage",
+        "frontend"
       ],
       "enforce_admins": true,
-      "product_ci": "not_implemented",
-      "evidence": "records/github/protection-response.json"
+      "product_ci": "implemented_on_deployment_branch; first product checks failed on missing implementation",
+      "evidence": "records/github/protection-v2-response.json"
     }
   },
   "coordination_issue": "https://github.com/HJY147/t44-dev-trace/issues/1"

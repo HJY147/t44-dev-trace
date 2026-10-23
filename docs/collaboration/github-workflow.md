@@ -13,6 +13,8 @@
 
 reviewer 审核准确 HEAD SHA，提交变化后重新审核。静态检查、契约测试、覆盖率门禁失败不得合并。主干保护以实际API配置与验证为准，不能以规范文档代替。
 
+实际main必需检查为 `reviewer/stage`、`static`、`contracts`、`coverage`、`frontend`，strict且对管理员生效。配置回执保留于records/github/protection-v2-response.json；失败审核普通合并的真实拒绝回执在protected-merge-probe.json。不得使用admin/auto选项绕过或提前放行。Actions跑出红灯时保留原始步骤及原因，缺实现、空测试或未达到阈值不能伪装成功。
+
 GitHub不允许PR作者批准自己的PR。同用HJY147授权时，审核岗使用带岗位标识的COMMENT和绑定SHA的commit状态，不伪造另一真人的APPROVE。开发岗不得自行发布reviewer通过状态；授权仍属于同一用户，岗位之间是流程隔离，不称账户物理隔离。
 
 ## 独立测试
