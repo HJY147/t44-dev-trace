@@ -1,4 +1,4 @@
-# 字段字典 v1-draft
+# 字段字典 v2-draft
 
 状态：数据库完整设计提案，未冻结、未审核放行、未执行DDL、无模型/迁移。实际操作者为数据库岗位AI；派工ROLE-database-DESIGN-v1。配套schema.sql与persistence-contract.md。原始材料只作需求依据，不随本稿复制发布。
 
@@ -7,7 +7,7 @@
 - 18表：4核心(tasks/task_dependencies/reviews/decisions)；14辅助仅承接账号及撤销、项目成员、迭代/计划差异、评估预案、审计/幂等、可靠事件/通知及续扫，不建通用工作流/多租户平台。
 - 所有表统一id INT UNSIGNED AUTO_INCREMENT；15k评审/决策加持续审计/通知会超过SMALLINT，选择INT为当前可用统一最小层级。业务ID上限4294967295；版本上限2147483647，与API一致，禁止回绕。
 - InnoDB、utf8mb4_0900_ai_ci；用户名、哈希、operation/key、SHA等按列ascii_bin区分大小写。业务状态/布尔为TINYINT UNSIGNED，禁止SQL ENUM及散落字符串状态。
-- DATETIME(6)仅存UTC；连接UTC/严格SQL模式/READ COMMITTED。SQL中的NULL由每列显式声明；默认值只限初始化状态/版本/计数/active，其余服务显式赋值。
+- DATETIME(6)仅存UTC，API/只读契约校验/持久入口共享范围1000-01-01T00:00:00Z～9999-12-31T23:59:59.999999Z，仅Z、小数秒最多6位，并验证真实日期；先通过共享API Schema及语义校验再写库，拒绝越界而非截断/取整。连接UTC/严格SQL模式/READ COMMITTED。SQL中的NULL由每列显式声明；默认值只限初始化状态/版本/计数/active，其余服务显式赋值。
 - 对外小时为Decimal的0.25倍；内部estimated_quarters MEDIUMINT UNSIGNED(最大400000)、buffer_quarters SMALLINT UNSIGNED(最大40000)，避免float误差/超配BIGINT。capacity JSON仍保存API可读小时快照。
 - 外键无级联删除，默认RESTRICT；用户/成员/业务历史不物理删除。复合外键防跨项目及跨任务引用；角色、环、状态出口、有效JSON证据均由事务内领域守卫承担。
 - JSON用于固定结构证据/快照，嵌套枚举仍为数值。DB CHECK守数组/对象及必要形状，不能替代JSON Schema、有效模板清单或逐项证据校验。列定义以下直接按当前DDL列出，CHECK/索引以同节列表与schema.sql为准。
@@ -392,6 +392,7 @@
 | `lease_until` | `DATETIME(6) NOT NULL` | UTC租约截止；到期只允许加行锁核旧owner并接管，不直接证明旧事务已结束 |
 | `response_status` | `SMALLINT UNSIGNED NULL` | 完成时HTTP 200..499；503结果不完成幂等记录 |
 | `response_body` | `JSON NULL` | 原业务响应快照，不含旧请求meta/Token，重放重建meta |
+| `response_request_id` | `VARCHAR(128) CHARACTER SET ascii COLLATE ascii_bin NULL` | 生成该已保存成功/拒绝结果的处理请求ID；PROCESSING为NULL，COMPLETE非NULL且非空。租约接管后由最终完成者当前请求定格，不固定为首次认领ID。重放meta.original_request_id读取此列，不反查audit_id、不保存旧meta |
 | `created_at` | `DATETIME(6) NOT NULL` | 创建时刻UTC，由服务在事务内赋值 |
 | `completed_at` | `DATETIME(6) NULL` | 幂等完成UTC，PROCESSING为NULL |
 
@@ -504,6 +505,8 @@ UUID映射、规则快照、游标及重启证据；不能替代事件唯一约�
 待审：字段/索引/单行CHECK与上游映射需审核岗逐项复核；当前仅静态设计，未在MySQL8.4执行或测量查询计划。
 
 ## 四核心表逐表设计核对与待审核
+
+v2仅修审核C1并对齐C3，现为18表226列；未改写717cd65失败审核。幂等首次处理replayed=false时meta.original_request_id可NULL，重放replayed=true时取已保存response_request_id，必须非NULL；所有计划/只读校验同一可存时间域。
 
 | 表 | 类型/主键核对 | 约束及索引核对 | 领域边界与放行缺项 |
 | --- | --- | --- | --- |

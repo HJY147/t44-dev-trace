@@ -1,13 +1,13 @@
 # 数据库模块报告
 
 ## 当前任务与状态
-- 岗位database；本轮完整设计派工ROLE-database-DESIGN-v1，业务实现状态：未实现。
+- 岗位database；当前修复派工ROLE-database-DESIGN-v2，原设计v1；业务实现状态：未实现。
 - 用户采用规则见business-rules v1/D001，开始前编辑约束见D002；接口和数据库设计仍待冻结/审核。
 - 已读AGENTS、requirements、business-rules、D001/D002、原始T44任务书、review-protocol、backend-design/OpenAPI和implementation-layout。
 - 主责FR-02/AC-02；配合状态/排期、评审决策、升级幂等、权限和安全拒绝审计。
 
 ## 实际产物
-- specs/database/field-dictionary.md：18表225列完整字段、集中字典、四核心逐表核对与待审事项。
+- specs/database/field-dictionary.md：18表226列完整字段、集中字典、四核心逐表核对与待审事项。
 - specs/database/schema.sql：MySQL8.4完整CREATE/ALTER DDL提案，统一INT UNSIGNED PK、tinyint枚举；仅文本未执行。
 - specs/database/persistence-contract.md：锁序、事务、幂等/CAS、独立拒绝审计、扫描、confirm/fallback/消费边界。
 - agents/database/design-static-check.json：本轮静态自查原始摘要与文件SHA，明确非MySQL执行。
@@ -34,7 +34,7 @@
 
 ## 执行和验证
 - 资料读取/本岗设计文档生成，官方MySQL8.4/SQLAlchemy2语义核对；未修改其他岗产品路径。
-- Python静态自查退出0：18表225列、35外键引用显式唯一键、94命名约束无重名、41个明确原因码映射、ID范围/关键唯一键/level范围一致。
+- v2 Python静态自查退出0：18表226列，字典/DDL逐列类型/空值/默认精确一致，35外键/94命名约束/41原因码及关键唯一键一致。
 - 静态检查不验证完整MySQL语法或运行约束；真实摘要与hash见design-static-check.json，不能代替数据库执行。
 - 两次多文件补丁因目标行不匹配被工具拒绝，未产生部分修改；随后拆分准确补丁完成，未把失败写成成功。
 - 未执行DDL、未连接/迁移数据库、未写模型/产品代码；无模块自测/联调/验收/压测。根Git索引未操作，无add/commit/push/checkout。
@@ -45,3 +45,10 @@
 - 下一步由总协调冻结规格、reviewer逐表审核，再另行授权模型/迁移实现和真实验证；本轮无迁移许可。
 
 设计归档补记：获ROLE-database-DESIGN-COMMIT-v1独占时段后核验正确分支/空暂存区、四份SHA及锁序一致；范围评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 。本次仅归档已有设计，提交结果由完整SHA交接，不等于审核放行。
+
+## v2 审核修复C1与C3对齐
+- 原717cd65不通过审核保留不动；C1补response_request_id，PROCESSING为NULL、COMPLETE非空，保存最终生成已存成功/拒绝结果的处理请求ID；接管后不固定首次认领ID。
+- 重放original_request_id读此列，初次replayed=false可NULL；不依赖audit_id，不存旧meta/Token。时间先共享Schema/真实日期/范围校验再写DATETIME(6)，UTC Z、1000～9999、微秒≤6。
+- 根.venv Draft202012Validator+FormatChecker边界9/9符合预期，证据agents/database/design-v2-time-check.json；只验证Schema，非MySQL/HTTP运行。
+- 实际C1回复 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632 ；提示词原文已归档prompts/ROLE-database-DESIGN-v2.md；等待新SHA复审，不宣称已通过。
+- 修复完成时未操作根索引；后获ROLE-database-DESIGN-v2-COMMIT独占授权，仅归档10份本岗资料，完整SHA另交总协调；未执行DDL/模型/迁移/业务验证。

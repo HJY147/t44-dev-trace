@@ -1,4 +1,4 @@
-# 持久化契约 v1-draft
+# 持久化契约 v2-draft
 
 状态：完整设计提案，待总协调冻结和逐表审核；不是迁移许可、实现或运行结果。实际派工 `ROLE-database-DESIGN-v1`。配套 `field-dictionary.md`、`schema.sql`。依据 `specs/requirements.md`、`specs/business-rules.md`、D001、D002、原始T44任务书及 `specs/contracts/openapi.json` 当轮草案。MySQL 8.4 / Python 3.12 / FastAPI同步 / SQLAlchemy 2 + PyMySQL。
 
@@ -7,7 +7,7 @@
 - 后端服务拥有鉴权、项目角色、状态机、JSON语义和业务事务编排；持久化模块只执行参数化SQL、锁、CAS、原子写入，不提供“直接改任意状态”门面。
 - 持久化输入为已解析的主体、operation_id、请求ID、规范化请求哈希、幂等键、路径项目/资源ID、expected_version及领域命令；禁止口令、Token、Authorization头进入哈希原文、快照、审计或事件。
 - 输出为已提交结果快照、成功审计ID和事件ID；失败返回领域错误/冲突，SQL驱动异常不得直出。普通业务ID范围1～4294967295，版本1～2147483647。
-- UTC aware API时间转换成UTC后去时区存DATETIME(6)，读出补UTC再序列化Z。每条连接固定 `time_zone='+00:00'`、严格SQL模式、`READ COMMITTED`；不可依赖宿主时区或默认隔离。小时用Decimal转换四分之一小时整数，禁止float截断。
+- API时间先通过共享UtcTime Schema、FormatChecker和语义校验：仅UTC Z，年份1000～9999，小数秒最多6位，真实范围1000-01-01T00:00:00Z～9999-12-31T23:59:59.999999Z；所有计划、响应和只读契约校验同域。持久入口再次验证可存域后将已确认UTC的aware值去时区存DATETIME(6)，读出补UTC序列化Z，不静默截断小数/年份或接受偏移区。越界输入返回约定422参数/时间错误，拒绝审计遵循独立事务。扫描时间加减用同域饱和上下界/比较，不能在边界溢出后写坏时间。每条连接固定 `time_zone='+00:00'`、严格SQL模式、`READ COMMITTED`；不可依赖宿主时区或默认隔离。小时用Decimal转换四分之一小时整数，禁止float截断。
 - MySQL错误1062按命中约束区分幂等竞争/升级重复/消费重复/真实参数冲突；1213死锁与1205超时只有限重试完整事务，保留原key/hash；提交结果不明返回503 `TRANSACTION_UNCERTAIN`，先查询原key恢复结果。
 
 ## 四种版本及有效证据
@@ -46,16 +46,16 @@
 
 - 作用域唯一 `(actor_kind,actor_id,operation_id,idempotency_key)`；user/service分开。actor_kind=2的数值ID由部署分配，不与用户混淆。operation_id用OpenAPI稳定operationId，哈希为SHA-256的32字节，内容包括方法、路径资源ID和完整规范化body（含旧expected_version）；JSON键排序、数字规范化及缺省/null语义由后端统一实现。
 - 登录、Token签发和只读查询不进入幂等表。API key长度16～128、ASCII区分大小写；scope内相同key异哈希409 `IDEMPOTENCY_CONTENT_CONFLICT`，不得返回旧主体或旧项目数据。
-- 短独立事务原子INSERT PROCESSING(status=1)、owner_token、lease_until；唯一冲突后锁行比较hash，COMPLETE(status=2)直接回放原HTTP/body，不再验证旧task.version。PROCESSING未完成返回409 `IDEMPOTENCY_IN_PROGRESS` + Retry-After；客户端继续原key。
+- 短独立事务原子INSERT PROCESSING(status=1)、owner_token、lease_until，response_request_id必须NULL；唯一冲突后锁行比较hash，COMPLETE(status=2)直接回放原HTTP/body，不再验证旧task.version。PROCESSING未完成返回409 `IDEMPOTENCY_IN_PROGRESS` + Retry-After；客户端继续原key。
 - 过期PROCESSING只能通过 `SELECT ... FOR UPDATE` 等旧主事务结束后，CAS旧owner_token接管并换新token/租约；旧worker在业务事务开始及提交前校验token。主事务从开始到提交持有幂等行锁，租约到期本身不能让第二worker并行提交。
-- 主事务：锁幂等行并核owner → 按上述锁序鉴权/读基线 → CAS task (`WHERE id=:id AND project_id=:pid AND version=:expected`) → 领域子记录/排期diff/decision → success audit → outbox事件 → 幂等COMPLETE快照 → 一次COMMIT。任一步失败均ROLLBACK；CAS affected_rows必须恰1。
+- 主事务：锁幂等行并核owner → 按上述锁序鉴权/读基线 → CAS task (`WHERE id=:id AND project_id=:pid AND version=:expected`) → 领域子记录/排期diff/decision → success audit → outbox事件 → 幂等COMPLETE快照及response_request_id → 一次COMMIT。response_request_id写生成本次已保存结果的当前处理请求ID；若租约接管，最终完成者写自己的处理请求ID，不沿用首次认领者ID。任一步失败均ROLLBACK；CAS affected_rows必须恰1。
 - 不同key持相同expected_version竞争：只有第一次CAS成功，第二次409 `VERSION_CONFLICT`；成功更新与审计/outbox不允许分开提交。只读快照回放不新增成功审计或事件。
-- 成功快照是当时结果，meta重放标记/请求ID由后端契约处理；前端再GET最新任务，不把旧快照当当前版本。v1不自动清理完成记录；至少保留7天的想法尚未获总协调最终采用，不能默默过期使同key再次执行。
+- 成功/拒绝快照是当时结果，只存业务data/错误及HTTP状态，不保存旧完整meta或凭据。初次处理 `meta.replayed=false`，当前meta.request_id为当前请求，meta.original_request_id可NULL；重放时 `meta.replayed=true`，当前request_id/server_time重新生成，original_request_id必须读取COMPLETE行的非空response_request_id。此来源不依赖响应data是否有audit_id，也不靠审计反查。前端再GET最新任务，不把旧快照当当前版本。v1不自动清理完成记录；至少保留7天的想法尚未获总协调最终采用，不能默默过期使同key再次执行。
 
 ## 拒绝事务、审计与503
 
 1. 非法迁移、版本冲突、依赖拒绝等先ROLLBACK主事务，关闭/释放该Session持有的连接和锁。不得在“已失败但未回滚”的Session继续写，SAVEPOINT不能代替独立拒绝提交。
-2. 新建独立SQLAlchemy Session/连接、独立事务（业务连接已释放），锁原幂等行核owner，写outcome=2的audit及原错误快照后把幂等行置COMPLETE，一次提交。不写task、成功审计、outbox或业务子记录；before/after不得伪造发生了变更。
+2. 新建独立SQLAlchemy Session/连接、独立事务（业务连接已释放），锁原幂等行核owner，写outcome=2的audit、错误快照及生成此已保存拒绝结果的当前response_request_id后把幂等行置COMPLETE，一次提交。该ID与成功路径采用同一完成时语义，租约接管亦不固定首次认领ID。不写task、成功审计、outbox或业务子记录；before/after不得伪造发生了变更。
 3. 拒绝审计失败：独立事务也ROLLBACK，返回503 `AUDIT_UNAVAILABLE`；不能仍报“409已记录”。保留PROCESSING供租约恢复，必要运维告警仅含request_id及脱敏错误。部署的恢复介质/告警方式仍待确认，不能宣称审计已持久化。
 4. 鉴权/格式错误发生在幂等占位之前，可独立写安全审计而不缓存敏感请求。未知项目/资源ID写attempted_*，resolved project_id/task_id可NULL；不以外键失败丢掉拒绝记录，也不向越权者泄露记录。
 5. audit的reason_code为tinyint集中映射API ErrorCode；actor_id不设users外键，以容纳service与未识别主体。审计before/after是字段级脱敏白名单，禁止保存密码/Token、原SQL或用户恶意输入全文。SQL只走参数绑定；可疑输入的识别和拒绝由后端完成，不声称数据库识别一切注入字符串。

@@ -61,3 +61,20 @@
 - 读取并复核设计静态摘要：schema、字段字典、contract和当前OpenAPI的SHA均一致；backend会话认证→幂等→project如需→members→tasks锁序与本岗contract一致。原失败记录保留。
 - 实际执行gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-stage-comment.md，退出0；范围/待审核评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 。
 - 准备仅显式暂存本轮10份本岗变化文件并核对暂存清单；commit结果/完整SHA在完成后直接交总协调，不提前记作已提交。DDL/迁移/模型/运行验证仍未执行。
+
+## 2026-10-23T14:33:45+08:00 ROLE-database-DESIGN-v2：C1修复与C3对齐
+
+- 实际收到总协调修复派工，原文agents/database/prompts/ROLE-database-DESIGN-v2.md；已读reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md，原不通过报告未修改/重写。仅负责C1并对齐C3，未改backend C2/C4文件。
+- 实际改schema.sql：idempotency_requests.response_request_id ASCII VARCHAR128 NULL；PROCESSING必须NULL，COMPLETE必须非NULL且非空。同字段/语义同步field-dictionary与persistence-contract，当前18表226列。
+- 与backend直接确认采用保存最终生成已存结果的处理请求ID；租约接管后可以来自后一次处理；成功主事务与拒绝独立审计事务均在完成时写入。不依赖audit_id或旧meta，首处理original_request_id可NULL，重放取已存非空ID。
+- C3说明同步共享API Schema/FormatChecker先验证UTC Z、1000～9999及≤6微秒，再写库；读/写/只读契约校验同域，禁止静默截断。已向backend提醒核对regex转义，backend回报真实边界校验通过；本岗随后独立用实际共享Schema验证9例均符合预期。
+- 实际执行根.venv/bin/python＋Draft202012Validator/FormatChecker：9/9符合预期，退出0；原结果agents/database/design-v2-time-check.json。Python静态检查退出0：18表226列、35外键、94约束、41原因码、字段字典/DDL类型空值默认完全一致；C1 CHECK存在；旧静态摘要/原失败审核SHA保留于更新的design-static-check.json。均非MySQL执行/完整SQL解析。
+- 实际发表 gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-v2-c1-response.md，退出0；URL https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632 ，已通知backend核对。
+- 本轮未使用根Git索引，无add/commit/push/checkout，待总协调明确授权；未执行DDL/迁移/数据库连接、未写模型、未运行HTTP/数据库并发/业务测试；未联系或读取独立测试。
+
+### 2026-10-23T14:35:55+08:00 v2修复归档独占授权
+
+- 收到ROLE-database-DESIGN-v2-COMMIT；真实原文追加本轮prompt归档，footer按总协调要求继续ROLE-database-DESIGN-v2。
+- 已核验codex/team-bootstrap、暂存区为空、HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；后端v2提交正文与11文件已核对。当前设计/OpenAPI/time-check hash一致，原失败审核SHA不变。
+- backend已直接回复确认最终完成者response_request_id与README/backend-design一致；保留本岗已有Issue回复，不发重复评论。
+- 本次仅显式暂存已列10份本岗修复资料；提交前核对精确清单及diff-check。实际commit完整SHA由提交后回报，不提前宣称已提交；未执行DDL/模型/迁移或运行测试。

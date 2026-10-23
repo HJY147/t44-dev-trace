@@ -1,4 +1,4 @@
--- T44 database design v1-draft; MySQL 8.4 / InnoDB.
+-- T44 database design v2-draft; MySQL 8.4 / InnoDB.
 -- REVIEW REQUIRED. This file has NOT been executed or migrated.
 -- Run only in an explicitly selected empty schema after per-table approval.
 -- No DROP, seed data, database creation, triggers, or implicit application state machine.
@@ -351,6 +351,7 @@ CREATE TABLE idempotency_requests (
     lease_until DATETIME(6) NOT NULL,
     response_status SMALLINT UNSIGNED NULL,
     response_body JSON NULL,
+    response_request_id VARCHAR(128) CHARACTER SET ascii COLLATE ascii_bin NULL,
     created_at DATETIME(6) NOT NULL,
     completed_at DATETIME(6) NULL,
     PRIMARY KEY (id),
@@ -358,8 +359,8 @@ CREATE TABLE idempotency_requests (
     KEY ix_idempotency_recovery (status,lease_until,id),
     CONSTRAINT ck_idempotency_actor CHECK (actor_kind IN (1,2)),
     CONSTRAINT ck_idempotency_state CHECK (
-        (status = 1 AND response_status IS NULL AND response_body IS NULL AND completed_at IS NULL)
-        OR (status = 2 AND response_status IS NOT NULL AND response_status BETWEEN 200 AND 499 AND response_body IS NOT NULL AND completed_at IS NOT NULL)
+        (status = 1 AND response_status IS NULL AND response_body IS NULL AND response_request_id IS NULL AND completed_at IS NULL)
+        OR (status = 2 AND response_status IS NOT NULL AND response_status BETWEEN 200 AND 499 AND response_body IS NOT NULL AND response_request_id IS NOT NULL AND CHAR_LENGTH(TRIM(response_request_id)) > 0 AND completed_at IS NOT NULL)
     )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

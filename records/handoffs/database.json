@@ -1,6 +1,6 @@
 {
   "role": "database",
-  "stage": "完整数据库设计待审核（v1-draft）",
+  "stage": "v2 C1/C3修复归档获授权，待新SHA复审",
   "implementation_status": "未实现",
   "artifacts": [
     {
@@ -65,6 +65,22 @@
       "kind": "设计归档范围/待审核评论正文",
       "status": "已保存并发表",
       "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-DESIGN-v2.md",
+      "kind": "实际修复派工原文",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/design-v2-time-check.json",
+      "kind": "9个共享UtcTime边界检查真实结果",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/github-design-v2-c1-response.md",
+      "kind": "C1/C3实际Issue回复正文",
+      "status": "已创建",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
     }
   ],
   "interfaces": [
@@ -160,7 +176,13 @@
     "gh issue view 4 --repo HJY147/t44-dev-trace --json comments",
     "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git status --short -- specs/database agents/database reports/modules/database.md records/handoffs/database.json; git show --format=fuller --stat b893353c9bcf45e833f70f56bf6f72025f611271",
     "python3：复核design-static-check.json中的四份SHA及backend/persistence会话锁序",
-    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-stage-comment.md"
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-stage-comment.md",
+    "读取reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md与本岗设计/当前共享UtcTime、Meta",
+    "根.venv/bin/python：实际Draft202012Validator+FormatChecker验证UtcTime九个边界例值，结果design-v2-time-check.json",
+    "python3：v2静态检查精确字典/DDL列定义、C1新列/CHECK、FK/unique/原因码与hash",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-v2-c1-response.md",
+    "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git show --format=fuller --stat 72c6c0064e52cb091e8ca4533a1cb862fc46866d",
+    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -178,7 +200,14 @@
     "本轮数据库Issue说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358608869 已发表；backend确认 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437 已读取核验。",
     "未写模型/产品代码，无数据库操作或Git索引操作；未来生产责任目录按implementation-layout更新。",
     "设计归档时首检codex/team-bootstrap且空暂存区，HEAD为backend b893353c9bcf45e833f70f56bf6f72025f611271；设计/OpenAPI SHA和会话锁序一致。",
-    "范围/待审核评论已发表 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 ，未声明审核通过。"
+    "范围/待审核评论已发表 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 ，未声明审核通过。",
+    "v2仅C1/C3：新增response_request_id与完成状态约束，保存最终生成结果的处理request_id；重放meta直接读此列，不依赖audit_id/旧meta。",
+    "当前18表226列静态检查退出0；35FK/94约束/41原因码，字典与DDL列定义精确一致。",
+    "实际共享UtcTime九个边界值Schema验证9/9，未做MySQL/HTTP验证。",
+    "原失败审核717cd65报告保持原样；新设计尚待新SHA复审，未宣称通过。",
+    "本修复轮根索引仍由backend持有，数据库岗未操作Git/未提交，等待总协调授权。",
+    "获ROLE-database-DESIGN-v2-COMMIT后核验codex/team-bootstrap、空暂存区及父HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；所有设计/OpenAPI/time-check hash一致，原失败报告未变。",
+    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。"
   ],
   "unverified": [
     "设计v1-draft未获总协调冻结/逐表审核放行。",
@@ -186,7 +215,8 @@
     "未验证事务/CAS/幂等接管/撤销/双向并发加边/成员守卫。",
     "消息confirm/fallback/消费竞争、调度续扫/配置归档仍待责任岗确认及运行验证。",
     "拒绝审计故障恢复介质、迁移版本元数据/精确CLI仍待后续派工。",
-    "模块自测、联调、独立验收、性能均未运行；未联系或读取独立测试岗内容。"
+    "模块自测、联调、独立验收、性能均未运行；未联系或读取独立测试岗内容。",
+    "v2 response_request_id的真实持久保存/租约接管后重放行为尚未实现或运行；待新SHA独立审核。"
   ],
   "questions": [
     {
@@ -226,6 +256,12 @@
       "to": "deployment/backend",
       "question": "统一CLI下迁移版本元数据、精确命令及拒绝审计故障介质如何落地？",
       "status": "已真实对接，待下一迁移实现阶段"
+    },
+    {
+      "to": "backend",
+      "question": "请确认C1 response_request_id采用最终完成请求语义，并与README/meta.original_request_id来源一致。",
+      "status": "已backend直接确认与v2 README/backend-design一致；待新SHA审核",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
     }
   ],
   "prompt_refs": [
@@ -281,7 +317,24 @@
         "agents/database/github-design-stage-comment.md",
         "records/handoffs/database.json"
       ]
+    },
+    {
+      "id": "ROLE-database-DESIGN-v2",
+      "actual_prompt_source": "总协调针对失败审核C1与C3对齐的真实修复派工",
+      "archive": "agents/database/prompts/ROLE-database-DESIGN-v2.md",
+      "improvement_reason": "真实审核指出C1缺原请求持久来源及C3时间域不一致；只修责任范围，不抹去失败，不记用户亲改。",
+      "outputs": [
+        "specs/database/schema.sql",
+        "specs/database/field-dictionary.md",
+        "specs/database/persistence-contract.md",
+        "agents/database/design-static-check.json",
+        "agents/database/design-v2-time-check.json",
+        "agents/database/github-design-v2-c1-response.md",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T14:12:20+08:00"
+  "updated_at": "2026-10-23T14:35:55+08:00"
 }
