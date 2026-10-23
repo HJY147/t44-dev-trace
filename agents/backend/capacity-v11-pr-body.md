@@ -9,3 +9,5 @@ PR保持draft；上述为开发CI与限定短诊断，独立复测、正式400VU
 Agent-Role: backend
 Prompt-Ref: ROLE-backend-CAPACITY-V11-IMPLEMENT-v1; ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1
 Refs: #3 #12
+
+后续内部候选RFC仅计划合并validateContractPayload只读UoW，附未应用Runtime净+7行补丁；生产0改动，4/5/5SELECT与1acquire尚为静态预期。最初S锁备选讨论后撤回，保留在途普通读语义；已获限定设计意见及根准入，先设计checkpoint后续另交生产与回归；本次无生产实现/负载，详specs/changes/contract-validation-read-uow-rfc.md。

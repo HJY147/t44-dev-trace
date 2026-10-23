@@ -253,3 +253,14 @@
 - 完整限定分析、命令、原38文件zip及SHA清单profile-contract-03-*，私密fixture排除且0600；归档凭据字面值检查0命中。完整outer stderr未单独重定向，真实工具session11938退出1与原metadata明确保留，不虚称已有原stderr文件。原失败不覆盖，修后整controller未实跑。
 - 最终离线完整核对exit0：38原文件大小/SHA、六组原JSONL nearest-rank P95、9099服务request_id匹配/错误0、actual imports/hash及历史PID均验证，profile-offline-validation.log。此exit0只指离线校验，不改原controller exit1。
 - 前次CI成功评论发表遇GraphQL EOF后，本轮body-file重试真实成功：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366169525；诊断阶段评论https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366172145。PR16按当前394CI/诊断整体失败/未决项重写正文，保持draft，不self-approve。
+
+## c83后性能优化设计候选（未实现）
+
+- 只读Runtime/Identity/Rows/UoW/API/CLI和当前安装驱动源码，静态逐层核成功8/9/9 SELECT来源：两次各4表鉴权+category2/3任务读；955的2次Engine.connect不等于2次新物理建连，COM_PING/DBAPI初始化/commit不在cursor计数。未跑矩阵/pytest/服务/HTTP/数据库请求，不读私有测试资料。
+- 仅validateContractPayload候选单UoW，普通RC鉴权→原输入验证→fresh now到期复核→原dispatch；其余17只读与全部写不变。最初提只读session/member S锁，根/审核指出冻结最低语义并讨论后撤回，无锁候选获静态方向意见，待最终设计准入；不写成安全漏洞或用户改码。
+- RFC specs/changes/contract-validation-read-uow-rfc.md与未应用draft patch完整说明各自语句快照/在途读可完成、撤销提交后新请求拒绝、auth-before-error、identity.active无现有停用入口、with退出close后新UoW审计、输入网络已读/连接跨本地验证CPU的代价。3类预期4/5/5SELECT和1acquire均未测，不推定poolwait/正式达标。
+- draft仅runtime.py 8add/1delete、净+7物理行282→289；当前生产delta0，补丁仅AST/可应用性静态核对，receipt记录SHA。不解决源码超限/其它两正式入口P95；986/985拟追加有意义的会话/成员撤销双时序/新旧请求、到期优先级及独立审计，尚未编写运行，不新增脚本。
+- 审核岗逐字核RFC8cdfc9b及未应用patch，限定无新增设计阻断；根随后明确准入唯一接口无新锁候选，先交设计SHA再开始生产。RFC保留形成时“待准入”原文字，实际后续准入原文另存prompt；本commit仍无生产/回归修改。git apply --check候选补丁、生产diff0和文本diff检查均退出0。
+- 本候选实际Issue3交流：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169；仅设计准入/未应用，不称实现或性能通过。
+- 设计归档首次cached --check退出2：未应用标准diff附件的三条空context行必须保留前导空格，作为被新增的补丁文件内容被报尾空格。保留审核过的有效patch/SHA原样，仅对其余暂存文本另作同检查；未改任何生产lint/断言。真实输出profile-read-uow-design-static.log。
+- 根澄清SSH消息属于误发，与本项目无关；未取得/保存/使用密码，未连接任何远程主机。本项目仅原本地/托管计划。
