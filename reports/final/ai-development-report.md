@@ -2,7 +2,7 @@
 
 **AI整理的证据材料，非学生研究报告最终稿。** 本文件不代表学生本人撰写，不把AI执行经历、AI发现的缺陷或AI改码归为学生亲历。老师要求的研究报告应由学生依据真实过程自行组织、思考和成文；本材料与[自写模板](student-study-template.md)只提供可核查来源与问题引导。
 
-版本：M2过程材料。Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M2-QUALITY-v1。私密封面个人信息不入公开仓库，报告日期留空。M1报告commit仍保留，当前改名/定位是响应课堂新增要求，不倒造先前作者身份。
+版本：M3过程材料增量，保留M2原提交。Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1。私密封面个人信息不入公开仓库，报告日期留空。M1报告commit仍保留，当前改名/定位是响应课堂新增要求，不倒造先前作者身份。
 
 ## 1 课堂要求和材料使用方式
 
@@ -61,7 +61,7 @@ U002原文节选：
 
 每部分自己的测试见[M2追踪矩阵](../../docs/reports/M2-traceability.md)。后端314/3、全t44行87.78%、前端21/92.21%、消息28+局部Rabbit、调度107、部署历史17/当前23检查是不同版本/环境/分母，不能相加造出全产品通过。迁移5e07887后的岗位本机快照是FE21通过、Python317只完成collect；随后265d89b托管CI真正执行317通过/0跳过，whole Python88.07%、前端92.21%。两次证据按时间分开，不把collect补写成执行。
 
-需求质量、设计静态、模块单测/SQLite/mock、真实MySQL/HTTP、MQ/跨进程、整套集成、托管CI、独立验收与正式性能是不同层次。400并发10分钟/P95≤270ms/吞吐、最终3500–5100有效LOC和最终准确SHA审核仍需各自实际证据，当前规模仍超限，不能靠重复代码/注释/测试填量或无依据承诺。
+需求质量、设计静态、模块单测/SQLite/mock、真实MySQL/HTTP、MQ/跨进程、整套集成、托管CI、独立验收与正式性能是不同层次。400并发10分钟/P95≤270ms/吞吐、最终3500–5100有效LOC和最终准确SHA审核仍需各自实际证据，e01原口径5944超限，后续精简与最终规模另核，不能靠重复代码/注释/测试填量或无依据承诺。
 
 ## 6 人与AI归属及尚缺资料
 
@@ -71,7 +71,8 @@ U002原文节选：
 | D002/D003、生成代码/模块自测/debug | AI总协调/责任岗 | 人独立思考、亲历改码或人工识别幻觉 |
 | reviewer报告/COMMENT | 审核AI准确SHA证据 | 独立真人APPROVE或产品验收 |
 | seed中的review/decision | synthetic演示数据 | 真实人的评审、批准或学生学习记录 |
-| 学生软件工程收获/课程建议 | 待学生本人自写 | 提示词岗或文档岗代作本人 |
+| 软件工程本人观点R001 | 已提供原话，见来源；完整研究正文仍由本人组织 | 把未来骨架/断点建议写成本次亲自执行 |
+| 课程建议/最终研究成文 | 尚未提供本人课程建议或最终稿 | 提示词岗或文档岗代作本人 |
 
 ≥6版真实prompt演进、≥12人工修改对照、≥3人工识别幻觉、≥5处人工校正/最终代码映射目前未由现有AI活动证明达标。已有AI错误和AI修复可以诚实分析，但不能换标签凑人工数量。课程“AI能做/不能做”完整原清单尚缺，不能猜条款。
 
@@ -82,3 +83,24 @@ M2新增证据：265d89bd004de626a025d7efe7102fe68b5b2dd3的[run39931640641](htt
 REA范围见[root已发布调研](../../docs/reviews/rea-readiness.md)：候选工具辨识及本项目自查，未运行REA，不是教师评分规则；不从AI自我测试指南推定本课评分。
 
 后续部署实收：准确应用SHA`31f4dff935973162544951fe0660ce208edb7007`的[Docker run39932723829](https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829)成功；[公开原始结果](https://github.com/HJY147/t44-dev-trace/blob/cfeda743ec2118b0824313cf63c8526880bc79f1/agents/deployment/integration-validation/run-39932723829/result.json)显示真实构建/完整Compose、4个API worker、独立MQ/扫描、HTTP/SPA/双层JSON413、0600只读凭据/共享flock/轮换撤销、停写备份和新隔离库19表行数/checksum一致、18业务表226列复核、源重启HTTP200。旧run39932416571失败保留。这是托管Linux小规模synthetic联调，不是40项目正式压测、云部署、异机队列灾备或独立验收。
+
+## 7 M3公开证据与本人原话增量
+
+### 7.1 R001：已有本人观点，尚非研究成品
+
+用户已提供本人软件工程观点原话，直接来源是[R001-original.md](../../records/reflections/R001-original.md)，出处、原字/换行保留策略与SHA在[R001-provenance.json](../../records/reflections/R001-provenance.json)。这里引用来源，不把原话润色成学生署名研究正文，也不再表述“个人意见完全未提供”。
+
+> 不同模块之间接口怎么定义，需要留什么接口
+
+> 然后对于需求的定义也是必须要人把关的，需求没有明确的地方，必须要和人确定清楚，不能靠ai自己补全，自己猜想
+
+R001包含结构/封装/重要函数I/O、未来def/#todo骨架、反复使用的代码要理解、需求歧义和测试决策的本人意见。它的归属是human reflection；不是亲自写骨架、使用断点调试、人工改码或人工识别幻觉的执行证据。课程建议与学生最终研究成稿仍未提供。本项目现有函数I/O说明由AI在M3据源码整理，见[function-contracts](../../docs/function-contracts.md)，不能倒填为本人开发前已写。
+
+### 7.2 M3图和prompt事实包
+
+- root在8fb74cdf将M2七图修订为八图，并真实用Mermaid CLI12/Chrome渲染、查看独立PNG；[M3修订记录](../../docs/reports/M3-diagrams.md)及[图manifest](../../docs/diagrams/manifest.json)固定操作者、源/产物哈希。可确认独立成图检查，不能当最终Word逐页QA；M2七图未渲染历史仍保留。
+- [提示词岗M3事实包](../../docs/prompting/M3-evidence-checkpoint.md)，发布4226cf8，按实际prompt→需求审查→设计反馈→修正及九条AI事实整理；[实际问取](../../docs/prompting/M3-source-inquiries.md)和[来源索引](../../docs/prompting/M3-source-manifest.json)可核。ROOT-documentation-M3-DIAGRAMS文件是事后目标重述，不计实发派工或同族六版。
+- e01完整产品审核[四项不通过报告](../reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md)揭示嵌套Iteration.plan、历史重放状态误报、原口径规模超限和Schema语义漏检。随后FE修复、后端共享逻辑/会话复用与新CI属增量证据；不能把修复提交或CI绿写成完整审核已放行。
+- 指定BE源码64b4f89的托管CI317通过/零失败错误跳过，行2406/2729=88.1642%，原件在3ee0725归档；FE b485本模块24/24、行92.19%。与M2的265d89b/88.07%、FE21/92.21%分时点，不能替换旧分母或声称同一个全局百分比。
+
+性能和独立验收结果在本轮来源边界外，仍待正式公开结论；本岗不读取未发布黑盒用例/内部日志，不联系测试。R001提供本人观点，不使人工12/3/5或单一prompt族六版自动达标。

@@ -1,44 +1,38 @@
-# 文档汇总岗位报告｜M2-QUALITY-v1
+# 文档汇总岗位报告｜M3-CONTRACTS-v1
 
-## 任务、依据与状态
+## 任务与当前状态
 
-- Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M2-QUALITY-v1；Refs: #9。
-- 独立树documentation，分支codex/reports-m2；从M1报告历史合入integration及06b9e98归档。
-- 当前为可审Markdown工作稿；本岗不实现产品、不执行产品测试、不替学生署名研究报告。
-- 冻结1.0.0的11文件只读；D004已采用，不再将当前Q002列pending；M1当时pending历史不改。
-- 私密封面已读，姓名学号等具体值不提交公开Git，日期留空；未生成DOCX/PDF或宣称逐页QA。
+- Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M3-CONTRACTS-v1；Refs: #9。
+- 独立树documentation/分支codex/function-contracts，实际基线074fab7及R001来源5b3bf30。
+- 本轮可审MD：关键函数I/O、R001本人观点来源、M3八图/prompt证据同步；不是最终研究成品或验收。
+- 本项目先冻结OpenAPI/DDL再完整实现，与用户建议未来亲写def/#todo工作流分清；不倒填人工骨架/调试。
+- 封面具体值仅私密本地，日期空；最终DOCX/逐页QA仍未运行。
 
-## 产物及对接
+## 产物与输入输出
 
-- reports/final/requirements-report.md：正式SRS组织、角色/成功拒绝、8FR/9AC、3个Mermaid图和真实版本历史。
-- reports/final/design-report.md：概设/详设、ER/进程/两核心时序共4图、DI/稳定码/事务/锁/扫描复杂度。
-- docs/architecture.md：任务书命名入口，两组候选按性能/成本/可维护性比较；补充候选时间明确、无假实测。
-- docs/reports/M2-traceability.md：FR→概设→实际函数→tmp模块测试及公开结果范围。
-- ai-development-report.md改为AI证据材料，student-study-template.md提供学生自写问题和空提纲。
-- submission-map.md及ai-spec-guide.md同步冻结v1、四组提交、私密封面及最终缺口。
-- M2-collection.md/.json留9岗实际请求全文，收到backend/deployment/reviewer三岗原文；其余6岗未收，不代写。
-- 已发布模块报告/交接与本轮亲自问答分开；不联系测试，只收两份公开冻结资料。
+- docs/function-contracts.md：FE API、HTTP/Runtime、Business/Workflow、domain、Rows/UoW/迁移、MQ/消费、扫描/升级、部署/管理CLI。
+- 每层说明真实签名与输入/输出形式、前后置、错误、事务/副作用和调用方；不伪造原函数类型注解。
+- docs/reports/M3-contract-sources.json：24源码哈希/真实函数签名行号，38冻结HTTP操作的request Schema/响应状态。
+- ai-development-report.md/学生模板/提交对照同步R001原话及provenance，不再写本人观点完全未提供。
+- ai-spec-guide.md加入函数I/O、root已渲染八图及提示词4226事实材料入口。
+- M3-collection.md/.json保存9条晚到M2真实答复与本轮对提示词岗回复原文；M2原档不改。
+- 本岗prompt实际原文在agents/documentation/prompts/ROLE-documentation-M3-CONTRACTS-v1.md。
 
-## 设计与过程证据
+## 来源与设计边界
 
-- 717首次审查失败→bc0 C1–C4限定技术通过→D004/ae60冻结→完整编码→enum/seed联调修复→M2图表。
-- 图在开发中补充，不倒填为开发前已全部成稿；M0/M1原记录和失败日志保持历史。
-- ISO/IEEE只读官方公开摘要，引用需求信息项/迭代范围，不声称读完标准或符合未读条款。
-- REA仅引用root公开调研的候选工具/证据分析定位，不称教师评分器或REA运行通过。
-- 学生本人观点、人工改码/识别幻觉/校正映射须真实来源，AI互改不改标签凑数。
+- R001原文hash/provenance一致，归属human reflection；不计人工改码/人工识别幻觉。
+- root M3八图CLI12/Chrome真实渲染/独立PNG查看有公开manifest；本岗只读证据，没有本轮重渲染或冒充看图。
+- 4226提示词事实包：CONTRACT已核2版，人工12/3/5本轮可证实0；事后ROOT目标文件不计实发版本。
+- e01完整审核四项failure仍保留；指定64b4开发CI317/0/0/0、whole Python88.16%不等于新产品审核通过。
+- 迁移check_schema在基线只比部分结构/名称，C-P4漏语义明确；新checker待责任岗验证，不宣称关闭。
+- 当前六岗有实际回复、消息/调度/指导三岗未回；既有公开报告可引用，未收到的不代写。
 
-## 验证与范围
+## 验证、错误与交接
 
-- 本岗检查JSON、来源SHA、11冻结哈希、本地链接、7个Mermaid块结构、8FR/9AC及隐私；不运行产品命令。
-- Mermaid运行库未提供，语义与实际代码人工核对；未声称已渲染图或完成Word逐页QA。
-- 06b9e98中的CI原始JUnit/gate已读：265d89b四job成功，覆盖率整套317通过/0失败/0跳过。
-- whole Python2399/2724=88.07%，前端308/334=92.21%；非本机87.78%/3skip，历史分开。
-- 当前测试入口tmp/backend、tmp/frontend及递减编号；5e机械迁移不改写旧日志命令。
-- 模块结果、托管整套、Docker、准确SHA审核、独立验收与正式性能分层；不能互相替代。
-
-## 尚需交接
-
-- 实收cfeda/31f4dff，Docker39932723829托管构建/全Compose/隔离恢复成功；旧失败保留。正式400并发10分钟/P95/吞吐、规模、独立验收仍无最终结果。
-- 6岗未有本轮回复，只使用已发布来源；待收到后可增补，不阻塞当前可审稿。
-- 学生本人最终研究报告/个人思考/课程建议和真实人工证据待本人提供。
-- checkpoint779a5df已push，PR22草稿/attach；随后仅合最新integration并补实收部署结果与发布记录，不merge main或发审核success。
+- 仅源码/AST/JSON/哈希/链接/Schema静态读取，无导入应用/业务请求/pytest/构建/渲染。
+- R001旧provenance路径不存在退出1；实际纠正R001-provenance后继续，原错误留WORKLOG。
+- 初猜pika_adapter.py不存在退出2，rg定位真实broker.py；不当作应用bug。
+- 文档校验、11冻结文件未改、M0/M1/M2原始记录未改及隐私结果见M3-contract-validation.json。
+- 正式性能/独立验收最终结论不在本轮读取范围；不联系测试或读取未发布黑盒/内部材料。
+- 学生最终研究文字/课程建议、真实人工记录、最终Word逐页QA继续待办。
+- f7afd15显式15本岗文件已push，草稿PR23已attach，真实评论6363196975已读回；最终head由Git确定；不merge main/发审核success。
