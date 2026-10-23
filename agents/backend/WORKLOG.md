@@ -146,3 +146,13 @@
 - login和CLI service-token共用issue_session：同事务只保存摘要，明文仅返回/0600文件一次；CLI既有身份/项目检查、审计、O_EXCL、fsync及失败清理保持，登录去除内部session_id后原冻结响应不变。
 - 对比003ef6b，本岗生产文件物理diff净减少112行；这是git diff，不是最终cloc、全产品规模或门禁结论。未压行、转移配置、删除安全/业务功能或降低断言。
 - 性能安静窗仍有效：本机只编辑（含Ruff格式化）、读取和Git diff --check；未跑pytest/build/MySQL/HTTP，也未重启18080/触碰18081。当前改动需远端CI或窗口后真实回归，不能把历史314通过/87.78%作为当前版本通过。
+
+## ROLE-backend-REFACTOR-v1 远端复验与交接
+
+- 真实被测源SHA64b4f891ee77eeb2b1054c3a40af084eb6691d5c，PR合并checkout f5e9904c339e204574fcf2f630af28b0a6779e94；GHA39938619826和39938612582均success，static/frontend/contracts/coverage四任务通过。失败729→cmd别名修复64b4→真实新CI通过，未改旧失败日志、用例或断言。
+- 下载原始CI artifact并解析JUnit：tests317、failures0、errors0、skipped0；contract35/integration52/fault7分别选择通过，标记可重叠，不能相加当总用例。Linux/Python3.12.15使用真实MySQL/Rabbit服务。原始logs/JSON/JUnit已归agents/backend/refactor-ci-39938619826-*，汇总refactor-validation-summary.json；两run状态JSON同目录。
+- 全backend/t44共43文件纳入，excluded_lines=0；行2406/2729=88.1641626969586%，分支76.47058823529412%，含分支综合85.73918094684868%。CLI仍0/101并在分母中，旧真实CLI实证单列不混入本次coverage；保留FastAPI TestClient/httpx弃用警告1条。
+- 远端检查已解决本次静态/断言回归，但不是独立验收或正式性能结论。全产品最终cloc仍待总协调核算；本岗没有把物理112行变化当cloc达标。无新测试文件（未占955号），未改他岗/审核957/959或私有验收资料。
+- 本机性能窗口内仍仅编辑/读取/Git，未pytest/build/DB/HTTP/重启服务。Issue#3阶段6362735528，PR16保持draft；本交接提交只归档上述已验证源SHA证据，不新增产品变更。
+- 真实最终Issue#3评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205；PR16正文已按当前远端结果更新，保持draft。
+- 归档git diff --cached --check曾退出2：原始GHA完整日志中的带时间戳空输出行有尾空格；为保存原始证据不改写日志，随后只对非.log文件执行同检查。此为证据格式检查，不是产品测试失败。

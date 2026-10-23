@@ -101,3 +101,9 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 - 远端实际失败：729344e的GHA39937742613出现namespace遮蔽（18 failed/299 passed）及Ruff I001/F823；原日志在agents/backend/refactor-ci-39937742613-failed.log。当前修正cmd别名，保留全部原断言。
 - 当前验证：本机性能隔离期间未运行pytest/build/DB/HTTP；Ruff格式化只算编辑。等待新SHA远端CI。生产git物理diff相对003ef6b净减112行，最终统一cloc和3500–5100要求仍待总协调核算，不能宣称规模已达标。
 - 旧完整HTTP/事务/覆盖率证据仍为上轮快照；当前重构不等于独立验收或正式性能通过，18080/18081均未重启。
+
+## ROLE-backend-REFACTOR-v1 远端复验结果
+
+源SHA64b4f891ee77eeb2b1054c3a40af084eb6691d5c的product39938619826/39938612582四任务全成功。原始JUnit317测试、0失败/错误/跳过，contract35/integration52/fault7各自通过（会重叠）。全43个backend/t44文件、无excluded：2406/2729行88.1642%，分支76.4706%，含分支85.7392%；CLI0覆盖仍纳入分母。原始日志/覆盖JSON/JUnit和refactor-validation-summary.json在agents/backend/。
+
+729的真实18fail/I001/F823→后端AI修改cmd别名→64b4远端317通过关系有原始日志，未降低断言。当前仅后端重构/远端开发CI交接，不是独立验收或正式性能通过。最终全产品源码cloc仍待核算；本机性能窗未跑测试/构建/DB/HTTP，服务未重启。

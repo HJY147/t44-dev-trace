@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "ROLE-backend-REFACTOR-v1：当前重构待新SHA远端CI；性能窗口内未本机回归",
-  "implementation_status": "冻结完整API/领域/门面/CLI已实现；本次重复消除及namespace修复代码存在，当前回归待验证",
+  "stage": "ROLE-backend-REFACTOR-v1：源64b4f89远端317项通过，证据交接；整体源码规模仍待统一核算",
+  "implementation_status": "冻结完整API/领域/门面/CLI与重复消除已实现；当前源64b4f89远端开发CI全成功，非独立验收/性能结论",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -402,15 +402,15 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "current refactor regression",
     "final whole-product cloc3500-5100",
     "independent acceptance",
-    "formal performance conclusion"
+    "formal performance conclusion",
+    "updated local live service after performance window"
   ],
   "questions": [
     {
       "owner": "coordinator",
-      "question": "性能安静窗结束前仅编辑/Git；新SHA远端CI及最终统一源码cloc仍待真实结果，不把上轮证据沿用为本轮通过"
+      "question": "性能安静窗结束前不本机回归/更新服务；全产品源码cloc及独立验收/性能继续按各自实际证据核定"
     }
   ],
   "prompt_refs": [
@@ -543,8 +543,8 @@
       "reason": "真实重复消除保持业务/安全/可读性；性能隔离期间仅编辑/Git，保留远端原失败与修复事实"
     }
   ],
-  "updated_at": "2026-10-23T10:22:02.331695+00:00",
-  "current_stage": "ROLE-backend-REFACTOR-v1：当前重构待新SHA远端CI；性能窗口内未本机回归",
+  "updated_at": "2026-10-23T10:26:53.547291+00:00",
+  "current_stage": "ROLE-backend-REFACTOR-v1：源64b4f89远端317项通过，证据交接；整体源码规模仍待统一核算",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -628,12 +628,64 @@
       "cmd alias fixes observed namespace collision; assertions retained"
     ],
     "physical_line_delta_from_basis": -112,
-    "validation": "pending new SHA remote CI; no local tests/build/DB/HTTP during formal performance window",
+    "validation": "remote GHA39938619826 and39938612582 all four jobs success; local performance window quiet",
     "unverified": [
-      "current refactor regression",
       "final whole-product cloc3500-5100",
       "independent acceptance",
-      "formal performance conclusion"
-    ]
+      "formal performance conclusion",
+      "updated local live service after performance window"
+    ],
+    "tested_source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+    "remote_results": {
+      "source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+      "run_id": 39938619826,
+      "checkout_pr_merge_sha": "f5e9904c339e204574fcf2f630af28b0a6779e94",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826",
+      "junit": {
+        "tests": 317,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "python_files": 43,
+      "scope": "all backend/t44; excluded_lines=0",
+      "covered_lines": 2406,
+      "statements": 2729,
+      "line_percent": 88.1641626969586,
+      "branch_percent": 76.47058823529412,
+      "branch_inclusive_percent": 85.73918094684868,
+      "marker_passed": {
+        "contract": 35,
+        "integration": 52,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "jobs": {
+        "static": "success",
+        "contracts": "success",
+        "coverage": "success",
+        "frontend": "success"
+      },
+      "warning": "one StarletteDeprecationWarning for FastAPI TestClient/httpx",
+      "limits": [
+        "remote developer CI, not independent acceptance or performance",
+        "CLI remains in full coverage denominator with 0 covered lines; prior live CLI evidence is separate",
+        "no local pytest/build/DB/HTTP during formal performance window",
+        "whole-product final source cloc not established by this change"
+      ]
+    },
+    "evidence": [
+      "agents/backend/refactor-ci-39938619826.json",
+      "agents/backend/refactor-ci-39938612582.json",
+      "agents/backend/refactor-ci-39938619826-coverage.log",
+      "agents/backend/refactor-ci-39938619826-contracts.log",
+      "agents/backend/refactor-ci-39938619826-static.log",
+      "agents/backend/refactor-ci-39938619826-coverage.json",
+      "agents/backend/refactor-ci-39938619826-junit.xml",
+      "agents/backend/refactor-validation-summary.json"
+    ],
+    "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362735528",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
   }
 }

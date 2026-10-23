@@ -1,0 +1,38 @@
+{
+  "source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+  "run_id": 39938619826,
+  "checkout_pr_merge_sha": "f5e9904c339e204574fcf2f630af28b0a6779e94",
+  "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826",
+  "junit": {
+    "tests": 317,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "python_files": 43,
+  "scope": "all backend/t44; excluded_lines=0",
+  "covered_lines": 2406,
+  "statements": 2729,
+  "line_percent": 88.1641626969586,
+  "branch_percent": 76.47058823529412,
+  "branch_inclusive_percent": 85.73918094684868,
+  "marker_passed": {
+    "contract": 35,
+    "integration": 52,
+    "fault": 7
+  },
+  "marker_counts_overlap": true,
+  "jobs": {
+    "static": "success",
+    "contracts": "success",
+    "coverage": "success",
+    "frontend": "success"
+  },
+  "warning": "one StarletteDeprecationWarning for FastAPI TestClient/httpx",
+  "limits": [
+    "remote developer CI, not independent acceptance or performance",
+    "CLI remains in full coverage denominator with 0 covered lines; prior live CLI evidence is separate",
+    "no local pytest/build/DB/HTTP during formal performance window",
+    "whole-product final source cloc not established by this change"
+  ]
+}
