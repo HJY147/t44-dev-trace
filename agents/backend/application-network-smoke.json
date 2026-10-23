@@ -1,0 +1,53 @@
+{
+  "transport": "real TCP HTTP 127.0.0.1:18080; trust_env=False for loopback",
+  "database": "MySQL8.4.11 t44_dev",
+  "results": [
+    {
+      "operation": "getMe",
+      "status": 200,
+      "request_id": "f8cda3b8-2f44-4596-9602-9b2749070c5a",
+      "schema_errors": []
+    },
+    {
+      "operation": "getDictionaries",
+      "status": 200,
+      "request_id": "ac6555d8-9fa4-419f-89fd-93a50c644a39",
+      "schema_errors": []
+    },
+    {
+      "operation": "createProject invalid",
+      "status": 422,
+      "response": {
+        "code": "PARAMETER_INVALID",
+        "message": "Parameter invalid",
+        "request_id": "603a3053-8184-4ee9-95c7-ac7a85803371",
+        "audit_id": 14,
+        "current_version": null,
+        "current_state": null,
+        "original_error_code": null,
+        "violations": [
+          {
+            "path": "/",
+            "rule": "required",
+            "message": "Does not satisfy required"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "getDictionaries no token",
+      "status": 401,
+      "response": {
+        "code": "AUTH_REQUIRED",
+        "message": "Auth required",
+        "request_id": "ddef1df8-5081-43bf-a704-2c4c50b220d3",
+        "audit_id": 15,
+        "current_version": null,
+        "current_state": null,
+        "original_error_code": null,
+        "violations": []
+      }
+    }
+  ],
+  "credentials": "not captured"
+}
