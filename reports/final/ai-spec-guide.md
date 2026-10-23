@@ -42,4 +42,4 @@ Prompt-Ref: ROLE-documentation-M4-TESTS-AND-WORD-v1
 
 [function-contracts.md](../../docs/function-contracts.md)据当前真实签名逐层说明FE API、Runtime四元组、Business数据、纯domain决策、Rows/UoW/迁移、MQ提交后ACK、Scanner/升级及部署CLI的输入输出/错误/事务副作用；[源码索引](../../docs/reports/M3-contract-sources.json)固定行号/哈希和38操作Schema。它是现有实现的M3说明，不是本人预写骨架或新增冻结规格。
 
-[M3八图及修订](../../docs/reports/M3-diagrams.md)已由root真实渲染/独立PNG查看，最终Word未逐页QA；M2未渲染记录不改。[提示词事实包](../../docs/prompting/M3-evidence-checkpoint.md)区分实发/建议/事后重述。[R001本人原话](../../records/reflections/R001-original.md)是观点来源，未来人工def/#todo工作流与本项目已冻结OpenAPI/DDL实践分开，不倒填人工执行。
+[M3八图及修订](../../docs/reports/M3-diagrams.md)已由root真实渲染/独立PNG查看，M3当时最终Word未逐页QA，本轮M4技术审阅Word的QA另记；M2未渲染记录不改。[提示词事实包](../../docs/prompting/M3-evidence-checkpoint.md)区分实发/建议/事后重述。[R001本人原话](../../records/reflections/R001-original.md)是观点来源，未来人工def/#todo工作流与本项目已冻结OpenAPI/DDL实践分开，不倒填人工执行。

@@ -20,13 +20,18 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M4-TESTS-AND-WORD-v1；
 - scripts/docs/export_review_documents.py只处理自有MD、8图资产和私密封面，不搬业务逻辑。
 - 四技术Word仅root .submission-private/review-documents，0600文件/0700目录/Git忽略，日期空；学生研究正文不在其中。
 - 已读documents技能及创建/渲染说明，loader核实bundled Node/Python与指定LO。
-- 首次author前create marker成功一次，expected4/formatdocx；四份已轻量author，目前等待LO安静窗口与逐页QA。
-- 最终Word未逐页验收前不交付为合格；不调用用户桌面LO，公开记录不含个人封面值/截图。
+- 首次author前create marker成功一次，expected4/formatdocx；四份已author，并在root明确解除quiet后完成指定bundled LO渲染和全部28原PNG逐页QA。
+- 四份作为技术审阅材料完成排版QA，不等于软件最终验收；不调用用户桌面LO，公开记录不含个人封面值/截图。
 
 ## 来源记录和待办
 
 - M4-source-manifest.json固定公开来源、原CI归档摘要、marker与运行时；M0至M3原始收件/来源/失败不改。
 - 本轮未执行产品测试/业务请求/压测，不联系测试，也不跟随公开报告中的私有证据路径。
 - 精确阶段SHA/PR及最终页数/逐页QA结果按真实发布补，不预填通过。
-- 待quiet窗口结束后用skill render_docx.py渲染并自行检查全部页面，修正后重渲染。
+- 最终qa-v4：需规10/设计9/测试6/规格说明3页；全部原封面已看。初始字体/Title蓝线、表格拆行与行距裁图失败均保留并修正，详见M4-word-qa.json/.md。
 - 学生研究最终成文/课程建议和真实人工留痕、性能达标、独立复测、规模达标仍待后续。
+
+## 实际发布
+
+- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push；[草稿PR24](https://github.com/HJY147/t44-dev-trace/pull/24)已attach，base codex/integration。
+- [本岗阶段评论](https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257)正文/URL真实读回；原文在本岗github-M4-word-qa-comment.md。仅补记录，不声明merge或审核成功。

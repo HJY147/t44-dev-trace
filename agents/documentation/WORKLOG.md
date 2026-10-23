@@ -193,3 +193,26 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 首次DOCX author前按技能用bundled Node运行create marker一次，expected4/formatdocx，exit0；随后轻量生成4份私密DOCX，chmod0600、目录0700、Git忽略。没有代写学生研究正文。
 - 首次author参数误用了未经Git核实的完整cutoff字符串，未交付/未QA；随即用git rev-parse取真实2e值，导出器加入强制解析/验证，重新生成四份，marker未重复。进一步将新文档链接ref与产品cutoff拆开，避免新增报告链接指向旧提交不存在的文件。
 - 已通知root：LO渲染等待其明确quiet窗口结束，当前未调用LO或用户桌面应用。最终Word QA尚pending，不能交付为合格。
+
+- 收到root明确诊断quiet UTC11:45至预计11:49，等待实际结束通知，不以预计时间当许可；未启动LO。新362/88.56开发CI只记后续消息，不宣称当前2e/0448 Word已含。指导岗M2晚到实际答复归档M4-later-checkpoints，不改原收件快照。
+
+- root通知诊断首次工具入口错误在bind前失败，quiet顺延；继续等待实际结束，不将预计结束当许可，未调用LO。轻量校对区分M3当时Word未QA与本轮审阅Word QA记录。
+
+- root澄清封面“不上传”指公开GitHub/公共附件，允许本任务view_image直接看私密原封面；后续按技能每页含真实封面查看。先前脱敏helper仅写未运行，已撤掉，不引入额外图片编辑。公开记录只页数/hash/结论，不抄个人值或上传原图/Word。
+
+## M4 私密 Word 渲染与最终逐页 QA
+
+- root实际解除quiet后串行调用指定bundled LO经skill render_docx.py；marker仍为首次成功一次，未重跑。
+- 首轮中文缺字与Title继承蓝线：真实原PNG查看发现，保留qa；私密FONTCONFIG_FILE指向系统/LO字体目录并用Songti SC全字族，清Title style pBdr，未改全局字体/用桌面LO。
+- qa-v2查看表格末词拆页和网格行距过大；加入cantSplit及显式行距。qa-v3图段落继承精确行距造成裁图，真实查看即停止并改自动图片行高，原目录保留。
+- 最终qa-v4全部28页以view_image original逐页打开：需规10、概设详设9、测试6、AI规格说明3；含四个原私密封面，不只看脱敏/几何替身。正文/中文/图注/八图/整行与续表/页码页眉/日期空核对完成，无残余缺字/蓝线/裁图。
+- 四DOCX技术审阅材料排版QA完成，不声明软件独立验收/性能/规模通过。输出和QA仅根私密忽略目录，公开M4-word-qa只页数/hash/缺陷修正，无个人值或原图。
+- 文档内容仍固定2e/0448，源MD出版链接ref746b5b8；后续362CI/性能诊断/新容量规则不追填。没有运行产品测试/构建/请求/压测，也没联系测试或跟随私有证据。
+
+- 收尾静态复核：14公开来源hash、24个2e源码hash及11冻结hash、公开JSON/隐私/diff检查通过；4私密Word根Git忽略。首次check-ignore从独立树检查根私密绝对路径报outside repository，纠正为根只读check-ignore后通过，未动根索引；不计产品失败。
+
+## M4 实际发布和释放
+
+- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push codex/review-documents；PR24标题/正文用GitHub工具实际更新，base codex/integration、draft true、head读回相符。
+- 实际阶段评论 https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257；comment ID6364542257经gh api读回原文/URL相符，正文副本在github-M4-word-qa-comment.md。
+- 本笔只补发布事实，不重新author四Word、不重复marker、不改产品或冻结文件。技术审阅QA完成后停止新增润色，最终记录head由Git元数据回传，明确释放本岗索引/槽位。
