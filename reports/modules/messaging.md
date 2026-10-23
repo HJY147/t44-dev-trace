@@ -1,51 +1,47 @@
-# 消息与通知模块初始化报告
+# 消息与通知模块报告
 
-## 任务与依据
-- 岗位：messaging；阶段：团队建立与设计准备；实现状态：未实现。
-- 依据：`agents/messaging/TASK.md`、T44 任务书 FR-07、AC-07、可靠性与消费幂等约束。
-- 本轮只确认责任和契约需求；以下方案均为草案，未冻结，不能作为联调契约。
+## 任务与范围
+- 实际派工 ROLE-messaging-APPLICATION-v1 覆盖 M0 只设计限制；依据冻结 v1、D001/D004、FR-07/AC-07。
+- 当前：通知 API 业务与持久投递逻辑已实现；完整进程待 DB confirmed 恢复门面及真实 Rabbit CI 验证。
+- 产品仅 backend/t44/messaging/；测试仅 backend/tests/messaging/；未改共享依赖、DDL、其他岗实现或独立验收资料。
 
-## 职责与产物
-- 本岗负责 RabbitMQ 投递/消费、通知去重、MQ 故障降级、站内消息列表查询与已读业务。
-- 调度岗负责临期/超期扫描、规则及扫描幂等；后端负责鉴权入口、项目权限与业务事务。
-- 数据库岗负责通知模型、约束及迁移；前端负责列表与已读页面；不建立第二套通知数据。
-- 未来代码范围：`backend/app/messaging/`、`backend/tests/messaging/`；本轮未创建代码。
-- 实际产物：本报告、`agents/messaging/WORKLOG.md`、`records/handoffs/messaging.json`。
+## 通知业务
+- facade.py 的零参 NotificationFacade 对齐 API 实际 list/mark_read/handle 签名，接收现有 RowsGateway。
+- 使用调用者 Runtime 的事务、身份、幂等与成功审计，不自行启动业务事务。
+- 每次限制当前 recipient 与 active membership；指定项目不存在/非成员按冻结错误返回。
+- 列表分页按通知 ID 降序；total 服从 read/handled 筛选，未读/未处理计数为相同本人项目范围内各自计数。
+- 读与处理分别 CAS notification.version；标读保留首次 read_at，处理保存 note/evidence，不自动标读。
+- 只输出冻结 Notification 字段，fallback 显式 bool；不改 task.state，也不建第二套通知数据。
 
-## 事件输入输出需求（未冻结）
-- 上游：调度门面提交升级事件，后端提供任务与项目权限/接收人依据；避免模块内部直接构造依赖。
-- 待约定字段：事件 ID、schema 版本、发生时间、项目/任务 ID、规则 ID 与版本、升级级别、计划时间快照或排期版本、接收人、关联追踪 ID。
-- 调度须说明临期与超期事件是否独立、再次延期是否产生新一轮升级、责任人变更后的接收人口径。
-- 下游：持久化一套通知/待办与处理结果；MQ 正常时投递并幂等消费，故障时记录降级标记。
-- 返回需区分：已持久接受、重复已接受、仅降级待处理、未接受；名称、枚举及错误码由责任岗共同冻结。
-- 事件版本兼容、必填字段、未知规则/接收人、任务不存在及取消事件处理均待确认。
+## 投递、故障与进程
+- broker.py 使用 Pika 1.x BlockingConnection；每个连接由单一进程线程拥有，publisher/consumer 各自连接。
+- durable exchange/queue、persistent 消息、mandatory+confirm；body 只传 event_id/schema_version/event_type。
+- 消费先验证 schema 与权威 DB event，OutboxStore.consume 返回（事务提交）后才手动 ACK。
+- 持久错误 NACK 重投；非法/永久坏消息 reject 到持久 quarantine；ACK 丢失靠 redelivery+DB 唯一约束去重。
+- worker.py 先短事务 claim pending/过期 leased，再在事务外 broker I/O，confirm 核同 lease_token。
+- 升级事件发布失败用同 event/token 原子 fallback；终态不再 claim；普通 business.changed 仅 retry。
+- recover_confirmed 注入点待数据库提供；无门面会显式失败，不以事务外预查代替锁内原子恢复。
+- __main__.py 独立进程读取 DATABASE_URL+匹配 T44_DATABASE+AMQP_URL；不在 API worker 启动。
+- SIGINT/SIGTERM 优雅停止并关闭连接与 engine；--once 有 broker 错误返回2；异常只输出脱敏分类。
+- 传递语义是至少一次，业务唯一由 DB UNIQUE(event_id,recipient_id) 保证，不承诺 exactly-once。
 
-## 幂等与事务边界（待确认）
-- 建议同时保留传输事件 ID 与稳定业务幂等键；仅靠每次重建的事件 ID 无法抑制重复扫描。
-- 候选业务键包含任务、规则版本、升级轮次/排期版本、级别和接收人；最终组成须与调度、数据库共同确认。
-- 调度岗负责同一升级机会只计数一次；本岗负责同一接收人的投递、重投及消费不重复生成通知。
-- 数据库岗需提供持久唯一约束和事务能力；进程内集合或缓存不能作为唯一去重依据。
-- 升级计数、处理结果与可靠投递意图如何原子落库，由后端/数据库/调度确认；事务发件箱为候选，尚未选定。
-- 建议消费持久化成功后 ACK；提交后 ACK 丢失、发布确认不明时，重试沿用同一业务键。
+## 实际验证
+- 独立 venv 从既有 lock 同步，Pika 1.4.4；Ruff 通过，CLI --help 已运行。
+- 首次真 MySQL 7 错误来自本岗 capacity=[] 合成夹具，保留 mysql-run1-failure.txt 摘录；仅修合法数据后通过。
+- module-run4.log：24 通过、3 本地真 Rabbit 跳过；16 基础/SQLite/fake/配置，8 真实 MySQL。
+- 真 MySQL 覆盖通知权限、分页计数、CAS、read/handled、实际 HTTP 幂等及并发仅一次更新。
+- fake 通道覆盖 confirm/ACK 错误与 ACK 提交顺序；DB 覆盖重复/重启/fallback 同 event 不二提醒。
+- 真实 Rabbit 测试包含 mandatory return、连接关闭 redelivery、重复、恢复及 DLQ；CI 缺配置直接 fail。
+- coverage-run4.log：消息模块语句覆盖85%，不是全后端或全产品覆盖率。
+- 未执行真实 Rabbit、托管 CI、独立验收或正式性能测量，不能引用本模块自测冒充。
 
-## MQ 故障与恢复边界（待确认）
-- RabbitMQ 不可用时须降级为数据库中的站内待办并留标记；数据库亦不可用时不得报告已接受。
-- 恢复后重投应复用原键，关联同一通知记录；不能因恢复额外生成第二条消息或重复增加升级次数。
-- 是否补投已读/已处理待办、重试次数/退避、死信处置与失败告警，由总协调会同调度及部署冻结。
-- 部署岗需提供连接配置、持久队列策略、发布确认/手动 ACK 配置和故障恢复操作；本轮未创建配置。
-
-## 站内列表与已读对接（未冻结）
-- 本岗拥有查询/已读业务契约，API 通过后端统一鉴权入口；前端按冻结契约呈现。
-- 待约定：分页、排序、未读筛选、项目范围、必要展示字段、单条或批量已读及返回形式。
-- 查询与已读必须限定本人及其参与项目；权限审查、拒绝留痕与信息暴露口径由后端确认。
-- 重复标记已读应幂等；未认证、越权、记录不存在、参数错误的 HTTP/业务错误码尚未冻结。
-
-## 执行、记录与交接
-- 已执行指定资料读取及本岗文件检查；三份本岗记录已创建，详见日志与交接单。
-- 未启动中间件，未实现接口或消费者，未运行模块测试、集成验证或独立验收。
-- 事件/数据/API 草案须由各责任岗确认并经总协调冻结后再编码；不存在冻结版或通过结论。
-- 实际提示词：`ROLE-messaging-BOOTSTRAP-v1`，关联 `agents/messaging/TASK.md`；修改者为本岗 AI。
-- 未发生用户审定、人工改码、提示词演进或幻觉纠正，不补造记录；不联系独立测试岗。
-- M0 文档岗问答已追加到本岗日志；本轮提示词 `ROLE-messaging-M0-COMMIT-v1` 仅用于问答、评论与阶段提交。
-- 新增本岗 `agents/messaging/github-stage-comment.md` 和 `github-interface-question.md`；评论已发至 Issue #5 与调度 Issue #6，URL 见交接单。
-- 上述升级轮次/稳定业务键问题尚未确认；本轮无新业务设计或实现，接口仍未冻结。
+## 对接与记录
+- DB Issue4 问询 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360793043。
+- 期望 recover_confirmed(confirmed_before,now,limit) 返回实际 fallback 列表，锁内核缺失收件人且正常消费不改标。
+- 根已确认 DB 后续补门面；本岗只注入/测试边界，未越权改 persistence。
+- 调度确认升级事件/ledger/recipients 快照，消费者不信 broker 中的接收人或级别。
+- API 导入自动获得 NotificationFacade；错误统一 services.errors.Rejected，成功审计交 Runtime。
+- 日志 agents/messaging/WORKLOG.md；handoff records/handoffs/messaging.json。
+- 实际提示词 ROLE-messaging-APPLICATION-v1；摘记 agents/messaging/prompts/ROLE-messaging-APPLICATION-v1.md。
+- 未发生用户亲自改码/人工审定，不制造人工修改或幻觉纠正记录。
+- 既有 contracts 开发回归25通过/1失败/1跳过：依赖缺失用例未显式移除现已实现的通知门面，实际200；原失败 api-regression-run1.log 已上报根，请BE修夹具，本岗未改外岗断言。
