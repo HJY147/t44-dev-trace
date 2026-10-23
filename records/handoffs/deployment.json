@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "完整应用部署联调完成；等待总协调整合/独立验收",
-  "implementation_status": "Compose/Docker/运维/CI已实现；托管Linux真实构建启动、凭据轮换、停写备份隔离恢复通过",
+  "stage": "既有Docker联调完成；新增独立Linux环境能力待一次自检",
+  "implementation_status": "既有Compose/CI验证完成；中性tester环境实现已写，独立harness未选择未执行",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -72,7 +72,13 @@
     "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
     "agents/deployment/integration-validation/run-39932416571/",
     "agents/deployment/integration-validation/run-39932723829/",
-    "agents/deployment/integration-final-comment.md"
+    "agents/deployment/integration-final-comment.md",
+    "deployment/acceptance/",
+    ".github/workflows/acceptance-environment.yml",
+    "tmp/deployment/953_acceptance_environment.py",
+    "agents/deployment/acceptance-environment-validation/",
+    "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
+    "agents/deployment/acceptance-environment-comment.md"
   ],
   "interfaces": [
     {
@@ -352,9 +358,14 @@
       "id": "ROLE-deployment-INTEGRATION-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
       "reason": "基于已实现应用做真实Docker运行、私密凭据和备份恢复证据；统一tmp编号，保留严格全源码行覆盖率"
+    },
+    {
+      "id": "ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
+      "reason": "中性真实Linux能力和独立harness隔离，精确版本/受限控制/密文证据取回，不注入用例或绕main保护"
     }
   ],
-  "updated_at": "2026-10-23T09:39:11.297054+00:00",
+  "updated_at": "2026-10-23T12:59:40.239251+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -400,5 +411,15 @@
     "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100",
     "pr_final": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531",
     "archive_revision": "Final evidence/readability revision is resolved by actual Git commit; validated application SHA remains separate"
+  },
+  "acceptance_environment": {
+    "product_baseline_read": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "workflow": ".github/workflows/acceptance-environment.yml",
+    "interface": "deployment/acceptance/README.md",
+    "local_guards": "953:25passed;Ruff/actionlint0",
+    "environment_check": "pending one hosted run",
+    "independent_harness": "not frozen/selected/executed",
+    "trigger": "strict branch+request path push;dispatch unavailable until normal default branch admission",
+    "evidence": "tester CMS AES256GCM/RSAOAEP encrypted artifact14days;root/dev do not read unpublished plaintext"
   }
 }

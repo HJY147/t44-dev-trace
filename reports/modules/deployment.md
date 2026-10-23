@@ -102,3 +102,11 @@
 - 真实0600/UID10001私密凭据只读挂载、跨容器flock拒绝第二scanner、受控轮换撤销旧session、2次持久扫描创建16条记录通过。Token未出公开输出，产物不含.env/私密JSON/数据库dump。
 - 停写备份→新项目/隔离库恢复：19表行数/内容checksum一致；恢复迁移18业务表226列passed/already_applied，源重启HTTP可读。首次探针误计docker-init失败完整保留，修正识别而未降低4worker断言。
 - 本机仍无Docker；这是托管Linux synthetic联调，无服务器租赁、公网TLS部署、队列异机灾备、生产RPO/RTO、性能或独立验收结论。
+
+### INDEPENDENT-LINUX-HARNESS-v1 中性能力
+
+- 新workflow acceptance-environment + deployment/acceptance提供下一轮tester运行条件；产品/harness精确双SHA分开，真实MySQL/Rabbit/API4worker/consumer/scanner/前端；只初建synthetic空项目，不写独立用例。
+- 专用SELECT审计、服务stop/pause最长120秒租期/恢复、真实账号和调度scope CLI；凭据runner私有/mask、Token只读。
+- tester本地私钥、冻结接收证书，CMS AES256-GCM/RSA-OAEP加密stdout/stderr/固定输出；公开artifact不含.env/凭据/coverage/私有用例，14天内tester解密审查后自行发布。
+- dispatch当前因main无该workflow尚不可用，提供严格分支+request.json变更push入口；不改main保护。本岗953实际25guard/Ruff/actionlint通过；托管环境能力自检待执行，独立harness模式待tester冻结。
+- 过程/静态证据acceptance-environment-validation；不替代既有Docker联调、独立fault验收或正式性能。
