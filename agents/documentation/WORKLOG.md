@@ -263,3 +263,23 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本实例M6实际写七类当前MD、64源静态AST/声明索引、38接口表、23后端函数I/O及前端边界、FR/AC/模块映射；只解析同源归档JUnit510分布，不跑测试。旧七稿绑定ceed历史hash，M4/M5旧manifest不改。
 - 新三图六输出均exit0，用独立Chrome profile，完成新增headless0；逐张view_image original实看。两流程图初版过高影响Word比例，保留首次源/成图/日志，改分组后仅重渲相应四输出并实看，中文/箭头/边缘完整。Word尚未开始，marker未重复。
 - 根后公开v3 stage01两文件/receipt只作为590673c附录：实际JSON核0PASS/0FAIL/26NOTRUN、环境/恢复true；不跟私密ref。75d75da原始研究阅读索引只供本人选读，不写本人结论/计人工。
+
+- M6四Word首轮author/render均exit0，11/15/6/3共35页已由本实例逐页view_image original实看，含四原私密封面；未向GitHub发布个人值/原Word/PNG。发现设计2.4和第4章标题因横向section被留在前页（含一页只有标题），另有短段跨页拆词；首轮DOCX/PNG/PDF保留。修exporter将紧邻横图的标题移入横页、短段keep_together、states图适度留足正文，理由横图增可读尺寸；这是实见版式问题修正，不因元数据重导。
+- 新明确发布2e2bffa stage02两报告和5ef1bde native有限周期只作test报告明示附录，设计末段改为13465当时状态与附录指引；仍不改bc5源/冻结/原失败，不追未来未发布结果。
+
+- 二轮需规10页已全看，设计15页全看后发现原孤标题移走后仍留一张纯空白页：表后spacer与section边界合计高度挤出。此轮不判最终QA通过，保留qa-v2/design和DOCX；仅设计稿移除宽图前多余空spacer、压section边界到1pt，并仅重导/重渲设计，其他已无该缺陷稿不因元数据重出。
+
+## 2026-10-24T05:49:11.988160+08:00 M6 最终 Word 逐页封档
+
+- 二轮测试6页、AI规格3页均逐页original实看通过。设计三轮14页也由本实例逐页original打开，空白页消除；最终采用需规10/设计14/测试6/AI3，共33页。非root代看，未用XML或缩小拼图代替。宽图/箭头/中文/表行/页码/日期空均核。
+- public M6-word-qa只保存hash、每页序号与结论；私密manifest更新QA状态但不重新author。各轮DOCX/PNG/PDF保留，所有M6私密文件0600/目录0700，M4原四hash再次核对。
+- 一次查询误猜旧图manifest在docs/reports/diagrams/render-manifest.json导致head退出1；定位既有docs/diagrams/manifest.json后继续，只是文件定位错误，无产品执行。
+- root后通知native capture超时P2审查进行中与stage03新公开许可；本次四Word保持e8998d6文档cutoff，不读取stage03或无限追改，不宣称native专项审核通过。后续只增补受影响测试稿。
+- 公开source76、冻结14、应用64、历史7、旧图与新图hash、私密原件忽略和个人值不落公开记录等最终静态复核另存M6-final-validation。GitHub实际发布/读回将在下一条记准确SHA与URL。
+
+## 2026-10-24T05:52:33.503681+08:00 M6 Word 实际发布与释放
+
+- Word/QA实现39ef7d0d857e9c1fa0b5b4c23d378a7b53ec9050本人commit/push完成，full staged base diff空白通过；未修改生产或再次导出。
+- 更新PR33前沿用早先draft状态假设，工具返回才发现root已集成历史head13465cc、21:41:30Z自动merged461553b。误将后续Word范围短暂写入旧PR正文后立即通知root，恢复其原MD/图正文并GET逐字核对，不继续改变历史。后续不冒充Word已合入。
+- GitHub工具新建draft PR35，base codex/integration、head39ef7d0，GET title/body/head匹配、open/draft/unmerged、mergeable true。公开Issue9评论6375470296及PR35评论6375470690，经两个精确ID各GET，正文与保存副本逐字一致。完整正文/范围/状态回执在github-M6-word-qa-readback.json。
+- 这笔仅提交发布回执/交接；没有APPROVE、success或mainmerge，也不再读新独立报告或追native修订。最终receipt SHA由git HEAD和远端核实后回传，释放本岗索引/槽位。
