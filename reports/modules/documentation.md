@@ -1,37 +1,35 @@
-# 文档汇总岗位报告 M4 TESTS AND WORD
+# 文档汇总岗位报告 M5 技术汇编
 
-Agent-Role documentation；Prompt-Ref ROLE-documentation-M4-TESTS-AND-WORD-v1；Refs #9。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M5-REPORTS-v1；Refs #9。
 
-## 当前产物和边界
+## 产物和实际范围
 
-- 独立codex/review-documents，内容主基线2e0481f，开发CI/容器证据0448fec；后续状态作为续记，不反复追头。
-- 新reports/final/test-results-report.md汇编模块/实库/CI/容器/审核/独立v1/正式性能，明确未通过最终验收。
-- 335后端/零跳过，43文件2493至2818行88.47%、分支77.73%；前端24/307至333行92.19%，均绑定0448fec。
-- 同SHA容器19表count/checksum恢复通过；旧317/88.16等历史分开，不混分母。
-- 独立v1只读公开两报告：900结果340/183/328/49，183含歧义不当183bug；38成功路径通过。
-- 三批400VU/600秒P95为3035/1908/5506ms失败，吞吐和稳态零失败通过；不外推云容量。
-- UI公开补充仅新增授权两文件：原e8测3/1/1，原900不改，不冒称测过b485；无私有截图读取。
-- C-P4四类限定关闭，5886超5100仍failure。IAT01已开发修复；后续IAT02至05 55HTTP/SQLite回归不当独立复测。
+- 独立codex/reports-m5，生产截止6ba9f94，未来公告单列，不碰root索引/registry/ledger或产品。
+- 需求报告按范围/角色/8FR/输入输出/异常/量化目标/9AC更新1.1容量；设计分概设/详设、函数I/O与UI实际导航。
+- 测试报告分5dcb412、84027、75定向、6ba后发组合412/30和Docker；独立4c API/fault/UI阶段与旧e8/P95失败不混版本。
+- AI规格指南、提交对照、过程证据和学生模板同步；R001观点/R002课程建议已收，R002仅公开provenance/hash，研究正文不代写。
+- M5追踪与函数源码索引30文件/38操作，真实签名/副作用/错误/事务；旧M3/M4索引保留。
+- 3新图实际Mermaid CLI12/现有Chrome渲染并逐张PNG实看，源/SVG/PNG/原日志/hash/时间可审；8旧图不重渲染。
 
-## 文档与工具
+## 实问与来源
 
-- 需规/概设详设/AI规格说明、AI证据/提交对照同步M4状态；R001原话归属与学生自写边界保留。
-- docs/function-contracts.md与M4-contract-sources.json锁准确2e完整SHA，49函数链接不承诺未来源码匹配。
-- scripts/docs/export_review_documents.py只处理自有MD、8图资产和私密封面，不搬业务逻辑。
-- 四技术Word仅root .submission-private/review-documents，0600文件/0700目录/Git忽略，日期空；学生研究正文不在其中。
-- 已读documents技能及创建/渲染说明，loader核实bundled Node/Python与指定LO。
-- 首次author前create marker成功一次，expected4/formatdocx；四份已author，并在root明确解除quiet后完成指定bundled LO渲染和全部28原PNG逐页QA。
-- 四份作为技术审阅材料完成排版QA，不等于软件最终验收；不调用用户桌面LO，公开记录不含个人封面值/截图。
+- 九原岗各send_message一次工具均thread limit未送达；未followup或循环，状态未回复。
+- 在线UI审核岗实际问取两答，绑定840/75及d8b/36b公开报告与COMMENT；不当整产品放行。
+- 70项公开来源哈希；十个独立明确发布文件只读，不跟私密路径/证据，不联系tester。
+- 后发b9同源CI原JUnit/coverage和Docker原hash只轻量解析，不重跑产品。
 
-## 来源记录和待办
+## 资源与验证边界
 
-- M4-source-manifest.json固定公开来源、原CI归档摘要、marker与运行时；M0至M3原始收件/来源/失败不改。
-- 本轮未执行产品测试/业务请求/压测，不联系测试，也不跟随公开报告中的私有证据路径。
-- 精确阶段SHA/PR及最终页数/逐页QA结果按真实发布补，不预填通过。
-- 最终qa-v4：需规10/设计9/测试6/规格说明3页；全部原封面已看。初始字体/Title蓝线、表格拆行与行距裁图失败均保留并修正，详见M4-word-qa.json/.md。
-- 学生研究最终成文/课程建议和真实人工留痕、性能达标、独立复测、规模达标仍待后续。
+- 前两窗口余时不足未启Chrome，第三窗口实际18:40:14.688629至18:40:19.449500 UTC，4.76秒，新增headless0；立即报root释放。
+- M4私密四Word/28原页QA不覆盖；M5未导Word/未调用LO/未重复marker。
+- 本轮无pytest/产品构建/业务HTTP/负载；新脚本仅临时文档拼装，无新增测试编号。
+- 14冻结hash严格不改，6051超951、正式P95/整体验收未过，UI P2修复/独立后续尚未完成。
+- 学生研究正文、真实人工12/3/5及单族六版不冒称齐备；后续Word稳定截止另恢复。
 
-## 实际发布
+## 恢复检查点操作者与待办
 
-- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push；[草稿PR24](https://github.com/HJY147/t44-dev-trace/pull/24)已attach，base codex/integration。
-- [本岗阶段评论](https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257)正文/URL真实读回；原文在本岗github-M4-word-qa-comment.md。仅补记录，不声明merge或审核成功。
+- 原M5正文/三图作者为上一文档AI实例；本次AI /root/documentation_checkpoint仅在root报告网络中断后恢复核对、提交推送与公开交流，不冒充学生或原渲染操作者。
+- 亲核70来源/14冻结/30函数源码/6成图hash、164相对链接及责任scope均通过；M5-validation记范围。未重渲染、未重新看图、未导Word、未执行产品。
+- PR24经GET已合并M4，本轮M5是独立codex/reports-m5检查点。后续Word可读排版（尤其宽导航图）、学生最终研究、真实人工证据、规模/性能/完整验收继续待办。
+
+- 恢复已实际push e70d219，Issue9/PR24两评论精确ID GET与保存正文一致；回执在本岗github-M5-checkpoint-readback.json。完整6ba→index空白检查修正后通过，首个暂存空行失败和shell继续提交错误已保留，非产品缺陷。阶段结束释放，最终收据SHA以Git HEAD为准。

@@ -216,3 +216,36 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push codex/review-documents；PR24标题/正文用GitHub工具实际更新，base codex/integration、draft true、head读回相符。
 - 实际阶段评论 https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257；comment ID6364542257经gh api读回原文/URL相符，正文副本在github-M4-word-qa-comment.md。
 - 本笔只补发布事实，不重新author四Word、不重复marker、不改产品或冻结文件。技术审阅QA完成后停止新增润色，最终记录head由Git元数据回传，明确释放本岗索引/槽位。
+
+## M5 夜间技术报告增量
+
+- 干净M4树9e9e23d建codex/reports-m5，先FF已提交4d9，再按root补充固定6ba9f94，不读根未提交文件/不碰根索引。M4四私密Word/28页QA和M0–M4原始资料不覆盖。
+- 重读AGENTS/TASK与M5-in-progress，核14冻结清单/D005/D006、D007/OpenDesign归档、5dcb412、84027/75定向、6051原口径；只静态源/AST与公开报告。当前源码I/O索引30文件/38操作，非本人预写骨架。
+- 九原岗各send_message一次均thread limit reached，未送达/未回；不followup/spawn/循环。当前在线reviewer_warm_glass另实问获两条公开答复，完整原文/准确SHA/URL记M5-collection；没有把发布来源冒充九岗回答。
+- 独立只读明确公开十文件：v1四件，v2 API二件以及root后来显式公开fault二件/UI二件。未跟私密hash/路径、未联系tester、未读私密用例/日志/截图/密钥。后发布68eb/b9与后收审核/ABBA072均单列，不合未来代码或回填6ba历史。
+- R001本人观点与R002课程建议已提供，R002只读公开provenance/hash，不读私密原文；AI研究材料和模板仍非学生研究正文，无人工12/3/5凑数。
+- 源资料路径摸查时猜.agent-tools不存在，ls退出1；定位既有.runtime/diagram-tools。初期大JSON输出过量被截断，改显式字段/公开JSON解析，不据被截输出伪称已看私密原件。
+- 三新图仅本岗docs/reports/diagrams；前两次实际读到授权窗时余时17/30秒不足，未启动Chrome/未补跑，原话已报root。后明确18:39–18:41窗，实际18:40:14.688629至18:40:19.449500 UTC六SVG/PNG全0，4.76秒；新增headless Chrome差集0，立即向root报退出。
+- 三PNG实际view_image original逐张查看，中文/节点/箭头/标签清晰完整、无重叠裁切；记录render manifest，M3八图未重渲染。仅本地文档图，无Figma/外部模型、LO/Word/marker或产品请求/测试/负载。
+- b9同源CI原JUnit/gzip coverage轻量解析后端412/43/0排除/2550至2872及前端310至334/688分支，Docker原result解压hash与摘要相符；不当文档岗重跑。原独立P95失败/6051超951/UI P2未修边界保留。
+
+
+## 2026-10-24T03:16:41.873244+08:00 M5 检查点恢复实例
+
+- 操作者 AI /root/documentation_checkpoint。root告知原文档实例网络compact失败且重试未产物、已中断；此中断是root提供的恢复依据，本实例未亲见网络错误原始输出。现有七报告、来源/函数/过程/三图由上一文档AI实例编写；本实例只恢复核对/提交，不记为学生撰写。
+- 亲自核70公开来源hash、14冻结hash、30函数源码hash、6图输出hash、164现有相对链接、35现有责任文件scope、公开JSON及diff空白；均通过。frontend/src树仍等于75c3468，应用无本岗改动。未打开私密封面/反馈/独立内部材料，未新增问答、产品测试、渲染、Word或marker。
+- 看图声明仅引原manifest的上一AI记录及root另看3PNG/c7918bf收据；本实例没有重新看图或渲染。原失败/两次不足窗口/过程事实保留，未把新导航修复回填6ba/75。
+- GitHub工具GET发现PR24已合并M4，head9e9e23d，2026-10-23T12:18:10Z；本轮M5将另推codex/reports-m5，并在Issue9及原PR24说明后续检查点，不改其历史、不当M5已合入。
+- ROLE-documentation-M5-CHECKPOINT-RECOVERY-v1是本次恢复摘要而非伪造用户原话/同族六版；M5-validation公开记录本实例实际核对边界。阶段提交和交流读回在后条记录。
+
+- 实际首个checkpoint 56c2a1b72fe3b11755e31864d23261c61d790111已commit/push。暂存检查首次发现M5-diagrams末尾多一空行（exit2）；此前tracked-only diff未包含新文件。shell后续独立行仍运行commit，是本恢复实例检查编排错误，保留失败而不冒称全过。仅删除该多余空行，随后对6ba→完整index再检查，公开来源/图hash不变。
+
+
+## 2026-10-24T03:19:05.359289+08:00 M5 恢复实际发布及释放
+
+- e70d219a5cfa7333c26b761c80e4648151e9f659修正提交已push；完整6ba→index空白及37责任文件范围检查实际通过。首批56c2a1b保留，未重写已推历史。
+- 本实例经GitHub插件实际发布Issue9评论6372845257与既有PR24评论6372846583；随后对两个精确ID各GET读回，正文与保存副本逐字一致，URL见github-M5-checkpoint-readback.json。
+- PR24是已合并M4，本轮M5没有新建/合并PR、不APPROVE、不发布success状态；这两个评论不构成审核通过。
+- 本笔只保存实际发布回执和交接，不再扩写/看图/渲染/导Word或运行产品。最终收据commit由Git HEAD确定，完成push与远端核实后释放本岗索引/槽位。
+
+- 收据阶段暂存检查另发现新评论副本末尾空行exit2，这次set-e正确阻止commit；仅删副本多余空行，公开已发布正文和GET原文不改。该格式差异不影响评论读回逐字校验；副本采用单末尾换行。
