@@ -192,6 +192,7 @@ class Projects:
                 "changed_at": c.clock,
             },
         )
+        c.after.append({"field": "reason", "value": c.body["reason"]})
         if not iteration:
             for side, row, value in ((c.before, before, before_plan), (c.after, after, after_plan)):
                 side.extend(
