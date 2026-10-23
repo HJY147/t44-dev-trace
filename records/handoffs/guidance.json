@@ -1,0 +1,134 @@
+{
+  "role": "guidance",
+  "stage": "M0 团队建立与设计准备 / GitHub 阶段归档",
+  "implementation_status": "未实现",
+  "artifacts": [
+    "records/qa/README.md",
+    "records/qa/question-log.md",
+    "records/qa/decision-log.md",
+    "docs/user-guide/project-basics.md",
+    "agents/guidance/WORKLOG.md",
+    "reports/modules/guidance.md",
+    "records/handoffs/guidance.json",
+    "agents/guidance/github-stage-comment.md"
+  ],
+  "interfaces": {
+    "version": "gqa-v1（指导岗内部记录格式，非业务契约）",
+    "inputs": [
+      "总协调转交的用户原文或带来源摘要",
+      "责任岗提供的规格版本、命令和实际证据"
+    ],
+    "outputs": [
+      "编号问答与回答状态",
+      "用户决定及真实操作记录",
+      "待确认事项和中文指导资料"
+    ],
+    "errors": [
+      "缺原文时标来源摘要",
+      "缺执行证据时标未执行或待补证",
+      "缺用户批准时不得标已批准"
+    ],
+    "handoff_to": [
+      "总协调",
+      "documentation",
+      "prompt_engineering"
+    ],
+    "independent_testing_contact": "未联系且禁止直接联系",
+    "current_user_decision": "只读引用 records/decisions/D001-business-rules.md：用户已采用 business-rules v1；不是用户亲自改码，不是其他技术选项逐项批准"
+  },
+  "commands_executed": [
+    {
+      "command": "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g 'MEMORY.md'（检索项目规则和任务文件）",
+      "result": "确认项目根目录、规则与任务路径"
+    },
+    {
+      "command": "cat AGENTS.md agents/guidance/TASK.md 及团队、作业来源、问答来源和原始提示词文件（分批读取）",
+      "result": "读取依据并核对责任范围"
+    },
+    {
+      "command": "date -Iseconds",
+      "result": "2026-10-23T11:40:08+08:00"
+    },
+    {
+      "command": "apply_patch",
+      "result": "创建 artifacts 所列初始化资料；验证结果追加于 WORKLOG.md"
+    },
+    {
+      "command": "python3 内联脚本：JSON 解析、12 项必需字段、状态/提示词/七份产物/模块报告行数检查",
+      "result": "PASS；七份文件存在，交接结构有效，模块报告 51 行；不是业务测试或独立验收"
+    },
+    {
+      "command": "git branch --show-current; git diff --cached --name-only; git status --short（实际批次内以 && 连接）",
+      "result": "codex/team-bootstrap；索引为空；其他岗位文件未接管"
+    },
+    {
+      "command": "cat 本岗日志/报告/交接及 records/decisions/D001-business-rules.md",
+      "result": "仅核对既有交接与新增用户决定，保留初始化历史"
+    },
+    {
+      "command": "gh issue comment 10 --repo HJY147/t44-dev-trace --body-file agents/guidance/github-stage-comment.md",
+      "result": "已发表：https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6358357296"
+    }
+  ],
+  "results": [
+    "初始化建立五项来源问答及后续规则；本轮追加 QA-006 / DEC-004 引用真实业务规则决定",
+    "分开记录用户选择、委托与 AI 建议；未编造用户操作或批准",
+    "初始化向总协调发状态消息；M0 已向 documentation 实际答复产物、状态、对接、日志与 prompt 位置",
+    "没有实现业务系统、运行部署或提交性能/验收通过结论",
+    "GitHub #10 阶段评论已发表；SHA 由实际 Git 提交和总协调台账登记，交接文件不自引用自身提交 SHA"
+  ],
+  "unverified": [
+    "早先问题仅有来源摘要，原始逐字消息及实际发生时间未取得",
+    "云服务器建议未重新核价、未采购、未部署、未压测",
+    "Supabase 当前能力和价格未在本轮重新核实",
+    "产品功能、集成、独立验收全部未运行"
+  ],
+  "questions": [
+    {
+      "owner": "总协调",
+      "question": "初始化时模板/规则未批准的表述保留为历史；现 D001 已记录用户采用 business-rules v1。后续具体接口与字段冻结、模板版本仍由总协调提供"
+    },
+    {
+      "owner": "总协调及部署岗",
+      "question": "待真实环境确定后提供运行前提与命令，指导岗据此补操作说明"
+    },
+    {
+      "owner": "总协调",
+      "question": "后续用户决策和亲自操作请转交真实来源，不用 AI 修改替代人工修改证据"
+    }
+  ],
+  "prompt_refs": [
+    {
+      "id": "ROLE-guidance-BOOTSTRAP-v1",
+      "task_file": "agents/guidance/TASK.md",
+      "dispatch_source": "总协调本次实际派工消息",
+      "status": "实际执行",
+      "rationale": "限定初始化范围、真实证据来源及用户决定与 AI 操作边界",
+      "artifacts": [
+        "records/qa/",
+        "docs/user-guide/project-basics.md",
+        "agents/guidance/WORKLOG.md",
+        "reports/modules/guidance.md",
+        "records/handoffs/guidance.json"
+      ],
+      "counts_as_prompt_evolution": false
+    },
+    {
+      "id": "ROLE-guidance-M0-COMMIT-v1",
+      "task_file": "agents/guidance/TASK.md（责任边界）；本次实际范围以 documentation 派工消息为准",
+      "dispatch_source": "documentation 本次实际问取及唯一 Git 索引授权消息",
+      "status": "实际执行",
+      "rationale": "保留初查历史，补真实问取和 D001 用户决定，仅归档本岗并发布阶段事实",
+      "artifacts": [
+        "agents/guidance/WORKLOG.md",
+        "reports/modules/guidance.md",
+        "records/handoffs/guidance.json",
+        "records/qa/",
+        "docs/user-guide/project-basics.md",
+        "agents/guidance/github-stage-comment.md"
+      ],
+      "counts_as_prompt_evolution": false
+    }
+  ],
+  "updated_at": "2026-10-23T13:45:17+08:00"
+}

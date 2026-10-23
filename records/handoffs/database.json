@@ -1,0 +1,340 @@
+{
+  "role": "database",
+  "stage": "v2 C1/C3修复归档获授权，待新SHA复审",
+  "implementation_status": "未实现",
+  "artifacts": [
+    {
+      "path": "agents/database/WORKLOG.md",
+      "kind": "初始化工作日志",
+      "status": "已创建"
+    },
+    {
+      "path": "reports/modules/database.md",
+      "kind": "初始化模块报告",
+      "status": "已创建；设计草案未冻结"
+    },
+    {
+      "path": "records/handoffs/database.json",
+      "kind": "结构化交接单",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/github-stage-comment.md",
+      "kind": "本岗阶段评论实际正文",
+      "status": "已保存并发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358120215"
+    },
+    {
+      "path": "agents/database/github-backend-interface-question.md",
+      "kind": "上游接口问题实际正文",
+      "status": "已保存并发表；尚未确认",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358121197"
+    },
+    {
+      "path": "specs/database/field-dictionary.md",
+      "kind": "完整字段字典与逐表待审",
+      "status": "已创建；设计待审核"
+    },
+    {
+      "path": "specs/database/schema.sql",
+      "kind": "MySQL8.4完整DDL提案；未执行",
+      "status": "已创建；设计待审核"
+    },
+    {
+      "path": "specs/database/persistence-contract.md",
+      "kind": "事务与持久化契约提案",
+      "status": "已创建；设计待审核"
+    },
+    {
+      "path": "agents/database/design-static-check.json",
+      "kind": "真实静态自查与SHA；非DB执行",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/github-design-confirmation.md",
+      "kind": "本轮GitHub确认正文",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-DESIGN-v1.md",
+      "kind": "本轮实际任务提示词归档",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/github-design-stage-comment.md",
+      "kind": "设计归档范围/待审核评论正文",
+      "status": "已保存并发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-DESIGN-v2.md",
+      "kind": "实际修复派工原文",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/design-v2-time-check.json",
+      "kind": "9个共享UtcTime边界检查真实结果",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/github-design-v2-c1-response.md",
+      "kind": "C1/C3实际Issue回复正文",
+      "status": "已创建",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+    }
+  ],
+  "interfaces": [
+    {
+      "peer": "backend",
+      "version": "v1-draft",
+      "status": "已责任岗设计确认，未总协调冻结/审核放行",
+      "input_needed": [
+        "接口字段及ID/状态枚举",
+        "状态迁移与版本冲突协议",
+        "项目权限过滤",
+        "成功与拒绝审计事务边界",
+        "错误码及幂等请求协议"
+      ],
+      "output_planned": [
+        "18表完整字段/DDL提案",
+        "锁序/CAS/幂等租约与独立审计契约",
+        "会话/token安全及升级/通知持久化边界"
+      ],
+      "errors_draft": [
+        "资源缺失",
+        "参数或约束无效",
+        "状态或版本冲突",
+        "权限拒绝",
+        "幂等冲突"
+      ],
+      "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
+    },
+    {
+      "peer": "messaging",
+      "version": "v1-draft",
+      "status": "设计提案待相应责任岗确认；未冻结",
+      "input_needed": [
+        "事件与消费者标识",
+        "载荷和版本",
+        "投递/消费幂等键",
+        "站内通知及已读数据",
+        "MQ不可用降级与重试要求"
+      ],
+      "output_planned": [
+        "待投递事件、消费去重、通知共用持久化边界候选"
+      ],
+      "errors_draft": [
+        "重复消费",
+        "载荷版本不兼容",
+        "投递失败与降级标记"
+      ]
+    },
+    {
+      "peer": "scheduler",
+      "version": "v1-draft",
+      "status": "设计提案待相应责任岗确认；未冻结",
+      "input_needed": [
+        "临期/超期时区和时间窗",
+        "升级级别与规则版本",
+        "排除状态",
+        "计划变更后升级语义",
+        "重启续扫要求"
+      ],
+      "output_planned": [
+        "分页扫描与索引候选",
+        "升级记录与幂等唯一键方案"
+      ],
+      "errors_draft": [
+        "重复扫描",
+        "重复升级",
+        "扫描期间任务版本或计划变更"
+      ]
+    }
+  ],
+  "commands_executed": [
+    "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*handoff*' -g '*report*' -g '*log*' agents/database . 2>/dev/null",
+    "cat AGENTS.md",
+    "cat agents/database/TASK.md",
+    "cat docs/collaboration/report-template.md && rg --files agents/database records/database docs/collaboration",
+    "cat docs/collaboration/team.md",
+    "cat specs/sources/T44-taskbook.txt",
+    "cat specs/sources/submission-notes.txt",
+    "cat specs/sources/homework-requirements.txt",
+    "date -Iseconds && for path in agents/database/WORKLOG.md reports/modules/database.md records/handoffs/database.json; do if [ -e \"$path\" ]; then echo \"$path exists\"; else echo \"$path absent\"; fi; done",
+    "python3 - <<'PY'\nimport json\nfrom pathlib import Path\np = Path('records/handoffs/database.json')\nd = json.loads(p.read_text())\nrequired = {'role','stage','implementation_status','artifacts','interfaces','commands_executed','results','unverified','questions','prompt_refs','updated_at'}\nassert required <= d.keys()\nassert d['implementation_status'] == '未实现'\nfor item in d['artifacts']:\n    assert Path(item['path']).is_file()\nreport_lines = len(Path('reports/modules/database.md').read_text().splitlines())\nassert 30 <= report_lines <= 60, report_lines\nprint('handoff JSON parsed; required keys and three artifact paths verified; report lines:', report_lines)\nPY",
+    "git branch --show-current && git status --short && git diff --cached --name-only && git show --format=fuller --stat 005ce55dec988a9038c6cc8df91e85698ad84989 && date -Iseconds",
+    "gh issue list --repo HJY147/t44-dev-trace --state open --limit 20 --json number,title,url && gh issue view 4 --repo HJY147/t44-dev-trace --json number,title,body,url",
+    "cat docs/collaboration/github-workflow.md && rg -n 'HEAD|尚无提交|无提交|Git|未实现' agents/database/WORKLOG.md reports/modules/database.md records/handoffs/database.json",
+    "gh issue view 3 --repo HJY147/t44-dev-trace --json number,title,body,comments,url",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-stage-comment.md",
+    "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/database/github-backend-interface-question.md",
+    "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git diff --check -- agents/database/WORKLOG.md agents/database/github-stage-comment.md agents/database/github-backend-interface-question.md reports/modules/database.md records/handoffs/database.json",
+    "cat specs/requirements.md specs/business-rules.md 与指定D001/D002、T44、review-protocol（分批实际读取）",
+    "读取 specs/contracts/openapi.json、specs/backend-design.md、docs/collaboration/implementation-layout.md",
+    "python3：生成18表225列字段字典；逐项静态检查写入agents/database/design-static-check.json",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-confirmation.md",
+    "gh issue view 4 --repo HJY147/t44-dev-trace --json comments",
+    "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git status --short -- specs/database agents/database reports/modules/database.md records/handoffs/database.json; git show --format=fuller --stat b893353c9bcf45e833f70f56bf6f72025f611271",
+    "python3：复核design-static-check.json中的四份SHA及backend/persistence会话锁序",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-stage-comment.md",
+    "读取reports/reviews/design-v1-717cd65ef73560fde7ff5bca2821c9fe2b20d68a.md与本岗设计/当前共享UtcTime、Meta",
+    "根.venv/bin/python：实际Draft202012Validator+FormatChecker验证UtcTime九个边界例值，结果design-v2-time-check.json",
+    "python3：v2静态检查精确字典/DDL列定义、C1新列/CHECK、FK/unique/原因码与hash",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-v2-c1-response.md",
+    "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git show --format=fuller --stat 72c6c0064e52cb091e8ca4533a1cb862fc46866d",
+    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA"
+  ],
+  "results": [
+    "已确认项目根目录、责任范围、原始需求与初始化限制。",
+    "指定规则和三份原始材料已读取；目录检索中 records/database 不存在使该次 rg 返回2，未据此推断业务状态。",
+    "三份目标文件创建前不存在；本轮仅创建本岗初始化日志、模块报告、交接单。",
+    "已向总协调发送设计需求摘要；接口尚无跨岗确认。",
+    "未创建模型、DDL、迁移或产品代码，未运行任何业务测试或数据库操作。",
+    "资料自检的 python3 命令退出码0：JSON可解析、必需字段齐全、三份产物存在、实现状态为未实现；首次自检报告49行，记录该结果后报告50行。",
+    "2026-10-23T13:26:57+08:00核验codex/team-bootstrap且暂存区为空；frontend提交005ce55dec988a9038c6cc8df91e85698ad84989正文与5文件已核对。",
+    "文档岗本轮资料问取及本岗原文答复已记入agents/database/WORKLOG.md，未发现本岗过时的当前无HEAD陈述。",
+    "本岗阶段说明与backend接口问题均已通过body-file发表，两个gh命令退出0；URL记录于artifacts。",
+    "提交前python3资料复核退出0：JSON可解析，5份产物存在，两个实际提示词引用一致，报告55行；Git复核分支正确、暂存区为空、HEAD仍为frontend提交，所列本岗文件diff-check退出0。",
+    "ROLE-database-DESIGN-v1：三份完整设计已生成；本轮18表225列DDL仅文本，未执行。M0结果是当时事实，不代表当前没有DDL文本。",
+    "静态自查退出0：18表225列、35外键、94唯一命名约束、41显式原因码、关键唯一键/level/ID范围一致；非MySQL运行或完整SQL解析。",
+    "本轮数据库Issue说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358608869 已发表；backend确认 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437 已读取核验。",
+    "未写模型/产品代码，无数据库操作或Git索引操作；未来生产责任目录按implementation-layout更新。",
+    "设计归档时首检codex/team-bootstrap且空暂存区，HEAD为backend b893353c9bcf45e833f70f56bf6f72025f611271；设计/OpenAPI SHA和会话锁序一致。",
+    "范围/待审核评论已发表 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 ，未声明审核通过。",
+    "v2仅C1/C3：新增response_request_id与完成状态约束，保存最终生成结果的处理request_id；重放meta直接读此列，不依赖audit_id/旧meta。",
+    "当前18表226列静态检查退出0；35FK/94约束/41原因码，字典与DDL列定义精确一致。",
+    "实际共享UtcTime九个边界值Schema验证9/9，未做MySQL/HTTP验证。",
+    "原失败审核717cd65报告保持原样；新设计尚待新SHA复审，未宣称通过。",
+    "本修复轮根索引仍由backend持有，数据库岗未操作Git/未提交，等待总协调授权。",
+    "获ROLE-database-DESIGN-v2-COMMIT后核验codex/team-bootstrap、空暂存区及父HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；所有设计/OpenAPI/time-check hash一致，原失败报告未变。",
+    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。"
+  ],
+  "unverified": [
+    "设计v1-draft未获总协调冻结/逐表审核放行。",
+    "未执行DDL，未验证MySQL8.4完整语法、CHECK/外键运行或迁移/恢复。",
+    "未验证事务/CAS/幂等接管/撤销/双向并发加边/成员守卫。",
+    "消息confirm/fallback/消费竞争、调度续扫/配置归档仍待责任岗确认及运行验证。",
+    "拒绝审计故障恢复介质、迁移版本元数据/精确CLI仍待后续派工。",
+    "模块自测、联调、独立验收、性能均未运行；未联系或读取独立测试岗内容。",
+    "v2 response_request_id的真实持久保存/租约接管后重放行为尚未实现或运行；待新SHA独立审核。"
+  ],
+  "questions": [
+    {
+      "to": "backend",
+      "question": "请提供冻结前提案：状态枚举/迁移、请求版本与幂等、接口错误码、项目权限以及成功/拒绝审计事务边界。",
+      "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
+      "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
+    },
+    {
+      "to": "backend",
+      "question": "业务事务因并发版本冲突或非法迁移回滚后，拒绝审计是否由服务层独立事务写入，审计失败的错误返回与追踪责任如何界定？",
+      "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358121197",
+      "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
+    },
+    {
+      "to": "messaging",
+      "question": "请确认事件/消费幂等标识、通知数据业务归属及待投递事件到降级待办的原子性要求。",
+      "status": "待确认"
+    },
+    {
+      "to": "scheduler",
+      "question": "请确认扫描时区与窗口、升级规则/级别、计划变更语义及重启续扫幂等键需求。",
+      "status": "待确认"
+    },
+    {
+      "to": "coordinator",
+      "question": "请汇总责任岗提案后冻结契约，并在字段字典/DDL逐表评审通过后另行派发迁移任务。",
+      "status": "待后续阶段"
+    },
+    {
+      "to": "messaging/scheduler",
+      "question": "请确认contract中的confirm/fallback/consumer锁outbox顺序、超时和规则快照/续扫边界。",
+      "status": "待责任岗确认"
+    },
+    {
+      "to": "deployment/backend",
+      "question": "统一CLI下迁移版本元数据、精确命令及拒绝审计故障介质如何落地？",
+      "status": "已真实对接，待下一迁移实现阶段"
+    },
+    {
+      "to": "backend",
+      "question": "请确认C1 response_request_id采用最终完成请求语义，并与README/meta.original_request_id来源一致。",
+      "status": "已backend直接确认与v2 README/backend-design一致；待新SHA审核",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+    }
+  ],
+  "prompt_refs": [
+    {
+      "id": "ROLE-database-BOOTSTRAP-v1",
+      "task_file": "agents/database/TASK.md",
+      "actual_prompt_source": "本轮总协调发送给数据库岗位的实际派工消息",
+      "improvement_reason": "本轮无优化版实际执行；不将岗位任务或建议冒充提示词迭代。",
+      "outputs": [
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
+    },
+    {
+      "id": "ROLE-database-M0-COMMIT-v1",
+      "task_file": "agents/database/TASK.md",
+      "actual_prompt_source": "文档岗位AI本轮实际发送的资料问取与串行Git阶段提交消息",
+      "improvement_reason": "属于新增Git协作任务，不是初始化提示词的优化版或业务实现派工。",
+      "outputs": [
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json",
+        "agents/database/github-stage-comment.md",
+        "agents/database/github-backend-interface-question.md"
+      ]
+    },
+    {
+      "id": "ROLE-database-DESIGN-v1",
+      "task_file": "agents/database/TASK.md",
+      "actual_prompt_source": "总协调本轮完整设计派工及追加指令",
+      "archive": "agents/database/prompts/ROLE-database-DESIGN-v1.md",
+      "improvement_reason": "用户采用规则后收敛M0范围为完整设计；新增任务不是伪造同prompt演进，也非用户亲自改码。",
+      "outputs": [
+        "specs/database/field-dictionary.md",
+        "specs/database/schema.sql",
+        "specs/database/persistence-contract.md",
+        "agents/database/design-static-check.json",
+        "agents/database/github-design-confirmation.md",
+        "agents/database/prompts/ROLE-database-DESIGN-v1.md",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
+    },
+    {
+      "id": "ROLE-database-DESIGN-COMMIT-v1",
+      "actual_prompt_source": "总协调设计归档与根索引独占派工",
+      "archive": "agents/database/prompts/ROLE-database-DESIGN-v1.md",
+      "improvement_reason": "已有设计的Git归档任务，不是新业务设计或提示词优化；指定commit footer引用ROLE-database-DESIGN-v1。",
+      "outputs": [
+        "agents/database/WORKLOG.md",
+        "agents/database/github-design-stage-comment.md",
+        "records/handoffs/database.json"
+      ]
+    },
+    {
+      "id": "ROLE-database-DESIGN-v2",
+      "actual_prompt_source": "总协调针对失败审核C1与C3对齐的真实修复派工",
+      "archive": "agents/database/prompts/ROLE-database-DESIGN-v2.md",
+      "improvement_reason": "真实审核指出C1缺原请求持久来源及C3时间域不一致；只修责任范围，不抹去失败，不记用户亲改。",
+      "outputs": [
+        "specs/database/schema.sql",
+        "specs/database/field-dictionary.md",
+        "specs/database/persistence-contract.md",
+        "agents/database/design-static-check.json",
+        "agents/database/design-v2-time-check.json",
+        "agents/database/github-design-v2-c1-response.md",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
+    }
+  ],
+  "updated_at": "2026-10-23T14:35:55+08:00"
+}

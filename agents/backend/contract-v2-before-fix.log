@@ -1,0 +1,94 @@
+Command: .venv/bin/python agents/backend/validate_contract_design_v2.py
+OpenAPI 3.1 normative validation: PASS
+FAIL: C2 EscalationEvent: 101 recipients/handled rejected
+FAIL: C2 EscalationAccepted: 101 recipients/handled rejected
+FAIL: C2 EscalationEnvelope: 101 recipients/handled rejected
+FAIL: C2 EscalationPageEnvelope: 101 recipients/handled rejected
+FAIL: C2 recipient list must not truncate managers
+FAIL: C2 handled_count UINT32 max
+FAIL: C3 shared UtcTime 0001-01-01T00:00:00Z
+FAIL: C3 shared UtcTime 0999-12-31T23:59:59.999999Z
+FAIL: C3 Plan year 0001
+FAIL: C3 TaskCreate year 0001
+FAIL: C3 ContractValidationRequest year 0001
+FAIL: C3 Plan year 0999
+FAIL: C3 TaskCreate year 0999
+FAIL: C3 ContractValidationRequest year 0999
+FAIL: C4 login: trigger conditions do not cover exactly declared errors
+FAIL: C4 logout: trigger conditions do not cover exactly declared errors
+FAIL: C4 getMe: trigger conditions do not cover exactly declared errors
+FAIL: C4 getMe: no project scope
+FAIL: C4 getMe: no resource selector
+FAIL: C4 getMe: no typed input to reject as 422
+FAIL: C4 getDictionaries: trigger conditions do not cover exactly declared errors
+FAIL: C4 getDictionaries: no project scope
+FAIL: C4 getDictionaries: no resource selector
+FAIL: C4 getDictionaries: no typed input to reject as 422
+FAIL: C4 createProject: trigger conditions do not cover exactly declared errors
+FAIL: C4 createProject: no project scope
+FAIL: C4 createProject: no resource selector
+FAIL: C4 listProjects: trigger conditions do not cover exactly declared errors
+FAIL: C4 listProjects: no project scope
+FAIL: C4 listProjects: no resource selector
+FAIL: C4 getProject: business/response drift
+FAIL: C4 getProject: trigger conditions do not cover exactly declared errors
+FAIL: C4 getProject: read-only idempotency error
+FAIL: C4 listProjectMembers: trigger conditions do not cover exactly declared errors
+FAIL: C4 addProjectMember: trigger conditions do not cover exactly declared errors
+FAIL: C4 changeProjectMember: trigger conditions do not cover exactly declared errors
+FAIL: C4 removeProjectMember: trigger conditions do not cover exactly declared errors
+FAIL: C4 createIteration: trigger conditions do not cover exactly declared errors
+FAIL: C4 listIterations: business/response drift
+FAIL: C4 listIterations: trigger conditions do not cover exactly declared errors
+FAIL: C4 listIterations: read-only idempotency error
+FAIL: C4 changeIteration: trigger conditions do not cover exactly declared errors
+FAIL: C4 createTask: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTasks: business/response drift
+FAIL: C4 listTasks: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTasks: read-only idempotency error
+FAIL: C4 getTask: business/response drift
+FAIL: C4 getTask: trigger conditions do not cover exactly declared errors
+FAIL: C4 getTask: read-only idempotency error
+FAIL: C4 changeTaskPlan: trigger conditions do not cover exactly declared errors
+FAIL: C4 changeTaskAssignment: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskDependencies: business/response drift
+FAIL: C4 listTaskDependencies: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskDependencies: read-only idempotency error
+FAIL: C4 addTaskDependency: trigger conditions do not cover exactly declared errors
+FAIL: C4 removeTaskDependency: trigger conditions do not cover exactly declared errors
+FAIL: C4 transitionTask: trigger conditions do not cover exactly declared errors
+FAIL: C4 getReviewTemplate: business/response drift
+FAIL: C4 getReviewTemplate: trigger conditions do not cover exactly declared errors
+FAIL: C4 getReviewTemplate: read-only idempotency error
+FAIL: C4 createTaskReview: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskReviews: business/response drift
+FAIL: C4 listTaskReviews: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskReviews: read-only idempotency error
+FAIL: C4 createReleaseAssessment: trigger conditions do not cover exactly declared errors
+FAIL: C4 listReleaseAssessments: business/response drift
+FAIL: C4 listReleaseAssessments: trigger conditions do not cover exactly declared errors
+FAIL: C4 listReleaseAssessments: read-only idempotency error
+FAIL: C4 reviewReleaseAssessment: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskDecisions: business/response drift
+FAIL: C4 listTaskDecisions: trigger conditions do not cover exactly declared errors
+FAIL: C4 listTaskDecisions: read-only idempotency error
+FAIL: C4 validateContractPayload: business/response drift
+FAIL: C4 validateContractPayload: trigger conditions do not cover exactly declared errors
+FAIL: C4 validateContractPayload: read-only idempotency error
+FAIL: C4 getEscalationRules: business/response drift
+FAIL: C4 getEscalationRules: trigger conditions do not cover exactly declared errors
+FAIL: C4 getEscalationRules: read-only idempotency error
+FAIL: C4 listEscalations: business/response drift
+FAIL: C4 listEscalations: trigger conditions do not cover exactly declared errors
+FAIL: C4 listEscalations: read-only idempotency error
+FAIL: C4 createEscalation: trigger conditions do not cover exactly declared errors
+FAIL: C4 listMyNotifications: trigger conditions do not cover exactly declared errors
+FAIL: C4 markNotificationRead: trigger conditions do not cover exactly declared errors
+FAIL: C4 handleNotification: trigger conditions do not cover exactly declared errors
+FAIL: C4 listProjectAuditEvents: business/response drift
+FAIL: C4 listProjectAuditEvents: trigger conditions do not cover exactly declared errors
+FAIL: C4 listProjectAuditEvents: read-only idempotency error
+FAIL: C1 documented source: specs/contracts/README.md
+FAIL: C1 documented source: specs/backend-design.md
+Design checks: 1148; operations: 38; failures: 90
+LIMIT: specification/Schema-only examples and annotation checks; no HTTP, MySQL, scheduler or product test
