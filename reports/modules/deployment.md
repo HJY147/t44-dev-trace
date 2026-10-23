@@ -226,3 +226,4 @@
 - 新usage.py/无参control runtime-usage/context声明，沿RFC固定JSON，六服务ID/标签/running校验后一次有界stats；错误统计值null/稳定码。旧metadata字节不变、Controls及其他函数AST不变，产品/frozen/资源/性能阈值不动。
 - README及成功/不完整合成JSON列格式和语义：cache扣除非RSS、PIDs含线程、格式累计IO非速率、CPU非600秒、非原子/峰值及真实调用开销。
 - 新865共15合成guard/0.04s及Ruff通过；CLI缺失红/首lint失败保留在agents/deployment/runtime-usage-validation。无真实Docker或runner采样/性能结论，不重复旧suite，不读独立资料；由后续准确环境调用验证。
+- 实现SHA8983e4c098849c7e9be8869c3bb42bc2697ccadd已push，Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376973663实际发布/完整GET一致；工具阶段封档，真实环境绑定/采样待调用方。

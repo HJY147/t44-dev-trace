@@ -299,3 +299,4 @@
 - 独立usage.py：固定六服务ps-q唯一64hex+project/service标签+running/notpaused，全部成功才一次stats --no-stream --no-trunc固定七字段格式；各命令有超时，原stdout/stderr仅内存。缺/重/外来/格式坏/停止/超时严格不完整，统计字段null/稳定码；身份验证前不暴露候选ID。顶层/每服务JSON精确沿RFC，时间包围调用，不称原子。
 - context仅runtime_usage声明、不自动采集；metadata.py字节相同、control除main外全部函数/Controls AST相同，新865含旧metadata委托兼容目标。文档/两合成JSON示例列全部字段/error码及cache非RSS、PIDs含线程、格式化累计IO非速率、CPU非600s、非峰值/非原子/开销及其他流量未知边界。
 - CLI缺失红1项exit1保留；首15guard通过，首Ruff真实F401未用Mock，删该导入后最终15项0.04s与Ruff通过。仅865未跑旧suite。原stdout/stderr/JUnit/源hash在runtime-usage-validation；没有真实stats/runner用量、性能/准入结论，不倒填历史unknown。工具阶段按授权skipci，仅待根静态接线与后续准确runner实采。
+- 实现8983e4c098849c7e9be8869c3bb42bc2697ccadd已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376973663使用本岗body-file发布并完整GET核正文一致，原回执另档。之后仅资料归档，不跑CI/服务/采样。
