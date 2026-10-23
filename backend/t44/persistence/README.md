@@ -1,32 +1,43 @@
-# 字段无关持久化基础
+# MySQL持久层与内部门面
 
-本轮只实现连接、事务生命周期和受限Core执行，不包含18表ORM、迁移、业务仓储、状态机/CAS、幂等结果、审计或outbox领域操作。Q002人的字段/错误码取舍仍待回复；本模块不替代该决定。
+冻结v1的18表/226列由schema_v1.sql构造SQLAlchemy Core元数据，资源SHA256必须等于specs/database/schema.sql冻结摘要；不维护另一套手工字段清单。生产仅MySQL8.4/InnoDB。SQLite变体只供模块夹具，不能验证MySQL CHECK、锁或隔离级别；未放松生产DDL。
 
-组合根导入 `t44.persistence.MySQLSettings`、`create_mysql_engine(settings)`，在进程启动时构造Engine；进程关闭时调用 `engine.dispose()`。构造函数本身不连接数据库。SQLAlchemy连接池启用pre_ping、回收、超时、归还rollback；每条新物理连接设置UTC、严格SQL mode及READ COMMITTED。`hide_parameters=True`、禁echo，配置repr和URL默认显示隐藏口令。参数不记录；错误边界只给脱敏内部异常，调用者仍禁止记录原驱动异常/凭据。
+组合根构造MySQLSettings、create_mysql_engine(settings)、SqlAlchemyUnitOfWorkFactory(engine)，进程退出dispose Engine。每条新物理连接UTC、严格SQL、READ COMMITTED；池pre_ping/回收/超时，隐藏参数。with factory() as uow正常commit、异常rollback、总close；工厂每次新Session。CommitUncertain表示提交确认丢失，后续rollback只清理，服务必须沿原key恢复，不重新执行已完成请求。
 
-`SqlAlchemyUnitOfWorkFactory(engine)` 可调用，每次返回单次使用的上下文管理器：
+uow.gateway是RowsGateway，也兼容旧gateway(TableBinding)。只允许冻结表/列、参数绑定和固定谓词；拒未知标识符、SQL表达式、无where写入。此门面只供可信应用内部，不作为用户可选表名的CRUD API。DATETIME写入要求aware并转UTC naive，读取aware UTC，年份1000..9999；JSON直接dict/list，Python None写SQL NULL。codecs提供to_db_time/from_db_time、hours_to_quarters/quarters_to_hours、uuid_to_bytes/bytes_to_uuid。主键统一INT UNSIGNED，tasks循环FK仍显式生成id。
 
 ```python
-# factory由组合根注入；binding只能来自已审模型的固定内部配置。
 with factory() as uow:
-    gateway = uow.gateway(binding)
-    rows = gateway.find({"approved_filter_column": value}, limit=page_size)
-    # 正常退出commit；异常退出rollback；两者最终close Session。
+    g = uow.gateway
+    row = g.get('tasks', task_id, lock='update')
+    changed = g.update('tasks', {'id': task_id, 'version': old}, {'version': old + 1})
 ```
 
-示例不定义任何实际业务字段。`TableBinding(table, readable, writable, filterable)` 只接受SQLAlchemy Core Table与不可变字段元组，校验schema/table/column标识符和列集合。此对象由可信程序配置注入，禁止从HTTP请求、动态表名或用户选择器构造。运行期值始终bindparam；未知字段、SQL表达式值、空where写入会被拒绝。`CoreGateway.find/insert/update_where`是内部基础，**不负责项目权限/状态/幂等守卫，不是产品可直接暴露的通用CRUD接口**。没有字符串SQL执行入口；查询结果在事务内取完并关闭CursorResult，不能将游标带出UoW。
+- rows(table, where=None, *, columns=None, order_by=('id',), limit=None, offset=0, lock=None, skip_locked=False, predicates=())；get(table,id,*,lock=None)。rows/get返回物化dict，查询结果在事务内关闭。排序字段前缀-代表降序，锁share/update。
+- insert(table,values)返回本事务生成整数ID；update(table,where,values,*,predicates=())（别名update_where）及delete(table,where)返回影响行数；count(table,where=None,*,predicates=())返回整数。
+- Pred(column,op,value=None)支持eq/ne/lt/le/gt/ge/in/is_null；ne(None)为IS NOT NULL，空IN为[]/0。savepoint()允许预期唯一冲突回滚局部操作；其他未恢复执行失败使UoW只可rollback。
+- PersistenceIntegrityError.kind为duplicate/foreign_key/check/other，constraint仅从已知约束名匹配；不传出SQL/值/驱动原异常。MySQL3819在PyMySQL属于OperationalError，亦正确分类check。
 
-显式 `uow.commit()` / `uow.rollback()` 结束该事务，后续gateway操作被拒；UoW不能复用。驱动执行失败会置rollback-only，即使调用者在块内捕获错误，也不能提交先前的部分写入。每个UoW拥有不同Session；池可在已关闭UoW间复用同一物理连接。未来独立审计要求由组合根注入独立工厂/Engine，本轮不冒称已经实现独立审计连接或持久化。
+锁序由服务遵守：session FOR SHARE → idem FOR UPDATE → 必要project FOR UPDATE → members按user_id → tasks按id → children。依赖变更必须先锁project再查环，普通路径不得反向追加project锁。成功业务+audit+outbox+幂等快照在同一UoW。拒绝先rollback并close主UoW，才新UoW保存拒绝审计及错误快照；审计失败不能返回正常业务拒绝。权限、状态机、依赖环、同key摘要、升级首次CAS及通知版本语义由backend编排，不把裸gateway调用声称为业务原子性。
 
-`CommitUncertain` 表示提交确认失败。随后rollback/close只清理本地资源，不能证明服务器未提交；未来服务层应沿原幂等key恢复结果，映射策略由后端负责。本轮SQLite故障注入先真正commit再抛异常，证明cleanup rollback不能把已提交数据撤回；还验证close错误不覆盖CommitUncertain。其他基础异常为 `PersistenceUnavailable`、`PersistenceIntegrityError`、`TransactionStateError`、`StatementRejected`，均不是冻结业务错误码。
+migrations.migrate(engine,*,expected_database)核显式库名、MySQL8.4、冻结摘要、版本、结构；空库执行打包DDL。重复运行不重建数据；不兼容或中断标记拒绝自动修复。MySQL DDL隐式commit，技术t44_schema_migrations记录开始/完成，不能谎称DDL可事务回滚。accounts.initialize_user(factory,*,username,display_name,password_hash,request_id=None)只收合法Argon2id hash；非法入口独立持久脱敏审计，绝不保存原口令/hash。CLI先hash由backend负责。
 
-本地复现（依赖从后端维护的Python3.12带hash锁安装，不在本目录维护第二份锁）：
+## 消息与调度可运行门面
 
-```sh
-PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q
-.venv/bin/ruff check --select E4,E7,E9,F,I,UP,B,SIM --target-version py312 backend/t44/persistence backend/tests/persistence
-```
+OutboxStore(factory)各方法使用独立UoW，MQ网络I/O必须在方法外。
 
-测试仅在临时SQLite文件中创建/销毁玩具表验证通用commit/rollback、独立Session/连接归还和绑定值；mock验证MySQL初始化固定SQL/脱敏。没有执行 `specs/database/schema.sql`、没有连接MySQL、没有证明MySQL约束/事务隔离/CAS/并发或独立验收通过。MySQL真实连接初始化及故障恢复仍须后续实测。
+- claim(*,now=None,limit=100,lease_seconds=30)返回已提交的event行列表；FOR UPDATE SKIP LOCKED认领pending或过期leased，每行新lease_token(bytes16)，attempts递增。
+- get(event_id)返回行或None；confirm(event_id,lease_token,*,now=None)仅当前leased token进入confirmed，返回bool；fallback终态后迟到confirm为False。
+- retry(event_id,lease_token,*,now=None,delay_seconds=5,error_code='PUBLISH_FAILED')将仍归本token的leased行回pending，返回bool。
+- consume(event_id,*,now=None)返回event_id/created/fallback；fallback(event_id,*,now=None,lease_token=None,error_code='MQ_UNAVAILABLE')同样返回创建数，旧token返回stale_owner=True。两者锁同outbox行，唯一(event_id,recipient_id)，fallback终态与通知在同事务；重复或迟到消费不再提醒。已存在正常通知保持原处理/已读状态。消费提交后消息岗才ACK。
+- event_type=1为business.changed，无站内升级通知；event_type=2须有同事务提交的escalation_events ledger，收件人取已冻结recipients快照，无100人截断。层级取ledger，不把物理1..255当新增业务规则。
 
-设计语义参考SQLAlchemy官方[Engine](https://docs.sqlalchemy.org/en/20/core/engines.html)、[连接池](https://docs.sqlalchemy.org/en/20/core/pooling.html)与[MySQL dialect](https://docs.sqlalchemy.org/en/20/dialects/mysql.html)；实际安装版本记录于本岗foundation-validation.json。
+ScanStore(factory)：start(run_id,*,rule_version,rule_snapshot,rule_hash,cutoff_at=None)返回持久行；run_id字符串/UUID映射run_key bytes16与整数id；相同UUID并发唯一，同UUID改版本/hash拒绝。get(run_id)、recoverable(*,heartbeat_before,limit=100)取未完成旧心跳行。page(run_id,*,limit=200)按id返回state1..5及快照窗口候选，固定cutoff，id大于游标。checkpoint(run_id,*,last_task_id,scanned_delta=0,created_delta=0,duplicate_delta=0,finished=False,error_code=None)单调推进并返回持久行；相同游标不重复计数、逆向拒绝。进程崩溃status1可用原UUID重启续扫；升级提交与游标分开，崩溃重扫由unique(task_id,schedule_version,level)去重，不能假称两次HTTP与checkpoint一个事务。规则判定/HTTP调用/定时器由调度岗负责。
+
+IdempotencyStore(factory)提供可选claim、lock_owner、complete、reject_after_rollback原语；backend可继续使用已确认Rows编排。claim并发唯一、摘要先匹配、COMPLETE重放；过期恢复加行锁等待旧主事务结束并换owner_token。主事务必须先lock_owner持有至commit，complete再次检查token及未过期租约；记录实际生成结果的response_request_id，回放original_request_id从该列读取，不保存旧meta/凭据。不自动删除旧key。reject_after_rollback调用前主UoW必须已释放锁；CommitUncertain原样传播。
+
+## 实测边界
+
+本机T44_TEST_CREDENTIALS指向ignored app凭据文件且显式T44_TEST_DATABASE=t44_test时：`PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q`。仅t44_test；不触及acceptance/bench。CI使用DATABASE_URL+匹配T44_DATABASE（t44_ci），无本机私密文件依赖，CI缺配置直接fail；测试模块标记integration。本机实际复跑该环境变量入口12项通过，非GitHub托管CI结果。当前33项通过，其中21项SQLite/mock、12项真实官方MySQL8.4.11案例。首次真库29项中3项错误分类失败保留原日志，修复后通过。真库覆盖首次/重复迁移、SHOW CREATE核心表、UTC/strict/RC、约束、生成ID、并发CAS/幂等租约、独立拒绝审计、outbox降级并发与扫描恢复。不等于RabbitMQ网络、API全链、性能、全局覆盖率或独立验收通过。
+
+seed仍在本岗agents/database/drafts/，尚无生产seed_demo入口、未执行。需补代表状态与轮次一致性后交接，不能调用草稿或把其合成评审当真人证据。

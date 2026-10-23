@@ -1,4 +1,4 @@
-"""Field-independent persistence foundation; no ORM models, migrations or business repositories."""
+"""Frozen MySQL v1 metadata, injected transactions and parameter-bound internal facades."""
 
 from .engine import MySQLSettings, create_mysql_engine
 from .errors import (
