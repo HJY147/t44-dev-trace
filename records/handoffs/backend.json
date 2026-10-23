@@ -544,8 +544,8 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T08:19:42.448640+00:00",
-  "current_stage": "ROLE-backend-APPLICATION-v1 staged delivery; owner integration pending",
+  "updated_at": "2026-10-23T09:06:01.834077+00:00",
+  "current_stage": "ROLE-backend-INTEGRATION-v1 checkpoint; test relocation pending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -577,5 +577,27 @@
     },
     "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
     "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
+  },
+  "integration_v1": {
+    "basis": "ef79f04323e05326d0d5a14b44af8c5e0a474690",
+    "result": "312 passed,2 failed(seed rules field),3 skipped(local Rabbit unavailable)",
+    "coverage_scope": "all backend/t44; no omit",
+    "statements": 2746,
+    "covered": 2317,
+    "line_percent": 84.37727603787327,
+    "branch_inclusive_percent": 81.16,
+    "evidence": [
+      "agents/backend/integration-full-first.log",
+      "agents/backend/integration-full-first.xml",
+      "agents/backend/integration-coverage-first.json"
+    ],
+    "still_required": [
+      "seed owner fix",
+      "root test relocation",
+      "all38 operation manifest",
+      "Rabbit real CI",
+      "final source size",
+      "independent acceptance"
+    ]
   }
 }
