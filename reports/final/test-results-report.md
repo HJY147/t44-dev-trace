@@ -1,112 +1,122 @@
 # T44测试结果技术报告
 
-版本 M4阶段审阅稿。**未通过最终验收。** 本报告由文档岗汇编已公开的开发测试、真实依赖、完整CI、容器恢复、审核、独立v1和正式性能结果，不重新执行产品测试。文档汇总截止集成`2e0481f`，不同被测SHA分别列出；后续修复不得倒填为独立复测通过。公开稿不含私密封面值，日期留空。
+版本：M5阶段技术工作稿 v0.5，**未完成整体验收，不能判总通过**。生产内容固定`6ba9f94ad23ac96380269aaefa8726f8b535b450`，后端5dcb、前端75；cutoff后收到的同源CI、独立阶段和限定审核公告单列。本文由文档AI汇编公开结果，不重新执行产品测试/业务请求/负载，不接触独立私密用例、日志、密钥或截图。公开封面无个人值，日期空。
 
-Agent-Role: documentation；Prompt-Ref: ROLE-documentation-M4-TESTS-AND-WORD-v1。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M5-REPORTS-v1；Refs #9。
 
-## 1 范围和版本依据
+## 1 准确版本与层次
 
-| 证据层次 | 准确对象 | 已有结论 |
+| 层次 | 精确对象或来源 | 结论边界 |
 | --- | --- | --- |
-| 完整开发CI | 0448fecb68679978fe6b99483cf2f257821c5e44；run39945098961 | static/contracts/coverage/frontend全部成功，后端335通过/零失败错误跳过，前端24通过 |
-| 同版容器恢复 | 同0448fec；run39945098943 | 托管Linux构建/完整Compose/4worker/HTTP及隔离恢复成功 |
-| 独立黑盒v1 | e8ceefe699951c52d4b01023b47a76b575d48c2a | 900冻结用例严格结果及三批性能，整体验收不通过 |
-| C-P4限定复审与规模 | 7c27a5f62cc23db8545a28852ed01322a7e172b4 | 四类同名语义漏检限定关闭；5886超5100，仍failure/not approved |
-| 独立发布后的开发修复 | IAT01修复650已合入7c27及本截止版本 | 属开发修复/回归，不是新无历史实例的独立复测；IAT02至05仍在处理 |
+| M5代码截止 | 6ba9f94；冻结1.1.0的14文件 | 版本标识不等于验收结论 |
+| 后端读UoW开发CI | 5dcb73cc10c38deb14fae68d33318b04d538fecf；run39970988113 | 412/0失败/0错误/0跳过，全43文件，不是独立验收或性能 |
+| 暖色视觉开发 | 840b1a88e6976f0ecfb0b0ba45676b208aae4d98；63519c2证据 | 27测试/18实界面图/40HTTP；不覆盖后续props修复 |
+| 空文本小修 | 75c3468de07303cc47b9afd0e4a169664743470e；6212e5f证据 | 同组红2→绿6，受影响14/20HTTP/4图；当轮没有重测coverage |
+| 独立v2 API公开阶段 | 4c20f32b71635016815420472b9d4bb4fa850df0；原样归档54af1e3 | 38成功操作/1596响应Schema、14执行函数，仅各自已执行子集 |
+| Linux中性能力 | 环境f118f9dd35bc2cde69affe235f5a499d03a396fc，SUT仍4c20；run39977039692 | harness/profile=false；不是故障用例或总验收 |
+| M4历史技术材料 | 2e0481f/0448fec，四Word28页QA | 原文/失败/QA保留，不自动包含M5代码和结果 |
 
-原始证据：[CI归档](../../records/ci/39945098961/summary.json)、[容器归档](../../records/ci/39945098943/summary.json)、[独立公开报告](../independent-tests/v1-blackbox-report.md)、[伴随公开JSON](../independent-tests/v1-blackbox-results.json)、[限定审核](../reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md)。文档岗只读上述独立公开两文件，不跟随其中私有证据路径、不读独立内部用例或日志、不联系测试实例。
+[1.1冻结清单](../../records/spec-freezes/v1.1.json)、[412开发汇总](../../agents/backend/read-uow-ci-summary.json)、[前端视觉](../../agents/frontend/warm-glass-validation.json)、[空文本](../../agents/frontend/empty-value-validation.json)、[独立API公开报告](../independent-tests/v2-api-stage-report.md)/[JSON](../independent-tests/v2-api-stage-results.json)分别可核。独立公开文件里的私密路径和hash不构成读取许可。
 
-## 2 完整CI与覆盖率
+## 2 开发CI与覆盖率
 
-| 项目 | 0448fec实际结果 | 口径和限制 |
+5dcb的[run39970988113](https://github.com/HJY147/t44-dev-trace/actions/runs/39970988113)四job成功，原JUnit412/0/0/0。全部43个backend/t44生产文件纳入，excluded_lines=0；行2550/2872=88.7883%，分支611/776=78.7371%。综合line+branch百分比86.6502%不是行覆盖率，不新增分支80%门槛。contract114/integration70/fault11标记相互重叠，不能加到412之外。
+
+18项读UoW专项已包含在412中：HTTP11、真MySQL7均通过。改前4+5个失败为新优化目标/在途读语义断言，不是9个旧业务缺陷。三类成功4/5/5 SELECT和一次acquire有账本；COM_PING/初始化SET/commit/rollback不在SELECT统计，不能换算总网络往返或P95改善。源码限定复审见[5dcb报告](../reviews/read-uow-5dcb73cc10c38deb14fae68d33318b04d538fecf.md)。
+
+历史394绑定4c20；更早335/88.47%绑定0448、317/88.16%绑定64b4。不同被测SHA、不同分母不互换；M4原95附件/归档仍见[原技术报告](https://github.com/HJY147/t44-dev-trace/blob/9e9e23d83ab2426ed490bd5457e7007047d2ca67/reports/final/test-results-report.md)及records/ci/39945098961。
+
+## 3 各模块自己的测试和接口边界
+
+| 模块 | 实际输入输出及公开模块证据 | 不可外推 |
 | --- | --- | --- |
-| 后端整套 | 335通过，0失败，0错误，0跳过 | 全backend/t44开发回归；marker分组可重叠，不相加凑总数 |
-| Python生产文件 | 43个，excluded_lines=0 | 全量生产源码分母，不排低覆盖文件 |
-| Python行覆盖率 | 2493/2818 = 88.47% | 超80%门槛；不是全部业务/错误语义正确的证明 |
-| Python分支覆盖率 | 77.73% | 报告分支，不另增任务书未规定门槛，也不冒充行覆盖 |
-| 前端 | 24/24通过；307/333行 = 92.19% | 全src，分支86.76%、函数83.78%；不是独立UI验收 |
-| CI门禁 | 四产品job成功 | reviewer/stage及最终新head放行另核，不由CI成功替代 |
+| frontend | 冻结Schema→字段/操作表单，api.request→Envelope；840视觉27，75组件红绿/受影响14，真实HTTP只读与图见下一节 | 开发浏览器不是学生手测/独立UI；75当轮没新coverage |
+| backend/domain/services | Call/validate→Runtime四元组；纯decide→Decision；1.1人力/鉴权/幂等/CAS/审计与读UoW全量412 | HTTP/注入故障不自动成为真实宕机、全551错误语义或正式性能 |
+| database | UoW/Rows/迁移/Outbox/Scan已实现；旧真MySQL四类语义漂移/恢复、seed行摘要等证据保留 | 新scan-run去重RFC净增1、未准入，生产节省0；AST原型46/1不当完成 |
+| messaging | Runtime传入g/Call→通知data；worker在事务外broker I/O，消费提交后ACK；旧28/3本机Rabbit未跑和真MySQL11分开 | 最新托管CI有真实MySQL/Rabbit，不倒填原本机skip；消费记录唯一非网络恰一次 |
+| scheduling | Scanner.run/tick→持久scan_run；EscalationFacade.create→event/created/task_version；原模块107含22真MySQL/ASGI/CLI、20任务与续扫 | 原模块干净重启/扩展配置实验非400并发或完整中批崩溃验收 |
+| deployment | 原Docker/隔离恢复与新中性环境能力分别绑定SUT；52 guard/Ruff/actionlint为本岗验证 | harness=false不当tester执行，六服务恢复集合不当六服务均已故障 |
 
-[run39945098961](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098961)归档保留95项附件的路径、字节数和SHA，以及`original-artifacts.tar.gz`原始字节。文档岗读汇总/清单并校验归档摘要，不重跑CI或把摘要当自己执行。
+各FR→概设→详设/真实代码→本模块用例/日志→剩余验收见[M5追踪矩阵](../../docs/reports/M5-traceability.md)。测试入口为tmp/backend、tmp/frontend及原递减编号；不改历史日志中的原命令，不相加不同岗位/版本用例数。
 
-历史对比仅用于追溯：265d89b曾317通过、2399/2724行88.07%；后续64b4f89曾317通过、2406/2729行88.16%，证据提交3ee不是被测源码。这些均不替换当前0448fec的335与2818分母，也不能反向证明旧版缺陷不存在。
+## 4 UI设计、导入及空文本红绿链
 
-## 3 各模块及真实依赖边界
+326f971先形成DESIGN/合成原型/来源许可及8原型图，协调者实看4样本后才实施840；原型未连业务API。840的27/27、全19 TS/Vue源文件行310/334=92.81%、分支687/782=87.85%、函数188/222=84.68%，typecheck/build通过，825.22kB JS>500kB告警保留。18张真实界面图由前端AI检查，40响应全200、两次登录POST其余GET、0业务写/页面错误/横溢出；不能当全业务写流程或完整可访问性验收。
 
-| 模块 | 可用公开事实 | 测试范围与保留问题 |
+真实样式覆盖曾使关闭按钮越界，修正后测长表单滚动；隐藏背景选择器超时与过渡截帧属于工具/截图局限，原件保留。减少透明度CDP实际matchMedia=true；不支持backdrop引擎只源码检查，未完整测focus陷阱/读屏/其他浏览器。
+
+FE-INIT-01先设计7369400再修75：Vue生成props中Boolean先于String，将空串强转true；纯initial()无错。显式modelValue运行时type:null/静态PropType<Json>保留JSON原类型，未改Schema/API/initial业务默认。新增三项现有测试，改前2失败/4通过/24未选，同组改后6通过/24未选，受影响组14通过/16未选，6不另加到14。build含typecheck通过，大chunk告警保留；当轮无新coverage，不能将840覆盖率套给75。
+
+首次浏览器登录502、未进入表单也无截图，保留为环境阻塞。演示恢复后1440/390三文本DOM空值/必填错误有效，20HTTP全200、两登录+18GET、0业务写、4图由前端AI检查。本文只汇编其公开证据，不冒称本岗重新浏览器执行或亲看这些UI截图。
+
+## 5 独立v2 API阶段 已发布子集
+
+SUT固定4c20，先冻结后接触，API恢复没有重跑已完成案例。38个操作有实际成功响应，1596条HTTP通过冻结响应Schema；14执行函数含SETUP和只读取回，不是14个完整验收要求。已发布范围未确认产品缺陷不等于证明产品无缺陷。
+
+- 生命周期/发布回滚/返工、部分依赖、评审、输入/权限/时间域、人力与通知服务边界已执行各自子集。
+- 同版本不同键30次双请求均一成功/一409；创建/分配/返工与容量移除各30次共90次竞争。尚未逐轮独立证明全部审计/outbox计数或所有幂等竞态。
+- 551逐操作错误条件：149仅“声明码及响应Schema观测有效”、399未执行、2公共API不可达、1可达性未明。149尚缺完整语义/前后持久状态/拒绝审计，不是149完整错误用例通过。
+- 18业务表226列名称/类型/可空/自增一致；非完整CHECK/FK/index/default和应用连接事务/时区审计。审计连接8.4.13/REPEATABLE-READ/time_zone SYSTEM不等于应用连接配置已验证。
+- 原fixture误解包data.task、个人通知未给项目过滤器、依赖201误判200，均是独立脚本/前置勘误，产品未因此修改。原记录保留。
+
+当时故障分支缺逐次恢复/拓扑而BLOCKED，driver wrapper PASS非故障通过；正式性能、白盒/CI/规模、UI不由此API阶段下结论。不能把后续能力环境或开发5dcb结果倒填本阶段。
+
+## 6 cutoff后收到的独立故障阶段公告
+
+此项原样归档于**68eb5e1，晚于6ba内容截止**，不合并/改写6ba历史。仅明确发布的[故障MD](https://github.com/HJY147/t44-dev-trace/blob/68eb5e1/reports/independent-tests/v2-fault-stage-report.md)、[结果JSON](https://github.com/HJY147/t44-dev-trace/blob/68eb5e1/reports/independent-tests/v2-fault-stage-results.json)和publication receipt被读取，不跟随其私密路径。
+
+run39998518039仍固定4c20：4个真实故障子集PASS、1个原消息捕获BLOCKED，另SETUP；513HTTP属于本阶段，不与1596合并成无重叠总数。5次不同recovery_id逐次回执真实恢复；这是stop路径，不借环境pause自检宣称产品pause用例通过。
+
+| 子集 | 已证明 | 未证明 |
 | --- | --- | --- |
-| frontend | b485后24模块用例、真实七态282HTTP、通知读/处理和114HTTP只读复核 | 原写运行在业务断言后resize失败保留；headless viewport不是手机真机；独立UI补充已发布，原e8测3通过/1失败/1阻塞，非b485复测 |
-| backend/domain/services | 纯domain历史106与后续HTTP/真实MySQL、会话撤销/重放/并发审计 | 这些局部与最新335整套分别记录；高覆盖未阻止e01审核或独立v1发现缺陷 |
-| database | 18业务表226列迁移；真实Rows/Outbox/Scan/恢复/seed；C-P4 owner实库18项与审核复核 | SQLite/mock与真MySQL分开；四类语义限定关闭不证明任意DDL等价；synthetic不是人类评审事实 |
-| messaging | 真实MySQL持久通知、confirm/消费/fallback局部及托管Rabbit CI | 最新CI真Rabbit服务与独立v1无Rabbit必须分开；网络至少一次、消费去重不称网络恰一次 |
-| scheduler | 版本化规则、20超期任务、重复/重启/续扫模块证据 | 独立v1只观察一轮完成后停启；250任务处理中断恢复仍未独立验证 |
-| deployment | 同版完整容器、4worker、凭据/共享flock、停写备份/新隔离恢复 | 托管synthetic环境；无租赁云、公网TLS或异机队列灾备结论 |
+| SCAN-01 | 20逾期含5阻塞、最高级2/完整收件人快照/一次计数，干净重启65秒重扫不重 | 扫描中批崩溃/cursor恢复 |
+| MQ-01 fallback | Rabbit停期间本账号20条fallback、读/处理区分且任务不变，恢复不重且新事件非fallback | 全收件人实际投递、确认歧义、迟到原消息 |
+| TX restart | API停/恢复后已提交任务快照及两成功审计记录取回字节相同 | 事务中途、丢提交ACK或独立拒绝审计故障 |
+| TX DB down | MySQL停时授权读取503/audit_id=null，恢复后任务相同 | audit-only故障或数据库宕机仍可审计 |
+| 原消息重复 | 未安全捕获原消息，BLOCKED | 未执行重复发布后置断言，不称产品去重失败 |
 
-详细模块来源为`reports/modules/`对应公开报告及`records/handoffs/`。现行测试路径`tmp/backend`、`tmp/frontend`与递减编号清单；历史日志中的旧命令是执行当时时点，未改写。文档汇编不把各模块/旧版本测试数相加为一套新总数。
+整体验收仍未完成；六服务恢复范围不代表六服务都受过故障。101人、边界时钟、完整矩阵、正式性能/白盒仍待。
 
-## 4 同版容器和恢复
+## 7 原独立v1与正式性能历史
 
-0448fec的[run39945098943](https://github.com/HJY147/t44-dev-trace/actions/runs/39945098943)结果passed=true。真实构建两镜像、MySQL/Rabbit基础设施、迁移/账号/2项目40任务演示seed、完整Compose、API四worker、独立consumer/scheduler、HTTP/SPA和双层JSON413均留证。
+原e8ceefe699951c52d4b01023b47a76b575d48c2a四公开报告保持原结论：900严格分布340通过/183断言失败/328环境阻塞/49未执行；183含97 Retry-After语义歧义和15引用/守卫顺序问题，不等于183bug。38成功路径通过。UI附加3通过/1失败/1完整用例阻塞，原900不改；通知页双总计缺口与深链阻塞分开，不能声称原报告测过b485/f654/暖色版本。
 
-0600只读服务凭据、跨容器flock排他、轮换撤销旧会话与持久扫描有实际检查。停写备份后导入新隔离项目/库，19张表逐表行数及内容checksum相等，其中18业务表226列、另1迁移记录表；恢复结构passed/already_applied，源重启HTTP可读。原始结果见[result.json](../../records/ci/39945098943/result.json)，33项附件与原字节归档保留。
+| 原正式入口 | 活跃闭环VU/稳态 | P95 ms | 次/分钟 | 稳态失败 |
+| --- | --- | ---: | ---: | ---: |
+| transition | 400/600秒 | 3035 | 6910.1 | 0 |
+| contract validation | 400/600秒 | 1908 | 23396.5 | 0 |
+| escalation | 400/600秒 | 5506 | 3483.6 | 0 |
 
-这是小规模托管Linux恢复演练，不能冒充40项目正式负载、异机消息队列灾备、生产RPO/RTO或独立验收；“表数一致”本身不足以替代已单列的checksum核对。
+三者均超270ms、exit99；吞吐≥1000与稳态零失败通过。不是400个瞬时socket；同机Mac/API4worker/MySQL/k6，WPS背景存在，未独立采样API/DB资源，不推定瓶颈或云容量。40/6000/9000/11400评审+3600决定全synthetic，批次未清库，准备时调整604依赖而保持9000总数；202仅持久受理非broker端到端送达。后续短诊断或少SELECT不当正式达标。
 
-## 5 审核结果与代码规模
+## 8 容器、环境与工程过程
 
-首次完整审核e01四项不通过：C-P1嵌套Iteration.plan消费、C-P2历史重放误报当前状态、C-P3原口径规模超限、C-P4只比约束名漏语义。原报告与failure状态保留。前端随后修C-P1/2有组件失败后同例复测，但不能将其称整体产品审核通过。
+M4原0448fec/run39945098943的完整Compose/API4worker、小synthetic2项目40任务、停写备份→新隔离库19表count/checksum一致保留原件，非后续版本自动复测。新f118/run39977039692只中性能力：真实SQL/AMQP、受限服务凭据、stop/pause逐次恢复及synthetic加密roundtrip；harness/profile=false，不当独立故障通过。原pause后unhealthy失败与后续有界健康观测修正保留。
 
-7c27限定复审核对原957未改断言、owner真MySQL四类漂移/恢复及源码哈希，原C-P4可限定关闭；不声称任意CHECK/DDL等价都证明。当前该审核目标原口径5886行，超过5100上限786，整体仍failure。减量方案估计约208至377行仍不足786，且不是已完成收益，不改分母或用估计宣布达标。
+6ba演示前端75→后端5dcb的907小smoke，1440/390各20卡，0资产/API失败/页面错误/横溢出，两登录+18GET、0业务写，协调者实看两样本。原frontend-only快照漏冻结JSON后500，补文件仍500，重启/新cache/明确fs范围组合后200；**未单独证明负缓存是原因**。shell未短路误续检查为AI过程错误，不是产品源码缺陷或学生识别。独立4c入口仅中性恢复，无reset/provision/业务请求；不读独立UI未发布结果。
 
-## 6 独立黑盒v1结果
+## 9 审核、规模与退出条件
 
-| 严格冻结结果 | 数量 | 解释 |
-| --- | --- | --- |
-| 通过 | 340 | 满足对应冻结断言，不代表整个FR/AC已通过 |
-| 断言失败 | 183 | 包含97个Retry-After语义歧义和15个引用/守卫顺序问题，不等于183个独立bug |
-| 环境阻塞 | 328 | 缺真实故障控制/可观测能力等，未当通过 |
-| 未执行 | 49 | 后阶段材料/条件未满足，未当通过 |
-| 合计 | 900 | 38接口成功路径均通过；成功路径不覆盖全部负向/异步/内部条件 |
+1.1设计、冻结前复核和4c20实现、5dcb单UoW均是准确SHA的限定审核，整体未放行。旧e01四项failure保留，C-P4在7c27限定关闭不证明所有DDL变异。当前原cloc2.10非空非注释物理口径，[f289统计](../../records/metrics/source-count-empty-text-fix.json)64应用文件6051行，超5100上限951；--require-range实际exit1，不改分母、不将草案预算当节省。
 
-| 已发布发现 | 性质与外部观察 | 截止本稿的状态 |
-| --- | --- | --- |
-| IAT01 | 新评估未使旧批准失效，旧A仍可交付，业务失败 | 开发修复650已合入；尚不是独立复测通过 |
-| IAT02 | owner不在所选迭代容量仍创建，业务失败 | 开发处理中；不预先宣布关闭 |
-| IAT03 | task_id=0本应参数拒绝却503 AUDIT_UNAVAILABLE | 开发处理中；公开报告未推断内部原因 |
-| IAT04 | 公开审计不能重建完整排期前后差异 | 外部可观测缺口；未证明内部schedule_changes不存在 |
-| IAT05 | 空证据/契约顶层多字段被拒，但错误码偏离冻结分支 | 契约错误；未观察到缺证据通过或伪造身份生效 |
-| IAT06 | 三类入口正式P95超过270ms | 本拓扑实测失败，下一节列数值；未有达标复测 |
+cutoff后实收到审核岗公告：840视觉d8bba16限定无新阻断；75空文本36b90e3限定FE-INIT-01关闭，均非APPROVE/status成功或整产品放行。公告、实际问答和公开固定报告链接见[M5收集](../../docs/reports/M5-collection.json)，不说6ba当时已含这些后续回执。
 
-补充语义24项21通过/3失败与冻结900严格统计分开；50组不同键同版本竞争观察一次成功/一次VERSION_CONFLICT、版本增1/一次成功审计。真实调度20超期事件，进程组停启后不重复，最终40条fallback通知；AMQP为拒绝端口，没有真Rabbit成功链。微秒时钟、应答丢失、活动请求持有、全局审计及部分恢复矩阵受阻，不猜内部原子性/口令哈希/参数化实现。
+最终须准确新头完整CI/源码审核、独立剩余矩阵/正式性能/规模与作业交付证据齐备。R001本人反思、R002课程建议已收，研究正文仍本人写，人工12/3/5和单族六版不由AI修复/图批次抵充。M4 Word28页QA只技术排版；M5 Markdown未导Word。
 
-## 7 正式性能结果
+## 10 cutoff后同源组合CI与Docker公告
 
-被测e8ceefe，同机Mac arm64、8CPU/24GiB、API4worker、MySQL8.4.11与k6共主机经loopback；400活动闭环VU，每VU串行，不能称每瞬间400套接字。三批各30秒预热、30秒前排空、600秒完整稳态、最多30秒收尾；以主请求发起时的阶段归属计算完整往返P95，吞吐为稳态主成功数除10。
+root在本轮实告：**同6ba源码**的PR run39999929187四job成功，后端412/0失败错误跳过、43文件2550/2872；前端30/0/0、19文件310/334=92.81%、分支688/782=87.97%。这是75已纳入组合源后的新证据，不能继续概括“75一直没有覆盖率”；第4节“当轮未跑”仍是当时事实。checkout9c2a整tree与6ba相同由root核验，原artifact及摘要后由root在b9f7fbd明确公开；本岗已读composite-6ba-ci.json，并对选定原JUnit/coverage进行轻量解析，准确hash列本轮manifest，不重跑CI。
 
-| 入口 | VU和稳态 | 主成功数 | 每分钟主请求 | P95毫秒 | 稳态失败 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 流转 | 400 / 600秒 | 69101 | 6910.1 | 3035 | 0 | 延迟超270，exit99 |
-| 契约校验 | 400 / 600秒 | 233965 | 23396.5 | 1908 | 0 | 延迟超270，exit99 |
-| 升级创建 | 400 / 600秒 | 34836 | 3483.6 | 5506 | 0 | 延迟超270，exit99 |
+同6ba的Docker run39999920326也passed：4worker、2项目40任务、19表count/checksum匹配。它是同源小synthetic容器/恢复，不是正式性能、独立总验收或规模达标；公开原件发布后按来源清单核对，不追改M4 Word。
 
-吞吐均超1000次/分钟且稳态零失败，但三个P95全部失败，AC-08不通过。transition预热另有5658个409，不能把整次运行称零失败；正式稳态原命名空间与重放0单列。技术预热中止/脚本准备错误不是正式600秒结果。
+## 11 cutoff后收到的独立UI阶段公告
 
-原始基准为40项目/6000任务/9000依赖/11400评审+3600决定，保持15000总数；准备时经公开API调整604条依赖形成400无依赖任务，不删9000总数，批次间未清库，真实写入产生累积记录。202只表示持久受理，不是broker端到端延迟。三份原始指标字节数/SHA已在独立公开报告公布，文档岗未打开私有原件。
+root在b9f7fbd原样归档[UI公开MD](https://github.com/HJY147/t44-dev-trace/blob/b9f7fbd/reports/independent-tests/v2-ui-stage-report.md)/[JSON](https://github.com/HJY147/t44-dev-trace/blob/b9f7fbd/reports/independent-tests/v2-ui-stage-results.json)。仍固定4c20、5175→18084，与暖色演示5173不同。10冻结用例：0完整PASS、1FAIL、1BLOCKED、8未执行或只部分观察，不把子条件提升整例。
 
-同机API/数据库/负载器未隔离，WPS等背景进程仍存在；只采样k6资源，未独立采API/DB CPU/RAM，不能归因某个组件或外推云容量。后续开发诊断和修复必须另绑定新SHA、环境及完整原阈值复测。
+V2-UI-001/P2是logout200后侧栏rendered DOM残留前项目名，后退11秒后仍有、完整刷新才清除；仅DOM清理失败，不据此认定服务端越权、保留任务行、登录覆盖下像素可见性或外部泄露。既有截图在刷新后，不能证明残留；本岗没有打开私密截图/日志。Issue25由root转派修复，**本稿不称已完成或独立复测通过**。
 
-## 8 退出条件和后续
+七态/评审/四视角/409后权威读取、局部窄屏和键盘等只观察部分；本地故障能力未绑定使UI08阻塞，托管API通知不能替代浏览器通知通过。原14个驱动器错误与产品发现分开，未把它们当14bug。
 
-后续开发checkpoint479fc8f（生产修复3b6dab5，root e62f753）已报告IAT02至05的55 HTTP/SQLite开发用例通过，真实MySQL专项待CI；这是本稿2e主源码截止后的状态续记，不是独立复测通过。
+## 12 cutoff后短ABBA诊断公告
 
-修复IAT01至05后，保留原失败与开发回归，由总协调安排新的无开发历史实例按冻结要求独立复测；不把开发解释灌入原测试实例。性能要在声明拓扑按原400VU/600秒/270ms和吞吐/失败线重测，若换机器/隔离或请求组成必须公开差异。规模仍按原口径3500至5100核算，新head审核与CI均需准确回执。
-
-本稿可供学生审阅当前技术结果，但未通过最终验收；学生本人研究正文、课程建议和真实人工留痕不由本测试汇总代写。四份Word只是本截止版本的技术审阅材料，最终提交仍需补齐失败修复/独立复测/性能/规模与逐页QA记录。
-
-## 9 已发布独立UI补充
-
-原5项UI补充已由root102f2c9原样归档，见[公开MD](https://github.com/HJY147/t44-dev-trace/blob/102f2c9/reports/independent-tests/v1-ui-addendum.md)与[公开JSON](https://github.com/HJY147/t44-dev-trace/blob/102f2c9/reports/independent-tests/v1-ui-addendum.json)。仍测e8ceefe，无修复版本或开发解释，AI浏览器自动化不是真人手测。结果3通过/1失败/1完整用例环境阻塞；原900统计不改。
-
-通过范围为页面主流程、冲突/历史重放显示和证据安全。失败为通知页缺独立未读/未处理总计：API有1/1及处理后1/0，逐行状态正确，页面只有共1条。此项不是通知写入失败，前端已接修，尚未独立复测。
-
-空白迭代选项是原e8的附加可用性观察；已有FE b485修复相关plan消费，但测试没有测过b485，不能借补充报告宣布其复测通过。权限用例的部分403观察通过，真实前端资源深链URL/参数未定义使完整步骤仍blocked，不扩大成权限漏洞。文档岗只读这两份公开补充，不跟私有证据或截图路径。
+公开来源为072bc4e的[publication](https://github.com/HJY147/t44-dev-trace/blob/072bc4e/agents/backend/contract-abba-night-01/publication.json)。root实告单次ABBA：A4c的P95为31.206/31.358ms，B5dcb为23.974/23.390ms，均0错；条件为1worker、8并发、每段8秒，整体39.88秒exit0，18083已停。它只支持这组短对照，不能替代原400VU/600秒/4worker正式负载、其他入口P95、独立验收或云容量，亦不扩大为已知性能瓶颈归因。

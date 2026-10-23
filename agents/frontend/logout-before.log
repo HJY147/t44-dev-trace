@@ -1,0 +1,1154 @@
+$ node scripts/prepare-tests.mjs && vitest run --reporter=verbose -t 'session cleanup boundaries|unmounts authenticated DOM'
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend-logout
+
+ ↓ tmp/frontend/982_client.test.ts > frozen API client > keeps same intent key/body for network or 503 recovery and changes it for changed content
+ ↓ tmp/frontend/982_client.test.ts > frozen API client > clears memory identity on 401, handles malformed responses, and encodes query filters
+ ↓ tmp/frontend/982_client.test.ts > frozen API client > hydrates real contexts, pages collections without truncating, and logs out only after server acknowledgement
+ ↓ tmp/frontend/982_client.test.ts > frozen API client > does not hide normal project data when optional template/rule loading fails
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > clears every session context after acknowledged logout 9ms
+   → expected { user: null, projectId: null, …(10) } to deeply equal { user: null, projectId: null, …(10) }
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > clears every session context on a current-session non-login 401 3ms
+   → expected { user: null, projectId: 1, …(10) } to deeply equal { user: null, projectId: null, …(10) }
+ ✓ tmp/frontend/982_client.test.ts > session cleanup boundaries > retains identity and project when logout fails with 0 0ms
+ ✓ tmp/frontend/982_client.test.ts > session cleanup boundaries > retains identity and project when logout fails with 503 0ms
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > does not allow a late previous-session 401 to revoke a new session 0ms
+   → expected '' to be 'new-fixture-session' // Object.is equality
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > does not hand a late successful response to a changed session, including delayed JSON decoding 1ms
+   → promise resolved "{ data: { id: 1, …(6) }, …(1) }" instead of rejecting
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > does not restore the previous bootstrap identity after logout and a new login 1ms
+   → expected 1 to be 2 // Object.is equality
+ × tmp/frontend/982_client.test.ts > session cleanup boundaries > does not restore a same-project old context after logout and a new login 1ms
+   → expected '夹具项目' to be '新会话上下文' // Object.is equality
+ ↓ tmp/frontend/982_client.test.ts > contract-driven forms and safe records > leaves text and unspecified schemas empty while preserving explicit boolean and const values
+ ↓ tmp/frontend/982_client.test.ts > contract-driven forms and safe records > validates real typed fields and evidence without treating strings as numbers or missing proof as approval
+ ↓ tmp/frontend/982_client.test.ts > contract-driven forms and safe records > seeds eight sections, ten checklist items, four risks from server values and all nine frozen actions
+ ↓ tmp/frontend/982_client.test.ts > contract-driven forms and safe records > uses the frozen nested iteration plan without losing capacity or version
+ ↓ tmp/frontend/998_foundation.test.ts > resource feedback > keeps forbidden access distinct from a refreshable failure
+ ↓ tmp/frontend/998_foundation.test.ts > resource feedback > refreshes records after a conflict without emitting a write or retry action
+ ↓ tmp/frontend/998_foundation.test.ts > resource feedback > announces loading without treating it as an empty successful response
+ ↓ tmp/frontend/998_foundation.test.ts > resource feedback > distinguishes an unconnected workspace from an empty result
+ ↓ tmp/frontend/983_application.test.ts > typed editor interactions > keeps empty text as empty through Vue props without casting it to boolean true
+ ↓ tmp/frontend/983_application.test.ts > typed editor interactions > emits boolean, integer, date, text, enum and array changes as proper JSON values
+ ↓ tmp/frontend/983_application.test.ts > typed editor interactions > shows server-template section names, safe evidence links, and human-readable record values
+ ↓ tmp/frontend/983_application.test.ts > operation forms > shows untouched task text fields as empty and submits no request when required fields are missing
+ ↓ tmp/frontend/983_application.test.ts > operation forms > prefills and submits the frozen nested iteration plan, and names the iteration selector
+ ↓ tmp/frontend/983_application.test.ts > operation forms > distinguishes a replayed historical response from the refreshed authoritative task
+ ↓ tmp/frontend/983_application.test.ts > operation forms > submits a filled blocking form with optional document revision left blank
+ ↓ tmp/frontend/983_application.test.ts > operation forms > keeps a draft through 409, refreshes, explicitly adopts version, then confirms the authoritative result
+ ↓ tmp/frontend/983_application.test.ts > operation forms > retains the same write key and body on uncertain retry and displays 422 field errors without closing
+ ↓ tmp/frontend/983_application.test.ts > operation forms > blocks missing proof, checks fill content without performing the write, and renders every real business form
+ × tmp/frontend/983_application.test.ts > session and user flows > unmounts authenticated DOM and overlays on logout and keeps them absent through history navigation 83ms
+   → expected true to be false // Object.is equality
+ ↓ tmp/frontend/983_application.test.ts > session and user flows > logs in with transient password, hydrates workspace, clears password on rejection and success
+ ↓ tmp/frontend/983_application.test.ts > session and user flows > shows project selection, iteration edits, personal notification read/handling separately, audit and rules
+ ↓ tmp/frontend/983_application.test.ts > session and user flows > loads task details and every evidence/history tab, exposing proper operations without deciding permissions
+ ↓ tmp/frontend/983_application.test.ts > session and user flows > shows read failures, empty project scopes and paginated collections without leaking stale records
+ ↓ tmp/frontend/983_application.test.ts > session and user flows > integrates app navigation, project switcher, help and logout with the logged-in workspace
+ ↓ tmp/frontend/983_application.test.ts > notification aggregate counts > shows complete server counts across pages instead of counting the visible rows
+ ↓ tmp/frontend/983_application.test.ts > notification aggregate counts > refreshes separate authoritative counts after handling an unread notification and explicitly reading it
+ ↓ tmp/frontend/983_application.test.ts > notification aggregate counts > hides stale counts while switching projects and rejects a late previous-project response
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > clears every session context after acknowledged logout
+AssertionError: expected { user: null, projectId: null, …(10) } to deeply equal { user: null, projectId: null, …(10) }
+
+- Expected
++ Received
+
+  {
+-   "contextWarning": "",
+-   "dictionaries": {},
+-   "iterations": [],
+-   "members": [],
++   "contextWarning": "旧项目提示",
++   "dictionaries": {
++     "assessment_statuses": [
++       {
++         "label": "夹具assessment_statuses1",
++         "name": "pending_review",
++         "value": 1,
++       },
++       {
++         "label": "夹具assessment_statuses2",
++         "name": "approved",
++         "value": 2,
++       },
++       {
++         "label": "夹具assessment_statuses3",
++         "name": "rejected",
++         "value": 3,
++       },
++     ],
++     "audit_outcomes": [
++       {
++         "label": "夹具audit_outcomes1",
++         "name": "accepted",
++         "value": 1,
++       },
++       {
++         "label": "夹具audit_outcomes2",
++         "name": "rejected",
++         "value": 2,
++       },
++     ],
++     "delivery_dispositions": [
++       {
++         "label": "夹具delivery_dispositions1",
++         "name": "outbox_pending",
++         "value": 1,
++       },
++       {
++         "label": "夹具delivery_dispositions2",
++         "name": "mq_confirmed",
++         "value": 2,
++       },
++       {
++         "label": "夹具delivery_dispositions3",
++         "name": "inbox_delivered",
++         "value": 3,
++       },
++       {
++         "label": "夹具delivery_dispositions4",
++         "name": "fallback_todo",
++         "value": 4,
++       },
++     ],
++     "escalation_levels": [
++       {
++         "label": "夹具escalation_levels1",
++         "name": "fixture_1",
++         "value": 1,
++       },
++       {
++         "label": "夹具escalation_levels2",
++         "name": "fixture_2",
++         "value": 2,
++       },
++       {
++         "label": "夹具escalation_levels3",
++         "name": "fixture_3",
++         "value": 3,
++       },
++     ],
++     "evidence_kinds": [
++       {
++         "label": "夹具evidence_kinds1",
++         "name": "repository",
++         "value": 1,
++       },
++       {
++         "label": "夹具evidence_kinds2",
++         "name": "document",
++         "value": 2,
++       },
++       {
++         "label": "夹具evidence_kinds3",
++         "name": "https_url",
++         "value": 3,
++       },
++     ],
++     "project_roles": [
++       {
++         "label": "夹具project_roles1",
++         "name": "manager",
++         "value": 1,
++       },
++       {
++         "label": "夹具project_roles2",
++         "name": "developer",
++         "value": 2,
++       },
++       {
++         "label": "夹具project_roles3",
++         "name": "reviewer",
++         "value": 3,
++       },
++     ],
++     "responsibility_stages": [
++       {
++         "label": "夹具responsibility_stages1",
++         "name": "intake",
++         "value": 1,
++       },
++       {
++         "label": "夹具responsibility_stages2",
++         "name": "development",
++         "value": 2,
++       },
++       {
++         "label": "夹具responsibility_stages3",
++         "name": "review",
++         "value": 3,
++       },
++       {
++         "label": "夹具responsibility_stages4",
++         "name": "release",
++         "value": 4,
++       },
++       {
++         "label": "夹具responsibility_stages5",
++         "name": "external_dependency",
++         "value": 5,
++       },
++     ],
++     "review_judgments": [
++       {
++         "label": "夹具review_judgments1",
++         "name": "pass",
++         "value": 1,
++       },
++       {
++         "label": "夹具review_judgments2",
++         "name": "fail",
++         "value": 2,
++       },
++       {
++         "label": "夹具review_judgments3",
++         "name": "unverified",
++         "value": 3,
++       },
++       {
++         "label": "夹具review_judgments4",
++         "name": "not_applicable",
++         "value": 4,
++       },
++     ],
++     "review_verdicts": [
++       {
++         "label": "夹具review_verdicts1",
++         "name": "pass",
++         "value": 1,
++       },
++       {
++         "label": "夹具review_verdicts2",
++         "name": "reject",
++         "value": 2,
++       },
++     ],
++     "risk_perspectives": [
++       {
++         "label": "夹具risk_perspectives1",
++         "name": "data",
++         "value": 1,
++       },
++       {
++         "label": "夹具risk_perspectives2",
++         "name": "permissions",
++         "value": 2,
++       },
++       {
++         "label": "夹具risk_perspectives3",
++         "name": "external_dependencies",
++         "value": 3,
++       },
++       {
++         "label": "夹具risk_perspectives4",
++         "name": "observability",
++         "value": 4,
++       },
++     ],
++     "risk_severities": [
++       {
++         "label": "夹具risk_severities1",
++         "name": "low",
++         "value": 1,
++       },
++       {
++         "label": "夹具risk_severities2",
++         "name": "medium",
++         "value": 2,
++       },
++       {
++         "label": "夹具risk_severities3",
++         "name": "high",
++         "value": 3,
++       },
++     ],
++     "task_states": [
++       {
++         "label": "待受理",
++         "name": "pending",
++         "value": 1,
++       },
++       {
++         "label": "开发中",
++         "name": "developing",
++         "value": 2,
++       },
++       {
++         "label": "阻塞",
++         "name": "blocked",
++         "value": 3,
++       },
++       {
++         "label": "待评审",
++         "name": "pending_review",
++         "value": 4,
++       },
++       {
++         "label": "待上线",
++         "name": "pending_release",
++         "value": 5,
++       },
++       {
++         "label": "已交付",
++         "name": "delivered",
++         "value": 6,
++       },
++       {
++         "label": "已回滚",
++         "name": "rolled_back",
++         "value": 7,
++       },
++     ],
++     "transition_actions": [
++       {
++         "label": "开始开发",
++         "name": "start",
++         "value": 1,
++       },
++       {
++         "label": "记录阻塞",
++         "name": "block",
++         "value": 2,
++       },
++       {
++         "label": "解除阻塞",
++         "name": "unblock",
++         "value": 3,
++       },
++       {
++         "label": "提交评审",
++         "name": "submit_review",
++         "value": 4,
++       },
++       {
++         "label": "通过评审",
++         "name": "approve_review",
++         "value": 5,
++       },
++       {
++         "label": "退回开发",
++         "name": "reject_review",
++         "value": 6,
++       },
++       {
++         "label": "确认交付",
++         "name": "deliver",
++         "value": 7,
++       },
++       {
++         "label": "记录回滚",
++         "name": "rollback",
++         "value": 8,
++       },
++       {
++         "label": "决定返工",
++         "name": "rework",
++         "value": 9,
++       },
++     ],
++   },
++   "iterations": [
++     {
++       "created_at": "2026-10-23T00:00:00Z",
++       "id": 1,
++       "plan": {
++         "buffer_hours": 2,
++         "capacity": [
++           {
++             "available_hours": 8,
++             "user_id": 1,
++           },
++         ],
++         "delay_contingency": "由经理记录新计划与依据",
++         "name": "夹具迭代",
++         "planned_end": "2026-10-24T00:00:00Z",
++         "planned_start": "2026-10-23T00:00:00Z",
++       },
++       "plan_version": 2,
++       "project_id": 1,
++       "updated_at": "2026-10-23T00:00:00Z",
++       "version": 3,
++     },
++   ],
++   "members": [
++     {
++       "active": true,
++       "project_id": 1,
++       "roles": [
++         1,
++         2,
++         3,
++       ],
++       "user": {
++         "display_name": "夹具用户",
++         "id": 1,
++         "username": "fixture-user",
++       },
++       "version": 1,
++     },
++   ],
+    "notice": "",
+-   "project": {},
++   "project": {
++     "created_at": "2026-10-23T00:00:00Z",
++     "created_by": 1,
++     "description": "仅模块测试使用",
++     "id": 1,
++     "my_roles": [
++       1,
++       2,
++       3,
++     ],
++     "name": "夹具项目",
++     "version": 1,
++   },
+    "projectId": null,
+    "projects": [],
+-   "rules": {},
+-   "taskChoices": [],
+-   "template": {},
++   "rules": {
++     "rules": [],
++     "scan_interval_seconds": 60,
++     "version": 1,
++   },
++   "taskChoices": [
++     {
++       "approved_assessment_id": null,
++       "approved_assessment_version": null,
++       "approved_review_id": null,
++       "artifact_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++       "block_reason": null,
++       "blocked_from_state": null,
++       "created_at": "2026-10-23T00:00:00Z",
++       "delivery_cycle": 1,
++       "description": "可追踪 fetch 夹具，不是后端数据",
++       "escalation_count": 0,
++       "id": 1,
++       "iteration_id": 1,
++       "latest_review_id": null,
++       "owner_id": 1,
++       "plan": {
++         "buffer_hours": 2,
++         "delay_contingency": "由经理记录新计划与依据",
++         "estimated_hours": 8,
++         "planned_end": "2026-10-24T00:00:00Z",
++         "planned_start": "2026-10-23T00:00:00Z",
++       },
++       "project_id": 1,
++       "responsibility_stage": null,
++       "review_cycle": 1,
++       "schedule_version": 1,
++       "state": 2,
++       "title": "夹具交付任务",
++       "updated_at": "2026-10-23T00:00:00Z",
++       "version": 1,
++     },
++   ],
++   "template": {
++     "decided_by": 1,
++     "effective_at": "2026-10-23T05:33:29Z",
++     "items": [
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R01",
++         "required": true,
++         "title": "审核身份与版本",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R02",
++         "required": true,
++         "title": "需求与范围",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R03",
++         "required": true,
++         "title": "接口兼容",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R04",
++         "required": true,
++         "title": "数据库兼容",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R05",
++         "required": true,
++         "title": "状态机",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R06",
++         "required": true,
++         "title": "权限与数据边界",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R07",
++         "required": true,
++         "title": "事务与并发",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R08",
++         "required": true,
++         "title": "幂等与故障",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R09",
++         "required": true,
++         "title": "测试证据真实性",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R10",
++         "required": true,
++         "title": "门禁与可合并性",
++       },
++     ],
++     "sections": [
++       {
++         "required": true,
++         "section_id": "scope_baseline",
++         "title": "审核对象与基线",
++       },
++       {
++         "required": true,
++         "section_id": "requirements_mapping",
++         "title": "需求映射",
++       },
++       {
++         "required": true,
++         "section_id": "change_scope",
++         "title": "变更与责任边界",
++       },
++       {
++         "required": true,
++         "section_id": "compatibility",
++         "title": "接口与数据库兼容",
++       },
++       {
++         "required": true,
++         "section_id": "correctness",
++         "title": "业务正确性",
++       },
++       {
++         "required": true,
++         "section_id": "evidence",
++         "title": "执行与证据",
++       },
++       {
++         "required": true,
++         "section_id": "findings",
++         "title": "问题与门禁判定",
++       },
++       {
++         "required": true,
++         "section_id": "conclusion",
++         "title": "结论与复审条件",
++       },
++     ],
++     "source": "docs/reviews/review-protocol.md; example effective_at/decided_by are synthetic",
++     "version": 1,
++   },
+    "user": null,
+  }
+
+ ❯ expectEmptyContext tmp/frontend/982_client.test.ts:45:73
+
+ ❯ tmp/frontend/982_client.test.ts:49:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > clears every session context on a current-session non-login 401
+AssertionError: expected { user: null, projectId: 1, …(10) } to deeply equal { user: null, projectId: null, …(10) }
+
+- Expected
++ Received
+
+  {
+    "contextWarning": "",
+-   "dictionaries": {},
++   "dictionaries": {
++     "assessment_statuses": [
++       {
++         "label": "夹具assessment_statuses1",
++         "name": "pending_review",
++         "value": 1,
++       },
++       {
++         "label": "夹具assessment_statuses2",
++         "name": "approved",
++         "value": 2,
++       },
++       {
++         "label": "夹具assessment_statuses3",
++         "name": "rejected",
++         "value": 3,
++       },
++     ],
++     "audit_outcomes": [
++       {
++         "label": "夹具audit_outcomes1",
++         "name": "accepted",
++         "value": 1,
++       },
++       {
++         "label": "夹具audit_outcomes2",
++         "name": "rejected",
++         "value": 2,
++       },
++     ],
++     "delivery_dispositions": [
++       {
++         "label": "夹具delivery_dispositions1",
++         "name": "outbox_pending",
++         "value": 1,
++       },
++       {
++         "label": "夹具delivery_dispositions2",
++         "name": "mq_confirmed",
++         "value": 2,
++       },
++       {
++         "label": "夹具delivery_dispositions3",
++         "name": "inbox_delivered",
++         "value": 3,
++       },
++       {
++         "label": "夹具delivery_dispositions4",
++         "name": "fallback_todo",
++         "value": 4,
++       },
++     ],
++     "escalation_levels": [
++       {
++         "label": "夹具escalation_levels1",
++         "name": "fixture_1",
++         "value": 1,
++       },
++       {
++         "label": "夹具escalation_levels2",
++         "name": "fixture_2",
++         "value": 2,
++       },
++       {
++         "label": "夹具escalation_levels3",
++         "name": "fixture_3",
++         "value": 3,
++       },
++     ],
++     "evidence_kinds": [
++       {
++         "label": "夹具evidence_kinds1",
++         "name": "repository",
++         "value": 1,
++       },
++       {
++         "label": "夹具evidence_kinds2",
++         "name": "document",
++         "value": 2,
++       },
++       {
++         "label": "夹具evidence_kinds3",
++         "name": "https_url",
++         "value": 3,
++       },
++     ],
++     "project_roles": [
++       {
++         "label": "夹具project_roles1",
++         "name": "manager",
++         "value": 1,
++       },
++       {
++         "label": "夹具project_roles2",
++         "name": "developer",
++         "value": 2,
++       },
++       {
++         "label": "夹具project_roles3",
++         "name": "reviewer",
++         "value": 3,
++       },
++     ],
++     "responsibility_stages": [
++       {
++         "label": "夹具responsibility_stages1",
++         "name": "intake",
++         "value": 1,
++       },
++       {
++         "label": "夹具responsibility_stages2",
++         "name": "development",
++         "value": 2,
++       },
++       {
++         "label": "夹具responsibility_stages3",
++         "name": "review",
++         "value": 3,
++       },
++       {
++         "label": "夹具responsibility_stages4",
++         "name": "release",
++         "value": 4,
++       },
++       {
++         "label": "夹具responsibility_stages5",
++         "name": "external_dependency",
++         "value": 5,
++       },
++     ],
++     "review_judgments": [
++       {
++         "label": "夹具review_judgments1",
++         "name": "pass",
++         "value": 1,
++       },
++       {
++         "label": "夹具review_judgments2",
++         "name": "fail",
++         "value": 2,
++       },
++       {
++         "label": "夹具review_judgments3",
++         "name": "unverified",
++         "value": 3,
++       },
++       {
++         "label": "夹具review_judgments4",
++         "name": "not_applicable",
++         "value": 4,
++       },
++     ],
++     "review_verdicts": [
++       {
++         "label": "夹具review_verdicts1",
++         "name": "pass",
++         "value": 1,
++       },
++       {
++         "label": "夹具review_verdicts2",
++         "name": "reject",
++         "value": 2,
++       },
++     ],
++     "risk_perspectives": [
++       {
++         "label": "夹具risk_perspectives1",
++         "name": "data",
++         "value": 1,
++       },
++       {
++         "label": "夹具risk_perspectives2",
++         "name": "permissions",
++         "value": 2,
++       },
++       {
++         "label": "夹具risk_perspectives3",
++         "name": "external_dependencies",
++         "value": 3,
++       },
++       {
++         "label": "夹具risk_perspectives4",
++         "name": "observability",
++         "value": 4,
++       },
++     ],
++     "risk_severities": [
++       {
++         "label": "夹具risk_severities1",
++         "name": "low",
++         "value": 1,
++       },
++       {
++         "label": "夹具risk_severities2",
++         "name": "medium",
++         "value": 2,
++       },
++       {
++         "label": "夹具risk_severities3",
++         "name": "high",
++         "value": 3,
++       },
++     ],
++     "task_states": [
++       {
++         "label": "待受理",
++         "name": "pending",
++         "value": 1,
++       },
++       {
++         "label": "开发中",
++         "name": "developing",
++         "value": 2,
++       },
++       {
++         "label": "阻塞",
++         "name": "blocked",
++         "value": 3,
++       },
++       {
++         "label": "待评审",
++         "name": "pending_review",
++         "value": 4,
++       },
++       {
++         "label": "待上线",
++         "name": "pending_release",
++         "value": 5,
++       },
++       {
++         "label": "已交付",
++         "name": "delivered",
++         "value": 6,
++       },
++       {
++         "label": "已回滚",
++         "name": "rolled_back",
++         "value": 7,
++       },
++     ],
++     "transition_actions": [
++       {
++         "label": "开始开发",
++         "name": "start",
++         "value": 1,
++       },
++       {
++         "label": "记录阻塞",
++         "name": "block",
++         "value": 2,
++       },
++       {
++         "label": "解除阻塞",
++         "name": "unblock",
++         "value": 3,
++       },
++       {
++         "label": "提交评审",
++         "name": "submit_review",
++         "value": 4,
++       },
++       {
++         "label": "通过评审",
++         "name": "approve_review",
++         "value": 5,
++       },
++       {
++         "label": "退回开发",
++         "name": "reject_review",
++         "value": 6,
++       },
++       {
++         "label": "确认交付",
++         "name": "deliver",
++         "value": 7,
++       },
++       {
++         "label": "记录回滚",
++         "name": "rollback",
++         "value": 8,
++       },
++       {
++         "label": "决定返工",
++         "name": "rework",
++         "value": 9,
++       },
++     ],
++   },
+    "iterations": [],
+    "members": [],
+    "notice": "",
+    "project": {},
+-   "projectId": null,
++   "projectId": 1,
+    "projects": [],
+-   "rules": {},
+-   "taskChoices": [],
+-   "template": {},
++   "rules": {
++     "rules": [],
++     "scan_interval_seconds": 60,
++     "version": 1,
++   },
++   "taskChoices": [
++     {
++       "approved_assessment_id": null,
++       "approved_assessment_version": null,
++       "approved_review_id": null,
++       "artifact_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++       "block_reason": null,
++       "blocked_from_state": null,
++       "created_at": "2026-10-23T00:00:00Z",
++       "delivery_cycle": 1,
++       "description": "可追踪 fetch 夹具，不是后端数据",
++       "escalation_count": 0,
++       "id": 1,
++       "iteration_id": 1,
++       "latest_review_id": null,
++       "owner_id": 1,
++       "plan": {
++         "buffer_hours": 2,
++         "delay_contingency": "由经理记录新计划与依据",
++         "estimated_hours": 8,
++         "planned_end": "2026-10-24T00:00:00Z",
++         "planned_start": "2026-10-23T00:00:00Z",
++       },
++       "project_id": 1,
++       "responsibility_stage": null,
++       "review_cycle": 1,
++       "schedule_version": 1,
++       "state": 2,
++       "title": "夹具交付任务",
++       "updated_at": "2026-10-23T00:00:00Z",
++       "version": 1,
++     },
++   ],
++   "template": {
++     "decided_by": 1,
++     "effective_at": "2026-10-23T05:33:29Z",
++     "items": [
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R01",
++         "required": true,
++         "title": "审核身份与版本",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R02",
++         "required": true,
++         "title": "需求与范围",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R03",
++         "required": true,
++         "title": "接口兼容",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R04",
++         "required": true,
++         "title": "数据库兼容",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R05",
++         "required": true,
++         "title": "状态机",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R06",
++         "required": true,
++         "title": "权限与数据边界",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R07",
++         "required": true,
++         "title": "事务与并发",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R08",
++         "required": true,
++         "title": "幂等与故障",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R09",
++         "required": true,
++         "title": "测试证据真实性",
++       },
++       {
++         "evidence_required_for_pass": true,
++         "item_id": "R10",
++         "required": true,
++         "title": "门禁与可合并性",
++       },
++     ],
++     "sections": [
++       {
++         "required": true,
++         "section_id": "scope_baseline",
++         "title": "审核对象与基线",
++       },
++       {
++         "required": true,
++         "section_id": "requirements_mapping",
++         "title": "需求映射",
++       },
++       {
++         "required": true,
++         "section_id": "change_scope",
++         "title": "变更与责任边界",
++       },
++       {
++         "required": true,
++         "section_id": "compatibility",
++         "title": "接口与数据库兼容",
++       },
++       {
++         "required": true,
++         "section_id": "correctness",
++         "title": "业务正确性",
++       },
++       {
++         "required": true,
++         "section_id": "evidence",
++         "title": "执行与证据",
++       },
++       {
++         "required": true,
++         "section_id": "findings",
++         "title": "问题与门禁判定",
++       },
++       {
++         "required": true,
++         "section_id": "conclusion",
++         "title": "结论与复审条件",
++       },
++     ],
++     "source": "docs/reviews/review-protocol.md; example effective_at/decided_by are synthetic",
++     "version": 1,
++   },
+    "user": null,
+  }
+
+ ❯ expectEmptyContext tmp/frontend/982_client.test.ts:45:73
+
+ ❯ tmp/frontend/982_client.test.ts:54:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > does not allow a late previous-session 401 to revoke a new session
+AssertionError: expected '' to be 'new-fixture-session' // Object.is equality
+
+- Expected
++ Received
+
+- new-fixture-session
+
+ ❯ tmp/frontend/982_client.test.ts:67:23
+     65|     api.token = 'new-fixture-session'; workspace.user = { ...user, id:…
+     66|     respond(new Response(JSON.stringify({ message: '旧会话已失效' }), { stat…
+     67|     expect(api.token).toBe('new-fixture-session'); expect(workspace.us…
+       |                       ^
+     68|   })
+     69|   it('does not hand a late successful response to a changed session, i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > does not hand a late successful response to a changed session, including delayed JSON decoding
+AssertionError: promise resolved "{ data: { id: 1, …(6) }, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "data": {
++     "created_at": "2026-10-23T00:00:00Z",
++     "created_by": 1,
++     "description": "仅模块测试使用",
++     "id": 1,
++     "my_roles": [
++       1,
++       2,
++       3,
++     ],
++     "name": "夹具项目",
++     "version": 1,
++   },
++   "meta": {
++     "contract_version": "1.1.0",
++     "original_request_id": null,
++     "replayed": false,
++     "request_id": "fixture-request",
++     "server_time": "2026-10-23T00:00:00Z",
++   },
+  }
+
+ ❯ tmp/frontend/982_client.test.ts:73:95
+     71|     const response = new Response('{}'); response.json = () => new Pro…
+     72|     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(response))
+     73|     const pending = request('getProject', { project_id: 1 }); const re…
+       |                                                                                               ^
+     74|     await Promise.resolve(); api.token = 'new-fixture-session'
+     75|     decode(envelope(project)); await rejected
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > does not restore the previous bootstrap identity after logout and a new login
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tmp/frontend/982_client.test.ts:85:32
+     83|     await logout(); api.token = 'new-fixture-session'; workspace.user …
+     84|     respond(new Response(JSON.stringify(envelope(user)))); await pendi…
+     85|     expect(workspace.user?.id).toBe(2); expect(workspace.projects[0]?.…
+       |                                ^
+     86|   })
+     87|   it('does not restore a same-project old context after logout and a n…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > session cleanup boundaries > does not restore a same-project old context after logout and a new login
+AssertionError: expected '夹具项目' to be '新会话上下文' // Object.is equality
+
+Expected: "新会话上下文"
+Received: "夹具项目"
+
+ ❯ tmp/frontend/982_client.test.ts:94:36
+     92|     await logout(); api.token = 'new-fixture-session'; workspace.user …
+     93|     respond(new Response(JSON.stringify(envelope(project)))); await pe…
+     94|     expect(workspace.project.name).toBe('新会话上下文'); expect(workspace.me…
+       |                                    ^
+     95|   })
+     96| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tmp/frontend/983_application.test.ts > session and user flows > unmounts authenticated DOM and overlays on logout and keeps them absent through history navigation
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tmp/frontend/983_application.test.ts:157:49
+    155|     await button(wrapper, '退出').trigger('click'); await settle()
+    156|     expect(wrapper.get('form').text()).toContain('已退出当前会话')
+    157|     expect(wrapper.find('.app-shell').exists()).toBe(false); expect(wr…
+       |                                                 ^
+    158|     expect(wrapper.find('.el-drawer').exists()).toBe(false); expect(wr…
+    159|     router.back(); await settle(); expect(wrapper.text()).not.toContai…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  2 failed | 1 skipped (3)
+      Tests  7 failed | 2 passed | 30 skipped (39)
+   Start at  02:41:30
+   Duration  2.71s (transform 67%, import 21%, environment 10%, tests 2%)
+
+[ELIFECYCLE] Test failed. See above for more details.

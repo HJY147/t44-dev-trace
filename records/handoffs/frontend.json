@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "warm-glass-and-empty-text-fix-validated",
-  "implementation_status": "fixture响应元版本跟随权威1.1.0、README同步；982七项/类型通过；1.1真实业务及容量行为未在本轮验证",
+  "stage": "session-r1-developer-follow-up-validated",
+  "implementation_status": "9560e7b补修旧错误/卸载回调边界，原895重放3绿、相邻9绿、全51绿；原3c审查NOT_PASSED历史保留，等待准确新HEAD复审与新隔离独立复测。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -457,27 +457,62 @@
         "agents/frontend/empty-value-*"
       ],
       "improvement_reason": "区分初始化输出与框架运行时props自动转换，用真实控件和表单回归红→绿，不猜业务默认。"
+    },
+    {
+      "id": "ROLE-frontend-LOGOUT-CLEANUP-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-LOGOUT-CLEANUP-v1.md",
+      "artifacts": [
+        "docs/ui/session-cleanup.md",
+        "frontend/src/workspace.ts",
+        "frontend/src/api.ts",
+        "frontend/src/App.vue",
+        "tmp/frontend/982_client.test.ts",
+        "tmp/frontend/983_application.test.ts",
+        "tmp/frontend/896_logout_browser.mjs",
+        "agents/frontend/logout-validation.json"
+      ],
+      "improvement_reason": "限制公开DOM缺陷范围，实际红绿覆盖完整缓存/DOM/异步边界；保留退出失败及原独立FAIL，不把开发修复记作学生或独立验收。"
+    },
+    {
+      "id": "ROLE-frontend-SESSION-R1-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-SESSION-R1-v1.md",
+      "artifacts": [
+        "docs/ui/session-cleanup.md",
+        "frontend/src/api.ts",
+        "frontend/src/components/OperationForm.vue",
+        "frontend/src/views/WorkspaceView.vue",
+        "frontend/src/components/LoginView.vue",
+        "frontend/src/components/TaskDrawer.vue",
+        "tmp/frontend/895_session_lifecycle_probe.test.ts",
+        "agents/frontend/session-r1-validation.json"
+      ],
+      "improvement_reason": "正视39绿漏掉错误/卸载组合，保留审核反例与真实红，双重检查会话归属和组件存活，不用改期待或截图替代证明。"
     }
   ],
-  "updated_at": "2026-10-24T01:51:47.549306+08:00",
+  "updated_at": "2026-10-23T19:11:38.950683+00:00",
   "delivery": {
-    "branch": "codex/frontend-warm-glass",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
-    "base": "codex/team-bootstrap",
+    "branch": "codex/frontend-logout",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "base": "codex/integration",
     "draft": true,
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
-    "status": "75c3468 pushed; warm visual840 and narrow empty text fix separately committed; root review pending",
-    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc",
-    "product_source_note": "Vue presentation/CSS/favicon changed; frozen API and business logic unchanged",
+    "status": "SESSION-R1 product9560e7b/evidence36d7681 pushed; Issue25/PR26 comments and PR body readback exact; new exact-HEAD review and independent retest pending",
+    "latest_checkpoint": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "product_source_note": "Frontend session context lifecycle and authenticated DOM changed; backend, API contract and business workflow unchanged.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
-    "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "application_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
     "stage_comments": {
       "warm_glass_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127",
       "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
       "empty_value_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371254382",
       "empty_value_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371257392",
-      "readback": "exact body match for all4"
-    }
+      "readback": "exact body match for all4",
+      "logout_issue": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551",
+      "logout_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+      "logout_readback": "agents/frontend/logout-github-verification.json"
+    },
+    "previous_warm_glass_branch": "codex/frontend-warm-glass",
+    "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -487,7 +522,7 @@
     "browser_result": "agents/frontend/warm-glass-browser/live-stable/results.json",
     "prototype_screenshots_reviewed": 8,
     "production_source_changed": true,
-    "implementation_status": "imported and developer checks completed; independent review pending",
+    "implementation_status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
     "test_script": "tmp/frontend/918_warm_glass_browser.mjs",
     "design_commit": "326f971",
     "application_commit": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
@@ -500,9 +535,83 @@
     "design_commit": "7369400",
     "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
     "validation": "agents/frontend/empty-value-validation.json",
-    "status": "developer checks passed; independent review pending",
+    "status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
     "initial_502_environment_failure_retained": true,
     "resumed_browser_passed": true,
     "source_coverage_not_rerun": true
+  },
+  "logout_cleanup": {
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/25",
+    "design_commit": "844bf71",
+    "application_commit": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+    "validation": "agents/frontend/logout-validation.json",
+    "status": "Historical source363 checks passed but exact head3c received reviewer NOT_PASSED/SESSION-R1; superseded by session_r1 developer follow-up, independent retest pending.",
+    "target_before": {
+      "failed": 7,
+      "passed": 2
+    },
+    "target_after_passed": 9,
+    "full_frontend_tests_passed": 39,
+    "source_file_count": 19,
+    "lines": {
+      "covered": 327,
+      "total": 351,
+      "pct": 93.16
+    },
+    "branches": {
+      "covered": 706,
+      "total": 804,
+      "pct": 87.81
+    },
+    "browser_screenshots_viewed": 8,
+    "browser_http": 60,
+    "browser_expected_401": 6,
+    "business_writes": 0,
+    "own_port5176_stopped": true,
+    "private_independent_material_read": false,
+    "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551"
+  },
+  "session_r1": {
+    "design_commit": "7dfefd2",
+    "application_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "reviewed_old_head": "3c160c57c56af47eea2c524d93340a679eeb441b",
+    "previous_review": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236",
+    "status": "developer checks completed; exact new-SHA review and independent retest pending",
+    "validation": "agents/frontend/session-r1-validation.json",
+    "reviewer_probe_unchanged_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
+    "reviewer_probe_before": {
+      "failed": 1,
+      "passed": 2
+    },
+    "reviewer_probe_after": {
+      "failed": 0,
+      "passed": 3
+    },
+    "adjacent_final_passed": 9,
+    "full_tests_passed": 51,
+    "lines": {
+      "covered": 347,
+      "total": 373,
+      "pct": 93.02
+    },
+    "branches": {
+      "covered": 755,
+      "total": 868,
+      "pct": 86.98
+    },
+    "source_files": 19,
+    "initial_driver_errors_retained": true,
+    "browser_screenshots_viewed": 8,
+    "browser_responses": 60,
+    "expected_401": 6,
+    "driver_session_logout_actions": 2,
+    "business_writes": 0,
+    "chrome_and_port5176_stopped": true,
+    "github_verification": "agents/frontend/session-r1-github-verification.json",
+    "comments": [
+      "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372739464",
+      "https://github.com/HJY147/t44-dev-trace/pull/26#issuecomment-6372739873"
+    ]
   }
 }

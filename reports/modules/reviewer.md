@@ -112,3 +112,9 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 设计844先于产品363，最终head3c160c57c56af47eea2c524d93340a679eeb441b。统一清理/认证DOM卸载和成功响应保护有明确实现；19源/14冻结/7原gzip及开发9目标与39全套/覆盖率分母均核验。root授权895纯组件探针1红2绿：旧卸载表单403仍跨会话调用refreshConflict，context在unmount序号检查前清空新身份项目，孤儿读取503后project={}。P2 SESSION-R1阻断专项，责任frontend，由root转发；不报服务端越权，不修产品、不撤销原独立FAIL。报告reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md；证据agents/reviewer/evidence/session-3c160c5。正式性能/完整独立/6051超5100（总协调给定，未重算）仍未通过。
 
 实际发布：证据commit7a544794de3c9dcfca09b0590c89000ab8bb624a已push，PR26 COMMENT5633150236已发布并特定review REST读回commit_id=3c160c57c56af47eea2c524d93340a679eeb441b、COMMENTED、正文完全相符：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236。回执agents/reviewer/evidence/session-3c160c5/github-comment.json。
+
+## SESSION-R1补修限定复审（babc/9560）
+
+准确headbabc60f275ec780bcd3044be455acfddc4a49e60，产品9560e7bd23b68eddbdb733a5ee671999f46a44cd，设计7df→代码9560→证据36d。原895字节f42a...不变，本岗只定向一次3/3、孤儿读取空且新项目保留；API错误/JSON守卫和组件active+token阻断旧回调，当前401/失败重试/幂等及服务端提交语义不变。19源/14冻结/10gzip与开发真红/驱动错/最终51绿和分母分别核验，不重跑全套。SESSION-R1限定关闭，原3c报告/独立FAIL保留，整产品仍不通过（原规模超限/正式P95失败/独立UI002/003及完整验收）。报告reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md，证据agents/reviewer/evidence/session-r1-babc60f，真实prompt ROLE-reviewer-SESSION-R1-FOLLOWUP-v1。
+
+发布回执：本岗证据19b9d1dd04005cfd1def2bee163a311b1197ed79已push；PR26 COMMENT5633421899真实发布并特定review REST核commit_id=babc完整SHA、COMMENTED与正文逐字一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899。回执agents/reviewer/evidence/session-r1-babc60f/github-comment.json。

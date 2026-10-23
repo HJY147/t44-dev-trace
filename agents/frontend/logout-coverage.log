@@ -1,0 +1,42 @@
+$ node scripts/prepare-tests.mjs && vitest run --coverage
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend-logout
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  39 passed (39)
+   Start at  02:43:43
+   Duration  2.95s (transform 58%, import 21%, tests 12%, environment 8%, worker 1%)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   88.99 |    87.81 |   85.08 |   93.16 |
+ src               |    92.3 |    85.83 |    88.4 |    91.6 |
+  App.vue          |    87.8 |    95.74 |   81.81 |    87.5 | 50,52-54
+  api.ts           |     100 |     90.9 |    87.5 |     100 | 7
+  contract.ts      |   98.18 |    91.83 |     100 |     100 | 20-21,34
+  forms.ts         |     100 |     86.2 |     100 |     100 | 10,16
+  main.ts          |       0 |      100 |     100 |       0 | 7
+  router.ts        |       0 |        0 |       0 |       0 | 7-26
+  workspace.ts     |      95 |    77.46 |     100 |     100 | ...51,57-58,62-63
+ src/components    |   94.89 |    90.73 |   92.55 |   97.98 |
+  DataState.vue    |   95.23 |    96.66 |     100 |     100 | 23
+  FieldEditor.vue  |     100 |    92.22 |     100 |     100 | 17,29,38,44,51,57
+  LoginView.vue    |     100 |    95.83 |     100 |     100 | 19
+  ...ationForm.vue |   94.64 |    83.56 |    87.5 |     100 | ...45,49-57,60-61
+  RecordList.vue   |   88.88 |    90.24 |      75 |     100 | 12-13
+  ...avigation.vue |   81.81 |    93.75 |   77.77 |   77.77 | 11,15
+  TaskDrawer.vue   |   91.93 |     89.7 |   92.85 |   96.77 | 32
+ src/views         |   74.67 |    85.11 |   70.76 |   84.74 |
+  ...spaceView.vue |   74.17 |    84.97 |   69.84 |   84.48 | 60-65,69,79-83,92
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 88.99% ( 566/636 )
+Branches     : 87.81% ( 706/804 )
+Functions    : 85.08% ( 194/228 )
+Lines        : 93.16% ( 327/351 )
+================================================================================

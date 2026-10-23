@@ -1,0 +1,15 @@
+flowchart TB
+  Gate[先通过既有鉴权 幂等 状态与版本前置] --> Op{工时相关操作}
+  Op -->|创建或允许阶段转派| Owner[接任人是有效developer]
+  Owner --> Capacity{接任人在当前迭代capacity中}
+  Capacity -->|是| Write[进入原成功事务与CAS]
+  Capacity -->|否| Reject[CAPACITY_REFERENCE_INVALID 不写任务]
+  Op -->|修改迭代计划| Set[读取该迭代状态1至5全部负责人]
+  Set --> Keep{新capacity包含全部负责人}
+  Keep -->|是| Write
+  Keep -->|否| Reject
+  Op -->|已回滚7返工到2| Restore[先恢复有效developer和当前迭代capacity]
+  Restore --> Guard[核对既有返工证据与依赖守卫]
+  Guard --> Write
+  Note[6已交付和7已回滚可移出工时
+项目成员和开发角色保护仍含1至5及7] -.-> Set

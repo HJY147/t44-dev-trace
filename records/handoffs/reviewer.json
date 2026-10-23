@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "PR26精确3c160c5会话清理专项：P2 SESSION-R1阻断，需前端修复",
-  "implementation_status": "源码审核/895探针/报告/PR26精确SHA COMMENT及读回完成；无产品改码；专项P2待owner修复",
+  "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
+  "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -73,7 +73,10 @@
     "reports/reviews/26-3c160c57c56af47eea2c524d93340a679eeb441b.md",
     "agents/reviewer/evidence/session-3c160c5",
     "tmp/frontend/895_session_lifecycle_probe.test.ts",
-    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt"
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt",
+    "reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md",
+    "agents/reviewer/evidence/session-r1-babc60f",
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt"
   ],
   "interfaces": [
     {
@@ -128,6 +131,12 @@
       "input": "Exact head3c160c5 / public Issue25 / developer source and raw evidence",
       "output": "P2 SESSION-R1, exact call chain, public895 failing component probe and raw log",
       "unresolved": "Owner must guard stale failure/unmounted callbacks and provide new SHA; original independent FAIL and full gates remain."
+    },
+    {
+      "peer": "coordinator -> frontend / next acceptance role",
+      "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
+      "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
+      "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
     }
   ],
   "commands_executed": [
@@ -284,6 +293,10 @@
     {
       "command": "895 targeted Vitest only; static source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633150236",
       "result": "Probe1failed/2passed exit1; 19source/14freeze match; COMMENTED exact body and target3c160c5 readback; own7a54479 push exit0."
+    },
+    {
+      "command": "Original895 targeted once; source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633421899",
+      "result": "3/3 exit0; 19source/14freeze/10raw logs match; current headbabc; COMMENTED exact body and commit; own19b9d1d push exit0."
     }
   ],
   "results": [
@@ -291,14 +304,16 @@
     "3源hash/6原gzip及可读规范化一致，红2→绿6和14受影响组证据真实保留",
     "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
     "FE-INIT-01限定关闭；不作为整产品放行",
-    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance."
+    "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
+    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
     "75没有重新覆盖率，不复用84092.81为精确新覆盖率",
     "840原完整focus与其他引擎场景未运行边界保持",
     "独立/正式性能/源码规模与整产品门禁仍未闭环",
-    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here."
+    "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
+    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review."
   ],
   "questions": [],
   "prompt_refs": [
@@ -476,9 +491,14 @@
       "id": "ROLE-reviewer-SESSION-CLEANUP-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt",
       "improvement_reason": "Separate success response guards from late error callbacks after unmount; verify through real component chain; do not overclaim server bypass."
+    },
+    {
+      "id": "ROLE-reviewer-SESSION-R1-FOLLOWUP-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
+      "improvement_reason": "Keep original probe bytes/red evidence; separate stale failures, current401 and driver corrections; limited closure is not whole-product acceptance."
     }
   ],
-  "updated_at": "2026-10-23T19:00:35.678306+00:00",
+  "updated_at": "2026-10-23T19:26:19.633660+00:00",
   "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
   "github_evidence": {
     "exact_body_readback": true,
@@ -954,5 +974,27 @@
     "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236",
     "github_exact_body_and_commit_readback": true,
     "evidence_commit": "7a544794de3c9dcfca09b0590c89000ab8bb624a"
-  }
+  },
+  "session_r1_followup": {
+    "head": "babc60f275ec780bcd3044be455acfddc4a49e60",
+    "product": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "status": "SESSION-R1_CLOSED_WITHIN_SCOPE",
+    "overall": "NOT_ACCEPTED",
+    "probe_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
+    "probe_result": {
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0,
+      "runs": 1
+    },
+    "source_hashes_match": 19,
+    "frozen_hashes_match": 14,
+    "raw_logs_match": 10,
+    "independent_retest": false,
+    "full_suite_rerun": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899",
+    "github_exact_body_and_commit_readback": true,
+    "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
+  },
+  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical."
 }

@@ -1,0 +1,301 @@
+{
+  "stage": "V2-UI-001 developer fix",
+  "operator": "AI frontend developer",
+  "checked_at": "2026-10-23T18:46:05.795841+00:00",
+  "basis_commit": "68eb5e1",
+  "design_commit": "844bf71e424496fe880434bb9efab53b625943d6",
+  "application_commit": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+  "source_sha256": {
+    "frontend/src/App.vue": "941eb6ec4c731dce169bfa37c69d99f9064b6f45c87905512eedd088e83bf0d7",
+    "frontend/src/api.ts": "786ed003b9473fde481dca0b678f7a2c6552fa818d7775b1fef707ed6a024b75",
+    "frontend/src/components/DataState.vue": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+    "frontend/src/components/FieldEditor.vue": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+    "frontend/src/components/LoginView.vue": "9bb8253595f26bdbb379bdc57f4e9e58a48e153e1a9fc6f9542a27ddb5428f70",
+    "frontend/src/components/OperationForm.vue": "125a3189b6981fb0077d0c0f9b086f44fe151fcf48f6565e0f6f37169fb96143",
+    "frontend/src/components/PageHeading.vue": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+    "frontend/src/components/RecordList.vue": "1b088ad8bea3b88cc7f03a91f10a47d106c5318cbedb61533ef296d9b4ac234b",
+    "frontend/src/components/RecordView.vue": "ece5fb17e4fa3643d609e8703cfbf2a02f165eab01b851b219f81e126cc7a9cc",
+    "frontend/src/components/SidebarNavigation.vue": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+    "frontend/src/components/TaskDrawer.vue": "7c29b5ab05a012648f289844ffe3ab6b5fb7cfd90b5855261e818817d1fe7b82",
+    "frontend/src/contract.ts": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+    "frontend/src/forms.ts": "0c0031e1caa4565a391976b53298c0ad05f2e4e9979f03dd2bb5ff2acc695b54",
+    "frontend/src/main.ts": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+    "frontend/src/navigation.ts": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+    "frontend/src/router.ts": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+    "frontend/src/views/NotFoundView.vue": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+    "frontend/src/views/WorkspaceView.vue": "21d95fc5995f730b38bf7e610e226e401544e00011313036d10c3f11b40bf7b2",
+    "frontend/src/workspace.ts": "847a3269f25315a159fb6b25345b118dbc18c62a0977fc5996ffdd0d55f41716"
+  },
+  "new_or_changed_checks_sha256": {
+    "tmp/frontend/982_client.test.ts": "8b8494e9589942f88ee946d41cac91fe1956a186935a10862c268c23f2f5e182",
+    "tmp/frontend/983_application.test.ts": "db9ba22c0e16769f413c1b575a3eeefc3d9712cb4d23fb0d6025948e9a7545b7",
+    "tmp/frontend/896_logout_browser.mjs": "245533e1c0e9afa3493f3c486166b918fd21e86b2a33adaec6b0f635280fdee2"
+  },
+  "coverage": {
+    "total": {
+      "lines": {
+        "total": 351,
+        "covered": 327,
+        "skipped": 0,
+        "pct": 93.16
+      },
+      "statements": {
+        "total": 636,
+        "covered": 566,
+        "skipped": 0,
+        "pct": 88.99
+      },
+      "functions": {
+        "total": 228,
+        "covered": 194,
+        "skipped": 0,
+        "pct": 85.08
+      },
+      "branches": {
+        "total": 804,
+        "covered": 706,
+        "skipped": 0,
+        "pct": 87.81
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "application_source_files": [
+      "frontend/src/App.vue",
+      "frontend/src/api.ts",
+      "frontend/src/components/DataState.vue",
+      "frontend/src/components/FieldEditor.vue",
+      "frontend/src/components/LoginView.vue",
+      "frontend/src/components/OperationForm.vue",
+      "frontend/src/components/PageHeading.vue",
+      "frontend/src/components/RecordList.vue",
+      "frontend/src/components/RecordView.vue",
+      "frontend/src/components/SidebarNavigation.vue",
+      "frontend/src/components/TaskDrawer.vue",
+      "frontend/src/contract.ts",
+      "frontend/src/forms.ts",
+      "frontend/src/main.ts",
+      "frontend/src/navigation.ts",
+      "frontend/src/router.ts",
+      "frontend/src/views/NotFoundView.vue",
+      "frontend/src/views/WorkspaceView.vue",
+      "frontend/src/workspace.ts"
+    ],
+    "covered_source_files": [
+      "frontend/src/App.vue",
+      "frontend/src/api.ts",
+      "frontend/src/components/DataState.vue",
+      "frontend/src/components/FieldEditor.vue",
+      "frontend/src/components/LoginView.vue",
+      "frontend/src/components/OperationForm.vue",
+      "frontend/src/components/PageHeading.vue",
+      "frontend/src/components/RecordList.vue",
+      "frontend/src/components/RecordView.vue",
+      "frontend/src/components/SidebarNavigation.vue",
+      "frontend/src/components/TaskDrawer.vue",
+      "frontend/src/contract.ts",
+      "frontend/src/forms.ts",
+      "frontend/src/main.ts",
+      "frontend/src/navigation.ts",
+      "frontend/src/router.ts",
+      "frontend/src/views/NotFoundView.vue",
+      "frontend/src/views/WorkspaceView.vue",
+      "frontend/src/workspace.ts"
+    ],
+    "exact_file_set_match": true,
+    "expected_file_count": 19,
+    "exclusions_added": false,
+    "raw_final_json_sha256": "00d7fce51dd3a98f520fb4db6b3129643ed6e5de48539c9bc838afa18d824dda"
+  },
+  "targeted_before": {
+    "exit_code": 1,
+    "failed": 7,
+    "passed": 2,
+    "not_selected": 30
+  },
+  "targeted_after": {
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 9,
+    "not_selected": 30
+  },
+  "full_tests": {
+    "exit_code": 0,
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0
+  },
+  "build": {
+    "exit_code": 0,
+    "includes_typecheck": true,
+    "large_chunk_warning_retained": true,
+    "javascript_kb": 825.72
+  },
+  "browser": {
+    "result": "agents/frontend/logout-browser/first/results.json",
+    "passed": true,
+    "widths": [
+      1440,
+      390
+    ],
+    "screenshots_viewed": [
+      "1440-signed-in.png",
+      "1440-logged-out.png",
+      "1440-back.png",
+      "1440-expired.png",
+      "390-signed-in.png",
+      "390-logged-out.png",
+      "390-back.png",
+      "390-expired.png"
+    ],
+    "api_request_count": 60,
+    "status_counts": {
+      "200": 54,
+      "401": 6
+    },
+    "driver_session_only_logout_actions": [
+      {
+        "width": 1440,
+        "method": "POST",
+        "path": "/api/v1/auth/logout",
+        "status": 200,
+        "purpose": "revoke this browser session without changing frontend memory"
+      },
+      {
+        "width": 390,
+        "method": "POST",
+        "path": "/api/v1/auth/logout",
+        "status": 200,
+        "purpose": "revoke this browser session without changing frontend memory"
+      }
+    ],
+    "business_writes": 0,
+    "page_errors": [],
+    "chrome_closed_at": "2026-10-23T18:44:35.566Z",
+    "own_vite_port": 5176,
+    "vite_stopped_exit_code": 130
+  },
+  "raw_logs": {
+    "agents/frontend/logout-initial-runner-error.log": {
+      "raw_sha256": "ed1f31668db31b3cdd0b365ce30c6d3cb4095f8e2736dd27574c982d0d9e9a7d",
+      "raw_archive": "agents/frontend/logout-initial-runner-error.raw.log.gz",
+      "readable_sha256": "ed1f31668db31b3cdd0b365ce30c6d3cb4095f8e2736dd27574c982d0d9e9a7d"
+    },
+    "agents/frontend/logout-runner-path-error.log": {
+      "raw_sha256": "b1513db4ffc51c3f831ded19d0e0fdc666767033361dd898904b6cc97970d511",
+      "raw_archive": "agents/frontend/logout-runner-path-error.raw.log.gz",
+      "readable_sha256": "b1513db4ffc51c3f831ded19d0e0fdc666767033361dd898904b6cc97970d511"
+    },
+    "agents/frontend/logout-before.log": {
+      "raw_sha256": "55f546902ea5da4f6f4a02d7f2906bf4e38e681aa62a880e7294ba6ca5680bce",
+      "raw_archive": "agents/frontend/logout-before.raw.log.gz",
+      "readable_sha256": "55f546902ea5da4f6f4a02d7f2906bf4e38e681aa62a880e7294ba6ca5680bce"
+    },
+    "agents/frontend/logout-after.log": {
+      "raw_sha256": "abb2100382c82d9b3611789d7e33f636ea58dd0f82361fa59cff1f4513ffb9b6",
+      "raw_archive": "agents/frontend/logout-after.raw.log.gz",
+      "readable_sha256": "1f662ed469c65fb84cd18a839a3ae2dcdff1b3d1f0aeeb4f4f19c715871b81e3"
+    },
+    "agents/frontend/logout-coverage.log": {
+      "raw_sha256": "6f7b6f336a179b83cd632e8d16d0a056fe65f2a65dbdecde073fd5e09733bcfa",
+      "raw_archive": "agents/frontend/logout-coverage.raw.log.gz",
+      "readable_sha256": "6d7534852d2f2d93c429f4421db7152afd4439ade74a9c28a47db5deeaa1e7dc"
+    },
+    "agents/frontend/logout-build.log": {
+      "raw_sha256": "4d7a36c21e43dbf5125b38f21c07a73ae57c272446fa38f8da6a2250d2b4799e",
+      "raw_archive": "agents/frontend/logout-build.raw.log.gz",
+      "readable_sha256": "8fd45f938cc536ab654e14192dbf83e4c04e5a757542f3ab2ddfdc1599adbcf0"
+    },
+    "agents/frontend/logout-browser-first.log": {
+      "raw_sha256": "5d0497bcdf867121329c100e8522fafff6b89881691e3e30e7a20064148b4990",
+      "raw_archive": "agents/frontend/logout-browser-first.raw.log.gz",
+      "readable_sha256": "5d0497bcdf867121329c100e8522fafff6b89881691e3e30e7a20064148b4990"
+    }
+  },
+  "frozen_files": {
+    "AGENTS.md": {
+      "expected": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b",
+      "actual": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b",
+      "matches": true
+    },
+    "specs/requirements.md": {
+      "expected": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc",
+      "actual": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc",
+      "matches": true
+    },
+    "specs/business-rules.md": {
+      "expected": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2",
+      "actual": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2",
+      "matches": true
+    },
+    "specs/backend-design.md": {
+      "expected": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda",
+      "actual": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda",
+      "matches": true
+    },
+    "specs/contracts/openapi.json": {
+      "expected": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "actual": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "matches": true
+    },
+    "specs/contracts/README.md": {
+      "expected": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+      "actual": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+      "matches": true
+    },
+    "specs/database/field-dictionary.md": {
+      "expected": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "actual": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "matches": true
+    },
+    "specs/database/schema.sql": {
+      "expected": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "actual": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "matches": true
+    },
+    "specs/database/persistence-contract.md": {
+      "expected": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "actual": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "matches": true
+    },
+    "docs/collaboration/implementation-layout.md": {
+      "expected": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "actual": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "matches": true
+    },
+    "docs/reviews/review-protocol.md": {
+      "expected": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "actual": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "matches": true
+    },
+    "backend/t44/contracts/openapi.json": {
+      "expected": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "actual": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "matches": true
+    },
+    "backend/t44/persistence/schema_v1.sql": {
+      "expected": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "actual": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "matches": true
+    },
+    "specs/changes/capacity-lifecycle-v1.1.md": {
+      "expected": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "actual": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "matches": true
+    }
+  },
+  "limits": [
+    "Developer regressions do not supersede original independent FAIL or establish independent retest.",
+    "No backend, API contract or business workflow changed; in-flight writes may commit server-side even when their old response is discarded.",
+    "No full security, accessibility, cloud deployment or formal performance acceptance.",
+    "Application source count policy unchanged; coordinator must recompute complete pinned physical source gate."
+  ],
+  "runner_errors": [
+    "Initial pnpm path was incorrect: MODULE_NOT_FOUND, exit1 before tests.",
+    "Second runner lacked node in script PATH, exit1 before tests. Both originals retained; neither is product failure."
+  ]
+}
