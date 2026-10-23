@@ -207,3 +207,11 @@ specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给
 ## A精确7584 CI归档与PR29
 
 精确7584（产品153、先行勘误5a）product40012517513四任务成功：437/0failure/error/skip，markers139/84/17重叠；43文件集合与生产Git完全相同、excluded0，行88.881167%、分支78.663239%。原件/SHA见preflight-ci-40012517513及preflight-ci-summary.json；固定cloc6108超5100计1008。新草稿PR29绑定此实现，旧PR16仅历史；root指定review_backend_preflight对7584 COMMENT，未APPROVE或全局通过。后续纯证据[skip ci]经root允许、产品/测试/配置字节仍7584，不冒称新metadata HEAD另测；未运行任何新性能负载。Issue28只有设计对接，另阶段。
+
+## Issue28理由出口设计（尚未实现）
+
+独立分支codex/backend-plan-reason从已集成A的9826233开始；RFC specs/changes/plan-history-reason-projection-rfc.md及plan-reason-design-examples.json使用现AuditEvent.after理由条目，无冻结API/DDL/版本变化。新schedule audit拟在原成功事务保存原文；旧task audit只有精确project/task/排期版本、task版本、actor/time、完整前后计划和evidence均可唯一核对才投影，不修改原audit。旧iteration缺定位信息、changeIteration没有任务批改，不能猜或串入任务历史。重复/满50条/缺失/2000字符及前端raw-text与局部缺失提示边界均列明。
+
+当前RowsGateway缺有限tuple-pair谓词，向DB owner提出最多100精确pair、空集0SQL/非空1批、完整rows/稳定排序/明确异常的固定门面；旧/database消息未送达，根另派DB，尚未确认/交付。前端真实需求来源Issue28的6373333383，现通用RecordView不能保证理由原文显示，须后续frontend owner执行。
+
+本轮离线8/8审计数据形状、14hash/31path38ops通过，见plan-reason-design-static.json；无关联算法/HTTP/真库/CI/负载验证，无产品/测试/配置改动。KeyError离线检查笔误如实保留。净LOC预算仅待实现+66..121，不能解决原6108超限。Issue28评论6373605774逐字回读一致；等待根设计准入、DB入口及必要986/985红绿、前端阶段和独立复测，不把旧437CI移植为本设计执行结果。

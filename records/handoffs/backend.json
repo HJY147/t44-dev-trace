@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "A source7584 exactCI437passed archived; draftPR29, dedicatedCOMMENTreview pending",
-  "implementation_status": "onlyruntime.py A+realcaller compatibility;14freeze/B/C preserved; no performance/size acceptance",
+  "stage": "Issue28 plan-history reason design-only; root review/DB finite pair gateway pending",
+  "implementation_status": "A integrated at root9826233; this stage no production/test/config/freeze changes; reason projection unimplemented",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -1371,5 +1371,41 @@
     "CI_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698",
     "CI_PR": "https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190",
     "metadata_commit_scope": "evidence-only [skip ci] permitted byroot; production/tests/config byteidentical7584"
+  },
+  "plan_history_reason_design": {
+    "base": "982623381e9cfa1d6a7bad1de222e160503cbf08",
+    "branch": "codex/backend-plan-reason",
+    "prompt": "agents/backend/PLAN-REASON-DESIGN-dispatch.md",
+    "rfc": "specs/changes/plan-history-reason-projection-rfc.md",
+    "examples": "agents/backend/plan-reason-design-examples.json",
+    "static": "agents/backend/plan-reason-design-static.json",
+    "wire": "existing AuditEvent.after[{field:reason,value:raw text}], no frozen field/version change",
+    "old_history": "exact project/task/schedule from-to/task version/actor/microsecond time/full five-plan/evidence; immutable read projection only, no guessing",
+    "iteration": "changeIteration does not reschedule tasks; old audit lacks sufficient linkage and stays unavailable",
+    "db_proposal": "RowsGateway.task_schedule_changes(project_id,pairs), <=100 exact pairs, empty zero SQL, one parameterized bounded batch, full decoded rows/stable sort; needs DB owner",
+    "db_delivery": "old /database message failed agent thread limit reached; not delivered/confirmed; root will dispatch new DB instance",
+    "frontend": "current frontend_logout notified; existing Issue28 comment6373333383 requires raw text/title and relevant-record missing marker; unimplemented",
+    "validation": "8 AuditEvent examples schema-only passed with FormatChecker;14freeze hash unchanged;31paths/38ops",
+    "not_run": [
+      "matcher",
+      "SQL",
+      "HTTP",
+      "pytest",
+      "full CI",
+      "performance",
+      "independent acceptance"
+    ],
+    "production_delta": 0,
+    "estimated_future_effective_loc_delta": [
+      66,
+      121
+    ],
+    "loc_budget_is_measured": false,
+    "size_limit": "root prior6108 exceeds5100; no new whole-source count or claimed improvement",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373605774",
+    "readback_matches": true,
+    "ci_skip": "root explicitly allowed design-only [skip ci]",
+    "next": "root review -> DB owner fixed gateway -> explicit implementation admission -> existing986/985 meaningful red/green and owned realMySQL fixtures; frontend separately assigned",
+    "new_script_number_used": null
   }
 }
