@@ -167,3 +167,5 @@
 - 1440/390各真实退出200→back→reload，重新登录后真实撤销当前token→UI刷新401，认证shell/前项目名/cards/overlays全部无残留。8PNG逐张实际查看，页面错误0、横溢出0；未执行全安全/无障碍/正式性能或独立复测。
 - Chrome18:44:35.566UTC已退出，5176主动Ctrl-C exit130；用户5173、独立5175/18084/原数据未操作。全19源hash、14冻结hash和raw gzip留logout-validation.json。AI代码/提示词/开发验证，不记学生发现或人工修改，原独立FAIL仍待新隔离复测。
 - 证据整理一次误读handoff键为prompts（实际prompt_refs），Python在最终写入前KeyError退出，无handoff半写；核对结构后修正。它是记录脚本错误，不计产品测试失败。
+- 4439309阶段证据已本岗commit/push；Issue25实际评论 https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551 和专项draft PR26 https://github.com/HJY147/t44-dev-trace/pull/26 已创建，正文逐字读回匹配。初建PR瞬间mergeable=false，后续真实GET为true，状态传播不是代码冲突；最新回执保存。没有APPROVE、reviewer状态或main合并。
+- 公开可读目标日志的EOF空白被git diff --cached --check实际拒绝一次；未commit，先保留原始gzip，再规范EOF并更新readable hash后重新检查通过。结束时仅移除本worktree的frontend/node_modules符号链接，根依赖目录未删。

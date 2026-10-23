@@ -477,11 +477,11 @@
   "updated_at": "2026-10-23T18:47:40.436584+00:00",
   "delivery": {
     "branch": "codex/frontend-logout",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/26",
     "base": "codex/integration",
     "draft": true,
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
-    "status": "developer evidence complete; awaiting push, dedicated draft PR, exact-SHA review and independent retest",
+    "status": "pushed and dedicated draft PR26 created; source363ac4d/evidence4439309; exact-SHA review and independent retest pending",
     "latest_checkpoint": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
     "product_source_note": "Frontend session context lifecycle and authenticated DOM changed; backend, API contract and business workflow unchanged.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
@@ -491,9 +491,13 @@
       "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
       "empty_value_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371254382",
       "empty_value_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371257392",
-      "readback": "exact body match for all4"
+      "readback": "exact body match for all4",
+      "logout_issue": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551",
+      "logout_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+      "logout_readback": "agents/frontend/logout-github-verification.json"
     },
-    "previous_warm_glass_branch": "codex/frontend-warm-glass"
+    "previous_warm_glass_branch": "codex/frontend-warm-glass",
+    "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -503,7 +507,7 @@
     "browser_result": "agents/frontend/warm-glass-browser/live-stable/results.json",
     "prototype_screenshots_reviewed": 8,
     "production_source_changed": true,
-    "implementation_status": "imported and developer checks completed; independent review pending",
+    "implementation_status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
     "test_script": "tmp/frontend/918_warm_glass_browser.mjs",
     "design_commit": "326f971",
     "application_commit": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
@@ -516,7 +520,7 @@
     "design_commit": "7369400",
     "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
     "validation": "agents/frontend/empty-value-validation.json",
-    "status": "developer checks passed; independent review pending",
+    "status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
     "initial_502_environment_failure_retained": true,
     "resumed_browser_passed": true,
     "source_coverage_not_rerun": true
@@ -549,6 +553,8 @@
     "browser_expected_401": 6,
     "business_writes": 0,
     "own_port5176_stopped": true,
-    "private_independent_material_read": false
+    "private_independent_material_read": false,
+    "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551"
   }
 }
