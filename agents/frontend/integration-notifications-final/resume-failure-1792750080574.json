@@ -1,0 +1,777 @@
+{
+  "phase": "resume",
+  "checks": [
+    "真实经理账号登录，选择升级链演示项目",
+    "1440/390七个页面与规则：候选样式DOM核对、手机导航和整页无横向溢出"
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/3/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/audit-events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/audit-events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/iterations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/review-template",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/escalation-rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/10/tasks/20",
+      "status": 200
+    }
+  ],
+  "browserErrors": [],
+  "consoleErrors": [],
+  "error": "locator.waitFor: Error: strict mode violation: locator('.el-drawer') resolved to 3 elements:\n    1) <div role=\"dialog\" aria-modal=\"true\" aria-label=\"项目成员与角色\" class=\"el-drawer rtl\" aria-describedby=\"el-id-7875-33\">…</div> aka getByLabel('项目成员与角色')\n    2) <div role=\"dialog\" aria-modal=\"true\" class=\"el-drawer rtl\" aria-describedby=\"el-id-7875-35\" aria-label=\"前端通知读与处理回归 1792749635963\">…</div> aka getByRole('dialog', { name: '前端通知读与处理回归' })\n    3) <div role=\"dialog\" aria-label=\"主导航\" aria-modal=\"true\" aria-describedby=\"el-id-7875-1\" class=\"mobile-navigation el-drawer ltr\">…</div> aka getByLabel('主导航').nth(2)\n\nCall log:\n\u001b[2m  - waiting for locator('.el-drawer') to be hidden\u001b[22m\n",
+  "stack": "locator.waitFor: Error: strict mode violation: locator('.el-drawer') resolved to 3 elements:\n    1) <div role=\"dialog\" aria-modal=\"true\" aria-label=\"项目成员与角色\" class=\"el-drawer rtl\" aria-describedby=\"el-id-7875-33\">…</div> aka getByLabel('项目成员与角色')\n    2) <div role=\"dialog\" aria-modal=\"true\" class=\"el-drawer rtl\" aria-describedby=\"el-id-7875-35\" aria-label=\"前端通知读与处理回归 1792749635963\">…</div> aka getByRole('dialog', { name: '前端通知读与处理回归' })\n    3) <div role=\"dialog\" aria-label=\"主导航\" aria-modal=\"true\" aria-describedby=\"el-id-7875-1\" class=\"mobile-navigation el-drawer ltr\">…</div> aka getByLabel('主导航').nth(2)\n\nCall log:\n\u001b[2m  - waiting for locator('.el-drawer') to be hidden\u001b[22m\n\n    at /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend/tmp/frontend/958_integration-browser.mjs:188:38",
+  "overflowingElements": [
+    {
+      "tag": "DIV",
+      "class": "topbar__right",
+      "left": 343.265625,
+      "right": 589.796875
+    },
+    {
+      "tag": "LABEL",
+      "class": "project-picker",
+      "left": 343.265625,
+      "right": 513.265625
+    },
+    {
+      "tag": "SELECT",
+      "class": "",
+      "left": 343.265625,
+      "right": 513.265625
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button is-text",
+      "left": 533.265625,
+      "right": 589.796875
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 548.265625,
+      "right": 574.796875
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button",
+      "left": 374.9375,
+      "right": 464.0625
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 390.9375,
+      "right": 448.0625
+    },
+    {
+      "tag": "LABEL",
+      "class": "compact-filter",
+      "left": 295,
+      "right": 403.265625
+    },
+    {
+      "tag": "SELECT",
+      "class": "",
+      "left": 316.265625,
+      "right": 403.265625
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button is-disabled",
+      "left": 295,
+      "right": 412.6875
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 311,
+      "right": 396.6875
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button",
+      "left": 295,
+      "right": 412.6875
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 311,
+      "right": 396.6875
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button is-disabled",
+      "left": 295,
+      "right": 412.6875
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 311,
+      "right": 396.6875
+    },
+    {
+      "tag": "BUTTON",
+      "class": "el-button",
+      "left": 295,
+      "right": 412.6875
+    },
+    {
+      "tag": "SPAN",
+      "class": "",
+      "left": 311,
+      "right": 396.6875
+    },
+    {
+      "tag": "DIV",
+      "class": "el-drawer rtl",
+      "left": -550,
+      "right": 390
+    },
+    {
+      "tag": "SPAN",
+      "class": "el-drawer__sr-focus",
+      "left": -550,
+      "right": 390
+    },
+    {
+      "tag": "HEADER",
+      "class": "el-drawer__header",
+      "left": -550,
+      "right": 390
+    }
+  ],
+  "formErrors": [],
+  "candidatesMatched": [
+    {
+      "width": 1440,
+      "page": "overview",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "tasks",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "schedule",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "notifications",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "rules",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "audit",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "projects",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 1440,
+      "page": "reviews",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "overview",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "tasks",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "schedule",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "notifications",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "rules",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "audit",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "projects",
+      "checked_selectors": 83,
+      "counts": []
+    },
+    {
+      "width": 390,
+      "page": "reviews",
+      "checked_selectors": 83,
+      "counts": []
+    }
+  ],
+  "screenshots": [
+    "resume-1440-tasks.png",
+    "resume-1440-schedule.png",
+    "resume-1440-notifications.png",
+    "resume-390-tasks.png",
+    "resume-390-schedule.png",
+    "resume-390-notifications.png"
+  ]
+}

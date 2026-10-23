@@ -75,3 +75,11 @@
 - 958初次等待文案写成“扫描间隔”而实际“扫描间隔（秒）”超时，修改精确选择器后布局检查通过；原失败保留。输出路径曾用URL.pathname编码中文，已以fileURLToPath修正并把本人产物迁回正确目录；无凭据写入。Python图像比较因未装PIL未运行，改为PNG字节hash和真实图片人工核对，不编造像素分析。
 - CSS后pnpm build含vue-tsc通过；CSS55.30→49.99kB（gzip10.36→9.19），JS822.65kB提示保留；TS/Vue未进一步改变，最近24项/行92.19%结果仍有效。
 - CSS checkpoint暂存检查发现原browser-before日志EOF空行，commit未执行；原字节先存raw gzip，再规范可读日志尾空白后重检。真实UI新建task20/version1/schedule_version1供新通知事件，prepare首轮误把TaskMutationResult当Task读取失败但已创建task19，失败保留；后轮按data.task读取成功。不重置旧任务或事件。
+- 后续总协调提供专用project10/service session72 escalation:write身份并授权只为新任务造事件。先把task20/version1/schedule_version1交根；根确认不重复创建后，本岗958以0600内存读取service access_token，冻结内部接口只发一次，真实202创建event173，task_version2、recipient_ids[4,5]；未打印/提交Token。原响应记录后脚本误将Node Response.ok属性当函数，exit1，事件已创建且未重试；修脚本属性用法，原错误日志保留。根随后负责真实dev故障worker生成通知。
+
+### 2026-10-23T18:11:07+08:00｜通知真实写/只读复查完成
+- 根确认真实故障worker使event173 status4并生成通知3/4；本岗只操作manager通知3，未重置旧项/未操作owner通知4。根公开记录records/validation/frontend-notification-worker.json：首次回执SQL用错列，worker已成功；本岗不冒称自己执行worker或Rabbit成功链。
+- 958 PHASE=final真实UI对通知3：read200后read_at非空、handled_at=null，已读按钮禁用/处理仍可用；随后填写说明及证据，handling200。三次权威GET task20均state1/version2；已读和处理不解除阻塞/不挤占任务版本。该运行在上述业务断言全部完成后，立即关闭抽屉并resize390的溢出断言失败，原JSON/日志完整保留在integration-notifications。
+- 只读resume首轮因多个隐藏drawer严格选择器失败，后改为目标任务标题；再轮跨2动画帧测得immediateOverflow=true、settledOverflow=false，稳定手机无溢出，不改产品CSS。之后浏览器innerText不含折叠details里的收件人而失败；真实展开完整记录后再断言。所有失败在integration-notifications-final/settled保留，未重放通知写或降低业务断言。
+- 最终PHASE=resume真实114 HTTP全成功、pageerror/console0：1440/390七页与rules、已处理通知3/禁用按钮、任务state1/version2、升级收件人详情/规则/审计均通过；最终JSON和手机已处理截图integration-notifications-complete。原写运行不是exit0；完整证据由原写运行的业务断言和最终只读复查组成，如实分开。
+- Chrome均已关闭，本岗5173 Vite已Ctrl-C停止exit130；已告知总协调可开始性能静默窗口。本岗不再运行浏览器/构建/业务请求，仅Git/记录交接。最近产品验证仍为24项/行92.19%，CSS后vue-tsc/build成功；本轮后续只改测试脚本和记录，不重复低价值构建。

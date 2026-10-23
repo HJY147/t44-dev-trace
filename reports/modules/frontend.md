@@ -1,50 +1,48 @@
-# 前端模块报告｜完整业务接入阶段
+# 前端模块报告｜完整后端接入收尾
 
-## 状态与边界
-- 实际派工 ROLE-frontend-APPLICATION-v1；安全快进合入6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73。
-- 冻结依据：OpenAPI1.0.0、D001/D004、v1冻结记录；本轮未改后端、部署或规格。
-- 已实现完整人类可见前端流程；内部服务升级入口不向人类账号提供操作按钮。
-- 通知/升级后端门面尚未接入，真实503如实显示；不能把UI或夹具通过写成其真实业务可用。
+## 当前实现与边界
+- 岗位 frontend；当前 Prompt-Ref ROLE-frontend-INTEGRATION-v1，派工原文 records/prompts/ROLE-frontend-INTEGRATION-v1.md。
+- worktree .agent-worktrees/frontend；codex/frontend-app；草稿 PR14；安全快进整合基线 ff83bc98。
+- 冻结 OpenAPI1.0.0、D001/D004；未改规格/后端/部署/独立测试。
+- 登录、失效/退出、项目创建/选择/成员、迭代/容量、任务/负责人/排期差异/依赖均有真实界面。
+- 九种动作覆盖七态；八段十项证据评审；四视角风险/回滚预案、不同人审核、经理交付/回滚/返工。
+- 通知个人列表、已读与处理分开、项目升级/规则/审计已接冻结契约；当前完整后端读取均200。
+- 内部升级服务入口不提供人类操作按钮；页面不判断状态/超期/依赖满足，不运行扫描定时器。
 
-## 实际代码与流程
-- frontend/src/api.ts：统一operationId调用、同源/api/v1、内存Bearer、401失效和可恢复写意图。
-- workspace.ts：真实项目/成员/迭代/模板/字典/规则加载，分页收集上下文、拒绝后刷新。
-- contract.ts/forms.ts：引用冻结结构，AJV填写校验、中文标签与API枚举展示，未新增本地状态机。
-- LoginView/App：登录、口令清空、内存会话、失效提示、当前项目切换与真实退出。
-- WorkspaceView：项目创建与成员角色/移除、迭代与人力容量、任务登记/筛选/分页、通知及审计。
-- TaskDrawer：任务详情、负责人/排期/前置依赖、九种流转表单、评审/评估/决定/升级/差异历史。
-- OperationForm/FieldEditor：中文嵌套对象/数组、布尔、枚举、北京时间输入、证据和版本核对。
-- 评审按API模板初始化八段十项，不默认判通过；上线风险按API四视角，预案与审核分别提交。
-- RecordList/RecordView：手机卡片、完整只读记录与安全HTTPS链接，无v-html或固定成功数据。
+## 客户端与反馈
+- 同源/api/v1，内存Bearer；口令不缓存，401清理会话；证据安全链接，无v-html。
+- 网络/503内容不变时保留同body/key供用户重试，改内容新意图；不自动换key重试。
+- 403解释权限、409保留表单并主动刷新/明确采用新版本、422映射JSON Pointer字段。
+- 重放后读取最新资源；正式缺陷C-P2修复：完成提示标明历史结果，不用历史snapshot宣称当前状态。
+- 正式缺陷C-P1修复：迭代读取record.plan，名称/容量完整预填；下拉/标题读取plan.name。
+- 手机卡片、抽屉、标签、键盘焦点、跳过导航和reduced-motion规则保留。
 
-## 错误、安全及上下游
-- 网络/503只在用户重试时复用同body同幂等键；修改内容才成为新操作，不自动换键重发。
-- 403解释权限；409保留表单并主动刷新，由用户明确采用新版本；422对应JSON Pointer字段提示。
-- 相同操作回放后另取最新记录；客户端不决定状态、权限、依赖满足或升级时机，不运行扫描定时器。
-- Token和口令不进URL/日志/截图/持久缓存；真实账号只从ignored0600文件在headless内存读取。
-- 后端实际询问及答复留application-interface.md；部署继续dist、生产同源/api/v1，dev代理18080。
-- 升级规则/通知暂503时不遮盖其他业务，也不把通知阅读当作解除阻塞或处理完成。
+## 模块测试与实际失败
+- 全量tmp/frontend/998_foundation、983_application、982_client测试共24项通过；981冻结夹具。
+- 19个src TS/Vue完整分母，main/router的0覆盖保留：行92.19%(307/333)、分支86.76%、函数83.78%。
+- 只设行80%门槛；夹具代表模块自测，不代表真API或独立验收。
+- 原错误flattened迭代夹具由Git历史保留；更换冻结结构后新增回归先得到3失败21通过，再修复。
+- 中途提交测试漏必填证据、选择器文案不符、测试响应解包和原日志尾空白失败均留证；未降低断言。
+- vue-tsc/build通过；CSS清理后49.99kB/gzip9.19，JS822.65kB/gzip162.04；保留>500kB提示。
 
-## 验证与证据
-- 冻结锁安装、vue-tsc/build通过：application-frozen-install.log、application-build-final2.log。
-- 21项Vue交互/状态/错误测试通过：application-test-coverage-final2.log；fetch夹具只代表模块自测。
-- src全部19个TS/Vue进入分母，无排除未测页面；行92.21%、分支86.13%、函数83.85%。
-- 只给行设置80%门槛；main/router仍0覆盖且留在分母；manifest/summary可核对完整文件列表。
-- 真浏览器→Vite→FastAPI→MySQL共282条HTTP：application-real-browser-result.json，含每次方法/路径/状态。
-- 实测任务登记、改期与依赖增删、经理越权403、阻塞/解除、开发者开始及提交、八段十项证据评审。
-- 实测四风险预案、不同账号审核、经理交付/回滚/返工，七态均真实发生；审计与手机卡片查询通过。
-- 真实截图application-screenshots/desktop-real.png、mobile-real.png，1440/390宽；无整页横向溢出。
-- JS pageerror为0；33条console资源错误对应预期403和未实现门面的503，未声称console零错误。
-- 所有初始失败日志/browser-failure保留：测试环境/日期/可选证据revision问题由AI修复并回归。
-- bundle约823kB/gzip162kB，有构建体积提示；未抬高阈值掩盖，后续可分块。
+## 真实浏览器与样式证据
+- tmp/frontend/984_application-real-browser.mjs：更新后的完整后端再次真实七态/评审/预案/回滚返工/审计。
+- integration-full/application-real-browser-result.json：282 HTTP，pageerror0；console仅预期经理越权403一条。
+- tmp/frontend/958_integration-browser.mjs：CSS前后各94 HTTP；1440/390七页及rules均无整页横溢出，console/pageerror0。
+- 83条旧foundation规则经19源码静态/动态类/ElementPlus祖先和真实DOM0命中核对后删除，styles297→214行。
+- 删除依据integration-css-removal.json；不minify、不改统计范围、不删业务或可访问性。
+- 任务桌面/手机及手机通知PNG字节一致；桌面通知人工核对布局一致；排期因新增演示记录内容变化，未冒称全部像素一致。
+- C-P1真UI创建迭代→嵌套计划/容量预填→8改12→权威响应保留新容量、任务下拉名称通过。
+- 完整后端通知GET/规则/历史已200；旧预留项已处理的失败保留，另建新事件验证，不重置历史。
+- 真UI新建task20→内部202创建event173→根执行真实故障worker→通知3；read后仍未处理、显式handling后完成，三次权威GET均state1/version2。
+- 原写运行完成业务断言后，在关闭抽屉即刻resize断言失败；保留原失败，不重置/重放通知。稳定后仅只读复查114 HTTP全成功、console/pageerror0。
+- 只读复查明确immediateOverflow=true/settledOverflow=false；等待目标抽屉实际关闭与展开详情后验证手机/升级收件人，未改产品或降低业务断言。
 
-## 交接与限制
-- 本岗WORKLOG、handoff、ROLE-frontend-APPLICATION-v1实际派工和Issue/PR正文一起提交。
-- 真浏览器数据是隔离演示项目的合成业务记录，不是人工生产发布/回滚决定。
-- 代码、纠错与测试由frontend AI执行；总协调静态反馈不算用户亲改或自动计作幻觉案例。
-- 后续消息/升级接好后另做完整页面回归；未做正式性能、安全全面实测或独立验收，不替代其结论。
+## 发布与限制
+- 最小缺陷修复88e7df805c37824ac1b6b2ed2813e01504481156；CSS/全后端回归bfa1625ac40df4eed0648ab629c5778bf47490cc，均已push。
+- PR14持续推送并仅COMMENT；最终SHA以PR HEAD/提交记录为准；未合main/设置审核通过；审核959复验由owner负责。
+- 原application阶段503记录是当时事实；当前结果以上述integration证据为准，历史日志未重写。
+- 真实数据均为隔离演示记录；不代表实际生产发布决定；headless viewport非手机真机。
+- 未做独立验收、正式并发性能/全面安全；Rabbit成功链不以本岗浏览器或fallback替代。
 
-本轮收尾 checkpoint：冻结 Iteration 的 plan/name/capacity 嵌套预填与历史幂等重放提示已修；新增回归先复现3失败21通过，日志 agents/frontend/integration-ui-regression-before.log（raw gzip保留）。完整后端通知/升级浏览器与CSS清理尚待本轮后续，不将模块修复等同独立验收。
-本checkpoint最终验证：24项通过；全src行92.19%、分支86.76%、函数83.78%；vue-tsc/build通过。真实后端页面回归未在该checkpoint宣称完成。
-
-收尾CSS/完整后端checkpoint：真实删除83条旧规则(297→214行)，before/layout各94 HTTP全成功、零浏览器错误；七态完整后端再跑282 HTTP通过，只有预期经理403资源错误。C-P1真HTTP迭代容量8→12已证实；通知GET200、写回归等待新合成事件，原失败保留。CSS构建49.99kB，vue-tsc/build通过；细节agents/frontend/integration-*。
+最终证据：agents/frontend/integration-notifications/（真实写与首次失败）、integration-notifications-complete/（114HTTP只读通过和手机截图）；本岗5173与Chrome已停止。

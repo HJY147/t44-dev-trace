@@ -17,3 +17,17 @@
 ## 本轮执行对应
 
 先修正式缺陷，再做真实通知/升级/审计与 CSS。冻结结构由契约校验；保留修复前失败与中途测试填写遗漏；不改审核断言。实现与测试分别对应 frontend/src、tmp/frontend/981-983 与958；实际日志在 agents/frontend/integration-*。
+
+## 新通知数据准备实际追加授权原文
+
+你无需等inactive BE回复：自己通过UI/公开API在现有项目新建符合计划的临期/超期任务属于已授权测试数据准备，可生成新未读项。root马上给你project10范围的新独立service-token JSON0600，供958按冻结内部escalation请求生成事件；真实worker故障降级可用同dev运行环境，不把同一旧通知重置未读。请先自行create新task（别清/重置已有事件），给根task_id/expected_version+schedule_version，需要根触发后端只操作此新任务即可。源scope权限不变、不改cases弱断言。
+
+root已签发你专用project10范围service-token：.agent-worktrees/.runtime/frontend-integration-service.json（0600，session_id72，scope escalation:write）。可仅为你新建验证任务调用冻结创建升级接口，不能重置旧通知；读access_token不打印或进HTTP日志。新task若已创建请给ID/versions，root可实际跑dev MQ故障worker生成通知，亦可你按BE运行环境跑独立进程；这是dev测试准备不影响acceptance/perf。
+
+执行边界：仅通过现有前端创建新合成任务20并把公共ID/版本交总协调触发，未输出或提交service-token；不重新置旧通知。
+
+## 实际执行继续
+
+前述“service-token尚未调用”仅描述等待时状态；总协调后续原文：“收到，我不重复创建 task20 的升级事件。你创建成功后只回报公开 event_id；我立即用真实 dev MQ 故障 worker 消费该事件生成通知，不重置旧项。bfa1625 将合入根分支。最后回归完成后先释放槽，随后数据库岗处理审核 C-P4。”
+
+本岗据此只调用一次冻结内部接口为新task20创建event173，真实202；service-token仅内存Bearer，不输出/归档。内部入口仍未添加产品按钮；worker由总协调执行。
