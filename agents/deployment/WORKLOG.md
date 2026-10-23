@@ -205,3 +205,5 @@
 - 本次最终bc5a的92文件SHA/44Py20TSVue、三个明确私密输入与新18088/5178空闲预检均通过，旧监听baseline已存。原42243仍未启动应用；截至该checkpoint尚未安装phase2依赖或启动服务。下一步才进行已获根准入的有限实际周期，产品CI/专审与独立/性能/云不由本岗推定。
 
 - 纠正4c3e4c4最后一条预检表述：实际该命令先以SOURCE_DENOMINATOR_MISMATCH退出1，后续记录写早；未开始依赖/服务。根清单44Py/20TSVue是backend与frontend/src口径，全清单另含2个deployment Py和vite.config.ts（总46Py/21TSVue）。已修正统计范围，92文件仍全部核SHA，新增额外部署/配置文件仍必须核hash的守卫；20守卫/Ruff及真实源/私密/端口预检现全部通过，原失败JSON保留。
+
+- 根进一步明确分母为backend/t44/**与frontend/src/**；补齐真实44/20代表fixture并另加2部署Py/Vite配置，历史4c3e4c4实现原错误真实红、窄修真实绿，额外部署文件hash错、真实productionfile hash错/缺失各自仍拒绝。20项/Ruff通过，red/green原输出另档；phase1守卫未重跑。

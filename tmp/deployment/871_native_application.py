@@ -93,14 +93,25 @@ class ApplicationGuards(unittest.TestCase):
             appmod.verify_binding(self.project, self.binding_file, self.commit)
 
     def test_deployment_and_vite_files_are_hashed_but_not_business_denominator(self):
-        for name in ("deployment/guard_tool.py", "frontend/vite.config.ts"):
+        for name in ([f"backend/t44/module_{index}.py" for index in range(43)]
+                     + [f"frontend/src/module_{index}.ts" for index in range(19)]
+                     + ["deployment/guard_tool.py", "deployment/guard_tool2.py", "frontend/vite.config.ts"]):
             path = self.source / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(b"# Extra hash-checked configuration fixture\n")
             self.binding["source_files"][name] = digest_file(path)
+        self.binding.update(python_file_count=44, ts_vue_file_count=20)
         self.write_binding()
         appmod.verify_binding(self.project, self.binding_file, self.commit)
         (self.source / "deployment/guard_tool.py").write_bytes(b"changed")
+        with self.assertRaises(ValueError):
+            appmod.verify_binding(self.project, self.binding_file, self.commit)
+        (self.source / "deployment/guard_tool.py").write_bytes(b"# Extra hash-checked configuration fixture\n")
+        (self.source / "backend/t44/module_0.py").write_bytes(b"changed production source")
+        with self.assertRaises(ValueError):
+            appmod.verify_binding(self.project, self.binding_file, self.commit)
+        (self.source / "backend/t44/module_0.py").write_bytes(b"# Extra hash-checked configuration fixture\n")
+        (self.source / "backend/t44/module_0.py").unlink()
         with self.assertRaises(ValueError):
             appmod.verify_binding(self.project, self.binding_file, self.commit)
 

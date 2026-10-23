@@ -84,7 +84,7 @@ def verify_binding(project, path, expected=None):
             raise ValueError("SOURCE_HASH_MISMATCH")
     # Coordinator denominators describe backend and frontend/src business source;
     # deployment helpers and vite.config.ts remain hash-checked above.
-    py = sum(name.startswith("backend/") and name.endswith(".py") for name in binding["source_files"])
+    py = sum(name.startswith("backend/t44/") and name.endswith(".py") for name in binding["source_files"])
     ts = sum(name.startswith("frontend/src/") and name.endswith((".ts", ".vue")) for name in binding["source_files"])
     if (py, ts) != (binding["python_file_count"], binding["ts_vue_file_count"]):
         raise ValueError("SOURCE_DENOMINATOR_MISMATCH")
