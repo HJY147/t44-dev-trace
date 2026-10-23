@@ -129,3 +129,9 @@ seed旧规则字段由DB修复后全套314通过、0失败、3本机Rabbit未配
 新增开发回归先13失败、另8失败/2通过，再最终55个HTTP/SQLite通过，日志/JUnit在agents/backend/iat02-*及iat05-*；全Ruff/Bandit通过。985已补真MySQL专项但本机尚未执行，等待新源CI；不把本岗修复称独立复测通过。IAT01旧65007a远端CI已成功，不能当新源结果。容量转派/移除及大iteration.capacity公开差异待正式取舍。
 
 955诊断进程固定18083并记录实际import文件/关键SHA，防PYTHONPATH旧源误记新HEAD；未启动。原18082/验收/perf库未触碰。业务checkpoint后先协调Word渲染的CPU空闲窗口再1/8/32短样本，性能阈值与5866超5100事实未解决。
+
+## IAT业务远端CI闭环
+
+源479fc8f的product39946771417已全成功：JUnit362通过、0失败/错误/跳过；含985的5个真实MySQL HTTP用例（原1+新增4）。全43个t44文件、0排除，2524/2850行88.56%、分支78.11%、综合86.33%。原失败、MySQL用例名称、raw log/JUnit/coverage及summary在agents/backend/iat02-05-ci-*。没有独立复测或正式性能通过声明。
+
+955追加仅契约校验的public bootstrap+闭环client，1:1:1候选分布逐响应检查valid/无violations并保存实际比例，凭据fixture仅ignored0600。第一诊断窗口拟1worker、1/8/32短样本及1并发少量profile，仍未启动；运行前告实际源码SHA/UTC，不能对原4worker400VU/600秒外推收益。

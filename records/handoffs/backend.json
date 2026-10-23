@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Published IAT01-05 developer repair checkpoint2;55 HTTP/SQLite passed; new MySQL cases await CI",
+  "stage": "IAT01-05 developer fixes confirmed by real-service CI362pass0skip; preparing first contract diagnostic window",
   "implementation_status": "IAT01-05 frozen-scope fixes implemented with developer regressions; independent retest/performance pending",
   "artifacts": [
     {
@@ -402,9 +402,9 @@
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "new combined source real MySQL regression and whole-source CI/coverage",
     "independent retest",
-    "performance thresholds and source range"
+    "performance thresholds",
+    "final source range"
   ],
   "questions": [
     {
@@ -551,8 +551,8 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T11:31:12.536848+00:00",
-  "current_stage": "Published IAT01-05 developer repair checkpoint2;55 HTTP/SQLite passed; new MySQL cases await CI",
+  "updated_at": "2026-10-23T11:44:36.883636+00:00",
+  "current_stage": "IAT01-05 developer fixes confirmed by real-service CI362pass0skip; preparing first contract diagnostic window",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
     "entrypoints": [
@@ -705,7 +705,7 @@
       "agents/backend/performance-diagnostics-plan.md",
       "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
     ],
-    "tool_status": "written/formatted/Ruff passed; no CLI invocation/server/workload",
+    "tool_status": "server+public bootstrap+contract client prepared,Ruff passed; no server/load started yet",
     "production_changes": false,
     "isolated_target": "t44_profile / 127.0.0.1:18083 /1worker/max120sec; not started",
     "blocked_execution_prerequisites": [
@@ -724,7 +724,8 @@
     "next_priority": "coordinator has just published two allowed report files; stage A ends, IAT business fixes before stage B",
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
     "execution_gate": "after stable business checkpoint, report exact source+short1/8/32 plan and await coordinator CPU window separate from Word rendering",
-    "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code"
+    "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
+    "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests"
   },
   "iat_repairs_v1": {
     "source_report_verification": "agents/backend/iat-public-report-verification.json",
@@ -750,9 +751,9 @@
     },
     "pending": [],
     "unverified": [
-      "new combined source real MySQL regression and whole-source CI/coverage",
       "independent retest",
-      "performance thresholds and source range"
+      "performance thresholds",
+      "final source range"
     ],
     "IAT-v1-02..05": {
       "status": "55 real HTTP/SQLite cases passed; Ruff/Bandit passed",
@@ -778,6 +779,79 @@
       ],
       "mysql_cases": "added in existing985, not run locally; awaiting new source CI",
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608"
+    },
+    "combined_ci": {
+      "tested_product_source": "479fc8fbb1c1abac1055a25f935d30c247c90f69",
+      "run": 39946771417,
+      "status": "all four product jobs success",
+      "junit": {
+        "tests": 362,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "mysql_http_cases": [
+        {
+          "name": "test_real_mysql_atomic_workflow_and_competing_cas",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[True]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[False]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_invalid_selectors_keep_independent_rejection_audits",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_capacity_plan_audit_and_input_errors",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_concurrent_notification_cas_exactly_one_update[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_list_scope_serializes_with_membership_revocation[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_worker_default_confirmed_recovery_preserves_complete_event[mysql]",
+          "classname": "messaging.980_delivery"
+        }
+      ],
+      "coverage_scope": "all43 backend/t44 files,excluded_lines0",
+      "totals": {
+        "covered_lines": 2524,
+        "num_statements": 2850,
+        "percent_covered": 86.33351739370514,
+        "percent_covered_display": "86.33",
+        "missing_lines": 326,
+        "excluded_lines": 0,
+        "percent_statements_covered": 88.56140350877193,
+        "percent_statements_covered_display": "88.56",
+        "num_branches": 772,
+        "num_partial_branches": 109,
+        "covered_branches": 603,
+        "missing_branches": 169,
+        "percent_branches_covered": 78.10880829015544,
+        "percent_branches_covered_display": "78.11"
+      },
+      "markers": {
+        "contract": 64,
+        "integration": 56,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "not_claimed": [
+        "independent retest",
+        "formal performance",
+        "final3500-5100source range"
+      ]
     }
   }
 }

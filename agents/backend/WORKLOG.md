@@ -186,3 +186,9 @@
 - 真实最终986 HTTP/SQLite55passed，iat02-05-final.log/xml；Ruff全backend/t44+tmp/backend退出0，Bandit退出0；旧44pass/54pass中间结果如实保留。增加985真MySQL专项（含IAT01两邻接、非法ID独立审计、容量、完整2000字计划/错误码）并共享原fixture，没有删除原并发CAS断言；本机未运行这些新MySQL专项，交新源远端CI，不把SQLite当实库。旧65007a的远端39944613492已success，状态另存，不能代新源。
 - 955按root纠错改18083并记录实际port；原18082属于独立性能服务，从未绑定/停它。诊断启动前校验实际模块路径/关键文件SHA和脚本树Git HEAD/干净源码，拒绝PYTHONPATH旧快照；源工具未启动、未发诊断负载，仅格式和Ruff检查。Stage B须避Word渲染窗口，先报告精确SHA/1、8、32短阶梯，1worker结果不当4worker正式性能收益。原270ms/400/600秒不变、源码规模仍未解决。
 - checkpoint2实际Issue评论：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608；PR16正文/标题按公开缺陷修复最终范围更新，仍draft。计划合根2e0481f已审核基础后交新源CI，不重跑根旧335结果。
+
+## IAT业务CI闭环与阶段B契约入口驱动准备
+
+- 479fc8fbb1c1abac1055a25f935d30c247c90f69真实product39946771417四任务均success；原始JUnit362/0failure/0error/0skip。985当前5项（原1+新增4，不是新增5），包含真实MySQL评估supersede两邻接、非法任务选择器/独立审计及容量/完整计划/错误码；原SQLiteless证据未冒充实库。contract64/integration56/fault7各自通过，可重叠。日志/覆盖JSON/JUnit见iat02-05-ci-*。
+- 全43个backend/t44，excluded0，2524/2850行88.5614%，分支78.1088%，含分支86.3335%。这是新业务源CI，不是独立复测/性能通过。root已允许第一阶段仅契约入口1:1:1短诊断，文档LO暂停让CPU窗口；按exactactualimport对齐，不比较原4worker正式批为收益。
+- 955同文件补public-API bootstrap和client模式，私密fixture0600只留ignored目录；客户端仅127.0.0.1:18083，候选登记/流转/评估循环，检查HTTP200、valid=true、business_guards_executed=false、对应operation/category、无violations；记录实际比例、E2E/Server-Timing/状态/请求ID/CPU，无Bearer/载荷。支持1/8/32线程闭环及profile少量请求上限，空worker/任何失败不算成功。静态Ruff通过，尚未启动新工具；业务backend/t44与479完全相同。开始前另告精确SHA/UTC。
