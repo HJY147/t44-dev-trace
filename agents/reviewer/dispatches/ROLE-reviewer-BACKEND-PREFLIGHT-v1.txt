@@ -1,0 +1,11 @@
+实际派工来源：AI总协调 /root；以下为实际消息原文，本文件ID为本次归档索引，不是新增用户人工提示词迭代。
+
+你是T44专门代码审核岗（AI代码审核不是学生人工修改或独立黑盒测试）。仅在 /Users/yang/Desktop/nothing/软件开发大作业 下工作。项目公开 https://github.com/HJY147/t44-dev-trace，根integration PR21草稿；后端PR16。请审核精确候选7584cd31f0abfd6727d552b5fef31a9303247d58（分支codex/backend-runtime-plan，产品commit153b9c8c72acc76c5295ae3890236a2ac279b476），相对后端5dcb73cc10c38deb14fae68d33318b04d538fecf；冻结14文件/契约不许改。先读根AGENTS.md/agents/reviewer相关岗工作方式、specs/changes/runtime-roundtrip-reduction-rfc.md、records/decisions/A-runtime-preflight-implementation-admission.json及自己的精确diff，创建自己独立worktree codex/review-backend-preflight。A目标是把请求授权+幂等claim初始预检的正常新写3个UoW减为2，不减少3次实际鉴权/既有SQL或锁，不弱化logout/session/member/idem/CAS/audit/commit不确定性语义。原authorize(call)供scanner和原claim(call)供旧988必须保留，组合方法复用_claim(g,call)。根先前AI漏查调用方已真实纠正，审查是否完整，不默许测试只迎合新实现。可读开发者公开自己raw tests，禁止读任何 tmp/independent*、independent worktree/未明确发布私密证据（消息隔离）。先静态查所有调用点/事务和并发边界/异常路径/原tests不被削弱。只在必要时用自己现有公开小测试/静态探针，新的测试文件需我分配883起，不可自行占号；不要正式/ABBA负载，不占MySQL全局停库、不改demo/独立DB、不重复整套。CI40012517513尚在跑由后端归档。将具体问题按文件/行/触发结果给我；无问题也准确有限结论，不全局通过。自己的审查报告/WORKLOG/module/handoff与真实GitHub PR16 COMMENT、精确body读回回执，分阶段commit/push自己branch，禁止APPROVE同账户。不要改生产代码，有问题先报。独立提交不等用户。
+
+实际总协调续派原文：
+
+根connector也核实PR16未绑定7584，已请后端在当前CI终态后新建codex/backend-runtime-plan→integration独立draft PR，保留旧PR不改强推。你继续静态审核/必要有限探针，待后端新号在精确7584提交COMMENT；没新号时先本地报告，不把PR16旧head当本次审核head。感谢这条真实流程缺口发现，记录AI审查，不写学生发现。
+
+实际总协调PR29续派原文：
+
+新draft PR29已创建：https://github.com/HJY147/t44-dev-trace/pull/29 ，当前head7584精确、baseintegration，旧PR16保留。请准确COMMENT绑定7584，记录readback。CI40012517513四jobsuccess，后端正在原件归档（可独立核metadata）；开发报告全437/0失败错误跳过、43文件2558/2878=88.881%、branch612/778，尚非根已归档结论。你仅有限11定向+静态/证据核对，不复制CI当自己实跑。保留6108规模不通过/无性能证据，报告后可释放槽位我将启动新独立设计角色。

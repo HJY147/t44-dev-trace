@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
-  "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
+  "stage": "PR29 A预检合并限定代码审核7584/153b；无新阻断，整产品不放行",
+  "implementation_status": "限定静态/11现有小测/公开原件及CI元数据核对完成；真实COMMENT/readback待发布；无生产修改",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -76,7 +76,10 @@
     "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt",
     "reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md",
     "agents/reviewer/evidence/session-r1-babc60f",
-    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt"
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
+    "reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md",
+    "agents/reviewer/evidence/backend-preflight-7584cd3",
+    "agents/reviewer/dispatches/ROLE-reviewer-BACKEND-PREFLIGHT-v1.txt"
   ],
   "interfaces": [
     {
@@ -137,6 +140,12 @@
       "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
       "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
       "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
+    },
+    {
+      "peer": "coordinator/backend -> reviewer",
+      "input": "Exact7584/product153b/base5dcb and public developer evidence; PR16 old head corrected by newdraftPR29",
+      "output": "Limited code review no new material blocker;14freeze match/11targetedpass/legacy interfaces maintained",
+      "unresolved": "Full CI originals remain backend archival;6108 size over5100; performance and independent acceptance not granted"
     }
   ],
   "commands_executed": [
@@ -297,6 +306,10 @@
     {
       "command": "Original895 targeted once; source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633421899",
       "result": "3/3 exit0; 19source/14freeze/10raw logs match; current headbabc; COMMENTED exact body and commit; own19b9d1d push exit0."
+    },
+    {
+      "command": "Own candidate986_http -k preflight once; inline AST/hash; GitHub PR29 and workflow jobs; gh read-only run40012517513 metadata",
+      "result": "11pass/91deselected; initial no-pytest failure retained;14freeze/6methods/claimalgorithm same; no old test removals; CI4success/exact7584; no fullsuite/MySQL/load rerun"
     }
   ],
   "results": [
@@ -305,7 +318,8 @@
     "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
     "FE-INIT-01限定关闭；不作为整产品放行",
     "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
-    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged."
+    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged.",
+    "A7584/153b bounded code review: no new material blocker; old scanner/claim caller omission corrected; overall not accepted. PR29 exact head confirmed; COMMENT awaiting actual publication."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
@@ -313,7 +327,8 @@
     "840原完整focus与其他引擎场景未运行边界保持",
     "独立/正式性能/源码规模与整产品门禁仍未闭环",
     "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
-    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review."
+    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review.",
+    "No reviewer MySQL/full-suite/CI-artifact/full-performance/independent rerun;437 and coverage detail currently developer notification;6108 source count coordinator/backend-provided, not recounted."
   ],
   "questions": [],
   "prompt_refs": [
@@ -496,10 +511,15 @@
       "id": "ROLE-reviewer-SESSION-R1-FOLLOWUP-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
       "improvement_reason": "Keep original probe bytes/red evidence; separate stale failures, current401 and driver corrections; limited closure is not whole-product acceptance."
+    },
+    {
+      "id": "ROLE-reviewer-BACKEND-PREFLIGHT-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-BACKEND-PREFLIGHT-v1.txt",
+      "improvement_reason": "Scan real cross-module callers and compare old assertions; bind candidate to actual PR chain before reviewing; separate limited11case replay and metadata from developer fullCI."
     }
   ],
-  "updated_at": "2026-10-23T19:26:19.633660+00:00",
-  "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
+  "updated_at": "2026-10-23T19:45:59.156385+00:00",
+  "review_outcome": "No new material blockers in bounded A runtime change; overall NOT_ACCEPTED",
   "github_evidence": {
     "exact_body_readback": true,
     "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
@@ -566,7 +586,7 @@
     "reported_freeze_commit": "ae60dc3",
     "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "review_target_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "review_target_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
   "previous_foundation_review": {
     "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
     "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
@@ -753,7 +773,7 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "review_scope": "Only empty JSON string Boolean casting fix compared with840; published621 evidence, no new product tests",
+  "review_scope": "A write preflight merge and restored real callers; no private independent evidence or performance run",
   "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
   "previous_capacity_rfc_review": {
     "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
@@ -805,8 +825,8 @@
       "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
     ]
   },
-  "latest_review_report": "reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md",
-  "latest_review_evidence": "agents/reviewer/evidence/empty-value-75c/verification.json",
+  "latest_review_report": "reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md",
+  "latest_review_evidence": "agents/reviewer/evidence/backend-preflight-7584cd3/static-audit.json",
   "readonly_uow_design": {
     "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
     "applied": false,
@@ -996,5 +1016,50 @@
     "github_exact_body_and_commit_readback": true,
     "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
   },
-  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical."
+  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
+  "previous_session_r1_phase": {
+    "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
+    "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
+    "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
+    "review_target_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "latest_review_report": "reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md",
+    "latest_review_evidence": "agents/reviewer/evidence/empty-value-75c/verification.json"
+  },
+  "backend_preflight_review": {
+    "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+    "product": "153b9c8c72acc76c5295ae3890236a2ac279b476",
+    "base": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "pr": 29,
+    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
+    "overall": "NOT_ACCEPTED",
+    "new_findings": [],
+    "frozen14_unchanged": true,
+    "source_python_files": 43,
+    "targeted_tests": {
+      "passed": 11,
+      "deselected": 91,
+      "runs": 1,
+      "exit_code": 0
+    },
+    "initial_environment_failure_retained": true,
+    "mysql_rerun": false,
+    "full_suite_rerun": false,
+    "new_test_files": [],
+    "ci_metadata": {
+      "run_id": 40012517513,
+      "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+      "jobs_success": 4,
+      "full_originals_reaudited": false
+    },
+    "source_count": {
+      "value": 6108,
+      "source": "Coordinator/backend notice, not reviewer recount",
+      "passed": false
+    },
+    "github_comment": null,
+    "github_exact_body_and_commit_readback": false,
+    "status_mutations": [],
+    "approve": false,
+    "merged": false
+  }
 }

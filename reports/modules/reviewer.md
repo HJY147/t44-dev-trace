@@ -118,3 +118,10 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 准确headbabc60f275ec780bcd3044be455acfddc4a49e60，产品9560e7bd23b68eddbdb733a5ee671999f46a44cd，设计7df→代码9560→证据36d。原895字节f42a...不变，本岗只定向一次3/3、孤儿读取空且新项目保留；API错误/JSON守卫和组件active+token阻断旧回调，当前401/失败重试/幂等及服务端提交语义不变。19源/14冻结/10gzip与开发真红/驱动错/最终51绿和分母分别核验，不重跑全套。SESSION-R1限定关闭，原3c报告/独立FAIL保留，整产品仍不通过（原规模超限/正式P95失败/独立UI002/003及完整验收）。报告reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md，证据agents/reviewer/evidence/session-r1-babc60f，真实prompt ROLE-reviewer-SESSION-R1-FOLLOWUP-v1。
 
 发布回执：本岗证据19b9d1dd04005cfd1def2bee163a311b1197ed79已push；PR26 COMMENT5633421899真实发布并特定review REST核commit_id=babc完整SHA、COMMENTED与正文逐字一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899。回执agents/reviewer/evidence/session-r1-babc60f/github-comment.json。
+
+
+## A预检合并限定审核（PR29，7584/153b）
+
+相对5dcb只Runtime生产变化；14冻结摘要/字节一致，authorize旧AST与claim共享算法保持，scanner和旧988/974入口未删。首Tx普通auth→validate→带sessionS认领，主Tx再auth及原锁/CAS/audit/outbox/COMPLETE，GET/login/logout/原只读校验分流保持。原测试无删减，985 CAS按实际两key取行并新增全COMPLETE与HTTPrequest_id严格断言。限定未发现新生产阻断，既往caller漏审/2真红作为AI纠错保留。
+
+本岗只定向现有986 preflight 11/11，91未选；公开15raw/6summary摘要已核，未重跑MySQL/全套/负载。根环境缺pytest首失败、静态误猜974路径失败及恢复均保留。PR16旧head缺口已报告，后端新PR29精确7584；CI40012517513四job及准确run/head metadata实核成功，437/覆盖率原件归backend归档，不冒称本岗实跑。6108规模超限来自root/backend通知未重计；无性能收益数据，整体仍不通过。报告reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md；证据agents/reviewer/evidence/backend-preflight-7584cd3。COMMENT精确发布/读回另补，无APPROVE/status/merge。
