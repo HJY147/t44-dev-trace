@@ -193,7 +193,7 @@
     }
   ],
   "framework_support_files": "conftest.py and __init__.py contain fixtures/package setup, not test cases; retained required names under tmp/backend",
-  "next_number": 953,
+  "next_number": 951,
   "reservations": [
     {
       "number": 972,
@@ -298,6 +298,18 @@
       "path": "tmp/reviewer/954_capacity_freeze_static.py",
       "role": "reviewer",
       "status": "allocated for relocation of newly introduced freeze consistency check; original run paths kept in history"
+    },
+    {
+      "number": 953,
+      "path": "tmp/deployment/953_acceptance_environment.py",
+      "role": "deployment",
+      "status": "allocated for neutral Linux environment guard self-checks, not independent cases"
+    },
+    {
+      "number": 952,
+      "path": "tmp/backend/persistence/952_ddl_ast_poc.py",
+      "role": "database",
+      "status": "allocated for isolated DDL AST evaluation; no production parser change authorized"
     }
   ]
 }
