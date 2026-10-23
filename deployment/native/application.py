@@ -265,6 +265,31 @@ def matches_process(record, actual, *, leader=True):
     ) and (not leader or actual["pgid"] == actual["pid"])
 
 
+def connection_products(rows, username, vhost):
+    """Decode Rabbit4.3.6 JSON: inet tuples and AMQP typed property triples."""
+    products = []
+    for row in rows:
+        peer = row["peer_host"]
+        if isinstance(peer, list):
+            size = len(peer)
+            maximum = 255 if size == 4 else 65535
+            if size not in (4, 8) or any(type(value) is not int or not 0 <= value <= maximum for value in peer):
+                raise ValueError("AMQP_PEER_ADDRESS_REJECTED")
+            peer = ".".join(map(str, peer)) if size == 4 else ":".join(format(value, "x") for value in peer)
+        if row["user"] != username or row["vhost"] != vhost or not ipaddress.ip_address(peer).is_loopback:
+            raise ValueError("AMQP_CONNECTION_SCOPE_REJECTED")
+        properties = row["client_properties"]
+        if not isinstance(properties, list) or any(not isinstance(item, list) or len(item) != 3 for item in properties):
+            raise TypeError("AMQP_CLIENT_PROPERTIES_SHAPE_REJECTED")
+        product = [value for name, kind, value in properties if name == "product" and kind == "longstr"]
+        if len(product) != 1 or not isinstance(product[0], str) or "pika" not in product[0].lower():
+            raise ValueError("REAL_PIKA_PRODUCT_REQUIRED")
+        products.append(product[0])
+    if not products:
+        raise RuntimeError("REAL_PIKA_CONNECTION_UNCONFIRMED")
+    return products
+
+
 class Application:
     def __init__(self, project, run):
         self.project = project.resolve()
@@ -296,7 +321,7 @@ class Application:
         self.issued = json.loads(issued.read_text())["session_ids"] if issued.exists() else []
 
     @classmethod
-    def prepare(cls, project, binding_path, expected, dependency):
+    def prepare(cls, project, binding_path, expected, dependency, prior_run=None):
         os.umask(0o077)
         binding, source = verify_binding(project, binding_path, expected)
         inputs = load_inputs(project)
@@ -309,6 +334,27 @@ class Application:
             ("backend_lock_sha256", "backend/requirements.lock"),
             ("frontend_lock_sha256", "frontend/pnpm-lock.yaml"))):
             raise ValueError("EXACT_DEPENDENCY_LOCK_REQUIRED")
+        prior = None
+        if prior_run is not None:
+            if prior_run.parent != phase_base(project) / "runs" or prior_run.resolve() != prior_run:
+                raise ValueError("PRIOR_OWNED_RUN_REQUIRED")
+            require_private(prior_run, directory=True)
+            require_private(prior_run / "manifest.json")
+            require_private(prior_run / "state/delivery-evidence.json")
+            previous = json.loads((prior_run / "manifest.json").read_text())
+            evidence = json.loads((prior_run / "state/delivery-evidence.json").read_text())
+            if previous["source_commit"] != expected or evidence["source_commit"] != expected \
+                    or evidence["origin_run"] != prior_run.name or not evidence["all_exact_recipient_sets_match"] \
+                    or not evidence["all_events_linked_to_origin_scan_and_utc"] \
+                    or evidence["new_publish_by_later_cycle_claimed"]:
+                raise ValueError("PRIOR_DELIVERY_BINDING_REJECTED")
+            ids = evidence["event_ids"]
+            if not ids or any(type(item) is not int or item < 1 for item in ids) or len(ids) != len(set(ids)):
+                raise ValueError("EXPLICIT_EXISTING_EVENT_IDS_REQUIRED")
+            verify_copy(previous["source_binding"], prior_run / "source")
+            prior = {"origin_run": prior_run.name, "event_ids": ids, "scan_ids": evidence["scan_ids"],
+                     "evidence_sha256": digest((prior_run / "state/delivery-evidence.json").read_bytes()),
+                     "new_publish_by_this_cycle_claimed": False}
         parent = phase_base(project) / "runs"
         parent.mkdir(mode=0o700, exist_ok=True)
         run = parent / (datetime.now(UTC).strftime("app_%Y%m%d_%H%M%S_") + uuid4().hex[:6])
@@ -347,6 +393,7 @@ class Application:
             "database": "t44_native_demo", "ports": APP_PORTS, "bounded_seconds": 210,
             "application_start_requires_explicit_final_binding": True,
             "rules_sha256": binding["source_files"]["backend/t44/resources/escalation-rules.json"],
+            "prior_delivery": prior,
         })
         return cls(project, run)
 
@@ -549,17 +596,7 @@ class Application:
         text, command = self.broker.execute("rabbitmqctl", ["list_connections", "user", "vhost", "peer_host",
                                                           "client_properties", "--formatter", "json"])
         rows = json.loads(text)
-        products = []
-        for row in rows:
-            if row["user"] != self.broker.manifest["username"] or row["vhost"] != self.broker.manifest["vhost"] \
-                    or not ipaddress.ip_address(row["peer_host"]).is_loopback:
-                raise ValueError("AMQP_CONNECTION_SCOPE_REJECTED")
-            properties = row["client_properties"]
-            if not isinstance(properties, dict):
-                raise TypeError("AMQP_CLIENT_PROPERTIES_SHAPE_REJECTED")
-            products.append(properties.get("product"))
-        if not products or any(not isinstance(product, str) or "pika" not in product.lower() for product in products):
-            raise RuntimeError("REAL_PIKA_CONNECTION_UNCONFIRMED")
+        products = connection_products(rows, self.broker.manifest["username"], self.broker.manifest["vhost"])
         return self.receipt("pika_connections", success=True, connection_count=len(rows), products=products,
                             broker_cli_receipt=command["receipt_id"], all_loopback=True, own_user_vhost=True)
 
@@ -667,13 +704,17 @@ class Application:
             time.sleep(0.5)
         raise RuntimeError("PERSISTED_SCANS_TIMEOUT")
 
-    def delivery(self, baseline):
+    def delivery(self, baseline, prior=None):
         deadline = time.monotonic() + 20
         while time.monotonic() < deadline:
+            parameters = prior["event_ids"] if prior else (baseline,)
+            predicate = " IN (" + ",".join(["%s"] * len(parameters)) + ")" if prior else ">%s"
             events = self.select("SELECT id,recipients,status,confirmed_at,fallback_at FROM outbox_events "
-                                 "WHERE id>%s AND event_type=2 ORDER BY id", (baseline,))
+                                 "WHERE id" + predicate + " AND event_type=2 ORDER BY id", parameters)
             notices = self.select("SELECT id,event_id,recipient_id,fallback FROM notifications "
-                                  "WHERE event_id>%s ORDER BY id", (baseline,))
+                                  "WHERE event_id" + predicate + " ORDER BY id", parameters)
+            if prior and sorted(row["id"] for row in events) != sorted(prior["event_ids"]):
+                raise ValueError("EXISTING_EVENT_IDS_CHANGED")
             if events and all(event["status"] == 3 and event["confirmed_at"] is not None
                               and event["fallback_at"] is None for event in events):
                 good = True
@@ -682,7 +723,9 @@ class Application:
                     actual = [n["recipient_id"] for n in notices if n["event_id"] == event["id"] and n["fallback"] == 0]
                     good = good and sorted(set(recipients)) == sorted(actual)
                 if good:
-                    return self.receipt("normal_delivery", success=True, event_ids=[e["id"] for e in events],
+                    return self.receipt("existing_normal_delivery" if prior else "normal_delivery", success=True,
+                                        event_ids=[e["id"] for e in events], origin_run=prior["origin_run"] if prior else self.run.name,
+                                        new_publish_by_this_cycle_claimed=prior is None,
                                         confirmed_events=len(events), notification_count=len(notices),
                                         fallback_notification_count=sum(n["fallback"] for n in notices))
             time.sleep(0.2)
@@ -737,7 +780,7 @@ class Application:
             # Login deliberately omits session_id. Read only this known bearer digest
             # privately to recover its real ID; never archive or print the digest.
             import hashlib
-            user_session = self.select("SELECT id FROM auth_sessions WHERE token_hash=%s",
+            user_session = self.select("SELECT id,user_id FROM auth_sessions WHERE token_hash=%s",
                                        (hashlib.sha256(self.user_token.encode()).digest(),))
             if len(user_session) != 1:
                 raise RuntimeError("OWN_USER_SESSION_UNCONFIRMED")
@@ -771,11 +814,19 @@ class Application:
             actions.append(self.wait_scans(initial["scan_id"]))
             actions.append(self.scanner_lock())
             actions.append(self.pika_connections())
-            actions.append(self.delivery(initial["outbox_id"]))
-            code, body = self.http("/api/v1/me/notifications", token=self.user_token)
+            delivery = self.delivery(initial["outbox_id"], self.manifest.get("prior_delivery"))
+            actions.append(delivery)
+            code, body = self.http("/api/v1/me/notifications?page_size=100", token=self.user_token)
             if code != 200 or body["data"]["total"] < 1:
                 raise RuntimeError("AUTHENTICATED_NOTIFICATIONS_UNCONFIRMED")
-            actions.append(self.receipt("notifications_api", success=True, total=body["data"]["total"]))
+            expected_ids = [row["id"] for row in self.select("SELECT id FROM notifications WHERE recipient_id=%s "
+                "AND event_id IN (" + ",".join(["%s"] * len(delivery["event_ids"])) + ") ORDER BY id",
+                [user_session[0]["user_id"], *delivery["event_ids"]])]
+            observed_ids = {item["id"] for item in body["data"]["items"]}
+            if not expected_ids or not set(expected_ids).issubset(observed_ids):
+                raise RuntimeError("EXISTING_NOTIFICATIONS_API_IDS_UNCONFIRMED")
+            actions.append(self.receipt("notifications_api", success=True, total=body["data"]["total"],
+                                        exact_notification_ids=expected_ids, linked_event_ids=delivery["event_ids"]))
             stopped = self.stop_role("scanner")
             actions.append(stopped)
             if not stopped["success"]:
@@ -844,6 +895,7 @@ def main():
     prepare.add_argument("--source-binding", type=Path, required=True)
     prepare.add_argument("--expected-source", required=True)
     prepare.add_argument("--dependency-dir", type=Path, required=True)
+    prepare.add_argument("--prior-run", type=Path)
     for command in ("run", "cleanup"):
         commands.add_parser(command).add_argument("--run-dir", type=Path, required=True)
     args = parser.parse_args()
@@ -853,7 +905,7 @@ def main():
         if args.command == "prepare-dependencies":
             result = prepare_dependencies(project, args.source_binding)
         elif args.command == "prepare":
-            app = Application.prepare(project, args.source_binding, args.expected_source, args.dependency_dir)
+            app = Application.prepare(project, args.source_binding, args.expected_source, args.dependency_dir, args.prior_run)
             result = {"success": True, "run_dir": str(app.run), "source_commit": args.expected_source}
         else:
             app = Application(project, args.run_dir)

@@ -1,0 +1,473 @@
+{
+  "at_utc": "2026-10-23T21:26:13.208157+00:00",
+  "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "origin_run": "app_20261023_212055_35aa09",
+  "origin_driver_exit_code": 1,
+  "origin_cycle_success": false,
+  "origin_cleanup_success": false,
+  "post_stop_absence_separate": true,
+  "scan_ids": [
+    1,
+    2
+  ],
+  "scan_rows": [
+    {
+      "id": 1,
+      "status": 2,
+      "cutoff_at": "2026-10-23 21:21:19.481891",
+      "started_at": "2026-10-23 21:21:19.481891",
+      "heartbeat_at": "2026-10-23 21:21:19.837340",
+      "finished_at": "2026-10-23 21:21:19.837340",
+      "scanned_count": 16,
+      "created_count": 16,
+      "duplicate_count": 0,
+      "error_code": null
+    },
+    {
+      "id": 2,
+      "status": 2,
+      "cutoff_at": "2026-10-23 21:22:19.865885",
+      "started_at": "2026-10-23 21:22:19.865885",
+      "heartbeat_at": "2026-10-23 21:22:20.128617",
+      "finished_at": "2026-10-23 21:22:20.128617",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    }
+  ],
+  "event_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "outbox_escalation_rows": [
+    {
+      "escalation_id": 1,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 9,
+      "event_id": 1,
+      "observed_at": "2026-10-23T21:21:19.488595",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.488595",
+      "confirmed_at": "2026-10-23T21:21:19.957678",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 2,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 10,
+      "event_id": 2,
+      "observed_at": "2026-10-23T21:21:19.511803",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.511803",
+      "confirmed_at": "2026-10-23T21:21:19.961570",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 3,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 11,
+      "event_id": 3,
+      "observed_at": "2026-10-23T21:21:19.525836",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.525836",
+      "confirmed_at": "2026-10-23T21:21:19.964440",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 4,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 13,
+      "event_id": 4,
+      "observed_at": "2026-10-23T21:21:19.543094",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.543094",
+      "confirmed_at": "2026-10-23T21:21:19.966344",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 5,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 15,
+      "event_id": 5,
+      "observed_at": "2026-10-23T21:21:19.605728",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.605728",
+      "confirmed_at": "2026-10-23T21:21:19.968499",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 6,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 17,
+      "event_id": 6,
+      "observed_at": "2026-10-23T21:21:19.626633",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.626633",
+      "confirmed_at": "2026-10-23T21:21:19.970472",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 7,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 18,
+      "event_id": 7,
+      "observed_at": "2026-10-23T21:21:19.647322",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.647322",
+      "confirmed_at": "2026-10-23T21:21:19.972609",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 8,
+      "scan_run_id": 1,
+      "project_id": 1,
+      "task_id": 19,
+      "event_id": 8,
+      "observed_at": "2026-10-23T21:21:19.669052",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.669052",
+      "confirmed_at": "2026-10-23T21:21:19.975500",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 9,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 29,
+      "event_id": 9,
+      "observed_at": "2026-10-23T21:21:19.695828",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.695828",
+      "confirmed_at": "2026-10-23T21:21:19.977863",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 10,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 30,
+      "event_id": 10,
+      "observed_at": "2026-10-23T21:21:19.713096",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.713096",
+      "confirmed_at": "2026-10-23T21:21:19.979758",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 11,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 31,
+      "event_id": 11,
+      "observed_at": "2026-10-23T21:21:19.729640",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.729640",
+      "confirmed_at": "2026-10-23T21:21:19.981182",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 12,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 33,
+      "event_id": 12,
+      "observed_at": "2026-10-23T21:21:19.745495",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.745495",
+      "confirmed_at": "2026-10-23T21:21:19.983107",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 13,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 35,
+      "event_id": 13,
+      "observed_at": "2026-10-23T21:21:19.762623",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.762623",
+      "confirmed_at": "2026-10-23T21:21:19.984835",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 14,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 37,
+      "event_id": 14,
+      "observed_at": "2026-10-23T21:21:19.780602",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.780602",
+      "confirmed_at": "2026-10-23T21:21:19.986696",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 15,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 38,
+      "event_id": 15,
+      "observed_at": "2026-10-23T21:21:19.799506",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[1, 2]",
+      "created_at": "2026-10-23T21:21:19.799506",
+      "confirmed_at": "2026-10-23T21:21:19.988385",
+      "fallback_at": null
+    },
+    {
+      "escalation_id": 16,
+      "scan_run_id": 1,
+      "project_id": 2,
+      "task_id": 39,
+      "event_id": 16,
+      "observed_at": "2026-10-23T21:21:19.821481",
+      "event_type": 2,
+      "status": 3,
+      "recipients": "[2]",
+      "created_at": "2026-10-23T21:21:19.821481",
+      "confirmed_at": "2026-10-23T21:21:19.990655",
+      "fallback_at": null
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "event_id": 1,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:19.994956"
+    },
+    {
+      "id": 2,
+      "event_id": 1,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:19.994956"
+    },
+    {
+      "id": 3,
+      "event_id": 2,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.000340"
+    },
+    {
+      "id": 4,
+      "event_id": 2,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.000340"
+    },
+    {
+      "id": 5,
+      "event_id": 3,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.004076"
+    },
+    {
+      "id": 6,
+      "event_id": 4,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.007911"
+    },
+    {
+      "id": 7,
+      "event_id": 4,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.007911"
+    },
+    {
+      "id": 8,
+      "event_id": 5,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.011928"
+    },
+    {
+      "id": 9,
+      "event_id": 6,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.015404"
+    },
+    {
+      "id": 10,
+      "event_id": 6,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.015404"
+    },
+    {
+      "id": 11,
+      "event_id": 7,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.019596"
+    },
+    {
+      "id": 12,
+      "event_id": 7,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.019596"
+    },
+    {
+      "id": 13,
+      "event_id": 8,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.022999"
+    },
+    {
+      "id": 14,
+      "event_id": 9,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.025971"
+    },
+    {
+      "id": 15,
+      "event_id": 9,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.025971"
+    },
+    {
+      "id": 16,
+      "event_id": 10,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.029372"
+    },
+    {
+      "id": 17,
+      "event_id": 10,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.029372"
+    },
+    {
+      "id": 18,
+      "event_id": 11,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.032357"
+    },
+    {
+      "id": 19,
+      "event_id": 12,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.035572"
+    },
+    {
+      "id": 20,
+      "event_id": 12,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.035572"
+    },
+    {
+      "id": 21,
+      "event_id": 13,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.039073"
+    },
+    {
+      "id": 22,
+      "event_id": 14,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.042160"
+    },
+    {
+      "id": 23,
+      "event_id": 14,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.042160"
+    },
+    {
+      "id": 24,
+      "event_id": 15,
+      "recipient_id": 1,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.045483"
+    },
+    {
+      "id": 25,
+      "event_id": 15,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.045483"
+    },
+    {
+      "id": 26,
+      "event_id": 16,
+      "recipient_id": 2,
+      "fallback": 0,
+      "created_at": "2026-10-23T21:21:20.049071"
+    }
+  ],
+  "confirmed_events": 16,
+  "notification_count": 26,
+  "fallback_notification_count": 0,
+  "all_exact_recipient_sets_match": true,
+  "all_events_linked_to_origin_scan_and_utc": true,
+  "new_publish_by_later_cycle_claimed": false
+}

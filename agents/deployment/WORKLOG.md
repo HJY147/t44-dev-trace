@@ -209,3 +209,7 @@
 - 根进一步明确分母为backend/t44/**与frontend/src/**；补齐真实44/20代表fixture并另加2部署Py/Vite配置，历史4c3e4c4实现原错误真实红、窄修真实绿，额外部署文件hash错、真实productionfile hash错/缺失各自仍拒绝。20项/Ruff通过，red/green原输出另档；phase1守卫未重跑。
 
 - 依赖准备attempt1真实exit1：Python --version快速退出发生ps/getpgid观察竞态，未到安装；原92文件副本/空日志/driver失败均保留。最小capture复现同ProcessLookupError；只修application层把已消失视作absent无信号，新增守卫（21项/Ruff绿），不改阶段1runtime。未完成目录不复用，另建freshattempt；发现pnpm常量误多一层bin，调用前修正为已验证bundled实际路径。所有服务未起。
+
+- phase2 run1精确controller427b097实际exit1/cleanupfalse；API4worker/proxy/TTL300/两completed间隔60.383994s/flock局部真。两Pika实际CLI输出为inet数组/typed triples，本岗误按字符串/字典解析失败；原JSON同字节离线历史真红/修正真绿。只读精确关联16事件/16confirmed outbox/26无fallback通知，收件人集合一致且scan/UTC相符；查询曾误用不存在escalations表1146和UTC字符串格式比较失败，均只读且真实记录，不改变DB。
+- shutdown实际远端停后CLI code_server badarg/超时exit-15，ps/getpgid消失竞态令最终broker stop receipt缺失；原cleanupfalse绝不倒填。后置全自有PID/端口gone单列。固定官方4.3.6主源允许shutdown --no-wait终止整个VM，wrapper另核PID/EPMD；只修该参数和竞态，无关phase1守卫未重跑，受影响3项873与23项871/Ruff通过（扩展Ruff原失败保留）。
+- 根已准入一次第二freshcycle，绑定首轮既有16eventIDs只读关联，不宣称二轮新publish，继续实际扫描/凭据轮换/正常完整清理；新小设计勘误已写，尚未重启。run1 public/native输出secret扫描0，dump不读取/提交，旧环境不动。

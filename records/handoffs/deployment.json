@@ -599,9 +599,9 @@
     "database": "t44_native_demo",
     "no_ddl_reset_seed": true,
     "private_input_modes": "0600",
-    "controller_status": "implemented; actual dependency preparation and application cycle pending",
-    "guard": "tmp/deployment/871_native_application.py:20 synthetic guards passed",
-    "services_started": false,
+    "controller_status": "implemented, run1 exit1/cleanupfalse; mechanical correction/freshcycle pending",
+    "guard": "871:23 synthetic passed;873:3 affected stop guards passed",
+    "services_started": true,
     "independent_or_formal_load_executed": false,
     "controller": "deployment/native/application.py",
     "checks": "20 guards/Ruff and corrected actual preflight passed; all original failures retained",
@@ -609,6 +609,13 @@
     "design_commit": "3e05c60",
     "controller_commit_first": "4c3e4c4",
     "source_count_correction": "44 backend Py/20 frontend src TS+Vue; all92 files including deployment2Py and vite.config.ts hash-checked",
-    "preflight_first_failure": "agents/deployment/native-application-validation/controller-preflight-original-failure.json"
+    "preflight_first_failure": "agents/deployment/native-application-validation/controller-preflight-original-failure.json",
+    "dependency_preparation": "attempt1 failed before install;attempt2 all11commands exit0,67Python distributions,source unchanged",
+    "run1": "agents/deployment/native-application-validation/run1-analysis.json",
+    "run1_actual_cycle_success": false,
+    "run1_actual_cleanup_success": false,
+    "run1_post_stop_absence": "agents/deployment/native-application-validation/run1-post-stop-absence.json",
+    "run1_delivery": "16confirmed events/26normalnotifications exactscan/UTC/recipient association",
+    "phase1_runtime_changed_for_phase2": "shutdown --no-wait + ps/getpgid disappearance race; original7e942 historical result retained"
   }
 }

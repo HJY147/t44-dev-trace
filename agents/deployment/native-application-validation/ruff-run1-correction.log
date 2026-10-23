@@ -1,0 +1,102 @@
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> deployment/native/runtime.py:400:13
+    |
+398 |       def inspect(self):
+399 |           stdout, auth = self.execute("rabbitmqctl", ["eval",
+400 | /             f"{{ok,B}}=file:read_file({erlang_path(self.cookie)}),"
+401 | |             "erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1)."])
+    | |__________________________________________________________________________^
+402 |           if stdout.strip() != "true":
+403 |               raise RuntimeError("SERVER_FILE_COOKIE_MISMATCH")
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+    |
+399 |         stdout, auth = self.execute("rabbitmqctl", ["eval",
+    -             f"{{ok,B}}=file:read_file({erlang_path(self.cookie)}),"
+    -             "erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1)."])
+400 +             (f"{{ok,B}}=file:read_file({erlang_path(self.cookie)}),"
+401 +             "erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1).")])
+402 |         if stdout.strip() != "true":
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+ISC004 Unparenthesized implicit string concatenation in collection
+   --> deployment/native/runtime.py:407:13
+    |
+405 |           password = self.run / "secrets/amqp.password"
+406 |           text, password_receipt = self.execute("rabbitmqctl", ["eval",
+407 | /             f"{{ok,B}}=file:read_file({erlang_path(password)}),"
+408 | |             f"case(rabbit_auth_backend_internal:user_login_authentication("
+409 | |             f'<<"{self.manifest["username"]}">>,[{{password,string:trim(B)}}]))of'
+410 | |             "{ok,_}->true;_->false end."])
+    | |________________________________________^
+411 |           if text.strip() != "true":
+412 |               raise RuntimeError("AMQP_PASSWORD_AUTHENTICATION_FAILED")
+    |
+help: Did you forget a comma?
+help: Wrap implicitly concatenated strings in parentheses
+    |
+406 |         text, password_receipt = self.execute("rabbitmqctl", ["eval",
+    -             f"{{ok,B}}=file:read_file({erlang_path(password)}),"
+407 +             (f"{{ok,B}}=file:read_file({erlang_path(password)}),"
+408 |             f"case(rabbit_auth_backend_internal:user_login_authentication("
+409 |             f'<<"{self.manifest["username"]}">>,[{{password,string:trim(B)}}]))of'
+    -             "{ok,_}->true;_->false end."])
+410 +             "{ok,_}->true;_->false end.")])
+411 |         if text.strip() != "true":
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+BLE001 Do not catch blind exception: `Exception`
+   --> deployment/native/runtime.py:477:20
+    |
+475 |                     raise RuntimeError("SERVER_COOKIE_INIT_MARKER_ABSENT")
+476 |                 inspection = self.inspect()
+477 |             except Exception as error:
+    |                    ^^^^^^^^^
+478 |                 code = str(error) if re.fullmatch(r"[A-Z_]+", str(error)) else type(error).__name__
+479 |                 return self.receipt("start", success=False, error="BROKER_INSPECTION_FAILED",
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> deployment/native/runtime.py:575:12
+    |
+573 |         print(json.dumps(result, ensure_ascii=False))
+574 |         return 0 if result["success"] else 1
+575 |     except Exception:
+    |            ^^^^^^^^^
+576 |         # Driver/driver state and crash output stay private; don't emit raw exceptions.
+577 |         result = {"success": False, "action": args.command, "error": "NATIVE_RUNTIME_FAILED"}
+    |
+
+SIM117 Use a single `with` statement with multiple contexts instead of nested `with` statements
+   --> tmp/deployment/873_native_runtime.py:192:9
+    |
+190 |           broker = self.prepare()
+191 |           result = native.subprocess.CompletedProcess([], 0, "p123\nn*:25674\n", "")
+192 | /         with patch.object(broker, "owner", return_value=({}, {"pid": 123})), \
+193 | |                 patch.object(native.subprocess, "run", return_value=result):
+194 | |             with self.assertRaises(ValueError):
+    | |_______________________________________________^
+195 |                   broker.listeners("rabbit")
+    |
+help: Combine `with` statements
+
+SIM117 Use a single `with` statement with multiple contexts instead of nested `with` statements
+   --> tmp/deployment/873_native_runtime.py:207:9
+    |
+205 |       def test_rabbit_cannot_start_before_owned_epmd_listener(self):
+206 |           broker = self.prepare()
+207 | /         with patch.object(native, "assert_ports_free"), \
+208 | |                 patch.object(broker, "spawn") as spawn, \
+209 | |                 patch.object(broker, "wait_epmd_ready", side_effect=RuntimeError("not ready")):
+210 | |             with self.assertRaises(RuntimeError):
+    | |_________________________________________________^
+211 |                   broker.start()
+212 |           self.assertEqual([call.args[0] for call in spawn.call_args_list], ["epmd"])
+    |
+help: Combine `with` statements
+
+Found 6 errors.
+2 unsafe fixes available with `--fix --unsafe-fixes`.

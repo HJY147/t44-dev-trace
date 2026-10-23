@@ -227,6 +227,30 @@ class ApplicationGuards(unittest.TestCase):
             self.assertIsNone(appmod.process_identity(123))
             kill.assert_not_called()
 
+    def test_actual_rabbit_typed_connection_shape_and_bad_peers(self):
+        row = {"user": "fixture-user", "vhost": "fixture-vhost", "peer_host": [127, 0, 0, 1],
+               "client_properties": [["product", "longstr", "Pika Python Client Library"]]}
+        self.assertEqual(appmod.connection_products([row], "fixture-user", "fixture-vhost"),
+                         ["Pika Python Client Library"])
+        for peer in ([0, 0, 0, 0], [127, 0, 0, True], [256, 0, 0, 1], "192.0.2.1"):
+            with self.assertRaises(ValueError):
+                appmod.connection_products([{**row, "peer_host": peer}], "fixture-user", "fixture-vhost")
+        with self.assertRaises(ValueError):
+            appmod.connection_products([row], "other-user", "fixture-vhost")
+
+    def test_prior_delivery_cannot_rebind_source_or_boolean_event_id(self):
+        previous = self.prepare()
+        evidence = {"source_commit": self.commit, "origin_run": previous.run.name,
+                    "all_exact_recipient_sets_match": True, "all_events_linked_to_origin_scan_and_utc": True,
+                    "new_publish_by_later_cycle_claimed": False, "event_ids": [True], "scan_ids": [1, 2]}
+        appmod.write_json(previous.run / "state/delivery-evidence.json", evidence)
+        with self.assertRaises(ValueError):
+            appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency, previous.run)
+        evidence.update(event_ids=[1], source_commit="a" * 40)
+        appmod.replace_json(previous.run / "state/delivery-evidence.json", evidence)
+        with self.assertRaises(ValueError):
+            appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency, previous.run)
+
     def test_sql_writer_is_rejected_before_driver_import(self):
         app = self.prepare()
         for sql in ("DELETE FROM tasks", "DROP DATABASE t44_native_demo", "UPDATE tasks SET state=6"):

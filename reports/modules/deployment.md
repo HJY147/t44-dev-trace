@@ -169,3 +169,5 @@
 - controller现已实现，871为19项合成守卫通过、Ruff通过；原fixture/静态失败已保留。最终源92文件与私密输入/端口预检通过，拥有权/源/secret/坏输入/真实flock守卫有效；依赖准备和实际应用周期尚未执行，不将编码能力写成运行通过。
 
 - 原checkpoint预检声明写早：真实controller首次计数错含部署/Vite文件而失败，未起服务；已按root业务目录口径修正，所有92文件照常核hash，新增守卫后20项/Ruff/真实预检通过，失败原件另存。
+
+- phase2依赖attempt2锁hash/pipcheck/frozenfrontend/types/build全exit0；run1两真实completed/60.383994s、API4worker/UIproxy/TTL300/flock/Pika局部真，整体exit1/cleanupfalse（DTO解析错误、shutdown CLI超时）；原失败保持。只读16confirmed事件/26通知精确关联，后置全PID/端口gone另列。根准入一次freshcycle以既有eventIDs复核、补轮换与正常清理；当前未开始二轮，不宣称完整通过。

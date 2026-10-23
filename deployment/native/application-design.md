@@ -52,3 +52,13 @@
 公开资料只包含版本/SHA、role、项目IDs、scope/expiry/session IDs、UTC/退出码、计数/关联、地址与拥有权摘要。所有原始输出先留私密；公开前对已知Cookie、AMQP/DB/3登录口令、用户/新旧服务bearer逐字面扫描；压缩内容必须解压后检查，dump不打开/上传。
 
 stage1原始失败与phase2设计、依赖安装、守卫、真实driver/setup失败分目录保留。871只做本岗坏输入/路径/源/秘密/端口/拥有权合成守卫，不是独立用例；本轮不做400并发/600秒、独立验收或云发布，不修改业务、锁、60秒规则或冻结契约。
+
+## run1后小范围设计勘误
+
+run1实际exit1/cleanupfalse保留。两次completed scan真实间隔60.383994秒，16升级事件→16已确认outbox→26正常通知逐事件收件人和scan/UTC已只读关联；应用与broker最后全PID/端口gone是独立后置absence，不能改写原停机回执。
+
+Rabbit4.3.6 JSON的peer_host实际是inet整数tuple数组，client_properties是AMQP typed三元组列表。修正仅严格解码4个0–255整数（排除bool）或8个0–65535 IPv6整数/合法地址，仍要求loopback、精确自有user/vhost与唯一longstr Pika产品；未知形状拒绝。同一原始JSON在历史427b实现真红、修正真绿，不重启来猜DTO。
+
+shutdown默认等待分支实际报告远端成功退出后CLI code_server badarg并超时exit-15；随后ps/getpgid观察竞态使broker最终回执未写，原cleanupfalse保持。固定官方v4.3.6 shutdown源码证明`--no-wait`同样调用`rabbit:stop_and_halt`终止整个VM；新wrapper仅改该标准参数，独立保留精确自有PID退出/EPMD空/退出/端口观察，CLI非零仍false。进程在ps与getpgid之间消失只表示absent，不授权任何信号。既有phase1 run2历史仍绑定7e942，不挪用新实现。
+
+根授权第二次fresh有限周期：新Cookie/user/vhost，复用同一未reset的新demo数据；显式`prepare --prior-run`核同源owner前run和私密只读关联hash，绑定既有16个eventIDs。二轮核这些真实ID/收件人/鉴权通知可读，明确不声称二轮新publish；新轮继续两真实60秒completed扫描、受控凭据轮换与完整正常清理。不得SQL改业务/去重或补seed来制造新消息。
