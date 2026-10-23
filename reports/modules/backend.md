@@ -249,3 +249,9 @@ bc5应用实际hash匹配；t44_profile/18083、单worker/40token/pool5+10保持
 本轮只读ac826cb9 RFC与8处构造点，范围先提交e534dee；一页交接agents/backend/pool-retention-compat/caller-handoff.md。Settings→API/CLI/MQ/scanner采用默认，显式factory不覆盖；993的partial override由3+10变3+0，旧930硬5+10保持历史，不改测试凑绿。CLI无显式dispose/MQ及scanner有finally dispose的生命周期事实列入额外预算，未新测。
 
 两默认之外auth/401角色逻辑、撤销/锁序/CAS/幂等/audit/outbox/commit-ACK异常应原样；池/DB不可用仍可能在auth或拒绝audit完成前503，不能保证原错误分布。标准6池峰90相同，温态保留上界30→90，内存/FD/其它连接及滚动实例代价未知。Issue4具体兼容输入6376569009/Issue3总结6376597757已发表回读，DBowner真实确认当时只有诊断、无默认候选SHA。只认静态无API接线阻断，不作候选CI/专审/性能或合入批准；本机0SQL/业务HTTP/负载/套件，生产bc5/旧ff7/14冻结/6307缺口保持。
+
+## db87准确候选CI归档（无生产准入）
+
+本岗AI仅归档两次托管开发run：product40039282322/Docker40039333270均success，五官方ZIP实际先digest验证再选18+33新原件及双hash/roundtrip；不复制旧结果、不触发CI/读独立材料或本机业务。新汇总records/validation/composite-db87-pool-ci.json。
+
+JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300case不代表旧对照跑过；marker162/93/19重叠。全44Python精确Git分母、excluded0，行89.2120%/branch79.9757%分别；FE89/20TSVue精确Git，行93.33%/branch88.09%。Docker实际checkout经官方git log原行证实400a5cac（API head db87只是PR头，result源是事件SHA）；merge父70f4b7+db87，完整明确运行roots166文件候选↔merge字节相同。实际4workers、扫描16created/2completed、19表恢复counts/checksums同，原schema18/226、第二scanner flock预期exit1均保留。仅此准确CI范围，不宣正式性能/独立验收/资源预算实测通过；root生产bc5、6307超1207保持。

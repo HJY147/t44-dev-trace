@@ -1575,5 +1575,39 @@
     "runtime_SQL_HTTP_load_tests": false,
     "production_tests_tools_specs_unchanged": true,
     "decision": "static no backendAPI wiring blocker;candidate source/fullCI/dedicatedreview/root decision pending;not approval"
+  },
+  "pool_candidate_CI_archive": {
+    "branch": "codex/backend-pool-ci-evidence",
+    "root_base": "8df658ac2ef418f57c36c47105fa925e797f3aa9",
+    "prompt": "agents/backend/POOL-CANDIDATE-CI-ARCHIVE-dispatch.md",
+    "candidate": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+    "PR": 39,
+    "source_scope": "productpush exact candidate;DockerPR actual merge400a with candidate-equivalent166runtime files",
+    "product_run": 40039282322,
+    "docker_run": 40039333270,
+    "official_final": "bothcompleted/success",
+    "summary": "records/validation/composite-db87-pool-ci.json",
+    "raw": [
+      "records/ci/40039282322",
+      "records/ci/40039333270"
+    ],
+    "official_zip_digest_verified_before_read": 5,
+    "selected_originals": [
+      18,
+      33
+    ],
+    "all_hash_roundtrips": true,
+    "raw_zips_committed": false,
+    "backend": "520/0failure/error/skip;86910collected;9300cases/no workload;44Python exactGit;excluded0;line2638/2957 branch659/824",
+    "frontend": "89pass/0fail/pending;20TSVue exactGit;line93.33/branch88.09",
+    "docker": "actualgitlogcheckout400a5cac444be15565dc48fe4ee2a1869f31e9a3 base70f4+db87;4workers;scanner16/2;19table rows/checksums restored;18business226;expectedflockexit1",
+    "source_proof": "records/ci/40039333270/checkout-source-proof.json +rawgzip +candidate-merge-byte-equivalence.json",
+    "local_runtime_or_ci_rerun": false,
+    "independent_logs_or_ciphertext_read": false,
+    "current_local_production": "stillbc5;no source edits",
+    "source_count": "6307gap1207 preserved,no newcloc",
+    "decision": "archive only;dedicatedreview/root admission/formal performance/independent acceptance not claimed",
+    "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376880468",
+    "readback_matches": true
   }
 }
