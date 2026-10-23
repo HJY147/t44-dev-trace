@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 from concurrent.futures import ThreadPoolExecutor
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from threading import Barrier
 from uuid import uuid4
@@ -381,3 +381,60 @@ def test_real_fallback_races_consume_and_late_confirm_is_fenced(mysql, fixture):
     with factory() as uow:
         assert uow.gateway.get("outbox_events", event)["status"] == 4
         assert uow.gateway.count("notifications", {"event_id": event}) == 1
+
+
+RECOVERY_TIME = datetime(2000, 1, 1, tzinfo=UTC)
+
+
+def confirm_fixture(factory, fixture, *, consumed=False):
+    store = OutboxStore(factory)
+    event = escalation_fixture(factory, fixture)
+    claim = next(e for e in store.claim(limit=1000) if e["id"] == event)
+    assert store.confirm(event, claim["lease_token"], now=RECOVERY_TIME)
+    if consumed:
+        assert store.consume(event)["created"] == 1
+    return event, claim["lease_token"]
+
+
+def test_confirmed_recovery_excludes_old_complete_events_before_limit(mysql, fixture):
+    _, factory = mysql
+    store = OutboxStore(factory)
+    complete = [confirm_fixture(factory, fixture, consumed=True)[0] for _ in range(3)]
+    missing, token = confirm_fixture(factory, fixture)
+    now = RECOVERY_TIME
+    recovered = store.recover_confirmed(confirmed_before=now, now=now, limit=1)
+    assert recovered == [dict(event_id=missing, created=1, fallback=True)]
+    assert all(store.get(id)["status"] == 3 for id in complete)
+    assert store.recover_confirmed(confirmed_before=now, limit=1) == []
+    assert store.consume(missing)["created"] == 0
+    assert not store.confirm(missing, token)
+    assert store.fallback(missing, lease_token=token)["stale_owner"]
+
+
+def test_confirmed_recovery_skips_consumer_lock_and_never_marks_complete_fallback(mysql, fixture):
+    from threading import Event
+
+    _, factory = mysql
+    store = OutboxStore(factory)
+    event, _ = confirm_fixture(factory, fixture)
+    inserted, finish = Event(), Event()
+
+    class PausedConsumer(OutboxStore):
+        def _notices(self, *args, **kwargs):
+            count = super()._notices(*args, **kwargs)
+            inserted.set()
+            assert finish.wait(timeout=10)
+            return count
+
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        future = pool.submit(PausedConsumer(factory).consume, event)
+        try:
+            assert inserted.wait(timeout=10)
+            assert store.recover_confirmed(confirmed_before=RECOVERY_TIME, limit=1) == []
+        finally:
+            finish.set()
+        assert future.result(timeout=10)["created"] == 1
+    assert store.recover_confirmed(confirmed_before=RECOVERY_TIME, limit=1) == []
+    assert store.get(event)["status"] == 3
+    with factory() as uow:
+        assert uow.gateway.rows("notifications", {"event_id": event})[0]["fallback"] == 0

@@ -35,3 +35,5 @@
 - 需恢复工作：完成seed_demo及同项目DAG/代表状态/轮次证据一致性真库验证；加强结构漂移/项目图锁等模块检查；配合后端/消息/调度真实集成，最终复审与验收另行执行。
 
 - CI入口已改为DATABASE_URL+显式匹配T44_DATABASE=t44_ci，integration标记；CI缺配置fail。本机按相同环境变量入口实际跑12 passed（persistence-ci-env-test.log），不等于GitHub CI通过。
+
+ROLE-database-RECOVERY-SEED-v1恢复小阶段追加：recover_confirmed已实现，真MySQL14项通过（新增2项），consumer持锁/完成均不误降级，旧完整事件不占候选limit；首轮共享夹具干扰2失败记录保留后修测试时间隔离。seed仍未完成，下一阶段继续。

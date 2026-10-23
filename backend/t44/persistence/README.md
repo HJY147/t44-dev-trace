@@ -41,3 +41,5 @@ IdempotencyStore(factory)提供可选claim、lock_owner、complete、reject_afte
 本机T44_TEST_CREDENTIALS指向ignored app凭据文件且显式T44_TEST_DATABASE=t44_test时：`PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q`。仅t44_test；不触及acceptance/bench。CI使用DATABASE_URL+匹配T44_DATABASE（t44_ci），无本机私密文件依赖，CI缺配置直接fail；测试模块标记integration。本机实际复跑该环境变量入口12项通过，非GitHub托管CI结果。当前33项通过，其中21项SQLite/mock、12项真实官方MySQL8.4.11案例。首次真库29项中3项错误分类失败保留原日志，修复后通过。真库覆盖首次/重复迁移、SHOW CREATE核心表、UTC/strict/RC、约束、生成ID、并发CAS/幂等租约、独立拒绝审计、outbox降级并发与扫描恢复。不等于RabbitMQ网络、API全链、性能、全局覆盖率或独立验收通过。
 
 seed仍在本岗agents/database/drafts/，尚无生产seed_demo入口、未执行。需补代表状态与轮次一致性后交接，不能调用草稿或把其合成评审当真人证据。
+
+recover_confirmed(*,confirmed_before,now=None,limit=100)只返回本轮真正补缺并从confirmed转fallback的event_id/created/fallback字典。固定MySQL JSON_TABLE+NOT EXISTS在候选阶段排除完整通知事件，完整旧事件不占limit；FOR UPDATE SKIP LOCKED与consumer/fallback锁同事件，锁内复查后created>0才变终态。默认超时由消息进程传入，不新增升级规则；已齐通知不误标降级，旧token仍stale_owner，迟到confirm不回退。
