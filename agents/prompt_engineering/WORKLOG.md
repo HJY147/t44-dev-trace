@@ -88,3 +88,20 @@
 - `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m4-stage-comment.md` 成功：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031。发布时BE/DB/reviewer已回、其他三岗pending。
 - Issue阶段评论后、commit前收到frontend本轮真实回执，已追加inquiries；当前仅docs/guidance pending，不倒改已发布评论时点。
 - 仅显式暂存本岗10文件，在独立分支阶段commit/push；完整SHA以实际返回和Issue回帖为准，不在提交内预填自身SHA。
+
+## 2026-10-24 M6 实际提示词与质量/debug检查点
+
+- 实际派工`ROLE-prompt_engineering-M6-CHECKPOINT-v1`；核AGENTS/TASK/M4、本岗记录规范、用户U001–U019现存原文，R001原文/provenance与R002仅公开provenance。未读R002原文、Word、cover或独立私有内容。
+- 根初始HEAD7763402且clean；`git worktree add .agent-worktrees/prompt-m6-checkpoint -b codex/prompt-m6-checkpoint 7763402f87eed24ac052ec6ba64a0d3ec349036e`成功，不操作根索引。worktree不含ignored老师提取文本，初次cat缺文件保留；改在唯一根目录只读老师原件，不提交原始课堂材料。
+- 向根允许的六个固定role分别send_message一次。工具返回空且无错误，不推断全部已送达；实际收到backend/database_plan_history/deployment_native三岗回复，其他三岗未回。未followup唤醒、未扩编、未联系testing；问答与摘录/事实摘要明确区分，见M6-source-inquiries.json。
+- 只读已发布16件v2阶段MD/JSON与v1最终MD/JSON，共18白名单，不跟任何私密脚本/日志/keys/DOM/图片路径。八阶段仍旧4c且整体未验收；独立原失败不改。
+- 任务书AC09仅要求提示词演进≥6，根明确同意纠正M4/M5过严单族门槛。保留历史，新核CONTRACT两版、会话两版、A初准入/caller纠偏两版，各有实际文本、实质反馈、执行结果；本轮索引不冒称历史命名，AI派工不记学生亲写，proposed不计。
+- Git对象/JSON核session39绿后审核895真1红2绿、A25绿后原caller2红/7绿1CAS作用域红、UI0029红4原绿；正确区分产品、测试类型和browser驱动失败。修复/CI/精确专审与完整独立/正式性能各自分开。
+- 公开832组合437/65全分母和Linux4worker19表恢复仅开发CI/演练；6124超限。晚到DB24839及nativecc2已用`git ls-remote`核远端，再`git show`明确文件，只读公开提交不进入其worktree/私密运行目录。DB6186非832同源，native探针失败不写broker成功。
+- GitHub插件`get_repo`核public，`get_pr_info24`核M4 PR已合、head9e9/mergeeac；不把M5提交算PR24合并。元数据落M6-github-source-readback；本岗未读私密Word/封面。
+- 创建106源SHA-256/Git blob/精确commit/URL manifest、六版对应行/section hash、过程/摘选与实际派工快照。原R001 hash与provenance、U001/U002摘要、used/proposed各自核对。
+- 首次六条祖先核对因继承素材`189dc14`无对象退出1；`git log -- records/spec-freezes/v1.1.json`核真`189dc4a3196be0fb84b753f23284f2566d823ea0`，M6显式勘误后6条全通过。XML原17/11红、8/3红、25绿、2红、8/1红、2绿解析吻合。失败/修正均记M6-document-checks，不将其称产品测试。
+- 本轮未运行产品/全CI/构建/浏览器/数据库/负载/渲染。人工12修改/3幻觉人工识别/5人工校正映射仍无完成证据；学生最终正文未创建或覆盖。
+- 本岗报告增补、handoff及Issue11正文同步；只提交本岗文件，[skip ci]避免重复既绿整套。Issue实发/回读、commit/push结果在实际完成后继续追加。
+- GitHub插件`add_comment_to_issue`真实发布Issue11评论6374082306，随后`fetch_issue_comments`按ID找到且正文逐字匹配；公开回执M6-issue11-readback.json。没有APPROVE/合并或CI触发。
+- 实质checkpoint实际commit/push `dfa39537f6f375a93c773cceee5f0831d61f3fa7`，12个本岗文件；随后`git ls-remote`核远端精确匹配、独立树当时clean。Issue11续帖6374104135真实发布并按ID读回正文逐字一致；M6-publication.json保存回执。此后仅补本岗发布记录，产品/测试/配置未变，不重复整套CI。
