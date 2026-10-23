@@ -1,6 +1,6 @@
-# 持久化契约 v2-draft
+# 持久化契约 v1冻结
 
-状态：完整设计提案，待总协调冻结和逐表审核；不是迁移许可、实现或运行结果。实际派工 `ROLE-database-DESIGN-v1`。配套 `field-dictionary.md`、`schema.sql`。依据 `specs/requirements.md`、`specs/business-rules.md`、D001、D002、原始T44任务书及 `specs/contracts/openapi.json` 当轮草案。MySQL 8.4 / Python 3.12 / FastAPI同步 / SQLAlchemy 2 + PyMySQL。
+状态：v1规格已冻结，用户D004采用字段/错误取舍且设计限定复审通过；授权在明确选择的项目测试/部署库实现版本迁移。不是已迁移、实现或运行结果。实际派工 `ROLE-database-DESIGN-v1`。配套 `field-dictionary.md`、`schema.sql`。依据 `specs/requirements.md`、`specs/business-rules.md`、D001、D002、原始T44任务书及 `specs/contracts/openapi.json` 当轮草案。MySQL 8.4 / Python 3.12 / FastAPI同步 / SQLAlchemy 2 + PyMySQL。
 
 ## 责任与输入输出
 

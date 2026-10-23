@@ -50,3 +50,13 @@
 - 接管根索引前执行 `git diff --cached --name-status`，为空；分支codex/team-bootstrap、HEAD717cd65完整SHA。获得独占索引，仅显式暂存本轮失败报告、日志、回执、评论正文、派工记录、模块报告与交接，不纳入他岗/共享资料，不reset。
 - 本次仅归档证据，不修改被审规格或首次失败结论。报告继续绑定717cd65，不写自身归档commitSHA，避免自引用；footer按授权使用 `Agent-Role: reviewer`、`Prompt-Ref: ROLE-reviewer-DESIGN-v1`、`Refs #12 #13`。
 - 总协调将独立执行远端失败检查下的保护拒合并实验；本岗未执行/未预写其结果。后续修复新SHA另审；本岗不push/checkout/merge、不发success。提交完成后以实际工具结果交接完整SHA并立即释放根索引。
+
+## 2026-10-23 14:42起 C1—C4技术设计复审v2
+
+- 实际派工原文 `agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v2.txt`；对象PR13、Issue12、bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68。接管前索引为空，分支codex/team-bootstrap；本轮只复审C1—C4及受影响字段/事务/错误/时间，不接触另一树domain实现或测试私有内容。
+- `git show`目标提交比对7份所审文件与工作树字节/SHA-256，全相同；backend/schema设计检查脚本已阅读，未调用HTTP/数据库。实际执行 `.venv/bin/python agents/backend/validate_contract_design_v2.py`退出0：1130设计断言/38操作/0失败；原输出摘存 `agents/reviewer/evidence/design-v2-validation.log`，不记作产品HTTP用例。
+- 另做静态受影响核对：18表226列字典一致，仅幂等表正文改变；PROCESSING/COMPLETE的response_request_id成组CHECK与成功/独立拒绝完成时语义一致。整数微秒差公式在1000/9999互减、0/1微秒、24h−1微秒/24h边界核对通过；不是调度器运行测试。
+- 技术结论：C1—C4闭合，报告 `reports/reviews/design-v2-bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68.md`含八段十项与18表受影响判定。旧717cd65失败报告不改，bc报告不嵌自身证据提交SHA。
+- 人工与门禁边界：据总协调本轮派工Q002仍pending，不记用户已采用字段/错误码或冻结；实时main严格要求reviewer/stage/static/contracts/coverage/frontend且管理员受约束；bc check-runs查询返回[]，无当前产品门禁通过证据。旧保护拒合并历史实证在records/github针对717cd65，不能冒称新SHA已通过。未执行DDL/HTTP/产品事务/MQ/覆盖率/性能。
+- 本轮仅角色标识COMMENT技术结论/待人审/未实现，不发布success、APPROVE或合并。评论正文保存 `agents/reviewer/github/issue-12-design-v2-bc0cd34.md`；只本岗显式提交，不push/checkout/merge，实际评论/提交回执随后交接并释放索引。
+- 实际PR COMMENT已发布：https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437 ，回执commit_id=bc0cd34完整SHA，前后远端head一致。首轮读取review回执GET发生EOF（退出1）；未重复提交COMMENT，只读重试成功，失败与恢复均保留在 `agents/reviewer/evidence/design-v2-bc0cd34.json`。该SHA combined status=pending、statuses=[]，未发布success或其他提交状态。
