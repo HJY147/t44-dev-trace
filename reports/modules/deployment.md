@@ -228,3 +228,14 @@
 - 新865共15合成guard/0.04s及Ruff通过；CLI缺失红/首lint失败保留在agents/deployment/runtime-usage-validation。无真实Docker或runner采样/性能结论，不重复旧suite，不读独立资料；由后续准确环境调用验证。
 - 实现SHA8983e4c098849c7e9be8869c3bb42bc2697ccadd已push，Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376973663实际发布/完整GET一致；工具阶段封档，真实环境绑定/采样待调用方。
 - 预算勘明：六项各Compose10s+inspect15s，stats15s，非整体≤15秒；调用方超时覆盖多步骤/实测整体wall。仅README封档、不改逻辑或重测；补充Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376985104全文GET一致，源/检查/文件SHA见runtime-usage-validation/seal.json。
+
+### NATIVE-BOUNDED-DEMO-v1 新唯一360复验全停
+
+- 根在a7bad限定复审/1e9整合后另准入新fresh360，工具仍62ac/084618、应用bc5/92SHA、runtime未改。app_20261023_233238_345882真实exit0/summarytrue/cycletrue/cleanuptrue；原4ef360失败原件不改。
+- 首两扫描60.324684s/额外TTL300轮换1次，API/consumer/UI各1/scanner3代/4worker，3服务凭据+ready会话全撤销；controller验证4条/DB同UTC8completed分口径，旧16/26只复核/新outbox0。
+- 截止23:38:39.043824Z→实际停止请求23:38:39.044609Z→summary23:38:41.688950Z→外部wait实际exit0；12登记PID含workers/runner及Rabbit/EPMD全gone，新端口closed，九端口三个观察点身份全等（本次补充，非旧snapshot或全时监控证明）。
+- 后置提取原bytes JSON失败exit1单独保留，窄转hex后只读提取exit0，无服务重跑。证据serve-retest-*；窗口已释放，4h尚未准入，独立/性能/云不推定。
+
+- 三份公共验证脚本依root预留号移至tmp/deployment/864、863、862，字节/SHA不变，路径mapping说明只归档目录变化，原私密执行/失败/扫描原件保持，无重跑。
+
+- 新360证据10182/目录迁移13cd均push；PR37正文/head13cd/drafttrue、Issue7新结果6376963887及迁移6376983708、PR37对应两评论共4条均GET逐字一致。最终仅文档回执封档，工具62ac/084618未变，当前全停；4h另待根准入。

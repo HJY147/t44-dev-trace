@@ -301,3 +301,16 @@
 - CLI缺失红1项exit1保留；首15guard通过，首Ruff真实F401未用Mock，删该导入后最终15项0.04s与Ruff通过。仅865未跑旧suite。原stdout/stderr/JUnit/源hash在runtime-usage-validation；没有真实stats/runner用量、性能/准入结论，不倒填历史unknown。工具阶段按授权skipci，仅待根静态接线与后续准确runner实采。
 - 实现8983e4c098849c7e9be8869c3bb42bc2697ccadd已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376973663使用本岗body-file发布并完整GET核正文一致，原回执另档。之后仅资料归档，不跑CI/服务/采样。
 - 根静态核实现暂无明确阻断后，按追加要求只补预算边界：六项各compose10s+inspect15s，stats另15s，没有整体15s deadline；墙钟由时间戳实测，调用方给足timeout/不称零影响。README和Issue7补充 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6376985104全文GET一致。仅文档及hash封档，不重跑15项或任何服务；seal.json精确列source/check/file hashes。
+
+## NATIVE-BOUNDED-DEMO-v1 根另准入的唯一新360复验
+
+- 根确认a7bad288精确62ac专审仅限定关闭SERVE-CLEANUP-SCOPE-01，root1e9a081整合后另准入新一次360独占本机窗口，4h仍未准入。实际prompt追加原文，不改已审application084618/runtimea251/871，固定bc5/92文件与既有hash锁依赖。外部独立operational driver只读取端口监听元数据，九端口含原7+5177/18086，在freshprepare前→serve前严格相同，v3两监听确实存在；未读取独立应用资料。
+- fresh app_20261023_233238_345882，新manifest/cookie/vhost；23:32:39.043824Z起、23:38:39.043824Z截止，ready23:33:48.542961Z、首两completed60.324684s，额外TTL300轮换23:36:50.234711Z完成；API/consumer/UI各1次/scanner3代/4worker；3双项目scope服务凭据及ready会话均撤销。controller wait_scans4条与DB同UTC8条真实completed分口径；全部ruleshash匹配。旧16事件/26通知只复核，新增outbox0，仍2项目40任务，不声称新publish。
+- deadline实际触发duration_elapsed23:38:39.044609Z，summary结束23:38:41.688950Z；外部driver wait23:38:42.502726Z真实exit0，summary/cycle/cleanup全true。后置12登记PID（含APIchildren/runner）全部absent、Rabbit/EPMDgone、新5端口closed；九端口三个观察点listenerPID/UID/start/commandSHA全等。此补充三时点观察不回写原七端口历史，不是全时连续监控证明。原360 exit1/cleanupfalse及所有原件永久保持。
+- 后置证据提取首次真实exit1（rule_hash bytes不受json_bytes支持，未写出proof），保留原post脚本字节/SHA及observed failure receipt；仅将rule_hash转hex后重做native只读提取exit0。无controller代码变动/服务重跑；此提取失败不混为serve实际exit。原异常在tool transcript保留，未伪造不存在的raw stderr文件。
+- 源92SHA在后置复核不变，私密226非秘密outputs+args对旧失败/新复验合计19个实际secret literal匹配0；gzip/public投影另扫，cookie/token/账户/DBURL不进入公开白名单。dump不读。已将真实exit/全停报告根释放窗口，此后只离线归档，不发HTTP/SQL/再跑360或4h。
+
+- 证据10182b79906d60379e1ece6b37d0c8b9727f7b0a已push；root纠正三份验证driver公共副本应放tmp并预留864/863/862。本岗仅git mv逐字节迁移，三个SHA前后一致，mapping单列旧公开路径/现归档路径/实际私密执行路径，原argv/hash/异常和历史scan范围不倒改。未运行这些副本、未再查端口/HTTP/SQL/服务。
+
+- 目录迁移13cd3d515c06b0408b5048c852a95a8f1b3ba9b2已push，三份副本SHA逐字节保持；归档正文修改初次apply_patch因同路径delete+add被工具拒绝，未产生文件或GitHub写入，改为单段Update后成功，未涉运行。PR37正文已整体重写新360真实通过/原失败保持/4h未准入及tmp迁移，PATCH后GET逐字一致，观察head13cd/drafttrue；新结果Issue7#6376963887/PR37#6376964164、迁移Issue7#6376983708/PR37#6376984017四条均重新GET逐字一致。原stage正文历史快照不改。
+- 本尾commit只文档/脱敏GitHub回执/最终扫描，最终head另报；运行工具仍62ac/084618，真实新360证据10182，目录迁移13cd无字节改变。所有自有服务保持停机，不再发HTTP/SQL/端口观察，也不自行准入4h。按根要求本轮封档后FINAL释放槽。
