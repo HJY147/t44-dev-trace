@@ -133,3 +133,4 @@
 - 核usage db7RFC->8983/861合成15/root3f静态，无actualstats/RSS/全段峰值/物理同机与旧unknown回填。
 - M7封档后owner纠正早期应用run1实现427b097，当前run1-analysis也匹配；M8追加归属勘误，M7原文件不动；不混该应用阶段与更晚360。
 - 32公开源SHA/Git blob/JSON、四发表摘要hash及三设计先行祖先关系必要核对；无产品/测试代码/CI/服务/基准/Word操作，无人工12/5/3或学生正文补造。Issue11真实评论/GET、commit push实际后补。
+- M8实质commit/push`1d78907efae18f1e90d2d3c021ad1f14418da598`；Issue11评论6377116979真实发表，GET按ID正文逐字匹配，M8-publication.json保存。只追加发布记录，不重跑或触发CI。
