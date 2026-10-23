@@ -60,3 +60,7 @@ PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/
 ## 完整产品e01首次审核结论
 
 完整报告reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md：不通过，C-P1 Iteration嵌套消费、C-P2重放状态误报、C-P3原口径5944超限844、C-P4结构检查只比名漏语义。959/957正确行为断言真实失败；冻结11hash和公开CI/Docker原件核对、7图实际渲染有本岗证据，不是独立验收/正式性能。跨层减量给owner保守270–400行候选且承认仍不足，未私改产品。旧基础/首checkpoint保留，后续新SHA差异复审。
+
+## C-P4限定关闭与规模审计v2
+
+精确7c27a5f62cc23db8545a28852ed01322a7e172b4，原957断言原样复验通过，DB公开live四类变异拒绝/恢复及18 owner用例来源hash一致，原C-P4限定技术关闭。原口径5886超上限786，仍failure/not approved；A/B/C/E方案预计净208–377且仍不足，不把D新AST依赖POC计收益，不修改口径或产品。完整八段十项报告catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md；本轮仅复验957/规模与公开原件核对，无实库写入/性能/全产品新验收，IAT修复另审。

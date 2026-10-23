@@ -1,6 +1,6 @@
 {
   "role": "reviewer",
-  "stage": "完整产品e01首次审核不通过，等待原owner修复后新SHA复审",
+  "stage": "C-P4四类限定关闭；架构减量审计完成，整体failure/not approved",
   "implementation_status": "完整产品已有实现；审核不通过，非独立验收/性能完成",
   "artifacts": [
     "docs/reviews/review-protocol.md",
@@ -38,7 +38,10 @@
     "agents/reviewer/dispatches/ROLE-reviewer-PRODUCT-v1.txt",
     "agents/reviewer/github/product-v1-e01-checkpoint.md",
     "tmp/reviewer/957_schema_semantics_probe.py",
-    "reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md"
+    "reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md",
+    "reports/reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md",
+    "agents/reviewer/evidence/catalog-v2",
+    "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-AND-CATALOG-v2.txt"
   ],
   "interfaces": [
     {
@@ -185,26 +188,22 @@
     {
       "command": "957/959针对性复现、source_count原口径、11冻结hash/manifest、公开CI gzip XML hash计数、Docker原件差异、7 Mermaid真实Chrome渲染、gh门禁读回",
       "result": "三项实质缺陷及规模超限，实际输出在evidence/product-v1；未把mock/原件核对当独立或本岗实库运行"
+    },
+    {
+      "command": "原957与ddaa035 byte/hash核对后无改断言复跑；原source_count fixed cloc；公开DB14原件+5源码hash/18JUnit、公开独立报告/JSON只读",
+      "result": "957 exit0；5886/range false exit1；四类DB live拒绝恢复一致；没有follow私有路径或实库/性能新执行"
     }
   ],
   "results": [
-    "e01 C-P1/C-P2 959复现2断言失败",
-    "原统计脚本5944有效行，--require-range退出1",
-    "全产品与M2继续审核，不发success/APPROVE、不合并",
-    "957隔离Inspector替身确认同名不同语义仍passed=true；没有改真实库",
-    "959两项正确行为断言失败：Iteration嵌套消费、历史重放误报当前",
-    "957 Inspector替身漏语义检查复现，未操作真实MySQL",
-    "原口径5944超5100上限844，固定cloc真实退出1",
-    "冻结11hash/目标manifest/公开CI XML与Docker19表恢复原件核对，7图渲染成功",
-    "仅已审e01失败；后续修复需新SHA差异复审，原失败不改"
+    "原957未改断言复验exit0，原C-P4四类限定关闭",
+    "DB公开实库四类变异/恢复及18测试证据hash一致，执行者为DB，不冒记本岗运行",
+    "固定原口径5886超5100上限786",
+    "架构A/B/C/E预计净318–477仍不足；D仅POC不计收益；无产品改码"
   ],
   "unverified": [
-    "完整审核尚未收口；Schema检查器语义、减量建议与图语义继续核对",
-    "性能/独立验收尚无完成证据；不读取其私有资料",
-    "性能400并发10分钟/P95/吞吐及独立验收仍未取得本轮完成证据",
-    "C-P1/C-P2/C-P4后续owner修复代码本轮未复审，C-P3未达标",
-    "所有operation×错误分支完整证据矩阵、生产威胁模型及最终学生研究/人工留痕不据CI覆盖率代证",
-    "本岗未新跑真实MySQL/DDL漂移/完整Docker/真实备份恢复；使用已公开原件并校验范围"
+    "后端IAT01–05后续修复与诊断不在本轮复审",
+    "全产品新独立验收/性能/全套和覆盖率未由本岗执行，公开旧结果不外推",
+    "所有减量方案尚未实施/计数，不能把预算写成达标"
   ],
   "questions": [],
   "prompt_refs": [
@@ -315,58 +314,26 @@
         "agents/reviewer/dispatches/ROLE-reviewer-PRODUCT-v1.txt",
         "agents/reviewer/github/product-v1-e01-checkpoint.md"
       ]
+    },
+    {
+      "id": "ROLE-reviewer-CAPACITY-AND-CATALOG-v2",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-AND-CATALOG-v2.txt",
+      "reason": "限定C-P4复审与架构级只读减量，保留原断言/统计和独立边界",
+      "artifact_paths": [
+        "reports/reviews/catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md",
+        "agents/reviewer/evidence/catalog-v2",
+        "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-AND-CATALOG-v2.txt"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T18:03:25.714031+08:00",
-  "review_outcome": "不通过：C-P1/C-P2/C-P4真实复现，C-P3 5944>5100",
+  "updated_at": "2026-10-23T19:23:59.930033+08:00",
+  "review_outcome": "原957通过且DB live支持关闭C-P4；5886超786，仍不放行",
   "github_evidence": {
-    "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
-    "review_state": "COMMENTED",
-    "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
-    "required_contexts": [
-      "reviewer/stage",
-      "static",
-      "contracts",
-      "coverage",
-      "frontend"
-    ],
-    "current_check_runs": [],
-    "current_status_projection": {
-      "state": "pending",
-      "statuses": []
-    },
+    "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6363794036",
+    "pr_comment_url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6363794603",
+    "status_mutations": [],
     "no_success_status_published": true,
-    "product_checkpoint_issue": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769",
-    "product_review_publish": "首次remote未push返回422已保留；root push包含e01后绑定原SHA COMMENT成功",
-    "product_checkpoint_review": {
-      "id": 5626647867,
-      "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
-      "state": "COMMENTED",
-      "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867"
-    },
-    "gate_readback": "agents/reviewer/evidence/product-v1/gate-readback.json",
-    "product_final": {
-      "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
-      "review": {
-        "id": 5626761770,
-        "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
-        "state": "COMMENTED",
-        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770"
-      },
-      "status": {
-        "id": 57079614110,
-        "state": "failure",
-        "context": "reviewer/stage",
-        "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
-        "description": "e01 product review failed: UI contract/replay, schema semantics, LOC >5100"
-      },
-      "pr_at_publication": {
-        "base": "1996d44425e09930b5ba3ae5391b728980241f55",
-        "draft": true,
-        "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
-        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
-      }
-    }
+    "historical_e01_failure_unchanged": true
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -424,7 +391,7 @@
     "reported_freeze_commit": "ae60dc3",
     "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+  "review_target_sha": "7c27a5f62cc23db8545a28852ed01322a7e172b4",
   "previous_foundation_review": {
     "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
     "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
@@ -504,17 +471,70 @@
     "resolution": "Keep complete chronological evidence and latest exact-target rejection; no review result or raw log rewritten."
   },
   "source_reduction_candidates": {
-    "estimated_lines": [
-      270,
-      400
+    "estimated_net_lines": [
+      208,
+      377
     ],
     "implemented": false,
-    "remaining_gap": true,
-    "forbidden": [
-      "minify",
-      "change denominator",
-      "move business code to excluded directory/config",
-      "remove mandatory features or safety guards"
-    ]
+    "enough_to_cover_786": false,
+    "A": "180-280; high risk, after IAT fixes/diagnosis",
+    "B": "28-47; shared transaction-local scan_run creation",
+    "C": "20-35; preserve outbox phase semantics",
+    "D": "POC only, zero counted benefit",
+    "E": "0-15; existing seed context/add/pointer reuse not counted twice"
+  },
+  "previous_product_review": {
+    "stage": "完整产品e01首次审核不通过，等待原owner修复后新SHA复审",
+    "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+    "review_outcome": "不通过：C-P1/C-P2/C-P4真实复现，C-P3 5944>5100",
+    "github_evidence": {
+      "pr_review_url": "https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437",
+      "review_state": "COMMENTED",
+      "commit_id": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
+      "required_contexts": [
+        "reviewer/stage",
+        "static",
+        "contracts",
+        "coverage",
+        "frontend"
+      ],
+      "current_check_runs": [],
+      "current_status_projection": {
+        "state": "pending",
+        "statuses": []
+      },
+      "no_success_status_published": true,
+      "product_checkpoint_issue": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769",
+      "product_review_publish": "首次remote未push返回422已保留；root push包含e01后绑定原SHA COMMENT成功",
+      "product_checkpoint_review": {
+        "id": 5626647867,
+        "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867"
+      },
+      "gate_readback": "agents/reviewer/evidence/product-v1/gate-readback.json",
+      "product_final": {
+        "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+        "review": {
+          "id": 5626761770,
+          "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626761770"
+        },
+        "status": {
+          "id": 57079614110,
+          "state": "failure",
+          "context": "reviewer/stage",
+          "target_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362426845",
+          "description": "e01 product review failed: UI contract/replay, schema semantics, LOC >5100"
+        },
+        "pr_at_publication": {
+          "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+          "draft": true,
+          "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+        }
+      }
+    }
   }
 }
