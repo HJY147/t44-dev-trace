@@ -1,3 +1,13 @@
+# 前端模块报告｜当前本机最新预览
+
+- 本轮 ROLE-frontend-LATEST-PREVIEW-v1，只更新API+Web，未改产品。设计627e627，固定应用bc5aef9c62393134582affb7a690acb33ac2b833；85文件git archive前后hash一致，保留旧9560/5dcb快照，独立cache，原锁依赖。
+- 旧PID63514/72044二次核UID/start/PGID/command/cwd后SIGTERM；新APIparent24604、四worker24608/24607/24606/24609，前端24610，1275173→18080。复制旧私密环境仅改PYTHONPATH，未改库/DDL/seed/reset/MQ/scanner。
+- 未改907一次1440/390只读smoke通过：20API请求（2login+18GET）、0businessMutations/failedResponses/pageerror，20cards每宽、无横溢出；四图逐张看。907没有逐条成功response状态，不能声称20×200。浏览器关闭，API/Web继续运行；登录session按原TTL，没额外logout写。
+- 本机私密登录说明0600与账号原样，仅当前版本入口更新；旧副本留存。公开本岗产物对password/完整连接URL精确扫描零匹配，非完整安全认证。首次tarfile准备参数不兼容与依赖只读探针错误保留，均发生于停旧服务前。
+- 证据agents/frontend/latest-preview-validation.json（source/PID/rawlogs/smoke）及latest-preview-secret-scan.json。范围仅本机预览可用，不是完整持续部署、业务重新验收或独立测试；bc5现有CI/公开stage04由根汇总，不在本轮重复。
+
+## 以下为产品与历史阶段记录，不能替代本轮预览证据
+
 # 前端模块报告｜当前UI003理由展示交审
 
 ## 当前范围与实际证据
