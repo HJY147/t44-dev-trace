@@ -212,3 +212,5 @@
 - 核公开15raw摘要与6summary XML摘要一致；14结构红/11语义绿、原25绿后caller2红、修入口7绿1CAS作用域红、强化两实际key且均COMPLETE/HTTPrequest_id后2绿分阶段保留。985仅原CAS函数作用域收紧，无原业务断言删除；986原定义、988/974原字节不变。
 - 首次实时PR16旧head05623不含候选，真实报root；后端随后另建draft PR29，插件实核head7584/baseintegration。CI40012517513四job success与run精确head7584已实时只读核，完整437/覆盖率数据属开发通知、原件由backend归档，本岗不记成自己的全套执行。
 - 限定代码审核未发现新增实质阻断；总体不放行：root/backend最新6108规模超过5100，本岗未重数；无A性能收益数据，独立/正式性能未获本审核通过。报告29-7584与static-audit/execution/11case原件齐全，真实COMMENT/逐字读回将在实际发布后补记；无status success/APPROVE/merge。
+
+- 自有阶段证据927743ca092a30159a6ff62884bde8ddc7dd291d已commit/push exit0；PR29 COMMENT5633640531真实发布，插件list正文逐字COMMENTED，gh只读特定review再核commit_id=7584完整SHA及正文严格一致：https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531。github-comment.json完整回执。connector初始字段名/无效action探针仅schema校验拒绝无写入；本次唯一成功COMMENT，无status/APPROVE/merge。只补本岗发布回执后释放槽位。

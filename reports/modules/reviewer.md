@@ -125,3 +125,5 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 相对5dcb只Runtime生产变化；14冻结摘要/字节一致，authorize旧AST与claim共享算法保持，scanner和旧988/974入口未删。首Tx普通auth→validate→带sessionS认领，主Tx再auth及原锁/CAS/audit/outbox/COMPLETE，GET/login/logout/原只读校验分流保持。原测试无删减，985 CAS按实际两key取行并新增全COMPLETE与HTTPrequest_id严格断言。限定未发现新生产阻断，既往caller漏审/2真红作为AI纠错保留。
 
 本岗只定向现有986 preflight 11/11，91未选；公开15raw/6summary摘要已核，未重跑MySQL/全套/负载。根环境缺pytest首失败、静态误猜974路径失败及恢复均保留。PR16旧head缺口已报告，后端新PR29精确7584；CI40012517513四job及准确run/head metadata实核成功，437/覆盖率原件归backend归档，不冒称本岗实跑。6108规模超限来自root/backend通知未重计；无性能收益数据，整体仍不通过。报告reports/reviews/29-7584cd31f0abfd6727d552b5fef31a9303247d58.md；证据agents/reviewer/evidence/backend-preflight-7584cd3。COMMENT精确发布/读回另补，无APPROVE/status/merge。
+
+发布回执：927743ca092a30159a6ff62884bde8ddc7dd291d已push；PR29 COMMENT5633640531真实发布，插件正文/COMMENTED与REST完整7584/body均严格读回。URL https://github.com/HJY147/t44-dev-trace/pull/29#pullrequestreview-5633640531 ，回执agents/reviewer/evidence/backend-preflight-7584cd3/github-comment.json。未APPROVE/status/merge。
