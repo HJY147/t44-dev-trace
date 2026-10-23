@@ -210,3 +210,9 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 文档内容仍固定2e/0448，源MD出版链接ref746b5b8；后续362CI/性能诊断/新容量规则不追填。没有运行产品测试/构建/请求/压测，也没联系测试或跟随私有证据。
 
 - 收尾静态复核：14公开来源hash、24个2e源码hash及11冻结hash、公开JSON/隐私/diff检查通过；4私密Word根Git忽略。首次check-ignore从独立树检查根私密绝对路径报outside repository，纠正为根只读check-ignore后通过，未动根索引；不计产品失败。
+
+## M4 实际发布和释放
+
+- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push codex/review-documents；PR24标题/正文用GitHub工具实际更新，base codex/integration、draft true、head读回相符。
+- 实际阶段评论 https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257；comment ID6364542257经gh api读回原文/URL相符，正文副本在github-M4-word-qa-comment.md。
+- 本笔只补发布事实，不重新author四Word、不重复marker、不改产品或冻结文件。技术审阅QA完成后停止新增润色，最终记录head由Git元数据回传，明确释放本岗索引/槽位。

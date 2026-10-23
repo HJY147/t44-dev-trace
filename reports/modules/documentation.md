@@ -30,3 +30,8 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M4-TESTS-AND-WORD-v1；
 - 精确阶段SHA/PR及最终页数/逐页QA结果按真实发布补，不预填通过。
 - 最终qa-v4：需规10/设计9/测试6/规格说明3页；全部原封面已看。初始字体/Title蓝线、表格拆行与行距裁图失败均保留并修正，详见M4-word-qa.json/.md。
 - 学生研究最终成文/课程建议和真实人工留痕、性能达标、独立复测、规模达标仍待后续。
+
+## 实际发布
+
+- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push；[草稿PR24](https://github.com/HJY147/t44-dev-trace/pull/24)已attach，base codex/integration。
+- [本岗阶段评论](https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257)正文/URL真实读回；原文在本岗github-M4-word-qa-comment.md。仅补记录，不声明merge或审核成功。
