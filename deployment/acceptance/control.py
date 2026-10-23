@@ -16,7 +16,7 @@ from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
-from deployment.acceptance import metadata  # noqa: E402
+from deployment.acceptance import metadata, usage  # noqa: E402
 
 SERVICES = ("mysql", "rabbitmq", "api", "consumer", "scheduler", "web")
 SERVICE_ISSUE_SCRIPT = """import json,os,subprocess,sys
@@ -339,6 +339,7 @@ def main():
     commands.add_parser("recover")
     commands.add_parser("audit-sql")
     commands.add_parser("runtime-metadata")
+    commands.add_parser("runtime-usage")
     broker = commands.add_parser("broker")
     broker.add_argument("kind", choices=["queues", "connections"])
     account = commands.add_parser("init-user")
@@ -351,6 +352,7 @@ def main():
     service.add_argument("--ttl-seconds", type=int, default=300)
     service.add_argument("--output-name")
     args = parser.parse_args()
+    usage_report = usage.new_report() if args.command == "runtime-usage" else None
     try:
         controls = Controls(args.state)
         output = None
@@ -358,6 +360,10 @@ def main():
             controls.fault(args.service, args.action, args.lease_seconds)
         elif args.command == "recover":
             output = (json.dumps(controls.recover()) + "\n").encode()
+        elif args.command == "runtime-usage":
+            value = usage.collect(controls, usage_report)
+            print(json.dumps(value))
+            return 0 if value["observation_complete"] else 1
         elif args.command == "runtime-metadata":
             value = metadata.collect(controls)
             print(json.dumps(value))
@@ -379,6 +385,9 @@ def main():
         print(json.dumps(error.receipt))
         return 1
     except Exception:  # noqa: BLE001 -- private inputs and driver messages never enter public console
+        if args.command == "runtime-usage":
+            print(json.dumps(usage.fail(usage_report, "CONTROL_UNAVAILABLE")))
+            return 1
         if args.command == "runtime-metadata":
             value = metadata.incomplete()
             value["finished_at"] = datetime.now(UTC).isoformat()
