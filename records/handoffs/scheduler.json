@@ -1,38 +1,48 @@
 {
   "role": "scheduler",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "FOUNDATION：可复用规则与调度生命周期实现",
+  "implementation_status": "基础模块已实现；真实DB扫描、持久升级/幂等/留痕、消息与正式CLI未实现",
   "artifacts": [
     "agents/scheduler/WORKLOG.md",
     "reports/modules/scheduler.md",
     "records/handoffs/scheduler.json",
-    "agents/scheduler/github-stage-comment.md",
-    "agents/scheduler/github-interface-question.md"
+    "agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+    "agents/scheduler/foundation-validation.log",
+    "agents/scheduler/foundation-coverage.json",
+    "agents/scheduler/foundation-issue-comment.md",
+    "agents/scheduler/foundation-pr-body.md",
+    "backend/t44/scheduling/__init__.py",
+    "backend/t44/scheduling/rules.py",
+    "backend/t44/scheduling/runtime.py",
+    "backend/t44/scheduling/README.md",
+    "backend/t44/resources/escalation-rules.json",
+    "backend/tests/scheduling/test_rules.py",
+    "backend/tests/scheduling/test_runtime.py"
   ],
   "interfaces": [
     {
-      "peer": "backend",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "任务/项目、计划及其版本、状态及其版本、责任人与项目经理、规则上下文",
-      "output": "扫描/升级处理结果；调度不得直接修改任务状态",
-      "errors": "候选过期、任务删除、版本冲突、接收人缺失的处理口径待定",
-      "version": "未分配"
+      "peer": "internal callers",
+      "status": "已实现并模块自测",
+      "input": "load_rules(path=None); select_window(now, planned_end, rules)",
+      "output": "immutable EscalationRules / highest WindowMatch or None; no persistence/delivery claim",
+      "errors": "RuleConfigurationError / TimestampError",
+      "version": "schema1/D001-v1"
     },
     {
-      "peer": "database",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "按计划时间/状态分页查询；任务与计划版本二次校验",
-      "output": "持久扫描批次/检查点、唯一升级业务键、次数、处理记录与待发送记录",
-      "errors": "查询/事务失败不可记作完成；唯一键冲突转为重复处理；具体错误码待定",
-      "version": "未分配"
+      "peer": "deployment",
+      "status": "进程边界采用；组合根尚未接入",
+      "input": "同步无参真实scan_callback",
+      "output": "build_scheduler -> unstarted BlockingScheduler; run_scheduler -> blocking lifecycle",
+      "errors": "非法/async callback拒绝；启动/运行错误传播；run已有运行实例拒绝而不停止原实例",
+      "version": "APScheduler3.11.3，UTC60s/coalesce/max_instances1"
     },
     {
-      "peer": "messaging",
-      "status": "草案，未冻结且未获责任岗确认",
-      "input": "稳定事件标识与升级业务键、任务/项目/计划版本、规则/版本、级别、接收人、时间、批次",
-      "output": "可靠接收/待发/已发/失败或可重试回执；RabbitMQ 不可用降级站内待办并留标记",
-      "errors": "重投/消费重复不得再次计升级次数；最终重试与回执语义待定",
-      "version": "未分配"
+      "peer": "backend/database/messaging",
+      "status": "D001/D004业务及字段取舍已采用；实际门面待责任岗确认，未接入",
+      "input": "候选分页/任务状态与排期版本/计划结束/接收人；事务内重校验",
+      "output": "后续任务+排期版本+级别唯一升级与待发送原子记录；事件+接收人通知去重",
+      "errors": "存储冲突/失败、MQ降级/恢复、批次结果须明确定义；本模块不伪造成功",
+      "version": "D001业务语义；D004/ae60dc3字段审批；实际调用版本未分配"
     }
   ],
   "commands_executed": [
@@ -83,28 +93,48 @@
     {
       "command": "gh issue comment 5 --repo HJY147/t44-dev-trace --body-file agents/scheduler/github-interface-question.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6358215339"
+    },
+    {
+      "command": "git worktree add .agent-worktrees/scheduler -b codex/scheduler-core c5c14aa5504fc3671c040768359570518a3c7507",
+      "result": "独立worktree和索引创建成功"
+    },
+    {
+      "command": "uv venv .venv --python /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "result": "Python3.12.10环境创建成功"
+    },
+    {
+      "command": "uv pip sync --python .venv/bin/python --require-hashes ../backend/backend/requirements.lock",
+      "result": "67包已同步，APScheduler3.11.3；共享锁未改"
+    },
+    {
+      "command": "Ruff / pytest / coverage exact commands in agents/scheduler/foundation-validation.log; environment PYTHONPATH=backend",
+      "result": "保留首次Ruff exit1和修复；最终Ruff exit0、77passed0.35s；129语句/46分支100%，仅本模块"
+    },
+    {
+      "command": "git show --stat --oneline ae60dc3; git show ae60dc3:specs/human-review.md",
+      "result": "核对D004/U006字段/错误码已采用；未将此视为配置结构人类审批"
+    },
+    {
+      "command": "gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/scheduler/foundation-issue-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6359652643"
     }
   ],
   "results": [
-    "创建三份本岗初始化资料，明确职责和数据库/消息/后端接口需求",
-    "向总协调回报接口草案和未实现状态；所有接口仍未冻结",
-    "提出基于持久升级记录的续扫、去重、计次与可靠消息交接边界；尚无实现或运行证据",
-    "未安装调度器，未写产品代码，未改共享或其他岗文件，未联系或读取独立测试岗内容",
-    "资料完整性检查通过：三份文件存在、JSON可解析且必需字段齐全、报告47行；不构成业务测试结果",
-    "已记录文档岗真实询问及本岗回答；保存并发表阶段评论和消息岗接口问题，均明确未实现/未冻结，尚未取得接口确认"
+    "版本化JSON规则已真实加载/验证并用于D001默认最高窗口判定；UTC微秒和1000/9999边界已覆盖",
+    "专用进程BlockingScheduler显式构造/生命周期已实现；导入无启动/线程副作用；没有空CLI",
+    "最终77项模块测试通过；覆盖仅backend/t44/scheduling129语句/46分支100%；原失败保留",
+    "Issue6已实际回复消息/部署的进程/去重轮次问题，真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6359652643",
+    "D004已采用在开发中通知并用ae60dc3核对；配置结构是AI技术选择，非人类亲自改码",
+    "未读私有测试内容或联系独立测试岗；未改共享锁/跨岗文件"
   ],
   "unverified": [
-    "模块自测、集成验证、独立验收均未执行",
-    "AC-07 的 20 条超期任务全量升级、重复扫描幂等及重启续扫尚未验证",
-    "数据库事务/唯一约束、消息降级、并发扫描、改期冲突与故障恢复均未实现",
-    "扫描/通知伪代码、复杂度分析、最终规则与运行配置尚未交付"
+    "真实候选分页/事务升级登记/持久幂等/审计/重启补扫/通知降级未实现",
+    "正式CLI/SIGTERM组合根/就绪与退出码未接入",
+    "未执行真实MySQL/RabbitMQ/HTTP、AC07、全产品覆盖率/压力测试或独立验收"
   ],
   "questions": [
-    "总协调需冻结扫描频率、临期阈值、时间边界、时区、参与状态、阻塞计时与级别接收人映射",
-    "后端需确认计划/状态版本与接收人门面，以及改期/终态处理语义",
-    "数据库需确认候选分页、唯一升级键、扫描记录和升级登记/待发送记录的原子事务边界",
-    "消息岗需确认可靠交接、回执、消费去重、站内待办降级和升级计次责任",
-    "规则版本变化、跨级、同级提醒、补扫与重试范围的业务去重口径待冻结"
+    "数据库/后端确认候选分页与原子升级登记门面；消息岗确认事件/收件人幂等及降级恢复回执",
+    "D001/D004规则/字段采用不代替真实接入审核；后续由总协调续派业务扫描实现"
   ],
   "prompt_refs": [
     {
@@ -129,7 +159,30 @@
         "agents/scheduler/github-interface-question.md"
       ],
       "improvement_reason": "真实问答与串行Git索引边界留痕，仅归档既有设计资料与未确认接口问题，不新设计或实现"
+    },
+    {
+      "id": "ROLE-scheduler-FOUNDATION-v1",
+      "source": "总协调实际派工，原文在agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+      "task_file": "agents/scheduler/TASK.md（阶段只设计限制已由明确派工覆盖）",
+      "artifacts": [
+        "agents/scheduler/WORKLOG.md",
+        "reports/modules/scheduler.md",
+        "records/handoffs/scheduler.json",
+        "agents/scheduler/ROLE-scheduler-FOUNDATION-v1.md",
+        "agents/scheduler/foundation-validation.log",
+        "agents/scheduler/foundation-coverage.json",
+        "agents/scheduler/foundation-issue-comment.md",
+        "agents/scheduler/foundation-pr-body.md",
+        "backend/t44/scheduling/__init__.py",
+        "backend/t44/scheduling/rules.py",
+        "backend/t44/scheduling/runtime.py",
+        "backend/t44/scheduling/README.md",
+        "backend/t44/resources/escalation-rules.json",
+        "backend/tests/scheduling/test_rules.py",
+        "backend/tests/scheduling/test_runtime.py"
+      ],
+      "improvement_reason": "先实现纯窗口与显式生命周期，分开模块结果和未实现的持久业务能力；记录真实失败，不虚构人类审批或独立验收"
     }
   ],
-  "updated_at": "2026-10-23T13:35:59+08:00"
+  "updated_at": "2026-10-23T15:18:53+08:00"
 }

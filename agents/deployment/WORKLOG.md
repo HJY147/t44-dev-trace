@@ -29,3 +29,37 @@
 - 实际发表调度接口问题：https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6358272843；命令为 `gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/deployment/github-interface-question.md`，退出码 0。仍未收到接口确认。
 - 本轮使用本岗实际 Git commit 元数据作为提交结果证据，提交正文标注 Agent-Role、Prompt-Ref 和 Refs；不在提交自身资料里伪造预知提交 SHA。完整 SHA 由提交后向文档岗和总协调返回。
 - 提交前复核：五份交接产物均存在、JSON 可解析、模块报告 57 行、无过时 HEAD 指代；三个长期部署目录仍不存在。再次确认分支 `codex/team-bootstrap` 且暂存区空。仅资料完整性核对，不是产品测试。
+
+## 2026-10-23 RUNTIME-v1 实际实现
+
+- 总协调实际派工 `ROLE-deployment-RUNTIME-v1` 授权实现部署/CI、阶段commit、push本岗分支和草稿PR；覆盖初始化写入限制。实际提示词原文和后续约束已归档 `agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md`，不算初始化提示词演进或用户亲改代码。
+- 核对独立worktree `.agent-worktrees/deployment`、分支 `codex/deployment-runtime`、初始提交 `4b3d6e5` 和空工作区；读该树AGENTS/TASK、requirements、architecture、业务v1；只读根目录契约草案，不接触独立测试。
+- 后端确认本轮仅设计：未来API t44.api:app、messaging/scheduling独立模块、mysql+pymysql DATABASE_URL、AMQP_URL、不透明会话，无JWT密钥、无公开health。数据库岗确认18表DDL未执行，迁移统一未来t44.cli、具体实现/版本核对待交付。不能把通信确认当文件已存在。
+- 实际创建Compose、Dockerfiles+ignore、Nginx、容器本地probe、占位.env.example、ops.py和运行/TLS/SSH/备份恢复/发布说明。API四worker，DB/MQ持久卷无宿主端口，web仅loopback。未创建应用API或改其他岗代码。
+- 运维工具生成独立256位凭据并0600排他写入；迁移显式选库、默认计划；口令交互stdin转后端CLI。备份拒绝未支持对象，恢复只能新隔离项目/空目标库且检查清单/校验和/目标确认，不清空业务数据或卷。
+- 实际创建product工作流与CI守卫，四项状态static/contracts/coverage/frontend；真实服务/迁移/三类marker和全量覆盖率。每语言只强制生产源码行覆盖率80%，完整报告分支/函数，不抬高作业门槛，不通过排除未测模块凑分母。
+- 向官方GitHub/registry核对Actions版本及commit、五种镜像tag/多架构摘要；离线Compose schema固定commit并附许可证。初次Python系统CA路径缺失导致TLS校验失败，改用系统CA `/etc/ssl/cert.pem` 成功，未关闭证书校验。依赖来源见 runtime-validation/dependency-sources.json。
+- 仅安装安全纯工具到本岗ignored `deployment/.venv`：哈希锁定PyYAML/jsonschema/Ruff/Bandit/pytest/coverage；actionlint1.7.12来自官方release且校验SHA256。没有Docker，不安装云环境或租赁资源。
+- 已执行：Compose离线schema/边界检查、Ruff、actionlint、git diff --check 均退出0；11项部署安全测试和6项CI守卫测试均通过，使用临时文件和mock Docker/合成报告，不能算应用测试。原始日志与命令见 runtime-validation/checks.json 和 check-*.log。
+- 真实产品static检查退出1，contracts/coverage入口亦退出1，原因是本树尚缺应用、依赖锁、测试及待集成规格；missing清单见 runtime-validation/ci/preflight.json。未伪造用例、成功数据或跳过门禁。
+- 实际跨岗Issue留痕：#7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6358650740；#3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358651374；#4 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358651899；#2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358904057。均通过保存在本岗runtime-*comment.md的body-file发表，未取得前端测试/迁移实现确认。
+- 未执行镜像拉取/构建、Compose启动、Nginx运行、应用测试、迁移、备份恢复、真实完整Actions或压测；不声称测试/审核通过，不更改main保护、不合并，不联系独立测试。
+
+### RUNTIME-v1 发布本岗分支与真实远程回执（14:36）
+
+- 本岗实现commit为 `3857b2e55fcb7fe99b38fa2d85b086662b762f6c`；`git push --set-upstream origin codex/deployment-runtime` 成功。实际创建草稿PR https://github.com/HJY147/t44-dev-trace/pull/15，base为codex/team-bootstrap，创建后已调用attach_artifact。未合并、未改保护或设置reviewer成功。
+- 首次push自动触发真实Actions https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161，精确SHA为3857b2e55fcb7fe99b38fa2d85b086662b762f6c；四job均failure，失败步骤为缺应用/测试/前端manifest，不是通过。原始失败日志及完整job回执已保存runtime-validation/remote-initial-failure.log、remote-initial.json。
+- 该run的Compose/Nginx官方容器语法步骤成功；contracts/coverage的真实MySQL与RabbitMQ容器Initialize containers成功。仅为远程基础配置/服务启动证据，应用preflight随后失败，未执行产品契约、故障、覆盖率或前端测试。不能写作完整Compose产品已构建或已部署。
+- 后续PR自动触发同SHA运行时为in_progress；没有手工重跑或等应用，后续结果按准确提交读取。当前开发机仍无Docker，未在本机构建/启动/迁移/恢复或压测。
+- 总协调追加运行资源约束后，api镜像白名单纳入authoritative specs/contracts，与specs/database并列，不复制原始specs/sources；后端实际资源加载路径和全部hash的requirements.lock仍待编码集成验证。vendor/schema/镜像元数据不计入应用有效代码规模。
+- 实际结果评论 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289 已通过runtime-result-comment.md的body-file发表；PR正文由runtime-pr-body.md通过gh pr edit同步真实状态。随后仅提交上述收尾配置和事实记录。
+
+- 收尾diff --check实际因下载日志4行传输尾空格退出2；工具编排未据该失败停止，随后已形成收尾commit9720e78。这是本岗编排失误。现保留原始日志字节为remote-initial-failure.log.gz，并记录SHA256/转换说明；阅读稿仅去行尾space/tab，不删改失败结果，补交修复后再确认diff检查。不修改或降低门禁。
+
+## RUNTIME-HANDOFF-v1 最终交接
+
+- 实际收尾派工归档于agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md。原始字节保留与尾空白修复commit为6d713eb8fa5af419fe061c8c9b2061f2699472dc，已push；diff检查通过，工作树和暂存区空。
+- 核对该运行配置提交中的api镜像确已COPY specs/contracts与specs/database，ignore只白名单这些规格，不复制specs/sources。
+- 读取总协调root records/github/protection-v2-response.json，确认main必需reviewer/stage、static、contracts、coverage、frontend五项，strict/enforce_admins=true；此前“只有reviewer/stage”是当时快照。没有由本岗更改保护或重跑CI。
+- 后端开始基础包/哈希锁/纯domain实现，尚无API/DB集成，不当作API已完成。本岗实际回复标准pytest JUnit与coverage JSON，不依赖pytest-cov/json-report；tests/backend递归包含在backend/tests，严格markers各自仍需真实用例。回复经body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775 。
+- 最终交接经runtime-handoff-comment.md body-file发表于 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315 。PR15已attach不重建；记录首次真实run39912067161失败，不把配置/服务启动证据当应用测试。本机未构建/部署/迁移/恢复/压测，等待集成。随后只提交本段事实归档。
