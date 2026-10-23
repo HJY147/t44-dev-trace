@@ -157,3 +157,13 @@
 
 ### GitHub阶段反馈与精确回读
 - 米咖Issue2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127 与PR14 #issuecomment-6371128657；初值修正Issue2 #issuecomment-6371254382 与PR14 #issuecomment-6371257392。均经GitHub connector真实发布，随后按精确comment ID通过只读REST回读，4正文与各自body-file字节相同。没有APPROVE/reviewer success或main合并。
+
+## 2026-10-24T02:45+08:00｜ROLE-frontend-LOGOUT-CLEANUP-v1
+- 按公开Issue25/V2-UI-001单向派发接手；只读已发布界面报告，没有读取独立私密用例/输出或联系测试岗。隔离codex/frontend-logout从68eb5e1开始，先设计844bf71后产品363ac4d。
+- 静态根因：logout漏清project及其他上下文，App仅inert仍保留DOM；401清理也不全。新增现有982/983的9项，原75产品真实7失败/2通过/30未选；修后相同9绿；完整39/39，19源文件327/351=93.16%行、706/804=87.81%分支。未排除main/router或新增分支门槛。
+- 成功退出/当前401统一清理全部项目/身份缓存；未登录卸载认证shell/路由及浮层，关闭App导航/说明开关。请求绑定开始token，旧401不注销新身份，旧200及分页/bootstrap/context跨await不得恢复旧上下文；context序号也拒绝被更新的同项目加载，视图卸载作废旧刷新；旧保存回调不能覆盖新会话提示。失败logout网络/503继续保留会话，已发写入仍可能服务端完成。
+- 第一次pnpm绝对路径拼错MODULE_NOT_FOUND，第二次脚本PATH无node，两次exit1均未启动测试；单独保留。第三次真实目标测试红、修后绿。必要构建含vue-tsc通过，825.72kB chunk警告未抑制；无需重复已通过构建。
+- 总协调释放静默窗口后才执行测试/构建/浏览器；896全局编号由root授权。自身5176独立Vite缓存接demo18080，凭据仅脚本内存，正常login/logout只本token，无业务写。60实际浏览器HTTP54个200/6个预期401，额外2个driver真实logout200仅用于制造当前会话失效，不伪造响应。
+- 1440/390各真实退出200→back→reload，重新登录后真实撤销当前token→UI刷新401，认证shell/前项目名/cards/overlays全部无残留。8PNG逐张实际查看，页面错误0、横溢出0；未执行全安全/无障碍/正式性能或独立复测。
+- Chrome18:44:35.566UTC已退出，5176主动Ctrl-C exit130；用户5173、独立5175/18084/原数据未操作。全19源hash、14冻结hash和raw gzip留logout-validation.json。AI代码/提示词/开发验证，不记学生发现或人工修改，原独立FAIL仍待新隔离复测。
+- 证据整理一次误读handoff键为prompts（实际prompt_refs），Python在最终写入前KeyError退出，无handoff半写；核对结构后修正。它是记录脚本错误，不计产品测试失败。

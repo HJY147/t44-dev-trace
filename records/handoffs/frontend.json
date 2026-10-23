@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "warm-glass-and-empty-text-fix-validated",
-  "implementation_status": "fixture响应元版本跟随权威1.1.0、README同步；982七项/类型通过；1.1真实业务及容量行为未在本轮验证",
+  "stage": "logout-cleanup-developer-validated",
+  "implementation_status": "V2-UI-001产品363ac4d：成功退出/当前401统一上下文清理、认证DOM卸载与旧会话响应拒收；39前端测试/构建及限定真实浏览器通过，准确提交审核及独立复测待进行。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -457,27 +457,43 @@
         "agents/frontend/empty-value-*"
       ],
       "improvement_reason": "区分初始化输出与框架运行时props自动转换，用真实控件和表单回归红→绿，不猜业务默认。"
+    },
+    {
+      "id": "ROLE-frontend-LOGOUT-CLEANUP-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-LOGOUT-CLEANUP-v1.md",
+      "artifacts": [
+        "docs/ui/session-cleanup.md",
+        "frontend/src/workspace.ts",
+        "frontend/src/api.ts",
+        "frontend/src/App.vue",
+        "tmp/frontend/982_client.test.ts",
+        "tmp/frontend/983_application.test.ts",
+        "tmp/frontend/896_logout_browser.mjs",
+        "agents/frontend/logout-validation.json"
+      ],
+      "improvement_reason": "限制公开DOM缺陷范围，实际红绿覆盖完整缓存/DOM/异步边界；保留退出失败及原独立FAIL，不把开发修复记作学生或独立验收。"
     }
   ],
-  "updated_at": "2026-10-24T01:51:47.549306+08:00",
+  "updated_at": "2026-10-23T18:47:40.436584+00:00",
   "delivery": {
-    "branch": "codex/frontend-warm-glass",
+    "branch": "codex/frontend-logout",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
-    "base": "codex/team-bootstrap",
+    "base": "codex/integration",
     "draft": true,
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
-    "status": "75c3468 pushed; warm visual840 and narrow empty text fix separately committed; root review pending",
-    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc",
-    "product_source_note": "Vue presentation/CSS/favicon changed; frozen API and business logic unchanged",
+    "status": "developer evidence complete; awaiting push, dedicated draft PR, exact-SHA review and independent retest",
+    "latest_checkpoint": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+    "product_source_note": "Frontend session context lifecycle and authenticated DOM changed; backend, API contract and business workflow unchanged.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
-    "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "application_commit": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
     "stage_comments": {
       "warm_glass_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127",
       "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
       "empty_value_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371254382",
       "empty_value_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371257392",
       "readback": "exact body match for all4"
-    }
+    },
+    "previous_warm_glass_branch": "codex/frontend-warm-glass"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -504,5 +520,35 @@
     "initial_502_environment_failure_retained": true,
     "resumed_browser_passed": true,
     "source_coverage_not_rerun": true
+  },
+  "logout_cleanup": {
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/25",
+    "design_commit": "844bf71",
+    "application_commit": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+    "validation": "agents/frontend/logout-validation.json",
+    "status": "developer checks passed; not independently accepted",
+    "target_before": {
+      "failed": 7,
+      "passed": 2
+    },
+    "target_after_passed": 9,
+    "full_frontend_tests_passed": 39,
+    "source_file_count": 19,
+    "lines": {
+      "covered": 327,
+      "total": 351,
+      "pct": 93.16
+    },
+    "branches": {
+      "covered": 706,
+      "total": 804,
+      "pct": 87.81
+    },
+    "browser_screenshots_viewed": 8,
+    "browser_http": 60,
+    "browser_expected_401": 6,
+    "business_writes": 0,
+    "own_port5176_stopped": true,
+    "private_independent_material_read": false
   }
 }
