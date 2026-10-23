@@ -2,7 +2,7 @@
 
 本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
 
-截至2026年10月24日06:30（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
+截至2026年10月24日07:20（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
 
 本机最新预览为 `http://127.0.0.1:5173`，绑定准确bc5应用；仅API和网页在线，登录说明在本机私密提交目录。[入口核验](agents/frontend/latest-preview-validation.json)不代替消息/扫描常驻部署。
 
@@ -24,7 +24,7 @@
 
 | 范围 | 实际证据 | 边界 |
 | --- | --- | --- |
-| 最新集成工具组合CI | `6ec8d3c`的[product40031843354](https://github.com/HJY147/t44-dev-trace/actions/runs/40031843354)四job及[Docker40031843200](https://github.com/HJY147/t44-dev-trace/actions/runs/40031843200)成功；510BE/89FE，全44Python/20TSVue分母；[五ZIP摘要及51份原件](records/validation/composite-6ec8d3c-ci.json)已核 | 应用及包清单76文件字节仍为bc5；集成native超时修复和只读metadata。helper定向测试另计，不冒作510项内执行 |
+| 最新已核集成工具CI | `4718482`的[product40034577627](https://github.com/HJY147/t44-dev-trace/actions/runs/40034577627)与[Docker40034577586](https://github.com/HJY147/t44-dev-trace/actions/runs/40034577586)成功；510BE/89FE，全44Python/20TSVue；[五ZIP摘要与51份原件](records/validation/composite-4718482-ci.json)逐一核验 | 应用仍为bc5；此CI不覆盖后发连接池诊断、审阅包构建器及bounded serve工具，不将结果移植到后发代码 |
 | 独立v3正式黑盒 | [stage06](reports/independent-v3/stage06-formal-blackbox.md)：3组各完整400VU/600秒；P95流转9512.069、契约3086.148、升级8272.364ms，均超270；组内失败1021/0/2 | 三组吞吐均达标，但整体原判据均未通过；两组采样密度也未达。资源同次缺失保留unknown、503根因未定，后续4白盒/4交付物范围另行核查 |
 | 前一准确应用组合CI | `bc5aef9`的[run40023062800](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062800)四job成功：后端510项、全部44文件行2638/2957=89.21%、分支659/824=79.98%；前端89项、全部20文件行364/390=93.33%、分支821/932=88.09%；[完整原件及源对应](records/validation/composite-bc5a-ci.json) | 新后端严格历史证据匹配bcb0、前端字面理由c79；新文件均纳入分母、无排除。是开发CI，独立v3另行执行、正式性能和规模仍待达标 |
 | 前一准确应用容器演练 | 同一`bc5aef9`的[run40023062786](https://github.com/HJY147/t44-dev-trace/actions/runs/40023062786)四API worker、真实扫描、19表恢复行数/checksum完全相同，18业务表226字段复核通过 | 合成2项目40任务；预期第二scanner flock拒绝exit1保留，不是租云、正式负载或独立验收 |
@@ -96,3 +96,5 @@
 最新[M7夜间过程素材](docs/prompting/M7-night-process-evidence.md)以6ec为固定截止，记录机器输出协议、真实红绿修复、专审和并行协作错误；不代写学生研究正文，不补造人工改码证据。
 
 当前四技术Word为三份M6原稿27页加M7测试新稿8页，共35页；[M7后发核查附录](reports/final/M7-post-cutoff-audit-annex.md)区别独立岗位核过的M6旧33页，不把核验迁移到后发稿。[醒来后查看项目](docs/user-guide/wake-up-review.md)提供本机入口与材料位置。
+
+连接池[短ABBA诊断](agents/database/pool-retention/result.md)四段均无失败：保留15个连接的两段稳态新建均为0，保留5个的两段为436/427；多保留10个空闲连接的内存代价未测。默认配置候选仅在独立分支验证，当前应用未变。新6分钟完整演示已实际到期，但退出检查把runner自身当成未退出子进程，原exit1保留；真实自有服务外部复核均已停止，窄修及专审进行中，未运行长时serve。
