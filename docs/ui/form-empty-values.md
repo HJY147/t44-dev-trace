@@ -25,3 +25,5 @@ FieldEditor 改为显式运行时 props，modelValue 的 `type: null as unknown 
 ## 验证范围
 
 保留改前测试失败，再执行同一组改后；必要 typecheck/build、受影响新建任务表单真实浏览器验证。米咖840b1a8与其原证据不覆盖。未涉及的全业务测试、状态流转与正式性能不重复。若回归不支持根因，记录结果再调整设计，不预先改产品。
+
+总协调恢复同一 5dcb/18080/t44_demo_v11 后，`empty-form-resumed` 在1440/390验证标题/说明/延期预案实际inputValue均为`''`，必填错误仍有效；20真实HTTP全200，仅登录POST，其余GET，无业务写。4张实际截图已逐张看，原502记录未覆盖。代码修正提交75c3468，详细证据见agents/frontend/empty-value-validation.json。

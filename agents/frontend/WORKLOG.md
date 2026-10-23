@@ -146,3 +146,14 @@
 
 ### 2026-10-24｜米咖阶段发布检查纠正
 - 63519c2前git diff --cached --check实际报构建/覆盖率日志尾空白，但shell仍执行了commit；不能记为该检查已通过。原始log.gz字节已在635保留，现在只规范公开可读log的行尾空白，并区分raw_sha256/readable_sha256；不改测试内容、结果或840产品。后续将检查与commit分开执行。
+
+## 2026-10-24T01:51:47.549306+08:00｜ROLE-frontend-EMPTY-VALUE-FIX-v1
+- 用户八小时自主窗口下新派小修；先设计7369400记录截图/根因假设/最小边界，再新增现有982/983的3回归。initial()本来正确，实际编译FieldEditor modelValue运行时是[null,Boolean,Number,String,Array,Object]，Vue布尔优先使空串成为true。compiled-prop-before/after.txt保存真实编译片段。第一次require@vue/compiler-sfc因pnpm未直接暴露模块失败，改vue/compiler-sfc成功，未安装额外依赖。
+- 改前目标命令exit1：2失败4通过24未选，控件真实value=true；改后同命令exit0：6通过24未选。随后受影响typed editor/operation forms/contract-driven forms组14通过16未选；没删除测试或降低断言。
+- 最小产品75c3468仅FieldEditor显式runtime props，以PropType<Json>保留静态类型、type:null禁止Boolean casting，其余schema/name/path/errors默认不变；不改initial、契约、业务。净增7产品行，不改源码统计。构建含vue-tsc通过，825.26kB大chunk警告未抑制。未重复全套覆盖，不把84092.81%当新代码精确覆盖。
+- 首次受影响真实浏览器仅login502，30s超时；根demo进程已停，原结果作为环境阻塞保留。root恢复同5dcb/18080/t44_demo_v11后，复跑empty-form-resumed20HTTP全200，1440/390三个文本inputValue均空，必填错误可见，4PNG亲自逐张看，0业务写/pageerror/横溢出。
+- Chrome finally关闭，自己5176 Ctrl-C/pnpm实际exit1主动停止；不动root5173/18080或任何独立环境。米咖326/840/635原证据保持，后续本轮证据单独empty-value前缀。
+- 生产75c3468已push，交root集成。红→绿、编译证据、错误日志rawgzip与source匹配见empty-value-validation.json。操作者/发现者是AI，不记学生活动。
+
+### GitHub阶段反馈与精确回读
+- 米咖Issue2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127 与PR14 #issuecomment-6371128657；初值修正Issue2 #issuecomment-6371254382 与PR14 #issuecomment-6371257392。均经GitHub connector真实发布，随后按精确comment ID通过只读REST回读，4正文与各自body-file字节相同。没有APPROVE/reviewer success或main合并。

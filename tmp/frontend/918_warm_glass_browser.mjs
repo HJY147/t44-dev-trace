@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const mode = process.argv[2] ?? 'prototype'
-const output = resolve('agents/frontend/warm-glass-browser', process.env.T44_UI_PHASE ?? mode)
+const output = resolve(process.env.T44_UI_EVIDENCE_BASE ?? 'agents/frontend/warm-glass-browser', process.env.T44_UI_PHASE ?? mode)
 await mkdir(output, { recursive: true })
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
 const evidence = { mode, checkedAt: new Date().toISOString(), screenshots: [], layouts: [], pageErrors: [], checks: [], api: [] }
@@ -46,6 +46,27 @@ try {
       await page.locator('#filter').selectOption('blocked')
       if (await page.locator('.record:visible').count() !== 1) throw new Error('Prototype filter mismatch')
       evidence.checks.push({ width, loginNavigation: true, formError: true, filter: true, detailEscape: true })
+    } else if (mode === 'empty-form') {
+      const credentials = JSON.parse(await readFile(process.env.T44_UI_CREDENTIALS, 'utf8'))
+      const account = credentials.manager ?? credentials
+      await page.goto(process.env.T44_UI_URL ?? 'http://127.0.0.1:5176/')
+      await page.locator('#login-username').fill(account.username)
+      await page.locator('#login-password').fill(account.password)
+      await page.locator('.login-submit').click()
+      await page.locator('.login-page').waitFor({ state: 'hidden' })
+      await page.getByRole('button', { name: '登记交付任务', exact: true }).click()
+      const fields = {}
+      for (const field of ['title', 'description', 'plan-delay_contingency']) {
+        fields[field] = await page.locator('#field-' + field).inputValue()
+        if (fields[field] !== '') throw new Error(`Unexpected initial text in ${field}`)
+      }
+      await capture(page, `${width}-empty-task`)
+      await page.locator('.operation-form button[type="submit"]').click()
+      await page.locator('.operation-form .field-error').first().waitFor()
+      await page.locator('.el-dialog__body').evaluate((element) => { element.scrollTop = 0 })
+      await capture(page, `${width}-required-errors`)
+      await page.keyboard.press('Escape')
+      evidence.checks.push({ width, fields, requiredErrors: true, noBusinessSubmit: true })
     } else if (mode === 'live') {
       const credentials = JSON.parse(await readFile(process.env.T44_UI_CREDENTIALS, 'utf8'))
       const account = credentials.manager ?? credentials
