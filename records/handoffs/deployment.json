@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "NATIVE-v1 stage1 complete and stopped; application stage pending",
+  "stage": "runtime-metadata-implementation-complete",
   "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
@@ -579,5 +579,29 @@
     "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
     "runtime_after_validation_changed": false,
     "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials"
+  },
+  "runtime_metadata": {
+    "base_sha": "9fb24f1f0e173ef37d0cee8b14b080f190ca6d58",
+    "branch": "codex/deployment-runtime-metadata",
+    "prompt_ref": "ROLE-deployment-RUNTIME-METADATA-v1",
+    "implementation": [
+      "deployment/acceptance/metadata.py",
+      "deployment/acceptance/control.py",
+      "deployment/acceptance/run.py"
+    ],
+    "protocol": "deployment/acceptance/README.md",
+    "command": "control.py runtime-metadata",
+    "collection": "explicit caller only;single JSON;incomplete nonzero",
+    "tests": "75 synthetic guards passed;Ruff passed;first lint UP022 preserved",
+    "evidence": "agents/deployment/runtime-metadata-validation/",
+    "actual_docker_or_runner_observation": "not executed;not available locally",
+    "resource_or_product_changed": false,
+    "independent_material_read": false,
+    "limitations": [
+      "Linux cgroup v2 visible ancestry only;unsupported/missing controllers incomplete",
+      "Nginx-T current validated files,not proof of last reload memory state",
+      "no physical colocation/no other traffic claims"
+    ],
+    "github": "issue specific comment pending actual publish/readback"
   }
 }

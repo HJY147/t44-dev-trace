@@ -409,3 +409,119 @@ def test_neutral_account_returns_only_exact_valid_id_json(tmp_path):
     assert json.loads(controls.account("synthetic_account", "Synthetic", "synthetic-password")) == {"user_id":4294967295}
     assert controls.compose.call_args.kwargs["data"] == b'synthetic-password\n'
     assert controls.event.call_args.args == ("account-initialization",)
+
+
+@pytest.mark.parametrize('container_id,project,service', [
+    ('a' * 12, 'synthetic', 'api'), ('a' * 64 + '\n', 'synthetic', 'api'),
+    ('a' * 64, 'different-project', 'api'), ('a' * 64, 'synthetic', 'admin')])
+def test_runtime_metadata_rejects_container_scope(container_id, project, service):
+    metadata = control.metadata
+    raw = json.dumps({'id': 'a' * 64, 'project': 'synthetic', 'service': 'api'})
+    with pytest.raises(ValueError):
+        metadata.validate_inspection(raw, container_id, project, service)
+
+
+def test_runtime_metadata_projects_resources_without_env_or_arbitrary_fields():
+    metadata = control.metadata
+    raw = {'id': 'a' * 64, 'project': 'synthetic', 'service': 'api', 'running': True,
+           'resources': {key: '' if key == 'CpusetCpus' else 0 for key in metadata.RESOURCE_FIELDS},
+           'health_interval_ns': 20000000000, 'Config': {'Env': ['TOKEN=synthetic-secret']}}
+    value = metadata.validate_inspection(json.dumps(raw), 'a' * 64, 'synthetic', 'api')
+    assert set(value['host_config']) == set(metadata.RESOURCE_FIELDS)
+    assert value['host_config']['Memory'] == 0
+    assert 'synthetic-secret' not in json.dumps(value)
+    assert '.Config.Env' not in metadata.INSPECT_TEMPLATE
+    assert '{{json .HostConfig}}' not in metadata.INSPECT_TEMPLATE
+
+
+def test_runtime_metadata_nginx_only_projects_requested_values():
+    raw = (b'worker_processes auto; events {worker_connections 1024;} '
+           b'http {upstream app {keepalive 32;} proxy_connect_timeout 3s; '
+           b'proxy_read_timeout 30s; proxy_send_timeout 30s; set $secret synthetic-secret;}')
+    result = control.metadata.nginx_projection(raw)
+    assert result['directives']['upstream_keepalive'] == ['32']
+    assert 'synthetic-secret' not in json.dumps(result)
+    with pytest.raises(ValueError):
+        control.metadata.nginx_projection(b'worker_processes auto;')
+
+
+def test_runtime_metadata_fixed_mysql_scalar_does_not_accept_empty_or_other_rows():
+    assert control.metadata.mysql_projection(b'@@max_connections\n151\n') == 151
+    for raw in [b'', b'@@max_connections\n', b'name\n151\n', b'@@max_connections\n1\n2\n']:
+        with pytest.raises(ValueError):
+            control.metadata.mysql_projection(raw)
+
+
+def test_runtime_metadata_api_requires_observed_supervisor_and_only_counts():
+    value = {'supervisor_count': 1, 'configured_workers': [4], 'spawn_main_process_count': 4,
+             'unreadable_process_count': 0}
+    assert control.metadata.api_projection(json.dumps(value)) == value
+    with pytest.raises(ValueError):
+        control.metadata.api_projection(json.dumps({**value, 'argv': ['synthetic-secret']}))
+    with pytest.raises(ValueError):
+        control.metadata.api_projection(json.dumps({**value, 'configured_workers': [None]}))
+
+
+def test_runtime_metadata_missing_observations_are_unknown_not_defaults():
+    controls = Mock(values={'T44_DOCKER_CONTEXT': 'synthetic', 'COMPOSE_PROJECT_NAME': 'synthetic'})
+    controls.compose.return_value.stdout = b''
+    controls.audit.side_effect = RuntimeError('synthetic-secret')
+    with patch.object(control.metadata, 'runner_metadata', side_effect=OSError('synthetic-secret')), patch.object(
+            control.metadata, 'capture', side_effect=RuntimeError('synthetic-secret')):
+        result = control.metadata.collect(controls)
+    assert not result['observation_complete']
+    assert result['runner'] is None and result['mysql_max_connections'] is None
+    assert all(value is None for value in result['containers'].values())
+    assert 'synthetic-secret' not in json.dumps(result)
+    controls.audit.assert_called_once_with('SELECT @@max_connections')
+    assert all(call.args[:2] == ('ps', '-q') for call in controls.compose.call_args_list)
+
+
+@pytest.mark.parametrize('kind', ['collect-incomplete', 'private-state-unavailable'])
+def test_runtime_metadata_cli_incomplete_is_single_json_nonzero_redacted(capfd, kind):
+    value = control.metadata.incomplete('synthetic-observation')
+    constructor = Mock(side_effect=OSError('synthetic-secret')) if kind == 'private-state-unavailable' else Mock()
+    with patch.object(control, 'Controls', constructor), patch.object(control.metadata, 'collect', return_value=value), \
+            patch.object(sys, 'argv', ['control.py', 'runtime-metadata']):
+        assert control.main() == 1
+    output = capfd.readouterr()
+    parsed = json.loads(output.out)
+    assert not parsed['observation_complete'] and parsed['errors']
+    assert 'synthetic-secret' not in output.out and not output.err
+
+
+def test_runtime_metadata_scopes_all_reads_and_never_logs_nginx_dump():
+    metadata = control.metadata
+    controls = Mock(values={'T44_DOCKER_CONTEXT': 'synthetic', 'COMPOSE_PROJECT_NAME': 'synthetic'})
+    ids = {service: format(index + 1, '064x') for index, service in enumerate(metadata.SERVICES)}
+    controls.compose.side_effect = lambda *args, **kwargs: subprocess.CompletedProcess([], 0, ids[args[2]].encode())
+    controls.audit.return_value = b'@@max_connections\n151\n'
+    seen = []
+
+    def capture(command):
+        seen.append(command)
+        if 'context' in command:
+            return b'"unix:///var/run/docker.sock"'
+        if 'inspect' in command:
+            service = next(key for key, value in ids.items() if value == command[-1])
+            return json.dumps({'id': ids[service], 'project': 'synthetic', 'service': service, 'running': True,
+                               'resources': {key: '' if key == 'CpusetCpus' else 0 for key in metadata.RESOURCE_FIELDS},
+                               'health_interval_ns': 20000000000}).encode()
+        if command[-1] == metadata.API_SCRIPT:
+            return json.dumps({'supervisor_count': 1, 'configured_workers': [4], 'spawn_main_process_count': 4,
+                               'unreadable_process_count': 0}).encode()
+        assert command[-2:] == ['nginx', '-T']
+        return (b'worker_processes auto; worker_connections 1024; keepalive 32; '
+                b'proxy_connect_timeout 3s; proxy_read_timeout 30s; proxy_send_timeout 30s; '
+                b'set $not_projected synthetic-secret;')
+
+    with patch.object(metadata, 'runner_metadata', return_value={'synthetic': True}), patch.object(
+            metadata, 'capture', side_effect=capture):
+        result = metadata.collect(controls)
+    assert result['observation_complete'] and not result['errors']
+    assert result['daemon_relation']['local_unix_socket'] is True
+    assert 'synthetic-secret' not in json.dumps(result)
+    assert set(result['containers']) == set(metadata.SERVICES)
+    assert all(call.args[0] == 'ps' for call in controls.compose.call_args_list)
+    assert all('.Config.Env' not in ' '.join(command) for command in seen)
+    controls.audit.assert_called_once_with('SELECT @@max_connections')

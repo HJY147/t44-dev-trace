@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment/deployment/.venv/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--config",
+    "scripts/ci/ruff.toml",
+    "deployment/acceptance/control.py",
+    "deployment/acceptance/run.py",
+    "deployment/acceptance/metadata.py",
+    "tmp/deployment/953_acceptance_environment.py"
+  ],
+  "at_utc": "2026-10-23T21:59:40.631593+00:00",
+  "exit_code": 0,
+  "stdout": "All checks passed!\n",
+  "stderr": "",
+  "scope": "Synthetic capability boundaries only, not actual runner metadata."
+}

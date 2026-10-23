@@ -54,6 +54,7 @@ runner 建立独立 Compose project/数据库 `t44_acceptance`，随机生成256
 | amqp_url | 本轮真实 RabbitMQ/vhost |
 | mq_transport | 本产品镜像默认exchange/queue/routing、隔离拓扑、真实outbox字段映射及AMQP属性 |
 | python / control_cli / control_state | 固定中性操作入口和私有状态文件 |
+| runtime_metadata | 只宣告runtime-metadata只读命令；不自动采样，完整JSON退出0，不完整退出非零 |
 | service_credential | 限定escalation:write的真实bearer签发能力、短TTL和私有文件位置 |
 | harness_output_directory | tester主动准备的受限证据输出目录 |
 | archive / faults / isolation | 加密取回、控制租期及环境隔离边界 |
@@ -166,3 +167,18 @@ tar -tzf tester-output.tar.gz
 五次H2控制输出歧义在公开stage02报告原样保留。该修订的合成回归不是独立业务通过；实际托管控制仍须由冻结的独立入口验证。
 
 MySQL `--batch` 成功零行 SELECT 允许 stdout **完全为空**（不保证空结果仍有列头）；非空行有列头及TAB文本。必须先检查退出码；不得将控制失败或不可解的非空文字当空行。已对同系8.4.11客户端两个固定常量SELECT实际核对，未使用任何业务数据或独立用例。
+
+## 同次运行的只读资源快照
+
+可通过已有context中的python/control_cli/control_state显式调用 `control.py runtime-metadata`。该命令无额外参数，不接受任意命令、SQL或观测路径；stdout始终单个JSON。`observation_complete=true`仅表示必需观察取得完整，不是服务就绪或性能通过；任何必需观察缺失时退出非零且返回false、稳定component/error，未知值保留null，不猜默认。调用方可自行在正式负载前后取回私密审阅。run.py仅宣告能力，不自动采集，也不改变既有七命令、产品源、资源或阈值。
+
+- runner：逻辑CPU数、当前进程CPU亲和范围数量、/proc/meminfo总可见内存，以及当前cgroup v2成员可见祖先的cpu.max/memory.max/memory.swap.max/pids.max/cpuset.cpus.effective原值。当前采集器支持Linux cgroup v2；不支持的版本、不可见或缺必需controller时incomplete，不以宿主可见内存冒充容器限额。
+- 六服务：先由当前Compose项目 `ps -q SERVICE`取得唯一64hex ID，再以白名单inspect模板只取同ID及project/service标签、Running、HostConfig CpuQuota/CpuPeriod/NanoCpus/Memory/MemorySwap/CpusetCpus/PidsLimit与health interval；标签不符即拒绝，绝不请求完整inspect、Config.Env或health命令。返回compose_project和实际容器ID便于同次前后关联。0/null/空字符串是原始配置值，不代表无限物理硬件；health interval原值也不自动解释成没有探针。
+- API：在已验证API容器内，只输出实际uvicorn supervisor数量、从其实际命令解析的workers值、spawn_main进程数量和读取失败数量；不输出PID、argv或环境。数量是采样时值，不据配置猜运行worker数。
+- MySQL：只调用现有SELECT-only审计入口的固定 `SELECT @@max_connections`，严格解析该标量；不接受其他SQL或读取业务行。
+- Nginx：在已验证web容器执行 `nginx -T`，仅内存投影worker_processes/worker_connections/upstream keepalive/proxy connect/read/send timeout，完整配置及stderr不落盘/不进入控制日志；未显式观察到的directive不补默认。此命令校验当前配置文件，不重载，也不能单独证明最近一次reload的内存配置与文件相同；多位置取值保留列表。
+- daemon：只取所选Docker context的endpoint字段并返回local-unix布尔/transport类型，不输出endpoint地址。harness由workflow在runner执行，六服务是同一所选daemon的容器；unix socket仍不足以证明物理同机，不推定底层硬件关系，也不持续追踪每个客户端来源。
+
+已知背景活动包括scheduler基线60秒扫描、consumer与容器健康探针；实际Running和probe interval随快照记录，扫描基线不是本次流量测量。没有持续抓包/负载归因，other_traffic始终unknown，不宣称无其他流量。输出不自动写公开artifact；调用方按独立证据的私密审阅/显式发布流程处理。
+
+参考：[Docker字段格式化inspect](https://docs.docker.com/reference/cli/docker/inspect/)、[Docker资源约束](https://docs.docker.com/engine/containers/resource_constraints/)、[Nginx -T说明](https://nginx.org/en/docs/switches.html)。

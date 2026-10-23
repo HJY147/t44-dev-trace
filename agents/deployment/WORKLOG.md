@@ -188,3 +188,10 @@
 - 收尾完整基线diff检查发现两份原始失败stderr的CRLF被判尾空白；之前只检查未暂存diff未覆盖这些已提交原字节。原始检查输出和真实非零保留archive-baseline-check-original.log；两份raw原字节gzip+SHA/roundtrip精确保存，.stderr明确作为仅换行/尾空白规范阅读稿，JSON引用改指raw gzip及原hash。dump未打开，运行源码不改、不重跑服务；完整暂存基线检查另行记录。
 
 - phase1实际结果已body-file发布Issue7/6374241039和PR31/6374241500，PR标题/正文按最终broker生命周期重写；两条comment与PR正文经API精确readback（仅规范CRLF/末换行）一致，原JSON与check在native-validation/github-stage1-*。仍为draft，未合并/设置reviewer成功；GitHub本分支CI仅保存真实snapshot，不用旧SHA结果代替当前门禁。
+
+## RUNTIME-METADATA-v1
+
+- 独立worktree .agent-worktrees/deployment-runtime-metadata，分支codex/deployment-runtime-metadata，从完整基点9fb24f1f0e173ef37d0cee8b14b080f190ca6d58开始；核读AGENTS/本岗TASK及neutral-resource-metadata-rfc，旧初始化范围由新派工覆盖。没有触及deployment-native/application.py，没有读取任何项目tmp/independent/私密报告，没有联系tester。
+- 新增单JSON runtime-metadata，无参数/任意SQL/任意命令入口；逐服务ps-q唯一64hex+project/service标签核验，inspect字段白名单，不取Env/完整inspect。实际API进程数量/worker配置、固定max_connections标量、Nginx-T内存投影；不保存完整config/argv/私密行。runner可见CPU/内存/cgroupv2祖先原值和daemon transport只描述观察范围，不推无限硬件/物理同机/无其他流量。
+- run.py仅context声明，不自动采集；保留cf685d7分离stdout/stderr与严格user_id JSON、原七命令、成功零行audit行为。没有运行Docker/GHA/产品/压测，不生成伪runner资源结论。Linux cgroup v2不支持或必需controller不可见时incomplete非零；Nginx-T仅验证当前文件，不冒称证明最后reload内存完全相同。
+- 扩既有953的ID/project/字段无secret/固定SQL/缺失unknown非零/六服务只读投影守卫，原63项均保留；最终75项0.10s通过，CI配置Ruff针对全部改动文件通过。首次UP022原诊断重现留lint-before.json，手工改capture_output后通过；两轮原始工具stdout/stderr/JUnit及SHA在runtime-metadata-validation。只做合成能力边界核验，未观测实际runner容器。
