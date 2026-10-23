@@ -72,3 +72,9 @@ PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/
 最新补答收口：02ecdea9ced90cd46cbca898f123d6409f45ba80 的U016/D006已真实采用capacity状态7可移出、返工前补回，原成员1–5+7保护不变。新RFC已更正AI提案错误并写具体版本同步。35份提交输入重hash、11原freeze不变，源码未改。限定设计可准入实施，无此边界待答；5fb首次报告保留，最终源/契约冻结/产品测试与gate另审。
 
 终稿限定差异：bbc4be681f19a386fbca40baf97a63ab902b3f89仅RFC第33行精确安全竞争语义：移除拟接手人冲突一方拒绝；先转派再移除原负责人允许依次成功。hash a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98；该RFC可准入实施，02全文论证/5fb历史均保留；无本轮设计阻断，产品源码/真实回归/最终gate另审。
+
+## 1.1冻结前轻量核对
+
+固定9aeb40c48c35139e29a5e997253d606e5c96139a；18输入绑定、129标准库结构检查通过（31/38/130、DDL18/226、两副本、Meta/info1.1及原v1历史摘要）。人工语义发现两份assignment description把原developer错误与capacity错误合并，F-C1冻结前阻断，root派BE改说明。没有服务/测试/DB或新产品验证；manifest当时未生成，后续精确SHA仅差异复核，原报告保留。
+
+59daa最终限定复核：F-C1仅description由owner精修，先OWNER_NOT_PROJECT_DEVELOPER后CAPACITY，权威/运行hash均a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f。129轻量结构项再次通过，31/38/130、18/226、旧v1历史保持；可生成新manifest，无本轮剩余语义阻断。manifest在该SHA尚不存在，产品源码/回归另审；仅只读owner1130设计脚本before/after原件并分清执行者，无本岗服务/DB/测试/产品gate。
