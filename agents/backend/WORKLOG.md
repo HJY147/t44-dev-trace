@@ -296,3 +296,5 @@ Source checkpoint cached --check initially exited2 on original pytest E-lines co
 - 工具按既有ABBA计划：Git对象/actualimport双核验，自己的profile/18083/1worker/40线程/5+10，四阶段sanity3+warm120+8并发8秒，单连续控制器/独占PG/90秒有界finally。底层未包裹API，不改pool/验证/权限/业务。900编号按根正式预留930使用，无其它新脚本。
 - 11项离线helper检查通过（Git归档、错误路径/篡改拒绝、namespace、执行开关、600输入）；不import t44、不发SQL/HTTP。首次隐式Ruff使用外部默认配置失败已留原文，显式backend/pyproject.toml既有lint/format均退出0，未降低选项。见abba-tool-static.*和preparation.md。
 - 尚未运行服务/负载/真实清理，不能把静态成功称性能证明。待精确工具commit/push后向根交单命令，必须再等明确quiet窗口授权。原03整体exit1/正式性能失败/6051规模超限保留，后续write候选RFC另阶段，未改生产。
+
+930准备工具5b0e1529e5e56e1e76aef557012da79807ad8e04已push新分支。真实body-file阶段评论已发表Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6371903455 及PR16 https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6371904025，正文abba-tool-github-comment.md。此后仅补证据归档，不改工具；尚未获quiet窗口，不启动。
