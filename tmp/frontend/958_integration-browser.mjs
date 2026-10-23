@@ -12,7 +12,7 @@ const candidates = candidateSource.candidates || candidateSource.removed
 const redact = (message) => Object.values(credentials).filter(v => v?.password).reduce((s, r) => s.replaceAll(r.password, '[REDACTED]'), message)
 if (phase === 'escalate') {
   const service = JSON.parse(await readFile(process.env.SERVICE_CREDENTIALS, 'utf8'))
-  const task = JSON.parse(await readFile(new URL('../../agents/frontend/integration-browser/prepared-task.json', import.meta.url), 'utf8'))
+  const task = JSON.parse(await readFile(process.env.PREPARED_TASK || new URL('../../agents/frontend/integration-browser/prepared-task.json', import.meta.url), 'utf8'))
   const body = { expected_version: task.expected_version, schedule_version: task.schedule_version, rule_version: 1, scan_run_id: crypto.randomUUID() }
   const response = await fetch(`http://127.0.0.1:18080/api/v1/internal/projects/${task.project_id}/tasks/${task.task_id}/escalations`, { method: 'POST', headers: { Authorization: `Bearer ${service.access_token}`, 'Content-Type': 'application/json', 'Idempotency-Key': crypto.randomUUID() }, body: JSON.stringify(body) })
   const payload = await response.json()
@@ -25,7 +25,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, lo
 const errors = [], consoleErrors = [], http = [], checks = [], captures = [], matches = []
 page.on('pageerror', e => errors.push(redact(e.message)))
 page.on('console', m => { if (m.type() === 'error') consoleErrors.push(redact(m.text())) })
-page.on('response', r => { const u = new URL(r.url()); if (u.pathname.startsWith('/api/v1')) http.push({ method: r.request().method(), path: u.pathname, status: r.status() }) })
+page.on('response', r => { const u = new URL(r.url()); if (u.pathname.startsWith('/api/v1')) http.push({ method: r.request().method(), path: u.pathname, status: r.status(), request_id: r.headers()['x-request-id'] || null }) })
 const projectId = credentials._integration.project_id, taskId = Number(process.env.NOTIFICATION_TASK_ID || credentials._integration.task_id)
 const button = name => page.getByRole('button', { name, exact: true })
 async function nav(name) {
@@ -57,7 +57,78 @@ try {
   await page.locator('.project-picker select').selectOption(String(projectId))
   await page.waitForLoadState('networkidle')
   checks.push('真实经理账号登录，选择升级链演示项目')
-  if (phase === 'prepare') {
+  if (phase === 'counts') {
+    assert.ok(process.env.BACKEND_SHA, '真实后端ready SHA必须提供')
+    const snapshots = []
+    async function totals(data, step, requestId = null) {
+      const text = await page.getByRole('status', { name: '通知统计' }).innerText()
+      assert.ok(text.includes(`未读 ${data.unread_count} 条`)); assert.ok(text.includes(`未处理 ${data.unhandled_count} 条`))
+      snapshots.push({ step, request_id: requestId, project_id: Number(await page.locator('.project-picker select').inputValue()), unread_count: data.unread_count, unhandled_count: data.unhandled_count, total: data.total, visible_rows: data.items.length })
+    }
+    async function fresh(step) {
+      const pending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/v1/me/notifications')
+      await page.locator('.page-heading').getByRole('button', { name: '刷新记录', exact: true }).click()
+      const response = await pending; assert.equal(response.status(), 200)
+      const envelope = await response.json(), data = envelope.data
+      await page.waitForLoadState('networkidle'); await totals(data, step, envelope.meta?.request_id); return data
+    }
+    const notificationCard = id => page.locator('.business-card').filter({ has: page.getByText(`编号 ${id}`, { exact: true }) })
+    async function taskSnapshot(card) {
+      const pending = page.waitForResponse(r => new URL(r.url()).pathname === `/api/v1/projects/${projectId}/tasks/${taskId}`)
+      await card.getByRole('button', { name: '查看相关任务', exact: true }).click()
+      const task = (await (await pending).json()).data
+      await page.locator('.el-drawer__close-btn:visible').click()
+      await page.getByRole('dialog', { name: task.title, exact: true }).waitFor({ state: 'hidden' })
+      return task
+    }
+    await nav('通知中心'); const initial = await fresh('initial')
+    const notification = initial.items.find(n => n.task_id === taskId && !n.read_at && !n.handled_at)
+    assert.ok(notification, '只使用新建且未读未处理的真实通知，不重置旧项')
+    const before = await taskSnapshot(notificationCard(notification.id))
+    await page.screenshot({ path: join(output, 'counts-desktop-initial.png'), fullPage: true }); captures.push('counts-desktop-initial.png')
+    await notificationCard(notification.id).getByRole('button', { name: '记录处理结果', exact: true }).click()
+    await page.locator('#field-note').fill('双计数真实回归：先处理仍未读，阅读独立操作；不改变任务状态')
+    await evidence()
+    const handled = await submit('确认记录通知处理结果', `/api/v1/projects/${projectId}/notifications/${notification.id}/handling`, 'POST')
+    assert.equal(handled.read_at, null); assert.ok(handled.handled_at)
+    const afterHandle = await fresh('handled-but-unread')
+    assert.equal(afterHandle.unread_count, initial.unread_count); assert.equal(afterHandle.unhandled_count, initial.unhandled_count - 1)
+    const middleTask = await taskSnapshot(notificationCard(notification.id))
+    assert.equal(middleTask.version, before.version); assert.equal(middleTask.state, before.state)
+    await page.setViewportSize({ width: 390, height: 844 }); await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+    await page.screenshot({ path: join(output, 'counts-mobile-handled-unread.png'), fullPage: true }); captures.push('counts-mobile-handled-unread.png')
+    await notificationCard(notification.id).getByRole('button', { name: '标记已读', exact: true }).click()
+    const read = await submit('确认标记通知已读', `/api/v1/projects/${projectId}/notifications/${notification.id}/read`, 'POST')
+    assert.ok(read.read_at); assert.ok(read.handled_at)
+    const afterRead = await fresh('read-and-handled')
+    assert.equal(afterRead.unread_count, afterHandle.unread_count - 1); assert.equal(afterRead.unhandled_count, afterHandle.unhandled_count)
+    const after = await taskSnapshot(notificationCard(notification.id))
+    assert.equal(after.version, before.version); assert.equal(after.state, before.state)
+    await page.setViewportSize({ width: 1440, height: 1000 })
+    const alternateId = String(credentials._demo.project_id)
+    const switchedPending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/v1/me/notifications' && new URL(r.url()).searchParams.get('project_id') === alternateId)
+    await page.locator('.project-picker select').selectOption(alternateId)
+    const switchedEnvelope = await (await switchedPending).json(), switched = switchedEnvelope.data
+    await page.waitForLoadState('networkidle'); await totals(switched, 'alternate-project', switchedEnvelope.meta?.request_id)
+    const restoredPending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/v1/me/notifications' && new URL(r.url()).searchParams.get('project_id') === String(projectId))
+    await page.locator('.project-picker select').selectOption(String(projectId))
+    const restoredEnvelope = await (await restoredPending).json(), restored = restoredEnvelope.data
+    await page.waitForLoadState('networkidle'); await totals(restored, 'restored-project', restoredEnvelope.meta?.request_id)
+    await page.route('**/api/v1/me/notifications*', route => route.abort('failed'), { times: 1 })
+    await page.locator('.page-heading').getByRole('button', { name: '刷新记录', exact: true }).click(); await page.getByText('暂时无法加载', { exact: true }).waitFor()
+    assert.equal(await page.getByRole('status', { name: '通知统计' }).count(), 0)
+    await page.screenshot({ path: join(output, 'counts-network-error-hidden.png'), fullPage: true }); captures.push('counts-network-error-hidden.png')
+    await page.unroute('**/api/v1/me/notifications*')
+    await fresh('recovered-real-api')
+    assert.equal(errors.length, 0)
+    assert.ok(consoleErrors.every(message => message.includes('ERR_FAILED')))
+    const result = { frontend_sha: 'f6547f237bba12262b95d2701a7d0c9c0b474280', backend_sha: process.env.BACKEND_SHA, source: 'real browser/Vite same-origin → root-ready dev API18080 → t44_dev; no fake response/status', scope: '前端开发回归，非独立复测；network error由一次真实请求abort控制注入', project_id: projectId, notification_id: notification.id, task_id: taskId, task_versions: [before.version, middleTask.version, after.version], task_states: [before.state, middleTask.state, after.state], snapshots, http, browserErrors: errors, consoleErrors, screenshots: captures }
+    await writeFile(join(output, 'counts-result.json'), JSON.stringify(result, null, 2) + '\n')
+    console.log(JSON.stringify({ backend_sha: process.env.BACKEND_SHA, project_id: projectId, notification_id: notification.id, task_id: taskId, task_versions: result.task_versions, task_states: result.task_states, snapshots, httpCount: http.length, browserErrors: errors.length, controlledNetworkConsoleErrors: consoleErrors.length }))
+    await browser.close(); process.exit(0)
+  }
+  if (['prepare', 'counts-prepare'].includes(phase)) {
     await nav('迭代排期')
     const pending = page.waitForResponse(r => new URL(r.url()).pathname === `/api/v1/projects/${projectId}/iterations`)
     await button('刷新记录').click()
@@ -65,7 +136,7 @@ try {
     const iteration = iterations.find(i => i.id === credentials._integration.iteration_id)
     assert.ok(iteration)
     await nav('交付任务'); await button('登记交付任务').click()
-    await page.locator('#field-title').fill('前端通知读与处理回归 ' + Date.now())
+    await page.locator('#field-title').fill((phase === 'counts-prepare' ? '前端通知双计数回归 ' : '前端通知读与处理回归 ') + Date.now())
     await page.locator('#field-description').fill('隔离演示任务，由本岗真实页面创建；升级后验证读与处理分开，不更改旧事件')
     await page.locator('#field-iteration_id').selectOption(String(iteration.id))
     await page.locator('#field-owner_id').selectOption(String(credentials.developer.user_id))

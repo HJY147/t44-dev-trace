@@ -95,3 +95,22 @@
 - prompt_engineering M3真实问取prompt→产物→review问题→修正出处；已回复公开88e/bfa/b485、C-P1/C-P2、原失败/114HTTP与83CSS清单路径及PR评论，识别者reviewer AI、修改frontend AI，不记用户亲改。
 - 总协调追加要求本轮先阶段commit/push后结束释放槽；完整FE验证由quiet结束后的followup继续同岗，未把等待当完成验证。
 - 真实GitHub阶段说明：https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6364073520；后端dev版本/1/1→1/0样例问询：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6364073982。正文先存本岗iat-ui-01-stage-comment/backend-question.md再body-file发布；不要求quiet窗口发业务请求。
+
+### 2026-10-23T20:05:04+08:00｜ROLE-frontend-INDEPENDENT-UI-FIX-v1续派：精确CI证据
+- root明确quiet已结束并续派必要验证；先查f654精确CI，同源码已绿则归档不重复。当前HEAD仍f654，frontend/src无新改；D005/1.1不引入。
+- gh run list精确SHA查到push39948047446与PR39948051877均success。实际下载push前端artifact12498618830，原ZIP SHA256 ad4af25b8d832aacd3ced6375ebeaecec5c1aa8f7ae1554681e7ab7947732f62与GitHubdigest相同。metadata、原ZIP、原CI可读log与结果存iat-ui-ci-f654。
+- 原CI实际27/27、0失败/跳过/todo，typecheck/build全成功。coverage-summary全19 TS/Vue路径与当前src严格一致：行309/333=92.79%，分支689/784=87.88%，函数188/222=84.68%。main/router未排除。源码sha256清单在verification-summary；未在本地重复同SHA全套/覆盖/构建。
+- 初次按惯例读ci.yml不存在，随后rg定位product.yml；这是文件定位失败，不是CI/产品失败。原三项修前失败/修后小组日志未改。
+- 已向root确认使用dev专属project10，等待其新18080 ready SHA/metadata；尚未发真实浏览器/业务请求。958继续复用旧编号新增counts分支，准备验证server双计数、仅处理仍未读/显式读、权威GET任务不变、项目切换与一次披露的网络abort错误恢复，不伪造响应或进入tester环境。
+
+### 2026-10-23T20:12:57+08:00｜修复后真实双计数开发回归完成
+- root明确dev ready：18080 PID34045，固定source02ecdea9ced90cd46cbca898f123d6409f45ba80、backend字节等价3b6dab5b4a2f8ea62043579428fae0f383d88126；contract1.0.0/t44_dev，未接D005/D006。仅起自己5173，未动5174/18081/18082或testerDB。公共runtime receipt hash归档iat-ui-counts-runtime。
+- 958 counts-prepare实际UI在project10创建task21/version1/schedule1；session79限定scope escalation:write/project10，0600私密token只内存Bearer。内部接口一次202创建event179于2026-10-23T12:07:12.108227Z，task_version2，recipients[4,5]。根以同02ec源真实messaging --once故障fallback生成notifications5/6，未SQL伪造；本岗不声称自己执行worker/Rabbit成功链。
+- 958 counts一次exit0，真实前端f654源码→Vite5173→新18080→t44_dev，80 HTTP、pageerror0；只一条主动注入GET abort带来的ERR_FAILED console（无假响应/状态），故不声称console零错误。
+- notification5：初始API/页面未读1/未处理1；仅处理后read_at仍null、计数1/0；显式阅读后0/0。三次权威GET task21均state1/version2。请求ID/每次server完整计数/截图见iat-ui-counts-browser/counts-result.json；3条rows中仅1未读，不使用total/items估算。跨分页完整总计与乱序另由f654单元测试覆盖，不冒称本次浏览器造了多页数据。
+- 项目10→3(0/0,total0)→10，全程本人/current project scope与API一致。一次真实网络请求abort后旧统计隐藏；解除控制刷新真实200后恢复0/0。未改任务状态制造演示、未重置旧通知。
+- 1440桌面初始与390“未读·已处理”截图已经本岗实际看过，统计与按钮可见、无整页横向溢出。原三项先红后绿日志保持；此次不是独立复测，也不改变e8公开独立报告的原失败/环境阻塞。
+- Chrome关闭，本岗5173 Ctrl-C退出130；告知根不再发业务请求/运行构建。随后仅本岗记录/Git/真实GitHub交流。
+- 真实GitHub续派验证说明已发布#2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6364612818；#3后端版本/1/1→1/0样例确认 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6364613456。正文先存本岗再body-file，不发布APPROVE。
+- 提交核对发现原CI ZIP和coverage子目录被仓库通用ignore规则排除，20082da只含可读log/metadata；现对3个本岗明确证据路径显式force-add追加归档提交，原ZIP保持GitHubdigest，未改检查内容或重跑测试。
+- backend随后提示其正在执行1.1容量实现，已明确回复本轮root授权仅f654/02ec的1.0验证；981/README等版本同步待root另派，未把1.0 CI/HTTP结果当作1.1验证。
