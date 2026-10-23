@@ -1,5 +1,6 @@
 """Task registration, immutable execution boundaries, and dependency graph policy."""
 
+from .codes import State
 from .common import model, page, plan_values, task_model
 from .errors import require
 
@@ -18,11 +19,13 @@ class Tasks:
         require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
 
     def prestart(self, row):
-        return row["state"] == 1 or (row["state"] == 3 and row["blocked_from_state"] == 1)
+        return row["state"] == State.PENDING or (
+            row["state"] == State.BLOCKED and row["blocked_from_state"] == State.PENDING
+        )
 
     def dependency_model(self, g, row):
         predecessor = g.get("tasks", row["depends_on_task_id"])
-        return model("Dependency", row, satisfied=predecessor["state"] == 6)
+        return model("Dependency", row, satisfied=predecessor["state"] == State.DELIVERED)
 
     def check_graph(self, g, c, identifier, dependencies):
         require(identifier not in dependencies, "DEPENDENCY_SELF_REFERENCE")
@@ -61,7 +64,7 @@ class Tasks:
                 "title": c.body["title"],
                 "description": c.body.get("description", ""),
                 "owner_id": c.body["owner_id"],
-                "state": 1,
+                "state": State.PENDING,
                 "version": 1,
                 "schedule_version": 1,
                 "delivery_cycle": 1,
@@ -106,7 +109,11 @@ class Tasks:
     def changeTaskPlan(self, g, c):
         c.manager()
         row = c.task(g)
-        require(row["state"] not in (6, 7), "STATE_CONFLICT", current_state=row["state"])
+        require(
+            row["state"] not in (State.DELIVERED, State.ROLLED_BACK),
+            "STATE_CONFLICT",
+            current_state=row["state"],
+        )
         changed = c.cas(
             g,
             "tasks",

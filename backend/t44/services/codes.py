@@ -1,0 +1,91 @@
+"""Stable frozen transport/persistence codes, independent of display and Enum order."""
+
+from t44.domain.models import ProjectRole, ResponsibilityStage, TaskState
+
+ERROR_IDS = {
+    "AUTH_REQUIRED": 1,
+    "INVALID_CREDENTIALS": 2,
+    "TOKEN_EXPIRED": 3,
+    "TOKEN_REVOKED": 4,
+    "PROJECT_ACCESS_DENIED": 5,
+    "ACTION_FORBIDDEN": 6,
+    "SERVICE_SCOPE_REQUIRED": 7,
+    "RESOURCE_NOT_FOUND": 8,
+    "PARAMETER_INVALID": 9,
+    "INVALID_JSON": 10,
+    "SECURITY_INPUT_REJECTED": 11,
+    "STATE_CONFLICT": 12,
+    "VERSION_CONFLICT": 13,
+    "IDEMPOTENCY_CONTENT_CONFLICT": 14,
+    "IDEMPOTENCY_IN_PROGRESS": 15,
+    "DEPENDENCIES_UNSATISFIED": 16,
+    "DEPENDENCY_SELF_REFERENCE": 17,
+    "DEPENDENCY_CYCLE": 18,
+    "DEPENDENCY_EDIT_LOCKED": 19,
+    "EVIDENCE_REQUIRED": 20,
+    "REVIEW_NOT_PASSED": 21,
+    "REVIEW_BASELINE_MISMATCH": 22,
+    "RELEASE_APPROVAL_REQUIRED": 23,
+    "ASSESSMENT_BASELINE_MISMATCH": 24,
+    "OWNER_NOT_PROJECT_DEVELOPER": 25,
+    "LAST_MANAGER": 26,
+    "MEMBER_IN_USE": 27,
+    "ACCOUNT_NOT_INITIALIZED": 28,
+    "TIME_RANGE_INVALID": 29,
+    "CAPACITY_REFERENCE_INVALID": 30,
+    "NOT_ELIGIBLE_FOR_ESCALATION": 31,
+    "SCHEDULE_VERSION_CONFLICT": 32,
+    "RULE_VERSION_CONFLICT": 33,
+    "CONTRACT_INVALID": 34,
+    "AUDIT_UNAVAILABLE": 35,
+    "DEPENDENCY_UNAVAILABLE": 36,
+    "TRANSACTION_UNCERTAIN": 37,
+    "RATE_LIMITED": 38,
+    "PAYLOAD_TOO_LARGE": 39,
+    "INTERNAL_ERROR": 40,
+    "ASSIGNMENT_EDIT_LOCKED": 41,
+}
+ERROR_CODES = {value: key for key, value in ERROR_IDS.items()}
+
+
+class State:
+    PENDING = 1
+    DEVELOPING = 2
+    BLOCKED = 3
+    PENDING_REVIEW = 4
+    PENDING_RELEASE = 5
+    DELIVERED = 6
+    ROLLED_BACK = 7
+
+
+class Action:
+    START = 1
+    BLOCK = 2
+    UNBLOCK = 3
+    SUBMIT_REVIEW = 4
+    APPROVE_REVIEW = 5
+    REJECT_REVIEW = 6
+    DELIVER = 7
+    ROLLBACK = 8
+    REWORK = 9
+
+
+STATE_TO_DOMAIN = {
+    State.PENDING: TaskState.PENDING,
+    State.DEVELOPING: TaskState.DEVELOPING,
+    State.BLOCKED: TaskState.BLOCKED,
+    State.PENDING_REVIEW: TaskState.PENDING_REVIEW,
+    State.PENDING_RELEASE: TaskState.PENDING_RELEASE,
+    State.DELIVERED: TaskState.DELIVERED,
+    State.ROLLED_BACK: TaskState.ROLLED_BACK,
+}
+DOMAIN_TO_STATE = {value: key for key, value in STATE_TO_DOMAIN.items()}
+ROLE_TO_DOMAIN = {1: ProjectRole.MANAGER, 2: ProjectRole.DEVELOPER, 3: ProjectRole.REVIEWER}
+STAGE_TO_DOMAIN = {
+    1: ResponsibilityStage.INTAKE,
+    2: ResponsibilityStage.DEVELOPMENT,
+    3: ResponsibilityStage.REVIEW,
+    4: ResponsibilityStage.RELEASE,
+    5: ResponsibilityStage.EXTERNAL_DEPENDENCY,
+}
+DECISION_TYPE = {Action.DELIVER: 1, Action.ROLLBACK: 2, Action.REWORK: 3}

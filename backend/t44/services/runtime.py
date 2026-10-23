@@ -9,7 +9,8 @@ from datetime import timedelta
 from t44.contracts import OPERATIONS
 from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
 
-from .common import ERROR_IDS, wire
+from .codes import ERROR_IDS, Action
+from .common import wire
 from .errors import Rejected, require
 from .identity import LoginLimiter, authenticate, login
 
@@ -190,7 +191,8 @@ class Runtime:
         if call.project_id is None:
             return
         graph_lock = call.operation in _PROJECT_LOCK or (
-            call.operation == "transitionTask" and call.body["action"] in (1, 3, 9)
+            call.operation == "transitionTask"
+            and call.body["action"] in (Action.START, Action.UNBLOCK, Action.REWORK)
         )
         if graph_lock:
             g.get("projects", call.project_id, lock="update")

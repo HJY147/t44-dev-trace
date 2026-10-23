@@ -799,3 +799,39 @@ def test_internal_escalation_rejects_human_before_missing_owner(application):
         expect=403,
     )
     assert result.json()["code"] == "SERVICE_SCOPE_REQUIRED"
+
+
+def test_display_order_never_changes_persisted_audit_or_domain_state(application, monkeypatch):
+    import importlib
+    import re
+    from pathlib import Path
+
+    from t44.domain.models import ProjectRole, ResponsibilityStage, TaskState
+    from t44.services import codes
+    from t44.services.common import SCHEMAS
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    expected = {
+        name: int(number)
+        for number, name in re.findall(
+            r"\| (\d+) \| ([A-Z_]+) \|",
+            (Path(__file__).parents[3] / "specs/database/field-dictionary.md").read_text(),
+        )
+    }
+    monkeypatch.setitem(SCHEMAS["ErrorCode"], "enum", list(reversed(SCHEMAS["ErrorCode"]["enum"])))
+    for enum in (TaskState, ProjectRole, ResponsibilityStage):
+        monkeypatch.setattr(enum, "_member_names_", list(reversed(enum._member_names_)))
+    importlib.reload(codes)
+    assert expected == codes.ERROR_IDS
+    assert {value: key for key, value in expected.items()} == codes.ERROR_CODES
+    rejected = transition(client, tokens["manager"], pid, task, 1, expect=403)
+    with factory() as uow:
+        assert uow.gateway.get("audit_events", rejected.json()["audit_id"])["reason_code"] == 6
+    audit = request(
+        client, "listProjectAuditEvents", token=tokens["manager"], project_id=pid, expect=200
+    )
+    assert any(row["reason_code"] == "ACTION_FORBIDDEN" for row in audit.json()["data"]["items"])
+    task = transition(client, tokens["developer"], pid, task, 1)
+    assert task["state"] == 2
