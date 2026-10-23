@@ -234,3 +234,16 @@
 - PR21实时head7f89264，42243祖先且受审源/测试/契约diff空；COMMENT将显式42243。owner18/FE89/DB66含48和同2MySQL分别标开发，未重跑全套/CI/负载/浏览器/真实DB/872；根通知6303规模fail未重数。原CI/872绿不掩盖本语义红，无APPROVE/status/merge。
 
 - 原失败阶段7b2c4ffc2185023ae866c052997387a666431ff0已push exit0/[skip ci]；PR21 COMMENT5634370911显式原42243真实发布。插件body/COMMENTED与完整GET commit_id/body/state严格一致。URL https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911 ，回执github-comment.json。发布时root已前进bc5窄修，正文明确原失败封存/新源另审；不覆写原反例或原结论，无status/APPROVE/CItrigger/merge。
+
+
+
+## 2026-10-24 HISTORY-EVIDENCE-01窄修复审（bc5/bcb0）
+
+- 实际ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1续派存dispatches，先在另一独立branch把原42243报告/HTTP红/COMMENT5634370911完整seal；再从准确bc5另建codex/review-plan-reason-evidence-fix，不覆盖原报告/反例、不修产品/原测试，不读独立私密或v3、不联系tester。
+- 相对42243只有history生产变化：双方冻结EvidenceRefs验证后sort_keys/ensure_asciiFalse/allow_nanFalse JSON比对。静态核对象键序无关、数组顺序/strings原文保留、true/1及历史1.0/1保守区分，normalization/runtime/DB/FE等全字节不变。44Py/20TSVue/14freeze保持，原986前缀和全部原函数AST不改，只加6参数案。
+- 本岗同一原SQLiteHTTP反例只重放一次exit0，fixture/helpers/JSON.kind1对true/末尾应无reason断言不改，仅SUT目标/输出目录元数据更新。HTTP200/响应Schema有效、actualreason=[]、原audit/schedule不变；旧422JSON与新结果的全部fixture/错误/immutable字段相同，只有误投影1→0。HISTORY-EVIDENCE-01在bc5限定关闭，原422失败继续保持，不等于Issue28独立/整体通过。
+- 核公开35803229的11artifact摘要、精确源/测试hash及引用本岗旧两原件hash一致；before6案2红4绿→after6新+1原正常legacy7绿，不计成本岗7例或累加旧18/504。没有再跑六相邻/全套/CI/872/真实DB/负载/新增测试文件。
+- 只读准确bc5 CI：productpush40023062800及其4jobs success，dockerpush40023062786success；初快照PRproduct40023068752仍跑，不提前称所有检查完成。本岗未重核全量CIartifact。owner固定cloc有效92→96净+4，root原消息+6为物理净行，已勘误通知；不把条件总数当重计或规模通过。
+- 八段十项新报告21-bc5及自有一次绿/公开原件hash归档；PR21准确bc5 COMMENT/完整GET按实际完成补记，无APPROVE/status/CItrigger/merge。
+
+- 窄修阶段证据2ff0f1c6717d849538a11be02001ef41f2557e69已push exit0/[skip ci]；最终同源productPR40023068752也completed/success，与push40023062800四job及dockerpushsuccess分开保存初/末metadata。PR21 COMMENT5634448127真实发布并完整GET严格核bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。原42243失败及其COMMENT5634370911不改。只补回执后释放槽，无APPROVE/status/CItrigger/merge。

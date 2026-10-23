@@ -143,3 +143,13 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 本岗不重跑18/89/66或CI/负载/真实DB/872，不读独立私密。三owner源/14freeze/44Python20TSVue/R1/UI002边界及36公开backendartifact摘要已核，旧986/985前缀保留。报告reports/reviews/21-42243eb23aedf0edda7541ad83fd87ec3d17b616.md，反例agents/reviewer/evidence/plan-reason-42243/evidence-kind-bool-http.json及log。PR21当前metadatahead7f为42243祖先源等值；准确COMMENT/读回按实际补入。全局规模6303fail来自root通知，其他门禁不解除，无APPROVE/status/merge。
 
 42243原失败发布回执：7b2c4ffc2185023ae866c052997387a666431ff0已push/[skip ci]；PR21 COMMENT5634370911及完整GET严格绑定42243/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634370911 。原反例/原不通过保留，root已前进bc5待另限定复审，不因owner修复预报改写此轮结论。
+
+
+
+## HISTORY-EVIDENCE-01窄修复审（准确bc5/bcb0）
+
+先封存原42243不通过与COMMENT5634370911，再在独立codex/review-plan-reason-evidence-fix复审新bc5。唯一生产history改为双方冻结EvidenceRefs有效后JSON排序对象键的精确比较；数组/字符串原文不改、true不等1、历史1与1.0保守不同，原请求normalization/runtime/DB/FE/R1/UI002不变。原HTTP相同fixture/断言一次重放exit0，GET200且无误投影、原行不变，HISTORY-EVIDENCE-01在准确新源限定关闭；原422失败不覆盖，不作为Issue28独立/整体通过。
+
+本岗只此1次HTTP绿，未跑owner6/7/旧18/89/66/CI/browser/DB/负载。公开3580的11原件hash/精确源/旧反例引用hash匹配，开发6案2红4绿→7绿分开记录；14freeze/44Py20TSVue/旧986前缀与函数保持。元数据实核准确bc5 productpush40023062800四job成功，dockerpush成功，初PRproduct快照仍跑，不宣称全门禁。history有效+4（92→96）与物理净+6区别已向root说明，整体规模仍失败。报告reports/reviews/21-bc5aef9c62393134582affb7a690acb33ac2b833.md；证据agents/reviewer/evidence/plan-reason-evidence-bc5；实际prompt ROLE-reviewer-PLAN-REASON-EVIDENCE-FOLLOWUP-v1。COMMENT/readback实发后补，无APPROVE/status/merge。
+
+窄修实际发布：2ff0f1c6717d849538a11be02001ef41f2557e69已push/[skip ci]；PR21 COMMENT5634448127及完整GET严格绑定bc5/body/COMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5634448127 。封存前同源PR product40023068752已success，初pending快照仍保留；本岗不重核全量CI原件，不影响整体未放行。原42243失败/原红/5634370911保持。
