@@ -153,11 +153,14 @@ def offline_wire_selftest(output):
         try: h.control('fault')
         except S.Blocked: passed('fault-nonempty-stdout-blocked')
         else: raise AssertionError('Nonempty fault receipt accepted')
-        for command in ('audit-sql', 'broker'):
+        for command in ('broker',):
             current = Completed(0, '')
             try: h.control(command)
             except S.Blocked: passed('empty-native-text-' + command + '-blocked')
             else: raise AssertionError('Absent native receipt accepted')
+        current = Completed(0, '')
+        assert h.sql('SELECT id FROM tasks') == []
+        passed('mysql-batch-zero-row-empty-stdout-exit0')
         current = Completed(0, samples['audit-sql'])
         assert h.sql('SELECT id,version FROM tasks') == [{'id': 3, 'version': 1}]
         passed('mysql-batch-integer-typed-from-frozen-storage')
@@ -168,7 +171,7 @@ def offline_wire_selftest(output):
         assert h.sql('SELECT id,read_at,handling_note FROM notifications') == [
             {'id': 3, 'read_at': None, 'handling_note': 'line1\nline2\tend\\path', 'digest': '1234'}]
         passed('mysql-batch-null-escape-and-text-digit-preservation')
-        for name, output in [('missing-header', ''), ('duplicate-columns', 'id\tid\n1\t2\n'),
+        for name, output in [('missing-header', '\n'), ('duplicate-columns', 'id\tid\n1\t2\n'),
                 ('wrong-field-count', 'id\tversion\n1\n'), ('progress-prefix', 'warning text\nid\n1\n'),
                 ('invalid-integer', 'id\nnot-an-id\n'), ('unknown-escape', 'handling_note\nabc\\q\n')]:
             current = Completed(0, output)

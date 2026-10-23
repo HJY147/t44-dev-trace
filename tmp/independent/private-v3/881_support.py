@@ -189,7 +189,7 @@ class Harness:
                 raise Blocked('Neutral fault success requires empty stdout')
             return {'command': command, 'exit_code': 0, 'json_receipt_available': False}
         if command in ('audit-sql', 'broker'):
-            if not p.stdout.strip():
+            if command == 'broker' and not p.stdout.strip():
                 raise Blocked('Neutral native-text control returned no observable receipt: ' + command)
             return {'native_text': p.stdout, 'format': 'mysql-batch' if command == 'audit-sql' else 'rabbitmqctl'}
         def unique_object(items):
@@ -235,6 +235,7 @@ class Harness:
                 conn.close()
         receipt = self.control('audit-sql', stdin=query)
         value = receipt['native_text']
+        if value == '': return []  # Native mysql --batch exit0 zero-row receipt, independently confirmed.
         lines = value.splitlines()
         if not lines:
             raise Blocked('MySQL batch receipt lacks its column header')
