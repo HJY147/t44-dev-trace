@@ -1,0 +1,14 @@
+{
+  "at_utc": "2026-10-23T20:41:53.964898+00:00",
+  "actor": "AI coordinator technical clarification under U019, not a human code modification",
+  "prior_admission": "records/decisions/native-broker-capability-admission.json",
+  "observed_source": "7e94258898404eff8890aae9dc6d419f0cbdd468",
+  "phase_evidence_commit": "30d66a3ec636b0659d4fdd6e3fe7ec083ac7a282",
+  "original_proposal": "All specified listeners bind127.0.0.1",
+  "observed_difference": "Official EPMD with explicit -address127.0.0.1 listens on127.0.0.1 and::1 at24369; Rabbit AMQP25674 and distribution35674 are127.0.0.1 only.",
+  "decision": "Accept both IPv4 and IPv6 loopback for this project-local developer environment. Continue rejecting wildcard/non-loopback/unexpected ports. Preserve original proposal and actual difference rather than rewriting history.",
+  "verified_scope": "Owner run2 start/inspect/normal-stop all true; authenticated CLI and installed password backend exercised; not Pika message delivery or application/database/scanner proof.",
+  "nocookie_window": "Server setter conservative upper bound0.275471s incl preparation/EPMD; max9CLI launch-to-marker0.132151s. Only local developer capability, not production security approval.",
+  "no_additional_execution": "Root reviewed actual wrapper/readme/public receipts and accepted clarification; root did not repeat the already green owner run.",
+  "stage2_app_services_admitted": false
+}
