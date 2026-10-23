@@ -185,7 +185,7 @@ MySQL `--batch` 成功零行 SELECT 允许 stdout **完全为空**（不保证�
 
 ## 有界runtime-usage只读快照
 
-按context的python/control_cli/control_state调用 `control.py runtime-usage`，无额外参数；context.runtime_usage仅声明能力，不自动采样。旧runtime-metadata及原命令格式不变。先验证本项目mysql/rabbitmq/api/consumer/scheduler/web各自唯一64hex容器ID与project/service标签、运行且未暂停，再一次 `docker stats --no-stream --no-trunc` 显式传这六个ID。固定模板只请求ID/CPUPerc/MemUsage/MemPerc/NetIO/BlockIO/PIDs；所有原始stdout/stderr仅在内存处理，不进入控制日志。单次Docker调用上限15秒，Compose ID查询10秒；整个多步观察的墙钟耗时由顶层时间包围。没有任意命令、容器、路径或SQL参数。
+按context的python/control_cli/control_state调用 `control.py runtime-usage`，无额外参数；context.runtime_usage仅声明能力，不自动采样。旧runtime-metadata及原命令格式不变。先验证本项目mysql/rabbitmq/api/consumer/scheduler/web各自唯一64hex容器ID与project/service标签、运行且未暂停，再一次 `docker stats --no-stream --no-trunc` 显式传这六个ID。固定模板只请求ID/CPUPerc/MemUsage/MemPerc/NetIO/BlockIO/PIDs；所有原始stdout/stderr仅在内存处理，不进入控制日志。预算是多次调用分别有限：六个服务各有Compose ID查询10秒、inspect 15秒，全部验证后stats另有15秒。整个runtime-usage没有统一15秒总deadline，不能把它表述为总耗时≤15秒；进程启动、解析等也有实际开销。调用方须自行给足覆盖这些验证/采样步骤的超时，整体墙钟由started_at_utc/finished_at_utc实测包围，不能称采样零影响。没有任意命令、容器、路径或SQL参数。
 
 有效调用的stdout是单JSON；0只代表六项观察完整，非零+observation_complete=false代表不完整，不是业务失败/性能判定。验证任一服务失败则不调用stats；stats批次缺行、重复、外来ID或格式错误时全部统计字段置null，不尝试从不完整批次补零或猜值。已验证container_id可保留；未验证身份为null。无stats调用时sample时间为null；执行stats时六项时间同为实际调用包围窗口，失败亦保留。错误仅稳定码，原驱动异常/原stderr不回显。
 
