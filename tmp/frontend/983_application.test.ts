@@ -176,3 +176,65 @@ describe('session and user flows', () => {
     await button(wrapper, '退出').trigger('click'); await settle(); expect(api.token).toBe(''); expect(wrapper.text()).toContain('登录工作空间'); wrapper.unmount()
   })
 })
+
+describe('notification aggregate counts', () => {
+  it('shows complete server counts across pages instead of counting the visible rows', async () => {
+    const { fetcher } = fixtureFetch({ '/api/v1/me/notifications': { ...page([notification]), total: 45, unread_count: 27, unhandled_count: 14 } })
+    const wrapper = mount(WorkspaceView, { props: { page: 'notifications' }, global }); await settle()
+    expect(wrapper.findAll('.business-card')).toHaveLength(1)
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 27')
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未处理 14')
+    await button(wrapper, '下一页').trigger('click'); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 27')
+    expect(fetcher.mock.calls.some(([url]) => String(url).includes('page=2') && String(url).includes('project_id=1'))).toBe(true)
+    wrapper.unmount()
+  })
+  it('refreshes separate authoritative counts after handling an unread notification and explicitly reading it', async () => {
+    const { fetcher, calls } = fixtureFetch(); const base = fetcher.getMockImplementation()!
+    let record = { ...notification }, unread = 1, unhandled = 1
+    fetcher.mockImplementation(async (url, init) => {
+      const path = String(url).split('?')[0]
+      if (path === '/api/v1/projects/1/notifications/1/handling') { record = { ...record, handled_at: '2026-10-23T01:00:00Z', version: 2 }; unhandled = 0; return new Response(JSON.stringify({ data: record, meta: { replayed: false } })) }
+      if (path === '/api/v1/projects/1/notifications/1/read') { record = { ...record, read_at: '2026-10-23T02:00:00Z', version: 3 }; unread = 0; return new Response(JSON.stringify({ data: record, meta: { replayed: false } })) }
+      if (path === '/api/v1/me/notifications') return new Response(JSON.stringify({ data: { ...page([record]), unread_count: unread, unhandled_count: unhandled } }))
+      return base(url, init)
+    })
+    const wrapper = mount(WorkspaceView, { props: { page: 'notifications' }, global }); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 1')
+    await button(wrapper, '记录处理结果').trigger('click'); await settle()
+    await wrapper.get('#field-note').setValue('先处理提醒，稍后阅读')
+    await wrapper.get('#field-evidence-0-kind').setValue('3'); await wrapper.get('#field-evidence-0-locator').setValue('https://example.com/handling'); await wrapper.get('#field-evidence-0-description').setValue('独立的处理依据')
+    await wrapper.get('form').trigger('submit'); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 1')
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未处理 0')
+    expect(wrapper.get('.business-card .record-meta').text()).toContain('未读 · 已处理')
+    expect(record.read_at).toBeNull()
+    await button(wrapper, '标记已读').trigger('click'); await settle(); await wrapper.get('form').trigger('submit'); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 0')
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未处理 0')
+    expect(calls.some(call => call.method !== 'GET' && call.path.includes('/tasks/'))).toBe(false)
+    wrapper.unmount()
+  })
+  it('hides stale counts while switching projects and rejects a late previous-project response', async () => {
+    const { fetcher } = fixtureFetch(); const base = fetcher.getMockImplementation()!
+    let resolveOld: (response: Response) => void = () => {}
+    fetcher.mockImplementation(async (url, init) => {
+      if (String(url).startsWith('/api/v1/me/notifications')) {
+        const projectId = new URL(String(url), 'http://fixture').searchParams.get('project_id')
+        if (projectId === '2') return new Promise<Response>(resolve => { resolveOld = resolve })
+        return new Response(JSON.stringify({ data: { ...page([]), unread_count: projectId === '3' ? 8 : 1, unhandled_count: projectId === '3' ? 5 : 1 } }))
+      }
+      return base(url, init)
+    })
+    const wrapper = mount(WorkspaceView, { props: { page: 'notifications' }, global }); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 1')
+    workspace.projectId = 2; await settle(); expect(wrapper.find('[aria-label="通知统计"]').exists()).toBe(false)
+    workspace.projectId = 3; await settle(); expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未读 8')
+    resolveOld(new Response(JSON.stringify({ data: { ...page([]), unread_count: 99, unhandled_count: 99 } }))); await settle()
+    expect(wrapper.get('[aria-label="通知统计"]').text()).toContain('未处理 5'); expect(wrapper.text()).not.toContain('99')
+    fetcher.mockResolvedValueOnce(new Response(JSON.stringify({ code: 'PROJECT_ACCESS_DENIED', message: '项目已不可访问' }), { status: 403 }))
+    await button(wrapper, '刷新记录').trigger('click'); await settle()
+    expect(wrapper.find('[aria-label="通知统计"]').exists()).toBe(false); expect(wrapper.text()).toContain('项目已不可访问')
+    wrapper.unmount()
+  })
+})

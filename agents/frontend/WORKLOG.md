@@ -83,3 +83,15 @@
 - 只读resume首轮因多个隐藏drawer严格选择器失败，后改为目标任务标题；再轮跨2动画帧测得immediateOverflow=true、settledOverflow=false，稳定手机无溢出，不改产品CSS。之后浏览器innerText不含折叠details里的收件人而失败；真实展开完整记录后再断言。所有失败在integration-notifications-final/settled保留，未重放通知写或降低业务断言。
 - 最终PHASE=resume真实114 HTTP全成功、pageerror/console0：1440/390七页与rules、已处理通知3/禁用按钮、任务state1/version2、升级收件人详情/规则/审计均通过；最终JSON和手机已处理截图integration-notifications-complete。原写运行不是exit0；完整证据由原写运行的业务断言和最终只读复查组成，如实分开。
 - Chrome均已关闭，本岗5173 Vite已Ctrl-C停止exit130；已告知总协调可开始性能静默窗口。本岗不再运行浏览器/构建/业务请求，仅Git/记录交接。最近产品验证仍为24项/行92.19%，CSS后vue-tsc/build成功；本轮后续只改测试脚本和记录，不重复低价值构建。
+
+## 2026-10-23T19:41:49+08:00｜ROLE-frontend-INDEPENDENT-UI-FIX-v1｜针对性修复checkpoint
+- 开始codex/frontend-app工作树干净、索引空，安全fast-forward e62f7539680558ec5a2cb07ac2bc5d1c90680e26。该树未含UI addendum，按授权只读根正式发布.md/.json并核验SHA完全一致；未跟随私有证据路径、未读独立用例/联系tester。
+- 正式报告对象e8ceefe6，不是当前b485复测。确认当前b485的IAT-UI-v1-01计数缺失仍存在；迭代空白对应已有88e修复，不重记为新修/独立通过。
+- 983新增3个有意义交互：完整服务端总计与分页，先处理仍未读(1/1→1/0)再显式阅读(0/0)，快速项目切换乱序及403隐藏旧计数。修前3失败、13旧项因-t未选跳过；原始iat-ui-01-before.log/gzip保留。
+- 最小产品修改：通知个人页独立统计直接显示data.unread_count/unhandled_count；加载/错误期间不显示旧值，动作与刷新沿用权威GET与sequence，不从分页rows推算，不改scope/读处理动作。修后针对组3通过，13为命令未选非删除测试，耗时1.14s。
+- 当前root profile诊断quiet窗口：未启动浏览器、全套测试/覆盖或构建；已报根等待窗口结束再开展这些检查。
+- 深链事实：router只有工作区入口，selectedTask是ref，不产生任务资源URL；未编造query/path参数或为凑验收新造路由。中性说明iat-ui-deeplink-boundary.md。
+- backend晚到实际答复：旧manager通知id1由其已授权38操作旅程于09:19处理；id2属developer，权限隔离manager不可见；之前“保留未读”交接未及时更新。这解释旧回归fixture失效，已在上轮另建task20/event173完成，没有重置旧项。
+- prompt_engineering M3真实问取prompt→产物→review问题→修正出处；已回复公开88e/bfa/b485、C-P1/C-P2、原失败/114HTTP与83CSS清单路径及PR评论，识别者reviewer AI、修改frontend AI，不记用户亲改。
+- 总协调追加要求本轮先阶段commit/push后结束释放槽；完整FE验证由quiet结束后的followup继续同岗，未把等待当完成验证。
+- 真实GitHub阶段说明：https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6364073520；后端dev版本/1/1→1/0样例问询：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6364073982。正文先存本岗iat-ui-01-stage-comment/backend-question.md再body-file发布；不要求quiet窗口发业务请求。
