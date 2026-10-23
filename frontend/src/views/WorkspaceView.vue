@@ -76,6 +76,7 @@ async function notificationTask(row: Row): Promise<void> { workspace.projectId =
       <template v-if="page === 'notifications'"><div class="business-tabs" role="tablist" aria-label="通知与升级"><button v-for="[key, text] in [['notifications', '个人通知'], ['escalations', '项目升级历史'], ['rules', '升级规则']]" :key="key" role="tab" :aria-selected="section === key" @click="section = key!; pageNumber = 1; filter = ''">{{ text }}</button></div><label v-if="section === 'notifications'" class="compact-filter">处理情况<select v-model="filter"><option value="">全部</option><option value="false">未处理</option><option value="true">已处理</option></select></label></template>
       <label v-if="page === 'audit' || page === 'notifications' && section === 'escalations'" class="compact-filter">任务编号<input v-model="taskFilter" type="number" min="1" @change="pageNumber = 1; refresh()" /></label>
     </div>
+    <div v-if="page === 'notifications' && section === 'notifications' && !busy && !failure && workspace.user" class="record-meta" role="status" aria-label="通知统计"><span>未读 {{ data.unread_count }} 条</span><span>未处理 {{ data.unhandled_count }} 条</span></div>
     <DataState v-if="busy" kind="loading" />
     <DataState v-else-if="failure" kind="error" :http-status="failure.status" :description="failure.message" refreshable @refresh="refresh(true)" />
     <DataState v-else-if="needsProject && !workspace.projectId || page === 'notifications' && section !== 'notifications' && !workspace.projectId" kind="empty" title="先选择一个项目" description="在顶部选择参与的项目，或进入项目空间创建项目。" />

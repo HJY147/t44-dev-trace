@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "完整业务前端收尾完成：正式缺陷、CSS清理与完整后端通知回归",
-  "implementation_status": "业务前端已实现；24模块测试、真实七态/通知读处理分离/升级规则历史/审计验证完成；不代表独立验收或性能",
+  "stage": "已发布独立UI计数缺陷修复：针对性checkpoint",
+  "implementation_status": "IAT-UI-v1-01已最小实现；针对3项开发回归通过，全套/构建/真浏览器待quiet窗口结束",
   "artifacts": [
     {
       "path": "frontend/",
@@ -118,6 +118,22 @@
     {
       "path": "agents/frontend/integration-browser/escalation-preparation.json",
       "status": "仅新task20创建event173的真实202公共响应，无Token"
+    },
+    {
+      "path": "agents/frontend/iat-ui-public-report-verification.json",
+      "status": "授权报告哈希和e8对象校验"
+    },
+    {
+      "path": "agents/frontend/iat-ui-deeplink-boundary.md",
+      "status": "实际未支持资源深链，无发明参数"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-before.log",
+      "status": "修前3失败；原始gzip保留"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-targeted-after.log",
+      "status": "修后3项针对性通过，非全套"
     }
   ],
   "interfaces": [
@@ -292,7 +308,8 @@
     "手机为headless viewport，非真机",
     "生产构建有约823kB chunk体积提示",
     "原写运行在业务断言之后的即时resize检查失败；最终只读复查通过，二者分开留证",
-    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证"
+    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证",
+    "本轮全套/覆盖/构建与修复后真实API UI待profile诊断quiet窗口结束"
   ],
   "questions": [
     "全产品生产代码行数由总协调统一统计；本岗真实删除83未用规则，未改计数范围。",
@@ -355,9 +372,19 @@
         "agents/frontend/integration-*"
       ],
       "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
+    },
+    {
+      "id": "ROLE-frontend-INDEPENDENT-UI-FIX-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INDEPENDENT-UI-FIX-v1.md",
+      "artifacts": [
+        "frontend/src/views/WorkspaceView.vue",
+        "tmp/frontend/983_application.test.ts",
+        "agents/frontend/iat-ui-*"
+      ],
+      "improvement_reason": "正式独立报告仅作缺陷输入；先复现再最小修复，保护private证据和诊断quiet窗口，不把开发回归当独立复测。"
     }
   ],
-  "updated_at": "2026-10-23T18:11:07+08:00",
+  "updated_at": "2026-10-23T19:41:49+08:00",
   "delivery": {
     "branch": "codex/frontend-app",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",

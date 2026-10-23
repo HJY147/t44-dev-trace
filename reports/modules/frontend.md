@@ -46,3 +46,5 @@
 - 未做独立验收、正式并发性能/全面安全；Rabbit成功链不以本岗浏览器或fallback替代。
 
 最终证据：agents/frontend/integration-notifications/（真实写与首次失败）、integration-notifications-complete/（114HTTP只读通过和手机截图）；本岗5173与Chrome已停止。
+
+当前追加IAT-UI-v1-01：已复现独立计数缺失并最小显示服务端未读/未处理总数；新增983组修前3失败、修后3通过。profile静默期未运行全套/构建/浏览器，待窗口结束。本轮开发回归不算独立复测；e8报告不是b485复测，深链能力现未实现参数约定，说明agents/frontend/iat-ui-deeplink-boundary.md。
