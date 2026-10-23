@@ -157,3 +157,5 @@
 - 18新增断言与原件前9fail/9pass→18pass已逐项核，MySQL4/5/5SELECT各1acquire、session/member先提交新拒绝和在途暂停撤销提交后旧200/新拒绝、fault注入closed→不同Session独立audit均对应；不冒充本岗新执行或真实宕机。
 - 真实live API四job success，原JUnit412/0/0/0、43源/0excluded/88.7883%行覆盖；合成checkout320272 tree与5dcb整tree相同。root当时暂缺22647文件改用git show精确节点读取，root确认随后合入，不记产品失败。
 - 规模5980超880仅核原计数/源等值，未重跑cloc；正式性能失败/无延迟收益、新独立SUT4c边界保持，整体不通过。后续GitHub COMMENT/回执以真实结果补入。
+
+- 主证据60a524dfff45d6022cf74a5daa02cc195ae7b172首次push遇SSL_ERROR_SYSCALL退出128；只读ls-remote恢复exit0且分支尚无，单次重试push退出0，原错误保存在github-publish.json。PR21 COMMENT真实发布并GET逐字读回、commit_id严格5dcb/stateCOMMENTED：https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636。无status写入/APPROVE/mainmerge；补回执后立即释放槽，不待未来负载。
