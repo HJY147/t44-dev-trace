@@ -341,7 +341,7 @@ def main():
     parser.add_argument('--private-root',type=Path,required=True)
     parser.add_argument('--cutoff',required=True)
     parser.add_argument('--documentation-ref',default='HEAD')
-    parser.add_argument('--stage', choices=['M6'], required=True)
+    parser.add_argument('--stage', choices=['M6', 'M7'], required=True)
     parser.add_argument('--only', nargs='+', choices=[row[0] for row in REPORTS])
     args=parser.parse_args();root=args.root.resolve();private=args.private_root.resolve()
     args.cutoff = subprocess.check_output(['git','rev-parse','--verify',args.cutoff+'^{commit}'],cwd=root,text=True).strip()
@@ -352,9 +352,26 @@ def main():
     cover_file=private/'cover-info.json'
     if stat.S_IMODE(cover_file.stat().st_mode)!=0o600:raise ValueError('Private cover must have mode0600')
     info=json.loads(cover_file.read_text());os.umask(0o077)
+    if args.stage == 'M7':
+        if args.only and args.only != ['test-results-report.md']:
+            raise ValueError('M7 only authors the substantively updated test report')
+        args.only = ['test-results-report.md']
     if not (private/'review-documents'/'M4'/'archive-integrity.json').exists():
         raise ValueError('Archive the original M4 files byte-identically before M6 authoring')
     out=private/'review-documents'/args.stage;out.mkdir(parents=True,exist_ok=True);out.chmod(0o700)
+    reused = []
+    if args.stage == 'M7':
+        previous = private/'review-documents'/'M6'
+        for row in json.loads((previous/'export-manifest.json').read_text())['reports']:
+            if row['source'] == 'reports/final/test-results-report.md': continue
+            if hashlib.sha256((root/row['source']).read_bytes()).hexdigest() != row['source_sha256']:
+                raise ValueError('An unchanged M6 report source differs; do not silently reexport it')
+            if hashlib.sha256((previous/row['output']).read_bytes()).hexdigest() != row['output_sha256']:
+                raise ValueError('An unchanged M6 Word hash differs')
+            if not row['visual_QA'].startswith('passed'):
+                raise ValueError('M6 reused Word must already have every-page QA')
+            reused.append({**row, 'output': '../M6/'+row['output'], 'reexported': False})
+        if len(reused) != 3: raise ValueError('M7 must reuse exactly three unchanged M6 documents')
     # Bundled LO uses a private fontconfig override; no global user font settings change.
     bundled_fonts = RUNTIME/'native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/Resources/fonts/truetype'
     config = ('<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n'
@@ -389,7 +406,7 @@ def main():
                         'figures':figure_count,'cutoff':args.cutoff,'documentation_ref':args.documentation_ref,'date_blank':True,
                         'exporter_sha256':exporter_hash,'visual_QA':'pending rendering and every-page inspection'})
     (out/'export-manifest.json').write_text(json.dumps({'reports':records,'private_cover_used':True,
-        'stage':args.stage,'M4_archive_preserved':True,'marker_repeated':False,
+        'stage':args.stage,'M6_reused_reports':reused,'M4_archive_preserved':True,'marker_repeated':False,
         'student_research_authored':False,'visual_QA':'pending rendering and every-page inspection'},ensure_ascii=False,indent=2)+'\n')
     print('Selected private technical review DOCX sources exported incrementally; render and every-page QA still required.')
 

@@ -56,4 +56,6 @@ U001/U002可以作为学生原创亮点：用独立实例隔离验收；让每�
 
 ## 6 测试和交付出口
 
-当前bc5准确开发510/89全源通过，Docker小规模恢复通过；独立v2八阶段仍NOT_ACCEPTED_INCOMPLETE，v3环境前置阻塞无产品执行结论。cloc6307超1207、原三组P95失败保留；新正式性能待独立公开。文档排版QA与产品验收分别，四技术Word不含学生研究正文。详见[测试报告](test-results-report.md)和[提交对照](submission-map.md)。
+M7增补[夜间AI过程索引](../../docs/prompting/M7-night-process-evidence.md)：中性stdout协议先设计再修、native有限周期成功后专审仍发现首次超时被rc0掩盖、窄修后只关闭该P2、并行记录冲突原失败保留。新实现/审核/运行均AI执行，不新增学生人工12/3/5或自动增加六版数量。该提示词索引固定其自身6ec cutoff的stage04状态，后发表stage05/06正式结果以当前[测试报告](test-results-report.md)为准，不改其历史。
+
+最新6ec应用包字节等价bc5，开发510/89全源与Docker小规模恢复通过；独立v2历史仍NOT_ACCEPTED_INCOMPLETE，v3已发表功能25/26、浏览器6/6、粗故障4/4及正式0/3。F08优先级未决、3功能/5切点能力、421错误响应组合及白盒/交付物后续范围保留。6307超1207，v1/v3正式P95失败；同次资源unknown不由新工具补造，根因未知不推定瓶颈。M6四技术Word33页的排版完成与软件验收分开，M7只增补测试Word、三稿复用M6hash，不含学生研究正文。见[提交对照](submission-map.md)。
