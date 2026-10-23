@@ -148,3 +148,15 @@
 
 - 按根最终白名单要求，先独立commit/push中性归档6b681dd73694bf18430f1bce4bdf00ffd1ae762e并核远端同SHA；manifest=deployment/acceptance/neutral-handoff/manifest.json，SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅README/protocol、MQ元数据、成功execution投影、三次逐次成功JSON投影和合成crypto元数据，共7文件；投影明确省略逐轮health观察、不是原始完整日志。原始字节保持另档，agents/开发报告/prompt/失败详情/凭据/密文不供tester，根已收到精确清单。未再运行环境/测试。
 - 实际body-file发布Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787 和PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363，正文agents/deployment/recovery-mq-comment.md。最终仅归档；运行实现仍f118/产品仍4c，不把收尾资料commit当受验运行源。索引显式限定本岗文件，diff-check作为提交前检查。
+
+
+## NATIVE-v1 设计checkpoint（2026-10-23 UTC）
+
+- 实际派工ROLE-deployment-NATIVE-v1，原文与范围归档agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md。从根275dd3e建立独立worktree/分支codex/deployment-native，不操作根索引；不是独立测试实例，未读取任何未发布独立用例/日志/私钥，不联系tester。
+- 已读根AGENTS/本岗TASK/团队规范/实现目录/GitHub规范和本岗历史报告、交接与门面；worktree的原始specs/sources因gitignored缺失，cat真实exit1，随后仅在根指定sources读取成功，不将缺材料错当业务失败。只读根允许的依赖下载/编译记录与layout，未并行重编译。
+- 官方实时主源核对Rabbit4.3.6矩阵允许OTP27.0–28.x；12个固定tag源取得实际SHA/字节，记录native-validation/official-source-map.json。generic UNIX适用于无sudo的Mac项目内依赖，但不等于节点已运行。部分官网curl取回403、首轮CLI独立repo错误tag404均保持在实际工具输出，改为monorepo固定tag原始源，未绕TLS。
+- 根明确授权一次-nocookie/-noshell/无distribution能力probe；真实exit0，OTP28/ERTS16.4.0.6、crypto/ssl成功、OpenSSL3.6.2。真实ERL_FLAGS=-home附加后home出现两值；OTP auth会走basedir，Darwin filename实现不采用Linux XDG_CONFIG_HOME，因此该cookie隔离方案不采用。原stdout/stderr/argv/hash：native-validation/erlang-capability.*。
+- 根另准入有限args_file/file setter非分布式probe及必要纠正：首次JSON式嵌套引用/UTF8表达式词法失败exit1；改为无引号ASCII codepoint路径后词法修正，但真实distribution_not_started exit1。固定auth.erl只在auth进程存在时接受setter，不能把解析修正写成cookie能力通过。两次原始记录cookie-init-probe.*、cookie-init-attempt2.*保留。两个dump均原样转入ignored项目runtime、0600，只计算SHA、不解析/提交；从未输出Cookie。后续broker必须另生Cookie，不复用probe值。
+- deployment/native/README.md给可审查设计：demo新t44_native_demo(2项目40任务)，API18088/UI5178；AMQP25674/EPMD24369/dist35674/CLI45674–45683全部loopback。未来v3的18086/5177仅候选不绑定。保护5173/18080、5175/18084、MySQL13306/PID7980及其数据，端口占用即失败不杀进程。
+- 标准-sname先初始化auth、项目args_file前置读取新0600Cookie再Rabbit boot/CLI是下一阶段候选；固定Rabbit源码分别接受同名预启动分布式和CLI already_started。必须根审查设计后准入一次受控分布式/实际认证，当前不能用静态链证明运行通过。deprecated cookie env仅备选且有debug泄密风险，未采用；不改HOME/官方源码。
+- 源、锁、角色/项目scope、TTL300与受控轮换、运行目录/属主权限、PID/PGID/启动时间核拥有权、逐次UTC/exit/needed/false失败回执和最小消息/实际60秒扫描计划已写；最终SUT/新库由根另行绑定，尚无任何Rabbit/API/consumer/scanner/DB业务或UI启动。未执行独立、性能、云部署或新测试文件；未改生产业务/契约/门禁。

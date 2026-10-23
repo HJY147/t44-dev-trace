@@ -137,3 +137,13 @@
 - 本次harness/profile=false，不接触独立内容、不评价其私密结果；无SSH。后续仅交接，不重跑或改实现。
 
 - 中性白名单checkpoint 6b681dd73694bf18430f1bce4bdf00ffd1ae762e已push：deployment/acceptance/neutral-handoff/manifest.json列7文件和逐文件SHA256，manifest SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅成功元数据投影及协议/MQ/crypto；开发过程、失败详情与原始日志排除，供根单向转交。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363。本轮结束等待集成，无新增环境或测试运行。
+
+
+### NATIVE-v1：项目内macOS原生设计checkpoint
+
+- 本轮基点275dd3e/独立codex/deployment-native；实际派工ROLE-deployment-NATIVE-v1。本地开发运行设计deployment/native/README.md涵盖Rabbit/API/consumer/APScheduler、全loopback与独立生命周期，不替代Compose/云部署。
+- 根完成OTP28.5.0.7项目prefix编译，固定官方Rabbit4.3.6/OTP下载SHA沿用根真实证据。12个版本主源SHA、一次无分布式crypto/ssl成功probe、实际双home结果见agents/deployment/native-validation。
+- Cookie early-init两次真实失败均保留：先引用/UTF8词法，再auth未初始化的distribution_not_started。Darwin不读Linux XDG后备。下一阶段候选为独立-sname先初始化auth后项目args_file读取新随机Cookie，必须根准入真实认证；无secret argv/env、无HOME/官方源码修改。失败dump0600ignored不公开，broker不得复用probe Cookie。
+- 演示候选新t44_native_demo(2项目40任务)/API18088/UI5178，AMQP25674/EPMD24369/dist35674/CLI45674–45683全loopback；未来v3/UI与perf必须另库/vhost，由根冻结。旧5173→18080、5175→18084、MySQL13306/PID7980及业务数据受保护。
+- 设计列明最终精确SUT/锁/关键源SHA、私密账号与scope/TTL300/轮换、PID/PGID/UID/启动时间拥有权、逐次false失败回执、最小真实消息与60秒周期扫描验证。数据库权限/初始化由根协调，现未读取旧秘密或启动服务。
+- 当前只完成设计及有限依赖probe；没有broker、API、consumer、scanner、业务库或UI运行结论，没有新独立/性能/云通过声明。原始提示词/工作日志/JSON交接已同步；根审查后再推进受控能力阶段。

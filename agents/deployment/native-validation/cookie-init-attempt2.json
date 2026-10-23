@@ -1,0 +1,54 @@
+{
+  "started_at_utc": "2026-10-23T20:11:13.658576+00:00",
+  "ended_at_utc": "2026-10-23T20:11:13.876983+00:00",
+  "corrects": "cookie-init-probe.json args_file quoting/UTF8 lexer failure",
+  "argv": [
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-mq-20261023/erlang-28.5.0.7/bin/erl",
+    "-noshell",
+    "-eval",
+    "{ok,B}=file:read_file([47,85,115,101,114,115,47,121,97,110,103,47,68,101,115,107,116,111,112,47,110,111,116,104,105,110,103,47,36719,20214,24320,21457,22823,20316,19994,47,46,97,103,101,110,116,45,119,111,114,107,116,114,101,101,115,47,46,114,117,110,116,105,109,101,47,116,52,52,45,110,97,116,105,118,101,45,100,101,109,111,47,99,111,111,107,105,101,45,105,110,105,116,45,112,114,111,98,101,47,99,111,111,107,105,101]),io:format(\"cookie_matches=~p~nhome_unchanged=~p~nnon_distributed=~p~n\",[erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1),init:get_argument(home)=:={ok,[[os:getenv(\"HOME\")]]},node()=:=nonode@nohost]),halt()."
+  ],
+  "environment_delta": {
+    "ERL_AFLAGS": "-args_file /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/cookie-init-probe/cookie-init-attempt2.args",
+    "ERL_FLAGS": "+S 2:2 +A 2",
+    "ERL_ZFLAGS": "",
+    "ERL_CRASH_DUMP": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/cookie-init-probe/attempt2-crash.dump"
+  },
+  "unchanged_environment_keys": [
+    "HOME",
+    "home",
+    "CODEX_HOME"
+  ],
+  "timeout_seconds": 30,
+  "exit_code": 1,
+  "node_started": false,
+  "service_started": false,
+  "cookie_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/cookie-init-probe/cookie",
+  "cookie_mode": "0o600",
+  "cookie_secret_in_argv": false,
+  "cookie_secret_in_env": false,
+  "args_file_sha256": "4808185ea78868cf39e91879054c33fb98855007f93dfea70ff2c98a3d664b26",
+  "args_file_contains_secret": false,
+  "outputs": {
+    "cookie-init-attempt2.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "cookie-init-attempt2.stderr": {
+      "sha256": "2a6ed8030d7695f7cf034c8f1e4b9425f283b95295b38f32fbe151b4de882d93",
+      "bytes": 991
+    }
+  },
+  "prior_dump": {
+    "path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/cookie-init-probe/failed-erl_crash.dump",
+    "sha256": "3a9806d87690a9b7ed483e2378ccc1b4c7d8f55fd9e2e087937537dc34977397",
+    "mode": "0600",
+    "not_parsed_or_submitted": true
+  },
+  "attempt2_dump": {
+    "path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/cookie-init-probe/attempt2-crash.dump",
+    "sha256": "6c638a410f61cec566af4595b050ec98311f9090d783705dcc152244f69a8c4a",
+    "mode": "0600",
+    "not_parsed_or_submitted": true
+  }
+}

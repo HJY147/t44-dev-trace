@@ -1,7 +1,7 @@
 {
   "role": "deployment",
-  "stage": "recovery-mq-capability-complete",
-  "implementation_status": "中性恢复回执/实际MQ transport已实现并在固定4c SUT完成有变化复核；本岗不评价独立测试结果",
+  "stage": "NATIVE-v1 design checkpoint; prior runtime evidence retained separately",
+  "implementation_status": "原Compose/CI能力已交付；新增macOS项目内native环境仅设计与有限非分布式依赖probe，未启动服务",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
@@ -82,7 +82,10 @@
     "agents/deployment/acceptance-environment-result-comment.md",
     "agents/deployment/recovery-receipt-validation/",
     "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
-    "agents/deployment/recovery-mq-comment.md"
+    "agents/deployment/recovery-mq-comment.md",
+    "deployment/native/README.md",
+    "agents/deployment/native-validation/",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md"
   ],
   "interfaces": [
     {
@@ -374,9 +377,14 @@
       "id": "ROLE-deployment-RECOVERY-MQ-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
       "reason": "实际新能力派工归档；逐次真实恢复回执及固定SUT的中性MQ传输事实，不涉及独立私有用例"
+    },
+    {
+      "id": "ROLE-deployment-NATIVE-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md",
+      "reason": "新macOS项目内原生环境派工；保护旧运行/独立隔离，保留真实失败并先设计准入后启动"
     }
   ],
-  "updated_at": "2026-10-23T15:25:30.268470+00:00",
+  "updated_at": "2026-10-23T20:14:25.964669+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -490,5 +498,56 @@
     "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363",
     "final_status": "complete:implementation validated;neutral handoff published;archive only;no rerun",
     "post_validation_runtime_changed": false
+  },
+  "native_local": {
+    "baseline": "275dd3e",
+    "branch": "codex/deployment-native",
+    "runtime": "macOS arm64 project-local; no global install/change",
+    "design": "deployment/native/README.md",
+    "dependencies": "root records/decisions/local-mq-runtime-preparation.json plus explicitly allowed root validation/build/layout receipts",
+    "actual_probe": "erlang-capability exit0; OTP28/ERTS16.4.0.6/crypto/ssl/OpenSSL3.6.2; duplicate home means -home方案不适用",
+    "cookie_attempts": [
+      {
+        "record": "agents/deployment/native-validation/cookie-init-probe.json",
+        "exit_code": 1,
+        "reason": "args-file nested quoting/UTF8 expression lexer"
+      },
+      {
+        "record": "agents/deployment/native-validation/cookie-init-attempt2.json",
+        "exit_code": 1,
+        "reason": "distribution_not_started; non-distributed auth absent"
+      }
+    ],
+    "private_dumps": "0600 ignored project runtime; SHA metadata only; not parsed/submitted; new broker cookie must be regenerated",
+    "candidate": "-nocookie plus exact unique -sname to initialize auth, then project args_file file-read setter before Rabbit boot/CLI; awaits root approval and actual authentication",
+    "demo_candidate": {
+      "database": "t44_native_demo",
+      "projects": 2,
+      "tasks": 40,
+      "api": 18088,
+      "ui": 5178,
+      "amqp": 25674,
+      "epmd": 24369,
+      "distribution": 35674,
+      "cli_distribution": [
+        45674,
+        45683
+      ],
+      "all_listeners": "127.0.0.1",
+      "started": false
+    },
+    "future_v3": "root must bind exact SUT and allocate separate UI/perf databases/vhosts;18086/5177 unbound candidates",
+    "service_started": false,
+    "production_source_changed": false,
+    "independent_private_material_read": false,
+    "new_test_file_created": false,
+    "unverified": [
+      "cookie under actual distribution/server/CLI",
+      "Rabbit listener/user/vhost/isolation/lifecycle",
+      "final app source and new project database",
+      "API/consumer/scanner/UI integration",
+      "real message and 60-second periodic scan",
+      "independent acceptance/performance/cloud deployment"
+    ]
   }
 }
