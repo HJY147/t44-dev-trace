@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "CONTRACT-v2：后端C2/C3/C4设计修复完成，C1来源说明已对齐，待新SHA复审；业务未实现",
-  "implementation_status": "未实现",
+  "stage": "1.1 capacity contract checkpoint only; pending coordinator parent-chain freeze before business implementation",
+  "implementation_status": "IAT01-05 frozen-scope fixes implemented with developer regressions; independent retest/performance pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -86,6 +86,138 @@
     {
       "path": "agents/backend/contract-v2-response.md",
       "status": "Issue#3/#12实际答复正文"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/requirements.lock",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/__init__.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/__init__.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/commands.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/models.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/state_machine.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/tests/backend/domain/test_transitions.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-interface-notes.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-stage-comment.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pr-body.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-lock-compile.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-uv-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-package-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-package-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-linux-wheel-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-linux-resolution.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-lock-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-initial.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-fix.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-format-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pytest-initial.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-initial.xml",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pytest-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-final.xml",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-coverage.json",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-coverage.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-coverage-json.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-bandit.json",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-bandit.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
     }
   ],
   "interfaces": [
@@ -124,6 +256,15 @@
       "output": "扫描触发处理结果",
       "errors": "过期上下文/重试/重复升级边界待确认",
       "contract_path": "specs/contracts/openapi.json"
+    },
+    {
+      "peer": "future transaction facade",
+      "version": "internal-domain-v1",
+      "status": "纯领域接口已存在；未集成，不是冻结HTTP契约",
+      "input": "TaskPosition、九种typed Command、服务端已加载的纯GuardContext",
+      "output": "不可变Decision(source/target/action/command/effects)或内部DomainViolation",
+      "errors": "内部Violation语义，不选择Q002 HTTP状态/外部编码",
+      "code_path": "backend/t44/domain/state_machine.py"
     }
   ],
   "commands_executed": [
@@ -210,6 +351,38 @@
     {
       "command": "gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md",
       "result": "均退出0；Issue#3评论6358981390，Issue#12评论6358981840，见WORKLOG"
+    },
+    {
+      "command": "uv pip compile backend/pyproject.toml --extra dev --python-version 3.12 --universal --generate-hashes --output-file backend/requirements.lock",
+      "result": "退出0，68包通用hash锁，uv0.12.17；PyMySQL[rsa]/cryptography和argon2-cffi已含，无JWT"
+    },
+    {
+      "command": "pip install --require-hashes / Linux目标pip download",
+      "result": "均因本机SSL证书链验证失败退出1；原日志保留，未关闭TLS或改全局证书"
+    },
+    {
+      "command": "uv pip install --python .venv/bin/python --require-hashes -r backend/requirements.lock",
+      "result": "退出0，真实本机安装"
+    },
+    {
+      "command": "pip install --no-deps --no-build-isolation ./backend / pip check / RSA后端导入",
+      "result": "退出0，本地wheel构建安装、依赖检查及导入成功；未连接数据库"
+    },
+    {
+      "command": "uv Linux x86_64/Python3.12 target compile with universal pins as constraints / hash pin check",
+      "result": "退出0，67个Linux目标版本全部匹配通用锁；未执行Linux运行"
+    },
+    {
+      "command": "ruff check / ruff format --check / bandit -r backend/t44",
+      "result": "最终均退出0；初始两处import排序失败及修复日志保留"
+    },
+    {
+      "command": "coverage run --branch --source=t44.domain -m pytest -c backend/pyproject.toml backend/tests/backend/domain --junitxml=agents/backend/core-domain-final.xml -ra",
+      "result": "退出0，106领域单元测试通过；仅领域含分支覆盖约98%，非全项目门禁"
+    },
+    {
+      "command": "coverage json / coverage report",
+      "result": "退出0，原始JSON/JUnit/报告已存本岗目录"
     }
   ],
   "results": [
@@ -222,29 +395,25 @@
     "C2完整收件人集合不设人数上限，handled_count UINT32，创建/历史嵌套共用事件Schema",
     "C3共享1000～9999/UTC Z/≤6微秒时间域，真实FormatChecker和Plan/TaskCreate/只读候选边界验证，扫描now−end不做end+24h",
     "C4逐操作注解/response枚举/HTTP/触发条件设计一致性验证通过，GET/只读无幂等错误；全局字典无虚构项目/资源分支",
-    "C1后端采用response_request_id作为最终实际生成已保存结果请求ID来源；数据库字段/COMPLETE约束由数据库岗另交，不冒称整体复审通过"
+    "C1后端采用response_request_id作为最终实际生成已保存结果请求ID来源；数据库字段/COMPLETE约束由数据库岗另交，不冒称整体复审通过",
+    "D001七状态九动作纯领域实现存在，集中内部Enum/typed命令/不可变Decision/纯GuardContext，非法边与必要守卫有参数化自测",
+    "领域依赖只在start、unblock到develop、rework三处检查，reject_review不新增守卫，上游回滚不自动改下游",
+    "106项领域单元通过，Ruff/格式/Bandit通过；仅领域覆盖约98%，不是HTTP/集成/独立验收",
+    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
   ],
   "unverified": [
-    "所有实际HTTP请求/响应与错误分支",
-    "业务/安全/事务/并发/消息/调度/重启行为与契约一致性",
-    "DDL逐表审核、ORM/迁移及MySQL执行",
-    "拒绝审计不可用时的持久故障介质与恢复操作",
-    "集成/独立验收/覆盖率/400并发性能与维护改动指标",
-    "修复后合并新SHA的reviewer复审，C1数据库独立提交及完整接口/DDL一致性",
-    "所有C2/C3/C4设计约束的实际HTTP/持久化/调度运行行为"
+    "independent retest",
+    "performance thresholds",
+    "final source range"
   ],
   "questions": [
     {
-      "owner": "coordinator/reviewer",
-      "question": "请复核契约与数据库字段、状态/角色/质量约束、锁序和错误语义后再冻结"
+      "owner": "coordinator/user",
+      "question": "assignment/capacity removal lifecycle and full iteration.capacity public differences remain undecided; frozen11unchanged"
     },
     {
-      "owner": "deployment",
-      "question": "按总协调收口，DB完全不可用时由部署承接脱敏stderr/文件运维记录及恢复，不是第二套业务审计；实际实现/路径待交付"
-    },
-    {
-      "owner": "messaging/scheduler",
-      "question": "请据现有草案复核event/outbox/降级终态/服务身份扫描调用和重启边界；不绕开业务状态机"
+      "owner": "coordinator",
+      "question": "after CI-stable checkpoint coordinate profile1/8/32 diagnostic window away from Word rendering; no diagnostic load yet"
     }
   ],
   "prompt_refs": [
@@ -309,7 +478,446 @@
         "reports/modules/backend.md",
         "records/handoffs/backend.json"
       ]
+    },
+    {
+      "id": "ROLE-backend-CORE-FOUNDATION-v1",
+      "source": "总协调实际独立树基础实现派工及三处依赖守卫澄清",
+      "archive_path": "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+      "reason": "将已采用D001实现为真正纯领域包，不绑定待用户取舍字段/HTTP，不制造API stub",
+      "outputs": [
+        "backend/pyproject.toml",
+        "backend/requirements.lock",
+        "backend/t44/__init__.py",
+        "backend/t44/domain/__init__.py",
+        "backend/t44/domain/commands.py",
+        "backend/t44/domain/models.py",
+        "backend/t44/domain/state_machine.py",
+        "backend/tests/backend/domain/test_transitions.py",
+        "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+        "agents/backend/core-interface-notes.md",
+        "agents/backend/core-stage-comment.md",
+        "agents/backend/core-pr-body.md",
+        "agents/backend/core-lock-compile.log",
+        "agents/backend/core-install.log",
+        "agents/backend/core-uv-install.log",
+        "agents/backend/core-package-install.log",
+        "agents/backend/core-package-check.log",
+        "agents/backend/core-linux-wheel-check.log",
+        "agents/backend/core-linux-resolution.log",
+        "agents/backend/core-lock-check.log",
+        "agents/backend/core-ruff-initial.log",
+        "agents/backend/core-ruff-fix.log",
+        "agents/backend/core-ruff-final.log",
+        "agents/backend/core-format-final.log",
+        "agents/backend/core-pytest-initial.log",
+        "agents/backend/core-domain-initial.xml",
+        "agents/backend/core-pytest-final.log",
+        "agents/backend/core-domain-final.xml",
+        "agents/backend/core-domain-coverage.json",
+        "agents/backend/core-domain-coverage.log",
+        "agents/backend/core-coverage-json.log",
+        "agents/backend/core-bandit.json",
+        "agents/backend/core-bandit.log",
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-APPLICATION-v1",
+      "archive_path": "agents/backend/APPLICATION-v1-prompt.md",
+      "reason": "full frozen application authorized after Q002; actual HTTP tests, no fake store",
+      "outputs": [
+        "backend/t44/api.py",
+        "backend/t44/cli.py",
+        "backend/t44/services/",
+        "backend/t44/contracts/",
+        "backend/t44/resources/review-template.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-INTEGRATION-v1",
+      "archive_path": "agents/backend/INTEGRATION-v1-prompt.md",
+      "reason": "actual GHA/code-map fixes, complete owner integration and full source coverage; no private acceptance contact"
+    },
+    {
+      "id": "ROLE-backend-REFACTOR-v1",
+      "archive_path": "agents/backend/REFACTOR-v1-prompt.md",
+      "reason": "真实重复消除保持业务/安全/可读性；性能隔离期间仅编辑/Git，保留远端原失败与修复事实"
+    },
+    {
+      "id": "ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1",
+      "archive_path": "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md",
+      "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T14:33:57+08:00"
+  "updated_at": "2026-10-23T12:24:39.159676+00:00",
+  "current_stage": "1.1 capacity contract checkpoint only; pending coordinator parent-chain freeze before business implementation",
+  "application_v1": {
+    "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
+    "entrypoints": [
+      "backend/t44/api.py",
+      "backend/t44/cli.py",
+      "backend/t44/services/",
+      "backend/t44/contracts/",
+      "backend/t44/resources/review-template.json"
+    ],
+    "tests": "agents/backend/application-contract-stage2.log",
+    "interface_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261",
+    "unverified": [
+      "messaging/scheduler facade integration",
+      "seed owner delivery",
+      "RabbitMQ",
+      "full t44 coverage",
+      "full workflow MySQL",
+      "performance",
+      "independent acceptance"
+    ],
+    "network_evidence": "agents/backend/application-network-smoke.json",
+    "service": {
+      "url": "http://127.0.0.1:18080/api/v1",
+      "pid": 14985,
+      "demo_project_id": 3,
+      "demo_iteration_id": 3,
+      "demo_task_id": 3,
+      "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository",
+      "snapshot": "b49a5de"
+    },
+    "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
+    "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
+  },
+  "integration_v1": {
+    "basis": "ef79f04323e05326d0d5a14b44af8c5e0a474690",
+    "result": "314 passed,0 failed,3 skipped(local Rabbit unavailable)",
+    "coverage_scope": "all backend/t44; no omit",
+    "statements": 2724,
+    "covered": 2391,
+    "line_percent": 87.77533039647577,
+    "branch_inclusive_percent": 85.36443148688046,
+    "evidence": [
+      "agents/backend/integration-full-second.log",
+      "agents/backend/integration-full-second.xml",
+      "agents/backend/integration-coverage-second.json",
+      "agents/backend/integration-38-http.json",
+      "agents/backend/integration-live-chain.json",
+      "agents/backend/integration-live-revocation.json"
+    ],
+    "still_required": [
+      "Rabbit success real CI",
+      "final source size",
+      "performance",
+      "independent acceptance"
+    ],
+    "all_http_operations": 38,
+    "actual_network_requests": 53,
+    "test_layout_commit": "5e07887",
+    "test_collection": "317 collected, integration-tmp-collection.log",
+    "current_test_command": "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend",
+    "owned_test_paths": [
+      "tmp/backend/contracts/985_mysql_http.py",
+      "tmp/backend/contracts/986_http.py",
+      "tmp/backend/contracts/987_faults.py",
+      "tmp/backend/backend/domain/994_transitions.py"
+    ]
+  },
+  "refactor_v1": {
+    "basis": "003ef6b",
+    "first_checkpoint": "729344e681253443c45dfbbec0ece97f68d2080f",
+    "remote_failure_run": "39937742613",
+    "remote_failure": "Ruff I001/F823;18 failed/299 passed; module namespace shadowed by local commands dict",
+    "failure_evidence": [
+      "agents/backend/refactor-ci-39937742613-failed.log",
+      "agents/backend/refactor-ci-39937737014.json"
+    ],
+    "changes": [
+      "direct domain module imports remove unused barrel",
+      "trusted Call.create shared context/insert-get",
+      "issue_session shared opaque session creation",
+      "cmd alias fixes observed namespace collision; assertions retained"
+    ],
+    "physical_line_delta_from_basis": -112,
+    "validation": "remote GHA39938619826 and39938612582 all four jobs success; local performance window quiet",
+    "unverified": [
+      "final whole-product cloc3500-5100",
+      "independent acceptance",
+      "formal performance conclusion",
+      "updated local live service after performance window"
+    ],
+    "tested_source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+    "remote_results": {
+      "source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+      "run_id": 39938619826,
+      "checkout_pr_merge_sha": "f5e9904c339e204574fcf2f630af28b0a6779e94",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826",
+      "junit": {
+        "tests": 317,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "python_files": 43,
+      "scope": "all backend/t44; excluded_lines=0",
+      "covered_lines": 2406,
+      "statements": 2729,
+      "line_percent": 88.1641626969586,
+      "branch_percent": 76.47058823529412,
+      "branch_inclusive_percent": 85.73918094684868,
+      "marker_passed": {
+        "contract": 35,
+        "integration": 52,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "jobs": {
+        "static": "success",
+        "contracts": "success",
+        "coverage": "success",
+        "frontend": "success"
+      },
+      "warning": "one StarletteDeprecationWarning for FastAPI TestClient/httpx",
+      "limits": [
+        "remote developer CI, not independent acceptance or performance",
+        "CLI remains in full coverage denominator with 0 covered lines; prior live CLI evidence is separate",
+        "no local pytest/build/DB/HTTP during formal performance window",
+        "whole-product final source cloc not established by this change"
+      ]
+    },
+    "evidence": [
+      "agents/backend/refactor-ci-39938619826.json",
+      "agents/backend/refactor-ci-39938612582.json",
+      "agents/backend/refactor-ci-39938619826-coverage.log",
+      "agents/backend/refactor-ci-39938619826-contracts.log",
+      "agents/backend/refactor-ci-39938619826-static.log",
+      "agents/backend/refactor-ci-39938619826-coverage.json",
+      "agents/backend/refactor-ci-39938619826-junit.xml",
+      "agents/backend/refactor-validation-summary.json"
+    ],
+    "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362735528",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
+  },
+  "performance_diagnostics_v1": {
+    "phase": "B setup attempted; no contract workload samples yet",
+    "basis": "397bd7973cfd835c635634d32e0c98ae56d74949",
+    "specified_parent_product": "43f51570e62e3160f7995c45bdddaf2f123242b3",
+    "artifacts": [
+      "tmp/backend/955_perf_profile.py",
+      "agents/backend/performance-diagnostics-plan.md",
+      "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md"
+    ],
+    "tool_status": "FastAPI startup hook fixed and two baseline servers started/stopped0; bootstrap received nonJSON502; direct-loopback proxy fix static-checked only",
+    "production_changes": false,
+    "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; both processes exited0, no diagnostic load running",
+    "blocked_execution_prerequisites": [
+      "coordinator coordinates next CPU window after LO was explicitly released"
+    ],
+    "unverified": [
+      "fixed direct-loopback bootstrap and fixture candidate validity",
+      "all baseline/CPU/SQL/queue/pool/lock/validation workload metrics",
+      "any bottleneck or optimization benefit",
+      "formal performance and final source range"
+    ],
+    "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
+    "next_priority": "Resume fixed bootstrap then contract-only1/8/32 short samples in coordinated CPU window; no production optimization before evidence",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363489919",
+    "execution_gate": "Do not restart server/load until next coordinator CPU window; report exact committed source+actual imports+UTC.",
+    "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
+    "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests",
+    "setup_evidence": [
+      "agents/backend/profile-first-launch-failure.json",
+      "agents/backend/profile-bootstrap-failure.json",
+      "agents/backend/profile-bootstrap-attempts.json",
+      "agents/backend/profile-proxy-static.log"
+    ],
+    "resource_release": "Own18083 processes31358 and31439 exited0; no1/8/32 workload ran; root told LO may resume."
+  },
+  "iat_repairs_v1": {
+    "source_report_verification": "agents/backend/iat-public-report-verification.json",
+    "IAT-v1-01": {
+      "status": "fixed with32 HTTP/SQLite tests passed; original2fail preserved",
+      "changes": [
+        "new assessment clears approval pointers within existing task CAS",
+        "only latest rollback_plan_version can be reviewed",
+        "replay returns saved snapshot without repeated invalidation"
+      ],
+      "evidence": [
+        "agents/backend/iat01-before.log",
+        "agents/backend/iat01-before.xml",
+        "agents/backend/iat01-failure-provenance.json",
+        "agents/backend/iat01-after.log",
+        "agents/backend/iat01-after.xml",
+        "agents/backend/iat01-ruff-initial.log",
+        "agents/backend/iat01-ruff.log",
+        "agents/backend/iat01-bandit.json"
+      ],
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113",
+      "remote_ci": "65007a source product39944613492 success; newer combined fixes need fresh CI"
+    },
+    "pending": [],
+    "unverified": [
+      "independent retest",
+      "performance thresholds",
+      "final source range"
+    ],
+    "IAT-v1-02..05": {
+      "status": "55 real HTTP/SQLite cases passed; Ruff/Bandit passed",
+      "scope": [
+        "owner is listed in createTask iteration.capacity only",
+        "invalid resource/attempted references bounded for independent rejection audit",
+        "complete public task/rework plan fields and versions,2000chars retained",
+        "required evidence vs parameter vs candidate error branches per frozen operation"
+      ],
+      "before": [
+        "13 failed for02-04",
+        "8failed/2passed for05"
+      ],
+      "evidence": [
+        "agents/backend/iat02-04-before.log",
+        "agents/backend/iat02-04-before.xml",
+        "agents/backend/iat05-before.log",
+        "agents/backend/iat05-before.xml",
+        "agents/backend/iat02-05-final.log",
+        "agents/backend/iat02-05-final.xml",
+        "agents/backend/iat02-05-ruff-final.log",
+        "agents/backend/iat02-05-bandit-final.json"
+      ],
+      "mysql_cases": "added in existing985, not run locally; awaiting new source CI",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608"
+    },
+    "combined_ci": {
+      "tested_product_source": "479fc8fbb1c1abac1055a25f935d30c247c90f69",
+      "run": 39946771417,
+      "status": "all four product jobs success",
+      "junit": {
+        "tests": 362,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "mysql_http_cases": [
+        {
+          "name": "test_real_mysql_atomic_workflow_and_competing_cas",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[True]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[False]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_invalid_selectors_keep_independent_rejection_audits",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_capacity_plan_audit_and_input_errors",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_concurrent_notification_cas_exactly_one_update[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_list_scope_serializes_with_membership_revocation[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_worker_default_confirmed_recovery_preserves_complete_event[mysql]",
+          "classname": "messaging.980_delivery"
+        }
+      ],
+      "coverage_scope": "all43 backend/t44 files,excluded_lines0",
+      "totals": {
+        "covered_lines": 2524,
+        "num_statements": 2850,
+        "percent_covered": 86.33351739370514,
+        "percent_covered_display": "86.33",
+        "missing_lines": 326,
+        "excluded_lines": 0,
+        "percent_statements_covered": 88.56140350877193,
+        "percent_statements_covered_display": "88.56",
+        "num_branches": 772,
+        "num_partial_branches": 109,
+        "covered_branches": 603,
+        "missing_branches": 169,
+        "percent_branches_covered": 78.10880829015544,
+        "percent_branches_covered_display": "78.11"
+      },
+      "markers": {
+        "contract": 64,
+        "integration": 56,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "not_claimed": [
+        "independent retest",
+        "formal performance",
+        "final3500-5100source range"
+      ]
+    }
+  },
+  "capacity_v11": {
+    "basis": "eac253039cd85873d3b262e648b2b74d94d715a8",
+    "rfc": "bbc4be681f19a386fbca40baf97a63ab902b3f89",
+    "rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+    "status": "contract1.1.0 candidate only; no new production guards in checkpoint/no deployment",
+    "paths": 31,
+    "operations": 38,
+    "DDL": "18tables226columns unchanged",
+    "artifacts": [
+      "specs/contracts/openapi.json",
+      "backend/t44/contracts/openapi.json",
+      "specs/contracts/README.md",
+      "specs/backend-design.md",
+      "agents/backend/CAPACITY-V11-IMPLEMENT-v1-prompt.md",
+      "agents/backend/capacity-v11-contract-validation.log",
+      "agents/backend/capacity-v11-contract-validation.json",
+      "agents/backend/capacity-v11-before.log",
+      "agents/backend/capacity-v11-before.xml",
+      "tmp/validation/995_contract_design_v2.py",
+      "agents/backend/capacity-v11-995-before.log",
+      "agents/backend/capacity-v11-995-after.log",
+      "agents/backend/capacity-v11-prefreeze-correction.json"
+    ],
+    "scope": [
+      "assignment receiver must be current effective developer and in iteration.capacity",
+      "new iteration capacity covers all owners of states1-5,not onlyremoved entries",
+      "states6/7 may leave capacity;action9rework rechecks effective developer+capacity",
+      "project member/developer removal protection1-5+7 unchanged",
+      "shared project lock for assignment/createTask/createIteration/changeIteration/rework",
+      "reuseID30;assignment/rework422;oldv1manifest unchanged"
+    ],
+    "checks": "real openapi_spec_validator+38operationerrorresponse/caseconsistency+copy/version/request/nonMeta invariance passed",
+    "before_regression": "new986draft13cases onoldproduction logic11failed2passed55deselected;raw log/XML preserved",
+    "uncommitted_drafts": [
+      "backend/t44/services/common.py",
+      "backend/t44/services/tasks.py",
+      "backend/t44/services/projects.py",
+      "backend/t44/services/workflow.py",
+      "backend/t44/services/runtime.py",
+      "tmp/backend/contracts/986_http.py"
+    ],
+    "unverified": [
+      "rootnewfreeze",
+      "officialpostfreezeimplementation/regression",
+      "trueMySQLcapacityraces",
+      "newfullCI",
+      "FE1.1fixture/readmebyFEowner",
+      "independentretest",
+      "performance"
+    ],
+    "next": "root merges contracts and DB specs, generates new parent-chain1.1freeze; then backend continues business guards/locks/tests. No955run.",
+    "prefreeze_correction": {
+      "coordinator_metadata_source": "9aeb40c48c35139e29a5e997253d606e5c96139a",
+      "only_delta_to_that_contract": "changeTaskAssignment.description separatesOWNER_NOT_PROJECT_DEVELOPERfromCAPACITY_REFERENCE_INVALID",
+      "runtime_copy_identical": true,
+      "sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "995_before": "1130checks/38ops/2fail due to obsolete0.1.0-draft fixture",
+      "995_after": "1130checks/38ops/0fail; fixture usesSPEC.info.version; no old assertions removed",
+      "guard_implementation_in_this_checkpoint": false,
+      "new_parent_freeze": "pending coordinator manifest"
+    }
+  }
 }

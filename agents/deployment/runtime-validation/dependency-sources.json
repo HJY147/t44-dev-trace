@@ -1,0 +1,45 @@
+{
+  "checked_on": "2026-10-23",
+  "actions_source": "GitHub official repository releases/latest and git tag dereference via gh api",
+  "actions": {
+    "actions/checkout": {
+      "release": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    "actions/setup-python": {
+      "release": "v7.1.0",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
+    },
+    "actions/setup-node": {
+      "release": "v7.1.0",
+      "sha": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+    },
+    "actions/upload-artifact": {
+      "release": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "pnpm/action-setup": {
+      "release": "v6.1.0",
+      "sha": "ea17c68df8912ef543352723c149a84f56e3d413"
+    }
+  },
+  "images_source": "https://registry-1.docker.io/v2/library/<image>/manifests/<tag> Docker-Content-Digest",
+  "images": [
+    "mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69",
+    "rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292",
+    "python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70",
+    "node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205",
+    "nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951"
+  ],
+  "actionlint": {
+    "release": "v1.7.12",
+    "binary_checksum": "aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f",
+    "source": "https://github.com/rhysd/actionlint/releases/tag/v1.7.12"
+  },
+  "tls_verification": "system CA /etc/ssl/cert.pem; no verification bypass",
+  "limitations": [
+    "Images not pulled/built locally; no local Docker",
+    "Initial remote workflow completed with expected missing-implementation failures; no product test/coverage result",
+    "Nginx container syntax and dependency service initialization succeeded remotely; this is not a full product Compose deployment"
+  ]
+}

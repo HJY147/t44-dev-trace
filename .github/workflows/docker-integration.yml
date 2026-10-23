@@ -1,0 +1,39 @@
+name: docker-application
+
+on:
+  push:
+    branches: [codex/deployment-runtime, codex/integration]
+  pull_request:
+    branches: [codex/integration]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-application-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docker-application:
+    name: docker-application
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Prepare evidence directory
+        run: mkdir -p reports/docker-integration
+      - name: Real image build, Compose application, private service credential and isolated recovery
+        run: python tmp/deployment/972_compose_application.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: docker-application-${{ github.sha }}
+          path: reports/docker-integration/
+          if-no-files-found: error
+          retention-days: 14

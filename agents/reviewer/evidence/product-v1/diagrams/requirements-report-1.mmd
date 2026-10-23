@@ -1,0 +1,9 @@
+flowchart LR
+  Member[参与项目的人员] -->|浏览器请求| UI[Vue前端]
+  UI -->|同源API| T44[T44单体分层业务系统]
+  Manager[项目经理] -->|交付与回滚的人的决定| T44
+  T44 --> DB[(本项目MySQL)]
+  T44 --> MQ[(RabbitMQ)]
+  Timer[独立调度进程] -->|周期触发业务门面| T44
+  T44 -->|列表与待办结果| UI
+  Operator[授权运维] -->|明确目标迁移和恢复| DB

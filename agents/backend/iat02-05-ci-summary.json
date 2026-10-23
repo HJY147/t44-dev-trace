@@ -1,0 +1,73 @@
+{
+  "tested_product_source": "479fc8fbb1c1abac1055a25f935d30c247c90f69",
+  "run": 39946771417,
+  "status": "all four product jobs success",
+  "junit": {
+    "tests": 362,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mysql_http_cases": [
+    {
+      "name": "test_real_mysql_atomic_workflow_and_competing_cas",
+      "classname": "contracts.985_mysql_http"
+    },
+    {
+      "name": "test_real_mysql_assessment_supersession_and_creation_replay[True]",
+      "classname": "contracts.985_mysql_http"
+    },
+    {
+      "name": "test_real_mysql_assessment_supersession_and_creation_replay[False]",
+      "classname": "contracts.985_mysql_http"
+    },
+    {
+      "name": "test_real_mysql_invalid_selectors_keep_independent_rejection_audits",
+      "classname": "contracts.985_mysql_http"
+    },
+    {
+      "name": "test_real_mysql_capacity_plan_audit_and_input_errors",
+      "classname": "contracts.985_mysql_http"
+    },
+    {
+      "name": "test_real_mysql_concurrent_notification_cas_exactly_one_update[mysql]",
+      "classname": "messaging.979_facade"
+    },
+    {
+      "name": "test_real_mysql_list_scope_serializes_with_membership_revocation[mysql]",
+      "classname": "messaging.979_facade"
+    },
+    {
+      "name": "test_real_mysql_worker_default_confirmed_recovery_preserves_complete_event[mysql]",
+      "classname": "messaging.980_delivery"
+    }
+  ],
+  "coverage_scope": "all43 backend/t44 files,excluded_lines0",
+  "totals": {
+    "covered_lines": 2524,
+    "num_statements": 2850,
+    "percent_covered": 86.33351739370514,
+    "percent_covered_display": "86.33",
+    "missing_lines": 326,
+    "excluded_lines": 0,
+    "percent_statements_covered": 88.56140350877193,
+    "percent_statements_covered_display": "88.56",
+    "num_branches": 772,
+    "num_partial_branches": 109,
+    "covered_branches": 603,
+    "missing_branches": 169,
+    "percent_branches_covered": 78.10880829015544,
+    "percent_branches_covered_display": "78.11"
+  },
+  "markers": {
+    "contract": 64,
+    "integration": 56,
+    "fault": 7
+  },
+  "marker_counts_overlap": true,
+  "not_claimed": [
+    "independent retest",
+    "formal performance",
+    "final3500-5100source range"
+  ]
+}

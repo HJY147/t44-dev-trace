@@ -1,53 +1,37 @@
-# 文档汇总岗位初始化报告
+# 文档汇总岗位报告 M4 TESTS AND WORD
 
-- 岗位：documentation；阶段：团队建立、设计准备及GitHub阶段归档。
-- Prompt-Ref：ROLE-documentation-BOOTSTRAP-v1 / ROLE-documentation-M0-COMMIT-v1。
-- 任务：agents/documentation/TASK.md；业务实现状态：未实现。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M4-TESTS-AND-WORD-v1；Refs #9。
 
-## 职责与范围
+## 当前产物和边界
 
-- 收集岗位真实产物、接口和执行证据，长期负责docs/reports/、reports/final/。
-- 本轮只交初始化汇总，不冒充完整需求/设计/研究报告或产品完成。
-- 测试仅收已发布报告/交接；未联系测试，未读其内部用例/工作日志。
-- 未改产品代码、其他岗文件、总协调共享注册表/派工/提示词台账。
+- 独立codex/review-documents，内容主基线2e0481f，开发CI/容器证据0448fec；后续状态作为续记，不反复追头。
+- 新reports/final/test-results-report.md汇编模块/实库/CI/容器/审核/独立v1/正式性能，明确未通过最终验收。
+- 335后端/零跳过，43文件2493至2818行88.47%、分支77.73%；前端24/307至333行92.19%，均绑定0448fec。
+- 同SHA容器19表count/checksum恢复通过；旧317/88.16等历史分开，不混分母。
+- 独立v1只读公开两报告：900结果340/183/328/49，183含歧义不当183bug；38成功路径通过。
+- 三批400VU/600秒P95为3035/1908/5506ms失败，吞吐和稳态零失败通过；不外推云容量。
+- UI公开补充仅新增授权两文件：原e8测3/1/1，原900不改，不冒称测过b485；无私有截图读取。
+- C-P4四类限定关闭，5886超5100仍failure。IAT01已开发修复；后续IAT02至05 55HTTP/SQLite回归不当独立复测。
 
-## 实际问取与对接
+## 文档与工具
 
-- 按注册表/Issue映射，依次实际询问前端、数据库、消息、调度、部署、后端、指导、提示词八岗。
-- 八岗均真实答复、本人commit和发表阶段评论；六开发岗另发表具体接口问题。
-- 后端实际读取Issue #3前端/数据库问题并发表当前状态答复，未当技术契约冻结。
-- 每次收到完整SHA/评论并核对footer、文件、空暂存区后才转交索引。
-- reviewer第九次followup返回agent thread limit reached；未收到真实回复/SHA/本轮评论。
-- 总协调明确接管reviewer补派，不循环重试；失败派工全文与缺项已归档。
+- 需规/概设详设/AI规格说明、AI证据/提交对照同步M4状态；R001原话归属与学生自写边界保留。
+- docs/function-contracts.md与M4-contract-sources.json锁准确2e完整SHA，49函数链接不承诺未来源码匹配。
+- scripts/docs/export_review_documents.py只处理自有MD、8图资产和私密封面，不搬业务逻辑。
+- 四技术Word仅root .submission-private/review-documents，0600文件/0700目录/Git忽略，日期空；学生研究正文不在其中。
+- 已读documents技能及创建/渲染说明，loader核实bundled Node/Python与指定LO。
+- 首次author前create marker成功一次，expected4/formatdocx；四份已author，并在root明确解除quiet后完成指定bundled LO渲染和全部28原PNG逐页QA。
+- 四份作为技术审阅材料完成排版QA，不等于软件最终验收；不调用用户桌面LO，公开记录不含个人封面值/截图。
 
-## 已形成产物
+## 来源记录和待办
 
-- agents/documentation/WORKLOG.md：实际读写、派工、核对、错误与协调调整。
-- docs/reports/collection-log.md：完整实际/失败派工、原文回答、时间、agent ID、SHA、URL。
-- docs/reports/collection-events.json：对应结构化事件，8完成/1唤醒失败。
-- docs/reports/github-comment-verification.json：15条已返回评论与提交正文逐条核对。
-- docs/reports/documentation-validation.json：JSON字段、提交范围/父链、冻结公开测试资料核对。
-- docs/reports/ai-specification-guide.md：组织规则/业务规格区别、AI边界与真实留痕。
-- reports/final/team-bootstrap-summary.md：事实、完整SHA/评论、最新用户决定与待实施事项。
-- 本报告、本岗交接和agents/documentation/github-stage-comment.md一并归档。
+- M4-source-manifest.json固定公开来源、原CI归档摘要、marker与运行时；M0至M3原始收件/来源/失败不改。
+- 本轮未执行产品测试/业务请求/压测，不联系测试，也不跟随公开报告中的私有证据路径。
+- 精确阶段SHA/PR及最终页数/逐页QA结果按真实发布补，不预填通过。
+- 最终qa-v4：需规10/设计9/测试6/规格说明3页；全部原封面已看。初始字体/Title蓝线、表格拆行与行距裁图失败均保留并修正，详见M4-word-qa.json/.md。
+- 学生研究最终成文/课程建议和真实人工留痕、性能达标、独立复测、规模达标仍待后续。
 
-## 最新事实与历史边界
+## 实际发布
 
-- 保留各岗初查无HEAD/缺Issue等历史事实，追加当前分支与提交状态。
-- D001表明用户采用business-rules v1，是用户决定，不是用户亲自改码。
-- 总协调已配置main保护并创建草稿PR #13；三项产品CI仍待实现，不表示通过。
-- 后续backend/database设计不纳入本轮M0归档；总协调文件仅引用、不提交。
-
-## 验证与风险
-
-- 只做文档、JSON、Git提交范围及GitHub正文证据核对；本岗产品测试为0。
-- 评论核对一次出现gh API EOF，保留已成功记录，仅补读新增评论后恢复。
-- 无业务自测、联调、独立验收、覆盖率或性能通过结论。
-- API/字段/DDL/事务/幂等/运行门禁仍需具体设计确认、冻结、实现与验证。
-- 六版演进、十二条人工改码、三条幻觉、五处最终代码映射均待真实事实支持。
-
-## 交接
-
-- 总协调补派reviewer真实问取/本人M0提交/Issue #12评论，再派绑定最终SHA审核。
-- 本岗Issue #9评论与本地commit按独占时段完成；不push/checkout/merge或设置审核成功。
-- 文档汇总后续按阶段继续补充，不把缺失回复或初始化写成软件完成。
+- QA实现26fcb665fe7db620db0ea09a330ac8267ae4dff3已push；[草稿PR24](https://github.com/HJY147/t44-dev-trace/pull/24)已attach，base codex/integration。
+- [本岗阶段评论](https://github.com/HJY147/t44-dev-trace/pull/24#issuecomment-6364542257)正文/URL真实读回；原文在本岗github-M4-word-qa-comment.md。仅补记录，不声明merge或审核成功。

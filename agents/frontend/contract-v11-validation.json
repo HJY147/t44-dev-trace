@@ -1,0 +1,50 @@
+{
+  "prompt_ref": "ROLE-frontend-CONTRACT-V11-SYNC-v1",
+  "basis_commit": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+  "authority_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+  "info_version": "1.1.0",
+  "meta_version": "1.1.0",
+  "operation_count": 38,
+  "path_count": 31,
+  "schema_count": 130,
+  "fixture_version_source": "frozen.info.version",
+  "before": {
+    "passed": 0,
+    "failed": 1,
+    "unselected": 6,
+    "meaning": "旧fixture1.0.0与authority Meta.const1.1.0不符"
+  },
+  "after": {
+    "passed": 7,
+    "failed": 0,
+    "scope": "982客户端/结构测试；原断言保留，模板业务版本1不变"
+  },
+  "typecheck": "passed",
+  "exact_basis_ci": "gh run list --commit59daa returned none; necessary checks run locally",
+  "not_run": [
+    "full27 frontend suite",
+    "coverage",
+    "production build",
+    "Chrome/browser",
+    "real API requests",
+    "1.1 capacity lifecycle validation",
+    "independent retest"
+  ],
+  "historical_cutoff": {
+    "f654_CI_27_and_92_79": "contract1.0.0, original artifact unchanged",
+    "02ec_80_HTTP": "contract1.0.0, original browser evidence unchanged"
+  },
+  "raw_log_sha256": {
+    "contract-v11-fixture-after.raw.log.gz": "ddbbc8d2847b97819e038ab31c4581ab202360fd5ebfb3e2257314403f2a8428",
+    "contract-v11-fixture-before.raw.log.gz": "80d64179ef124c57b11f75500b7fda02f7d47e8d5dd5ef8970a4ba91245cfb48",
+    "contract-v11-typecheck.raw.log.gz": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e"
+  },
+  "initial_authority_commit": "59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e",
+  "freeze_followup": "Root formal1.1 freeze; authority digest unchanged so necessary checks still apply to same contract bytes; no frozen files edited by frontend",
+  "formal_freeze_manifest": {
+    "path": "records/spec-freezes/v1.1.json",
+    "sha256": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+    "source_commit": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "frontend_edits_frozen_files": false
+  }
+}

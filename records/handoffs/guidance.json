@@ -1,100 +1,113 @@
 {
   "role": "guidance",
-  "stage": "M0 团队建立与设计准备 / GitHub 阶段归档",
-  "implementation_status": "未实现",
+  "stage": "R001 审阅与调试指导 / 只读源码及轻量 MD、JSON",
+  "implementation_status": "指导资料已更新；产品由开发责任岗实现，本岗未编写产品代码，未运行产品/测试/浏览器/渲染",
+  "source_commit": "f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
+  "branch": "codex/guidance-r001-review",
   "artifacts": [
-    "records/qa/README.md",
+    "docs/user-guide/project-basics.md",
+    "docs/user-guide/review-and-debug.md",
     "records/qa/question-log.md",
     "records/qa/decision-log.md",
-    "docs/user-guide/project-basics.md",
+    "records/qa/R001-guide-sources.json",
     "agents/guidance/WORKLOG.md",
     "reports/modules/guidance.md",
     "records/handoffs/guidance.json",
-    "agents/guidance/github-stage-comment.md"
+    "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
+    "agents/guidance/r001-stage-comment.md"
   ],
   "interfaces": {
-    "version": "gqa-v1（指导岗内部记录格式，非业务契约）",
+    "version": "gqa-v1（指导内部格式）；业务 v1 已冻结，本岗未改",
     "inputs": [
-      "总协调转交的用户原文或带来源摘要",
-      "责任岗提供的规格版本、命令和实际证据"
+      "R001 本人原话及出处",
+      "D001/D004 已采用决定",
+      "准确源码/函数契约/公开证据版本",
+      "capacity 生命周期 pending 来源"
     ],
     "outputs": [
-      "编号问答与回答状态",
-      "用户决定及真实操作记录",
-      "待确认事项和中文指导资料"
+      "简明审阅与调试解释",
+      "未执行 AI 示例和本人空白表",
+      "旧时点与当前状态分开的问答/决定",
+      "21 文件哈希/函数行号索引"
     ],
     "errors": [
-      "缺原文时标来源摘要",
-      "缺执行证据时标未执行或待补证",
-      "缺用户批准时不得标已批准"
+      "无来源不记人工经历",
+      "AI 修复不能算用户改码/识别",
+      "推荐和沉默不算待答问题选择"
     ],
     "handoff_to": [
-      "总协调",
+      "root",
       "documentation",
       "prompt_engineering"
     ],
-    "independent_testing_contact": "未联系且禁止直接联系",
-    "current_user_decision": "只读引用 records/decisions/D001-business-rules.md：用户已采用 business-rules v1；不是用户亲自改码，不是其他技术选项逐项批准"
+    "human_decisions": [
+      "D001",
+      "D004"
+    ],
+    "pending_question": "Q-capacity-lifecycle: awaiting_user_reply",
+    "independent_testing_contact": "未联系；未读私有用例或工作记录"
   },
   "commands_executed": [
     {
-      "command": "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g 'MEMORY.md'（检索项目规则和任务文件）",
-      "result": "确认项目根目录、规则与任务路径"
+      "command": "git rev-parse HEAD / branch / status / worktree list；cat AGENTS.md",
+      "result": "确认当前基点和责任边界"
     },
     {
-      "command": "cat AGENTS.md agents/guidance/TASK.md 及团队、作业来源、问答来源和原始提示词文件（分批读取）",
-      "result": "读取依据并核对责任范围"
+      "command": "git worktree add -b codex/guidance-r001-review .agent-worktrees/guidance-r001-review f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
+      "result": "独立 worktree/分支已建立"
     },
     {
-      "command": "date -Iseconds",
-      "result": "2026-10-23T11:40:08+08:00"
+      "command": "cat / sed / nl / rg 读取源码和公开文档",
+      "result": "核对真实函数 I/O；初始不存在路径探查返回2后按真实清单更正"
     },
     {
-      "command": "apply_patch",
-      "result": "创建 artifacts 所列初始化资料；验证结果追加于 WORKLOG.md"
+      "command": "apply_patch / Python 文本、JSON、哈希处理",
+      "result": "只写本岗 MD/JSON；一次重复目标补丁拒绝后更正，无产品导入或执行"
     },
     {
-      "command": "python3 内联脚本：JSON 解析、12 项必需字段、状态/提示词/七份产物/模块报告行数检查",
-      "result": "PASS；七份文件存在，交接结构有效，模块报告 51 行；不是业务测试或独立验收"
+      "command": "内联 Python 本地链接/文本签名/哈希核对；git diff --check",
+      "result": "33 本地链接、21 文件哈希与函数位置、R001 原文哈希、JSON v1、capacity pending 均核对；diff退出0；不是产品测试"
     },
     {
-      "command": "git branch --show-current; git diff --cached --name-only; git status --short（实际批次内以 && 连接）",
-      "result": "codex/team-bootstrap；索引为空；其他岗位文件未接管"
+      "command": "gh issue comment 10 --repo HJY147/t44-dev-trace --body-file agents/guidance/r001-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6364270074"
     },
     {
-      "command": "cat 本岗日志/报告/交接及 records/decisions/D001-business-rules.md",
-      "result": "仅核对既有交接与新增用户决定，保留初始化历史"
-    },
-    {
-      "command": "gh issue comment 10 --repo HJY147/t44-dev-trace --body-file agents/guidance/github-stage-comment.md",
-      "result": "已发表：https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6358357296"
+      "command": "gh pr comment 21 --repo HJY147/t44-dev-trace --body-file agents/guidance/r001-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6364271593"
     }
   ],
   "results": [
-    "初始化建立五项来源问答及后续规则；本轮追加 QA-006 / DEC-004 引用真实业务规则决定",
-    "分开记录用户选择、委托与 AI 建议；未编造用户操作或批准",
-    "初始化向总协调发状态消息；M0 已向 documentation 实际答复产物、状态、对接、日志与 prompt 位置",
-    "没有实现业务系统、运行部署或提交性能/验收通过结论",
-    "GitHub #10 阶段评论已发表；SHA 由实际 Git 提交和总协调台账登记，交接文件不自引用自身提交 SHA"
+    "本人反思已收并保留原拼写；研究正文/课程建议尚待本人",
+    "D001/D004 已采用，不重复索要批准，不冒记人工改码或逐项技术确认",
+    "当前已实现的 UI/API/持久化/消息/扫描/部署与历史初始化状态分开",
+    "指南绑定真实函数与 f103600 来源；MD 示例未创建脚本、不消耗 tmp 编号、不记用户操作",
+    "documentation 真实询问已据 R001/D001/D004 答复；无新增教师原话或学生私密值",
+    "Issue/PR 阶段评论已发表；提交推送结果由实际 Git 回执与 root 台账登记，不自引用本文件 SHA"
   ],
   "unverified": [
-    "早先问题仅有来源摘要，原始逐字消息及实际发生时间未取得",
-    "云服务器建议未重新核价、未采购、未部署、未压测",
-    "Supabase 当前能力和价格未在本轮重新核实",
-    "产品功能、集成、独立验收全部未运行"
+    "本人亲自审阅/改码/断点/独立识别幻觉尚无新证据",
+    "研究成文与课程建议尚未提供",
+    "capacity 生命周期用户尚未答复",
+    "VS Code/调试示例本轮未执行，未创建脚本",
+    "本岗未运行产品/测试/浏览器/渲染；公开 CI 仅对应其准确旧 SHA，未声称新版独立复测或性能通过"
   ],
   "questions": [
     {
-      "owner": "总协调",
-      "question": "初始化时模板/规则未批准的表述保留为历史；现 D001 已记录用户采用 business-rules v1。后续具体接口与字段冻结、模板版本仍由总协调提供"
+      "owner": "root",
+      "question": "简明指导建议由总协调转达；若本人实际审阅/调试，记录真实版本、动作和原始证据"
     },
     {
-      "owner": "总协调及部署岗",
-      "question": "待真实环境确定后提供运行前提与命令，指导岗据此补操作说明"
+      "owner": "用户（由root转交）",
+      "question": "capacity 生命周期问题保持 pending，不替选"
     },
     {
-      "owner": "总协调",
-      "question": "后续用户决策和亲自操作请转交真实来源，不用 AI 修改替代人工修改证据"
+      "owner": "用户本人",
+      "question": "继续本人研究正文和课程建议；AI 材料不代署名或独立收获"
+    },
+    {
+      "owner": "root",
+      "question": "若以后落盘运行练习，先分配 tmp 递减编号并选择窗口；本轮未申请编号"
     }
   ],
   "prompt_refs": [
@@ -128,7 +141,34 @@
         "agents/guidance/github-stage-comment.md"
       ],
       "counts_as_prompt_evolution": false
+    },
+    {
+      "id": "ROLE-guidance-R001-REVIEW-GUIDE-v1",
+      "task_file": "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
+      "dispatch_source": "root 实际派工与后续静默窗口/编号约束",
+      "status": "实际执行",
+      "rationale": "用当前源码事实解释接口与副作用，保留本人原话和未操作边界，不代填人工配额",
+      "artifacts": [
+        "docs/user-guide/project-basics.md",
+        "docs/user-guide/review-and-debug.md",
+        "records/qa/question-log.md",
+        "records/qa/decision-log.md",
+        "records/qa/R001-guide-sources.json",
+        "agents/guidance/WORKLOG.md",
+        "reports/modules/guidance.md",
+        "records/handoffs/guidance.json",
+        "agents/guidance/prompts/ROLE-guidance-R001-REVIEW-GUIDE-v1.md",
+        "agents/guidance/r001-stage-comment.md"
+      ],
+      "counts_as_prompt_evolution": false
     }
   ],
-  "updated_at": "2026-10-23T13:45:17+08:00"
+  "history": [
+    {
+      "stage": "M0 团队建立与设计准备 / GitHub 阶段归档",
+      "implementation_status": "未实现",
+      "note": "初始化/M0 时点；原记录见 e31f555c3b0d2da7eaef1e1a5229d54ba3dda7c6，本轮不当作当前产品状态"
+    }
+  ],
+  "updated_at": "2026-10-23T19:55:17+08:00"
 }

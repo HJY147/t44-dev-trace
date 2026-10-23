@@ -1,0 +1,284 @@
+{
+  "prompt_ref": "ROLE-documentation-M4-TESTS-AND-WORD-v1",
+  "recorded_at": "2026-10-23T20:07:05.158621+08:00",
+  "content_cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+  "documentation_link_ref": "746b5b8c37ed19fd80e8217d891d741294dd4618",
+  "product_ci_sha": "0448fecb68679978fe6b99483cf2f257821c5e44",
+  "author": "documentation AI",
+  "student_research_authored": false,
+  "marker": {
+    "successful_executions": 1,
+    "operation": "create",
+    "expected_outputs": 4,
+    "format": "docx"
+  },
+  "renderer": "/Users/yang/.codex/plugins/cache/openai-primary-runtime/documents/26.1017.22136/skills/documents/render_docx.py",
+  "python": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "soffice": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/soffice",
+  "fontconfig": {
+    "scope": "private FONTCONFIG_FILE only; no global font changes",
+    "family": "Songti SC",
+    "primary_documentation": "https://fontconfig.pages.freedesktop.org/fontconfig/fontconfig-user.html"
+  },
+  "dpi": 140,
+  "final_iteration": "qa-v4",
+  "total_pages": 28,
+  "total_original_covers_inspected": 4,
+  "original_private_covers_inspected": true,
+  "personal_values_in_public_record": false,
+  "visual_checks": [
+    "CJK glyphs and original cover field layout",
+    "black Title without paragraph border or blue rule",
+    "eight complete figures with captions",
+    "table row integrity and repeated headers",
+    "no overlap or clipped body text",
+    "page numbers and headers",
+    "date blank"
+  ],
+  "failed_iterations_preserved": [
+    {
+      "iteration": "qa",
+      "defect": "CJK glyphs missing because bundled LO did not discover Chinese fonts; inherited Title blue rule",
+      "fix": "private fontconfig; Songti SC for ascii/hAnsi/eastAsia; remove style paragraph borders"
+    },
+    {
+      "iteration": "qa-v2",
+      "defect": "table last word or row split and excessive grid line spacing before large figures",
+      "fix": "cantSplit per row; explicit body and cell line spacing; modest use-case figure height adjustment"
+    },
+    {
+      "iteration": "qa-v3",
+      "defect": "exact paragraph line spacing clipped inline figure height",
+      "fix": "image paragraph line spacing restored to automatic multiple1.0; final qa-v4 rerendered and all pages reopened"
+    }
+  ],
+  "files": [
+    {
+      "source": "reports/final/requirements-report.md",
+      "source_sha256": "41742abef39367da79bd4546d44b071ec17ce37be8c57f56bc766b90a9f0e294",
+      "output": "requirements-review.docx",
+      "output_sha256": "7c20757c0f2b4f54909360d9cb222308161c4b9852ea70efdc798aefce70d13e",
+      "figures": 4,
+      "cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+      "documentation_ref": "746b5b8c37ed19fd80e8217d891d741294dd4618",
+      "date_blank": true,
+      "page_count": 10,
+      "all_pages_opened_at_original_detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "cover_original_opened": true,
+      "visual_result": "pass for technical review material",
+      "page_png_sha256": [
+        {
+          "page": 1,
+          "sha256": "59d39044362b945fb39304e79d6cad402fe9e40e460228e0b1325ea5247e609f"
+        },
+        {
+          "page": 2,
+          "sha256": "120ebd5e90c0a78f920d13d427b66af87bba62e0a40f21fc9ccb69d84a98e517"
+        },
+        {
+          "page": 3,
+          "sha256": "ce7967099bf57111f22883bc2d47ff3df33c30724ebed506f3970b3eb56365eb"
+        },
+        {
+          "page": 4,
+          "sha256": "10c4c02ea9fc6b79ce14ed703fe88ba210d3851c0f7bcab1862862f0f3c5593e"
+        },
+        {
+          "page": 5,
+          "sha256": "a8daa3a5377e819f8d9a38a900358c24e712881734012a8c16f12dec5b365c9c"
+        },
+        {
+          "page": 6,
+          "sha256": "99e3cc93434929f9876af9041a0e042af5432243415ab1651c4137471c1413bd"
+        },
+        {
+          "page": 7,
+          "sha256": "2277956b925b93775a33a942881dc9413561863b56932e0c95c96cc1c089de4c"
+        },
+        {
+          "page": 8,
+          "sha256": "7b4aeac98c70aa2868852641ce880c460617928238ff258f4dd72544c2dfd5be"
+        },
+        {
+          "page": 9,
+          "sha256": "256cd860aa086258ca2b98a12bf394e692fc8b947ea5f75a6b737a2b4abd3e09"
+        },
+        {
+          "page": 10,
+          "sha256": "e1521b536d59cc6c391ddfc2fcfa482cf9ca43446d20dfba6bb4a8ab7af1998f"
+        }
+      ],
+      "qa_pdf_sha256": "1d57bd181a513217bf2e0f198c088e50787cfcd900e876314522874b1b34c7b2"
+    },
+    {
+      "source": "reports/final/design-report.md",
+      "source_sha256": "e76a559cb9a9c9addfe17958a522a1ed392a34a5e5e64c8cd7bc4b4a9640c63f",
+      "output": "design-review.docx",
+      "output_sha256": "cd3cc59b6f5875898d6395ef955e40e7ac10d4881cb56b72fd7b99dafe53db7f",
+      "figures": 4,
+      "cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+      "documentation_ref": "746b5b8c37ed19fd80e8217d891d741294dd4618",
+      "date_blank": true,
+      "page_count": 9,
+      "all_pages_opened_at_original_detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "cover_original_opened": true,
+      "visual_result": "pass for technical review material",
+      "page_png_sha256": [
+        {
+          "page": 1,
+          "sha256": "c1c076a67ad71f90a96367c2ae26031e49bfb3006d3a3ab3a426b61abfd2c4ab"
+        },
+        {
+          "page": 2,
+          "sha256": "44c93935efb99e19b7d6ed3a70e03404c03fcac70b9aa7ffb70b13463a8ef0ed"
+        },
+        {
+          "page": 3,
+          "sha256": "09a144ef3ed5794153bb8ce7e620d1ed8339353d3bcbe8082d076898a8d17f14"
+        },
+        {
+          "page": 4,
+          "sha256": "c4809855e69295e17ef02b070c2082b803235e4cf0bab248cd14384f47ad3089"
+        },
+        {
+          "page": 5,
+          "sha256": "f7491cd422c9a0dad2bdc6e426e079b1c00e3cbc1b954959d3339065bba3fd41"
+        },
+        {
+          "page": 6,
+          "sha256": "28edc6fa08cc6d73e070b99609a817683abcb27d0dfd78958a28a9a735fb4a44"
+        },
+        {
+          "page": 7,
+          "sha256": "f392de1a7457c62c5029f8d645d848e0fc85307f664d1e0a8436983649f6d5e3"
+        },
+        {
+          "page": 8,
+          "sha256": "2084d3edeae734ea4902542b4efc4476e7091bf0cefafef227c60c60a0267e28"
+        },
+        {
+          "page": 9,
+          "sha256": "ce8d36195e042391fe7850c2625e6fe1b0e732bb068ae8bb8444a12591bfd86b"
+        }
+      ],
+      "qa_pdf_sha256": "934606b10c90e18f205a0b0f11b23ee19bb4345ed68b971f8ef45fefd74d8a50"
+    },
+    {
+      "source": "reports/final/test-results-report.md",
+      "source_sha256": "e5f5bea994d70a55a1b4e668bf334d5c30675e8432ace53c2467d24e6b8dc7dd",
+      "output": "test-results-review.docx",
+      "output_sha256": "db5003a5f35af77784f30b63cb14f6692e5f244c65d9741e86800fe8d450e627",
+      "figures": 0,
+      "cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+      "documentation_ref": "746b5b8c37ed19fd80e8217d891d741294dd4618",
+      "date_blank": true,
+      "page_count": 6,
+      "all_pages_opened_at_original_detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "cover_original_opened": true,
+      "visual_result": "pass for technical review material",
+      "page_png_sha256": [
+        {
+          "page": 1,
+          "sha256": "e744777cf02b6587d3bc23da4da697aeae19fbcf8fac4ad46dbd0336c7769b8b"
+        },
+        {
+          "page": 2,
+          "sha256": "6fbaa654d86cabed9b20810886a5e2ccc44d7870618e40c1a9a2e0a85083de0f"
+        },
+        {
+          "page": 3,
+          "sha256": "9082174cdfcb5922ad47862a6101ac797709a7599481cd0f77dbff137c29d7ec"
+        },
+        {
+          "page": 4,
+          "sha256": "6c58b6a5a5e657faaea36eb49d2c4b8886912a274fde3ee85b0b6a429478d3bb"
+        },
+        {
+          "page": 5,
+          "sha256": "d576268d85745ee445ed0c7aa76e9378779d2520a8dfe60a95a15c6f6586d9be"
+        },
+        {
+          "page": 6,
+          "sha256": "8802175a3e6f14e64ec505f7ba26e6db4c636e99e47e7f0098666d59619e226e"
+        }
+      ],
+      "qa_pdf_sha256": "4cbafceb83d5142ab5272e60d82b0e1426f9b4c786db34c7fb344d46b04164d7"
+    },
+    {
+      "source": "reports/final/ai-spec-guide.md",
+      "source_sha256": "2e71b141154e198443d45cc2af8edc5c4b3a8aaf2f425f5fb2d995910fd1f832",
+      "output": "ai-spec-guide-review.docx",
+      "output_sha256": "5545c4adba0ed0f2e96b41d9d7c773fb4c766b95bee41accf8c260238b1b8c49",
+      "figures": 0,
+      "cutoff": "2e0481f346e8db228473f0f3cd66a7b1b053e5c0",
+      "documentation_ref": "746b5b8c37ed19fd80e8217d891d741294dd4618",
+      "date_blank": true,
+      "page_count": 3,
+      "all_pages_opened_at_original_detail": [
+        1,
+        2,
+        3
+      ],
+      "cover_original_opened": true,
+      "visual_result": "pass for technical review material",
+      "page_png_sha256": [
+        {
+          "page": 1,
+          "sha256": "fe9d0cf4c19ad7c5cb2f3ef6e149e4e7d708f64e08fe7e28efaae024cb943723"
+        },
+        {
+          "page": 2,
+          "sha256": "89e7b8f719bbd896d350f4ab65a5fecd62781b511c5c4f3d82ae5917166c94c4"
+        },
+        {
+          "page": 3,
+          "sha256": "0ce609e17d26adf7ac7353e7574deebb7ce925a891afe55c9a0b3d454bcf262b"
+        }
+      ],
+      "qa_pdf_sha256": "dbffcafbd657ef7f4a654e683f6f76330c8a81424ba9b80060fe31e278596a11"
+    }
+  ],
+  "status": "visual QA complete for four private technical review documents; software final acceptance not passed",
+  "private_output_root": ".submission-private/review-documents",
+  "private_QA_root": ".submission-private/review-documents/qa-v4",
+  "public_artifacts_include_docx_or_page_images": false,
+  "product_execution_during_documentation": false,
+  "exporter_sha256": "19a4b52ec6ea1675d216bb1eada9a90bfdb80fdbc2a0149267abd5e260359914",
+  "final_static_validation": {
+    "frozen_file_hashes_unchanged": 11,
+    "accurate_2e_source_file_hashes": 24,
+    "original_public_source_hashes": 14,
+    "public_personal_values_absent": true,
+    "private_docx_ignored_count": 4,
+    "diff_check": "passed",
+    "no_product_execution": true
+  }
+}

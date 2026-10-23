@@ -1,0 +1,127 @@
+$ .venv/bin/ruff check --config ../backend/backend/pyproject.toml backend/t44/scheduling backend/tests/scheduling
+B004 Using `hasattr(x, "__call__")` to test if x is callable is unreliable. Use `callable(x)` for consistent results.
+  --> backend/t44/scheduling/runtime.py:25:32
+   |
+23 |         not callable(scan_callback)
+24 |         or iscoroutinefunction(scan_callback)
+25 |         or iscoroutinefunction(getattr(scan_callback, "__call__", None))
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 |     ):
+27 |         raise TypeError("scan_callback must be a synchronous callable")
+   |
+help: Replace with `callable()`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/tests/scheduling/test_rules.py:1:1
+   |
+ 1 | / import json
+ 2 | | from datetime import UTC, datetime, timedelta, timezone
+ 3 | | from pathlib import Path
+ 4 | |
+ 5 | | import pytest
+ 6 | |
+ 7 | | from t44.scheduling import (
+ 8 | |     RuleConfigurationError,
+ 9 | |     TimestampError,
+10 | |     load_rules,
+11 | |     parse_utc_timestamp,
+12 | |     select_window,
+13 | | )
+   | |_^
+14 |
+15 |   RESOURCE = Path(__file__).parents[2] / "t44" / "resources" / "escalation-rules.json"
+   |
+help: Organize imports
+  |
+5 | import pytest
+  -
+6 | from t44.scheduling import (
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> backend/tests/scheduling/test_runtime.py:1:1
+   |
+ 1 | / import json
+ 2 | | import subprocess
+ 3 | | import sys
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from threading import Event, Thread
+ 6 | |
+ 7 | | import pytest
+ 8 | | from apscheduler.events import EVENT_JOB_ERROR
+ 9 | | from apscheduler.schedulers.base import STATE_STOPPED
+10 | |
+11 | | from t44.scheduling import build_scheduler, load_rules, run_scheduler
+12 | | from t44.scheduling.runtime import SCAN_JOB_ID
+   | |______________________________________________^
+help: Organize imports
+   |
+9  | from apscheduler.schedulers.base import STATE_STOPPED
+   -
+10 | from t44.scheduling import build_scheduler, load_rules, run_scheduler
+   |
+
+Found 3 errors.
+[*] 2 fixable with `--fix`.
+
+exit_code=1
+$ .venv/bin/ruff check --fix --config ../backend/backend/pyproject.toml backend/t44/scheduling backend/tests/scheduling
+Found 2 errors (2 fixed, 0 remaining).
+
+exit_code=0
+$ .venv/bin/ruff check --config ../backend/backend/pyproject.toml backend/t44/scheduling backend/tests/scheduling
+All checks passed!
+
+exit_code=0
+$ .venv/bin/python -m coverage run --branch --source=backend/t44/scheduling -m pytest backend/tests/scheduling -q
+........................................................................ [ 94%]
+....                                                                     [100%]
+76 passed in 0.38s
+
+exit_code=0
+$ .venv/bin/python -m coverage report -m
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+backend/t44/scheduling/__init__.py       3      0      0      0   100%
+backend/t44/scheduling/rules.py        103      0     40      0   100%
+backend/t44/scheduling/runtime.py       20      0      4      0   100%
+--------------------------------------------------------------------------------
+TOTAL                                  126      0     44      0   100%
+
+exit_code=0
+$ .venv/bin/python -m coverage json -o agents/scheduler/foundation-coverage.json
+Wrote JSON report to agents/scheduler/foundation-coverage.json
+
+exit_code=0
+
+Reason for final rerun: code review found that calling run_scheduler on an already-running scheduler could shut down its owner in finally. Added an early ownership guard and one real-lifecycle regression test; no other production changes after this run.
+$ .venv/bin/ruff format --config ../backend/backend/pyproject.toml backend/t44/scheduling backend/tests/scheduling
+6 files left unchanged
+
+exit_code=0
+$ .venv/bin/ruff check --config ../backend/backend/pyproject.toml backend/t44/scheduling backend/tests/scheduling
+All checks passed!
+
+exit_code=0
+$ .venv/bin/python -m coverage run --branch --source=backend/t44/scheduling -m pytest backend/tests/scheduling -q
+........................................................................ [ 93%]
+.....                                                                    [100%]
+77 passed in 0.35s
+
+exit_code=0
+$ .venv/bin/python -m coverage report -m
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+backend/t44/scheduling/__init__.py       3      0      0      0   100%
+backend/t44/scheduling/rules.py        103      0     40      0   100%
+backend/t44/scheduling/runtime.py       23      0      6      0   100%
+--------------------------------------------------------------------------------
+TOTAL                                  129      0     46      0   100%
+
+exit_code=0
+$ .venv/bin/python -m coverage json -o agents/scheduler/foundation-coverage.json
+Wrote JSON report to agents/scheduler/foundation-coverage.json
+
+exit_code=0
+
+Reproduction context: subprocess validation commands above used PYTHONPATH=backend. Python3.12.10; APScheduler3.11.3; read-only sibling lock SHA256=3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30.

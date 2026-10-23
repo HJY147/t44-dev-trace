@@ -1,54 +1,54 @@
-# 提示词工程岗位阶段报告
+# 提示词工程岗位 M4 真实过程报告
 
-## 任务与依据
+## 任务与边界
 
-- 岗位：prompt_engineering；阶段：团队建立与 GitHub 协作设计准备。
-- 依据：根 AGENTS、岗位 TASK、团队与 GitHub 工作流，以及 U001/U002/U003 原文。
-- 职责：忠实优化、真实提示词留痕、亮点候选整理；当前不实现产品。
-- 对应任务书 AC-09 与第 12 条，记录规范不代表最终数量指标已达标。
+- 实际派工 ROLE-prompt_engineering-M4-REAL-PROCESS-v1；actor 提示词岗AI。
+- 已核根AGENTS、本岗TASK与既有归属规范，只做公开文档/Git/只读取证。
+- 独立树 `.agent-worktrees/prompt-engineering-m4-real-process`，分支同名codex前缀。
+- 公开基线32f58132cb670c9f4c0b2bb22e4b574ac6deb4b8，DB705e增量单独绑定。
+- 不运行产品/负载/浏览器/构建/渲染，不联系tester，不读其私有证据。
 
-## 实际产物与状态
+## 实际产物
 
-- `records/prompts/U001-optimized.md`、`U001-changes.md`：U001-O1，proposed。
-- `records/prompts/U002-optimized.md`、`U002-changes.md`：U002-O1，proposed，关联 U003 公开补充。
-- `records/prompts/ROLE-prompt_engineering-BOOTSTRAP-v1.md`：初始化实际派工正文。
-- `records/prompts/ROLE-prompt_engineering-GITHUB-v1.md`：本轮实际派工正文。
-- `docs/prompting/prompt-recording.md`：台账与真实迭代规范 v1。
-- `docs/prompting/highlight-candidates.md`：U001/U002 用户原创亮点候选与证据清单。
-- 本岗 WORKLOG、交接 JSON 和静态校验证据均单独留存。
-- 长期责任目录：`records/prompts/`、`docs/prompting/`；产品实现状态仍为未实现。
+- `docs/prompting/M4-real-process-evidence.md`：本人输入、12条真实AI过程映射、演进族与缺口。
+- `docs/prompting/M4-source-inquiries.md`：六岗实问，BE/DB/FE/reviewer已回，docs/guidance pending。
+- `docs/prompting/M4-source-manifest.json`：49处公开对象/hash及CI、JUnit、独立报告限定摘要。
+- `records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md`：实际派工原文，used。
+- `records/prompts/PROPOSED-human-skeleton-review-v1.md`：据R001主题提出的可复用建议，未使用。
+- 本岗WORKLOG/report/handoff/GitHub M4评论正文及亮点候选增量同步。
+- 原用户原文、D005/D006、他岗文件、共享ledger均不由本岗修改。
 
-## 输入输出及对接
+## 归属与需求事实
 
-- 输入：用户原文、实际派工、任务与规则、上下文版本、产物和作者证据。
-- 输出：优化建议、变更说明、真实 prompt 引用、亮点候选及待补证据。
-- 总协调登记共享 ledger；本岗未改共享台账、原文、共享规范和其他岗位文件。
-- 文档岗后续可索取原文、说明与实际证据；尚无证据的 Issue/PR/commit 不补造。
-- 版本：prompt-recording-v1 / U001-O1 / U002-O1；不冻结业务接口。
-- 缺正文、缺使用证据或作者不明时标为待补，不计作已使用或人工改码。
-- 未联系独立测试；只引用总协调核对后可公开的冻结结果。
+- R001本人反思已收到，hash与provenance一致；不再称个人观点完全未提供。
+- R001不证明本人已写骨架/断点/改码，研究正文仍由本人写，本岗仅事实与提纲。
+- U015/D005与U016/D006是本人选择；旧pending和后续采用分别记录。
+- capacity保护1–5、成员保护1–5+7；root提案错误由reviewer AI纠正，不记学生识别。
+- 5fb/02/bbc三阶段技术设计准入不等于产品实现、冻结、并发验证或总验收。
+- U001/U002原创归人、真实Issue/PR/commit可查；优化稿仍proposed。
 
-## 设计与取舍
+## 验证与版本边界
 
-- 优化稿与实际派工分开，岗位分叉不能用于凑六版演进。
-- U001/U002 原创归属用户，AI 整理不记为用户亲笔修改或人工代码修改。
-- U003 明确公开开源；许可、分支和索引操作按实际项目决定分别留痕。
-- 亮点描述设计意图；质量、效率、缺陷改善须实际数据支持。
-- 审核与独立测试职责分开，同账号岗位分工不称物理隔离或多人审批。
+- 只读明确发布的四个独立报告文件，不跟随其私有路径或截图。
+- 原e8独立整体未过：38成功路径通过，900为340/183/328/49，183含歧义不是183bug。
+- UI补充3通过/1失败/1阻塞，原900不改；三批400VU600秒P95失败，稳态零失败/吞吐达标。
+- BE开发55HTTP/SQLite、479远端362/0skip/88.56%；985专项总5=原1+新增4。
+- FE f654远端27/92.79%，02ec开发真80HTTP；它们不是修复后独立复测。
+- 955 hook错误/非JSON502/Ruff误配原失败保留，代理仍是假设，无性能样本或提效结论。
+- M4公开QA为文档AI四批迭代后28页；私密Word/封面/截图本岗未读，学生正文未代写。
 
-## 执行与验证
+## 输入输出与交接
 
-- 已读取新增原文、项目工作流并创建本岗资料；命令与摘要见 WORKLOG。
-- 初始化文档静态检查 14 项通过；证据为 bootstrap-validation JSON。
-- GitHub 追加轮资料静态检查另存 `records/prompts/prompt_engineering-github-validation.json`。
-- 当前 M0 已分配 Issue #11、`codex/team-bootstrap` 与独占索引时段；历史未分配记录保留。
-- M0 实际问答、评论正文及派工已归档；仅提交本岗产物，不 push、合并或发布审核通过。
-- 业务功能、模块自测、集成验证与独立验收均未运行。
+- 输入为用户原文、已发布责任岗实际prompt/日志/报告/CI和四件独立最终资料。
+- 输出为可引用事实、归属、演进族和真实缺口，供总协调及文档岗使用。
+- 49来源轻量hash/链接/JSON/XML核对足够，不创建形式化测试，不把资料核对称产品验证。
+- 本轮问取回执保留首次未提交→后来DB705e发布的变化；其他未回不代填。
+- 仅本岗树显式暂存，维护Issue11真实交流，阶段commit/push交完整SHA。
 
-## 风险与后续
+## 未达标与限制
 
-- U001/U002 优化稿尚未实际派工；不能计成已使用版本。
-- 六版演进、十二条人工修改、三条幻觉、五处最终代码映射仍待真实发生。
-- 实际跨岗 Issue/PR、阶段 commit、审核及效果证据需后续补齐。
-- 当前实际 prompt 为 ROLE-prompt_engineering-M0-COMMIT-v1，关联岗位 TASK、Issue #11 和派工快照。
-- 本次提交结果由返回的完整 SHA 和文档岗收集记录核对；不在提交内预填自身 SHA。
+- 单族六版尚未核实，不把角色分工、工具重试、Word批次或被审SHA凑数。
+- 本轮学生亲改12/亲自识别3/人工校正映射5的可证实完成数均0，AI映射不充抵。
+- 已有本人观点和选择，不据此推定本人研究成稿或课程建议已完成。
+- v1.1后续实现/冻结/测试、最新完整审核/独立复测/性能/规模仍需各自证据。
+- implementation_status未实现仅指本岗未实现产品代码，非全项目没有代码。

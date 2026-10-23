@@ -1,0 +1,16 @@
+stateDiagram-v2
+  direction TB
+  state "待受理" as Pending
+  state "开发中" as Developing
+  state "待评审" as Review
+  state "待上线" as Release
+  state "已交付" as Delivered
+  state "已回滚" as RolledBack
+  [*] --> Pending
+  Pending --> Developing: 开始
+  Developing --> Review: 提交评审
+  Review --> Release: 评审通过
+  Review --> Developing: 评审退回
+  Release --> Delivered: 经理交付
+  Delivered --> RolledBack: 经理回滚
+  RolledBack --> Developing: 重新排期返工

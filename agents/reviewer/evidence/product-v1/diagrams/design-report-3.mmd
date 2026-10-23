@@ -1,0 +1,28 @@
+sequenceDiagram
+  actor User as 项目参与者
+  participant API as api endpoint
+  participant RT as Runtime.execute
+  participant Biz as Business及Workflow
+  participant DB as MySQL经UoW和RowsGateway
+  User->>API: action expected_version 幂等键 证据
+  API->>RT: 结构化Call及validate
+  RT->>DB: authorize与短事务claim
+  alt 同键同内容已完成
+    DB-->>RT: 历史data和response_request_id
+    RT-->>API: 重放 新meta
+  else 当前owner继续执行
+    RT->>DB: 事务内重核会话 幂等锁 项目/成员/任务锁
+    RT->>Biz: dispatch与domain守卫
+    alt 合法且版本匹配
+      Biz->>DB: CAS业务写
+      RT->>DB: success审计 outbox COMPLETE快照
+      DB-->>RT: 同一次COMMIT
+      RT-->>API: 当前成功结果
+    else 业务拒绝
+      DB-->>RT: 主事务ROLLBACK并释放Session
+      RT->>DB: 独立拒绝事务 审计及错误快照
+      DB-->>RT: 独立COMMIT或审计失败
+      RT-->>API: 约定错误或503且不谎称已审计
+    end
+  end
+  API-->>User: Envelope与安全错误

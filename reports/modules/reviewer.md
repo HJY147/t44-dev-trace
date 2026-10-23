@@ -44,3 +44,37 @@
 - 已实际通过OpenAPI规范/字典和FK静态核对；Schema例值核对复现两项输入输出边界。没有HTTP、DDL、产品测试、覆盖率或性能结果；缺少后续运行验证本身不是本轮设计缺陷。
 - 角色标识Issue摘要、PR COMMENT和该SHA的 `reviewer/stage=failure` 已实际发布，回执/完整命令在 `agents/reviewer/evidence/design-gate-717cd65.json`；不自我APPROVE、不发success。实际保护拒合并实验由总协调另行执行，本报告不预先宣称成功。
 - 设计实际派工与本轮独占索引归档授权原文分别存于 `agents/reviewer/dispatches/ROLE-reviewer-DESIGN-v1.txt` 和 `ROLE-reviewer-DESIGN-ARCHIVE-v1.txt`。归档只提交本岗证据，不改规格、不push/checkout/merge。报告仍绑定717cd65，不嵌入本次证据提交SHA；提交结果通过工具和协调交接提供。
+
+## 四基础代码审核归档（2026-10-23）
+
+本岗在独立`codex/review-foundations`工作树完成PR14前端f261cbf、PR15部署72e3275、PR16纯领域0bb4549、PR17持久基础4ae865b的已提交内容审核；完整SHA及60文件哈希见`reports/reviews/foundations-v1.md`和本岗evidence/foundations-v1。四者在授权基础范围未发现阻断；106领域、18持久、5组件及11运维＋6门禁守卫真实复验通过，前端typecheck/build及离线冻结锁校验通过。不是独立验收或整产品成功。
+
+PR15远端四产品门禁仍failure；本机无Docker，MySQL/项目DDL/HTTP/MQ/调度、真实备份恢复、统一依赖整合及全源覆盖率未验证。四PR已发绑定SHA的COMMENT并读回，不重复发，不APPROVE、不发reviewer/stage success、不合并。owner代码和root索引未动。仅提交并push本岗报告、原始派工、日志、证据、评论正文及handoff；实际归档SHA由命令回执交接。
+
+时间补记：初查与评论准备时Q002 pending，随后总协调明确通知用户“采用推荐方案，继续开发”，D004/U006与v1冻结清单在其所报ae60dc3。该最新事实不改原四个被审版本或追溯产品通过；本轮未重审metadata、APPLICATION或PR19。实际prompt为ROLE-reviewer-FOUNDATIONS-v1，追加派工原文在本岗dispatches，未虚构提示词演进或用户改码。
+
+## 完整产品审核v1 checkpoint
+
+精确e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef全产品/M2审核进行中，非放行。959组件复现确认C-P1嵌套Iteration消费错误、C-P2幂等历史状态误报当前；两正确行为断言失败。原脚本复算5944有效行，超上限844。首次报告及真实输出在reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef-checkpoint.md和本岗evidence/product-v1；原owner修复，新SHA复审。基础历史09dd3cf已独立push，不以其范围结论放行完整产品。
+
+## 完整产品e01首次审核结论
+
+完整报告reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef.md：不通过，C-P1 Iteration嵌套消费、C-P2重放状态误报、C-P3原口径5944超限844、C-P4结构检查只比名漏语义。959/957正确行为断言真实失败；冻结11hash和公开CI/Docker原件核对、7图实际渲染有本岗证据，不是独立验收/正式性能。跨层减量给owner保守270–400行候选且承认仍不足，未私改产品。旧基础/首checkpoint保留，后续新SHA差异复审。
+
+## C-P4限定关闭与规模审计v2
+
+精确7c27a5f62cc23db8545a28852ed01322a7e172b4，原957断言原样复验通过，DB公开live四类变异拒绝/恢复及18 owner用例来源hash一致，原C-P4限定技术关闭。原口径5886超上限786，仍failure/not approved；A/B/C/E方案预计净208–377且仍不足，不把D新AST依赖POC计收益，不修改口径或产品。完整八段十项报告catalog-capacity-v2-7c27a5f62cc23db8545a28852ed01322a7e172b4.md；本轮仅复验957/规模与公开原件核对，无实库写入/性能/全产品新验收，IAT修复另审。
+
+## 容量生命周期v1.1设计限定审查
+
+精确5fb1d7e0b180e754aba635487ebb0fa341e4f957，32输入与git show一致，11冻结hash及历史保持。U015真实采用；本岗AI发现root提案把现有成员1–5+7保护错说为1–5，root接受纠正并将capacity的7具体边界另问用户待答。除该边界外给全量owner检查、assignment项目锁、rework当前人力、错误与1.1版本同步的限定技术准入建议；不能正式冻结或放行依赖7的实现。报告capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md及静态JSON/AST证据，不含新产品运行结果；无产品修改/独立接触/status success/APPROVE/合并。最终源与测试另审。
+
+最新补答收口：02ecdea9ced90cd46cbca898f123d6409f45ba80 的U016/D006已真实采用capacity状态7可移出、返工前补回，原成员1–5+7保护不变。新RFC已更正AI提案错误并写具体版本同步。35份提交输入重hash、11原freeze不变，源码未改。限定设计可准入实施，无此边界待答；5fb首次报告保留，最终源/契约冻结/产品测试与gate另审。
+
+终稿限定差异：bbc4be681f19a386fbca40baf97a63ab902b3f89仅RFC第33行精确安全竞争语义：移除拟接手人冲突一方拒绝；先转派再移除原负责人允许依次成功。hash a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98；该RFC可准入实施，02全文论证/5fb历史均保留；无本轮设计阻断，产品源码/真实回归/最终gate另审。
+
+## 1.1冻结前轻量核对
+
+固定9aeb40c48c35139e29a5e997253d606e5c96139a；18输入绑定、129标准库结构检查通过（31/38/130、DDL18/226、两副本、Meta/info1.1及原v1历史摘要）。人工语义发现两份assignment description把原developer错误与capacity错误合并，F-C1冻结前阻断，root派BE改说明。没有服务/测试/DB或新产品验证；manifest当时未生成，后续精确SHA仅差异复核，原报告保留。
+
+59daa最终限定复核：F-C1仅description由owner精修，先OWNER_NOT_PROJECT_DEVELOPER后CAPACITY，权威/运行hash均a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f。129轻量结构项再次通过，31/38/130、18/226、旧v1历史保持；可生成新manifest，无本轮剩余语义阻断。manifest在该SHA尚不存在，产品源码/回归另审；仅只读owner1130设计脚本before/after原件并分清执行者，无本岗服务/DB/测试/产品gate。

@@ -1,59 +1,211 @@
 {
   "role": "frontend",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "1.1契约fixture/README同步完成",
+  "implementation_status": "fixture响应元版本跟随权威1.1.0、README同步；982七项/类型通过；1.1真实业务及容量行为未在本轮验证",
   "artifacts": [
     {
+      "path": "frontend/",
+      "status": "实际业务代码、pnpm锁与测试"
+    },
+    {
       "path": "agents/frontend/WORKLOG.md",
-      "status": "本岗初始化日志"
+      "status": "保留历史并追加真实应用阶段"
     },
     {
       "path": "reports/modules/frontend.md",
-      "status": "未冻结的页面责任及接口需求草案"
+      "status": "当前模块报告"
     },
     {
       "path": "records/handoffs/frontend.json",
-      "status": "本岗结构化交接单"
+      "status": "当前交接"
     },
     {
-      "path": "agents/frontend/github-stage-comment.md",
-      "status": "已发布的本岗阶段说明正文",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358078032"
+      "path": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "status": "实际派工与后续steering"
     },
     {
-      "path": "agents/frontend/github-backend-interface-question.md",
-      "status": "已发布、待后端确认的接口问询正文",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122"
+      "path": "agents/frontend/application-interface.md",
+      "status": "真实后端问询正文"
+    },
+    {
+      "path": "agents/frontend/application-test-coverage-final2.log",
+      "status": "21测试与覆盖率原始结果"
+    },
+    {
+      "path": "agents/frontend/application-coverage-summary.json",
+      "status": "全源覆盖率摘要"
+    },
+    {
+      "path": "agents/frontend/application-coverage-manifest.json",
+      "status": "19文件完整分母"
+    },
+    {
+      "path": "agents/frontend/application-build-final2.log",
+      "status": "真实类型检查与构建"
+    },
+    {
+      "path": "agents/frontend/application-frozen-install.log",
+      "status": "冻结锁安装"
+    },
+    {
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "用户统一迁入tmp；真实七态脚本，历史结果保留agents"
+    },
+    {
+      "path": "agents/frontend/application-real-browser-result.json",
+      "status": "282条真实HTTP与错误结果"
+    },
+    {
+      "path": "agents/frontend/application-screenshots/",
+      "status": "1440/390真实截图"
+    },
+    {
+      "path": "tmp/frontend/981_fixtures.ts",
+      "status": "冻结Iteration嵌套结构；原错误结构在Git历史保留"
+    },
+    {
+      "path": "tmp/frontend/982_client.test.ts",
+      "status": "冻结plan预填与schema回归"
+    },
+    {
+      "path": "tmp/frontend/983_application.test.ts",
+      "status": "实际组件交互及历史重放回归"
+    },
+    {
+      "path": "agents/frontend/integration-ui-regression-before.log",
+      "status": "修复前真实3失败21通过；对应raw gzip留存"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "status": "实际派工和正式缺陷转交原文"
+    },
+    {
+      "path": "agents/frontend/integration-browser/",
+      "status": "94HTTP布局、真实迭代与失败记录、前后截图"
+    },
+    {
+      "path": "agents/frontend/integration-full/",
+      "status": "完整后端七态282HTTP新证据，不覆盖历史"
+    },
+    {
+      "path": "agents/frontend/integration-css-removal.json",
+      "status": "83规则删除依据与哈希"
+    },
+    {
+      "path": "tmp/frontend/958_integration-browser.mjs",
+      "status": "根分配编号；真实模块联调脚本"
+    },
+    {
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "迁移后的完整七态脚本，支持新证据输出目录"
+    },
+    {
+      "path": "agents/frontend/integration-notifications/",
+      "status": "真实read/handling及三次权威GET业务断言通过，随后即时resize失败保留"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-final/",
+      "status": "只读首轮多个drawer严格选择器失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-settled/",
+      "status": "稳定视口无溢出、折叠details文本断言失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-complete/",
+      "status": "最终114HTTP只读全成功，手机已处理截图，零浏览器/console错误"
+    },
+    {
+      "path": "agents/frontend/integration-browser/escalation-preparation.json",
+      "status": "仅新task20创建event173的真实202公共响应，无Token"
+    },
+    {
+      "path": "agents/frontend/iat-ui-public-report-verification.json",
+      "status": "授权报告哈希和e8对象校验"
+    },
+    {
+      "path": "agents/frontend/iat-ui-deeplink-boundary.md",
+      "status": "实际未支持资源深链，无发明参数"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-before.log",
+      "status": "修前3失败；原始gzip保留"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-targeted-after.log",
+      "status": "修后3项针对性通过，非全套"
+    },
+    {
+      "path": "agents/frontend/iat-ui-ci-f654/",
+      "status": "原CI ZIP摘要校验、metadata、27测试/全19源码覆盖和类型构建log"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-browser/",
+      "status": "新真实fixture、升级响应、80HTTP双计数/任务不变/错误恢复与1440/390截图"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-runtime.json",
+      "status": "新dev SHA/端口/库/公开worker receipt哈希，无凭据"
+    },
+    {
+      "path": "agents/frontend/contract-v11-validation.json",
+      "status": "权威hash/版本/shape与最小必要检查结果"
+    },
+    {
+      "path": "agents/frontend/contract-v11-fixture-before.log",
+      "status": "旧硬编码与新权威不一致的真实失败，raw gzip保留"
+    },
+    {
+      "path": "agents/frontend/contract-v11-fixture-after.log",
+      "status": "7/7客户端测试通过"
+    },
+    {
+      "path": "agents/frontend/contract-v11-typecheck.log",
+      "status": "类型检查通过"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md",
+      "status": "实际派工及执行对应"
     }
   ],
   "interfaces": [
     {
       "peer": "backend",
-      "status": "未冻结，尚无双方确认",
+      "status": "正式1.1 freeze189dc4a，authority a77a5cd6已由前端直接import；本轮仅fixture/docs同步，1.1真实服务尚未本岗验证",
       "inputs": [
-        "鉴权及项目上下文、筛选分页",
-        "task_id、expected_version、幂等键及目标操作",
-        "阻塞原因、责任环节、解除依据及证据引用"
+        "Bearer内存身份",
+        "冻结operationId、schema和版本/证据",
+        "同body同key恢复"
       ],
       "outputs": [
-        "权威业务状态、版本、操作结果及留痕标识",
-        "稳定错误码和字段错误",
-        "排期差异、评审及上线决策记录"
+        "data/meta及Error",
+        "403/409刷新、422字段提示",
+        "最新权威任务与审计"
       ],
-      "boundary": "后端负责权限、状态机、并发拒绝、事务与拒绝留痕；前端只做展示、输入校验和调用。403 停止操作；409 保留草稿并刷新权威状态。"
+      "evidence": "agents/frontend/iat-ui-counts-runtime.json / iat-ui-counts-browser/counts-result.json"
     },
     {
       "peer": "messaging",
-      "status": "未冻结，尚无双方确认",
+      "status": "以下为1.0历史：event179根真实故障worker生成通知5/6；读处理/双总计开发验证通过，不能充作1.1验收",
       "inputs": [
-        "项目及分页筛选",
-        "通知 ID 与已读/处理动作"
+        "个人通知分页、已读、处理说明与证据"
       ],
       "outputs": [
-        "通知列表、级别、状态、时间、降级标记",
-        "已读/处理权威结果及错误"
+        "API权威已读/处理状态"
       ],
-      "boundary": "消息岗拥有通知数据与契约；前端拥有消息页面；无前端 RabbitMQ 连接或延期升级定时任务。"
+      "boundary": "不SQL伪造/不重置旧项；三次task21 state1/version2；非Rabbit成功链，worker由根执行。"
+    },
+    {
+      "peer": "deployment",
+      "status": "沿用dist及同源API；实际dev代理18080已联调",
+      "inputs": [
+        "frontend/pnpm-lock.yaml",
+        "pnpm build"
+      ],
+      "outputs": [
+        "frontend/dist"
+      ],
+      "boundary": "未改部署；生产路径由Nginx保留，dev代理仅本地"
     }
   ],
   "commands_executed": [
@@ -96,27 +248,114 @@
     {
       "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/github-backend-interface-question.md",
       "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122"
+    },
+    {
+      "command": "absolute Node + pnpm add exact Vue/ElementPlus/router and build/test tooling; pin typescript@5.9.3",
+      "result": "依赖真实安装并生成frontend/pnpm-lock.yaml；初次TS7兼容失败如实记录"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm typecheck; pnpm test; pnpm build (separate subprocesses with Node bin in PATH)",
+      "result": "全部exit0；5测试通过；dist生成；完整输出agents/frontend/foundation-validation.log"
+    },
+    {
+      "command": "CUA getState",
+      "result": "Mac锁定，无可用浏览器；未继续重复锁屏操作"
+    },
+    {
+      "command": "pnpm preview --port 4173 --strictPort; Node agents/frontend/headless-foundation-check.mjs (PLAYWRIGHT_MODULE=runtime playwright)",
+      "result": "根据后续明确建议使用预装Chrome headless；1440/390检查通过；截图与JSON保存；无业务请求"
+    },
+    {
+      "command": "gh issue comment 2 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358871067"
+    },
+    {
+      "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-backend-question.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358873565"
+    },
+    {
+      "command": "git diff --cached --check; git commit with role/prompt/issue footer",
+      "result": "各步骤顺序执行；实现提交 5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；30文件仅本岗范围"
+    },
+    {
+      "command": "git push -u origin codex/frontend-app",
+      "result": "成功推送新分支并建立upstream"
+    },
+    {
+      "command": "GitHub create_pull_request draft=true base=codex/team-bootstrap head=codex/frontend-app; gh pr list; attach_artifact; gh pr diff 14 --name-only",
+      "result": "草稿PR https://github.com/HJY147/t44-dev-trace/pull/14；isDraft=true；创建HEAD=5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；已attach；diff仅本岗30文件"
+    },
+    {
+      "command": "stop temporary Vite preview with Ctrl-C",
+      "result": "截图完成后预期exit130，不是构建失败"
+    },
+    {
+      "command": "git merge --no-edit 6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+      "result": "干净工作树安全fast-forward"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm build; pnpm test:coverage (separate subprocesses)",
+      "result": "安装/类型/构建成功；21测试通过；行92.21/分支86.13/函数83.85，19源文件全分母"
+    },
+    {
+      "command": "Node application-real-browser.mjs with PLAYWRIGHT_MODULE and DEMO_CREDENTIALS env",
+      "result": "真实浏览器→18080→MySQL，282 HTTP，七态+返工；pageerror0，33资源console错误为403/503；不输出凭据"
+    },
+    {
+      "command": "pnpm test (new regression before fix)",
+      "result": "24项3失败21通过，原始失败保留"
+    },
+    {
+      "command": "pnpm test:coverage; pnpm build (separate processes)",
+      "result": "24/24，完整src行92.19%、分支86.76%、函数83.78%，类型/构建通过"
+    },
+    {
+      "command": "958 PHASE=prepare; PHASE=escalate (separate runs)",
+      "result": "真UI创建task20/version1/schedule1；内部202创建event173；NodeResponse.ok误用导致记录后脚本exit1，未重试写，失败保留"
+    },
+    {
+      "command": "958 PHASE=final NOTIFICATION_TASK_ID=20",
+      "result": "通知3真实read/handling200，三次权威task state1/version2；随后即时resize断言失败，原证据保留"
+    },
+    {
+      "command": "958 PHASE=resume NOTIFICATION_TASK_ID=20, new output directory",
+      "result": "114HTTP全成功，pageerror/console0，稳定390无溢出、详情接收人/规则/审计通过；不重放写"
+    },
+    {
+      "command": "stop own Vite5173 via Ctrl-C",
+      "result": "预期exit130；Chrome均关闭，通知根可开始性能静默窗口"
+    },
+    {
+      "command": "gh run list --commit f654...; gh run view39948047446; download artifact12498618830 ZIP",
+      "result": "准确headSHA和success、原ZIPdigest匹配、27/27零skip、类型构建、19全源码分母92.79%；无重复本地全套"
+    },
+    {
+      "command": "958 counts-prepare/escalate/counts using new output directory",
+      "result": "真实task21/event179/notification5，80HTTP且exit0；计数1/1→1/0→0/0、task不变、scope/错误恢复通过"
+    },
+    {
+      "command": "stop own Vite5173 Ctrl-C",
+      "result": "exit130预期停止，Chrome关闭，未碰tester服务"
     }
   ],
   "results": [
-    "完成页面及接口需求草案，全部标明未冻结",
-    "仅写入允许的本岗三份文件",
-    "文档校验不是功能测试或独立验收",
-    "文档岗真实问取及回答已记录",
-    "发布本岗阶段说明和后端接口问题；尚无接口确认结果"
+    "当前authority a77a5cd6 / info.version与Meta.const均1.1.0，38ops31paths130schemas核验",
+    "981只改meta.contract_version为authority.info.version；982先1失败后7通过，typecheck通过；业务模板version1未改",
+    "README明确当前1.1、父链由root发布；旧f65427CI/92.79及02ec80HTTP保留为1.0历史",
+    "本轮frontend/src无改；无新业务/Chrome/服务/API/全套/coverage/build，不声称1.1容量或独立复测通过"
   ],
   "unverified": [
-    "前端项目及全部页面未实现",
-    "API 路径、字段、状态编码、错误码及权限矩阵未冻结",
-    "无后端/消息岗双方确认及联调",
-    "模块自测、集成验证、独立验收均未运行"
+    "覆盖率不代表断言完备；main/router仍0计入分母",
+    "未做正式400并发/性能、全面安全或独立验收",
+    "手机为headless viewport，非真机",
+    "生产构建有约823kB chunk体积提示",
+    "原写运行在业务断言之后的即时resize检查失败；最终只读复查通过，二者分开留证",
+    "本岗未执行Rabbit成功链；根故障worker生成的真实fallback通知已在UI验证",
+    "本轮仅fixture/docs同步：1.1完整前端全套/覆盖/构建/真实API与容量规则未本岗执行；旧1.0证据不替代"
   ],
   "questions": [
-    "请后端确认状态机操作模型、expected_version/幂等键和 403/409/参数错误契约。",
-    "请后端/数据库确认项目权限矩阵、枚举、分页和时间字段。",
-    "请消息岗确认查询、已读/处理的归属、去重、降级标记及刷新方式。",
-    "请总协调冻结三类接口和页面字段后再安排前端编码。",
-    "后端 #3 已问询：相同幂等键和相同请求携带旧 expected_version 重试时，回放原结果与 409 校验顺序如何约定？尚未确认。"
+    "1.1正式freeze189dc4a已收到；后端新守卫刚准入，本轮不宣称容量行为或真实1.1通过。",
+    "资源深链仍无已实施参数约定，边界保持。"
   ],
   "prompt_refs": [
     {
@@ -142,7 +381,72 @@
         "agents/frontend/github-backend-interface-question.md"
       ],
       "improvement_reason": "记录本岗实际资料回答、评论证据及隔离提交边界；不新增产品设计，不将未冻结草案记为已实现。"
+    },
+    {
+      "id": "ROLE-frontend-FOUNDATION-v1",
+      "task": "agents/frontend/TASK.md（初始化限制由本轮明确派工覆盖）",
+      "actual_dispatch": "records/prompts/ROLE-frontend-FOUNDATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "将仅设计阶段推进为独立可构建工程，冻结前不联调，记录真实失败/修复/验证而不虚报业务与覆盖率。"
+    },
+    {
+      "id": "ROLE-frontend-APPLICATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/application-*",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "从骨架推进真实契约业务，并明确模块夹具/真MySQL联调/独立验收边界；凭据不进入产物。"
+    },
+    {
+      "id": "ROLE-frontend-INTEGRATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "tmp/frontend/",
+        "agents/frontend/integration-*"
+      ],
+      "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
+    },
+    {
+      "id": "ROLE-frontend-INDEPENDENT-UI-FIX-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INDEPENDENT-UI-FIX-v1.md",
+      "artifacts": [
+        "frontend/src/views/WorkspaceView.vue",
+        "tmp/frontend/983_application.test.ts",
+        "agents/frontend/iat-ui-*"
+      ],
+      "improvement_reason": "正式独立报告仅作缺陷输入；先复现再最小修复，保护private证据和诊断quiet窗口，不把开发回归当独立复测。"
+    },
+    {
+      "id": "ROLE-frontend-CONTRACT-V11-SYNC-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md",
+      "artifacts": [
+        "tmp/frontend/981_fixtures.ts",
+        "tmp/frontend/982_client.test.ts",
+        "frontend/README.md",
+        "agents/frontend/contract-v11-*"
+      ],
+      "improvement_reason": "显式区分契约元版本与业务模板版本，authority单一来源；不把旧1.0 CI/真HTTP迁名为1.1验证，不碰shared ledger/未提交后端。"
     }
   ],
-  "updated_at": "2026-10-23T13:25:35+08:00"
+  "updated_at": "2026-10-23T20:38:32+08:00",
+  "delivery": {
+    "branch": "codex/frontend-app",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
+    "base": "codex/team-bootstrap",
+    "draft": true,
+    "basis_commit": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "status": "产品源码不再改；本轮证据提交见PR14 HEAD，只有COMMENT无APPROVE",
+    "latest_checkpoint": "bfa1625ac40df4eed0648ab629c5778bf47490cc",
+    "product_source_note": "frontend/src仍未改；导入的authority现为1.1.0；fixture与README本轮同步",
+    "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280"
+  }
 }

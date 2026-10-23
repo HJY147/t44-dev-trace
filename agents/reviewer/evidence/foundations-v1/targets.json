@@ -1,0 +1,339 @@
+{
+  "review_base": "8f0f6b7738d07aa60591eb72274364ea8f4bcd25",
+  "review_branch": "codex/review-foundations",
+  "scope": "stage foundation product files only; no testing-private content",
+  "targets": [
+    {
+      "role": "frontend",
+      "pr": 14,
+      "head_sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+      "owner_worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend",
+      "files": [
+        {
+          "path": "frontend/README.md",
+          "sha256": "0966b09625399ba88a0006126b78923ddf000b841996d96d404a0e3bde1c5bdf",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/index.html",
+          "sha256": "bbb674db7d50707598c7a1442f98b43226a9651c525c772c6be6da3ad4f145b5",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/package.json",
+          "sha256": "cdecb1e238584ba551e9b9dd8825f8bcc1c639b90694d9e7e9ec15120687acbb",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/pnpm-lock.yaml",
+          "sha256": "9b5f905c7ca49f76a6988fd9bc8a9e80fc988324a1de560c17622425030bb10f",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/public/favicon.svg",
+          "sha256": "0cb5280e0c5339e44a7fa94daa6ddb14fc971e1cf899236c2763c5e5a1664eda",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/App.vue",
+          "sha256": "d3a3994a480ab530bd38206ff3a4fe9b5f0d0cdd413b323404e9e36d62eb7a8f",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/components/DataState.vue",
+          "sha256": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/components/PageHeading.vue",
+          "sha256": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/components/SidebarNavigation.vue",
+          "sha256": "a335634bccb3b46c77e1879bd7c9b4f2f3cf51978b0954b98fa3cc464dfd12d4",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/main.ts",
+          "sha256": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/navigation.ts",
+          "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/router.ts",
+          "sha256": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/styles.css",
+          "sha256": "591b6043c8f3e69e39c7eda615bd0834966e1498c8412f6c2f844e3a4d329e39",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/views/NotFoundView.vue",
+          "sha256": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/src/views/WorkspaceView.vue",
+          "sha256": "d1525764ee138c1e0ba1ccd37c5c58147ed17418c2f97283d0c13bc5b113b934",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/tests/foundation.test.ts",
+          "sha256": "53c60eb24b7d5ee08a8c50dda1bb5b2da99faef1425e1f46f80e34cf01944fc3",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/tsconfig.json",
+          "sha256": "3d5476dce8d8c77a8b424238663973244c0d23f0f83a258e3ffef3078e429f73",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "frontend/vite.config.ts",
+          "sha256": "8893feb7bd47ab2ebade39072f7af8bd32f5fafda6ad35720fba9424bd9d88dc",
+          "working_tree_matches_commit": true
+        }
+      ]
+    },
+    {
+      "role": "deployment",
+      "pr": 15,
+      "head_sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+      "owner_worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment",
+      "files": [
+        {
+          "path": ".github/workflows/product.yml",
+          "sha256": "1159fa5420c156c9dc4858b08a4337dae364aab0bc706b19bf54cb25e36f8841",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "compose.yaml",
+          "sha256": "35dc94a83aaf9af8b3811b131435174ba6fb7e8b41a86da3430d9337ac86afd9",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/.env.example",
+          "sha256": "73b28502ff6272619ca231aa31b7f1273e187b204fc76d9b822cdd43131b333a",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/README.md",
+          "sha256": "b8533eede66151b7f15a2106aefec32b26fc2bcf4f04348caffe2d10b733310a",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/api.Dockerfile",
+          "sha256": "507e439dca65e2a13cb413ae159328613d3437348b436c949f693ed45c65d084",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/api.Dockerfile.dockerignore",
+          "sha256": "797b89935c8a5b810911d0e62394ff84b8a590a7b080745ebafb46538577f683",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/nginx/api.conf",
+          "sha256": "90422ba62b336f93ed6ced61beb7faec39d7d7b0e9cda0d93f4aee9a144c59cd",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/nginx/nginx.conf",
+          "sha256": "29422c1bfd5495338c09a16c1655fafa678db56e2351f539e36f1d78df762d54",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/ops.py",
+          "sha256": "74486ef4c664f66cc58d820f856060061fa12cb0fd35a5f3eaab5e8559bf889b",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/runtime_probe.py",
+          "sha256": "0e9e170f86ba639cb3af2c55dfe19268bda8c526658b786ef229daf472eb29e8",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/tests/test_ops.py",
+          "sha256": "75484a56966c667999057fa3106e2b17b0c6fa7c00379eddc40ef2583e7ac9de",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/vendor/SOURCE.json",
+          "sha256": "ba9c9ee4ef395403b36fcc57d52f93b195a29cb3dfdf4e7e0229256509c643d2",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/vendor/compose-spec.LICENSE",
+          "sha256": "df2620afda09a96364f47f951a8574f9031d51ddebc80b44f1df93c7f54f8224",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/vendor/compose-spec.json",
+          "sha256": "d61cc3df8c6e6a727043e84f3405c69ffd63d341f629db8480f1d2ee5405b10c",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/web.Dockerfile",
+          "sha256": "409c94f29beb830a918f620b471de6776bb5429851b044b116fda2b3a05740a2",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "deployment/web.Dockerfile.dockerignore",
+          "sha256": "e1a3a3e87edf2cc5b4673a40c6c989b4649beb354e667903b57d7776326389d4",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/README.md",
+          "sha256": "d47e418d5b5e7f345403b608bb3f33d8b053d38640403177e321e045c56352a5",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/check_frontend_coverage.py",
+          "sha256": "e8c9ae93498131938b1704c3bad6260c5da95a5b90bbf2ef5e19aa2fedadff17",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/coverage.ini",
+          "sha256": "c82d43fe46b38939b7ad7145e34425ed1d1f84daaa3908081b9590989f55c781",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/preflight.py",
+          "sha256": "3749be4d0471231b6d2e332a70b4313b9d07b8968e15c75932165c3aa12468b1",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/requirements.in",
+          "sha256": "cf77daadb356cfd1f0ae3579c1715c5a7c85f4ad4cbea32cf1136ca5b8a56599",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/requirements.lock",
+          "sha256": "1cf122d65e655044bc103171f81050b4a9bb67ac9f21b1e870c6df8b936365a2",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/ruff.toml",
+          "sha256": "ce40cb8adba8e9803f0db3bab565a24bfa62c81848cd8a00e95b8d0ed65bc62a",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/run_tests.py",
+          "sha256": "3239641b951abca3dcf13b7c08a56ab69e41d96260f71c875cf054244dd46732",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/static.py",
+          "sha256": "db4dfff1b5494d604797406cf682b46096d878bb7eac82ae360430687c525338",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/tests/test_gates.py",
+          "sha256": "eb6b1b0ec0eefef4781ec3e70a7e31fc35a18b933ed7c7bc5b4167ddc1822f5a",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "scripts/ci/validate_config.py",
+          "sha256": "64c155f7a5299036b61fc18e2d04a08f8591c56805ca514d67c9f41587006be3",
+          "working_tree_matches_commit": true
+        }
+      ]
+    },
+    {
+      "role": "backend",
+      "pr": 16,
+      "head_sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+      "owner_worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend",
+      "files": [
+        {
+          "path": "backend/pyproject.toml",
+          "sha256": "b1c7612507f51e5fe053c6dad470bfeecc1c6cf5824af35fef3e91683c2d4738",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/requirements.lock",
+          "sha256": "3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/__init__.py",
+          "sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/domain/__init__.py",
+          "sha256": "62c94093fde34fc20f940243df80ad2a410adf8e99ad6af9513a0d0584194fe3",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/domain/commands.py",
+          "sha256": "61c746eda2ae8adf70dbff501cb57fb1e7f81a5c76e0586a1a15a3d6460e1f07",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/domain/models.py",
+          "sha256": "ced1f033f279938c7c56b573d9aa0982b81cfbd1e4fe811d40491bd59a12aeab",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/domain/state_machine.py",
+          "sha256": "b89888fbb0320c80deda3019035b8e0d20386dcd5db144272294bcaf2bd3ed29",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/tests/backend/domain/test_transitions.py",
+          "sha256": "242195e288476add88b66d13e8ce89e873e957d35925f539aa7ea2c6c59c1600",
+          "working_tree_matches_commit": true
+        }
+      ]
+    },
+    {
+      "role": "database",
+      "pr": 17,
+      "head_sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+      "owner_worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
+      "files": [
+        {
+          "path": "backend/t44/persistence/README.md",
+          "sha256": "e61251e1bac1d95658c33b5e27efd7b9621837642fc62495571c9eb0d92090ce",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/persistence/__init__.py",
+          "sha256": "50662ba65f00d855617a17bb9ed7878af81689be9da09481f05cae8902002286",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/persistence/engine.py",
+          "sha256": "f7ec591dad711e3755aeda2606cee8dcaa023b416d8c51592b7b87684121ab9d",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/persistence/errors.py",
+          "sha256": "7609876e24bd8c42d4489b7c53c2258a2f62c53c52f599a20ecc04e38c4d2fb2",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/persistence/gateway.py",
+          "sha256": "b1d7d0391fce40de99f263c1b72536a17e8dca3e3d0ce4fbb87d93d54f1a2b03",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/t44/persistence/uow.py",
+          "sha256": "069a7270a202130925b5de4e54b4829ebb65c198c2175d59bc6c3a3e496e344c",
+          "working_tree_matches_commit": true
+        },
+        {
+          "path": "backend/tests/persistence/test_foundation.py",
+          "sha256": "be0b5c931854210e521446066e24cd7df60154d1d4b2a2dfefd2759ae5a8307c",
+          "working_tree_matches_commit": true
+        }
+      ]
+    }
+  ]
+}

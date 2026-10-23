@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "v2 C1/C3修复归档获授权，待新SHA复审",
-  "implementation_status": "未实现",
+  "stage": "CAPACITY-V11-CONTRACTS-v1：仅1.1存储字典/事务契约同步",
+  "implementation_status": "两份存储文档显式1.1演进；未改DDL或产品/API实现，静态对照/hash/19链接通过，非1.1产品验证。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -11,7 +11,7 @@
     {
       "path": "reports/modules/database.md",
       "kind": "初始化模块报告",
-      "status": "已创建；设计草案未冻结"
+      "status": "已更新至RECOVERY-SEED-v1当前真实交付"
     },
     {
       "path": "records/handoffs/database.json",
@@ -33,17 +33,17 @@
     {
       "path": "specs/database/field-dictionary.md",
       "kind": "完整字段字典与逐表待审",
-      "status": "已创建；设计待审核"
+      "status": "v1冻结；实现/验证边界以当前报告为准"
     },
     {
       "path": "specs/database/schema.sql",
-      "kind": "MySQL8.4完整DDL提案；未执行",
-      "status": "已创建；设计待审核"
+      "kind": "冻结MySQL8.4 DDL；打包同hash副本真实迁移",
+      "status": "v1冻结；test/bench真实迁移通过"
     },
     {
       "path": "specs/database/persistence-contract.md",
       "kind": "事务与持久化契约提案",
-      "status": "已创建；设计待审核"
+      "status": "v1冻结；实现/验证边界以当前报告为准"
     },
     {
       "path": "agents/database/design-static-check.json",
@@ -81,6 +81,362 @@
       "kind": "C1/C3实际Issue回复正文",
       "status": "已创建",
       "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+    },
+    {
+      "path": "backend/t44/persistence/__init__.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/errors.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/uow.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/README.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "tmp/backend/persistence/993_foundation.py",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建",
+      "historical_path": "backend/tests/persistence/test_foundation.py"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-validation.json",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-pr-body.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-stage-comment.md",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run1.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run2.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-lint-run3.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run1.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run2.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "agents/database/foundation-test-run3.log",
+      "kind": "foundation实际代码/自测/过程证据",
+      "status": "已创建"
+    },
+    {
+      "path": "backend/t44/persistence/schema.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/schema_v1.sql",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/codecs.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/accounts.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/delivery.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "backend/t44/persistence/scans.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "tmp/backend/persistence/988_mysql.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录",
+      "historical_path": "backend/tests/persistence/test_mysql.py"
+    },
+    {
+      "path": "agents/database/persistence-mysql-tests-run4.log",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "agents/database/persistence-mysql-tests-run1.log",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "agents/database/persistence-mysql-migration-run1.json",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "agents/database/persistence-lint-stage2.log",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "agents/database/persistence-interface-comment.md",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "已实现/真实记录"
+    },
+    {
+      "path": "agents/database/drafts/seed_v1.py",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "未执行草稿"
+    },
+    {
+      "path": "agents/database/drafts/SYNTHETIC-DATA.md",
+      "kind": "PERSISTENCE-v1实际产物/证据或明确未执行草稿",
+      "status": "未执行草稿"
+    },
+    {
+      "path": "agents/database/persistence-mysql-tests-run5.log",
+      "kind": "本轮真实执行结果",
+      "status": "已执行记录"
+    },
+    {
+      "path": "agents/database/persistence-ci-env-test.log",
+      "kind": "本轮真实执行结果",
+      "status": "已执行记录"
+    },
+    {
+      "path": "backend/t44/persistence/seed.py",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "backend/t44/persistence/SYNTHETIC-DATA.md",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "tmp/backend/persistence/975_seed.py",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录",
+      "historical_path": "backend/tests/persistence/test_seed.py"
+    },
+    {
+      "path": "agents/database/seed-mysql-bench-run1.json",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/seed-mysql-bench-final.json",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/seed-foundation-rows-final.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/seed-runtime-idempotency-regression.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/claim-fairness-before.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/claim-fairness-after.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/recovery-mysql-tests-run1.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/recovery-mysql-tests-run2.log",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/recovery-interface-response.md",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/claim-fairness-response.md",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/seed-stage-comment.md",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/recovery-seed-source-count.json",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-RECOVERY-SEED-v1.md",
+      "kind": "RECOVERY-SEED-v1真实源码/记录/结果",
+      "status": "已实现或真实执行/记录"
+    },
+    {
+      "path": "agents/database/recovery-seed-pr-body.md",
+      "kind": "实际PR17最终范围正文",
+      "status": "已保存，PR仍draft"
+    },
+    {
+      "path": "agents/database/integration-fix-seed-tests.log",
+      "kind": "最小整合修复真实证据/实际提示词",
+      "status": "已执行或真实记录"
+    },
+    {
+      "path": "agents/database/integration-fix-ruff.log",
+      "kind": "最小整合修复真实证据/实际提示词",
+      "status": "已执行或真实记录"
+    },
+    {
+      "path": "agents/database/integration-old-bench-guard.json",
+      "kind": "最小整合修复真实证据/实际提示词",
+      "status": "已执行或真实记录"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-INTEGRATION-FIX-v1.md",
+      "kind": "最小整合修复真实证据/实际提示词",
+      "status": "已执行或真实记录"
+    },
+    {
+      "path": "agents/database/integration-formal-seed-mysql.json",
+      "kind": "正式配置真库验证/真实Issue回复",
+      "status": "已执行或发表"
+    },
+    {
+      "path": "agents/database/integration-fix-comment.md",
+      "kind": "正式配置真库验证/真实Issue回复",
+      "status": "已执行或发表"
+    },
+    {
+      "path": "tmp/backend/persistence/956_schema_semantics.py",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "已编写，测试未运行"
+    },
+    {
+      "path": "agents/database/review-fix-stage-comment.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "kind": "C-P4自岗源码/真实派工与阶段记录",
+      "status": "真实记录"
+    },
+    {
+      "path": "agents/database/review-fix-pr-body.md",
+      "kind": "当前draft候选PR正文",
+      "status": "真实说明未运行/待性能窗后验证"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/original-failures.json",
+      "kind": "两次真实GHA失败、原始日志、SHA256索引",
+      "status": "已下载，Bandit B105真实来源已确认"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/4301-baseline/evidence.json",
+      "kind": "Hosted 332pass baseline with raw logs/JUnit",
+      "status": "已下载，原文件hash保留"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/2dc2-baseline/evidence.json",
+      "kind": "Hosted 333pass full original seed baseline with exact row digests",
+      "status": "已下载，原文件hash保留"
+    },
+    {
+      "path": "agents/database/ci/review-fix-v2/0a676-result/evidence.json",
+      "kind": "Actual final hosted result + raw JUnit/static/migration logs with hash index",
+      "status": "已下载，333通过/无失败错误跳过及精确行摘要相等"
+    },
+    {
+      "path": "agents/database/review-fix-v2-comment.md",
+      "kind": "本轮Issue4真实结果/边界评论正文",
+      "status": "已以body-file真实发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981"
+    },
+    {
+      "path": "agents/database/live-verify-v1/summary.json",
+      "kind": "Actual live MySQL mutation/restoration, full seed/native constraints/exact digests and original failures",
+      "status": "本岗模块真实通过，待审核复审"
+    },
+    {
+      "path": "agents/database/live-verify-stage-comment.md",
+      "kind": "本轮真实MySQL结果/原失败/审核边界Issue正文",
+      "status": "已body-file发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107"
+    },
+    {
+      "path": "agents/database/capacity-v11-static-check.json",
+      "kind": "必要文档/本地链接/hash静态对照结果，非产品测试",
+      "status": "通过；不改旧freeze或DDL"
+    },
+    {
+      "path": "agents/database/capacity-v11-stage-comment.md",
+      "kind": "本轮1.1文档同步阶段评论原文",
+      "status": "已body-file发表",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327"
     }
   ],
   "interfaces": [
@@ -149,6 +505,42 @@
         "重复升级",
         "扫描期间任务版本或计划变更"
       ]
+    },
+    {
+      "peer": "backend",
+      "version": "foundation-v1",
+      "status": "工厂/异常名已直接确认，未API联调",
+      "input": "组合根注入Engine与可信TableBinding",
+      "output": "MySQLSettings/create_mysql_engine、SqlAlchemyUnitOfWorkFactory/单次UoW及脱敏基础异常",
+      "errors": [
+        "CommitUncertain",
+        "PersistenceUnavailable",
+        "PersistenceIntegrityError",
+        "TransactionStateError",
+        "StatementRejected"
+      ]
+    },
+    {
+      "peer": "backend/messaging/scheduler",
+      "version": "frozen-v1/PERSISTENCE-stage2",
+      "status": "Rows/backend已确认；Store实现且真库模块验证，等下游岗确认",
+      "contract": "backend/t44/persistence/README.md",
+      "comment_urls": [
+        "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360580838",
+        "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6360581522"
+      ]
+    },
+    {
+      "peer": "backend/messaging",
+      "version": "RECOVERY-SEED-v1",
+      "status": "MQ真实接线/cherry-pick；backend实际CLI已验证",
+      "contract": "backend/t44/persistence/README.md",
+      "recovery_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360999718",
+      "fairness_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6361197315",
+      "seed_urls": [
+        "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6361347920",
+        "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6361348378"
+      ]
     }
   ],
   "commands_executed": [
@@ -182,7 +574,30 @@
     "python3：v2静态检查精确字典/DDL列定义、C1新列/CHECK、FK/unique/原因码与hash",
     "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/github-design-v2-c1-response.md",
     "git branch --show-current; git diff --cached --name-only; git rev-parse HEAD; git show --format=fuller --stat 72c6c0064e52cb091e8ca4533a1cb862fc46866d",
-    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA"
+    "python3：复核当前设计/OpenAPI/time-check和原失败审核SHA",
+    "本独立树读取AGENTS/implementation-layout/persistence-contract、git branch/status确认",
+    "python3.12 -m venv .venv",
+    "uv pip install --system-certs --python .venv/bin/python --require-hashes -r 后端树requirements.lock",
+    "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/persistence -q（3轮，原始run日志）",
+    ".venv/bin/ruff check --select E4,E7,E9,F,I,UP,B,SIM --target-version py312 backend/t44/persistence backend/tests/persistence（3轮）",
+    "gh issue comment 4 --repo HJY147/t44-dev-trace --body-file agents/database/foundation-stage-comment.md",
+    "本独立树显式git add20份本岗文件；git diff --cached --check退出0",
+    "git commit（Agent-Role database/Prompt-Ref ROLE-database-FOUNDATION-v1/Refs #4）",
+    "git push -u origin codex/database-runtime",
+    "GitHub create_pull_request：draft=true/base codex/team-bootstrap/head codex/database-runtime",
+    "codex-app attach_artifact：pull_request #17",
+    "git status --short; git rev-parse HEAD; git rev-parse origin/codex/database-runtime; git diff --cached --name-only",
+    "gh api repos/HJY147/t44-dev-trace/issues/comments/6360793043 --jq .body",
+    "T44_TEST_DATABASE=t44_test T44_TEST_CREDENTIALS=<ignored-app-file> PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/persistence/test_mysql.py -q --tb=short",
+    "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml backend/tests/persistence/test_foundation.py backend/tests/persistence/test_rows.py backend/tests/persistence/test_seed.py -q --tb=short",
+    "真实bench inline Python：migrate -> seed_demo -> assert_consistent -> repeat；另真实环境变量subprocess python -m t44.cli seed-demo，详细参数/统计见seed-mysql-bench-run1/final.json",
+    "root公开source_count.py通过runpy加载仅ROOT覆盖为本worktree，固定cloc2.10哈希校验，归档9aeb697统计至agents/database/recovery-seed-source-count.json",
+    "gh issue comment 4/3 --repo HJY147/t44-dev-trace --body-file agents/database/seed-stage-comment.md",
+    "Remote original reads: GitHub workflow jobs/logs + gh run download39938428158/39938417442 static artifacts",
+    "Hosted GitHub Actions: product39940121559,39940459708,39941263169; local machine ran no pytest/MySQL/seed/HTTP/build",
+    "Local source-only: ruff format for editing, restored unrelated prior formatting; not reported as lint execution",
+    "git diff --check on changed source/docs; upstream raw job logs retain their original trailing whitespace",
+    "Explicit own-path git commits/push codex/database-runtime; gh pr edit17 --body-file agents/database/review-fix-pr-body.md"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -207,61 +622,70 @@
     "原失败审核717cd65报告保持原样；新设计尚待新SHA复审，未宣称通过。",
     "本修复轮根索引仍由backend持有，数据库岗未操作Git/未提交，等待总协调授权。",
     "获ROLE-database-DESIGN-v2-COMMIT后核验codex/team-bootstrap、空暂存区及父HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；所有设计/OpenAPI/time-check hash一致，原失败报告未变。",
-    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。"
+    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。",
+    "FOUNDATION-v1真实Engine/UoW/受限CoreGateway基础落盘，没有业务仓储占位成功实现。",
+    "首轮pytest15通过；首轮Ruff7风格问题保留；最终18项本岗SQLite/mock测试通过，Ruff通过；SQLAlchemy2.1.6/PyMySQL1.2.3来自backend只读hash锁。",
+    "Issue阶段说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 已发表；文档岗原文问答与当时未提交状态已记录。",
+    "产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc已push；draft PR#17已创建并attach，未合并/未发reviewer成功。",
+    "PR创建后本树和索引干净，本地远端SHA一致；当前仅补实际发布记录，无产品变化。",
+    "PERSISTENCE-stage2最后33项通过：21 SQLite/mock + 12真实MySQL8.4.11；首次3失败26通过保留后修CHECK分类。首次/重复迁移18表226列通过；未用admin，未触acceptance/bench。",
+    "CI兼容入口修复后run5全模块33 passed；本机DATABASE_URL+T44_DATABASE入口12真库passed，无skip，非GitHub CI结果。",
+    "真实t44_bench首次迁移/seed40项目6000任务9000依赖11400评审+3600决定，7态；全量引用/JSON/轮次/容量校验通过、真实CLI重复exit0；Rows/原安全事务/seed23项通过；实际Runtime幂等真库通过；confirmed14项通过；claim公平性先真失败后同例通过。",
+    "INTEGRATION-FIX: 原seed两测试2通过；新t44_seed_verify官方MySQL8.4.11迁移18/226、生成40/6000/9000/11400+3600、7态全量一致性与重复同manifest通过；旧bench配置差异明确拒绝、前后计数与原manifest相同；无测试文件编辑。",
+    {
+      "stage": "REVIEW-FIX-v2 hosted correctness",
+      "head": "4301a68ce379292f68ef1c5c8f9644540fa25274",
+      "run": 39940121559,
+      "result": "4 jobs success; 332 passed / 0 failed / 0 skipped",
+      "boundary": "Hosted schema initialization and 956 Inspector tests; not dedicated t44_review drift/recovery",
+      "evidence": "agents/database/ci/review-fix-v2/4301-baseline/evidence.json"
+    },
+    {
+      "stage": "REVIEW-FIX-v2 full original seed baseline",
+      "head": "2dc2e6d785958fd7386fd91faa9f4b781b934bf5",
+      "run": 39940459708,
+      "result": "4 jobs success; 333 passed / 0 failed / 0 skipped; small and default full fixture digests recorded",
+      "evidence": "agents/database/ci/review-fix-v2/2dc2-baseline/evidence.json",
+      "boundary": "SQLite full synthetic fixture and hosted whole suite; not actual MySQL seed refactor verification"
+    },
+    {
+      "stage": "REVIEW-FIX-v2 final hosted product",
+      "head": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+      "run": 39941263169,
+      "push_run": 39941255427,
+      "result": "4 jobs success; 333 passed / 0 failed / 0 errors / 0 skipped; both exact original persisted-row digests equal; Bandit zero/Ruff pass",
+      "evidence": "agents/database/ci/review-fix-v2/0a676-result/evidence.json",
+      "boundary": "Hosted full suite + SQLite full fixture equivalence; dedicated MySQL controlled drift/recovery and full seed not executed"
+    },
+    {
+      "stage": "LIVE-VERIFY-v1",
+      "base": "43f51570e62e3160f7995c45bdddaf2f123242b3",
+      "review": "4 real same-name mutation classes rejected, each restored, repeated migrate accepted",
+      "seed": "New MySQL default40/6000/9000/15000 exact original digest, native7 rejection savepoints, same-repeat/changed-manifest protection passed",
+      "targeted": "18 passed / 0 failed / 0 errors / 0 skipped; 2 retained warnings",
+      "ruff": "Original I001 retained, fixed then passed",
+      "bandit_findings": 0,
+      "evidence": "agents/database/live-verify-v1/summary.json"
+    },
+    {
+      "stage": "CAPACITY-V11-CONTRACTS-v1",
+      "base": "eac253039cd85873d3b262e648b2b74d94d715a8",
+      "scope": "Documentation static checks only",
+      "result": "Original11 freeze hashes recoverable at ae60dc3, manifest unchanged; 18/226 and both DDL hashes unchanged; 226 column/type rows unchanged; stable error30 unchanged; 19 relative links/anchors valid; RFC hash matches reviewed object",
+      "evidence": "agents/database/capacity-v11-static-check.json",
+      "product_validation": false
+    }
   ],
   "unverified": [
-    "设计v1-draft未获总协调冻结/逐表审核放行。",
-    "未执行DDL，未验证MySQL8.4完整语法、CHECK/外键运行或迁移/恢复。",
-    "未验证事务/CAS/幂等接管/撤销/双向并发加边/成员守卫。",
-    "消息confirm/fallback/消费竞争、调度续扫/配置归档仍待责任岗确认及运行验证。",
-    "拒绝审计故障恢复介质、迁移版本元数据/精确CLI仍待后续派工。",
-    "模块自测、联调、独立验收、性能均未运行；未联系或读取独立测试岗内容。",
-    "v2 response_request_id的真实持久保存/租约接管后重放行为尚未实现或运行；待新SHA独立审核。"
+    "本岗未实现或运行1.1产品行为；未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能",
+    "backend权威/运行API与代码1.1.0、root共享需求和新freeze父链由对应责任岗完成，本岗不代称已完成",
+    "旧1.0 11hash及ae60dc3历史保留，两存储文档当前摘要显式改变，新版整体审核/冻结仍另行进行"
   ],
   "questions": [
     {
-      "to": "backend",
-      "question": "请提供冻结前提案：状态枚举/迁移、请求版本与幂等、接口错误码、项目权限以及成功/拒绝审计事务边界。",
-      "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
-      "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
-    },
-    {
-      "to": "backend",
-      "question": "业务事务因并发版本冲突或非法迁移回滚后，拒绝审计是否由服务层独立事务写入，审计失败的错误返回与追踪责任如何界定？",
-      "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358121197",
-      "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
-    },
-    {
-      "to": "messaging",
-      "question": "请确认事件/消费幂等标识、通知数据业务归属及待投递事件到降级待办的原子性要求。",
-      "status": "待确认"
-    },
-    {
-      "to": "scheduler",
-      "question": "请确认扫描时区与窗口、升级规则/级别、计划变更语义及重启续扫幂等键需求。",
-      "status": "待确认"
-    },
-    {
-      "to": "coordinator",
-      "question": "请汇总责任岗提案后冻结契约，并在字段字典/DDL逐表评审通过后另行派发迁移任务。",
-      "status": "待后续阶段"
-    },
-    {
-      "to": "messaging/scheduler",
-      "question": "请确认contract中的confirm/fallback/consumer锁outbox顺序、超时和规则快照/续扫边界。",
-      "status": "待责任岗确认"
-    },
-    {
-      "to": "deployment/backend",
-      "question": "统一CLI下迁移版本元数据、精确命令及拒绝审计故障介质如何落地？",
-      "status": "已真实对接，待下一迁移实现阶段"
-    },
-    {
-      "to": "backend",
-      "question": "请确认C1 response_request_id采用最终完成请求语义，并与README/meta.original_request_id来源一致。",
-      "status": "已backend直接确认与v2 README/backend-design一致；待新SHA审核",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+      "to": "root/backend",
+      "question": "按职责继续1.1 API实现及新版freeze/验证；本岗两份文档已对齐已审RFC，无新增字段/错误定义歧义",
+      "status": "本岗文档完成，余项归对应责任岗"
     }
   ],
   "prompt_refs": [
@@ -334,7 +758,225 @@
         "reports/modules/database.md",
         "records/handoffs/database.json"
       ]
+    },
+    {
+      "id": "ROLE-database-FOUNDATION-v1",
+      "archive": "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+      "actual_prompt_source": "总协调字段无关基础实现派工及CommitUncertain补充",
+      "improvement_reason": "用户字段/错误码尚待选择时先实现不依赖业务字段的真实生命周期与安全边界；非AI填充空壳或用户亲自改码。",
+      "outputs": [
+        "backend/t44/persistence/__init__.py",
+        "backend/t44/persistence/engine.py",
+        "backend/t44/persistence/errors.py",
+        "backend/t44/persistence/gateway.py",
+        "backend/t44/persistence/uow.py",
+        "backend/t44/persistence/README.md",
+        "backend/tests/persistence/test_foundation.py",
+        "agents/database/prompts/ROLE-database-FOUNDATION-v1.md",
+        "agents/database/foundation-validation.json",
+        "agents/database/foundation-pr-body.md",
+        "agents/database/foundation-stage-comment.md",
+        "agents/database/foundation-lint-run1.log",
+        "agents/database/foundation-lint-run2.log",
+        "agents/database/foundation-lint-run3.log",
+        "agents/database/foundation-test-run1.log",
+        "agents/database/foundation-test-run2.log",
+        "agents/database/foundation-test-run3.log",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
+    },
+    {
+      "id": "ROLE-database-PERSISTENCE-v1",
+      "archive": "agents/database/prompts/ROLE-database-PERSISTENCE-v1.md",
+      "improvement_reason": "冻结后全实现；总协调实际要求先交可运行Store小阶段释放下游，seed仍未完成，不伪称整体完成。"
+    },
+    {
+      "id": "ROLE-database-RECOVERY-SEED-v1",
+      "archive": "agents/database/prompts/ROLE-database-RECOVERY-SEED-v1.md",
+      "improvement_reason": "真实MQ接口缺口及公平性反例驱动；单独先交恢复/公平性再完整seed，不虚构人工经历。"
+    },
+    {
+      "id": "ROLE-database-INTEGRATION-FIX-v1",
+      "archive": "agents/database/prompts/ROLE-database-INTEGRATION-FIX-v1.md",
+      "improvement_reason": "实际整合暴露旧资源shape误用；只修真实字段与追溯metadata，不改资源或原测试/断言。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v1",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v1.md",
+      "improvement_reason": "实际审核C-P4要求语义比较，性能调度要求先保存未验证checkpoint，不虚构测试通过。"
+    },
+    {
+      "id": "ROLE-database-REVIEW-FIX-v2",
+      "archive": "agents/database/prompts/ROLE-database-REVIEW-FIX-v2.md",
+      "improvement_reason": "先读取原始Bandit失败，保留门禁与断言；远端验证和专库实际变更恢复分开，不编造规模达标。"
+    },
+    {
+      "id": "ROLE-database-LIVE-VERIFY-v1",
+      "archive": "agents/database/prompts/ROLE-database-LIVE-VERIFY-v1.md",
+      "improvement_reason": "明确性能窗结束和两个隔离库授权后实测，真实失败驱动最小lexer修复及探针兼容；不以托管/SQLite替代MySQL。"
+    },
+    {
+      "id": "ROLE-database-CAPACITY-V11-CONTRACTS-v1",
+      "archive": "agents/database/prompts/ROLE-database-CAPACITY-V11-CONTRACTS-v1.md",
+      "improvement_reason": "人的D005/D006选择与AI实现/纠错分开；只同步已审1.1存储语义，保护旧freeze父链，静态检查不计产品通过。"
     }
   ],
-  "updated_at": "2026-10-23T14:35:55+08:00"
+  "updated_at": "2026-10-23T12:21:58.115107+00:00",
+  "publication": {
+    "branch": "codex/database-runtime",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/17",
+    "base": "codex/team-bootstrap",
+    "draft": true,
+    "attached": true,
+    "merged": false,
+    "scope": "Capacity1.1 storage-document evolution only, no DDL/product implementation",
+    "pr_scope_updated_and_attached": true,
+    "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
+    "candidate_status": "静态文档同步通过，不计1.1产品/独立/性能通过",
+    "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
+    "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
+    "live_evidence": "agents/database/live-verify-v1/summary.json",
+    "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
+    "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
+    "current_validation": "Capacity1.1 docs: static comparison/link/hash checks only; no product validation"
+  },
+  "history": [
+    {
+      "stage": "PERSISTENCE-v1阶段1：冻结元数据/RowsGateway已实现，其余进行中",
+      "implementation_status": "18表Core元数据及通用RowsGateway已实现；完整迁移/seed/专用消息扫描能力进行中",
+      "unverified": [
+        "MySQL8.4真实连接初始化、模式/隔离、约束与事务未验证。",
+        "项目DDL/18表ORM/迁移/业务仓库/成功拒绝审计/幂等CAS/依赖图锁未实现或执行。",
+        "MQ/调度/API联调、性能/覆盖率/独立验收未运行。",
+        "Q002人的字段/错误码取舍未收到；C1–C4技术复审转述不替代人的决定。",
+        "SQLite测试仅玩具夹具，mock只核对初始化逻辑；不能视作MySQL或独立验收。"
+      ],
+      "questions": [
+        {
+          "to": "backend",
+          "question": "请提供冻结前提案：状态枚举/迁移、请求版本与幂等、接口错误码、项目权限以及成功/拒绝审计事务边界。",
+          "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
+          "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
+        },
+        {
+          "to": "backend",
+          "question": "业务事务因并发版本冲突或非法迁移回滚后，拒绝审计是否由服务层独立事务写入，审计失败的错误返回与追踪责任如何界定？",
+          "status": "已在本轮责任岗设计层确认，仍待最终冻结及运行验证",
+          "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358121197",
+          "confirmation_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437"
+        },
+        {
+          "to": "messaging",
+          "question": "请确认事件/消费幂等标识、通知数据业务归属及待投递事件到降级待办的原子性要求。",
+          "status": "待确认"
+        },
+        {
+          "to": "scheduler",
+          "question": "请确认扫描时区与窗口、升级规则/级别、计划变更语义及重启续扫幂等键需求。",
+          "status": "待确认"
+        },
+        {
+          "to": "coordinator",
+          "question": "请汇总责任岗提案后冻结契约，并在字段字典/DDL逐表评审通过后另行派发迁移任务。",
+          "status": "待后续阶段"
+        },
+        {
+          "to": "messaging/scheduler",
+          "question": "请确认contract中的confirm/fallback/consumer锁outbox顺序、超时和规则快照/续扫边界。",
+          "status": "待责任岗确认"
+        },
+        {
+          "to": "deployment/backend",
+          "question": "统一CLI下迁移版本元数据、精确命令及拒绝审计故障介质如何落地？",
+          "status": "已真实对接，待下一迁移实现阶段"
+        },
+        {
+          "to": "backend",
+          "question": "请确认C1 response_request_id采用最终完成请求语义，并与README/meta.original_request_id来源一致。",
+          "status": "已backend直接确认与v2 README/backend-design一致；待新SHA审核",
+          "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358988632"
+        }
+      ],
+      "updated_at": "2026-10-23T07:23:18.910327+00:00"
+    },
+    {
+      "stage": "PERSISTENCE-v1阶段2：真实迁移/Rows/OutboxStore/ScanStore可运行；seed未完成",
+      "implementation_status": "18表Core/迁移/参数化Rows/幂等原语/独立hash拒绝审计/消息及扫描持久门面已实现并模块实测；业务编排由backend，seed草稿未执行",
+      "unverified": [
+        "seed生产入口、代表状态与轮次一致性尚未完成/执行",
+        "MQ网络及完整HTTP跨模块联调未跑",
+        "全局覆盖率、性能、独立验收未跑",
+        "Store需消息/调度责任岗唤醒后直接确认；不称已接线"
+      ],
+      "questions": [
+        {
+          "to": "messaging/scheduler",
+          "question": "请直接确认README已实现OutboxStore/ScanStore精确签名并适配；MQ I/O在UoW外，ACK在消费事务提交后。",
+          "status": "待责任岗唤醒确认"
+        },
+        {
+          "to": "backend",
+          "question": "迁移/accounts已提供f3ea343，seed需后续实现；幂等原语可选或继续Rows编排。",
+          "status": "已直接交接可merge阶段，业务联调待其执行"
+        }
+      ],
+      "updated_at": "2026-10-23T08:18:12.818611+00:00"
+    },
+    {
+      "stage": "RECOVERY-SEED-v1：恢复/公平性/生产seed/冗余清理已实现并模块验证",
+      "implementation_status": "本岗完整持久入口已实现；18表真实迁移、Rows、Outbox/Scan、confirmed恢复、claim公平性、七态全量seed已验证；业务编排/最终集成门禁由对应责任岗及root执行",
+      "publication_product_commit": "9aeb69795f67239b04352125f4b7db0427ce1272"
+    },
+    {
+      "stage": "INTEGRATION-FIX-v1：正式配置新库全量生成与旧库安全拒绝已实测",
+      "implementation_status": "产品e06已push/root整合；原两seed测试通过，正式新空t44_seed_verify全量40/6000/9000/11400+3600及7态校验/重复幂等通过，旧bench拒绝配置差异且保留数据；未改测试文件",
+      "unverified": [
+        "最终整合SHA的单一全套运行/全局覆盖率/正式性能/独立验收未由本岗执行",
+        "本岗不声称RabbitMQ网络验证通过；MQ owner本人接线及后续验证分开",
+        "本checkpoint统计4582应用行仍旧FE/未全量MQ，最终整合规模须root统一统计"
+      ]
+    },
+    {
+      "stage": "REVIEW-FIX-v2：原失败修复/seed精确等价托管通过，专库漂移恢复待窗口",
+      "implementation_status": "0a676ee PR39941263169/push39941255427 success；333passed/0failed/0errors/0skipped，原975小/默认全量固定持久行摘要相等；专库真实C-P4漂移/恢复及重构后MySQL全量seed未运行，C-P4不关闭",
+      "unverified": [
+        "安静窗口未结束，本岗不得执行本机pytest/MySQL迁移/seed/HTTP/构建",
+        "t44_review尚未迁移/改动；真实受控漂移、错误重复迁移拒绝、恢复接受未验证，C-P4不关闭",
+        "全局规模仍超5100，C-P4增加与seed减少分别记录；最新整合全套/性能/独立验收不由本岗声称",
+        "重构后的真实MySQL全量seed未运行；SQLite固定摘要不替代生产MySQL约束执行"
+      ]
+    },
+    {
+      "stage": "LIVE-VERIFY-v1：C-P4及新版seed真实MySQL模块验证完成，待审核复审",
+      "implementation_status": "review4类同名漂移/重复迁移拒绝/逐例恢复及最终接受均真实通过；新seed库默认全量与7原生约束拒绝、精确摘要、重复幂等/差异拒绝通过；18模块回归通过。C-P4本岗技术闭合，审核岗复审未执行。",
+      "unverified": [
+        "最新集成SHA全套/全局覆盖率未由本岗重新运行；旧托管333通过属于0a历史SHA",
+        "本轮为owner模块验证，不是独立验收、正式性能或人工经历",
+        "7项针对性原生约束拒绝并非每个可能DDL变异/59CHECK逐项负测",
+        "总协调stage7应用cloc5866/exit1仍超5100，不改口径；本轮未重新统一统计",
+        "最终C-P4审核结论由审核岗复审最新集成SHA，owner不替代审核通过"
+      ]
+    }
+  ],
+  "refactor_removed": [
+    {
+      "path": "backend/t44/persistence/gateway.py",
+      "reason": "无生产调用重复实现；断言分别迁到真实Rows/Runtime，未删覆盖意图"
+    },
+    {
+      "path": "backend/t44/persistence/idempotency.py",
+      "reason": "无生产调用重复实现；断言分别迁到真实Rows/Runtime，未删覆盖意图"
+    }
+  ],
+  "current_interfaces": {
+    "version": "capacity-lifecycle-v1.1 documentation",
+    "backend_confirmation": "全量state1–5 owner集合/assignment项目锁/CAS前守卫，原错误优先级和ID30/事务不变；见WORKLOG真实回复",
+    "contract": "specs/database/persistence-contract.md",
+    "implementation_owner": "backend",
+    "new_freeze_owner": "root",
+    "database_schema": "18/226 unchanged"
+  }
 }

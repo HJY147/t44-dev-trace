@@ -53,3 +53,38 @@
 - `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-stage-comment.md`：成功发表评论 https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077。
 - 已显式 `git add --` 本岗交接列明的 15 个文件；`git diff --cached --name-only` 与清单完全一致，`git diff --cached --check` 通过。未加入用户原文、共享 ledger 或其他岗文件。
 - 本条记录随 M0 提交归档；完整提交 SHA 由提交返回后交文档岗记录，不在提交内预填自身 SHA。未授权 push、checkout、merge 或审核通过。
+
+## M3 真实 AI 使用留痕 checkpoint
+
+- 实际派工 ROLE-prompt_engineering-M3-EVIDENCE-v1；已读最新 AGENTS/本岗 TASK，性能窗口仅做文档、Git 和远端只读取证。
+- `git worktree add .agent-worktrees/prompt-engineering-m3-evidence -b codex/prompt-engineering-m3-evidence 8fb74cdf893d83413338f966156274fe58caf22b`：成功；不操作根索引。
+- 向 documentation/frontend/reviewer/backend 实际 send_message 索取已公开 prompt→产物→问题→修正；仅 backend 本轮已回，其他暂未收到，不使用 followup 唤醒所有岗。
+- 已向文档岗回答 M2 实际问取：给真实需求→设计链、人/AI边界、未达标缺口及本人写报告限制，出处见 M3-source-inquiries。
+- 读取 U010–U014、公开 CONTRACT-v1/v2、FE INTEGRATION 续派、精确 e01 审核/M2/M3 资料；未联系独立测试、未读未发布黑盒/私有资料。
+- 基线未包含 REFACTOR-v1，首次合并读取提示缺文件；后据 backend 实回在已发布64b4 Git对象读取。D004猜测文件名未找到，经rg确认正式D004-field-errors-adopted；不把缺文件写成验证通过。
+- `git ls-remote --heads origin codex/integration` 确认8fb74；`gh issue/pr view`、`gh api .../status` 只读公开资料，精确e01 failure仍在。
+- `gh api .../actions/runs?head_sha=...` 与 `gh run view ... --log` 回读FE b485/BE64b4指定原件，两条run四job success、原日志317通过；不是本岗运行测试。
+- 只读解析backend公开3ee证据提交JUnit，确认317/0失败/0错误/0跳过；源64b与证据SHA分开。
+- 公开CI副本省去凭据赋值/连接信息相关行，保留远端原件来源、原始hash及脱敏副本hash；本次实际派工仅将具体学生姓名替换[学生本人]并明确非逐字完整原文。
+- 建立30源manifest、真实族/9条AI映射/人工12、3、5缺口；单一族六版未核实。未把AI行为或事后M3重述算人工/实际演进。
+- 文档JSON/引用、30公开来源、公开JUnit317/0/0/0、脱敏副本及 `git diff --check` 静态核对通过；不是产品测试。
+- `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m3-stage-comment.md` 成功：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450。
+- 本次仅显式暂存本岗13文件，在独立分支阶段commit/push；实际提交结果由返回SHA及Issue更新核对，提交内不预填自身SHA。
+
+## M4 真实过程与本人反思/选择资料
+
+- 实际派工 ROLE-prompt_engineering-M4-REAL-PROCESS-v1；核最新AGENTS/TASK/prompt-recording，沿用真实归属规则。
+- `git worktree add .../prompt-engineering-m4-real-process -b codex/prompt-engineering-m4-real-process 32f58132cb670c9f4c0b2bb22e4b574ac6deb4b8` 成功；ls-remote核该root基线已公开，不用根索引。
+- 主动send_message向BE/DB/FE/docs/guidance/reviewer六岗问公开实发prompt与事实。BE、DB、reviewer已回；其他本轮pending，不唤醒或代填。DB首次在写未提交→随后705e发布分别记录，M3晚到回复另补，不倒填旧checkpoint。
+- 只读四件明确发布独立报告；未联系tester、未跟随报告内私有路径/截图，未读私密Word/cover/QA图片。
+- 读取R001原文/provenance、U015/16、D005/6，R001 hash吻合；只引用，不改字，不当本人改码/调试/识别。研究正文未代写。
+- 读取精确5fb/02/bbc实际审核输入/报告：root成员保护遗漏7由AI纠错；D006才是人选择capacity7边界，终稿仅技术准入。
+- `gh api .../actions/runs/39946771417` / `39948047446` 只读均success；公开JUnit解析362/0失败错误跳过，FE原artifact摘要27/309/333。不是本岗运行产品验证。
+- 公开955原失败显示不存在startup入口；后来502/bootstrap无fixture/样本、代理未证；Ruff根配置错误与显式backend配置静态成功分别保留。Word四批28页仅核公开QA，不把AI查看当学生操作。
+- 一次FE提示词猜名ROLE-frontend-IAT-UI-FIX未找到，经rg定位实际ROLE-frontend-INDEPENDENT-UI-FIX-v1；不把文件定位失败说产品失败。
+- 创建M4事实、49源manifest、问取/回执、实际派工及R001主题的proposed可复用模板；不把建议稿或协调续条凑六版。无本机产品/负载/浏览器/构建/渲染。
+- 成稿后收到root新42d/90e/9aeb、1130旧meta失败/5940超限和guard草稿先后交接，明确附在cutoff后，不将未冻结1.1或草稿回归写成通过，不为此运行验证。
+- 必要文档引用/49公开源/hash、原文provenance、used/proposed、JSON/XML与 `git diff --check` 核对通过，未写形式化测试。
+- `gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m4-stage-comment.md` 成功：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031。发布时BE/DB/reviewer已回、其他三岗pending。
+- Issue阶段评论后、commit前收到frontend本轮真实回执，已追加inquiries；当前仅docs/guidance pending，不倒改已发布评论时点。
+- 仅显式暂存本岗10文件，在独立分支阶段commit/push；完整SHA以实际返回和Issue回帖为准，不在提交内预填自身SHA。
