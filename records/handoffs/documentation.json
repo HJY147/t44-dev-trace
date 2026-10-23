@@ -99,7 +99,12 @@
     "documents技能及read_review说明只读应用；load_workspace_dependencies解析bundled Python",
     "bundled Python ZIP/XML只读原提交DOCX，29非空段及附加文字部件，SHA/归一文本与缓存一致；无DOCX创建/修改/上传",
     "git show后端0bb.../数据库4ae...已发布报告/交接，gh pr view16/17核对最终head；保存最终原文问答",
-    "python3 agents/documentation/validate_report_drafts.py：5稿/29来源哈希/115链接/两岗真实问取/8FR9AC/M0未改检查通过；git diff --check通过"
+    "python3 agents/documentation/validate_report_drafts.py：5稿/29来源哈希/115链接/两岗真实问取/8FR9AC/M0未改检查通过；git diff --check通过",
+    "git add -- <handoff列出的17显式自身文件>；git diff --cached --check：范围与空白检查通过",
+    "git commit --file /tmp/t44-documentation-reports-commit.txt：8cf92cb07319e16b31ddf6bde28095d3b213eb9c，17文件，无原件/产品/共享台账",
+    "git push --set-upstream origin codex/reports-draft：成功",
+    "gh pr create --draft --base codex/team-bootstrap --head codex/reports-draft --body-file agents/documentation/reports-draft-pr.md：PR18",
+    "attach_artifact PR18：成功；gh pr view18读回draft/open/base/head匹配"
   ],
   "results": {
     "report_drafts": 3,
@@ -168,5 +173,17 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T15:10:27.476738+08:00"
+  "updated_at": "2026-10-23T15:11:46.550209+08:00",
+  "delivery": {
+    "implementation_commit": "8cf92cb07319e16b31ddf6bde28095d3b213eb9c",
+    "branch": "codex/reports-draft",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/18",
+    "base": "codex/team-bootstrap",
+    "draft": true,
+    "pushed": true,
+    "artifact_attached": true,
+    "initial_pr_head_verified": "8cf92cb07319e16b31ddf6bde28095d3b213eb9c",
+    "own_changed_files": 17,
+    "notes": "后续仅补本条实际发布记录和WORKLOG；最终HEAD由Git/PR元数据确定，不自包含自身SHA。未合并main或发布审核success。"
+  }
 }

@@ -123,3 +123,11 @@ backend 接到 ROLE-backend-CONTRACT-v1。请告知 M0 串行提交队列何时�
 实际执行python3 agents/documentation/validate_report_drafts.py：5份阶段稿、29份明确来源哈希、115个本地/已有远端快照及固定SHA链接、2岗真实问答、8FR/9AC和M0历史边界检查通过；软件测试0。gh核对PR14/15/16/17和两条Review，未接触独立测试端点。rg检查当前报告无旧“最终SHA待补/81当前”状态，退出1表示无匹配；历史原文未删除。git diff --check通过。
 
 仅显式加入交接列出的17份本岗资料，分支codex/reports-draft、base5d0c087f63812b0e00c7284afeafe4ec6a00c110。将commit/push并创建base codex/team-bootstrap的draft PR，完成后attach；不merge main或发审核success。
+
+## 2026-10-23T15:11:46.550209+08:00 实际发布与收尾
+
+本轮实现/报告提交`8cf92cb07319e16b31ddf6bde28095d3b213eb9c`：17份显式自身文件，footer Agent-Role documentation、Prompt-Ref ROLE-documentation-REPORTS-DRAFT-v1、Refs #9；git diff --cached --check通过。已git push --set-upstream origin codex/reports-draft成功。
+
+gh pr create --draft --base codex/team-bootstrap --head codex/reports-draft --body-file agents/documentation/reports-draft-pr.md实际返回https://github.com/HJY147/t44-dev-trace/pull/18；attach_artifact成功。gh pr view18读回head=8cf92cb07319e16b31ddf6bde28095d3b213eb9c、base=codex/team-bootstrap、draft=true、state=OPEN。
+
+本条仅补实际发布证据，不新增润色/来源/产品验证。最终记录提交与远端head会在最终回复回传；三报告+提交对照+独立AI规格说明均为阶段工作稿，Q002仍pending。未合并main、未发布审核success、未上传原DOCX、未执行产品测试。
