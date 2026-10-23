@@ -438,3 +438,47 @@ def test_confirmed_recovery_skips_consumer_lock_and_never_marks_complete_fallbac
     assert store.get(event)["status"] == 3
     with factory() as uow:
         assert uow.gateway.rows("notifications", {"event_id": event})[0]["fallback"] == 0
+
+
+def assert_claim_retry_fairness(factory, project_id, task_id):
+    """Private fixtures only; caller must not run an external publisher on this schema."""
+    store, base = OutboxStore(factory), datetime(2000, 1, 2, tzinfo=UTC)
+    ids = []
+    try:
+        with factory() as uow:
+            for kind in (1, 1, 2):
+                ids.append(
+                    uow.gateway.insert(
+                        "outbox_events",
+                        dict(
+                            event_type=kind,
+                            schema_version=1,
+                            project_id=project_id,
+                            task_id=task_id,
+                            payload={"synthetic": "claim fairness fixture"},
+                            recipients=[],
+                            status=1,
+                            attempts=0,
+                            next_attempt_at=base,
+                            created_at=base,
+                            updated_at=base,
+                        ),
+                    )
+                )
+        seen = set()
+        for tick in range(3):
+            now = base + timedelta(seconds=tick)
+            for event in store.claim(now=now, limit=2):
+                seen.add(event["id"])
+                assert store.retry(event["id"], event["lease_token"], now=now, delay_seconds=0)
+        assert ids[-1] in seen, (
+            "Ready higher-ID escalation starved behind repeatedly retried low IDs"
+        )
+    finally:
+        if ids:
+            with factory() as uow:
+                uow.gateway.delete("outbox_events", {"id": ids})
+
+
+def test_real_claim_retry_due_order_prevents_starvation(mysql, fixture):
+    assert_claim_retry_fairness(mysql[1], fixture["project"], fixture["task"])

@@ -126,3 +126,4 @@
 - 实现固定MySQL JSON_TABLE+NOT EXISTS候选过滤：先排除完整通知，limit不被旧完整事件占满；同event FOR UPDATE SKIP LOCKED后重新比recipient/notice，只有created>0才confirmed→fallback。未改冻结DDL。
 - 首次真库新增回归2失败12通过：共享t44_test存在其他阶段缺通知confirmed，候选正确优先返回较早事件，干扰“仅本夹具”断言。保留recovery-mysql-tests-run1.log；未删除/重置他岗数据，给本夹具独立confirmed时间窗口后14通过(run2，0.35s)。检查消费者持锁并发恢复跳过、完整后不降级、3旧完整不饿死后续缺失、迟到confirm与重复消费。
 - Ruff check通过；此小阶段先commit/push给MQ/root，不等seed，不声称RabbitMQ/完整HTTP/独立验收完成。
+- 总协调真实提出claim公平性审查；先在独占t44_bench跑无网络真实反例：batch2的旧低ID普通事件每轮retry后反复ready，3轮均未claim后来升级事件（claim-fairness-before.log）。改pending为next_attempt_at,id、leased为lease_until,id后同案例通过（after.log），沿已有索引且保持SKIP LOCKED/token fencing，无DDL变更。仅删除本案例明确ID的临时outbox数据，未动seed业务行，未碰test/dev/acceptance。
