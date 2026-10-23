@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "NATIVE-v1 stage1 complete and stopped; application stage pending",
+  "stage": "NATIVE-APPLICATION-v1 phase2 design checkpoint",
   "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
@@ -383,9 +383,14 @@
       "id": "ROLE-deployment-NATIVE-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md",
       "reason": "新macOS项目内原生环境派工；保护旧运行/独立隔离，保留真实失败并先设计准入后启动"
+    },
+    {
+      "id": "ROLE-deployment-NATIVE-APPLICATION-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-APPLICATION-v1.md",
+      "reason": "Explicit new app lifecycle stage with exact source and private new DB, finite periodic delivery/credential rotation evidence"
     }
   ],
-  "updated_at": "2026-10-23T20:36:03.750094+00:00",
+  "updated_at": "2026-10-23T21:00:52.283874+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -579,5 +584,24 @@
     "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
     "runtime_after_validation_changed": false,
     "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials"
+  },
+  "native_application": {
+    "prompt": "ROLE-deployment-NATIVE-APPLICATION-v1",
+    "design": "deployment/native/application-design.md",
+    "admission": "rootec3e6b0 records/decisions/native-application-capability-admission.json",
+    "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "source_binding": "root records/validation/native-demo-source-bc5a-binding.json",
+    "source_files_verified": 92,
+    "python_files": 44,
+    "ts_vue_files": 20,
+    "source_hash_mismatches": 0,
+    "old42243_application_started": false,
+    "database": "t44_native_demo",
+    "no_ddl_reset_seed": true,
+    "private_input_modes": "0600",
+    "controller_status": "design only, not implemented",
+    "guard": "tmp/deployment/871_native_application.py root-reserved, not created yet",
+    "services_started": false,
+    "independent_or_formal_load_executed": false
   }
 }

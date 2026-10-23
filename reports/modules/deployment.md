@@ -158,3 +158,10 @@
 - 实际Rabbit127.0.0.1:25674/35674；EPMD同时127.0.0.1及::1:24369，全回环，根接受相对原IPv4-only提案的技术澄清。nocookie短窗保守上界server0.275471s/CLI最大0.132151s，仅本地开发能力，不是生产安全批准。
 - 42public/373private非秘密outputs+args对3Cookie/2AMQP口令literal扫描均0，范围/输出SHA已存；dump保持0600ignored不解析/上传。所有旧环境和MySQL不在操作目标。
 - phase1归档后等待根最终SUT/schema/credentials；API/consumer/scanner/UI、正常消息/60秒真实扫描、独立/性能/云仍未验证。
+
+
+### NATIVE-APPLICATION-v1 phase2设计
+
+- 根ec3e6b0准入有限新demo应用生命周期；设计application-design.md/实际prompt已归档。根给修后精确bc5aef9c62393134582affb7a690acb33ac2b833，92文件SHA/44Py20TSVue核对一致，旧42243从未起app。
+- 已显式允许的t44_native_demo私密三JSON均0600，只CRUD用户、不读admin，不DDL/reset/seed；private环境需复制后改PYTHONPATH。原Vite18080 proxy/Node PATH缺失风险已识别，计划owner overlay与bundled Node，不改源/锁。
+- controller/871、依赖安装与API4worker/consumer/60sscanner/UI、轮换/回收尚待实现/真实执行；本设计checkpoint不构成完整环境运行或独立/性能/云通过。

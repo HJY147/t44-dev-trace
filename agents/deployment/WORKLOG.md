@@ -188,3 +188,12 @@
 - 收尾完整基线diff检查发现两份原始失败stderr的CRLF被判尾空白；之前只检查未暂存diff未覆盖这些已提交原字节。原始检查输出和真实非零保留archive-baseline-check-original.log；两份raw原字节gzip+SHA/roundtrip精确保存，.stderr明确作为仅换行/尾空白规范阅读稿，JSON引用改指raw gzip及原hash。dump未打开，运行源码不改、不重跑服务；完整暂存基线检查另行记录。
 
 - phase1实际结果已body-file发布Issue7/6374241039和PR31/6374241500，PR标题/正文按最终broker生命周期重写；两条comment与PR正文经API精确readback（仅规范CRLF/末换行）一致，原JSON与check在native-validation/github-stage1-*。仍为draft，未合并/设置reviewer成功；GitHub本分支CI仅保存真实snapshot，不用旧SHA结果代替当前门禁。
+
+
+## NATIVE-APPLICATION-v1 phase2 设计checkpoint
+
+- 根ec3e6b0准入本岗application controller与871守卫、新t44_native_demo能力周期；原始实际派工及后续精确源归档ROLE-deployment-NATIVE-APPLICATION-v1。新角色凭据/environment/database私密JSON只核结构与0600，未输出值、不读admin，不触独立资料。
+- 根给bc5aef9c62393134582affb7a690acb33ac2b833 snapshot与native-demo-source-bc5a-binding；92文件SHA核对无差异、44Py/20TSVue，schema/seed与初始化0549可复用；42243从未启动应用。初按decisions目录找两份validation回执的cat失败记录真实保留，已按准入正文改读正确目录。
+- 设计deployment/native/application-design.md：依赖准备、显式final bind、有限run/finallystop分开；私密env副本替换旧PYTHONPATH，freshbroker；API4worker18088/consumer/60sscanner/UI5178；真实两project IDs签发TTL300 scoped服务会话并受控轮换/回收；周期扫描和Pika/outbox/notification证据需实际完成。
+- 入口风险已报根：原Vite proxy硬指18080，需要owner frontend副本及部署overlay指18088/5178/专用cache，原源码/锁不改；原build脚本会准备tmp测试软链，部署路径不读取独立资料。node不在当前PATH（真实command not found），pnpm wrapper11.25.0指向已存在bundled Node；仅核该明确工具路径，不全局安装。
+- 当前只设计/源hash核对，尚未安装phase2依赖、实现controller/871或启动任何应用/DB/broker；stage1全停机保持。下一步设计commit后实现与本岗合成守卫，实际执行前所有源/私密/端口/拥有权预检必须通过。
