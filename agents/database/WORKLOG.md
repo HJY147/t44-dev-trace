@@ -119,3 +119,4 @@
 - 实际Issue4/3 body-file评论URL分别6360580838/6360581522；未冒称消息/调度本人已确认。prompt归档本轮实际完整任务及阶段收口原文。
 - 用户D004选择已生效；旧日志Q002待回复保留为当时事实，当前报告/交接已更新。未触独立testing资料，不发审核成功。
 - 总协调与backend实际指出CI只给DATABASE_URL+T44_DATABASE=t44_ci且拒skip，已修改本岗fixture双环境、显式数据库一致/隔离库限制、CI缺配置fail及integration marker。本机路径须T44_TEST_DATABASE=t44_test。run5全33通过；另外用真实本机库但完全同CI环境变量入口12通过、无skip，保存persistence-ci-env-test.log，不冒充GitHub hosted CI结果。
+- 阶段2真实产品提交af439304c8615e90d470a631dc41dcd76cbd5d6f已push；PR17已用GitHub connector重写完整当前范围（明确seed pending），并实际attach_artifact成功。后续仅补PR正文/交接元数据，不算新业务实现或验证。按总协调要求结束小阶段释放槽位，剩余seed与集成待恢复。
