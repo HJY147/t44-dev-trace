@@ -143,3 +143,6 @@
 - 观察原空表单字符串初始值为true，已仅交root请求后续排查initial/schema，视觉轮未越界改业务；没有传给独立tester。
 - Chrome finally关闭；自己5176Ctrl-C，pnpm实际exit1为主动停止，不写为exit130。一次误用/usr/bin/lsof路径127，后续不以此宣称端口检查成功；真实会话退出已确定。
 - 证据/当前源hash匹配840b1a8见warm-glass-validation.json；所有原失败/中间结果保留，不当独立验收、学生发现或手工测试。
+
+### 2026-10-24｜米咖阶段发布检查纠正
+- 63519c2前git diff --cached --check实际报构建/覆盖率日志尾空白，但shell仍执行了commit；不能记为该检查已通过。原始log.gz字节已在635保留，现在只规范公开可读log的行尾空白，并区分raw_sha256/readable_sha256；不改测试内容、结果或840产品。后续将检查与commit分开执行。

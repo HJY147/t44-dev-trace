@@ -42,6 +42,14 @@ describe('frozen API client', () => {
   })
 })
 describe('contract-driven forms and safe records', () => {
+  it('leaves text and unspecified schemas empty while preserving explicit boolean and const values', () => {
+    expect(initial({ type: 'string' })).toBe('')
+    expect(initial({})).toBe('')
+    expect(initial({ type: 'boolean' })).toBe(false)
+    expect(initial({ type: 'boolean', const: true })).toBe(true)
+    expect(initial({ type: 'string', const: '' })).toBe('')
+    expect(initial(schemas.TaskCreate!)).toMatchObject({ title: '', description: '', plan: { delay_contingency: '' } })
+  })
   it('validates real typed fields and evidence without treating strings as numbers or missing proof as approval', () => {
     expect(envelope({}).meta.contract_version).toBe(schemas.Meta!.properties!.contract_version!.const)
     expect(validate('StartTransition', { expected_version: '1', action: 1 })).not.toEqual({})
