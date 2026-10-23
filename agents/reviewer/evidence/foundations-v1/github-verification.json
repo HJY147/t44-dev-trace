@@ -1,0 +1,363 @@
+{
+  "agent_role": "reviewer",
+  "prompt_ref": "ROLE-reviewer-FOUNDATIONS-v1",
+  "started_at": "2026-10-23T15:16:05.334373+08:00",
+  "scope": "Only module foundations; Q002 pending; no reviewer/stage success, APPROVE, merge or owner edits",
+  "commands": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/14",
+        "--jq",
+        "{number,head_sha:.head.sha,base_sha:.base.sha,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base_sha\":\"717cd65ef73560fde7ff5bca2821c9fe2b20d68a\",\"head_sha\":\"f261cbf0ea94537ed9f0a1600770c93ee8109237\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/14\",\"number\":14}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/f261cbf0ea94537ed9f0a1600770c93ee8109237/check-runs",
+        "--jq",
+        "[.check_runs[] | {name,status,conclusion,html_url}]"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/14/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5625100136,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT0g3aA\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-FOUNDATIONS-v1\\nReviewed-SHA: f261cbf0ea94537ed9f0a1600770c93ee8109237\\n\\n页面/工程基础范围审核通过，未发现本阶段阻断。指定SHA导出到临时目录，既有依赖clone后离线冻结锁校验、typecheck、5项真实组件断言和生产build均通过；owner路径未修改。403无重试、409只refresh、未接通写入口禁用、无虚构业务成功/统计数据具代码及断言依据。\\n\\n这是非独立测试的针对性复验，不含业务API/鉴权联调。后续整合部署门禁前须补真实test:coverage及全TS/Vue来源覆盖率；5项组件测试不能当全前端80%证据。Q002 pending，不冻结契约，不发success/APPROVE/合并。报告将归档reports/reviews/foundations-v1.md。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/14\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/14\"}},\"submitted_at\":\"2026-10-23T07:16:12Z\",\"commit_id\":\"f261cbf0ea94537ed9f0a1600770c93ee8109237\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/15",
+        "--jq",
+        "{number,head_sha:.head.sha,base_sha:.base.sha,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base_sha\":\"717cd65ef73560fde7ff5bca2821c9fe2b20d68a\",\"head_sha\":\"72e3275202273a60af3acc37b7a319f10eea99a7\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/15\",\"number\":15}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/72e3275202273a60af3acc37b7a319f10eea99a7/check-runs",
+        "--jq",
+        "[.check_runs[] | {name,status,conclusion,html_url}]"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228863\",\"name\":\"frontend\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228653\",\"name\":\"static\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228591\",\"name\":\"contracts\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228456\",\"name\":\"coverage\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210777\",\"name\":\"contracts\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210766\",\"name\":\"frontend\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210693\",\"name\":\"static\",\"status\":\"completed\"},{\"conclusion\":\"failure\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210454\",\"name\":\"coverage\",\"status\":\"completed\"}]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/15/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5625100856,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT0g6OA\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-FOUNDATIONS-v1\\nReviewed-SHA: 72e3275202273a60af3acc37b7a319f10eea99a7\\n\\n运维包装/配置/真实失败门禁基础范围审核通过，未发现本阶段阻断。11项运维安全＋6项门禁守卫和Compose离线Schema复验通过；秘密排他0600、目标限制、隔离恢复、不可删卷及最小日志有真实代码/断言。\\n\\n本岗实查远端static job120281228653：hash工具安装及Compose＋官方Nginx容器语法步骤success，但整个四门禁仍failure，不能标产品绿灯。本地没有Docker，未构建/启动容器或执行备份恢复；缺API/CLI等是明确后续实现，不以此硬判本阶段缺陷。Q002 pending，不发success/APPROVE/合并。报告将归档reports/reviews/foundations-v1.md。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/15\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/15\"}},\"submitted_at\":\"2026-10-23T07:16:17Z\",\"commit_id\":\"72e3275202273a60af3acc37b7a319f10eea99a7\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/16",
+        "--jq",
+        "{number,head_sha:.head.sha,base_sha:.base.sha,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base_sha\":\"8f0f6b7738d07aa60591eb72274364ea8f4bcd25\",\"head_sha\":\"0bb4549c1b6e4fb7247dc58dd8a5fa675161d614\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/16\",\"number\":16}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/0bb4549c1b6e4fb7247dc58dd8a5fa675161d614/check-runs",
+        "--jq",
+        "[.check_runs[] | {name,status,conclusion,html_url}]"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/16/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5625101488,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT0g8sA\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-FOUNDATIONS-v1\\nReviewed-SHA: 0bb4549c1b6e4fb7247dc58dd8a5fa675161d614\\n\\nD001纯领域基础范围审核通过，未发现本阶段阻断。本岗复验106项实际单测通过：七状态/九命令、阻塞原状态/解除依据、owner＋developer推进、评审和交付轮次/排期/证据守卫、回滚预案与返工effects均有实现和实断言，原Position/context不被修改。\\n\\n可信GuardContext必须由后续服务端门面构造，不能接受客户端自称证据标记。68项hash锁已核对；现有Linux wheel下载日志有证书失败，Linux目标解析不等于安装/容器运行通过。当前不含HTTP/CAS/审计/幂等/MQ/ORM验证，未把这些后续缺项判为本阶段缺陷。Q002 pending，不发success/APPROVE/合并。报告将归档reports/reviews/foundations-v1.md。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/16\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/16\"}},\"submitted_at\":\"2026-10-23T07:16:21Z\",\"commit_id\":\"0bb4549c1b6e4fb7247dc58dd8a5fa675161d614\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/17",
+        "--jq",
+        "{number,head_sha:.head.sha,base_sha:.base.sha,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base_sha\":\"8f0f6b7738d07aa60591eb72274364ea8f4bcd25\",\"head_sha\":\"4ae865b8dc554813c04aacbb3a5033aa2745c799\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/17\",\"number\":17}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/4ae865b8dc554813c04aacbb3a5033aa2745c799/check-runs",
+        "--jq",
+        "[.check_runs[] | {name,status,conclusion,html_url}]"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/17/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5625102002,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT0g-sg\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-FOUNDATIONS-v1\\nReviewed-SHA: 4ae865b8dc554813c04aacbb3a5033aa2745c799\\n\\n字段无关Engine/UoW/Core基础范围审核通过，未发现本阶段阻断。在本PR自有环境复验18项实际测试通过：SQLite真实commit/rollback/资源归还、先commit后丢确认保持CommitUncertain且数据仍在、close错误不遮蔽该语义、捕获SQL错误后rollback-only禁止部分提交、绑定值与标识符/列策略有实断言。\\n\\nSQLite玩具表＋mock MySQL不等于真实MySQL连接/隔离/约束或项目DDL。借后端已安装t44的环境曾遮蔽本分支namespace导致收集失败，已定位并保留，切回本PR环境18项通过；整合后须在统一锁环境复核共同导入。无18表/业务仓储是授权范围，不硬判缺陷。Q002 pending，不发success/APPROVE/合并。报告将归档reports/reviews/foundations-v1.md。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/17\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/17\"}},\"submitted_at\":\"2026-10-23T07:16:25Z\",\"commit_id\":\"4ae865b8dc554813c04aacbb3a5033aa2745c799\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/actions/jobs/120281228653",
+        "--jq",
+        "{name,head_sha,conclusion,steps: [.steps[] | {name,conclusion}]}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"conclusion\":\"failure\",\"head_sha\":\"72e3275202273a60af3acc37b7a319f10eea99a7\",\"name\":\"static\",\"steps\":[{\"conclusion\":\"success\",\"name\":\"Set up job\"},{\"conclusion\":\"success\",\"name\":\"Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\"},{\"conclusion\":\"success\",\"name\":\"Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0\"},{\"conclusion\":\"success\",\"name\":\"Prepare raw evidence directory\"},{\"conclusion\":\"success\",\"name\":\"Install hash-locked checking tools\"},{\"conclusion\":\"success\",\"name\":\"Validate Compose with placeholders and Nginx syntax in official container\"},{\"conclusion\":\"failure\",\"name\":\"Check configuration, Python static rules and implementation presence\"},{\"conclusion\":\"success\",\"name\":\"Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9\"},{\"conclusion\":\"skipped\",\"name\":\"Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0\"},{\"conclusion\":\"success\",\"name\":\"Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\"},{\"conclusion\":\"success\",\"name\":\"Complete job\"}]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "comment",
+        "12",
+        "--repo",
+        "HJY147/t44-dev-trace",
+        "--body-file",
+        "agents/reviewer/github/foundations-issue12.md"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6359632833\n",
+      "stderr": ""
+    }
+  ],
+  "targets": [
+    {
+      "pr": 14,
+      "sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+      "metadata": {
+        "base_sha": "717cd65ef73560fde7ff5bca2821c9fe2b20d68a",
+        "head_sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/14",
+        "number": 14
+      },
+      "check_runs": [],
+      "comment_body_file": "agents/reviewer/github/foundations-pr14.md",
+      "review": {
+        "id": 5625100136,
+        "commit_id": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/14#pullrequestreview-5625100136"
+      }
+    },
+    {
+      "pr": 15,
+      "sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+      "metadata": {
+        "base_sha": "717cd65ef73560fde7ff5bca2821c9fe2b20d68a",
+        "head_sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/15",
+        "number": 15
+      },
+      "check_runs": [
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228863",
+          "name": "frontend",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228653",
+          "name": "static",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228591",
+          "name": "contracts",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913366479/job/120281228456",
+          "name": "coverage",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210777",
+          "name": "contracts",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210766",
+          "name": "frontend",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210693",
+          "name": "static",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39913361206/job/120281210454",
+          "name": "coverage",
+          "status": "completed"
+        }
+      ],
+      "comment_body_file": "agents/reviewer/github/foundations-pr15.md",
+      "review": {
+        "id": 5625100856,
+        "commit_id": "72e3275202273a60af3acc37b7a319f10eea99a7",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/15#pullrequestreview-5625100856"
+      }
+    },
+    {
+      "pr": 16,
+      "sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+      "metadata": {
+        "base_sha": "8f0f6b7738d07aa60591eb72274364ea8f4bcd25",
+        "head_sha": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/16",
+        "number": 16
+      },
+      "check_runs": [],
+      "comment_body_file": "agents/reviewer/github/foundations-pr16.md",
+      "review": {
+        "id": 5625101488,
+        "commit_id": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/16#pullrequestreview-5625101488"
+      }
+    },
+    {
+      "pr": 17,
+      "sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+      "metadata": {
+        "base_sha": "8f0f6b7738d07aa60591eb72274364ea8f4bcd25",
+        "head_sha": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/17",
+        "number": 17
+      },
+      "check_runs": [],
+      "comment_body_file": "agents/reviewer/github/foundations-pr17.md",
+      "review": {
+        "id": 5625102002,
+        "commit_id": "4ae865b8dc554813c04aacbb3a5033aa2745c799",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/17#pullrequestreview-5625102002"
+      }
+    }
+  ],
+  "deployment_static_job": {
+    "conclusion": "failure",
+    "head_sha": "72e3275202273a60af3acc37b7a319f10eea99a7",
+    "name": "static",
+    "steps": [
+      {
+        "conclusion": "success",
+        "name": "Set up job"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
+      },
+      {
+        "conclusion": "success",
+        "name": "Prepare raw evidence directory"
+      },
+      {
+        "conclusion": "success",
+        "name": "Install hash-locked checking tools"
+      },
+      {
+        "conclusion": "success",
+        "name": "Validate Compose with placeholders and Nginx syntax in official container"
+      },
+      {
+        "conclusion": "failure",
+        "name": "Check configuration, Python static rules and implementation presence"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+      },
+      {
+        "conclusion": "success",
+        "name": "Complete job"
+      }
+    ]
+  },
+  "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6359632833",
+  "completed_at": "2026-10-23T15:16:29.705623+08:00"
+}

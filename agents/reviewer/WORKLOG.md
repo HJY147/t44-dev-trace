@@ -60,3 +60,15 @@
 - 人工与门禁边界：据总协调本轮派工Q002仍pending，不记用户已采用字段/错误码或冻结；实时main严格要求reviewer/stage/static/contracts/coverage/frontend且管理员受约束；bc check-runs查询返回[]，无当前产品门禁通过证据。旧保护拒合并历史实证在records/github针对717cd65，不能冒称新SHA已通过。未执行DDL/HTTP/产品事务/MQ/覆盖率/性能。
 - 本轮仅角色标识COMMENT技术结论/待人审/未实现，不发布success、APPROVE或合并。评论正文保存 `agents/reviewer/github/issue-12-design-v2-bc0cd34.md`；只本岗显式提交，不push/checkout/merge，实际评论/提交回执随后交接并释放索引。
 - 实际PR COMMENT已发布：https://github.com/HJY147/t44-dev-trace/pull/13#pullrequestreview-5624860437 ，回执commit_id=bc0cd34完整SHA，前后远端head一致。首轮读取review回执GET发生EOF（退出1）；未重复提交COMMENT，只读重试成功，失败与恢复均保留在 `agents/reviewer/evidence/design-v2-bc0cd34.json`。该SHA combined status=pending、statuses=[]，未发布success或其他提交状态。
+
+## 2026-10-23 基础模块代码审核与独立分支收尾
+
+- 实际派工`ROLE-reviewer-FOUNDATIONS-v1`及DB追加、收尾消息原文存本岗dispatches。独立worktree `.agent-worktrees/review-foundations`，分支`codex/review-foundations`，base `8f0f6b7738d07aa60591eb72274364ea8f4bcd25`；未使用root索引/分支，未修改owner代码，未联系独立测试或读取其私有资料。
+- 对象精确绑定PR14 frontend `f261cbf0ea94537ed9f0a1600770c93ee8109237`、PR15 deployment `72e3275202273a60af3acc37b7a319f10eea99a7`、PR16 domain `0bb4549c1b6e4fb7247dc58dd8a5fa675161d614`、PR17 DB foundation `4ae865b8dc554813c04aacbb3a5033aa2745c799`（产品7caa2eff）。60份已提交源码/配置/测试文件逐字节及SHA-256对应，清单targets.json；作者报告不代替复验。
+- 真实复验：frontend指定SHA导出到临时目录，clone既有依赖后离线frozen-lockfile、typecheck、5项组件测试、build均退出0；backend无cache写入运行106项domain断言通过；DB自有环境18项SQLite生命周期/故障注入＋mock MySQL通过；deployment11项运维守卫＋6项CI守卫通过，Compose离线schema校验退出0。完整命令/输出或明确标注摘录在evidence/foundations-v1。Node初始PATH缺失、借后端已安装包遮蔽DB命名空间、root环境无pytest均保留；恢复后结果不抹掉初始环境失败。收尾按续派未重跑已过测试。
+- 代码结论：四基础当前未见范围内实质阻断。D001纯领域守卫/不可变效果、DB吞SQL错误后rollback-only/不确定commit不伪称回滚/资源归还、参数绑定与可信列白名单、秘密与隔离恢复包装均有真实依据。后续须补前端coverage脚本、统一环境导入整合、真实MySQL/项目DDL、Docker/备份恢复、HTTP/事务/MQ/调度与全产品门禁；尚未授权实现不作为本阶段缺陷。
+- 远端真实核验：四PR原head相符；PR15 static job120281228653中hash工具安装和Compose＋官方Nginx容器语法步骤success，整个四产品门禁failure。其他三个head没有完整产品绿灯。Linux锁解析不等于Linux安装，现有下载日志证书失败；本机无Docker，没有执行容器或真实恢复。未自我APPROVE/发reviewer成功状态/合并。
+- 四PR COMMENT与Issue摘要已实际发布，完整argv/返回在github-verification.json；收尾先只读读回，避免重复Review。八段十项报告reports/reviews/foundations-v1.md，评论正文单独保存；接下来的显式commit/push仅本岗证据，SHA以命令回执交接，不在报告自引用。
+- 时间补记：初查/评论准备时Q002 pending；收尾收到总协调转述用户原文“采用推荐方案，继续开发”，D004/U006与v1冻结清单在其所报ae60dc3。按通知记新事实，不重审metadata、不把采用归因为本岗决定、不回写旧pending历史为已知。四个被审head不变；APPLICATION与PR19不加本轮。
+
+- 队列恢复收尾：四PR及Issue摘要只读读回确认成功，未重复Review；补记评论 https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362034250 已发布，记录用户采用更新及基础结论边界。读回/返回见comment-readback-resumed.json与closeout-comment.json。本次没有重新运行既有基础测试。

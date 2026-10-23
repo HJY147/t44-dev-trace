@@ -1,0 +1,60 @@
+{
+  "target_sha": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
+  "snapshot": "/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/t44-review-front-92za799d",
+  "method": "git archive exact frontend; APFS clone node_modules; owner worktree untouched",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-0.log"
+    },
+    {
+      "argv": [
+        "pnpm",
+        "--version"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-1.log"
+    },
+    {
+      "argv": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-2.log"
+    },
+    {
+      "argv": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-3.log"
+    },
+    {
+      "argv": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-4.log"
+    },
+    {
+      "argv": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "agents/reviewer/evidence/foundations-v1/frontend-5.log"
+    }
+  ]
+}
