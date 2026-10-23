@@ -85,6 +85,27 @@
       "sha256": "411c928f4d4d917038c711fbb1b5fe914032470e22466c199ec9a5e19f068509",
       "bytes": 1206,
       "finding": "Local CLI version implementation; not yet invoked in this stage"
+    },
+    {
+      "id": "rabbit_password",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit_common/src/rabbit_password.erl",
+      "sha256": "58d96ae98ecbe1aaa239ee6a9dfb060d5237c750660cf78d245efc367c99f185",
+      "bytes": 1551,
+      "finding": "Salt is4 random bytes; store salt plus SHA256(salt+password)"
+    },
+    {
+      "id": "rabbit_boot_defaults",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit/src/rabbit.erl",
+      "sha256": "4301e8c960110397ba4496ddaab1120247fe4b2c697d11b5cbb6f35c48ffd42c",
+      "bytes": 67093,
+      "finding": "maybe_insert_default_data skips default user/vhost when definitions are configured"
+    },
+    {
+      "id": "rabbit_password_sha256",
+      "url": "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v4.3.6/deps/rabbit_common/src/rabbit_password_hashing_sha256.erl",
+      "sha256": "d0d7b128f0f0acc489508158c1e5b476ebd94a8e73cbf8cc2d76698669f1bbe5",
+      "bytes": 511,
+      "finding": "Hashing implementation delegates crypto:hash(sha256, binary)"
     }
   ],
   "web_verified_pages": [

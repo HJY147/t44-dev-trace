@@ -162,3 +162,12 @@
 - 源、锁、角色/项目scope、TTL300与受控轮换、运行目录/属主权限、PID/PGID/启动时间核拥有权、逐次UTC/exit/needed/false失败回执和最小消息/实际60秒扫描计划已写；最终SUT/新库由根另行绑定，尚无任何Rabbit/API/consumer/scanner/DB业务或UI启动。未执行独立、性能、云部署或新测试文件；未改生产业务/契约/门禁。
 
 - 设计checkpoint a772d92已commit/push；实际Issue7评论https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6373861786、新草稿PR31 https://github.com/HJY147/t44-dev-trace/pull/31（base codex/integration/head a772d92）已创建，body-file内容经API精确readback（仅规范CRLF/末换行）一致，原响应与校验在native-validation/github-design-*。未合并、未设置reviewer成功。
+
+
+### NATIVE-v1 stage1 实现待实际能力验证
+
+- 根7763402原生broker能力准入文件已只读核对：仅新自有全回环EPMD/Rabbit、873本岗守卫，不授权任何新库/API/consumer/scanner/UI。873号已由根明确预留；未读取883–874或任何独立私密文件。
+- 实现deployment/native/runtime.py的prepare/start/inspect/stop/cleanup-failed-start门面；项目0700/0600排他配置、新256bit Cookie、新随机AMQP用户/口令及单vhost definitions；官方salt4byte+SHA256算法固定源已核。无guest或管理tags，仅四个既有业务资源regex权限。
+- args文件只存-nocookie/唯一-sname/loopback kernel选项/ASCII codepoint file setter，实际Cookie既不进argv也不进环境；HOME/home/CODEX_HOME原值保留，其他继承服务秘密/debug键被丢弃。所有dump目标项目内、umask077，原probe值不复用。
+- PID/UID/lstart/PGID/command SHA逐项比较后才信号；端口占用不停止占用者；Rabbit停止后需确认自有EPMD无注册节点再停；部分失败回执false。实际CLI先file setter写唯一marker再escript、远程eval只返回Cookie匹配/密码后端认证bool，原输出保留私密并扫描secret。
+- 本岗873合成安全守卫15项、复用本岗旧部署venv Ruff0.17.2、diff检查真实通过；初始14项与随后补入EPMD就绪顺序的15项记录分开保留。未安装全局工具，未更改生产业务/锁/契约/门禁。全部代码仍待一次真实stage1 broker验证，不声称认证/监听/停止已通过。

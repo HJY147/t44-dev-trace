@@ -384,7 +384,7 @@
       "reason": "新macOS项目内原生环境派工；保护旧运行/独立隔离，保留真实失败并先设计准入后启动"
     }
   ],
-  "updated_at": "2026-10-23T20:14:25.964669+00:00",
+  "updated_at": "2026-10-23T20:26:30.289806+00:00",
   "runtime_delivery": {
     "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
@@ -552,6 +552,11 @@
     "design_commit": "a772d922026ead791e3979b0ba6dd7c8e6d6d100",
     "design_issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6373861786",
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/31",
-    "github_readback": "agents/deployment/native-validation/github-design-readback-checks.json"
+    "github_readback": "agents/deployment/native-validation/github-design-readback-checks.json",
+    "stage1_admission": "root7763402 records/decisions/native-broker-capability-admission.json",
+    "stage1_wrapper": "deployment/native/runtime.py",
+    "stage1_guard": "tmp/deployment/873_native_runtime.py",
+    "stage1_local_checks": "15 synthetic deployment guards/Ruff/diff pass; agents/deployment/native-validation/stage1-ready-checks.json",
+    "stage1_broker_validation": "pending"
   }
 }

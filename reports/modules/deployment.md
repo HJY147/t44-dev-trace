@@ -147,3 +147,5 @@
 - 演示候选新t44_native_demo(2项目40任务)/API18088/UI5178，AMQP25674/EPMD24369/dist35674/CLI45674–45683全loopback；未来v3/UI与perf必须另库/vhost，由根冻结。旧5173→18080、5175→18084、MySQL13306/PID7980及业务数据受保护。
 - 设计列明最终精确SUT/锁/关键源SHA、私密账号与scope/TTL300/轮换、PID/PGID/UID/启动时间拥有权、逐次false失败回执、最小真实消息与60秒周期扫描验证。数据库权限/初始化由根协调，现未读取旧秘密或启动服务。
 - 当前只完成设计及有限依赖probe；没有broker、API、consumer、scanner、业务库或UI运行结论，没有新独立/性能/云通过声明。原始提示词/工作日志/JSON交接已同步；根审查后再推进受控能力阶段。
+
+- NATIVE stage1根7763402准入后，新增部署wrapper(runtime.py)与873合成守卫，15项/Ruff/diff通过；随机私密definitions、标准args-file Cookie setter、精确拥有权和逐次false回执已编码。现尚待一次自有全回环EPMD/Rabbit实际启动、CLI认证、监听/vhost/权限和安全停止验证；API等不在本阶段范围。
