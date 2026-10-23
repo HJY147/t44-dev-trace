@@ -190,3 +190,14 @@
 - 本轮未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能，不将文档静态通过计为产品通过。API info.version/Meta.const及权威/运行副本1.1.0由backend完成，root负责需求/业务规则/AGENTS与新freeze父链，现均不代为声称完成。
 - 提示词岗真实问取原文：“ROLE-prompt_engineering-M4-REAL-PROCESS-v1 实际问取：请异步给本轮已发布真实prompt原文与C-P4/catalog修正、capacity生命周期设计/实现（若有）的产物→失败→修正→验证、完整SHA/Issue/PR/实际操作者。只需公开现成来源，不执行产品验证，不读独立测试私有资料；未完成/未回如实pending，不把AI改码记学生亲改。”已异步答复既有0e3e999/0a676ee真实prompt、原失败→修正→证据路径与Issue/PR，并明确当前capacity仅未提交文档、无本岗实现/测试；人的D005/D006选择与AI纠错改码分别记录，完稿后补最终SHA。
 - 本轮真实阶段评论已body-file发表：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327 ，正文capacity-v11-stage-comment.md；PR17按本次文档scope更新标题/正文并attach，未设审核通过。git diff对eac的backend/DDL/v1.json为空，确认无产品/旧freeze改动。
+
+## ROLE-database-DDL-AST-POC-v1：隔离研究进行中
+- 干净fast-forward正式freeze189dc4a3196be0fb84b753f23284f2566d823ea0；实际派工原文归档prompts/ROLE-database-DDL-AST-POC-v1.md。只改952隔离原型/本岗记录，未改生产、DDL/API、freeze或backend依赖/975。957要点仅使用root公开描述，未读原文件/独立私有资料。
+- 官方当前PyPI/release核为SQLGlot30.24.0（2026-10-20）、Python>=3.9、MIT，基础无强制依赖；官方文档明确parser宽松、非validator，MINOR也可破坏兼容。纯Pythonwheel按官方sha948882...验证后仅解包ignored runtime/database-ast-poc/package，未进入backend环境/锁；原元数据与setup日志保留。
+- 首次真实纯解析权威DDL得到18 CREATE/2 ALTER/226列/59CHECK。初版952矩阵run1为29通过/2差异，原失败保留；静态主源确认本岗adapter误把显式NULL的NotNullColumnConstraint(allow_null=True)当NOT NULL，已编辑修复，但尚未重跑。没有把这两个adapter失败说成库缺陷或生产问题。
+- root随后明确BE独占短性能诊断窗口；已报告无本地负载，暂停包安装/批解析/测试/DB/seed，现仅阅读失败/官方源与编辑原型，待root明确窗口结束再跑952。
+- root明确短诊断窗口结束后才恢复952；run2=36通过/1失败保留，run3=40/1，run4=46/1（各<1s轻量解析）。NULL adapter已更正，18/226及列/索引/FK/59CHECK/PK/表选项静态差分一致；仅余13处SQLGlot把IS NOT NULL生成为NOT x IS NULL导致旧checker无法解析，原old-CHECK-reference失败持续保留，不改生产旧checker迁就库。
+- 在952区分候选新AST自身59roundtrip稳定与混用旧parser的13文本不兼容；额外补unsigned/时间精度、索引type位置/排序、FK源/目标/库/动作、恒真/扩张/OR、字符串/函数/优先级及严格拒绝观察。不是一般SQL有效性/等价性证明，没有实际反射倒造预期。
+- 固定cloc2.10同文件函数片段：生产schema117/migrations321；旧可替换语法+构造上界171，新AST提取规范化114，完整Core assembler+type+接入保护尚估60–110，联合可能增加3–53行；CHECK-only潜在约39–46行亦未实现。line-estimate.json不算生产已删；实际节省0。
+- 最终建议不准入生产整对替换，不改依赖锁；研究report及可重复952CLI供root/reviewer决定。Ruff初次F401/I001原失败保留，仅952整理imports后通过，不为风格再刷矩阵；没有触碰975授权样式修复。
+- 本轮以body-file实际发表Issue4阶段说明：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045；正文ddl-ast-poc-stage-comment.md。PR17标题/正文改为本轮未准入POC范围并attach，保持draft。没有把952失败或BE其他集成失败改写为通过。
