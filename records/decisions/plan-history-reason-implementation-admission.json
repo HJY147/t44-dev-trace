@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-10-23T20:04:32.309538+00:00",
+  "actor": "AI coordinator technical implementation decision under U019 overnight authorization, not student human edit",
+  "issue": 28,
+  "design_commit": "5e8e3bc632d8a0b3a558713731589e181f3a029c",
+  "design": "specs/changes/plan-history-reason-projection-rfc.md",
+  "sha256": "33213b0da06e3c248ff1f2c2f295744448537515569c5b977b84767983bec578",
+  "status": "Admitted in separate owner stages: DB fixed bounded pair reader first; backend atomic new reasons and conservative response-only historical projection after DB contract; frontend literal reason and scoped missing indicator. Exact implementation review and tests remain mandatory.",
+  "reason": "Restore visibility of already persisted schedule reasons using existing AuditEvent fields; immutable audit data and frozen API/DDL remain unchanged. Ambiguous/missing legacy association must not be guessed.",
+  "constraints": [
+    "No N+1, cross-product IN+arbitrary LIMIT, unparameterized SQL or cross-project result",
+    "DB must independently review/confirm its fixed <=100 pair interface and enforce original UINT bounds; empty 0SQL, nonempty1 bounded read, full decoded rows, no truncation",
+    "Backend pairs extracted only from authorized current page and exact plan actor/version/time/evidence match; preserve immutable rows, existing successful replay snapshots, audit/write atomicity, errors and auth",
+    "No schedule API/endpoint/DDL/magic business field added; old iteration history without proof stays absent with honest UI explanation",
+    "Frontend renders reason as literal text, including long/newline/date/action-like/HTML-like values, with Chinese field label; existing before/after/evidence remain",
+    "Owner red-green and meaningful regressions before exact source review/combined CI; AI findings/changes never count as student manual quota",
+    "Projected +66..121 application code is only estimate, worsens already failing size gate; no compression or counting policy change."
+  ],
+  "root_review": "Read actual full RFC; project/unique pair keys plus actor/exact microsecond time/complete plan+evidence are accepted conservative sufficient criteria, not proof for arbitrary fabricated imports. Offline8wire samples are not matcher/database/HTTP proof."
+}
