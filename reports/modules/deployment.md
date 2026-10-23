@@ -218,3 +218,5 @@
 
 - self-runner窄修在先行设计c191后完成：仅verify_stopped四角色全部generation/APIchildren选择；原942同例红→新源同guard绿，3新方法含8真实角色代/5APIchildren残留拒绝，Ruff绿，无OS动作/服务/新360。capture/runtime不变，新SHA见self-runner-source-scope，等待新增范围专审。
 - 旧snapshot7端口不包含v3的5177/18086，不是v3过去全时未变证据；只离线纠正，未来另准入须增补UID/start/argv hash基线，当前不补跑。
+
+- 待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931（源084618…）已push；PR37新正文/当时head62ac/drafttrue及Issue7#6376718503、PR37#6376718790均GET逐字一致，末尾仅文档回执归档，最终head另报。原4ef唯一360false保留，新源未实跑；交根专项复核后本轮结束。

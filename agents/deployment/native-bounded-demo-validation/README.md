@@ -25,3 +25,5 @@
 新源尚未实际360验证。原运行的exit1/cleanupfalse及postabsence始终保持；external driver独立wait证明runner最终退出。本次没有第二360、4h、HTTP/SQL或无关套件。
 
 protected-baseline-coverage-note.json明确旧snapshot只覆盖所列7端口，不含当前v3的5177/18086；不能把旧列表匹配扩大为v3过去全时未变。只离线补说明，未因此读取独立应用数据/端口。下一次若另准入须预先增补准确监听身份基线，当前仍待根安排新增范围专审。
+
+当前待审代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931，源SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。GitHub新正文整体替换/Issue7#6376718503/PR37#6376718790均PATCH/POST后重新GET逐字相同，head62ac/drafttrue的实际观察见github-stage-readback-checks.json；之后仅文档/回执末尾commit，最终head另报，运行代码与新候选不混同。此处交根专职新增范围审核；本轮不再进行服务/端口/DB检查或新360。

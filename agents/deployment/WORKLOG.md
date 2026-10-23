@@ -289,3 +289,6 @@
 - 先设计c19146c后，原942源码在同一live runner/所有应用资源已停反例真实红exit1；仅verify_stopped增加已知api/consumer/scanner/ui role选择，仍保留各generation与显式APIchildren。相同guard字节不变，3个新增方法绿exit0：原self例通过、8个角色旧/当前代任一存活仍失败、4worker+tracker任一存活仍失败。own/时钟/等待/信号全mock，未发OS动作/读真实秘密；未重跑17旧serve/23旧application/capture/873/完整cycle。
 - Ruff exit0；AST仅verify_stopped改变、capture及runtime完全不变，源/guard/原红SHA和实际返回码见self-runner-*。新代码没有360验证，原360false保持；后续只GitHub/封档，第二360或4h均未获准。
 - 根纠正旧保护snapshot范围：仅5173/18080/5175/18084/5176/18089/13306匹配，不含v3当前5177/18086；不能把旧snapshot写成v3过去全时不变。只离线加coverage-note/设计边界，未为补证读独立应用数据或端口；未来另准入必须新增真实UID/start/argv hash基线。
+
+- 窄修代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931已push，application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。PR37整体替换正文（不是只追加旧“未准入/未执行”的冲突段）后GET严格逐字一致，实测当时head完整62ac/drafttrue；Issue7评论6376718503、PR37评论6376718790再次GET逐字一致。旧tool-stage GET正文为历史原件保留。
+- 末尾归档仅含文档/脱敏GitHub回执，最终head会区别于代码/evidence62ac；实际唯一360仍为4ef/942且exit1/cleanupfalse，新084只合成3项/Ruff绿，无第二运行。当前交根安排专职新增范围复核，本岗结束释放槽，不继续刷验证或读取端口/DB。
