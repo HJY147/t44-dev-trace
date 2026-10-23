@@ -292,3 +292,10 @@
 
 - 窄修代码/evidence62ac2f327e7523ffed69a2bd9f98c87ba2372931已push，application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25。PR37整体替换正文（不是只追加旧“未准入/未执行”的冲突段）后GET严格逐字一致，实测当时head完整62ac/drafttrue；Issue7评论6376718503、PR37评论6376718790再次GET逐字一致。旧tool-stage GET正文为历史原件保留。
 - 末尾归档仅含文档/脱敏GitHub回执，最终head会区别于代码/evidence62ac；实际唯一360仍为4ef/942且exit1/cleanupfalse，新084只合成3项/Ruff绿，无第二运行。当前交根安排专职新增范围复核，本岗结束释放槽，不继续刷验证或读取端口/DB。
+
+## RUNTIME-USAGE-v1 有界中性工具
+
+- 从7f2cced4063d445f96707f9274b666e03ad697c6建新codex/deployment-runtime-usage/worktree，先读root RFC并记SHA/设计再跑新增CLI缺失真实红。只新865合成，无真实HTTP/SQL/Docker服务/OS信号或独立资料访问；不打断native窗口，不回放旧故障/性能。
+- 独立usage.py：固定六服务ps-q唯一64hex+project/service标签+running/notpaused，全部成功才一次stats --no-stream --no-trunc固定七字段格式；各命令有超时，原stdout/stderr仅内存。缺/重/外来/格式坏/停止/超时严格不完整，统计字段null/稳定码；身份验证前不暴露候选ID。顶层/每服务JSON精确沿RFC，时间包围调用，不称原子。
+- context仅runtime_usage声明、不自动采集；metadata.py字节相同、control除main外全部函数/Controls AST相同，新865含旧metadata委托兼容目标。文档/两合成JSON示例列全部字段/error码及cache非RSS、PIDs含线程、格式化累计IO非速率、CPU非600s、非峰值/非原子/开销及其他流量未知边界。
+- CLI缺失红1项exit1保留；首15guard通过，首Ruff真实F401未用Mock，删该导入后最终15项0.04s与Ruff通过。仅865未跑旧suite。原stdout/stderr/JUnit/源hash在runtime-usage-validation；没有真实stats/runner用量、性能/准入结论，不倒填历史unknown。工具阶段按授权skipci，仅待根静态接线与后续准确runner实采。

@@ -182,3 +182,25 @@ MySQL `--batch` 成功零行 SELECT 允许 stdout **完全为空**（不保证�
 已知背景活动包括scheduler基线60秒扫描、consumer与容器健康探针；实际Running和probe interval随快照记录，扫描基线不是本次流量测量。没有持续抓包/负载归因，other_traffic始终unknown，不宣称无其他流量。输出不自动写公开artifact；调用方按独立证据的私密审阅/显式发布流程处理。
 
 参考：[Docker字段格式化inspect](https://docs.docker.com/reference/cli/docker/inspect/)、[Docker资源约束](https://docs.docker.com/engine/containers/resource_constraints/)、[Nginx -T说明](https://nginx.org/en/docs/switches.html)。
+
+## 有界runtime-usage只读快照
+
+按context的python/control_cli/control_state调用 `control.py runtime-usage`，无额外参数；context.runtime_usage仅声明能力，不自动采样。旧runtime-metadata及原命令格式不变。先验证本项目mysql/rabbitmq/api/consumer/scheduler/web各自唯一64hex容器ID与project/service标签、运行且未暂停，再一次 `docker stats --no-stream --no-trunc` 显式传这六个ID。固定模板只请求ID/CPUPerc/MemUsage/MemPerc/NetIO/BlockIO/PIDs；所有原始stdout/stderr仅在内存处理，不进入控制日志。单次Docker调用上限15秒，Compose ID查询10秒；整个多步观察的墙钟耗时由顶层时间包围。没有任意命令、容器、路径或SQL参数。
+
+有效调用的stdout是单JSON；0只代表六项观察完整，非零+observation_complete=false代表不完整，不是业务失败/性能判定。验证任一服务失败则不调用stats；stats批次缺行、重复、外来ID或格式错误时全部统计字段置null，不尝试从不完整批次补零或猜值。已验证container_id可保留；未验证身份为null。无stats调用时sample时间为null；执行stats时六项时间同为实际调用包围窗口，失败亦保留。错误仅稳定码，原驱动异常/原stderr不回显。
+
+顶层固定字段：schema_version=1、observation_complete、started_at_utc、finished_at_utc、services、limitations。services固定六个服务名，每项固定字段如下：
+
+| 字段 | 含义 |
+| --- | --- |
+| container_id / observed | 已验证64hex ID或null / 是否完整取得本次格式化观测 |
+| sample_started_at_utc / sample_finished_at_utc | stats调用UTC包围窗口；未调用为null |
+| cpu_percent_cli | Docker CPUPerc原字符串 |
+| memory_usage_cli / memory_percent_cli | Docker MemUsage / MemPerc原字符串 |
+| network_io_cli / block_io_cli | Docker NetIO / BlockIO原字符串 |
+| pids_cli | Docker PIDs原字符串 |
+| error | 成功null，否则稳定码；失败统计值均null |
+
+完整格式见[成功合成示例](runtime-usage-success.example.json)和[不完整合成示例](runtime-usage-incomplete.example.json)。两者只说明合同，不是真实runner数据。稳定错误白名单：CONTROL_UNAVAILABLE、CONTAINER_ID_INVALID、CONTAINER_ID_DUPLICATE、CONTAINER_SCOPE_INVALID、CONTAINER_NOT_RUNNING、VALIDATION_INCOMPLETE、COMMAND_FAILED、COMMAND_TIMEOUT、STATS_MISSING、STATS_DUPLICATE_ID、STATS_FOREIGN_ID、STATS_FORMAT_INVALID。CLI语法仍由原argparse拒绝不支持的额外参数，不接受它们作为采集目标。
+
+Linux CLI内存会扣缓存，**不是RSS**；PIDs含内核线程，不等于进程数。网络/块I/O是带单位的格式化累计量，不是速率或物理设备耗时；不把这些字符串伪造为精确字节。CPU百分比窗口不等于完整600秒窗口。六样本非原子，单次或前后快照不证明全程峰值、无其他流量或物理同机；采集的墙钟耗时及负载开销不能当作不存在。不回填历史unknown、不自动发布输出，调用方自行私密取回/审查。语义参照[Docker官方stats](https://docs.docker.com/reference/cli/docker/container/stats/)，限制配置参照[资源约束](https://docs.docker.com/engine/containers/resource_constraints/)。

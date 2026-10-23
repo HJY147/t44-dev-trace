@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "native-bounded-demo-sealed-for-targeted-review",
+  "stage": "runtime-usage-tool-complete",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -796,5 +796,22 @@
     "archive_head_semantics": "final docs/GitHub receipt-only commit differs from code/evidence62ac;report separately",
     "current_services_running": false,
     "full_bounded_lifecycle_passed": false
+  },
+  "runtime_usage": {
+    "base_sha": "7f2cced4063d445f96707f9274b666e03ad697c6",
+    "branch": "codex/deployment-runtime-usage",
+    "prompt_ref": "ROLE-deployment-RUNTIME-USAGE-v1",
+    "rfc": "specs/changes/runtime-usage-snapshot-rfc.md",
+    "rfc_fields_changed": false,
+    "implementation": "deployment/acceptance/usage.py;control.py runtime-usage;context.runtime_usage declaration only",
+    "protocol": "deployment/acceptance/README.md;runtime-usage-success/incomplete.example.json",
+    "tests": "865 only:15 synthetic passed0.04s;Ruff passed;CLI absent red and initial F401 retained",
+    "evidence": "agents/deployment/runtime-usage-validation/",
+    "metadata_byte_unchanged": true,
+    "control_existing_methods_AST_unchanged": true,
+    "actual_runner_stats": "not run;caller must sample exact environment later",
+    "http_sql_docker_signals_or_independent_material": false,
+    "github": "pending Issue7 publish/GET",
+    "scope": "neutral tool,not production optimization/performance/admission;no past unknown backfill"
   }
 }
