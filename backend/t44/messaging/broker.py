@@ -32,8 +32,9 @@ class PikaBroker:
         self.connection = self.channel = None
 
     def _channel(self):
-        if self.connection is not None and self.connection.is_open:
+        if self.connection is not None and self.connection.is_open and self.channel.is_open:
             return self.channel
+        self.close()
         try:
             params = pika.URLParameters(self.settings.url)
             params.heartbeat = 60
@@ -99,6 +100,14 @@ class PikaBroker:
         except (pika.exceptions.AMQPError, OSError):
             self.close()
             raise BrokerUnavailable("BROKER_RECEIVE_FAILED") from None
+
+    def keepalive(self):
+        if self.connection is not None and self.connection.is_open:
+            try:
+                self.connection.process_data_events(time_limit=0)
+            except (pika.exceptions.AMQPError, OSError):
+                self.close()
+                raise BrokerUnavailable("BROKER_HEARTBEAT_FAILED") from None
 
     def close(self):
         if self.connection is not None:

@@ -59,3 +59,16 @@ def test_consumer_ack_failure_keeps_database_and_reconnects():
     assert result["errors"] == 1 and result["consumed"] == 0
     store.consume.assert_called_once_with(5)
     consumer.close.assert_called_once()
+
+
+def test_publisher_idle_heartbeat_is_serviced_and_failed_connection_is_replaced():
+    connection = Mock()
+    broker = PikaBroker(BrokerSettings("amqp://localhost/"), connect=Mock(return_value=connection))
+    broker._channel()
+    broker.keepalive()
+    connection.process_data_events.assert_called_once_with(time_limit=0)
+    connection.process_data_events.side_effect = pika.exceptions.AMQPConnectionError()
+    with pytest.raises(BrokerUnavailable, match="BROKER_HEARTBEAT_FAILED"):
+        broker.keepalive()
+    assert broker.connection is None
+    connection.close.assert_called_once()

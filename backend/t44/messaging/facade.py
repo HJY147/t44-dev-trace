@@ -21,12 +21,17 @@ class NotificationFacade:
 
     def list(self, g, *, actor_id, query):
         if project_id := query.get("project_id"):
-            self._membership(g, actor_id, project_id)
+            self._membership(g, actor_id, project_id, lock="share")
             projects = [project_id]
         else:
             projects = [
                 m["project_id"]
-                for m in g.rows("project_members", {"user_id": actor_id, "active": 1})
+                for m in g.rows(
+                    "project_members",
+                    {"user_id": actor_id, "active": 1},
+                    order_by=("project_id", "user_id"),
+                    lock="share",
+                )
             ]
         where = {"recipient_id": actor_id, "project_id": projects}
         predicates = tuple(

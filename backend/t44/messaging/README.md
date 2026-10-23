@@ -1,6 +1,6 @@
 # 消息进程
 
-冻结 v1；消息岗实现。使用已有数据库迁移与 `OutboxStore`，不会在启动时建表。部署前必须包含数据库岗的 `recover_confirmed` 原子恢复门面；缺失时进程显式失败。
+冻结 v1；消息岗实现。使用已有数据库迁移与 `OutboxStore`，不会在启动时建表。数据库岗 1602f359 提供的 `recover_confirmed` 已实际接线并真库验证；部署须包含该依赖，缺失时进程显式失败。
 
 配置通过环境提供 `DATABASE_URL`、与 URL 库名一致的 `T44_DATABASE`、`AMQP_URL`。凭据通过私密环境/挂载注入，不写入命令或日志。安装仓库既有锁文件后运行：
 
@@ -18,4 +18,4 @@ API 工作者只装配 `NotificationFacade()`；不得从 API 多worker 启动�
 
 模块验证：`PYTHONPATH=backend python -m pytest backend/tests/messaging -q`；真实组件用 `-m integration`，由 CI 提供 `DATABASE_URL`、匹配 `T44_DATABASE=t44_ci` 与 `AMQP_URL`。CI 缺配置直接失败；本机没有 AMQP 配置时仅 Rabbit 用例 skip，不作为通过。
 
-Pika官方参考：[BlockingConnection与线程限制](https://pika.github.io/pika/latest/modules/adapters/blocking/)、[1.x blocking实现及confirm/mandatory语义](https://github.com/pika/pika/blob/1.3.2/pika/adapters/blocking_connection.py)。实际依赖锁为 Pika 1.4.4；不使用新版文档中不适用1.x的跨线程 `Connection` API。
+Pika官方参考：[BlockingConnection与线程限制](https://pika.github.io/pika/latest/modules/adapters/blocking/)、[1.4.4 blocking实现及confirm/mandatory语义](https://github.com/pika/pika/blob/1.4.4/pika/adapters/blocking_connection.py)。实际依赖锁为 Pika 1.4.4；不使用新版文档中不适用1.x的跨线程 `Connection` API。
