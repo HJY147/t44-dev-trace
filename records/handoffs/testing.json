@@ -1,0 +1,206 @@
+{
+  "role": "testing",
+  "stage": "bootstrap-independent-acceptance-design",
+  "implementation_status": "没有业务实现；仅完成验收范围草案和隔离规则；没有执行软件测试",
+  "artifacts": [
+    {
+      "path": "agents/testing/WORKLOG.md",
+      "sha256": "10fde1cc5e148a5993ae42705563234792eec3d8157b2f4306ef3dbf2703e0b8"
+    },
+    {
+      "path": "reports/modules/testing.md",
+      "sha256": "cf376a918a741ea58defa8362c88a5aecde9604695b206ffae6c5866613be899"
+    },
+    {
+      "path": "reports/independent-tests/bootstrap-acceptance-plan.md",
+      "sha256": "c59855ac4bff1d17a73211a034b4055cbb292c3180a49fb52326d226d54f0748"
+    },
+    {
+      "path": "reports/independent-tests/isolation-protocol.md",
+      "sha256": "be2642fbb889216219198c9175fe27d5c83d467493d420c9d3463fccc41430fc"
+    },
+    {
+      "path": "records/handoffs/testing.json",
+      "sha256": null,
+      "note": "本交接文件不自包含其自身哈希"
+    }
+  ],
+  "interfaces": {
+    "input_allowlist": [
+      {
+        "path": "agents/testing/TASK.md",
+        "sha256": "623e63a817a5ae85fdbce3b4d77e6300abd28eafdc2056a4f58d771cfb522d8f"
+      },
+      {
+        "path": "specs/sources/T44-taskbook.txt",
+        "sha256": "7d61ecdba76128dcb34931f2c2211bfd650bf2cd246bba4c6abf8ae9c2193ab0"
+      },
+      {
+        "path": "specs/sources/submission-notes.txt",
+        "sha256": "ca2c72bf5d19d7fde0d76dd4063c52533a2f6d39f613dcfa3cdcefaa03b8552f"
+      },
+      {
+        "path": "specs/sources/homework-requirements.txt",
+        "sha256": "2193bf6c1cc49f3404ae37332759f785e6362c0eb7e3a5e720724a0be0487c3a"
+      },
+      {
+        "path": "specs/sources/manifest.json",
+        "sha256": "85731d41a2ca7896c162257c61b1d56fee1d45e15739192096a3925e00978a94"
+      }
+    ],
+    "actual_read_files": [
+      {
+        "path": "agents/testing/TASK.md",
+        "sha256": "623e63a817a5ae85fdbce3b4d77e6300abd28eafdc2056a4f58d771cfb522d8f"
+      },
+      {
+        "path": "specs/sources/T44-taskbook.txt",
+        "sha256": "7d61ecdba76128dcb34931f2c2211bfd650bf2cd246bba4c6abf8ae9c2193ab0"
+      },
+      {
+        "path": "specs/sources/submission-notes.txt",
+        "sha256": "ca2c72bf5d19d7fde0d76dd4063c52533a2f6d39f613dcfa3cdcefaa03b8552f"
+      },
+      {
+        "path": "specs/sources/homework-requirements.txt",
+        "sha256": "2193bf6c1cc49f3404ae37332759f785e6362c0eb7e3a5e720724a0be0487c3a"
+      },
+      {
+        "path": "specs/sources/manifest.json",
+        "sha256": "85731d41a2ca7896c162257c61b1d56fee1d45e15739192096a3925e00978a94"
+      }
+    ],
+    "communication": "仅向总协调提交最终结果；未调用协作消息、任务或代理列表工具",
+    "output_allowlist": [
+      "agents/testing/WORKLOG.md",
+      "reports/modules/testing.md",
+      "reports/independent-tests/bootstrap-acceptance-plan.md",
+      "reports/independent-tests/isolation-protocol.md",
+      "records/handoffs/testing.json"
+    ],
+    "future_handoff": "冻结需求/外部接口与运行资料；先冻结用例及哈希，再运行被测快照；白盒单独登记新增读入；修复由新无历史实例复测",
+    "isolation_limit": "共享文件系统上的流程约束，不是已经实施的操作系统级隔离"
+  },
+  "commands_executed": [
+    {
+      "command": "cat agents/testing/TASK.md",
+      "purpose": "读取岗位边界",
+      "result": "成功；非测试命令"
+    },
+    {
+      "command": "python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib\nfor name in ['agents/testing/TASK.md','specs/sources/T44-taskbook.txt','specs/sources/submission-notes.txt','specs/sources/homework-requirements.txt','specs/sources/manifest.json']:\n p=Path(name)\n b=p.read_bytes()\n print(f'FILE {name}\\nSHA256 {hashlib.sha256(b).hexdigest()}\\nCONTENT\\n{b.decode(\"utf-8\")}\\nEND FILE')\nPY",
+      "purpose": "读取且哈希五个白名单输入",
+      "result": "成功；三个提取文本哈希与manifest一致；非测试命令"
+    },
+    {
+      "command": "python3（本轮五份允许产物生成脚本）",
+      "purpose": "写入五份指定文档；仅以内存生成内容检查报告行数和交接字段",
+      "result": "成功；无被测软件运行；命令未列举项目或读入其他文件"
+    }
+  ],
+  "results": {
+    "acceptance_design": "完成FR-01～FR-08和AC-01～AC-09逐项映射、非功能/交付材料范围及16项规格问题",
+    "isolation_protocol": "完成阶段/输入/通信/写入边界、冻结与哈希、白盒新增读入和新实例复测约束",
+    "source_hash_check": "三份文字来源实际SHA256与manifest所载text_sha256一致；原始DOCX未校验",
+    "module_report_lines": 48,
+    "software_tests_executed": 0,
+    "acceptance_passed": false,
+    "coverage": null,
+    "performance": null,
+    "case_freeze_status": "尚未冻结可执行用例；本轮仅范围草案"
+  },
+  "unverified": [
+    "全部FR/AC与非功能要求的实际实现及行为",
+    "覆盖率、全量测试结果、P95、吞吐、并发持续运行与故障恢复",
+    "结构/代码性质、门禁、DDL、鉴权/SQL参数化、Token阻断与存储安全",
+    "AI留痕真实性/数量、代码规模、架构比较与最终提交材料",
+    "原始DOCX完整内容、图片和课件AI边界清单",
+    "操作系统级隔离未实施"
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "scope": "FR-01/AC-01",
+      "question": "三类接口的路径、方法、输入输出、必填和边界、错误状态码及错误体、冻结批准人/版本是什么？联调和实现变更如何证明遵守冻结及同步契约测试？"
+    },
+    {
+      "id": "Q02",
+      "scope": "FR-02/AC-02",
+      "question": "四张核心表的字段、统一主键、允许枚举及取值、最小可用类型的判定基准、逐表评审与迁移准入证据格式是什么？"
+    },
+    {
+      "id": "Q03",
+      "scope": "FR-03/AC-03",
+      "question": "固定八段式的完整八段和十项清单原文、证据位置与有效性的判定、判定角色及审批权限是什么？"
+    },
+    {
+      "id": "Q04",
+      "scope": "FR-04/AC-04",
+      "question": "依赖满足条件、是否允许循环/跨项目依赖、人力与产能单位、时间区间、缓冲和延期预案必填规则、排期差异保存口径是什么？"
+    },
+    {
+      "id": "Q05",
+      "scope": "FR-05/FR-06/AC-05",
+      "question": "全部合法状态边、初始/终结状态、阻塞恢复目标、解除依据、评审出口、上线与回滚执行权限及拍板人字段是什么？不得从状态名称排列推定合法边。"
+    },
+    {
+      "id": "Q06",
+      "scope": "FR-06/AC-06/可靠性",
+      "question": "并发冲突与幂等重放如何区分，任务版本/请求标识、幂等范围和保留期是什么？被拒绝请求的错误响应和审计字段、任务现状的比较范围是什么？"
+    },
+    {
+      "id": "Q07",
+      "scope": "FR-07/AC-07",
+      "question": "临期/超期阈值、时区、扫描周期、等级及收件人、再次升级条件、升级次数与处理结果、重试/确认/去重边界和站内待办恢复策略是什么？"
+    },
+    {
+      "id": "Q08",
+      "scope": "FR-08/AC-09",
+      "question": "门面边界、允许的依赖注入方式、静态检查门禁集合、覆盖率工具/分母/排除项/总量或分支口径、放行依据规则是什么？"
+    },
+    {
+      "id": "Q09",
+      "scope": "安全/合规",
+      "question": "鉴权方式和角色权限矩阵、项目参与关系生效/撤销规则、审计留存及脱敏字段、Token 泄露的具体威胁模型与阻断证据是什么？"
+    },
+    {
+      "id": "Q10",
+      "scope": "安全/合规",
+      "question": "SQL 注入探针应拒绝的输入边界与错误码、参数化安全接受字面值是否允许、明文口令拒绝发生在何处及其记录规范是什么？"
+    },
+    {
+      "id": "Q11",
+      "scope": "性能/AC-08",
+      "question": "400 并发模型、流转/查询/契约校验/通知接口的流量比例与各自 P95 口径、响应计时边界、预热、吞吐计数及预期业务拒绝是否计为失败是什么？"
+    },
+    {
+      "id": "Q12",
+      "scope": "性能/AC-08",
+      "question": "固定硬件与软件环境、网络/压测端条件、约 40 项目/6000 任务/9000 依赖/1.5 万评审与决策数据的允许偏差和生成分布是什么？"
+    },
+    {
+      "id": "Q13",
+      "scope": "可靠性/故障",
+      "question": "允许注入的事务、消息队列、调度器及服务故障点、数据持久性确认边界、重启后的恢复等待上限及可观测审计接口是什么？"
+    },
+    {
+      "id": "Q14",
+      "scope": "可维护性/交付",
+      "question": "新增评审项/升级规则的指定变更样例、人日与文件/模块计数方法、有效代码行排除项、两组架构候选对比与交付材料的最终清单是什么？"
+    },
+    {
+      "id": "Q15",
+      "scope": "AI 留痕/提交",
+      "question": "AI 上下文到最终代码至少 5 处、提示词至少 6 版本、人工修改至少 12 条、幻觉至少 3 条的证据与关联方式，以及课件 AI 能做/不能做清单的权威原文是什么？"
+    },
+    {
+      "id": "Q16",
+      "scope": "原始材料完整性",
+      "question": "提取清单明确 DOCX 图片未复制；是否存在影响验收的图片、表格格式或课件内容，须如何经批准补入冻结输入？"
+    }
+  ],
+  "prompt_refs": [
+    "ROLE-testing-BOOTSTRAP-v1"
+  ],
+  "updated_at": "2026-10-23T11:44:11+08:00"
+}
