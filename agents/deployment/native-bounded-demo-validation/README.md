@@ -39,3 +39,5 @@ protected-baseline-coverage-note.json明确旧snapshot只覆盖所列7端口，�
 serve-retest-summary.raw.json.gz为原公共stdout exact gzip；serve-retest-capability.json白名单投影；serve-retest-original-index.json记录226个私密非秘密原件SHA，秘密/原dump不上传。operational-driver/post是此次实际外部运维脚本原字节，未纳入控制器。后置提取attempt1因rule_hash bytes不能直接JSON真实exit1，原source/failure保留；仅转hex后重新只读提取exit0，不重跑服务，不将它写为原controller失败或隐藏。
 
 此新360结果只给有限本机开发演示能力；4h用户演示仍未准入，独立/性能/云及资源unknown不回填。根收到退出/清理后窗口释放，此后仅离线封档/秘密扫描/GitHub，禁止自行再起服务。
+
+复验含验证逻辑的三份公共可执行副本依根预留号逐字节迁移到 `tmp/deployment/864_native_serve_driver.py`、`863_native_serve_post_attempt1.py`、`862_native_serve_post.py`；SHA及旧公开路径/当时私密执行路径/现归档路径映射见serve-retest-script-path-migration.json。实际运行时的私密路径、argv、hash和原失败均不改写，历史扫描scope仍保留当时路径。仅目录整理，无运行重做。

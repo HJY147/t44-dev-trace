@@ -300,3 +300,5 @@
 - deadline实际触发duration_elapsed23:38:39.044609Z，summary结束23:38:41.688950Z；外部driver wait23:38:42.502726Z真实exit0，summary/cycle/cleanup全true。后置12登记PID（含APIchildren/runner）全部absent、Rabbit/EPMDgone、新5端口closed；九端口三个观察点listenerPID/UID/start/commandSHA全等。此补充三时点观察不回写原七端口历史，不是全时连续监控证明。原360 exit1/cleanupfalse及所有原件永久保持。
 - 后置证据提取首次真实exit1（rule_hash bytes不受json_bytes支持，未写出proof），保留原post脚本字节/SHA及observed failure receipt；仅将rule_hash转hex后重做native只读提取exit0。无controller代码变动/服务重跑；此提取失败不混为serve实际exit。原异常在tool transcript保留，未伪造不存在的raw stderr文件。
 - 源92SHA在后置复核不变，私密226非秘密outputs+args对旧失败/新复验合计19个实际secret literal匹配0；gzip/public投影另扫，cookie/token/账户/DBURL不进入公开白名单。dump不读。已将真实exit/全停报告根释放窗口，此后只离线归档，不发HTTP/SQL/再跑360或4h。
+
+- 证据10182b79906d60379e1ece6b37d0c8b9727f7b0a已push；root纠正三份验证driver公共副本应放tmp并预留864/863/862。本岗仅git mv逐字节迁移，三个SHA前后一致，mapping单列旧公开路径/现归档路径/实际私密执行路径，原argv/hash/异常和历史scan范围不倒改。未运行这些副本、未再查端口/HTTP/SQL/服务。

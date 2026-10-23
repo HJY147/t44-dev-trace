@@ -227,3 +227,5 @@
 - 首两扫描60.324684s/额外TTL300轮换1次，API/consumer/UI各1/scanner3代/4worker，3服务凭据+ready会话全撤销；controller验证4条/DB同UTC8completed分口径，旧16/26只复核/新outbox0。
 - 截止23:38:39.043824Z→实际停止请求23:38:39.044609Z→summary23:38:41.688950Z→外部wait实际exit0；12登记PID含workers/runner及Rabbit/EPMD全gone，新端口closed，九端口三个观察点身份全等（本次补充，非旧snapshot或全时监控证明）。
 - 后置提取原bytes JSON失败exit1单独保留，窄转hex后只读提取exit0，无服务重跑。证据serve-retest-*；窗口已释放，4h尚未准入，独立/性能/云不推定。
+
+- 三份公共验证脚本依root预留号移至tmp/deployment/864、863、862，字节/SHA不变，路径mapping说明只归档目录变化，原私密执行/失败/扫描原件保持，无重跑。

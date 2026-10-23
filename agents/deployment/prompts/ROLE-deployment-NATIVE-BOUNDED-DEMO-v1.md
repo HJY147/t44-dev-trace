@@ -33,3 +33,7 @@
 精确62ac专审a7bad288完成（原SERVE-CLEANUP-SCOPE-01仅限定关闭，同冻结反例一红一绿、无另确认新增P1/P2），root已正确merge16b+a7，HEAD1e9a081703f42dba5fba793c1706a7486933bbdc、appstillbc5。现在授权唯一【新360秒实际复验】绑定62ac/084618工具，不授权4h yet。你own worktree controller/source固定，按原prepare新fresh run/manifest/cookie/vhost，原failedrun不改/不复用；新增外部read-only基线必须含5177/18086+旧7共9端口的listener PID/UID/start/command hash，fresh prepare前→serve前→结束后逐项相同；这是补充观察而非回写旧七端口。不要为加端口修改已审controller/runtime代码，可在本次外部operational driver精确观察，原baseline与额外9项分别标注。当前本机无负载比较，root给予此360唯一runtime窗口；其他agent只offline或hosted，禁止触及独立数据。检查真实ready/两60s新持久ticks/TTL300额外轮换≥1/角色spawncounts、deadline触发、真实exit与cleanup/allownPIDs/workers/brokergone/新portsclosed/9protectedexactmatch；旧16/26勿称新publish、新outbox0如实。每个阶段消息报实际事实，原360 exit1永保留。若新运行失败先seal并只读定位/窄修需报告，不盲重跑。实际结束封档公共白名单+秘密scan+真实私密位置/源SHA/Issue7交接后FINAL。若完全通过，另等root授权最多4h有界用户演示，不自行提前。
 
 本人执行：不改已审工具084618/runtimea251；独立外部operational driver在freshprepare前/serve前/实际结束后对九端口监听PID/UID/start/commandSHA逐项比对，只读监听元数据，不接触独立应用资料。仅一次fresh360，阶段消息如实；私密driver/日志0600，公共只白名单/源hash/实际返回码与基线匹配范围，原failedrun不改。
+
+## 根对验证脚本归档目录的实际纠正
+
+已读101公共capability，run2实际通过/原失败保留准确。发现新3份可执行复验driver副本在agents/.../*.py；用户明确test文件放tmp并递减编号，这些含验证逻辑的复验脚本应按约定归tmp。请先勿FINAL：root将预留864/863/862分别给当前serve-retest-operational-driver.py、serve-retest-post-attempt1.py、serve-retest-post.py，保持字节不变git mv到tmp/deployment/864_native_serve_driver.py、863_native_serve_post_attempt1.py、862_native_serve_post.py；更新公共副本引用/补迁移说明，但所有原实际私密执行路径/command/原始hash/失败日志不得倒改，可记录当时路径与现归档路径mapping。原运行不重跑，无新HTTP/SQL/服务。仅目录命名整理后Issue/PR再精确readback seal。root账本马上提交，当前next864只有你此3项可用。
