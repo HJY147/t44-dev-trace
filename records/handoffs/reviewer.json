@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
   "stage": "PR30 UI002人力拒绝说明限定代码审核c56/3628；整体不放行",
-  "implementation_status": "限定代码审核/现有13目标一次/公开原件hash完成；真实COMMENT/readback待发布；无生产修改",
+  "implementation_status": "限定代码审核/现有13目标一次/公开原件hash及PR30精确c56 COMMENT和完整GET读回完成；无生产修改",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -310,6 +310,10 @@
     {
       "command": "Own candidate existing staffing rejection feedback describe once; TypeScript AST and source/gzip/hash probes; plugin PR30 metadata",
       "result": "13pass/52skipped exit0;19source/14freeze/9raw match; original tests and R1 retained; initial JUnit output relocated without rerun"
+    },
+    {
+      "command": "GitHubplugin COMMENT PR30 explicitc56; pluginlist and full gh GET review5633760634",
+      "result": "UniqueCOMMENTsuccess, exactbody/COMMENTED/fullcommitc56 verified; firstb40push0; noAPPROVE/status/CItrigger/merge"
     }
   ],
   "results": [
@@ -319,7 +323,8 @@
     "FE-INIT-01限定关闭；不作为整产品放行",
     "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
     "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged.",
-    "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56."
+    "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56.",
+    "PR30 COMMENT5633760634 actually published; exact body/state/fullcommit_id verified through complete GET. UI002 limited code review is not independent/global acceptance."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
@@ -518,17 +523,25 @@
       "improvement_reason": "Bind display to frozen status/code/op and necessaryschema; separate capacity states1-5 from member1-5+7 and preserve session/R1/fallback; one13case replay only."
     }
   ],
-  "updated_at": "2026-10-23T19:57:54.177123+00:00",
+  "updated_at": "2026-10-23T19:59:36.224381+00:00",
   "review_outcome": "No new material blocker in UI002 presentation mapping; overall NOT_ACCEPTED",
   "github_evidence": {
-    "exact_body_readback": true,
-    "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
-    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636",
+    "operator": "AI reviewer using authorized HJY147 account; not separate human",
+    "review_id": 5633760634,
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "commit_id": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
     "state": "COMMENTED",
-    "status_mutations": [],
-    "no_success_approve_or_merge": true,
-    "review_id": 5630038636,
-    "evidence": "agents/reviewer/evidence/read-uow-5dcb/github-verification.json"
+    "body_exact_match": true,
+    "plugin_body_and_state_exact_match": true,
+    "full_specific_review_GET_exit_code": 0,
+    "readback_sha256": "0a50e5447f6e4a3b7d40b3e0ed7c181ed90fd6bcb8eb39bf294a3f0401edaad1",
+    "body_sha256": "df7382718419bee620c5a5f58fa0af6ed64cf107c14de917268005a33125f096",
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3",
+    "first_evidence_push_exit_code": 0,
+    "publish_tool": "GitHub plugin add_review_to_pr COMMENT explicitcommit_id",
+    "readback_note": "Pluginlist omits commit_id; gh read-only full GET of specific review strictly checks commit_id/body/state",
+    "no_status_approve_or_merge": true,
+    "verified_at_utc": "2026-10-23T19:59:36.224381+00:00"
   },
   "previous_design_review": {
     "stage": "C1-C4技术设计复审v2通过；Q002待人审，未放行",
@@ -1049,10 +1062,21 @@
     "ci_triggered": false,
     "new_test_files": [],
     "private_independent_accessed": false,
-    "github_comment": null,
-    "github_exact_body_and_commit_readback": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/pull/30#pullrequestreview-5633760634",
+    "github_exact_body_and_commit_readback": true,
     "status_mutations": [],
     "approve": false,
-    "merged": false
+    "merged": false,
+    "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3"
+  },
+  "previous_github_evidence": {
+    "exact_body_readback": true,
+    "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5630038636",
+    "state": "COMMENTED",
+    "status_mutations": [],
+    "no_success_approve_or_merge": true,
+    "review_id": 5630038636,
+    "evidence": "agents/reviewer/evidence/read-uow-5dcb/github-verification.json"
   }
 }
