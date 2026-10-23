@@ -169,3 +169,10 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 实际prompt ROLE-reviewer-NATIVE-CAPTURE-FIX-v1，精确cc6a211bb1692460ffba09f7ee764c64545602ee/b23897879142de3bd77190c67d4947eccf1c8263，设计7f4845e。唯一原事件/原拒绝断言语义重放一次exit0，0真实进程/信号；超时后actualrc0仍OWNED_COMMAND_TIMEOUT/timed_outtrue/successfalse。26公开hash、14冻结、原两红副本、其余AST/runtime/旧ApplicationGuards不变，owner5边界原件核实但未重跑。P2限定关闭；原5ef失败、0a6 cycle历史保持，新代码未有完整cycle验证。报告reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md。无生产改动、私有/独立读取、套件/服务/CI/负载运行或整体放行；实际COMMENT/GET回执另补。
 
 实际发布：证据阶段8c415c16e384f6af17694fd2719608d3510916bc已push，PR34 COMMENT5634940377显式绑定完整cc6；插件逐字body/COMMENTED与完整REST GET commit_id/body/state严格一致exit0，回执github-comment.json。仅关闭P2，原5ef失败与0a6真实cycle保持，无APPROVE/status/CI/mainmerge或整体放行。
+
+
+## PR21私密审阅包/metadata wrapper限定专项（2026-10-24）
+
+准确9d6ead5fa3e1494946f2bb8d7ef33c1a97758077，prompt ROLE-reviewer-COURSEWORK-BUNDLE-v1。P2 BUNDLE-SOURCE-BINDING-01真实内存ZIP反例exit1：自洽manifest不等于真实Git tree映射，假api.py blob被verify_source_archive接受。信任上游生成器及外部选择SHA可排除此输入的前提单列，不指控真实包；工具未构建实际包，不读私密DOCX/cover/R002或独立资料。
+
+metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开hash/旧95343节点/2红→4绿与rawgzip，不重跑四项，不推定stage05实际原因。14冻结相符，A不通过、B所列静态未见新增阻断，整体验收/包/人工交付不放行。报告reports/reviews/21-9d6ead5fa3e1494946f2bb8d7ef33c1a97758077.md，证据agents/reviewer/evidence/coursework-bundle-9d6；后续dda3窄修另审，不覆盖原失败，实际Issue/COMMENT/GET后补。
