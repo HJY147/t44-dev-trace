@@ -262,3 +262,10 @@
 - 按根61b23e6 RFC开启新阶段，从实时root c1aff86新独立worktree/branch codex/deployment-bounded-demo，不改已merge旧PR31/34历史。已读当前AGENTS/任务/RFC/cd3限定报告，原0a6成功与b238未cycle边界保持；cd3短名无法解析与reviewer/prompts不存在的原查找失败后改用准确SHA/dispatch路径。未读独立或任何真实私密输入。
 - 本人设计bounded-demo-design.md已先成：serve显式180..14400秒/单次run、signal仅置标记安全点cleanup、API/consumer/UI一次启动、TTL300剩120秒轮换scanner/持久tick、ready用户会话提前回收、owned stop请求与完成分开、私密状态/公共白名单。默认cycle路径尽量保持。
 - 当前只设计/实际prompt，无新代码/服务/360秒实跑；下一步工具与必要合成边界完成后报告根。实际窗口与专职新增范围审核另准入，不提前启动，也不回填正式独立三组同次unknown。
+
+### NATIVE-BOUNDED-DEMO-v1工具/必要合成已完成
+
+- 先设计daaccb7后实现serve/stop；serve只接受bc5/current-controller新prepare/未用run与180..14400秒，登记私密runner/截止/stop参数；默认run仍无serve控制。信号只置标记，检查点/到期进入旧拥有权cleanup；请求已发与清理已确认分开。
+- 首周期后API/consumer/UI不重建，控制器ready登录会话先回收；TTL300剩120秒时排空scanner→真实签发/原子发布→撤销旧→新scanner→持久tick/锁后才计额外轮换。已确认撤销的旧会话保留原件但不重复耗时清理。公共结果只计数/源/UTC/端口/清理布尔，不含账户/凭据/通知个人内容。
+- 仅执行871新ServeGuards：初14项绿，补source/controller拒绝、cleanupfalse不转true、ready自有会话回收后最终17项绿；Ruff绿/CLI帮助解析0。Popen/DB/身份/信号全替身，未读真实私密输入、未起服务/发真实信号、未跑旧守卫/完整cycle。capture AST、runtime与业务/锁/规则不变。
+- 工具源hash与scope原件见native-bounded-demo-validation/source-scope.json；新360秒实跑未准入/未执行，现提交后报告根等压力比较窗口，新增范围还需专职审后另准入。
