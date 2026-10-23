@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "round": "v4-performance",
+  "publication": "freeze metadata only; no case content released",
+  "published_at_utc": "2026-10-23T23:46:26.681783+00:00",
+  "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/independent-performance-v4",
+  "branch": "codex/independent-harness-v4-performance",
+  "frozen_harness_commit_H": "9f8b5eab4061c14f1b7a314cd418c2663a6b0634",
+  "neutral_packet_commit": "db12bfd4dab03e0b2614f354d8bd27a0e3616621",
+  "private_directory": "tmp/independent/private-v4-performance",
+  "private_freeze_manifest_path": "tmp/independent/private-v4-performance/freeze-manifest.json",
+  "private_freeze_manifest_sha256": "4e7fa00ccc09b17798e82e7ecacfbaec07d5899b26ddaeae06008380a5cba923",
+  "source_hash_manifest_path": "tmp/independent/private-v4-performance/inputs/source-hashes.json",
+  "source_hash_manifest_sha256": "bca7f10b448e0b073e312908799ce7b5c316da577cf5a2b70fceae67d069c2c1",
+  "entrypoints": {
+    "tmp/independent/private-v4-performance/868_task_query.py": {
+      "sha256": "ee931bdc6582cccc25947f37b5e3b608741c23af8b23e114a3a895a5564d8677"
+    },
+    "tmp/independent/private-v4-performance/867_contract_validation.py": {
+      "sha256": "e8533f2a8461d3ee4226ee226dfc69d459074357b9c794994f4a591e933e37ab"
+    },
+    "tmp/independent/private-v4-performance/866_escalation_notification.py": {
+      "sha256": "74890ce208c7106e3474b79c302f19ed11480aef984864db274a2faddb33d259"
+    }
+  },
+  "recipient_certificate_path": "tmp/independent/private-v4-performance/recipient.pem",
+  "recipient_certificate_file_sha256": "789151cc98851dca16c7c951a96e669babb0a26f83a4848f51a570e13f193639",
+  "recipient_certificate_der_sha256": "5d4a8e7551c7486c09e7e6c14284ebb5a1a4474fc8a7a80912e683a2b4505541",
+  "private_key_committed": false,
+  "scope": [
+    "formal performance: task transitions and queries",
+    "formal performance: contract-validation interface",
+    "formal performance: escalation-notification interface"
+  ],
+  "formal_outcome": "NOT_RUN",
+  "sut_bound": false,
+  "runtime_executed": false,
+  "next_step": "Wait for coordinator separate exact SUT and exact runtime/request binding; no self-selected SUT or early execution.",
+  "coordinator_access": "Only this expressly published metadata (and public recipient certificate for orchestration) is released. Do not open private cases/manifests/scripts/logs/outputs/keys/ciphertext/decrypted evidence.",
+  "migration": {
+    "prior_public_metadata_commit": "dc08286bca66496e525445d63476cab579a4a174",
+    "prior_public_metadata_path": "records/acceptance/v4-performance-freeze-metadata.original-pre-move.json",
+    "prior_public_metadata_sha256": "bf50fb8f18d5fc746c105941bcefb3396ff4ee808ca64af36ca943e816c24a9d",
+    "private_files_byte_and_mode_integrity_preserved": true,
+    "freeze_H_unchanged": true,
+    "note": "Only worktree location/publication metadata changed; original JSON bytes retained. H is case freeze, public metadata commits are subsequent and separate."
+  }
+}
