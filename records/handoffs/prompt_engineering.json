@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "M4 公开真实过程与本人输入事实整理",
+  "stage": "M6 prompt evolution and real quality/debug checkpoint",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -32,7 +32,16 @@
     "docs/prompting/M4-source-manifest.json",
     "records/prompts/ROLE-prompt_engineering-M4-REAL-PROCESS-v1.md",
     "records/prompts/PROPOSED-human-skeleton-review-v1.md",
-    "agents/prompt_engineering/github-m4-stage-comment.md"
+    "agents/prompt_engineering/github-m4-stage-comment.md",
+    "docs/prompting/M6-process-checkpoint.md",
+    "docs/prompting/M6-prompt-version-map.json",
+    "docs/prompting/M6-source-manifest.json",
+    "docs/prompting/M6-source-inquiries.json",
+    "docs/prompting/M6-github-source-readback.json",
+    "docs/prompting/M6-document-checks.json",
+    "records/prompts/ROLE-prompt_engineering-M6-CHECKPOINT-v1.md",
+    "agents/prompt_engineering/github-m6-stage-comment.md",
+    "docs/prompting/M6-issue11-readback.json"
   ],
   "interfaces": {
     "inputs": [
@@ -53,19 +62,35 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "M4-real-process-v1",
+    "version": "M6-process-checkpoint-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
     "implementation_scope": "未实现仅指本岗未实现产品代码，全项目实际产品状态由责任岗/审核/验收证据分别判断",
     "m3_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6362908450",
     "independent_published_read_boundary": [
+      "reports/independent-tests/v2-api-stage-report.md",
+      "reports/independent-tests/v2-fault-stage-report.md",
+      "reports/independent-tests/v2-pending-stage-report.md",
+      "reports/independent-tests/v2-recipient-stage-report.md",
+      "reports/independent-tests/v2-time-input-stage-report.md",
+      "reports/independent-tests/v2-ui-capacity-dependency-stage-report.md",
+      "reports/independent-tests/v2-ui-rendering-keyboard-stage-report.md",
+      "reports/independent-tests/v2-ui-stage-report.md",
+      "reports/independent-tests/v2-api-stage-results.json",
+      "reports/independent-tests/v2-fault-stage-results.json",
+      "reports/independent-tests/v2-pending-stage-results.json",
+      "reports/independent-tests/v2-recipient-stage-results.json",
+      "reports/independent-tests/v2-time-input-stage-results.json",
+      "reports/independent-tests/v2-ui-capacity-dependency-stage-results.json",
+      "reports/independent-tests/v2-ui-rendering-keyboard-stage-results.json",
+      "reports/independent-tests/v2-ui-stage-results.json",
       "reports/independent-tests/v1-blackbox-report.md",
-      "reports/independent-tests/v1-blackbox-results.json",
-      "reports/independent-tests/v1-ui-addendum.md",
-      "reports/independent-tests/v1-ui-addendum.json"
+      "reports/independent-tests/v1-blackbox-results.json"
     ],
-    "m4_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031"
+    "m4_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031",
+    "m6_comment_status": "Published and exact body readback matched",
+    "m6_stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6374082306"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -101,7 +126,12 @@
     "python3：R001 provenance hash、公开独立四报告限定摘要、JUnit/JSON读取",
     "gh api actions/runs/39946771417 与39948047446只读远端元数据",
     "python3: 必要文档引用/hash/JSON/XML与used-proposed核对；git diff --check",
-    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m4-stage-comment.md"
+    "gh issue comment 11 --repo HJY147/t44-dev-trace --body-file agents/prompt_engineering/github-m4-stage-comment.md",
+    "git worktree add .agent-worktrees/prompt-m6-checkpoint -b codex/prompt-m6-checkpoint 7763402f87eed24ac052ec6ba64a0d3ec349036e",
+    "collaboration.send_message six fixed roles; actual BE/DB/native replies only",
+    "GitHub plugin get_repo/get_pr_info24 and git ls-remote exact branches",
+    "git show/sha256106 source objects; published18 independent files only",
+    "python3 JSON/XML and six Git ancestry checks; inherited189dc14 typo failed first then corrected189dc4a"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -131,18 +161,25 @@
     "成稿后root新契约/fixture失败/5940超限/guard草稿先后仅作明确cutoff后交接附注，不冒充49源已核或正式1.1通过",
     "必要文档引用/hash/JSON/XML/格式检查通过，无产品验证",
     "M4阶段评论已发布：https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6364981031",
-    "Issue评论后commit前收到FE实际回执，当前BE/DB/FE/reviewer已回；docs/guidance pending，不倒改评论历史"
+    "Issue评论后commit前收到FE实际回执，当前BE/DB/FE/reviewer已回；docs/guidance pending，不倒改评论历史",
+    "M6 explicit correction: taskbook >=6 does not require one lineage or all human; six used versions across CONTRACT/session/A verified with text and execution; no proposed draft counted",
+    "106 source hashes, exact stage chains, full denominator437BE/65FE/832 Linux recovery limits and late DB6186 kept separate",
+    "Three actual replies, three no replies by cutoff; empty send tool receipt not invented delivery/answer",
+    "M5 MD/diagrams commits separate from M4 Word/PR24 merge; no private Word/cover/R002 content read",
+    "No product tests, fullCI, build, browser, DB, load, rendering, production/freeze/other-role/ledger changes",
+    "M6 Issue11 comment6374082306 actually published by GitHub plugin and fetch_issue_comments exact body match"
   ],
   "unverified": [
-    "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
-    "docs/guidance本轮异步回执pending，不表示角色没有产物",
-    "v1.1后续源码/冻结/测试、最新完整审核与修复后独立复测仍待独立证据",
-    "正式性能未达标，955无有效样本，代理假设未确认；规模不宣称通过",
-    "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
+    "Student-authored final research prose; R001/R002 provenance is not final report",
+    "Human12 code-edit comparisons /3 human-detected corrected hallucinations /5 human-corrected context mappings: no verified completion evidence; current proven counts0",
+    "Unreplied frontend_logout/review_backend_preflight/documentation_checkpoint inquiries; public files used instead",
+    "Full independent acceptance/formal400x600 performance/source3500-5100 remain unpassed;8326124 and DB6186 are separate sources",
+    "Native broker/CLI real authentication/listen/lifecycle and API/consumer/scanner/UI pending in published evidence",
+    "Issue28 DB gateway only is not completed backend/frontend projection or independently retested UI003"
   ],
   "questions": [
-    "文档岗可引用M4事实和R001原文，学生本人形成研究正文；新事实按时点另补",
-    "共享ledger本岗未追加；请总协调据实际派工与产物登记，proposed模板不计曾使用"
+    "Root may register six actual version evidence in shared ledger; this role did not edit ledger",
+    "Student must write final prose and supply genuine manual work evidence; AI cannot manufacture quotas"
   ],
   "prompt_refs": [
     {
@@ -257,7 +294,41 @@
       "derived_from": "R001主题（AI整理，非本人原文）",
       "used_at": null,
       "reason": "供后续本人先审模块/函数I/O与骨架后再派AI实现，不声称过去用过"
+    },
+    {
+      "id": "ROLE-prompt_engineering-M6-CHECKPOINT-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-M6-CHECKPOINT-v1.md",
+      "artifact_refs": [
+        "docs/prompting/M6-process-checkpoint.md",
+        "docs/prompting/M6-prompt-version-map.json",
+        "docs/prompting/M6-source-manifest.json",
+        "docs/prompting/M6-source-inquiries.json",
+        "docs/prompting/M6-github-source-readback.json",
+        "docs/prompting/M6-document-checks.json",
+        "records/prompts/ROLE-prompt_engineering-M6-CHECKPOINT-v1.md",
+        "agents/prompt_engineering/github-m6-stage-comment.md"
+      ],
+      "reason": "Verify actual prompt versions, U001/U002 highlights and M5/M6 quality/debug chains; preserve human/AI and public/private boundaries",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
     }
   ],
-  "updated_at": "2026-10-23T20:35:27+08:00"
+  "updated_at": "2026-10-23T20:28:50.680896+00:00",
+  "previous_m4_unverified": [
+    "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
+    "docs/guidance本轮异步回执pending，不表示角色没有产物",
+    "v1.1后续源码/冻结/测试、最新完整审核与修复后独立复测仍待独立证据",
+    "正式性能未达标，955无有效样本，代理假设未确认；规模不宣称通过",
+    "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
+  ],
+  "current_summary": {
+    "used_meaningful_versions": 6,
+    "lineages": 3,
+    "source_hashes": 106,
+    "independent_published_files_read": 18,
+    "actual_role_replies": 3,
+    "pending_role_replies": 3,
+    "implementation_status_scope": "未实现 only means no product code by prompting role; not entire project status",
+    "previous_results_are_historical": true
+  }
 }
