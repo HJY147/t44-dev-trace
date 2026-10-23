@@ -1,0 +1,201 @@
+unformatted: File would be reformatted
+   --> tmp/backend/930_contract_abba.py:48:36
+    |
+47  | def git(*args):
+    -     return subprocess.check_output(["git", "-C", str(ROOT), *args], stderr=subprocess.DEVNULL)
+48  +     return subprocess.check_output(
+49  +         ["git", "-C", str(ROOT), *args], stderr=subprocess.DEVNULL
+50  +     )
+51  |
+--------------------------------------------------------------------------------
+92  |         data = path.read_bytes()
+    -         actual_blob = hashlib.new(algorithm, f"blob {len(data)}\0".encode() + data).hexdigest()
+93  +         actual_blob = hashlib.new(
+94  +             algorithm, f"blob {len(data)}\0".encode() + data
+95  +         ).hexdigest()
+96  |         if actual_blob != blob:
+97  |             raise Failure("Exported source differs from its Git object")
+    -         manifest[relative] = {"git_blob": blob, "sha256": hashlib.sha256(data).hexdigest()}
+98  +         manifest[relative] = {
+99  +             "git_blob": blob,
+100 +             "sha256": hashlib.sha256(data).hexdigest(),
+101 +         }
+102 |     write(target / "manifest.json", {"commit": commit, "files": manifest})
+--------------------------------------------------------------------------------
+110 |     for relative, expected in manifest["files"].items():
+    -         if hashlib.sha256((app_root / relative).read_bytes()).hexdigest() != expected["sha256"]:
+111 +         if (
+112 +             hashlib.sha256((app_root / relative).read_bytes()).hexdigest()
+113 +             != expected["sha256"]
+114 +         ):
+115 |             raise Failure("Application snapshot changed after export")
+--------------------------------------------------------------------------------
+142 |         "type": type(error).__name__,
+    -         "reason": str(error) if isinstance(error, Failure) else "External error detail withheld",
+143 +         "reason": str(error)
+144 +         if isinstance(error, Failure)
+145 +         else "External error detail withheld",
+146 |         "frames": [
+--------------------------------------------------------------------------------
+170 |         db = settings.mysql_settings()
+    -         if os.environ.get("T44_DATABASE") != "t44_profile" or db.database != "t44_profile":
+    -             raise Failure("Only the explicitly selected t44_profile database is allowed")
+171 +         if (
+172 +             os.environ.get("T44_DATABASE") != "t44_profile"
+173 +             or db.database != "t44_profile"
+174 +         ):
+175 +             raise Failure(
+176 +                 "Only the explicitly selected t44_profile database is allowed"
+177 +             )
+178 |         if (db.pool_size, db.max_overflow) != (5, 10):
+--------------------------------------------------------------------------------
+196 |             uvicorn.Config(
+    -                 app, host="127.0.0.1", port=18083, workers=1, access_log=False, log_level="warning"
+197 +                 app,
+198 +                 host="127.0.0.1",
+199 +                 port=18083,
+200 +                 workers=1,
+201 +                 access_log=False,
+202 +                 log_level="warning",
+203 |             )
+--------------------------------------------------------------------------------
+213 |                 n: version(n)
+    -                 for n in ("fastapi", "starlette", "sqlalchemy", "pymysql", "jsonschema", "uvicorn")
+214 +                 for n in (
+215 +                     "fastapi",
+216 +                     "starlette",
+217 +                     "sqlalchemy",
+218 +                     "pymysql",
+219 +                     "jsonschema",
+220 +                     "uvicorn",
+221 +                 )
+222 |             },
+--------------------------------------------------------------------------------
+231 |         threading.Thread(target=mark_ready, daemon=True).start()
+    -         previous = signal.signal(signal.SIGTERM, lambda *_: setattr(server, "should_exit", True))
+232 +         previous = signal.signal(
+233 +             signal.SIGTERM, lambda *_: setattr(server, "should_exit", True)
+234 +         )
+235 |         try:
+--------------------------------------------------------------------------------
+289 |                         result = client.post(
+    -                             URL + f"/projects/{fixture['project_id']}/contract-validations",
+290 +                             URL
+291 +                             + f"/projects/{fixture['project_id']}/contract-validations",
+292 |                             headers={"Authorization": "Bearer " + fixture["token"]},
+--------------------------------------------------------------------------------
+307 |                             and data.get("validated_operation_id")
+    -                             == {1: "createTask", 2: "transitionTask", 3: "createReleaseAssessment"}[
+    -                                 candidate["category"]
+    -                             ]
+308 +                             == {
+309 +                                 1: "createTask",
+310 +                                 2: "transitionTask",
+311 +                                 3: "createReleaseAssessment",
+312 +                             }[candidate["category"]]
+313 |                             and not payload.get("violations")
+--------------------------------------------------------------------------------
+352 |         "max_ms": max(ordered) if ordered else None,
+    -         "missing_workers": sorted(set(range(concurrency)) - {r["worker"] for r in rows}),
+353 +         "missing_workers": sorted(
+354 +             set(range(concurrency)) - {r["worker"] for r in rows}
+355 +         ),
+356 |     }
+357 |     write(output / "summary.json", result)
+358 |     expected = concurrency * count_per_worker
+    -     if result["errors"] or result["missing_workers"] or (expected and len(rows) != expected):
+359 +     if (
+360 +         result["errors"]
+361 +         or result["missing_workers"]
+362 +         or (expected and len(rows) != expected)
+363 +     ):
+364 |         raise Failure("Client group failed or did not complete its fixed request count")
+--------------------------------------------------------------------------------
+401 |                 with socket.create_connection(("127.0.0.1", 18083), timeout=0.2):
+    -                     raise Failure("Diagnostic port is occupied; do not touch its listener")
+402 +                     raise Failure(
+403 +                         "Diagnostic port is occupied; do not touch its listener"
+404 +                     )
+405 |             except ConnectionRefusedError:
+--------------------------------------------------------------------------------
+444 |                         if server.poll() is not None or time.perf_counter() > ready_by:
+    -                             raise Failure("Owned server did not reach listening readiness")
+445 +                             raise Failure(
+446 +                                 "Owned server did not reach listening readiness"
+447 +                             )
+448 |                         time.sleep(0.025)
+--------------------------------------------------------------------------------
+471 |                             result = subprocess.run(
+    -                                 bootstrap, stdout=log, stderr=subprocess.STDOUT, timeout=10
+472 +                                 bootstrap,
+473 +                                 stdout=log,
+474 +                                 stderr=subprocess.STDOUT,
+475 +                                 timeout=10,
+476 |                             )
+477 |                         if result.returncode:
+    -                             raise Failure("Public bootstrap failed; stop without sampling")
+478 +                             raise Failure(
+479 +                                 "Public bootstrap failed; stop without sampling"
+480 +                             )
+481 |                     fixture_file = args.output / "bootstrap/fixture.json"
+482 |                     if fixture_file.stat().st_mode & 0o777 != 0o600:
+483 |                         raise Failure("Raw fixture must be private0600")
+484 |                     fixture = json.loads(fixture_file.read_text())
+    -                     entry["fixture_sha256"] = hashlib.sha256(fixture_file.read_bytes()).hexdigest()
+485 +                     entry["fixture_sha256"] = hashlib.sha256(
+486 +                         fixture_file.read_bytes()
+487 +                     ).hexdigest()
+488 |                     sanity = sample(fixture, phase / "sanity", 1, 3, 3)
+489 |                     if sanity["category_counts"] != {"1": 1, "2": 1, "3": 1}:
+    -                         raise Failure("Sanity must validate each of the three categories")
+490 +                         raise Failure(
+491 +                             "Sanity must validate each of the three categories"
+492 +                         )
+493 |                     entry["warmup"] = sample(fixture, phase / "warmup", 8, 5, 15)
+    -                     if entry["warmup"]["category_counts"] != {"1": 40, "2": 40, "3": 40}:
+    -                         raise Failure("Warmup category distribution must be balanced120")
+494 +                     if entry["warmup"]["category_counts"] != {
+495 +                         "1": 40,
+496 +                         "2": 40,
+497 +                         "3": 40,
+498 +                     }:
+499 +                         raise Failure(
+500 +                             "Warmup category distribution must be balanced120"
+501 +                         )
+502 |                     entry["resource_before"] = ps_resource(server.pid)
+--------------------------------------------------------------------------------
+569 |             )
+    -             receipt.update(controller_pid=child.pid, owned_process_group=child.pid, argv=command)
+570 +             receipt.update(
+571 +                 controller_pid=child.pid, owned_process_group=child.pid, argv=command
+572 +             )
+573 |             try:
+--------------------------------------------------------------------------------
+610 |     parser.add_argument("--output", type=Path, required=True)
+    -     parser.add_argument("--environment", type=Path, default=PRIVATE / "profile-environment.json")
+    -     parser.add_argument("--credentials", type=Path, default=PRIVATE / "profile-credentials.json")
+611 +     parser.add_argument(
+612 +         "--environment", type=Path, default=PRIVATE / "profile-environment.json"
+613 +     )
+614 +     parser.add_argument(
+615 +         "--credentials", type=Path, default=PRIVATE / "profile-credentials.json"
+616 +     )
+617 |     parser.add_argument("--source", choices=tuple(SOURCES))
+618 |     parser.add_argument("--app-root", type=Path)
+619 |     args = parser.parse_args()
+620 |     if not args.execute:
+    -         parser.error("Requires explicit coordinator-authorized execution; no default load")
+621 +         parser.error(
+622 +             "Requires explicit coordinator-authorized execution; no default load"
+623 +         )
+624 |     args.output = args.output.resolve()
+--------------------------------------------------------------------------------
+645 |                 raise Failure("Neutral accounts must belong to profile")
+    -             helper = runpy.run_path(str(ROOT / "tmp/backend/955_perf_profile.py"))["client_run"]
+646 +             helper = runpy.run_path(str(ROOT / "tmp/backend/955_perf_profile.py"))[
+647 +                 "client_run"
+648 +             ]
+649 |             result = helper(
+    |
+
+1 file would be reformatted
