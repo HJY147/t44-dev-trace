@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.599" timestamp="2026-10-24T04:35:24.000638+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[integer_hours]" time="0.245"><failure message="AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]&#10;  &#10;  Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}&#10;  Use -v to get more diff">application = (&lt;starlette.testclient.TestClient object at 0x115e8f2c0&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x115d3c080&gt;)
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x115e90d40&gt;
+legacy_format = 'integer_hours'
+
+    @pytest.mark.parametrize("legacy_format", ["integer_hours", "short_utc"])
+    def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
+        application, monkeypatch, legacy_format
+    ):
+        from copy import deepcopy
+    
+        from t44.persistence.rows import RowsGateway
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        legacy["request_id"] = uuid4().hex
+        if legacy_format == "integer_hours":
+            field, value, text = "estimated_hours", 8, "8"
+        else:
+            field = "planned_start"
+            value = text = schedule["before_plan"][field].replace(".000000Z", "Z")
+        next(d for d in legacy["before_values"] if d["field"] == field)["value"] = text
+        with factory() as uow:
+            identifier = uow.gateway.insert("audit_events", legacy)
+    
+        # This is synthetic identical alternate spelling, not an observed legacy database format.
+        def old_format(_g, _project_id, _pairs):
+            return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+    
+        monkeypatch.setattr(RowsGateway, "task_schedule_changes", old_format)
+        result = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in result["items"] if row["id"] == identifier)
+&gt;       assert record["after"] == legacy["after_values"]
+E       AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2611: AssertionError</failure></testcase><testcase classname="" name="test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[short_utc]" time="0.226"><failure message="AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]&#10;  &#10;  Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}&#10;  Use -v to get more diff">application = (&lt;starlette.testclient.TestClient object at 0x115e7d490&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x115ddb290&gt;)
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x115e7e8a0&gt;
+legacy_format = 'short_utc'
+
+    @pytest.mark.parametrize("legacy_format", ["integer_hours", "short_utc"])
+    def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
+        application, monkeypatch, legacy_format
+    ):
+        from copy import deepcopy
+    
+        from t44.persistence.rows import RowsGateway
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        legacy["request_id"] = uuid4().hex
+        if legacy_format == "integer_hours":
+            field, value, text = "estimated_hours", 8, "8"
+        else:
+            field = "planned_start"
+            value = text = schedule["before_plan"][field].replace(".000000Z", "Z")
+        next(d for d in legacy["before_values"] if d["field"] == field)["value"] = text
+        with factory() as uow:
+            identifier = uow.gateway.insert("audit_events", legacy)
+    
+        # This is synthetic identical alternate spelling, not an observed legacy database format.
+        def old_format(_g, _project_id, _pairs):
+            return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+    
+        monkeypatch.setattr(RowsGateway, "task_schedule_changes", old_format)
+        result = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in result["items"] if row["id"] == identifier)
+&gt;       assert record["after"] == legacy["after_values"]
+E       AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan &lt;literal&gt; historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2611: AssertionError</failure></testcase></testsuite></testsuites>

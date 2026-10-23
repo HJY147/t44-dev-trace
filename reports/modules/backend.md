@@ -215,3 +215,11 @@ specs/changes/runtime-roundtrip-reduction-rfc.md和三个独立未应用patch给
 当前RowsGateway缺有限tuple-pair谓词，向DB owner提出最多100精确pair、空集0SQL/非空1批、完整rows/稳定排序/明确异常的固定门面；旧/database消息未送达，根另派DB，尚未确认/交付。前端真实需求来源Issue28的6373333383，现通用RecordView不能保证理由原文显示，须后续frontend owner执行。
 
 本轮离线8/8审计数据形状、14hash/31path38ops通过，见plan-reason-design-static.json；无关联算法/HTTP/真库/CI/负载验证，无产品/测试/配置改动。KeyError离线检查笔误如实保留。净LOC预算仅待实现+66..121，不能解决原6108超限。Issue28评论6373605774逐字回读一致；等待根设计准入、DB入口及必要986/985红绿、前端阶段和独立复测，不把旧437CI移植为本设计执行结果。
+
+## Issue28后端0549：开发目标通过，组合检查待执行
+
+源码0549ea89ce218ecb945cd4346671f20d46fad215已push，新history.py和两个既有接线点实现理由同原事务保存，以及当前授权页严格旧task历史投影。现API/14冻结、DDL、runtime/DB门面原字节不改；旧iteration/缺失/歧义/非原生产字形不猜，不更新immutable audit/旧重放结果。已有reason优先；相关重复字段拒绝关联，无关原条目保留。单页≤100，0/1参数化批读，无N+1。
+
+最终18开发目标通过（11 SQLite HTTP含1原计划回归、7真实MySQL HTTP），原失败与摘要位于agents/backend/plan-reason-implementation。原sort=-id夹具422、修正后旧源2红、三类新writer旧源红、AI草稿字形/无关重复两组红均保留；不拿旧12/16重复相加，不记学生亲改。真MySQL仅自有t44_test，100pair单SELECT/空页0读、原行不变、三类新写2000字/幂等重放、写失败全回滚及GET退出后独立拒绝audit等边界有目标证据。无UI/完整CI/性能/独立验收通过声明。
+
+严格静态通过，14hash一致，原986/985断言前缀保持；本岗生产固定cloc实测净+95，高于RFC后端预算，6186基线仅派生6281且仍超5100，未重跑全局计数。新生产文件需纳入下一组合全覆盖分母，旧43文件百分比不沿用。源码checkpoint先提交给前端，依赖/迁移/配置均无需新增；本次证据随后独立提交，完整同源CI/专审/UI由根接续，未启动任何新runtime或负载。
