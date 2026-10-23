@@ -10,7 +10,7 @@
 | Python全源 | 44个Git源文件，与覆盖率文件集合完全相同 | 510 tests，0 failure/error/skip；行2638/2957=89.21%，分支659/824=79.98%，排除0 |
 | 前端全源 | 20个TS/Vue文件，集合准确一致 | 89/89，0 failed/pending；行364/390=93.33%，分支821/932=88.09% |
 | 自动PR事件 | 同6ec的40031848266 | 与push不同事件，不重复累计用例或当新实验 |
-| Docker40031843200 | 同6ec源 | 成功；4worker、2project/40task；不是40项目正式压力 |
+| Docker 40031843200 | 同6ec源 | 成功；4worker、2project/40task；不是40项目正式压力 |
 
 来源[6ec组合回执](../../records/validation/composite-6ec8d3c-ci.json)；[旧bc5组合回执](../../records/validation/composite-bc5a-ci.json)作为历史保留。全量source inclusion明确，不通过改变根目录/排除文件/压行满足覆盖率或规模。分支覆盖率按原分母报告，不和行覆盖率混淆。
 
