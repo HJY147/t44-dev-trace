@@ -269,3 +269,8 @@
 - 产品仅engine.py两literal改15/0，869全10参数化案例通过（869-green.log，包含旧红同目标，不相加），用实际QueuePool+合成DBAPI两波借满/即时额外拒绝/返还保留/第二波复用/overflow关闭/最终dispose全部关闭，覆盖默认/partial size/双显式/显式旧配置/partial overflow。Settings真实组合与lazy MySQL engine核原timeout10/recycle1800/pre_ping/LIFO/rollback/RC/UTC callback/隐藏参数，pymysql.connect从未被调用。
 - 限定engine/869 Ruff通过；exact-diff.json证产品仅两个Constant/两行替换、其他整个应用零字节变化，14冻结及993/930/955字节全同。原930 matching numeric filename但无test函数，本机仅其collect-only显示0项/exit5（930-collection-only.log），没有运行历史负载/修改guard；hosted实际收集/JUnit待真实CI回执确认。
 - 本地只869合成和lazy构造，无HTTP/SQL/压测/真实服务。候选普通push将触发一次现有product，draftPR到integration只另触发容器workflow；不合root，CI状态未开始/不能提前通过。精确候选head后保持，后续证据另分支以免再次触发。
+
+- 产品精确候选db87d30449356f3473b645a5c246dcc6c21d7cbe已普通push，一次product run40039282322；实际创建Draft PR39/baseintegration触发一次docker run40039333270。最近精确GET两个均in_progress、head均db87，PR mergeabletrue/unstable、初始merge快照400a5cac444be15565dc48fe4ee2a1869f31e9a3、base70f4b7；实际checkout/artifact绑定及全套/coverage分母/容器结果尚未取得，不把head和merge混同。
+- 原固定cloc准确候选6307（基线6307），应用净0/within_rangefalse/--require-range退出1，candidate-cloc.json。原930无test函数单独collect-only0/exit5，不改guard，也不声称hosted执行了它的历史负载；hosted实际JUnit待root只读收证。
+- 已实际回应backend输入Issue4，并同步Issue3：评论6376739028/6376739310，各精确comments/:id GET读回与实际提交/本地文件逐字相同，github-readback.json保留endpoint/id/body/hash。明确partial/旧930/idle30→90与candidate准确SHA，不复用ABBA或旧CI。
+- root准许CI pending即可先FINAL释放：已记录两个run IDs交接，未等待/重跑或合root。切独立codex/database-pool-default-evidence封档cloc/CI请求/Issue回执等，candidate分支/PR head保持db87，证据提交skipci不再次触发产品套件；本地不发HTTP/SQL/压测。准确CI最终结果/专审由root继续，不能先写成功。

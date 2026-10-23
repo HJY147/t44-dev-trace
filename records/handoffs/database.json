@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "POOL-DEFAULT-CANDIDATE-v1：精确两literal候选实现",
-  "implementation_status": "两默认已实现/869真实合成QueuePool10案例通过、旧配置真实红保留；原字节边界核通过。准确head push/PR/hosted工作流待触发，不合integration。",
+  "stage": "POOL-DEFAULT-CANDIDATE-v1：db87/DraftPR39/准确CI pending交接",
+  "implementation_status": "严格两literal候选db87已push/DraftPR39，86910离线合成通过、原红/字节边界/cloc6307净0已封。product40039282322/docker40039333270最近in_progress，root继续跟踪，候选head固定不合root。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -604,6 +604,26 @@
       "path": "agents/database/pool-default-candidate/exact-diff.json",
       "kind": "twoAST literals/allotherapp+frozen14+old993930955bytes",
       "status": "exact pass"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/summary.json",
+      "kind": "准确候选/partial/红绿/cloc/CIpending交接",
+      "status": "no finalCI claimed"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/ci-requested.json",
+      "kind": "actual two existing workflow requests/precise head snapshot",
+      "status": "pending finalCI/roottracking"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/candidate-cloc.json",
+      "kind": "original exact committed source count",
+      "status": "6307/net0/exit1"
+    },
+    {
+      "path": "agents/database/pool-default-candidate/github-readback.json",
+      "kind": "Issue3/4 actual POST then exact GET body equality",
+      "status": "verified"
     }
   ],
   "interfaces": [
@@ -779,7 +799,8 @@
     "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
     "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）",
     "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml.",
-    "POOL-RETENTION: official tag bytes/hash2files; existing955 fixedpool_ABBA source and exactargv committed; offline synthetic proof; execution-plan once at23:02:14..53; offline exactsource/request/rawhash/secretscan after release. No secondload/HTTP/SQL."
+    "POOL-RETENTION: official tag bytes/hash2files; existing955 fixedpool_ABBA source and exactargv committed; offline synthetic proof; execution-plan once at23:02:14..53; offline exactsource/request/rawhash/secretscan after release. No secondload/HTTP/SQL.",
+    "POOL-DEFAULT-CANDIDATE: exact inputGET; fixedcloc base/candidate6307 exit1; new869 olddefault realred then10synthetic/lazy passes; Ruff; AST/bytes14/993930955 proof; only930collect-only0exit5; oncepushproduct+DraftPRdocker; exactIssue3/4readback. No localHTTP/SQL/load."
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -871,12 +892,13 @@
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
     "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained.",
-    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
+    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission.",
+    "Candidate db87/DraftPR39; product40039282322/docker40039333270 actual requested/in_progress lastGET, no finalCI acquired; metadatabranch preservesPRhead and no reruns."
   ],
   "unverified": [
-    "准确新candidate hosted product/docker workflows尚未触发/未完成，不能移植旧CI或ABBA",
-    "原9300本地collect-only；hosted实际JUnit待核，不改硬5+10历史guard",
-    "标准idle上界增加/partial峰改变/资源未知、原正式压力/源码超限/人工材料缺口仍在"
+    "准确db87 hosted product40039282322/docker40039333270最终状态/完整suite/全生产覆盖分母/容器恢复待root跟踪",
+    "PR初始merge400a5cac与实际checkout/artifact绑定、hosted旧930实际JUnit待收证；不可移植旧CI或ABBA",
+    "候选未合root/未专审/未盲测/无正式性能或生产准入，标准idle成本/partial差异/原缺口保留"
   ],
   "questions": [
     {
@@ -1055,24 +1077,24 @@
       "improvement_reason": "独立精确两常量候选/partial成本/历史不改/真实QueuePool行为与准确源CI，不借ABBA或改断言自证"
     }
   ],
-  "updated_at": "2026-10-23T23:22:12.642521+00:00",
+  "updated_at": "2026-10-23T23:26:36.742552+00:00",
   "publication": {
-    "branch": "codex/database-pool-retention",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-retention",
-    "design_commit": "42a8bcb",
-    "tool_commits": [
-      "14490fe",
-      "0f6fdf5126d004d582e84af02fd4da9e94135b08"
-    ],
-    "execution_source_commit": "f75a8a419d04531a30788a734e56d2dda64baed0",
-    "pull_request": null,
-    "scope": "tool-only one bounded developer ABBA; no production admission; root execution window released",
-    "ci": "skip ci; no full CI/extra load",
-    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376531906",
-    "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376532216",
-    "result_commit": "9d1deff3592d12e169f30a25537540c93096abf0",
-    "readback": "agents/database/pool-retention/github-readback.json; exact GET bodies equal submitted/local bytes",
-    "window_released": true
+    "candidate_branch": "codex/database-pool-default-candidate",
+    "candidate_commit": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+    "evidence_branch": "codex/database-pool-default-evidence",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-default-candidate",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/39",
+    "draft": true,
+    "merged": false,
+    "base": "codex/integration",
+    "product_run_id": 40039282322,
+    "docker_run_id": 40039333270,
+    "latest_status": "in_progress at captured GET; final not acquired, root to track",
+    "candidate_head_kept_fixed": true,
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376739028",
+    "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376739310",
+    "readback": "agents/database/pool-default-candidate/github-readback.json",
+    "scope": "independent two-default candidate only, no integration/demo replacement"
   },
   "history": [
     {
@@ -1295,6 +1317,24 @@
       "github_issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373902163",
       "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
       "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
+    },
+    {
+      "branch": "codex/database-pool-retention",
+      "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-retention",
+      "design_commit": "42a8bcb",
+      "tool_commits": [
+        "14490fe",
+        "0f6fdf5126d004d582e84af02fd4da9e94135b08"
+      ],
+      "execution_source_commit": "f75a8a419d04531a30788a734e56d2dda64baed0",
+      "pull_request": null,
+      "scope": "tool-only one bounded developer ABBA; no production admission; root execution window released",
+      "ci": "skip ci; no full CI/extra load",
+      "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376531906",
+      "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376532216",
+      "result_commit": "9d1deff3592d12e169f30a25537540c93096abf0",
+      "readback": "agents/database/pool-retention/github-readback.json; exact GET bodies equal submitted/local bytes",
+      "window_released": true
     }
   ]
 }

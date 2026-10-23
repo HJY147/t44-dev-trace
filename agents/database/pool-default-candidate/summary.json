@@ -1,0 +1,58 @@
+{
+  "at_utc": "2026-10-23T23:26:36.741578+00:00",
+  "actor": "database AI, not student manual edit",
+  "base_commit": "5408c05377d4f0084c6ae4eb596351add2004b67",
+  "design_commit": "d4e152f",
+  "candidate_sha": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+  "candidate_branch": "codex/database-pool-default-candidate",
+  "evidence_branch": "codex/database-pool-default-evidence",
+  "candidate_head_kept_fixed": true,
+  "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/39",
+  "product_delta": "only two MySQLSettings default Constant nodes/2lines; all other application bytes unchanged",
+  "defaults": [
+    15,
+    0
+  ],
+  "partial_size3": "3+10/peak13 ->3+0/peak3",
+  "partial_overflow2": "5+2/peak7 ->15+2/peak17",
+  "double_explicit": "values preserved, including3+2 and5+10",
+  "standard_six_pool_budget": "peak90 same; retained30->90; extra engines/processes separate; memory/FD/global headroom unknown",
+  "local_red": "old-configuration-red.log real QueuePool retained5 not15; original failure preserved",
+  "local_green": "869-green.log10passed including same oldredtarget; real QueuePool synthetic DBAPI capacity/returns/reuse/overflowclose/dispose +actual Settings/lazy MySQL factory, no HTTP/SQL/network/load",
+  "static": "Ruff passed; exact-diff.json all other app/frozen14/old993930955 bytes equal",
+  "old930": "unchanged hard5+10; local matching filename collect-only0/exit5; no historical load run; hosted actual JUnit pending",
+  "cloc": {
+    "baseline": 6307,
+    "candidate": 6307,
+    "net": 0,
+    "tool": "original source_count.py/cloc2.10",
+    "within_range": false,
+    "require_range_exit": 1
+  },
+  "ci": {
+    "product_run_id": 40039282322,
+    "docker_run_id": 40039333270,
+    "last_recorded_status": "both in_progress, no final conclusion acquired; root continues read-only tracking",
+    "candidate_head_sha": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+    "initial_pr_merge_snapshot": "400a5cac444be15565dc48fe4ee2a1869f31e9a3",
+    "actual_checkout_and_artifact_binding": "pending hosted receipts; do not confuse candidate and merge SHA",
+    "full_new_suite_coverage_denom_and_docker_result": "pending; do not reuse old510/89 or ABBA"
+  },
+  "issues": [
+    {
+      "issue": 4,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376739028",
+      "exact_get_body_equal": true
+    },
+    {
+      "issue": 3,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376739310",
+      "exact_get_body_equal": true
+    }
+  ],
+  "unverified": [
+    "accurate-source hosted product/docker final result and full production coverage denominator",
+    "root specialist review and any future blinded formal performance admission",
+    "not merged integration, current complete demo remains bc5; original formal failure/size/human-material gaps remain"
+  ]
+}
