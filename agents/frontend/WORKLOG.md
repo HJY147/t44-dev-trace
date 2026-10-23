@@ -191,3 +191,17 @@
 - Issue28真实协商评论6373191287及6373333383均逐字回读匹配；已直接回backend。通用RecordView会完整渲染after，但Diff.field reason当前未中文化且value通用display可能转换用户原文，需UI003另阶段按纯文本/中文/缺失说明处理，未混进UI002。不能冒称字段已有label就代表Diff显示已满足。
 - 全19源hash、14冻结hash、原始gzip、类型与驱动错误、唯一资源写清单见business-feedback-validation.json。本阶段AI开发回归，待准确新SHA审核及新隔离独立复测，旧独立FAIL/正式性能/规模/人工作业门禁不解除。
 - 631988c证据已push；Issue27评论6373406222及draft PR30均真实发布、正文逐字回读匹配，见business-feedback-github-verification.json。未发APPROVE/审核成功/合并；结束仅移除自身worktree依赖符号链接，根依赖目录不动。
+
+
+## 2026-10-24T04:55+08:00｜ROLE-frontend-PLAN-REASON-v1｜UI003
+- 干净工作树从root3f59d881新建codex/frontend-plan-reason，保留旧business-feedback分支；先读已技术准入5e8的RFC与implementation-admission，不把AI技术选择记学生亲改。先设计41776d0，再产品c79cd9930febadfa77cb2d0eede7626d4039c305。
+- 现有983新增22组件探针，原源真实15红7绿/65未选，修后相同22绿；再增两条日期前缀与重复日期/操作名原文字面变体，完整全前端一次89/89。20源文件364/390行93.33%、821/932分支88.09%，含main/router；未排除源文件/改门槛/删旧期待。构建含vue-tsc通过，829.87kB大chunk警告保留；构建在最后两条同类型测试数据变体之前，生产字节未变，完整89包括变体，不为美化数字重复构建/全套。
+- 产品只audit.ts纯展示判定及RecordView：唯一合法after.reason中文标题、直接纯文本、Unicode2000/换行/末尾空格/HTML/日期/操作名字面保留；重复reason不任选，原条目保持未核对纯文本。仅成功changeTaskPlan/changeIteration和明确唯一state'7'→'2'返工缺失提示，不猜残缺/失败/非计划；原actor/time/evidence/beforeafter不变。API/session/R1/UI002/14冻结字节不动。
+- backend同岗实际协调确认新reason数组位置无保证，前端按field而非index；其产品0549ea89交root后，root授权18089/PID12156/sourcearchive，同owned demo库、私密合成凭据只内存；未读root私密环境。既有旧18080仅允许在本次新project中做一次真实legacy改期，未拿旧API冒充新出口。
+- 872首次一次exit0，20:47:21.432–20:47:30.402UTC，前端c79的29个tracked frontend文件与新后端0549的52个backend/t44文件hash逐项核对；进程身份依root派发，文件hash不是内核进程鉴证。Vite5176独立cache且显式proxy18089，root18089由根管理，用户5173/独立5175/18084未动。
+- 仅新建自有[synthetic][frontend UI003] project42、项目内developer2成员、iteration42、task6002：4次201；同新project旧18080一次真实改期200生成audit119，oldGET after无reason→new18089精确追加reason='changeTaskPlan'→oldGET payload hash仍相同。该证据是HTTP旧出口JSON不变，不冒称SQL原始行检查。
+- 桌面1440/手机390各通过真实UI保存2000字一次200，audit121/124、task version/schedule1→2(legacy)→3→4，owner2/state1保持；每次理由DOM/API/预期SHA一致，HTML样式不执行、ISO日期+operation名不转写，尾部真实滚动可见。共7业务写入（4新建+1legacy+2UI），control14响应10×200/4×201，browser61响应全200，认证login/logout另列；不把auth写入或setup混作只读。
+- 6PNG逐张实际查看，1440/390无整页横溢出，pageerror0。新fixture及审计全部保留，不删除/reset，不改旧41/用户/独立数据；三次当前session正常logout均记录。自身Chrome与Vite5176在20:47:30.402UTC关闭，端口实查无listener；新18089留根管理。本轮没有浏览器/产品失败；两次只读rg引用不存在fields.ts/SchemaFields.vue返回2，核实际路径纠正，无测试/HTTP副作用。
+- 原22红绿/全89/构建/浏览器5原日志先gzip归档再规范可读尾空白，raw/readable SHA和全20源/14冻结hash见plan-reason-validation.json。缺失/重复/返工/迭代范围仅组件夹具，不伪造真实missing E2E或填SQL；准确新HEAD专审、组合CI、新无历史隔离验收仍待总协调安排，不称独立通过或学生人工经历。
+
+- 70f2e06证据阶段已commit/push；Issue28真实评论6374496391、新draftPR32已创建并精确GET正文匹配。实际base7f892644已含c79产品（git ancestry核实），PR差异为29证据文件，因此已将PR标题/正文改为证据交付而非第二次产品修复；初建mergeable=false后独立GET为true。未APPROVE/合main/自判验收；回执plan-reason-github-verification.json。

@@ -1,4 +1,16 @@
-# 前端模块报告｜1.1契约fixture／文档同步
+# 前端模块报告｜当前UI003理由展示交审
+
+## 当前范围与实际证据
+- 本轮ROLE-frontend-PLAN-REASON-v1，基于root3f59d88；技术准入5e8，前端先设计41776d0，最小产品c79cd9930febadfa77cb2d0eede7626d4039c305。Issue28负责后端来源与前端原文显示的配合，不增冻结字段/API码，不改session/R1/UI002。
+- 新auditReason纯函数与RecordView识别唯一非空≤2000 Unicode字符的after.reason，标题“原因与决定依据”，纯文本保留换行/空格/HTML样式/日期/操作名。重复或非法理由不选first，原条目仍作为未核对纯文本；仅相关成功计划/明确7→2返工缺失时诚实提示，不猜失败/残缺/nonplan。原操作者、时间、证据和前后计划保留。
+- 现有983新增22真实组件在旧源15红7绿，修后22绿；再加2字面变体后全前端一次89/89，20完整源行364/390=93.33%、分支821/932=88.09%。含main/router且原门槛不变。构建含vue-tsc通过，829.87kB警告保留；仅最后两条同类型测试数据变体在构建之后，生产字节未变，89覆盖包括它们。
+- 872真实开发回归一次exit0：FEc79/BE0549，5176显式代理新18089；29frontend/52backend文件逐项hash。新项目42/迭代42/task6002，4新建+1旧18080真实legacy改期+2新UI改期=7业务写入，全部限新fixture；旧41/独立资料不动。旧audit119在新API只追加精确reason='changeTaskPlan'，旧API两次payload hash不变。新audit121/124桌面/手机2000字DOM/API/预期SHA一致，v/schedule1→2→3→4、state1/owner2保持。
+- 1440/390六图已实际逐张看，长文尾部可滚动，0pageerror/整页横溢出/HTML执行。61browser全200；14control含4×201/10×200，auth和业务写入分别披露。自身Chrome/Vite5176已20:47:30.402UTC关闭，18089根管理；新资源保留审计，不删除/reset。原log/gzip/coverage/20源14冻结hash及完整结果见agents/frontend/plan-reason-validation.json。
+- 范围限制：missing/rework/iteration/重复等是组件证据；浏览器真实覆盖任务改期新理由与旧任务投影，没有伪造缺失legacy。HTTP旧出口不变不等于本岗直接核SQL原始行。当前是AI开发验证，准确新SHA专审、组合CI和新隔离独立复验待根安排；不撤销原独立报告、不计学生人工修改。
+
+## 以下各节按原阶段保留，不能当作当前UI003结论
+
+### 前端模块报告｜1.1契约fixture／文档同步
 
 ## 本轮1.1范围与验证
 - ROLE-frontend-CONTRACT-V11-SYNC-v1；安全合入59daa2c，权威SHA256 a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f。
