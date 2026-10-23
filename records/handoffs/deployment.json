@@ -53,7 +53,11 @@
     "scripts/ci/run_tests.py",
     "scripts/ci/static.py",
     "scripts/ci/tests/test_gates.py",
-    "scripts/ci/validate_config.py"
+    "scripts/ci/validate_config.py",
+    "agents/deployment/runtime-pr-body.md",
+    "agents/deployment/runtime-result-comment.md",
+    "agents/deployment/runtime-validation/remote-initial-failure.log",
+    "agents/deployment/runtime-validation/remote-initial.json"
   ],
   "interfaces": [
     {
@@ -218,6 +222,22 @@
         "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358651899",
         "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358904057"
       ]
+    },
+    {
+      "command": "git commit（仅49个本岗文件，Agent-Role/Prompt-Ref/Refs #7 footer）；git push --set-upstream origin codex/deployment-runtime",
+      "result": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c 已提交并push"
+    },
+    {
+      "command": "gh pr create --draft --base codex/team-bootstrap --head codex/deployment-runtime --body-file agents/deployment/runtime-pr-body.md；attach_artifact",
+      "result": "https://github.com/HJY147/t44-dev-trace/pull/15，已成功attach，未合并"
+    },
+    {
+      "command": "gh run view 39912067161 --json status,conclusion,url,jobs,headSha；gh run view --log-failed",
+      "result": "四job真实失败于缺实现；Compose/Nginx语法及真实依赖容器初始化成功，未执行产品测试；完整回执见remote-initial*"
+    },
+    {
+      "command": "gh issue comment 7 --repo HJY147/t44-dev-trace --body-file agents/deployment/runtime-result-comment.md；gh pr edit 15 --body-file agents/deployment/runtime-pr-body.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289；PR正文已更新"
     }
   ],
   "results": [
@@ -231,15 +251,18 @@
     "RUNTIME：实现单机Compose/Docker/Nginx/运维脚本/恢复说明；本地静态验证和17项本岗安全/CI守卫测试通过",
     "RUNTIME：实现static/contracts/coverage/frontend真实工作流；缺实现和空/跳过测试明确失败，全源码每语言只强制行覆盖率80",
     "RUNTIME：官方镜像摘要/Actions提交/Compose schema来源固定留痕，未拉取/构建镜像；无公开未鉴权health API",
-    "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷"
+    "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷",
+    "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
+    "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
+    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证"
   ],
   "unverified": [
     "本机无Docker：镜像拉取/构建、Nginx执行、Compose启动和服务连通均未验证",
     "应用包、哈希锁、迁移/账号CLI和真实模块测试尚未交付，本岗产品入口退出1",
     "真正MySQL/RabbitMQ集成、故障、全量覆盖率及frontend真实测试尚未运行",
     "备份/隔离恢复未实跑，迁移版本/表约束/业务数据/队列恢复尚待验证；RPO/RTO未决定",
-    "完整GitHub Actions首次远程执行尚未观察；当前main保护仅reviewer/stage由总协调维护",
-    "无服务器租赁、产品部署、独立验收或400并发/P95/吞吐数据"
+    "无服务器租赁、产品部署、独立验收或400并发/P95/吞吐数据",
+    "首次workflow已真实结束但失败于缺应用；后续PR自动运行状态以精确提交为准，不能当产品测试或覆盖率已通过"
   ],
   "questions": [
     "后端何时交付哈希锁、t44应用、CLI退出行为和三类marker真实测试？",
@@ -288,5 +311,16 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T14:29:50+08:00"
+  "updated_at": "2026-10-23T14:36:11+08:00",
+  "runtime_delivery": {
+    "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
+    "draft": true,
+    "base": "codex/team-bootstrap",
+    "artifact_attached": true,
+    "initial_actions_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161",
+    "initial_conclusion": "failure: missing application/tests/frontend manifest",
+    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289",
+    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit"
+  }
 }

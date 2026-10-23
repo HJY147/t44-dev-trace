@@ -38,7 +38,8 @@
   },
   "tls_verification": "system CA /etc/ssl/cert.pem; no verification bypass",
   "limitations": [
-    "Registry metadata checked; images not pulled or built locally",
-    "Actionlint validates workflow statically; full GitHub execution not yet observed"
+    "Images not pulled/built locally; no local Docker",
+    "Initial remote workflow completed with expected missing-implementation failures; no product test/coverage result",
+    "Nginx container syntax and dependency service initialization succeeded remotely; this is not a full product Compose deployment"
   ]
 }

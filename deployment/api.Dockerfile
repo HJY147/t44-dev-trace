@@ -6,6 +6,7 @@ RUN python -m pip install --no-cache-dir --require-hashes -r /tmp/requirements.l
     && groupadd --gid 10001 t44 && useradd --uid 10001 --gid t44 --no-create-home t44
 COPY backend/ /app/backend/
 COPY specs/database/ /app/specs/database/
+COPY specs/contracts/ /app/specs/contracts/
 COPY deployment/runtime_probe.py /app/deployment/runtime_probe.py
 USER 10001:10001
 EXPOSE 8000

@@ -44,3 +44,12 @@
 - 真实产品static检查退出1，contracts/coverage入口亦退出1，原因是本树尚缺应用、依赖锁、测试及待集成规格；missing清单见 runtime-validation/ci/preflight.json。未伪造用例、成功数据或跳过门禁。
 - 实际跨岗Issue留痕：#7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6358650740；#3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358651374；#4 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358651899；#2 https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358904057。均通过保存在本岗runtime-*comment.md的body-file发表，未取得前端测试/迁移实现确认。
 - 未执行镜像拉取/构建、Compose启动、Nginx运行、应用测试、迁移、备份恢复、真实完整Actions或压测；不声称测试/审核通过，不更改main保护、不合并，不联系独立测试。
+
+### RUNTIME-v1 发布本岗分支与真实远程回执（14:36）
+
+- 本岗实现commit为 `3857b2e55fcb7fe99b38fa2d85b086662b762f6c`；`git push --set-upstream origin codex/deployment-runtime` 成功。实际创建草稿PR https://github.com/HJY147/t44-dev-trace/pull/15，base为codex/team-bootstrap，创建后已调用attach_artifact。未合并、未改保护或设置reviewer成功。
+- 首次push自动触发真实Actions https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161，精确SHA为3857b2e55fcb7fe99b38fa2d85b086662b762f6c；四job均failure，失败步骤为缺应用/测试/前端manifest，不是通过。原始失败日志及完整job回执已保存runtime-validation/remote-initial-failure.log、remote-initial.json。
+- 该run的Compose/Nginx官方容器语法步骤成功；contracts/coverage的真实MySQL与RabbitMQ容器Initialize containers成功。仅为远程基础配置/服务启动证据，应用preflight随后失败，未执行产品契约、故障、覆盖率或前端测试。不能写作完整Compose产品已构建或已部署。
+- 后续PR自动触发同SHA运行时为in_progress；没有手工重跑或等应用，后续结果按准确提交读取。当前开发机仍无Docker，未在本机构建/启动/迁移/恢复或压测。
+- 总协调追加运行资源约束后，api镜像白名单纳入authoritative specs/contracts，与specs/database并列，不复制原始specs/sources；后端实际资源加载路径和全部hash的requirements.lock仍待编码集成验证。vendor/schema/镜像元数据不计入应用有效代码规模。
+- 实际结果评论 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289 已通过runtime-result-comment.md的body-file发表；PR正文由runtime-pr-body.md通过gh pr edit同步真实状态。随后仅提交上述收尾配置和事实记录。

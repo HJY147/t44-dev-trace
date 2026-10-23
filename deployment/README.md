@@ -6,7 +6,7 @@
 
 - Linux 单机、Docker Engine 与支持 `up --wait` 的 Compose v2（建议至少2.24）；本项目没有集群或多地域。
 - Python3.12 用于 `deployment/ops.py`；操作工具只依赖标准库。生产镜像固定多架构摘要，版本更新需重新验证和留痕。
-- `backend/requirements.lock` 必须含哈希；运行包为 `backend/t44/`，DDL为 `specs/database/`。API `t44.api:app` 使用4个 worker；消息与调度分别为 `python -m t44.messaging`、`python -m t44.scheduling`。
+- `backend/requirements.lock` 必须含全部依赖哈希；运行包为 `backend/t44/`，DDL为 `specs/database/`，运行时权威契约为 `specs/contracts/`；镜像只复制这些规格目录，不复制原始 `specs/sources`。后端实际资源加载路径仍待编码核对。API `t44.api:app` 使用4个 worker；消息与调度分别为 `python -m t44.messaging`、`python -m t44.scheduling`。
 - Vue3/TypeScript/Element Plus，Node24、pnpm11.25.0，`frontend/pnpm-lock.yaml`、`pnpm run build` 输出 `dist/`；Nginx同源转发 `/api/v1`，保留完整前缀，支持HTML5 history路由。
 - 只有 `127.0.0.1:8080` 映射宿主。MySQL、RabbitMQ（包括管理面板）没有宿主端口；持久卷分别为 `<project>_mysql_data` 和 `<project>_rabbitmq_data`。不要增加公网数据库/队列端口。
 

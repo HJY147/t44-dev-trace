@@ -74,3 +74,9 @@
 - 本地产品static/contracts/coverage检查均因缺应用明确退出1；不能因配置检查通过宣称产品门禁已通过。无Docker，未拉镜像/构建/启动/跑Nginx/迁移/备份恢复/压测。
 - 跨岗实际Issue评论：#7/6358650740、#3/6358651374、#4/6358651899、#2/6358904057；正文在本岗runtime-*comment.md，前端测试接口尚未确认。
 - 当前主干保护仍由总协调维护；没有自行修改门禁保护、合并main或发布reviewer成功。云规格依旧不保证400并发/P95/吞吐达标。
+
+### RUNTIME-v1 远程收尾
+
+- 实现提交3857b2e55fcb7fe99b38fa2d85b086662b762f6c已push；草稿PR #15（base codex/team-bootstrap）已创建并attach，未合并。
+- 首次远程run39912067161四job均因缺应用/测试/前端manifest失败；Compose/Nginx语法步骤及真实服务初始化成功，但未执行产品用例或覆盖率。精确回执与日志见runtime-validation/remote-initial*。
+- api镜像加入authoritative specs/contracts白名单，不复制原始材料；实际路径、后端哈希锁和迁移/恢复仍待集成。结果Issue评论#7/6359033289，正文与PR正文均保存在本岗目录。

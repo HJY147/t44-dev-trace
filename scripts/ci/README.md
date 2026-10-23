@@ -26,4 +26,4 @@ T44_CI_REPORTS=agents/deployment/runtime-validation/ci deployment/.venv/bin/pyth
 # 应用缺失时最后一步退出1；reports中的missing字段是阻塞证据，不是通过结论。
 ```
 
-应用齐备后的本地 `run_tests.py contracts/coverage` 还须显式准备一次性真实服务和迁移；不能在生产库运行故障自测。开发机本轮无Docker，未执行完整工作流、容器构建或压测。独立验收由总协调另行隔离派发。
+应用齐备后的本地 `run_tests.py contracts/coverage` 还须显式准备一次性真实服务和迁移；不能在生产库运行故障自测。开发机本轮无Docker，未在本地执行容器构建或压测。首次远程工作流已由push自动触发，四项因缺实现明确失败，精确提交/回执见本岗handoff，未执行产品测试。独立验收由总协调另行隔离派发。
