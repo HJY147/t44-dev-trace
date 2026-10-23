@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "session-r1-developer-follow-up-validated",
-  "implementation_status": "9560e7b补修旧错误/卸载回调边界，原895重放3绿、相邻9绿、全51绿；原3c审查NOT_PASSED历史保留，等待准确新HEAD复审与新隔离独立复测。",
+  "stage": "ui002-business-feedback-developer-validated",
+  "implementation_status": "UI002产品3628ee1仅业务拒绝展示；65全前端通过，类型及真实两类422有限回归通过，准确新HEAD审核与新隔离独立复测待进行。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -487,20 +487,32 @@
         "agents/frontend/session-r1-validation.json"
       ],
       "improvement_reason": "正视39绿漏掉错误/卸载组合，保留审核反例与真实红，双重检查会话归属和组件存活，不用改期待或截图替代证明。"
+    },
+    {
+      "id": "ROLE-frontend-BUSINESS-FEEDBACK-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-BUSINESS-FEEDBACK-v1.md",
+      "artifacts": [
+        "docs/ui/business-rejection-feedback.md",
+        "frontend/src/forms.ts",
+        "frontend/src/components/OperationForm.vue",
+        "tmp/frontend/884_capacity_feedback_browser.mjs",
+        "agents/frontend/business-feedback-validation.json"
+      ],
+      "improvement_reason": "按冻结状态/码/操作解释人力业务约束，保留未知/字段/503/session退路，不把数据保护成功当界面验收通过。"
     }
   ],
-  "updated_at": "2026-10-23T19:11:38.950683+00:00",
+  "updated_at": "2026-10-23T19:48:19.450728+00:00",
   "delivery": {
-    "branch": "codex/frontend-logout",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "branch": "codex/frontend-business-feedback",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/30",
     "base": "codex/integration",
     "draft": true,
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
-    "status": "SESSION-R1 product9560e7b/evidence36d7681 pushed; Issue25/PR26 comments and PR body readback exact; new exact-HEAD review and independent retest pending",
-    "latest_checkpoint": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
-    "product_source_note": "Frontend session context lifecycle and authenticated DOM changed; backend, API contract and business workflow unchanged.",
+    "status": "UI002 product3628/evidence631 pushed, draftPR30/Issue27 comment real body readbacks match; exact newHEAD review and independent retest pending",
+    "latest_checkpoint": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+    "product_source_note": "Only forms.ts business guard explanations and OperationForm alert presentation; API/session lifecycle/backend/frozen contracts unchanged.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
-    "application_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "application_commit": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
     "stage_comments": {
       "warm_glass_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127",
       "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
@@ -512,7 +524,9 @@
       "logout_readback": "agents/frontend/logout-github-verification.json"
     },
     "previous_warm_glass_branch": "codex/frontend-warm-glass",
-    "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14"
+    "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14",
+    "previous_session_branch": "codex/frontend-logout",
+    "previous_pr26": "https://github.com/HJY147/t44-dev-trace/pull/26"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -577,7 +591,7 @@
     "application_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
     "reviewed_old_head": "3c160c57c56af47eea2c524d93340a679eeb441b",
     "previous_review": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236",
-    "status": "developer checks completed; exact new-SHA review and independent retest pending",
+    "status": "Historical source9560/exactbabc limited review completed (COMMENT5633421899), integrated by coordinator499a2a4; not overall approval/independent acceptance.",
     "validation": "agents/frontend/session-r1-validation.json",
     "reviewer_probe_unchanged_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
     "reviewer_probe_before": {
@@ -613,5 +627,51 @@
       "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372739464",
       "https://github.com/HJY147/t44-dev-trace/pull/26#issuecomment-6372739873"
     ]
+  },
+  "business_feedback": {
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/27",
+    "basis_commit": "499a2a4",
+    "design_commit": "3c804d3",
+    "application_commit": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+    "validation": "agents/frontend/business-feedback-validation.json",
+    "target_before": {
+      "failed_business": 9,
+      "passed_fallback": 4
+    },
+    "target_after_passed": 13,
+    "full_tests_passed": 65,
+    "lines": {
+      "covered": 353,
+      "total": 379,
+      "pct": 93.13
+    },
+    "branches": {
+      "covered": 783,
+      "total": 894,
+      "pct": 87.58
+    },
+    "source_files": 19,
+    "first_typecheck_failure_retained": true,
+    "driver_failures_retained": 2,
+    "fixture_resources": {
+      "demo_project": 41,
+      "iteration": 41,
+      "task": 6001,
+      "api_business_creations": 5,
+      "project_count_created": 1
+    },
+    "browser_final_responses": 50,
+    "browser_final_expected422": 4,
+    "browser_business_success_writes": 0,
+    "screenshots_viewed": 4,
+    "chrome_and_port5176_stopped": true,
+    "ui003_interface_comments": [
+      "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373191287",
+      "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373333383"
+    ],
+    "status": "developer checks only; exact new-SHA review and isolated independent retest pending",
+    "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/30",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/27#issuecomment-6373406222",
+    "github_verification": "agents/frontend/business-feedback-github-verification.json"
   }
 }

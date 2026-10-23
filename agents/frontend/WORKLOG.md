@@ -179,3 +179,15 @@
 - 因Login真实路径有变，原896对956做限定真实回归：1440/390八图逐张看，60响应54个200/6个预期401，2个driver本session logout200，0业务写/页面异常/横溢出；不说浏览器复现迟到403。Chrome19:08:58.236UTC退出，自身5176随后Ctrl-C exit130，用户/独立进程数据未动。
 - 原39绿/原7红、审核1红、初探针驱动错/旧源修正红、全部原始gzip分别保存；新证据session-r1-validation.json。不称独立复测、学生发现或整产品通过，等待准确新HEAD复审。
 - 36d7681证据阶段已push；Issue25评论6372739464、PR26评论6372739873及更新后的PR正文均通过真实读取逐字匹配，回执session-r1-github-verification.json。没有发布审核通过状态/APPROVE或合并。当前源码仍9560e7b；UI002/003另阶段等待root派工，未混入本专项。
+
+## 2026-10-24T03:47+08:00｜ROLE-frontend-BUSINESS-FEEDBACK-v1
+- root给定R1在babc已获限定复审COMMENT5633421899，集成499a2a4；本岗clean后从499建codex/frontend-business-feedback，不在旧R1改新行为。只读root明确发布容量/依赖报告2件，独立原4c的UI002解释不足仍保留；未读私密脚本/日志/截图。
+- 先设计3c804d3，按D005/D006和冻结x-error-cases核CAPACITY、OWNER_NOT_PROJECT_DEVELOPER、MEMBER_IN_USE；状态+code+op+Rework schema限定。共享CAPACITY不猜具体漏人；区分1–5容量与1–5+7成员保护，转派仍原状态。业务守卫不用普通字段标题/内部英文violation，但保留detail与追踪号；未知/字段格式/503/client0退路不变。
+- 新9个组件业务解释在原956均红，4个退路原绿；只改forms/OperationForm产品3628ee1后13绿。额外1个边界矩阵后完整65/65，19源353/379行93.13%、783/894分支87.58%，main/router仍分母，API/session/R1/后端/冻结字节不变。
+- 首次构建TS2322只在新增用例preset类型（Json/union非Row），原失败保留；显式Row用例类型+asRow已有plan后最终含vue-tsc构建通过，828.48kB chunk警告保留。完整覆盖率在完全相同生产源上类型整理前取得；整理后仅受影响13再绿，未重复全套、不把测试hash变化隐瞒。
+- root预留884并明确仅新唯一自有合成项目。首次API setup新项目41成功，误把MemberCreate写user_id，真实422 PARAMETER_INVALID；未开Chrome。改驱动契约字段username/roles/reason，只读核41为本manager/无成员外新增/无迭代任务后续用；两成员/迭代41/任务创建201。随后桌面容量422已成功，但错误解码TaskMutation data.task导致undefined标题strict selector失败；两版脚本gzip、原失败日志/部分图保留，非产品失败。
+- 再只读核本41创建者、成员1/2/3、唯一迭代/任务、owner2/state1/v1后续用，不追加新项目/创建；最终1440/390四次真实422业务解释/下一步可见，每次GET核迭代版本/工时及任务owner/state/version不变。50HTTP46个200/4个422，浏览器业务成功写0；全setup成功业务创建总5件（project+2member+iteration+task），不能称全程无业务写。
+- 最终4PNG逐张查看、无pageerror/横溢出；长解释在手机完整换行、追踪号可见。Chrome19:43:11.666UTC退出，本岗5176 Ctrl-C exit130。新资源/拒绝记录保留不删审计；早期失败登录不是“已撤销全部旧session”的证明，最终只注销各当前token。不动用户5173/独立5175/18084/原项目/全局用户。
+- Issue28真实协商评论6373191287及6373333383均逐字回读匹配；已直接回backend。通用RecordView会完整渲染after，但Diff.field reason当前未中文化且value通用display可能转换用户原文，需UI003另阶段按纯文本/中文/缺失说明处理，未混进UI002。不能冒称字段已有label就代表Diff显示已满足。
+- 全19源hash、14冻结hash、原始gzip、类型与驱动错误、唯一资源写清单见business-feedback-validation.json。本阶段AI开发回归，待准确新SHA审核及新隔离独立复测，旧独立FAIL/正式性能/规模/人工作业门禁不解除。
+- 631988c证据已push；Issue27评论6373406222及draft PR30均真实发布、正文逐字回读匹配，见business-feedback-github-verification.json。未发APPROVE/审核成功/合并；结束仅移除自身worktree依赖符号链接，根依赖目录不动。

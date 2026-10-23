@@ -13,11 +13,11 @@ import NotFoundView from '../../frontend/src/views/NotFoundView.vue'
 import WorkspaceView from '../../frontend/src/views/WorkspaceView.vue'
 import { navigation } from '../../frontend/src/navigation'
 import { asRow, schemas, validate } from '../../frontend/src/contract'
-import type { Schema } from '../../frontend/src/contract'
+import type { Row, Schema } from '../../frontend/src/contract'
 import { formSchemas, presets } from '../../frontend/src/forms'
 import { workspace } from '../../frontend/src/workspace'
 import { api } from '../../frontend/src/api'
-import { evidence, fixtureFetch, iteration, member, notification, page, project, seed, task, user } from './981_fixtures'
+import { evidence, fixtureFetch, iteration, member, notification, page, plan, project, seed, task, user } from './981_fixtures'
 const global = { stubs: { teleport: true } }
 const settle = async () => { await flushPromises(); await nextTick(); await flushPromises() }
 const button = (wrapper: ReturnType<typeof mount>, text: string) => wrapper.findAll('button').find((node) => node.text() === text)!
@@ -150,6 +150,47 @@ describe('operation forms', () => {
       const form = mount(OperationForm, { props: { operation, schemaName, params: { project_id: 1, task_id: 1 }, preset: presets(operation, operation === 'changeIteration' ? iteration : member, task), refresh: async () => {}, saved: async () => {} }, global })
       await settle(); expect(form.find('form').exists()).toBe(true); await button(form, '取消').trigger('click'); expect(form.emitted('close')).toHaveLength(1); form.unmount()
     }
+  })
+})
+describe('staffing rejection feedback', () => {
+  const staffingCases: { operation: string; schemaName: string; preset: Row; code: string; status: number; text: string[] }[] = [
+    { operation: 'createIteration', schemaName: 'IterationCreate', preset: asRow(iteration.plan), code: 'CAPACITY_REFERENCE_INVALID', status: 422, text: ['有效开发成员', '每人仅登记一次'] },
+    { operation: 'changeIteration', schemaName: 'IterationChange', preset: { expected_version: 3, plan: iteration.plan, reason: '调整合成人力', evidence: [evidence] }, code: 'CAPACITY_REFERENCE_INVALID', status: 422, text: ['未结项任务', '保留', '已回滚', '不重复'] },
+    { operation: 'createTask', schemaName: 'TaskCreate', preset: { title: '合成人力任务', iteration_id: 1, owner_id: 1, plan, dependency_task_ids: [] }, code: 'CAPACITY_REFERENCE_INVALID', status: 422, text: ['所选迭代', '先', '工时'] },
+    { operation: 'changeTaskAssignment', schemaName: 'AssignmentChange', preset: { expected_version: 1, owner_id: 1, reason: '合成转派', evidence: [evidence] }, code: 'CAPACITY_REFERENCE_INVALID', status: 422, text: ['接手人', '当前迭代', '先', '工时'] },
+    { operation: 'transitionTask', schemaName: 'ReworkTransition', preset: { expected_version: 1, action: 9, new_plan: plan, reason: '合成返工', evidence: [evidence] }, code: 'CAPACITY_REFERENCE_INVALID', status: 422, text: ['返工', '有效开发成员', '补回工时'] },
+    { operation: 'createTask', schemaName: 'TaskCreate', preset: { title: '合成人力任务', iteration_id: 1, owner_id: 1, plan, dependency_task_ids: [] }, code: 'OWNER_NOT_PROJECT_DEVELOPER', status: 422, text: ['不是本项目有效开发成员', '项目空间'] },
+    { operation: 'changeTaskAssignment', schemaName: 'AssignmentChange', preset: { expected_version: 1, owner_id: 1, reason: '合成转派', evidence: [evidence] }, code: 'OWNER_NOT_PROJECT_DEVELOPER', status: 422, text: ['不是本项目有效开发成员', '项目空间'] },
+    { operation: 'removeProjectMember', schemaName: 'MemberRemove', preset: { expected_version: 1, reason: '合成成员移除' }, code: 'MEMBER_IN_USE', status: 409, text: ['未结项', '已回滚', '开发角色', '不能'] },
+    { operation: 'changeProjectMember', schemaName: 'MemberChange', preset: { expected_version: 1, roles: [1], reason: '合成角色变更' }, code: 'MEMBER_IN_USE', status: 409, text: ['未结项', '已回滚', '开发角色', '不能'] },
+  ]
+  it.each(staffingCases)('explains $code for $operation without losing the draft or trace', async entry => {
+    const fetcher = vi.fn().mockImplementation(async () => new Response(JSON.stringify({ code: entry.code, message: 'Guard rejected operation', violations: [{ path: '/plan/capacity', message: 'Internal guard condition' }], request_id: 'ui002-fixture' }), { status: entry.status }))
+    vi.stubGlobal('fetch', fetcher)
+    const refresh = vi.fn(async () => ({})), saved = vi.fn(async () => {})
+    const wrapper = mount(OperationForm, { props: { operation: entry.operation, schemaName: entry.schemaName, params: { project_id: 1, iteration_id: 1, task_id: 1, user_id: 1 }, preset: entry.preset, refresh, saved }, global })
+    await settle(); const inputs = wrapper.findAll('input,textarea,select').map(node => (node.element as HTMLInputElement).value)
+    await wrapper.get('form').trigger('submit'); await settle()
+    expect(fetcher).toHaveBeenCalledOnce(); const alert = wrapper.get('.operation-error')
+    for (const text of entry.text) expect(alert.text()).toContain(text)
+    expect(alert.text()).toContain('ui002-fixture'); expect(alert.get('strong').text()).not.toBe('请修改提示的字段')
+    expect(wrapper.text()).not.toContain('Internal guard condition'); expect(wrapper.findAll('input,textarea,select').map(node => (node.element as HTMLInputElement).value)).toEqual(inputs)
+    expect(saved).not.toHaveBeenCalled(); expect(wrapper.emitted('close')).toBeUndefined(); expect(refresh).toHaveBeenCalledTimes(entry.status === 409 ? 1 : 0)
+    wrapper.unmount()
+  })
+  it.each([
+    { status: 422, code: 'PARAMETER_INVALID', message: '名称不合要求', expected: '请重新填写名称', field: true },
+    { status: 422, code: 'UNLISTED_SERVER_CODE', message: 'Unrecognized rejection', expected: '填写内容不符合要求', field: false },
+    { status: 422, code: 'CAPACITY_REFERENCE_INVALID', message: 'Wrong operation for code', expected: '填写内容不符合要求', field: false },
+    { status: 503, code: 'CAPACITY_REFERENCE_INVALID', message: 'Wrong status for code', expected: '服务暂不可用', field: false },
+  ])('keeps the safe fallback for $status $code on unrelated createProject', async entry => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ code: entry.code, message: entry.message, request_id: 'fallback-fixture', violations: entry.field ? [{ path: '/name', message: '请重新填写名称' }] : [] }), { status: entry.status })))
+    const wrapper = mount(OperationForm, { props: { operation: 'createProject', schemaName: 'ProjectCreate', params: {}, preset: { name: '合成项目草稿', description: '' }, refresh: async () => {}, saved: async () => {} }, global })
+    await settle(); await wrapper.get('form').trigger('submit'); await settle()
+    expect(wrapper.text()).toContain(entry.expected); expect(wrapper.text()).toContain('fallback-fixture'); expect(wrapper.text()).not.toContain('补回工时'); expect(wrapper.get('#field-name').element).toHaveProperty('value', '合成项目草稿')
+    if (entry.field) expect(wrapper.get('.operation-error strong').text()).toBe('请修改提示的字段')
+    if (entry.status === 503) expect(wrapper.text()).toContain('同一操作重试')
+    wrapper.unmount()
   })
 })
 describe('session and user flows', () => {
