@@ -120,3 +120,9 @@
 - 用户D004选择已生效；旧日志Q002待回复保留为当时事实，当前报告/交接已更新。未触独立testing资料，不发审核成功。
 - 总协调与backend实际指出CI只给DATABASE_URL+T44_DATABASE=t44_ci且拒skip，已修改本岗fixture双环境、显式数据库一致/隔离库限制、CI缺配置fail及integration marker。本机路径须T44_TEST_DATABASE=t44_test。run5全33通过；另外用真实本机库但完全同CI环境变量入口12通过、无skip，保存persistence-ci-env-test.log，不冒充GitHub hosted CI结果。
 - 阶段2真实产品提交af439304c8615e90d470a631dc41dcd76cbd5d6f已push；PR17已用GitHub connector重写完整当前范围（明确seed pending），并实际attach_artifact成功。后续仅补PR正文/交接元数据，不算新业务实现或验证。按总协调要求结束小阶段释放槽位，剩余seed与集成待恢复。
+
+## ROLE-database-RECOVERY-SEED-v1：恢复接口小阶段
+- 实际读Issue4 messaging评论6360793043，直接确认精确签名recover_confirmed(*,confirmed_before,now=None,limit=100)，旧token终态stale_owner符合约定。
+- 实现固定MySQL JSON_TABLE+NOT EXISTS候选过滤：先排除完整通知，limit不被旧完整事件占满；同event FOR UPDATE SKIP LOCKED后重新比recipient/notice，只有created>0才confirmed→fallback。未改冻结DDL。
+- 首次真库新增回归2失败12通过：共享t44_test存在其他阶段缺通知confirmed，候选正确优先返回较早事件，干扰“仅本夹具”断言。保留recovery-mysql-tests-run1.log；未删除/重置他岗数据，给本夹具独立confirmed时间窗口后14通过(run2，0.35s)。检查消费者持锁并发恢复跳过、完整后不降级、3旧完整不饿死后续缺失、迟到confirm与重复消费。
+- Ruff check通过；此小阶段先commit/push给MQ/root，不等seed，不声称RabbitMQ/完整HTTP/独立验收完成。
