@@ -69,7 +69,7 @@ def verify_entry(root, entry):
         expected_stage = "M7" if entry["document_id"] == "test-results" else "M6"
         allowed = allowed and relative.parts[2] == expected_stage
         allowed = allowed and relative.name == entry["document_id"] + "-review" + relative.suffix
-        allowed = allowed and relative.suffix in {".docx", ".pdf"}
+        allowed = allowed and relative.suffix == ".docx"
         allowed = allowed and bool(entry.get("qa_reference"))
     elif kind == "material":
         allowed = str(relative) in PUBLIC_MATERIALS
@@ -129,8 +129,8 @@ def main():
         raise ValueError("Exactly one verified source review archive is required")
     inner_count = verify_source_archive(next(data for record, data in entries if record["kind"] == "source"), source)
     technical = [(r["document_id"], Path(r["path"]).suffix) for r, _ in entries if r["kind"] == "technical"]
-    if set(technical) != {(name, ext) for name in DOCUMENTS for ext in (".docx", ".pdf")} or len(technical) != 8:
-        raise ValueError("Four distinct technical DOCX/PDF pairs are required")
+    if set(technical) != {(name, ".docx") for name in DOCUMENTS} or len(technical) != 4:
+        raise ValueError("Four distinct reviewed technical DOCX files are required")
     names = [r["member"] for r, _ in entries]
     if len(names) != len(set(names)) or sum(len(b) for _, b in entries) > LIMIT:
         raise ValueError("Duplicate entries or oversized review package")
