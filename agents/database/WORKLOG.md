@@ -239,3 +239,7 @@
 - 核锁backend requirements与实际backend/.venv SQLAlchemy2.1.6，本机pool impl.py/base.py与官方rel_2_1_6 raw逐字/hash相同；source-verification.json保留实际方法行号/hash。首次系统CA失败后使用既有certifi CA保持验证成功，不绕TLS；未用不匹配版本文档代替实际代码。
 - 真实QueuePool按返还队列满时close/减少overflow，懒建连接且A5+10/B15+0同15峰值；B最多保留更多空闲会话/内存，不是零成本。acquire inclusive不是纯pool等待，旧并发32新连211不能回填正式三组根因。
 - 先提交精确工具设计/命令/预算，955仅最小扩展pool-abba、固定A/B与预热/稳态/清理阶段和真实DBAPI计数；不改生产/默认池/SQL/锁/线程/全局参数。实际比较须root窗口，当前没有HTTP/SQL/负载。
+
+- 设计42a8bcb已push后仅编辑955：新增固定pool-abba复用原控制器/客户端/仪表/server；同步32客户端后1/4秒相位计时，分别记录warmup/steady/cleanup；A/B只替换本地db副本，旧生产与默认不动。增加真实DBAPI connect/ping/do_close尝试及异常类/false ping/线程CPU，完整request_id/acquire计数和最近秩P95，不平均四段。
+- 过程内110秒截止预留10秒清理、子进程finally与端口检查；fixture0600/hash、2.1.6版本/官方源hash、已提交工具与bc5全部应用字节守卫。预检只有app可见本库PROCESSLIST0，已向root明确不能当跨账号全局无连接证明。
+- 工具静态首轮I001仅新增dataclasses import顺序，ruff-tool-run1.log保留；整理及格式化后最终限定Ruff通过，AST与生产bc5/14冻结hash全同（production-boundaries.json）。首次一个apply_patch上下文因格式化插空行未命中，无文件部分改动；定位后修正。尚未导入工具、HTTP/SQL/负载，工具commit后才做离线合成检查。

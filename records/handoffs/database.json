@@ -1,7 +1,7 @@
 {
   "role": "database",
   "stage": "POOL-RETENTION-v1：同15峰值保留池受限诊断设计",
-  "implementation_status": "已核实际2.1.6池源码与官方tag一致；设计先提交，955扩展/离线验证待做，实际ABBA等待root窗口未执行。",
+  "implementation_status": "955固定ABBA工具已实现并静态AST/Ruff/生产bc5及14冻结核对通过；本checkpoint先commit，离线合成验证待做，实际HTTP/SQL/ABBA仍须root窗口。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -554,6 +554,11 @@
       "path": "agents/database/pool-retention/source-verification.json",
       "kind": "实际锁定池源码与官方tag逐字/hash对照",
       "status": "2files equal; 2.1.6"
+    },
+    {
+      "path": "tmp/backend/955_perf_profile.py",
+      "kind": "复用既有编号的固定ABBA诊断扩展",
+      "status": "工具先提交；未运行HTTP/SQL/负载"
     }
   ],
   "interfaces": [
@@ -822,7 +827,7 @@
     "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained."
   ],
   "unverified": [
-    "955工具扩展尚未完成/离线验证",
+    "工具已静态通过；离线合成接口/QueuePool生命周期/控制器失败清理验证待commit后执行",
     "实际ABBA/HTTP/SQL/负载未执行，必须等root窗口",
     "未准入生产池修改；正式压力/源码规模/人工材料原缺口不改变"
   ],
@@ -998,7 +1003,7 @@
       "improvement_reason": "新假设先核锁定真实源码和同峰值/空闲代价，工具先提交并隔离真实执行窗口，不把短段归因为正式根因"
     }
   ],
-  "updated_at": "2026-10-23T22:50:10.582133+00:00",
+  "updated_at": "2026-10-23T22:57:47.224150+00:00",
   "publication": {
     "branch": "codex/database-plan-history",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-plan-history",

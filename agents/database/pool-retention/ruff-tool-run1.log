@@ -1,0 +1,43 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> tmp/backend/955_perf_profile.py:3:1
+   |
+ 1 |   """Stage-B-only isolated observer; no workload, connection or server starts on import."""
+ 2 |
+ 3 | / import argparse
+ 4 | | import contextvars
+ 5 | | import cProfile
+ 6 | | import functools
+ 7 | | import hashlib
+ 8 | | import importlib
+ 9 | | import json
+10 | | import math
+11 | | import os
+12 | | import platform
+13 | | import signal
+14 | | import socket
+15 | | import subprocess
+16 | | import sys
+17 | | import threading
+18 | | import time
+19 | | from collections import Counter
+20 | | from concurrent.futures import ThreadPoolExecutor
+21 | | from datetime import UTC, datetime
+22 | | from dataclasses import replace
+23 | | from importlib.metadata import version
+24 | | from pathlib import Path
+25 | | from uuid import uuid4
+   | |______________________^
+26 |
+27 |   _RECORD = contextvars.ContextVar("profile_record", default=None)
+   |
+help: Organize imports
+   |
+20 | from concurrent.futures import ThreadPoolExecutor
+21 + from dataclasses import replace
+22 | from datetime import UTC, datetime
+   - from dataclasses import replace
+23 | from importlib.metadata import version
+   |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.
