@@ -38,7 +38,7 @@
       "label": "前端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/frontend/TASK.md",
       "agent_id": "/root/frontend",
-      "status": "foundation_completed",
+      "status": "full_application_in_progress",
       "prompt_id": "ROLE-frontend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:45:38+08:00",
@@ -50,7 +50,8 @@
       "worktree": ".agent-worktrees/frontend",
       "branch": "codex/frontend-app",
       "foundation_head": "f261cbf0ea94537ed9f0a1600770c93ee8109237",
-      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14"
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/14",
+      "current_prompt": "ROLE-frontend-APPLICATION-v1"
     },
     {
       "role": "backend",
@@ -117,7 +118,7 @@
       "label": "定时调度",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/scheduler/TASK.md",
       "agent_id": "/root/scheduler",
-      "status": "scheduler_foundation_in_progress",
+      "status": "rule_foundation_completed; full_scan_queued",
       "prompt_id": "ROLE-scheduler-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:49:00+08:00",
@@ -127,7 +128,10 @@
       "github_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/6",
       "m0_commit": "253276093ba0557d9446aab358bb02faeb03d845",
       "current_prompt": "ROLE-scheduler-FOUNDATION-v1",
-      "branch": "codex/scheduler-core"
+      "branch": "codex/scheduler-core",
+      "foundation_head": "879a0de003feee796ed13601e9a8e5858989fdd2",
+      "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/19",
+      "worktree": ".agent-worktrees/scheduler"
     },
     {
       "role": "deployment",
@@ -191,7 +195,7 @@
       "label": "审核",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/reviewer/TASK.md",
       "agent_id": "/root/reviewer",
-      "status": "foundation_review_evidence_pending_capacity_resume",
+      "status": "foundation_evidence_paused_for_development_queue",
       "prompt_id": "ROLE-reviewer-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T13:16:40+08:00",
@@ -203,7 +207,8 @@
       "reviewed_head": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
       "review_evidence_commit": "5d0c087f63812b0e00c7284afeafe4ec6a00c110",
       "current_prompt": "ROLE-reviewer-FOUNDATIONS-v1",
-      "branch": "codex/review-foundations"
+      "branch": "codex/review-foundations",
+      "worktree": ".agent-worktrees/review-foundations"
     }
   ],
   "repository": {
@@ -236,5 +241,16 @@
       "D004"
     ],
     "manifest": "records/spec-freezes/v1.json"
+  },
+  "integration": {
+    "branch": "codex/integration",
+    "foundation_head": "6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+    "main_merged": false,
+    "combined_module_tests": 201,
+    "real_mysql": {
+      "version": "8.4.11",
+      "address": "127.0.0.1:13306",
+      "scope": "project-local new test databases"
+    }
   }
 }
