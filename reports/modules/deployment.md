@@ -119,3 +119,13 @@
 - run39961035953 success：环境68b3bb2/product4c20f32分开，原始公共execution/crypto/控制事件/回执在acceptance-environment-validation/run-39961035953；首败39958418657保留。
 - 观测MySQL2003/TCP111/无实际port绑定/internal-only后，只修验收override bridge，SQL/AMQP真连通；service bearer实际CLI/session scope/TTL300/0600通过；Rabbit stop/recover、finally恢复及合成CMS roundtrip通过。
 - 953部署guard37项/Ruff/actionlint通过，不是tester用例。harness=false、profile=false；独立冻结入口/真实接收证书和独立fault/性能均待其后续执行，不重复本轮能力check。
+
+### RECOVERY-MQ-v1 增量能力
+
+- 新recover逐次JSON含独立ID/UTC/实际步骤exit/恢复服务，失败非零且结构化false；仅对实际暂停服务unpause，所有必须up --wait等全成功才true，保留部分恢复/失败证据，不扩大服务权限。
+- SUT固定4c20f32，核实际MQ默认/无override；context新增主与quarantine拓扑、真实outbox wrapper字段、Pika属性/mandatory的中性元数据，不提供业务预期。
+- 原953扩至49guard/Ruff/actionlint通过；revision3能力复核待远程执行，harness/profile不执行，旧回执保留。
+
+- 增量revision3/run39974397951失败如实保留：stop恢复true；pause后unpause0但up --wait1(unhealthy)，逐次/最终回执false，MQ metadata/绑定通过。依真实诊断增加unpause后的60秒有界只读健康观测，原服务/动作范围不变；51guard/Ruff/actionlint通过，revision4固定4c待必要复核。
+
+- revision4/run39975896833真实通过逐次stop/pause/最终JSON和MQ metadata/绑定。另补保留基础→应用依赖顺序的必要守卫，52项通过；最终实现revision5待同4c复核，旧各次原始回执分目录保留。

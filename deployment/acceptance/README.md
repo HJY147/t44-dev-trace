@@ -6,7 +6,7 @@
 
 `.github/workflows/acceptance-environment.yml` 接受两种模式：
 
-- `environment-check`：不选择、不执行独立 harness。只构建和启动环境，验证只读 SQL/队列审计连接、一次可恢复 RabbitMQ stop/start、合成输出加密/解密传输。本次能力核验不重复原 Docker 业务/备份恢复整套，也不证明独立 fault 覆盖。
+- `environment-check`：不选择、不执行独立 harness。只构建和启动环境，验证只读 SQL/队列审计连接、可恢复 RabbitMQ stop/start与pause/unpause、逐次JSON回执及合成输出加密/解密传输。本次能力核验不重复原 Docker 业务/备份恢复整套，也不证明独立 fault 覆盖。
 - `harness`：要求完整40位 `product_source_sha`、独立冻结的40位 `harness_ref`、该 commit 中 `tmp/independent/` 下的 Python `harness_path` 和 RSA 接收证书 `recipient_certificate_path`。分别 checkout 产品和 harness，拒绝浮动分支/tag、目录逃逸和符号链接入口。超时60–1200秒，默认900。
 
 新 `workflow_dispatch` 必须已存在于默认分支才能触发；本仓库 main 受保护，目前不能把新文件静态合格视为已能手动 dispatch。官方说明：[手动运行 workflow](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow)。本实现另提供无需改 main 保护的 push 入口：**仅** `codex/deployment-acceptance-environment`、`codex/independent-harness-*` 分支，且**仅** `deployment/acceptance/request.json` 发生变化才触发。
@@ -52,6 +52,7 @@ runner 建立独立 Compose project/数据库 `t44_acceptance`，随机生成256
 | manager_credentials_file | 私有JSON，含synthetic用户名、口令、会话及真实user ID |
 | readonly_database_url | SELECT-only 审计连接，不是应用写库凭据 |
 | amqp_url | 本轮真实 RabbitMQ/vhost |
+| mq_transport | 本产品镜像默认exchange/queue/routing、隔离拓扑、真实outbox字段映射及AMQP属性 |
 | python / control_cli / control_state | 固定中性操作入口和私有状态文件 |
 | service_credential | 限定escalation:write的真实bearer签发能力、短TTL和私有文件位置 |
 | harness_output_directory | tester主动准备的受限证据输出目录 |
@@ -74,9 +75,42 @@ control.py fault --service rabbitmq --action stop --lease-seconds 60
 control.py recover
 ```
 
+`recover` 每次调用在stdout返回**一个JSON回执**；成功进程退出0，失败退出非零且仍返回结构化false，不输出原始异常或凭据。
+
+| 回执字段 | 含义 |
+| --- | --- |
+| schema_version / recovery_id | 回执版本1 / 每次调用独立标识，可关联control-events |
+| recovery_completed | 仅本次必需操作全部成功才true，不由finally被调用决定 |
+| started_at / finished_at | UTC ISO时间 |
+| requested_services / restored_services | 固定服务范围 / 对应批次up --wait成功后才列入的服务 |
+| paused_services | 实际Compose ps查询到的暂停服务 |
+| steps | 逐步名称、实际退出码和执行时间；不需要unpause时needed=false/exit_code=null；未取得命令结果也保留null，不能按0解释 |
+| error / failed_step | 失败时稳定错误RECOVERY_FAILED及阶段；控制状态不可用为RECOVERY_CONTROL_UNAVAILABLE |
+
+先查询白名单服务的paused状态，只对确实暂停的服务执行unpause；unpause后按基础服务→应用的依赖批次，只读观测相应已解除暂停服务的运行/健康状态(每批观察预算60秒，单条Docker调用另有超时)，再执行该批up --wait；基础依赖就绪后才等待应用健康。任一必须步骤非零就保留false/真实步骤退出码，不清除尚待恢复的租期。部分服务已恢复时仍可返回整体false。显式、到期租期、最终恢复仍使用相同服务范围与动作；execution中的final_recovery_receipt只代表最终那次，不能代替harness拿到的各次CLI回执。Docker健康/运行状态恢复不代表业务故障场景已通过。
+
 fault服务白名单为 mysql/rabbitmq/api/consumer/scheduler/web，动作仅 stop/pause，租期1–120秒。拒绝任意 Docker命令、删卷、DROP/写SQL、外部地址及系统数据库。租期到期由环境进程恢复，显式recover和finally同样先恢复基础服务再恢复应用，记录控制动作/退出码，不记录 SQL/行数据/口令。恢复失败保留 failure，不以 finally 被调用冒充恢复成功。harness超时终止进程组后也尝试恢复、最后只 stop，不删卷。
 
 `service-credential`使用现有真实 `t44.cli service-token`，仅对本次项目库中**显式提供的项目ID**签发，scope固定 `escalation:write`，TTL60–900秒（默认300）。容器内只读查询实际session的actor/scope/project/expiry元数据后才返回；不会把数据库摘要当可用bearer。省略`--output-name`时真实Token仅返回harness私密stdout；指定时仅在context的受控0700目录内O_EXCL创建0600 JSON，stdout仅文件位置/会话元数据，拒绝覆盖已有文件。该操作绕过环境原始命令日志，公开control-events仅记project_count/session/expiry/TTL，永不记token。此能力支持内部升级接口的既有鉴权，由tester自行决定用例，不预置业务案例。
+
+## MQ中性传输约定
+
+`mq_transport` 来自实际产品镜像的BrokerSettings及broker.py定义，附product_source_sha和definition_sha256。固定4c20f32的Compose只提供AMQP_URL，worker未覆盖exchange/queue；环境不替业务用例制造outbox消息。
+
+| 项目 | 默认值/来源 |
+| --- | --- |
+| exchange / exchange_type | t44.events / direct，durable |
+| queue / routing_key | t44.notifications / t44.notifications |
+| quarantine_exchange / quarantine_queue | t44.events.quarantine / t44.notifications.quarantine |
+| quarantine_routing_key | t44.notifications，未加.quarantine |
+| wrapper.event_id | 真实outbox_events行的id |
+| wrapper.schema_version / event_type | 同一真实outbox行的schema_version / event_type |
+| properties.content_type / delivery_mode | application/json / 2 |
+| properties.message_id | str(event_id) |
+| properties.type | t44.event.v1 |
+| basic_publish mandatory | true，属于发布参数而非BasicProperties字段 |
+
+wrapper是UTF-8 JSON，取实际outbox行这三个字段，不猜测/硬编码event_id或把外层API Meta版本代入消息版本。context中`properties.message_id`以`source_wrapper_field=event_id, convert=str`表示动态映射；这是描述元数据，实际AMQP属性值应为该event_id的字符串，不能把描述对象直接当message_id。环境能力检查只读核对真实绑定和默认元数据，不构造业务消息，也不提供独立场景预期。
 
 这是方便审计的受限操作接口，**不是针对恶意 harness 的操作系统沙箱**。受信冻结 harness 运行在一次性 hosted runner；它拥有该runner通常的权限。强制取消、runner失联或平台硬超时可能打断finally，须读取实际 recovery_completed，不能假称每次已恢复。
 

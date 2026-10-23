@@ -123,3 +123,18 @@
 - Rabbit stop(30秒租期)→显式recover成功，恢复后两客户端成功，finally recovery_completed=true；synthetic CMS AES256-GCM/RSA-OAEP roundtrip verified。未执行profile/独立harness(harness_started=false/null ref)，未实测独立pause/自动租期fault案例、正式性能或独立验收。
 - 首败39958418657和所有本岗静态失败保持原样；中性README只给运行能力/取回约定，不带开发缺陷/案例预期。总协调明确本轮不再重复能力核验，收尾仅归档/Issue/PR15交接后释放槽，不联系新tester或查看其文件。
 - 最终body-file实际评论：Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6366093437 ；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995 。实际环境/失败/开发guard回执只留本岗报告和证据；交新tester的README保持中性能力/运行/取回约定，不注入开发结果或旧缺陷，不引导其读取本岗内部记录。
+
+## RECOVERY-MQ-v1 中性逐次恢复回执与传输元数据
+
+- 新实际派工原文归档ROLE-deployment-RECOVERY-MQ-v1；在原本岗worktree/分支/索引继续，产品严格4c20f32，未随root新后端漂移。未读取或遍历项目tmp/independent、tester脚本/用例/未发布结果/私钥，未联系tester；本岗953只使用自身临时合成guard。无SSH目标，不保存或使用任何SSH密码/连接外部主机。
+- 核对4c的Compose、messaging入口、broker和worker实际源：Compose仅AMQP_URL，worker只BrokerSettings(AMQP_URL)，无拓扑override。实际默认direct exchange/queue/routing、quarantine名称、真实outbox字段wrapper和Pika属性写入中性context/协议；源文件SHA留mq-source-evidence.json。
+- recover新逐次唯一ID/UTC时间/step exit/批次恢复服务JSON；先查询实际paused，只对暂停白名单服务unpause，避免忽略not-paused非零。所有必须up --wait/unpause成功才true；失败CLI非零/JSON false/稳定error，不含原异常/凭据，租期只全成功才清空。自动租期的触发条件和finally/服务范围不改，最终报告保存那次真实receipt而非用被调用充成功。
+- 只扩原953新增成功/部分失败/原退出码/不清租期/唯一回执/CLI结构化失败及原服务范围守卫；49项0.08秒通过，Ruff/actionlint通过。未为低风险文档写测试，不新增未领号脚本。证据recovery-receipt-validation/local-*。
+- 新环境请求revision3仍4c源、无harness，一次有变化能力复核将真实验证stop及pause后的CLI逐次JSON、最终receipt、镜像实际MQ元数据/真实绑定；不发布业务消息或跑独立案例，不重复旧Docker业务整套。旧失败/通过回执不动。
+
+- revision3/run39974397951真实failure已保留公共artifact原字节、console gzip+SHA及run.json。MQ镜像metadata/source hash匹配固定4c，真实绑定通过；stop后的显式JSON true。pause后的真实unpause0，但随即up --wait因RabbitMQ现有health=unhealthy退出1，新逐次JSON和finally都如实false，未被调用充成功。未读取独立私有资料。
+- 依据该真实公共诊断，部署AI补最小观测等待：仅实际unpaused服务最多60秒只读检查运行/健康，更新后才执行原up --wait；不restart、不扩大动作/服务范围，超时或任何真实步骤失败仍false且保留租期。新增两项必要953守卫覆盖先unhealthy后healthy及超时不继续up/不清租期，51项0.09秒通过，Ruff/actionlint通过。
+- revision4仍产品4c，只在实际修正后进行必要复核，不更改产品/业务/现有门禁；旧68通过、旧44/f0失败均完整保留。
+
+- revision4/run39975896833在d8f5fbe上真实success：stop/pause两次独立CLI JSON均true、IDs不同，暂停后实际健康观测由unhealthy更新healthy再up --wait0，final receipt=true，MQ源hash匹配4c/真实绑定通过。首轮artifact下载EOF后一次依赖读取失败，改为check=True串行重取再核回执；不把下载错误当产品失败或有效证据。
+- 部署AI另在自身代码复核补一项必要依赖顺序守卫：被暂停应用必须在DB等基础依赖恢复后才等待health，防止框架先等待依赖未起的API；这不是tester案例信息。保持原基础→应用恢复顺序，每个实际unpaused依赖批次只读等待最多60秒，不新增mutating动作。52guard/Ruff/actionlint通过。为最终实现SHA准确受验，以有实际变化revision5做最后必要复核，同4c且不增业务/独立案例；之后只归档不再改实现。

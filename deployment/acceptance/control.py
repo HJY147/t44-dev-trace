@@ -10,7 +10,9 @@ import subprocess
 import sys
 import time
 from contextlib import contextmanager
+from datetime import UTC, datetime
 from pathlib import Path
+from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
@@ -72,6 +74,18 @@ def audit_statement(value):
     return value
 
 
+def recovery_receipt():
+    return {"schema_version": 1, "recovery_id": uuid4().hex, "recovery_completed": False,
+            "started_at": datetime.now(UTC).isoformat(), "finished_at": None,
+            "requested_services": list(SERVICES), "restored_services": [], "steps": [], "error": None}
+
+
+class RecoveryFailure(RuntimeError):
+    def __init__(self, receipt):
+        super().__init__("RECOVERY_FAILED")
+        self.receipt = receipt
+
+
 class Controls:
     def __init__(self, state_file):
         self.state_file = Path(state_file)
@@ -110,16 +124,87 @@ class Controls:
         return result
 
     def recover(self, *, expired_only=False):
-        with self.locked():
-            leases = private_json(self.runtime / "fault-leases.json")
-            if expired_only and not any(deadline <= time.time() for deadline in leases.values()):
+        receipt = recovery_receipt()
+        phase = "read-recovery-state"
+
+        def command(name, *arguments, timeout=210, restored=()):
+            nonlocal phase
+            phase = name
+            step = {"name": name, "started_at": datetime.now(UTC).isoformat(), "exit_code": None}
+            receipt["steps"].append(step)
+            result = self.compose(*arguments, check=False, timeout=timeout)
+            step.update(exit_code=result.returncode, finished_at=datetime.now(UTC).isoformat())
+            if result.returncode:
+                raise RuntimeError("RECOVERY_COMMAND_FAILED")
+            receipt["restored_services"].extend(restored)
+            return result
+
+        def wait_unpaused(targets):
+            nonlocal phase
+            if not targets:
                 return
-            self.compose("unpause", *SERVICES, check=False, timeout=30)
-            self.compose("up", "-d", "--no-deps", "--wait", "--wait-timeout", "150", "mysql", "rabbitmq")
-            self.compose("up", "-d", "--no-deps", "--wait", "--wait-timeout", "150",
-                         "api", "consumer", "scheduler", "web")
-            write_private(self.runtime / "fault-leases.json", {})
-            self.event("lease-recovery" if expired_only else "recovery")
+            deadline = time.monotonic() + 60
+            while True:
+                state = command("unpaused-health", "ps", "--all", "--format", "json", *targets,
+                                timeout=30).stdout.decode()
+                try:
+                    decoded = json.loads(state)
+                    rows = decoded if isinstance(decoded, list) else [decoded]
+                except json.JSONDecodeError:
+                    rows = [json.loads(line) for line in state.splitlines() if line.strip()]
+                observed = []
+                for row in rows:
+                    if row.get("Service") not in targets:
+                        continue
+                    status, health = row.get("State", ""), row.get("Health", "")
+                    observed.append({"service": row["Service"],
+                                     "state": status if status in {"running", "paused", "created", "exited",
+                                                                   "restarting", "dead", "removing"} else "unknown",
+                                     "health": health if health in {"healthy", "unhealthy", "starting", ""}
+                                     else "unknown"})
+                receipt["steps"][-1]["observed_health"] = observed
+                if ({row["service"] for row in observed} == set(targets)
+                        and all(row["state"] == "running" and row["health"] == "healthy" for row in observed)):
+                    return
+                if time.monotonic() >= deadline:
+                    phase = "unpaused-health-timeout"
+                    raise RuntimeError("RECOVERY_READINESS_TIMEOUT")
+                time.sleep(1)
+
+        try:
+            with self.locked():
+                leases = private_json(self.runtime / "fault-leases.json")
+                if expired_only and not any(deadline <= time.time() for deadline in leases.values()):
+                    return None
+                paused = command("inspect-paused", "ps", "--all", "--services", "--status", "paused", *SERVICES,
+                                 timeout=30).stdout.decode().split()
+                if any(service not in SERVICES for service in paused):
+                    raise ValueError("RECOVERY_SCOPE_INVALID")
+                receipt["paused_services"] = sorted(set(paused))
+                if paused:
+                    command("unpause", "unpause", *sorted(set(paused)), timeout=30)
+                    wait_unpaused(sorted(set(paused) & {"mysql", "rabbitmq"}))
+                else:
+                    receipt["steps"].append({"name": "unpause", "needed": False, "exit_code": None})
+                command("infrastructure-ready", "up", "-d", "--no-deps", "--wait", "--wait-timeout", "150",
+                        "mysql", "rabbitmq", restored=("mysql", "rabbitmq"))
+                wait_unpaused(sorted(set(paused) - {"mysql", "rabbitmq"}))
+                command("application-ready", "up", "-d", "--no-deps", "--wait", "--wait-timeout", "150",
+                        "api", "consumer", "scheduler", "web", restored=("api", "consumer", "scheduler", "web"))
+                phase = "clear-fault-leases"
+                write_private(self.runtime / "fault-leases.json", {})
+                receipt.update(recovery_completed=True, finished_at=datetime.now(UTC).isoformat())
+                phase = "record-recovery"
+                self.event("lease-recovery" if expired_only else "recovery", recovery_receipt=receipt)
+                return receipt
+        except Exception:
+            receipt.update(recovery_completed=False, finished_at=datetime.now(UTC).isoformat(),
+                           error="RECOVERY_FAILED", failed_step=phase)
+            try:
+                self.event("lease-recovery" if expired_only else "recovery", code=1, recovery_receipt=receipt)
+            except OSError:
+                pass  # stdout still carries the redacted false receipt if the event file is unavailable.
+            raise RecoveryFailure(receipt) from None
 
     def fault(self, service, action, seconds):
         if service not in SERVICES or action not in ("stop", "pause") or not 1 <= seconds <= 120:
@@ -265,7 +350,7 @@ def main():
         if args.command == "fault":
             controls.fault(args.service, args.action, args.lease_seconds)
         elif args.command == "recover":
-            controls.recover()
+            output = (json.dumps(controls.recover()) + "\n").encode()
         elif args.command == "audit-sql":
             output = controls.audit(sys.stdin.read())
         elif args.command == "broker":
@@ -279,7 +364,15 @@ def main():
                       + "\n").encode()
         if output:
             sys.stdout.buffer.write(output)
+    except RecoveryFailure as error:
+        print(json.dumps(error.receipt))
+        return 1
     except Exception:  # noqa: BLE001 -- private inputs and driver messages never enter public console
+        if args.command == "recover":
+            receipt = recovery_receipt()
+            receipt.update(finished_at=datetime.now(UTC).isoformat(), error="RECOVERY_CONTROL_UNAVAILABLE")
+            print(json.dumps(receipt))
+            return 1
         print("Acceptance environment control failed; inspect tester-encrypted evidence.", file=sys.stderr)
         return 1
     return 0

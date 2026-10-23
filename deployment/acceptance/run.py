@@ -20,7 +20,7 @@ from urllib.request import Request, urlopen
 from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from control import SERVICES, Controls, write_private  # noqa: E402
+from control import SERVICES, Controls, RecoveryFailure, write_private  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from deployment import ops  # noqa: E402
@@ -28,6 +28,21 @@ from deployment import ops  # noqa: E402
 OUTPUT_NAMES = ("report.md", "results.json", "events.jsonl", "trace.log")
 INTERNAL_OUTPUT_NAMES = ("environment-control.log",)
 SHA = re.compile(r"[0-9a-f]{40}\Z")
+MQ_TRANSPORT_SCRIPT = """import hashlib,inspect,json,os
+from pathlib import Path
+from t44.messaging.broker import BrokerSettings,PikaBroker
+s=BrokerSettings(os.environ['AMQP_URL'])
+print(json.dumps({
+ 'exchange':s.exchange,'exchange_type':'direct','queue':s.queue,'routing_key':s.queue,'durable':True,
+ 'quarantine_suffix':'.quarantine','quarantine_exchange':s.exchange+'.quarantine',
+ 'quarantine_queue':s.queue+'.quarantine','quarantine_routing_key':s.queue,
+ 'wrapper_fields':{'event_id':'outbox_events.id','schema_version':'outbox_events.schema_version','event_type':'outbox_events.event_type'},
+ 'properties':{'content_type':'application/json','delivery_mode':2,'type':'t44.event.v1',
+               'message_id':{'source_wrapper_field':'event_id','convert':'str'}},
+ 'mandatory':True,'definition':'backend/t44/messaging/broker.py',
+ 'definition_sha256':hashlib.sha256(Path(inspect.getfile(PikaBroker)).read_bytes()).hexdigest()
+}))
+"""
 
 
 def harness_path(value):
@@ -249,6 +264,11 @@ class Environment:
             "--profile", "operations", "run", "--rm", "-T", "credential-admin", "--project-id", str(project["id"])))
         self.step("independent-workers", lambda: c.compose("up", "-d", "--wait", "--wait-timeout", "150",
                                                            "api", "consumer", "scheduler", "web"))
+        mq_transport = self.step("mq-transport-metadata", lambda: self.result_json(c.compose(
+            "--profile", "operations", "run", "--rm", "-T", "--entrypoint", "python", "admin",
+            "-c", MQ_TRANSPORT_SCRIPT)))
+        mq_transport["product_source_sha"] = self.request["product_source_sha"]
+        self.report["mq_transport_metadata"] = mq_transport
         audit_password = secrets.token_hex(32)
         self.mask(audit_password)
         sql = (f"CREATE USER 't44_audit'@'%' IDENTIFIED BY '{audit_password}';"
@@ -265,6 +285,7 @@ class Environment:
             "manager_credentials_file": str(self.runtime / "manager.json"),
             "readonly_database_url": f"mysql+pymysql://t44_audit:{audit_password}@127.0.0.1:13306/t44_acceptance",
             "amqp_url": f"amqp://{values['RABBITMQ_DEFAULT_USER']}:{values['RABBITMQ_DEFAULT_PASS']}@127.0.0.1:15673/t44",
+            "mq_transport": mq_transport,
             "python": sys.executable, "control_cli": str(Path(__file__).with_name("control.py")),
             "control_state": str(state), "harness_output_directory": str(self.output),
             "service_credential": {"control_command": "service-credential", "scope": ["escalation:write"],
@@ -288,12 +309,42 @@ class Environment:
         # Capability checks only: no business assertions or independent acceptance cases.
         self.step("readonly-select-connectivity", lambda: self.controls.audit("SELECT 1"))
         self.step("rabbitmq-audit-connectivity", lambda: self.controls.broker("queues"))
+        self.step("mq-transport-topology", self.mq_transport_capability)
         self.step("limited-service-credential", self.service_credential_capability)
         self.step("reversible-control", lambda: self.controls.fault("rabbitmq", "stop", 30))
-        self.step("control-recovery", self.controls.recover)
+        self.step("control-recovery-json", self.recover_cli_capability)
+        self.step("reversible-pause-control", lambda: self.controls.fault("rabbitmq", "pause", 30))
+        self.step("paused-control-recovery-json", self.recover_cli_capability)
         self.step("recovered-readonly-database-client", self.database_client)
         self.step("recovered-amqp-client", self.amqp_client)
         self.report["environment_capability_check_completed"] = True
+
+    def recover_cli_capability(self):
+        result = subprocess.run([sys.executable, str(Path(__file__).with_name("control.py")),
+                                 "--state", str(self.runtime / "state.json"), "recover"],
+                                capture_output=True, check=False, timeout=600)
+        receipt = json.loads(result.stdout)
+        self.report.setdefault("explicit_recovery_receipts", []).append(receipt)
+        if (result.returncode or receipt["recovery_completed"] is not True
+                or set(receipt["restored_services"]) != set(SERVICES)
+                or any(step["exit_code"] != 0 for step in receipt["steps"] if step.get("needed", True))):
+            raise RuntimeError("explicit recovery did not produce a successful per-call receipt")
+        ids = [item["recovery_id"] for item in self.report["explicit_recovery_receipts"]]
+        if len(ids) != len(set(ids)):
+            raise RuntimeError("recovery receipts must identify distinct calls")
+
+    def mq_transport_capability(self):
+        # Read-only topology inspection; no message fixture or business event is published.
+        transport = self.report["mq_transport_metadata"]
+        result = self.controls.compose("exec", "-T", "rabbitmq", "rabbitmqctl", "--quiet", "list_bindings",
+                                       "--vhost", self.controls.values["RABBITMQ_DEFAULT_VHOST"],
+                                       "source_name", "destination_name", "routing_key", timeout=30)
+        bindings = {tuple(line.split("\t")) for line in result.stdout.decode().splitlines()}
+        required = {(transport["exchange"], transport["queue"], transport["routing_key"]),
+                    (transport["quarantine_exchange"], transport["quarantine_queue"], transport["quarantine_routing_key"])}
+        if not required <= bindings:
+            raise RuntimeError("declared runtime topology does not match transport metadata")
+        self.report["mq_transport_topology_verified"] = True
 
     def service_credential_capability(self):
         context = json.loads((self.runtime / "context.json").read_text())
@@ -400,8 +451,12 @@ class Environment:
     def finish(self):
         if self.controls:
             try:
-                self.controls.recover()
-                self.report["recovery_completed"] = True
+                receipt = self.controls.recover()
+                self.report["final_recovery_receipt"] = receipt
+                self.report["recovery_completed"] = receipt["recovery_completed"] is True
+            except RecoveryFailure as error:
+                self.report["final_recovery_receipt"] = error.receipt
+                self.report["recovery_error"] = "ENVIRONMENT_RECOVERY_FAILED"
             except Exception:
                 self.report["recovery_error"] = "ENVIRONMENT_RECOVERY_FAILED"
             try:

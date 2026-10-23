@@ -6,6 +6,7 @@ import os
 import stat
 import subprocess
 import sys
+from contextlib import nullcontext
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -197,3 +198,160 @@ def test_existing_service_file_is_preserved_without_issuing_new_session(tmp_path
             controls.service_credential([2], 300, "service.json")
     assert path.read_text() == "existing synthetic credential"
     command.assert_not_called()
+
+
+def recovery_controls(tmp_path, *, paused=b"rabbitmq\n", failed_step=None, health="healthy"):
+    controls = control.Controls.__new__(control.Controls)
+    controls.runtime = tmp_path
+    controls.locked = lambda: nullcontext()
+    controls.event = Mock()
+    control.write_private(tmp_path / "fault-leases.json", {"rabbitmq": 1})
+
+    def compose(*args, **kwargs):
+        if args[0] == "ps" and "--format" in args:
+            name, output = "unpaused-health", json.dumps([
+                {"Service": service, "State": "running", "Health": health} for service in paused.decode().split()
+            ]).encode()
+        elif args[0] == "ps":
+            name, output = "inspect-paused", paused
+        elif args[0] == "unpause":
+            name, output = "unpause", b"private driver detail"
+        else:
+            assert "--wait" in args
+            name = "infrastructure-ready" if args[-2:] == ("mysql", "rabbitmq") else "application-ready"
+            output = b"private driver detail"
+        assert kwargs["check"] is False
+        return subprocess.CompletedProcess([], 17 if name == failed_step else 0, output)
+
+    controls.compose = Mock(side_effect=compose)
+    return controls
+
+
+def test_recover_waits_for_all_required_commands_and_returns_correlated_receipt(tmp_path):
+    controls = recovery_controls(tmp_path)
+    receipt = controls.recover()
+    assert receipt["recovery_completed"] is True
+    assert receipt["restored_services"] == list(control.SERVICES)
+    assert receipt["paused_services"] == ["rabbitmq"]
+    assert all(step["exit_code"] == 0 for step in receipt["steps"])
+    assert receipt["started_at"] and receipt["finished_at"] and receipt["recovery_id"]
+    assert controls.event.call_args.kwargs["recovery_receipt"] == receipt
+    assert control.private_json(tmp_path / "fault-leases.json") == {}
+    assert "private driver detail" not in json.dumps(receipt)
+
+
+def test_recover_has_distinct_calls_and_does_not_unpause_nonpaused_services(tmp_path):
+    controls = recovery_controls(tmp_path, paused=b"")
+    first, second = controls.recover(), controls.recover()
+    assert first["recovery_id"] != second["recovery_id"]
+    assert not any(call.args[0] == "unpause" for call in controls.compose.call_args_list)
+    assert next(step for step in first["steps"] if step["name"] == "unpause")["needed"] is False
+
+
+@pytest.mark.parametrize("failed_step", ["inspect-paused", "unpause", "infrastructure-ready", "application-ready"])
+def test_recover_failure_is_false_keeps_leases_and_retains_actual_exit(tmp_path, failed_step):
+    controls = recovery_controls(tmp_path, failed_step=failed_step)
+    with pytest.raises(control.RecoveryFailure) as caught:
+        controls.recover()
+    receipt = caught.value.receipt
+    assert receipt["recovery_completed"] is False
+    assert receipt["error"] == "RECOVERY_FAILED"
+    assert receipt["failed_step"] == failed_step
+    assert next(step for step in receipt["steps"] if step["name"] == failed_step)["exit_code"] == 17
+    assert control.private_json(tmp_path / "fault-leases.json") == {"rabbitmq": 1}
+    assert receipt["restored_services"] == (["mysql", "rabbitmq"] if failed_step == "application-ready" else [])
+    assert "private driver detail" not in json.dumps(receipt)
+
+
+def test_recovery_does_not_expand_service_scope_from_inspection(tmp_path):
+    controls = recovery_controls(tmp_path, paused=b"unrelated-service\n")
+    with pytest.raises(control.RecoveryFailure):
+        controls.recover()
+    assert len(controls.compose.call_args_list) == 1
+
+
+def test_lease_watchdog_keeps_existing_no_expiry_behavior(tmp_path):
+    controls = recovery_controls(tmp_path)
+    control.write_private(tmp_path / "fault-leases.json", {"rabbitmq": float("inf")})
+    assert controls.recover(expired_only=True) is None
+    controls.compose.assert_not_called()
+    controls.event.assert_not_called()
+
+
+def test_expired_lease_recovery_still_runs_with_the_same_service_scope(tmp_path):
+    controls = recovery_controls(tmp_path)
+    receipt = controls.recover(expired_only=True)
+    assert receipt["recovery_completed"] is True
+    assert controls.event.call_args.args == ("lease-recovery",)
+    assert receipt["requested_services"] == list(control.SERVICES)
+
+
+@pytest.mark.parametrize("success", [True, False])
+def test_cli_recovery_emits_json_for_success_and_operational_failure(capfd, success):
+    receipt = control.recovery_receipt()
+    receipt["recovery_completed"] = success
+    fake = Mock()
+    if success:
+        fake.recover.return_value = receipt
+    else:
+        receipt["error"] = "RECOVERY_FAILED"
+        fake.recover.side_effect = control.RecoveryFailure(receipt)
+    with patch.object(control, "Controls", return_value=fake), patch.object(sys, "argv", ["control.py", "recover"]):
+        code = control.main()
+    sys.stdout.flush()
+    output = capfd.readouterr()
+    assert code == (0 if success else 1)
+    assert json.loads(output.out) == receipt
+    assert not output.err
+
+
+def test_cli_recovery_bad_private_state_is_structured_and_redacted(capfd):
+    with patch.object(control, "Controls", side_effect=OSError("synthetic-private-value")), patch.object(
+            sys, "argv", ["control.py", "recover"]):
+        assert control.main() == 1
+    output = capfd.readouterr()
+    receipt = json.loads(output.out)
+    assert receipt["recovery_completed"] is False
+    assert receipt["error"] == "RECOVERY_CONTROL_UNAVAILABLE"
+    assert "synthetic-private-value" not in output.out + output.err
+
+
+def test_recovery_waits_for_observed_health_after_successful_unpause(tmp_path):
+    controls = recovery_controls(tmp_path)
+    original = controls.compose.side_effect
+    health_calls = 0
+
+    def compose(*args, **kwargs):
+        nonlocal health_calls
+        result = original(*args, **kwargs)
+        if "--format" in args:
+            health_calls += 1
+            if health_calls == 1:
+                result.stdout = json.dumps({"Service": "rabbitmq", "State": "running", "Health": "unhealthy"}).encode()
+        return result
+
+    controls.compose.side_effect = compose
+    with patch.object(control.time, "sleep") as sleep:
+        receipt = controls.recover()
+    assert receipt["recovery_completed"] is True
+    observations = [step for step in receipt["steps"] if step["name"] == "unpaused-health"]
+    assert [step["observed_health"][0]["health"] for step in observations] == ["unhealthy", "healthy"]
+    sleep.assert_called_once_with(1)
+
+
+def test_recovery_health_timeout_is_false_without_starting_later_phases(tmp_path):
+    controls = recovery_controls(tmp_path, health="unhealthy")
+    with patch.object(control.time, "monotonic", side_effect=[0, 61]), pytest.raises(control.RecoveryFailure) as caught:
+        controls.recover()
+    assert caught.value.receipt["failed_step"] == "unpaused-health-timeout"
+    assert caught.value.receipt["recovery_completed"] is False
+    assert not any(call.args[0] == "up" for call in controls.compose.call_args_list)
+    assert control.private_json(tmp_path / "fault-leases.json") == {"rabbitmq": 1}
+
+
+def test_paused_application_health_is_checked_after_its_database_dependencies(tmp_path):
+    controls = recovery_controls(tmp_path, paused=b"api\n")
+    receipt = controls.recover()
+    names = [step["name"] for step in receipt["steps"]]
+    assert receipt["recovery_completed"] is True
+    assert names.index("infrastructure-ready") < names.index("unpaused-health") < names.index("application-ready")

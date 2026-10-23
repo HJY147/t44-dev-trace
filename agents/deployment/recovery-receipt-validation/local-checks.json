@@ -1,0 +1,41 @@
+{
+  "scope": "49 deployment recovery/control guards;no independent cases",
+  "checks": [
+    {
+      "command": [
+        "deployment/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "tmp/deployment/953_acceptance_environment.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "local-0.log",
+      "raw_sha256": "552b2d3ddd221decc25b20aac5089a6447fa93de444d79a090700c3c3cc58441"
+    },
+    {
+      "command": [
+        "deployment/.venv/bin/ruff",
+        "check",
+        "--config",
+        "scripts/ci/ruff.toml",
+        "deployment/acceptance",
+        "tmp/deployment/953_acceptance_environment.py"
+      ],
+      "exit_code": 0,
+      "log": "local-1.log",
+      "raw_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "command": [
+        "/tmp/t44-deployment-tools/actionlint",
+        ".github/workflows/acceptance-environment.yml"
+      ],
+      "exit_code": 0,
+      "log": "local-2.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
