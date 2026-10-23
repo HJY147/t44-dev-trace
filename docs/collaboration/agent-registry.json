@@ -74,7 +74,7 @@
       "label": "后端",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/backend/TASK.md",
       "agent_id": "/root/backend",
-      "status": "v11_exact_4c20_CI_passed_diagnostic_running_no_performance_conclusion",
+      "status": "diagnostic_archived_no_formal_performance_pass_readonly_optimization_design_only",
       "prompt_id": "ROLE-backend-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:47:23+08:00",
@@ -88,15 +88,15 @@
       "repair_commit": "72c6c0064e52cb091e8ca4533a1cb862fc46866d",
       "worktree": ".agent-worktrees/backend",
       "branch": "codex/backend-core",
-      "current_prompt": "ROLE-backend-CAPACITY-V11-IMPLEMENT-v1",
+      "current_prompt": "ROLE-backend-READONLY-UOW-DESIGN-v1",
       "foundation_head": "0bb4549c1b6e4fb7247dc58dd8a5fa675161d614",
       "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/16",
       "application_head": "ec82b08832f1bc3dc3fcb42807cd3bba6644d747",
       "integration_checkpoint": "ba1018a7cb44df9c8333da6d950f0a43e18d175c",
       "updated_at": "2026-10-23T17:32:44+08:00",
       "historical_status_at_previous_snapshot": "integrated_application_stage_completed",
-      "status_updated_at": "2026-10-23T13:19:50.490155+00:00",
-      "latest_owner_checkpoint": "245e56b9866b34d5c75b5d0670ba735a5ee75249",
+      "status_updated_at": "2026-10-23T13:46:49.157370+00:00",
+      "latest_owner_checkpoint": "c83f627331acf43fb508fac7e16525a48c0389ab",
       "previous_registry_status": "refactor_remote_ci_passed_local_performance_window_respected"
     },
     {
@@ -182,7 +182,7 @@
       "label": "部署",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/deployment/TASK.md",
       "agent_id": "/root/deployment",
-      "status": "hosted_acceptance_environment_first_check_failed_fix_in_progress_harness_not_run",
+      "status": "hosted_neutral_runtime_capability_check_passed_no_independent_harness_result",
       "prompt_id": "ROLE-deployment-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T11:50:47+08:00",
@@ -200,8 +200,8 @@
       "application_checkpoint": "f052fdd8e57ef0ffbf350772a9e3d8b39a700eee",
       "updated_at": "2026-10-23T17:32:44+08:00",
       "historical_status_at_previous_snapshot": "docker_application_rehearsal_in_progress",
-      "status_updated_at": "2026-10-23T13:19:50.490155+00:00",
-      "latest_owner_checkpoint": "44f067599ae7bfff11f76b7826bb80c127cabc54",
+      "status_updated_at": "2026-10-23T13:46:49.157370+00:00",
+      "latest_owner_checkpoint": "7c9e48e880ec61c3c2c1958e19b34e588e31779e",
       "previous_registry_status": "hosted_linux_compose_restore_rehearsal_complete_cloud_not_rented"
     },
     {
@@ -231,7 +231,7 @@
       "label": "独立测试",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/testing/TASK.md",
       "agent_id": "/root/independent_acceptance_v2",
-      "status": "v2_fork_none_neutral_case_design_only_no_SUT_provided",
+      "status": "v2_case_payload_frozen_before_SUT_hosted_harness_execution_in_progress",
       "prompt_id": "ROLE-testing-BOOTSTRAP-v1",
       "fork_turns": "none",
       "communication_policy": "仅向总协调提交最终结果，不接受其他agent消息",
@@ -246,17 +246,21 @@
       "archive_commit": "baa9a5816504b8439e170b274bc962da3f7143d9",
       "archive_issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/8#issuecomment-6358032355",
       "neutral_input_manifest": "records/acceptance/v2-neutral-inputs.json",
-      "execution_status": "not_started",
+      "execution_status": "hosted_requested_results_unpublished",
       "updated_at": "2026-10-23T17:32:44+08:00",
-      "current_prompt": "ROLE-testing-NEUTRAL-PLAN-v2",
+      "current_prompt": "ROLE-testing-NEUTRAL-RUNTIME-v2",
       "historical_status_at_previous_snapshot": "independent_case_freeze_in_progress",
-      "status_updated_at": "2026-10-23T13:19:50.490155+00:00",
+      "status_updated_at": "2026-10-23T13:46:49.157370+00:00",
       "current_instance": {
         "agent_id": "/root/independent_acceptance_v2",
         "fork_turns": "none",
-        "phase": "case_design_and_freeze_only",
+        "phase": "hosted_blackbox_after_case_freeze",
         "developer_access": "unpublished cases/scripts/logs/outputs forbidden; only published reports",
-        "runtime_access_supplied": false
+        "runtime_access_supplied": true,
+        "case_freeze_receipt": "records/acceptance/v2-case-freeze-receipt.json",
+        "runtime_binding": "records/acceptance/v2-runtime-binding.json",
+        "case_commit": "27c9a0a6af10a21eb475ef42c9e98e13b8334a43",
+        "request_commit": "4cdf1aaa746e5264ad436538002e3ab7555087fa"
       },
       "completed_instances": [
         {
@@ -277,8 +281,8 @@
       "role": "reviewer",
       "label": "审核",
       "task": "/Users/yang/Desktop/nothing/软件开发大作业/agents/reviewer/TASK.md",
-      "agent_id": "/root/reviewer",
-      "status": "v11_freeze_source_limited_review_admitted_product_review_still_pending",
+      "agent_id": "/root/reviewer_v11_implementation",
+      "status": "exact_4c20_implementation_review_running_no_whole_product_greenlight",
       "prompt_id": "ROLE-reviewer-BOOTSTRAP-v1",
       "fork_turns": "none",
       "dispatch_recorded_at": "2026-10-23T13:16:40+08:00",
@@ -289,11 +293,11 @@
       "m0_commit": "4b3d6e5e5ca21627db03c308a23f95744a35c717",
       "reviewed_head": "bc0cd349fcf854f48f4179e1f131e5c2dd8a7e68",
       "review_evidence_commit": "5d0c087f63812b0e00c7284afeafe4ec6a00c110",
-      "current_prompt": "ROLE-reviewer-CAPACITY-V11-FREEZE-CHECK-v1",
-      "branch": "codex/review-foundations",
+      "current_prompt": "ROLE-reviewer-V11-IMPLEMENTATION-v1",
+      "branch": "codex/reviewer-v11-implementation",
       "worktree": ".agent-worktrees/review-foundations",
       "historical_status_at_previous_snapshot": "foundation_evidence_paused_for_development_queue",
-      "status_updated_at": "2026-10-23T13:19:50.490155+00:00",
+      "status_updated_at": "2026-10-23T13:46:49.157370+00:00",
       "latest_owner_checkpoint": "dd38b072936c5fa55d1db36e9236124ff91069e9",
       "previous_registry_status": "exact_e01_product_review_failed_new_head_retest_pending"
     }
@@ -343,7 +347,7 @@
       "scope": "project-local new test databases"
     },
     "current_checkpoint": "140de8854a5ff2af08ba8ef2d4e541178d88a0c7",
-    "whole_product_acceptance": "v1_published_not_accepted_v2_case_design_only",
+    "whole_product_acceptance": "v1_published_not_accepted_v2_cases_frozen_hosted_execution_in_progress",
     "performance": "v1_formal_three_P95_failed_new_developer_diagnostic_not_formal_acceptance",
     "source_count_latest": "records/metrics/source-count-v11.json",
     "latest_source_count_scope": "Exact140de8854a5ff2af08ba8ef2d4e541178d88a0c7; original pinned physical policy unchanged",
@@ -370,7 +374,10 @@
     "backend_errors": 0,
     "backend_skips": 0,
     "backend_line_coverage": "2542/2865=88.7260%; all43files; excluded0",
-    "research_authorship": "R001 original supplied; student final body/course feedback/human-edit proof still pending"
+    "research_authorship": "R001 reflection and R002 course feedback original supplied; student final research prose and human-edit evidence still pending",
+    "student_course_feedback": "records/reflections/R002-provenance.json",
+    "developer_diagnostic": "agents/backend/profile-contract-03-analysis.md",
+    "neutral_hosted_capability": "agents/deployment/acceptance-environment-validation/run-39961035953/execution.json"
   },
-  "updated_at": "2026-10-23T13:19:50.490155+00:00"
+  "updated_at": "2026-10-23T13:46:49.157370+00:00"
 }
