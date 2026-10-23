@@ -118,3 +118,10 @@ FE-INIT-01在75范围限定关闭，无新增实质阻断；840报告及COMMENT5
 准确headbabc60f275ec780bcd3044be455acfddc4a49e60，产品9560e7bd23b68eddbdb733a5ee671999f46a44cd，设计7df→代码9560→证据36d。原895字节f42a...不变，本岗只定向一次3/3、孤儿读取空且新项目保留；API错误/JSON守卫和组件active+token阻断旧回调，当前401/失败重试/幂等及服务端提交语义不变。19源/14冻结/10gzip与开发真红/驱动错/最终51绿和分母分别核验，不重跑全套。SESSION-R1限定关闭，原3c报告/独立FAIL保留，整产品仍不通过（原规模超限/正式P95失败/独立UI002/003及完整验收）。报告reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md，证据agents/reviewer/evidence/session-r1-babc60f，真实prompt ROLE-reviewer-SESSION-R1-FOLLOWUP-v1。
 
 发布回执：本岗证据19b9d1dd04005cfd1def2bee163a311b1197ed79已push；PR26 COMMENT5633421899真实发布并特定review REST核commit_id=babc完整SHA、COMMENTED与正文逐字一致：https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633421899。回执agents/reviewer/evidence/session-r1-babc60f/github-comment.json。
+
+
+## PR30 UI002人力拒绝说明限定审核（c56/3628）
+
+基线9560，设计3c804d3直接先于产品3628。forms仅按HTTP/code/op及必要ReworkTransition解释人力守卫，OperationForm只变业务说明呈现。changeIteration多原因、不重复/有效开发成员/状态1–5工时保护与成员1–5+7、返工身份+工时、允许转派状态均吻合；未知code/字段/角色/503/client0及原session/R1/幂等/刷新保持。19源仅两份变化、其余17同9560，14freeze/API字节不变。限定未见新实质阻断，不解除原独立FAIL或整体门禁。
+
+本岗只现有13目标一次13绿/52未选；不跑全65/build/browser/DB/CI，不新增编号测试。9raw及可读hash、19源/coverage集合、旧测试命名声明16+22原字节核合；开发9红4绿→13绿、矩阵后65与首次类型失败/最终build分别保留，不冒称本岗实跑或截图复验。报告reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md；证据agents/reviewer/evidence/capacity-feedback-c56a5a5；真实prompt ROLE-reviewer-CAPACITY-FEEDBACK-v1。阶段提交及PR30准确c56 COMMENT/readback另补，无APPROVE/status/merge。

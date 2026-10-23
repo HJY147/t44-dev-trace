@@ -1,7 +1,7 @@
 {
   "role": "reviewer",
-  "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
-  "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
+  "stage": "PR30 UI002人力拒绝说明限定代码审核c56/3628；整体不放行",
+  "implementation_status": "限定代码审核/现有13目标一次/公开原件hash完成；真实COMMENT/readback待发布；无生产修改",
   "artifacts": [
     "docs/reviews/review-protocol.md",
     "reports/reviews/baseline-v0.md",
@@ -76,7 +76,10 @@
     "agents/reviewer/dispatches/ROLE-reviewer-SESSION-CLEANUP-v1.txt",
     "reports/reviews/26-babc60f275ec780bcd3044be455acfddc4a49e60.md",
     "agents/reviewer/evidence/session-r1-babc60f",
-    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt"
+    "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
+    "reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md",
+    "agents/reviewer/evidence/capacity-feedback-c56a5a5",
+    "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-FEEDBACK-v1.txt"
   ],
   "interfaces": [
     {
@@ -137,6 +140,12 @@
       "input": "SESSION-R1 follow-up exact babc / product9560 and published developer evidence",
       "output": "Original895 unchanged replay3/3; SESSION-R1 closed within scoped source review; original3c red retained",
       "unresolved": "Independent isolated retest, published UI002/UI003 future fixes, formal P95 and source-size gate remain."
+    },
+    {
+      "peer": "coordinator/frontend -> reviewer",
+      "input": "Exactc56/product3628/base9560 and explicitly public9red4fallback/13green+matrix evidence",
+      "output": "No new material blocker; own13passonce;19source/14freeze/9raw match; original38named test declarations retained",
+      "unresolved": "New isolated acceptance and root combinedCI/global gates remain; no fullsuite/build/browser/DB/CI rerun"
     }
   ],
   "commands_executed": [
@@ -297,6 +306,10 @@
     {
       "command": "Original895 targeted once; source/gzip/hash inspection; plugin PR26 COMMENT; gh GET review5633421899",
       "result": "3/3 exit0; 19source/14freeze/10raw logs match; current headbabc; COMMENTED exact body and commit; own19b9d1d push exit0."
+    },
+    {
+      "command": "Own candidate existing staffing rejection feedback describe once; TypeScript AST and source/gzip/hash probes; plugin PR30 metadata",
+      "result": "13pass/52skipped exit0;19source/14freeze/9raw match; original tests and R1 retained; initial JUnit output relocated without rerun"
     }
   ],
   "results": [
@@ -305,7 +318,8 @@
     "4原PNG实际视检；1440/390空字段和required拦截，无业务写",
     "FE-INIT-01限定关闭；不作为整产品放行",
     "PR26 head3c160c5 NOT_PASSED: confirmed P2 SESSION-R1, stale unmounted403 -> new-session context erase; pure module probe only, not independent acceptance.",
-    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged."
+    "SESSION-R1 closed within exact babc/9560 limited code re-review; whole product remains NOT_ACCEPTED. Original3c failure report and original red unchanged.",
+    "c56/3628 UI002 mapping bounded review: no new material blocker; original independentFAIL/global gates retained; PR30 current head exactc56."
   ],
   "unverified": [
     "本岗未重跑14项/build/browser，开发原件不当独立验收",
@@ -313,7 +327,8 @@
     "840原完整focus与其他引擎场景未运行边界保持",
     "独立/正式性能/源码规模与整产品门禁仍未闭环",
     "No new full frontend test/build/browser/load run; complete independent acceptance/formal performance/source count gate remain unresolved; source6051>5100 is coordinator-provided, not recounted here.",
-    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review."
+    "No new complete suite/build/browser/load or independent retest; old6051 source-size failure not recounted for9560; formalP95 failed and publicUI002/UI003 not fixed by this review.",
+    "Developer65 suite/build/browser outcomes were not rerun by reviewer; no private v3/independent evidence read; no CI triggered or global/independent pass."
   ],
   "questions": [],
   "prompt_refs": [
@@ -496,10 +511,15 @@
       "id": "ROLE-reviewer-SESSION-R1-FOLLOWUP-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SESSION-R1-FOLLOWUP-v1.txt",
       "improvement_reason": "Keep original probe bytes/red evidence; separate stale failures, current401 and driver corrections; limited closure is not whole-product acceptance."
+    },
+    {
+      "id": "ROLE-reviewer-CAPACITY-FEEDBACK-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-CAPACITY-FEEDBACK-v1.txt",
+      "improvement_reason": "Bind display to frozen status/code/op and necessaryschema; separate capacity states1-5 from member1-5+7 and preserve session/R1/fallback; one13case replay only."
     }
   ],
-  "updated_at": "2026-10-23T19:26:19.633660+00:00",
-  "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
+  "updated_at": "2026-10-23T19:57:54.177123+00:00",
+  "review_outcome": "No new material blocker in UI002 presentation mapping; overall NOT_ACCEPTED",
   "github_evidence": {
     "exact_body_readback": true,
     "commit_id": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
@@ -566,7 +586,7 @@
     "reported_freeze_commit": "ae60dc3",
     "scope_effect": "仅时间补记；不改原四review heads，不宣称全产品通过"
   },
-  "review_target_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "review_target_sha": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
   "previous_foundation_review": {
     "stage": "四基础限定代码审核完成，无范围内阻断；证据独立分支归档",
     "review_outcome": "四指定SHA授权基础范围通过；不发产品绿灯、不合并",
@@ -753,7 +773,7 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "review_scope": "Only empty JSON string Boolean casting fix compared with840; published621 evidence, no new product tests",
+  "review_scope": "forms.ts/OperationForm.vue staffing error display; no backend/UI003/private acceptance or global gates",
   "final_rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
   "previous_capacity_rfc_review": {
     "stage": "容量生命周期v1.1限定技术设计准入；待责任岗实施与最终源/测试另审",
@@ -805,8 +825,8 @@
       "本轮无reviewer/stage写入、APPROVE/main合并，原e01 failure不改"
     ]
   },
-  "latest_review_report": "reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md",
-  "latest_review_evidence": "agents/reviewer/evidence/empty-value-75c/verification.json",
+  "latest_review_report": "reports/reviews/30-c56a5a5485ccd80bbd6d34ed81a4fd073edb430e.md",
+  "latest_review_evidence": "agents/reviewer/evidence/capacity-feedback-c56a5a5/static-audit.json",
   "readonly_uow_design": {
     "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
     "applied": false,
@@ -996,5 +1016,43 @@
     "github_exact_body_and_commit_readback": true,
     "evidence_commit": "19b9d1dd04005cfd1def2bee163a311b1197ed79"
   },
-  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical."
+  "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
+  "previous_session_r1_phase": {
+    "stage": "PR26 babc/9560补修限定复审：SESSION-R1关闭，整产品不放行",
+    "implementation_status": "限定源码复审、原895一次3绿、PR26精确SHA COMMENT与读回完成；无产品修改；整产品不放行",
+    "review_outcome": "FE-INIT-01在75所列范围限定关闭；无新实质阻断；不放行整产品",
+    "review_target_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "latest_review_report": "reports/reviews/empty-value-75c3468de07303cc47b9afd0e4a169664743470e.md",
+    "latest_review_evidence": "agents/reviewer/evidence/empty-value-75c/verification.json"
+  },
+  "capacity_feedback_review": {
+    "head": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+    "product": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+    "base": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "pr": 30,
+    "status": "NO_NEW_MATERIAL_BLOCKERS_WITHIN_SCOPE",
+    "overall": "NOT_ACCEPTED",
+    "new_findings": [],
+    "source_hashes": 19,
+    "frozen_hashes": 14,
+    "raw_logs": 9,
+    "original_named_test_declarations_retained": 38,
+    "targeted_test_result": {
+      "passed": 13,
+      "skipped_or_deselected": 52,
+      "runs": 1,
+      "exit_code": 0
+    },
+    "full_suite_rerun": false,
+    "browser_rerun": false,
+    "realDB_rerun": false,
+    "ci_triggered": false,
+    "new_test_files": [],
+    "private_independent_accessed": false,
+    "github_comment": null,
+    "github_exact_body_and_commit_readback": false,
+    "status_mutations": [],
+    "approve": false,
+    "merged": false
+  }
 }
