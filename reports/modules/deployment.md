@@ -129,3 +129,11 @@
 - 增量revision3/run39974397951失败如实保留：stop恢复true；pause后unpause0但up --wait1(unhealthy)，逐次/最终回执false，MQ metadata/绑定通过。依真实诊断增加unpause后的60秒有界只读健康观测，原服务/动作范围不变；51guard/Ruff/actionlint通过，revision4固定4c待必要复核。
 
 - revision4/run39975896833真实通过逐次stop/pause/最终JSON和MQ metadata/绑定。另补保留基础→应用依赖顺序的必要守卫，52项通过；最终实现revision5待同4c复核，旧各次原始回执分目录保留。
+
+### RECOVERY-MQ-v1 最终交付
+
+- 运行实现f118f9dd35bc2cde69affe235f5a499d03a396fc；SUT固定4c20f32；capability run39977039692真实success，stop/pause两次独立CLI JSON及final receipt均true、MQ实际元数据/绑定通过。52本岗guard/Ruff/actionlint通过。
+- public execution/回执/原始gzip+SHA在recovery-receipt-validation/run-39977039692；首次f0失败、d8通过均保留。最终中性protocol为deployment/acceptance/README.md。
+- 本次harness/profile=false，不接触独立内容、不评价其私密结果；无SSH。后续仅交接，不重跑或改实现。
+
+- 中性白名单checkpoint 6b681dd73694bf18430f1bce4bdf00ffd1ae762e已push：deployment/acceptance/neutral-handoff/manifest.json列7文件和逐文件SHA256，manifest SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅成功元数据投影及协议/MQ/crypto；开发过程、失败详情与原始日志排除，供根单向转交。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787；PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363。本轮结束等待集成，无新增环境或测试运行。

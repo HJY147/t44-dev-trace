@@ -13,3 +13,11 @@
 ## 实际失败后的部署AI实现决定
 
 revision3实际观测pause后unpause0、但up --wait立即因现有health=unhealthy退出1，新逐次/最终回执均false。为完成授权的中性恢复能力，部署AI保留该失败，增加只读的unpaused服务健康观测(<=60秒)，不增加服务/动作权限或重启策略，失败/超时保留false，固定4c源revision4必要复核。此段是AI据真实诊断的实现决定，不伪记用户改码或新tester案例。
+
+## 总协调最终收尾原文
+
+最终f118/run39977039692通过已收到。请最终交接优先给neutral白名单（README/protocol+MQ transport、execution/crypto/成功JSON回执的精确文件与SHA），我将核对后发测试岗。测试岗不得读部署工作日志/开发报告/失败详情；白名单要明确不含这些。随后归档最终SHA与Issue/PR并释放槽即可，无需重复运行。
+
+如Issue/PR收尾耗时，可先返回已提交的neutral文件归档checkpoint，供我立即核对/传测试岗；你完成本岗GitHub后final释放槽即可。新UI实现已待专职审核队列，避免再运行任何环境/压测。
+
+对应产物：中性manifest及7文件先提交6b681dd；开发原始证据/失败与角色日志保持单独归档，明确不供tester。最终仅评论/资料提交，不重跑能力、业务、独立或性能。

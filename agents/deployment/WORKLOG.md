@@ -138,3 +138,13 @@
 
 - revision4/run39975896833在d8f5fbe上真实success：stop/pause两次独立CLI JSON均true、IDs不同，暂停后实际健康观测由unhealthy更新healthy再up --wait0，final receipt=true，MQ源hash匹配4c/真实绑定通过。首轮artifact下载EOF后一次依赖读取失败，改为check=True串行重取再核回执；不把下载错误当产品失败或有效证据。
 - 部署AI另在自身代码复核补一项必要依赖顺序守卫：被暂停应用必须在DB等基础依赖恢复后才等待health，防止框架先等待依赖未起的API；这不是tester案例信息。保持原基础→应用恢复顺序，每个实际unpaused依赖批次只读等待最多60秒，不新增mutating动作。52guard/Ruff/actionlint通过。为最终实现SHA准确受验，以有实际变化revision5做最后必要复核，同4c且不增业务/独立案例；之后只归档不再改实现。
+
+### RECOVERY-MQ-v1 最终真实回执
+
+- 最终run39977039692在实现f118f9dd35bc2cde69affe235f5a499d03a396fc/固定产品4c20f32b71635016815420472b9d4bb4fa850df0真实success；已直接读取原始public execution/控制事件/回执并核cipher SHA。stop、pause两次显式CLI recovery_id不同且均true，final receipt为独立ID且true；真实unpause/health观察/up --wait必须步骤0，空unpause明确needed=false/exitnull，不造exit0。
+- 实际BrokerSettings默认/真实MQ主与quarantine绑定核验通过，broker定义hash精确匹配4c源2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472；wrapper映射/AMQP properties源自固定broker定义，没有构造业务outbox或发布业务消息。
+- 原始artifact不改字节、console gzip+SHA及规范阅读稿分目录归档recovery-receipt-validation/run-39977039692；f0失败与d8通过、旧44/68等回执全部保留。之后仅资料/评论收尾，不改实现或再跑能力check。
+- 本次capability mode无harness/profile。根已说明独立R2/R3由tester自行运行/解密且未发布；本岗未接触/读取其任何内容、不判断其结果，不能把本次harness=false写成整个项目从未运行独立harness。没有SSH目标、密码存储或SSH连接。中性protocol只交能力/DTO/实际wire事实，不带开发结果/旧缺陷。
+
+- 按根最终白名单要求，先独立commit/push中性归档6b681dd73694bf18430f1bce4bdf00ffd1ae762e并核远端同SHA；manifest=deployment/acceptance/neutral-handoff/manifest.json，SHA256=362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b。仅README/protocol、MQ元数据、成功execution投影、三次逐次成功JSON投影和合成crypto元数据，共7文件；投影明确省略逐轮health观察、不是原始完整日志。原始字节保持另档，agents/开发报告/prompt/失败详情/凭据/密文不供tester，根已收到精确清单。未再运行环境/测试。
+- 实际body-file发布Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787 和PR15 https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363，正文agents/deployment/recovery-mq-comment.md。最终仅归档；运行实现仍f118/产品仍4c，不把收尾资料commit当受验运行源。索引显式限定本岗文件，diff-check作为提交前检查。
