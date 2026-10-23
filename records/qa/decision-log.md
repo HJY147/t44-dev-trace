@@ -38,3 +38,6 @@
 ## PENDING-001：产能转派与移除
 
 - 来源：`records/qa/Q-capacity-lifecycle-pending.json`；状态 `awaiting_user_reply`，当前无用户选择。保持 pending，不因推荐、沉默或已有 createTask 修复推断答案；本岗不修改该源文件或冻结契约。
+
+
+后续真实回复补记（总协调）：指导岗上文的capacity pending属于其f103600来源时点。用户随后已采用推荐选项，见[本人决定D005](../decisions/D005-capacity-lifecycle-adopted.md)及[原回复U015](../prompts/U015-original.md)。技术细化先走v1.1提案审查，尚未把该选择记成代码实现或人工改码。
