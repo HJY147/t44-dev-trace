@@ -106,3 +106,4 @@
 - 真实Uvicorn在127.0.0.1:18080启动（本轮最终PID9624），DATABASE_URL仅内存env构造，不放argv/日志；ignored运行证据在.agent-worktrees/.runtime。账号文件api-demo-credentials.json为0600，三角色及项目3/迭代3/任务3真实创建，凭据未入仓库/消息。已把路径及非秘密资源ID交frontend/root。
 - 首次HTTPX网络烟测被本机环境代理截获：登录断言/非JSON诊断及随后ReadTimeout，Uvicorn无访问日志；改loopback直连trust_env=False后实际四项网络HTTP＋MySQL烟测通过（登录Schema、me/字典、422、401）。本岗仅对loopback绕过代理，未改TLS或全局环境；initial.log明确为诊断摘要，原工具输出保留会话。安全响应证据在application-network-smoke.json，无登录Token。
 - 根明确本轮可阶段收尾释放并行槽位，让scheduler/messaging实际接(g,c) DI；后续再恢复最终整合。当前seed、通知/升级门面及Rabbit未完成，全t44覆盖率、性能和独立验收未执行。现有真实代码与证据交接，不宣称整产品完成或审核成功。
+- 根复核发现MySQL HTTP fixture仅本机私密文件且硬编码dev会在CI跳过，已修为优先DATABASE_URL＋T44_DATABASE明确匹配；本机四键模式另须显式T44_HTTP_TEST_DATABASE；CI缺配置fail，不跳过。与DB真库fixture口径直接协商一致。实际用CI=true+URL env分支连接本地t44_dev再跑1 passed（application-mysql-url-fixture.log），不是GitHub Actions或t44_ci已运行。生产代码/断言未降级。

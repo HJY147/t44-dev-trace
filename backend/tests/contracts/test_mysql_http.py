@@ -22,16 +22,30 @@ pytestmark = [pytest.mark.contract, pytest.mark.integration]
 
 @pytest.fixture(scope="module")
 def real_application():
-    path = os.getenv("T44_HTTP_TEST_CREDENTIALS")
-    if not path:
-        pytest.skip("Set T44_HTTP_TEST_CREDENTIALS for actual project MySQL HTTP checks")
-    secret = json.loads(Path(path).read_text())
-    engine = create_mysql_engine(
-        MySQLSettings(
-            database="t44_dev", **{k: secret[k] for k in ("host", "port", "username", "password")}
+    # CI declares its actual MySQL URL and database; local private files are optional.
+    if os.getenv("DATABASE_URL"):
+        target = os.getenv("T44_DATABASE")
+        if not target:
+            pytest.fail("DATABASE_URL requires an explicit T44_DATABASE")
+        settings = Settings.from_env().mysql_settings()
+        if settings.database != target:
+            pytest.fail("HTTP test database does not match the declared database")
+    elif os.getenv("T44_HTTP_TEST_CREDENTIALS"):
+        target = os.getenv("T44_HTTP_TEST_DATABASE")
+        if not target:
+            pytest.fail("Private credential mode requires explicit T44_HTTP_TEST_DATABASE")
+        secret = json.loads(Path(os.environ["T44_HTTP_TEST_CREDENTIALS"]).read_text())
+        settings = MySQLSettings(
+            database=target, **{k: secret[k] for k in ("host", "port", "username", "password")}
         )
-    )
-    migrate(engine, expected_database="t44_dev")
+    elif os.getenv("CI"):
+        pytest.fail("CI must supply the real MySQL HTTP test connection")
+    else:
+        pytest.skip("Supply DATABASE_URL/T44_DATABASE or explicit local HTTP test configuration")
+    if target not in ("t44_dev", "t44_test", "t44_ci"):
+        pytest.fail("HTTP self-tests are restricted to the named T44 project schemas")
+    engine = create_mysql_engine(settings)
+    migrate(engine, expected_database=target)
     factory = SqlAlchemyUnitOfWorkFactory(engine)
     names, users, tokens = {}, {}, {}
     suffix, password = uuid4().hex[:12], uuid4().hex

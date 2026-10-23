@@ -544,7 +544,7 @@
       ]
     }
   ],
-  "updated_at": "2026-10-23T08:18:24.053182+00:00",
+  "updated_at": "2026-10-23T08:19:42.448640+00:00",
   "current_stage": "ROLE-backend-APPLICATION-v1 staged delivery; owner integration pending",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -574,6 +574,8 @@
       "demo_iteration_id": 3,
       "demo_task_id": 3,
       "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository"
-    }
+    },
+    "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
+    "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
   }
 }
