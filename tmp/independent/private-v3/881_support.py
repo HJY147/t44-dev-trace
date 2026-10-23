@@ -183,6 +183,19 @@ class Harness:
     def sql(self, query):
         check(query.lstrip().upper().startswith(('SELECT ', 'SHOW ', 'EXPLAIN ')),
               'Independent observer permits read-only SQL only')
+        if self.c.get('local_readonly_credentials_file'):
+            import pymysql
+            credentials = json.loads(Path(self.c['local_readonly_credentials_file']).read_text())
+            check(credentials['database'] == 't44_ui_v3', 'Local observer is restricted to this exact independent database')
+            conn = pymysql.connect(**credentials, cursorclass=pymysql.cursors.DictCursor,
+                                   autocommit=True, read_timeout=5, write_timeout=5)
+            try:
+                with conn.cursor() as cursor:
+                    cursor.execute('SET SESSION TRANSACTION READ ONLY')
+                    cursor.execute(query)
+                    return list(cursor.fetchall())
+            finally:
+                conn.close()
         value = self.control('audit-sql', stdin=query)
         # Operational receipt envelope is unspecified. Accept common JSON row envelopes;
         # no value normalization or expected-result substitution occurs here.
@@ -275,24 +288,35 @@ class Harness:
 
     def setup_users(self):
         c = json.loads(Path(self.c['manager_credentials_file']).read_text())
+        if isinstance(c.get('manager'), dict): c = c['manager']
         if isinstance(c.get('credentials'), dict) and all(k in c['credentials'] for k in ('username', 'password')):
             c = c['credentials']
         if not all(k in c for k in ('username', 'password')):
             raise Blocked('Manager private file requires neutral username/password field binding')
         self.credentials['m'] = {k: c[k] for k in ('username', 'password')}
         self.rec.secrets.append(c['password'])
+        pool = None
+        if self.c.get('additional_accounts_file'):
+            pool = iter(json.loads(Path(self.c['additional_accounts_file']).read_text())['accounts'].values())
         for label in ('a', 'b', 'r', 'o', 'n'):
+            if pool is not None:
+                account = next(pool)
+                self.credentials[label] = {k: account[k] for k in ('username', 'password')}
+                self.rec.secrets.append(account['password'])
+                continue
             username = 'iv3_' + label + '_' + secrets.token_hex(5)
             password = secrets.token_urlsafe(32)
             self.rec.secrets.append(password)
             self.control('init-user', '--username', username, '--display-name', 'Synthetic ' + label,
                          stdin=password + '\n')
             self.credentials[label] = {'username': username, 'password': password}
+        self.display_names = {}
         for label, credentials in self.credentials.items():
             d = self.data('login', auth=False, body=credentials, expected=200)
             self.tokens[label] = d['access_token']
             self.rec.secrets.append(d['access_token'])
             self.users[label] = d['user']['id']
+            self.display_names[label] = d['user']['display_name']
 
     def fixture(self, capacities=('a', 'b'), title=None):
         p = self.data('createProject', body={'name': title or 'Independent v3 ' + key()}, expected=201)

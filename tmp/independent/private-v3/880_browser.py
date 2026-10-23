@@ -4,6 +4,73 @@ import importlib.util
 import json
 from pathlib import Path
 import re
+import subprocess
+
+NODE_BRIDGE = r'''
+import {createInterface} from 'node:readline';
+const mod=await import(process.env.IV3_PLAYWRIGHT_MODULE);
+const objects=new Map([[0,mod]]);let next=1;
+function revive(v){if(Array.isArray(v))return v.map(revive);if(v&&typeof v==='object'){
+ if(v.__regexp!==undefined)return new RegExp(v.__regexp,v.flags||'');
+ if(v.__ref!==undefined)return objects.get(v.__ref);
+ return Object.fromEntries(Object.entries(v).map(([k,x])=>[k,revive(x)]));}return v;}
+function wrap(v){if(Buffer.isBuffer(v))return {__bytes:v.toString('base64')};
+ if(v!==null&&typeof v==='object'){const id=next++;objects.set(id,v);return {__ref:id};}return v;}
+const rl=createInterface({input:process.stdin,crlfDelay:Infinity});
+for await(const line of rl){try{const r=JSON.parse(line),obj=objects.get(r.ref);
+ let v;if(r.method==='$get')v=obj[r.name];else v=await obj[r.method](...revive(r.args));
+ process.stdout.write(JSON.stringify({ok:true,value:wrap(v)})+'\n');
+ }catch(e){process.stdout.write(JSON.stringify({ok:false,error:e.name||'BrowserError',message:String(e.message).replace(/Call log:[\s\S]*/,'').slice(0,1500)})+'\n');}}
+'''
+
+def camel(value):
+    return re.sub(r'_([a-z])', lambda m: m[1].upper(), value)
+
+class NodeRemote:
+    def __init__(self, bridge, ref): self.bridge, self.ref = bridge, ref
+    def __getattr__(self, name):
+        if name == 'url': return self.bridge.call(self.ref, 'url', [])
+        if name in ('chromium', 'keyboard'):
+            return self.bridge.call(self.ref, '$get', [], name=name)
+        def invoke(*args, **kwargs):
+            values = list(args)
+            if kwargs: values.append({camel(k): v for k, v in kwargs.items()})
+            return self.bridge.call(self.ref, camel(name), values)
+        return invoke
+
+class NodePlaywright:
+    def __init__(self, context): self.context = context
+    def __enter__(self):
+        import os
+        env = os.environ.copy(); env['IV3_PLAYWRIGHT_MODULE'] = self.context['node_playwright_module']
+        self.stderr = open(Path(self.context['harness_output_directory']) / 'node-browser-stderr.log', 'a')
+        self.process = subprocess.Popen([self.context['node_executable'], '--input-type=module', '-e', NODE_BRIDGE],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.stderr, text=True, env=env)
+        return NodeRemote(self, 0)
+    def encode(self, value):
+        if isinstance(value, re.Pattern): return {'__regexp': value.pattern, 'flags': 'i' if value.flags & re.I else ''}
+        if isinstance(value, NodeRemote): return {'__ref': value.ref}
+        if isinstance(value, dict): return {k: self.encode(v) for k, v in value.items()}
+        if isinstance(value, (list, tuple)): return [self.encode(v) for v in value]
+        return value
+    def call(self, ref, method, args, **extra):
+        if method == 'launch':
+            args = args or [{}]
+            args[-1]['executablePath'] = self.context['chrome_executable']
+        self.process.stdin.write(json.dumps({'ref': ref, 'method': method, 'args': self.encode(args), **extra}) + '\n')
+        self.process.stdin.flush(); line = self.process.stdout.readline()
+        if not line: raise RuntimeError('Node Playwright transport ended without a response')
+        result = json.loads(line)
+        if not result['ok']: raise RuntimeError('Browser transport: ' + result['error'] + ': ' + result.get('message', ''))
+        value = result.get('value')
+        if isinstance(value, dict) and '__ref' in value: return NodeRemote(self, value['__ref'])
+        if isinstance(value, dict) and '__bytes' in value: return base64.b64decode(value['__bytes'])
+        return value
+    def __exit__(self, *args):
+        self.process.stdin.close()
+        try: self.process.wait(timeout=5)
+        except subprocess.TimeoutExpired: self.process.terminate()
+        self.stderr.close()
 
 def main():
     spec = importlib.util.spec_from_file_location('iv3_browser_support', Path(__file__).with_name('881_support.py'))
@@ -15,10 +82,13 @@ def main():
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        for cid in ids:
-            h.rec.results.append({'id': cid, 'status': 'capability_blocked',
-                                  'reason': 'Neutral runtime provides no Playwright/browser installation'})
-        return h.rec.finish()
+        if all(h.c.get(k) for k in ('node_executable', 'node_playwright_module', 'chrome_executable')):
+            sync_playwright = lambda: NodePlaywright(h.c)
+        else:
+            for cid in ids:
+                h.rec.results.append({'id': cid, 'status': 'capability_blocked',
+                                      'reason': 'Neutral runtime provides no Playwright/browser installation'})
+            return h.rec.finish()
     h.setup_users()
     # UI vocabulary is derived from the frozen Chinese requirements, not a viewed candidate.
     # Missing/ambiguous semantic controls are navigation capability blocks, not invented defects.
@@ -134,7 +204,7 @@ def main():
             context, page = fresh('m'); open_project(page, pname)
             button(page, '迭代|人力安排|产能').click(); page.wait_for_load_state('networkidle')
             button(page, '修改计划|编辑迭代|调整人力').click()
-            owner_name = 'Synthetic a'
+            owner_name = h.display_names['a'] if h.c.get('additional_accounts_file') else 'Synthetic a'
             row = one(page.get_by_role('row').filter(has_text=owner_name), 'owner capacity row')
             one(row.get_by_role('button', name=re.compile('删除|移除')), 'remove owner capacity').click()
             field(page, '变更原因|^原因$').fill('Synthetic forbidden owner capacity removal')

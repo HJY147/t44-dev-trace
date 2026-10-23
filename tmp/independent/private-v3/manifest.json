@@ -1,10 +1,10 @@
 {
   "round": "v3",
-  "freeze_time_utc": "2026-10-23T20:15:05.599131+00:00",
-  "phase": "design-frozen-before-SUT-binding",
+  "freeze_time_utc": "2026-10-23T21:08:45.712783+00:00",
+  "phase": "mechanical transport freeze; original pre-SUT cases remain H",
   "base_commit": "189dc4a3196be0fb84b753f23284f2566d823ea0",
   "payload_hash_algorithm": "SHA256 of sorted relative_path + NUL + file_sha256 + newline; manifest excluded to avoid self-reference",
-  "payload_set_sha256": "3c9bfbbbc59d5a7b6da16192007e25294550f371b6a04eaa199dcf3b5a3dbd3e",
+  "payload_set_sha256": "706ad6ebbff7ba772cf7708998a3c97a7f493d8e638afbe6745d7e158b49381d",
   "payload_files": {
     "design-process.jsonl": "e407497acd3f3211c49fa9b2a3029f7101a12d3f492eaebf6ae79f92c9d40e6b",
     "882_http.py": "a246c9d70ab92cd29daffc3ca83fb7d082a72ec831ec53236a369851d08116b3",
@@ -12,16 +12,17 @@
     "877_formal_escalation.py": "16fd3b83a911ccb8368a8a22b3be69d2e1aa5223149d7f60cf6d9b3dea8343cd",
     "878_formal_contract.py": "5c09c5d1be6ccf2ebe995701aae1a4137fa29b7cf4ffca8d098488c95d5610ee",
     "879_formal_transition.py": "ad2c1364744520c2d2e939156c4c3407dc01bb60d3881f76023a26a5085428a5",
-    "880_browser.py": "25e7bc357f5c563ed41d8e7a62c31d54fa6d46d62ee2c5f7f8af4b57db74ef9e",
+    "880_browser.py": "05a0f83a2d8d0ed1bab9d426acab31a82d50b255a72f9ea1e3c7f7f8eebd6ecf",
     "recipient.pem": "77eda2727a39e953c4e8e9e8e515ee7cc0ef25e40bc122f675cc6e40d2f5a560",
     "876_load.py": "02808329c5211b32c55697d8ba70ae1ab154c812f2eaba244d3ce968963f7251",
-    "881_support.py": "da5c679b52bae4d6925f15afbe139b90c56c19c8f11d5207a9e15b2f51ad8ef8",
+    "881_support.py": "3843452c3a96dc809fde95e5158e473d8e9f77d6336d545a7900bff10b85654f",
     "branch-inventory.json": "b527b109008cfc8d277df3af3fe8984aba3bb9223a7c1c29f5c2152edad7bf09",
     "cases.json": "7df36770cb712b907560303d0eaad9ec1dfc5960481a764a8155e391cfb0f112",
     "875_faults.py": "61b52b8f7f8ce97ff208731e0e6493b079112c24e8b78a6e2b4cbfe32a133409",
     "source-attestation.json": "cd86dfd9f3d1f682b742dbb32fe813b0a3c35cfaa7d27740dc5e331d11618688",
     "storage-expectations.json": "111c5aef4e6a9f201b3ce726885e822e649098c62267ae4470b09b50da648879",
     "874_verify.py": "eeedae1b22fedd7da0206fcf3ce486d83b3d2fecc6e8273a93a9641ce44288b2",
+    "mechanical-adaptation.json": "38bea88fb6e804c956b8219c1131536ea8d7787447d039fc2813e5014f000ccb",
     "scope-counts.json": "7d2d20dd66e802f3c7cf0f6d9491492cb4af1dea975b1096aecd88fc5f1e3b5f",
     "neutral-inputs.json": "f95d7d1cf4ca9ec7a27412edacb07f147b6be8f73c6f518a567a206cdb899293",
     "PROTOCOL.md": "3a66442f5374e8d2162ae257e0b4773fdd09c5da94c0be18a0f4ea71c5cf588b",
@@ -71,5 +72,7 @@
     "meaning": "Operational protocol only, not product results or test expectations. Environment version must be verified before run; no SUT supplied before case freeze.",
     "sha256": "9431fb955a95b3ab431c3e4243fa868bf20ded7305599fe0201b76026568418a"
   },
-  "claims": "Design and offline integrity only. No product pass, defect, benchmark or human participation claim."
+  "claims": "Design and offline integrity only. No product pass, defect, benchmark or human participation claim.",
+  "original_case_freeze_commit": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
+  "original_case_freeze_time_utc": "2026-10-23T20:15:05.599131+00:00"
 }
