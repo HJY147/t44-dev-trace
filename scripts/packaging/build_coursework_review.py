@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import importlib.util
 import io
 import json
 import os
@@ -90,13 +91,24 @@ def verify_entry(root, entry):
 
 
 def verify_source_archive(data, source):
+    if not re.fullmatch("[0-9a-f]{40}", source):
+        raise ValueError("Inner source requires an exact commit SHA")
+    selector_path = Path(__file__).resolve().with_name("build_source_review.py")
+    spec = importlib.util.spec_from_file_location("coursework_source_selection", selector_path)
+    selector = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(selector)
+    committed = selector.selected_files(source)
     with zipfile.ZipFile(io.BytesIO(data)) as archive:
         manifest = json.loads(archive.read("REVIEW-PACKAGE-MANIFEST.json"))
         files = manifest["files"]
         expected = {*files, "REVIEW-PACKAGE-MANIFEST.json"}
         if manifest["source_commit"] != source or len(archive.namelist()) != len(expected) or set(archive.namelist()) != expected:
             raise ValueError("Inner source archive differs from the declared source")
+        if set(files) != set(committed):
+            raise ValueError("Inner source member set differs from the exact Git selection")
         for name, record in files.items():
+            if any(record.get(key) != committed[name][key] for key in ("git_blob", "mode")):
+                raise ValueError("Inner source member mapping differs from the exact Git tree")
             path = PurePosixPath(name)
             if path.is_absolute() or ".." in path.parts or name.startswith(("tmp/independent/", ".submission-private/", ".agent-worktrees/")):
                 raise ValueError("Inner source archive contains a prohibited path")
@@ -115,6 +127,8 @@ def main():
     args = parser.parse_args()
     os.umask(0o077)
     root = args.project_root.resolve(strict=True)
+    if root != Path(__file__).resolve().parents[2]:
+        raise ValueError("Project root must match this builder's repository")
     input_path = regular_inside(root, args.input_manifest)
     if not input_path.is_relative_to(root / ".submission-private"):
         raise ValueError("Selection manifest must stay in the private submission directory")
