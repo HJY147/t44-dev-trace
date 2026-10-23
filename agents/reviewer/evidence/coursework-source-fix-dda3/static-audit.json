@@ -1,0 +1,67 @@
+{
+  "operator": "AI reviewer, original archived semantic counterexample once plus narrow static checks",
+  "target": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+  "baseline": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+  "design": "add7363a074ad09c4617caf0fe95620442ac6110",
+  "builder_sha256": "b767ebda28e5bac4ea5e2cad78a193f98ca93e8ad4e936d577628471484f585b",
+  "selector_sha256": "540fe63ddedcdb3184b923cd176da493da9e80384599d0684164d6f477de6faf",
+  "selector_unchanged_from_baseline": true,
+  "changed_function_AST": [
+    "verify_source_archive",
+    "main"
+  ],
+  "unchanged_function_AST": [
+    "exclusive_write",
+    "regular_inside",
+    "sha256",
+    "verify_entry"
+  ],
+  "main_only_added_repo_root_guard": true,
+  "positive_material_DOCX_stage_and_limit_constants_unchanged": true,
+  "selector_actual_behavior_static": [
+    "Own __file__ determinesROOT, no worktree input directories read",
+    "ls-tree exact caller40hex commit using existing positiveROOTS",
+    "Reject forbiddenparts, symlink/nonregulartracked modes and key-like files; requireREADME/compose",
+    "Return Git actual path/blob/mode metadata only, no blobpayload read"
+  ],
+  "new_verifier_static": [
+    "Full40hex source",
+    "Absolute sibling selector path, not global PYTHONPATH selector",
+    "Inner member set equals complete positiveGit selection",
+    "Each inner git_blob/mode equals actual committed mapping",
+    "Existing perpayload SHA256/size/Git blob checks remain",
+    "Duplicate/member/path and CRC-on-read remain"
+  ],
+  "original_probe_replay": {
+    "runs": 1,
+    "exit_code": 0,
+    "original_command_preserved_byte_identical": true,
+    "same_semantic_fields_verified": [
+      "member",
+      "declared_source_commit",
+      "git_commit_resolves_exactly",
+      "actual_tree_blob",
+      "declared_and_payload_blob",
+      "payload_not_in_declared_tree",
+      "internal_SHA256_size_git_blob_self_consistent",
+      "archive_members",
+      "expected_reject_unbound_source",
+      "actual_review_bundle_created",
+      "disk_ZIP_files_written"
+    ],
+    "same_declared_input_commit": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "original_assertion_preserved": true,
+    "actual_rejection": "Inner source member set differs from exact Git selection",
+    "mapping_branch_executed_by_this_probe": false,
+    "mapping_branch_static_only": true
+  },
+  "frozen14_unchanged": true,
+  "metadata_original953_business_frontend_specs_unchanged": true,
+  "new_persistent_tmp_testfiles": [],
+  "real_package_ZIP_DOCX_R002_or_independent_material_read_or_built": false,
+  "metadata_or_whole_suite_rerun": false,
+  "outcome": "BUNDLE-SOURCE-BINDING-01_CLOSED_WITHIN_DELTA",
+  "overall": "NOT_ACCEPTED",
+  "original9d6_failure_preserved": true,
+  "remaining_original_advisory_scope": "Actual private fourDOCX/QA/cutoff/parentowner/free-text safety and actual output still unverified; not addressed by this narrow closure"
+}

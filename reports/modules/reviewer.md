@@ -169,3 +169,8 @@ DB3b7 bounded reader、backend0549投影/同事务新理由、FEc79字面呈现�
 实际prompt ROLE-reviewer-NATIVE-CAPTURE-FIX-v1，精确cc6a211bb1692460ffba09f7ee764c64545602ee/b23897879142de3bd77190c67d4947eccf1c8263，设计7f4845e。唯一原事件/原拒绝断言语义重放一次exit0，0真实进程/信号；超时后actualrc0仍OWNED_COMMAND_TIMEOUT/timed_outtrue/successfalse。26公开hash、14冻结、原两红副本、其余AST/runtime/旧ApplicationGuards不变，owner5边界原件核实但未重跑。P2限定关闭；原5ef失败、0a6 cycle历史保持，新代码未有完整cycle验证。报告reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md。无生产改动、私有/独立读取、套件/服务/CI/负载运行或整体放行；实际COMMENT/GET回执另补。
 
 实际发布：证据阶段8c415c16e384f6af17694fd2719608d3510916bc已push，PR34 COMMENT5634940377显式绑定完整cc6；插件逐字body/COMMENTED与完整REST GET commit_id/body/state严格一致exit0，回执github-comment.json。仅关闭P2，原5ef失败与0a6真实cycle保持，无APPROVE/status/CI/mainmerge或整体放行。
+
+
+## PR21源码绑定P2窄修复审（2026-10-24）
+
+准确dda3df8e15b0b5b655909dda37dc79a87f318924，先行add7363；prompt ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1。原归档命令复用同payload/manifest/declared9d6/拒绝断言，只SUT+harness适配并公开清单，一次exit0，真实selector未mock、只Git元数据，集合不符被拒绝。源码/可信helper SHA、完整正向集合/blob/mode+payload绑定、main自身repo限制及14freeze核对；perblob分支静态、不冒称实跑。仅关闭BUNDLE-SOURCE-BINDING-01，原9d6红/3cbcc/Issue38历史保持，实际包/4DOCX QA/原owner自由文本未验边界保持。报告reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md。无私密/独立资料或metadata/套件/CI/服务执行，未造实际包，不整体放行；真实Issue38/COMMENT/GET回执另补。

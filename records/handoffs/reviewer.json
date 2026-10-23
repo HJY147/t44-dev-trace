@@ -15,7 +15,7 @@
   },
   "questions": [],
   "review_branch": "codex/review-warm-glass",
-  "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+  "stage": "PR21 dda3 BUNDLE-SOURCE-BINDING-01窄修限定关闭；实际包与整体不放行",
   "native_application_review": {
     "archive": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
     "implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
@@ -216,7 +216,10 @@
     "agents/reviewer/evidence/native-application-189a4e2",
     "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
     "agents/reviewer/dispatches/ROLE-reviewer-NATIVE-CAPTURE-FIX-v1.txt",
-    "agents/reviewer/evidence/native-capture-fix-cc6"
+    "agents/reviewer/evidence/native-capture-fix-cc6",
+    "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+    "agents/reviewer/dispatches/ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1.txt",
+    "agents/reviewer/evidence/coursework-source-fix-dda3"
   ],
   "plan_reason_review": {
     "head": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
@@ -336,7 +339,7 @@
       "pr_head_at_publish": "4d9da050de2e91dfd3f37ff915c2872c55d52888"
     }
   },
-  "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json",
+  "latest_review_evidence": "agents/reviewer/evidence/coursework-source-fix-dda3/static-audit.json",
   "native_capture_fix_review": {
     "target": "cc6a211bb1692460ffba09f7ee764c64545602ee",
     "code": "b23897879142de3bd77190c67d4947eccf1c8263",
@@ -381,7 +384,7 @@
     },
     "evidence_commit": "8c415c16e384f6af17694fd2719608d3510916bc"
   },
-  "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+  "implementation_status": "原归档语义反例一次绿/可信selector与窄AST核对完成；待Issue38评论及精确PR21 COMMENT和GET；无实际包或产品修改",
   "previous_warm_glass_scope": {
     "stage": "暖米咖玻璃UI限定审核完成；整产品不放行",
     "review_target_sha": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
@@ -1068,7 +1071,8 @@
       "improvement_reason": "Preserve originalHTTPred and onlyreview exactnarrowfix, replay samefixture once; separate decodedJSONstructure/type identity from Python== and globalgates."
     },
     "ROLE-reviewer-NATIVE-APPLICATION-v1",
-    "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1"
+    "ROLE-reviewer-NATIVE-CAPTURE-FIX-v1",
+    "ROLE-reviewer-COURSEWORK-SOURCE-FIX-v1"
   ],
   "previous_v11_implementation_review": {
     "stage": "1.1实现与公开缺陷限定复审完成；整体不通过",
@@ -1168,7 +1172,7 @@
     "verified_at_utc": "2026-10-23T19:59:36.224381+00:00",
     "full_specific_review_GET_exit_code": 0
   },
-  "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+  "review_outcome": "BUNDLE-SOURCE-BINDING-01 CLOSED_WITHIN_DELTA; actualbundle UNVERIFIED; overall NOT_ACCEPTED",
   "capacity_feedback_integration_note": "Coordinator preserved both backend7584 and frontendc56 review histories from parallel branches; generic latest-stage metadata uses capacity review, original source reports/raw evidence unchanged. Neither limited review grants whole product acceptance.",
   "previous_phase_before_native_capture_followup": {
     "stage": "PR29 A预检合并限定代码审核7584/153b；无新阻断，整产品不放行",
@@ -1342,8 +1346,8 @@
     "merged": false,
     "evidence_commit": "b40b28b1136f4c5673b234d09055a37dede78ee3"
   },
-  "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
-  "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+  "latest_review_report": "reports/reviews/21-dda3df8e15b0b5b655909dda37dc79a87f318924.md",
+  "review_target_sha": "dda3df8e15b0b5b655909dda37dc79a87f318924",
   "interfaces": [
     {
       "peer": "总协调与开发责任岗",
@@ -1438,5 +1442,43 @@
     "review_target_sha": "5fb1d7e0b180e754aba635487ebb0fa341e4f957",
     "report": "reports/reviews/capacity-v11-design-5fb1d7e0b180e754aba635487ebb0fa341e4f957.md",
     "review_outcome": "当时有条件技术准入、状态7具体待答；原root AI提案误述保留，已由02+U016解决"
+  },
+  "previous_phase_before_coursework_source_fix": {
+    "stage": "PR34 NATIVE-CAPTURE-TIMEOUT-01窄修cc6/b238限定关闭；整体不放行",
+    "implementation_status": "原语义反例一次绿/有限AST与26公开原件核对/PR34精确cc6 COMMENT和完整GET完成；仅关闭该P2，原5ef失败保留；无产品修改",
+    "review_outcome": "NATIVE-CAPTURE-TIMEOUT-01 CLOSED_WITHIN_DELTA; overall NOT_ACCEPTED",
+    "review_target_sha": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+    "latest_review_report": "reports/reviews/34-cc6a211bb1692460ffba09f7ee764c64545602ee.md",
+    "latest_review_evidence": "agents/reviewer/evidence/native-capture-fix-cc6/static-audit.json"
+  },
+  "coursework_source_fix_review": {
+    "target": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+    "design": "add7363a074ad09c4617caf0fe95620442ac6110",
+    "source_SHA": "b767ebda28e5bac4ea5e2cad78a193f98ca93e8ad4e936d577628471484f585b",
+    "selector_SHA": "540fe63ddedcdb3184b923cd176da493da9e80384599d0684164d6f477de6faf",
+    "status": "BUNDLE-SOURCE-BINDING-01_CLOSED_WITHIN_DELTA",
+    "actual_review_bundle": "UNVERIFIED_NOT_BUILT",
+    "overall": "NOT_ACCEPTED",
+    "original_failure_target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "original_failure_commit": "3cbcc2abeb93b8b11fbc4ae2accc70095450db2e",
+    "original_failure_preserved": true,
+    "replay": {
+      "runs": 1,
+      "exit_code": 0,
+      "original_command_archived": true,
+      "same_input_and_rejection_assertion": true,
+      "perblob_mode_branch": "static_only",
+      "real_selector_not_mocked": true
+    },
+    "frozen14_unchanged": true,
+    "private_or_independent_material_read": false,
+    "metadata_or_full_suite_rerun": false,
+    "new_persistent_tmp_testfiles": [],
+    "github": {
+      "state": "PENDING_REAL_ISSUE_COMMENT_AND_REVIEW",
+      "approve": false,
+      "status_mutations": [],
+      "merged": false
+    }
   }
 }
