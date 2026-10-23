@@ -169,3 +169,12 @@
 - 证据整理一次误读handoff键为prompts（实际prompt_refs），Python在最终写入前KeyError退出，无handoff半写；核对结构后修正。它是记录脚本错误，不计产品测试失败。
 - 4439309阶段证据已本岗commit/push；Issue25实际评论 https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551 和专项draft PR26 https://github.com/HJY147/t44-dev-trace/pull/26 已创建，正文逐字读回匹配。初建PR瞬间mergeable=false，后续真实GET为true，状态传播不是代码冲突；最新回执保存。没有APPROVE、reviewer状态或main合并。
 - 公开可读目标日志的EOF空白被git diff --cached --check实际拒绝一次；未commit，先保留原始gzip，再规范EOF并更新readable hash后重新检查通过。结束时仅移除本worktree的frontend/node_modules符号链接，根依赖目录未删。
+
+## 2026-10-24T03:10+08:00｜ROLE-frontend-SESSION-R1-v1
+- 收到精确3c审核NOT_PASSED / PR26 review5633150236。读已发布报告/895/原红日志，未读独立私密资料。先设计7dfefd2后产品9560e7bd23b68eddbdb733a5ee671999f46a44cd；没有用原39绿抵消审核失败。
+- 895原样SHA f42aef30…复制，无路径适配/期待改动；本岗原363重放1红2绿，修正后3绿，trace orphanReads=[]、user2/token2/project2保持。原895来源作者为AI审核岗，本岗仅重放。
+- 新相邻9探针初次9红中6为实际行为、3为漏等ElementPlus form挂载驱动错误；最初错误地向root称全为产品红，核对后立即更正。误在这3驱动错未排除前执行全套得到48绿3错，原日志保留。只补settle等待，在精确3c隔离detached worktree的未改应用源重放3项真实红，身份/hash证据保留；旧临时worktree测试拷贝/依赖链接随后仅本岗清理删除。
+- API在失败处理及解码前后也核对发起token；旧401改SESSION_CHANGED客户端取消，原新身份保持断言不减，当前401仍过期清理。表单/父WorkspaceView存活期及token守卫位于副作用和await之后，旧卸载回调不能context清新项目；当前403/409正常恢复不改。Login catch防清新token/重复busy提交，TaskDrawer卸载第一段后不发第二段，均有新开发夹具红绿。
+- 修正后9相邻绿，最终全前端51/51，19源347/373=93.02%行、755/868=86.98%分支；main/router仍分母，冻结14不变。必要构建含类型成功，826.30kB chunk警告保留，没有抬阈值或改计数。
+- 因Login真实路径有变，原896对956做限定真实回归：1440/390八图逐张看，60响应54个200/6个预期401，2个driver本session logout200，0业务写/页面异常/横溢出；不说浏览器复现迟到403。Chrome19:08:58.236UTC退出，自身5176随后Ctrl-C exit130，用户/独立进程数据未动。
+- 原39绿/原7红、审核1红、初探针驱动错/旧源修正红、全部原始gzip分别保存；新证据session-r1-validation.json。不称独立复测、学生发现或整产品通过，等待准确新HEAD复审。
