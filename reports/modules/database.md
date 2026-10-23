@@ -1,13 +1,13 @@
-# 数据库模块报告：capacity生命周期1.1存储文档同步
+# 数据库模块报告：DDL AST隔离POC未准入生产
 
-- 实际派工ROLE-database-CAPACITY-V11-CONTRACTS-v1；基于指定eac253039cd85873d3b262e648b2b74d94d715a8。本轮操作者数据库岗AI，非用户亲自改码。
-- 已读D005/D006、U015/U016、已审RFC及bbc限定设计报告；只更新specs/database/field-dictionary.md与persistence-contract.md及本岗记录，不改DDL、产品、API、旧freeze或他岗文件。
-- 两文档显式演进至1.1存储语义，保留ae60dc3原1.0与11hash；不声称当前仍逐字匹配旧文档摘要。新freeze父链由root负责，当前未代为生成或宣称已冻结。
-- capacity保护本迭代state1–5全部owner，6/7可移出，7返工前补回有效developer/工时；项目成员/开发角色保护仍1–5+7，D002转派边界不变，无新增预算算法。
-- 四路径createTask/changeIteration/rework/changeTaskAssignment统一session/idem→project→有序成员→有序task；assignment新增项目锁。服务获项目锁后重读当前JSON快照/全量任务与有效developer，不依赖锁前/另一事务预检。
-- backend已真实确认全量owner集合检查及保留原权限/状态/version/证据/依赖守卫优先；新增检查CAS前完成，复用422 CAPACITY_REFERENCE_INVALID/审计稳定码30。失败不写业务version/plan/diff；成功同事务、旧成功key重放、独立拒绝审计边界不变。
-- 必要静态结果：18表226列；两份DDL SHA256=c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4；226项字段/SQL声明不变，原11hash从ae60dc3均可恢复，v1.json未改，19个本地链接/锚点通过，已审RFC原hash相符。
-- 证据agents/database/capacity-v11-static-check.json；本轮未跑产品/SQL/迁移/pytest/全套/coverage/独立验收/性能。该文档同步不计任何产品或独立/性能通过。
-- 原C-P4/checker与真实MySQL证据保留agents/database/live-verify-v1/summary.json和0e3e999历史提交，不重写，也不拿它证明1.1新增行为已运行。
-- backend负责1.1 API/代码/权威运行副本及info.version+Meta.const，root负责共享需求/业务规则/AGENTS和新freeze；本岗仍待其实际实现/新版运行验证及整体审核，不越界完成或声明这些工作。
-- 日志agents/database/WORKLOG.md；实际prompt agents/database/prompts/ROLE-database-CAPACITY-V11-CONTRACTS-v1.md；交接records/handoffs/database.json；阶段Issue/PR另列真实URL。未接触独立测试私有资料。
+- ROLE-database-DDL-AST-POC-v1，基线正式freeze189dc4a3196be0fb84b753f23284f2566d823ea0；仅952隔离原型及本岗记录，生产模块/DDL/API/freeze/backend依赖锁/975未改。操作者AI，非学生亲改。
+- 官方SQLGlot30.24.0、Python>=3.9、MIT已核；pure wheel官方hash948882...核验后仅解包ignored runtime，不进入backend环境。官方明确宽松parser非validator，MINOR也可破坏兼容，来源链接及固定发布见agents/database/ddl-ast-poc/research.md。
+- 权威DDL纯解析18 CREATE/2 ALTER、18表226列59CHECK；预期来自权威DDL，旧parser Core元数据作静态差分，无实际Inspector/数据库输入，不读957或独立私有材料（仅root公开要点）。
+- 首轮29/2保留：本岗adapter误读显式NULL allow_null；改适配后run2为36/1。最终必要矩阵run4为46通过/1保留失败，原全部日志/报告保留，不凑绿。
+- 余下13处SQLGlot生成NOT x IS NULL，旧checker语法不支持；候选AST自身59roundtrip一致，不等于实库等价证明，也不能直接混用旧parser。生产旧checker保持原样。
+- C-P4同名索引列序/unique/前缀/类型/排序、FK源目标列/库表/动作、CHECK常量/IN/OR/字符串/引导符/优先级/函数参数、列类型/NULL/default等观察均在952，严格拒绝多语句/尾别名/查询根/不支持DDL；非一般SQL validator。
+- cloc2.10实测现117+321，真正可替换函数上界171、新AST函数114；仍需Core assembler/type/接入保护估60–110，联合可能增加3–53行，尚未实现。CHECK-only潜在39–46也需另行准入。当前生产节省0，不能解决整体840行缺口或声称规模通过。
+- 结论：不准入整对生产替换、不改锁；若后续批准须完整assembler、独立差分及root调度新隔离MySQL验证。当前没有数据库/seed/重负载/HTTP/产品全套/覆盖率/独立验收/性能结果。
+- BE短profile窗口期间已明确停止安装/批解析/测试，根宣布结束后才恢复。Ruff原F401/I001保留，952整理imports后通过；仅此必要源静态检查，不刷产品测试。
+- 产物tmp/backend/persistence/952_ddl_ast_poc.py；agents/database/ddl-ast-poc/{research.md,run1..run4.json,run1..run4.log,line-estimate.json,package-metadata.json}；WORKLOG/handoff/实际prompt均保留。旧capacity与live证据在历史提交，不被POC重写。
+- 发布：Issue4阶段评论https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045；PR17已更新并attach，保持draft。完整阶段SHA以本轮提交及最终交接为准。

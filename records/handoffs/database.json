@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "CAPACITY-V11-CONTRACTS-v1：仅1.1存储字典/事务契约同步",
-  "implementation_status": "两份存储文档显式1.1演进；未改DDL或产品/API实现，静态对照/hash/19链接通过，非1.1产品验证。",
+  "stage": "DDL-AST-POC-v1：纯解析隔离原型46/1，不准入生产",
+  "implementation_status": "952和公开研究/原失败/行数预算已交付；不改生产/DDL/API/freeze/依赖/975。最终矩阵46通过/1保留兼容失败，生产节省0。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -437,6 +437,23 @@
       "kind": "本轮1.1文档同步阶段评论原文",
       "status": "已body-file发表",
       "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327"
+    },
+    {
+      "path": "agents/database/ddl-ast-poc/summary.json",
+      "kind": "隔离原型矩阵/官方包/hash/原失败/未实现行数预算",
+      "status": "研究完成，不准入生产"
+    },
+    {
+      "path": "agents/database/ddl-ast-poc-stage-comment.md",
+      "kind": "本轮真实GitHub阶段正文",
+      "status": "已发表/更新",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
+    },
+    {
+      "path": "agents/database/ddl-ast-poc-pr-body.md",
+      "kind": "本轮真实GitHub阶段正文",
+      "status": "已发表/更新",
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/17"
     }
   ],
   "interfaces": [
@@ -674,18 +691,27 @@
       "result": "Original11 freeze hashes recoverable at ae60dc3, manifest unchanged; 18/226 and both DDL hashes unchanged; 226 column/type rows unchanged; stable error30 unchanged; 19 relative links/anchors valid; RFC hash matches reviewed object",
       "evidence": "agents/database/capacity-v11-static-check.json",
       "product_validation": false
+    },
+    {
+      "stage": "DDL-AST-POC-v1",
+      "scope": "Pure isolated parsing only",
+      "result": "SQLGlot30.24.0 MIT>=Python3.9; final46/1 with13 mixed-parser blockers retained",
+      "evidence": "agents/database/ddl-ast-poc/summary.json",
+      "production_ready": false,
+      "production_savings": 0
     }
   ],
   "unverified": [
-    "本岗未实现或运行1.1产品行为；未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能",
-    "backend权威/运行API与代码1.1.0、root共享需求和新freeze父链由对应责任岗完成，本岗不代称已完成",
-    "旧1.0 11hash及ae60dc3历史保留，两存储文档当前摘要显式改变，新版整体审核/冻结仍另行进行"
+    "完整SQLAlchemy Core assembler未实现，候选不能直接替换整对模块",
+    "13 CHECK文本不兼容旧checker仍保留，未改旧checker迁就库",
+    "没有新MySQL/实际反射/SQLite metadata接入/CAS/产品全套/coverage/独立/性能证明",
+    "行数联合净删为未实现估算，可能增加3–53；CHECK-only潜在39–46也未准入，生产0节省"
   ],
   "questions": [
     {
-      "to": "root/backend",
-      "question": "按职责继续1.1 API实现及新版freeze/验证；本岗两份文档已对齐已审RFC，无新增字段/错误定义歧义",
-      "status": "本岗文档完成，余项归对应责任岗"
+      "to": "root/reviewer",
+      "question": "不推荐整对替换；若另批准CHECK-only或完整adapter，需独立设计与调度新隔离实库，当前不申请执行",
+      "status": "本阶段研究收口，等待新任务"
     }
   ],
   "prompt_refs": [
@@ -821,9 +847,14 @@
       "id": "ROLE-database-CAPACITY-V11-CONTRACTS-v1",
       "archive": "agents/database/prompts/ROLE-database-CAPACITY-V11-CONTRACTS-v1.md",
       "improvement_reason": "人的D005/D006选择与AI实现/纠错分开；只同步已审1.1存储语义，保护旧freeze父链，静态检查不计产品通过。"
+    },
+    {
+      "id": "ROLE-database-DDL-AST-POC-v1",
+      "archive": "agents/database/prompts/ROLE-database-DDL-AST-POC-v1.md",
+      "improvement_reason": "先证成熟库兼容/许可/真实替换边界，保留失败与0节省，不凑数改生产或锁。"
     }
   ],
-  "updated_at": "2026-10-23T12:21:58.115107+00:00",
+  "updated_at": "2026-10-23T13:07:00.586515+00:00",
   "publication": {
     "branch": "codex/database-runtime",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database",
@@ -832,16 +863,17 @@
     "draft": true,
     "attached": true,
     "merged": false,
-    "scope": "Capacity1.1 storage-document evolution only, no DDL/product implementation",
+    "scope": "Isolated DDL AST POC only; production/DDL/API/locks/freeze unchanged",
     "pr_scope_updated_and_attached": true,
     "last_verified_product_commit": "e06ac3ba4dfe7057df02b1213d482d78bee7026f",
-    "candidate_status": "静态文档同步通过，不计1.1产品/独立/性能通过",
+    "candidate_status": "No production admission;46/1 retained failure;0 actual savings",
     "last_hosted_verified_commit": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
     "review_fix_v2_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363209981",
     "live_evidence": "agents/database/live-verify-v1/summary.json",
     "live_verify_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6363453107",
     "capacity_v11_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6364775327",
-    "current_validation": "Capacity1.1 docs: static comparison/link/hash checks only; no product validation"
+    "current_validation": "Pure parse46/1 retained compatibility failure + targeted Ruff; no DB/product proof",
+    "ddl_ast_poc_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6365574045"
   },
   "history": [
     {
@@ -958,6 +990,15 @@
         "7项针对性原生约束拒绝并非每个可能DDL变异/59CHECK逐项负测",
         "总协调stage7应用cloc5866/exit1仍超5100，不改口径；本轮未重新统一统计",
         "最终C-P4审核结论由审核岗复审最新集成SHA，owner不替代审核通过"
+      ]
+    },
+    {
+      "stage": "CAPACITY-V11-CONTRACTS-v1：仅1.1存储字典/事务契约同步",
+      "implementation_status": "两份存储文档显式1.1演进；未改DDL或产品/API实现，静态对照/hash/19链接通过，非1.1产品验证。",
+      "unverified": [
+        "本岗未实现或运行1.1产品行为；未跑pytest/MySQL/迁移/全套/coverage/独立验收/性能",
+        "backend权威/运行API与代码1.1.0、root共享需求和新freeze父链由对应责任岗完成，本岗不代称已完成",
+        "旧1.0 11hash及ae60dc3历史保留，两存储文档当前摘要显式改变，新版整体审核/冻结仍另行进行"
       ]
     }
   ],
