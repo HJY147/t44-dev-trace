@@ -223,9 +223,9 @@ jobs:
         shell: bash
         run: |
           mkdir -p coverage
-          pnpm run test:coverage --reporter=json --outputFile=coverage/test-results.json \
+          pnpm run test:coverage --reporter=json --outputFile=frontend/coverage/test-results.json \
             --coverage.reporter=json --coverage.reporter=json-summary \
-            '--coverage.include=src/**/*.{ts,vue}' 2>&1 | tee ../reports/ci/frontend/test.log
+            '--coverage.include=frontend/src/**/*.{ts,vue}' 2>&1 | tee ../reports/ci/frontend/test.log
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'

@@ -12,7 +12,9 @@ def main() -> None:
     if not result.get("success") or result.get("numPassedTests", 0) <= 0 or result.get("numPendingTests", 0):
         raise ValueError("frontend tests failed, were empty, or contained skipped placeholders")
     report = json.loads((folder / "coverage-final.json").read_text())
-    measured = {Path(name).resolve() if Path(name).is_absolute() else (ROOT / "frontend" / name).resolve() for name in report}
+    measured = {Path(name).resolve() if Path(name).is_absolute() else
+                (ROOT / name).resolve() if Path(name).parts[0] == "frontend" else
+                (ROOT / "frontend" / name).resolve() for name in report}
     required = {path.resolve() for path in (ROOT / "frontend/src").rglob("*")
                 if path.suffix in {".ts", ".vue"} and not path.name.endswith(".d.ts")}
     if not required or required - measured:

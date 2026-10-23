@@ -11,14 +11,13 @@ def main() -> int:
     REPORTS.mkdir(parents=True, exist_ok=True)
     commands = [
         [sys.executable, "scripts/ci/validate_config.py"],
-        [sys.executable, "-m", "unittest", "discover", "-s", "deployment/tests", "-v"],
-        [sys.executable, "-m", "unittest", "discover", "-s", "scripts/ci/tests", "-v"],
+        [sys.executable, "-m", "pytest", "-c", "backend/pyproject.toml", "tmp/deployment/997_ops.py", "tmp/ci/996_gates.py", "-q"],
         [sys.executable, "-m", "ruff", "check", "--config", "scripts/ci/ruff.toml", "deployment", "scripts/ci"],
     ]
     missing = require_application()
     if not missing:
         commands.extend([
-            [sys.executable, "-m", "ruff", "check", "--config", "scripts/ci/ruff.toml", "backend/t44", "backend/tests"],
+            [sys.executable, "-m", "ruff", "check", "--config", "scripts/ci/ruff.toml", "backend/t44", "tmp/backend"],
             [sys.executable, "-m", "bandit", "-r", "backend/t44", "-f", "json", "-o", str(REPORTS / "bandit.json")],
         ])
     results = []

@@ -38,14 +38,14 @@ def main() -> int:
     if args.gate == "contracts":
         for marker in ["contract", "integration", "fault"]:
             report = folder / f"{marker}.xml"
-            code = run([sys.executable, "-m", "pytest", "-c", "backend/pyproject.toml", "backend/tests",
+            code = run([sys.executable, "-m", "pytest", "-c", "backend/pyproject.toml", "tmp/backend",
                         "--strict-markers", "-m", marker, f"--junitxml={report}", "-ra"], folder / f"{marker}.log")
             statuses.append({"marker": marker, "exit_code": code, "real_success": junit_has_real_success(report)})
     else:
         report = folder / "junit.xml"
         prefix = [sys.executable, "-m", "coverage"]
         code = run([*prefix, "run", "--rcfile=scripts/ci/coverage.ini", "-m", "pytest", "-c", "backend/pyproject.toml",
-                    "backend/tests", "--strict-markers", f"--junitxml={report}", "-ra"], folder / "pytest.log")
+                    "tmp/backend", "--strict-markers", f"--junitxml={report}", "-ra"], folder / "pytest.log")
         statuses.append({"suite": "all", "exit_code": code, "real_success": junit_has_real_success(report)})
         for output in ["xml", "json", "html", "report"]:
             code = run([*prefix, output, "--rcfile=scripts/ci/coverage.ini"], folder / f"{output}.log")
