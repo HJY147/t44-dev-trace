@@ -1,0 +1,812 @@
+{
+  "round": "v3",
+  "phase": "design-only",
+  "functional_cases": [
+    {
+      "id": "F01-authentication-and-38-operation-boundary",
+      "entry": "882_http.py::run::auth",
+      "source_line": 18,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(me['id'] == h.users['m'], 'Me must report the authenticated actual user')",
+        "C({x['value'] for x in dictionaries['task_states']} == set(range(1, 8)), 'Seven state dictionary')",
+        "C({x['value'] for x in dictionaries['transition_actions']} == set(range(1, 10)), 'Nine action dictionary')"
+      ],
+      "http_probes": [
+        "h.data('getMe', expected=200)",
+        "h.data('getDictionaries', expected=200)",
+        "h.data('login', body=h.credentials['o'], auth=False, expected=200)",
+        "h.request('logout', actor='revoked', expected=200)",
+        "h.request('getMe', actor='revoked', expected=401, code='TOKEN_REVOKED')",
+        "h.request(op_id, auth=False, body={'username': 'iv3_absent_' + S.key(), 'password': 'synthetic-invalid'}, expected=401, code='INVALID_CREDENTIALS')",
+        "h.request(op_id, auth=False, ids={'project_id': f['p'], 'task_id': 4294967295, 'iteration_id': f['i'], 'user_id': h.users['a'], 'dependency_id': 4294967295, 'assessment_id': 4294967295, 'notification_id': 4294967295}, body={} if 'requestBody' in S.OPS[op_id][2] else None, expected=401, code='AUTH_REQUIRED')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F02-project-isolation-current-qualification-and-service-scope",
+      "entry": "882_http.py::run::isolation",
+      "source_line": 42,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(v['current_version'] is None and v['current_state'] is None, 'No cross-project version/state disclosure')",
+        "h.audit(v, 2, 'PROJECT_ACCESS_DENIED')",
+        "C(success['data']['user']['id'] == h.users['o'], 'Exact username join targets actual initialized account')"
+      ],
+      "http_probes": [
+        "h.request('getTask', actor='o', ids=h.ids(f, t), expected=403, code='PROJECT_ACCESS_DENIED')",
+        "h.request('getTask', ids=h.ids(f, 4294967295), expected=404, code='RESOURCE_NOT_FOUND')",
+        "h.request('getTask', ids=h.ids(f, t), actor='a', expected=200)",
+        "h.request('addProjectMember', actor='n', ids=h.ids(f), body=body, idem=ik, expected=201)",
+        "h.request('removeProjectMember', ids=h.ids(f, user_id=h.users['r']), body={'expected_version': mr['version'], 'reason': 'Synthetic revoke'}, expected=200)",
+        "h.request('listTaskReviews', actor='r', ids=h.ids(f, t), expected=403, code='PROJECT_ACCESS_DENIED')",
+        "h.request('getMe', actor=svc, expected=403, code='ACTION_FORBIDDEN')",
+        "h.request('createEscalation', actor='m', ids=h.ids(f, t), body={'expected_version': t['version'], 'schedule_version': t['schedule_version'], 'rule_version': 1, 'scan_run_id': str(uuid.uuid4())}, expected=403, code='SERVICE_SCOPE_REQUIRED')",
+        "h.data('listProjectMembers', ids=h.ids(f), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F03-input-contract-and-readonly-validation",
+      "entry": "882_http.py::run::input_contract",
+      "source_line": 66,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)"
+      ],
+      "http_probes": [
+        "h.request('createTask', ids=h.ids(f), body=good, expected=201)",
+        "h.request('createTask', ids=h.ids(f), body=body, expected=201)",
+        "h.request('createTask', ids=h.ids(f), raw=b'{\"title\":', expected=400, code='INVALID_JSON')",
+        "h.request('createTask', ids=h.ids(f), raw=b'{' + b' ' * (1024 * 1024 + 1), expected=413, code='PAYLOAD_TOO_LARGE')",
+        "h.request('listTasks', ids=h.ids(f), query={'sort': 'id DESC; DROP TABLE tasks'}, expected=400, code='SECURITY_INPUT_REJECTED')",
+        "h.request('listTasks', ids=h.ids(f), query={'page': 0}, expected=422, code='PARAMETER_INVALID')",
+        "h.request('validateContractPayload', ids=h.ids(f), body={'category': 1, 'payload': reverse}, expected=422, code='TIME_RANGE_INVALID')",
+        "h.request('validateContractPayload', ids=h.ids(f), body={'category': 2, 'task_id': t['id'], 'payload': {'expected_version': t['version'], 'action': 1}}, expected=200)",
+        "h.request('validateContractPayload', ids=h.ids(f), body={'category': 3, 'task_id': t['id'], 'payload': h.assessment_body(t)}, expected=200)",
+        "h.request('createTask', ids=h.ids(f), body=body, expected=422, code='PARAMETER_INVALID')",
+        "h.request('validateContractPayload', ids=h.ids(f), body={'category': 1, 'payload': payload}, expected=422, code='CONTRACT_INVALID')",
+        "h.request('validateContractPayload', ids=h.ids(f), body={'category': 1, 'payload': payload}, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F04-blocked-provenance-four-return-states",
+      "entry": "882_http.py::run::blocked",
+      "source_line": 104,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(t['state'] == 3 and t['blocked_from_state'] == target, 'Block must retain actual prior state')",
+        "C(t['version'] == old['version'] + 1, 'Block increments task version exactly once')",
+        "C(all((t[x] == old[x] for x in ('schedule_version', 'delivery_cycle', 'review_cycle'))), 'Block preserves independent counters')",
+        "h.unchanged(f, t)",
+        "C(t['state'] == target and t['blocked_from_state'] is None and (t['block_reason'] is None), 'Unblock returns only to server-recorded prior state and clears active blocker')"
+      ],
+      "http_probes": [
+        "h.request('transitionTask', actor=actor, ids=h.ids(f, t), body=bad, expected=422, code='PARAMETER_INVALID')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F05-role-ownership-illegal-state-and-rejection-audit",
+      "entry": "882_http.py::run::roles",
+      "source_line": 125,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.audit(v, 2, 'STATE_CONFLICT')",
+        "h.unchanged(f, t)",
+        "h.audit(v, 2, 'STATE_CONFLICT')",
+        "h.unchanged(f, t)",
+        "h.unchanged(f, t)",
+        "h.unchanged(f, t)",
+        "h.audit(v, 2, 'ACTION_FORBIDDEN')",
+        "h.unchanged(f, t)"
+      ],
+      "http_probes": [
+        "h.request('transitionTask', actor='a', ids=h.ids(f, t), body=bad, expected=409, code='STATE_CONFLICT')",
+        "h.request('transitionTask', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 7, 'assessment_id': 4294967295, 'assessment_version': 1, 'release_version': 'synthetic', 'reason': 'Attempt forbidden jump', 'evidence': E}, expected=409, code='STATE_CONFLICT')",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body={'expected_version': t['version'], 'owner_id': h.users['b'], 'reason': 'Forbidden after start', 'evidence': E}, expected=409, code='ASSIGNMENT_EDIT_LOCKED')",
+        "h.request('addTaskDependency', ids=h.ids(f, t), body={'expected_version': t['version'], 'depends_on_task_id': h.task(f)['id'], 'reason': 'Forbidden after start'}, expected=409, code='DEPENDENCY_EDIT_LOCKED')",
+        "h.request('transitionTask', actor=actor, ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 1}, expected=403, code='ACTION_FORBIDDEN')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F06-dependency-self-cycle-start-and-rollback-provenance",
+      "entry": "882_http.py::run::dependencies",
+      "source_line": 149,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, a)",
+        "h.unchanged(f, b)",
+        "h.unchanged(f, a)",
+        "C(len(deps) == 1, 'Exactly one legitimate dependency edge')",
+        "C(not h.data('listTaskDependencies', ids=h.ids(f, a), expected=200)['items'], 'Removal persists')",
+        "h.unchanged(f, down)",
+        "h.unchanged(f, down)"
+      ],
+      "http_probes": [
+        "h.request('addTaskDependency', ids=h.ids(f, a), body={'expected_version': a['version'], 'depends_on_task_id': a['id'], 'reason': 'Self edge'}, expected=422, code='DEPENDENCY_SELF_REFERENCE')",
+        "h.request('addTaskDependency', ids=h.ids(f, a), body={'expected_version': a['version'], 'depends_on_task_id': b['id'], 'reason': 'Synthetic predecessor'}, expected=201)",
+        "h.request('addTaskDependency', ids=h.ids(f, b), body={'expected_version': b['version'], 'depends_on_task_id': a['id'], 'reason': 'Cycle edge'}, expected=409, code='DEPENDENCY_CYCLE')",
+        "h.request('transitionTask', actor='a', ids=h.ids(f, a), body={'expected_version': a['version'], 'action': 1}, expected=409, code='DEPENDENCIES_UNSATISFIED')",
+        "h.request('removeTaskDependency', ids=h.ids(f, a, dependency_id=deps[0]['id']), body={'expected_version': a['version'], 'reason': 'Synthetic predecessor removed'}, expected=200)",
+        "h.request('transitionTask', actor='a', ids=h.ids(f, down), body={'expected_version': down['version'], 'action': 3, 'basis': 'Attempt restart', 'evidence': E}, expected=409, code='DEPENDENCIES_UNSATISFIED')",
+        "h.data('listTaskDependencies', ids=h.ids(f, a), expected=200)",
+        "h.data('listTaskDependencies', ids=h.ids(f, a), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F07-review-evidence-self-review-and-new-review-cycle",
+      "entry": "882_http.py::run::review",
+      "source_line": 180,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)",
+        "h.unchanged(f, t)",
+        "C(d['task']['state'] == 4, 'Publishing review alone cannot change task state')",
+        "C(t['review_cycle'] == 2 and t['approved_review_id'] is None and (t['artifact_revision'] is None), 'Rejected review opens a new review cycle and clears old evidence approvals')",
+        "h.unchanged(f, t)",
+        "C(len(reviews) == 3, 'All immutable review records remain queryable across review cycles')"
+      ],
+      "http_probes": [
+        "h.data('getReviewTemplate', ids=h.ids(f), expected=200)",
+        "h.request('createTaskReview', actor='a', ids=h.ids(f, t), body=h.review_body(t), expected=403, code='ACTION_FORBIDDEN')",
+        "h.request('createTaskReview', actor='r', ids=h.ids(f, t), body=bad, expected=422, code=['PARAMETER_INVALID', 'EVIDENCE_REQUIRED'])",
+        "h.request('createTaskReview', actor='r', ids=h.ids(f, t), body=duplicate, expected=422, code='PARAMETER_INVALID')",
+        "h.data('createTaskReview', actor='r', ids=h.ids(f, t), body=h.review_body(t), expected=201)",
+        "h.data('createTaskReview', actor='r', ids=h.ids(f, t), body=h.review_body(t, verdict=2), expected=201)",
+        "h.request('transitionTask', actor='r', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 5, 'review_id': prior['review']['id'], 'review_version': 1}, expected=409, code='REVIEW_BASELINE_MISMATCH')",
+        "h.data('listTaskReviews', ids=h.ids(f, t), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F08-release-assessment-approval-replan-invalidation-and-seven-states",
+      "entry": "882_http.py::run::release",
+      "source_line": 212,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)",
+        "h.unchanged(f, t)",
+        "C(t['state'] == 5 and t['approved_review_id'] == review_id and (t['approved_assessment_id'] is None), 'Replan preserves code review and ready state while invalidating release approval')",
+        "C(a2['rollback_plan_version'] == a['rollback_plan_version'] + 1, 'Rollback plan versions remain monotonic')",
+        "C(t['state'] == 6, 'Approved delivery is state 6')",
+        "C(t['state'] == 7, 'Rollback retains task in state 7')",
+        "C(t['state'] == 2 and t['delivery_cycle'] == old['delivery_cycle'] + 1 and (t['schedule_version'] == old['schedule_version'] + 1) and (t['review_cycle'] == 1), 'Rework starts new delivery and schedule cycles with review cycle reset')",
+        "C(t['approved_review_id'] is None and t['approved_assessment_id'] is None, 'Rework clears prior approvals')",
+        "C({d['type'] for d in decisions} == {1, 2, 3}, 'Delivery rollback and rework decisions retained')",
+        "C(all((d['decided_by'] == h.users['m'] for d in decisions)), 'Actual synthetic manager ID supplies decision provenance')",
+        "C(len(changes) == 2, 'Replan and rework each have full persistent schedule diff')",
+        "C(all((r['to_version'] == r['from_version'] + 1 and r['before_plan'] != r['after_plan'] for r in changes)), 'Schedule differences carry distinct before/after snapshots and consecutive schedule versions')"
+      ],
+      "http_probes": [
+        "h.data('createReleaseAssessment', ids=h.ids(f, t), body=h.assessment_body(t), expected=201)",
+        "h.request('transitionTask', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 7, 'assessment_id': a['id'], 'assessment_version': a['version'], 'release_version': 'synthetic', 'reason': 'Unreviewed plan must not release', 'evidence': E}, expected=409, code='RELEASE_APPROVAL_REQUIRED')",
+        "h.request('reviewReleaseAssessment', ids=h.ids(f, t, assessment_id=a['id']), body=body, expected=403, code='ACTION_FORBIDDEN')",
+        "h.data('reviewReleaseAssessment', actor='r', ids=h.ids(f, t, assessment_id=a['id']), body=body, expected=200)",
+        "h.data('changeTaskPlan', ids=h.ids(f, t), body={'expected_version': t['version'], 'plan': P(end=86400 * 7), 'reason': 'Synthetic later plan', 'evidence': E}, expected=200)",
+        "h.request('transitionTask', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 7, 'assessment_id': a['id'], 'assessment_version': a['version'], 'release_version': 'synthetic', 'reason': 'Old schedule approval', 'evidence': E}, expected=409, code='ASSESSMENT_BASELINE_MISMATCH')",
+        "h.data('listReleaseAssessments', ids=h.ids(f, t), expected=200)",
+        "h.data('listProjectAuditEvents', ids=h.ids(f), expected=200)",
+        "h.data('listTaskDecisions', ids=h.ids(f, t), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F09-idempotency-snapshot-path-scope-and-persistent-provenance",
+      "entry": "882_http.py::run::replay",
+      "source_line": 261,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(replay['data'] == first['data'] and replay['meta']['replayed'], 'Successful retry returns original business snapshot')",
+        "C(replay['meta']['original_request_id'] == first['meta']['request_id'] and replay['meta']['request_id'] != first['meta']['request_id'], 'Replay current ID differs and original result ID is preserved')",
+        "C(h.get(f, t) == now, 'Historical replay must not overwrite latest authoritative task')",
+        "h.unchanged(f, other)",
+        "C(len(rows) == 1 and rows[0]['status'] == 2 and (rows[0]['response_request_id'] == first['meta']['request_id']), 'Completed idempotency row persists actual response-generating request ID')",
+        "h.audit(first, 1)",
+        "h.audit(rejected, 2, 'STATE_CONFLICT')",
+        "C(again['audit_id'] == rejected['audit_id'], 'Rejected retry returns same durable rejection audit')"
+      ],
+      "http_probes": [
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=body, idem=k, expected=200)",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=copy.deepcopy(body), idem=k, expected=200)",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=changed, idem=k, expected=409, code='IDEMPOTENCY_CONTENT_CONFLICT')",
+        "h.request('changeTaskAssignment', ids=h.ids(f, other), body=body, idem=k, expected=409, code='IDEMPOTENCY_CONTENT_CONFLICT')",
+        "h.request('transitionTask', actor='b', ids=h.ids(f, now), body=b2, idem=k2, expected=409, code='STATE_CONFLICT')",
+        "h.request('transitionTask', actor='b', ids=h.ids(f, now), body=b2, idem=k2, expected=409, code='STATE_CONFLICT')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "C01-same-task-two-keys-one-version-CAS",
+      "entry": "882_http.py::run::cas",
+      "source_line": 294,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(sum(('data' in x for x in values)) == 1, 'Two different keys holding same version permit one success')",
+        "C(loser['code'] == 'VERSION_CONFLICT', 'CAS loser is VERSION_CONFLICT')",
+        "h.audit(winner, 1)",
+        "h.audit(loser, 2, 'VERSION_CONFLICT')",
+        "C(current['version'] == t['version'] + 1 and current['state'] == 2, 'One durable version increment and one state transition')"
+      ],
+      "http_probes": [
+        "h.request('transitionTask', actor='a', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 1}, expected=[200, 409])"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "C02-same-key-concurrent-replay-or-in-progress",
+      "entry": "882_http.py::run::same_key",
+      "source_line": 310,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(any(('data' in x for x in values)), 'At least one original same-key request completes')",
+        "C(all(('data' in x or x['code'] == 'IDEMPOTENCY_IN_PROGRESS' for x in values)), 'Concurrent same-key request never becomes stale-version failure')",
+        "C(final['meta']['replayed'], 'Later same-key request is a replay')",
+        "C(h.get(f, t)['version'] == t['version'] + 1, 'Same-key concurrency mutates task once')",
+        "C(value['data']['task']['version'] == t['version'] + 1, 'Same-key success snapshot version is unique')"
+      ],
+      "http_probes": [
+        "h.request('transitionTask', actor='a', ids=h.ids(f, t), body=body, idem=k, expected=200)",
+        "h.request('transitionTask', actor='a', ids=h.ids(f, t), body=body, idem=k, expected=[200, 409])"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "C03-two-direction-dependency-race",
+      "entry": "882_http.py::run::graph_race",
+      "source_line": 327,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(sum(('data' in x for x in values)) == 1, 'Concurrent opposite edges cannot both commit')",
+        "C(next((x['code'] for x in values if 'code' in x)) == 'DEPENDENCY_CYCLE', 'Graph race loser rejects resulting cycle')",
+        "C(len(edges) == 1, 'Durable graph contains only one edge')"
+      ],
+      "http_probes": [
+        "h.request('addTaskDependency', ids=h.ids(f, x), body={'expected_version': x['version'], 'depends_on_task_id': y['id'], 'reason': 'Concurrent opposite edge'}, expected=[201, 409])"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V01-create-and-transfer-require-current-iteration-capacity",
+      "entry": "882_http.py::run::capacity_assignment",
+      "source_line": 340,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.audit(v, 2, 'CAPACITY_REFERENCE_INVALID')",
+        "h.unchanged(f, t)",
+        "C(v['data']['task']['owner_id'] == h.users['b'], 'Supplementing iteration capacity permits original legal pending transfer')",
+        "C({x['user_id'] for x in f['iteration']['plan']['capacity']} == {h.users['b']}, 'Legal transfer then original-owner capacity removal can both commit')"
+      ],
+      "http_probes": [
+        "h.request('createTask', ids=h.ids(f), body={'title': 'Missing capacity', 'iteration_id': f['i'], 'owner_id': h.users['b'], 'plan': P(), 'dependency_task_ids': []}, expected=422, code='CAPACITY_REFERENCE_INVALID')",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=body, expected=422, code='CAPACITY_REFERENCE_INVALID')",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=body, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V02-state-1-through-5-capacity-protection-atomic-rejection",
+      "entry": "882_http.py::run::capacity_states",
+      "source_line": 356,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(v['code'] == 'CAPACITY_REFERENCE_INVALID', 'Every in-flight state protects owner capacity')",
+        "h.audit(v, 2, 'CAPACITY_REFERENCE_INVALID')",
+        "h.unchanged(f, t)",
+        "C(next((x for x in its if x['id'] == f['i'])) == before, 'Rejected capacity change preserves full iteration/version/plan_version')",
+        "C(h.sql('SELECT id FROM schedule_changes WHERE iteration_id=' + str(f['i'])) == before_diffs, 'Rejected capacity change cannot leave a schedule difference')"
+      ],
+      "http_probes": [
+        "h.data('listIterations', ids=h.ids(f), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V03-delivered-and-rolled-capacity-removal-member-protection-rework",
+      "entry": "882_http.py::run::terminal_capacity",
+      "source_line": 374,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(t['owner_id'] not in {x['user_id'] for x in f['iteration']['plan']['capacity']}, 'Terminal owner may leave iteration capacity')",
+        "h.audit(v, 2, 'CAPACITY_REFERENCE_INVALID')",
+        "h.unchanged(f, t)",
+        "C(h.sql('SELECT id FROM decisions WHERE task_id=' + str(t['id'])) == decisions and h.sql('SELECT id FROM schedule_changes WHERE task_id=' + str(t['id'])) == diffs, 'Rejected rework creates no decision or plan diff')",
+        "C(t['state'] == 2, 'Restored effective capacity permits unchanged valid rework request with a fresh key')"
+      ],
+      "http_probes": [
+        "h.request('changeProjectMember', ids=h.ids(f, user_id=h.users['a']), body={'expected_version': owner['version'], 'roles': [3], 'reason': 'Attempt remove developer role'}, expected=409, code='MEMBER_IN_USE')",
+        "h.request('removeProjectMember', ids=h.ids(f, user_id=h.users['a']), body={'expected_version': owner['version'], 'reason': 'Attempt remove rolled owner'}, expected=409, code='MEMBER_IN_USE')",
+        "h.request('transitionTask', ids=h.ids(f, t), body=body, expected=422, code='CAPACITY_REFERENCE_INVALID')",
+        "h.data('listProjectMembers', ids=h.ids(f), expected=200)",
+        "h.request('transitionTask', ids=h.ids(f, t), body=body, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V04-capacity-race-create-transfer-rework",
+      "entry": "882_http.py::run::capacity_races",
+      "source_line": 403,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(sum(('data' in x for x in values)) == 1, 'Competing activation/removal of same target capacity cannot both commit')",
+        "C(loser['code'] == 'CAPACITY_REFERENCE_INVALID', 'Capacity race rejects against current protected owner/capacity')",
+        "C(all((x['owner_id'] in owner_set for x in tasks if x['state'] in range(1, 6))), 'Committed in-flight tasks all retain effective iteration capacity')"
+      ],
+      "http_probes": [
+        "h.request('transitionTask', ids=h.ids(f, t), body={'expected_version': t['version'], 'action': 9, 'new_plan': P(), 'reason': 'Capacity race', 'evidence': E}, expected=[200, 422])",
+        "h.data('listIterations', ids=h.ids(f), expected=200)",
+        "h.data('listTasks', ids=h.ids(f), expected=200)",
+        "h.request('createTask', ids=h.ids(f), body={'title': 'Capacity race', 'iteration_id': f['i'], 'owner_id': h.users[removed], 'plan': P(), 'dependency_task_ids': []}, expected=[201, 422])",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body={'expected_version': t['version'], 'owner_id': h.users[removed], 'reason': 'Capacity race', 'evidence': E}, expected=[200, 422])"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V05-old-success-replay-after-capacity-removal",
+      "entry": "882_http.py::run::capacity_replay",
+      "source_line": 438,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(replay['data'] == first['data'] and replay['meta']['replayed'], 'Old success is replayed before new capacity guard despite later target capacity removal')",
+        "C(replay['meta']['original_request_id'] == first['meta']['request_id'], 'Capacity-era replay has original result provenance')",
+        "h.unchanged(f, latest)"
+      ],
+      "http_probes": [
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=original, idem=k, expected=200)",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body=original, idem=k, expected=200)",
+        "h.data('changeTaskAssignment', ids=h.ids(f, t2), body={'expected_version': t2['version'], 'owner_id': h.users['a'], 'reason': 'Synthetic transfer back A', 'evidence': E}, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V06-block-origin-and-owner-role-error-precedence",
+      "entry": "882_http.py::run::capacity_block_origin",
+      "source_line": 454,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)",
+        "C(t['state'] == 3 and t['blocked_from_state'] == 1 and (t['owner_id'] == h.users['b']), 'Pending-origin blocked task retains provenance across allowed transfer')",
+        "h.unchanged(f, t)"
+      ],
+      "http_probes": [
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body={'expected_version': t['version'], 'owner_id': h.users['r'], 'reason': 'Reviewer has no developer role or capacity', 'evidence': E}, expected=422, code='OWNER_NOT_PROJECT_DEVELOPER')",
+        "h.request('changeTaskAssignment', ids=h.ids(f, t), body={'expected_version': t['version'], 'owner_id': h.users['a'], 'reason': 'Disallowed development-origin transfer', 'evidence': E}, expected=409, code='ASSIGNMENT_EDIT_LOCKED')",
+        "h.data('changeTaskAssignment', ids=h.ids(f, t), body={'expected_version': t['version'], 'owner_id': h.users['b'], 'reason': 'Allowed pending-origin blocker transfer', 'evidence': E}, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "V07-unrelated-safe-capacity-change-and-create-both-commit",
+      "entry": "882_http.py::run::safe_race",
+      "source_line": 472,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(changed['data']['plan']['capacity'][0]['user_id'] == h.users['a'] and t['owner_id'] == h.users['a'], 'Removing unused B capacity and creating an A task are independently safe and may both commit')"
+      ],
+      "http_probes": [],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F10-pagination-determinism-and-member-last-manager-boundary",
+      "entry": "882_http.py::run::lists",
+      "source_line": 485,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(a['total'] == 4 and (not {x['id'] for x in a['items']} & {x['id'] for x in b['items']}), 'Stable pagination carries total and disjoint page contents')"
+      ],
+      "http_probes": [
+        "h.data('listTasks', ids=h.ids(f), query={'page': 1, 'page_size': 2}, expected=200)",
+        "h.data('listTasks', ids=h.ids(f), query={'page': 2, 'page_size': 2}, expected=200)",
+        "h.data('listProjects', expected=200)",
+        "h.data('getProject', ids=h.ids(f), expected=200)",
+        "h.request('removeProjectMember', ids=h.ids(f, user_id=h.users['n']), body={'expected_version': n['version'], 'reason': 'Remove second manager'}, expected=200)",
+        "h.request('removeProjectMember', ids=h.ids(f, user_id=h.users['m']), body={'expected_version': m['version'], 'reason': 'Attempt last manager removal'}, expected=409, code='LAST_MANAGER')",
+        "h.request('addProjectMember', ids=h.ids(f), body={'username': 'iv3_missing_' + S.key(), 'roles': [2], 'reason': 'Unknown initialized account'}, expected=422, code='ACCOUNT_NOT_INITIALIZED')",
+        "h.data('listProjectMembers', ids=h.ids(f), expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F11-escalation-ledger-dedup-recipients-read-handle",
+      "entry": "882_http.py::run::escalation",
+      "source_line": 503,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(first['data']['created'] and event['level'] == 2, 'First overdue call creates only current highest level')",
+        "C(set(event['recipient_ids']) == {h.users['a'], h.users['m'], h.users['n']}, 'Overdue event snapshots owner and all active managers without duplication')",
+        "C(current['escalation_count'] == t['escalation_count'] + 1 and current['version'] == t['version'] + 1, 'New event increments task version and escalation count atomically once')",
+        "C(not again['data']['created'] and again['data']['event']['id'] == event['id'], 'Same schedule/level with fresh key returns original business event')",
+        "h.unchanged(f, current)",
+        "C(len(rows) == 1, 'Exactly one durable escalation ledger')",
+        "C({x['recipient_id'] for x in ns} == set(event['recipient_ids']), 'Durable notices reach full recipient snapshot')",
+        "C(read['read_at'] is not None and read['handled_at'] is None, 'Read is distinct from handling')",
+        "C(handled['handled_at'] is not None, 'Handling records separate completion')",
+        "h.unchanged(f, current)",
+        "C(len(history) == 1 and history[0]['handled_count'] == 1, 'Escalation history reflects distinct handled recipient count')"
+      ],
+      "http_probes": [
+        "h.data('getEscalationRules', ids=h.ids(f), expected=200)",
+        "h.data('listMyNotifications', actor='a', query={'project_id': f['p']}, expected=200)",
+        "h.request('markNotificationRead', actor='b', ids=h.ids(f, notification_id=n['id']), body={'expected_version': n['version']}, expected=403, code='ACTION_FORBIDDEN')",
+        "h.data('markNotificationRead', actor='a', ids=h.ids(f, notification_id=n['id']), body={'expected_version': n['version']}, expected=200)",
+        "h.data('handleNotification', actor='a', ids=h.ids(f, notification_id=n['id']), body={'expected_version': read['version'], 'note': 'Synthetic disposition', 'evidence': E}, expected=200)",
+        "h.request('createEscalation', actor=s, ids=h.ids(f, t), expected=202, body={'expected_version': t['version'], 'schedule_version': t['schedule_version'], 'rule_version': version, 'scan_run_id': str(uuid.uuid4()), **extra})",
+        "h.data('listEscalations', ids=h.ids(f), query={'task_id': t['id']}, expected=200)"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F12-all-body-operations-malformed-json-and-payload-limit",
+      "entry": "882_http.py::run::general_body_errors",
+      "source_line": 547,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)"
+      ],
+      "http_probes": [
+        "h.request(op_id, actor=actor, ids=ids, raw=b'{\"incomplete\":', expected=400, code='INVALID_JSON', auth=op_id != 'login')",
+        "h.request(op_id, actor=actor, ids=ids, raw=b'{' + b' ' * (1024 * 1024 + 1), expected=413, code='PAYLOAD_TOO_LARGE', auth=op_id != 'login')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F13-paginated-operations-parameter-boundaries",
+      "entry": "882_http.py::run::pagination_errors",
+      "source_line": 561,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [],
+      "http_probes": [
+        "h.request(op_id, ids=ids, query={'page_size': 101}, expected=422, code='PARAMETER_INVALID')",
+        "h.request(op_id, ids=ids, query={'page': 0}, expected=422, code='PARAMETER_INVALID')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F14-frozen-storage-types-password-and-token-observation",
+      "entry": "882_http.py::run::storage",
+      "source_line": 572,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "C(sum((len(v) for v in expected.values())) == 226 and len(expected) == 18, 'Frozen storage set is 18 tables / 226 columns')",
+        "C(all((r['password_hash'].startswith('$argon2id$') for r in hashes)), 'Initialized accounts contain Argon2id encodings only')",
+        "C(all((S.hashlib.sha256(v.encode()).hexdigest() in stored for k, v in h.tokens.items() if k in h.users)), 'Human tokens are durably stored as SHA256 digest rather than reversible bearer text')",
+        "C(r is not None, 'Frozen table/column exists: ' + table + '.' + col['name'])",
+        "C(r['column_type'].lower() == col['type'], 'Frozen minimal SQL type matches: ' + table + '.' + col['name'])",
+        "C(r['is_nullable'] == col['nullable'], 'Frozen nullability matches: ' + table + '.' + col['name'])",
+        "C(r['column_key'] == 'PRI' and 'auto_increment' in r['extra'], 'Every frozen table has unified unsigned auto-increment primary key')"
+      ],
+      "http_probes": [],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F15-short-service-session-expiry",
+      "entry": "882_http.py::run::service_expiry",
+      "source_line": 597,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, t)"
+      ],
+      "http_probes": [
+        "h.request('createEscalation', actor=svc, ids=h.ids(f, t), body={'expected_version': t['version'], 'schedule_version': t['schedule_version'], 'rule_version': 1, 'scan_run_id': str(uuid.uuid4())}, expected=401, code='TOKEN_EXPIRED')"
+      ],
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "F16-escalation-windows-terminal-and-version-guards",
+      "entry": "882_http.py::run::escalation_windows",
+      "source_line": 609,
+      "basis": [
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json",
+        "specs/database/persistence-contract.md"
+      ],
+      "assertions": [
+        "h.unchanged(f, terminal)",
+        "C(d['created'] and d['event']['level'] == level, 'Current highest eligible window is selected without catch-up event flood')",
+        "C(set(d['event']['recipient_ids']) == expected_people, 'Window-specific owner/manager recipient snapshot')",
+        "C(len(rows) == 1 and rows[0]['level'] == level, 'First severe detection does not backfill lower upgrade levels')",
+        "h.unchanged(f, t)",
+        "h.unchanged(f, latest)"
+      ],
+      "http_probes": [
+        "h.request('createEscalation', actor=svc, ids=h.ids(f, terminal), body={'expected_version': terminal['version'], 'schedule_version': terminal['schedule_version'], 'rule_version': 1, 'scan_run_id': str(uuid.uuid4())}, expected=409, code='NOT_ELIGIBLE_FOR_ESCALATION')",
+        "h.data('createEscalation', actor=svc, ids=h.ids(f, t), expected=202, body={'expected_version': t['version'], 'schedule_version': t['schedule_version'], 'rule_version': 1, 'scan_run_id': str(uuid.uuid4())})",
+        "h.request('createEscalation', actor=svc, ids=h.ids(f, t), body={'expected_version': t['version'], 'schedule_version': t['schedule_version'], 'rule_version': 1, 'scan_run_id': str(uuid.uuid4())}, expected=409, code='NOT_ELIGIBLE_FOR_ESCALATION')",
+        "h.request('createEscalation', actor=svc, ids=h.ids(f, t), body=b, expected=409, code=code)"
+      ],
+      "status_at_freeze": "not_executed"
+    }
+  ],
+  "browser_cases": [
+    {
+      "id": "U01-login-logout-session-lifecycle",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "U02-project-switch-and-outsider-isolation",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "U03-block-and-unblock-visible-business-provenance",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "U04-capacity-removal-error-and-unchanged-plan",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "U05-history-current-authoritative-version-and-timezone",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "U06-accessible-keyboard-and-fresh-context-boundary",
+      "entry": "880_browser.py",
+      "status_at_freeze": "not_executed"
+    }
+  ],
+  "operational_cases": [
+    {
+      "id": "O01-committed-state-and-audit-survive-api-restart",
+      "entry": "875_faults.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "O02-mq-outage-fallback-recovery-and-late-duplicate",
+      "entry": "875_faults.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "O03-real-mq-duplicate-consumption",
+      "entry": "875_faults.py",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "O04-twenty-overdue-tasks-and-scheduler-restart",
+      "entry": "875_faults.py",
+      "status_at_freeze": "not_executed"
+    }
+  ],
+  "cutpoint_capability_blockers": [
+    {
+      "id": "O05-before-commit-rollback-cutpoint",
+      "need": "Deterministic pre-COMMIT pause/abort barrier; whole DB stop does not establish the cut"
+    },
+    {
+      "id": "O06-commit-ack-loss-uncertain-recovery",
+      "need": "Selective COMMIT acknowledgement loss after independently observed commit"
+    },
+    {
+      "id": "O07-publisher-confirm-ack-loss",
+      "need": "Known broker acceptance plus selective publisher confirm ACK loss"
+    },
+    {
+      "id": "O08-consumer-db-commit-before-basic-ack",
+      "need": "Deterministic consumer durable notification commit barrier before basic_ack"
+    },
+    {
+      "id": "O09-idempotency-owner-lease-recovery",
+      "need": "Controlled owner transaction/lease barrier and owner-token recovery timeline"
+    }
+  ],
+  "functional_blockers": [
+    {
+      "id": "B-SPEC-01-exact-empty-evidence-error-subclass",
+      "reason": "Schema minItems and EVIDENCE_REQUIRED descriptions overlap; must reject 422 with no mutation, exact subclass requires neutral clarification"
+    },
+    {
+      "id": "B-SEC-01-raw-password-hash-only-persistence-entry",
+      "reason": "No public hash-only persistence write capability; expected rejection and sanitized audit cannot be inferred from SELECT"
+    },
+    {
+      "id": "B-SEC-02-cli-global-session-revocation",
+      "reason": "Neutral control does not expose revoke-sessions; logout and service TTL are tested separately"
+    }
+  ],
+  "formal_performance": [
+    {
+      "id": "P-transition",
+      "entry": "879_formal_transition.py",
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "active_virtual_users": 400,
+      "p95_ms_max": 270,
+      "target_completed_per_minute_min": 1000,
+      "failures_max": 0,
+      "dataset": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "expectation": "Actual narrowed response Schema, fresh effective mutations or validations; queries, replays and expected rejection counted separately",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "P-contract",
+      "entry": "878_formal_contract.py",
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "active_virtual_users": 400,
+      "p95_ms_max": 270,
+      "target_completed_per_minute_min": 1000,
+      "failures_max": 0,
+      "dataset": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "expectation": "Actual narrowed response Schema, fresh effective mutations or validations; queries, replays and expected rejection counted separately",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "id": "P-escalation",
+      "entry": "877_formal_escalation.py",
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "active_virtual_users": 400,
+      "p95_ms_max": 270,
+      "target_completed_per_minute_min": 1000,
+      "failures_max": 0,
+      "dataset": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "expectation": "Actual narrowed response Schema, fresh effective mutations or validations; queries, replays and expected rejection counted separately",
+      "status_at_freeze": "not_executed"
+    }
+  ],
+  "later_whitebox_scope": [
+    "Parameterized SQL/state-machine/facade/dependency injection paths",
+    ">=80% coverage with explicit production denominator and real whole-suite execution",
+    "Static/contract/coverage and actual PR gate failure behavior bound to exact SHA",
+    "Rule/template change <=1 config+1 module and <=1 person-day, with actual diff and time evidence"
+  ],
+  "later_deliverable_scope": [
+    "3500-5100 application lines by approved cloc scope and exact submitted SHA",
+    "Required requirement/design/contract/DDL/eight-section-ten-item review and pseudocode/complexity artifacts",
+    "Actual prompt evolution>=6, actual human changes>=12, actual hallucinations>=3, context-code mapping>=5; no fabricated student work",
+    "Complete required submission artifacts and authentic personal research/identity material"
+  ],
+  "manual_browser_limits": [
+    "Exact Beijing timestamp rendering comparison; no frozen separator/date format",
+    "Contrast/screen-reader completeness has no frozen quantitative criterion; only bounded keyboard observations"
+  ],
+  "conclusion_rule": "Whole-case, reached subassertions, not-executed groups, capability blockers and confirmed product defects are separate. After a failure, unreached statements are not passes. A driver/environment exception is not automatically a product defect."
+}

@@ -1,0 +1,1168 @@
+{
+  "users": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "username",
+      "type": "varchar(64)",
+      "nullable": "NO"
+    },
+    {
+      "name": "display_name",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "name": "password_hash",
+      "type": "varchar(255)",
+      "nullable": "NO"
+    },
+    {
+      "name": "active",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "service_accounts": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "name",
+      "type": "varchar(64)",
+      "nullable": "NO"
+    },
+    {
+      "name": "active",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "auth_sessions": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "actor_kind",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "user_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "service_account_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "token_hash",
+      "type": "binary(32)",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_ids",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "scopes",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "expires_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "revoked_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "projects": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "name",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "name": "description",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_by",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "project_members": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "user_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "roles_mask",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "active",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "iterations": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "name",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "name": "planned_start",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "planned_end",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "capacity",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "buffer_quarters",
+      "type": "smallint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delay_contingency",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "plan_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "tasks": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "iteration_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "title",
+      "type": "varchar(200)",
+      "nullable": "NO"
+    },
+    {
+      "name": "description",
+      "type": "varchar(4000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "owner_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "state",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "schedule_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delivery_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "review_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "planned_start",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "planned_end",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "estimated_quarters",
+      "type": "mediumint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "buffer_quarters",
+      "type": "smallint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delay_contingency",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "blocked_from_state",
+      "type": "tinyint unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "block_reason",
+      "type": "varchar(2000)",
+      "nullable": "YES"
+    },
+    {
+      "name": "responsibility_stage",
+      "type": "tinyint unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "artifact_revision",
+      "type": "char(40)",
+      "nullable": "YES"
+    },
+    {
+      "name": "latest_review_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "approved_review_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "approved_assessment_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "approved_assessment_version",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "escalation_count",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "task_dependencies": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "depends_on_task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_by",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delivery_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "review_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "template_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "template_hash",
+      "type": "binary(32)",
+      "nullable": "NO"
+    },
+    {
+      "name": "artifact_revision",
+      "type": "char(40)",
+      "nullable": "NO"
+    },
+    {
+      "name": "sections",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "checklist",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "verdict",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "reviewer_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "release_assessments": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "schedule_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delivery_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "status",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "risks",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "rollback_plan_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "rollback_plan",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_by",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "reviewed_by",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "reviewed_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "review_reason",
+      "type": "varchar(2000)",
+      "nullable": "YES"
+    },
+    {
+      "name": "review_evidence",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "decisions": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "type",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "decided_by",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "delivery_cycle",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "reason",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "impact",
+      "type": "varchar(3000)",
+      "nullable": "YES"
+    },
+    {
+      "name": "target_version",
+      "type": "varchar(128)",
+      "nullable": "YES"
+    },
+    {
+      "name": "assessment_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "rollback_plan_version",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "evidence",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "decided_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "schedule_changes": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "iteration_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "from_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "to_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "before_plan",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "after_plan",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "reason",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "evidence",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "changed_by",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "changed_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "audit_events": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "attempted_project_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "attempted_task_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "actor_kind",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "actor_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "request_id",
+      "type": "varchar(128)",
+      "nullable": "NO"
+    },
+    {
+      "name": "operation_id",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "name": "outcome",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "reason_code",
+      "type": "tinyint unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "expected_version",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "observed_version",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "before_values",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "after_values",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "evidence",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "idempotency_requests": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "actor_kind",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "actor_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "operation_id",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "name": "idempotency_key",
+      "type": "varchar(128)",
+      "nullable": "NO"
+    },
+    {
+      "name": "request_hash",
+      "type": "binary(32)",
+      "nullable": "NO"
+    },
+    {
+      "name": "status",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "owner_token",
+      "type": "binary(16)",
+      "nullable": "NO"
+    },
+    {
+      "name": "lease_until",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "response_status",
+      "type": "smallint unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "response_body",
+      "type": "json",
+      "nullable": "YES"
+    },
+    {
+      "name": "response_request_id",
+      "type": "varchar(128)",
+      "nullable": "YES"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "completed_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    }
+  ],
+  "outbox_events": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "event_type",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "schema_version",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "YES"
+    },
+    {
+      "name": "payload",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "recipients",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "status",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "attempts",
+      "type": "smallint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "next_attempt_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "lease_token",
+      "type": "binary(16)",
+      "nullable": "YES"
+    },
+    {
+      "name": "lease_until",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "confirmed_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "fallback_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "last_error_code",
+      "type": "varchar(64)",
+      "nullable": "YES"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "escalation_events": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "schedule_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "level",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_snapshot",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_hash",
+      "type": "binary(32)",
+      "nullable": "NO"
+    },
+    {
+      "name": "scan_run_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "planned_end",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "observed_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "event_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    }
+  ],
+  "notifications": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "project_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "event_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "recipient_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "level",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "title",
+      "type": "varchar(200)",
+      "nullable": "NO"
+    },
+    {
+      "name": "message",
+      "type": "varchar(2000)",
+      "nullable": "NO"
+    },
+    {
+      "name": "fallback",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "read_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "handled_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "handling_note",
+      "type": "varchar(2000)",
+      "nullable": "YES"
+    },
+    {
+      "name": "handling_evidence",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    }
+  ],
+  "scan_runs": [
+    {
+      "name": "id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "run_key",
+      "type": "binary(16)",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_version",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_snapshot",
+      "type": "json",
+      "nullable": "NO"
+    },
+    {
+      "name": "rule_hash",
+      "type": "binary(32)",
+      "nullable": "NO"
+    },
+    {
+      "name": "cutoff_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "status",
+      "type": "tinyint unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "last_task_id",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "scanned_count",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "created_count",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "duplicate_count",
+      "type": "int unsigned",
+      "nullable": "NO"
+    },
+    {
+      "name": "started_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "heartbeat_at",
+      "type": "datetime(6)",
+      "nullable": "NO"
+    },
+    {
+      "name": "finished_at",
+      "type": "datetime(6)",
+      "nullable": "YES"
+    },
+    {
+      "name": "error_code",
+      "type": "varchar(64)",
+      "nullable": "YES"
+    }
+  ]
+}

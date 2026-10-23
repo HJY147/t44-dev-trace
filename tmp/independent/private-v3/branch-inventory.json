@@ -1,0 +1,4964 @@
+{
+  "branches": [
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 401,
+      "code": "INVALID_CREDENTIALS",
+      "condition": "登录账号未匹配或口令校验失败，统一消息不枚举账号。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 429,
+      "code": "RATE_LIMITED",
+      "condition": "仅登录入口的真实进程内IP+账号token bucket达到10次/60秒，返回Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 422,
+      "code": "ACCOUNT_NOT_INITIALIZED",
+      "condition": "指定待加入username或负责人账号尚未由初始化入口建立。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 409,
+      "code": "LAST_MANAGER",
+      "condition": "成员变更会移除本项目最后一个有效manager。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 409,
+      "code": "MEMBER_IN_USE",
+      "condition": "成员移除/降角色会使其活动负责任务失去有效developer负责人。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 409,
+      "code": "LAST_MANAGER",
+      "condition": "成员变更会移除本项目最后一个有效manager。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 409,
+      "code": "MEMBER_IN_USE",
+      "condition": "成员移除/降角色会使其活动负责任务失去有效developer负责人。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 422,
+      "code": "CAPACITY_REFERENCE_INVALID",
+      "condition": "迭代产能/任务人力引用不是本项目有效成员或不匹配其迭代容量记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 422,
+      "code": "CAPACITY_REFERENCE_INVALID",
+      "condition": "capacity含重复/无效developer引用，或未包含本迭代全部状态1–5任务负责人；即使新旧capacity名单相同也核对全量任务。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 409,
+      "code": "DEPENDENCY_CYCLE",
+      "condition": "项目锁保护下将新增依赖加入图后形成有向环。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "OWNER_NOT_PROJECT_DEVELOPER",
+      "condition": "指定owner_id存在但不是本项目有效developer成员。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "ACCOUNT_NOT_INITIALIZED",
+      "condition": "指定待加入username或负责人账号尚未由初始化入口建立。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "DEPENDENCY_SELF_REFERENCE",
+      "condition": "所建依赖的task_id与depends_on_task_id相同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "CAPACITY_REFERENCE_INVALID",
+      "condition": "任务负责人未登记在所选迭代capacity；无项目开发角色仍使用OWNER_NOT_PROJECT_DEVELOPER。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 409,
+      "code": "ASSIGNMENT_EDIT_LOCKED",
+      "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改负责人。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 422,
+      "code": "OWNER_NOT_PROJECT_DEVELOPER",
+      "condition": "指定owner_id存在但不是本项目有效developer成员。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "http_status": 422,
+      "code": "CAPACITY_REFERENCE_INVALID",
+      "condition": "接手人已通过有效developer检查，但未登记在任务当前迭代capacity。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 409,
+      "code": "DEPENDENCY_CYCLE",
+      "condition": "项目锁保护下将新增依赖加入图后形成有向环。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 409,
+      "code": "DEPENDENCY_EDIT_LOCKED",
+      "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改依赖。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 422,
+      "code": "DEPENDENCY_SELF_REFERENCE",
+      "condition": "所建依赖的task_id与depends_on_task_id相同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 409,
+      "code": "DEPENDENCY_EDIT_LOCKED",
+      "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改依赖。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "DEPENDENCIES_UNSATISFIED",
+      "condition": "开始/解除阻塞回开发/返工守卫发现至少一个当前前驱不是已交付。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "REVIEW_NOT_PASSED",
+      "condition": "通过评审动作引用的当前评审verdict非通过，或必需检查未全部通过。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "REVIEW_BASELINE_MISMATCH",
+      "condition": "评审不是该任务当前delivery_cycle/review_cycle、最新评审或审核对象SHA。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "RELEASE_APPROVAL_REQUIRED",
+      "condition": "经理交付时缺本轮有效代码评审或上线风险/回滚预案批准。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "ASSESSMENT_BASELINE_MISMATCH",
+      "condition": "引用评估的版本、当前schedule_version或delivery_cycle与任务不一致。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 422,
+      "code": "EVIDENCE_REQUIRED",
+      "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "仅rework动作的新计划先通过共享UtcTime域后，planned_end仍不晚于planned_start；其他动作没有该分支。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "http_status": 422,
+      "code": "CAPACITY_REFERENCE_INVALID",
+      "condition": "仅action9返工：当前负责人不再是本项目有效developer，或未登记在当前迭代capacity；原权限/版本/状态/证据/依赖守卫先保持，拒绝不激活任务。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 409,
+      "code": "REVIEW_BASELINE_MISMATCH",
+      "condition": "评审不是该任务当前delivery_cycle/review_cycle、最新评审或审核对象SHA。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 422,
+      "code": "EVIDENCE_REQUIRED",
+      "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 422,
+      "code": "EVIDENCE_REQUIRED",
+      "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 409,
+      "code": "ASSESSMENT_BASELINE_MISMATCH",
+      "condition": "引用评估的版本、当前schedule_version或delivery_cycle与任务不一致。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 409,
+      "code": "STATE_CONFLICT",
+      "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 422,
+      "code": "EVIDENCE_REQUIRED",
+      "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 422,
+      "code": "CONTRACT_INVALID",
+      "condition": "只读契约校验候选payload不满足所选主接口结构或跨字段规则，不执行业务变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 422,
+      "code": "TIME_RANGE_INVALID",
+      "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 403,
+      "code": "SERVICE_SCOPE_REQUIRED",
+      "condition": "内部升级入口收到非服务主体，或服务无escalation:write及目标项目授权。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "SCHEDULE_VERSION_CONFLICT",
+      "condition": "扫描请求schedule_version不是锁定任务的当前排期版本。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "RULE_VERSION_CONFLICT",
+      "condition": "扫描请求rule_version不是当前生效的已采用规则版本。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "NOT_ELIGIBLE_FOR_ESCALATION",
+      "condition": "服务端当前UTC按有效规则没有匹配升级级别，或任务已交付/已回滚。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "仅当可选project_id过滤已提供且该项目不存在；无过滤且无通知时返回200空列表。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 400,
+      "code": "INVALID_JSON",
+      "condition": "本入口的application/json请求体不是语法有效JSON。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 409,
+      "code": "VERSION_CONFLICT",
+      "condition": "本次非重放写expected_version与被锁定资源当前版本不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+      "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 409,
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 413,
+      "code": "PAYLOAD_TOO_LARGE",
+      "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 422,
+      "code": "EVIDENCE_REQUIRED",
+      "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 503,
+      "code": "TRANSACTION_UNCERTAIN",
+      "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 400,
+      "code": "SECURITY_INPUT_REJECTED",
+      "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 401,
+      "code": "AUTH_REQUIRED",
+      "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "condition": "会话已认证且expires_at不晚于服务端当前UTC。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 401,
+      "code": "TOKEN_REVOKED",
+      "condition": "会话已被logout或CLI撤销，或其主体已失效。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 403,
+      "code": "PROJECT_ACCESS_DENIED",
+      "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 403,
+      "code": "ACTION_FORBIDDEN",
+      "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 404,
+      "code": "RESOURCE_NOT_FOUND",
+      "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 422,
+      "code": "PARAMETER_INVALID",
+      "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 503,
+      "code": "AUDIT_UNAVAILABLE",
+      "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 503,
+      "code": "DEPENDENCY_UNAVAILABLE",
+      "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。",
+      "status_at_freeze": "not_executed"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "http_status": 500,
+      "code": "INTERNAL_ERROR",
+      "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。",
+      "status_at_freeze": "not_executed"
+    }
+  ],
+  "blanket_error_coverage_claim": false
+}
