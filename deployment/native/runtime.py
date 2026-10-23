@@ -100,9 +100,13 @@ def process_identity(pid):
     fields = result.stdout.strip().split(maxsplit=6)
     if len(fields) != 7:
         raise ValueError("PROCESS_IDENTITY_UNAVAILABLE")
+    try:
+        group = os.getpgid(pid)
+    except ProcessLookupError:
+        return None
     return {
         "pid": pid, "uid": int(fields[0]), "started": " ".join(fields[1:6]),
-        "pgid": os.getpgid(pid), "command_sha256": digest(fields[6].encode()),
+        "pgid": group, "command_sha256": digest(fields[6].encode()),
         "command": fields[6],
     }
 
@@ -393,17 +397,17 @@ class NativeBroker:
 
     def inspect(self):
         stdout, auth = self.execute("rabbitmqctl", ["eval",
-            f"{{ok,B}}=file:read_file({erlang_path(self.cookie)}),"
-            "erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1)."])
+            (f"{{ok,B}}=file:read_file({erlang_path(self.cookie)}),"
+             "erlang:get_cookie()=:=binary_to_atom(string:trim(B),latin1).")])
         if stdout.strip() != "true":
             raise RuntimeError("SERVER_FILE_COOKIE_MISMATCH")
         # Exercise the real installed password hash, without a password in argv/output.
         password = self.run / "secrets/amqp.password"
         text, password_receipt = self.execute("rabbitmqctl", ["eval",
-            f"{{ok,B}}=file:read_file({erlang_path(password)}),"
+            (f"{{ok,B}}=file:read_file({erlang_path(password)}),"
             f"case(rabbit_auth_backend_internal:user_login_authentication("
             f'<<"{self.manifest["username"]}">>,[{{password,string:trim(B)}}]))of'
-            "{ok,_}->true;_->false end."])
+             "{ok,_}->true;_->false end.")])
         if text.strip() != "true":
             raise RuntimeError("AMQP_PASSWORD_AUTHENTICATION_FAILED")
         values = {}
@@ -470,7 +474,7 @@ class NativeBroker:
                 if not marker.exists():
                     raise RuntimeError("SERVER_COOKIE_INIT_MARKER_ABSENT")
                 inspection = self.inspect()
-            except Exception as error:
+            except Exception as error:  # noqa: BLE001 - preserve exact inspection failure without secret details
                 code = str(error) if re.fullmatch(r"[A-Z_]+", str(error)) else type(error).__name__
                 return self.receipt("start", success=False, error="BROKER_INSPECTION_FAILED",
                                     inspection_error=code, readiness_attempts=len(failures))
@@ -502,7 +506,9 @@ class NativeBroker:
             _record, actual = self.owner("rabbit")
             if actual is not None and not cleanup_failed_start:
                 try:
-                    _text, receipt = self.execute("rabbitmqctl", ["shutdown"], timeout=25)
+                    # Official --no-wait stops Rabbit AND its Erlang VM. The
+                    # wrapper independently waits on its saved exact PID below.
+                    _text, receipt = self.execute("rabbitmqctl", ["shutdown", "--no-wait"], timeout=25)
                     steps.append({"action": "rabbitmqctl_shutdown", "success": True,
                                   "receipt_id": receipt["receipt_id"]})
                 except RuntimeError:
@@ -566,7 +572,7 @@ def main():
             result = broker.stop(cleanup_failed_start=args.command == "cleanup-failed-start")
         print(json.dumps(result, ensure_ascii=False))
         return 0 if result["success"] else 1
-    except Exception:
+    except Exception:  # noqa: BLE001 - never emit raw driver exception URLs or private values
         # Driver/driver state and crash output stay private; don't emit raw exceptions.
         result = {"success": False, "action": args.command, "error": "NATIVE_RUNTIME_FAILED"}
         if broker is not None:

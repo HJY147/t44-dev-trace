@@ -165,3 +165,31 @@
 - 953共75合成边界通过、Ruff通过，原件agents/deployment/runtime-metadata-validation；首lint失败保留。没有Docker/GHA/正式压测或实际资源观测结论；原七命令及cf685d7修复保留，不读取独立资料。协议deployment/acceptance/README.md新增只读快照段，限定cgroupv2/可见范围/当前Nginx文件等边界。
 
 - 完整实现SHA b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0已推送；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388实际发布并API读回一致，回执另档。中性转交仅运行协议/命令与版本；开发日志/测试原件不供独立岗，实际runner快照待调用方显式取得。
+
+
+### NATIVE-APPLICATION-v1 phase2设计
+
+- 根ec3e6b0准入有限新demo应用生命周期；设计application-design.md/实际prompt已归档。根给修后精确bc5aef9c62393134582affb7a690acb33ac2b833，92文件SHA/44Py20TSVue核对一致，旧42243从未起app。
+- 已显式允许的t44_native_demo私密三JSON均0600，只CRUD用户、不读admin，不DDL/reset/seed；private环境需复制后改PYTHONPATH。原Vite18080 proxy/Node PATH缺失风险已识别，计划owner overlay与bundled Node，不改源/锁。
+- controller/871、依赖安装与API4worker/consumer/60sscanner/UI、轮换/回收尚待实现/真实执行；本设计checkpoint不构成完整环境运行或独立/性能/云通过。
+
+- controller现已实现，871为19项合成守卫通过、Ruff通过；原fixture/静态失败已保留。最终源92文件与私密输入/端口预检通过，拥有权/源/secret/坏输入/真实flock守卫有效；依赖准备和实际应用周期尚未执行，不将编码能力写成运行通过。
+
+- 原checkpoint预检声明写早：真实controller首次计数错含部署/Vite文件而失败，未起服务；已按root业务目录口径修正，所有92文件照常核hash，新增守卫后20项/Ruff/真实预检通过，失败原件另存。
+
+- phase2依赖attempt2锁hash/pipcheck/frozenfrontend/types/build全exit0；run1两真实completed/60.383994s、API4worker/UIproxy/TTL300/flock/Pika局部真，整体exit1/cleanupfalse（DTO解析错误、shutdown CLI超时）；原失败保持。只读16confirmed事件/26通知精确关联，后置全PID/端口gone另列。根准入一次freshcycle以既有eventIDs复核、补轮换与正常清理；当前未开始二轮，不宣称完整通过。
+
+### NATIVE-APPLICATION-v1 phase2实际交付
+
+- 实现0a6da88/SUTbc5a，新run2整体exit0/cycletrue/cleanuptrue；API4worker/consumer/UI5178proxy、新两扫描60.303070s、session4→5双项目TTL300轮换/新tick/锁/全回收及正常全停实际完成。源92SHA不变、新端口无监听、全部旧受保护监听baseline相同。
+- 正常16confirmed事件/26通知发生于run1（当轮整体exit1/cleanupfalse仍保留），二轮既有ID/收件人和manager可读10通知复核，不声称二轮新publish。证据native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871+3受影响873/Ruff/diff通过。不含完整浏览器业务、独立、性能或云结论，当前所有自有服务停机。
+
+- 证据封档e142470；新draft PR34 https://github.com/HJY147/t44-dev-trace/pull/34，Issue7/6375242146与已合并PR31/6375242564实际评论/PR34正文严格回读一致，PR31原历史正文逐字保留。现全停机并交根专项复核，不再运行cycle。
+
+### NATIVE-CAPTURE-TIMEOUT-v1 设计待窄修
+
+- 审核c688发现capture首次超时后child清理exit0会误返回成功，精确5ef/0a6原红与历史run2成功并列保留。先补现有设计，实际prompt另存；仅计划capture超时事实/实际返回码修复及五个合成边界，不启动服务、不读取私密输入，当前尚未修复。
+
+- NATIVE-CAPTURE-TIMEOUT-01已窄修：首超时永久失败、保留actual childrc；清理未确认也留回执。原同例真实红→绿，五项capture合成/Ruff/diff通过，应用除capture AST/原守卫/runtime未变。未读凭据/起服务/跑cycle，历史0a6结果不移植，新代码等待根复审。
+
+- 修复实现b238978（application SHA5ed6844d…），PR34当前代码/正文已更新；Issue7/6375565697、PR34/6375566016及正文精确回读，原公开P2失败保留。现封档待根复审，不声明审核放行或新代码cycle通过。

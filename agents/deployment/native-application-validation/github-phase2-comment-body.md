@@ -1,0 +1,15 @@
+阶段二草稿审阅入口：https://github.com/HJY147/t44-dev-trace/pull/34
+
+新增项目内有限原生应用控制器，将精确源绑定、锁hash依赖准备、API四worker/consumer/60秒scanner/UI的生命周期和凭据轮换集中到可审查入口；只使用根明确的新t44_native_demo与私密CRUD账号，不含迁移、reset、seed或DDL，保留全部失败与拥有权回执。
+
+实际运行实现 `0a6da88c404c04515c3c07039f0e231908fddc0e`、应用SUT `bc5aef9c62393134582affb7a690acb33ac2b833`；证据归档 `e142470`。新run2真实exit0/cycletrue/cleanuptrue：92源文件SHA一致、API4workers/18088loopback、consumer、UI5178 HTTP/proxy、两新completed扫描实际60.303070秒，以及两项目escalation:write/TTL300真实CLI凭据4→5受控轮换、撤销/新tick/共享flock/最终全会话回收。官方shutdown --no-wait真实CLI0，独立Rabbit退出、EPMD空后停止；全部自有应用/workers/broker退出、新端口无监听，受保护旧监听baseline逐项相同。
+
+首轮原exit1/cleanupfalse不改：部署误解析Rabbit实际inet/typed triple JSON、shutdown CLI异常均保留，实际全PID/端口gone另列后置证据。首轮正常16confirmed outbox/26无fallback通知与scan/UTC/各收件人集合精确关联；二轮只复核这些既有eventIDs和manager鉴权可读的10条通知，不声称二轮新publish。原JSON同字节离线红绿、官方固定源、原始gzip/SHA与回执索引均保留。
+
+验证：23项本岗871合成守卫、3项受影响873停机守卫、Ruff及完整phase2基线diff通过；无关phase1守卫未刷次数。依赖锁hash安装/pipcheck/frozen frontend/类型检查/构建实际通过；公开与私密非秘密输出secret literal扫描0，dump不读取/上传。证据入口：`agents/deployment/native-application-validation/README.md`，成功回执为`application-driver-run2.json`与`run2-capability.json`。
+
+范围为本地开发部署与HTTP UI/proxy；未做完整浏览器业务、独立验收、性能、云或生产安全批准，未另查list_bindings表。当前保持全停机，后续环境须根重新绑定。PR31已合并的phase1历史正文保持原样，本阶段另建草稿供根专项审阅；不合main、不改业务/锁/规则/契约，不接触独立私密资料。
+
+Agent-Role: deployment
+Prompt-Ref: ROLE-deployment-NATIVE-APPLICATION-v1
+Refs #7

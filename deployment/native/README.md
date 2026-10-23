@@ -106,3 +106,15 @@ python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" inspec
 python3 deployment/native/runtime.py --project-root "$T44_NATIVE_PROJECT" stop --run-dir "$T44_NATIVE_RUN"
 # 若start失败，显式运行cleanup-failed-start；其回执不改变start的false。
 ```
+
+## Phase2 有限应用周期实际结果
+
+根ec3e6b0及后续精确源准入后，新增`application.py`，接口为`prepare-dependencies`、`prepare`、`run`与`cleanup`，都要求显式项目根；prepare还要求最终source binding/40位SHA/依赖目录。只针对根明确的新库与私密输入，不含migrate/seed/DDL；`run`是有限演示并finally停机，不提供无人值守启动。详细环境、路径与凭据边界见application-design.md。
+
+实际运行实现`0a6da88c404c04515c3c07039f0e231908fddc0e`、应用SUT`bc5aef9c62393134582affb7a690acb33ac2b833`，92绑定文件逐SHA一致；44个backend/t44 Python与20个frontend/src TS/Vue是业务分母，其余部署/构建文件也全部核hash。项目内锁hash依赖安装、pip check、frozen pnpm、类型检查及直接Vite构建实际通过。
+
+首轮整体exit1/cleanupfalse原件保留：两扫描实际60.383994秒、两Pika连接、16confirmed outbox与26正常通知是局部真实结果；部署误解析Rabbit JSON以及shutdown CLI退出异常使整体失败。后置全PID/端口消失不能倒填原回执。修正仅严格解码实际inet/typed triples、消失竞态及官方`shutdown --no-wait`后由wrapper独立等待整个VM退出；历史stage1结果仍绑定其旧精确源。
+
+第二轮新broker/Cookie/user/vhost的app_20261023_212959_fc2dc9真实exit0/cycletrue/cleanuptrue：API4workers/回环18088、consumer、UI5178 HTML与18088代理、两新completed扫描实际60.303070秒、双项目TTL300服务凭据受控轮换后新tick与共享锁均通过。首轮既有16事件/26通知明确只读复核；当前manager鉴权可读对应10条通知，不声称二轮重新publish。所有本轮服务/用户会话已撤销，全部登记应用/workers及Rabbit/EPMD已停，新端口无监听；旧端口/进程监听baseline逐项相同。
+
+证据为agents/deployment/native-application-validation/run1-*、run2-capability.json、application-driver-run2.json；23项871合成守卫与3项受影响873守卫、Ruff通过，原失败全部保留。只验证本地部署与HTTP UI/proxy；没有完整浏览器业务、独立验收、性能或云部署结论。现保持停机，后续环境必须由根重新绑定，不把本demo内部资料直接交独立岗位。

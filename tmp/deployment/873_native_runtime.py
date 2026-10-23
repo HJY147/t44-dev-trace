@@ -167,13 +167,31 @@ class NativeGuards(unittest.TestCase):
         signal_owned.assert_not_called()
         self.assertTrue(any(step["success"] is False for step in receipt["steps"]))
 
+    def test_ps_getpgid_exit_race_is_absent_without_signal(self):
+        result = native.subprocess.CompletedProcess([], 0, str(os.getuid()) + " Fri Oct 23 21:00:00 2026 own-command", "")
+        with patch.object(native.subprocess, "run", return_value=result), \
+                patch.object(native.os, "getpgid", side_effect=ProcessLookupError), \
+                patch.object(native.os, "killpg") as kill:
+            self.assertIsNone(native.process_identity(123))
+            kill.assert_not_called()
+
+    def test_no_wait_shutdown_still_requires_independent_exit(self):
+        broker = self.prepare()
+        with patch.object(broker, "owner", side_effect=[({}, {"pid": 123}), ({}, None)]), \
+                patch.object(broker, "execute", return_value=("", {"receipt_id": "fixture"})) as execute, \
+                patch.object(broker, "wait_stopped", return_value=True), \
+                patch.object(broker, "signal_owned", return_value={"success": True, "needed": False}):
+            receipt = broker.stop()
+        execute.assert_called_once_with("rabbitmqctl", ["shutdown", "--no-wait"], timeout=25)
+        self.assertTrue(receipt["success"])
+        self.assertTrue(any(step["action"] == "rabbit_exit_observed" and step["success"] for step in receipt["steps"]))
+
     def test_non_loopback_listener_rejected(self):
         broker = self.prepare()
         result = native.subprocess.CompletedProcess([], 0, "p123\nn*:25674\n", "")
         with patch.object(broker, "owner", return_value=({}, {"pid": 123})), \
-                patch.object(native.subprocess, "run", return_value=result):
-            with self.assertRaises(ValueError):
-                broker.listeners("rabbit")
+                patch.object(native.subprocess, "run", return_value=result), self.assertRaises(ValueError):
+            broker.listeners("rabbit")
 
     def test_config_has_no_management_and_has_explicit_loopback(self):
         broker = self.prepare()
@@ -187,9 +205,8 @@ class NativeGuards(unittest.TestCase):
         broker = self.prepare()
         with patch.object(native, "assert_ports_free"), \
                 patch.object(broker, "spawn") as spawn, \
-                patch.object(broker, "wait_epmd_ready", side_effect=RuntimeError("not ready")):
-            with self.assertRaises(RuntimeError):
-                broker.start()
+                patch.object(broker, "wait_epmd_ready", side_effect=RuntimeError("not ready")), self.assertRaises(RuntimeError):
+            broker.start()
         self.assertEqual([call.args[0] for call in spawn.call_args_list], ["epmd"])
 
     def test_deterministic_inspection_failure_is_not_retried(self):

@@ -1,177 +1,6 @@
 {
   "role": "deployment",
-  "stage": "runtime-metadata-implementation-complete",
-  "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
-  "artifacts": [
-    "agents/deployment/WORKLOG.md",
-    "reports/modules/deployment.md",
-    "records/handoffs/deployment.json",
-    "agents/deployment/github-stage-comment.md",
-    "agents/deployment/github-interface-question.md",
-    "compose.yaml",
-    ".github/workflows/product.yml",
-    "agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md",
-    "agents/deployment/runtime-backend-comment.md",
-    "agents/deployment/runtime-database-comment.md",
-    "agents/deployment/runtime-frontend-comment.md",
-    "agents/deployment/runtime-interface-comment.md",
-    "agents/deployment/runtime-validation/check-0.log",
-    "agents/deployment/runtime-validation/check-1.log",
-    "agents/deployment/runtime-validation/check-2.log",
-    "agents/deployment/runtime-validation/check-3.log",
-    "agents/deployment/runtime-validation/check-4.log",
-    "agents/deployment/runtime-validation/check-5.log",
-    "agents/deployment/runtime-validation/checks.json",
-    "agents/deployment/runtime-validation/ci/preflight.json",
-    "agents/deployment/runtime-validation/ci/static-0.log",
-    "agents/deployment/runtime-validation/ci/static-1.log",
-    "agents/deployment/runtime-validation/ci/static-2.log",
-    "agents/deployment/runtime-validation/ci/static-3.log",
-    "agents/deployment/runtime-validation/ci/static.json",
-    "agents/deployment/runtime-validation/dependency-sources.json",
-    "deployment/.env.example",
-    "deployment/README.md",
-    "deployment/api.Dockerfile",
-    "deployment/api.Dockerfile.dockerignore",
-    "deployment/nginx/api.conf",
-    "deployment/nginx/nginx.conf",
-    "deployment/ops.py",
-    "deployment/runtime_probe.py",
-    "deployment/vendor/SOURCE.json",
-    "deployment/vendor/compose-spec.LICENSE",
-    "deployment/vendor/compose-spec.json",
-    "deployment/web.Dockerfile",
-    "deployment/web.Dockerfile.dockerignore",
-    "scripts/ci/README.md",
-    "scripts/ci/check_frontend_coverage.py",
-    "scripts/ci/coverage.ini",
-    "scripts/ci/preflight.py",
-    "scripts/ci/requirements.in",
-    "scripts/ci/requirements.lock",
-    "scripts/ci/ruff.toml",
-    "scripts/ci/run_tests.py",
-    "scripts/ci/static.py",
-    "scripts/ci/validate_config.py",
-    "agents/deployment/runtime-pr-body.md",
-    "agents/deployment/runtime-result-comment.md",
-    "agents/deployment/runtime-validation/remote-initial-failure.log",
-    "agents/deployment/runtime-validation/remote-initial.json",
-    "agents/deployment/runtime-validation/remote-initial-failure.log.gz",
-    "agents/deployment/runtime-validation/remote-log-provenance.json",
-    "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
-    "agents/deployment/runtime-handoff-comment.md",
-    "agents/deployment/runtime-pytest-reply.md",
-    "deployment/credential_admin.py",
-    ".github/workflows/docker-integration.yml",
-    "tmp/deployment/997_ops.py",
-    "tmp/ci/996_gates.py",
-    "tmp/deployment/971_credentials.py",
-    "tmp/deployment/972_compose_application.py",
-    "agents/deployment/integration-validation/",
-    "agents/deployment/integration-checkpoint-comment.md",
-    "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
-    "agents/deployment/integration-validation/run-39932416571/",
-    "agents/deployment/integration-validation/run-39932723829/",
-    "agents/deployment/integration-final-comment.md",
-    "deployment/acceptance/",
-    ".github/workflows/acceptance-environment.yml",
-    "tmp/deployment/953_acceptance_environment.py",
-    "agents/deployment/acceptance-environment-validation/",
-    "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
-    "agents/deployment/acceptance-environment-comment.md",
-    "agents/deployment/acceptance-environment-result-comment.md",
-    "agents/deployment/recovery-receipt-validation/",
-    "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
-    "agents/deployment/recovery-mq-comment.md",
-    "deployment/native/README.md",
-    "agents/deployment/native-validation/",
-    "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md"
-  ],
-  "interfaces": [
-    {
-      "peer": "frontend",
-      "status": "构建/路由设计由总协调确认；真实测试和覆盖率接口待交付",
-      "inputs": [
-        "Node24/pnpm11.25.0，冻结锁、typecheck、build和dist产物",
-        "HTML5 history、同源/api/v1、test:coverage的真实Vitest和完整TS/Vue报告"
-      ],
-      "outputs": [
-        "web.Dockerfile、Nginx保留API前缀与SPA fallback、真实frontend CI"
-      ]
-    },
-    {
-      "peer": "backend",
-      "status": "设计通信确认；运行包、哈希锁、CLI和测试尚未实现",
-      "inputs": [
-        "t44.api:app 同步API，4 workers",
-        "DATABASE_URL=mysql+pymysql://...、AMQP_URL、T44_SESSION_TTL_SECONDS",
-        "不透明会话；账号/撤销用t44.cli，迁移参数待实现确认",
-        "backend/pyproject.toml、requirements.lock哈希锁、t44和tests；contract/integration/fault markers"
-      ],
-      "outputs": [
-        "deployment/api.Dockerfile、Compose服务、CLI包装和真实缺实现失败门禁"
-      ]
-    },
-    {
-      "peer": "database",
-      "status": "18表DDL设计通信确认，迁移实现和版本/恢复核对尚未交付",
-      "inputs": [
-        "specs/database/schema.sql；未来t44.cli migrate --database，参数/退出码待编码验证",
-        "空库与明确库名、18表核对、DDL SHA及迁移版本检查待实现",
-        "当前备份限InnoDB表，无可编程对象/视图；恢复隔离目标已沟通"
-      ],
-      "outputs": [
-        "显式目标迁移包装、备份清单/校验和、仅新隔离项目/目标库的恢复工具与说明"
-      ]
-    },
-    {
-      "peer": "messaging",
-      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
-      "inputs": [
-        "RabbitMQ 版本与持久化要求",
-        "消费入口、确认和重投",
-        "启停顺序与故障观察入口"
-      ],
-      "outputs": [
-        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
-      ]
-    },
-    {
-      "peer": "scheduler",
-      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
-      "inputs": [
-        "进程拓扑与单实例约束",
-        "持久状态、续扫和重试",
-        "启停边界与观察入口"
-      ],
-      "outputs": [
-        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
-      ]
-    },
-    {
-      "peer": "总协调及各开发岗",
-      "status": "待冻结",
-      "inputs": [
-        "云环境与组件版本",
-        "检查命令、依赖及报告路径",
-        "覆盖率统计范围与仓库保护规则",
-        "回滚授权与备份恢复目标"
-      ],
-      "outputs": [
-        "后续打包、Compose、门禁运行机制与发布操作证据"
-      ]
-    },
-    {
-      "peer": "documentation",
-      "status": "可交接初始化资料",
-      "inputs": [
-        "具体资料询问"
-      ],
-      "outputs": [
-        "本岗三份真实记录与未实现状态说明"
-      ]
-    }
-  ],
+  "stage": "NATIVE-APPLICATION-v1 phase2 design checkpoint",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -283,35 +112,35 @@
       ]
     }
   ],
-  "results": [
-    "历史M0：仅建立部署职责、环境依赖及上下游交接清单，未建立产品部署代码或流水线",
-    "历史M0：应用 8核16GB/80GB SSD、压测 4核8GB/40GB SSD 为已有建议，无采购或性能达标证据",
-    "历史M0：静态检查、契约测试、覆盖率三项主干门禁要求已识别，但运行机制未实现",
-    "历史M0：已向总协调发送跨模块契约需求；未直接联系独立测试实例",
-    "历史M0：已答复文档岗实际询问并记入本岗日志；新增两份本岗评论正文，发布阶段评论和调度接口问题",
-    "历史M0：已实时核对当前main保护；产品静态检查、契约测试与覆盖率三项CI仍未实现，未设置审核成功或合并",
-    "历史M0：旧初始化中仓库保护未配置的表述未经当时GitHub实查，模块报告已保留为历史说明并追加当前事实",
-    "RUNTIME：实现单机Compose/Docker/Nginx/运维脚本/恢复说明；本地静态验证和17项本岗安全/CI守卫测试通过",
-    "RUNTIME：实现static/contracts/coverage/frontend真实工作流；缺实现和空/跳过测试明确失败，全源码每语言只强制行覆盖率80",
-    "RUNTIME：官方镜像摘要/Actions提交/Compose schema来源固定留痕，未拉取/构建镜像；无公开未鉴权health API",
-    "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷",
-    "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
-    "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
-    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证",
-    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实",
-    "NATIVE stage1: source7e94258 run2 start/inspect/normal stop true, full loopback, newCookie/randomuser/vhost/regex, 16 guards; first failure retained; all stopped; no application stage"
-  ],
-  "unverified": [
-    "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
-    "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
-    "未确认生产备份保留周期/异机加密介质/RPO/RTO；RabbitMQ卷可移植恢复与完整灾备未验证",
-    "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
-    "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
-  ],
-  "questions": [
-    "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
-    "管理员按实际expiry安排service凭据受控轮换，并明确正式部署TLS/备份运维责任"
-  ],
+  "runtime_metadata": {
+    "base_sha": "9fb24f1f0e173ef37d0cee8b14b080f190ca6d58",
+    "branch": "codex/deployment-runtime-metadata",
+    "prompt_ref": "ROLE-deployment-RUNTIME-METADATA-v1",
+    "implementation": [
+      "deployment/acceptance/metadata.py",
+      "deployment/acceptance/control.py",
+      "deployment/acceptance/run.py"
+    ],
+    "protocol": "deployment/acceptance/README.md",
+    "command": "control.py runtime-metadata",
+    "collection": "explicit caller only;single JSON;incomplete nonzero",
+    "tests": "75 synthetic guards passed;Ruff passed;first lint UP022 preserved",
+    "evidence": "agents/deployment/runtime-metadata-validation/",
+    "actual_docker_or_runner_observation": "not executed;not available locally",
+    "resource_or_product_changed": false,
+    "independent_material_read": false,
+    "limitations": [
+      "Linux cgroup v2 visible ancestry only;unsupported/missing controllers incomplete",
+      "Nginx-T current validated files,not proof of last reload memory state",
+      "no physical colocation/no other traffic claims"
+    ],
+    "github": "body-file published;GET comment body verified identical",
+    "implementation_sha": "b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0",
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388",
+    "github_readback": "agents/deployment/runtime-metadata-validation/issue-readback.json",
+    "final_status": "complete;implementation available;actual runner collection remains caller-owned and unexecuted by deployment",
+    "archive_revision": "final receipt commit resolved by Git metadata;implementation SHA remains pinned separately"
+  },
   "prompt_refs": [
     {
       "id": "ROLE-deployment-BOOTSTRAP-v1",
@@ -383,55 +212,13 @@
       "id": "ROLE-deployment-NATIVE-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md",
       "reason": "新macOS项目内原生环境派工；保护旧运行/独立隔离，保留真实失败并先设计准入后启动"
+    },
+    {
+      "id": "ROLE-deployment-NATIVE-APPLICATION-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-APPLICATION-v1.md",
+      "reason": "Explicit new app lifecycle stage with exact source and private new DB, finite periodic delivery/credential rotation evidence"
     }
   ],
-  "updated_at": "2026-10-23T20:36:03.750094+00:00",
-  "runtime_delivery": {
-    "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
-    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
-    "draft": true,
-    "base": "codex/team-bootstrap",
-    "artifact_attached": true,
-    "initial_actions_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161",
-    "initial_conclusion": "failure: missing application/tests/frontend manifest",
-    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289",
-    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit",
-    "final_implementation_commit": "6d713eb8fa5af419fe061c8c9b2061f2699472dc",
-    "main_required_checks": [
-      "reviewer/stage",
-      "static",
-      "contracts",
-      "coverage",
-      "frontend"
-    ],
-    "protection_evidence": "总协调root records/github/protection-v2-response.json（只读核对，不加入本岗提交）",
-    "final_issue_handoff": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315",
-    "pytest_reply": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
-    "handoff_revision": "最终事实记录所在提交由Git元数据/PR确定；final_implementation_commit是运行配置修复提交"
-  },
-  "integration_delivery": {
-    "web_checkpoint": "8e8c839e6f3aeb29b51f05a5a8a22a36995e4298",
-    "ci_path_checkpoint": "7e4dbda1e7afd82ce3c794dfdf025e6ca8870277",
-    "parent_reported_product_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
-    "product_sha": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
-    "product_jobs": "static/contracts/coverage/frontend success; directly verified run JSON",
-    "local_fe_lines": "308/334 92.21%",
-    "local_guards": 23,
-    "docker_application": "success",
-    "docker_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829",
-    "validated_application_sha": "31f4dff935973162544951fe0660ce208edb7007",
-    "product_runs": [
-      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723908",
-      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932729585"
-    ],
-    "restoration": "19 tables counts+EXTENDED checksums identical;18 business tables226 columns migration checks passed",
-    "credential_rotation": "JSON0600 UID10001 readonly directory;old session1 revoked,new3;shared flock rejects second scanner",
-    "runtime": "4APIworkers/consumer/scheduler/web;2successful scans16created;HTTP/SPA/413 verified",
-    "evidence": "agents/deployment/integration-validation/run-39932723829/",
-    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100",
-    "pr_final": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531",
-    "archive_revision": "Final evidence/readability revision is resolved by actual Git commit; validated application SHA remains separate"
-  },
   "acceptance_environment": {
     "product_baseline_read": "189dc4a3196be0fb84b753f23284f2566d823ea0",
     "workflow": ".github/workflows/acceptance-environment.yml",
@@ -464,42 +251,56 @@
     "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6366093995",
     "neutral_handoff": "deployment/acceptance/README.md contains capabilities/run/retrieval only; developer results and failures remain separate role evidence"
   },
-  "recovery_mq_capability": {
-    "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
-    "request_revision": 5,
-    "local_checks": "953 52passed;Ruff/actionlint0",
-    "runtime_check": "success",
-    "independent_harness_executed": false,
-    "profile_executed": false,
-    "ssh": "no target,no password use/storage",
-    "protocol": "deployment/acceptance/README.md",
-    "evidence": "agents/deployment/recovery-receipt-validation/run-39977039692/",
-    "implementation_checkpoint": "f0a20baab241e93d90bad85a9568c694caee2fea",
-    "incremental_first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39974397951",
-    "incremental_first_result": "failure preserved:stop receipt true,pause unpause0/upwait1;per-call/finalfalse;MQ metadata/topology verified",
-    "readiness": "only actually unpaused services;read-only healthy observation<=60seconds before original up--wait;failures remain false",
-    "intermediate_pass": "https://github.com/HJY147/t44-dev-trace/actions/runs/39975896833",
-    "intermediate_environment_sha": "d8f5fbe79d1a4e314fb5052f537f9c5fc07790da",
-    "validated_implementation_sha": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
-    "capability_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39977039692",
-    "explicit_recovery_ids": [
-      "090229218fbc4166b9d900cd50e12366",
-      "2228cbe89553468ba2be136ec6754f04"
-    ],
-    "final_recovery_id": "04b79c32d141425896a2bdbd5cb84e5d",
-    "mq_transport_verified": true,
-    "final_archive_revision": "actual Git metadata resolves receipt-only final revision;validated implementation remains pinned separately",
-    "neutral_checkpoint_sha": "6b681dd73694bf18430f1bce4bdf00ffd1ae762e",
-    "neutral_manifest": "deployment/acceptance/neutral-handoff/manifest.json",
-    "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
-    "neutral_file_count": 7,
-    "neutral_exclusions": "developer logs/reports/prompts/failure details/raw archives/credentials/ciphertext/private tester material",
-    "neutral_projection": "success-only selected metadata and receipts;per-poll health observations omitted explicitly;raw originals preserved separately",
-    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787",
-    "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363",
-    "final_status": "complete:implementation validated;neutral handoff published;archive only;no rerun",
-    "post_validation_runtime_changed": false
+  "native_capture_timeout": {
+    "prompt": "ROLE-deployment-NATIVE-CAPTURE-TIMEOUT-v1",
+    "issue": "NATIVE-CAPTURE-TIMEOUT-01",
+    "review_commit": "c6883f2bd4e860737f4aede4002f4499d2a7e479",
+    "baseline": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
+    "status": "capture-only fix, same public red→green and five targeted synthetic guards/Ruff/diff passed; root re-review pending",
+    "evidence": "agents/deployment/native-capture-timeout-validation/README.md",
+    "original_red_preserved": true,
+    "historical_actual_cycle_implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
+    "new_fix_cycle_executed": false,
+    "private_inputs_read": false,
+    "design_commit": "7f4845e",
+    "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
+    "same_public_counterexample_before": "same-counterexample-before-fix.json:1failure/exit1",
+    "targeted_checks": "capture-final-five-boundaries.json:5pass;normal0/nonzero7/timeoutthen0/timeoutthen-15/cleanupunconfirmednull",
+    "actual_child_codes_preserved": true,
+    "timed_out_is_permanent_failure": true,
+    "application_AST_except_capture_unchanged": true,
+    "runtime_unchanged": true,
+    "old_ApplicationGuards_unchanged": true,
+    "actual_os_processes_started": 0,
+    "actual_os_signals_sent": 0,
+    "implementation_commit": "b23897879142de3bd77190c67d4947eccf1c8263",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/34",
+    "draft": true,
+    "pr_metadata_head_exact_at_readback": "b23897879142de3bd77190c67d4947eccf1c8263",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375565697",
+    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/34#issuecomment-6375566016",
+    "github_readback": "agents/deployment/native-capture-timeout-validation/github-readback-checks.json",
+    "review_status": "originalP2 retained, root targeted re-review pending",
+    "next_action": "stop and release deployment slot; no further service/cycle/tests"
   },
+  "results": [
+    "历史M0：仅建立部署职责、环境依赖及上下游交接清单，未建立产品部署代码或流水线",
+    "历史M0：应用 8核16GB/80GB SSD、压测 4核8GB/40GB SSD 为已有建议，无采购或性能达标证据",
+    "历史M0：静态检查、契约测试、覆盖率三项主干门禁要求已识别，但运行机制未实现",
+    "历史M0：已向总协调发送跨模块契约需求；未直接联系独立测试实例",
+    "历史M0：已答复文档岗实际询问并记入本岗日志；新增两份本岗评论正文，发布阶段评论和调度接口问题",
+    "历史M0：已实时核对当前main保护；产品静态检查、契约测试与覆盖率三项CI仍未实现，未设置审核成功或合并",
+    "历史M0：旧初始化中仓库保护未配置的表述未经当时GitHub实查，模块报告已保留为历史说明并追加当前事实",
+    "RUNTIME：实现单机Compose/Docker/Nginx/运维脚本/恢复说明；本地静态验证和17项本岗安全/CI守卫测试通过",
+    "RUNTIME：实现static/contracts/coverage/frontend真实工作流；缺实现和空/跳过测试明确失败，全源码每语言只强制行覆盖率80",
+    "RUNTIME：官方镜像摘要/Actions提交/Compose schema来源固定留痕，未拉取/构建镜像；无公开未鉴权health API",
+    "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷",
+    "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
+    "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
+    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证",
+    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实",
+    "NATIVE stage1: source7e94258 run2 start/inspect/normal stop true, full loopback, newCookie/randomuser/vhost/regex, 16 guards; first failure retained; all stopped; no application stage"
+  ],
   "native_local": {
     "baseline": "275dd3e",
     "branch": "codex/deployment-native",
@@ -578,35 +379,340 @@
     "stage1_pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/31#issuecomment-6374241500",
     "stage1_github_readback": "agents/deployment/native-validation/github-stage1-readback-checks.json",
     "runtime_after_validation_changed": false,
-    "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials"
+    "stage1_end": "all owned processes stopped; released pending root final app SUT/schema/credentials",
+    "stage1_fields_are_historical_snapshot": true,
+    "pull_request_current_status": "PR31 merged2026-10-23T20:44:11Z; historical phase1 body unchanged"
   },
-  "runtime_metadata": {
-    "base_sha": "9fb24f1f0e173ef37d0cee8b14b080f190ca6d58",
-    "branch": "codex/deployment-runtime-metadata",
-    "prompt_ref": "ROLE-deployment-RUNTIME-METADATA-v1",
-    "implementation": [
-      "deployment/acceptance/metadata.py",
-      "deployment/acceptance/control.py",
-      "deployment/acceptance/run.py"
+  "runtime_delivery": {
+    "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
+    "draft": true,
+    "base": "codex/team-bootstrap",
+    "artifact_attached": true,
+    "initial_actions_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161",
+    "initial_conclusion": "failure: missing application/tests/frontend manifest",
+    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289",
+    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit",
+    "final_implementation_commit": "6d713eb8fa5af419fe061c8c9b2061f2699472dc",
+    "main_required_checks": [
+      "reviewer/stage",
+      "static",
+      "contracts",
+      "coverage",
+      "frontend"
     ],
+    "protection_evidence": "总协调root records/github/protection-v2-response.json（只读核对，不加入本岗提交）",
+    "final_issue_handoff": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315",
+    "pytest_reply": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
+    "handoff_revision": "最终事实记录所在提交由Git元数据/PR确定；final_implementation_commit是运行配置修复提交"
+  },
+  "interfaces": [
+    {
+      "peer": "frontend",
+      "status": "构建/路由设计由总协调确认；真实测试和覆盖率接口待交付",
+      "inputs": [
+        "Node24/pnpm11.25.0，冻结锁、typecheck、build和dist产物",
+        "HTML5 history、同源/api/v1、test:coverage的真实Vitest和完整TS/Vue报告"
+      ],
+      "outputs": [
+        "web.Dockerfile、Nginx保留API前缀与SPA fallback、真实frontend CI"
+      ]
+    },
+    {
+      "peer": "backend",
+      "status": "设计通信确认；运行包、哈希锁、CLI和测试尚未实现",
+      "inputs": [
+        "t44.api:app 同步API，4 workers",
+        "DATABASE_URL=mysql+pymysql://...、AMQP_URL、T44_SESSION_TTL_SECONDS",
+        "不透明会话；账号/撤销用t44.cli，迁移参数待实现确认",
+        "backend/pyproject.toml、requirements.lock哈希锁、t44和tests；contract/integration/fault markers"
+      ],
+      "outputs": [
+        "deployment/api.Dockerfile、Compose服务、CLI包装和真实缺实现失败门禁"
+      ]
+    },
+    {
+      "peer": "database",
+      "status": "18表DDL设计通信确认，迁移实现和版本/恢复核对尚未交付",
+      "inputs": [
+        "specs/database/schema.sql；未来t44.cli migrate --database，参数/退出码待编码验证",
+        "空库与明确库名、18表核对、DDL SHA及迁移版本检查待实现",
+        "当前备份限InnoDB表，无可编程对象/视图；恢复隔离目标已沟通"
+      ],
+      "outputs": [
+        "显式目标迁移包装、备份清单/校验和、仅新隔离项目/目标库的恢复工具与说明"
+      ]
+    },
+    {
+      "peer": "messaging",
+      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
+      "inputs": [
+        "RabbitMQ 版本与持久化要求",
+        "消费入口、确认和重投",
+        "启停顺序与故障观察入口"
+      ],
+      "outputs": [
+        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
+      ]
+    },
+    {
+      "peer": "scheduler",
+      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
+      "inputs": [
+        "进程拓扑与单实例约束",
+        "持久状态、续扫和重试",
+        "启停边界与观察入口"
+      ],
+      "outputs": [
+        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
+      ]
+    },
+    {
+      "peer": "总协调及各开发岗",
+      "status": "待冻结",
+      "inputs": [
+        "云环境与组件版本",
+        "检查命令、依赖及报告路径",
+        "覆盖率统计范围与仓库保护规则",
+        "回滚授权与备份恢复目标"
+      ],
+      "outputs": [
+        "后续打包、Compose、门禁运行机制与发布操作证据"
+      ]
+    },
+    {
+      "peer": "documentation",
+      "status": "可交接初始化资料",
+      "inputs": [
+        "具体资料询问"
+      ],
+      "outputs": [
+        "本岗三份真实记录与未实现状态说明"
+      ]
+    }
+  ],
+  "native_application": {
+    "prompt": "ROLE-deployment-NATIVE-APPLICATION-v1",
+    "design": "deployment/native/application-design.md",
+    "admission": "rootec3e6b0 records/decisions/native-application-capability-admission.json",
+    "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "source_binding": "root records/validation/native-demo-source-bc5a-binding.json",
+    "source_files_verified": 92,
+    "python_files": 44,
+    "ts_vue_files": 20,
+    "source_hash_mismatches": 0,
+    "old42243_application_started": false,
+    "database": "t44_native_demo",
+    "no_ddl_reset_seed": true,
+    "private_input_modes": "0600",
+    "controller_status": "implemented; run1 failed retained; corrected run2 complete and all owned services stopped",
+    "guard": "871:23 synthetic pass;873:3 affected stop guards pass; unchanged phase1 guards not rerun",
+    "services_started": true,
+    "independent_or_formal_load_executed": false,
+    "controller": "deployment/native/application.py",
+    "checks": "Ruff and complete phase2 baseline diff pass; actual final92sourcehashes match",
+    "preflight": "agents/deployment/native-application-validation/controller-preflight.json",
+    "design_commit": "3e05c60",
+    "controller_commit_first": "4c3e4c4",
+    "source_count_correction": "44 backend Py/20 frontend src TS+Vue; all92 files including deployment2Py and vite.config.ts hash-checked",
+    "preflight_first_failure": "agents/deployment/native-application-validation/controller-preflight-original-failure.json",
+    "dependency_preparation": "attempt1 failed before install;attempt2 all11commands exit0,67Python distributions,source unchanged",
+    "run1": "agents/deployment/native-application-validation/run1-analysis.json",
+    "run1_actual_cycle_success": false,
+    "run1_actual_cleanup_success": false,
+    "run1_post_stop_absence": "agents/deployment/native-application-validation/run1-post-stop-absence.json",
+    "run1_delivery": "16confirmed events/26normalnotifications exactscan/UTC/recipient association",
+    "phase1_runtime_changed_for_phase2": "shutdown --no-wait + ps/getpgid disappearance race; original7e942 historical result retained",
+    "controller_implementation_commit": "0a6da88c404c04515c3c07039f0e231908fddc0e",
+    "actual_run2": "app_20261023_212959_fc2dc9",
+    "actual_run2_driver_exit_code": 0,
+    "actual_run2_cycle_success": true,
+    "actual_run2_cleanup_success": true,
+    "actual_periodic_interval_seconds": 60.30307,
+    "actual_second_cycle_scan_ids": [
+      3,
+      4
+    ],
+    "actual_rotated_tick_scan_id": 5,
+    "run2_evidence": "agents/deployment/native-application-validation/run2-capability.json",
+    "normal_delivery_origin": "run1:16confirmed outbox/26normalnotifications; run2 explicitly rechecks existingIDs and manager10notificationIDs, no newpublish claim",
+    "rotation": "session4→5;2actualprojects1/2;escalation:write;TTL300;drain/atomicpublish/revoke/restart/newtick;all5ownsessions revoked",
+    "all_owned_services_stopped": true,
+    "all_new_ports_unbound": true,
+    "all_protected_listener_baselines_exact_match": true,
+    "production_business_source_changed": false,
+    "application_runtime_changed_after_success": false,
+    "unverified": [
+      "full browser business acceptance",
+      "independent acceptance",
+      "formal performance",
+      "cloud deployment",
+      "production security"
+    ],
+    "evidence_archive_commit": "e142470a8605991c10dfb26fe9e2e619a4190c97",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/34",
+    "draft": true,
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375242146",
+    "historical_pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/31#issuecomment-6375242564",
+    "github_readback": "agents/deployment/native-application-validation/github-phase2-readback-checks.json",
+    "next_action": "root existing reviewer targeted audit; deployment stops and releases slot; no additional service runs"
+  },
+  "integration_delivery": {
+    "web_checkpoint": "8e8c839e6f3aeb29b51f05a5a8a22a36995e4298",
+    "ci_path_checkpoint": "7e4dbda1e7afd82ce3c794dfdf025e6ca8870277",
+    "parent_reported_product_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39931640641",
+    "product_sha": "265d89bd004de626a025d7efe7102fe68b5b2dd3",
+    "product_jobs": "static/contracts/coverage/frontend success; directly verified run JSON",
+    "local_fe_lines": "308/334 92.21%",
+    "local_guards": 23,
+    "docker_application": "success",
+    "docker_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723829",
+    "validated_application_sha": "31f4dff935973162544951fe0660ce208edb7007",
+    "product_runs": [
+      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932723908",
+      "https://github.com/HJY147/t44-dev-trace/actions/runs/39932729585"
+    ],
+    "restoration": "19 tables counts+EXTENDED checksums identical;18 business tables226 columns migration checks passed",
+    "credential_rotation": "JSON0600 UID10001 readonly directory;old session1 revoked,new3;shared flock rejects second scanner",
+    "runtime": "4APIworkers/consumer/scheduler/web;2successful scans16created;HTTP/SPA/413 verified",
+    "evidence": "agents/deployment/integration-validation/run-39932723829/",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6361990100",
+    "pr_final": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6361990531",
+    "archive_revision": "Final evidence/readability revision is resolved by actual Git commit; validated application SHA remains separate"
+  },
+  "updated_at": "2026-10-23T21:00:52.283874+00:00",
+  "artifacts": [
+    "agents/deployment/WORKLOG.md",
+    "reports/modules/deployment.md",
+    "records/handoffs/deployment.json",
+    "agents/deployment/github-stage-comment.md",
+    "agents/deployment/github-interface-question.md",
+    "compose.yaml",
+    ".github/workflows/product.yml",
+    "agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md",
+    "agents/deployment/runtime-backend-comment.md",
+    "agents/deployment/runtime-database-comment.md",
+    "agents/deployment/runtime-frontend-comment.md",
+    "agents/deployment/runtime-interface-comment.md",
+    "agents/deployment/runtime-validation/check-0.log",
+    "agents/deployment/runtime-validation/check-1.log",
+    "agents/deployment/runtime-validation/check-2.log",
+    "agents/deployment/runtime-validation/check-3.log",
+    "agents/deployment/runtime-validation/check-4.log",
+    "agents/deployment/runtime-validation/check-5.log",
+    "agents/deployment/runtime-validation/checks.json",
+    "agents/deployment/runtime-validation/ci/preflight.json",
+    "agents/deployment/runtime-validation/ci/static-0.log",
+    "agents/deployment/runtime-validation/ci/static-1.log",
+    "agents/deployment/runtime-validation/ci/static-2.log",
+    "agents/deployment/runtime-validation/ci/static-3.log",
+    "agents/deployment/runtime-validation/ci/static.json",
+    "agents/deployment/runtime-validation/dependency-sources.json",
+    "deployment/.env.example",
+    "deployment/README.md",
+    "deployment/api.Dockerfile",
+    "deployment/api.Dockerfile.dockerignore",
+    "deployment/nginx/api.conf",
+    "deployment/nginx/nginx.conf",
+    "deployment/ops.py",
+    "deployment/runtime_probe.py",
+    "deployment/vendor/SOURCE.json",
+    "deployment/vendor/compose-spec.LICENSE",
+    "deployment/vendor/compose-spec.json",
+    "deployment/web.Dockerfile",
+    "deployment/web.Dockerfile.dockerignore",
+    "scripts/ci/README.md",
+    "scripts/ci/check_frontend_coverage.py",
+    "scripts/ci/coverage.ini",
+    "scripts/ci/preflight.py",
+    "scripts/ci/requirements.in",
+    "scripts/ci/requirements.lock",
+    "scripts/ci/ruff.toml",
+    "scripts/ci/run_tests.py",
+    "scripts/ci/static.py",
+    "scripts/ci/validate_config.py",
+    "agents/deployment/runtime-pr-body.md",
+    "agents/deployment/runtime-result-comment.md",
+    "agents/deployment/runtime-validation/remote-initial-failure.log",
+    "agents/deployment/runtime-validation/remote-initial.json",
+    "agents/deployment/runtime-validation/remote-initial-failure.log.gz",
+    "agents/deployment/runtime-validation/remote-log-provenance.json",
+    "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
+    "agents/deployment/runtime-handoff-comment.md",
+    "agents/deployment/runtime-pytest-reply.md",
+    "deployment/credential_admin.py",
+    ".github/workflows/docker-integration.yml",
+    "tmp/deployment/997_ops.py",
+    "tmp/ci/996_gates.py",
+    "tmp/deployment/971_credentials.py",
+    "tmp/deployment/972_compose_application.py",
+    "agents/deployment/integration-validation/",
+    "agents/deployment/integration-checkpoint-comment.md",
+    "agents/deployment/prompts/ROLE-deployment-INTEGRATION-v1.md",
+    "agents/deployment/integration-validation/run-39932416571/",
+    "agents/deployment/integration-validation/run-39932723829/",
+    "agents/deployment/integration-final-comment.md",
+    "deployment/acceptance/",
+    ".github/workflows/acceptance-environment.yml",
+    "tmp/deployment/953_acceptance_environment.py",
+    "agents/deployment/acceptance-environment-validation/",
+    "agents/deployment/prompts/ROLE-deployment-INDEPENDENT-LINUX-HARNESS-v1.md",
+    "agents/deployment/acceptance-environment-comment.md",
+    "agents/deployment/acceptance-environment-result-comment.md",
+    "agents/deployment/recovery-receipt-validation/",
+    "agents/deployment/prompts/ROLE-deployment-RECOVERY-MQ-v1.md",
+    "agents/deployment/recovery-mq-comment.md",
+    "deployment/native/README.md",
+    "agents/deployment/native-validation/",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md"
+  ],
+  "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
+  "questions": [
+    "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
+    "管理员按实际expiry安排service凭据受控轮换，并明确正式部署TLS/备份运维责任"
+  ],
+  "unverified": [
+    "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
+    "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
+    "未确认生产备份保留周期/异机加密介质/RPO/RTO；RabbitMQ卷可移植恢复与完整灾备未验证",
+    "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
+    "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
+  ],
+  "recovery_mq_capability": {
+    "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+    "request_revision": 5,
+    "local_checks": "953 52passed;Ruff/actionlint0",
+    "runtime_check": "success",
+    "independent_harness_executed": false,
+    "profile_executed": false,
+    "ssh": "no target,no password use/storage",
     "protocol": "deployment/acceptance/README.md",
-    "command": "control.py runtime-metadata",
-    "collection": "explicit caller only;single JSON;incomplete nonzero",
-    "tests": "75 synthetic guards passed;Ruff passed;first lint UP022 preserved",
-    "evidence": "agents/deployment/runtime-metadata-validation/",
-    "actual_docker_or_runner_observation": "not executed;not available locally",
-    "resource_or_product_changed": false,
-    "independent_material_read": false,
-    "limitations": [
-      "Linux cgroup v2 visible ancestry only;unsupported/missing controllers incomplete",
-      "Nginx-T current validated files,not proof of last reload memory state",
-      "no physical colocation/no other traffic claims"
+    "evidence": "agents/deployment/recovery-receipt-validation/run-39977039692/",
+    "implementation_checkpoint": "f0a20baab241e93d90bad85a9568c694caee2fea",
+    "incremental_first_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39974397951",
+    "incremental_first_result": "failure preserved:stop receipt true,pause unpause0/upwait1;per-call/finalfalse;MQ metadata/topology verified",
+    "readiness": "only actually unpaused services;read-only healthy observation<=60seconds before original up--wait;failures remain false",
+    "intermediate_pass": "https://github.com/HJY147/t44-dev-trace/actions/runs/39975896833",
+    "intermediate_environment_sha": "d8f5fbe79d1a4e314fb5052f537f9c5fc07790da",
+    "validated_implementation_sha": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+    "capability_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39977039692",
+    "explicit_recovery_ids": [
+      "090229218fbc4166b9d900cd50e12366",
+      "2228cbe89553468ba2be136ec6754f04"
     ],
-    "github": "body-file published;GET comment body verified identical",
-    "implementation_sha": "b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0",
-    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388",
-    "github_readback": "agents/deployment/runtime-metadata-validation/issue-readback.json",
-    "final_status": "complete;implementation available;actual runner collection remains caller-owned and unexecuted by deployment",
-    "archive_revision": "final receipt commit resolved by Git metadata;implementation SHA remains pinned separately"
-  }
+    "final_recovery_id": "04b79c32d141425896a2bdbd5cb84e5d",
+    "mq_transport_verified": true,
+    "final_archive_revision": "actual Git metadata resolves receipt-only final revision;validated implementation remains pinned separately",
+    "neutral_checkpoint_sha": "6b681dd73694bf18430f1bce4bdf00ffd1ae762e",
+    "neutral_manifest": "deployment/acceptance/neutral-handoff/manifest.json",
+    "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+    "neutral_file_count": 7,
+    "neutral_exclusions": "developer logs/reports/prompts/failure details/raw archives/credentials/ciphertext/private tester material",
+    "neutral_projection": "success-only selected metadata and receipts;per-poll health observations omitted explicitly;raw originals preserved separately",
+    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6368531787",
+    "pr_result": "https://github.com/HJY147/t44-dev-trace/pull/15#issuecomment-6368534363",
+    "final_status": "complete:implementation validated;neutral handoff published;archive only;no rerun",
+    "post_validation_runtime_changed": false
+  },
+  "parallel_neutral_runtime_metadata_stage": "runtime-metadata-implementation-complete"
 }

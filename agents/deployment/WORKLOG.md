@@ -197,3 +197,53 @@
 - 扩既有953的ID/project/字段无secret/固定SQL/缺失unknown非零/六服务只读投影守卫，原63项均保留；最终75项0.10s通过，CI配置Ruff针对全部改动文件通过。首次UP022原诊断重现留lint-before.json，手工改capture_output后通过；两轮原始工具stdout/stderr/JUnit及SHA在runtime-metadata-validation。只做合成能力边界核验，未观测实际runner容器。
 
 - 实现b3ee0ac2f261b5f453af4a8c0fb5516ba06645d0已push并立即交根供正式入口采用；随后使用body-file发布Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375611388，通过固定comments API读回并逐字核正文一致，原始JSON存runtime-metadata-validation/issue-readback.json。只在此记录GitHub对接；没有新增Docker/资源/正式负载执行。后续为评论/档案收尾，受验实现SHA仍b3ee0ac。
+
+
+## NATIVE-APPLICATION-v1 phase2 设计checkpoint
+
+- 根ec3e6b0准入本岗application controller与871守卫、新t44_native_demo能力周期；原始实际派工及后续精确源归档ROLE-deployment-NATIVE-APPLICATION-v1。新角色凭据/environment/database私密JSON只核结构与0600，未输出值、不读admin，不触独立资料。
+- 根给bc5aef9c62393134582affb7a690acb33ac2b833 snapshot与native-demo-source-bc5a-binding；92文件SHA核对无差异、44Py/20TSVue，schema/seed与初始化0549可复用；42243从未启动应用。初按decisions目录找两份validation回执的cat失败记录真实保留，已按准入正文改读正确目录。
+- 设计deployment/native/application-design.md：依赖准备、显式final bind、有限run/finallystop分开；私密env副本替换旧PYTHONPATH，freshbroker；API4worker18088/consumer/60sscanner/UI5178；真实两project IDs签发TTL300 scoped服务会话并受控轮换/回收；周期扫描和Pika/outbox/notification证据需实际完成。
+- 入口风险已报根：原Vite proxy硬指18080，需要owner frontend副本及部署overlay指18088/5178/专用cache，原源码/锁不改；原build脚本会准备tmp测试软链，部署路径不读取独立资料。node不在当前PATH（真实command not found），pnpm wrapper11.25.0指向已存在bundled Node；仅核该明确工具路径，不全局安装。
+- 当前只设计/源hash核对，尚未安装phase2依赖、实现controller/871或启动任何应用/DB/broker；stage1全停机保持。下一步设计commit后实现与本岗合成守卫，实际执行前所有源/私密/端口/拥有权预检必须通过。
+
+### NATIVE-APPLICATION-v1 controller checkpoint
+
+- application.py已实现锁hash依赖准备、精确源/私密env副本、freshbroker、API4worker/consumer/scanner/UI启动、真实scan/outbox/notification取证、300秒双项目scope服务CLI签发/轮换/回收及finally拥有权停机。新增监听回环/端口检查与真实共享flock占用验证；源码与数据库配置拒绝旧环境、admin、bool项目ID及非自有进程信号。
+- 871合成守卫19项、Ruff0.17.2通过；最初Ruff unusedimport、17项fixture缺少broker username/vhost的错误及后续扩展静态检查失败均原样保留在native-application-validation，不将其倒填通过。异常边界只输出稳定错误码以免私密URL/Token泄露，并继续独立资源清理，不降低全局规则。
+- 本次最终bc5a的92文件SHA/44Py20TSVue、三个明确私密输入与新18088/5178空闲预检均通过，旧监听baseline已存。原42243仍未启动应用；截至该checkpoint尚未安装phase2依赖或启动服务。下一步才进行已获根准入的有限实际周期，产品CI/专审与独立/性能/云不由本岗推定。
+
+- 纠正4c3e4c4最后一条预检表述：实际该命令先以SOURCE_DENOMINATOR_MISMATCH退出1，后续记录写早；未开始依赖/服务。根清单44Py/20TSVue是backend与frontend/src口径，全清单另含2个deployment Py和vite.config.ts（总46Py/21TSVue）。已修正统计范围，92文件仍全部核SHA，新增额外部署/配置文件仍必须核hash的守卫；20守卫/Ruff及真实源/私密/端口预检现全部通过，原失败JSON保留。
+
+- 根进一步明确分母为backend/t44/**与frontend/src/**；补齐真实44/20代表fixture并另加2部署Py/Vite配置，历史4c3e4c4实现原错误真实红、窄修真实绿，额外部署文件hash错、真实productionfile hash错/缺失各自仍拒绝。20项/Ruff通过，red/green原输出另档；phase1守卫未重跑。
+
+- 依赖准备attempt1真实exit1：Python --version快速退出发生ps/getpgid观察竞态，未到安装；原92文件副本/空日志/driver失败均保留。最小capture复现同ProcessLookupError；只修application层把已消失视作absent无信号，新增守卫（21项/Ruff绿），不改阶段1runtime。未完成目录不复用，另建freshattempt；发现pnpm常量误多一层bin，调用前修正为已验证bundled实际路径。所有服务未起。
+
+- phase2 run1精确controller427b097实际exit1/cleanupfalse；API4worker/proxy/TTL300/两completed间隔60.383994s/flock局部真。两Pika实际CLI输出为inet数组/typed triples，本岗误按字符串/字典解析失败；原JSON同字节离线历史真红/修正真绿。只读精确关联16事件/16confirmed outbox/26无fallback通知，收件人集合一致且scan/UTC相符；查询曾误用不存在escalations表1146和UTC字符串格式比较失败，均只读且真实记录，不改变DB。
+- shutdown实际远端停后CLI code_server badarg/超时exit-15，ps/getpgid消失竞态令最终broker stop receipt缺失；原cleanupfalse绝不倒填。后置全自有PID/端口gone单列。固定官方4.3.6主源允许shutdown --no-wait终止整个VM，wrapper另核PID/EPMD；只修该参数和竞态，无关phase1守卫未重跑，受影响3项873与23项871/Ruff通过（扩展Ruff原失败保留）。
+- 根已准入一次第二freshcycle，绑定首轮既有16eventIDs只读关联，不宣称二轮新publish，继续实际扫描/凭据轮换/正常完整清理；新小设计勘误已写，尚未重启。run1 public/native输出secret扫描0，dump不读取/提交，旧环境不动。
+
+### NATIVE-APPLICATION-v1 phase2真实完成并全停
+
+- 运行实现0a6da88c404c04515c3c07039f0e231908fddc0e，SUTbc5a，fresh app_20261023_212959_fc2dc9整体exit0/cycletrue/cleanuptrue；新broker/新Cookie/user/vhost，源92文件逐SHA不变。API4workers/18088loopback、consumer、UI5178 HTML与代理鉴权、两completed scans IDs3/4实际60.303070s；新Pika真实1连接，首轮2连接保留。
+- 二轮明确只读复核首轮16个真实eventIDs/26无fallback通知与收件人；当前manager鉴权API可读对应10个notificationIDs，不称二轮新publish。服务session4→5均TTL300/escalation:write/项目1和2；排空scanner→新0600凭据→原子发布→撤销4→重启完成scan5/锁持有；finally回收4/5及user3，连同首轮session1/2全5会话只读确认revoked_at非空。
+- 官方shutdown --no-wait真实CLIexit0/markertrue；wrapper独立观察Rabbit退出、EPMD注册0再自有SIGTERM/退出。全部10个登记应用/workers PID消失，brokerPID也无，新5端口无监听；5173/18080/5175/18084/5176/18089/13306旧baseline逐项精确相同。原run1false不改，不再起服务或改运行源。
+- 后置projector最初错误用0549完整SHA是否在staging PYTHONPATH判断“保留”，该路径实际为plan-reason-api/source/backend而不编码SHA；初始false投影和纠正均保存，实际owner PYTHONPATH正确绑定本run/bc5a。未捕获staging输入运行前后bytehash，所以不声称该额外证明；controller无staging写操作且相应合成守卫通过。
+- 新873两项必要守卫在历史427b代码均真实红、修后绿，原无关phase1守卫未重复；23项871与3项受影响873/Ruff绿，完整phase2基线diff检查绿。结果仅本地开发部署能力/HTTP UI代理，不是完整浏览器业务、独立、性能、云或生产安全批准。接下来只归档/secret扫描和GitHub实际对话。
+
+- 归档前扫描本阶段84公开文件/292私密非秘密outputs+args，对16个实际literal（DB/登录/两broker/用户/服务bearer与完整URL去重）匹配0，gzip解码后纳入；dump/秘密原件排除。范围与hash见final-secret-scan.json，后续GitHub文字另行终扫。没有另查list_bindings表；AMQP能力由固定Pika源码、真实连接和确认/通知关联限定，不补写未执行命令。
+
+- Phase2封档e142470已push；实时GitHub确认PR31已merge，保留其phase1正文逐字不变，另建draft PR34（base codex/integration）。Issue7评论6375242146/PR31评论6375242564及PR34正文经GitHub connector重新读取严格逐字相同，body/comment SHA与原JSON见github-phase2-readback-checks.json；未请求合main或标review成功。按根要求本轮只封档后结束释放槽，后续专项复核由既有审核岗安排，不再运行cycle或刷测试。
+
+## NATIVE-CAPTURE-TIMEOUT-v1 设计checkpoint
+
+- 按根新实际派工，仅修公开审核c6883f2的P2 NATIVE-CAPTURE-TIMEOUT-01；读精确报告/原红JSON和log。原根绝对路径report不存在真实exit1，随后从共享Git对象c688精确读取公开文件，未读私密资料。原红字节/SHA复制另档，不覆盖审核岗原件。
+- 先补现有application-design超时勘误：首次超时永久失败，保留actual child returncode；清理也超时仍写事实/未确认/null真实码；正常0/普通非零与稳定错误码分开。当前未改capture，只设计与实际prompt归档；历史0a6真实cycle结果保持，不移植给新代码。后续只现有871的五个capture合成边界与同一反例，不跑服务/cycle/其他守卫。
+
+### NATIVE-CAPTURE-TIMEOUT-v1 窄修与受影响合成结果
+
+- 先行设计7f4845e后，仅改application.capture：首次超时即记timed_out=true，清理后actual childrc即使0仍写success=false并抛OWNED_COMMAND_TIMEOUT；普通非零保持OWNED_COMMAND_FAILED；再次超时记录stop_unconfirmed/null真实码与部分输出摘要，抛既有COMMAND_STOP_UNCONFIRMED。原PID拥有权/信号范围不变。
+- 同一公开原断言在原5ef源码重现真实红1项exit1，修后仅CaptureGuards五项（正常0、普通7、超时后0、超时后-15、清理仍超时/null）全绿。Popen/身份/等待/信号全部mock，真实OS进程/信号0，未读任何真实私密输入；未跑原ApplicationGuards、873、63中性、服务或cycle。Ruff初classvar诊断保留，补ClassVar及部分输出断言后五项/Ruff绿。
+- AST核application除capture全部相同，原ApplicationGuards类相同，runtime.py无变化；实际新application SHA 5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98。原0a6真实cycle成功保持，新修复没有cycle验证。原审核红/SHA、同例红绿、五项实际receipt和退出码、源/AST/diff证据见native-capture-timeout-validation。下一步仅commit/push与PR34/Issue7准确更新/readback后交根复审。
+
+- 窄修实现b23897879142de3bd77190c67d4947eccf1c8263已push。PR34题/正文准确改写，GitHub GET确认当时head完整b238978/drafttrue/body逐字一致；Issue7评论6375565697、PR34评论6375566016均再次GET逐字一致，原响应/readback/SHA另档。原review COMMENT5634837225和5ef原失败不改，根复审pending。此次全程未读实际秘密，也未将先前16-literal扫描结果冒充新扫描；新材料仅公开源码/已发表反例/合成输出。只封档后释放槽，不再跑检查或服务。
