@@ -1,49 +1,37 @@
-# T44作业提交物对照表（M5技术工作稿）
+# T44作业提交物对照表
 
-> **工作稿、非最终验收。** 本表只核对提交要求和当前去向，不把已有阶段代码/报告当作完整软件交付。
+当前技术稿固定bc5aef9；整体门禁仍未达，不能把此表作为最终验收证书。原件只读保留，所有实际产物、操作者、版本和未完成项分别列示。
 
-Agent-Role: documentation
-Prompt-Ref: ROLE-documentation-M5-REPORTS-v1
+## 1 技术提交物
 
-## 原件复核
-
-文档岗M1轮亲自以只读方式读取根目录《作业提交注意事项.docx》的OOXML全部29条非空段落及附加文字部件，复核四组交付、研究报告提纲和封面字段。SHA-256为`c688f2a25c8a1c73803e7e958e8c50681a0484ef1f34a679fa8b100ce2d64f32`，去空白文字与根缓存submission-notes.txt一致。[读取记录](../../docs/reports/M1-submission-source-review.json)保存结果；原件含1个drawing，本次为文字/字段复核，不声称完成图形版式验收。不复制、上传或重写原件，也不生成最终DOCX。
-
-## 四组提交要求与当前映射
-
-| 原件组别 | 必交物 | 当前去向与状态 | 尚需完成 |
-| --- | --- | --- | --- |
-| 1 软件开发最终产品 | 最终代码 | 当前内容6ba9f94/规格1.1，后端5dcb/前端75；后收到同源CI412/30及Docker恢复通过，旧335/317分版保留 | 完整集成版本、冻结SHA、运行/构建说明；不是把几个基础PR当最终产品 |
-| 1 软件开发最终产品 | 测试结果文档 | 已有模块、真实MySQL/HTTP/局部MQ及新四job CI成功证据；历史失败保留 | [测试技术报告](test-results-report.md)已汇编；**未通过最终验收**：独立v1/P95失败保留；v2固定4c API/故障/UI仅阶段子集，UI新P2待修/复测，6051超951，整体未通过 |
-| 2 中间产品 | 需求报告 | [requirements-report.md](requirements-report.md)，8FR/9AC、角色/路径/量化目标和状态 | 当前为阶段工作稿；D005/D006已采用并显式冻结1.1/14件；SRS/M3八图及M5三新图/FR追踪持续更新 |
-| 2 中间产品 | 设计报告 | [design-report.md](design-report.md)，[architecture.md](../../docs/architecture.md)两组候选比较、门面DI/状态机/持久化/并发/MQ扫描/部署CI | 当前分概设/详设，八旧图/三新图与[M5真实函数I/O](../../docs/reports/M5-function-contracts.md)；最终运行/审核/独立验收证据继续补齐 |
-| 3 衍生物 | AI可执行规格相关文件 | [AGENTS](../../AGENTS.md)、岗位任务、[业务规则](../../specs/business-rules.md)、[OpenAPI](../../specs/contracts/openapi.json)、[字典/DDL/持久契约](../../specs/database/persistence-contract.md)等 | 组织约束已存在，当前业务技术规格已冻结1.1.0，原1.0父链保留，后续变化需审查与同步测试，不能只交AGENTS代替全部业务规格 |
-| 3 衍生物 | AI可执行规格相关文件的介绍或说明文档 | [独立AI规格说明阶段稿](ai-spec-guide.md)逐项介绍用途/读序/责任/评审冻结/同步测试；M0历史说明保留 | 独立阶段说明已形成；本说明已对应冻结规格/代码，并补M3函数I/O索引，最终完整版本仍需最终运行与验收证据，不能把阶段说明当已冻结验收 |
-| 4 研究分析 | “AI时代如何进行软件开发”研究分析报告 | [AI整理的证据材料](ai-development-report.md)与[学生自写模板](student-study-template.md)，供学生自行完成《AI时代对于软工的影响》 | **不是学生研究报告最终稿**；成品须学生本人写，**R001本人观点与R002课程建议已提供，最终研究正文仍须本人写**，真实人工修改/人类识别/课件清单及最终结果待补，不伪造本人经历 |
-
-## 研究分析要求逐项去向
-
-| 原件要求 | 工作稿位置 | 明确缺口 |
+| 提交项 | 当前文件/证据 | 状态 |
 | --- | --- | --- |
-| AI对软件开发的影响思考 | 学生自写模板第6节；AI材料只提供过程依据 | 本人[R001原话](../../records/reflections/R001-original.md)及[出处](../../records/reflections/R001-provenance.json)已收；完整研究成文仍由本人组织 |
-| 各阶段如何保证质量、技术与prompt/主要操作 | AI材料第2–5节、SRS/概设详设和M2追踪；学生模板第3–5节 | 最终代码/运行/测试结果仍待补；不编造效率改善数字 |
-| 与AI协作及真实踩坑 | AI材料第2/4/5节与原证据；学生模板第4节 | AI发现/纠正不能改写为学生亲历或人类独立识别 |
-| T44第12条AI使用留痕 | AI材料第6节人机归属，学生模板第7节 | 6版真实演进、12人工对照、3人工识别幻觉、5人工校正映射未证明达标；课件完整清单未取得 |
-| 本人特别做得好的地方/亮点 | AI材料第4节U001/U002与执行证据；学生模板第7节本人亮点 | 用户原创归属明确；效果无测量不写提效比例，本人评价待提供 |
-| 课程建议与意见 | 学生模板第8节，必须本人撰写 | R002已收到，私密原文不由本岗读取或公开；公开仅provenance/hash，由本人自行组织，不代写 |
+| 最终源代码/配置 | backend/t44、frontend/src及DB/MQ/扫描/部署 | 当前bc5的44Py/20TSVue；6307超5100，main未合 |
+| 需求报告 | requirements-report.md及M6-traceability | SRS范围/角色/8FR/NFR/9AC/异常和量化差距更新 |
+| 概要/详细设计 | design-report.md、M6-function-contracts/API表 | 模块/状态/ER/事务/会话/理由I/O及三新图 |
+| 测试结果 | test-results-report.md、composite-bc5a-ci | 510/89开发与同源Docker绿；独立/性能未全过 |
+| AI可执行规格 | ai-spec-guide.md、14冻结清单 | 规则/接口/DDL/读序、质量与真实归属说明 |
+| AI时代研究分析 | AI过程素材、student-study-template | 最终正文须学生本人写，尚未成品 |
 
-## 封面和最终导出
+## 2 研究过程要求
 
-用户已在root私密0600文件提供姓名、学号、专业班级、指导教师等，本公开仓库不存具体值。课程名称为“软件设计与开发实验”；报告日期按用户要求留空。最终本地Word封面仅从私密来源填入，不猜值，不把姓名学号提交公开Git。
+| 要求 | 已有可用来源 | 尚缺项 |
+| --- | --- | --- |
+| 各阶段技术与prompt | M6-process-checkpoint、原始prompt、准确Git链 | 本人独立组织和解释 |
+| 演进≥6版 | 三反馈链六个实际AI版本已核；单族要求过严已勘误 | 不计学生输入，也不自动完成AC09 |
+| 原创prompt亮点 | U001/U002原话、优化建议和具体Issue/PR分别保存 | 本人选择分析，不编提效数据 |
+| 人工≥12改码/≥3幻觉/≥5映射 | 当前未获本人完成证据 | 本人真实操作/判断、before-after和验证，不凑数 |
+| 本人观点/课程建议 | R001已公开出处；R002仅公开provenance | 本人最终研究成文；AI不读R002原文 |
+| 质量与debug | 初始设计C1–C4、会话/预检/理由真实红绿链 | 区分AI发现/修复和人的实际参与 |
 
-M3八图和本轮M5三图已真实渲染/PNG查看。M4四私密技术Word曾完成28原页逐页QA，截止2e/0448，不能当M5已导出。M5尚未导Word/未调用LO或重复marker；等待稳定截止后另按documents技能导出并逐页QA。软件结果与本人研究成文仍各自待齐。原件末“科创班”不替代用户私密提供的具体班级。
+## 3 Word和历史
 
-## M4本地审阅材料
+四份技术Word为需规、概设详设、测试结果、AI规格说明，不含学生研究正文。M4四稿原28页QA属于2e/0448快照；M5只有七类MD和三图，772收据不代表新Word或PR24合入。M6先保存MD/图，再将旧M4 DOCX/manifest/render PDF原样私密归档，M6另目录导出，逐页实际PNG QA；宽图按可读尺度安排。
 
-需规、概设详设、测试结果和AI可执行规格说明四份Word仅输出root .submission-private/review-documents，带用户私密封面且日期空，不提交Git。可复用导出器在scripts/docs；只以逐页PNG核对后的实际QA记录为准。学生研究正文不在四份之内，仍须本人写；R001原话已收不等于全文成稿。
+个人封面值只来自private cover-info，日期空，原Word/QA/个人值不公开。PR24为已合并M4，本阶段独立branch/draftPR与准确head/readback另记。公开[M6来源](../../docs/reports/M6-source-manifest.json)、[历史七稿索引](../../docs/reports/M6-historical-report-index.json)和图manifest供追溯，不以排版QA替代软件通过。
 
-## M5 当前来源与真实过程附件
+## 4 最终仍须处理
 
-- [M5追踪](../../docs/reports/M5-traceability.md)、[函数I/O及准确源码](../../docs/reports/M5-function-contracts.md)、[新三图及实看记录](../../docs/reports/M5-diagrams.md)、[过程事实](../../docs/reports/M5-process-evidence.md)对应需求审查/概设详设/各模块测试/debug和本人自写引导。
-- [R002公开provenance](../../records/reflections/R002-provenance.json)确认课程建议已提供；私密原文不抄入公开稿，最终学生研究正文不由AI代写。
-- cutoff后同源CI、短ABBA、独立fault/UI公告在测试报告分节；尚未公开的后续独立续测不引用。原M0–M4日志/提交/失败/QA保持时点，M5不重写历史结论。
+6307超1207、原v1正式P95三组失败、独立v3完整结果及最终准确头放行待证据。native阶段1认证/回环/停机和Docker小规模通过不替代完整native业务演示。学生本人研究、真实人工材料及课程过程完成项继续明确，不编造签署/评分或人为经历。
+
+附加可选阅读：[root整理的原始研究来源索引](https://github.com/HJY147/t44-dev-trace/blob/75d75da0bf3e1b0f3dbd7b6e09617572a96fb1fc/records/research/ai-software-engineering-primary-sources.md)。这是AI整理的四份原始摘要/机构页面索引与未作答问题，供本人自行阅读；不当本人研究正文或人工配额，跨研究耗时/任务量/2026选择效应指标不相加，也不用旧19%推断当前通用结果。

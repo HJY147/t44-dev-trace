@@ -1,36 +1,39 @@
 # T44 AI可执行规格相关文件说明
 
-M5技术工作稿，非最终验收；生产内容固定6ba9f94，当前1.1.0/14冻结文件，旧1.0/11文件和M4历史可恢复。AI文档岗整理，公开无个人封面值，日期空。
+本说明帮助接手者按真实版本读懂约束、运行边界和证据。应用固定bc5aef9，1.1规格14冻结文件不改；准确开发CI通过不等于最终验收。本文是AI整理的技术说明，不是学生研究正文。
 
-Agent-Role documentation；Prompt-Ref ROLE-documentation-M5-REPORTS-v1；Refs #9。
+## 1 文件用途和正确顺序
 
-## 文件用途与正确读序
-
-| 顺序/文件 | 约束作用 | 给AI的使用边界 |
+| 次序 | 文件 | 作用 |
 | --- | --- | --- |
-| 本次授权、[AGENTS](../../AGENTS.md)、岗位TASK、[layout](../../docs/collaboration/implementation-layout.md) | 责任目录、真实留痕、进程/依赖和隔离规则 | 组织约束不替代业务规格；只改本岗，不触独立私密内容 |
-| 原始T44及[requirements](../../specs/requirements.md)、[SRS](requirements-report.md) | 8FR/9AC、角色、输入输出、异常、非功能和追踪 | 原任务文本只读；需规开发前先形成，开发中补图/细化不倒填时间 |
-| [business-rules](../../specs/business-rules.md)、D001/D004/D005/D006 | 人采用的状态/延期/字段与工时边界 | 容量1–5、成员1–5+7不同；6/7可移工时，返工再验；不猜预算算法 |
-| [v1.1冻结清单](../../records/spec-freezes/v1.1.json)及[父清单](../../records/spec-freezes/v1.json) | 当前14项hash、1.0父链、采用/审查/时序 | 189dc冻结后正式实现；早期草稿披露保留，冻结非软件验收 |
-| [OpenAPI](../../specs/contracts/openapi.json)/[错误说明](../../specs/contracts/README.md) | 31路径/38操作/130 Schema；输入输出/错误/幂等/时域 | 外层1.1.0、候选结果schema_version仍1.0.0；不擅改1.1.1 |
-| [字典](../../specs/database/field-dictionary.md)/[DDL](../../specs/database/schema.sql)/[持久契约](../../specs/database/persistence-contract.md) | 18表226列、类型/约束/锁/事务/outbox/续扫 | 参数化和显式迁移；DDL本次不变；不关约束、不启动偷迁移 |
-| [概设详设](design-report.md)/[冻结后端设计](../../specs/backend-design.md)/[M5真实函数I/O](../../docs/reports/M5-function-contracts.md) | 模块进程、函数、时序/副作用/错误和复杂度 | 函数索引锁6ba，不保证未来行号匹配；它是AI据实现补充，非本人预写骨架 |
-| [评审模板](../../backend/t44/resources/review-template.json)/[升级规则](../../backend/t44/resources/escalation-rules.json) | 真实八段十项/三级配置，原文hash及版本 | 配置扩展实验证据与生产默认分开；synthetic metadata不当人的新批准 |
-| [D007](../../records/decisions/D007-visual-direction.md)/[视觉设计](../../docs/ui/warm-glass/DESIGN.md)/[来源许可](../../docs/ui/warm-glass/NOTICE.md) | 人定暖色/玻璃/圆角、先设计再导入；AI定细节 | 官方OpenDesign本地技能/模板，非App/MCP；原型不连接真实API |
-| [评审协议](../../docs/reviews/review-protocol.md)/[测试报告](test-results-report.md) | 准确SHA、八段十项、全源码覆盖与分层结果 | 技术限定复审不替整体、性能、规模或独立验收 |
+| 1 | AGENTS.md、岗位TASK、collaboration/team | 责任目录、实问/交接、独立测试隔离与真实性；不是业务验收结果 |
+| 2 | specs/requirements.md、business-rules.md | FR/AC、用户采用的业务规则和1.1容量生命周期 |
+| 3 | records/spec-freezes/v1.1.json | 父链/人的决定/限定审核及14文件hash；不以最新代码覆盖旧冻结 |
+| 4 | specs/contracts/openapi.json、字段字典/DDL/持久契约 | 38操作/130 Schema、类型、错误、幂等和18业务表226字段 |
+| 5 | specs/backend-design.md、实现边界、状态机/门面 | 按Call→Runtime→Business→UoW数据流编码，模块职责和事务不越界 |
+| 6 | reports/reviews、公开CI/独立报告、岗位handoff | 精确SHA及范围；不能把环境ready、collect或COMMENT当通过 |
+| 7 | M6函数I/O、API表、追踪、来源清单 | 当前源码、测试和报告对应关系，不改写原始事实 |
 
-## 修改与冻结规则
+完整来源见[M6清单](../../docs/reports/M6-source-manifest.json)，[函数索引](../../docs/reports/M6-function-sources.json)、[函数契约](../../docs/reports/M6-function-contracts.md)、[接口表](../../docs/reports/M6-api-contracts.md)均绑定bc5。执行命令沿README/责任岗说明，显式选择本项目库，凭据只能由对应受控环境读取，不进普通日志/公开报告。
 
-跨模块变化先由人明确业务含糊处、记原值/新值/影响/决定者；责任岗同步需求、接口、字段/存储及调用方/模块测试，准确设计SHA审核后由总协调冻结独立版本再正式实施。没有新冻结就不将未准入合同用于联调，不暗改旧清单。文档岗仅在报告/附录补图与过程，不修改14冻结件。
+## 2 约束如何指导AI
 
-当前真实顺序与早期草稿限制见[M5过程材料](../../docs/reports/M5-process-evidence.md)、[三新图](../../docs/reports/M5-diagrams.md)。M3八图已有渲染与PNG检查；本轮只新三图，是否已渲染以本轮manifest为准，不重跑未变旧图。
+需求有歧义时，先向人确认最终业务取舍；D001/D004/D005/D006是人的采用，生成实现及AI审核仍属AI。新变更须写需求和影响、设计/契约/DDL/测试，再申请新冻结，不能偷偷改14文件。普通已授权实现问题可自治修复，但不能把人力保护集合、决定权限或验收线改松。
 
-## 执行、测试与验收证据
+结构预检不执行完整业务守卫；纯domain Decision不表示SQL已提交；MQ确认不表示本人收到。前端只展示真实授权记录，不能把旧身份的异步响应写进新会话。history旧理由只做当前已授权页的保守响应投影，不根据相近时间/内容猜测或修改旧审计。
 
-模块入口、函数I/O及FR映射见[M5追踪](../../docs/reports/M5-traceability.md)；完整准确版本结果见[测试技术报告](test-results-report.md)。5dcb开发412/全43文件0排除、独立v2固定4c的已发布子集、旧e8/P95失败、同源6ba后收到的组合CI与Docker分别记录。当前6051超951，性能/整体验收无新通过，不由单次CI替代。
+## 3 质量保证和失败记录
 
-独立只读明确发布的脱敏报告，私密hash/路径不提供读取许可；不联系独立实例。R001本人观点与R002课程建议已收，研究正文仍本人写；人工12/3/5和单族六版不得由AI活动凑数。
+静态、契约、覆盖率是开发门禁；本机模块、真实MySQL/HTTP、MQ、Docker、独立验收、正式性能和Word QA层次分别记录。bc5的510BE/89FE、全源行89.21%/93.33%及Docker小规模集成有准确原件；6307超限、原P95三组失败和完整独立结果未完成保留。
 
-## Word与历史
+42243组合504绿后仍有真实HTTP evidence true误同1的反例。原失败报告/COMMENT不改，ad6先勘误、bcb窄修、bc5同反例绿只限定关闭。不可为补绿删旧用例、改独立预期或把HTTP失败归环境。开发岗和文档岗不读未发布独立cases/driver/raw/credentials，不联系tester；仅明确公开16份v2报告、v3收据/binding及新stage01两件。
 
-M4四份私密技术Word共28原页已完成排版QA，内容仅2e/0448；[QA记录](../../docs/reports/M4-word-qa.json)不覆盖M5。M5先交Markdown，未导Word/未调用LO/未重复marker。后续稳定截止和授权后再按documents技能导出并逐页检查，封面仅私密本地，日期空。
+## 4 提示词和人工归属
+
+[M6提示词证据](../../docs/prompting/M6-process-checkpoint.md)核到三条反馈链合计六条有意义且实际执行的AI派工版本，满足本轮数量证据；任务书没有要求全由学生输入或必须单族六版。M4/M5用单族不足判总量未满足过严，当前显式勘误，历史不改。建议优化版和proposed模板未执行，不计used。
+
+U001/U002原文是用户原创多岗隔离/阶段commit审核/GitHub协作亮点；AI优化建议单列。六条AI派工、AI改码和reviewer识别不计学生人工12修改、3幻觉识别或5上下文到代码证据。R001本人观点、R002课程建议已提供；R002仅公开provenance，学生最终研究仍本人组织成文。
+
+## 5 文档和交付边界
+
+七类当前MD与原M4/M5历史分开；M6新增三图及hash/渲染/逐张查看记录，旧8+M5三图不重复渲染。四份技术Word按本地私密封面、空日期、旧M4原样归档后另存M6，实际逐页PNG QA后才能称排版通过；没有学生研究正文。PR24仅M4已合并，本阶段另建文档draftPR，不自行APPROVE、发布success或merge main。
