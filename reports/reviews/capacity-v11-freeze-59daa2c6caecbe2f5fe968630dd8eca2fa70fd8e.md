@@ -64,3 +64,5 @@ requirements流程图明确仅表示准入条件，不规定/改变既有错误�
 **59daa2c6caecbe2f5fe968630dd8eca2fa70fd8e 的本次冻结源未发现剩余语义阻断；F-C1限定关闭，可由总协调生成独立1.1.0冻结清单。** 原1.0清单/摘要和首次失败报告保留。
 
 本结论不等于新manifest已存在/已审、业务实现完成或总体验收。新业务源码及真实回归按后续精确SHA另审；本轮未发reviewer/stage状态、未APPROVE、未合main，不改变旧e01失败。
+
+路径归档附记：本报告实际执行时脚本位于`agents/reviewer/evidence/capacity-v11-freeze/static_check.py`，该历史命令/输入/结果不改。总协调随后正式分配编号954，原文件逐字迁至`tmp/reviewer/954_capacity_freeze_static.py`，迁移前后SHA256均`fb5a755828a28764ca37e140951b4d39edbe1936b14f7808d19bfe1a80f98ca2`，断言不变，没有重跑129项；原117a69c仍可恢复旧路径。迁移回执见本岗path-migration-954.json。

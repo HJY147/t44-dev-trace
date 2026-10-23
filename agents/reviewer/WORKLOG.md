@@ -134,3 +134,7 @@
 - 只读已提交995两行fixture/路径diff及BE before/after原件hash：1130/38/2fail→0fail，归BE设计校验而非本岗/产品结果，原断言未降、旧时期结果不抹。实际续派原文追加，首次9aeb报告保留。
 
 - root明确优先提交既有完整报告/129证据，不等网络评论；本证据commit时本轮GitHub COMMENT尚未发布/回读，后续另补实际回执commit，不预写成功。当前无新增检查或scope。
+
+- 主证据117a69c1745b29f0b5be9306abb348933521ff45先交root用于freeze引用后，GitHub本轮COMMENT实际发布并GET读回全文相符：Issue https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6365052852；PR21 https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365054101。回执capacity-v11-freeze/github-comments.json。仅补评论证据commit，无新增检查/业务/status/APPROVE/合并。
+
+- 总协调正式分配954后，原静态校验脚本迁至tmp/reviewer/954_capacity_freeze_static.py，与主证据117a原文件字节完全一致、hash fb5a755828a28764ca37e140951b4d39edbe1936b14f7808d19bfe1a80f98ca2。仅位置迁移，无断言/内容变化、无129重跑，保留旧路径实际执行记录和原结果；报告只追加归档说明。未操作共享ledger（root维护next953），未触独立预留/私有目录。
