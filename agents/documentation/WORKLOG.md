@@ -160,3 +160,18 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 终件文档复查：30来源哈希、136链接、11冻结文件、10份M0/M1原记录均通过，产品测试0。
 
 - 按root实际授权边界纠正文档：HTTP服务主体仅escalation:write；消费者落通知与人类本人read/handle分开。补7图清单，明确源码核对未渲染，正式Word由后续统一渲染QA。
+
+## M3-CONTRACTS-v1：真实函数I/O与本人观点来源
+
+- 实际收到root ROLE-documentation-M3-CONTRACTS-v1，合074fab7及R001来源5b3bf30，独立分支codex/function-contracts。
+- 初读根records/reflections/provenance.json不存在，cat退出1；root纠正带R001-前缀后合真实来源并校验原文hash。原字/换行保留，未改写原话；不伪造provenance，不把reflection计改码/识别幻觉。
+- 读取FE API/workspace、API/Runtime/Business/Call/Workflow/domain、Rows/UoW/Engine/migrate/delivery/scans、MQ/扫描/升级和部署CLI。初次pika_adapter.py猜测不存在退出2，rg --files定位实际broker.py；未把读路径错误写应用缺陷。
+- 新docs/function-contracts.md覆盖各模块真实签名、形式、前后置、错误、事务/副作用/调用方；AST仅解析24源文件，索引38HTTP操作，不import应用。
+- R001已提供本人观点，AI材料/学生模板/提交对照改用原文及出处链接；课程建议/学生最终研究成文仍缺。未来def/#todo工作流与本项目预先冻结OpenAPI/DDL分清。
+- root M3八图真实渲染及PNG检查只引用公开记录，不冒充本岗看图/本轮渲染，也不改M2历史；提示词4226公开链和0人工计数按原范围。
+- 已向提示词岗真实回复M2产物/审查/M3出处，保留实发与事后重述区别。晚到M2岗位消息按原文另归档，不联系独立测试。
+- 性能窗口内未运行pytest/构建/Word/图渲染或业务请求；仅MD/JSON、源码静态解析/Git，最终DOCX继续pending。
+
+- 首轮文档静态校验误把root M3已更新的活动M2-traceability.md纳入“原始历史字节不变”，在该文件断言失败；纠正为M0/M1/M2原始收件/来源/校验记录，未修改活动追踪文件来迎合检查。复核通过，具体计数见M3-contract-validation.json。此为本岗检查范围错误，不计产品失败/人工识别。
+
+- 阶段静态核对通过：24文件/172真实签名、49精确函数锚点、38操作、135链接、11冻结文件、15原历史文件、8图源/产物hash；隐私检查无具体封面值，产品执行0。
