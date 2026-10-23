@@ -278,3 +278,8 @@
 - 控制阶段23:04:57.316057Z→deadline23:10:57.316057Z（独立prepare命令23:04:29不含于controller360秒，未隐藏）；全就绪/首两scan60.292813秒、API/consumer/UI各启动1次、scanner3代、额外TTL300轮换1次/新tick和锁、3个双项目scope服务凭据及ready会话全撤销属真实局部事实。控制器wait_scans验证4条，私密DB同UTC实际8条completed，口径分开。原16confirmed/26通知仅复核，当前新outbox=0，不称新publish。
 - 原整体actualexit1/summaryfalse/cleanupfalse真实保留：各应用stop与brokerstop局部true，post_stop_processes把serve-owner.json中的仍在写终稿的runner自己纳入，等10秒后唯一失败是self PID；不能将独立driver随后已wait退出和23:11:33后置全部PID/新端口gone倒填为原cleanup成功。原stdout字节gzip/实际driver返回码/私密原件SHA索引/公共白名单分别归档。
 - 后置源92SHA不变，旧5173/18080/5175/18084/5176/18089/MySQL13306监听baseline逐项相同。私密0600原件不上传，dump不读，已知literal扫描结果/范围hash另档；根已释放本机窗口，此后仅离线封档。原运行缺陷已即时上报，当前工具尚未修正，不再起服务、HTTP/SQL或第二360/4h。
+
+### NATIVE-BOUNDED-DEMO-v1 原件封档后先行窄修设计
+
+- 原失败封档f1598b9已push。按根新限定授权先补bounded-demo-design勘误：verify_stopped只检查四真实应用角色的全部generation与显式APIworkers/tracker；serve-owner runner须由外部driver wait独立确认，不能内部等待自己退出。10秒/身份/残留角色失败语义不放宽。
+- 仅计划现有871三类合成：同一live runner/已停应用先原红后修绿，真实旧代/当前代残留仍失败，API子进程残留仍失败；own/时钟/信号全替身，无OS动作或真实私密读取。当前尚未修改工具或运行新增案例；无第二360/4h/HTTP/SQL授权。

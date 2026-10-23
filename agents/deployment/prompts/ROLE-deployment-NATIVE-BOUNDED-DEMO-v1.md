@@ -17,3 +17,9 @@
 ## 根转交独占窗口与一次360秒实际准入原文
 
 准入原一次360秒有限serve实运行。DB已明确结束：23:02:14.376665Z–23:02:53.234248Z，38.842s exit0，18083已空、4own server全退出/本库可见连接0，后续只离线不发HTTP/SQL。本机窗口现在给native独占。root静态预检已commit records/validation/native-bounded-serve-coordinator-preflight.json，code exact4ef57b6129c712c1fad88de56775c53b84009b15 SHA942354...且capture AST=cc6。请新fresh run/准确controller prepare，复用已有受限依赖和bc5只读92files/t44_native_demo现有数据/原prior事件链接，不迁移/seed/reset；duration360从启动到到期包括准备实际以controller定义记录。证明ready、首两次真实60秒扫描、至少一次额外TTL300轮换/旧撤销/新tick、APIconsumerUI单次启动及自动到时ownedcleanup。原run1/2不回改，不把旧16事件当本轮新publish。遇小环境问题可查本人raw后窄修留痕，勿循环全跑刷绿；故障/清理失败立即上报事实。仅这次360，尚未准入长时4hserve；实际阶段封档后由专审新增范围才决定。运行中发start/ready/结束事实，日志私密0600、公件扫已知秘密，写Issue7/PR37阶段commit回读。
+
+## 原360失败后根的实际限定修正派工
+
+收到真实360退出1/自包含runner确定性原因；原失败必须保留。授权先原件封档→设计→窄修verify_stopped只选真实roles generations/APIchildren、external driver wait确认runner；同一自包含反例先红后绿、无OS动作即可。不要自主重跑360或长serve。最终交工具准确SHA+原360公共白名单结果/修复结果/源hash并FINAL，我再让独立专审agent复核，必要后授权一次新的360。所有受保护旧服务保持，当前本机窗口已释放。
+
+本人执行映射：先f1598b9封存原失败与独立postabsence，再补bounded-demo-design停机检查勘误；只现有871三类必要合成案例及verify_stopped角色generation选择，外部driver真实退出独立列证。没有第二实运行/HTTP/SQL，不把新源合成通过当360通过，完成GitHub准确回读后交根复核并结束。

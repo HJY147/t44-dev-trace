@@ -213,3 +213,5 @@
 - 根独占窗口准入后，4ef57b6真实360秒保持已就绪、两扫描60.292813秒、1次额外TTL300轮换/新tick；API/consumer/UI各1次，3自有服务会话全撤销，原16事件只复核无新publish。
 - 原exit1/cleanupfalse：旧verify_stopped误把仍写终稿的serve runner自身计入。各应用/broker停止局部true、external driver已wait退出及全部PID/端口后置absence单列，不回写原成功。证据native-bounded-demo-validation/serve-run1-*。
 - 全部旧监听baseline/92源hash保持；根已释放窗口，只封档后先设计窄修与合成红绿，不再运行360/长serve/HTTP/SQL；新范围审核仍pending。
+
+- 原失败先封档f1598b9后，先行设计勘误仅选择四角色全部generation及APIchildren，runner外部wait单列；计划同例红绿/残留拒绝三类合成，当前尚未改工具或执行。

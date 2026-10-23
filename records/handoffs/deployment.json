@@ -1,6 +1,6 @@
 {
   "role": "deployment",
-  "stage": "native-bounded-demo-original360-failure-sealed",
+  "stage": "native-bounded-demo-self-runner-fix-design",
   "commands_executed": [
     {
       "command": "pwd；检查祖先目录 AGENTS.md；rg --files 定位项目规则及本岗任务",
@@ -740,7 +740,7 @@
     "branch": "codex/deployment-bounded-demo",
     "design": "deployment/native/bounded-demo-design.md",
     "root_rfc": "61b23e6 specs/changes/native-bounded-demo-rfc.md",
-    "status": "original single360 exited1/cleanupfalse;sealed before design/fix;window released;no second run",
+    "status": "original360 failure sealed;stop resource selection amendment designed;code unchanged",
     "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "duration_seconds_range": [
       180,
@@ -774,6 +774,10 @@
     "actual_evidence": "agents/deployment/native-bounded-demo-validation/serve-run1-capability-and-failure.json",
     "failure": "verify_stopped includes live serve runner in state/serve-owner.json",
     "post_runner_exit_and_all_absence": "separate external wait/read-only observation;does not rewrite original cleanup",
-    "second360_or4h_admitted": false
+    "second360_or4h_admitted": false,
+    "original_failure_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
+    "fix_design": "deployment/native/bounded-demo-design.md unique360 amendment",
+    "planned_scope": "verify_stopped four role generations and API workers/tracker only;external runner wait separate",
+    "fix_actual_run": false
   }
 }

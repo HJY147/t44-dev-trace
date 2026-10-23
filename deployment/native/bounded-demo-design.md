@@ -40,3 +40,13 @@ state/serve-owner.json、serve-status.json、serve-stop说明和原始receipts�
 只复用871/873中受影响范围：duration边界、单次run、信号标记及handler恢复、到时进入cleanup、轮换顺序/失败转cleanup、不重启API/UI/consumer、stop身份失配不发信号、请求不等于完成、公共白名单。Popen/DB/信号/时钟用合成替身，不读真实凭据、不跑服务或全旧cycle。
 
 工具commit/守卫绿后向根报告精确source/hash与入口；360秒实际保持/额外轮换/到期全停另等窗口准入，原失败保留；专职新范围审后才另准入用户不超过4小时演示。资源后增能力不回填独立正式三组同次unknown或任何性能/验收结论。
+
+## 唯一360秒后停机检查勘误（先设计，后窄修）
+
+原4ef57b6/SHA942354…的360秒实际退出1、cleanup=false已先封存f1598b9；应用和broker逐项stop=true并不能覆盖post_stop_processes=false。旧verify_stopped把state中一切含pid的JSON都作为需消失的资源，新serve-owner.json记录的runner在写最终结果时当然仍活着，于是唯一self PID被等10秒并误判失败。外部driver随后wait得到真实exit1、独立后置absence为真，二者均不回写原清理结果。
+
+verify_stopped的输入收窄为控制器spawn生成的api/consumer/scanner/ui角色generation记录（保留所有代，不只current指针），以及既有api-children.json内workers/tracker显式子进程清单。role必须为四个已知值且含pid；runner元数据不是这些应用资源。输出仍是逐PID身份观察及all-absent布尔，原UID/开始时间/PGID/cmd/cwd检查、10秒上限、失配拒绝与无信号语义保持。不得用忽略所有活PID或仅检查当前代的方式绕过真正残留。
+
+runner退出由进程外的driver wait确认，并记录真实返回码/时间；内部verify_stopped不可能证明写此回执的自身已经退出。stop入口仍仅报告请求已发与已落盘清理事实，不能在runner仍活着时承诺其已退出；本次不扩展该入口或新增功能。
+
+必要合成只在现有871/ServeGuards增加三边界：live runner元数据+各角色全部代已退出应通过（同例先在原942上真红）；任一真实旧代/当前代仍活着仍失败；任一API worker/tracker仍活着仍失败。own/时钟/等待均替身，强制未调用OS信号，不读取真实凭据或启动进程/服务。红绿使用同一断言，原360 raw不改。新修复仅获得这些合成证据，未获第二360或4h准入，随后交根安排新增范围专审。
