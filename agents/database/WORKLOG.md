@@ -243,3 +243,7 @@
 - 设计42a8bcb已push后仅编辑955：新增固定pool-abba复用原控制器/客户端/仪表/server；同步32客户端后1/4秒相位计时，分别记录warmup/steady/cleanup；A/B只替换本地db副本，旧生产与默认不动。增加真实DBAPI connect/ping/do_close尝试及异常类/false ping/线程CPU，完整request_id/acquire计数和最近秩P95，不平均四段。
 - 过程内110秒截止预留10秒清理、子进程finally与端口检查；fixture0600/hash、2.1.6版本/官方源hash、已提交工具与bc5全部应用字节守卫。预检只有app可见本库PROCESSLIST0，已向root明确不能当跨账号全局无连接证明。
 - 工具静态首轮I001仅新增dataclasses import顺序，ruff-tool-run1.log保留；整理及格式化后最终限定Ruff通过，AST与生产bc5/14冻结hash全同（production-boundaries.json）。首次一个apply_patch上下文因格式化插空行未命中，无文件部分改动；定位后修正。尚未导入工具、HTTP/SQL/负载，工具commit后才做离线合成检查。
+
+- 工具checkpoint14490fe已push后完成离线验证（offline-validation.json/log）：导入零网络/进程；实际QueuePool2.1.6+合成DBAPI两波15借用证A5保留/10溢出与B15保留/0溢出，峰值15/最终open0；透明ASGI、4类CLI拒绝、mock固定ABBA8相位32/1s4s及首失败停止/清理、nearest-rank均通过。不是MySQL/HTTP或负载样本。
+- root明确授予独占执行窗口且native等待；先补统一profile_connections前/后计数helper并提交0f6fdf5，随后offline-final-probe验证绑定只查t44_profile/总dispose、startup异常后仍后检；旧离线已覆盖的9函数/类源码相同，当前工具hash与source边界已保存。仍没有实际HTTP/SQL/ABBA。
+- 具体执行argv/私密env路径/源hash/外层116+2+1秒进程组清理计划execution-plan.json先commit；22:35既有fixture原样使用，不刷新session、不改旧fixture/TTL或业务数据。将先报startUTC再运行一次，完成或失败立即释放窗口。

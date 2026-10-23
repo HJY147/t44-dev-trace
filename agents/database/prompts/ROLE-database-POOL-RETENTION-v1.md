@@ -7,3 +7,8 @@
 改进理由：在既有开发观测之上提出新的可证伪连接生命周期假设，先核准确依赖源码/总连接预算，并明确预热、稳态、清理/错误及未执行边界；不把旧正式失败归因给本机观察，不直接准入生产池改动。
 
 对应产物agents/database/pool-retention/design.md、source-verification.json、原955最小扩展及本岗阶段记录；尚未运行的比较保留pending。
+
+
+## 实际追加执行窗口（原文）
+
+> 执行窗口已给数据库岗独占本机开发负载：当你的工具commit与必要离线边界检查通过后，可立即执行原一次ABBA（最多120秒含清理），无需再等root问答。native尚未启动，我已通知其等你的明确结束。只该范围，先发start/结束UTC。使用backend本轮22:35的最新profile fixture（旧13点fixture可能已过期）；如需会话刷新，只允许已有合成profile账号正常login、复制到新私密fixture并freeze全部payload/hash，不改业务字段/旧fixture，不改鉴权/TTL或数据库持久值；如无必要不刷新。保留前后18083/ownedprocess与本库可见连接检查及局限，发现其他运行者停止，不扩大查询权限。四段原值不刷；完成/失败/清理后立即发窗口释放。
