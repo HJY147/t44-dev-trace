@@ -26,6 +26,7 @@ class OutboxStore:
                 "outbox_events",
                 {"status": 1},
                 predicates=(Pred("next_attempt_at", "le", now),),
+                order_by=("next_attempt_at", "id"),
                 limit=limit,
                 lock="update",
                 skip_locked=True,
@@ -35,6 +36,7 @@ class OutboxStore:
                     "outbox_events",
                     {"status": 2},
                     predicates=(Pred("lease_until", "le", now),),
+                    order_by=("lease_until", "id"),
                     limit=limit - len(rows),
                     lock="update",
                     skip_locked=True,
@@ -110,6 +112,28 @@ class OutboxStore:
             # Same event lock as fallback; terminal fallback cannot create a second reminder.
             count = self._notices(g, event, fallback=event["status"] == 4, now=now)
             return {"event_id": event_id, "created": count, "fallback": event["status"] == 4}
+
+    def recover_confirmed(self, *, confirmed_before, now=None, limit=100):
+        now = now or utc_now()
+        recovered = []
+        with self.factory() as uow:
+            g = uow.gateway
+            for event in g.confirmed_missing(confirmed_before=confirmed_before, limit=limit):
+                # Recheck after locking: a racing consumer may already have filled every notice.
+                count = self._notices(g, event, fallback=True, now=now)
+                if count:
+                    g.update(
+                        "outbox_events",
+                        {"id": event["id"], "status": 3},
+                        dict(
+                            status=4,
+                            fallback_at=now,
+                            updated_at=now,
+                            last_error_code="CONSUMER_TIMEOUT",
+                        ),
+                    )
+                    recovered.append(dict(event_id=event["id"], created=count, fallback=True))
+        return recovered
 
     def fallback(self, event_id, *, now=None, lease_token=None, error_code="MQ_UNAVAILABLE"):
         now = now or utc_now()

@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from contextlib import contextmanager
 from dataclasses import dataclass
 
-from sqlalchemy import DateTime, delete, func, insert, select, update
+from sqlalchemy import DateTime, delete, func, insert, select, text, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.sql import ClauseElement
 
@@ -195,6 +195,32 @@ class RowsGateway:
     def get(self, table, id, *, lock=None):
         rows = self.rows(table, {"id": id}, limit=1, lock=lock)
         return rows[0] if rows else None
+
+    def confirmed_missing(self, *, confirmed_before, limit):
+        """Fixed MySQL query: complete old events must not consume the recovery limit."""
+        if type(limit) is not int or limit < 1:
+            raise StatementRejected("Recovery limit must be a positive integer")
+        event = TABLES["outbox_events"]
+        # Only this fixed internal fragment uses JSON_TABLE; no dynamic SQL/identifier input.
+        missing = text("""EXISTS (
+            SELECT 1 FROM JSON_TABLE(outbox_events.recipients, '$[*]'
+                COLUMNS(recipient_id INT UNSIGNED PATH '$')) AS wanted
+            WHERE NOT EXISTS (SELECT 1 FROM notifications AS notice
+                WHERE notice.event_id=outbox_events.id
+                  AND notice.recipient_id=wanted.recipient_id))""")
+        statement = (
+            select(event)
+            .where(
+                event.c.status == 3,
+                event.c.event_type == 2,
+                event.c.confirmed_at <= to_db_time(confirmed_before),
+                missing,
+            )
+            .order_by(event.c.id)
+            .limit(limit)
+            .with_for_update(skip_locked=True)
+        )
+        return self._execute(statement, "rows")
 
     def insert(self, table, values):
         t = self._table(table)
