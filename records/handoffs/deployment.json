@@ -1,74 +1,128 @@
 {
   "role": "deployment",
-  "stage": "团队建立与设计准备",
-  "implementation_status": "未实现",
+  "stage": "部署/CI工程实现；待应用集成",
+  "implementation_status": "部署配置、操作脚本与CI配置已实现；应用和容器集成未验证",
   "artifacts": [
     "agents/deployment/WORKLOG.md",
     "reports/modules/deployment.md",
     "records/handoffs/deployment.json",
     "agents/deployment/github-stage-comment.md",
-    "agents/deployment/github-interface-question.md"
+    "agents/deployment/github-interface-question.md",
+    "compose.yaml",
+    ".github/workflows/product.yml",
+    "agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md",
+    "agents/deployment/runtime-backend-comment.md",
+    "agents/deployment/runtime-database-comment.md",
+    "agents/deployment/runtime-frontend-comment.md",
+    "agents/deployment/runtime-interface-comment.md",
+    "agents/deployment/runtime-validation/check-0.log",
+    "agents/deployment/runtime-validation/check-1.log",
+    "agents/deployment/runtime-validation/check-2.log",
+    "agents/deployment/runtime-validation/check-3.log",
+    "agents/deployment/runtime-validation/check-4.log",
+    "agents/deployment/runtime-validation/check-5.log",
+    "agents/deployment/runtime-validation/checks.json",
+    "agents/deployment/runtime-validation/ci/preflight.json",
+    "agents/deployment/runtime-validation/ci/static-0.log",
+    "agents/deployment/runtime-validation/ci/static-1.log",
+    "agents/deployment/runtime-validation/ci/static-2.log",
+    "agents/deployment/runtime-validation/ci/static-3.log",
+    "agents/deployment/runtime-validation/ci/static.json",
+    "agents/deployment/runtime-validation/dependency-sources.json",
+    "deployment/.env.example",
+    "deployment/README.md",
+    "deployment/api.Dockerfile",
+    "deployment/api.Dockerfile.dockerignore",
+    "deployment/nginx/api.conf",
+    "deployment/nginx/nginx.conf",
+    "deployment/ops.py",
+    "deployment/runtime_probe.py",
+    "deployment/tests/test_ops.py",
+    "deployment/vendor/SOURCE.json",
+    "deployment/vendor/compose-spec.LICENSE",
+    "deployment/vendor/compose-spec.json",
+    "deployment/web.Dockerfile",
+    "deployment/web.Dockerfile.dockerignore",
+    "scripts/ci/README.md",
+    "scripts/ci/check_frontend_coverage.py",
+    "scripts/ci/coverage.ini",
+    "scripts/ci/preflight.py",
+    "scripts/ci/requirements.in",
+    "scripts/ci/requirements.lock",
+    "scripts/ci/ruff.toml",
+    "scripts/ci/run_tests.py",
+    "scripts/ci/static.py",
+    "scripts/ci/tests/test_gates.py",
+    "scripts/ci/validate_config.py",
+    "agents/deployment/runtime-pr-body.md",
+    "agents/deployment/runtime-result-comment.md",
+    "agents/deployment/runtime-validation/remote-initial-failure.log",
+    "agents/deployment/runtime-validation/remote-initial.json",
+    "agents/deployment/runtime-validation/remote-initial-failure.log.gz",
+    "agents/deployment/runtime-validation/remote-log-provenance.json",
+    "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
+    "agents/deployment/runtime-handoff-comment.md",
+    "agents/deployment/runtime-pytest-reply.md"
   ],
   "interfaces": [
     {
       "peer": "frontend",
-      "status": "待冻结",
+      "status": "构建/路由设计由总协调确认；真实测试和覆盖率接口待交付",
       "inputs": [
-        "构建命令及产物目录",
-        "API 基路径及路由模式"
+        "Node24/pnpm11.25.0，冻结锁、typecheck、build和dist产物",
+        "HTML5 history、同源/api/v1、test:coverage的真实Vitest和完整TS/Vue报告"
       ],
       "outputs": [
-        "后续构建与代理配置、运行说明"
+        "web.Dockerfile、Nginx保留API前缀与SPA fallback、真实frontend CI"
       ]
     },
     {
       "peer": "backend",
-      "status": "待冻结",
+      "status": "设计通信确认；运行包、哈希锁、CLI和测试尚未实现",
       "inputs": [
-        "启动命令与端口",
-        "健康/就绪检查",
-        "配置键与优雅退出",
-        "依赖失败的错误及退出码"
+        "t44.api:app 同步API，4 workers",
+        "DATABASE_URL=mysql+pymysql://...、AMQP_URL、T44_SESSION_TTL_SECONDS",
+        "不透明会话；账号/撤销用t44.cli，迁移参数待实现确认",
+        "backend/pyproject.toml、requirements.lock哈希锁、t44和tests；contract/integration/fault markers"
       ],
       "outputs": [
-        "后续容器运行与故障操作说明"
+        "deployment/api.Dockerfile、Compose服务、CLI包装和真实缺实现失败门禁"
       ]
     },
     {
       "peer": "database",
-      "status": "待冻结",
+      "status": "18表DDL设计通信确认，迁移实现和版本/恢复核对尚未交付",
       "inputs": [
-        "MySQL 版本",
-        "迁移入口/顺序/可逆性",
-        "持久化与一致性备份范围",
-        "恢复核对标准"
+        "specs/database/schema.sql；未来t44.cli migrate --database，参数/退出码待编码验证",
+        "空库与明确库名、18表核对、DDL SHA及迁移版本检查待实现",
+        "当前备份限InnoDB表，无可编程对象/视图；恢复隔离目标已沟通"
       ],
       "outputs": [
-        "后续备份、恢复操作和验证证据"
+        "显式目标迁移包装、备份清单/校验和、仅新隔离项目/目标库的恢复工具与说明"
       ]
     },
     {
       "peer": "messaging",
-      "status": "待冻结",
+      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
       "inputs": [
         "RabbitMQ 版本与持久化要求",
         "消费入口、确认和重投",
         "启停顺序与故障观察入口"
       ],
       "outputs": [
-        "后续运行依赖及故障演练说明"
+        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
       ]
     },
     {
       "peer": "scheduler",
-      "status": "待冻结",
+      "status": "独立模块运行契约由后端/总协调确认；模块代码和幂等/续扫未实现",
       "inputs": [
         "进程拓扑与单实例约束",
         "持久状态、续扫和重试",
         "启停边界与观察入口"
       ],
       "outputs": [
-        "后续调度启停、重启和观测说明"
+        "Compose持久依赖、独立进程和本地进程/数据库健康检查；健康不代表消费/扫描业务已完成"
       ]
     },
     {
@@ -141,30 +195,102 @@
       "command": "gh issue comment 6 --repo HJY147/t44-dev-trace --body-file agents/deployment/github-interface-question.md",
       "exit_code": 0,
       "result": "https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6358272843"
+    },
+    {
+      "command": "git branch --show-current；git status --short；git log -1 --oneline",
+      "result": "本岗独立树codex/deployment-runtime，初始4b3d6e5且干净，不操作其他worktree索引"
+    },
+    {
+      "command": "uv pip compile --generate-hashes scripts/ci/requirements.in；uv pip sync --require-hashes（本岗deployment/.venv）",
+      "result": "仅安装安全纯检查工具，具体锁文件已保存；无Docker安装/构建"
+    },
+    {
+      "command": "deployment/.venv/bin/python scripts/ci/validate_config.py；Ruff；actionlint；git diff --check",
+      "exit_code": 0,
+      "result": "静态配置/脚本/工作流检查通过，原始命令及日志见agents/deployment/runtime-validation/checks.json"
+    },
+    {
+      "command": "python -m unittest discover -s deployment/tests -v；python -m unittest discover -s scripts/ci/tests -v",
+      "exit_code": 0,
+      "result": "11项部署安全测试+6项CI守卫测试通过；临时文件/mock Docker/合成报告，仅本模块验证"
+    },
+    {
+      "command": "T44_CI_REPORTS=agents/deployment/runtime-validation/ci python scripts/ci/static.py；run_tests.py contracts；run_tests.py coverage",
+      "exit_code": 1,
+      "result": "三个产品入口均因缺应用/依赖/测试及待集成规格明确失败，未执行应用测试；missing清单有原始证据"
+    },
+    {
+      "command": "gh issue comment 7/3/4/2 --repo HJY147/t44-dev-trace --body-file 本岗runtime-*comment.md",
+      "result": [
+        "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6358650740",
+        "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358651374",
+        "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358651899",
+        "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358904057"
+      ]
+    },
+    {
+      "command": "git commit（仅49个本岗文件，Agent-Role/Prompt-Ref/Refs #7 footer）；git push --set-upstream origin codex/deployment-runtime",
+      "result": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c 已提交并push"
+    },
+    {
+      "command": "gh pr create --draft --base codex/team-bootstrap --head codex/deployment-runtime --body-file agents/deployment/runtime-pr-body.md；attach_artifact",
+      "result": "https://github.com/HJY147/t44-dev-trace/pull/15，已成功attach，未合并"
+    },
+    {
+      "command": "gh run view 39912067161 --json status,conclusion,url,jobs,headSha；gh run view --log-failed",
+      "result": "四job真实失败于缺实现；Compose/Nginx语法及真实依赖容器初始化成功，未执行产品测试；完整回执见remote-initial*"
+    },
+    {
+      "command": "gh issue comment 7 --repo HJY147/t44-dev-trace --body-file agents/deployment/runtime-result-comment.md；gh pr edit 15 --body-file agents/deployment/runtime-pr-body.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289；PR正文已更新"
+    },
+    {
+      "command": "git diff --check；核对gzip还原字节；git commit并push修复",
+      "result": "6d713eb8fa5af419fe061c8c9b2061f2699472dc 已push；原始字节SHA见remote-log-provenance.json，检查通过、工作区/暂存区空"
+    },
+    {
+      "command": "只读总协调protection-v2响应；核对当前api.Dockerfile及ignore",
+      "result": "main五项required checks+strict/enforce_admins=true；contracts资源已COPY且不含sources；不改保护或重跑"
+    },
+    {
+      "command": "gh issue comment 3/7 --body-file 本岗runtime-pytest-reply.md / runtime-handoff-comment.md",
+      "result": [
+        "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
+        "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315"
+      ]
     }
   ],
   "results": [
-    "仅建立部署职责、环境依赖及上下游交接清单，未建立产品部署代码或流水线",
-    "应用 8核16GB/80GB SSD、压测 4核8GB/40GB SSD 为已有建议，无采购或性能达标证据",
-    "静态检查、契约测试、覆盖率三项主干门禁要求已识别，但运行机制未实现",
-    "已向总协调发送跨模块契约需求；未直接联系独立测试实例",
-    "已答复文档岗实际询问并记入本岗日志；新增两份本岗评论正文，发布阶段评论和调度接口问题",
-    "已实时核对当前main保护；产品静态检查、契约测试与覆盖率三项CI仍未实现，未设置审核成功或合并",
-    "旧初始化中仓库保护未配置的表述未经当时GitHub实查，模块报告已保留为历史说明并追加当前事实"
+    "历史M0：仅建立部署职责、环境依赖及上下游交接清单，未建立产品部署代码或流水线",
+    "历史M0：应用 8核16GB/80GB SSD、压测 4核8GB/40GB SSD 为已有建议，无采购或性能达标证据",
+    "历史M0：静态检查、契约测试、覆盖率三项主干门禁要求已识别，但运行机制未实现",
+    "历史M0：已向总协调发送跨模块契约需求；未直接联系独立测试实例",
+    "历史M0：已答复文档岗实际询问并记入本岗日志；新增两份本岗评论正文，发布阶段评论和调度接口问题",
+    "历史M0：已实时核对当前main保护；产品静态检查、契约测试与覆盖率三项CI仍未实现，未设置审核成功或合并",
+    "历史M0：旧初始化中仓库保护未配置的表述未经当时GitHub实查，模块报告已保留为历史说明并追加当前事实",
+    "RUNTIME：实现单机Compose/Docker/Nginx/运维脚本/恢复说明；本地静态验证和17项本岗安全/CI守卫测试通过",
+    "RUNTIME：实现static/contracts/coverage/frontend真实工作流；缺实现和空/跳过测试明确失败，全源码每语言只强制行覆盖率80",
+    "RUNTIME：官方镜像摘要/Actions提交/Compose schema来源固定留痕，未拉取/构建镜像；无公开未鉴权health API",
+    "RUNTIME：日志最小字段、JSON413且audit_id=null；恢复只新隔离目标，不清空业务库或卷",
+    "RUNTIME远程：已push并创建/attach草稿PR15，当前不合并、不发审核成功",
+    "RUNTIME远程：初次run39912067161在实现提交3857b2e上四项真实失败；基础配置语法/依赖容器初始化成功，应用测试未运行",
+    "RUNTIME收尾：镜像含权威contracts+database规格白名单，原始sources不复制；哈希锁及资源路径仍待后端实际交付验证",
+    "收尾原始日志包含传输尾空格：原始字节gzip及SHA256完整保留，阅读版只规范行尾空白；修正后不改变CI失败事实"
   ],
   "unverified": [
-    "云服务器购买、操作系统、地域、网络、域名/TLS、权限与费用",
-    "构建、启动、健康检查、组件版本与持久化",
-    "迁移、备份恢复、回滚及 RPO/RTO",
-    "静态/契约/覆盖率检查和全量测试",
-    "集成、独立验收、400并发10分钟、P95与吞吐指标"
+    "本机无Docker：镜像拉取/构建、Nginx执行、Compose启动和服务连通均未验证",
+    "应用包、哈希锁、迁移/账号CLI和真实模块测试尚未交付，本岗产品入口退出1",
+    "真正MySQL/RabbitMQ集成、故障、全量覆盖率及frontend真实测试尚未运行",
+    "备份/隔离恢复未实跑，迁移版本/表约束/业务数据/队列恢复尚待验证；RPO/RTO未决定",
+    "无服务器租赁、产品部署、独立验收或400并发/P95/吞吐数据",
+    "首次workflow已真实结束但失败于缺应用；后续PR自动运行状态以精确提交为准，不能当产品测试或覆盖率已通过"
   ],
   "questions": [
-    "由总协调冻结云环境与费用边界，现有规格建议是否保留？",
-    "各责任岗何时提交启动、健康检查、配置、版本、持久化及错误契约？",
-    "数据库备份一致性、保留周期、RPO/RTO及迁移回退边界如何确定？",
-    "门禁检查命令、覆盖率统计范围、报告路径和仓库保护由何版本冻结？",
-    "发布/回滚的授权拍板人、留痕位置及恢复核对标准如何确定？"
+    "后端何时交付哈希锁、t44应用、CLI退出行为和三类marker真实测试？",
+    "数据库迁移--database参数、镜像DDL路径、迁移版本及恢复核对命令尚待正式实现确认",
+    "前端test:coverage的真实Vitest参数/报告接口尚未确认，需覆盖所有TS/Vue生产源码",
+    "消息/调度持久化、故障回执、跨进程幂等及续扫须责任岗实现；不能以进程健康替代",
+    "main五项门禁已由总协调配置，产品真实测试/行覆盖率与独立审核未通过前不得合入；部署岗等待集成"
   ],
   "prompt_refs": [
     {
@@ -190,7 +316,57 @@
         "agents/deployment/github-stage-comment.md",
         "agents/deployment/github-interface-question.md"
       ]
+    },
+    {
+      "id": "ROLE-deployment-RUNTIME-v1",
+      "task_file": "agents/deployment/TASK.md",
+      "actual_dispatch": "总协调本轮实际派工与后续澄清",
+      "archive": "agents/deployment/prompts/ROLE-deployment-RUNTIME-v1.md",
+      "reason": "从初始化切换为真实部署与CI实现；记录边界、缺实现失败、鉴权/日志和每语言行覆盖率口径，不捏造提示词演进或人工改码",
+      "artifact_paths": [
+        "compose.yaml",
+        "deployment/",
+        "scripts/ci/",
+        ".github/workflows/product.yml",
+        "agents/deployment/runtime-validation/"
+      ]
+    },
+    {
+      "id": "ROLE-deployment-RUNTIME-HANDOFF-v1",
+      "source": "总协调实际收尾派工",
+      "archive": "agents/deployment/prompts/ROLE-deployment-RUNTIME-HANDOFF-v1.md",
+      "reason": "只收尾原始证据保真、准确提交/PR/CI限制及最新保护事实；不扩展设计，不计作提示词演进",
+      "artifact_paths": [
+        "agents/deployment/WORKLOG.md",
+        "reports/modules/deployment.md",
+        "records/handoffs/deployment.json",
+        "agents/deployment/runtime-pytest-reply.md",
+        "agents/deployment/runtime-handoff-comment.md"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T13:40:04+08:00"
+  "updated_at": "2026-10-23T06:44:10.857158+00:00",
+  "runtime_delivery": {
+    "implementation_commit": "3857b2e55fcb7fe99b38fa2d85b086662b762f6c",
+    "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/15",
+    "draft": true,
+    "base": "codex/team-bootstrap",
+    "artifact_attached": true,
+    "initial_actions_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/39912067161",
+    "initial_conclusion": "failure: missing application/tests/frontend manifest",
+    "issue_result": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359033289",
+    "subsequent_revision": "精确收尾提交由Git元数据/PR确定；初次CI证据仅绑定implementation_commit",
+    "final_implementation_commit": "6d713eb8fa5af419fe061c8c9b2061f2699472dc",
+    "main_required_checks": [
+      "reviewer/stage",
+      "static",
+      "contracts",
+      "coverage",
+      "frontend"
+    ],
+    "protection_evidence": "总协调root records/github/protection-v2-response.json（只读核对，不加入本岗提交）",
+    "final_issue_handoff": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6359142315",
+    "pytest_reply": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6359141775",
+    "handoff_revision": "最终事实记录所在提交由Git元数据/PR确定；final_implementation_commit是运行配置修复提交"
+  }
 }

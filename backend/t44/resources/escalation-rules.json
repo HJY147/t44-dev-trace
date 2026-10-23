@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "rule_version": "D001-v1",
+  "scan_interval_seconds": 60,
+  "levels": [
+    {
+      "level": 1,
+      "code": "near_due",
+      "after_planned_end_seconds": -86400,
+      "inclusive": true,
+      "recipient_roles": ["assignee"]
+    },
+    {
+      "level": 2,
+      "code": "overdue",
+      "after_planned_end_seconds": 0,
+      "inclusive": false,
+      "recipient_roles": ["assignee", "project_manager"]
+    },
+    {
+      "level": 3,
+      "code": "severely_overdue",
+      "after_planned_end_seconds": 86400,
+      "inclusive": true,
+      "recipient_roles": ["assignee", "project_manager"]
+    }
+  ]
+}

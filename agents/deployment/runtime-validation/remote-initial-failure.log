@@ -1,0 +1,114 @@
+static	Check configuration, Python static rules and implementation presence	﻿2026-10-23T06:32:15.7539853Z ##[group]Run python scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7540937Z ^[[36;1mpython scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log^[[0m
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7635019Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7635639Z env:
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7636111Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7636898Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7637715Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7638425Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7639616Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7640363Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.7640950Z ##[endgroup]
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8099464Z MISSING IMPLEMENTATION: backend/pyproject.toml
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8100695Z MISSING IMPLEMENTATION: backend/requirements.lock
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8101538Z MISSING IMPLEMENTATION: backend/t44
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8102289Z MISSING IMPLEMENTATION: backend/tests
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8103140Z MISSING IMPLEMENTATION: specs/contracts/openapi.json
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8104231Z MISSING IMPLEMENTATION: specs/database/schema.sql
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8105381Z MISSING IMPLEMENTATION: production Python implementation under backend/t44
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8106691Z MISSING IMPLEMENTATION: real application tests under backend/tests
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.8108103Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/ci/validate_config.py
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.9606575Z Compose schema and deployment invariants passed; Docker/Nginx runtime NOT executed.
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:15.9607770Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s deployment/tests -v
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2394168Z test_backup_never_silently_omits_programmable_objects (test_ops.OperationsSafetyTests.test_backup_never_silently_omits_programmable_objects) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2396630Z test_backup_wrong_target_rejected_before_docker (test_ops.OperationsSafetyTests.test_backup_wrong_target_rejected_before_docker) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2398879Z test_compose_target_ignores_inherited_docker_host_and_database (test_ops.OperationsSafetyTests.test_compose_target_ignores_inherited_docker_host_and_database) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2400733Z test_existing_file_or_symlink_is_never_overwritten (test_ops.OperationsSafetyTests.test_existing_file_or_symlink_is_never_overwritten) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2402493Z test_existing_recovery_volume_is_rejected_without_reset (test_ops.OperationsSafetyTests.test_existing_recovery_volume_is_rejected_without_reset) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2404248Z test_generated_secrets_are_independent_and_private (test_ops.OperationsSafetyTests.test_generated_secrets_are_independent_and_private) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2405697Z test_group_readable_configuration_is_rejected (test_ops.OperationsSafetyTests.test_group_readable_configuration_is_rejected) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2407185Z test_restore_live_database_is_rejected_before_docker (test_ops.OperationsSafetyTests.test_restore_live_database_is_rejected_before_docker) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2408485Z test_restore_modified_dump_is_rejected_before_docker (test_ops.OperationsSafetyTests.test_restore_modified_dump_is_rejected_before_docker) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2409745Z test_restore_plan_never_calls_docker (test_ops.OperationsSafetyTests.test_restore_plan_never_calls_docker) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2410927Z test_restore_requires_exact_project_database_confirmation (test_ops.OperationsSafetyTests.test_restore_requires_exact_project_database_confirmation) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2411679Z
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2411868Z ----------------------------------------------------------------------
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2412308Z Ran 11 tests in 0.010s
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2412479Z
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2412575Z OK
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.2413044Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s scripts/ci/tests -v
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3668262Z test_frontend_line_coverage_below_eighty_is_rejected (test_gates.TruthfulGateTests.test_frontend_line_coverage_below_eighty_is_rejected) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3670684Z test_frontend_only_line_threshold_is_enforced (test_gates.TruthfulGateTests.test_frontend_only_line_threshold_is_enforced) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3672869Z test_frontend_zero_tests_cannot_pass (test_gates.TruthfulGateTests.test_frontend_zero_tests_cannot_pass) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3674715Z test_junit_actual_success_required (test_gates.TruthfulGateTests.test_junit_actual_success_required) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3676595Z test_junit_empty_and_skipped_cannot_pass (test_gates.TruthfulGateTests.test_junit_empty_and_skipped_cannot_pass) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3679374Z test_unmeasured_vue_source_cannot_hide_behind_high_average (test_gates.TruthfulGateTests.test_unmeasured_vue_source_cannot_hide_behind_high_average) ... ok
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3680924Z
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3681286Z ----------------------------------------------------------------------
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3682110Z Ran 6 tests in 0.008s
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3682436Z
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3682616Z OK
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3683707Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m ruff check --config scripts/ci/ruff.toml deployment scripts/ci
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.3973745Z All checks passed!
+static	Check configuration, Python static rules and implementation presence	2026-10-23T06:32:16.4046043Z ##[error]Process completed with exit code 1.
+contracts	Require real application and test files	﻿2026-10-23T06:32:45.2471555Z ##[group]Run python scripts/ci/preflight.py 2>&1 | tee reports/ci/contracts/preflight.log
+contracts	Require real application and test files	2026-10-23T06:32:45.2472226Z ^[[36;1mpython scripts/ci/preflight.py 2>&1 | tee reports/ci/contracts/preflight.log^[[0m
+contracts	Require real application and test files	2026-10-23T06:32:45.2537160Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Require real application and test files	2026-10-23T06:32:45.2537502Z env:
+contracts	Require real application and test files	2026-10-23T06:32:45.2537697Z   PYTHONPATH: backend
+contracts	Require real application and test files	2026-10-23T06:32:45.2538360Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Require real application and test files	2026-10-23T06:32:45.2538634Z   T44_DATABASE: t44_ci
+contracts	Require real application and test files	2026-10-23T06:32:45.2538946Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Require real application and test files	2026-10-23T06:32:45.2539205Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Require real application and test files	2026-10-23T06:32:45.2539513Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T06:32:45.2539957Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Require real application and test files	2026-10-23T06:32:45.2540709Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T06:32:45.2541182Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T06:32:45.2541574Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Require real application and test files	2026-10-23T06:32:45.2541994Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Require real application and test files	2026-10-23T06:32:45.2542505Z ##[endgroup]
+contracts	Require real application and test files	2026-10-23T06:32:45.2907829Z MISSING IMPLEMENTATION: backend/pyproject.toml
+contracts	Require real application and test files	2026-10-23T06:32:45.2908543Z MISSING IMPLEMENTATION: backend/requirements.lock
+contracts	Require real application and test files	2026-10-23T06:32:45.2909049Z MISSING IMPLEMENTATION: backend/t44
+contracts	Require real application and test files	2026-10-23T06:32:45.2909383Z MISSING IMPLEMENTATION: backend/tests
+contracts	Require real application and test files	2026-10-23T06:32:45.2909857Z MISSING IMPLEMENTATION: specs/contracts/openapi.json
+contracts	Require real application and test files	2026-10-23T06:32:45.2910552Z MISSING IMPLEMENTATION: specs/database/schema.sql
+contracts	Require real application and test files	2026-10-23T06:32:45.2911112Z MISSING IMPLEMENTATION: production Python implementation under backend/t44
+contracts	Require real application and test files	2026-10-23T06:32:45.2911729Z MISSING IMPLEMENTATION: real application tests under backend/tests
+contracts	Require real application and test files	2026-10-23T06:32:45.2958935Z ##[error]Process completed with exit code 1.
+frontend	Require real frontend manifest and lock	﻿2026-10-23T06:32:14.2418585Z ##[group]Run test -s frontend/package.json && test -s frontend/pnpm-lock.yaml || {
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2419319Z ^[[36;1mtest -s frontend/package.json && test -s frontend/pnpm-lock.yaml || {^[[0m
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2420102Z ^[[36;1m  echo 'MISSING IMPLEMENTATION: frontend/package.json or pnpm-lock.yaml' | tee reports/ci/frontend/preflight.log^[[0m
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2420709Z ^[[36;1m  exit 1^[[0m
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2421029Z ^[[36;1m}^[[0m
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2470908Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2471643Z env:
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2472280Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2472728Z ##[endgroup]
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2552071Z MISSING IMPLEMENTATION: frontend/package.json or pnpm-lock.yaml
+frontend	Require real frontend manifest and lock	2026-10-23T06:32:14.2568755Z ##[error]Process completed with exit code 1.
+coverage	Require real application and test files	﻿2026-10-23T06:32:51.3212719Z ##[group]Run python scripts/ci/preflight.py 2>&1 | tee reports/ci/coverage/preflight.log
+coverage	Require real application and test files	2026-10-23T06:32:51.3213588Z ^[[36;1mpython scripts/ci/preflight.py 2>&1 | tee reports/ci/coverage/preflight.log^[[0m
+coverage	Require real application and test files	2026-10-23T06:32:51.3273219Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Require real application and test files	2026-10-23T06:32:51.3273512Z env:
+coverage	Require real application and test files	2026-10-23T06:32:51.3273685Z   PYTHONPATH: backend
+coverage	Require real application and test files	2026-10-23T06:32:51.3274289Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Require real application and test files	2026-10-23T06:32:51.3274529Z   T44_DATABASE: t44_ci
+coverage	Require real application and test files	2026-10-23T06:32:51.3274819Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Require real application and test files	2026-10-23T06:32:51.3275027Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Require real application and test files	2026-10-23T06:32:51.3275279Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T06:32:51.3275619Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Require real application and test files	2026-10-23T06:32:51.3275945Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T06:32:51.3276241Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T06:32:51.3276718Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Require real application and test files	2026-10-23T06:32:51.3277046Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Require real application and test files	2026-10-23T06:32:51.3277298Z ##[endgroup]
+coverage	Require real application and test files	2026-10-23T06:32:51.3870891Z MISSING IMPLEMENTATION: backend/pyproject.toml
+coverage	Require real application and test files	2026-10-23T06:32:51.3871393Z MISSING IMPLEMENTATION: backend/requirements.lock
+coverage	Require real application and test files	2026-10-23T06:32:51.3871671Z MISSING IMPLEMENTATION: backend/t44
+coverage	Require real application and test files	2026-10-23T06:32:51.3871893Z MISSING IMPLEMENTATION: backend/tests
+coverage	Require real application and test files	2026-10-23T06:32:51.3872141Z MISSING IMPLEMENTATION: specs/contracts/openapi.json
+coverage	Require real application and test files	2026-10-23T06:32:51.3872415Z MISSING IMPLEMENTATION: specs/database/schema.sql
+coverage	Require real application and test files	2026-10-23T06:32:51.3872738Z MISSING IMPLEMENTATION: production Python implementation under backend/t44
+coverage	Require real application and test files	2026-10-23T06:32:51.3873118Z MISSING IMPLEMENTATION: real application tests under backend/tests
+coverage	Require real application and test files	2026-10-23T06:32:51.3914690Z ##[error]Process completed with exit code 1.
