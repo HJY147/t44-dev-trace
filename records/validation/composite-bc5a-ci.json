@@ -1,0 +1,151 @@
+{
+  "at_utc": "2026-10-23T21:04:43.064108+00:00",
+  "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "backend_product": "bcb0e1bbb1440df958a04e87afea0e5b015d2f17",
+  "frontend_product": "c79cd99",
+  "runs": {
+    "primary_product_push": 40023062800,
+    "automatic_product_PR": 40023068752,
+    "docker_push": 40023062786
+  },
+  "primary_job_readbacks": {
+    "product": [
+      {
+        "id": 120652258244,
+        "name": "contracts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120652258536,
+        "name": "coverage",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120652258736,
+        "name": "frontend",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120652258787,
+        "name": "static",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "docker": [
+      {
+        "id": 120652257972,
+        "name": "docker-application",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "duplicate_policy": "Archive/count exact pushbc5a once. Automatic PR event separate and not double-counted. No manual rerun. New source follows genuine semantic repair, not repetition of original green source.",
+  "backend": {
+    "junit": {
+      "tests": 510,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "files": 44,
+    "line": [
+      2638,
+      2957
+    ],
+    "line_percent": 89.21203922894826,
+    "branch": [
+      659,
+      824
+    ],
+    "excluded_lines": 0,
+    "file_set_exact_git": true
+  },
+  "frontend": {
+    "tests": 89,
+    "passed": 89,
+    "failed": 0,
+    "pending": 0,
+    "files": 20,
+    "coverage": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "file_set_exact_git": true
+  },
+  "docker": {
+    "passed": true,
+    "workers": 4,
+    "projects": 2,
+    "tasks": 40,
+    "tables": 19,
+    "restoration_rows_and_checksums_equal": true,
+    "schema": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "scanner": {
+      "created": 16,
+      "completed": 2
+    },
+    "nonzero_expected_steps": [
+      {
+        "name": "shared-flock-rejects-second-scanner",
+        "exit_code": 1
+      }
+    ]
+  },
+  "source_count": {
+    "code": 6307,
+    "within_range": false,
+    "actual_committed_count": "records/metrics/source-count-strict-evidence-combination.json",
+    "count_snapshot_app_equal_to_source": true
+  },
+  "raw_archive": {
+    "official_zip_digests_verified": 5,
+    "product_files": 18,
+    "docker_files": 33,
+    "all_raw_hashes_roundtrip_verified": true
+  },
+  "review": "Reviewer reports unchanged original HTTP counterexample green onbc5a; limited followup report/publication pending. Original42243 semantic rejection preserved. No global release.",
+  "independent_acceptance": "Fresh v3 pre-frozen cases have received neutralbc5a runtime binding; no result presumed",
+  "performance": "No new formal result; original three P95 failures remain",
+  "scope": "Developer CI and synthetic Linux integration only; native app proof pending, not overall release"
+}
