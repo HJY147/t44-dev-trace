@@ -25,3 +25,10 @@
 最终报告可按“用户原文—AI 整理—实际执行—证据—限制”展示。保留 U001/U002 的原创归属；U003 是用户追加可见性决定。优化稿仍为 proposed，实际岗位派工另列，二者不混用。
 
 文档岗后续可向本岗索取原文路径、逐项说明、实际 prompt 引用及已取得证据目录；未知 Issue/PR/commit 暂留缺项，禁止编造链接或效果。产品尚未由本岗实现，这些候选不表示独立验收或最终作业留痕指标已经达成。
+
+## M3 已取得的执行证据（补充历史候选状态）
+
+- U001 固定岗位和交接已有真实角色提交，本岗 M0 `d1191002594ce58107ad0855b542fa31b1cafec4` 与 [Issue11 评论](https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077) 可追溯。无开发上下文测试的要求已写入 AGENTS；本岗未读未发布独立资料，不据此宣称隔离绝对有效或验收通过。
+- U002 的真实沟通见[前端幂等问题](https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122)、[设计审查失败](https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358801740)、[后端修订答复](https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6358981840)及 PR14/16/21；阶段 commit 和精确 SHA 审核实际存在。e01 failure 保留，不能把同账号 AI 岗位审核包装成另一真人 APPROVE。
+- 最新公开仓库可见性/MIT、FE b485 与 BE64b4 的指定远端 CI 已在 `M3-source-manifest.json` 实读；`M3-evidence-checkpoint.md` 区分修复、开发回归、人工归属与仍缺资料，不编提效数字或总体通过。
+- 上文“尚未取得”的项目是当时记录，本节仅覆盖明确新增证据；U001-O1/U002-O1 仍 proposed，用户原创归属不变，个人研究正文仍由学生本人写。
