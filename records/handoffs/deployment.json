@@ -658,11 +658,22 @@
     "issue": "NATIVE-CAPTURE-TIMEOUT-01",
     "review_commit": "c6883f2bd4e860737f4aede4002f4499d2a7e479",
     "baseline": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
-    "status": "design checkpoint before capture implementation",
-    "evidence": "agents/deployment/native-capture-timeout-validation/design-checkpoint.json",
+    "status": "capture-only fix, same public red→green and five targeted synthetic guards/Ruff/diff passed; root re-review pending",
+    "evidence": "agents/deployment/native-capture-timeout-validation/README.md",
     "original_red_preserved": true,
     "historical_actual_cycle_implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
     "new_fix_cycle_executed": false,
-    "private_inputs_read": false
+    "private_inputs_read": false,
+    "design_commit": "7f4845e",
+    "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
+    "same_public_counterexample_before": "same-counterexample-before-fix.json:1failure/exit1",
+    "targeted_checks": "capture-final-five-boundaries.json:5pass;normal0/nonzero7/timeoutthen0/timeoutthen-15/cleanupunconfirmednull",
+    "actual_child_codes_preserved": true,
+    "timed_out_is_permanent_failure": true,
+    "application_AST_except_capture_unchanged": true,
+    "runtime_unchanged": true,
+    "old_ApplicationGuards_unchanged": true,
+    "actual_os_processes_started": 0,
+    "actual_os_signals_sent": 0
   }
 }

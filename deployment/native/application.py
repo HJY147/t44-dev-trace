@@ -133,25 +133,34 @@ def capture(argv, cwd, env, logs, *, timeout=180):
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
     time.sleep(0.05)
     identity = process_identity(process.pid)
+    timed_out, stop_unconfirmed = False, False
     try:
         stdout, stderr = process.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
+        timed_out = True
         actual = process_identity(process.pid)
         if identity is not None and broker_runtime.same_owner(identity, actual):
             os.kill(process.pid, signal.SIGTERM)
         try:
             stdout, stderr = process.communicate(timeout=5)
-        except subprocess.TimeoutExpired:
-            raise RuntimeError("COMMAND_STOP_UNCONFIRMED") from None
+        except subprocess.TimeoutExpired as failure:
+            stop_unconfirmed = True
+            stdout, stderr = failure.output or b"", failure.stderr or b""
     invocation = uuid4().hex
     for suffix, value in (("stdout", stdout), ("stderr", stderr)):
         private_write(logs / (invocation + "." + suffix), value)
     receipt = {"started_at_utc": start, "ended_at_utc": utc(), "argv": list(map(str, argv)),
                "cwd": str(cwd), "exit_code": process.returncode,
+               "timed_out": timed_out, "stop_unconfirmed": stop_unconfirmed,
+               "success": not timed_out and process.returncode == 0,
                "stdout_sha256": digest(stdout), "stderr_sha256": digest(stderr),
                "private_output_id": invocation}
     write_json(logs / (invocation + ".json"), receipt)
-    if process.returncode:
+    if stop_unconfirmed:
+        raise RuntimeError("COMMAND_STOP_UNCONFIRMED")
+    if timed_out:
+        raise RuntimeError("OWNED_COMMAND_TIMEOUT")
+    if not receipt["success"]:
         raise RuntimeError("OWNED_COMMAND_FAILED")
     return stdout, receipt
 

@@ -230,3 +230,9 @@
 
 - 按根新实际派工，仅修公开审核c6883f2的P2 NATIVE-CAPTURE-TIMEOUT-01；读精确报告/原红JSON和log。原根绝对路径report不存在真实exit1，随后从共享Git对象c688精确读取公开文件，未读私密资料。原红字节/SHA复制另档，不覆盖审核岗原件。
 - 先补现有application-design超时勘误：首次超时永久失败，保留actual child returncode；清理也超时仍写事实/未确认/null真实码；正常0/普通非零与稳定错误码分开。当前未改capture，只设计与实际prompt归档；历史0a6真实cycle结果保持，不移植给新代码。后续只现有871的五个capture合成边界与同一反例，不跑服务/cycle/其他守卫。
+
+### NATIVE-CAPTURE-TIMEOUT-v1 窄修与受影响合成结果
+
+- 先行设计7f4845e后，仅改application.capture：首次超时即记timed_out=true，清理后actual childrc即使0仍写success=false并抛OWNED_COMMAND_TIMEOUT；普通非零保持OWNED_COMMAND_FAILED；再次超时记录stop_unconfirmed/null真实码与部分输出摘要，抛既有COMMAND_STOP_UNCONFIRMED。原PID拥有权/信号范围不变。
+- 同一公开原断言在原5ef源码重现真实红1项exit1，修后仅CaptureGuards五项（正常0、普通7、超时后0、超时后-15、清理仍超时/null）全绿。Popen/身份/等待/信号全部mock，真实OS进程/信号0，未读任何真实私密输入；未跑原ApplicationGuards、873、63中性、服务或cycle。Ruff初classvar诊断保留，补ClassVar及部分输出断言后五项/Ruff绿。
+- AST核application除capture全部相同，原ApplicationGuards类相同，runtime.py无变化；实际新application SHA 5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98。原0a6真实cycle成功保持，新修复没有cycle验证。原审核红/SHA、同例红绿、五项实际receipt和退出码、源/AST/diff证据见native-capture-timeout-validation。下一步仅commit/push与PR34/Issue7准确更新/readback后交根复审。

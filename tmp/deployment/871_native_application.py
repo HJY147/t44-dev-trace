@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from typing import ClassVar
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -289,6 +290,106 @@ class ApplicationGuards(unittest.TestCase):
 
 def digest_file(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+class CaptureGuards(unittest.TestCase):
+    """Only mocked finite commands; never construct an Application or open inputs."""
+
+    observations: ClassVar[list[dict]] = []
+
+    def scenario(self, replies):
+        directory = ROOT / ".agent-worktrees/.runtime/native-capture-timeout-guards"
+        directory.mkdir(mode=0o700, parents=True, exist_ok=True)
+        temporary = tempfile.TemporaryDirectory(dir=directory)
+        self.addCleanup(temporary.cleanup)
+        logs = Path(temporary.name)
+        process = SimpleNamespace(pid=123, returncode=None)
+        pending, timeouts = list(replies), []
+
+        def communicate(*, timeout):
+            timeouts.append(timeout)
+            outcome = pending.pop(0)
+            if outcome == "timeout":
+                raise appmod.subprocess.TimeoutExpired("synthetic-owned-command", timeout,
+                                                       output=b"synthetic partial stdout", stderr=b"synthetic partial stderr")
+            process.returncode = outcome
+            return b"synthetic stdout", b"synthetic stderr"
+
+        process.communicate = communicate
+        identity = {"pid": 123, "uid": os.getuid(), "pgid": 123, "started": "synthetic-start",
+                    "command_sha256": "synthetic-command-hash"}
+        result, error = None, None
+        with patch.object(appmod.subprocess, "Popen", return_value=process) as popen, \
+                patch.object(appmod, "process_identity", return_value=identity), \
+                patch.object(appmod.time, "sleep"), patch.object(appmod.os, "kill") as kill:
+            try:
+                result = appmod.capture(["synthetic-owned-command"], Path("/synthetic-owned-source"), {}, logs, timeout=1)
+            except RuntimeError as failure:
+                error = str(failure)
+        popen.assert_called_once()
+        if "timeout" in replies:
+            kill.assert_called_once_with(123, appmod.signal.SIGTERM)
+        else:
+            kill.assert_not_called()
+        receipts = list(logs.glob("*.json"))
+        receipt = json.loads(receipts[0].read_text()) if receipts else None
+        self.assertLessEqual(len(receipts), 1)
+        observation = {"scenario": self._testMethodName, "communicate_timeouts": timeouts,
+                       "returned_normally": result is not None, "error": error,
+                       "actual_child_returncode": process.returncode, "receipt": receipt,
+                       "actual_os_processes_started": 0, "actual_os_signals_sent": 0,
+                       "actual_private_inputs_read": False}
+        type(self).observations.append(observation)
+        return observation
+
+    def test_normal_zero_returns_success_without_timeout(self):
+        result = self.scenario([0])
+        self.assertTrue(result["returned_normally"])
+        self.assertIsNone(result["error"])
+        self.assertEqual(result["receipt"]["exit_code"], 0)
+        self.assertIs(result["receipt"].get("timed_out"), False)
+        self.assertIs(result["receipt"].get("success"), True)
+        self.assertIs(result["receipt"].get("stop_unconfirmed"), False)
+        self.assertEqual(result["communicate_timeouts"], [1])
+
+    def test_normal_nonzero_preserves_code_and_fails(self):
+        result = self.scenario([7])
+        self.assertFalse(result["returned_normally"])
+        self.assertEqual(result["error"], "OWNED_COMMAND_FAILED")
+        self.assertEqual(result["receipt"]["exit_code"], 7)
+        self.assertIs(result["receipt"].get("timed_out"), False)
+        self.assertIs(result["receipt"].get("success"), False)
+
+    def test_original_timeout_then_cleanup_zero_is_rejected(self):
+        result = self.scenario(["timeout", 0])
+        rejected = not result["returned_normally"] and result["error"] is not None
+        marker = result["receipt"] is not None and result["receipt"].get("timed_out") is True
+        self.assertTrue(rejected and marker,
+                        "NATIVE-CAPTURE-TIMEOUT-01: initial TimeoutExpired followed by cleanup exit0 was returned as successful command without timeout marker")
+        self.assertEqual(result["error"], "OWNED_COMMAND_TIMEOUT")
+        self.assertEqual(result["receipt"]["exit_code"], 0)
+        self.assertIs(result["receipt"].get("success"), False)
+        self.assertIs(result["receipt"].get("stop_unconfirmed"), False)
+        self.assertEqual(result["communicate_timeouts"], [1, 5])
+
+    def test_timeout_then_nonzero_preserves_actual_code(self):
+        result = self.scenario(["timeout", -15])
+        self.assertFalse(result["returned_normally"])
+        self.assertEqual(result["error"], "OWNED_COMMAND_TIMEOUT")
+        self.assertEqual(result["receipt"]["exit_code"], -15)
+        self.assertIs(result["receipt"].get("timed_out"), True)
+        self.assertIs(result["receipt"].get("success"), False)
+
+    def test_cleanup_timeout_records_unconfirmed_and_actual_null_code(self):
+        result = self.scenario(["timeout", "timeout"])
+        self.assertFalse(result["returned_normally"])
+        self.assertEqual(result["error"], "COMMAND_STOP_UNCONFIRMED")
+        self.assertIsNone(result["receipt"]["exit_code"])
+        self.assertIs(result["receipt"].get("timed_out"), True)
+        self.assertIs(result["receipt"].get("success"), False)
+        self.assertIs(result["receipt"].get("stop_unconfirmed"), True)
+        self.assertEqual(result["receipt"]["stdout_sha256"], hashlib.sha256(b"synthetic partial stdout").hexdigest())
+        self.assertEqual(result["receipt"]["stderr_sha256"], hashlib.sha256(b"synthetic partial stderr").hexdigest())
 
 
 if __name__ == "__main__":

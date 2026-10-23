@@ -182,3 +182,5 @@
 ### NATIVE-CAPTURE-TIMEOUT-v1 设计待窄修
 
 - 审核c688发现capture首次超时后child清理exit0会误返回成功，精确5ef/0a6原红与历史run2成功并列保留。先补现有设计，实际prompt另存；仅计划capture超时事实/实际返回码修复及五个合成边界，不启动服务、不读取私密输入，当前尚未修复。
+
+- NATIVE-CAPTURE-TIMEOUT-01已窄修：首超时永久失败、保留actual childrc；清理未确认也留回执。原同例真实红→绿，五项capture合成/Ruff/diff通过，应用除capture AST/原守卫/runtime未变。未读凭据/起服务/跑cycle，历史0a6结果不移植，新代码等待根复审。

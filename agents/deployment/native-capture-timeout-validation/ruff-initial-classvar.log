@@ -1,0 +1,13 @@
+RUF012 Mutable default value for class attribute
+   --> tmp/deployment/871_native_application.py:297:20
+    |
+295 |     """Only mocked finite commands; never construct an Application or open inputs."""
+296 |
+297 |     observations = []
+    |                    ^^
+298 |
+299 |     def scenario(self, replies):
+    |
+help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
+
+Found 1 error.
