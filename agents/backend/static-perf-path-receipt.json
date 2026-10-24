@@ -1,0 +1,108 @@
+{
+  "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "design_first": "0a84ff6699ca217a45794b1de053b8fe3aec3a6f",
+  "author": "backend AI",
+  "method": "manual static call-path decomposition;not trace,SQL/HTTP execution,load or testcase",
+  "source_files_sha256": {
+    "backend/t44/api.py": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+    "backend/t44/services/runtime.py": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+    "backend/t44/services/identity.py": "e27eca5dfb9074a0bf709bcc2f75fd47294c08c9736ea85ddc1968d06749ee01",
+    "backend/t44/services/tasks.py": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+    "backend/t44/services/application.py": "9fab03fcfba28aacca6f6a479fda5410b1cd3882df63955818d39e4a88ab16ea",
+    "backend/t44/services/common.py": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+    "backend/t44/services/workflow.py": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+    "backend/t44/messaging/facade.py": "61a840949cd0060153ad390fdd0ccc4b5a48f0cb02fa8acf40a11e0ccafa4509",
+    "backend/t44/scheduling/facade.py": "17e293ec0389020f9269e75dbf9dd927eee877426181165c46cd7951c68f8ab6",
+    "backend/t44/persistence/rows.py": "063ec7d2b8f70c1ab6436ff0ae6aead8e748a7626c5694541036b34c94e2817b",
+    "specs/database/schema.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "specs/contracts/openapi.json": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f"
+  },
+  "operations": {
+    "listTasks": {
+      "source": "Tasks.listTasks:92 -> common.page:77",
+      "SELECT": 10,
+      "UoW_commit": 2,
+      "parts": "2*projectauth4 +page1+count1",
+      "serialization_extra_queries": 0
+    },
+    "validateContractPayload": {
+      "source": "Runtime.execute:237 -> Business.validateContractPayload:108",
+      "SELECT": "4+has_task_id",
+      "UoW_commit": 1,
+      "business_guards_executed": false
+    },
+    "listEscalations": {
+      "source": "Business.listEscalations -> EscalationFacade.list:58 -> event:28",
+      "SELECT": "10+3*page_items",
+      "UoW_commit": 2,
+      "per_event": "outbox PK + allnotificationsbyevent +scan_runPK",
+      "page_max": 100,
+      "current_max_SELECT_given_full_page": 310
+    },
+    "listMyNotifications": {
+      "source": "NotificationFacade.list:22/_membership:13",
+      "SELECT_no_project": 9,
+      "SELECT_with_project": 10,
+      "UoW_commit": 2,
+      "parts": "2*globalauth2 +(1globalmemberrows or2scopechecks)+page1+count3",
+      "S_lock": "active membership rows during mainU;counts not page-bounded"
+    },
+    "listTaskDependencies": {
+      "source": "Business.dispatch:46 -> common.page -> Tasks.dependency_model:34",
+      "SELECT": "11+page_items",
+      "UoW_commit": 2
+    }
+  },
+  "write_preflight": {
+    "source": "Runtime.prepare:45/_claim:140;not old separate authorize+claimU",
+    "fresh_human_project": {
+      "SELECT": 10,
+      "INSERT": 1,
+      "SAVEPOINT_RELEASE": 2,
+      "UoW_commit": 1
+    },
+    "fresh_service_escalation": {
+      "SELECT": 8,
+      "INSERT": 1,
+      "SAVEPOINT_RELEASE": 2,
+      "UoW_commit": 1
+    },
+    "completed_replay_human_service_SELECT": [
+      9,
+      7
+    ],
+    "completed_replay_UoW_commit": 1,
+    "main_locked_scope_prefix_SELECT": {
+      "human_task_no_graph": 7,
+      "human_task_graph": 9,
+      "service_escalation": 6
+    },
+    "BLOCK_complete": "22+R SELECT/5DML/2savepointcontrols/2U;Roptionalreview read;not all error paths",
+    "dynamic_sizes": [
+      "wholeproject membership lockset",
+      "task predecessor count;empty IN still executes",
+      "project dependencygraph read/check",
+      "recipientmanager userreads in escalation"
+    ]
+  },
+  "future_batch_invariants": [
+    "authorized page/order preserved;dedup only IO IDs",
+    "outbox/notifications constrained sameproject plus derivedeventIDs",
+    "scan_runs has no project column;only authorizedpage-derivedrunIDs",
+    "allnotifications per event including noncurrent recipient/unexpected extra existing rows count forhandled_count",
+    "recipient order,nullable handled_at,empty notices and disposition priority preserved",
+    "missing outbox/run keeps original failure/audit boundary;no fabricated default",
+    "RCstatement snapshots/no newlocks or identitycache",
+    "empty page0extra,nonempty3batchreads only static candidate;not implemented or measured"
+  ],
+  "future_measurement": "bounded ownfixture dimensions,perrequest connected timing/SQLserverstats/CPUserialization after separate owner admission",
+  "existing_development_evidence_not_repeated": [
+    "agents/backend/bc5-contract-diagnostic/result.md",
+    "agents/backend/pool-retention-compat/caller-handoff.md"
+  ],
+  "no_independent_runtime_material_read": true,
+  "no_product_tests_or_spec_changes": true,
+  "runtime_services_SQL_HTTP_load_tests_executed": false,
+  "root_cause_or_benefit_claimed": false
+}
