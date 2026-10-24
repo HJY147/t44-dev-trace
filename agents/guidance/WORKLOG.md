@@ -50,3 +50,14 @@
 - GitHub连接器核对Issue10为本岗thread后，按已有授权发表阶段评论https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6374412075；再次fetch全部评论，仅存新评论的精确正文/id/url/login并逐字比较为true，证据M6-issue10-readback.json。没有发审核success或合并。
 - 实际执行仅git只读/worktree创建、rg/cat/nl/sed、内联Python文本/JSON/哈希、apply_patch及上述GitHub读写；未导入/启动产品、未运行测试/负载/浏览器/渲染，未申请或创建tmp练习脚本编号。
 - 收尾只做文档本地链接、源码hash/函数位置、JSON、R001出处、问答原文/Issue评论一致与git diff核对；不是产品测试。结构核对的实际数值见docs/guidance/M6-document-checks.json。最终仅显式暂存本岗产物并commit [skip ci]/push自身分支，准确SHA与范围由Git回执交root。
+
+## M8 五分钟导览（ROLE-guidance-M8-TOUR-v1，2026-10-24T08:30:39+08:00）
+
+- root实际派工要求缩短M6大表；先核对当前AGENTS，在独立worktree `.agent-worktrees/guidance-m8-tour` / `codex/guidance-m8-tour` 固定5ce98e0d46aec9ccde9a9a177d34137d6a651ae9；应用bc5aef9c62393134582affb7a690acb33ac2b833。
+- 先创建并实际提交14行设计 `agents/guidance/M8-design-plan.md`，SHA cdf9547c4ca09fa9a7a6c109b8a0530ab8f662ee；之后才写短导览和当前岗位记录。
+- 只读公开源码/需规/设计/入口说明及明确允许的native-user-preview-validation.json；没有打开其私密登录说明，没有读取独立私密、Word、R002或账号文件，未联系测试或睡眠用户。
+- 新增 `docs/guidance/M8-five-minute-tour.md`：1066中文字符、一张五分钟表、同一改期例子串需规/设计/前端/API事务/DB审计/测试；说明消息与扫描并行入口、已读与处理不同、本人的研究和真实行动边界。没有重复40函数大表、没有补造12/5/3。
+- 实际命令git/cat/rg/nl/sed与Python静态JSON/文本/hash核对；未运行产品、浏览器、服务、SQL或测试。一个猜测的公开coordinator-sample路径不存在，rg退出2后改用明确来源；初稿测试报告链接错名已发布前修正，不计人类识别或产品缺陷。
+- 核对结果：1066字符符合800–1200；一表、6本地链接有效；6个所用产品文件与bc5字节哈希相符；wake-up-review.md和5ce原文一致，未改。来源/结果存M8-document-checks.json；未静态目视截图，不把已有截图说成本岗执行。
+- 已实际在Issue10回复阶段：https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6377530862 。全文GET Issue10和评论，id/body/url/login精确核对；完整公开响应存M8-issue10-readback.json，正文存本岗m8-stage-comment.md。账号为授权HJY147，实际操作者明确AI guidance。
+- 实际Prompt原文及改进理由存本岗prompts/ROLE-guidance-M8-TOUR-v1.md；仅岗位实际派工，不计学生亲写或新演进版本。最后仅显式提交本岗文稿/记录并push自有分支，准确SHA由Git回执交root；未合并或发审核success。
