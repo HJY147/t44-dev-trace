@@ -335,3 +335,11 @@
 - P2补正：旧3ccaa5d的x509 -checkip退出语义不足；改openssl verify -verify_ip -purpose sslserver，keypair/expiry/manifest不变。4项针对性合成guard绿，真实Ubuntu正/错SAN待核；本机LibreSSL不支持该选项，实际两次exit1只算工具缺项。新helper SHA cc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9；旧checkpoint/原检查/Issue保留，不宣称SAN真实边界通过。
 
 - 最终实现6af63a94889692f38f1ad27e240b692328f461fe已push；Issue7初交接6381390079/P2补正6381416710全文GET均一致，seal含精确文件hash。只交工具能力，目标Ubuntu真实正/错SAN与云运行待核，原19历史不倒填新通过。
+
+### API-PYPI-DELIVERY-v1
+
+- api-pypi-delivery.py只在C树外私有0700runtime排他生成0600 Dockerfile/逐字同名sidecar ignore/manifest，核C HEAD/clean和三个固定输入hash；唯一pip HTTPS index渠道改变，no-cache-dir/require-hashes/完整lock/FROM摘要保持。输出四hash并明确不是原Dockerfile逐字构建。
+- .md提供API-only buildx、f910 policyv2/hash门禁、1200s/云1320s/距17>=1440s、linuxamd64/load/backendlocal，私有日志有界尾，不重建web/不自动后续服务或付费续时。原601s/124失败不倒填成功。
+- 14纯本地guard+语法/规范检查，无Docker/云/下载/CI/独立资料动作，无新增test文件；helper只生成，实际API构建与应用运行仍待root回执，20元/17:00保持。
+
+- API渠道交付实现81e50f1ea696fb434e9fef677465f1eeceb21057已推送；Issue7/6381506475全文GET与本岗body一致，final-seal含源码/产物hash。纯工具交付，实际API镜像构建仍null，无下载/云执行/新CI。

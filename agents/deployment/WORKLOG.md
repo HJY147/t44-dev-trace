@@ -432,3 +432,12 @@
 - 2026-10-24T07:23:13.574621+00:00审核P2：原x509 -checkip在错SAN也可能0，本岗初19guard的SAN替代漏覆盖此真实退出语义，原checkpoint/Issue记录保持。窄修为verify -CAfile -verify_ip -purpose sslserver，删除单独checkip，expiry/keypair/manifest不变；新增4项命令/失败传播/key mismatch/expiry合成guard绿。真实本机正/错SAN均因LibreSSL不支持-verify_ip退出1，语义null，Ubuntu实际边界尚未跑，不冒通过；旧helper没有云执行，无回滚。新hashcc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9，原失败和19guard字节不改。
 
 - 2026-10-24T07:25:41.365270+00:00修复实现6af63a94889692f38f1ad27e240b692328f461fe已push；初交接Issue7/6381390079与P2补正6381416710均通过GitHub插件实际发布并逐条完整GET，正文与本岗保存body逐字一致，原JSON/源码hash封档final-seal.json。第一次staged diffcheck发现comment本地副本多一EOF空行，修成与实际posted body一致单LF后diffcheck0，原exit2回执保留。没有重复旧19suite或发新CI/云动作；真实Ubuntu正错SAN与完整C build仍未通过，不再扩展实现。
+
+## API-PYPI-DELIVERY-v1
+
+- 2026-10-24T07:33:05.053565+00:00基root精确6df6b3cd3bd026ebd9bb00f86a71f071724cac1f新独立codex/deployment-api-pypi-delivery/worktree，只生成外置文件，不操作云/CI/服务/下载/账号，不读852或任何独立资料，也不动backend新fixture归属。先按root最小设计写核心供审，再14必要guard。
+- 固定产品C0dfb55c2191200d947c5423fd9ee74bb0812cc5a HEAD/tracked clean及Dockerfile3862/ignore302a/lock3b15固定完整SHA；唯一差量为pip追加HTTPS Aliyun index，no-cache-dir/require-hashes/完整lock/FROM摘要不变，不加HTTP/trustedhost/extraindex。新外置Dockerfile327e8ee979b982399adbe92e01fcf8b102c635e7ea479fa0f526c9826df581a8，逐字同名ignore和manifest全0600/O_EXCL，runtime0700且禁止C树内写。输出old/new/ignore/lock hash、changed_channel_only与not_original_Dockerfile_bytes，不冒原字节构建。
+- 单独文档API-only buildx：policyv2 f910全hash、外置Dockerfile+C context、linux/amd64、load/tagbackendlocal，保留web不重建；inner1200+TERM15、云1320进程树、距17>=1440秒。完整stdoutstderr0600私有日志，最终退出码/最多4096字节20行尾，仅root私有UI；不自动续时/重试/启动/回滚/删卷。原完整C v2 601s/124和web成功/API未完保持，20元/17:00不变。
+- 14项stdlib内存/临时文件guard通过：差量可逆、原安全flags/摘要、错源/lock/sidecar拒绝、ignore逐字、0700/0600、排他/C树内/公开父目录拒绝及文档bash -n。未建测试文件/未占849。真实CI配置Ruff/compile/diff-check后交付；没有实际镜像下载/构建结论，证据api-pypi-delivery-validation。
+
+- 2026-10-24T07:34:54.939796+00:00实现81e50f1ea696fb434e9fef677465f1eeceb21057已push；Issue7/6381506475经GitHub插件实际发布并完整GET，正文与本岗body-file逐字一致，JSON原件/完整源码hash封档final-seal。阶段仅工具/文档，root可先审实现；没有发新CI/执行镜像下载或构建，也没有读取backend fixture/852或任何私密验收材料。最终阶段只封档，不重复14guard，不改C/旧失败/预算或截止。
