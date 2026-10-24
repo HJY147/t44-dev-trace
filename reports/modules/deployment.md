@@ -247,3 +247,8 @@
 - 私密登录说明0600已写，入口5178/API18088/双合成项目/普通账号/提前stop和状态齐全；公开仅白名单与私密运维脚本用途/hash，无新公共可执行脚本，不覆盖864/862。交接root监测，agent不等4h，futurewait/post由detached driver届时如实记录。
 
 - 初始运行中证据dcad31d已push；Issue7#6377155221/已mergePR37#6377155474新评论均GET逐字一致，PR37历史正文/head4cee保持；仅评论说明后续14400新准入，非旧PRhead改写。末尾文档回执封档后root监测后台，4h最终结果仍未知。
+
+### PREPARATION-BUDGET-v1
+
+- 按root先行RFC，仅请求上限改1800及README/workflow说明；默认900/min60/strictint、精确SHA/path/加密输出/故障恢复、job40m及旧metadata/usage全保持。单处常量/description差量已精确比对。
+- 新1800接受先红，更新后仅13相关目标绿/Ruff绿，77无关未跑；60/1200/1800执行deadline用全mock核确仍取请求值。原件/sourcehash在agents/deployment/preparation-budget-validation。无本机服务/信号/独立私密访问，无新正式压力结果，不回填旧run；H2方法修订与原H可比性仍由独立岗明确报告。

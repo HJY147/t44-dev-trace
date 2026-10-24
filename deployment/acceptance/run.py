@@ -71,7 +71,7 @@ def validate_request(value):
     elif any(value.get(field) for field in ("harness_ref", "harness_path", "recipient_certificate_path")):
         raise ValueError("environment-check must not select an independent harness")
     timeout = value.get("harness_timeout_seconds", 900)
-    if type(timeout) is not int or not 60 <= timeout <= 1200:
+    if type(timeout) is not int or not 60 <= timeout <= 1800:
         raise ValueError("bounded harness timeout required")
     revision = value.get("request_revision", 1)
     if type(revision) is not int or not 1 <= revision <= 2147483647:
