@@ -1,0 +1,11 @@
+# 5cc候选首次CI失败：诊断阶段
+
+后端AI；归档任务标识ROLE-backend-DEPENDENCY-CI-FIX-v1（本地标识）。基自有已封E=00b8cc03f6818b0cce2543ad4e93d58c7d4196b8，新分支codex/backend-dependency-ci-fix；产品源仍5cc856d6fa94b1fdde32605543b53822f9747f00，未合入云C。
+
+实际派工原文：
+
+> 根实时GitHub连接器核40087756354已经完成：frontend/static success，但coverage job120854051910在全suite步骤FAIL、contracts job120854052090在真实services测试步骤FAIL。Docker40087993372/job120854735176 success。请立即在自己worktree新阶段先读取这两个精确公开CI原始日志，保存失败原件，区分业务回归/测试结构假设/环境原因，按原需求修复，不删断言不绕CI。候选5cc未merge。review当前只源码clear不代表CI绿。按scope先诊断设计后必要修复和回归，正常新源CI，不手动复跑旧run，不触碰独立私有目录/不联系839。若需要DB输入只发公开失败字段。给明确失败因及candidate新SHA后专审；root没有读取私有测试信息。
+
+先只取上述准确run/jobs官方metadata与两job日志，核head_sha=5cc并保留原始hash/gzip；不读任何独立文件/driver/cases，不联系839。日志若包含敏感运行值，原件仅ignored0600，公开脱敏副本另标范围，不能覆盖原失败。
+
+失败分类后先补具体修复设计，再改最小责任代码/测试并运行必要本地内存回归；不删断言、不改旧日志、不手动重跑旧run、不访问业务MySQL/服务/云、不跑负载。只有新候选正常push触发新源CI，完整结果单独归档。上一阶段36本地目标与源码clear结论不抵消本次准确CI失败。
