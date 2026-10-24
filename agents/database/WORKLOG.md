@@ -264,3 +264,10 @@
 - 真实依赖索引无task_id前导自动键，复合FK已由project前导现有键满足；tasks与notifications存在显式DDL以外自动FK键，不能从显式表推断不存在。当前依赖单列+ORDERid计划PRIMARY index/possible_keys NULL/rows估9216；project+task对照ref uq_dependencies_edge/rows估1且filesort，未实施。另两计划及全部SHOW原字段保留，未执行被解释SELECT。
 - 只有优化器估算，不是实际扫描/时延/6000任务代表分布/400并发或正式失败根因/收益。未读独立材料/测试、不联系tester、未新增测试文件、不动产品/DDL/API/用例/原freeze，不变更MySQL守护进程/全局配置、不动任何数据。
 - GitHub connector实际COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6377715017；github-readback.json保留原响应。本岗证据已核已知fixture Token/DSN/口令匹配0，生产/specs/tmp相对b40d888差异为空；本轮检查收口，不再SQL/负载/复测。
+
+## ROLE-database-SOURCE-BUDGET-RETURN-v1：静态规模审计先设计
+- 从root最新f986782创建独立codex/database-source-budget-return，读AGENTS/原计数口径、公开3b9c907结果和本岗AST/scan-run预算；不读独立私密材料。先行design限定仅归档已提交生产根、原cloc口径及可信等价净删预算，当前未执行新计数/测试/服务/数据库。
+- 先行d8f91d7已push后只静态计数：指定Git对象生产根归档、固定cloc2.10 hash，当前f986仍6307/66文件/缺1207；backend5208、frontend1099。66文件逐项code值与公开C6307/b66fa记录完全相同，当前sourcehash另存static-receipt.json；5分钟内已把数值摘要真实发root。
+- 已读公开3b9c907/N07一页、本岗AST/scan-run预算和重点生产职责；未读任何独立私密资料/实例，不联系tester。原仓储兼容删除/seed row-builder/公共create会话/未用CSS均已在当前数字内，不能重复扣。scan-run联合314→315净增1，AST整对估增3–53，旧CHECK-only39–46与validator10都未实施/准入。没有1207可信方案。
+- 新静态内存通知分页草案只保留在报告JSON：21→18片段、facade95→92/common132不变，联合227→224投影3；保留成员S锁、-id/谓词和rows→serialize→total/unread/unhandled顺序。只AST语法/行宽核对和cloc计量，不跑/变更生产或测试，实际生产节省0。首次cloc STDIN漏dash退出2已存static-count-first-error.log，按工具help更正后才计数；首次猜测records/metrics/source-count-C6307.json不存在，已按实际公开source-count-C.json定位，未据此推断产品问题。
+- 已真实发表Issue4 owner-facing候选/边界评论并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048，github-readback.json保存完整响应。只问BE/MQ后续准入时确认，不请求现在实施/测试。所有工作仅本岗文档，不改生产/DDL/API/freeze/计量规则/DB/服务/用例/CI配置，不执行HTTP/测试/负载/性能。原规模未达标、正式性能/独立/人工材料出口不被本报告改变；AI工作不记用户亲改。
