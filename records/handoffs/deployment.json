@@ -867,7 +867,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "static-followup-complete",
+  "stage": "performance-quote-ready-await-user",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -919,5 +919,23 @@
     "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857",
     "github": "body-file COMMENT;full GET body identical",
     "final_status": "complete static-only;no old execution claims assigned to new source"
+  },
+  "performance_quote": {
+    "base_sha": "43b75cfa1db9830e147c67ad5dc6b62f086c9a11",
+    "branch": "codex/deployment-performance-quote",
+    "prompt_ref": "ROLE-deployment-PERFORMANCE-QUOTE-v1",
+    "user_deadline": "2026-11-28",
+    "payment_authorized": false,
+    "quote": "agents/deployment/performance-retest-quote.md",
+    "evidence": "agents/deployment/performance-quote-evidence",
+    "currency": "USD",
+    "one_hour_estimate_before_tax_egress": "0.56",
+    "two_hour_estimate_before_tax_egress": "1.12",
+    "suggested_approval_budget": "3;not a hard vendor cap;user decision required",
+    "calibration": "separate0cost generator calibration planned;not executed;no SUT",
+    "provider": "AWS us-east1 c7i.2xlarge+c7i.xlarge;default shared tenancy",
+    "account_deposit_eligibility": "unknown;no account or credentials accessed",
+    "performance_guarantee": false,
+    "github": "pending actual Issue7 full GET"
   }
 }

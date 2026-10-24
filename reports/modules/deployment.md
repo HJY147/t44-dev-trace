@@ -258,3 +258,8 @@
 
 - 先设计b950a787642a25277809ade54f491fcd0dd47a9a，实施17e7ac5f05e3ab85cd7a0f2db439c7097c422dba：仅864的capture_output=True和871 unit unused _index；无断言/行为/路径/豁免/控制器变更。Ruff同两文件红→绿，内存compile与AST/stdlib核对通过；没执行/import driver或服务/私密副本。
 - 精确Git前像gzip、旧新hash和工具原件static-followup-validation；旧运行字节/CI40047094732红保留。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857实际COMMENT完整GET一致。BE需新候选新CI，当前本地静态绿不代表远端通过。
+
+### PERFORMANCE-QUOTE-v1 待审批报价
+
+- 官方现行EC2 feed直接小时价：应用c7i.2xlarge0.357+发压c7i.xlarge0.1785USD/h，us-east1 Linux8v16GiB+4v8GiB，同AZ私网、default shared tenancy。加120GiB gp3按秒比例/两IPv4，1h约USD0.56/2h约USD1.12（税/需收费公网出流量另计）；建议审批USD3，非厂商硬上限。
+- 一页agents/deployment/performance-retest-quote.md；原始定价及calc/sources在performance-quote-evidence。用户11月28日截止/未授权付费，账号/充值/验证门槛未知，0元发压器独立校准尚未执行，不承诺270ms。无账号/资源/购买/凭据/SUT/live变化。

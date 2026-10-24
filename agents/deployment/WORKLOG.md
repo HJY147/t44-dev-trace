@@ -338,3 +338,10 @@
 - 同两文件Ruff先复现UP022/B007红再绿；两源码仅内存compile不exec/import，864规范化AST/本机stdlib capture_output→两PIPE语义核对，871仅unused target改名且body无index load，归一AST相同。原断言/案例/路径/豁免不改，无需重复测试suite。本树application/runtime字节不变，未访问/操作活跃副本、root/controller/live服务或私密资料，无HTTP/SQL/信号/启动停止。
 - 原两Git前像、旧新sourcehash、Ruff红绿/AST证据在static-followup-validation；新源不是原已运行归档字节，旧CI40047094732红不重跑、不覆盖旧运行结论。实现17e7ac5f05e3ab85cd7a0f2db439c7097c422dba已先push交根让BE用于新候选。
 - Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857用本岗body-file实际发布并完整GET逐字一致，原JSON另档。仅角色记录封档，不再运行检查或服务；远端新候选CI待BE另发，不能以本地Ruff绿冒称远端通过。
+
+## PERFORMANCE-QUOTE-v1
+
+- 按用户11月28日截止、先报价再考虑/无付费授权，从43b75cfa1db9830e147c67ad5dc6b62f086c9a11新codex/deployment-performance-quote/worktree。仅官方浏览/公共定价GET，没有创建账号/资源、购买/充值或读取凭据；没有触部署代码/live/demo/旧包/automation或SUT。
+- AWS现行网页iframe配置核到ec2/ec2-ondemand-without-sec-sel，官方current feed发布2026-10-23T22:13:55Z。03:31:44Z核原始记录：us-east1 Linux c7i.2xlarge8v16GiB0.357USD/h与c7i.xlarge4v8GiB0.1785/h。首次Python CA错误/过时猜测URL404/legacy无C7i保留为查找过程，未拿旧博客当现价；系统curl保持TLS验证后官方准确feed成功。Vultr官方403，不用vultr2/非官方，不继续广泛选型。
+- gp3区域0.08/GiB月来自官方EMR对照表并与当前AWS feed0.08SKU交叉，按官方存储秒比例/31天算120GiB；两IPv4各0.005/h。1h精确0.5584032258、2h1.1168064516，表约0.56/1.12USD，未含税/需收费出流量等；建议待用户批准本次USD3预算，不是厂商硬封顶。原始snapshot/选中记录/算式/检索UTC/来源见performance-quote-evidence。
+- 一页报价明确2h余量、同AZ私网、shared host非Dedicated/独占物理核、账号充值验证门槛未知/无优惠假设/不含人工/非保证、不承诺270ms；付款前独立0元发压器校准尚未执行，不触SUT。停止计算后EBS/EIP可能继续费，终止并核盘/快照/EIP释放；不直接执行任何删除。
