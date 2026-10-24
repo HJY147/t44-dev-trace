@@ -1,14 +1,11 @@
-# 文档汇总岗位 M9 审阅导航
+# 文档汇总岗位 M10 夜间公开结果交接
 
-Agent-Role documentation；Prompt-Ref ROLE-documentation-M9-REVIEW-NAVIGATION-v1；Refs #9。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M10-NIGHT-TEST-HANDOFF-v1；Refs #9。操作者为文档AI，不是学生研究作者。
 
-- fetch后只解析一次origin/integration，固定728c4e8；新documentation-m9-navigation，先设计bf2bc5e再稿。
-- 新M9-review-navigation列35页四Word内容截止：M6三稿27页refe899、M7测试8页refa462；后发M8/运行另列，不扩旧QA。
-- submission-map开头直接解释外层MD原字节副本、相对链接未重写、须在内层源码树使用，并列4个源码内路径；M9只内层，新actualbundle未创建/封包前重取hash。
-- 本机公开入口docs/user-guide/wake-up-review.md；五分钟指导、DB5948只读及BEd834静态索引分别链接，不当新性能或根因。
-- 第1/3/4旧M7域加标题/截止说明，原第4正文完整保留；当前入口接M9，旧白盒未发表/native无cycle只属于当时版本。
-- 11公开来源/hash、旧4源MD/QA/manifest/14冻结不变、旧段原文/开头可见性/35页分配/链接/JSON/范围校验。
-- 只问BE1个公开事实，实际1条AI原样答复，不当学生/测试采访；无private/Word/R002/原始独立输出或服务/测试/CI/Word操作，不计prompt/human12-5-3。
-- H2尚无公开最终结论、新actualbundle未创建，不等结果占槽；Issue9实际全文GET后封档释放。
-
-- 实现6be5192本人push，Issue9评论6377836827精确ID全文GET逐字body/URL匹配；仅回执后立即释放，不纳新static修复、不等H2/候选CI。
+- 固定cc4c4ae独立树，先设计05f8508并push，再读两份明确发表H2摘要；未跟私密refs或读取H/H2/raw/Word/R002。
+- 新M10-night-test-handoff：六exit1、恢复5true1false（S2/866 application-ready），完整fixture/600秒调度不等有效400并发；整体INCONCLUSIVE不排名。
+- 两次866正式目标0/P95未测得，未以准备写或预热成功代替。发压自身调度与CPU、oracle2519/3156、超时提交与ACK差异、聚合漏成功均保留；旧v3原失败/H1 NOT_RUN不回改。
+- submission-map只改顶部包状态为manifest/外部receipt并接M10；第1至7节历史正文逐字保留。四Word35页源/QA/冻结/其他旧稿不改，不导Word。
+- 两公开source SHA256/Gitblob、14有限检查和引用通过；只复核公开材料对应，不称私密raw复核/新产品测试。
+- root派工提供helper两行本地Ruff/AST事实；候选C/PR42新CI仍待、后续dde39 gate由root决定，不查询或预填。旧74 static红保留。
+- 不问tester/用户，无服务/测试/CI/Word；不计学生12/5/3或重新计prompt版本。Issue9实际COMMENT及全文GET后封档释放，不等待后续结果。
