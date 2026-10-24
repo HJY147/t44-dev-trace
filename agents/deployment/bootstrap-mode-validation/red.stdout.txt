@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_umask_checkout_public_modes _______________________
+
+checkout = (PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-55/test_umask_checkout_public_mod0/checkout'), 'd2ba22100a34b84cb2c37ab5f0c703175539a27d')
+
+    def test_umask_checkout_public_modes(checkout):
+        root, head = checkout
+        assert mode(root / "backend/t44/cli.py") == 0o600
+        assert mode(root / "backend/t44") == 0o700
+        normalizer()(root, head)
+>       assert mode(root / "backend/t44/cli.py") == 0o644
+E       AssertionError: assert 384 == 420
+E        +  where 384 = mode((PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-55/test_umask_checkout_public_mod0/checkout') / 'backend/t44/cli.py'))
+
+tmp/deployment/846_bootstrap_modes.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_umask_checkout_public_modes - AssertionError: assert 384...
+1 failed in 0.44s

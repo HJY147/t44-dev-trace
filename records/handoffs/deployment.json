@@ -781,6 +781,11 @@
       "id": "ROLE-deployment-API-PYPI-DELIVERY-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-API-PYPI-DELIVERY-v1.md",
       "reason": "准确C不改/同名ignore保留的纯生成渠道交付；只改index且不冒原字节构建"
+    },
+    {
+      "id": "ROLE-deployment-BOOTSTRAP-PUBLIC-MODES-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-BOOTSTRAP-PUBLIC-MODES-v1.md",
+      "reason": "纠正AI umask/COPY非root读取遗漏；保持秘密私有和原C业务，真实失败及root修复分列"
     }
   ],
   "questions": [
@@ -922,7 +927,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "API-PyPI-external-delivery-reviewable-not-built",
+  "stage": "bootstrap-public-tracked-modes-fixed-local-only-cloud-repair-relayed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -930,7 +935,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T07:34:54.939796+00:00",
+  "updated_at": "2026-10-24T08:14:00.954393+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1343,5 +1348,26 @@
     "full_GET_body_identical": true,
     "final_seal": "agents/deployment/api-pypi-delivery-validation/final-seal.json",
     "status": "generator and bounded command sealed;actual cloud build not run by deployment"
+  },
+  "prior_stage_before_bootstrap_modes": "API-PyPI-external-delivery-reviewable-not-built",
+  "bootstrap_public_modes": {
+    "base_sha": "44e315a7a33d6802651013d911ecfc91731dd2a5",
+    "branch": "codex/deployment-bootstrap-modes",
+    "design_commit": "e9c9115",
+    "script": "deployment/ubuntu24-bootstrap.sh",
+    "script_sha256": "9786139dfb39583f8809fd2c39044ea8ea441f9df55ed22032d8c323190f1929",
+    "test": "tmp/deployment/846_bootstrap_modes.py",
+    "red": "old source umask077 canonical mode counterexample1failed",
+    "green": "7passed local Git fixture only",
+    "lint_syntax_compile": "Ruff test+embedded,bash-n,compile0",
+    "source_scope": "public tracked regular100644/100755 and parents only;root750;umask077 retained",
+    "private_env": "metadata snapshot/regularowned0600 unchanged;no contents read",
+    "no_recursive_git_or_private_untracked_chmod": true,
+    "cloud_observations": "root relay only;not deployment independent cloud verification",
+    "root_repaired_migration_exit_code": 0,
+    "no_complete_API_TLS_performance_claim": true,
+    "cloud_CI_service_execution_by_deployment": false,
+    "AI_implementation_review_miss_not_student_discovery": true,
+    "evidence": "agents/deployment/bootstrap-mode-validation"
   }
 }

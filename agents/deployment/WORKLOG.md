@@ -445,3 +445,7 @@
 ## BOOTSTRAP-PUBLIC-MODES-v1 先设计
 
 - 2026-10-24T08:07:59.591561+00:00基root44e315a7a33d6802651013d911ecfc91731dd2a5新独立codex/deployment-bootstrap-modes/worktree。先写bootstrap-mode-design.md，再仅修source阶段tracked权限；保留umask077/private.env，不改产品C/镜像/服务/CI，不读852。测试846已root分配；后续原红和修后绿分开保留。
+
+- 2026-10-24T08:14:00.954393+00:00846本地真实Git clone在umask077下产生cli.py600/目录700，旧source无mode后处理导致公开644断言红（1fail），原件/旧SHA保留。窄修内嵌Python仅source阶段，60s、C HEAD/clean、index100644/755、公开父755/根750，整体预检owned regular/no-hardlink、O_NOFOLLOW+fchmod；保留umask077，.env只元数据600前后guard，不walk.git/私有untracked。修后7passed，test/embedded分别CI Ruff0、bash-n/compile0；没有云/服务/CI动作。新脚本SHA9786139dfb39583f8809fd2c39044ea8ea441f9df55ed22032d8c323190f1929。
+- root转述真实失败15:53:55<1s/1 No module t44.cli；原root-owned COPY不可被UID10001读，web两nginx配置600/UID101UNREADABLE。root按Git模式修3919files/312dirs，.env600/gitclean；API15:59:23/110s0 image2f651f9d…116e、web16:02:34/82s0 image3255b485…68bd且非root可读，Ccli da883…hash核验；迁移16:03:00/4s0。完整新imageID/root转述来源分列root-cloud-relay.json，旧image只给前缀不补全，保留pre-mode-repair和原601s/124。
+- 本岗AI实现与前轮AI限定审核漏查umask077→COPY权限→非root读取边界，root AI诊断/修复，不归学生发现。新工具只预防后续source，未在现云机重跑，镜像/迁移回执不冒完整API/TLS/私网/正式性能通过；C业务/20元/17:00不变，未接触852或任何独立资料。

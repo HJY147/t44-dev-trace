@@ -78,6 +78,109 @@ case "$1" in
     fi
     [[ $(git -C "$SOURCE_DIR" rev-parse HEAD) == "$PRODUCT_SHA" ]] || fail 'HEAD differs from exact approved C.'
     git -C "$SOURCE_DIR" diff --quiet HEAD -- || fail 'Tracked source differs from approved C.'
+    # Keep umask077 for secrets; normalize ONLY public tracked objects for non-root COPY readers.
+    bounded 60 python3.12 - "$SOURCE_DIR" "$PRODUCT_SHA" <<'T44_PUBLIC_MODES_PY'
+# T44_PUBLIC_TRACKED_MODES_BEGIN
+import json
+import os
+import stat
+import subprocess
+import sys
+from pathlib import Path
+
+
+def private_snapshot(root):
+    try:
+        value = (root / ".env").lstat()
+    except FileNotFoundError:
+        return None
+    if (not stat.S_ISREG(value.st_mode) or stat.S_IMODE(value.st_mode) != 0o600
+            or value.st_uid != os.geteuid()):
+        raise ValueError("unsafe_private_env")
+    return tuple(value) + (value.st_mtime_ns, value.st_ctime_ns)
+
+
+def set_public_mode(path, mode, previous, regular):
+    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        current = os.fstat(descriptor)
+        if ((current.st_dev, current.st_ino) != (previous.st_dev, previous.st_ino)
+                or current.st_uid != os.geteuid()
+                or (regular and (not stat.S_ISREG(current.st_mode) or current.st_nlink != 1))
+                or (not regular and not stat.S_ISDIR(current.st_mode))):
+            raise ValueError("public_object_changed")
+        os.fchmod(descriptor, mode)
+    finally:
+        os.close(descriptor)
+
+
+def canonical_modes(root, expected_sha):
+    if not root.is_absolute() or root.resolve() != root:
+        raise ValueError("canonical_source_required")
+    root_stat = root.lstat()
+    if not stat.S_ISDIR(root_stat.st_mode) or root_stat.st_uid != os.geteuid():
+        raise ValueError("owned_source_required")
+    def git(*arguments):
+        return subprocess.run(["git", "-C", str(root), *arguments], capture_output=True,
+                              check=True, timeout=5).stdout
+    if git("rev-parse", "HEAD").decode().strip() != expected_sha:
+        raise ValueError("wrong_HEAD")
+    git("diff", "--quiet", "HEAD", "--")
+    private_before = private_snapshot(root)
+    files, parents = [], set()
+    for record in git("ls-files", "--stage", "-z").split(b"\0"):
+        if not record:
+            continue
+        header, name = record.split(b"\t", 1)
+        git_mode, _, stage = header.split()
+        relative = Path(os.fsdecode(name))
+        if (git_mode not in {b"100644", b"100755"} or stage != b"0"
+                or relative.is_absolute() or ".." in relative.parts
+                or ".git" in relative.parts or relative.name == ".env"):
+            raise ValueError("unsupported_Git_mode_or_private_path")
+        path = root / relative
+        value = path.lstat()
+        if (not stat.S_ISREG(value.st_mode) or value.st_nlink != 1
+                or value.st_uid != os.geteuid()):
+            raise ValueError("unsafe_public_file")
+        files.append((path, 0o755 if git_mode == b"100755" else 0o644, value))
+        parent = relative.parent
+        while parent != Path("."):
+            parents.add(parent)
+            parent = parent.parent
+    if not files:
+        raise ValueError("empty_public_checkout")
+    directories = []
+    for parent in sorted(parents, key=lambda value: (len(value.parts), str(value))):
+        path = root / parent
+        value = path.lstat()
+        if not stat.S_ISDIR(value.st_mode) or value.st_uid != os.geteuid():
+            raise ValueError("unsafe_public_directory")
+        directories.append((path, value))
+    # Preflight completed before any chmod. No os.walk, .git/.env or untracked recursion.
+    for path, previous in directories:
+        set_public_mode(path, 0o755, previous, False)
+    for path, mode, previous in files:
+        set_public_mode(path, mode, previous, True)
+    set_public_mode(root, 0o750, root_stat, False)
+    if private_snapshot(root) != private_before:
+        raise ValueError("private_env_changed")
+    if git("rev-parse", "HEAD").decode().strip() != expected_sha:
+        raise ValueError("HEAD_changed")
+    git("diff", "--quiet", "HEAD", "--")
+    return {"public_tracked_modes": "canonical", "tracked_files": len(files),
+            "tracked_parent_directories": len(directories), "source_root_mode": "0750",
+            "private_env_unchanged": True, "git_or_untracked_recursively_chmodded": False}
+
+
+if __name__ == "__main__":
+    try:
+        print(json.dumps(canonical_modes(Path(sys.argv[1]), sys.argv[2])))
+    except (OSError, ValueError, subprocess.SubprocessError):
+        print(json.dumps({"error": "TRACKED_MODE_NORMALIZATION_FAILED", "state_requires_observation": True}))
+        raise SystemExit(1) from None
+# T44_PUBLIC_TRACKED_MODES_END
+T44_PUBLIC_MODES_PY
     printf 'Exact source verified:%s\nDirectory:%s\n' "$PRODUCT_SHA" "$SOURCE_DIR"
     ;;
 esac
