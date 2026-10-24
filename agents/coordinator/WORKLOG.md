@@ -76,3 +76,11 @@
 - 原四小时bc5演示按既定03:49:43Z截止自然结束，driver/post实际0、清理约4.11s、78追加轮换、89登记进程退出、本run端口释放、九protected元数据与baseline一致。部署04c1027实得投影/完整GitHub回读已合入035d08d，无补跑/续期/重启；只是生命周期证据，非全时健康/正式性能。原8h窗口及PAUSED automation不重开。
 - 团队各岗Git worktree/提交/Issue全文GET保留。root合并角色日志产生实际冲突，文本保留双方增量、JSON核共同差量后合并：quote阶段共同stage一项；自然结束阶段stage/updated_at/prompt_refs三项。第一次stage-only断言失败由set-e停止下游提交，再据真实三项修正并留独立receipt；原记录不丢失。一次GitHub push远端failed，先核远端仍d530，再普通重试成功035d08d，无force。只读探测还曾误猜不存在文档/脚本路径，纠正后读实际列表，无产品操作。
 - 固定提示词岗f9efb47封本轮真实20公开来源过程，旧用户U001/U002原创亮点继续选用，不替写学生研究正文/12-5-3。新fork-none independent_release_v6仅获新freeze中性资料，855只许私有黑盒设计封存，禁止应用/旧用例/开发上下文及执行，等待另行可执行工具freeze与隔离环境准入。
+
+## 2026-10-24 D008开发集成及本阶段最终核验
+
+- C0dfb从d530freeze后实施，仅workflow既有require错误参数净增3有效行；856同字节旧3红8绿→新11绿，旧986四目标绿。专职8659审核/PR43准确C COMMENT全文GET无新增实质代码阻断。root实际查product40060857352四jobs及Docker40060980119成功，并收到owner原件事实后，以da2d308限定整合开发；原main不动。root对C与整合后生产/测试/CI/部署/spec输入git diff为0，不把后续文档合并HEAD冒成原CI提交。
+- E83015a封新原件后root另行核archive binding：51份公开gzip压缩/解压SHA及字节数，5份ZIP记录SHA对官方metadata digest（root未重读ignored原ZIP），run两head=C/attempt1/success；JUnit522且0失败错误跳过/856收集11，Py44与Git全量集合匹配/excluded0/行2638/2957，FE89/20 TS-Vue实际全量集合。Docker真实checkout f8c及其双父由选定官方日志/实际Git对象核实；C与该merge的171运行root文件mode/blob/内容SHA逐项重核，非整个commit相同。读新cloc66文件求和6310、BE5211/FE1099，上限仍差1210。未重跑产品、CI、性能或source counter。
+- 正式准入records/decisions/D008-development-admission.json如实区分合前元数据/owner摘要、合后E公开原件绑定，后置receipt records/validation/D008-CI-archive-binding.json已完成。末次远端核main仍1996d444…；branch coverage79.9757与line89.212分开，不假称分支80通过。Word/ZIP、原F08、旧性能失败、源规模出口与本人材料不由新开发CI改变。
+- 首次855独立设计实际读到了允许范围内含开发/历史/测试建议的冻结RFC；该岗主动披露，80设计/0执行保留为受限产物，不记完全无背景独立方案。root保存实际提示词缺口、原metadata及scope disposition，不读私密用例。另建四文件outward-only SHA白名单/no links/process policy及新fork-none854实例；77概念设计/0执行封印，公开metadata精确SHA已复制核对，读取范围/提交标题与注解暴露如实记录，没有追读、运行或伪称独立通过。后续仍须可执行tool/环境冻结和明确执行准入。
+- 本阶段未创建/购买任何云资源；用户自行考虑阿里云，订单价格和实际机器未提供。正式400/600/270/1000性能、6310/5100规模缺口、独立新验收和学生最终研究/12-5-3真实参与继续列未完成；没有重开已结束8小时automation或延长原演示。
