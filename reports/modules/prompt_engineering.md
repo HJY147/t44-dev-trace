@@ -102,3 +102,10 @@
 - DB只读EXPLAIN与BE静态不是性能根因；b66等价一行/18旧绿18新绿非bug红绿；预先集成门槛/准确源最终E未公开不预填。
 - 一次BE公开问题记录时未答，不假采访。仅H2两公开摘要，不跟私密引用/Word/R002，无测试服务CI；旧稿/六版/4WordQA/冻结不动，新计0。
 - U001/U002优先原创，R001观点非已操作；真人12/5/3与学生研究正文仍留本人，Issue11评论GET/阶段push按真实回执封档。
+
+## 用户返回：实际决定与规格先行增补
+
+- 固定7daff2b，新独立codex/prompt-user-return-checkpoint；主入口RETURN-user-decisions-and-quality-trace.md/20源index/实际prompt。
+- U020–22原人话不改，D008用户选择与AI最小scope分开；报价/配置请求未扩大成购买授权。858INVALID→857新freeze新准入/短stubpass不降条件、不代SUT。
+- 859仅2HTTP目标；RFC/R2重放文案精确化→1.2草稿/待新freeze才实现，原历史保持、不预填新CI/性能。
+- 实际prompt反馈有出处与产物，新演进计0，U001/U002仍首选原创；无学生正文/人工12-5-3补造。Issue10真实评论全文GET，纯文档push，无产品测试/CI/服务/private。

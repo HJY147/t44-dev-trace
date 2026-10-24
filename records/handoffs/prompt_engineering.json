@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "M11 final limited quality and test validity material",
+  "stage": "User return: actual decisions/calibration/spec-first trace",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -66,7 +66,13 @@
     "docs/prompting/M11-source-inquiry.json",
     "docs/prompting/M11-document-checks.json",
     "agents/prompt_engineering/github-m11-stage-comment.md",
-    "docs/prompting/M11-publication.json"
+    "docs/prompting/M11-publication.json",
+    "records/prompts/ROLE-prompt_engineering-USER-RETURN-v1.md",
+    "docs/prompting/RETURN-scope-checkpoint.md",
+    "docs/prompting/RETURN-user-decisions-and-quality-trace.md",
+    "docs/prompting/RETURN-source-index.json",
+    "agents/prompt_engineering/github-user-return-comment.md",
+    "docs/prompting/RETURN-publication.json"
   ],
   "interfaces": {
     "inputs": [
@@ -87,7 +93,7 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "M11-quality-limits-v1",
+    "version": "USER-RETURN-process-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
@@ -142,7 +148,11 @@
     "M11_design_commit": "7cbf6f6f85a309c957424aff0a68c3aa4f8c5dc1",
     "M11_material_commit": "08671201170dfb04d9fb39c8c6e8add66785ae0c",
     "M11_Issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6378022668",
-    "M11_Issue11_status": "Actually published and full GET exact body matched"
+    "M11_Issue11_status": "Actually published and full GET exact body matched",
+    "USER_RETURN_cutoff": "7daff2b066fbb8eb710b6886c52080ff89d30238",
+    "USER_RETURN_material_commit": "2382d30625c92821384d5b85037bded78d2ae408",
+    "USER_RETURN_Issue10": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6379557747",
+    "USER_RETURN_GET": "Full comment body exact match"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -196,7 +206,10 @@
     "Isolatedcodex/prompt-m11-checkpoint at fixedc057; actualprompt/designcommit7cbf6f6 pushed before collection",
     "Read only publicH2 MD/JSON,M10handoff/calibrationauthorization/gate/DB5948/BE d834/style8d and candidateb66 publicprompt/product-source; no H/H2/private/860/newCI E access",
     "One backend publicsource question; no new answer by inquiry recordingcutoff; no tester/user contact",
-    "24publicsource SHA/JSON/Git and designbeforestyle ancestry checks only; no tests/service/CI/Word"
+    "24publicsource SHA/JSON/Git and designbeforestyle ancestry checks only; no tests/service/CI/Word",
+    "New isolatedcodex/prompt-user-return-checkpoint at exact7daff2b; scopebeforepubliccollection; no root index",
+    "Read U020/U021/U022/D008 scope/RFC/R2 and explicit857metadata/summary858INVALID/859publicreview only;20sourceSHA/JSON checks",
+    "No useroriginal/studentprose/frozen/app/test/oldarchive edits and no tester/private access or test/CI/service execution"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -254,15 +267,18 @@
     "StyleUP022/B007 originalfullstaticred preserved; designb950->17e twoequivalentlines->8dreceipt/Ruffgreen/AST, no864driverexecution or activesource changes",
     "DBplainEXPLAIN estimates and BEstatic ledgers notmeasuredrootcause; candidateb66/PR42 oneequivalentpredicate androot18old/18new notbugredgreen; predefinedgate beforeCI/reviewcomplete, nofinalE filled",
     "M6six kept/newversions0, U001/U002 original highlights andR001viewpoint/manualproof separated; oldM6M7M8/WordQA/frozenfiles notmodified",
-    "M11 design7cbf6f6/material0867120 actually pushed; Issue11 comment6378022668 full GET exact body matched; receipt-only followup no test/service/CI/Word or new facts"
+    "M11 design7cbf6f6/material0867120 actually pushed; Issue11 comment6378022668 full GET exact body matched; receipt-only followup no test/service/CI/Word or new facts",
+    "Real user choice D008 and budget/deadline requests distinct from AItechnicalscope or human code edits",
+    "858FD/timingINVALID original retained; new857 F2/newadmission unchangedthreshold limitedstubpass notSUT600performance",
+    "859owner2targetHTTP meaningfulnonemptydeps notfullCI/independent; RFC/R2 replayCOMPLETE/meta refinements spec-only before newfreeze/application",
+    "Actualmeaningfulpromptfeedback linked to source/artifact without adding evolutioncount; U001/U002 originalhighlights retained",
+    "User-return material2382d30 committed/pushed; Issue10 comment6379557747 actually published and full GET exact body matched; only publication receipt followup"
   ],
   "unverified": [
-    "Backend source question has no answer observed atrecordingcutoff;18old18new from root handoff notnewtest",
-    "Effective400concurrency performance/ranking notestablished; originalFAIL/INCONCLUSIVE retained",
-    "Calibrationauthorizedonly, notpubliclyexecuted atcutoff; no new860code/rawread",
-    "NewfullcandidateCI finalE notrootpublished atcutoff, notfetched/prefilled; accurateSHAreview/gate pending",
-    "Student finalprose and human12codeedits/5contextmappings/3hallucinationidentification remain unproven",
-    "6307sourcecount and fixedWord35page/version gaps notresolved by localstatic/equivalencetargets"
+    "NewD008freeze/readiness/applicationimplementation/newCI/independenttest notcomplete atcutoff; no future pass filled",
+    "Real400x600 SUT performance and6307size remain unresolved by shortstub or2HTTPtargets",
+    "Cloud configuration/cost request is notpurchase/deployment authorization",
+    "Student finalresearch andhuman12/5/3 no completionevidence; AIrole notstudent"
   ],
   "questions": [
     "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
@@ -443,9 +459,22 @@
       ],
       "reason": "Final bounded process evidence at fixedcutoff, notnewpromptversion",
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
+    },
+    {
+      "id": "ROLE-prompt_engineering-USER-RETURN-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-USER-RETURN-v1.md",
+      "artifact_refs": [
+        "records/prompts/ROLE-prompt_engineering-USER-RETURN-v1.md",
+        "docs/prompting/RETURN-scope-checkpoint.md",
+        "docs/prompting/RETURN-user-decisions-and-quality-trace.md",
+        "docs/prompting/RETURN-source-index.json"
+      ],
+      "reason": "Actual user return decisions/methoditeration/spec-first trace, not newcountedversion",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/10"
     }
   ],
-  "updated_at": "2026-10-24T01:14:54.702645+00:00",
+  "updated_at": "2026-10-24T03:56:35.186744+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -454,14 +483,17 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "cutoff": "c05783176d24e78232da9439f25012647148cefb",
-    "public_source_hashes": 24,
-    "H2_public_summaries_read": 2,
+    "cutoff": "7daff2b066fbb8eb710b6886c52080ff89d30238",
+    "sources": 20,
     "new_prompt_versions": 0,
     "M6_versions_kept": 6,
-    "role_queries": 1,
-    "new_answer_observed": false,
-    "no_private_or_new_CI_results_access": true
+    "actual_user_inputs": [
+      "U020",
+      "U021",
+      "U022"
+    ],
+    "human_code_edits_claimed": 0,
+    "stage": "Specdraft pendingnewfreeze;857 onlystub"
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
