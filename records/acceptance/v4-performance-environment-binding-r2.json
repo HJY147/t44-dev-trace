@@ -1,0 +1,84 @@
+{
+  "at_utc": "2026-10-24T00:21:01.519673+00:00",
+  "round": "v4-performance",
+  "type": "Neutral environment implementation binding only; SUT authorization separate",
+  "implementation_origin": "f84c23762bcdc0cd08bcac6e51be0c04c20c4909",
+  "files": {
+    ".github/workflows/acceptance-environment.yml": {
+      "sha256": "3992be9d4ef1eb58942ff4806b64c55ddffdfc7b2d282c5fa376af20eef03d32",
+      "git_blob": "f56ddd9a827beaada3fa537c0269c734f497083b"
+    },
+    "deployment/acceptance/run.py": {
+      "sha256": "a4219270a6df61422b36c8e98e62e3191c6f947d798e221f2aa5f749d4101e2a",
+      "git_blob": "14fe02c9345fb9960c18858d2ab83ab11d334d9a"
+    },
+    "deployment/acceptance/control.py": {
+      "sha256": "f63681044f79fd3283737a22e81a6868947d956b8ba1c6085bbb6d57cf1933e5",
+      "git_blob": "e7534a11f9df70aa0d33da57b5b3ca09e26def93"
+    },
+    "deployment/acceptance/metadata.py": {
+      "sha256": "059a7f00f4aeed9d43a8c9a27bf7ad3ef0e51e6ecc8db364bdb6e7d34caa2bb8",
+      "git_blob": "f651a91b54175aab365f94616865202c3a9f0f0d"
+    },
+    "deployment/acceptance/usage.py": {
+      "sha256": "ce7bf8c76e3b779960045a73198319ec48e240ddbf5afcc533cafa1944f1c7ec",
+      "git_blob": "bed5a8b0719aa0266f16b8fafb7db4563d0ae2b8"
+    },
+    "deployment/acceptance/README.md": {
+      "sha256": "c8187eda6294835fbae0b952f0b35804a4c18cde6125b7c32b357fc7c4e3b1b2",
+      "git_blob": "e500918791a249b2148b61600c976494d684a3d4"
+    },
+    "deployment/acceptance/runtime-usage-success.example.json": {
+      "sha256": "03e1fc29f67959f2777762c98f021954bd4e628d2a9ebe6b6078ac331db62365",
+      "git_blob": "844a3fa1c1b74647d4d45975d89d0943861938b0"
+    },
+    "deployment/acceptance/runtime-usage-incomplete.example.json": {
+      "sha256": "f29cbb6ed3a59a22257fdda61bae2f43170a4eca577ea40efd9210d0a685ea0b",
+      "git_blob": "16dffc723ab3a1ae64c64449c00e449fd998aa2d"
+    },
+    "deployment/ops.py": {
+      "sha256": "e3ef0815920896d5b1b4f448075b420c4fc635cd32cf0d12e495a6d79306a686",
+      "git_blob": "d73c00405243a345c38356dc22202aa678036abb"
+    },
+    "tmp/deployment/953_acceptance_environment.py": {
+      "sha256": "47895a8186b5c9a306f116fcadddf85498a1b59151480428e63c740096a5b946",
+      "git_blob": "2aa0a2039c3b89c978c00da2c6c35ee3d8f28aaf"
+    }
+  },
+  "actual_request_commits_R": "Tester creates immutable R referencing pre-frozen H; actual workflow runs R, not this entire implementation-origin commit. Record R and verify these selected implementation files match.",
+  "allowed_request_branches": "codex/independent-harness-*; separate branch per concurrent environment avoids same-ref pending replacement",
+  "mode": "harness",
+  "product_source_sha": "Separate H2 runtime binding in v4-performance-h2-runtime-binding.json",
+  "harness_timeout_seconds_range": [
+    60,
+    1800
+  ],
+  "runner_job_timeout_minutes": 40,
+  "isolation": "Each request provisions a fresh hosted Linux MySQL/RabbitMQ/API4workers/consumer/scanner/web with one synthetic manager/empty bootstrap project. Prepare own frozen fixture through public HTTP, do not use local data. Actual readiness/recovery govern observations.",
+  "resource_observation": {
+    "runtime_metadata": "Existing declared read-only explicit invocation; missing observations remain unknown",
+    "runtime_usage": "New declared explicit single fixed-six-service Docker CLI usage; only synthetic guards/static wiring verified so far. Actual returned completeness/exit determines availability.",
+    "limitations": [
+      "CLI memory not RSS",
+      "Formatted cumulative network/block IO not rates",
+      "PIDs includes threads",
+      "Not atomic or whole-run peak; observer overhead and timeout budgets real",
+      "No backfill, colocation or no-other-traffic assertion"
+    ]
+  },
+  "output_limits": {
+    "file_bytes_max": 20971520,
+    "total_bytes_max": 104857600,
+    "allowed_tester_names": [
+      "report.md",
+      "results.json",
+      "events.jsonl",
+      "trace.log"
+    ],
+    "encrypted_retrieval": "Only tester downloads/decrypts/reviews; coordinator/developers do not open ciphertext or raw output; publish redacted summaries expressly"
+  },
+  "no_product_results_or_expected_defects_in_this_packet": true,
+  "revision": "r2-preparation-budget",
+  "supersedes_for_new_H2_requests_only": "records/acceptance/v4-performance-environment-binding.json",
+  "method_binding": "New H2 explicit post-SUT revision; original H six NOT_RUN attempts retained. Same H2 and fresh environment for each S1/S2 entry. Formal requirements unchanged."
+}
