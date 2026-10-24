@@ -307,3 +307,7 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ## Request-ID链设计（未实施）
 
 只读公开852interim并核SHA，API UUID在body/header一致，C web add_header再加独立hexID；TLS配置无新增ID。原login raw数量未知，root单独开发401路径raw两头仅该路径实证；不把meta=null当错误体缺ID，错误包顶层request_id未测。原依据相等条款未证明/SUT违规NOT_PROVEN保持。仅提出deployment两nginx配置trustedupstream单头+本地fallback候选，价值/兼容风险/未来raw测试见agents/backend/request-id-chain-design/design.md；C/云/冻结/oracle不改，无运行。LOC分析未实施/无重计量/不抵销6310失败。
+
+## C源码预算恢复核实（只读）
+
+准确C原cloc5211后端+1099前端=6310/66文件/超1210，原classify集合、应用根/counter字节与C全同，static-receipt真实记录；没有新cloc或改变口径。引用既有C-validator未应用-10及旧19有限样本边界，不复活拒绝的AST/scan-dedup；通知分页的受信page order_by复用给出具体I/O/3COUNT/顺序/锁/本人项目范围与约-3未验证预估，未实施、不宣称性能收益或达标。设计agents/backend/source-budget-current-C/design.md；当前真实节省0，没有1210可信去除计划，云C/测试oracle/应用/配置保持，未跑套件/负载或读独立私密。

@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Read-only request-ID chain design; C/cloud unchanged; LOC work paused",
+  "stage": "Current-C LOC6310 confirmed from existing artifact; reduction design only, no production change",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -1948,5 +1948,27 @@
     "private852read": false,
     "LOC": "unimplemented/no new measurement;prior6310failure preserved",
     "next": "root review/admit new candidate before implementation;no currentC/cloud edits"
+  },
+  "source_budget_current_C": {
+    "source": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "branch": "codex/backend-source-budget-current-C",
+    "scope_first": "ba70be2",
+    "prompt": "agents/backend/source-budget-current-C/scope-and-prompt.md",
+    "design": "agents/backend/source-budget-current-C/design.md",
+    "receipt": "agents/backend/source-budget-current-C/static-receipt.json",
+    "backend": 5211,
+    "frontend": 1099,
+    "total": 6310,
+    "files": 66,
+    "cap": 5100,
+    "excess": 1210,
+    "within_range": false,
+    "existing_counter_and_application_roots_byte_equal_C": true,
+    "new_cloc_or_tests_or_SUT_actions": false,
+    "proposals": "oldunappliedvalidator-10 referenced only;notificationpage trustedorder_by estimated-3,notapplied/notcloc",
+    "production_savings": 0,
+    "rejected_scan_dedup_AST_revived": false,
+    "private_independent_material_read": false,
+    "next": "root review;no production implementation admitted;report unresolved1210 honestly"
   }
 }
