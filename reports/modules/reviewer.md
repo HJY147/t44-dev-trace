@@ -203,3 +203,10 @@ metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开has
 51公开gzip回验、五ZIP既有官方digest回执（不打开私密ZIP）、Docker实际400a5=70f+db87及166运行roots字节一致，product520/0/0/0含86910/9300、44Py20TSVue/excluded0覆盖分母核准。有限专审未发现新增实质阻断，b9证据含候选不等root准入、demo仍bc5。报告reports/reviews/39-db87d30449356f3473b645a5c246dcc6c21d7cbe.md。无本机HTTP/SQL/负载/测试/CI或独立资料访问；6307/正式性能/人工材料未放行，实际Issue4/COMMENT/GET后补。
 
 实际发布：证据f61a9768b45928bbd2637a382403d33538c40a1f已push；Issue4评论6377112892与PR39 COMMENT5635646788准确db87，完整GET逐字body/归属或commit_id/state均严格通过。回执pool-defaults-db87/github-comment.json；仅有限代码审核无新增阻断，非root/性能/整体放行。无测试/服务/CI/APPROVE/main操作。
+
+
+## 2026-10-24 新包独立工作区选择规则有限复审（28938）
+
+实际ROLE-reviewer-SOURCE-LOG-SELECTION-v1，隔离codex/review-source-log-selection从已提交roote4a，不碰root未提交内容或demo。先scope后先行设计66bc/准确28938；helper7b8a仅allowed一行，原其它AST与outerb767/dda3整字节保持；实现仅helper+metadata。Git ls-tree元数据比较同树恰好减agents/testing四路径，无新增，保留映射/已发表stage06–08/receipt/3freeze/应用；四路径正文0读取。设计66bc计数3305重现，实现新增receipt计3306，准确源分开。旧48e/manifest未读未改，不据路径推断秘密/泄露；新包需新helperhash/准确commit/完整成员hash回读，不移植旧helper结论。原归档dda3命令仅SUT/OUT/诊断标签适配，原9d6payload/manifest及拒绝断言保持，一次内存反例exit0，真实trustedselector仍完整集合拒绝，blob/mode分支未执行但outer字节保持；不声称字节同命令/ZIPtimestamp或合法实际包通过。0服务/OS信号/HTTP/SQL/CI/负载/套件，未读私密ZIP/Word/R002/H/cases或agents/testing正文，未扩编/新增持久tmp脚本；原红/dda3关闭保持。八段十项报告21-28938...未见新增实质阻断，仅有限选择/绑定边界；实际新包未构建、整体不放行。PR21实际COMMENT/GET与阶段commit/push回执随后补。
+
+实际发布：阶段证据3468e49abec177f0b217cb29157a390ba16b0c97已push exit0；PR21 COMMENT5635702107显式绑定完整28938，插件逐字body/COMMENTED与REST特定review完整GET commit_id/body/state严格一致exit0，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635702107。PR实际head1005715，28938祖先核过；回执source-log-selection-28938/github-comment.json。阶段diff-check曾因两份新markdown/txt尾部空行exit2，阶段提交未受阻后如实保留；最终移除多余尾空行再核，非产品或测试变化。无APPROVE/status/CI/main、实际包或demo动作，封存自身metadata后释放。
