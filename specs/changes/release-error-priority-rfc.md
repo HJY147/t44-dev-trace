@@ -38,7 +38,19 @@
 | 基线/引用/证据与其它门禁均有效 | 发布成功200 | 同 | 否 |
 | 请求id不存在的assessment | 不创建ReleaseGate，继续原domain缺评估/更早guard路径 | 同；不凭None造BASELINE/新404 | 否 |
 | 其它action（含回滚8/返工9） | 既有版本/预案/状态守卫 | 同 | 否 |
-| 老同键COMPLETE错误/成功重放 | 原不可变结果 | 仍原结果，不重跑D008/不改旧audit | 否 |
+| 已COMPLETE且当前认证/输入/摘要检查允许的同键重放 | 已保存的业务data或error/code/status及原audit_id | 保留这些保存值，不重跑D008/不新增业务或audit；HTTP动态字段另见下节 | 否 |
+
+### 重放保证的准确范围（R2，按当前源码校核）
+
+依据`Runtime._claim/complete/rejection/execute`与`api.endpoint.handle`实际路径，而非把协调者复述当实现证据：
+
+- 成功写在原主事务保存data、response_status、完成请求的response_request_id并COMPLETE；成功审计及业务outbox仍同事务。拒绝仅在**call已持有claim、被锁行status=1且owner_token匹配、error.status<500（现有Rejected为4xx）、独立拒绝audit及完成快照事务成功提交**时，才由rejection调用complete保存error（移除当次request_id）及response_status。不是全部4xx都必然可重放。
+- 5xx、没有claim、owner不匹配、status不是1、拒绝audit/提交失败不属于上述COMPLETE保证。未知commit也不能据客户端503断言“没完成/已回滚”；同键重试须读取实际持久状态，沿原恢复规则处理。
+- `_claim`发现已COMPLETE时，仍先经过当前认证/项目权限、既有输入校验与同摘要检查；随后返回保存的业务data或error/code/status和原audit_id，不再执行业务/D008或新建审计。成功data中的audit_id（若该操作有该字段）和错误payload.audit_id沿原保存值，原audit不可变。
+- **不保证整个HTTP响应逐字节相同。** 成功每次由HTTP层新建外层meta：当前request_id、`now()`生成的server_time、当前运行contract_version（新规冻结/实施后为1.2.0），replayed=true，original_request_id取已保存的response_request_id（实际完成结果的请求，不保证最早claim请求）。非重放原样沿现有false/null语义。
+- 4xx重放由execute用保存error重新合入**本次request_id**，保留原audit_id/code/其它保存错误字段及status；HTTP错误响应没有外层Meta，也不新增original_request_id或contract_version字段。成功/错误的X-Request-ID、Idempotency-Replayed和Server-Timing等响应头按本次请求构造。因此D008不借版本演进重写旧快照/审计，也不声称旧完整响应字节原样返回。
+
+本R2仅修RFC文字，未修改上述源码/冻结/测试或运行suite/SUT/CI；旧F08记录和原设计提交保留。根已技术采用最小scope及1.2.0；晚期state/role不再另问用户、不搬guard，仍交限定设计审核核对。
 
 经理恢复步骤：提交当前基线的新评估→由合规的另一审核人评审预案/批准→经理以当前任务/评估版本重新发布。两条件仍都必需，不复用旧批准；“经理重新批准”是用户流程表述，不撤销现行评估创建者不可自审的约束。
 
