@@ -1,15 +1,23 @@
 {
   "role": "independent-performance-v4",
   "operator": "AI /root/independent_performance_v4",
-  "phase": "design-and-freeze-only",
-  "sut_bound": false,
-  "runtime_executed": false,
-  "performance_result": "NOT_RUN",
+  "phase": "H2 explicit post-SUT preparation-method freeze only",
+  "sut_bound": true,
+  "runtime_executed": true,
+  "performance_result": "Original six attempts NOT_RUN; no formal steady requests executed",
   "inputs": "inputs/source-hashes.json",
   "contract": "frozen v1.1.0",
   "private_cases": "cases-and-criteria.md",
-  "private_entries": ["868_task_query.py", "867_contract_validation.py", "866_escalation_notification.py"],
+  "private_entries": [
+    "868_task_query.py",
+    "867_contract_validation.py",
+    "866_escalation_notification.py"
+  ],
   "prompt_record": "records/prompt-received.md",
-  "required_next_input": "Separate exact SUT SHA and exact hosted runtime/request binding from coordinator after H",
-  "publication": "Only explicit public freeze metadata; no private material released"
+  "required_next_input": "Exact updated neutral environment binding supporting1800; then separate R referencing frozen H2 for only unrun formal scope",
+  "publication": "Only explicit public freeze metadata; no private material released",
+  "historical_H1_design_phase": true,
+  "H2_runtime_executed": false,
+  "method_revision": "method-revision-h2.md",
+  "source_application_read": false
 }

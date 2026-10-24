@@ -153,12 +153,15 @@ class Driver:
         self.e = Evidence(self.context['harness_output_directory'], mode)
         self.e.report.update(source_bound=True, product_source_sha=source,
                              harness_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
-                             input_hash_manifest_sha256=hashlib.sha256((HERE/'inputs/source-hashes.json').read_bytes()).hexdigest())
+                             input_hash_manifest_sha256=hashlib.sha256((HERE/'inputs/source-hashes-h2.json').read_bytes()).hexdigest(),
+                             method_revision='H2_post_SUT_preparation_method', preparation_budget_seconds=900,
+                             fixture_setup_http_timeout_seconds=30, warmup_and_steady_http_timeout_seconds=5)
         self.client = httpx.AsyncClient(base_url=self.context['api_base_url'], trust_env=False, http2=False,
                                        timeout=httpx.Timeout(5.0),
                                        limits=httpx.Limits(max_connections=800, max_keepalive_connections=800))
         self.validators = {}
         self.projects = []
+        self.fixture_project_ids = []
         self.tasks = []
         self.dev = []
         self.manager = None
@@ -229,7 +232,10 @@ class Driver:
         self.inflight[op] += 1
         actual, body, failure, elapsed = 0, None, None, 0
         try:
-            response = await asyncio.wait_for(self.client.request(method, path, json=payload, headers=headers), 5.0)
+            timeout_seconds = 30.0 if phase == 'setup' else 5.0
+            response = await asyncio.wait_for(
+                self.client.request(method, path, json=payload, headers=headers,
+                                    timeout=httpx.Timeout(timeout_seconds)), timeout_seconds)
             elapsed = time.perf_counter_ns() - started
             actual = response.status_code
             body = response.json()
@@ -339,6 +345,7 @@ class Driver:
                                    {'name': f'Synthetic perf v4 {self.mode} project {p:02d}',
                                     'description': 'Independent generated performance fixture only'}, status=201)
             pid = r['data']['id']
+            self.fixture_project_ids.append(pid)
             for user in accounts:
                 await self.request('POST', f'/projects/{pid}/members', self.manager['token'],
                                    {'username': user['username'], 'roles': [2] if user in self.dev else [3],
@@ -402,7 +409,15 @@ class Driver:
                                            'assessment_id': assessment['id'], 'rollback_plan_version': assessment['rollback_plan_version'],
                                            'evidence': EVIDENCE})
             return {'id': pid, 'iteration_id': iteration, 'tasks': local, 'template_version': t['version']}
-        self.projects = await asyncio.gather(*(build_project(p) for p in range(40)))
+        builders = [asyncio.create_task(build_project(p)) for p in range(40)]
+        try:
+            self.projects = await asyncio.gather(*builders)
+        finally:
+            # Preserve the first failure; settle sibling cancellation before read-only failure observations.
+            for builder in builders:
+                if not builder.done():
+                    builder.cancel()
+            await asyncio.gather(*builders, return_exceptions=True)
         self.tasks = [t for p in self.projects for t in p['tasks']]
         self.template = template
         self.e.event('fixture_mapping', run_id=self.run_id, anchor=at(self.anchor),
@@ -435,6 +450,50 @@ class Driver:
             self.service = cred['access_token']
             self.e.event('service_identity', session_id=meta['session_id'], expires_at=meta['expires_at'],
                          ttl_seconds=meta['ttl_seconds'], project_count=len(cred['project_ids']))
+
+    async def preparation_failure_observation(self):
+        observation = {'started_at_utc': utc(), 'acknowledged_project_scope_size': len(set(self.fixture_project_ids)),
+                       'counts': None, 'counts_scope': 'acknowledged workload project IDs only; a lost create acknowledgement may leave additional unknown scope',
+                       'primary_failure_preserved': True, 'retry_or_settle_sleep_added': False}
+        ids = sorted(set(self.fixture_project_ids))
+        if ids and all(type(i) is int and 1 <= i <= 4294967295 for i in ids):
+            values = ','.join(str(i) for i in ids)
+            query = ('SELECT UTC_TIMESTAMP(6) AS observed_at_db_utc, '
+                     f'(SELECT COUNT(*) FROM projects WHERE id IN ({values})) AS projects_count, '
+                     f'(SELECT COUNT(*) FROM tasks WHERE project_id IN ({values})) AS tasks_count, '
+                     f'(SELECT COUNT(*) FROM task_dependencies WHERE project_id IN ({values})) AS dependencies_count, '
+                     f'(SELECT COUNT(*) FROM reviews WHERE project_id IN ({values})) AS reviews_count, '
+                     f'(SELECT COUNT(*) FROM decisions WHERE project_id IN ({values})) AS decisions_count;')
+            try:
+                rows = await self.audit(query)
+                if len(rows) != 1 or any(name not in rows[0] for name in ('projects_count','tasks_count','dependencies_count','reviews_count','decisions_count')):
+                    raise RuntimeError('Incomplete failure count observation')
+                row = rows[0]
+                observation['counts'] = {name: int(row[name]) for name in
+                    ('projects_count','tasks_count','dependencies_count','reviews_count','decisions_count')}
+                observation['counts']['reviews_plus_decisions'] = observation['counts']['reviews_count']+observation['counts']['decisions_count']
+                observation['observed_at_db_utc'] = row['observed_at_db_utc']
+                observation['snapshot_limit'] = 'Read-only observation after client cancellation; pending server commits may still finish. No artificial settle waiting.'
+            except Exception as error:
+                observation['count_observation_error'] = type(error).__name__
+        else:
+            observation['count_observation_error'] = 'NO_VALID_ACKNOWLEDGED_PROJECT_SCOPE'
+        try:
+            await self.resource_snapshot('preparation_failure')
+            observation['runtime_metadata_observed'] = True
+        except Exception as error:
+            observation['runtime_metadata_observed'] = False
+            observation['runtime_metadata_error'] = type(error).__name__
+        try:
+            await self.usage_snapshot('preparation_failure')
+            observation['runtime_usage_invocation_finished'] = True
+            observation['runtime_usage_completeness_source'] = 'actual runtime_usage event/returncode, not this finished flag'
+        except Exception as error:
+            observation['runtime_usage_invocation_finished'] = False
+            observation['runtime_usage_error'] = type(error).__name__
+        observation['finished_at_utc'] = utc()
+        self.e.report['preparation_failure_observation'] = observation
+        self.e.event('preparation_failure_observation', observation=observation)
 
     async def audit(self, query):
         raw = await self.control('audit-sql', stdin=query, timeout=15)
@@ -812,7 +871,7 @@ class Driver:
         sampling = None
         usage_sampling = None
         try:
-            await asyncio.wait_for(self.fixture(), timeout=330)
+            await asyncio.wait_for(self.fixture(), timeout=900)
             await self.resource_snapshot('before_load')
             stop = asyncio.Event()
             sampling = asyncio.create_task(self.sampler(stop))
@@ -832,6 +891,8 @@ class Driver:
             self.e.report['status'] = 'INCOMPLETE_OR_FAILED'
             self.e.report['failure'] = {'type': type(error).__name__, 'phase': self.phase}
             self.e.event('harness_failure', phase=self.phase, exception_type=type(error).__name__)
+            if self.phase == 'setup':
+                await self.preparation_failure_observation()
         finally:
             stop.set()
             if sampling:

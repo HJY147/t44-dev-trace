@@ -21,3 +21,11 @@ cases-and-criteria.md为真实设计；harness_common.py和868/867/866入口为�
 下一阶段必须等待/root另给准确SUT及运行绑定；本阶段不dispatch、不push触发运行、不借中性环境commit当SUT。H之后任何机械修正使用新H并记录等价边界，绝不降低原阈值/数据/稳态要求。
 
 冻结前补充：只从本实例自有脚本AST抽取Evidence类做2条离线格式/统计向量检查；未import/实例化Driver/应用，未访问SUT，不是负载或性能样本。真实通过，样本仅在本地ignored目录，检查摘要纳入H。
+
+## H2实际阶段（接触SUT后方法修订）
+
+准确binding1005715ac5ae017a8d57b1af036a3c24c53862af授权S1/S2各三新环境，已实际运行原六attempt；均环境ready、exit1、final recovery true，全部只到准备，原数据解密和hash/frame自核完整，尚无预热/正式负载。五次330秒工具预算，另一次先HTTP TimeoutError。原六有限摘要已明确发表于公开P=05d3dbf27375c9532cb69eed3bb9062eb21a378c，未发布原件；不伪造已达fixture计数（原失败路径unknown）。
+
+/root澄清“不加等待”针对正式thinktime/减载，明确授权H2仅准备900秒、准备HTTP30秒及失败只读计数/资源证据，正式4006002701000/零失败、业务载荷/数据/预热/采样保持。实际中性RFC217d89779440086ab727d280a0900efad36bd2c0已读并记录hash。独立修改自有工具，不涉及任何产品应用代码/他轮次；18源码段、nested业务工厂、helper差量离线核对通过。本次不是纯机械修复或首次盲测。未收到新准确1800能力绑定前不提交请求。
+
+H2真实修改仅方法预算、证据scope/失败协程收束与只读观测、版本输入hash元数据；原冻结业务逻辑保持证据见h2-byte-preservation-proof.json。原H、六个R与全部私密原件均保留。H2正式执行尚未发生，不冒称性能完成。实际命令/错误与prompt留在本机ignored私密运行日志，公开只发方法元数据。

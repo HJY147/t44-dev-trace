@@ -1,0 +1,95 @@
+{
+  "H1": "9f8b5eab4061c14f1b7a314cd418c2663a6b0634",
+  "kind": "source-segment byte comparison, not a runtime behavior proof",
+  "preserved_segments": {
+    "Evidence": {
+      "byte_preserved": true,
+      "sha256": "dfbbe0c9e70c4fec46fe46ec94cb8af01867a2d8832a25b7ca5f64277aef4339"
+    },
+    "Driver.plan": {
+      "byte_preserved": true,
+      "sha256": "5196782ecd8b35b82d5eaa070697a5bae503553ec287d06b387537c5e8823682"
+    },
+    "Driver.assessment": {
+      "byte_preserved": true,
+      "sha256": "9ae50b9dfb973cd8e48e1de07bfcabfaaff20feb82a49259b0e7685ec494e0fc"
+    },
+    "Driver.transition": {
+      "byte_preserved": true,
+      "sha256": "5836efeb2254bddd4c7dff93f4ebfbfa99700caa5aba39c43af406250089788c"
+    },
+    "Driver.task_operation": {
+      "byte_preserved": true,
+      "sha256": "fbf41ba2e38c4e751cf143bf1d103aedf4dd649d557bd37e73997794ee914097"
+    },
+    "Driver.contract_operation": {
+      "byte_preserved": true,
+      "sha256": "6ef6b7df6ccef93a262adbdbed11afda07cfa151ffb304c73bf45f89b4b75091"
+    },
+    "Driver.escalation_operation": {
+      "byte_preserved": true,
+      "sha256": "82787fa1798e65a5ed862c7053283495326710486bf21e83465d9fe7cd51b3b2"
+    },
+    "Driver.worker": {
+      "byte_preserved": true,
+      "sha256": "c69ecc8d245e30ab2cfcb37a67c0eec4b1eefdc52fb50aa9529e78cf0cbb05a2"
+    },
+    "Driver.phase_run": {
+      "byte_preserved": true,
+      "sha256": "38a219802cba1d76412e0b21eefc0824709a2204edd82357374b2c982658aba0"
+    },
+    "Driver.judge": {
+      "byte_preserved": true,
+      "sha256": "dbdb631bf71e0dee46ff0e7f7add355a1a150c55c3d25be670edc21ab0a7a797"
+    },
+    "Driver.sampler": {
+      "byte_preserved": true,
+      "sha256": "3af54a931f326fcdef349488234757777a7c3765bd933fa5e16ced9f5fd66a16"
+    },
+    "Driver.usage_observer": {
+      "byte_preserved": true,
+      "sha256": "d37dc554b0f65740a97514cee72f4dca14994de326bc61c47b1aed780a5774a5"
+    },
+    "Driver.usage_snapshot": {
+      "byte_preserved": true,
+      "sha256": "f81158c9d08ff487c6f04f3493f522b04955251b8151382257dfbd22c45d8e93"
+    },
+    "Driver.resource_snapshot": {
+      "byte_preserved": true,
+      "sha256": "31c759d594a691a7808bf6183a2398adf7c55614e47e6508da36d74a6948d593"
+    },
+    "Driver.postcheck": {
+      "byte_preserved": true,
+      "sha256": "0dcbf3d8f49cac197e8dc1488ea31081e5dfe078ecbf4de9450c7f7892b59cb8"
+    },
+    "Driver.validate_response": {
+      "byte_preserved": true,
+      "sha256": "765dba8f4686bdc61ea13727b2bbd0b7883e43277240477fb1e72f153438de3a"
+    },
+    "Driver.key": {
+      "byte_preserved": true,
+      "sha256": "bd8f0460375be8910040a7b4834e5bbb1c1a4f5fbc032d2a3344f0b38f28bcf9"
+    },
+    "Driver.login": {
+      "byte_preserved": true,
+      "sha256": "99fde67d37fa86f16ede8692559da8f234be396b8042c0ad5a27832c69a05e68"
+    }
+  },
+  "changed_segments": [
+    "Driver.__init__: revision metadata/project-ID evidence scope",
+    "Driver.request: setup-only timeout30; non-setup5",
+    "Driver.fixture: scope ID capture and failure cancellation settlement",
+    "Driver.run: setup budget900 and failure-only observations",
+    "Driver.preparation_failure_observation: new SELECT-only/resource evidence"
+  ],
+  "request_helper_whole_bytes_preserved": false,
+  "whole_harness_bytes_preserved": false,
+  "fixture_nested_business_factory_bytes_preserved_after_removing_ID_evidence_line": true,
+  "shared_HTTP_helper_bytes_preserved_after_normalizing_only_timeout_patch": true,
+  "phase_timeout_offline_expression_check": {
+    "setup": 30,
+    "warmup": 5,
+    "steady": 5,
+    "postcheck": 5
+  }
+}
