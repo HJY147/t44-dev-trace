@@ -235,3 +235,5 @@
 - 静态contract.ts权威import、981 info.version、982 Meta.const动态对照；22个TS/Vue来源未见1.1.0硬编码，两发布码无专用映射；api非成功payload与表单409原保留/刷新路径仍在。31paths/38ops/130schemas、inner1.0实际JSON读取，准确文件SHA见contract-v12-draft-static-receipt.json。
 - 新成功outerMeta1.2待新freeze与实施，错误无outerMeta；先更新基线再原独立审核/经理发布，防自审不取消。原1.1/旧测试/演示历史保留，不伪装1.2运行或新验收。
 - 首次只读sed误写contracts.ts exit2，实际文件contract.ts后正确读，无写或HTTP副作用；未运行应用导入/测试/浏览器/typecheck/build/服务/HTTP/CI；private/cases/raw/858/857/860未读，未联系tester。Issue2实际协商/全文GET及push随后封档。
+
+- 75cad8a文档/静态回执已push exit0；Issue2实际对接评论6379459487，经connector跨页完整GET选准确ID，正文逐字一致，回执contract-v12-draft-github-verification.json。本轮无APPROVE/验收/产品PR，待根新freeze与后端实施。
