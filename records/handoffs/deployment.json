@@ -935,7 +935,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T09:00:57.902976+00:00",
+  "updated_at": "2026-10-24T09:03:48.169907+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1375,6 +1375,10 @@
     "actual_collector_cloud_proc_Docker_CI_execution_by_deployment": false,
     "actual_resource_samples": null,
     "missing_evidence": "NOT_PROVEN;no600s threshold change",
-    "evidence": "agents/deployment/host-resource-validation"
+    "evidence": "agents/deployment/host-resource-validation",
+    "implementation_sha": "9430895e76b6a25ed9ec47747e5e87f6da1ac8f1",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6382310590",
+    "full_GET_identical": true,
+    "final_seal": "agents/deployment/host-resource-validation/final-seal.json"
   }
 }

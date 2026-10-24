@@ -349,3 +349,5 @@
 - appv3仅比v2新增net/snmp与context cpu_count，其他AST/反向bytes相同；独立host版无Docker/网络/DB，五固定/proc与UTC/monotonic/OS实际cpu_count，10s目标/5400或10:10Z较早停。缺源null+NOT_PROVEN，累计/非原子/非峰值/真实开销明确，不改600s。
 - relay852仅目录元数据+自身UUID600排他新文件/inode校验hash，无既有852读取或目录列表；host stdout严格五字段摘要。真正采样待root，本岗未云执行/main/proc，不把v1自然结束转述写成本岗成功。
 - 842五纯合成guard、Ruff/compile/diff-check通过，uid仅mock；首次checkout未完成的Ruff配置缺失exit2保持。app4bddc93a…b9d5、host7a0f8c9c…6259d，详host-resource-validation；100预算/18:30释放不延长，不写已花100，不接触独立私密/843桥。
+
+- 双机序列实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已推；Issue7/6382310590全文GET一致，final-seal含两脚本及842 hash。实际采样未由本岗执行，NOT_PROVEN不倒填通过，未改600s。

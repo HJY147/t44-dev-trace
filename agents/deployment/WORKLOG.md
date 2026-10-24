@@ -448,3 +448,5 @@
 - host版固定五/proc及UTC/monotonic/cpu_count、10s目标、5400或10:10Z较早截止，无Docker/网络/DB/应用日志/参数；只检查relay852目录700，O_EXCL600创建自身UUID，哈希只读自身inode/owner/mode，不列目录/读既有852。缺源null+NOT_PROVEN，摘要严格五字段，饱和度解释不改600s门槛/性能结论，原预算100/18:30释放不动，非花100。
 - 核心先交root审，appv3SHA4bddc93a20b26d7a86a109a2d7e8d409a004265ebae1c4f6d81beaa6cb98b9d5；host初交b74后仅初始化identity=None保证fstat异常稳定摘要，最终7a0f8c9c16aff233f37a1f8f02c27848dc110a7deb28800550ca38f28716259d已通知替代。没有云/collector main/本机proc或独立资料读取。
 - 842五项最小合成0.27s绿（固定路径/无network-listdir、缺TCP不泄异常、超大拒绝、只读自身inode600，uid metadata mock），Ruff/compile0。首次未等worktree checkout完成即尝试Ruff造成config缺失exit2，等待真实完成后才同CI配置0；未执行额外suite/CI/843桥或852私密材料。源hash与校准原件host-resource-validation。
+
+- 2026-10-24T09:03:48.169907+00:00实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已push，Issue7/6382310590真实发布并全文GET逐字一致，final-seal列两脚本/842/差量/回执hash。两脚本hash保持交审最终版不再变更；只封档不执行collector或读取任何真实资源/私密资料，实际样本仍null，缺证NOT_PROVEN/600s门槛不变，结束释放。
