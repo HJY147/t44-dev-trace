@@ -308,3 +308,7 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 从root明确1005715新建documentation-m8独立树/branch，M7原树clean且1f6历史不动。读AGENTS和公开M8提示词素材，先存设计/实际派工摘要；不追性能，不动旧Word/QA/需规/设计/AI规格/14冻结。
 - 只向native实际送达1个公开ready事实短问，无送达错误，尚待答复；禁止tester/H/私密引用。M7最后封档之后reviewer迟到一条限定capture答复，作为晚收信息不回改M7当时收件。
+
+- 2026-10-24T08:06:16.737203+08:00 M8附录及两个后发入口完成，43公开来源绑定1005715/2a16及dcad显式后发。只stage07/08四件新独立公开文件，无H树/manifest/driver/私密引用/R002 raw或Word/cover读取；native唯一问题实回原文保存，未实际连接服务。
+- 图先实际渲染6.241秒两输出全0并original看，因过高/窄保留首次5文件与manifest，改分组外部连线后2.226秒再两输出全0并original看；最终中文/箭头/阶段/边缘完整，新profile Chrome残留0。没有Word/marker/产品或负载调用。
+- 公开路径定位初猜M8-source-manifest不存在而FileNotFound，改用rg发现M8-source-index；另rg根.runtime不存在，改既有M5manifest精确工具路径。短SHA6a32同时匹配commit/tree而git show退出128，明确6a32f90 commit后继续。均为本岗定位错误，原异常保留，不充产品bug/学生幻觉。

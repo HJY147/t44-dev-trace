@@ -1,18 +1,14 @@
-# 文档汇总岗位 M7 测试增量
+# 文档汇总岗位 M8 有限后发附录
 
-Agent-Role documentation；Prompt-Ref ROLE-documentation-M7-TEST-INCREMENT-v1；Refs #9。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-M8-ENGINEERING-ANNEX-v1；Refs #9。
 
-- 保留M6 local/remote126df历史，在本岗独立worktree从root3dadfb9新建codex/documentation-m7，先设计fa3b2fe再正文。
-- 只更新测试报告、提交清单和AI过程出口；需求/设计/AI规格源与三M6 Word hash不变，M4的105历史文件保持。
-- 仅stage04/05/06六个明确发表独立文件；功能25/26、F08优先级未决、浏览器6/6、粗故障4/4、正式0/3，另3功能/5切点/421未观察错误组合单列。
-- 三正式400VU/600秒P95 9512.069/3086.148/8272.364ms失败，组失败1021/0/2、两组采样不足；同次资源unknown不拿O04后发快照补，根因未知不推定瓶颈。
-- 6ec应用包等价bc5是根76文件回执，本实例另静态核64应用源；510/89开发与小规模Docker不代独立正式结论。
-- native旧0a6有限周期与新b238五合成/cd3限定关闭分版本，新代码未完整cycle。2e58381预览只API+Web/20请求无业务写，不称20×200或持续部署。
-- 24公开来源+3 M6历史稿、14冻结、64应用源、28相对链接、JSON/隐私/差异检查通过；本岗无产品执行或新图。
-- 向prompt/frontend/deployment/reviewer四非测试岗实送短问；截至MDcheckpoint无M7直接回复，M6迟到答复另记，不联系tester或读私密ref。
-- M7只新导出测试Word至私密M7，其他3稿10/14/3页复用M6原hash；新测试稿8页已全部original逐页实看，首轮8页编号拆行问题保留并单稿重导修正，最终qa-v2通过；当前组合35页，不假称本轮重看复用27页，不重复marker。
-- 学生研究正文本人写，人工12修改/3幻觉/5映射无完成证据，6307超1207和正式失败保留；白盒/交付4+4尚无本轮开放结果。
-
-- QA实现6d9ca73已本人push；新draft PR36正文/head精确读回，Issue9评论6376203768及PR36评论6376204042各GET逐字匹配。仅保存回执后释放，不APPROVE/status/mainmerge。
-
-- 阶段评论发布后deployment一条M7真实答复到达，收件原文与先前未回快照分别保留，最终4送/1后到/3未回；内容同公开来源，未据元数据重新导Word。
+- 新documentation-m8树从1005715，先设计7b86047再正文；M6/M7分支历史不改。
+- 新M8-engineering-annex及AI-development/submission-map后发入口，43公开来源各准确Git绑定；主体1005715，dcad仅ready后发小节。
+- stage07/08八范围有限完成仍NOT_ACCEPTED；独立核旧M6 33页，不冒称当前M7 35页全被核验；旧Word/QA/manifest/需规/设计/AI规格/14冻结保持。
+- 包9d6真红/add736设计/dda3修/6a32限定；新selector只元数据排除testing四文件，不读正文、不称泄露，无newactualbundle。
+- DB一次ABBA只churn开发观察；db87两默认、两partial峰值变化和成本未知；520/89、5ZIP/51raw、真实Docker merge166roots等价及2a16有限审核均不冒root合入或正式性能。
+- native4ef失败360、c191/62ac修、e301先冻反例一红一绿/a7bad限定、新10182真实360成功分开；bytesJSON后提取失败与864/863/862字节迁移如实。
+- usage15合成/根静态不当RSS/峰值/同机或旧unknown补造；v4只公开H/M冻结授权，不读H树/用例/清单/密文/输出，无新实际性能结果。
+- 一张真实native过程图两布局均渲染exit0且originalPNG实际看；首版过高保留，最终中文/箭头/边缘无裁切，独立Chrome profile/cache退出0残留。无Word/marker/产品/服务/CI/负载。
+- 只向native实问1个公开ready事实并原样保存1条AI答复，不当学生采访；其他缺采访/本人研究/人工12-5-3材料明确缺。
+- 新图不替代旧图或新WordQA；整体6307超1207、旧正式失败/未验边界不改。同账号COMMENT非真人批准，不APPROVE/status/mainmerge。
