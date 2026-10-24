@@ -61,3 +61,14 @@
 - 核对结果：1066字符符合800–1200；一表、6本地链接有效；6个所用产品文件与bc5字节哈希相符；wake-up-review.md和5ce原文一致，未改。来源/结果存M8-document-checks.json；未静态目视截图，不把已有截图说成本岗执行。
 - 已实际在Issue10回复阶段：https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6377530862 。全文GET Issue10和评论，id/body/url/login精确核对；完整公开响应存M8-issue10-readback.json，正文存本岗m8-stage-comment.md。账号为授权HJY147，实际操作者明确AI guidance。
 - 实际Prompt原文及改进理由存本岗prompts/ROLE-guidance-M8-TOUR-v1.md；仅岗位实际派工，不计学生亲写或新演进版本。最后仅显式提交本岗文稿/记录并push自有分支，准确SHA由Git回执交root；未合并或发审核success。
+
+## 最后入口收尾（ROLE-guidance-FINAL-ENTRY-v1，2026-10-24T09:21:56+08:00）
+
+- root实际要求8分钟内只修改README与wake-up入口，可附本岗记录；新codex/guidance-final-entry工作树以aaea7cd7690a088b8c4fa1fd79045e849370e874建立，先核对该版AGENTS。
+- 静态核对C=b66fa36相对bc5仅workflow依赖读取加project_id一行；只读18b0271明确发布审核与PR42实际HEAD；C准确510BE/89FE和两个CI绿据公开审核与root更新，不自行触发或复跑。
+- root后续明确已合C/E/审核/M11，最终准入实际收据已提交；入口按已准入开发集成写，最终指向dependency-query-development-admission.json，不把main/性能/整体验收放行。pool db87未合入。
+- 仅读M10及H2明确公开摘要、Pcal=b69ac5e两份明确公开摘要；未跟私密引用。H2六exit1、5恢复true/1false、有效400未证实、INCONCLUSIVE不排名；本机stub400即时也客户端延迟/超时，不能归因原CI或SUT。未补跑，原v3失败保留。
+- 更新两个入口，分开C与仍bc5的5178/固定四Word；不重启不延长，11:49:43北京截止；6307超限/完整验收未通过/main未放行。连接M10/M11/M12，各文稿历史截止保留。
+- 按要求仅写准确保留句“本次准确文件名和SHA以records/validation/coursework-review-final.json为准。”；不造文件名/包SHA，不声称包已经生成。新M11/M12/Pcal及准入收据在root当前树存在性已核，不复制或改其他文档。
+- 实际GitHub Issue10评论 https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6378092076 ，Issue与评论全文GET保存final-entry-issue10-readback.json，id/body/url/login精确一致；AI身份明确，没有联系tester或唤醒用户。
+- 只执行Git/公开MD JSON读取及静态差异核对，无产品/服务/浏览器/SQL/test/private访问。初查一个猜测公开目录不存在，rg返回2后改为明确发表路径；未据此作存在声明。
