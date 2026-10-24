@@ -330,3 +330,8 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 实现84bd37eeda61c17c069fba7e5501d0005598caf9本人commit/push；新draftPR41 body/head84bd准确GET、open/draft/unmerged/mergeabletrue。GitHub工具真实发布Issue9评论6377503061，再对精确ID全文GET，body/URL逐字一致，回执保存github-M8-performance-preparation-readback。
 - 本笔只存发布凭据/交接，无新资料读取/采访/渲染/服务或等结果。最终receipt SHA由HEAD/远端一致核对后回传并释放本岗索引槽位；旧Word和cutoff不因元数据再处理。
+
+## 2026-10-24T08:54:47.504948+08:00 M9 导航先行设计
+
+- 只fetch/解析一次origin/integration得728c4e8准确cutoff，从其新建documentation-m9-navigation树。先存设计/实际prompt，不改旧Word源/QA/截止。
+- 对BE实送1个公开静态索引问题，无送达错误且实际收到1条AI答复，尚待正文记录。用公开guidance checks定位wake-up在docs/user-guide，不读私密。短猜guide772不是有效SHA而git show退出128，随后只读已发表M8指导公开路径，不据简称造SHA。
