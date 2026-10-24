@@ -332,3 +332,8 @@
 实际ROLE-reviewer-PREPARATION-BUDGET-v1，既有干净worktree另codex/review-preparation-budget从217d；先scope后准确79ed/封档9d335公开源码/原件。run SHAa421整文件仅上限1200→1800，复原bytes/整个AST同；default900/min60/strictint、执行deadline/fault恢复/加密输出/usage/metadata原字节保持。workflow只description，job40仍在，README明确能力非完成保证/不延旧请求。旧953仅1201边界→1801保持其它AST，新增4合法5非法3deadline+旧1共13；owner实际1800旧拒绝1红/13绿和JUnit、files/seal hash核同，合成Popen/clock/recover/signals非服务真实恢复；本岗0测试/探针/服务信号HTTP_SQL负载CI，不读独立H/cases/output/log/密钥，不改候选/冻结。设计217d先行/9d封档runtime-test0delta；有限未见新增实质阻断，原正式失败/NOT_RUN不改，不给整体/stage/main放行。八段十项报告21-79ed...，精确COMMENT/fullGET真实回执另补。
 
 实际发布：阶段证据a6a45046ed8c69f3b4974ead3bd8510c5a87bf52已push exit0；PR21 COMMENT5635790287显式绑定准确79ed72，插件逐字body/state与REST特定review全文GET body/commit_id/COMMENTED严格相符exit0，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635790287。PR head5ce98e、79ed祖先核过；回执preparation-budget-79ed/github-comment.json。无APPROVE/status/main/CI或实际准备/正式成功声明；自身metadata封存后释放。
+
+
+## 2026-10-24 最小依赖谓词候选C静态有限专审（先partial）
+
+实际ROLE-reviewer-DEPENDENCY-QUERY-v1，隔离codex/review-dependency-query从C，不改候选；先scope，按元数据找到BE ed273先行RFC及rootdde39预定gate。PR42 draft/headC实际GET核；对bc5应用唯一workflow dict加受信project谓词，整bytes和去一item AST同；pool5+10/986整bytes/14freeze/DDL同。追Call.task全局PK读取+project核对、双复合FK合法集合/空集/id顺序等价；版本先边读、锁顺序/实时auth/RC/UoW/CAS/audit/idem/outbox/commit不明/输出原源。17e两行Cbytes同，PIPE→capture_output及unusedloop规范化AST同，8d7公开hash/preimage核；DB5948公开report只小fixture普通EXPLAIN估算不冒称收益/根因。自有首ASTnormalizer误展开864其它原有calls导致断言1，改限定prepared后0；猜旧路径两次失误纠正，不称产品红。准确C完整CI/E仍待root明确公开，先partial留gate，不用旧CI移植；旧18/新18预期兼容非bug红绿，待原件核。本岗0测试/探针/服务信号HTTP_SQL负载CI，未读独立H2/private/cases/raw/密文或联系tester，不触demo。报告42-C八段十项，最终E核后COMMENT/fullGET另补。
