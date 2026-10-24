@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "D008 1.2 specification draft synchronized; no implementation before root freeze",
+  "stage": "D008 exactC hosted522 and Docker passed; source6310 remains overbudget; evidence sealed pending root admission",
   "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
   "artifacts": [
     {
@@ -1779,5 +1779,100 @@
     "next": "root requirements/business/AGENTS;limited finalspec review/newfreeze;then separately implement and verify",
     "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379477604",
     "full_GET_exact_match": true
+  },
+  "D008_implementation": {
+    "freeze": "d5307551d6b467f84e8254abd0245cdf22bc0a70",
+    "manifest_sha": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+    "plan_first": "9bab3cc",
+    "source_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "PR": 43,
+    "source_branch": "codex/backend-release-error-priority-implementation",
+    "evidence_branch": "codex/backend-d008-implementation-evidence",
+    "worktree": "backend-release-error-priority",
+    "prompt": "agents/backend/release-error-priority-implementation/actual-prompt.md",
+    "report": "agents/backend/release-error-priority-implementation/report.md",
+    "test": "tmp/backend/contracts/856_release_error_priority.py",
+    "before": "3fail8pass/0errors/skips;actualAPPROVAL and businessunchanged+audit verified",
+    "after": "identical11pass",
+    "adjacent": "4original986pass",
+    "scope": "SQLiteTestClient only;controlledcycle/matchingreference boundaries labelled",
+    "production": "onlyworkflowexisting requireerrorargument;noSQL/lock/domain/auth/idem/audit/outbox changes",
+    "frozen15_same": true,
+    "static": "Ruff/format2filespass",
+    "metric": {
+      "actual_candidate": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "application_code": 6310,
+      "prior_measured_candidate": "b66fa36a317145afec350d7f61ca374959b2eaf7",
+      "prior_code": 6307,
+      "freeze_base_app_66_file_bytes_equal_prior": true,
+      "delta": 3,
+      "workflow_before": 247,
+      "workflow_after": 250,
+      "within_range": false,
+      "require_range_exit": 1,
+      "extra_lines_over5100": 1210
+    },
+    "product_run": 40060857352,
+    "docker_run": 40060980119,
+    "CI_state": "both completed success attempt1;actual artifacts archived",
+    "not_reused": "oldC510/89",
+    "private_raw_failure": "0600original beforelog/XML,publicsynthetic-sessionredaction/hash documented",
+    "limits": [
+      "notMySQLorRabbitlocal",
+      "notfullcoverage",
+      "notindependentacceptance",
+      "notformalperformance",
+      "no new5xx/owner/auditfaultinjection"
+    ],
+    "protected_resources_accessed": false,
+    "next": "pause/release;root verifies E originals and records scopedadmission;noautomaticload/main",
+    "CI_summary": "records/validation/composite-D008-0dfb-ci.json",
+    "CI_actual": {
+      "tests": 522,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "856": 11,
+      "markers_overlap": [
+        174,
+        93,
+        19
+      ],
+      "Python_files": 44,
+      "line": [
+        2638,
+        2957
+      ],
+      "branch": [
+        659,
+        824
+      ],
+      "excluded": 0,
+      "frontend_tests": 89,
+      "frontend_files": 20,
+      "Docker_actual_checkout": "f8c04285533ebbbdd1b0e3d4f5a95e43e19bb6d7",
+      "Docker_parents": [
+        "3fa88293dd9ff51a86fe1c054fdf5318b318c3d3",
+        "0dfb55c2191200d947c5423fd9ee74bb0812cc5a"
+      ],
+      "runtime_equal_files": 171,
+      "Docker_scope": "4workers/scanner16created2completed/19tablecountschecksums matched/18business226",
+      "raw_ZIPs": 5,
+      "selected_originals": [
+        18,
+        33
+      ]
+    },
+    "code_review": {
+      "commit": "8659d444b2f3ce7bf0ea8a358304be719adf6fbf",
+      "review_id": 5636767886,
+      "state": "COMMENTED",
+      "commit_id": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "full_GET": true
+    },
+    "root_reported_integration": "da2d3084696b8458004f554e75ddca722f88bf5a;root operator,main unchanged",
+    "checkpoint_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379680394",
+    "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379751050",
+    "full_issue_and_PR_GET_exact": true
   }
 }

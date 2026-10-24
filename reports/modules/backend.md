@@ -284,3 +284,12 @@ RFC specs/changes/release-error-priority-rfc.md基root14b57c6，明确双失效�
 ## D008 1.2草稿同步（等待新freeze）
 
 基398c3d3仅4件合同/设计：info+成功Meta1.2，两JSON同，candidate_schema1.0；草稿状态明确，最小原批准失败槽基线优先及R2重放边界写清，原1.1历史完整保留。原995规范/1130项通过，45叶值白名单、31/38/130/错误enum/其它Schema不变；真实hash/日志agents/backend/release-priority-spec-draft。Workflow/测试/DB/DDL/旧freeze均未改，没有应用suite/SUT/CI/服务/负载。root另同步根需规并freeze，之后才实施；用户选择非用户改码，旧F08等历史不回写。
+
+## D008 1.2实现候选（待准确源审核/CI）
+
+先冻结d530/15hash→计划9bab→856旧3红8绿→仅workflow既有批准失败槽错误选择→同11绿，另原986相邻4绿/两文件Ruff格式通过。C=0dfb55c2191200d947c5423fd9ee74bb0812cc5a、DraftPR43固定；不改其它生产/原测试/859。新规业务由人选择，改码/开发自测为AI，原F08/1.1历史不回写。
+
+真实schedule/恢复评估批准发布及success/error重放、版本/归属和匹配引用原domain已覆盖；cycle/异常引用为controlled SQLite，不冒真实rework，未新注入5xx/owner/audit故障。原失败合成session值仅公件脱敏/私密原件hash留，报告/命令/JUnitagents/backend/release-error-priority-implementation。实测cloc6310净+3/超1210仍失败；新product40060857352/Docker40060980119终态/全覆盖/actualcheckout待后receipt。只有内存HTTP自测，无本机外部DB/服务/负载或独立材料；代码审核与新源CI后root另决，不宣正式通过。
+
+
+C准确新托管结果：product40060857352/Docker40060980119成功；实际522/0失败错误skip（85611）、marker174/93/19重叠。44Py全Git集/excluded0，行89.212039%/分支79.975728%；FE89/20TSVue行93.33%。Docker实际f8c0428父3fa+C、171相关文件相同、4worker/19表恢复通过，官方五ZIP/18+33原件全digest/双hash回读。总结records/validation/composite-D008-0dfb-ci.json。PR43 exactC COMMENT已读回，root已开发集成da2d308、main不动；这些是限定开发验证，不抵销cloc6310/超1210或正式性能/独立验收缺口。E纯证据不再推动C，本阶段封档暂停。
