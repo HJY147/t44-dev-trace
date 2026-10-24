@@ -480,3 +480,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 只读root明确发表852物流spec/helper/cert三公件，逐字副本供离线复现，未访问其它852/独立私密或联系tester。实际UID10001/DBt44/原CLI摘要、readonly0444输入、0700owner输出、目录flock及O_EXCL0600；原Gateway只读空库+3用户名不存在预检，pending加密先落盘后原CLI匿名stdin逐个创建，失败/未知不重试不删除，成功另发final，无seed/session/角色写入。
 - 原20项纯合成guards/实际加密已知数据通过，新增并发输出互斥及cleanup样式后最终20项通过。CLI/Gateway为本地synthetic替身，RSA测试私钥仅内存，不是MySQL/原CLI/云/容器验证。原SIM105 Ruff1失败保留→AI窄修后两文件Ruff/format通过；public-files不在Git和patch格式上下文拒绝均记录，无错误冒产品缺陷。未跑其它suite/CI/服务/负载。
 - 真实C CLI只有INSERT/username唯一冲突失败，无upsert/reset；3次创建和文件非原子，ACK不明/部分创建保留pending供人工核，不自动恢复。部署需保持新DB初始化独占；expected-source仅声明，完整镜像保障归root。报告agents/backend/synthetic-fixture/report.md；首次核心初稿hash不作为最终执行源。
+
+- 核心1c0ae877已push先交root审，worker最终hash7b633251…；Issue3 6381577719 body-file发表并精确全文GET逐字核。公开cert副本命中*.pem忽略，凭明确公开SHA仅force-add该X509公证书；未加入私钥。后续纯证据封档不改worker/测试、不重复绿。
