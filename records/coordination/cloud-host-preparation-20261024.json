@@ -1,14 +1,15 @@
 {
   "schema": "t44-cloud-host-preparation-v1",
   "operator": "root AI via authorized Alibaba Cloud Assistant UI",
-  "observed_at_beijing": "2026-10-24T16:15:18+08:00",
+  "observed_at_beijing": "2026-10-24T16:54:53+08:00",
   "product_source_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
   "private_evidence": "Ignored local runtime directory; resource identifiers, endpoints, full cloud receipts, screenshots and configuration are not published.",
   "budget": {
-    "actual_spend_limit_cny": 20,
-    "both_instances_auto_release_beijing": "2026-10-24T17:00:00+08:00",
+    "actual_spend_limit_cny": 100,
+    "both_instances_auto_release_beijing": "2026-10-24T18:30:00+08:00",
     "actual_final_bill_verified": false,
-    "release_extension_authorized": false
+    "release_extension_authorized": true,
+    "previous_actual_spend_limit_cny": 20
   },
   "checkpoints": [
     {
@@ -274,6 +275,18 @@
       "completed_beijing": "2026-10-24T16:15:18+08:00",
       "exit_code": 0,
       "observed": "Actual load host reached application host private HTTPS port with strict CA and IP-hostname verification. HTTP200 for root page. No new security-group or public application exposure. This is connectivity evidence, not independent business acceptance or performance."
+    },
+    {
+      "name": "authorized-budget-and-release-extension",
+      "completed_beijing": null,
+      "exit_code": null,
+      "observed": "User explicitly raised the actual limit to CNY100 and personally reported completing the cloud SMS check. Coordinator observed success receipts for both named instances and their system disks scheduled for18:30, and application basic-information18:30 field. Exact operation times not preserved here; do not infer actual spend or completed resource release."
+    },
+    {
+      "name": "official-full-file-download-verified",
+      "completed_beijing": "2026-10-24T16:54:53+08:00",
+      "exit_code": 0,
+      "observed": "Official instance download task completed via temporary vendor OSS. User copied the temporary link and downloaded the encrypted preparation artifact to the default Downloads folder. Coordinator narrowly located that named file and verified49520bytes/SHA256 ace5e24e6e32ea7aac1b1c05151520fb8268c920c4b6823e8bf2a5cf5418318f, matching the original cloud ciphertext. No decryption by coordinator. This proves the complete49KB chain, not500MB bandwidth capacity."
     }
   ],
   "application_build_success": true,
@@ -300,5 +313,13 @@
     },
     "service_count": 7,
     "tls_gateway_included": true
+  },
+  "download_tool_limits": {
+    "command_output_bytes": 24576,
+    "official_instance_download_linux_max_bytes_documentation": 524288000,
+    "browser_copy_link_not_returned_to_automation": true,
+    "local_file_bridge_and_desktop_app_actions_rejected_by_browser_safety": true,
+    "those_rejected_actions_not_retried_by_circumvention": true,
+    "user_used_official_download_workflow": true
   }
 }
