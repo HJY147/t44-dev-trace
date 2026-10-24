@@ -1,8 +1,8 @@
 # T44作业提交物对照表
 
-**审阅包链接说明**：外层辅助Markdown为仓库原字节副本，相对链接没有因复制自动改写；请在展开的内层源码树中使用。对应仓库路径为`reports/final/submission-map.md`、`reports/final/M9-review-navigation.md`、`reports/final/M8-engineering-annex.md`、`reports/final/M8-performance-preparation-addendum.md`。M9只在内层源码，不宣称外层另附。原仓库本机入口是`docs/user-guide/wake-up-review.md`。新实际bundle尚未创建，原材料hash将在实际封包前重取。
+**审阅包链接说明**：外层辅助Markdown为仓库原字节副本，相对链接没有因复制自动改写；请在展开的内层源码树中使用。对应仓库路径为`reports/final/submission-map.md`、`reports/final/M9-review-navigation.md`、`reports/final/M8-engineering-annex.md`、`reports/final/M8-performance-preparation-addendum.md`及`reports/final/M10-night-test-handoff.md`。M9只在内层源码，不宣称外层另附。原仓库本机入口是`docs/user-guide/wake-up-review.md`。实际封包前须重取原材料字节hash；实际包状态、准确来源及生成结果以包内manifest和外部receipt为准。
 
-**版本说明**：以下第1至4节保留M7截止的记录；第5、第6节为各自截止的后发入口。当前材料位置与四Word固定35页截止见源码树中的[M9审阅导航](M9-review-navigation.md)，不可把旧段中的“白盒未发表”等文字作为当前状态。
+**版本说明**：以下第1至4节保留M7截止的记录；第5至7节为各自截止的后发入口。当前材料位置与四Word固定35页截止见源码树中的[M9审阅导航](M9-review-navigation.md)，不可把旧段中的“白盒未发表”等文字作为当前状态。最新明确发表H2关键结果见第8节M10，旧段“尚无结果”保持其固定截止。
 
 需求/设计/AI规格保持M6的bc5快照，测试稿M7增补明确发表黑盒及6ec等价应用CI；整体门禁仍未达，不能把此表作为最终验收证书。原件只读保留，所有实际产物、操作者、版本和未完成项分别列示。
 
@@ -53,3 +53,7 @@
 ## 7 当前审阅导航 M9
 
 在展开源码树内打开[M9审阅导航](M9-review-navigation.md)，按四Word截止和后发入口分别阅读；外层本原文副本不保证相对链接直接可用。导航截止728c4e8，H2尚无公开最终结论、新actualbundle未创建，本轮不等待、不改旧稿或重导Word。
+
+## 8 当前关键结果 M10
+
+[夜间测试公开结果交接](M10-night-test-handoff.md)固定资料截止cc4c4ae，仅依据明确发表H2两摘要：六次exit1、恢复5true/1false（S2/866应用就绪）；有效400并发测量未成立，INCONCLUSIVE且不能排名，两次866正式目标0/P95未测得。发压调度、oracle和聚合器局限分别保留，旧v3失败/H1 NOT_RUN不回改。本补记不导Word、不更旧35页截止/QA，不计学生研究或人工12/5/3，候选C新完整CI及root gate决定未预填。

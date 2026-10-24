@@ -342,3 +342,15 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 实现6be519226ed5e83c71c6c6a99719ffd64c962e8d本人commit/push，Issue9实际评论6377836827对精确ID全文GET，body/URL逐字相同，保存github-M9-navigation-readback。
 - root通知部署静态窄修急需槽，本轮不纳未完成修复、不等H2/候选CI；仅存回执/交接后由HEAD/远端一致核实回传，立即释放索引/槽位，无新源读取或产品操作。
+
+## 2026-10-24T09:06:31.615518+08:00 M10 先行设计
+
+- 从root明确cc4c4ae新建独立documentation-m10-handoff树；两公开摘要SHA256已精确匹配，仅hash尚未读正文。复读AGENTS/本岗TASK及已有交接，先保存设计/真实派工摘要。
+- 本轮只新增H2公开结果补记与提交清单当前入口/包状态说明；旧Word源/QA/冻结/各历史截止不动，不跑服务/测试/CI/Word，不问tester或用户。
+
+- 2026-10-24T09:08:34.596708+08:00 M10正文仅两公开摘要；14项有限字段/文字、六行数字/退出/恢复/两866未测、Gitblob/hash及引用通过，原submission第1至7节逐字保留，顶部改manifest/外部receipt。首次大JSON输出截断后改精确六行/M1–M6字段；首次链接检查因校验收据尚未创建退出1，改先写收据再查链接通过；首次module替换patch因同一路径两操作被拒且未修改，随后正常写入。均为本岗资料工具过程错误，不冒充产品bug/学生幻觉。无私密raw/Word/冻结/产品动作。
+
+## 2026-10-24T09:09:13.868531+08:00 M10 发布读回与释放
+
+- 实现135ebacf50fba9d1e6cdc3de3d46d883f36f476e本人commit/push。Issue9实际评论6377964142，再对精确ID全文GET，body/URL逐字匹配，完整GET和精简receipt保存本岗agents目录。
+- 本笔只存交流/交接回执，不读取新CI或私密、不等新结果，不增加Word/测试/服务操作。最终HEAD/远端一致后立即回传释放槽位，无APPROVE/statussuccess/mainmerge。
