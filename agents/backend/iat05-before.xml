@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="10" time="2.497" timestamp="2026-10-23T19:21:59.772725+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[block]" time="0.214"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:999: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("transitionTask", {"expected_version": task["version"], "action": 2,
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[review]" time="0.216"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:1022: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createTaskReview", body, token="reviewer")
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[risk]" time="0.265"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:1031: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createReleaseAssessment", body)
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[rollback]" time="0.259"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:1031: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("createReleaseAssessment", body)
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[approval]" time="0.292"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:1036: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("reviewReleaseAssessment", {"expected_version": task["version"],
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_empty_required_evidence_keeps_frozen_business_error[notification]" time="0.230"><failure message="AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'&#10;  &#10;  - EVIDENCE_REQUIRED&#10;  + PARAMETER_INVALID)">tmp/backend/contracts/986_http.py:1011: in test_empty_required_evidence_keeps_frozen_business_error
+    rejected("handleNotification", {"expected_version": 1, "note": "Checked", "evidence": []},
+tmp/backend/contracts/986_http.py:996: in rejected
+    assert result["code"] == "EVIDENCE_REQUIRED" and result["audit_id"] is not None
+E   AssertionError: assert ('PARAMETER_INVALID' == 'EVIDENCE_REQUIRED'
+E     
+E     - EVIDENCE_REQUIRED
+E     + PARAMETER_INVALID)</failure></testcase><testcase classname="" name="test_contract_validation_outer_shape_is_distinct_from_candidate[outer-extra-PARAMETER_INVALID]" time="0.228"><failure message="AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'&#10;  &#10;  - PARAMETER_INVALID&#10;  + CONTRACT_INVALID)">tmp/backend/contracts/986_http.py:1063: in test_contract_validation_outer_shape_is_distinct_from_candidate
+    assert response["code"] == code and response["audit_id"] is not None
+E   AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'
+E     
+E     - PARAMETER_INVALID
+E     + CONTRACT_INVALID)</failure></testcase><testcase classname="" name="test_contract_validation_outer_shape_is_distinct_from_candidate[outer-task-PARAMETER_INVALID]" time="0.209"><failure message="AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'&#10;  &#10;  - PARAMETER_INVALID&#10;  + CONTRACT_INVALID)">tmp/backend/contracts/986_http.py:1063: in test_contract_validation_outer_shape_is_distinct_from_candidate
+    assert response["code"] == code and response["audit_id"] is not None
+E   AssertionError: assert ('CONTRACT_INVALID' == 'PARAMETER_INVALID'
+E     
+E     - PARAMETER_INVALID
+E     + CONTRACT_INVALID)</failure></testcase><testcase classname="" name="test_contract_validation_outer_shape_is_distinct_from_candidate[payload-extra-CONTRACT_INVALID]" time="0.214" /><testcase classname="" name="test_contract_validation_outer_shape_is_distinct_from_candidate[payload-evidence-CONTRACT_INVALID]" time="0.217" /></testsuite></testsuites>

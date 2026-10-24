@@ -1,0 +1,62 @@
+{
+  "scope": "changed production files only, pinned same cloc2.10; not a repeated whole-project count",
+  "base": "6205b85e14277ce8cb1d06c12b85a76c2228ad38",
+  "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+  "versions": {
+    "before": {
+      "summary": {
+        "blank": 39,
+        "comment": 3,
+        "code": 347,
+        "nFiles": 2
+      },
+      "files": {
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 181,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 166,
+          "language": "Python"
+        }
+      }
+    },
+    "after": {
+      "summary": {
+        "blank": 47,
+        "comment": 6,
+        "code": 437,
+        "nFiles": 3
+      },
+      "files": {
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 182,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 168,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 8,
+          "comment": 3,
+          "code": 87,
+          "language": "Python"
+        }
+      }
+    }
+  },
+  "net_effective_loc": 90,
+  "prior_root_application_baseline": 6186,
+  "projected_application_if_other_bytes_unchanged": 6276,
+  "projected_within_range": false,
+  "budget_erratum": "RFC backend+38..71 was low; explicit strict type/canonical plan spelling and complete match guards have the measured final net below. No formatting compression."
+}

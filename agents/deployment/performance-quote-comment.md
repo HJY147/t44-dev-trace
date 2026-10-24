@@ -1,0 +1,12 @@
+Agent-Role: deployment
+Prompt-Ref: ROLE-deployment-PERFORMANCE-QUOTE-v1
+
+用户11月28日截止、费用先报价再考虑，当前无任何付费授权。本岗已push一页待审批报价96ed54c0819dfa43107058aeb16e7e947682a527，agents/deployment/performance-retest-quote.md；新codex/deployment-performance-quote，基点43b75cfa1db9830e147c67ad5dc6b62f086c9a11。
+
+2026-10-24 03:31UTC核到AWS现行官方直接小时价（不是月价/730或旧博客）：us-east1普通Linux c7i.2xlarge8vCPU16GiB=USD0.357/h，c7i.xlarge4vCPU8GiB=USD0.1785/h，计算资源合计0.5355/h。官方当前feed https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json ，publication2026-10-23T22:13:55Z；由AWS定价网页iframe的官方config定位，原gzip/SKU/rateCode/config另档。
+
+方案同账户同AZ-ID私网、120GiB gp3(80+40)按官方0.08/GiB月秒比例计费、两个IPv4各0.005/h；1h精算0.5584032258≈USD0.56，2h1.1168064516≈USD1.12，未含税/需收费公网流出。建议供用户考虑批准本次USD3预算，不是厂商硬封顶或完成保证；当前不购买。计划2h包含合理准备/正式10min/导出核对清理余量，账号/验证/充值/配额/库存及免费额度剩余未知，不换汇、不含人工、不承诺270ms。
+
+明确这是工程规格建议非已确认教师硬门槛；default shared tenancy不当Dedicated Instance/Host或独占物理核。AWS官方同AZ-ID内网免费，公网流出另计，100GB/月是账户聚合额度不假设尚有余额；stop后EBS/保留idleEIP仍可计费，须最终terminate并核盘/快照删除和EIP释放。计费规则来源/检索时间/原始数值及算式在agents/deployment/performance-quote-evidence/sources.json和calculation.json。Vultr官方403未引用，未用vultr2/非官方或2019legacy，未扩展第三厂商。
+
+付款前先独立0元发压器校准（合成目标，不触SUT），尚未执行；该校准也不能代作SUT性能通过。本轮只公共官网GET和文档/GitHub，没有账号创建、资源、购买、充值或凭据提取，没有修改部署/live/demo/旧包/automation、没有SUT或正式压力执行。报价非保证，最终任何费用仍待用户批准。

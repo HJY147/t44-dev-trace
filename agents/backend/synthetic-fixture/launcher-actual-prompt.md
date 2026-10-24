@@ -1,0 +1,5 @@
+# Actual host-launcher dispatch
+
+Archive reference ROLE-backend-SYNTHETIC-FIXTURE-LAUNCHER-v1; actual root instruction follows. Implementation and static validation are backend AI actions.
+
+> 实际云端 migration --execute 已启动；请马上提供可审阅的 host launcher shell文件（你的独立 worktree下 deployment/fixture-launcher-cloud.py 或sh，commit后hash给我），只调用已审 synthetic-fixture worker 不新增业务逻辑。source /opt/t44-c-0dfb55c C固定；TLS helper cc659... runtime /run/t44-delivery/tls-C private-env /run/t44-delivery/private-network.env；fixture输入宿主 /run/t44-delivery/fixture-inputs/{worker.py,envelope.py,recipient.pem} root0444目录root0700，输出 /run/t44-delivery/fixture-output UID10001 mode0700。须先源码C clean、original ops.load_env 仅内存，不打印env；两份compose -f原始+TLSoverlay、adminprofile/run --rm -T --pull never --no-deps --entrypoint python，3只读filebind+outputbind，继承UID10001/capdrop/RO，outer timeout240/proctree云助手。CLI worker args已定。只输出worker白名单安全回执/退出码，private stdoutstderr0600保留；若非0停止不重试/seed。绝不读852私有文件，仅用仓库public-inputs三文件。请尽快做小型参数构造静态验证，不要重写worker/不动C。也告诉我是否需要 T44_DATABASE env值由compose原C提供。

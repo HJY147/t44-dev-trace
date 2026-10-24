@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend
+
+ ❯ tmp/frontend/982_client.test.ts (7 tests | 1 failed | 6 skipped) 4ms
+   ❯ contract-driven forms and safe records (3)
+     × validates real typed fields and evidence without treating strings as numbers or missing proof as approval 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/982_client.test.ts > contract-driven forms and safe records > validates real typed fields and evidence without treating strings as numbers or missing proof as approval
+AssertionError: expected '1.0.0' to be '1.1.0' // Object.is equality
+
+Expected: "1.1.0"
+Received: "1.0.0"
+
+ ❯ tmp/frontend/982_client.test.ts:46:48
+     44| describe('contract-driven forms and safe records', () => {
+     45|   it('validates real typed fields and evidence without treating string…
+     46|     expect(envelope({}).meta.contract_version).toBe(schemas.Meta!.prop…
+       |                                                ^
+     47|     expect(validate('StartTransition', { expected_version: '1', action…
+     48|     expect(validate('StartTransition', { expected_version: 1, action: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 skipped (7)
+   Start at  20:35:36
+   Duration  451ms (environment 53%, import 27%, transform 18%, tests 1%, worker 1%)

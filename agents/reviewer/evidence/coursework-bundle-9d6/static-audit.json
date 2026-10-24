@@ -1,0 +1,61 @@
+{
+  "operator": "AI reviewer, static/public-artifact verification only",
+  "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+  "builder_sha256": "a1e5c73d040495f7149307f64ec7676cb7bbecfac2f293dbfb44bc5e4057957b",
+  "packaging_design": "c1aff86d53019485b255ce2824dfddef8ccdd741",
+  "initial_builder": "1c502289e798738e6b1e4ad7e68309def172b620",
+  "QA_DOCX_and_inner_manifest_revision": "b9a2e6a288fc0dbd4706b52cf079589bd127223c",
+  "design_precedes_initial_builder": true,
+  "private_input_material_read": false,
+  "actual_bundle_built": false,
+  "source_tree_binding_finding": "P2 BUNDLE-SOURCE-BINDING-01",
+  "builder_limitations": [
+    "Input QA reference is a nonempty declaration, not an independent QA verification",
+    "New ZIP/sidecar/receipt use mode0600/O_EXCL and leaf output chmod0700; unlike build_source_review this builder has no explicit existing private parent owner/mode check; no separate exploit confirmation or global filesystem safety approval",
+    "Public receipt carries selected provenance/QA/missing strings verbatim; personal-field safety depends on reviewed selection metadata, not a DOCX parser",
+    "No actual private four-DOCX selection/hash/cutoff QA or final archive has been examined"
+  ],
+  "positive_static_checks": [
+    "Regular input relative paths reject absolute/parent traversal/symlink components",
+    "Exactly four technicalDOCX IDs: M7 test-results and M6 other3, nonemptyQA metadata",
+    "Source input ZIP only private review-packages directory and exactly1 source entry",
+    "Exact material allowlist: R002 provenance only, no QA PDF/PNG entries",
+    "O_EXCL prevents overwrite,0600 ZIP/manifest/publicreceipt; outer member/CRC/hash reread",
+    "Inner duplicate/member/selfhash consistency checked but no actual Git tree match"
+  ],
+  "metadata": {
+    "code": "c0a5e89b2442da2a9149e1d37c2a424d52aff7c0",
+    "metadata_sha256": "059a7f00f4aeed9d43a8c9a27bf7ad3ef0e51e6ecc8db364bdb6e7d34caa2bb8",
+    "metadata_before_sha256": "d30eb37ceab0aa689977206ca2060d221cd88a4463b24babfbebd84bf79ececf",
+    "all_AST_except_API_SCRIPT_identical": true,
+    "api_projection_AST_and_strict_count1_unchanged": true,
+    "API_SCRIPT_NUL_split_byte_hex": "00",
+    "original953_function_nodes_unchanged": 43,
+    "owner_artifact_hashes_verified": 14,
+    "raw_red_gzip_lossless_and_readable_normalization_verified": true,
+    "XML_counts": {
+      "red-junit.xml": {
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "green-final-junit.xml": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "owner_tests_rerun": false,
+    "actual_proc_Docker_or_original_fault_load_reads_runs": false,
+    "stage05_actual_cause": "UNKNOWN; synthetic wrapper input does not establish original H11 cause",
+    "root_prior_static_review_not_relabelled_as_dedicated_review": true,
+    "outcome": "NO_NEW_MATERIAL_BLOCKER_FOUND_WITHIN_WRAPPER_EXCLUSION_DELTA"
+  },
+  "frozen14_unchanged": true,
+  "overall": "NOT_ACCEPTED",
+  "reviewer_new_counterexample_runs": 1,
+  "counterexample_exit_code": 1,
+  "new_test_files": []
+}

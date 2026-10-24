@@ -1,0 +1,30 @@
+{
+  "at_utc": "2026-10-24T01:00:11.243287+00:00",
+  "two_exact_edits_only": true,
+  "864_normalized_AST_identical": true,
+  "871_only_unused_loop_target_renamed_AST_identical": true,
+  "871_loop_body_has_no_index_load": true,
+  "compile_only_without_exec_or_import": [
+    "tmp/deployment/864_native_serve_driver.py",
+    "tmp/deployment/871_native_application.py"
+  ],
+  "stdlib_run_sha256": "5917d92a3df46dfda963d39444c771b95e64a49e477656f1e67f2c6a3cbfb1d5",
+  "stdlib_capture_output_branch": "if capture_output:\n    if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:\n        raise ValueError('stdout and stderr arguments may not be used with capture_output.')\n    kwargs['stdout'] = PIPE\n    kwargs['stderr'] = PIPE",
+  "stdlib_equivalence": "capture_output=True assigns stdout=PIPE,stderr=PIPE;cwd/check and remaining argv/keywords unchanged",
+  "old_new_files": {
+    "tmp/deployment/864_native_serve_driver.py": {
+      "old_sha256": "0a42e00ae68e420ade20c67287c4d1efdf7ece70134c636e3f436fb30fc00613",
+      "new_sha256": "b8c4f7aab3e892d8967b5988f8439b68bdd0d764d6c013f86a7f4198ca56c31f"
+    },
+    "tmp/deployment/871_native_application.py": {
+      "old_sha256": "fba8704a07010243b265bfc7fb4c2fe15422195b209e8e486b2191803959f09d",
+      "new_sha256": "b1d9fe3a8bb26e800f1755a97574bc4b5df416beda5ed742e04490ccaaeaa0a0"
+    }
+  },
+  "native_source_unchanged": {
+    "deployment/native/application.py": true,
+    "deployment/native/runtime.py": true
+  },
+  "actual_driver_import_or_services_signals_private_inputs": false,
+  "historical_runs": "No new execution claim for old driver bytes;original Git preimages and original CI red remain."
+}

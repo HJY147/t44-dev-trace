@@ -1,0 +1,113 @@
+{
+  "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+  "original_c4e8_evidence": [
+    {
+      "path": "agents/database/perf-public-c/cli-gates.json",
+      "sha256": "3648d7c1150af7c880fb2e61dd5f240bbecdaf13622c8ed0ded2ae44ae61b0b6",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/design.md",
+      "sha256": "af2af453c440c2c64a2c14683dcefd59363a611621135352e1b5ed3f887d047f",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/evidence-seal.json",
+      "sha256": "7a6c6431d2b249d9a5710d145851ec868ca03069dc4c1706f5d26ce3bfda7d3e",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/format-tool.log",
+      "sha256": "413a709001976657cb743636fd34e48fc41d8d302d665460d3f874b3313da127",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/github-issue4-comment.md",
+      "sha256": "2cea2adf76e776cbc5238cc091d69ca152c2bcdb28af3bda72e565f9555f6c55",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/github-readback.json",
+      "sha256": "b75cb1cecc08a016ea3c42af3ffd513a8c10afc3a9b7fbd56144912d261bf9f7",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/import-check.json",
+      "sha256": "320ec5cf591c35986df57db9dca95c41514e49b6e976da1a4c9e66d8225ed6c0",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/offline-run1.json",
+      "sha256": "cca7d12fc1a96dd294911c9c4f0aba0d913a95109e78e931d5a1e88df304aef4",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/offline-run1.log",
+      "sha256": "08882b505871faca9d12ce866367ebeb7bada2b743321154a1fec258d5e180cf",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/report.md",
+      "sha256": "be0e43cb7c94529a06c1c6a0dced3d97a411446bf6408be9f0b78ac92d9dfb00",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/ruff-fix.log",
+      "sha256": "aac3a0503d8b95052cc85fb9f1717dc82b74aa55853a5aa9749b41e30275d472",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/ruff-run1.log",
+      "sha256": "802c8ebfb0c4f9c910fc1e2dfdb3fc6b4fe4f197eff9797797931c0caca6163b",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/ruff-run2.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/perf-public-c/static-path-receipt.json",
+      "sha256": "9b4058090b202af683ade63da398d95673b91caf1f8cf1b71df223b9af605585",
+      "matches_c4e8": true
+    },
+    {
+      "path": "agents/database/prompts/ROLE-database-PERF-PUBLIC-C-v1.md",
+      "sha256": "ed4a8ec7e30e08940e6eb46077db0c0515d94e05ae7e001eba091caee1fa2420",
+      "matches_c4e8": true
+    }
+  ],
+  "recipes_and_provenance_bytes_unchanged": true,
+  "original_evidence_count": 15,
+  "red_first_setup": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 2,
+    "skipped": 0
+  },
+  "old_source_targets_red": {
+    "tests": 2,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fixed_targets_green": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "counterexample_properties": {
+    "red-run2-junit.xml": {
+      "main_exit": "0",
+      "overwritten": "True"
+    },
+    "green-junit.xml": {
+      "main_exit": "2",
+      "overwritten": "False"
+    }
+  },
+  "no_DB_application_imports": "fixture asserts no sqlalchemy/t44/pymysql/sqlite3/httpx/fastapi import in each main test",
+  "original_19_recipe_matrix_reruns": 0,
+  "MySQL_HTTP_load_runs": 0
+}

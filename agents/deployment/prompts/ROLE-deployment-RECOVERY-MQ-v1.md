@@ -1,0 +1,23 @@
+# ROLE-deployment-RECOVERY-MQ-v1
+
+本岗为这条实际新派工建立的归档标识，不称用户修订或同一提示词演进。
+
+## 总协调实际派工原文
+
+恢复固定部署岗，补独立tester提出的中性能力缺口；不得联系tester/读取其用例、脚本、结果、私钥或任何tmp/independent。所有项目内独立worktree/own index。现环境7c9e48e、受验68b3，SUT仍固定4c20f32b71635016815420472b9d4bb4fa850df0；不要跟root后端5dcb自动漂移。tester已完成R2/R3自己私密解密，报告尚未发布。能力需求：control recover目前成功stdout空，只能exit0/control-events；execution recovery_completed仅finally总体，无法逐次核对。请为CLI recover增加明确JSON逐次回执（例如recovery_completed、已恢复服务/时间/步骤退出信息），只有真实compose unpause/up --wait全成功才能true；失败保留非零+结构化false/稳定错误，不泄露原异常/凭据，不把finally被调用当成功。lease自动和finally既有行为不改、不扩大权限。再把实际MQ transport元数据加入中性context/协议：默认exchange=t44.events、queue/routing_key=t44.notifications、quarantine后缀，wrapper event_id/schema_version/event_type取真实outbox行；properties content_type application/json delivery_mode2 message_id=str(event_id) type t44.event.v1 mandatorytrue。root已向tester提供这些默认中性wire事实，不含业务预期，你应核4c实际compose/worker无override，不能猜。先必要本岗953保护自检，再一次有变更的environment-check真实验证新JSON回执/恢复及传输元数据（原请求可增revision，产品仍4c）；这是修复复核不是重跑旧整套Docker业务。保持旧失败/通过记录，新的回执单独SHA。新脚本需向root领号（当前918），可扩原953，不用为低风险文档造测试。用户已澄清SSH密码是误发，此项目无SSH目标，不使用/保存密码/连外部主机。需要本岗代码/实际prompt/日志/模块报告/handoff/Issue7+PR15留痕；交最终中性协议+capability run+完整实现SHA给root，root只把这些白名单传tester。先完成必要安全实现，不读其private-v2内容。
+
+## 对应产物
+
+仅deployment/acceptance中性能力、原953部署守卫和本岗记录；不造tester用例，不读取项目tmp/independent或其密钥/未发布结果。无SSH目标，不使用/保存密码。固定4c20f32产品源；新增逐次恢复JSON和MQ真实默认wire元数据，不改变产品/门禁/覆盖率或租期/finally操作范围。
+
+## 实际失败后的部署AI实现决定
+
+revision3实际观测pause后unpause0、但up --wait立即因现有health=unhealthy退出1，新逐次/最终回执均false。为完成授权的中性恢复能力，部署AI保留该失败，增加只读的unpaused服务健康观测(<=60秒)，不增加服务/动作权限或重启策略，失败/超时保留false，固定4c源revision4必要复核。此段是AI据真实诊断的实现决定，不伪记用户改码或新tester案例。
+
+## 总协调最终收尾原文
+
+最终f118/run39977039692通过已收到。请最终交接优先给neutral白名单（README/protocol+MQ transport、execution/crypto/成功JSON回执的精确文件与SHA），我将核对后发测试岗。测试岗不得读部署工作日志/开发报告/失败详情；白名单要明确不含这些。随后归档最终SHA与Issue/PR并释放槽即可，无需重复运行。
+
+如Issue/PR收尾耗时，可先返回已提交的neutral文件归档checkpoint，供我立即核对/传测试岗；你完成本岗GitHub后final释放槽即可。新UI实现已待专职审核队列，避免再运行任何环境/压测。
+
+对应产物：中性manifest及7文件先提交6b681dd；开发原始证据/失败与角色日志保持单独归档，明确不供tester。最终仅评论/资料提交，不重跑能力、业务、独立或性能。

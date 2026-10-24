@@ -1,0 +1,137 @@
+{
+  "application_sha": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "design_sha": "7369400d96ac1d2cb48ac8ce4b2701ac636dda0d",
+  "evidence_sha": "6212e5f0513e31e5e43e31caf4e8fdab8e5cc36e",
+  "checked_at": "2026-10-23T17:55:29.795778+00:00",
+  "source": [
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "actual": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+      "declared": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+      "matches": true
+    },
+    {
+      "path": "tmp/frontend/982_client.test.ts",
+      "actual": "e05c5dbf7145725b1344545e79c1881301faffd7086769c111795fca6fc31fa5",
+      "declared": "e05c5dbf7145725b1344545e79c1881301faffd7086769c111795fca6fc31fa5",
+      "matches": true
+    },
+    {
+      "path": "tmp/frontend/983_application.test.ts",
+      "actual": "bb309f1b3b61a40f65b67e294badc9307f2608a6dea386921d0bc0abe799b0a7",
+      "declared": "bb309f1b3b61a40f65b67e294badc9307f2608a6dea386921d0bc0abe799b0a7",
+      "matches": true
+    }
+  ],
+  "raw_logs": [
+    {
+      "path": "agents/frontend/empty-value-affected.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    },
+    {
+      "path": "agents/frontend/empty-value-after.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    },
+    {
+      "path": "agents/frontend/empty-value-before.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    },
+    {
+      "path": "agents/frontend/empty-value-browser-resumed.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    },
+    {
+      "path": "agents/frontend/empty-value-browser.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    },
+    {
+      "path": "agents/frontend/empty-value-build.log",
+      "raw_hash_matches": true,
+      "readable_hash_matches": true,
+      "normalization_matches": true
+    }
+  ],
+  "resumed_browser": {
+    "completed": true,
+    "checks": [
+      {
+        "width": 1440,
+        "fields": {
+          "title": "",
+          "description": "",
+          "plan-delay_contingency": ""
+        },
+        "requiredErrors": true,
+        "noBusinessSubmit": true
+      },
+      {
+        "width": 390,
+        "fields": {
+          "title": "",
+          "description": "",
+          "plan-delay_contingency": ""
+        },
+        "requiredErrors": true,
+        "noBusinessSubmit": true
+      }
+    ],
+    "api_count": 20,
+    "nonGET": [
+      {
+        "method": "POST",
+        "path": "/api/v1/auth/login",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/auth/login",
+        "status": 200
+      }
+    ],
+    "non200": [],
+    "pageErrors": [],
+    "overflows": []
+  },
+  "unchanged_from_840": {
+    "frontend/src/contract.ts": true,
+    "frontend/src/forms.ts": true,
+    "frontend/src/api.ts": true,
+    "frontend/src/workspace.ts": true,
+    "frontend/src/components/OperationForm.vue": true,
+    "frontend/src/styles.css": true,
+    "frontend/vite.config.ts": true
+  },
+  "screenshots": [
+    {
+      "path": "agents/frontend/empty-value-browser/empty-form-resumed/1440-empty-task.png",
+      "sha256": "8d53e0f91202c768a144caa8edd44f8db3d606d9a6d52bec6300cbb396128ddc"
+    },
+    {
+      "path": "agents/frontend/empty-value-browser/empty-form-resumed/1440-required-errors.png",
+      "sha256": "77fa81c3f0e9b85adcd425caf2d0eb0b86ff77c4e651de53d2a7e745f7c24b44"
+    },
+    {
+      "path": "agents/frontend/empty-value-browser/empty-form-resumed/390-empty-task.png",
+      "sha256": "5470a95eb9a2d256d9de9dcf3f22bfbbcb9676811097a8060e48399a4e680777"
+    },
+    {
+      "path": "agents/frontend/empty-value-browser/empty-form-resumed/390-required-errors.png",
+      "sha256": "facb95de2a57b2054e9d166ed343363410f4d885b255af58da1972a11e181b62"
+    }
+  ],
+  "screenshots_actually_viewed": 4,
+  "view_method": "view_image on exact621 blobs exported under /tmp/t44-empty-review-75",
+  "product_test_rerun": false,
+  "new_script_created": false,
+  "target_direct_parent": "7369400d96ac1d2cb48ac8ce4b2701ac636dda0d"
+}

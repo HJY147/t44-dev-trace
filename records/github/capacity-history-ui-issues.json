@@ -1,0 +1,26 @@
+{
+  "source_report_commit": "7a0bef7db05b6b48b58c2faddfa16ee0fba8c319",
+  "source_report": "reports/independent-tests/v2-ui-capacity-dependency-stage-report.md",
+  "publication": "Only exact two expressly published files read; no private case or evidence access.",
+  "issues": [
+    {
+      "number": 27,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/27",
+      "title": "[P2][V2-UI-002] 容量保护被拒时缺少清晰业务解释",
+      "created_at": "2026-10-23T19:10:07Z",
+      "body": "独立v2固定SUT4c，原UI03未完补充发现：活动负责人B仍有任务时，移除其迭代工时返回422 CAPACITY_REFERENCE_INVALID；表单只给“请修改提示的字段/填写内容不符合要求”，未说明须先补全人力或转派。缺工时转派/返工也仅通用422。后端拒绝与工时/版本保护成功，没有越权或错误推进证明。\n\n[独立角色本人报告提交7a0bef7](https://github.com/HJY147/t44-dev-trace/blob/7a0bef7db05b6b48b58c2faddfa16ee0fba8c319/reports/independent-tests/v2-ui-capacity-dependency-stage-report.md)，MD SHA256 0c861427017a057d090ab6389f087d3327ed76247eecf406dbe5b3603f87936e。仅公开报告输入，私密案例/截图/原始现场不可读。\n\n责任前端：当前会话专项复审后另开阶段，先说明设计与冻结D005/D006对应，再用自己的红绿回归改善业务原因与可执行指引；不能仅显示后端英文代码，也不能改业务规则、错误优先级或把422都描述成同一原因。如需后端信息先通过Issue提出。保留原独立FAIL，开发验证不冒充独立复测。"
+    },
+    {
+      "number": 28,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/28",
+      "title": "[P2][V2-UI-003] 任务计划变更历史未显示已持久保存的理由",
+      "created_at": "2026-10-23T19:10:22Z",
+      "body": "独立v2固定SUT4c，UI04原未完补充：任务计划变更后，展开任务审计历史可见前后值、操作者/时间、版本和证据，但未显示填写的变更理由。只读SQL确认schedule_changes确有该理由，因此确认的是所检查历史视图的信息遗漏，不能称数据丢失或泛化所有页面。\n\n[独立角色本人公开报告7a0bef7](https://github.com/HJY147/t44-dev-trace/blob/7a0bef7db05b6b48b58c2faddfa16ee0fba8c319/reports/independent-tests/v2-ui-capacity-dependency-stage-report.md)，结果和SHA同目录；开发只可读这些已明确公开文件，不可读私密案例/原始SQL现场/截图。\n\n责任后端先与前端在本Issue明确数据出口：检查既有AuditEvent与schedule_changes真实路径，先给设计与兼容/隐私/旧数据边界，禁止假造历史理由、任意拼接无关联记录、静默新增冻结API字段/端点或更改14文件。尽量利用现有契约可表达的数据；若需要真正契约变更，先显式版本RFC。记录新增审计与旧记录可见性的区别。先设计、再必要自有红绿回归、实现及真实对接，保持任务/审计原子事务和参数化查询。前端若确需展示改动由前端角色执行。开发验证和独立复测分开。"
+    }
+  ],
+  "scope_limits": [
+    "UI002 backend guard/data protection succeeded; reason presentation insufficient.",
+    "UI003 stored reason exists; inspected task-history view omitted it, no data-loss claim."
+  ],
+  "dispatch": "Frontend Issue27 queued separately after session review; backend Issue28 design queued separately after runtimeA RFC."
+}

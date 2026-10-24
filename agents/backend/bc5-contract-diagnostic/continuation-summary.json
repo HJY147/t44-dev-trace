@@ -1,0 +1,1637 @@
+{
+  "status": "continuation completed; original batch exit1 remains",
+  "operator": "backend AI",
+  "tool_commit": "44b9e8c48e2beb2c0ed52fb4b2d92787d46ef48a",
+  "application_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "window": {
+    "started_at": "2026-10-23T22:37:42.655306+00:00",
+    "ended_at": "2026-10-23T22:37:55.744937+00:00",
+    "wall_seconds": 13.000773666950408,
+    "port_free_before": true,
+    "port_free_after": true,
+    "other_profile_connections_before": 0
+  },
+  "exit_code": 0,
+  "continuation_skips": [
+    "bootstrap",
+    "sanity",
+    "baseline1/8/32"
+  ],
+  "actual_import_hashes_match_bc5": true,
+  "valid_observation_samples": 3419,
+  "groups": [
+    {
+      "name": "timings-1",
+      "requests": 905,
+      "failures": 0,
+      "category_counts": {
+        "1": 302,
+        "2": 302,
+        "3": 301
+      },
+      "request_id_matches_exact": true,
+      "each_request_enters_runtime_and_one_endpoint": true,
+      "e2e_ms": {
+        "count": 905,
+        "mean": 3.291646228729282,
+        "p50": 3.214,
+        "p95": 4.198625,
+        "max": 20.657
+      },
+      "client_cpu_seconds": 0.271389,
+      "client_wall_seconds": 3.004963125,
+      "asgi_wall_ms": {
+        "count": 905,
+        "mean": 3.0081125613259667,
+        "p50": 2.97325,
+        "p95": 3.8195,
+        "max": 20.272708
+      },
+      "pre_runtime_ms": {
+        "count": 905,
+        "mean": 0.16513799668508286,
+        "p50": 0.151083,
+        "p95": 0.24175,
+        "max": 0.912875
+      },
+      "endpoint_dispatch_wait_ms": {
+        "count": 905,
+        "mean": 0.05948853701657458,
+        "p50": 0.056458,
+        "p95": 0.077125,
+        "max": 0.186708
+      },
+      "receive_wait_ms": {
+        "count": 905,
+        "mean": 0.002962940331491713,
+        "p50": 0.001125,
+        "p95": 0.002166,
+        "max": 0.107375
+      },
+      "sql_wall_ms": {
+        "count": 905,
+        "mean": 1.211682514917127,
+        "p50": 1.205499,
+        "p95": 1.627709,
+        "max": 5.475666
+      },
+      "sql_thread_cpu_ms": {
+        "count": 905,
+        "mean": 0.3217171259668508,
+        "p50": 0.333167,
+        "p95": 0.405209,
+        "max": 1.582957
+      },
+      "inclusive_phases": {
+        "authenticate": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 1.5107146961325966,
+            "p50": 1.456208,
+            "p95": 1.826667,
+            "max": 18.2435
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.687269982320442,
+            "p50": 0.623667,
+            "p95": 0.845167,
+            "max": 17.254959
+          }
+        },
+        "db_acquire_and_pre_ping": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.1413371867403315,
+            "p50": 0.126,
+            "p95": 0.179,
+            "max": 10.085709
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.04707043535911603,
+            "p50": 0.040333,
+            "p95": 0.062375,
+            "max": 2.790458
+          }
+        },
+        "dbapi_commit": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.13287629281767957,
+            "p50": 0.140666,
+            "p95": 0.171958,
+            "max": 0.362542
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.02901688287292818,
+            "p50": 0.027708,
+            "p95": 0.036542,
+            "max": 0.154791
+          }
+        },
+        "dbapi_new_connection": {
+          "calls_per_request": 0.0011049723756906078,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.008592218784530387,
+            "p50": 0.0,
+            "p95": 0.0,
+            "max": 7.775958
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.0023139049723756907,
+            "p50": 0.0,
+            "p95": 0.0,
+            "max": 2.094084
+          }
+        },
+        "dbapi_pre_ping": {
+          "calls_per_request": 0.9988950276243094,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.11573093480662984,
+            "p50": 0.113875,
+            "p95": 0.158667,
+            "max": 1.257166
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.029830414364640883,
+            "p50": 0.028334,
+            "p95": 0.0395,
+            "max": 0.19425
+          }
+        },
+        "dbapi_rollback": {
+          "calls_per_request": 1.0011049723756906,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.1136617403314917,
+            "p50": 0.12125,
+            "p95": 0.149209,
+            "max": 0.721625
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.023931293922651933,
+            "p50": 0.023459,
+            "p95": 0.029042,
+            "max": 0.052084
+          }
+        },
+        "dispatch": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.32110032928176796,
+            "p50": 0.4325,
+            "p95": 0.578834,
+            "max": 2.836667
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.15591819889502764,
+            "p50": 0.204917,
+            "p95": 0.279417,
+            "max": 1.097958
+          }
+        },
+        "http_validate_request": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.34397491270718233,
+            "p50": 0.3035,
+            "p95": 0.576917,
+            "max": 2.369125
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.34256884309392266,
+            "p50": 0.303542,
+            "p95": 0.576958,
+            "max": 1.358583
+          }
+        },
+        "http_violations": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.4196611414364641,
+            "p50": 0.385,
+            "p95": 0.647958,
+            "max": 2.352874
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.4187078740331492,
+            "p50": 0.3855,
+            "p95": 0.648541,
+            "max": 1.456624
+          }
+        },
+        "http_wire": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.008239164640883978,
+            "p50": 0.00775,
+            "p95": 0.0115,
+            "max": 0.028209
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.008459627624309391,
+            "p50": 0.007959,
+            "p95": 0.01175,
+            "max": 0.028333
+          }
+        },
+        "runtime": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 2.4710366397790056,
+            "p50": 2.459417,
+            "p95": 3.164875,
+            "max": 19.620667
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 1.286845350276243,
+            "p50": 1.264458,
+            "p95": 1.698209,
+            "max": 18.032458
+          }
+        },
+        "schema_construct": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 905,
+            "mean": 0.041539953591160216,
+            "p50": 0.037583,
+            "p95": 0.061916,
+            "max": 0.189375
+          },
+          "thread_cpu_ms": {
+            "count": 905,
+            "mean": 0.0418836044198895,
+            "p50": 0.037875,
+            "p95": 0.062417,
+            "max": 0.186583
+          }
+        }
+      },
+      "counts": {
+        "sql_count": {
+          "4": 302,
+          "5": 603
+        },
+        "sql_errors": {
+          "0": 905
+        },
+        "pool_checkouts": {
+          "1": 905
+        },
+        "endpoint_dispatch_count": {
+          "1": 905
+        }
+      },
+      "sql_kinds": {
+        "SELECT": 4223
+      },
+      "categories": {
+        "1": {
+          "requests": 302,
+          "sql_counts": {
+            "4": 302
+          },
+          "acquire_calls": {
+            "1": 302
+          }
+        },
+        "2": {
+          "requests": 302,
+          "sql_counts": {
+            "5": 302
+          },
+          "acquire_calls": {
+            "1": 302
+          }
+        },
+        "3": {
+          "requests": 301,
+          "sql_counts": {
+            "5": 301
+          },
+          "acquire_calls": {
+            "1": 301
+          }
+        }
+      },
+      "runtime_thread_cpu_over_wall_ratio": 0.5207714566269365
+    },
+    {
+      "name": "timings-8",
+      "requests": 1496,
+      "failures": 0,
+      "category_counts": {
+        "1": 499,
+        "2": 500,
+        "3": 497
+      },
+      "request_id_matches_exact": true,
+      "each_request_enters_runtime_and_one_endpoint": true,
+      "e2e_ms": {
+        "count": 1496,
+        "mean": 14.295626423796792,
+        "p50": 13.588833,
+        "p95": 25.010167,
+        "max": 40.69675
+      },
+      "client_cpu_seconds": 2.68973,
+      "client_wall_seconds": 3.012705208,
+      "asgi_wall_ms": {
+        "count": 1496,
+        "mean": 14.957063499999999,
+        "p50": 14.237666,
+        "p95": 25.746834,
+        "max": 35.958375
+      },
+      "pre_runtime_ms": {
+        "count": 1496,
+        "mean": 1.8967923061497327,
+        "p50": 1.786583,
+        "p95": 3.21225,
+        "max": 16.190625
+      },
+      "endpoint_dispatch_wait_ms": {
+        "count": 1496,
+        "mean": 1.2733736778074867,
+        "p50": 1.155708,
+        "p95": 2.445625,
+        "max": 16.083334
+      },
+      "receive_wait_ms": {
+        "count": 1496,
+        "mean": 0.007609298128342245,
+        "p50": 0.001208,
+        "p95": 0.001833,
+        "max": 0.98775
+      },
+      "sql_wall_ms": {
+        "count": 1496,
+        "mean": 4.180158400401069,
+        "p50": 4.057125,
+        "p95": 6.508751,
+        "max": 19.588293
+      },
+      "sql_thread_cpu_ms": {
+        "count": 1496,
+        "mean": 0.4266468028074866,
+        "p50": 0.450583,
+        "p95": 0.515501,
+        "max": 0.782208
+      },
+      "inclusive_phases": {
+        "authenticate": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 5.328494864973262,
+            "p50": 4.562291,
+            "p95": 9.262541,
+            "max": 25.135959
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.8275849719251337,
+            "p50": 0.754208,
+            "p95": 1.12125,
+            "max": 2.525334
+          }
+        },
+        "db_acquire_and_pre_ping": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 1.4508394284759358,
+            "p50": 0.653583,
+            "p95": 2.876042,
+            "max": 19.685834
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.1156663121657754,
+            "p50": 0.052083,
+            "p95": 0.092958,
+            "max": 1.764875
+          }
+        },
+        "dbapi_commit": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.7576105434491979,
+            "p50": 0.634,
+            "p95": 1.647667,
+            "max": 15.63525
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.04233608622994652,
+            "p50": 0.041042,
+            "p95": 0.058167,
+            "max": 0.09525
+          }
+        },
+        "dbapi_new_connection": {
+          "calls_per_request": 0.046122994652406414,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.5312904699197861,
+            "p50": 0.0,
+            "p95": 0.0,
+            "max": 14.830292
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.053171790106951874,
+            "p50": 0.0,
+            "p95": 0.0,
+            "max": 1.448666
+          }
+        },
+        "dbapi_pre_ping": {
+          "calls_per_request": 0.9538770053475936,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.7134798041443849,
+            "p50": 0.597583,
+            "p95": 1.630708,
+            "max": 15.387958
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.03828628475935829,
+            "p50": 0.03775,
+            "p95": 0.055333,
+            "max": 0.185334
+          }
+        },
+        "dbapi_rollback": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.744205540106952,
+            "p50": 0.64125,
+            "p95": 1.683292,
+            "max": 3.894291
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.040657219919786096,
+            "p50": 0.038916,
+            "p95": 0.057959,
+            "max": 0.101708
+          }
+        },
+        "dispatch": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.7668841403743315,
+            "p50": 0.765375,
+            "p95": 1.945625,
+            "max": 16.269958
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.17827404812834224,
+            "p50": 0.2355,
+            "p95": 0.277125,
+            "max": 14.635417
+          }
+        },
+        "http_validate_request": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.3395091537433155,
+            "p50": 0.315542,
+            "p95": 0.549334,
+            "max": 0.880166
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.33953869852941176,
+            "p50": 0.315625,
+            "p95": 0.549458,
+            "max": 0.88025
+          }
+        },
+        "http_violations": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.42073763770053474,
+            "p50": 0.403167,
+            "p95": 0.620375,
+            "max": 0.949209
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.4211641784759358,
+            "p50": 0.403583,
+            "p95": 0.620916,
+            "max": 0.949751
+          }
+        },
+        "http_wire": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.008493944518716578,
+            "p50": 0.008334,
+            "p95": 0.010124,
+            "max": 0.025917
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.008728256684491979,
+            "p50": 0.008584,
+            "p95": 0.010333,
+            "max": 0.0165
+          }
+        },
+        "runtime": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 8.008466225935829,
+            "p50": 7.372875,
+            "p95": 14.062917,
+            "max": 28.590541
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 1.4820283382352943,
+            "p50": 1.457542,
+            "p95": 2.132291,
+            "max": 15.840416
+          }
+        },
+        "schema_construct": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1496,
+            "mean": 0.04071633489304813,
+            "p50": 0.039709,
+            "p95": 0.048459,
+            "max": 0.089542
+          },
+          "thread_cpu_ms": {
+            "count": 1496,
+            "mean": 0.04109891844919786,
+            "p50": 0.040084,
+            "p95": 0.048916,
+            "max": 0.080918
+          }
+        }
+      },
+      "counts": {
+        "sql_count": {
+          "4": 499,
+          "5": 997
+        },
+        "sql_errors": {
+          "0": 1496
+        },
+        "pool_checkouts": {
+          "1": 1496
+        },
+        "endpoint_dispatch_count": {
+          "1": 1496
+        }
+      },
+      "sql_kinds": {
+        "SELECT": 6981
+      },
+      "categories": {
+        "1": {
+          "requests": 499,
+          "sql_counts": {
+            "4": 499
+          },
+          "acquire_calls": {
+            "1": 499
+          }
+        },
+        "2": {
+          "requests": 500,
+          "sql_counts": {
+            "5": 500
+          },
+          "acquire_calls": {
+            "1": 500
+          }
+        },
+        "3": {
+          "requests": 497,
+          "sql_counts": {
+            "5": 497
+          },
+          "acquire_calls": {
+            "1": 497
+          }
+        }
+      },
+      "runtime_thread_cpu_over_wall_ratio": 0.1850576997422639
+    },
+    {
+      "name": "timings-32",
+      "requests": 1015,
+      "failures": 0,
+      "category_counts": {
+        "1": 341,
+        "2": 338,
+        "3": 336
+      },
+      "request_id_matches_exact": true,
+      "each_request_enters_runtime_and_one_endpoint": true,
+      "e2e_ms": {
+        "count": 1015,
+        "mean": 61.32433441477833,
+        "p50": 61.878958,
+        "p95": 89.705125,
+        "max": 116.083459
+      },
+      "client_cpu_seconds": 7.527302,
+      "client_wall_seconds": 3.046512125,
+      "asgi_wall_ms": {
+        "count": 1015,
+        "mean": 65.25911651527095,
+        "p50": 68.316625,
+        "p95": 94.45125,
+        "max": 124.431417
+      },
+      "pre_runtime_ms": {
+        "count": 1015,
+        "mean": 9.013738175369458,
+        "p50": 8.474375,
+        "p95": 17.352042,
+        "max": 42.158541
+      },
+      "endpoint_dispatch_wait_ms": {
+        "count": 1015,
+        "mean": 6.123289037438424,
+        "p50": 5.24875,
+        "p95": 12.895542,
+        "max": 37.016125
+      },
+      "receive_wait_ms": {
+        "count": 1015,
+        "mean": 0.0012640423645320195,
+        "p50": 0.001125,
+        "p95": 0.002041,
+        "max": 0.041125
+      },
+      "sql_wall_ms": {
+        "count": 1015,
+        "mean": 9.239257338916255,
+        "p50": 8.902668,
+        "p95": 15.653999,
+        "max": 28.197583
+      },
+      "sql_thread_cpu_ms": {
+        "count": 1015,
+        "mean": 0.4206382049261084,
+        "p50": 0.442875,
+        "p95": 0.516084,
+        "max": 0.982082
+      },
+      "inclusive_phases": {
+        "authenticate": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 22.784863472906405,
+            "p50": 18.839084,
+            "p95": 48.48925,
+            "max": 64.0345
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 1.0645800551724136,
+            "p50": 0.7945,
+            "p95": 2.080334,
+            "max": 21.705292
+          }
+        },
+        "db_acquire_and_pre_ping": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 14.52518136453202,
+            "p50": 10.965375,
+            "p95": 37.891834,
+            "max": 54.5
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.3184436738916256,
+            "p50": 0.064792,
+            "p95": 1.354875,
+            "max": 1.998542
+          }
+        },
+        "dbapi_commit": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 1.8955839497536946,
+            "p50": 1.589208,
+            "p95": 4.577375,
+            "max": 21.593042
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.04249260591133005,
+            "p50": 0.040833,
+            "p95": 0.0595,
+            "max": 0.085958
+          }
+        },
+        "dbapi_new_connection": {
+          "calls_per_request": 0.20788177339901479,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 3.9575373684729063,
+            "p50": 0.0,
+            "p95": 21.026417,
+            "max": 39.773
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.21927757931034483,
+            "p50": 0.0,
+            "p95": 1.102125,
+            "max": 1.73125
+          }
+        },
+        "dbapi_pre_ping": {
+          "calls_per_request": 0.7921182266009852,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 1.4466420226600984,
+            "p50": 1.105708,
+            "p95": 4.209667,
+            "max": 9.826041
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.03253386699507389,
+            "p50": 0.036417,
+            "p95": 0.056791,
+            "max": 0.155709
+          }
+        },
+        "dbapi_rollback": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 1.8146600748768473,
+            "p50": 1.493292,
+            "p95": 4.336541,
+            "max": 21.339667
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.04032084039408867,
+            "p50": 0.038708,
+            "p95": 0.05775,
+            "max": 0.089583
+          }
+        },
+        "dispatch": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 1.4783758807881775,
+            "p50": 1.248208,
+            "p95": 4.190916,
+            "max": 20.492917
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.1726668197044335,
+            "p50": 0.239583,
+            "p95": 0.286208,
+            "max": 0.5995
+          }
+        },
+        "http_validate_request": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 0.35555487192118224,
+            "p50": 0.32825,
+            "p95": 0.5755,
+            "max": 0.933375
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.3556134709359606,
+            "p50": 0.328375,
+            "p95": 0.575625,
+            "max": 0.933416
+          }
+        },
+        "http_violations": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 0.4387670187192118,
+            "p50": 0.419625,
+            "p95": 0.644042,
+            "max": 1.002084
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.4392018068965517,
+            "p50": 0.420083,
+            "p95": 0.643541,
+            "max": 1.002708
+          }
+        },
+        "http_wire": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 0.008658015763546799,
+            "p50": 0.0085,
+            "p95": 0.010501,
+            "max": 0.018834
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.008925919211822661,
+            "p50": 0.00875,
+            "p95": 0.010792,
+            "max": 0.019167
+          }
+        },
+        "runtime": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 28.630294751724136,
+            "p50": 25.537,
+            "p95": 55.888375,
+            "max": 68.749208
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 1.7664667556650246,
+            "p50": 1.625708,
+            "p95": 2.880542,
+            "max": 22.012084
+          }
+        },
+        "schema_construct": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 1015,
+            "mean": 0.04289281871921182,
+            "p50": 0.041375,
+            "p95": 0.053042,
+            "max": 0.090541
+          },
+          "thread_cpu_ms": {
+            "count": 1015,
+            "mean": 0.04326391133004926,
+            "p50": 0.041751,
+            "p95": 0.053458,
+            "max": 0.091125
+          }
+        }
+      },
+      "counts": {
+        "sql_count": {
+          "4": 341,
+          "5": 674
+        },
+        "sql_errors": {
+          "0": 1015
+        },
+        "pool_checkouts": {
+          "1": 1015
+        },
+        "endpoint_dispatch_count": {
+          "1": 1015
+        }
+      },
+      "sql_kinds": {
+        "SELECT": 4734
+      },
+      "categories": {
+        "1": {
+          "requests": 341,
+          "sql_counts": {
+            "4": 341
+          },
+          "acquire_calls": {
+            "1": 341
+          }
+        },
+        "2": {
+          "requests": 338,
+          "sql_counts": {
+            "5": 338
+          },
+          "acquire_calls": {
+            "1": 338
+          }
+        },
+        "3": {
+          "requests": 336,
+          "sql_counts": {
+            "5": 336
+          },
+          "acquire_calls": {
+            "1": 336
+          }
+        }
+      },
+      "runtime_thread_cpu_over_wall_ratio": 0.06169921654609045
+    },
+    {
+      "name": "profile-1",
+      "requests": 3,
+      "failures": 0,
+      "category_counts": {
+        "1": 1,
+        "2": 1,
+        "3": 1
+      },
+      "request_id_matches_exact": true,
+      "each_request_enters_runtime_and_one_endpoint": true,
+      "e2e_ms": {
+        "count": 3,
+        "mean": 14.037069333333333,
+        "p50": 9.319875,
+        "p95": 24.499125,
+        "max": 24.499125
+      },
+      "client_cpu_seconds": 0.020901,
+      "client_wall_seconds": 0.06102725,
+      "asgi_wall_ms": {
+        "count": 3,
+        "mean": 13.22625,
+        "p50": 8.904875,
+        "p95": 22.847958,
+        "max": 22.847958
+      },
+      "pre_runtime_ms": {
+        "count": 3,
+        "mean": 0.47808333333333336,
+        "p50": 0.239542,
+        "p95": 1.00225,
+        "max": 1.00225
+      },
+      "endpoint_dispatch_wait_ms": {
+        "count": 3,
+        "mean": 0.11434699999999999,
+        "p50": 0.075666,
+        "p95": 0.201375,
+        "max": 0.201375
+      },
+      "receive_wait_ms": {
+        "count": 3,
+        "mean": 0.0022496666666666667,
+        "p50": 0.00225,
+        "p95": 0.002833,
+        "max": 0.002833
+      },
+      "sql_wall_ms": {
+        "count": 3,
+        "mean": 2.182556,
+        "p50": 2.180917,
+        "p95": 2.741291,
+        "max": 2.741291
+      },
+      "sql_thread_cpu_ms": {
+        "count": 3,
+        "mean": 0.9105973333333334,
+        "p50": 1.013875,
+        "p95": 1.035708,
+        "max": 1.035708
+      },
+      "inclusive_phases": {
+        "authenticate": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 7.678444666666667,
+            "p50": 3.138667,
+            "p95": 17.266292,
+            "max": 17.266292
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 4.030528,
+            "p50": 1.693209,
+            "p95": 8.817375,
+            "max": 8.817375
+          }
+        },
+        "db_acquire_and_pre_ping": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 3.907499666666667,
+            "p50": 0.221333,
+            "p95": 11.287791,
+            "max": 11.287791
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 1.3352639999999998,
+            "p50": 0.13475,
+            "p95": 3.782625,
+            "max": 3.782625
+          }
+        },
+        "dbapi_commit": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 0.17481966666666668,
+            "p50": 0.177042,
+            "p95": 0.183542,
+            "max": 0.183542
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.04658366666666667,
+            "p50": 0.046917,
+            "p95": 0.050042,
+            "max": 0.050042
+          }
+        },
+        "dbapi_new_connection": {
+          "calls_per_request": 0.3333333333333333,
+          "wall_ms": {
+            "count": 3,
+            "mean": 2.920958333333333,
+            "p50": 0.0,
+            "p95": 8.762875,
+            "max": 8.762875
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.819347,
+            "p50": 0.0,
+            "p95": 2.458041,
+            "max": 2.458041
+          }
+        },
+        "dbapi_pre_ping": {
+          "calls_per_request": 0.6666666666666666,
+          "wall_ms": {
+            "count": 3,
+            "mean": 0.11795800000000001,
+            "p50": 0.175416,
+            "p95": 0.178458,
+            "max": 0.178458
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.04770833333333333,
+            "p50": 0.053875,
+            "p95": 0.08925,
+            "max": 0.08925
+          }
+        },
+        "dbapi_rollback": {
+          "calls_per_request": 1.3333333333333333,
+          "wall_ms": {
+            "count": 3,
+            "mean": 0.18808366666666665,
+            "p50": 0.152292,
+            "p95": 0.267709,
+            "max": 0.267709
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.050361333333333334,
+            "p50": 0.0385,
+            "p95": 0.076292,
+            "max": 0.076292
+          }
+        },
+        "dispatch": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 1.2240556666666667,
+            "p50": 0.890209,
+            "p95": 2.748333,
+            "max": 2.748333
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 1.0285833333333334,
+            "p50": 0.595458,
+            "p95": 2.456458,
+            "max": 2.456458
+          }
+        },
+        "http_validate_request": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 1.2438193333333334,
+            "p50": 1.066292,
+            "p95": 1.656583,
+            "max": 1.656583
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 1.2439859999999998,
+            "p50": 1.066417,
+            "p95": 1.656791,
+            "max": 1.656791
+          }
+        },
+        "http_violations": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 1.3196666666666665,
+            "p50": 1.133125,
+            "p95": 1.708167,
+            "max": 1.708167
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 1.3203056666666666,
+            "p50": 1.133875,
+            "p95": 1.708708,
+            "max": 1.708708
+          }
+        },
+        "http_wire": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 0.014305333333333335,
+            "p50": 0.013957,
+            "p95": 0.015834,
+            "max": 0.015834
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.014402666666666666,
+            "p50": 0.014083,
+            "p95": 0.015958,
+            "max": 0.015958
+          }
+        },
+        "runtime": {
+          "calls_per_request": 1.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 10.681555666666668,
+            "p50": 6.854167,
+            "p95": 19.087458,
+            "max": 19.087458
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 6.597972333333334,
+            "p50": 5.380167,
+            "p95": 10.393041,
+            "max": 10.393041
+          }
+        },
+        "schema_construct": {
+          "calls_per_request": 3.0,
+          "wall_ms": {
+            "count": 3,
+            "mean": 0.11837466666666667,
+            "p50": 0.099583,
+            "p95": 0.160709,
+            "max": 0.160709
+          },
+          "thread_cpu_ms": {
+            "count": 3,
+            "mean": 0.11901400000000001,
+            "p50": 0.100125,
+            "p95": 0.161333,
+            "max": 0.161333
+          }
+        }
+      },
+      "counts": {
+        "sql_count": {
+          "4": 1,
+          "5": 2
+        },
+        "sql_errors": {
+          "0": 3
+        },
+        "pool_checkouts": {
+          "1": 3
+        },
+        "endpoint_dispatch_count": {
+          "1": 3
+        }
+      },
+      "sql_kinds": {
+        "SELECT": 14
+      },
+      "categories": {
+        "1": {
+          "requests": 1,
+          "sql_counts": {
+            "4": 1
+          },
+          "acquire_calls": {
+            "1": 1
+          }
+        },
+        "2": {
+          "requests": 1,
+          "sql_counts": {
+            "5": 1
+          },
+          "acquire_calls": {
+            "1": 1
+          }
+        },
+        "3": {
+          "requests": 1,
+          "sql_counts": {
+            "5": 1
+          },
+          "acquire_calls": {
+            "1": 1
+          }
+        }
+      },
+      "runtime_thread_cpu_over_wall_ratio": 0.6176976967805594
+    }
+  ],
+  "profiles": [
+    {
+      "category": 1,
+      "sample_id": "9fdfbf67266e49d9a23d178a88d644e9",
+      "file": "server-profile/9fdfbf67266e49d9a23d178a88d644e9.pstats",
+      "top_project_inclusive": [
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 235,
+          "function": "execute",
+          "calls": 1,
+          "inclusive_elapsed_ms": 19.0805,
+          "self_elapsed_ms": 0.013043
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "calls": 1,
+          "inclusive_elapsed_ms": 17.261333999999998,
+          "self_elapsed_ms": 0.017334
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 150,
+          "function": "rows",
+          "calls": 4,
+          "inclusive_elapsed_ms": 17.226459,
+          "self_elapsed_ms": 0.052336
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 93,
+          "function": "_execute",
+          "calls": 4,
+          "inclusive_elapsed_ms": 16.551417,
+          "self_elapsed_ms": 0.040087000000000005
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 191,
+          "function": "get",
+          "calls": 2,
+          "inclusive_elapsed_ms": 2.6577080000000004,
+          "self_elapsed_ms": 0.001957
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 228,
+          "function": "<lambda>",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.0680830000000001,
+          "self_elapsed_ms": 0.0007080000000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 104,
+          "function": "validate_request",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.059167,
+          "self_elapsed_ms": 0.02529
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 37,
+          "function": "violations",
+          "calls": 2,
+          "inclusive_elapsed_ms": 0.9071670000000001,
+          "self_elapsed_ms": 0.007833000000000001
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 87,
+          "function": "__exit__",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.46037500000000003,
+          "self_elapsed_ms": 0.002458
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 51,
+          "function": "commit",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.431292,
+          "self_elapsed_ms": 0.003626
+        },
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "line": 66,
+          "function": "initialize_mysql_session",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.40904100000000004,
+          "self_elapsed_ms": 0.004625000000000001
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 61,
+          "function": "_clauses",
+          "calls": 4,
+          "inclusive_elapsed_ms": 0.36712500000000003,
+          "self_elapsed_ms": 0.024539
+        }
+      ]
+    },
+    {
+      "category": 2,
+      "sample_id": "2816861622b44430be47846cf137b439",
+      "file": "server-profile/2816861622b44430be47846cf137b439.pstats",
+      "top_project_inclusive": [
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 235,
+          "function": "execute",
+          "calls": 1,
+          "inclusive_elapsed_ms": 6.852041000000001,
+          "self_elapsed_ms": 0.0070420000000000005
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 150,
+          "function": "rows",
+          "calls": 5,
+          "inclusive_elapsed_ms": 5.343334,
+          "self_elapsed_ms": 0.034716000000000004
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 93,
+          "function": "_execute",
+          "calls": 5,
+          "inclusive_elapsed_ms": 4.831459000000001,
+          "self_elapsed_ms": 0.039251
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 191,
+          "function": "get",
+          "calls": 3,
+          "inclusive_elapsed_ms": 3.754208,
+          "self_elapsed_ms": 0.004623
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "line": 39,
+          "function": "dispatch",
+          "calls": 1,
+          "inclusive_elapsed_ms": 2.746375,
+          "self_elapsed_ms": 0.0018750000000000001
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "line": 108,
+          "function": "validateContractPayload",
+          "calls": 1,
+          "inclusive_elapsed_ms": 2.74425,
+          "self_elapsed_ms": 0.003541
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "calls": 1,
+          "inclusive_elapsed_ms": 2.6286250000000004,
+          "self_elapsed_ms": 0.013543000000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 228,
+          "function": "<lambda>",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.009916,
+          "self_elapsed_ms": 0.000332
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 104,
+          "function": "validate_request",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.007042,
+          "self_elapsed_ms": 0.013335
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 37,
+          "function": "violations",
+          "calls": 2,
+          "inclusive_elapsed_ms": 0.9449170000000001,
+          "self_elapsed_ms": 0.006791000000000001
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 87,
+          "function": "__exit__",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.408541,
+          "self_elapsed_ms": 0.00125
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 51,
+          "function": "commit",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.39375,
+          "self_elapsed_ms": 0.0034990000000000004
+        }
+      ]
+    },
+    {
+      "category": 3,
+      "sample_id": "b211788ad1584ef087c13e3d8b2a5346",
+      "file": "server-profile/b211788ad1584ef087c13e3d8b2a5346.pstats",
+      "top_project_inclusive": [
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 235,
+          "function": "execute",
+          "calls": 1,
+          "inclusive_elapsed_ms": 6.101000000000001,
+          "self_elapsed_ms": 0.0050420000000000005
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 150,
+          "function": "rows",
+          "calls": 5,
+          "inclusive_elapsed_ms": 3.993875,
+          "self_elapsed_ms": 0.034457
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 93,
+          "function": "_execute",
+          "calls": 5,
+          "inclusive_elapsed_ms": 3.5122900000000006,
+          "self_elapsed_ms": 0.037581
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "calls": 1,
+          "inclusive_elapsed_ms": 3.1369590000000005,
+          "self_elapsed_ms": 0.012379000000000001
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 191,
+          "function": "get",
+          "calls": 3,
+          "inclusive_elapsed_ms": 2.1521660000000002,
+          "self_elapsed_ms": 0.006582000000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 228,
+          "function": "<lambda>",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.658041,
+          "self_elapsed_ms": 0.0004580000000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 104,
+          "function": "validate_request",
+          "calls": 1,
+          "inclusive_elapsed_ms": 1.6544580000000002,
+          "self_elapsed_ms": 0.01229
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 37,
+          "function": "violations",
+          "calls": 2,
+          "inclusive_elapsed_ms": 1.5326670000000002,
+          "self_elapsed_ms": 0.006500000000000001
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "line": 39,
+          "function": "dispatch",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.8884590000000001,
+          "self_elapsed_ms": 0.001417
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "line": 108,
+          "function": "validateContractPayload",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.8869170000000001,
+          "self_elapsed_ms": 0.0031660000000000004
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 87,
+          "function": "__exit__",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.375,
+          "self_elapsed_ms": 0.000958
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "line": 51,
+          "function": "commit",
+          "calls": 1,
+          "inclusive_elapsed_ms": 0.362333,
+          "self_elapsed_ms": 0.0032910000000000005
+        }
+      ]
+    }
+  ],
+  "server_segments": {
+    "timings": {
+      "started_at": "2026-10-23T22:37:43.487400+00:00",
+      "ended_at": "2026-10-23T22:37:54.239707+00:00",
+      "wall_ns": 10755383583,
+      "process_cpu_ns": 6925443000,
+      "record_count": 3416,
+      "dropped_records": 0,
+      "workers": 1,
+      "pool_size": 5,
+      "max_overflow": 10,
+      "thread_tokens": 40
+    },
+    "profile": {
+      "started_at": "2026-10-23T22:37:54.782991+00:00",
+      "ended_at": "2026-10-23T22:37:55.507388+00:00",
+      "wall_ns": 725580125,
+      "process_cpu_ns": 40286000,
+      "record_count": 3,
+      "dropped_records": 0,
+      "workers": 1,
+      "pool_size": 5,
+      "max_overflow": 10,
+      "thread_tokens": 40
+    }
+  },
+  "limitations": [
+    "No formal workload attribution",
+    "No503 seen; contract-only candidates",
+    "Inclusive stages overlap; default cProfile elapsed, not exclusiveCPU",
+    "Dispatch-to-entry includes scheduler/queue, acquire includes ping/build/checkout",
+    "SQL cursor wall cannot isolate server lock wait",
+    "Original batch instrumentation failure preserved; no repeated baseline"
+  ]
+}

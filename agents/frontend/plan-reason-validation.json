@@ -1,0 +1,439 @@
+{
+  "stage": "UI003 plan history reason frontend developer verification",
+  "operator": "AI frontend developer",
+  "checked_at": "2026-10-23T20:48:57.969438+00:00",
+  "basis_commit": "3f59d881e5336d9a00964533e7beb8d914b29432",
+  "admitted_design_commit": "5e8e3bc632d8a0b3a558713731589e181f3a029c",
+  "frontend_design_commit": "41776d009a6dbd0c2a806c3e6ff363b65556180b",
+  "application_commit": "c79cd9930febadfa77cb2d0eede7626d4039c305",
+  "changed_production_files": [
+    "frontend/src/audit.ts",
+    "frontend/src/components/RecordView.vue"
+  ],
+  "source_sha256": {
+    "frontend/src/App.vue": "941eb6ec4c731dce169bfa37c69d99f9064b6f45c87905512eedd088e83bf0d7",
+    "frontend/src/api.ts": "d143992ac9b29b7fdb41951be88652cccd29fe0ae2f36008c4e890841cce5c26",
+    "frontend/src/audit.ts": "b6f896d39a3f29eb9896a9a0ec47334e8a7aaf9e70aed377dceece86318dd36a",
+    "frontend/src/components/DataState.vue": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+    "frontend/src/components/FieldEditor.vue": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+    "frontend/src/components/LoginView.vue": "33af8c787d761b290de45a5bd4538c117d834d0eace194a0451dc212a970c57c",
+    "frontend/src/components/OperationForm.vue": "b0e4c56d2fc224f066ae297905fab41f45807092c83dc928ca121e184f2ce6c7",
+    "frontend/src/components/PageHeading.vue": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+    "frontend/src/components/RecordList.vue": "1b088ad8bea3b88cc7f03a91f10a47d106c5318cbedb61533ef296d9b4ac234b",
+    "frontend/src/components/RecordView.vue": "a4dafaf96a3ceee85051ca8c66b59d103b09caaab88fcd1006cc70444d3a15ad",
+    "frontend/src/components/SidebarNavigation.vue": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+    "frontend/src/components/TaskDrawer.vue": "3a4287ac7bf94f91806812b41580e99e93fbc0b1b1a6ad80f6295e6897399f33",
+    "frontend/src/contract.ts": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+    "frontend/src/forms.ts": "24137ed703aa66c479327708f95c5d2bbcac592b299c48c84271345ce6f37543",
+    "frontend/src/main.ts": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+    "frontend/src/navigation.ts": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+    "frontend/src/router.ts": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+    "frontend/src/views/NotFoundView.vue": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+    "frontend/src/views/WorkspaceView.vue": "f03ff257777c79d860d8761ca9c78ad02a8035772ccd86d92d434c8599de6b36",
+    "frontend/src/workspace.ts": "847a3269f25315a159fb6b25345b118dbc18c62a0977fc5996ffdd0d55f41716"
+  },
+  "tests_and_driver_sha256": {
+    "tmp/frontend/982_client.test.ts": "9b3f25a6a3ba608f0a1215c94f339c4f6465d315d48154f7c41bc367aa8b286b",
+    "tmp/frontend/983_application.test.ts": "91141fe2728abae5560b805b45cb74d83966f6cc8b94126de51b7c4cb953fa3f",
+    "tmp/frontend/872_plan_reason_browser.mjs": "8147e81689efa3e4f7a37784cfad6b477222647fbd2006211ae5cee6a2137da4"
+  },
+  "targeted_before": {
+    "failed": 15,
+    "passed": 7,
+    "not_selected": 65,
+    "exit_code": 1,
+    "product_source": "3f59d881e5336d9a00964533e7beb8d914b29432"
+  },
+  "targeted_after": {
+    "passed": 22,
+    "failed": 0,
+    "not_selected": 65,
+    "exit_code": 0
+  },
+  "full_frontend": {
+    "passed": 89,
+    "failed": 0,
+    "skipped": 0,
+    "exit_code": 0,
+    "note": "65 inherited +24 reason component cases; two further literal date-prefix/duplicate-date-operation data variants added after initial22 green and exercised in whole-source run; no old expectation weakened."
+  },
+  "coverage": {
+    "total": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "source_files": [
+      "frontend/src/App.vue",
+      "frontend/src/api.ts",
+      "frontend/src/audit.ts",
+      "frontend/src/components/DataState.vue",
+      "frontend/src/components/FieldEditor.vue",
+      "frontend/src/components/LoginView.vue",
+      "frontend/src/components/OperationForm.vue",
+      "frontend/src/components/PageHeading.vue",
+      "frontend/src/components/RecordList.vue",
+      "frontend/src/components/RecordView.vue",
+      "frontend/src/components/SidebarNavigation.vue",
+      "frontend/src/components/TaskDrawer.vue",
+      "frontend/src/contract.ts",
+      "frontend/src/forms.ts",
+      "frontend/src/main.ts",
+      "frontend/src/navigation.ts",
+      "frontend/src/router.ts",
+      "frontend/src/views/NotFoundView.vue",
+      "frontend/src/views/WorkspaceView.vue",
+      "frontend/src/workspace.ts"
+    ],
+    "measured_source_files": [
+      "frontend/src/App.vue",
+      "frontend/src/api.ts",
+      "frontend/src/audit.ts",
+      "frontend/src/components/DataState.vue",
+      "frontend/src/components/FieldEditor.vue",
+      "frontend/src/components/LoginView.vue",
+      "frontend/src/components/OperationForm.vue",
+      "frontend/src/components/PageHeading.vue",
+      "frontend/src/components/RecordList.vue",
+      "frontend/src/components/RecordView.vue",
+      "frontend/src/components/SidebarNavigation.vue",
+      "frontend/src/components/TaskDrawer.vue",
+      "frontend/src/contract.ts",
+      "frontend/src/forms.ts",
+      "frontend/src/main.ts",
+      "frontend/src/navigation.ts",
+      "frontend/src/router.ts",
+      "frontend/src/views/NotFoundView.vue",
+      "frontend/src/views/WorkspaceView.vue",
+      "frontend/src/workspace.ts"
+    ],
+    "exact_file_set_match": true,
+    "exclusions_added": false,
+    "raw_final_json_sha256": "681004567991002f1d1fbf44af3127d6b6c717bb4055e2a7cacfabd068e4fb96"
+  },
+  "build": {
+    "exit_code": 0,
+    "includes_typecheck": true,
+    "javascript_kb": 829.87,
+    "large_chunk_warning_retained": true,
+    "temporal_note": "Build preceded two additional same-typed literal test-data variants only. Production source and typed test structure unchanged; final89 coverage run includes them. No redundant full suite/build rerun."
+  },
+  "browser": {
+    "result": "agents/frontend/plan-reason-browser/first/results.json",
+    "driver": "tmp/frontend/872_plan_reason_browser.mjs",
+    "exit_code": 0,
+    "passed": true,
+    "attempts": 1,
+    "frontend_source": "c79cd9930febadfa77cb2d0eede7626d4039c305",
+    "backend_source": "0549ea89ce218ecb945cd4346671f20d46fad215",
+    "legacy_backend_source": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "api_base": "http://127.0.0.1:18089",
+    "legacy_api_base": "http://127.0.0.1:18080",
+    "origin": "http://127.0.0.1:5176",
+    "source_identity": {
+      "frontend_tracked_files_hashed": 29,
+      "backend_t44_tracked_files_hashed": 52,
+      "limitation": "Process identity uses coordinator supplied PID/source; independently verified archive file hashes, not kernel executable attestation."
+    },
+    "resources": {
+      "project": {
+        "id": 42,
+        "name": "[synthetic][frontend UI003] 2026-10-23T20:47:22.153Z-440952"
+      },
+      "iteration_id": 42,
+      "task_id": 6002,
+      "initialTask": {
+        "id": 6002,
+        "project_id": 42,
+        "iteration_id": 42,
+        "title": "Synthetic UI003 literal history",
+        "description": "Dedicated new fixture only",
+        "owner_id": 2,
+        "state": 1,
+        "version": 1,
+        "schedule_version": 1,
+        "delivery_cycle": 1,
+        "review_cycle": 1,
+        "plan": {
+          "planned_start": "2026-10-25T22:00:00.000000Z",
+          "planned_end": "2026-10-26T05:00:00.000000Z",
+          "delay_contingency": "Preserve original evidence",
+          "buffer_hours": 0.5,
+          "estimated_hours": 2
+        },
+        "blocked_from_state": null,
+        "block_reason": null,
+        "responsibility_stage": null,
+        "latest_review_id": null,
+        "approved_review_id": null,
+        "approved_assessment_id": null,
+        "approved_assessment_version": null,
+        "escalation_count": 0,
+        "created_at": "2026-10-23T20:47:22.220056Z",
+        "updated_at": "2026-10-23T20:47:22.220056Z",
+        "artifact_revision": null
+      }
+    },
+    "control_request_count": 14,
+    "control_status_counts": {
+      "200": 10,
+      "201": 4
+    },
+    "browser_response_count": 61,
+    "browser_status_counts": {
+      "200": 61
+    },
+    "successful_business_write_count": 7,
+    "successful_business_writes": "Newproject/member/iteration/task4×201 on18089; one legacy changeTaskPlan200 on18080 in only newproject42; two real UIchangeTaskPlan200 on18089. Auth login/logout are disclosed separately in raw request list.",
+    "legacy": {
+      "audit_id": 119,
+      "reason": "changeTaskPlan",
+      "old_endpoint_response_sha256_before": "33e600a9cdcbdd2779315cd510aa64689cf4c5293400ab10fadb096cf65d73d7",
+      "old_endpoint_response_sha256_after": "33e600a9cdcbdd2779315cd510aa64689cf4c5293400ab10fadb096cf65d73d7",
+      "old_endpoint_payload_unchanged": true,
+      "new_endpoint_precise_single_reason_projection": true,
+      "limitation": "Old endpoint JSON unchanged is HTTP response evidence, not a direct immutable database row inspection."
+    },
+    "two_real_reason_writes": [
+      {
+        "width": 1440,
+        "before": {
+          "version": 2,
+          "schedule_version": 2,
+          "plan": {
+            "planned_start": "2026-10-25T22:00:00.000000Z",
+            "planned_end": "2026-10-26T21:00:00.000000Z",
+            "delay_contingency": "Preserve original evidence",
+            "buffer_hours": 0.5,
+            "estimated_hours": 2
+          }
+        },
+        "after": {
+          "version": 3,
+          "schedule_version": 3,
+          "plan": {
+            "planned_start": "2026-10-25T22:00:00.000000Z",
+            "planned_end": "2026-10-27T21:00:00.000000Z",
+            "delay_contingency": "Preserve original evidence",
+            "buffer_hours": 0.5,
+            "estimated_hours": 2
+          }
+        },
+        "audit_id": 121,
+        "requestId": "53cc9349-5ad1-4e0b-9ea4-6f06dc5807e4",
+        "reasonCodepoints": 2000,
+        "expectedSha256": "26e5458cbff5e621d5f03729c471d59e852dfea9b02bd36f84ca4fd73775f863",
+        "displayedSha256": "26e5458cbff5e621d5f03729c471d59e852dfea9b02bd36f84ca4fd73775f863",
+        "apiSha256": "26e5458cbff5e621d5f03729c471d59e852dfea9b02bd36f84ca4fd73775f863",
+        "tail": {
+          "tailText": "保保保保保保保保保保保保保保保保保保\n原文末尾 保留空格  ",
+          "visible": true
+        },
+        "literalHtmlNotExecuted": true,
+        "otherAuditContextRetained": true
+      },
+      {
+        "width": 390,
+        "before": {
+          "version": 3,
+          "schedule_version": 3,
+          "plan": {
+            "planned_start": "2026-10-25T22:00:00.000000Z",
+            "planned_end": "2026-10-27T21:00:00.000000Z",
+            "delay_contingency": "Preserve original evidence",
+            "buffer_hours": 0.5,
+            "estimated_hours": 2
+          }
+        },
+        "after": {
+          "version": 4,
+          "schedule_version": 4,
+          "plan": {
+            "planned_start": "2026-10-25T22:00:00.000000Z",
+            "planned_end": "2026-10-28T21:00:00.000000Z",
+            "delay_contingency": "Preserve original evidence",
+            "buffer_hours": 0.5,
+            "estimated_hours": 2
+          }
+        },
+        "audit_id": 124,
+        "requestId": "f08213ce-f945-4992-984c-33085aad4560",
+        "reasonCodepoints": 2000,
+        "expectedSha256": "deb78c99c63a5b05e46f430b2064e9b4140e9ffa8548c26b6e7112b727b07429",
+        "displayedSha256": "deb78c99c63a5b05e46f430b2064e9b4140e9ffa8548c26b6e7112b727b07429",
+        "apiSha256": "deb78c99c63a5b05e46f430b2064e9b4140e9ffa8548c26b6e7112b727b07429",
+        "tail": {
+          "tailText": "保保保保保保保保保保保保保保保保保保\n原文末尾 保留空格  ",
+          "visible": true
+        },
+        "literalHtmlNotExecuted": true,
+        "otherAuditContextRetained": true
+      }
+    ],
+    "page_errors": [],
+    "screenshots_viewed": [
+      "agents/frontend/plan-reason-browser/first/1440-legacy-literal.png",
+      "agents/frontend/plan-reason-browser/first/1440-reason-start.png",
+      "agents/frontend/plan-reason-browser/first/1440-reason-end.png",
+      "agents/frontend/plan-reason-browser/first/390-legacy-literal.png",
+      "agents/frontend/plan-reason-browser/first/390-reason-start.png",
+      "agents/frontend/plan-reason-browser/first/390-reason-end.png"
+    ],
+    "layouts": [
+      {
+        "label": "1440-legacy-literal",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      {
+        "label": "1440-reason-start",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      {
+        "label": "1440-reason-end",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      {
+        "label": "390-legacy-literal",
+        "width": 390,
+        "scrollWidth": 390
+      },
+      {
+        "label": "390-reason-start",
+        "width": 390,
+        "scrollWidth": 390
+      },
+      {
+        "label": "390-reason-end",
+        "width": 390,
+        "scrollWidth": 390
+      }
+    ],
+    "own_chrome_and_vite5176_closed_at": "2026-10-23T20:47:30.402Z",
+    "own_port5176_no_listener_check": true,
+    "retention": "Only a new owned synthetic project/member/iteration/task; retained for audit, no deletion/reset, no old project41/independent data modifications.",
+    "backend18089_left_root_managed": true
+  },
+  "raw_logs": {
+    "agents/frontend/plan-reason-after.log": {
+      "raw_sha256": "c8ae5f520a86d84187c77336d4ada81025f456d2d60979a505eddd8e2be7c5f8",
+      "raw_archive": "agents/frontend/plan-reason-after.raw.log.gz",
+      "readable_sha256": "127e7debf266dc38863ed82a9056e428403b82f8818140ddc6cab5cd1afa34c7"
+    },
+    "agents/frontend/plan-reason-before.log": {
+      "raw_sha256": "68f6b79660e54c5fc922a80303b611abd77d4c9818e63919b98f2f741361d416",
+      "raw_archive": "agents/frontend/plan-reason-before.raw.log.gz",
+      "readable_sha256": "68f6b79660e54c5fc922a80303b611abd77d4c9818e63919b98f2f741361d416"
+    },
+    "agents/frontend/plan-reason-browser-first.log": {
+      "raw_sha256": "933a508766095019d33d6ec73c5e570ef49155cafb300c0905a282985697e920",
+      "raw_archive": "agents/frontend/plan-reason-browser-first.raw.log.gz",
+      "readable_sha256": "933a508766095019d33d6ec73c5e570ef49155cafb300c0905a282985697e920"
+    },
+    "agents/frontend/plan-reason-build.log": {
+      "raw_sha256": "daf6e3f0c9e0a0768a803102819a9b32d0030d89ab10b02674a460d41803c252",
+      "raw_archive": "agents/frontend/plan-reason-build.raw.log.gz",
+      "readable_sha256": "d2f68d8dbfe96c8cd005aa7a1d0268c908cdaed95e97584d862b51be1a26d417"
+    },
+    "agents/frontend/plan-reason-coverage.log": {
+      "raw_sha256": "b5b0f1c6ebee919f66d60219c2c781700156c4a394edf1d99636246e48be7985",
+      "raw_archive": "agents/frontend/plan-reason-coverage.raw.log.gz",
+      "readable_sha256": "ef72b999cc27496257237563bcfca0ffda1d9b2ff76e4959595f8f3d9c496e5e"
+    }
+  },
+  "frozen_files": {
+    "AGENTS.md": {
+      "expected": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b",
+      "actual": "ef1f3b988da4479d65c94e5350a77009caf31b35a9347d82853afec9c9c8cd2b"
+    },
+    "specs/requirements.md": {
+      "expected": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc",
+      "actual": "3a917818c3642a399a5f3e9a180b571e63aae5dafa09cbfd4b332d1ace7c73fc"
+    },
+    "specs/business-rules.md": {
+      "expected": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2",
+      "actual": "3a2d3eb68b151c09928ee42ed82d99dfd15dfea56d30aa5dddb8ce4ec61640d2"
+    },
+    "specs/backend-design.md": {
+      "expected": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda",
+      "actual": "743e15b6fa3ef4a2a5ee983c00ff67cea87f369e82fdf358bd917e4550e3cfda"
+    },
+    "specs/contracts/openapi.json": {
+      "expected": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "actual": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f"
+    },
+    "specs/contracts/README.md": {
+      "expected": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727",
+      "actual": "b764ac61535adfebc6b023ce5432ce8e79abde82b44cbe02a466b1c8fd53c727"
+    },
+    "specs/database/field-dictionary.md": {
+      "expected": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "actual": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8"
+    },
+    "specs/database/schema.sql": {
+      "expected": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "actual": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4"
+    },
+    "specs/database/persistence-contract.md": {
+      "expected": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "actual": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23"
+    },
+    "docs/collaboration/implementation-layout.md": {
+      "expected": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "actual": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5"
+    },
+    "docs/reviews/review-protocol.md": {
+      "expected": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "actual": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36"
+    },
+    "backend/t44/contracts/openapi.json": {
+      "expected": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "actual": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f"
+    },
+    "backend/t44/persistence/schema_v1.sql": {
+      "expected": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "actual": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4"
+    },
+    "specs/changes/capacity-lifecycle-v1.1.md": {
+      "expected": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "actual": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98"
+    }
+  },
+  "unverified": [
+    "Exact final source review, combined backend/frontend CI and new isolated independent acceptance are pending.",
+    "Missing/ambiguous/nonplan/rework/iteration display scopes are real component fixtures only; actual browser exercised task plan/newreason and legacytask preciseprojection. No fake missing legacy records or SQL inserts.",
+    "No complete accessibility/security/performance/cloud acceptance; frontend developer verification never student manual work or independent acceptance."
+  ],
+  "non_product_command_failures": [
+    "Two read-only rg commands referenced nonexistent frontend/src/fields.ts and SchemaFields.vue, returning2. No test/product change or HTTP write resulted; corrected to actual component paths."
+  ]
+}

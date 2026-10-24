@@ -1,0 +1,15 @@
+flowchart TB
+    subgraph W[新写路径]
+        direction LR
+        W1[原权限 版本 人力 依赖守卫] --> W2[任务 schedule_changes<br/>reason审计 同成功事务] --> W3[commit后返回]
+    end
+    subgraph R[旧记录只读路径]
+        direction LR
+        A[已授权当前审计页] --> B[本页去重task与to_version] --> C[同项目最多100对<br/>一次精确batch]
+    end
+    R --> D{唯一事实 actor 微秒时间 版本<br/>完整Plan和EvidenceRefs一致}
+    D -->|是| E[仅响应追加reason原文]
+    D -->|否| F[保留原记录 明确缺理由]
+    E --> G[不写旧audit 不改分页顺序总数或重放]
+    F --> G
+    D -.-> Q[bool与数字分开 数组保序<br/>对象键序忽略 字符串不改写]

@@ -1,0 +1,140 @@
+$ .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend/contracts/986_http.py -k capacity_v11 --tb=short -ra --junitxml=agents/backend/capacity-v11-before.xml
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 68 items / 55 deselected / 13 selected
+
+backend FFFFFFF..FFFF                                                    [100%]
+
+=================================== FAILURES ===================================
+_ test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal[False] _
+tmp/backend/contracts/986_http.py:1494: in test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal
+    rejected = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"task":{"id":1,"project_id":1,"iteration_id":1,"title":"Implement synthetic task","description":"","owner_id":4,"state":1,"version":2,"schedule_version":1,"delivery_cycle":1,"review_cycle":1,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"estimated_hours":8.0},"blocked_from_state":null,"block_reason":null,"responsibility_stage":null,"latest_review_id":null,"approved_review_id":null,"approved_assessment_id":null,"approved_assessment_version":null,"escalation_count":0,"created_at":"2026-10-23T12:18:15.966730Z","updated_at":"2026-10-23T12:18:15.981329Z","artifact_revision":null},"audit_id":11},"meta":{"request_id":"35ad8cbf-7076-44c8-a448-40b8afd91e07","server_time":"2026-10-23T12:18:15.985061Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal[True] _
+tmp/backend/contracts/986_http.py:1494: in test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal
+    rejected = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"task":{"id":1,"project_id":1,"iteration_id":1,"title":"Implement synthetic task","description":"","owner_id":4,"state":3,"version":3,"schedule_version":1,"delivery_cycle":1,"review_cycle":1,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"estimated_hours":8.0},"blocked_from_state":1,"block_reason":"Intake blocked","responsibility_stage":1,"latest_review_id":null,"approved_review_id":null,"approved_assessment_id":null,"approved_assessment_version":null,"escalation_count":0,"created_at":"2026-10-23T12:18:16.224707Z","updated_at":"2026-10-23T12:18:16.245092Z","artifact_revision":null},"audit_id":12},"meta":{"request_id":"d651392f-ce33-43ce-8dbe-56e5f5488152","server_time":"2026-10-23T12:18:16.248725Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[1] _
+tmp/backend/contracts/986_http.py:1577: in test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity
+    response = capacity_change(
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:16.451176Z","updated_at":"2026-10-23T12:18:16.470923Z"},"meta":{"request_id":"be4411f0-3bda-4a8d-93f5-f25176a31743","server_time":"2026-10-23T12:18:16.475045Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[2] _
+tmp/backend/contracts/986_http.py:1577: in test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity
+    response = capacity_change(
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:16.678949Z","updated_at":"2026-10-23T12:18:16.698858Z"},"meta":{"request_id":"5206af30-4859-467f-adb6-739449e46f39","server_time":"2026-10-23T12:18:16.702557Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[3] _
+tmp/backend/contracts/986_http.py:1577: in test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity
+    response = capacity_change(
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:16.937753Z","updated_at":"2026-10-23T12:18:16.961101Z"},"meta":{"request_id":"67840d1a-abf4-4c07-b6b8-aa44464ae4c8","server_time":"2026-10-23T12:18:16.965072Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[4] _
+tmp/backend/contracts/986_http.py:1577: in test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity
+    response = capacity_change(
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:17.200630Z","updated_at":"2026-10-23T12:18:17.220622Z"},"meta":{"request_id":"d20fc6b8-c68b-48ea-b94f-19abf02eecda","server_time":"2026-10-23T12:18:17.224371Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[5] _
+tmp/backend/contracts/986_http.py:1577: in test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity
+    response = capacity_change(
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:17.437488Z","updated_at":"2026-10-23T12:18:17.460167Z"},"meta":{"request_id":"0c7fb562-942e-4972-b881-7b38a5d82266","server_time":"2026-10-23T12:18:17.464430Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+____ test_capacity_v11_iteration_checks_all_owners_not_only_removed_entries ____
+tmp/backend/contracts/986_http.py:1628: in test_capacity_v11_iteration_checks_all_owners_not_only_removed_entries
+    result = capacity_change(client, tokens["manager"], pid, iteration, [4], expect=422)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tmp/backend/contracts/986_http.py:1432: in capacity_change
+    return request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"id":1,"project_id":1,"version":2,"plan_version":2,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"name":"v1","capacity":[{"user_id":4,"available_hours":40}]},"created_at":"2026-10-23T12:18:18.137779Z","updated_at":"2026-10-23T12:18:18.158815Z"},"meta":{"request_id":"fc6d391e-29c5-4ed0-9606-467a70e21838","server_time":"2026-10-23T12:18:18.162833Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_rework_requires_current_effective_owner_and_capacity[capacity] _
+tmp/backend/contracts/986_http.py:1656: in test_capacity_v11_rework_requires_current_effective_owner_and_capacity
+    result = transition(
+tmp/backend/contracts/986_http.py:102: in transition
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"task":{"id":1,"project_id":1,"iteration_id":1,"title":"Implement synthetic task","description":"","owner_id":2,"state":2,"version":2,"schedule_version":2,"delivery_cycle":2,"review_cycle":1,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"estimated_hours":8.0},"blocked_from_state":null,"block_reason":null,"responsibility_stage":null,"latest_review_id":null,"approved_review_id":null,"approved_assessment_id":null,"approved_assessment_version":null,"escalation_count":0,"created_at":"2026-10-23T12:18:18.372309Z","updated_at":"2026-10-23T12:18:18.392941Z","artifact_revision":null},"decision":{"id":1,"task_id":1,"project_id":1,"type":3,"decided_by":1,"delivery_cycle":2,"reason":"Synthetic reactivation","impact":null,"target_version":null,"assessment_id":null,"rollback_plan_version":null,"evidence":[{"kind":2,"locator":"self-test/evidence","description":"Synthetic module self-test"}],"decided_at":"2026-10-23T12:18:18.392941Z"},"audit_id":12},"meta":{"request_id":"e1feb13c-a44b-4036-8b5b-c4b54a13cfd4","server_time":"2026-10-23T12:18:18.398561Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_rework_requires_current_effective_owner_and_capacity[inactive] _
+tmp/backend/contracts/986_http.py:1656: in test_capacity_v11_rework_requires_current_effective_owner_and_capacity
+    result = transition(
+tmp/backend/contracts/986_http.py:102: in transition
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"task":{"id":1,"project_id":1,"iteration_id":1,"title":"Implement synthetic task","description":"","owner_id":2,"state":2,"version":2,"schedule_version":2,"delivery_cycle":2,"review_cycle":1,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"estimated_hours":8.0},"blocked_from_state":null,"block_reason":null,"responsibility_stage":null,"latest_review_id":null,"approved_review_id":null,"approved_assessment_id":null,"approved_assessment_version":null,"escalation_count":0,"created_at":"2026-10-23T12:18:18.680700Z","updated_at":"2026-10-23T12:18:18.698837Z","artifact_revision":null},"decision":{"id":1,"task_id":1,"project_id":1,"type":3,"decided_by":1,"delivery_cycle":2,"reason":"Synthetic reactivation","impact":null,"target_version":null,"assessment_id":null,"rollback_plan_version":null,"evidence":[{"kind":2,"locator":"self-test/evidence","description":"Synthetic module self-test"}],"decided_at":"2026-10-23T12:18:18.698837Z"},"audit_id":11},"meta":{"request_id":"5a9b4065-69e8-4f3b-b7e9-5c30c83c8976","server_time":"2026-10-23T12:18:18.705608Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_capacity_v11_rework_requires_current_effective_owner_and_capacity[developer_role] _
+tmp/backend/contracts/986_http.py:1656: in test_capacity_v11_rework_requires_current_effective_owner_and_capacity
+    result = transition(
+tmp/backend/contracts/986_http.py:102: in transition
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"data":{"task":{"id":1,"project_id":1,"iteration_id":1,"title":"Implement synthetic task","description":"","owner_id":2,"state":2,"version":2,"schedule_version":2,"delivery_cycle":2,"review_cycle":1,"plan":{"planned_start":"2026-10-23T00:00:00.000000Z","planned_end":"2026-10-25T00:00:00.000000Z","delay_contingency":"Manager replans with evidence","buffer_hours":1.0,"estimated_hours":8.0},"blocked_from_state":null,"block_reason":null,"responsibility_stage":null,"latest_review_id":null,"approved_review_id":null,"approved_assessment_id":null,"approved_assessment_version":null,"escalation_count":0,"created_at":"2026-10-23T12:18:18.945581Z","updated_at":"2026-10-23T12:18:18.963724Z","artifact_revision":null},"decision":{"id":1,"task_id":1,"project_id":1,"type":3,"decided_by":1,"delivery_cycle":2,"reason":"Synthetic reactivation","impact":null,"target_version":null,"assessment_id":null,"rollback_plan_version":null,"evidence":[{"kind":2,"locator":"self-test/evidence","description":"Synthetic module self-test"}],"decided_at":"2026-10-23T12:18:18.963724Z"},"audit_id":11},"meta":{"request_id":"ccafc595-fae7-4dce-9547-212c77d66e6e","server_time":"2026-10-23T12:18:18.969614Z","contract_version":"1.0.0","replayed":false,"original_request_id":null}}
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/capacity-v11-before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal[False]
+FAILED backend::test_capacity_v11_assignment_requires_registration_then_safe_old_owner_removal[True]
+FAILED backend::test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[1]
+FAILED backend::test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[2]
+FAILED backend::test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[3]
+FAILED backend::test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[4]
+FAILED backend::test_capacity_v11_iteration_protects_active_owners_but_releases_terminal_capacity[5]
+FAILED backend::test_capacity_v11_iteration_checks_all_owners_not_only_removed_entries
+FAILED backend::test_capacity_v11_rework_requires_current_effective_owner_and_capacity[capacity]
+FAILED backend::test_capacity_v11_rework_requires_current_effective_owner_and_capacity[inactive]
+FAILED backend::test_capacity_v11_rework_requires_current_effective_owner_and_capacity[developer_role]
+============ 11 failed, 2 passed, 55 deselected, 1 warning in 3.28s ============
+
+exit_code=1

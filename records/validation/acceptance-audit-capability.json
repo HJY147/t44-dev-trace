@@ -1,0 +1,26 @@
+{
+  "prepared_at": "2026-10-23T11:27:54.883737+00:00",
+  "database": "t44_acceptance",
+  "user": "t44_iat_ro_74cdb326",
+  "allowed_tables": [
+    "audit_events",
+    "idempotency_requests",
+    "outbox_events",
+    "escalation_events",
+    "notifications",
+    "scan_runs",
+    "tasks",
+    "schedule_changes",
+    "release_assessments",
+    "decisions"
+  ],
+  "privileges": [
+    "SELECT"
+  ],
+  "credential_mode": "0600",
+  "application_data_queries_by_coordinator": 0,
+  "application_data_writes_by_coordinator": 0,
+  "independent_executions": 0,
+  "status": "prepared; not yet dispatched to UI phase",
+  "boundary": "New optional capability cannot retroactively change original published report. Any later use requires separately identified addendum."
+}

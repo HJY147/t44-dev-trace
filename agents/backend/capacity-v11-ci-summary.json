@@ -1,0 +1,88 @@
+{
+  "source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "run": 39958165108,
+  "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39958165108",
+  "status": "allfourjobs success",
+  "junit": {
+    "tests": 394,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "markers": {
+    "contract": {
+      "tests": 96,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "tests": 63,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "fault": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "marker_counts_overlap": true,
+  "production_python_files": 43,
+  "coverage_totals": {
+    "covered_lines": 2542,
+    "num_statements": 2865,
+    "percent_covered": 86.56224237427865,
+    "percent_covered_display": "86.56",
+    "missing_lines": 323,
+    "excluded_lines": 0,
+    "percent_statements_covered": 88.7260034904014,
+    "percent_statements_covered_display": "88.73",
+    "num_branches": 774,
+    "num_partial_branches": 108,
+    "covered_branches": 608,
+    "missing_branches": 166,
+    "percent_branches_covered": 78.55297157622739,
+    "percent_branches_covered_display": "78.55"
+  },
+  "full_source_coverage_denominator": true,
+  "excluded_lines": 0,
+  "new_metadata_cases": [
+    "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[1]",
+    "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[2]",
+    "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[3]"
+  ],
+  "original_failed_boundary_cases_now_pass": [
+    "test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True]",
+    "test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True]"
+  ],
+  "provenance": [
+    {
+      "file": "agents/backend/capacity-v11-ci-39958165108-coverage.json",
+      "sha256": "4ce9324f9403528b79ba713a86793b46d65bc0803dc87a13412c75d0c9b686d8",
+      "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/coverage.json"
+    },
+    {
+      "file": "agents/backend/capacity-v11-ci-39958165108-junit.xml",
+      "sha256": "3797240e47d6751f8d052d6c410790d45ca188709492ca5a500b44f5db0088b6",
+      "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/junit.xml"
+    },
+    {
+      "file": "agents/backend/capacity-v11-ci-39958165108-coverage.log",
+      "sha256": "0c20d0e0a920104f4753f6c139b865241b579b161a5d4b5884ef175fc3714e97",
+      "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/console.log"
+    },
+    {
+      "file": "agents/backend/capacity-v11-ci-39958165108-contracts.log",
+      "sha256": "d3134c226a3382df2587764763ec726ee9f5e258feaad13957650545967da2e5",
+      "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/contracts/contracts-54ef6787d2ece62c977280d7367a569c520a36a5/contracts/console.log"
+    }
+  ],
+  "limits": [
+    "developmentCI not independentacceptance",
+    "formalperformance notpassed",
+    "source-size3500-5100notpassed"
+  ]
+}

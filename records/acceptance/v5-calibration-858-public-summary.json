@@ -1,0 +1,134 @@
+{
+  "publication": "EXPLICITLY_PUBLISHED_DESENSITIZED_SUMMARY_ONLY",
+  "author": "AI /root/independent_method_v5",
+  "test_number": 858,
+  "status": "INVALID_PREPARATION_FAILURE",
+  "tool_calibration_pass": false,
+  "product_performance_conclusion": "NOT_TESTED",
+  "formal_600s_executed": false,
+  "ranking": "NONE",
+  "provenance": {
+    "freeze_sha": "c3b0284f0803629b1a45898afac84964e62391f6",
+    "tool_sha256": "ff0366bdf2bf9626fcdd52cdf05e319ad4a5a643dfbce02909b0def913514c12",
+    "environment_sha256": "14fab891a1ee0f6b206640bafc967648126ef4defacb0e7a6902988455350ac5",
+    "published_design_metadata_sha256": "bd871d0b1a0dc4a3fabf0c526a17f1d14c3981fee495839c3edc72704b255d2a",
+    "root_admission_commit": "1a45cb352439ed491c32c133b48cf665c95697d6",
+    "private_runtime_evidence_seal_sha256": "e8bf072422ae57b2a9de69ce6822694c4f292913e24f3b9f5369e1761c1b0cab",
+    "frozen_artifact_hashes_still_match": true,
+    "attempts_executed": 1,
+    "attempt_consumed": true,
+    "automatic_rerun": false,
+    "root_index_modified": false,
+    "private_payloads_remain_closed": true
+  },
+  "actual_result": {
+    "parent_exit_code": 1,
+    "failure_stage": "client readiness / connection setup before T0 release",
+    "observed_error": "OSError errno24 Too many open files in owned children; parent reported owned child/control not ready and aborted.",
+    "timeout_interpretation": "The parent guard also detects an early child exit; its TimeoutError is not evidence that the30s readiness or150s lifetime ceiling elapsed.",
+    "static_explanation_not_new_execution": "Frozen parent lowers its own hard open-file limit to64 before spawning children. Children inherit that hard ceiling; their configured targets512/160 are bounded by inherited hard limit. This is a calibration-tool resource-limit design problem; no SUT was involved. Actual child getrlimit readbacks were not logged, so the inherited64 explanation is labeled source-derived rather than a separate empirical limit measurement.",
+    "readiness": {
+      "owned_stub_ready": true,
+      "all400_clients_ready": false,
+      "T0_go_file_created": false,
+      "client_results_present": false,
+      "stub_result_present": false,
+      "complete_latency_ledger_present": false
+    },
+    "HTTP_requests": "0 expected/sent by the frozen control-gated client flow because no T0 release existed. No complete server/client ledger or packet observer was produced; physical wire transmission counts remain unobserved. Setup TCP connections were attempted and are not counted as application HTTP requests.",
+    "actual_setup_connections": "UNKNOWN; readiness failed and setup count was not durably recorded.",
+    "successful_HTTP_completions_observed": 0
+  },
+  "success_condition_audit": [
+    {
+      "condition": "10000 unique successes, zero failure/cancel/not-started, stub/client ids reconcile, no stub failure, complete ledger",
+      "status": "NOT_ESTABLISHED",
+      "evidence": "No T0 release or result ledger. Preparation failed; cannot claim10000 successes or a complete outcome census."
+    },
+    {
+      "condition": "client enqueue-outstanding peak400 and stub-arrived resident peak400",
+      "status": "NOT_MEASURED",
+      "evidence": "No workload release or timestamp intervals.400 configured users/connections are not proof."
+    },
+    {
+      "condition": "fixed interior4s enqueue-outstanding mean>=360 (calibration diagnostic only)",
+      "status": "UNDEFINED",
+      "evidence": "No T0 or interior observation window."
+    },
+    {
+      "condition": "P95<=270ms including200ms fixed hold and client costs",
+      "status": "UNDEFINED",
+      "evidence": "No successful request latency population."
+    },
+    {
+      "condition": "normalized short-window successful rate>=1000/min",
+      "status": "UNDEFINED",
+      "evidence": "No request measurement window. No minute/600s inference."
+    },
+    {
+      "condition": "each client sampler CPU fraction<=1%",
+      "status": "UNKNOWN",
+      "evidence": "Client result/sample files absent. No overhead subtraction or assumed overhead0."
+    },
+    {
+      "condition": "all actual client lifetimes<60s",
+      "status": "BOUNDED_WITH_OWNED_PARENT_CLOCK",
+      "evidence": "All clients were created and reaped within the recorded0.146692041s parent working segment. Individual birth/end pairs were not durably stored; no per-client exact durations reported."
+    },
+    {
+      "condition": "complete parent lifetime<150s",
+      "status": "UNKNOWN_FULL_LIFETIME",
+      "evidence": "Internal working segment excludes interpreter/preflight and is0.146692041s. Outer tool wall receipt0.088728042s is shorter than that internal segment; values are inconsistent and neither is promoted to full-lifetime proof."
+    },
+    {
+      "condition": "all owned children exit zero and cleanup complete",
+      "status": "FAIL_ZERO_EXIT__PASS_CLEANUP",
+      "evidence": "All5 owned child handles were reaped; exit histogram1:1 and SIGTERM(-15):4. Nonzero exits disqualify calibration."
+    }
+  ],
+  "budget_and_cleanup": {
+    "application_request_cap": 10000,
+    "application_request_control_flow_count": 0,
+    "application_request_wire_count": "UNKNOWN; no packet observation",
+    "T0_released": false,
+    "owned_children_created": 5,
+    "owned_Python_processes_peak_count": 6,
+    "process_count_basis": "one parent plus its recorded5 Popen children; no machine inventory",
+    "client_lifetime_ceiling_s": 60,
+    "client_observed_lifetime_upper_bound_s": 0.146692041,
+    "client_individual_durations": "NOT_CAPTURED",
+    "parent_lifetime_ceiling_s": 150,
+    "parent_internal_working_segment_s": 0.146692041,
+    "outer_tool_wall_receipt_s": 0.088728042,
+    "full_parent_lifetime_s": "UNKNOWN due incomplete/inconsistent timing scopes",
+    "actual_CPU_seconds": "UNKNOWN; result/resource samples absent",
+    "actual_maxrss": "NOT_REPORTED; result/resource samples absent",
+    "configured_FD_caps": {
+      "parent": 64,
+      "stub_target": 512,
+      "client_target": 160
+    },
+    "actual_child_FD_readback": "NOT_CAPTURED; hard-limit inheritance issue identified in frozen tool",
+    "owned_output_file_count": 9,
+    "owned_output_total_bytes": 6833,
+    "owned_output_largest_file_bytes": 2816,
+    "single_output_file_cap_bytes": 16777216,
+    "all_owned_child_handles_reaped": true,
+    "child_exit_histogram": {
+      "-15": 4,
+      "1": 1
+    },
+    "cleanup_scope": "Only this parent-created owned Popen child set; no process/port scan or broad kill.",
+    "paid_resources": 0,
+    "hosted_CI": 0,
+    "SUT_existing_service_DB_MQ_access": false
+  },
+  "units": {
+    "timestamps": "monotonic_ns nanoseconds; differences divided by1e9 produce seconds and1e6 produce milliseconds",
+    "CPU": "RUSAGE user/system CPU seconds would be reported; no runtime samples available here",
+    "maxRSS": "Raw platform-dependent unit only; no runtime value or byte/MiB conversion claimed",
+    "output_sizes": "filesystem stat bytes for this owned run directory only"
+  },
+  "boundary": "INVALID means this one calibration attempt did not produce a valid capability measurement. It is neither a product performance failure nor a pass. Original teacher400/600s/270ms/1000-per-minute requirements remain unchanged.",
+  "next_action": "STOP. No modifications to F/tool/cases, no rerun, no additional test number consumed. Any future design repair requires root-assigned new number, new freeze and fresh explicit admission."
+}

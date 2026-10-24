@@ -1,0 +1,67 @@
+{
+  "operator": "AI reviewer limited source and explicitly public artifact audit",
+  "target": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
+  "latest_evidence_archive": "16b6887cc16500f88134c9482283b4eafc653a37",
+  "prior_actual360_archive": "f1598b91b710ca897cffcc81c52f2e3a79a33cbd",
+  "design": "c19146c002cab7a884be8e5d27794da26d685463",
+  "source_SHA": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
+  "only_verify_stopped_AST_changed_vs_original360": true,
+  "actual_changed_line": "role whitelist plus pid, not a new filename/generation authenticity check",
+  "all_other_Application_and_BoundedServe_AST_unchanged": true,
+  "capture_AST_and_runtime_unchanged": true,
+  "all_old_test_method_AST_retained": true,
+  "source_business_specs_frozen14_unchanged": true,
+  "reviewer_frozen_probe": {
+    "original_runs": 1,
+    "original_exit": 1,
+    "new_runs": 1,
+    "new_exit": 0,
+    "fixture_SHA": "524150b55d9ae4badd3dba0615a030f46448b47b0ab6b0ce76ca5dddc141aa69",
+    "new_checked_PIDs": [
+      101,
+      102,
+      103
+    ],
+    "runner777_not_checked": true,
+    "real_SUT_signal_service_HTTP_SQL": 0
+  },
+  "owner_affected_methods": {
+    "old": {
+      "tests": 1,
+      "exit": 1
+    },
+    "new": {
+      "methods": 3,
+      "exit": 0,
+      "role_generation_live_residual_subcases": 8,
+      "APIchild_live_residual_subcases": 5
+    },
+    "reviewer_rerun": false
+  },
+  "new_owner_artifact_hashes": 6,
+  "original360_summary_capability_bytes_unchanged": true,
+  "original360_exit1_cleanupfalse_preserved": true,
+  "no_new360_or4h_run": true,
+  "protected_baseline": {
+    "old_actual_ports": [
+      5173,
+      18080,
+      5175,
+      18084,
+      5176,
+      18089,
+      13306
+    ],
+    "old_missing_ports": [
+      5177,
+      18086
+    ],
+    "next_admission_needs_added_baseline": true,
+    "no_independent_app_data_or_port_read": true
+  },
+  "private221receipt_payload_or_dump_followed": false,
+  "other_new_P1_P2_confirmed_in_read_serve_stop_rotation_scope": [],
+  "result": "SERVE-CLEANUP-SCOPE-01_CLOSED_WITHIN_SOURCE_DELTA; no additional material blocker identified in listed finite static scope",
+  "runtime_acceptance": "NEW360_NOT_RUN_OR_APPROVED_BY_REVIEWER",
+  "overall": "NOT_ACCEPTED"
+}

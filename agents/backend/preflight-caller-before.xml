@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.741" timestamp="2026-10-24T03:25:12.611189+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_real_concurrent_claim_takeover_and_result_request_id" time="0.143"><failure message="AttributeError: 'Runtime' object has no attribute 'authorize'">tmp/backend/persistence/988_mysql.py:274: in test_real_concurrent_claim_takeover_and_result_request_id
+    results = list(pool.map(lambda _: claim(), range(2)))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:619: in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:317: in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tmp/backend/persistence/988_mysql.py:274: in &lt;lambda&gt;
+    results = list(pool.map(lambda _: claim(), range(2)))
+                                      ^^^^^^^
+tmp/backend/persistence/988_mysql.py:264: in claim
+    value = call()
+            ^^^^^^
+tmp/backend/persistence/988_mysql.py:258: in call
+    runtime.authorize(value)
+    ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'Runtime' object has no attribute 'authorize'</failure></testcase><testcase classname="" name="test_twenty_overdue_repeated_scan_and_durable_restart" time="0.412"><failure message="AttributeError: 'Runtime' object has no attribute 'authorize'">tmp/backend/scheduling/974_application.py:54: in test_twenty_overdue_repeated_scan_and_durable_restart
+    run = worker.run(run_id)
+          ^^^^^^^^^^^^^^^^^^
+backend/t44/scheduling/scanner.py:103: in run
+    projects = self._scope()
+               ^^^^^^^^^^^^^
+backend/t44/scheduling/scanner.py:61: in _scope
+    self.runtime.authorize(probe)
+    ^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'Runtime' object has no attribute 'authorize'</failure></testcase></testsuite></testsuites>

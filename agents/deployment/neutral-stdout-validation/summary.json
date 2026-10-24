@@ -1,0 +1,56 @@
+{
+  "recorded_at_utc": "2026-10-23T21:35:38.018164+00:00",
+  "author": "coordinator AI acting as neutral deployment maintainer",
+  "design_commit": "2e2bffa",
+  "product_source_unchanged": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "scope": "synthetic neutral control stdout boundary only; no independent cases or actual services executed",
+  "counts": {
+    "before": {
+      "tests": "11",
+      "failures": "10",
+      "errors": "0",
+      "skipped": "0"
+    },
+    "after": {
+      "tests": "63",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  },
+  "after_pytest_exit_code": 0,
+  "ruff_exit_code": 1,
+  "ruff_existing_baseline": [
+    {
+      "path": "deployment/acceptance/control.py",
+      "exit_code": 1,
+      "stdout_sha256": "883ebb891855140c3bf8507d9e11933016bceef5c5712a2b61249bc47f8d0ae2"
+    },
+    {
+      "path": "tmp/deployment/953_acceptance_environment.py",
+      "exit_code": 1,
+      "stdout_sha256": "a1ec659e0b1d7be4dca45f99d2eb4910ed080a8096f9eb1d33583bde8d5f2292"
+    }
+  ],
+  "ruff_limit": "Four pre-existing findings unchanged: RUF100 E402-noqa and BLE001 in control, two SIM117 in original guards; not falsely reported green",
+  "independent_verdict": null,
+  "source_hashes": {
+    "deployment/acceptance/control.py": "3defc142b09dfbc006ed558ceff6d87b512d74ea986b9cade346ac00729226d7",
+    "deployment/acceptance/README.md": "79d902ff46720c68605965c3d75469adaf72da10ebffc2f9ef888363a7699730",
+    "tmp/deployment/953_acceptance_environment.py": "7ffc04ef22994b206633054ab6b201bf9246d89cad02096f67b8864fa2a4bc63"
+  },
+  "evidence_hashes": {
+    "agents/deployment/neutral-stdout-validation/before.xml": "5f198fc0e65401b8efd589e686398f54e958d6386bfb6ffa4d9f5b5f6833547b",
+    "agents/deployment/neutral-stdout-validation/baseline-control.py.ruff.log": "883ebb891855140c3bf8507d9e11933016bceef5c5712a2b61249bc47f8d0ae2",
+    "agents/deployment/neutral-stdout-validation/after.xml": "7d571dfb09f0dd0182c4a337f1f87954826e67573353f2735a265c016a08b97a",
+    "agents/deployment/neutral-stdout-validation/baseline-953_acceptance_environment.py.ruff.log": "a1ec659e0b1d7be4dca45f99d2eb4910ed080a8096f9eb1d33583bde8d5f2292",
+    "agents/deployment/neutral-stdout-validation/before-receipt.json": "18003bce5a5036d9d944aeba5db57505bf2be005442d9e5a2608c85680ec6ae2",
+    "agents/deployment/neutral-stdout-validation/ruff.log": "c2c7628db045ca89873d49a6959ddd788f25aa9b707e9f2cf89468a4c126a7c2",
+    "agents/deployment/neutral-stdout-validation/before.log": "e8c6b7bb1b0005d3f331dbc2f9510086a69e0ae287ba1194d0586078cfccdd74",
+    "agents/deployment/neutral-stdout-validation/after.log": "10405d92b9a367828b27501b4fb32ed3fcdfe342140d023c7eeb6c77568186e0",
+    "agents/deployment/neutral-stdout-validation/ruff-ci-config.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "ruff_ci_config_exit_code": 0,
+  "ruff_ci_config": "scripts/ci/ruff.toml",
+  "ruff_default_invocation_note": "Earlier root-default invocation had four pre-existing findings; official CI-config targeted invocation is now actually exit0. Neither history is replaced."
+}

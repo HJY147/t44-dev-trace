@@ -1,0 +1,77 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业
+      Coverage enabled with v8
+
+ ❯ tmp/frontend/983_application.test.ts (0 test)
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  10 passed (10)
+   Start at  17:17:41
+   Duration  2.66s (transform 59%, import 22%, environment 15%, tests 2%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
+$ node scripts/prepare-tests.mjs && vitest run --coverage
+Failed to parse file:///Users/yang/Desktop/nothing/软件开发大作业/frontend/src/components/LoginView.vue. Excluding it from coverage.
+ Error [RolldownError]: Parse failed with 1 error:
+Unexpected JSX expression
+1: <script setup lang="ts">
+   ^
+2: import { ref } from 'vue'
+3: import { ElButton } from 'element-plus'
+    at error (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/shared/logs-DyTyzzWG.mjs:164:24)
+    at normalizeParseError (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:25:9)
+    at wrap (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:5:39)
+    at parseAstAsync (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:54:9)
+    at async V8CoverageProvider.remapCoverage (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:156:10)
+    at async file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:142:23
+    at async Promise.all (index 4)
+    at async V8CoverageProvider.getCoverageMapForUncoveredFiles (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:132:4)
+    at async V8CoverageProvider.generateCoverage (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:78:29)
+    at async file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/vitest@5.0.5_@types+node@26.6.5_@vitest+coverage-v8@5.0.5_happy-dom@21.0.4_vite@8.3.5_@types+node@26.6.5_/node_modules/vitest/dist/chunks/cli-api.De07GUeT.js:12881:23 {
+  code: 'PARSE_ERROR',
+  id: undefined,
+  pos: 0
+}
+Failed to parse file:///Users/yang/Desktop/nothing/软件开发大作业/frontend/src/components/SidebarNavigation.vue. Excluding it from coverage.
+ Error [RolldownError]: Parse failed with 1 error:
+Unexpected JSX expression
+1: <script setup lang="ts">
+   ^
+2: import { ElIcon } from 'element-plus'
+3: import { ArrowRight, Connection } from '@element-plus/icons-vue'
+    at error (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/shared/logs-DyTyzzWG.mjs:164:24)
+    at normalizeParseError (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:25:9)
+    at wrap (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:5:39)
+    at parseAstAsync (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/rolldown@1.2.15/node_modules/rolldown/dist/parse-ast-index.mjs:54:9)
+    at async V8CoverageProvider.remapCoverage (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:156:10)
+    at async file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:142:23
+    at async Promise.all (index 1)
+    at async V8CoverageProvider.getCoverageMapForUncoveredFiles (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:132:4)
+    at async V8CoverageProvider.generateCoverage (file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/@vitest+coverage-v8@5.0.5_vitest@5.0.5/node_modules/@vitest/coverage-v8/dist/provider.js:78:29)
+    at async file:///Users/yang/Desktop/nothing/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A4%A7%E4%BD%9C%E4%B8%9A/frontend/node_modules/.pnpm/vitest@5.0.5_@types+node@26.6.5_@vitest+coverage-v8@5.0.5_happy-dom@21.0.4_vite@8.3.5_@types+node@26.6.5_/node_modules/vitest/dist/chunks/cli-api.De07GUeT.js:12881:23 {
+  code: 'PARSE_ERROR',
+  id: undefined,
+  pos: 0
+}
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/983_application.test.ts [ tmp/frontend/983_application.test.ts ]
+Error: Failed to resolve import "/favicon.svg" from "src/components/SidebarNavigation.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/yang/Desktop/nothing/软件开发大作业/frontend/src/components/SidebarNavigation.vue:12:27
+  37 |  });
+  38 |  import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, creat...
+  39 |  import _imports_0 from "/favicon.svg";
+     |                          ^
+  40 |  const _hoisted_1 = {
+  41 |  	"aria-label": "主导航",
+ ❯ TransformPluginContext._formatLog frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:8803:39
+ ❯ TransformPluginContext.error frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:8800:14
+ ❯ resolveId frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:26594:18
+ ❯ frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:26693:23
+ ❯ TransformPluginContext.transform frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:26666:4
+ ❯ EnvironmentPluginContainer.transform frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:8582:14
+ ❯ loadAndTransform frontend/node_modules/.pnpm/vite@8.3.5_@types+node@26.6.5/node_modules/vite/dist/node/chunks/node.js:20155:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

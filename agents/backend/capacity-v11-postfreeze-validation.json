@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-23T12:45:47.373977+00:00",
+  "postfreeze_base": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+  "manifest_sha256": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+  "all14_frozen_files_unchanged": true,
+  "contract_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+  "postfreeze_working_tree_files_sha256": {
+    "backend/t44/services/common.py": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+    "backend/t44/services/projects.py": "2449516069bd48b1b17e0cf946e4e6b4055071be87f9af3106e9fd7dd208d84e",
+    "backend/t44/services/runtime.py": "a43febb12e391588548a047674efbcae78d9f40d70d7713ba005713d3d31e942",
+    "backend/t44/services/tasks.py": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+    "backend/t44/services/workflow.py": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+    "tmp/backend/contracts/985_mysql_http.py": "fdf927abe36d348df065ed1b3e6894ba7cf398293b4a41592db1647be063072e",
+    "tmp/backend/contracts/986_http.py": "df85587bd71f8c430b81c791c16a1924343ed604262c682b7d1a4a369f147fe1",
+    "tmp/backend/persistence/975_seed.py": "82bc2089cf588e7c6129d658eeb9036944478159d91d08a42cafeddbd822223e"
+  },
+  "http_sqlite": "21 capacity+guardpriority cases passed on first postfreeze draft; added version-ceiling case failed once then passed after fix; final common source awaits CIall",
+  "mysql": "7newcases passed/5oldcases deselected;MySQL8.4officialprojectt44_test;own synthetic project prefixes only",
+  "race_cases": "assignment/create/rework x capacity-first/action-first with overlapping requests and actual held project lock; plus safehandover+oldownerremovalbothcommit",
+  "fixture_limit": "terminalstates set by explicit synthetic fixtures; not an end-to-end deliveryhistory claim",
+  "static": "full strict localRuff passed after root-authorized existing975contextstylefix;7changedfilesformatpassed;Banditpassed",
+  "scope": "development regression; not independent acceptance/performance/source-sizepass"
+}

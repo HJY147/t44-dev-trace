@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "mode": "environment-check",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "request_revision": 5,
+  "harness_ref": null,
+  "harness_path": null,
+  "workflow_sha": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+  "steps": [
+    {
+      "name": "image-build",
+      "completed": true
+    },
+    {
+      "name": "mysql-rabbitmq",
+      "completed": true
+    },
+    {
+      "name": "explicit-migration",
+      "completed": true
+    },
+    {
+      "name": "bootstrap-account",
+      "completed": true
+    },
+    {
+      "name": "http-entry",
+      "completed": true
+    },
+    {
+      "name": "bootstrap-project",
+      "completed": true
+    },
+    {
+      "name": "private-scanner-credential",
+      "completed": true
+    },
+    {
+      "name": "independent-workers",
+      "completed": true
+    },
+    {
+      "name": "mq-transport-metadata",
+      "completed": true
+    },
+    {
+      "name": "read-only-audit-principal",
+      "completed": true
+    },
+    {
+      "name": "initial-client-mysql",
+      "completed": false,
+      "exception_type": "pymysql.err.OperationalError",
+      "numeric_error_code": 2003
+    },
+    {
+      "name": "repaired-readonly-database-client",
+      "completed": true
+    },
+    {
+      "name": "repaired-amqp-client",
+      "completed": true
+    },
+    {
+      "name": "loopback-client-readiness",
+      "completed": true
+    },
+    {
+      "name": "readonly-select-connectivity",
+      "completed": true
+    },
+    {
+      "name": "rabbitmq-audit-connectivity",
+      "completed": true
+    },
+    {
+      "name": "mq-transport-topology",
+      "completed": true
+    },
+    {
+      "name": "limited-service-credential",
+      "completed": true
+    },
+    {
+      "name": "reversible-control",
+      "completed": true
+    },
+    {
+      "name": "control-recovery-json",
+      "completed": true
+    },
+    {
+      "name": "reversible-pause-control",
+      "completed": true
+    },
+    {
+      "name": "paused-control-recovery-json",
+      "completed": true
+    },
+    {
+      "name": "recovered-readonly-database-client",
+      "completed": true
+    },
+    {
+      "name": "recovered-amqp-client",
+      "completed": true
+    }
+  ],
+  "environment_ready": true,
+  "harness_started": false,
+  "harness_exit_code": null,
+  "recovery_completed": true,
+  "meaning": "Environment capability/execution metadata; not an independent acceptance conclusion.",
+  "mq_transport_metadata": {
+    "exchange": "t44.events",
+    "exchange_type": "direct",
+    "queue": "t44.notifications",
+    "routing_key": "t44.notifications",
+    "durable": true,
+    "quarantine_suffix": ".quarantine",
+    "quarantine_exchange": "t44.events.quarantine",
+    "quarantine_queue": "t44.notifications.quarantine",
+    "quarantine_routing_key": "t44.notifications",
+    "wrapper_fields": {
+      "event_id": "outbox_events.id",
+      "schema_version": "outbox_events.schema_version",
+      "event_type": "outbox_events.event_type"
+    },
+    "properties": {
+      "content_type": "application/json",
+      "delivery_mode": 2,
+      "type": "t44.event.v1",
+      "message_id": {
+        "source_wrapper_field": "event_id",
+        "convert": "str"
+      }
+    },
+    "mandatory": true,
+    "definition": "backend/t44/messaging/broker.py",
+    "definition_sha256": "2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472",
+    "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0"
+  },
+  "client_diagnostics": [
+    {
+      "component": "mysql",
+      "exception_type": "pymysql.err.OperationalError",
+      "numeric_error_code": 2003,
+      "tcp_listener_reachable": false,
+      "tcp_errno": 111,
+      "actual_port_bindings": {},
+      "networks_internal": {
+        "t44-acceptance-39977039692_data": true
+      }
+    }
+  ],
+  "client_bridge_repair": "test-only bridge added after observed unreachable internal-only listener",
+  "mq_transport_topology_verified": true,
+  "service_credential_capability": {
+    "session_id": 3,
+    "project_count": 1,
+    "scopes": [
+      "escalation:write"
+    ],
+    "ttl_seconds": 300,
+    "mode": "0o600",
+    "verification": "actual CLI issuance and SELECT of session scope/expiry metadata; no business case invoked"
+  },
+  "explicit_recovery_receipts": [
+    {
+      "schema_version": 1,
+      "recovery_id": "090229218fbc4166b9d900cd50e12366",
+      "recovery_completed": true,
+      "started_at": "2026-10-23T15:20:32.476742+00:00",
+      "finished_at": "2026-10-23T15:20:39.929980+00:00",
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T15:20:32.476865+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:32.578090+00:00"
+        },
+        {
+          "name": "unpause",
+          "needed": false,
+          "exit_code": null
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T15:20:32.578120+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:38.827169+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T15:20:38.827195+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:39.929680+00:00"
+        }
+      ],
+      "error": null,
+      "paused_services": []
+    },
+    {
+      "schema_version": 1,
+      "recovery_id": "2228cbe89553468ba2be136ec6754f04",
+      "recovery_completed": true,
+      "started_at": "2026-10-23T15:20:40.096020+00:00",
+      "finished_at": "2026-10-23T15:20:53.072287+00:00",
+      "requested_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "restored_services": [
+        "mysql",
+        "rabbitmq",
+        "api",
+        "consumer",
+        "scheduler",
+        "web"
+      ],
+      "steps": [
+        {
+          "name": "inspect-paused",
+          "started_at": "2026-10-23T15:20:40.096156+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:40.189852+00:00"
+        },
+        {
+          "name": "unpause",
+          "started_at": "2026-10-23T15:20:40.189884+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:40.285579+00:00"
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:40.285608+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:40.376850+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:41.377059+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:41.478152+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:42.478362+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:42.587558+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:43.587802+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:43.691639+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:44.691889+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:44.785388+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:45.785607+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:45.879629+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:46.879842+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:46.975572+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:47.975816+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:48.078313+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:49.078544+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:49.173864+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:50.174073+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:50.270110+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "unhealthy"
+            }
+          ]
+        },
+        {
+          "name": "unpaused-health",
+          "started_at": "2026-10-23T15:20:51.270286+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:51.364396+00:00",
+          "observed_health": [
+            {
+              "service": "rabbitmq",
+              "state": "running",
+              "health": "healthy"
+            }
+          ]
+        },
+        {
+          "name": "infrastructure-ready",
+          "started_at": "2026-10-23T15:20:51.364476+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:51.969384+00:00"
+        },
+        {
+          "name": "application-ready",
+          "started_at": "2026-10-23T15:20:51.969410+00:00",
+          "exit_code": 0,
+          "finished_at": "2026-10-23T15:20:53.071982+00:00"
+        }
+      ],
+      "error": null,
+      "paused_services": [
+        "rabbitmq"
+      ]
+    }
+  ],
+  "environment_capability_check_completed": true,
+  "final_recovery_receipt": {
+    "schema_version": 1,
+    "recovery_id": "04b79c32d141425896a2bdbd5cb84e5d",
+    "recovery_completed": true,
+    "started_at": "2026-10-23T15:20:53.109256+00:00",
+    "finished_at": "2026-10-23T15:20:54.926204+00:00",
+    "requested_services": [
+      "mysql",
+      "rabbitmq",
+      "api",
+      "consumer",
+      "scheduler",
+      "web"
+    ],
+    "restored_services": [
+      "mysql",
+      "rabbitmq",
+      "api",
+      "consumer",
+      "scheduler",
+      "web"
+    ],
+    "steps": [
+      {
+        "name": "inspect-paused",
+        "started_at": "2026-10-23T15:20:53.109712+00:00",
+        "exit_code": 0,
+        "finished_at": "2026-10-23T15:20:53.217716+00:00"
+      },
+      {
+        "name": "unpause",
+        "needed": false,
+        "exit_code": null
+      },
+      {
+        "name": "infrastructure-ready",
+        "started_at": "2026-10-23T15:20:53.217750+00:00",
+        "exit_code": 0,
+        "finished_at": "2026-10-23T15:20:53.823076+00:00"
+      },
+      {
+        "name": "application-ready",
+        "started_at": "2026-10-23T15:20:53.823104+00:00",
+        "exit_code": 0,
+        "finished_at": "2026-10-23T15:20:54.925897+00:00"
+      }
+    ],
+    "error": null,
+    "paused_services": []
+  }
+}

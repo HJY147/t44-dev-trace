@@ -1,0 +1,16 @@
+flowchart TD
+    A[新计划变更或返工] --> B[原权限 版本 依赖 人力守卫]
+    B --> C[同一业务事务写任务与schedule_changes]
+    C --> D[成功audit追加reason原文]
+    D --> E[commit后返回权威记录]
+    F[已授权的当前审计分页] --> G{已有reason 或非可回填操作}
+    G -->|是| H[保留原记录]
+    G -->|否| I[从本页提取去重task与to_version配对]
+    I --> J[同项目bounded reader 最多100对]
+    J --> K{唯一事实 时间 actor 版本<br/>计划字形 EvidenceRefs全部一致}
+    K -->|否| H
+    K -->|是| L[只向本次响应追加旧reason原文]
+    L --> M[前端按纯文本显示理由]
+    H --> N[前端缺可核对理由时明确提示]
+    K -.-> Q[bool与数字区分 数组有序<br/>对象键序忽略 字符串不改写]
+    L -.-> R[不写旧audit 不改顺序 总数 重放快照]

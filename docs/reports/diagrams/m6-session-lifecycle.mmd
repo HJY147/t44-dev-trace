@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant A as A的操作表单
+    participant C as API客户端
+    participant W as 会话与界面
+    participant S as 业务服务
+    A->>C: 提交请求并保存A的token
+    C->>S: 原POST等待响应
+    W->>S: A退出
+    S-->>W: 退出200
+    W->>W: clearSession 清上下文并卸载表单
+    W->>W: 旧表单active变为false
+    W->>S: B登录并读取新上下文
+    S-->>W: B的新token与项目
+    S-->>C: A的旧403迟到
+    C->>C: checkSession检测token变化
+    C-->>A: SESSION_CHANGED
+    A->>A: current为false 不执行refresh
+    Note over W: 保留B的新上下文
+    Note over C,W: 当前会话401仍清空会话<br/>当前403与409仍可走原恢复

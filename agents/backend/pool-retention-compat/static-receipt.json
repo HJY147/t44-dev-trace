@@ -1,0 +1,112 @@
+{
+  "reviewed_rfc_commit": "ac826cb9a788992297fe27d547bfcc208f83f1bc",
+  "rfc_sha256": "bde58362e1675465968e5979733fbe16cf3d52194d6675f72fdaa4dda44a991b",
+  "scope_commit": "e534dee090f9de841dc1eb5612f668fd452d7f90",
+  "constructor_calls": [
+    {
+      "file": "backend/t44/settings.py",
+      "line": 37,
+      "keyword_names": [
+        "host",
+        "database",
+        "username",
+        "password",
+        "port"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/contracts/985_mysql_http.py",
+      "line": 42,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/messaging/conftest.py",
+      "line": 45,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/persistence/956_schema_semantics.py",
+      "line": 317,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/persistence/975_seed.py",
+      "line": 272,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/persistence/988_mysql.py",
+      "line": 61,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    },
+    {
+      "file": "tmp/backend/persistence/993_foundation.py",
+      "line": 249,
+      "keyword_names": [
+        "pool_size"
+      ],
+      "explicit_pool_constants": {
+        "pool_size": 3
+      },
+      "positional_count": 4
+    },
+    {
+      "file": "tmp/backend/scheduling/conftest.py",
+      "line": 40,
+      "keyword_names": [
+        "database",
+        "**expanded"
+      ],
+      "explicit_pool_constants": {},
+      "positional_count": 0
+    }
+  ],
+  "app_equals_bc5": true,
+  "tests_tools_specs_lock_ff7_evidence_unchanged": true,
+  "executed_SQL_HTTP_load_tests": false,
+  "old930_fixed_pool_guard": {
+    "file": "tmp/backend/930_contract_abba.py",
+    "line": 161,
+    "required": [
+      5,
+      10
+    ],
+    "must_not_relax": true
+  },
+  "sqlite_explicit_pool_test_unchanged": "tmp/backend/persistence/993_foundation.py:39 directly sets1+1;notMySQLSettings",
+  "partial_override": "MySQLSettings(pool_size=3) old3+10->candidate3+0;peak13->3",
+  "new_candidate_sha": null,
+  "static_read_errors": [
+    "initial deploy/README.md missing; actual deployment/README.md used",
+    "unquoted deployment/Dockerfile* glob no match; actual deployment/api.Dockerfile read",
+    "guessed docker-compose.yml absent; no dynamic deployment probing"
+  ],
+  "author": "backend AI"
+}

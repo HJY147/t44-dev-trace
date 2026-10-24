@@ -1,0 +1,2019 @@
+{
+  "prompt_ref": "ROLE-documentation-M6-TECHNICAL-REPORTS-v1",
+  "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "method": "literal Git source hash; Python AST only; TS/Vue declaration lines; no imports or executions",
+  "python_files": 44,
+  "ts_vue_files": 20,
+  "files": [
+    {
+      "path": "backend/t44/__init__.py",
+      "sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/api.py",
+      "sha256": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_security",
+          "line": 29,
+          "signature": "_security(value)"
+        },
+        {
+          "name": "_unique_object",
+          "line": 41,
+          "signature": "_unique_object(pairs)"
+        },
+        {
+          "name": "_schema_type",
+          "line": 50,
+          "signature": "_schema_type(schema)"
+        },
+        {
+          "name": "_parameters",
+          "line": 56,
+          "signature": "_parameters(operation)"
+        },
+        {
+          "name": "_body_schema",
+          "line": 63,
+          "signature": "_body_schema(schema, payload)"
+        },
+        {
+          "name": "_body_error",
+          "line": 79,
+          "signature": "_body_error(schema, payload, operation)"
+        },
+        {
+          "name": "validate_request",
+          "line": 104,
+          "signature": "validate_request(request, operation, c)"
+        },
+        {
+          "name": "LazyFactory.__init__",
+          "line": 172,
+          "signature": "LazyFactory.__init__(self, settings)"
+        },
+        {
+          "name": "LazyFactory.__call__",
+          "line": 175,
+          "signature": "LazyFactory.__call__(self)"
+        },
+        {
+          "name": "create_app",
+          "line": 190,
+          "signature": "create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalations=_DEFAULT)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/cli.py",
+      "sha256": "da88377aed1131fb82aea31ef2783e02af01c6b620518f3d1b9e8b01175112db",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_parser",
+          "line": 18,
+          "signature": "_parser()"
+        },
+        {
+          "name": "main",
+          "line": 46,
+          "signature": "main(argv=None)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/contracts/__init__.py",
+      "sha256": "ee2a72d0ee435a63686e80548da2fdc1b0b2df05c399820e19973f8100dc8cdc",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "validator",
+          "line": 18,
+          "signature": "validator(schema)"
+        },
+        {
+          "name": "_absolute_refs",
+          "line": 26,
+          "signature": "_absolute_refs(value)"
+        },
+        {
+          "name": "violations",
+          "line": 37,
+          "signature": "violations(schema, value)"
+        },
+        {
+          "name": "normalized",
+          "line": 48,
+          "signature": "normalized(value)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/domain/__init__.py",
+      "sha256": "594c0dc3da8797170cc2a4c91df0e1a03e28957ff6d9525838d316d1c97132bc",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/domain/commands.py",
+      "sha256": "61c746eda2ae8adf70dbff501cb57fb1e7f81a5c76e0586a1a15a3d6460e1f07",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/domain/models.py",
+      "sha256": "0c2452b0db634beea4fa64a94866c23a40a1b96573e312ff0f540fbb9a5a6b71",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "DomainViolation.__init__",
+          "line": 89,
+          "signature": "DomainViolation.__init__(self, code: Violation)"
+        },
+        {
+          "name": "_positive_counter",
+          "line": 94,
+          "signature": "_positive_counter(value: int) -> None"
+        },
+        {
+          "name": "_boolean_flags",
+          "line": 99,
+          "signature": "_boolean_flags(*values: bool) -> None"
+        },
+        {
+          "name": "TaskPosition.__post_init__",
+          "line": 119,
+          "signature": "TaskPosition.__post_init__(self) -> None"
+        },
+        {
+          "name": "Cycle.__post_init__",
+          "line": 134,
+          "signature": "Cycle.__post_init__(self) -> None"
+        },
+        {
+          "name": "ReviewGate.__post_init__",
+          "line": 148,
+          "signature": "ReviewGate.__post_init__(self) -> None"
+        },
+        {
+          "name": "ReleaseGate.__post_init__",
+          "line": 164,
+          "signature": "ReleaseGate.__post_init__(self) -> None"
+        },
+        {
+          "name": "RollbackGate.__post_init__",
+          "line": 182,
+          "signature": "RollbackGate.__post_init__(self) -> None"
+        },
+        {
+          "name": "TransitionContext.__post_init__",
+          "line": 203,
+          "signature": "TransitionContext.__post_init__(self) -> None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/domain/state_machine.py",
+      "sha256": "81c9807e5088842e92aaee8f1d156579fb6fc1ca09beb5f3478b5f10f6655c00",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_require",
+          "line": 36,
+          "signature": "_require(condition: bool, code: Violation) -> None"
+        },
+        {
+          "name": "_present",
+          "line": 41,
+          "signature": "_present(value: object) -> bool"
+        },
+        {
+          "name": "_evidence",
+          "line": 45,
+          "signature": "_evidence(values: tuple[str, ...]) -> None"
+        },
+        {
+          "name": "_stage_role",
+          "line": 52,
+          "signature": "_stage_role(state: TaskState, context: TransitionContext) -> None"
+        },
+        {
+          "name": "_dependencies",
+          "line": 65,
+          "signature": "_dependencies(context: TransitionContext) -> None"
+        },
+        {
+          "name": "_review",
+          "line": 72,
+          "signature": "_review(reference: str, outcome: ReviewOutcome, context: TransitionContext) -> ReviewGate"
+        },
+        {
+          "name": "decide",
+          "line": 90,
+          "signature": "decide(position: TaskPosition, command: Command, context: TransitionContext) -> Decision"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/__init__.py",
+      "sha256": "0223fc2eea2e0bc490de900bcac14f7b17bf7ce8d83d4bbc02bbe11d569a8a63",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/messaging/__main__.py",
+      "sha256": "356ef3c0eeb5be3750df311fa2dd33cb420e3bf8218eedf9dd86e03ebe32493c",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "main",
+          "line": 17,
+          "signature": "main()"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/broker.py",
+      "sha256": "2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "BrokerSettings.__post_init__",
+          "line": 22,
+          "signature": "BrokerSettings.__post_init__(self)"
+        },
+        {
+          "name": "PikaBroker.__init__",
+          "line": 30,
+          "signature": "PikaBroker.__init__(self, settings, *, publisher=False, connect=pika.BlockingConnection)"
+        },
+        {
+          "name": "PikaBroker._channel",
+          "line": 34,
+          "signature": "PikaBroker._channel(self)"
+        },
+        {
+          "name": "PikaBroker.publish",
+          "line": 67,
+          "signature": "PikaBroker.publish(self, event)"
+        },
+        {
+          "name": "PikaBroker.get",
+          "line": 94,
+          "signature": "PikaBroker.get(self)"
+        },
+        {
+          "name": "PikaBroker.keepalive",
+          "line": 104,
+          "signature": "PikaBroker.keepalive(self)"
+        },
+        {
+          "name": "PikaBroker.close",
+          "line": 112,
+          "signature": "PikaBroker.close(self)"
+        },
+        {
+          "name": "consume_delivery",
+          "line": 122,
+          "signature": "consume_delivery(store, channel, method, body)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/facade.py",
+      "sha256": "61a840949cd0060153ad390fdd0ccc4b5a48f0cb02fa8acf40a11e0ccafa4509",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "notification",
+          "line": 8,
+          "signature": "notification(row)"
+        },
+        {
+          "name": "NotificationFacade._membership",
+          "line": 13,
+          "signature": "NotificationFacade._membership(self, g, actor_id, project_id, *, lock=None)"
+        },
+        {
+          "name": "NotificationFacade.list",
+          "line": 22,
+          "signature": "NotificationFacade.list(self, g, *, actor_id, query)"
+        },
+        {
+          "name": "NotificationFacade._update",
+          "line": 64,
+          "signature": "NotificationFacade._update(self, g, *, actor_id, project_id, notification_id, version, values)"
+        },
+        {
+          "name": "NotificationFacade.mark_read",
+          "line": 82,
+          "signature": "NotificationFacade.mark_read(self, g, *, actor_id, project_id, notification_id, version, now)"
+        },
+        {
+          "name": "NotificationFacade.handle",
+          "line": 92,
+          "signature": "NotificationFacade.handle(self, g, *, actor_id, project_id, notification_id, version, note, evidence, now)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/worker.py",
+      "sha256": "266b39185b946484599584f0e49a1dfb6b14cde2566cc7efb73f5386cc86648b",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "DeliveryWorker.__init__",
+          "line": 17,
+          "signature": "DeliveryWorker.__init__(self, store, publisher, consumer, *, batch_size=50, lease_seconds=30, confirmed_recovery=None, confirmation_timeout=120)"
+        },
+        {
+          "name": "DeliveryWorker.cycle",
+          "line": 33,
+          "signature": "DeliveryWorker.cycle(self)"
+        },
+        {
+          "name": "DeliveryWorker.run",
+          "line": 83,
+          "signature": "DeliveryWorker.run(self, stop, *, poll_seconds=1)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/__init__.py",
+      "sha256": "3a114365e08b4154ec9d5c4399559ee1d512d3cf1e9adeadb5bb9f10bc93d071",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/persistence/accounts.py",
+      "sha256": "c7b0fea49b3d07c275d0de7f47726beb3d9c3a625d34e36a138f418a6e63ad54",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "initialize_user",
+          "line": 20,
+          "signature": "initialize_user(factory, *, username: str, display_name: str, password_hash: str, request_id: str | None=None) -> int"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/codecs.py",
+      "sha256": "67ce7fe9d9492f8e92c66aa4080203114aaa578702663681c3d88d4a5b6b1c4e",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "utc_now",
+          "line": 8,
+          "signature": "utc_now() -> datetime"
+        },
+        {
+          "name": "to_db_time",
+          "line": 12,
+          "signature": "to_db_time(value: datetime) -> datetime"
+        },
+        {
+          "name": "from_db_time",
+          "line": 21,
+          "signature": "from_db_time(value: datetime) -> datetime"
+        },
+        {
+          "name": "hours_to_quarters",
+          "line": 25,
+          "signature": "hours_to_quarters(value) -> int"
+        },
+        {
+          "name": "quarters_to_hours",
+          "line": 34,
+          "signature": "quarters_to_hours(value: int) -> Decimal"
+        },
+        {
+          "name": "uuid_to_bytes",
+          "line": 38,
+          "signature": "uuid_to_bytes(value: str | UUID) -> bytes"
+        },
+        {
+          "name": "bytes_to_uuid",
+          "line": 42,
+          "signature": "bytes_to_uuid(value: bytes) -> str"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/delivery.py",
+      "sha256": "98300672dcababf20cf4e4de6fb4c67c629d1b04eb0736ef82dedf49f90d62f3",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "OutboxStore.__init__",
+          "line": 12,
+          "signature": "OutboxStore.__init__(self, factory)"
+        },
+        {
+          "name": "OutboxStore.get",
+          "line": 15,
+          "signature": "OutboxStore.get(self, event_id)"
+        },
+        {
+          "name": "OutboxStore.claim",
+          "line": 19,
+          "signature": "OutboxStore.claim(self, *, now=None, limit=100, lease_seconds=30)"
+        },
+        {
+          "name": "OutboxStore.confirm",
+          "line": 56,
+          "signature": "OutboxStore.confirm(self, event_id, lease_token, *, now=None)"
+        },
+        {
+          "name": "OutboxStore._notices",
+          "line": 72,
+          "signature": "OutboxStore._notices(self, g, event, *, fallback, now)"
+        },
+        {
+          "name": "OutboxStore.consume",
+          "line": 105,
+          "signature": "OutboxStore.consume(self, event_id, *, now=None)"
+        },
+        {
+          "name": "OutboxStore.recover_confirmed",
+          "line": 116,
+          "signature": "OutboxStore.recover_confirmed(self, *, confirmed_before, now=None, limit=100)"
+        },
+        {
+          "name": "OutboxStore.fallback",
+          "line": 138,
+          "signature": "OutboxStore.fallback(self, event_id, *, now=None, lease_token=None, error_code='MQ_UNAVAILABLE')"
+        },
+        {
+          "name": "OutboxStore.retry",
+          "line": 162,
+          "signature": "OutboxStore.retry(self, event_id, lease_token, *, now=None, delay_seconds=5, error_code='PUBLISH_FAILED')"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "sha256": "f7ec591dad711e3755aeda2606cee8dcaa023b416d8c51592b7b87684121ab9d",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "validate_identifier",
+          "line": 19,
+          "signature": "validate_identifier(value: str) -> None"
+        },
+        {
+          "name": "MySQLSettings.__post_init__",
+          "line": 40,
+          "signature": "MySQLSettings.__post_init__(self) -> None"
+        },
+        {
+          "name": "initialize_mysql_session",
+          "line": 66,
+          "signature": "initialize_mysql_session(dbapi_connection, _connection_record) -> None"
+        },
+        {
+          "name": "create_mysql_engine",
+          "line": 79,
+          "signature": "create_mysql_engine(settings: MySQLSettings) -> Engine"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/errors.py",
+      "sha256": "76fabd26e20706ba606a8904c23ebaef5b9306e0b65b4757c7d9d999f9156248",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "PersistenceIntegrityError.__init__",
+          "line": 15,
+          "signature": "PersistenceIntegrityError.__init__(self, message, *, kind='other', constraint=None)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "sha256": "2f0a908e1c984502aa1e9027cec09eae92d6513972bcc0653431240d5da33d1a",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_check_signature",
+          "line": 16,
+          "signature": "_check_signature(expression)"
+        },
+        {
+          "name": "_index_signature",
+          "line": 107,
+          "signature": "_index_signature(index)"
+        },
+        {
+          "name": "_foreign_signature",
+          "line": 122,
+          "signature": "_foreign_signature(foreign, database)"
+        },
+        {
+          "name": "check_schema",
+          "line": 145,
+          "signature": "check_schema(engine) -> dict"
+        },
+        {
+          "name": "migrate",
+          "line": 244,
+          "signature": "migrate(engine, *, expected_database: str) -> dict"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "sha256": "063ec7d2b8f70c1ab6436ff0ae6aead8e748a7626c5694541036b34c94e2817b",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "RowsGateway.__init__",
+          "line": 29,
+          "signature": "RowsGateway.__init__(self, active_session, mark_failed)"
+        },
+        {
+          "name": "RowsGateway._table",
+          "line": 33,
+          "signature": "RowsGateway._table(self, name)"
+        },
+        {
+          "name": "RowsGateway._fields",
+          "line": 38,
+          "signature": "RowsGateway._fields(self, table, values)"
+        },
+        {
+          "name": "RowsGateway._clauses",
+          "line": 61,
+          "signature": "RowsGateway._clauses(self, table, where, predicates)"
+        },
+        {
+          "name": "RowsGateway._execute",
+          "line": 93,
+          "signature": "RowsGateway._execute(self, statement, mode, parameters=None)"
+        },
+        {
+          "name": "RowsGateway._failed",
+          "line": 129,
+          "signature": "RowsGateway._failed(self)"
+        },
+        {
+          "name": "RowsGateway.savepoint",
+          "line": 136,
+          "signature": "RowsGateway.savepoint(self)"
+        },
+        {
+          "name": "RowsGateway.rows",
+          "line": 150,
+          "signature": "RowsGateway.rows(self, table, where=None, *, columns=None, order_by=('id',), limit=None, offset=0, lock=None, skip_locked=False, predicates=())"
+        },
+        {
+          "name": "RowsGateway.get",
+          "line": 191,
+          "signature": "RowsGateway.get(self, table, id, *, lock=None)"
+        },
+        {
+          "name": "RowsGateway.task_schedule_changes",
+          "line": 195,
+          "signature": "RowsGateway.task_schedule_changes(self, project_id: int, pairs: tuple[tuple[int, int], ...]) -> list[dict]"
+        },
+        {
+          "name": "RowsGateway.confirmed_missing",
+          "line": 263,
+          "signature": "RowsGateway.confirmed_missing(self, *, confirmed_before, limit)"
+        },
+        {
+          "name": "RowsGateway.insert",
+          "line": 289,
+          "signature": "RowsGateway.insert(self, table, values)"
+        },
+        {
+          "name": "RowsGateway.insert_many",
+          "line": 295,
+          "signature": "RowsGateway.insert_many(self, table, values)"
+        },
+        {
+          "name": "RowsGateway.update_many",
+          "line": 304,
+          "signature": "RowsGateway.update_many(self, table, values)"
+        },
+        {
+          "name": "RowsGateway.update",
+          "line": 318,
+          "signature": "RowsGateway.update(self, table, where, values, *, predicates=())"
+        },
+        {
+          "name": "RowsGateway.delete",
+          "line": 329,
+          "signature": "RowsGateway.delete(self, table, where)"
+        },
+        {
+          "name": "RowsGateway.count",
+          "line": 335,
+          "signature": "RowsGateway.count(self, table, where=None, *, predicates=())"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/scans.py",
+      "sha256": "d818e394f4e292ecf3d266b945f3fabecd29ef7d6132a11e5a290b9f36f33aff",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "ScanStore.__init__",
+          "line": 11,
+          "signature": "ScanStore.__init__(self, factory)"
+        },
+        {
+          "name": "ScanStore._run",
+          "line": 14,
+          "signature": "ScanStore._run(self, g, run_id, *, lock=None)"
+        },
+        {
+          "name": "ScanStore.start",
+          "line": 20,
+          "signature": "ScanStore.start(self, run_id, *, rule_version, rule_snapshot, rule_hash, cutoff_at=None)"
+        },
+        {
+          "name": "ScanStore.get",
+          "line": 54,
+          "signature": "ScanStore.get(self, run_id)"
+        },
+        {
+          "name": "ScanStore.recoverable",
+          "line": 58,
+          "signature": "ScanStore.recoverable(self, *, heartbeat_before, limit=100)"
+        },
+        {
+          "name": "ScanStore.page",
+          "line": 67,
+          "signature": "ScanStore.page(self, run_id, *, limit=200)"
+        },
+        {
+          "name": "ScanStore.checkpoint",
+          "line": 85,
+          "signature": "ScanStore.checkpoint(self, run_id, *, last_task_id, scanned_delta=0, created_delta=0, duplicate_delta=0, finished=False, error_code=None)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/schema.py",
+      "sha256": "cd1465fc7560c0f13bb80216507b237e297e2177eccf280d8802651f0458e4bd",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "ddl_text",
+          "line": 28,
+          "signature": "ddl_text() -> str"
+        },
+        {
+          "name": "_parts",
+          "line": 35,
+          "signature": "_parts(body: str) -> list[str]"
+        },
+        {
+          "name": "_type",
+          "line": 48,
+          "signature": "_type(spec: str)"
+        },
+        {
+          "name": "_foreign_key",
+          "line": 68,
+          "signature": "_foreign_key(part: str) -> ForeignKeyConstraint"
+        },
+        {
+          "name": "build_metadata",
+          "line": 77,
+          "signature": "build_metadata() -> MetaData"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/seed.py",
+      "sha256": "c9d2a3382b1eeffa67f9ae757e87bf292eacbe97932c79e30f576366cbb40f93",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_snapshot",
+          "line": 29,
+          "signature": "_snapshot(name, path)"
+        },
+        {
+          "name": "_populate",
+          "line": 34,
+          "signature": "_populate(g, manifest, template, actors, batch_size)"
+        },
+        {
+          "name": "seed_demo",
+          "line": 294,
+          "signature": "seed_demo(factory, *, projects=40, tasks=6000, dependencies=9000, records=15000, manager_username='synthetic-manager', seed=44, anchor_at=None, template_path=None, rules_path=None, batch_size=250)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/uow.py",
+      "sha256": "3063b8b29a07dd29f188720df637d4e31e0fbc9e8b401be1f2ecbc3188d5897f",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "SqlAlchemyUnitOfWork.__init__",
+          "line": 14,
+          "signature": "SqlAlchemyUnitOfWork.__init__(self, session_factory: Callable[[], Session])"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.__enter__",
+          "line": 21,
+          "signature": "SqlAlchemyUnitOfWork.__enter__(self) -> 'SqlAlchemyUnitOfWork'"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._require_active",
+          "line": 36,
+          "signature": "SqlAlchemyUnitOfWork._require_active(self) -> Session"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.gateway",
+          "line": 44,
+          "signature": "SqlAlchemyUnitOfWork.gateway(self) -> RowsGateway"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._mark_failed",
+          "line": 48,
+          "signature": "SqlAlchemyUnitOfWork._mark_failed(self) -> None"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.commit",
+          "line": 51,
+          "signature": "SqlAlchemyUnitOfWork.commit(self) -> None"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.rollback",
+          "line": 66,
+          "signature": "SqlAlchemyUnitOfWork.rollback(self) -> None"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._close",
+          "line": 76,
+          "signature": "SqlAlchemyUnitOfWork._close(self, *, suppress_errors: bool=False) -> None"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.__exit__",
+          "line": 87,
+          "signature": "SqlAlchemyUnitOfWork.__exit__(self, exc_type, exc, traceback) -> bool"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWorkFactory.__init__",
+          "line": 100,
+          "signature": "SqlAlchemyUnitOfWorkFactory.__init__(self, engine: Engine)"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWorkFactory.__call__",
+          "line": 103,
+          "signature": "SqlAlchemyUnitOfWorkFactory.__call__(self) -> SqlAlchemyUnitOfWork"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/__init__.py",
+      "sha256": "13546feadd8867b987928a9178a984c1d96aae3e85f66ef6fe71662fb935f21b",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/scheduling/__main__.py",
+      "sha256": "66743cc75f1558356c2c605690803310f5c9ecec0abdac579afe21c23fdbefbe",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "read_token",
+          "line": 26,
+          "signature": "read_token(path)"
+        },
+        {
+          "name": "single_instance",
+          "line": 37,
+          "signature": "single_instance(path)"
+        },
+        {
+          "name": "main",
+          "line": 48,
+          "signature": "main(argv=None)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/facade.py",
+      "sha256": "17e293ec0389020f9269e75dbf9dd927eee877426181165c46cd7951c68f8ab6",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "EscalationFacade.__init__",
+          "line": 13,
+          "signature": "EscalationFacade.__init__(self, rules=None)"
+        },
+        {
+          "name": "EscalationFacade.current",
+          "line": 16,
+          "signature": "EscalationFacade.current(self)"
+        },
+        {
+          "name": "EscalationFacade.rules",
+          "line": 19,
+          "signature": "EscalationFacade.rules(self, g, c)"
+        },
+        {
+          "name": "EscalationFacade.event",
+          "line": 28,
+          "signature": "EscalationFacade.event(self, g, row)"
+        },
+        {
+          "name": "EscalationFacade.list",
+          "line": 58,
+          "signature": "EscalationFacade.list(self, g, c)"
+        },
+        {
+          "name": "EscalationFacade._run",
+          "line": 70,
+          "signature": "EscalationFacade._run(self, g, c, rules)"
+        },
+        {
+          "name": "EscalationFacade.create",
+          "line": 106,
+          "signature": "EscalationFacade.create(self, g, c)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/rules.py",
+      "sha256": "4b182e8f531f22f86e8bfd019a84ce9a844ef29eca1a58ed341d38e86e1d1428",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "EscalationRules.rule_version",
+          "line": 46,
+          "signature": "EscalationRules.rule_version(self)"
+        },
+        {
+          "name": "EscalationRules.snapshot",
+          "line": 49,
+          "signature": "EscalationRules.snapshot(self)"
+        },
+        {
+          "name": "WindowMatch.code",
+          "line": 61,
+          "signature": "WindowMatch.code(self)"
+        },
+        {
+          "name": "WindowMatch.recipient_roles",
+          "line": 65,
+          "signature": "WindowMatch.recipient_roles(self)"
+        },
+        {
+          "name": "_unique_object",
+          "line": 69,
+          "signature": "_unique_object(pairs)"
+        },
+        {
+          "name": "load_rules",
+          "line": 78,
+          "signature": "load_rules(path: str | Path | None=None) -> EscalationRules"
+        },
+        {
+          "name": "parse_utc_timestamp",
+          "line": 137,
+          "signature": "parse_utc_timestamp(value: datetime | str) -> datetime"
+        },
+        {
+          "name": "select_window",
+          "line": 153,
+          "signature": "select_window(now: datetime | str, planned_end: datetime | str, rules: EscalationRules) -> WindowMatch | None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/runtime.py",
+      "sha256": "19ccc353d794fb7d22ab39a3c2ad720d435c0e3fe0760ce508a2918b08fe3778",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "build_scheduler",
+          "line": 15,
+          "signature": "build_scheduler(scan_callback: Callable[[], None], *, rules: EscalationRules | None=None) -> BlockingScheduler"
+        },
+        {
+          "name": "run_scheduler",
+          "line": 44,
+          "signature": "run_scheduler(scheduler: BlockingScheduler) -> None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/scanner.py",
+      "sha256": "6c724d7f0360128e9474cce631f9b2b9bf282072e8aeb9876457f9a720401ed4",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "ScanFailure.__init__",
+          "line": 16,
+          "signature": "ScanFailure.__init__(self, code)"
+        },
+        {
+          "name": "validate_call",
+          "line": 21,
+          "signature": "validate_call(c)"
+        },
+        {
+          "name": "Scanner.__init__",
+          "line": 40,
+          "signature": "Scanner.__init__(self, runtime, token_provider, *, page_size=200, clock=now, store=None)"
+        },
+        {
+          "name": "Scanner._scope",
+          "line": 47,
+          "signature": "Scanner._scope(self)"
+        },
+        {
+          "name": "Scanner._execute",
+          "line": 67,
+          "signature": "Scanner._execute(self, candidate, run_id, rules)"
+        },
+        {
+          "name": "Scanner.run",
+          "line": 102,
+          "signature": "Scanner.run(self, run_id=None)"
+        },
+        {
+          "name": "Scanner.tick",
+          "line": 145,
+          "signature": "Scanner.tick(self)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/__init__.py",
+      "sha256": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/services/application.py",
+      "sha256": "9fab03fcfba28aacca6f6a479fda5410b1cd3882df63955818d39e4a88ab16ea",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Business.__init__",
+          "line": 33,
+          "signature": "Business.__init__(self, *, notifications=None, escalations=None)"
+        },
+        {
+          "name": "Business.status",
+          "line": 36,
+          "signature": "Business.status(self, operation)"
+        },
+        {
+          "name": "Business.dispatch",
+          "line": 39,
+          "signature": "Business.dispatch(self, g, call)"
+        },
+        {
+          "name": "Business.finalize",
+          "line": 63,
+          "signature": "Business.finalize(self, result, call)"
+        },
+        {
+          "name": "Business.validate_data",
+          "line": 69,
+          "signature": "Business.validate_data(self, operation, result)"
+        },
+        {
+          "name": "Business.outbox",
+          "line": 72,
+          "signature": "Business.outbox(self, c, project)"
+        },
+        {
+          "name": "Business.getMe",
+          "line": 84,
+          "signature": "Business.getMe(self, g, c)"
+        },
+        {
+          "name": "Business.getDictionaries",
+          "line": 87,
+          "signature": "Business.getDictionaries(self, g, c)"
+        },
+        {
+          "name": "Business.validateContractPayload",
+          "line": 108,
+          "signature": "Business.validateContractPayload(self, g, c)"
+        },
+        {
+          "name": "Business.listProjectAuditEvents",
+          "line": 132,
+          "signature": "Business.listProjectAuditEvents(self, g, c)"
+        },
+        {
+          "name": "Business.listMyNotifications",
+          "line": 152,
+          "signature": "Business.listMyNotifications(self, g, c)"
+        },
+        {
+          "name": "Business.markNotificationRead",
+          "line": 156,
+          "signature": "Business.markNotificationRead(self, g, c)"
+        },
+        {
+          "name": "Business.handleNotification",
+          "line": 167,
+          "signature": "Business.handleNotification(self, g, c)"
+        },
+        {
+          "name": "Business._escalation",
+          "line": 180,
+          "signature": "Business._escalation(self, method, g, c)"
+        },
+        {
+          "name": "Business.getEscalationRules",
+          "line": 184,
+          "signature": "Business.getEscalationRules(self, g, c)"
+        },
+        {
+          "name": "Business.listEscalations",
+          "line": 187,
+          "signature": "Business.listEscalations(self, g, c)"
+        },
+        {
+          "name": "Business.createEscalation",
+          "line": 190,
+          "signature": "Business.createEscalation(self, g, c)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/codes.py",
+      "sha256": "d6908e0d5a486ebc75cd41f224c63ccd9db904d1aa9988373ea8746fc7475454",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "sha256": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "now",
+          "line": 16,
+          "signature": "now()"
+        },
+        {
+          "name": "wire",
+          "line": 20,
+          "signature": "wire(value)"
+        },
+        {
+          "name": "time",
+          "line": 32,
+          "signature": "time(value)"
+        },
+        {
+          "name": "roles",
+          "line": 36,
+          "signature": "roles(mask)"
+        },
+        {
+          "name": "mask",
+          "line": 40,
+          "signature": "mask(values)"
+        },
+        {
+          "name": "model",
+          "line": 44,
+          "signature": "model(name, row, **extra)"
+        },
+        {
+          "name": "plan",
+          "line": 49,
+          "signature": "plan(row, *, iteration=False)"
+        },
+        {
+          "name": "plan_values",
+          "line": 59,
+          "signature": "plan_values(payload)"
+        },
+        {
+          "name": "task_model",
+          "line": 73,
+          "signature": "task_model(row)"
+        },
+        {
+          "name": "page",
+          "line": 77,
+          "signature": "page(g, table, where, query, serialize, *, predicates=())"
+        },
+        {
+          "name": "Call.project_id",
+          "line": 114,
+          "signature": "Call.project_id(self)"
+        },
+        {
+          "name": "Call.actor_id",
+          "line": 118,
+          "signature": "Call.actor_id(self)"
+        },
+        {
+          "name": "Call.manager",
+          "line": 121,
+          "signature": "Call.manager(self)"
+        },
+        {
+          "name": "Call.reviewer",
+          "line": 124,
+          "signature": "Call.reviewer(self)"
+        },
+        {
+          "name": "Call.task",
+          "line": 127,
+          "signature": "Call.task(self, g, *, lock=None)"
+        },
+        {
+          "name": "Call.create",
+          "line": 132,
+          "signature": "Call.create(self, g, table, values, *, actor_field=None, updated=False, project=True)"
+        },
+        {
+          "name": "Call.check_version",
+          "line": 143,
+          "signature": "Call.check_version(self, row, *, expected=None)"
+        },
+        {
+          "name": "Call.cas",
+          "line": 153,
+          "signature": "Call.cas(self, g, table, row, values, *, expected=None)"
+        },
+        {
+          "name": "uuid_text",
+          "line": 169,
+          "signature": "uuid_text(value)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/errors.py",
+      "sha256": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Rejected.__init__",
+          "line": 13,
+          "signature": "Rejected.__init__(self, code, *, violations=(), current_version=None, current_state=None)"
+        },
+        {
+          "name": "Rejected.payload",
+          "line": 21,
+          "signature": "Rejected.payload(self, request_id, audit_id=None, original=None)"
+        },
+        {
+          "name": "require",
+          "line": 34,
+          "signature": "require(condition, code, **details)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/history.py",
+      "sha256": "36b2fb1aed476bff3d852e113da4584e1906b53f1f5e3d476b730f9f8a1d98ae",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_snapshot",
+          "line": 11,
+          "signature": "_snapshot(audit)"
+        },
+        {
+          "name": "_matches",
+          "line": 57,
+          "signature": "_matches(audit, snapshot, change, project_id)"
+        },
+        {
+          "name": "project_reasons",
+          "line": 93,
+          "signature": "project_reasons(g, project_id, result)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/identity.py",
+      "sha256": "e27eca5dfb9074a0bf709bcc2f75fd47294c08c9736ea85ddc1968d06749ee01",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "token_digest",
+          "line": 21,
+          "signature": "token_digest(token)"
+        },
+        {
+          "name": "LoginLimiter.__init__",
+          "line": 26,
+          "signature": "LoginLimiter.__init__(self, attempts, seconds)"
+        },
+        {
+          "name": "LoginLimiter.check",
+          "line": 30,
+          "signature": "LoginLimiter.check(self, username, source)"
+        },
+        {
+          "name": "authenticate",
+          "line": 45,
+          "signature": "authenticate(g, call, *, lock=None)"
+        },
+        {
+          "name": "login",
+          "line": 91,
+          "signature": "login(g, call, settings)"
+        },
+        {
+          "name": "issue_session",
+          "line": 107,
+          "signature": "issue_session(g, *, clock, ttl, user_id=None, service_account_id=None, project_ids=(), scopes=())"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "sha256": "87493efe1d878a3fc0fc4095fd7d4050efe7ac52e52b7a6a7b4fccd1640088d3",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Projects.project_model",
+          "line": 9,
+          "signature": "Projects.project_model(self, row, membership)"
+        },
+        {
+          "name": "Projects.member_model",
+          "line": 12,
+          "signature": "Projects.member_model(self, g, row)"
+        },
+        {
+          "name": "Projects.createProject",
+          "line": 21,
+          "signature": "Projects.createProject(self, g, c)"
+        },
+        {
+          "name": "Projects.listProjects",
+          "line": 36,
+          "signature": "Projects.listProjects(self, g, c)"
+        },
+        {
+          "name": "Projects.getProject",
+          "line": 47,
+          "signature": "Projects.getProject(self, g, c)"
+        },
+        {
+          "name": "Projects.listProjectMembers",
+          "line": 50,
+          "signature": "Projects.listProjectMembers(self, g, c)"
+        },
+        {
+          "name": "Projects.addProjectMember",
+          "line": 59,
+          "signature": "Projects.addProjectMember(self, g, c)"
+        },
+        {
+          "name": "Projects._change_member",
+          "line": 79,
+          "signature": "Projects._change_member(self, g, c, remove)"
+        },
+        {
+          "name": "Projects.changeProjectMember",
+          "line": 116,
+          "signature": "Projects.changeProjectMember(self, g, c)"
+        },
+        {
+          "name": "Projects.removeProjectMember",
+          "line": 119,
+          "signature": "Projects.removeProjectMember(self, g, c)"
+        },
+        {
+          "name": "Projects.capacity",
+          "line": 122,
+          "signature": "Projects.capacity(self, g, c, payload)"
+        },
+        {
+          "name": "Projects.iteration_model",
+          "line": 134,
+          "signature": "Projects.iteration_model(self, row)"
+        },
+        {
+          "name": "Projects.createIteration",
+          "line": 137,
+          "signature": "Projects.createIteration(self, g, c)"
+        },
+        {
+          "name": "Projects.listIterations",
+          "line": 142,
+          "signature": "Projects.listIterations(self, g, c)"
+        },
+        {
+          "name": "Projects.changeIteration",
+          "line": 145,
+          "signature": "Projects.changeIteration(self, g, c)"
+        },
+        {
+          "name": "Projects.schedule_diff",
+          "line": 173,
+          "signature": "Projects.schedule_diff(self, g, c, before, after, *, iteration=False)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/reviews.py",
+      "sha256": "f69358370a4cb03935ec1a0fb5de71686a2582301e763a2f4273f4f1b76c34a9",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Reviews.getReviewTemplate",
+          "line": 17,
+          "signature": "Reviews.getReviewTemplate(self, g, c)"
+        },
+        {
+          "name": "Reviews.review_complete",
+          "line": 23,
+          "signature": "Reviews.review_complete(self, review)"
+        },
+        {
+          "name": "Reviews.createTaskReview",
+          "line": 28,
+          "signature": "Reviews.createTaskReview(self, g, c)"
+        },
+        {
+          "name": "Reviews.createReleaseAssessment",
+          "line": 64,
+          "signature": "Reviews.createReleaseAssessment(self, g, c)"
+        },
+        {
+          "name": "Reviews.reviewReleaseAssessment",
+          "line": 109,
+          "signature": "Reviews.reviewReleaseAssessment(self, g, c)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "_audit_integer",
+          "line": 31,
+          "signature": "_audit_integer(value, maximum, minimum=0)"
+        },
+        {
+          "name": "Runtime.__init__",
+          "line": 36,
+          "signature": "Runtime.__init__(self, factory, settings, business)"
+        },
+        {
+          "name": "Runtime.authorize",
+          "line": 40,
+          "signature": "Runtime.authorize(self, call)"
+        },
+        {
+          "name": "Runtime.prepare",
+          "line": 45,
+          "signature": "Runtime.prepare(self, call, validate)"
+        },
+        {
+          "name": "Runtime.audit",
+          "line": 54,
+          "signature": "Runtime.audit(self, g, call, error=None)"
+        },
+        {
+          "name": "Runtime.rejection",
+          "line": 85,
+          "signature": "Runtime.rejection(self, call, error)"
+        },
+        {
+          "name": "Runtime.complete",
+          "line": 119,
+          "signature": "Runtime.complete(self, g, call, status, result)"
+        },
+        {
+          "name": "Runtime.claim",
+          "line": 136,
+          "signature": "Runtime.claim(self, call)"
+        },
+        {
+          "name": "Runtime._claim",
+          "line": 140,
+          "signature": "Runtime._claim(self, g, call)"
+        },
+        {
+          "name": "Runtime.locked_scope",
+          "line": 197,
+          "signature": "Runtime.locked_scope(self, g, call)"
+        },
+        {
+          "name": "Runtime.execute",
+          "line": 235,
+          "signature": "Runtime.execute(self, call, validate, source='unknown')"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/tasks.py",
+      "sha256": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Tasks.owner",
+          "line": 9,
+          "signature": "Tasks.owner(self, g, c, identifier, *, code='OWNER_NOT_PROJECT_DEVELOPER')"
+        },
+        {
+          "name": "Tasks.capacity_owner",
+          "line": 17,
+          "signature": "Tasks.capacity_owner(self, g, c, identifier, iteration_id)"
+        },
+        {
+          "name": "Tasks.iteration",
+          "line": 24,
+          "signature": "Tasks.iteration(self, g, c, identifier)"
+        },
+        {
+          "name": "Tasks.prestart",
+          "line": 29,
+          "signature": "Tasks.prestart(self, row)"
+        },
+        {
+          "name": "Tasks.dependency_model",
+          "line": 34,
+          "signature": "Tasks.dependency_model(self, g, row)"
+        },
+        {
+          "name": "Tasks.check_graph",
+          "line": 38,
+          "signature": "Tasks.check_graph(self, g, c, identifier, dependencies)"
+        },
+        {
+          "name": "Tasks.createTask",
+          "line": 58,
+          "signature": "Tasks.createTask(self, g, c)"
+        },
+        {
+          "name": "Tasks.listTasks",
+          "line": 92,
+          "signature": "Tasks.listTasks(self, g, c)"
+        },
+        {
+          "name": "Tasks.getTask",
+          "line": 99,
+          "signature": "Tasks.getTask(self, g, c)"
+        },
+        {
+          "name": "Tasks.changeTaskPlan",
+          "line": 102,
+          "signature": "Tasks.changeTaskPlan(self, g, c)"
+        },
+        {
+          "name": "Tasks.changeTaskAssignment",
+          "line": 124,
+          "signature": "Tasks.changeTaskAssignment(self, g, c)"
+        },
+        {
+          "name": "Tasks.addTaskDependency",
+          "line": 134,
+          "signature": "Tasks.addTaskDependency(self, g, c)"
+        },
+        {
+          "name": "Tasks.removeTaskDependency",
+          "line": 153,
+          "signature": "Tasks.removeTaskDependency(self, g, c)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/workflow.py",
+      "sha256": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "reference",
+          "line": 56,
+          "signature": "reference(identifier, version)"
+        },
+        {
+          "name": "Workflow.transitionTask",
+          "line": 61,
+          "signature": "Workflow.transitionTask(self, g, c)"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/settings.py",
+      "sha256": "1c998fa935c2c63891278982cac859fe76899a1e1791f5d7641433416002beea",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "name": "Settings.__post_init__",
+          "line": 19,
+          "signature": "Settings.__post_init__(self)"
+        },
+        {
+          "name": "Settings.from_env",
+          "line": 24,
+          "signature": "Settings.from_env(cls)"
+        },
+        {
+          "name": "Settings.mysql_settings",
+          "line": 30,
+          "signature": "Settings.mysql_settings(self)"
+        },
+        {
+          "name": "Settings.__repr__",
+          "line": 45,
+          "signature": "Settings.__repr__(self)"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "sha256": "941eb6ec4c731dce169bfa37c69d99f9064b6f45c87905512eedd088e83bf0d7",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 21,
+          "declaration_line": "async function signOut(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "sha256": "d143992ac9b29b7fdb41951be88652cccd29fe0ae2f36008c4e890841cce5c26",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 10,
+          "declaration_line": "export function checkSession(token: string): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 13,
+          "declaration_line": "export function intentFor(operation: string, params: Row, body: Json, previous?: Intent): Intent {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 17,
+          "declaration_line": "export async function request(operation: string, params: Row = {}, query: Row = {}, body?: Json, intent?: Intent): Promise<Envelope> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/audit.ts",
+      "sha256": "b6f896d39a3f29eb9896a9a0ec47334e8a7aaf9e70aed377dceece86318dd36a",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 4,
+          "declaration_line": "export function auditReason(record: Row): { text?: string; missing: boolean } | undefined {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/components/DataState.vue",
+      "sha256": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "sha256": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 30,
+          "declaration_line": "function rowTitle(value: Json, index: number): string {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 35,
+          "declaration_line": "function change(event: Event): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/components/LoginView.vue",
+      "sha256": "33af8c787d761b290de45a5bd4538c117d834d0eace194a0451dc212a970c57c",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 13,
+          "declaration_line": "async function login(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/components/OperationForm.vue",
+      "sha256": "b0e4c56d2fc224f066ae297905fab41f45807092c83dc928ca121e184f2ce6c7",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 28,
+          "declaration_line": "async function submit(checkOnly = false): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 63,
+          "declaration_line": "function adoptVersion(): void { draft.value = { ...asRow(draft.value), expected_version: currentVersion.value }; currentVersion.value = null; intent.value = undefined }",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/components/PageHeading.vue",
+      "sha256": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/components/RecordList.vue",
+      "sha256": "1b088ad8bea3b88cc7f03a91f10a47d106c5318cbedb61533ef296d9b4ac234b",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/components/RecordView.vue",
+      "sha256": "a4dafaf96a3ceee85051ca8c66b59d103b09caaab88fcd1006cc70444d3a15ad",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/components/SidebarNavigation.vue",
+      "sha256": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/components/TaskDrawer.vue",
+      "sha256": "3a4287ac7bf94f91806812b41580e99e93fbc0b1b1a6ad80f6295e6897399f33",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 27,
+          "declaration_line": "async function refresh(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 41,
+          "declaration_line": "function operate(operation: string, row: Row = {}): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 45,
+          "declaration_line": "function transition(): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/contract.ts",
+      "sha256": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 30,
+          "declaration_line": "export function validate(name: string, value: Json): Record<string, string> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 81,
+          "declaration_line": "export function safeLink(value: string): string | null {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/forms.ts",
+      "sha256": "24137ed703aa66c479327708f95c5d2bbcac592b299c48c84271345ce6f37543",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 6,
+          "declaration_line": "export function businessRejection(status: number, code: string, operation: string, schemaName: string): { title: string; message: string } | undefined {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 20,
+          "declaration_line": "export function transitionSchema(action: number): string {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 23,
+          "declaration_line": "export function presets(operation: string, record: Row = {}, task: Row = {}): Row {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "sha256": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/navigation.ts",
+      "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/router.ts",
+      "sha256": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/views/NotFoundView.vue",
+      "sha256": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": []
+    },
+    {
+      "path": "frontend/src/views/WorkspaceView.vue",
+      "sha256": "f03ff257777c79d860d8761ca9c78ad02a8035772ccd86d92d434c8599de6b36",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 29,
+          "declaration_line": "async function refresh(reloadContext = false): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 53,
+          "declaration_line": "function open(operation: string, record: Row = {}): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 56,
+          "declaration_line": "async function saved(record: Row): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 63,
+          "declaration_line": "async function refreshConflict(): Promise<Row> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 72,
+          "declaration_line": "async function notificationTask(row: Row): Promise<void> { workspace.projectId = Number(row.project_id); await nextTick(); selectedTask.value = Number(row.task_id) }",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/workspace.ts",
+      "sha256": "847a3269f25315a159fb6b25345b118dbc18c62a0977fc5996ffdd0d55f41716",
+      "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+      "functions": [
+        {
+          "line": 8,
+          "declaration_line": "function clearContext(): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 11,
+          "declaration_line": "function clearSession(notice: string): void {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 16,
+          "declaration_line": "export async function allPages(operation: string, params: Row = {}): Promise<Row[]> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 27,
+          "declaration_line": "export async function bootstrap(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 34,
+          "declaration_line": "export async function context(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 50,
+          "declaration_line": "export function options(field: string): Row[] {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 53,
+          "declaration_line": "export function display(value: Json | undefined, field = ''): string {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        },
+        {
+          "line": 66,
+          "declaration_line": "export async function logout(): Promise<void> {",
+          "kind": "literal source line; not a TypeScript semantic parse"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login"
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout"
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me"
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries"
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects"
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects"
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}"
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members"
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members"
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}"
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal"
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations"
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations"
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}"
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks"
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks"
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}"
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan"
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment"
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies"
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal"
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions"
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template"
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews"
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments"
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments"
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews"
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions"
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations"
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules"
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations"
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations"
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications"
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read"
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling"
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events"
+    }
+  ],
+  "schema_version": "1.1.0",
+  "schemas": 130
+}

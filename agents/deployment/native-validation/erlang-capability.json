@@ -1,0 +1,37 @@
+{
+  "started_at_utc": "2026-10-23T20:04:11.409405+00:00",
+  "ended_at_utc": "2026-10-23T20:04:13.074685+00:00",
+  "argv": [
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-mq-20261023/erlang-28.5.0.7/bin/erl",
+    "-noshell",
+    "-nocookie",
+    "-eval",
+    "io:format(\"otp_release=~p~nerts_version=~p~nhome_argument=~p~ncrypto_start=~p~nssl_start=~p~ncrypto_info=~p~nssl_versions=~p~n\", [erlang:system_info(otp_release),erlang:system_info(version),init:get_argument(home),application:ensure_all_started(crypto),application:ensure_all_started(ssl),crypto:info_lib(),ssl:versions()]), halt()."
+  ],
+  "environment_delta": {
+    "ERL_FLAGS": "-home /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/probe-home +S 2:2 +A 2"
+  },
+  "unchanged_environment_keys": [
+    "HOME",
+    "home",
+    "CODEX_HOME"
+  ],
+  "timeout_seconds": 30,
+  "exit_code": 0,
+  "node_started": false,
+  "rabbitmq_started": false,
+  "api_database_business_started": false,
+  "cookie_prevention": "-nocookie; no distribution flags",
+  "project_probe_home": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/t44-native-demo/probe-home",
+  "probe_cookie_exists": false,
+  "outputs": {
+    "erlang-capability.stdout": {
+      "sha256": "75c62aa32c5be2d62029ac186411e4a3608d49876a5d5392a9d882733e6dcd77",
+      "bytes": 1080
+    },
+    "erlang-capability.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "base": "398c3d3621843aa536755ae106c78a0fd1c60aff",
+  "changes": [
+    {
+      "path": [
+        "info",
+        "version"
+      ],
+      "before": "1.1.0",
+      "after": "1.2.0"
+    },
+    {
+      "path": [
+        "info",
+        "description"
+      ],
+      "before": "1.1.0显式人力生命周期变更：D005/D006业务已采用，RFC限定设计审查通过；规格独立冻结清单见records/spec-freezes/v1.1.json。父版本1.0.0与原验收保持历史，规格冻结不等于业务实现或验收通过。同步FastAPI + SQLAlchemy2/PyMySQL；Pika消息进程；APScheduler独立进程。示例均为合成。",
+      "after": "1.2.0草稿待freeze：D008/U021已由用户采用，RFC R2 d328986与限定设计审查891d676支持发布双失效提示顺序的最小增量；本草稿不含业务守卫实现/部署或验收通过。父1.1.0冻结见records/spec-freezes/v1.1.json，旧清单/原F08失败保留不回写。仅DELIVER原批准引用失败槽先判delivery_cycle/schedule_version；不扩大全局state/role顺序。同步FastAPI + SQLAlchemy2/PyMySQL；Pika/独立APScheduler。示例均为合成。"
+    },
+    {
+      "path": [
+        "paths",
+        "/auth/login",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/auth/logout",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/auth/me",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/dictionaries",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/members",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/members",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/members/{user_id}",
+        "patch",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/members/{user_id}/removal",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/iterations",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/iterations",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/iterations/{iteration_id}",
+        "patch",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/plan",
+        "patch",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/assignment",
+        "patch",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/dependencies",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/dependencies",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/transitions",
+        "post",
+        "description"
+      ],
+      "before": "禁止直接写状态。先认证/项目权限、结构校验、幂等回放，再版本/角色/状态/证据守卫；CAS成功仅一次，成功留痕同事务；不同请求冲突及非法迁移独立持久化拒绝审计。data是操作时快照，重放后另GET任务。 v1.1 D006：action9返工在CAS前重新核有效developer及当前迭代capacity，缺失422 CAPACITY_REFERENCE_INVALID；不改变状态出口。",
+      "after": "禁止直接写状态。先认证/项目权限、结构校验、幂等回放，再版本/角色/状态/证据守卫；CAS成功仅一次，成功留痕同事务；不同请求冲突及非法迁移独立持久化拒绝审计。data是操作时快照，重放后另GET任务。 v1.1 D006：action9返工在CAS前重新核有效developer及当前迭代capacity，缺失422 CAPACITY_REFERENCE_INVALID；不改变状态出口。 v1.2 D008草稿：仅action7且assessment存在、归属和请求assessment_version原检查已通过时，在原批准引用不匹配的失败槽先判断当前delivery_cycle/schedule_version；基线过期409 ASSESSMENT_BASELINE_MISMATCH，基线有效但引用失效409 RELEASE_APPROVAL_REQUIRED。批准引用匹配时继续原domain守卫顺序；不前移覆盖原state/role/代码评审，不改变missing/跨任务评估、其它action或已COMPLETE同键重放。待新freeze后另实施。"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/transitions",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/transitions",
+        "post",
+        "x-error-cases",
+        13,
+        "condition"
+      ],
+      "before": "经理交付时缺本轮有效代码评审或上线风险/回滚预案批准。",
+      "after": "保留原发布批准/预案门禁。D008仅在action7原批准引用不匹配失败槽：已解析评估delivery_cycle及schedule_version相对当前任务均有效，才返回本码；双失效先ASSESSMENT_BASELINE_MISMATCH。不扩大其它domain守卫的全局顺序。"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/transitions",
+        "post",
+        "x-error-cases",
+        14,
+        "condition"
+      ],
+      "before": "引用评估的版本、当前schedule_version或delivery_cycle与任务不一致。",
+      "after": "保留action7请求assessment_version与该评估自身version不符的原前置检查。D008：已归属的评估delivery_cycle或schedule_version过期且原批准引用失效时，在原批准失败槽优先返回本码；引用匹配则沿原domain次序，missing/跨任务评估和其它action不被覆盖。"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/review-template",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/reviews",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/reviews",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/release-assessments",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/release-assessments",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/tasks/{task_id}/decisions",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/contract-validations",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/escalation-rules",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/escalations",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/me/notifications",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/notifications/{notification_id}/read",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/notifications/{notification_id}/handling",
+        "post",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "paths",
+        "/projects/{project_id}/audit-events",
+        "get",
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    },
+    {
+      "path": [
+        "components",
+        "schemas",
+        "Meta",
+        "properties",
+        "contract_version",
+        "const"
+      ],
+      "before": "1.1.0",
+      "after": "1.2.0"
+    },
+    {
+      "path": [
+        "x-contract-status"
+      ],
+      "before": "frozen-v1.1",
+      "after": "draft-v1.2-pending-freeze"
+    }
+  ],
+  "allowed_changes_only": true,
+  "status_annotations": 39,
+  "info_fields": 2,
+  "success_Meta_const_changes": 1,
+  "transition_description_and_two_error_conditions": 3,
+  "path_operation_schema_counts": [
+    31,
+    38,
+    130
+  ],
+  "error_enum_stable": true,
+  "schema_structures_equal_except_Meta_const": true,
+  "request_response_shapes_unchanged": true,
+  "candidate_schema_const": "1.0.0",
+  "two_OpenAPI_bytes_equal": true,
+  "old_1_1_doc_history_exact_suffix": true,
+  "files": {
+    "specs/backend-design.md": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+    "specs/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "specs/contracts/README.md": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+    "backend/t44/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+  },
+  "new_freeze_not_created": true,
+  "suite_SUT_CI_run": false
+}

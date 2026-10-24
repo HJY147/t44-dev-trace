@@ -1,0 +1,25 @@
+{
+  "no_implicit_run_or_overwrite": true,
+  "original_output_sha256": "cca7d12fc1a96dd294911c9c4f0aba0d913a95109e78e931d5a1e88df304aef4",
+  "cases": [
+    {
+      "arguments": [
+        "--output",
+        "agents/database/perf-public-c/gate-must-not-exist.json"
+      ],
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "usage: 838_database_public_diagnostics.py [-h] [--run] --output OUTPUT\n838_database_public_diagnostics.py: error: Explicit --run required; offline SQLite only\n"
+    },
+    {
+      "arguments": [
+        "--run",
+        "--output",
+        "agents/database/perf-public-c/offline-run1.json"
+      ],
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "usage: 838_database_public_diagnostics.py [-h] [--run] --output OUTPUT\n838_database_public_diagnostics.py: error: Output must not exist; retain previous results\n"
+    }
+  ]
+}

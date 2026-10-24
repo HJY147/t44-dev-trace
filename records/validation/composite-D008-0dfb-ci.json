@@ -1,0 +1,383 @@
+{
+  "at_utc": "2026-10-24T04:13:52.423543+00:00",
+  "archive_operator": "backend AI; hosted execution byGitHub Actions,notstudentmanualoperation",
+  "source": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "spec_freeze": "d5307551d6b467f84e8254abd0245cdf22bc0a70",
+  "PR": 43,
+  "source_head_fixed": true,
+  "evidence_branch": "codex/backend-d008-implementation-evidence",
+  "runs": {
+    "40060857352": {
+      "event": "push",
+      "head_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40060857352",
+      "created_at": "2026-10-24T04:03:59Z",
+      "updated_at": "2026-10-24T04:08:43Z"
+    },
+    "40060980119": {
+      "event": "pull_request",
+      "head_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40060980119",
+      "created_at": "2026-10-24T04:05:47Z",
+      "updated_at": "2026-10-24T04:08:49Z"
+    }
+  },
+  "primary_jobs": {
+    "40060857352": [
+      {
+        "id": 120773829266,
+        "name": "coverage",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120773829510,
+        "name": "static",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120773829526,
+        "name": "contracts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120773829611,
+        "name": "frontend",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "40060980119": [
+      {
+        "id": 120774207343,
+        "name": "docker-application",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "backend": {
+    "junit": {
+      "tests": 522,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "856_cases": 11
+    },
+    "markers_overlap_full": {
+      "contract": {
+        "tests": 174,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "856_cases": 11
+      },
+      "integration": {
+        "tests": 93,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "856_cases": 0
+      },
+      "fault": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "856_cases": 0
+      }
+    },
+    "files": 44,
+    "exact_production_Git_set": true,
+    "excluded_lines": 0,
+    "line": [
+      2638,
+      2957
+    ],
+    "line_percent": 89.21203922894826,
+    "branch": [
+      659,
+      824
+    ],
+    "branch_percent": 79.97572815533981,
+    "raw_combined_percent_not_line_percent": 87.1991536630521,
+    "no_old_C_counts_borrowed": true
+  },
+  "frontend": {
+    "tests": 89,
+    "passed": 89,
+    "failed": 0,
+    "pending": 0,
+    "files": 20,
+    "exact_TS_Vue_Git_set": true,
+    "scope": "TS/Vue,notCSS/HTML/assets",
+    "coverage": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    }
+  },
+  "static": {
+    "missing": [],
+    "commands": [
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "scripts/ci/validate_config.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "pytest",
+          "-c",
+          "backend/pyproject.toml",
+          "tmp/deployment/997_ops.py",
+          "tmp/deployment/971_credentials.py",
+          "tmp/ci/996_gates.py",
+          "-q"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "deployment",
+          "scripts/ci",
+          "tmp/deployment",
+          "tmp/ci"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "backend/t44",
+          "tmp/backend"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "bandit",
+          "-r",
+          "backend/t44",
+          "-f",
+          "json",
+          "-o",
+          "/home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json"
+        ],
+        "exit_code": 0
+      }
+    ]
+  },
+  "docker": {
+    "API_head_is_not_actual_checkout": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "actual_checkout": "f8c04285533ebbbdd1b0e3d4f5a95e43e19bb6d7",
+    "parents": [
+      "3fa88293dd9ff51a86fe1c054fdf5318b318c3d3",
+      "0dfb55c2191200d947c5423fd9ee74bb0812cc5a"
+    ],
+    "actual_checkout_proof": "records/ci/40060980119/checkout-source-proof.json",
+    "runtime_byte_proof": "records/ci/40060980119/candidate-merge-byte-equivalence.json",
+    "runtime_root_equal_files": 171,
+    "passed": true,
+    "api_processes": {
+      "api_parents": 1,
+      "workers": 4
+    },
+    "scanner": {
+      "created": 16,
+      "completed": 2
+    },
+    "restored_tables": 19,
+    "restoration": {
+      "source": {
+        "counts": {
+          "tasks": 40,
+          "users": 3,
+          "reviews": 56,
+          "projects": 2,
+          "decisions": 24,
+          "scan_runs": 2,
+          "iterations": 2,
+          "audit_events": 40,
+          "auth_sessions": 3,
+          "notifications": 26,
+          "outbox_events": 16,
+          "project_members": 6,
+          "schedule_changes": 0,
+          "service_accounts": 1,
+          "escalation_events": 16,
+          "task_dependencies": 30,
+          "release_assessments": 24,
+          "idempotency_requests": 32,
+          "t44_schema_migrations": 1
+        },
+        "checksums": {
+          "audit_events": 315548112,
+          "auth_sessions": 1287412991,
+          "decisions": 4091856576,
+          "escalation_events": 432656645,
+          "idempotency_requests": 3653480173,
+          "iterations": 2486197981,
+          "notifications": 2634454393,
+          "outbox_events": 4107089739,
+          "project_members": 3566248650,
+          "projects": 2019014770,
+          "release_assessments": 3719299255,
+          "reviews": 2358955901,
+          "scan_runs": 42429696,
+          "schedule_changes": 0,
+          "service_accounts": 3969235362,
+          "t44_schema_migrations": 790161982,
+          "task_dependencies": 2608313219,
+          "tasks": 1332324058,
+          "users": 2330435661
+        }
+      },
+      "recovered": {
+        "counts": {
+          "tasks": 40,
+          "users": 3,
+          "reviews": 56,
+          "projects": 2,
+          "decisions": 24,
+          "scan_runs": 2,
+          "iterations": 2,
+          "audit_events": 40,
+          "auth_sessions": 3,
+          "notifications": 26,
+          "outbox_events": 16,
+          "project_members": 6,
+          "schedule_changes": 0,
+          "service_accounts": 1,
+          "escalation_events": 16,
+          "task_dependencies": 30,
+          "release_assessments": 24,
+          "idempotency_requests": 32,
+          "t44_schema_migrations": 1
+        },
+        "checksums": {
+          "audit_events": 315548112,
+          "auth_sessions": 1287412991,
+          "decisions": 4091856576,
+          "escalation_events": 432656645,
+          "idempotency_requests": 3653480173,
+          "iterations": 2486197981,
+          "notifications": 2634454393,
+          "outbox_events": 4107089739,
+          "project_members": 3566248650,
+          "projects": 2019014770,
+          "release_assessments": 3719299255,
+          "reviews": 2358955901,
+          "scan_runs": 42429696,
+          "schedule_changes": 0,
+          "service_accounts": 3969235362,
+          "t44_schema_migrations": 790161982,
+          "task_dependencies": 2608313219,
+          "tasks": 1332324058,
+          "users": 2330435661
+        }
+      },
+      "matched": true
+    },
+    "schema": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "expected_nonzero": [
+      {
+        "name": "shared-flock-rejects-second-scanner",
+        "exit_code": 1
+      }
+    ],
+    "redacted_secret_occurrences": 0,
+    "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load"
+  },
+  "source_count": {
+    "actual_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "application_code": 6310,
+    "prior": 6307,
+    "delta": 3,
+    "range_pass": false,
+    "require_range_exit": 1,
+    "cloc_version": "cloc 2.10",
+    "cloc_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+    "raw": "agents/backend/release-error-priority-implementation/source-count.json"
+  },
+  "raw_archive": {
+    "official_ZIPs": 5,
+    "official_digest_verified_before_read": true,
+    "selected_originals": [
+      18,
+      33
+    ],
+    "all_raw_gzip_hash_and_roundtrip_verified": true,
+    "raw_ZIPs_private_not_committed": true,
+    "checkout_excerpt_is_separate_joblog_not_artifactdigest": true
+  },
+  "local_targets": "856samebytes3fail8pass->11pass;4oldadjacentpass;controlledfixtureslabelled;notfullCIcounts",
+  "scope": "newexactsource developer hostedCI; noCIrerun/localexternalDB/server/load;no independent material read",
+  "decision": "exactdeveloperCI522 and Docker verified; root reports development integration, scoped final admission after E verification; sourcebudget stillfailed, noformalperformance/independentacceptance/mainmerge",
+  "root_reported_development_integration": {
+    "commit": "da2d3084696b8458004f554e75ddca722f88bf5a",
+    "operator": "root AI,notbackend or student",
+    "main_changed": false,
+    "source": "explicit root message after its byteproof; this archive does not re-execute integration"
+  }
+}

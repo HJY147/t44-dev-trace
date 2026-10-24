@@ -1,0 +1,334 @@
+{
+  "source": "ead155e6204de9004bc968e9b9648358cfed75f8",
+  "archive_operator": "backend AI; actual test executor GitHub Actions; no student manual run asserted",
+  "run": {
+    "id": 40088982094,
+    "event": "push",
+    "head_sha": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40088982094",
+    "created_at": "2026-10-24T11:12:43Z",
+    "updated_at": "2026-10-24T11:18:38Z"
+  },
+  "jobs": [
+    {
+      "id": 120857578995,
+      "name": "frontend",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120857579219,
+      "name": "coverage",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120857579266,
+      "name": "static",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120857579310,
+      "name": "contracts",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "backend": {
+    "junit": {
+      "full": {
+        "tests": 562,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "ledger_cases": [
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]",
+            "passed": true
+          }
+        ]
+      },
+      "contract": {
+        "tests": 179,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "ledger_cases": [
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]",
+            "passed": true
+          }
+        ]
+      },
+      "integration": {
+        "tests": 93,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "ledger_cases": [
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+            "passed": true
+          },
+          {
+            "name": "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]",
+            "passed": true
+          }
+        ]
+      },
+      "fault": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "ledger_cases": []
+      }
+    },
+    "markers_overlap_full": true,
+    "all_production_python_files": 44,
+    "exact_git_file_set": true,
+    "excluded_lines": 0,
+    "line": [
+      2641,
+      2960
+    ],
+    "line_percent": 89.22297297297297,
+    "branch": [
+      663,
+      828
+    ],
+    "branch_percent": 80.07246376811594,
+    "combined_raw_percent_not_line": 87.22280887011615
+  },
+  "frontend": {
+    "tests": {
+      "numTotalTests": 89,
+      "numPassedTests": 89,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "files": 20,
+    "exact_ts_vue_git_file_set": true,
+    "coverage": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "scope": "TS/Vue, not CSS/HTML/assets"
+  },
+  "static": {
+    "missing": [],
+    "commands": [
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "scripts/ci/validate_config.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "pytest",
+          "-c",
+          "backend/pyproject.toml",
+          "tmp/deployment/997_ops.py",
+          "tmp/deployment/971_credentials.py",
+          "tmp/ci/996_gates.py",
+          "-q"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "deployment",
+          "scripts/ci",
+          "tmp/deployment",
+          "tmp/ci"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "backend/t44",
+          "tmp/backend"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "bandit",
+          "-r",
+          "backend/t44",
+          "-f",
+          "json",
+          "-o",
+          "/home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json"
+        ],
+        "exit_code": 0
+      }
+    ]
+  },
+  "raw_archive": {
+    "path": "records/ci/40088982094",
+    "official_zip_count": 4,
+    "all_official_digests_verified_before_open": true,
+    "selected_raw_members": 18,
+    "all_selected_gzip_roundtrip": true,
+    "job_logs": "records/ci/40088982094/job-log-manifest.json"
+  },
+  "prior_failure_retained": {
+    "run": 40087756354,
+    "source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "failed_jobs": [
+      120854051910,
+      120854052090
+    ],
+    "actual_failure": "old exact SELECT expectations 22/24 vs planned actual20/22",
+    "raw_manifest": "agents/backend/performance-repair-839-ci-fix/raw-manifest.json",
+    "no_rerun": true
+  },
+  "test_only_delta_proof": "agents/backend/performance-repair-839-ci-fix/test-only-proof.json",
+  "docker": {
+    "new_source": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "prior_docker_run": {
+      "id": 40087993372,
+      "event": "pull_request",
+      "api_head_sha": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40087993372"
+    },
+    "new_ead_docker_run": false,
+    "git_object_source_comparison": {
+      "left": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "right": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "equal_roots": [
+        "backend",
+        "frontend",
+        "deployment",
+        "scripts",
+        ".github",
+        "compose.yaml",
+        "specs/contracts",
+        "specs/database",
+        "AGENTS.md"
+      ],
+      "diff_exit": 0
+    },
+    "new_nginx_candidate_in_this_source": false,
+    "limitations": [
+      "GitHub PR API head is source identity, not by itself actual checkout proof",
+      "No new Docker run on ead; old run is not renamed or transplanted",
+      "This pass archives no new Docker artifact/actual PR merge-checkout proof; product CI is the exact ead run",
+      "No cloud runtime, independent acceptance or performance result implied"
+    ]
+  },
+  "size": {
+    "measured_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "application_byte_equal": true,
+    "cloc_application": 6316,
+    "range_pass": false,
+    "excess": 1216,
+    "new_cloc_not_run": true
+  },
+  "not_proven": [
+    "formal270ms/600s/zero-error performance",
+    "public839 502 root cause fixed",
+    "independent acceptance",
+    "code-size compliance",
+    "new Nginx candidate validation",
+    "new ead Docker run",
+    "cloud C changed"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scope": "own environment-check;no independent harness/profile",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "environment_source_sha": "f0a20baab241e93d90bad85a9568c694caee2fea",
+  "result": "failure preserved:stop receipt true;pause actual unpause0 then up--wait1 unhealthy;per-call and final false;MQ metadata/topology verified",
+  "raw_files": {
+    "tester-output.cms": {
+      "sha256": "2195a56c3914e9c7ebb345865a5539a3352ab990a6a292a3c00913124afb2caa",
+      "bytes": 11573
+    },
+    "control-events.jsonl": {
+      "sha256": "a7bba407548abd27ead6332a107b2c23b9cdc7121d29057e792e5828009e3b61",
+      "bytes": 4503
+    },
+    "encrypted-archive.json": {
+      "sha256": "c399926edd9047656fcbd5dcb74b9f049066e97e140ebf283fc5eb3c1c11cbcc",
+      "bytes": 599
+    },
+    "execution.json": {
+      "sha256": "a780c5746ab2cc453feddb2d0ea208a46becf8e2761e10131156e46c3f6f3784",
+      "bytes": 7844
+    },
+    "environment-diagnostics.log.gz": {
+      "sha256": "d55348c08562cef59fc2869ac199a895a4afa7cb4cb6cce5203b15f896a77345",
+      "bytes": 10612
+    },
+    "actions-console.log": {
+      "sha256": "0ca327d72269847a4885fa9d93064e69e952cb6ad806248cd8d67912667b68ad",
+      "bytes": 108212
+    }
+  },
+  "transformation": "artifact bytes unchanged;console raw gzip+SHA;readable trailing whitespace/EOF normalized"
+}

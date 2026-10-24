@@ -1,0 +1,29 @@
+{
+  "source_implementation": "427b097",
+  "raw_stdout_sha256": "45926e1e4305b4944de5abddc617b105fea46591e43a5e5408c500ba3149cfb5",
+  "historical_red": {
+    "error_type": "ValueError",
+    "stable_error": "peer_host_list_passed_to_ipaddress",
+    "frames": [
+      [
+        "<module>",
+        14
+      ],
+      [
+        "pika_connections",
+        8
+      ],
+      [
+        "ip_address",
+        54
+      ]
+    ]
+  },
+  "corrected_green_products": [
+    "Pika Python Client Library",
+    "Pika Python Client Library"
+  ],
+  "corrected_count": 2,
+  "same_raw_json": true,
+  "network_or_services_started": false
+}

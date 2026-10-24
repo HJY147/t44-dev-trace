@@ -1,0 +1,13 @@
+{
+  "role": "fixed AI reviewer",
+  "prompt_ref": "ROLE-reviewer-DATABASE-OUTPUT-GUARD-v1",
+  "target_E": "6fa21f473f78484fa3a7103abf42eab166bbb4c9",
+  "target_source": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+  "prior_rejection": "8a767b63b08975cef5a3d7d837c904abdce120f6",
+  "finding": "OUTPUT-EXCLUSIVE-01",
+  "implementation_modified_by_reviewer": false,
+  "planned_checks": ["exact source diff and AST", "named public receipt SHA", "published narrow regression counts", "old evidence preservation"],
+  "excluded": ["product execution", "DB/SQL/HTTP/load", "19-recipe matrix rerun", "independent private files or communication", "performance attribution", "backend CI scope"],
+  "new_test_file_reservation": "tmp/835_review_database_output_guard only if necessary; currently unused",
+  "scope_note": "Root dispatch defined scope before reads; this checkpoint follows initial rule/source/public receipt reading and precedes evidence calculation."
+}

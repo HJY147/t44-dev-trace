@@ -1,0 +1,94 @@
+{
+  "verified_at": "2026-10-23T18:20:44.434720+00:00",
+  "product_head": "6ba9f94ad23ac96380269aaefa8726f8b535b450",
+  "application_equivalent_to": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "workflow_run": 39999929187,
+  "conclusion": "success",
+  "checkout_commit": "9c2a379b7f54813c5d440d65f8191dce2b5dd2df",
+  "checkout_tree": "5cc079036924a886a9a00fb61e9a8ab6843d90f5",
+  "head_tree": "5cc079036924a886a9a00fb61e9a8ab6843d90f5",
+  "backend": {
+    "tests": 412,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "production_file_set_exact": true,
+    "production_files": 43,
+    "coverage_totals": {
+      "covered_lines": 2550,
+      "num_statements": 2872,
+      "percent_covered": 86.65021929824562,
+      "percent_covered_display": "86.65",
+      "missing_lines": 322,
+      "excluded_lines": 0,
+      "percent_statements_covered": 88.7883008356546,
+      "percent_statements_covered_display": "88.79",
+      "num_branches": 776,
+      "num_partial_branches": 107,
+      "covered_branches": 611,
+      "missing_branches": 165,
+      "percent_branches_covered": 78.73711340206185,
+      "percent_branches_covered_display": "78.74"
+    }
+  },
+  "frontend": {
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "pending": 0,
+    "production_files": 19,
+    "coverage": {
+      "lines": {
+        "total": 334,
+        "covered": 310,
+        "skipped": 0,
+        "pct": 92.81
+      },
+      "statements": {
+        "total": 611,
+        "covered": 544,
+        "skipped": 0,
+        "pct": 89.03
+      },
+      "functions": {
+        "total": 222,
+        "covered": 188,
+        "skipped": 0,
+        "pct": 84.68
+      },
+      "branches": {
+        "total": 782,
+        "covered": 688,
+        "skipped": 0,
+        "pct": 87.97
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    }
+  },
+  "docker": {
+    "run": 39999920326,
+    "source": "6ba9f94ad23ac96380269aaefa8726f8b535b450",
+    "passed": true,
+    "workers": 4,
+    "dataset": {
+      "projects": 2,
+      "tasks": 40
+    },
+    "restore_table_count": 19,
+    "counts_and_checksums_match": true,
+    "raw_result_archive": "records/ci/39999920326/result.json.gz",
+    "raw_result_sha256": "01ed9cc28103b232ba68a7540a98bc121513c5de8270072a4c3c307e162b1d42",
+    "expected_nonzero_step": "shared-flock-rejects-second-scanner exit1 is intentional rejection, not all steps exit0"
+  },
+  "limits": [
+    "Developer CI and hosted synthetic restore only; not independent final acceptance or formal performance",
+    "Contracts114/integration70/fault11 overlap all412 and are not added to it",
+    "Source6051 exceeds5100; existing metric policy unchanged",
+    "No reviewer/stage global approval or main merge"
+  ]
+}

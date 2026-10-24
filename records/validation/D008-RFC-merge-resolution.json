@@ -1,0 +1,15 @@
+{
+  "actor": "coordinator AI",
+  "type": "three documentation conflicts only",
+  "sources": [
+    "056d1d7694b6da7b65dad3b18b81c8a4820b2ec6",
+    "d328986fc6fd985a67c2340f87adbf5afc3047f5"
+  ],
+  "resolution": "Preserved both append sections in WORKLOG/module. JSON common fields equal except stage; latest stage RFC selected with previous859 stage retained in prior_stage_before_D008 and full859 structured field preserved.",
+  "paths": [
+    "agents/backend/WORKLOG.md",
+    "reports/modules/backend.md",
+    "records/handoffs/backend.json"
+  ],
+  "tooling_error": "Initial helper asserted all common JSON fields equal, correctly stopped at stage. Subsequent stage/commit commands failed due unresolved state; one no-change push succeeded. No application/test/old history lost; resolved explicitly before finishing merge."
+}

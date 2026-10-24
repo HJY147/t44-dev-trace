@@ -1,0 +1,19 @@
+F401 [*] `shutil` imported but unused
+  --> deployment/native/application.py:10:8
+   |
+ 8 | import os
+ 9 | import re
+10 | import shutil
+   |        ^^^^^^
+11 | import signal
+12 | import socket
+   |
+help: Remove unused import: `shutil`
+   |
+9  | import re
+   - import shutil
+10 | import signal
+   |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.

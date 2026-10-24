@@ -1,0 +1,30 @@
+{
+  "prepared_at": "2026-10-23T19:28:24.780220+00:00",
+  "status": "corrected proposal not yet applied; current runtime remains original admittedA uncommitted draft",
+  "original_rfc_error": "Missed real scanner.authorize caller and old direct claim test; reviewer/coordinator also missed, AI not student discovery",
+  "source_of_callers": [
+    "backend/t44/scheduling/scanner.py:61",
+    "tmp/backend/persistence/988_mysql.py:258"
+  ],
+  "root_correction_record": "816ba60",
+  "patch": "agents/backend/runtime-plan-preflight-corrected-not-applied.patch",
+  "patch_sha256": "ed2379d8d42b3ad579ab421327c4bc73e5653dca0425ef2e2950b53bab9b83c0",
+  "budget": {
+    "original": {
+      "physical": 289,
+      "cloc_code": 270,
+      "sha256": "73fa26b60ac9cf78fe8398afac49dc30f85091b393627d6f2fadd720a4a2ac58"
+    },
+    "corrected_proposal": {
+      "physical": 297,
+      "cloc_code": 276,
+      "sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48"
+    }
+  },
+  "physical_delta": 8,
+  "cloc_delta": 6,
+  "preserved": "original authorize(call), thin claim(call) -> own UoW -> private _claim(g,call); prepare -> same _claim in merged UoW, no nested claim transaction",
+  "no_cross_owner_edit": true,
+  "caller_regression": "preflight-caller-before.log/xml,2actualAttributeError failures",
+  "original_targeted": "preflight-after.log/xml,25passed,notwholeintegration"
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "mode": "environment-check",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "request_revision": 2,
+  "harness_ref": null,
+  "harness_path": null,
+  "workflow_sha": "68b3bb2c532db8b14ddc57e0a219657ec026cad0",
+  "steps": [
+    {
+      "name": "image-build",
+      "completed": true
+    },
+    {
+      "name": "mysql-rabbitmq",
+      "completed": true
+    },
+    {
+      "name": "explicit-migration",
+      "completed": true
+    },
+    {
+      "name": "bootstrap-account",
+      "completed": true
+    },
+    {
+      "name": "http-entry",
+      "completed": true
+    },
+    {
+      "name": "bootstrap-project",
+      "completed": true
+    },
+    {
+      "name": "private-scanner-credential",
+      "completed": true
+    },
+    {
+      "name": "independent-workers",
+      "completed": true
+    },
+    {
+      "name": "read-only-audit-principal",
+      "completed": true
+    },
+    {
+      "name": "initial-client-mysql",
+      "completed": false,
+      "exception_type": "pymysql.err.OperationalError",
+      "numeric_error_code": 2003
+    },
+    {
+      "name": "repaired-readonly-database-client",
+      "completed": true
+    },
+    {
+      "name": "repaired-amqp-client",
+      "completed": true
+    },
+    {
+      "name": "loopback-client-readiness",
+      "completed": true
+    },
+    {
+      "name": "readonly-select-connectivity",
+      "completed": true
+    },
+    {
+      "name": "rabbitmq-audit-connectivity",
+      "completed": true
+    },
+    {
+      "name": "limited-service-credential",
+      "completed": true
+    },
+    {
+      "name": "reversible-control",
+      "completed": true
+    },
+    {
+      "name": "control-recovery",
+      "completed": true
+    },
+    {
+      "name": "recovered-readonly-database-client",
+      "completed": true
+    },
+    {
+      "name": "recovered-amqp-client",
+      "completed": true
+    }
+  ],
+  "environment_ready": true,
+  "harness_started": false,
+  "harness_exit_code": null,
+  "recovery_completed": true,
+  "meaning": "Environment capability/execution metadata; not an independent acceptance conclusion.",
+  "client_diagnostics": [
+    {
+      "component": "mysql",
+      "exception_type": "pymysql.err.OperationalError",
+      "numeric_error_code": 2003,
+      "tcp_listener_reachable": false,
+      "tcp_errno": 111,
+      "actual_port_bindings": {},
+      "networks_internal": {
+        "t44-acceptance-39961035953_data": true
+      }
+    }
+  ],
+  "client_bridge_repair": "test-only bridge added after observed unreachable internal-only listener",
+  "service_credential_capability": {
+    "session_id": 3,
+    "project_count": 1,
+    "scopes": [
+      "escalation:write"
+    ],
+    "ttl_seconds": 300,
+    "mode": "0o600",
+    "verification": "actual CLI issuance and SELECT of session scope/expiry metadata; no business case invoked"
+  },
+  "environment_capability_check_completed": true
+}

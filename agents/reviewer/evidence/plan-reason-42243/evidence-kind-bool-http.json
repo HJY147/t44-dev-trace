@@ -1,0 +1,50 @@
+{
+  "target": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
+  "operator": "AI reviewer; not independent acceptance or student manual edit",
+  "environment": "Existing public986/conftest in-memory SQLite fixture, realHTTPTestClient and realRowsGateway; no gateway/matcher mock; no MySQL/externalservice",
+  "controlled_fixture": "Legacy audit evidence.kind integer1 and schedule JSON evidence.kind booleantrue; allother linkage fields unchanged from original successful API write fixture; rawJSON columns accept this historical inconsistency",
+  "http_status": 200,
+  "audit_evidence": [
+    {
+      "kind": 1,
+      "locator": "https://example.test/repo",
+      "revision": "fixed",
+      "description": "Same visible evidence except JSON type"
+    }
+  ],
+  "schedule_evidence": [
+    {
+      "kind": true,
+      "locator": "https://example.test/repo",
+      "revision": "fixed",
+      "description": "Same visible evidence except JSON type"
+    }
+  ],
+  "audit_evidence_contract_violations": [],
+  "schedule_evidence_contract_violations": [
+    {
+      "path": "/0/kind",
+      "rule": "type",
+      "message": "Does not satisfy type"
+    },
+    {
+      "path": "/0/kind",
+      "rule": "enum",
+      "message": "Does not satisfy enum"
+    }
+  ],
+  "python_structural_equality": true,
+  "expected_projected_reasons": [],
+  "actual_projected_reasons": [
+    {
+      "field": "reason",
+      "value": "2026-10-24\nchangeTaskPlan <literal> historical reason"
+    }
+  ],
+  "original_schedule_reason": "2026-10-24\nchangeTaskPlan <literal> historical reason",
+  "projected_value_equals_schedule_reason": true,
+  "audit_and_schedule_immutable_after_GET": true,
+  "response_contract_violations": [],
+  "fixture_only_no_product_or_original_tests_modified": true,
+  "test_files_created": []
+}

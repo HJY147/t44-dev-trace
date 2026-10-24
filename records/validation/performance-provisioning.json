@@ -1,0 +1,64 @@
+{
+  "database": "t44_perf",
+  "commands": [
+    {
+      "arguments": [
+        "migrate",
+        "--database",
+        "t44_perf"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"version\": 1, \"sha256\": \"c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4\", \"already_applied\": false, \"tables\": 18, \"columns\": 226, \"defects\": [], \"passed\": true}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-manager",
+        "--display-name",
+        "压测合成_manager",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 1}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-developer",
+        "--display-name",
+        "压测合成_developer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 2}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "synthetic-reviewer",
+        "--display-name",
+        "压测合成_reviewer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 3}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "seed-demo"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"already_seeded\": false, \"projects\": 40, \"tasks\": 6000, \"dependencies\": 9000, \"reviews\": 11400, \"decisions\": 3600, \"assessments\": 3600, \"states\": {\"6\": 2400, \"1\": 600, \"2\": 600, \"3\": 600, \"4\": 600, \"5\": 600, \"7\": 600}, \"manifest\": {\"version\": 1, \"seed\": 44, \"anchor_at\": \"2026-10-23T09:29:01+00:00\", \"projects\": 40, \"tasks\": 6000, \"dependencies\": 9000, \"records\": 15000, \"template_version\": 1, \"template_sha256\": \"4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199\", \"rule_version\": 1, \"rule_effective_at\": \"2026-10-23T05:33:29Z\", \"rule_decided_by\": 1, \"rules_sha256\": \"63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41\", \"artifact_revision\": \"a83fe2806a68ec8dc938748d623bf28c9a16b293\", \"synthetic\": true}, \"manifest_sha256\": \"a81ebeab6d12d5d04f4d4c8586941840e300a8d607f9b2df4e83ed180ed44d44\"}\n",
+      "stderr": ""
+    }
+  ],
+  "synthetic_data": true,
+  "benchmark_executed": false
+}

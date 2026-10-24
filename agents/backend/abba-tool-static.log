@@ -1,0 +1,23 @@
+Preparation only, recorded 2026-10-23 UTC.
+
+Offline inline Python helper checks: exit0,11checks passed.
+- No t44 module import or network/application startup.
+- Export A/B Git blobs and compare manifests; only runtime.py differs.
+- Accept synthetic source/namespace paths; reject changed bytes and other tree.
+- Missing --execute returns2 before creating output.
+- Neutral designated inputs mode0600 and t44_profile selection verified; values withheld.
+Full structured result: abba-tool-static.json.
+
+Initial implicit Ruff invocation: exit1,4 lint findings and format difference.
+Raw output preserved: abba-tool-ruff-initial.log / abba-tool-format-initial.log.
+This invocation used external/default configuration because tmp is outside backend/.
+No source or lint setting was changed to mask it.
+
+Explicit project configuration, matching backend's established rules:
+.venv/bin/ruff check --config backend/pyproject.toml tmp/backend/930_contract_abba.py
+exit0: All checks passed!
+.venv/bin/ruff format --config backend/pyproject.toml --check tmp/backend/930_contract_abba.py
+exit0:1 file already formatted.
+
+Not run: application imports, HTTP, SQL, pytest, build, bootstrap, load,
+real process lifecycle/deadline/cleanup validation. No performance result.

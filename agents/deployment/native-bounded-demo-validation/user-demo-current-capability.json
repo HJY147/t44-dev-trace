@@ -1,0 +1,100 @@
+{
+  "at_utc": "2026-10-23T23:55:13.260442+00:00",
+  "run": "app_20261023_234943_3f9bad",
+  "phase": "serving",
+  "in_progress": true,
+  "duration_seconds": 14400,
+  "started_at_utc": "2026-10-23T23:49:43.904838+00:00",
+  "deadline_at_utc": "2026-10-24T03:49:43.904838+00:00",
+  "deadline_beijing": "2026-10-24T11:49:43.904838+08:00",
+  "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "controller_implementation": "62ac2f327e7523ffed69a2bd9f98c87ba2372931",
+  "controller_sha256": "08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25",
+  "runtime_sha256": "a251989f589943bf513fa506015a7bba356fbb167a525a7fd79a29306689fa6b",
+  "source_files_verified": 92,
+  "source_hash_mismatches": 0,
+  "ui_url": "http://127.0.0.1:5178",
+  "api_url": "http://127.0.0.1:18088",
+  "capability_ready": true,
+  "first_actual_scan_interval_seconds": 60.319299,
+  "wait_scans_verified_count": 4,
+  "db_total_completed_during_longdemo": "not separately queried;wait_scans count is only verified subset",
+  "additional_rotations": 1,
+  "first_extra_rotation_completed_at_utc": "2026-10-23T23:53:55.380033+00:00",
+  "spawn_counts": {
+    "scanner": 3,
+    "ui": 1,
+    "api": 1,
+    "consumer": 1
+  },
+  "last_controller_api_worker_count": 4,
+  "last_controller_api_worker_observation_utc": "2026-10-23T23:55:02.394796+00:00",
+  "own_roles_alive": {
+    "api": true,
+    "consumer": true,
+    "scanner": true,
+    "ui": true
+  },
+  "issued_service_credentials_count": 3,
+  "issued_service_ttl_seconds": [
+    300,
+    300,
+    300
+  ],
+  "issued_service_project_scope_counts": [
+    2,
+    2,
+    2
+  ],
+  "issued_service_scopes": [
+    [
+      "escalation:write"
+    ],
+    [
+      "escalation:write"
+    ],
+    [
+      "escalation:write"
+    ]
+  ],
+  "retired_service_revocations_confirmed_count": 3,
+  "current_service_final_revocation": "pending until end",
+  "ready_login_reclaimed": true,
+  "historical_confirmed_event_count": 16,
+  "historical_notification_count": 26,
+  "historical_message_origin": "app_20261023_212055_35aa09",
+  "new_publish_by_this_userdemo_claimed": false,
+  "longdemo_new_outbox_count": "not separately queried;no newpublish claim",
+  "protected9_exact_beforeprepare_beforserve_ready": {
+    "5173": true,
+    "18080": true,
+    "5175": true,
+    "18084": true,
+    "5176": true,
+    "18089": true,
+    "13306": true,
+    "5177": true,
+    "18086": true
+  },
+  "protected_scope": "three observations at startonly;finalwait/post comparison pending;not continuous monitoring",
+  "protected_snapshot_sha256": {
+    "before-prepare": "9ba434202ac73ed8d0999a10adf6ed7cc3a9427b4d992c5ef3bd93e49d4a91c0",
+    "before-serve": "75e769617921aef3e8202bf32eb47d08ab6f7c7fab6fa6a6d45da0d04b37b439",
+    "at-ready": "cf88b0d4587d096c55c5a2446c3afeff720a0ae1ca4ffd88319ae90333abfe20"
+  },
+  "detached_driver_alive": true,
+  "controller_runner_alive": true,
+  "actual_runner_exit_code": null,
+  "cleanup_success": null,
+  "final_external_wait_observed": false,
+  "completed_4h_claimed": false,
+  "final_driver_wait_and_post_paths": {
+    "driver_receipt": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/serve-driver-receipt.json",
+    "proof": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/post-run-proof.json",
+    "post_receipt": ".agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023/post-receipt.json"
+  },
+  "private_guide_written_0600": true,
+  "old_failed360_preserved": true,
+  "successful_retest360_is_separate": true,
+  "independent_performance_cloud_claimed": false
+}

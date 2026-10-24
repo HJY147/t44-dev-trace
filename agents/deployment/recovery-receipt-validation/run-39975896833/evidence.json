@@ -1,0 +1,33 @@
+{
+  "scope": "own environment-check only;no independent harness/profile",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "environment_source_sha": "d8f5fbe79d1a4e314fb5052f537f9c5fc07790da",
+  "result": "success;distinct stop/pause CLI receipts and final receipt true;MQ source hash and actual bindings verified",
+  "raw_files": {
+    "tester-output.cms": {
+      "sha256": "ac19dce4525244bbd127858a3b29e2b8b288abee2296a307e254c3e0191f06c9",
+      "bytes": 12760
+    },
+    "control-events.jsonl": {
+      "sha256": "f8a343600e76cb8d1ebbbebac397c04a86b6bbf38b9ac9db7437ba3cc12c5f90",
+      "bytes": 7392
+    },
+    "encrypted-archive.json": {
+      "sha256": "fa5ccf483757d94acb9a9c76fa004f5c35583f72c98ccac3df43c0989c8300f5",
+      "bytes": 599
+    },
+    "execution.json": {
+      "sha256": "dc930516915b1fe8b654b83a13d9084e3f27f6087e81c1fbf8a202f3803b2685",
+      "bytes": 12568
+    },
+    "environment-diagnostics.log.gz": {
+      "sha256": "fd4de0ab36902ee0fc0691d32551fe6fd52c7a5942470112cb7d60b17be8b0ec",
+      "bytes": 11848
+    },
+    "actions-console.log": {
+      "sha256": "54f194f50af0b7a68a5925d62608aaf08e365f04bf46df721fdaf2969ab3baf5",
+      "bytes": 108534
+    }
+  },
+  "transformation": "artifact bytes unchanged;console raw gzip+SHA;readable trailing whitespace/EOF normalized"
+}

@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 135 items / 110 deselected / 25 selected
+
+backend ...........{"case": "block", "SELECT_DML_control": [22, 5, 2], "uows": 2, "acquires": 2, "commits": 2, "database": "t44_test"}
+.{"case": "unblock", "SELECT_DML_control": [24, 5, 2], "uows": 2, "acquires": 2, "commits": 2, "database": "t44_test"}
+.{"case": "plan", "SELECT_DML_control": [20, 6, 2], "uows": 2, "acquires": 2, "commits": 2, "database": "t44_test"}
+.{"case": "escalation", "SELECT_DML_control": [26, 7, 6], "uows": 2, "acquires": 2, "commits": 2, "database": "t44_test"}
+.{"case": "replay", "SELECT_DML_control": [9, 0, 0], "uows": 1, "acquires": 1, "commits": 1, "database": "t44_test"}
+.{"revocation": "session", "pause": "validation", "isolation": ["READ COMMITTED"], "database": "t44_test", "session_writer_waited_for_S": false}
+.{"revocation": "membership", "pause": "validation", "isolation": ["READ COMMITTED"], "database": "t44_test", "session_writer_waited_for_S": false}
+.{"revocation": "session", "pause": "claim", "isolation": ["READ COMMITTED", "READ COMMITTED"], "database": "t44_test", "session_writer_waited_for_S": true}
+.{"revocation": "membership", "pause": "claim", "isolation": ["READ COMMITTED", "READ COMMITTED"], "database": "t44_test", "session_writer_waited_for_S": false}
+.{"lost_commit": "claim", "injection": "after real commit, not network fault", "database": "t44_test", "business_applications": 1}
+.{"lost_commit": "main", "injection": "after real commit, not network fault", "database": "t44_test", "business_applications": 1}
+....
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/preflight-after.xml -
+================ 25 passed, 110 deselected, 1 warning in 3.49s =================

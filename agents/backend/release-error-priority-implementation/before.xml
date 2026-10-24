@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="11" time="3.318" timestamp="2026-10-24T12:00:58.965055+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_replan_dual_failure_requires_new_assessment_then_independent_approval" time="0.353"><failure message="AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 17, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}&#10;assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'&#10;  &#10;  - ASSESSMENT_BASELINE_MISMATCH&#10;  + RELEASE_APPROVAL_REQUIRED">application = (&lt;starlette.testclient.TestClient object at 0x10555dd30&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1052f0980&gt;)
+
+    def test_replan_dual_failure_requires_new_assessment_then_independent_approval(application):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        approved = _approve(
+            client, tokens, pid, _assess(client, tokens, pid, _ready(client, tokens, pid, iid))
+        )
+        old = approved["assessment"]
+        task = _replan(client, tokens, pid, approved["task"])
+        assert task["approved_assessment_id"] is None
+        assert task["schedule_version"] != old["schedule_version"]
+&gt;       _reject(client, factory, tokens, pid, task, old, "ASSESSMENT_BASELINE_MISMATCH")
+
+tmp/backend/contracts/856_release_error_priority.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = &lt;starlette.testclient.TestClient object at 0x10555dd30&gt;
+factory = &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1052f0980&gt;
+tokens = {'manager': '[REDACTED_SYNTHETIC_SESSION]', 'developer': '[REDACTED_SYNTHETIC_SESSION]', 'reviewer': '[REDACTED_SYNTHETIC_SESSION]', 'outsider': '[REDACTED_SYNTHETIC_SESSION]'}
+pid = 1
+task = {'id': 1, 'project_id': 1, 'iteration_id': 1, 'title': 'Implement synthetic task', ...}
+assessment = {'id': 1, 'project_id': 1, 'task_id': 1, 'version': 2, ...}
+code = 'ASSESSMENT_BASELINE_MISMATCH', body = None, actor = 'manager'
+
+    def _reject(client, factory, tokens, pid, task, assessment, code, *, body=None, actor="manager"):
+        before, audit_before = _business(factory, pid), _audits(factory, pid)
+        response = _release(
+            client,
+            tokens,
+            pid,
+            task,
+            body or _release_body(task, assessment),
+            actor=actor,
+            expect=403 if code == "ACTION_FORBIDDEN" else 404 if code == "RESOURCE_NOT_FOUND" else 409,
+        )
+        payload = response.json()
+        assert _business(factory, pid) == before
+        audit_after = _audits(factory, pid)
+        assert len(audit_after) == len(audit_before) + 1
+        saved = next(row for row in audit_after if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == response.headers["X-Request-ID"]
+        if payload["code"] in {"RELEASE_APPROVAL_REQUIRED", "ASSESSMENT_BASELINE_MISMATCH"}:
+            # Stable persisted IDs23/24 are specified in the frozen field dictionary.
+            assert saved["reason_code"] == (
+                23 if payload["code"] == "RELEASE_APPROVAL_REQUIRED" else 24
+            )
+&gt;       assert payload["code"] == code, {
+            "actual_code": payload["code"],
+            "audit_id": payload["audit_id"],
+            "business_unchanged": True,
+            "one_independent_rejection_audit_verified": True,
+        }
+E       AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 17, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}
+E       assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'
+E         
+E         - ASSESSMENT_BASELINE_MISMATCH
+E         + RELEASE_APPROVAL_REQUIRED
+
+tmp/backend/contracts/856_release_error_priority.py:161: AssertionError</failure></testcase><testcase classname="" name="test_completed_approval_error_replays_original_values_after_schedule_changes" time="0.286"><failure message="AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 17, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}&#10;assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'&#10;  &#10;  - ASSESSMENT_BASELINE_MISMATCH&#10;  + RELEASE_APPROVAL_REQUIRED">application = (&lt;starlette.testclient.TestClient object at 0x105e67680&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x10542f9e0&gt;)
+
+    def test_completed_approval_error_replays_original_values_after_schedule_changes(application):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = _assess(client, tokens, pid, _ready(client, tokens, pid, iid))
+        task, assessment = result["task"], result["assessment"]
+        body, key = _release_body(task, assessment), str(uuid4())
+        first = _release(client, tokens, pid, task, body, key=key)
+        assert first.json()["code"] == "RELEASE_APPROVAL_REQUIRED"
+        with factory() as uow:
+            saved = uow.gateway.rows("idempotency_requests", {"idempotency_key": key})
+            assert len(saved) == 1 and saved[0]["status"] == 2
+            assert saved[0]["response_request_id"] == first.json()["request_id"]
+            assert "request_id" not in saved[0]["response_body"]["error"]
+        task = _replan(client, tokens, pid, task)
+        business, audits = _business(factory, pid), _audits(factory, pid)
+        replay = _release(client, tokens, pid, task, body, key=key)
+        assert replay.headers["Idempotency-Replayed"] == "true"
+        assert replay.status_code == first.status_code
+        assert {k: v for k, v in replay.json().items() if k != "request_id"} == {
+            k: v for k, v in first.json().items() if k != "request_id"
+        }
+        assert replay.json()["request_id"] != first.json()["request_id"]
+        assert replay.json()["request_id"] == replay.headers["X-Request-ID"]
+        assert "meta" not in replay.json() and "original_request_id" not in replay.json()
+        assert (_business(factory, pid), _audits(factory, pid)) == (business, audits)
+&gt;       _reject(client, factory, tokens, pid, task, assessment, "ASSESSMENT_BASELINE_MISMATCH")
+
+tmp/backend/contracts/856_release_error_priority.py:231: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = &lt;starlette.testclient.TestClient object at 0x105e67680&gt;
+factory = &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x10542f9e0&gt;
+tokens = {'manager': '[REDACTED_SYNTHETIC_SESSION]', 'developer': '[REDACTED_SYNTHETIC_SESSION]', 'reviewer': '[REDACTED_SYNTHETIC_SESSION]', 'outsider': '[REDACTED_SYNTHETIC_SESSION]'}
+pid = 1
+task = {'id': 1, 'project_id': 1, 'iteration_id': 1, 'title': 'Implement synthetic task', ...}
+assessment = {'id': 1, 'project_id': 1, 'task_id': 1, 'version': 1, ...}
+code = 'ASSESSMENT_BASELINE_MISMATCH', body = None, actor = 'manager'
+
+    def _reject(client, factory, tokens, pid, task, assessment, code, *, body=None, actor="manager"):
+        before, audit_before = _business(factory, pid), _audits(factory, pid)
+        response = _release(
+            client,
+            tokens,
+            pid,
+            task,
+            body or _release_body(task, assessment),
+            actor=actor,
+            expect=403 if code == "ACTION_FORBIDDEN" else 404 if code == "RESOURCE_NOT_FOUND" else 409,
+        )
+        payload = response.json()
+        assert _business(factory, pid) == before
+        audit_after = _audits(factory, pid)
+        assert len(audit_after) == len(audit_before) + 1
+        saved = next(row for row in audit_after if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == response.headers["X-Request-ID"]
+        if payload["code"] in {"RELEASE_APPROVAL_REQUIRED", "ASSESSMENT_BASELINE_MISMATCH"}:
+            # Stable persisted IDs23/24 are specified in the frozen field dictionary.
+            assert saved["reason_code"] == (
+                23 if payload["code"] == "RELEASE_APPROVAL_REQUIRED" else 24
+            )
+&gt;       assert payload["code"] == code, {
+            "actual_code": payload["code"],
+            "audit_id": payload["audit_id"],
+            "business_unchanged": True,
+            "one_independent_rejection_audit_verified": True,
+        }
+E       AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 17, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}
+E       assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'
+E         
+E         - ASSESSMENT_BASELINE_MISMATCH
+E         + RELEASE_APPROVAL_REQUIRED
+
+tmp/backend/contracts/856_release_error_priority.py:161: AssertionError</failure></testcase><testcase classname="" name="test_controlled_cycle_mismatch_uses_failed_approval_slot_without_real_rework" time="0.253"><failure message="AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 15, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}&#10;assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'&#10;  &#10;  - ASSESSMENT_BASELINE_MISMATCH&#10;  + RELEASE_APPROVAL_REQUIRED">application = (&lt;starlette.testclient.TestClient object at 0x105bd0f80&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1053f3740&gt;)
+
+    def test_controlled_cycle_mismatch_uses_failed_approval_slot_without_real_rework(application):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = _assess(client, tokens, pid, _ready(client, tokens, pid, iid))
+        task, assessment = result["task"], result["assessment"]
+        # Deliberately controlled legacy-row boundary, not a real rework/delivery history.
+        with factory() as uow:
+            uow.gateway.update("release_assessments", {"id": assessment["id"]}, {"delivery_cycle": 2})
+&gt;       _reject(client, factory, tokens, pid, task, assessment, "ASSESSMENT_BASELINE_MISMATCH")
+
+tmp/backend/contracts/856_release_error_priority.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = &lt;starlette.testclient.TestClient object at 0x105bd0f80&gt;
+factory = &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1053f3740&gt;
+tokens = {'manager': '[REDACTED_SYNTHETIC_SESSION]', 'developer': '[REDACTED_SYNTHETIC_SESSION]', 'reviewer': '[REDACTED_SYNTHETIC_SESSION]', 'outsider': '[REDACTED_SYNTHETIC_SESSION]'}
+pid = 1
+task = {'id': 1, 'project_id': 1, 'iteration_id': 1, 'title': 'Implement synthetic task', ...}
+assessment = {'id': 1, 'project_id': 1, 'task_id': 1, 'version': 1, ...}
+code = 'ASSESSMENT_BASELINE_MISMATCH', body = None, actor = 'manager'
+
+    def _reject(client, factory, tokens, pid, task, assessment, code, *, body=None, actor="manager"):
+        before, audit_before = _business(factory, pid), _audits(factory, pid)
+        response = _release(
+            client,
+            tokens,
+            pid,
+            task,
+            body or _release_body(task, assessment),
+            actor=actor,
+            expect=403 if code == "ACTION_FORBIDDEN" else 404 if code == "RESOURCE_NOT_FOUND" else 409,
+        )
+        payload = response.json()
+        assert _business(factory, pid) == before
+        audit_after = _audits(factory, pid)
+        assert len(audit_after) == len(audit_before) + 1
+        saved = next(row for row in audit_after if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == response.headers["X-Request-ID"]
+        if payload["code"] in {"RELEASE_APPROVAL_REQUIRED", "ASSESSMENT_BASELINE_MISMATCH"}:
+            # Stable persisted IDs23/24 are specified in the frozen field dictionary.
+            assert saved["reason_code"] == (
+                23 if payload["code"] == "RELEASE_APPROVAL_REQUIRED" else 24
+            )
+&gt;       assert payload["code"] == code, {
+            "actual_code": payload["code"],
+            "audit_id": payload["audit_id"],
+            "business_unchanged": True,
+            "one_independent_rejection_audit_verified": True,
+        }
+E       AssertionError: {'actual_code': 'RELEASE_APPROVAL_REQUIRED', 'audit_id': 15, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}
+E       assert 'RELEASE_APPROVAL_REQUIRED' == 'ASSESSMENT_BASELINE_MISMATCH'
+E         
+E         - ASSESSMENT_BASELINE_MISMATCH
+E         + RELEASE_APPROVAL_REQUIRED
+
+tmp/backend/contracts/856_release_error_priority.py:161: AssertionError</failure></testcase><testcase classname="" name="test_release_reference_preconditions_keep_original_priority[task_version]" time="0.265" /><testcase classname="" name="test_release_reference_preconditions_keep_original_priority[request_version]" time="0.262" /><testcase classname="" name="test_release_reference_preconditions_keep_original_priority[foreign]" time="0.351" /><testcase classname="" name="test_release_reference_preconditions_keep_original_priority[missing]" time="0.332" /><testcase classname="" name="test_controlled_matching_reference_keeps_original_domain_order[state-STATE_CONFLICT]" time="0.290" /><testcase classname="" name="test_controlled_matching_reference_keeps_original_domain_order[role-ACTION_FORBIDDEN]" time="0.273" /><testcase classname="" name="test_controlled_matching_reference_keeps_original_domain_order[review-REVIEW_NOT_PASSED]" time="0.269" /><testcase classname="" name="test_controlled_matching_reference_keeps_original_domain_order[baseline-ASSESSMENT_BASELINE_MISMATCH]" time="0.263" /></testsuite></testsuites>

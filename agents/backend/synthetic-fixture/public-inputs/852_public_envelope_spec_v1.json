@@ -1,0 +1,49 @@
+{
+  "public_metadata_only": true,
+  "version": "1.0.0",
+  "frozen_utc": "2026-10-24T07:19:28.255116+00:00",
+  "purpose": "Neutral account/environment and encrypted test-result transport only; no change to frozen business cases/assertions/HTTP timing methods",
+  "format": "T44-852-ENVELOPE-v1",
+  "algorithm": "RSA-OAEP-SHA256-MGF1SHA256+A256GCM",
+  "wire": "UTF-8 JSON with exactly protected,encrypted_key_b64,nonce_b64,ciphertext_and_tag_b64; strict duplicate-key rejection",
+  "protected_fields": [
+    "format",
+    "algorithm",
+    "recipient_cert_sha256",
+    "purpose",
+    "content_type",
+    "created_utc"
+  ],
+  "aad": "ASCII bytes of JSON(protected,ensure_ascii=True,sort_keys=True,separators=(comma,colon),allow_nan=False); comma/colon separators have no spaces",
+  "key_wrap": "Fresh random32-byte AES key; RSA>=3072bit certificate recipient; OAEP hashSHA256; MGF1SHA256; label=None",
+  "aes": "AES256GCM; fresh random12-byte nonce; ciphertext_and_tag_b64 contains ciphertext immediately followed by16-byte tag; AAD is protected canonical JSON",
+  "base64": "Standard RFC4648 alphabet, padded, no line breaks; strict validation",
+  "recipient_cert_sha256": "Lowercase hex SHA256 of the X509 certificate DER bytes, NOT PEM file bytes",
+  "purposes": [
+    "neutral-environment",
+    "private-test-result",
+    "public-known-calibration"
+  ],
+  "downgrade_policy": "Reject changed/unknown format,algorithm,recipient,purpose,field sets or invalid lengths; authenticate before using plaintext; do not bypass TLS verification or fall back to unauthenticated encryption",
+  "public_certificate_file": "852_public_env_recipient_v1.cert.pem",
+  "public_certificate_pem_sha256": "496ded07649d49078d9e20cebf4fbd80f989d5d2b777573857eb090d1b38af69",
+  "public_certificate_der_sha256_fingerprint": "f78e169a626c9eb3978428016996c2370ffd170b3f0cc83f3e96ba4bf199d19e",
+  "public_helper_file": "852_public_envelope_v1.py",
+  "public_helper_sha256": "6a5ddf1226b7e08623a6d8131dbbf742a28359584a34a0e2cf4daa770c2966f7",
+  "isolated_crypto_dependencies": {
+    "cryptography": "50.0.2",
+    "cffi": "2.0.0",
+    "pycparser": "2.23"
+  },
+  "dependency_wheel_lock_sha256": "8e63d373517b558a1c1ea11c36438e83ab9d9450b150414b3d49835bd451cb02",
+  "calibration": {
+    "actually_executed_locally": true,
+    "passed": true,
+    "checks": 11,
+    "scope": "Known-data producer/independent-receiver, independent-producer/receiver, wrapped-key/nonce/ciphertext/protected-header tampering and canonical roundtrip; no SUT",
+    "private_report_sha256": "ff246dac2d83665955ce88eb88bbc8fedfbb0a083f5656bc9dcb5503267a64a0"
+  },
+  "original_http_tool_freeze_sha256": "7a16aaad6d06c85d764def88cef9d8c6a8b5a6d7169a9aff521c97c87bae5254",
+  "remote_crypto_runtime_status": "NOT_VERIFIED; independently freeze actual load-host crypto runtime before use",
+  "cloud_or_sut_operations": 0
+}

@@ -1,0 +1,37 @@
+{
+  "operator": "AI reviewer, not student or independenttester",
+  "target": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+  "branch": "codex/review-coursework-bundle",
+  "read_scope_recorded_before_source": true,
+  "single_counterexample": {
+    "runs": 1,
+    "exit_code": 1,
+    "function": "exact unmodified verify_source_archive AST",
+    "data": "Memory-only synthetic ZIP claiming real9d6 and a different blob at backend/t44/api.py, internal hashes self-consistent",
+    "expected": "Reject inner source not bound to actual tree",
+    "actual": "Returned1, no error",
+    "disk_ZIP_created": false,
+    "actual_review_bundle_created": false,
+    "command": "source-tree-binding-probe-command.txt",
+    "raw": "source-tree-binding-probe.log",
+    "result": "source-tree-binding-probe.json"
+  },
+  "static_artifact_audit": {
+    "exit_code": 0,
+    "owner_metadata_hashes": 14,
+    "XML_before_tests": 2,
+    "XML_before_failures": 2,
+    "XML_after_tests": 4,
+    "XML_after_failures": 0,
+    "frozen_files": 14,
+    "old953_function_class_AST_nodes_preserved": 43,
+    "only_API_SCRIPT_module_AST_differs": true,
+    "strict_projection_AST_unchanged": true
+  },
+  "actual_private_input_or_independent_material_read": false,
+  "actual_proc_Docker_fault_load_or_CI_rerun": false,
+  "owner_four_metadata_tests_rerun": false,
+  "new_persistent_tmp_scripts": [],
+  "later_fix_not_applied_to_this_report": "Root announced dda3 as subsequent phase; original9d6 failure remains sealed separately",
+  "trust_boundary": "Trusted upstream generator plus independently trusted selection SHA can exclude synthetic artifact; not evidence a real package/upstream generator is corrupt"
+}

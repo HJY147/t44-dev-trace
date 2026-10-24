@@ -1,0 +1,105 @@
+{
+  "read_at": "2026-10-23T17:59:31.920510+08:00",
+  "review_target": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+  "commands": [
+    {
+      "key": "pr21",
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21",
+        "--jq",
+        "{head:.head.sha,base:.base.sha,draft,html_url}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base\":\"1996d44425e09930b5ba3ae5391b728980241f55\",\"draft\":true,\"head\":\"ff83bc98b27d0e671a8d000cfd72c29b27dea669\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21\"}\n",
+      "stderr": "",
+      "response": {
+        "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+        "draft": true,
+        "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+        "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+      }
+    },
+    {
+      "key": "main_protection",
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/branches/main/protection",
+        "--jq",
+        "{enforce_admins:.enforce_admins.enabled,strict:.required_status_checks.strict,contexts:.required_status_checks.contexts}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"contexts\":[\"reviewer/stage\",\"static\",\"contracts\",\"coverage\",\"frontend\"],\"enforce_admins\":true,\"strict\":true}\n",
+      "stderr": "",
+      "response": {
+        "contexts": [
+          "reviewer/stage",
+          "static",
+          "contracts",
+          "coverage",
+          "frontend"
+        ],
+        "enforce_admins": true,
+        "strict": true
+      }
+    },
+    {
+      "key": "target_checks",
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef/check-runs",
+        "--jq",
+        "[.check_runs[]|{name,status,conclusion,html_url}]"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"conclusion\":\"cancelled\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434225\",\"name\":\"coverage\",\"status\":\"completed\"},{\"conclusion\":\"success\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434124\",\"name\":\"frontend\",\"status\":\"completed\"},{\"conclusion\":\"cancelled\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434062\",\"name\":\"contracts\",\"status\":\"completed\"},{\"conclusion\":\"success\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352433870\",\"name\":\"static\",\"status\":\"completed\"}]\n",
+      "stderr": "",
+      "response": [
+        {
+          "conclusion": "cancelled",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434225",
+          "name": "coverage",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434124",
+          "name": "frontend",
+          "status": "completed"
+        },
+        {
+          "conclusion": "cancelled",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352434062",
+          "name": "contracts",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39935050279/job/120352433870",
+          "name": "static",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "key": "target_status",
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/commits/e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef/status",
+        "--jq",
+        "{state,statuses:[.statuses[]|{context,state,target_url,description}]}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"state\":\"pending\",\"statuses\":[]}\n",
+      "stderr": "",
+      "response": {
+        "state": "pending",
+        "statuses": []
+      }
+    }
+  ]
+}

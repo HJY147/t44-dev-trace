@@ -1,0 +1,641 @@
+{
+  "target": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+  "note": "Content binding for review inputs; does not claim each path received equal semantic or execution coverage",
+  "files": [
+    {
+      "path": ".github/workflows/docker-integration.yml",
+      "sha256": "2db1cbe35d1a96a7891dbcddf62f929dd75fa2dd8b100f11f895bf8728502f12",
+      "working_tree_matches": true
+    },
+    {
+      "path": ".github/workflows/product.yml",
+      "sha256": "0e7840c024ddb17e1de393a8a1f0359216b3c4a6e51fcae2aaa297a40fe9a4c0",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "sha256": "dcd20624f20e128779f0af85c40218820cdd0c19457b7c57f73714ec2202597e",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/requirements.lock",
+      "sha256": "3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/__init__.py",
+      "sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/api.py",
+      "sha256": "6c696aa5dfa4a45ee40195510247f2a82b1d5c157d98557e59f89255337989b1",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/cli.py",
+      "sha256": "7fab7ea52d5b47e7db02740ff49d9d8145e6d8b2f7e33637aa74a87efea7423f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/contracts/__init__.py",
+      "sha256": "ee2a72d0ee435a63686e80548da2fdc1b0b2df05c399820e19973f8100dc8cdc",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/contracts/openapi.json",
+      "sha256": "cd7f30b4d988d08fb9cb04ee87e64b039d417a3ec29d7c61a4826d2fa53c94c6",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/domain/__init__.py",
+      "sha256": "19d029b3f10d9e89bfd4c6a328746af4baf3851226c55ed1e10ed5dd955789c0",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/domain/commands.py",
+      "sha256": "61c746eda2ae8adf70dbff501cb57fb1e7f81a5c76e0586a1a15a3d6460e1f07",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/domain/models.py",
+      "sha256": "0c2452b0db634beea4fa64a94866c23a40a1b96573e312ff0f540fbb9a5a6b71",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/domain/state_machine.py",
+      "sha256": "81c9807e5088842e92aaee8f1d156579fb6fc1ca09beb5f3478b5f10f6655c00",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/README.md",
+      "sha256": "33e08d59a9e3a3b8eec58b68ff5d331c997cb2410405ffc94181becb03bb0b1b",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/__init__.py",
+      "sha256": "0223fc2eea2e0bc490de900bcac14f7b17bf7ce8d83d4bbc02bbe11d569a8a63",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/__main__.py",
+      "sha256": "356ef3c0eeb5be3750df311fa2dd33cb420e3bf8218eedf9dd86e03ebe32493c",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/broker.py",
+      "sha256": "2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/facade.py",
+      "sha256": "61a840949cd0060153ad390fdd0ccc4b5a48f0cb02fa8acf40a11e0ccafa4509",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/messaging/worker.py",
+      "sha256": "266b39185b946484599584f0e49a1dfb6b14cde2566cc7efb73f5386cc86648b",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/README.md",
+      "sha256": "067489465789052603f4851022d606b2e849dfa7466676585a75d27389f18439",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/SYNTHETIC-DATA.md",
+      "sha256": "1331083b41c8a25124be59f3947db78038617a4e34e8d59ddf9f6785bf6d9e3c",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/__init__.py",
+      "sha256": "3a114365e08b4154ec9d5c4399559ee1d512d3cf1e9adeadb5bb9f10bc93d071",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/accounts.py",
+      "sha256": "c7b0fea49b3d07c275d0de7f47726beb3d9c3a625d34e36a138f418a6e63ad54",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/codecs.py",
+      "sha256": "67ce7fe9d9492f8e92c66aa4080203114aaa578702663681c3d88d4a5b6b1c4e",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/delivery.py",
+      "sha256": "98300672dcababf20cf4e4de6fb4c67c629d1b04eb0736ef82dedf49f90d62f3",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "sha256": "f7ec591dad711e3755aeda2606cee8dcaa023b416d8c51592b7b87684121ab9d",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/errors.py",
+      "sha256": "76fabd26e20706ba606a8904c23ebaef5b9306e0b65b4757c7d9d999f9156248",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "sha256": "9acb764a761c168dc5bb84280db13be532f2b1dca3a9cd86311f2b7430d733db",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "sha256": "b0315f431bffa84388ca03d8488f356edacd7b463a34ab61b4edd8c5f03209e6",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/scans.py",
+      "sha256": "d818e394f4e292ecf3d266b945f3fabecd29ef7d6132a11e5a290b9f36f33aff",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/schema.py",
+      "sha256": "cd1465fc7560c0f13bb80216507b237e297e2177eccf280d8802651f0458e4bd",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/schema_v1.sql",
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/seed.py",
+      "sha256": "bb708ffd4b258698dc287e0c48607f60c480fecd2e22ec3476ab9653f082e59f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/persistence/uow.py",
+      "sha256": "3063b8b29a07dd29f188720df637d4e31e0fbc9e8b401be1f2ecbc3188d5897f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/resources/escalation-rules.json",
+      "sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/resources/review-template.json",
+      "sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/README.md",
+      "sha256": "86db4a1cde2a0371b28ea0aaa0fe426157d0f176c9d554ab7a0ee12c9a192bcf",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/__init__.py",
+      "sha256": "13546feadd8867b987928a9178a984c1d96aae3e85f66ef6fe71662fb935f21b",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/__main__.py",
+      "sha256": "66743cc75f1558356c2c605690803310f5c9ecec0abdac579afe21c23fdbefbe",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/facade.py",
+      "sha256": "17e293ec0389020f9269e75dbf9dd927eee877426181165c46cd7951c68f8ab6",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/rules.py",
+      "sha256": "4b182e8f531f22f86e8bfd019a84ce9a844ef29eca1a58ed341d38e86e1d1428",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/runtime.py",
+      "sha256": "19ccc353d794fb7d22ab39a3c2ad720d435c0e3fe0760ce508a2918b08fe3778",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/scheduling/scanner.py",
+      "sha256": "6c724d7f0360128e9474cce631f9b2b9bf282072e8aeb9876457f9a720401ed4",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/__init__.py",
+      "sha256": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/application.py",
+      "sha256": "7dcbcb984337b14a0a68c217077eed0dd3169951774363ebf9d11ce65fcae6e9",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/codes.py",
+      "sha256": "d6908e0d5a486ebc75cd41f224c63ccd9db904d1aa9988373ea8746fc7475454",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "sha256": "fa708b13f42567dd273201265abcc39e34ce61017b3ca2dce05f870a82cf3724",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/errors.py",
+      "sha256": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/identity.py",
+      "sha256": "688be92831a433ce7569a2cd2614be087d99ab5d20447da738999e88abe3f162",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "sha256": "10a2afdf9b14e6a71f681d4dc80f0131d71b87d89427052e202fb0944b59a6ef",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/reviews.py",
+      "sha256": "d7f5081b033d8879ce7c16edc5b981a7d4e341a9520e92b06e7e48b7397b3432",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "sha256": "64ebba310d9744f8b60c86bc870ac1014ed6dff0accd6c85cbe98eee87441f41",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/tasks.py",
+      "sha256": "845b3b5470ae7e6cfa24ebc9a89d6e5163db0030a0629a7a672b8371e3a0461c",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/services/workflow.py",
+      "sha256": "bf693f240df5a701eea71307f73b660fb249a9ba54955ade7214c8cd6058d272",
+      "working_tree_matches": true
+    },
+    {
+      "path": "backend/t44/settings.py",
+      "sha256": "1c998fa935c2c63891278982cac859fe76899a1e1791f5d7641433416002beea",
+      "working_tree_matches": true
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "4061c7b10b50f3be9f5299f9be31690631f70fd60258f672dfcc1221c5e55732",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/.env.example",
+      "sha256": "73b28502ff6272619ca231aa31b7f1273e187b204fc76d9b822cdd43131b333a",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/README.md",
+      "sha256": "3481f67724267effaa5b797b79658854cd255cb680e0c1ab200bb1cabb34f757",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/api.Dockerfile",
+      "sha256": "3862fc17da18717531bdadd79320571ac1465f8f48ee84420793c940c6be8d90",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/api.Dockerfile.dockerignore",
+      "sha256": "302ac76f30a451a3977497fa3fda31f3784a04e9fecf136064b9189bfbc01c9f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/credential_admin.py",
+      "sha256": "c24e303b632a502c0e4180d72830d9e94b71d4627260022715047dfe3d14a07f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/nginx/api.conf",
+      "sha256": "90422ba62b336f93ed6ced61beb7faec39d7d7b0e9cda0d93f4aee9a144c59cd",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/nginx/nginx.conf",
+      "sha256": "29422c1bfd5495338c09a16c1655fafa678db56e2351f539e36f1d78df762d54",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/ops.py",
+      "sha256": "e3ef0815920896d5b1b4f448075b420c4fc635cd32cf0d12e495a6d79306a686",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/runtime_probe.py",
+      "sha256": "19d16c787e24d72cc96640ea215cecedc0ed5afeb166eae450a84e5b1e9bf309",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/vendor/SOURCE.json",
+      "sha256": "ba9c9ee4ef395403b36fcc57d52f93b195a29cb3dfdf4e7e0229256509c643d2",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/vendor/compose-spec.LICENSE",
+      "sha256": "df2620afda09a96364f47f951a8574f9031d51ddebc80b44f1df93c7f54f8224",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/vendor/compose-spec.json",
+      "sha256": "d61cc3df8c6e6a727043e84f3405c69ffd63d341f629db8480f1d2ee5405b10c",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/web.Dockerfile",
+      "sha256": "5c48cbd435e171d1a23b931305be4b7de147e4de93ec0b3dcead0ac11bdbe2ae",
+      "working_tree_matches": true
+    },
+    {
+      "path": "deployment/web.Dockerfile.dockerignore",
+      "sha256": "54af0e76fffa4e4edfa2326565d6258bb3c3d264146430f8bed1f44e6e32ccdc",
+      "working_tree_matches": true
+    },
+    {
+      "path": "docs/reports/M2-traceability.md",
+      "sha256": "8cf249949fab218b7865d8e753137ae052d855ef052860f00abe7e6425919643",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "bbb674db7d50707598c7a1442f98b43226a9651c525c772c6be6da3ad4f145b5",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "83abd277baeeaf060e24bbe34603f9371a29b6da8bb9d366e15affca5d267254",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "sha256": "461a4f3c05a314b230089298cb8551d34201127b771cd240253042370d1da335",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "sha256": "285312e117e1c16bfdd40278cb660fc33f0c42798d7aac1b655eb5d898fc03db",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "sha256": "9af671286d7447b533b55d00a4c8650ac1610926c72a6003e859b945d33a100b",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/DataState.vue",
+      "sha256": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "sha256": "9f0dd4d57b1a61840e0f7b56c741c4c62e97d34774091f2a9423687c17a53451",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/LoginView.vue",
+      "sha256": "0d4aa5611d30cf6a1cca12df92e189b889df63ca1649db12aa5352fa835ab4b5",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/OperationForm.vue",
+      "sha256": "c080ef0f9791a0d0d843b563a161d6ee1f0a260ee0fd03e605ce5ea14e048451",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/PageHeading.vue",
+      "sha256": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/RecordList.vue",
+      "sha256": "4b000b57bdea30458883671759857f44a75abde47455231a75a61f984b730a13",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/RecordView.vue",
+      "sha256": "ece5fb17e4fa3643d609e8703cfbf2a02f165eab01b851b219f81e126cc7a9cc",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/SidebarNavigation.vue",
+      "sha256": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/components/TaskDrawer.vue",
+      "sha256": "7c29b5ab05a012648f289844ffe3ab6b5fb7cfd90b5855261e818817d1fe7b82",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/contract.ts",
+      "sha256": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/forms.ts",
+      "sha256": "bd93350c6f9a9f74b8026494886ca1881a49077d32a39460eb145bbbb84c40ac",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "sha256": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/navigation.ts",
+      "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/router.ts",
+      "sha256": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "6b8cb51ae8935b26bb8c03f1e8e9764ef5ec38a4f0ce2d05214467a5cd76bf02",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/views/NotFoundView.vue",
+      "sha256": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/views/WorkspaceView.vue",
+      "sha256": "98d6bc4ab2cbe3b0a048725f6a1361fbf147301f4dbc27a300373450c986ffbc",
+      "working_tree_matches": true
+    },
+    {
+      "path": "frontend/src/workspace.ts",
+      "sha256": "4bc467b15a253d287be6d13af7f8428ac7f34b35fd8104b4cbd761c3fcd03457",
+      "working_tree_matches": true
+    },
+    {
+      "path": "records/decisions/D001-business-rules.md",
+      "sha256": "0572cf7b922c227fa3fd4e94715e003da69cb45fce811cfb08e8c37d40a88686",
+      "working_tree_matches": true
+    },
+    {
+      "path": "records/decisions/D002-prestart-edit-boundaries.md",
+      "sha256": "ea416c7951ca8bedd028bbacbc589b9e88fb16638891819bf8f8cdccf875212b",
+      "working_tree_matches": true
+    },
+    {
+      "path": "records/decisions/D003-permission-and-extension-design.md",
+      "sha256": "a858d7b1a02fb32b6292a5c4d52e7b5c85c77b4344ace320c451a045a0920b62",
+      "working_tree_matches": true
+    },
+    {
+      "path": "records/decisions/D004-field-errors-adopted.md",
+      "sha256": "9c848035da1d850d37c9bc4a7e38f5b9d67bdc748f70b625366ebaa8c76eabc8",
+      "working_tree_matches": true
+    },
+    {
+      "path": "records/spec-freezes/v1.json",
+      "sha256": "af4fba17980568da8407c7ecfbe0523a1074dc610ba10e4fde599032428b4b19",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/ai-development-report.md",
+      "sha256": "95a71435a168688a34d0547a0b31e986e5587bd7b78fa054402113788a9fd9a8",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/ai-spec-guide.md",
+      "sha256": "59d158ac7a88bdc61e9bf5079205b6c2c47915d9e1070be019d3ce917e47d6a3",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/design-report.md",
+      "sha256": "36e719b2cbfb39b470a4758f7d89b00fa715f3abf7a328499c64c0d0adf7628a",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/requirements-report.md",
+      "sha256": "c98936629313fb175afb2ce5079333288dead3a48e2dad2198a4ed9e5e4082b5",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/student-study-template.md",
+      "sha256": "3b28b26a225a21682579c2debfd630cd9dbee88cea2aa2cc41026632031183e3",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/submission-map.md",
+      "sha256": "ad4d30b147d01b7c844e1322beb3801f6f3398cfa1b50cd29b8fa1643a070cc7",
+      "working_tree_matches": true
+    },
+    {
+      "path": "reports/final/team-bootstrap-summary.md",
+      "sha256": "c37e1aed1149b495cdd10e089b9e2807d51bb641cc63328a079debcad1ed1bff",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/README.md",
+      "sha256": "d47e418d5b5e7f345403b608bb3f33d8b053d38640403177e321e045c56352a5",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/check_frontend_coverage.py",
+      "sha256": "19f5e2fc8e8b7f52dd6c40f59c36c06be7b5e620eca54fddc2445664085891d7",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/coverage.ini",
+      "sha256": "c82d43fe46b38939b7ad7145e34425ed1d1f84daaa3908081b9590989f55c781",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/preflight.py",
+      "sha256": "ba348e9d710553a8a2de5ba240c0f27ad031b273d910bfd1e55100e7ae5da628",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/requirements.in",
+      "sha256": "cf77daadb356cfd1f0ae3579c1715c5a7c85f4ad4cbea32cf1136ca5b8a56599",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/requirements.lock",
+      "sha256": "1cf122d65e655044bc103171f81050b4a9bb67ac9f21b1e870c6df8b936365a2",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/ruff.toml",
+      "sha256": "ce40cb8adba8e9803f0db3bab565a24bfa62c81848cd8a00e95b8d0ed65bc62a",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/run_tests.py",
+      "sha256": "ea7c31588d507b7f8e55f75a8943b66d7b367c3d3ef9c95ceecc9e3de6d29164",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/static.py",
+      "sha256": "c7c9cbc4f311f8b83f8d60f2c166adfba97098dbf78094a06076024dda955554",
+      "working_tree_matches": true
+    },
+    {
+      "path": "scripts/ci/validate_config.py",
+      "sha256": "14ef1032c33acece2129fcf5906b35e4a1e62b2775447806de65a783f331a7ea",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/README.md",
+      "sha256": "bcef045018565d71242681379ebc7ce63071197aa9409fe2a5eebb736b89c45a",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/backend-design.md",
+      "sha256": "15bb5b87ce90d3602c2c1ce2389c412637e562cbd7c5a50885bca6faa91ae754",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/business-rules.md",
+      "sha256": "d3d23704dbb37f20c19b54eeceab4bb8e4c192188081adc80d74bf2f19d2fa7c",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/contracts/README.md",
+      "sha256": "7d7c257623df1b3832cc0853b1b2796f54776c9db8ee091beee33d672a1788c7",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/contracts/openapi.json",
+      "sha256": "cd7f30b4d988d08fb9cb04ee87e64b039d417a3ec29d7c61a4826d2fa53c94c6",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/database/field-dictionary.md",
+      "sha256": "08b9dc62d15f6499ce05e4f031684d3f17525dda0586eb2432c2e7a75710ead3",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/database/persistence-contract.md",
+      "sha256": "b9943d387cbc37771624dbfe48faec9115d70fae7d8eea5ea370982574a8ee00",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/database/schema.sql",
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/history/business-rules-v0-proposed.md",
+      "sha256": "72b076966d1a1932a8dc656aab6bcf8dad0b88432bc6f9c866f97766751d59b0",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/human-review.md",
+      "sha256": "d02fa96249dcf2346d910962850c32e3aed89c5c45fa9b8ba5f0df42a49f14a8",
+      "working_tree_matches": true
+    },
+    {
+      "path": "specs/requirements.md",
+      "sha256": "e8efd7bd9b3c657a0802558b5b5e1afeea9e371eeb3c994120f9c06fbdb7cc23",
+      "working_tree_matches": true
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "at_utc": "2026-10-23T20:32:45.199575+00:00",
+  "actual_source_commit": "7e94258898404eff8890aae9dc6d419f0cbdd468",
+  "wrapper_sha256": "2c87fc250176779b535d8a4b53a6502f9ee6ba1c93652b1194eaac88bbb42cc9",
+  "run_id": "stage1r2_20261023_203155_236619",
+  "node": "t44_native_demo_stage1r2_20261023_203155_236619@localhost",
+  "scope": "native local developer broker capability, not business/cloud/independent/performance",
+  "start": {
+    "receipt_id": "93088f86cadc496d9910b827656ae6e0",
+    "at_utc": "2026-10-23T20:31:59.584128+00:00",
+    "action": "start",
+    "run_id": "stage1r2_20261023_203155_236619",
+    "success": true,
+    "cookie_setter_completed": true,
+    "inspection_receipt": "d477636df4194ae8aedc1592f9b56553",
+    "prior_readiness_attempts": 2,
+    "cookie_args_sha256": "4bc214efbfdc5bf4357ce9727dec5b4c44872351004dfd49d090c0de3775b604"
+  },
+  "inspection": {
+    "receipt_id": "d477636df4194ae8aedc1592f9b56553",
+    "at_utc": "2026-10-23T20:31:59.583785+00:00",
+    "action": "inspect",
+    "run_id": "stage1r2_20261023_203155_236619",
+    "success": true,
+    "server_cookie_matches_file": true,
+    "authenticated_cli_receipt": "bfc73228b28540d093132d3c65c442c8",
+    "password_backend_authentication": true,
+    "password_auth_receipt": "6a8048f7e2094276b585508a8739d1fe",
+    "epmd_listeners": [
+      {
+        "address": "127.0.0.1",
+        "port": 24369
+      },
+      {
+        "address": "::1",
+        "port": 24369
+      }
+    ],
+    "rabbit_listeners": [
+      {
+        "address": "127.0.0.1",
+        "port": 35674
+      },
+      {
+        "address": "127.0.0.1",
+        "port": 25674
+      }
+    ],
+    "users": [
+      {
+        "user": "native_9b6a6cc57e7bb096",
+        "tags": []
+      }
+    ],
+    "vhosts": [
+      {
+        "name": "t44.native.demo.stage1r2_20261023_203155_236619"
+      }
+    ],
+    "permissions": [
+      {
+        "user": "native_9b6a6cc57e7bb096",
+        "read": "^(t44[.]events([.]quarantine)?|t44[.]notifications([.]quarantine)?)$",
+        "write": "^(t44[.]events([.]quarantine)?|t44[.]notifications([.]quarantine)?)$",
+        "configure": "^(t44[.]events([.]quarantine)?|t44[.]notifications([.]quarantine)?)$"
+      }
+    ]
+  },
+  "stop": {
+    "receipt_id": "027f34e45e85460187f51ecc33387208",
+    "at_utc": "2026-10-23T20:32:00.979836+00:00",
+    "action": "stop",
+    "run_id": "stage1r2_20261023_203155_236619",
+    "success": true,
+    "failed_start_cleanup": false,
+    "steps": [
+      {
+        "action": "rabbitmqctl_shutdown",
+        "success": true,
+        "receipt_id": "6a521608c6254c6f8e73914cdbacf6f2"
+      },
+      {
+        "action": "rabbit_exit_observed",
+        "success": true
+      },
+      {
+        "action": "epmd_registered_nodes_empty",
+        "success": true,
+        "registered_node_count": 0
+      },
+      {
+        "role": "epmd",
+        "needed": true,
+        "signal_sent": true,
+        "success": true
+      },
+      {
+        "action": "epmd_exit_observed",
+        "success": true
+      }
+    ]
+  },
+  "args_file_init_sequence": "standard -nocookie/-sname starts auth, early eval reads fresh project0600 cookie and creates unique marker before server boot/CLI escript; actual authenticated RPC compares server cookie to file",
+  "password_boundary": "real installed password backend authentication over authenticated CLI RPC, not yet a Pika AMQP-client/business-message test",
+  "owned_processes_after_stop": [
+    {
+      "role": "rabbit",
+      "pid": 11070,
+      "absent": true,
+      "ps_exit_code": 1
+    },
+    {
+      "role": "epmd",
+      "pid": 11063,
+      "absent": true,
+      "ps_exit_code": 1
+    }
+  ]
+}

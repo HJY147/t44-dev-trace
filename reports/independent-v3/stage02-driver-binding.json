@@ -1,0 +1,126 @@
+{
+  "published_at_utc": "2026-10-23T21:29:45.917555+00:00",
+  "published_by": "Independent v3 AI tester",
+  "product_source_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "environment_base_sha": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+  "case_freeze_H": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
+  "mechanical_H2": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+  "runs": [
+    {
+      "run_id": 40025696201,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40025696201",
+      "scope": "functional",
+      "request_R": "ea8c64195f07e40d054ecd906646382de31a8cb7",
+      "harness_ref": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+      "environment_ready": true,
+      "harness_exit_code": 2,
+      "final_recovery_completed": true,
+      "precondition_observation": [
+        {
+          "command": "init-user",
+          "exit_code": 0,
+          "stdout_bytes": 70,
+          "stderr_bytes": 0
+        }
+      ],
+      "business_scope_started": false,
+      "formal_steady_started": false
+    },
+    {
+      "run_id": 40025699738,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40025699738",
+      "scope": "operational-faults",
+      "request_R": "94b4a8d2b1e4d4ae59fd6104a80320ae8aafcb05",
+      "harness_ref": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+      "environment_ready": true,
+      "harness_exit_code": 1,
+      "final_recovery_completed": true,
+      "precondition_observation": [
+        {
+          "command": "init-user",
+          "exit_code": 0,
+          "stdout_bytes": 70,
+          "stderr_bytes": 0
+        }
+      ],
+      "business_scope_started": false,
+      "formal_steady_started": false
+    },
+    {
+      "run_id": 40025704012,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40025704012",
+      "scope": "formal-transition",
+      "request_R": "fbd6b9fe9c75b1743e165d2a10b4ebd30251c065",
+      "harness_ref": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+      "environment_ready": true,
+      "harness_exit_code": 1,
+      "final_recovery_completed": true,
+      "precondition_observation": [
+        {
+          "command": "init-user",
+          "exit_code": 0,
+          "stdout_bytes": 70,
+          "stderr_bytes": 0
+        }
+      ],
+      "business_scope_started": false,
+      "formal_steady_started": false
+    },
+    {
+      "run_id": 40025707671,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40025707671",
+      "scope": "formal-contract",
+      "request_R": "c038728ac7242967ea8a7522ffae3b4ca47b0238",
+      "harness_ref": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+      "environment_ready": true,
+      "harness_exit_code": 1,
+      "final_recovery_completed": true,
+      "precondition_observation": [
+        {
+          "command": "init-user",
+          "exit_code": 0,
+          "stdout_bytes": 70,
+          "stderr_bytes": 0
+        }
+      ],
+      "business_scope_started": false,
+      "formal_steady_started": false
+    },
+    {
+      "run_id": 40025712404,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40025712404",
+      "scope": "formal-escalation",
+      "request_R": "6ccc2255db8313107eec215d686f3f52c893de6f",
+      "harness_ref": "edeadc0d96c418d6034e84011c594c95fd4b7e4e",
+      "environment_ready": true,
+      "harness_exit_code": 1,
+      "final_recovery_completed": true,
+      "precondition_observation": [
+        {
+          "command": "init-user",
+          "exit_code": 0,
+          "stdout_bytes": 70,
+          "stderr_bytes": 0
+        }
+      ],
+      "business_scope_started": false,
+      "formal_steady_started": false
+    }
+  ],
+  "classification": "All listed executions stopped at the same neutral control output ambiguity. No product pass/fail or performance result.",
+  "known_unexecuted_scope": {
+    "functional_whole_cases": 26,
+    "operational_executable_whole_cases": 4,
+    "formal_groups": 3
+  },
+  "offline_driver_validation": {
+    "synthetic_wire_checks_passed": 24,
+    "actual_SUT_cases": 0,
+    "network_used": false
+  },
+  "H3": "68ce0174d4f1a3f7430d9e9affdab0a1af833af1",
+  "H3_scope": "Task factory projects the original contract-declared data.task; browser readiness/semantic navigation and private error observability; original functional/fault/formal case files unchanged. Ambiguous nonempty control output remains blocked.",
+  "current_dependency": "Need an exact neutral stdout contract or JSON-only control output; do not ignore ambiguous output",
+  "privacy": "Only this released MD+JSON; private raw scripts/cases/logs/decrypted artifacts remain unread by coordinator/developers",
+  "human_participation": "None; automated synthetic actors"
+}

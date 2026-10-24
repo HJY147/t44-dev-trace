@@ -1,0 +1,7 @@
+ROLE-reviewer-SESSION-CLEANUP-v1
+实际总协调派工摘录（AI审核，不是独立验收）：
+目标branch codex/frontend-logout精确最终3c160c57c56af47eea2c524d93340a679eeb441b，产品363ac4d6b7081407bf9086fded2a470ab6b045b8，设计844bf71、证据4439309、PR26 base codex/integration。
+从目标commit建隔离codex/review-session。检查契约、成功logout/401完整清理、认证DOM/浮层卸载、旧会话/同项目并发响应、失败退出重试、登录/请求生命周期、历史重放/表单回归。不得读独立未发布材料、不得改产品/冻结14文件/计数政策，不重复已绿全套。
+实际续派授权：正式分配895 tmp/frontend/895_session_lifecycle_probe.test.ts，1–3项无网络模块探针，正常组件/API可控promise，不替换关键保护。
+实际续派结论：将已确认P2作为阻断本专项准入finding；尽快完成原895/raw/源hash/报告/PR26精确commit COMMENT+读回、自有commit/push，释放槽给前端修复。其它疑点未复现不报确认缺陷。
+提示改进理由：把成功响应守卫与错误响应的卸载后回调分开核查，用真实组件链验证全局状态影响，限定为前端上下文擦除，不扩大为服务端越权。

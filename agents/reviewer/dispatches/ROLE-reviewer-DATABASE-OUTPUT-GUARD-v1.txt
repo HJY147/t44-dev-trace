@@ -1,0 +1,7 @@
+实际操作者：固定 AI 审核岗；派工者：总协调 AI。不是学生本人、独立验收或产品实现岗。
+
+本轮实际派工：仅在 /Users/yang/Desktop/nothing/软件开发大作业，自有 codex/review-database-output-guard worktree，复审 DB 输出文件生命周期修复。原 c4e8c696411975ee6964ef3b2254c8f3937ecb32 被 8a767b63b08975cef5a3d7d837c904abdce120f6 的 P2 OUTPUT-EXCLUSIVE-01 拒绝整合：exists 后 write_text(w) 会覆盖预检后出现的结果，或跟随悬空链接。先行设计 3981e6d，代码 3fc58d18614c394cc588a16b316cf89c1810ecf1，最终 E 6fa21f473f78484fa3a7103abf42eab166bbb4c9。
+
+核验 O_EXCL|O_NOFOLLOW/0600、固定 fd 写出、不支持 NOFOLLOW 时拒绝、fdopen 异常 close，以及 recipe 异常/finally/with 的边界。路径被外部替换只保证写原 inode，不保证路径名不变。只读取明确公开的源、原审核及 owner 本轮指定公开证据；不得读取任何 tmp/839、841、852 私有文件，不与独立岗通信，不运行产品、DB、HTTP、负载或原 19 配方/71 Rows 矩阵。必要不重复：优先静态与已发布证据复算，不为增加数量重跑 11 窄回归。原 setup errors、2 行为红、原始 diff-check exit 2 与旧 71 证据保持。
+
+本轮提示词优化理由：从“所有测试应绿”收窄为原 P2 的文件生命周期保证；显式区分 fd 绑定和路径不可变；区分 owner 原执行、审核复算和未运行矩阵，防止用旧 E 代替新工具的完整执行。产物为限定审核报告、核对回执、工作日志、模块报告、handoff 与精确提交，不替 owner 修实现。

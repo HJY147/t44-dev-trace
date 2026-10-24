@@ -1,0 +1,81 @@
+{
+  "database": "t44_acceptance",
+  "purpose": "isolated independent acceptance environment; no test cases accessed",
+  "commands": [
+    {
+      "arguments": [
+        "migrate",
+        "--database",
+        "t44_acceptance"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"version\": 1, \"sha256\": \"c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4\", \"already_applied\": false, \"tables\": 18, \"columns\": 226, \"defects\": [], \"passed\": true}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "acceptance_manager",
+        "--display-name",
+        "验收_manager",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 1}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "acceptance_developer",
+        "--display-name",
+        "验收_developer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 2}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "acceptance_reviewer",
+        "--display-name",
+        "验收_reviewer",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 3}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "acceptance_reviewer2",
+        "--display-name",
+        "验收_reviewer2",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 4}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "init-user",
+        "--username",
+        "acceptance_outsider",
+        "--display-name",
+        "验收_outsider",
+        "--password-stdin"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"user_id\": 5}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "version": "independent-v2-recipient-stage-reviewed-1",
+  "published_at_utc": "2026-10-23T18:54:58.702694+00:00",
+  "operator": "independent AI acceptance role",
+  "overall": "NOT_ACCEPTED_INCOMPLETE",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "product_source_changed": false,
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original8_payload_aggregate_sha256": "56a3db8a76bdbcf4506fba430e13ba166c333c3dfbbd485b9111086c5d05bdb5",
+  "original_assertions_changed": false,
+  "execution": {
+    "H6": "1cc1bcbbb7e49eea1999d1cc54347e03c9ca2697",
+    "R7": "ee62739d96ebe256744b14d0298e50a58663120c",
+    "run_id": 40005729957,
+    "artifact_id": 12524461914,
+    "artifact_zip_sha256": "9ae5553556777cce5acf3ebdab94ad83ff72c1843151adc3571c3dfaed9cc193",
+    "ciphertext_sha256": "df780ced3935f173fe581900a3109908e5dadaa0623b94f000b744f7277ed0bd",
+    "CMS_authenticated_decryption": true,
+    "certificate_sha256": "f2e156af05a4ce9e6128d64543a795b8385407935ffb4b80e43d55b5f1433139",
+    "private_key_local_0600": true,
+    "environment_source": "f118f9dd35bc2cde69affe235f5a499d03a396fc",
+    "neutral_manifest_sha256": "362a9914e31bfdc3709a941ca9cb26b199a933f3ca8e1c959d0c9bde86c6f21b",
+    "environment_ready": true,
+    "harness_started": true,
+    "harness_exit_code": 2,
+    "final_recovery_completed": true,
+    "final_recovery_id": "4112963a3ff9480f8aaa8766884f2218",
+    "recovery_is_not_product_pass": true,
+    "script909_sha256": "3f8728e226054b910830fd703ca0ba66ef3716b35434e1121f9505a0551f180e",
+    "freeze908_sha256": "2e5901fb1f1b3f2d3c662fce12df0bbf5b34cc888ac92f74947ba7474d9ce924"
+  },
+  "private_evidence_hashes": {
+    "results.json": "7e58f493f7320ecdc4bcba628895a857cc39521556ed7998ad7ccfec7cc49b13",
+    "events.jsonl": "159fa95051ff7efd9f8defaa989d5e4fa79d2554f0380881353380c46ddebf91"
+  },
+  "counts": {
+    "HTTP_schema_checked": 286,
+    "readonly_SQL_calls": 28,
+    "actual_returned_audit_references_verified": 20,
+    "passed_subsets": 2,
+    "new_confirmed_product_defects": 0
+  },
+  "cases": [
+    {
+      "id": "MQ-02-101-MANAGER-FANOUT-SUBSET",
+      "outcome": "PASS_EXECUTED_SCOPE",
+      "actual_managers": 101,
+      "actual_owner_recipients": 1,
+      "recipients_per_event": 102,
+      "events": 20,
+      "notification_rows": 2040,
+      "proved": [
+        "20 real scheduler escalation rows, each level2, exact102 recipient IDs in actual nested API response and stored outbox snapshot.",
+        "Read-only SQL verifies102 distinct recipients per task, every expected recipient has20 records, no duplicate(event,recipient).",
+        "Each task retains state, with one escalation/version increment.",
+        "Manager personal list contains20 nonfallback notices."
+      ],
+      "limits": [
+        "No cross product claim about >100 project member list pagination.",
+        "Nonfallback marker was checked for manager20 notices, not individually for every2040 row. Full recipient existence proved independently of transport-specific per-recipient timing.",
+        "No duplicate/fallback simultaneous cutpoint, ambiguous publisher confirm, consumer commit-before-ACK or formal delivery SLA."
+      ]
+    },
+    {
+      "id": "MQ-01-ACTUAL-ROW-REPLAY-SUBSET",
+      "outcome": "PASS_EXECUTED_SCOPE",
+      "actual_wrapper": {
+        "event_id": 146,
+        "schema_version": 1,
+        "event_type": 2
+      },
+      "tester_reconstructed_wrapper": true,
+      "published_count": 2,
+      "broker_publish_confirmed": true,
+      "queue_observations": [
+        {
+          "ready_messages": 0,
+          "subscription_consumers": 0,
+          "point": "before"
+        },
+        {
+          "ready_messages": 2,
+          "subscription_consumers": 0,
+          "point": "after-publish"
+        },
+        {
+          "ready_messages": 0,
+          "subscription_consumers": 0,
+          "point": "after-publish"
+        }
+      ],
+      "proved": [
+        "Actual event/outbox join supplies all3 wrapper fields; documented exchange/routing/persistent properties used.",
+        "Two actual AMQP publishes were broker-confirmed; ready count observed0→2→0 despite subscription_count0.",
+        "After8 seconds, all102 original notification rows/versions/read_at/handled_at remain byte-for-byte equal to pre-publish read-only SQL snapshot; task unchanged.",
+        "Manager read_at and handled_at were distinct and preserved."
+      ],
+      "limits": [
+        "This is a tester reconstructed wrapper from an actual row, not captured original product publisher bytes.",
+        "Ready-queue drain does not prove consumer ACK ordering or a crash/commit cutpoint.",
+        "No fallback/late-original/ambiguous confirm race conclusion."
+      ]
+    }
+  ],
+  "preserved_attempts": [
+    {
+      "run_id": 39998518039,
+      "case": "MQ-01-DUPLICATE-SUBSET",
+      "status": "BLOCKED",
+      "reason": "Original product message was not safely captured; unchanged."
+    },
+    {
+      "run_id": 40003603947,
+      "case": "MQ-01-ACTUAL-ROW-REPLAY-SUBSET",
+      "status": "BLOCKED",
+      "reason": "Tester subscription_count0 precondition stopped before publishing; unchanged. New supplement records count without mistaking it for absence of a polling consumer."
+    }
+  ],
+  "publication": {
+    "allowed_files": [
+      "reports/independent-tests/v2-recipient-stage-report.md",
+      "reports/independent-tests/v2-recipient-stage-results.json"
+    ],
+    "private_files_released": false,
+    "private_key_released": false,
+    "raw_screenshots_released": false
+  },
+  "remaining": "Original MQ01/MQ02 full fault-race assertions remain incomplete, as do all other uncompleted frozen phases. Earlier LIFE02 scope-unclear raw FAIL and UI V2-UI-001 are unchanged. No whitebox/formal performance."
+}

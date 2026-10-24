@@ -1,0 +1,43 @@
+{
+  "at_utc": "2026-10-23T22:50:31.720285+00:00",
+  "actor": "coordinator AI",
+  "only_explicitly_released_four_files": [
+    {
+      "path": "reports/independent-v3/stage07-whitebox.md",
+      "sha256": "39e5f24e1c21f306227a531bb2d9278cc72cc7ee63b36c1f93179e38c706a6cf",
+      "bytes": 4526
+    },
+    {
+      "path": "reports/independent-v3/stage07-whitebox.json",
+      "sha256": "38d91950120231803a51b82aa3620956d323e01e0e342314f8f093d6ca632634",
+      "bytes": 9691
+    },
+    {
+      "path": "reports/independent-v3/stage08-deliverables.md",
+      "sha256": "3c27a65b6fcb4c941fcd17e15fc6ec01c1ea4be36058fe68474deab02997c599",
+      "bytes": 5264
+    },
+    {
+      "path": "reports/independent-v3/stage08-deliverables.json",
+      "sha256": "6c332a29c04e75e93d50fbf016bf6bf3b29aef4447bd8fef7d8d6b97d3083872",
+      "bytes": 8813
+    }
+  ],
+  "private_references_followed": false,
+  "raw_harness_or_outputs_read": false,
+  "scope": "Original4whitebox and4deliverable ranges completed bounded audit, not eight new executable cases",
+  "whitebox": {
+    "pass": 2,
+    "partial": 2
+  },
+  "deliverables": {
+    "pass": 1,
+    "observed_fail": 1,
+    "partial": 1,
+    "incomplete": 1
+  },
+  "whole_acceptance": "NOT_ACCEPTED_INCOMPLETE",
+  "new_confirmed_application_logic_defects": 0,
+  "producer_independently_triggered_by_tester": 40033980420,
+  "no_blackbox_redesign_or_rerun": true
+}

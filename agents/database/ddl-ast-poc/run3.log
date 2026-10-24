@@ -1,0 +1,247 @@
+'CREATE TABLE t(x INT, SOMETHING BOGUS)' contains unsupported syntax. Falling back to parsing as a 'Command'.
+{
+  "version": "30.24.0",
+  "scope": "Pure parse only; no DB/seed/production dependency change",
+  "outcomes": [
+    {
+      "name": "authoritative18/226",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "old-vs-AST:columns",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old-vs-AST:indexes",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old-vs-AST:foreigns",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old-vs-AST:checks",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old-vs-AST:pk",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old-CHECK-reference:59-roundtrips",
+      "passed": false,
+      "detail": [
+        "ck_auth_sessions_actor",
+        "ck_tasks_block",
+        "ck_tasks_assessment_pair",
+        "ck_assessments_review",
+        "ck_decisions_payload",
+        "ck_schedule_target",
+        "ck_audit_outcome",
+        "ck_audit_project_task",
+        "ck_audit_actor",
+        "ck_idempotency_state",
+        "ck_outbox_state",
+        "ck_notifications_handling",
+        "ck_scan_runs_state"
+      ]
+    },
+    {
+      "name": "candidate-CHECK-AST:59-roundtrips",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "type",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nullable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "default",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "index-order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "index-prefix",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "index-type",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "index-type-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "index-sort",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FK-table",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FK-database",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FK-column-order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FK-source-order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "FK-action",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "CHECK-tautology",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "parentheses-quotes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ascii",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "utf8mb4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "precedence",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "literal-case",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "function-argument",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "function-bytes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "literal-prefix-content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "IN-expansion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tautology-or",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "IS-NOT-NULL-form",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "strict-reject:v=_ascii'é'",
+      "passed": true,
+      "detail": "Non-ASCII literal cannot normalize as ASCII"
+    },
+    {
+      "name": "strict-reject:v=1 garbage",
+      "passed": true,
+      "detail": "Unsupported comparison node: Alias"
+    },
+    {
+      "name": "strict-reject:v=1;2=2",
+      "passed": true,
+      "detail": "Exactly one CHECK expression is required"
+    },
+    {
+      "name": "strict-reject:v=1 /* suffix */",
+      "passed": true,
+      "detail": "CHECK comments are outside the frozen comparison grammar"
+    },
+    {
+      "name": "strict-reject:SELECT v FROM t",
+      "passed": true,
+      "detail": "Unsupported comparison node: Select"
+    },
+    {
+      "name": "strict-DDL-reject:CREATE TABLE t(x INT, SOMETHING BOGUS)",
+      "passed": true,
+      "detail": "ParseError"
+    },
+    {
+      "name": "strict-DDL-reject:SELECT 1",
+      "passed": true,
+      "detail": "ValueError"
+    }
+  ],
+  "passed": 40,
+  "failed": 1,
+  "checks": 59,
+  "tables": 18,
+  "columns": 226,
+  "mixed_old_checker_blockers": [
+    "ck_auth_sessions_actor",
+    "ck_tasks_block",
+    "ck_tasks_assessment_pair",
+    "ck_assessments_review",
+    "ck_decisions_payload",
+    "ck_schedule_target",
+    "ck_audit_outcome",
+    "ck_audit_project_task",
+    "ck_audit_actor",
+    "ck_idempotency_state",
+    "ck_outbox_state",
+    "ck_notifications_handling",
+    "ck_scan_runs_state"
+  ],
+  "production_replacement_ready": false
+}

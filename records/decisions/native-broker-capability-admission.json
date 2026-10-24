@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-23T20:17:37.117650+00:00",
+  "actor": "AI coordinator technical decision under U019 overnight authorization, not human student modification",
+  "design_commit": "a772d92",
+  "design": "deployment/native/README.md",
+  "status": "Admitted bounded stage1: owner implements project-local lifecycle wrapper and guard tests, then one isolated loopback EPMD+Rabbit startup/readiness/real-cookie CLI/shutdown capability validation with fresh credentials. App/SUT/data initialization separately bound later.",
+  "selected_candidate": "Standard -nocookie plus unique -sname initializes auth before args_file early eval reads private fresh cookie and sets it; actual Rabbit/CLI startup/auth must be proved, not assumed from source.",
+  "ports": {
+    "AMQP": 25674,
+    "EPMD": 24369,
+    "distribution": 35674,
+    "CLI_range": [
+      45674,
+      45683
+    ]
+  },
+  "constraints": [
+    "Only new owner0700 directories and0600 secrets/args/config/dumps; never change HOME/home/CODEX_HOME or user cookie",
+    "All listeners including EPMD/distribution bind127.0.0.1; reject occupied ports, do not stop foreign owners",
+    "No secret in argv/log/public tracked files; before root merge owner scans all tracked phase files against all probe-cookie literals, report only count/hash scope; never open/publish dump",
+    "Use new broker cookie, not failed probe cookie; actual matching auth/listeners/vhost/no-guest/permissions must be verified before app launch",
+    "Record nocookie initialization interval/only-local developer deployment and pinnedOTP/Rabbit dependency; no cloud/security/global production approval",
+    "Fail/partial cleanup remains false; signal only positively matched own PID/UID/start time/path/PGID; no killall/pkill or old5173/18080/5175/18084/MySQL process changes",
+    "No API/consumer/scanner/UI or MySQL schema/user creation before root supplies exact SUT and explicit new environment credentials",
+    "Tests873 undertmp only; no independent case/script access; no formal performance or main release"
+  ],
+  "root_design_review": "Reviewed full design against actual existing scanner --token-file and BrokerSettings resource names; both matched. Initial XDG/Darwin and non-distributed cookie hypotheses rejected based on actual source/probes; no cookie isolation success claimed yet."
+}

@@ -1,0 +1,133 @@
+{
+  "updated_at": "2026-10-24T01:51:47.549306+08:00",
+  "defect_id": "FE-INIT-01",
+  "design_commit": "7369400",
+  "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+  "previous_visual_commit": "840b1a8",
+  "root_cause": "Vue compiled modelValue union with Boolean before String; runtime casts empty string true; initial() correct",
+  "source": [
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "sha256": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+      "matches_commit": true
+    },
+    {
+      "path": "tmp/frontend/982_client.test.ts",
+      "sha256": "e05c5dbf7145725b1344545e79c1881301faffd7086769c111795fca6fc31fa5",
+      "matches_commit": true
+    },
+    {
+      "path": "tmp/frontend/983_application.test.ts",
+      "sha256": "bb309f1b3b61a40f65b67e294badc9307f2608a6dea386921d0bc0abe799b0a7",
+      "matches_commit": true
+    }
+  ],
+  "before": {
+    "command": "pnpm --dir frontend test -t 'empty|untouched'",
+    "exit": 1,
+    "failed": 2,
+    "passed": 4,
+    "unselected": 24,
+    "log": "agents/frontend/empty-value-before.log"
+  },
+  "after": {
+    "same_command_exit": 0,
+    "passed": 6,
+    "unselected": 24,
+    "log": "agents/frontend/empty-value-after.log",
+    "affected_groups": {
+      "passed": 14,
+      "unselected": 16,
+      "log": "agents/frontend/empty-value-affected.log"
+    },
+    "build_with_typecheck_exit": 0,
+    "build_warning": "825.26kB JS >500kB retained",
+    "new_tests": 3,
+    "production_file_changes": 1,
+    "production_net_lines": 7
+  },
+  "browser": {
+    "initial_environment_failure": "agents/frontend/empty-value-browser/empty-form/results.json",
+    "failure_detail": "login502 because owned root demo API was stopped; no field check; root restored same5dcb/t44_demo_v11",
+    "resumed_result": "agents/frontend/empty-value-browser/empty-form-resumed/results.json",
+    "screenshot_count": 4,
+    "all_screenshots_reviewed": true,
+    "response_count": 20,
+    "all_200": true,
+    "business_mutations": [],
+    "page_errors": [],
+    "overflows": [],
+    "fields": [
+      {
+        "width": 1440,
+        "fields": {
+          "title": "",
+          "description": "",
+          "plan-delay_contingency": ""
+        },
+        "requiredErrors": true,
+        "noBusinessSubmit": true
+      },
+      {
+        "width": 390,
+        "fields": {
+          "title": "",
+          "description": "",
+          "plan-delay_contingency": ""
+        },
+        "requiredErrors": true,
+        "noBusinessSubmit": true
+      }
+    ]
+  },
+  "runtime_shutdown": {
+    "chrome": "closed",
+    "own5176": "Ctrl-C/pnpm exit1; expected shutdown"
+  },
+  "coverage": "not rerun for this narrow stage; do not reuse84092.81% as new-code exact coverage; CI may provide current later",
+  "actor": "frontend AI; not student manual or independent acceptance",
+  "raw_logs": [
+    {
+      "path": "agents/frontend/empty-value-affected.log",
+      "raw_copy": "agents/frontend/empty-value-affected.log.gz",
+      "raw_sha256": "53d3ff84d832c794e1dfffac47fb7ae638afb5d0a162eed0bd39af11da8f0138",
+      "readable_sha256": "43ef0b9cd68810488a6e721bbe05e2127cc5f0a9b7ed40d668ef90b99341b8a7",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    },
+    {
+      "path": "agents/frontend/empty-value-after.log",
+      "raw_copy": "agents/frontend/empty-value-after.log.gz",
+      "raw_sha256": "5b4111e335d61dbf053e51eae06659bbb1d9453e1cbf467dc87e2f041e503337",
+      "readable_sha256": "a10b5e5a49a6ab0cfbb75056544c3a03ff61a213daabb1653ae3bcb16972e9ff",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    },
+    {
+      "path": "agents/frontend/empty-value-before.log",
+      "raw_copy": "agents/frontend/empty-value-before.log.gz",
+      "raw_sha256": "4969a9a7638cb0a8cf95823bd544a5b04345a8e67a6e6fd2520a8248a6da0a23",
+      "readable_sha256": "4969a9a7638cb0a8cf95823bd544a5b04345a8e67a6e6fd2520a8248a6da0a23",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    },
+    {
+      "path": "agents/frontend/empty-value-browser-resumed.log",
+      "raw_copy": "agents/frontend/empty-value-browser-resumed.log.gz",
+      "raw_sha256": "ee1068d1fad4fcdeebb5d2d1bc7b90ca0e1589a495ea2e2fd0c741f26704edee",
+      "readable_sha256": "ee1068d1fad4fcdeebb5d2d1bc7b90ca0e1589a495ea2e2fd0c741f26704edee",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    },
+    {
+      "path": "agents/frontend/empty-value-browser.log",
+      "raw_copy": "agents/frontend/empty-value-browser.log.gz",
+      "raw_sha256": "0889149c1499d2a83a9cc03ebe176840f335774ab9223700d0f6a6756c79a77e",
+      "readable_sha256": "0889149c1499d2a83a9cc03ebe176840f335774ab9223700d0f6a6756c79a77e",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    },
+    {
+      "path": "agents/frontend/empty-value-build.log",
+      "raw_copy": "agents/frontend/empty-value-build.log.gz",
+      "raw_sha256": "f3a14009c93e15e320ce5adcf585f1f8433f62a72143ad8a3155d58fd405590a",
+      "readable_sha256": "1fc22699bcd3642d829c95570f42d616b9662c49b8a29b873e0f20ff98fc867c",
+      "normalization": "line trailing whitespace and blank EOF removed; original gzip unchanged"
+    }
+  ]
+}

@@ -1,0 +1,461 @@
+coverage	Run full suite and cover every production t44 Python module	﻿2026-10-23T12:48:55.7145937Z ##[group]Run python scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7146634Z ^[[36;1mpython scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log^[[0m
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7217003Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7217359Z env:
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7217567Z   PYTHONPATH: backend
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7218096Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7218386Z   T44_DATABASE: t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7218705Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7218973Z   T44_SESSION_TTL_SECONDS: 3600
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7219310Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7219744Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7220159Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7220535Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7220961Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7221334Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:48:55.7221662Z ##[endgroup]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4975000Z ============================= test session starts ==============================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4976028Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4976669Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4977142Z configfile: pyproject.toml
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4977498Z plugins: anyio-4.15.1
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4977836Z collected 391 items
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4978348Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4978641Z backend/backend/domain/994_transitions.py .............................. [  7%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4979251Z ........................................................................ [ 26%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4979752Z ....                                                                     [ 27%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4980370Z backend/contracts/985_mysql_http.py ............                         [ 30%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4981094Z backend/contracts/986_http.py ..........FF.............................. [ 40%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4981723Z ...................................                                      [ 49%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4982296Z backend/contracts/987_faults.py ....                                     [ 50%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4982960Z backend/messaging/976_process_mysql.py .                                 [ 51%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4983635Z backend/messaging/977_rabbit.py ...                                      [ 51%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4984410Z backend/messaging/978_process.py ....                                    [ 52%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4985071Z backend/messaging/979_facade.py ..........                               [ 55%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4985984Z backend/messaging/980_delivery.py .............                          [ 58%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4986778Z backend/persistence/956_schema_semantics.py ...............              [ 62%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4987584Z backend/persistence/975_seed.py ...                                      [ 63%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4988322Z backend/persistence/988_mysql.py ...............                         [ 67%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4989038Z backend/persistence/989_rows.py ...                                      [ 68%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4989794Z backend/persistence/993_foundation.py ..................                 [ 72%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4990559Z backend/scheduling/973_extensible_rules.py ......                        [ 74%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4991328Z backend/scheduling/974_application.py ......................             [ 79%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4992088Z backend/scheduling/990_runtime.py ............                           [ 82%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4992814Z backend/scheduling/991_rules.py ........................................ [ 93%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4993219Z ...........................                                              [100%]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4993708Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4993847Z =================================== FAILURES ===================================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4994302Z ____ test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True] ____
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4994589Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4995095Z application = (<starlette.testclient.TestClient object at 0x7f7d64888380>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x7f7d67911a90>)
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4996050Z stamp = '1000-01-01T00:00:00Z', valid = True
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4996247Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4996357Z     @pytest.mark.parametrize(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4996622Z         "stamp,valid",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4996838Z         [
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4997038Z             ("0001-01-01T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4997312Z             ("0999-01-01T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4997565Z             ("1000-01-01T00:00:00Z", True),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4997836Z             ("9999-01-01T00:00:00Z", True),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4998094Z             ("2026-02-30T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4998361Z             ("2026-01-01T00:00:00.1234567Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4998683Z             ("2026-01-01T00:00:00+00:00", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4998944Z         ],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4999124Z     )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4999430Z     def test_utc_domain_readonly_and_mutation_match(application, stamp, valid):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.4999830Z         client, _ = application
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5000099Z         tokens, pid, iid = setup_project(client)
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5000372Z         payload = {
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5000589Z             "title": "Time boundary",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5001091Z             "owner_id": 2,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5001327Z             "iteration_id": iid,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5001709Z             "plan": {**PLAN, "planned_start": stamp, "planned_end": "9999-12-31T23:59:59.999999Z"},
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5002120Z             "dependency_task_ids": [],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5002370Z         }
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5002564Z >       request(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5002755Z             client,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5002970Z             "validateContractPayload",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5003228Z             token=tokens["manager"],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5003479Z             project_id=pid,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5003744Z             body={"category": 1, "payload": payload},
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5004042Z             expect=200 if valid else 422,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5004289Z         )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5004396Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5004502Z tmp/backend/contracts/986_http.py:537: 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5004816Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5005058Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5005242Z client = <starlette.testclient.TestClient object at 0x7f7d64888380>
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5006465Z operation = 'validateContractPayload'
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5006805Z token = '[REDACTED_EPHEMERAL_CI_TOKEN]'
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5007673Z body = {'category': 1, 'payload': {'title': 'Time boundary', 'owner_id': 2, 'iteration_id': 1, 'plan': {'planned_start': '1000-01-01T00:00:00Z', 'planned_end': '9999-12-31T23:59:59.999999Z', 'estimated_hours': 8, 'buffer_hours': 1, ...}, ...}}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5008553Z key = None, expect = 200, query = None, path = {'project_id': 1}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5008792Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5009073Z     def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5009522Z         op = OPERATIONS[operation]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5010021Z         headers = {"Authorization": f"***"} if token else {}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5010508Z         if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5010976Z             headers["Idempotency-Key"] = key or str(uuid4())
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5011302Z         response = client.request(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5011559Z             op["method"],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5011814Z             "/api/v1" + op["path"].format(**path),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5012352Z             headers=headers,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5012596Z             json=body,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5012813Z             params=query,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5013022Z         )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5013215Z         if expect is not None:
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5013511Z >           assert response.status_code == expect, response.text
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5014410Z E           AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"03c490ab-8928-477d-bca9-8ad0d0f4f5dd","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5015240Z E           assert 500 == 200
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5015745Z E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5016008Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5016148Z tmp/backend/contracts/986_http.py:35: AssertionError
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5016560Z ____ test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True] ____
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5016865Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5017334Z application = (<starlette.testclient.TestClient object at 0x7f7d6479e630>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x7f7d6790aed0>)
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5017975Z stamp = '9999-01-01T00:00:00Z', valid = True
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5018165Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5018269Z     @pytest.mark.parametrize(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5018507Z         "stamp,valid",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5018706Z         [
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5018899Z             ("0001-01-01T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5019147Z             ("0999-01-01T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5019730Z             ("1000-01-01T00:00:00Z", True),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5020142Z             ("9999-01-01T00:00:00Z", True),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5020460Z             ("2026-02-30T00:00:00Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5020724Z             ("2026-01-01T00:00:00.1234567Z", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5021007Z             ("2026-01-01T00:00:00+00:00", False),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5021284Z         ],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5021465Z     )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5021772Z     def test_utc_domain_readonly_and_mutation_match(application, stamp, valid):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5022159Z         client, _ = application
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5022430Z         tokens, pid, iid = setup_project(client)
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5022702Z         payload = {
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5022917Z             "title": "Time boundary",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5023172Z             "owner_id": 2,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5023405Z             "iteration_id": iid,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5023791Z             "plan": {**PLAN, "planned_start": stamp, "planned_end": "9999-12-31T23:59:59.999999Z"},
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5024214Z             "dependency_task_ids": [],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5024462Z         }
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5024643Z >       request(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5024833Z             client,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5025048Z             "validateContractPayload",
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5025310Z             token=tokens["manager"],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5025747Z             project_id=pid,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5026016Z             body={"category": 1, "payload": payload},
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5026313Z             expect=200 if valid else 422,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5026561Z         )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5026663Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5026774Z tmp/backend/contracts/986_http.py:537: 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5027088Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5027325Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5027518Z client = <starlette.testclient.TestClient object at 0x7f7d6479e630>
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5027888Z operation = 'validateContractPayload'
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5028206Z token = '[REDACTED_EPHEMERAL_CI_TOKEN]'
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5029051Z body = {'category': 1, 'payload': {'title': 'Time boundary', 'owner_id': 2, 'iteration_id': 1, 'plan': {'planned_start': '9999-01-01T00:00:00Z', 'planned_end': '9999-12-31T23:59:59.999999Z', 'estimated_hours': 8, 'buffer_hours': 1, ...}, ...}}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5029888Z key = None, expect = 200, query = None, path = {'project_id': 1}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5030293Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5030572Z     def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5031022Z         op = OPERATIONS[operation]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5031417Z         headers = {"Authorization": f"***"} if token else {}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5031882Z         if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5032339Z             headers["Idempotency-Key"] = key or str(uuid4())
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5032655Z         response = client.request(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5032920Z             op["method"],
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5033227Z             "/api/v1" + op["path"].format(**path),
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5033617Z             headers=headers,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5033851Z             json=body,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5034072Z             params=query,
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5034289Z         )
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5034483Z         if expect is not None:
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5034784Z >           assert response.status_code == expect, response.text
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5035857Z E           AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"d270d0ef-01b4-46a2-a6c2-f51f48466435","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5036708Z E           assert 500 == 200
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5037035Z E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5037297Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5037441Z tmp/backend/contracts/986_http.py:35: AssertionError
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5037956Z =============================== warnings summary ===============================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5038483Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5039513Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5040412Z     from starlette.testclient import TestClient as TestClient  # noqa
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5040685Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5041243Z persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[2-20-20-30-aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5042339Z persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[40-6000-9000-15000-6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3]
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5043347Z   ../tmp/backend/persistence/975_seed.py:166: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5043949Z     @pytest.mark.parametrize(
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5044115Z 
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5044316Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5044881Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/coverage/junit.xml -
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5045584Z =========================== short test summary info ============================
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5046839Z FAILED backend/contracts/986_http.py::test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True] - AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"03c490ab-8928-477d-bca9-8ad0d0f4f5dd","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5047961Z assert 500 == 200
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5048250Z  +  where 500 = <Response [500 Internal Server Error]>.status_code
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5049424Z FAILED backend/contracts/986_http.py::test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True] - AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"d270d0ef-01b4-46a2-a6c2-f51f48466435","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5050724Z assert 500 == 200
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5050988Z  +  where 500 = <Response [500 Internal Server Error]>.status_code
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:43.5051386Z ============ 2 failed, 389 passed, 3 warnings in 224.31s (0:03:44) =============
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5085855Z Wrote XML report to reports/ci/coverage/coverage.xml
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5086711Z Wrote JSON report to reports/ci/coverage/coverage.json
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5087257Z Wrote HTML report to reports/ci/coverage/html/index.html
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5087831Z Name                                    Stmts   Miss Branch BrPart   Cover   Missing
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5088471Z ------------------------------------------------------------------------------------
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5089115Z backend/t44/__init__.py                     0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5089779Z backend/t44/api.py                        163     12     74      3  91.98%   66->76, 82, 133-134, 176-184
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5090464Z backend/t44/cli.py                        101    101     26      0   0.00%   3-161
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5091081Z backend/t44/contracts/__init__.py          33      0     10      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5091694Z backend/t44/domain/__init__.py              0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5092309Z backend/t44/domain/commands.py             43      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5092956Z backend/t44/domain/models.py              161      3     22      3  96.72%   8, 121, 150
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5093649Z backend/t44/domain/state_machine.py       111      1     28      1  98.56%   215
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5094566Z backend/t44/messaging/__init__.py           0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5095225Z backend/t44/messaging/__main__.py          43     18      8      2  52.94%   27-45, 53, 57
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5096232Z backend/t44/messaging/broker.py           104     10     26      8  86.15%   24, 26, 89, 101-102, 105->exit, 115->119, 117-118, 133, 135, 140
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5097072Z backend/t44/messaging/facade.py            34      1      2      0  97.22%   25
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5097834Z backend/t44/messaging/worker.py            57      5     12      1  88.41%   39-40, 68, 69->81, 88-89
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5098639Z backend/t44/persistence/__init__.py         5      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5099413Z backend/t44/persistence/accounts.py        28      4      2      0  86.67%   62-65
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5100255Z backend/t44/persistence/codecs.py          27      6      8      4  71.43%   14, 17, 27, 30, 35, 43
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5101167Z backend/t44/persistence/delivery.py        85      5     26      6  90.09%   22, 74, 77, 111, 124->121, 144
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5102090Z backend/t44/persistence/engine.py          48      5     12      5  83.33%   22, 49, 59, 61, 63
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5102882Z backend/t44/persistence/errors.py           9      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5103952Z backend/t44/persistence/migrations.py     181     40     78     15  75.68%   59, 103-104, 150-151, 154, 158, 170, 172, 178, 180, 231, 247, 256, 264, 282, 287, 294-336, 344-345
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5105197Z backend/t44/persistence/rows.py           170     17     74     17  86.07%   40, 71, 79, 89, 142, 174, 179, 182, 184, 186, 198, 224, 230, 233, 239, 243, 264
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5106389Z backend/t44/persistence/scans.py           66      9     20      6  82.56%   17, 48, 51, 59-60, 75->81, 78-79, 100, 106
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5107265Z backend/t44/persistence/schema.py          69      2     36      2  96.19%   31, 53
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5108123Z backend/t44/persistence/seed.py           123      7     56      7  92.18%   46, 134, 316, 322, 360, 365, 382
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5109026Z backend/t44/persistence/uow.py             83      3     18      4  93.07%   40, 68, 78->84, 82
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5109837Z backend/t44/scheduling/__init__.py          3      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5110887Z backend/t44/scheduling/__main__.py         76     25     14      4  63.33%   32, 41, 60-98, 104, 108
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5111749Z backend/t44/scheduling/facade.py           72      5     12      1  90.48%   96-99, 202
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5112557Z backend/t44/scheduling/rules.py            97      1     28      0  99.20%   47
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5113313Z backend/t44/scheduling/runtime.py          23      0      6      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5114200Z backend/t44/scheduling/scanner.py          86     21     26      4  70.54%   17-18, 42, 62-64, 90-100, 126-131, 132->137
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5115044Z backend/t44/services/__init__.py            0      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5115999Z backend/t44/services/application.py        74      6     14      2  88.64%   110-111, 114-115, 163-164
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5116705Z backend/t44/services/codes.py              26      0      0      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5117426Z backend/t44/services/common.py            105      1     20      1  98.40%   24
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5118198Z backend/t44/services/errors.py             15      0      2      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5118978Z backend/t44/services/identity.py           76      4     14      4  91.11%   35, 40, 87, 112
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5119806Z backend/t44/services/projects.py           85      2     12      2  95.88%   71, 74
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5120577Z backend/t44/services/reviews.py            56      0      2      1  98.28%   146->151
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5121329Z backend/t44/services/runtime.py           142      6     44      1  96.24%   165, 276-277, 280-282
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5122072Z backend/t44/services/tasks.py              88      0     10      1  98.98%   54->51
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5122968Z backend/t44/services/workflow.py           70      0     26      0 100.00%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5123674Z backend/t44/settings.py                    27      4      6      3  78.79%   21, 33, 36, 46
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5124353Z ------------------------------------------------------------------------------------
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5124955Z TOTAL                                    2865    324    774    108  86.48%
+coverage	Run full suite and cover every production t44 Python module	2026-10-23T12:52:45.5181888Z ##[error]Process completed with exit code 1.
+contracts	Run contract, integration and fault tests against real services	﻿2026-10-23T12:48:56.9185939Z ##[group]Run python scripts/ci/run_tests.py contracts 2>&1 | tee reports/ci/contracts/console.log
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9186658Z ^[[36;1mpython scripts/ci/run_tests.py contracts 2>&1 | tee reports/ci/contracts/console.log^[[0m
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9249769Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9250133Z env:
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9250337Z   PYTHONPATH: backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9251089Z   DATABASE_URL: ***127.0.0.1:3306/t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9251402Z   T44_DATABASE: t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9251734Z   AMQP_URL: ***127.0.0.1:5672/t44_ci
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9252005Z   T44_SESSION_TTL_SECONDS: 3600
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9252322Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9252770Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9253218Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9253619Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9254053Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9254455Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:48:56.9254796Z ##[endgroup]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7756698Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7757733Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7758616Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7759732Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7760273Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7761088Z collected 391 items / 298 deselected / 93 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7761614Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7762072Z backend/contracts/985_mysql_http.py ............                         [ 12%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7763176Z backend/contracts/986_http.py ..........FF.............................. [ 58%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7764125Z ...................................                                      [ 95%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7765202Z backend/contracts/987_faults.py ....                                     [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7765805Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7766080Z =================================== FAILURES ===================================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7766993Z ____ test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True] ____
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7767632Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7768736Z application = (<starlette.testclient.TestClient object at 0x7fecc372a330>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x7fecc734fa40>)
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7770249Z stamp = '1000-01-01T00:00:00Z', valid = True
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7770833Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7771014Z     @pytest.mark.parametrize(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7771439Z         "stamp,valid",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7771829Z         [
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7772155Z             ("0001-01-01T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7772604Z             ("0999-01-01T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7773046Z             ("1000-01-01T00:00:00Z", True),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7773501Z             ("9999-01-01T00:00:00Z", True),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7773935Z             ("2026-02-30T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7774389Z             ("2026-01-01T00:00:00.1234567Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7774865Z             ("2026-01-01T00:00:00+00:00", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7775304Z         ],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7775607Z     )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7776115Z     def test_utc_domain_readonly_and_mutation_match(application, stamp, valid):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7776542Z         client, _ = application
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7776835Z         tokens, pid, iid = setup_project(client)
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7777119Z         payload = {
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7777336Z             "title": "Time boundary",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7777583Z             "owner_id": 2,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7777812Z             "iteration_id": iid,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7778197Z             "plan": {**PLAN, "planned_start": stamp, "planned_end": "9999-12-31T23:59:59.999999Z"},
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7778884Z             "dependency_task_ids": [],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7779143Z         }
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7779329Z >       request(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7779515Z             client,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7779732Z             "validateContractPayload",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7779997Z             token=tokens["manager"],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7780251Z             project_id=pid,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7780850Z             body={"category": 1, "payload": payload},
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7781167Z             expect=200 if valid else 422,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7781422Z         )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7781522Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7781630Z tmp/backend/contracts/986_http.py:537: 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7781949Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7782181Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7782377Z client = <starlette.testclient.TestClient object at 0x7fecc372a330>
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7782774Z operation = 'validateContractPayload'
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7783115Z token = '[REDACTED_EPHEMERAL_CI_TOKEN]'
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7784006Z body = {'category': 1, 'payload': {'title': 'Time boundary', 'owner_id': 2, 'iteration_id': 1, 'plan': {'planned_start': '1000-01-01T00:00:00Z', 'planned_end': '9999-12-31T23:59:59.999999Z', 'estimated_hours': 8, 'buffer_hours': 1, ...}, ...}}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7784922Z key = None, expect = 200, query = None, path = {'project_id': 1}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7785316Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7785603Z     def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7786071Z         op = OPERATIONS[operation]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7786552Z         headers = {"Authorization": f"***"} if token else {}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7787027Z         if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7787509Z             headers["Idempotency-Key"] = key or str(uuid4())
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7787831Z         response = client.request(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7788090Z             op["method"],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7788335Z             "/api/v1" + op["path"].format(**path),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7788625Z             headers=headers,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7788843Z             json=body,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7789048Z             params=query,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7789275Z         )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7789468Z         if expect is not None:
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7789761Z >           assert response.status_code == expect, response.text
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7790956Z E           AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"b3291436-2444-4f9c-bbcb-d1e4c9fb349c","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7791849Z E           assert 500 == 200
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7792169Z E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7792436Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7792575Z tmp/backend/contracts/986_http.py:35: AssertionError
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7793010Z ____ test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True] ____
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7793312Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7793802Z application = (<starlette.testclient.TestClient object at 0x7fecc3678380>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x7fecc3878e60>)
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7794482Z stamp = '9999-01-01T00:00:00Z', valid = True
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7794712Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7794822Z     @pytest.mark.parametrize(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7795058Z         "stamp,valid",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7795256Z         [
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7795440Z             ("0001-01-01T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7795695Z             ("0999-01-01T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7795954Z             ("1000-01-01T00:00:00Z", True),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7796212Z             ("9999-01-01T00:00:00Z", True),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7796468Z             ("2026-02-30T00:00:00Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7796735Z             ("2026-01-01T00:00:00.1234567Z", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7797174Z             ("2026-01-01T00:00:00+00:00", False),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7797429Z         ],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7797601Z     )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7797905Z     def test_utc_domain_readonly_and_mutation_match(application, stamp, valid):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7798297Z         client, _ = application
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7798560Z         tokens, pid, iid = setup_project(client)
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7798841Z         payload = {
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7799062Z             "title": "Time boundary",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7799313Z             "owner_id": 2,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7799542Z             "iteration_id": iid,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7799924Z             "plan": {**PLAN, "planned_start": stamp, "planned_end": "9999-12-31T23:59:59.999999Z"},
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7800353Z             "dependency_task_ids": [],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7800954Z         }
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7801137Z >       request(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7801326Z             client,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7801552Z             "validateContractPayload",
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7801839Z             token=tokens["manager"],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7802090Z             project_id=pid,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7802347Z             body={"category": 1, "payload": payload},
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7802644Z             expect=200 if valid else 422,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7802895Z         )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7803005Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7803112Z tmp/backend/contracts/986_http.py:537: 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7803569Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7803808Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7803996Z client = <starlette.testclient.TestClient object at 0x7fecc3678380>
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7804384Z operation = 'validateContractPayload'
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7804702Z token = '[REDACTED_EPHEMERAL_CI_TOKEN]'
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7805579Z body = {'category': 1, 'payload': {'title': 'Time boundary', 'owner_id': 2, 'iteration_id': 1, 'plan': {'planned_start': '9999-01-01T00:00:00Z', 'planned_end': '9999-12-31T23:59:59.999999Z', 'estimated_hours': 8, 'buffer_hours': 1, ...}, ...}}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7806474Z key = None, expect = 200, query = None, path = {'project_id': 1}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7806729Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7807012Z     def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7807489Z         op = OPERATIONS[operation]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7807863Z         headers = {"Authorization": f"***"} if token else {}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7808331Z         if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7808808Z             headers["Idempotency-Key"] = key or str(uuid4())
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7809130Z         response = client.request(
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7809388Z             op["method"],
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7809630Z             "/api/v1" + op["path"].format(**path),
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7809911Z             headers=headers,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7810131Z             json=body,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7810343Z             params=query,
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7810826Z         )
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7811022Z         if expect is not None:
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7811316Z >           assert response.status_code == expect, response.text
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7812253Z E           AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"eebabd28-ed55-402d-a442-a17d97626676","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7813141Z E           assert 500 == 200
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7813456Z E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7813722Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7813862Z tmp/backend/contracts/986_http.py:35: AssertionError
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7814222Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7814751Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7815955Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7816886Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7817172Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7817384Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7817995Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/contract.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7818541Z =========================== short test summary info ============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7819856Z FAILED backend/contracts/986_http.py::test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True] - AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"b3291436-2444-4f9c-bbcb-d1e4c9fb349c","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7821283Z assert 500 == 200
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7821565Z  +  where 500 = <Response [500 Internal Server Error]>.status_code
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7822855Z FAILED backend/contracts/986_http.py::test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True] - AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"eebabd28-ed55-402d-a442-a17d97626676","audit_id":null,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7824193Z assert 500 == 200
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7824461Z  +  where 500 = <Response [500 Internal Server Error]>.status_code
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:49:37.7824881Z =========== 2 failed, 91 passed, 298 deselected, 1 warning in 38.54s ===========
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3591357Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3592130Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3592844Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3593374Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3593732Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3594136Z collected 391 items / 328 deselected / 63 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3594468Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3594794Z backend/contracts/985_mysql_http.py ............                         [ 19%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3595556Z backend/messaging/976_process_mysql.py .                                 [ 20%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3596309Z backend/messaging/977_rabbit.py ...                                      [ 25%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3597031Z backend/messaging/979_facade.py ......                                   [ 34%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3597757Z backend/messaging/980_delivery.py ....                                   [ 41%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3598491Z backend/persistence/988_mysql.py ...............                         [ 65%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3599243Z backend/scheduling/974_application.py ......................             [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3599703Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3599926Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3601078Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3602693Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3604524Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3605051Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3605414Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3606464Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/integration.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3607473Z ================ 63 passed, 328 deselected, 1 warning in 39.83s ================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3608486Z ============================= test session starts ==============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3609158Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3609807Z rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3610303Z configfile: pyproject.toml
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3610956Z plugins: anyio-4.15.1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3611381Z collected 391 items / 384 deselected / 7 selected
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3611756Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3612114Z backend/contracts/987_faults.py ....                                     [ 57%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3612956Z backend/messaging/976_process_mysql.py .                                 [ 71%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3613826Z backend/messaging/977_rabbit.py ..                                       [100%]
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3614335Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3614589Z =============================== warnings summary ===============================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3615531Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3617394Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3619027Z     from starlette.testclient import TestClient as TestClient  # noqa
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3619521Z 
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3621965Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3623000Z - generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/contracts/fault.xml -
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3623975Z ================= 7 passed, 384 deselected, 1 warning in 5.68s =================
+contracts	Run contract, integration and fault tests against real services	2026-10-23T12:50:24.3681212Z ##[error]Process completed with exit code 1.

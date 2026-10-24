@@ -1,0 +1,72 @@
+{
+  "report_version": "1.0.0",
+  "created_utc": "2026-10-24T09:30:29.162421+00:00",
+  "run_id": "852_sut_task_flow_v1",
+  "sut_source_identity": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "counts": {
+    "planned_catalog_entries_or_boundary_families": 1396,
+    "actual_http_attempts": 1,
+    "http_200_responses": 1,
+    "distinct_catalog_case_ids_touched": 1,
+    "completed_formal_functional_cases_passed": 0,
+    "worker_profiles_started": 0,
+    "warmup_seconds_executed": 0,
+    "steady_seconds_executed": 0,
+    "formal_performance_cohorts_completed": 0,
+    "formal_performance_cohorts_required": 3
+  },
+  "frozen_assertion": {
+    "result": "FAIL",
+    "assertion": "X-Request-ID value must equal JSON meta.request_id",
+    "implementation": "852_oracle.py response_oracle; preserved original freeze7a16aaad6d06c85d764def88cef9d8c6a8b5a6d7169a9aff521c97c87bae5254"
+  },
+  "original_authority": {
+    "sources_only": [
+      "specs/sources/T44-taskbook.txt",
+      "specs/requirements.md",
+      "specs/business-rules.md",
+      "specs/contracts/openapi.json"
+    ],
+    "contract_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "pointers": [
+      "#/paths/~1auth~1login/post/responses/200/headers/X-Request-ID",
+      "#/components/schemas/Meta/properties/request_id"
+    ],
+    "literal_header_description": "服务端生成的关联ID；不信任客户端身份字段。",
+    "schema_facts": "Both header and body IDs are separately required nonempty strings of at most128characters.",
+    "equality_clause": "No explicit normative header/body equality clause found in the four allowed original/frozen sources."
+  },
+  "assessment": {
+    "proven": "One real200HTTPS response carried different header/body correlation IDs as observed by the frozen client. Original frozen oracle rejected it and stopped setup.",
+    "sut_requirement_violation": "NOT_PROVEN",
+    "oracle_implementation_assumption": "The cross-field equality check is stronger than the explicit available contract schema/text; treat as an unsupported/underspecified oracle invariant, not a proven mandatory application defect.",
+    "functional_application_acceptance": "NOT_PROVEN",
+    "performance": "NOT_RUN",
+    "root_cause": "NOT_DETERMINED; no app source/development logs/proxy implementation were read."
+  },
+  "common_precondition_scope": "All three materialized profiles use the same initial login response oracle before starting any400-worker workload. This failed shared gate prevents all three; repeated identical attempts are unnecessary.",
+  "limitations": [
+    "Normalized response-header value was recorded; raw wire-header lines were not retained, so duplicate-header count and emitting hop cannot be determined.",
+    "200authentication alone is not full functional acceptance. No state-flow, contract-validation or escalation workload executed.",
+    "No wall-clock shortcut, smaller concurrency, bypassed capture or weaker assertion was used.",
+    "Offline calibration72/800/2800checks and planned1396families do not count as application tests."
+  ],
+  "evidence": {
+    "ciphertext_bytes": 960,
+    "ciphertext_sha256": "4a62a7a3e1bdedc7def9e9f0a8644ec5fa83ec69e2f8335e6202a878c1aa923b",
+    "metadata_sha256": "e1cb1ea3fc939ed45405b2ac95d69d7e149a54b8be766ebbfdfe47c242aef74a",
+    "hmac_authenticated_before_decrypt": true,
+    "raw_file_sha256": "039a32a5fc0f792fbe55b580109ecb602756a740dacec2f2dd942fb42f6011d0",
+    "private_logs_and_other_cases": "NOT_PUBLISHED"
+  },
+  "status": "INTERIM_TEST_ORACLE_BLOCKER_REQUIREMENT_VIOLATION_NOT_PROVEN",
+  "publication": "Coordinator privacy-minimized transcription of explicitly released independent interim report; private origin and observed concrete request IDs omitted.",
+  "published_source_sha256": "8d1c4018354ac0a574f59b221f917b22c20587a89685357accc813d54fbb3361",
+  "observed_request": {
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200,
+    "strict_tls_verification": true
+  },
+  "observed_response_difference": "normalized X-Request-ID differed from JSON meta.request_id; raw header lines not retained; emitting hop/duplicate count unproven"
+}

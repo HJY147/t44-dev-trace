@@ -1,0 +1,19 @@
+................................F..                                      [100%]
+=================================== FAILURES ===================================
+______________ test_query_selectors_and_project_reference_errors _______________
+backend/tests/contracts/test_http.py:921: in test_query_selectors_and_project_reference_errors
+    result = request(
+backend/tests/contracts/test_http.py:31: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"code":"DEPENDENCY_SELF_REFERENCE","message":"Dependency self reference","request_id":"44ed288b-1f8a-4a73-8866-3fb0737ad9bc","audit_id":17,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E   assert 422 == 409
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend/tests/contracts/test_http.py::test_query_selectors_and_project_reference_errors
+1 failed, 34 passed, 1 warning in 6.70s

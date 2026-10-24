@@ -1,0 +1,50 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/review-session
+
+stderr | tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > does not let an unmounted old form error refresh and erase a new login context
+[Vue Router warn]: No match found for location with path "/"
+[Vue Router warn]: No match found for location with path "/"
+[Vue Router warn]: No match found for location with path "/tasks"
+[Vue Router warn]: No match found for location with path "/schedule"
+[Vue Router warn]: No match found for location with path "/reviews"
+[Vue Router warn]: No match found for location with path "/notifications"
+[Vue Router warn]: No match found for location with path "/audit"
+
+stderr | tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > does not let an unmounted old form error refresh and erase a new login context
+[Vue Router warn]: No match found for location with path "/"
+[Vue Router warn]: No match found for location with path "/"
+[Vue Router warn]: No match found for location with path "/tasks"
+[Vue Router warn]: No match found for location with path "/schedule"
+[Vue Router warn]: No match found for location with path "/reviews"
+[Vue Router warn]: No match found for location with path "/notifications"
+[Vue Router warn]: No match found for location with path "/audit"
+
+stdout | tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > does not let an unmounted old form error refresh and erase a new login context
+REVIEWER_ORPHAN_FORM_TRACE {"orphanReads":["/api/v1/projects/2","/api/v1/projects/2/members","/api/v1/projects/2/iterations"],"tokenUnchanged":true,"currentUser":2,"projectAfterOldFailure":{}}
+
+ ✓ tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > keeps the latest of concurrent same-project context reads 2ms
+ ✓ tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > preserves a newly logged-in identity when an older logout success arrives after current-session 401 1ms
+ × tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > does not let an unmounted old form error refresh and erase a new login context 82ms
+   → expected undefined to be '新身份项目' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tmp/frontend/895_session_lifecycle_probe.test.ts > reviewer targeted session lifecycle probes on exact 3c160c5 > does not let an unmounted old form error refresh and erase a new login context
+AssertionError: expected undefined to be '新身份项目' // Object.is equality
+
+- Expected:
+"新身份项目"
+
++ Received:
+undefined
+
+ ❯ tmp/frontend/895_session_lifecycle_probe.test.ts:67:36
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  02:55:08
+   Duration  2.73s (transform 69%, import 21%, environment 7%, tests 3%)

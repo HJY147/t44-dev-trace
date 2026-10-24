@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment/deployment/.venv/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--config",
+    "scripts/ci/ruff.toml",
+    "tmp/deployment/864_native_serve_driver.py",
+    "tmp/deployment/871_native_application.py"
+  ],
+  "exit_code": 1,
+  "stdout": "UP022 Prefer `capture_output` over sending `stdout` and `stderr` to `PIPE`\n  --> tmp/deployment/864_native_serve_driver.py:58:12\n   |\n56 | argv = old['argv']\n57 | start = now()\n58 | prepared = subprocess.run(argv, cwd=WORK, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)\n   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n59 | for suffix, raw in (('stdout', prepared.stdout), ('stderr', prepared.stderr)):\n60 |     appmod.private_write(AUDIT / ('prepare.' + suffix), raw)\n   |\nhelp: Replace with `capture_output` keyword argument\n   |\n57 | start = now()\n   - prepared = subprocess.run(argv, cwd=WORK, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)\n58 + prepared = subprocess.run(argv, cwd=WORK, capture_output=True, check=False)\n59 | for suffix, raw in (('stdout', prepared.stdout), ('stderr', prepared.stderr)):\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nB007 Loop control variable `index` not used within loop body\n   --> tmp/deployment/871_native_application.py:436:13\n    |\n434 |         appmod.write_json(state / \"serve-owner.json\", self.identity)\n435 |         records = []\n436 |         for index, role in enumerate((\"api\", \"consumer\", \"scanner\", \"ui\")):\n    |             ^^^^^\n437 |             for generation in (\"old\", \"current\"):\n438 |                 record = {\"role\": role, \"generation\": generation, \"pid\": 1000 + len(records)}\n    |\nhelp: Rename unused `index` to `_index`\n    |\n435 |         records = []\n    -         for index, role in enumerate((\"api\", \"consumer\", \"scanner\", \"ui\")):\n436 +         for _index, role in enumerate((\"api\", \"consumer\", \"scanner\", \"ui\")):\n437 |             for generation in (\"old\", \"current\"):\n    |\nnote: This is an unsafe fix and may change runtime behavior\n\nFound 2 errors.\n2 unsafe fixes available with `--fix --unsafe-fixes`.\n",
+  "stderr": "",
+  "scope": "Static-only reproduction,not rerun of remote CI40047094732"
+}

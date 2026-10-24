@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-10-23T22:29:27.553102+00:00",
+  "base_sha": "5148733398868002eb4eafad6a9ea207defe0412",
+  "original_metadata_sha256": "d30eb37ceab0aa689977206ca2060d221cd88a4463b24babfbebd84bf79ececf",
+  "hypothesis": "Membership checks may count both init wrapper and actual Python module supervisor when argv tails contain the same uvicorn command. This is not an established stage05 cause.",
+  "fixture": "Only pytest temporary fake /proc: init wrapper argv, actual python -m uvicorn t44.api:app --workers 4, four multiprocessing spawn_main argv entries. No real process/proc, Docker, private data or old-run replay.",
+  "planned_red": "Run unmodified API_SCRIPT against fake /proc and require one supervisor, [4] configured workers, four spawn processes. Preserve failing stdout/trace/exit code.",
+  "conditional_fix": "Only after red: recognize an explicit Python executable followed by -m uvicorn t44.api:app; do not relax supervisor_count == 1.",
+  "planned_green": "Same wrapper counterexamples plus strict rejection of two actual supervisors and original API projection guard; targeted Ruff.",
+  "historical_boundary": "b3ee/H11 incomplete snapshots unchanged; synthetic counterexample does not determine actual stage05 cause."
+}

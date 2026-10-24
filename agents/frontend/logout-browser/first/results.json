@@ -1,0 +1,559 @@
+{
+  "checkedAt": "2026-10-23T18:44:31.803Z",
+  "origin": "http://127.0.0.1:5176",
+  "operator": "AI frontend developer",
+  "screenshots": [
+    "1440-signed-in.png",
+    "1440-logged-out.png",
+    "1440-back.png",
+    "1440-expired.png",
+    "390-signed-in.png",
+    "390-logged-out.png",
+    "390-back.png",
+    "390-expired.png"
+  ],
+  "layouts": [
+    {
+      "label": "1440-signed-in",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "label": "1440-logged-out",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "label": "1440-back",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "label": "1440-expired",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "label": "390-signed-in",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "label": "390-logged-out",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "label": "390-back",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "label": "390-expired",
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ],
+  "checks": [
+    {
+      "width": 1440,
+      "logout": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "back": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "reload": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "expired": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "logoutStatus": 200,
+      "revokedOnlyCurrentSession": true
+    },
+    {
+      "width": 390,
+      "logout": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "back": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "reload": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "expired": {
+        "authenticatedShells": 0,
+        "projectNameRetained": false,
+        "cards": 0,
+        "overlays": 0
+      },
+      "logoutStatus": 200,
+      "revokedOnlyCurrentSession": true
+    }
+  ],
+  "pageErrors": [],
+  "api": [
+    {
+      "width": 1440,
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "requestId": "381b0914-979e-42a2-8106-6f33d1d29472"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "requestId": "67bd2ef1-14bc-499c-af34-4e6051bbdb22"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200,
+      "requestId": "87cd98d0-1e69-4db5-b807-000af04c2433"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "0f9346f9-dd86-47d7-a58c-9ad90d64d535"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "080088f8-2c1d-4371-b02f-41b3635ee594"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "04be3b1f-e899-436c-a6a7-305dd35b07d4"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "031193d3-377a-40d2-96bd-5d715ac451fb"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "c85cc803-990b-4a6e-9f38-1544599b1e89"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "af72ea60-3ed1-4131-9330-dac15e936fac"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "e0d42117-39f9-4a8d-9389-4b569728e91f"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "9dac2d49-7e23-4a25-bc58-a7aba4cc0875"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "6a8cbe04-70c4-4843-b3c7-e5474f4600b6"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "e69b8c79-fca8-4b47-8085-477013ce1d3a"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "46278710-5213-42e4-830e-529e1a1bc315"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "a5e21c4b-e9fb-4ec4-9da5-1a494c41f75a"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/tasks",
+      "status": 200,
+      "requestId": "f9c5a8b4-4688-4b67-b3a3-9d371a50f066"
+    },
+    {
+      "width": 1440,
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "status": 200,
+      "requestId": "488d187e-977f-410d-b9d0-b2def54eb71b"
+    },
+    {
+      "width": 1440,
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "requestId": "626a573f-1750-462c-a8d3-5b6ea3abd983"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "requestId": "aa06e53d-536a-4fe6-9e52-e481908e2d67"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200,
+      "requestId": "968e4f62-e82a-43d7-9993-eeca5a8a0b20"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "b849117b-fed7-4e20-897b-c4db578ef5b5"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "36cc9301-d525-4abc-9ee0-fd7f55d9998d"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "4d070dcf-6a9a-4603-bfdf-ef0e7a030155"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "251fb35d-a64c-49ff-b23a-04c0db816907"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "caee5dc2-ad2b-4fcc-bfa6-68c784861a89"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "3513b448-bd29-4d21-8c73-ae10ac9ee622"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "98332ec9-9104-45d0-846b-b2561ab2f774"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 401,
+      "requestId": "beb5eb5b-6547-4744-9541-84bfecb7d1b5"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 401,
+      "requestId": "5d08d8b3-bfc4-4d23-b1d7-fcbfa837f9c7"
+    },
+    {
+      "width": 1440,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 401,
+      "requestId": "7ba55c61-581c-4ddf-aa65-5417287c74a6"
+    },
+    {
+      "width": 390,
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "requestId": "3ec1e1a1-0c1c-4f2d-a97e-cc4ae372c8fb"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "requestId": "abc4fd96-47d6-4eec-a45b-eb6b560ed014"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200,
+      "requestId": "ac8cfdb6-4907-4144-8c36-b10bd76ef71d"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "902966a2-2d77-4a1c-bb34-3d049e714fa6"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "2aeb3585-e9e8-4444-9dc1-5dccafce3529"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "865687d1-ecc9-49fa-a440-ad5e7a7ff981"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "8a5025ae-ef48-4686-95b0-1fe3c5fb9ea2"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "2aa088f5-d625-4f98-815f-be0fb2e84a2e"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "6f450bca-1146-4296-b5b8-483372b1c950"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "c14e1d50-0abb-4e07-a176-2b865174c3ec"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "267d1d1f-3584-4679-b0ad-8dd5703064da"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "d2761084-f706-4178-8859-639779abcc09"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "ff9aff36-7ba1-473f-83f3-ed2ce2b1f022"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "d0c33a00-cc3c-4537-b715-74a16186805f"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "5794619f-dcbe-4e6e-80df-af639b7897db"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/tasks",
+      "status": 200,
+      "requestId": "9788a90c-fc8f-4f80-a8bb-5c18bb989d2d"
+    },
+    {
+      "width": 390,
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "status": 200,
+      "requestId": "bdba1e0a-4fa0-413a-8683-9ef2006f6bbc"
+    },
+    {
+      "width": 390,
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "requestId": "ce55d977-dfde-46c1-8637-bb52e1919e57"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "requestId": "c34c0e22-ccf3-4a50-82fc-1f8e6545cbf6"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/dictionaries",
+      "status": 200,
+      "requestId": "4890b923-2324-47fc-a26c-fc49f806813b"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "69700c0a-ccec-4c08-a1f3-b1139da43a2d"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 200,
+      "requestId": "65c04331-81d6-4737-84e9-ffd96e4416f1"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 200,
+      "requestId": "adb91f58-8793-4fcf-a1ab-4e490ecfeb5d"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 200,
+      "requestId": "bfbd4cf8-936e-4dea-9042-48da4eb25ce9"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/escalation-rules",
+      "status": 200,
+      "requestId": "57ea1715-f624-4ad2-b37e-957eb9f0f5de"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/review-template",
+      "status": 200,
+      "requestId": "fc1196b2-67a0-4548-8055-4b71015f05e6"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "status": 200,
+      "requestId": "a47fc297-5456-46e6-a6f9-85d18698e2b9"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/members",
+      "status": 401,
+      "requestId": "237fe963-fcbe-43f4-973f-5e187870203a"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1/iterations",
+      "status": 401,
+      "requestId": "7e992dae-c64c-4728-8ff8-958845859d6b"
+    },
+    {
+      "width": 390,
+      "method": "GET",
+      "path": "/api/v1/projects/1",
+      "status": 401,
+      "requestId": "7b027c46-860b-4236-9a6b-b3dfc0fefda8"
+    }
+  ],
+  "businessWrites": 0,
+  "controlActions": [
+    {
+      "width": 1440,
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "status": 200,
+      "purpose": "revoke this browser session without changing frontend memory"
+    },
+    {
+      "width": 390,
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "status": 200,
+      "purpose": "revoke this browser session without changing frontend memory"
+    }
+  ],
+  "passed": true,
+  "chromeClosedAt": "2026-10-23T18:44:35.566Z"
+}

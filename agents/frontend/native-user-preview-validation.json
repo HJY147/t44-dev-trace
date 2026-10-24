@@ -1,0 +1,177 @@
+{
+  "at_utc": "2026-10-24T00:12:29.000984+00:00",
+  "operator": "AI frontend developer",
+  "stage": "native full-demo ordinary entry developer verification only",
+  "basis_commit": "13cce419d5232126324ad88c88c26c60dd4a7334",
+  "design_commit": "c300560cb1e0513a47751f7110ed59714cf3b668",
+  "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "product_code_diff_from_bc5_empty": true,
+  "source_identity": {
+    "file": "agents/deployment/native-bounded-demo-validation/user-demo-operational-binding.json",
+    "sha256": "b15228004ae1f98d27c7095b03062f2233c7aa4266655832085e0085213fafae",
+    "sourceFilesVerifiedByDeploymentOwner": 92,
+    "sourceIdentityLimit": "Published deployment/root binding, not this browser independently hashing live source or process memory."
+  },
+  "target": {
+    "web": "http://127.0.0.1:5178",
+    "api": "http://127.0.0.1:18088",
+    "owner_controller_pid": 43819,
+    "deadline_beijing": "2026-10-24T11:49:43+08:00",
+    "service_or_configuration_changes_by_frontend": false
+  },
+  "driver": {
+    "path": "tmp/frontend/861_native_user_preview.mjs",
+    "sha256": "7a48d4eb223863cd053edd2fa1f38ac150a692bde4e0d5ab08be51035ab4f6bd",
+    "root_allocated": true,
+    "read_limit": 80,
+    "attempts": 1,
+    "exit_code": 0,
+    "original907_path": "tmp/frontend/907_demo_preview_smoke.mjs",
+    "original907_sha256": "3bcfbd7022dc450307defa2a8da6cf729e09c15b70819ad6f73f632df1e1e587",
+    "original907_unchanged": true,
+    "original907_executed_this_stage": false,
+    "reason_for_narrow_new_driver": "Original907 has no task/notification/audit/normallogout or successful response status capture; new861 authorized before creation."
+  },
+  "ordinary_login": {
+    "source_private_file": ".submission-private/完整演示登录说明.md",
+    "source_mode": "0600",
+    "adapter_mode": "0600",
+    "values_publicly_printed": false,
+    "internal_service_credentials_read": false,
+    "login_posts": 2,
+    "logout_posts": 2,
+    "note": "Ordinary auth sessions may write DB; no all-DB-zero-write claim."
+  },
+  "requests": {
+    "total": 70,
+    "get": 66,
+    "session_post": 4,
+    "business_mutations": 0,
+    "blocked": 0,
+    "failed": 0,
+    "response_status_counts": {
+      "200": 70
+    },
+    "responses_with_request_id": 70,
+    "no_headers_bodies_tokens_or_auth_parameters_saved": true
+  },
+  "views": [
+    {
+      "width": 1440,
+      "label": "project-selection",
+      "projectId": 2,
+      "selectableExistingProjects": 2
+    },
+    {
+      "width": 1440,
+      "label": "tasks",
+      "path": "/tasks",
+      "scrollWidth": 1440,
+      "cards": 20,
+      "heading": "交付任务",
+      "notificationStatistics": null
+    },
+    {
+      "width": 1440,
+      "label": "notifications",
+      "path": "/notifications",
+      "scrollWidth": 1440,
+      "cards": 5,
+      "heading": "通知中心",
+      "notificationStatistics": "未读 5 条未处理 5 条"
+    },
+    {
+      "width": 1440,
+      "label": "audit",
+      "path": "/audit",
+      "scrollWidth": 1440,
+      "cards": 20,
+      "heading": "审计记录",
+      "notificationStatistics": null
+    },
+    {
+      "width": 390,
+      "label": "project-selection",
+      "projectId": 2,
+      "selectableExistingProjects": 2
+    },
+    {
+      "width": 390,
+      "label": "tasks",
+      "path": "/tasks",
+      "scrollWidth": 390,
+      "cards": 20,
+      "heading": "交付任务",
+      "notificationStatistics": null
+    },
+    {
+      "width": 390,
+      "label": "notifications",
+      "path": "/notifications",
+      "scrollWidth": 390,
+      "cards": 5,
+      "heading": "通知中心",
+      "notificationStatistics": "未读 5 条未处理 5 条"
+    },
+    {
+      "width": 390,
+      "label": "audit",
+      "path": "/audit",
+      "scrollWidth": 390,
+      "cards": 20,
+      "heading": "审计记录",
+      "notificationStatistics": null
+    }
+  ],
+  "normal_logout": [
+    {
+      "width": 1440,
+      "status": 200,
+      "loginFormVisible": true,
+      "authenticatedShellAbsent": true
+    },
+    {
+      "width": 390,
+      "status": 200,
+      "loginFormVisible": true,
+      "authenticatedShellAbsent": true
+    }
+  ],
+  "console": {
+    "events": 4,
+    "types": {
+      "debug": 4
+    },
+    "errors_or_warnings": 0,
+    "note": "Only Vite connecting/connected debug messages; raw sanitized summaries preserved."
+  },
+  "page_errors": [],
+  "protected_nine_listener_identities_before_after_equal": true,
+  "screenshots_viewed": [
+    "agents/frontend/native-user-preview-first/1440-tasks.png",
+    "agents/frontend/native-user-preview-first/1440-notifications.png",
+    "agents/frontend/native-user-preview-first/1440-audit.png",
+    "agents/frontend/native-user-preview-first/390-tasks.png",
+    "agents/frontend/native-user-preview-first/390-notifications.png",
+    "agents/frontend/native-user-preview-first/390-audit.png"
+  ],
+  "screenshot_privacy": "No login input pages captured; desktop account display masked by Playwright; visible data is synthetic fixture.",
+  "browser_closed_at": "2026-10-24T00:10:43.616Z",
+  "raw_log": {
+    "raw_archive": "agents/frontend/native-user-preview-first.raw.log.gz",
+    "raw_sha256": "252f25730b631bdbf21004b5bba07c6e70ce57c3ac05cff88dc6831121dcd93e",
+    "readable_sha256": "252f25730b631bdbf21004b5bba07c6e70ce57c3ac05cff88dc6831121dcd93e"
+  },
+  "result": "agents/frontend/native-user-preview-first/results.json",
+  "preexecution_findings": [
+    "Read-only component filename probes Sidebar.vue/AppSidebar.vue absent; corrected to actual SidebarNavigation.vue, no runtime side effect.",
+    "Static frozen-path inspection corrected an assumed users/me/notifications selector to actual /me/notifications before first execution; no request used the wrong endpoint."
+  ],
+  "limits": [
+    "Single bounded developer entry smoke, not independent acceptance, pressure test, full functional reacceptance or completed4h demonstration.",
+    "Published deployment/root binding proves intended bc5/92file source; browser does not independently hash process memory or live runner source.",
+    "Only project2 chosen from2 existing projects;20 task cards/5 notification cards/20 audit cards are visible page counts, not claims of every record or all roles.",
+    "No business change/notification marking/reset/service restart/config change; background MQ/scans may progress existing fixture independently.",
+    "No private independent test files/data read and no contact with tester."
+  ]
+}
