@@ -434,3 +434,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 准确C应用与74a相同，证据分支E只报告/日志/原件，未新增本机HTTP/SQL/测试/负载。候选开发CI通过不改变cloc6307/exit1、DB EXPLAIN非收益、专审/根门槛/集成与正式验收尚待的边界。阶段交接后释放，不自主合分支或继续性能。
 
 - 准确C终态Issue3 6377962466已body-file发表/全文GET逐字核，PR42终态正文逐字GET且head仍C/draft。封档E不触发新源码CI，不推动候选头；原阶段pending评论不覆盖。
+
+## D008：发布双失效错误顺序，设计阶段
+
+- 用户U021真实选择由根D008记载；从最新根14b57c6新分支codex/backend-release-error-priority-rfc，不混859。先读AGENTS/D008/U021/v1.1freeze及Workflow/domain/Runtime/contract真实源。纯RFC specs/changes/release-error-priority-rfc.md列具体I/O/原guard顺序与结果矩阵，应用/测试/14冻结不改，静态14hash一致；不运行suite/SUT/CI/服务/负载。
+- 推荐最小仅改原批准引用失败槽的错误选择：先看delivery/schedule是否失效，双失效BASELINE，基线有效APPROVAL；引用匹配保留原domain次序。真实state/经理角色/代码评审在adapter引用失败后，未伪称全部前置；同这些晚期错误组合的全局总序列为范围待限定审核，不借D008搬其它guard。请求assessment_version/taskexpected/资源归属/身份及missing/跨任务/其它action原路径保持。
+- 技术版本建议1.2.0，info/外层Meta和两OpenAPI一致，候选schema内层1.0.0保持。列出需规/业务/AGENTS/README/design/前端说明及新父链范围，DDL/ID/锁/事务无变化；旧v1.1及F08原FAIL/未执行尾部/WordZIP不回写。新回归只计划，未实施；859不重复。作者设计后端AI，业务决定用户，不记用户改码。11/28与费用先报价边界仅记录，不产生费用。
+
+- D008纯RFC Issue3 6379327041已body-file发表/全文GET逐字核；仅静态源码/JSON文本与hash核对，不冒称测试。阶段提交后等待限定设计审查与root新freeze。

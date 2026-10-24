@@ -270,3 +270,7 @@ JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300c
 
 
 准确C终态补充：新product40047832510四job和Docker40047836840均success；全510/0失败错误skip、44Python行89.212039%/分支79.975728%且excluded0，FE89/20TSVue行93.33%。Docker actual9b53812父dde39+C、169相关运行文件等同，4workers/19表恢复通过。原74a static红仍在原汇总，固定cloc6307仍失败。准确C新汇总records/validation/composite-dependency-query-b66-ci.json；E仅证据，不改变PR42产品C或冒充E另测。专审/根门槛与性能/独立验收仍另决，本阶段结束释放。
+
+## D008设计候选（尚无实现）
+
+RFC specs/changes/release-error-priority-rfc.md基root14b57c6，明确双失效先BASELINE再新评估/批准，保留原批准引用匹配后的domain顺序及鉴权/资源/请求版本前置。仅原失败槽错误选择为建议，不改全状态机；晚期state/经理角色/代码评审与双失效组合范围交限定审核，不自创全局总序。建议1.2.0外层元数据/两OpenAPI一致，内层candidate schema1.0不改，旧v1.1/F08历史保留。列准确同步文件及新回归计划；纯设计，14hash保持，无应用/测试/DDL/suite/SUT/CI动作。作者AI，用户真实业务选择非改码证据。
