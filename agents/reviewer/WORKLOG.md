@@ -318,3 +318,8 @@
 - 有限候选代码审核未发现新增实质阻断，不合root/替bc5/放性能或globalgate。报告39-db87...，实际Issue4+PR39显式db87 COMMENT/完整GET及commit/push回执随后封存，无APPROVE/status/main/CI触发。
 
 - 阶段证据f61a9768b45928bbd2637a382403d33538c40a1f已push exit0，[skip ci]。Issue4评论6377112892完整GET body/归属/显式db87严格核过；PR39 COMMENT5635646788绑定准确db87，插件逐字body/COMMENTED及REST完整GET commit_id/body/state相符exit0。回执github-comment.json。rawcoverage44/20实keysets与五官方digest元数据另直接核同；原ZIP未打开。无新增阻断仅限两默认/所列caller与公开证据，不给root准入/性能/globalgate；0本机测试HTTP_SQL负载/CI触发，封存自身metadata后FINAL释放。
+
+
+## 2026-10-24 新包独立工作区选择规则有限复审（28938）
+
+实际ROLE-reviewer-SOURCE-LOG-SELECTION-v1，隔离codex/review-source-log-selection从已提交roote4a，不碰root未提交内容或demo。先scope后先行设计66bc/准确28938；helper7b8a仅allowed一行，原其它AST与outerb767/dda3整字节保持；实现仅helper+metadata。Git ls-tree元数据比较同树恰好减agents/testing四路径，无新增，保留映射/已发表stage06–08/receipt/3freeze/应用；四路径正文0读取。设计66bc计数3305重现，实现新增receipt计3306，准确源分开。旧48e/manifest未读未改，不据路径推断秘密/泄露；新包需新helperhash/准确commit/完整成员hash回读，不移植旧helper结论。原归档dda3命令仅SUT/OUT/诊断标签适配，原9d6payload/manifest及拒绝断言保持，一次内存反例exit0，真实trustedselector仍完整集合拒绝，blob/mode分支未执行但outer字节保持；不声称字节同命令/ZIPtimestamp或合法实际包通过。0服务/OS信号/HTTP/SQL/CI/负载/套件，未读私密ZIP/Word/R002/H/cases或agents/testing正文，未扩编/新增持久tmp脚本；原红/dda3关闭保持。八段十项报告21-28938...未见新增实质阻断，仅有限选择/绑定边界；实际新包未构建、整体不放行。PR21实际COMMENT/GET与阶段commit/push回执随后补。
