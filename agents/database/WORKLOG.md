@@ -281,3 +281,7 @@
 - static-path-receipt.json保存当前索引/函数行号/sourcehash/SELECT-UoW账本，明确C已有project+task谓词；新发现Tasks.addTaskDependency existing另一处缺project但未改。listTasks本身非N+1，特殊contract入口4或5S/1U不经Workflow，故BE依赖候选不能涵盖校验组公开失败。member全量/图锁/池获取与列表3P分别列候选及未来同次采样，均不归因502。
 - BE真实确认现有Rows足够，自己独立5cc856d只改Workflow按guard加载，不动Runtime/globalemptyIN/锁；BE自行报告模块红绿，本岗未代跑或代称MySQL/正式通过。已将838源码SHA/查询边界与具体Tasks候选发BE；本岗不改services。
 - 真实Issue4 COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077；github-readback.json保存完整响应。准确报告/公件发BE供其独立对接确认，不向839发送开发信息。阶段证据E seal另保存hash；生产/DDL/API/freeze/池/锁/认证和用例均未修改，本轮正式性能失败未修复/未验收，不再SQL/HTTP/负载或扩大测试。
+
+## ROLE-database-OUTPUT-EXCLUSIVE-v1：实际P2先设计
+- root公布OUTPUT-EXCLUSIVE-01：c4e8 exists→finally按路径w写可覆盖后出现标记/跟随悬空symlink，旧工具暂不准整合。新独立树基c4e8，已保存窄O_EXCL|O_NOFOLLOW+固定fd设计；不读原审核私有脚本/env，不向测试传开发信息。
+- 836只零DB main回归，先复现旧源红再修；原19配方/71Rows及旧E seal字节保护，不重跑矩阵，不将输出修复算性能修复。
