@@ -441,3 +441,10 @@
 - 14项stdlib内存/临时文件guard通过：差量可逆、原安全flags/摘要、错源/lock/sidecar拒绝、ignore逐字、0700/0600、排他/C树内/公开父目录拒绝及文档bash -n。未建测试文件/未占849。真实CI配置Ruff/compile/diff-check后交付；没有实际镜像下载/构建结论，证据api-pypi-delivery-validation。
 
 - 2026-10-24T07:34:54.939796+00:00实现81e50f1ea696fb434e9fef677465f1eeceb21057已push；Issue7/6381506475经GitHub插件实际发布并完整GET，正文与本岗body-file逐字一致，JSON原件/完整源码hash封档final-seal。阶段仅工具/文档，root可先审实现；没有发新CI/执行镜像下载或构建，也没有读取backend fixture/852或任何私密验收材料。最终阶段只封档，不重复14guard，不改C/旧失败/预算或截止。
+
+## SEVEN-RESOURCE-SAMPLER-v1
+
+- 2026-10-24T08:24:25.226202+00:00基rootf885919848c90980406b3eb0b4076f2f35b991e3独立codex/deployment-seven-resources/worktree。先seven-resource-design，再实现；事先明确核心约3min/不能保2min全检查，08:21:24Z实际交可审SHAfe5dad14a805abb4b9531dc9116cdd659251f8fd35b8dc3b1d8bdfc8670437af，不阻塞root正式窗口。root16:13七healthy仅转述，本岗无云执行/采样/独立资料。
+- 固定projectt44七服务含gateway，ps唯一64hex、inspect只ID/project/service/running逐次复核，stats仅固定7字段；四固定/proc文本256KiB各上限+UTC/monotonic，目标10s start间隔，命令/读写/调度overhead如实，不原子不峰值、CPU非全窗/内存非RSS/IO累计/PIDs含线程、背景活动继续。
+- 绝对08:44Z/最大20min，root现有0700父dir，resource-UUID.ndjson O_EXCL0600，不改已有权限/服务/网络，不读Env/log密码、不自动修复或重发现。stdout仅安全hash/bytes/实际样本/失败数/elapsed和null verdict，采集状态不冒性能/原六服务runtime合格。
+- 845纯合成8passed0.06秒，Ruff/compile0；不运行collector main、不读本机/proc/Docker/云，不重跑旧suite/CI，checks原件seven-resource-validation。只交能力和步骤，实际云采样结果待root另取回执，预算/释放不变。
