@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-10-24T00:21:42.723168+00:00",
+  "at_utc": "2026-10-24T01:09:23.032134+00:00",
   "author": "coordinator AI",
   "purpose": "Record unresolved major choices during authorized autonomous work; no user reply required to continue independent tasks",
   "items": [
@@ -15,13 +15,14 @@
       "id": "M02-formal-performance",
       "fact": "Exactbc5 independent formal three600-second400-activeVU runs all fail P95270ms criterion; old failures preserved.",
       "evidence": "reports/independent-v3/stage06-formal-blackbox.md",
-      "status": "Old v3 formal failure retained. Original v4 six attempts exited during preparation, formal NOT_RUN. New H2 post-SUT preparation-method revision frozen, same formal criteria, same H2 for two exact sources; new requests authorized against exact r2 environment.",
+      "status": "Old v3 formal failures retained. H1 six formal NOT_RUN. H2 complete fixture and600-second scheduling produced no established valid400-concurrent measurement; product-only INCONCLUSIVE, no source ranking; recovery5true/1application-readyfalse.",
       "pending_human_role": "Assess actual remaining performance evidence and engineering tradeoffs on return, rather than authorize relaxed thresholds implicitly.",
-      "autonomous_work_continues": "Six new fresh isolated H2 performance requests, public-result preservation, packaging and documentation. Longer preparation bounds do not prove completion or benefit.",
+      "autonomous_work_continues": "Bounded independent fixed-response stub calibration only (no new SUT load); isolated dependency query candidate requires exact successful CI and reviewer before any development integration, without formal performance claim.",
       "additional_public_evidence": [
         "reports/acceptance/v4-performance-original-attempts-public-summary.md",
-        "records/acceptance/v4-performance-h2-freeze-metadata.json",
-        "records/acceptance/v4-performance-h2-runtime-binding.json"
+        "reports/acceptance/v4-performance-h2-public-summary.md",
+        "records/acceptance/v4-performance-h2-final-coordinator-binding.json",
+        "records/acceptance/v4-driver-calibration-authorization.json"
       ]
     },
     {
