@@ -12,3 +12,5 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M8-ENGINEERING-ANNEX-v1
 - 一张真实native过程图两布局均渲染exit0且originalPNG实际看；首版过高保留，最终中文/箭头/边缘无裁切，独立Chrome profile/cache退出0残留。无Word/marker/产品/服务/CI/负载。
 - 只向native实问1个公开ready事实并原样保存1条AI答复，不当学生采访；其他缺采访/本人研究/人工12-5-3材料明确缺。
 - 新图不替代旧图或新WordQA；整体6307超1207、旧正式失败/未验边界不改。同账号COMMENT非真人批准，不APPROVE/status/mainmerge。
+
+- M8实现b974acc本人push，新draftPR40 body/head准确GET；Issue9评论6377281950与PR40评论6377282225精确ID GET逐字匹配。最终仅回执封档后释放，不追后发performance。
