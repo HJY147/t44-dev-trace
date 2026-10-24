@@ -1,0 +1,25 @@
+{
+  "source": "74aeb2a8d2e60e0c972688a3d68422d3d4a16f2b",
+  "argv": [
+    "git",
+    "diff",
+    "--exit-code",
+    "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "HEAD",
+    "--",
+    "tmp/backend",
+    "backend/requirements.lock",
+    "specs/database/schema.sql",
+    "backend/t44/persistence/engine.py"
+  ],
+  "exit_code": 1,
+  "error_class": "CalledProcessError",
+  "cause": "incorrectly compared whole development tools to olderbc5 instead of immediate taskbaseb40;existing870/955 differ in baseline",
+  "existing_differences": [
+    "tmp/backend/870_validator_profile.py",
+    "tmp/backend/955_perf_profile.py"
+  ],
+  "application_defect": false,
+  "cloc_not_reached_in_first_probe": true,
+  "corrected_comparison_base": "b40d8889b1f9ea67f7c10a6dbaf22ecf57ce8b0d"
+}

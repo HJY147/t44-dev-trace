@@ -261,3 +261,12 @@ JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300c
 范围先0a84ff6；一页agents/backend/static-performance-next-measurement.md及13源文件hash/前提static-perf-path-receipt.json。项目列表实际operationId=listTasks，10S/2U；契约4或5S/1U；升级列表10+3E S/2U（每event额外outbox/全部notifications/scan_run，E≤100）；通知9或10S/2U；依赖列表11+E S/2U。当前A fresh写预检10/8S在首U、主写第二U，不能套旧3U；SELECT与实时鉴权不减。以上是静态成功分支公式，不是本轮SQL或延迟证据。
 
 分页/COUNT/排序、全membership/依赖图、每事件通知/JSON规模及索引前缀列为待测维度，建议以后逐request_id分离派发/连接生命周期/SQL execute-fetch-codec/auth/Schema-wire-JSON CPU；未重复profile/池短样本，不推正式或其他运行根因。未来batch必须保留项目/原序/全通知/null/缺引用/RC及独立audit语义，列明有限并发/跨项目/多收件人回归，未实现/未测试/未准入。Issue3全文GET核对；本轮源码/用例/DDL/锁和统计口径均未改，无服务/HTTP/SQL/负载或独立私密接触，阶段结束释放。
+
+## 依赖边项目条件候选（未集成）
+
+设计ed2737d先于唯一应用74a；固定C=b66fa36a317145afec350d7f61ca374959b2eaf7、DraftPR42。合法FK读集等价依赖全局taskPK+edge复合FK+Call.task核项目；仅Workflow查边加project_id，其它SQL/守卫/锁/CAS/事务/审计/outbox/幂等/ACK与旧5+10池保持。DB公共5948的EXPLAIN仅估9216→1并有filesort，非收益。
+
+原986同18目标旧/候选各通过；74a全CI510绿但整体因部署测试样式红失败，旧Docker实际d74 checkout绿，见records/validation/composite-dependency-query-74a-ci.json。owner17e两处样式摘取后C新CI40047832510/40047836840仍待终态另封，不冒称全绿。C实cloc6307/exit1仍缺1207。细节/原失败/来源/限制agents/backend/dependency-query-candidate/report.md。后证据分支独立、PR头固定；无本地外部SQL/服务/负载、无独立资料。根条件门槛及专审未完，不自动合并。
+
+
+准确C终态补充：新product40047832510四job和Docker40047836840均success；全510/0失败错误skip、44Python行89.212039%/分支79.975728%且excluded0，FE89/20TSVue行93.33%。Docker actual9b53812父dde39+C、169相关运行文件等同，4workers/19表恢复通过。原74a static红仍在原汇总，固定cloc6307仍失败。准确C新汇总records/validation/composite-dependency-query-b66-ci.json；E仅证据，不改变PR42产品C或冒充E另测。专审/根门槛与性能/独立验收仍另决，本阶段结束释放。
