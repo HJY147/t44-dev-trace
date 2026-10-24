@@ -1,9 +1,10 @@
-# 数据库模块：6307行规模静态审计回交
+# 数据库模块：公开C性能失败的静态/本地诊断阶段
 
-基root f986782311f227082b4445bf7508522aa49c043d；ROLE-database-SOURCE-BUDGET-RETURN-v1，设计d8f91d7先commit。操作者AI，非学生亲改。
+本岗AI，ROLE-database-PERF-PUBLIC-C-v1；仅指定839公开md核c35b37...后读取，无其他独立私密资料/联系测试。被测C0dfb55c与root6d02生产字节同。设计80e9/cacd先行，工具d75866f先提交后唯一离线执行。
 
-- 原cloc2.10/SHA/已提交应用根计数仍6307行/66文件，上限5100、缺1207（当前19.14%）；66文件code值与公开C6307逐项同。backend5208、frontend/src1084+index15=1099；persistence1691/services1613/scheduling642等分组、逐文件原数在agents/database/source-budget-return/current-count.json。5分钟内已真实首报root。
-- 当前没有可信且不删行为/守卫的1207行缩减方案。旧CoreGateway兼容删除、seed受信row-builder、BE公共create/会话、FE未用CSS已含当前收益，不能再扣。scan-run等价候选联合314→315，AST整对替换可能增3–53；未准入validator10/CHECK-only39–46不算已省。
-- 新明确共享候选：通知页装配交现有common.page，保留授权S锁/-id/全部谓词/三COUNT顺序；纯内存两文件227→224投影仅3，未应用/验证，实际节省0。原cloc STDIN漏dash退出2保留并更正；这是静态命令错误，不是产品缺陷。
-- [详细报告](../../agents/database/source-budget-return/report.md)给出大文件职责、历史5866→6307快照、所有候选重复点/成本/风险与用户可读原话。既不要求人决定class/manager，也不改计量根、压行或移逻辑到配置。
-- [Issue4真实评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048)已精确GET全文逐字核对。无源代码/冻结/DB/服务/测试/CI配置改变或执行，无独立材料读取/测试联系。规模仍未达标，本阶段封档后释放，不追加实施或运行。
+- 公开任务短窗流转/查询P95 3645.763385/3315.969690ms、10814稳态1个502；校验7273预热2个502/稳态0；完整正式组0保留。资源联合复核未发布根因，本岗不猜502层级。root确认两机19:01已释放，没有新云动作。
+- 当前C已带Workflow project+task依赖谓词，不能再算优化；listTasks无逐task N+1，特殊contract入口不经Workflow。成员全项目锁/物化、图编辑全图读、必要project/task锁、依赖/升级列表N+1和池生命周期分别审查，不删授权/CAS/审计/幂等/锁守卫。
+- 838仅显式CLI/零env凭据网络输入/临时内存SQLite合成表+MySQL编译；唯一运行19配方、71执行（非HTTP trace/验收）。依赖原二读2，emptyIN仍execute；成员3/32物化按M增长；依赖页原1+P=2/5/33与候选batch2/2/2输出/顺序/缺引用失败相同。没有MySQL约束/锁/RC/并发CAS或性能证明。
+- 初次工具Ruff3项原错保留，修后通过；import/显式run/禁止覆写边界核对通过，未刷次数/扩大矩阵。生产净变更0，未改DDL/API/freeze/池/认证/用例。BE自己实现guard-specific候选，现有Rows够用；本岗不代称其测试通过。
+- [完整路径/下一阶段采样](../../agents/database/perf-public-c/report.md)，源码/索引/S-U账本static-path-receipt.json、一次offline-run1.json/log、阶段evidence-seal.json均本岗公件。候选需同次请求SQL/锁/物理连接/线程与资源关联；新MySQL配置/schema/窗口另准入。
+- [Issue4真实评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077)已精确GET全文逐字核对，已给BE链接。阶段封档释放；公开性能失败尚未修复，不运行云SQL/HTTP/负载或联系839，不把AI过程记学生亲改。

@@ -275,3 +275,9 @@
 ## ROLE-database-PERF-PUBLIC-C-v1：只读公开事实后先行设计
 - 仅指定839_PUBLIC_MINIMAL_FACTS_v1.md先核c35b37...完全匹配再读取；没有读839其它文件/私有用例/资源，不向839发送信息。当前C任务短窗/三502/完整正式组0如实保留，资源和根因未知。
 - 新独立树codex/database-perf-public-c基root6d02cf1，生产根与被测0dfb55c差异为空。先保存design再实现；已向BE真实对接，BE确认C已有project+task依赖条件，当前2UoW/3次write实时auth；不能重复提旧一行优化/旧3UoW账本。BE主审guard-specific依赖加载，本岗不动services或锁/认证语义。
+- root实际限定新工具838、本阶段只本地SQLite/静态，不再准入两机SQL/HTTP/负载；cacd0af先封工具边界，再实现838并在d75866f0d4077dd0399672f6dc914a82de6b9399提交后唯一运行。无云env/凭据/网络输入，不读839其它文件。后续root确认资源已回收/独立联合复核、19:01实例系统盘已释放；本岗不读未公开采样，不扩大阶段测试。
+- 工具首次Ruff I001/B023三项保留ruff-run1.log，显式绑定loop参数/整理import后Ruff通过，格式化仅838。Import gate确认不加载SQLAlchemy/t44/网络模块；无run和覆写原输出均预期exit2，原结果hash不变。没有把预期CLI拒绝当产品红。
+- 唯一PYTHONPATH=backend既有backend/.venv Python运行838 --run --output agents/database/perf-public-c/offline-run1.json exit0；19个本地SQLite生产Rows配方、71次_execute（69SELECT+2顺序UPDATE），源13文件逐字/hash等于C。度0/4/32原依赖二读2/2/2、候选skipempty1/2/2；不消费依赖候选0只是配方。成员3/32均1读物化3/32；依赖页1/4/32原2/5/33对batch2/2/2，固定数据输出顺序/缺引用失败一致。锁/CAS仅MySQL编译及SQLite顺序谓词，不是MySQL锁/RC/并发或真实请求trace/收益。最终本地engine dispose，不改生产metadata。
+- static-path-receipt.json保存当前索引/函数行号/sourcehash/SELECT-UoW账本，明确C已有project+task谓词；新发现Tasks.addTaskDependency existing另一处缺project但未改。listTasks本身非N+1，特殊contract入口4或5S/1U不经Workflow，故BE依赖候选不能涵盖校验组公开失败。member全量/图锁/池获取与列表3P分别列候选及未来同次采样，均不归因502。
+- BE真实确认现有Rows足够，自己独立5cc856d只改Workflow按guard加载，不动Runtime/globalemptyIN/锁；BE自行报告模块红绿，本岗未代跑或代称MySQL/正式通过。已将838源码SHA/查询边界与具体Tasks候选发BE；本岗不改services。
+- 真实Issue4 COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077；github-readback.json保存完整响应。准确报告/公件发BE供其独立对接确认，不向839发送开发信息。阶段证据E seal另保存hash；生产/DDL/API/freeze/池/锁/认证和用例均未修改，本轮正式性能失败未修复/未验收，不再SQL/HTTP/负载或扩大测试。
