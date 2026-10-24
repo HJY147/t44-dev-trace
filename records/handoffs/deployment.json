@@ -786,6 +786,11 @@
       "id": "ROLE-deployment-BOOTSTRAP-PUBLIC-MODES-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-BOOTSTRAP-PUBLIC-MODES-v1.md",
       "reason": "纠正AI umask/COPY非root读取遗漏；保持秘密私有和原C业务，真实失败及root修复分列"
+    },
+    {
+      "id": "ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v1.md",
+      "reason": "新七服务实际拓扑只读观测，不套用六服务口径，不阻塞正式负载窗口"
     }
   ],
   "questions": [
@@ -927,7 +932,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "bootstrap-public-tracked-modes-fixed-local-only-cloud-repair-relayed",
+  "stage": "seven-service-resource-sampler-reviewable-not-executed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -935,7 +940,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T08:16:45.171279+00:00",
+  "updated_at": "2026-10-24T08:26:28.797896+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1374,5 +1379,28 @@
     "full_GET_body_identical": true,
     "final_seal": "agents/deployment/bootstrap-mode-validation/final-seal.json",
     "status": "sealed public-mode tool fix;local7green;root cloud repair/migration separately relayed"
+  },
+  "prior_stage_before_seven_resource_sampler": "API-PyPI-external-delivery-reviewable-not-built",
+  "seven_resource_sampler": {
+    "base_sha": "f885919848c90980406b3eb0b4076f2f35b991e3",
+    "branch": "codex/deployment-seven-resources",
+    "script": "deployment/seven-resource-sampler.py",
+    "script_sha256": "fe5dad14a805abb4b9531dc9116cdd659251f8fd35b8dc3b1d8bdfc8670437af",
+    "steps": "deployment/seven-resource-sampler.md",
+    "test": "tmp/deployment/845_seven_resources.py",
+    "synthetic_guards": 8,
+    "local_collector_Docker_proc_cloud_CI_executed": false,
+    "actual_cloud_samples": null,
+    "deadline_UTC": "2026-10-24T08:44:00Z",
+    "maximum_collection_seconds": 1200,
+    "target_start_interval_seconds": 10,
+    "service_count": 7,
+    "includes_gateway": true,
+    "performance_verdict": null,
+    "evidence": "agents/deployment/seven-resource-validation",
+    "implementation_sha": "6fe4d657a2a0c76a4955e55285d7fb822b6764c0",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6381981051",
+    "full_GET_body_identical": true,
+    "final_seal": "agents/deployment/seven-resource-validation/final-seal.json"
   }
 }
