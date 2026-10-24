@@ -407,3 +407,11 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 新汇总records/validation/composite-db87-pool-ci.json，不覆盖旧；本岗源码仍bc5，6307超1207未新cloc/未改口径。没有触发CI/改业务/合候选；专审/准入/盲测另决。本轮seal后释放，准确新520不与旧510相加。
 
 - 准确CI归档Issue3已body-file发表并GET逐字回读：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376880468；只作归档，不自APPROVE或合候选。
+
+## 固定bc5后续性能工程：一页纯静态交接
+
+- 从本岗干净b081新分支codex/backend-static-perf-handoff，先提交范围/真实prompt0a84ff6；只读固定bc5源码、冻结DDL/接口以及本岗已发表诊断/池兼容交接。13个依据文件逐字/hash对齐bc5，DDL两副本c0e740b2。没有服务/HTTP/SQL/pytest/安装/负载/统计或产品/开发用例改动，不接触任何运行中独立资料/私密引用、不联系tester。
+- 根澄清listProjectTasks是派工命名简称，实际listTasks，不当缺接口。静态正常成功公式：listTasks10S/2U；validateContractPayload4或5S/1U；listEscalations10+3E S/2U；通知无project9/有project10S/2U；依赖列表11+E S/2U。E≤100，但升级event会全取每事件通知。当前A fresh预检人类10S/服务8S、1INSERT/2控制/1U，主锁/handler第二U；未照搬旧5dcb3U，仍有三次实时auth，SELECT未因事务合并减少。全部公式均手工静态分解，非trace/性能样本。
+- 一页static-performance-next-measurement.md列COUNT/深OFFSET/排序/JSON/全membership/边图/通知规模，已有索引只是候选，不宣实际命中/扫描。Workflow空IN仍发SQL、按task_id边读无显式该前导索引是待EXPLAIN点，不认定瓶颈或语义缺陷。后续只建议自有fixture一次一变量分离派发/连接/SQL与fetch-codec/auth/序列化CPU和字节；不重复已测低并发profile/池保留ABBA、不推正式/其他运行根因或收益。
+- 根追加升级记录batch交接已原文补prompt：保留授权project/派生event和run IDs（run表无project列）、id页序/recipient原序、IO去重不删结果、每事件全部通知/额外行handled_count/null/disposition优先、缺引用原失败及独立audit。RC多语句快照/原认证锁序不改；空页/共享run/多项目/超100收件人/部分全送达/null/缺引用/并发delivery-read-handle只是未来回归方向，未改码/运行。未来非空3批/13S仅静态方案，需scheduler/DB/root独立准入。
+- Issue3具体交接6377635272已body-file发表并全文GET逐字核对；本轮文档作者AI，不是用户手改/独立验证。固定6307缺1207/原正式结果保持；封档后释放，未来测量仍须根另开范围/窗口。

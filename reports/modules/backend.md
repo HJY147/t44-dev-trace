@@ -255,3 +255,9 @@ bc5应用实际hash匹配；t44_profile/18083、单worker/40token/pool5+10保持
 本岗AI仅归档两次托管开发run：product40039282322/Docker40039333270均success，五官方ZIP实际先digest验证再选18+33新原件及双hash/roundtrip；不复制旧结果、不触发CI/读独立材料或本机业务。新汇总records/validation/composite-db87-pool-ci.json。
 
 JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300case不代表旧对照跑过；marker162/93/19重叠。全44Python精确Git分母、excluded0，行89.2120%/branch79.9757%分别；FE89/20TSVue精确Git，行93.33%/branch88.09%。Docker实际checkout经官方git log原行证实400a5cac（API head db87只是PR头，result源是事件SHA）；merge父70f4b7+db87，完整明确运行roots166文件候选↔merge字节相同。实际4workers、扫描16created/2completed、19表恢复counts/checksums同，原schema18/226、第二scanner flock预期exit1均保留。仅此准确CI范围，不宣正式性能/独立验收/资源预算实测通过；root生产bc5、6307超1207保持。
+
+## 固定bc5静态I/O与下一步测量交接（没有新运行）
+
+范围先0a84ff6；一页agents/backend/static-performance-next-measurement.md及13源文件hash/前提static-perf-path-receipt.json。项目列表实际operationId=listTasks，10S/2U；契约4或5S/1U；升级列表10+3E S/2U（每event额外outbox/全部notifications/scan_run，E≤100）；通知9或10S/2U；依赖列表11+E S/2U。当前A fresh写预检10/8S在首U、主写第二U，不能套旧3U；SELECT与实时鉴权不减。以上是静态成功分支公式，不是本轮SQL或延迟证据。
+
+分页/COUNT/排序、全membership/依赖图、每事件通知/JSON规模及索引前缀列为待测维度，建议以后逐request_id分离派发/连接生命周期/SQL execute-fetch-codec/auth/Schema-wire-JSON CPU；未重复profile/池短样本，不推正式或其他运行根因。未来batch必须保留项目/原序/全通知/null/缺引用/RC及独立audit语义，列明有限并发/跨项目/多收件人回归，未实现/未测试/未准入。Issue3全文GET核对；本轮源码/用例/DDL/锁和统计口径均未改，无服务/HTTP/SQL/负载或独立私密接触，阶段结束释放。

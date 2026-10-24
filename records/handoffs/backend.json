@@ -1609,5 +1609,34 @@
     "decision": "archive only;dedicatedreview/root admission/formal performance/independent acceptance not claimed",
     "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376880468",
     "readback_matches": true
+  },
+  "static_performance_path_handoff": {
+    "branch": "codex/backend-static-perf-handoff",
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope_first": "0a84ff6",
+    "prompt": "agents/backend/STATIC-PERFORMANCE-HANDOFF-dispatch.md",
+    "one_page": "agents/backend/static-performance-next-measurement.md",
+    "source_IO_and_counts": "agents/backend/static-perf-path-receipt.json",
+    "method": "manual static success path with explicit actors/key/page assumptions;not querytrace or performance",
+    "counts": {
+      "listTasks": "10S/2U",
+      "validateContractPayload": "4or5S/1U",
+      "listEscalations": "10+3E S/2U",
+      "listMyNotifications": "9or10S/2U",
+      "listTaskDependencies": "11+E S/2U",
+      "fresh_write_preflight": "human10S/service8S+1INSERT+2savepointcontrols/1U;main secondU,authunchanged"
+    },
+    "future_batch_scope": "scheduler/DB/root admission needed;authorizedproject/page/runIDs,originalorder,IOdedup-only,allnotifications/null/extra recipientcounts/missingreference failure,RC/error/audit preserved",
+    "followup_measurement": "only future bounded ownfixtures after root;queue/connection/SQLfetch/auth/serialization phases and resources separated",
+    "issues": {
+      "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377635272",
+      "full_GET_exact_match": true
+    },
+    "runtime_SQL_HTTP_load_services_tests": false,
+    "source_tests_locks_specs_changes": 0,
+    "independent_material_access": false,
+    "root_cause_or_benefit_claimed": false,
+    "source_count": "6307gap1207 unchanged,no newcount",
+    "next": "seal/release;future measurement/implementation separately admitted"
   }
 }
