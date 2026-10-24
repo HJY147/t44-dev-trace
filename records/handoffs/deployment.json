@@ -246,7 +246,7 @@
       ]
     }
   ],
-  "implementation_status": "Compose/CI历史能力已交付；macOS native broker stage1已实现并真实启停验证，应用环境等待根精确绑定",
+  "implementation_status": "独立Request-ID候选两Nginx配置已实现/推送；仅本地Ruff/compile通过，真实固定摘要Nginx验证待运行；云C不变",
   "integration_delivery": {
     "web_checkpoint": "8e8c839e6f3aeb29b51f05a5a8a22a36995e4298",
     "ci_path_checkpoint": "7e4dbda1e7afd82ce3c794dfdf025e6ca8870277",
@@ -801,6 +801,11 @@
       "id": "ROLE-deployment-HOST-RESOURCE-SERIES-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-HOST-RESOURCE-SERIES-v1.md",
       "reason": "按中性CPU内存网络/TCP累计观测需求补采集，不读用例/私密，不改性能门槛"
+    },
+    {
+      "id": "ROLE-deployment-REQUEST-ID-CHAIN-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-REQUEST-ID-CHAIN-v1.md",
+      "reason": "补严单一合法upstream UUID筛选，保留当前C与NOT_PROVEN边界；真实Nginx合成raw验证独立记录"
     }
   ],
   "questions": [
@@ -942,7 +947,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "app-v3-and-load-host-counters-reviewable-not-executed",
+  "stage": "request-id-candidate-awaiting-real-nginx",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -950,7 +955,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T09:03:48.169907+00:00",
+  "updated_at": "2026-10-24T09:59:49.736967+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1492,6 +1497,9 @@
       "Ruff",
       "compile"
     ],
-    "candidate_cases_planned": 23
+    "candidate_cases_planned": 23,
+    "implementation_sha": "debf8d81e474c26900abc688eb7b9182af29668e",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6382807798",
+    "issue_full_GET_body_identical": true
   }
 }
