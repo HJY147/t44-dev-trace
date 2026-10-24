@@ -264,3 +264,6 @@
 - 真实依赖索引无task_id前导自动键，复合FK已由project前导现有键满足；tasks与notifications存在显式DDL以外自动FK键，不能从显式表推断不存在。当前依赖单列+ORDERid计划PRIMARY index/possible_keys NULL/rows估9216；project+task对照ref uq_dependencies_edge/rows估1且filesort，未实施。另两计划及全部SHOW原字段保留，未执行被解释SELECT。
 - 只有优化器估算，不是实际扫描/时延/6000任务代表分布/400并发或正式失败根因/收益。未读独立材料/测试、不联系tester、未新增测试文件、不动产品/DDL/API/用例/原freeze，不变更MySQL守护进程/全局配置、不动任何数据。
 - GitHub connector实际COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6377715017；github-readback.json保留原响应。本岗证据已核已知fixture Token/DSN/口令匹配0，生产/specs/tmp相对b40d888差异为空；本轮检查收口，不再SQL/负载/复测。
+
+## ROLE-database-SOURCE-BUDGET-RETURN-v1：静态规模审计先设计
+- 从root最新f986782创建独立codex/database-source-budget-return，读AGENTS/原计数口径、公开3b9c907结果和本岗AST/scan-run预算；不读独立私密材料。先行design限定仅归档已提交生产根、原cloc口径及可信等价净删预算，当前未执行新计数/测试/服务/数据库。
