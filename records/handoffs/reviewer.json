@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/D008-implementation/code-audit.json",
-  "latest_review_report": "reports/reviews/43-0dfb55c2191200d947c5423fd9ee74bb0812cc5a.md",
+  "latest_review_evidence": "agents/reviewer/evidence/database-public-c/static-evidence-audit.json",
+  "latest_review_report": "reports/reviews/database-public-c-c4e8c696411975ee6964ef3b2254c8f3937ecb32.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1480,9 +1480,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-d008-implementation",
-  "review_outcome": "NO_NEW_MATERIAL_CODE_BLOCKER_WITHIN_SCOPE;FULLCI_ARCHIVE_PENDING;overallNOT_ACCEPTED",
+  "review_outcome": "BLOCKED_P2_OUTPUT_EXCLUSIVE_01;NO_MATRIX_OR_PERFORMANCE_PASS",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "review_target_sha": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
   "review_targets": [
     {
       "pr": 14,
@@ -2187,5 +2187,39 @@
       "verified_at_utc": "2026-10-24T04:10:26.754280+00:00"
     },
     "evidence_commit": "aa65b200a82f1184941de9b048a88769f99854a1"
+  },
+  "database_public_C_review": {
+    "target": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+    "tool_commit": "d75866f0d4077dd0399672f6dc914a82de6b9399",
+    "tool_sha256": "ac30e655d584caeb6f34251e736025577506fc3026ff0b979edbe3abdbbfbaa3",
+    "prompt_ref": "ROLE-reviewer-DATABASE-PUBLIC-C-v1",
+    "scope_commit": "970608e",
+    "report": "reports/reviews/database-public-c-c4e8c696411975ee6964ef3b2254c8f3937ecb32.md",
+    "audit": "agents/reviewer/evidence/database-public-c/static-evidence-audit.json",
+    "finding": "P2 OUTPUT-EXCLUSIVE-01",
+    "finding_lines": [
+      263,
+      264,
+      293,
+      294
+    ],
+    "confirmed_existing_result_overwrite": true,
+    "probe_method": "actual main with recipes only replaced by zero-DB function creating output in precheck/write gap",
+    "own_matrix_SQL_HTTP_services_load_CI": 0,
+    "own_inline_output_probe": 1,
+    "new_test_python_file": false,
+    "837_used": false,
+    "manifest_hash_files": 13,
+    "fixed_C_source_hash_files": 13,
+    "owner_recipe_count": 19,
+    "owner_Rows_calls": 71,
+    "owner_SELECT_UPDATE": [
+      69,
+      2
+    ],
+    "integration_admitted": false,
+    "private_independent_read_or_contact": false,
+    "backend_5cc_clear_applied": false,
+    "next": "DB owner design/narrow fd output fix then exact-SHA semantic micro-regression; original 19/71 evidence remains"
   }
 }
