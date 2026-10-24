@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "performance-repair-839-candidate-handoff",
+  "stage": "dependency-candidate-test-only-ci-ledger-fix",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -2023,5 +2023,47 @@
       "root integration decision",
       "same-run safe resource/proxy/DB evidence before diagnosis"
     ]
+  },
+  "dependency_candidate_ci_fix": {
+    "status": "test-only-candidate-new-exact-source-ci-pending",
+    "source_commit": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "source_branch": "codex/backend-dependency-ci-fix",
+    "evidence_branch": "codex/backend-dependency-ci-fix-evidence",
+    "previous_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "original_pr": 44,
+    "original_pr_head_kept": true,
+    "application_byte_equal_to_previous_source": true,
+    "only_non_record_diff": "tmp/backend/contracts/985_mysql_http.py: 2 SELECT constants and historical comment",
+    "original_failed_run": 40087756354,
+    "original_failed_jobs": [
+      120854051910,
+      120854052090
+    ],
+    "new_run": 40088982094,
+    "new_ci_receipt": "agents/backend/performance-repair-839-ci-fix/new-ci-at-handoff.json",
+    "report": "agents/backend/performance-repair-839-ci-fix/report.md",
+    "prompt": "agents/backend/performance-repair-839-ci-fix/scope-and-prompt.md",
+    "ast_proof": "agents/backend/performance-repair-839-ci-fix/test-only-proof.json",
+    "local_checks": {
+      "ruff": "pass",
+      "format": "pass",
+      "collection_only_cases": 5,
+      "mysql_test_execution": false,
+      "prior_36_targets_not_repeated": true
+    },
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383532393",
+    "github_body_exact_match": true,
+    "size": {
+      "count_reused_from_byte_equal_source": 6316,
+      "within_range": false,
+      "new_cloc_run": false
+    },
+    "pending": [
+      "new full exact-source CI",
+      "review of test-only delta",
+      "root integration decision"
+    ],
+    "no_cloud_change": true,
+    "no_independent_private_material_read": true
   }
 }

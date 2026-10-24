@@ -517,3 +517,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 原C新增3真实SQLite/TestClient+SQL hook查询结构红3fail（业务断言先过）；窄改后3及旧邻接23pass，另2受控反激活边界+原85611共13pass，共36唯一目标，无MySQL/外部HTTP/云/负载。原856859未改；新受控fixture不冒实际返工。首次未指定Ruff配置N999/88cols失败保留，改用原backend配置、仅新test一处换行后绿，未降lint。
 - 正常sourcepush触发新源CI；DraftPR44 head固定5cc856，不推动产品头。原cloc脚本/固定2.10SHA实际6316(5217+1099)/超1216，exit1，净+6；云C原6310不改，N07继续未达无1210可信删重方案。15冻结hash全同。后续仅codex/backend-performance-repair-evidence公件，报告/原件agents/backend/performance-repair-839。
 - Issue3 6383378839 body-file发表并精确comments/:id GET逐字同；PR44 API全文/准确head/draft读回匹配。DB owner实际说明现成Rows足够，不改全局empty-IN/SQL/池；其离线配方不冒本业务/RC/收益。完整CI/源码专审/真MySQL锁与性能未验，阶段封档后释放，不重复绿或等平台占槽。
+
+## 5cc首次CI红：开发SQL精确账本同步
+
+- root派新阶段后自有新branch，先847256e范围/实际prompt再32cb991诊断设计。只读公开开发run40087756354与job120854051910/120854052090，head5cc匹配；两原ANSI job日志gzip+raw/gzip双hash/解压完全同，未rerunCI。首gh原始输出保护exit1另留再显式GET，非SUT/环境失败。
+- 唯一真实红为985原SQL计数：block20对22/unblock22对24，DML5/control2均同；恰少两SELECT。coverage原560pass2fail，contract177pass2fail/integration91pass2fail重叠。端点200/schema及打印Tx事实可见，但失败后auth/closed/replay断言未执行，不凭保留冒绿。此是开发期望陈旧，不更改独立270ms/600秒/零错。
+- root窄授权后test-only source ead155e6204de9004bc968e9b9648358cfed75f8正常push；985只两常量+注释，AST其它全部节点全同，应用对5cc逐字同，不再改Workflow。原backend Ruff/format绿；collect-only5参数/35deselected仅收集，不跑本地MySQL/业务服务/负载，不重复旧36绿。当前规模按5cc原6316+应用身份沿用，未新cloc/仍超1216。
+- product40088982094新source head核真，交接时frontend/static成功，coverage/contracts in_progress；完整CI仍待，原PR44保持5cc审核范围，main/云C未改。新E分支codex/backend-dependency-ci-fix-evidence只公件；报告agents/backend/performance-repair-839-ci-fix/report.md，原failure全保留。Issue3 6383532393 body-file+精确GET全文同。无独立私有读取/不联系839，作者与修正为后端AI。
