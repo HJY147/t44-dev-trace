@@ -144,3 +144,4 @@
 - 局部绿后旧74全static发现864UP022/871B007，部署先b950设计->17e等价两行->8d封档；只核公开原Ruff1/0、AST证据，不执行/importdriver，不将新脚本当旧运行字节。
 - root集成gate在候选已产生但CI/专审未完时预定义，未为数字降标准；b66等价一行与根18旧绿18新绿非bug红绿，新finalE未公开不预填。DB普通EXPLAIN/BEledger不是运行或正式根因。
 - 24公开sourcehash/JSON/Git与style设计先行关系必要核对，无产品测试/服务/CI/Word执行；M6六版保持/新增0，旧M6M7M8/WordQA/冻结不改，人12/5/3与研究正文不代填。Issue11实际评论/全文GET/提交push实际后补。
+- M11实质材料实际commit/push`08671201170dfb04d9fb39c8c6e8add66785ae0c`；Issue11评论6378022668真实发表，完整GET按ID核全文逐字相同，M11-publication.json留回执。以下只补发布记录，不取后发校准/CI或改cutoff。
