@@ -2,7 +2,7 @@
 
 ## 1. 对象与历史
 
-固定AI审核岗，ROLE-reviewer-BACKEND-LEDGER-EAD-v1；独立worktree codex/review-backend-ledger-ead，直接从精确 **ead155e6204de9004bc968e9b9648358cfed75f8** 建立，先scope ee2d453。比较源 **5cc856d6fa94b1fdde32605543b53822f9747f00**，原源码审核187ca2a86565f228fda89e59526cdb257af3d5ad原样保留。先行新设计32cb991，前置开发E **01b184f4ac306a106fb6432ee8067f9993ead002**；终态E待总协调明确发布后追加，不自行读取未发布资料。
+固定AI审核岗，ROLE-reviewer-BACKEND-LEDGER-EAD-v1；独立worktree codex/review-backend-ledger-ead，直接从精确 **ead155e6204de9004bc968e9b9648358cfed75f8** 建立，先scope ee2d453。比较源 **5cc856d6fa94b1fdde32605543b53822f9747f00**，原源码审核187ca2a86565f228fda89e59526cdb257af3d5ad原样保留。先行新设计32cb991，前置开发E **01b184f4ac306a106fb6432ee8067f9993ead002**；总协调随后明确发布终态E **14a61c4e771042adc6113942723782f71568e432**，本岗才续核该准确原件。最初静态待E阶段e30a8ba已push，历史版本保留；没有读取未发布资料。
 
 ## 2. 需求与唯一变化
 
@@ -24,11 +24,17 @@
 
 ## 6. 执行与证据
 
-本岗仅Git/AST/公开开发原件hash检查；测试、SQL、HTTP、MySQL、服务、负载、CI触发均0，不读独立839/841/852/private，不联系独立岗。自有static-delta-audit.json和initial-E-file-hashes.json记录准确source/原件绑定。前置E只Ruff/format与collect-only，不冒称5参数本地执行。
+本岗执行Git/AST/公开开发原件hash检查，并只读下载既有官方CI artifact；测试、SQL、HTTP服务、MySQL、负载、CI触发均0，不读独立839/841/852/private，不联系独立岗。自有static-delta-audit.json、initial-E-file-hashes.json记录静态阶段和前置E19份原件；终态E另26份manifest原件、15freeze及source/tests字节身份核验在terminal-E-file-hashes.json。前置E只Ruff/format与collect-only，不冒称5参数本地执行。
 
-总协调转达11:19:23UTC新product40088982094四job success，这是实时状态通知；在本报告最初静态阶段，尚不将其替代终态原日志/artifact核验。准确新E公开后，只核所需源/门槛，不重跑套件。
+终态本岗通过GitHub connector独立读取run40088982094的4个官方artifact元数据与4job/steps均success；各artifact workflow_run.head_sha精确ead、run attempt1。为核实际ZIP bytes，本岗经官方只读artifact API另取四ZIP到0700临时目录/0600文件，四份大小与官方digest全部核对后才打开任何ZIP；逐一对18选中member与E raw/gzip双SHA及解压字节，全部同。ZIP仅临时读取后删除，未读取未选中member内容，不触发CI。live-artifacts.json、live-jobs.json和terminal-E-audit.json保留完整核验事实。
 
-## 7. 十项清单（静态阶段）
+实际JUnit full **562/0failures/0errors/0skipped**，contract179/integration93/fault19各零；子集与full重叠不相加。ledger五参数在full/contract/integration均实际passed，所以原count失败位置后保留的auth/closed/replayed等断言在新run确实执行。coverage及contracts两job原始ANSI日志的gzip/raw SHA均核，git log -1实际checkout均为ead，不以API head代替checkout。
+
+后端coverage44个Python文件与ead Git集合精确相同，excluded_lines=0；行2641/2960=89.22297297%，分支663/828=80.07246377%，不把combined87.2228%冒行覆盖。FE89全部pass、0failed/pending；20个TS/Vue文件与Git集合精确相同，总行93.33%、statement88.62%、function85.83%、branch88.09%，不扩到CSS/HTML。原始static/gate命令与suite gate全部exit0；覆盖门槛和配置没有变化。
+
+终态E没有生产/测试变化；ead两nginx配置仍与云C逐字同，不含另外的Request-ID候选。**没有ead新Docker run或新实际merge-checkout证明**：旧5cc Docker40087993372保持其旧来源和局限，不改名/移植为新ead Docker证据。这里只闭合准确新product run门槛，不外推完整root组合、云或独立验收。
+
+## 7. 十项清单（精确终态）
 
 | 项 | 判定/边界 |
 |---|---|
@@ -37,12 +43,12 @@
 | 3 接口 | 不适用：应用字节同，接口无新增修改 |
 | 4 DB兼容 | 不适用：无生产/DDL/RC/池变化，测试fixture相同 |
 | 5 业务 | 静态无新增阻断：只修准备用于非依赖消费者的计数 |
-| 6 鉴权 | AST保留，原失败后断言须由新CI实际执行证明 |
-| 7 事务并发 | AST保留：DML/control/UoW/acquire/commit/closed/rollback不变 |
-| 8 审计幂等 | 整模块AST相同；不将synthetic/static当正式运行证明 |
-| 9 证据 | 前置E/raw hash通过；准确终态E核验待追加 |
-| 10 完整准入 | 未作merge/global判定；6316仍规模失败，云性能未通过 |
+| 6 鉴权 | AST保持；新run ledger五参数实际passed，后续鉴权断言已执行 |
+| 7 事务并发 | DML/control/UoW/acquire/commit/closed/rollback AST不变且新case实际pass；不扩成新并发性能证明 |
+| 8 审计幂等 | 整模块其余AST保持，准确开发suite实际pass；非独立/云验收 |
+| 9 证据 | 前置E19/终态E26文件、四官方ZIP/18成员/两job日志/源码全集核同 |
+| 10 准入范围 | 本次代码＋准确product开发门槛无阻断，可交root整合；无新Docker/完整组合证明，6316和云性能仍失败 |
 
 ## 8. 结论与后续
 
-**ead两常量差量静态无实质阻断，终态门禁证据在精确发布后另核。** 原5cc/source187以及旧CI失败保持；不提前合并5cc/ead，不发布APPROVE或reviewer/stage success。源码计量沿用byte相同5cc的6316、净+6/超1216，未新跑cloc、不称减量；N07与云性能仍未通过，502/P95根因和600秒完整运行不是本轮结论。
+**精确ead＋终态E14a61的本次测试差量和准确product开发门槛核验无剩余阻断，可由总协调整合source＋E＋本审查并按流程验证新的组合。** 技术结论已先转达root，行政评论/封条不被倒写为当时已完成。原5cc/source187及旧CI失败保持；不发布APPROVE或reviewer/stage success，不代表main/课程整体通过。源码计量沿用byte相同5cc的6316、净+6/超1216，未新跑cloc、不称减量；N07与云性能仍未通过，502/P95根因和600秒完整运行不是本轮结论。
