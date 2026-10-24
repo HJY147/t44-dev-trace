@@ -2,13 +2,15 @@
 
 应用和技术材料已经能审阅，作业尚未全部达标。先体验界面，再看报告与缺项；不需要先理解整个后端。
 
-2026年10月24日09:20（北京时间）收尾更新：最新候选C为`b66fa36a317145afec350d7f61ca374959b2eaf7`。相对bc5应用只在依赖查询增加可信`project_id`条件，限定等价范围已有[18b0271审核及准确PR42 COMMENT](https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453)。完整[CI40047832510](https://github.com/HJY147/t44-dev-trace/actions/runs/40047832510)和[Docker40047836840](https://github.com/HJY147/t44-dev-trace/actions/runs/40047836840)均绿，后端510项、前端89项。root已按事前dde39门槛决定准入开发集成，最终以`records/decisions/dependency-query-development-admission.json`收据为准；连接池db87不合入。这里不是性能改善证明或main放行。
+用户返回后已确定11月28日截止，D008发布提示顺序已采用并另行完成[1.2规格冻结](../../records/spec-freezes/v1.2.json)；实现和新回归在进行。免费[857短stub校准已通过](../../reports/acceptance/v5-calibration-857-public-summary.md)，非产品或600秒性能。计划本人购买阿里云时看[选购清单](aliyun-performance-machine-checklist.md)，不要把旧AWS报价当阿里云价格。最新问题集中在[返回简报](../reviews/return-decision-brief-20261024.md)。下列09:20段落和固定Word是历史快照，不能用于证明新1.2实现。
+
+2026年10月24日09:20（北京时间）历史收尾快照：当时候选C为`b66fa36a317145afec350d7f61ca374959b2eaf7`。相对bc5应用只在依赖查询增加可信`project_id`条件，限定等价范围已有[18b0271审核及准确PR42 COMMENT](https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453)。完整[CI40047832510](https://github.com/HJY147/t44-dev-trace/actions/runs/40047832510)和[Docker40047836840](https://github.com/HJY147/t44-dev-trace/actions/runs/40047836840)均绿，后端510项、前端89项。root已按事前dde39门槛决定准入开发集成，最终以`records/decisions/dependency-query-development-admission.json`收据为准；连接池db87不合入。这里不是性能改善证明或main放行。
 
 **运行演示固定bc5，四份Word保留各自M6/M7截止，不是C的同源运行/文档验证。** 本岗没有重启、延长或重新测试入口。
 
 ## 先打开界面
 
-优先打开完整本机演示 <http://127.0.0.1:5178>，登录说明为本机私密文件`.submission-private/完整演示登录说明.md`。准确bc5应用的网页、API、消息和定时扫描已就绪，初始为2个项目/40条合成任务，调度身份只覆盖这两个项目。当前有界演示计划在北京时间2026年10月24日11:49:43自动停止；本页只记录交接时正在运行，不提前把4小时全程或最终清理判为通过。提前停止命令和状态位置见同一私密说明。
+完整本机演示 <http://127.0.0.1:5178> 已按北京时间2026年10月24日11:49:43的原截止自然结束，随后约4.11秒清理；现在不能登录这个入口。准确bc5演示的driver/post实际退出0，89个登记进程退出、本run端口释放，九受保护监听元数据与基线一致。[最终只读封档](../../agents/deployment/demo-natural-close-report.md)区分实际观察和未测范围；没有续期或重启，不把四小时生命周期成功当正式性能通过。原私密登录说明保留历史，不用于声称当前就绪。
 
 另保留 <http://127.0.0.1:5173> 较大合成记录预览，也为准确bc5米咖玻璃界面，仅运行API和网页；使用另一份`.submission-private/演示登录说明.md`的账号。两入口数据和身份独立，账号未放到GitHub。连接池db87未合入，不把它说成这两个入口已采用。
 
@@ -45,7 +47,7 @@ Word都在本机`.submission-private/review-documents`，含你提供的私密�
 
 固定口径有效代码6307行，超过5100上限1207。尚无可信的1207行等价删重方案；不能压行、移计量目录或自行宣布老师放宽要求。
 
-F08同时触发“旧批准失效”和“评估基线过期”，资料未约定先提示哪个错误。原失败与未到达的后续语句保留，等本人回来讨论规则；不等于已经确认一个业务缺陷。v3白盒/交付物已按明确发表摘要完成有限核查，整体仍NOT_ACCEPTED_INCOMPLETE。
+F08在旧规格下同时触发“旧批准失效”和“评估基线过期”，原资料未约定先提示哪个。用户返回后已采用先更新评估、再完成原独立评审和经理决定的顺序，记录于D008；1.2新冻结先于新实现。原F08失败与未到达的后续语句继续保留，不追改为通过。v3白盒/交付物已按明确发表摘要完成有限核查，整体仍NOT_ACCEPTED_INCOMPLETE。
 
 后发H2六次均exit1，环境最终恢复为5次true、1次false；数据准备和600秒调度不等于有效400并发已成立。SUT性能结论为INCONCLUSIVE，不给bc5/db87排名，也不撤销原v3失败。新公开Pcal=`b69ac5e`的独立stub校准中，400用户即时响应场景仍有客户端循环延迟和超时；它只证明该本机隔离测试路径能出现这些现象，不能归因原CI或SUT，不能补成H2有效测量。没有补跑。
 

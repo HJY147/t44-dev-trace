@@ -4,7 +4,13 @@
 
 截至2026年10月24日08:03（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
 
-完整本机演示 `http://127.0.0.1:5178` 已就绪，准确bc5/初始2项目40任务、消息和扫描运行，计划北京时间2026年10月24日11:49:43停止；[交接观察](records/validation/native-user-demo-coordinator-handoff.json)仅证明当时运行中，不是4小时最终通过。另保留 `http://127.0.0.1:5173` 的API/网页大数据预览。[醒来后查看项目](docs/user-guide/wake-up-review.md)区分入口及本机私密登录说明，账号未公开。
+完整本机四小时演示已按原截止自然结束，`http://127.0.0.1:5178`已停止；[实际结束报告](agents/deployment/demo-natural-close-report.md)确认driver/post退出0、清理成功。该运行仍固定bc5，不是后续开发候选或正式性能验证。另保留 `http://127.0.0.1:5173` 的API/网页大数据预览，末次监听元数据核对见同报告。[醒来后查看项目](docs/user-guide/wake-up-review.md)区分入口及本机私密登录说明，账号未公开。
+
+## 用户返回后的进展（2026年10月24日）
+
+已按用户答复以11月28日为截止；用户打算自行购买阿里云，先参阅[性能指标与两台机器选购清单](docs/user-guide/aliyun-performance-machine-checklist.md)，尚无云资源购买或AI支出授权。固定计数仍6307行、超上限1207；[最新审计](agents/database/source-budget-return/report.md)没有可信的等价净减1207行方案。三组旧正式性能失败及H2有效并发未证实的结论保持。
+
+858工具准备失败保留；857另行冻结、单次准入后的[短时自有stub校准通过](reports/acceptance/v5-calibration-857-public-summary.md)，10000请求无失败/P95约208.9ms含固定200ms等待，未测SUT或正式600秒。D008发布提示顺序已由用户选择，RFC/规格分别审查后在d530755建立[1.2新冻结](records/spec-freezes/v1.2.json)；后续实现和新回归尚在进行，不以规格通过冒充产品通过。过程素材见[提示词岗真实留痕](docs/prompting/RETURN-user-decisions-and-quality-trace.md)，各稿保留其准确截止，学生最终研究正文仍须本人完成。以下09:20是历史收尾快照。
 
 ## 2026年10月24日09:20收尾状态（北京时间）
 
