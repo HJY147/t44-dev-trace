@@ -10,3 +10,5 @@ Agent-Role documentation；Prompt-Ref ROLE-documentation-M9-REVIEW-NAVIGATION-v1
 - 11公开来源/hash、旧4源MD/QA/manifest/14冻结不变、旧段原文/开头可见性/35页分配/链接/JSON/范围校验。
 - 只问BE1个公开事实，实际1条AI原样答复，不当学生/测试采访；无private/Word/R002/原始独立输出或服务/测试/CI/Word操作，不计prompt/human12-5-3。
 - H2尚无公开最终结论、新actualbundle未创建，不等结果占槽；Issue9实际全文GET后封档释放。
+
+- 实现6be5192本人push，Issue9评论6377836827精确ID全文GET逐字body/URL匹配；仅回执后立即释放，不纳新static修复、不等H2/候选CI。

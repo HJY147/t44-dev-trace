@@ -337,3 +337,8 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 对BE实送1个公开静态索引问题，无送达错误且实际收到1条AI答复，尚待正文记录。用公开guidance checks定位wake-up在docs/user-guide，不读私密。短猜guide772不是有效SHA而git show退出128，随后只读已发表M8指导公开路径，不据简称造SHA。
 
 - 2026-10-24T08:56:39.738609+08:00 M9简短导航和submission-map开头警示完成；旧第4段正文逐字保留，只改标题/加M7截止说明。11公开源hash、旧四源MD/QA/manifest/14冻结、35页分配/源码路径/链接/JSON/范围通过；没有private/Word/R002/原始独立输出或服务测试。BE1问1AI原话已存M9-collection。新包未创建，原材料hash将由root封包前重取，不把原仓库相对链接说成外层副本自动生效。
+
+## 2026-10-24T08:57:41.703557+08:00 M9 Issue9全文读回与释放
+
+- 实现6be519226ed5e83c71c6c6a99719ffd64c962e8d本人commit/push，Issue9实际评论6377836827对精确ID全文GET，body/URL逐字相同，保存github-M9-navigation-readback。
+- root通知部署静态窄修急需槽，本轮不纳未完成修复、不等H2/候选CI；仅存回执/交接后由HEAD/远端一致核实回传，立即释放索引/槽位，无新源读取或产品操作。
