@@ -291,3 +291,8 @@ R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已pus
 ## PR44 精确5cc依赖按需读取限定代码审
 
 固定AI审核岗，ROLE-reviewer-PERFORMANCE-REPAIR-839-v1；独立worktree/branch codex/review-performance-repair-5cc直接5cc，先scope585c3f1后静态。精确C5cc/设计6c1/公开E00b8绑定；逐一追域三个deps消费者，Runtime/锁/鉴权/版本/D008/CAS/审计/outbox/idem/commit不确定性无新差量；逆转loader+State后整workflowAST同C，原986去仅两新函数后全AST同C，15freeze、23公开开发原件hash及3红/23+13唯一36绿核完。0应用tests/HTTP/SQL/MySQL/服务/负载/CI触发；原三红仅最后查询结构，受控返工边界非真实生命周期，TestClient警告/误配置Ruff失败保持。无新增实质代码阻断，仅供后续验证；完整CI/artifact未核，6316净+6/超1216仍失败，不性能或全局通过。未读tmp839841852或其它独立私有/未与tester通信。报告reports/reviews/44-5cc856d6fa94b1fdde32605543b53822f9747f00.md，审计agents/reviewer/evidence/performance-repair-5cc/static-evidence-audit.json；PR44准确SHA COMMENT及回读后另seal。
+
+
+### 封条前收到的最新门禁事实
+
+总协调实时读取公开product40087756354，转达contracts job120854052090与coverage job120854051910在实际suite步骤failure，frontend/static success；Docker40087993372 success。本岗未独立读取这些job/log，也不诊断失败原因；通知原件root-ci-failure-notice.json。上文E的in_progress是历史取样，不替代此最新状态。**5cc仍不得合并；限定静态源码clear绝不是merge准入。** 后端另阶段诊断/修复，原失败和精确5cc保留；变更后另审。

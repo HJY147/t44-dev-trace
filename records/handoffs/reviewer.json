@@ -1480,7 +1480,7 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-d008-implementation",
-  "review_outcome": "LIMITED_CODE_CLEAR;COMPLETE_CI_NOT_AUDITED;LOC_FAILED;NO_PERFORMANCE_GLOBAL_PASS",
+  "review_outcome": "LIMITED_STATIC_CODE_CLEAR;ROOT_REPORTED_CONTRACTS_COVERAGE_FAILED;NO_MERGE;LOC_FAILED",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
   "review_target_sha": "5cc856d6fa94b1fdde32605543b53822f9747f00",
   "review_targets": [
@@ -2206,8 +2206,39 @@
     "LOC_limit": 5100,
     "LOC_failed": true,
     "complete_CI_artifacts_audited": false,
-    "outcome": "LIMITED_CODE_CLEAR_FOR_NEXT_COORDINATOR_VALIDATION_ONLY",
+    "outcome": "LIMITED_STATIC_CODE_CLEAR;CONTRACTS_AND_COVERAGE_CI_FAILED;NO_MERGE",
     "performance_or_global_gate_pass": false,
-    "github_comment": "pending_exact_C_COMMENT_and_full_GET"
+    "github_comment": "pending_exact_C_COMMENT_and_full_GET",
+    "latest_CI_root_relay": {
+      "source": "root real-time public GitHub CI read, relayed to reviewer; reviewer did not independently read jobs/logs",
+      "received_utc": "2026-10-24T11:08:23.885541+00:00",
+      "candidate_sha": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "product_run": 40087756354,
+      "jobs": {
+        "coverage": {
+          "id": 120854051910,
+          "conclusion": "failure",
+          "root_observed_scope": "actual suite step"
+        },
+        "contracts": {
+          "id": 120854052090,
+          "conclusion": "failure",
+          "root_observed_scope": "actual suite step"
+        },
+        "frontend": {
+          "conclusion": "success"
+        },
+        "static": {
+          "conclusion": "success"
+        }
+      },
+      "Docker_run": 40087993372,
+      "Docker_conclusion": "success",
+      "reviewer_CI_log_read_or_diagnosis": false,
+      "code_scope_result_unchanged": "NO_NEW_MATERIAL_STATIC_CODE_BLOCKER_WITHIN_SCOPE",
+      "merge_admitted": false,
+      "next_owner": "backend separate diagnosis; preserve original 5cc and red jobs"
+    },
+    "merge_admitted": false
   }
 }
