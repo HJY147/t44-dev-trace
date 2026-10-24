@@ -1,0 +1,5 @@
+Prompt-ID: ROLE-reviewer-PREPARATION-BUDGET-v1
+Operator: fixed AI code reviewer.
+Actual parent dispatch:
+请在现有review worktree独立做小范围快速审核（约5分钟）：基点217d89779440086ab727d280a0900efad36bd2c0，候选实现79ed72fe7218e8782c1ba8dca99996ddf8880e90，封档9d335f363dc35980feb799c04c2dae1d36f4cd54，分支codex/deployment-preparation-budget。设计specs/changes/acceptance-preparation-budget-rfc.md。只审核环境harness输入上限1200→1800与同步workflow/README/既有953 guards，default900/min60/strictint/job40/执行绑定/加密输出/fault恢复/usage/metadata不变。只看公开owner targeted13红绿与静态代码，原则上无需重复已过测试；不接触任何独立tester案例/输出/日志/密钥，不运行本机服务。先尽快回复是否有实质阻断，再保存有限审核结论到自有reports/reviews、角色记录和Issue7或PR21 COMMENT并全文GET，显式绑定实现SHA，不全局放行。不要修改开发候选。
+Scope recorded before candidate source reading: exact implementation79ed72, evidence tail9d335 separated; own branch codex/review-preparation-budget based217d in existing clean review worktree. Static diff and expressly public owner targeted artifacts only; no test/service/HTTP/SQL/CI runs or independent private reads. New upper limit is capability only, not preparation/acceptance completion guarantee.
