@@ -345,3 +345,4 @@
 - AWS现行网页iframe配置核到ec2/ec2-ondemand-without-sec-sel，官方current feed发布2026-10-23T22:13:55Z。03:31:44Z核原始记录：us-east1 Linux c7i.2xlarge8v16GiB0.357USD/h与c7i.xlarge4v8GiB0.1785/h。首次Python CA错误/过时猜测URL404/legacy无C7i保留为查找过程，未拿旧博客当现价；系统curl保持TLS验证后官方准确feed成功。Vultr官方403，不用vultr2/非官方，不继续广泛选型。
 - gp3区域0.08/GiB月来自官方EMR对照表并与当前AWS feed0.08SKU交叉，按官方存储秒比例/31天算120GiB；两IPv4各0.005/h。1h精确0.5584032258、2h1.1168064516，表约0.56/1.12USD，未含税/需收费出流量等；建议待用户批准本次USD3预算，不是厂商硬封顶。原始snapshot/选中记录/算式/检索UTC/来源见performance-quote-evidence。
 - 一页报价明确2h余量、同AZ私网、shared host非Dedicated/独占物理核、账号充值验证门槛未知/无优惠假设/不含人工/非保证、不承诺270ms；付款前独立0元发压器校准尚未执行，不触SUT。停止计算后EBS/EIP可能继续费，终止并核盘/快照/EIP释放；不直接执行任何删除。
+- 报价96ed54c0819dfa43107058aeb16e7e947682a527已push并交根给用户考虑；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379372780本岗body-file实际发布，完整GET逐字核一致，原JSON留档。仅封档；实际费用授权仍false，无付款/校准/SUT/云资源执行。

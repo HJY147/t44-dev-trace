@@ -263,3 +263,4 @@
 
 - 官方现行EC2 feed直接小时价：应用c7i.2xlarge0.357+发压c7i.xlarge0.1785USD/h，us-east1 Linux8v16GiB+4v8GiB，同AZ私网、default shared tenancy。加120GiB gp3按秒比例/两IPv4，1h约USD0.56/2h约USD1.12（税/需收费公网出流量另计）；建议审批USD3，非厂商硬上限。
 - 一页agents/deployment/performance-retest-quote.md；原始定价及calc/sources在performance-quote-evidence。用户11月28日截止/未授权付费，账号/充值/验证门槛未知，0元发压器独立校准尚未执行，不承诺270ms。无账号/资源/购买/凭据/SUT/live变化。
+- 报价SHA96ed54c0819dfa43107058aeb16e7e947682a527；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379372780全文GET一致。完成仅报价资料，不触发付费或任何新运行。
