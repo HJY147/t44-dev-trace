@@ -217,3 +217,14 @@
 - 新API/Web继续运行等待用户，未启MQ/scanner/DDL/migrate/seed/reset，未业务写/改独立端口库或读取tester私密材料。当前仅API+Web预览，不是完整部署/消息成功链/容量理由新独立验收。验证入口latest-preview-validation.json、switch/prepared receipts、907原JSON与启动原log gzip；全部AI运维/开发行为，不计学生人工工作。
 
 - c5e79e0证据已本岗commit/push；Issue2实际评论6375754006已按精确ID GET回读，正文逐字相同，回执latest-preview-github-verification.json。仅预览运维/证据，无需新产品PR，不发布APPROVE/独立状态；API/Web继续运行，后续由root统一向用户说明。
+
+
+## 2026-10-24T08:13+08:00｜ROLE-frontend-NATIVE-USER-PREVIEW-v1
+- root固定13cce419新隔离codex/frontend-native-preview；先设计c300560，仅对已运行完整演示5178→18088普通入口作有限读取，不改bc5产品/配置/服务，不操作旧5173/18080与独立数据。driver43819 UID501/PGID43819/start07:49:43只读核验；应用bc5/source92依部署公开user-demo-operational-binding，未读私密runner/env，不冒称浏览器核live源码。
+- 实查907_demo_preview_smoke只有登录/工作台/close，无本轮任务通知审计/logout和全response status，原件不改/不运行。先报root再正式分配861，保存tmp/frontend/861_native_user_preview.mjs；路由guard仅5178 GET/HEAD/OPTIONS与POST login/logout，80GET上界，其他写入abort并记失败。旧907SHA和产品diff均核未变。
+- 仅从本机0600完整演示普通登录说明解析项目负责人账号到ignored0600 adapter，值不打印。六张截图全在认证后业务只读页，desktop.account区域遮挡，不截已填写登录框/密码；不读取内部service凭据。初探测Sidebar.vue/AppSidebar.vue不存在与静态/frozen发现notification路由应/me而非/users/me均在执行前纠正，没有错HTTP/产品失败。
+- 861首次一次exit0，00:10:43.616UTC结束；1440/390都在2个已有项目选项中选project2，任务20cards、通知5cards/未读5未处理5、审计20cards，页数不冒称全数据。实际70API请求/响应=66GET+2login+2logout，逐条status200/requestid70/70，businessMutations/blocked/requestfailed/pageerror/整页横溢出0；console只有4条Vite连接debug，没有warning/error。两次正常退出200后登录表单可见/app-shell卸载。
+- 6PNG逐张实际看；Chromefinally关闭，9保护端口listener UID/PID/PPID/PGID/start元数据前后一致（只是两个时点，不声称连续监控）。未发标已读/处理或任务/人力写入，没有reset/服务停止/配置变更/CI/全套；普通login/logout本身可能写DB，背景MQ/scan仍会推进，不能声称DB零写/本岗验证全部后台成功/完成4h。
+- 原脱敏method/path/status/requestid摘要及console/results保存native-user-preview-first，原log先gzip再规范可读尾空白。source/907/861SHA、精准范围与非独立界限见native-user-preview-validation.json；完成本岗密钥精确扫描、Issue2实评GET后交根。全部AI入口验证，不计学生人工修改。
+
+- 9902a29证据阶段本岗commit/push；Issue2实际评论6377347811经精确ID GET读回正文完全同，回执native-user-preview-github-verification.json。没有APPROVE/独立通过/新业务PR，浏览器关闭，服务不改，交root最终汇总。

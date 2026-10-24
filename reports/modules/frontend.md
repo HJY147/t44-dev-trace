@@ -1,3 +1,13 @@
+# 前端模块报告｜当前完整演示普通入口验证
+
+- ROLE-frontend-NATIVE-USER-PREVIEW-v1，基线13cce419/设计c300560，准确产品bc5未改。只验证已运行5178→18088普通身份入口；部署公开binding92源文件为身份依据，未读取私密runner或内部服务凭据。
+- 既有907能力不覆盖新读路径/logout/status，原件不改不跑；root正式分配861后新窄脚本，80GET上界及login/logout以外写入拦截，单次1440/390执行通过。实际70API响应全200、requestid70/70，66GET+2login+2logout；0业务修改/阻断/请求失败/pageerror/横溢出。仅4条Vite debug。
+- 每宽从2个已有项目选project2，任务20卡/通知5卡（5未读5未处理只看）/审计20卡，正常退出200后shell卸载；六图已逐张实际看，认证account遮挡，无填写登录框截图。Chrome已关，9保护端口两个时点listener身份一致，服务配置未动。
+- 源码/端口/907与861SHA/脱敏HTTP/限制在agents/frontend/native-user-preview-validation.json、native-user-preview-first/results.json。原准备期路径/selector假定在执行前纠正，未错发HTTP。账号说明和adapter0600，值不公开，本岗公开文件密钥精确扫描另外归档。
+- 这是一轮有界AI开发入口检查，不是独立验收/压力或全部业务功能再验收/完成4小时演示；普通会话及后台MQ/scan可能写DB，不称所有DB零写。不改项目任务人力/通知read处理、库或旧/独立服务。
+
+## 以下为旧阶段记录，不能替代当前新入口结论
+
 # 前端模块报告｜当前本机最新预览
 
 - 本轮 ROLE-frontend-LATEST-PREVIEW-v1，只更新API+Web，未改产品。设计627e627，固定应用bc5aef9c62393134582affb7a690acb33ac2b833；85文件git archive前后hash一致，保留旧9560/5dcb快照，独立cache，原锁依赖。
