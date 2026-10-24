@@ -349,3 +349,5 @@
 - 原umask077让tracked公开目录700/文件600，经root-owned Docker COPY阻断UID10001/101读取，本岗AI实现/前轮AI审核漏查，由root AI诊断修复，不归学生发现。原15:53:55迁移exit1及旧image/pre-mode-repair、601s/124历史保留。
 - root转述公开模式修3919files/312dirs、Cclean/.env600；API15:59:23/110s0及web16:02:34/82s0新image完整ID/root来源见bootstrap-mode-validation/root-cloud-relay.json；非root读取与Ccli hash后迁移16:03:00/4s0。不以此代完整API/TLS/私网或正式性能。
 - bootstrap source仅新增60s index公共模式规范，保留umask077，O_NOFOLLOW/fchmod、.env元数据600不变、无.git/私有untracked递归，源码根750。先设计e9c9115，846旧例红1→修后7绿；Ruff(test+embedded)/bash-n/compile通过，无云/镜像/服务/CI/852动作，原C业务/20元/17:00不改。
+
+- 实现59b7d2f7f0af1ab8baa836ec3baea859bccb02a7已推送，Issue7/6381884806全文GET一致；final-seal包含旧Git前像和新脚本/846/原红绿hash。新bootstrap仅本地验证，无云重跑或新CI。
