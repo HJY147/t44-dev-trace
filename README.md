@@ -8,7 +8,7 @@
 
 ## 获取本轮审阅源码
 
-完整源码在`codex/integration`。重新获取时使用`git clone --branch codex/integration https://github.com/HJY147/t44-dev-trace.git`；固定审阅包另绑定完整commit，不把浮动分支当成已验收版本。先体验可按[五分钟导览](docs/guidance/M8-five-minute-tour.md)。
+完整源码在`codex/integration`。重新获取时使用`git clone --single-branch --branch codex/integration https://github.com/HJY147/t44-dev-trace.git`；固定审阅包另绑定完整commit，不把浮动分支当成已验收版本。先体验可按[五分钟导览](docs/guidance/M8-five-minute-tour.md)。
 
 ## 功能与运行
 
