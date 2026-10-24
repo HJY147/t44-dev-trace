@@ -290,3 +290,9 @@
 - deployment/ubuntu24-bootstrap.sh及.md提供inspect/packages/source和单独产品准备检查点，准确C固定0dfb55c2191200d947c5423fd9ee74bb0812cc5a；Ubuntu签名仓库Docker+Composev2+Buildx/Python3.12/git，已有兼容项不重复装，来源冲突停止。
 - APT/Git下载各有限预算/失败退出、保留17:00前120秒，无all、无账号口令/seed/正式压测或网络开放/收费产品/key/token。root先审查再经Workbench手动执行；部署岗不触云/服务/CI/独立私密。
 - 本地bash -n通过；原件和源码hash见agents/deployment/ubuntu-bootstrap-validation。安装、C云build/infra/migrate尚未执行，结果未知，不称部署通过；原预算20元和北京时间17:00截止不改。
+
+### CLOUD-ASSISTANT-PROGRESS-v1
+
+- 实际通路改记已授权云助手root执行，root/ecs-user临时SSH失败；root转述云助手两机正常2.2.4.1097，app公开853预检14:21:49/<1s/exit0，Python3.12.3/git/curl已有、Docker缺失。
+- 8f packages任务由root核完整文本（仅插阶段参数）后提交900s/进程树，当前安装进行中，无成功回执；此前fill残留默认前缀被拦未执行。部署岗不接触云/CI/服务/图片或独立私密，未新增实际运行结论。
+- 已审bootstrap.sh字节/blob完全不变，说明改云助手通路并在独立产品任务重申cd/HEAD；证据ubuntu-bootstrap-validation/cloud-assistant-progress.json。

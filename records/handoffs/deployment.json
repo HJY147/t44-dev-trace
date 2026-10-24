@@ -741,6 +741,11 @@
       "id": "ROLE-deployment-UBUNTU-BOOTSTRAP-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-UBUNTU-BOOTSTRAP-v1.md",
       "reason": "为root提供精确C、有界且分步可审主机命令；本岗无云执行权限，不冒称安装部署成功"
+    },
+    {
+      "id": "ROLE-deployment-CLOUD-ASSISTANT-PROGRESS-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-CLOUD-ASSISTANT-PROGRESS-v1.md",
+      "reason": "修正为实际云助手通路，保留UI文本拦截与未完成安装状态，不改已审脚本"
     }
   ],
   "questions": [
@@ -882,7 +887,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "ubuntu-bootstrap-reviewable-not-executed",
+  "stage": "ubuntu-packages-running-root-relay-no-completion",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -890,7 +895,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T06:21:34.639799+00:00",
+  "updated_at": "2026-10-24T06:29:46.089545+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1098,5 +1103,22 @@
     "install_source_build_infra_migrate_results": null,
     "evidence": "agents/deployment/ubuntu-bootstrap-validation",
     "root_review_and_actual_execution_pending": true
+  },
+  "prior_stage_before_cloud_assistant_progress": "ubuntu-bootstrap-reviewable-not-executed",
+  "cloud_assistant_progress": {
+    "prompt_ref": "ROLE-deployment-CLOUD-ASSISTANT-PROGRESS-v1",
+    "evidence": "agents/deployment/ubuntu-bootstrap-validation/cloud-assistant-progress.json",
+    "source": "root UI relay only",
+    "execution_route": "user-authorized cloud assistant root",
+    "ssh_root_and_ecs_user_failed": true,
+    "agent_version_root_observed": "2.2.4.1097",
+    "root_preflight_exit_code": 0,
+    "preflight_environment": "Ubuntu24.04/x86_64/Python3.12.3/git/curl;Docker missing",
+    "packages_running": true,
+    "packages_completion_exit_code": null,
+    "packages_timeout_seconds": 900,
+    "reviewed_script_blob_unchanged": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
+    "earlier_mismatched_fill_not_executed": true,
+    "no_cloud_ci_service_or_private_access_by_deployment": true
   }
 }

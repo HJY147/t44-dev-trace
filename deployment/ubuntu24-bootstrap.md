@@ -2,7 +2,7 @@
 
 准确产品C固定`0dfb55c2191200d947c5423fd9ee74bb0812cc5a`；今天北京时间2026-10-24 17:00（UTC09:00）自动释放/20元预算不变。此文件及脚本只在本地编写，未在云机执行。仅面向新t44-app，不在发压机安装应用栈，不使用阿里云key/token。
 
-先经官方Workbench取得root终端；将审查后的`ubuntu24-bootstrap.sh`作为文件上传/粘贴保存，核对本岗交付SHA后逐阶段调用，**不要将下载内容直接管道给shell，也不要把下面阶段串为一键执行**：
+当前实际通路为用户已授权的云助手root执行，不要求Workbench SSH连接成功。将审查后的`ubuntu24-bootstrap.sh`作为文件上传/粘贴保存，核对本岗交付SHA后逐阶段调用，**不要将下载内容直接管道给shell，也不要把下面阶段串为一键执行**：
 
 ```sh
 bash ubuntu24-bootstrap.sh inspect
@@ -24,7 +24,7 @@ bash ubuntu24-bootstrap.sh source
 
 ## root逐步审查后再运行的产品准备命令
 
-以下均在新应用机root终端，先确认Docker daemon可用。每个代码块是独立检查点；不运行账号初始化、seed、调度签发或正式压力。绝对截止不延长，剩余时间不足相应上限时不开始新步骤。
+以下由root经云助手在新应用机root环境逐段执行，先确认Docker daemon可用。各云助手任务不共享上一任务工作目录，因此每个产品块都重新cd并校验准确HEAD。每个代码块是独立检查点；不运行账号初始化、seed、调度签发或正式压力。绝对截止不延长，剩余时间不足相应上限时不开始新步骤。
 
 ```sh
 cd /opt/t44-c-0dfb55c
@@ -37,12 +37,16 @@ python3.12 deployment/ops.py config-check
 `.env`为0600且排他创建；如果已存在，不重建或输出它。`config-check`只quiet，不打印完整解析配置。下一步下载/构建固定镜像和锁依赖：
 
 ```sh
+cd /opt/t44-c-0dfb55c
+[ "$(git rev-parse HEAD)" = 0dfb55c2191200d947c5423fd9ee74bb0812cc5a ]
 timeout --foreground --kill-after=10s 600s python3.12 deployment/ops.py build
 ```
 
 build超时/失败就停，并核实daemon中的该构建状态；不能以client退出推定Docker后台已清理。成功后才启动MySQL/RabbitMQ：
 
 ```sh
+cd /opt/t44-c-0dfb55c
+[ "$(git rev-parse HEAD)" = 0dfb55c2191200d947c5423fd9ee74bb0812cc5a ]
 timeout --foreground --kill-after=10s 300s python3.12 deployment/ops.py infra
 python3.12 deployment/ops.py migrate --database t44
 ```
@@ -50,6 +54,8 @@ python3.12 deployment/ops.py migrate --database t44
 上条迁移只显示计划。root核明确切项目库及实际infra健康、源/冻结版本之后，才单独执行：
 
 ```sh
+cd /opt/t44-c-0dfb55c
+[ "$(git rev-parse HEAD)" = 0dfb55c2191200d947c5423fd9ee74bb0812cc5a ]
 timeout --foreground --kill-after=10s 180s python3.12 deployment/ops.py migrate --database t44 --execute
 python3.12 deployment/ops.py status
 ```
@@ -57,3 +63,13 @@ python3.12 deployment/ops.py status
 此处停止，保留每步实际退出/版本/耗时，失败不自动重试或清库。账号/口令、seed、scheduler token、API完整启动、跨机私网入口、正式复测均不在本阶段。没有修改产品C/网络开放/凭据/自动释放设置；现有Compose默认web仅loopback、DB/MQ无宿主端口。历史Docker实跑不是本次C云成功证明。
 
 官方主源：2026-10-24核对[Ubuntu维护的docker.io](https://ubuntu.com/server/docs/how-to/containers/docker-for-system-admins/)、[Noble docker-compose-v2（universe）](https://packages.ubuntu.com/eu/noble/docker-compose-v2)。Ubuntu仓库版是Canonical维护的发行包，与[Docker公司官方仓库版](https://docs.docker.com/engine/install/ubuntu/)区分，本阶段不混装两套。包页原通用URL一次抓取timeout，已有官方/eu页面搜索结果明确2.24.6及amd64，另以[Ubuntu docker-buildx](https://packages.ubuntu.com/noble/docker-buildx)提供构建插件；实际安装候选版本须在云机记录；没有把本地语法检查写成安装通过。
+
+## 当前执行通路与进展：root UI转述
+
+Workbench服务角色获用户明确批准后，root已点击创建确认；root和ecs-user的临时SSH连接均失败。云助手列表显示两机正常，版本2.2.4.1097；本岗未操作或独立查看云端。
+
+root已通过云助手仅对应用机执行公开主机准备工具`tmp/853_cloud_environment_preflight.sh`：UI核完整命令一致，北京14:21:49开始，耗时小于1秒，实际exit0。root转述结果为root账号、Ubuntu24.04/x86_64、Python3.12.3、git/curl具备，Docker缺失；所查账号列表未出现ecs-user。这是环境预检，不是产品部署或性能验证。
+
+8f479201已由审核岗作只读限定审查，无实质阻断。root在已审脚本中仅加入阶段参数`set -- packages`，完整替换云助手编辑器后全文核对一致，提交`t44-bootstrap-packages-8f47920`；任务上限900秒并约束进程树，正在安装，尚无完成/成功结论。编辑器曾在fill后保留默认`#!/bin/bash`前缀，该次因比对不一致被阻止执行；root改全选粘贴并确认一致后才提交，不能把前一次当已运行。
+
+本仓库已审`ubuntu24-bootstrap.sh`原字节及Git blob保持不变；这里只改通路说明和分块工作目录，不改脚本。脚本直接从文件调用时仍按三阶段参数使用；云助手整段执行时，由root显式选择唯一阶段并核全文，不自动运行后续source/build/infra/migrate。安装结果由root实得回执另行追加，本岗不访问云/CI/服务或私有测试资料。
