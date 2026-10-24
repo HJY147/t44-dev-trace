@@ -2,7 +2,7 @@
 
 本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
 
-截至2026年10月24日08:05（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
+截至2026年10月24日08:03（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
 
 完整本机演示 `http://127.0.0.1:5178` 已就绪，准确bc5/初始2项目40任务、消息和扫描运行，计划北京时间2026年10月24日11:49:43停止；[交接观察](records/validation/native-user-demo-coordinator-handoff.json)仅证明当时运行中，不是4小时最终通过。另保留 `http://127.0.0.1:5173` 的API/网页大数据预览。[醒来后查看项目](docs/user-guide/wake-up-review.md)区分入口及本机私密登录说明，账号未公开。
 
