@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "dependency-candidate-test-only-ci-ledger-fix",
+  "stage": "dependency-candidate-test-only-ci-terminal-evidence",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -2025,7 +2025,7 @@
     ]
   },
   "dependency_candidate_ci_fix": {
-    "status": "test-only-candidate-new-exact-source-ci-pending",
+    "status": "test-only-candidate-exact-source-product-ci-completed-success-root-decision-pending",
     "source_commit": "ead155e6204de9004bc968e9b9648358cfed75f8",
     "source_branch": "codex/backend-dependency-ci-fix",
     "evidence_branch": "codex/backend-dependency-ci-fix-evidence",
@@ -2059,11 +2059,62 @@
       "new_cloc_run": false
     },
     "pending": [
-      "new full exact-source CI",
-      "review of test-only delta",
-      "root integration decision"
+      "root/reviewer final precise-source integration decision",
+      "formal performance and size compliance remain unproven"
     ],
     "no_cloud_change": true,
-    "no_independent_private_material_read": true
+    "no_independent_private_material_read": true,
+    "final_ci_evidence": {
+      "run": 40088982094,
+      "source": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "status": "completed",
+      "conclusion": "success",
+      "full_junit": {
+        "tests": 562,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "markers_overlap_full": {
+        "contract": 179,
+        "integration": 93,
+        "fault": 19
+      },
+      "ledger_cases_passed": 5,
+      "python": {
+        "files": 44,
+        "git_set_equal": true,
+        "excluded": 0,
+        "line": [
+          2641,
+          2960
+        ],
+        "branch": [
+          663,
+          828
+        ]
+      },
+      "frontend": {
+        "tests": 89,
+        "files": 20,
+        "git_ts_vue_set_equal": true,
+        "line": [
+          364,
+          390
+        ],
+        "branch": [
+          821,
+          932
+        ]
+      },
+      "official_zips_digest_verified": 4,
+      "selected_originals_roundtrip": 18,
+      "summary": "records/validation/composite-dependency-ead-ci.json",
+      "issue_final_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383616829",
+      "issue_body_exact_get": true,
+      "new_docker_run": false,
+      "prior_docker_api_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "new_nginx_candidate_included": false
+    }
   }
 }

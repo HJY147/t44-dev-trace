@@ -524,3 +524,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 唯一真实红为985原SQL计数：block20对22/unblock22对24，DML5/control2均同；恰少两SELECT。coverage原560pass2fail，contract177pass2fail/integration91pass2fail重叠。端点200/schema及打印Tx事实可见，但失败后auth/closed/replay断言未执行，不凭保留冒绿。此是开发期望陈旧，不更改独立270ms/600秒/零错。
 - root窄授权后test-only source ead155e6204de9004bc968e9b9648358cfed75f8正常push；985只两常量+注释，AST其它全部节点全同，应用对5cc逐字同，不再改Workflow。原backend Ruff/format绿；collect-only5参数/35deselected仅收集，不跑本地MySQL/业务服务/负载，不重复旧36绿。当前规模按5cc原6316+应用身份沿用，未新cloc/仍超1216。
 - product40088982094新source head核真，交接时frontend/static成功，coverage/contracts in_progress；完整CI仍待，原PR44保持5cc审核范围，main/云C未改。新E分支codex/backend-dependency-ci-fix-evidence只公件；报告agents/backend/performance-repair-839-ci-fix/report.md，原failure全保留。Issue3 6383532393 body-file+精确GET全文同。无独立私有读取/不联系839，作者与修正为后端AI。
+
+### ead155e准确CI终态E（不重跑）
+
+- root另派纯归档后实读product40088982094/attempt1 metadata，准确ead155e head、四job全部success。四artifact ZIP逐个先官方sha256/bytes核验再开，沿旧18原件选择名单取新bytes/gzip双hash并实解压回读；成功coverage/contracts原ANSI日志另双hash gzip保存。records/ci/40088982094及records/validation/composite-dependency-ead-ci.json为本轮新原件，不复制旧结果/不改原5cc失败。
+- 实际JUnit full562/0fail/error/skip，contract179/integration93/fault19重叠且零；原ledger5case在full/contract/integration全部真实passed。44Py Git全集/excluded0，行2641/2960=89.22297297%/分支663/828=80.07246377%；FE89pass/20TSVue Git全同，line93.33/branch88.09（不扩CSS/HTML）。原combined87.2228不是行覆盖。
+- 原Docker40087993372 APIhead5cc成功、不是ead新run；仅核5cc与ead相关源roots相同，本次无新实际PRmergecheckout证明，绝不拿APIhead冒checkout。ead不含后来Nginx候选、该CI不验证它。规模仍原5cc6316/超1216+应用身份沿用，未新cloc。新绿不取消原失败/正式270ms600秒零错门槛，不证明502根因/独立验收/自动集成。
+- Issue3终态6383616829 body-file发表且精确全文GET一致；本轮只官方开发CI只读，生产/测试/配置/云/本地suite/SUT/负载均无新执行，角色作者AI。最终E封档后释放，不等无关检查。

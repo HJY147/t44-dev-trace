@@ -319,3 +319,5 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ### 5cc准确CI失败后的test-only修正
 
 原run40087756354两job真实FAIL已保留（985 block20/22 SELECT对旧22/24）；不是业务或环境根因证据，而是设计查询减少后开发精确账本未同步。新ead155e6204de9004bc968e9b9648358cfed75f8仅985两常量/注释，应用逐字5cc、其余AST全同，业务/auth/Tx/RC/audit/幂等断言不删。Ruff/format绿、collect-only5参数非执行。新product40088982094交接时frontend/static绿、其余两job仍跑，不预称全绿。报告/原两日志gzip/hash/AST证明与new-ci-at-handoff.json同agents/backend/performance-repair-839-ci-fix；Issue3 6383532393精确回读。原PR44/旧失败/规模6316未达/独立性能门槛全保留，后续完整CI/审核准入待项。
+
+终态补充：准确ead155e的product40088982094四job全部success；新原件实读full562/0failure/error/skip、markers179/93/19重叠；ledger5case全绿。44Py与Git全集/excluded0，line2641/2960=89.22297297%，branch663/828=80.07246377%；FE89/20TSVue/93.33行88.09分支。4官方ZIP先验digest/bytes后读18新原件，原成功job日志+selected双hash/roundtrip齐；汇总records/validation/composite-dependency-ead-ci.json。不含Nginx候选，旧5ccDocker非ead新运行且此轮不补actualcheckout证明；规模仍6316未达。旧5cc失败保留，无重新测试/生产/云操作，不构成独立性能通过或自动整合。

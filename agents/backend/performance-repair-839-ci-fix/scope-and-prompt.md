@@ -13,3 +13,7 @@
 根收到精确日志定位后的实际窄修授权：
 
 > 按该证据继续窄修：ledger准确反映已减少的2SELECT，保留全部业务、DML/control/auth/Tx/RC/audit/幂等断言并核唯一差异；明确这是开发统计期望更新，不是降低270ms/600s/零错独立性能门槛。先保存设计，提交新test-only checkpoint后给审核，保留5cc原CI失败不复跑，正常新源CI。新源CI若全过再配原范围源码审核整合，不以新绿追改旧失败。
+
+终态纯归档实际派工原文（产品不再修改）：
+
+> root11:19:23UTC用GitHub连接器实看run40088982094四job全部completed/success（contracts120857579310、coverage120857579219、static120857579266、frontend120857578995）。请在自己的E branch对准确ead155e归档终态 metadata/jobs、必要原日志/已发布artifacts核hash，统计实际passed/coverage并保scope，不rerun旧或新CI、不新测试。更新report/role/handsoff最终E seal+Issue3真正读回（可追加一条终态，不改旧失败）。生产不再改，root需精确sealed CI证据给审核/整合。该新CI不含已整合Nginx candidate，Docker原40087993372绑定5cc且应用相同需明示不是ead Docker新run。别向独立岗发送信息。
