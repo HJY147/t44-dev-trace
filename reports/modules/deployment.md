@@ -284,3 +284,9 @@
 - 总协调实际UI观察转述应用c8i.2xlarge8/16+80GiB PL0=1.714796、发压c8i.xlarge4/8+40GiB PL0=0.857398 CNY/h；合计2.572194/h，两小时基础5.144388，公网出流量0.8/GB另计。基础估计非最终账单或上限。
 - 同杭州K/默认VPC-switch/Ubuntu24.04x86安全加固/按量/5Mbps流量计费；SSH默认所有IP提示等完整选项见agents/deployment/aliyun-purchase-draft-record.md。AI选配置、用户本人登录，尚未协议/下单/建资源，部署岗未看UI或截图；无测试/联网/部署通过。
 - 官方唯一性支持默认网络复用，但旧草稿刷新事务未获明确保证；首台创建后第二单刷新核同VPC/交换机ID。仅文档记录，不动账号/服务/CI/图片或共享U文件，无额外GitHub评论。
+
+### UBUNTU-BOOTSTRAP-v1 分步命令待审查执行
+
+- deployment/ubuntu24-bootstrap.sh及.md提供inspect/packages/source和单独产品准备检查点，准确C固定0dfb55c2191200d947c5423fd9ee74bb0812cc5a；Ubuntu签名仓库Docker+Composev2+Buildx/Python3.12/git，已有兼容项不重复装，来源冲突停止。
+- APT/Git下载各有限预算/失败退出、保留17:00前120秒，无all、无账号口令/seed/正式压测或网络开放/收费产品/key/token。root先审查再经Workbench手动执行；部署岗不触云/服务/CI/独立私密。
+- 本地bash -n通过；原件和源码hash见agents/deployment/ubuntu-bootstrap-validation。安装、C云build/infra/migrate尚未执行，结果未知，不称部署通过；原预算20元和北京时间17:00截止不改。

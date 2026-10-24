@@ -373,3 +373,10 @@
 - 2026-10-24T05:44:51.825646+00:00从root精确2129cec977adfa16ce4e4bcbd31ce2793d58b78e新codex/deployment-aliyun-draft-record/worktree，仅按root实际UI观察转述记录两份未下单草稿：c8i应用8/16+80GiB PL0为1.714796、发压4/8+40GiB PL0为0.857398 CNY/h；Decimal核合计2.572194/h、两小时5.144388，公网出流量root明细0.8/GB另计，基础估计非账单/消费上限。
 - 用户本人登录、AI选配置、尚未勾协议/确认购买；部署岗未独立看UI/截图，无账号/资源/服务/CI或凭据动作。SSH22所有IP仅UI默认提示，没有实际资源/联网证明；登录创建后设置，无自动释放/续费。仅在本岗报告标root转述用户逐字请求，未建/改U文件。
 - 复用本会话已核官方默认网络唯一性/首次自动创建/安全组来源，保留旧草稿刷新行为未明确的限制，建议首台买后刷新第二单核相同VPC/交换机ID。截图留root ignored目录不提交。报告aliyun-purchase-draft-record.md，实际prompt归档；仅文档JSON解析/差量检查，不触发测试/CI，不发额外GitHub评论。
+
+## UBUNTU-BOOTSTRAP-v1 待root审查的分步主机准备
+
+- 2026-10-24T06:21:34.639799+00:00基root当时精确ee774d640168addf85a60d75422cf8a17f4fae9f新独立codex/deployment-ubuntu-bootstrap；只准备脚本/步骤，没有云执行权限，未联系Workbench/账号/服务/CI或独立资料。先给root可审查文件路径，再收尾记录；本岗没有代替root作安装/部署成功声明。
+- deployment/ubuntu24-bootstrap.sh只有inspect/packages/source三显式阶段，无all/产品自动启动。Ubuntu24.04amd64/root/UTC09:00原截止guard，保留120s；只补缺失Python3.12/git/CA/Ubuntu发行Docker+Composev2+Buildx。官方主源核Canonical维护docker.io、Noble compose-v2和buildx；与DockerCE区分不混装。APT签名不关，依现有Ubuntu签名源/universe，无第三方换源/公钥/收费产品/凭据/网络开放。通用包页一次web timeout保持在checks说明，没有虚称已安装。
+- update180s/下载300s/离线安装240s，Git匿名fetch精确C单SHA360s，外部调用有限、失败退出，不自动修复/重试/清理。精确C与tracked检查、目录存在只核不覆盖；packages满足就跳过，buildx显式列入。文档config-check/build/infra/迁移plan和execute分块独立，账号/seed/正式压力不在本阶段；buildclient退出不冒充daemon清理。
+- 仅本地bash -n语法0和diff-check；stdout/stderr/checks及源码hash在ubuntu-bootstrap-validation。未执行脚本body/安装/源码网络fetch/构建/迁移；这些结果均null，后续实际证据由root按新云机逐步观察，不复用历史31f或本机结果。20元/北京17:00截止保持。
