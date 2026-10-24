@@ -343,3 +343,9 @@
 - 14纯本地guard+语法/规范检查，无Docker/云/下载/CI/独立资料动作，无新增test文件；helper只生成，实际API构建与应用运行仍待root回执，20元/17:00保持。
 
 - API渠道交付实现81e50f1ea696fb434e9fef677465f1eeceb21057已推送；Issue7/6381506475全文GET与本岗body一致，final-seal含源码/产物hash。纯工具交付，实际API镜像构建仍null，无下载/云执行/新CI。
+
+### RESOURCE-EVIDENCE-EXPORT-v1
+
+- resource-evidence-export.py/.md：只收显式本岗UUID.ndjson+完成SHA，不扫描relay852。root700/文件600/nofollow/nlink1/稳定元数据，受限新tar.gz(raw+manifest)写时hash；记录真实UTC/计数/失败，坏行缺字段NOT_PROVEN但原raw保留。app精确7服务/各7stats、两机五proc非空，不能errors空冒完整。
+- 初版682c80缺字段OBSERVED反例red保留，补后78a252…55df，26纯合成/Ruff/compile/diffcheck；没有真实资源/云/下载/私密资料读取。
+- root首样本路径UTC仅中性转述，最终SHA/计数尚待18:10。runbook明确18:10后打包、18:30前官方单文件下载及本地全SHA/bytes核验，旧49,520B传输不等于新资源包完成，100非已花100/硬停与释放不延长。

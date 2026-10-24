@@ -441,3 +441,9 @@
 - 14项stdlib内存/临时文件guard通过：差量可逆、原安全flags/摘要、错源/lock/sidecar拒绝、ignore逐字、0700/0600、排他/C树内/公开父目录拒绝及文档bash -n。未建测试文件/未占849。真实CI配置Ruff/compile/diff-check后交付；没有实际镜像下载/构建结论，证据api-pypi-delivery-validation。
 
 - 2026-10-24T07:34:54.939796+00:00实现81e50f1ea696fb434e9fef677465f1eeceb21057已push；Issue7/6381506475经GitHub插件实际发布并完整GET，正文与本岗body-file逐字一致，JSON原件/完整源码hash封档final-seal。阶段仅工具/文档，root可先审实现；没有发新CI/执行镜像下载或构建，也没有读取backend fixture/852或任何私密验收材料。最终阶段只封档，不重复14guard，不改C/旧失败/预算或截止。
+
+## RESOURCE-EVIDENCE-EXPORT-v1
+
+- 2026-10-24T09:40:08.643828+00:00基root72b6fb422b129e2bfd5dca29638a8bcd5800fd7e新独立codex/deployment-resource-export/worktree，等待checkout实际完成后写先行设计。显式root完成摘要路径+SHA，不glob/scandir两目录，防扫描852私有；两host分别root700，输入root600 regular/nlink1/NOFOLLOW/稳定元数据+SHA，输出自身新UUID600 tar.gz raw+manifest，压缩写入hash/size不读其他文件，资源/60s/18:10–18:28准入上限。
+- root限定审查指出初版682c80仅number/time/errors会错将缺proc计OBSERVED，本岗补app七服务各七stats非空、两机五proc非空；原初版完整bytes重建hash相同，缺proc错误OBSERVED反例red1原件保留。修后26纯合成校准/内存tar-gzip原raw roundtrip、Ruff/compile0；新SHA78a25242769c393d28394722378f6b80ecb12f1e0efcb600fc32f805bbcd55df。无新test文件、不读真实资源/私密/云/浏览器。
+- root转述首样本app aa5399…09:11:13.775549Z/load0a687b…09:17:47.204093Z，本岗未读取，完成SHA/计数待18:10。runbook安排完成摘要→各机打包→官方单文件下载→本地包与所有raw hash/bytes核验，18:20目标/18:25失败处置/18:30前实际取回，不能只留云路径。49,520B旧密文成功通道不冒资源大包下载完成。100授权上限非实际消费，原18:10/18:30不改，不涉及无关独立情况。
