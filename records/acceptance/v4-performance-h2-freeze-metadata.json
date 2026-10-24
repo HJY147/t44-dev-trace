@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "round": "v4-performance",
+  "publication": "Expressly released H2 method-revision metadata only; private code/cases/evidence not released",
+  "published_at_utc": "2026-10-24T00:19:35.156302+00:00",
+  "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/independent-performance-v4",
+  "branch": "codex/independent-harness-v4-performance",
+  "original_H": "9f8b5eab4061c14f1b7a314cd418c2663a6b0634",
+  "H2": "fc75ca7d092517f597c8931d9e8d11b646e441b7",
+  "post_SUT_method_revision": true,
+  "first_blind_test_claimed": false,
+  "pure_mechanical_fix_claimed": false,
+  "original_six_attempts_retained": true,
+  "original_six_formal_state": "NOT_RUN",
+  "original_limited_summary_commit": "05d3dbf27375c9532cb69eed3bb9062eb21a378c",
+  "private_manifest_path": "tmp/independent/private-v4-performance/freeze-h2-manifest.json",
+  "private_manifest_sha256": "4596df6d14a51453590f3361caac5941713dcf5c10c552abbd787e20ea4a9f2e",
+  "private_delta_proof_path": "tmp/independent/private-v4-performance/records/h2-byte-preservation-proof.json",
+  "private_delta_proof_sha256": "14e79bf000761ea4cc32794f6ded3f989b55755d1c80d24e9289100d1ee1b673",
+  "source_input_hash_manifest_sha256": "e3284a499b02bd4852211dd90cfcf6b1b122f237cba3fd37166d5ded36b9f14c",
+  "method_deltas": {
+    "fixture_setup_budget_seconds": {
+      "H": 330,
+      "H2": 900,
+      "origin": "tester tool bound, not teacher acceptance target"
+    },
+    "fixture_setup_http_timeout_seconds": {
+      "H": 5,
+      "H2": 30
+    },
+    "warmup_steady_postcheck_http_timeout_seconds": {
+      "H": 5,
+      "H2": 5
+    },
+    "failure_only_evidence": "Capture acknowledged project scope; settle sibling client cancellation; SELECT-only fixture counts and bounded resource observations; preserve primary failure; no settle sleep or retry",
+    "metadata": "H2 method/version and revised neutral input hashes"
+  },
+  "preservation": {
+    "business_payloads_and_fixture_scale": true,
+    "success_criteria": true,
+    "formal_operation_worker_phase_judge_sampling_postcheck_source_segments_byte_preserved": true,
+    "preserved_segment_count": 18,
+    "nested_fixture_factory_byte_preserved_except_project_ID_evidence_line": true,
+    "HTTP_helper_changed": true,
+    "HTTP_helper_difference": "Only phase-specific timeout patch; non-setup remains5 seconds. Whole helper/harness are not byte-identical.",
+    "whole_harness_byte_identical": false,
+    "formal_targets": {
+      "closed_loop_users": 400,
+      "steady_seconds_excluding_warmup": 600,
+      "p95_limit_ms": 270,
+      "minimum_success_per_minute": 1000,
+      "unexpected_failures_allowed": 0
+    },
+    "formal_thinktime_added": false,
+    "automatic_retries_added": false,
+    "business_rejections_ignored": false
+  },
+  "entrypoints": {
+    "tmp/independent/private-v4-performance/868_task_query.py": "ee931bdc6582cccc25947f37b5e3b608741c23af8b23e114a3a895a5564d8677",
+    "tmp/independent/private-v4-performance/867_contract_validation.py": "e8533f2a8461d3ee4226ee226dfc69d459074357b9c794994f4a591e933e37ab",
+    "tmp/independent/private-v4-performance/866_escalation_notification.py": "74890ce208c7106e3474b79c302f19ed11480aef984864db274a2faddb33d259"
+  },
+  "recipient_certificate_path": "tmp/independent/private-v4-performance/recipient.pem",
+  "recipient_certificate_sha256": "789151cc98851dca16c7c951a96e669babb0a26f83a4848f51a570e13f193639",
+  "private_key_committed": false,
+  "requested_harness_timeout_seconds": 1800,
+  "requested_job_timeout_minutes": 40,
+  "new_exact_environment_binding_received": false,
+  "H2_runtime_executed": false,
+  "execution_gate": "Wait for exact updated neutral environment binding supporting1800; create new separate R refs referencing H2, preserve old attempts, execute only unrun formal scope.",
+  "comparability_limits": [
+    "Revision follows observed SUT preparation failures, so it is not pre-SUT blind or identical to H.",
+    "H has no formal steady result; H2 cannot change its NOT_RUN state or establish H-to-H2 formal improvement.",
+    "S1/S2 must use same H2 and fresh isolated environments; host/background variation remains.",
+    "Longer preparation bounds are not completion or passing guarantees."
+  ],
+  "coordinator_access": "Only this public metadata is released. Private paths are references, not permission to open manifests/code/logs/raw output/keys/ciphertext."
+}
