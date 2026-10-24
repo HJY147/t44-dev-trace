@@ -1,3 +1,24 @@
+# 后端设计：1.2 D008草稿待freeze
+
+用户D008/U021选择已采用，RFC R2 d328986与限定设计审查891d676支持本草稿；本轮不含实现/测试/部署。原1.1设计原文接在下方，旧v1.1/v1 manifest和F08原失败/未执行尾部不回写。新freeze由总协调建立父链后另准入实施，用户选择不记亲改码。
+
+## 1.2发布失败槽设计
+
+Workflow.transitionTask(g,c)输入/输出保持，唯一候选实现是在现有DELIVER批准引用不匹配失败槽先判断已归属评估的delivery_cycle/schedule_version；失效映射ASSESSMENT_BASELINE_MISMATCH，有效而批准不匹配仍RELEASE_APPROVAL_REQUIRED。认证、task/assessment归属、task expected_version及请求assessment_version检查不搬；引用匹配继续原domain state→角色/详情/证据/代码评审→评估/预案等次序。missing评估仍走原缺gate/更早guard；跨任务评估仍原资源错误；其它action不变。不为本次提示顺序重构全局guard或domain命令。
+
+| 阶段 | D008草稿约束 |
+| --- | --- |
+| Runtime预检/claim/locked_scope | 当前认证→输入→幂等/实时认证与session/idem→必要project→members→tasks锁序保持 |
+| Workflow已解析assessment | 原归属与请求assessment_version前置；只在原批准引用失败槽作基线优先选择 |
+| domain/CAS/决策 | 引用匹配后的原顺序、CAS/计数、成功audit/outbox/COMPLETE原子性不变 |
+| 拒绝 | 主UoW退出后独立审计；无任务/决策/批准变更；错误快照仅满足下述条件可完成 |
+
+4xx完成条件按Runtime.rejection：已持claim、锁行status1且owner_token相同、status<500、独立audit及COMPLETE事务成功提交；5xx/无claim/owner不符/audit失败不保证。成功及符合条件的拒绝保存data或error/状态/原audit_id与实际完成`response_request_id`。已完成同键回放不重新业务或新增audit。HTTP成功meta的本次request_id/server_time/当前contract_version1.2.0、replayed/original_request_id重新构造；4xx回放仅本次request_id替换，沿原audit_id且无outerMeta。未知commit仍原503恢复分类，不把其视为已回滚。详见RFC R2完整边界。
+
+两OpenAPI info/成功Meta.const同1.2.0且逐字相同，candidate schema const1.0.0保持；top/操作注解pending-freeze。31/38/130、/api/v1、错误enum/字段/DDL18/226/池/MQ/扫描不变。范围仅这四件合同/设计草稿与本岗记录；数据库owner文档/根需规由各岗另同步，本稿不代改。原F08不通过不因新规取消，新开发与独立复验另记录。
+
+## 1.1设计历史（原文）
+
 # 后端设计：1.1容量生命周期增量与v1历史
 
 本增量依据D005/U015、D006/U016及限定审核通过的最终RFC bbc4be681f19a386fbca40baf97a63ab902b3f89（SHA256 a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98）。当前只交1.1.0合同/设计，待总协调新freeze后继续业务实现；不把设计准入称产品通过。原v1下文保留历史，旧冻结11摘要不回填；实际已实现范围以本岗报告/交接中的精确源码及执行证据为准。

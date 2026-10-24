@@ -280,3 +280,7 @@ JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300c
 ## D008设计候选（尚无实现）
 
 RFC specs/changes/release-error-priority-rfc.md基root14b57c6，明确双失效先BASELINE再新评估/批准，保留原批准引用匹配后的domain顺序及鉴权/资源/请求版本前置。仅原失败槽错误选择为建议，不改全状态机；晚期state/经理角色/代码评审与双失效组合范围交限定审核，不自创全局总序。建议1.2.0外层元数据/两OpenAPI一致，内层candidate schema1.0不改，旧v1.1/F08历史保留。列准确同步文件及新回归计划；纯设计，14hash保持，无应用/测试/DDL/suite/SUT/CI动作。作者AI，用户真实业务选择非改码证据。
+
+## D008 1.2草稿同步（等待新freeze）
+
+基398c3d3仅4件合同/设计：info+成功Meta1.2，两JSON同，candidate_schema1.0；草稿状态明确，最小原批准失败槽基线优先及R2重放边界写清，原1.1历史完整保留。原995规范/1130项通过，45叶值白名单、31/38/130/错误enum/其它Schema不变；真实hash/日志agents/backend/release-priority-spec-draft。Workflow/测试/DB/DDL/旧freeze均未改，没有应用suite/SUT/CI/服务/负载。root另同步根需规并freeze，之后才实施；用户选择非用户改码，旧F08等历史不回写。
