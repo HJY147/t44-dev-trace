@@ -313,3 +313,9 @@
 
 - root UI转述完成三点：packages北京14:26:31/23秒/exit0（Ubuntu5新包0升级移除，Docker29.1.3/Buildx0.30.1/Compose2.40.3+ds1）；source14:31:42/29秒/exit0（准确C HEAD/tracked核对）；配置14:36:06/<1秒/exit0（daemon29.1.3、0600私密配置、T44_CONFIG_CHECK_OK）。
 - 构建新任务已提交，ops600s/外层720s进程树，尚无完成回执、exit/success未知。infra/迁移/seed/启动/私网/正式性能仍无通过，不改17:00/20元。证据为本岗cloud-preparation-checkpoints.json的root转述投影，非本岗独立云验证；已审脚本/应用不改，无云/CI/服务/私密资料操作。
+
+### ECR-SOURCE-POLICY-v1 待云审查执行
+
+- 新工具deployment/ecr-build-policy.py只生成准确C的3条EXACT FROM同摘要ECR remap与末条Hub DENY；固定C不改tracked/daemon/DNS/.env。完整步骤ecr-build-policy.md，工具SHA与产品C分列。
+- 官方静态核Compose默认Bake/Buildx读取EXPERIMENTAL_BUILDKIT_SOURCE_POLICY/CONVERT重评估。root转述原Hub build真实exit1保留，五ECR精确digest metadata成功不代表layers/build。
+- 9项本地stdlib合成guard与CI配置Ruff通过（初始import lint红保留）；没有实际Docker/网络/云/CI/服务/独立资料动作。root审查后才UIrelay、核hash、单独600s build；infra等未启动，20元/17:00不变。
