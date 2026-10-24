@@ -4,6 +4,7 @@ import argparse
 import ast
 import hashlib
 import json
+import os
 import subprocess
 from pathlib import Path
 
@@ -253,6 +254,22 @@ def recipes():
     return output
 
 
+def _open_output(path, parser):
+    """Reserve once without following a leaf symlink; write only through this descriptor."""
+    if not hasattr(os, "O_NOFOLLOW"):
+        parser.error("Exclusive output requires O_NOFOLLOW support")
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    except OSError as error:
+        parser.error(f"Output reservation refused ({type(error).__name__}); retain prior results")
+    try:
+        return os.fdopen(fd, "w", encoding="utf-8")
+    except BaseException:
+        os.close(fd)
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", action="store_true")
@@ -260,8 +277,6 @@ def main():
     args = parser.parse_args()
     if not args.run:
         parser.error("Explicit --run required; offline SQLite only")
-    if args.output.exists():
-        parser.error("Output must not exist; retain previous results")
     root = Path(__file__).resolve().parents[2]
     tool_bytes = Path(__file__).read_bytes()
     committed_tool = subprocess.check_output(
@@ -282,16 +297,16 @@ def main():
         "tool_sha256": hashlib.sha256(tool_bytes).hexdigest(),
         "source_files": provenance(root),
     }
-    try:
-        receipt["local_query_recipes"] = recipes()
-        receipt["status"] = "completed offline only; no production optimization applied"
-    except Exception as error:
-        receipt["status"] = "failed; original failure retained"
-        receipt["error_class"] = type(error).__name__
-        raise
-    finally:
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n")
+    with _open_output(args.output, parser) as output:
+        try:
+            receipt["local_query_recipes"] = recipes()
+            receipt["status"] = "completed offline only; no production optimization applied"
+        except Exception as error:
+            receipt["status"] = "failed; original failure retained"
+            receipt["error_class"] = type(error).__name__
+            raise
+        finally:
+            output.write(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({"status": receipt["status"], "output": str(args.output)}))
 
 
