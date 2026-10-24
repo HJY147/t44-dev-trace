@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/backend/contracts/986_http.py::test_complete_delivery_rollback_rework_http",
+    "tmp/backend/contracts/986_http.py::test_new_assessment_supersedes_old_approval_without_replay_side_effects",
+    "tmp/backend/contracts/986_http.py::test_reject_review_new_cycle_and_release_replan_invalidation",
+    "-q",
+    "--tb=short",
+    "--junitxml=agents/backend/release-error-priority-implementation/adjacent.xml"
+  ],
+  "PYTHONPATH": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-release-error-priority/backend",
+  "exit_code": 0,
+  "scope": "4existingSQLiteHTTP targets only;no source/test edits",
+  "workflow_sha256": "6bb5cd15c8824735f091baf85734d3d1321730372b570cfeb7cdb196af9cab23"
+}
