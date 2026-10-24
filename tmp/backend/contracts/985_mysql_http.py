@@ -920,8 +920,8 @@ def test_preflight_real_mysql_transaction_and_unchanged_sql_ledger(real_task, mo
         monkeypatch.setattr(engine, "connect", connect)
     counts = Counter(kind for kind, _ in statements)
     expected = {
-        "block": (22, 5, 2),
-        "unblock": (24, 5, 2),
+        "block": (20, 5, 2),
+        "unblock": (22, 5, 2),
         "plan": (20, 6, 2),
         "escalation": (26, 7, 6),
         "replay": (9, 0, 0),
@@ -947,7 +947,7 @@ def test_preflight_real_mysql_transaction_and_unchanged_sql_ledger(real_task, mo
     assert auth_locks == ([None, "share"] if case == "replay" else [None, "share", "share"])
     assert all(r["closed"] and r["commits"] == 1 and r["rollbacks"] == 0 for r in records)
     assert response.json()["meta"]["replayed"] == (case == "replay")
-    # Only the boundary shrinks: all real authentication and original SQL above remain.
+    # Preflight auth/transactions remain; Workflow now omits two unused dependency SELECTs.
     assert len(records) == len(acquires) == (1 if case == "replay" else 2)
 
 
