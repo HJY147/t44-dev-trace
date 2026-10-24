@@ -801,6 +801,11 @@
       "id": "ROLE-deployment-HOST-RESOURCE-SERIES-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-HOST-RESOURCE-SERIES-v1.md",
       "reason": "按中性CPU内存网络/TCP累计观测需求补采集，不读用例/私密，不改性能门槛"
+    },
+    {
+      "id": "ROLE-deployment-RESOURCE-EVIDENCE-EXPORT-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-RESOURCE-EVIDENCE-EXPORT-v1.md",
+      "reason": "只回收本岗中性资源raw，完成SHA路径白名单，避免任何852私有扫描，真实缺证不冒通过"
     }
   ],
   "questions": [
@@ -942,7 +947,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "app-v3-and-load-host-counters-reviewable-not-executed",
+  "stage": "resource-evidence-export-reviewable-awaiting18:10-completion",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -950,7 +955,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T09:03:48.169907+00:00",
+  "updated_at": "2026-10-24T09:40:08.643828+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1467,5 +1472,30 @@
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6382310590",
     "full_GET_identical": true,
     "final_seal": "agents/deployment/host-resource-validation/final-seal.json"
+  },
+  "prior_stage_before_resource_export": "API-PyPI-external-delivery-reviewable-not-built",
+  "resource_evidence_export": {
+    "base_sha": "72b6fb422b129e2bfd5dca29638a8bcd5800fd7e",
+    "branch": "codex/deployment-resource-export",
+    "helper": "deployment/resource-evidence-export.py",
+    "sha256": "78a25242769c393d28394722378f6b80ecb12f1e0efcb600fc32f805bbcd55df",
+    "runbook": "deployment/resource-evidence-export.md",
+    "inputs": "explicit role UUID NDJSON path+completion SHA only;no enumeration",
+    "root_review_correction": "missing services/proc invalid NOT_PROVEN;raw unchanged",
+    "offline_guards": 26,
+    "original_counterexample": "old682c80 exact bytes reconstructed;missing proc was OBSERVED;red preserved",
+    "window_UTC": "10:10 <= start <10:28;download+verify before10:30",
+    "limits": "8files,64MiBeach,256MiBtotal,128MiBarchive,2MiBline,60s",
+    "actual_cloud_resource_read_browser_download": false,
+    "private852_read": false,
+    "actual_final_source_sha_or_counts": null,
+    "actual_archives_downloaded_verified": null,
+    "first_sample_root_relay": {
+      "app_file": "resource-aa5399ea993f426b82b678f5812c530f.ndjson",
+      "app_UTC": "2026-10-24T09:11:13.775549Z",
+      "load_file": "host-resource-0a687bf0312940979b8097f1800a2850.ndjson",
+      "load_UTC": "2026-10-24T09:17:47.204093Z"
+    },
+    "evidence": "agents/deployment/resource-export-validation"
   }
 }

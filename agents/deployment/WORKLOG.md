@@ -477,3 +477,9 @@
 - 842五项最小合成0.27s绿（固定路径/无network-listdir、缺TCP不泄异常、超大拒绝、只读自身inode600，uid metadata mock），Ruff/compile0。首次未等worktree checkout完成即尝试Ruff造成config缺失exit2，等待真实完成后才同CI配置0；未执行额外suite/CI/843桥或852私密材料。源hash与校准原件host-resource-validation。
 
 - 2026-10-24T09:03:48.169907+00:00实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已push，Issue7/6382310590真实发布并全文GET逐字一致，final-seal列两脚本/842/差量/回执hash。两脚本hash保持交审最终版不再变更；只封档不执行collector或读取任何真实资源/私密资料，实际样本仍null，缺证NOT_PROVEN/600s门槛不变，结束释放。
+
+## RESOURCE-EVIDENCE-EXPORT-v1
+
+- 2026-10-24T09:40:08.643828+00:00基root72b6fb422b129e2bfd5dca29638a8bcd5800fd7e新独立codex/deployment-resource-export/worktree，等待checkout实际完成后写先行设计。显式root完成摘要路径+SHA，不glob/scandir两目录，防扫描852私有；两host分别root700，输入root600 regular/nlink1/NOFOLLOW/稳定元数据+SHA，输出自身新UUID600 tar.gz raw+manifest，压缩写入hash/size不读其他文件，资源/60s/18:10–18:28准入上限。
+- root限定审查指出初版682c80仅number/time/errors会错将缺proc计OBSERVED，本岗补app七服务各七stats非空、两机五proc非空；原初版完整bytes重建hash相同，缺proc错误OBSERVED反例red1原件保留。修后26纯合成校准/内存tar-gzip原raw roundtrip、Ruff/compile0；新SHA78a25242769c393d28394722378f6b80ecb12f1e0efcb600fc32f805bbcd55df。无新test文件、不读真实资源/私密/云/浏览器。
+- root转述首样本app aa5399…09:11:13.775549Z/load0a687b…09:17:47.204093Z，本岗未读取，完成SHA/计数待18:10。runbook安排完成摘要→各机打包→官方单文件下载→本地包与所有raw hash/bytes核验，18:20目标/18:25失败处置/18:30前实际取回，不能只留云路径。49,520B旧密文成功通道不冒资源大包下载完成。100授权上限非实际消费，原18:10/18:30不改，不涉及无关独立情况。

@@ -374,3 +374,9 @@
 - 842五纯合成guard、Ruff/compile/diff-check通过，uid仅mock；首次checkout未完成的Ruff配置缺失exit2保持。app4bddc93a…b9d5、host7a0f8c9c…6259d，详host-resource-validation；100预算/18:30释放不延长，不写已花100，不接触独立私密/843桥。
 
 - 双机序列实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已推；Issue7/6382310590全文GET一致，final-seal含两脚本及842 hash。实际采样未由本岗执行，NOT_PROVEN不倒填通过，未改600s。
+
+### RESOURCE-EVIDENCE-EXPORT-v1
+
+- resource-evidence-export.py/.md：只收显式本岗UUID.ndjson+完成SHA，不扫描relay852。root700/文件600/nofollow/nlink1/稳定元数据，受限新tar.gz(raw+manifest)写时hash；记录真实UTC/计数/失败，坏行缺字段NOT_PROVEN但原raw保留。app精确7服务/各7stats、两机五proc非空，不能errors空冒完整。
+- 初版682c80缺字段OBSERVED反例red保留，补后78a252…55df，26纯合成/Ruff/compile/diffcheck；没有真实资源/云/下载/私密资料读取。
+- root首样本路径UTC仅中性转述，最终SHA/计数尚待18:10。runbook明确18:10后打包、18:30前官方单文件下载及本地全SHA/bytes核验，旧49,520B传输不等于新资源包完成，100非已花100/硬停与释放不延长。
