@@ -367,3 +367,9 @@
 - 旧03:17快照未知结论及原360失败/新360成功原样保留；公开白名单投影+原件SHA/bytes，不公开完整post/argv/凭据/SQL，未HTTP/SQL/浏览器/信号/服务动作/独立private。本次无代码或测试变更，仅读/JSON投影及diff-check；报告demo-natural-close-report.md，原始回执仍原私密路径。
 
 - 自然结束封档88252670d1507f8e0df0067d834076fd3ad40932已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379541206用本岗body-file实际发布，完整GET正文逐字一致，原JSON及seal另档。只做公开交接收尾，不再观察或操作服务；原回执/旧快照不变，最终Git SHA标识此纯文档封档。
+
+## ALIYUN-DRAFT-RECORD-v1
+
+- 2026-10-24T05:44:51.825646+00:00从root精确2129cec977adfa16ce4e4bcbd31ce2793d58b78e新codex/deployment-aliyun-draft-record/worktree，仅按root实际UI观察转述记录两份未下单草稿：c8i应用8/16+80GiB PL0为1.714796、发压4/8+40GiB PL0为0.857398 CNY/h；Decimal核合计2.572194/h、两小时5.144388，公网出流量root明细0.8/GB另计，基础估计非账单/消费上限。
+- 用户本人登录、AI选配置、尚未勾协议/确认购买；部署岗未独立看UI/截图，无账号/资源/服务/CI或凭据动作。SSH22所有IP仅UI默认提示，没有实际资源/联网证明；登录创建后设置，无自动释放/续费。仅在本岗报告标root转述用户逐字请求，未建/改U文件。
+- 复用本会话已核官方默认网络唯一性/首次自动创建/安全组来源，保留旧草稿刷新行为未明确的限制，建议首台买后刷新第二单核相同VPC/交换机ID。截图留root ignored目录不提交。报告aliyun-purchase-draft-record.md，实际prompt归档；仅文档JSON解析/差量检查，不触发测试/CI，不发额外GitHub评论。
