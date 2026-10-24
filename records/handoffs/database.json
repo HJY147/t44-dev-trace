@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "INDEX-READONLY-v1：原developer fixture有限SHOW/普通EXPLAIN核查完成",
-  "implementation_status": "14条只读原字段已交付；无产品/DDL/API/用例/数据/设置变更，无负载或性能结论。",
+  "stage": "SOURCE-BUDGET-RETURN-v1：6307/缺1207静态审计收口",
+  "implementation_status": "规模仍未达标，无可信1207保持完整行为净删方案；仅新通知分页草案投影3，生产本轮0节省/0变更。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -584,6 +584,11 @@
       "path": "agents/database/index-readonly/",
       "kind": "原自有fixture只读索引/普通EXPLAIN真实证据",
       "status": "完成；非实际执行统计或性能验收"
+    },
+    {
+      "path": "agents/database/source-budget-return/",
+      "kind": "原计量政策静态规模审计/候选预算/真实GitHub回执",
+      "status": "完成，规模未达标/生产实际节省0"
     }
   ],
   "interfaces": [
@@ -854,13 +859,18 @@
     "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "SHOW cardinality and EXPLAIN rows are estimates,not COUNT or actualrows",
-    "fixture project44/task6004 does not validate6000task distribution or400VU",
-    "not formal failure root cause or performance benefit",
-    "PROCESSLIST visibility only current app and own schema",
-    "不准入查询/索引/池变更，后续优化需单独设计/责任岗确认与验证"
+    "所有未应用候选都未等价验证/生产准入，不能预扣",
+    "本轮无产品/独立验收/性能或测试/CI结果",
+    "1207缺口仍全额保留，不改课程范围/计数口径/业务守卫"
   ],
-  "questions": [],
+  "questions": [
+    {
+      "to": "backend/messaging owners",
+      "question": "若后续认为3行页装配共享值得成本，请先确认原授权S锁/-id/谓词/三COUNT与错误顺序；本轮不请求实施或运行",
+      "status": "公开Issue4已提出，未确认，不影响静态审计收口",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048"
+    }
+  ],
   "prompt_refs": [
     {
       "id": "ROLE-database-BOOTSTRAP-v1",
@@ -1029,19 +1039,24 @@
       "id": "ROLE-database-INDEX-READONLY-v1",
       "archive": "agents/database/prompts/ROLE-database-INDEX-READONLY-v1.md",
       "improvement_reason": "总协调10分钟只读新任务；先核归属再实际SHOW，避免由显式DDL误断实际自动FK索引；非提示词虚构演进/学生改码。"
+    },
+    {
+      "id": "ROLE-database-SOURCE-BUDGET-RETURN-v1",
+      "archive": "agents/database/prompts/ROLE-database-SOURCE-BUDGET-RETURN-v1.md",
+      "improvement_reason": "用户醒来询问规模，先5分钟精确数值再有限可行性审计；不让用户选技术细节，不虚构1207方案或重复计旧收益。"
     }
   ],
-  "updated_at": "2026-10-24T00:47:17.174242+00:00",
+  "updated_at": "2026-10-24T03:22:48.932959+00:00",
   "publication": {
-    "branch": "codex/database-index-check",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-index-check",
-    "base": "b40d8889b1f9ea67f7c10a6dbaf22ecf57ce8b0d",
-    "design_commit": "0073a39830f9feee9fc8df0c66845970c8fe523c",
-    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6377715017",
-    "readback": "agents/database/index-readonly/github-readback.json; exact body equal",
+    "branch": "codex/database-source-budget-return",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-source-budget-return",
+    "base": "f986782311f227082b4445bf7508522aa49c043d",
+    "design_commit": "d8f91d7930d288266d0239717b14311956d8d317",
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048",
+    "readback": "agents/database/source-budget-return/github-readback.json; exact full body equal",
     "pull_request": null,
-    "scope": "read-only developer fixture evidence; product0 changes",
-    "ci": "skip ci; no tests/load requested or run",
+    "scope": "static documentation/budget only",
+    "ci": "skip ci; no test/run/configuration changes",
     "window_released": true
   },
   "history": [
@@ -1225,6 +1240,36 @@
         "result": "A1/B1/B2/A2 P95ms91.591041/74.471792/72.908250/92.600542; steady connects436/0/0/427; no P95 average or formal cause",
         "cost": "B retains10 additional idle connections per worker here; memory not measured; future global/multiworker budget and production admission need separate design"
       }
+    },
+    {
+      "stage": "INDEX-READONLY-v1：原developer fixture有限SHOW/普通EXPLAIN核查完成",
+      "implementation_status": "14条只读原字段已交付；无产品/DDL/API/用例/数据/设置变更，无负载或性能结论。",
+      "unverified": [
+        "SHOW cardinality and EXPLAIN rows are estimates,not COUNT or actualrows",
+        "fixture project44/task6004 does not validate6000task distribution or400VU",
+        "not formal failure root cause or performance benefit",
+        "PROCESSLIST visibility only current app and own schema",
+        "不准入查询/索引/池变更，后续优化需单独设计/责任岗确认与验证"
+      ],
+      "publication": {
+        "branch": "codex/database-index-check",
+        "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-index-check",
+        "base": "b40d8889b1f9ea67f7c10a6dbaf22ecf57ce8b0d",
+        "design_commit": "0073a39830f9feee9fc8df0c66845970c8fe523c",
+        "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6377715017",
+        "readback": "agents/database/index-readonly/github-readback.json; exact body equal",
+        "pull_request": null,
+        "scope": "read-only developer fixture evidence; product0 changes",
+        "ci": "skip ci; no tests/load requested or run",
+        "window_released": true
+      },
+      "current_interfaces": {
+        "input": "公开BE d834两份纯静态交接；原本岗ABBA fixture归属回执",
+        "output": "实际SHOW INDEX/CREATE和四普通EXPLAIN；仅优化器估算",
+        "database": "t44_profile only; project44/task6004",
+        "production_changes": 0,
+        "followup": "根/责任岗另行准入，当前不执行优化"
+      }
     }
   ],
   "refactor_removed": [
@@ -1238,11 +1283,12 @@
     }
   ],
   "current_interfaces": {
-    "input": "公开BE d834两份纯静态交接；原本岗ABBA fixture归属回执",
-    "output": "实际SHOW INDEX/CREATE和四普通EXPLAIN；仅优化器估算",
-    "database": "t44_profile only; project44/task6004",
-    "production_changes": 0,
-    "followup": "根/责任岗另行准入，当前不执行优化"
+    "input": "root准确C6307与公开3b9c907/本岗AST及scan-run材料",
+    "output": "当前66文件/各根/大文件及候选净预算/风险",
+    "metric": "cloc2.10 committed application source policy unchanged",
+    "actual_production_savings": 0,
+    "new_projection_only": 3,
+    "no_credible_1207_plan": true
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
