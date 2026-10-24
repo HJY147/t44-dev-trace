@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "D008 release error priority design only; review and new freeze required",
+  "stage": "D008 1.2 specification draft synchronized; no implementation before root freeze",
   "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
   "artifacts": [
     {
@@ -1747,5 +1747,37 @@
     "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379327041",
     "full_GET_exact_match": true
   },
-  "prior_stage_before_D008": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits"
+  "prior_stage_before_D008": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits",
+  "release_priority_spec_draft": {
+    "base": "398c3d3621843aa536755ae106c78a0fd1c60aff",
+    "branch": "codex/backend-release-priority-spec-draft",
+    "prompt": "agents/backend/release-priority-spec-draft/actual-prompt.md",
+    "report": "agents/backend/release-priority-spec-draft/report.md",
+    "version": "1.2.0 info+successMeta",
+    "candidate_schema_version": "1.0.0",
+    "state": "draft pendingfreeze",
+    "four_file_hashes": {
+      "specs/backend-design.md": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "specs/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "specs/contracts/README.md": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "backend/t44/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+    },
+    "OpenAPI_copies_byte_equal": true,
+    "design_validation": "original995 OpenAPI PASS/1130checks/38ops/0failure",
+    "allowed_diff": "45leaves:2info+1Meta+39status+3transition descriptions",
+    "structural_counts": [
+      31,
+      38,
+      130
+    ],
+    "enum_and_other_schemas_unchanged": true,
+    "original_1_1_doc_suffix_preserved": true,
+    "old_freeze_manifest_changed": false,
+    "current_four_files_match_old14": "No, explicitnewdraftintentional",
+    "application_tests_DB_DDL_changed": false,
+    "suite_SUT_CI_load_run": false,
+    "next": "root requirements/business/AGENTS;limited finalspec review/newfreeze;then separately implement and verify",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379477604",
+    "full_GET_exact_match": true
+  }
 }

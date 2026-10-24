@@ -450,3 +450,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 技术版本建议1.2.0，info/外层Meta和两OpenAPI一致，候选schema内层1.0.0保持。列出需规/业务/AGENTS/README/design/前端说明及新父链范围，DDL/ID/锁/事务无变化；旧v1.1及F08原FAIL/未执行尾部/WordZIP不回写。新回归只计划，未实施；859不重复。作者设计后端AI，业务决定用户，不记用户改码。11/28与费用先报价边界仅记录，不产生费用。
 
 - D008纯RFC Issue3 6379327041已body-file发表/全文GET逐字核；仅静态源码/JSON文本与hash核对，不冒称测试。阶段提交后等待限定设计审查与root新freeze。
+
+## D008 1.2规格草稿（未冻结未实施）
+
+- RFC R2/限定审核891d676后根准入纯规格，同步新分支codex/backend-release-priority-spec-draft基398c3d3，仅4件合同/设计与本岗记录。info/成功Meta.const1.2、candidate_schema1.0保持；两OpenAPI逐字同，top/38操作显式草稿待freeze；原1.1 README/design逐字作为后缀历史保留。D008仅批准引用失败槽基线优先，R2缓存/动态envelope准确，不搬全局state/role/missing/其它action。
+- 原995真实规范PASS、1130checks/38ops/0failure；未改验证脚本/断言，完整真实argv/log留档，旧banner解释器路径不是实际执行argv。45叶值白名单通过：info2/Meta1/status39/transition说明与两条件3，31/38/130、错误enum及其它Schema/字段全同。四SHA见whitelist-diff。初静态probe x-status KeyError1改读实际x-contract-status，错误保留，非设计检查失败。
+- 未改Workflow/测试/DB/DDL/旧freeze；当前4件有意新草稿，不冒旧14hash仍同。根需规/业务/AGENTS/新v1.2manifest及最终规格审核另办，未冻结不实施。无suite/SUT/HTTP/SQL/CI/服务/负载/新指标；859不重跑，旧F08/未执行尾部/旧WordZIP不改。用户业务选择不记用户改码，作者执行后端AI。
+
+- 1.2草稿Issue3 6379477604已body-file发表/精确全文GET逐字核；root另告f7e83ca根资料/前端文档已同步，本岗未合其它变更。提交本草稿后暂停，等待限定规格复核/newfreeze；856仅root预留，尚未创建或运行。

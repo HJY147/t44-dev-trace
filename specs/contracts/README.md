@@ -1,3 +1,21 @@
+# T44 API 契约 1.2.0 草稿（待freeze，尚未实施）
+
+依据用户D008/U021、RFC R2 `specs/changes/release-error-priority-rfc.md`（d328986）及限定设计审查891d676。当前仅同步规格草稿，新v1.2清单由总协调生成后才能实施；不回写v1.1/v1原manifest、旧F08失败/未执行尾部或旧Word/ZIP。业务决定者用户；本稿作者AI，不是用户亲自改码。下列原1.1历史原文保留，不将其阶段叙述冒充本次状态。
+
+## 1.2 D008最小错误顺序增量
+
+仅`transitionTask` action7：保留身份/项目权限、资源归属、任务expected_version和请求assessment_version相对评估自身version的既有前置检查。在**原批准引用不匹配失败槽**，先看已归属assessment.delivery_cycle/schedule_version相对当前任务是否有效：失效返回409 ASSESSMENT_BASELINE_MISMATCH；基线有效但旧批准引用失效返回409 RELEASE_APPROVAL_REQUIRED。两条件仍都必须满足，不使用旧批准。引用匹配时继续原domain次序，不把该规则升级为所有state/经理角色/代码评审的全局前置；missing/跨任务评估与其它action原路径不改。恢复需创建当前基线评估，由合规的不同审核人审核，再由经理决定发布；不撤销防自审限制。
+
+`info.version`与成功`Meta.contract_version.const`为1.2.0，权威/运行JSON逐字同；top/38操作均标草稿pending-freeze（状态注解不是业务变更）。API路径仍/api/v1、31路径/38操作/130schemas、原错误enum/409结构/字段与18表226列保持。**ContractValidationResult.schema_version.const仍1.0.0**，candidate结构未改，不全局替换模板/规则/包版本。
+
+### R2：保存结果与动态HTTP响应
+
+成功写的data/状态及实际完成请求`response_request_id`随主事务持久化。4xx只有已持claim、被锁行status=1且owner_token匹配、error.status<500且独立拒绝audit及完成快照事务成功提交，才保证COMPLETE；5xx/无claim/非owner/audit失败不在保证，未知commit不推定回滚。已COMPLETE同内容重放仍先核当前身份/范围/输入及摘要，保留已保存业务data或error/code/status和原audit_id，不重跑D008、不新增业务/audit。
+
+不是完整HTTP逐字节回放：成功每次生成本次meta.request_id/server_time/当前contract_version（1.2.0），replayed=true，original_request_id取保存的response_request_id（不保证最早claim请求）。4xx重放在保存error中合入本次request_id、沿原audit_id，**错误没有outerMeta**，不新增contract_version/original_request_id。响应头按本次请求构造。以下原历史通用段落中的“原结果/原快照”均指该业务值保证，不是无限制的所有4xx或完整HTTP字节保证。
+
+## 1.1合同历史（原阶段原文）
+
 # T44 API 契约 1.1.0
 
 状态：D005/U015、D006/U016业务选择已采用，最终RFC bbc4be6已获限定设计准入。本次显式演进为1.1.0，权威OpenAPI与后端运行副本同步；规格独立冻结清单见`../../records/spec-freezes/v1.1.json`；冻结后才继续业务守卫实现。本合同checkpoint不含新业务生产实现或部署。OpenAPI 3.1 / JSON Schema 2020-12仍含31路径、38操作，路径保持/api/v1，DDL18表226列不变。原1.0.0冻结仍可由ae60dc3及records/spec-freezes/v1.json的11摘要恢复，不改写旧清单或旧验收结论。
