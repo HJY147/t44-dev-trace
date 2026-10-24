@@ -586,6 +586,143 @@ def test_dependencies_cycle_guard_and_edit_lock(application):
     assert response.json()["code"] == "DEPENDENCY_EDIT_LOCKED"
 
 
+@pytest.mark.parametrize("operation", ["block", "unblock_pending", "start_empty"])
+def test_transition_reads_only_dependencies_consumed_by_its_guard(application, operation):
+    import re
+    from collections import Counter
+
+    from sqlalchemy import event
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    predecessor = create_task(client, tokens, pid, iid)
+    task = create_task(
+        client, tokens, pid, iid, [] if operation == "start_empty" else [predecessor["id"]]
+    )
+    if operation == "unblock_pending":
+        task = transition(
+            client,
+            tokens["manager"],
+            pid,
+            task,
+            2,
+            reason="Synthetic intake block with an unfinished predecessor",
+            responsibility_stage=1,
+            evidence=EVIDENCE,
+        )
+    counts = Counter()
+    engine = factory._sessions.kw["bind"]
+
+    def selected_tables(connection, cursor, statement, parameters, context, executemany):
+        if statement.lstrip().upper().startswith("SELECT"):
+            match = re.search(r"\bFROM\s+(task_dependencies|tasks)\b", statement, re.IGNORECASE)
+            if match:
+                counts[match[1].lower()] += 1
+
+    body = {"expected_version": task["version"]}
+    if operation == "block":
+        body.update(action=2, reason="Block despite unresolved dependency", responsibility_stage=1)
+        body["evidence"] = EVIDENCE
+    elif operation == "unblock_pending":
+        body.update(
+            action=3, basis="Return to intake without starting development", evidence=EVIDENCE
+        )
+    else:
+        body["action"] = 1
+    token = tokens["developer" if operation == "start_empty" else "manager"]
+    key = str(uuid4())
+    event.listen(engine, "before_cursor_execute", selected_tables)
+    try:
+        response = request(
+            client,
+            "transitionTask",
+            token=token,
+            project_id=pid,
+            task_id=task["id"],
+            body=body,
+            key=key,
+            expect=200,
+        )
+    finally:
+        event.remove(engine, "before_cursor_execute", selected_tables)
+    changed = response.json()["data"]["task"]
+    assert changed["version"] == task["version"] + 1
+    assert changed["state"] == {"block": 3, "unblock_pending": 1, "start_empty": 2}[operation]
+    with factory() as uow:
+        audit = uow.gateway.get("audit_events", response.json()["data"]["audit_id"])
+        assert audit["outcome"] == 1
+        assert uow.gateway.get("tasks", task["id"])["version"] == changed["version"]
+    replay = request(
+        client,
+        "transitionTask",
+        token=token,
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        key=key,
+        expect=200,
+    )
+    assert replay.json()["data"] == response.json()["data"]
+    assert replay.json()["meta"]["replayed"] is True
+    if operation == "unblock_pending":
+        rejected = transition(client, tokens["developer"], pid, changed, 1, expect=409)
+        assert rejected.json()["code"] == "DEPENDENCIES_UNSATISFIED"
+        with factory() as uow:
+            rejected_audit = uow.gateway.get("audit_events", rejected.json()["audit_id"])
+            assert rejected_audit["outcome"] == 2
+            assert uow.gateway.get("tasks", task["id"])["version"] == changed["version"]
+    # This goal counts actual SELECTs, including the unchanged graph-lock reads.
+    assert counts == Counter(
+        tasks=3, task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[operation]
+    )
+
+
+@pytest.mark.parametrize("operation", ["unblock_develop", "rework"])
+def test_dependency_guard_still_rejects_reactivation_with_unfinished_predecessor(
+    application, operation
+):
+    from t44.services.codes import ERROR_IDS, State
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    predecessor = create_task(client, tokens, pid, iid)
+    task = create_task(client, tokens, pid, iid, [predecessor["id"]])
+    # Controlled persisted boundary, not evidence of a real rollback/rework lifecycle.
+    with factory() as uow:
+        g = uow.gateway
+        g.update(
+            "tasks",
+            {"id": task["id"]},
+            {"state": State.BLOCKED, "blocked_from_state": State.DEVELOPING}
+            if operation == "unblock_develop"
+            else {"state": State.ROLLED_BACK},
+        )
+        before = g.get("tasks", task["id"])
+        outbox_count = g.count("outbox_events", {"task_id": task["id"]})
+    body = {"expected_version": task["version"], "evidence": EVIDENCE}
+    if operation == "unblock_develop":
+        body.update(action=3, basis="Dependency still prevents development")
+    else:
+        body.update(action=9, reason="Manager requests another delivery cycle", new_plan=PLAN)
+    response = request(
+        client,
+        "transitionTask",
+        token=tokens["developer" if operation == "unblock_develop" else "manager"],
+        project_id=pid,
+        task_id=task["id"],
+        body=body,
+        expect=409,
+    )
+    assert response.json()["code"] == "DEPENDENCIES_UNSATISFIED"
+    with factory() as uow:
+        g = uow.gateway
+        assert g.get("tasks", task["id"]) == before
+        assert g.count("outbox_events", {"task_id": task["id"]}) == outbox_count
+        audit = g.get("audit_events", response.json()["audit_id"])
+        assert audit["outcome"] == 2
+        assert audit["reason_code"] == ERROR_IDS["DEPENDENCIES_UNSATISFIED"]
+
+
 def test_auth_precedes_body_and_project_scope(application):
     client, _ = application
     request(client, "createProject", body={"invalid": "not relevant before auth"}, expect=401)
