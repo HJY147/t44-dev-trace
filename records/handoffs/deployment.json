@@ -867,7 +867,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "demo-readonly-handoff-in-progress",
+  "stage": "demo-readonly-handoff-complete",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -939,6 +939,11 @@
     "no_http_sql_browser_signals_private_or_automation": true,
     "evidence": "agents/deployment/demo-handoff-validation/current-observation.json",
     "runbook": "agents/deployment/demo-deadline-readonly-runbook.md",
-    "github": "pending Issue7 full GET"
+    "github": "body-file COMMENT;full GET body identical",
+    "handoff_checkpoint": "b51c313d4313d1eb9018b54eabbf1fbc0c127039",
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579",
+    "issue_readback": "agents/deployment/demo-handoff-validation/issue-readback.json",
+    "final_status": "read-only handoff complete;active demo outcome not yet determined;no extension",
+    "archive_revision": "final Git metadata identifies receipt-only seal;observation timestamp remains03:17:43Z"
   }
 }
