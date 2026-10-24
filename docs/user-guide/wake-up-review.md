@@ -2,7 +2,7 @@
 
 应用和技术材料已经能审阅，作业尚未全部达标。先体验界面，再看报告与缺项；不需要先理解整个后端。
 
-用户返回后已确定11月28日截止，D008发布提示顺序已采用并另行完成[1.2规格冻结](../../records/spec-freezes/v1.2.json)；实现和新回归在进行。免费[857短stub校准已通过](../../reports/acceptance/v5-calibration-857-public-summary.md)，非产品或600秒性能。计划本人购买阿里云时看[选购清单](aliyun-performance-machine-checklist.md)，不要把旧AWS报价当阿里云价格。最新问题集中在[返回简报](../reviews/return-decision-brief-20261024.md)。下列09:20段落和固定Word是历史快照，不能用于证明新1.2实现。
+用户返回后已确定11月28日截止，D008发布提示顺序已采用并另行完成[1.2规格冻结](../../records/spec-freezes/v1.2.json)，随后实现、11项新目标和4项旧邻接通过、准确代码限定审核完成，最新开发CI后端522/前端89通过。[开发集成准入](../../records/decisions/D008-development-admission.json)仅对应C0dfb的新范围，不能取消旧F08或放行main。免费[857短stub校准已通过](../../reports/acceptance/v5-calibration-857-public-summary.md)，非产品或600秒性能。计划本人购买阿里云时看[选购清单](aliyun-performance-machine-checklist.md)，不要把旧AWS报价当阿里云价格。最新问题集中在[返回简报](../reviews/return-decision-brief-20261024.md)。下列09:20段落和固定Word是历史快照，不能用于证明新1.2实现。
 
 2026年10月24日09:20（北京时间）历史收尾快照：当时候选C为`b66fa36a317145afec350d7f61ca374959b2eaf7`。相对bc5应用只在依赖查询增加可信`project_id`条件，限定等价范围已有[18b0271审核及准确PR42 COMMENT](https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453)。完整[CI40047832510](https://github.com/HJY147/t44-dev-trace/actions/runs/40047832510)和[Docker40047836840](https://github.com/HJY147/t44-dev-trace/actions/runs/40047836840)均绿，后端510项、前端89项。root已按事前dde39门槛决定准入开发集成，最终以`records/decisions/dependency-query-development-admission.json`收据为准；连接池db87不合入。这里不是性能改善证明或main放行。
 
@@ -45,9 +45,9 @@ Word都在本机`.submission-private/review-documents`，含你提供的私密�
 
 三组正式压力测试完整执行400活动VU、600秒稳态，P95为9512.069/3086.148/8272.364ms，均超过270ms；组内失败1021/0/2，原因尚未确定。短时开发样本没有复现503，也不能覆盖这些失败。[原独立结论](../../reports/independent-v3/stage06-formal-blackbox.md)保持不变。
 
-固定口径有效代码6307行，超过5100上限1207。尚无可信的1207行等价删重方案；不能压行、移计量目录或自行宣布老师放宽要求。
+固定口径新C有效代码6310行（原6307+本次修复3），超过5100上限1210。尚无可信的千行等价删重方案；不能压行、移计量目录或自行宣布老师放宽要求。
 
-F08在旧规格下同时触发“旧批准失效”和“评估基线过期”，原资料未约定先提示哪个。用户返回后已采用先更新评估、再完成原独立评审和经理决定的顺序，记录于D008；1.2新冻结先于新实现。原F08失败与未到达的后续语句继续保留，不追改为通过。v3白盒/交付物已按明确发表摘要完成有限核查，整体仍NOT_ACCEPTED_INCOMPLETE。
+F08在旧规格下同时触发“旧批准失效”和“评估基线过期”，原资料未约定先提示哪个。用户返回后已采用先更新评估、再完成原独立评审和经理决定的顺序，记录于D008；1.2新冻结先于新实现，新C已有开发测试及限定代码审。原F08失败与未到达的后续语句继续保留，不追改为通过。新独立854仅封存77概念用例，执行0，不冒充独立复验通过。v3白盒/交付物已按明确发表摘要完成有限核查，整体仍NOT_ACCEPTED_INCOMPLETE。
 
 后发H2六次均exit1，环境最终恢复为5次true、1次false；数据准备和600秒调度不等于有效400并发已成立。SUT性能结论为INCONCLUSIVE，不给bc5/db87排名，也不撤销原v3失败。新公开Pcal=`b69ac5e`的独立stub校准中，400用户即时响应场景仍有客户端循环延迟和超时；它只证明该本机隔离测试路径能出现这些现象，不能归因原CI或SUT，不能补成H2有效测量。没有补跑。
 

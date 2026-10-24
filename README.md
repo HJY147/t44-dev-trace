@@ -8,9 +8,9 @@
 
 ## 用户返回后的进展（2026年10月24日）
 
-已按用户答复以11月28日为截止；用户打算自行购买阿里云，先参阅[性能指标与两台机器选购清单](docs/user-guide/aliyun-performance-machine-checklist.md)，尚无云资源购买或AI支出授权。固定计数仍6307行、超上限1207；[最新审计](agents/database/source-budget-return/report.md)没有可信的等价净减1207行方案。三组旧正式性能失败及H2有效并发未证实的结论保持。
+已按用户答复以11月28日为截止；用户打算自行购买阿里云，先参阅[性能指标与两台机器选购清单](docs/user-guide/aliyun-performance-machine-checklist.md)，尚无云资源购买或AI支出授权。新D008修复提交C=`0dfb55c2191200d947c5423fd9ee74bb0812cc5a`实际计数6310行（原6307+3）、超上限1210；[原规模审计](agents/database/source-budget-return/report.md)保留6307时点结论，尚无可信的千行等价删重方案。三组旧正式性能失败及H2有效并发未证实的结论保持。
 
-858工具准备失败保留；857另行冻结、单次准入后的[短时自有stub校准通过](reports/acceptance/v5-calibration-857-public-summary.md)，10000请求无失败/P95约208.9ms含固定200ms等待，未测SUT或正式600秒。D008发布提示顺序已由用户选择，RFC/规格分别审查后在d530755建立[1.2新冻结](records/spec-freezes/v1.2.json)；后续实现和新回归尚在进行，不以规格通过冒充产品通过。过程素材见[提示词岗真实留痕](docs/prompting/RETURN-user-decisions-and-quality-trace.md)，各稿保留其准确截止，学生最终研究正文仍须本人完成。以下09:20是历史收尾快照。
+858工具准备失败保留；857另行冻结、单次准入后的[短时自有stub校准通过](reports/acceptance/v5-calibration-857-public-summary.md)，10000请求无失败/P95约208.9ms含固定200ms等待，未测SUT或正式600秒。D008发布提示顺序已由用户选择，RFC/规格分别审查后在d530755建立[1.2新冻结](records/spec-freezes/v1.2.json)，之后才实现：同856用例旧3红8绿→新11绿，另4旧相邻目标通过。[准确C代码审核](reports/reviews/43-0dfb55c2191200d947c5423fd9ee74bb0812cc5a.md)未见新增实质代码阻断；[产品CI40060857352](https://github.com/HJY147/t44-dev-trace/actions/runs/40060857352)及[容器40060980119](https://github.com/HJY147/t44-dev-trace/actions/runs/40060980119)通过，后端522/前端89，代码已准入开发集成，main未放行。CI实际输入与限制以[协调准入收据](records/decisions/D008-development-admission.json)为准，不将旧F08追改通过。新独立854设计77个概念用例/0执行，尚须工具与环境冻结；855输入暴露及[提示词修订](records/prompts/ROLE-independent-release-INPUT-ISOLATION-ITERATION.md)保留。各旧稿和Word/ZIP保留准确截止，学生最终研究正文仍须本人完成。以下09:20是历史收尾快照。
 
 ## 2026年10月24日09:20收尾状态（北京时间）
 
