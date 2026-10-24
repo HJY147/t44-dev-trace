@@ -226,3 +226,5 @@
 - 861首次一次exit0，00:10:43.616UTC结束；1440/390都在2个已有项目选项中选project2，任务20cards、通知5cards/未读5未处理5、审计20cards，页数不冒称全数据。实际70API请求/响应=66GET+2login+2logout，逐条status200/requestid70/70，businessMutations/blocked/requestfailed/pageerror/整页横溢出0；console只有4条Vite连接debug，没有warning/error。两次正常退出200后登录表单可见/app-shell卸载。
 - 6PNG逐张实际看；Chromefinally关闭，9保护端口listener UID/PID/PPID/PGID/start元数据前后一致（只是两个时点，不声称连续监控）。未发标已读/处理或任务/人力写入，没有reset/服务停止/配置变更/CI/全套；普通login/logout本身可能写DB，背景MQ/scan仍会推进，不能声称DB零写/本岗验证全部后台成功/完成4h。
 - 原脱敏method/path/status/requestid摘要及console/results保存native-user-preview-first，原log先gzip再规范可读尾空白。source/907/861SHA、精准范围与非独立界限见native-user-preview-validation.json；完成本岗密钥精确扫描、Issue2实评GET后交根。全部AI入口验证，不计学生人工修改。
+
+- 9902a29证据阶段本岗commit/push；Issue2实际评论6377347811经精确ID GET读回正文完全同，回执native-user-preview-github-verification.json。没有APPROVE/独立通过/新业务PR，浏览器关闭，服务不改，交root最终汇总。
