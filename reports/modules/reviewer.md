@@ -270,3 +270,5 @@ C cloc实际6307/range失败是owner新准确原件，本岗未重计；DB EXPLA
 ## D008 R2文档差量最终限定设计结论
 
 root明确发布R2 d328（父8c），先R2scope后仅核docdelta：只RFC表单行+重放小节。成功及owner/status1/<500/拒绝audit事务提交的4xx COMPLETE限定、5xx/无claim/owner失配/auditcommit不保证与未知commit、当前auth/input/digest门槛、成功动态Meta/originalid实际完成请求、错误新requestid/旧audit/无outerMeta均准确；原失败槽/1.2无变。旧8c报告/comment保持；R2有限设计无新增实质阻断，只准责任岗下一步spec草稿同步，不准实现，仍需新freeze实际hash/应用tests自测/代码审核，无main/globalstage/全验收。859原仅2目标意义不重复。0测试源复审服务CI/private858860等读取。新R2报告/Issue3续comment全文GET另封。
+
+R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已push exit0；Issue3续COMMENT6379417061显式完整R2d328，REST特定全文GET body逐字/Issue3归属/R2 SHA严格一致exit0，https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379417061。回执R2-github-comment.json。原8c报告/评论保持；限定设计只进入spec草稿同步，新freeze/实现tests自测/代码审仍待，0源复审测试服务CI，metadata封存后释放。
