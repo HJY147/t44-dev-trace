@@ -344,3 +344,74 @@ def test_root_execution_rejected_before_inputs_or_database(monkeypatch, capsys):
         "success": False,
         "error": "WORKER_UID_REJECTED",
     }
+
+
+def test_cloud_launcher_constructs_exact_two_file_admin_call_without_secrets():
+    launcher = load(
+        "fixture_launcher_static", ROOT / "deployment/fixture-launcher-cloud.py"
+    )
+    values = {
+        "MYSQL_DATABASE": "t44",
+        "T44_DOCKER_CONTEXT": "default",
+        "COMPOSE_PROJECT_NAME": "t44",
+        "MYSQL_PASSWORD": "STATIC-TEST-NOT-A-CREDENTIAL",
+    }
+    command = launcher.command(values)
+    assert [command[i + 1] for i, value in enumerate(command) if value == "-f"] == [
+        "/opt/t44-c-0dfb55c/compose.yaml",
+        "/run/t44-delivery/tls-C/overlay.json",
+    ]
+    assert command[
+        command.index("--profile") + 1 : command.index("--entrypoint") + 2
+    ] == [
+        "operations",
+        "run",
+        "--rm",
+        "-T",
+        "--pull",
+        "never",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+    ]
+    mounts = [command[i + 1] for i, value in enumerate(command) if value == "--volume"]
+    assert len(mounts) == 4 and sum(value.endswith(":ro") for value in mounts) == 3
+    assert mounts[-1] == "/run/t44-delivery/fixture-output:/run/t44-fixture-output:rw"
+    assert command[command.index("admin") + 1] == "/run/t44-fixture/worker.py"
+    assert command[-2:] == ["--output-dir", "/run/t44-fixture-output"]
+    assert not {"--user", "--privileged", "--cap-add", "seed-demo"}.intersection(
+        command
+    )
+    assert values["MYSQL_PASSWORD"] not in command
+
+
+def test_cloud_launcher_filters_inherited_docker_compose_environment(monkeypatch):
+    launcher = load(
+        "fixture_launcher_env_static", ROOT / "deployment/fixture-launcher-cloud.py"
+    )
+    monkeypatch.setenv("DOCKER_HOST", "tcp://untrusted.invalid")
+    monkeypatch.setenv("COMPOSE_FILE", "untrusted.yml")
+    environment = launcher.environment(
+        {"COMPOSE_PROJECT_NAME": "t44", "MYSQL_DATABASE": "t44"}
+    )
+    assert "DOCKER_HOST" not in environment and "COMPOSE_FILE" not in environment
+    assert environment["COMPOSE_PROJECT_NAME"] == environment["MYSQL_DATABASE"] == "t44"
+
+
+@pytest.mark.parametrize(
+    "invalid",
+    [
+        {"success": False, "password": "STATIC-KNOWN-TAMPER"},
+        {"success": False, "error": "UNTRUSTED_DRIVER_MESSAGE"},
+    ],
+)
+def test_cloud_launcher_receipt_rejects_non_allowlisted_values(invalid):
+    launcher = load(
+        "fixture_launcher_receipt_static", ROOT / "deployment/fixture-launcher-cloud.py"
+    )
+    assert launcher.safe_receipt(b'{"success":false,"error":"ACCOUNT_CLI_FAILED"}') == {
+        "success": False,
+        "error": "ACCOUNT_CLI_FAILED",
+    }
+    with pytest.raises(ValueError):
+        launcher.safe_receipt(json.dumps(invalid).encode())
