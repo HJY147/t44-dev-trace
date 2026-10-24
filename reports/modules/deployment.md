@@ -380,3 +380,11 @@
 - resource-evidence-export.py/.md：只收显式本岗UUID.ndjson+完成SHA，不扫描relay852。root700/文件600/nofollow/nlink1/稳定元数据，受限新tar.gz(raw+manifest)写时hash；记录真实UTC/计数/失败，坏行缺字段NOT_PROVEN但原raw保留。app精确7服务/各7stats、两机五proc非空，不能errors空冒完整。
 - 初版682c80缺字段OBSERVED反例red保留，补后78a252…55df，26纯合成/Ruff/compile/diffcheck；没有真实资源/云/下载/私密资料读取。
 - root首样本路径UTC仅中性转述，最终SHA/计数尚待18:10。runbook明确18:10后打包、18:30前官方单文件下载及本地全SHA/bytes核验，旧49,520B传输不等于新资源包完成，100非已花100/硬停与释放不延长。
+### REQUEST-ID-CHAIN-v1 design
+
+- Isolated proposal in agents/deployment/request-id-chain/design.md, strict upstream UUID filter and one response field. Local nginx unavailable; real pinned runtime checks pending, no cloud/product admission or independent verdict.
+
+- Candidate implementation prepared: strict canonical UUIDv4 map/hide/one-add; 840 real pinned-nginx driver and narrow read-only GitHub job. Local Ruff/compile only passed, real runtime23-path result pending. Production changes only2nginx configs; current C/cloud unchanged.
+
+- Real hosted run40084563406 success on execution416bb5e/source debf8d8: original fixed nginx UID101, two syntax checks0, actual baseline2-field counterexample and candidate23/23 raw/security-header cases. Full raw/ZIP/platform/source hashes in request-id-chain/validation and scope in result.md. ZIP/platform digest and raw member bytes match.
+- Formal reviewer later found no blocker for one hosted synthetic run; request timing preceded formal conclusion and is preserved, not treated as approval. Issue7 result6382958356 fullGET identical. This candidate has not changed cloud C or been admitted/deployed, and does not prove actual API/TLS/replay persistence/independent acceptance/performance or explicit contract equality violation.
