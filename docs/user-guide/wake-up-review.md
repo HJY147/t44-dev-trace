@@ -23,11 +23,11 @@ Word都在本机`.submission-private/review-documents`，含你提供的私密�
 
 共35页，文档岗已逐页检查对应最终排版。三份M6稿中的运行状态只代表各自内容截止，不能把其中“v3尚未发表”当作现在的状态；后发表的核查、部署与性能方法变化见[M8工程附录](../../reports/final/M8-engineering-annex.md)和[准备阶段补记](../../reports/final/M8-performance-preparation-addendum.md)。它们是AI编制的技术材料；技术报告排版完成不等于软件验收通过。源码审阅包和后续合并审阅包也只作为审阅快照，不自动变成最终提交。
 
-公开阅读可以从[提交物对照](../../reports/final/submission-map.md)、[新手指南](../../docs/guidance/M6-learner-guide.md)进入。概设回答模块怎么分，详设回答接口和函数收什么、返回什么，测试报告回答究竟检查了什么及哪里还未通过。
+先按[五分钟导览](../guidance/M8-five-minute-tour.md)查看界面，再看[提交物对照](../../reports/final/submission-map.md)；需要追函数和事务时，再读[M6代码导读](../guidance/M6-learner-guide.md)。概设回答模块怎么分，详设回答接口和函数收什么、返回什么，测试报告回答究竟检查了什么及哪里还未通过。
 
 ## 查看真实开发过程
 
-完整产品在[集成分支](https://github.com/HJY147/t44-dev-trace/tree/codex/integration)和[draft PR21](https://github.com/HJY147/t44-dev-trace/pull/21)，main目前仍是受保护的基础版本。
+完整产品在[集成分支](https://github.com/HJY147/t44-dev-trace/tree/codex/integration)和[draft PR21](https://github.com/HJY147/t44-dev-trace/pull/21)，main目前仍是受保护的基础版本。仓库首页的项目链接现指向集成分支。若之后重新获取源码，需选择`codex/integration`；默认main不能代表本轮完整应用，审阅ZIP则绑定自己的准确commit。
 
 优先看你原创的[多岗位分工prompt](../../records/prompts/U001-original.md)和[GitHub留痕prompt](../../records/prompts/U002-original.md)，再看[六个实际演进版本](../prompting/M6-process-checkpoint.md)和[夜间调试过程](../prompting/M7-night-process-evidence.md)。原文、AI优化建议、实际使用和反馈分开保存。多agent都是AI，独立测试采用上下文与流程隔离，共享电脑没有操作系统级隔离。
 

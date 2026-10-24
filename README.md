@@ -6,6 +6,10 @@
 
 完整本机演示 `http://127.0.0.1:5178` 已就绪，准确bc5/初始2项目40任务、消息和扫描运行，计划北京时间2026年10月24日11:49:43停止；[交接观察](records/validation/native-user-demo-coordinator-handoff.json)仅证明当时运行中，不是4小时最终通过。另保留 `http://127.0.0.1:5173` 的API/网页大数据预览。[醒来后查看项目](docs/user-guide/wake-up-review.md)区分入口及本机私密登录说明，账号未公开。
 
+## 获取本轮审阅源码
+
+完整源码在`codex/integration`。重新获取时使用`git clone --branch codex/integration https://github.com/HJY147/t44-dev-trace.git`；固定审阅包另绑定完整commit，不把浮动分支当成已验收版本。先体验可按[五分钟导览](docs/guidance/M8-five-minute-tour.md)。
+
 ## 功能与运行
 
 支持项目成员与角色、迭代产能和排期、任务依赖、七状态流转、八段十项评审、四视角上线风险和回滚预案、经理交付/回滚/返工决定、三级延期提醒、通知已读/处理和审计追踪。发布和回滚记录人的决定，不替人操作外部生产系统。
