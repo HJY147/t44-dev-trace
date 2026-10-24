@@ -495,3 +495,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 4ab5e7d先设计/原prompt，root准新增service worker+host launcher，原C/已审worker/launcher/旧TLS helper不改。新notification-cohort只原credential_admin经原CLI写，t44/UID10001/C哈希/私有输出/不存在名称与文件/40scope预检，无rotate或seed。实际subject_id/issued_at从发行后会话和主体只读核，token摘要/new subject同时间/TTL5400/expiry>10:10Z核足才内存加密；origin只host私密env读后stdin，绝不公开Git实际IP或rawToken。
 - root随后提供extended TLS helper0ef2c2e/ea1b5873，最终host固定新path/hash/原validate_runtime，不改旧全局deadline；10:28Z reserve来自新18:30授权。4RO文件+唯一cohort-secrets RW挂载，原admin不带真实scheduler卷。密文neutral-service.envelope.json可relay，rawscheduler-token.json只留0600私目录，非0/未知不重试不清理。两helper/证书仍只已发表物流资料。
 - 850新增首9纯合成目标绿/旧24不跑，最终追加2preflight并复核1host共3绿/32deselected（11唯一新项，不当12），实际known-data加密、DB/CLI替身，无真实云/DB/CLI/main/服务/负载。原test SIM3001红保留后纯字符串等式左右互换/Ruff绿，未降断言；format上下文patch拒绝记录。核心hash与运行前提见agents/backend/service-fixture/report.md，先交root审核不等大报告。
+
+- service核心0faf2cd已先push交root审；Issue3 6382300556 body-file发表/精确全文GET逐字核，纯E不改两源码或再运行绿。新rootextended helper依赖待根审，实际云发行/receiver解密本岗未执行，阶段释放。
