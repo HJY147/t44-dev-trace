@@ -1,0 +1,108 @@
+{
+  "publication": "NEUTRAL_METADATA_ONLY_ROOT_MAY_READ_THIS_FILE",
+  "design_freeze": {
+    "id": "F-design-1",
+    "sha256": "d66956a5ba0ac1ea3a8336a2289504015ce62b37fea9ecbe3676ff8d142b939b",
+    "kind": "DESIGN_ONLY_NOT_EXECUTABLE"
+  },
+  "scope": "Release task plus associated assessment, independent review, manager release decision and bounded unchanged adjacent semantics",
+  "case_count": 80,
+  "executed": 0,
+  "passed": 0,
+  "failed": 0,
+  "not_run": 80,
+  "spec_freeze_commit": "d5307551d6b467f84e8254abd0245cdf22bc0a70",
+  "spec_manifest_sha256": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+  "input_hashes": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a1521e70637c7a214d5b6c605ad940457817635579751a4095bd390a7a86f8a4",
+      "expected_frozen_sha256": "a1521e70637c7a214d5b6c605ad940457817635579751a4095bd390a7a86f8a4",
+      "match": true
+    },
+    {
+      "path": "specs/requirements.md",
+      "sha256": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a",
+      "expected_frozen_sha256": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a",
+      "match": true
+    },
+    {
+      "path": "specs/business-rules.md",
+      "sha256": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83",
+      "expected_frozen_sha256": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83",
+      "match": true
+    },
+    {
+      "path": "specs/backend-design.md",
+      "sha256": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "expected_frozen_sha256": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "match": true
+    },
+    {
+      "path": "specs/contracts/openapi.json",
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "expected_frozen_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "match": true
+    },
+    {
+      "path": "backend/t44/contracts/openapi.json",
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "expected_frozen_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "match": true
+    },
+    {
+      "path": "specs/contracts/README.md",
+      "sha256": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "expected_frozen_sha256": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "match": true
+    },
+    {
+      "path": "specs/database/field-dictionary.md",
+      "sha256": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "expected_frozen_sha256": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "match": true
+    },
+    {
+      "path": "specs/changes/capacity-lifecycle-v1.1.md",
+      "sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "expected_frozen_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "match": true
+    },
+    {
+      "path": "specs/changes/release-error-priority-rfc.md",
+      "sha256": "78e3f0a68b0a679e72cdc363c99e6a712da48cf343b04a70dc1562ca959215d3",
+      "expected_frozen_sha256": "78e3f0a68b0a679e72cdc363c99e6a712da48cf343b04a70dc1562ca959215d3",
+      "match": true
+    },
+    {
+      "path": "specs/sources/T44-taskbook.txt",
+      "sha256": "7d61ecdba76128dcb34931f2c2211bfd650bf2cd246bba4c6abf8ae9c2193ab0",
+      "expected_frozen_sha256": null,
+      "match": "recorded_original_source_without_provided_external_digest"
+    },
+    {
+      "path": "records/spec-freezes/v1.2.json",
+      "sha256": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+      "expected_frozen_sha256": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+      "match": true
+    }
+  ],
+  "input_verification": "All selected frozen-file bytes match their declared hashes; original taskbook digest recorded without external expected digest.",
+  "independence_caveat": "An explicitly frozen design RFC contains implementation/history/test-suggestion remarks and was incidentally displayed. No application source, old test file, development report/log, other-role directory, credential or CI was opened. The contextual exposure prevents claiming absolute absence of developer-derived context; primary outward specifications are the outcome oracles.",
+  "dependencies_and_environment_pending": [
+    "SUT immutable version and base URL; no source or development conclusions",
+    "neutral credentials with distinct manager/assessment-author/reviewer/developer identities and two projects",
+    "public setup/reset commands and allocated disposable data namespace",
+    "public task/assessment/review/decision/history/audit observability and audit permissions",
+    "reachable stale-cycle and matched-reference combinations; no synthetic state claimed as real public workflow",
+    "exact missing-assessment outward oracle if not resolved by neutral frozen spec",
+    "controlled concurrency/fault barriers and explicit later authorization; none used now",
+    "approved automation dependencies/runtime and request budget; no tool selected or installed",
+    "evidence retention, redaction, cleanup ownership and permitted artifact publication"
+  ],
+  "execution_admission": "No HTTP/browser/SUT/SQL/DB/MQ/CI, service, load, host-service enumeration or use-case execution occurred. Executable tools must be frozen separately; root must supply a neutral environment and explicitly authorize bounded execution.",
+  "storage": "Private ignored container and local codex branch only; no push; root must not read private plan/scripts/logs.",
+  "local_branch": "codex/855-independent-release-v12-design",
+  "base_commit": "e11b5318326433039a31bcf79e3182508c365158",
+  "created_utc": "2026-10-24T04:05:50.939326+00:00"
+}

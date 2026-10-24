@@ -193,7 +193,7 @@
     }
   ],
   "framework_support_files": "conftest.py and __init__.py contain fixtures/package setup, not test cases; retained required names under tmp/backend",
-  "next_number": 854,
+  "next_number": 853,
   "reservations": [
     {
       "number": 972,
@@ -832,6 +832,11 @@
       "role": "independent_v6_release_spec",
       "status": "reserved private blackbox v1.2 release-flow design only, no application access or execution; coordinator must not read cases",
       "path_policy": "private owned worktree under tmp/independent;855 prefix for private case payload and neutral published metadata only"
+    },
+    {
+      "number": 854,
+      "role": "independent_v6_release_outward_only",
+      "status": "reserved fresh context-free design-only private cases; outward-only inputs, no other files/links or execution; coordinator cannot read cases"
     }
   ],
   "previous_next_number_before_reservation_reconciliation": 884,
