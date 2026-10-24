@@ -39,6 +39,6 @@ python3 /run/t44-delivery/tls-delivery.py \
 
 原C API/web镜像须实际完整构建并核对回执才允许应用启动。root转述：v2 FROM-only probe已成功，但完整build北京15:13:15/601s/exit124；web已export，API仍依赖下载，**完整构建未成功**。本工具没有本机Docker/云执行；私网SG连通、实际TLS握手、DB迁移/seed/token/启动均待root真实执行，不把本地guard当部署通过。
 
-本地检查：19项stdlib边界/真实本地证书签名与keypair；macOS LibreSSL不实现目标OpenSSL3的-checkip，初始该guard失败保留，后续仅测试中改用stdlib解析真实SAN，生产严格命令不变；chown仅mock。没有Docker/Ubuntu握手或性能测试。
+旧checkpoint 3ccaa5d的19项guard保留为历史；其中以stdlib替代SAN检查未覆盖原x509 -checkip的退出语义，不能作为真实错SAN拒绝证据。审核P2发现该命令错SAN也可能ret0，现改为 `openssl verify -CAfile ca.crt -verify_ip IP -purpose sslserver server.crt`，移除单独checkip，keypair/expiry/manifest保持。补4项针对性合成guard通过（命令形状、非零传播、key不匹配、过期拒绝）。本机LibreSSL3.3.6不支持-verify_ip，真实正/错SAN两次命令均因选项不支持退出1，语义结果为null；**Ubuntu实际正/错SAN边界待root审查后核验**，不能说已通过。没有Docker/云握手或性能测试。
 
-官方依据：[nginx TLS配置](https://nginx.org/en/docs/http/ngx_http_ssl_module.html)、[OpenSSL证书扩展](https://docs.openssl.org/3.0/man1/openssl-req/)、[OpenSSL x509 -checkip](https://docs.openssl.org/3.0/man1/openssl-x509/)。
+官方依据：[nginx TLS配置](https://nginx.org/en/docs/http/ngx_http_ssl_module.html)、[OpenSSL证书扩展](https://docs.openssl.org/3.0/man1/openssl-req/)、[OpenSSL verify_ip验证选项](https://docs.openssl.org/3.0/man1/openssl-verification-options/)。

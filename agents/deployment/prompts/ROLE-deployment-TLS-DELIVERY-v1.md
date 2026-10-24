@@ -15,3 +15,7 @@
 沿用已准入：产品C不改；单独私有0700目录，精确overlay同摘要ECR+私网TLS旁路；根CA key不出主机，叶key0600只读；同一工具兼作资源生成和单阶段wrapper。每次先C/clean/0600.env及manifest核验，再两份显式-f；操作不自动串联。prepare/pull分别显式，token仅首次签发，不造账号API/不包口令。绝对17:00释放减120秒，整阶段预算含preflight；失败私密保留，不擅自回滚/重试。
 
 必要检查仅本地stdlib合成和本地真实证书生成。macOS LibreSSL3.3.6缺-checkip，原失败保留；生产目标Ubuntu OpenSSL3严格命令不改，guard仅以stdlib解析实际SAN替代此工具缺项，并明确chown mock。没有Docker、云、CI或独立用例动作。新工具仅能力交付，不等于正式压测或产品准入。
+
+## 实际审核补正指令原文
+
+审核实际发现P2必须修：verify_tls x509 -checkip 命令即便SAN不匹配也ret0（OpenSSL3.0.13官方apps x509.c noout流程），check=True不能保证匹配。请第一行改openssl verify -CAfile ca.crt -verify_ip ip -purpose sslserver server.crt（此命令错SAN才非零），去掉/替代单独checkip；补真实正/错SAN边界（本地LibreSSL verify -verify_ip是否支持先核若不支持只记录未运行但目标Ubuntu实际可验证）。避免弱化现有keymatch/expiry/manifest检查。补丁新hash尽快提交推，root不执行旧版。已部署方未跑helper不需回滚。

@@ -127,8 +127,8 @@ def render_overlay(runtime: Path, ip: str) -> dict:
 
 
 def verify_tls(runtime: Path, ip: str) -> None:
-    invoke(["openssl", "verify", "-CAfile", str(runtime / "ca.crt"), str(runtime / "server.crt")], 5)
-    invoke(["openssl", "x509", "-in", str(runtime / "server.crt"), "-noout", "-checkip", ip], 5)
+    invoke(["openssl", "verify", "-CAfile", str(runtime / "ca.crt"), "-verify_ip", ip,
+            "-purpose", "sslserver", str(runtime / "server.crt")], 5)
     invoke(["openssl", "x509", "-in", str(runtime / "server.crt"), "-noout", "-checkend", "300"], 5)
     key = invoke(["openssl", "pkey", "-in", str(runtime / "server.key"), "-pubout", "-outform", "DER"], 5).stdout
     cert_pem = invoke(["openssl", "x509", "-in", str(runtime / "server.crt"), "-pubkey", "-noout"], 5).stdout

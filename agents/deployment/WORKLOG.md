@@ -428,3 +428,5 @@
 - 同一overlay显式双-f，C HEAD/clean/root-owned0600.env/allowlist manifest/hash/本地unixcontext核验；prepare/config/pull/infra/migrate plan或execute/seed/token/start(no-build/pullnever)/status一次一阶段，绝对北京17:00减120秒及整阶段cap，失败raw私有0600留存，非零不冒清理。token仅初次发行，scheduler运行中拒绝，不包账号/fixture口令/自动轮换。
 - 19项必要本地guard通过，实际本地证书签名/到期/keypair生成核验，初次LibreSSL3.3.6不支持目标-checkip失败保留，后续测试仅该项用stdlib解析真实SAN代替、chown mock；不据此冒称Ubuntu握手。初始import lint红保留为回执，最终真实CI配置Ruff0/compile0/diff-check0。源hash及原件tls-delivery-validation；未装工具、未Docker/HTTP/SQL/云或测试岗资料。
 - root转述v2 FROM-only成功；完整build15:13:15/601s/exit124，仅web已export、api依赖下载未完；完整build不成功，保留原Hub/v1/v2失败，不盲重试。部署/migrate/seed/token/TLS私网/正式性能均无真实成功；20元/17:00固定。先交核心供审核，不等待build完成。
+
+- 2026-10-24T07:23:13.574621+00:00审核P2：原x509 -checkip在错SAN也可能0，本岗初19guard的SAN替代漏覆盖此真实退出语义，原checkpoint/Issue记录保持。窄修为verify -CAfile -verify_ip -purpose sslserver，删除单独checkip，expiry/keypair/manifest不变；新增4项命令/失败传播/key mismatch/expiry合成guard绿。真实本机正/错SAN均因LibreSSL不支持-verify_ip退出1，语义null，Ubuntu实际边界尚未跑，不冒通过；旧helper没有云执行，无回滚。新hashcc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9，原失败和19guard字节不改。
