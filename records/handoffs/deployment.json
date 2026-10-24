@@ -796,6 +796,11 @@
       "id": "ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v2",
       "archive": "agents/deployment/prompts/ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v2.md",
       "reason": "按用户新100预算与18:30释放授权扩新观测窗口，保留旧运行，严格其余AST不变"
+    },
+    {
+      "id": "ROLE-deployment-HOST-RESOURCE-SERIES-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-HOST-RESOURCE-SERIES-v1.md",
+      "reason": "按中性CPU内存网络/TCP累计观测需求补采集，不读用例/私密，不改性能门槛"
     }
   ],
   "questions": [
@@ -937,7 +942,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "seven-service-resource-sampler-v2-window-reviewable-not-executed",
+  "stage": "app-v3-and-load-host-counters-reviewable-not-executed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -945,7 +950,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T08:45:27.816947+00:00",
+  "updated_at": "2026-10-24T09:03:48.169907+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1430,5 +1435,37 @@
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6382148162",
     "full_GET_body_identical": true,
     "final_seal": "agents/deployment/seven-resource-v2-validation/final-seal.json"
+  },
+  "prior_stage_before_host_resource_series": "API-PyPI-external-delivery-reviewable-not-built",
+  "host_resource_series": {
+    "base_sha": "4a4a9ad76dcf43133566db200cede5b94929a7a4",
+    "branch": "codex/deployment-host-resource-series",
+    "app_script": "deployment/seven-resource-sampler-v3.py",
+    "app_sha256": "4bddc93a20b26d7a86a109a2d7e8d409a004265ebae1c4f6d81beaa6cb98b9d5",
+    "host_script": "deployment/host-resource-sampler.py",
+    "host_sha256": "7a0f8c9c16aff233f37a1f8f02c27848dc110a7deb28800550ca38f28716259d",
+    "steps": "deployment/host-resource-series.md",
+    "v3_only_delta": "PROC snmp + contextcpu_count;otherASTsame",
+    "v2_unchanged_not_cloud_started_per_root": true,
+    "old_v1_natural_end": "16:44 root relay only;not deployment receipt verification",
+    "fixed_proc_count": 5,
+    "host_summary_fields": [
+      "file",
+      "sha256",
+      "bytes",
+      "nsamples",
+      "fails"
+    ],
+    "private_existing_852_read": false,
+    "test": "tmp/deployment/842_host_resource_series.py",
+    "synthetic_guards": 5,
+    "actual_collector_cloud_proc_Docker_CI_execution_by_deployment": false,
+    "actual_resource_samples": null,
+    "missing_evidence": "NOT_PROVEN;no600s threshold change",
+    "evidence": "agents/deployment/host-resource-validation",
+    "implementation_sha": "9430895e76b6a25ed9ec47747e5e87f6da1ac8f1",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6382310590",
+    "full_GET_identical": true,
+    "final_seal": "agents/deployment/host-resource-validation/final-seal.json"
   }
 }

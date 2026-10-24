@@ -468,3 +468,12 @@
 - root转述用户明确预算100 CNY并完成SMS、两机18:30自动释放已实核，正式独立窗口计划18:10硬停，原因是覆盖新正式测试窗口/收尾；100是授权上限非已花100。本岗不操作云/支付/服务，不读独立资料，不称v2已启动或正式测试完成；旧采样器按原时限自然结束。Ruff/compile/AST差量校准，未重跑旧8guard、不建test（844未用），原缺文件失败保留。
 
 - 2026-10-24T08:45:27.816947+00:00实现38400258dde793c1531a07a7f62ec37568fb9a32已推，Issue7/6382148162实际发布及完整GET正文逐字一致；final-seal含新源码/差量/回执hash。只封档不启动任何采样/云操作，未动原fe5dad运行或提前判其结束，v2实际执行仍未知；100只记授权上限，不记已花100。
+
+## HOST-RESOURCE-SERIES-v1
+
+- 2026-10-24T09:00:57.902976+00:00基root4a4a9ad76dcf43133566db200cede5b94929a7a4独立codex/deployment-host-resource-series/worktree，先设计。新增appv3仅追加snmp/cpu_count，与冻结v2其余AST和逆变换bytes一致，v2原件/未执行状态不动；root转述v1自然16:44结束，本岗未kill或读取运行回执，不代写成功。
+- host版固定五/proc及UTC/monotonic/cpu_count、10s目标、5400或10:10Z较早截止，无Docker/网络/DB/应用日志/参数；只检查relay852目录700，O_EXCL600创建自身UUID，哈希只读自身inode/owner/mode，不列目录/读既有852。缺源null+NOT_PROVEN，摘要严格五字段，饱和度解释不改600s门槛/性能结论，原预算100/18:30释放不动，非花100。
+- 核心先交root审，appv3SHA4bddc93a20b26d7a86a109a2d7e8d409a004265ebae1c4f6d81beaa6cb98b9d5；host初交b74后仅初始化identity=None保证fstat异常稳定摘要，最终7a0f8c9c16aff233f37a1f8f02c27848dc110a7deb28800550ca38f28716259d已通知替代。没有云/collector main/本机proc或独立资料读取。
+- 842五项最小合成0.27s绿（固定路径/无network-listdir、缺TCP不泄异常、超大拒绝、只读自身inode600，uid metadata mock），Ruff/compile0。首次未等worktree checkout完成即尝试Ruff造成config缺失exit2，等待真实完成后才同CI配置0；未执行额外suite/CI/843桥或852私密材料。源hash与校准原件host-resource-validation。
+
+- 2026-10-24T09:03:48.169907+00:00实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已push，Issue7/6382310590真实发布并全文GET逐字一致，final-seal列两脚本/842/差量/回执hash。两脚本hash保持交审最终版不再变更；只封档不执行collector或读取任何真实资源/私密资料，实际样本仍null，缺证NOT_PROVEN/600s门槛不变，结束释放。
