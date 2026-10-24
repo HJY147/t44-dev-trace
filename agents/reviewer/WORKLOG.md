@@ -407,3 +407,6 @@ R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已pus
 ## c4e8离线数据库工具独立限定审：P2输出排他阻断
 
 ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c直接c4e8，先scope970608e。只tmp838与明确公开agents/database/perf-public-c/，不读839841852或其它私有、不向tester通信，不继承BE源码clear。无生产/DDL变更；导入stdlib、唯一memory SQLite、显式--run/无私有env/参数日志、19配方71Rows=69SELECT+2顺序UPDATE及缺FK/锁/RC/CAS限制准确；13manifest与13C源hash/AST位置核对。确认P2 OUTPUT-EXCLUSIVE-01：263exists预检与293–294 write_text(w)之间可覆盖新出现的原结果。唯一实际main零DB探针只替换recipes，放入已有结果后被截断，DB/application新导入=[]；没有重跑矩阵/SQL/HTTP/服务/CI/负载。原命令/JSON已存自有evidence，未建测试.py，837未用。暂停工具整合，DB owner另设计/O_EXCL+NOFOLLOW fd写出后窄复审；原19/71E不变。报告reports/reviews/database-public-c-c4e8c696411975ee6964ef3b2254c8f3937ecb32.md。
+
+
+封条：反例与报告591b1ec53c2d71fa4a9516a27aa4a501f03a8edf已push，Issue4 COMMENT6383572331实际POST并特定全文GET逐字核同，目标c4e8/工具d758/SHA ac30明确，https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383572331。原件github-comment-full-get.json/verification.json，当前工具整合仍P2阻断，DB owner另修。无测试.py，837未使用；BE ead与新CI另turn，不混入本scope。

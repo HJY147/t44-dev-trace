@@ -56,3 +56,6 @@ deps度0/4/32二读及skip-empty输出、成员3/32物化、依赖页1/4/32的1+
 **当前c4e8诊断工具整合不通过，阻断为OUTPUT-EXCLUSIVE-01。** 其E可作为明确限定的历史开发证据保留，不能凭19/71或导入guard绿色宣布工具已可安全重跑。DB岗新设计/最小修复后绑定新SHA复审输出fd/链接/竞争边界，不需要重跑原矩阵来验证这一文件生命周期修复。
 
 本岗实际仅静态/hash/计数检查＋一次零DB输出微探针；应用/矩阵/SQL/HTTP/MySQL/服务/负载/CI均0，无独立私密读取或通信。该结论不涉及BE ead的新CI数字，不归因公开502/P95，不发APPROVE、main/global gate或性能通过。
+
+
+封条：反例与报告591b1ec53c2d71fa4a9516a27aa4a501f03a8edf已push，Issue4 COMMENT6383572331实际POST并特定全文GET逐字核同，目标c4e8/工具d758/SHA ac30明确，https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383572331。原件github-comment-full-get.json/verification.json，当前工具整合仍P2阻断，DB owner另修。无测试.py，837未使用；BE ead与新CI另turn，不混入本scope。
