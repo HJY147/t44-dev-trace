@@ -1,0 +1,99 @@
+{
+  "actual_inputs_sha256": {
+    "specs/business-rules.md": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83",
+    "specs/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "specs/requirements.md": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a",
+    "specs/sources/T44-taskbook.txt": "7d61ecdba76128dcb34931f2c2211bfd650bf2cd246bba4c6abf8ae9c2193ab0"
+  },
+  "all_input_hashes_matched": true,
+  "authorship": "AI-generated independent design; no claim of student manual work",
+  "case_count": 77,
+  "case_count_policy": "概念用例计数，单例内部参数变体不另增数",
+  "dependencies": "NOT_PROVIDED",
+  "design_freeze_F_sha256": "4cf6d75f04d737418a3e5e399f81cd2e61a8ab088b1b0c641fd25713ab0f80e0",
+  "environment": "NOT_PROVIDED",
+  "executable_tool_freeze": "NOT_CREATED",
+  "execution_count": 0,
+  "freeze_nature": "DESIGN_ONLY_NOT_EXECUTABLE",
+  "git_metadata_exposure": [
+    "git rev-parse root HEAD",
+    "git show-ref exact intended branch (not present)",
+    "git worktree add exact base0796444; printed source commit title"
+  ],
+  "incidental_exposure": [
+    "Allowed contract full read included x-source-references/x-prompt-ref/x-open-questions; all within allowed file; no referenced content opened",
+    "Allowed requirements/business files contain editorial draft markers and links; no links followed",
+    "Git checkout printed source commit title: test(independence): retain design exposure and freeze outward-only neutral inputs [skip ci]; no commit body/history/source/design opened"
+  ],
+  "input_entry_sha256": "6643b4aa3f3a6d4d475cd743d4654c504de78c4a7752c8bd19fe6c79e2d9ce18",
+  "isolation": "procedural/context boundary with separate worktree and index; shared filesystem is not OS sandbox",
+  "later_required": "另行独立冻结可执行工具/依赖/版本及数据断言，再由root明确准入确切SUT构建/地址、隔离数据、角色凭据、环境资源、并发/请求/时间边界和允许故障范围；F不构成可执行freeze或执行授权",
+  "links_followed": false,
+  "metadata_kind": "explicitly_published_neutral_metadata_only",
+  "other_repository_content_read": false,
+  "private_branch": "codex/independent-release-v6-854",
+  "private_container_ignored_from_root": true,
+  "private_content_policy": "仅本中性metadata可供root/开发阅读；私密用例、方法、日志、manifest及本地commit内容不可读；未push",
+  "private_local_commit": "9b7a4844301a5161b0c04ec07247fcaa5edf905d",
+  "published_at_utc": "2026-10-24T04:12:42.039655+00:00",
+  "read_events": [
+    {
+      "action": "read bytes; verify supplied SHA before decoding/full print",
+      "hash_matched": true,
+      "order": 1,
+      "path": "records/acceptance/v6-release-neutral-inputs.json"
+    },
+    {
+      "action": "each read bytes and SHA verify before full decode/output; combined output truncated",
+      "hashes_all_matched": true,
+      "order": 2,
+      "paths": [
+        "specs/sources/T44-taskbook.txt",
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json"
+      ]
+    },
+    {
+      "action": "business full reread; contract projected relevant operations/schemas; output truncated",
+      "order": 3,
+      "paths": [
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json"
+      ]
+    },
+    {
+      "action": "targeted operation description/error cases and schema projection; complete output",
+      "order": 4,
+      "paths": [
+        "specs/contracts/openapi.json"
+      ]
+    },
+    {
+      "action": "targeted role scope/state/schema/header projection; complete output",
+      "order": 5,
+      "paths": [
+        "specs/contracts/openapi.json"
+      ]
+    },
+    {
+      "action": "artifact writing reread neutral entry three times (field list, metadata, entry hash); rehashed each of four allowed files once; all actual hashes match initial values; no extra source content selected",
+      "order": 6,
+      "paths": [
+        "records/acceptance/v6-release-neutral-inputs.json",
+        "specs/sources/T44-taskbook.txt",
+        "specs/requirements.md",
+        "specs/business-rules.md",
+        "specs/contracts/openapi.json"
+      ]
+    }
+  ],
+  "role": "854_independent_release_blackbox",
+  "root_index_changed_by_this_role": false,
+  "root_index_unchanged_during_private_sealing": true,
+  "scope": "发布任务及关联上线评估、独立审核、经理决定，并由对外规范独立推导相邻语义；概念正反与边界设计",
+  "source_freeze_commit": "d5307551d6b467f84e8254abd0245cdf22bc0a70",
+  "status": "DESIGN_SEALED_STOPPED",
+  "sut_request_count": 0,
+  "worktree_base": "079644456b262410e0d7245525c3b1c8d0a75059"
+}
