@@ -349,3 +349,5 @@
 - 独立v2只将绝对截止改10:10Z/最长5400秒，4处文本/5个指定AST常量外全部一致；原fe5dad/08:44与云运行不动。新hash5b8da9…06b2，delta证据seven-resource-v2-validation。
 - 用户预算100/SMS完成及两机18:30释放由root转述，正式窗口计划18:10硬停；预算上限非实际消费。本岗无云/支付/collector执行，正式前启动仅计划，旧实例不提前kill。
 - AST/反向bytes/Ruff/compile通过，初次root基点缺v1路径的read/ruff失败保留后改读已发布Git blob；不重复旧suite、不建test（844未用），不读独立资料。
+
+- v2实现38400258dde793c1531a07a7f62ec37568fb9a32已推，Issue7/6382148162全文GET一致，final-seal列hash；旧进程不动/v2未由本岗执行，不能以时间过去或能力检查推断实际采样完成。
