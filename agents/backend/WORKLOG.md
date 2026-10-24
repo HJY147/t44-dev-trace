@@ -458,3 +458,18 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 未改Workflow/测试/DB/DDL/旧freeze；当前4件有意新草稿，不冒旧14hash仍同。根需规/业务/AGENTS/新v1.2manifest及最终规格审核另办，未冻结不实施。无suite/SUT/HTTP/SQL/CI/服务/负载/新指标；859不重跑，旧F08/未执行尾部/旧WordZIP不改。用户业务选择不记用户改码，作者执行后端AI。
 
 - 1.2草稿Issue3 6379477604已body-file发表/精确全文GET逐字核；root另告f7e83ca根资料/前端文档已同步，本岗未合其它变更。提交本草稿后暂停，等待限定规格复核/newfreeze；856仅root预留，尚未创建或运行。
+
+## D008 frozen1.2实施：准确C先交审核
+
+- 根d530755先冻结/manifest00e52d9c…后，建独立树backend-release-error-priority和新实现分支；计划9bab3cc先于856/产品。核15hash，原1.1/F08历史保留。856由root正式分配，原986/859不改。
+- 856完全同test SHA：旧3红8绿，三红均实际APPROVAL且已核业务未变/独立audit存在→只workflow原require错误参数条件化后11绿。真实schedule双失效/恢复新评估+不同合规reviewer批准再经理发布，success/error COMPLETE重放保存业务/error/audit+当前request/meta范围，版本/归属/missing、匹配引用的原domain顺序；cycle和匹配引用异常明确controlled SQLite fixture，非真实rework/历史。原986另4相邻绿；Ruff/format两文件绿，现有弃用warning保留，不冒全覆盖/独立或实库。
+- 原pytest长trace展开内存合成session，12值仅公件替换，原log/XML0600私密/hash留；不上传原Token或改失败事实。后短trace不改断言。代码checkpoint0dfb55c已正常push/PR43并attach，C已含红绿/命令/原件，角色/指标后续E不倒填。require predicate/位置/domain/auth/SQL/锁/CAS/audit/outbox/幂等不变，仅错误参数，15freeze保持。
+- 固定cloc在C实6310/exit1，Workflow247→250/净+3，冻结base66源文件与已实测B66逐字一致后才作总增量；仍超1210，不改口径/压行。新product40060857352与Docker40060980119已触发，待终态原件/覆盖率/actualcheckout，不借旧510/89。证据分支codex/backend-d008-implementation-evidence保持C头不动；未合root，无本机外部DB/服务/端口/负载/独立资料访问。未新注入5xx/owner/audit故障不超声明。root另准代码审核/CI后集成，当前交接可释放。
+
+### D008 C准确托管终态（E后封）
+
+- 官方product40060857352四job与Docker40060980119均success/attempt1。五ZIP先核官方digest再开、18+33新原件gzip双hash/roundtrip；仅旧manifest文件名口径，结果本次新读。完整522/0fail/error/skip（856=11）、markers174/93/19重叠；44Py与Git集一致/excluded0，行2638/2957=89.212039%、分支659/824=79.975728%；FE89/20TSVue全Git集，行93.33/branch88.09。
+- Docker官方checkout/gitlog证实f8c0428父3fa88293+C，171相关运行文件mode/blob/内容SHA同；4worker/scanner16/2/19表countschecksums恢复matched/18业务226，第二scanner flock exit1预期。APIhead不冒checkout。总结records/validation/composite-D008-0dfb-ci.json，原件records/ci/两run；未重跑/本机负载，不借旧CI数。
+- PR43 review5636767886全文GET为COMMENTED/commit_id=C，来自专审8659d444；本岗没有self-approve。root已报告开发集成da2d308（main不动），集成操作者root，正式限定admission待其核E原件。E产品/测试/配置仍C，纯归档skip-ci；cloc6310/exit1净+3仍失败，正式性能/独立验收不作通过。完成封档后暂停，不做新运行。
+
+- D008 checkpoint/final Issue3 6379680394/6379751050与PR43完整正文均已GET逐字核，PR头仍C/draft。E只本岗记录/官方原件，不再改生产/测试/配置；封档完成后暂停。
