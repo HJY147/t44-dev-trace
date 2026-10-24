@@ -318,3 +318,15 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - b974accc644ec897f59cb7e4ddf105e1027a7a8b本人commit/push，新draftPR40用GitHub工具建立，GET body/headb974匹配、open/draft/unmerged/mergeabletrue；Issue9评论6377281950及PR40评论6377282225均精确ID GET，正文/URL逐字一致，保存github-M8-readback。
 - M8实现后frontend另到M7迟回复，确认预览登录有认证DB写、0businessMutations不代表DB零写；既有正文未如此扩称，不改稿或新导Word，仅收件注其时点。M8仍仅native1问1AI答复，未采访学生或联系tester。
 - 本笔仅保存发布回执/交接，未APPROVE/status/mainmerge，未等待性能或读取新增输出。最终receipt SHA由HEAD与远端一致核对后回传并释放本岗索引/槽位。
+
+## 2026-10-24T08:23:24.203758+08:00 M8 性能准备补充说明先行设计
+
+- 从root固定5ce98e0新建documentation-m8-performance-addendum树/分支，只读指定五公开文件及本岗待加入口的现有MD；大小写定位用公开metadata文件名，不打开H树/私密引用。先保存设计/实际任务，尚未新增正文。
+- 原六正式NOT_RUN、330/5工具预算、H2接触SUT后900/30明确方法修订与新六授权无结果分开；不等后续性能、不读Word/R002、不运行服务。
+
+- 2026-10-24T08:25:41.993702+08:00 新补充说明仅五公开源，六行prepare/NOT_RUN/null/unknown逐项一致，125191总数、五次40取消、S2-867异常1+32+6及H/H2/source/origin/1800-40/正式400-600-270-1000-0绑定检查通过。原summary尚未冻结H2与后发表H2/授权按时点区分；片段保持仅声明，未打开私密证明。两个旧入口文件严格原bytes前缀+追加，未改原截止/Word/QA。无新结果查询、服务/测试/CI/Word或人员问取。
+
+## 2026-10-24T08:27:28.926175+08:00 性能准备补充说明发布与释放
+
+- 实现84bd37eeda61c17c069fba7e5501d0005598caf9本人commit/push；新draftPR41 body/head84bd准确GET、open/draft/unmerged/mergeabletrue。GitHub工具真实发布Issue9评论6377503061，再对精确ID全文GET，body/URL逐字一致，回执保存github-M8-performance-preparation-readback。
+- 本笔只存发布凭据/交接，无新资料读取/采访/渲染/服务或等结果。最终receipt SHA由HEAD/远端一致核对后回传并释放本岗索引槽位；旧Word和cutoff不因元数据再处理。
