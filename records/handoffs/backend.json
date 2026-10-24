@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Synthetic worker and fixed-C host launcher delivered; offline guards only; cloud execution not performed by backend",
+  "stage": "Encrypted service fixture checkpoint/offline only; awaiting root review/execution",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -1913,5 +1913,24 @@
       "inner_timeout": "remaining220 and originalTLSdeadline minus120",
       "next": "root review exact hash then separate host execution;nonzero stop without retry/seed"
     }
+  },
+  "encrypted_service_fixture": {
+    "design_first": "4ab5e7d",
+    "worker": "deployment/encrypted-service-fixture.py",
+    "worker_sha256": "d1cd66c13b90874a8519ccc6c307bd41678671232f212632839e3391227dc5b0",
+    "launcher": "deployment/service-fixture-launcher-cloud.py",
+    "launcher_sha256": "e8c38dc32dc88d8943ff3e1593e221829c62b455dbe7622f3c5f46075b0b69cb",
+    "report": "agents/backend/service-fixture/report.md",
+    "prompt": "agents/backend/service-fixture/actual-prompt.md",
+    "source_C_unchanged": true,
+    "name": "notification-cohort",
+    "projects": 40,
+    "TTL": 5400,
+    "final": "/run/t44-delivery/cohort-secrets/neutral-service.envelope.json",
+    "tests": "9pass then3pass(one repeated)=11unique;offline only",
+    "runtime_executed": false,
+    "independent_private_read": false,
+    "new_TLS_dependency": "root0ef2c2e/ea1b5873fixed extended path, review pending per dispatch",
+    "next": "root dedicated review then separate actual host issuance;only ciphertext relay"
   }
 }

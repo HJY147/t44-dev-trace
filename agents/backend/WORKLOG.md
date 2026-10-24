@@ -489,3 +489,9 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 只扩既有850四个参数/环境/回执静态目标，4pass/20deselected，Ruff通过；无launcher.main/TLS/OpenSSL/Docker/云/CLI/SQL/服务执行。root outer240/进程树，内层220且原deadline减120，超时不声称container已停，raw0600保留，非0不重试不seed。初把cc659当Git缩写exit128已核实为文件SHA，非应用错误。报告launcher-report.md/原prompt/四目标日志同目录。
 
 - launcher核心e3fd10b已push先交root准备用；Issue3 6381760636 body-file发表/精确全文GET逐字核。后续seal纯公件回读，不变launcher/worker/C，不再运行目标；实际执行仍归root。
+
+## 独立中性service密文fixture（未云执行）
+
+- 4ab5e7d先设计/原prompt，root准新增service worker+host launcher，原C/已审worker/launcher/旧TLS helper不改。新notification-cohort只原credential_admin经原CLI写，t44/UID10001/C哈希/私有输出/不存在名称与文件/40scope预检，无rotate或seed。实际subject_id/issued_at从发行后会话和主体只读核，token摘要/new subject同时间/TTL5400/expiry>10:10Z核足才内存加密；origin只host私密env读后stdin，绝不公开Git实际IP或rawToken。
+- root随后提供extended TLS helper0ef2c2e/ea1b5873，最终host固定新path/hash/原validate_runtime，不改旧全局deadline；10:28Z reserve来自新18:30授权。4RO文件+唯一cohort-secrets RW挂载，原admin不带真实scheduler卷。密文neutral-service.envelope.json可relay，rawscheduler-token.json只留0600私目录，非0/未知不重试不清理。两helper/证书仍只已发表物流资料。
+- 850新增首9纯合成目标绿/旧24不跑，最终追加2preflight并复核1host共3绿/32deselected（11唯一新项，不当12），实际known-data加密、DB/CLI替身，无真实云/DB/CLI/main/服务/负载。原test SIM3001红保留后纯字符串等式左右互换/Ruff绿，未降断言；format上下文patch拒绝记录。核心hash与运行前提见agents/backend/service-fixture/report.md，先交root审核不等大报告。

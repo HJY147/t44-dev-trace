@@ -301,3 +301,5 @@ C准确新托管结果：product40060857352/Docker40060980119成功；实际522/
 最终20项纯合成guards/真实本地已知数据加密解密通过，CLI/DB为明确替身，无实际库/云/容器/HTTP/负载。原Ruff SIM105红保留→AI窄样式修正后两文件静态通过；只读三份已公开物流原件，不读独立私密。运行前还需root核准确C镜像/RO挂载/UID权限并单独授权实际初始化；部分提交和全局预检并发边界不冒原子保证，源码规模/正式性能历史不变。
 
 root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-launcher-cloud.py，不改worker/C/既有部署。固定两份-f+原ops.load_env内存、原TLS校验和四挂载，原admin继承UID10001/capdrop/RO；白名单回执/私有0600日志，失败不重试不seed。T44_DATABASE由原C compose继承MYSQL_DATABASE=t44，无需额外覆盖。仅850新增4静态目标通过/旧20不重跑、Ruff通过，未运行launcher.main或任何云/服务/SQL。准确hash/命令/未核范围见agents/backend/synthetic-fixture/launcher-report.md，实际执行归root。
+
+新中性service worker/host launcher先4ab5e7d设计，原C/既有工具不改，仅原admin唯一新cohort私有bind。notification-cohort/40scope/TTL5400，只原credentialadmin/CLI初发；实际主体/时间/会话摘要只读核验后按root给定852-neutral-service-credential-v1在内存加密，origin从host私密env经stdin，不公开实际IP/Token。新extended TLS helper固定ea1b5873，准入依赖根专审。首9/后3(1重复)离线目标均绿、共11唯一新例，Ruff绿/原SIM300样式红保留；无DB/CLI/云/main执行。报告agents/backend/service-fixture/report.md，运行和接收方解密仍待root审后执行，不冒真实通过。
