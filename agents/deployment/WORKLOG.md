@@ -430,3 +430,5 @@
 - root转述v2 FROM-only成功；完整build15:13:15/601s/exit124，仅web已export、api依赖下载未完；完整build不成功，保留原Hub/v1/v2失败，不盲重试。部署/migrate/seed/token/TLS私网/正式性能均无真实成功；20元/17:00固定。先交核心供审核，不等待build完成。
 
 - 2026-10-24T07:23:13.574621+00:00审核P2：原x509 -checkip在错SAN也可能0，本岗初19guard的SAN替代漏覆盖此真实退出语义，原checkpoint/Issue记录保持。窄修为verify -CAfile -verify_ip -purpose sslserver，删除单独checkip，expiry/keypair/manifest不变；新增4项命令/失败传播/key mismatch/expiry合成guard绿。真实本机正/错SAN均因LibreSSL不支持-verify_ip退出1，语义null，Ubuntu实际边界尚未跑，不冒通过；旧helper没有云执行，无回滚。新hashcc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9，原失败和19guard字节不改。
+
+- 2026-10-24T07:25:41.365270+00:00修复实现6af63a94889692f38f1ad27e240b692328f461fe已push；初交接Issue7/6381390079与P2补正6381416710均通过GitHub插件实际发布并逐条完整GET，正文与本岗保存body逐字一致，原JSON/源码hash封档final-seal.json。第一次staged diffcheck发现comment本地副本多一EOF空行，修成与实际posted body一致单LF后diffcheck0，原exit2回执保留。没有重复旧19suite或发新CI/云动作；真实Ubuntu正错SAN与完整C build仍未通过，不再扩展实现。

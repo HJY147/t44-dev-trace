@@ -333,3 +333,5 @@
 - 本地19边界guard/证书签名keypair及CI Ruff/compile/diff-check通过；本机LibreSSL无-checkip，原失败保留，guard只此项解析真实SAN替代且chown mock；不是Docker/Ubuntu握手。root转述完整v2 build15:13:15/601s/exit124，web已build但api未完，后续云运行/TLS私网/正式性能均未通过。源码hash与检查tls-delivery-validation。
 
 - P2补正：旧3ccaa5d的x509 -checkip退出语义不足；改openssl verify -verify_ip -purpose sslserver，keypair/expiry/manifest不变。4项针对性合成guard绿，真实Ubuntu正/错SAN待核；本机LibreSSL不支持该选项，实际两次exit1只算工具缺项。新helper SHA cc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9；旧checkpoint/原检查/Issue保留，不宣称SAN真实边界通过。
+
+- 最终实现6af63a94889692f38f1ad27e240b692328f461fe已push；Issue7初交接6381390079/P2补正6381416710全文GET均一致，seal含精确文件hash。只交工具能力，目标Ubuntu真实正/错SAN与云运行待核，原19历史不倒填新通过。
