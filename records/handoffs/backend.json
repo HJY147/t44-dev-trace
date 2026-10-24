@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "D008 exactC hosted522 and Docker passed; source6310 remains overbudget; evidence sealed pending root admission",
-  "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
+  "stage": "Synthetic account worker implemented; offline20 guards passed; no DB/cloud execution",
+  "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -1874,5 +1874,28 @@
     "checkpoint_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379680394",
     "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379751050",
     "full_issue_and_PR_GET_exact": true
+  },
+  "synthetic_fixture_worker": {
+    "base": "6df6b3cd3bd026ebd9bb00f86a71f071724cac1f",
+    "branch": "codex/backend-synthetic-fixture-worker",
+    "design_first": "04f1ef8",
+    "expected_application": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "worker": "deployment/synthetic-fixture.py",
+    "worker_sha256": "7b6332517473266b99a6121cd6ddaaaf08a61080b8e0667996689daf4542a626",
+    "test": "tmp/backend/850_synthetic_fixture.py",
+    "prompt": "agents/backend/synthetic-fixture/actual-prompt.md",
+    "report": "agents/backend/synthetic-fixture/report.md",
+    "offline_tests": "20passed/0failure/error/skip;fakeGateway/CLI,realfilesystem and own known-data RSA/AES envelope",
+    "static": "originalRuffSIM105 preserved;finalRuff/formatpassed",
+    "runtime": "notexecuted:noDB/cloud/HTTP/services/CI/load",
+    "output": "pending/final ciphertext and safe status only;0600O_EXCL,owner10001directory0700flock",
+    "limits": [
+      "threeCLIcommits/filesnotatomic",
+      "quiescentnewDBrequired",
+      "fullimagebindingownedbyroot",
+      "nozeroization/rootsecrecyclaim",
+      "no actualrecipientprivatekeyread"
+    ],
+    "next": "root review worker and RO delivery inputs before separate initialization authorization"
   }
 }
