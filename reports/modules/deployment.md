@@ -296,3 +296,15 @@
 - 两机均≤3h的满公网峰值有条件估算18.516582元，非硬封顶/最终账单；真实释放未发生。部署岗未看UI/图/账户或操作云/服务/CI/测试，不写资源/账户私密信息。
 - 准确C 0dfb55c2191200d947c5423fd9ee74bb0812cc5a的既有ops/Compose路径和凭据外前提见agents/deployment/aliyun-c-deployment-readonly-handoff.md；历史Docker31f证明不冒充C云运行。当前仍缺管理/私网入口、工具/镜像依赖、C实际构建启动与释放取证，不称应用部署/正式性能通过。
 - root后续实际详情补核：load北京14:06创建、running/healthy、17:00自动释放已保存，实际网络页同VPC/交换机；两台成功且计费中，load详情待办已消除。Workbench免密仍检查中、未创建/重置/绑定凭据；实际管理连接、私网、部署、性能和到期真实释放仍未证明。
+
+### UBUNTU-BOOTSTRAP-v1 分步命令待审查执行
+
+- deployment/ubuntu24-bootstrap.sh及.md提供inspect/packages/source和单独产品准备检查点，准确C固定0dfb55c2191200d947c5423fd9ee74bb0812cc5a；Ubuntu签名仓库Docker+Composev2+Buildx/Python3.12/git，已有兼容项不重复装，来源冲突停止。
+- APT/Git下载各有限预算/失败退出、保留17:00前120秒，无all、无账号口令/seed/正式压测或网络开放/收费产品/key/token。root先审查再经Workbench手动执行；部署岗不触云/服务/CI/独立私密。
+- 本地bash -n通过；原件和源码hash见agents/deployment/ubuntu-bootstrap-validation。安装、C云build/infra/migrate尚未执行，结果未知，不称部署通过；原预算20元和北京时间17:00截止不改。
+
+### CLOUD-ASSISTANT-PROGRESS-v1
+
+- 实际通路改记已授权云助手root执行，root/ecs-user临时SSH失败；root转述云助手两机正常2.2.4.1097，app公开853预检14:21:49/<1s/exit0，Python3.12.3/git/curl已有、Docker缺失。
+- 8f packages任务由root核完整文本（仅插阶段参数）后提交900s/进程树，当前安装进行中，无成功回执；此前fill残留默认前缀被拦未执行。部署岗不接触云/CI/服务/图片或独立私密，未新增实际运行结论。
+- 已审bootstrap.sh字节/blob完全不变，说明改云助手通路并在独立产品任务重申cd/HEAD；证据ubuntu-bootstrap-validation/cloud-assistant-progress.json。

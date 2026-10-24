@@ -387,3 +387,16 @@
 - 只读本岗既有部署资料并核准确C 0dfb55c2191200d947c5423fd9ee74bb0812cc5a：ops init-env/config-check/build/infra/明确migrate/init-user/seed/真实project scope/start/status已有实现，历史Docker运行绑定31f不能冒作C云验证。凭据外缺load释放回查、管理/私网入口、Docker/依赖获取和C真实构建运行；默认TTL3600需显式轮换。路径交接aliyun-c-deployment-readonly-handoff.md，不读独立私密。
 
 - 2026-10-24T06:11:03.696132+00:00创建记录057e655356a86f13917d0230c29127eb73346736推送后，root补充load实际详情14:06创建/running/healthy/17:00释放已保存，实际网络页同VPC-switch；两台计费中。追加较晚事实并清除当前load待核，不倒改历史。Workbench仅root检查已有免密通路，未新建/重置/绑定凭据，无登录/私网/部署通过；本岗仍仅文档，实际释放/账单未来待核。
+
+## UBUNTU-BOOTSTRAP-v1 待root审查的分步主机准备
+
+- 2026-10-24T06:21:34.639799+00:00基root当时精确ee774d640168addf85a60d75422cf8a17f4fae9f新独立codex/deployment-ubuntu-bootstrap；只准备脚本/步骤，没有云执行权限，未联系Workbench/账号/服务/CI或独立资料。先给root可审查文件路径，再收尾记录；本岗没有代替root作安装/部署成功声明。
+- deployment/ubuntu24-bootstrap.sh只有inspect/packages/source三显式阶段，无all/产品自动启动。Ubuntu24.04amd64/root/UTC09:00原截止guard，保留120s；只补缺失Python3.12/git/CA/Ubuntu发行Docker+Composev2+Buildx。官方主源核Canonical维护docker.io、Noble compose-v2和buildx；与DockerCE区分不混装。APT签名不关，依现有Ubuntu签名源/universe，无第三方换源/公钥/收费产品/凭据/网络开放。通用包页一次web timeout保持在checks说明，没有虚称已安装。
+- update180s/下载300s/离线安装240s，Git匿名fetch精确C单SHA360s，外部调用有限、失败退出，不自动修复/重试/清理。精确C与tracked检查、目录存在只核不覆盖；packages满足就跳过，buildx显式列入。文档config-check/build/infra/迁移plan和execute分块独立，账号/seed/正式压力不在本阶段；buildclient退出不冒充daemon清理。
+- 仅本地bash -n语法0和diff-check；stdout/stderr/checks及源码hash在ubuntu-bootstrap-validation。未执行脚本body/安装/源码网络fetch/构建/迁移；这些结果均null，后续实际证据由root按新云机逐步观察，不复用历史31f或本机结果。20元/北京17:00截止保持。
+
+## CLOUD-ASSISTANT-PROGRESS-v1
+
+- 2026-10-24T06:29:46.089545+00:00只改独立树文档：据root UI转述，Workbench角色获用户批准后已点创建确认，root/ecs-user临时SSH均失败；云助手两机正常2.2.4.1097，现通路为已授权云助手root，不再要求Workbench root终端。仅读公开tmp/853准备脚本原件，未执行/触云/CI/服务/共享索引/图片/敏感元数据或任何独立私有材料。
+- root云助手app预检北京14:21:49/<1s/exit0，root/Ubuntu24.04x86_64/Python3.12.3/git/curl具备、Docker缺失、所查列表无ecs-user；本岗不独立背书云结果。root以8f脚本仅插set--packages，UI全文核一致后提交900s/进程树任务，安装进行中无完成结论；此前fill残留默认shebang被比对拦下未执行，改全选粘贴后才提交。
+- 已审脚本blob 8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8、SHA a99091f55f4b285712edc7b043114460f6dce5235705f289991cb31e3bece025逐字未变，沿用8f限定审查。本轮只改.md通路及跨任务cd/HEAD检查说明、角色记录/prompt，未重跑bootstrap或假称安装/部署/性能通过。原进展和静态结果保持，cloud-assistant-progress.json列精确对照。
