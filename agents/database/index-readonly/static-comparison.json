@@ -1,0 +1,69 @@
+{
+  "source": "b40d8889b1f9ea67f7c10a6dbaf22ecf57ce8b0d",
+  "backend_handoff": "d83408955dea4afaab24991c00e490ad196c9ebe",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "tables": {
+    "task_dependencies": {
+      "frozen_explicit_index_names": [
+        "PRIMARY",
+        "uq_dependencies_edge",
+        "ix_dependencies_reverse",
+        "ix_dependencies_creator"
+      ],
+      "actual_index_names": [
+        "PRIMARY",
+        "uq_dependencies_edge",
+        "ix_dependencies_reverse",
+        "ix_dependencies_creator"
+      ],
+      "additional_actual_names": []
+    },
+    "tasks": {
+      "frozen_explicit_index_names": [
+        "PRIMARY",
+        "uq_tasks_project_id",
+        "ix_tasks_project_state",
+        "ix_tasks_owner_state",
+        "ix_tasks_iteration",
+        "ix_tasks_scan"
+      ],
+      "actual_index_names": [
+        "PRIMARY",
+        "uq_tasks_project_id",
+        "ix_tasks_project_state",
+        "ix_tasks_owner_state",
+        "ix_tasks_iteration",
+        "ix_tasks_scan",
+        "fk_tasks_latest_review",
+        "fk_tasks_approved_review",
+        "fk_tasks_approved_assessment"
+      ],
+      "additional_actual_names": [
+        "fk_tasks_approved_assessment",
+        "fk_tasks_approved_review",
+        "fk_tasks_latest_review"
+      ]
+    },
+    "notifications": {
+      "frozen_explicit_index_names": [
+        "PRIMARY",
+        "uq_notifications_consumer",
+        "ix_notifications_recipient",
+        "ix_notifications_unread",
+        "ix_notifications_unhandled"
+      ],
+      "actual_index_names": [
+        "PRIMARY",
+        "uq_notifications_consumer",
+        "ix_notifications_recipient",
+        "ix_notifications_unread",
+        "ix_notifications_unhandled",
+        "fk_notifications_event"
+      ],
+      "additional_actual_names": [
+        "fk_notifications_event"
+      ]
+    }
+  },
+  "official_rule": "https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html"
+}

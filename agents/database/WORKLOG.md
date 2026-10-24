@@ -256,3 +256,11 @@
 
 - 实际结果9d1deff3592d12e169f30a25537540c93096abf0已push。随后通过GitHub connector向Issue4/3实际发表完整阶段交接，并各comments/:id精确GET读回，正文与真实提交和本地文件逐字一致：Issue4#issuecomment-6376531906、Issue3#issuecomment-6376532216；github-readback.json保留endpoint/id/body/time/actor/hash。没有设review成功或关Issue/改生产准入。
 - 收尾逐一解压43份public gzip并核原bytes/gzip SHA全同；summary补实际回执。955与执行源f75a8a4字节相同、生产仍bc5；本阶段已完成，只有离线归档，没有第二次比较或额外HTTP/SQL/本机负载，释放实例槽。
+
+## ROLE-database-INDEX-READONLY-v1：10分钟有界只读核查先设计
+- 从root公开b40d888创建codex/database-index-check独立worktree，未动根索引。已读取公开BE d834静态两材料、本岗pool-retention设计/原回执及955源码；不接触独立材料/实例。
+- 先行plan明确仅原t44_profile/原fixture hash，核服务停止/归属后才有限SHOW与plain EXPLAIN；不改数据/设置/产品/DDL/用例。原始任务完整归档；此设计阶段尚未连接MySQL。
+- 先行设计0073a39已commit/push后才执行一次内联只读：2026-10-24T00:44:34.686085Z–00:44:34.718430Z，严格原t44_profile、fixture项目44/task6004；原hash/0600、18083空闲/旧四PID消失、当前app可见本库其他连接0与归属均通过。14条应用层语句原字段保存result.json，驱动会话初始化/最终rollback另计，自己的连接已close；无DDL/DML/ANALYZE/负载/设置或服务改变。
+- 真实依赖索引无task_id前导自动键，复合FK已由project前导现有键满足；tasks与notifications存在显式DDL以外自动FK键，不能从显式表推断不存在。当前依赖单列+ORDERid计划PRIMARY index/possible_keys NULL/rows估9216；project+task对照ref uq_dependencies_edge/rows估1且filesort，未实施。另两计划及全部SHOW原字段保留，未执行被解释SELECT。
+- 只有优化器估算，不是实际扫描/时延/6000任务代表分布/400并发或正式失败根因/收益。未读独立材料/测试、不联系tester、未新增测试文件、不动产品/DDL/API/用例/原freeze，不变更MySQL守护进程/全局配置、不动任何数据。
+- GitHub connector实际COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6377715017；github-readback.json保留原响应。本岗证据已核已知fixture Token/DSN/口令匹配0，生产/specs/tmp相对b40d888差异为空；本轮检查收口，不再SQL/负载/复测。
