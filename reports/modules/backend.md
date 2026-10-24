@@ -299,3 +299,5 @@ C准确新托管结果：product40060857352/Docker40060980119成功；实际522/
 原产品C不变；root跨目录授权仅新增deployment/synthetic-fixture.py和850本地测试，04f1ef8先设计。固定UID10001/DBt44/CLI及公开recipient/helper摘要，严格readonly输入/0700私有输出；pending密文先于原CLI匿名stdin创建，三名任一存在/业务非空/部分失败或未知结果即停止，不重置、不重试、不删用户，最后只发账号密文，不seed或创建session。worker完整hash/参数/风险见agents/backend/synthetic-fixture/report.md。
 
 最终20项纯合成guards/真实本地已知数据加密解密通过，CLI/DB为明确替身，无实际库/云/容器/HTTP/负载。原Ruff SIM105红保留→AI窄样式修正后两文件静态通过；只读三份已公开物流原件，不读独立私密。运行前还需root核准确C镜像/RO挂载/UID权限并单独授权实际初始化；部分提交和全局预检并发边界不冒原子保证，源码规模/正式性能历史不变。
+
+root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-launcher-cloud.py，不改worker/C/既有部署。固定两份-f+原ops.load_env内存、原TLS校验和四挂载，原admin继承UID10001/capdrop/RO；白名单回执/私有0600日志，失败不重试不seed。T44_DATABASE由原C compose继承MYSQL_DATABASE=t44，无需额外覆盖。仅850新增4静态目标通过/旧20不重跑、Ruff通过，未运行launcher.main或任何云/服务/SQL。准确hash/命令/未核范围见agents/backend/synthetic-fixture/launcher-report.md，实际执行归root。

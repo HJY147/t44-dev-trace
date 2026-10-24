@@ -482,3 +482,8 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 真实C CLI只有INSERT/username唯一冲突失败，无upsert/reset；3次创建和文件非原子，ACK不明/部分创建保留pending供人工核，不自动恢复。部署需保持新DB初始化独占；expected-source仅声明，完整镜像保障归root。报告agents/backend/synthetic-fixture/report.md；首次核心初稿hash不作为最终执行源。
 
 - 核心1c0ae877已push先交root审，worker最终hash7b633251…；Issue3 6381577719 body-file发表并精确全文GET逐字核。公开cert副本命中*.pem忽略，凭明确公开SHA仅force-add该X509公证书；未加入私钥。后续纯证据封档不改worker/测试、不重复绿。
+
+### 固定C宿主launcher（仅静态，未执行）
+
+- root另准新增deployment/fixture-launcher-cloud.py；91d2bfb设计先提交，固定/opt C、原cc659 TLS helper/runtime/private-network env、三公件RO单文件挂载和UID10001/0700输出。只原admin profile run --rm -T --pull never --no-deps --entrypoint python，继承原UID/capdrop/RO，不改worker/C/既有部署。原ops.load_env只内存，T44_DATABASE由原C compose的MYSQL_DATABASE=t44继承，worker再核URL/显式库。
+- 只扩既有850四个参数/环境/回执静态目标，4pass/20deselected，Ruff通过；无launcher.main/TLS/OpenSSL/Docker/云/CLI/SQL/服务执行。root outer240/进程树，内层220且原deadline减120，超时不声称container已停，raw0600保留，非0不重试不seed。初把cc659当Git缩写exit128已核实为文件SHA，非应用错误。报告launcher-report.md/原prompt/四目标日志同目录。
