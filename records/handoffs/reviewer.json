@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/performance-repair-5cc/static-evidence-audit.json",
-  "latest_review_report": "reports/reviews/44-5cc856d6fa94b1fdde32605543b53822f9747f00.md",
+  "latest_review_evidence": "agents/reviewer/evidence/database-public-c/static-evidence-audit.json",
+  "latest_review_report": "reports/reviews/database-public-c-c4e8c696411975ee6964ef3b2254c8f3937ecb32.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1480,9 +1480,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-d008-implementation",
-  "review_outcome": "LIMITED_STATIC_CODE_CLEAR;ROOT_REPORTED_CONTRACTS_COVERAGE_FAILED;NO_MERGE;LOC_FAILED",
+  "review_outcome": "BLOCKED_P2_OUTPUT_EXCLUSIVE_01;NO_MATRIX_OR_PERFORMANCE_PASS",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+  "review_target_sha": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
   "review_targets": [
     {
       "pr": 14,
@@ -1564,7 +1564,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "PR44 5cc限定源码审核与COMMENT完整GET封存；CI失败/不得合并",
+  "stage": "D008 exactC代码有限审：未见新阻断，CI/Docker原件未审，非整体放行",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -2258,5 +2258,62 @@
     "merge_admitted": false,
     "report_evidence_commit": "1bdbaf427c0f66d99dc98e1f46e807cc62007183",
     "role_release": "complete bounded source/evidence review; backend CI diagnosis and DB review are separate future dispatches"
-  }
+  },
+  "database_public_C_review": {
+    "target": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+    "tool_commit": "d75866f0d4077dd0399672f6dc914a82de6b9399",
+    "tool_sha256": "ac30e655d584caeb6f34251e736025577506fc3026ff0b979edbe3abdbbfbaa3",
+    "prompt_ref": "ROLE-reviewer-DATABASE-PUBLIC-C-v1",
+    "scope_commit": "970608e",
+    "report": "reports/reviews/database-public-c-c4e8c696411975ee6964ef3b2254c8f3937ecb32.md",
+    "audit": "agents/reviewer/evidence/database-public-c/static-evidence-audit.json",
+    "finding": "P2 OUTPUT-EXCLUSIVE-01",
+    "finding_lines": [
+      263,
+      264,
+      293,
+      294
+    ],
+    "confirmed_existing_result_overwrite": true,
+    "probe_method": "actual main with recipes only replaced by zero-DB function creating output in precheck/write gap",
+    "own_matrix_SQL_HTTP_services_load_CI": 0,
+    "own_inline_output_probe": 1,
+    "new_test_python_file": false,
+    "837_used": false,
+    "manifest_hash_files": 13,
+    "fixed_C_source_hash_files": 13,
+    "owner_recipe_count": 19,
+    "owner_Rows_calls": 71,
+    "owner_SELECT_UPDATE": [
+      69,
+      2
+    ],
+    "integration_admitted": false,
+    "private_independent_read_or_contact": false,
+    "backend_5cc_clear_applied": false,
+    "next": "DB owner design/narrow fd output fix then exact-SHA semantic micro-regression; original 19/71 evidence remains",
+    "github": {
+      "comment_id": 6383572331,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383572331",
+      "exact_target_SHA_in_body": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+      "body_exact_match": true,
+      "issue4_verified": true,
+      "full_specific_REST_GET": true,
+      "body_sha256": "acbcbaa55a5c2162703c700d79bf59f93575f647972ecefd7c73d5b0f7dcfd8a",
+      "readback_sha256": "8e0ed03535be1ad12b1449a57ed96ebef286f351062e9e6e0d0bf86d07ef3097",
+      "verified_utc": "2026-10-24T11:19:50.208180+00:00",
+      "outcome": "P2_OUTPUT_EXCLUSIVE_01_BLOCKS_TOOL_INTEGRATION",
+      "no_APPPROVE_global_gate_or_performance_claim": true
+    },
+    "evidence_commit": "591b1ec53c2d71fa4a9516a27aa4a501f03a8edf",
+    "role_release": "original c4e8 blocked sealed; owner fix/BE ead are separate future scopes"
+  },
+  "integration_merge_stage_history": [
+    {
+      "root_stage": "PR44 5cc限定源码审核与COMMENT完整GET封存；CI失败/不得合并",
+      "incoming_stage": "D008 exactC代码有限审：未见新阻断，CI/Docker原件未审，非整体放行",
+      "incoming_sha": "8a767b63b08975cef5a3d7d837c904abdce120f6",
+      "stage_specific_evidence_preserved": true
+    }
+  ]
 }
