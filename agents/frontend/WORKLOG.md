@@ -228,3 +228,10 @@
 - 原脱敏method/path/status/requestid摘要及console/results保存native-user-preview-first，原log先gzip再规范可读尾空白。source/907/861SHA、精准范围与非独立界限见native-user-preview-validation.json；完成本岗密钥精确扫描、Issue2实评GET后交根。全部AI入口验证，不计学生人工修改。
 
 - 9902a29证据阶段本岗commit/push；Issue2实际评论6377347811经精确ID GET读回正文完全同，回执native-user-preview-github-verification.json。没有APPROVE/独立通过/新业务PR，浏览器关闭，服务不改，交root最终汇总。
+
+
+## 2026-10-24T03:44:52.474284+00:00｜ROLE-frontend-CONTRACT-V12-DRAFT-v1
+- 从root 398c3d3621843aa536755ae106c78a0fd1c60aff独立worktree/codex/frontend-contract-v12-draft；读AGENTS与D008/RFC R2限定设计。只更新frontend README规格兼容草稿，不改Vue/TS/fixture/冻结或演示。
+- 静态contract.ts权威import、981 info.version、982 Meta.const动态对照；22个TS/Vue来源未见1.1.0硬编码，两发布码无专用映射；api非成功payload与表单409原保留/刷新路径仍在。31paths/38ops/130schemas、inner1.0实际JSON读取，准确文件SHA见contract-v12-draft-static-receipt.json。
+- 新成功outerMeta1.2待新freeze与实施，错误无outerMeta；先更新基线再原独立审核/经理发布，防自审不取消。原1.1/旧测试/演示历史保留，不伪装1.2运行或新验收。
+- 首次只读sed误写contracts.ts exit2，实际文件contract.ts后正确读，无写或HTTP副作用；未运行应用导入/测试/浏览器/typecheck/build/服务/HTTP/CI；private/cases/raw/858/857/860未读，未联系tester。Issue2实际协商/全文GET及push随后封档。

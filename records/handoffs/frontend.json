@@ -577,9 +577,10 @@
     },
     "records/prompts/ROLE-frontend-PLAN-REASON-v1.md",
     "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md",
-    "records/prompts/ROLE-frontend-NATIVE-USER-PREVIEW-v1.md"
+    "records/prompts/ROLE-frontend-NATIVE-USER-PREVIEW-v1.md",
+    "records/prompts/ROLE-frontend-CONTRACT-V12-DRAFT-v1.md"
   ],
-  "updated_at": "2026-10-24T00:12:29.011098+00:00",
+  "updated_at": "2026-10-24T03:44:52.474284+00:00",
   "delivery": {
     "branch": "codex/frontend-native-preview",
     "pull_request": null,
@@ -834,5 +835,15 @@
     "attempts": 1,
     "protected_listeners_equal": true,
     "independent_acceptance_claimed": false
+  },
+  "contract_v12_draft": {
+    "base_commit": "398c3d3621843aa536755ae106c78a0fd1c60aff",
+    "branch": "codex/frontend-contract-v12-draft",
+    "status": "Static documentation compatibility only; new freeze and implementation pending",
+    "static_receipt": "agents/frontend/contract-v12-draft-static-receipt.json",
+    "production_test_frozen_changed": false,
+    "hardcoded_1_1_0_found": false,
+    "tests_http_services_ci_run": false,
+    "separate_review_constraints_preserved": true
   }
 }
