@@ -736,6 +736,11 @@
       "id": "ROLE-deployment-ALIYUN-DRAFT-RECORD-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-ALIYUN-DRAFT-RECORD-v1.md",
       "reason": "仅记录root观察的购买草稿与已核官方网络来源，不冒充实际购买/部署或学生亲改"
+    },
+    {
+      "id": "ROLE-deployment-ALIYUN-ELIGIBILITY-BLOCK-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-ALIYUN-ELIGIBILITY-BLOCK-v1.md",
+      "reason": "真实追加两次UI门槛失败与20元预算/100元准入区别，保留历史不冒充购买部署"
     }
   ],
   "questions": [
@@ -877,7 +882,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "aliyun-purchase-draft-documentation-only",
+  "stage": "aliyun-purchase-blocked-by-ui-eligibility",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -885,7 +890,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T05:44:51.825646+00:00",
+  "updated_at": "2026-10-24T05:58:54.222410+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1068,5 +1073,27 @@
       "https://help.aliyun.com/zh/vpc/frequently-asked-questions",
       "https://help.aliyun.com/zh/ecs/user-guide/internal-network"
     ]
+  },
+  "prior_stage_before_aliyun_eligibility_block": "aliyun-purchase-draft-documentation-only",
+  "aliyun_eligibility_block": {
+    "prompt_ref": "ROLE-deployment-ALIYUN-ELIGIBILITY-BLOCK-v1",
+    "recorded_at_utc": "2026-10-24T05:58:54.222410+00:00",
+    "source": "root actual UI observations relayed;deployment did not independently inspect UI or account",
+    "user_authorized_three_agreements_and_two_order_submissions": true,
+    "total_budget_cny": "20",
+    "application_confirm_order_clicks": 2,
+    "each_application_attempt_result": "UI requires available credit not less than100 CNY",
+    "continue_purchase_button_result": "closed dialog only",
+    "order_or_instance_success_receipt_seen": false,
+    "load_order_submitted": false,
+    "minimum_available_credit_ui_cny": "100",
+    "prior_ai_20_cny_recharge_suggestion_missed_eligibility": true,
+    "eligibility_is_actual_spend_or_budget_increase": false,
+    "recharge_entry_opened_by_root": true,
+    "recharge_amount_or_payment_entered_by_root": false,
+    "deployment_cloud_account_service_ci_or_test_actions": false,
+    "report": "agents/deployment/aliyun-purchase-draft-record.md",
+    "private_account_or_order_details_recorded": false,
+    "extra_github_comment": false
   }
 }
