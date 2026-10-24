@@ -442,3 +442,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 仅859新案+原986相邻依赖案，2passed/0failure/error/skip，已有TestClient弃用warning保留；targeted-command/log/xml含执行源536设计+当时未提交test SHA。Ruff check初过；format初一处comprehension换行exit1原件保留，formatter仅换行、AST不含位置属性全同，最终Ruff/format0。未为格式重跑2绿；最终排版字节与执行字节区别明确留痕。
 - 应用/原用例/锁/配置/规范保持根和C字节；本轮无MySQL/外部HTTP/服务/负载/CI或新cloc。原正式FAIL、规模6307/超1207保持，2项不与旧C510叠加或冒全覆盖/独立验收。初搜索误猜986_api.py exit2后rg --files确定986_http.py，记录工具读路径错误非应用失败。
 - Issue3 6379240354已body-file发表/精确全文GET逐字相同，summary/report/prompt与回读在agents/backend/dependency-delivered-regression。本轮作者/执行者后端AI，不记学生手改；skip-ci提交push只交质量增量，完成释放。
+
+## D008：发布双失效错误顺序，设计阶段
+
+- 用户U021真实选择由根D008记载；从最新根14b57c6新分支codex/backend-release-error-priority-rfc，不混859。先读AGENTS/D008/U021/v1.1freeze及Workflow/domain/Runtime/contract真实源。纯RFC specs/changes/release-error-priority-rfc.md列具体I/O/原guard顺序与结果矩阵，应用/测试/14冻结不改，静态14hash一致；不运行suite/SUT/CI/服务/负载。
+- 推荐最小仅改原批准引用失败槽的错误选择：先看delivery/schedule是否失效，双失效BASELINE，基线有效APPROVAL；引用匹配保留原domain次序。真实state/经理角色/代码评审在adapter引用失败后，未伪称全部前置；同这些晚期错误组合的全局总序列为范围待限定审核，不借D008搬其它guard。请求assessment_version/taskexpected/资源归属/身份及missing/跨任务/其它action原路径保持。
+- 技术版本建议1.2.0，info/外层Meta和两OpenAPI一致，候选schema内层1.0.0保持。列出需规/业务/AGENTS/README/design/前端说明及新父链范围，DDL/ID/锁/事务无变化；旧v1.1及F08原FAIL/未执行尾部/WordZIP不回写。新回归只计划，未实施；859不重复。作者设计后端AI，业务决定用户，不记用户改码。11/28与费用先报价边界仅记录，不产生费用。
+
+- D008纯RFC Issue3 6379327041已body-file发表/全文GET逐字核；仅静态源码/JSON文本与hash核对，不冒称测试。阶段提交后等待限定设计审查与root新freeze。

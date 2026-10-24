@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits",
+  "stage": "D008 release error priority design only; review and new freeze required",
   "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
   "artifacts": [
     {
@@ -1728,5 +1728,24 @@
     "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379240354",
     "full_GET_exact_match": true,
     "next": "release;no automatic performance/load/refactor;human architecture/scope decisions remain with root/user"
-  }
+  },
+  "release_error_priority_rfc": {
+    "base": "14b57c66d69bf80759417e42af04432cea1ca795",
+    "branch": "codex/backend-release-error-priority-rfc",
+    "RFC": "specs/changes/release-error-priority-rfc.md",
+    "prompt": "agents/backend/release-error-priority/actual-prompt.md",
+    "decision": "records/decisions/D008-release-error-priority-adopted.md",
+    "human_input": "records/prompts/U021-original.md",
+    "recommendation": "only failed approval-reference slot selects stale baseline first; preserve matched-reference domain order",
+    "version_proposed": "1.2.0 info+Meta,innercandidate1.0.0 unchanged",
+    "scope_open": "late domain state/role/code-review and dualfailure combination totalorder not newlydecided; limitedreview/root confirm no expansion",
+    "14freeze_unchanged": true,
+    "application_tests_DDL_changed": false,
+    "suite_SUT_CI_load_executed": false,
+    "F08_history": "originalfail/unexecutedtail unchanged; no independent artifacts read",
+    "next": "root limiteddesign review then new freeze, then separate implementation dispatch",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379327041",
+    "full_GET_exact_match": true
+  },
+  "prior_stage_before_D008": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits"
 }

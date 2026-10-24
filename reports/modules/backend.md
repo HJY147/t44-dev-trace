@@ -276,3 +276,7 @@ JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300c
 从根f986、应用字节同C=b66fa36；设计536162c先于测试，原应用/规范/旧用例不变。root分配tmp/backend/contracts/859_dependency_delivered.py，真实SQLite/TestClient/RowsGateway走两前驱完整评审发布；0/2及1/2拒绝且下游快照不变，2/2才允许开发开工/version+1并保留边。新案+原986相邻拒绝案仅2pass，非bug红绿/实库/全套覆盖/独立验收。
 
 原format一处换行失败保留，AST相同的格式修正后静态通过，未重复pytest；执行时/最终test SHA均留。无本机MySQL/外部HTTP/服务/负载/CI/新cloc，正式FAIL与6307超1207保持。性能中文摘要分已知线索/未知瓶颈/人需决定的大范围选择，已先交root。报告agents/backend/dependency-delivered-regression/report.md，性能performance-summary.md，Issue3 6379240354全文GET。本阶段后端AI完成，释放槽位。
+
+## D008设计候选（尚无实现）
+
+RFC specs/changes/release-error-priority-rfc.md基root14b57c6，明确双失效先BASELINE再新评估/批准，保留原批准引用匹配后的domain顺序及鉴权/资源/请求版本前置。仅原失败槽错误选择为建议，不改全状态机；晚期state/经理角色/代码评审与双失效组合范围交限定审核，不自创全局总序。建议1.2.0外层元数据/两OpenAPI一致，内层candidate schema1.0不改，旧v1.1/F08历史保留。列准确同步文件及新回归计划；纯设计，14hash保持，无应用/测试/DDL/suite/SUT/CI动作。作者AI，用户真实业务选择非改码证据。
