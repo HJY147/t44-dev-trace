@@ -1,7 +1,7 @@
 {
   "schema": "t44-cloud-host-preparation-v1",
   "operator": "root AI via authorized Alibaba Cloud Assistant UI",
-  "observed_at_beijing": "2026-10-24T17:33:00+08:00",
+  "observed_at_beijing": "2026-10-24T17:48:58+08:00",
   "product_source_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
   "private_evidence": "Ignored local runtime directory; resource identifiers, endpoints, full cloud receipts, screenshots and configuration are not published.",
   "budget": {
@@ -342,6 +342,19 @@
       "completed_beijing": "2026-10-24T17:30:29+08:00",
       "exit_code": null,
       "observed": "Tester authenticated original full evidence:1 real strict-HTTPS login200,0 worker/warmup/steady. Frozen oracle required header/body Request-ID equality, but the4 authorized sources lack an explicit equality clause. This is unsupported test invariant, not proven product nonconformance or measured performance failure. Original freeze/failure retained. Root assigned a fresh fork-none instance to independently trace every reused oracle to original authority without development source/history; no automatic assertion weakening or expected-pass instruction."
+    },
+    {
+      "name": "developer-readonly-raw-correlation-headers",
+      "completed_beijing": "2026-10-24T17:36:48+08:00",
+      "exit_code": 0,
+      "observed": "Developer-side strict-CA/IP HTTPS GET /api/v1/projects without credentials returned401 and two raw X-Request-ID header lines (UUID and32hex). This is1 additional developer observation, excluded from independent case/HTTP/performance counts. Does not retrospectively prove original login raw header count or all requests. Probe projection body.meta.request_id=null is expected for a different error envelope shape and is not a failure assertion. Backend static source shows errors use top-level request_id; no second request made to chase that projection. Product source and cloud deployment remain unchanged."
+    },
+    {
+      "name": "round841-independently-refrozen-flow-start",
+      "completed_beijing": null,
+      "observed_running_beijing": "2026-10-24T17:48:58+08:00",
+      "exit_code": null,
+      "observed": "Fresh fork-none test instance independently audited original authorities and reused immutable independent artifacts. Original21 artifacts and852 failure retained. New round retains1396 planned families/quantitative method,75 offline checks; unsupported cross-field relation diagnostic and concurrent snapshot differences not automatically attributed to a read-only operation. Root blind-relayed23344B exact opaque package, public entry and separate true900s admission. Both part hashes and full package hash verified; console entry RUNNING. No claim yet for workers/warmup/steady/completion or acceptance. Hardstop remains18:10; release extension pending user SMS and not yet successful."
     }
   ],
   "application_build_success": true,
@@ -350,7 +363,7 @@
   "application_started": true,
   "two_host_private_connectivity_verified": true,
   "independent_application_acceptance": "NOT_PROVEN; ONE_REAL_HTTPS_LOGIN200_ORACLE_ASSUMPTION_UNSUPPORTED",
-  "formal_performance": "NOT_RUN; 0_OF_3_VALID_COHORTS",
+  "formal_performance": "ROUND841_FLOW_ENTRY_RUNNING; NO_COMPLETED_COHORT_YET",
   "human_authorship_claimed_for_ai_work": false,
   "independent_offline_preparation": "72_PASS_ON_ACTUAL_LOAD_HOST; SUT_NOT_RUN",
   "delivery_images": {
