@@ -420,3 +420,15 @@
 - 与root/审核核官方formatter：EXACT返回selector本身，updates被丢弃→mutatedfalse→DENY。初版只做规则结构和输出guard，漏核实际Format分支；本次补7项官方源branch guard、三来源旧拒绝/新转换trace及未知/变摘要拒绝。下载官方v0.26.1 formatter/mutate/engine/wildcard只作内存数据，记录URL/SHA/bytes，不执行Go或云；本机无go，未安装。Buildx0.30.1 go.mod依赖0.26.1，v0.25.1同分支；云daemon内嵌BuildKit精确版本未采，不猜。
 - 保留v1/helper/policy原字节，新增ecr-build-policy-v2.py，仅CONVERT match_type EXACT→WILDCARD，3个完整identifier不加*，末DENY/所有tag和摘要不变。源码证明QuoteMeta+^/$使无*字面量不扩大匹配，wildcard Format才返回ECR更新目标。新runtime名source-policy-C-v2.json，O_EXCL不覆盖旧云文件。
 - v2 helper46758e3dbbcfca98994896135dfbcd4f9dcaa307210c7fac4cf8523cae046417、policyf9101355c4bf7b9d51e9feda2d8e48361e0d3a9ff81cb5f71ccd49bbb775e1f8已交root；CI配置Ruff绿、diff-check，官方路径guard原件在ecr-policy-validation。没有实际Goengine/Docker/云/build-v2运行，实际结果仍null，产品C/原bootstrap/Dockerfiles/compose/.env/daemon/DNS不改，20元/17:00保持。
+
+## TLS-DELIVERY-v1
+
+- 2026-10-24T07:20:01.245416+00:00从本岗a0b4f805ee782ef654198e2934b7bbb7bdb87fa7建独立codex/deployment-tls-delivery/worktree，按root先准入最小设计实现单stdlib CLI（prepare helper+单阶段wrapper），没有云/CI/账号/服务动作或读取独立资料。原C0dfb55c2191200d947c5423fd9ee74bb0812cc5a及原compose/env/Dockerfiles/daemon/DNS不改。
+- 私有0700 runtime/0600中性IP配置，DB/MQ同digest ECR；额外nginx同digest gateway仅RFC1918:8443/edge，根CA key不挂、叶key0600 UID10001 RO、IP SAN/签名/余期/keypair校验、TLS1.2/1.3；gateway无access/query/body日志。C web继续loopback，不改原413契约。额外TLS开销和六服务sampler排除边界明确。
+- 同一overlay显式双-f，C HEAD/clean/root-owned0600.env/allowlist manifest/hash/本地unixcontext核验；prepare/config/pull/infra/migrate plan或execute/seed/token/start(no-build/pullnever)/status一次一阶段，绝对北京17:00减120秒及整阶段cap，失败raw私有0600留存，非零不冒清理。token仅初次发行，scheduler运行中拒绝，不包账号/fixture口令/自动轮换。
+- 19项必要本地guard通过，实际本地证书签名/到期/keypair生成核验，初次LibreSSL3.3.6不支持目标-checkip失败保留，后续测试仅该项用stdlib解析真实SAN代替、chown mock；不据此冒称Ubuntu握手。初始import lint红保留为回执，最终真实CI配置Ruff0/compile0/diff-check0。源hash及原件tls-delivery-validation；未装工具、未Docker/HTTP/SQL/云或测试岗资料。
+- root转述v2 FROM-only成功；完整build15:13:15/601s/exit124，仅web已export、api依赖下载未完；完整build不成功，保留原Hub/v1/v2失败，不盲重试。部署/migrate/seed/token/TLS私网/正式性能均无真实成功；20元/17:00固定。先交核心供审核，不等待build完成。
+
+- 2026-10-24T07:23:13.574621+00:00审核P2：原x509 -checkip在错SAN也可能0，本岗初19guard的SAN替代漏覆盖此真实退出语义，原checkpoint/Issue记录保持。窄修为verify -CAfile -verify_ip -purpose sslserver，删除单独checkip，expiry/keypair/manifest不变；新增4项命令/失败传播/key mismatch/expiry合成guard绿。真实本机正/错SAN均因LibreSSL不支持-verify_ip退出1，语义null，Ubuntu实际边界尚未跑，不冒通过；旧helper没有云执行，无回滚。新hashcc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9，原失败和19guard字节不改。
+
+- 2026-10-24T07:25:41.365270+00:00修复实现6af63a94889692f38f1ad27e240b692328f461fe已push；初交接Issue7/6381390079与P2补正6381416710均通过GitHub插件实际发布并逐条完整GET，正文与本岗保存body逐字一致，原JSON/源码hash封档final-seal.json。第一次staged diffcheck发现comment本地副本多一EOF空行，修成与实际posted body一致单LF后diffcheck0，原exit2回执保留。没有重复旧19suite或发新CI/云动作；真实Ubuntu正错SAN与完整C build仍未通过，不再扩展实现。

@@ -771,6 +771,11 @@
       "id": "ROLE-deployment-ECR-POLICY-FORMAT-FIX-v2",
       "archive": "agents/deployment/prompts/ROLE-deployment-ECR-POLICY-FORMAT-FIX-v2.md",
       "reason": "真实v1失败后只修官方Format语义，保留DENY与摘要，用新文件和新hash，不假称云成功"
+    },
+    {
+      "id": "ROLE-deployment-TLS-DELIVERY-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-TLS-DELIVERY-v1.md",
+      "reason": "精确C不改的同摘要私网TLS交付/单阶段wrapper，失败保留，不冒云执行或性能通过"
     }
   ],
   "questions": [
@@ -912,7 +917,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "ECR-policy-v1-failed-v2-minimal-fix-reviewable",
+  "stage": "exact-C-private-TLS-delivery-reviewable-not-cloud-executed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -920,7 +925,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T07:01:38.377716+00:00",
+  "updated_at": "2026-10-24T07:25:41.365270+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1266,5 +1271,43 @@
     "actual_go_engine_or_cloud_execution_by_deployment": false,
     "v2_actual_build_result": null,
     "overlay_TLS_coding_paused": true
+  },
+  "prior_stage_before_tls_delivery": "ECR-policy-v1-failed-v2-minimal-fix-reviewable",
+  "tls_delivery": {
+    "prompt_ref": "ROLE-deployment-TLS-DELIVERY-v1",
+    "base_sha": "a0b4f805ee782ef654198e2934b7bbb7bdb87fa7",
+    "branch": "codex/deployment-tls-delivery",
+    "helper_wrapper": "deployment/tls-delivery.py",
+    "steps": "deployment/tls-delivery.md",
+    "product_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "private_overlay": "same-digest ECR DB/MQ plus private8443 edge-only same-nginx TLS gateway",
+    "C_source_env_compose_daemon_DNS_unchanged": true,
+    "CA_private_key_mounted": false,
+    "leaf_key_mode": "0600 UID10001 read-only",
+    "local_guards": 19,
+    "scope": "synthetic + local cert signature/expiry/keypair; SAN predicate local LibreSSL substitution only in guard; chown mocked",
+    "actual_Docker_cloud_CI": false,
+    "runtime_TLShandshake_migrate_seed_start_performance_success": null,
+    "root_relay_full_v2_build": {
+      "beijing": "2026-10-24T15:13:15+08:00",
+      "duration_seconds": 601,
+      "exit_code": 124,
+      "web_exported": true,
+      "api_complete": false
+    },
+    "absolute_release_beijing": "2026-10-24T17:00:00+08:00",
+    "budget_cny": "20",
+    "evidence": "agents/deployment/tls-delivery-validation",
+    "old_checkpoint": "3ccaa5da198e63e4f7161e131a131e246e8fa61a",
+    "helper_sha256": "cc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9",
+    "P2_IP_verification": "verify -verify_ip -purpose sslserver; x509 checkip removed",
+    "local_guards_scope_after_P2": "old19 retained;new4 targeted synthetic;real Ubuntu positive/negative IP SAN not executed;local LibreSSL unsupported",
+    "implementation_sha": "6af63a94889692f38f1ad27e240b692328f461fe",
+    "issue_initial": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6381390079",
+    "issue_P2_correction": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6381416710",
+    "both_issue_full_GET_bodies_identical": true,
+    "final_seal": "agents/deployment/tls-delivery-validation/final-seal.json",
+    "current_real_Ubuntu_positive_negative_SAN": null,
+    "status": "reviewable helper sealed;P2 fixed;cloud execution and true SAN boundaries not run"
   }
 }

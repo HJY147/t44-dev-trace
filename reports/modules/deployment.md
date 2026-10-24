@@ -325,3 +325,13 @@
 - v1实云policy生成成功，build却14:52:56/1秒/exit1在网络前被DENY拒绝，完整原失败保持。官方EXACT formatter返回原selector导致CONVERT无效，初版结构guard未覆盖；已补官方实际Format/Mutate/Evaluate路径核验。
 - 新v2只改三CONVERT match_type为WILDCARD，无*的完整字面量和末DENY/摘要全部保持；新helper46758e…6417、policyf91013…e1f8，runtime新v2文件拒绝覆盖旧件。7官方源码branch guard/三来源反例及CI Ruff绿，非实际Go/云/BuildKit执行。
 - root审查后才另跑600s构建，云结果未知；overlay/TLS编码暂停，C/daemon/DNS不改，20元/17:00保持。
+
+### TLS-DELIVERY-v1（工具，不是云运行结论）
+
+- deployment/tls-delivery.py + .md：单工具生成私有overlay/CA/SAN叶证并白名单单阶段运维，准确C不改；DB/MQ ECR同digest、额外同nginx digest gateway仅私网8443/edge，根CA key不挂、叶key0600 RO；原C web仅loopback。额外TLS拓扑开销须计，原六服务资源sampler不含gateway。
+- C/clean/0600.env/hash/私有权限与本地unixcontext检查、显式双-f；独立prepare/pull/config/infra/migrate plan或execute/seed/token/start --no-build/status，绝对17:00减120秒/单阶段预算，无自动串联/回滚/删卷/账号口令/续期。token初次专用，失败raw仅私有0600。
+- 本地19边界guard/证书签名keypair及CI Ruff/compile/diff-check通过；本机LibreSSL无-checkip，原失败保留，guard只此项解析真实SAN替代且chown mock；不是Docker/Ubuntu握手。root转述完整v2 build15:13:15/601s/exit124，web已build但api未完，后续云运行/TLS私网/正式性能均未通过。源码hash与检查tls-delivery-validation。
+
+- P2补正：旧3ccaa5d的x509 -checkip退出语义不足；改openssl verify -verify_ip -purpose sslserver，keypair/expiry/manifest不变。4项针对性合成guard绿，真实Ubuntu正/错SAN待核；本机LibreSSL不支持该选项，实际两次exit1只算工具缺项。新helper SHA cc6594d0ed18870245df82099f9790e1a425ea8e275e22b9a3b597cef6fd1cd9；旧checkpoint/原检查/Issue保留，不宣称SAN真实边界通过。
+
+- 最终实现6af63a94889692f38f1ad27e240b692328f461fe已push；Issue7初交接6381390079/P2补正6381416710全文GET均一致，seal含精确文件hash。只交工具能力，目标Ubuntu真实正/错SAN与云运行待核，原19历史不倒填新通过。
