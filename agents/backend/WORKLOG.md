@@ -487,3 +487,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 
 - root另准新增deployment/fixture-launcher-cloud.py；91d2bfb设计先提交，固定/opt C、原cc659 TLS helper/runtime/private-network env、三公件RO单文件挂载和UID10001/0700输出。只原admin profile run --rm -T --pull never --no-deps --entrypoint python，继承原UID/capdrop/RO，不改worker/C/既有部署。原ops.load_env只内存，T44_DATABASE由原C compose的MYSQL_DATABASE=t44继承，worker再核URL/显式库。
 - 只扩既有850四个参数/环境/回执静态目标，4pass/20deselected，Ruff通过；无launcher.main/TLS/OpenSSL/Docker/云/CLI/SQL/服务执行。root outer240/进程树，内层220且原deadline减120，超时不声称container已停，raw0600保留，非0不重试不seed。初把cc659当Git缩写exit128已核实为文件SHA，非应用错误。报告launcher-report.md/原prompt/四目标日志同目录。
+
+- launcher核心e3fd10b已push先交root准备用；Issue3 6381760636 body-file发表/精确全文GET逐字核。后续seal纯公件回读，不变launcher/worker/C，不再运行目标；实际执行仍归root。
