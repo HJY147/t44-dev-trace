@@ -509,3 +509,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - root再派后建codex/backend-source-budget-current-C，ba70be2先提交scope/实际prompt；仅读准确C原cloc JSON+原classify，校验66文件集合、应用根Git字节和counter与C全同。5211+1099=6310/超1210/within_range=false真实确认，不重跑cloc/870/suite/HTTP/SQL/服务/云，不排除新增物流文件来制造新口径（部署从既有定义本就另列）。static-receipt逐文件Git blob及原计量留齐。
 - 直接引用旧profile/validator未应用55→45，before源码hash仍同但旧19样本属旧Spec，不移植为C1.2HTTP/线程证明，实际节省0。已拒AST/scan-dedup不复活。将旧“通知分页重叠”具体化为common.page受信order_by keyword+原NotificationFacade保持3COUNT/本人scope/S锁/顺序/serializers/事务，逐参数排版预估仅-3、不冒cloc，不减少SQL或P95；跨消息owner候选未准入/未实施。
 - report agents/backend/source-budget-current-C/design.md明确没有1210可信删除方案。原云C/新oracle/RequestID候选/应用/测试/配置/统计脚本全未改，作者与静态操作者AI，不记人改码，先交核心事实不等报告；GitHub正文另回读留痕。
+
+- 只读设计fe32896e5a370e89c87ff16f52f52ec07e49f873已push；Issue3 6382927110已body-file发表并对精确comments/:id GET全文逐字核对，正文/回执同目录。后续仅公件seal，不改变应用C或运行任何验证，结束释放。

@@ -311,3 +311,5 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ## C源码预算恢复核实（只读）
 
 准确C原cloc5211后端+1099前端=6310/66文件/超1210，原classify集合、应用根/counter字节与C全同，static-receipt真实记录；没有新cloc或改变口径。引用既有C-validator未应用-10及旧19有限样本边界，不复活拒绝的AST/scan-dedup；通知分页的受信page order_by复用给出具体I/O/3COUNT/顺序/锁/本人项目范围与约-3未验证预估，未实施、不宣称性能收益或达标。设计agents/backend/source-budget-current-C/design.md；当前真实节省0，没有1210可信去除计划，云C/测试oracle/应用/配置保持，未跑套件/负载或读独立私密。
+
+当前C预算交接补充：设计fe32896e5a370e89c87ff16f52f52ec07e49f873；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6382927110 已精确全文GET核对。6310/超1210仍未达，已实现节省0；本轮只有静态原件/文件集/字节核实与未准入设计，不是新cloc、正确性或性能运行。
