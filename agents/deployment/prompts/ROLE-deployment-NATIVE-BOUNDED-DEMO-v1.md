@@ -37,3 +37,9 @@
 ## 根对验证脚本归档目录的实际纠正
 
 已读101公共capability，run2实际通过/原失败保留准确。发现新3份可执行复验driver副本在agents/.../*.py；用户明确test文件放tmp并递减编号，这些含验证逻辑的复验脚本应按约定归tmp。请先勿FINAL：root将预留864/863/862分别给当前serve-retest-operational-driver.py、serve-retest-post-attempt1.py、serve-retest-post.py，保持字节不变git mv到tmp/deployment/864_native_serve_driver.py、863_native_serve_post_attempt1.py、862_native_serve_post.py；更新公共副本引用/补迁移说明，但所有原实际私密执行路径/command/原始hash/失败日志不得倒改，可记录当时路径与现归档路径mapping。原运行不重跑，无新HTTP/SQL/服务。仅目录命名整理后Issue/PR再精确readback seal。root账本马上提交，当前next864只有你此3项可用。
+
+## 根新准入一次14400秒后台完整用户演示原文
+
+新360事实10182+13cd+4cee已root合入f1e530e9b4e06a4060f9422221724c3ad2119fc3，usage merge冲突只3文档保持两边完整append/namedJSON，工具084618/runtimea251未变。基于准确62ac专项a7bad有限无另确认P1/P2 +新360 exit0/cycle/cleanuptrue/9端口三点一致，现在授权【一次14400秒有界完整本机用户演示】准确应用bc5，fresh新manifest/run/cookie/vhost，端口仍5178/18088/自有MQ扫描，与5173APIWeb并存，不碰独立/旧数据。不要更改已审代码/规则/应用/凭据TTL，原2个合成项目scope+TTL300持续轮换/自动到时清理。外部operational driver保留9端口beforeprepare/beforserve/ready身份，最终wait+cleanup+后置也由该detached driver真实记录；最后未结束前不能称cleanup通过。启动后先实际ready/两60秒ticks/首次rotation/4workers/consumer/UI单次启动/源92checks，明确UTC/北京时间deadline/status/privatepaths；有错误先真实保留并只读定位，不盲重启。仅服务后台detach（Popen start_new_session或适当nohup），私密0600输出，不让你的agent turn同步等4h；ready并完成必要证据后封档公开白名单+Issue7真实readback+WORKLOG/module/handoff和私密 .submission-private/完整演示登录说明.md（入口、准确版本、有效截止、2合成项目范围、普通合成账号、提前stop命令/状态位置；不要public密码），然后FINAL释放槽位，root监测后台状态。长演示4h是进行中不叫4h实测全过/云常驻/独立验收。避免把新验证/driver .py放agents，若必须新增可执行验证脚本先用next861向root预留；可复用已编号864操作driver但不要覆盖原原件，实际新operational .runtime脚本只后台编排非新案例应明列用途。当前本机无负载比较，可立即独占启动，hosted测试将来另环境，不影响你本机角色。
+
+执行用途：只在新ignored user-demo-20261023私密目录复制864编排并参数化duration14400/外部wait15000，加入ready九端口身份快照、最终wait后调用既有862只读提取；不新增案例或公共.py、不改864/862原件/已审controller/runtime。Popen start_new_session后台detach，当前agent只等初始必要证据及首次hold额外轮换，私密说明含普通合成账户/提前stop，公开仅白名单。运行进行中/最终cleanup未知与原360已成功分别写，root监测。

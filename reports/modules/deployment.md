@@ -239,3 +239,11 @@
 - 三份公共验证脚本依root预留号移至tmp/deployment/864、863、862，字节/SHA不变，路径mapping说明只归档目录变化，原私密执行/失败/扫描原件保持，无重跑。
 
 - 新360证据10182/目录迁移13cd均push；PR37正文/head13cd/drafttrue、Issue7新结果6376963887及迁移6376983708、PR37对应两评论共4条均GET逐字一致。最终仅文档回执封档，工具62ac/084618未变，当前全停；4h另待根准入。
+
+### NATIVE-BOUNDED-DEMO-v1 14400秒后台用户演示进行中
+
+- 根另准入一次14400秒，工具62ac/084618/runtimea251及目标bc5/92源不改；fresh app_20261023_234943_3f9bad后台driverPID43819，UTC23:49:43.904838→次日03:49:43.904838/北京时间11:49:43.904838到期开始清理。
+- 已ready/首两扫描60.319299s/首次hold额外TTL300轮换新tick锁；API/consumer/UI各1/scanner3代/4worker，九端口prepare前/serve前/ready身份全等。旧16/26仅复核，不称新publish；最终exit/cleanup未知，4h未完成。
+- 私密登录说明0600已写，入口5178/API18088/双合成项目/普通账号/提前stop和状态齐全；公开仅白名单与私密运维脚本用途/hash，无新公共可执行脚本，不覆盖864/862。交接root监测，agent不等4h，futurewait/post由detached driver届时如实记录。
+
+- 初始运行中证据dcad31d已push；Issue7#6377155221/已mergePR37#6377155474新评论均GET逐字一致，PR37历史正文/head4cee保持；仅评论说明后续14400新准入，非旧PRhead改写。末尾文档回执封档后root监测后台，4h最终结果仍未知。
