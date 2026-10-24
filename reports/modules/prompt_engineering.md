@@ -93,3 +93,12 @@
 - usage15合成/root静态非actualstats/RSS/峰值/物理同机；v4仅公开H/M元数据且SUT未发，未开H树/私密引用。
 - M7早期native应用run1误绑0a6在M8追加勘误为427b097，旧历史不覆盖。人工12/5/3及最终学生研究正文未证，U001/U002仍首选原创亮点。
 - 仅本岗文档/Issue11评论GET/commit push；无产品、CI触发、服务、测试、Word或私密材料读取。
+
+## M11 最后有限增补
+
+- 固定c057、独立codex/prompt-m11-checkpoint；先actualprompt/设计commit7cbf6f6再取证。主入口docs/prompting/M11-quality-and-test-limits.md及24公开源index。
+- 明确无开发上下文tester仍有oracle/发压/聚合局限，H2原FAIL/INCOMPLETE保留，产品性能INCONCLUSIVE/不排名；600调度非有效400、TIME_RANGE不当产品错、ACK未知、两866目标0/P95未测。
+- 校准仅根authorization，未读860或等待执行；局部绿后全static2style原红→部署先设计等价窄修/原前像保持；未执行driver。
+- DB只读EXPLAIN与BE静态不是性能根因；b66等价一行/18旧绿18新绿非bug红绿；预先集成门槛/准确源最终E未公开不预填。
+- 一次BE公开问题记录时未答，不假采访。仅H2两公开摘要，不跟私密引用/Word/R002，无测试服务CI；旧稿/六版/4WordQA/冻结不动，新计0。
+- U001/U002优先原创，R001观点非已操作；真人12/5/3与学生研究正文仍留本人，Issue11评论GET/阶段push按真实回执封档。

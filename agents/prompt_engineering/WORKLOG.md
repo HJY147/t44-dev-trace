@@ -134,3 +134,13 @@
 - M7封档后owner纠正早期应用run1实现427b097，当前run1-analysis也匹配；M8追加归属勘误，M7原文件不动；不混该应用阶段与更晚360。
 - 32公开源SHA/Git blob/JSON、四发表摘要hash及三设计先行祖先关系必要核对；无产品/测试代码/CI/服务/基准/Word操作，无人工12/5/3或学生正文补造。Issue11真实评论/GET、commit push实际后补。
 - M8实质commit/push`1d78907efae18f1e90d2d3c021ad1f14418da598`；Issue11评论6377116979真实发表，GET按ID正文逐字匹配，M8-publication.json保存。只追加发布记录，不重跑或触发CI。
+
+## 2026-10-24 M11 最后有限质量/测试局限素材
+
+- 核根clean/固定c05783176d24e78232da9439f25012647148cefb；独立codex/prompt-m11-checkpoint。先范围/actualprompt两文件commit push7cbf6f6f85a309c957424aff0a68c3aa4f8c5dc1，再材料取证；根索引不用。
+- 仅读明确H2公开MD/JSON、M10交接/授权、gate、DB5948只读说明、BEd834静态与部署8d公开prompt/Ruff/AST原件；未跟H/H2/private refs/原日志/keys/密文/860，未联系tester/用户/读Word/R002，未取尚未发表新CI E。
+- 向BE只问一个公开候选prompt/等价回归证据问题，不问新CI；工具空回执无错误，问取记录时未答，用根实际交接+公开b66prompt/product-source不假采访。
+- H2六exit1/原FAIL与INCOMPLETE不改，产品结论INCONCLUSIVE/不排名；完整600调度不等有效400，TIME_RANGE错误oracle/ACK未知/聚合遗漏/两866正式目标0未测P95分开。校准仅授权未发表执行。
+- 局部绿后旧74全static发现864UP022/871B007，部署先b950设计->17e等价两行->8d封档；只核公开原Ruff1/0、AST证据，不执行/importdriver，不将新脚本当旧运行字节。
+- root集成gate在候选已产生但CI/专审未完时预定义，未为数字降标准；b66等价一行与根18旧绿18新绿非bug红绿，新finalE未公开不预填。DB普通EXPLAIN/BEledger不是运行或正式根因。
+- 24公开sourcehash/JSON/Git与style设计先行关系必要核对，无产品测试/服务/CI/Word执行；M6六版保持/新增0，旧M6M7M8/WordQA/冻结不改，人12/5/3与研究正文不代填。Issue11实际评论/全文GET/提交push实际后补。
