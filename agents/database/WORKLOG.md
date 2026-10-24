@@ -256,3 +256,7 @@
 
 - 实际结果9d1deff3592d12e169f30a25537540c93096abf0已push。随后通过GitHub connector向Issue4/3实际发表完整阶段交接，并各comments/:id精确GET读回，正文与真实提交和本地文件逐字一致：Issue4#issuecomment-6376531906、Issue3#issuecomment-6376532216；github-readback.json保留endpoint/id/body/time/actor/hash。没有设review成功或关Issue/改生产准入。
 - 收尾逐一解压43份public gzip并核原bytes/gzip SHA全同；summary补实际回执。955与执行源f75a8a4字节相同、生产仍bc5；本阶段已完成，只有离线归档，没有第二次比较或额外HTTP/SQL/本机负载，释放实例槽。
+
+## ROLE-database-INDEX-READONLY-v1：10分钟有界只读核查先设计
+- 从root公开b40d888创建codex/database-index-check独立worktree，未动根索引。已读取公开BE d834静态两材料、本岗pool-retention设计/原回执及955源码；不接触独立材料/实例。
+- 先行plan明确仅原t44_profile/原fixture hash，核服务停止/归属后才有限SHOW与plain EXPLAIN；不改数据/设置/产品/DDL/用例。原始任务完整归档；此设计阶段尚未连接MySQL。
