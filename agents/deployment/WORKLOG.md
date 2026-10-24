@@ -353,3 +353,5 @@
 - 原app_20261023_234943_3f9bad/bc5、driver43819/runner43888：原14400秒截止03:49:43.904838Z未变，duration_elapsed后summary03:49:48.016395Z success/cleanuptrue；实际总14404.111557秒含4.111557秒清理。78追加TTL300轮换、controller验证81扫描仅子集；driver真实exit0并确认runner退出，既有编排post真实exit0。post89登记PID全absent、Rabbit/EPMDgone、本run五端口unbound、4APIworker；不读/公开嵌套业务行或会话值。
 - 原after-finish九protected与before-serve逐项一致；03:52:30Z另一次只读PID/UID/start/pgid/hash/地址观察仍9/9全等，driver/runner均不存在。driver40f29a/controller084618/runtimea251字节hash保持，post记录源92核验。严格仅离散元数据/已存回执，不把它当全时健康/正式性能/独立验收或云部署；历史16/26未称新publish。
 - 旧03:17快照未知结论及原360失败/新360成功原样保留；公开白名单投影+原件SHA/bytes，不公开完整post/argv/凭据/SQL，未HTTP/SQL/浏览器/信号/服务动作/独立private。本次无代码或测试变更，仅读/JSON投影及diff-check；报告demo-natural-close-report.md，原始回执仍原私密路径。
+
+- 自然结束封档88252670d1507f8e0df0067d834076fd3ad40932已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379541206用本岗body-file实际发布，完整GET正文逐字一致，原JSON及seal另档。只做公开交接收尾，不再观察或操作服务；原回执/旧快照不变，最终Git SHA标识此纯文档封档。

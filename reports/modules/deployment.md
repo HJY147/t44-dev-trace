@@ -270,3 +270,4 @@
 - app_20261023_234943_3f9bad/bc5原14400秒截止03:49:43.904838Z不变；duration_elapsed，summary结束03:49:48.016395Z success/cleanuptrue，78追加TTL300轮换。原driver实际exit0/确认runner退出；原编排post实际exit0，89登记PID全absent、Rabbit/EPMDgone、五run端口unbound、API4worker。
 - 原after-finish及03:52:30Z只读快照九protected均与before-serve PID/UID/start/pgid/hash/地址全等；driver/runner不存在，driver/controller/runtime原hash保持。post记录92源核验；81扫描是controller子集，16/26仍历史复核、无新publish声明。
 - 本轮只读/文档，无重启/续时/脚本补跑/HTTP/SQL/信号/服务/独立private；旧03:17未知及原360失败保持。报告agents/deployment/demo-natural-close-report.md，白名单投影及原件hash在demo-natural-close-validation；自然结束不等于正式性能/独立验收/云通过。
+- 证据checkpoint88252670d1507f8e0df0067d834076fd3ad40932已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379541206实际发布并全文GET一致。seal列公开投影/hash及原件绑定，收尾不再运行或观测。
