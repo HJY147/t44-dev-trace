@@ -1,0 +1,67 @@
+{
+  "scope": "stdlib in-memory/temp-file guards only; git calls mocked for source fixture; no build/pip/network/cloud/services/CI",
+  "checks": [
+    {
+      "name": "single exact channel-only reversible delta",
+      "passed": true
+    },
+    {
+      "name": "base digest lock and strict hashes unchanged",
+      "passed": true
+    },
+    {
+      "name": "modified original refused",
+      "passed": true
+    },
+    {
+      "name": "all three pinned source inputs match",
+      "passed": true
+    },
+    {
+      "name": "changed lock refused",
+      "passed": true
+    },
+    {
+      "name": "symlink sidecar refused",
+      "passed": true
+    },
+    {
+      "name": "wrong C HEAD refused",
+      "passed": true
+    },
+    {
+      "name": "ignore is byte-for-byte original matching outside-Dockerfile basename",
+      "passed": true
+    },
+    {
+      "name": "runtime0700 files0600",
+      "passed": true
+    },
+    {
+      "name": "manifest explicit non-original bytes and four hashes",
+      "passed": true
+    },
+    {
+      "name": "existing runtime never overwritten",
+      "passed": true
+    },
+    {
+      "name": "generation inside product C refused",
+      "passed": true
+    },
+    {
+      "name": "nonprivate parent refused",
+      "passed": true
+    },
+    {
+      "name": "documented shell syntax only; not executed",
+      "passed": true
+    }
+  ],
+  "count": 14,
+  "old_Dockerfile_sha256": "3862fc17da18717531bdadd79320571ac1465f8f48ee84420793c940c6be8d90",
+  "new_Dockerfile_sha256": "327e8ee979b982399adbe92e01fcf8b102c635e7ea479fa0f526c9826df581a8",
+  "dockerignore_sha256": "302ac76f30a451a3977497fa3fda31f3784a04e9fecf136064b9189bfbc01c9f",
+  "lock_sha256": "3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30",
+  "helper_sha256": "5950541879e16cbbe2f12f899afc29cb69aa8a84145fff52773d596f2a0e091b"
+}
