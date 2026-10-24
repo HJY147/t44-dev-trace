@@ -19,3 +19,5 @@
 固定cloc6307行仍超5100上限1207，require-range退出1；F08同时错误优先级未定、精确故障切点/细项错误矩阵等独立证据缺口、学生本人最终研究正文及真实12/5/3人工证据均未完成或未证实。main与全局reviewer/stage不放行，整体NOT_ACCEPTED_INCOMPLETE。
 
 本轮审阅包将按准确源码快照新建，旧包不覆盖；实际路径、SHA及核验结果以外置records/validation/coursework-review-final.json及对应postcheck为准。包内是四份固定技术Word、公开研究素材及内层源码ZIP，不包含本人最终研究报告、R002原话、演示凭据或私密测试。源码ZIP保留M8–M12后发资料；外层少量MD的相对链接需在内层源码目录阅读。不是最终作业提交或验收通过。
+
+生成后补记（2026-10-24 01:26UTC）：上述“将建”是源码快照捕获前的真实状态。现已按4833be05807df5a9d43176eb2ec5a610c7ac06b1新建本机私密审阅包，18外层成员，内层3745源码文件；四Word原字节不变、旧ZIP不覆盖。准确路径/SHA见外置coursework-review-final.json；root另重新打开内外ZIP核CRC、全部成员SHA/可信Git blob/mode及actual ZipInfo常规文件权限，四封面字面值在公开源码及非Word素材中0命中（803份公开gzip额外解压检查；不是全面秘密扫描或OCR）。这两份生成回执发生在源码快照之后，作为外置补记，不声称它们已经包含在该内层快照；外层manifest与审阅说明自带准确源与未达标清单。没有重新渲染/视觉QA旧Word，也没有改写任何测试结论或未来清理结果。

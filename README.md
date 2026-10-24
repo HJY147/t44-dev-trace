@@ -12,7 +12,7 @@
 
 5178有界演示固定bc5；四份Word保留各自M6/M7截止，不能称为C同源验证；演示截止北京时间11:49:43，不重启、不延长。固定口径6307行仍超5100，完整验收尚未通过。后发H2六次exit1，最终恢复5次true/1次false，有效400并发未证实，SUT性能INCONCLUSIVE、不排名，原v3失败保留。Pcal=`b69ac5e`的[公开stub校准摘要](reports/acceptance/v4-driver-calibration-public-summary.md)/[JSON](records/acceptance/v4-driver-calibration-public-summary.json)显示400用户即时响应仍有客户端延迟/超时；这不能归因原CI或SUT，不能修复H2测量有效性，没有补跑。阅读[M10](reports/final/M10-night-test-handoff.md)、[M11](docs/prompting/M11-quality-and-test-limits.md)及[M12末次技术附注](reports/final/M12-final-source-and-measurement-note.md)了解边界；固定Word不因此改版。
 
-本次准确文件名和SHA以records/validation/coursework-review-final.json为准。
+本次审阅包已实际生成：本机`.submission-private/coursework-review-bundles/T44-coursework-review-M7-4833be05807d.zip`，绑定源码`4833be05807df5a9d43176eb2ec5a610c7ac06b1`，共18个外层成员、四份固定Word及3745个内层源码文件。准确SHA和缺项以`records/validation/coursework-review-final.json`为准，实际重新打开/CRC/成员与Git核验见`records/validation/coursework-review-final-postcheck.json`。它是本机私密审阅包，未上传GitHub，不是最终提交或整体验收通过。
 
 ## 获取本轮审阅源码
 

@@ -27,7 +27,7 @@ Word都在本机`.submission-private/review-documents`，含你提供的私密�
 
 共35页，文档岗已逐页检查对应最终排版。三份M6稿中的运行状态只代表各自内容截止，不能把其中“v3尚未发表”当作现在的状态；后发表的核查、部署与性能方法变化见[M8工程附录](../../reports/final/M8-engineering-annex.md)和[准备阶段补记](../../reports/final/M8-performance-preparation-addendum.md)。它们是AI编制的技术材料；技术报告排版完成不等于软件验收通过。源码审阅包和后续合并审阅包也只作为审阅快照，不自动变成最终提交。
 
-本次准确文件名和SHA以records/validation/coursework-review-final.json为准。
+本次审阅包已实际生成：本机`.submission-private/coursework-review-bundles/T44-coursework-review-M7-4833be05807d.zip`，绑定源码`4833be05807df5a9d43176eb2ec5a610c7ac06b1`，共18个外层成员、四份固定Word及3745个内层源码文件。准确SHA和缺项以`records/validation/coursework-review-final.json`为准，实际重新打开/CRC/成员与Git核验见`records/validation/coursework-review-final-postcheck.json`。它是本机私密审阅包，未上传GitHub，不是最终提交或整体验收通过。
 
 先按[五分钟导览](../guidance/M8-five-minute-tour.md)查看界面，再看[提交物对照](../../reports/final/submission-map.md)；需要追函数和事务时，再读[M6代码导读](../guidance/M6-learner-guide.md)。概设回答模块怎么分，详设回答接口和函数收什么、返回什么，测试报告回答究竟检查了什么及哪里还未通过。
 
