@@ -448,7 +448,7 @@
     "student_personal_reflection": "records/reflections/R001-original.md",
     "previous_registry_checkpoint": "43f51570e62e3160f7995c45bdddaf2f123242b3",
     "application_source_equivalent_to": "bc5aef9c62393134582affb7a690acb33ac2b833",
-    "ci_result_scope": "Exact6ec appbytesbc5 510BE89FE all-source andDocker_verified_not_acceptance",
+    "ci_result_scope": "Exact4718482 integrated operational baseline, application bytesbc5:510BE/89FE and Docker separately archived; does not cover later operational changes except their own targeted checks.",
     "backend_tests": 510,
     "backend_failures": 0,
     "backend_errors": 0,
@@ -460,7 +460,7 @@
     "neutral_hosted_capability": "records/acceptance/v2-capability-handoff.json",
     "visual_direction": "records/decisions/D007-visual-direction.md",
     "OpenDesign_prototype": "326f971",
-    "user_demo": "agents/frontend/latest-preview-validation.json",
+    "user_demo": "agents/deployment/native-bounded-demo-validation/user-demo-current-capability.json",
     "night_work_queue": "records/coordination/night-work-queue.json",
     "historical_snapshot_before_latest_verified_update": {
       "current_checkpoint": "4d9da050de2e91dfd3f37ff915c2872c55d52888",
@@ -471,13 +471,22 @@
     "latest_completely_verified_application": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "latest_verified_ci_run": 40034577627,
     "latest_verified_docker_run": 40034577586,
-    "current_candidate_ci_status": "6ec_allfour_andDocker_success;originalv3formal_failed;whiteboxactive",
+    "current_candidate_ci_status": "Integrated baseline4718482 archived success; old v3 formal failures retained; all original whitebox/delivery ranges boundedly audited, overall NOT_ACCEPTED_INCOMPLETE. Pool candidate db87 separate:520BE/89FE+Docker and limited review, not admitted.",
     "current_candidate_backend": "bcb0e1bbb1440df958a04e87afea0e5b015d2f17",
     "current_candidate_frontend": "c79cd99",
     "technical_Word": "M7test8plusM6other27_combined35;M6oldfour33preserved",
     "neutral_stdout_repair": "cf685d7_and_63synthetic_guards_not_independent_cases",
-    "independent_final": "reports/independent-v3/stage08-deliverables.json"
+    "independent_final": "reports/independent-v3/stage08-deliverables.json",
+    "pool_candidate": {
+      "source": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+      "pr": 39,
+      "admitted_to_integration": false,
+      "ci_record": "records/validation/composite-db87-pool-ci.json",
+      "performance": "New H2 six matched requests in progress; no result yet"
+    },
+    "frontend_demo_validation": "agents/frontend/native-user-preview-validation.json",
+    "fresh_performance_revision": "records/acceptance/v4-performance-h2-runtime-binding.json"
   },
-  "updated_at": "2026-10-24T00:22:51.303927+00:00",
+  "updated_at": "2026-10-24T00:24:11.349835+00:00",
   "coordinator_checkpoint_at": "2026-10-23T22:34:08.052395+00:00"
 }
