@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "准确RFC8c3/D008/source/replay/wire及859意义限定设计核完，Issue3 COMMENT完整GET封存；无实现准入或运行",
+  "implementation_status": "R2唯一RFC差量补齐精确重放事实；原8c保留，无测试或实现，待R2 COMMENT全文GET",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/D008-design/static-design-audit.json",
-  "latest_review_report": "reports/reviews/D008-design-8c3d0d646139e2f85ea487230e7a2f185487402e.md",
+  "latest_review_evidence": "agents/reviewer/evidence/D008-design/R2-document-audit.json",
+  "latest_review_report": "reports/reviews/D008-design-R2-d328986fc6fd985a67c2340f87adbf5afc3047f5.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1434,7 +1434,8 @@
     "ROLE-reviewer-DEPENDENCY-QUERY-EVIDENCE-v1",
     "ROLE-reviewer-FINAL-CONSISTENCY-v1",
     "ROLE-reviewer-ACTUAL-BUNDLE-v1",
-    "ROLE-reviewer-D008-DESIGN-v1"
+    "ROLE-reviewer-D008-DESIGN-v1",
+    "ROLE-reviewer-D008-DESIGN-R2-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1477,9 +1478,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-release-error-design",
-  "review_outcome": "NO_STRUCTURAL_DESIGN_BLOCKER_WITH_PRECISE_REPLAY_CLARIFICATIONS;implementationNOT_ADMITTED;overallNOT_ACCEPTED",
+  "review_outcome": "LIMITED_DESIGN_CLEAR_FOR_SPEC_DRAFT_SYNC_ONLY;implementationNOT_ADMITTED;overallNOT_ACCEPTED",
   "review_scope": "Only D008 minimalapproval-reference mismatch design;current1.1 source/replay semantics and public859 testmeaning, no runtimeexecution",
-  "review_target_sha": "8c3d0d646139e2f85ea487230e7a2f185487402e",
+  "review_target_sha": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
   "review_targets": [
     {
       "pr": 14,
@@ -1561,7 +1562,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "D008最小失败槽限定设计审；结构无阻断/重放措辞应精确，无实现准入",
+  "stage": "D008 R2限定设计清楚；只进入spec草稿同步，待新freeze/实现审核",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1580,7 +1581,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-24T03:36:48.279829+00:00",
+  "updated_at": "2026-10-24T03:39:49.998009+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2024,6 +2025,14 @@
       "private_cases_raw858_860_read": false,
       "verified_at_utc": "2026-10-24T03:36:48.277794+00:00"
     },
-    "evidence_commit": "6e2430839c44fa024c1d92f03dd8064a7fe8f807"
+    "evidence_commit": "6e2430839c44fa024c1d92f03dd8064a7fe8f807",
+    "R2": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
+    "R2_doc_only_clear": true,
+    "design_next_step": "SPEC_DRAFT_SYNC_ONLY",
+    "application_implementation_admitted": false,
+    "newfreeze_actualhash_selftest_codereview_pending": true,
+    "R2_github": {
+      "state": "PENDING_REAL_COMMENT_GET"
+    }
   }
 }
