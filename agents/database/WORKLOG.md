@@ -271,3 +271,7 @@
 - 已读公开3b9c907/N07一页、本岗AST/scan-run预算和重点生产职责；未读任何独立私密资料/实例，不联系tester。原仓储兼容删除/seed row-builder/公共create会话/未用CSS均已在当前数字内，不能重复扣。scan-run联合314→315净增1，AST整对估增3–53，旧CHECK-only39–46与validator10都未实施/准入。没有1207可信方案。
 - 新静态内存通知分页草案只保留在报告JSON：21→18片段、facade95→92/common132不变，联合227→224投影3；保留成员S锁、-id/谓词和rows→serialize→total/unread/unhandled顺序。只AST语法/行宽核对和cloc计量，不跑/变更生产或测试，实际生产节省0。首次cloc STDIN漏dash退出2已存static-count-first-error.log，按工具help更正后才计数；首次猜测records/metrics/source-count-C6307.json不存在，已按实际公开source-count-C.json定位，未据此推断产品问题。
 - 已真实发表Issue4 owner-facing候选/边界评论并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048，github-readback.json保存完整响应。只问BE/MQ后续准入时确认，不请求现在实施/测试。所有工作仅本岗文档，不改生产/DDL/API/freeze/计量规则/DB/服务/用例/CI配置，不执行HTTP/测试/负载/性能。原规模未达标、正式性能/独立/人工材料出口不被本报告改变；AI工作不记用户亲改。
+
+## ROLE-database-PERF-PUBLIC-C-v1：只读公开事实后先行设计
+- 仅指定839_PUBLIC_MINIMAL_FACTS_v1.md先核c35b37...完全匹配再读取；没有读839其它文件/私有用例/资源，不向839发送信息。当前C任务短窗/三502/完整正式组0如实保留，资源和根因未知。
+- 新独立树codex/database-perf-public-c基root6d02cf1，生产根与被测0dfb55c差异为空。先保存design再实现；已向BE真实对接，BE确认C已有project+task依赖条件，当前2UoW/3次write实时auth；不能重复提旧一行优化/旧3UoW账本。BE主审guard-specific依赖加载，本岗不动services或锁/认证语义。
