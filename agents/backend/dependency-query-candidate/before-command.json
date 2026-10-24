@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/backend/contracts/986_http.py::test_complete_delivery_rollback_rework_http",
+    "tmp/backend/contracts/986_http.py::test_dependencies_cycle_guard_and_edit_lock",
+    "tmp/backend/contracts/986_http.py::test_dependency_remove_and_last_manager_guard",
+    "tmp/backend/contracts/986_http.py::test_idempotency_versions_revocation_and_independent_rejection",
+    "tmp/backend/contracts/986_http.py::test_transition_union_stays_strict_and_normalizes_equivalent_integers",
+    "tmp/backend/contracts/986_http.py::test_capacity_v11_rework_requires_current_effective_owner_and_capacity",
+    "tmp/backend/contracts/986_http.py::test_capacity_v11_keeps_original_guard_precedence",
+    "tmp/backend/contracts/986_http.py::test_auth_precedes_body_and_project_scope",
+    "--junitxml=agents/backend/dependency-query-candidate/before.xml",
+    "-q"
+  ],
+  "git_head": "ed2737d26a4d79c9ce2e8f14791fe9488f3e3a35",
+  "application_equal": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "workflow_sha256": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+  "exit_code": 0,
+  "wall_seconds": 5.328478500014171,
+  "finished_at": "2026-10-24T00:50:19.644762+00:00",
+  "scope": "existing SQLite/TestClient synthetic fixtures;no externalMySQL/server/load"
+}

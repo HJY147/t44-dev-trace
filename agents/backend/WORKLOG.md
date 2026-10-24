@@ -415,3 +415,22 @@ RFC真实阶段评论：Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#
 - 一页static-performance-next-measurement.md列COUNT/深OFFSET/排序/JSON/全membership/边图/通知规模，已有索引只是候选，不宣实际命中/扫描。Workflow空IN仍发SQL、按task_id边读无显式该前导索引是待EXPLAIN点，不认定瓶颈或语义缺陷。后续只建议自有fixture一次一变量分离派发/连接/SQL与fetch-codec/auth/序列化CPU和字节；不重复已测低并发profile/池保留ABBA、不推正式/其他运行根因或收益。
 - 根追加升级记录batch交接已原文补prompt：保留授权project/派生event和run IDs（run表无project列）、id页序/recipient原序、IO去重不删结果、每事件全部通知/额外行handled_count/null/disposition优先、缺引用原失败及独立audit。RC多语句快照/原认证锁序不改；空页/共享run/多项目/超100收件人/部分全送达/null/缺引用/并发delivery-read-handle只是未来回归方向，未改码/运行。未来非空3批/13S仅静态方案，需scheduler/DB/root独立准入。
 - Issue3具体交接6377635272已body-file发表并全文GET逐字核对；本轮文档作者AI，不是用户手改/独立验证。固定6307缺1207/原正式结果保持；封档后释放，未来测量仍须根另开范围/窗口。
+
+## 依赖查询最小候选：同项目谓词、旧CI红与独立新源
+
+- 从根b40应用bc5起，先提交实际prompt/RFC ed2737d，向DB Issue4索取准确5948cf80公共SHOW/EXPLAIN并全文GET。全局taskPK+edge复合FK+Call.task核项目证明合法读集等价，非禁约束损坏数据保证。唯一应用74a增加project_id谓词，不改其它SQL/ORDER/空IN、身份/守卫/项目X锁/CAS/audit/outbox/幂等/ACK不明，绝不含db87默认池。
+- 原986相同18目标旧18pass→74a18pass，SQLite/TestClient开发回归，不是MySQL/延迟对照或新增业务红绿。原RFC“非空前驱均交付后开工”覆盖措辞过广已更正，既有case是未满足前驱拒绝，不制造镜像断言。严格单源Ruff/format、14hash通过，warning保留。首scope辅助probe错以旧bc5比所有tools，检出基底已有870/955变化exit1，改即时base核tools不变，错误原件保留；cloc74a实6307/exit1。
+- 74a product40047094732整体failure保留：部署开发864 UP022/871 B007红，backend Ruff/Bandit、FE89、markers162/93/19、full510/0失败错误skip绿。44Python全Git文件集、行2638/2957分支659/824、excluded0；markers不相加。Docker40047211444实际d74cfc8 checkout父728c+74a，169相关roots逐文件相同/4workers/隔离恢复成功。五ZIP先核官方digest再读，18+33原件gzip双hash/roundtrip，旧汇总composite-dependency-query-74a-ci.json。缺merge对象cat-file exit128后fetch准确对象，是归档环境问题。
+- 根授权后摘取部署owner17e7ac5为7748ca6，仅两处测试样式/owner原件，不动controller/live；固定C=b66fa36a317145afec350d7f61ca374959b2eaf7，正常新源CI，旧run未rerun。PR42头保持C，后证据另codex/backend-dependency-query-evidence。C应用仍74a/pool5+10/14hash同，实际新cloc6307/exit1。原18不重复。新product40047832510/Docker40047836840终态另封，不移植旧绿。
+- Issue3 6377896107和Issue4 6377741206/6377715017全文GET；PR42初probe误rstrip期望尾换行assert1，第二GET与原正文完全相同，保留probe错误，不是产品缺陷。作者后端AI/样式部署AI，不记学生亲改。无独立材料、外部DB/服务/负载；根dde39条件门槛和专审仍待，未集成/性能/验收通过。
+
+
+### 候选C准确终态与证据seal
+
+product40047832510及Docker40047836840两新run completed success/attempt1，未rerun旧74a。完整JUnit510/0failure/error/skip；contract162/integration93/fault19与全套重叠。44Python覆盖集与Git逐一全同/excluded0，行2638/2957=89.212039%、分支659/824=79.975728%；FE89通过/20TSVue全Git集，行93.33%、分支88.09%，不扩为CSS/HTML。
+
+新Docker actual checkout9b538128cdb711c0bf08f5a2a7b9774e47069201（父dde39aa+C），官方checkout/gitlog完整SHA与result corroborate；169相关roots mode/blob/内容SHA全同。4workers、scanner16created/2completed、19表逐行数/checksum隔离恢复matched、18业务226列，唯一预期非零是第二scanner flock拒绝exit1。新五ZIP先核官方digest再开，18+33原件双hash/roundtrip；旧五ZIP/51原件及失败同样保留，各source不可混。汇总records/validation/composite-dependency-query-b66-ci.json，原汇总不覆盖。
+
+准确C应用与74a相同，证据分支E只报告/日志/原件，未新增本机HTTP/SQL/测试/负载。候选开发CI通过不改变cloc6307/exit1、DB EXPLAIN非收益、专审/根门槛/集成与正式验收尚待的边界。阶段交接后释放，不自主合分支或继续性能。
+
+- 准确C终态Issue3 6377962466已body-file发表/全文GET逐字核，PR42终态正文逐字GET且head仍C/draft。封档E不触发新源码CI，不推动候选头；原阶段pending评论不覆盖。

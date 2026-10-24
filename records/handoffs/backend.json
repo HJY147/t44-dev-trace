@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "N07 honest static review +870 one-shot offline prototype complete;production unchanged",
+  "stage": "Dependency candidate C fixed; accurate developer CI passed; evidence sealed; review/root integration pending",
   "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
   "artifacts": [
     {
@@ -1638,5 +1638,70 @@
     "root_cause_or_benefit_claimed": false,
     "source_count": "6307gap1207 unchanged,no newcount",
     "next": "seal/release;future measurement/implementation separately admitted"
+  },
+  "dependency_query_candidate": {
+    "candidate": "b66fa36a317145afec350d7f61ca374959b2eaf7",
+    "predicate_source": "74aeb2a8d2e60e0c972688a3d68422d3d4a16f2b",
+    "design": "ed2737d",
+    "draft_PR": 42,
+    "evidence_branch": "codex/backend-dependency-query-evidence",
+    "report": "agents/backend/dependency-query-candidate/report.md",
+    "prompt": "agents/backend/DEPENDENCY-QUERY-CANDIDATE-dispatch.md",
+    "DB_evidence": "5948cf80a5dd318db370072f9741ed150bdb1487",
+    "equivalence": "globaltaskPK+compositeFK+verifiedproject;legalFKdata only",
+    "local_targets": "sameoriginal98618before18after;SQLiteHTTP,notlatency",
+    "old_product": {
+      "run": 40047094732,
+      "overall": "failure static UP022/B007",
+      "full_junit": "510/0failure/error/skip",
+      "line": "2638/2957",
+      "branch": "659/824",
+      "files": 44,
+      "excluded": 0
+    },
+    "old_docker": {
+      "run": 40047211444,
+      "checkout": "d74cfc8f3cd8a7cf680b88403b4d08d352b14766",
+      "result": "success",
+      "runtime_equal_files": 169
+    },
+    "old_summary": "records/validation/composite-dependency-query-74a-ci.json",
+    "style_owner": "17e7ac5f05e3ab85cd7a0f2db439c7097c422dba",
+    "new_product": 40047832510,
+    "new_docker": 40047836840,
+    "new_CI_state": "both completed success attempt1",
+    "source_count_C": "6307/exit1,gap1207",
+    "14freeze_same": true,
+    "pool_still": "5+10",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377896107",
+    "full_GET_exact": true,
+    "decision": "draft candidate only; root gate/dedicated review pending; not formal performance/integration/acceptance",
+    "new_summary": "records/validation/composite-dependency-query-b66-ci.json",
+    "new_results": {
+      "full": "510/0failure/error/skip",
+      "markers_overlap": [
+        162,
+        93,
+        19
+      ],
+      "python": "44exactGit/excluded0,line2638/2957 branch659/824",
+      "frontend": "89pass/20exactGit TS-Vue,line93.33/branch88.09",
+      "docker_checkout": "9b538128cdb711c0bf08f5a2a7b9774e47069201",
+      "docker_parents": [
+        "dde39aa1c3ccf122caff5c24584ab69537d09007",
+        "b66fa36a317145afec350d7f61ca374959b2eaf7"
+      ],
+      "runtime_files_equal": 169,
+      "docker": "4workers/scanner16created2completed/19tablecountschecksums matched/18business226cols",
+      "expected_nonzero": "secondscanner flock exit1",
+      "new_verified_ZIPs": 5,
+      "new_selected_raw": [
+        18,
+        33
+      ]
+    },
+    "next": "dedicated reviewer scoped C and published E; root predeclared gate decides; no automatic integration/load",
+    "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377962466",
+    "final_full_GET_exact": true
   }
 }
