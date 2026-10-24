@@ -8,11 +8,11 @@
 
 连接池开发短ABBA已封档e03a95c：四段0失败，P95 A1/B1/B2/A2=91.591/74.472/72.908/92.601ms，稳态新建连接436/0/0/427。多保留10idle的成本未测，短样本不能代替正式负载。独立候选db87d30449356f3473b645a5c246dcc6c21d7cbe/PR39仅改默认15+0；准确product40039282322通过520/89（869的10例实际收集），Docker40039333270真实checkout400a5、166相关文件与候选等价，五ZIP/51原件及官方checkout行均核，见records/validation/composite-db87-pool-ci.json。专审2a16所列范围无新增实质阻断，partial override及默认保留上界30→90/峰90的区别保留。候选尚未合integration，演示仍bc5。
 
-全新v4性能岗位已独立冻结新H9f8b5ea，公开metadata M另产生，迁回项目内但不改私密字节。H后才给S1/S2准确源，以同一新H对两源各三入口、六个全新hosted环境运行；六请求已启动，R/H/SUT及10中性实现文件分别核验，见records/acceptance/v4-performance-initial-run-metadata.json。目前没有新的性能结论。这是新冻结协议的双源有限核查，不称旧v3载荷逐字节复跑，不改旧判据和失败。只有tester取回/解密/审查私密输出，root/dev不打开其案例、清单、脚本、日志、密文或原结果。
+全新v4性能岗位原H9f8b5ea先于SUT冻结，但六个初次请求均在数据准备阶段退出，未进入预热或600秒稳态，正式结果均NOT_RUN；125191条是准备HTTP，不能当正式指标。原330秒总准备/5秒准备请求预算为tester自选工具约束，未观察实际fixture最终数量及同次资源的部分保持unknown，见reports/acceptance/v4-performance-original-attempts-public-summary.md。随后H2fc75ca7明确冻结为接触SUT后的方法修订：准备900秒/请求30秒，加失败路径只读数量与资源观察；正式操作与判据保持，整个harness并非原字节、不是预盲测或纯机械续跑。新环境工具上限1800/min60/default900/job40不变，13必要合成绿与原红、79ed限定专审均留痕。H2对同两准确源各三入口，六个新隔离hosted请求已启动，R/H2/SUT与10中性文件逐一核验，见records/acceptance/v4-performance-h2-initial-run-coordinator-receipt.json。目前无新正式性能结论，不改旧v3失败与原六NOT_RUN。只有tester取回/解密/审查私密输出，root/dev不打开其案例、清单、脚本、日志、密文或原结果。
 
-真实质量链继续保留：42243虽504 CI绿，专审仍发现bool/数字证据误等，先设计再bcb0修复、bc5同反例限定复审；新包9d6的真实内存ZIP反例暴露commit绑定P2，add736先设计、dda3对照可信Git完整路径/blob/mode再验字节，6a32同payload限定复查绿。新source selector只按Git路径排除agents/testing四工作区文件，未读取正文、不称发现泄露；旧包不改。四技术Word私密权限/原hash已复核，但新合并审阅包尚未实际构建，完整性不等于作业验收。
+真实质量链继续保留：42243虽504 CI绿，专审仍发现bool/数字证据误等，先设计再bcb0修复、bc5同反例限定复审；新包9d6的真实内存ZIP反例暴露commit绑定P2，add736先设计、dda3对照可信Git完整路径/blob/mode再验字节，6a32同payload限定复查绿。新source selector只按Git路径排除agents/testing四工作区文件，未读取正文、不称发现泄露；28938选择策略已另经2bc7有限专审，旧包不改。四技术Word私密权限/原hash已复核，但新合并审阅包尚未实际构建，完整性不等于作业验收。
 
-原生有限周期保留427失败run1、0a6成功run2以及capture超时P2的b238/cc6限定修复。新4ef的360实际退出1，原因是runner等自己；c191先设计、62ac一行修正，审核先冻结反例再红绿，仅关闭SERVE-CLEANUP-SCOPE-01。随后根另准入新360，实际exit0/cycle与cleanuptrue、九端口三时点一致；后置JSON提取错误另留，不改成服务失败。脚本864/863/862字节迁移。现在5178完整本机演示已就绪并在后台运行，准确bc5，截止北京时间2026-10-24 11:49:43；最终4h清理未知。5173 API/网页预览保留，账号均本机私密。
+原生有限周期保留427失败run1、0a6成功run2以及capture超时P2的b238/cc6限定修复。新4ef的360实际退出1，原因是runner等自己；c191先设计、62ac一行修正，审核先冻结反例再红绿，仅关闭SERVE-CLEANUP-SCOPE-01。随后根另准入新360，实际exit0/cycle与cleanuptrue、九端口三时点一致；后置JSON提取错误另留，不改成服务失败。脚本864/863/862字节迁移。现在5178完整本机演示已就绪并在后台运行，准确bc5，截止北京时间2026-10-24 11:49:43；最终4h清理未知。前端2b31在本次5178自有项目做过一次70响应全200、无业务写的桌面/手机查看与退出，root只抽看其中2张。5173 API/网页预览保留，账号均本机私密。
 
 新中性runtime-usage先RFC再8983/861实现，15必要合成与root静态接线核对；旧metadata/控制接口保持，没有自动采样。CLI内存非RSS，格式化IO非速率、非整段峰值/物理同机证据，实际可用性由本轮tester采样确认；不补旧unknown。
 
