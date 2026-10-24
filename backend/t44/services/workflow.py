@@ -32,6 +32,7 @@ from .codes import (
     STAGE_TO_DOMAIN,
     STATE_TO_DOMAIN,
     Action,
+    State,
 )
 from .common import model, plan_values, roles, task_model
 from .errors import Rejected, require
@@ -69,9 +70,14 @@ class Workflow:
             current_state=row["state"],
         )
         evidence = tuple(e["locator"] for e in b.get("evidence", ()))
-        deps = g.rows("task_dependencies", {"project_id": c.project_id, "task_id": row["id"]})
-        predecessor_ids = [d["depends_on_task_id"] for d in deps]
-        predecessors = g.rows("tasks", {"project_id": c.project_id, "id": predecessor_ids})
+        predecessors = []
+        if action in (Action.START, Action.REWORK) or (
+            action == Action.UNBLOCK and row["blocked_from_state"] == State.DEVELOPING
+        ):
+            deps = g.rows("task_dependencies", {"project_id": c.project_id, "task_id": row["id"]})
+            predecessor_ids = [d["depends_on_task_id"] for d in deps]
+            if predecessor_ids:
+                predecessors = g.rows("tasks", {"project_id": c.project_id, "id": predecessor_ids})
         review_id = (
             b.get("review_id")
             if action in (Action.APPROVE_REVIEW, Action.REJECT_REVIEW)

@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Current-C LOC6310 confirmed from existing artifact; reduction design only, no production change",
+  "stage": "dependency-candidate-test-only-ci-terminal-evidence",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -1975,5 +1975,159 @@
     "github_exact_body_match": true,
     "status": "design-only-sealed-no-implementation-no-new-runtime-validation",
     "workspace_release": "本轮封档后释放；当前云C/RequestID候选/独立oracle未改"
-  }
+  },
+  "performance_repair_839": {
+    "status": "candidate-only-no-cloud-change-no-performance-proof",
+    "source_commit": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "source_branch": "codex/backend-performance-repair-plan",
+    "evidence_branch": "codex/backend-performance-repair-evidence",
+    "base_application": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "report": "agents/backend/performance-repair-839/report.md",
+    "prompt": "agents/backend/performance-repair-839/scope-and-prompt.md",
+    "design": "agents/backend/performance-repair-839/design.md",
+    "validation": "agents/backend/performance-repair-839/validation.json",
+    "changed_application_files": [
+      "backend/t44/services/workflow.py"
+    ],
+    "tests": {
+      "before_structural_failed": 3,
+      "after_unique_sqlite_http_passed": 36,
+      "after_failed": 0,
+      "after_skipped": 0,
+      "mysql_run": false,
+      "load_run": false
+    },
+    "source_count": {
+      "actual": 6316,
+      "backend": 5217,
+      "frontend": 1099,
+      "range": [
+        3500,
+        5100
+      ],
+      "within_range": false,
+      "delta_vs_C": 6,
+      "excess": 1216
+    },
+    "frozen_hashes_matched": 15,
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383378839",
+    "pr_url": "https://github.com/HJY147/t44-dev-trace/pull/44",
+    "github_exact_readback": true,
+    "ci_receipt": "agents/backend/performance-repair-839/ci-at-handoff.json",
+    "not_claimed": [
+      "502 root cause",
+      "performance pass",
+      "MySQL lock equivalence",
+      "independent acceptance",
+      "size compliance",
+      "cloud C update"
+    ],
+    "pending": [
+      "whole exact-source CI evidence",
+      "source review",
+      "root integration decision",
+      "same-run safe resource/proxy/DB evidence before diagnosis"
+    ]
+  },
+  "dependency_candidate_ci_fix": {
+    "status": "test-only-candidate-exact-source-product-ci-completed-success-root-decision-pending",
+    "source_commit": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "source_branch": "codex/backend-dependency-ci-fix",
+    "evidence_branch": "codex/backend-dependency-ci-fix-evidence",
+    "previous_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "original_pr": 44,
+    "original_pr_head_kept": true,
+    "application_byte_equal_to_previous_source": true,
+    "only_non_record_diff": "tmp/backend/contracts/985_mysql_http.py: 2 SELECT constants and historical comment",
+    "original_failed_run": 40087756354,
+    "original_failed_jobs": [
+      120854051910,
+      120854052090
+    ],
+    "new_run": 40088982094,
+    "new_ci_receipt": "agents/backend/performance-repair-839-ci-fix/new-ci-at-handoff.json",
+    "report": "agents/backend/performance-repair-839-ci-fix/report.md",
+    "prompt": "agents/backend/performance-repair-839-ci-fix/scope-and-prompt.md",
+    "ast_proof": "agents/backend/performance-repair-839-ci-fix/test-only-proof.json",
+    "local_checks": {
+      "ruff": "pass",
+      "format": "pass",
+      "collection_only_cases": 5,
+      "mysql_test_execution": false,
+      "prior_36_targets_not_repeated": true
+    },
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383532393",
+    "github_body_exact_match": true,
+    "size": {
+      "count_reused_from_byte_equal_source": 6316,
+      "within_range": false,
+      "new_cloc_run": false
+    },
+    "pending": [
+      "root/reviewer final precise-source integration decision",
+      "formal performance and size compliance remain unproven"
+    ],
+    "no_cloud_change": true,
+    "no_independent_private_material_read": true,
+    "final_ci_evidence": {
+      "run": 40088982094,
+      "source": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "status": "completed",
+      "conclusion": "success",
+      "full_junit": {
+        "tests": 562,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "markers_overlap_full": {
+        "contract": 179,
+        "integration": 93,
+        "fault": 19
+      },
+      "ledger_cases_passed": 5,
+      "python": {
+        "files": 44,
+        "git_set_equal": true,
+        "excluded": 0,
+        "line": [
+          2641,
+          2960
+        ],
+        "branch": [
+          663,
+          828
+        ]
+      },
+      "frontend": {
+        "tests": 89,
+        "files": 20,
+        "git_ts_vue_set_equal": true,
+        "line": [
+          364,
+          390
+        ],
+        "branch": [
+          821,
+          932
+        ]
+      },
+      "official_zips_digest_verified": 4,
+      "selected_originals_roundtrip": 18,
+      "summary": "records/validation/composite-dependency-ead-ci.json",
+      "issue_final_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383616829",
+      "issue_body_exact_get": true,
+      "new_docker_run": false,
+      "prior_docker_api_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "new_nginx_candidate_included": false
+    }
+  },
+  "integration_merge_stage_history": [
+    {
+      "root_stage": "Current-C LOC6310 confirmed from existing artifact; reduction design only, no production change",
+      "incoming_stage": "dependency-candidate-test-only-ci-terminal-evidence",
+      "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
+      "both_stage_artifacts_preserved": true
+    }
+  ]
 }

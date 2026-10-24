@@ -313,3 +313,12 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 准确C原cloc5211后端+1099前端=6310/66文件/超1210，原classify集合、应用根/counter字节与C全同，static-receipt真实记录；没有新cloc或改变口径。引用既有C-validator未应用-10及旧19有限样本边界，不复活拒绝的AST/scan-dedup；通知分页的受信page order_by复用给出具体I/O/3COUNT/顺序/锁/本人项目范围与约-3未验证预估，未实施、不宣称性能收益或达标。设计agents/backend/source-budget-current-C/design.md；当前真实节省0，没有1210可信去除计划，云C/测试oracle/应用/配置保持，未跑套件/负载或读独立私密。
 
 当前C预算交接补充：设计fe32896e5a370e89c87ff16f52f52ec07e49f873；Issue3 https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6382927110 已精确全文GET核对。6310/超1210仍未达，已实现节省0；本轮只有静态原件/文件集/字节核实与未准入设计，不是新cloc、正确性或性能运行。
+## 839公开发现后的后端最小候选
+
+候选5cc856d6fa94b1fdde32605543b53822f9747f00，DraftPR44（仅分支）；先设计ca18/6c1a，云C不改。仅Workflow依赖按域guard装载/空前驱省读，不改Runtime锁/3auth/2UoW/错误优先/审计outbox幂等。旧C3查询结构红→候选36唯一SQLite/TestClient目标绿（23+13），不证明MySQL锁/延迟/502根因；全新源CI与专审待项，准确状态见agents/backend/performance-repair-839/ci-at-handoff.json。原失败/全部JUnit/源码hash/15冻结核对与统计见validation.json、report.md。原口径实测6316(+6)/超1216/exit1；原C6310/超1210仍真，无规模达标或正式性能通过。Issue3 6383378839/PR44全文精确回读，未读独立私有/无外部服务或负载。
+
+### 5cc准确CI失败后的test-only修正
+
+原run40087756354两job真实FAIL已保留（985 block20/22 SELECT对旧22/24）；不是业务或环境根因证据，而是设计查询减少后开发精确账本未同步。新ead155e6204de9004bc968e9b9648358cfed75f8仅985两常量/注释，应用逐字5cc、其余AST全同，业务/auth/Tx/RC/audit/幂等断言不删。Ruff/format绿、collect-only5参数非执行。新product40088982094交接时frontend/static绿、其余两job仍跑，不预称全绿。报告/原两日志gzip/hash/AST证明与new-ci-at-handoff.json同agents/backend/performance-repair-839-ci-fix；Issue3 6383532393精确回读。原PR44/旧失败/规模6316未达/独立性能门槛全保留，后续完整CI/审核准入待项。
+
+终态补充：准确ead155e的product40088982094四job全部success；新原件实读full562/0failure/error/skip、markers179/93/19重叠；ledger5case全绿。44Py与Git全集/excluded0，line2641/2960=89.22297297%，branch663/828=80.07246377%；FE89/20TSVue/93.33行88.09分支。4官方ZIP先验digest/bytes后读18新原件，原成功job日志+selected双hash/roundtrip齐；汇总records/validation/composite-dependency-ead-ci.json。不含Nginx候选，旧5ccDocker非ead新运行且此轮不补actualcheckout证明；规模仍6316未达。旧5cc失败保留，无重新测试/生产/云操作，不构成独立性能通过或自动整合。

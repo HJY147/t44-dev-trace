@@ -511,3 +511,24 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - report agents/backend/source-budget-current-C/design.md明确没有1210可信删除方案。原云C/新oracle/RequestID候选/应用/测试/配置/统计脚本全未改，作者与静态操作者AI，不记人改码，先交核心事实不等报告；GitHub正文另回读留痕。
 
 - 只读设计fe32896e5a370e89c87ff16f52f52ec07e49f873已push；Issue3 6382927110已body-file发表并对精确comments/:id GET全文逐字核对，正文/回执同目录。后续仅公件seal，不改变应用C或运行任何验证，结束释放。
+## 839公开事实后的最小性能候选（未部署）
+
+- 新分支codex/backend-performance-repair-plan自root6d02，应用三根对准确C0dfb55c字节同；只读唯一指定839_PUBLIC_MINIMAL_FACTS_v1.md并核c35b37f…，未跟private引用/读其它839852841/联系tester。公开短窗502和P95失败保留，0组600秒，资源尚未联合不归因。先ca18范围/真实prompt、6c1a设计，再候选5cc856d6fa94b1fdde32605543b53822f9747f00，作者/改码/测试均AI。
+- 只改Workflow按guard加载业务依赖、空前驱不发IN空读；START/REWORK/UNBLOCK回develop仍查，Runtime project X/读边/member S/有序tasks X完全保留，三次auth/两UoW、版本/角色/证据/D008优先、CAS、成功audit/outbox/idem同事务、拒绝退出后独立audit、ACK不明不变。合法数据/移除无必要故障触发点边界明示，非502修复证明。
+- 原C新增3真实SQLite/TestClient+SQL hook查询结构红3fail（业务断言先过）；窄改后3及旧邻接23pass，另2受控反激活边界+原85611共13pass，共36唯一目标，无MySQL/外部HTTP/云/负载。原856859未改；新受控fixture不冒实际返工。首次未指定Ruff配置N999/88cols失败保留，改用原backend配置、仅新test一处换行后绿，未降lint。
+- 正常sourcepush触发新源CI；DraftPR44 head固定5cc856，不推动产品头。原cloc脚本/固定2.10SHA实际6316(5217+1099)/超1216，exit1，净+6；云C原6310不改，N07继续未达无1210可信删重方案。15冻结hash全同。后续仅codex/backend-performance-repair-evidence公件，报告/原件agents/backend/performance-repair-839。
+- Issue3 6383378839 body-file发表并精确comments/:id GET逐字同；PR44 API全文/准确head/draft读回匹配。DB owner实际说明现成Rows足够，不改全局empty-IN/SQL/池；其离线配方不冒本业务/RC/收益。完整CI/源码专审/真MySQL锁与性能未验，阶段封档后释放，不重复绿或等平台占槽。
+
+## 5cc首次CI红：开发SQL精确账本同步
+
+- root派新阶段后自有新branch，先847256e范围/实际prompt再32cb991诊断设计。只读公开开发run40087756354与job120854051910/120854052090，head5cc匹配；两原ANSI job日志gzip+raw/gzip双hash/解压完全同，未rerunCI。首gh原始输出保护exit1另留再显式GET，非SUT/环境失败。
+- 唯一真实红为985原SQL计数：block20对22/unblock22对24，DML5/control2均同；恰少两SELECT。coverage原560pass2fail，contract177pass2fail/integration91pass2fail重叠。端点200/schema及打印Tx事实可见，但失败后auth/closed/replay断言未执行，不凭保留冒绿。此是开发期望陈旧，不更改独立270ms/600秒/零错。
+- root窄授权后test-only source ead155e6204de9004bc968e9b9648358cfed75f8正常push；985只两常量+注释，AST其它全部节点全同，应用对5cc逐字同，不再改Workflow。原backend Ruff/format绿；collect-only5参数/35deselected仅收集，不跑本地MySQL/业务服务/负载，不重复旧36绿。当前规模按5cc原6316+应用身份沿用，未新cloc/仍超1216。
+- product40088982094新source head核真，交接时frontend/static成功，coverage/contracts in_progress；完整CI仍待，原PR44保持5cc审核范围，main/云C未改。新E分支codex/backend-dependency-ci-fix-evidence只公件；报告agents/backend/performance-repair-839-ci-fix/report.md，原failure全保留。Issue3 6383532393 body-file+精确GET全文同。无独立私有读取/不联系839，作者与修正为后端AI。
+
+### ead155e准确CI终态E（不重跑）
+
+- root另派纯归档后实读product40088982094/attempt1 metadata，准确ead155e head、四job全部success。四artifact ZIP逐个先官方sha256/bytes核验再开，沿旧18原件选择名单取新bytes/gzip双hash并实解压回读；成功coverage/contracts原ANSI日志另双hash gzip保存。records/ci/40088982094及records/validation/composite-dependency-ead-ci.json为本轮新原件，不复制旧结果/不改原5cc失败。
+- 实际JUnit full562/0fail/error/skip，contract179/integration93/fault19重叠且零；原ledger5case在full/contract/integration全部真实passed。44Py Git全集/excluded0，行2641/2960=89.22297297%/分支663/828=80.07246377%；FE89pass/20TSVue Git全同，line93.33/branch88.09（不扩CSS/HTML）。原combined87.2228不是行覆盖。
+- 原Docker40087993372 APIhead5cc成功、不是ead新run；仅核5cc与ead相关源roots相同，本次无新实际PRmergecheckout证明，绝不拿APIhead冒checkout。ead不含后来Nginx候选、该CI不验证它。规模仍原5cc6316/超1216+应用身份沿用，未新cloc。新绿不取消原失败/正式270ms600秒零错门槛，不证明502根因/独立验收/自动集成。
+- Issue3终态6383616829 body-file发表且精确全文GET一致；本轮只官方开发CI只读，生产/测试/配置/云/本地suite/SUT/负载均无新执行，角色作者AI。最终E封档后释放，不等无关检查。
