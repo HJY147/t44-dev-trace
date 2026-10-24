@@ -278,3 +278,9 @@
 - 原after-finish及03:52:30Z只读快照九protected均与before-serve PID/UID/start/pgid/hash/地址全等；driver/runner不存在，driver/controller/runtime原hash保持。post记录92源核验；81扫描是controller子集，16/26仍历史复核、无新publish声明。
 - 本轮只读/文档，无重启/续时/脚本补跑/HTTP/SQL/信号/服务/独立private；旧03:17未知及原360失败保持。报告agents/deployment/demo-natural-close-report.md，白名单投影及原件hash在demo-natural-close-validation；自然结束不等于正式性能/独立验收/云通过。
 - 证据checkpoint88252670d1507f8e0df0067d834076fd3ad40932已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379541206实际发布并全文GET一致。seal列公开投影/hash及原件绑定，收尾不再运行或观测。
+
+### ALIYUN-DRAFT-RECORD-v1 未下单草稿
+
+- 总协调实际UI观察转述应用c8i.2xlarge8/16+80GiB PL0=1.714796、发压c8i.xlarge4/8+40GiB PL0=0.857398 CNY/h；合计2.572194/h，两小时基础5.144388，公网出流量0.8/GB另计。基础估计非最终账单或上限。
+- 同杭州K/默认VPC-switch/Ubuntu24.04x86安全加固/按量/5Mbps流量计费；SSH默认所有IP提示等完整选项见agents/deployment/aliyun-purchase-draft-record.md。AI选配置、用户本人登录，尚未协议/下单/建资源，部署岗未看UI或截图；无测试/联网/部署通过。
+- 官方唯一性支持默认网络复用，但旧草稿刷新事务未获明确保证；首台创建后第二单刷新核同VPC/交换机ID。仅文档记录，不动账号/服务/CI/图片或共享U文件，无额外GitHub评论。

@@ -731,6 +731,11 @@
       "id": "ROLE-deployment-DEMO-NATURAL-CLOSE-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-DEMO-NATURAL-CLOSE-v1.md",
       "reason": "原已授权演示截止后只读取既存终结回执及受保护监听元数据；不补跑或跨范围宣称"
+    },
+    {
+      "id": "ROLE-deployment-ALIYUN-DRAFT-RECORD-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-ALIYUN-DRAFT-RECORD-v1.md",
+      "reason": "仅记录root观察的购买草稿与已核官方网络来源，不冒充实际购买/部署或学生亲改"
     }
   ],
   "questions": [
@@ -872,7 +877,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "demo-natural-close-readonly-complete",
+  "stage": "aliyun-purchase-draft-documentation-only",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -880,7 +885,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T03:53:51.984458+00:00",
+  "updated_at": "2026-10-24T05:44:51.825646+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1018,5 +1023,50 @@
     "final_status": "Original14400second demo naturally finished with actual driver/post exits0 and cleanuptrue;protected9 exact;no further actions authorized",
     "final_revision": "Git commit metadata identifies receipt-only seal"
   },
-  "prior_stage_before_demo_natural_close": "performance-quote-ready-await-user"
+  "prior_stage_before_demo_natural_close": "performance-quote-ready-await-user",
+  "prior_stage_before_aliyun_draft_record": "demo-natural-close-readonly-complete",
+  "aliyun_draft_record": {
+    "base_sha": "2129cec977adfa16ce4e4bcbd31ce2793d58b78e",
+    "branch": "codex/deployment-aliyun-draft-record",
+    "prompt_ref": "ROLE-deployment-ALIYUN-DRAFT-RECORD-v1",
+    "recorded_at_utc": "2026-10-24T05:44:51.825646+00:00",
+    "ui_evidence_source": "root actual UI observations and screenshot price reading relayed to deployment;deployment did not independently inspect UI/images",
+    "application": {
+      "name": "t44-app",
+      "instance_type": "ecs.c8i.2xlarge",
+      "vcpu": 8,
+      "gib": 16,
+      "disk_gib": 80,
+      "disk": "ESSD PL0",
+      "ui_cny_per_hour": "1.714796"
+    },
+    "load": {
+      "name": "t44-load",
+      "instance_type": "ecs.c8i.xlarge",
+      "vcpu": 4,
+      "gib": 8,
+      "disk_gib": 40,
+      "disk": "ESSD PL0",
+      "ui_cny_per_hour": "0.857398"
+    },
+    "base_cny_per_hour": "2.572194",
+    "two_hour_base_cny": "5.144388",
+    "public_egress_cny_per_gb_root_load_ui": "0.8",
+    "price_is_budget_cap_or_final_bill": false,
+    "user_login_and_ai_draft_configuration_only": true,
+    "purchase_confirmed": false,
+    "resources_created": false,
+    "protocol_accepted": false,
+    "credentials_entered": false,
+    "network_connectivity_verified": false,
+    "no_browser_account_resources_services_ci_actions_by_deployment": true,
+    "report": "agents/deployment/aliyun-purchase-draft-record.md",
+    "no_extra_github_comment": true,
+    "network_rule": "same-account same-region defaultVPC and same-zone defaultswitch unique;refresh second old draft and verify IDs after first order succeeds",
+    "sources": [
+      "https://www.alibabacloud.com/help/en/vpc/vpc-and-vswitch",
+      "https://help.aliyun.com/zh/vpc/frequently-asked-questions",
+      "https://help.aliyun.com/zh/ecs/user-guide/internal-network"
+    ]
+  }
 }
