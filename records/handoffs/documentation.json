@@ -1,7 +1,7 @@
 {
   "role": "documentation",
-  "stage": "M10 complete: Issue9 exact full GET passed; receipt-only commit then release",
-  "implementation_status": "public-summary addendum and current entry only; historical Word35pages/source/QA/freeze unchanged",
+  "stage": "CLOUD839 public evidence/document synchronization; not product acceptance",
+  "implementation_status": "CLOUD839 Markdown synchronization complete and published; 40/40 correspondence checks, 98/98 links; not product acceptance",
   "actor": "AI /root/documentation_checkpoint; current M6 author/check/render operator",
   "previous_M5_author": "previous documentation AI; this same instance only recovered M5",
   "artifacts": [
@@ -120,7 +120,15 @@
     {
       "path": "docs/reports/diagrams/M8-render-manifest.json",
       "status": "M8 finite checkpoint complete"
-    }
+    },
+    "reports/final/cloud839-evidence-addendum.md",
+    "docs/reports/cloud839-design-checkpoint.md",
+    "docs/reports/cloud839-source-manifest.json",
+    "docs/reports/cloud839-collection.json",
+    "docs/reports/cloud839-validation.json",
+    "agents/documentation/prompts/ROLE-documentation-CLOUD839-SYNC-v1.md",
+    "agents/documentation/github-cloud839-stage-comment.md",
+    "agents/documentation/github-cloud839-readback.json"
   ],
   "interfaces": {
     "inputs": [
@@ -148,36 +156,40 @@
     "source/links/privacy patterns/scope and full diff validation before commit",
     "M4 105 private files archived byte-identically before M6 authoring; four original DOCX hashes rechecked",
     "four technical DOCX rendered by bundled documents renderer; qa-v1 35 pages, qa-v2 34 pages, design-only qa-v3 14 pages; all iteration pages actually opened original",
-    "final QA 33 pages, hash/permissions/private root ignore verified; no product execution or repeated marker"
+    "final QA 33 pages, hash/permissions/private root ignore verified; no product execution or repeated marker",
+    "CLOUD839: public-source size/SHA/base-blob checks; six historical-body exact-preservation checks; 40 finite correspondence/privacy/scope/JSON checks and 98 relative-link checks; git diff --check; no product executions"
   ],
   "results": {
-    "backend_tests": 510,
-    "backend_lines": "2638/2957=89.21%",
-    "backend_branches": "659/824=79.98%",
-    "backend_excluded_lines": 0,
-    "frontend_tests": 89,
-    "frontend_lines": "364/390=93.33%",
-    "frontend_branches": "821/932=88.09%",
-    "source_size": 6307,
-    "within_3500_5100": false,
-    "original_three_formal_P95": "fail; no new formal result",
-    "independent_v2": "NOT_ACCEPTED_INCOMPLETE at4c; published subsets only",
-    "independent_v3_stage01": "0pass0fail26notrun; environment precondition blocked",
-    "M6_Word_authored": true,
-    "marker_repeated": false,
+    "product_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "formal_complete_groups": 0,
+    "task_steady_requests": 10814,
+    "task_steady_HTTP502": 1,
+    "transition_short_window_P95_ms": 3645.763385,
+    "validation_warmup_requests": 7273,
+    "validation_warmup_HTTP502": 2,
+    "validation_steady": "NOT_RUN",
+    "planned_items": 1396,
+    "distinct_case_IDs_touched": 9,
+    "full_directory_postconditions_provable_cases": 0,
+    "source_C_lines": 6310,
+    "source_C_excess": 1210,
+    "candidate_unintegrated_lines_at_cutoff": 6316,
+    "candidate_excess": 1216,
+    "resource_archives_recovered_verified": true,
+    "instances_system_disks_actually_released_at": "2026-10-24T19:01:49+08:00",
+    "final_bill": "NOT_YET_VERIFIED",
+    "cause_attribution": "NOT_PROVEN",
     "student_research_authored": false,
-    "product_executions": 0,
-    "M6_Word_final_pages": 33,
-    "M6_Word_layout_QA": "passed; requirements10/design14/test6/AI3; this AI individually viewed all final original page PNGs",
-    "M4_archive_files": 105,
-    "independent_v3_stage02": "26 functional,4 fault,3 formal segments incomplete from neutral driver precondition; no new product pass inferred",
-    "native_finite_cycle": "run2 finite application cycle and cleanup true at published5ef1bde; not browser/independent/performance/cloud or special-review approval"
+    "product_service_test_CI_Word_executions": 0
   },
   "unverified": [
-    "six new H2 requests have authorization but no results in allowed public packet",
-    "original six formal state remainsNOT_RUN; missing fixture/formal/resource values unknown or null",
-    "private18segment preservation not independently inspected by documentation",
-    "old global acceptance and student final research/genuine12-5-3 gaps not cleared by this addendum"
+    "502/latency root cause",
+    "source size gate",
+    "accurate candidate independent retest",
+    "full function/fault postconditions",
+    "final bill",
+    "student handwritten research",
+    "new technical Word and final coursework bundle"
   ],
   "prompt_refs": [
     {
@@ -204,20 +216,25 @@
       "id": "ROLE-documentation-M9-REVIEW-NAVIGATION-v1",
       "status": "used; no historical evolution increment",
       "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M9-REVIEW-NAVIGATION-v1.md"
+    },
+    {
+      "id": "ROLE-documentation-CLOUD839-SYNC-v1",
+      "status": "used; actual root delegation and bounded execution refinement; no historical count increment",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-CLOUD839-SYNC-v1.md"
     }
   ],
   "delivery": {
-    "branch": "codex/documentation-m9-navigation",
-    "base": "728c4e8e273a8e1f8505db505c09168d1abe3556",
-    "design_checkpoint": "bf2bc5e8fd795b7810c84833d087f701ac8d5d43",
-    "implementation_checkpoint": "6be519226ed5e83c71c6c6a99719ffd64c962e8d",
-    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6377836827",
-    "readback": "agents/documentation/github-M9-navigation-readback.json",
-    "stage": "M9 bounded navigation complete; final receipt then release",
+    "branch": "codex/documentation-cloud839",
+    "base": "0f35dc3a5e3dcd53b147ce6a6a0b25e50802a65e",
+    "design_checkpoint": "e4604aa6b4c6de1556f64cae903e9a4817f315cb",
+    "stage": "complete; receipt-only commit and exact local/remote SHA check then slot release",
     "new_Word_bundle_or_results": false,
-    "no_approval_status_main_merge": true
+    "no_approval_status_main_merge": true,
+    "implementation_checkpoint": "0321ea951bf1ba9a1af31c715e8f5384e1dbd5c9",
+    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6383510954",
+    "readback": "agents/documentation/github-cloud839-readback.json"
   },
-  "updated_at": "2026-10-24T08:57:41.703557+08:00",
+  "updated_at": "2026-10-24T19:14:00.373934+08:00",
   "M7": {
     "design_checkpoint": "fa3b2fe1095aca78c02e80cad9de2ce187ff551b",
     "base": "3dadfb954f9f11274b324fa544d14c841eb4849a",
@@ -476,5 +493,66 @@
     "readback": "agents/documentation/github-M10-night-test-readback.json",
     "comment_full_GET_body_match": true,
     "stage": "complete; final receipt commit then immediate release"
-  }
+  },
+  "cloud839": {
+    "base": "0f35dc3a5e3dcd53b147ce6a6a0b25e50802a65e",
+    "branch": "codex/documentation-cloud839",
+    "design_checkpoint": "e4604aa6b4c6de1556f64cae903e9a4817f315cb",
+    "source_count": 5,
+    "inquiry_count": 1,
+    "AI_reply_count": 1,
+    "tester_contacted": false,
+    "private_material_read": false,
+    "historical_report_bodies_preserved": true,
+    "old_Word_freezes_QA_changed": false,
+    "root_AI_context_incident_recorded": true,
+    "new_os_isolation_claimed": false,
+    "unverified": [
+      "502/latency root cause",
+      "source size gate",
+      "accurate candidate independent retest",
+      "full function/fault postconditions",
+      "final bill",
+      "student handwritten research",
+      "new technical Word and final coursework bundle"
+    ],
+    "publication": {
+      "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6383510954",
+      "exact_ID_GET_full_body_equal": true,
+      "readback": "agents/documentation/github-cloud839-readback.json"
+    },
+    "validation_checks": 40,
+    "relative_links": 98,
+    "all_checks_pass": true,
+    "implementation_checkpoint": "0321ea951bf1ba9a1af31c715e8f5384e1dbd5c9"
+  },
+  "historical_results_pre_cloud839": {
+    "backend_tests": 510,
+    "backend_lines": "2638/2957=89.21%",
+    "backend_branches": "659/824=79.98%",
+    "backend_excluded_lines": 0,
+    "frontend_tests": 89,
+    "frontend_lines": "364/390=93.33%",
+    "frontend_branches": "821/932=88.09%",
+    "source_size": 6307,
+    "within_3500_5100": false,
+    "original_three_formal_P95": "fail; no new formal result",
+    "independent_v2": "NOT_ACCEPTED_INCOMPLETE at4c; published subsets only",
+    "independent_v3_stage01": "0pass0fail26notrun; environment precondition blocked",
+    "M6_Word_authored": true,
+    "marker_repeated": false,
+    "student_research_authored": false,
+    "product_executions": 0,
+    "M6_Word_final_pages": 33,
+    "M6_Word_layout_QA": "passed; requirements10/design14/test6/AI3; this AI individually viewed all final original page PNGs",
+    "M4_archive_files": 105,
+    "independent_v3_stage02": "26 functional,4 fault,3 formal segments incomplete from neutral driver precondition; no new product pass inferred",
+    "native_finite_cycle": "run2 finite application cycle and cleanup true at published5ef1bde; not browser/independent/performance/cloud or special-review approval"
+  },
+  "pre_cloud839_historical_unverified": [
+    "six new H2 requests have authorization but no results in allowed public packet",
+    "original six formal state remainsNOT_RUN; missing fixture/formal/resource values unknown or null",
+    "private18segment preservation not independently inspected by documentation",
+    "old global acceptance and student final research/genuine12-5-3 gaps not cleared by this addendum"
+  ]
 }

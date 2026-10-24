@@ -1,5 +1,7 @@
 # T44作业提交物对照表
 
+> 本轮版本说明：**本轮云结果入口（资料截止0f35dc3）**：[云复核839补记](cloud839-evidence-addendum.md)及第9节为当前后发状态：0完整正式组、C6310/超1210未解决；两份资源归档回收已核验、实例和系统盘已实际释放。旧四技术Word仍为M6/M7的35页组合，本次未重导/重封包，学生最终研究正文须本人手写。
+
 **审阅包链接说明**：外层辅助Markdown为仓库原字节副本，相对链接没有因复制自动改写；请在展开的内层源码树中使用。对应仓库路径为`reports/final/submission-map.md`、`reports/final/M9-review-navigation.md`、`reports/final/M8-engineering-annex.md`、`reports/final/M8-performance-preparation-addendum.md`及`reports/final/M10-night-test-handoff.md`。M9只在内层源码，不宣称外层另附。原仓库本机入口是`docs/user-guide/wake-up-review.md`。实际封包前须重取原材料字节hash；实际包状态、准确来源及生成结果以包内manifest和外部receipt为准。
 
 **版本说明**：以下第1至4节保留M7截止的记录；第5至7节为各自截止的后发入口。当前材料位置与四Word固定35页截止见源码树中的[M9审阅导航](M9-review-navigation.md)，不可把旧段中的“白盒未发表”等文字作为当前状态。最新明确发表H2关键结果见第8节M10，旧段“尚无结果”保持其固定截止。
@@ -57,3 +59,18 @@
 ## 8 当前关键结果 M10
 
 [夜间测试公开结果交接](M10-night-test-handoff.md)固定资料截止cc4c4ae，仅依据明确发表H2两摘要：六次exit1、恢复5true/1false（S2/866应用就绪）；有效400并发测量未成立，INCONCLUSIVE且不能排名，两次866正式目标0/P95未测得。发压调度、oracle和聚合器局限分别保留，旧v3失败/H1 NOT_RUN不回改。本补记不导Word、不更旧35页截止/QA，不计学生研究或人工12/5/3，候选C新完整CI及root gate决定未预填。
+
+## 9 云C与839最终复核的后发交付状态
+
+| 本轮材料/门禁 | 状态与准确边界 |
+| --- | --- |
+| 需求→设计→测试追踪 | [云复核839补记](cloud839-evidence-addendum.md)及现有三技术报告的后发节；只收五份具名公开来源 |
+| 正式性能/整体验收 | 0完整600秒组；任务短窗1个502/流转P95 3645.763385ms，校验预热2个502后中止，升级NOT_RUN；不能通过 |
+| 产品功能口径 | 1396计划、9个case触及、0个完整目录后置条件可证；不将请求成功当case通过 |
+| 源码规模 | 云C6310、超1210；候选6316、超1216在本稿截止未整合，不能写已解决 |
+| 资源和费用 | 两归档完整回收核验；实例及系统盘19:01:49实际释放；最终账单未核验 |
+| AI质量过程素材 | [云证据与隔离记录](../../records/coordination/cloud-evidence-and-isolation-20261024.md)保留总协调AI误投与fresh839纠正；不是学生经历或OS隔离 |
+| 技术Word/最终包 | 本次仅Markdown同步，不改旧Word/QA、未新封包；旧Word不含本轮云结果 |
+| AI时代研究分析 | 仅供本人选材，最终研究正文仍由学生本人手写；不计新增人工修改/测试经历 |
+
+所有新结论绑定C与839公开报告；[资料来源](../../docs/reports/cloud839-source-manifest.json)、[文档验证](../../docs/reports/cloud839-validation.json)只证明本次资料对应，不冒充新产品验证。后续版本和实际提交包应另行封档，不把旧截止中的未发表/未释放误当当前状态。
