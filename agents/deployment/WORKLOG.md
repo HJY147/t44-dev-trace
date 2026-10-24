@@ -330,3 +330,4 @@
 - 从精确217d89779440086ab727d280a0900efad36bd2c0建独立codex/deployment-preparation-budget/worktree；读先行RFC/规则，先记设计/原source SHA再新增1800接受目标。原实现真实红1项exit1；只把validate上限1200→1800，README/workflow input同步，默认900/min60/strictint和job40m保持。旧1201拒绝边界更新1801，原1200合法显式保留。
 - 仅相关13项0.07s绿，77无关项未跑；CI配置Ruff通过。执行deadline以60/1200/1800请求值驱动mock clock/Popen/recover/sleep，信号入口mock且断言未调用，没有实际进程/信号。运行源码精确只有一个常量变化，workflow精确只有输入description变化，control/metadata/usage字节相同；encrypt/output/fault/recovery/精确SHA/path保持。原红/绿stdout/stderr/JUnit/sourcehash在preparation-budget-validation。
 - 没有HTTP/SQL/Docker/服务/真实负载或独立case/output/H读取，不延长旧run或补历史unknown，不把中性能力绿称正式性能通过。由tester自行另冻H2，不能称原H字节/方法完全相同；正式指标/fixture/负载/成功判据不改。仅收尾提交/Issue7全文GET后释放。
+- 实现79ed72fe7218e8782c1ba8dca99996ddf8880e90已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377395660用本岗body-file发布，完整GET逐字核正文一致，原JSON另档。seal.json列准确源码/检查/文件SHA；仅收尾不改执行源/重测。
