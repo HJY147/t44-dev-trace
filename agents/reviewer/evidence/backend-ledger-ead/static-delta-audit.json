@@ -1,0 +1,62 @@
+{
+  "candidate": "ead155e6204de9004bc968e9b9648358cfed75f8",
+  "prior_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+  "initial_E": "01b184f4ac306a106fb6432ee8067f9993ead002",
+  "verified_utc": "2026-10-24T11:22:24.090610+00:00",
+  "app_deployment_workflow_byte_diff": [],
+  "only_test_changed": [
+    "tmp/backend/contracts/985_mysql_http.py"
+  ],
+  "test_old_sha256": "b8adbe7de1cf8e6235ffe9c7fccab1770727afb8d5bf4569512c11dd5b678b3f",
+  "test_new_sha256": "15db5e7bbe34c449ccfd496dc25a245203525f43dc1799ff84832929d33a5352",
+  "AST_constant_changes": [
+    {
+      "case": "block",
+      "old": 22,
+      "new": 20,
+      "DML": 5,
+      "control": 2
+    },
+    {
+      "case": "unblock",
+      "old": 24,
+      "new": 22,
+      "DML": 5,
+      "control": 2
+    }
+  ],
+  "whole_AST_equal_after_reversing_only_these_two_select_constants": true,
+  "unchanged_assertions": [
+    "actual == expected exact equality",
+    "three live auth lock modes except replay two",
+    "all UoWs closed,commits1,rollbacks0",
+    "replayed flag",
+    "one replay versus two normal UoW/acquire",
+    "all other auth/RC/transaction/audit/idempotency tests in entire 985 module"
+  ],
+  "original_CI_failures": [
+    {
+      "job_id": 120854051910,
+      "gzip_sha256": "8af63aabb2db1c5173e76956150874eac24a87b75d0bbf2b18bef01c4d59b869",
+      "raw_sha256": "1334ca6d754d0e81bf6e0244ec00d7e5bfef5c0efe2f3198c66e6e0240e0321a",
+      "raw_bytes": 146451,
+      "both_original_ledger_failures_preserved": true
+    },
+    {
+      "job_id": 120854052090,
+      "gzip_sha256": "6162caf75e049e57aac6f587f10773ee07abad766414bfab46441e35a9c74bde",
+      "raw_sha256": "9198038ffe871394abe8967a1e513e49eef773f055d4a4df2e7ab9f7d568b52f",
+      "raw_bytes": 173402,
+      "both_original_ledger_failures_preserved": true
+    }
+  ],
+  "old_failure_succeeding_count_assertions_were_not_executed": true,
+  "old_5cc_failure_not_rewritten": true,
+  "own_tests_SQL_HTTP_services_load_CI_executions": 0,
+  "full_terminal_E_audit": "PENDING_EXPLICIT_PUBLICATION",
+  "root_reported_new_CI_40088982094_all_success": "notification only; not used as artifact proof",
+  "new_material_test_delta_blocker": false,
+  "LOC_application_6316_still_failed": true,
+  "cloud_performance_NOT_ACCEPTED": true,
+  "private_independent_read_or_contact": false
+}
