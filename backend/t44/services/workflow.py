@@ -69,7 +69,7 @@ class Workflow:
             current_state=row["state"],
         )
         evidence = tuple(e["locator"] for e in b.get("evidence", ()))
-        deps = g.rows("task_dependencies", {"task_id": row["id"]})
+        deps = g.rows("task_dependencies", {"project_id": c.project_id, "task_id": row["id"]})
         predecessor_ids = [d["depends_on_task_id"] for d in deps]
         predecessors = g.rows("tasks", {"project_id": c.project_id, "id": predecessor_ids})
         review_id = (

@@ -12,8 +12,10 @@ Workflow开始`c.task(g)`已核task存在且row.project_id==c.project_id，否�
 
 根转述DB own-dev只读小夹具计划：原task_id+ORDER BY id为PRIMARY index、rows估9216、possible_keys null；增加project谓词为ref uq_dependencies_edge、rows估1且仍filesort。已向DB owner/Issue4索取最终SHA/准确公共原件，未把转述当本岗执行。复合FK由project前导键满足，无task_id前导自动索引；只在已确认合法读集上给优化器前导谓词。EXPLAIN估算不等于实际扫描/延迟/正式负载收益，不推原503或其它运行根因；索引保持原样。
 
+设计提交ed2737d后已收到并实际读取DB最终5948cf80a5dd318db370072f9741ed150bdb1487公开agents/database/index-readonly/{report.md,static-comparison.json,result.json}；Issue4请求6377741206、owner证据6377715017均全文GET。实际SHOW确认dependency四键且无task_id前导自动键；tasks/notifications确有额外自动FK键，因此没有用显式DDL列表冒充全库真实索引。owner原14只读语句不由本岗重跑；hash/出处见agents/backend/dependency-query-candidate/DB-evidence-source.json。本稿窄修掉最初对既有HTTP“前驱交付后下游开始”覆盖的过度概括；没有增删原测试。
+
 ## 验证与出口
 
-只复用现有986真实SQLite HTTP覆盖：完整交付/回滚/返工、依赖不满足→前驱交付→开始、环拒绝/开发后编辑锁、删除依赖、角色/版本/严格union、当前返工人力守卫。SQLite fixture非用户/独立DB，不新起服务，不另造断言镜像谓词；原测试字节不改。先核oldsource/原测试适用性，再最小产品commit；错误原件保留。严格静态检查、14冻结和唯一生产差异核对，按现固定cloc实际计数（不预设6307），准确新SHA push后只一轮完整托管CI/44文件分母/原件。必要时CI待完成就交准确pending，不把定向通过当全套。
+只复用现有986真实SQLite HTTP覆盖：完整交付/回滚/返工、依赖不满足、环拒绝/开发后编辑锁、删除依赖、角色/版本/严格union、当前返工人力守卫；不把这些既有HTTP案说成已经覆盖“非空前驱全部交付后下游开始”的额外场景。SQLite fixture非用户/独立DB，不新起服务，不另造断言镜像谓词；原测试字节不改。先核oldsource/原测试适用性，再最小产品commit；错误原件保留。严格静态检查、14冻结和唯一生产差异核对，按现固定cloc实际计数（不预设6307），准确新SHA push后只一轮完整托管CI/44文件分母/原件。必要时CI待完成就交准确pending，不把定向通过当全套。
 
 产品仅独立分支/draft PR；root/专审另决定合并与是否进一步测量。本轮不运行本机SQL、独立/用户库、真实服务或新负载，不读独立案例/日志/密文，不改其它岗文件。候选有效LOC预期不变但以实际为准；无法证明前提则停产品、只留报告。
