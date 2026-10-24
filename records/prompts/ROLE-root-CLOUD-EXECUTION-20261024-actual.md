@@ -15,3 +15,8 @@
 实际向测试员转交公开诊断事实：/sys/class/net仍是宿主挂载视图；当前 netns 应用 if_nameindex/proc/ioctl 核验。v2在降权后读取 /proc/1/ns/net 被Linux权限拒绝，先用只读公开探针实测，v3以root先缓存可信host/isolated身份，降权后要求current保持同一isolated且异于host，并继续核lo DOWN、能力为0和NNP。只修公开物流，原用例、冻结方法和失败记录不改。
 
 测试员未接收旧性能数字、开发讨论、预期缺陷或“应当通过”断言。72项离线校准在真实负载机通过只代表工具准备，不代表应用验收。正式负载仍须满足原并发、预热及持续量测门槛；窗口不足项写NOT_RUN，不能缩短门槛或用局部代替全通过。
+
+
+## 17:27 actual checkpoint
+
+Root relayed reviewed scheduler stop/rotation/start and encrypted independent synthetic service fixture, then started host-network resource series and verified both actual first samples. First formal entry failed after one second. Root did not read private errors or test code; recovered complete960B ciphertext and1245B metadata, matched both hashes and requested private tester diagnosis. Original failure and truthful missing performance result preserved. User confirmed default Downloads delivery; only the expected named encrypted file was located and hashed. Root integrated role commits while diagnosis continued; no product-C changes or standards reduced.
