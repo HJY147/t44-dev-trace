@@ -318,3 +318,8 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - b974accc644ec897f59cb7e4ddf105e1027a7a8b本人commit/push，新draftPR40用GitHub工具建立，GET body/headb974匹配、open/draft/unmerged/mergeabletrue；Issue9评论6377281950及PR40评论6377282225均精确ID GET，正文/URL逐字一致，保存github-M8-readback。
 - M8实现后frontend另到M7迟回复，确认预览登录有认证DB写、0businessMutations不代表DB零写；既有正文未如此扩称，不改稿或新导Word，仅收件注其时点。M8仍仅native1问1AI答复，未采访学生或联系tester。
 - 本笔仅保存发布回执/交接，未APPROVE/status/mainmerge，未等待性能或读取新增输出。最终receipt SHA由HEAD与远端一致核对后回传并释放本岗索引/槽位。
+
+## 2026-10-24T08:23:24.203758+08:00 M8 性能准备补充说明先行设计
+
+- 从root固定5ce98e0新建documentation-m8-performance-addendum树/分支，只读指定五公开文件及本岗待加入口的现有MD；大小写定位用公开metadata文件名，不打开H树/私密引用。先保存设计/实际任务，尚未新增正文。
+- 原六正式NOT_RUN、330/5工具预算、H2接触SUT后900/30明确方法修订与新六授权无结果分开；不等后续性能、不读Word/R002、不运行服务。
