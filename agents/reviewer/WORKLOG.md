@@ -369,3 +369,8 @@ C cloc实际6307/range失败是owner新准确原件，本岗未重计；DB EXPLA
 实际ROLE-reviewer-FINAL-CONSISTENCY-v1，新codex/review-final-consistency从root31637，先scope后限定公开MD/JSON/自身C报告与回执，不重审C/CI。未见实质数字/版本/链接对应或过度结论问题：root仅C开发准入与bc5demo/固定Word/未来包分开；H2六exit1/五恢复一ready失败/INCONCLUSIVE不排名/866目标0，校准3810=2213+1597/3073parserreply/33.410父墙钟/单轮两自有孩子回收均与JSON一致；本机不能推Linux同因或SUT收益。传递inventory事前冻结缺口、原v3失败、6307/本人门禁保持。相对公开链接metadata存在，远程仅格式与发表run_url对应不重取。新包仍将建/actual尚无、不读WordZIPR002或demo，不跟private/cases/raw/860，不新测试/服务HTTP_SQL负载CI。八段十项报告21-31637...和audit文件；PR21准确源COMMENT全文GET回执随后封存。
 
 实际发布：阶段ec70a0c3fb04b8ba1ad5589ca73961cdadd3e86a已push exit0；PR21 COMMENT5636132558显式绑定准确31637，插件逐字body/COMMENTED与REST特定全文GET body/commit_id/state严格一致exit0，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5636132558。回执final-consistency/github-comment.json。仅指定公开材料一致性，实际包尚未生成/未验，不是正式性能/整体通过；0新增测试服务CI/private读取。自身metadata封存后释放。
+
+
+## 2026-10-24 实际T审阅包完整性有限复核
+
+实际ROLE-reviewer-ACTUAL-BUNDLE-v1，新codex/review-actual-bundle从T4833；明确只读根实际输出/receipt并先scope，source元数据发现68公开developer raw后先不读并问root，root明确续授权opaque bytes/hash/CRC才全成员核。两实际ZIP SHA2c69/9043与预期receipt同，outer18=4Word+11素材+source+2说明/CRC/actualregular600全核；source3745完整trustedGitT path/mode/blob/直接catfilebytes/SHA/CRC/actualregular644或755全同，private/independent/testing/cases/860路径0，内source bytes同另ZIP。两ZIP/两旁manifest0600及ownerregularnosymlink/dirs0700，sidecar同embedded。四DOCX只bytes/hashmetadata同固定M7manifest三M6+测试M7，不展开任何DOCX/正文/cover/render或重QA；11素材精确allowlist/GitTbytes。0coverliteral重扫/coverinfo/R002raw/凭据/独立私密refs，0测试服务SUTHTTP_SQL负载CI第三方，无根输出改动。实际完整性范围未见新增实质问题，不等于课程/性能/整体通过，原incomplete缺项保持。报告21-4833...actual-bundle八段十项及actualaudit/3745hashledger/receipt只读副本，自有metadata commitpush后释放。

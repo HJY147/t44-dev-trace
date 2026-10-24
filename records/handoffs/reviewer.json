@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "公开文本/JSON算术、版本与链接metadata核完；PR21准确31637 COMMENT全文GET封存；0测试或服务CI，包未验/整体不放行",
+  "implementation_status": "两ZIP/sidecar权限CRC/hash/18outer/3745source直接GitTbytes/四固定WordSHA核同；无正文QA、根输出改动或服务测试",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/final-consistency/public-consistency-audit.json",
-  "latest_review_report": "reports/reviews/21-31637dd53924b2e1aab8bf5ab215dacdd3ca62ed.md",
+  "latest_review_evidence": "agents/reviewer/evidence/actual-bundle-4833/actual-integrity-audit.json",
+  "latest_review_report": "reports/reviews/21-4833be05807df5a9d43176eb2ec5a610c7ac06b1-actual-bundle.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1432,7 +1432,8 @@
     "ROLE-reviewer-PREPARATION-BUDGET-v1",
     "ROLE-reviewer-DEPENDENCY-QUERY-v1",
     "ROLE-reviewer-DEPENDENCY-QUERY-EVIDENCE-v1",
-    "ROLE-reviewer-FINAL-CONSISTENCY-v1"
+    "ROLE-reviewer-FINAL-CONSISTENCY-v1",
+    "ROLE-reviewer-ACTUAL-BUNDLE-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1474,10 +1475,10 @@
     "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
-  "review_branch": "codex/review-final-consistency",
-  "review_outcome": "NO_NEW_MATERIAL_PUBLIC_TEXT_CONSISTENCY_FINDING;actualpackageUNVERIFIED;overallNOT_ACCEPTED",
-  "review_scope": "Only explicitlypublic M12/admission/calibration/H2 aggregates and own prior report;no private/raw/860 or sourceCI repetition",
-  "review_target_sha": "31637dd53924b2e1aab8bf5ab215dacdd3ca62ed",
+  "review_branch": "codex/review-actual-bundle",
+  "review_outcome": "NO_NEW_MATERIAL_ACTUAL_ARCHIVE_INTEGRITY_FINDING;overallNOT_ACCEPTED_INCOMPLETE",
+  "review_scope": "Actual explicitlyauthorized archive integrity only, opaqueDOCX bytes and publicGit source, no private testcase/raw860 or credentials",
+  "review_target_sha": "4833be05807df5a9d43176eb2ec5a610c7ac06b1",
   "review_targets": [
     {
       "pr": 14,
@@ -1559,7 +1560,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "M12/明确公开摘要一致性有限审；未见实质问题，实际包未验/整体不放行",
+  "stage": "实际T审阅包完整性有限复核完成；课程/整体不放行",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1578,7 +1579,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-24T01:24:10.488305+00:00",
+  "updated_at": "2026-10-24T01:29:28.831828+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -1958,5 +1959,26 @@
       "verified_at_utc": "2026-10-24T01:24:10.487004+00:00"
     },
     "evidence_commit": "ec70a0c3fb04b8ba1ad5589ca73961cdadd3e86a"
+  },
+  "previous_phase_before_actual_bundle": {
+    "stage": "M12/明确公开摘要一致性有限审；未见实质问题，实际包未验/整体不放行",
+    "implementation_status": "公开文本/JSON算术、版本与链接metadata核完；PR21准确31637 COMMENT全文GET封存；0测试或服务CI，包未验/整体不放行",
+    "review_target_sha": "31637dd53924b2e1aab8bf5ab215dacdd3ca62ed",
+    "review_outcome": "NO_NEW_MATERIAL_PUBLIC_TEXT_CONSISTENCY_FINDING;actualpackageUNVERIFIED;overallNOT_ACCEPTED",
+    "latest_review_report": "reports/reviews/21-31637dd53924b2e1aab8bf5ab215dacdd3ca62ed.md",
+    "latest_review_evidence": "agents/reviewer/evidence/final-consistency/public-consistency-audit.json"
+  },
+  "actual_bundle_review": {
+    "T": "4833be05807df5a9d43176eb2ec5a610c7ac06b1",
+    "outerSHA": "2c69f940f8e38642e7086d33f651cfbe70c88b52fca9b7bfe986c6bd19ec4393",
+    "sourceSHA": "9043b2974fc69919ae131c16211b20c8beda992ea84d57874bfdc5639c063a4e",
+    "outer18_source3745_all_CRC_bytes_hash_Git_mode": true,
+    "twoZIP_twoManifest600_dirs700_owner_regular": true,
+    "DOCX4_fixedSHA_only_no_nested_open_orQA": true,
+    "public_developer_raw68_opaquehash_authorized": true,
+    "independent_private_cases860_or_credentials_read": false,
+    "tests_services_load_CI_thirdparty": 0,
+    "root_outputs_modified": false,
+    "overall": "NOT_ACCEPTED_INCOMPLETE"
   }
 }
