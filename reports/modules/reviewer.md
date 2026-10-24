@@ -272,3 +272,8 @@ C cloc实际6307/range失败是owner新准确原件，本岗未重计；DB EXPLA
 root明确发布R2 d328（父8c），先R2scope后仅核docdelta：只RFC表单行+重放小节。成功及owner/status1/<500/拒绝audit事务提交的4xx COMPLETE限定、5xx/无claim/owner失配/auditcommit不保证与未知commit、当前auth/input/digest门槛、成功动态Meta/originalid实际完成请求、错误新requestid/旧audit/无outerMeta均准确；原失败槽/1.2无变。旧8c报告/comment保持；R2有限设计无新增实质阻断，只准责任岗下一步spec草稿同步，不准实现，仍需新freeze实际hash/应用tests自测/代码审核，无main/globalstage/全验收。859原仅2目标意义不重复。0测试源复审服务CI/private858860等读取。新R2报告/Issue3续comment全文GET另封。
 
 R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已push exit0；Issue3续COMMENT6379417061显式完整R2d328，REST特定全文GET body逐字/Issue3归属/R2 SHA严格一致exit0，https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379417061。回执R2-github-comment.json。原8c报告/评论保持；限定设计只进入spec草稿同步，新freeze/实现tests自测/代码审仍待，0源复审测试服务CI，metadata封存后释放。
+
+
+## D008 v1.2精确规格冻结readiness
+
+实际ROLE-reviewer-D008-FREEZE-READINESS-v1，独立codex/review-d008-freeze基fec7；root3/BE4 bytes同fd30/29b，RFC同R2，FrontendREADME同224compat。两OpenAPI6f07逐字同/info成功Meta1.2/inner1.0；实际45leaf精确白名单，31/38/130，130schema纯meta/787refs解析通过；0app import/suite/services/CI/private。旧1.1manifestc950未改，14hash准确C恢复，DB/DDL/layout/protocol/容量RFC七原hash复用；新15逐项hash及FEcompat/authority输入列报告。未发现规格阻塞，只准root exacthash新freeze→后续另实施自测代码审，不产品/globalgate；改pending注解会变hash须另核。自有singleton-tuple检查器错误纠正后0，不改输入。Issue3评论/fullGET与自有记录封档后释放。

@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "R2唯一RFC差量已补齐重放事实，原8c保留，R2 Issue3 COMMENT全文GET封存；只spec草稿同步准入，待新freeze/实现tests/代码审",
+  "implementation_status": "15hash/父链/45leaf/130schema/787refs/compat核完，0app suite，待Issue3全文GET封存",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/D008-design/R2-document-audit.json",
-  "latest_review_report": "reports/reviews/D008-design-R2-d328986fc6fd985a67c2340f87adbf5afc3047f5.md",
+  "latest_review_evidence": "agents/reviewer/evidence/D008-freeze-readiness/freeze-readiness-audit.json",
+  "latest_review_report": "reports/reviews/D008-freeze-readiness-fec7a4e4877cc1dd3fceb8cd9f785db0f216b20d.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1435,7 +1435,8 @@
     "ROLE-reviewer-FINAL-CONSISTENCY-v1",
     "ROLE-reviewer-ACTUAL-BUNDLE-v1",
     "ROLE-reviewer-D008-DESIGN-v1",
-    "ROLE-reviewer-D008-DESIGN-R2-v1"
+    "ROLE-reviewer-D008-DESIGN-R2-v1",
+    "ROLE-reviewer-D008-FREEZE-READINESS-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1477,10 +1478,10 @@
     "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
-  "review_branch": "codex/review-release-error-design",
-  "review_outcome": "LIMITED_DESIGN_CLEAR_FOR_SPEC_DRAFT_SYNC_ONLY;implementationNOT_ADMITTED;overallNOT_ACCEPTED",
-  "review_scope": "Only D008 minimalapproval-reference mismatch design;current1.1 source/replay semantics and public859 testmeaning, no runtimeexecution",
-  "review_target_sha": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
+  "review_branch": "codex/review-d008-freeze",
+  "review_outcome": "READY_FOR_COORDINATOR_NEW_FREEZE_EXACT15HASHES_ONLY;productNOT_ACCEPTED",
+  "review_scope": "Only exactpublicv1.2 specdraft andparent manifestreadiness;purestatic/schema",
+  "review_target_sha": "fec7a4e4877cc1dd3fceb8cd9f785db0f216b20d",
   "review_targets": [
     {
       "pr": 14,
@@ -1562,7 +1563,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "D008 R2限定设计清楚；只进入spec草稿同步，待新freeze/实现审核",
+  "stage": "D008 v1.2规格精确hash冻结就绪有限审，非产品通过",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1581,7 +1582,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-24T03:40:26.827240+00:00",
+  "updated_at": "2026-10-24T03:53:23.342804+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2053,5 +2054,45 @@
       "verified_at_utc": "2026-10-24T03:40:26.825605+00:00"
     },
     "R2_evidence_commit": "912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8"
+  },
+  "previous_phase_before_D008_freeze": {
+    "stage": "D008 R2限定设计清楚；只进入spec草稿同步，待新freeze/实现审核",
+    "implementation_status": "R2唯一RFC差量已补齐重放事实，原8c保留，R2 Issue3 COMMENT全文GET封存；只spec草稿同步准入，待新freeze/实现tests/代码审",
+    "review_target_sha": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
+    "review_outcome": "LIMITED_DESIGN_CLEAR_FOR_SPEC_DRAFT_SYNC_ONLY;implementationNOT_ADMITTED;overallNOT_ACCEPTED",
+    "latest_review_report": "reports/reviews/D008-design-R2-d328986fc6fd985a67c2340f87adbf5afc3047f5.md",
+    "latest_review_evidence": "agents/reviewer/evidence/D008-design/R2-document-audit.json"
+  },
+  "D008_freeze_readiness": {
+    "source": "fec7a4e4877cc1dd3fceb8cd9f785db0f216b20d",
+    "15files": {
+      "AGENTS.md": "a1521e70637c7a214d5b6c605ad940457817635579751a4095bd390a7a86f8a4",
+      "specs/requirements.md": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a",
+      "specs/business-rules.md": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83",
+      "specs/backend-design.md": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "specs/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "specs/contracts/README.md": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "specs/database/field-dictionary.md": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "specs/database/schema.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "specs/database/persistence-contract.md": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "docs/collaboration/implementation-layout.md": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "docs/reviews/review-protocol.md": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "backend/t44/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "specs/changes/capacity-lifecycle-v1.1.md": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "specs/changes/release-error-priority-rfc.md": "78e3f0a68b0a679e72cdc363c99e6a712da48cf343b04a70dc1562ca959215d3"
+    },
+    "compat": {
+      "frontend/README.md": "bf4e1d5d8ed3cf72e0599c6c69d9843a500b9c4e4a228b33976ce7703b4dc33b"
+    },
+    "parent_manifestSHA": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+    "reused_parent7": true,
+    "json45_whitelist_130schemas_787refs": true,
+    "newfreeze_created_by_reviewer": false,
+    "implementation_product_admitted": false,
+    "tests_services_CI_private": 0,
+    "github": {
+      "state": "PENDING_COMMENT_GET"
+    }
   }
 }
