@@ -441,3 +441,7 @@
 - 14项stdlib内存/临时文件guard通过：差量可逆、原安全flags/摘要、错源/lock/sidecar拒绝、ignore逐字、0700/0600、排他/C树内/公开父目录拒绝及文档bash -n。未建测试文件/未占849。真实CI配置Ruff/compile/diff-check后交付；没有实际镜像下载/构建结论，证据api-pypi-delivery-validation。
 
 - 2026-10-24T07:34:54.939796+00:00实现81e50f1ea696fb434e9fef677465f1eeceb21057已push；Issue7/6381506475经GitHub插件实际发布并完整GET，正文与本岗body-file逐字一致，JSON原件/完整源码hash封档final-seal。阶段仅工具/文档，root可先审实现；没有发新CI/执行镜像下载或构建，也没有读取backend fixture/852或任何私密验收材料。最终阶段只封档，不重复14guard，不改C/旧失败/预算或截止。
+
+## BOOTSTRAP-PUBLIC-MODES-v1 先设计
+
+- 2026-10-24T08:07:59.591561+00:00基root44e315a7a33d6802651013d911ecfc91731dd2a5新独立codex/deployment-bootstrap-modes/worktree。先写bootstrap-mode-design.md，再仅修source阶段tracked权限；保留umask077/private.env，不改产品C/镜像/服务/CI，不读852。测试846已root分配；后续原红和修后绿分开保留。
