@@ -4,7 +4,7 @@
 
 2026年10月24日09:20（北京时间）收尾更新：最新候选C为`b66fa36a317145afec350d7f61ca374959b2eaf7`。相对bc5应用只在依赖查询增加可信`project_id`条件，限定等价范围已有[18b0271审核及准确PR42 COMMENT](https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453)。完整[CI40047832510](https://github.com/HJY147/t44-dev-trace/actions/runs/40047832510)和[Docker40047836840](https://github.com/HJY147/t44-dev-trace/actions/runs/40047836840)均绿，后端510项、前端89项。root已按事前dde39门槛决定准入开发集成，最终以`records/decisions/dependency-query-development-admission.json`收据为准；连接池db87不合入。这里不是性能改善证明或main放行。
 
-**运行演示和固定四份Word仍为bc5，不是C的同源运行/文档验证。** 本岗没有重启、延长或重新测试入口。
+**运行演示固定bc5，四份Word保留各自M6/M7截止，不是C的同源运行/文档验证。** 本岗没有重启、延长或重新测试入口。
 
 ## 先打开界面
 
