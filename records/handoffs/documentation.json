@@ -1,7 +1,7 @@
 {
   "role": "documentation",
-  "stage": "M9 navigation design",
-  "implementation_status": "design only; new navigation and submission-map clarification pending",
+  "stage": "M9 navigation and visible outer-copy clarification complete",
+  "implementation_status": "one short navigation and submission-map history/outer-link clarification; fourWord35pages/oldQA/frozen sources unchanged",
   "actor": "AI /root/documentation_checkpoint; current M6 author/check/render operator",
   "previous_M5_author": "previous documentation AI; this same instance only recovered M5",
   "artifacts": [
@@ -199,6 +199,11 @@
       "id": "ROLE-documentation-M8-PERFORMANCE-PREPARATION-v1",
       "status": "used; not a new historical evolution count",
       "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M8-PERFORMANCE-PREPARATION-v1.md"
+    },
+    {
+      "id": "ROLE-documentation-M9-REVIEW-NAVIGATION-v1",
+      "status": "used; no historical evolution increment",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M9-REVIEW-NAVIGATION-v1.md"
     }
   ],
   "delivery": {
@@ -214,7 +219,7 @@
     "new_results_or_Word": false,
     "approval_status_main_merge": false
   },
-  "updated_at": "2026-10-24T08:54:47.504948+08:00",
+  "updated_at": "2026-10-24T08:56:39.738609+08:00",
   "M7": {
     "design_checkpoint": "fa3b2fe1095aca78c02e80cad9de2ce187ff551b",
     "base": "3dadfb954f9f11274b324fa544d14c841eb4849a",
@@ -417,6 +422,17 @@
       1,
       1
     ],
-    "no_H2_final_result_wait": true
+    "no_H2_final_result_wait": true,
+    "design_checkpoint": "bf2bc5e8fd795b7810c84833d087f701ac8d5d43",
+    "navigation": "reports/final/M9-review-navigation.md",
+    "collection": "docs/reports/M9-collection.json",
+    "validation": "docs/reports/M9-navigation-validation.json",
+    "sources": 11,
+    "outer_copy_notice_at_submission_map_top": true,
+    "old_M7_section4_body_preserved": true,
+    "old_Word_source_QA_frozen_changed": false,
+    "new_actual_bundle_created": false,
+    "H2_final_public_result": "none at cutoff; not awaited",
+    "service_test_Word_or_private_reads": 0
   }
 }

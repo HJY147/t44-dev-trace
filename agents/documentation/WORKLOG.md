@@ -335,3 +335,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 只fetch/解析一次origin/integration得728c4e8准确cutoff，从其新建documentation-m9-navigation树。先存设计/实际prompt，不改旧Word源/QA/截止。
 - 对BE实送1个公开静态索引问题，无送达错误且实际收到1条AI答复，尚待正文记录。用公开guidance checks定位wake-up在docs/user-guide，不读私密。短猜guide772不是有效SHA而git show退出128，随后只读已发表M8指导公开路径，不据简称造SHA。
+
+- 2026-10-24T08:56:39.738609+08:00 M9简短导航和submission-map开头警示完成；旧第4段正文逐字保留，只改标题/加M7截止说明。11公开源hash、旧四源MD/QA/manifest/14冻结、35页分配/源码路径/链接/JSON/范围通过；没有private/Word/R002/原始独立输出或服务测试。BE1问1AI原话已存M9-collection。新包未创建，原材料hash将由root封包前重取，不把原仓库相对链接说成外层副本自动生效。
