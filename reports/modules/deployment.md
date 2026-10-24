@@ -358,3 +358,11 @@
 - root私有resource-UUID.ndjson600排他，最长20min/绝对08:44Z，安全hash/bytes/实际样本/失败数摘要。8项845合成/Ruff/compile通过，不执行main或读取本机/proc/云；核心08:21:24Z先交可审hash，不等档案拖正式窗。实际采样待root审核执行，16:13healthy只是root转述。
 
 - 七服务工具实现6fe4d657a2a0c76a4955e55285d7fb822b6764c0已推，Issue7/6381981051全文GET一致，核心fe5dad…37af未改；final-seal含精确hash。部署岗实际采样未执行、结果null，未借8合成通过宣称性能或六服务runtime合格。
+
+### SEVEN-RESOURCE-SAMPLER-v2
+
+- 独立v2只将绝对截止改10:10Z/最长5400秒，4处文本/5个指定AST常量外全部一致；原fe5dad/08:44与云运行不动。新hash5b8da9…06b2，delta证据seven-resource-v2-validation。
+- 用户预算100/SMS完成及两机18:30释放由root转述，正式窗口计划18:10硬停；预算上限非实际消费。本岗无云/支付/collector执行，正式前启动仅计划，旧实例不提前kill。
+- AST/反向bytes/Ruff/compile通过，初次root基点缺v1路径的read/ruff失败保留后改读已发布Git blob；不重复旧suite、不建test（844未用），不读独立资料。
+
+- v2实现38400258dde793c1531a07a7f62ec37568fb9a32已推，Issue7/6382148162全文GET一致，final-seal列hash；旧进程不动/v2未由本岗执行，不能以时间过去或能力检查推断实际采样完成。

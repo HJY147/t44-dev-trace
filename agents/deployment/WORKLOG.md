@@ -460,3 +460,11 @@
 - 845纯合成8passed0.06秒，Ruff/compile0；不运行collector main、不读本机/proc/Docker/云，不重跑旧suite/CI，checks原件seven-resource-validation。只交能力和步骤，实际云采样结果待root另取回执，预算/释放不变。
 
 - 2026-10-24T08:26:28.797896+00:00实现6fe4d657a2a0c76a4955e55285d7fb822b6764c0已push，核心hash仍08:21交审版本未改；Issue7/6381981051实际发布并全文GET逐字一致，final-seal含源码/845/回执hash。只归档不拖root审核/正式窗口，不启动采样或读取本机/云/proc；实际样本/失败数仍null待root，阶段结束释放。
+
+## SEVEN-RESOURCE-SAMPLER-v2
+
+- 2026-10-24T08:43:37.865375+00:00基root4a4a9ad76dcf43133566db200cede5b94929a7a4新独立codex/deployment-seven-resources-v2/worktree，先设计，只新增v2，不改原fe5dad/08:44Z文件或运行。root基点无v1路径，首次read和随后ruff缺文件exit1；改从冻结6fe4d657a2a0c76a4955e55285d7fb822b6764c0 Gitblob派生，原blob/分支/云进程未改，不提前kill/重启。
+- 4处文本/5个AST Constant仅datetime8:44→10:10、stop1200→5400、contextcap/end同步；其余AST严格相同、反向bytes恢复原，sourceC SHA未变。新v2 SHA5b8da9dec796cb7939ba01723ddf360bf007e13a3963d8c510aaf09b60e006b2已先交root可审。保留七服务/只读/私有输出/实际开销，不扩scope、不自动延长任何旧操作。
+- root转述用户明确预算100 CNY并完成SMS、两机18:30自动释放已实核，正式独立窗口计划18:10硬停，原因是覆盖新正式测试窗口/收尾；100是授权上限非已花100。本岗不操作云/支付/服务，不读独立资料，不称v2已启动或正式测试完成；旧采样器按原时限自然结束。Ruff/compile/AST差量校准，未重跑旧8guard、不建test（844未用），原缺文件失败保留。
+
+- 2026-10-24T08:45:27.816947+00:00实现38400258dde793c1531a07a7f62ec37568fb9a32已推，Issue7/6382148162实际发布及完整GET正文逐字一致；final-seal含新源码/差量/回执hash。只封档不启动任何采样/云操作，未动原fe5dad运行或提前判其结束，v2实际执行仍未知；100只记授权上限，不记已花100。
