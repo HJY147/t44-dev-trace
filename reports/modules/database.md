@@ -7,3 +7,4 @@
 - 源commit后836全11pass/0failure/error/skip，每main断言DB/application导入为空；一条原JUnit warning保留。两源Ruff/format通过，未执行真实recipes/19矩阵/SQLite/MySQL/HTTP/负载/全CI。
 - 15份c4e8原公件/旧prompt、原recipes/provenance逐字不变，旧71Rows/旧E seal保留。新[报告](../../agents/database/output-guard/report.md)、verification/fs观测、红绿日志/JUnit及evidence-seal.json归档；不以旧矩阵证明新工具全套通过。
 - [Issue4阶段评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265)已精确GET全文同。等待原审核岗对准确SHA复审；未关闭P2，不将输出guard修复称性能/502修复，生产及原公开性能失败不变。无私有env/独立用例或root工作区写入。
+- 全量diff-check因原始失败log/XML尾空格exit2保留；源码/说明限定check exit0，未修剪原日志，未冒称全量检查通过。补充E seal不改窄source3fc或测试结果。

@@ -1,6 +1,6 @@
 {
   "label": "E output guard evidence seal;not performance or review approval",
-  "created_at_utc": "2026-10-24T11:26:09.799001+00:00",
+  "created_at_utc": "2026-10-24T11:28:16.916697+00:00",
   "base_c4e8": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
   "narrow_source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
   "source_files_sha256": {
@@ -46,17 +46,19 @@
   "exact_full_GET_body_equal": true,
   "files_sha256": {
     "design.md": "daba5122dcf34507ad40e0a499c2f4950957eb84a729ab50c78a148c12a4b9c2",
+    "diff-check-result.json": "a4a26487e399bc3a0c0f9b3e7c3fd7586db9fdc3ac5abf7cc10cc9e716b1fffe",
     "filesystem-observations.json": "3b7630ac9e24ba815aeb37c988a12f57dbe5b27d396a8a83e34aae1d28d9c781",
     "format-check.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
     "github-issue4-comment.md": "c8e97fc9c074b043399db9952691500690add6aef6a62b0ae62622c470678988",
     "github-readback.json": "6326caa4da02fac205bacf90f79e8d7bc7cd7cfb382a0eb8805e4fdb6df0ffaf",
     "green-junit.xml": "04420e8ea491b2acff753d901c50492220895cf8a3eca1ee631495cac6d73563",
     "green.log": "74b46e237cc0463c223321c444bb779aff422c250af18a5c4e9413481a4b3de5",
+    "raw-diff-check.log": "0916d9946a19609f8c2f3df3c9be38ea5719175baafdb2367288d6e47ae2dbc8",
     "red-junit.xml": "f8587a6aed46c6bf42f21b9eceb5219e3898c885eb68086052de766d80d824fa",
     "red-old-source-run2.log": "de83e0c9eb7795d1b9f6e681c4f85845b863f5f7572dae9a131b727e3ed2591b",
     "red-old-source.log": "5ca7720533b9eccf9c64e7d39a547d2bcafdf9759b859e0c351760be83ae192a",
     "red-run2-junit.xml": "f499e5cc86450f8efed989dbd0799d73137474b36851a5a943245613d3d7c617",
-    "report.md": "0e6a984adc2ed1ce0e2cf52f39c91e0120127bb46604bab31d0487617c39a245",
+    "report.md": "067f79bed8a83f84ad95a8efe2933571e1f7f4230bd0c9387808f81296d4a4b3",
     "ruff-run1.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
     "verification.json": "bfa954c346ed4bdbf38ab08982d5dd2e7bc28bfa7f5bfc865663eabe8ae1ee60"
   },
@@ -66,5 +68,12 @@
     "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
     "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
     "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
-  ]
+  ],
+  "prior_document_seal_commit": "bc98ee8efc0b43e269b0d4633f1769fd7623670c",
+  "diff_check": {
+    "full_raw_exit": 2,
+    "scoped_source_docs_exit": 0,
+    "evidence": "diff-check-result.json/raw-diff-check.log",
+    "original_pytest_bytes_preserved": true
+  }
 }

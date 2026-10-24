@@ -26,3 +26,5 @@ verification.json逐文件核原c4e8的15份perf-public-c公件/旧prompt字节�
 当前输出工具P2由本岗窄回归支持修复，最终审核仍由root/reviewer对准确SHA复审；原性能失败与根因未知、无新云窗口等结论不变。公开审核c4e8报告的精确commit尚待协调发送，本岗没有寻找/读取其私有材料。
 
 Issue4实际阶段评论已发表并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265，github-readback.json保留完整响应。root明确暂不整合、等本E seal再由原审核岗独立复审，836名称保持、837空号不占用。filesystem-observations.json保存红/绿标记及symlink/固定inode的零DB观测；仅本阶段pytest临时目录在提取观测后清理，日志/JUnit/源和原71证据均保留。
+
+全量diff-check非零：原始pytest失败日志/XML含尾空格，首次precommit检查exit2而shell后续仍提交bc98ee8；原字节不修剪。postcommit git show --check也为exit2，限定838/836源码/说明文件检查exit0。见raw-diff-check.log/diff-check-result.json；本回执不宣称全量diff-check通过。此记录补充不改变窄source3fc/11绿和矩阵未重跑范围。
