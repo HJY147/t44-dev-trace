@@ -61,3 +61,7 @@ actual_runner_exit_code=null、cleanup_success=null，未证明14400秒完整结
 11固定岗位与每岗必要证据、Issue/commit及绑定SHA的COMMENT仍适用；同一Git账号上的AI互审不是另一个真人批准。U001/U002人的原创组织亮点及原六条AI版本保持，本M8任务/图/运行不新增六版凑数。AI发现、设计和修改不计人工12/5/3，R001原话和R002公开provenance只是素材；R002 raw未读。缺少学生实际访谈/亲写研究与人工操作完成证明时，直接记缺，不把一条部署AI问答冒充学生采访。
 
 文档岗本轮只整理公开文件/hash/链接、一次问题/AI答复及一图实际渲染目视。旧Word/QA/需求/设计/AI规格/冻结不改，无产品测试/服务/CI/负载/Word操作。来源及各自cutoff见[M8清单](../../docs/reports/M8-source-manifest.json)。后续只有root明确发表新结果后才作另一有限增量，当前完成封档。
+
+## 后发入口 性能准备与H2方法修订
+
+原主体1005715及dcad ready小节截止保持。[性能准备补充说明](M8-performance-preparation-addendum.md)另固定5ce98e0，只据五份新公开资料，记录原六准备退出正式NOT_RUN与接触SUT后的H2方法修订/新六请求授权。此入口不把新状态倒填旧正文或Word，尚无H2结果。

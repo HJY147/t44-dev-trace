@@ -39,3 +39,7 @@
 ## 5 M8后发证据与旧Word截止
 
 [工程附录](M8-engineering-annex.md)固定主体1005715，dcad只为明确后发ready小节。独立stage07/08四范围各自有限完成，整体仍NOT_ACCEPTED_INCOMPLETE；其Word核验只属M6旧33页。现行35页仍为M7测试8页加M6三稿27页，原hash/QA和需求设计规格原稿保持，本附录没有导入这些旧Word。源码绑定P2限定关闭不等新actualbundle；db87的520/89及Docker/有限审核不等root合入；62ac新360成功和后发4h ready不等完整4h或正式性能通过。v4只到新H两源各3入口授权，尚无新结果；6307超1207、旧正式失败与学生本人研究/人工12-3-5缺口保持。
+
+## 6 性能准备补充说明的新截止
+
+新增[性能准备与H2方法修订](M8-performance-preparation-addendum.md)，资料截止5ce98e0，旧Word和M8主体截止不改。原六正式NOT_RUN与H2接触SUT后的900/30工具方法修订分别记录；正式判据不变，新六请求仅获授权尚无结果。不改prompt或人工12/5/3计数，不宣整体通过。
