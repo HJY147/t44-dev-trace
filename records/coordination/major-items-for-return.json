@@ -1,24 +1,25 @@
 {
-  "at_utc": "2026-10-24T01:20:22.848648+00:00",
+  "at_utc": "2026-10-24T03:48:23.482249+00:00",
   "author": "coordinator AI",
-  "purpose": "Record unresolved major choices during authorized autonomous work; no user reply required to continue independent tasks",
+  "purpose": "User has returned; record actual decisions and outstanding constraints without resuming expired autonomous window",
   "items": [
     {
       "id": "M01-source-budget",
       "fact": "Pinned cloc2.10 current effective production source6307 vs5100 upper bound;1207 excess.",
       "evidence": "records/metrics/source-count-strict-evidence-combination.json",
       "status": "Unmet; no credible equivalence-preserving1207-line reduction established",
-      "pending_human_role": "Review course scope/constraints and choose whether to fund a substantive redesign or discuss the unmet criterion with teacher; cannot silently reinterpret counting.",
-      "autonomous_work_continues": "Evidence preservation, limited optimization candidate checks, packaging and runtime verification.",
-      "current_C_evidence": "agents/backend/dependency-query-candidate/source-count-C.json"
+      "pending_human_role": "No technical refactor decision delegated to user. Teacher requirement remains; substantive equivalence-preserving redesign must first have a credible net budget. Any teacher clarification must have a genuine source.",
+      "autonomous_work_continues": "Pinned counting and safe restructuring design; no claim that micro changes can cover1207 lines.",
+      "current_C_evidence": "agents/backend/dependency-query-candidate/source-count-C.json",
+      "latest_size_audit": "agents/database/source-budget-return/report.md"
     },
     {
       "id": "M02-formal-performance",
       "fact": "Exactbc5 independent formal three600-second400-activeVU runs all fail P95270ms criterion; old failures preserved.",
       "evidence": "reports/independent-v3/stage06-formal-blackbox.md",
       "status": "Old v3 formal failures retained. H1 six formal NOT_RUN. H2 complete fixture and600-second scheduling produced no established valid400-concurrent measurement; product-only INCONCLUSIVE, no source ranking; recovery5true/1application-readyfalse.",
-      "pending_human_role": "Assess actual remaining performance evidence and engineering tradeoffs on return, rather than authorize relaxed thresholds implicitly.",
-      "autonomous_work_continues": "Completed bounded local fixed-response calibration, no SUT requests; equivalent query candidate admitted only to development integration by predefined gate and exact CI/review. No formal performance pass claimed.",
+      "pending_human_role": "Consider concrete two-hour AWS quote about1.12USD before tax/egress and proposed3USD budget; no paid authorization currently.",
+      "autonomous_work_continues": "857 exactF2 one bounded owned-stub calibration admitted;858 INVALID preparation retained. No SUT result or source ranking.",
       "additional_public_evidence": [
         "reports/acceptance/v4-performance-original-attempts-public-summary.md",
         "reports/acceptance/v4-performance-h2-public-summary.md",
@@ -26,15 +27,17 @@
         "records/acceptance/v4-driver-calibration-authorization.json",
         "reports/acceptance/v4-driver-calibration-public-summary.md",
         "records/decisions/dependency-query-development-admission.json"
-      ]
+      ],
+      "quote": "agents/deployment/performance-retest-quote.md"
     },
     {
       "id": "M03-release-error-priority",
       "fact": "F08 original expected baseline-stale error differs from release-approval-required when both guards apply; frozen priority is unspecified.",
       "evidence": "reports/independent-v3/stage03-functional-continuation.md",
-      "status": "Original assertion failure and unexecuted tail retained; no confirmed product defect.",
-      "pending_human_role": "Choose explicit simultaneous-error priority if desired, then version requirements and tests normally.",
-      "autonomous_work_continues": "Other tests, developer diagnostics and technical evidence remain independent."
+      "status": "User adopted assessment baseline first, then original independent assessment review and manager release decision; D008. New1.2 specification draft synchronization, not yet frozen/implemented.",
+      "pending_human_role": "Answered in U021. No further technical guard-order questions required for the approved minimal scope.",
+      "autonomous_work_continues": "Version requirements/design/contracts, dedicated freeze review, new parent-linked freeze, then implementation and new tests. Preserve F08 and old packages.",
+      "decision": "records/decisions/D008-release-error-priority-adopted.md"
     },
     {
       "id": "M04-student-authorship",
@@ -46,5 +49,11 @@
     }
   ],
   "not_a_new_question_or_approval_request": true,
-  "not_student_authored_report": true
+  "not_student_authored_report": true,
+  "user_return_constraints": {
+    "deadline": "2026-11-28",
+    "source": "records/prompts/U021-original.md",
+    "paid_resources_authorized": false,
+    "expired_eight_hour_window_resumed": false
+  }
 }
