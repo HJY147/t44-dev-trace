@@ -1,9 +1,10 @@
-# 数据库模块：6307行规模静态审计回交
+# 数据库模块：OUTPUT-EXCLUSIVE-01窄修复待复审
 
-基root f986782311f227082b4445bf7508522aa49c043d；ROLE-database-SOURCE-BUDGET-RETURN-v1，设计d8f91d7先commit。操作者AI，非学生亲改。
+数据库AI，ROLE-database-OUTPUT-EXCLUSIVE-v1。原c4e8 P2保留，root暂不整合；设计3981e6d先行，窄source `3fc58d18614c394cc588a16b316cf89c1810ecf1` 仅838/836两文件。
 
-- 原cloc2.10/SHA/已提交应用根计数仍6307行/66文件，上限5100、缺1207（当前19.14%）；66文件code值与公开C6307逐项同。backend5208、frontend/src1084+index15=1099；persistence1691/services1613/scheduling642等分组、逐文件原数在agents/database/source-budget-return/current-count.json。5分钟内已真实首报root。
-- 当前没有可信且不删行为/守卫的1207行缩减方案。旧CoreGateway兼容删除、seed受信row-builder、BE公共create/会话、FE未用CSS已含当前收益，不能再扣。scan-run等价候选联合314→315，AST整对替换可能增3–53；未准入validator10/CHECK-only39–46不算已省。
-- 新明确共享候选：通知页装配交现有common.page，保留授权S锁/-id/全部谓词/三COUNT顺序；纯内存两文件227→224投影仅3，未应用/验证，实际节省0。原cloc STDIN漏dash退出2保留并更正；这是静态命令错误，不是产品缺陷。
-- [详细报告](../../agents/database/source-budget-return/report.md)给出大文件职责、历史5866→6307快照、所有候选重复点/成本/风险与用户可读原话。既不要求人决定class/manager，也不改计量根、压行或移逻辑到配置。
-- [Issue4真实评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048)已精确GET全文逐字核对。无源代码/冻结/DB/服务/测试/CI配置改变或执行，无独立材料读取/测试联系。规模仍未达标，本阶段封档后释放，不追加实施或运行。
+- 旧exists→finally路径w写会覆盖后出现结果/跟随悬空link，836零DB main旧源真实2红；首次basetemp父目录缺失2setup errors另保留，不算产品红。
+- 改为一次O_CREAT|O_EXCL|O_NOFOLLOW/0600开叶节点，持固定fd写JSON，不重开路径/截断/失败降级；fdopen失败close，recipe异常记失败后原异常传播。已有对象/竞争新结果拒绝；路径替换只写原inode，不能承诺外部路径名不可变。
+- 源commit后836全11pass/0failure/error/skip，每main断言DB/application导入为空；一条原JUnit warning保留。两源Ruff/format通过，未执行真实recipes/19矩阵/SQLite/MySQL/HTTP/负载/全CI。
+- 15份c4e8原公件/旧prompt、原recipes/provenance逐字不变，旧71Rows/旧E seal保留。新[报告](../../agents/database/output-guard/report.md)、verification/fs观测、红绿日志/JUnit及evidence-seal.json归档；不以旧矩阵证明新工具全套通过。
+- [Issue4阶段评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265)已精确GET全文同。等待原审核岗对准确SHA复审；未关闭P2，不将输出guard修复称性能/502修复，生产及原公开性能失败不变。无私有env/独立用例或root工作区写入。
+- 全量diff-check因原始失败log/XML尾空格exit2保留；源码/说明限定check exit0，未修剪原日志，未冒称全量检查通过。补充E seal不改窄source3fc或测试结果。

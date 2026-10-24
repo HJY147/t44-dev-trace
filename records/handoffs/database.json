@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "SOURCE-BUDGET-RETURN-v1：6307/缺1207静态审计收口",
-  "implementation_status": "规模仍未达标，无可信1207保持完整行为净删方案；仅新通知分页草案投影3，生产本轮0节省/0变更。",
+  "stage": "OUTPUT-EXCLUSIVE-v1：P2工具输出窄修复/11零DB回归，待独立复审",
+  "implementation_status": "838排他创建+固定fd修复已提交；836旧源2红→新11绿；原71Rows/旧E seal未改，不是性能修复/审核通过。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -589,6 +589,26 @@
       "path": "agents/database/source-budget-return/",
       "kind": "原计量政策静态规模审计/候选预算/真实GitHub回执",
       "status": "完成，规模未达标/生产实际节省0"
+    },
+    {
+      "path": "agents/database/perf-public-c/",
+      "kind": "公开性能失败路径审查/838一次离线诊断/E seal",
+      "status": "阶段完成；不证明根因或性能通过"
+    },
+    {
+      "path": "tmp/838_database_public_diagnostics/838_database_public_diagnostics.py",
+      "kind": "显式本地SQLite/SQL-shape计数诊断CLI",
+      "status": "工具d758已实现/唯一运行；零云/MySQL/HTTP"
+    },
+    {
+      "path": "agents/database/output-guard/",
+      "kind": "OUTPUT-EXCLUSIVE-01窄修复红绿/Eseal/原证据保护",
+      "status": "阶段完成待独立复审"
+    },
+    {
+      "path": "tmp/836_database_output_guard/836_output_guard.py",
+      "kind": "零DB输出文件系统main回归",
+      "status": "11通过；不调用原recipes"
     }
   ],
   "interfaces": [
@@ -859,18 +879,13 @@
     "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "所有未应用候选都未等价验证/生产准入，不能预扣",
-    "本轮无产品/独立验收/性能或测试/CI结果",
-    "1207缺口仍全额保留，不改课程范围/计数口径/业务守卫"
+    "root暂不整合，原审核岗对新准确SHA独立复审待执行",
+    "未重跑19配方/71Rows，不能用旧矩阵为新工具完整背书",
+    "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
+    "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
+    "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
   ],
-  "questions": [
-    {
-      "to": "backend/messaging owners",
-      "question": "若后续认为3行页装配共享值得成本，请先确认原授权S锁/-id/谓词/三COUNT与错误顺序；本轮不请求实施或运行",
-      "status": "公开Issue4已提出，未确认，不影响静态审计收口",
-      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048"
-    }
-  ],
+  "questions": [],
   "prompt_refs": [
     {
       "id": "ROLE-database-BOOTSTRAP-v1",
@@ -1044,20 +1059,32 @@
       "id": "ROLE-database-SOURCE-BUDGET-RETURN-v1",
       "archive": "agents/database/prompts/ROLE-database-SOURCE-BUDGET-RETURN-v1.md",
       "improvement_reason": "用户醒来询问规模，先5分钟精确数值再有限可行性审计；不让用户选技术细节，不虚构1207方案或重复计旧收益。"
+    },
+    {
+      "id": "ROLE-database-PERF-PUBLIC-C-v1",
+      "archive": "agents/database/prompts/ROLE-database-PERF-PUBLIC-C-v1.md",
+      "improvement_reason": "明确只读单一公开事实，先设计/调度再本地独立诊断；资源和HTTP失败根因未知，候选不冒充修复。"
+    },
+    {
+      "id": "ROLE-database-OUTPUT-EXCLUSIVE-v1",
+      "archive": "agents/database/prompts/ROLE-database-OUTPUT-EXCLUSIVE-v1.md",
+      "improvement_reason": "真实审核P2驱动先红再原子O_EXCL/NOFOLLOW固定fd修复，保留原71和失败，不扩性能范围/不记用户亲改。"
     }
   ],
-  "updated_at": "2026-10-24T03:22:48.932959+00:00",
+  "updated_at": "2026-10-24T11:28:16.915522+00:00",
   "publication": {
-    "branch": "codex/database-source-budget-return",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-source-budget-return",
-    "base": "f986782311f227082b4445bf7508522aa49c043d",
-    "design_commit": "d8f91d7930d288266d0239717b14311956d8d317",
-    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048",
-    "readback": "agents/database/source-budget-return/github-readback.json; exact full body equal",
+    "branch": "codex/database-output-guard",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
+    "base": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+    "design_commit": "3981e6d986fb4ca129d0f5953fd104c0a6c0efc4",
+    "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265",
+    "readback": "agents/database/output-guard/github-readback.json; exact body equal",
+    "scope": "filesystem output P2 only; no performance repair",
     "pull_request": null,
-    "scope": "static documentation/budget only",
-    "ci": "skip ci; no test/run/configuration changes",
-    "window_released": true
+    "reviewer_status": "pending;root holds integration",
+    "window_released": true,
+    "raw_diff_check": "full raw check exit2 from pytest original whitespace; source/docs scoped exit0; records preserved"
   },
   "history": [
     {
@@ -1270,6 +1297,69 @@
         "production_changes": 0,
         "followup": "根/责任岗另行准入，当前不执行优化"
       }
+    },
+    {
+      "stage": "SOURCE-BUDGET-RETURN-v1：6307/缺1207静态审计收口",
+      "implementation_status": "规模仍未达标，无可信1207保持完整行为净删方案；仅新通知分页草案投影3，生产本轮0节省/0变更。",
+      "unverified": [
+        "所有未应用候选都未等价验证/生产准入，不能预扣",
+        "本轮无产品/独立验收/性能或测试/CI结果",
+        "1207缺口仍全额保留，不改课程范围/计数口径/业务守卫"
+      ],
+      "publication": {
+        "branch": "codex/database-source-budget-return",
+        "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-source-budget-return",
+        "base": "f986782311f227082b4445bf7508522aa49c043d",
+        "design_commit": "d8f91d7930d288266d0239717b14311956d8d317",
+        "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048",
+        "readback": "agents/database/source-budget-return/github-readback.json; exact full body equal",
+        "pull_request": null,
+        "scope": "static documentation/budget only",
+        "ci": "skip ci; no test/run/configuration changes",
+        "window_released": true
+      },
+      "current_interfaces": {
+        "input": "root准确C6307与公开3b9c907/本岗AST及scan-run材料",
+        "output": "当前66文件/各根/大文件及候选净预算/风险",
+        "metric": "cloc2.10 committed application source policy unchanged",
+        "actual_production_savings": 0,
+        "new_projection_only": 3,
+        "no_credible_1207_plan": true
+      }
+    },
+    {
+      "stage": "PERF-PUBLIC-C-v1：公开C路径审查/838本地诊断阶段封档",
+      "implementation_status": "838工具已实现并唯一离线运行19配方/71execute；DB生产0变更，公开性能失败未修复/未验收。",
+      "unverified": [
+        "资源联合复核未具名公开，不知道502层级或延迟根因",
+        "本轮无MySQL/云SQL/HTTP/负载/正式400×600或独立验收",
+        "SQLite列合成表无生产约束，MySQL编译不证明锁/RC/并发CAS",
+        "BE guard-specific优化由BE本人实现和验证；本岗不代称正式收益",
+        "两机已释放，无新云窗口；新开发配置/schema/采样设计需另准入"
+      ],
+      "publication": {
+        "branch": "codex/database-perf-public-c",
+        "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-perf-public-c",
+        "base": "6d02cf1d3b99b15556c5d74e007cb4d8d546bbf9",
+        "design_commits": [
+          "80e9d67",
+          "cacd0af"
+        ],
+        "tool_commit": "d75866f0d4077dd0399672f6dc914a82de6b9399",
+        "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077",
+        "readback": "agents/database/perf-public-c/github-readback.json; exact body equal",
+        "scope": "static/offline diagnostic evidence only; no production optimization claim",
+        "pull_request": null,
+        "window_released": true
+      },
+      "current_interfaces": {
+        "source_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+        "gateway": "RowsGateway existing signatures unchanged;no new SQL API",
+        "backend_candidate": "5cc856d6fa94b1fdde32605543b53822f9747f00 owner-reported independent guard-specific implementation",
+        "diagnostic_tool": "tmp/838_database_public_diagnostics/838_database_public_diagnostics.py --run --output <new-project-path>",
+        "scope": "offline synthetic SQLite/query recipes + MySQL compilation;not HTTP or realMySQL",
+        "production_change": 0
+      }
     }
   ],
   "refactor_removed": [
@@ -1283,12 +1373,13 @@
     }
   ],
   "current_interfaces": {
-    "input": "root准确C6307与公开3b9c907/本岗AST及scan-run材料",
-    "output": "当前66文件/各根/大文件及候选净预算/风险",
-    "metric": "cloc2.10 committed application source policy unchanged",
-    "actual_production_savings": 0,
-    "new_projection_only": 3,
-    "no_credible_1207_plan": true
+    "affected_tool": "838 CLI output boundary only",
+    "regression": "tmp/836_database_output_guard/836_output_guard.py",
+    "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+    "flags": "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW;0600;one heldfd",
+    "matrix_and_app_semantics": "unchanged;no DB/application imports in guard regression",
+    "original_evidence": "c4e8 bytes preserved",
+    "acceptance": "await original reviewer independent re-review"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",

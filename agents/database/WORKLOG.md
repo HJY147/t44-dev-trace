@@ -271,3 +271,23 @@
 - 已读公开3b9c907/N07一页、本岗AST/scan-run预算和重点生产职责；未读任何独立私密资料/实例，不联系tester。原仓储兼容删除/seed row-builder/公共create会话/未用CSS均已在当前数字内，不能重复扣。scan-run联合314→315净增1，AST整对估增3–53，旧CHECK-only39–46与validator10都未实施/准入。没有1207可信方案。
 - 新静态内存通知分页草案只保留在报告JSON：21→18片段、facade95→92/common132不变，联合227→224投影3；保留成员S锁、-id/谓词和rows→serialize→total/unread/unhandled顺序。只AST语法/行宽核对和cloc计量，不跑/变更生产或测试，实际生产节省0。首次cloc STDIN漏dash退出2已存static-count-first-error.log，按工具help更正后才计数；首次猜测records/metrics/source-count-C6307.json不存在，已按实际公开source-count-C.json定位，未据此推断产品问题。
 - 已真实发表Issue4 owner-facing候选/边界评论并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6379248048，github-readback.json保存完整响应。只问BE/MQ后续准入时确认，不请求现在实施/测试。所有工作仅本岗文档，不改生产/DDL/API/freeze/计量规则/DB/服务/用例/CI配置，不执行HTTP/测试/负载/性能。原规模未达标、正式性能/独立/人工材料出口不被本报告改变；AI工作不记用户亲改。
+
+## ROLE-database-PERF-PUBLIC-C-v1：只读公开事实后先行设计
+- 仅指定839_PUBLIC_MINIMAL_FACTS_v1.md先核c35b37...完全匹配再读取；没有读839其它文件/私有用例/资源，不向839发送信息。当前C任务短窗/三502/完整正式组0如实保留，资源和根因未知。
+- 新独立树codex/database-perf-public-c基root6d02cf1，生产根与被测0dfb55c差异为空。先保存design再实现；已向BE真实对接，BE确认C已有project+task依赖条件，当前2UoW/3次write实时auth；不能重复提旧一行优化/旧3UoW账本。BE主审guard-specific依赖加载，本岗不动services或锁/认证语义。
+- root实际限定新工具838、本阶段只本地SQLite/静态，不再准入两机SQL/HTTP/负载；cacd0af先封工具边界，再实现838并在d75866f0d4077dd0399672f6dc914a82de6b9399提交后唯一运行。无云env/凭据/网络输入，不读839其它文件。后续root确认资源已回收/独立联合复核、19:01实例系统盘已释放；本岗不读未公开采样，不扩大阶段测试。
+- 工具首次Ruff I001/B023三项保留ruff-run1.log，显式绑定loop参数/整理import后Ruff通过，格式化仅838。Import gate确认不加载SQLAlchemy/t44/网络模块；无run和覆写原输出均预期exit2，原结果hash不变。没有把预期CLI拒绝当产品红。
+- 唯一PYTHONPATH=backend既有backend/.venv Python运行838 --run --output agents/database/perf-public-c/offline-run1.json exit0；19个本地SQLite生产Rows配方、71次_execute（69SELECT+2顺序UPDATE），源13文件逐字/hash等于C。度0/4/32原依赖二读2/2/2、候选skipempty1/2/2；不消费依赖候选0只是配方。成员3/32均1读物化3/32；依赖页1/4/32原2/5/33对batch2/2/2，固定数据输出顺序/缺引用失败一致。锁/CAS仅MySQL编译及SQLite顺序谓词，不是MySQL锁/RC/并发或真实请求trace/收益。最终本地engine dispose，不改生产metadata。
+- static-path-receipt.json保存当前索引/函数行号/sourcehash/SELECT-UoW账本，明确C已有project+task谓词；新发现Tasks.addTaskDependency existing另一处缺project但未改。listTasks本身非N+1，特殊contract入口4或5S/1U不经Workflow，故BE依赖候选不能涵盖校验组公开失败。member全量/图锁/池获取与列表3P分别列候选及未来同次采样，均不归因502。
+- BE真实确认现有Rows足够，自己独立5cc856d只改Workflow按guard加载，不动Runtime/globalemptyIN/锁；BE自行报告模块红绿，本岗未代跑或代称MySQL/正式通过。已将838源码SHA/查询边界与具体Tasks候选发BE；本岗不改services。
+- 真实Issue4 COMMENT并精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077；github-readback.json保存完整响应。准确报告/公件发BE供其独立对接确认，不向839发送开发信息。阶段证据E seal另保存hash；生产/DDL/API/freeze/池/锁/认证和用例均未修改，本轮正式性能失败未修复/未验收，不再SQL/HTTP/负载或扩大测试。
+
+## ROLE-database-OUTPUT-EXCLUSIVE-v1：实际P2先设计
+- root公布OUTPUT-EXCLUSIVE-01：c4e8 exists→finally按路径w写可覆盖后出现标记/跟随悬空symlink，旧工具暂不准整合。新独立树基c4e8，已保存窄O_EXCL|O_NOFOLLOW+固定fd设计；不读原审核私有脚本/env，不向测试传开发信息。
+- 836只零DB main回归，先复现旧源红再修；原19配方/71Rows及旧E seal字节保护，不重跑矩阵，不将输出修复算性能修复。
+- 旧源第一次836目标命令因basetemp父目录未创建，2个setup errors原red-old-source.log/red-junit.xml保留；补建本岗父目录后，两个目标在旧838真实2failed/0errors：completed/main_exit0且标记overwritten=True，悬空link跟随创建target。没有将环境错误算功能红。
+- 窄source checkpoint 3fc58d18614c394cc588a16b316cf89c1810ecf1只含838修复+836零DB回归，已commit/push；一次os.open(O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,0600)并持有fd，最终只经fdopen输出，不再exists/w-path重开；fdopen失败关闭fd，无NOFOLLOW明确拒绝；recipe异常记录后传播。
+- 源码提交后836全11passed/0failed/0errors/0skip；正常/已存/目录/两种link/原race/fixedfd叶替换/fdopen异常关闭/recipe异常/run gate均覆盖，每main都跟踪断言未导入DB/application/网络模块。原record_property/xunit2一条warning保留。838/836 Ruff和format check首次均通过；没有运行真实recipes/19矩阵/SQLite/MySQL/HTTP/负载/全CI。
+- verification.json对c4e8的15份原公件/旧prompt逐文件hash/bytes全同，旧recipes/provenance源片段逐字不变。filesystem-observations.json抽取红绿标记与固定inode/symlink观测后仅清理本阶段零DB临时目录，不改原71Rows/旧E seal，不让旧矩阵冒充新工具已完整执行。
+- Issue4实际COMMENT与精确GET全文逐字同：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265，正文/原响应已存本岗output-guard目录。root明确暂不整合，等本阶段E seal后原审核岗独立复审；原c4e8 P2不改写，本岗不代宣布审核关闭，工具输出修复不算性能修复。原审核公开报告精确SHA尚未收到，本岗未查私有材料。
+- 全量git diff --cached --check因原始pytest失败log/XML尾空格退出2；同一shell后续commit/push仍执行为bc98ee8，未将其宣称通过。保留原字节，git show --check再次确认该原始空白提示；限定838/836源码及说明文档检查exit0，raw-diff-check.log/diff-check-result.json真实留痕。没有改写日志消提示、没有新增测试或更改source3fc。
