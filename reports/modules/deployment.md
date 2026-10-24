@@ -253,3 +253,8 @@
 - 按root先行RFC，仅请求上限改1800及README/workflow说明；默认900/min60/strictint、精确SHA/path/加密输出/故障恢复、job40m及旧metadata/usage全保持。单处常量/description差量已精确比对。
 - 新1800接受先红，更新后仅13相关目标绿/Ruff绿，77无关未跑；60/1200/1800执行deadline用全mock核确仍取请求值。原件/sourcehash在agents/deployment/preparation-budget-validation。无本机服务/信号/独立私密访问，无新正式压力结果，不回填旧run；H2方法修订与原H可比性仍由独立岗明确报告。
 - 实现SHA79ed72fe7218e8782c1ba8dca99996ddf8880e90已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377395660全文GET一致。原件/sourcehash/seal齐，后续仅中性绑定；没有新正式结果。
+
+### STATIC-FOLLOWUP-v1 两处等价样式
+
+- 先设计b950a787642a25277809ade54f491fcd0dd47a9a，实施17e7ac5f05e3ab85cd7a0f2db439c7097c422dba：仅864的capture_output=True和871 unit unused _index；无断言/行为/路径/豁免/控制器变更。Ruff同两文件红→绿，内存compile与AST/stdlib核对通过；没执行/import driver或服务/私密副本。
+- 精确Git前像gzip、旧新hash和工具原件static-followup-validation；旧运行字节/CI40047094732红保留。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857实际COMMENT完整GET一致。BE需新候选新CI，当前本地静态绿不代表远端通过。

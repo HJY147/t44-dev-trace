@@ -867,7 +867,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "preparation-budget-tool-complete",
+  "stage": "static-followup-complete",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -901,5 +901,23 @@
     "hash_seal": "agents/deployment/preparation-budget-validation/seal.json",
     "final_status": "complete;minimal cap tool only;no new real run",
     "archive_revision": "Git metadata resolves final docs receipt;implementation source remains pinned"
+  },
+  "static_followup": {
+    "base_sha": "dde39aa1c3ccf122caff5c24584ab69537d09007",
+    "branch": "codex/deployment-static-followup",
+    "prompt_ref": "ROLE-deployment-STATIC-FOLLOWUP-v1",
+    "design_sha": "b950a787642a25277809ade54f491fcd0dd47a9a",
+    "implementation_sha": "17e7ac5f05e3ab85cd7a0f2db439c7097c422dba",
+    "changes": "864 capture_output=True;871 unused index->_index;only2lines",
+    "checks": "Ruff2files red->green;compile only;normalized AST/stdlib equivalence",
+    "preimages": "exact Git commit/blob gzip+SHA retained",
+    "evidence": "agents/deployment/static-followup-validation",
+    "driver_import_execution_services_signals_private_access": false,
+    "native_source_unchanged": true,
+    "historical_original_CI": "40047094732 red unchanged;not rerun",
+    "new_candidate_CI": "BE to trigger on new commit;not claimed passed",
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857",
+    "github": "body-file COMMENT;full GET body identical",
+    "final_status": "complete static-only;no old execution claims assigned to new source"
   }
 }
