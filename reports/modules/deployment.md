@@ -264,3 +264,10 @@
 - 03:17:43.706369UTC快照：自有app_20261023_234943_3f9bad serving/readytrue，原截止03:49:43.904838UTC/北京时间11:49:43.904838。driver/runner五字段匹配、driver/controller/runtime原hash一致、bc5源92项零差异，九protected listener与before-serve一致。
 - terminal driver/post receipt未生成，4h/cleanup结论null。单点元数据不是全时或应用业务验证；没有HTTP/SQL/浏览器/信号/服务变化/脚本执行或独立private访问，不续期、不automation。到期只读清单agents/deployment/demo-deadline-readonly-runbook.md，证据demo-handoff-validation/current-observation.json。
 - 交接b51c313d4313d1eb9018b54eabbf1fbc0c127039已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579全文GET一致。仅快照与到期runbook，未产生新业务/结束结论。
+### PERFORMANCE-QUOTE-v1 待审批报价
+
+- 官方现行EC2 feed直接小时价：应用c7i.2xlarge0.357+发压c7i.xlarge0.1785USD/h，us-east1 Linux8v16GiB+4v8GiB，同AZ私网、default shared tenancy。加120GiB gp3按秒比例/两IPv4，1h约USD0.56/2h约USD1.12（税/需收费公网出流量另计）；建议审批USD3，非厂商硬上限。
+- 一页agents/deployment/performance-retest-quote.md；原始定价及calc/sources在performance-quote-evidence。用户11月28日截止/未授权付费，账号/充值/验证门槛未知，0元发压器独立校准尚未执行，不承诺270ms。无账号/资源/购买/凭据/SUT/live变化。
+- 报价SHA96ed54c0819dfa43107058aeb16e7e947682a527；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379372780全文GET一致。完成仅报价资料，不触发付费或任何新运行。
+
+- 报价R2只勘明2h含60准备+三组正式共30+核验导出清理30分钟，为计划非完成保证，费用/时间不足须另报，不自动续付；USD3不授权延时。R1原公式/小时价/历史保持。校准时点改为R1未执行、root后报一次INVALID、无有效通过；无摘要/私密读取或新运行。

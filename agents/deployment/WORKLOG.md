@@ -346,3 +346,15 @@
 - 三份terminal driver/post receipt尚未生成，4h完整/cleanup均null，不以仍serving冒充终结通过。观测是单时点、不证明全时健康；未HTTP/SQL/浏览器/信号/停止/重启、未运行862/863/post/driver、未改livecopy/凭据/服务、无新automation/独立private。根在3分钟内收到快照与截止。
 - 到期只读runbook列已存在status与已登记末次receipt路径，仅实际生成后读字段；缺失/矛盾报root、不补造/重跑。证据demo-handoff-validation/current-observation.json，后续仅文档/GitHub归档，不同步等待截止。
 - 交接b51c313d4313d1eb9018b54eabbf1fbc0c127039已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579实际COMMENT/完整GET正文逐字一致，原JSON另档。仅文档归档，不再观测/等待到期或改变原运行，最终4h/cleanup仍以未来实得回执为准。
+## PERFORMANCE-QUOTE-v1
+
+- 按用户11月28日截止、先报价再考虑/无付费授权，从43b75cfa1db9830e147c67ad5dc6b62f086c9a11新codex/deployment-performance-quote/worktree。仅官方浏览/公共定价GET，没有创建账号/资源、购买/充值或读取凭据；没有触部署代码/live/demo/旧包/automation或SUT。
+- AWS现行网页iframe配置核到ec2/ec2-ondemand-without-sec-sel，官方current feed发布2026-10-23T22:13:55Z。03:31:44Z核原始记录：us-east1 Linux c7i.2xlarge8v16GiB0.357USD/h与c7i.xlarge4v8GiB0.1785/h。首次Python CA错误/过时猜测URL404/legacy无C7i保留为查找过程，未拿旧博客当现价；系统curl保持TLS验证后官方准确feed成功。Vultr官方403，不用vultr2/非官方，不继续广泛选型。
+- gp3区域0.08/GiB月来自官方EMR对照表并与当前AWS feed0.08SKU交叉，按官方存储秒比例/31天算120GiB；两IPv4各0.005/h。1h精确0.5584032258、2h1.1168064516，表约0.56/1.12USD，未含税/需收费出流量等；建议待用户批准本次USD3预算，不是厂商硬封顶。原始snapshot/选中记录/算式/检索UTC/来源见performance-quote-evidence。
+- 一页报价明确2h余量、同AZ私网、shared host非Dedicated/独占物理核、账号充值验证门槛未知/无优惠假设/不含人工/非保证、不承诺270ms；付款前独立0元发压器校准尚未执行，不触SUT。停止计算后EBS/EIP可能继续费，终止并核盘/快照/EIP释放；不直接执行任何删除。
+- 报价96ed54c0819dfa43107058aeb16e7e947682a527已push并交根给用户考虑；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379372780本岗body-file实际发布，完整GET逐字核一致，原JSON留档。仅封档；实际费用授权仍false，无付款/校准/SUT/云资源执行。
+
+### PERFORMANCE-QUOTE-R2-v1 文档勘明
+
+- 仅改一页报价的计划及校准截至时点两段：60分钟准备+流转/契约/升级各600秒共30分钟+核验导出清理30分钟。USD1.12只是2h资源估算，不保证三组完成；不足另报，不自动续时/付费，USD3不授权无限延时。
+- R1完整保留于a949e21111b89300e585ab89de059917520f49b6；前后hash/r2-delta.json和反向替换断言证明单价/公式/来源及其他字节未变。R1核价时尚未校准；根告知后来一次本机校准INVALID，现稿明确无有效通过结论。没有读取858摘要/私密，没有运行测试/云动作或新GitHub消息。
