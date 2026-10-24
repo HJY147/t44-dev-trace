@@ -332,3 +332,33 @@
 实际ROLE-reviewer-PREPARATION-BUDGET-v1，既有干净worktree另codex/review-preparation-budget从217d；先scope后准确79ed/封档9d335公开源码/原件。run SHAa421整文件仅上限1200→1800，复原bytes/整个AST同；default900/min60/strictint、执行deadline/fault恢复/加密输出/usage/metadata原字节保持。workflow只description，job40仍在，README明确能力非完成保证/不延旧请求。旧953仅1201边界→1801保持其它AST，新增4合法5非法3deadline+旧1共13；owner实际1800旧拒绝1红/13绿和JUnit、files/seal hash核同，合成Popen/clock/recover/signals非服务真实恢复；本岗0测试/探针/服务信号HTTP_SQL负载CI，不读独立H/cases/output/log/密钥，不改候选/冻结。设计217d先行/9d封档runtime-test0delta；有限未见新增实质阻断，原正式失败/NOT_RUN不改，不给整体/stage/main放行。八段十项报告21-79ed...，精确COMMENT/fullGET真实回执另补。
 
 实际发布：阶段证据a6a45046ed8c69f3b4974ead3bd8510c5a87bf52已push exit0；PR21 COMMENT5635790287显式绑定准确79ed72，插件逐字body/state与REST特定review全文GET body/commit_id/COMMENTED严格相符exit0，https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5635790287。PR head5ce98e、79ed祖先核过；回执preparation-budget-79ed/github-comment.json。无APPROVE/status/main/CI或实际准备/正式成功声明；自身metadata封存后释放。
+
+
+## 2026-10-24 最小依赖谓词候选C静态有限专审（先partial）
+
+实际ROLE-reviewer-DEPENDENCY-QUERY-v1，隔离codex/review-dependency-query从C，不改候选；先scope，按元数据找到BE ed273先行RFC及rootdde39预定gate。PR42 draft/headC实际GET核；对bc5应用唯一workflow dict加受信project谓词，整bytes和去一item AST同；pool5+10/986整bytes/14freeze/DDL同。追Call.task全局PK读取+project核对、双复合FK合法集合/空集/id顺序等价；版本先边读、锁顺序/实时auth/RC/UoW/CAS/audit/idem/outbox/commit不明/输出原源。17e两行Cbytes同，PIPE→capture_output及unusedloop规范化AST同，8d7公开hash/preimage核；DB5948公开report只小fixture普通EXPLAIN估算不冒称收益/根因。自有首ASTnormalizer误展开864其它原有calls导致断言1，改限定prepared后0；猜旧路径两次失误纠正，不称产品红。准确C完整CI/E仍待root明确公开，先partial留gate，不用旧CI移植；旧18/新18预期兼容非bug红绿，待原件核。本岗0测试/探针/服务信号HTTP_SQL负载CI，未读独立H2/private/cases/raw/密文或联系tester，不触demo。报告42-C八段十项，最终E核后COMMENT/fullGET另补。
+
+阶段收口：静态证据4350f1f06ca5d338c55e8401311d3979c6a93199已push exit0。总协调实际通知E仍等待coverage/封档，明确要求以已发表PARTIAL_CI_E_PENDING释放，不读未发布E或重复静态；待明确公开E后另续只核准确CI/源码对应并最终COMMENT。故本阶段没有发布PR42最终COMMENT，不声称完整CI已核或候选准入；原静态未见新增实质阻断及全部待核边界保持。root在完整门槛前不合候选，审核未被放弃。只补自有metadata封存，不接触独立资料或运行服务/SQL/CI。
+
+
+### 第8节续结：公开E后的准确CI对应核查（2026-10-24）
+
+原4350静态与9f7 partial状态是当时真实阶段，保留不改；本续结在root明确授权公开E=bebd205121fc09a8fd1e3e3e03df28653b4d9507后执行，prompt ROLE-reviewer-DEPENDENCY-QUERY-EVIDENCE-v1。没有重复原静态/suite。E运行源/测试/配置与C相同，PR42真实GET仍draft/head C，不把证据分支E当产品新头。
+
+准确product40047832510：官方接口四jobs完成success、run attempt1/head C。raw JUnit510/0failure/error/skip；contract162/integration93/fault19同样0但与510重叠不累加。rawcoverage44Python文件keyset独立逐一等于C的Git集，excluded0，行2638/2957=89.212039%、分支659/824=79.975728%；FE raw89/0失败/0pending，20TSVue rawcoverage keyset等于Git全源，不扩大到CSS/HTML。结果来自托管开发CI，不是本岗重跑或独立验收。
+
+准确Docker40047836840：官方job完成success。API head C与实际checkout不同；官方checkout选段压缩/解压hash与精确完整SHA核同，真实Git父dde39aa1c3ccf122caff5c24584ab69537d09007+C，实际9b538128cdb711c0bf08f5a2a7b9774e47069201。按公开roots共169文件集/mode/blob/逐bytes及内容SHA与C相同，不声称整commit同。rawresult source绑定该merge、passed，19表恢复前后count/checksum相等。合成Compose演练不等于正式性能。
+
+5份官方ZIP既有下载签收SHA/size/name与本岗当前官方artifact API digest/metadata逐条对应；51份明确公开selected gzip压缩/解压SHA及bytes全核。**本岗未下载或打开私密ZIP**，不冒称亲自对原ZIP重新计算digest；直接ZIP读/归档属owner，证据链与本岗复核步骤分开。live API原JSON、自有双hash ledger及E-ci-audit.json均在自身证据目录。
+
+旧74a product40047094732准确head74a/overallfailure/staticfailure和原job日志UP022/B007保留；原红不被C绿覆盖。原986 before/after XML实际各18/0fail/error/skip，caseIDs相同，command绑定旧ed273应用bc5与新74a workflowSHA同C；18after不是C新跑一次，C full510包含这些18。selected18 classname为空，full为contracts.986_http，仅按命令已知文件规范化归属后核对，原XML不改。其意义是兼容回归，非原bug红绿/性能收益。
+
+**本岗原partial第6节一句“依赖不满足后前驱交付开始”描述过宽，现明确纠正**：既有test_dependencies_cycle_guard_and_edit_lock仅核环、不满足、前驱自身开始后编辑锁，没有依赖任务在所有非空前驱交付后成功开始的额外场景；owner report已准确披露，本岗不补造覆盖或加测试。完整交付等其它目标的覆盖不自动扩大该边界。
+
+本阶段自有证据核对先有一处Python括号SyntaxError（执行前失败）、JUnit classname不一致导致一次检查assert、随后一处审核临时hash表达式/无条件false错误；都已纠正并最终核对exit0，原API/CI/产品无失败含义。首次猜测product不存在Docker-only proof文件产生元数据查找错误后已按实际Docker路径读取。没有修改开发原件或弱化业务断言。
+
+C cloc实际6307/range失败是owner新准确原件，本岗未重计；DB EXPLAIN仍只有小fixture估算，未取得正式收益。无独立H2/private/cases/raw/密文读取或tester对话，无测试/探针/本机服务信号/HTTP/SQL/负载/新CI。
+
+当前有限结论：准确C的一行谓词及两处样式静态链、公开旧新自测/新完整CI对应核查未发现新增实质阻断，原PARTIAL_CI_E_PENDING在本限定范围内已获补证；root仍按预定dde39 gate自行决定开发集成，不自动准入、不替换bc5演示、不混H2、不发global reviewer/stage/main成功或正式性能/独立全验收通过。第7节第9项现更新为上述明确公开证据已核，第10项整体不放行保持。PR42仅COMMENT绑定C，完整GET回执后补。
+
+实际续结发布：E核查阶段c916f2f400e79bb15cfa76e8cb4761891749ec68已push exit0；PR42 COMMENT5636066453显式绑定完整C，插件逐字body/COMMENTED及REST特定review全文GET body/commit_id/state严格相符exit0，https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453。回执E-github-comment.json，PR42实际head仍C。原partial/旧74红与纠正范围均保留，不自动root准入/放全局门禁；本岗0suite或本机动作。封存自身metadata后释放。
