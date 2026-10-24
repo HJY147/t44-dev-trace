@@ -303,3 +303,7 @@ C准确新托管结果：product40060857352/Docker40060980119成功；实际522/
 root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-launcher-cloud.py，不改worker/C/既有部署。固定两份-f+原ops.load_env内存、原TLS校验和四挂载，原admin继承UID10001/capdrop/RO；白名单回执/私有0600日志，失败不重试不seed。T44_DATABASE由原C compose继承MYSQL_DATABASE=t44，无需额外覆盖。仅850新增4静态目标通过/旧20不重跑、Ruff通过，未运行launcher.main或任何云/服务/SQL。准确hash/命令/未核范围见agents/backend/synthetic-fixture/launcher-report.md，实际执行归root。
 
 新中性service worker/host launcher先4ab5e7d设计，原C/既有工具不改，仅原admin唯一新cohort私有bind。notification-cohort/40scope/TTL5400，只原credentialadmin/CLI初发；实际主体/时间/会话摘要只读核验后按root给定852-neutral-service-credential-v1在内存加密，origin从host私密env经stdin，不公开实际IP/Token。新extended TLS helper固定ea1b5873，准入依赖根专审。首9/后3(1重复)离线目标均绿、共11唯一新例，Ruff绿/原SIM300样式红保留；无DB/CLI/云/main执行。报告agents/backend/service-fixture/report.md，运行和接收方解密仍待root审后执行，不冒真实通过。
+
+## Request-ID链设计（未实施）
+
+只读公开852interim并核SHA，API UUID在body/header一致，C web add_header再加独立hexID；TLS配置无新增ID。原login raw数量未知，root单独开发401路径raw两头仅该路径实证；不把meta=null当错误体缺ID，错误包顶层request_id未测。原依据相等条款未证明/SUT违规NOT_PROVEN保持。仅提出deployment两nginx配置trustedupstream单头+本地fallback候选，价值/兼容风险/未来raw测试见agents/backend/request-id-chain-design/design.md；C/云/冻结/oracle不改，无运行。LOC分析未实施/无重计量/不抵销6310失败。

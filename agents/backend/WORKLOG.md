@@ -497,3 +497,9 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 850新增首9纯合成目标绿/旧24不跑，最终追加2preflight并复核1host共3绿/32deselected（11唯一新项，不当12），实际known-data加密、DB/CLI替身，无真实云/DB/CLI/main/服务/负载。原test SIM3001红保留后纯字符串等式左右互换/Ruff绿，未降断言；format上下文patch拒绝记录。核心hash与运行前提见agents/backend/service-fixture/report.md，先交root审核不等大报告。
 
 - service核心0faf2cd已先push交root审；Issue3 6382300556 body-file发表/精确全文GET逐字核，纯E不改两源码或再运行绿。新rootextended helper依赖待根审，实际云发行/receiver解密本岗未执行，阶段释放。
+
+## Request-ID链只读设计（规模工作暂停）
+
+- root将LOC只读任务转为已发表852interim限定审查；只读该公报告并核SHA8d1c4018，不跟private refs/不读其它852/不联系tester。api.py212/237/257同UUID；webapi.conf5 upstreamrequest另ID、nginx.conf26 response add_header另ID；TLS两helper43–48无ID生成。官方nginx文档核add/默认透传/16字节hex，不以静态推原login raw条数。
+- root另报17:36:48开发401路径原始两头，非后端执行/独立验收，不读私有原件；meta=null不判错，C错误ID为顶层request_id且该值未测。SUT违反教师依据仍NOT_PROVEN，冻结oracle不改。短设计agents/backend/request-id-chain-design/design.md，仅未来web两配置trustedupstream+fallback，非C/云/业务/冻结更改；无实际请求/服务/SQL/suite/CI。
+- 前LOC任务仅读既有profile/分类脚本，无新cloc或节省；不复活已拒scan-dedup/AST，不把旧C原型-10冒实得。不混入本设计或新C身份，当前6310/超1210历史保留。作者/静态执行者AI，核心先交root，非学生改码。
