@@ -1,0 +1,19 @@
+{
+  "source": "536162c591c58a8d6ba80e2bca0fac2c0d5f2e39",
+  "working_test_sha256": "c769533bee13e4443c3f6aacb00dedf30db42c638c41ab3bfb05d8b36cdbe534",
+  "argv": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/backend/contracts/859_dependency_delivered.py",
+    "tmp/backend/contracts/986_http.py::test_dependencies_cycle_guard_and_edit_lock",
+    "-q",
+    "--junitxml=agents/backend/dependency-delivered-regression/targeted.xml"
+  ],
+  "PYTHONPATH": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-source-budget-profile/backend",
+  "started_at": "2026-10-24T03:18:54.141366+00:00",
+  "exit_code": 0,
+  "scope": "only2SQLite/TestClient cases,no external MySQL/HTTP/load"
+}

@@ -434,3 +434,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 准确C应用与74a相同，证据分支E只报告/日志/原件，未新增本机HTTP/SQL/测试/负载。候选开发CI通过不改变cloc6307/exit1、DB EXPLAIN非收益、专审/根门槛/集成与正式验收尚待的边界。阶段交接后释放，不自主合分支或继续性能。
 
 - 准确C终态Issue3 6377962466已body-file发表/全文GET逐字核，PR42终态正文逐字GET且head仍C/draft。封档E不触发新源码CI，不推动候选头；原阶段pending评论不覆盖。
+
+## 用户醒后：性能线索澄清与859依赖成功路径覆盖
+
+- 根新授权后从最新f986782新分支codex/backend-dependency-delivered-regression；自有worktree/索引，先读AGENTS与公开开发依据，先设计/prompt/性能摘要536162c，再写root正式分配859。5min内已发root中文摘要，区分低并发inclusive墙钟/4-5-5查询、静态升级10+3P、池短ABBA重建线索与未证实正式瓶颈。C项目谓词只有EXPLAIN估算/CI，不冒收益；固定6307超1207无可信一轮等价减完方案，大范围/架构/课程口径由人决定。未读独立任何资料/860、不联系tester。
+- 静态核原986依赖案只有非空未满足拒绝/环/编辑锁，完整交付无依赖，985无该合法组合。新增tmp/backend/contracts/859_dependency_delivered.py一个案例，原986 helpers/fixture字节不动；两个不同前驱由真实HTTP开发→代码评审→预案审核→经理发布，0/2和1/2时下游409且完整Task/version/边不变，2/2时200/state2/version+1且边保留。无set_state/直接表写/mock业务，不是bug红绿。
+- 仅859新案+原986相邻依赖案，2passed/0failure/error/skip，已有TestClient弃用warning保留；targeted-command/log/xml含执行源536设计+当时未提交test SHA。Ruff check初过；format初一处comprehension换行exit1原件保留，formatter仅换行、AST不含位置属性全同，最终Ruff/format0。未为格式重跑2绿；最终排版字节与执行字节区别明确留痕。
+- 应用/原用例/锁/配置/规范保持根和C字节；本轮无MySQL/外部HTTP/服务/负载/CI或新cloc。原正式FAIL、规模6307/超1207保持，2项不与旧C510叠加或冒全覆盖/独立验收。初搜索误猜986_api.py exit2后rg --files确定986_http.py，记录工具读路径错误非应用失败。
+- Issue3 6379240354已body-file发表/精确全文GET逐字相同，summary/report/prompt与回读在agents/backend/dependency-delivered-regression。本轮作者/执行者后端AI，不记学生手改；skip-ci提交push只交质量增量，完成释放。

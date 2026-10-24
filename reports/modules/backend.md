@@ -270,3 +270,9 @@ JUnit520/0failure/error/skip，其中86910离线池/Settings实际收集、9300c
 
 
 准确C终态补充：新product40047832510四job和Docker40047836840均success；全510/0失败错误skip、44Python行89.212039%/分支79.975728%且excluded0，FE89/20TSVue行93.33%。Docker actual9b53812父dde39+C、169相关运行文件等同，4workers/19表恢复通过。原74a static红仍在原汇总，固定cloc6307仍失败。准确C新汇总records/validation/composite-dependency-query-b66-ci.json；E仅证据，不改变PR42产品C或冒充E另测。专审/根门槛与性能/独立验收仍另决，本阶段结束释放。
+
+## 859：全部非空前驱交付后允许开工（新增开发覆盖）
+
+从根f986、应用字节同C=b66fa36；设计536162c先于测试，原应用/规范/旧用例不变。root分配tmp/backend/contracts/859_dependency_delivered.py，真实SQLite/TestClient/RowsGateway走两前驱完整评审发布；0/2及1/2拒绝且下游快照不变，2/2才允许开发开工/version+1并保留边。新案+原986相邻拒绝案仅2pass，非bug红绿/实库/全套覆盖/独立验收。
+
+原format一处换行失败保留，AST相同的格式修正后静态通过，未重复pytest；执行时/最终test SHA均留。无本机MySQL/外部HTTP/服务/负载/CI/新cloc，正式FAIL与6307超1207保持。性能中文摘要分已知线索/未知瓶颈/人需决定的大范围选择，已先交root。报告agents/backend/dependency-delivered-regression/report.md，性能performance-summary.md，Issue3 6379240354全文GET。本阶段后端AI完成，释放槽位。

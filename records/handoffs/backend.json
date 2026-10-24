@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Dependency candidate C fixed; accurate developer CI passed; evidence sealed; review/root integration pending",
+  "stage": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits",
   "implementation_status": "fixedbc5 app;B/C unapplied;19finite schema cases do not prove HTTP/thread/performance equivalence",
   "artifacts": [
     {
@@ -1703,5 +1703,30 @@
     "next": "dedicated reviewer scoped C and published E; root predeclared gate decides; no automatic integration/load",
     "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377962466",
     "final_full_GET_exact": true
+  },
+  "dependency_delivered_regression": {
+    "base": "f986782311f227082b4445bf7508522aa49c043d",
+    "branch": "codex/backend-dependency-delivered-regression",
+    "design_first": "536162c",
+    "prompt": "agents/backend/dependency-delivered-regression/actual-prompt.md",
+    "design": "agents/backend/dependency-delivered-regression/design.md",
+    "performance_summary": "agents/backend/dependency-delivered-regression/performance-summary.md",
+    "performance_summary_sent_within_5min": true,
+    "test_root_assigned": "tmp/backend/contracts/859_dependency_delivered.py",
+    "scope": "two real predecessor deliveries throughHTTP;0/2 and1/2 deny,no taskversion/edge change;2/2 start200/version+1",
+    "actual_tests": "2passed/0failure/error/skip,existingTestClientwarning",
+    "execution": "testbeforeformat;formatteronlylinewrap/ASTequal;notrerun",
+    "logs": "agents/backend/dependency-delivered-regression/targeted.log",
+    "junit": "agents/backend/dependency-delivered-regression/targeted.xml",
+    "report": "agents/backend/dependency-delivered-regression/report.md",
+    "original_format_failure": "agents/backend/dependency-delivered-regression/format-initial-failure.log",
+    "source_changes": 0,
+    "old_test_changes": 0,
+    "new_CI_or_external_MySQL_HTTP_load_servers": false,
+    "source_size": "priorfixed6307gap1207unchanged/no newcloc",
+    "independent_access": false,
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379240354",
+    "full_GET_exact_match": true,
+    "next": "release;no automatic performance/load/refactor;human architecture/scope decisions remain with root/user"
   }
 }
