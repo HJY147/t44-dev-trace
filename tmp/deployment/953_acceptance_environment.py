@@ -44,7 +44,7 @@ def test_entry_cannot_escape_frozen_directory(path):
 def test_modes_and_timeout_are_explicit():
     assert environment.validate_request(request())["harness_timeout_seconds"] == 900
     for changes in [{"mode": "environment-check"}, {"harness_timeout_seconds": True},
-                    {"harness_timeout_seconds": 1201}, {"request_revision": 0}, {"unexpected": "input"}]:
+                    {"harness_timeout_seconds": 1801}, {"request_revision": 0}, {"unexpected": "input"}]:
         with pytest.raises(ValueError):
             environment.validate_request(request(**changes))
     assert environment.validate_request({"version": 1, "mode": "environment-check",
@@ -560,3 +560,37 @@ def test_api_probe_fake_proc_two_real_supervisors_remain_rejected(tmp_path):
     assert value["supervisor_count"] == 2
     with pytest.raises(ValueError):
         control.metadata.api_projection(json.dumps(value))
+
+
+@pytest.mark.parametrize("seconds", [60, 900, 1200, 1800])
+def test_preparation_budget_accepts_exact_legal_values(seconds):
+    assert environment.validate_request(request(harness_timeout_seconds=seconds))["harness_timeout_seconds"] == seconds
+
+
+@pytest.mark.parametrize("seconds", [1801, 59, True, False, "1800"])
+def test_preparation_budget_rejects_out_of_range_or_non_integer(seconds):
+    with pytest.raises(ValueError):
+        environment.validate_request(request(harness_timeout_seconds=seconds))
+
+
+@pytest.mark.parametrize("seconds", [60, 1200, 1800])
+def test_preparation_budget_execution_uses_requested_deadline(tmp_path, seconds):
+    runner = environment.Environment.__new__(environment.Environment)
+    runner.request = {"harness_path": "synthetic-entry.py", "harness_timeout_seconds": seconds}
+    runner.harness = tmp_path / "synthetic-harness"
+    runner.runtime = tmp_path / "synthetic-runtime"
+    runner.output = tmp_path / "synthetic-output"
+    runner.output.mkdir()
+    runner.report = {}
+    runner.controls = Mock()
+    child = Mock(returncode=0)
+    child.poll.side_effect = [None, None, 0]
+    with patch.object(environment, "frozen_file", return_value=tmp_path / "synthetic-entry.py"), patch.object(
+            environment.subprocess, "Popen", return_value=child), patch.object(
+            environment.time, "monotonic", side_effect=[0, seconds - 0.5, seconds + 0.5]), patch.object(
+            environment.time, "sleep") as sleep, patch.object(environment.os, "killpg") as signals:
+        with pytest.raises(TimeoutError, match="frozen harness timeout"):
+            runner.execute_harness()
+    runner.controls.recover.assert_called_once_with(expired_only=True)
+    sleep.assert_called_once_with(2)
+    signals.assert_not_called()
