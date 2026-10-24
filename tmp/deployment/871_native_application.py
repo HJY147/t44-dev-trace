@@ -433,7 +433,7 @@ class ServeGuards(unittest.TestCase):
         state = self.app.run / "state"
         appmod.write_json(state / "serve-owner.json", self.identity)
         records = []
-        for index, role in enumerate(("api", "consumer", "scanner", "ui")):
+        for _index, role in enumerate(("api", "consumer", "scanner", "ui")):
             for generation in ("old", "current"):
                 record = {"role": role, "generation": generation, "pid": 1000 + len(records)}
                 records.append(record)
