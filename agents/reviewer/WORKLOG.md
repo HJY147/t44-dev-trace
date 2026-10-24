@@ -421,3 +421,10 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 封条：反例与报告591b1ec53c2d71fa4a9516a27aa4a501f03a8edf已push，Issue4 COMMENT6383572331实际POST并特定全文GET逐字核同，目标c4e8/工具d758/SHA ac30明确，https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383572331。原件github-comment-full-get.json/verification.json，当前工具整合仍P2阻断，DB owner另修。无测试.py，837未使用；BE ead与新CI另turn，不混入本scope。
+## 2026-10-24 OUTPUT-EXCLUSIVE-01 精确闭环复审
+
+实际 ROLE-reviewer-DATABASE-OUTPUT-GUARD-v1，自有 codex/review-database-output-guard，从 E 6fa21f 建立；源3fc58d/先设计3981明确。仅原 P2 文件生命周期，不接触产品/DB/HTTP/独立私件或通信。O_EXCL|O_NOFOLLOW/0600 一次取 fd，fdopen异常close，with/finally固定fd不按路径重开，原inode/路径名边界及写入失败时非完整JSON保证均明确。16新公件SHA、2源与3fc、15旧E/prompt、recipes/provenance逐字及13 C源核同；公开JUnit机械复算setup2errors、旧2failures、修后11passed/0failed/error/skip，原warning和raw diff-check exit2保留。本人只对8明确源码说明路径diff-check实际exit0；没有测试/工具执行，835未使用，原19/71未重跑。原P2限定关闭，无新实质阻断，由root整合决策；不宣称性能/独立/全CI/整体通过。八段十项报告及verification/mechanical命令/scoped-check回执已成，Issue4精确COMMENT/全文GET随后封存。
+
+本岗自身 metadata 编辑首次把历史含 dict 的 prompt_refs 当作可 hash 值去重，TypeError 在 handoff 写入前中止；已改为等值 membership 后实际成功。该 shell 后续检查仍执行，不能把末命令 exit0称前脚本成功；工具/测试/owner证据均未改变。
+
+实际封档：审核报告阶段 b38d75fa87a86254f8035514074d1279c5cce838 已 push exit0；Issue4 COMMENT6383715188精确全文GET body/Issue归属/准确E与source均核同，https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383715188 。原件 github-full-get.json / github-verification.json。只关闭原P2的叶节点排他/fd绑定范围，不发APPROVE或global/main状态；本人0测试/工具/DB/HTTP/负载/CI，原19/71未重跑。
