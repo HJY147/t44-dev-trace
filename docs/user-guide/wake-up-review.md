@@ -21,7 +21,7 @@ Word都在本机`.submission-private/review-documents`，含你提供的私密�
 | 测试结果 | M7/test-results-review.docx | 8 |
 | AI可执行规格说明 | M6/ai-spec-guide-review.docx | 3 |
 
-共35页，文档岗已逐页检查对应最终排版。它们是AI编制的技术材料；技术报告排版完成不等于软件验收通过。源码审阅包和后续合并审阅包也只作为审阅快照，不自动变成最终提交。
+共35页，文档岗已逐页检查对应最终排版。三份M6稿中的运行状态只代表各自内容截止，不能把其中“v3尚未发表”当作现在的状态；后发表的核查、部署与性能方法变化见[M8工程附录](../../reports/final/M8-engineering-annex.md)和[准备阶段补记](../../reports/final/M8-performance-preparation-addendum.md)。它们是AI编制的技术材料；技术报告排版完成不等于软件验收通过。源码审阅包和后续合并审阅包也只作为审阅快照，不自动变成最终提交。
 
 公开阅读可以从[提交物对照](../../reports/final/submission-map.md)、[新手指南](../../docs/guidance/M6-learner-guide.md)进入。概设回答模块怎么分，详设回答接口和函数收什么、返回什么，测试报告回答究竟检查了什么及哪里还未通过。
 
