@@ -1,7 +1,7 @@
 {
   "role": "documentation",
-  "stage": "M8 preparation addendum sealed and Issue9 full GET complete",
-  "implementation_status": "one new limited addendum and two append-only entry links complete; all old cutoffs/Word/QA untouched",
+  "stage": "M9 navigation sealed and Issue9 full GET complete",
+  "implementation_status": "navigation and visible outer-copy/submission history clarification complete; oldWord35pages/4sourceMD/QA/freeze unchanged",
   "actor": "AI /root/documentation_checkpoint; current M6 author/check/render operator",
   "previous_M5_author": "previous documentation AI; this same instance only recovered M5",
   "artifacts": [
@@ -199,22 +199,25 @@
       "id": "ROLE-documentation-M8-PERFORMANCE-PREPARATION-v1",
       "status": "used; not a new historical evolution count",
       "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M8-PERFORMANCE-PREPARATION-v1.md"
+    },
+    {
+      "id": "ROLE-documentation-M9-REVIEW-NAVIGATION-v1",
+      "status": "used; no historical evolution increment",
+      "actual_prompt": "agents/documentation/prompts/ROLE-documentation-M9-REVIEW-NAVIGATION-v1.md"
     }
   ],
   "delivery": {
-    "branch": "codex/documentation-m8-performance-addendum",
-    "base": "5ce98e0d46aec9ccde9a9a177d34137d6a651ae9",
-    "design_checkpoint": "678c73ff176b7782e9515afc8e9e9cfda9f2b68f",
-    "implementation_checkpoint": "84bd37eeda61c17c069fba7e5501d0005598caf9",
-    "PR41": "https://github.com/HJY147/t44-dev-trace/pull/41",
-    "PR_status_at_readback": "open/draft/unmerged/body-head84bdmatch/mergeabletrue",
-    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6377503061",
-    "readback": "agents/documentation/github-M8-performance-preparation-readback.json",
-    "stage": "limited addendum complete; final receipt then release",
-    "new_results_or_Word": false,
-    "approval_status_main_merge": false
+    "branch": "codex/documentation-m9-navigation",
+    "base": "728c4e8e273a8e1f8505db505c09168d1abe3556",
+    "design_checkpoint": "bf2bc5e8fd795b7810c84833d087f701ac8d5d43",
+    "implementation_checkpoint": "6be519226ed5e83c71c6c6a99719ffd64c962e8d",
+    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6377836827",
+    "readback": "agents/documentation/github-M9-navigation-readback.json",
+    "stage": "M9 bounded navigation complete; final receipt then release",
+    "new_Word_bundle_or_results": false,
+    "no_approval_status_main_merge": true
   },
-  "updated_at": "2026-10-24T08:27:28.926175+08:00",
+  "updated_at": "2026-10-24T08:57:41.703557+08:00",
   "M7": {
     "design_checkpoint": "fa3b2fe1095aca78c02e80cad9de2ce187ff551b",
     "base": "3dadfb954f9f11274b324fa544d14c841eb4849a",
@@ -407,5 +410,44 @@
     "db87 remains candidate at cutoff; resource/failure distribution costs unknown, no new formal result",
     "dcad published4h ready only; final runner exit/cleanup null, no complete4h claim",
     "v4 same-newH two sources three entrypoints authorized only; no new performance results published at cutoff"
-  ]
+  ],
+  "M9": {
+    "base": "728c4e8e273a8e1f8505db505c09168d1abe3556",
+    "branch": "codex/documentation-m9-navigation",
+    "remote_cutoff_resolved_once": true,
+    "prompt": "agents/documentation/prompts/ROLE-documentation-M9-REVIEW-NAVIGATION-v1.md",
+    "BE_question_reply": [
+      1,
+      1
+    ],
+    "no_H2_final_result_wait": true,
+    "design_checkpoint": "bf2bc5e8fd795b7810c84833d087f701ac8d5d43",
+    "navigation": "reports/final/M9-review-navigation.md",
+    "collection": "docs/reports/M9-collection.json",
+    "validation": "docs/reports/M9-navigation-validation.json",
+    "sources": 11,
+    "outer_copy_notice_at_submission_map_top": true,
+    "old_M7_section4_body_preserved": true,
+    "old_Word_source_QA_frozen_changed": false,
+    "new_actual_bundle_created": false,
+    "H2_final_public_result": "none at cutoff; not awaited",
+    "service_test_Word_or_private_reads": 0,
+    "implementation_checkpoint": "6be519226ed5e83c71c6c6a99719ffd64c962e8d",
+    "publication": "Issue9 comment6377836827 full GET body/URL matched",
+    "readback": "agents/documentation/github-M9-navigation-readback.json",
+    "stage": "complete; receipt-only commit then immediate release; no H2/static wait"
+  },
+  "M8_preparation_delivery_history": {
+    "branch": "codex/documentation-m8-performance-addendum",
+    "base": "5ce98e0d46aec9ccde9a9a177d34137d6a651ae9",
+    "design_checkpoint": "678c73ff176b7782e9515afc8e9e9cfda9f2b68f",
+    "implementation_checkpoint": "84bd37eeda61c17c069fba7e5501d0005598caf9",
+    "PR41": "https://github.com/HJY147/t44-dev-trace/pull/41",
+    "PR_status_at_readback": "open/draft/unmerged/body-head84bdmatch/mergeabletrue",
+    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6377503061",
+    "readback": "agents/documentation/github-M8-performance-preparation-readback.json",
+    "stage": "limited addendum complete; final receipt then release",
+    "new_results_or_Word": false,
+    "approval_status_main_merge": false
+  }
 }
