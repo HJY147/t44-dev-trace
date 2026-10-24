@@ -18,3 +18,13 @@
 - 优化至少先保留旧源对等自有输入/输出/错误/审计/幂等/版本/锁序与安全负例；有完整设计且DB源码确有可消重复SQL再实现。旧断言不减，不用mock/SQLite冒称MySQL或性能；before/after均精确SHA，不把初始化/预热成本隐去。
 
 当前阶段是设计与静态审查，不运行任何数据库/服务/HTTP/负载/测试，不读取或操作root工作区文件（仅获授权public单文件只读和Git对象读取）。后续实际诊断目标和新工具编号由协调调度，不因缺私有资料自行扩大权限。所有原失败、未验证/待资源项保留，GitHub Issue4公开具体对接并精确GET读回。
+
+## 协调明确本阶段准入与工具838
+
+root实际回复：“诊断工具使用新编号 tmp/838_database_public_diagnostics（最新号递减）。本次两机只保全证据、19:00自动释放，不再准入SQL/HTTP/负载。可先做源码shape计数与本地自有临时SQLite/合成schema诊断，严禁连接私有云env或私有独立用例。真实MySQL执行需另冻结开发诊断配置/独立schema再跑，不把SQLite/静态视为云数据库证明。现阶段先保真实可重放设计/静态证据与backend对接。”
+
+因此本轮838只实现显式CLI、零网络/零env/零凭据、临时内存SQLite的生产RowsGateway观测与MySQL方言编译，不实现HTTP/负载/MySQL连接模式。工具在tmp/838_database_public_diagnostics/838_database_public_diagnostics.py；导入不建连接。SQLite专用合成表只为查询shape/行物化计数构造，不装生产FK/CHECK，绝不改冻结元数据或冒称MySQL约束/锁/CAS实测。
+
+固定有限维度：依赖0/4/32，比较当前生产deps+IN(empty仍execute)二读配方与BE候选的不需要依赖动作零读配方（只说配方，未接生产动作）；成员3/32的同project全量读；依赖页1/4/32的逐前驱get(1+P)与仅作为候选的batch(2)；listTasks页20+COUNT形状；CAS version谓词MySQL编译，锁SHARE/UPDATE编译。捕获SQLAlchemy statement形状和SELECT数/物化行数，不保存绑定参数，不测/宣称耗时收益。
+
+工具验证范围：导入无输出/连接、源码对象hash、固定小夹具输出/顺序与缺引用失败、分页/排序/predicate及empty-IN语义；数据仅本次内存库，事务清理总dispose。所有诊断配方在报告标“静态/SQLite/未应用候选”，不把模拟调用数写成HTTP真实trace；源码实际调用者/锁序由静态receipt链接。不会自动测试839私有输入或解释502层级。BE guard-specific实现和新MySQL窗口另由协调推进。
