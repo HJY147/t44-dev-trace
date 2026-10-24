@@ -1564,7 +1564,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "D008 exactC代码有限审：未见新阻断，CI/Docker原件未审，非整体放行",
+  "stage": "PR44 5cc限定源码审核与COMMENT完整GET封存；CI失败/不得合并",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -2208,7 +2208,23 @@
     "complete_CI_artifacts_audited": false,
     "outcome": "LIMITED_STATIC_CODE_CLEAR;CONTRACTS_AND_COVERAGE_CI_FAILED;NO_MERGE",
     "performance_or_global_gate_pass": false,
-    "github_comment": "pending_exact_C_COMMENT_and_full_GET",
+    "github_comment": {
+      "review_id": 5638027716,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/44#pullrequestreview-5638027716",
+      "commit_id": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "state": "COMMENTED",
+      "body_exact_match": true,
+      "correct_PR": true,
+      "full_specific_REST_GET": true,
+      "readback_bytes": 3481,
+      "readback_sha256": "e668ebc66487881cd24b5c8498c6415eb294471455e7f15aa3ff9244ef2be99b",
+      "body_sha256": "b816af2ad0ffa3d6494e26fbf728407aba8b5eacf6086ac5cab42f6d4b1cd05b",
+      "own_tests_SQL_services_load_CI": 0,
+      "source_code_result": "limited static clear only",
+      "merge_admitted": false,
+      "CI_failures": "root relayed contracts and coverage failure; reviewer did not inspect logs",
+      "verified_utc": "2026-10-24T11:09:25.045336+00:00"
+    },
     "latest_CI_root_relay": {
       "source": "root real-time public GitHub CI read, relayed to reviewer; reviewer did not independently read jobs/logs",
       "received_utc": "2026-10-24T11:08:23.885541+00:00",
@@ -2239,6 +2255,8 @@
       "merge_admitted": false,
       "next_owner": "backend separate diagnosis; preserve original 5cc and red jobs"
     },
-    "merge_admitted": false
+    "merge_admitted": false,
+    "report_evidence_commit": "1bdbaf427c0f66d99dc98e1f46e807cc62007183",
+    "role_release": "complete bounded source/evidence review; backend CI diagnosis and DB review are separate future dispatches"
   }
 }

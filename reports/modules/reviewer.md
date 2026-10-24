@@ -296,3 +296,6 @@ R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已pus
 ### 封条前收到的最新门禁事实
 
 总协调实时读取公开product40087756354，转达contracts job120854052090与coverage job120854051910在实际suite步骤failure，frontend/static success；Docker40087993372 success。本岗未独立读取这些job/log，也不诊断失败原因；通知原件root-ci-failure-notice.json。上文E的in_progress是历史取样，不替代此最新状态。**5cc仍不得合并；限定静态源码clear绝不是merge准入。** 后端另阶段诊断/修复，原失败和精确5cc保留；变更后另审。
+
+
+最终GitHub封条：证据/CI失败补记commit 1bdbaf427c0f66d99dc98e1f46e807cc62007183 已push。PR44以commit_id=5cc856d6fa94b1fdde32605543b53822f9747f00提交COMMENT 5638027716；特定REST完整GET body逐字相同、commit_id/state/PR归属均核，https://github.com/HJY147/t44-dev-trace/pull/44#pullrequestreview-5638027716。原件github-review-full-get.json，校验github-review-verification.json。评论明确contracts/coverage失败、候选不得合并，不APPROVE/不改status/main；本岗0运行和私密读取，后端另诊断，释放岗位。
