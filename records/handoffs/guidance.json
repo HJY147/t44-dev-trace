@@ -1,133 +1,119 @@
 {
   "role": "guidance",
-  "stage": "M6 初学者阅读/检查指南与真实AI问答",
-  "implementation_status": "指导文稿已编写；本岗无产品实现/运行/测试/浏览器/渲染；学生练习未完成",
-  "source_commit": "0783a42b26038d7d3e5a1fe07ae8219a47f06493",
-  "branch": "codex/guidance-m6",
+  "stage": "M8 五分钟纯查看导览",
+  "implementation_status": "指导文稿已完成；没有修改产品或执行演示/测试",
+  "source_commit": "5ce98e0d46aec9ccde9a9a177d34137d6a651ae9",
+  "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "branch": "codex/guidance-m8-tour",
+  "design_commit": "cdf9547c4ca09fa9a7a6c109b8a0530ab8f662ee",
   "artifacts": [
-    "docs/guidance/M6-learner-guide.md",
-    "docs/guidance/M6-actual-qa.md",
-    "docs/guidance/M6-source-manifest.json",
-    "docs/guidance/M6-issue10-readback.json",
-    "docs/guidance/M6-document-checks.json",
-    "records/qa/question-log.md",
+    "agents/guidance/M8-design-plan.md",
+    "docs/guidance/M8-five-minute-tour.md",
+    "docs/guidance/M8-document-checks.json",
+    "docs/guidance/M8-issue10-readback.json",
+    "agents/guidance/prompts/ROLE-guidance-M8-TOUR-v1.md",
+    "agents/guidance/m8-stage-comment.md",
     "agents/guidance/WORKLOG.md",
     "reports/modules/guidance.md",
-    "records/handoffs/guidance.json",
-    "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
-    "agents/guidance/m6-stage-comment.md"
+    "records/handoffs/guidance.json"
   ],
   "interfaces": {
-    "version": "M6 guidance checkpoint; business contract 1.1.0 unchanged",
     "inputs": [
-      "R001真实公开原话",
-      "R002公开provenance only",
-      "固定源码0783与准确832公开验证",
-      "两次真实AI教学询答",
-      "root报告422新组合CI刚触发"
+      "root实际导览要求",
+      "固定截止公开源码/需规/设计",
+      "native-user-preview-validation.json公开开发入口验证"
     ],
     "outputs": [
-      "中文学习路线与真实函数I/O",
-      "5项未完成练习和本人空表",
-      "逐字AI询答及纠错",
-      "45来源SHA与40函数位置",
-      "Issue10真实评论/readback"
+      "1066中文字+一表五分钟纯查看导览",
+      "同一改期例子的过程解释",
+      "未来真实本人记录方式及未执行边界"
     ],
-    "errors": [
-      "无来源不写本人经历",
-      "旧CI不背书新源码",
-      "候选自测不计独立验收",
-      "scanner不是MQ下游消费者"
+    "unchanged": [
+      "wake-up-review.md",
+      "产品/测试/冻结规范",
+      "原M6资料"
     ],
+    "private_access": "未读独立私密/Word/R002/账号文件或口令",
     "handoff_to": [
       "root",
       "documentation",
       "prompt_engineering"
-    ],
-    "independent_testing_contact": "none; no unpublished/private test inputs read"
+    ]
   },
   "commands_executed": [
     {
-      "command": "git status/branch/worktree/rev-parse; git worktree add -b codex/guidance-m6",
-      "result": "独立worktree及0783固定基点"
+      "command": "git worktree add -b codex/guidance-m8-tour ... 5ce98e0...; explicit design commit",
+      "result": "cdf9547c4ca09fa9a7a6c109b8a0530ab8f662ee"
     },
     {
-      "command": "rg/cat/nl/sed; inline Python JSON/hash/text",
-      "result": "只读源码与公开材料；候选不存在目录探查更正；45hash/40函数"
+      "command": "cat/rg/sed/nl public sources; static Python links/JSON/hash",
+      "result": "1066中文字符、一表、6本地链接；6产品文件匹配bc5；wake-up未改；一个猜测路径退出2后更正"
     },
     {
-      "command": "collaboration.send_message to backend and frontend_logout",
-      "result": "各1个真实教学问题并收到回复；逐字归档，非人类访谈"
+      "command": "gh issue comment 10 --body-file agents/guidance/m8-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6377530862"
     },
     {
-      "command": "GitHub connector fetch_issue 10 / add_comment_to_issue / fetch_issue_comments",
-      "result": "评论6374412075精确id/body/url/login readback一致"
-    },
-    {
-      "command": "inline Python document/link/hash checks; git diff --check",
-      "result": "实际数值见M6-document-checks.json；非产品测试"
+      "command": "gh api repos/HJY147/t44-dev-trace/issues/10 and issues/comments/6377530862 full GET",
+      "result": "完整公开响应归档；id/body/url/login精确核对"
     }
   ],
   "results": [
-    "真实Vue/38op/FastAPI/SQL/outbox/MQ/scanner链路与版本/审核/验证范围已解释",
-    "R001哈希与出处一致；R002原文/封面/独立私密内容未读",
-    "AI入口泛称纠正与学生行动分开",
-    "最近完整绿色仍绑定832，root后报422组合仅写待验时点",
-    "Issue10阶段评论已发表并精确回读"
+    "先设计提交、后文稿的真实顺序已保留",
+    "短导览有界入口、2合成项目、纯查看与同一改期全链路说明",
+    "不把MQ/scanner当浏览器串行步骤",
+    "不代学生研究成文或补写人工12/5/3",
+    "Issue10真实阶段回复及全文GET已归档"
   ],
   "unverified": [
-    "学生本人阅读、练习、改码、断点、亲测与独立识别幻觉无新增证据",
-    "最终学生研究正文未由本岗撰写或收到",
-    "Issue28新组合422在本轮只收到CI刚触发状态，无整体通过结论",
-    "6186+pending规模、正式P95、v2整体与v3执行未由本岗解决",
-    "本岗没有运行产品/测试/负载/浏览器/渲染"
+    "学生本人尚未执行本导览的阅读或改动；无新增人工经历",
+    "本岗未新验证当前入口在线/完整四小时/业务验收或性能",
+    "未运行浏览器/服务/SQL/产品/测试；仅文稿静态核对"
   ],
   "questions": [
     {
       "owner": "root",
-      "question": "将指南转达学生；实际学习记录只按本人真实行动补录，本轮不向睡眠中的用户追问"
+      "question": "后续接入wake-up-review入口；本岗不改该共享页面"
     },
     {
-      "owner": "documentation",
-      "question": "后续汇总应保留0783源码截止/832完整验证/422新组合待验时点，勿套旧绿灯"
+      "owner": "用户本人（未来）",
+      "question": "若真实阅读或改动，再记录准确版本/本人动作/差异/结果；当前不追问睡眠用户"
     }
   ],
   "prompt_refs": [
     {
-      "id": "ROLE-guidance-M6-v1",
-      "task_file": "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
-      "dispatch_source": "root actual new-task message",
+      "id": "ROLE-guidance-M8-TOUR-v1",
+      "task_file": "agents/guidance/prompts/ROLE-guidance-M8-TOUR-v1.md",
+      "dispatch_source": "root实际派工消息",
       "status": "实际执行",
-      "rationale": "固定源码讲解真实I/O，隔离私密资料与真人经历，保留验证时点",
+      "rationale": "将M6长函数表缩短成五分钟查看与单一改期实例，固定来源和未操作边界",
       "artifacts": [
-        "docs/guidance/M6-learner-guide.md",
-        "docs/guidance/M6-actual-qa.md",
-        "docs/guidance/M6-source-manifest.json",
-        "docs/guidance/M6-issue10-readback.json",
-        "docs/guidance/M6-document-checks.json",
-        "records/qa/question-log.md",
+        "agents/guidance/M8-design-plan.md",
+        "docs/guidance/M8-five-minute-tour.md",
+        "docs/guidance/M8-document-checks.json",
+        "docs/guidance/M8-issue10-readback.json",
+        "agents/guidance/prompts/ROLE-guidance-M8-TOUR-v1.md",
+        "agents/guidance/m8-stage-comment.md",
         "agents/guidance/WORKLOG.md",
         "reports/modules/guidance.md",
-        "records/handoffs/guidance.json",
-        "agents/guidance/prompts/ROLE-guidance-M6-v1.md",
-        "agents/guidance/m6-stage-comment.md"
+        "records/handoffs/guidance.json"
       ],
       "counts_as_prompt_evolution": false
     }
   ],
   "github": {
     "issue": 10,
-    "comment_url": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6374412075",
+    "comment_url": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6377530862",
     "body_exact_readback": true,
+    "full_get_path": "docs/guidance/M8-issue10-readback.json",
     "review_success_posted": false
   },
   "history": [
     {
-      "stage": "R001 审阅与调试指导 / 只读源码及轻量 MD、JSON",
-      "branch": "codex/guidance-r001-review",
-      "source_commit": "f103600b0e98f8d60689d2db6dfd5211a9fd0f2a",
-      "note": "R001旧阶段完整事实见0783父历史；不把当时pending/课程反馈未收当当前结论"
+      "stage": "M6 初学者阅读/检查指南与真实AI问答",
+      "source_commit": "0783a42b26038d7d3e5a1fe07ae8219a47f06493",
+      "note": "M6完整记录与旧截止保留在Git历史及M6文件，本轮不当当前状态"
     }
   ],
-  "updated_at": "2026-10-23T20:48:17.873015+00:00"
+  "updated_at": "2026-10-24T08:30:39+08:00"
 }

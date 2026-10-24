@@ -1,46 +1,39 @@
-# 用户指导岗位报告｜M6 初学者检查点
+# 用户指导岗位报告｜M8 五分钟导览
 
 ## 任务与截止
 
-- 实际派工ROLE-guidance-M6-v1，原文在本岗prompts；作者/操作者为AI guidance。
-- 独立分支codex/guidance-m6，worktree .agent-worktrees/guidance-m6，源码基点0783a42b26038d7d3e5a1fe07ae8219a47f06493。
-- R001只作为学生本人观点；R002只读公开provenance。未写最终学生研究正文。
-- 本轮只读代码/公开材料与写本岗MD/JSON；未改产品、测试、冻结规范或共享ledger。
+- 实际派工 ROLE-guidance-M8-TOUR-v1；作者/操作者为AI guidance，不是学生本人。
+- 独立分支codex/guidance-m8-tour，worktree同名；资料固定5ce98e0d46aec9ccde9a9a177d34137d6a651ae9。
+- 应用固定bc5aef9c62393134582affb7a690acb33ac2b833，不把M6旧截止或后续新状态混入。
+- 先提交14行设计cdf9547，再写文稿和角色记录；不修改wake-up-review.md，由root接入口。
 
 ## 实际产物
 
-- docs/guidance/M6-learner-guide.md：简明中文入口、真实函数I/O与边界、5项待做练习和本人空表。
-- docs/guidance/M6-actual-qa.md：与backend/frontend各1次真实AI询答，逐字回复和纠错，不称人类访谈。
-- docs/guidance/M6-source-manifest.json：45来源文件SHA、40函数位置、源码/验证截止及访问边界。
-- docs/guidance/M6-issue10-readback.json：已核对本岗Issue10、真实新评论与逐字readback。
-- docs/guidance/M6-document-checks.json：仅文档结构/链接/来源核对，不是产品测试。
-- records/qa/question-log.md追加QA-010，保留历史pending并指明D005/D006后续已真实采用。
-- 本岗WORKLOG/report/handoff、实际prompt和m6-stage-comment.md同步；历史记录不伪改为当前状态。
+- docs/guidance/M8-five-minute-tour.md：1066中文字符、一张表，五分钟查看两个合成项目现有记录。
+- 说明5178完整有界演示、私密登录说明路径和停止时间；未读取口令，不混用5173身份。
+- 查看任务计划/评审发布/通知已读vs处理/审计，不要求业务写操作；登录会建会话，非全库零写。
+- 同一改期例子贯穿需求→设计→前端→API事务→数据库差异审计→测试要求；不画浏览器→MQ→scanner串行。
+- 解释概设/详设/测试/本人研究各自问题；未来本人真实阅读/改动后再记，不补12/5/3。
+- M8-document-checks.json保留字数、链接、11份公开来源hash和bc5文件一致性。
+- M8-issue10-readback.json保留Issue10与本评论完整GET及精确id/body/url/login。
+- 本岗设计、实际prompt、阶段评论、WORKLOG、模块报告与handoff同步。
 
-## 输入输出与教学纠正
+## 输入输出与边界
 
-- 输入：R001观点、真实源码/冻结契约、公开准确832验证及root后续组合状态。
-- 输出：给初学者的阅读路线、输入输出/副作用解释、未做练习、真实询答与来源清单。
-- 真实HTTP入口是create_app.endpoint.handle→Runtime.execute，不存在execute_operation或统一save_task。
-- 改期是Tasks.changeTaskPlan→Call.cas→Projects.schedule_diff；业务返回仍在主UoW内，audit/outbox/幂等快照一起提交。
-- MQ网络在DB事务外；type1一般业务事件不建用户提醒，type2升级事件才落通知；scanner为另一入口共用Runtime。
-- 前端本地填写检查不是业务守卫；版本冲突、幂等重试、契约版本各有用途。
-- 本岗入口泛称由后端AI纠正，不计学生独立识别或亲改；没有本人新增操作证据。
+- 输入：root真实要求、5ce公开设计/源码、明确允许的前端公开preview validation。
+- 输出：短导览和可核对角色记录；原M6大表保留历史，不重写成当前。
+- 未读取账号文件/独立私密/Word/R002，未联系测试或唤醒/询问用户；未运行浏览器/服务/SQL/产品/测试。
+- preview是开发者有限入口验证，不是本岗新执行、完整四小时演示或独立验收结论。
+- 只记录未来阅读/改动的方法；当前没有新增本人实际行动或署名研究正文。
 
-## 状态与执行边界
+## 文稿核对与真实问题
 
-- 源码说明固定0783；完整绿色仅8323692的437BE/65FE与准确Docker合成演练。
-- root后报Issue28组合42243eb已合入0549/c79并触发CI；本轮只记时点，不等或预判新组合通过。
-- DB3b7生产源码6186超5100，后续pending须另统计；原正式P95三组失败、v2整体未完、v3冻结0执行保留。
-- 两岗候选自测/状态属于回复方自述，本岗未运行候选或增加测试通过数。
-- 已执行git/rg/cat/nl/sed、文本JSON/hash、apply_patch、GitHub连接器；未产品导入/运行/测试/负载/浏览器/渲染。
-- 初始不存在候选路径探查返回2后按真实目录更正；未据此声称文件存在。
-- 未访问私密R002原文/封面/tmp/independent内容/未发布测试；未联系独立测试。
+- 1066中文字符、一张表、6本地链接有效；6个产品文件与bc5相符，wake-up原字节未变。
+- 初查一个猜测公开路径不存在后更正；测试报告初稿错名发布前修正，原事实记录在日志/checks。
+- 只核对MD/JSON/hash和Git差异，不为小文稿写测试，也不扩大产品通过结论。
 
 ## GitHub与交接
 
-- Issue10阶段评论：https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6374412075。
-- 发后精确readback id/body/url/login一致；不发布reviewer成功状态，不合并。
-- 文稿核对后仅显式提交本岗路径，[skip ci]并push自身分支；准确SHA交root。
-- 本轮Prompt为岗位派工ID，不增加用户六版演进数量；指南交root转达，练习等待本人真实行动。
-- 后续整体CI/审核/验收、性能/规模与文档汇总由责任岗/root按准确版本更新，本岗不代下结论。
+- Issue10新评论6377530862，完整GET与正文精确核对，实际AI岗位和Prompt-Ref清楚。
+- 仅显式提交本岗路径、push自有分支；准确设计/交付SHA交root，不合并或发审核成功。
+- root后续接入口；学生之后实际阅读/选择/改动再追加真实来源，无需现在答复。
