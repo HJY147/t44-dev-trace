@@ -342,3 +342,8 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 实现6be519226ed5e83c71c6c6a99719ffd64c962e8d本人commit/push，Issue9实际评论6377836827对精确ID全文GET，body/URL逐字相同，保存github-M9-navigation-readback。
 - root通知部署静态窄修急需槽，本轮不纳未完成修复、不等H2/候选CI；仅存回执/交接后由HEAD/远端一致核实回传，立即释放索引/槽位，无新源读取或产品操作。
+
+## 2026-10-24T09:06:31.615518+08:00 M10 先行设计
+
+- 从root明确cc4c4ae新建独立documentation-m10-handoff树；两公开摘要SHA256已精确匹配，仅hash尚未读正文。复读AGENTS/本岗TASK及已有交接，先保存设计/真实派工摘要。
+- 本轮只新增H2公开结果补记与提交清单当前入口/包状态说明；旧Word源/QA/冻结/各历史截止不动，不跑服务/测试/CI/Word，不问tester或用户。
