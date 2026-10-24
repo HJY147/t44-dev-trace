@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "latest-preview-bc5-api-web-running",
-  "implementation_status": "用户本机5173→18080已更新精确bc5，只API+Web，907一次只读smoke通过；服务继续运行，源码未改，不称完整部署。",
+  "stage": "native-user-demo-entry-developer-verified",
+  "implementation_status": "861一次只读普通入口通过，产品未改；已运行新5178/18088服务不变，浏览器关闭，本轮非独立验收。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -198,6 +198,22 @@
     {
       "path": "agents/frontend/latest-preview-secret-scan.json",
       "status": "本岗公开产物精确密钥扫描"
+    },
+    {
+      "path": "docs/ui/native-user-preview-check.md",
+      "status": "本轮设计范围"
+    },
+    {
+      "path": "tmp/frontend/861_native_user_preview.mjs",
+      "status": "root分配新窄入口脚本"
+    },
+    {
+      "path": "agents/frontend/native-user-preview-validation.json",
+      "status": "实际HTTP/身份/限制"
+    },
+    {
+      "path": "agents/frontend/native-user-preview-first/",
+      "status": "脱敏原件与6PNG"
     }
   ],
   "interfaces": [
@@ -392,17 +408,25 @@
     {
       "command": "Node tmp/frontend/907_demo_preview_smoke.mjs with private credentials path and unique output",
       "result": "once exit0,1440/390 fourimages viewed,20requests/0businesswrites; browser closed, servers continue"
+    },
+    {
+      "command": "node --check tmp/frontend/861_native_user_preview.mjs; frozen path inspection",
+      "result": "syntax valid; notification selector corrected before first actual run"
+    },
+    {
+      "command": "Node tmp/frontend/861_native_user_preview.mjs with0600ordinary adapter path, new5178 target",
+      "result": "once exit0,66GET+4sessionPOST,70status200,6PNGviewed,normal logout,9listener identity same,Chromeclosed"
     }
   ],
   "results": [
-    "85文件不可变archive前后hash同bc5，原锁依赖/旧副本保留",
-    "旧63514/72044核身份后退役；APIparent24604/四worker、Vite24610新运行",
-    "907原样一次20API请求（2login+18GET）/0businesswrites/failedResponses/pageerror；1440/390四图已看",
-    "私密本机说明0600账号不变；公开新产物密钥精确扫描零匹配"
+    "70API响应实际全200/requestid70；66GET+2login+2logout；业务修改0",
+    "1440/390选project2，任务/通知/审计可读，六图已看/无溢出，正常退出shell卸载",
+    "9保护端口listener身份前后相同；新旧服务配置不变，907原件未改/未跑",
+    "精确appbc5/92source身份引用公开部署绑定，不读私密runner"
   ],
   "unverified": [
-    "Current preview only API+Web, MQ/scanner not started; not full deployment or new functional independent acceptance.",
-    "907 only records requests and error-status response events, not all completed success response statuses."
+    "Native ordinary entry smoke only, not independent acceptance or all roles/records/full functional reacceptance.",
+    "Background MQ/scan and authentication may write DB; no all-DB-zero-write or finished4h claim."
   ],
   "questions": [
     "1.1正式freeze189dc4a已收到；后端新守卫刚准入，本轮不宣称容量行为或真实1.1通过。",
@@ -552,18 +576,19 @@
       "improvement_reason": "按冻结状态/码/操作解释人力业务约束，保留未知/字段/503/session退路，不把数据保护成功当界面验收通过。"
     },
     "records/prompts/ROLE-frontend-PLAN-REASON-v1.md",
-    "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md"
+    "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md",
+    "records/prompts/ROLE-frontend-NATIVE-USER-PREVIEW-v1.md"
   ],
-  "updated_at": "2026-10-23T22:10:05.188563+00:00",
+  "updated_at": "2026-10-24T00:12:29.011098+00:00",
   "delivery": {
-    "branch": "codex/frontend-latest-preview",
+    "branch": "codex/frontend-native-preview",
     "pull_request": null,
     "base": "codex/integration",
     "draft": true,
-    "basis_commit": "c18fcd554efe7dc22038f6afa29e3646e7dd11b2",
-    "status": "Latest bc5 API+Web preview left running; evidencec5e79 pushed and Issue2 comment6375754006 exactGET body matched; no product modification or new acceptance claim",
-    "latest_checkpoint": "c5e79e0c44beb9a61bb4a9d9a5fd5079493d7a72",
-    "product_source_note": "No product modification; exact bc5 runtime snapshot only.",
+    "basis_commit": "13cce419d5232126324ad88c88c26c60dd4a7334",
+    "status": "861 once entry verified; evidence/Issue2 handoff preparing; services unchanged",
+    "latest_checkpoint": "c300560cb1e0513a47751f7110ed59714cf3b668",
+    "product_source_note": "No product modification; fixedbc5 live source binding from published deployment receipt.",
     "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
     "application_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
     "stage_comments": {
@@ -588,7 +613,8 @@
     "previous_business_feedback_branch": "codex/frontend-business-feedback",
     "previous_pr30": "https://github.com/HJY147/t44-dev-trace/pull/30",
     "previous_plan_reason_branch": "codex/frontend-plan-reason",
-    "previous_pr32": "https://github.com/HJY147/t44-dev-trace/pull/32"
+    "previous_pr32": "https://github.com/HJY147/t44-dev-trace/pull/32",
+    "previous_latest_preview_branch": "codex/frontend-latest-preview"
   },
   "warm_glass": {
     "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
@@ -782,6 +808,29 @@
     "api_workers": 4,
     "services_left_running": true,
     "scope": "API+Web local preview only; no business writes",
+    "independent_acceptance_claimed": false
+  },
+  "historical_results_before_native_user_preview": [
+    "85文件不可变archive前后hash同bc5，原锁依赖/旧副本保留",
+    "旧63514/72044核身份后退役；APIparent24604/四worker、Vite24610新运行",
+    "907原样一次20API请求（2login+18GET）/0businesswrites/failedResponses/pageerror；1440/390四图已看",
+    "私密本机说明0600账号不变；公开新产物密钥精确扫描零匹配"
+  ],
+  "historical_unverified_before_native_user_preview": [
+    "Current preview only API+Web, MQ/scanner not started; not full deployment or new functional independent acceptance.",
+    "907 only records requests and error-status response events, not all completed success response statuses."
+  ],
+  "native_user_preview": {
+    "validation": "agents/frontend/native-user-preview-validation.json",
+    "web": "http://127.0.0.1:5178",
+    "api": "http://127.0.0.1:18088",
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "requests": 70,
+    "get": 66,
+    "normal_session_posts": 4,
+    "business_mutations": 0,
+    "attempts": 1,
+    "protected_listeners_equal": true,
     "independent_acceptance_claimed": false
   }
 }
