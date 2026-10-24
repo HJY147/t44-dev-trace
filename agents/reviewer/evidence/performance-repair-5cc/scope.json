@@ -1,0 +1,18 @@
+{
+  "agent_role": "reviewer",
+  "operator": "fixed AI reviewer, not a student or independent tester",
+  "prompt_ref": "ROLE-reviewer-PERFORMANCE-REPAIR-839-v1",
+  "target_sha": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+  "design_sha": "6c1a00ba7891cd794b7229fc1c0208e62148480e",
+  "owner_evidence_sha": "00b8cc03f6818b0cce2543ad4e93d58c7d4196b8",
+  "base_application_sha": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "branch": "codex/review-performance-repair-5cc",
+  "allowed_owner_evidence": "agents/backend/performance-repair-839/ at the explicit evidence SHA",
+  "method": "static production and test diff, dependency/domain/runtime boundary trace, exact source/freeze/evidence hashes and published JUnit inspection",
+  "private_independent_files_read": false,
+  "independent_tester_contact": false,
+  "product_or_developer_tests_modified": false,
+  "planned_test_service_load_CI_execution": false,
+  "performance_acceptance_or_global_gate": false,
+  "status": "SCOPE_RECORDED_BEFORE_DETAILED_REVIEW"
+}
