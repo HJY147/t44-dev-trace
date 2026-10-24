@@ -481,3 +481,5 @@
 ## REQUEST-ID-CHAIN-v1 design first
 
 - 2026-10-24T09:52:04.148804+00:00 new isolated codex/deployment-request-id-chain at30afdef; read AGENTS/TASK and backend f9323e design only. Supplemental design restricts upstream to one canonical lowercase UUIDv4, hide then add once, fallback local for missing/invalid/duplicates. Runtime C/cloud/services/test private material untouched; equality violation remains NOT_PROVEN. No local Docker/nginx; pinned hosted fixture validation planned, not claimed run.
+
+- 2026-10-24T09:55:54.930488+00:00 c6f5a69 design committed first. Implemented only two production nginx files plus root-assigned840 explicit real-nginx synthetic driver and exact-branch/request-path workflow. 23 candidate cases planned plus baseline assertion counterexample. CI-config Ruff and compile passed locally; no Docker/nginx execution or private/cloud access. Candidate prepared for review before separate run request; result remains null.

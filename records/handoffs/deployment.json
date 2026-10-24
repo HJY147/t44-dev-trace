@@ -1469,13 +1469,29 @@
     "final_seal": "agents/deployment/host-resource-validation/final-seal.json"
   },
   "request_id_chain": {
-    "stage": "design-before-implementation",
+    "stage": "candidate-prepared-awaiting-review-runtime",
     "base": "30afdefaeb7427ec3b582a85373d5143124e0581",
     "branch": "codex/deployment-request-id-chain",
     "design": "agents/deployment/request-id-chain/design.md",
     "prompt_ref": "ROLE-deployment-REQUEST-ID-CHAIN-v1",
     "runtime_validation": null,
     "running_C_unchanged": true,
-    "requirement_violation": "NOT_PROVEN"
+    "requirement_violation": "NOT_PROVEN",
+    "design_commit": "c6f5a69",
+    "driver": "tmp/deployment/840_nginx_request_id.py",
+    "workflow": ".github/workflows/nginx-request-id.yml",
+    "readme": "agents/deployment/request-id-chain/README.md",
+    "validation": "agents/deployment/request-id-chain/validation",
+    "candidate_hashes": {
+      "deployment/nginx/nginx.conf": "c3220b9b67312e58405342912e06f23bf20ffde5ba0d419f9318c3823db90620",
+      "deployment/nginx/api.conf": "a422435aa18262a71a723dc23188745770aacf13de8d3b5f770612c6e9d852c0",
+      "tmp/deployment/840_nginx_request_id.py": "dbf693e60ab274889deb00aaf1268f12ed1630cfefa1329b50b2e5f626c320d4",
+      ".github/workflows/nginx-request-id.yml": "c146c800e7aa8666c56cf705fbcb940a0644abbac423706c54c5762d3904bb02"
+    },
+    "local_checks": [
+      "Ruff",
+      "compile"
+    ],
+    "candidate_cases_planned": 23
   }
 }

@@ -378,3 +378,5 @@
 ### REQUEST-ID-CHAIN-v1 design
 
 - Isolated proposal in agents/deployment/request-id-chain/design.md, strict upstream UUID filter and one response field. Local nginx unavailable; real pinned runtime checks pending, no cloud/product admission or independent verdict.
+
+- Candidate implementation prepared: strict canonical UUIDv4 map/hide/one-add; 840 real pinned-nginx driver and narrow read-only GitHub job. Local Ruff/compile only passed, real runtime23-path result pending. Production changes only2nginx configs; current C/cloud unchanged.
