@@ -374,3 +374,17 @@ C cloc实际6307/range失败是owner新准确原件，本岗未重计；DB EXPLA
 ## 2026-10-24 实际T审阅包完整性有限复核
 
 实际ROLE-reviewer-ACTUAL-BUNDLE-v1，新codex/review-actual-bundle从T4833；明确只读根实际输出/receipt并先scope，source元数据发现68公开developer raw后先不读并问root，root明确续授权opaque bytes/hash/CRC才全成员核。两实际ZIP SHA2c69/9043与预期receipt同，outer18=4Word+11素材+source+2说明/CRC/actualregular600全核；source3745完整trustedGitT path/mode/blob/直接catfilebytes/SHA/CRC/actualregular644或755全同，private/independent/testing/cases/860路径0，内source bytes同另ZIP。两ZIP/两旁manifest0600及ownerregularnosymlink/dirs0700，sidecar同embedded。四DOCX只bytes/hashmetadata同固定M7manifest三M6+测试M7，不展开任何DOCX/正文/cover/render或重QA；11素材精确allowlist/GitTbytes。0coverliteral重扫/coverinfo/R002raw/凭据/独立私密refs，0测试服务SUTHTTP_SQL负载CI第三方，无根输出改动。实际完整性范围未见新增实质问题，不等于课程/性能/整体通过，原incomplete缺项保持。报告21-4833...actual-bundle八段十项及actualaudit/3745hashledger/receipt只读副本，自有metadata commitpush后释放。
+
+
+## 2026-10-24 D008错误优先级限定设计审
+
+实际ROLE-reviewer-D008-DESIGN-v1，新codex/review-release-error-design从root6432，精确RFC8c3/SHA b3d5，先scope后D008/U021/technicalscope与现行1.1源/14freeze核。只原approval-reference失配槽cycle/schedule stale先BASELINE，否则APPROVAL；请求assessmentversion/auth/project/task/version/归属前置不动、匹配引用走原domain，无全局role/state重排。结构未见阻断，根已选最小范围，无需用户新答。尤其COMPLETE不是仅成功：原rejection对已claim owner/status1/<500且audit事务提交成功可缓存4xx；5xx/无claim/owner失配/审计失败非保证；旧key保留status/业务结果/原audit，新key新规。成功信封Meta/version/time/requestid动态，错误无Meta且requestid更新，建议RFC准确澄清非整个HTTP字节不可变。spec+wire/outerMeta1.2候选、inner1.0不变，新冻先实现，旧1.1/Word/F08原历史保持。附读859/056d：真实两个非空前驱0/2与1/2不动下游拒绝、2/2实际HTTP交付后开工/version+1边保持，有意义且应用不改；owner仅新1+旧1=2绿，执行在format-only前，不冒称511全CI或独立。0测试/SQL/HTTP/SUT/CI服务/private cases raw858860/testercontact/费用动作。报告D008-design-8c3八段十项/staticaudit，公开Issue3 COMMENT全文GET后补；不实现或globalstage/main准入。
+
+实际发布：设计证据6e2430839c44fa024c1d92f03dd8064a7fe8f807已push exit0；Issue3 COMMENT6379385832显式完整RFC8c3，REST特定全文GET body逐字/Issue3归属/RFC完整SHA严格核同exit0，https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379385832。仅有限设计/859意义及具体重放澄清，不发布实现/APPROVE/globalstage/main准入；0运行和私密读取。回执D008-design/github-comment.json。自身metadata封存后释放。
+
+
+## D008 R2文档差量最终限定设计结论
+
+root明确发布R2 d328（父8c），先R2scope后仅核docdelta：只RFC表单行+重放小节。成功及owner/status1/<500/拒绝audit事务提交的4xx COMPLETE限定、5xx/无claim/owner失配/auditcommit不保证与未知commit、当前auth/input/digest门槛、成功动态Meta/originalid实际完成请求、错误新requestid/旧audit/无outerMeta均准确；原失败槽/1.2无变。旧8c报告/comment保持；R2有限设计无新增实质阻断，只准责任岗下一步spec草稿同步，不准实现，仍需新freeze实际hash/应用tests自测/代码审核，无main/globalstage/全验收。859原仅2目标意义不重复。0测试源复审服务CI/private858860等读取。新R2报告/Issue3续comment全文GET另封。
+
+R2实际封档：文档delta证据912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8已push exit0；Issue3续COMMENT6379417061显式完整R2d328，REST特定全文GET body逐字/Issue3归属/R2 SHA严格一致exit0，https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379417061。回执R2-github-comment.json。原8c报告/评论保持；限定设计只进入spec草稿同步，新freeze/实现tests自测/代码审仍待，0源复审测试服务CI，metadata封存后释放。

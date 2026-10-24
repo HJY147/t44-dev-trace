@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "两ZIP/sidecar权限CRC/hash/18outer/3745source直接GitTbytes/四固定WordSHA核同；无正文QA、根输出改动或服务测试",
+  "implementation_status": "R2唯一RFC差量已补齐重放事实，原8c保留，R2 Issue3 COMMENT全文GET封存；只spec草稿同步准入，待新freeze/实现tests/代码审",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/actual-bundle-4833/actual-integrity-audit.json",
-  "latest_review_report": "reports/reviews/21-4833be05807df5a9d43176eb2ec5a610c7ac06b1-actual-bundle.md",
+  "latest_review_evidence": "agents/reviewer/evidence/D008-design/R2-document-audit.json",
+  "latest_review_report": "reports/reviews/D008-design-R2-d328986fc6fd985a67c2340f87adbf5afc3047f5.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1433,7 +1433,9 @@
     "ROLE-reviewer-DEPENDENCY-QUERY-v1",
     "ROLE-reviewer-DEPENDENCY-QUERY-EVIDENCE-v1",
     "ROLE-reviewer-FINAL-CONSISTENCY-v1",
-    "ROLE-reviewer-ACTUAL-BUNDLE-v1"
+    "ROLE-reviewer-ACTUAL-BUNDLE-v1",
+    "ROLE-reviewer-D008-DESIGN-v1",
+    "ROLE-reviewer-D008-DESIGN-R2-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1475,10 +1477,10 @@
     "HISTORY-EVIDENCE-01 limited closure onbc5/bcb0; old42243 firstfailure/report/COMMENT5634370911 remainNOT_PASSED; no global/independentpass.",
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
-  "review_branch": "codex/review-actual-bundle",
-  "review_outcome": "NO_NEW_MATERIAL_ACTUAL_ARCHIVE_INTEGRITY_FINDING;overallNOT_ACCEPTED_INCOMPLETE",
-  "review_scope": "Actual explicitlyauthorized archive integrity only, opaqueDOCX bytes and publicGit source, no private testcase/raw860 or credentials",
-  "review_target_sha": "4833be05807df5a9d43176eb2ec5a610c7ac06b1",
+  "review_branch": "codex/review-release-error-design",
+  "review_outcome": "LIMITED_DESIGN_CLEAR_FOR_SPEC_DRAFT_SYNC_ONLY;implementationNOT_ADMITTED;overallNOT_ACCEPTED",
+  "review_scope": "Only D008 minimalapproval-reference mismatch design;current1.1 source/replay semantics and public859 testmeaning, no runtimeexecution",
+  "review_target_sha": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
   "review_targets": [
     {
       "pr": 14,
@@ -1560,7 +1562,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "实际T审阅包完整性有限复核完成；课程/整体不放行",
+  "stage": "D008 R2限定设计清楚；只进入spec草稿同步，待新freeze/实现审核",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1579,7 +1581,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-24T01:29:28.831828+00:00",
+  "updated_at": "2026-10-24T03:40:26.827240+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -1980,5 +1982,76 @@
     "tests_services_load_CI_thirdparty": 0,
     "root_outputs_modified": false,
     "overall": "NOT_ACCEPTED_INCOMPLETE"
+  },
+  "previous_phase_before_D008_design": {
+    "stage": "实际T审阅包完整性有限复核完成；课程/整体不放行",
+    "implementation_status": "两ZIP/sidecar权限CRC/hash/18outer/3745source直接GitTbytes/四固定WordSHA核同；无正文QA、根输出改动或服务测试",
+    "review_target_sha": "4833be05807df5a9d43176eb2ec5a610c7ac06b1",
+    "review_outcome": "NO_NEW_MATERIAL_ACTUAL_ARCHIVE_INTEGRITY_FINDING;overallNOT_ACCEPTED_INCOMPLETE",
+    "latest_review_report": "reports/reviews/21-4833be05807df5a9d43176eb2ec5a610c7ac06b1-actual-bundle.md",
+    "latest_review_evidence": "agents/reviewer/evidence/actual-bundle-4833/actual-integrity-audit.json"
+  },
+  "D008_design_review": {
+    "RFC": "8c3d0d646139e2f85ea487230e7a2f185487402e",
+    "base": "6432d439bc89f1e30bdcfc6306d01d1c5ceb5702",
+    "design_only": true,
+    "structural_blocker": false,
+    "replay_scope": "success and owned status1 <500 auditcommitted errors;not successonly/not byteidenticalHTTP",
+    "spec_wire_outerMeta_proposal": "1.2.0",
+    "inner_candidate_schema": "1.0.0 unchanged",
+    "859_owner_targets": 2,
+    "no511_CI_or_independentclaim": true,
+    "tests_SQL_HTTP_SUT_CI_services": 0,
+    "private_cases_raw858_860_or_testercontact": false,
+    "implementation_admitted": false,
+    "overall": "NOT_ACCEPTED_INCOMPLETE",
+    "github": {
+      "operator": "fixed AI reviewer on authorized HJY147 account, not separatehuman/student",
+      "issue": 3,
+      "comment_id": 6379385832,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379385832",
+      "RFC_explicit_fullSHA": "8c3d0d646139e2f85ea487230e7a2f185487402e",
+      "body_exact_match": true,
+      "correct_issue": true,
+      "full_specific_GET_exit": 0,
+      "body_sha256": "6a5702c584ca6c3895fc9263dc99408d600422d6170e084f52d38f3a48d3967e",
+      "readback_sha256": "2e16caaad16ebf9edf02bbdb0c5f6ec798351c0878d3b6eb5391c1258b330d4f",
+      "evidence_commit": "6e2430839c44fa024c1d92f03dd8064a7fe8f807",
+      "evidence_push_exit": 0,
+      "scope": "limiteddesign only with concrete4xxCOMPLETE/HTTPenvelopeclarifications and859meaning",
+      "implementation_admitted": false,
+      "approve_status_mainmerge_CI": false,
+      "tests_SQL_HTTP_SUT_services": 0,
+      "private_cases_raw858_860_read": false,
+      "verified_at_utc": "2026-10-24T03:36:48.277794+00:00"
+    },
+    "evidence_commit": "6e2430839c44fa024c1d92f03dd8064a7fe8f807",
+    "R2": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
+    "R2_doc_only_clear": true,
+    "design_next_step": "SPEC_DRAFT_SYNC_ONLY",
+    "application_implementation_admitted": false,
+    "newfreeze_actualhash_selftest_codereview_pending": true,
+    "R2_github": {
+      "operator": "fixed AI reviewer on authorizedHJY147 account",
+      "issue": 3,
+      "comment_id": 6379417061,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379417061",
+      "R2_explicit_fullSHA": "d328986fc6fd985a67c2340f87adbf5afc3047f5",
+      "body_exact_match": true,
+      "correct_issue": true,
+      "full_specific_GET_exit": 0,
+      "body_sha256": "c72cdc7377ead94448a81c0ffda2e7acd7e91b0f581696cb2c917479b12f0ba4",
+      "readback_sha256": "c705d1f3340a0975b6a8cf5f6678c139066af98020cff0b35783379be64bf910",
+      "evidence_commit": "912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8",
+      "evidence_push_exit": 0,
+      "design_next_step": "SPEC_DRAFT_SYNC_ONLY",
+      "application_newfreeze_selftest_codereview_pending": true,
+      "old8c_report_comment_preserved": true,
+      "approve_main_globalstatus_CI": false,
+      "tests_SQL_HTTP_SUT_services": 0,
+      "private_cases_raw858_860_read": false,
+      "verified_at_utc": "2026-10-24T03:40:26.825605+00:00"
+    },
+    "R2_evidence_commit": "912aa4dc2349954a3d3aa0b7c7ef6a5a09ceaba8"
   }
 }
