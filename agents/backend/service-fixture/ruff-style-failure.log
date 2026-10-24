@@ -1,0 +1,26 @@
+SIM300 [*] Yoda condition detected
+   --> tmp/backend/850_synthetic_fixture.py:549:9
+    |
+547 |       )
+548 |       assert (
+549 | /         host.WORKER_SHA
+550 | |         == hashlib.sha256(
+551 | |             (ROOT / "deployment/encrypted-service-fixture.py").read_bytes()
+552 | |         ).hexdigest()
+    | |_____________________^
+553 |       )
+554 |       mounts = [argv[i + 1] for i, value in enumerate(argv) if value == "--volume"]
+    |
+    |
+548 |     assert (
+    -         host.WORKER_SHA
+    -         == hashlib.sha256(
+549 +         hashlib.sha256(
+550 |             (ROOT / "deployment/encrypted-service-fixture.py").read_bytes()
+551 |         ).hexdigest()
+552 +         == host.WORKER_SHA
+553 |     )
+    |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.

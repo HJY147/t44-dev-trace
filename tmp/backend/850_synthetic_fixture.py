@@ -415,3 +415,198 @@ def test_cloud_launcher_receipt_rejects_non_allowlisted_values(invalid):
     }
     with pytest.raises(ValueError):
         launcher.safe_receipt(json.dumps(invalid).encode())
+
+
+def service_fixture_rows():
+    issued = datetime(2026, 10, 24, 9, tzinfo=UTC)
+    token = "SYNTHETIC-UNIT-NOT-AN-AUTH-TOKEN-000000"
+    session = {
+        "actor_kind": 2,
+        "service_account_id": 77,
+        "user_id": None,
+        "created_at": issued,
+        "expires_at": issued + timedelta(seconds=5400),
+        "revoked_at": None,
+        "token_hash": hashlib.sha256(token.encode()).digest(),
+        "scopes": ["escalation:write"],
+        "project_ids": list(range(1, 41)),
+    }
+    subject = {"name": "notification-cohort", "active": 1, "created_at": issued}
+    credential = {
+        "session_id": 55,
+        "access_token": token,
+        "expires_at": "2026-10-24T10:30:00.000000Z",
+    }
+
+    @contextmanager
+    def factory():
+        def get(table, identifier):
+            assert (table, identifier) in {
+                ("auth_sessions", 55),
+                ("service_accounts", 77),
+            }
+            return session if table == "auth_sessions" else subject
+
+        yield SimpleNamespace(gateway=SimpleNamespace(get=get))
+
+    return factory, session, subject, credential
+
+
+def test_service_fixture_actual_metadata_and_known_data_envelope(recipient):
+    service = load(
+        "service_fixture_package", ROOT / "deployment/encrypted-service-fixture.py"
+    )
+    factory, _, _, credential = service_fixture_rows()
+    # Synthetic RFC1918 value only; never read the actual deployment private IP.
+    approved = service.origin(
+        json.dumps({"approved_origin": "https://10.255.255.254:8443"}).encode()
+    )
+    body = service.package(
+        factory, credential, approved, datetime(2026, 10, 24, 9, tzinfo=UTC)
+    )
+    assert set(body) == {
+        "format",
+        "synthetic",
+        "source_commit",
+        "approved_origin",
+        "service",
+    }
+    assert (
+        body["format"] == "852-neutral-service-credential-v1"
+        and body["service"]["subject_id"] == 77
+    )
+    assert body["service"]["issued_at"] == "2026-10-24T09:00:00.000000Z"
+    assert body["service"]["expires_at"] == credential["expires_at"]
+    assert body["service"]["allowed_project_ids"] == list(range(1, 41))
+    encrypted = envelope.encrypt(
+        envelope.canonical(body), recipient[0], "neutral-environment"
+    )
+    assert (
+        json.loads(envelope.decrypt(encrypted, *recipient, "neutral-environment"))
+        == body
+    )
+    assert credential["access_token"] not in json.dumps(
+        encrypted
+    ) and approved not in json.dumps(encrypted)
+
+
+@pytest.mark.parametrize(
+    "change", ["bool_project", "digest", "old_subject", "revoked", "ttl"]
+)
+def test_service_fixture_rejects_inconsistent_live_metadata(change):
+    service = load(
+        "service_fixture_metadata_guard",
+        ROOT / "deployment/encrypted-service-fixture.py",
+    )
+    factory, session, subject, credential = service_fixture_rows()
+    if change == "bool_project":
+        session["project_ids"][0] = True
+    elif change == "digest":
+        session["token_hash"] = b"wrong"
+    elif change == "old_subject":
+        subject["created_at"] -= timedelta(seconds=1)
+    elif change == "revoked":
+        session["revoked_at"] = session["created_at"]
+    else:
+        session["expires_at"] -= timedelta(seconds=1)
+    with pytest.raises(ValueError):
+        service.package(
+            factory,
+            credential,
+            "synthetic-origin-not-transported",
+            datetime(2026, 10, 24, 9, tzinfo=UTC),
+        )
+
+
+def test_service_fixture_too_early_issues_nothing():
+    service = load(
+        "service_fixture_time_guard", ROOT / "deployment/encrypted-service-fixture.py"
+    )
+
+    def forbidden_factory():
+        raise AssertionError("No DB work allowed for a too-early issuance")
+
+    with pytest.raises(ValueError, match="issuance_too_early"):
+        service.preflight(forbidden_factory, datetime(2026, 10, 24, 8, 40, tzinfo=UTC))
+
+
+@pytest.mark.parametrize("existing,projects", [(True, 40), (False, 39)])
+def test_service_fixture_preflight_blocks_existing_or_incomplete_scope(
+    existing, projects
+):
+    service = load(
+        "service_fixture_preflight", ROOT / "deployment/encrypted-service-fixture.py"
+    )
+
+    @contextmanager
+    def factory():
+        yield SimpleNamespace(
+            gateway=SimpleNamespace(
+                rows=lambda *a, **k: [1] if existing else [],
+                count=lambda *a, **k: projects,
+            )
+        )
+
+    with pytest.raises(
+        ValueError, match="subject_already_exists|project_scope_missing"
+    ):
+        service.preflight(factory, datetime(2026, 10, 24, 9, tzinfo=UTC))
+
+
+def test_service_fixture_host_command_scope_and_source_pins():
+    service = load(
+        "service_fixture_argv", ROOT / "deployment/encrypted-service-fixture.py"
+    )
+    host = load(
+        "service_fixture_host_argv",
+        ROOT / "deployment/service-fixture-launcher-cloud.py",
+    )
+    argv = host.command(
+        {
+            "MYSQL_DATABASE": "t44",
+            "T44_DOCKER_CONTEXT": "default",
+            "COMPOSE_PROJECT_NAME": "t44",
+        }
+    )
+    assert (
+        hashlib.sha256(
+            (ROOT / "deployment/encrypted-service-fixture.py").read_bytes()
+        ).hexdigest()
+        == host.WORKER_SHA
+    )
+    mounts = [argv[i + 1] for i, value in enumerate(argv) if value == "--volume"]
+    assert len(mounts) == 5 and sum(value.endswith(":ro") for value in mounts) == 4
+    assert mounts[-1] == "/run/t44-delivery/cohort-secrets:/run/t44-secrets:rw"
+    assert "admin" in argv and "credential-admin" not in argv and "--rotate" not in argv
+    assert argv.count("-f") == 2 and "T44_SESSION_TTL_SECONDS=5400" in argv
+    assert not any("approved_origin" in value for value in argv)
+    issue = service.issue_command(Path("/app/deployment/credential_admin.py"))
+    assert issue[3:5] == ["--name", "notification-cohort"]
+    assert [
+        int(issue[i + 1]) for i, value in enumerate(issue) if value == "--project-id"
+    ] == list(range(1, 41))
+    assert "--rotate" not in issue
+    assert str(host.TLS_HELPER) == "/run/t44-delivery/tls-delivery-extended.py"
+    assert (
+        host.TLS_SHA
+        == "ea1b5873efb359e2e4e4adb8f020bfeab3da8f20e7661ae7bb7a5d883ac121d9"
+    )
+
+
+def test_service_fixture_public_receipt_cannot_disclose_token_or_origin():
+    host = load(
+        "service_fixture_receipt", ROOT / "deployment/service-fixture-launcher-cloud.py"
+    )
+    valid = {
+        "success": True,
+        "subject_id": 77,
+        "session_id": 55,
+        "expires_at": "2026-10-24T10:30:00.000000Z",
+        "envelope_sha256": "a" * 64,
+    }
+    assert host.safe_receipt(json.dumps(valid)) == valid
+    for extra in ({"token": "SYNTHETIC-ONLY"}, {"approved_origin": "SYNTHETIC-ONLY"}):
+        with pytest.raises(ValueError):
+            host.safe_receipt(json.dumps({**valid, **extra}))
+    with pytest.raises(ValueError):
+        host.safe_receipt('{"success":0,"error":"COHORT_FIXTURE_FAILED"}')
