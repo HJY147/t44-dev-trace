@@ -509,3 +509,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - root再派后建codex/backend-source-budget-current-C，ba70be2先提交scope/实际prompt；仅读准确C原cloc JSON+原classify，校验66文件集合、应用根Git字节和counter与C全同。5211+1099=6310/超1210/within_range=false真实确认，不重跑cloc/870/suite/HTTP/SQL/服务/云，不排除新增物流文件来制造新口径（部署从既有定义本就另列）。static-receipt逐文件Git blob及原计量留齐。
 - 直接引用旧profile/validator未应用55→45，before源码hash仍同但旧19样本属旧Spec，不移植为C1.2HTTP/线程证明，实际节省0。已拒AST/scan-dedup不复活。将旧“通知分页重叠”具体化为common.page受信order_by keyword+原NotificationFacade保持3COUNT/本人scope/S锁/顺序/serializers/事务，逐参数排版预估仅-3、不冒cloc，不减少SQL或P95；跨消息owner候选未准入/未实施。
 - report agents/backend/source-budget-current-C/design.md明确没有1210可信删除方案。原云C/新oracle/RequestID候选/应用/测试/配置/统计脚本全未改，作者与静态操作者AI，不记人改码，先交核心事实不等报告；GitHub正文另回读留痕。
+
+## 839公开事实后的最小性能候选（未部署）
+
+- 新分支codex/backend-performance-repair-plan自root6d02，应用三根对准确C0dfb55c字节同；只读唯一指定839_PUBLIC_MINIMAL_FACTS_v1.md并核c35b37f…，未跟private引用/读其它839852841/联系tester。公开短窗502和P95失败保留，0组600秒，资源尚未联合不归因。先ca18范围/真实prompt、6c1a设计，再候选5cc856d6fa94b1fdde32605543b53822f9747f00，作者/改码/测试均AI。
+- 只改Workflow按guard加载业务依赖、空前驱不发IN空读；START/REWORK/UNBLOCK回develop仍查，Runtime project X/读边/member S/有序tasks X完全保留，三次auth/两UoW、版本/角色/证据/D008优先、CAS、成功audit/outbox/idem同事务、拒绝退出后独立audit、ACK不明不变。合法数据/移除无必要故障触发点边界明示，非502修复证明。
+- 原C新增3真实SQLite/TestClient+SQL hook查询结构红3fail（业务断言先过）；窄改后3及旧邻接23pass，另2受控反激活边界+原85611共13pass，共36唯一目标，无MySQL/外部HTTP/云/负载。原856859未改；新受控fixture不冒实际返工。首次未指定Ruff配置N999/88cols失败保留，改用原backend配置、仅新test一处换行后绿，未降lint。
+- 正常sourcepush触发新源CI；DraftPR44 head固定5cc856，不推动产品头。原cloc脚本/固定2.10SHA实际6316(5217+1099)/超1216，exit1，净+6；云C原6310不改，N07继续未达无1210可信删重方案。15冻结hash全同。后续仅codex/backend-performance-repair-evidence公件，报告/原件agents/backend/performance-repair-839。
+- Issue3 6383378839 body-file发表并精确comments/:id GET逐字同；PR44 API全文/准确head/draft读回匹配。DB owner实际说明现成Rows足够，不改全局empty-IN/SQL/池；其离线配方不冒本业务/RC/收益。完整CI/源码专审/真MySQL锁与性能未验，阶段封档后释放，不重复绿或等平台占槽。

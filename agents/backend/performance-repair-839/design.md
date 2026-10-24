@@ -28,6 +28,8 @@ MySQLSettings默认每engine5保留+10溢出、timeout10/pre_ping/LIFO/reset rol
 
 先从同次公开资源联合回执定位502源：两层proxy upstream_status/addr/connect/header/response时间与API request_id/结构化code、worker退出/OOM/FD/CPU/RSS、MySQL连接/活跃事务/锁等待；只保存脱敏形状/类别，不记SQL参数/口令/Token/body。若旧环境未采则标不可恢复，不回填。随后仅自有库、明确安静窗口与精确源，逐阶段小样本：SQL/UoW/physical-connect/pre_ping/checkout计数；dispatch-to-entry含排队而非纯队列；cursor execute与fetch/codec、auth、本地Schema/wire/JSON CPU、commit/reset分别观测。先复现错误码再选择单变量，禁止自动400×600或以提高超时取消失败。
 
+语义依据只用官方来源：[nginx proxy read/send timeout](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout)说明两次读/写之间的超时；[SQLAlchemy2.1 pre_ping](https://docs.sqlalchemy.org/en/21/core/pooling.html#disconnect-handling-pessimistic)说明checkout探活及其不能修复事务中断；[Starlette线程池](https://starlette.dev/threadpool/)说明同步endpoint使用AnyIO、默认40tokens。本轮首个旧starlette.io链接抓取502是资料工具失败，不是SUT请求；改读官方当前域名，无运行参数修改。默认40不是对云端实际线程采样。
+
 ## 规模约束
 
 原C仍5211+1099=6310，上限5100、超1210，实际节省0。复用source-budget-current-C设计：validator旧未应用-10和分页复用估-3即使成立也不足；此次性能条件分支可能反增行，单独披露。没有可信等价删除1210方案，不能删domain/实时授权/审计/outbox/seed/migration、改统计根或压行。更大的任务/门面结构重写须完整I/O和错误映射设计，不能把未经证明的毛重复行扣作节省；本轮不实施。

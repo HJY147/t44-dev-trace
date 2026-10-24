@@ -311,3 +311,7 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ## C源码预算恢复核实（只读）
 
 准确C原cloc5211后端+1099前端=6310/66文件/超1210，原classify集合、应用根/counter字节与C全同，static-receipt真实记录；没有新cloc或改变口径。引用既有C-validator未应用-10及旧19有限样本边界，不复活拒绝的AST/scan-dedup；通知分页的受信page order_by复用给出具体I/O/3COUNT/顺序/锁/本人项目范围与约-3未验证预估，未实施、不宣称性能收益或达标。设计agents/backend/source-budget-current-C/design.md；当前真实节省0，没有1210可信去除计划，云C/测试oracle/应用/配置保持，未跑套件/负载或读独立私密。
+
+## 839公开发现后的后端最小候选
+
+候选5cc856d6fa94b1fdde32605543b53822f9747f00，DraftPR44（仅分支）；先设计ca18/6c1a，云C不改。仅Workflow依赖按域guard装载/空前驱省读，不改Runtime锁/3auth/2UoW/错误优先/审计outbox幂等。旧C3查询结构红→候选36唯一SQLite/TestClient目标绿（23+13），不证明MySQL锁/延迟/502根因；全新源CI与专审待项，准确状态见agents/backend/performance-repair-839/ci-at-handoff.json。原失败/全部JUnit/源码hash/15冻结核对与统计见validation.json、report.md。原口径实测6316(+6)/超1216/exit1；原C6310/超1210仍真，无规模达标或正式性能通过。Issue3 6383378839/PR44全文精确回读，未读独立私有/无外部服务或负载。

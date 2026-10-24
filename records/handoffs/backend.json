@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "Current-C LOC6310 confirmed from existing artifact; reduction design only, no production change",
+  "stage": "performance-repair-839-candidate-handoff",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -1970,5 +1970,58 @@
     "rejected_scan_dedup_AST_revived": false,
     "private_independent_material_read": false,
     "next": "root review;no production implementation admitted;report unresolved1210 honestly"
+  },
+  "performance_repair_839": {
+    "status": "candidate-only-no-cloud-change-no-performance-proof",
+    "source_commit": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "source_branch": "codex/backend-performance-repair-plan",
+    "evidence_branch": "codex/backend-performance-repair-evidence",
+    "base_application": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "report": "agents/backend/performance-repair-839/report.md",
+    "prompt": "agents/backend/performance-repair-839/scope-and-prompt.md",
+    "design": "agents/backend/performance-repair-839/design.md",
+    "validation": "agents/backend/performance-repair-839/validation.json",
+    "changed_application_files": [
+      "backend/t44/services/workflow.py"
+    ],
+    "tests": {
+      "before_structural_failed": 3,
+      "after_unique_sqlite_http_passed": 36,
+      "after_failed": 0,
+      "after_skipped": 0,
+      "mysql_run": false,
+      "load_run": false
+    },
+    "source_count": {
+      "actual": 6316,
+      "backend": 5217,
+      "frontend": 1099,
+      "range": [
+        3500,
+        5100
+      ],
+      "within_range": false,
+      "delta_vs_C": 6,
+      "excess": 1216
+    },
+    "frozen_hashes_matched": 15,
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383378839",
+    "pr_url": "https://github.com/HJY147/t44-dev-trace/pull/44",
+    "github_exact_readback": true,
+    "ci_receipt": "agents/backend/performance-repair-839/ci-at-handoff.json",
+    "not_claimed": [
+      "502 root cause",
+      "performance pass",
+      "MySQL lock equivalence",
+      "independent acceptance",
+      "size compliance",
+      "cloud C update"
+    ],
+    "pending": [
+      "whole exact-source CI evidence",
+      "source review",
+      "root integration decision",
+      "same-run safe resource/proxy/DB evidence before diagnosis"
+    ]
   }
 }
