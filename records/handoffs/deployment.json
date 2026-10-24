@@ -867,7 +867,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "native-user-demo-running-handoff",
+  "stage": "preparation-budget-tool-complete",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -875,5 +875,31 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-23T21:00:52.283874+00:00"
+  "updated_at": "2026-10-23T21:00:52.283874+00:00",
+  "preparation_budget": {
+    "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
+    "branch": "codex/deployment-preparation-budget",
+    "prompt_ref": "ROLE-deployment-PREPARATION-BUDGET-v1",
+    "rfc": "specs/changes/acceptance-preparation-budget-rfc.md",
+    "range_seconds": [
+      60,
+      1800
+    ],
+    "default_seconds": 900,
+    "job_timeout_minutes": 40,
+    "strict_int_and_exact_bindings_retained": true,
+    "source_change": "run.py only upper-bound literal;workflow only input description;README explanatory range",
+    "control_metadata_usage_byte_identical": true,
+    "tests": "13 affected targets passed0.07s;77 deselected;Ruff passed",
+    "evidence": "agents/deployment/preparation-budget-validation/",
+    "actual_http_sql_docker_services_signals_private_case_access": false,
+    "performance_conclusion": "none;old results unchanged;H2 not claimed identical to H",
+    "github": "body-file published;full GET verified identical",
+    "implementation_sha": "79ed72fe7218e8782c1ba8dca99996ddf8880e90",
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377395660",
+    "issue_readback": "agents/deployment/preparation-budget-validation/issue-readback.json",
+    "hash_seal": "agents/deployment/preparation-budget-validation/seal.json",
+    "final_status": "complete;minimal cap tool only;no new real run",
+    "archive_revision": "Git metadata resolves final docs receipt;implementation source remains pinned"
+  }
 }

@@ -7,7 +7,7 @@
 `.github/workflows/acceptance-environment.yml` 接受两种模式：
 
 - `environment-check`：不选择、不执行独立 harness。只构建和启动环境，验证只读 SQL/队列审计连接、可恢复 RabbitMQ stop/start与pause/unpause、逐次JSON回执及合成输出加密/解密传输。本次能力核验不重复原 Docker 业务/备份恢复整套，也不证明独立 fault 覆盖。
-- `harness`：要求完整40位 `product_source_sha`、独立冻结的40位 `harness_ref`、该 commit 中 `tmp/independent/` 下的 Python `harness_path` 和 RSA 接收证书 `recipient_certificate_path`。分别 checkout 产品和 harness，拒绝浮动分支/tag、目录逃逸和符号链接入口。超时60–1200秒，默认900。
+- `harness`：要求完整40位 `product_source_sha`、独立冻结的40位 `harness_ref`、该 commit 中 `tmp/independent/` 下的 Python `harness_path` 和 RSA 接收证书 `recipient_certificate_path`。分别 checkout 产品和 harness，拒绝浮动分支/tag、目录逃逸和符号链接入口。超时60–1800秒，默认900、最小60，严格整数；workflow job仍上限40分钟。新上限不延长旧请求或已完成运行，也不保证准备/执行一定完成；正式性能指标与判据不变。
 
 新 `workflow_dispatch` 必须已存在于默认分支才能触发；本仓库 main 受保护，目前不能把新文件静态合格视为已能手动 dispatch。官方说明：[手动运行 workflow](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow)。本实现另提供无需改 main 保护的 push 入口：**仅** `codex/deployment-acceptance-environment`、`codex/independent-harness-*` 分支，且**仅** `deployment/acceptance/request.json` 发生变化才触发。
 

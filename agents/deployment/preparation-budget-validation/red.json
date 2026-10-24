@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment/deployment/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/deployment/953_acceptance_environment.py",
+    "-q",
+    "-k",
+    "preparation_budget_accepts_exact_legal_values and 1800"
+  ],
+  "exit_code": 1,
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_preparation_budget_accepts_exact_legal_values[1800] ___________\n\nseconds = 1800\n\n    @pytest.mark.parametrize(\"seconds\", [60, 900, 1200, 1800])\n    def test_preparation_budget_accepts_exact_legal_values(seconds):\n>       assert environment.validate_request(request(harness_timeout_seconds=seconds))[\"harness_timeout_seconds\"] == seconds\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntmp/deployment/953_acceptance_environment.py:567: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nvalue = {'version': 1, 'mode': 'harness', 'product_source_sha': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'harness_ref': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', ...}\n\n    def validate_request(value):\n        allowed = {\"version\", \"mode\", \"product_source_sha\", \"harness_ref\", \"harness_path\",\n                   \"recipient_certificate_path\", \"harness_timeout_seconds\", \"request_revision\"}\n        if set(value) - allowed or value.get(\"version\") != 1 or value.get(\"mode\") not in (\"environment-check\", \"harness\"):\n            raise ValueError(\"unsupported acceptance request\")\n        if not SHA.fullmatch(value.get(\"product_source_sha\", \"\")):\n            raise ValueError(\"exact product commit required\")\n        if value[\"mode\"] == \"harness\":\n            if not SHA.fullmatch(value.get(\"harness_ref\", \"\")):\n                raise ValueError(\"exact separately frozen harness commit required\")\n            for field in (\"harness_path\", \"recipient_certificate_path\"):\n                harness_path(value[field])\n            if not value[\"harness_path\"].endswith(\".py\") or not value[\"recipient_certificate_path\"].endswith(\".pem\"):\n                raise ValueError(\"Python entry and PEM recipient certificate required\")\n        elif any(value.get(field) for field in (\"harness_ref\", \"harness_path\", \"recipient_certificate_path\")):\n            raise ValueError(\"environment-check must not select an independent harness\")\n        timeout = value.get(\"harness_timeout_seconds\", 900)\n        if type(timeout) is not int or not 60 <= timeout <= 1200:\n>           raise ValueError(\"bounded harness timeout required\")\nE           ValueError: bounded harness timeout required\n\ndeployment/acceptance/run.py:75: ValueError\n=========================== short test summary info ============================\nFAILED backend::test_preparation_budget_accepts_exact_legal_values[1800] - Va...\n1 failed, 89 deselected in 0.09s\n",
+  "stderr": "",
+  "scope": "new cap acceptance red only;no actual process/service"
+}
