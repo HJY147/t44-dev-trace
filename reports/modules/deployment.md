@@ -374,3 +374,7 @@
 - 842五纯合成guard、Ruff/compile/diff-check通过，uid仅mock；首次checkout未完成的Ruff配置缺失exit2保持。app4bddc93a…b9d5、host7a0f8c9c…6259d，详host-resource-validation；100预算/18:30释放不延长，不写已花100，不接触独立私密/843桥。
 
 - 双机序列实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已推；Issue7/6382310590全文GET一致，final-seal含两脚本及842 hash。实际采样未由本岗执行，NOT_PROVEN不倒填通过，未改600s。
+
+### REQUEST-ID-CHAIN-v1 design
+
+- Isolated proposal in agents/deployment/request-id-chain/design.md, strict upstream UUID filter and one response field. Local nginx unavailable; real pinned runtime checks pending, no cloud/product admission or independent verdict.

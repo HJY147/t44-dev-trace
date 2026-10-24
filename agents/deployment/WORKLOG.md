@@ -477,3 +477,7 @@
 - 842五项最小合成0.27s绿（固定路径/无network-listdir、缺TCP不泄异常、超大拒绝、只读自身inode600，uid metadata mock），Ruff/compile0。首次未等worktree checkout完成即尝试Ruff造成config缺失exit2，等待真实完成后才同CI配置0；未执行额外suite/CI/843桥或852私密材料。源hash与校准原件host-resource-validation。
 
 - 2026-10-24T09:03:48.169907+00:00实现9430895e76b6a25ed9ec47747e5e87f6da1ac8f1已push，Issue7/6382310590真实发布并全文GET逐字一致，final-seal列两脚本/842/差量/回执hash。两脚本hash保持交审最终版不再变更；只封档不执行collector或读取任何真实资源/私密资料，实际样本仍null，缺证NOT_PROVEN/600s门槛不变，结束释放。
+
+## REQUEST-ID-CHAIN-v1 design first
+
+- 2026-10-24T09:52:04.148804+00:00 new isolated codex/deployment-request-id-chain at30afdef; read AGENTS/TASK and backend f9323e design only. Supplemental design restricts upstream to one canonical lowercase UUIDv4, hide then add once, fallback local for missing/invalid/duplicates. Runtime C/cloud/services/test private material untouched; equality violation remains NOT_PROVEN. No local Docker/nginx; pinned hosted fixture validation planned, not claimed run.
