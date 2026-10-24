@@ -222,3 +222,5 @@ metadata c0a/6c81仅wrapper排除、strict==1原AST保持；本岗核14公开has
 ## 2026-10-24 最小依赖谓词候选C静态有限专审（先partial）
 
 实际ROLE-reviewer-DEPENDENCY-QUERY-v1，隔离codex/review-dependency-query从C，不改候选；先scope，按元数据找到BE ed273先行RFC及rootdde39预定gate。PR42 draft/headC实际GET核；对bc5应用唯一workflow dict加受信project谓词，整bytes和去一item AST同；pool5+10/986整bytes/14freeze/DDL同。追Call.task全局PK读取+project核对、双复合FK合法集合/空集/id顺序等价；版本先边读、锁顺序/实时auth/RC/UoW/CAS/audit/idem/outbox/commit不明/输出原源。17e两行Cbytes同，PIPE→capture_output及unusedloop规范化AST同，8d7公开hash/preimage核；DB5948公开report只小fixture普通EXPLAIN估算不冒称收益/根因。自有首ASTnormalizer误展开864其它原有calls导致断言1，改限定prepared后0；猜旧路径两次失误纠正，不称产品红。准确C完整CI/E仍待root明确公开，先partial留gate，不用旧CI移植；旧18/新18预期兼容非bug红绿，待原件核。本岗0测试/探针/服务信号HTTP_SQL负载CI，未读独立H2/private/cases/raw/密文或联系tester，不触demo。报告42-C八段十项，最终E核后COMMENT/fullGET另补。
+
+阶段收口：静态证据4350f1f06ca5d338c55e8401311d3979c6a93199已push exit0。总协调实际通知E仍等待coverage/封档，明确要求以已发表PARTIAL_CI_E_PENDING释放，不读未发布E或重复静态；待明确公开E后另续只核准确CI/源码对应并最终COMMENT。故本阶段没有发布PR42最终COMMENT，不声称完整CI已核或候选准入；原静态未见新增实质阻断及全部待核边界保持。root在完整门槛前不合候选，审核未被放弃。只补自有metadata封存，不接触独立资料或运行服务/SQL/CI。
