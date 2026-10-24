@@ -73,3 +73,16 @@ root已通过云助手仅对应用机执行公开主机准备工具`tmp/853_clou
 8f479201已由审核岗作只读限定审查，无实质阻断。root在已审脚本中仅加入阶段参数`set -- packages`，完整替换云助手编辑器后全文核对一致，提交`t44-bootstrap-packages-8f47920`；任务上限900秒并约束进程树，正在安装，尚无完成/成功结论。编辑器曾在fill后保留默认`#!/bin/bash`前缀，该次因比对不一致被阻止执行；root改全选粘贴并确认一致后才提交，不能把前一次当已运行。
 
 本仓库已审`ubuntu24-bootstrap.sh`原字节及Git blob保持不变；这里只改通路说明和分块工作目录，不改脚本。脚本直接从文件调用时仍按三阶段参数使用；云助手整段执行时，由root显式选择唯一阶段并核全文，不自动运行后续source/build/infra/migrate。安装结果由root实得回执另行追加，本岗不访问云/CI/服务或私有测试资料。
+
+## 安装/源码/配置已完成，构建待核：root后续UI转述
+
+记录于2026-10-24T06:40:12.811798+00:00；本岗没有访问云端、原UI、日志或私密配置，以下仅据root实际回执转述，保留上节“当时安装中”的历史。
+
+| 检查点 | root看到的实际回执 | 范围 |
+| --- | --- | --- |
+| packages | 北京14:26:31，23秒，exit0 | Ubuntu5个新包、0升级、0移除；Docker29.1.3/Buildx0.30.1/Compose2.40.3+ds1/Python3.12.3/git2.43.0 |
+| source | 北京14:31:42，29秒，exit0 | 同脚本仅set--source，UI全文一致；准确C `0dfb55c2191200d947c5423fd9ee74bb0812cc5a`，HEAD/tracked核对，目录/opt/t44-c-0dfb55c |
+| 配置 | 北京14:36:06，小于1秒，exit0 | Docker daemon29.1.3；init-env生成0600配置不输出秘密；config-check标记T44_CONFIG_CHECK_OK |
+| build | 新任务已提交，尚无完成回执 | t44-build-C-0dfb55c：HEAD核C/config-check/ops build timeout600s；外层云助手720s并约束进程树 |
+
+只有前三项已有完成回执；构建exit/success仍null。尚无infra、迁移、seed、应用启动、私网连通或正式性能通过；不能以安装/config通过代替它们。17:00自动释放与实际花费20元预算不变，未授权延时/提高预算。已审bootstrap脚本及产品C均未改。本岗公开转述投影见agents/deployment/ubuntu-bootstrap-validation/cloud-preparation-checkpoints.json，没有复制云日志或配置。

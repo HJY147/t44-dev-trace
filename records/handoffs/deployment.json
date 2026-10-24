@@ -756,6 +756,11 @@
       "id": "ROLE-deployment-CLOUD-ASSISTANT-PROGRESS-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-CLOUD-ASSISTANT-PROGRESS-v1.md",
       "reason": "修正为实际云助手通路，保留UI文本拦截与未完成安装状态，不改已审脚本"
+    },
+    {
+      "id": "ROLE-deployment-CLOUD-PREPARATION-CHECKPOINTS-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-CLOUD-PREPARATION-CHECKPOINTS-v1.md",
+      "reason": "从已整合新基点追加三项完成和build待核，保留全历史，不把安装成功冒充应用部署性能"
     }
   ],
   "questions": [
@@ -897,7 +902,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "ubuntu-packages-running-root-relay-no-completion",
+  "stage": "cloud-packages-source-config-complete-build-awaiting-receipt",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -905,7 +910,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T06:29:46.089545+00:00",
+  "updated_at": "2026-10-24T06:40:12.811798+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1187,5 +1192,25 @@
     "reviewed_script_blob_unchanged": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
     "earlier_mismatched_fill_not_executed": true,
     "no_cloud_ci_service_or_private_access_by_deployment": true
+  },
+  "prior_stage_before_cloud_preparation_checkpoints": "ubuntu-packages-running-root-relay-no-completion",
+  "cloud_preparation_checkpoints": {
+    "prompt_ref": "ROLE-deployment-CLOUD-PREPARATION-CHECKPOINTS-v1",
+    "base_sha": "fe6d3662c9f33257e34a67a7577b7ef70eb9ae8f",
+    "branch": "codex/deployment-cloud-build-checkpoints",
+    "source": "root actual UI relay only",
+    "product_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "packages_exit0": true,
+    "source_head_tracked_C_exit0": true,
+    "config_exit0": true,
+    "build_submitted": true,
+    "build_completion_exit_code": null,
+    "build_success": null,
+    "no_infra_migration_seed_start_private_network_or_formal_performance_claim": true,
+    "release_beijing": "2026-10-24T17:00:00+08:00",
+    "actual_budget_cny": "20",
+    "bootstrap_blob_unchanged": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
+    "evidence": "agents/deployment/ubuntu-bootstrap-validation/cloud-preparation-checkpoints.json",
+    "deployment_cloud_ci_service_private_access": false
   }
 }

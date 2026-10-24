@@ -1,0 +1,62 @@
+{
+  "recorded_at_utc": "2026-10-24T06:40:12.811798+00:00",
+  "base_sha": "fe6d3662c9f33257e34a67a7577b7ef70eb9ae8f",
+  "source": "root actual UI receipt observations relayed;not raw cloud logs or independent deployment observations",
+  "product_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "bootstrap_script_blob_unchanged": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
+  "packages": {
+    "actual_exit_code": 0,
+    "elapsed_seconds": 23,
+    "receipt_beijing": "2026-10-24T14:26:31+08:00",
+    "new_ubuntu_packages": 5,
+    "upgraded": 0,
+    "removed": 0,
+    "versions": {
+      "Docker": "29.1.3",
+      "Buildx": "0.30.1",
+      "Compose": "2.40.3+ds1",
+      "Python": "3.12.3",
+      "git": "2.43.0"
+    }
+  },
+  "source_checkpoint": {
+    "same_reviewed_script_only_stage_parameter_source": true,
+    "ui_full_text_compared_identical": true,
+    "actual_exit_code": 0,
+    "elapsed_seconds": 29,
+    "receipt_beijing": "2026-10-24T14:31:42+08:00",
+    "head_and_tracked_source_verified_C_by_root": true,
+    "source_directory": "/opt/t44-c-0dfb55c"
+  },
+  "configuration": {
+    "actual_exit_code": 0,
+    "elapsed_seconds_less_than": 1,
+    "receipt_beijing": "2026-10-24T14:36:06+08:00",
+    "docker_daemon_version": "29.1.3",
+    "init_env_private_mode": "0600",
+    "secrets_printed": false,
+    "config_check_marker": "T44_CONFIG_CHECK_OK"
+  },
+  "build": {
+    "task_name": "t44-build-C-0dfb55c",
+    "submitted_by_root": true,
+    "preconditions": "HEAD exact C;config-check",
+    "ops_build_timeout_seconds": 600,
+    "cloud_assistant_timeout_seconds": 720,
+    "process_tree_bound": true,
+    "completion_receipt_seen": false,
+    "actual_exit_code": null,
+    "success": null
+  },
+  "later_stages": {
+    "infra_executed": false,
+    "migration_executed": false,
+    "seed_executed": false,
+    "application_started": false,
+    "private_network_connectivity_verified": false,
+    "formal_performance_passed": false
+  },
+  "unchanged_release_beijing": "2026-10-24T17:00:00+08:00",
+  "unchanged_actual_budget_cny": "20",
+  "cloud_ci_service_or_private_material_access_by_deployment": false
+}
