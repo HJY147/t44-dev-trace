@@ -932,7 +932,7 @@
     "one_hour_estimate_before_tax_egress": "0.56",
     "two_hour_estimate_before_tax_egress": "1.12",
     "suggested_approval_budget": "3;not a hard vendor cap;user decision required",
-    "calibration": "separate0cost generator calibration planned;not executed;no SUT",
+    "calibration": "R1 asof03:31Z not executed;root subsequently reports one local INVALID;no valid pass claimed;summary/private not read",
     "provider": "AWS us-east1 c7i.2xlarge+c7i.xlarge;default shared tenancy",
     "account_deposit_eligibility": "unknown;no account or credentials accessed",
     "performance_guarantee": false,
@@ -940,6 +940,16 @@
     "quote_checkpoint": "96ed54c0819dfa43107058aeb16e7e947682a527",
     "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379372780",
     "issue_readback": "agents/deployment/performance-quote-evidence/issue-readback.json",
-    "final_status": "quote complete;payment/calibration/cloud/SUT not executed;user approval still required"
+    "final_status": "R2 docs complete;no price/formula change or cloud/test action",
+    "revision": "R2",
+    "r1_preserved_commit": "a949e21111b89300e585ab89de059917520f49b6",
+    "r2_delta": "agents/deployment/performance-quote-evidence/r2-delta.json",
+    "r2_plan_minutes": {
+      "preparation": 60,
+      "formal_flow_contract_escalation_each600s": 30,
+      "review_export_cleanup": 30
+    },
+    "budget_scope": "1.12USD two-hour resource estimate,not test completion guarantee;3USD is not unlimited extension permission;shortfall must be separately reported/approved",
+    "r2_github": "no new message required/posted"
   }
 }
