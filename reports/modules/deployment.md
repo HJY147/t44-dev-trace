@@ -264,3 +264,9 @@
 - 03:17:43.706369UTC快照：自有app_20261023_234943_3f9bad serving/readytrue，原截止03:49:43.904838UTC/北京时间11:49:43.904838。driver/runner五字段匹配、driver/controller/runtime原hash一致、bc5源92项零差异，九protected listener与before-serve一致。
 - terminal driver/post receipt未生成，4h/cleanup结论null。单点元数据不是全时或应用业务验证；没有HTTP/SQL/浏览器/信号/服务变化/脚本执行或独立private访问，不续期、不automation。到期只读清单agents/deployment/demo-deadline-readonly-runbook.md，证据demo-handoff-validation/current-observation.json。
 - 交接b51c313d4313d1eb9018b54eabbf1fbc0c127039已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579全文GET一致。仅快照与到期runbook，未产生新业务/结束结论。
+
+### DEMO-NATURAL-CLOSE-v1 原4h演示自然结束
+
+- app_20261023_234943_3f9bad/bc5原14400秒截止03:49:43.904838Z不变；duration_elapsed，summary结束03:49:48.016395Z success/cleanuptrue，78追加TTL300轮换。原driver实际exit0/确认runner退出；原编排post实际exit0，89登记PID全absent、Rabbit/EPMDgone、五run端口unbound、API4worker。
+- 原after-finish及03:52:30Z只读快照九protected均与before-serve PID/UID/start/pgid/hash/地址全等；driver/runner不存在，driver/controller/runtime原hash保持。post记录92源核验；81扫描是controller子集，16/26仍历史复核、无新publish声明。
+- 本轮只读/文档，无重启/续时/脚本补跑/HTTP/SQL/信号/服务/独立private；旧03:17未知及原360失败保持。报告agents/deployment/demo-natural-close-report.md，白名单投影及原件hash在demo-natural-close-validation；自然结束不等于正式性能/独立验收/云通过。

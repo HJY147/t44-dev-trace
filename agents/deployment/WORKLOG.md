@@ -346,3 +346,10 @@
 - 三份terminal driver/post receipt尚未生成，4h完整/cleanup均null，不以仍serving冒充终结通过。观测是单时点、不证明全时健康；未HTTP/SQL/浏览器/信号/停止/重启、未运行862/863/post/driver、未改livecopy/凭据/服务、无新automation/独立private。根在3分钟内收到快照与截止。
 - 到期只读runbook列已存在status与已登记末次receipt路径，仅实际生成后读字段；缺失/矛盾报root、不补造/重跑。证据demo-handoff-validation/current-observation.json，后续仅文档/GitHub归档，不同步等待截止。
 - 交接b51c313d4313d1eb9018b54eabbf1fbc0c127039已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579实际COMMENT/完整GET正文逐字一致，原JSON另档。仅文档归档，不再观测/等待到期或改变原运行，最终4h/cleanup仍以未来实得回执为准。
+
+## DEMO-NATURAL-CLOSE-v1 原演示自然结束
+
+- 基root f7e83caa25233864486b520e4def4c272ce0698d新独立codex/deployment-demo-natural-close/worktree；03:48:40Z先记只读设计，一次55秒等待，截止后03:50:20Z仅读本岗已实际生成终结回执。没有运行driver/862/863/post，没有重启/延长或修改live/应用/冻结/automation/凭据。
+- 原app_20261023_234943_3f9bad/bc5、driver43819/runner43888：原14400秒截止03:49:43.904838Z未变，duration_elapsed后summary03:49:48.016395Z success/cleanuptrue；实际总14404.111557秒含4.111557秒清理。78追加TTL300轮换、controller验证81扫描仅子集；driver真实exit0并确认runner退出，既有编排post真实exit0。post89登记PID全absent、Rabbit/EPMDgone、本run五端口unbound、4APIworker；不读/公开嵌套业务行或会话值。
+- 原after-finish九protected与before-serve逐项一致；03:52:30Z另一次只读PID/UID/start/pgid/hash/地址观察仍9/9全等，driver/runner均不存在。driver40f29a/controller084618/runtimea251字节hash保持，post记录源92核验。严格仅离散元数据/已存回执，不把它当全时健康/正式性能/独立验收或云部署；历史16/26未称新publish。
+- 旧03:17快照未知结论及原360失败/新360成功原样保留；公开白名单投影+原件SHA/bytes，不公开完整post/argv/凭据/SQL，未HTTP/SQL/浏览器/信号/服务动作/独立private。本次无代码或测试变更，仅读/JSON投影及diff-check；报告demo-natural-close-report.md，原始回执仍原私密路径。

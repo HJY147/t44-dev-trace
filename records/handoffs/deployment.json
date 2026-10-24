@@ -726,6 +726,11 @@
       "id": "ROLE-deployment-NATIVE-APPLICATION-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-NATIVE-APPLICATION-v1.md",
       "reason": "Explicit new app lifecycle stage with exact source and private new DB, finite periodic delivery/credential rotation evidence"
+    },
+    {
+      "id": "ROLE-deployment-DEMO-NATURAL-CLOSE-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-DEMO-NATURAL-CLOSE-v1.md",
+      "reason": "原已授权演示截止后只读取既存终结回执及受保护监听元数据；不补跑或跨范围宣称"
     }
   ],
   "questions": [
@@ -867,7 +872,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "demo-readonly-handoff-complete",
+  "stage": "demo-natural-close-readonly-complete",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -875,7 +880,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-23T21:00:52.283874+00:00",
+  "updated_at": "2026-10-24T03:53:51.984458+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -945,5 +950,33 @@
     "issue_readback": "agents/deployment/demo-handoff-validation/issue-readback.json",
     "final_status": "read-only handoff complete;active demo outcome not yet determined;no extension",
     "archive_revision": "final Git metadata identifies receipt-only seal;observation timestamp remains03:17:43Z"
+  },
+  "demo_natural_close": {
+    "base_sha": "f7e83caa25233864486b520e4def4c272ce0698d",
+    "branch": "codex/deployment-demo-natural-close",
+    "prompt_ref": "ROLE-deployment-DEMO-NATURAL-CLOSE-v1",
+    "run": "app_20261023_234943_3f9bad",
+    "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "original_start_utc": "2026-10-23T23:49:43.904838+00:00",
+    "original_deadline_utc": "2026-10-24T03:49:43.904838+00:00",
+    "duration_seconds": 14400,
+    "finished_at_utc": "2026-10-24T03:49:48.016395+00:00",
+    "stop_reason": "duration_elapsed",
+    "summary_success": true,
+    "cleanup_success": true,
+    "additional_rotations": 78,
+    "driver_actual_exit_code": 0,
+    "runner_exit_confirmed": true,
+    "post_actual_exit_code": 0,
+    "post_registered_processes_absent": 89,
+    "protected9_automatic_and_fresh_exact_match": true,
+    "driver_runner_absent_at_fresh_observation": true,
+    "original_driver_controller_runtime_hashes_match": true,
+    "formal_performance_or_independent_acceptance_claimed": false,
+    "no_extension_restart_or_post_execution": true,
+    "no_http_sql_browser_signals_private_or_automation": true,
+    "report": "agents/deployment/demo-natural-close-report.md",
+    "evidence": "agents/deployment/demo-natural-close-validation",
+    "historical_status_preserved": true
   }
 }
