@@ -153,3 +153,4 @@
 - 仅读公开857metadata/准入/summary、858INVALID和859公开审核范围；不跟private/tool/cases/日志，不联系tester。858自身FD/时钟证据失败保留；857新F2/新准入、阈值不降、短stubpass非SUT/600s。
 - 核D008原RFC/R2的最小失败槽、conditional4xxCOMPLETE/动态成功Meta/错误无outerMeta/ACKunknown，先规格草稿、待新freeze才应用；859新1+旧1=2目标非fullCI/独立。原F08/Word/ZIP保持。
 - 20公开源精确commit/blob/SHA及JSON核对，只写本岗素材/rolelog/report/handoff；新版本计0，不把角色分工数或AI互审当真人/12-5-3，未代写研究正文/未来通过。Issue10评论全文GET/commitpush实际后补。
+- 实质材料实际commit/push`2382d30625c92821384d5b85037bded78d2ae408`；Issue10评论6379557747真实发表，GET按ID核全文逐字相同，RETURN-publication.json留回执。仅补发布记录，不跟根后续开发或预填结果。
