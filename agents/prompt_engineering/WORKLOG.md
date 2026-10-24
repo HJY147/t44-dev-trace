@@ -145,3 +145,11 @@
 - root集成gate在候选已产生但CI/专审未完时预定义，未为数字降标准；b66等价一行与根18旧绿18新绿非bug红绿，新finalE未公开不预填。DB普通EXPLAIN/BEledger不是运行或正式根因。
 - 24公开sourcehash/JSON/Git与style设计先行关系必要核对，无产品测试/服务/CI/Word执行；M6六版保持/新增0，旧M6M7M8/WordQA/冻结不改，人12/5/3与研究正文不代填。Issue11实际评论/全文GET/提交push实际后补。
 - M11实质材料实际commit/push`08671201170dfb04d9fb39c8c6e8add66785ae0c`；Issue11评论6378022668真实发表，完整GET按ID核全文逐字相同，M11-publication.json留回执。以下只补发布记录，不取后发校准/CI或改cutoff。
+
+## 用户返回后真实决定与方法/规格留痕
+
+- 根clean/HEAD7daff2b066fbb8eb710b6886c52080ff89d30238；新独立codex/prompt-user-return-checkpoint，先范围/actualprompt后取证，不动根索引。
+- 引用U020/U021/U022真实人话不改字；28号/费用先报/U022求配置不是购买授权。D008为用户业务选择，最小技术scope/版本由AI设计，不记学生改码。
+- 仅读公开857metadata/准入/summary、858INVALID和859公开审核范围；不跟private/tool/cases/日志，不联系tester。858自身FD/时钟证据失败保留；857新F2/新准入、阈值不降、短stubpass非SUT/600s。
+- 核D008原RFC/R2的最小失败槽、conditional4xxCOMPLETE/动态成功Meta/错误无outerMeta/ACKunknown，先规格草稿、待新freeze才应用；859新1+旧1=2目标非fullCI/独立。原F08/Word/ZIP保持。
+- 20公开源精确commit/blob/SHA及JSON核对，只写本岗素材/rolelog/report/handoff；新版本计0，不把角色分工数或AI互审当真人/12-5-3，未代写研究正文/未来通过。Issue10评论全文GET/commitpush实际后补。
