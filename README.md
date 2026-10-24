@@ -34,6 +34,8 @@
 
 ## 可核对的阶段证据
 
+以下按各自准确提交保留历史证据，行内状态只适用于该次检查；最新状态见顶部收尾说明，旧结果不覆盖新版本。
+
 | 范围 | 实际证据 | 边界 |
 | --- | --- | --- |
 | 候选默认配置CI（未合入） | `db87d30`的[product40039282322](https://github.com/HJY147/t44-dev-trace/actions/runs/40039282322)通过520BE/89FE；[Docker40039333270](https://github.com/HJY147/t44-dev-trace/actions/runs/40039333270)实际checkout为PR merge400a5，166相关文件与候选相等；[五ZIP与51原件](records/validation/composite-db87-pool-ci.json)已核 | 默认保留15/overflow0的两常量候选；[有限专审](reports/reviews/39-db87d30449356f3473b645a5c246dcc6c21d7cbe.md)无新增实质阻断，资源/partial override变化保留；H2已完成但有效400并发未建立，不给候选排名，未准入当前应用 |
@@ -106,10 +108,10 @@
 
 后发[独立阶段04](reports/independent-v3/stage04-functional-browser.md)已把原功能推进到25/26整例通过，F08优先级未决保留，六浏览器整例/15原判据全部完成；额外三能力项与130/551错误响应观察各自单列，仍不等于全分支或整体放行。
 
-最新[M7夜间过程素材](docs/prompting/M7-night-process-evidence.md)以6ec为固定截止，记录机器输出协议、真实红绿修复、专审和并行协作错误；不代写学生研究正文，不补造人工改码证据。
+较早的[M7夜间过程素材](docs/prompting/M7-night-process-evidence.md)以6ec为固定截止，记录机器输出协议、真实红绿修复、专审和并行协作错误；不代写学生研究正文，不补造人工改码证据。
 
 当前四技术Word为三份M6原稿27页加M7测试新稿8页，共35页；[M7后发核查附录](reports/final/M7-post-cutoff-audit-annex.md)区别独立岗位核过的M6旧33页，不把核验迁移到后发稿。[醒来后查看项目](docs/user-guide/wake-up-review.md)提供本机入口与材料位置。
 
-连接池[短ABBA诊断](agents/database/pool-retention/result.md)四段均无失败：保留15个连接的两段稳态新建均为0，保留5个的两段为436/427；多保留10个空闲连接的内存代价未测。默认配置候选仅在独立分支验证，当前应用未变。新6分钟完整演示已实际到期，但退出检查把runner自身当成未退出子进程，原exit1保留；真实自有服务外部复核均已停止，窄修及专审进行中，未运行长时serve。
+旧过程截止快照（保留当时叙述，后发变化见下一段和顶部）：连接池[短ABBA诊断](agents/database/pool-retention/result.md)四段均无失败：保留15个连接的两段稳态新建均为0，保留5个的两段为436/427；多保留10个空闲连接的内存代价未测。默认配置候选仅在独立分支验证，当前应用未变。新6分钟完整演示已实际到期，但退出检查把runner自身当成未退出子进程，原exit1保留；真实自有服务外部复核均已停止，窄修及专审进行中，未运行长时serve。
 
 后发完整演示复验：62ac工具的[新360秒实际运行](agents/deployment/native-bounded-demo-validation/serve-retest-capability.json)exit0/cycle与cleanup通过，九端口三观察点一致；原4ef360退出1保持。当前14400秒用户演示属于另一进行中run，最终清理未知。[M8真实过程素材](docs/prompting/M8-limited-process-evidence.md)按固定截止记录包绑定反例、池预算、运行脚本勘误和新旧证据归属，不补造学生人工行为。
