@@ -10,3 +10,9 @@ Interpretation: only isolated proxy configuration candidate plus own validation 
 Root follow-up, preserved verbatim:
 
 > 分配下一新测试前缀840（841本轮独立测试已占）。请先提交补充设计，再实现仅候选两Nginx配置和840合成上游真实raw验证、窄分支专用无secrets CI；固定原digest，保持immutable，使用精确目标分支和尽量最小权限。用户已授权阶段GitHub协作/测试，可运行必要一次公开Linux CI验证；不要用本轮云C，不装本机Docker，不对真实端点做候选测试。source-root新的30afdef是正常parent，root刚已merge resourceexport cee0ac成f172cb2，候选仍保持自己branch不换云。核心实现提交后先交SHA供审核，再跑实际有针对性的一次NGINX；失败保留修正再测。
+
+Root later clarification, received during request push, preserved verbatim:
+
+> 审核岗现已收到实现debf8d8的正式限定审阅任务，请尽量等其核心结论后再触发；‘未收到阻断’不等于审阅已通过。若request已实际提交/触发则保留该真实轮次和时间，不撤改历史，等审核+实际结果再决定窄修。云C不变，公开Linux一次必要验证仍在用户授权范围内。
+
+Actual chronology is preserved in result.md/WORKLOG: request416bb5e was already committed and push was in progress when that clarification arrived; no history was canceled or rewritten. Formal limited-review conclusion arrived subsequently, finding no substantial blocker to the one hosted synthetic run. One actual run only, no silence-as-approval assertion or cloud admission.

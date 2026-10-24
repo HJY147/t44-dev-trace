@@ -380,3 +380,6 @@
 - Isolated proposal in agents/deployment/request-id-chain/design.md, strict upstream UUID filter and one response field. Local nginx unavailable; real pinned runtime checks pending, no cloud/product admission or independent verdict.
 
 - Candidate implementation prepared: strict canonical UUIDv4 map/hide/one-add; 840 real pinned-nginx driver and narrow read-only GitHub job. Local Ruff/compile only passed, real runtime23-path result pending. Production changes only2nginx configs; current C/cloud unchanged.
+
+- Real hosted run40084563406 success on execution416bb5e/source debf8d8: original fixed nginx UID101, two syntax checks0, actual baseline2-field counterexample and candidate23/23 raw/security-header cases. Full raw/ZIP/platform/source hashes in request-id-chain/validation and scope in result.md. ZIP/platform digest and raw member bytes match.
+- Formal reviewer later found no blocker for one hosted synthetic run; request timing preceded formal conclusion and is preserved, not treated as approval. Issue7 result6382958356 fullGET identical. This candidate has not changed cloud C or been admitted/deployed, and does not prove actual API/TLS/replay persistence/independent acceptance/performance or explicit contract equality violation.
