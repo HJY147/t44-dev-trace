@@ -331,3 +331,10 @@
 - 仅相关13项0.07s绿，77无关项未跑；CI配置Ruff通过。执行deadline以60/1200/1800请求值驱动mock clock/Popen/recover/sleep，信号入口mock且断言未调用，没有实际进程/信号。运行源码精确只有一个常量变化，workflow精确只有输入description变化，control/metadata/usage字节相同；encrypt/output/fault/recovery/精确SHA/path保持。原红/绿stdout/stderr/JUnit/sourcehash在preparation-budget-validation。
 - 没有HTTP/SQL/Docker/服务/真实负载或独立case/output/H读取，不延长旧run或补历史unknown，不把中性能力绿称正式性能通过。由tester自行另冻H2，不能称原H字节/方法完全相同；正式指标/fixture/负载/成功判据不改。仅收尾提交/Issue7全文GET后释放。
 - 实现79ed72fe7218e8782c1ba8dca99996ddf8880e90已push并先交根；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377395660用本岗body-file发布，完整GET逐字核正文一致，原JSON另档。seal.json列准确源码/检查/文件SHA；仅收尾不改执行源/重测。
+
+## STATIC-FOLLOWUP-v1
+
+- 从dde39aa1c3ccf122caff5c24584ab69537d09007新独立codex/deployment-static-followup；先设计commit b950a787642a25277809ade54f491fcd0dd47a9a，真实Git commit/blob前像gzip/hash与工作文件逐字核对后，仅两行等价样式修复：864 capture_output=True，871 unit fixture unused index->_index。
+- 同两文件Ruff先复现UP022/B007红再绿；两源码仅内存compile不exec/import，864规范化AST/本机stdlib capture_output→两PIPE语义核对，871仅unused target改名且body无index load，归一AST相同。原断言/案例/路径/豁免不改，无需重复测试suite。本树application/runtime字节不变，未访问/操作活跃副本、root/controller/live服务或私密资料，无HTTP/SQL/信号/启动停止。
+- 原两Git前像、旧新sourcehash、Ruff红绿/AST证据在static-followup-validation；新源不是原已运行归档字节，旧CI40047094732红不重跑、不覆盖旧运行结论。实现17e7ac5f05e3ab85cd7a0f2db439c7097c422dba已先push交根让BE用于新候选。
+- Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857用本岗body-file实际发布并完整GET逐字一致，原JSON另档。仅角色记录封档，不再运行检查或服务；远端新候选CI待BE另发，不能以本地Ruff绿冒称远端通过。

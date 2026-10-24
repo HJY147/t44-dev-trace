@@ -55,7 +55,7 @@ save('protected-before-prepare.json', before_prepare)
 old = json.loads((PROJECT / '.agent-worktrees/.runtime/native-demo-20261023/bounded-validation-20261023/prepare-receipt.json').read_text())
 argv = old['argv']
 start = now()
-prepared = subprocess.run(argv, cwd=WORK, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+prepared = subprocess.run(argv, cwd=WORK, capture_output=True, check=False)
 for suffix, raw in (('stdout', prepared.stdout), ('stderr', prepared.stderr)):
     appmod.private_write(AUDIT / ('prepare.' + suffix), raw)
 save('prepare-receipt.json', {'started_at_utc': start, 'ended_at_utc': now(), 'argv': argv,
