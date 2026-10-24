@@ -1,7 +1,7 @@
 {
   "role": "documentation",
   "stage": "CLOUD839 public evidence/document synchronization; not product acceptance",
-  "implementation_status": "CLOUD839 Markdown correspondence complete: 40/40 checks, 98/98 links; product acceptance not achieved; publication pending",
+  "implementation_status": "CLOUD839 Markdown synchronization complete and published; 40/40 correspondence checks, 98/98 links; not product acceptance",
   "actor": "AI /root/documentation_checkpoint; current M6 author/check/render operator",
   "previous_M5_author": "previous documentation AI; this same instance only recovered M5",
   "artifacts": [
@@ -126,7 +126,9 @@
     "docs/reports/cloud839-source-manifest.json",
     "docs/reports/cloud839-collection.json",
     "docs/reports/cloud839-validation.json",
-    "agents/documentation/prompts/ROLE-documentation-CLOUD839-SYNC-v1.md"
+    "agents/documentation/prompts/ROLE-documentation-CLOUD839-SYNC-v1.md",
+    "agents/documentation/github-cloud839-stage-comment.md",
+    "agents/documentation/github-cloud839-readback.json"
   ],
   "interfaces": {
     "inputs": [
@@ -225,11 +227,14 @@
     "branch": "codex/documentation-cloud839",
     "base": "0f35dc3a5e3dcd53b147ce6a6a0b25e50802a65e",
     "design_checkpoint": "e4604aa6b4c6de1556f64cae903e9a4817f315cb",
-    "stage": "CLOUD839 Markdown validation complete; Issue9 publication/readback pending",
+    "stage": "complete; receipt-only commit and exact local/remote SHA check then slot release",
     "new_Word_bundle_or_results": false,
-    "no_approval_status_main_merge": true
+    "no_approval_status_main_merge": true,
+    "implementation_checkpoint": "0321ea951bf1ba9a1af31c715e8f5384e1dbd5c9",
+    "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6383510954",
+    "readback": "agents/documentation/github-cloud839-readback.json"
   },
-  "updated_at": "2026-10-24T19:12:17.771681+08:00",
+  "updated_at": "2026-10-24T19:14:00.373934+08:00",
   "M7": {
     "design_checkpoint": "fa3b2fe1095aca78c02e80cad9de2ce187ff551b",
     "base": "3dadfb954f9f11274b324fa544d14c841eb4849a",
@@ -511,10 +516,15 @@
       "student handwritten research",
       "new technical Word and final coursework bundle"
     ],
-    "publication": "pending",
+    "publication": {
+      "Issue9_comment": "https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6383510954",
+      "exact_ID_GET_full_body_equal": true,
+      "readback": "agents/documentation/github-cloud839-readback.json"
+    },
     "validation_checks": 40,
     "relative_links": 98,
-    "all_checks_pass": true
+    "all_checks_pass": true,
+    "implementation_checkpoint": "0321ea951bf1ba9a1af31c715e8f5384e1dbd5c9"
   },
   "historical_results_pre_cloud839": {
     "backend_tests": 510,
