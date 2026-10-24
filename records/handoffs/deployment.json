@@ -761,6 +761,11 @@
       "id": "ROLE-deployment-CLOUD-PREPARATION-CHECKPOINTS-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-CLOUD-PREPARATION-CHECKPOINTS-v1.md",
       "reason": "从已整合新基点追加三项完成和build待核，保留全历史，不把安装成功冒充应用部署性能"
+    },
+    {
+      "id": "ROLE-deployment-ECR-SOURCE-POLICY-v1",
+      "archive": "agents/deployment/prompts/ROLE-deployment-ECR-SOURCE-POLICY-v1.md",
+      "reason": "官方同摘要交付转换工具与准确C分开，不改产品；保留真实Hub失败，ECR metadata不冒作构建成功"
     }
   ],
   "questions": [
@@ -902,7 +907,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-packages-source-config-complete-build-awaiting-receipt",
+  "stage": "exact-C-ECR-policy-reviewable-cloud-build-not-executed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -910,7 +915,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T06:40:12.811798+00:00",
+  "updated_at": "2026-10-24T06:53:17.587734+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1212,5 +1217,29 @@
     "bootstrap_blob_unchanged": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
     "evidence": "agents/deployment/ubuntu-bootstrap-validation/cloud-preparation-checkpoints.json",
     "deployment_cloud_ci_service_private_access": false
+  },
+  "prior_stage_before_ecr_source_policy": "cloud-packages-source-config-complete-build-awaiting-receipt",
+  "ecr_source_policy": {
+    "prompt_ref": "ROLE-deployment-ECR-SOURCE-POLICY-v1",
+    "base_sha": "563805669434c9689b808d68eade3b2954aaaa56",
+    "branch": "codex/deployment-ecr-source-policy",
+    "product_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "helper": "deployment/ecr-build-policy.py",
+    "steps": "deployment/ecr-build-policy.md",
+    "helper_sha256": "594cfb595975e6af8911d66a584dd092cbb3bf1124626d507747776a502a9e11",
+    "policy_sha256": "502fe2ce865fd1910b6e49795f5233daef4329b10b2174787718789baf42bed5",
+    "rules": "3EXACT same-digest ECR CONVERT then Hub DENY",
+    "variable": "EXPERIMENTAL_BUILDKIT_SOURCE_POLICY",
+    "compose_buildx_compatibility": "official sources static only",
+    "local_helper_guards_passed": 9,
+    "actual_CI_config_ruff": "passed;initial import lint red preserved",
+    "root_original_Hub_build_exit_code": 1,
+    "root_ECR_five_digest_metadata_exit_code": 0,
+    "layer_download_or_policy_build_executed_by_deployment": false,
+    "actual_policy_build_result": null,
+    "no_product_daemon_DNS_env_or_root_records_changes": true,
+    "deadline_beijing": "2026-10-24T17:00:00+08:00",
+    "actual_budget_cny": "20",
+    "evidence": "agents/deployment/ecr-policy-validation"
   }
 }

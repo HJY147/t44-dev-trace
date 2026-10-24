@@ -406,3 +406,10 @@
 - 2026-10-24T06:40:12.811798+00:00从root已整合fe6d3662c9f33257e34a67a7577b7ef70eb9ae8f新独立codex/deployment-cloud-build-checkpoints，继承已保留的全部历史/prompt/顶级对象，不再从旧ee分叉。只追加root实际UI转述，未访问云/原UI/私密日志或配置/CI/服务/独立材料，共享索引不动。
 - packages回执北京14:26:31/23s/exit0，Ubuntu5新包0升级0移除；Docker29.1.3/Buildx0.30.1/Compose2.40.3+ds1/Python3.12.3/git2.43.0。source同脚本仅set--source，全文UI核一致，14:31:42/29s/exit0，准确C 0dfb55c2191200d947c5423fd9ee74bb0812cc5a HEAD/tracked通过，固定目录。配置14:36:06/<1s/exit0，daemon29.1.3/init-env0600无秘密输出/config-check T44_CONFIG_CHECK_OK。
 - 新t44-build-C-0dfb55c任务已由root提交：HEAD/config先核、build600s、外层720s/进程树，尚无构建完成回执。infra/迁移/seed/应用启动/私网/正式性能均未完成，不借前三项成功代写后续。17:00/实际20元保持；已审脚本blob8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8未变。仅JSON解析/diff-check与文档提交，没有重跑脚本或云命令。
+
+## ECR-SOURCE-POLICY-v1 工具与产品源分开
+
+- 2026-10-24T06:53:17.587734+00:00按root新授权在独立codex/deployment-ecr-source-policy/worktree、基563805669434c9689b808d68eade3b2954aaaa56准备helper，不访问云/CI/账号/服务/私密测试，不改root records或共享索引。root转述旧build北京14:38:26/61秒/exit1（三base Hub metadata超时）保持失败；ECR五精确digest metadata14:45:29/13秒/exit0不冒充layer或build通过。
+- 核官方Docker变量页/Compose2.40.3 build_bake.go/Buildx0.30.1 bake.go及ReadSourcePolicy、BuildKit schema/engine。默认Bake传环境、Bake读EXPERIMENTAL_BUILDKIT_SOURCE_POLICY；3个完整tag+digest EXACT转ECR，尾Hub DENY，转换后重评估，产品C Dockerfiles/compose/.env/daemon/DNS不变。helper仅校C HEAD/tracked/3FROM，写指定0700父目录/0600O_EXCL私有JSON，没有Docker或网络执行。工具提交与C0dfb55c2191200d947c5423fd9ee74bb0812cc5a明确分开；本地完整policy供root审查/relay。
+- 先交可审文件/hash，root已全文读并交审核；必要lint首用backend配置发现I001，保留初始输出/旧hash，仅整理import后用实际CI scripts/ci/ruff.toml绿；初查含一个不存在的check_static.py路径，rg exit2已在工具回执，随后确认真实static.py配置，不冒称首次即绿。最终helper594cfb595975e6af8911d66a584dd092cbb3bf1124626d507747776a502a9e11，policy502fe2ce865fd1910b6e49795f5233daef4329b10b2174787718789baf42bed5；已通知root新hash替代lint前d592。
+- 本地9项stdlib纯合成guard通过：精确FROM/摘要、尾DENY声明、变digest拒绝、私有文件字节及权限与排他/相对/公开父目录/符号父目录/错误HEAD；其中权限为0600（非执行云policy或BuildKit引擎自测）。README仅给有界600s build/外层720s和17:00前840s准入检查，失败停、不自动放松策略或启动infra。20元/17:00不变；layer/build结果仍待root实际回执，不触发新CI。
