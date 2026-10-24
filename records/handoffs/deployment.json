@@ -867,7 +867,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "static-followup-complete",
+  "stage": "demo-readonly-handoff-in-progress",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -919,5 +919,26 @@
     "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857",
     "github": "body-file COMMENT;full GET body identical",
     "final_status": "complete static-only;no old execution claims assigned to new source"
+  },
+  "demo_readonly_handoff": {
+    "base_sha": "f986782311f227082b4445bf7508522aa49c043d",
+    "branch": "codex/deployment-demo-handoff",
+    "prompt_ref": "ROLE-deployment-DEMO-HANDOFF-v1",
+    "run": "app_20261023_234943_3f9bad",
+    "observed_status_at_utc": "2026-10-24T03:17:43.706369+00:00",
+    "phase": "serving",
+    "capability_ready": true,
+    "deadline_at_utc": "2026-10-24T03:49:43.904838+00:00",
+    "deadline_beijing": "2026-10-24T11:49:43.904838+08:00",
+    "source92_hash_mismatches": 0,
+    "driver_runner_identity_matches": true,
+    "protected9_before_serve_matches": true,
+    "terminal_receipts_present": false,
+    "final4h_cleanup_conclusion": null,
+    "no_extension_restart_or_service_change": true,
+    "no_http_sql_browser_signals_private_or_automation": true,
+    "evidence": "agents/deployment/demo-handoff-validation/current-observation.json",
+    "runbook": "agents/deployment/demo-deadline-readonly-runbook.md",
+    "github": "pending Issue7 full GET"
   }
 }

@@ -338,3 +338,10 @@
 - 同两文件Ruff先复现UP022/B007红再绿；两源码仅内存compile不exec/import，864规范化AST/本机stdlib capture_output→两PIPE语义核对，871仅unused target改名且body无index load，归一AST相同。原断言/案例/路径/豁免不改，无需重复测试suite。本树application/runtime字节不变，未访问/操作活跃副本、root/controller/live服务或私密资料，无HTTP/SQL/信号/启动停止。
 - 原两Git前像、旧新sourcehash、Ruff红绿/AST证据在static-followup-validation；新源不是原已运行归档字节，旧CI40047094732红不重跑、不覆盖旧运行结论。实现17e7ac5f05e3ab85cd7a0f2db439c7097c422dba已先push交根让BE用于新候选。
 - Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857用本岗body-file实际发布并完整GET逐字一致，原JSON另档。仅角色记录封档，不再运行检查或服务；远端新候选CI待BE另发，不能以本地Ruff绿冒称远端通过。
+
+## DEMO-HANDOFF-v1 只读当前交接
+
+- 基root最新f986782311f227082b4445bf7508522aa49c043d新codex/deployment-demo-handoff/worktree。定位时仅读本岗明确run的allowlisted状态与文件键/路径，03:16:30Z serving先报根；随后建立书面设计，再正式采driver/runner五字段、源/控制器/runtime hash及九listener对比，不倒记先后。一次列自有receipts目录名输出过长，此后仅限定路径/字段，未读取该批receipt payload。
+- 正式03:17:43.706369Z status serving/readytrue，rotations68，stop_reason null；driver43819与runner43888五字段匹配，driver40f29a/controller084618/runtimea251与原绑定一致；bc5源92文件SHA零差异。九protected含5177/18086身份/地址与before-serve逐项相同，只采监听元数据、没有连接APP数据。原截止03:49:43.904838UTC/北京11:49:43.904838不变。
+- 三份terminal driver/post receipt尚未生成，4h完整/cleanup均null，不以仍serving冒充终结通过。观测是单时点、不证明全时健康；未HTTP/SQL/浏览器/信号/停止/重启、未运行862/863/post/driver、未改livecopy/凭据/服务、无新automation/独立private。根在3分钟内收到快照与截止。
+- 到期只读runbook列已存在status与已登记末次receipt路径，仅实际生成后读字段；缺失/矛盾报root、不补造/重跑。证据demo-handoff-validation/current-observation.json，后续仅文档/GitHub归档，不同步等待截止。
