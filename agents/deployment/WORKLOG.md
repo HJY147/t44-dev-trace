@@ -400,3 +400,9 @@
 - 2026-10-24T06:29:46.089545+00:00只改独立树文档：据root UI转述，Workbench角色获用户批准后已点创建确认，root/ecs-user临时SSH均失败；云助手两机正常2.2.4.1097，现通路为已授权云助手root，不再要求Workbench root终端。仅读公开tmp/853准备脚本原件，未执行/触云/CI/服务/共享索引/图片/敏感元数据或任何独立私有材料。
 - root云助手app预检北京14:21:49/<1s/exit0，root/Ubuntu24.04x86_64/Python3.12.3/git/curl具备、Docker缺失、所查列表无ecs-user；本岗不独立背书云结果。root以8f脚本仅插set--packages，UI全文核一致后提交900s/进程树任务，安装进行中无完成结论；此前fill残留默认shebang被比对拦下未执行，改全选粘贴后才提交。
 - 已审脚本blob 8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8、SHA a99091f55f4b285712edc7b043114460f6dce5235705f289991cb31e3bece025逐字未变，沿用8f限定审查。本轮只改.md通路及跨任务cd/HEAD检查说明、角色记录/prompt，未重跑bootstrap或假称安装/部署/性能通过。原进展和静态结果保持，cloud-assistant-progress.json列精确对照。
+
+## CLOUD-PREPARATION-CHECKPOINTS-v1
+
+- 2026-10-24T06:40:12.811798+00:00从root已整合fe6d3662c9f33257e34a67a7577b7ef70eb9ae8f新独立codex/deployment-cloud-build-checkpoints，继承已保留的全部历史/prompt/顶级对象，不再从旧ee分叉。只追加root实际UI转述，未访问云/原UI/私密日志或配置/CI/服务/独立材料，共享索引不动。
+- packages回执北京14:26:31/23s/exit0，Ubuntu5新包0升级0移除；Docker29.1.3/Buildx0.30.1/Compose2.40.3+ds1/Python3.12.3/git2.43.0。source同脚本仅set--source，全文UI核一致，14:31:42/29s/exit0，准确C 0dfb55c2191200d947c5423fd9ee74bb0812cc5a HEAD/tracked通过，固定目录。配置14:36:06/<1s/exit0，daemon29.1.3/init-env0600无秘密输出/config-check T44_CONFIG_CHECK_OK。
+- 新t44-build-C-0dfb55c任务已由root提交：HEAD/config先核、build600s、外层720s/进程树，尚无构建完成回执。infra/迁移/seed/应用启动/私网/正式性能均未完成，不借前三项成功代写后续。17:00/实际20元保持；已审脚本blob8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8未变。仅JSON解析/diff-check与文档提交，没有重跑脚本或云命令。

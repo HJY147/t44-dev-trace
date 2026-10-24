@@ -308,3 +308,8 @@
 - 实际通路改记已授权云助手root执行，root/ecs-user临时SSH失败；root转述云助手两机正常2.2.4.1097，app公开853预检14:21:49/<1s/exit0，Python3.12.3/git/curl已有、Docker缺失。
 - 8f packages任务由root核完整文本（仅插阶段参数）后提交900s/进程树，当前安装进行中，无成功回执；此前fill残留默认前缀被拦未执行。部署岗不接触云/CI/服务/图片或独立私密，未新增实际运行结论。
 - 已审bootstrap.sh字节/blob完全不变，说明改云助手通路并在独立产品任务重申cd/HEAD；证据ubuntu-bootstrap-validation/cloud-assistant-progress.json。
+
+### CLOUD-PREPARATION-CHECKPOINTS-v1
+
+- root UI转述完成三点：packages北京14:26:31/23秒/exit0（Ubuntu5新包0升级移除，Docker29.1.3/Buildx0.30.1/Compose2.40.3+ds1）；source14:31:42/29秒/exit0（准确C HEAD/tracked核对）；配置14:36:06/<1秒/exit0（daemon29.1.3、0600私密配置、T44_CONFIG_CHECK_OK）。
+- 构建新任务已提交，ops600s/外层720s进程树，尚无完成回执、exit/success未知。infra/迁移/seed/启动/私网/正式性能仍无通过，不改17:00/20元。证据为本岗cloud-preparation-checkpoints.json的root转述投影，非本岗独立云验证；已审脚本/应用不改，无云/CI/服务/私密资料操作。
