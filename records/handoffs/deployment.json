@@ -781,6 +781,11 @@
       "id": "ROLE-deployment-API-PYPI-DELIVERY-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-API-PYPI-DELIVERY-v1.md",
       "reason": "准确C不改/同名ignore保留的纯生成渠道交付；只改index且不冒原字节构建"
+    },
+    {
+      "id": "ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v2",
+      "archive": "agents/deployment/prompts/ROLE-deployment-SEVEN-RESOURCE-SAMPLER-v2.md",
+      "reason": "按用户新100预算与18:30释放授权扩新观测窗口，保留旧运行，严格其余AST不变"
     }
   ],
   "questions": [
@@ -922,7 +927,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "API-PyPI-external-delivery-reviewable-not-built",
+  "stage": "seven-service-resource-sampler-v2-window-reviewable-not-executed",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -930,7 +935,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T07:34:54.939796+00:00",
+  "updated_at": "2026-10-24T08:43:37.865375+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1343,5 +1348,24 @@
     "full_GET_body_identical": true,
     "final_seal": "agents/deployment/api-pypi-delivery-validation/final-seal.json",
     "status": "generator and bounded command sealed;actual cloud build not run by deployment"
+  },
+  "prior_stage_before_seven_resource_v2": "API-PyPI-external-delivery-reviewable-not-built",
+  "seven_resource_sampler_v2": {
+    "base_sha": "4a4a9ad76dcf43133566db200cede5b94929a7a4",
+    "branch": "codex/deployment-seven-resources-v2",
+    "script": "deployment/seven-resource-sampler-v2.py",
+    "sha256": "5b8da9dec796cb7939ba01723ddf360bf007e13a3963d8c510aaf09b60e006b2",
+    "old_blob_sha256_preserved": "fe5dad14a805abb4b9531dc9116cdd659251f8fd35b8dc3b1d8bdfc8670437af",
+    "delta": "only5ASTConstants;reversible4textchanges",
+    "deadline_UTC": "2026-10-24T10:10:00Z",
+    "maximum_collection_seconds": 5400,
+    "root_relay_user_budget_authorized_CNY": "100",
+    "actual_spend_CNY": null,
+    "root_relay_both_release_beijing": "2026-10-24T18:30:00+08:00",
+    "formal_hard_stop_plan_beijing": "2026-10-24T18:10:00+08:00",
+    "actual_v2_execution": false,
+    "old_running_collector_touched": false,
+    "new_test_file": null,
+    "evidence": "agents/deployment/seven-resource-v2-validation"
   }
 }

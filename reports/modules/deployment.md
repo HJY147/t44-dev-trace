@@ -343,3 +343,9 @@
 - 14纯本地guard+语法/规范检查，无Docker/云/下载/CI/独立资料动作，无新增test文件；helper只生成，实际API构建与应用运行仍待root回执，20元/17:00保持。
 
 - API渠道交付实现81e50f1ea696fb434e9fef677465f1eeceb21057已推送；Issue7/6381506475全文GET与本岗body一致，final-seal含源码/产物hash。纯工具交付，实际API镜像构建仍null，无下载/云执行/新CI。
+
+### SEVEN-RESOURCE-SAMPLER-v2
+
+- 独立v2只将绝对截止改10:10Z/最长5400秒，4处文本/5个指定AST常量外全部一致；原fe5dad/08:44与云运行不动。新hash5b8da9…06b2，delta证据seven-resource-v2-validation。
+- 用户预算100/SMS完成及两机18:30释放由root转述，正式窗口计划18:10硬停；预算上限非实际消费。本岗无云/支付/collector执行，正式前启动仅计划，旧实例不提前kill。
+- AST/反向bytes/Ruff/compile通过，初次root基点缺v1路径的read/ruff失败保留后改读已发布Git blob；不重复旧suite、不建test（844未用），不读独立资料。
