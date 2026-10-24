@@ -448,3 +448,5 @@
 - 固定projectt44七服务含gateway，ps唯一64hex、inspect只ID/project/service/running逐次复核，stats仅固定7字段；四固定/proc文本256KiB各上限+UTC/monotonic，目标10s start间隔，命令/读写/调度overhead如实，不原子不峰值、CPU非全窗/内存非RSS/IO累计/PIDs含线程、背景活动继续。
 - 绝对08:44Z/最大20min，root现有0700父dir，resource-UUID.ndjson O_EXCL0600，不改已有权限/服务/网络，不读Env/log密码、不自动修复或重发现。stdout仅安全hash/bytes/实际样本/失败数/elapsed和null verdict，采集状态不冒性能/原六服务runtime合格。
 - 845纯合成8passed0.06秒，Ruff/compile0；不运行collector main、不读本机/proc/Docker/云，不重跑旧suite/CI，checks原件seven-resource-validation。只交能力和步骤，实际云采样结果待root另取回执，预算/释放不变。
+
+- 2026-10-24T08:26:28.797896+00:00实现6fe4d657a2a0c76a4955e55285d7fb822b6764c0已push，核心hash仍08:21交审版本未改；Issue7/6381981051实际发布并全文GET逐字一致，final-seal含源码/845/回执hash。只归档不拖root审核/正式窗口，不启动采样或读取本机/云/proc；实际样本/失败数仍null待root，阶段结束释放。

@@ -348,3 +348,5 @@
 
 - seven-resource-sampler.py/.md是独立七服务projectt44含TLS gateway只读采集，不冒原六服务runtime口径。严格ID/标签/状态映射与stats7字段+固定4/proc，UTC/monotonic、每10s目标、真实overhead/非原子/非峰值等限制明确；无Env/log密码/修复/性能判定。
 - root私有resource-UUID.ndjson600排他，最长20min/绝对08:44Z，安全hash/bytes/实际样本/失败数摘要。8项845合成/Ruff/compile通过，不执行main或读取本机/proc/云；核心08:21:24Z先交可审hash，不等档案拖正式窗。实际采样待root审核执行，16:13healthy只是root转述。
+
+- 七服务工具实现6fe4d657a2a0c76a4955e55285d7fb822b6764c0已推，Issue7/6381981051全文GET一致，核心fe5dad…37af未改；final-seal含精确hash。部署岗实际采样未执行、结果null，未借8合成通过宣称性能或六服务runtime合格。
