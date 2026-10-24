@@ -258,3 +258,9 @@
 
 - 先设计b950a787642a25277809ade54f491fcd0dd47a9a，实施17e7ac5f05e3ab85cd7a0f2db439c7097c422dba：仅864的capture_output=True和871 unit unused _index；无断言/行为/路径/豁免/控制器变更。Ruff同两文件红→绿，内存compile与AST/stdlib核对通过；没执行/import driver或服务/私密副本。
 - 精确Git前像gzip、旧新hash和工具原件static-followup-validation；旧运行字节/CI40047094732红保留。Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377881857实际COMMENT完整GET一致。BE需新候选新CI，当前本地静态绿不代表远端通过。
+
+### DEMO-HANDOFF-v1 当前只读交接
+
+- 03:17:43.706369UTC快照：自有app_20261023_234943_3f9bad serving/readytrue，原截止03:49:43.904838UTC/北京时间11:49:43.904838。driver/runner五字段匹配、driver/controller/runtime原hash一致、bc5源92项零差异，九protected listener与before-serve一致。
+- terminal driver/post receipt未生成，4h/cleanup结论null。单点元数据不是全时或应用业务验证；没有HTTP/SQL/浏览器/信号/服务变化/脚本执行或独立private访问，不续期、不automation。到期只读清单agents/deployment/demo-deadline-readonly-runbook.md，证据demo-handoff-validation/current-observation.json。
+- 交接b51c313d4313d1eb9018b54eabbf1fbc0c127039已push；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6379241579全文GET一致。仅快照与到期runbook，未产生新业务/结束结论。
