@@ -20,3 +20,8 @@
 ## 17:27 actual checkpoint
 
 Root relayed reviewed scheduler stop/rotation/start and encrypted independent synthetic service fixture, then started host-network resource series and verified both actual first samples. First formal entry failed after one second. Root did not read private errors or test code; recovered complete960B ciphertext and1245B metadata, matched both hashes and requested private tester diagnosis. Original failure and truthful missing performance result preserved. User confirmed default Downloads delivery; only the expected named encrypted file was located and hashed. Root integrated role commits while diagnosis continued; no product-C changes or standards reduced.
+
+
+## Independent oracle evidence and fresh review
+
+A released test report established that the first failure was an unsupported cross-field equality invariant, not proven product nonconformance. Root retained the original test freeze/run, dispatched only that published finding one-way to backend for an independent code-level correlation design, and started a separate fork-none test instance841 with original authority, neutral environment and immutable reusable independent artifacts. It receives no development source/discussions, old performance outcomes or expected defects. It must establish normative support before freezing a revised round; no case/standard change for a passing score. All original counts remain1 actual HTTPS,0 completed formal cohorts. This is AI test-design error and AI coordination work, not student-authored reflection.
