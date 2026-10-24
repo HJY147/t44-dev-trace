@@ -193,7 +193,7 @@
     }
   ],
   "framework_support_files": "conftest.py and __init__.py contain fixtures/package setup, not test cases; retained required names under tmp/backend",
-  "next_number": 855,
+  "next_number": 854,
   "reservations": [
     {
       "number": 972,
@@ -826,6 +826,12 @@
       "role": "backend",
       "status": "reserved for post-v1.2-freeze implementation; no test authored or executed at reservation",
       "scope": "D008 adopted release error precedence and preserved adjacent guards; existing private acceptance untouched"
+    },
+    {
+      "number": 855,
+      "role": "independent_v6_release_spec",
+      "status": "reserved private blackbox v1.2 release-flow design only, no application access or execution; coordinator must not read cases",
+      "path_policy": "private owned worktree under tmp/independent;855 prefix for private case payload and neutral published metadata only"
     }
   ],
   "previous_next_number_before_reservation_reconciliation": 884,
