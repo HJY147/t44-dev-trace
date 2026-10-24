@@ -1,0 +1,70 @@
+{
+  "label": "E output guard evidence seal;not performance or review approval",
+  "created_at_utc": "2026-10-24T11:26:09.799001+00:00",
+  "base_c4e8": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+  "narrow_source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+  "source_files_sha256": {
+    "tmp/838_database_public_diagnostics/838_database_public_diagnostics.py": "7ca4640a74a38068ac4f86c0b6a6bfc876cc5f6ce630300264ca117473b327d3",
+    "tmp/836_database_output_guard/836_output_guard.py": "d0de9ac7e61a13ca0bc0dba0d1579b73b34a684f1a1b6c9a776946cb349a2dfa"
+  },
+  "source_fix": "O_EXCL|O_NOFOLLOW fixed-fd output;no path reopen",
+  "original_evidence_count_unchanged": 15,
+  "old_source_behavior_red": {
+    "tests": 2,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "first_environment_setup_error": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 2,
+    "skipped": 0
+  },
+  "new_zero_DB_regression": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "counterexample_properties": {
+    "red-run2-junit.xml": {
+      "main_exit": "0",
+      "overwritten": "True"
+    },
+    "green-junit.xml": {
+      "main_exit": "2",
+      "overwritten": "False"
+    }
+  },
+  "DB_application_import_guard_passed": true,
+  "matrix_SQLite_MySQL_HTTP_load_fullCI_runs": 0,
+  "recipes_provenance_bytes_unchanged": true,
+  "performance_repair_claimed": false,
+  "review_status": "pending original reviewer/root integration held",
+  "issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265",
+  "exact_full_GET_body_equal": true,
+  "files_sha256": {
+    "design.md": "daba5122dcf34507ad40e0a499c2f4950957eb84a729ab50c78a148c12a4b9c2",
+    "filesystem-observations.json": "3b7630ac9e24ba815aeb37c988a12f57dbe5b27d396a8a83e34aae1d28d9c781",
+    "format-check.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
+    "github-issue4-comment.md": "c8e97fc9c074b043399db9952691500690add6aef6a62b0ae62622c470678988",
+    "github-readback.json": "6326caa4da02fac205bacf90f79e8d7bc7cd7cfb382a0eb8805e4fdb6df0ffaf",
+    "green-junit.xml": "04420e8ea491b2acff753d901c50492220895cf8a3eca1ee631495cac6d73563",
+    "green.log": "74b46e237cc0463c223321c444bb779aff422c250af18a5c4e9413481a4b3de5",
+    "red-junit.xml": "f8587a6aed46c6bf42f21b9eceb5219e3898c885eb68086052de766d80d824fa",
+    "red-old-source-run2.log": "de83e0c9eb7795d1b9f6e681c4f85845b863f5f7572dae9a131b727e3ed2591b",
+    "red-old-source.log": "5ca7720533b9eccf9c64e7d39a547d2bcafdf9759b859e0c351760be83ae192a",
+    "red-run2-junit.xml": "f499e5cc86450f8efed989dbd0799d73137474b36851a5a943245613d3d7c617",
+    "report.md": "0e6a984adc2ed1ce0e2cf52f39c91e0120127bb46604bab31d0487617c39a245",
+    "ruff-run1.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "verification.json": "bfa954c346ed4bdbf38ab08982d5dd2e7bc28bfa7f5bfc865663eabe8ae1ee60"
+  },
+  "unverified": [
+    "root暂不整合，原审核岗对新准确SHA独立复审待执行",
+    "未重跑19配方/71Rows，不能用旧矩阵为新工具完整背书",
+    "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
+    "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
+    "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
+  ]
+}

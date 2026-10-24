@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.365" timestamp="2026-10-24T19:19:55.280512+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_result_appears_after_old_precheck" time="0.178"><properties><property name="main_exit" value="0" /><property name="overwritten" value="True" /></properties><failure message="AssertionError: Output created after precheck must not be overwritten&#10;assert '{\n  &quot;fixed_...applied&quot;\n}\n' == 'prior-result...fter-precheck'&#10;  &#10;  - prior-result-created-after-precheck&#10;  + {&#10;  +   &quot;fixed_source&quot;: &quot;0dfb55c2191200d947c5423fd9ee74bb0812cc5a&quot;,&#10;  +   &quot;tool_git_commit&quot;: &quot;3981e6d986fb4ca129d0f5953fd104c0a6c0efc4&quot;,&#10;  +   &quot;tool_sha256&quot;: &quot;ac30e655d584caeb6f34251e736025577506fc3026ff0b979edbe3abdbbfbaa3&quot;,&#10;  +   &quot;source_files&quot;: {...&#10;  &#10;  ...Full output truncated (195 lines hidden), use '-vv' to show">subject = (&lt;module 'output_guard_subject' from '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/tmp/838_database_public_diagnostics/838_database_public_diagnostics.py'&gt;, ['zero_db'])
+tmp_path = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red2/test_result_appears_after_old_0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1022edca0&gt;
+record_property = &lt;function record_property.&lt;locals&gt;.append_property at 0x1022f5440&gt;
+
+    def test_result_appears_after_old_precheck(subject, tmp_path, monkeypatch, record_property):
+        tool, calls = subject
+        output = tmp_path / "race.json"
+        marker = "prior-result-created-after-precheck"
+        original = tool.provenance
+    
+        def inject(root):
+            result = original(root)
+            output.write_text(marker)
+            return result
+    
+        monkeypatch.setattr(tool, "provenance", inject)
+        code = 0
+        try:
+            invoke(monkeypatch, tool, output)
+        except SystemExit as error:
+            code = error.code
+        record_property("main_exit", code)
+        record_property("overwritten", output.read_text() != marker)
+&gt;       assert output.read_text() == marker, "Output created after precheck must not be overwritten"
+E       AssertionError: Output created after precheck must not be overwritten
+E       assert '{\n  "fixed_...applied"\n}\n' == 'prior-result...fter-precheck'
+E         
+E         - prior-result-created-after-precheck
+E         + {
+E         +   "fixed_source": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+E         +   "tool_git_commit": "3981e6d986fb4ca129d0f5953fd104c0a6c0efc4",
+E         +   "tool_sha256": "ac30e655d584caeb6f34251e736025577506fc3026ff0b979edbe3abdbbfbaa3",
+E         +   "source_files": {...
+E         
+E         ...Full output truncated (195 lines hidden), use '-vv' to show
+
+tmp/836_database_output_guard/836_output_guard.py:62: AssertionError</failure></testcase><testcase classname="" name="test_existing_objects_are_untouched[dangling_symlink]" time="0.166"><failure message="Failed: DID NOT RAISE SystemExit">subject = (&lt;module 'output_guard_subject' from '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/tmp/838_database_public_diagnostics/838_database_public_diagnostics.py'&gt;, ['zero_db'])
+tmp_path = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red2/test_existing_objects_are_unto0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1022efd40&gt;
+kind = 'dangling_symlink'
+
+    @pytest.mark.parametrize("kind", ["file", "directory", "valid_symlink", "dangling_symlink"])
+    def test_existing_objects_are_untouched(subject, tmp_path, monkeypatch, kind):
+        tool, calls = subject
+        output, target = tmp_path / "output.json", tmp_path / "target.json"
+        if kind == "file":
+            output.write_text("old")
+        elif kind == "directory":
+            output.mkdir()
+        else:
+            if kind == "valid_symlink":
+                target.write_text("old-target")
+            output.symlink_to(target)
+&gt;       with pytest.raises(SystemExit) as error:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE SystemExit
+
+tmp/836_database_output_guard/836_output_guard.py:78: Failed</failure></testcase></testsuite></testsuites>

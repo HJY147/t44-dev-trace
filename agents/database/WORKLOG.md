@@ -285,3 +285,8 @@
 ## ROLE-database-OUTPUT-EXCLUSIVE-v1：实际P2先设计
 - root公布OUTPUT-EXCLUSIVE-01：c4e8 exists→finally按路径w写可覆盖后出现标记/跟随悬空symlink，旧工具暂不准整合。新独立树基c4e8，已保存窄O_EXCL|O_NOFOLLOW+固定fd设计；不读原审核私有脚本/env，不向测试传开发信息。
 - 836只零DB main回归，先复现旧源红再修；原19配方/71Rows及旧E seal字节保护，不重跑矩阵，不将输出修复算性能修复。
+- 旧源第一次836目标命令因basetemp父目录未创建，2个setup errors原red-old-source.log/red-junit.xml保留；补建本岗父目录后，两个目标在旧838真实2failed/0errors：completed/main_exit0且标记overwritten=True，悬空link跟随创建target。没有将环境错误算功能红。
+- 窄source checkpoint 3fc58d18614c394cc588a16b316cf89c1810ecf1只含838修复+836零DB回归，已commit/push；一次os.open(O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,0600)并持有fd，最终只经fdopen输出，不再exists/w-path重开；fdopen失败关闭fd，无NOFOLLOW明确拒绝；recipe异常记录后传播。
+- 源码提交后836全11passed/0failed/0errors/0skip；正常/已存/目录/两种link/原race/fixedfd叶替换/fdopen异常关闭/recipe异常/run gate均覆盖，每main都跟踪断言未导入DB/application/网络模块。原record_property/xunit2一条warning保留。838/836 Ruff和format check首次均通过；没有运行真实recipes/19矩阵/SQLite/MySQL/HTTP/负载/全CI。
+- verification.json对c4e8的15份原公件/旧prompt逐文件hash/bytes全同，旧recipes/provenance源片段逐字不变。filesystem-observations.json抽取红绿标记与固定inode/symlink观测后仅清理本阶段零DB临时目录，不改原71Rows/旧E seal，不让旧矩阵冒充新工具已完整执行。
+- Issue4实际COMMENT与精确GET全文逐字同：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265，正文/原响应已存本岗output-guard目录。root明确暂不整合，等本阶段E seal后原审核岗独立复审；原c4e8 P2不改写，本岗不代宣布审核关闭，工具输出修复不算性能修复。原审核公开报告精确SHA尚未收到，本岗未查私有材料。

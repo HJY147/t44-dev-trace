@@ -1,10 +1,9 @@
-# 数据库模块：公开C性能失败的静态/本地诊断阶段
+# 数据库模块：OUTPUT-EXCLUSIVE-01窄修复待复审
 
-本岗AI，ROLE-database-PERF-PUBLIC-C-v1；仅指定839公开md核c35b37...后读取，无其他独立私密资料/联系测试。被测C0dfb55c与root6d02生产字节同。设计80e9/cacd先行，工具d75866f先提交后唯一离线执行。
+数据库AI，ROLE-database-OUTPUT-EXCLUSIVE-v1。原c4e8 P2保留，root暂不整合；设计3981e6d先行，窄source `3fc58d18614c394cc588a16b316cf89c1810ecf1` 仅838/836两文件。
 
-- 公开任务短窗流转/查询P95 3645.763385/3315.969690ms、10814稳态1个502；校验7273预热2个502/稳态0；完整正式组0保留。资源联合复核未发布根因，本岗不猜502层级。root确认两机19:01已释放，没有新云动作。
-- 当前C已带Workflow project+task依赖谓词，不能再算优化；listTasks无逐task N+1，特殊contract入口不经Workflow。成员全项目锁/物化、图编辑全图读、必要project/task锁、依赖/升级列表N+1和池生命周期分别审查，不删授权/CAS/审计/幂等/锁守卫。
-- 838仅显式CLI/零env凭据网络输入/临时内存SQLite合成表+MySQL编译；唯一运行19配方、71执行（非HTTP trace/验收）。依赖原二读2，emptyIN仍execute；成员3/32物化按M增长；依赖页原1+P=2/5/33与候选batch2/2/2输出/顺序/缺引用失败相同。没有MySQL约束/锁/RC/并发CAS或性能证明。
-- 初次工具Ruff3项原错保留，修后通过；import/显式run/禁止覆写边界核对通过，未刷次数/扩大矩阵。生产净变更0，未改DDL/API/freeze/池/认证/用例。BE自己实现guard-specific候选，现有Rows够用；本岗不代称其测试通过。
-- [完整路径/下一阶段采样](../../agents/database/perf-public-c/report.md)，源码/索引/S-U账本static-path-receipt.json、一次offline-run1.json/log、阶段evidence-seal.json均本岗公件。候选需同次请求SQL/锁/物理连接/线程与资源关联；新MySQL配置/schema/窗口另准入。
-- [Issue4真实评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383412077)已精确GET全文逐字核对，已给BE链接。阶段封档释放；公开性能失败尚未修复，不运行云SQL/HTTP/负载或联系839，不把AI过程记学生亲改。
+- 旧exists→finally路径w写会覆盖后出现结果/跟随悬空link，836零DB main旧源真实2红；首次basetemp父目录缺失2setup errors另保留，不算产品红。
+- 改为一次O_CREAT|O_EXCL|O_NOFOLLOW/0600开叶节点，持固定fd写JSON，不重开路径/截断/失败降级；fdopen失败close，recipe异常记失败后原异常传播。已有对象/竞争新结果拒绝；路径替换只写原inode，不能承诺外部路径名不可变。
+- 源commit后836全11pass/0failure/error/skip，每main断言DB/application导入为空；一条原JUnit warning保留。两源Ruff/format通过，未执行真实recipes/19矩阵/SQLite/MySQL/HTTP/负载/全CI。
+- 15份c4e8原公件/旧prompt、原recipes/provenance逐字不变，旧71Rows/旧E seal保留。新[报告](../../agents/database/output-guard/report.md)、verification/fs观测、红绿日志/JUnit及evidence-seal.json归档；不以旧矩阵证明新工具全套通过。
+- [Issue4阶段评论](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265)已精确GET全文同。等待原审核岗对准确SHA复审；未关闭P2，不将输出guard修复称性能/502修复，生产及原公开性能失败不变。无私有env/独立用例或root工作区写入。
