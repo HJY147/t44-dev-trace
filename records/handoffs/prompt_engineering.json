@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "M8 fixed f521 limited process checkpoint",
+  "stage": "M11 final limited quality and test validity material",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -58,7 +58,15 @@
     "docs/prompting/M8-source-inquiry.json",
     "docs/prompting/M8-document-checks.json",
     "agents/prompt_engineering/github-m8-stage-comment.md",
-    "docs/prompting/M8-publication.json"
+    "docs/prompting/M8-publication.json",
+    "docs/prompting/M11-design-checkpoint.md",
+    "records/prompts/ROLE-prompt_engineering-M11-QUALITY-LIMITS-v1.md",
+    "docs/prompting/M11-quality-and-test-limits.md",
+    "docs/prompting/M11-source-index.json",
+    "docs/prompting/M11-source-inquiry.json",
+    "docs/prompting/M11-document-checks.json",
+    "agents/prompt_engineering/github-m11-stage-comment.md",
+    "docs/prompting/M11-publication.json"
   ],
   "interfaces": {
     "inputs": [
@@ -79,7 +87,7 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "M8-limited-process-v1",
+    "version": "M11-quality-limits-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
@@ -129,7 +137,12 @@
     "M8_read_scope": "Only four explicitly published v3stage07/08 summaries plus root v4 public metadata/receipt; no H tree/private refs",
     "M8_material_commit": "1d78907efae18f1e90d2d3c021ad1f14418da598",
     "M8_Issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6377116979",
-    "M8_Issue11_status": "Actually published; GET exact body matched"
+    "M8_Issue11_status": "Actually published; GET exact body matched",
+    "M11_cutoff": "c05783176d24e78232da9439f25012647148cefb",
+    "M11_design_commit": "7cbf6f6f85a309c957424aff0a68c3aa4f8c5dc1",
+    "M11_material_commit": "08671201170dfb04d9fb39c8c6e8add66785ae0c",
+    "M11_Issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6378022668",
+    "M11_Issue11_status": "Actually published and full GET exact body matched"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -179,7 +192,11 @@
     "M8 git worktree add isolated codex/prompt-m8-checkpoint at fixedf521; scope/prompt recorded before source collection",
     "Read32 public source objects; fourv3 hashes matched explicit publication receipt; v4 onlymetadata at root commit notH tree",
     "One deployment fixedrole send_message and actual verbatim AI reply archived",
-    "Necessary JSON/SHA/Git checks only; add736->dda3,c191->62ac,db7->8983 ancestryverified; no CI/service/tests/Word"
+    "Necessary JSON/SHA/Git checks only; add736->dda3,c191->62ac,db7->8983 ancestryverified; no CI/service/tests/Word",
+    "Isolatedcodex/prompt-m11-checkpoint at fixedc057; actualprompt/designcommit7cbf6f6 pushed before collection",
+    "Read only publicH2 MD/JSON,M10handoff/calibrationauthorization/gate/DB5948/BE d834/style8d and candidateb66 publicprompt/product-source; no H/H2/private/860/newCI E access",
+    "One backend publicsource question; no new answer by inquiry recordingcutoff; no tester/user contact",
+    "24publicsource SHA/JSON/Git and designbeforestyle ancestry checks only; no tests/service/CI/Word"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -231,19 +248,25 @@
     "Native old360failed/selfrunner->design/62acfix/reviewcounterexample->separatelyadmittednew360success/cleanuptrue and9port3points; extractionerror/migration notservice rerun;4h no complete proof",
     "Usage15synthetic/rootstatic notactualstats; noRSS/peak/physicalcolocation/backfillunknown; v4 H/M/SUTunbound separate without Htree access",
     "M7 native first applicationrun1 actual427b097 not0a6: add attribution erratum only, preserve oldM7 cutoff/files",
-    "M8 material1d78907 actually committed/pushed; Issue11 comment6377116979 and GET exact body matched; receipt-only followup no product/test/CI/service changes"
+    "M8 material1d78907 actually committed/pushed; Issue11 comment6377116979 and GET exact body matched; receipt-only followup no product/test/CI/service changes",
+    "M11 separates independenttester oracle/pressure/aggregation defects from product conclusions; fullfixture/600schedule notvalid400, TIME_RANGE_INVALID notconfirmedproductviolation, ACKunknown notuncommitted,866target0P95NOT_MEASURED",
+    "OriginalFAIL/INCOMPLETE retained; SUTperformanceINCONCLUSIVE/noS1S2ranking; calibrationauthorization notexecution/results",
+    "StyleUP022/B007 originalfullstaticred preserved; designb950->17e twoequivalentlines->8dreceipt/Ruffgreen/AST, no864driverexecution or activesource changes",
+    "DBplainEXPLAIN estimates and BEstatic ledgers notmeasuredrootcause; candidateb66/PR42 oneequivalentpredicate androot18old/18new notbugredgreen; predefinedgate beforeCI/reviewcomplete, nofinalE filled",
+    "M6six kept/newversions0, U001/U002 original highlights andR001viewpoint/manualproof separated; oldM6M7M8/WordQA/frozenfiles notmodified",
+    "M11 design7cbf6f6/material0867120 actually pushed; Issue11 comment6378022668 full GET exact body matched; receipt-only followup no test/service/CI/Word or new facts"
   ],
   "unverified": [
-    "Actual new courseworkbundle notbuilt; oldarchives unchanged",
-    "PoolcandidatePR39 notrootadmitted,partialoverride peaks differ and servermemory/idlecost/formalresult unproved; overflow-only7->17 from root message, reportpath not independently obtained",
-    "Full4h demo notcomplete atfixedcutoff; nineportstripleobservation notcontinuousmonitor",
-    "Usage actualstats notsampled/RSS/fullpeak/physicalcolocation notproved; historicalunknown retained",
-    "V4 SUT notsupplied/runtime NOT_RUN; no privatecase/Htree/manifest/output verification",
-    "Student final research prose and manual12/humanhallucination3/context5 remain no completed evidence"
+    "Backend source question has no answer observed atrecordingcutoff;18old18new from root handoff notnewtest",
+    "Effective400concurrency performance/ranking notestablished; originalFAIL/INCONCLUSIVE retained",
+    "Calibrationauthorizedonly, notpubliclyexecuted atcutoff; no new860code/rawread",
+    "NewfullcandidateCI finalE notrootpublished atcutoff, notfetched/prefilled; accurateSHAreview/gate pending",
+    "Student finalprose and human12codeedits/5contextmappings/3hallucinationidentification remain unproven",
+    "6307sourcecount and fixedWord35page/version gaps notresolved by localstatic/equivalencetargets"
   ],
   "questions": [
-    "Student should useU001/U002 original highlights and distinguish AI process from personal actions; no AI final research prose",
-    "Downstream keep fixedcutoff and explicit native/source/candidate/actualbundle boundaries; later states separate"
+    "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
+    "Downstream retain H2rawstatus versus SUTinconclusive, target866NOT_MEASURED, candidate/gate/CI cutoff separation"
   ],
   "prompt_refs": [
     {
@@ -405,9 +428,24 @@
       ],
       "reason": "Short fixedcutoff factual supplement, not new evolution version",
       "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
+    },
+    {
+      "id": "ROLE-prompt_engineering-M11-QUALITY-LIMITS-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-M11-QUALITY-LIMITS-v1.md",
+      "artifact_refs": [
+        "docs/prompting/M11-design-checkpoint.md",
+        "records/prompts/ROLE-prompt_engineering-M11-QUALITY-LIMITS-v1.md",
+        "docs/prompting/M11-quality-and-test-limits.md",
+        "docs/prompting/M11-source-index.json",
+        "docs/prompting/M11-source-inquiry.json",
+        "docs/prompting/M11-document-checks.json"
+      ],
+      "reason": "Final bounded process evidence at fixedcutoff, notnewpromptversion",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/11"
     }
   ],
-  "updated_at": "2026-10-23T23:55:02.149573+00:00",
+  "updated_at": "2026-10-24T01:14:54.702645+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -416,14 +454,14 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "fixed_cutoff": "f5214a27af4ec4886c30ce36de38a70def479efd",
-    "public_source_objects": 32,
-    "v3_public_summaries": 4,
-    "M6_versions_maintained": 6,
-    "new_versions_counted": 0,
-    "actual_fixedrole_queries": 1,
-    "actual_AI_answers": 1,
-    "student_manual_completion_no_new_evidence": true
+    "cutoff": "c05783176d24e78232da9439f25012647148cefb",
+    "public_source_hashes": 24,
+    "H2_public_summaries_read": 2,
+    "new_prompt_versions": 0,
+    "M6_versions_kept": 6,
+    "role_queries": 1,
+    "new_answer_observed": false,
+    "no_private_or_new_CI_results_access": true
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -440,5 +478,13 @@
     "Application6307 exceeds5100 by1207; no counting policy or behavior relaxed",
     "New b238 native capture code has no fullcycle; old successful cycle binds0a6/SUTbc5 only",
     "Source-review private archive is review snapshot, not final coursework submission; private ZIP/Word/cover/R002 original not opened"
+  ],
+  "previous_m8_unverified": [
+    "Actual new courseworkbundle notbuilt; oldarchives unchanged",
+    "PoolcandidatePR39 notrootadmitted,partialoverride peaks differ and servermemory/idlecost/formalresult unproved; overflow-only7->17 from root message, reportpath not independently obtained",
+    "Full4h demo notcomplete atfixedcutoff; nineportstripleobservation notcontinuousmonitor",
+    "Usage actualstats notsampled/RSS/fullpeak/physicalcolocation notproved; historicalunknown retained",
+    "V4 SUT notsupplied/runtime NOT_RUN; no privatecase/Htree/manifest/output verification",
+    "Student final research prose and manual12/humanhallucination3/context5 remain no completed evidence"
   ]
 }
