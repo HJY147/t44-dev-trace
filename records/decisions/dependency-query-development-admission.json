@@ -1,0 +1,62 @@
+{
+  "at_utc": "2026-10-24T01:19:30.821495+00:00",
+  "actor": "coordinator AI",
+  "gate": "dde39aa1c3ccf122caff5c24584ab69537d09007",
+  "decision": "ADMIT_DEVELOPMENT_INTEGRATION_ONLY",
+  "candidate": "b66fa36a317145afec350d7f61ca374959b2eaf7",
+  "evidence": "bebd205121fc09a8fd1e3e3e03df28653b4d9507",
+  "review": "18b0271f17fe5c1bcd0453009498028fe14f7a3d",
+  "review_comment": "https://github.com/HJY147/t44-dev-trace/pull/42#pullrequestreview-5636066453",
+  "integration_snapshot": "46d8837b5cab817eb2e5cc044040a6dc83340ba6",
+  "all_runtime_test_config_roots_equal_C": [
+    "backend",
+    "frontend",
+    "deployment",
+    "scripts",
+    "tmp",
+    ".github",
+    "compose.yaml",
+    "specs/contracts",
+    "specs/database"
+  ],
+  "method": "git diff C integration_snapshot -- explicit roots returned empty; no suite rerun",
+  "gate_items": [
+    {
+      "item": 1,
+      "met": true,
+      "basis": "review exact C, global tasks PK/compositeFK and authorized project readset plus id order; 14 freeze unchanged"
+    },
+    {
+      "item": 2,
+      "met": true,
+      "basis": "unchanged98618 passed old/74a; C full510 includes same18, not a new red-green or extra nonempty-all-predecessors-delivered path"
+    },
+    {
+      "item": 3,
+      "met": true,
+      "basis": "40047832510 fourjobs and40047836840 Docker success; actual Docker9b538 parentsdde39+C,169roots equal; archive receipt verified by reviewer"
+    },
+    {
+      "item": 4,
+      "met": true,
+      "basis": "exactC dedicated limited static/publicCI review no new material blocker; COMMENT is AI review, not human approval"
+    }
+  ],
+  "not_admitted": [
+    "pool-default db87",
+    "main release",
+    "global reviewer/stage",
+    "formal performance",
+    "whole independent acceptance"
+  ],
+  "source_budget": {
+    "code": 6307,
+    "upper": 5100,
+    "excess": 1207,
+    "require_range_exit": 1
+  },
+  "running_demo_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "demo_replaced_or_extended": false,
+  "Word_reexported": false,
+  "H2_targets_unchanged": true
+}

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-10-24T01:09:23.032134+00:00",
+  "at_utc": "2026-10-24T01:20:22.848648+00:00",
   "author": "coordinator AI",
   "purpose": "Record unresolved major choices during authorized autonomous work; no user reply required to continue independent tasks",
   "items": [
@@ -17,12 +17,14 @@
       "evidence": "reports/independent-v3/stage06-formal-blackbox.md",
       "status": "Old v3 formal failures retained. H1 six formal NOT_RUN. H2 complete fixture and600-second scheduling produced no established valid400-concurrent measurement; product-only INCONCLUSIVE, no source ranking; recovery5true/1application-readyfalse.",
       "pending_human_role": "Assess actual remaining performance evidence and engineering tradeoffs on return, rather than authorize relaxed thresholds implicitly.",
-      "autonomous_work_continues": "Bounded independent fixed-response stub calibration only (no new SUT load); isolated dependency query candidate requires exact successful CI and reviewer before any development integration, without formal performance claim.",
+      "autonomous_work_continues": "Completed bounded local fixed-response calibration, no SUT requests; equivalent query candidate admitted only to development integration by predefined gate and exact CI/review. No formal performance pass claimed.",
       "additional_public_evidence": [
         "reports/acceptance/v4-performance-original-attempts-public-summary.md",
         "reports/acceptance/v4-performance-h2-public-summary.md",
         "records/acceptance/v4-performance-h2-final-coordinator-binding.json",
-        "records/acceptance/v4-driver-calibration-authorization.json"
+        "records/acceptance/v4-driver-calibration-authorization.json",
+        "reports/acceptance/v4-driver-calibration-public-summary.md",
+        "records/decisions/dependency-query-development-admission.json"
       ]
     },
     {
