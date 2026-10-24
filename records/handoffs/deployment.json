@@ -766,6 +766,11 @@
       "id": "ROLE-deployment-ECR-SOURCE-POLICY-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-ECR-SOURCE-POLICY-v1.md",
       "reason": "官方同摘要交付转换工具与准确C分开，不改产品；保留真实Hub失败，ECR metadata不冒作构建成功"
+    },
+    {
+      "id": "ROLE-deployment-ECR-POLICY-FORMAT-FIX-v2",
+      "archive": "agents/deployment/prompts/ROLE-deployment-ECR-POLICY-FORMAT-FIX-v2.md",
+      "reason": "真实v1失败后只修官方Format语义，保留DENY与摘要，用新文件和新hash，不假称云成功"
     }
   ],
   "questions": [
@@ -907,7 +912,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "exact-C-ECR-policy-reviewable-cloud-build-not-executed",
+  "stage": "ECR-policy-v1-failed-v2-minimal-fix-reviewable",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -915,7 +920,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T06:53:17.587734+00:00",
+  "updated_at": "2026-10-24T07:01:38.377716+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1241,5 +1246,25 @@
     "deadline_beijing": "2026-10-24T17:00:00+08:00",
     "actual_budget_cny": "20",
     "evidence": "agents/deployment/ecr-policy-validation"
+  },
+  "prior_stage_before_ecr_policy_v2": "exact-C-ECR-policy-reviewable-cloud-build-not-executed",
+  "ecr_policy_v2": {
+    "prompt_ref": "ROLE-deployment-ECR-POLICY-FORMAT-FIX-v2",
+    "v1_tool_sha": "daf8bac584ebb5667fb5d318e2e890ea514c55c1",
+    "v1_actual_cloud_build_exit_code": 1,
+    "v1_actual_cloud_build_beijing": "2026-10-24T14:52:56+08:00",
+    "root_cause": "official EXACT formatter returns original selector;mutated false;tail DENY",
+    "initial_structural_guards_missed_Format_path": true,
+    "helper": "deployment/ecr-build-policy-v2.py",
+    "steps": "deployment/ecr-build-policy-v2.md",
+    "helper_sha256": "46758e3dbbcfca98994896135dfbcd4f9dcaa307210c7fac4cf8523cae046417",
+    "policy_sha256": "f9101355c4bf7b9d51e9feda2d8e48361e0d3a9ff81cb5f71ccd49bbb775e1f8",
+    "delta": "3CONVERT match_type WILDCARD;literal identifiers/no added star;tail DENY unchanged",
+    "v1_bytes_and_failure_preserved": true,
+    "new_cloud_policy_filename": "source-policy-C-v2.json",
+    "official_source_path_guard": "agents/deployment/ecr-policy-validation/v2-official-format-path-guards.json",
+    "actual_go_engine_or_cloud_execution_by_deployment": false,
+    "v2_actual_build_result": null,
+    "overlay_TLS_coding_paused": true
   }
 }

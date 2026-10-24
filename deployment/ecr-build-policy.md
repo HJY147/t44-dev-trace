@@ -1,3 +1,5 @@
+> 历史v1：2026-10-24北京14:52:56实际build已因EXACT formatter无转换而失败。请勿重新使用本页v1命令；执行改见ecr-build-policy-v2.md。下文原说明保留追溯。
+
 # 准确C经官方ECR取相同摘要：待审查构建步骤
 
 产品仍为`0dfb55c2191200d947c5423fd9ee74bb0812cc5a`，原Dockerfiles/compose/.env/daemon/DNS不改。helper只读源HEAD/tracked和两份Dockerfile，生成3条EXACT CONVERT＋末条DENY docker.io/*；仅改变获取位置，所有tag和sha256保持。`match_type`为snake_case。输出必须指定绝对路径、已存在且本人持有的0700父目录；0600/O_EXCL拒绝覆盖。helper不执行Docker或网络、不启动服务、不读取.env或打印凭据。

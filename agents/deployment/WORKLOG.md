@@ -413,3 +413,10 @@
 - 核官方Docker变量页/Compose2.40.3 build_bake.go/Buildx0.30.1 bake.go及ReadSourcePolicy、BuildKit schema/engine。默认Bake传环境、Bake读EXPERIMENTAL_BUILDKIT_SOURCE_POLICY；3个完整tag+digest EXACT转ECR，尾Hub DENY，转换后重评估，产品C Dockerfiles/compose/.env/daemon/DNS不变。helper仅校C HEAD/tracked/3FROM，写指定0700父目录/0600O_EXCL私有JSON，没有Docker或网络执行。工具提交与C0dfb55c2191200d947c5423fd9ee74bb0812cc5a明确分开；本地完整policy供root审查/relay。
 - 先交可审文件/hash，root已全文读并交审核；必要lint首用backend配置发现I001，保留初始输出/旧hash，仅整理import后用实际CI scripts/ci/ruff.toml绿；初查含一个不存在的check_static.py路径，rg exit2已在工具回执，随后确认真实static.py配置，不冒称首次即绿。最终helper594cfb595975e6af8911d66a584dd092cbb3bf1124626d507747776a502a9e11，policy502fe2ce865fd1910b6e49795f5233daef4329b10b2174787718789baf42bed5；已通知root新hash替代lint前d592。
 - 本地9项stdlib纯合成guard通过：精确FROM/摘要、尾DENY声明、变digest拒绝、私有文件字节及权限与排他/相对/公开父目录/符号父目录/错误HEAD；其中权限为0600（非执行云policy或BuildKit引擎自测）。README仅给有界600s build/外层720s和17:00前840s准入检查，失败停、不自动放松策略或启动infra。20元/17:00不变；layer/build结果仍待root实际回执，不触发新CI。
+
+## ECR-POLICY-FORMAT-FIX-v2
+
+- 2026-10-24T07:01:38.377716+00:00root转述原v1 policy生成14:52:32/<1s/exit0/502policy一致；build14:52:56/1s/exit1未到网络，尾DENY命中完整原nginx引用，原失败保持。overlay/TLS尚未写代码即依root暂停，未云重试/移除DENY。
+- 与root/审核核官方formatter：EXACT返回selector本身，updates被丢弃→mutatedfalse→DENY。初版只做规则结构和输出guard，漏核实际Format分支；本次补7项官方源branch guard、三来源旧拒绝/新转换trace及未知/变摘要拒绝。下载官方v0.26.1 formatter/mutate/engine/wildcard只作内存数据，记录URL/SHA/bytes，不执行Go或云；本机无go，未安装。Buildx0.30.1 go.mod依赖0.26.1，v0.25.1同分支；云daemon内嵌BuildKit精确版本未采，不猜。
+- 保留v1/helper/policy原字节，新增ecr-build-policy-v2.py，仅CONVERT match_type EXACT→WILDCARD，3个完整identifier不加*，末DENY/所有tag和摘要不变。源码证明QuoteMeta+^/$使无*字面量不扩大匹配，wildcard Format才返回ECR更新目标。新runtime名source-policy-C-v2.json，O_EXCL不覆盖旧云文件。
+- v2 helper46758e3dbbcfca98994896135dfbcd4f9dcaa307210c7fac4cf8523cae046417、policyf9101355c4bf7b9d51e9feda2d8e48361e0d3a9ff81cb5f71ccd49bbb775e1f8已交root；CI配置Ruff绿、diff-check，官方路径guard原件在ecr-policy-validation。没有实际Goengine/Docker/云/build-v2运行，实际结果仍null，产品C/原bootstrap/Dockerfiles/compose/.env/daemon/DNS不改，20元/17:00保持。

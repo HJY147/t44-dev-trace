@@ -319,3 +319,9 @@
 - 新工具deployment/ecr-build-policy.py只生成准确C的3条EXACT FROM同摘要ECR remap与末条Hub DENY；固定C不改tracked/daemon/DNS/.env。完整步骤ecr-build-policy.md，工具SHA与产品C分列。
 - 官方静态核Compose默认Bake/Buildx读取EXPERIMENTAL_BUILDKIT_SOURCE_POLICY/CONVERT重评估。root转述原Hub build真实exit1保留，五ECR精确digest metadata成功不代表layers/build。
 - 9项本地stdlib合成guard与CI配置Ruff通过（初始import lint红保留）；没有实际Docker/网络/云/CI/服务/独立资料动作。root审查后才UIrelay、核hash、单独600s build；infra等未启动，20元/17:00不变。
+
+### ECR-POLICY-FORMAT-FIX-v2
+
+- v1实云policy生成成功，build却14:52:56/1秒/exit1在网络前被DENY拒绝，完整原失败保持。官方EXACT formatter返回原selector导致CONVERT无效，初版结构guard未覆盖；已补官方实际Format/Mutate/Evaluate路径核验。
+- 新v2只改三CONVERT match_type为WILDCARD，无*的完整字面量和末DENY/摘要全部保持；新helper46758e…6417、policyf91013…e1f8，runtime新v2文件拒绝覆盖旧件。7官方源码branch guard/三来源反例及CI Ruff绿，非实际Go/云/BuildKit执行。
+- root审查后才另跑600s构建，云结果未知；overlay/TLS编码暂停，C/daemon/DNS不改，20元/17:00保持。
