@@ -71,7 +71,7 @@ def validate_request(value):
     elif any(value.get(field) for field in ("harness_ref", "harness_path", "recipient_certificate_path")):
         raise ValueError("environment-check must not select an independent harness")
     timeout = value.get("harness_timeout_seconds", 900)
-    if type(timeout) is not int or not 60 <= timeout <= 1200:
+    if type(timeout) is not int or not 60 <= timeout <= 1800:
         raise ValueError("bounded harness timeout required")
     revision = value.get("request_revision", 1)
     if type(revision) is not int or not 1 <= revision <= 2147483647:
@@ -288,6 +288,8 @@ class Environment:
             "mq_transport": mq_transport,
             "python": sys.executable, "control_cli": str(Path(__file__).with_name("control.py")),
             "control_state": str(state), "harness_output_directory": str(self.output),
+            "runtime_usage": {"control_command": "runtime-usage", "read_only": True,
+                              "collection": "explicit caller invocation only; one bounded stats; incomplete exits nonzero"},
             "runtime_metadata": {"control_command": "runtime-metadata", "read_only": True,
                                  "collection": "explicit caller invocation only; single JSON; incomplete exits nonzero"},
             "service_credential": {"control_command": "service-credential", "scope": ["escalation:write"],
