@@ -1,0 +1,3 @@
+Actual parent dispatch to the fixed AI reviewer; not a student-authored review or independent black-box test.
+
+请审核backend候选5cc856d6fa94b1fdde32605543b53822f9747f00及设计6c1a00ba7891cd794b7229fc1c0208e62148480e，E seal00b8cc03f6818b0cce2543ad4e93d58c7d4196b8。专审入口 agents/backend/performance-repair-839/{report.md,design.md,validation.json,evidence-manifest.json}。现只workflow.py依赖按动作需加载（START/REWORK/UNBLOCK-from-develop保留、空predecessors跳IN），Runtime不动，净+6行非减量，原C结构红3→23+13共36开发SQLite/TestClient/SQLhook目标绿，不是MySQL/云/P95，Ruff误配置失败后按原backend配置绿保留。DraftPR44 head固定5cc856d。请自有worktree审核业务完整性/鉴权版本审计幂等依赖锁错误优先及证据范围；不碰tmp/839/841/852私有，不向独立岗发任何开发消息。只必要检查，无需重复全负载。审核后stage日志报告prompt commit，给阻断或准入，不冒性能修复已证明。
