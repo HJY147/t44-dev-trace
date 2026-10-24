@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "observation_complete": true,
+  "started_at_utc": "2026-01-01T00:00:00+00:00",
+  "finished_at_utc": "2026-01-01T00:00:02+00:00",
+  "services": {
+    "mysql": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000001",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    },
+    "rabbitmq": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000002",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    },
+    "api": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000003",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    },
+    "consumer": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000004",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    },
+    "scheduler": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000005",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    },
+    "web": {
+      "container_id": "0000000000000000000000000000000000000000000000000000000000000006",
+      "observed": true,
+      "sample_started_at_utc": "2026-01-01T00:00:01+00:00",
+      "sample_finished_at_utc": "2026-01-01T00:00:02+00:00",
+      "cpu_percent_cli": "12.34%",
+      "memory_usage_cli": "12.5MiB / 1GiB",
+      "memory_percent_cli": "1.22%",
+      "network_io_cli": "12kB / 0B",
+      "block_io_cli": "0B / 3.4MB",
+      "pids_cli": "7",
+      "error": null
+    }
+  },
+  "limitations": [
+    "ILLUSTRATIVE SYNTHETIC EXAMPLE ONLY; not an actual runner observation.",
+    "Docker Linux CLI memory subtracts cache; memory_usage_cli is not RSS.",
+    "PIDs includes processes and kernel threads, not just processes.",
+    "Network/block IO are formatted cumulative quantities, not rates or physical device time.",
+    "CPU percentage uses the Docker sampling window, not the whole 600-second load window.",
+    "Timestamps enclose the call; six container samples are not atomic or whole-run peaks.",
+    "Snapshot wall-clock duration and its workload overhead are real; no claim of zero impact.",
+    "No physical-colocation or no-other-traffic conclusion; no past unknown observation is filled in."
+  ]
+}
