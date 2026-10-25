@@ -1,0 +1,25 @@
+{
+  "operator": "AI coordinator",
+  "at_utc": "2026-10-25T10:22:53Z",
+  "source_commit": "009ba49",
+  "functional": {
+    "exception_class": "KeyError",
+    "cause": "Coordinator decoded ProjectEnvelope.data as a nested project; the contract actually returns the Project directly.",
+    "root_actual_tls_post_requests": 1,
+    "observed_status": 201,
+    "retained_root_project_id": 1,
+    "retained_project_name": "Coordinator neutral round8 preflight",
+    "old_provisioning_directory_retained_empty": true,
+    "raw_response_not_saved": true,
+    "next_explicit_operation": "Fix decoding and reuse identical body/key for durable idempotent replay; new provisioning directory, no project reset."
+  },
+  "performance": {
+    "exception_class": "FileNotFoundError",
+    "cause": "Coordinator assumed unsuffixed binding; worker7 runtime uses application-binding-w7.json.",
+    "http_requests": 0,
+    "credential_created": false,
+    "next_explicit_operation": "Use the declared worker7 binding in the corrected helper."
+  },
+  "independent_requests": 0,
+  "old_records_not_rewritten": true
+}

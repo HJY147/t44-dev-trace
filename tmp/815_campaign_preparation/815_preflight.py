@@ -31,13 +31,13 @@ def main(kind):
     assert cap['source_sha'] == SOURCE
     for path, digest in [('native_build_path', 'native_build_sha256'), ('ca_path', 'ca_sha256')]:
         assert hashlib.sha256(Path(cap[path]).read_bytes()).hexdigest() == cap[digest]
-    binding = load(run/'application-binding.json')
+    binding = load(run/('application-binding.json' if kind == 'functional' else 'application-binding-w7.json'))
     assert binding['source_commit'] == SOURCE
     folder = PRIVATE / ('functional-db-round8' if kind == 'functional' else 'performance-db-round8')
     env = os.environ.copy()
     env.update(load(folder/'application-env.json'))
     env['PYTHONPATH'] = str(Path(binding['application_root'])/'backend')
-    dest = PRIVATE/'provisioned'/('round8-'+kind+'-p1')
+    dest = PRIVATE/'provisioned'/('round8-'+kind+'-p1-checked')
     dest.mkdir(mode=0o700, exist_ok=False)
     count, project = 0, 1
     if kind == 'functional':
@@ -49,7 +49,7 @@ def main(kind):
             response = connection.getresponse()
             raw = response.read()
             assert response.status == 201, 'Neutral strict-TLS project preflight failed'
-            project = json.loads(raw)['data']['project']['id']
+            project = json.loads(raw)['data']['id']
             count = 1
         finally:
             connection.close()
