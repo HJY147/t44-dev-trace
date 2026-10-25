@@ -1,0 +1,25 @@
+{
+  "visibility": "PUBLIC",
+  "kind": "neutral_functional_fixture_precondition_addendum",
+  "run_id": "29165d4935db2789",
+  "reported_utc": "2026-10-25T08:16:50.554157+00:00",
+  "current_schema_state_statement": "Treat the schema as nonempty/potentially containing committed side effects of the 12 project-creation calls. No further SUT query was made to enumerate or verify them.",
+  "same_schema_reuse_for_a_new_functional_run": {
+    "permitted_by_frozen_functional_fixture_interface": true,
+    "a_fresh_empty_schema_is_not_a_hard_gate_in_the_functional_tool": true,
+    "basis": "The published functional fixture protocol creates new isolated project/iteration namespaces through authority APIs and uses actual returned IDs. It has no whole-schema-empty prerequisite check or cleanup operation.",
+    "required_new_admission_facts": [
+      "Explicitly disclose retention of the 12 possibly committed project-creation calls and any known records from this invocation; do not describe this schema as empty.",
+      "New reviewed tool freeze, exact source/native runtime metadata, actual new UTC expiry and a new supervisor receipt; no execution under the finished grant.",
+      "Use new run/fixture identities and idempotency keys; do not guess or reuse IDs missing from the incomplete old responses.",
+      "Bind the neutral provider to the new receipt and only actual newly returned project IDs, preserving exact service/scheduler scope and reporting environment limitations.",
+      "Supply valid human sessions and the same exact isolated schema/vhost/resource boundaries, or explicitly authorize another isolated environment."
+    ],
+    "old_data_policy": "Preserve all old data and evidence. No deletion, cleanup, compensating write or replay is implied or performed.",
+    "performance_scope": "This functional reuse statement does not establish benchmark dataset cardinality or authorize fault/performance execution."
+  },
+  "private_case_content_disclosed": false,
+  "oracle_or_expected_result_changed": false,
+  "additional_sut_requests_for_this_addendum": 0,
+  "automatic_reruns": 0
+}

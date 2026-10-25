@@ -1,0 +1,96 @@
+{
+  "admitted": true,
+  "operator": "AI",
+  "phase": "performance",
+  "run_kind": "formal_candidate",
+  "tool_freeze_sha256": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+  "base_url": "https://localhost:18097/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "ca_file": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/tls/ca.pem",
+  "network_scope": "loopback",
+  "expires_at": "2026-10-25T09:07:00.000000Z",
+  "max_wall_seconds": 1200,
+  "max_requests": 50000000,
+  "max_concurrency": 400,
+  "max_runner_rss_bytes": 4294967296,
+  "max_evidence_compressed_bytes": 68719476736,
+  "max_evidence_ciphertext_bytes": 68719476736,
+  "max_evidence_plaintext_bytes": 1099511627776,
+  "build": {
+    "kind": "native",
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "build_manifest_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/native-build-w7.json",
+    "build_manifest_sha256": "8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf",
+    "runtime_identity": "native-sha256:432b80600eeb66bd5241a79c4535976d91faa1b556b313f1a7d949e6f8d902be",
+    "image_digest": null
+  },
+  "isolated_resource_ids": [
+    "api",
+    "consumer",
+    "scheduler",
+    "broker",
+    "mysql",
+    "generator"
+  ],
+  "allowed_faults": [],
+  "fixture_handoff": "direct-preprovisioned-project-scope",
+  "cost_ceiling": "CNY0 new paid resources; existing isolated native dataset/vhost/HTTPS process; shared MySQL is read-only observed, never stopped or reconfigured",
+  "dataset_premise": {
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "reviews": 11400,
+    "decisions": 3600,
+    "assessments_additional": 3600,
+    "records_definition": "reviews+decisions=15000; assessments additional",
+    "concentration": "P1/I1 800 tasks, other39 projects133or134; synthetic explicitly weighted data, not uniform",
+    "source_generator": "d8addfdb24ee1c25c91b63bc6999e18619c231e0",
+    "transition_group": 400,
+    "overdue_group": 400
+  },
+  "resource_identity_map": {
+    "api": {
+      "pids": [
+        52829,
+        52847,
+        52849,
+        52850,
+        52851,
+        52852,
+        52854,
+        52855
+      ],
+      "note": "Includes resource tracker via owned sampler manifest; source7workers exact native build"
+    },
+    "consumer": {
+      "pid": 52897
+    },
+    "scheduler": {
+      "pid": 57928,
+      "project_ids": [
+        1
+      ],
+      "token_session_id": 6
+    },
+    "broker": {
+      "pid": 50558,
+      "epmd_pid": 50553
+    },
+    "mysql": {
+      "pid": 7980,
+      "shared": true,
+      "scope": "Whole protected shared process metrics only; no per-schema isolation attribution or stop/reconfigure permission"
+    },
+    "generator": {
+      "source": "Actual new independent PUBLIC supervisor child PID, registered before measured warmup completes"
+    }
+  },
+  "resource_observation_note": "Every-second genuine interval CPU deltas and RSS. Original raw pending/null rows preserved; valid numeric view not interpolation. Real gaps remain gaps and cannot become coverage pass. resource files explicitly provided to operator for private/input mirror.",
+  "scope_notes": [
+    "Performance only, no functional rerun or fault, no extrapolation from planned/selfcheck counts.",
+    "Original frozen400 clients/600s steady/30s excluded warmup/270msP95/1000min criteria unchanged.",
+    "Direct preprovisioned singleP1 service token already applied to owned scheduler; root operation receipt is environment preparation, not acceptance.",
+    "Native host shared with generator; report resource identity/shared attribution and instrumentation limits honestly. No cloud equivalence or old run root-cause claim."
+  ]
+}
