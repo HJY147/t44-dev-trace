@@ -332,3 +332,5 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ### 诊断清理执行前P2
 
 DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1a2d…；先设计、旧2目标红、同10零DB目标绿。保主异常、requests先存、未install不snapshot、四清理步骤独立尝试、清理错不冒成功。旧E/raw和生产不改，不重跑56/35；报告agents/backend/performance-20261025-cleanup/report.md。root须以新source/hash再准入，不将此工具修复当云性能修复。
+
+清理后发准入：最终source124785d/driver e0a49…，再以1红→11绿覆盖已请求但observer构造失败的状态，原2红/10绿不重写不累计。见report-v2.md；不重跑CPU/35矩阵，不改生产，待root审定新源。

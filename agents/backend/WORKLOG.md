@@ -548,3 +548,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - root转发审核实证后新branch基78bb，bc87197先设计/prompt，再d167冻结834_cleanup。原run两个preinstall目标真实2红：fixture创建失败未close；next主异常被snapshot盖住。只内存fake操作/fixture/observer，禁止真实app/DB库导入，原JUnit/argv/stdout保留。
 - b079f84553b8aa91a7f18a7f76f5b6319a2cdc07仅诊断run清理：requests优先保存、install成功标志、NOT_INSTALLED/NOT_REQUESTED、四步各自尝试；原异常原raise，清理错另记，无主异常时cleanup错抛专用错误而不绿。同文件全10通过，Ruff/format两文件绿。未重跑56/35，没生产/CI/SQL/云动作。
 - AST机械核Stages/fixture/observer_from/main不变、原测量body仅增install标志，旧78bb E/raw/prompt与生产合同DDL逐字不变。新driver SHA6f7c1a2d…已优先给root同步request/workflow，限定审核待root。所有作者执行者AI，非学生本人。
+
+- 清理封档自检补loader构造前失败状态：初版b079虽保主异常却会把已请求而未返回实例标NOT_REQUESTED。2d405465先冻结目标，实际1红；124785d89e568dd5dddeb56ef9216ed2ccd1883d保requested意图后全11绿，不关闭不存在对象。旧2红/10绿和初版E d4fc不重写，报告report-v2/verification-v2新增；两文件Ruff/format绿，测量body/产品/旧raw不动，不重跑56/35。最终hash e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49已告root替换，限定复审待项。
