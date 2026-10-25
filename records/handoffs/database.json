@@ -1,6 +1,6 @@
 {
   "role": "database",
-  "stage": "OUTPUT-EXCLUSIVE-v1：P2工具输出窄修复/11零DB回归，待独立复审",
+  "stage": "request-bound-diagnostic-observer-ready-for-fresh-ci",
   "implementation_status": "838排他创建+固定fd修复已提交；836旧源2红→新11绿；原71Rows/旧E seal未改，不是性能修复/审核通过。",
   "artifacts": [
     {
@@ -1069,9 +1069,10 @@
       "id": "ROLE-database-OUTPUT-EXCLUSIVE-v1",
       "archive": "agents/database/prompts/ROLE-database-OUTPUT-EXCLUSIVE-v1.md",
       "improvement_reason": "真实审核P2驱动先红再原子O_EXCL/NOFOLLOW固定fd修复，保留原71和失败，不扩性能范围/不记用户亲改。"
-    }
+    },
+    "ROLE-database-PERFORMANCE-20261025-v1"
   ],
-  "updated_at": "2026-10-24T11:28:16.915522+00:00",
+  "updated_at": "2026-10-25T06:12:17.872567+00:00",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1429,5 +1430,19 @@
       "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
       "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
     }
-  ]
+  ],
+  "performance_diagnostics_20261025": {
+    "base": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "design": "df6fa10",
+    "tool_source": "edc3e2a32a4e657964155d5137c251a0d972d586",
+    "module": "tmp/833_database_performance/833_database_trace.py",
+    "module_sha256": "4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9",
+    "report": "agents/database/performance-20261025/report.md",
+    "verification": "agents/database/performance-20261025/verification.json",
+    "results": "same6 hook checks passed before/after clock fix; two bounded6-request toySQLite traces retained,not12 distincttests",
+    "production_change": false,
+    "fresh_mysql_http": "NOT_RUN; only root freshCI t44_diagnostics authorized",
+    "open_gates": "original formal cloud/independent/size failures remain",
+    "prompt_ref": "ROLE-database-PERFORMANCE-20261025-v1"
+  }
 }

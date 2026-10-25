@@ -291,3 +291,9 @@
 - verification.json对c4e8的15份原公件/旧prompt逐文件hash/bytes全同，旧recipes/provenance源片段逐字不变。filesystem-observations.json抽取红绿标记与固定inode/symlink观测后仅清理本阶段零DB临时目录，不改原71Rows/旧E seal，不让旧矩阵冒充新工具已完整执行。
 - Issue4实际COMMENT与精确GET全文逐字同：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265，正文/原响应已存本岗output-guard目录。root明确暂不整合，等本阶段E seal后原审核岗独立复审；原c4e8 P2不改写，本岗不代宣布审核关闭，工具输出修复不算性能修复。原审核公开报告精确SHA尚未收到，本岗未查私有材料。
 - 全量git diff --cached --check因原始pytest失败log/XML尾空格退出2；同一shell后续commit/push仍执行为bc98ee8，未将其宣称通过。保留原字节，git show --check再次确认该原始空白提示；限定838/836源码及说明文档检查exit0，raw-diff-check.log/diff-check-result.json真实留痕。没有改写日志消提示、没有新增测试或更改source3fc。
+
+## ROLE-database-PERFORMANCE-20261025-v1：实际请求层诊断工具
+- 基root ade5独立worktree/branch，先读AGENTS及公开839联合、本岗公件；不读独立私件/env/未知DB，不联系独立岗。先设计df6fa10后源码c11f630，和BE实际对齐worker内request(operationId,UUID)/install/snapshot/close；root准入后续freshCI专库t44_diagnostics，当前未执行MySQL/HTTP。
+- 833仅诊断进程临时wrap，分层Rows/Session/UoW/engine/dialect/cursor/mapping/codec；SQL只verb/registry表/shapeSHA，含UTC/perf/mono/threadCPU，无参数/正文/DSN/消息。单engine/Result支持边界及inclusive重叠写明，不称纯queue/lock/server时间。
+- 精确c11上6个SQLite/导入/异常/上下文/恢复检查绿，89af321有限6请求SQLite样本2SQL每条；发现时钟终点先读wall后做UTC再读CPU导致短样本CPU略高1–2us，原样本保留，edc3e2a修读序后同6检查再绿、新6样本完成；不能累加为12独立测试或当提速A/B。两份均242映射行、pending0/checkedout0/disposed，临时toy库清理，原19/71未重跑。
+- 初次猜测conftest路径不存在、一次patch标记拒绝无部分写、初Ruff7条及demo1条import问题均在verification记录，未把工具错误算产品失败。最终三脚本Ruff绿，生产/冻结/DDL/池/锁净变更0，准确模块SHA和source已先给root/BE，不等行政归档才交技术接口。
