@@ -579,3 +579,7 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 不读任何tmp814/817/818/829等独立资料，不解释测试根因，不动MySQL7980/旧F数据及环境，不开新服务。完整root原stop、guardian收尾与rawmetadata见round8/performance-phase-end-stop.json，原final副本performance-interval-final.json；提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1追加此AI停止流程，不冒用户亲历。
 
 P正常stop及complete raw封档b50c34e已push；Issue7 cleanup评论6396868598通过官方GitHub plugin发表并实际gh全文回读相同，proof见round8/github-cleanup-readback-proof.json。11:07:34另只读端口重核仍全free；本岗无测试内容/根因结论，正常结束本阶段。
+
+## 同实例复用云阶段：probe先交付（本地准备）
+
+root独占UI，本岗不操作云/费用/权限/服务。按root转述两节点身份仅存忽略0600 nodes.json，不公开ID/IP；先交4742bytes probe SHA17a42f...，bash-n与内嵌Pythoncompile通过，未执行云。新02Ubuntu22脚本使用临时官方signedsources，保原安全组件与全局源，分阶段限时/禁止upgrade/remove/repair，不拉镜像不启产品；bash-n通过。design明确官方CI save/load运输、source935与未来V2隔离、服务器owned stop保卷而root管云生命周期/预算，不把100视自动封顶。官方Ubuntu Compose页可取；docker.io/buildx页面抓取timeout，candidate待真实观测不猜版本。ROLE-deployment-CLOUD-REUSE-20261025-v1，AI写作/执行非学生亲历。
