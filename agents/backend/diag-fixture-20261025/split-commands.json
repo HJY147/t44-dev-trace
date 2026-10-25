@@ -1,0 +1,13 @@
+{
+  "final_check_command": "env -i PATH=/usr/bin:/bin PYTHONPATH=/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-latency-diagnosis-20261025/backend DATABASE_URL= T44_DATABASE= T44_SESSION_TTL_SECONDS=3600 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python -m pytest -q tmp/801_backend_diag_fixture/801_split_checks.py --basetemp=tmp/801_backend_diag_fixture/.owned-test-split-binary-fixed --junitxml=agents/backend/diag-fixture-20261025/split-checks.binary-fixed.xml",
+  "final_exit": 0,
+  "final_stdout_stderr": "split-checks.binary-fixed.log",
+  "initial": "same argv with split-initial paths;2passed1.39s",
+  "red": "same argv with split-final paths;1failed1passed1.16s;binary event hash TypeError",
+  "ruff_format_check": "specified backend/.venv python -m ruff format/check on 801_stage1/801_stage2/801_split_checks;exit0",
+  "process_notes": [
+    "format changed multiline context so first apply_patch did not apply; read exact context then changed; no partial mutation",
+    "d873 commit name says prove even though preceding raw result was1red1green; corrected by0edb and explicitly not claimed green",
+    "API Dockerfile glob search returnedzsh no matches; later explicitcat confirmed pinnedofficialbase; not cloud inspection"
+  ]
+}

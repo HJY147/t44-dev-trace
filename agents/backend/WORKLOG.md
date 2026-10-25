@@ -605,3 +605,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 根补要求先核原6000seed候选，最终C更新f811c5c1：actual只读counts先落盘、inspect-only不CLI/登录/业务写/session，普通prepare不足400明确false且非业务bug。SQLite400task实际只有40候选用400请求证不足/零写，最后同13目标1.45s绿不累加；先前profile requested0语义在执行前审见，改独立inspect分支保留requested400；writes_started精确标记。静态seed可推出600候选但云库未读，真实400 NP。新包12643/install13724字符，owned安装逐字同，旧fe包历史；root后续通报810上云up只引用中性事实不冒本岗实跑。
 
 - dab62E staged diff因原pytest traceback尾空格非零而仍commit，真实失败保留不冒green；只将原initial log/XML无损gzip并留raw/gzip双SHA/roundtrip及dab62历史，未strip或删失原证据。工具C f811/13绿不变，当前E另重跑staged diff。
+
+
+## tmp801 S1/data与S2/source-free edge拆分
+
+- root公开真实t-hz07144bus7oge8候选600/2080够400、原prepare14:34:44Z OSError且可能service/audit已提交，子岗不读runtime/账号/raw，不假定OSError根因或复用失败session。split-design先于c04草稿，先交root SHA/长度；不改API/DB/770d网络、SG/权限、原f811 prepare/http或产品935。
+- 最终C0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f：S1原admin/data-only/identity-only原DB候选+原CLI40ids完整service/scope核，800fulltask_model快照、before/after事件内容hash/selected旧event即拒；0HTTP。S2仅stdlib+旧HTTP在官方Python3.12 edge-only，无T44/SQL/env，root显式accounts/candidate+SHA/CA+SHA/URL，新目录三登录/GETfullsnapshot/contract/create-dedup→旧driverpacket。失败phase/errno匿名，无码盲retry。
+- 两owned目标首2绿1.39，补事件hash后d873源码已有event rule_hash bytes真TypeError1红1绿1.16，commit名prove不当绿；明确binary→bytes_hex窄修，同2目标2绿1.16，不累计。原红log/XML无损gzip双SHA/roundtrip、ignored原copy，不strip；原云失败只是root公开事实非子岗下载。真实ownedCA的SSLContext/HTTPSConnection首次connect触及+ENETUNREACH桩与missingCA ENOENT准确分阶段，之后原SQLite/API/CLI真链/两轮driver版本+2/旧event CLI前拒，非云TLS/MySQL/400并发。
+- 两PUBLIC安装段S117600/S211756字符，均owned展开逐字同，S1 eaca4344…/S2 ab8f4559…；先技术C/包交root不等长报告，split-runbook/source-freealias/edge标签核对接口齐。原DBenv/private只root执行读取，子岗无云/私件/独立材料/agent/CI或新cloc。正式400600270与原hardstop仍根核，作者AI非学生手写。

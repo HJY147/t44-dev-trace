@@ -366,3 +366,8 @@ C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注�
 先设计再4fa1051f草稿，C fe197ad0d639c22b270fe8afb9c413c60f78b689。810不读sessionpacket，已交root/部署可先启动；801 prepare严格精确新P/schema3306+根显式accounts，原CLI实际项目全集服务令牌/三角色真实TLS登录/DB选400不交任务对/真create-dedup。driver4路径真实版本循环、strictCA复用无retry、新私包续接；提交后断连明确禁旧版本续跑。13owned目标最终1.04s绿，含SQLite原CLI/API400tasks、实际提交后失响应；初提醒201vs冻结202的fixture红保留，不冒产品修复。两PUBLIC源压缩12119/install13200字符，owned安装逐字验，详细agents/backend/diag-fixture-20261025/{report,runbook,verification}.md/json；source935产品0改/无新cloc/无云或真实MySQL/网络TLS与400并发/正式400600270证据，实际执行归根。
 
 root补原seed计数准入后当前C f811c5c1，prepareSHA b53e8f0…；inspect-only先写真实候选counts，不CLI/登录/业务写，少于400保留并拒，不算产品bug，可1/40先跑。缩样本地40候选用400请求证不足0写；最终同13目标1.45s，不累加。原6000云库是否400可用NP，静态600只是算法性质。现公包12643/install13724字符，旧fe为历史。
+
+
+### tmp801 S1/S2网络职责拆分
+
+根真实原801失败后，最终C0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f新增S1 data-only原CLI/DB候选与S2 source-free stdlib edge-only真HTTP。原prepare/http/产品935/网络不变；S1事件内容hash与完整scope、S2CA配置/首次HTTP阶段/GETfullsnapshot、原driver兼容。2owned目标最终1.16s绿，binary hash真实1红保留；真实CA解析+首次connect故障桩和SQLite/API范围分开，不冒云/MySQL/网络根因/400600270。split-runbook/report/verification及两安装段17600/11756字逐字验，root已收source/hashes先实跑，子岗无actual私件/云/CI/agent/新cloc。

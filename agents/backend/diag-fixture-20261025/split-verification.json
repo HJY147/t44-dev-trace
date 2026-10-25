@@ -1,0 +1,128 @@
+{
+  "source": "0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f",
+  "product": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "product_diff_paths": [],
+  "old_prepare_http_changed": false,
+  "root_declared_prior_actual_task": "t-hz07144bus7oge8",
+  "root_declared_prior_actual_counts": {
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "eligible_transitions": 600,
+    "eligible_disjoint_escalations": 2080,
+    "requested": 400,
+    "sufficient": true
+  },
+  "root_declared_failure": {
+    "utc": "2026-10-25T14:34:44Z",
+    "class": "OSError",
+    "partial_service_or_audit_possible": true,
+    "child_read_original_runtime_or_raw": false,
+    "root_cause_proven": false
+  },
+  "owned_targets_final": 2,
+  "owned_passed_final": 2,
+  "owned_failed_final": 0,
+  "owned_final_seconds_log": 1.16,
+  "junit_actual_attributes": {
+    "split-checks.initial.xml": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "2",
+        "time": "1.391",
+        "timestamp": "2026-10-25T22:46:31.449255+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ],
+    "split-checks.binary-fixed.xml": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "2",
+        "time": "1.160",
+        "timestamp": "2026-10-25T22:50:41.952783+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ],
+    "split-checks.final.xml.gz": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "tests": "2",
+        "time": "1.161",
+        "timestamp": "2026-10-25T22:48:44.693676+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ]
+  },
+  "real_cloud_or_mysql_or_network_executed_by_child": false,
+  "actual_private_credentials_read_by_child": false,
+  "s1_forbid_http_with_real_sqlite_and_original_cli": true,
+  "s2_stdlib_import_denies_t44_sqlalchemy_fastapi": true,
+  "s2_owned_valid_ca_real_sslcontext_and_httpsconnection_first_connect_boundary": true,
+  "s2_actual_network_connect": "not executed; owned ENETUNREACH injection",
+  "s2_api_transport_bridge": "owned TestClient to original API plus SQLite; not real TLS server",
+  "existing_event_before_cli_refusal": true,
+  "byte_hash_red_preserved_losslessly": true,
+  "formal_acceptance": false,
+  "packets": {
+    "s1": {
+      "source": "0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f",
+      "files": [
+        {
+          "name": "801_http.py",
+          "bytes": 16852,
+          "sha256": "ef065f56e74e8bb1b6c8289bfe5618cbfe3b130e95dcdfea54e4483b109971d3"
+        },
+        {
+          "name": "801_prepare.py",
+          "bytes": 15260,
+          "sha256": "b53e8f0add93948fc787bfdfe0ddf5d7e14b499c930070650c328399f18facbd"
+        },
+        {
+          "name": "801_stage1.py",
+          "bytes": 8885,
+          "sha256": "eaca43445625ac0858cba8786c239b420a108ebf041d37fd8c0ab4477ac9dc35"
+        }
+      ],
+      "delivery_chars": 16347,
+      "install_chars": 17600,
+      "delivery_sha256": "01cc769bf099ceb1f8c9dd2fe625ab457c448612563ec3c99c00bc0bc464de44",
+      "install_sha256": "dda7ea2ec55d78974201f5e5cc36b06509112cfda7fd558fcfeb6ac177161222",
+      "owned_install_exit": 0,
+      "owned_install_stdout": "{\"source\": \"0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f\", \"stage\": \"s1\", \"installed_public_sources_only\": 3}",
+      "roundtrip_and_installed_bytes_exact": true
+    },
+    "s2": {
+      "source": "0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f",
+      "files": [
+        {
+          "name": "801_http.py",
+          "bytes": 16852,
+          "sha256": "ef065f56e74e8bb1b6c8289bfe5618cbfe3b130e95dcdfea54e4483b109971d3"
+        },
+        {
+          "name": "801_stage2.py",
+          "bytes": 10581,
+          "sha256": "ab8f45594df9ab234ea6ce6c87930a799e4c9057c6bb9c7961f7015a615d0406"
+        }
+      ],
+      "delivery_chars": 10503,
+      "install_chars": 11756,
+      "delivery_sha256": "154a8f59d0d8fe965f9d3bd55649429521c2add302f0ece4539ca675fa9c8216",
+      "install_sha256": "3c33eb838119efdf816c707139e2e83ada60371fa51095a8c0073718e2248d5f",
+      "owned_install_exit": 0,
+      "owned_install_stdout": "{\"source\": \"0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f\", \"stage\": \"s2\", \"installed_public_sources_only\": 2}",
+      "roundtrip_and_installed_bytes_exact": true
+    }
+  },
+  "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6399180385",
+  "github_exact_full_body_readback": true
+}

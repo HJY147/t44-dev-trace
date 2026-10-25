@@ -2325,5 +2325,25 @@
     "actual_cloud_400_candidates": "NOT_PROVEN",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6398856950",
     "github_exact_body_readback": true
+  },
+  "diag_split801_20261025": {
+    "source": "0edb4ceeff2f7afbe42a62d8eef983a33fd1f44f",
+    "product": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "report": "agents/backend/diag-fixture-20261025/split-report.md",
+    "runbook": "agents/backend/diag-fixture-20261025/split-runbook.md",
+    "prompt": "ROLE-backend-DIAG-SPLIT-20261025-v1",
+    "stage1_sha256": "eaca43445625ac0858cba8786c239b420a108ebf041d37fd8c0ab4477ac9dc35",
+    "stage2_sha256": "ab8f45594df9ab234ea6ce6c87930a799e4c9057c6bb9c7961f7015a615d0406",
+    "s1_install": "agents/backend/diag-fixture-20261025/split-s1-install.py",
+    "s2_install": "agents/backend/diag-fixture-20261025/split-s2-install.py",
+    "owned_final_targets": 2,
+    "owned_final_seconds": 1.16,
+    "original_actual_root_failure_preserved": true,
+    "child_cloud_or_private_access": false,
+    "product_changed": false,
+    "formal_acceptance": false,
+    "next": "root exactsource new S1/admin data-only + S2 officialPython edge-only; actual CA/credentials only root; new output dirs; formal separate",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6399180385",
+    "github_exact_full_body_readback": true
   }
 }
