@@ -1,0 +1,86 @@
+{
+  "contract-projection": [
+    {
+      "path": "backend/t44/services/common.py",
+      "function": "model",
+      "start": 44,
+      "end": 46
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "function": "plan",
+      "start": 49,
+      "end": 56
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "function": "plan_values",
+      "start": 59,
+      "end": 70
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "function": "task_model",
+      "start": 73,
+      "end": 74
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "function": "project_model",
+      "start": 9,
+      "end": 10
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "function": "member_model",
+      "start": 12,
+      "end": 19
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "function": "iteration_model",
+      "start": 134,
+      "end": 135
+    },
+    {
+      "path": "backend/t44/services/tasks.py",
+      "function": "dependency_model",
+      "start": 34,
+      "end": 36
+    },
+    {
+      "path": "backend/t44/messaging/facade.py",
+      "function": "notification",
+      "start": 8,
+      "end": 9
+    },
+    {
+      "path": "backend/t44/scheduling/facade.py",
+      "function": "event",
+      "start": 28,
+      "end": 56
+    }
+  ],
+  "domain-adapter": [
+    {
+      "path": "backend/t44/services/workflow.py",
+      "function": "transitionTask",
+      "start": 62,
+      "end": 275
+    }
+  ],
+  "durable-scan-construction": [
+    {
+      "path": "backend/t44/persistence/scans.py",
+      "function": "start",
+      "start": 20,
+      "end": 52
+    },
+    {
+      "path": "backend/t44/scheduling/facade.py",
+      "function": "_run",
+      "start": 70,
+      "end": 104
+    }
+  ]
+}

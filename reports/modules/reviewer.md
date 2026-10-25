@@ -428,3 +428,19 @@ ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1；draftb86830fd实核，仅新文件adm
 
 
 新P campaign行政封档：技术d785fcf1a86938deebc9004f49e388aebddda5b0已push；Issue12 COMMENT6396261382（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396261382）特定全文GET exit0/body及issue严格同。限定exact新文件单字段变换的一次fullgroup执行技术准入，10:15不延长，F停止在负载前由root实际记录；无正式性能/资源覆盖/业务/global/main/merge通过。本岗无SUT、private测试/817结果读取，只读root环境观察另列。metadata封后释放槽。
+
+
+## 2026-10-25 P813 代码规模下一步方案
+
+审核岗位 AI 在独立 codex/source-budget-deep-plan-20261025 worktree 静态审查产品/规格。
+生产变更和实际节省均为 0；当前正式计数引用 d9e971a 的 6335/5100。
+新增报告 reports/reviews/source-budget-deep-plan-20261025.md 给出响应投影、域 DTO 适配、
+持久记录创建策略三条路线、净预算和人工边界。临时扫描公共工厂 AST 内联同构，
+固定 cloc 314→314 净 0；事件 Schema 投影字段 AST 相等，205→200 净 5。
+两项都仅为 tmp/813_source_budget_deep_plan 中原型，不算生产结果；无应用/SQL/测试/
+压测/独立用例执行，未读取独立测试内容和 .runtime。设计与工具均先提交再执行。
+其余估算上界总计 50，仍缺 1185，不承诺达标。最小人工问题是是否保留独立语义
+域模型，或允许共享 DTO/枚举并保留模块门面和完整校验；需 owner 预算、源码审核、
+新 SHA 的 CI 与独立验收。本 AI 不能审批自己所写候选。
+提示词 P813-DEEP-PLAN-20261025，完整证据和范围见本期报告及阶段 handoff。
+初次 worktree 路径已通过 git worktree move 纠正回 Desktop 项目内。

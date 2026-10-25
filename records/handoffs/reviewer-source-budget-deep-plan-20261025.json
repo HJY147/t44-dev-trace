@@ -1,0 +1,48 @@
+{
+  "role": "reviewer",
+  "phase": "source-budget-deep-plan-20261025",
+  "operator": "AI reviewer",
+  "baseline": "d9e971a631a970d59bdc96923f184c820f6de484",
+  "branch": "codex/source-budget-deep-plan-20261025",
+  "status": "STATIC_DESIGN_ONLY_N07_NOT_PASSED",
+  "production_changes": 0,
+  "production_saving": 0,
+  "application_code": 6335,
+  "required_maximum": 5100,
+  "gap": 1235,
+  "prototype_scan_factory": {
+    "before": 314,
+    "after": 314,
+    "saving": 0,
+    "module_inline_ast_equal": true
+  },
+  "prototype_event_projection": {
+    "before": 205,
+    "after": 200,
+    "saving": 5,
+    "field_expression_ast_equal": true,
+    "precondition": "complete ordinary dictionaries from RowsGateway"
+  },
+  "route_estimates": {
+    "contract_projection": [
+      5,
+      20
+    ],
+    "domain_adapter": [
+      -25,
+      20
+    ],
+    "durable_factory": [
+      -15,
+      10
+    ]
+  },
+  "tests_executed": 0,
+  "report": "reports/reviews/source-budget-deep-plan-20261025.md",
+  "evidence": "tmp/813_source_budget_deep_plan",
+  "prompt": "P813-DEEP-PLAN-20261025",
+  "next_owner_action": "Review explicit architecture boundary and full net budget before implementation; new source CI and independent acceptance required",
+  "private_test_data_read": false,
+  "runtime_directory_read": false,
+  "issue": 12
+}
