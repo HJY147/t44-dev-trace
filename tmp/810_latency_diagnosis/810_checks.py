@@ -114,7 +114,10 @@ def owned_app(handler):
 def test_asgi_transparency_boundaries_and_sample_cap(tmp_path):
     engine = engine_at(tmp_path)
     probe = stage.Probe(engine, tmp_path, limit=1)
-    original = lambda _request: 201
+
+    def original(_request):
+        return 201
+
     app = owned_app(probe.handler(original, "owned_stub"))
     wrapped = probe.wrap_asgi(app)
     identifier = str(uuid4())

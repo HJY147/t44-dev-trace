@@ -52,6 +52,7 @@ class Probe:
         self.selected = self.written = self.capped = self.writer_ns = 0
         self.errors, self.restores, self.listeners = Counter(), [], []
         self.closed, self.queue_get_available = False, False
+        self.on_close = None
         self.path = directory / f"stage-{os.getpid()}-{uuid4().hex}.jsonl"
         self.fd = os.open(self.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
         self.emit(
@@ -80,10 +81,19 @@ class Probe:
                     if count <= 0:
                         raise OSError("Diagnostic output did not progress")
                     raw = raw[count:]
+            return True
         except Exception as error:
             self.errors[type(error).__name__] += 1
+            return False
         finally:
             self.writer_ns += time.perf_counter_ns() - start
+
+    def observe(self, action, *args):
+        try:
+            return action(*args)
+        except Exception as error:
+            self.errors[type(error).__name__] += 1
+            return None
 
     def add(self, row, label, wall, cpu, raised=None):
         if row is None:
@@ -114,7 +124,7 @@ class Probe:
             raise
         finally:
             end_cpu, end_wall = time.thread_time_ns(), time.perf_counter_ns()
-            self.add(row, label, end_wall - wall, end_cpu - cpu, raised)
+            self.observe(self.add, row, label, end_wall - wall, end_cpu - cpu, raised)
 
     def wrap(self, owner, name, label):
         original = getattr(owner, name)
@@ -185,8 +195,12 @@ class Probe:
             ("checkin", checkin),
         ):
             target = self.engine.pool if name in ("checkout", "checkin") else self.engine
-            event.listen(target, name, callback)
-            self.listeners.append((target, name, callback))
+
+            def guarded(*args, _callback=callback):
+                return self.observe(_callback, *args)
+
+            event.listen(target, name, guarded)
+            self.listeners.append((target, name, guarded))
         return self
 
     def install_application(self, app):
@@ -245,11 +259,13 @@ class Probe:
                 finally:
                     if scope["type"] == "lifespan":
                         probe.close()
-            chosen = (b"x-t44-diag-sample", b"1") in scope.get("headers", ())
+            requested = (b"x-t44-diag-sample", b"1") in scope.get("headers", ())
             with probe.lock:
-                chosen = chosen and probe.selected < probe.limit
+                chosen = requested and probe.selected < probe.limit
                 if chosen:
                     probe.selected += 1
+                elif requested:
+                    probe.capped += 1
             if not chosen:
                 return await app(scope, receive, send)
             row = {
@@ -267,7 +283,7 @@ class Probe:
             async def received():
                 message = await receive()
                 if message["type"] == "http.request" and not message.get("more_body", False):
-                    row["body_consumed_ns"] = time.perf_counter_ns()
+                    row.setdefault("body_consumed_ns", time.perf_counter_ns())
                 return message
 
             async def sent(message):
@@ -296,8 +312,8 @@ class Probe:
                     queue_get_available=probe.queue_get_available,
                 )
                 probe.active.reset(token)
-                probe.emit(row)
-                probe.written += 1
+                if probe.emit(row):
+                    probe.written += 1
 
         return wrapped
 
@@ -311,16 +327,23 @@ class Probe:
             except Exception as error:
                 self.errors[type(error).__name__] += 1
         for owner, name, original in reversed(self.restores):
-            setattr(owner, name, original)
+            self.observe(setattr, owner, name, original)
+        checkedout = getattr(self.engine.pool, "checkedout", None)
+        checkedout = self.observe(checkedout) if callable(checkedout) else None
+        if self.on_close is not None:
+            self.observe(self.on_close)
         self.emit(
             {
                 "kind": "probe_final",
                 "utc": utc(),
                 "selected": self.selected,
                 "written": self.written,
+                "cap_skips": self.capped,
+                "checkedout_before_owner_dispose": checkedout,
+                "owner_dispose_requested": self.on_close is not None,
                 "writer_ns_before_final": self.writer_ns,
                 "queue_get_available": self.queue_get_available,
-                "diagnostic_valid": not self.errors,
+                "diagnostic_valid": not self.errors and self.selected == self.written,
                 "observer_errors": dict(self.errors),
             }
         )
@@ -367,6 +390,7 @@ def app_factory():
         raise ValueError("Diagnostic target differs from explicit fresh-schema packet")
     engine = create_mysql_engine(mysql)
     probe = Probe(engine, os.environ["T44_DIAG_OUTPUT"], int(os.getenv("T44_DIAG_LIMIT", "128")))
+    probe.on_close = engine.dispose
     try:
         probe.install_database()
         app = api.create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
