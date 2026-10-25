@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "analyzed_at": "2026-10-25T14:39:23.274710+00:00",
+  "runs": {
+    "40200930857": {
+      "source_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "event": "push",
+      "conclusion": "cancelled",
+      "checkout": [
+        {
+          "member": "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4"
+        },
+        {
+          "member": "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4"
+        },
+        {
+          "member": "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4"
+        },
+        {
+          "member": "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4"
+        }
+      ],
+      "junit": {
+        "contracts/contract.xml": {
+          "zip": "contracts-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+          "declared": {
+            "tests": 183,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 183,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 183
+          },
+          "declarations_match_testcases": true
+        },
+        "contracts/fault.xml": {
+          "zip": "contracts-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+          "declared": {
+            "tests": 19,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 19,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 19
+          },
+          "declarations_match_testcases": true
+        },
+        "contracts/integration.xml": {
+          "zip": "contracts-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+          "declared": {
+            "tests": 102,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 102,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 102
+          },
+          "declarations_match_testcases": true
+        }
+      },
+      "frontend": {
+        "zip": "frontend-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+        "tests": 89,
+        "outcomes": {
+          "passed": 89,
+          "failed": 0,
+          "pending": 0,
+          "todo": 0
+        },
+        "summary_matches_cases": true,
+        "coverage": {
+          "lines": {
+            "total": 390,
+            "covered": 364,
+            "skipped": 0,
+            "pct": 93.33
+          },
+          "statements": {
+            "total": 712,
+            "covered": 631,
+            "skipped": 0,
+            "pct": 88.62
+          },
+          "functions": {
+            "total": 240,
+            "covered": 206,
+            "skipped": 0,
+            "pct": 85.83
+          },
+          "branches": {
+            "total": 932,
+            "covered": 821,
+            "skipped": 0,
+            "pct": 88.09
+          },
+          "branchesTrue": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        }
+      },
+      "full_suite_result": "Unavailable: cancelled coverage artifact contains no JUnit or coverage JSON/XML; never count as zero tests or a pass."
+    },
+    "40200930957": {
+      "source_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "event": "push",
+      "conclusion": "success",
+      "checkout": [
+        {
+          "member": "docker-application/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4"
+        }
+      ],
+      "junit": {},
+      "docker": {
+        "zip": "docker-application-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+        "source_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+        "passed": true,
+        "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+        "workers": 4,
+        "seed_version": 2,
+        "seed_tasks": 40,
+        "restored_tables": 19,
+        "restore_counts_and_checksums_matched": true,
+        "expected_second_flock_owner_exit": 1
+      }
+    },
+    "40201584671": {
+      "source_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+      "event": "push",
+      "conclusion": "success",
+      "checkout": [
+        {
+          "member": "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6"
+        },
+        {
+          "member": "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6"
+        },
+        {
+          "member": "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6"
+        },
+        {
+          "member": "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6"
+        }
+      ],
+      "junit": {
+        "contracts/contract.xml": {
+          "zip": "contracts-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+          "declared": {
+            "tests": 183,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 183,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 183
+          },
+          "declarations_match_testcases": true
+        },
+        "contracts/fault.xml": {
+          "zip": "contracts-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+          "declared": {
+            "tests": 19,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 19,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 19
+          },
+          "declarations_match_testcases": true
+        },
+        "contracts/integration.xml": {
+          "zip": "contracts-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+          "declared": {
+            "tests": 102,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 102,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 102
+          },
+          "declarations_match_testcases": true
+        },
+        "coverage/junit.xml": {
+          "zip": "coverage-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+          "declared": {
+            "tests": 695,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "actual": {
+            "tests": 695,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "passed": 695
+          },
+          "declarations_match_testcases": true
+        }
+      },
+      "backend_coverage": {
+        "zip": "coverage-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+        "members": [
+          "coverage/coverage.json",
+          "coverage/coverage.xml",
+          "coverage/gate.json"
+        ],
+        "measured_files": 43,
+        "covered_lines": 2478,
+        "total_lines": 2760,
+        "line_percent": 89.78260869565217,
+        "covered_branches": 693,
+        "total_branches": 836,
+        "branch_percent": 82.89473684210526,
+        "coveragepy_line_plus_branch_percent": 88.1813125695217,
+        "mixed_numerator": 3171,
+        "mixed_denominator": 3596,
+        "line_json_xml_member_counts_match": true
+      },
+      "frontend": {
+        "zip": "frontend-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+        "tests": 89,
+        "outcomes": {
+          "passed": 89,
+          "failed": 0,
+          "pending": 0,
+          "todo": 0
+        },
+        "summary_matches_cases": true,
+        "coverage": {
+          "lines": {
+            "total": 390,
+            "covered": 364,
+            "skipped": 0,
+            "pct": 93.33
+          },
+          "statements": {
+            "total": 712,
+            "covered": 631,
+            "skipped": 0,
+            "pct": 88.62
+          },
+          "functions": {
+            "total": 240,
+            "covered": 206,
+            "skipped": 0,
+            "pct": 85.83
+          },
+          "branches": {
+            "total": 932,
+            "covered": 821,
+            "skipped": 0,
+            "pct": 88.09
+          },
+          "branchesTrue": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        }
+      },
+      "contract_subset_identity_count": 245,
+      "contract_subset_matches_full_suite": true,
+      "contract_subset_not_in_full_suite": 0,
+      "aggregation_rule": "Full-suite 695 is the backend result. Contract/integration/fault executions are separate repeated subsets and are not added to 695."
+    },
+    "40201584699": {
+      "source_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+      "event": "push",
+      "conclusion": "success",
+      "checkout": [
+        {
+          "member": "docker-application/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+          "actual_checked_out_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6"
+        }
+      ],
+      "junit": {},
+      "docker": {
+        "zip": "docker-application-f4bd382d4668130793fc553df9ce6363c4656ea6.zip",
+        "source_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+        "passed": true,
+        "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+        "workers": 4,
+        "seed_version": 2,
+        "seed_tasks": 40,
+        "restored_tables": 19,
+        "restore_counts_and_checksums_matched": true,
+        "expected_second_flock_owner_exit": 1
+      }
+    }
+  },
+  "duplicate_pr_runs": [
+    {
+      "run_id": 40200935848,
+      "event": "pull_request",
+      "metadata_head_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "conclusion": "cancelled",
+      "actual_static_checkout_ref": "refs/remotes/pull/21/merge",
+      "actual_static_checkout_sha": "00c1278bec48b21d5a7387da27ca879c7ec3999a",
+      "log_file": "records/ci/40200935848/static-job-original.log",
+      "log_bytes": 34645,
+      "log_sha256": "1aebb316018ce6c0eef51df34532150fde4ab845bfd00fe295ecc175668c1d0b",
+      "not_primary_exact_source_evidence": true,
+      "warning": "Do not infer historical checkout from nested pull_requests.head.sha; that PR association can show its newer head."
+    },
+    {
+      "run_id": 40201588604,
+      "event": "pull_request",
+      "metadata_head_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+      "conclusion": "success",
+      "actual_static_checkout_ref": "refs/remotes/pull/21/merge",
+      "actual_static_checkout_sha": "c6b140fcbc8316768009fb53394a11b5cb0ac2eb",
+      "log_file": "records/ci/40201588604/static-job-original.log",
+      "log_bytes": 33095,
+      "log_sha256": "57ca28b8db5234d12804dd11d4a9f8901735fa6356ec29309259b31e0fe350d3",
+      "not_primary_exact_source_evidence": true,
+      "warning": "Do not infer historical checkout from nested pull_requests.head.sha; that PR association can show its newer head."
+    }
+  ],
+  "archive_totals": {
+    "artifact_zip_count": 10,
+    "artifact_zip_bytes": 616448,
+    "official_run_log_zip_count": 4,
+    "official_run_log_zip_bytes": 325158,
+    "validated_zip_members": 354
+  },
+  "claims": {
+    "independent_acceptance": false,
+    "formal_performance": false,
+    "source_size_gate_passed": false,
+    "final_billing_verified": false
+  }
+}

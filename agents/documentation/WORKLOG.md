@@ -409,3 +409,29 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 实现d194019dd07be6d966b218b04c866c4829f60cd6本岗commit。首push返回curl16/HTTP2framing/unexpecteddisconnect/exit1，虽末尾Everythingup-to-date仍不当成功；随即ls-remote精确分支无结果，按单命令HTTP1.1重试push exit0新建远端分支，不改全局Git设置。原失败保留，为本岗网络工具问题，不冒产品失败。
 - GitHub connector实际发布Issue9评论6396883029；只GET该精确ID，body/URL与本地保存正文逐字同，receipt归档，未读讨论timeline。42文档核对/27相对链接仍非产品测试。
 - 本笔仅保存发表回执和交接，无新源/私有材料读取或产品操作；最终receipt commit/push并HEAD/远端一致后回传总协调。
+
+
+## 2026-10-25T14:34:55.749993+00:00 Round9 CI 首次失败原件封存
+
+- 本岗 AI 从准确 f4bd382d 新建 codex/ci-evidence-round9；先根外建树，收到总协调澄清后以 git worktree move 原样搬入项目内自己的 worktree，未删数据。原三轮派工口误已由总协调更正为两对 run，未重复下载旧轮。
+- 优先 GitHub connector GET 四 run/artifacts/jobs；下载 connector 仅返回远程 ZIP 引用，无本地路径，故按授权以 gh API 原 ZIP bytes 直接 exclusive-create 落盘，没有通过 gh run download 解包文件冒充原件。签名 URL 未保存。
+- 首次 run40200930857 / source a16238b9 / attempt1 / push：run overall cancelled；static job121191761720 FAILURE，coverage CANCELLED，contracts/frontend SUCCESS。static ZIP4157 bytes、sha256 911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6 与服务端一致；10成员 CRC 全通过，无绝对/父级路径或symlink。
+- static-3.log/static-console.log/static.json保留真实 E731：tmp/backend/messaging/806_newscope.py:34，ruff exit1；未改测试或重跑。绑定见 records/ci/40200930857/archive-binding.phase1.json。
+- metadata 是官方 API JSON 表示，非原始 HTTP 传输字节；ZIP 为未经重打包的原bytes。其余三run元数据已落盘，但全量ZIP/测试覆盖率解析尚待下一阶段，当前不据未核原件宣称。
+- 只做 Git、API下载、JSON/ZIP/hash；没有产品执行、独立验收、正式压测、云或浏览器操作。5862/5100超762据总协调，本岗未改口径/未重算。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1。
+
+
+## 2026-10-25T15:03:46.698536+00:00 Round9 CI 全量原件与解析封档
+
+- 原地接续阶段14be82a3，不重下已验原件；10 artifact ZIP合616448bytes均匹配官方digest/大小，四官方runlog ZIP合325158bytes只记本地SHA（API无服务端digest），14 ZIP共354成员CRC/path/symlink通过。四run各完整REST page的total_count匹配，所有10job/run/attempt/head/actualcheckout一致。
+- a162产品overallCANCELLED/staticE731FAIL/coverageCANCELLED不变；首次coverage六成员无JUnit/coverage，完整测试成绩不可得。f4bd产品40201584671四jobSUCCESS、Docker40201584699 SUCCESS。
+- f4bd XML实际695 tests/695passed/0failure/error/skip，声明与testcase outcome匹配；contract183/integration102/fault19的身份union245均在695内，不重复累加。前端89/89，0fail/pending/todo，实际assertionResults匹配。
+- 后端行2478/2760=89.7826087%，分支693/836=82.8947368%，混合3171/3596=88.1813126%不能当line；43文件执行行及XML分子分母一致。前端行364/390=93.33%，其余指标在analysis，不混用。Docker两次各source匹配、4workers、v2seed40tasks、恢复19表counts/checksums匹配，flock第二持有者exit1按既定拒绝保留。
+- 副PR40200935848/40201588604只收元数据和静态job原日志，实际pull/21/merge为00c1278/c6b140f，不当主要准确source证据；旧run nested PR head可随PR更新，未拿它回推checkout。
+- 一次frontend原ZIP重定向EOF、0bytes失败件另存.failed-attempt1；重试通过官方digest。副PRjob日志第一次0bytes失败（stderr未保留），重试CLI报终端转义拒绝，原脱敏回执保存，--allow-escape-sequences取原bytes成功。一次辅助JSON输出把list当dict触TypeError，修正读取，未猜补结论。
+- 原始失败与阶段1pending文字均保留；收集器、解析器、统一报告与完整bindings补齐。元数据是API JSON表示，不宣称HTTP原始传输bytes；signed URL未落文档。最终轻量范围/链接/JSON/hash/zip复核与提交随后记录。
+- 产品/测试/SQL/HTTP/独立验收/负载/云/浏览器实际运行0，CI取消/重跑0、workflow修改0、GitHub评论0；不触学生研究/签名或私有独立资料。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1；Refs:#9。
+
+- 2026-10-25T15:04:17.549391+00:00 封档验证：本岗解析器通过；10个本地报告链接存在；新增JSON可解析；预期695计数及10/4ZIP、354成员总量匹配；git diff --check通过；新增报告无签名URL/token模式。此为资料核验，非产品测试。随后本人commit/push完整阶段，未发GitHub评论。
+
+- 2026-10-25T15:04:44.540026+00:00 完整阶段fccf5c82已commit/push。首次暂存全量原日志后git diff --cached --check exit2：仅两份副PR原始job日志19行尾空白，保持原bytes；前述通过限于此前已跟踪的作者文档，不能表述全量diff通过。本次明确更正validation与handoff；作者文档/脚本的f4bd..HEAD diff-check通过，原件不剪空白或改写。55暂存路径责任范围检查通过。

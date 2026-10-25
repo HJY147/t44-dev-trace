@@ -1,0 +1,762 @@
+{
+  "schema_version": 2,
+  "collected_at": "2026-10-25T14:36:10.932778+00:00",
+  "run_id": 40200930857,
+  "source_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+  "head_branch": "codex/integration",
+  "event": "push",
+  "run_attempt": 1,
+  "run_number": 407,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "jobs": [
+    {
+      "id": 121191761521,
+      "name": "contracts",
+      "run_id": 40200930857,
+      "run_attempt": 1,
+      "head_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-25T14:09:46Z",
+      "completed_at": "2026-10-25T14:13:27Z",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40200930857/job/121191761521"
+    },
+    {
+      "id": 121191761720,
+      "name": "static",
+      "run_id": 40200930857,
+      "run_attempt": 1,
+      "head_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-25T14:09:46Z",
+      "completed_at": "2026-10-25T14:10:05Z",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40200930857/job/121191761720"
+    },
+    {
+      "id": 121191761760,
+      "name": "frontend",
+      "run_id": 40200930857,
+      "run_attempt": 1,
+      "head_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-25T14:09:46Z",
+      "completed_at": "2026-10-25T14:10:27Z",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40200930857/job/121191761760"
+    },
+    {
+      "id": 121191761821,
+      "name": "coverage",
+      "run_id": 40200930857,
+      "run_attempt": 1,
+      "head_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "started_at": "2026-10-25T14:09:47Z",
+      "completed_at": "2026-10-25T14:18:23Z",
+      "html_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40200930857/job/121191761821"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "coverage-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+      "bytes": 7377,
+      "sha256": "155147f62ae66658539c5b8ed600006598183238368280fb4a2a9df984004deb",
+      "zip_crc_all_passed": true,
+      "unsafe_paths_or_symlinks": false,
+      "members": [
+        {
+          "path": "coverage/console.log",
+          "bytes": 0,
+          "crc32": "00000000",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "coverage/migration.log",
+          "bytes": 180,
+          "crc32": "6413d5da",
+          "sha256": "1361997c60f985a59735d7e7fd0fd54d47e27288508295370b4038340881a94c"
+        },
+        {
+          "path": "coverage/mysql.log",
+          "bytes": 4871,
+          "crc32": "416ac1dc",
+          "sha256": "42ad9b6dc0a9e2847289dbe0657e02d6617e0da4dd291bca5c49e2643a809ed3"
+        },
+        {
+          "path": "coverage/preflight.log",
+          "bytes": 0,
+          "crc32": "00000000",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "preflight.json",
+          "bytes": 37,
+          "crc32": "7ddfd08b",
+          "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01"
+        },
+        {
+          "path": "coverage/rabbitmq.log",
+          "bytes": 29258,
+          "crc32": "d19431cc",
+          "sha256": "77d5e5697d244f23fc1a439e9a95fbb2e8a7c132349c0397fa2ecdd009a04715"
+        }
+      ],
+      "artifact_id": 12602400394,
+      "artifact_name": "coverage-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "official_size": 7377,
+      "official_digest": "sha256:155147f62ae66658539c5b8ed600006598183238368280fb4a2a9df984004deb",
+      "official_size_digest_match": true,
+      "artifact_run_head_binding": true,
+      "job_id": 121191761821,
+      "job_conclusion": "cancelled"
+    },
+    {
+      "file": "contracts-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+      "bytes": 20486,
+      "sha256": "f3f55e059fed784d7151f0d431ad48f4210e6e1f129980ca73be048fe60638fd",
+      "zip_crc_all_passed": true,
+      "unsafe_paths_or_symlinks": false,
+      "members": [
+        {
+          "path": "contracts/console.log",
+          "bytes": 4935,
+          "crc32": "c8ba4088",
+          "sha256": "d0908c4db3e609cc0513ec019571e4dd2707752075a19bbc4ab9934c016a7bf3"
+        },
+        {
+          "path": "contracts/contract.log",
+          "bytes": 1752,
+          "crc32": "3ec746c8",
+          "sha256": "dae1f42db225a2492490f176d916dd5f185e43f4b41f04f4a45287e08405c884"
+        },
+        {
+          "path": "contracts/contract.xml",
+          "bytes": 1074367,
+          "crc32": "4ad079ff",
+          "sha256": "63d1aeb6a39c75b8a5c4c02a3fa37b432f60d5f446e21e768608fdc1c7264d05"
+        },
+        {
+          "path": "contracts/fault.log",
+          "bytes": 1428,
+          "crc32": "f58a3a99",
+          "sha256": "fe19d14c9ee5b189665580ea158893ada38d5e0f8236f0578db5fa7b4c6022c9"
+        },
+        {
+          "path": "contracts/fault.xml",
+          "bytes": 2864,
+          "crc32": "9f5a54a7",
+          "sha256": "9993f1906d4dfa1d667a15bad084c6af2056aa7ce269ed450419337dbd08561a"
+        },
+        {
+          "path": "contracts/gate.json",
+          "bytes": 243,
+          "crc32": "d16ea2d0",
+          "sha256": "0cd723ceace28e0097e5258e8ffb9da0df1576429f4ce4a9be443ddb1fe365ce"
+        },
+        {
+          "path": "contracts/integration.log",
+          "bytes": 1755,
+          "crc32": "7f99324f",
+          "sha256": "e41b6ca1c80ee0b8f080c5628da6cbcf10ce51c0edde738e38a412e88a18dced"
+        },
+        {
+          "path": "contracts/integration.xml",
+          "bytes": 14192,
+          "crc32": "6e05de46",
+          "sha256": "5f5b4be18254d6e70f2be5054fc06fe8de2288a276976fb25e19c02d4c86a4e7"
+        },
+        {
+          "path": "contracts/migration.log",
+          "bytes": 180,
+          "crc32": "6413d5da",
+          "sha256": "1361997c60f985a59735d7e7fd0fd54d47e27288508295370b4038340881a94c"
+        },
+        {
+          "path": "contracts/mysql.log",
+          "bytes": 4871,
+          "crc32": "f52cca26",
+          "sha256": "62ef1d7cb2e38ac41325fdaf49be87c74aee3e398a4526630935c0d81c1a051b"
+        },
+        {
+          "path": "contracts/preflight.log",
+          "bytes": 0,
+          "crc32": "00000000",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "contracts/rabbitmq.log",
+          "bytes": 33039,
+          "crc32": "d108688e",
+          "sha256": "598253d880f81524d13c02e5c21558dcada9ee38e15075fadb21fbe121f82d19"
+        },
+        {
+          "path": "preflight.json",
+          "bytes": 37,
+          "crc32": "7ddfd08b",
+          "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01"
+        }
+      ],
+      "artifact_id": 12601948932,
+      "artifact_name": "contracts-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "official_size": 20486,
+      "official_digest": "sha256:f3f55e059fed784d7151f0d431ad48f4210e6e1f129980ca73be048fe60638fd",
+      "official_size_digest_match": true,
+      "artifact_run_head_binding": true,
+      "job_id": 121191761521,
+      "job_conclusion": "success"
+    },
+    {
+      "file": "static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+      "bytes": 4157,
+      "sha256": "911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6",
+      "zip_crc_all_passed": true,
+      "unsafe_paths_or_symlinks": false,
+      "members": [
+        {
+          "path": "bandit.json",
+          "bytes": 14879,
+          "crc32": "b7922646",
+          "sha256": "783740c78eba21b70c05f1ef3f688e76943d7407f905a9343b0c662393cb5111"
+        },
+        {
+          "path": "nginx-syntax.log",
+          "bytes": 1674,
+          "crc32": "586b8708",
+          "sha256": "ce4677c992b5a051ca96a81118b08e1cac1a07431560a206e2da0992a7b7847f"
+        },
+        {
+          "path": "preflight.json",
+          "bytes": 37,
+          "crc32": "7ddfd08b",
+          "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01"
+        },
+        {
+          "path": "static-0.log",
+          "bytes": 84,
+          "crc32": "e9e020dd",
+          "sha256": "cd2c8921b8300e70ca6b3896401562fed1632d0a80747924eab286b8d95ea441"
+        },
+        {
+          "path": "static-1.log",
+          "bytes": 99,
+          "crc32": "d988cd65",
+          "sha256": "acbd8afb334d9f80dd17722f4dfed5570c321dcbb5f0a6037b4f5bc6d0c12f1b"
+        },
+        {
+          "path": "static-2.log",
+          "bytes": 19,
+          "crc32": "9b863f92",
+          "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+        },
+        {
+          "path": "static-3.log",
+          "bytes": 935,
+          "crc32": "10252dd6",
+          "sha256": "d9e0a32c4508a3ef37cc4746f5ff313e59033c6679326940f14316406f472536"
+        },
+        {
+          "path": "static-4.log",
+          "bytes": 262,
+          "crc32": "5db61dc4",
+          "sha256": "d9117361c2d52ad77676675c2169bfb0920b112554639820c70c23d699873e4b"
+        },
+        {
+          "path": "static-console.log",
+          "bytes": 2084,
+          "crc32": "6dc34d37",
+          "sha256": "0eefdbc4a299b773ba53e0bda8ad05ca077ce3d2666dc402cbef4211a2199062"
+        },
+        {
+          "path": "static.json",
+          "bytes": 1428,
+          "crc32": "8fd3114f",
+          "sha256": "686727d4a2a6e5647a8254f2ccb90ef47dd8a08bc2ddba634ea30a7a02171544"
+        }
+      ],
+      "artifact_id": 12601838817,
+      "artifact_name": "static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "official_size": 4157,
+      "official_digest": "sha256:911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6",
+      "official_size_digest_match": true,
+      "artifact_run_head_binding": true,
+      "job_id": 121191761720,
+      "job_conclusion": "failure"
+    },
+    {
+      "file": "frontend-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+      "bytes": 86725,
+      "sha256": "efb8226e36c713341d0419903828e795f01398169486b4fe4bfbc44174e0481c",
+      "zip_crc_all_passed": true,
+      "unsafe_paths_or_symlinks": false,
+      "members": [
+        {
+          "path": "reports/ci/frontend/build.log",
+          "bytes": 820,
+          "crc32": "c5fb639f",
+          "sha256": "d958b9d36975a8ca8c4bdb0e32f5b6f07e766686969ea49146ca9582a2c7ea71"
+        },
+        {
+          "path": "reports/ci/frontend/test.log",
+          "bytes": 334,
+          "crc32": "24a9a08a",
+          "sha256": "5d04eea7328c294b7e291c1120ce06a01c5770bdcdf462e4159678a946ad2d6e"
+        },
+        {
+          "path": "reports/ci/frontend/typecheck.log",
+          "bytes": 53,
+          "crc32": "97d73c87",
+          "sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e"
+        },
+        {
+          "path": "frontend/coverage/coverage-final.json",
+          "bytes": 264865,
+          "crc32": "efe7969e",
+          "sha256": "6aa3f0f92acc8db3ea428ad0bf7fb0c81188da74b99cf142fed50fb24eea2ee3"
+        },
+        {
+          "path": "frontend/coverage/coverage-summary.json",
+          "bytes": 6710,
+          "crc32": "ac562ec8",
+          "sha256": "861cf3743c0e3bc3fc782d18c7499f67614ba4011c1fe4b1ef995312a7461ec4"
+        },
+        {
+          "path": "frontend/coverage/test-results.json",
+          "bytes": 299035,
+          "crc32": "28efada2",
+          "sha256": "ea8ccf09d9778295e534b5d7a9788b33131a44780926dbc863b51908c9abc5e8"
+        }
+      ],
+      "artifact_id": 12601093153,
+      "artifact_name": "frontend-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+      "official_size": 86725,
+      "official_digest": "sha256:efb8226e36c713341d0419903828e795f01398169486b4fe4bfbc44174e0481c",
+      "official_size_digest_match": true,
+      "artifact_run_head_binding": true,
+      "job_id": 121191761760,
+      "job_conclusion": "success"
+    }
+  ],
+  "official_run_logs": {
+    "file": "official-run-logs.zip",
+    "bytes": 145757,
+    "sha256": "ef9079723115654ed36e1e4e1552223b456699347b74e40b4b83d6ac26903a2d",
+    "zip_crc_all_passed": true,
+    "unsafe_paths_or_symlinks": false,
+    "members": [
+      {
+        "path": "0_coverage.txt",
+        "bytes": 108524,
+        "crc32": "f7281dc7",
+        "sha256": "e2e20d7719032996210470eddcf052e0f0b3c7b89bca4f72c556cca75054e5f7"
+      },
+      {
+        "path": "coverage/system.txt",
+        "bytes": 589,
+        "crc32": "d90231a6",
+        "sha256": "fa9581e563e906206b1e74b20ac4797a5801a34688928c8a1b9a2b89ebfb26dd"
+      },
+      {
+        "path": "coverage/1_Set up job.txt",
+        "bytes": 2270,
+        "crc32": "75fc9be3",
+        "sha256": "f7a544a5b40a4904d63a2c23fb493ef07bae281747ec47d7a8faa268505cf81f"
+      },
+      {
+        "path": "coverage/2_Initialize containers.txt",
+        "bytes": 13177,
+        "crc32": "14128ddb",
+        "sha256": "e4f3436dbc09273d5167256fe769f7b284eb93c6d9c85d88846e7ad3003eb261"
+      },
+      {
+        "path": "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 11601,
+        "crc32": "7de3bf82",
+        "sha256": "97d26c29e99e23da3df32166b93e9efa99ef28698d544edd9b1757e2c5cc4526"
+      },
+      {
+        "path": "coverage/4_Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 1094,
+        "crc32": "a74d2654",
+        "sha256": "9f9443cfbcc6eba06c7cd5c557c537081fa2ba417994952ff598162b3921f384"
+      },
+      {
+        "path": "coverage/5_Run mkdir -p reports_ci_coverage.txt",
+        "bytes": 1123,
+        "crc32": "182713f3",
+        "sha256": "845e5427586bd47ec676b9bb201697c8d7b71f63a1f20a57a105ae6ab3cd664c"
+      },
+      {
+        "path": "coverage/6_Run python -m pip install --require-hashes -r scripts_ci_requirements.lock.txt",
+        "bytes": 6495,
+        "crc32": "4681ce32",
+        "sha256": "3699b93b822553643907f0cc7103c90ad535f98517b58438825e1c36af59b9b1"
+      },
+      {
+        "path": "coverage/7_Require real application and test files.txt",
+        "bytes": 1248,
+        "crc32": "8d736683",
+        "sha256": "541ad6964b2ca00bf81b9417a210ccae5414172774f4c20296100fbb43180b72"
+      },
+      {
+        "path": "coverage/8_Run python -m pip install --require-hashes -r backend_requirements.lock.txt",
+        "bytes": 17075,
+        "crc32": "94593016",
+        "sha256": "bce8f3251950cd17013e0161dfe916b1a46b44c4da06c2b850ee25a07bba6c5d"
+      },
+      {
+        "path": "coverage/9_Apply reviewed schema to explicitly selected disposable test database.txt",
+        "bytes": 1501,
+        "crc32": "acc7ff95",
+        "sha256": "3666417d9e10b0a470bd56a404b24310b6fa8bcd52533c56417ff462e9cc35a7"
+      },
+      {
+        "path": "coverage/10_Run full suite and cover every production t44 Python module.txt",
+        "bytes": 1784,
+        "crc32": "e8452ff8",
+        "sha256": "998939bbc616918b6411268a676ce7b7b363383fe0221adc23fa72370b60ce64"
+      },
+      {
+        "path": "coverage/11_Preserve real dependency logs.txt",
+        "bytes": 1580,
+        "crc32": "995f69ae",
+        "sha256": "d3b34676a0a06cddc45aa711cbdfbda39f2ae4ff9cbdcbf75aebda45115c06c1"
+      },
+      {
+        "path": "coverage/12_Run actions_upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9.txt",
+        "bytes": 2663,
+        "crc32": "b07611a3",
+        "sha256": "76a3ad4752ed65dd47d8eba956d7c727dcf99d115de46a70205d4ea1e853f42d"
+      },
+      {
+        "path": "coverage/23_Post Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 1753,
+        "crc32": "cb5d16ef",
+        "sha256": "cad207a9c06ff9278757c3f94b15d008921848c1b547ff7f88b72d7c20fd5c57"
+      },
+      {
+        "path": "coverage/24_Stop containers.txt",
+        "bytes": 44919,
+        "crc32": "4ef9175e",
+        "sha256": "0bdfa5f4c924e3efbba9ef1a31230e4630ef9b893a6f5f52c5f5b4679cbb6adb"
+      },
+      {
+        "path": "coverage/25_Complete job.txt",
+        "bytes": 283,
+        "crc32": "c9a777bb",
+        "sha256": "39c1fd0015e85ebac91f2133b12e46d1332adf710857f4627ff6e9ffee6b5483"
+      },
+      {
+        "path": "1_frontend.txt",
+        "bytes": 30125,
+        "crc32": "a7d94adc",
+        "sha256": "b2aba5c9ce55dce3ce8c23157f346200b7380ea1ecc4197925c999ef9a0ada25"
+      },
+      {
+        "path": "frontend/system.txt",
+        "bytes": 589,
+        "crc32": "6054d604",
+        "sha256": "904741e716652aca978124c0987ec95c1b809a657e6ebe5307065d4f3c88223e"
+      },
+      {
+        "path": "frontend/1_Set up job.txt",
+        "bytes": 2599,
+        "crc32": "a6ee25dd",
+        "sha256": "37f2a11a7d26ddd83437416cde5a456e2769e8187eac650a31a9f26d403d516b"
+      },
+      {
+        "path": "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 11267,
+        "crc32": "553b9eb9",
+        "sha256": "cb95680cba8a4afd4970d4305c1172c98d60113fff937d77f22d0f3d00face9e"
+      },
+      {
+        "path": "frontend/3_Run mkdir -p reports_ci_frontend.txt",
+        "bytes": 242,
+        "crc32": "ff1a011d",
+        "sha256": "8447991b3473e94405fe98b72d5f71fb2e3f5431c230d7efdaec33cd6e376122"
+      },
+      {
+        "path": "frontend/4_Run actions_setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1.txt",
+        "bytes": 695,
+        "crc32": "45ccd34b",
+        "sha256": "5009f695644d3c30b810d787b77ff7afec4a87ffec995584e707d5fb390057bb"
+      },
+      {
+        "path": "frontend/5_Run pnpm_action-setup@ea17c68df8912ef543352723c149a84f56e3d413.txt",
+        "bytes": 1051,
+        "crc32": "b4a65560",
+        "sha256": "82be89f1b96cb3bcf0eaafa441bd3a7428f9582c6e75335d36e061509247b239"
+      },
+      {
+        "path": "frontend/6_Require real frontend manifest and lock.txt",
+        "bytes": 717,
+        "crc32": "5eeaff2b",
+        "sha256": "512ba8bee1763125d60816287bd5842c0f232b0fffeb1efa3b638819b3cc7fff"
+      },
+      {
+        "path": "frontend/7_Install frozen frontend dependencies.txt",
+        "bytes": 2341,
+        "crc32": "5ce665bb",
+        "sha256": "fc9f1f10121e8a696d04eec7222fbeac78864fe61eda20b48b53b89104702293"
+      },
+      {
+        "path": "frontend/8_Typecheck.txt",
+        "bytes": 549,
+        "crc32": "b796aeba",
+        "sha256": "5674ca2285938d7611d2c9010e6b4c0ccacd0403caacdc25457df36f25881063"
+      },
+      {
+        "path": "frontend/9_Production build.txt",
+        "bytes": 1735,
+        "crc32": "05c2450c",
+        "sha256": "6a94651d25a31e9f3d13d42234483dd91a4b0c1702aa8f12e589c2b6a36a8b35"
+      },
+      {
+        "path": "frontend/10_Real Vue_TypeScript tests and full source coverage.txt",
+        "bytes": 1126,
+        "crc32": "6e20b02e",
+        "sha256": "97ea1684aef917619e7026799c3107f4fb29cb8188412f7ac5b51c3739d0292e"
+      },
+      {
+        "path": "frontend/11_Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 878,
+        "crc32": "5c01c07b",
+        "sha256": "660b5c210b2b525542a936be4fd829546d1185498d4a25e1cffa503840a396fa"
+      },
+      {
+        "path": "frontend/12_Require actual passed tests and all TS_Vue production sources at 80 percent.txt",
+        "bytes": 2225,
+        "crc32": "2d9a417a",
+        "sha256": "52382ee857096c5dd07adda49e5bc43d03c18956fad14743635ceedc3b91e359"
+      },
+      {
+        "path": "frontend/13_Run actions_upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9.txt",
+        "bytes": 2734,
+        "crc32": "4f0ab9c6",
+        "sha256": "0b78be86a08e829056e5c5001c5c9d36ec4e745c5cd8ce054b83ac08cc2778ac"
+      },
+      {
+        "path": "frontend/23_Post Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 50,
+        "crc32": "9bdc4590",
+        "sha256": "076188381b7e6124006c265ed8b45f198fd742d776a54018c43355b96814d87f"
+      },
+      {
+        "path": "frontend/24_Post Run pnpm_action-setup@ea17c68df8912ef543352723c149a84f56e3d413.txt",
+        "bytes": 103,
+        "crc32": "42b0c92a",
+        "sha256": "2c73b5a4cf3f8f0b4b8630fcee7829d7ef29fd14e8cc51ca4b8862949920ed1b"
+      },
+      {
+        "path": "frontend/25_Post Run actions_setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1.txt",
+        "bytes": 50,
+        "crc32": "6d74fa05",
+        "sha256": "12963272c680ecb2933ad18a208280e32da440b8eef5e2b5bf6e6efc70881130"
+      },
+      {
+        "path": "frontend/26_Post Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 1753,
+        "crc32": "7d2cf49e",
+        "sha256": "bb81959a013b5339abec8c21824c09297b3146de1b7818278017ef37e6645721"
+      },
+      {
+        "path": "frontend/27_Complete job.txt",
+        "bytes": 61,
+        "crc32": "0efe3c37",
+        "sha256": "2d49b4355f19cca0c105e228a60198fa80380151dcbc263142edbb3c2b8ef309"
+      },
+      {
+        "path": "2_static.txt",
+        "bytes": 34055,
+        "crc32": "8facdcd2",
+        "sha256": "156f18ffd83d6ef752b36db480435211bf9a4fe1c79a04ae63e1d075623908fa"
+      },
+      {
+        "path": "static/system.txt",
+        "bytes": 587,
+        "crc32": "516202ca",
+        "sha256": "83f25f3d2ed7120306a3a36c8e45e0fb86a2ce3a09742699bec893a898ecb8c8"
+      },
+      {
+        "path": "static/1_Set up job.txt",
+        "bytes": 2267,
+        "crc32": "85b5a4a6",
+        "sha256": "d637a274788cda8448ec1b425fdec89ec3ddf1126cbdb613d31a0459734b9a55"
+      },
+      {
+        "path": "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 11267,
+        "crc32": "3bdf4537",
+        "sha256": "be448335bbfe14bea84cd81cf67c4ae6db5078257645925626c14181252a79df"
+      },
+      {
+        "path": "static/3_Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 760,
+        "crc32": "23198977",
+        "sha256": "9b1f1b9970b6df160327e58754e1ce62c405dbad0efe232ed6f844c4d625efe8"
+      },
+      {
+        "path": "static/4_Prepare raw evidence directory.txt",
+        "bytes": 805,
+        "crc32": "feb491b6",
+        "sha256": "e9e931671912a752bbfdeae24de4add9720206c06f78c59d64a36b881dd97912"
+      },
+      {
+        "path": "static/5_Install hash-locked checking tools.txt",
+        "bytes": 6198,
+        "crc32": "149ccd30",
+        "sha256": "2d0361cd86e85aa965467ba27535c38a0596397a4b84abd9cc46474608e9c366"
+      },
+      {
+        "path": "static/6_Validate Compose with placeholders and Nginx syntax in official container.txt",
+        "bytes": 4479,
+        "crc32": "e52cc97b",
+        "sha256": "b3db26f9a1cd9808bec486447546c2ac6038e6187582ea23e507e6c8ac75a688"
+      },
+      {
+        "path": "static/7_Check configuration, Python static rules and implementation presence.txt",
+        "bytes": 4136,
+        "crc32": "feb198cf",
+        "sha256": "09d0a696ecbe4a99bb0f85af268351a8fcdfc8ad34a80b95b4cf8a0e83be6f40"
+      },
+      {
+        "path": "static/8_Run actions_upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9.txt",
+        "bytes": 2356,
+        "crc32": "67a757e6",
+        "sha256": "7f2405352d67e647927e55f06c778815051c73a2b7394887e7d25dd884b2e788"
+      },
+      {
+        "path": "static/16_Post Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 1753,
+        "crc32": "9b8740ed",
+        "sha256": "8943af399c5fb7e8b52e688c88e072190ee541e2d692d29d478f0049eefe6a78"
+      },
+      {
+        "path": "static/17_Complete job.txt",
+        "bytes": 61,
+        "crc32": "069a295c",
+        "sha256": "ccf95db8b5d550c0053c3016229837e07805316b15faad098994b22322ebc614"
+      },
+      {
+        "path": "3_contracts.txt",
+        "bytes": 119474,
+        "crc32": "1e81a25c",
+        "sha256": "3126454a38b9a190f4b631660e6be1b044b67004ad37c81e786a9bf31bdd5670"
+      },
+      {
+        "path": "contracts/system.txt",
+        "bytes": 590,
+        "crc32": "859471a6",
+        "sha256": "e2e628d62884b5ed6bb957fa361545313ca69e24ce5c10167c6502fa4bfc34ba"
+      },
+      {
+        "path": "contracts/1_Set up job.txt",
+        "bytes": 2278,
+        "crc32": "938aa0d5",
+        "sha256": "16911bd0644f15e1f153e0f360077883d17fe4aead5cf50652accc6fa32bf592"
+      },
+      {
+        "path": "contracts/2_Initialize containers.txt",
+        "bytes": 13177,
+        "crc32": "d0c0f197",
+        "sha256": "febc49efc31b8e3df39accfe322f952b85c696a1744eff66fe3c2ee13cd453d8"
+      },
+      {
+        "path": "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 11601,
+        "crc32": "f016ab34",
+        "sha256": "67d619f71c1901b6ee77a9559b5dc6858ebf189135862287405dc5491cb9fb0a"
+      },
+      {
+        "path": "contracts/4_Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 1094,
+        "crc32": "8a162e8f",
+        "sha256": "a36a9aa637082eb4012bbc5483e8a089bf76fc0282a6f056d2c71f9dba12b301"
+      },
+      {
+        "path": "contracts/5_Run mkdir -p reports_ci_contracts.txt",
+        "bytes": 1125,
+        "crc32": "fac9f68f",
+        "sha256": "62e114e6e829e4d3a11aa2d1e37ac8e4c8951cb0a86090bb4f9428bb10644915"
+      },
+      {
+        "path": "contracts/6_Run python -m pip install --require-hashes -r scripts_ci_requirements.lock.txt",
+        "bytes": 6496,
+        "crc32": "cf629c4d",
+        "sha256": "bf946989c084b797536a2c81bd2a55863df70c84cc45fba30fee3f61fc60cf70"
+      },
+      {
+        "path": "contracts/7_Require real application and test files.txt",
+        "bytes": 1250,
+        "crc32": "acf68fd8",
+        "sha256": "8c79cf58997e8d9c31f827b36020139839e69c085eda8432c52b767b1636eb31"
+      },
+      {
+        "path": "contracts/8_Install real application dependencies.txt",
+        "bytes": 17078,
+        "crc32": "a843a157",
+        "sha256": "d0e2a3f0a1fffa20ea470032f4eaf7888da8f9f611ab7c6535b7c13157cb803c"
+      },
+      {
+        "path": "contracts/9_Apply reviewed schema to explicitly selected disposable test database.txt",
+        "bytes": 1503,
+        "crc32": "5e77127f",
+        "sha256": "caf7a765b423f30fda882e8d7bfb6fca75c85df2e8b92b36aa23de36a48d2980"
+      },
+      {
+        "path": "contracts/10_Run contract, integration and fault tests against real services.txt",
+        "bytes": 8260,
+        "crc32": "4f3e7c23",
+        "sha256": "bc8c92a8d3a04baee2b1098cd2a423b6b345d0f335be9e916877b3e501071950"
+      },
+      {
+        "path": "contracts/11_Preserve real dependency logs.txt",
+        "bytes": 1583,
+        "crc32": "a9a01932",
+        "sha256": "89aa77d6f91fd9124a5fefc25fc5e4dda4bf450401dfce0572ac1e40d2c96683"
+      },
+      {
+        "path": "contracts/12_Run actions_upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9.txt",
+        "bytes": 2670,
+        "crc32": "e806d8ba",
+        "sha256": "ceeba756a413acb898dcd8f0009bf796fcadeb73ac54e3bd20ee03bb5f684e98"
+      },
+      {
+        "path": "contracts/22_Post Run actions_setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0.txt",
+        "bytes": 50,
+        "crc32": "2108f0e6",
+        "sha256": "46e818ad60d54193e516f64f7c9ba0fa76d6a02adc787d2f88611c5d4caa3b45"
+      },
+      {
+        "path": "contracts/23_Post Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "bytes": 1753,
+        "crc32": "2ee1d8d0",
+        "sha256": "a6736b376168a23fa375e53b0248ea1fd1c67f3393e0056da87538464e9ba2e3"
+      },
+      {
+        "path": "contracts/24_Stop containers.txt",
+        "bytes": 49540,
+        "crc32": "423cbb83",
+        "sha256": "d550373222bba33be5c9d734d179dfbf45d337da0a1a8e3e8368b5bdb5ecab70"
+      },
+      {
+        "path": "contracts/25_Complete job.txt",
+        "bytes": 61,
+        "crc32": "4b4df55f",
+        "sha256": "2d589e663f662b706a57f5ff7a38cb75e86d7cf154b822ff27fbeabb270dd6e3"
+      }
+    ],
+    "acquisition_endpoint": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/runs/40200930857/logs",
+    "official_digest_available": false
+  },
+  "metadata_pages_complete": true,
+  "acquisition": "Official gh REST GET JSON and original binary ZIP output; no extraction/repackaging used to infer ZIP integrity. Connector metadata retained separately.",
+  "limits": [
+    "API JSON representation is not original HTTP transport bytes",
+    "logs endpoint exposes no server digest; calculated local digest only",
+    "CI/Docker do not establish independent acceptance, formal performance, source-size compliance or final billing"
+  ]
+}
