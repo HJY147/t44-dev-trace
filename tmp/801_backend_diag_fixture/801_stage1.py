@@ -15,6 +15,20 @@ http = importlib.import_module("801_http")
 original = importlib.import_module("801_prepare")
 
 
+def event_digest(rows):
+    from t44.services.common import wire
+
+    def binary(value):
+        if isinstance(value, (bytes, bytearray)):
+            return {"bytes_hex": bytes(value).hex()}
+        raise TypeError("Unsupported event snapshot scalar")
+
+    raw = json.dumps(
+        wire(rows), sort_keys=True, separators=(",", ":"), default=binary
+    ).encode()
+    return hashlib.sha256(raw).hexdigest()
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     for name in ("identities", "output-dir", "host", "user"):
@@ -41,7 +55,7 @@ def main(argv=None):
     engine, writes_started, phase = None, False, "database_candidates"
     try:
         from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
-        from t44.services.common import task_model, wire
+        from t44.services.common import task_model
 
         engine = create_mysql_engine(mysql)
         factory = SqlAlchemyUnitOfWorkFactory(engine)
@@ -62,11 +76,7 @@ def main(argv=None):
             selected_events = g.count("escalation_events", {"task_id": selected})
             event_rows_before = g.rows("escalation_events", {})
             events_before = len(event_rows_before)
-            event_sha_before = hashlib.sha256(
-                json.dumps(
-                    wire(event_rows_before), sort_keys=True, separators=(",", ":")
-                ).encode()
-            ).hexdigest()
+            event_sha_before = event_digest(event_rows_before)
             http.write_fd(
                 status_fd,
                 {
@@ -132,11 +142,7 @@ def main(argv=None):
             )
             event_rows_after = g.rows("escalation_events", {})
             events_after = len(event_rows_after)
-            event_sha_after = hashlib.sha256(
-                json.dumps(
-                    wire(event_rows_after), sort_keys=True, separators=(",", ":")
-                ).encode()
-            ).hexdigest()
+            event_sha_after = event_digest(event_rows_after)
             if (
                 events_after != events_before
                 or event_sha_after != event_sha_before
