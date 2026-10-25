@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "限定源/原件/哈希复审完成；尚非实际MySQL执行或正式性能验收",
+  "implementation_status": "仅PUBLIC控制审核与一次新无网络模拟探针；0 SUT，不是验收执行",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json",
-  "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-public-v2/static-audit.json",
+  "latest_review_report": "reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1444,6 +1444,11 @@
       "id": "ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2.txt",
       "reason": "Bound cleanup follow-up to exact new source, preserve red history, inspect original evidence without repeating matrices; technical admission precedes administrative seal."
+    },
+    {
+      "id": "ROLE-reviewer-829-PUBLIC-CONTROL-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-CONTROL-v1.txt",
+      "reason": "PUBLIC-only control review separate from private acceptance; preserve freeze and zero-SUT boundary, use generic budget arithmetic and one necessary synthetic no-network probe."
     }
   ],
   "questions": [],
@@ -1487,9 +1492,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "ADMITTED_FOR_EXACT_BASELINE_FRESH_LOCAL_MYSQL_ONE_ROUND_ONLY",
+  "review_outcome": "NOT_ADMITTED_829_PUBLIC_V2_CONTROL_BOUNDARIES_AND_INPUTS",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "9a18a0fa7b59c25278cf0717d447962c0b1ba96c",
+  "review_target_sha": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
   "review_targets": [
     {
       "pr": 14,
@@ -1571,7 +1576,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "9a18 DIAG-CLEANUP-01限定闭环；准入一轮fresh本地MySQL baseline诊断",
+  "stage": "829 PUBLIC v2控制边界暂不准入；三项P2与中性输入澄清经root转交",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1590,7 +1595,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-25T06:35:11.077648+00:00",
+  "updated_at": "2026-10-25T06:53:00.798487+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2551,5 +2556,52 @@
       "APPROVE_main_global_gate_or_merge": false
     },
     "evidence_commit": "676f8618ade5a9f73eaf22893010d39dbe17ed75"
+  },
+  "previous_phase_before_829_PUBLIC_v2_control_review": {
+    "stage": "9a18 DIAG-CLEANUP-01限定闭环；准入一轮fresh本地MySQL baseline诊断",
+    "implementation_status": "限定源/原件/哈希复审完成；尚非实际MySQL执行或正式性能验收",
+    "review_target_sha": "9a18a0fa7b59c25278cf0717d447962c0b1ba96c",
+    "review_outcome": "ADMITTED_FOR_EXACT_BASELINE_FRESH_LOCAL_MYSQL_ONE_ROUND_ONLY",
+    "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
+    "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
+  },
+  "review_target_kind": "independent tool PUBLIC freeze SHA256, not Git SHA",
+  "829_PUBLIC_v2_control_review": {
+    "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
+    "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
+    "report": "reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md",
+    "audit": "agents/reviewer/evidence/829-public-v2/static-audit.json",
+    "public_inventory_hash_checks": 7,
+    "explicit_PUBLIC_text_snapshots": 6,
+    "opaque_bundle_access": "wholehash only; no contents parse/decrypt/execute",
+    "P2": [
+      "829-PERF-CAP-01",
+      "829-EVIDENCE-MEM-01",
+      "829-DEADLINE-01"
+    ],
+    "neutral_input_clarifications": [
+      "native build identity or real image",
+      "functional project/iteration/service scope bootstrap",
+      "authority warmup vs resource pre-sampling",
+      "single-project 800 pools vs uniform dataset representativeness"
+    ],
+    "new_probe": "tmp/827_review_829_control/827_deadline_probe.py",
+    "probe_runs": 1,
+    "probe_runtime": "Python3.12.10",
+    "probe_exit_code": 0,
+    "probe_result": "counterexample captured; not tool or SUT pass",
+    "actual_socket_calls": 0,
+    "SUT_requests": 0,
+    "existing_selftests_or_private_suite_executed": false,
+    "private_Git_cases_keys_logs_read": false,
+    "contacted_829": false,
+    "findings_relayed_only_via_root": true,
+    "SUT_CI_services_faults_cloud_executions": 0,
+    "outcome": "NOT_ADMITTED;fix controls and clarify neutral inputs before new-freeze review",
+    "original_v2_beforeSUT0_preserved_as_declaration_only": true,
+    "9a18_CI_diagnostic_scope_is_separate": true,
+    "prompt_ref": "ROLE-reviewer-829-PUBLIC-CONTROL-v1",
+    "APPROVE_main_global_gate_or_product_acceptance": false,
+    "optional_ruff": "UNAVAILABLE: No module named ruff, exit1, no install or pass claim"
   }
 }

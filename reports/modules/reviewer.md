@@ -333,3 +333,10 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 限定复审行政封档：报告证据676f8618ade5a9f73eaf22893010d39dbe17ed75已push exit0；Issue12 COMMENT6394438942，https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394438942，特定评论全文GET exit0，body逐字及issue_url严格核对。准入仍仅精确9a18的一轮默认fresh本地MySQL诊断，原b782拒绝保持，非正式性能/产品通过。本岗无新执行、无APPROVE/main/global gate；回执位于agents/reviewer/evidence/diagnostics-9a18a0f/，metadata封档后交总协调。
+
+
+## 2026-10-25 829 PUBLIC v2 控制边界限定审核
+
+实际ROLE-reviewer-829-PUBLIC-CONTROL-v1，不是测试岗，仅manifest明列PUBLIC文本及密文wholehash，未读private/独立Git/用例/keys/logs，不联系829，发现只经root。精确freeze05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e，control3a1de1e9；7个inventory bytes/SHA全同，6份明确允许文本原字节快照。三项P2：250000对400×600闭环可能提前截断（100ms通用算术240万，不是SUT实测）、ciphertext read_bytes收尾O(文件)内存、PUBLIC Gate无in-flight总deadline支撑最多30s承诺。另native image身份/functional project-scoped service bootstrap输入未闭合；30s权威解释与resource提前60s分开，单project800与均匀40×150是代表性/设置澄清，不擅判产品缺陷。一次新零网络827微探针：Python3.12.10真实Gate+假transport/模拟时钟，grant1s/wall2s/timeout0.1，61s返回仍200 complete/error null；exit0为反例捕获，0 socket/SUT。未跑既有12自测或私有包/服务/CI/故障/云。当前不准入整体执行，functional仍需闭合输入及总deadline，performance需另处理数量/证据预算；不降400/600，不抽样删body，原v2 beforeSUT声明保留且不冒私有计数已验证。技术问题先发root后角色封档，本次与9a18 CI诊断准入分开。报告reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md；证据agents/reviewer/evidence/829-public-v2/。
+
+本轮可选probe Ruff命令python3 -m ruff check tmp/827_review_829_control/827_deadline_probe.py实际exit1，原因No module named ruff；保留optional-ruff-unavailable.json，不称lint通过，未安装依赖。实际新微探针此前已exit0，未重复。

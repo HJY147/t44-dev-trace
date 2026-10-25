@@ -1,0 +1,132 @@
+"""PUBLIC control boundary. Contains no acceptance cases or credentials.
+Only Gate.request can contact the SUT. Never follows redirects or proxies.
+Raw evidence is encrypted before filesystem write; keys stay in private/secrets.
+"""
+from __future__ import annotations
+import base64,datetime as dt,hashlib,hmac,http.client,ipaddress,json,os,re,secrets,socket,ssl,subprocess,threading,time
+from pathlib import Path
+from urllib.parse import urlsplit
+
+VERSION='829-control-1'
+MAX_WALL_SECONDS=2400
+MAX_REQUESTS=250000
+MAX_CONCURRENCY=400
+MAX_RESPONSE_BYTES=16777216
+MAX_EVIDENCE_PLAINTEXT_BYTES=8589934592
+ALLOWED_PHASES={'functional','fault','warmup','steady','postcondition','inventory'}
+ALLOWED_FAULTS={'mq_stop','mq_start','scheduler_restart','service_restart','database_stop','database_start','audit_unavailable','audit_restore','commit_ack_loss','commit_ack_restore'}
+
+def utc():return dt.datetime.now(dt.timezone.utc).isoformat(timespec='microseconds').replace('+00:00','Z')
+def parse_utc(s):return dt.datetime.fromisoformat(s.replace('Z','+00:00'))
+def canonical(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+
+class BoundaryError(RuntimeError):pass
+class EncryptedJournal:
+    """Streaming AES-256-CBC/PBKDF2 + HMAC-SHA256 encrypt-then-MAC.
+    The passphrase is passed through an inherited FD, never argv/env/logs.
+    Consumers MUST verify HMAC before decrypting. Master key never leaves private.
+    """
+    def __init__(self,path:Path,secret_dir:Path):
+        path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
+        secret_dir.mkdir(parents=True,exist_ok=True,mode=0o700)
+        self.path=path;self.lock=threading.Lock();self.n=0;self.plaintext_bytes=0
+        self.key=secrets.token_bytes(64);self.keypath=secret_dir/(path.name+'.key')
+        fd=os.open(self.keypath,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+        with os.fdopen(fd,'wb') as f:f.write(self.key)
+        fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600);self.output=os.fdopen(fd,'wb')
+        r,w=os.pipe();os.write(w,base64.b64encode(self.key[:32])+b'\n');os.close(w)
+        self.process=subprocess.Popen(['/usr/bin/openssl','enc','-aes-256-cbc','-salt','-pbkdf2','-iter','200000','-pass',f'fd:{r}'],stdin=subprocess.PIPE,stdout=self.output,stderr=subprocess.PIPE,pass_fds=(r,))
+        os.close(r)
+    def append(self,value):
+        line=canonical(value)+b'\n'
+        with self.lock:
+            if self.plaintext_bytes+len(line)>MAX_EVIDENCE_PLAINTEXT_BYTES:raise BoundaryError('evidence disk budget boundary')
+            self.process.stdin.write(line);self.process.stdin.flush();self.n+=1;self.plaintext_bytes+=len(line)
+    def close(self):
+        self.process.stdin.close();err=self.process.stderr.read();rc=self.process.wait();self.process.stderr.close();self.output.close()
+        if rc:raise BoundaryError('evidence encryption failed: '+str(rc))
+        tag=hmac.new(self.key[32:],digestmod=hashlib.sha256)
+        with self.path.open('rb') as f:
+            for chunk in iter(lambda:f.read(1048576),b''):tag.update(chunk)
+        result={'cipher':'AES-256-CBC','kdf':'PBKDF2-HMAC-SHA256','iterations':200000,'mac':'HMAC-SHA256','tag':tag.hexdigest(),'records':self.n,'ciphertext_sha256':hashlib.sha256(self.path.read_bytes()).hexdigest()}
+        self.path.with_suffix(self.path.suffix+'.integrity.json').write_text(json.dumps(result,indent=2))
+        return result
+
+class PinnedTLS(http.client.HTTPSConnection):
+    def __init__(self,host,port,ip,context,timeout):
+        super().__init__(host,port,context=context,timeout=timeout);self.ip=ip
+    def connect(self):
+        raw=socket.create_connection((self.ip,self.port),self.timeout)
+        try:self.sock=self._context.wrap_socket(raw,server_hostname=self.host)
+        except BaseException:raw.close();raise
+
+class Gate:
+    def __init__(self,grant,manifest,route_allowlist,journal):
+        if grant.get('admitted') is not True:raise BoundaryError('explicit admission absent')
+        if grant.get('tool_freeze_sha256')!=manifest['tool_freeze_sha256']:raise BoundaryError('wrong frozen tool')
+        if grant.get('operator')!='AI':raise BoundaryError('operator must be AI')
+        if not grant.get('isolated_resource_ids') or not grant.get('build',{}).get('source_sha') or not grant.get('build',{}).get('image_digest'):raise BoundaryError('exact build/isolation metadata absent')
+        if not re.fullmatch('[0-9a-f]{40}',grant['build']['source_sha']):raise BoundaryError('source SHA format')
+        u=urlsplit(grant['base_url'])
+        if u.scheme!='https' or not u.hostname or u.username or u.password or u.query or u.fragment or u.path.rstrip('/')!='/api/v1':raise BoundaryError('exact HTTPS /api/v1 base required')
+        self.host=u.hostname;self.port=u.port or 443;self.base=u.path.rstrip('/');self.ip=grant['pinned_ip'];ipaddress.ip_address(self.ip)
+        self.context=ssl.create_default_context(cafile=grant.get('ca_file'))
+        self.journal=journal;self.grant=grant;self.routes=route_allowlist
+        if grant.get('phase') not in ['functional','fault','performance']:raise BoundaryError('one explicit phase required')
+        self.started=time.monotonic();self.expires=parse_utc(grant['expires_at'])
+        self.wall=min(float(grant['max_wall_seconds']),MAX_WALL_SECONDS)
+        self.limit=min(int(grant['max_requests']),MAX_REQUESTS)
+        self.concurrent=min(int(grant['max_concurrency']),MAX_CONCURRENCY)
+        if self.wall<=0 or self.limit<=0 or self.concurrent<=0:raise BoundaryError('nonpositive budget')
+        self.sem=threading.BoundedSemaphore(self.concurrent);self.lock=threading.Lock();self.count=0;self.active=0;self.max_active=0
+    def request(self,method,path,body=None,token=None,idempotency_key=None,phase='functional',case_id=None,raw_body=None,timeout=15):
+        allowed={'functional':{'functional','postcondition'},'fault':{'fault','postcondition'},'performance':{'inventory','warmup','steady','postcondition'}}[self.grant['phase']]
+        if phase not in allowed:raise BoundaryError('phase not admitted')
+        if not path.startswith('/') or path.startswith('//') or '#' in path or '\\' in path:raise BoundaryError('path rejected')
+        route=path.split('?',1)[0]
+        if not any(method==m and re.fullmatch(p,route) for m,p in self.routes):raise BoundaryError('route not allowed')
+        # Timeout is bounded; no automatic retries, redirects, proxies or hidden health checks.
+        with self.sem:
+            with self.lock:
+                if time.monotonic()-self.started>=self.wall or dt.datetime.now(dt.timezone.utc)>=self.expires:raise BoundaryError('admission expired')
+                if self.count>=self.limit:raise BoundaryError('request budget exhausted')
+                self.count+=1;seq=self.count;self.active+=1;self.max_active=max(self.max_active,self.active);active=self.active
+            begin=time.monotonic_ns();started=utc();status=None;headers=[];response=b'';error=None;complete=False
+            payload=raw_body if raw_body is not None else (canonical(body) if body is not None else None)
+            request_headers={'Accept':'application/json','Connection':'close'}
+            if payload is not None:request_headers['Content-Type']='application/json'
+            if token:request_headers['Authorization']='Bearer '+token
+            if idempotency_key is not None:request_headers['Idempotency-Key']=idempotency_key
+            connection=PinnedTLS(self.host,self.port,self.ip,self.context,min(max(float(timeout),0.1),30))
+            try:
+                connection.request(method,self.base+path,body=payload,headers=request_headers)
+                r=connection.getresponse();status=r.status;headers=r.getheaders();response=r.read(MAX_RESPONSE_BYTES+1)
+                if len(response)>MAX_RESPONSE_BYTES:error='response size boundary exceeded';complete=False
+                else:complete=True
+            except BaseException as e:
+                error=type(e).__name__+': '+str(e)
+            finally:
+                connection.close();end=time.monotonic_ns();ended=utc()
+                with self.lock:self.active-=1
+            record={'kind':'request','sequence':seq,'phase':phase,'case_id':case_id,'method':method,'path':path,'request_headers':list(request_headers.items()),'request_body_b64':base64.b64encode(payload or b'').decode(),'utc_start':started,'utc_end':ended,'monotonic_start_ns':begin,'monotonic_end_ns':end,'elapsed_ns':end-begin,'active_at_start':active,'http_status':status,'response_headers_raw':headers,'response_body_b64':base64.b64encode(response).decode(),'transport_error':error,'body_complete':complete}
+            self.journal.append(record)
+            try:data=json.loads(response)
+            except (ValueError,UnicodeError):data=None
+            return {'status':status,'headers':headers,'body':response,'json':data,'error':error,'complete':complete,'elapsed_ns':end-begin,'sequence':seq}
+    def fault_request(self,action,public_signal_dir):
+        if self.grant['phase']!='fault' or action not in ALLOWED_FAULTS or action not in self.grant.get('allowed_faults',[]):raise BoundaryError('fault not admitted')
+        if time.monotonic()-self.started>=self.wall or dt.datetime.now(dt.timezone.utc)>=self.expires:raise BoundaryError('admission expired before fault')
+        nonce=secrets.token_hex(16);p=Path(public_signal_dir);p.mkdir(parents=True,exist_ok=True)
+        signal={'action':action,'nonce':nonce,'resource_ids':self.grant['isolated_resource_ids'],'requested_utc':utc(),'deadline_utc':self.grant['expires_at'],'tool_executes_fault_commands':False}
+        out=p/(nonce+'.request.PUBLIC.json');out.write_text(json.dumps(signal,indent=2))
+        self.journal.append({'kind':'fault_request',**signal})
+        deadline=min(self.started+self.wall,time.monotonic()+120)
+        ack=p/(nonce+'.ack.PUBLIC.json')
+        while time.monotonic()<deadline:
+            if ack.exists():
+                value=json.loads(ack.read_text())
+                if value.get('nonce')!=nonce or value.get('action')!=action or value.get('completed') is not True or set(value.get('resource_ids',[]))!=set(self.grant['isolated_resource_ids']):raise BoundaryError('fault acknowledgment invalid')
+                if not value.get('completed_utc') or parse_utc(value['completed_utc'])>self.expires:raise BoundaryError('fault acknowledgment time invalid')
+                self.journal.append({'kind':'fault_ack','received_utc':utc(),'monotonic_ns':time.monotonic_ns(),'value':value});return value
+            time.sleep(.25)
+        raise BoundaryError('fault acknowledgment deadline')

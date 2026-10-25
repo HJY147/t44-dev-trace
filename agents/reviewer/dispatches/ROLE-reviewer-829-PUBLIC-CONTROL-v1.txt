@@ -1,0 +1,7 @@
+Prompt-Ref: ROLE-reviewer-829-PUBLIC-CONTROL-v1
+派工者：AI总协调；接收者：固定AI审核岗。下文为本轮实际派工原文，不是用户亲写，不代表人工完成研究反思。
+
+新独立审核scope仅829 PUBLIC控制，不是测试岗、不准读private/独立Git/用例。入口 /Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/manifest.PUBLIC.json；现v2 freeze05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e。允许仅manifest明列PUBLIC README/control.py/routes/templates与密文wholehash，不开任何private/不解密case，不联系829，发现经root转。
+请审执行/资源/证据边界相容性，原冻结beforeSUT0。root初看PUBLIC有几个实质可执行性疑点待你独立核：①400闭环600s下250000 request上限可能在良好服务器提前触发（通用算术如100ms会到240万），8GiB明文证据cap+全body也可能截断；怎样安全给足量/无损压缩/不隐去边界；②formal预热30s，而root后续复测资源方法希望至少60s，产品规范仅原文约束请核不注入App预期；③root拟先原生Python3.12+既有本地MySQL13306+freshRabbit做functional（非Docker），API native没有image_digest，不能把源码hash冒镜像hash，应让829独立审是否四权威允许native build manifest身份；④functional新空库仅5人+project-scoped service时前置project/iteration/resource边界如何明确，不能猜项目ID给服务权限。性能单project要求两400pool与均匀40×150数据不兼容是setup选择/代表性问题，不一定产品缺陷；只核PUBLIC契约不看cases。技术范围只出阻断/接口澄清，不改工具，不发SUT，不再跑已有测试。若需新无网络控制探针放tmp/827_review_829_control。先给关键技术结论再封role记录；不同scope与前CI诊断分开。
+
+改进理由：将执行控制审核与私有验收判定隔开，用公开输入/预算通用算术和最多必要的新无网络探针说明问题；先技术阻断，后角色记录，旧冻结不回写。不伪装真人、不把AI审工具记作学生独立测试。
