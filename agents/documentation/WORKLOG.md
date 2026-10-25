@@ -409,3 +409,13 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 实现d194019dd07be6d966b218b04c866c4829f60cd6本岗commit。首push返回curl16/HTTP2framing/unexpecteddisconnect/exit1，虽末尾Everythingup-to-date仍不当成功；随即ls-remote精确分支无结果，按单命令HTTP1.1重试push exit0新建远端分支，不改全局Git设置。原失败保留，为本岗网络工具问题，不冒产品失败。
 - GitHub connector实际发布Issue9评论6396883029；只GET该精确ID，body/URL与本地保存正文逐字同，receipt归档，未读讨论timeline。42文档核对/27相对链接仍非产品测试。
 - 本笔仅保存发表回执和交接，无新源/私有材料读取或产品操作；最终receipt commit/push并HEAD/远端一致后回传总协调。
+
+
+## 2026-10-25T14:34:55.749993+00:00 Round9 CI 首次失败原件封存
+
+- 本岗 AI 从准确 f4bd382d 新建 codex/ci-evidence-round9；先根外建树，收到总协调澄清后以 git worktree move 原样搬入项目内自己的 worktree，未删数据。原三轮派工口误已由总协调更正为两对 run，未重复下载旧轮。
+- 优先 GitHub connector GET 四 run/artifacts/jobs；下载 connector 仅返回远程 ZIP 引用，无本地路径，故按授权以 gh API 原 ZIP bytes 直接 exclusive-create 落盘，没有通过 gh run download 解包文件冒充原件。签名 URL 未保存。
+- 首次 run40200930857 / source a16238b9 / attempt1 / push：run overall cancelled；static job121191761720 FAILURE，coverage CANCELLED，contracts/frontend SUCCESS。static ZIP4157 bytes、sha256 911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6 与服务端一致；10成员 CRC 全通过，无绝对/父级路径或symlink。
+- static-3.log/static-console.log/static.json保留真实 E731：tmp/backend/messaging/806_newscope.py:34，ruff exit1；未改测试或重跑。绑定见 records/ci/40200930857/archive-binding.phase1.json。
+- metadata 是官方 API JSON 表示，非原始 HTTP 传输字节；ZIP 为未经重打包的原bytes。其余三run元数据已落盘，但全量ZIP/测试覆盖率解析尚待下一阶段，当前不据未核原件宣称。
+- 只做 Git、API下载、JSON/ZIP/hash；没有产品执行、独立验收、正式压测、云或浏览器操作。5862/5100超762据总协调，本岗未改口径/未重算。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1。

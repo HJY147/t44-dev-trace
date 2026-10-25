@@ -30,3 +30,8 @@ Agent-Role: documentation；Prompt-Ref: ROLE-documentation-ROUND8-20261025-v1；
 - 工具大输出截断改按精确字段读取；没有把未显示字段猜成结果。
 - 本轮P已封入事实终章；42项轻量检查、27相对链接全部通过；实现d194019已commit/push；Issue9评论6396883029精确GET正文逐字一致，回执归档；未APPROVE、主干合并或全局放行。
 - 上轮模块报告和交接状态可从基线bcf01b1恢复，不将后发证据回填旧cutoff。
+
+
+## 2026-10-25 Round9 CI阶段1
+
+本岗AI先封存40200930857 / a16238b9的E731原始ZIP及官方run/artifact/job JSON，绑定attempt1/push。static FAILURE、coverage CANCELLED、run overall CANCELLED；后发绿不改写首次红。4157bytes与服务端sha256一致，10成员CRC/path/symlink核对通过。详见records/ci/40200930857/archive-binding.phase1.json。其余原件及测试覆盖率解析待阶段2，CI/Docker不代表独立、性能、规模或账单通过。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1；Refs: #9。
