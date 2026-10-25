@@ -354,3 +354,8 @@ C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注�
 ### 935 round8只读延迟诊断
 
 新worktree基935，3e09设计→1013df0标准库离线raw统计，产品0改；报告agents/backend/latency-diagnosis-20261025/report.md。root中性完整raw8301045B/3821564c…与final匹配，每组steady600采样，API约3.986核/gen0.785/MySQL共享0.740，不冒全机满/无DB锁；原独立mirror缺尾与formal0不重判。Server-Timing严格漏handler前等待和最后wire/render/send，已交root配对残差量化第一观测点，通用strictTLS canary与新schema四路径stage harness最小计划/packet另列，未执行。旧seq非935正式根因，list热点非round8；16/32仅条件容量对照、64无当前依据，不能盲升连接池/worker。无app/负载/DB访问/云/新agent/私件或operator联系，无新cloc/性能通过，作者AI非学生亲历。
+
+
+### tmp810开发stage诊断工具已交（未云运行）
+
+先设计e51c8ce，10分钟内bc428 checkpoint；最终C b76775326095bdc92ddd5883eaa4dc79eaf7d2d1，core8f0dbec…/17122B，netdd776e1…/7356B；投递10575字符，附解码11173，都<=18432。透明ASGI/worker/原UUID/SQLAlchemy readonly events/真实queue wait与pool快照/threadCPU，指纹subset非完整镜像证明，source935产品0改。root指定exact t44c_r9diag935_p只一项新增允许，近似/旧P816/13306拒；未接实际新库。首观察器掩错红、fixture route红、启动畸形DSN合成marker回显红全保留并窄修；当前22owned/SQLite/API smoke目标绿，非云MySQL/4业务压力或全验收。Linux网络collector未实采，数据仅counts且需namespace/window声明，残差不冒网络归因。stage-report.md与stage-runbook.md给精确root env/包/边界，sessionpacket/实测由root另准；无新依赖/agent/CI/私件或云动作，无新cloc/学生亲历。

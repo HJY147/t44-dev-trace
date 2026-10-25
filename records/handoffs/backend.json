@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "round8-offline-latency-diagnosis-ready-for-root-isolation",
-  "implementation_status": "Only offline resource analyzer/report added at source935; no product patch or live execution; proposed stage harness awaits separate root packet/grant",
+  "stage": "stage810-source935-developer-diagnostics-ready-pending-root-packet",
+  "implementation_status": "Developer diagnostic package implemented and owned SQLite/ASGI checks passed; source935 product unchanged, no cloud/live MySQL execution; root packet/admission required",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2280,6 +2280,29 @@
     "new_cloc_or_microbenchmark": false,
     "next": "root generic strictTLS+writer canary; separate new-schema stage profiler admission; no blind core scaling",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397037024",
+    "github_exact_body_readback": true
+  },
+  "stage810_20261025": {
+    "design_first": "e51c8ce",
+    "initial_checkpoint": "bc428ae",
+    "source": "b76775326095bdc92ddd5883eaa4dc79eaf7d2d1",
+    "core_sha256": "8f0dbec80e168a8dbac7f3707b467d16c9146fe7937b7c5c2f6825b20bf966f6",
+    "net_sha256": "dd776e1fe6c94aa005fa6b00734a6f8cebe54b24a9352917dbea7a771682552b",
+    "report": "agents/backend/latency-diagnosis-20261025/stage-report.md",
+    "runbook": "agents/backend/latency-diagnosis-20261025/stage-runbook.md",
+    "prompt": "ROLE-backend-STAGE-PROBE-20261025-v1",
+    "delivery": "agents/backend/latency-diagnosis-20261025/stage-delivery.b7677532.json",
+    "delivery_chars": 10575,
+    "decode_command_chars": 11205,
+    "formal_acceptance": false,
+    "owned_final_checks": 22,
+    "cloud_or_live_mysql_executed": false,
+    "network_collector_executed": false,
+    "product_changed": false,
+    "exact_additional_schema_authorized_by_root": "t44c_r9diag935_p",
+    "old13306_or_other_schema_admission": false,
+    "next": "root review/package hash; actual new sessionpacket; root source935 Python3.12 owned diagnostic execution only, formal separately frozen",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6398442406",
     "github_exact_body_readback": true
   }
 }

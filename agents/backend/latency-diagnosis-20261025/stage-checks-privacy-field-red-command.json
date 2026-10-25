@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/810_latency_diagnosis/810_checks.py",
+    "-q",
+    "--tb=short",
+    "-k",
+    "malformed_owned",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=tmp/810_latency_diagnosis/.owned-test-privacy-field-red",
+    "--junitxml=agents/backend/latency-diagnosis-20261025/stage-checks-privacy-field-red.xml"
+  ],
+  "source": "9ce7be9205feedacd36f8b252d86e894a4315d29",
+  "complete_child_environment": {
+    "PATH": "/bin:/usr/bin",
+    "PYTHONPATH": "backend",
+    "DATABASE_URL": "",
+    "T44_DATABASE": "",
+    "T44_SESSION_TTL_SECONDS": "3600",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  },
+  "exit_code": 1
+}

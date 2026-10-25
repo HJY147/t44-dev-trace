@@ -583,3 +583,13 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 静态严格证Server-Timing同步handle内起、headers计算时截断，漏ASGI/body/线程进入前等待及末wire/render/send；已给root第一具体观测点：原record配对latency/appdur及逐请求残差分位（不是两P95相减）、response字节分位。支持维护者新strictTLS通用canary但非SUT/旧结果不重判。
 - 旧81c CPU证据只作历史，API/contracts/engine等逐字同而Runtime/Workflow已变，list热点非本轮四路径且旧无escalation，不泛化。harness-interface给新tmp810 stage开发方案/新schema专用user/私密env/四路径公开fixture/有界采样/双机短诊断与参数；未实现执行、不接受保护旧库或买云。量化16/32规划只是假设，当前API未吃满8核、64无依据，不保证32达标或盲升worker105→240/480连接。
 - 当前只诊断脚本159物理行含空注释，0产品改动/无新cloc/微benchmark/重测试；未触live、新agent或operator，Ruff/format绿。报告agents/backend/latency-diagnosis-20261025/report.md，作者执行者后端AI，非学生手写；独立旧失败、P95/14reset/400→386和formal0保持。root并行产品/DB规模岗不交叉写，待根另给新schema与执行准入才开发实测harness。
+
+
+## tmp810 source935开发stage诊断包（无云执行）
+
+- root派工13:00:59后e51c8ce先设计/prompt，13:08:15完成bc428ae最小checkpoint并通知root，10分钟内；仅tmp/810_latency_diagnosis与本岗记录，不改产品/根树，不读别岗日志/runtime凭据文件/独立805809814817818829，不派agent/触云/旧13306或全CI。原镜像/UI/服务准备归root与部署岗，不介入其护栏。
+- outerASGI ingress/body/原sync worker/send-end/原UUID，原Runtime/request/business/precommit/schema/wire/render，SQLAlchemy目标engine只读事件、真实pool占用/内部Queue.get。threadCPU只同步调用；pool.connect含建连/ping不叫纯等池，phaseinclusive不相加；writer/observer错误不盖原HTTP/SQL但诊断INVALID，固定O_EXCL0600fd/有界样本/恢复/ownedengine释放。无body/bind/token/DSN输出；all模式可不改consumer header，cap/warmup边界明记。
+- 首7项1红6绿发现观察器ArithmeticError盖原Empty，0729安全观察窄修后7绿；初E731 lint非零后仍commit事实保留→def修，非首轮全绿。API+SQLite真实smoke首1红8绿为fixture错getMe路径baseline/instrumented均404，仅用冻结OPERATIONS修输入后9绿；后guard/cleanup/all模式16/17绿，非累加。
+- root精确`t44c_r9diag935_p`第二允许项先51663f22设计再实施，原prefix/DSN/expected/user/host匹配与13306拒全保留；允许仅owned engine桩证明，未建连接，未来正式F/P不套授权。21绿后为隐私补目标：初普通坏URL只是ArgumentError类型不合预期，不冒泄露；缺@的合成字段被解析作port真实回显marker，窄目标真红→仅factory配置解析从None抛固定脱敏ValueError。最终C b76775326095bdc92ddd5883eaa4dc79eaf7d2d1全22绿0.77s，最小child env清空继承DB配置/禁plugin autoload，非新增22。
+- core17122B/SHA8f0dbec80e168a8dbac7f3707b467d16c9146fe7937b7c5c2f6825b20bf966f6；只读Linuxnet7356B/dd776e1...，ss/TCPsockstat/FD/ephemeral/TIME_WAIT/LISTEN/RST/重传只计数，不采地址/目标/env，不改内核，当前只parser测未在系统/云采样；TLS复用/客户端writer另需caller中性时钟，残差不当网络根因。
+- gzip双文件current stage-delivery.b7677532.json10575字、install.b7677532.txt11205字均<=18432，解码逐字往返/hash齐，numeric module import离线成功。原red/log/XML无损gzip双hash，旧包initial/b3/f7留历史不当current；stage-report/runbook/interface/真实命令齐。产品935字节全同/0新产品行，无新cloc、不冒MySQL/4业务压力/正式400600270通过；只owned stub/SQLite本地TestClient，根另给新sessionpacket后实跑。作者执行者AI非学生手写。

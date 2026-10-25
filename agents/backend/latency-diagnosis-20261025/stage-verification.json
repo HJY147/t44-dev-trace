@@ -1,0 +1,96 @@
+{
+  "test_source": "b76775326095bdc92ddd5883eaa4dc79eaf7d2d1",
+  "script_files": {
+    "tmp/810_latency_diagnosis/810_checks.py": {
+      "sha256": "a8a8409dabc3ecd16fb7c4c77e4f0c7f830357006750822e281b9180c1a87f1f",
+      "physical_lines_including_blanks_comments": 483
+    },
+    "tmp/810_latency_diagnosis/810_stage.py": {
+      "sha256": "8f0dbec80e168a8dbac7f3707b467d16c9146fe7937b7c5c2f6825b20bf966f6",
+      "physical_lines_including_blanks_comments": 428
+    },
+    "tmp/810_latency_diagnosis/810_net_snapshot.py": {
+      "sha256": "dd776e1fe6c94aa005fa6b00734a6f8cebe54b24a9352917dbea7a771682552b",
+      "physical_lines_including_blanks_comments": 182
+    }
+  },
+  "product_diff": [],
+  "junit": {
+    "stage-checks-red.xml.gz": {
+      "tests": 7,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-green.xml": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-api.xml.gz": {
+      "tests": 9,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-final.xml": {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-admission.xml": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-release.xml": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-schema.xml": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-local-only.xml": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-privacy-red.xml.gz": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-privacy-field-red.xml.gz": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "stage-checks-ready.xml": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "no_cloud_or_mysql_or_existing13306_connection": true,
+  "only_owned_stub_sqlite_local_TestClient_targets": true,
+  "source_guard_5_file_subset_not_full_image_attestation": true,
+  "network_collector_executed": false,
+  "numeric_module_import_without_app_creation": "passed",
+  "delivery_receipt": "stage-delivery-receipt.b7677532.json",
+  "original_failures_retained": true,
+  "latest_21_repeat_reason": "Complete explicit child environment empties database settings/disables plugin autoload; same C, tests not cumulative",
+  "latest_final_suite": 22,
+  "latest_final_suite_only_not_cumulative": 22
+}

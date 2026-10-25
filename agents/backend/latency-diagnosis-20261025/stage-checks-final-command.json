@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/810_latency_diagnosis/810_checks.py",
+    "-q",
+    "--tb=short",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=tmp/810_latency_diagnosis/.owned-test-final",
+    "--junitxml=agents/backend/latency-diagnosis-20261025/stage-checks-final.xml"
+  ],
+  "source": "0d8fa75e50f7bb403114bdf71951e93dffc549f9",
+  "env_overrides": {
+    "PYTHONPATH": "backend"
+  },
+  "exit_code": 0
+}
