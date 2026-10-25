@@ -353,3 +353,6 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 本阶段执行后新事实/复审：root实际run40171891410三job迁移后REVOKE1141停止，锁/HTTP/业务case0；本岗只收root转述、未独立读run日志/artifacts/SHOWGRANTS，不把准备失败记作候选竞争失败，原812静态准入快照/nonce01保留。修订6738c07b150da0df8554ba3b90d52e0cbc101fe6已新审：6文件差量，移除MYSQL_USER/PASS自动用户，先mysql.user拒绝已有t44，再CREATE USER密码绑定，库名_转义CRUD+原3表PS SELECT，无REVOKE/DROP/PROCESS/global；产品和两driver无改动。admission整AST除固定02同旧，request除同步02同旧；新8JUnit只复算8绿不重跑。查MySQL8.4官方GRANT规则确认schema级_转义方向，不冒实际SHOWGRANTS/有效权限已验。明确技术结论已先给root：精确6738一次第二轮fresh开发执行准入，真实setup/权限/锁/HTTP待CI，旧source/失败不回写。root另转product40171891359旧986unblock_pending查询账本预期3实际4失败，只记转述，不改产品/账本、不宣称fullCI绿。报告追加lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md，原件workflow-6738c07-audit.json。
+
+
+本阶段行政封档：技术报告/证据38e5858185e824cc0e62b177b54212a5b96d8f42已push；Issue12 COMMENT6394823088（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394823088）特定全文GET exit0且body/issue逐字同。root最新转述第二轮40172242303/6738 completedSUCCESS、3原artifact待下载解析；本岗未审run，不预填19或任何具体casecount/verdict。普通product账本红/规模FAIL仍开放；技术准入不冒global/merge/product通过。角色行政metadata封条后释放槽给BE，未来829 v3是另scope，不提前读其内容。
