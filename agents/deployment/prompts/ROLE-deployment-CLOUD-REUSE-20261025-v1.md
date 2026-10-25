@@ -9,3 +9,5 @@ root AI协调要求：本岗只写本地可审脚本/配置/CI，不抢UI、不�
 实际AI调试追加：root在官方云助手取得app exit141/aptupdate成功，要求不重买、保留raw、限定修pipefail早退出。部署AI只读授权单文件并用synthetic大输出复现141，完整消费awk/全捕获dpkg查询后离线0，不冒云重跑已成功/用户亲历。
 
 关键AI质量约束实际演进：root遇Docker29 ID不同，不准删镜像/改daemon/跳ID，05输出被截断不冒全量；部署改用原已核archive中完整manifest→config→layer真实SHA/size/DiffID链，classic对比保留，13恶意改动反例与真实双节点proof区分。后续App profile新CA/账户、持久ownedtimer先准备，不等fixture/不冒启动；未来升级必须清旧t44目录再完整COPY并集合hash比对，不拿935绿套新源。均AI过程，不是学生手写感想。
+
+真实补充约束：parent指出805需要crypto且测试OS不可见SUT，部署离线双stage只COPYsitepackages/freshPython清PYTHONPATH并实际findspec/path/crypto探针；新runtimeId独立，不冒旧officialID。PUBLIC清单格式被部署先前假设为sha256sum（603未执行），root指出真实JSONfreeze，V3只读批准PUBLIC公式后校canonical不改包；原82/603保留。810与backend直接明确无packet/twoPUBLIC/env精确字段，新profile保旧base/timer不变，CA键缺失明确纠正而不是猜字段。root真云回执与本地pureguard/未读私有结果严格区分。

@@ -472,3 +472,11 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 Ubuntu22首轮实际失败由root转述：app invoke20s exit141，apt官方update下载成功但无Candidate marker；本岗只读获授权的单一app-packages-first-failure.log，3502bytes/SHA24666301...，末Reading package lists.../0Candidate，原raw保留。旧awk找到Candidate就exit，在pipefail下早关管道；用2.4MBsynthetic policy真实复现旧管道141，改成只输出第一次但完整消费后0，2项guard0.10s绿；同时已有Docker的dpkg-query|grep-q改完整capture。新脚本4501bytes/SHA c2c32139...、bash-n绿；没有以离线复现夸称云端精确失败指令trace（raw未含trace），未操作dpkg/云或释放重买。root可同机执行新脚本，真实重跑结果待root。
 
 Docker29 identity语义问题已通过严格OCI链解决环境证明，非忽略ID：原CIconfig SHA、实际manifestDescriptor SHA、所有layer/解压diffIDs和labels/架构逐项cryptoproven。13项离线guard与root真实双机all7summary分开，完整50k原raw未由部署回收审阅。新V2accept不重复load、旧0a1/3c599/7905保持；设计见cloud-reuse-20261025/image-proof-design。App独立F/P Compose/strictTLS/新随机DB/env/持久timer本地6guard，操作步骤见deployment/cloud-reuse/APP-STEPS.md，真实app执行仍待root，不预填业务/coverage/600。
+
+## 同机复用：工具OS隔离与观测profile
+
+root实际app prepare/arm/infra/migrate/P seed与7worker factory up成功，F只prepare未启；root回执与SHA见cloud-reuse-20261025/root-runtime-checkpoints.json，本岗无云操作、未读driver或私有/密封结果。原770d/env/compose/timer未改，新factory profile56d78...明确不是productionentry；CA接口发现binding.tls不含ca_path，已告两岗只用prepare receipt路径+ca_sha核，不杜撰字段。
+
+ROOT805工具依赖crypto，82e4初版不执行；新f30 runtime只从已证明backend935 COPY sitepackages到freshofficialPython，清PYTHONPATH/USER10001，实际t44spec/产品路径/appenv缺失true，Python3.12.15/crypto50.0.2/SSL3.0.22，actualId3982与新config89ced独立，绝不冒原Python身份。7本地guard0.03s。第二版603假定sha256sum manifest不符合实际frozen包，root执行前指出，代码保留未上传/执行；V3仅读批准PUBLIC FILES.json及entry.verify公式，JSON11+自身12项、bytes/SHA/canonical10b8、0555/0444，10guard0.06s，无改包或第13manifest。V3 root已prepare/start/dispatch，主容器900s/包600s，结束/collect结果尚未由本岗核，不预填。
+
+94caf diagnostic-overlay新controller同源7worker、精确两PUBLIC SHA+10DIAGENV、源RO/输出RW和保留timer，5pureguard0.04s；不接sessionpacket。与backend岗位直接核了字段、CLIadmin及CA键，不向独立tester发消息或读private cases。所有fixture/短诊断不是400/600或最终coverage/代码规模通过，后续16worker/新source升级只设计，待root准入另记录。ROLE-deployment-CLOUD-REUSE-20261025-v1追加真实AI提示与错误修正，不记学生亲历。

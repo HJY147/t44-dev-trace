@@ -593,3 +593,11 @@ Ubuntu22首轮实际失败由root转述：app invoke20s exit141，apt官方updat
 Docker29导入后的ID拒绝先保原0a1，不重装/删镜像/放宽；05原probe输出中间截断，rootpartial只2alias完整。依据OCI descriptor/config/layer链设计47b50 image-proof，13离线正负0.05s真绿，source/config/layer/labels/RootFS/arch/descriptor/mediaType破坏均拒绝；先O_EXCL保存全raw再<3KB摘要。root两节点实际fresh证明all7（50k/hash30b1...），本岗仅读授权summary副本，未冒完整raw已收。V2accept-wrapper不重复load，原manifest/CIID不改。
 
 app-campaign本地prepare/arm/Compose/strict新CA/新F/Pschema与env/root可控原CLI，6pureguards0.04s绿、Ruff绿，尚无app云执行。持久timer只认冻结project/service+已证明actual/configID保卷，stop不依赖mutableenv，未知容器不杀，Docker30s grace可能force不伪填false；初始schedulerpending3600真实scope。APP-STEPS给root逐段具体命令，P7→16不同配置分开记录，实际node30.19GiB下APIcap调整10GiB而非先前12GiB建议，P总cap26.5GiB约留3.69OS；不是实际内存达标保证。后续全backend升级接口只设计未取候选。
+
+## 同机复用：工具OS隔离与观测profile
+
+root实际app prepare/arm/infra/migrate/P seed与7worker factory up成功，F只prepare未启；root回执与SHA见cloud-reuse-20261025/root-runtime-checkpoints.json，本岗无云操作、未读driver或私有/密封结果。原770d/env/compose/timer未改，新factory profile56d78...明确不是productionentry；CA接口发现binding.tls不含ca_path，已告两岗只用prepare receipt路径+ca_sha核，不杜撰字段。
+
+ROOT805工具依赖crypto，82e4初版不执行；新f30 runtime只从已证明backend935 COPY sitepackages到freshofficialPython，清PYTHONPATH/USER10001，实际t44spec/产品路径/appenv缺失true，Python3.12.15/crypto50.0.2/SSL3.0.22，actualId3982与新config89ced独立，绝不冒原Python身份。7本地guard0.03s。第二版603假定sha256sum manifest不符合实际frozen包，root执行前指出，代码保留未上传/执行；V3仅读批准PUBLIC FILES.json及entry.verify公式，JSON11+自身12项、bytes/SHA/canonical10b8、0555/0444，10guard0.06s，无改包或第13manifest。V3 root已prepare/start/dispatch，主容器900s/包600s，结束/collect结果尚未由本岗核，不预填。
+
+94caf diagnostic-overlay新controller同源7worker、精确两PUBLIC SHA+10DIAGENV、源RO/输出RW和保留timer，5pureguard0.04s；不接sessionpacket。与backend岗位直接核了字段、CLIadmin及CA键，不向独立tester发消息或读private cases。所有fixture/短诊断不是400/600或最终coverage/代码规模通过，后续16worker/新source升级只设计，待root准入另记录。ROLE-deployment-CLOUD-REUSE-20261025-v1追加真实AI提示与错误修正，不记学生亲历。
