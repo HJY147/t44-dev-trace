@@ -1,0 +1,13 @@
+.                                                                        [100%]
+=============================== warnings summary ===============================
+../backend/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1345
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1345: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio
+    self._mark_plugins_for_rewrite(hook, disable_autoload)
+
+../backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 2 warnings in 2.22s
+[{"operation": "getTask", "payload_bytes": 884, "median_cpu_ns": {"base": 490400.0, "candidate": 481300.0}, "candidate_over_base": 0.9814437194127243}, {"operation": "listTasks/page_size=100", "payload_bytes": 70125, "median_cpu_ns": {"base": 42177333.333333336, "candidate": 42957166.666666664}, "candidate_over_base": 1.0184893939872917}, {"operation": "listTasks/page_size=20", "payload_bytes": 14202, "median_cpu_ns": {"base": 8537725.0, "candidate": 8460150.0}, "candidate_over_base": 0.9909138558573859}]

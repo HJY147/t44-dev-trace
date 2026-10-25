@@ -249,7 +249,8 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
                 .get("application/json", {})
                 .get("schema")
             )
-            if schema is None or violations(schema, wire(payload)):
+            # Reuse the normalized object that passed the response contract.
+            if schema is None or violations(schema, payload := wire(payload)):
                 # This is an implementation fault, never silently relax the frozen schema.
                 status = 500
                 payload = Rejected("INTERNAL_ERROR").payload(c.request_id)
@@ -265,7 +266,7 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
                 headers["Retry-After"] = (
                     "1" if status == 409 else str(settings.login_window_seconds)
                 )
-            return JSONResponse(wire(payload), status_code=status, headers=headers)
+            return JSONResponse(payload, status_code=status, headers=headers)
 
         return handle
 

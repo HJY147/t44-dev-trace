@@ -1,0 +1,59 @@
+{
+  "scope": "wire only; inclusive CPU not summed with parent frames",
+  "cases": [
+    {
+      "operation": "getTask",
+      "calls_per_renderer": 5,
+      "wire": {
+        "base": {
+          "primitive_calls": 15,
+          "all_recursive_calls": 365,
+          "own_cpu_seconds": 0.000201799,
+          "inclusive_cpu_seconds": 0.000306623
+        },
+        "candidate": {
+          "primitive_calls": 10,
+          "all_recursive_calls": 185,
+          "own_cpu_seconds": 9.9641e-05,
+          "inclusive_cpu_seconds": 0.000157916
+        }
+      }
+    },
+    {
+      "operation": "listTasks/page_size=100",
+      "calls_per_renderer": 5,
+      "wire": {
+        "base": {
+          "primitive_calls": 15,
+          "all_recursive_calls": 29125,
+          "own_cpu_seconds": 0.012685899,
+          "inclusive_cpu_seconds": 0.019282584000000002
+        },
+        "candidate": {
+          "primitive_calls": 10,
+          "all_recursive_calls": 14565,
+          "own_cpu_seconds": 0.007035016000000001,
+          "inclusive_cpu_seconds": 0.010578500000000001
+        }
+      }
+    },
+    {
+      "operation": "listTasks/page_size=20",
+      "calls_per_renderer": 5,
+      "wire": {
+        "base": {
+          "primitive_calls": 15,
+          "all_recursive_calls": 5925,
+          "own_cpu_seconds": 0.002727287,
+          "inclusive_cpu_seconds": 0.004084417
+        },
+        "candidate": {
+          "primitive_calls": 10,
+          "all_recursive_calls": 2965,
+          "own_cpu_seconds": 0.001322314,
+          "inclusive_cpu_seconds": 0.002012457
+        }
+      }
+    }
+  ]
+}

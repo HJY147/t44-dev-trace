@@ -1,0 +1,113 @@
+{
+  "scope": "matched API render tail including real frozen response schema; excludes Runtime/SQL/network",
+  "sample_order": "alternating base-candidate and candidate-base",
+  "gc_during_timing": false,
+  "cases": [
+    {
+      "operation": "getTask",
+      "payload_bytes": 884,
+      "iterations_per_sample": 40,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          508875.0,
+          489100.0,
+          480400.0,
+          471825.0,
+          488250.0,
+          507900.0,
+          527750.0,
+          494325.0,
+          490400.0
+        ],
+        "candidate": [
+          524650.0,
+          480675.0,
+          493350.0,
+          474500.0,
+          473925.0,
+          469850.0,
+          481300.0,
+          484850.0,
+          494050.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 490400.0,
+        "candidate": 481300.0
+      },
+      "candidate_over_base": 0.9814437194127243
+    },
+    {
+      "operation": "listTasks/page_size=100",
+      "payload_bytes": 70125,
+      "iterations_per_sample": 12,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          40132000.0,
+          40276833.333333336,
+          46521000.0,
+          45548666.666666664,
+          44446083.333333336,
+          42177333.333333336,
+          41407083.333333336,
+          40992000.0,
+          42510083.333333336
+        ],
+        "candidate": [
+          39156833.333333336,
+          43576166.666666664,
+          45903583.333333336,
+          45333083.333333336,
+          45611416.666666664,
+          42957166.666666664,
+          39888833.333333336,
+          40040416.666666664,
+          40707750.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 42177333.333333336,
+        "candidate": 42957166.666666664
+      },
+      "candidate_over_base": 1.0184893939872917
+    },
+    {
+      "operation": "listTasks/page_size=20",
+      "payload_bytes": 14202,
+      "iterations_per_sample": 40,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          8246650.0,
+          8557075.0,
+          8590675.0,
+          8537725.0,
+          8440225.0,
+          8404050.0,
+          8725450.0,
+          8629500.0,
+          8537450.0
+        ],
+        "candidate": [
+          7978975.0,
+          8709150.0,
+          8542075.0,
+          8460150.0,
+          8279150.0,
+          8233800.0,
+          8832900.0,
+          8582200.0,
+          8429375.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 8537725.0,
+        "candidate": 8460150.0
+      },
+      "candidate_over_base": 0.9909138558573859
+    }
+  ],
+  "formal_performance_proven": false
+}

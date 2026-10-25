@@ -1,0 +1,55 @@
+{
+  "base": "d63fe18f3227e1779d3951072636efcdb6181550",
+  "operator": "backend AI",
+  "sole_production_change": [
+    "backend/t44/api.py"
+  ],
+  "api_before_sha256": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+  "api_after_sha256": "bfc20101a0477a797c1461f80d7a9d0721a11d21d7d0618d690b47baabb117b8",
+  "whole_api_ast_restored_by_two_expressions": true,
+  "runtime_and_all_other_production_sources_byte_identical": true,
+  "original_http_sources_sha256": {
+    "tmp/backend/contracts/986_http.py": "754739a7f0292856fe902ac51bfdae2a31d4a10ae9fe281007576e05a80c25bf",
+    "tmp/backend/contracts/987_faults.py": "d8b0ce199683ef7421ba761c0a53eeede1e07820f49a660b17737c344b37a576",
+    "tmp/backend/contracts/856_release_error_priority.py": "6a5e994f41386d15bb7f77828357aac29412367c67e7bc2dfed0dbb155c05eae",
+    "tmp/backend/contracts/859_dependency_delivered.py": "76641e44aff07317071de87f9176a645d1c540de417fa79ba916aad8ff0e129f",
+    "tmp/backend/contracts/816_acceptance_followup_20261025.py": "1fd7fc94c31c682f883b030d5fa6e23d1d3794faebb75f3fd90c00cbc8f3581a"
+  },
+  "fixed_cloc": {
+    "before": 244,
+    "after": 244,
+    "net_reduction": 0,
+    "tool_version": "2.10",
+    "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+    "prior_allowed_scope_net370_remains": true
+  },
+  "tests": {
+    "initial_boundary": {
+      "tests": 12,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "all_contract_and_boundary": {
+      "tests": 155,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "real_page_shapes": {
+      "tests": 1,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "HTTP_responses_exact_body_and_headers": {
+    "all": 1648,
+    "pages": 111
+  },
+  "total_compared": 1759,
+  "mismatches": 0,
+  "cpu_claim": "one complete wire traversal removed; mixed whole-render CPU samples do not prove consistent latency improvement",
+  "formal_performance_proven": false,
+  "full_ci_cloud_mysql_independent_run": false
+}

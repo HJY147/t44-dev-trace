@@ -1,0 +1,714 @@
+{
+  "base": "d63fe18f3227e1779d3951072636efcdb6181550",
+  "requests_compared": 111,
+  "mismatches": 0,
+  "non_envelope_responses": 0,
+  "scope": "actual candidate HTTP responses versus exact base render tail on same Runtime output; body and all headers exact",
+  "runtime_byte_identical": true,
+  "tokens_or_payload_bodies_persisted": false,
+  "operations_and_statuses": [
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "count": 2
+    },
+    {
+      "operation": "createIteration",
+      "status": 201,
+      "count": 1
+    },
+    {
+      "operation": "createProject",
+      "status": 201,
+      "count": 1
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "count": 100
+    },
+    {
+      "operation": "getTask",
+      "status": 200,
+      "count": 1
+    },
+    {
+      "operation": "listTasks",
+      "status": 200,
+      "count": 2
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "count": 4
+    }
+  ],
+  "payload_hashes": [
+    {
+      "operation": "login",
+      "status": 200,
+      "bytes": 374,
+      "sha256": "48964cfa1404e8051e0d972efca0940626068c970077d09092edd0de50b72b18"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "bytes": 378,
+      "sha256": "e8e403fdbec9f3367c5a0fa34c8527326396702431c677ff1e114fb70a278568"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "bytes": 376,
+      "sha256": "3d4ee2228918020cdf81c0f733a33a928a6b54ce915109d5d9ccef14008ec8bb"
+    },
+    {
+      "operation": "login",
+      "status": 200,
+      "bytes": 376,
+      "sha256": "2bf67a66deca071e1f4af7436301f8c34ce90059f7bca27795be87a98ab5715c"
+    },
+    {
+      "operation": "createProject",
+      "status": 201,
+      "bytes": 321,
+      "sha256": "cae637b64c7b62ea6614f736ce26300bcc2dc0050903ca854a2d6f33ce8325eb"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "bytes": 305,
+      "sha256": "a71e3a85b77bb72c30e502801a5ce29c9ce8570b22b32e4c225f792b85d0cbaa"
+    },
+    {
+      "operation": "addProjectMember",
+      "status": 201,
+      "bytes": 305,
+      "sha256": "80498090423ca0fcbb82e08cf4b6d90b8639f56ebecf3cfd7fb312d49df17484"
+    },
+    {
+      "operation": "createIteration",
+      "status": 201,
+      "bytes": 553,
+      "sha256": "a1edc7a45915d4a3163a1391ac9212c451db84772578ab9113eaeb05216f4be2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 904,
+      "sha256": "3ee5ba63e0933c9309c580dae3eee1eb970f2579b20a4ef844e90e5c8ef9b6a8"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "fec42aa806ac74aea6ca6ef3f4a9108d174bb641d1f9b52d129c3260d21503b9"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "60bd7be05abcf4a7931cd62e3115b8ebca34105d4982fd20f75fb2a840ceb21f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "fe031b7d39ff658c8f4f6614d65fb636548f86360cae8d018239ad864218ec5f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "33b2ee92820188419a1cd084c2db7044873f9576c7d83137283d9d967c85a01e"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "d2ba270f0e91273a8fde1b3f7924575fa21fe3d7545559b7b079ac475dedd169"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "15c79083c25dcb880155be97589984c4b4552d0e8130140052c37b859ff40855"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "534bd9274e8e3f8d11da20c90691da9d1f8b17308876856273a4f34a5e82a6ba"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 905,
+      "sha256": "2195c13514880a4b8ea86c3ef948f2d3073194cee46b2f89815a48c74c06f53f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "1a55e6a5134b47d4e8249504128759b90a469befc435b43384748e7da807e6df"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "5825f30e8afb6c316bb0674964c9744277955f1203bc298d6d125449be744de1"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7f1c2a1f7d70a1ce6068bb98f335196bbbe0165d29197b95d130246a7a2a6c83"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "24ce2bd525d3b5d960b0cb4fd24c820d652996bb54067d351ba4ec4ac057f67b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "74db4dfd231c4bd7e2a244cb01d20a79cb4106e28fe2fbd733661d87f108365c"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "52e14d3354076768037abb637604d4c2518441ab2e1e0e9c656ec297a08c2f10"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "62a348986f3433b580b8fac8e13c374a668c197ae512c9d10200b84175265c10"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "3aa310c24e0504988e2540752c93a0f978839d06c56fe43de5e5cf78cc3fa05b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7343b25b1d6a7b7a57c32f30d07478afe1a4436c7cd49c554c04840e1af09c1d"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "912b7008a9835b82175163e999d6a7714cd2d5be222e57e0d9dcdc56d645f3f1"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "07dc392121401e653ec56c58966e90ef0577d8091da49b51846fcf644977327d"
+    },
+    {
+      "operation": "listTasks",
+      "status": 200,
+      "bytes": 14202,
+      "sha256": "8f95fda436783add06ddbc7147752eba7f28faf0fda1cca25ad5885b96429bfa"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "8e9687a1fc849062e3fea0ccc6bd8df5c0cd9ffe077e19e6479a0101deafb04d"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "cc04e35161d7e25d63aa0ae869461771927f92d82fc8d44a75056067eb5926ea"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "8cdbd955d94b2987463ad9f768169e508fee5cc4bafe2f4f52ec26097fbf7ce6"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "cebc882041aab30ca304d73eedbc50dab0b719cf5a03a891cbb39f833d1e7250"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "eef060e55392b749f7b167c968e97457908fe833e611dbbd0f1da041a21bc4b0"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7f518c56c814ac5b864e8988b334342726e62a71dc9b65ac26d3e11f35465695"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a8c213d7bc6b3c7675cb625a7ea1c26207ccf9a23191dd431587efb373a14c6a"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "df98bdafbe8e6a92cf3b40867f676c36591bd838fe3c872c7b467fac0dad3021"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "9ca1d6affb4d0181d8196f9bba6d0634fc4a5a3fdb2d039890ab6ec2458a4166"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "1f8bd04d7be61c8be146f1156fa62e58a3ce9c5b458c171ffd900f2200711f51"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "ce931821ce520dccc2bfea4621ecf1b7d205f84c33a96db19220aed5980d41f3"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "165bf06e4721db6ad7f111094fae3d7c4905e6400282e6fdbcd63f09d35128f1"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "9752a1e5ec20db6bbca40a75cddf4cd6d40ea0ef64b16659fd8c9d9429045dac"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "0c9aec9daa6dcc8e640d4cf83bcbc452b2e737451413a33ca30b73f58b28fec2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7d59222f82939aff2e0ff873806d198bc3fef4529bbda96909e71af2d8dc8fca"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "38e1eca043db02041b3b4d0df7e89018934e6da41daa2e078a4b24955e527920"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "9a1524346f8c5916862afdfdc719110c54724fc4576a8c15af5d19f9d8b2a454"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "43b54df76a94148814d0e3925192bc4a930deff43d1d8e8623bfde330f28f72a"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "6b9afd9e579fa19f3862ae528ca0065fbf6939275ace47486caa354f9a26b712"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "70278f9a9b059c60ac7b8b4450f18d5f6cf062172a7ef2e4780799ecfdf0873d"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "22a24bb1f7f6ab7651fefaa9d8c0bbc9538144b893d9c4a4c741aa504a999099"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "df74f082e12910f05ef403cbe62608fc95bf853f9a8b55bfec806397463dac02"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a040f2dd692d7bdb262ceae2f5a3b8b1aeaee0fd71258b5f7f3eb9f41ab4c7ee"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "e19279ce4175523896c0ddb3a2471ca3d26af3b024a79bc94c94eeec598d27a4"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "aaf5fa9a642c45a5d98e948977bbfe2a1b021faa6d2e5fd515b5284ebd66e537"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7188501f0360fb3b836c61feeb64aa95c3f4eb85d2e321b70b2382c646d0b4d2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "be75fdcedfb96181fdb00b6b087252adf4d808abceb7c0abb0c50fde471beac3"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "623d27125d6842f6487d2ad665ef81c8238eeb10d32d31da3108a668c63be8ff"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "e23f78c9d0aea471d533cae4b11d835df7df1b556552be057f681d8cf4900beb"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "acb1c98f6c195c10c8910c094ae64f78b85d4294809ce08e3dfceaaa95e123ba"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a89d3edf09a47c497a2a74bb92f97f7d16e559aa26e192224be8693cb4b79ff9"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "716f590a39a0592fb2103819e6737375922946a307f63596ebb31b5ddb856bb6"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "7f33f20570e6913504e946f2ab3594234186a1112e8471c40e35a4c486a2e802"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "cce14b392a0e9ddff00e7705567fefb6e1e750d0ab7bc422fc4c3b266f101ecc"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "cc6519691acbca2e021b7fc195a1f9f3f56ad613da8fbbed53cf79d091563563"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "5c387665843f32070923317542c43ee6b3a85426e4be2094c87c5b10b8f0e04c"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a9ac703e4fbfe42d92f8d562f07198aa008c03ca8ed1778e1dfadbc3b8289022"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a1ad88ebe86aa59980d5ac6e8abd020491d192b949c730928f487bc6f7fb34a2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "dde39558eeb8a15b95622fc209f1411db47758a443c81546d9629562e97ab2e4"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "61727a0486fe14f938a7129d3f930f4284e3ff9bebdf1cf16222cc2b546b961f"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "b37e14fbe4cf458f2dc9db0c9e5c7d2174f6d9d4234bafe9b89c1acfe6c1c334"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "304fb81de17087f659a31f370a5a8be5af0c8169c6616e0f4ea927fc6ba4f39a"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "3db90b8daf988aac9bec315e27ac820c1a0cccea8b72ce2f9c77329bf8aa9f82"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "87fd28ab446f891d8187c7275969b7489513b1c562bd9f9808bb87781e9c156e"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "665058df078de22b6a79cda1ec139d75cad68ce2899092348cb742f069d57455"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "a4d07779580f7809a3ac241a3e1f4620e9209b23355b8d7c5465f5c46df3b112"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "df5b92fa6f3a8f8c3a5848578604da52428f7933953d759a5741715de86bea24"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "3ea959912a7a9386e5de4d51fdc3efc1f98bc2401c98b65543521d3485295db2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "588ee993236d6acb5d5f81fb27dfe06ff47f89c63468cba65f7c977d7e16f0d2"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "b091b23cd297d379fc26f80ae38ae9e1c857f751cb622a1c4c3973df37d55a82"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "979c53a017c8adb84e032e1fb0b6a895717a084caa24ba22adfe69b22a2c113b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "77936037e2e356b727012219f22ae605e3859f6ccd8e8b64af92a16c0ca0ce01"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "62d75d56af5a2c6a8b7f3d9c44c2f50e61eff310f1dd72520e06a23f91cb6a06"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "9ada3d079bf51ec3b735adeffcc709090238c8eaeb558e4b829f8a6c35acff2d"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "e0e0633aca320bd1cb4a6f46553b21475c2ee2ac734906789bfacd021bb08771"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "edf00d905405fa3af1d332278cf2d7cb3221edb41793fe88a5c58c02c31362ff"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "0f04716942d40ef6c6855d7f77ba02d73c451881f9d6f3360fe6b6c2046c85ec"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "71ca49610cb10508866ef4cdf441290647ca5d878ee5d7fba78b9fbcf136ae34"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "bb080f4ed70bc6b7815b209430badaae3ecd0c382ef8a4e5f86dc214a2c61182"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "646e520922e20fb50d2f9e72e2366c7a9a494f4199adc1980349073023cc2acd"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "dcf7e6f4986585ae76b756b3fe49085f46faf3cc15a6db227b2df5a4a11b6bd7"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "dbebfec8cbf794631e537ef5f5850947cd57c62b85c976414dca9fa3080847c5"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "9b4f25cb119b15be662b9d7707ec8af84f6ce355e6db195663dff7de7cb4ca13"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "e8035e29314e1efc083e58cb5f144c8be060efcb19b9b26a76a17bb494dbe2e6"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "c3ba8ade24de51b62f98fcfba7784b4bb93a83d826b1af4e3a6cfbdd76825839"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "85e6214fe523414cf1a18bb65ad2f7b9076af630cf00d5c5c74dbedadef996c1"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "b640404774855763824772032d835c0416d27c671b753fbef8087f9d0940b0b7"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "8de1e020e72944f5113e86ca5b96029b42bcc8dd75c9968db880cbcc05623a84"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "d41366e889a69251fce0e19e6fb79e2b3e70c6a2a28281256080fa337ff81958"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "f1d44221a87d56cfb63bf39c83f1564dff93bdec876becbf852dc516f7938997"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 906,
+      "sha256": "ec58a9e2eb7352910bd2593c573ed9a8bdf7589aadc42cdc40075fdf017d293b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "22aeba2db949d442050cce20301e884e45428c442b7075fb5d46f33e179803b1"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "f61000a442d9ae4c344d2bc74ec435024488a8eee14151b038f2fa0f6ef35efe"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "543ed3765f674b1d8f4a73b3c9d958b94c6f35ab59d9538f127df88c752f108a"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "4b16326190ac223b13c5224f570694664b0dabd630673712bfee0c58318b796b"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "05b5028d512855b3b3cdb64c93976c3a04414bbe69468541d3662e2428cfd5e5"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "74bb862ec21943e8e8bea657828b65666fbf102ee14c3f1665d00175e7209ee8"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "571a84a89225fc2ecc5743f4272ea785b9323e1992155c7307aafba1b1b40152"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 907,
+      "sha256": "726d141ba97560c9df20cdeff6ad93ffa42b76f27bd512b95a8006da1f0eb6b7"
+    },
+    {
+      "operation": "createTask",
+      "status": 201,
+      "bytes": 908,
+      "sha256": "c0147b67017dfd5d2953042e393d5fb840a9971669e3529ee03ed96688779e33"
+    },
+    {
+      "operation": "listTasks",
+      "status": 200,
+      "bytes": 70125,
+      "sha256": "208bef0380d29f9e933141a8746376c0af4787f50bf9dbc05d12aa6d356d6a86"
+    },
+    {
+      "operation": "getTask",
+      "status": 200,
+      "bytes": 884,
+      "sha256": "3252c56f3c822eb4fe1ccff1b1fa18994f96021acea147622b9c5122159dba90"
+    }
+  ]
+}

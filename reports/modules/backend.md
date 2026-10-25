@@ -366,3 +366,9 @@ Design/internal interface migration, exact hashes/count/JUnit/microbench and lim
 ### V2-SNAPSHOT-ALIAS-01 repair supersedes the current source count
 
 The b54 caller-evidence alias is reproduced by2 failing append/clear cases and repaired by6 counted production lines after the original initializer validations. review_evidence list/tuple membership now becomes an immutable tuple snapshot; only the consumed nonempty fact is frozen. Final172 developer domain +143 unchanged HTTP cases pass; original validation AST/order remains. Current source scope2363→1993/net370 (previous376 remains prior-stage evidence), no fresh performance claim. Seeagents/backend/source-size-20261025/snapshot-alias-fix.md andtmp/811_backend_size/snapshot-alias-validation.json. No fullCI/MySQL/cloud/independent run; exact repair is pushed with[skip ci] for coordinator-requested narrow review before combined CI.
+
+### API wire duplicate traversal candidate (base d63)
+
+Two API expressions now reuse the payload normalized at its original response-schema check. Runtime/all other product bytes are unchanged; completeAPI AST restores by reversing those expressions. Twelve boundary tests +143 originalHTTP pass; one real20/100-page case passes;1759 actualresponse bodies/allheaders match exact-base render tail on shared Runtime/meta/time values. This is not a second independent Runtime run.
+
+Wire full traversal2→1 is exact(profile20-page5925→2965/100-page29125→14565). Whole-renderCPU ratios0.955–1.018 are mixed, so consistent latency improvement is NOT_PROVEN. API fixedcloc244→244/net0; backend net370 remains, no additional200-line structural candidate established. FullCI/MySQL/cloud/formal/independent gates remain pending. Reportagents/backend/source-size-20261025/api-wire-report.md; candidate is forroot/reviewer choice, not automatic release approval.

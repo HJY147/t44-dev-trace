@@ -15,3 +15,9 @@ Exact decisive coordinator wording: “外部REST/OpenAPI/DDL/业务行为与全
 Applied refinement: immutable trusted row snapshots replace per-command/per-proof DTO bridges; pure domain returns the task patch and decision type, and the transaction facade applies CAS and records schedule/decision/audit. Keep all preflight ordering in Workflow. Separate91 old behavior cases that actually call v2,15 historical-constructor-only cases,63 actual v2 boundary cases, and57120 differential comparisons. Preserve the historical test reference by exact source hashes; product code never imports it. Measure offline matched DTO/decision CPU, without presenting it as HTTP/MySQL/formal performance.
 
 Outputs: backend/t44/domain/models.py and state_machine.py; backend/t44/services/{codes,common,identity,projects,reviews,runtime,tasks,application,workflow}.py; contracts/__init__.py; own tmp/811_backend_size evidence; legacy domain test import adapter only; WORKLOG/module/handoff/report/Issue3.
+
+## ROLE-backend-API-WIRE-v1
+
+Executed coordinator authorization after the alias repair: “若wire重复可严格证明/测量消除，请按实际性能收益单独阶段做；不算200LOC也有价值，保留response schema校验、时区/enum/json有效值、meta/replayed/headers、错误边界与CPUprofiling边界不变，并差分公开payload。” Also instructed not to start fullCI/cloud and to report honestly if another200-line structural reduction was unavailable, then release the slot for messaging/scheduling.
+
+Actual refinement: retain original first normalization and bind/reuse its result, rather than delete normalization based only on an assumed Runtime contract. This preserves even malformed-producer and schema-missing error boundaries. Exact base-tail response comparisons and an AST restoration test accompany the change; CPU evidence includes unfavorable samples. Output is a narrow duplicate-work candidate,0 incremental source saving and no consistent whole-render speed claim.

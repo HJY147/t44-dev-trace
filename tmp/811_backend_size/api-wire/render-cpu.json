@@ -1,0 +1,148 @@
+{
+  "scope": "matched API render tail including real frozen response schema; excludes Runtime/SQL/network",
+  "sample_order": "alternating base-candidate and candidate-base",
+  "gc_during_timing": false,
+  "cases": [
+    {
+      "operation": "getTask",
+      "payload_bytes": 908,
+      "iterations_per_sample": 40,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          407175.0,
+          396975.0,
+          401675.0,
+          469875.0,
+          431075.0,
+          420450.0,
+          461950.0,
+          466575.0,
+          454675.0
+        ],
+        "candidate": [
+          428100.0,
+          398950.0,
+          403675.0,
+          412450.0,
+          390575.0,
+          426050.0,
+          411500.0,
+          388575.0,
+          428100.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 431075.0,
+        "candidate": 411500.0
+      },
+      "candidate_over_base": 0.9545902685147596
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "payload_bytes": 117127,
+      "iterations_per_sample": 12,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          40744083.333333336,
+          39424333.333333336,
+          41400083.333333336,
+          41010083.333333336,
+          40684250.0,
+          40190583.333333336,
+          39900000.0,
+          39455250.0,
+          40944916.666666664
+        ],
+        "candidate": [
+          39506916.666666664,
+          38309583.333333336,
+          39784666.666666664,
+          39451000.0,
+          38744916.666666664,
+          39019000.0,
+          38344000.0,
+          39302666.666666664,
+          38664750.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 40684250.0,
+        "candidate": 39019000.0
+      },
+      "candidate_over_base": 0.9590689271646891
+    },
+    {
+      "operation": "listTasks",
+      "payload_bytes": 928,
+      "iterations_per_sample": 40,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          480375.0,
+          463350.0,
+          513050.0,
+          466875.0,
+          453500.0,
+          458075.0,
+          482425.0,
+          464975.0,
+          474425.0
+        ],
+        "candidate": [
+          478575.0,
+          474250.0,
+          471525.0,
+          485625.0,
+          471150.0,
+          505050.0,
+          482850.0,
+          443550.0,
+          471475.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 466875.0,
+        "candidate": 474250.0
+      },
+      "candidate_over_base": 1.0157965194109773
+    },
+    {
+      "operation": "transitionTask",
+      "payload_bytes": 7200,
+      "iterations_per_sample": 40,
+      "repeats": 9,
+      "cpu_ns_per_call": {
+        "base": [
+          662950.0,
+          673200.0,
+          648400.0,
+          675475.0,
+          667225.0,
+          654700.0,
+          856800.0,
+          686300.0,
+          673200.0
+        ],
+        "candidate": [
+          659800.0,
+          692875.0,
+          681675.0,
+          661450.0,
+          659825.0,
+          734925.0,
+          780050.0,
+          698575.0,
+          684225.0
+        ]
+      },
+      "median_cpu_ns": {
+        "base": 673200.0,
+        "candidate": 684225.0
+      },
+      "candidate_over_base": 1.0163770053475936
+    }
+  ],
+  "formal_performance_proven": false
+}
