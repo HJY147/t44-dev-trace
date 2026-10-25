@@ -142,7 +142,10 @@
     "agents/deployment/continuation-20261025/validation.json",
     "agents/deployment/continuation-20261025/source-final-guards.xml",
     "agents/deployment/prompts/ROLE-deployment-CONTINUATION-20261025-v1.md",
-    "agents/deployment/continuation-20261025/local-cli.json"
+    "agents/deployment/continuation-20261025/local-cli.json",
+    "agents/deployment/continuation-20261025/evidence-index.json",
+    "agents/deployment/continuation-20261025/issue-body.md",
+    "agents/deployment/continuation-20261025/issue-readback.json"
   ],
   "commands_executed": [
     {
@@ -1583,7 +1586,10 @@
       "agents/deployment/continuation-20261025/validation.json",
       "agents/deployment/continuation-20261025/source-final-guards.xml",
       "agents/deployment/prompts/ROLE-deployment-CONTINUATION-20261025-v1.md",
-      "agents/deployment/continuation-20261025/local-cli.json"
+      "agents/deployment/continuation-20261025/local-cli.json",
+      "agents/deployment/continuation-20261025/evidence-index.json",
+      "agents/deployment/continuation-20261025/issue-body.md",
+      "agents/deployment/continuation-20261025/issue-readback.json"
     ],
     "offline_unique_guards": 22,
     "offline_seconds": 0.16,
@@ -1607,13 +1613,16 @@
       "clockalignmentandrequestcause",
       "formalperformanceandactualbilling"
     ],
-    "issue": null,
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394509470",
     "local_cli_materialization": {
       "source_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942",
       "exit_code": 0,
       "generated_files": 7,
       "generated_main_executed": false,
       "receipt": "agents/deployment/continuation-20261025/local-cli.json"
-    }
+    },
+    "issue_full_GET_body_identical": true,
+    "evidence_commit_before_issue": "6e05d7a04ba56729baf1ea7a232c2f1c90ecc5e7",
+    "archive_revision": "final Git metadata identifies documentation seal;implementation SHA remains a4055d1f01883c6e969f746ebe6b432f248c9942"
   }
 }

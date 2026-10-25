@@ -15,3 +15,5 @@ W32最少540（可选640），W64最少1020（可选1280），含API、consumer�
 交接边界：旧fixture launcher绑定旧receiver、worker、source和expiry，未复制到新包；fresh独立实例只向root提供公开recipient材料，再由后端责任岗和审核岗绑定新worker/admin。没有读取tmp829/839/841/852的独立私有材料，没有与独立tester沟通。资源采样新增非原子UTC/perf/monotonic anchor；跨机时钟误差、请求对齐和故障归因仍待实际观察。原始采样按显式完成路径+SHA打包，每机单文件走官方云助手下载；释放和账单分别核验。
 
 实际提示词及AI决策在`agents/deployment/prompts/ROLE-deployment-CONTINUATION-20261025-v1.md`；由部署AI写设计、代码、合成测试、调试和过程记录，未记为学生亲写。学生本人研究报告仍由学生本人完成。该阶段未启动hosted CI；后续集成、实际部署、独立验收、400客户端/600秒/P95≤270ms/吞吐≥1000每分钟以及代码规模门槛均未由本结果判通过。
+
+阶段分支已推送，Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394509470 的精确ID完整GET与发布正文逐字相同。该GitHub动作仅模块协作，没有发起云或产品CI执行。
