@@ -3414,5 +3414,78 @@
     },
     "technical_evidence_commit": "de82bc4675c9b87195e5358ea09326b55053e3f8",
     "role_release": "two requested scopes sealed; oldP2 and fixedsource separate; no v9/809 exploration; return slot for messages/scheduler size work"
+  },
+  "round9_messaging_review": {
+    "operator": "AI reviewer",
+    "prompt": "ROLE-reviewer-ROUND9-v1",
+    "base": "043fc464acd327f6b7639e89dbe4f603fc524880",
+    "messaging_product": "c4b3f114a5525c0fe0fd031d2b3603070a2be892",
+    "messaging_final": "2c1dd10e2867c9ffa8de33bfbf48993a864c5a86",
+    "api_wire_product": "2914c7da0d24a839061b8b72727907a56fd33d6a",
+    "messaging_tests": {
+      "pass": 39,
+      "integration_deselected": 23
+    },
+    "api_wire_boundary_tests": {
+      "pass": 12
+    },
+    "main_metric": {
+      "before": 5875,
+      "after": 5862,
+      "net": 13,
+      "still_above": 762
+    },
+    "full_ci_cloud_mysql_mq_independent_run": false,
+    "decision": "no new code blocker; admit to root integration CI only",
+    "files": {
+      "agents/reviewer/evidence/round9/api-wire-bound.log": {
+        "bytes": 1300,
+        "sha256": "b87c0671efc8a1b6deabcb5080e783ca8e7ae03f3004817dbabd051e1942d17b"
+      },
+      "agents/reviewer/evidence/round9/api-wire-bound.xml": {
+        "bytes": 1713,
+        "sha256": "615577f529ab99175e2c8322c3640c761c332d929715bce4cc6e6174fa4243c0"
+      },
+      "agents/reviewer/evidence/round9/application-count.json": {
+        "bytes": 8311,
+        "sha256": "8e06548db8099a8dd0ad194e7583b71ff3a8530cfc6bbfbed09cc6ff1930858c"
+      },
+      "agents/reviewer/evidence/round9/commands.md": {
+        "bytes": 1361,
+        "sha256": "eb51ee79e5f7e7c9bb0533ebe87375b3dda663c1a2ff7641bce2d6b87ff95c09"
+      },
+      "agents/reviewer/evidence/round9/function-surface.json": {
+        "bytes": 31636,
+        "sha256": "6ac6aef7f54f6e2bfef20115c4a07ef537996a9ac2855a338d9d55d587f2df6a"
+      },
+      "agents/reviewer/evidence/round9/messaging-backend-only-count-not-main.json": {
+        "bytes": 14006,
+        "sha256": "7c08a2c8440f6e9149211ee714c226f6f7e7b433d2272a08efbaf2e1e5650478"
+      },
+      "agents/reviewer/evidence/round9/messaging-bound.log": {
+        "bytes": 1750,
+        "sha256": "06b099a5607f4180249fb2231e88b11a1fa511f15c87274ef500bffe9a3a4827"
+      },
+      "agents/reviewer/evidence/round9/messaging-bound.xml": {
+        "bytes": 5304,
+        "sha256": "2b263ccc10c77ce4a159b062737b2caef3b3a41d2e20d1e7807e59064fa538f5"
+      },
+      "agents/reviewer/evidence/round9/messaging-count.json": {
+        "bytes": 21093,
+        "sha256": "962571e7f46d6e5cd9a9fe666575c821dc9989ff799c9e07518e1b25edf0662a"
+      },
+      "agents/reviewer/evidence/round9/messaging.log": {
+        "bytes": 1446,
+        "sha256": "62a4b6f8a2e2631dcd0f6c3c9608840bc2625682dc6a72e6448d6a383cdb7762"
+      },
+      "agents/reviewer/evidence/round9/messaging.xml": {
+        "bytes": 5304,
+        "sha256": "aba1d7b6d042082089a85ac117d589988974cbb4cfeb24918f31d4d9840683c0"
+      },
+      "agents/reviewer/evidence/round9/unfiltered-directory-count-not-main-metric.json": {
+        "bytes": 9253,
+        "sha256": "a9cd4f59ca8e945830d20aba52be00f424b2288d7ded598d4339bdcdd5cb143c"
+      }
+    }
   }
 }

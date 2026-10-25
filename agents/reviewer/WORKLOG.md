@@ -589,3 +589,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 
 
 后端v2/DB规模双scope行政封档：技术de82bc4675c9b87195e5358ea09326b55053e3f8已push；Issue12 COMMENT6397694670（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6397694670）特定全文GET exit0/body及issue严格相同。原a07/b54 P2拒绝/一次反例独立保留，d63一次窄重查闭环，DB107/f0d无新窄scope阻断，仅组合候选；净370+90投影5875仍差775，非实际全局计数或CI/独立/性能通过。准确组合CI/真MySQL/新独立由根执行；不探v9/809，无新agent/私有实际结果/测试联系。metadata封后立即释放槽供消息/调度规模任务。
+
+
+## ROUND9 消息候选与规模复核
+
+AI reviewer，ROLE-reviewer-ROUND9-v1；从043fc464建独立worktree。精确c4b3归档源码绑定39模块通过/23真integration未选，主5875→5862净13；原未绑定/后端only/未过滤数分别保留不重复。限定无新阻塞，待root新合并CI，不发发布success。API2914精确归档12边界通过，net0/总体收益NP建议暂缓。报告与证据reports/reviews/messaging-size-c4b3f114-round9.md、evidence/round9。无云、独立私件、产品改写。较大架构净账另续。

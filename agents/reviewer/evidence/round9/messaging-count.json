@@ -1,0 +1,809 @@
+{
+  "fixed_classifier_unchanged": true,
+  "cloc_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+  "results": {
+    "base": {
+      "source_sha": "043fc464acd327f6b7639e89dbe4f603fc524880",
+      "summary": {
+        "blank": 573,
+        "comment": 113,
+        "code": 5875,
+        "nFiles": 65
+      },
+      "files": {
+        "backend/t44/persistence/seed.py": {
+          "blank": 14,
+          "comment": 3,
+          "code": 326,
+          "language": "Python"
+        },
+        "backend/t44/persistence/migrations.py": {
+          "blank": 22,
+          "comment": 2,
+          "code": 303,
+          "language": "Python"
+        },
+        "backend/t44/persistence/rows.py": {
+          "blank": 30,
+          "comment": 10,
+          "code": 293,
+          "language": "Python"
+        },
+        "backend/t44/services/runtime.py": {
+          "blank": 17,
+          "comment": 5,
+          "code": 284,
+          "language": "Python"
+        },
+        "frontend/src/styles.css": {
+          "blank": 3,
+          "comment": 1,
+          "code": 267,
+          "language": "CSS"
+        },
+        "backend/t44/api.py": {
+          "blank": 34,
+          "comment": 4,
+          "code": 244,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/facade.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 205,
+          "language": "Python"
+        },
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 169,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 167,
+          "language": "Python"
+        },
+        "backend/t44/domain/state_machine.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 164,
+          "language": "Python"
+        },
+        "backend/t44/persistence/delivery.py": {
+          "blank": 12,
+          "comment": 3,
+          "code": 159,
+          "language": "Python"
+        },
+        "backend/t44/cli.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 147,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/scanner.py": {
+          "blank": 12,
+          "comment": 5,
+          "code": 141,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/rules.py": {
+          "blank": 25,
+          "comment": 6,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/common.py": {
+          "blank": 39,
+          "comment": 2,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/reviews.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/workflow.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/tasks.py": {
+          "blank": 15,
+          "comment": 3,
+          "code": 136,
+          "language": "Python"
+        },
+        "backend/t44/messaging/broker.py": {
+          "blank": 17,
+          "comment": 3,
+          "code": 129,
+          "language": "Python"
+        },
+        "backend/t44/persistence/schema.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 117,
+          "language": "Python"
+        },
+        "backend/t44/domain/models.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 111,
+          "language": "Python"
+        },
+        "backend/t44/services/identity.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 107,
+          "language": "Python"
+        },
+        "backend/t44/persistence/scans.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 103,
+          "language": "Python"
+        },
+        "frontend/src/views/WorkspaceView.vue": {
+          "blank": 0,
+          "comment": 0,
+          "code": 101,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/__main__.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 9,
+          "comment": 3,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/messaging/facade.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 95,
+          "language": "Python"
+        },
+        "backend/t44/persistence/engine.py": {
+          "blank": 13,
+          "comment": 3,
+          "code": 93,
+          "language": "Python"
+        },
+        "backend/t44/persistence/uow.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 86,
+          "language": "Python"
+        },
+        "backend/t44/messaging/worker.py": {
+          "blank": 9,
+          "comment": 2,
+          "code": 84,
+          "language": "Python"
+        },
+        "frontend/src/contract.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 83,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/OperationForm.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 75,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/workspace.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 68,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/TaskDrawer.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 62,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/persistence/accounts.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 61,
+          "language": "Python"
+        },
+        "frontend/src/components/FieldEditor.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 61,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/App.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 59,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/contracts/__init__.py": {
+          "blank": 14,
+          "comment": 2,
+          "code": 56,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__main__.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 49,
+          "language": "Python"
+        },
+        "frontend/src/components/LoginView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 47,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/runtime.py": {
+          "blank": 10,
+          "comment": 9,
+          "code": 39,
+          "language": "Python"
+        },
+        "frontend/src/components/DataState.vue": {
+          "blank": 3,
+          "comment": 0,
+          "code": 38,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/api.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 37,
+          "language": "TypeScript"
+        },
+        "backend/t44/settings.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "frontend/src/forms.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 33,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/SidebarNavigation.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 31,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/services/errors.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "backend/t44/persistence/codecs.py": {
+          "blank": 15,
+          "comment": 1,
+          "code": 27,
+          "language": "Python"
+        },
+        "frontend/src/router.ts": {
+          "blank": 2,
+          "comment": 0,
+          "code": 26,
+          "language": "TypeScript"
+        },
+        "backend/t44/persistence/__init__.py": {
+          "blank": 2,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__init__.py": {
+          "blank": 3,
+          "comment": 3,
+          "code": 21,
+          "language": "Python"
+        },
+        "frontend/src/components/RecordList.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/components/RecordView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/index.html": {
+          "blank": 0,
+          "comment": 0,
+          "code": 15,
+          "language": "HTML"
+        },
+        "frontend/src/navigation.ts": {
+          "blank": 3,
+          "comment": 0,
+          "code": 15,
+          "language": "TypeScript"
+        },
+        "frontend/src/audit.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 14,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/PageHeading.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 13,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/services/codes.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 11,
+          "language": "Python"
+        },
+        "backend/t44/persistence/errors.py": {
+          "blank": 13,
+          "comment": 7,
+          "code": 9,
+          "language": "Python"
+        },
+        "frontend/src/views/NotFoundView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 8,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/main.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 6,
+          "language": "TypeScript"
+        },
+        "backend/t44/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/domain/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/services/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    },
+    "messaging": {
+      "source_sha": "c4b3f114a5525c0fe0fd031d2b3603070a2be892",
+      "summary": {
+        "blank": 575,
+        "comment": 113,
+        "code": 5862,
+        "nFiles": 65
+      },
+      "files": {
+        "backend/t44/persistence/seed.py": {
+          "blank": 14,
+          "comment": 3,
+          "code": 326,
+          "language": "Python"
+        },
+        "backend/t44/persistence/migrations.py": {
+          "blank": 22,
+          "comment": 2,
+          "code": 303,
+          "language": "Python"
+        },
+        "backend/t44/persistence/rows.py": {
+          "blank": 30,
+          "comment": 10,
+          "code": 293,
+          "language": "Python"
+        },
+        "backend/t44/services/runtime.py": {
+          "blank": 17,
+          "comment": 5,
+          "code": 284,
+          "language": "Python"
+        },
+        "frontend/src/styles.css": {
+          "blank": 3,
+          "comment": 1,
+          "code": 267,
+          "language": "CSS"
+        },
+        "backend/t44/api.py": {
+          "blank": 34,
+          "comment": 4,
+          "code": 244,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/facade.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 205,
+          "language": "Python"
+        },
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 169,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 167,
+          "language": "Python"
+        },
+        "backend/t44/domain/state_machine.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 164,
+          "language": "Python"
+        },
+        "backend/t44/persistence/delivery.py": {
+          "blank": 12,
+          "comment": 3,
+          "code": 159,
+          "language": "Python"
+        },
+        "backend/t44/cli.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 147,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/scanner.py": {
+          "blank": 12,
+          "comment": 5,
+          "code": 141,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/rules.py": {
+          "blank": 25,
+          "comment": 6,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/common.py": {
+          "blank": 39,
+          "comment": 2,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/reviews.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/workflow.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/tasks.py": {
+          "blank": 15,
+          "comment": 3,
+          "code": 136,
+          "language": "Python"
+        },
+        "backend/t44/messaging/broker.py": {
+          "blank": 19,
+          "comment": 3,
+          "code": 126,
+          "language": "Python"
+        },
+        "backend/t44/persistence/schema.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 117,
+          "language": "Python"
+        },
+        "backend/t44/domain/models.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 111,
+          "language": "Python"
+        },
+        "backend/t44/services/identity.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 107,
+          "language": "Python"
+        },
+        "backend/t44/persistence/scans.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 103,
+          "language": "Python"
+        },
+        "frontend/src/views/WorkspaceView.vue": {
+          "blank": 0,
+          "comment": 0,
+          "code": 101,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/__main__.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 9,
+          "comment": 3,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/persistence/engine.py": {
+          "blank": 13,
+          "comment": 3,
+          "code": 93,
+          "language": "Python"
+        },
+        "backend/t44/persistence/uow.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 86,
+          "language": "Python"
+        },
+        "backend/t44/messaging/facade.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 85,
+          "language": "Python"
+        },
+        "backend/t44/messaging/worker.py": {
+          "blank": 9,
+          "comment": 2,
+          "code": 84,
+          "language": "Python"
+        },
+        "frontend/src/contract.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 83,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/OperationForm.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 75,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/workspace.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 68,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/TaskDrawer.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 62,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/persistence/accounts.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 61,
+          "language": "Python"
+        },
+        "frontend/src/components/FieldEditor.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 61,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/App.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 59,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/contracts/__init__.py": {
+          "blank": 14,
+          "comment": 2,
+          "code": 56,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__main__.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 49,
+          "language": "Python"
+        },
+        "frontend/src/components/LoginView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 47,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/scheduling/runtime.py": {
+          "blank": 10,
+          "comment": 9,
+          "code": 39,
+          "language": "Python"
+        },
+        "frontend/src/components/DataState.vue": {
+          "blank": 3,
+          "comment": 0,
+          "code": 38,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/api.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 37,
+          "language": "TypeScript"
+        },
+        "backend/t44/settings.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "frontend/src/forms.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 33,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/SidebarNavigation.vue": {
+          "blank": 2,
+          "comment": 0,
+          "code": 31,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/services/errors.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "backend/t44/persistence/codecs.py": {
+          "blank": 15,
+          "comment": 1,
+          "code": 27,
+          "language": "Python"
+        },
+        "frontend/src/router.ts": {
+          "blank": 2,
+          "comment": 0,
+          "code": 26,
+          "language": "TypeScript"
+        },
+        "backend/t44/persistence/__init__.py": {
+          "blank": 2,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__init__.py": {
+          "blank": 3,
+          "comment": 3,
+          "code": 21,
+          "language": "Python"
+        },
+        "frontend/src/components/RecordList.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/components/RecordView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 20,
+          "language": "Vuejs Component"
+        },
+        "frontend/index.html": {
+          "blank": 0,
+          "comment": 0,
+          "code": 15,
+          "language": "HTML"
+        },
+        "frontend/src/navigation.ts": {
+          "blank": 3,
+          "comment": 0,
+          "code": 15,
+          "language": "TypeScript"
+        },
+        "frontend/src/audit.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 14,
+          "language": "TypeScript"
+        },
+        "frontend/src/components/PageHeading.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 13,
+          "language": "Vuejs Component"
+        },
+        "backend/t44/services/codes.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 11,
+          "language": "Python"
+        },
+        "backend/t44/persistence/errors.py": {
+          "blank": 13,
+          "comment": 7,
+          "code": 9,
+          "language": "Python"
+        },
+        "frontend/src/views/NotFoundView.vue": {
+          "blank": 1,
+          "comment": 0,
+          "code": 8,
+          "language": "Vuejs Component"
+        },
+        "frontend/src/main.ts": {
+          "blank": 1,
+          "comment": 0,
+          "code": 6,
+          "language": "TypeScript"
+        },
+        "backend/t44/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/domain/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/services/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    }
+  },
+  "net": 13
+}
