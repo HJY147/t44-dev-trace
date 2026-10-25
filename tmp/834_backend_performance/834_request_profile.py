@@ -419,6 +419,8 @@ def main():
         "inclusive_overlaps": True,
         "cprofile_overhead_in_profile_samples_only": True,
         "formal_concurrency_or_latency_acceptance": False,
+        "database_observer_module_sha256": args.observer_sha256,
+        "expected_database": args.expected_database,
         "environment": {
             "python": platform.python_version(),
             "platform": platform.platform(),
