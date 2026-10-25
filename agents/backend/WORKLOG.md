@@ -558,3 +558,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 与DB岗对齐仅START/UNBLOCK/REWORK project S候选，writers原X、members S、sorted target/pred X、session/idem/auth/2UoW/CAS/错误/审计/outbox不动；ORDER BY不足证明InnoDB锁序，EXPLAIN/真实P_S/交叉集归DB。我写7个HTTP业务竞争目标，仅collect未MySQL，root/审核准入前不写Runtime、不自行触发CI/开云。
 - 834真SQLite顺序fixture初2项1红1绿，capacity=[]违反原minItems而非产品缺陷；保留原日志后仅合成输入改另一有效developer容量，2绿；新增UNBLOCK目标1绿/其余2deselected，不累加重复样本。Ruff B905红和分析format红后窄修，patch上下文miss未改部分文件；原命令与JUnit保留。当前3唯一fixture正常链/错误副作用绿，不冒并发/验收。
 - 工具checkpoint4168666；三个tmp脚本113+663+137=913物理行含空白注释，非cloc、非规模节省。产品对d60/ade5逐字未变，原6316超1216仍失败，未新cloc。报告/summary/verification在shared-project-gate-20261025，作者执行者后端AI、非学生本人；旧78bb及cleanup E/raw不改，未读独立829/839/841/852私件、不联系tester。
+
+
+## 共享项目门修订：逐scalar PK点锁候选
+
+- root明确准入修订方案，先4dc0ca6设计勘误/prompt；原S-only+batch未实施历史保留。新8db9点锁开发目标初缺addDependency必需reason9setup errors，非结构红；3f1e355仅补两个合成输入（含旧未执行HTTP7图writer）后，原Runtime真实9结构红，原件不改。
+- C c8cea7e82805de5283ce67501769fa9a4efc1047只Runtime两节点：三读图transition projectS/writersX；原ids sorted逐project+scalar唯一PK/limit1 taskX，全锁完再原Business重读。SHA9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b。AST恢复两节点后全文件同基线，ids构造同；auth3/两UoW/CAS/错误/独立拒审计/事件原样。
+- C真实SQLite Gateway9+缺失跨项目HTTP2=11绿，另必要业务邻接21绿，共32唯一目标、零fail/error/skip；不冒MySQL锁实证。Ruff/format限定文件通过，无56/35/完整CI/云/未知本地库执行。DB岗静态核点锁原件未发现新增结构反例，但全域FK资源无死锁不能据此证明，fresh执行由root统一。
+- 原固定cloc2.10/原counter在准确C实6326、Runtime276→286净+10、66应用集合全同、上限5100超1226/exit1，规模仍FAIL；实际physical13add2del与cloc区分。K唯一锁ID原1→K条锁SELECT净K-1，无前驱仍1；三前驱实测参数4条，不删安全逻辑换成本。报告/命令/JUnit/AST/计量在shared-project-point-lock-20261025，作者实现执行均AI，不记学生人工。

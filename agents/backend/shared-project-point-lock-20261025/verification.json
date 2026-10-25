@@ -1,0 +1,51 @@
+{
+  "source": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "base": "9286c7c1c44c8f9c2ef9557abbbb67825a8bba77",
+  "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+  "whole_runtime_AST_equal_except_two_admitted_nodes": true,
+  "original_ids_assembly_AST_equal": true,
+  "only_changed_product_file": [
+    "backend/t44/services/runtime.py"
+  ],
+  "junit": {
+    "point-lock-red.xml": {
+      "tests": 9,
+      "failures": 0,
+      "errors": 9,
+      "skipped": 0
+    },
+    "point-lock-structural-red.xml": {
+      "tests": 9,
+      "failures": 9,
+      "errors": 0,
+      "skipped": 0
+    },
+    "point-lock-green.xml": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "adjacent-green.xml": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "cloc_application_file_set_same_66": true,
+  "cloc_delta": {
+    "backend/t44/services/runtime.py": 10
+  },
+  "cloc_actual_total": 6326,
+  "cloc_within_range": false,
+  "counter_byte_equal_base": true,
+  "sql_cost": "K unique target/pred IDs: previous1 Runtime task-lock SELECT -> K scalar PK SELECTs, +K-1; D=0 remains1",
+  "mysql_or_cloud_run_by_this_role": false,
+  "formal_acceptance": false,
+  "driver_sha256": "f77f2872fe6dfb8230fec6edb24be5fdcbfe048bf83c4ed319e1a6c7e713caff",
+  "point_test_sha256": "6f6e14e5442d4b67d204b4200bce2d503ed3792ff2e33c1fdd3e6071c31470ff",
+  "post_candidate_unique_tests": 32,
+  "point_test_physical_lines_including_blank_comments": 167,
+  "old_stage_record_folders_unchanged": true
+}

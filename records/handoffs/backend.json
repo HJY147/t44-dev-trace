@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "shared-project-gate-design-test-pre-admission",
-  "implementation_status": "Shared project gate remains design/tests only, no production change; root limited design admission and fresh CI MySQL execution pending",
+  "stage": "shared-project-point-lock-candidate-awaiting-review-ci",
+  "implementation_status": "Only Runtime candidate changed after explicit root design admission; not integrated/deployed; source review, fresh MySQL and CI pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2190,5 +2190,44 @@
     "prompt": "ROLE-backend-SHARED-PROJECT-GATE-20261025-v1",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394622063",
     "github_exact_body_readback": true
+  },
+  "shared_project_point_lock_20261025": {
+    "design_first": "4dc0ca6",
+    "source": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "report": "agents/backend/shared-project-point-lock-20261025/report.md",
+    "actual_prompt": "ROLE-backend-SHARED-PROJECT-POINT-20261025-v1",
+    "tests": {
+      "original_fixture_setup_errors": 9,
+      "corrected_old_runtime_structural_failures": 9,
+      "candidate_new_passed": 11,
+      "candidate_adjacent_passed": 21,
+      "candidate_unique_passed": 32,
+      "mysql_run": false,
+      "full_ci_run": false
+    },
+    "scope": "three graph-reader projectS; writerX; sorted scalarPK+project/limit1 taskX; original sets and business retained",
+    "source_size": {
+      "application": 6326,
+      "runtime": 286,
+      "delta": 10,
+      "excess": 1226,
+      "within_range": false,
+      "counter_unchanged": true,
+      "files_same_66": true
+    },
+    "sql_cost": "K unique IDs:1->K Runtime task-lock SELECT; +K-1; no predecessor stays1",
+    "pending": [
+      "root code limited review",
+      "fresh MySQL7 HTTP+DB6",
+      "whole exact-source CI",
+      "root integration",
+      "formal performance",
+      "source budget"
+    ],
+    "production_other_files_unchanged": true,
+    "formal_acceptance": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394674914",
+    "github_exact_body_match": true
   }
 }

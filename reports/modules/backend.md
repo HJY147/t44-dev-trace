@@ -339,3 +339,8 @@ DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1
 ### 2026-10-25 公开MySQL成本/共享项目门设计
 
 设计baf1f9e先于候选，当前工具4168666；生产零改，准入及MySQL并发PENDING。公开81c909的12/path：list响应schema CPU11.711/handler20.508ms，transition Rows10.313/14.380ms与cursor4.765/8.785重叠，不相加或追认云根因。仅拟START/UNBLOCK/REWORK project S，writersX/membersS/target+predX及全部原业务事务保持；DB审P_S/EXPLAIN，BE新7HTTP目标仅collect。真实SQLite顺序fixture初capacity非法1红1绿→仅修合成输入2绿，新增UNBLOCK1绿（3唯一目标，不冒并发）。报告agents/backend/shared-project-gate-20261025/report.md。tmp913物理行不是cloc；产品仍6316超1216、节省0，root/审核准入后才改一处Runtime，后续真实freshCI归root。
+
+
+### 项目共享门修订候选（未合并/性能未证）
+
+root先准入修订，4dc0ca6勘误后C c8cea7e82805de5283ce67501769fa9a4efc1047，Runtime9e0d770…：仅三读图transition项目S、writersX，原target/pred sorted unique逐scalar PK+project/limit1任务X。原批量锁路线未实施。AST除两节点全同，原auth/Tx/业务/错误/审计/CAS保持。初fixture缺reason9setup错误保留，补输入后旧Runtime9结构红→C新11及邻接21绿，共32唯一SQLite目标，非MySQL并发。原口径实cloc6326/超1226、净+10/exit1；K锁ID需K查询净K-1，不报性能收益。报告agents/backend/shared-project-point-lock-20261025/report.md，root统一freshMySQL7HTTP/DB6、全量CI和专审后另决定集成；当前正式性能/规模/独立验收仍未过。
