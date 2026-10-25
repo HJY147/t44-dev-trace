@@ -13,7 +13,7 @@ import sys
 import threading
 import time
 from collections import Counter
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit
 from uuid import UUID, uuid4
@@ -207,6 +207,12 @@ def check_packet(packet):
         raise InvalidDiagnostic("Wrong diagnostic product packet")
     if packet.get("database") != DATABASE:
         raise InvalidDiagnostic("Wrong diagnostic database")
+    if packet.get("resumable") is not True:
+        raise InvalidDiagnostic("Failed or unverified packet cannot resume")
+    if datetime.fromisoformat(packet["created_at"]) + timedelta(
+        seconds=600
+    ) <= datetime.now(UTC):
+        raise InvalidDiagnostic("Prepared fixture diagnostic window expired")
     target(packet["url"])
     expires = [
         datetime.fromisoformat(value["expires_at"])
@@ -221,11 +227,12 @@ def check_packet(packet):
 
 
 def worker(index, slot, packet, ca, barrier, deadline, cycles):
-    client, rows = Client(packet["url"], ca), []
+    client, rows = None, []
     task, escalation = slot["transition"], slot["escalation"]
     sessions = packet["sessions"]
     token = sessions[slot["transition_role"]]["access_token"]
     try:
+        client = Client(packet["url"], ca)
         barrier.wait(timeout=20)
         for _ in range(cycles):
             for operation in (
@@ -299,7 +306,7 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
                                 "Existing event deduplication not observed"
                             )
                     rows.append({"operation": operation, **client.last})
-                except Exception as error:
+                except Exception as error:  # noqa: BLE001 - anonymous per-client failure evidence
                     rows.append(
                         {
                             "operation": operation,
@@ -309,7 +316,7 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
                     )
                     return {"client": index, "rows": rows, "failed": True, "slot": slot}
         return {"client": index, "rows": rows, "slot": slot}
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - anonymous startup/barrier failure evidence
         return {
             "client": index,
             "rows": rows,
@@ -318,11 +325,12 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
             "slot": slot,
         }
     finally:
-        client.close()
+        if client is not None:
+            client.close()
         slot["transport"] = {
-            "connections_established": client.connects,
-            "tcp_tls_connect_ns": client.connect_ns,
-            "requests_with_response": client.requests,
+            "connections_established": client.connects if client else 0,
+            "tcp_tls_connect_ns": client.connect_ns if client else 0,
+            "requests_with_response": client.requests if client else 0,
         }
 
 
@@ -366,10 +374,14 @@ def main(argv=None):
                 for i in range(args.clients)
             ]
             deadline[0] = time.perf_counter() + args.seconds
-            barrier.wait(timeout=20)
+            try:
+                barrier.wait(timeout=20)
+            except threading.BrokenBarrierError:
+                barrier.abort()
             released = utc()
             results = [future.result() for future in futures]
         packet["updated_at"] = utc()
+        packet["resumable"] = not any(result.get("failed") for result in results)
         packet["previous_packet_sha256"] = hashlib.sha256(
             Path(args.packet).read_bytes()
         ).hexdigest()
@@ -434,6 +446,6 @@ def main(argv=None):
 if __name__ == "__main__":
     try:
         sys.exit(main())
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - never print private exception details
         print(json.dumps({"diagnostic_failed": type(error).__name__}), file=sys.stderr)
         sys.exit(1)

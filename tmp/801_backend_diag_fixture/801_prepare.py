@@ -21,7 +21,7 @@ def guarded_settings(host, port, user):
     try:
         settings = Settings.from_env()
         mysql = settings.mysql_settings()
-    except Exception:
+    except Exception:  # noqa: BLE001 - parsed DSN errors can contain credentials
         raise http.InvalidDiagnostic("Invalid database configuration") from None
     if (
         os.environ.get("T44_DIAG_ALLOW") != "source935-development-only"
@@ -159,7 +159,7 @@ def prepare(args):
     http.target(args.url)
     if not 1 <= args.slots <= 400:
         raise http.InvalidDiagnostic("Slots must be 1..400")
-    settings, mysql = guarded_settings(args.host, args.port, args.user)
+    _settings, mysql = guarded_settings(args.host, args.port, args.user)
     accounts = http.private_json(args.accounts)
     if set(accounts) != {"manager", "developer", "reviewer"}:
         raise http.InvalidDiagnostic("Explicit three-role account mapping required")
@@ -200,8 +200,7 @@ def prepare(args):
         result = subprocess.run(
             command,
             stdin=subprocess.DEVNULL,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+            capture_output=True,
             check=False,
             timeout=60,
         )
@@ -293,6 +292,15 @@ def prepare(args):
                     "rule_version": rule_version,
                 }
             )
+            if len(slots) % 20 == 0:
+                http.write_fd(
+                    status_fd,
+                    {
+                        "kind": "preparation_progress",
+                        "utc": http.utc(),
+                        "prepared_slots": len(slots),
+                    },
+                )
         packet = {
             "kind": "source935-development-only",
             "product": http.PRODUCT,
@@ -359,6 +367,6 @@ def main(argv=None):
 if __name__ == "__main__":
     try:
         sys.exit(main())
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - never print private exception details
         print(json.dumps({"preparation_failed": type(error).__name__}), file=sys.stderr)
         sys.exit(1)
