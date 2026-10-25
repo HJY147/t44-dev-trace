@@ -218,5 +218,12 @@
     "initial_pyPI_download": "TLS local CA unavailable; certifi trust used, TLS not disabled",
     "ruff": "C408 with nonproject config; later I001 imports; SIM118 ColumnCollection suggestion not applied because not dict"
   },
-  "scope": "Only SQLite/mock owner verification; no live MySQL, protected services, credentials, private/independent cases, HTTP/cloud/full CI or formal performance. SQLGlot not adopted."
+  "scope": "Only SQLite/mock owner verification; no live MySQL, protected services, credentials, private/independent cases, HTTP/cloud/full CI or formal performance. SQLGlot not adopted.",
+  "git_diff_check": {
+    "evidence_commit": "1af77aa",
+    "full_raw_evidence_exit": 2,
+    "reason": "Unchanged raw pytest failure XML contains E plus trailing spaces; exact raw bytes preserved",
+    "source_and_narrative_docs_check_exit": 0,
+    "log": "raw-evidence-diff-check.log"
+  }
 }

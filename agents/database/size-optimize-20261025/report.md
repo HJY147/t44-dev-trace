@@ -36,3 +36,5 @@ slot序列统一评审/评估/批准/交付/回滚的时间，保证前驱已实
 最后旧marker读取保护之后，准确107当前源：975+新性质小目标14通过/2未选1.84s；原975默认6000单目标1通过/2未选25.95s。原record_property/JUnit警告保留。13与14/1有重叠和不同源边界，不相加为独立用例总数。12个持久模块所有原函数/方法签名AST相同；specs、backend/migrations及frozenDDL对935净差异为空。最终项目限定Ruff通过。
 
 Issue4已真实COMMENT并按单ID GET全文逐字核对：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591 。没有新PR/设置review通过/触发完整CI。root负责采用稳定68或额外22的版本2取舍、准确集成审核、CI中新tmp812目标和后续freshMySQL。当前仅开发SQLite/mock，真实MySQL约束/并发锁、新版seed native CHECK、完整CI/coverage、独立验收、正式性能、最终规模达标仍未验证。
+
+证据提交1af77aa的完整git diff-check真实exit2：旧黄金真实失败XML含原始pytest的`E`后空格，原字节保留，不修剪证据掩盖提示。同一证据提交仅源/说明文档范围diff-check exit0。完整检查失败不被提交成功覆盖；raw-evidence-diff-check.log和verification.json另记。

@@ -335,3 +335,4 @@
 - VERSION2精确产品1076677527bbfc94e376ce1a564fc461622b5dee已push；原source_count/cloc2.10对107完整产品6245/exit1，较6335净90，仍超1145。稳定68+V2另22，非目标80–120。最终当前源14小目标绿/2未选1.84s、原975默认6000单目标绿/2未选25.95s，原JUnit warning保留；全性质13是最后旧marker查询保护前一次33.10s，范围分开。
 - 当前975按VERSION运行，V1黄金/935来源保留，V2摘要在全业务性质和另空库不同batch再现后冻结；没有历史代码替代当前覆盖。signature AST全同/frozen specDDL净差异0，限定Ruff绿。原红log用gzip保原字节，verification记录实际测试而非相加计数。
 - 稳定codex/database-size-optimize-20261025和候选codex/database-seed-v2-optimize-20261025均实际push。Issue4 comment6397356591由connector发布，单ID GET正文与本地完全相同。root组合CI/审核/新MySQL与采用版本取舍待调度，本岗未读独立资料/凭据或接触旧MySQL。
+- 证据提交1af77aa全量diff-check因原始失败XML的E后空白exit2（后续commit成功不算检查通过），原字节不修剪；只对源码/说明文档的同commit diff-check exit0。另存raw-evidence-diff-check.log与verification条目，保留真实边界。

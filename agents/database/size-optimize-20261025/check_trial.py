@@ -56,6 +56,6 @@ for name, normalizer in (("old", old), ("candidate", candidate)):
     measurements[name] = dict(checks=590, elapsed_seconds=time.perf_counter()-begin)
 report = dict(sqlglot_version=sqlglot.__version__, frozen_checks=len(checks),
               pair_count=len(pairs), differences=differences, timings=measurements,
-              decision="REJECT_CANDIDATE_NOT_PRODUCTION: strict candidate has insufficient LOC gain and remaining alias normalization differences")
+              decision="REJECT_CANDIDATE_NOT_PRODUCTION: strict candidate has insufficient LOC gain and measured CHECK-only parser overhead")
 Path(__file__).with_name("sqlglot-trial.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(report,ensure_ascii=False))
