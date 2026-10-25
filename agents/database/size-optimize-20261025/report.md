@@ -24,3 +24,15 @@
 SQLGlot30.24.0原型已撤回：官方纯Python wheel792162字节、SHA9488828cc018453b7a3ba01e65d2749c9a731314c14583695163ca1f358203fe，仅安装本岗tmp/vendor。严格token/AST节点白名单、引号/字面量及函数名词法、NOT/一元运算保护后，425组935差分未发现差异，但完整migrations投影303→294只省9，590次解析旧6.61ms/候选88.33ms，约13.4倍。该样本是离线解析诊断，不是请求性能。生产无SQLGlot导入、依赖清单/锁文件未改，9不计入68。
 
 root后续明确放开seed旧digest/精确分布保持：允许设计新VERSION的简洁合成算法，保持外部CLI参数/结果形状、必要规模和完整业务性质。先封稳定68回退点，再分支原型，不将新算法预扣或覆盖旧sealed数据。
+
+## VERSION2候选完成（最终数字以此为准）
+
+稳定68提交5f779388；新分支设计43d8f14、产品精确1076677527bbfc94e376ce1a564fc461622b5dee，均已push。实际seed348→326另22，持久Python1691→1601净90。原计数器对107的完整产品6335→6245，--require-range真实exit1，仍超5100共1145；原始完整source-count、逐文件预算及verification.json均归档。未达到400–500/额外80–120目标，不压格式/改口径。
+
+slot序列统一评审/评估/批准/交付/回滚的时间，保证前驱已实际交付早于后继计划开始；统一证据注解/ID和指针列派生及DAG枚举。默认量/七态/三独立角色及完整JSON与业务代表性保留。VERSION2读取当前及所有已知旧seed marker，旧manifest版本或配置拒绝；不迁移/覆盖旧sealed数据。
+
+原975全部业务性质断言保留，当前按VERSION2选择在性质验证后冻结的两个摘要；V1两个旧golden及935来源另列常量，当前未执行历史V1实现。V2对应小92ea1b.../默认a21004...；旧V1黄金对新算法真实1红已压缩原字节留存。新性质13场景33.10s通过，包含默认6000完整35FK、所有JSON/指针/版本/角色/时间/容量，以及另空库batch127重现。原先2红为新增测试误算只读UoW commit，修正到seed刚返回时立即断言单commit，原失败未删。
+
+最后旧marker读取保护之后，准确107当前源：975+新性质小目标14通过/2未选1.84s；原975默认6000单目标1通过/2未选25.95s。原record_property/JUnit警告保留。13与14/1有重叠和不同源边界，不相加为独立用例总数。12个持久模块所有原函数/方法签名AST相同；specs、backend/migrations及frozenDDL对935净差异为空。最终项目限定Ruff通过。
+
+Issue4已真实COMMENT并按单ID GET全文逐字核对：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591 。没有新PR/设置review通过/触发完整CI。root负责采用稳定68或额外22的版本2取舍、准确集成审核、CI中新tmp812目标和后续freshMySQL。当前仅开发SQLite/mock，真实MySQL约束/并发锁、新版seed native CHECK、完整CI/coverage、独立验收、正式性能、最终规模达标仍未验证。

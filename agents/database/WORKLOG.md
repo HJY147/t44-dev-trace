@@ -332,3 +332,6 @@
 - SQLGlot30.24.0只有本岗tmp隔离安装，425组差分无差异但完整投影只省9、590次解析约13.4x CPU；根同意撤回，生产/依赖零变化、收益不预扣。官方metadata/hash/投影和原观测保存，不称正式性能。
 - 43d8f14先封VERSION2设计，在同worktree新分支实际原型；root准入975按当前VERSION运行，保留V1黄金/935来源，不改成历史实现跑绿。V2 slot时间轴+DAG/JSON/派生字段实际348→326再省22，累计净90，不把80–120目标算成果。
 - 新性质首轮13场景中2失败仅新测试把只读UoW commit计入seed；改为seed后立即单commit核对，原红保留。同13随后33.10s全通过，含默认6000任务全35FK/JSON/角色/指针/版本/时间和另空库batch127再现。随后增加旧marker范围读取保护，当前源此变更待验证；原975 V1小黄金真实红保留，非后验改旧黄金。
+- VERSION2精确产品1076677527bbfc94e376ce1a564fc461622b5dee已push；原source_count/cloc2.10对107完整产品6245/exit1，较6335净90，仍超1145。稳定68+V2另22，非目标80–120。最终当前源14小目标绿/2未选1.84s、原975默认6000单目标绿/2未选25.95s，原JUnit warning保留；全性质13是最后旧marker查询保护前一次33.10s，范围分开。
+- 当前975按VERSION运行，V1黄金/935来源保留，V2摘要在全业务性质和另空库不同batch再现后冻结；没有历史代码替代当前覆盖。signature AST全同/frozen specDDL净差异0，限定Ruff绿。原红log用gzip保原字节，verification记录实际测试而非相加计数。
+- 稳定codex/database-size-optimize-20261025和候选codex/database-seed-v2-optimize-20261025均实际push。Issue4 comment6397356591由connector发布，单ID GET正文与本地完全相同。root组合CI/审核/新MySQL与采用版本取舍待调度，本岗未读独立资料/凭据或接触旧MySQL。

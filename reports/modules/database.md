@@ -46,3 +46,5 @@
 - 独立分支codex/database-seed-v2-optimize-20261025，稳定回退5f77938。slot时间轴、通用证据注解、派生ID/指针列和DAG枚举，VERSION2与旧marker拒绝；public CLI参数/结果键不变。seed348→326再省22，累计产品持久Python1691→1601净90，未达到额外80–120目标。
 - 新全量性质13场景33.10s通过（实际包括6000任务全35FK/JSON/角色/指针/版本/时间、另空库batch127重现、版本marker/无写参数与rollback）；首轮2红是新增测试统计了只读UoW，改到seed结束立即核单commit，红保留。随后新增旧marker直接读取拒绝，当前源该小变更仍需再验证。
 - 原975业务断言未降低，按VERSION选择快照；V1两golden与935来源显式保留但当前未执行V1历史代码。V2快照在语义/重现性质后才冻结；旧黄金小数据真实红保留。只是开发候选，无MySQL/独立/性能或组合CI成功声明。
+- 最终精确1076677当前源975/新性质小目标14绿1.84s（2未选）+975默认6000单目标1绿25.95s（2未选），原JUnit warning保留；原全性质13绿属于最后旧marker查询保护前，分范围记录不相加。
+- 原计数器当前完整产品6245/exit1，净90仍超1145；持久签名AST全同、冻结specs/DDL净差异0，Ruff通过。两分支已push；[Issue4交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591)单ID GET全文一致。根待采用稳定68或V2额外22、精确审核与CI/freshMySQL；不称规模/独立/正式性能闭合。
