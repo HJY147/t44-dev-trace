@@ -1,0 +1,63 @@
+{
+  "admitted": true,
+  "operator": "AI",
+  "phase": "functional",
+  "tool_freeze_sha256": "9e247e8cab9b4f04dbc2c2a9865222967881576597aee7adbe2c9ab6ebe0cb07",
+  "base_url": "https://localhost:18096/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "ca_file": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/tls/ca.pem",
+  "network_scope": "loopback",
+  "expires_at": "2026-10-25T09:50:00.000000Z",
+  "max_wall_seconds": 900,
+  "max_requests": 100000,
+  "max_concurrency": 400,
+  "max_runner_rss_bytes": 4294967296,
+  "max_evidence_compressed_bytes": 2147483648,
+  "max_evidence_ciphertext_bytes": 3221225472,
+  "max_evidence_plaintext_bytes": 34359738368,
+  "build": {
+    "kind": "native",
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "build_manifest_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/native-build.json",
+    "build_manifest_sha256": "8f7ac784852f46d68c5a33b3780f620e4c76f07118562047246c2f7a295260c7",
+    "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+    "image_digest": null
+  },
+  "isolated_resource_ids": [
+    "functional-api-pgid:73663",
+    "functional-consumer-pgid:73696",
+    "functional-schema:t44_f817_20261025@127.0.0.1:13306",
+    "functional-vhost:t44.native.demo.functional_campaign_20261025_d1c1e87649f643c4@127.0.0.1:25696"
+  ],
+  "allowed_faults": [],
+  "fixture_handoff": "nonce-sealed-project-scope",
+  "cost_ceiling": "CNY0 new resources: existing isolated loopback native services only",
+  "scope_notes": [
+    "Functional only, not performance or fault admission. Shared MySQL daemon and old schemas/users/processes protected.",
+    "Five synthetic human identities/sessions supplied; independent operator creates projects and iterations through authority APIs.",
+    "Each real project handoff replaces the one active scheduler scope; previous projects are no longer periodically scanned. Prior exact-scope API tokens remain valid until their actual expiry.",
+    "Initial native build has scheduler_pending_scope; later actual scheduler scope/PID/UTC are separate provision receipts, never overwriting build metadata.",
+    "Root provider binds exact current PUBLIC supervisor receipt and has its own phase deadline."
+  ],
+  "tool_public_root": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC",
+  "fixture_retention": {
+    "schema_is_empty": false,
+    "projects_retained": 1,
+    "project_ids": [
+      1
+    ],
+    "tasks_before_phase": 0,
+    "purpose": "Coordinator-owned neutral API/service/scheduler/sealer integration preflight; not independent acceptance",
+    "cleanup_or_reset_performed": false
+  },
+  "credential_packet_note": "Five synthetic human sessions issued09:17:15 UTC, TTL3600. Separate exact environment-functional-v7-campaign.json delivered privately; no oldtest account packet.",
+  "provider_binding_sha256": "f61cca313a8c2b3371c70d24d465ba27064e34c09b821e640a93aa9e90dc78f2",
+  "initial_scheduler_scope": {
+    "project_ids": [
+      1
+    ],
+    "pid": 76376,
+    "origin": "root neutral component preflight; later actual case project scope replaces this single scope"
+  }
+}

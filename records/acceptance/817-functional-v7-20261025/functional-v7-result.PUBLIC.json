@@ -1,0 +1,223 @@
+{
+  "visibility": "PUBLIC",
+  "operator": "AI",
+  "generated_utc": "2026-10-25T09:50:56.501895Z",
+  "overall": "NOT_PROVEN",
+  "phase": "functional",
+  "run_count": 1,
+  "automatic_reruns": 0,
+  "binding": {
+    "tool_freeze_sha256": "9e247e8cab9b4f04dbc2c2a9865222967881576597aee7adbe2c9ab6ebe0cb07",
+    "grant_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/diagnostics-20261025/records/acceptance/817-functional-v7-campaign-grant-20261025.json",
+    "grant_file_sha256": "d3235f472b6be23e2de300ca2fad9e75ec2d8cf24a4ea1db113b1d795820409b",
+    "grant_canonical_sha256": "5234b21e5abdf2761dcde5bde861adb4f24b85a58c631865b3ab770de4764d8c",
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "native_build_manifest_sha256": "8f7ac784852f46d68c5a33b3780f620e4c76f07118562047246c2f7a295260c7",
+    "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+    "base_url": "https://localhost:18096/api/v1",
+    "pinned_ip": "127.0.0.1",
+    "expires_at": "2026-10-25T09:50:00.000000Z",
+    "max_wall_seconds": 900,
+    "faults_allowed": [],
+    "isolated_resource_ids": [
+      "functional-api-pgid:73663",
+      "functional-consumer-pgid:73696",
+      "functional-schema:t44_f817_20261025@127.0.0.1:13306",
+      "functional-vhost:t44.native.demo.functional_campaign_20261025_d1c1e87649f643c4@127.0.0.1:25696"
+    ]
+  },
+  "receipt_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/runtime/dd4d1881ddbf4ada.receipt.PUBLIC.json",
+  "supervisor_status_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/runtime/dd4d1881ddbf4ada.status.PUBLIC.json",
+  "process": {
+    "supervisor_pid": 82633,
+    "started_utc": "2026-10-25T09:44:41.229092Z",
+    "ended_utc": "2026-10-25T09:47:18.923213Z",
+    "returncode": 0,
+    "status": "PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT",
+    "hard_stopped": false,
+    "rss_stopped": false,
+    "completion_after_expiry": false,
+    "max_observed_rss_bytes": 44040192,
+    "rss_scope": "single runner PID only; not aggregate",
+    "exit_zero_is_not_acceptance": true
+  },
+  "separate_counts": {
+    "planned_functional_cases": 14,
+    "planned_fault_cases": 3,
+    "planned_performance_groups": 1,
+    "offline_controller_tests_executed": 0,
+    "functional_cases_with_actual_http": 13,
+    "actual_sut_http_requests": 1027,
+    "complete_http_responses": 1027,
+    "incomplete_http_responses": 0,
+    "durably_frozen_http_completions": 1027,
+    "original_completed_postconditions": 89,
+    "frozen_cases_with_pass": 12,
+    "original_case_status_counts": {
+      "PASS": 12,
+      "FAIL": 1,
+      "NOT_PROVEN": 1
+    },
+    "assertions_executed": 9704,
+    "assertions_passed": 9703,
+    "assertions_failed": 1,
+    "error_branches_declared": 551,
+    "error_branches_observed": 28,
+    "error_branches_unproved": 523,
+    "complete_formal_400client_600s_groups": 0,
+    "direct_db_requests_by_executor": 0,
+    "direct_mq_requests_by_executor": 0,
+    "fault_phases_executed": 0,
+    "performance_phases_executed": 0
+  },
+  "cases": [
+    {
+      "case_id": "F01",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 15,
+      "observed_complete_http_responses": 15,
+      "original_complete_postconditions": 1,
+      "elapsed_ns": 3559136666
+    },
+    {
+      "case_id": "F02",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 15,
+      "observed_complete_http_responses": 15,
+      "original_complete_postconditions": 2,
+      "elapsed_ns": 1801019709
+    },
+    {
+      "case_id": "F03",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 82,
+      "observed_complete_http_responses": 82,
+      "original_complete_postconditions": 6,
+      "elapsed_ns": 2504608042
+    },
+    {
+      "case_id": "F04",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 213,
+      "observed_complete_http_responses": 213,
+      "original_complete_postconditions": 17,
+      "elapsed_ns": 3643310916
+    },
+    {
+      "case_id": "F05",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 79,
+      "observed_complete_http_responses": 79,
+      "original_complete_postconditions": 6,
+      "elapsed_ns": 2348422667
+    },
+    {
+      "case_id": "F06",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 38,
+      "observed_complete_http_responses": 38,
+      "original_complete_postconditions": 3,
+      "elapsed_ns": 1973851792
+    },
+    {
+      "case_id": "F07",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 47,
+      "observed_complete_http_responses": 47,
+      "original_complete_postconditions": 3,
+      "elapsed_ns": 2063882458
+    },
+    {
+      "case_id": "F08",
+      "original_status": "FAIL",
+      "actual_sut_http_requests": 122,
+      "observed_complete_http_responses": 122,
+      "original_complete_postconditions": 9,
+      "elapsed_ns": 2847667042,
+      "public_failure_observation": {
+        "observed_http_status": 409,
+        "observed_authority_error_code": "ASSESSMENT_BASELINE_MISMATCH",
+        "frozen_assertion_result": "FAIL",
+        "private_oracle_and_case_construction": "WITHHELD",
+        "partial_postconditions_retained": 9
+      }
+    },
+    {
+      "case_id": "F09",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 106,
+      "observed_complete_http_responses": 106,
+      "original_complete_postconditions": 8,
+      "elapsed_ns": 2638887417
+    },
+    {
+      "case_id": "F10",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 34,
+      "observed_complete_http_responses": 34,
+      "original_complete_postconditions": 2,
+      "elapsed_ns": 2048967209
+    },
+    {
+      "case_id": "F11",
+      "original_status": "NOT_PROVEN",
+      "actual_sut_http_requests": 0,
+      "observed_complete_http_responses": 0,
+      "original_complete_postconditions": 0,
+      "elapsed_ns": 7167,
+      "public_not_proven_reason": "Expired-token credential input absent; no SUT request made; no substitute token or retry inferred."
+    },
+    {
+      "case_id": "F12",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 119,
+      "observed_complete_http_responses": 119,
+      "original_complete_postconditions": 20,
+      "elapsed_ns": 128594290583
+    },
+    {
+      "case_id": "F13",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 14,
+      "observed_complete_http_responses": 14,
+      "original_complete_postconditions": 1,
+      "elapsed_ns": 142351167
+    },
+    {
+      "case_id": "F14",
+      "original_status": "PASS",
+      "actual_sut_http_requests": 143,
+      "observed_complete_http_responses": 143,
+      "original_complete_postconditions": 11,
+      "elapsed_ns": 3045897375
+    }
+  ],
+  "evidence_integrity": {
+    "authenticated_complete": true,
+    "journal_finalized": true,
+    "authenticated_frames": 15925,
+    "journal_records": 15923,
+    "decoded_records": 15923,
+    "partial_tail": false,
+    "ciphertext_sha256": "5d25c6c5240b90906fecc51db92a8226b62f33cdd07c2ace10a22ca0a6211a15",
+    "original_private_summary_sha256": "6dad9a254af0602d86a5559cda155356e2026f113478437f49a36d219bef3b88",
+    "begin_end_sequences_match": true,
+    "http_persistence_rejections": 0,
+    "original_authorities_unchanged": true,
+    "allowed_static_inputs_unchanged": true,
+    "no_case_or_business_source_edited": true,
+    "raw_http_bodies_headers_credentials_keys": "PRIVATE_ONLY_NOT_PUBLISHED"
+  },
+  "limitations": [
+    "Overall NOT_PROVEN; one frozen assertion failed and one case lacked its expired-token credential input.",
+    "All 1027 request records are tagged functional; the 89 completed postconditions are original suite counters, not 89 complete cases or separately tagged postcondition HTTP requests.",
+    "Only 28 of 551 declared operation/error branches observed; remaining 523 NOT_PROVEN.",
+    "Scheduler scope was replaced per actual newly created project; prior projects ceased periodic scanning. This is the supplied runtime limitation, not a changed oracle.",
+    "The isolated schema retained one coordinator neutral preflight project and zero tasks before this phase; no cleanup/reset was performed.",
+    "Fault and performance phases were not authorized or run. No formal 400-client/600-second group is proven.",
+    "No source/Git/development report or earlier run evidence was inspected. Exit code 0 does not override case or coverage gaps."
+  ],
+  "original_failures_retained": true,
+  "private_case_source_and_oracles_published": false
+}

@@ -1,0 +1,101 @@
+{
+  "admitted": true,
+  "operator": "AI",
+  "phase": "performance",
+  "run_kind": "formal_candidate",
+  "tool_freeze_sha256": "9e247e8cab9b4f04dbc2c2a9865222967881576597aee7adbe2c9ab6ebe0cb07",
+  "base_url": "https://localhost:18097/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "ca_file": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/tls/ca.pem",
+  "network_scope": "loopback",
+  "expires_at": "2026-10-25T10:15:00.000000Z",
+  "max_wall_seconds": 2400,
+  "max_requests": 50000000,
+  "max_concurrency": 400,
+  "max_runner_rss_bytes": 4294967296,
+  "max_evidence_compressed_bytes": 68719476736,
+  "max_evidence_ciphertext_bytes": 68719476736,
+  "max_evidence_plaintext_bytes": 1099511627776,
+  "build": {
+    "kind": "native",
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "build_manifest_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/native-build-w7.json",
+    "build_manifest_sha256": "e88e88448b387c0f938aec7a5f78f1efb72461e9b615139964ee311608de2397",
+    "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+    "image_digest": null
+  },
+  "isolated_resource_ids": [
+    "api",
+    "consumer",
+    "scheduler",
+    "broker",
+    "mysql",
+    "generator"
+  ],
+  "allowed_faults": [],
+  "fixture_handoff": "direct-preprovisioned-project-scope",
+  "cost_ceiling": "CNY0 new paid resources; existing isolated native dataset/vhost/HTTPS process; shared MySQL is read-only observed, never stopped or reconfigured",
+  "dataset_premise": {
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "reviews": 11400,
+    "decisions": 3600,
+    "assessments_additional": 3600,
+    "records_definition": "reviews+decisions=15000; assessments additional",
+    "concentration": "P1/I1 800 tasks, other39 projects133or134; synthetic explicitly weighted data, not uniform",
+    "source_generator": "5647ae7baab099bc1d7d1dd4788e206a9159f13f",
+    "transition_group": 400,
+    "overdue_group": 400,
+    "database": "t44_p829c_20261025"
+  },
+  "resource_identity_map": {
+    "api": {
+      "pids": [
+        73906,
+        73907,
+        73908,
+        73909,
+        73910,
+        73911,
+        73912,
+        73913,
+        73914
+      ],
+      "semantics": "7workers+parent+tracker aggregate interval CPU/RSS sum; all9 PIDs explicitly listed"
+    },
+    "consumer": {
+      "pid": 73964
+    },
+    "scheduler": {
+      "pid": 81198,
+      "project_ids": [
+        1
+      ],
+      "token_session_id": 6
+    },
+    "broker": {
+      "pid": 73736,
+      "epmd_pid": 73731
+    },
+    "mysql": {
+      "pid": 7980,
+      "shared": true,
+      "scope": "Whole protected shared process metrics only; no per-schema isolation attribution or stop/reconfigure permission"
+    },
+    "generator": {
+      "source": "Actual new independent PUBLIC supervisor child PID, registered before measured warmup completes"
+    }
+  },
+  "resource_observation_note": "Every-second genuine interval CPU deltas and RSS. Original raw pending/null rows preserved; valid numeric view not interpolation. Real gaps remain gaps and cannot become coverage pass. resource files explicitly provided to operator for private/input mirror.",
+  "scope_notes": [
+    "Performance only, no functional rerun or fault, no extrapolation from planned/selfcheck counts.",
+    "Original frozen400 clients/600s steady/30s excluded warmup/270msP95/1000min criteria unchanged.",
+    "Direct preprovisioned singleP1 service token already applied to owned scheduler; root operation receipt is environment preparation, not acceptance.",
+    "Native host shared with generator; report resource identity/shared attribution and instrumentation limits honestly. No cloud equivalence or old run root-cause claim."
+  ],
+  "resource_source_jsonl": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/state/interval-resources-d7b4e053aa514552a86fdf22e07b6cb9.jsonl",
+  "resource_mirror_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/private/input/performance-resource-v7.jsonl",
+  "phase_note": "One new v7 frozen formal_candidate run after independent functional phase; functional environment load stopped before performance. No old score, output, grant or resource series imported."
+}
