@@ -1505,5 +1505,26 @@
     "prompt_ref": "ROLE-database-PERF-FIXTURE-20261025-v1",
     "production_change": false,
     "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6395326771"
+  },
+  "source_size_optimize_20261025": {
+    "branch": "codex/database-size-optimize-20261025",
+    "base": "e45a2b9",
+    "product_baseline": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "prompt_ref": "ROLE-database-SIZE-OPTIMIZE-20261025-v1",
+    "report": "agents/database/size-optimize-20261025/report.md",
+    "public_interfaces": "unchanged",
+    "ddl": "unchanged",
+    "dependencies": "unchanged in first stage",
+    "actual_first_stage_saved": 48,
+    "target_400_500": "NOT_ACHIEVED",
+    "validation": "SQLite/mock only; migration9/claim7 differential; old seed full digest matched before final insertion-order restoration; final restoration seed test pending",
+    "unverified": [
+      "real MySQL/locks/concurrency",
+      "complete CI/coverage",
+      "independent acceptance",
+      "formal performance",
+      "global size compliance"
+    ],
+    "followup": "root admitted isolated SQLGlot CHECK-only prototype with exact pin/hash and strict allowlist; not yet applied"
   }
 }

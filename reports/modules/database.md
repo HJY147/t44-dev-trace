@@ -32,3 +32,9 @@
 
 - 设计2f6c1f9/工具d8addfd，复用冻结seed显式Collector，在root唯一授权新库一次准备并读回40P/6000T/9000E/11400reviews+3600decisions=15000，assessments额外3600；原18业务表空、schema18/226前后通过、35FK及指针/轮次/组状态核验。仅数据准备，不是性能/独立验收。
 - P1集中400DEVELOPING future与400disjoint overdue，其余5200分39项目，偏斜和压力组无依赖明确公开；5合成用户/800ID及seed/anchor/source/hash在[本轮报告](../../agents/database/performance-fixture-20261025/report.md)和public-inventory。生产/DDL无变更，8:04:21后本岗未再写库；root后来签5身份会话单列。恢复只封E，无新增测试/SQL。
+
+## 2026-10-25 实际源码规模优化首批
+
+- 独立树codex/database-size-optimize-20261025，935产品基线。seed默认构造/注解与按需buffer、migrations目录/完成路径、Rows比较/结果集合校验、Outbox双阶段claim共用算法，保留public接口/DDL及guard。
+- 原cloc2.10净省48，400–500目标尚未达到；不压格式/改统计。新迁移差分9场景和claim差分7场景保留SQL/commit/锁顺序语义；原975小/6000固定全库摘要保持。详见本岗[size报告](../../agents/database/size-optimize-20261025/report.md)。
+- 仅开发SQLite/mock验证；最后seed冻结插入顺序补充待验证。原云/独立/规模门禁未关闭，组合CI由根统一执行。SQLGlot仅根准入下一小原型，首批未新增依赖。

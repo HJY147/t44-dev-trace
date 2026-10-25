@@ -1,5 +1,6 @@
 """Trusted 18-table facade. Predicates/identifiers are compiled from allowlists only."""
 
+import operator
 from collections.abc import Mapping
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -44,11 +45,8 @@ class RowsGateway:
         def safe(value):
             if isinstance(value, ClauseElement):
                 raise StatementRejected("SQL expressions cannot be bound values")
-            if isinstance(value, (list, tuple, set)):
-                for item in value:
-                    safe(item)
-            elif isinstance(value, dict):
-                for item in value.values():
+            if isinstance(value, (list, tuple, set, dict)):
+                for item in value.values() if isinstance(value, dict) else value:
                     safe(item)
 
         for value in values.values():
@@ -73,18 +71,12 @@ class RowsGateway:
             value = (
                 self._fields(table, {p.column: p.value})[p.column] if p.op != "is_null" else p.value
             )
-            if p.op == "eq":
-                clause = column.is_(None) if value is None else column == value
-            elif p.op == "ne":
-                clause = column.is_not(None) if value is None else column != value
+            if p.op in ("eq", "ne", "lt", "le", "gt", "ge"):
+                clause = getattr(operator, p.op)(column, value)
             elif p.op == "is_null":
                 clause = column.is_(None) if value is not False else column.is_not(None)
             elif p.op == "in":
                 clause = column.in_(tuple(value))
-            elif p.op in ("lt", "le", "gt", "ge"):
-                clause = getattr(
-                    column, {"lt": "__lt__", "le": "__le__", "gt": "__gt__", "ge": "__ge__"}[p.op]
-                )(value)
             else:
                 raise StatementRejected("Predicate operator is not permitted")
             clauses.append(clause)
@@ -109,16 +101,17 @@ class RowsGateway:
             # PyMySQL reports MySQL CHECK 3819 as OperationalError, not IntegrityError.
             if not isinstance(error, IntegrityError) and code != 3819:
                 raise PersistenceUnavailable("Database operation failed") from None
-            kind = (
-                "duplicate"
-                if code == 1062 or "UNIQUE constraint" in message
-                else (
-                    "foreign_key"
-                    if code in (1451, 1452) or "FOREIGN KEY constraint" in message
-                    else "check"
-                    if code == 3819 or "CHECK constraint" in message
-                    else "other"
-                )
+            kind = next(
+                (
+                    kind
+                    for kind, codes, marker in (
+                        ("duplicate", (1062,), "UNIQUE constraint"),
+                        ("foreign_key", (1451, 1452), "FOREIGN KEY constraint"),
+                        ("check", (3819,), "CHECK constraint"),
+                    )
+                    if code in codes or marker in message
+                ),
+                "other",
             )
             known = [c.name for t in TABLES.values() for c in t.constraints if c.name]
             constraint = next((name for name in known if name in message), None)
@@ -235,7 +228,6 @@ class RowsGateway:
 
         if type(result) is not list or len(result) > len(wanted):
             unavailable()
-        seen, ids = set(), set()
         for row in result:
             if (
                 not isinstance(row, dict)
@@ -253,11 +245,13 @@ class RowsGateway:
                 or row["iteration_id"] is not None
             ):
                 unavailable()
-            pair = row["task_id"], row["to_version"]
-            if pair not in wanted or pair in seen or row["id"] in ids:
-                unavailable()
-            seen.add(pair)
-            ids.add(row["id"])
+        pairs = [(row["task_id"], row["to_version"]) for row in result]
+        if (
+            not set(pairs).issubset(wanted)
+            or len(set(pairs)) != len(result)
+            or len({row["id"] for row in result}) != len(result)
+        ):
+            unavailable()
         return result
 
     def confirmed_missing(self, *, confirmed_before, limit):

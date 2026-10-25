@@ -35,20 +35,17 @@ def _check_signature(expression):
         position = match.end()
     position = 0
     precedence = {
-        "or": 1,
-        "and": 2,
-        "=": 3,
-        "<>": 3,
-        "!=": 3,
-        "<": 3,
-        ">": 3,
-        "<=": 3,
-        ">=": 3,
-        "is": 3,
-        "in": 3,
-        "between": 3,
-        "+": 4,
-        "-": 4,
+        operator: priority
+        for priority, operators in enumerate(
+            (
+                ("or",),
+                ("and",),
+                ("=", "<>", "!=", "<", ">", "<=", ">=", "is", "in", "between"),
+                ("+", "-"),
+            ),
+            start=1,
+        )
+        for operator in operators
     }
 
     def pop(expected=None):
@@ -156,17 +153,14 @@ def check_schema(engine) -> dict:
             actual = columns.get(c.name)
             if actual is None:
                 continue
-            native = actual["type"]
 
             def signature(kind):
                 return (
                     kind.__class__.__name__.lower(),
-                    getattr(kind, "length", None),
-                    getattr(kind, "unsigned", None),
-                    getattr(kind, "fsp", None),
+                    *(getattr(kind, field, None) for field in ("length", "unsigned", "fsp")),
                 )
 
-            if signature(native) != signature(c.type):
+            if signature(actual["type"]) != signature(c.type):
                 defects.append(f"{name}.{c.name}:type")
             if actual["nullable"] != c.nullable:
                 defects.append(f"{name}.{c.name}:nullable")
@@ -186,19 +180,11 @@ def check_schema(engine) -> dict:
             actual_keys.setdefault(unique["name"], signature)
         keys = {
             x.name: _index_signature(
-                dict(column_names=[c.name for c in x.columns], unique=x.unique)
+                dict(column_names=[c.name for c in x.columns], unique=getattr(x, "unique", True))
             )
-            for x in expected.indexes
+            for x in (*expected.indexes, *expected.constraints)
+            if x.__class__.__name__ in ("Index", "UniqueConstraint")
         }
-        keys.update(
-            {
-                x.name: _index_signature(
-                    dict(column_names=[c.name for c in x.columns], unique=True)
-                )
-                for x in expected.constraints
-                if x.__class__.__name__ == "UniqueConstraint"
-            }
-        )
         for key, signature in keys.items():
             if actual_keys.get(key) != signature:
                 defects.append(f"{name}.{key}:index_definition")
@@ -263,7 +249,8 @@ def migrate(engine, *, expected_database: str) -> dict:
             if not locked:
                 raise MigrationError("Project migration lock is unavailable")
             existing = set(inspect(connection).get_table_names())
-            if "t44_schema_migrations" in existing:
+            already_applied = "t44_schema_migrations" in existing
+            if already_applied:
                 row = (
                     connection.execute(
                         text(
@@ -282,53 +269,48 @@ def migrate(engine, *, expected_database: str) -> dict:
                     raise MigrationError(
                         "Migration version/checksum is incompatible or incomplete; no destructive repair"
                     )
-                report = check_schema(engine)
-                if not report["passed"]:
-                    raise MigrationError("Applied database structure differs from frozen v1")
-                return {
-                    "version": SCHEMA_VERSION,
-                    "sha256": DDL_SHA256,
-                    "already_applied": True,
-                    **report,
-                }
-            if existing:
-                raise MigrationError(
-                    "Initial migration requires an empty explicitly selected project schema"
+            else:
+                if existing:
+                    raise MigrationError(
+                        "Initial migration requires an empty explicitly selected project schema"
+                    )
+                connection.commit()
+                connection.exec_driver_sql(
+                    "CREATE TABLE t44_schema_migrations (id INT UNSIGNED PRIMARY KEY, "
+                    "version INT UNSIGNED NOT NULL, ddl_sha256 BINARY(32) NOT NULL, "
+                    "state TINYINT UNSIGNED NOT NULL, applied_at DATETIME(6) NULL) ENGINE=InnoDB"
                 )
-            connection.commit()
-            connection.exec_driver_sql(
-                "CREATE TABLE t44_schema_migrations (id INT UNSIGNED PRIMARY KEY, "
-                "version INT UNSIGNED NOT NULL, ddl_sha256 BINARY(32) NOT NULL, "
-                "state TINYINT UNSIGNED NOT NULL, applied_at DATETIME(6) NULL) ENGINE=InnoDB"
-            )
-            connection.execute(
-                text(
-                    "INSERT INTO t44_schema_migrations(id,version,ddl_sha256,state) VALUES(1,:version,:digest,1)"
-                ),
-                {"version": SCHEMA_VERSION, "digest": digest},
-            )
-            connection.commit()
-            executable = re.sub(r"--[^\n]*", "", sql)
-            for statement in executable.split(";"):
-                if statement.strip():
-                    step += 1
-                    connection.exec_driver_sql(statement.strip())
-                    connection.commit()  # MySQL DDL implicitly commits; do not pretend rollback can undo it.
+                connection.execute(
+                    text(
+                        "INSERT INTO t44_schema_migrations(id,version,ddl_sha256,state) VALUES(1,:version,:digest,1)"
+                    ),
+                    {"version": SCHEMA_VERSION, "digest": digest},
+                )
+                connection.commit()
+                executable = re.sub(r"--[^\n]*", "", sql)
+                for statement in executable.split(";"):
+                    if statement.strip():
+                        step += 1
+                        connection.exec_driver_sql(statement.strip())
+                        connection.commit()  # MySQL DDL implicitly commits; do not pretend rollback can undo it.
             report = check_schema(engine)
             if not report["passed"]:
                 raise MigrationError(
-                    "Created schema failed the frozen field/index/constraint check"
+                    "Applied database structure differs from frozen v1"
+                    if already_applied
+                    else "Created schema failed the frozen field/index/constraint check"
                 )
-            connection.execute(
-                text(
-                    "UPDATE t44_schema_migrations SET state=2,applied_at=UTC_TIMESTAMP(6) WHERE id=1"
+            if not already_applied:
+                connection.execute(
+                    text(
+                        "UPDATE t44_schema_migrations SET state=2,applied_at=UTC_TIMESTAMP(6) WHERE id=1"
+                    )
                 )
-            )
-            connection.commit()
+                connection.commit()
             return {
                 "version": SCHEMA_VERSION,
                 "sha256": DDL_SHA256,
-                "already_applied": False,
+                "already_applied": already_applied,
                 **report,
             }
         except SQLAlchemyError as error:

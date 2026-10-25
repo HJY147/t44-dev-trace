@@ -2,7 +2,7 @@
 
 import hashlib
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta
 from importlib.resources import files
 from pathlib import Path
@@ -48,22 +48,15 @@ def _populate(g, manifest, template, actors, batch_size):
         )
     at = from_db_time(to_db_time(datetime.fromisoformat(manifest["anchor_at"])))
     created, manager, developer, reviewer = at - timedelta(days=14), *actors
-    tables = {
-        name: []
-        for name in (
-            "projects",
-            "project_members",
-            "iterations",
-            "tasks",
-            "task_dependencies",
-            "reviews",
-            "release_assessments",
-            "decisions",
-            "audit_events",
-        )
-    }
+    tables = defaultdict(list)
     context = dict(
-        created_at=created, updated_at=at, delivery_cycle=1, schedule_version=1
+        created_at=created,
+        updated_at=at,
+        delivery_cycle=1,
+        schedule_version=1,
+        created_by=manager,
+        rollback_plan_version=1,
+        evidence=EVIDENCE,
     )
 
     def add(table, **values):
@@ -73,23 +66,19 @@ def _populate(g, manifest, template, actors, batch_size):
         return row
 
     pointers, review_index = [], 0
-    sections = [
-        dict(
-            section_id=s["section_id"],
-            content="[synthetic] 合成八段记录；非实际评审结论",
-            evidence=EVIDENCE,
-        )
-        for s in template["sections"]
-    ]
-    passed = [
-        dict(
-            item_id=i["item_id"],
-            judgment=1,
-            rationale="[synthetic] 演示通过分支，不是执行证据",
-            evidence=EVIDENCE,
-        )
-        for i in template["items"]
-    ]
+
+    def annotations(items, key, **values):
+        return [{key: item[key], **values, "evidence": EVIDENCE} for item in items]
+
+    sections = annotations(
+        template["sections"], "section_id", content="[synthetic] 合成八段记录；非实际评审结论"
+    )
+    passed = annotations(
+        template["items"],
+        "item_id",
+        judgment=1,
+        rationale="[synthetic] 演示通过分支，不是执行证据",
+    )
     failed = [{**item, "judgment": 3, "rationale": "[synthetic] 待验证分支"} for item in passed]
     for p in range(projects):
         pid = p + 1
@@ -99,7 +88,6 @@ def _populate(g, manifest, template, actors, batch_size):
             id=pid,
             name=f"[synthetic] 项目 {pid:02}",
             description="程序合成演示/压测夹具，不代表真实项目经历",
-            created_by=manager,
         )
         for uid, role in zip(actors, (1, 2, 4), strict=True):
             add(
@@ -140,13 +128,15 @@ def _populate(g, manifest, template, actors, batch_size):
             version = {1: 1, 2: 2, 3: 3}.get(
                 state, 3 * count + {4: 1, 5: 2, 6: 5, 7: 6}.get(state, 0)
             )
-            pointer = dict(
-                id=tid,
-                latest_review_id=None,
-                approved_review_id=None,
-                approved_assessment_id=None,
-                approved_assessment_version=None,
+            pointer = dict.fromkeys(
+                (
+                    "latest_review_id",
+                    "approved_review_id",
+                    "approved_assessment_id",
+                    "approved_assessment_version",
+                )
             )
+            pointer["id"] = tid
             task = add(
                 "tasks",
                 **pointer,
@@ -204,7 +194,6 @@ def _populate(g, manifest, template, actors, batch_size):
                         )
                         for i in (1, 2, 3, 4)
                     ],
-                    rollback_plan_version=1,
                     rollback_plan=dict(
                         target_version="synthetic-baseline",
                         trigger="[synthetic] 回归不符合预期",
@@ -214,7 +203,6 @@ def _populate(g, manifest, template, actors, batch_size):
                         responsible_user_id=developer,
                         evidence=EVIDENCE,
                     ),
-                    created_by=manager,
                     reviewed_by=None if status == 1 else reviewer,
                     reviewed_at=None if status == 1 else start + timedelta(minutes=21),
                     review_reason=None
@@ -234,12 +222,8 @@ def _populate(g, manifest, template, actors, batch_size):
                         decided_by=manager,
                         reason="[synthetic] 合成发布/回滚决定，非真人操作",
                         impact="[synthetic] 仅演示数据" if dtype == 2 else None,
-                        target_version="synthetic-baseline"
-                        if dtype == 2
-                        else "synthetic-v1",
+                        target_version="synthetic-baseline" if dtype == 2 else "synthetic-v1",
                         assessment_id=aid,
-                        rollback_plan_version=1,
-                        evidence=EVIDENCE,
                         decided_at=start + timedelta(minutes=30 if dtype == 1 else 40),
                     )
             pointers.append(pointer)
@@ -252,10 +236,7 @@ def _populate(g, manifest, template, actors, batch_size):
             operation_id=OPERATION,
             outcome=1,
             before_values=[],
-            after_values=[
-                dict(field="seed_manifest", value=json.dumps(manifest, sort_keys=True))
-            ],
-            evidence=EVIDENCE,
+            after_values=[dict(field="seed_manifest", value=json.dumps(manifest, sort_keys=True))],
             created_at=at,
         )
     edges = tables["task_dependencies"]
@@ -269,13 +250,14 @@ def _populate(g, manifest, template, actors, batch_size):
                         project_id=p + 1,
                         task_id=p * per_project + local + 1,
                         depends_on_task_id=p * per_project + predecessor + 1,
-                        created_by=manager,
                     )
         if len(edges) == dependencies:
             break
     if len(edges) != dependencies:
         raise ValueError("Requested dependency count exceeds acyclic fixture capacity")
-    for table, rows in tables.items():
+    # The frozen registry retains FK insertion/locking order, independent of buffer creation.
+    for table in TABLES:
+        rows = tables.get(table, [])
         for first in range(0, len(rows), batch_size):
             g.insert_many(table, rows[first : first + batch_size])
     for first in range(0, len(pointers), batch_size):

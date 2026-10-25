@@ -322,3 +322,9 @@
 - seed44/anchor08:03UTC/configrawhash/10复用源码对c8字节核验、builder逻辑hash05cd964...及精确derived-helper.patch保留；logical hash不包含随机用户密码hash/serverdefaults，不称物理库复现。原database-preparation.json24899bytes/SHAe67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76未修改。两个CLI预期拒绝guard（已存输出不变、错env在连接前拒绝）原stderr/失败JSON保留，不算产品失败/不重复8用例。
 - root08:07急调度腾槽，本岗完成source push后结束，五原件未跟踪保留，无进一步写库；后续恢复仅E/Issue/文档，不重跑/不连接DB。root提供08:15:44自行签5个合成actor_kind1会话事实单列，原回执auth_sessions0不回写，也不冒真人活动。中性public-inventory另列800实际ID供root，只是环境数据不是验收用例。
 - 恢复封E已实际发表Issue4评论6395326771，精确GET单ID全文与本地稿同，原响应/hash保存；原五文件hash逐一保持，public-inventory/provenance是从原receipt提取，不增加SQL/测试。未闭任何正式出口，源d8无变更。
+
+## ROLE-database-SIZE-OPTIMIZE-20261025-v1：实际首批净省
+- 基e45a2b9独立树，产品935基线。仅seed/migrations/rows/delivery内部重构；冻结TABLES写入顺序、public签名、DDL/guard/租约/CAS保留，未删测试或改变统计。
+- 同cloc2.10首批净50，补回seed冻结插入顺序后净48；目标400–500未达到，不虚报目标。原956/975小17、993+98969、新迁移9+原975小/6000共12和claim7+原980非integration共25均实际通过，各集合重叠不累加。原JUnit/marker警告保留。
+- 新迁移差分以935为独立旧实现，9场景返回/错误和SQL/commit/核对/解锁序列一致；claim7场景包括bool/float/零limit、优先/剩余页及lease token。6000任务固定全库摘要保持；最后插入顺序补充后需再验证seed，未冒称已测新变更。
+- 唯一授权cloc工具读取，不读其他runtime/凭据/独立资料；测试仅SQLite/mock，无MySQL/HTTP/负载/全CI。本岗报告、提示词及交接更新；下一阶段根已准入精确pin SQLGlot严格CHECK小原型，不改共享venv。
