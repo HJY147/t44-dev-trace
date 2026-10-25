@@ -214,9 +214,7 @@ class Runtime:
                 call.project_id,
                 lock="update" if call.operation in _PROJECT_LOCK else "share",
             )
-        members = g.rows(
-            "project_members", {"project_id": call.project_id}, order_by=("user_id",), lock="share"
-        )
+        members = call.members(g, order_by=("user_id",), lock="share")
         if call.actor["actor_kind"] == 1:
             call.membership = next(
                 (m for m in members if m["user_id"] == call.actor_id and m["active"]), None

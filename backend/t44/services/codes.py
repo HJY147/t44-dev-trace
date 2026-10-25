@@ -1,91 +1,32 @@
 """Stable frozen transport/persistence codes, independent of display and Enum order."""
 
-from t44.domain.models import ProjectRole, ResponsibilityStage, TaskState
+import hashlib
 
-ERROR_CODES = {
-    1: "AUTH_REQUIRED",
-    2: "INVALID_CREDENTIALS",
-    3: "TOKEN_EXPIRED",
-    4: "TOKEN_REVOKED",
-    5: "PROJECT_ACCESS_DENIED",
-    6: "ACTION_FORBIDDEN",
-    7: "SERVICE_SCOPE_REQUIRED",
-    8: "RESOURCE_NOT_FOUND",
-    9: "PARAMETER_INVALID",
-    10: "INVALID_JSON",
-    11: "SECURITY_INPUT_REJECTED",
-    12: "STATE_CONFLICT",
-    13: "VERSION_CONFLICT",
-    14: "IDEMPOTENCY_CONTENT_CONFLICT",
-    15: "IDEMPOTENCY_IN_PROGRESS",
-    16: "DEPENDENCIES_UNSATISFIED",
-    17: "DEPENDENCY_SELF_REFERENCE",
-    18: "DEPENDENCY_CYCLE",
-    19: "DEPENDENCY_EDIT_LOCKED",
-    20: "EVIDENCE_REQUIRED",
-    21: "REVIEW_NOT_PASSED",
-    22: "REVIEW_BASELINE_MISMATCH",
-    23: "RELEASE_APPROVAL_REQUIRED",
-    24: "ASSESSMENT_BASELINE_MISMATCH",
-    25: "OWNER_NOT_PROJECT_DEVELOPER",
-    26: "LAST_MANAGER",
-    27: "MEMBER_IN_USE",
-    28: "ACCOUNT_NOT_INITIALIZED",
-    29: "TIME_RANGE_INVALID",
-    30: "CAPACITY_REFERENCE_INVALID",
-    31: "NOT_ELIGIBLE_FOR_ESCALATION",
-    32: "SCHEDULE_VERSION_CONFLICT",
-    33: "RULE_VERSION_CONFLICT",
-    34: "CONTRACT_INVALID",
-    35: "AUDIT_UNAVAILABLE",
-    36: "DEPENDENCY_UNAVAILABLE",
-    37: "TRANSACTION_UNCERTAIN",
-    38: "RATE_LIMITED",
-    39: "PAYLOAD_TOO_LARGE",
-    40: "INTERNAL_ERROR",
-    41: "ASSIGNMENT_EDIT_LOCKED",
-}
+from t44.contracts import SPEC
+from t44.domain import models as domain
+
+# v1.2 ErrorCode order is identity-locked before assigning its already-frozen IDs.
+# A future schema reorder must receive an explicit storage mapping migration.
+_ERROR_NAMES = SPEC["components"]["schemas"]["ErrorCode"]["enum"]
+_ERROR_ORDER_SHA256 = "b747164315e7e12197d71d2d76b74a035de43b1ae71a0b9b6baef1ac6977b611"
+if hashlib.sha256("\n".join(_ERROR_NAMES).encode()).hexdigest() != _ERROR_ORDER_SHA256:
+    raise RuntimeError("Frozen error-code storage order changed without a mapping migration")
+ERROR_CODES = dict(enumerate(_ERROR_NAMES, 1))
 ERROR_IDS = {value: key for key, value in ERROR_CODES.items()}
 
 
-class State:
-    PENDING = 1
-    DEVELOPING = 2
-    BLOCKED = 3
-    PENDING_REVIEW = 4
-    PENDING_RELEASE = 5
-    DELIVERED = 6
-    ROLLED_BACK = 7
-
-
-class Action:
-    START = 1
-    BLOCK = 2
-    UNBLOCK = 3
-    SUBMIT_REVIEW = 4
-    APPROVE_REVIEW = 5
-    REJECT_REVIEW = 6
-    DELIVER = 7
-    ROLLBACK = 8
-    REWORK = 9
-
-
-STATE_TO_DOMAIN = {
-    State.PENDING: TaskState.PENDING,
-    State.DEVELOPING: TaskState.DEVELOPING,
-    State.BLOCKED: TaskState.BLOCKED,
-    State.PENDING_REVIEW: TaskState.PENDING_REVIEW,
-    State.PENDING_RELEASE: TaskState.PENDING_RELEASE,
-    State.DELIVERED: TaskState.DELIVERED,
-    State.ROLLED_BACK: TaskState.ROLLED_BACK,
-}
-DOMAIN_TO_STATE = {value: key for key, value in STATE_TO_DOMAIN.items()}
-ROLE_TO_DOMAIN = {1: ProjectRole.MANAGER, 2: ProjectRole.DEVELOPER, 3: ProjectRole.REVIEWER}
-STAGE_TO_DOMAIN = {
-    1: ResponsibilityStage.INTAKE,
-    2: ResponsibilityStage.DEVELOPMENT,
-    3: ResponsibilityStage.REVIEW,
-    4: ResponsibilityStage.RELEASE,
-    5: ResponsibilityStage.EXTERNAL_DEPENDENCY,
-}
+# Public compatibility classes expose actual ints, preserving their previous field types.
+State = type("State", (), {member.name: member.code for member in domain.TaskState})
+Action = type(
+    "Action",
+    (),
+    {
+        "APPROVE_REVIEW" if member is domain.Action.ACCEPT_REVIEW else member.name: member.code
+        for member in domain.Action
+    },
+)
+STATE_TO_DOMAIN = {member.code: member for member in domain.TaskState}
+DOMAIN_TO_STATE = {member: member.code for member in domain.TaskState}
+ROLE_TO_DOMAIN = {member.code: member for member in domain.ProjectRole}
+STAGE_TO_DOMAIN = {member.code: member for member in domain.ResponsibilityStage}
 DECISION_TYPE = {Action.DELIVER: 1, Action.ROLLBACK: 2, Action.REWORK: 3}

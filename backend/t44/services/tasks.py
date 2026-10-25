@@ -7,11 +7,7 @@ from .errors import require
 
 class Tasks:
     def owner(self, g, c, identifier, *, code="OWNER_NOT_PROJECT_DEVELOPER"):
-        rows = g.rows(
-            "project_members",
-            {"project_id": c.project_id, "user_id": identifier, "active": 1},
-            limit=1,
-        )
+        rows = c.members(g, {"user_id": identifier, "active": 1}, limit=1)
         require(rows and rows[0]["roles_mask"] & 2, code)
 
     def capacity_owner(self, g, c, identifier, iteration_id):
@@ -22,9 +18,7 @@ class Tasks:
         )
 
     def iteration(self, g, c, identifier):
-        row = g.get("iterations", identifier)
-        require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
-        return row
+        return c.resource(g, "iterations", identifier)
 
     def prestart(self, row):
         return row["state"] == State.PENDING or (
@@ -76,15 +70,11 @@ class Tasks:
             updated=True,
         )
         for predecessor in dependencies:
-            g.insert(
+            c.insert(
+                g,
                 "task_dependencies",
-                {
-                    "project_id": c.project_id,
-                    "task_id": row["id"],
-                    "depends_on_task_id": predecessor,
-                    "created_by": c.actor_id,
-                    "created_at": c.clock,
-                },
+                {"task_id": row["id"], "depends_on_task_id": predecessor},
+                actor_field="created_by",
             )
         c.path["task_id"] = row["id"]
         return {"task": task_model(row)}

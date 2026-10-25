@@ -68,14 +68,8 @@ class Reviews:
         require(
             sorted(r["perspective"] for r in c.body["risks"]) == [1, 2, 3, 4], "PARAMETER_INVALID"
         )
-        responsible = g.rows(
-            "project_members",
-            {
-                "project_id": c.project_id,
-                "user_id": c.body["rollback_plan"]["responsible_user_id"],
-                "active": 1,
-            },
-            limit=1,
+        responsible = c.members(
+            g, {"user_id": c.body["rollback_plan"]["responsible_user_id"], "active": 1}, limit=1
         )
         require(responsible, "RESOURCE_NOT_FOUND")
         last = g.rows(
@@ -109,8 +103,9 @@ class Reviews:
     def reviewReleaseAssessment(self, g, c):
         c.reviewer()
         row = c.task(g)
-        assessment = g.get("release_assessments", c.path["assessment_id"], lock="update")
-        require(assessment and assessment["task_id"] == row["id"], "RESOURCE_NOT_FOUND")
+        assessment = c.resource(
+            g, "release_assessments", c.path["assessment_id"], parent="task_id", lock="update"
+        )
         require(c.actor_id != assessment["created_by"], "ACTION_FORBIDDEN")
         require(
             row["state"] == State.PENDING_RELEASE and assessment["status"] == 1,

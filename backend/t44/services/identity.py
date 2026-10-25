@@ -74,11 +74,7 @@ def authenticate(g, call, *, lock=None):
                 "SERVICE_SCOPE_REQUIRED",
             )
         else:
-            members = g.rows(
-                "project_members",
-                {"project_id": call.project_id, "user_id": actor_id, "active": 1},
-                limit=1,
-            )
+            members = call.members(g, {"user_id": actor_id, "active": 1}, limit=1)
             require(members, "PROJECT_ACCESS_DENIED")
             call.membership = members[0]
         call.project = g.get("projects", call.project_id)

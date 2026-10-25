@@ -582,3 +582,9 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 真API合成SQLite4目标旧源码4红；935ab5b93bea788672c2b4a088c79cfeed848954只Workflow原批准引用不匹配槽先state5/manager再原D008判码，匹配引用/早期版本及归属/其它action/Runtime均不改。候选4+原856邻接11=15唯一目标绿，业务不变/拒审计/replay有实断言；非原F08后置验证或MySQL/验收。
 - 主.venv无pytest原失败保留；复用既有backend岗venv nice10串行4.4秒，无externalDB/liveSUT/fullCI/性能动作。首次Ruff外层规则和format红后显式backend配置修正。旧红helpertraceback出现自造内存token，原log/XML本机/tmp0700/0600封存，提交精确脱敏派生及双SHA；尖括号marker导致派生XML解析错后仅标记改XML安全，原失败不改。
 - CLI没有human-token，最短Settings TTL60，建议未来总协调在获准同campaign schema以真实HTTP login的一次性TTL60进程发行human并自然过期，不能用service-token或改到期时间；本轮只读未创建。F08旧FAIL/F11 NOT_PROVEN不回写；报告agents/backend/acceptance-followup-20261025/report.md。主树/活动.runtime和C8未改，源码规模旧6326超5100仍开放，未新cloc。实际作者执行者后端AI，非用户手改。
+
+## 2026-10-25 Source reduction checkpoint
+- Actual AI operator: backend; prompt `ROLE-backend-SIZE-v1`; source e45a2b9/product935ab5b. User-authorized structural reduction; no persistence, frozen JSON, runtime or independent-testing material touched.
+- Implemented frozen single-source semantic/code dictionaries, ordered pure transition prerequisites, and shared trusted membership/resource/insert construction. Fixed-cloc scope 2363→2254, net109 after preserving subclass command precedence (earlier intermediate111 is superseded).
+- Existing106 pure-domain and139 SQLite HTTP developer cases passed. New developer differential compares exact base decisions/rejection precedence, malformed inputs and public internal dataclass/enum signatures;2 pytest cases pass, comparison count in tmp/811_backend_size/differential-receipt.json. No formal performance/independent acceptance claim.
+- This is the requested rollback point. New internal-domain API v2 work follows separately; root explicitly relaxed old internal dataclass/Command compatibility while keeping external REST/OpenAPI/DDL/business guards fixed.

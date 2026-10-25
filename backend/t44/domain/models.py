@@ -4,44 +4,30 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import TYPE_CHECKING
 
+from t44.contracts import SPEC
+
 if TYPE_CHECKING:
     from .commands import Command
 
 
-class TaskState(Enum):
-    PENDING = "pending"
-    DEVELOPING = "developing"
-    BLOCKED = "blocked"
-    PENDING_REVIEW = "pending_review"
-    PENDING_RELEASE = "pending_release"
-    DELIVERED = "delivered"
-    ROLLED_BACK = "rolled_back"
+def _semantic_enum(name, schema, *, aliases=None):
+    """Adapt frozen dictionary values once while keeping the semantic Enum facade."""
+    definition = SPEC["components"]["schemas"][schema]
+    aliases = aliases or {}
+    values = {
+        aliases.get(value, value).upper(): aliases.get(value, value)
+        for value in definition["x-enum-names"]
+    }
+    result = Enum(name, values, module=__name__)
+    for value, code in zip(values.values(), definition["enum"], strict=True):
+        result(value).code = code
+    return result
 
 
-class Action(Enum):
-    START = "start"
-    BLOCK = "block"
-    UNBLOCK = "unblock"
-    SUBMIT_REVIEW = "submit_review"
-    ACCEPT_REVIEW = "accept_review"
-    REJECT_REVIEW = "reject_review"
-    DELIVER = "deliver"
-    ROLLBACK = "rollback"
-    REWORK = "rework"
-
-
-class ProjectRole(Enum):
-    MANAGER = "manager"
-    DEVELOPER = "developer"
-    REVIEWER = "reviewer"
-
-
-class ResponsibilityStage(Enum):
-    INTAKE = "intake"
-    DEVELOPMENT = "development"
-    REVIEW = "review"
-    RELEASE = "release"
-    EXTERNAL_DEPENDENCY = "external_dependency"
+TaskState = _semantic_enum("TaskState", "TaskState")
+Action = _semantic_enum("Action", "TransitionAction", aliases={"approve_review": "accept_review"})
+ProjectRole = _semantic_enum("ProjectRole", "ProjectRole")
+ResponsibilityStage = _semantic_enum("ResponsibilityStage", "ResponsibilityStage")
 
 
 class ReviewOutcome(Enum):

@@ -1,28 +1,7 @@
 """Resolve persisted proofs, ask the pure state machine, and apply one CAS decision."""
 
-from t44.domain.commands import (
-    AcceptReview,
-    ApproveDelivery,
-    AuthorizeRework,
-    RecordBlock,
-    RecordRollback,
-    ResolveBlock,
-    ReturnForChanges,
-    StartDevelopment,
-    SubmitForReview,
-)
-from t44.domain.models import (
-    Cycle,
-    DomainViolation,
-    Effect,
-    ReleaseGate,
-    ReviewGate,
-    ReviewOutcome,
-    RollbackGate,
-    TaskPosition,
-    TransitionContext,
-    Violation,
-)
+from t44.domain import commands as cmd
+from t44.domain import models as domain
 from t44.domain.state_machine import decide
 
 from .codes import (
@@ -38,19 +17,19 @@ from .common import model, plan_values, roles, task_model
 from .errors import Rejected, require
 
 DOMAIN_ERRORS = {
-    Violation.PROJECT_ACCESS_REQUIRED: "PROJECT_ACCESS_DENIED",
-    Violation.INVALID_TRANSITION: "STATE_CONFLICT",
-    Violation.DEPENDENCIES_UNSATISFIED: "DEPENDENCIES_UNSATISFIED",
-    Violation.REVIEW_REQUIRED: "REVIEW_NOT_PASSED",
-    Violation.REVIEW_OUTCOME_MISMATCH: "REVIEW_NOT_PASSED",
-    Violation.REVIEW_BASELINE_STALE: "REVIEW_BASELINE_MISMATCH",
-    Violation.RELEASE_APPROVAL_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
-    Violation.RELEASE_BASELINE_STALE: "ASSESSMENT_BASELINE_MISMATCH",
-    Violation.ROLLBACK_PLAN_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
-    Violation.ROLE_FORBIDDEN: "ACTION_FORBIDDEN",
-    Violation.OWNER_REQUIRED: "ACTION_FORBIDDEN",
-    Violation.SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
-    Violation.RELEASE_SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
+    domain.Violation.PROJECT_ACCESS_REQUIRED: "PROJECT_ACCESS_DENIED",
+    domain.Violation.INVALID_TRANSITION: "STATE_CONFLICT",
+    domain.Violation.DEPENDENCIES_UNSATISFIED: "DEPENDENCIES_UNSATISFIED",
+    domain.Violation.REVIEW_REQUIRED: "REVIEW_NOT_PASSED",
+    domain.Violation.REVIEW_OUTCOME_MISMATCH: "REVIEW_NOT_PASSED",
+    domain.Violation.REVIEW_BASELINE_STALE: "REVIEW_BASELINE_MISMATCH",
+    domain.Violation.RELEASE_APPROVAL_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
+    domain.Violation.RELEASE_BASELINE_STALE: "ASSESSMENT_BASELINE_MISMATCH",
+    domain.Violation.ROLLBACK_PLAN_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
+    domain.Violation.ROLE_FORBIDDEN: "ACTION_FORBIDDEN",
+    domain.Violation.OWNER_REQUIRED: "ACTION_FORBIDDEN",
+    domain.Violation.SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
+    domain.Violation.RELEASE_SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
 }
 
 
@@ -94,11 +73,13 @@ class Workflow:
         if assessment:
             require(assessment["task_id"] == row["id"], "RESOURCE_NOT_FOUND")
         review_gate = (
-            ReviewGate(
+            domain.ReviewGate(
                 reference(review["id"], review["version"]),
-                Cycle(review["delivery_cycle"], review["review_cycle"]),
+                domain.Cycle(review["delivery_cycle"], review["review_cycle"]),
                 review["artifact_revision"],
-                ReviewOutcome.ACCEPTED if review["verdict"] == 1 else ReviewOutcome.REJECTED,
+                domain.ReviewOutcome.ACCEPTED
+                if review["verdict"] == 1
+                else domain.ReviewOutcome.REJECTED,
                 self.review_complete(review),
                 review["reviewer_id"] == row["owner_id"],
             )
@@ -128,7 +109,7 @@ class Workflow:
                     and assessment["schedule_version"] == row["schedule_version"]
                     else "ASSESSMENT_BASELINE_MISMATCH",
                 )
-            release_gate = ReleaseGate(
+            release_gate = domain.ReleaseGate(
                 reference(assessment["id"], assessment["version"]),
                 assessment["delivery_cycle"],
                 assessment["schedule_version"],
@@ -148,7 +129,7 @@ class Workflow:
                 and assessment["rollback_plan"]["target_version"] == b["target_version"],
                 "RELEASE_APPROVAL_REQUIRED",
             )
-            rollback_gate = RollbackGate(
+            rollback_gate = domain.RollbackGate(
                 reference(assessment["id"], b["rollback_plan_version"]),
                 assessment["delivery_cycle"],
                 assessment["status"] == 2,
@@ -159,12 +140,12 @@ class Workflow:
                 ),
             )
         new_plan = plan_values(b["new_plan"]) if action == Action.REWORK else None
-        context = TransitionContext(
+        context = domain.TransitionContext(
             True,
             frozenset(ROLE_TO_DOMAIN[r] for r in roles(c.membership["roles_mask"])),
             c.actor_id == row["owner_id"],
             tuple(STATE_TO_DOMAIN[t["state"]] for t in predecessors),
-            Cycle(row["delivery_cycle"], row["review_cycle"]),
+            domain.Cycle(row["delivery_cycle"], row["review_cycle"]),
             row["schedule_version"],
             row["artifact_revision"],
             reference(row["latest_review_id"], 1) if row["latest_review_id"] else None,
@@ -175,40 +156,40 @@ class Workflow:
             "new-plan" if new_plan else None,
         )
         commands = {
-            Action.START: lambda: StartDevelopment(),
-            Action.BLOCK: lambda: RecordBlock(
+            Action.START: lambda: cmd.StartDevelopment(),
+            Action.BLOCK: lambda: cmd.RecordBlock(
                 b["reason"], STAGE_TO_DOMAIN[b["responsibility_stage"]], evidence
             ),
-            Action.UNBLOCK: lambda: ResolveBlock(b["basis"], evidence),
-            Action.SUBMIT_REVIEW: lambda: SubmitForReview(b["artifact_revision"], evidence),
-            Action.APPROVE_REVIEW: lambda: AcceptReview(
+            Action.UNBLOCK: lambda: cmd.ResolveBlock(b["basis"], evidence),
+            Action.SUBMIT_REVIEW: lambda: cmd.SubmitForReview(b["artifact_revision"], evidence),
+            Action.APPROVE_REVIEW: lambda: cmd.AcceptReview(
                 reference(b["review_id"], b["review_version"])
             ),
-            Action.REJECT_REVIEW: lambda: ReturnForChanges(
+            Action.REJECT_REVIEW: lambda: cmd.ReturnForChanges(
                 reference(b["review_id"], b["review_version"]), b["reason"]
             ),
-            Action.DELIVER: lambda: ApproveDelivery(
+            Action.DELIVER: lambda: cmd.ApproveDelivery(
                 reference(b["assessment_id"], b["assessment_version"]),
                 b["release_version"],
                 b["reason"],
                 evidence,
             ),
-            Action.ROLLBACK: lambda: RecordRollback(
+            Action.ROLLBACK: lambda: cmd.RecordRollback(
                 b["reason"],
                 b["impact"],
                 b["target_version"],
                 reference(b["assessment_id"], b["rollback_plan_version"]),
                 evidence,
             ),
-            Action.REWORK: lambda: AuthorizeRework("new-plan", b["reason"], evidence),
+            Action.REWORK: lambda: cmd.AuthorizeRework("new-plan", b["reason"], evidence),
         }
-        position = TaskPosition(
+        position = domain.TaskPosition(
             STATE_TO_DOMAIN[row["state"]],
             STATE_TO_DOMAIN[row["blocked_from_state"]] if row["blocked_from_state"] else None,
         )
         try:
             decision = decide(position, commands[action](), context)
-        except DomainViolation as error:
+        except domain.DomainViolation as error:
             raise Rejected(
                 DOMAIN_ERRORS.get(error.code, "EVIDENCE_REQUIRED"), current_state=row["state"]
             ) from None
@@ -228,7 +209,7 @@ class Workflow:
             values["artifact_revision"] = b["artifact_revision"]
         if action == Action.APPROVE_REVIEW:
             values["approved_review_id"] = b["review_id"]
-        if Effect.CLEAR_APPROVALS in decision.effects:
+        if domain.Effect.CLEAR_APPROVALS in decision.effects:
             values.update(
                 latest_review_id=None,
                 approved_review_id=None,
@@ -236,9 +217,9 @@ class Workflow:
                 approved_assessment_version=None,
                 artifact_revision=None,
             )
-        if Effect.ADVANCE_REVIEW_CYCLE in decision.effects:
+        if domain.Effect.ADVANCE_REVIEW_CYCLE in decision.effects:
             values["review_cycle"] = row["review_cycle"] + 1
-        if Effect.ADVANCE_DELIVERY_CYCLE in decision.effects:
+        if domain.Effect.ADVANCE_DELIVERY_CYCLE in decision.effects:
             values.update(
                 delivery_cycle=row["delivery_cycle"] + 1,
                 review_cycle=1,
