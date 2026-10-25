@@ -27,3 +27,8 @@
 
 - root/BE修订为sorted unique逐个scalar id+project/limit1 X，D前驱新增D锁SELECT；本岗先24ca1db设计勘误后ee12656工具，仅tmp/833观察/验证，不改生产。
 - batch/point真实gateway与cursor形状/序列断言、真实捕获SQL的EXPLAIN、P_S三表readiness已供freshCI；本地仍同8guard绿，不是MySQL分支/race通过。新增[修订报告](../../agents/database/graph-lock-20261025/point-lock-report.md)保留旧source证据，明确显式task请求顺序与其他内部/FK资源边界。
+
+## 同日新性能库fixture准备
+
+- 设计2f6c1f9/工具d8addfd，复用冻结seed显式Collector，在root唯一授权新库一次准备并读回40P/6000T/9000E/11400reviews+3600decisions=15000，assessments额外3600；原18业务表空、schema18/226前后通过、35FK及指针/轮次/组状态核验。仅数据准备，不是性能/独立验收。
+- P1集中400DEVELOPING future与400disjoint overdue，其余5200分39项目，偏斜和压力组无依赖明确公开；5合成用户/800ID及seed/anchor/source/hash在[本轮报告](../../agents/database/performance-fixture-20261025/report.md)和public-inventory。生产/DDL无变更，8:04:21后本岗未再写库；root后来签5身份会话单列。恢复只封E，无新增测试/SQL。

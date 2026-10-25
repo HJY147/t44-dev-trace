@@ -1,0 +1,54 @@
+{
+  "operator": "database AI",
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+  "commands": [
+    {
+      "argv": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python -m ruff format --config backend/pyproject.toml tmp/833_database_performance/833_performance_fixture.py",
+      "exit": 0,
+      "result": "1 file reformatted before source commit"
+    },
+    {
+      "argv": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python -m ruff check --config backend/pyproject.toml tmp/833_database_performance/833_performance_fixture.py",
+      "exit": 0
+    },
+    {
+      "argv": "git diff --cached --check",
+      "exit": 0,
+      "scope": "helper source before d8 commit"
+    },
+    {
+      "argv": "PYTHONPATH=backend /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python tmp/833_database_performance/833_performance_fixture.py --expected-source d8addfdb24ee1c25c91b63bc6999e18619c231e0 --anchor 2026-10-25T08:03:00+00:00 --check-only --output agents/database/performance-fixture-20261025/offline-check.json",
+      "exit": 0,
+      "count": "one construction, not acceptance"
+    },
+    {
+      "argv": "PYTHONPATH=backend /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python tmp/833_database_performance/833_performance_fixture.py --expected-source d8addfdb24ee1c25c91b63bc6999e18619c231e0 --anchor 2026-10-25T08:03:00+00:00 --run-authorized-schema --app-env /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/continuation-20261025/performance-db/application-env.json --output agents/database/performance-fixture-20261025/database-preparation.json",
+      "exit": 0,
+      "count": "one authorized schema preparation/commit/readback"
+    },
+    {
+      "argv": "PYTHONPATH=backend /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python tmp/833_database_performance/833_performance_fixture.py --expected-source d8addfdb24ee1c25c91b63bc6999e18619c231e0 --anchor 2026-10-25T08:03:00+00:00 --check-only --output /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025/agents/database/performance-fixture-20261025/offline-check.json",
+      "exit": 1,
+      "expected_rejection": true,
+      "original_output_bytes_unchanged": true,
+      "new_construction": false
+    },
+    {
+      "argv": "PYTHONPATH=backend /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python tmp/833_database_performance/833_performance_fixture.py --expected-source d8addfdb24ee1c25c91b63bc6999e18619c231e0 --anchor 2026-10-25T08:03:00+00:00 --run-authorized-schema --app-env /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025/agents/database/performance-fixture-20261025/not-the-authorized-environment.json --output /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025/agents/database/performance-fixture-20261025/wrong-env-rejected.json",
+      "exit": 1,
+      "expected_rejection": true,
+      "stopped_before_credentials_or_connect": true
+    }
+  ],
+  "restoration_turn": "only evidence hashes, documents, GitHub POST/GET and Git; no database query/write or rerun",
+  "source": "d8addfdb24ee1c25c91b63bc6999e18619c231e0",
+  "receipt_unchanged_sha256": "e67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76",
+  "same_previous_lock_tool_checks_rerun": false,
+  "new_formal_tests": 0,
+  "root_later_identity_report": {
+    "utc": "2026-10-25T08:15:44+00:00",
+    "sessions": 5,
+    "operator": "root",
+    "independent_new_db_measurement_by_database_role": false
+  }
+}
