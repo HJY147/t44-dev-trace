@@ -8,6 +8,14 @@ import xml.etree.ElementTree as ET
 
 from preflight import REPORTS, ROOT, require_application
 
+OPTIMIZATION_TESTS = [
+    "tmp/811_backend_size/811_differential.py",
+    "tmp/811_backend_size/812_v2_boundary.py",
+    "tmp/812_database_size/test_migration_order.py",
+    "tmp/812_database_size/test_schema_defaults.py",
+    "tmp/812_database_size/test_seed_v2.py",
+]
+
 
 def junit_has_real_success(path) -> bool:
     if not path.is_file():
@@ -45,7 +53,8 @@ def main() -> int:
         report = folder / "junit.xml"
         prefix = [sys.executable, "-m", "coverage"]
         code = run([*prefix, "run", "--rcfile=scripts/ci/coverage.ini", "-m", "pytest", "-c", "backend/pyproject.toml",
-                    "tmp/backend", "--strict-markers", f"--junitxml={report}", "-ra"], folder / "pytest.log")
+                    "tmp/backend", *OPTIMIZATION_TESTS, "--strict-markers",
+                    f"--junitxml={report}", "-ra"], folder / "pytest.log")
         statuses.append({"suite": "all", "exit_code": code, "real_success": junit_has_real_success(report)})
         for output in ["xml", "json", "html", "report"]:
             code = run([*prefix, output, "--rcfile=scripts/ci/coverage.ini"], folder / f"{output}.log")
