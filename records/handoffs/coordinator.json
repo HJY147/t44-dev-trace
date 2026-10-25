@@ -2,9 +2,10 @@
   "role": "coordinator AI",
   "stage": "continuous-cloud-reuse-20261025",
   "prompt_ref": "USER-continuous-cloud-reuse-20261025-original",
-  "cloud": {"same_instances": true, "node_count": 2, "budget_CNY": 100, "automatic_release_asia_shanghai": "2026-10-26T06:00:00+08:00", "release_schedule_ui_verified": true, "readonly_probe_nodes_complete": 2, "product_started": false, "final_bill_verified": false},
-  "source_candidates": {"backend_reviewed": "d63fe18f3227e1779d3951072636efcdb6181550", "backend_net_lines": 370, "database_submitted": "f0d28596", "database_net_lines": 90, "combined_count_executed": false},
+  "cloud": {"same_instances": true, "node_count": 2, "budget_CNY": 100, "automatic_release_asia_shanghai": "2026-10-26T06:00:00+08:00", "release_schedule_ui_verified": true, "readonly_probe_nodes_complete": 2, "package_preparation_nodes_complete": 2, "all_seven_image_contents_proven_nodes": 2, "image_proof_invoke": "t-hz0713x87n8ctts", "product_started": false, "final_bill_verified": false},
+  "source_candidates": {"backend_reviewed": "d63fe18f3227e1779d3951072636efcdb6181550", "backend_net_lines": 370, "database_submitted": "f0d28596b65151f565eaf25b8a91f0edbc4eab4c", "database_net_lines": 90, "combined_count_executed": true, "combined_count_commit": "396b646adb87de183929ac6fc46bbe7e88074c8a", "application_lines": 5875, "excess_lines": 775, "size_passed": false},
   "image_bundle_run": 40193055249,
-  "pending": ["database review", "combined fixed count and product CI", "same-node package preparation retry", "Linux exact-source diagnostics", "dedicated valid revocation session", "fresh independent functional and performance execution", "final billing and cleanup"],
+  "development_CI": {"original_failure": 40193412286, "corrected_pass": 40193953158, "head": "bbd0b3e1a2e6c89c071a4a5dd49ad8cb89941c67", "backend_tests": 664, "failures": 0, "errors": 0, "skipped": 0, "covered_lines": 2475, "total_lines": 2761, "docker_pass": 40195832268, "docker_head": "bf1da52f246126b5fbfe8fedd5bda586ee3b59a8"},
+  "pending": ["further genuine source reduction", "Linux exact-source diagnostics", "dedicated valid revocation session", "fresh independent functional and performance execution", "final billing and cleanup"],
   "report": "reports/modules/coordinator.md"
 }
