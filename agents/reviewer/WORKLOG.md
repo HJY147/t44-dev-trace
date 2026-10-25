@@ -437,3 +437,7 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 行政封条实际完成：精确ead/终态E14a61报告与独立原件核验commit fca3a3fa764c41f5f30ac61a645631a7784e2add 已push。Issue3 COMMENT6383718463实际发布，特定REST全文GET body逐字、Issue归属、完整source/E SHA核同；https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383718463。回执github-comment-full-get.json/verification.json。仅限定代码+product门槛交root整合，旧5cc红CI/187保留，N07与云性能未通过；无新Docker/NGINX覆盖或global status。0本岗测试/SQL/负载/CI触发/独立私密读取或通信。DB修复已有独立审核岗，本阶段结束释放，不继续排队DB。
+
+## 2026-10-25 鲜建MySQL诊断准入：b7825da拒绝执行
+
+ROLE-reviewer-DIAGNOSTICS-20261025-v1，自有worktree/branch，8明确文件与Git对象及两tool SHA同、应用/契约根对ade5 diff0，准入JUnit仅机械复算9绿不重跑。一次实际零DB微探针确认P2 DIAG-CLEANUP-01：fixture在observer.install前抛出合成异常后，被finally.snapshot的RuntimeError遮成主异常，observer.close与requests写入跳过；原异常只保留context，DB/application导入=[]。无SQL/HTTP/服务/CI或独立私件访问。已先报root阻断，由BE修实现和新SHA后窄复审；原反例保留，不将probe exit0写候选通过。八段/十项报告与source/probe回执已写。
