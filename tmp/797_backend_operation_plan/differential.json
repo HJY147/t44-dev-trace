@@ -1,0 +1,453 @@
+{
+  "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+  "scenario_comparisons": [
+    {
+      "operation": "addTaskDependency",
+      "name": "unauthorized_before_missing_task",
+      "gateway_events": 0,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "missing_task",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "wrong_project",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "state_before_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "unauthorized_before_missing_task",
+      "gateway_events": 0,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "missing_task",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "wrong_project",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "state_before_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "unauthorized_before_missing_task",
+      "gateway_events": 0,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "missing_task",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "wrong_project",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "state_before_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "unauthorized_before_missing_task",
+      "gateway_events": 0,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "missing_task",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "wrong_project",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "state_before_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "blocked_from_developing",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "blocked_from_developing",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "success",
+      "gateway_events": 8,
+      "outcome": "result"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "blocked_pending",
+      "gateway_events": 8,
+      "outcome": "result"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "duplicate_before_version",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "self_before_version",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "missing_predecessor_before_version",
+      "gateway_events": 3,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "cycle_before_version",
+      "gateway_events": 4,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "stale_version",
+      "gateway_events": 4,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "addTaskDependency",
+      "name": "version_overflow",
+      "gateway_events": 4,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "success",
+      "gateway_events": 4,
+      "outcome": "result"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "blocked_pending",
+      "gateway_events": 4,
+      "outcome": "result"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "missing_edge_before_version",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "wrong_task_edge",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "removeTaskDependency",
+      "name": "stale_version",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "success",
+      "gateway_events": 4,
+      "outcome": "result"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "owner_before_state",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "template_before_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "artifact_before_shape",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "missing_sections",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "duplicate_items",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "passing_without_evidence",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "rejected_verdict_without_evidence",
+      "gateway_events": 4,
+      "outcome": "result"
+    },
+    {
+      "operation": "createTaskReview",
+      "name": "stale_version",
+      "gateway_events": 3,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "success",
+      "gateway_events": 6,
+      "outcome": "result"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "risks_before_member_and_version",
+      "gateway_events": 1,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "missing_responsible_before_version",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "outsider_responsible",
+      "gateway_events": 2,
+      "outcome": "rejected"
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "name": "stale_version",
+      "gateway_events": 5,
+      "outcome": "rejected"
+    }
+  ],
+  "gateway_fault_comparisons": [
+    {
+      "operation": "addTaskDependency",
+      "stop": 1,
+      "last_event": {
+        "method": "get",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 2,
+      "last_event": {
+        "method": "rows",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 3,
+      "last_event": {
+        "method": "rows",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 4,
+      "last_event": {
+        "method": "rows",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 5,
+      "last_event": {
+        "method": "update",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 6,
+      "last_event": {
+        "method": "insert",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 7,
+      "last_event": {
+        "method": "get",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "addTaskDependency",
+      "stop": 8,
+      "last_event": {
+        "method": "get",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "removeTaskDependency",
+      "stop": 1,
+      "last_event": {
+        "method": "get",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "removeTaskDependency",
+      "stop": 2,
+      "last_event": {
+        "method": "get",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "removeTaskDependency",
+      "stop": 3,
+      "last_event": {
+        "method": "update",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "removeTaskDependency",
+      "stop": 4,
+      "last_event": {
+        "method": "delete",
+        "table": "task_dependencies"
+      }
+    },
+    {
+      "operation": "createTaskReview",
+      "stop": 1,
+      "last_event": {
+        "method": "get",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "createTaskReview",
+      "stop": 2,
+      "last_event": {
+        "method": "insert",
+        "table": "reviews"
+      }
+    },
+    {
+      "operation": "createTaskReview",
+      "stop": 3,
+      "last_event": {
+        "method": "get",
+        "table": "reviews"
+      }
+    },
+    {
+      "operation": "createTaskReview",
+      "stop": 4,
+      "last_event": {
+        "method": "update",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 1,
+      "last_event": {
+        "method": "get",
+        "table": "tasks"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 2,
+      "last_event": {
+        "method": "rows",
+        "table": "project_members"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 3,
+      "last_event": {
+        "method": "rows",
+        "table": "release_assessments"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 4,
+      "last_event": {
+        "method": "insert",
+        "table": "release_assessments"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 5,
+      "last_event": {
+        "method": "get",
+        "table": "release_assessments"
+      }
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "stop": 6,
+      "last_event": {
+        "method": "update",
+        "table": "tasks"
+      }
+    }
+  ]
+}

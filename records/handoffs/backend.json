@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
-  "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
+  "stage": "operation-plan-probe-stopped-no-product-change",
+  "implementation_status": "Temporary immutable OperationPlan measured net -14 (growth14), rejected under minimum20 stop; original143+new10 developer cases pass; exact f4bd product unchanged at5862/over762; no fullCI/cloud/performance/acceptance claim",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2419,5 +2419,42 @@
     ],
     "old_evidence_preserved": true,
     "report": "agents/backend/source-size-20261025/snapshot-alias-fix.md"
+  },
+  "operation_plan_probe_20261025": {
+    "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    "branch": "codex/backend-operation-plan-size",
+    "design_commit": "31924c4d",
+    "actual_operator": "backend AI",
+    "prompt": "ROLE-backend-OPERATION-PLAN-v1",
+    "design": "agents/backend/operation-plan-20261025/design.md",
+    "report": "agents/backend/operation-plan-20261025/report.md",
+    "receipt": "tmp/797_backend_operation_plan/validation.json",
+    "fixed_cloc": {
+      "base": 5862,
+      "temporary_candidate": 5876,
+      "net_saved": -14,
+      "new_helper": 16
+    },
+    "decision": "REJECTED, retain tmp prototype only, product unchanged",
+    "tests": {
+      "original_http": 143,
+      "new_probe": 10,
+      "passed": 153,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "gateway_scenarios": 45,
+      "gateway_faults": 22,
+      "real_http_fault_targets": 8
+    },
+    "not_run": [
+      "full CI",
+      "Docker",
+      "MySQL",
+      "cloud",
+      "performance",
+      "independent acceptance"
+    ],
+    "api_wire_candidate": "continues on hold, not merged"
   }
 }

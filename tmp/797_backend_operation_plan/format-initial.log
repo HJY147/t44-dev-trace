@@ -1,0 +1,586 @@
+unformatted: File would be reformatted
+   --> tmp/797_backend_operation_plan/797_plan_differential.py:79:14
+    |
+78  |             "task_dependencies",
+    -             {"project_id": project, "task_id": task["id"],
+    -              "depends_on_task_id": predecessor["id"], "created_by": 1,
+    -              "created_at": datetime(2026, 10, 25, tzinfo=UTC)},
+79  +             {
+80  +                 "project_id": project,
+81  +                 "task_id": task["id"],
+82  +                 "depends_on_task_id": predecessor["id"],
+83  +                 "created_by": 1,
+84  +                 "created_at": datetime(2026, 10, 25, tzinfo=UTC),
+85  +             },
+86  |         )
+87  |     scenarios = []
+88  |
+    -     def scenario(operation, name, *, body=None, changes=None, role=None, actor=1,
+    -                  path=None, expected=None):
+89  +     def scenario(
+90  +         operation, name, *, body=None, changes=None, role=None, actor=1, path=None, expected=None
+91  +     ):
+92  |         review = operation == "createTaskReview"
+--------------------------------------------------------------------------------
+99  |         }[operation]
+    -         default_state = State.PENDING_REVIEW if review else (
+    -             State.PENDING_RELEASE if operation == "createReleaseAssessment" else State.PENDING
+100 +         default_state = (
+101 +             State.PENDING_REVIEW
+102 +             if review
+103 +             else (
+104 +                 State.PENDING_RELEASE if operation == "createReleaseAssessment" else State.PENDING
+105 +             )
+106 |         )
+107 |         call = Call(
+    -             operation=operation, request_id="plan-differential", token=None,
+    -             path={"project_id": project, "task_id": task["id"], "dependency_id": edge,
+    -                   **(path or {})},
+108 +             operation=operation,
+109 +             request_id="plan-differential",
+110 +             token=None,
+111 +             path={
+112 +                 "project_id": project,
+113 +                 "task_id": task["id"],
+114 +                 "dependency_id": edge,
+115 +                 **(path or {}),
+116 +             },
+117 |             body={**default_body, **(body or {})},
+--------------------------------------------------------------------------------
+121 |         )
+    -         scenarios.append((operation, name, call,
+    -                           {"state": default_state, "artifact_revision": "a" * 40,
+    -                            **(changes or {})}, expected))
+122 +         scenarios.append(
+123 +             (
+124 +                 operation,
+125 +                 name,
+126 +                 call,
+127 +                 {"state": default_state, "artifact_revision": "a" * 40, **(changes or {})},
+128 +                 expected,
+129 +             )
+130 +         )
+131 |
+132 |     for operation in probe.OPERATIONS:
+    -         scenario(operation, "unauthorized_before_missing_task", role=0,
+    -                  path={"task_id": 99999}, expected="ACTION_FORBIDDEN")
+133 +         scenario(
+134 +             operation,
+135 +             "unauthorized_before_missing_task",
+136 +             role=0,
+137 +             path={"task_id": 99999},
+138 +             expected="ACTION_FORBIDDEN",
+139 +         )
+140 |         scenario(operation, "missing_task", path={"task_id": 99999}, expected="RESOURCE_NOT_FOUND")
+    -         scenario(operation, "wrong_project", path={"project_id": project + 9},
+    -                  expected="RESOURCE_NOT_FOUND")
+    -         scenario(operation, "state_before_version", changes={"state": State.DELIVERED},
+    -                  body={"expected_version": 0},
+    -                  expected="DEPENDENCY_EDIT_LOCKED" if operation.endswith("Dependency") else "STATE_CONFLICT")
+141 +         scenario(
+142 +             operation,
+143 +             "wrong_project",
+144 +             path={"project_id": project + 9},
+145 +             expected="RESOURCE_NOT_FOUND",
+146 +         )
+147 +         scenario(
+148 +             operation,
+149 +             "state_before_version",
+150 +             changes={"state": State.DELIVERED},
+151 +             body={"expected_version": 0},
+152 +             expected="DEPENDENCY_EDIT_LOCKED"
+153 +             if operation.endswith("Dependency")
+154 +             else "STATE_CONFLICT",
+155 +         )
+156 |     for operation in ("addTaskDependency", "removeTaskDependency"):
+    -         scenario(operation, "blocked_from_developing", changes=cycle_prestart,
+    -                  expected="DEPENDENCY_EDIT_LOCKED")
+157 +         scenario(
+158 +             operation,
+159 +             "blocked_from_developing",
+160 +             changes=cycle_prestart,
+161 +             expected="DEPENDENCY_EDIT_LOCKED",
+162 +         )
+163 |     # Existing edge is for task -> predecessor; alternate predecessor is a fresh task.
+164 |     alternate = http.create_task(client, tokens, project, iteration)
+165 |     scenario("addTaskDependency", "success", body={"depends_on_task_id": alternate["id"]})
+    -     scenario("addTaskDependency", "blocked_pending", changes=blocked_prestart,
+    -              body={"depends_on_task_id": alternate["id"]})
+    -     scenario("addTaskDependency", "duplicate_before_version", body={"expected_version": 0},
+    -              expected="STATE_CONFLICT")
+    -     scenario("addTaskDependency", "self_before_version",
+    -              body={"depends_on_task_id": task["id"], "expected_version": 0},
+    -              expected="DEPENDENCY_SELF_REFERENCE")
+    -     scenario("addTaskDependency", "missing_predecessor_before_version",
+    -              body={"depends_on_task_id": 99999, "expected_version": 0},
+    -              expected="RESOURCE_NOT_FOUND")
+    -     scenario("addTaskDependency", "cycle_before_version",
+    -              path={"task_id": predecessor["id"]},
+    -              body={"depends_on_task_id": task["id"], "expected_version": 0},
+    -              expected="DEPENDENCY_CYCLE")
+    -     scenario("addTaskDependency", "stale_version",
+    -              body={"depends_on_task_id": alternate["id"], "expected_version": 0},
+    -              expected="VERSION_CONFLICT")
+    -     scenario("addTaskDependency", "version_overflow",
+    -              changes={"version": 2147483647},
+    -              body={"depends_on_task_id": alternate["id"], "expected_version": 2147483647},
+    -              expected="VERSION_CONFLICT")
+166 +     scenario(
+167 +         "addTaskDependency",
+168 +         "blocked_pending",
+169 +         changes=blocked_prestart,
+170 +         body={"depends_on_task_id": alternate["id"]},
+171 +     )
+172 +     scenario(
+173 +         "addTaskDependency",
+174 +         "duplicate_before_version",
+175 +         body={"expected_version": 0},
+176 +         expected="STATE_CONFLICT",
+177 +     )
+178 +     scenario(
+179 +         "addTaskDependency",
+180 +         "self_before_version",
+181 +         body={"depends_on_task_id": task["id"], "expected_version": 0},
+182 +         expected="DEPENDENCY_SELF_REFERENCE",
+183 +     )
+184 +     scenario(
+185 +         "addTaskDependency",
+186 +         "missing_predecessor_before_version",
+187 +         body={"depends_on_task_id": 99999, "expected_version": 0},
+188 +         expected="RESOURCE_NOT_FOUND",
+189 +     )
+190 +     scenario(
+191 +         "addTaskDependency",
+192 +         "cycle_before_version",
+193 +         path={"task_id": predecessor["id"]},
+194 +         body={"depends_on_task_id": task["id"], "expected_version": 0},
+195 +         expected="DEPENDENCY_CYCLE",
+196 +     )
+197 +     scenario(
+198 +         "addTaskDependency",
+199 +         "stale_version",
+200 +         body={"depends_on_task_id": alternate["id"], "expected_version": 0},
+201 +         expected="VERSION_CONFLICT",
+202 +     )
+203 +     scenario(
+204 +         "addTaskDependency",
+205 +         "version_overflow",
+206 +         changes={"version": 2147483647},
+207 +         body={"depends_on_task_id": alternate["id"], "expected_version": 2147483647},
+208 +         expected="VERSION_CONFLICT",
+209 +     )
+210 |     scenario("removeTaskDependency", "success")
+211 |     scenario("removeTaskDependency", "blocked_pending", changes=blocked_prestart)
+    -     scenario("removeTaskDependency", "missing_edge_before_version",
+    -              path={"dependency_id": 99999}, body={"expected_version": 0},
+    -              expected="RESOURCE_NOT_FOUND")
+    -     scenario("removeTaskDependency", "wrong_task_edge",
+    -              path={"task_id": alternate["id"]}, expected="RESOURCE_NOT_FOUND")
+    -     scenario("removeTaskDependency", "stale_version", body={"expected_version": 0},
+    -              expected="VERSION_CONFLICT")
+212 +     scenario(
+213 +         "removeTaskDependency",
+214 +         "missing_edge_before_version",
+215 +         path={"dependency_id": 99999},
+216 +         body={"expected_version": 0},
+217 +         expected="RESOURCE_NOT_FOUND",
+218 +     )
+219 +     scenario(
+220 +         "removeTaskDependency",
+221 +         "wrong_task_edge",
+222 +         path={"task_id": alternate["id"]},
+223 +         expected="RESOURCE_NOT_FOUND",
+224 +     )
+225 +     scenario(
+226 +         "removeTaskDependency",
+227 +         "stale_version",
+228 +         body={"expected_version": 0},
+229 +         expected="VERSION_CONFLICT",
+230 +     )
+231 |     scenario("createTaskReview", "success")
+    -     scenario("createTaskReview", "owner_before_state", actor=2,
+    -              changes={"state": State.DELIVERED}, expected="ACTION_FORBIDDEN")
+    -     scenario("createTaskReview", "template_before_version",
+    -              body={"template_version": 2, "expected_version": 0},
+    -              expected="REVIEW_BASELINE_MISMATCH")
+    -     scenario("createTaskReview", "artifact_before_shape", body={"artifact_revision": "b" * 40,
+    -              "sections": []}, expected="REVIEW_BASELINE_MISMATCH")
+    -     scenario("createTaskReview", "missing_sections", body={"sections": []},
+    -              expected="PARAMETER_INVALID")
+232 +     scenario(
+233 +         "createTaskReview",
+234 +         "owner_before_state",
+235 +         actor=2,
+236 +         changes={"state": State.DELIVERED},
+237 +         expected="ACTION_FORBIDDEN",
+238 +     )
+239 +     scenario(
+240 +         "createTaskReview",
+241 +         "template_before_version",
+242 +         body={"template_version": 2, "expected_version": 0},
+243 +         expected="REVIEW_BASELINE_MISMATCH",
+244 +     )
+245 +     scenario(
+246 +         "createTaskReview",
+247 +         "artifact_before_shape",
+248 +         body={"artifact_revision": "b" * 40, "sections": []},
+249 +         expected="REVIEW_BASELINE_MISMATCH",
+250 +     )
+251 +     scenario(
+252 +         "createTaskReview", "missing_sections", body={"sections": []}, expected="PARAMETER_INVALID"
+253 +     )
+254 |     checklist = http.review_payload(task)["checklist"]
+    -     scenario("createTaskReview", "duplicate_items", body={"checklist": checklist + checklist},
+    -              expected="PARAMETER_INVALID")
+255 +     scenario(
+256 +         "createTaskReview",
+257 +         "duplicate_items",
+258 +         body={"checklist": checklist + checklist},
+259 +         expected="PARAMETER_INVALID",
+260 +     )
+261 |     no_evidence = [{**item, "evidence": []} for item in checklist]
+    -     scenario("createTaskReview", "passing_without_evidence",
+    -              body={"checklist": no_evidence, "expected_version": 0}, expected="EVIDENCE_REQUIRED")
+    -     scenario("createTaskReview", "rejected_verdict_without_evidence",
+    -              body={"checklist": no_evidence, "verdict": 2})
+    -     scenario("createTaskReview", "stale_version", body={"expected_version": 0},
+    -              expected="VERSION_CONFLICT")
+262 +     scenario(
+263 +         "createTaskReview",
+264 +         "passing_without_evidence",
+265 +         body={"checklist": no_evidence, "expected_version": 0},
+266 +         expected="EVIDENCE_REQUIRED",
+267 +     )
+268 +     scenario(
+269 +         "createTaskReview",
+270 +         "rejected_verdict_without_evidence",
+271 +         body={"checklist": no_evidence, "verdict": 2},
+272 +     )
+273 +     scenario(
+274 +         "createTaskReview",
+275 +         "stale_version",
+276 +         body={"expected_version": 0},
+277 +         expected="VERSION_CONFLICT",
+278 +     )
+279 |     scenario("createReleaseAssessment", "success")
+    -     scenario("createReleaseAssessment", "risks_before_member_and_version",
+    -              body={"risks": [], "rollback_plan": {"responsible_user_id": 99999},
+    -                    "expected_version": 0}, expected="PARAMETER_INVALID")
+    -     scenario("createReleaseAssessment", "missing_responsible_before_version",
+    -              body={"rollback_plan": {"responsible_user_id": 99999}, "expected_version": 0},
+    -              expected="RESOURCE_NOT_FOUND")
+    -     scenario("createReleaseAssessment", "outsider_responsible",
+    -              body={"rollback_plan": {"responsible_user_id": 4}}, expected="RESOURCE_NOT_FOUND")
+    -     scenario("createReleaseAssessment", "stale_version", body={"expected_version": 0},
+    -              expected="VERSION_CONFLICT")
+280 +     scenario(
+281 +         "createReleaseAssessment",
+282 +         "risks_before_member_and_version",
+283 +         body={"risks": [], "rollback_plan": {"responsible_user_id": 99999}, "expected_version": 0},
+284 +         expected="PARAMETER_INVALID",
+285 +     )
+286 +     scenario(
+287 +         "createReleaseAssessment",
+288 +         "missing_responsible_before_version",
+289 +         body={"rollback_plan": {"responsible_user_id": 99999}, "expected_version": 0},
+290 +         expected="RESOURCE_NOT_FOUND",
+291 +     )
+292 +     scenario(
+293 +         "createReleaseAssessment",
+294 +         "outsider_responsible",
+295 +         body={"rollback_plan": {"responsible_user_id": 4}},
+296 +         expected="RESOURCE_NOT_FOUND",
+297 +     )
+298 +     scenario(
+299 +         "createReleaseAssessment",
+300 +         "stale_version",
+301 +         body={"expected_version": 0},
+302 +         expected="VERSION_CONFLICT",
+303 +     )
+304 |
+    -     receipt = {"base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    -                "scenario_comparisons": [], "gateway_fault_comparisons": []}
+305 +     receipt = {
+306 +         "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+307 +         "scenario_comparisons": [],
+308 +         "gateway_fault_comparisons": [],
+309 +     }
+310 |     for operation, name, call, changes, expected in scenarios:
+311 |         with factory() as uow:
+    -             original = compare_under_savepoint(uow.gateway, base[operation], deepcopy(call), changes)
+    -             actual = compare_under_savepoint(uow.gateway, candidate[operation], deepcopy(call), changes)
+312 +             original = compare_under_savepoint(
+313 +                 uow.gateway, base[operation], deepcopy(call), changes
+314 +             )
+315 +             actual = compare_under_savepoint(
+316 +                 uow.gateway, candidate[operation], deepcopy(call), changes
+317 +             )
+318 |             assert original == actual, (operation, name)
+--------------------------------------------------------------------------------
+323 |                 assert original["outcome"][0] == "result", (operation, name, original["outcome"])
+    -             receipt["scenario_comparisons"].append({
+    -                 "operation": operation, "name": name,
+    -                 "gateway_events": len(original["events"]), "outcome": original["outcome"][0],
+    -             })
+324 +             receipt["scenario_comparisons"].append(
+325 +                 {
+326 +                     "operation": operation,
+327 +                     "name": name,
+328 +                     "gateway_events": len(original["events"]),
+329 +                     "outcome": original["outcome"][0],
+330 +                 }
+331 +             )
+332 |             if name == "success":
+333 |                 for stop in range(1, len(original["events"]) + 1):
+    -                     before = compare_under_savepoint(uow.gateway, base[operation], deepcopy(call), changes, stop)
+    -                     after = compare_under_savepoint(uow.gateway, candidate[operation], deepcopy(call), changes, stop)
+334 +                     before = compare_under_savepoint(
+335 +                         uow.gateway, base[operation], deepcopy(call), changes, stop
+336 +                     )
+337 +                     after = compare_under_savepoint(
+338 +                         uow.gateway, candidate[operation], deepcopy(call), changes, stop
+339 +                     )
+340 |                     assert before == after, (operation, stop)
+341 |                     assert before["outcome"][0] == "unavailable"
+342 |                     assert len(before["events"]) == stop
+    -                     receipt["gateway_fault_comparisons"].append({
+    -                         "operation": operation, "stop": stop,
+    -                         "last_event": {
+    -                             "method": before["events"][-1][0],
+    -                             "table": before["events"][-1][1][0],
+    -                         },
+    -                     })
+343 +                     receipt["gateway_fault_comparisons"].append(
+344 +                         {
+345 +                             "operation": operation,
+346 +                             "stop": stop,
+347 +                             "last_event": {
+348 +                                 "method": before["events"][-1][0],
+349 +                                 "table": before["events"][-1][1][0],
+350 +                             },
+351 +                         }
+352 +                     )
+353 |     (probe.HERE / "differential.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    |
+
+unformatted: File would be reformatted
+   --> tmp/797_backend_operation_plan/797_plan_http_faults.py:19:17
+    |
+18  |         predecessor = http.create_task(client, tokens, project, iteration)
+    -         body = {"expected_version": task["version"], "reason": "Synthetic plan fault",
+    -                 "depends_on_task_id": predecessor["id"]}
+19  +         body = {
+20  +             "expected_version": task["version"],
+21  +             "reason": "Synthetic plan fault",
+22  +             "depends_on_task_id": predecessor["id"],
+23  +         }
+24  |         if operation == "removeTaskDependency":
+    -             data = http.request(client, "addTaskDependency", token=tokens[actor],
+    -                                 body=body, expect=201, **path).json()["data"]
+25  +             data = http.request(
+26  +                 client, "addTaskDependency", token=tokens[actor], body=body, expect=201, **path
+27  +             ).json()["data"]
+28  |             body = {"expected_version": data["task"]["version"], "reason": body["reason"]}
+29  |             path["dependency_id"] = data["dependency"]["id"]
+30  |     else:
+31  |         task = http.transition(client, tokens["developer"], project, task, 1)
+    -         task = http.transition(client, tokens["developer"], project, task, 4,
+    -                                artifact_revision="a" * 40, evidence=http.EVIDENCE)
+32  +         task = http.transition(
+33  +             client,
+34  +             tokens["developer"],
+35  +             project,
+36  +             task,
+37  +             4,
+38  +             artifact_revision="a" * 40,
+39  +             evidence=http.EVIDENCE,
+40  +         )
+41  |         body = http.review_payload(task)
+42  |         if operation == "createTaskReview":
+43  |             actor = "reviewer"
+44  |         else:
+    -             reviewed = http.request(client, "createTaskReview", token=tokens["reviewer"],
+    -                                     body=body, expect=201, **path).json()["data"]
+    -             task = http.transition(client, tokens["reviewer"], project, reviewed["task"], 5,
+    -                                    review_id=reviewed["review"]["id"], review_version=1)
+45  +             reviewed = http.request(
+46  +                 client, "createTaskReview", token=tokens["reviewer"], body=body, expect=201, **path
+47  +             ).json()["data"]
+48  +             task = http.transition(
+49  +                 client,
+50  +                 tokens["reviewer"],
+51  +                 project,
+52  +                 reviewed["task"],
+53  +                 5,
+54  +                 review_id=reviewed["review"]["id"],
+55  +                 review_version=1,
+56  +             )
+57  |             body = http.assessment_payload(task)
+--------------------------------------------------------------------------------
+98  |     with factory() as uow:
+    -         return {table: uow.gateway.rows(table) for table in (
+    -             "tasks", "task_dependencies", "reviews", "release_assessments", "outbox_events"
+    -         )}
+99  +         return {
+100 +             table: uow.gateway.rows(table)
+101 +             for table in (
+102 +                 "tasks",
+103 +                 "task_dependencies",
+104 +                 "reviews",
+105 +                 "release_assessments",
+106 +                 "outbox_events",
+107 +             )
+108 +         }
+109 |
+110 |
+    - @pytest.mark.parametrize("operation,method,table", [
+    -     ("addTaskDependency", "insert", "task_dependencies"),
+    -     ("removeTaskDependency", "delete", "task_dependencies"),
+    -     ("createTaskReview", "update", "tasks"),
+    -     ("createReleaseAssessment", "update", "tasks"),
+    - ])
+111 + @pytest.mark.parametrize(
+112 +     "operation,method,table",
+113 +     [
+114 +         ("addTaskDependency", "insert", "task_dependencies"),
+115 +         ("removeTaskDependency", "delete", "task_dependencies"),
+116 +         ("createTaskReview", "update", "tasks"),
+117 +         ("createReleaseAssessment", "update", "tasks"),
+118 +     ],
+119 + )
+120 | @pytest.mark.parametrize("outbox", [False, True])
+--------------------------------------------------------------------------------
+129 |     runtime = client.app.state.runtime
+    -     runtime.factory = FaultFactory(factory, "insert" if outbox else method,
+    -                                    "outbox_events" if outbox else table)
+130 +     runtime.factory = FaultFactory(
+131 +         factory, "insert" if outbox else method, "outbox_events" if outbox else table
+132 +     )
+133 |     failed_key = str(uuid4())
+    -     rejected = http.request(client, operation, token=token, body=body, key=failed_key,
+    -                             expect=503, **path).json()
+134 +     rejected = http.request(
+135 +         client, operation, token=token, body=body, key=failed_key, expect=503, **path
+136 +     ).json()
+137 |     assert rejected["code"] == "DEPENDENCY_UNAVAILABLE"
+--------------------------------------------------------------------------------
+149 |     success = 200 if operation == "removeTaskDependency" else 201
+    -     first = http.request(client, operation, token=token, body=body, key=retry_key,
+    -                          expect=success, **path).json()
+150 +     first = http.request(
+151 +         client, operation, token=token, body=body, key=retry_key, expect=success, **path
+152 +     ).json()
+153 |     after = business_snapshot(factory)
+    -     replay = http.request(client, operation, token=token, body=body, key=retry_key,
+    -                           expect=success, **path).json()
+154 +     replay = http.request(
+155 +         client, operation, token=token, body=body, key=retry_key, expect=success, **path
+156 +     ).json()
+157 |     assert first["data"] == replay["data"]
+    |
+
+unformatted: File would be reformatted
+   --> tmp/797_backend_operation_plan/prepare.py:55:29
+    |
+54  |         text = text.replace("from .common import ", "from .common import Call, ", 1)
+    -         text = text.replace("from .errors import require\n", (
+    -             "from .errors import require\nfrom .operation_plan import OperationPlan\n"
+    -         ))
+55  +         text = text.replace(
+56  +             "from .errors import require\n",
+57  +             ("from .errors import require\nfrom .operation_plan import OperationPlan\n"),
+58  +         )
+59  |         candidate = HERE / "candidate" / relative
+--------------------------------------------------------------------------------
+81  |
+    -     spec = importlib.util.spec_from_file_location("source_count", ROOT / "scripts/metrics/source_count.py")
+82  +     spec = importlib.util.spec_from_file_location(
+83  +         "source_count", ROOT / "scripts/metrics/source_count.py"
+84  +     )
+85  |     classifier = importlib.util.module_from_spec(spec)
+86  |     spec.loader.exec_module(classifier)
+    -     names = git("ls-tree", "-r", "--name-only", BASE, "--", "backend/t44", "frontend").decode().splitlines()
+87  +     names = (
+88  +         git("ls-tree", "-r", "--name-only", BASE, "--", "backend/t44", "frontend")
+89  +         .decode()
+90  +         .splitlines()
+91  +     )
+92  |     selected = [name for name in names if classifier.classify(name) == "application"]
+--------------------------------------------------------------------------------
+107 |         subprocess.run(
+    -             ["/usr/bin/perl", str(CLOC), "--quiet", "--json", "--by-file",
+    -              "--list-file=" + str(listing), "--report-file=" + str(output)],
+    -             check=True, capture_output=True,
+108 +             [
+109 +                 "/usr/bin/perl",
+110 +                 str(CLOC),
+111 +                 "--quiet",
+112 +                 "--json",
+113 +                 "--by-file",
+114 +                 "--list-file=" + str(listing),
+115 +                 "--report-file=" + str(output),
+116 +             ],
+117 +             check=True,
+118 +             capture_output=True,
+119 |         )
+--------------------------------------------------------------------------------
+130 |         }
+    -     write_json(HERE / "count.json", {
+    -         "base": BASE, "tool": "cloc 2.10", "tool_sha256": TOOL_HASH,
+    -         **counts,
+    -         "net_saved": counts["baseline"]["application"] - counts["candidate"]["application"],
+    -         "scope": "same fixed application classifier, candidate helper counted at product path",
+    -     })
+131 +     write_json(
+132 +         HERE / "count.json",
+133 +         {
+134 +             "base": BASE,
+135 +             "tool": "cloc 2.10",
+136 +             "tool_sha256": TOOL_HASH,
+137 +             **counts,
+138 +             "net_saved": counts["baseline"]["application"] - counts["candidate"]["application"],
+139 +             "scope": "same fixed application classifier, candidate helper counted at product path",
+140 +         },
+141 +     )
+142 |     print((HERE / "count.json").read_text())
+    |
+
+unformatted: File would be reformatted
+  --> tmp/797_backend_operation_plan/run.py:13:22
+   |
+12 | if __name__ == "__main__":
+   -     raise SystemExit(pytest.main([
+   -         "-q", "-c", str(ROOT / "backend/pyproject.toml"),
+   -         str(HERE / "797_plan_differential.py"), str(HERE / "797_plan_http_faults.py"),
+   -         *[str(ROOT / "tmp/backend/contracts" / name) for name in (
+   -             "986_http.py", "987_faults.py", "856_release_error_priority.py",
+   -             "859_dependency_delivered.py", "816_acceptance_followup_20261025.py",
+   -         )],
+   -         "--junitxml=" + str(HERE / "candidate-junit.xml"),
+   -     ], plugins=[probe.CandidatePlugin()]))
+13 +     raise SystemExit(
+14 +         pytest.main(
+15 +             [
+16 +                 "-q",
+17 +                 "-c",
+18 +                 str(ROOT / "backend/pyproject.toml"),
+19 +                 str(HERE / "797_plan_differential.py"),
+20 +                 str(HERE / "797_plan_http_faults.py"),
+21 +                 *[
+22 +                     str(ROOT / "tmp/backend/contracts" / name)
+23 +                     for name in (
+24 +                         "986_http.py",
+25 +                         "987_faults.py",
+26 +                         "856_release_error_priority.py",
+27 +                         "859_dependency_delivered.py",
+28 +                         "816_acceptance_followup_20261025.py",
+29 +                     )
+30 +                 ],
+31 +                 "--junitxml=" + str(HERE / "candidate-junit.xml"),
+32 +             ],
+33 +             plugins=[probe.CandidatePlugin()],
+34 +         )
+35 +     )
+   |
+
+4 files would be reformatted, 5 files already formatted
