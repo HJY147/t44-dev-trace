@@ -110,14 +110,24 @@ class Workflow:
             require(
                 b["assessment_version"] == assessment["version"], "ASSESSMENT_BASELINE_MISMATCH"
             )
-            require(
+            if not (
                 row["approved_assessment_id"] == assessment["id"]
-                and row["approved_assessment_version"] == assessment["version"],
-                "RELEASE_APPROVAL_REQUIRED"
-                if assessment["delivery_cycle"] == row["delivery_cycle"]
-                and assessment["schedule_version"] == row["schedule_version"]
-                else "ASSESSMENT_BASELINE_MISMATCH",
-            )
+                and row["approved_assessment_version"] == assessment["version"]
+            ):
+                # The failed approval slot must not hide the existing state/manager guards.
+                require(
+                    row["state"] == State.PENDING_RELEASE,
+                    "STATE_CONFLICT",
+                    current_state=row["state"],
+                )
+                c.manager()
+                require(
+                    False,
+                    "RELEASE_APPROVAL_REQUIRED"
+                    if assessment["delivery_cycle"] == row["delivery_cycle"]
+                    and assessment["schedule_version"] == row["schedule_version"]
+                    else "ASSESSMENT_BASELINE_MISMATCH",
+                )
             release_gate = ReleaseGate(
                 reference(assessment["id"], assessment["version"]),
                 assessment["delivery_cycle"],

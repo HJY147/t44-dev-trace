@@ -14,9 +14,7 @@ pytestmark = pytest.mark.contract
 def test_unapproved_deliver_requires_manager_before_assessment_gate(application, stale_baseline):
     client, factory = application
     tokens, pid, iid = http.setup_project(client)
-    result = priority._assess(
-        client, tokens, pid, priority._ready(client, tokens, pid, iid)
-    )
+    result = priority._assess(client, tokens, pid, priority._ready(client, tokens, pid, iid))
     if stale_baseline:
         result = priority._approve(client, tokens, pid, result)
         task = priority._replan(client, tokens, pid, result["task"])
@@ -26,9 +24,7 @@ def test_unapproved_deliver_requires_manager_before_assessment_gate(application,
     assert task["state"] == 5 and task["approved_assessment_id"] is None
     assert (task["schedule_version"] != assessment["schedule_version"]) is stale_baseline
     with factory() as uow:
-        member = uow.gateway.rows(
-            "project_members", {"project_id": pid, "user_id": 2, "active": 1}
-        )
+        member = uow.gateway.rows("project_members", {"project_id": pid, "user_id": 2, "active": 1})
         assert len(member) == 1 and member[0]["roles_mask"] == 2
     before, audit_before = priority._business(factory, pid), priority._audits(factory, pid)
     body, key = priority._release_body(task, assessment), str(uuid4())
@@ -53,7 +49,9 @@ def test_unapproved_deliver_requires_manager_before_assessment_gate(application,
     assert priority._audits(factory, pid) == audits
     assert priority._business(factory, pid) == before
     assert (first.status_code, payload["code"], saved["reason_code"]) == (
-        403, "ACTION_FORBIDDEN", 6
+        403,
+        "ACTION_FORBIDDEN",
+        6,
     )
 
 
@@ -69,12 +67,17 @@ def test_failed_approval_slot_keeps_state_before_manager_guard(application, acto
     )
     task = priority._replan(client, tokens, pid, result["task"])
     task = http.transition(
-        client, tokens["manager"], pid, task, 2,
-        reason="Synthetic release-stage block", responsibility_stage=4, evidence=http.EVIDENCE
+        client,
+        tokens["manager"],
+        pid,
+        task,
+        2,
+        reason="Synthetic release-stage block",
+        responsibility_stage=4,
+        evidence=http.EVIDENCE,
     )
     assert task["state"] == 3 and task["blocked_from_state"] == 5
     assert task["approved_assessment_id"] is None
     priority._reject(
-        client, factory, tokens, pid, task, result["assessment"],
-        "STATE_CONFLICT", actor=actor
+        client, factory, tokens, pid, task, result["assessment"], "STATE_CONFLICT", actor=actor
     )
