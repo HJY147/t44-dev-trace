@@ -1,0 +1,545 @@
+{
+  "baseline_sha": "043fc464",
+  "candidate_sha": "c4b3f114a5525c0fe0fd031d2b3603070a2be892",
+  "fixed_classifier_unchanged": true,
+  "cloc_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+  "results": {
+    "base": {
+      "summary": {
+        "blank": 541,
+        "comment": 112,
+        "code": 4776,
+        "nFiles": 43
+      },
+      "files": {
+        "backend/t44/persistence/seed.py": {
+          "blank": 14,
+          "comment": 3,
+          "code": 326,
+          "language": "Python"
+        },
+        "backend/t44/persistence/migrations.py": {
+          "blank": 22,
+          "comment": 2,
+          "code": 303,
+          "language": "Python"
+        },
+        "backend/t44/persistence/rows.py": {
+          "blank": 30,
+          "comment": 10,
+          "code": 293,
+          "language": "Python"
+        },
+        "backend/t44/services/runtime.py": {
+          "blank": 17,
+          "comment": 5,
+          "code": 284,
+          "language": "Python"
+        },
+        "backend/t44/api.py": {
+          "blank": 34,
+          "comment": 4,
+          "code": 244,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/facade.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 205,
+          "language": "Python"
+        },
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 169,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 167,
+          "language": "Python"
+        },
+        "backend/t44/domain/state_machine.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 164,
+          "language": "Python"
+        },
+        "backend/t44/persistence/delivery.py": {
+          "blank": 12,
+          "comment": 3,
+          "code": 159,
+          "language": "Python"
+        },
+        "backend/t44/cli.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 147,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/scanner.py": {
+          "blank": 12,
+          "comment": 5,
+          "code": 141,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/rules.py": {
+          "blank": 25,
+          "comment": 6,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/common.py": {
+          "blank": 39,
+          "comment": 2,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/reviews.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/workflow.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/tasks.py": {
+          "blank": 15,
+          "comment": 3,
+          "code": 136,
+          "language": "Python"
+        },
+        "backend/t44/messaging/broker.py": {
+          "blank": 17,
+          "comment": 3,
+          "code": 129,
+          "language": "Python"
+        },
+        "backend/t44/persistence/schema.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 117,
+          "language": "Python"
+        },
+        "backend/t44/domain/models.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 111,
+          "language": "Python"
+        },
+        "backend/t44/services/identity.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 107,
+          "language": "Python"
+        },
+        "backend/t44/persistence/scans.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 103,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__main__.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 9,
+          "comment": 3,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/messaging/facade.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 95,
+          "language": "Python"
+        },
+        "backend/t44/persistence/engine.py": {
+          "blank": 13,
+          "comment": 3,
+          "code": 93,
+          "language": "Python"
+        },
+        "backend/t44/persistence/uow.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 86,
+          "language": "Python"
+        },
+        "backend/t44/messaging/worker.py": {
+          "blank": 9,
+          "comment": 2,
+          "code": 84,
+          "language": "Python"
+        },
+        "backend/t44/persistence/accounts.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 61,
+          "language": "Python"
+        },
+        "backend/t44/contracts/__init__.py": {
+          "blank": 14,
+          "comment": 2,
+          "code": 56,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__main__.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 49,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/runtime.py": {
+          "blank": 10,
+          "comment": 9,
+          "code": 39,
+          "language": "Python"
+        },
+        "backend/t44/settings.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "backend/t44/services/errors.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "backend/t44/persistence/codecs.py": {
+          "blank": 15,
+          "comment": 1,
+          "code": 27,
+          "language": "Python"
+        },
+        "backend/t44/persistence/__init__.py": {
+          "blank": 2,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__init__.py": {
+          "blank": 3,
+          "comment": 3,
+          "code": 21,
+          "language": "Python"
+        },
+        "backend/t44/services/codes.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 11,
+          "language": "Python"
+        },
+        "backend/t44/persistence/errors.py": {
+          "blank": 13,
+          "comment": 7,
+          "code": 9,
+          "language": "Python"
+        },
+        "backend/t44/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/domain/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/services/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    },
+    "messaging": {
+      "summary": {
+        "blank": 543,
+        "comment": 112,
+        "code": 4763,
+        "nFiles": 43
+      },
+      "files": {
+        "backend/t44/persistence/seed.py": {
+          "blank": 14,
+          "comment": 3,
+          "code": 326,
+          "language": "Python"
+        },
+        "backend/t44/persistence/migrations.py": {
+          "blank": 22,
+          "comment": 2,
+          "code": 303,
+          "language": "Python"
+        },
+        "backend/t44/persistence/rows.py": {
+          "blank": 30,
+          "comment": 10,
+          "code": 293,
+          "language": "Python"
+        },
+        "backend/t44/services/runtime.py": {
+          "blank": 17,
+          "comment": 5,
+          "code": 284,
+          "language": "Python"
+        },
+        "backend/t44/api.py": {
+          "blank": 34,
+          "comment": 4,
+          "code": 244,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/facade.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 205,
+          "language": "Python"
+        },
+        "backend/t44/services/projects.py": {
+          "blank": 18,
+          "comment": 1,
+          "code": 169,
+          "language": "Python"
+        },
+        "backend/t44/services/application.py": {
+          "blank": 21,
+          "comment": 2,
+          "code": 167,
+          "language": "Python"
+        },
+        "backend/t44/domain/state_machine.py": {
+          "blank": 12,
+          "comment": 2,
+          "code": 164,
+          "language": "Python"
+        },
+        "backend/t44/persistence/delivery.py": {
+          "blank": 12,
+          "comment": 3,
+          "code": 159,
+          "language": "Python"
+        },
+        "backend/t44/cli.py": {
+          "blank": 11,
+          "comment": 3,
+          "code": 147,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/scanner.py": {
+          "blank": 12,
+          "comment": 5,
+          "code": 141,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/rules.py": {
+          "blank": 25,
+          "comment": 6,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/common.py": {
+          "blank": 39,
+          "comment": 2,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/reviews.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/workflow.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 140,
+          "language": "Python"
+        },
+        "backend/t44/services/tasks.py": {
+          "blank": 15,
+          "comment": 3,
+          "code": 136,
+          "language": "Python"
+        },
+        "backend/t44/messaging/broker.py": {
+          "blank": 19,
+          "comment": 3,
+          "code": 126,
+          "language": "Python"
+        },
+        "backend/t44/persistence/schema.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 117,
+          "language": "Python"
+        },
+        "backend/t44/domain/models.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 111,
+          "language": "Python"
+        },
+        "backend/t44/services/identity.py": {
+          "blank": 15,
+          "comment": 2,
+          "code": 107,
+          "language": "Python"
+        },
+        "backend/t44/persistence/scans.py": {
+          "blank": 10,
+          "comment": 1,
+          "code": 103,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__main__.py": {
+          "blank": 11,
+          "comment": 1,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/services/history.py": {
+          "blank": 9,
+          "comment": 3,
+          "code": 96,
+          "language": "Python"
+        },
+        "backend/t44/persistence/engine.py": {
+          "blank": 13,
+          "comment": 3,
+          "code": 93,
+          "language": "Python"
+        },
+        "backend/t44/persistence/uow.py": {
+          "blank": 16,
+          "comment": 2,
+          "code": 86,
+          "language": "Python"
+        },
+        "backend/t44/messaging/facade.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 85,
+          "language": "Python"
+        },
+        "backend/t44/messaging/worker.py": {
+          "blank": 9,
+          "comment": 2,
+          "code": 84,
+          "language": "Python"
+        },
+        "backend/t44/persistence/accounts.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 61,
+          "language": "Python"
+        },
+        "backend/t44/contracts/__init__.py": {
+          "blank": 14,
+          "comment": 2,
+          "code": 56,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__main__.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 49,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/runtime.py": {
+          "blank": 10,
+          "comment": 9,
+          "code": 39,
+          "language": "Python"
+        },
+        "backend/t44/settings.py": {
+          "blank": 9,
+          "comment": 1,
+          "code": 36,
+          "language": "Python"
+        },
+        "backend/t44/services/errors.py": {
+          "blank": 7,
+          "comment": 1,
+          "code": 28,
+          "language": "Python"
+        },
+        "backend/t44/persistence/codecs.py": {
+          "blank": 15,
+          "comment": 1,
+          "code": 27,
+          "language": "Python"
+        },
+        "backend/t44/persistence/__init__.py": {
+          "blank": 2,
+          "comment": 1,
+          "code": 24,
+          "language": "Python"
+        },
+        "backend/t44/scheduling/__init__.py": {
+          "blank": 3,
+          "comment": 3,
+          "code": 21,
+          "language": "Python"
+        },
+        "backend/t44/services/codes.py": {
+          "blank": 5,
+          "comment": 3,
+          "code": 11,
+          "language": "Python"
+        },
+        "backend/t44/persistence/errors.py": {
+          "blank": 13,
+          "comment": 7,
+          "code": 9,
+          "language": "Python"
+        },
+        "backend/t44/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/domain/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/messaging/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        },
+        "backend/t44/services/__init__.py": {
+          "blank": 0,
+          "comment": 1,
+          "code": 0,
+          "language": "Python"
+        }
+      }
+    }
+  },
+  "net": 13
+}
