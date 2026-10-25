@@ -224,6 +224,22 @@
     "full_raw_evidence_exit": 2,
     "reason": "Unchanged raw pytest failure XML contains E plus trailing spaces; exact raw bytes preserved",
     "source_and_narrative_docs_check_exit": 0,
-    "log": "raw-evidence-diff-check.log"
+    "log": "raw-evidence-diff-check.log",
+    "second_evidence_commit_staged_exit": 2,
+    "second_reason": "The raw diff-check log itself reproduced original trailing whitespace; subsequently gzip-wrapped without changing decompressed bytes."
+  },
+  "raw_evidence_storage": {
+    "v2-old-golden.xml": {
+      "stored": "v2-old-golden.xml.gz",
+      "raw_sha256": "c66b96ed063221e44a22c89eebcc940d9fc975bb1179cc8da348232e31f4dd43",
+      "raw_bytes": 1370,
+      "decompressed_equals_original": true
+    },
+    "raw-evidence-diff-check.log": {
+      "stored": "raw-evidence-diff-check.log.gz",
+      "raw_sha256": "8c0e083f6a25265744e41ad88074d3f9d179b72cc55d3c09c006e4451b86f529",
+      "raw_bytes": 89,
+      "decompressed_equals_original": true
+    }
   }
 }

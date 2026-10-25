@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="0.617" timestamp="2026-10-25T19:52:30.513286+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_seed_references_json_states_capacity_repeat_and_no_overwrite[2-20-20-30-aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29]" time="0.216"><properties><property name="seed_semantics_sha256" value="92ea1b638c3b5b5d48aa49bd3c87240da896b99e5ad2d061d798fbcd4b439bed" /></properties><failure message="AssertionError: assert '92ea1b638c3b...8fbcd4b439bed' == 'aa4f3affb32b...2f844e84bdb29'&#10;  &#10;  - aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29&#10;  + 92ea1b638c3b5b5d48aa49bd3c87240da896b99e5ad2d061d798fbcd4b439bed">tmp/backend/persistence/975_seed.py:192: in test_seed_references_json_states_capacity_repeat_and_no_overwrite
-    assert digest == expected_digest
-E   AssertionError: assert '92ea1b638c3b...8fbcd4b439bed' == 'aa4f3affb32b...2f844e84bdb29'
-E     
-E     - aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29
-E     + 92ea1b638c3b5b5d48aa49bd3c87240da896b99e5ad2d061d798fbcd4b439bed</failure></testcase><testcase classname="" name="test_seed_impossible_dependency_count_rolls_back_entire_dataset" time="0.138" /></testsuite></testsuites>

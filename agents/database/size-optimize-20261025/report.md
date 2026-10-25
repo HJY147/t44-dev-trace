@@ -38,3 +38,5 @@ slot序列统一评审/评估/批准/交付/回滚的时间，保证前驱已实
 Issue4已真实COMMENT并按单ID GET全文逐字核对：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591 。没有新PR/设置review通过/触发完整CI。root负责采用稳定68或额外22的版本2取舍、准确集成审核、CI中新tmp812目标和后续freshMySQL。当前仅开发SQLite/mock，真实MySQL约束/并发锁、新版seed native CHECK、完整CI/coverage、独立验收、正式性能、最终规模达标仍未验证。
 
 证据提交1af77aa的完整git diff-check真实exit2：旧黄金真实失败XML含原始pytest的`E`后空格，原字节保留，不修剪证据掩盖提示。同一证据提交仅源/说明文档范围diff-check exit0。完整检查失败不被提交成功覆盖；raw-evidence-diff-check.log和verification.json另记。
+
+为便于根审查最终补丁，原失败XML与原diff-check日志随后仅改为gzip封装，解压字节/SHA256与压缩前完全一致，verification.json记映射；1af77aa和ee8e678的历史检查失败仍保留。没有删除原失败或改其正文。
