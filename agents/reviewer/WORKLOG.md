@@ -526,3 +526,8 @@ ROLE-reviewer-829-PUBLIC-v7-v1；技术manifest04d71afd、allowlist289639与10tr
 
 
 v7工具限定行政封档：技术0669d66eabd18fe074178cbc92c21e6acce24690已push；Issue12 COMMENT6395891984（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395891984）特定全文GET exit0/body及issue严格相同。工具ready仅可进入精确phase/provider/grant审，本轮仍0SUT/不授任何phase/不延旧grant；09:21:48已提醒root原F7 09:22只余12s且尚未审新source/draft，不能伪准入。封metadata后释放槽。
+
+
+## 2026-10-25 新F7 campaign provider/watcher/精确grant审
+
+ROLE-reviewer-FUNCTIONAL-v7-CAMPAIGN-v1；exact3f51350八文件字节同，provider75de297/watcher6a6df2a，publicbindingf61cca同draft692b8edf。phase下界改真实supervisor.launch_clock.utc，approved/provisioned内supervisorNonce/requestNonce新0700路径，配置/source/runtime/runparent/controller及原双截止/40/remaining/私有staged+排他发布无弱化。watcher同freeze/expiry/live父子后exec严格provider，UTC等待本身非mono硬停，按singlefresh流程可用不冒恶意同用户/坏receipt容错。2JUnit绿0.015s只复算不重跑，目录case纯Path属性非controller覆盖；root公开strictTLS201/project1/CLI/scheduler76376与own-keysealer记录实读，非本岗亲跑/14case通过。新grant仅admitted false→true canonical5234b21e，09:50/max900/新源构建资源及非空1project/tasks0/5human不变，旧09:22不回写。09:42:05余474s不承诺完成，技术准入先发root后行政；0新probe/test/SUT/API/DB/CLI/private值或tester联系，不作业务/perf/global/main/merge通过。
