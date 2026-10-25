@@ -569,3 +569,11 @@ root只传F阶段停止条件，部署未收/读case结果。10:39:45UTC仅funct
 端口首次及10:40:11只读重核：14个指定端口中仅24398仍EADDRINUSE(false)，其余free；两份实际false都保留，不推测原因/不杀unknown，不把进程absent扩大为所有端口已free。后续如有只读新重核另档，不覆盖旧记录。F独立结论不在部署知悉/判定范围，P完整load由root后续准入。
 
 后续独立只读重核2026-10-25T10:40:56.264UTC：全部14指定F端口bind-free，早先两份24398 false未修改/删除。lsof对24398 LISTEN实查exit1无records；不推测占用原因，未发额外信号。最终端口证据另存functional-phase-end-port-final.json，P/MySQL/sampler未碰。
+
+## source935 campaign8 P单次runner结束收尾（资源事实）
+
+root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e74e284e3704da4afac24c634428273成功，11:04:55 controller-stop c970b631c8fa482b97a1c496483353a2成功且scheduler/consumer/API均forced=false，不重复根入口、不覆写原输出。随后仅核UID/lstart/PGID/argv SHA后正常SIGTERM剩余appguardian99782和broker guardian99428。11:06:14全部P owned API7workers/tracker/consumer/scheduler3800/Rabbit/EPMD/sampler435/两guardian absent，aftercheck712d2fc2a90543178bd225b6cd0f0ecd，首次14端口全部bind-free；稍后只读重核另档，原首次结果/所有旧false保留。
+
+六件controller/manifest/applicationbinding/artifact/nativebuild SHA不变，actual application sourcefiles再次逐件核，935实际archive0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138再核一致，数据/全部原始日志保留。actual interval-final60a8c633daee49df8cf6db49d42316ec：raw8301045bytes/SHA3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9、16284rows、10:19:39.733065至11:04:52.735388UTC，真实完整raw再核留在原ignored目录，另两guardian raw闭合SHA/bytes列档；collection_completed不是独立测试、资源coverage、瓶颈或性能通过。
+
+不读任何tmp814/817/818/829等独立资料，不解释测试根因，不动MySQL7980/旧F数据及环境，不开新服务。完整root原stop、guardian收尾与rawmetadata见round8/performance-phase-end-stop.json，原final副本performance-interval-final.json；提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1追加此AI停止流程，不冒用户亲历。

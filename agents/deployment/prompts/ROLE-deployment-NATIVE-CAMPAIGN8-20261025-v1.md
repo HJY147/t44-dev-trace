@@ -9,3 +9,5 @@
 预期交付与实际结果分开：设计见round8/design.md；后续实际命令/原失败/纯guard与新runtime能力由本阶段result与WORKLOG补写，未执行的独立验收/负载不得预填。
 
 追加实际root AI停止指令：F phase结束，只停止准确campaign8 F，不见case结果/不新起F，不碰P/7980/435/provider。实际执行10:39:45所有owned absent、forced=false，10:40:56全14端口free；先前false保留。结果见round8三份phase-end原件，不把AI执行写成用户亲历。
+
+追加root AI指令：P runner已封档，只读先核根stop回执，正常停止剩余精确owned guardians，不读测试内容/不解释根因，完整回收raw并核hash，不动sharedMySQL/旧F。实际11:06:14全角色absent、原source/archive/build保持、14端口free、sampler8301045bytes/hash382156...再核，首轮和后续复核原件分存；非人亲历。

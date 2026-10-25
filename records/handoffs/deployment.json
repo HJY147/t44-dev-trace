@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "source935-functional-campaign8-normally-stopped-performance-untouched",
+  "stage": "source935-campaign8-all-owned-stopped-complete-raw-preserved",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2259,7 +2259,6 @@
     "scheduler_pending_scope_initial": true,
     "first_spawn_cap_utc": "2026-10-25T10:50:00Z",
     "old_files_modified": false,
-    "final_stop_or_coverage_proven": false,
     "github_issue_administration": {
       "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6396452679",
       "exact_body_readback_equal": true,
@@ -2282,6 +2281,30 @@
       "ports_final_utc": "2026-10-25T10:40:56.264109+00:00",
       "ports_final_evidence": "agents/deployment/native-performance-20261025/round8/functional-phase-end-port-final.json",
       "all_earlier_false_preserved": true
+    },
+    "final_owned_stop_proven": true,
+    "resource_coverage_or_performance_verdict": null,
+    "performance_owned_stop": {
+      "at_utc": "2026-10-25T11:06:14.276125+00:00",
+      "all_owned_roles_workers_tracker_sampler_guardians_absent": true,
+      "aftercheck_receipt": "712d2fc2a90543178bd225b6cd0f0ecd",
+      "root_stop_receipt": "c970b631c8fa482b97a1c496483353a2",
+      "root_sampler_stop_receipt": "5e74e284e3704da4afac24c634428273",
+      "original_identity_and_source_files_archive_unchanged": true,
+      "stop_evidence": "agents/deployment/native-performance-20261025/round8/performance-phase-end-stop.json",
+      "port_recheck_evidence": "agents/deployment/native-performance-20261025/round8/performance-phase-end-port-recheck.json",
+      "all_ports_free_first_and_recheck": true,
+      "all_old_false_and_raw_preserved": true,
+      "MySQL_or_F_touched": false
+    },
+    "performance_interval_final": {
+      "path": "agents/deployment/native-performance-20261025/round8/performance-interval-final.json",
+      "raw_sha256": "3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9",
+      "raw_bytes": 8301045,
+      "raw_rows": 16284,
+      "complete_raw_sha_bytes_revalidated": true,
+      "collection_completed": true,
+      "coverage_or_performance_inference": null
     }
   }
 }
