@@ -101,6 +101,9 @@ def main():
             },
         )
         with engine.begin() as connection:
+            if connection.execute(text("SELECT @@partial_revokes")).scalar_one():
+                raise ValueError("Explicit wildcard-grant semantics required")
+            grant_database = DATABASE.replace("_", "\\_")
             connection.execute(
                 text(
                     f"CREATE DATABASE `{DATABASE}` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci"
@@ -112,7 +115,7 @@ def main():
             )
             connection.execute(
                 text(
-                    f"GRANT SELECT, INSERT, UPDATE, DELETE ON `{DATABASE}`.* TO '{USER}'@'127.0.0.1'"
+                    f"GRANT SELECT, INSERT, UPDATE, DELETE ON `{grant_database}`.* TO '{USER}'@'127.0.0.1'"
                 )
             )
             report["changes"].append("new named CRUD-only principal created")
