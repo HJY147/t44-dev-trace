@@ -84,3 +84,54 @@ def test_http_race_fixture_uses_valid_real_workflow_and_original_errors(writer):
         gate.rejection_effects(env, result, row, key=key, actor="reviewer")
     finally:
         fixture.close()
+
+
+def test_unblock_dependency_race_fixture_preserves_original_dependency_guard():
+    fixture = profile.fixture(SimpleNamespace(mode="sqlite"))
+    try:
+        client, _, factory, engine, users = next(fixture)
+        env = SimpleNamespace(
+            client=client,
+            factory=factory,
+            engine=engine,
+            users=users,
+            tokens={},
+            report={"cases": [], "responses": []},
+        )
+        for role in users:
+            env.tokens[role] = gate.send(
+                env,
+                "login",
+                role=None,
+                body={"username": role, "password": "synthetic-diagnostic-password"},
+            )["data"]["access_token"]
+        _, pid, iteration = gate.project.__wrapped__(env)
+        predecessor, assessment = gate.delivered(env, pid, gate.task(env, pid, iteration))
+        row = gate.task(env, pid, iteration, [predecessor["id"]])
+        row = gate.transition(env, pid, row, 1)
+        row = gate.transition(
+            env,
+            pid,
+            row,
+            2,
+            reason="Synthetic developing block",
+            responsibility_stage=2,
+            evidence=gate.EVIDENCE,
+        )
+        assert row["state"] == 3 and row["blocked_from_state"] == 2
+        gate.rollback(env, pid, predecessor, assessment)
+        key = "synthetic-unblock-pred-rollback"
+        result = gate.transition(
+            env,
+            pid,
+            row,
+            3,
+            expect=409,
+            key=key,
+            basis="Synthetic unblock",
+            evidence=gate.EVIDENCE,
+        )
+        assert result["code"] == "DEPENDENCIES_UNSATISFIED"
+        gate.rejection_effects(env, result, row, key=key, actor="developer")
+    finally:
+        fixture.close()

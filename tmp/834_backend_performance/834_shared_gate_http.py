@@ -99,7 +99,7 @@ def environment():
     probe = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(probe)
     from fastapi.testclient import TestClient
-    from sqlalchemy import text
+    from sqlalchemy import event, text
     from t44.api import create_app
     from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
     from t44.persistence.accounts import initialize_user
@@ -121,10 +121,20 @@ def environment():
         "cases": [],
         "responses": [],
     }
-    engine = None
+    engine = primary = None
     with os.fdopen(fd, "w", encoding="utf-8") as stream:
         try:
             engine = create_mysql_engine(settings)
+
+            def finite_lock_wait(connection, _record):
+                cursor = connection.cursor()
+                try:
+                    cursor.execute("SET SESSION innodb_lock_wait_timeout=5")
+                finally:
+                    cursor.close()
+
+            event.listen(engine, "connect", finite_lock_wait)
+            report["diagnostic_only_session_innodb_lock_wait_timeout"] = 5
             factory = SqlAlchemyUnitOfWorkFactory(engine)
             with factory() as uow:
                 assert not any(uow.gateway.count(name) for name in TABLES)
@@ -163,15 +173,28 @@ def environment():
                     )["data"]["access_token"]
                 yield env
         except BaseException as error:
+            primary = error
             report["fixture_exception_class"] = type(error).__name__
             raise
         finally:
+            errors = report["cleanup_errors"] = []
             if engine is not None:
-                report["checkedout_before_dispose"] = engine.pool.checkedout()
-                engine.dispose()
-                report["disposed"] = True
+                for phase, action in (
+                    ("checkedout_before_dispose", engine.pool.checkedout),
+                    ("dispose", engine.dispose),
+                ):
+                    try:
+                        result = action()
+                        if phase == "dispose":
+                            report["disposed"] = True
+                        else:
+                            report[phase] = result
+                    except BaseException as error:
+                        errors.append({"phase": phase, "exception_class": type(error).__name__})
             report["ended"] = stamp()
             stream.write(json.dumps(report, indent=2) + "\n")
+            if errors and primary is None:
+                raise RuntimeError("HTTP fixture cleanup failed; see retained cleanup_errors")
 
 
 @pytest.fixture
@@ -460,16 +483,29 @@ def test_graph_writer_waits_for_reader_then_edits_other_task(project, monkeypatc
         assert result["dependency"]["depends_on_task_id"] == reader["id"]
 
 
-def test_predecessor_rollback_commit_rejects_waiting_start(project, monkeypatch):
+@pytest.mark.parametrize("reader_action", [1, 3])
+def test_predecessor_rollback_commit_rejects_waiting_reader(project, monkeypatch, reader_action):
     env, pid, iteration = project
     predecessor, assessment = delivered(env, pid, task(env, pid, iteration))
     dependent = task(env, pid, iteration, [predecessor["id"]])
+    if reader_action == 3:
+        dependent = transition(env, pid, dependent, 1)
+        dependent = transition(
+            env,
+            pid,
+            dependent,
+            2,
+            reason="Synthetic developing block",
+            responsibility_stage=2,
+            evidence=EVIDENCE,
+        )
+        assert dependent["state"] == 3 and dependent["blocked_from_state"] == 2
     pause = Pause(
         monkeypatch,
         lambda c: c.operation == "transitionTask" and c.path["task_id"] == predecessor["id"],
     )
     key = str(uuid4())
-    with case_record(env, "predecessor_rollback_before_start_http") as report:
+    with case_record(env, f"predecessor_rollback_before_action_{reader_action}_http") as report:
         with ThreadPoolExecutor(max_workers=2) as executor:
             first = executor.submit(rollback, env, pid, predecessor, assessment)
             try:
@@ -482,7 +518,14 @@ def test_predecessor_rollback_commit_rejects_waiting_start(project, monkeypatch)
                     ),
                     pause.connection_ids["transitionTask"],
                 )
-                second = executor.submit(transition, env, pid, dependent, 1, expect=409, key=key)
+                fields = (
+                    {"basis": "Synthetic unblock", "evidence": EVIDENCE}
+                    if reader_action == 3
+                    else {}
+                )
+                second = executor.submit(
+                    transition, env, pid, dependent, reader_action, expect=409, key=key, **fields
+                )
                 report["actual_wait"] = wait()
             finally:
                 pause.release.set()
