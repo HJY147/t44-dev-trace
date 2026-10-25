@@ -1,0 +1,16 @@
+SIM102 Use a single `if` statement instead of nested `if` statements
+  --> tmp/802_review_size_round9/802_structure.py:36:13
+   |
+34 |               ):
+35 |                   keys = tuple(sorted(key.value for key in node.keys))
+36 | /             elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+37 | |                 if node.func.id == "dict" and not node.args and all(
+38 | |                     key.arg is not None for key in node.keywords
+39 | |                 ):
+   | |__________________^
+40 |                       keys = tuple(sorted(key.arg for key in node.keywords))
+41 |               if keys and len(keys) >= 5:
+   |
+help: Combine `if` statements using `and`
+
+Found 1 error.

@@ -1,0 +1,35 @@
+{
+  "scope": "AI reviewer source-only architecture audit",
+  "source_sha": "043fc464acd327f6b7639e89dbe4f603fc524880",
+  "product_changes": 0,
+  "production_savings": 0,
+  "new_775_line_plan_proven": false,
+  "tool_source_sha256": "2efd4a1483a15f9ae494c8f8386e99338083378d7c68ab8f44ba3a8c5aca7141",
+  "initial_tool_source_sha256": "c4a5f9aecbc1a9e95d23d1a1c31e1058ac4146ea0163495986f9529609b616dc",
+  "analysis_outputs_byte_equal": true,
+  "exact_three_statement_clone_groups": 2,
+  "shared_record_shape_groups": 1,
+  "tools_checks": {
+    "initial_ruff": 1,
+    "final_ruff": 0,
+    "final_format": 0,
+    "two_analysis_runs": 0,
+    "output_cmp": 0
+  },
+  "sources": [
+    {
+      "title": "SQLAlchemy Reflection",
+      "url": "https://docs.sqlalchemy.org/en/20/core/reflection.html#limitations-of-reflection",
+      "accessed": "2026-10-25",
+      "limit": "official docs, not an installed library execution"
+    },
+    {
+      "title": "Alembic autogenerate CHECK limits",
+      "url": "https://alembic.sqlalchemy.org/en/latest/autogenerate.html#detecting-check-constraints",
+      "accessed": "2026-10-25",
+      "limit": "official docs; no Alembic dependency installed"
+    }
+  ],
+  "issue12_comment": 6398648719,
+  "issue12_body_exact_readback": true
+}

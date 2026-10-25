@@ -474,3 +474,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 ## ROUND9 消息去重限定复核
 
 c4b3/2c1dd 精确候选39模块通过/23真实integration未运行，固定源5875→5862净13，仍超762。静态未见新阻塞，建议root进入集成CI；不等于发布准入。API2914边界12通过但net0/整体收益NP，暂不作为规模优化推荐。本岗无产品实现、云或独立验收执行；真实提示词ROLE-reviewer-ROUND9-v1。报告messaging-size-c4b3f114-round9及evidence/round9。
+
+
+### ROUND9 大模块/库替代后续
+
+完成准确043fc464语义重构核查与AST源证据（2组三语句重复/1记录形状，非完备语义证明）。有序操作计划、批量字段与FixturePlan只给完整试点/保护/停损接口，没有生产修改或已证775预算。官方反射需DB，Alembic同名CHECK不比较表达式，无法无条件替掉旧保护。Issue12审核评论6398648719全文读回。报告source-budget-round9-043fc464.md；未执行全CI/真库/云/独立验收。

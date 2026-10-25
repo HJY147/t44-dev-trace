@@ -594,3 +594,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 ## ROUND9 消息候选与规模复核
 
 AI reviewer，ROLE-reviewer-ROUND9-v1；从043fc464建独立worktree。精确c4b3归档源码绑定39模块通过/23真integration未选，主5875→5862净13；原未绑定/后端only/未过滤数分别保留不重复。限定无新阻塞，待root新合并CI，不发发布success。API2914精确归档12边界通过，net0/总体收益NP建议暂缓。报告与证据reports/reviews/messaging-size-c4b3f114-round9.md、evidence/round9。无云、独立私件、产品改写。较大架构净账另续。
+
+
+### ROUND9 较大语义重构核查（后续）
+
+准确043fc464全后端Python只读AST扫描2组三连续语句克隆、1组≥5键记录同形；scan不等于alpha-renaming/语义完备。实际读seed326/migrations303/rows293/runtime284/schema117/engine93/API244/contracts56及服务/域，复核已有库和seedV2。没有可信775净账，给有序OperationPlan两对试点、批量字段/FixturePlan两段接口和停损准则，不落空预支。生产变更0/新节省0。SQLAlchemy/Alembic官方文档当日核查；SQLGlot已撤回公开记录只引用未复跑。工具初SIM102保留，修后Ruff/format0、两分析输出cmp0。Issue12审核评论6398648719精确body读回；首次插件schema参数失败只属调用失败，按返回required字段修正后仅发1条。报告source-budget-round9-043fc464.md，真实AI过程不冒学生手写报告。
