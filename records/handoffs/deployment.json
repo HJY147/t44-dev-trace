@@ -133,7 +133,16 @@
     "agents/deployment/recovery-mq-comment.md",
     "deployment/native/README.md",
     "agents/deployment/native-validation/",
-    "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md"
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-v1.md",
+    "deployment/round-prepare.py",
+    "deployment/round-prepare.md",
+    "tmp/828_deployment_continuation/828_round_prepare.py",
+    "agents/deployment/continuation-20261025/design.md",
+    "agents/deployment/continuation-20261025/result.md",
+    "agents/deployment/continuation-20261025/validation.json",
+    "agents/deployment/continuation-20261025/source-final-guards.xml",
+    "agents/deployment/prompts/ROLE-deployment-CONTINUATION-20261025-v1.md",
+    "agents/deployment/continuation-20261025/local-cli.json"
   ],
   "commands_executed": [
     {
@@ -811,7 +820,8 @@
       "id": "ROLE-deployment-REQUEST-ID-CHAIN-v1",
       "archive": "agents/deployment/prompts/ROLE-deployment-REQUEST-ID-CHAIN-v1.md",
       "reason": "补严单一合法upstream UUID筛选，保留当前C与NOT_PROVEN边界；真实Nginx合成raw验证独立记录"
-    }
+    },
+    "ROLE-deployment-CONTINUATION-20261025-v1"
   ],
   "questions": [
     "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
@@ -952,7 +962,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "request-id-candidate-real-nginx23passed-not-cloud-admitted",
+  "stage": "explicit-new-round-materializer-offline22passed-not-cloud-admitted",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -960,7 +970,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-24T10:13:16.691313+00:00",
+  "updated_at": "2026-10-25T06:42:37.638618+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1557,5 +1567,53 @@
     "incoming_stage": "request-id-candidate-real-nginx23passed-not-cloud-admitted",
     "root_updated_at": "2026-10-24T09:40:08.643828+00:00",
     "incoming_updated_at": "2026-10-24T10:13:16.691313+00:00"
+  },
+  "prior_stage_before_continuation_20261025": "request-id-candidate-real-nginx23passed-not-cloud-admitted",
+  "continuation_20261025": {
+    "base_sha": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "implementation_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942",
+    "branch": "codex/deployment-continuation-20261025",
+    "prompt_ref": "ROLE-deployment-CONTINUATION-20261025-v1",
+    "artifacts": [
+      "deployment/round-prepare.py",
+      "deployment/round-prepare.md",
+      "tmp/828_deployment_continuation/828_round_prepare.py",
+      "agents/deployment/continuation-20261025/design.md",
+      "agents/deployment/continuation-20261025/result.md",
+      "agents/deployment/continuation-20261025/validation.json",
+      "agents/deployment/continuation-20261025/source-final-guards.xml",
+      "agents/deployment/prompts/ROLE-deployment-CONTINUATION-20261025-v1.md",
+      "agents/deployment/continuation-20261025/local-cli.json"
+    ],
+    "offline_unique_guards": 22,
+    "offline_seconds": 0.16,
+    "source_defaults_assumption_gate": [
+      "backend/t44/persistence/engine.py",
+      "backend/t44/settings.py",
+      "compose.yaml"
+    ],
+    "pool_budget_formula": "15*(api_workers+2)+30;actualruntimeunobserved",
+    "suggested_declared_options": {
+      "workers32": 640,
+      "workers64": 1280
+    },
+    "actual_cloud_or_generated_main_run": false,
+    "private_independent_material_read": false,
+    "hosted_ci_started_by_agent": false,
+    "formal_performance_verdict": null,
+    "unknown": [
+      "hardwareandactualpool/maxconn/process/memory/connectionpeaks",
+      "freshrecipientandsourceboundfixtureworker",
+      "clockalignmentandrequestcause",
+      "formalperformanceandactualbilling"
+    ],
+    "issue": null,
+    "local_cli_materialization": {
+      "source_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942",
+      "exit_code": 0,
+      "generated_files": 7,
+      "generated_main_executed": false,
+      "receipt": "agents/deployment/continuation-20261025/local-cli.json"
+    }
   }
 }

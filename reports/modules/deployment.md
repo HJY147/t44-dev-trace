@@ -388,3 +388,11 @@
 
 - Real hosted run40084563406 success on execution416bb5e/source debf8d8: original fixed nginx UID101, two syntax checks0, actual baseline2-field counterexample and candidate23/23 raw/security-header cases. Full raw/ZIP/platform/source hashes in request-id-chain/validation and scope in result.md. ZIP/platform digest and raw member bytes match.
 - Formal reviewer later found no blocker for one hosted synthetic run; request timing preceded formal conclusion and is preserved, not treated as approval. Issue7 result6382958356 fullGET identical. This candidate has not changed cloud C or been admitted/deployed, and does not prove actual API/TLS/replay persistence/independent acceptance/performance or explicit contract equality violation.
+
+
+## CONTINUATION-20261025-v1
+
+- 部署AI在独立codex/deployment-continuation-20261025/worktree、基ade5e4c先设计17c1f8e，再实现6124ba2及源假设门禁a4055d1。新增本地round-prepare与可审执行清单，逐字固定七个公开模板，不改旧期限/旧失败，不执行生成main或访问云/账号/SUT/独立私有材料。
+- 新轮次source、唯一私有路径/project/DB、UTC操作→采样→回收→释放和预算全部显式；额外TLS计第七服务。W32最低540可选640，W64最低1020可选1280，必须另观测实际进程/pool/MySQL峰值/内存/镜像。原Compose默认、认证和业务锁不变，扩容不是软件收益，旧502原因未证明。
+- 最新源22项合成本地guard通过0.16s，Ruff/format/diff-check通过。前18项复跑不重复累计；增加4项拒绝源engine/settings/compose变化。初版B023与修正、续接系统python缺ruff/pytest并改用缓存离线工具的实际失败均如实记录于result.md。无hostedCI、Docker、SQL、HTTP、proc或正式性能执行。
+- 旧fixture的receiver/worker/source/expiry不得重用；需root与后端取得fresh公开绑定材料另审。原始资源逐文件SHA/官方单文件下载/实际释放与账单核验仍待运行。提示词ROLE-deployment-CONTINUATION-20261025-v1由AI记录，不冒充学生本人。具体设计/结果/原始JUnit见agents/deployment/continuation-20261025，源码规模和正式性能结论仍未解决。
