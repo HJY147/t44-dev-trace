@@ -532,3 +532,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 实际JUnit full562/0fail/error/skip，contract179/integration93/fault19重叠且零；原ledger5case在full/contract/integration全部真实passed。44Py Git全集/excluded0，行2641/2960=89.22297297%/分支663/828=80.07246377%；FE89pass/20TSVue Git全同，line93.33/branch88.09（不扩CSS/HTML）。原combined87.2228不是行覆盖。
 - 原Docker40087993372 APIhead5cc成功、不是ead新run；仅核5cc与ead相关源roots相同，本次无新实际PRmergecheckout证明，绝不拿APIhead冒checkout。ead不含后来Nginx候选、该CI不验证它。规模仍原5cc6316/超1216+应用身份沿用，未新cloc。新绿不取消原失败/正式270ms600秒零错门槛，不证明502根因/独立验收/自动集成。
 - Issue3终态6383616829 body-file发表且精确全文GET一致；本轮只官方开发CI只读，生产/测试/配置/云/本地suite/SUT/负载均无新执行，角色作者AI。最终E封档后释放，不等无关检查。
+
+
+## 2026-10-25 实际请求线程CPU诊断（无生产改动）
+
+- root新派任务后自有分支/树基ade5，25f9先设计，16014aa提交834再执行；第一次pending block合成输入缺evidence422原件留，05e4仅加证据/用manager后56顺序请求成功。API/Runtime/Business/validator/wire在真实worker线程临时计时，cProfile分开4样本；无独立私有读取或联系tester。
+- 新DB观察器c11/f102曾实际装一次56成功，但其微小时钟边界随后修，旧件不冒最终edc3/4edbf运行；root freshMySQL组合负责，不单独触发workflow/开云。parent给新schema t44_diagnostics，driver只显式CI/localhost/空应用库准入，MySQLDDL交root。
+- 自身旧end-wall先end-CPU出现短span超窗最多459ns，25b1e10窄修并必要重做一对56；各868span窗口合法/无负exclusive。最终list CPU7.796→5.865ms，但GET/contract无一致改善、flow近噪声；不全局部署原型，不把本地描述性指标冒云270ms或根因。
+- tmp纯ref展开原型35差分/回退/错误序/逐调用SPEC变化/并行状态绿；生产/合同/DDL对ade5逐字同，6316未达且未新cloc。六原件gzip/raw双hash/roundtrip、summary/report/验证齐；原型SIM105红提交后修复、首次patch上下文失败与TestClientwarning如实保留。最终Ruff/format三文件绿，工具import在DB/app导入禁止下无输出。
+- 仅代码/仪表与证据checkpoint交root，后续MySQL/审核/正式云/根因未完成。所有作者执行者后端AI，非学生手测/改码/手写报告。

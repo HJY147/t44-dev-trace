@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "dependency-candidate-test-only-ci-terminal-evidence",
+  "stage": "request-thread-cpu-diagnostic-sqlite-completed-mysql-pending",
   "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
   "artifacts": [
     {
@@ -551,7 +551,7 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T15:11:00.914955+00:00",
+  "updated_at": "2026-10-25T06:19:28.565718+00:00",
   "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -2129,5 +2129,25 @@
       "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
       "both_stage_artifacts_preserved": true
     }
-  ]
+  ],
+  "performance_20261025": {
+    "baseline": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "tool_source": "25b1e10cab76270c20be579d39aa1c3048033266",
+    "report": "agents/backend/performance-20261025/report.md",
+    "api_tool_sha256": "150c019e1e307475cec6d599c7f85ac402b9c2f263d4020b8ff02590e08bff7e",
+    "fixed_clock_pair_requests_each": 56,
+    "spans_each": 868,
+    "pure_reference_checks": 35,
+    "prototype_production_applied": false,
+    "production_byte_equal_to_ade5": true,
+    "mysql_cloud_formal_acceptance": "NOT_RUN by this role",
+    "root_cause": "NOT_PROVEN",
+    "source_size": "6316 prior measured byte-equivalent; no new cloc",
+    "prompt": "ROLE-backend-PERFORMANCE-20261025-v1",
+    "scope": "public development diagnostics only, no independent private files read",
+    "main_evidence_seal": "9f0ec3d5161f0195646c4a1b4174f1484382cf3f",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394302816",
+    "github_comment_exact_body_readback": true,
+    "response_schema_stage_note": "schema-stage-split.json distinguishes direct response span from API validation aggregate; no pure JSON render span"
+  }
 }
