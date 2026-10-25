@@ -1,0 +1,208 @@
+{
+  "name": "T44-829-independent-acceptance-20261025-v5",
+  "visibility": "PUBLIC",
+  "revision": 5,
+  "status": "NEUTRAL_STAGE_CONTROLLER_V5_FROZEN_ZERO_SUT_NOT_ADMITTED",
+  "frozen_utc": "2026-10-25T08:02:02.960250Z",
+  "tool_freeze_sha256": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+  "supersedes_freeze_sha256": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
+  "preserved_v2_manifest": "superseded-v2/manifest.PUBLIC.json",
+  "preserved_v2_manifest_sha256": "5c35cb235e64428dc3915888f475ba5398fb7fa9ee8049994b1043f21a9ff01c",
+  "operator": "AI",
+  "authority_files": [
+    {
+      "file": "T44_外包研发留痕_学生版任务书(1).docx",
+      "bytes": 44077,
+      "sha256": "d772bde097e77082f433c5bbb1bca5ab154fbb0316a5555c211cb532488b0177"
+    },
+    {
+      "file": "specs/requirements.md",
+      "bytes": 9643,
+      "sha256": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a"
+    },
+    {
+      "file": "specs/business-rules.md",
+      "bytes": 6632,
+      "sha256": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83"
+    },
+    {
+      "file": "specs/contracts/openapi.json",
+      "bytes": 865396,
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+    }
+  ],
+  "public_review_entry": "README.PUBLIC.md",
+  "public_boundary": "control.py",
+  "public_hard_deadline_supervisor": "supervisor.PUBLIC.py",
+  "public_fixture_handoff": "handoff.PUBLIC.py",
+  "public_native_build_contract": "native-build.template.PUBLIC.json",
+  "public_selfcheck": "selfcheck.PUBLIC.py",
+  "public_selfcheck_evidence": "selfcheck-result.PUBLIC.json",
+  "public_file_inventory": {
+    "829-DEADLINE-UTC-01.v3-reproduction.PUBLIC.json": {
+      "sha256": "1b6a405544aa1f71ec276756912c3114fba15078d31d9d3e621d4848ae533782",
+      "bytes": 314
+    },
+    "829-HANDOFF-DEADLINE-01.v4-reproduction.PUBLIC.json": {
+      "sha256": "275ca0277dd35c7098ae79a9acb8a3ef76f03e0e801809c3d9c4ee7ea8144e05",
+      "bytes": 463
+    },
+    "README.PUBLIC.md": {
+      "sha256": "15f60a983d6074cc1d437cbdc396db8b51cb024275b59201239cafc47aee2380",
+      "bytes": 17771
+    },
+    "admission.template.PUBLIC.json": {
+      "sha256": "9a9cc7434f960ca36b8ce64da6e4eee4d684f3e17439efc38fa210e7b6f755ef",
+      "bytes": 1397
+    },
+    "control.py": {
+      "sha256": "08ac23736d11f7f11bf9a6c1362adcecca1d8a35fff9ce69ae0e21ef87a65e58",
+      "bytes": 30459
+    },
+    "environment.template.PUBLIC.json": {
+      "sha256": "9c6965d07385ec668379cb6671bfeee77b2713169dc0c8713365533bb8e57569",
+      "bytes": 1536
+    },
+    "handoff.PUBLIC.py": {
+      "sha256": "b957291dbf19ff72ba37577bf0272f78b087e4406eb4c2404037dabcf39bb88a",
+      "bytes": 9035
+    },
+    "native-build.template.PUBLIC.json": {
+      "sha256": "830577a6757277bb4c720beae533eebfab3ee4cf645b1ec34dc59da097c1565f",
+      "bytes": 1267
+    },
+    "routes.PUBLIC.json": {
+      "sha256": "e7cfa136736a05700e4d9f9048bda6634673736e74a48131be03d65adb895050",
+      "bytes": 2879
+    },
+    "runner.PUBLIC.py": {
+      "sha256": "e5e0d72ff8ed338e2cd0b2fec8457c228ecb0cc386db120309057e042e173b83",
+      "bytes": 902
+    },
+    "selfcheck-attempt-01.PUBLIC.json": {
+      "sha256": "b9517a9c5c69ab117e36b4370b8e4f256697c25b12b7bf6540f382477648eee8",
+      "bytes": 230
+    },
+    "selfcheck-attempt-02.PUBLIC.json": {
+      "sha256": "3182a2da14af06c84ccf7357335694ee2bef25f62083d894669f249eb46931ce",
+      "bytes": 230
+    },
+    "selfcheck-result.PUBLIC.json": {
+      "sha256": "1083ea94b23563586be67ebd5e897f123d17ed21b3f6db32f0e232f477b3361f",
+      "bytes": 229
+    },
+    "selfcheck-v4-attempt-01.PUBLIC.json": {
+      "sha256": "3cc409d8c8b4d563345734a72f9d0eeb1171d9d5b6481a8134fcc5b208ed3f51",
+      "bytes": 230
+    },
+    "selfcheck.PUBLIC.py": {
+      "sha256": "369b31dc3eea38cab0edd116ca3cdbe6365b2c914dbfae60559aac2812364270",
+      "bytes": 28659
+    },
+    "suite.bundle.PUBLIC.aes": {
+      "sha256": "76efc5600fc968077bbb33eee3be30aaa852dd395280ca99aeab16e5bf464fc9",
+      "bytes": 124968
+    },
+    "suite.bundle.PUBLIC.aes.integrity.json": {
+      "sha256": "21a40dce46ba7a96fc489f881af76af19c01b80d2f2ab39c9af858bacb957eec",
+      "bytes": 549
+    },
+    "supervisor.PUBLIC.py": {
+      "sha256": "1fe574c3ed154c5e4837d8014d2c50b44de05a8083feec0c89ad8b9421946edc",
+      "bytes": 8991
+    }
+  },
+  "opaque_bundle": "suite.bundle.PUBLIC.aes",
+  "bundle_format": "I829J3 chained authenticated frames; lossless zlib stream; AES256-CBC/PKCS7 CommonCrypto; streaming final HMAC/SHA256",
+  "dependencies": {
+    "os": "native macOS arm64",
+    "python": "3.12 standard library",
+    "crypto": "Apple CommonCrypto and Security framework; /usr/bin/openssl only for RSA PEM/DER and key generation",
+    "sut_services_reported_prerequisites": [
+      "MySQL 8.4.11",
+      "RabbitMQ 4.3.6"
+    ],
+    "no_container_image_required": true
+  },
+  "counts": {
+    "planned_functional_cases": 14,
+    "planned_fault_cases": 3,
+    "planned_formal_performance_groups": 1,
+    "historical_v2_offline_selftests_passed": 12,
+    "authority_operations_catalogued": 38,
+    "authority_error_branches_catalogued": 551,
+    "actual_sut_requests": 0,
+    "complete_sut_postcondition_checks": 0,
+    "complete_formal_performance_groups": 0,
+    "historical_v3_public_controller_selfchecks_passed": 19,
+    "historical_v4_public_controller_selfchecks_passed": 29,
+    "current_v5_public_controller_selfchecks_passed": 36
+  },
+  "control_limits": {
+    "max_requests": 50000000,
+    "formal_candidate_min_request_allowance": 3000000,
+    "max_concurrency": 400,
+    "max_wall_seconds": 2400,
+    "max_request_total_seconds": 30,
+    "max_response_bytes": 16777216,
+    "max_compressed_evidence_bytes": 68719476736,
+    "max_ciphertext_disk_bytes": 68719476736,
+    "max_plaintext_record_safety_bytes": 1099511627776,
+    "default_runner_rss_bytes": 4294967296,
+    "technical_runner_rss_ceiling_bytes": 8589934592,
+    "boundary_exhaustion": "diagnostic/incomplete, never completed formal group"
+  },
+  "initial_environment_protocol": "Root supplies empty isolated native storage/TLS/build metadata and five human identities. Independent tool creates project/iteration through authority APIs only after grant. Actual project IDs -> nonce/public-key scope request -> root provisions/applies exact service/scheduler scope -> sealed reply. No guessed fixture IDs or wildcard scope.",
+  "next_gate": "Narrow PUBLIC v5 review, then later explicit precise SUT/build/resource/time/cost/functional admission; current admitted=false/readiness/window facts do not authorize SUT",
+  "proof_limits": [
+    "Unexecuted error branches and unavailable source/DDL/coverage/merge/human evidence remain NOT_PROVEN.",
+    "A hard stop, deadline violation, resource/request/evidence boundary or incomplete journal cannot complete a case or formal performance group.",
+    "Native manifest binds root-supplied actual metadata, not an image or independent source inspection.",
+    "Steady escalation profile still measures existing-event deduplication, not new-event creation latency.",
+    "No change to 400 clients/600 steady seconds/270ms P95/1000 per minute requirements; budget arithmetic/selfchecks are not a benchmark."
+  ],
+  "isolation": "Shared filesystem workflow/process isolation only; root/development read explicitly PUBLIC files only. No source/history/other-test/other-agent inputs used for this revision.",
+  "preserved_v3_manifest": "superseded-v3/manifest.PUBLIC.json",
+  "preserved_v3_manifest_sha256": "f81e2ef8c50fb8cad16ccca2bae878b1480856c0bf3f8a90b1fa3e0f31d9657f",
+  "public_defect_reproduction": "829-DEADLINE-UTC-01.v3-reproduction.PUBLIC.json",
+  "public_pre_freeze_failed_check": "selfcheck-v4-attempt-01.PUBLIC.json",
+  "clock_only_revision": {
+    "defect": "829-DEADLINE-UTC-01",
+    "gate_checks": "actual UTC and monotonic at admission/transport/body/completion/return",
+    "conservative_conversion": "ordered mono_before/UTC/mono_after sample; anchor remaining UTC to mono_before and intersect original deadlines",
+    "supervisor_clock_poll_seconds": 0.01,
+    "continuous_stop_rule": "first observed UTC or monotonic expiry; SIGKILL process group, no intentional grace",
+    "public_actual_observations": [
+      "clock anchor/sample width",
+      "sample count/max observed interval",
+      "first expiry observation",
+      "signal UTC/monotonic",
+      "observation-to-signal time",
+      "monotonic enforcement lag",
+      "UTC overshoot separately labeled",
+      "signal-to-exit-observation time"
+    ],
+    "limitations": [
+      "finite sampling may miss a transient step/reversal between samples",
+      "OS scheduling latency is measured/limited by actual observations; zero-delay not claimed",
+      "RSS stays 1-second single runner-PID sampling, not aggregate process-group accounting"
+    ],
+    "no_system_clock_changed": true,
+    "business_oracles_or_metrics_changed": false
+  },
+  "preserved_v4_manifest": "superseded-v4/manifest.PUBLIC.json",
+  "preserved_v4_manifest_sha256": "b4187c068574676a6723964381700341f3902c96dfccd812f15b4d43df9bb264",
+  "public_handoff_defect_reproduction": "829-HANDOFF-DEADLINE-01.v4-reproduction.PUBLIC.json",
+  "public_generic_setup_adapter": "runner.PUBLIC.py",
+  "neutral_stage_revision": {
+    "defect": "829-HANDOFF-DEADLINE-01",
+    "HTTP_boundary": "final raw HTTP record persisted -> original HTTP UTC/mono completion check -> request timer cancel -> freeze observed result",
+    "setup_boundary": "separate 120-second UTC/mono cap intersected with original run UTC/mono limits",
+    "setup_failure": "SetupNotProven with NOT_PROVEN classification and unchanged HTTP snapshot/raw body; further SUT requests blocked",
+    "generic_classification_adapter": "maps only neutral SetupNotProven to existing private NOT_PROVEN path; assertions remain FAIL",
+    "retained_clock_fix": "UTC forward jump rejected before transport; earlier dual-clock and conservative-anchor fixes retained",
+    "business_functions_or_thresholds_changed": false,
+    "system_clock_changed": false
+  },
+  "private_freeze_commit": "699bf30855e4c0bb3c30ce57835fba2f9bfba5a3"
+}

@@ -1,0 +1,18 @@
+{
+  "control_sha256": "d4d83441fb696fd146b05fe24090e81fa1612b07ba341c2b08bcafbc2936f72d",
+  "method": "real PUBLIC Gate initialization/request; synthetic receipt, UTC and transport",
+  "grant_expires_at_utc_seconds": 10,
+  "request_started_at_fake_utc_seconds": 20,
+  "monotonic_seconds": 0.0,
+  "hard_deadline_monotonic": 10.0,
+  "actual_socket_calls": 0,
+  "SUT_requests": 0,
+  "private_files_read": false,
+  "existing_selfchecks_run": false,
+  "fake_transport_requests": 1,
+  "returned_status": 200,
+  "returned_complete": true,
+  "returned_error": null,
+  "finding": "UTC expiry is sampled only at initialization; forward UTC step is not checked",
+  "limits": "not an actual OS clock change, real supervisor launch or TLS test"
+}

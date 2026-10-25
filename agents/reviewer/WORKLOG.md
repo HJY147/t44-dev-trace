@@ -443,3 +443,68 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 先设计2c96e42，三个只读工具先commit后执行。原正式计数器472a源实测6316/66文件、require-range exit1；44Py分段290段逐文件对齐，4386可调用/831声明导入；严格3–8语句≥8行AST克隆0组，不当作不可压缩证明。命名空间三文件566→577反增11，淘汰state_machine+44，仅Workflow-21/Schema-12原型合计33；生产净省0。初alias sql遮蔽guard失败保留。98公有Python显式消费者扫描0，不是动态兼容证明；BE实际反馈无现任务冲突但需晚绑定/错误优先回归，DB反馈未收到不推定同意。无应用/DB/HTTP/负载/独立测试执行；无冻结或计量口径变更。正式报告reports/reviews/source-budget-architecture-20261025.md；Prompt-Ref ROLE-reviewer-SOURCE-BUDGET-20261025。
 
 补记：统一diff原件必须含单空格context行，首次cached diff-check exit2已留patch-artifact-check.json；改为无损gzip封存并保留raw于ignored本地路径，不改原bytes、不改检查规则。
+
+## 2026-10-25 鲜建MySQL诊断准入：b7825da拒绝执行
+
+ROLE-reviewer-DIAGNOSTICS-20261025-v1，自有worktree/branch，8明确文件与Git对象及两tool SHA同、应用/契约根对ade5 diff0，准入JUnit仅机械复算9绿不重跑。一次实际零DB微探针确认P2 DIAG-CLEANUP-01：fixture在observer.install前抛出合成异常后，被finally.snapshot的RuntimeError遮成主异常，observer.close与requests写入跳过；原异常只保留context，DB/application导入=[]。无SQL/HTTP/服务/CI或独立私件访问。已先报root阻断，由BE修实现和新SHA后窄复审；原反例保留，不将probe exit0写候选通过。八段/十项报告与source/probe回执已写。
+
+本阶段报告/反例commit8319923a1f28b9c50e1cb05c13b95a03b73648d9已实际push（skipCI），Issue12 COMMENT6394346325已POST并精确单ID REST GET正文与Issue归属逐字核同。只发布P2不通过，不发全局状态；工作流按精确root诊断分支触发，本review分支未触发诊断。
+
+
+## 2026-10-25 DIAG-CLEANUP-01 新候选限定复审
+
+实际ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2，候选9a18a0fa7b59c25278cf0717d447962c0b1ba96c，BE源124785d/E d60b229。P2限定闭环：requests先存、构造入try、NOT_INSTALLED/NOT_REQUESTED区分、原异常identity、独立close尝试、成功体清理错必失败。候选834及回归逐字同BE源，driver e0a49e63/request同，DB4edbf247同旧；workflow/831/833未变，应用根对ade5 diff0，实际诊断worktree HEAD同候选且干净。复算owner2红/10绿/loader1红/最终11绿，26项seal/closure核对；原红raw空白check2保留，不称全仓通过。静态AST测量body除安装标志不变；0本岗新探针/测试/SQL/HTTP/服务/CI/云，未重跑56/35，无独立私有读取或联系。原b782拒绝/c733历史不改。先明确技术准入9a18默认baseline鲜建本地MySQL一轮，再报告Issue行政；不准入ref实验、400×600或整体产品/合并/globalgate。close为独立尝试，close本身错仍单记并失败，不能说全部资源必定恢复。报告reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md，机械证据agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json。
+
+
+限定复审行政封档：报告证据676f8618ade5a9f73eaf22893010d39dbe17ed75已push exit0；Issue12 COMMENT6394438942，https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394438942，特定评论全文GET exit0，body逐字及issue_url严格核对。准入仍仅精确9a18的一轮默认fresh本地MySQL诊断，原b782拒绝保持，非正式性能/产品通过。本岗无新执行、无APPROVE/main/global gate；回执位于agents/reviewer/evidence/diagnostics-9a18a0f/，metadata封档后交总协调。
+
+
+## 2026-10-25 829 PUBLIC v2 控制边界限定审核
+
+实际ROLE-reviewer-829-PUBLIC-CONTROL-v1，不是测试岗，仅manifest明列PUBLIC文本及密文wholehash，未读private/独立Git/用例/keys/logs，不联系829，发现只经root。精确freeze05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e，control3a1de1e9；7个inventory bytes/SHA全同，6份明确允许文本原字节快照。三项P2：250000对400×600闭环可能提前截断（100ms通用算术240万，不是SUT实测）、ciphertext read_bytes收尾O(文件)内存、PUBLIC Gate无in-flight总deadline支撑最多30s承诺。另native image身份/functional project-scoped service bootstrap输入未闭合；30s权威解释与resource提前60s分开，单project800与均匀40×150是代表性/设置澄清，不擅判产品缺陷。一次新零网络827微探针：Python3.12.10真实Gate+假transport/模拟时钟，grant1s/wall2s/timeout0.1，61s返回仍200 complete/error null；exit0为反例捕获，0 socket/SUT。未跑既有12自测或私有包/服务/CI/故障/云。当前不准入整体执行，functional仍需闭合输入及总deadline，performance需另处理数量/证据预算；不降400/600，不抽样删body，原v2 beforeSUT声明保留且不冒私有计数已验证。技术问题先发root后角色封档，本次与9a18 CI诊断准入分开。报告reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md；证据agents/reviewer/evidence/829-public-v2/。
+
+本轮可选probe Ruff命令python3 -m ruff check tmp/827_review_829_control/827_deadline_probe.py实际exit1，原因No module named ruff；保留optional-ruff-unavailable.json，不称lint通过，未安装依赖。实际新微探针此前已exit0，未重复。
+
+
+829 PUBLIC v2限定审核行政封档：报告证据c1722ae990882f6f294f2ddd6253d1dcdad06ac9已push exit0；Issue12 COMMENT6394592295（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394592295）特定全文GET exit0，body及issue_url严格相等。仍为3项P2/中性输入待澄清、v2不准入，不联系829、不发SUT、不改验收工具；最终metadata封条另提交，交root单向转交问题。
+
+
+## 2026-10-25 生产共享项目门/逐点任务锁与精确fresh执行编排审
+
+实际ROLE-reviewer-SHARED-PROJECT-POINT-v1，先原设计/点锁勘误后源审，不是独立验收。C c8cea7e82805de5283ce67501769fa9a4efc1047，原Runtime8802416…→9e0d770e…，仅两AST节点，逆转后整个Runtime同基线，ids构造同，唯一产品路径Runtime；实际BE源同C。session/idem、writerX、门后membersS/active/role、任务set与原Business重读/CAS/审计/outbox/拒绝/ACK边界无弱化。显式task按sorted(unique)逐个PK+project/limit1，不推广为secondary/FK/外部writer全域全序；Business.check_graph旧batch仍projectX下。22项BE seal、2原红gzip raw+compressed精确roundtrip；JUnit9setup error/9结构红/11+21唯一32开发绿只复算不重跑。HTTP7仅设计/源审，role降级不冒active=0成员撤销动态证明；DB6/MySQL/权限/锁/FK及净性能仍待实际。DB实际bf9b与3dc01ff整AST同，按实际hash绑定。owner原固定规模6326超5100/1226、counter exit1仍FAIL，未重计。0新probe/tests/SQL/HTTP/MySQL/服务/CI/云，不读829或其他独立材料、不联系独立岗；没有必要反例故不造重复826模拟锁证明。
+
+明确先发root：C技术可进入fresh MySQL开发CI。追加精确workflow81250e8887336d6af417e02e73fca5692da7f0f5只读核，5入口同HEAD且干净；3mode各76显式app文件核，baseline仅内存虚拟恢复ade5Runtime，其余C；额外全app/986/CI lock相对C无差。工具bf9b/f77f固定，3独立service、库/loopback/CI/ref、一次性root迁移后app CRUD+3PS SELECT无PROCESS/global，120/150/180+5sec、10min、failfastfalse/always原件。root8guards仅root报告未读未跑。指出nonce-only后继会被固定01精确dict拒绝后，root明确撤回该计划，首次push精确812固定request01字节不变；无代码修复/不接受任意nonce。明确技术准入812首次一次运行，先结论后报告Issue，不需等行政。新源须另审；无merge/main/global/正式性能或产品通过。报告reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md及lock-diagnostics-81250e8887336d6af417e02e73fca5692da7f0f5.md，证据agents/reviewer/evidence/shared-project-point-c8c/。
+
+
+本阶段执行后新事实/复审：root实际run40171891410三job迁移后REVOKE1141停止，锁/HTTP/业务case0；本岗只收root转述、未独立读run日志/artifacts/SHOWGRANTS，不把准备失败记作候选竞争失败，原812静态准入快照/nonce01保留。修订6738c07b150da0df8554ba3b90d52e0cbc101fe6已新审：6文件差量，移除MYSQL_USER/PASS自动用户，先mysql.user拒绝已有t44，再CREATE USER密码绑定，库名_转义CRUD+原3表PS SELECT，无REVOKE/DROP/PROCESS/global；产品和两driver无改动。admission整AST除固定02同旧，request除同步02同旧；新8JUnit只复算8绿不重跑。查MySQL8.4官方GRANT规则确认schema级_转义方向，不冒实际SHOWGRANTS/有效权限已验。明确技术结论已先给root：精确6738一次第二轮fresh开发执行准入，真实setup/权限/锁/HTTP待CI，旧source/失败不回写。root另转product40171891359旧986unblock_pending查询账本预期3实际4失败，只记转述，不改产品/账本、不宣称fullCI绿。报告追加lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md，原件workflow-6738c07-audit.json。
+
+
+本阶段行政封档：技术报告/证据38e5858185e824cc0e62b177b54212a5b96d8f42已push；Issue12 COMMENT6394823088（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394823088）特定全文GET exit0且body/issue逐字同。root最新转述第二轮40172242303/6738 completedSUCCESS、3原artifact待下载解析；本岗未审run，不预填19或任何具体casecount/verdict。普通product账本红/规模FAIL仍开放；技术准入不冒global/merge/product通过。角色行政metadata封条后释放槽给BE，未来829 v3是另scope，不提前读其内容。
+
+
+## 2026-10-25 829 PUBLIC v3功能控制限定审
+
+实际ROLE-reviewer-829-PUBLIC-v3-v1，只读manifest inventory PUBLIC，14项bytes/hash同787d37，13文本原字节快照；opaque bundle/integrity仅wholehash。未读private/Git/cases/journal/keys，不联系测试，不用开发结果作输入。旧cap50M/formal至少3M及触顶非正式、证据zlib+CommonCrypto帧HMAC/增量SHA/实际disk预算已代码闭环；native无fakeimage和实际projectID nonce/OAEP scope可中性衔接，但实际grant/build/TLS/provider未交。持续UTC新P2：control197-199 init一次换算，request224只mono；supervisor57采UTC、63较后mono，后续仅monoTimer。先design后一次822新模拟：真实Gate构造/request，fakeUTC由0→20s超过expiry10s而mono0/hard10，仍fake request1/200 complete/errornull，0socket/SUT/private，Python3.12.10arm64 exit0只表反例捕获，非OS调钟/实际TLS/supervisor测试；未跑19。作者PUBLIC自检保留15项error1两次及最终19绿声明，原因/私有raw未读。明确先发root当前functional不准入，root仅排PUBLIC缺陷待v4，不提前赋权。RSS1s直接runner采样非硬分配/aggregate、kill lag如实披露，不另加RSS需求。原v2/反例保持；不准入fault/performance、不发业务/产品/global通过。报告reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md，证据agents/reviewer/evidence/829-public-v3/，probe tmp/822_review_829_v3/822_utc_expiry_probe.py。
+
+
+829 PUBLIC v3行政封档：技术报告/反例7789c2008fdc2f7492dcf2f09dd04e8fe6c22c06已push；Issue12 COMMENT6394939899（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394939899）特定全文GET exit0，body及issue严格核对。functional仍因持续UTC P2不准入/0SUT；本岗不联系独立岗，root仅排PUBLIC缺陷。metadata封后释放槽供v4修订，旧v2/v3结论和原件保留。
+
+
+## 2026-10-25 根环境provider与829 PUBLIC v4两个独立scope
+
+provider初审精确a6c96c5599a9dd7db60eb618a40f9acbaf49817b/source6d09d2e51bd574258f55d778b9bdd83cdc54c96a，三明列文件源审发现PROVIDER-EXPIRY-01（阶段间无重查/timeout不裁）、PROVIDER-CAP-01（inner可越40）和active supervisor nonce仅truthy缺来源，先发root，0probe/CLI/DB/HTTP/private值，旧7绿仅root报告且无对应main分支覆盖；没有编造实跑红。修订49ef08a7e726fa163106647b96e415213f2aae8f（测试逻辑df53c85fd96537ffb4e149c10e9717234a9af14e）源码复审限定闭环：paired双截止/receiptmin，inner40每新path，三阶段remaining，私有staged+复查+不覆盖link，明确receipt路径/freeze/semanticexpiry/两livePID/48hexnonce和request精确match。11绿与Ruff均root报告未重跑。check→syscall正常调度间隙/已提交token不保证回撤/单scheduler替换旧项目停止扫描明示，根私有binding/env/controller按已核信任，不扩恶意本地模型。provider可用性不等控制器授权。
+
+后独立PUBLIC-v4 scope freeze2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424：16inventory hash、29源码method/公开29绿和28error1原件仅读不跑。paired conservativeanchor、Gate多阶段UTC+mono、supervisor实际.01poll/monoTimer和lag已闭原UTC。一次新822_v4_scope_return_probe.py（Python3.12.10 arm64，0socket/SUT/private，synthetic receipt/container身份/假transport/time/handoff）同次确认旧UTC反例transport前拒绝；新P2 829-HANDOFF-DEADLINE-01：HTTP15/run120，0s完整POST/projects201后，假neutral handoff推进20s仍runlive，最终却incomplete，误把setup扣原HTTP截止。先design再probe，exit0只表反例捕获，不重复29或运行provider/supervisor/OS调钟。root已收准确中性接口问题：HTTP完成/持久化后按原截止判定，120s handoff另受run双截止，不放宽HTTP不删body。root draft SHA01fb722a181c73f9c592ab22c942e40e186da51b1b27161de5daee19c221bf9a保持false，未访问其private build/CA/env值；phase仅functional/faults空/cost0/08:15不变。该scope不注入开发结果/业务oracle、不联系测试，v3/v4原反例保持。
+
+
+Provider/v4两个scope行政封档：技术报告/源快照/新fake反例7ec719f0282f3ff00d95a546801764d7df818ce7已push；Issue12 COMMENT6395158510（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395158510）特定全文GET exit0，body及issue严格核实。provider49ef自身限定闭环不等v4授权；v4 handoff/HTTP截止P2仍阻断，draftfalse、SUT0。metadata封后释放槽供下轮PUBLIC修订，旧7不冒覆盖、未编造红test；0probe provider、1新controller fake，不跑7/11/29、不读private值、不联系测试agent。
+
+
+## 2026-10-25 829 PUBLIC v5定点闭环/精确功能准入
+
+实际ROLE-reviewer-829-PUBLIC-v5-v1，18 inventory bytes/SHA同50408b5，17允许PUBLIC文本快照；opaque仅wholehash，不读private/Git/cases/journal/keys/实际env/build/token，不联系测试，不给开发oracle。paired/dualclock3helper、journal/recovery、PinnedTLS、native identity、performance eligibility共8组件AST同已审v4；supervisor只固定入口改PUBLIC generic adapter，.01dualwatch/monoTimer/RSS限制不变。HTTPraw持久化后原截止查/timer取消再冻结结果；setup独立120/run UTC+mono，失败SetupNotProven保留原HTTP并setup_blocked禁后续SUT。adapter仅映射该setup类型，普通case AssertionError不转PASS，未读私有runner。先design再1次822_v5_scope_return_recheck.py（Python3.12.10 arm64 exit0）重放旧UTC拒绝和原HTTP15/run120+20handoff；现在201/complete/errornull/HTTPelapsed0+setupREADY20s，0socket/SUT/真实TLS/OS钟/监督器/provider。36仅PUBLIC报告/source36method，不重跑、不合计。
+
+明确技术准入已先给root：v4中性draft01fb...只tool_freeze改50408...与admitted true写新文件，其余源/build/runtime/CA/resource/100000/4GiB/faults空/cost0/08:15不变。预期全内容canonicalSHA d6d3d24a8409795c0277d566f3f4e7d348eb6e0a94b64e13487a3313e959cdd8，非实际byteshash；本岗未激活grant。工具08:06:38UTC距08:15剩502s，只报元数据不改用例/阈值/期限，不承诺计划case全完成。provider49ef另审后绑定operator实际新PUBLIC receipt。只一次functional，非fault/perf/产品/global/merge通过，实际case结果仍待独立operator原件。报告reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md，证据agents/reviewer/evidence/829-public-v5/。旧v4报告/反例不改。
+
+
+v5行政封档：技术报告/定点复核5c287a32f981542b5a2f1c512efda4be41cade3d已push；Issue12 COMMENT6395263158（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395263158）特定全文GET exit0，body及issue严格核对。只准精确v5+原draft两字段新文件变换的一次functional，原08:15/其余参数不变；本岗未写activegrant/未发SUT，无真实case数/结果预填。实际业务验收待独立结果，非fault/perf/product/main/global/merge通过。metadata封条后释放槽，旧v4和原反例保持。

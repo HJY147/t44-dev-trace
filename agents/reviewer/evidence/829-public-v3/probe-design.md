@@ -1,0 +1,7 @@
+# 新 UTC 到期探针设计（先于实现/执行）
+
+范围仅freeze787d37ec的PUBLIC Gate。原三项P2中的持续绝对deadline新增监督器已读；发现UTC仅启动换算一次，Gate.request本身只看monotonic。要核的是UTC时钟向前变化后，已启动controller是否仍会开始请求；不模拟业务、不运行现有19自检或私有包。
+
+使用实际PUBLIC control源码且先验证SHA，compile/exec避免在829目录生成pycache。真实Gate构造，假时钟/假transport/内存journal；自有tmp822临时receipt，无独立目录输入、无真实token/native metadata或网络。socket.create_connection禁止；grant为纯内存synthetic container身份以避免打开任何实际native/grant/private输入。初始化时UTC未过期，之后仅将UTC推进超过expires，而monotonic仍在原预算内，再调用真实Gate.request一次。
+
+若仍返回complete200且UTC已过期，则反例证明PUBLIC Gate未独立持续执行UTC到期边界；不证明真实OS系统时钟变化、不证明真实TLS行为。supervisor是否重复看UTC从公开源静态核对，不再复制它已有的进程强杀测试。退出0只表示反例记录成功。所有探针文件与输出只在审核自有tmp822和role evidence。

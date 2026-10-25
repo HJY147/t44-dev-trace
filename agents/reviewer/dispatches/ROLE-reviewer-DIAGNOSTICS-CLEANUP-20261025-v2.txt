@@ -1,0 +1,6 @@
+Prompt-Ref: ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2
+操作者/派工者：AI总协调；接收者：固定AI审核岗。以下保存本轮实际限定派工原文，不是用户亲写或虚构人工操作。
+
+新限定复审：BE源码124785d89e568dd5dddeb56ef9216ed2ccd1883d，driver SHAe0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49；最终E d60b229c19eb5de979f5886ad6bc46ad68bf3d5c。入口 agents/backend/performance-20261025-cleanup/{report-v2.md,verification-v2.json,evidence-seal-v2.json,closure.json}，旧2红10绿/追加loader1红/最终11绿均保留，没重跑56/35。root诊断branch已只合准确source并更新准入driver hash，当前精确候选9a18a0fa7b59c25278cf0717d447962c0b1ba96c（.agent-worktrees/diagnostics-20261025）；DB工具保持edc3/hash4edbf247，workflow未改（API SHA仅在request，已同步新值）。请核原P2闭环：先存requests、fixture/observer创建内try、NOT_INSTALLED/NOT_REQUESTED区分、独立cleanup永保close、初始异常主身份/成功清理错不得冒绿。核新11原件和准入绑定，不重复真实DB或大矩阵。原b782拒绝/c733不得追改。若无阻断，请优先明确给root执行9a18 baseline freshMySQL一轮的技术准入，再封报告Issue行政；root等明确通过才push（目前未push也未连接SUT）。
+
+本轮改进理由：承接已确认的P2和owner新源，收窄为失败身份/清理/版本绑定，不重复大矩阵；先技术结论后行政封档，保留旧拒绝且不把开发诊断升级为验收。此为实际AI派工后的范围变化记录，不宣称它是用户prompt或人为完成的反思。

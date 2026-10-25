@@ -1,0 +1,86 @@
+{
+  "utc": "2026-10-25T07:19:09.809272+00:00",
+  "workflow_head": "6738c07b150da0df8554ba3b90d52e0cbc101fe6",
+  "prior_workflow_head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+  "scope": "narrow setup correction review; one second fresh development run",
+  "clean_at_read": true,
+  "changed_files": {
+    ".github/workflows/lock-diagnostics.yml": {
+      "bytes": 4851,
+      "sha256": "bdaf14e32fb337cf68ec0678c66e7b2cc6b5aec1a0af4c89b43197d4cff6bf89",
+      "actual_equals_HEAD": true
+    },
+    "agents/coordination/lock-diagnostics-20261025/guard-02-junit.xml": {
+      "bytes": 1420,
+      "sha256": "7ef8da90fb9ebfe1b108201d51ef0ef9cd3acd87c7a32205ba02502ab554139a",
+      "actual_equals_HEAD": true
+    },
+    "agents/coordination/lock-diagnostics-20261025/setup-correction.md": {
+      "bytes": 1458,
+      "sha256": "f48974dbcf8ac1153ce3748a726ff79db6551fb5e3f997300edb53ff659016b7",
+      "actual_equals_HEAD": true
+    },
+    "records/diagnostics/20261025/request-locks.json": {
+      "bytes": 243,
+      "sha256": "5197386c8f200fb1c5c4ddb16a864078774ef871a0e2ece1be53a628364b1373",
+      "actual_equals_HEAD": true
+    },
+    "tmp/825_lock_ci/825_admission.py": {
+      "bytes": 3709,
+      "sha256": "77f8820fff8b7509bf58c2a8f204e387c034c295b60683d05fd31f82bcd053dd",
+      "actual_equals_HEAD": true
+    },
+    "tmp/825_lock_ci/825_setup.py": {
+      "bytes": 1787,
+      "sha256": "5bf81c5725cc4bea5e125cb5ca1732f1d02256ebdff449ab81979b02f43e3921",
+      "actual_equals_HEAD": true
+    }
+  },
+  "product_and_fixed_tools_byte_unchanged_from_812": true,
+  "admission_AST_equal_except_fixed_nonce_01_to_02": true,
+  "request_only_fixed_nonce_02_changed": true,
+  "owner_guard_JUnit_recount_not_rerun": {
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "setup_change": "No MYSQL_USER/PASSWORD init. Refuse any existing User=t44; CREATE USER once with bound public disposable password; escaped exact schema CRUD and only three P_S SELECT grants; no REVOKE/DROP/PROCESS/global grant.",
+  "grant_schema_construction": {
+    "t44_diagnostics": "t44\\_diagnostics",
+    "t44_gate_http": "t44\\_gate\\_http"
+  },
+  "official_GRANT_reference": "https://dev.mysql.com/doc/refman/8.4/en/grant.html",
+  "official_reference_scope": "database-level wildcard underscores need escape; not actual grants observed",
+  "prior_run_root_relay": {
+    "source": "root direct message; reviewer has not independently read run logs or artifacts",
+    "run": 40171891410,
+    "source_head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+    "phase": "setup REVOKE",
+    "mysql_error": 1141,
+    "jobs_affected": 3,
+    "migration": "root reports successful",
+    "lock_HTTP_business_cases_executed": 0,
+    "classification": "preparation script failure; not product lock case failure",
+    "SHOW_GRANTS_observed_by_reviewer": false
+  },
+  "product_CI_root_relay": {
+    "run": 40171891359,
+    "failure": "old 986 unblock_pending task query count expected3 observed4",
+    "reviewer_independent_log_audit": false,
+    "overall_product_CI_green": false
+  },
+  "actual_root_setup_or_show_grants_or_MySQL_tests_by_reviewer": 0,
+  "SQL_HTTP_DB_CI_services_cloud_executions": 0,
+  "independent_materials_read_or_contact": false,
+  "outcome": "EXACT_6738_ONE_SECOND_FRESH_DEVELOPMENT_RUN_ADMITTED;REAL_PRIVILEGES_AND_LOCK_CASES_PENDING;NO_MERGE_OR_PRODUCT_PASS",
+  "post_review_run_root_relay": {
+    "source": "root direct message, not reviewer independent job/artifact audit",
+    "run": 40172242303,
+    "source_head": "6738c07b150da0df8554ba3b90d52e0cbc101fe6",
+    "root_reported_status": "completed SUCCESS",
+    "raw_artifacts": "root downloading three original artifacts, parsing pending at relay",
+    "specific_case_count_or_verdict_entered": false,
+    "reviewer_executed_run_or_audited_artifact": false
+  }
+}
