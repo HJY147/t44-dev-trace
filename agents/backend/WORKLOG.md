@@ -603,3 +603,5 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 当前PUBLIC两源gzip12119字符/install13200<18432，逐字解码+实际owned安装无网络验同；private0600/O_EXCL/NOFOLLOW、失败现场不覆盖，committed后丢响应明确resumablefalse并拒续跑。runbook给root两步/shape/CA路径/原hardstop/失效处理及owner执行边界；产品935全同/零新产品行/无新cloc，formal400600270不变也未证明。作者执行者AI，非学生手写。
 
 - 根补要求先核原6000seed候选，最终C更新f811c5c1：actual只读counts先落盘、inspect-only不CLI/登录/业务写/session，普通prepare不足400明确false且非业务bug。SQLite400task实际只有40候选用400请求证不足/零写，最后同13目标1.45s绿不累加；先前profile requested0语义在执行前审见，改独立inspect分支保留requested400；writes_started精确标记。静态seed可推出600候选但云库未读，真实400 NP。新包12643/install13724字符，owned安装逐字同，旧fe包历史；root后续通报810上云up只引用中性事实不冒本岗实跑。
+
+- dab62E staged diff因原pytest traceback尾空格非零而仍commit，真实失败保留不冒green；只将原initial log/XML无损gzip并留raw/gzip双SHA/roundtrip及dab62历史，未strip或删失原证据。工具C f811/13绿不变，当前E另重跑staged diff。

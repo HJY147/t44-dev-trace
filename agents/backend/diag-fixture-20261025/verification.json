@@ -23,11 +23,13 @@
   "checks": {
     "checks.initial.log": {
       "bytes": 8263,
-      "sha256": "560f92f07a2b7bd140bb7b0962ab58e2f67be8de8f6113b03e24a5e101208d61"
+      "sha256": "560f92f07a2b7bd140bb7b0962ab58e2f67be8de8f6113b03e24a5e101208d61",
+      "lossless_gzip": "checks.initial.log.gz"
     },
     "checks.initial.xml": {
       "bytes": 9575,
-      "sha256": "8cafe568f1fb4726db41abc6d6a4eee18cdd466ebe852d5e7d809352df2befc1"
+      "sha256": "8cafe568f1fb4726db41abc6d6a4eee18cdd466ebe852d5e7d809352df2befc1",
+      "lossless_gzip": "checks.initial.xml.gz"
     },
     "checks.candidate.log": {
       "bytes": 705,
@@ -77,5 +79,25 @@
   "final_log": "checks.profile-seal.log",
   "final_junit": "checks.profile-seal.xml",
   "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6398856950",
-  "github_exact_full_body_readback": true
+  "github_exact_full_body_readback": true,
+  "raw_evidence_archive": {
+    "checks.initial.log": {
+      "raw_bytes": 8263,
+      "raw_sha256": "560f92f07a2b7bd140bb7b0962ab58e2f67be8de8f6113b03e24a5e101208d61",
+      "archive": "checks.initial.log.gz",
+      "gzip_bytes": 2598,
+      "gzip_sha256": "fb5c8be7999e8fb126d6d95c721e9e8ad7f5c441a1d6aa220bc5a6e9ff54d70a",
+      "roundtrip_exact": true,
+      "original_commit": "dab62decb6c85f280df6429bf80843a11506b5c1"
+    },
+    "checks.initial.xml": {
+      "raw_bytes": 9575,
+      "raw_sha256": "8cafe568f1fb4726db41abc6d6a4eee18cdd466ebe852d5e7d809352df2befc1",
+      "archive": "checks.initial.xml.gz",
+      "gzip_bytes": 2812,
+      "gzip_sha256": "118f531f6b7e3806009eb32d022ba1a85f65a710a6de6318c17172be6f3d1cfe",
+      "roundtrip_exact": true,
+      "original_commit": "dab62decb6c85f280df6429bf80843a11506b5c1"
+    }
+  }
 }

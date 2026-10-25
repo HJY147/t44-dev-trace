@@ -45,3 +45,5 @@ profile初版13绿1.25s后代码审发现inspect传0会把requested/sufficient�
 执行前改为保留原请求400与独立inspect分支；中间13绿再细化writes_started标记，
 最终同13不累计。旧fe197代码/包仅历史，现公包12643/install13724字符，owned实际
 展开逐字对比通过。真实6000seed400候选NP，静态600算法性质与实库观测分列。
+
+封档追加：dab62E staged diff-check发现原pytest traceback/log/XML的16处原始尾空格，命令非零但后续commit仍执行，不能记该次green。随后不strip原证据，原bytes保留dab62历史/ignored本地copy与lossless gzip，raw/gzip双SHA+roundtrip在raw-artifact-manifest.json；当前封档重新检查，无业务/脚本变更。
