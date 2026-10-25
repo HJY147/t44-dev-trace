@@ -1,6 +1,7 @@
 """Owned ASGI stubs and SQLite only; no cloud, credentials, or existing database."""
 
 import asyncio
+import hashlib
 import importlib.util
 import json
 import subprocess
@@ -354,3 +355,63 @@ def test_network_parser_only_keeps_neutral_counts():
     assert result["api_listen_reported_queue_sums"] == {"recvq": 2, "sendq": 2048}
     assert result["sendq_bytes_sum_non_listen"] == 8
     assert "10.0.0" not in json.dumps(result)
+
+
+@pytest.mark.parametrize("invalid", ["allow", "module", "port", "schema", "host", "user"])
+def test_factory_rejects_invalid_admission_before_engine_creation(monkeypatch, tmp_path, invalid):
+    from t44 import persistence
+
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("Must not create engine for invalid diagnostic target")
+
+    monkeypatch.setattr(persistence, "create_mysql_engine", forbidden)
+    values = {
+        "T44_DIAG_ALLOW": "source935-development-only",
+        "T44_DIAG_PRODUCT_SHA": stage.PRODUCT,
+        "T44_DIAG_MODULE_SHA256": hashlib.sha256(MODULE.read_bytes()).hexdigest(),
+        "DATABASE_URL": "mysql+pymysql://owned:synth@owned-mysql:3306/t44_diag810_owned",
+        "T44_DATABASE": "t44_diag810_owned",
+        "T44_DIAG_DATABASE": "t44_diag810_owned",
+        "T44_DIAG_HOST": "owned-mysql",
+        "T44_DIAG_PORT": "3306",
+        "T44_DIAG_USER": "owned",
+        "T44_DIAG_OUTPUT": str(tmp_path),
+    }
+    for key, value in values.items():
+        monkeypatch.setenv(key, value)
+    if invalid == "port":
+        monkeypatch.setenv("DATABASE_URL", values["DATABASE_URL"].replace(":3306/", ":13306/"))
+        monkeypatch.setenv("T44_DIAG_PORT", "13306")
+    else:
+        key, value = {
+            "allow": ("T44_DIAG_ALLOW", "no"),
+            "module": ("T44_DIAG_MODULE_SHA256", "0" * 64),
+            "schema": ("T44_DIAG_DATABASE", "old_application"),
+            "host": ("T44_DIAG_HOST", "another-host"),
+            "user": ("T44_DIAG_USER", "another-user"),
+        }[invalid]
+        monkeypatch.setenv(key, value)
+    with pytest.raises(ValueError):
+        stage.app_factory()
+
+
+def test_owned_engine_close_is_once_and_restores_original_pool_methods(tmp_path):
+    engine = engine_at(tmp_path)
+    probe = stage.Probe(engine, tmp_path).install_database()
+    restored = list(probe.restores)
+    disposed = []
+
+    def close_owned():
+        disposed.append(True)
+        engine.dispose()
+
+    probe.on_close = close_owned
+    with engine.connect() as connection:
+        assert connection.execute(text("SELECT 1")).scalar_one() == 1
+    probe.close()
+    probe.close()
+    assert disposed == [True]
+    assert all(getattr(owner, name) == original for owner, name, original in restored)
+    final = rows(probe)[-1]
+    assert final["checkedout_before_owner_dispose"] == 0
+    assert final["owner_dispose_requested"] and final["diagnostic_valid"]
