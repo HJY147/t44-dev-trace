@@ -1,5 +1,7 @@
 # T44作业提交物对照表
 
+> **2026-10-25开发续作入口：** [自主续作过程补记](autonomous-20261025-process-addendum.md)记录准确f237完整开发CI、有限MySQL开发验证及c8规模6326/超1226。它不替代独立产品/400×600正式性能验收，也未重导旧Word或最终封包。下面原云839与M7等说明保持各自历史截止。
+
 > 本轮版本说明：**本轮云结果入口（资料截止0f35dc3）**：[云复核839补记](cloud839-evidence-addendum.md)及第9节为当前后发状态：0完整正式组、C6310/超1210未解决；两份资源归档回收已核验、实例和系统盘已实际释放。旧四技术Word仍为M6/M7的35页组合，本次未重导/重封包，学生最终研究正文须本人手写。
 
 **审阅包链接说明**：外层辅助Markdown为仓库原字节副本，相对链接没有因复制自动改写；请在展开的内层源码树中使用。对应仓库路径为`reports/final/submission-map.md`、`reports/final/M9-review-navigation.md`、`reports/final/M8-engineering-annex.md`、`reports/final/M8-performance-preparation-addendum.md`及`reports/final/M10-night-test-handoff.md`。M9只在内层源码，不宣称外层另附。原仓库本机入口是`docs/user-guide/wake-up-review.md`。实际封包前须重取原材料字节hash；实际包状态、准确来源及生成结果以包内manifest和外部receipt为准。
