@@ -473,6 +473,7 @@ def test_graph_writer_waits_for_reader_then_edits_other_task(project, monkeypatc
                     body={
                         "expected_version": target["version"],
                         "depends_on_task_id": reader["id"],
+                        "reason": "Synthetic graph writer after reader",
                     },
                 )
                 report["actual_wait"] = wait()

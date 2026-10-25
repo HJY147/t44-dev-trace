@@ -43,7 +43,11 @@ def scope_fixture():
             project_id=pid,
             task_id=target["id"],
             expect=201,
-            body={"expected_version": target["version"], "depends_on_task_id": high["id"]},
+            body={
+                "expected_version": target["version"],
+                "depends_on_task_id": high["id"],
+                "reason": "Synthetic reverse-ID predecessor",
+            },
         )["data"]
         yield env, pid, added["task"], [*low, high]
     finally:
