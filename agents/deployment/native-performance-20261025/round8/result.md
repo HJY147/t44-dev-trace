@@ -11,3 +11,5 @@
 P sampler首启因本岗提前复制canonical脚本触发O_EXCL保护明确失败，无采样PID；原脚本和已生成inputs以新UUID保留，记录46bb995c698944089ff41f25e8f212e9后从同bytes bundle启动，由launcher自行保留canonical，10:19:39实际PID435。CPU真实累计时间delta/monotonic、RSSbytes，9APIpid含parent/tracker/7workers；broker含Rabbit+EPMD；MySQL明确共享全进程；scheduler/generator尚未注册时null且原因保留，不假称完整coverage。原两guardian10秒raw不混作1秒interval。最终stop/final/独立/性能结论尚未发生，未预填；root只需将本轮真实generatorPID显式注册到此sampler。具体CLI/hash/CA/roles与原件见两capability及interval-interface。
 
 聚合自己neutralreceipt首轮因部分broker回执无action出现KeyError，改用get过滤后成功，不改SUT/状态/证据。所有本岗失败范围见execution-notes.json；不把工具准备失败当产品缺陷，也不把部署401等同验收绿。提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1，AI决策与用户亲历区分。
+
+GitHub Issue7已发表本轮真实范围与首轮工具失败，评论6396452679，实际API回读全文相同；详见github-readback-proof。950ee6e能力原件已远程保存。

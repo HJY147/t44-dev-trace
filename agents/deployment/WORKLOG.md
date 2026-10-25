@@ -559,3 +559,5 @@ root通知旧P phase结束并已正常停sampler/app/broker，本岗owned核验�
 本阶段首轮Ruff明确3项S102（SHA固定Git helper执行及pure policy/sampler只加载常量），4e15fed在lint结果返回后仍提交属于本岗流程失误；未宣称lint绿。保留失败位置，补局部noqa与具体固定源/不执行main理由，不关全局安全规则；随后重新check/format。
 
 source935 campaign8实际启动：10:18:44 F4API+consumer、10:19:01 P7API+consumer及两套newbroker/guardian，严格新CA/IP401；初始schedulerpending，构建身份冻结nativebuild80d8ea...与bc2b141...，新935archive0fe9ae...，非C8旧档。P sampler首启O_EXCL拒绝预复制canonical，无PID；原bytes及inputs以UUID保留，再由相同bundle launcher实际启动435（93e602...），真实1s采样已见API9PID/broker/sharedMySQL/consumer，pending资源null有原因。publiccap聚合首轮KeyError(action)改get过滤，纯行政不动SUT。所有真实失败、receipt和界限见round8/execution-notes/result；不读任何独立目录，未做负载，未判业务/独立/性能/未来stop。
+
+source935 campaign8能力950ee6e已push；GitHub Issue7评论6396452679经官方plugin发表，gh API实际回读全文相同，proof见round8/github-readback-proof.json。行政完成不改变正在运行的环境/原build/期限，不等待性能结果占槽。
