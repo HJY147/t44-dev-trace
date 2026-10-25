@@ -468,3 +468,5 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 新阶段仅本地设计/probe/packages脚本，root经官方云助手执行，本岗不碰UI/云服务。只读probe含最小硬件/软件/时钟/FD/磁盘/云助手/网络字段；安装仅临时Ubuntu官方签名源，保安全组件，Ubuntu22不假称原生Python3.12。可信镜像CI离线运输和精确source/image绑定、私网TLS、持久ownedstop/账单责任见agents/deployment/cloud-reuse-20261025/design.md；语法/compile不是云安装或性能证明。
 
 离线镜像CI路线已实现但尚未运行：准确source/context/hash、5官方固定镜像与2app镜像实际ID、manifest、save/gzip/artifact、加载完整校验与neverpull overlay，细节见cloud-reuse README。8项离线安全guard通过（0.13s），不能等同真实Docker build/load。root relay app16CPU/Ubuntu22/Python3.10匹配准备脚本；06:00延期成功属于rootUI实核转述，不作为本岗云执行。
+
+Ubuntu22首轮实际失败由root转述：app invoke20s exit141，apt官方update下载成功但无Candidate marker；本岗只读获授权的单一app-packages-first-failure.log，3502bytes/SHA24666301...，末Reading package lists.../0Candidate，原raw保留。旧awk找到Candidate就exit，在pipefail下早关管道；用2.4MBsynthetic policy真实复现旧管道141，改成只输出第一次但完整消费后0，2项guard0.10s绿；同时已有Docker的dpkg-query|grep-q改完整capture。新脚本4501bytes/SHA c2c32139...、bash-n绿；没有以离线复现夸称云端精确失败指令trace（raw未含trace），未操作dpkg/云或释放重买。root可同机执行新脚本，真实重跑结果待root。

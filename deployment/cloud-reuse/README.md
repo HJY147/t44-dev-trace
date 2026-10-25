@@ -64,3 +64,7 @@ load需要Linuxamd64、12GiB空闲、上传文件当前owner/单link/regular；�
 ## 下一阶段
 
 新run private plan、严格CA/IP TLS、六业务服务+第七TLS、参数/连接预算、持久owned停止timer继续分阶段交付，未有明确plan/真实source/配置/截止不能直接启动产品。服务器stop保卷/缓存以便同实例复用，不停机/释放/重买；根负责成本与已实核06:00释放计划及提前收证，不把停止容器当停止计费。
+
+## 首轮安装141与限定修补
+
+root实际app首轮APT update成功但候选阶段前exit141。旧awk用exit提前关闭管道，在pipefail大输出离线回归中真实重现141；新4501bytes脚本SHA c2c32139baeda1efa6db503487800d47f6c92d2f77b0e11e36659bba4a39b529改为完整消费，2项回归绿，已有Docker查询也避免grep-q管道。原私有失败日志保留，不释放/重买/repair；待正在执行的load结束后，root在同实例逐段用新版重跑，实际候选/安装版本另核。

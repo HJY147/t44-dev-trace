@@ -5,3 +5,5 @@ root AI协调要求：本岗只写本地可审脚本/配置/CI，不抢UI、不�
 优化原因：旧工具硬绑10月24日源/时间/Ubuntu24不可直接改全局续跑；新物化必须准确input/manifest/hash与旧记录分离。网络下载受阻用可信官方CI运输，不用未知镜像源。Ubuntu22默认Python不同，工具runtime能力需实际观测。
 
 实际执行与结果：先本地probe/packages/设计与语法编译，后续script/CI真实结果单独补，不预填安装、部署、覆盖或600秒通过。操作者与决策者是AI岗位，不记为学生亲历。
+
+实际AI调试追加：root在官方云助手取得app exit141/aptupdate成功，要求不重买、保留raw、限定修pipefail早退出。部署AI只读授权单文件并用synthetic大输出复现141，完整消费awk/全捕获dpkg查询后离线0，不冒云重跑已成功/用户亲历。

@@ -24,7 +24,8 @@ bounded() {
 [[ -z $(dpkg --audit) ]] || fail 'Preexisting dpkg incomplete state; inspect instead of automatic repair.'
 [[ -f /usr/share/keyrings/ubuntu-archive-keyring.gpg ]] || fail 'Existing Ubuntu archive keyring required; no key imports.'
 if command -v docker >/dev/null; then
-  dpkg-query -W -f='${db:Status-Status}' docker.io 2>/dev/null | grep -qx installed || fail 'Existing non-Ubuntu Docker stack; do not mix or replace.'
+  installed_state=$(dpkg-query -W -f='${db:Status-Status}' docker.io 2>/dev/null || true)
+  [[ $installed_state == installed ]] || fail 'Existing non-Ubuntu Docker stack; do not mix or replace.'
 fi
 readonly WORK=$(mktemp -d /run/t44-ubuntu22-packages.XXXXXXXX)
 readonly SOURCES="$WORK/ubuntu-jammy.list"
@@ -41,7 +42,7 @@ apt_options=(-o "Dir::Etc::sourcelist=$SOURCES" -o 'Dir::Etc::sourceparts=-'
 packages=(ca-certificates curl openssl python3 git gzip tar docker.io docker-compose-v2 docker-buildx)
 bounded 240 apt-get "${apt_options[@]}" -o APT::Update::Error-Mode=any update
 for package in "${packages[@]}"; do
-  candidate=$(apt-cache "${apt_options[@]}" policy "$package" | awk '/Candidate:/ {print $2;exit}')
+  candidate=$(apt-cache "${apt_options[@]}" policy "$package" | awk '/Candidate:/ && !found {print $2;found=1}')
   [[ -n $candidate && $candidate != '(none)' ]] || fail "No Ubuntu candidate:$package"
   printf 'T44_PACKAGE_CANDIDATE %s %s\n' "$package" "$candidate"
 done
