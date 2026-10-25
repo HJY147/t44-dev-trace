@@ -354,7 +354,6 @@ def seed_demo(
                         username=username,
                         display_name=f"[synthetic] {username}",
                         password_hash=PasswordHasher().hash(token_bytes(32)),
-                        active=1,
                         created_at=at,
                         updated_at=at,
                     ),

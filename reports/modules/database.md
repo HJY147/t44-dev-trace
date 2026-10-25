@@ -38,3 +38,5 @@
 - 独立树codex/database-size-optimize-20261025，935产品基线。seed默认构造/注解与按需buffer、migrations目录/完成路径、Rows比较/结果集合校验、Outbox双阶段claim共用算法，保留public接口/DDL及guard。
 - 原cloc2.10净省48，400–500目标尚未达到；不压格式/改统计。新迁移差分9场景和claim差分7场景保留SQL/commit/锁顺序语义；原975小/6000固定全库摘要保持。详见本岗[size报告](../../agents/database/size-optimize-20261025/report.md)。
 - 仅开发SQLite/mock验证；最后seed冻结插入顺序补充待验证。原云/独立/规模门禁未关闭，组合CI由根统一执行。SQLGlot仅根准入下一小原型，首批未新增依赖。
+- 首批手工汇总纠正：原JSON持久Python1691→1642净49；第二批使用冻结DDL默认省19，累计1691→1623净68。新默认值基线差分3+原980非integration12通过；原975最终锁序全量3通过，后续active默认的小seed2通过，大seed未重复。
+- SQLGlot严格425差分原型撤回：完整投影只省9，离线590次解析约13.4倍耗时；未改生产导入/依赖，无计入。根准入另版seed算法，但仍需先设计/实测，不将预期计成果。

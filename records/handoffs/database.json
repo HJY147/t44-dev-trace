@@ -1515,9 +1515,9 @@
     "public_interfaces": "unchanged",
     "ddl": "unchanged",
     "dependencies": "unchanged in first stage",
-    "actual_first_stage_saved": 48,
+    "actual_first_stage_saved": 49,
     "target_400_500": "NOT_ACHIEVED",
-    "validation": "SQLite/mock only; migration9/claim7 differential; old seed full digest matched before final insertion-order restoration; final restoration seed test pending",
+    "validation": "SQLite/mock differential and public regressions; see exact source-bound report",
     "unverified": [
       "real MySQL/locks/concurrency",
       "complete CI/coverage",
@@ -1525,6 +1525,11 @@
       "formal performance",
       "global size compliance"
     ],
-    "followup": "root admitted isolated SQLGlot CHECK-only prototype with exact pin/hash and strict allowlist; not yet applied"
+    "followup": "root admitted new VERSION seed algorithm design; stable68 checkpoint before new branch",
+    "first_stage_manual_summary_correction": "raw JSON1691->1642; earlier1791/350/48 manual values wrong",
+    "actual_cumulative_saved": 68,
+    "persistence_python_before": 1691,
+    "persistence_python_current": 1623,
+    "sqlglot": "REJECTED:425 comparison pairs; only9 projected lines saved; no production or dependency changes"
   }
 }
