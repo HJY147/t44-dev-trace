@@ -424,3 +424,8 @@ ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1；draftb86830fd实核，仅新文件adm
 
 
 新P campaign行政封档：技术d785fcf1a86938deebc9004f49e388aebddda5b0已push；Issue12 COMMENT6396261382（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396261382）特定全文GET exit0/body及issue严格同。限定exact新文件单字段变换的一次fullgroup执行技术准入，10:15不延长，F停止在负载前由root实际记录；无正式性能/资源覆盖/业务/global/main/merge通过。本岗无SUT、private测试/817结果读取，只读root环境观察另列。metadata封后释放槽。
+
+
+## 2026-10-25 source935发布批准失效槽状态/经理顺序窄审
+
+ROLE-reviewer-BACKEND-935-PRIORITY-v1；source935/baseacae/E eade实核，73app仅workflow改，一槽恢复整模块AST等base。四authorityhash/原docx FR01/05/06安全与D008校验相容；新action7/assessment有效且批准ref不匹配才state5→原Call.manager(bit1只读)→原D008必拒，任务/assessmentversion/归属先后不变、matching原domain/其它action/auth/replay/txn/CAS/audit/outbox无变。4开发目标六业务表/单拒审计，2role另同键replay不增审计和reason6；2state合法blockstate3无新增replay，11邻接含explicitcontrolledlegacyrows不冒真实历史。24seal/E bytes同、2gzip exact、XML旧4红→4绿+11邻接绿只复算不重跑，原敏感raw未读/脱敏完整性不冒独立重扫。一次错读call.py exit1已改读common.py，非产品测试失败。先发root无窄scope阻断可集成/合并候选，source935CI40183757236仅root派单RUNNING未验过，新独立run/C8旧结果不继承；missing评估既有409与泛404文案澄清/旧规模FAIL保持。0SUT/SQL/CLI/test/CI/服务，没读tmp817/829/818/private或联系tester，不发APPROVE/global/main/产品通过。
