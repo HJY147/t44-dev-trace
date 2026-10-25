@@ -325,3 +325,8 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 ## 2026-10-25 b7825da开发诊断执行准入
 
 当前不通过：DIAG-CLEANUP-01真实零DB反例确认834失败收尾会遮主异常并跳过close/requests。8文件/source/tool身份同、原9项准入JUnit复算通过；未重复owner矩阵，未执行MySQL/HTTP/CI。报告：`reports/reviews/diagnostics-b7825dab4d09b9201660e4d0810da2a4949c6ee6.md`。本轮只审核开发诊断，不背书云性能、代码规模或独立验收。
+
+
+## 2026-10-25 DIAG-CLEANUP-01 新候选限定复审
+
+实际ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2，候选9a18a0fa7b59c25278cf0717d447962c0b1ba96c，BE源124785d/E d60b229。P2限定闭环：requests先存、构造入try、NOT_INSTALLED/NOT_REQUESTED区分、原异常identity、独立close尝试、成功体清理错必失败。候选834及回归逐字同BE源，driver e0a49e63/request同，DB4edbf247同旧；workflow/831/833未变，应用根对ade5 diff0，实际诊断worktree HEAD同候选且干净。复算owner2红/10绿/loader1红/最终11绿，26项seal/closure核对；原红raw空白check2保留，不称全仓通过。静态AST测量body除安装标志不变；0本岗新探针/测试/SQL/HTTP/服务/CI/云，未重跑56/35，无独立私有读取或联系。原b782拒绝/c733历史不改。先明确技术准入9a18默认baseline鲜建本地MySQL一轮，再报告Issue行政；不准入ref实验、400×600或整体产品/合并/globalgate。close为独立尝试，close本身错仍单记并失败，不能说全部资源必定恢复。报告reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md，机械证据agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json。

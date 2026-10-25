@@ -443,3 +443,8 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 ROLE-reviewer-DIAGNOSTICS-20261025-v1，自有worktree/branch，8明确文件与Git对象及两tool SHA同、应用/契约根对ade5 diff0，准入JUnit仅机械复算9绿不重跑。一次实际零DB微探针确认P2 DIAG-CLEANUP-01：fixture在observer.install前抛出合成异常后，被finally.snapshot的RuntimeError遮成主异常，observer.close与requests写入跳过；原异常只保留context，DB/application导入=[]。无SQL/HTTP/服务/CI或独立私件访问。已先报root阻断，由BE修实现和新SHA后窄复审；原反例保留，不将probe exit0写候选通过。八段/十项报告与source/probe回执已写。
 
 本阶段报告/反例commit8319923a1f28b9c50e1cb05c13b95a03b73648d9已实际push（skipCI），Issue12 COMMENT6394346325已POST并精确单ID REST GET正文与Issue归属逐字核同。只发布P2不通过，不发全局状态；工作流按精确root诊断分支触发，本review分支未触发诊断。
+
+
+## 2026-10-25 DIAG-CLEANUP-01 新候选限定复审
+
+实际ROLE-reviewer-DIAGNOSTICS-CLEANUP-20261025-v2，候选9a18a0fa7b59c25278cf0717d447962c0b1ba96c，BE源124785d/E d60b229。P2限定闭环：requests先存、构造入try、NOT_INSTALLED/NOT_REQUESTED区分、原异常identity、独立close尝试、成功体清理错必失败。候选834及回归逐字同BE源，driver e0a49e63/request同，DB4edbf247同旧；workflow/831/833未变，应用根对ade5 diff0，实际诊断worktree HEAD同候选且干净。复算owner2红/10绿/loader1红/最终11绿，26项seal/closure核对；原红raw空白check2保留，不称全仓通过。静态AST测量body除安装标志不变；0本岗新探针/测试/SQL/HTTP/服务/CI/云，未重跑56/35，无独立私有读取或联系。原b782拒绝/c733历史不改。先明确技术准入9a18默认baseline鲜建本地MySQL一轮，再报告Issue行政；不准入ref实验、400×600或整体产品/合并/globalgate。close为独立尝试，close本身错仍单记并失败，不能说全部资源必定恢复。报告reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md，机械证据agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json。
