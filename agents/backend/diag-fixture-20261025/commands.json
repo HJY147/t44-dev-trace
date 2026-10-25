@@ -1,0 +1,56 @@
+{
+  "final_check_command": "env -i PATH=/usr/bin:/bin PYTHONPATH=/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-latency-diagnosis-20261025/backend DATABASE_URL= T44_DATABASE= T44_SESSION_TTL_SECONDS=3600 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python -m pytest -q tmp/801_backend_diag_fixture/801_checks.py --basetemp=tmp/801_backend_diag_fixture/.owned-test-profile-seal --junitxml=agents/backend/diag-fixture-20261025/checks.profile-seal.xml",
+  "final_check_exit": 0,
+  "stdout_stderr_file": "checks.profile-seal.log",
+  "initial_check": "same owned target except basetemp .owned-test-initial/JUnit checks.initial.xml; 1 failed 11 passed,1.17s",
+  "candidate_check": "same except .owned-test-candidate/checks.candidate.xml;13 passed1.12s",
+  "ruff_final": "python -m ruff check tmp/801_backend_diag_fixture (specified backend/.venv python), exit0",
+  "format_final": "python -m ruff format tmp/801_backend_diag_fixture, exit0",
+  "process_lint_failures": [
+    "draft Ruff7 reported then committed4fa1051f before fixing; not claimed green",
+    "new check PLW1510 missing explicitcheck fixed before test",
+    "F821 after patch inserted packet assertions into transportcheck; caught byRuff, fixed before nexttest"
+  ],
+  "historical_final_check_command": "env -i PATH=/usr/bin:/bin PYTHONPATH=/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-latency-diagnosis-20261025/backend DATABASE_URL= T44_DATABASE= T44_SESSION_TTL_SECONDS=3600 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python -m pytest -q tmp/801_backend_diag_fixture/801_checks.py --basetemp=tmp/801_backend_diag_fixture/.owned-test-final --junitxml=agents/backend/diag-fixture-20261025/checks.final.xml",
+  "additional_readonly_profile_checks": {
+    "same_targets_not_cumulative": 13,
+    "junit_actual_suite_attributes": {
+      "checks.profile.xml": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "13",
+          "time": "1.254",
+          "timestamp": "2026-10-25T22:22:42.611817+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "checks.profile-final.xml": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "13",
+          "time": "1.163",
+          "timestamp": "2026-10-25T22:23:16.309481+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "checks.profile-seal.xml": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "13",
+          "time": "1.451",
+          "timestamp": "2026-10-25T22:23:44.632620+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ]
+    }
+  }
+}

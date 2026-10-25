@@ -359,3 +359,10 @@ C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注�
 ### tmp810开发stage诊断工具已交（未云运行）
 
 先设计e51c8ce，10分钟内bc428 checkpoint；最终C b76775326095bdc92ddd5883eaa4dc79eaf7d2d1，core8f0dbec…/17122B，netdd776e1…/7356B；投递10575字符，附解码11173，都<=18432。透明ASGI/worker/原UUID/SQLAlchemy readonly events/真实queue wait与pool快照/threadCPU，指纹subset非完整镜像证明，source935产品0改。root指定exact t44c_r9diag935_p只一项新增允许，近似/旧P816/13306拒；未接实际新库。首观察器掩错红、fixture route红、启动畸形DSN合成marker回显红全保留并窄修；当前22owned/SQLite/API smoke目标绿，非云MySQL/4业务压力或全验收。Linux网络collector未实采，数据仅counts且需namespace/window声明，残差不冒网络归因。stage-report.md与stage-runbook.md给精确root env/包/边界，sessionpacket/实测由root另准；无新依赖/agent/CI/私件或云动作，无新cloc/学生亲历。
+
+
+### tmp801新诊断P准备/短窗工具（非正式验收）
+
+先设计再4fa1051f草稿，C fe197ad0d639c22b270fe8afb9c413c60f78b689。810不读sessionpacket，已交root/部署可先启动；801 prepare严格精确新P/schema3306+根显式accounts，原CLI实际项目全集服务令牌/三角色真实TLS登录/DB选400不交任务对/真create-dedup。driver4路径真实版本循环、strictCA复用无retry、新私包续接；提交后断连明确禁旧版本续跑。13owned目标最终1.04s绿，含SQLite原CLI/API400tasks、实际提交后失响应；初提醒201vs冻结202的fixture红保留，不冒产品修复。两PUBLIC源压缩12119/install13200字符，owned安装逐字验，详细agents/backend/diag-fixture-20261025/{report,runbook,verification}.md/json；source935产品0改/无新cloc/无云或真实MySQL/网络TLS与400并发/正式400600270证据，实际执行归根。
+
+root补原seed计数准入后当前C f811c5c1，prepareSHA b53e8f0…；inspect-only先写真实候选counts，不CLI/登录/业务写，少于400保留并拒，不算产品bug，可1/40先跑。缩样本地40候选用400请求证不足0写；最终同13目标1.45s，不累加。原6000云库是否400可用NP，静态600只是算法性质。现公包12643/install13724字符，旧fe为历史。

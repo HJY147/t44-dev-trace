@@ -593,3 +593,13 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - root精确`t44c_r9diag935_p`第二允许项先51663f22设计再实施，原prefix/DSN/expected/user/host匹配与13306拒全保留；允许仅owned engine桩证明，未建连接，未来正式F/P不套授权。21绿后为隐私补目标：初普通坏URL只是ArgumentError类型不合预期，不冒泄露；缺@的合成字段被解析作port真实回显marker，窄目标真红→仅factory配置解析从None抛固定脱敏ValueError。最终C b76775326095bdc92ddd5883eaa4dc79eaf7d2d1全22绿0.77s，最小child env清空继承DB配置/禁plugin autoload，非新增22。
 - core17122B/SHA8f0dbec80e168a8dbac7f3707b467d16c9146fe7937b7c5c2f6825b20bf966f6；只读Linuxnet7356B/dd776e1...，ss/TCPsockstat/FD/ephemeral/TIME_WAIT/LISTEN/RST/重传只计数，不采地址/目标/env，不改内核，当前只parser测未在系统/云采样；TLS复用/客户端writer另需caller中性时钟，残差不当网络根因。
 - gzip双文件current stage-delivery.b7677532.json10575字、install.b7677532.txt11205字均<=18432，解码逐字往返/hash齐，numeric module import离线成功。原red/log/XML无损gzip双hash，旧包initial/b3/f7留历史不当current；stage-report/runbook/interface/真实命令齐。产品935字节全同/0新产品行，无新cloc、不冒MySQL/4业务压力/正式400600270通过；只owned stub/SQLite本地TestClient，根另给新sessionpacket后实跑。作者执行者AI非学生手写。
+
+
+## tmp801 精确新P私包准备与短窗真实HTTP工具
+
+- root派工精确t44c_r9diag935_p/原935，仅工具和own记录；先design再draft4fa1051f，核810无sessionpacket依赖，立即交root与部署白名单env（MODULE_SHA256最终键），不等账号启动API。子岗没有读serveraccounts/runtime/env/独立私件，没有云/DB连接/agent/CI。
+- C fe197ad0d639c22b270fe8afb9c413c60f78b689：prepare严格source子集/DSN新schema/mysql3306非root身份guard，原CLI基真实40ID服务令牌、三角色TLS真实登录、实际任务/依赖/产能选择，400独占DEVELOPING变更slot+另400提醒slot，先create再新key真dedup，privatepacket不复制密码/DSN；driver真实版本BLOCK/UNBLOCK循环+其余3路径，严格CA持久连接无自动retry，阶段仅短窗。
+- 本地首12目标1红11绿因我误猜提醒201，冻结实际202；原log/XML保留，改精确202加transport后13绿1.12s，同13加原真实提交后断连禁续包因果断言后13绿1.04s。Ruff首7项非零后误仍commit，随后具体修；check PLW/F821亦真实保留过程说明，最终ruff/format/diff绿，不冒首轮全绿/26项。SQLite40/400/400/600原seed+原CLI实际40授权+三API登录/两create-dedup/连续4路径真实SQL，transport仅owned stub非云TLS/MySQL/400并发。
+- 当前PUBLIC两源gzip12119字符/install13200<18432，逐字解码+实际owned安装无网络验同；private0600/O_EXCL/NOFOLLOW、失败现场不覆盖，committed后丢响应明确resumablefalse并拒续跑。runbook给root两步/shape/CA路径/原hardstop/失效处理及owner执行边界；产品935全同/零新产品行/无新cloc，formal400600270不变也未证明。作者执行者AI，非学生手写。
+
+- 根补要求先核原6000seed候选，最终C更新f811c5c1：actual只读counts先落盘、inspect-only不CLI/登录/业务写/session，普通prepare不足400明确false且非业务bug。SQLite400task实际只有40候选用400请求证不足/零写，最后同13目标1.45s绿不累加；先前profile requested0语义在执行前审见，改独立inspect分支保留requested400；writes_started精确标记。静态seed可推出600候选但云库未读，真实400 NP。新包12643/install13724字符，owned安装逐字同，旧fe包历史；root后续通报810上云up只引用中性事实不冒本岗实跑。
