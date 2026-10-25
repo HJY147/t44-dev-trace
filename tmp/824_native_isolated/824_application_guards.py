@@ -1,8 +1,10 @@
 """Final-source launcher synthetic boundaries; no real accounts or service calls."""
 
 import importlib.util
+import json
 import os
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -59,3 +61,40 @@ def test_registered_child_identity_reuse_does_not_grant_signal():
     assert not APP.child_match(record, record | {"started": "reused"})
     assert not APP.child_match(record, record | {"pgid": 1})
     assert not APP.child_match(record, None)
+
+
+def test_changed_controller_rejected_before_python_execution(tmp_path, monkeypatch):
+    monkeypatch.setattr(APP, "BASE", tmp_path)
+    run = tmp_path / "synthetic1"
+    run.mkdir(mode=0o700)
+    script = run / "controller.py"
+    script.write_text("raise AssertionError('must never execute')\n")
+    script.chmod(0o600)
+    manifest = run / "manifest.json"
+    manifest.write_text(json.dumps({"controller_sha256": "different"}))
+    manifest.chmod(0o600)
+    with pytest.raises(ValueError, match="IMMUTABLE_CONTROLLER_CHANGED"):
+        APP.controller(run)
+
+
+def test_application_watchdog_sampling_error_still_stops_owned_roles(tmp_path, monkeypatch):
+    (tmp_path / "state").mkdir()
+    stopped, receipts = [], []
+    module = SimpleNamespace(
+        STOP=APP.time.time() + 600,
+        stamp=lambda: "synthetic",
+        stop_app=lambda run, role: stopped.append(role) or {"role": role, "success": True},
+        receipt=lambda run, action, **fields: receipts.append({"action": action, **fields}),
+    )
+    monkeypatch.setattr(APP, "controller", lambda run: module)
+    monkeypatch.setattr(APP, "stop_children", lambda run, module: [])
+    monkeypatch.setattr(APP.signal, "signal", lambda *_: None)
+
+    def failure(_):
+        raise OSError("synthetic sample wait failure")
+
+    monkeypatch.setattr(APP.time, "sleep", failure)
+    result = APP.watchdog(tmp_path)
+    assert stopped == ["scheduler", "consumer", "api"]
+    assert result["success"] is False
+    assert receipts[-1]["sampling_failed"] is True
