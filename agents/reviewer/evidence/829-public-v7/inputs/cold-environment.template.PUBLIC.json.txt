@@ -1,0 +1,14 @@
+{
+  "accounts": {
+    "m": {"id": null, "username": "ACTUAL_INITIALIZED_MANAGER_IDENTITY", "token": "DELIVER_PRIVATELY"},
+    "d": {"id": null, "username": "ACTUAL_INITIALIZED_DEVELOPER_IDENTITY", "token": "DELIVER_PRIVATELY"},
+    "d2": {"id": null, "username": "ACTUAL_INITIALIZED_ALTERNATE_DEVELOPER_IDENTITY", "token": "DELIVER_PRIVATELY"},
+    "r": {"id": null, "username": "ACTUAL_INITIALIZED_REVIEWER_IDENTITY", "token": "DELIVER_PRIVATELY"},
+    "x": {"id": null, "username": "ACTUAL_INITIALIZED_OUTSIDER_IDENTITY", "token": "DELIVER_PRIVATELY"}
+  },
+  "fixture_ownership": "Root initializes isolated empty schema/users, TLS and 5 disposable identities/sessions. Independent operator creates projects, memberships and iterations through authority APIs only after grant. Root receives actual project IDs through PUBLIC nonce handoff, then scopes/applies service credentials and seals reply. No project/iteration IDs are guessed or prewritten.",
+  "service_credentials": "Intentionally absent initially. Dynamic nonce-sealed-project-scope protocol supplies actual project-scoped tokens and scheduler application metadata.",
+  "dataset": {"project_ids": [], "seed": "REQUIRED_ONLY_FOR_SEPARATELY_ADMITTED_PERFORMANCE", "generator_provenance": "REQUIRED_FOR_PERFORMANCE", "representativeness_and_limits": "REQUIRED_FOR_PERFORMANCE"},
+  "server_machines": [],
+  "performance": {"project_id": null, "iteration_id": null, "transition_task_ids": [], "escalation_task_ids": [], "server_resource_jsonl": "private/input/resource.jsonl"}
+}

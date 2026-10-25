@@ -1,0 +1,35 @@
+# v7 neutral schema-helper maintenance
+
+The only changed executable core file is the private schema helper. Its type dispatch previously indexed a dictionary with the JSON Schema `type` value. A legal array such as `{"type":["integer","null"]}` therefore caused `TypeError` before validation of the instance.
+
+The replacement first checks the complete type declaration, then accepts an instance if any declared primitive predicate matches. Unknown names, non-string members, empty arrays, duplicate names, and declarations that are neither a string nor array raise explicit schema errors (`ValueError`). Such errors are not swallowed by existing `anyOf`/`oneOf`/conditional instance-mismatch handling. Wrong instance types still raise the existing `Invalid`. A successful type match continues into all existing constraints; it does not return early.
+
+The seven original primitive predicates and all code outside this dispatch statement are AST-identical. The preexisting integer predicate uses Python `int` and excludes booleans. This narrow repair retains that subset; it does not claim complete JSON Schema compliance, including integral Python floats. Numeric/string/object/array constraints, local refs, composition, the business suite, contract, assertions and performance thresholds were not changed. Type union semantics were checked against [JSON Schema 2020-12 validation §6.1.1](https://json-schema.org/draft/2020-12/json-schema-validation#name-type).
+
+The PUBLIC checker imports only a named schema helper. Its cases contain generic synthetic schemas/values, never private case payloads. It rejects socket audit events and does not import or execute the business runner. It covers both type-list orders, integer and null acceptance, string and bool rejection, all seven singleton unions, overlapping types, malformed declarations, constraints, composition, local refs and nested values. The old v6 helper executes 89 offline checks with 87 expectation failures (including the original `TypeError`); this red evidence is retained. The repaired v7 helper passes 89/89. These are tool checks, not business cases or SUT requests.
+
+Prior controller checks remain versioned: v5 36 no-socket checks; v6 reran those same 36 and added 3 lifecycle no-socket checks plus 4 actual synthetic TLS canary requests. v7 did not rerun those checks or canaries; the five PUBLIC core files are byte-identical to v6. This maintenance made 0 SUT requests, 0 socket calls, 0 API/DB/MQ calls, 0 TLS canary requests, and no clock changes. It did not regrade or alter any prior published execution facts, encrypted evidence or keys.
+
+Core freeze: `9e247e8cab9b4f04dbc2c2a9865222967881576597aee7adbe2c9ab6ebe0cb07`. Exactly 7 of 8 executable core files are byte-identical to v6. Private AST comparison and the two type-dispatch AST fragments are retained only in the maintainer's private maintenance evidence; PUBLIC contains hashes and the whitelist result, no case source.
+
+Cold execution root: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh`
+
+Cold PUBLIC root: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC`
+
+New receipt/status directory: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/runtime`
+
+New scope/sealed reply directory: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/handoff`
+
+The new root is physically distinct and contains no grant, credentials, prior run, evidence key, Git history or symlink. The new fork-none execution agent receives only the four original authority files, exact static files in the v7 allowlist, and a future explicit neutral grant/environment. The coordinator may read PUBLIC source/metadata but must not read the three private core sources. Old defect reports and scores are not inputs to the fresh execution context. No new SUT execution is authorized by this freeze.
+
+Allowlist: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/cold-run-allowlist-v7.PUBLIC.json`
+
+Cold manifest: `/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/manifest.PUBLIC.json`
+
+Checker usage (offline only; old and new outputs must use distinct, previously absent names):
+
+```
+python3 union-checker.PUBLIC.py --validator /exact/allowed/private/schema.py --output /new/owned/offline-report.json
+```
+
+Return 1 means at least one generic expectation failed, including the preserved red run; it is never a business verdict. The reported generic checks retain full synthetic schemas, values, exceptions and outcomes.

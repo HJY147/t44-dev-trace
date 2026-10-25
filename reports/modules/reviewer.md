@@ -388,3 +388,43 @@ Provider/v4两个scope行政封档：技术报告/源快照/新fake反例7ec719f
 
 
 v5行政封档：技术报告/定点复核5c287a32f981542b5a2f1c512efda4be41cade3d已push；Issue12 COMMENT6395263158（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395263158）特定全文GET exit0，body及issue严格核对。只准精确v5+原draft两字段新文件变换的一次functional，原08:15/其余参数不变；本岗未写activegrant/未发SUT，无真实case数/结果预填。实际业务验收待独立结果，非fault/perf/product/main/global/merge通过。metadata封条后释放槽，旧v4和原反例保持。
+
+
+## 2026-10-25 829 v6冷包/provider接口/精确新功能授权
+
+ROLE-reviewer-829-PUBLIC-v6-v1；freeze90f88d，10个coordinator=true PUBLIC bytes/hash同（另allowlist文本，先口头误称11项hash已更正），private false项未读/hash/执行，未重算private8core，不联系独立岗/不输入业务oracle。control3495 SocketIO原生makefile引用与CaptureRaw.close、显式response.close符合本机stdlib实际源；handoff/supervisor/runner/routes字节同v5，14AST门禁组件同，UTC/HTTPtimer先结束再neutral120s规则不变。provider exactd7a相对49ef只cold根/core_files sealer两接口，root08:39:58实核私有provisioned fresh状态，本岗不读值。draft actualSHA96175a15仅新文件admitted false→true canonicald72fdf96，其余08:44/max600/源构建资源/cap均不变，12既有project/tasks0/无清理如实。0新probe/tests/TLS/HTTP/DB/CLI/provider/supervisor/SUT，36+3/4TLS仅root转述待明确PUBLIC证据路径，不冒亲跑。精确技术准入已先发root，行政不阻塞；非业务/fault/perf/product/global/merge通过。
+
+
+v6限定行政封档：技术报告/静态证据b15888f33bbcfde72da1a0bd4a009ad86c59ea2c已push；Issue12 COMMENT6395536736（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395536736）08:43:42特定全文GET exit0，body及issue严格匹配。无业务/fault/perf/global/main/merge通过；准入仍只exact新文件单字段变换，08:44不延长。本岗未运行SUT或读取动态/私有结果，行政不阻塞独立操作，公开TLS/离线原件如另有授权可另阶段追加，当前只记root relay。封条后释放槽。
+
+
+## 2026-10-25 v6 performance-only中性执行准入
+
+ROLE-reviewer-829-PERFORMANCE-v6-v1，draft63d0819e实核，只新文件admitted false→true canonical877edf51；cold6PUBLIC同已审v6，private未读/hash。PUBLIC performance子phase、formal50M>=3M/400/1200/64GiB+64GiB+1TiB相容；direct token方式仅关闭nonceGate，不审私有suite/env。root源c8/w7build8d7/runtime432b/TLS18097/数据/真实scopeTTL和采样元数据沿已核声明，不冒本岗动态结果。08:53:38余801s，630s之后171s理论余量，无case完成保证，09:07不延长；root后续采样/环境清理边界不回写旧functional。sharedMySQL整PID/不可stop、P1偏斜、numeric raw原字节/缺失不补、generatoractual登记/覆盖待事实；API8显式PID与tracker另列澄清只提metadata，不预填覆盖。技术准入一次精确fullgroup已先发root，0新probe/test/SQL/HTTP/CLI/SUT，不读private/联系tester/旧分数，不改case/阈值，非正式性能/资源/全局/main/merge通过。
+
+
+性能中性准入行政封档：技术fd33f3e8d17dc9324086c31d8fced71aea43cb52已push；Issue12 COMMENT6395652251（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395652251）特定全文GET exit0/body及issue严格相同。只准入exact newgrant单字段变换，09:07不延长，不读取动态结果/资源raw/private，不作正式性能/覆盖/global/main/merge通过；角色metadata封后释放槽。
+
+
+## 2026-10-25 v7 PUBLIC通用type-union维护工具准入审
+
+ROLE-reviewer-829-PUBLIC-v7-v1；技术manifest04d71afd、allowlist289639与10truePUBLIC/5artifact exactbytes/hash匹配，coldadfc265。5PUBLICcore逐字同v6/4Python整体AST同，UTC/handoff/socket控制不漂移。仅源码读checker不执行或追private import；89两份generic输入/expected同且passed账本自洽，旧2绿87红（TypeError79/KeyError3等）/新89绿0红保留，不重跑89/36+3/TLS4。private dispatch/primitive与其它AST/业务contract不改仅作者PUBLICproof，非本岗读私有源/hash，89非全面JSONschema/业务/coverage证明。技术先发root：可进入精确phase/provider/grant审，当前不准入任何SUT/phase，不延旧grant，不将旧分数/缺陷给817。0probe/tests/checker/SUT/API/DB/CLI，不读private/keys/log/Git/credential，不联系tester。
+
+
+v7工具限定行政封档：技术0669d66eabd18fe074178cbc92c21e6acce24690已push；Issue12 COMMENT6395891984（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395891984）特定全文GET exit0/body及issue严格相同。工具ready仅可进入精确phase/provider/grant审，本轮仍0SUT/不授任何phase/不延旧grant；09:21:48已提醒root原F7 09:22只余12s且尚未审新source/draft，不能伪准入。封metadata后释放槽。
+
+
+## 2026-10-25 新F7 campaign provider/watcher/精确grant审
+
+ROLE-reviewer-FUNCTIONAL-v7-CAMPAIGN-v1；exact3f51350八文件字节同，provider75de297/watcher6a6df2a，publicbindingf61cca同draft692b8edf。phase下界改真实supervisor.launch_clock.utc，approved/provisioned内supervisorNonce/requestNonce新0700路径，配置/source/runtime/runparent/controller及原双截止/40/remaining/私有staged+排他发布无弱化。watcher同freeze/expiry/live父子后exec严格provider，UTC等待本身非mono硬停，按singlefresh流程可用不冒恶意同用户/坏receipt容错。2JUnit绿0.015s只复算不重跑，目录case纯Path属性非controller覆盖；root公开strictTLS201/project1/CLI/scheduler76376与own-keysealer记录实读，非本岗亲跑/14case通过。新grant仅admitted false→true canonical5234b21e，09:50/max900/新源构建资源及非空1project/tasks0/5human不变，旧09:22不回写。09:42:05余474s不承诺完成，技术准入先发root后行政；0新probe/test/SUT/API/DB/CLI/private值或tester联系，不作业务/perf/global/main/merge通过。
+
+
+新F7campaign行政封档：技术9055410d72abbafec764821d308d874048a945cc已push；Issue12 COMMENT6396107472（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396107472）特定全文GET exit0/body及issue严格相同。限定准入exact新文件单字段变换，09:50不延长、旧grant不回写，非独立业务/perf/global/main/merge通过；本岗不读动态/private结果、不亲跑SUT。metadata封后释放槽。
+
+
+## 2026-10-25 新P campaign performance精确授权/环境身份审
+
+ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1；draftb86830fd实核，仅新文件admitted true canonical87caec33；6PUBLIC逐字同v7。actualnativebuild e88e/sourcec8/archive/runtime424f/newDB/vhost同grant，CA公开证书SHA2260b061及有效期实读，未读key/跟artifact源或发TLS。14声明PID实际kill0/ps存活，API9parent/tracker/7worker父子PGID同，非执行字节证明。rootraw真实非symlink，最初6行原字节保留firstnull/scheduler&generator pending；private mirror只路径未读/hash，不冒数值/完整覆盖。directP1scopeTTL/packet沿root09:42实置备元数据，不读secret。09:57:41余1039s，630后理论409s不承诺完成，10:15/max2400取早不延；先给root技术准入一次fullfrozengroup并要求负载前完成F停止记录，不读F817结果，不spawnP服务/不延10:00spawn门禁。native manifest stop10:30:30Z与root概述10:30差30s仅metadata，不改phase。0test/SUT/HTTP/SQL/CLI/provider/supervisor，PID只读核另记；固定400/600/30/270/1000不改，sharedmysql/共宿主及RSSlimits披露，非正式性能/资源/业务/global/main/merge通过。
+
+
+新P campaign行政封档：技术d785fcf1a86938deebc9004f49e388aebddda5b0已push；Issue12 COMMENT6396261382（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396261382）特定全文GET exit0/body及issue严格同。限定exact新文件单字段变换的一次fullgroup执行技术准入，10:15不延长，F停止在负载前由root实际记录；无正式性能/资源覆盖/业务/global/main/merge通过。本岗无SUT、private测试/817结果读取，只读root环境观察另列。metadata封后释放槽。

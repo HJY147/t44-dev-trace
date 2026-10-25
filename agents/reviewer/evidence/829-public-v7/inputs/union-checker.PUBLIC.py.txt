@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Generic type-union helper check. Imports only the named schema helper, never cases.
+No network, SUT, credentials or system-clock mutation. Exit 1 means an expectation failed.
+"""
+import argparse,datetime,hashlib,importlib.util,json,pathlib,sys
+sys.dont_write_bytecode=True
+
+def cases():
+    out=[]
+    def add(name,value,schema,kind,doc=None):out.append({'name':name,'instance':value,'schema':schema,'expected':kind,'doc':schema if doc is None else doc})
+    for order,types in [('forward',['integer','null']),('reverse',['null','integer'])]:
+        for i,(v,valid) in enumerate([(0,True),(7,True),(-2,True),(None,True),('0',False),(False,False),(True,False),([],False),({},False),(1.25,False)]):add(order+'-'+str(i),v,{'type':types},'accept' if valid else 'instance_rejected')
+    for typ,value,wrong in [('object',{},[]),('array',[],{}),('string','a',0),('integer',3,False),('number',1.25,True),('boolean',False,0),('null',None,'null')]:
+        add('singleton-'+typ,value,{'type':[typ]},'accept');add('singleton-reject-'+typ,wrong,{'type':[typ]},'instance_rejected')
+    for types in [['integer','number'],['number','integer']]:add('overlap-'+types[0],0,{'type':types},'accept')
+    for i,t in enumerate(['unknown',['integer','unknown'],['unknown','integer'],[],['integer','integer'],['integer',None],['integer',False],['integer',1],['integer',[]],['integer',{}],{},None,False,0,1]):add('malformed-type-'+str(i),0,{'type':t},'schema_rejected')
+    add('minimum-ok',2,{'type':['integer','null'],'minimum':1},'accept')
+    add('minimum-fails',0,{'type':['integer','null'],'minimum':1},'instance_rejected')
+    add('minimum-null',None,{'type':['integer','null'],'minimum':1},'accept')
+    add('maximum-fails',9,{'type':['integer','null'],'maximum':8},'instance_rejected')
+    add('multiple-ok',4,{'type':['integer','null'],'multipleOf':2},'accept')
+    add('multiple-fails',3,{'type':['integer','null'],'multipleOf':2},'instance_rejected')
+    add('exclusive-minimum-fails',0,{'type':['integer','null'],'exclusiveMinimum':0},'instance_rejected')
+    add('const-ok',0,{'type':['integer','null'],'const':0},'accept')
+    add('const-fails',None,{'type':['integer','null'],'const':0},'instance_rejected')
+    add('enum-ok',None,{'type':['integer','null'],'enum':[0,None]},'accept')
+    add('enum-fails',1,{'type':['integer','null'],'enum':[0,None]},'instance_rejected')
+    add('allof-ok',2,{'allOf':[{'type':['integer','null']},{'minimum':1}]},'accept')
+    add('allof-fails',0,{'allOf':[{'type':['integer','null']},{'minimum':1}]},'instance_rejected')
+    add('anyof-ok',None,{'anyOf':[{'type':['integer','null']},{'type':'string'}]},'accept')
+    add('anyof-fails',False,{'anyOf':[{'type':['integer','null']},{'type':'string'}]},'instance_rejected')
+    add('oneof-overlap-fails',0,{'oneOf':[{'type':['integer','null']},{'type':'integer'}]},'instance_rejected')
+    add('anyof-unknown-not-swallowed',0,{'anyOf':[{'type':'integer'},{'type':['integer','unknown']}]},'schema_rejected')
+    add('allof-unknown-not-swallowed',0,{'allOf':[{'type':'integer'},{'type':'unknown'}]},'schema_rejected')
+    doc={'$defs':{'value':{'type':['integer','null'],'minimum':0}}}
+    for name,value,kind in [('int',0,'accept'),('null',None,'accept'),('str','0','instance_rejected'),('bool',False,'instance_rejected'),('min',-1,'instance_rejected')]:add('local-ref-'+name,value,{'$ref':'#/$defs/value'},kind,doc)
+    add('ref-sibling-fails',0,{'$ref':'#/$defs/value','minimum':1},'instance_rejected',doc)
+    add('ref-unknown-fails',0,{'$ref':'#/$defs/value','type':['integer','unknown']},'schema_rejected',doc)
+    add('object-required-ok',{'n':None},{'type':['object','null'],'required':['n'],'properties':{'n':{'type':['integer','null']}},'additionalProperties':False},'accept')
+    add('object-required-fails',{}, {'type':['object','null'],'required':['n']},'instance_rejected')
+    add('object-child-fails',{'n':False},{'type':['object','null'],'properties':{'n':{'type':['integer','null']}}},'instance_rejected')
+    add('object-extra-fails',{'extra':1},{'type':['object','null'],'additionalProperties':False},'instance_rejected')
+    add('array-items-ok',[0,None],{'type':['array','null'],'items':{'type':['integer','null']},'minItems':2},'accept')
+    add('array-items-fails',[0,False],{'type':['array','null'],'items':{'type':['integer','null']}},'instance_rejected')
+    add('array-length-fails',[],{'type':['array','null'],'minItems':1},'instance_rejected')
+    add('string-ok','ab',{'type':['string','null'],'minLength':2,'pattern':'^a'},'accept')
+    add('string-length-fails','a',{'type':['string','null'],'minLength':2},'instance_rejected')
+    add('string-pattern-fails','bb',{'type':['string','null'],'pattern':'^a'},'instance_rejected')
+    add('conditional-ok',None,{'type':['integer','null'],'if':{'type':'integer'},'then':{'minimum':1},'else':{'const':None}},'accept')
+    add('conditional-fails',0,{'type':['integer','null'],'if':{'type':'integer'},'then':{'minimum':1},'else':{'const':None}},'instance_rejected')
+    add('no-type-original-subset','x',{'minimum':0},'accept')
+    return out
+
+def evaluate(validator):
+    path=pathlib.Path(validator).resolve()
+    spec=importlib.util.spec_from_file_location('_union_helper_under_test',path);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+    results=[]
+    for c in cases():
+        observed='accept';exception=None
+        try:mod.validate(c['instance'],c['schema'],c['doc'])
+        except mod.Invalid as e:observed='instance_rejected';exception={'type':type(e).__name__,'message':str(e)}
+        except ValueError as e:observed='schema_rejected';exception={'type':type(e).__name__,'message':str(e)}
+        except Exception as e:observed='unexpected_exception';exception={'type':type(e).__name__,'message':str(e)}
+        results.append({**c,'observed':observed,'exception':exception,'passed':observed==c['expected']})
+    return {'visibility':'PUBLIC','purpose':'generic_schema_helper_offline_only','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'validator_path':str(path),'validator_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'planned_checks':len(results),'executed_offline_checks':len(results),'passed_checks':sum(x['passed'] for x in results),'failed_checks':sum(not x['passed'] for x in results),'actual_sut_requests':0,'socket_calls':0,'system_clock_changed':False,'results':results}
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--validator',required=True);parser.add_argument('--output',required=True);args=parser.parse_args()
+    def no_network(event,args):
+        if event.startswith('socket.'):raise RuntimeError('network forbidden by generic offline checker')
+    sys.addaudithook(no_network)
+    report=evaluate(args.validator);out=pathlib.Path(args.output)
+    with out.open('x') as f:json.dump(report,f,ensure_ascii=False,indent=2);f.write('\n')
+    print(json.dumps({k:v for k,v in report.items() if k!='results'},ensure_ascii=False));return bool(report['failed_checks'])
+if __name__=='__main__':raise SystemExit(main())
