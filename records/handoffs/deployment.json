@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-reuse-tool-only-runtime-and-source935-diagnostic-active-root-relay",
+  "stage": "cloud-reuse-f4-offline-backend-upgrade-local-ready",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2377,6 +2377,43 @@
     "worker16_or_future_backend_built": false,
     "app_original_freeze_modified": false,
     "collection_or_final_cleanup_verified_by_child": false,
-    "performance_or_release_verdict": null
+    "performance_or_release_verdict": null,
+    "backend_upgrade": {
+      "source_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+      "tool": "deployment/cloud-reuse/backend-upgrade.py",
+      "helper_sha256": "6609f859c0ff02249455b67684eff49c7d77996a0cc7937b394319acdc6570c8",
+      "steps": "deployment/cloud-reuse/BACKEND-UPGRADE-STEPS.md",
+      "source_manifest": "agents/deployment/cloud-reuse-20261025/upgrade-source-manifest.json",
+      "frozen_equality": "agents/deployment/cloud-reuse-20261025/upgrade-frozen-equality.json",
+      "local_prepare": "agents/deployment/cloud-reuse-20261025/upgrade-local-prepare.json",
+      "guard_xml": "agents/deployment/cloud-reuse-20261025/backend-upgrade-guards.xml",
+      "guards": 21,
+      "failures": 0,
+      "frozen_equal_files": 47,
+      "source_files": 53,
+      "final_manifest_sha256": "6c211bc572c731ef9eae9d91161e411e412471900e7e4c33ae390ab095a63337",
+      "archive_sha256": "c74c25b719f4e05e5d2f6b3295f388819c01a2e5de9d2f6261ba4d9d3ab92861",
+      "compressed_bytes": 152941,
+      "cloud_build_executed": false,
+      "new_application_prepared_or_started": false,
+      "VM_control_performed": false,
+      "old935_controller_binding_timer_modified": false,
+      "future_campaign_controller": "new version required; design only",
+      "artifact_workflow": ".github/workflows/offline-backend-source.yml",
+      "registered_bridge": ".github/workflows/docker-integration.yml input source_upgrade_only=true",
+      "artifact_allowlist": [
+        "source-backend.tar.gz",
+        "source-manifest.json",
+        "frozen-equality.json",
+        "Dockerfile",
+        "backend-upgrade.py"
+      ],
+      "workflow_bash_yaml_syntax_checked": true,
+      "workflow_dispatched_by_child": false,
+      "CI_artifact_actual_hash_pending": true,
+      "next_campaign_host_https_probe_required": true,
+      "root_reported_935_TLS_reachability_failed_errno111": true,
+      "TLS_cause_not_determined": true
+    }
   }
 }

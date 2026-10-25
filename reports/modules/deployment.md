@@ -480,3 +480,9 @@ root实际app prepare/arm/infra/migrate/P seed与7worker factory up成功，F只
 ROOT805工具依赖crypto，82e4初版不执行；新f30 runtime只从已证明backend935 COPY sitepackages到freshofficialPython，清PYTHONPATH/USER10001，实际t44spec/产品路径/appenv缺失true，Python3.12.15/crypto50.0.2/SSL3.0.22，actualId3982与新config89ced独立，绝不冒原Python身份。7本地guard0.03s。第二版603假定sha256sum manifest不符合实际frozen包，root执行前指出，代码保留未上传/执行；V3仅读批准PUBLIC FILES.json及entry.verify公式，JSON11+自身12项、bytes/SHA/canonical10b8、0555/0444，10guard0.06s，无改包或第13manifest。V3 root已prepare/start/dispatch，主容器900s/包600s，结束/collect结果尚未由本岗核，不预填。
 
 94caf diagnostic-overlay新controller同源7worker、精确两PUBLIC SHA+10DIAGENV、源RO/输出RW和保留timer，5pureguard0.04s；不接sessionpacket。与backend岗位直接核了字段、CLIadmin及CA键，不向独立tester发消息或读private cases。所有fixture/短诊断不是400/600或最终coverage/代码规模通过，后续16worker/新source升级只设计，待root准入另记录。ROLE-deployment-CLOUD-REUSE-20261025-v1追加真实AI提示与错误修正，不记学生亲历。
+
+## 同机增量镜像：准确 f4 源（本地 prepare/build-only 工具）
+
+root授权935 proven base到f4bd382d4668130793fc553df9ce6363c4656ea6，不新开/重买VM、不重运537MB。部署只做工具，未操云。实际git bytes/mode对照：lock/pyproject、两REST、DDL/schema/specs、完整frontend及API/web构建支持共47文件同字节。完整新backend/t44+两个依赖描述53源文件真实git archive，raw1259520bytes/c74c25b7...，gzip152941bytes/6fda4974...（较几十KB估计大，按真实量记录）。先前source/75fc准备记录保留；扩充web支持范围后的source-v2/6c211bc5...为最终包，完整source_package再核通过，PUBLIC清单副本和upgrade-local-prepare.json已入阶段目录。
+
+backend-upgrade.py SHA6609f859...固定源/基底/proof，不接受任意source/image；USER0真正删旧t44后全量COPY，恢复10001，none/pullfalse，无pip/download。新revision/archive/baseconfig/actualdescriptor/清单/DF标签、metadata、derived tar完整OCI链与实际临时容器文件集hash/mode核验；明确检测旧commands.py残留，保持原entry/env/工作目录与旧backend/web alias。21离线guards0.05s绿、Ruff绿，包含依赖/DDL/REST/web改变、link/traversal/重复、陈旧/缺失/内容/模式/UID/env、标签/entry改动以及manifest未信任先拒；不是Docker或业务验收。没有实际云build、新F/P服务/schema/端口/性能/代码规模结论。原app-campaign固定935，下一代控制器需新namespace/binding/全新数据库/CA/stop timer，设计写BACKEND-UPGRADE-STEPS，旧770d/diagnostic/stop锚原样。
