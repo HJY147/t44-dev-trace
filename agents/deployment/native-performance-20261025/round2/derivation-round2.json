@@ -1,0 +1,98 @@
+{
+  "w7_helper_commit": "3c4ed19bad72907c24d3dcab855128a83faf286a",
+  "w7_helper_sha256": "545bb451cab610db3b41f14b90424427a56c5f13a6ba5bc1bab863d89485121b",
+  "round": "performance-round2",
+  "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "api_workers": 7,
+  "first_start_deadline_utc": "2026-10-25T09:00:00Z",
+  "application_stop_utc": "2026-10-25T09:10:30Z",
+  "broker_stop_utc": "2026-10-25T09:12:00Z",
+  "force_stop_utc": "2026-10-25T09:15:00Z",
+  "old_runtime_or_grants_modified": false,
+  "generated_main_executed": false,
+  "files": {
+    "isolated-build.py": {
+      "old_w7_sha256": "c704187e52a91f74e5aacc0b1c76d8dc62e9a38cc2be6e1c7eaafa236d907f0d",
+      "new_round2_sha256": "7987573e115492f343faffcb5bd86aca6867524b9367a3898bef1a1904c70ab3",
+      "allowed_changes": [
+        {
+          "old": "2026-10-25T08:46:30Z",
+          "new": "2026-10-25T09:10:30Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated-application.py": {
+      "old_w7_sha256": "a81f1d63b5bb50be1a9592d9013413a8501e7da408abe62d6b95c14b19a1d137",
+      "new_round2_sha256": "f7e4bf233bd8a8ab2c6c134304db3061323d63521e6af7a6938afe14ab5d1bdb",
+      "allowed_changes": [
+        {
+          "old": "native-performance-20261025",
+          "new": "native-performance-round2-20261025",
+          "occurrences": 1
+        },
+        {
+          "old": "module.STOP - 30",
+          "new": "module.STOP - 90",
+          "occurrences": 1
+        },
+        {
+          "old": "original08:47 broker guardian",
+          "new": "round2 09:12 broker guardian",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated.py": {
+      "old_w7_sha256": "0d21c8cee96dcd3b7d219dbcf748f8f2d0abcb1a977ded595ff0b33adb0432e0",
+      "new_round2_sha256": "c165f950cc0f4200129299d440d227219bfa09da0623dcc973b0d1edeca35805",
+      "allowed_changes": [
+        {
+          "old": "native-performance-20261025",
+          "new": "native-performance-round2-20261025",
+          "occurrences": 2
+        },
+        {
+          "old": "performance_20261025_",
+          "new": "performance_round2_20261025_",
+          "occurrences": 1
+        },
+        {
+          "old": "STOP = datetime(2026, 10, 25, 8, 47, tzinfo=UTC).timestamp()",
+          "new": "STOP = datetime(2026, 10, 25, 9, 12, tzinfo=UTC).timestamp()",
+          "occurrences": 1
+        },
+        {
+          "old": "HARD_STOP = datetime(2026, 10, 25, 8, 50, tzinfo=UTC).timestamp()",
+          "new": "HARD_STOP = datetime(2026, 10, 25, 9, 15, tzinfo=UTC).timestamp()",
+          "occurrences": 1
+        },
+        {
+          "old": ">= STOP - 120:",
+          "new": ">= datetime(2026, 10, 25, 9, 0, tzinfo=UTC).timestamp():",
+          "occurrences": 1
+        },
+        {
+          "old": "\"planned_stop_utc\": \"2026-10-25T08:47:00Z\",",
+          "new": "\"planned_stop_utc\": \"2026-10-25T09:12:00Z\", \"first_start_deadline_utc\": \"2026-10-25T09:00:00Z\",",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T08:50:00Z",
+          "new": "2026-10-25T09:15:00Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "fault-control.py": {
+      "old_w7_sha256": "6f719f52a4b190a9038ad816a84cd7e7c3fff3d41ce9561639cb6d373e87b17d",
+      "new_round2_sha256": "6f719f52a4b190a9038ad816a84cd7e7c3fff3d41ce9561639cb6d373e87b17d",
+      "allowed_changes": []
+    },
+    "scheduler-control.py": {
+      "old_w7_sha256": "9b88cbcedc79112cf6db60d428f04b2b7683593a06db8e869e959b03a73a2eac",
+      "new_round2_sha256": "9b88cbcedc79112cf6db60d428f04b2b7683593a06db8e869e959b03a73a2eac",
+      "allowed_changes": []
+    }
+  }
+}

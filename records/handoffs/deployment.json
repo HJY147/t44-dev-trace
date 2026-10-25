@@ -163,7 +163,16 @@
     "agents/deployment/native-performance-20261025-design.md",
     "agents/deployment/native-performance-20261025/result.md",
     "agents/deployment/prompts/ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1.md",
-    "tmp/819_native_performance/819_profile.py"
+    "tmp/819_native_performance/819_profile.py",
+    "deployment/native/round-two.py",
+    "agents/deployment/native-performance-20261025/round2/result.md",
+    "agents/deployment/native-performance-20261025/round2/old-round1-stop.json",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-PERFORMANCE-ROUND2-20261025-v1.md",
+    "tmp/819_native_performance/round2/819_round2.py",
+    "deployment/native/campaign-prepare.py",
+    "agents/deployment/native-performance-20261025/campaign/result.md",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-CAMPAIGN-20261025-v1.md",
+    "tmp/819_native_performance/campaign/819_campaign.py"
   ],
   "commands_executed": [
     {
@@ -844,7 +853,9 @@
     },
     "ROLE-deployment-CONTINUATION-20261025-v1",
     "ROLE-deployment-NATIVE-ISOLATED-20261025-v1",
-    "ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1"
+    "ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1",
+    "ROLE-deployment-NATIVE-PERFORMANCE-ROUND2-20261025-v1",
+    "ROLE-deployment-NATIVE-CAMPAIGN-20261025-v1"
   ],
   "questions": [
     "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
@@ -985,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "native-performance-w7-prepared-app-not-started-await-root-phase",
+  "stage": "functional-campaign-normally-stopped-performance-campaign-untouched",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -993,7 +1004,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-25T08:17:01.527983+00:00",
+  "updated_at": "2026-10-25T09:59:45.997263+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1715,5 +1726,517 @@
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6395309744",
     "issue_full_GET_body_identical": true,
     "stage_evidence_commit": "59ea0d9"
+  },
+  "prior_stage_before_performance_round2": "native-performance-w7-prepared-app-not-started-await-root-phase",
+  "performance_round2": {
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "old_round_stop_observed": true,
+    "old_first_port_aftercheck_failed_preserved": true,
+    "old_original_hashes_unchanged": true,
+    "new_ready_utc": "2026-10-25T08:36:47.071153+00:00",
+    "new_run": "performance_round2_20261025_447f7e9fd01c4629",
+    "new_guardian_pid": 50547,
+    "new_broker_pids": [
+      50558,
+      50553
+    ],
+    "api_workers": 7,
+    "new_app_started": true,
+    "new_app_phase_permission_pending": false,
+    "native_prestart_sha256": "bfe62d493adf4b579917e64845d49543462e2e69240200cac278ff4a0988da5a",
+    "first_start_deadline_utc": "2026-10-25T09:00:00Z",
+    "app_stop_utc": "2026-10-25T09:10:30Z",
+    "broker_stop_utc": "2026-10-25T09:12:00Z",
+    "force_stop_utc": "2026-10-25T09:15:00Z",
+    "functional_deadlines_changed": false,
+    "formal_performance_verdict": null,
+    "new_final_stop_or_recovery": null,
+    "prompt_ref": "ROLE-deployment-NATIVE-PERFORMANCE-ROUND2-20261025-v1",
+    "administrative_issue_followup": "deferred;root requested immediate slot release",
+    "new_app_start_utc": "2026-10-25T08:39:47.773949+00:00",
+    "permission_scope": "root explicit idle environment start only;not performance load",
+    "performance_load_permission_pending": true,
+    "native_build_running_initial_sha256": "8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf",
+    "interval_sampler": {
+      "pid": 56656,
+      "source_commit": "773bfd7",
+      "stop_utc": "2026-10-25T09:09:00Z",
+      "raw_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/state/interval-resources-8aba12609aa94310aeb46dc6518b6bb8.jsonl",
+      "final_receipt_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/interval-final.json",
+      "final_receipt_not_yet_observed": true,
+      "shared_mysql_whole_process": true,
+      "generator_explicit_pid_pending": true,
+      "formal_coverage_verdict": null
+    },
+    "scheduler_pending_scope_at_initial_build": true
+  },
+  "prior_stage_before_campaign": "performance-round2-idle-app-running-load-pending-interval-sampler-active",
+  "sufficient_campaign": {
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "old_f7_r3_owned_stopped": true,
+    "old_data_and_original_bytes_preserved": true,
+    "functional": {
+      "profile": "functional",
+      "at_utc": "2026-10-25T09:30:58.895115+00:00",
+      "run_dir": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4",
+      "native_build_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/native-build.json",
+      "native_build_sha256": "8f7ac784852f46d68c5a33b3780f620e4c76f07118562047246c2f7a295260c7",
+      "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+      "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+      "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+      "ca_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/tls/ca.pem",
+      "ca_sha256": "baea56756db21713799b5f7f1a4d4b2db3eef8444d05ad84bd61b574f86962ac",
+      "controller_sha256": "7e9c4a6cf7f774343335b55ef0c31276807393d059f3e76f90400521ed7cdc57",
+      "application_controller_sha256": "d925a39cca19b4507eb3b470b5750ff696770fe124688dedb062db6ad37bc7c4",
+      "processes": [
+        {
+          "role": "api",
+          "pid": 73663,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "3da81bd6d0e111ee01a5232be47cf604e75e7b0c83d4890643d818fa2dbeb228"
+        },
+        {
+          "role": "consumer",
+          "pid": 73696,
+          "started_utc": "2026-10-25T09:30:57+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73696,
+          "command_sha256": "0a98ba808192a3d6bb173ac54268d000b8e06df57e4fa736a7690522464aa994"
+        },
+        {
+          "role": "api-resource-tracker",
+          "pid": 73664,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "5578512e640f2bbd2e0705a334199c5076838f97fa629f4511f10e90eb7bb21f"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73665,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "2b4e5ddf678944a75be1bf0ffb8319a64904f3d30c5f2b1df942d030b9d85836"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73666,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "e3f9c4168fa6a185ba2262ca1fb236be6f2e41dd3b6334e66442e2ff92daa91c"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73667,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "9c8a169aa372a0102ef679089a44ed1e5bb0a7d863a9ba871ef65380fe601b66"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73668,
+          "started_utc": "2026-10-25T09:30:56+00:00",
+          "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+          "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+          "uid": 501,
+          "pgid": 73663,
+          "command_sha256": "26d5d7c634390495698347da48ff55baaa3ce5f04cce5bdbc44f511ad0e3bb9a"
+        }
+      ],
+      "scheduler_pending_scope_initial": true,
+      "receipts": [
+        {
+          "stage": "broker-start",
+          "result": {
+            "at_utc": "2026-10-25T09:30:55.921169+00:00",
+            "receipt_id": "0c0c524e6ea74ffaa757f78aa1c10e25",
+            "action": "broker_start",
+            "success": true,
+            "guardian_pid": 73494,
+            "broker_receipt": "bee21056147a495f94dad029436a9900"
+          }
+        },
+        {
+          "stage": "bind",
+          "result": {
+            "at_utc": "2026-10-25T09:30:56.377899+00:00",
+            "receipt_id": "4d7c96529be74cc0910375744e7dda3d",
+            "action": "final_application_bind",
+            "success": true,
+            "source_commit": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "binding": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/application-binding.json",
+            "source_files": 54
+          }
+        },
+        {
+          "stage": "app-start",
+          "result": {
+            "at_utc": "2026-10-25T09:30:58.483720+00:00",
+            "receipt_id": "989b74554c23453f8e0c7dbbde12c328",
+            "action": "application_start",
+            "success": true,
+            "source_commit": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "api_pid": 73663,
+            "consumer_pid": 73696,
+            "api_worker_pids": [
+              73665,
+              73666,
+              73667,
+              73668
+            ],
+            "strict_ca_ip_unauthenticated_status": 401,
+            "scheduler_started": false,
+            "application_guardian_pid": 73659
+          }
+        },
+        {
+          "stage": "build",
+          "result": {
+            "success": true,
+            "native_build_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign-20261025/runs/functional_campaign_20261025_d1c1e87649f643c4/native-build.json",
+            "sha256": "8f7ac784852f46d68c5a33b3780f620e4c76f07118562047246c2f7a295260c7",
+            "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+            "artifact_manifest_sha256": "69ba12d433aeeec3574ac972b74ffdbd11b47b0e588f1e4ce7fae2ba56b06ecd",
+            "runtime_identity": "native-sha256:b19411de213ef12f345011966c3cbf58eb4280033075b40a63cc73805e7d8d3d",
+            "process_count": 7,
+            "scheduler_pending_scope": true
+          }
+        }
+      ],
+      "first_spawn_cap_utc": "2026-10-25T10:00:00Z"
+    },
+    "performance": {
+      "profile": "performance",
+      "at_utc": "2026-10-25T09:31:05.073054+00:00",
+      "run_dir": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa",
+      "native_build_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/native-build-w7.json",
+      "native_build_sha256": "e88e88448b387c0f938aec7a5f78f1efb72461e9b615139964ee311608de2397",
+      "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+      "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+      "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+      "ca_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/tls/ca.pem",
+      "ca_sha256": "2260b0615a2340b8df88f8e5bd835473f473ae0a265df6d26f540fd83c51667b",
+      "controller_sha256": "dc2158507683ad29ab1a0ee5aa553e543637c0599eb4ebea77727562495dd4fc",
+      "application_controller_sha256": "25e057ba64dd96497cdac14617ff7de097673222ee101b9fbfc31cabcb7b4c54",
+      "processes": [
+        {
+          "role": "api",
+          "pid": 73906,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "7811ee6ecbe04f6e86b639e3ba304e3ad79d26027e445ccd9d87ef80a6277d69"
+        },
+        {
+          "role": "consumer",
+          "pid": 73964,
+          "started_utc": "2026-10-25T09:31:03+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73964,
+          "command_sha256": "0a98ba808192a3d6bb173ac54268d000b8e06df57e4fa736a7690522464aa994"
+        },
+        {
+          "role": "api-resource-tracker",
+          "pid": 73907,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "5578512e640f2bbd2e0705a334199c5076838f97fa629f4511f10e90eb7bb21f"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73908,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "2b4e5ddf678944a75be1bf0ffb8319a64904f3d30c5f2b1df942d030b9d85836"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73909,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "e3f9c4168fa6a185ba2262ca1fb236be6f2e41dd3b6334e66442e2ff92daa91c"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73910,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "9c8a169aa372a0102ef679089a44ed1e5bb0a7d863a9ba871ef65380fe601b66"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73911,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "26d5d7c634390495698347da48ff55baaa3ce5f04cce5bdbc44f511ad0e3bb9a"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73912,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "cdbe6899bc0bfbac31868ca3276e6712a4a6eaaf6869b8007647747fb25da4ca"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73913,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "bd68e4b0bd911f6442402eabfa52815725a056f69fc662c4e3b03d9729e7b705"
+        },
+        {
+          "role": "api-worker",
+          "pid": 73914,
+          "started_utc": "2026-10-25T09:31:02+00:00",
+          "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+          "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+          "uid": 501,
+          "pgid": 73906,
+          "command_sha256": "d52a77429920524d1f61d24321e35d4606f3d9c7ecc677723b2d4330262b30e6"
+        }
+      ],
+      "scheduler_pending_scope_initial": true,
+      "receipts": [
+        {
+          "stage": "broker-start",
+          "result": {
+            "at_utc": "2026-10-25T09:31:01.892092+00:00",
+            "receipt_id": "50a593282be04eaf97fd47b0aaed133e",
+            "action": "broker_start",
+            "success": true,
+            "guardian_pid": 73729,
+            "broker_receipt": "54a7fa7aab9b41b294a7b385ead05a8c"
+          }
+        },
+        {
+          "stage": "bind",
+          "result": {
+            "at_utc": "2026-10-25T09:31:02.296137+00:00",
+            "receipt_id": "4de90d5181684365a75e8e986bf14b2e",
+            "action": "final_application_bind",
+            "success": true,
+            "source_commit": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "binding": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/application-binding-w7.json",
+            "source_files": 54
+          }
+        },
+        {
+          "stage": "app-start",
+          "result": {
+            "at_utc": "2026-10-25T09:31:04.453632+00:00",
+            "receipt_id": "32c505c6915a4365b7c73dcc50d86b96",
+            "action": "application_start",
+            "success": true,
+            "source_commit": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "api_pid": 73906,
+            "consumer_pid": 73964,
+            "api_worker_pids": [
+              73908,
+              73909,
+              73910,
+              73911,
+              73912,
+              73913,
+              73914
+            ],
+            "strict_ca_ip_unauthenticated_status": 401,
+            "scheduler_started": false,
+            "application_guardian_pid": 73900
+          }
+        },
+        {
+          "stage": "build",
+          "result": {
+            "success": true,
+            "native_build_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/native-build-w7.json",
+            "sha256": "e88e88448b387c0f938aec7a5f78f1efb72461e9b615139964ee311608de2397",
+            "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+            "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+            "artifact_manifest_sha256": "c4aff7607c7d170d74df15f8fb46b6d96f853f4180f68a199b2ee6751c2091c9",
+            "runtime_identity": "native-sha256:424f442d0a3cfec6479b23bc87440b7c729f54387f4ca86a2efa4f6286b96d39",
+            "process_count": 10,
+            "scheduler_pending_scope": true
+          }
+        },
+        {
+          "stage": "interval-start",
+          "result": {
+            "at_utc": "2026-10-25T09:31:05.062539+00:00",
+            "receipt_id": "5cbca24b99a74ac0bc9f90b1a5bfc6a2",
+            "action": "interval_sampler_start",
+            "success": true,
+            "pid": 74003,
+            "stop_utc": "2026-10-25T10:29:00Z",
+            "resources": [
+              "api",
+              "consumer",
+              "scheduler",
+              "broker",
+              "mysql",
+              "generator"
+            ],
+            "shared_mysql": true
+          }
+        }
+      ],
+      "first_spawn_cap_utc": "2026-10-25T10:00:00Z"
+    },
+    "p_interval": {
+      "at_utc": "2026-10-25T09:36:29.683042+00:00",
+      "sampler_pid": 74003,
+      "resource_ids": [
+        "api",
+        "consumer",
+        "scheduler",
+        "broker",
+        "mysql",
+        "generator"
+      ],
+      "raw_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/state/interval-resources-d7b4e053aa514552a86fdf22e07b6cb9.jsonl",
+      "mode": "0600",
+      "stop_utc": "2026-10-25T10:29:00Z",
+      "final_receipt_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/interval-final.json",
+      "register_generator_command": [
+        "python3",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/interval-metrics.py",
+        "register-generator",
+        "--run-dir",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa",
+        "--generator-pid",
+        "ROOT_EXPLICIT_PID"
+      ],
+      "shared_mysql_whole_process": true,
+      "first_cpu_null": true,
+      "coverage_result": null
+    },
+    "first_spawn_cap_utc": "2026-10-25T10:00:00Z",
+    "root_phase_limits": {
+      "F": "2026-10-25T09:45:00Z",
+      "P": "2026-10-25T10:15:00Z"
+    },
+    "no_parallel_load": true,
+    "root_preflight_and_independent_phase_pending": true,
+    "product_or_business_data_modified_by_deployment": false,
+    "formal_verdict": null,
+    "final_campaign_stop": null,
+    "prompt_ref": "ROLE-deployment-NATIVE-CAMPAIGN-20261025-v1",
+    "issue_administration": "deferred;root requested capability priority and slot release",
+    "functional_phase_root_notice_ended": true,
+    "functional_owned_stop": {
+      "at_utc": "2026-10-25T09:57:29.334902+00:00",
+      "all_apps_workers_tracker_broker_guardians_absent": true,
+      "forced": false,
+      "original_hashes_unchanged": true,
+      "data_logs_raw_preserved": true,
+      "receipt": "ac3c4129cc7842dea98936edfd45aff8",
+      "evidence": "agents/deployment/native-performance-20261025/campaign/functional-phase-end-stop.json",
+      "initial_epmd_port_bind_failed_preserved": true,
+      "read_only_port_recheck": {
+        "at_utc": "2026-10-25T09:59:45.994889+00:00",
+        "scope": "functional explicit ports read-only bind probe;no signal",
+        "ports": [
+          {
+            "port": 18096,
+            "bind_free": true
+          },
+          {
+            "port": 25696,
+            "bind_free": true
+          },
+          {
+            "port": 24396,
+            "bind_free": true
+          },
+          {
+            "port": 35696,
+            "bind_free": true
+          },
+          {
+            "port": 45696,
+            "bind_free": true
+          },
+          {
+            "port": 45697,
+            "bind_free": true
+          },
+          {
+            "port": 45698,
+            "bind_free": true
+          },
+          {
+            "port": 45699,
+            "bind_free": true
+          },
+          {
+            "port": 45700,
+            "bind_free": true
+          },
+          {
+            "port": 45701,
+            "bind_free": true
+          },
+          {
+            "port": 45702,
+            "bind_free": true
+          },
+          {
+            "port": 45703,
+            "bind_free": true
+          },
+          {
+            "port": 45704,
+            "bind_free": true
+          },
+          {
+            "port": 45705,
+            "bind_free": true
+          }
+        ]
+      },
+      "performance_or_mysql_touched": false
+    }
   }
 }
