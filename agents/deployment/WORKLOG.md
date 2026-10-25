@@ -551,3 +551,7 @@ root随后明确只允许新round2 idle API/consumer先启动建立身份及采�
 root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop：appguardian和broker guardian先核UID/lstart/PGID/argv hash并写owned request，再SIGTERM；forced=false，F API/四worker/tracker/consumer/当前scheduler/Rabbit/EPMD/两guardian全部absent。原controller/manifest/appbinding/artifact/nativebuild六件SHA前后相同，数据/所有原日志和两份闭合raw保留并列SHA/bytes，P和sharedMySQL未触碰。aftercheck receiptac3c4129cc7842dea98936edfd45aff8。
 
 首次端口后验24396 EADDRINUSE的false如实保留，其余指定端口free；另只读重核见functional-phase-end-port-recheck.json，不据此猜原因或杀unknown。此收尾只证明本岗owned服务消失，不替代F独立结论或P性能通过；P角色/门禁/采样未由本动作改变，正式generator由root后续显式注册到P74003采样。
+
+## 2026-10-25 source935 campaign8：先清理与设计
+
+root通知旧P phase结束并已正常停sampler/app/broker，本岗owned核验后SIGTERM仅两guardian；所有角色/7workers/tracker absent，14旧端口free，六件身份SHA不变，closed raw完整SHA/bytes核对，aftercheck fb49c8d20ad84ca78a845a206df14e40，sharedMySQL未触碰。新source935本地存在，lock与broker模板实际比对一致；先写round8/design.md，再新增campaign-eight.py精确固定adc5197 helper/SHA派生新source/schema/端口/窗口，不修改旧run。4项pure guard真实0.42s通过（错误source/未知profile拒绝、逐字可逆/UTC/端口/DB/原scopeprefix保持）；不接触SUT或独立目录。提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1，操作者/决策者均AI角色，未冒人亲历。此刻新run尚未启动，CI/业务/独立/性能未由本岗验收。

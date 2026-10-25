@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "functional-campaign-normally-stopped-performance-campaign-untouched",
+  "stage": "source935-campaign8-designed-old-performance-normally-stopped",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2238,5 +2238,15 @@
       },
       "performance_or_mysql_touched": false
     }
+  },
+  "source935_campaign8": {
+    "product_source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "design": "agents/deployment/native-performance-20261025/round8/design.md",
+    "previous_stop": "agents/deployment/native-performance-20261025/round8/previous-performance-stop.json",
+    "helper": "deployment/native/campaign-eight.py",
+    "pure_guards": "4 passed in 0.42s; no SUT access",
+    "new_runtime_started": false,
+    "independent_or_performance_verdict": null,
+    "prompt_id": "ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1"
   }
 }
