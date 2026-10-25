@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-reuse-f4-offline-backend-upgrade-local-ready",
+  "stage": "cloud-reuse-f4-upgrade-V2-artifact-ready-and-root-TLS-repair-proven",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2413,7 +2413,32 @@
       "CI_artifact_actual_hash_pending": true,
       "next_campaign_host_https_probe_required": true,
       "root_reported_935_TLS_reachability_failed_errno111": true,
-      "TLS_cause_not_determined": true
+      "TLS_cause_not_determined": true,
+      "V1_6609_build_prohibited_preserved": true,
+      "V2_tool": "deployment/cloud-reuse/backend-upgrade-v2.py",
+      "V2_helper_sha256": "5200f9e74a6ddbefd975e4f6e1c256201cd786ee7d28820bc9240eb1b0151e88",
+      "V2_local_manifest_sha256": "cd5bae06953544ea0f2c0a6e5d2be7c444f506bd92b327c9398bfe832e56961a",
+      "V2_guards": 22,
+      "V2_source_manifest": "agents/deployment/cloud-reuse-20261025/upgrade-v2-source-manifest.json",
+      "V2_derivation": "agents/deployment/cloud-reuse-20261025/upgrade-v2-derivation.json",
+      "receiver": "deployment/cloud-reuse/source-artifact-receive.py",
+      "receiver_guards": 10,
+      "V2_dispatch_pending_root": true,
+      "CI_actual_V2_artifact_hash_pending": true
+    },
+    "TLS_repair": {
+      "helper": "deployment/cloud-reuse/tls-repair.py",
+      "helper_sha256": "c3459c2213b628829fd3f865007ef1b1931ba4284c77ee6a92e9fa0cdbb5dd9c",
+      "local_guards": 10,
+      "root_reported_actual_nginx_t": true,
+      "root_reported_actual_host_strictCA_IP_status": 401,
+      "root_reported_attempts": 1,
+      "credentials_sent": false,
+      "new_binding_sha256": "546e3c1bace95d9fff9809f2fbf7df4bee67abc013324e79cb55c64c7ef32e9d",
+      "original_base_factory_stop_unchanged": true,
+      "child_cloud_operation": false,
+      "business_or_performance_verdict": null,
+      "steps": "deployment/cloud-reuse/TLS-REPAIR-STEPS.md"
     }
   }
 }

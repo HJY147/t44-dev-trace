@@ -10,8 +10,8 @@ test "${T44_BUNDLE_SOURCE_INPUT:-}" = ""
 task_root="$RUNNER_TEMP/t44-f4-source-context"
 task_artifact="$RUNNER_TEMP/t44-f4-source-artifact"
 mkdir -m 0700 "$task_root" "$task_artifact"
-task_helper="$GITHUB_WORKSPACE/deployment/cloud-reuse/backend-upgrade.py"
-test "$(sha256sum "$task_helper" | cut -d ' ' -f 1)" = 6609f859c0ff02249455b67684eff49c7d77996a0cc7937b394319acdc6570c8
+task_helper="$GITHUB_WORKSPACE/deployment/cloud-reuse/backend-upgrade-v2.py"
+test "$(sha256sum "$task_helper" | cut -d ' ' -f 1)" = 5200f9e74a6ddbefd975e4f6e1c256201cd786ee7d28820bc9240eb1b0151e88
 git init --quiet "$task_root/product"
 timeout --signal=TERM --kill-after=10s 120s git -C "$task_root/product" fetch \
   --quiet --no-tags --depth=1 https://github.com/HJY147/t44-dev-trace.git \

@@ -1,5 +1,7 @@
 # 同批实例离线增量镜像：935 → f4（build-only）
 
+**执行版本更新：旧6609与旧source/source-v2、首轮CI工件保留，不执行其build。当前V2为backend-upgrade-v2.py SHA5200...，artifact里仍命名backend-upgrade.py；请只使用文末V2步骤。** 原版存在umask077使COPY子目录变0700的静态边界，实际Docker构建尚未尝试即发现；V2逐级规范0755并增真实文件系统权限guard，未伪造一次云失败。
+
 部署岗只准备本地工具，不操作云。产品目标精确 f4bd382d4668130793fc553df9ce6363c4656ea6；root 转述两个官方 CI success，不以此冒充本工具云构建、400/600 或最终验收。
 
 ## 已实际完成的本地准备
@@ -53,3 +55,28 @@ python3 /root/t44-r9/backend-upgrade.py build \
 此设计有明确源/依赖/镜像边界，尚无新 F/P prepare/start/seed/性能许可。root 先结束935诊断并决定新 generation 和时限，再为新控制器安排独立实现与准入；不为迁移争取时间而延长旧 timer/grant，不新开或重买 VM。
 
 新增真实教训（root回执，非本岗云探测）：935工厂API running身份核验成功之后，后续host严格CA+IP的HTTPS仍ConnectionRefusedError，data-only admin另有Network unreachable；两者分别保留，不能把API进程running或Compose wait当TLS可用。root正在收限定TLS/web日志，尚无根因。本岗不猜整改；下一代up必须增加host实际HTTPS CA+IP验证（无token，401预期另显式记录），失败原stdout/stderr保新私有原件，API身份/TLS门禁各记，不能关闭验证或覆盖原770d锚。
+
+## 当前V2：目录权限保护、严格接收与小工件
+
+旧6609源码字节原样；新backend-upgrade-v2.py 23556 bytes/SHA `5200f9e74a6ddbefd975e4f6e1c256201cd786ee7d28820bc9240eb1b0151e88`，umask077下所有会COPY的子目录显式0755，文件原0644/0755；private context根仍0700。22项guard/0fail，新增真实filesystem权限检查；未做Docker构建。新本机source-v3（旧source-v2不覆）manifest `cd5bae06953544ea0f2c0a6e5d2be7c444f506bd92b327c9398bfe832e56961a`，源tar/gzip仍c74c.../6fda...，新PUBLIC清单另存upgrade-v2-source-manifest.json。
+
+原941工件root已实际dispatch run40204335612，仅prepare、不Docker，原工件留存；新workflow脚本现在固定选择V2，artifact仍恰好五文件，helper文件名backend-upgrade.py但内容SHA必须5200。root新dispatch后，用实际Linux官方ZIP摘要、下载后实际manifest摘要，不能强套Mac cd5...。
+
+独立接收器 source-artifact-receive.py 4967 bytes/SHA `ef6e9c5f5b704ad2bf6c2d48f1bf9e6301c9a729acc7d4e4bb4ec17bcd34ecac`：全ZIP SHA、CRC、精确5 basename、无link/目录/extra/重复/加密、总解压≤1MiB；helper5200先核再import（不写pycache、不导入产品）。固定fd O_EXCL|O_NOFOLLOW/新0700目录与0600文件；内部gzip实际tar SHA/完整safeTar/文件集和frozen equality再核，失败留独立输入/partial，不能覆盖旧轮。10项guard0.09s，含故意重复ZIP名的预期stdlib warning，不是生产警告。
+
+```sh
+python3 /root/t44-r9/source-artifact-receive.py \
+  --zip /root/t44-r9/inbound/upgrade-f4-v2.zip \
+  --zip-sha256 OFFICIAL_ACTUAL_ZIP_SHA \
+  --manifest-sha256 ROOT_VERIFIED_ACTUAL_LINUX_MANIFEST_SHA \
+  --output /root/t44-r9/upgrade-f4-v2-source-01
+
+python3 /root/t44-r9/upgrade-f4-v2-source-01/backend-upgrade.py build \
+  --package /root/t44-r9/upgrade-f4-v2-source-01 \
+  --manifest-sha256 ROOT_VERIFIED_ACTUAL_LINUX_MANIFEST_SHA \
+  --image-proof /root/t44-r9/image-proof.py \
+  --proof-raw /root/t44-r9/proof-v2-01/proof.jsonl \
+  --output /root/t44-r9/upgrade-f4-v2-build-01 --run-id r10f4build02
+```
+
+root通过原官方短期授权URL下载ZIP，无GitHub token送云；接收器本身无网络/下载功能。两条命令都不启动业务。最终V2image/binding/实际文件集结果待root云执行；不能提前填Id。新controller设计的TLS修正/真实host门禁另见TLS-REPAIR-STEPS.md，必须纳入下一代，原770d不改。
