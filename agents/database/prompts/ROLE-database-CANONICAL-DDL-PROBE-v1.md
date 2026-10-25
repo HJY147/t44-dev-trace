@@ -7,3 +7,7 @@
 ## 总协调本次实际新资源批准
 
 > 批准你**独立socket-only临时校准**明确两新DB/自有tmp796新datadir/10min硬停128M、不绑定TCP、不操作旧PID7980/13306/oldschemas。根刚实际核binary --no-defaults --version：/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/mysql-8.4/mysql-8.4.11-macos15-arm64/bin/mysqld => MySQLCommunity8.4.11 macos15arm64。这是唯一本次.runtime例外：仅执行这个已在用官方binary及其随包必需shlibs/plugins（明确--basedir同mysql-8.4.11-macos15-arm64），不得读任何旧datadir/config/日志/凭据、不要扫.runtime目录。其它私件禁令不变。先自己的新--initialize-insecure datadir，再--no-defaults --skip-networking --mysqlx=OFF --socket自己tmp下短绝对path（mac UNIX path长度限制，用项目根tmp796子短路径不要目录外/tmp），--pid-file明确ownpath，每次证实PIDdatadir属自己才停；不删除失败datadir或隐藏红。校准后只保留数据/关闭自己PID，不推预期。官方SHOWCREATE NOACTION/RESTRICT正是要保持原兼容性的反例，不能默默严格拒。结论无正收益也如实收口。
+
+## 总协调对限定夹具修正的实际批准
+
+> 批准同一已限定socket-only校准的新data2/s2/pid2，2个获批schema，570+30秒/128M/无TCP，唯独复核7个FK夹具拆DROP/ADD后真实正负差异；保留run1失败数据，禁旧PID7980/13306依旧。不要再问这类已在限定私有临时资源内的夹具修正/重跑；后续同scope小问题你自主修正，证据不可覆盖。如又增第三轮请使用新data3且同限制，只有范围/权限/费用变化才交root。原rawhash已被有效原生正例反证，不要为宣传收益把等价DDL改判不兼容；B标准结构归一化若净账不够就准确收口，别扩大多轮测试耗时。谢谢。

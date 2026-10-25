@@ -24,7 +24,7 @@ def normalize_show(ddl):
     return re.sub(r"(?m)^(\) ENGINE=\w+) AUTO_INCREMENT=\d+(?= DEFAULT CHARSET=)", r"\1", ddl)
 
 
-def cases():
+def cases(corrected_fk=False):
     index = (
         "ALTER TABLE tasks DROP INDEX ix_tasks_project_state, ADD {} ix_tasks_project_state ({}){}"
     )
@@ -32,7 +32,7 @@ def cases():
     check = (
         "ALTER TABLE users DROP CHECK ck_users_active, ADD CONSTRAINT ck_users_active CHECK ({})"
     )
-    return [
+    values = [
         ("counter_growth", True, "ALTER TABLE users AUTO_INCREMENT=1234"),
         ("redundant_parentheses", True, check.format("((`active` IN (0,1)))")),
         (
@@ -120,8 +120,35 @@ def cases():
         ("check_enforcement", None, "ALTER TABLE users ALTER CHECK ck_users_active NOT ENFORCED"),
     ]
 
+    if not corrected_fk:
+        return values
+    selected = []
+    names = {
+        "foreign_noaction_restrict",
+        "foreign_qualified_self",
+        "foreign_target_table",
+        "foreign_target_schema",
+        "foreign_source_order",
+        "foreign_target_order",
+        "foreign_cascade",
+    }
+    for name, expected, changes in values:
+        if name not in names:
+            continue
+        split = []
+        for statement in [changes] if isinstance(changes, str) else changes:
+            if " DROP FOREIGN KEY " in statement and ", ADD CONSTRAINT " in statement:
+                drop, add = statement.split(", ADD CONSTRAINT ", 1)
+                split.extend(
+                    [drop, drop.split(" DROP FOREIGN KEY ", 1)[0] + " ADD CONSTRAINT " + add]
+                )
+            else:
+                split.append(statement)
+        selected.append((name, expected, split))
+    return selected
 
-def run(receipt):
+
+def run(receipt, corrected_fk=False):
     import pymysql
     from sqlalchemy import URL, create_engine
     from t44.persistence.migrations import check_schema
@@ -138,8 +165,16 @@ def run(receipt):
     if "8.4.11" not in version:
         raise ValueError("Only root-approved pinned8.4.11 binary")
     receipt["binary_version"] = version.strip()
-    RESOURCE.mkdir(mode=0o700, exist_ok=False)
-    data, sock, pidfile = RESOURCE / "data", RESOURCE / "s", RESOURCE / "pid"
+    if corrected_fk:
+        if RESOURCE.is_symlink() or not RESOURCE.is_dir():
+            raise ValueError("Approved resource directory identity changed")
+        data, sock, pidfile = RESOURCE / "data2", RESOURCE / "s2", RESOURCE / "pid2"
+        if data.exists() or sock.exists() or pidfile.exists():
+            raise ValueError("Correction resources must be new; preserve previous data")
+    else:
+        RESOURCE.mkdir(mode=0o700, exist_ok=False)
+        data, sock, pidfile = RESOURCE / "data", RESOURCE / "s", RESOURCE / "pid"
+    suffix = "2" if corrected_fk else ""
     if len(os.fsencode(sock)) >= 100:
         raise ValueError("Socket path too long")
     process = connection = None
@@ -170,7 +205,7 @@ def run(receipt):
                 f"--basedir={BASEDIR}",
                 f"--datadir={data}",
                 "--innodb-buffer-pool-size=128M",
-                f"--log-error={RESOURCE / 'initialize.log'}",
+                f"--log-error={RESOURCE / ('initialize' + suffix + '.log')}",
             ],
             check=True,
             timeout=90,
@@ -186,7 +221,7 @@ def run(receipt):
             "--innodb-buffer-pool-size=128M",
             f"--socket={sock}",
             f"--pid-file={pidfile}",
-            f"--log-error={RESOURCE / 'server.log'}",
+            f"--log-error={RESOURCE / ('server' + suffix + '.log')}",
         ]
         process = subprocess.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         receipt["process"] = {"pid": process.pid, "args": args}
@@ -284,7 +319,7 @@ def run(receipt):
                 "legacy": legacy(),
             }
             receipt["cases"] = []
-            for name, expected_legacy, changes in cases():
+            for name, expected_legacy, changes in cases(corrected_fk):
                 create(ACTUAL, reset=True)
                 entry = {
                     "name": name,
@@ -347,6 +382,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute-approved", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--fk-correction", action="store_true")
     args = parser.parse_args()
     if not args.execute_approved:
         parser.error("Root approval and explicit execution required")
@@ -376,7 +412,8 @@ def main():
             if tool_source != expected_source:
                 raise ValueError("Commit the exact prototype before calibration")
             receipt["tool_sha256"] = hashlib.sha256(tool_source).hexdigest()
-            run(receipt)
+            receipt["correction_of_first_run_setup"] = args.fk_correction
+            run(receipt, corrected_fk=args.fk_correction)
             receipt["status"] = "calibrated;candidatecompatibilityresultsnotforcedgreen"
         except BaseException as error:
             receipt.update(
