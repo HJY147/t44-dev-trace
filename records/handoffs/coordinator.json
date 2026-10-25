@@ -1,11 +1,81 @@
 {
   "role": "coordinator AI",
-  "stage": "continuous-cloud-reuse-20261025",
-  "prompt_ref": "USER-continuous-cloud-reuse-20261025-original",
-  "cloud": {"same_instances": true, "node_count": 2, "budget_CNY": 100, "automatic_release_asia_shanghai": "2026-10-26T06:00:00+08:00", "release_schedule_ui_verified": true, "readonly_probe_nodes_complete": 2, "package_preparation_nodes_complete": 2, "all_seven_image_contents_proven_nodes": 2, "image_proof_invoke": "t-hz0713x87n8ctts", "product_started": false, "final_bill_verified": false},
-  "source_candidates": {"backend_reviewed": "d63fe18f3227e1779d3951072636efcdb6181550", "backend_net_lines": 370, "database_submitted": "f0d28596b65151f565eaf25b8a91f0edbc4eab4c", "database_net_lines": 90, "combined_count_executed": true, "combined_count_commit": "396b646adb87de183929ac6fc46bbe7e88074c8a", "application_lines": 5875, "excess_lines": 775, "size_passed": false},
-  "image_bundle_run": 40193055249,
-  "development_CI": {"original_failure": 40193412286, "corrected_pass": 40193953158, "head": "bbd0b3e1a2e6c89c071a4a5dd49ad8cb89941c67", "backend_tests": 664, "failures": 0, "errors": 0, "skipped": 0, "covered_lines": 2475, "total_lines": 2761, "docker_pass": 40195832268, "docker_head": "bf1da52f246126b5fbfe8fedd5bda586ee3b59a8"},
-  "pending": ["further genuine source reduction", "Linux exact-source diagnostics", "dedicated valid revocation session", "fresh independent functional and performance execution", "final billing and cleanup"],
+  "stage": "paused-retain-20261026",
+  "user_pause": true,
+  "prompt_ref": "records/prompts/coordinator-pause-20261026.md",
+  "cloud": {
+    "same_instances": true,
+    "node_count": 2,
+    "both_state_ui_verified": "Stopped",
+    "both_stop_mode_ui_verified": "Economical",
+    "automatic_release_cancelled_nodes": 2,
+    "disks_retained": true,
+    "budget_CNY": 100,
+    "storage_still_billed": true,
+    "final_bill_verified": false
+  },
+  "current_application": {
+    "source": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    "application_lines": 5862,
+    "upper_bound": 5100,
+    "excess_lines": 762,
+    "size_passed": false
+  },
+  "development_CI": {
+    "product_run": 40201584671,
+    "docker_run": 40201584699,
+    "backend_tests": 695,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "backend_covered_lines": 2478,
+    "backend_total_lines": 2760,
+    "frontend_tests": 89,
+    "frontend_covered_lines": 364,
+    "frontend_total_lines": 390,
+    "report": "reports/final/round9-ci-evidence.md"
+  },
+  "cloud_diagnostic": {
+    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "clients": [
+      20,
+      40,
+      400
+    ],
+    "requests": [
+      400,
+      800,
+      8000
+    ],
+    "http_errors": [
+      0,
+      0,
+      0
+    ],
+    "c400_p95_ms": [
+      1544.154,
+      1263.755,
+      1752.446,
+      1920.496
+    ],
+    "formal_600s_run": false,
+    "performance_passed": false,
+    "worker_traces_closed_valid": 7,
+    "observer_requests": 11284,
+    "summary_fsynced": true,
+    "summary_local_export_complete": false,
+    "root_cause_proven": false
+  },
+  "pending": [
+    "user instruction to resume",
+    "exact f4 cloud generation and continuous resource capture",
+    "new naturally valid/expired/revocable sessions",
+    "fresh independent functional and full performance execution",
+    "genuine source reduction and separately reviewed database audit fixes",
+    "final billing",
+    "student-authored research"
+  ],
+  "resume": "docs/deployment/resume-after-pause-20261026.md",
+  "decision": "records/decisions/pause-retain-20261026.md",
   "report": "reports/modules/coordinator.md"
 }
