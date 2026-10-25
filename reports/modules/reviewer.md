@@ -374,3 +374,10 @@ provider初审精确a6c96c5599a9dd7db60eb618a40f9acbaf49817b/source6d09d2e51bd57
 
 
 Provider/v4两个scope行政封档：技术报告/源快照/新fake反例7ec719f0282f3ff00d95a546801764d7df818ce7已push；Issue12 COMMENT6395158510（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395158510）特定全文GET exit0，body及issue严格核实。provider49ef自身限定闭环不等v4授权；v4 handoff/HTTP截止P2仍阻断，draftfalse、SUT0。metadata封后释放槽供下轮PUBLIC修订，旧7不冒覆盖、未编造红test；0probe provider、1新controller fake，不跑7/11/29、不读private值、不联系测试agent。
+
+
+## 2026-10-25 829 PUBLIC v5定点闭环/精确功能准入
+
+实际ROLE-reviewer-829-PUBLIC-v5-v1，18 inventory bytes/SHA同50408b5，17允许PUBLIC文本快照；opaque仅wholehash，不读private/Git/cases/journal/keys/实际env/build/token，不联系测试，不给开发oracle。paired/dualclock3helper、journal/recovery、PinnedTLS、native identity、performance eligibility共8组件AST同已审v4；supervisor只固定入口改PUBLIC generic adapter，.01dualwatch/monoTimer/RSS限制不变。HTTPraw持久化后原截止查/timer取消再冻结结果；setup独立120/run UTC+mono，失败SetupNotProven保留原HTTP并setup_blocked禁后续SUT。adapter仅映射该setup类型，普通case AssertionError不转PASS，未读私有runner。先design再1次822_v5_scope_return_recheck.py（Python3.12.10 arm64 exit0）重放旧UTC拒绝和原HTTP15/run120+20handoff；现在201/complete/errornull/HTTPelapsed0+setupREADY20s，0socket/SUT/真实TLS/OS钟/监督器/provider。36仅PUBLIC报告/source36method，不重跑、不合计。
+
+明确技术准入已先给root：v4中性draft01fb...只tool_freeze改50408...与admitted true写新文件，其余源/build/runtime/CA/resource/100000/4GiB/faults空/cost0/08:15不变。预期全内容canonicalSHA d6d3d24a8409795c0277d566f3f4e7d348eb6e0a94b64e13487a3313e959cdd8，非实际byteshash；本岗未激活grant。工具08:06:38UTC距08:15剩502s，只报元数据不改用例/阈值/期限，不承诺计划case全完成。provider49ef另审后绑定operator实际新PUBLIC receipt。只一次functional，非fault/perf/产品/global/merge通过，实际case结果仍待独立operator原件。报告reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md，证据agents/reviewer/evidence/829-public-v5/。旧v4报告/反例不改。

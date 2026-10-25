@@ -1,0 +1,6 @@
+Prompt-Ref: ROLE-reviewer-829-PUBLIC-v5-v1
+AI总协调本轮实际窄派工原文；不是用户亲写，不是学生手写研究反思，不向独立operator传开发结果/业务oracle。
+
+v5已冻结，立即窄复审并尽早technical结论后行政。唯一新freeze50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324，入口根tmp/829.../PUBLIC/manifest.PUBLIC.json明确inventory；只PUBLIC，不读private/不联系独立agent/不给任何开发结果。36offlinechecks原件，v4旧仿真保留。重点只先前HANDOFF-DEADLINE：HTTP完成/原deadline check/timer取消→独立setup120cap/run双时钟，setup失败NOT_PROVEN同时保留HTTPstatus/body，不放宽HTTPdeadline；UTC前跳修复保持。其余已审v4范围未变的hash可机械核。目标functional-only exactdraft由v4draft复制但**新文件**仅tool_freeze替换v5、admitted最终true；其余源c8/buildc6eafe.../runtime8053/CA1062/资源/08:15/max1800/100000req/4GiB/faults[]一律不改。若你认为08:15窗口不足请只指元数据事实，不调整用例/阈值。rootprovider49ef已审限定闭环未变，新的receipt将operator启动生成后root显式绑定实际path。请技术反馈优先，持续SUT0直到准入。
+
+实际改进理由：复用先前明确反例输入另建新文件，不改旧失败；将HTTP观测结果与neutral setup分类分开，检查generic adapter只映射setup类型，按精确两字段授权变换和剩余UTC事实给有限准入，不把短窗口或自检当实际业务通过。

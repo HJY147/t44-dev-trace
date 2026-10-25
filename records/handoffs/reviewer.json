@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "provider静态0probe与PUBLIC一次新fake已封；未执行CLI/DB/HTTP/独立SUT或读取private值",
+  "implementation_status": "仅PUBLIC源/原件/1次2输入fake复核；0本岗SUT，实际业务结果待独立operator",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v4/static-audit.json",
-  "latest_review_report": "reports/reviews/829-public-v4-2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-public-v5/static-audit.json",
+  "latest_review_report": "reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1469,6 +1469,11 @@
       "id": "ROLE-reviewer-829-PUBLIC-v4-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v4-v1.txt",
       "reason": "Separate root provider control from PUBLIC acceptance controller; preserve static failures, original UTC closure, and a new no-network handoff timing counterexample without private/business inputs."
+    },
+    {
+      "id": "ROLE-reviewer-829-PUBLIC-v5-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v5-v1.txt",
+      "reason": "Replay exact prior timing counterexamples on new freeze without existing36/private/SUT execution; bind only two permitted grant field changes, preserve prior rejection and timing limits."
     }
   ],
   "questions": [],
@@ -1512,9 +1517,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "PROVIDER49_LIMITED_CLEAR;V4_FUNCTIONAL_BLOCKED_829_HANDOFF_DEADLINE_01",
+  "review_outcome": "EXACT_V5_ONE_FUNCTIONAL_PHASE_TECHNICALLY_ADMITTED;NO_FAULT_PERFORMANCE_OR_PRODUCT_PASS",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
+  "review_target_sha": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
   "review_targets": [
     {
       "pr": 14,
@@ -1596,7 +1601,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "provider49限定闭环；829 PUBLIC v4新handoff/HTTP截止P2阻断，draft false/SUT0",
+  "stage": "829 PUBLIC v5原handoff/UTC反例闭环；精确两字段grant变换后一次functional技术准入",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1615,7 +1620,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-25T08:01:24.361422+00:00",
+  "updated_at": "2026-10-25T08:10:05.990070+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2585,7 +2590,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "PUBLIC controller freeze SHA256; provider separately Git SHA1",
+  "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -2921,5 +2926,58 @@
     },
     "technical_evidence_commit": "7ec719f0282f3ff00d95a546801764d7df818ce7",
     "role_release": "two separate scoped reports sealed; slot returned for root to activate next PUBLIC-only correction; no private or SUT operations"
+  },
+  "previous_phase_before_829_PUBLIC_v5": {
+    "stage": "provider49限定闭环；829 PUBLIC v4新handoff/HTTP截止P2阻断，draft false/SUT0",
+    "implementation_status": "provider静态0probe与PUBLIC一次新fake已封；未执行CLI/DB/HTTP/独立SUT或读取private值",
+    "review_target_sha": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
+    "review_target_kind": "PUBLIC controller freeze SHA256; provider separately Git SHA1",
+    "review_outcome": "PROVIDER49_LIMITED_CLEAR;V4_FUNCTIONAL_BLOCKED_829_HANDOFF_DEADLINE_01",
+    "latest_review_report": "reports/reviews/829-public-v4-2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v4/static-audit.json"
+  },
+  "829_PUBLIC_v5_review": {
+    "freeze": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+    "report": "reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md",
+    "audit": "agents/reviewer/evidence/829-public-v5/static-audit.json",
+    "PUBLIC_inventory_hash_checks": 18,
+    "PUBLIC_text_snapshots": 17,
+    "key_v4_AST_components_unchanged": 8,
+    "old_HANDOFF_DEADLINE": "closed; prior v4 counterexample now preservedHTTP+setupREADY",
+    "old_UTC": "still rejected before transport",
+    "new_probe": "tmp/822_review_829_v3/822_v5_scope_return_recheck.py",
+    "probe_runs": 1,
+    "probe_scenarios": 2,
+    "probe_exit": 0,
+    "actual_socket_SUT_requests": 0,
+    "existing36_run": false,
+    "private_values_cases_Git_journal_keys_read": false,
+    "testing_agent_contacted": false,
+    "business_oracle_injected": false,
+    "generic_adapter_scope": "only SetupNotProven to existing NotProven type; ordinary case assertions unaffected by this adapter; private runner not audited",
+    "grant_transform": {
+      "base_v4_draft_sha256": "01fb722a181c73f9c592ab22c942e40e186da51b1b27161de5daee19c221bf9a",
+      "changed_fields_only": [
+        "tool_freeze_sha256",
+        "admitted"
+      ],
+      "new_freeze": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+      "new_admitted": true,
+      "canonical_content_sha256": "d6d3d24a8409795c0277d566f3f4e7d348eb6e0a94b64e13487a3313e959cdd8",
+      "root_writes_new_file_not_reviewer": true,
+      "actual_bytes_hash_to_be_separately_recorded": true,
+      "expires_at_unchanged": "2026-10-25T08:15:00.000000Z"
+    },
+    "time_metadata": {
+      "tool_UTC_at_conclusion": "2026-10-25 08:06:38 UTC",
+      "remaining_seconds": 502,
+      "no_all_planned_cases_completion_promise": true,
+      "no_threshold_case_or_expiry_adjustment": true
+    },
+    "provider_separate_source": "49ef08a7e726fa163106647b96e415213f2aae8f",
+    "outcome": "ONE_EXACT_FUNCTIONAL_PHASE_TECHNICALLY_ADMITTED_AFTER_ROOT_APPROVED_TWO_FIELD_GRANT_TRANSFORM",
+    "technical_feedback_before_admin": true,
+    "fault_performance_product_global_merge_pass": false,
+    "prompt_ref": "ROLE-reviewer-829-PUBLIC-v5-v1"
   }
 }
