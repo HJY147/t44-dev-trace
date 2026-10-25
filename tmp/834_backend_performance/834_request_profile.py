@@ -242,14 +242,48 @@ def fixture(args):
         engine.dispose()
 
 
+class DiagnosticCleanupError(RuntimeError):
+    """A successful diagnostic body is still failed if resource cleanup did not complete."""
+
+
+def _cleanup(stages, fixture_generator, observer, installed, report, primary):
+    report["requests"] = stages.rows if stages is not None else []
+    errors = report["cleanup_errors"] = []
+
+    def attempt(phase, action):
+        try:
+            return True, action()
+        except BaseException as error:
+            errors.append({"phase": phase, "exception_class": type(error).__name__})
+            return False, None
+
+    if stages is not None:
+        attempt("stages_close", lambda: stages.close())
+    if fixture_generator is not None:
+        attempt("fixture_close", lambda: fixture_generator.close())
+    if observer is None:
+        report["database_observer"] = {"status": "NOT_REQUESTED"}
+    else:
+        report["database_observer"] = {"status": "NOT_INSTALLED"}
+        if installed:
+            ok, snapshot = attempt("observer_snapshot", lambda: observer.snapshot())
+            report["database_observer"] = snapshot if ok else {"status": "SNAPSHOT_FAILED"}
+        attempt("observer_close", lambda: observer.close())
+    if errors and primary is None:
+        raise DiagnosticCleanupError("Cleanup failed; see separate cleanup_errors")
+
+
 def run(args, root, report):
+    report["requests"] = []
     from t44.contracts import OPERATIONS, violations
     from t44.services.codes import Action
 
-    observer = observer_from(args)
-    stages = Stages(root, observer)
-    fixture_generator = fixture(args)
+    observer = stages = fixture_generator = primary = None
+    installed = False
     try:
+        observer = observer_from(args)
+        stages = Stages(root, observer)
+        fixture_generator = fixture(args)
         client, app, _, engine, users = next(fixture_generator)
 
         def send(operation, *, token=None, body=None, **path):
@@ -310,6 +344,7 @@ def run(args, root, report):
         task = tasks[0]
         if observer:
             observer.install(engine)
+            installed = True
         stages.install(app)
 
         def get_task():
@@ -365,13 +400,12 @@ def run(args, root, report):
             "measured_setup_excluded": True,
             "pool_already_used_by_setup": True,
         }
+    except BaseException as error:
+        primary = error
+        report["primary_exception_class"] = type(error).__name__
+        raise
     finally:
-        stages.close()
-        fixture_generator.close()
-        if observer:
-            report["database_observer"] = observer.snapshot()
-            observer.close()
-        report["requests"] = stages.rows
+        _cleanup(stages, fixture_generator, observer, installed, report, primary)
 
 
 def main():
