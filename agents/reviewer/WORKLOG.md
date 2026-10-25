@@ -507,3 +507,6 @@ v5行政封档：技术报告/定点复核5c287a32f981542b5a2f1c512efda4be41cade
 ## 2026-10-25 829 v6冷包/provider接口/精确新功能授权
 
 ROLE-reviewer-829-PUBLIC-v6-v1；freeze90f88d，10个coordinator=true PUBLIC bytes/hash同（另allowlist文本，先口头误称11项hash已更正），private false项未读/hash/执行，未重算private8core，不联系独立岗/不输入业务oracle。control3495 SocketIO原生makefile引用与CaptureRaw.close、显式response.close符合本机stdlib实际源；handoff/supervisor/runner/routes字节同v5，14AST门禁组件同，UTC/HTTPtimer先结束再neutral120s规则不变。provider exactd7a相对49ef只cold根/core_files sealer两接口，root08:39:58实核私有provisioned fresh状态，本岗不读值。draft actualSHA96175a15仅新文件admitted false→true canonicald72fdf96，其余08:44/max600/源构建资源/cap均不变，12既有project/tasks0/无清理如实。0新probe/tests/TLS/HTTP/DB/CLI/provider/supervisor/SUT，36+3/4TLS仅root转述待明确PUBLIC证据路径，不冒亲跑。精确技术准入已先发root，行政不阻塞；非业务/fault/perf/product/global/merge通过。
+
+
+v6限定行政封档：技术报告/静态证据b15888f33bbcfde72da1a0bd4a009ad86c59ea2c已push；Issue12 COMMENT6395536736（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395536736）08:43:42特定全文GET exit0，body及issue严格匹配。无业务/fault/perf/global/main/merge通过；准入仍只exact新文件单字段变换，08:44不延长。本岗未运行SUT或读取动态/私有结果，行政不阻塞独立操作，公开TLS/离线原件如另有授权可另阶段追加，当前只记root relay。封条后释放槽。
