@@ -1,0 +1,30 @@
+{
+  "visibility": "PUBLIC",
+  "kind": "static_AST_and_inventory_tool_checks",
+  "all_unrelated_Suite_method_AST_unchanged": true,
+  "operation_cohort_p95_AST_unchanged": true,
+  "all_performance_self_check_call_AST_unchanged": true,
+  "performance_metrics_formula_AST_unchanged": true,
+  "durable_order_AST_statement_indices": {
+    "metrics": 36,
+    "resource_raw_import": 38,
+    "core_criteria": 39,
+    "audit_postconditions": 43
+  },
+  "metrics_append_before_resource_and_all_postconditions": true,
+  "complete_postconditions_increment_after_snapshot_proof_guard": true,
+  "controller_original_bytes_exact_prefix": true,
+  "controller_original_AST_unchanged": true,
+  "controller_new_definitions": [
+    "PaginationObservation",
+    "analyze_resource_jsonl"
+  ],
+  "suite_change_whitelist": [
+    "control helper imports",
+    "Suite.page",
+    "Suite.resource_evidence",
+    "Suite.performance collection/order/proof guards"
+  ],
+  "schema_and_contract_bytes_unchanged": true,
+  "SUT_requests": 0
+}

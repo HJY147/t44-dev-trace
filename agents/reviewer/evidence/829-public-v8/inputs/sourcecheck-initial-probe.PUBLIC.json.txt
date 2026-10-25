@@ -1,0 +1,8 @@
+{
+  "visibility": "PUBLIC",
+  "kind": "preserved_offline_sourcecheck_probe",
+  "status": "CHECKER_ASSERTION_FAILED",
+  "SUT_requests": 0,
+  "cause": "Unanchored substring search for audits=self.page also matched baseline_audits=self.page; implementation was unchanged",
+  "correction": "Use AST statement targets and dictionary kind instead of substring offsets"
+}

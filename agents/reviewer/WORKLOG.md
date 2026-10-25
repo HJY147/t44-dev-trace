@@ -564,3 +564,18 @@ ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1；draftb86830fd实核，仅新文件adm
 新 SHA 的 CI 与独立验收。本 AI 不能审批自己所写候选。
 提示词 P813-DEEP-PLAN-20261025，完整证据和范围见本期报告及阶段 handoff。
 初次 worktree 路径已通过 git worktree move 纠正回 Desktop 项目内。
+
+## 2026-10-25 source935发布批准失效槽状态/经理顺序窄审
+
+ROLE-reviewer-BACKEND-935-PRIORITY-v1；source935/baseacae/E eade实核，73app仅workflow改，一槽恢复整模块AST等base。四authorityhash/原docx FR01/05/06安全与D008校验相容；新action7/assessment有效且批准ref不匹配才state5→原Call.manager(bit1只读)→原D008必拒，任务/assessmentversion/归属先后不变、matching原domain/其它action/auth/replay/txn/CAS/audit/outbox无变。4开发目标六业务表/单拒审计，2role另同键replay不增审计和reason6；2state合法blockstate3无新增replay，11邻接含explicitcontrolledlegacyrows不冒真实历史。24seal/E bytes同、2gzip exact、XML旧4红→4绿+11邻接绿只复算不重跑，原敏感raw未读/脱敏完整性不冒独立重扫。一次错读call.py exit1已改读common.py，非产品测试失败。先发root无窄scope阻断可集成/合并候选，source935CI40183757236仅root派单RUNNING未验过，新独立run/C8旧结果不继承；missing评估既有409与泛404文案澄清/旧规模FAIL保持。0SUT/SQL/CLI/test/CI/服务，没读tmp817/829/818/private或联系tester，不发APPROVE/global/main/产品通过。
+
+
+source935窄审行政封档：技术e1e9ce16f7a3e976b016c76f5376eb5da627c3d0已push；Issue12 COMMENT6396467669（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396467669）特定全文GET exit0/body及issue严格同。source935可集成/合并候选仅本scope无阻断，实际CI/新独立/规模/性能仍分开；未查或判40183757236绿，没读tmp817/829/818/private/独立结果。0本岗test/SUT/DB/CI，未发APPROVE/global/main或实际mergePASS。metadata封后释放槽。
+
+
+## 2026-10-25 v8工具/round8 F/P精确准入与旧F拒绝
+
+ROLE-reviewer-V8-FP-ADMISSION-v1；index95e933/allowa3c/cold438/freezed113，11truePUBLIC+7artifact hash同，false4=3私源+freeze元数据未读/hash。control58650原31281bytes/ASTprefix同，仅2purehelpers，handoff/supervisor/runner/routes同；OpenAPI无crosspage snapshot保证。18旧generic7绿11红→新18+16=34绿仅复算，checker会AST读privatepage故不跑；16资源只rawcallback bytes重建不是新增AES/HMAC集成，private顺序/threshold/counterguard仅作者proof。旧Fddf因v7root/旧packet时刻文件/76376等metadata错先拒且原文不改；root新F132改5字段，canonical2e9b5a0c、P285canonical7abf9c16各仅新admittedtrue执行准入。provider/watcher实际5+2literal精确同，ops6694七明列文件同；bindingef383/source935/build80d8/bc2b/newCA/DB/vhost实核。F11:00/max900，P11:15/max2400，先F完停owned环境再Pload；Pfullraw含nullpending不能numeric-only，完整audit snapshotgap仍NOT_PROVEN不能冒core达标=完整formal组通过。10:32F3/P14live；行政错误assume initialPIDimmutable令ProcessLookupError exit1原件保留，10:36仅3767absent，root中性确认provider10702正常scope替换停止initial，P3800未replace，不推case结果/不改grant。0本岗tests/SUT/HTTP/SQL/CLI/provider，kill0实际观察单列，不读private/actual结果或联系tester。技术先交root后行政，旧source成绩不继承，无APPROVE/global/main/产品通过。
+
+
+v8工具/round8 F-P行政封档：技术e9bc7ada7016154a43b1f9edecfcd381e41790c2已push；Issue12 COMMENT6396627329（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396627329）特定全文GET exit0/body及issue严格同。旧Fddf拒绝保留，新F132/P285仅admitted true新文件的准确canonical和时限不改，F结束停owned后Pload/fullraw；完整audit snapshot gap NOT_PROVEN，不增完整formal组PASS。root说F阶段已结束和部署停F只记调度事实，不读取结果；新增中性packetmetadata记录未读、不拖延行政。本岗0SUT/private实际结果/测试联系，metadata封后释放槽。
