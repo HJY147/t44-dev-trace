@@ -124,3 +124,9 @@
 - 权威OpenAPI动态导入；981成功meta读取info.version，982比较Meta.const，无1.1硬编码。API失败按原payload处理，表单409原保留/刷新，未发明错误Meta或改原守卫。
 - wire成功1.2与innercandidate1.0分别管理；31paths/38ops/130schemas和既有字段/错误codes保持。原不可自审/独立预案审核/经理发布不因用户措辞取消。
 - 全部只是静态兼容判断，当前演示和历史验证不提升到1.2；后续freeze、后端实现和授权复测由root安排。静态字节/实际只读路径误探见agents/frontend/contract-v12-draft-static-receipt.json；prompt ROLE-frontend-CONTRACT-V12-DRAFT-v1，不计学生人工改码。
+
+
+## 2026-10-25 round9 规模审计追加
+- 基线043fc464，先设计8716055；固定cloc真实应用5875、前端22文件1099有效行、仍超775，require-range exit1。
+- 前端和计数器字节不变；共用schema/工作台/记录已集中，无可信150–400行收益。生命周期helper预计净增，配置迁移/压行/视觉删减拒绝；root同意no-candidate。
+- 详见agents/frontend/size-round9/REPORT.md与tmp/803_frontend_size_round9原计数/SHA清单。没有新产品测试、云/API/性能或独立验收执行，不宣称规模门禁解除。
