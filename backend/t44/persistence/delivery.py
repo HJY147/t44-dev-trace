@@ -22,24 +22,20 @@ class OutboxStore:
             raise ValueError("Positive claim limit/lease required")
         with self.factory() as uow:
             g = uow.gateway
-            rows = g.rows(
-                "outbox_events",
-                {"status": 1},
-                predicates=(Pred("next_attempt_at", "le", now),),
-                order_by=("next_attempt_at", "id"),
-                limit=limit,
-                lock="update",
-                skip_locked=True,
-            )
-            if len(rows) < limit:
-                rows += g.rows(
-                    "outbox_events",
-                    {"status": 2},
-                    predicates=(Pred("lease_until", "le", now),),
-                    order_by=("lease_until", "id"),
-                    limit=limit - len(rows),
-                    lock="update",
-                    skip_locked=True,
+            rows = []
+            for status, due in ((1, "next_attempt_at"), (2, "lease_until")):
+                if len(rows) == limit:
+                    break
+                rows.extend(
+                    g.rows(
+                        "outbox_events",
+                        {"status": status},
+                        predicates=(Pred(due, "le", now),),
+                        order_by=(due, "id"),
+                        limit=limit if status == 1 else limit - len(rows),
+                        lock="update",
+                        skip_locked=True,
+                    )
                 )
             for row in rows:
                 values = dict(
@@ -87,14 +83,10 @@ class OutboxStore:
                     task_id=event["task_id"],
                     event_id=event["id"],
                     recipient_id=recipient,
-                    version=1,
                     level=ledger[0]["level"],
                     title=event["payload"].get("title", f"任务 {event['task_id']} 升级"),
                     message=event["payload"].get("message", "计划时间已触发升级，请处理"),
                     fallback=int(fallback),
-                    read_at=None,
-                    handled_at=None,
-                    handling_note=None,
                     handling_evidence=[],
                     created_at=now,
                 ),

@@ -1505,5 +1505,59 @@
     "prompt_ref": "ROLE-database-PERF-FIXTURE-20261025-v1",
     "production_change": false,
     "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6395326771"
+  },
+  "source_size_optimize_20261025": {
+    "branch": "codex/database-size-optimize-20261025",
+    "base": "e45a2b9",
+    "product_baseline": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "prompt_ref": "ROLE-database-SIZE-OPTIMIZE-20261025-v1",
+    "report": "agents/database/size-optimize-20261025/report.md",
+    "public_interfaces": "unchanged",
+    "ddl": "unchanged",
+    "dependencies": "unchanged in first stage",
+    "actual_first_stage_saved": 49,
+    "target_400_500": "NOT_ACHIEVED",
+    "validation": "SQLite/mock differential and public regressions; see exact source-bound report",
+    "unverified": [
+      "real MySQL/locks/concurrency",
+      "complete CI/coverage",
+      "independent acceptance",
+      "formal performance",
+      "global size compliance"
+    ],
+    "followup": "root admitted new VERSION seed algorithm design; stable68 checkpoint before new branch",
+    "first_stage_manual_summary_correction": "raw JSON1691->1642; earlier1791/350/48 manual values wrong",
+    "actual_cumulative_saved": 68,
+    "persistence_python_before": 1691,
+    "persistence_python_current": 1623,
+    "sqlglot": "REJECTED:425 comparison pairs; only9 projected lines saved; no production or dependency changes",
+    "seed_v2_candidate": {
+      "branch": "codex/database-seed-v2-optimize-20261025",
+      "stable_rollback": "5f779388",
+      "version": 2,
+      "seed_before": 348,
+      "seed_after": 326,
+      "additional_saved": 22,
+      "total_saved": 90,
+      "persistence_python_after": 1601,
+      "properties": "13passed33.10s before final old-marker-query protection; exact107 current small14passed1.84s/2deselected and current975 full1passed25.95s/2deselected",
+      "historical_v1": "old975 golden constants and935 SHA retained; current V2 production tested, no historical implementation substituted",
+      "scope": "candidate for root tradeoff; source-size target80-120 additional NOT_ACHIEVED",
+      "unverified": [
+        "real MySQL/new version native constraints",
+        "complete CI/coverage",
+        "independent acceptance",
+        "formal performance"
+      ],
+      "product_commit": "1076677527bbfc94e376ce1a564fc461622b5dee",
+      "pushed": true
+    },
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591",
+    "github_readback": "exact full body equal by single-id GET",
+    "committed_application_count": 6245,
+    "source_metric_exit_code": 1,
+    "unresolved_excess": 1145,
+    "validation_record": "agents/database/size-optimize-20261025/verification.json",
+    "final_candidate_total_saved": 90
   }
 }

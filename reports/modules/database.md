@@ -32,3 +32,19 @@
 
 - 设计2f6c1f9/工具d8addfd，复用冻结seed显式Collector，在root唯一授权新库一次准备并读回40P/6000T/9000E/11400reviews+3600decisions=15000，assessments额外3600；原18业务表空、schema18/226前后通过、35FK及指针/轮次/组状态核验。仅数据准备，不是性能/独立验收。
 - P1集中400DEVELOPING future与400disjoint overdue，其余5200分39项目，偏斜和压力组无依赖明确公开；5合成用户/800ID及seed/anchor/source/hash在[本轮报告](../../agents/database/performance-fixture-20261025/report.md)和public-inventory。生产/DDL无变更，8:04:21后本岗未再写库；root后来签5身份会话单列。恢复只封E，无新增测试/SQL。
+
+## 2026-10-25 实际源码规模优化首批
+
+- 独立树codex/database-size-optimize-20261025，935产品基线。seed默认构造/注解与按需buffer、migrations目录/完成路径、Rows比较/结果集合校验、Outbox双阶段claim共用算法，保留public接口/DDL及guard。
+- 原cloc2.10净省48，400–500目标尚未达到；不压格式/改统计。新迁移差分9场景和claim差分7场景保留SQL/commit/锁顺序语义；原975小/6000固定全库摘要保持。详见本岗[size报告](../../agents/database/size-optimize-20261025/report.md)。
+- 仅开发SQLite/mock验证；最后seed冻结插入顺序补充待验证。原云/独立/规模门禁未关闭，组合CI由根统一执行。SQLGlot仅根准入下一小原型，首批未新增依赖。
+- 首批手工汇总纠正：原JSON持久Python1691→1642净49；第二批使用冻结DDL默认省19，累计1691→1623净68。新默认值基线差分3+原980非integration12通过；原975最终锁序全量3通过，后续active默认的小seed2通过，大seed未重复。
+- SQLGlot严格425差分原型撤回：完整投影只省9，离线590次解析约13.4倍耗时；未改生产导入/依赖，无计入。根准入另版seed算法，但仍需先设计/实测，不将预期计成果。
+
+## VERSION2 seed候选待根取舍
+
+- 独立分支codex/database-seed-v2-optimize-20261025，稳定回退5f77938。slot时间轴、通用证据注解、派生ID/指针列和DAG枚举，VERSION2与旧marker拒绝；public CLI参数/结果键不变。seed348→326再省22，累计产品持久Python1691→1601净90，未达到额外80–120目标。
+- 新全量性质13场景33.10s通过（实际包括6000任务全35FK/JSON/角色/指针/版本/时间、另空库batch127重现、版本marker/无写参数与rollback）；首轮2红是新增测试统计了只读UoW，改到seed结束立即核单commit，红保留。随后新增旧marker直接读取拒绝，当前源该小变更仍需再验证。
+- 原975业务断言未降低，按VERSION选择快照；V1两golden与935来源显式保留但当前未执行V1历史代码。V2快照在语义/重现性质后才冻结；旧黄金小数据真实红保留。只是开发候选，无MySQL/独立/性能或组合CI成功声明。
+- 最终精确1076677当前源975/新性质小目标14绿1.84s（2未选）+975默认6000单目标1绿25.95s（2未选），原JUnit warning保留；原全性质13绿属于最后旧marker查询保护前，分范围记录不相加。
+- 原计数器当前完整产品6245/exit1，净90仍超1145；持久签名AST全同、冻结specs/DDL净差异0，Ruff通过。两分支已push；[Issue4交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591)单ID GET全文一致。根待采用稳定68或V2额外22、精确审核与CI/freshMySQL；不称规模/独立/正式性能闭合。

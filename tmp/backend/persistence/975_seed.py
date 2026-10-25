@@ -20,8 +20,23 @@ from t44.persistence import (
     migrations,
 )
 from t44.persistence.schema import TABLES, metadata
-from t44.persistence.seed import seed_demo
+from t44.persistence.seed import VERSION, seed_demo
 from t44.services.common import model, plan, task_model
+
+# VERSION1 history from935ab5b93bea788672c2b4a088c79cfeed848954/run39940459708.
+# These values are retained, not executed by current VERSION2 production.
+SEED_VERSION_DIGESTS = {
+    1: {
+        (2, 20, 20, 30): "aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29",
+        (40, 6000, 9000, 15000): "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3",
+    },
+    # Frozen only after independent relational/chronology/replay owner properties,
+    # tmp/812_database_size/v2-properties-fixed.log:13passed, not independent acceptance.
+    2: {
+        (2, 20, 20, 30): "92ea1b638c3b5b5d48aa49bd3c87240da896b99e5ad2d061d798fbcd4b439bed",
+        (40, 6000, 9000, 15000): "a21004ad29232af176fa4be4e65bfad2eb5e1f7f77436c9516c66b9de080a055",
+    },
+}
 
 
 @pytest.fixture
@@ -157,7 +172,9 @@ def persisted_digest(factory):
     for user in snapshot["users"]:
         del user["password_hash"]  # Random Argon2 salts/secrets deliberately are not reproducible.
     canonical = json.dumps(
-        snapshot, sort_keys=True, separators=(",", ":"),
+        snapshot,
+        sort_keys=True,
+        separators=(",", ":"),
         default=lambda value: value.hex() if isinstance(value, bytes) else value.isoformat(),
     )
     return hashlib.sha256(canonical.encode()).hexdigest()
@@ -166,8 +183,8 @@ def persisted_digest(factory):
 @pytest.mark.parametrize(
     "projects,tasks,dependencies,records,expected_digest",
     [
-        (2, 20, 20, 30, "aa4f3affb32b1b55bb685e153bc26a7f52d47416d75ea94b7af2f844e84bdb29"),
-        (40, 6000, 9000, 15000, "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3"),
+        (2, 20, 20, 30, SEED_VERSION_DIGESTS[VERSION][(2, 20, 20, 30)]),
+        (40, 6000, 9000, 15000, SEED_VERSION_DIGESTS[VERSION][(40, 6000, 9000, 15000)]),
     ],
 )
 def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
@@ -188,7 +205,7 @@ def test_seed_references_json_states_capacity_repeat_and_no_overwrite(
     assert_consistent(seed_factory)
     digest = persisted_digest(seed_factory)
     record_property("seed_semantics_sha256", digest)
-    # Recorded from unchanged production seed in hosted run39940459708 before row refactoring.
+    # Select the explicitly versioned snapshot after full business-property assertions above.
     assert digest == expected_digest
     assert seed_demo(seed_factory, **args)["already_seeded"]
     with pytest.raises(StatementRejected):
@@ -204,31 +221,38 @@ def test_seed_impossible_dependency_count_rolls_back_entire_dataset(seed_factory
         assert uow.gateway.count("users") == uow.gateway.count("projects") == 0
 
 
-
 def run_mysql_seed(engine):
     """Explicit fresh owner schema only; preserve data after every successful generation."""
     database = "t44_seed_verify_v2"
     if engine.dialect.name != "mysql" or engine.url.database != database:
         raise ValueError("Seed live verification requires the dedicated t44_seed_verify_v2 schema")
-    result = dict(database=database, migration=migrations.migrate(engine, expected_database=database))
+    result = dict(
+        database=database, migration=migrations.migrate(engine, expected_database=database)
+    )
     factory = SqlAlchemyUnitOfWorkFactory(engine)
     with factory() as uow:
-        assert all(uow.gateway.count(name) == 0 for name in TABLES), "Fresh empty business schema required"
+        assert all(uow.gateway.count(name) == 0 for name in TABLES), (
+            "Fresh empty business schema required"
+        )
     anchor = datetime(2026, 10, 23, tzinfo=UTC)
     result["seed"] = seed_demo(factory, anchor_at=anchor)
     result["consistency"] = assert_consistent(factory)
     before = persisted_digest(factory)
     result["persisted_sha256"] = before
-    assert before == "6d56de112481ca6c6a54210a1a60b06769b9845fad8699462dfbf753505fb3d3"
+    assert before == SEED_VERSION_DIGESTS[VERSION][(40, 6000, 9000, 15000)]
     repeat = seed_demo(factory, anchor_at=anchor)
-    assert repeat["already_seeded"] and repeat["manifest_sha256"] == result["seed"]["manifest_sha256"]
+    assert (
+        repeat["already_seeded"] and repeat["manifest_sha256"] == result["seed"]["manifest_sha256"]
+    )
     result["repeat"] = repeat
     with pytest.raises(StatementRejected, match="manifest differs") as rejected:
         seed_demo(factory, anchor_at=anchor, seed=45)
     result["changed_parameters_rejected"] = str(rejected.value)
     with tempfile.TemporaryDirectory(prefix="t44-seed-verification-") as temporary:
         changed = Path(temporary) / "rules.json"
-        changed.write_bytes(files("t44").joinpath("resources/escalation-rules.json").read_bytes() + b"\n")
+        changed.write_bytes(
+            files("t44").joinpath("resources/escalation-rules.json").read_bytes() + b"\n"
+        )
         with pytest.raises(StatementRejected, match="manifest differs") as rejected:
             seed_demo(factory, anchor_at=anchor, rules_path=changed)
         result["changed_config_hash_rejected"] = str(rejected.value)
@@ -250,29 +274,41 @@ def run_mysql_seed(engine):
             ):
                 uow.gateway.update(table, {"id": 1}, changes)
             assert rejected.value.kind == kind
-            result["native_constraint_rejections"].append(dict(
-                table=table, where=dict(id=1), attempted=changes,
-                kind=kind, constraint=rejected.value.constraint, rolled_back=True,
-            ))
+            result["native_constraint_rejections"].append(
+                dict(
+                    table=table,
+                    where=dict(id=1),
+                    attempted=changes,
+                    kind=kind,
+                    constraint=rejected.value.constraint,
+                    rolled_back=True,
+                )
+            )
     assert persisted_digest(factory) == before
     result["unchanged_after_rejections"] = True
     result["schema_after"] = migrations.check_schema(engine)
     assert result["schema_after"]["passed"]
     result["migration_repeat"] = migrations.migrate(engine, expected_database=database)
     with engine.connect() as connection:
-        row = connection.execute(text(
-            "SELECT VERSION(),DATABASE(),@@session.time_zone,@@session.transaction_isolation,@@session.sql_mode"
-        )).one()
-        result["server"] = dict(zip(("version", "database", "time_zone", "isolation", "sql_mode"), row, strict=True))
+        row = connection.execute(
+            text(
+                "SELECT VERSION(),DATABASE(),@@session.time_zone,@@session.transaction_isolation,@@session.sql_mode"
+            )
+        ).one()
+        result["server"] = dict(
+            zip(("version", "database", "time_zone", "isolation", "sql_mode"), row, strict=True)
+        )
     return result
 
 
 if __name__ == "__main__":
     private = json.loads(Path(os.environ["T44_SEED_VERIFY_CREDENTIALS"]).read_text())
-    engine = create_mysql_engine(MySQLSettings(
-        database="t44_seed_verify_v2",
-        **{key: private[key] for key in ("host", "port", "username", "password")},
-    ))
+    engine = create_mysql_engine(
+        MySQLSettings(
+            database="t44_seed_verify_v2",
+            **{key: private[key] for key in ("host", "port", "username", "password")},
+        )
+    )
     try:
         print(json.dumps(run_mysql_seed(engine), ensure_ascii=False, indent=2))
     finally:

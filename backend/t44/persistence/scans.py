@@ -32,14 +32,8 @@ class ScanStore:
                             rule_hash=rule_hash,
                             cutoff_at=now,
                             status=1,
-                            last_task_id=0,
-                            scanned_count=0,
-                            created_count=0,
-                            duplicate_count=0,
                             started_at=now,
                             heartbeat_at=now,
-                            finished_at=None,
-                            error_code=None,
                         ),
                     )
                 return g.get("scan_runs", id)
