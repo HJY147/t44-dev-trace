@@ -44,7 +44,7 @@ PLANS = {
         ("codes", 1, "t44.services.codes", "codes", "from . import codes"),
     ),
     "backend/t44/persistence/schema.py": (
-        ("sqlalchemy", 0, "sqlalchemy", "sql", "import sqlalchemy as sql"),
+        ("sqlalchemy", 0, "sqlalchemy", "sa", "import sqlalchemy as sa"),
     ),
 }
 

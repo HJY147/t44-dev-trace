@@ -1,0 +1,11 @@
+{
+  "tool_commit": "5652e71",
+  "operation": "first text-only prototype execution",
+  "exit_code": 1,
+  "error": "ValueError: A chosen module alias would be shadowed",
+  "cause": "Proposed sqlalchemy alias sql conflicts with existing schema.build_metadata local sql",
+  "guard_action": "Stopped before cloc/receipt; partial prototype-v1 retained",
+  "correction": "Use the conventional nonconflicting namespace sa in a new source checkpoint and new output directory",
+  "product_or_database_executed": false,
+  "successful_result_claimed": false
+}
