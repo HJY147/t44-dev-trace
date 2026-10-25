@@ -551,7 +551,7 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-25T06:16:24.986150+00:00",
+  "updated_at": "2026-10-25T06:19:28.565718+00:00",
   "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -2144,6 +2144,10 @@
     "root_cause": "NOT_PROVEN",
     "source_size": "6316 prior measured byte-equivalent; no new cloc",
     "prompt": "ROLE-backend-PERFORMANCE-20261025-v1",
-    "scope": "public development diagnostics only, no independent private files read"
+    "scope": "public development diagnostics only, no independent private files read",
+    "main_evidence_seal": "9f0ec3d5161f0195646c4a1b4174f1484382cf3f",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394302816",
+    "github_comment_exact_body_readback": true,
+    "response_schema_stage_note": "schema-stage-split.json distinguishes direct response span from API validation aggregate; no pure JSON render span"
   }
 }
