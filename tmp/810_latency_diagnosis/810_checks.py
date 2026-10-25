@@ -475,7 +475,8 @@ def test_malformed_owned_dsn_is_not_repeated_in_startup_exception(monkeypatch):
     monkeypatch.setenv("T44_DIAG_ALLOW", "source935-development-only")
     monkeypatch.setenv("T44_DIAG_PRODUCT_SHA", stage.PRODUCT)
     monkeypatch.setenv("T44_DIAG_MODULE_SHA256", hashlib.sha256(MODULE.read_bytes()).hexdigest())
-    monkeypatch.setenv("DATABASE_URL", marker)
+    # Missing @ makes the secret-like field parse as a port; no real credentials are used.
+    monkeypatch.setenv("DATABASE_URL", "mysql+pymysql://owned:" + marker + "/diagnostic")
     with pytest.raises(ValueError) as observed:
         stage.app_factory()
     assert marker not in str(observed.value)
