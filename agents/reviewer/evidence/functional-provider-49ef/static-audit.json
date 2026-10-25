@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-25T07:55:39.296367+00:00",
+  "provider_HEAD": "49ef08a7e726fa163106647b96e415213f2aae8f",
+  "root_reported_tested_source": "df53c85fd96537ffb4e149c10e9717234a9af14e",
+  "inputs": {
+    "tmp/821_functional_provider/821_provider.py": {
+      "bytes": 11531,
+      "sha256": "06d0bc94a42d55aebc71dbcbe1a8214e766673eba335138d8924ee38a515df55",
+      "actual_equals_reviewed_HEAD": true
+    },
+    "tmp/821_functional_provider/821_scope_checks.py": {
+      "bytes": 3059,
+      "sha256": "c5f8e85c3e20711f1e023a200ed85d9b6a5aaca49703137a773070b0b18048b3",
+      "actual_equals_reviewed_HEAD": true
+    },
+    "agents/coordination/lock-diagnostics-20261025/functional-provider-design.md": {
+      "bytes": 2058,
+      "sha256": "ac46da2246dff281974077b18369fe8dd2359269344336c6222b65e0a3a5e6aa",
+      "actual_equals_reviewed_HEAD": true
+    }
+  },
+  "tested_source_to_HEAD_diff": "diff --git a/tmp/821_functional_provider/821_provider.py b/tmp/821_functional_provider/821_provider.py\nindex 2b14a12..d8bf886 100644\n--- a/tmp/821_functional_provider/821_provider.py\n+++ b/tmp/821_functional_provider/821_provider.py\n@@ -92,7 +92,7 @@ def main(grant_path, supervisor_receipt):\n     supervisor = load(supervisor_receipt)\n     if (\n         supervisor.get(\"tool_freeze_sha256\") != grant[\"tool_freeze_sha256\"]\n-        or supervisor.get(\"expires_at\") != grant[\"expires_at\"]\n+        or instant(supervisor[\"expires_at\"]) != instant(grant[\"expires_at\"])\n         or not re.fullmatch(\"[a-f0-9]{48}\", supervisor.get(\"nonce\", \"\"))\n     ):\n         raise ValueError(\"Supervisor receipt identity mismatch\")\n",
+  "old7_guards_limit": "only validate parameters, not interstage main deadline/40 inner loop or expected active supervisor receipt; no fabricated failing test run",
+  "new11_guards": "source reviewed and root-reported green on df53; not rerun or raw report independently read",
+  "closure": [
+    "paired provider UTC/mono intersect supervisor hard_deadline",
+    "per newpath40+dual-time checks",
+    "remaining-time bounds for CLI/controller/sealer",
+    "private staged cipher reply plus final remaining check and nonoverwriting os.link",
+    "explicit current PUBLIC receipt path/freeze/semantic UTC/48hexnonce/two livePIDs; exact request supervisor nonce"
+  ],
+  "limitations": [
+    "check to syscall has ordinary scheduling gap",
+    "subprocess timeout does not prove reversal of committed token or automatic complete descendant cleanup",
+    "one scheduler replacement discontinues prior project periodic scans as disclosed",
+    "root-owned binding/env/controller trusted per task, not inspected for values"
+  ],
+  "new_probes_or_guard_reruns": 0,
+  "CLI_DB_HTTP_SUT_or_private_values_read_or_executed": false,
+  "outcome": "NO_REMAINING_CONCRETE_PROVIDER_CODE_BLOCKER_WITHIN_AUTHORIZED_BOUNDARY;CONTROLLER_AND_EXACT_GRANT_SEPARATE"
+}

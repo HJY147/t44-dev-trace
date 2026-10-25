@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "仅PUBLIC控制审与一次新零网络822反例；0独立SUT，非业务验收",
+  "implementation_status": "provider静态0probe与PUBLIC一次新fake已封；未执行CLI/DB/HTTP/独立SUT或读取private值",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v3/static-audit.json",
-  "latest_review_report": "reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-public-v4/static-audit.json",
+  "latest_review_report": "reports/reviews/829-public-v4-2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1459,6 +1459,16 @@
       "id": "ROLE-reviewer-829-PUBLIC-v3-v1",
       "actual_scope_excerpt": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v3-v1.txt",
       "reason": "Distinguish absolute monotonic lifetime from continuously enforced UTC authorization; one new no-network counterexample, no development oracle/private access; disclose RSS scope without expanding requirements."
+    },
+    {
+      "id": "ROLE-reviewer-FUNCTIONAL-PROVIDER-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-FUNCTIONAL-PROVIDER-v1.txt",
+      "reason": "Separate root provider control from PUBLIC acceptance controller; preserve static failures, original UTC closure, and a new no-network handoff timing counterexample without private/business inputs."
+    },
+    {
+      "id": "ROLE-reviewer-829-PUBLIC-v4-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v4-v1.txt",
+      "reason": "Separate root provider control from PUBLIC acceptance controller; preserve static failures, original UTC closure, and a new no-network handoff timing counterexample without private/business inputs."
     }
   ],
   "questions": [],
@@ -1502,9 +1512,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "FUNCTIONAL_NOT_ADMITTED_829_DEADLINE_UTC_01;NO_FAULT_PERFORMANCE_OR_PRODUCT_ACCEPTANCE",
+  "review_outcome": "PROVIDER49_LIMITED_CLEAR;V4_FUNCTIONAL_BLOCKED_829_HANDOFF_DEADLINE_01",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388",
+  "review_target_sha": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
   "review_targets": [
     {
       "pr": 14,
@@ -1586,7 +1596,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "829 PUBLIC v3功能准入被持续UTC到期P2阻断；先封档释放供v4修订",
+  "stage": "provider49限定闭环；829 PUBLIC v4新handoff/HTTP截止P2阻断，draft false/SUT0",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1605,7 +1615,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-25T07:35:26.956818+00:00",
+  "updated_at": "2026-10-25T07:59:58.799209+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2575,7 +2585,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
+  "review_target_kind": "PUBLIC controller freeze SHA256; provider separately Git SHA1",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -2816,5 +2826,60 @@
     },
     "technical_evidence_commit": "7789c2008fdc2f7492dcf2f09dd04e8fe6c22c06",
     "role_release": "v3 UTC-blocked seal complete; slot returned for root to activate PUBLIC-only v4 repair; no SUT or testing-agent contact"
+  },
+  "previous_phase_before_provider_and_829_v4": {
+    "stage": "829 PUBLIC v3功能准入被持续UTC到期P2阻断；先封档释放供v4修订",
+    "implementation_status": "仅PUBLIC控制审与一次新零网络822反例；0独立SUT，非业务验收",
+    "review_target_sha": "787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388",
+    "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
+    "review_outcome": "FUNCTIONAL_NOT_ADMITTED_829_DEADLINE_UTC_01;NO_FAULT_PERFORMANCE_OR_PRODUCT_ACCEPTANCE",
+    "latest_review_report": "reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v3/static-audit.json"
+  },
+  "functional_provider_review": {
+    "initial_HEAD": "a6c96c5599a9dd7db60eb618a40f9acbaf49817b",
+    "initial_source": "6d09d2e51bd574258f55d778b9bdd83cdc54c96a",
+    "initial_findings": [
+      "PROVIDER-EXPIRY-01",
+      "PROVIDER-CAP-01",
+      "active supervisor nonce input unresolved"
+    ],
+    "initial_report": "reports/reviews/functional-provider-a6c96c5599a9dd7db60eb618a40f9acbaf49817b.md",
+    "initial_audit": "agents/reviewer/evidence/functional-provider-a6c/static-audit.json",
+    "corrected_HEAD": "49ef08a7e726fa163106647b96e415213f2aae8f",
+    "root_reported_tested_source": "df53c85fd96537ffb4e149c10e9717234a9af14e",
+    "corrected_report": "reports/reviews/functional-provider-49ef08a7e726fa163106647b96e415213f2aae8f.md",
+    "corrected_audit": "agents/reviewer/evidence/functional-provider-49ef/static-audit.json",
+    "outcome": "NO_REMAINING_CONCRETE_PROVIDER_CODE_BLOCKER_WITHIN_SCOPE;CONTROLLER_AND_GRANT_SEPARATE",
+    "root7_then11_guard_pass_reports_not_replayed": true,
+    "no_fabricated_executed_red_test": true,
+    "new_probe_CLI_DB_HTTP_private_values": 0,
+    "owned_file_trust_per_task": true,
+    "single_scheduler_replacement_limit_disclosed": true,
+    "technical_feedback_relayed_before_admin": true,
+    "prompt_ref": "ROLE-reviewer-FUNCTIONAL-PROVIDER-v1"
+  },
+  "829_PUBLIC_v4_review": {
+    "freeze": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
+    "report": "reports/reviews/829-public-v4-2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424.md",
+    "audit": "agents/reviewer/evidence/829-public-v4/static-audit.json",
+    "PUBLIC_inventory_checks": 16,
+    "old_UTC_defect": "closed by source and one new minimal fake check",
+    "new_P2": "829-HANDOFF-DEADLINE-01",
+    "probe": "tmp/822_review_829_v3/822_v4_scope_return_probe.py",
+    "probe_runs": 1,
+    "probe_exit": 0,
+    "fake_scenarios": "previousUTCdenied; HTTP15/run120 +20s neutral handoff wrongly returns incomplete",
+    "actual_socket_SUT_requests": 0,
+    "private_values_cases_Git_journal_keys_read": false,
+    "contacted_testing_agent": false,
+    "existing29_rerun": false,
+    "native_draft_sha256": "01fb722a181c73f9c592ab22c942e40e186da51b1b27161de5daee19c221bf9a",
+    "draft_admitted": false,
+    "draft_neutral_copy": "agents/reviewer/evidence/829-public-v4/functional-draft.json",
+    "outcome": "FUNCTIONAL_NOT_ADMITTED;PROVIDER49_CLOSURE_DOES_NOT_AUTHORIZE_V4",
+    "fault_performance_global_or_product_admitted": false,
+    "technical_feedback_relayed_before_admin": true,
+    "prompt_ref": "ROLE-reviewer-829-PUBLIC-v4-v1"
   }
 }

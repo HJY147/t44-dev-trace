@@ -364,3 +364,10 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 829 PUBLIC v3行政封档：技术报告/反例7789c2008fdc2f7492dcf2f09dd04e8fe6c22c06已push；Issue12 COMMENT6394939899（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394939899）特定全文GET exit0，body及issue严格核对。functional仍因持续UTC P2不准入/0SUT；本岗不联系独立岗，root仅排PUBLIC缺陷。metadata封后释放槽供v4修订，旧v2/v3结论和原件保留。
+
+
+## 2026-10-25 根环境provider与829 PUBLIC v4两个独立scope
+
+provider初审精确a6c96c5599a9dd7db60eb618a40f9acbaf49817b/source6d09d2e51bd574258f55d778b9bdd83cdc54c96a，三明列文件源审发现PROVIDER-EXPIRY-01（阶段间无重查/timeout不裁）、PROVIDER-CAP-01（inner可越40）和active supervisor nonce仅truthy缺来源，先发root，0probe/CLI/DB/HTTP/private值，旧7绿仅root报告且无对应main分支覆盖；没有编造实跑红。修订49ef08a7e726fa163106647b96e415213f2aae8f（测试逻辑df53c85fd96537ffb4e149c10e9717234a9af14e）源码复审限定闭环：paired双截止/receiptmin，inner40每新path，三阶段remaining，私有staged+复查+不覆盖link，明确receipt路径/freeze/semanticexpiry/两livePID/48hexnonce和request精确match。11绿与Ruff均root报告未重跑。check→syscall正常调度间隙/已提交token不保证回撤/单scheduler替换旧项目停止扫描明示，根私有binding/env/controller按已核信任，不扩恶意本地模型。provider可用性不等控制器授权。
+
+后独立PUBLIC-v4 scope freeze2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424：16inventory hash、29源码method/公开29绿和28error1原件仅读不跑。paired conservativeanchor、Gate多阶段UTC+mono、supervisor实际.01poll/monoTimer和lag已闭原UTC。一次新822_v4_scope_return_probe.py（Python3.12.10 arm64，0socket/SUT/private，synthetic receipt/container身份/假transport/time/handoff）同次确认旧UTC反例transport前拒绝；新P2 829-HANDOFF-DEADLINE-01：HTTP15/run120，0s完整POST/projects201后，假neutral handoff推进20s仍runlive，最终却incomplete，误把setup扣原HTTP截止。先design再probe，exit0只表反例捕获，不重复29或运行provider/supervisor/OS调钟。root已收准确中性接口问题：HTTP完成/持久化后按原截止判定，120s handoff另受run双截止，不放宽HTTP不删body。root draft SHA01fb722a181c73f9c592ab22c942e40e186da51b1b27161de5daee19c221bf9a保持false，未访问其private build/CA/env值；phase仅functional/faults空/cost0/08:15不变。该scope不注入开发结果/业务oracle、不联系测试，v3/v4原反例保持。
