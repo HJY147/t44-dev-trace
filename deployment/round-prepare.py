@@ -22,10 +22,32 @@ PINS = {
     "host-resource-sampler.py": "7a0f8c9c16aff233f37a1f8f02c27848dc110a7deb28800550ca38f28716259d",
     "resource-evidence-export.py": "78a25242769c393d28394722378f6b80ecb12f1e0efcb600fc32f805bbcd55df",
 }
+ASSUMPTIONS = ("backend/t44/persistence/engine.py", "backend/t44/settings.py", "compose.yaml")
 
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def source_assumptions(repository, source, read=None):
+    """Refuse the declared15-per-engine budget if its source/config basis changed."""
+    if read is None:
+
+        def read(revision, name):
+            return subprocess.run(
+                ["git", "-C", str(repository), "show", revision + ":" + name],
+                check=True,
+                capture_output=True,
+                timeout=5,
+            ).stdout
+
+    result = {}
+    for name in ASSUMPTIONS:
+        original, selected = read(BASE, name), read(source, name)
+        if selected != original:
+            raise ValueError("POOL_OR_COMPOSE_ASSUMPTION_CHANGED:" + name)
+        result[name] = digest(selected)
+    return result
 
 
 def utc(value):
@@ -293,7 +315,9 @@ def main():
             ).stdout
             for name in PINS
         }
+        assumptions = source_assumptions(args.repository, value["source_sha"])
         files, manifest = render(value, originals, admitted_now)
+        manifest["selected_source_assumption_sha256"] = assumptions
         write_bundle(args.output, files, manifest)
         print(
             json.dumps(

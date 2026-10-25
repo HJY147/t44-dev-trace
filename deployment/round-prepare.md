@@ -22,7 +22,7 @@
 }
 ```
 
-唯一源提交必须在本地仓库中存在。工具包包含七件新副本和`derivation.json`：每件模板来自固定ade5 Git blob、旧SHA、每个允许替换的old/new/次数、最终SHA/bytes都可核。`source_policy_output_sha256`仍是原四规则JSON的f910…，不是新helper自身SHA。三个FROM、数据库/消息/代理镜像摘要不改变。所选新源如改变Dockerfile/ignore/requirements.lock，原严格生成器会拒绝，不能自动更新pin。
+唯一源提交必须在本地仓库中存在。工具包包含七件新副本和`derivation.json`：每件模板来自固定ade5 Git blob、旧SHA、每个允许替换的old/new/次数、最终SHA/bytes都可核。新源的`backend/t44/persistence/engine.py`、`backend/t44/settings.py`、`compose.yaml`必须与ade5逐字一致；差异拒绝物化，要求责任岗重新审连接预算与overlay，不静默采用15连接假设。清单另列这三件实际SHA；其他模块可能新增engine，运行观测仍不能省略。`source_policy_output_sha256`仍是原四规则JSON的f910…，不是新helper自身SHA。三个FROM、数据库/消息/代理镜像摘要不改变。所选新源如改变Dockerfile/ignore/requirements.lock，原严格生成器会拒绝，不能自动更新pin。
 
 在项目内忽略的私有runtime新目录保存计划后，root可本地物化；此命令不需要云账号或Docker：
 

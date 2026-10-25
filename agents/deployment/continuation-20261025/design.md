@@ -12,6 +12,8 @@
 
 源 `MySQLSettings` 当前默认每engine5+10，运行值必须另观察；声明上界为`15*(worker+2)`（consumer/scheduler），另预留30给两个临时operations进程。W=32时最低540，建议选640；W=64时最低1020，建议选1280。仅提高连接上限不证明内存或吞吐足够，也不证明当前用了全部连接。实际机器CPU/内存、worker argv、pool、MySQL max_connections/连接峰值、镜像ID/RepoDigests须由root在运行前后取得。资源扩容与软件收益分开，性能报告写真实硬件，不猜旧502原因。
 
+新源的`backend/t44/persistence/engine.py`、`backend/t44/settings.py`、`compose.yaml`须与ade5逐字一致，生成清单记录其实际SHA；其中任何一个变化就拒绝物化，交责任岗重新审预算与overlay，不静默继续使用15连接假设。该保守限制不证明其他模块不会新增engine；运行时的进程与连接观测仍必需。
+
 供应链：原三个FROM和MySQL/RabbitMQ/nginx摘要固定不变；ECR只映射同摘要的官方镜像，拒绝其他DockerHub来源。AliPyPI仅HTTPS channel变更、require-hashes与完整lock不变；所选新源如改变Dockerfile/lock则原生成器会拒绝，须另做来源审查，不自动改pin。
 
 凭据夹具：旧launcher包含旧receiver证书指纹与worker SHA，并有10月24日expiry断言，本准备器**不生成/不执行它们**。下一轮须由root取得fresh独立实例的公开recipient材料与backend责任岗确认的worker/admin SHA，再做单独绑定审核；旧密钥、Token、目录和密文不得沿用标签。

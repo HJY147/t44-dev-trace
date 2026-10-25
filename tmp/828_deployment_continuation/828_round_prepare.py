@@ -161,3 +161,18 @@ def test_private_plan_rejects_links_public_mode_and_parent(tmp_path):
     tmp_path.chmod(0o755)
     with pytest.raises(ValueError, match="PRIVATE_INPUT"):
         ROUND.private_bytes(path)
+
+
+def test_source_assumptions_preserve_declared_pool_basis():
+    data = {name: name.encode() for name in ROUND.ASSUMPTIONS}
+    result = ROUND.source_assumptions(Path("/synthetic"), "a" * 40, lambda revision, name: data[name])
+    assert result == {name: ROUND.digest(value) for name, value in data.items()}
+
+
+@pytest.mark.parametrize("changed", ROUND.ASSUMPTIONS)
+def test_source_assumptions_reject_changed_pool_settings_or_compose(changed):
+    def read(revision, name):
+        return b"changed" if revision != ROUND.BASE and name == changed else name.encode()
+
+    with pytest.raises(ValueError, match="ASSUMPTION_CHANGED"):
+        ROUND.source_assumptions(Path("/synthetic"), "a" * 40, read)
