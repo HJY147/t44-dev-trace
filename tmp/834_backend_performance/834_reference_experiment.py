@@ -1,5 +1,6 @@
 """Opt-in diagnostic-only local-ref expansion; never imported by the product."""
 
+import contextlib
 import hashlib
 import importlib.util
 import json
@@ -49,10 +50,8 @@ def factory(original, spec):
                 return [expand(item) for item in value]
             return value
 
-        try:
+        with contextlib.suppress(Ineligible):
             schema = expand(schema)
-        except Ineligible:
-            pass
         return original(schema)
 
     return candidate
