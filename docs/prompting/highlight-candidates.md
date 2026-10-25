@@ -38,3 +38,11 @@
 R001原文/provenance（5b3bf30）是本人关于架构、封装、函数I/O、需求和测试把关的真实观点；D005/D006是后续真实业务选择。它们补足“人提出什么/决定什么”的来源，不充抵亲自改码12条或人工识别3条。U001/U002亮点仍以原文、M0实际commit与Issue、设计/产品审核的精确SHA和真实失败/修正链展示，不编提效数字。
 
 新增 `M4-real-process-evidence.md` 将原e8独立失败、BE479/FEf654开发验证、容量三阶段设计和Word私密QA分开；`PROPOSED-human-skeleton-review-v1` 是AI据R001主题提出的新建议，未使用。学生研究正文仍由本人写。
+
+## 2026-10-25 自主推进补充
+
+U001/U002仍为用户本人原创亮点，旧原文和优化稿不改。本轮可配`AUTONOMOUS-20261025-process-evidence.md`中的真实链：BE设计勘误→c8最小锁修改→具体SHA审核→fresh准备失败case0→6738准备修订→有限MySQL开发验证→旧查询账本精确迁移。该链证明组织要求有实际产物，不能据此宣称正式性能、全局无死锁或规模通过。
+
+可另选AI实派`ROLE-reviewer-SHARED-PROJECT-POINT-v1`作为“给AI的输入如何约束审查”例子：明确两节点、准确源/哈希、不弱化业务、MySQL/SQLite分界及不得宣称全局无死锁。原文在审核岗技术commit38e58581的`agents/reviewer/dispatches/ROLE-reviewer-SHARED-PROJECT-POINT-v1.txt`，来源hash/准确commit见本轮source-index；这不是用户原创，也不计作U001/U002的演进版本。
+
+新U023/U024保存继续运行和三小时自主操作原话；O1仍proposed、未重新发送。实际代码/测试/部署与本页作者均AI，人工12/3/5和学生手写研究正文未由本轮代填。

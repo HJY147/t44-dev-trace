@@ -154,3 +154,15 @@
 - 核D008原RFC/R2的最小失败槽、conditional4xxCOMPLETE/动态成功Meta/错误无outerMeta/ACKunknown，先规格草稿、待新freeze才应用；859新1+旧1=2目标非fullCI/独立。原F08/Word/ZIP保持。
 - 20公开源精确commit/blob/SHA及JSON核对，只写本岗素材/rolelog/report/handoff；新版本计0，不把角色分工数或AI互审当真人/12-5-3，未代写研究正文/未来通过。Issue10评论全文GET/commitpush实际后补。
 - 实质材料实际commit/push`2382d30625c92821384d5b85037bded78d2ae408`；Issue10评论6379557747真实发表，GET按ID核全文逐字相同，RETURN-publication.json留回执。仅补发布记录，不跟根后续开发或预填结果。
+
+
+## 2026-10-25 三小时自主推进的固定范围素材
+
+- 核根clean/ade5、本岗规范；新codex/prompt-autonomous-20261025，不动根索引；先设计与实际派工脱敏快照commit/push1fde05e，再收资料。误发口令字面值不入Git，快照明确非未脱敏全文。
+- 核最高U022并向root预留U023/U024、收到确认；保存两句真实原话/provenance，采集时刻不冒用户发送时刻。O1另存proposed，新增已使用演进版本0。
+- 仅读明确BE/DB/旧审核/协调CI元数据及规模报告；没有读独立验收目录、用例、日志、密钥、密文或私有Git，也不联系tester。完整新CI和独立后发状态不追填。
+- 实问活跃部署/审核各一条并得到真实AI回答，逐字记录；不是人类访谈。27来源hash/Git核，其中26已提交逐字同，health401当时未提交明确commit=null，不能当已发表Git运行证据。
+- 核56顺序诊断、9setup/9结构红/11+21开发绿、首fresh1141准备失败case0、6baseline+6candidate+7HTTP发表元数据，以及账本1红→精确3/4/3与相关5绿。只资料核对，不重跑产品或审每条锁。
+- 本岗两次猜错prompt.md/跨工作树相对路径读取失败，随后依观察文件名定向读取；只是资料定位错误，不写为产品bug。原BE早期report保留其原source，与后续修订报告/CI准确身份分列。
+- 6326>5100超1226、正式400×600性能、学生研究正文、人工12/3/5仍不补通过。原六版/旧cutoff/Word/U001/U002不回写，新增亮点只供本人理解后自写。
+- 本轮无产品测试/脚本导入/服务/数据库/浏览器/云/构建/Word操作；只Git/JSON/哈希和必要文档校核。Issue11、全文GET、阶段commit/push在真实完成后补回执，不预先填写成功。
