@@ -58,9 +58,29 @@ def test_refuse_scope_or_environment_confusion(change):
     else:
         grant["expires_at"] = (datetime.now(UTC) - timedelta(seconds=1)).isoformat()
     with pytest.raises(ValueError):
-        provider.validate(request, grant, time.time() - 1)
+        provider.validate(request, grant, time.time() - 1, "active-supervisor")
 
 
 def test_accept_only_exact_current_single_project_scope():
     grant, request = inputs()
-    assert provider.validate(request, grant, time.time() - 1) == 7
+    assert provider.validate(request, grant, time.time() - 1, "active-supervisor") == 7
+
+
+def test_wrong_nonempty_supervisor_nonce_refused():
+    grant, request = inputs()
+    with pytest.raises(ValueError):
+        provider.validate(request, grant, time.time() - 1, "other-live-supervisor")
+
+
+@pytest.mark.parametrize("utc,mono", [(101, 0), (0, 101)])
+def test_no_next_stage_after_either_deadline(monkeypatch, utc, mono):
+    monkeypatch.setattr(provider.time, "time", lambda: utc)
+    monkeypatch.setattr(provider.time, "monotonic", lambda: mono)
+    with pytest.raises(TimeoutError):
+        provider.remaining(100, 100, 30)
+
+
+def test_next_stage_timeout_uses_remaining_budget(monkeypatch):
+    monkeypatch.setattr(provider.time, "time", lambda: 97)
+    monkeypatch.setattr(provider.time, "monotonic", lambda: 90)
+    assert provider.remaining(100, 100, 30) == 3

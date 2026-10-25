@@ -35,7 +35,14 @@ def instant(value):
     return datetime.fromisoformat(value).timestamp()
 
 
-def validate(request, grant, started):
+def remaining(stop_utc, stop_mono, maximum):
+    value = min(maximum, stop_utc - time.time(), stop_mono - time.monotonic())
+    if value <= 0:
+        raise TimeoutError("Provider deadline exhausted; no next action")
+    return value
+
+
+def validate(request, grant, started, expected_nonce):
     context = request.get("context", {})
     expected = {
         "tool_freeze_sha256": grant["tool_freeze_sha256"],
@@ -43,10 +50,9 @@ def validate(request, grant, started):
         "source_sha": grant["build"]["source_sha"],
         "phase": "functional",
         "resource_ids": grant["isolated_resource_ids"],
+        "supervisor_nonce": expected_nonce,
     }
-    if any(context.get(k) != v for k, v in expected.items()) or not context.get(
-        "supervisor_nonce"
-    ):
+    if not expected_nonce or any(context.get(k) != v for k, v in expected.items()):
         raise ValueError("Active environment context mismatch")
     ids = request.get("project_ids")
     if request.get("kind") != "SERVICE_SCOPE_REQUEST" or request.get("scope") != [
@@ -72,12 +78,28 @@ def validate(request, grant, started):
     return ids[0]
 
 
-def main(grant_path):
+def main(grant_path, supervisor_receipt):
     grant, manifest = load(grant_path), load(PUBLIC / "manifest.PUBLIC.json")
     if grant.get("admitted") is not True or grant.get("phase") != "functional":
         raise ValueError("Explicit functional grant required")
     if grant["tool_freeze_sha256"] != manifest["tool_freeze_sha256"]:
         raise ValueError("Frozen tool mismatch")
+    if (
+        supervisor_receipt.parent != PUBLIC / "runtime"
+        or supervisor_receipt.is_symlink()
+    ):
+        raise ValueError("Explicit current PUBLIC supervisor receipt required")
+    supervisor = load(supervisor_receipt)
+    if (
+        supervisor.get("tool_freeze_sha256") != grant["tool_freeze_sha256"]
+        or supervisor.get("expires_at") != grant["expires_at"]
+        or not re.fullmatch("[a-f0-9]{48}", supervisor.get("nonce", ""))
+    ):
+        raise ValueError("Supervisor receipt identity mismatch")
+    for key in ("supervisor_pid", "child_pid"):
+        if type(supervisor.get(key)) is not int or supervisor[key] <= 0:
+            raise ValueError("Supervisor process identity missing")
+        os.kill(supervisor[key], 0)
     helper = PUBLIC / "handoff.PUBLIC.py"
     if (
         hashlib.sha256(helper.read_bytes()).hexdigest()
@@ -98,8 +120,13 @@ def main(grant_path):
     target.mkdir(mode=0o700, exist_ok=False)
     if target.is_symlink() or target.stat().st_mode & 0o077:
         raise ValueError("Private fresh provider target required")
-    started, stop = time.time(), min(time.time() + 1800, instant(grant["expires_at"]))
-    stop_mono = time.monotonic() + max(0, stop - time.time())
+    mono_before = time.monotonic()
+    started = time.time()
+    stop = min(started + 1800, instant(grant["expires_at"]))
+    stop_mono = min(
+        mono_before + max(0, stop - started), supervisor["hard_deadline_monotonic"]
+    )
+    remaining(stop, stop_mono, 1)
     private_json(
         target / "provider-start.json",
         {
@@ -107,11 +134,15 @@ def main(grant_path):
             "grant_path": str(grant_path),
             "tool": manifest["tool_freeze_sha256"],
             "max_scopes": 40,
+            "supervisor_receipt": str(supervisor_receipt),
+            "supervisor_nonce": supervisor["nonce"],
         },
     )
     seen, results = set(), []
     while time.time() < stop and time.monotonic() < stop_mono and len(seen) < 40:
         for path in sorted((PUBLIC / "handoff").glob("*.request.PUBLIC.json")):
+            if len(seen) >= 40 or time.time() >= stop or time.monotonic() >= stop_mono:
+                break
             if path.name in seen:
                 continue
             seen.add(path.name)
@@ -123,7 +154,7 @@ def main(grant_path):
                 if path.is_symlink() or path.stat().st_size > 32768:
                     raise ValueError("Unexpected PUBLIC request path/size")
                 request = load(path)
-                project_id = validate(request, grant, started)
+                project_id = validate(request, grant, started, supervisor["nonce"])
                 if path.name != request["nonce"] + ".request.PUBLIC.json":
                     raise ValueError("Nonce filename mismatch")
                 item = target / request["nonce"]
@@ -147,7 +178,7 @@ def main(grant_path):
                     env=env,
                     capture_output=True,
                     check=False,
-                    timeout=30,
+                    timeout=remaining(stop, stop_mono, 30),
                 )
                 if created.returncode:
                     raise RuntimeError("Scoped production CLI failed")
@@ -171,7 +202,7 @@ def main(grant_path):
                     ],
                     capture_output=True,
                     check=False,
-                    timeout=45,
+                    timeout=remaining(stop, stop_mono, 45),
                 )
                 if applied.returncode:
                     private_json(
@@ -198,6 +229,7 @@ def main(grant_path):
                 reply = PUBLIC / "handoff" / (request["nonce"] + ".sealed.PUBLIC.json")
                 if reply.exists() or reply.is_symlink():
                     raise ValueError("Sealed reply already exists")
+                staged_reply = item / "sealed-staged.json"
                 sealed = subprocess.run(
                     [
                         python,
@@ -205,15 +237,17 @@ def main(grant_path):
                         "--request",
                         str(path),
                         "--output",
-                        str(reply),
+                        str(staged_reply),
                     ],
                     input=json.dumps(reply_credential).encode(),
                     capture_output=True,
                     check=False,
-                    timeout=20,
+                    timeout=remaining(stop, stop_mono, 20),
                 )
                 if sealed.returncode:
                     raise RuntimeError("Public credential sealer failed")
+                remaining(stop, stop_mono, 1)
+                os.link(staged_reply, reply)
                 row.update(
                     status="provisioned and sealed",
                     project_ids=[project_id],
@@ -238,4 +272,6 @@ def main(grant_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--grant", type=Path, required=True)
-    main(parser.parse_args().grant)
+    parser.add_argument("--supervisor-receipt", type=Path, required=True)
+    args = parser.parse_args()
+    main(args.grant, args.supervisor_receipt)
