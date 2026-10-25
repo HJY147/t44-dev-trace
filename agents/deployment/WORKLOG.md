@@ -577,3 +577,5 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 六件controller/manifest/applicationbinding/artifact/nativebuild SHA不变，actual application sourcefiles再次逐件核，935实际archive0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138再核一致，数据/全部原始日志保留。actual interval-final60a8c633daee49df8cf6db49d42316ec：raw8301045bytes/SHA3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9、16284rows、10:19:39.733065至11:04:52.735388UTC，真实完整raw再核留在原ignored目录，另两guardian raw闭合SHA/bytes列档；collection_completed不是独立测试、资源coverage、瓶颈或性能通过。
 
 不读任何tmp814/817/818/829等独立资料，不解释测试根因，不动MySQL7980/旧F数据及环境，不开新服务。完整root原stop、guardian收尾与rawmetadata见round8/performance-phase-end-stop.json，原final副本performance-interval-final.json；提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1追加此AI停止流程，不冒用户亲历。
+
+P正常stop及complete raw封档b50c34e已push；Issue7 cleanup评论6396868598通过官方GitHub plugin发表并实际gh全文回读相同，proof见round8/github-cleanup-readback-proof.json。11:07:34另只读端口重核仍全free；本岗无测试内容/根因结论，正常结束本阶段。
