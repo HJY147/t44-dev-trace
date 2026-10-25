@@ -359,7 +359,7 @@ class Pause:
         monkeypatch.setattr(Business, "dispatch", dispatch)
 
 
-def observe_wait(env, monkeypatch, predicate, blocking_id):
+def observe_wait(env, monkeypatch, predicate, blocking_id, *, expected_table="projects"):
     from t44.services.runtime import Runtime
 
     arrived = threading.Event()
@@ -389,6 +389,7 @@ def observe_wait(env, monkeypatch, predicate, blocking_id):
             if any(
                 row["requesting_connection"] == holder["id"]
                 and row["blocking_connection"] == blocking_id
+                and row["object_name"] == expected_table
                 for row in snapshot["waits"]
             ):
                 return {**stamp(), **snapshot}
@@ -517,6 +518,7 @@ def test_predecessor_rollback_commit_rejects_waiting_reader(project, monkeypatch
                         c.operation == "transitionTask" and c.path["task_id"] == dependent["id"]
                     ),
                     pause.connection_ids["transitionTask"],
+                    expected_table="tasks",
                 )
                 fields = (
                     {"basis": "Synthetic unblock", "evidence": EVIDENCE}
