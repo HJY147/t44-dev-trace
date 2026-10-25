@@ -33,7 +33,8 @@ class DatabaseTrace:
         self.engine = None
 
     def _add(self, record, name, start, cpu, error=None):
-        wall, spent = time.perf_counter_ns() - start, time.thread_time_ns() - cpu
+        spent = time.thread_time_ns() - cpu
+        wall = time.perf_counter_ns() - start
         with self._lock:
             phases = self._global_phases if record is None else record["phases"]
             phase = phases.setdefault(
@@ -195,11 +196,11 @@ class DatabaseTrace:
             record["exception_class"] = type(error).__name__
             raise
         finally:
+            record["thread_cpu_ns"] = time.thread_time_ns() - cpu
             record["end_perf_ns"] = time.perf_counter_ns()
             record["end_monotonic_ns"] = time.monotonic_ns()
             record["end_utc"] = _utc()
             record["wall_ns"] = record["end_perf_ns"] - record["start_perf_ns"]
-            record["thread_cpu_ns"] = time.thread_time_ns() - cpu
             self._current.reset(token)
 
     def _before(self, connection, cursor, statement, parameters, context, executemany):
@@ -275,6 +276,7 @@ class DatabaseTrace:
                     "ping_returned_false": self._ping_false,
                     "pending_cursor_spans": len(self._pending),
                     "timing_scope": "nested inclusive times; do not sum or label as pure queue/lock/server time",
+                    "clock_scope": "CPU endpoint read before wall endpoint; UTC formatting excluded from CPU; clock reads are not atomic",
                     "rows_uow_scope": "single-engine application assumption; Session and cursor hooks explicitly target installed engine",
                     "result_scope": "proxy preserves operations used by production Rows; not a general Result type substitute",
                     "privacy": "no SQL text, bindings, URL, credentials, body or exception messages",
