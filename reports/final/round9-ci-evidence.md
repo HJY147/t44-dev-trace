@@ -56,3 +56,5 @@ Agent-Role: documentation；实际操作者：AI `/root/ci_evidence_round9`；Pr
 阶段1 commit `14be82a3` 已先push封E731；后续只补齐本报告和原件。派工“三轮”经总协调更正为两对run，旧40195832268只曾读binding格式、未重下或复用结论。worktree误建根外后依更正以git worktree move原样搬进项目内自身专属目录。
 
 本岗只做Git、官方API下载、ZIP/hash/JSON/XML证据核对，没有运行产品测试、SQL、HTTP、负载、云或浏览器，没有取消/重跑CI、改workflow/应用/测试/计数口径，也没有发GitHub评论。CI/Docker不代表独立验收、正式性能、规模达标或账单完成。总协调提供的当前应用物理5862行，上限5100，超762，规模门禁仍FAIL，本岗未重算。未触学生亲写研究正文、学号/账号/财务签名或原始课堂附件，未读取任何独立PRIVATE/冷包/用例/keys或其他岗私件。
+
+封档检查：作者文档/脚本的diff-check、JSON、10个本地链接和责任路径检查通过。全量diff-check exit2，仅两份副PR原始job日志19行保留上游行尾空白；原bytes未改写，例外已记validation。完整原件阶段commit为 `fccf5c82`。
