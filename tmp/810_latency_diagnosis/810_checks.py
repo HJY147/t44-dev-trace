@@ -284,6 +284,7 @@ def test_writer_failure_keeps_original_application_exception(tmp_path, monkeypat
 def test_actual_source935_api_and_sqlite_preserve_response_and_internal_id(tmp_path):
     from fastapi.testclient import TestClient
     from t44.api import create_app
+    from t44.contracts import OPERATIONS
     from t44.persistence import SqlAlchemyUnitOfWorkFactory
     from t44.persistence.accounts import initialize_user
     from t44.persistence.schema import metadata
@@ -303,13 +304,16 @@ def test_actual_source935_api_and_sqlite_preserve_response_and_internal_id(tmp_p
         token = client.post(
             "/api/v1/auth/login", json={"username": "owned810", "password": "owned-810-password"}
         ).json()["data"]["access_token"]
-        baseline = client.get("/api/v1/me", headers={"Authorization": "Bearer " + token})
+        baseline = client.get(
+            "/api/v1" + OPERATIONS["getMe"]["path"], headers={"Authorization": "Bearer " + token}
+        )
     app = create_app(factory=factory, settings=Settings())
     probe = stage.Probe(engine, tmp_path).install_database().install_application(app)
     try:
         with TestClient(probe.wrap_asgi(app)) as client:
             observed = client.get(
-                "/api/v1/me", headers={"Authorization": "Bearer " + token, "x-t44-diag-sample": "1"}
+                "/api/v1" + OPERATIONS["getMe"]["path"],
+                headers={"Authorization": "Bearer " + token, "x-t44-diag-sample": "1"},
             )
         assert baseline.status_code == observed.status_code == 200
         assert baseline.json()["data"] == observed.json()["data"]
@@ -341,10 +345,12 @@ def test_network_parser_only_keeps_neutral_counts():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     result = module.parse_ss(
-        "ESTAB 0 8 10.0.0.2:44556 10.0.0.3:18099\nTIME-WAIT 0 0 10.0.0.2:44557 10.0.0.3:18099",
+        "ESTAB 0 8 10.0.0.2:44556 10.0.0.3:18099\nTIME-WAIT 0 0 10.0.0.2:44557 10.0.0.3:18099\nLISTEN 2 2048 0.0.0.0:18099 0.0.0.0:*",
         18099,
         (32768, 60999),
     )
     assert result["distinct_local_ephemeral_ports"] == 2
-    assert result["api_port_states"] == {"ESTAB": 1, "TIME-WAIT": 1}
+    assert result["api_port_states"] == {"ESTAB": 1, "TIME-WAIT": 1, "LISTEN": 1}
+    assert result["api_listen_reported_queue_sums"] == {"recvq": 2, "sendq": 2048}
+    assert result["sendq_bytes_sum_non_listen"] == 8
     assert "10.0.0" not in json.dumps(result)

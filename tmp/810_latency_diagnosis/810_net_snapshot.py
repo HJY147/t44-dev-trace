@@ -13,28 +13,36 @@ from pathlib import Path
 
 def parse_ss(output, port, ephemeral):
     states, api_states, ports = Counter(), Counter(), set()
-    recvq = sendq = invalid = 0
+    recvq = sendq = invalid = listen_recvq = listen_sendq = 0
     for line in output.splitlines():
         fields = line.split()
         try:
             state, receive, send = fields[0], int(fields[1]), int(fields[2])
-            local, peer = int(fields[3].rsplit(":", 1)[1]), int(fields[4].rsplit(":", 1)[1])
+            local, peer = (
+                int(p) if p.isdigit() else None
+                for p in (fields[3].rsplit(":", 1)[1], fields[4].rsplit(":", 1)[1])
+            )
         except (IndexError, ValueError):
             invalid += 1
             continue
         states[state] += 1
-        recvq += receive
-        sendq += send
+        if state != "LISTEN":
+            recvq += receive
+            sendq += send
         if local == port or peer == port:
             api_states[state] += 1
-        if ephemeral[0] <= local <= ephemeral[1]:
+            if state == "LISTEN":
+                listen_recvq += receive
+                listen_sendq += send
+        if local is not None and ephemeral[0] <= local <= ephemeral[1]:
             ports.add(local)
     return {
         "tcp_states": dict(states),
         "api_port_states": dict(api_states),
         "distinct_local_ephemeral_ports": len(ports),
-        "recvq_bytes_sum": recvq,
-        "sendq_bytes_sum": sendq,
+        "recvq_bytes_sum_non_listen": recvq,
+        "sendq_bytes_sum_non_listen": sendq,
+        "api_listen_reported_queue_sums": {"recvq": listen_recvq, "sendq": listen_sendq},
         "unparsed_lines": invalid,
         "port_count_is_not_exhaustion_proof": True,
     }
