@@ -50,3 +50,5 @@
 ## 待项
 
 总协调/审核岗需审准确源码，再组织MySQL/完整CI和新独立复测；本岗未自行触发workflow。原F08 FAIL、F11 NOT_PROVEN和公开总结果保留。活动C8、性能数据和.runtime未触碰，运行中的400client/600s不受本补丁替换。原产品规模6326超过5100的失败仍开放，本轮未新cloc且新增守卫不声称节省。相邻missing assessment现走原RELEASE_APPROVAL_REQUIRED，而OpenAPI RESOURCE_NOT_FOUND条件泛指请求引用不存在；D008又明确missing原分支不变，本轮不擅改该既有语义，作为独立规范澄清项交总协调，不归因为F08。
+
+证据打包补记：初次全局`git diff --cached --check`在pytest原有空格处返回2，代码/说明路径检查返回0；未strip失败输出，后将精确脱敏before.log/XML无损gzip，双hash/roundtrip记录于before-redaction.json。此为证据包装修正，不重跑目标、不改产品source935ab5b。
