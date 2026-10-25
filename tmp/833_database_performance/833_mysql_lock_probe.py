@@ -98,7 +98,7 @@ def seed(factory):
             for i in range(7)
         ]
         # Both directions of numeric target/predecessor ordering; no cycle.
-        for child, predecessor in ((0, 4), (1, 4), (6, 2)):
+        for child, predecessor in ((0, 2), (0, 4), (1, 2), (1, 4), (6, 5)):
             g.insert(
                 "task_dependencies",
                 {
@@ -145,7 +145,18 @@ def lock_snapshot(engine, connection_ids):
         }
 
 
-def pair(engine, factory, runtime, calls, *, name, expect_parallel=False, first=None, second=None):
+def pair(
+    engine,
+    factory,
+    runtime,
+    calls,
+    *,
+    name,
+    expect_parallel=False,
+    expected_wait_table="projects",
+    first=None,
+    second=None,
+):
     from sqlalchemy import text
 
     release = threading.Event()
@@ -195,10 +206,24 @@ def pair(engine, factory, runtime, calls, *, name, expect_parallel=False, first=
         while time.monotonic() < deadline:
             snapshot = lock_snapshot(engine, ids)
             edge = any(
-                w["requesting_connection"] == ids[1] and w["blocking_connection"] == ids[0]
+                w["requesting_connection"] == ids[1]
+                and w["blocking_connection"] == ids[0]
+                and w["object_name"] == expected_wait_table
                 for w in snapshot["waits"]
             )
             if (expect_parallel and gates[1].is_set()) or (not expect_parallel and edge):
+                if expect_parallel:
+                    snapshot = lock_snapshot(engine, ids)
+                    shared_projects = {
+                        row["connection_id"]
+                        for row in snapshot["locks"]
+                        if row["object_name"] == "projects"
+                        and row["lock_type"] == "RECORD"
+                        and row["lock_status"] == "GRANTED"
+                        and row["lock_mode"].split(",")[0] == "S"
+                    }
+                    if shared_projects != set(ids):
+                        raise AssertionError("Both actual project record S locks required")
                 report["observation"] = {**stamp(), **snapshot}
                 break
             if "failure" in report["workers"][1]:
@@ -295,7 +320,7 @@ def run(args, report):
             runtime.prepare(c, lambda _: None)
             return c
 
-        report["explain_target_pred"] = explain(engine, project, [tasks[0], tasks[4]])
+        report["explain_target_pred"] = explain(engine, project, [tasks[0], tasks[2], tasks[4]])
         report["cases"] = []
 
         def record(*calls, **kwargs):
@@ -311,7 +336,12 @@ def run(args, report):
             call(0), call(6), name="disjoint_reverse_id_predecessor_sets", expect_parallel=shared
         )
         record(call(3), call(operation="createTask"), name="graph_writer_waits")
-        record(call(0), call(1), name="shared_predecessor_still_serializes")
+        record(
+            call(0),
+            call(1),
+            name="two_shared_predecessors_still_serialize",
+            expected_wait_table="tasks" if shared else "projects",
+        )
 
         def rollback_pred(g, c):
             row = c.task(g)
@@ -327,6 +357,7 @@ def run(args, report):
             name="predecessor_latest_after_wait",
             first=rollback_pred,
             second=observe_pred,
+            expected_wait_table="tasks",
         )
         if case["workers"][1].get("action", {}).get("predecessor_state") != State.ROLLED_BACK:
             raise AssertionError("Waiting reader did not observe predecessor commit")
@@ -335,7 +366,14 @@ def run(args, report):
             row = c.task(g)
             return {"version": c.cas(g, "tasks", row, {"state": State.DEVELOPING})["version"]}
 
-        case = record(call(3), call(3), name="same_target_same_version_cas", first=cas, second=cas)
+        case = record(
+            call(3),
+            call(3),
+            name="same_target_same_version_cas",
+            first=cas,
+            second=cas,
+            expected_wait_table="tasks" if shared else "projects",
+        )
         if case["workers"][0].get("action") != {"version": 2}:
             raise AssertionError("First CAS did not succeed")
         if case["workers"][1].get("failure", {}).get("rejection_code") != "VERSION_CONFLICT":
