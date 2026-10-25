@@ -1483,5 +1483,27 @@
     "environment_contract": "two independent fresh CI jobs/services, same precise t44_diagnostics; other HTTP job t44_gate_http not allowed by this tool",
     "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394684218",
     "final_github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394701321"
+  },
+  "performance_fixture_20261025": {
+    "design": "2f6c1f9",
+    "source": "d8addfdb24ee1c25c91b63bc6999e18619c231e0",
+    "script": "tmp/833_database_performance/833_performance_fixture.py",
+    "script_sha256": "c6167e799533e493ca9faa85241e1c0acecd92bf4b96c154c7ddc79a6be205df",
+    "report": "agents/database/performance-fixture-20261025/report.md",
+    "metadata": "agents/database/performance-fixture-20261025/public-inventory.json",
+    "original_receipt_sha256": "e67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76",
+    "actual_result": "one new-schema commit/readback:40P6000T9000E11400reviews+3600decisions;3600assessments additional;800concentrated groups verified",
+    "actors": {
+      "m": 1,
+      "d": 2,
+      "d2": 3,
+      "r": 4,
+      "x": 5
+    },
+    "database_mutation_ended_utc": "2026-10-25T08:04:21.609894+00:00",
+    "restoration_scope": "E-only, no SQL/rerun; root later signed5sessions separately",
+    "prompt_ref": "ROLE-database-PERF-FIXTURE-20261025-v1",
+    "production_change": false,
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6395326771"
   }
 }

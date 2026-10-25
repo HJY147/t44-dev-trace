@@ -1,0 +1,70 @@
+{
+  "operator": "database AI",
+  "design": "2f6c1f9",
+  "fixture_source": "d8addfdb24ee1c25c91b63bc6999e18619c231e0",
+  "fixture_sha256": "c6167e799533e493ca9faa85241e1c0acecd92bf4b96c154c7ddc79a6be205df",
+  "base_product": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "reused_files_exact_product": {
+    "backend/t44/persistence/seed.py": "c9d2a3382b1eeffa67f9ae757e87bf292eacbe97932c79e30f576366cbb40f93",
+    "backend/t44/persistence/rows.py": "063ec7d2b8f70c1ab6436ff0ae6aead8e748a7626c5694541036b34c94e2817b",
+    "backend/t44/persistence/schema.py": "cd1465fc7560c0f13bb80216507b237e297e2177eccf280d8802651f0458e4bd",
+    "backend/t44/persistence/schema_v1.sql": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "backend/t44/persistence/codecs.py": "67ce7fe9d9492f8e92c66aa4080203114aaa578702663681c3d88d4a5b6b1c4e",
+    "backend/t44/persistence/uow.py": "3063b8b29a07dd29f188720df637d4e31e0fbc9e8b401be1f2ecbc3188d5897f",
+    "backend/t44/persistence/engine.py": "f7ec591dad711e3755aeda2606cee8dcaa023b416d8c51592b7b87684121ab9d",
+    "backend/t44/persistence/migrations.py": "2f0a908e1c984502aa1e9027cec09eae92d6513972bcc0653431240d5da33d1a",
+    "backend/t44/resources/review-template.json": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+    "backend/t44/resources/escalation-rules.json": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41"
+  },
+  "raw_files_unchanged": {
+    "database-preparation.json": {
+      "bytes": 24899,
+      "sha256": "e67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76"
+    },
+    "offline-check.json": {
+      "bytes": 13673,
+      "sha256": "ad759a882dcf4009e80458e425bdfbe352e7e48768475b99d4b2bac3739a2983"
+    },
+    "derived-helper.patch": {
+      "bytes": 18768,
+      "sha256": "b789002a3d68881ee058cfda567ca9605c817983b33c9aa2183e4b4fb039d33f"
+    },
+    "guard-result.json": {
+      "bytes": 1906,
+      "sha256": "c9ddab45bb5190c6e4bd3a9c16f8f88298bbed73e6b93c3bf31063eebbeb9dde"
+    },
+    "wrong-env-rejected.json": {
+      "bytes": 1641,
+      "sha256": "f764062e600e51655df3547f87e86a886336304edeaad9a3fa075fac7b2dbf64"
+    }
+  },
+  "logical_content_sha256": "05cd964a87a5438ab71cae8bad6f6284f83e2935e758e480002a64e63f1cd629",
+  "logical_hash_scope": "builder tables only; excludes user random password hashes and server defaults; not physical database digest",
+  "seed": 44,
+  "anchor": "2026-10-25T08:03:00+00:00",
+  "configuration": {
+    "version": 1,
+    "seed": 44,
+    "anchor_at": "2026-10-25T08:03:00+00:00",
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "records": 15000,
+    "template_version": 1,
+    "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+    "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+    "rule_version": 1,
+    "rule_effective_at": "2026-10-23T05:33:29Z",
+    "rule_decided_by": 1,
+    "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+    "synthetic": true
+  },
+  "derivation": "unmodified frozen seed._populate via explicit Collector; dedicated helper transform, no monkeypatch or production modification",
+  "exact_added_helper_patch": {
+    "bytes": 18768,
+    "sha256": "b789002a3d68881ee058cfda567ca9605c817983b33c9aa2183e4b4fb039d33f"
+  },
+  "schema_initialization_source": "root reports ade5 frozen migration; same schema bytes as productc8",
+  "actual_execution": "one offline build, two expected CLI rejection guards, one authorized DB preparation+readback; restoration E-only no SQL/tests",
+  "production_changed_files": ""
+}

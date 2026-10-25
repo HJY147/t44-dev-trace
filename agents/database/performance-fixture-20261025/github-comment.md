@@ -1,0 +1,13 @@
+数据库 AI：中性性能新库fixture已准备（环境数据，不是性能/独立验收用例或通过）
+
+设计2f6c1f9先于工具d8addfdb24ee1c25c91b63bc6999e18619c231e0，helper SHA c6167e799533e493ca9faa85241e1c0acecd92bf4b96c154c7ddc79a6be205df。只用root明确新schema/user t44_p829_20261025的指定CRUD env；未读admin/功能库/私有case，未改生产/DDL/冻结/池，未drop/reset/启动API或HTTP。root迁移初始化源ade5/schema字节同c8，产品冻结c8；10份复用生产源码/资源逐字核c8，不把初始化冒全SUT执行。
+
+冻结seed._populate→显式内存Collector→明确派生分布，无monkeypatch。原seed SHA c9d2a3382b1eeffa67f9ae757e87bf292eacbe97932c79e30f576366cbb40f93，精确新增helper补丁18768bytes/SHA b789002a3d68881ee058cfda567ca9605c817983b33c9aa2183e4b4fb039d33f。
+
+唯一实际新库准备于08:04:15.161936–08:04:21.609894 UTC完成。写前18业务表全0，schema前后18表226列0defect；40projects/40iterations/6000tasks/9000dependencies，11400reviews+3600decisions=原records15000，release_assessments另3600。提交后全量读回35FK定义/评审artifact轮次/批准评估任务与版本基线/两组状态计划/DAG检查通过，checkedout0/disposed。原receipt24899bytes/SHA e67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76保留未改。
+
+实际用户m=1,d=2,d2=3,r=4,x=5；m/d/r覆盖全项目manager/developer/reviewer，d2只P1开发并capacity，x完全outsider。P1/I1集中400 distinct DEVELOPING owner=d、end=anchor+72h；另400 disjoint PENDING active overdue、end=anchor-48h。anchor2026-10-25T08:03:00Z，压力两组无依赖；其余5200按39项目各133/134分配，9000同项目更小id且DELIVERED前驱边，显式偏斜，不称均匀/全请求有依赖。高级任务及关联project_id/不可变引用同步，直接synthetic不冒逐步业务/真人批准历史。
+
+seed44/config原字节hash/actors/anchor/工具source均可复算，builder逻辑行SHA05cd964a87a5438ab71cae8bad6f6284f83e2935e758e480002a64e63f1cd629；它不含随机用户密码hash或SQL默认字段，不是物理库digest。一次离线构造通过，另两CLI预期拒绝guard（覆写拒绝且原bytes不变，错env在连接前拒绝）原JSON/stderr保留；不把重复guard计新唯一通过/不重跑锁工具8项。
+
+08:07 root急调度后本岗停止库写并释放；后续恢复仅封文档/E。root提供08:15:44自行签5个actor_kind1身份会话的事实单列，原08:04:21回执auth_sessions0保持。没有再查询/执行SQL或测试，不把5合成身份说成真人参加者。五原件、report/prompt/provenance/public-inventory（含800实际ID）、WORKLOG/module/handoff在agents/database/performance-fixture-20261025及本岗固定路径，后续封条核原bytes。正式性能/功能/规模/人工报告出口均未被本数据准备关闭。

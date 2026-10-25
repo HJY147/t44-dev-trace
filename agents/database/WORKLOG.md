@@ -314,3 +314,11 @@
 - 首次patch因format换行上下文不符原子拒绝，核git diff无部分写，读准原件后分段应用；同8工具guard再次8pass0.39s，新两脚本Ruff与stagedcheck0。8guard不执行新增MySQL观察分支，待root统一freshCI。原报告/失败/seal按其旧source保留，本轮独立新E。
 - root明确两独立fresh jobs/MySQL service同t44_diagnostics，不扩本工具库白名单，HTTP另t44_gate_http。3dc8655只加LIMIT0 readiness，同8pass0.39s；最后format check一行拼接返回1，da166fe仅格式且AST机械比较完全等于已测3dc，最终Ruff/checkformat0，没有再次运行8项；真实失败/源hash均在point-lock-verification。最终probe SHA bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4。
 - Issue4初交接6394684218与最终6394701321均由connector实际POST、各单ID完整GET/body精确相同，实际原响应/hash分别保留。source和精确baseline/candidate命令已先发root，不自行触发CI，正式出口不变。
+
+## ROLE-database-PERF-FIXTURE-20261025-v1：新库中性性能数据准备
+- root授权唯一新schema/user t44_p829_20261025及其0600本库CRUD env，其他admin/功能库/私有case禁读；本轮先设计2f6c1f9后helper d8addfdb24ee1c25c91b63bc6999e18619c231e0，复用冻结seed._populate显式Collector，生产净变更0，无monkeypatch/DDL/drop/reset/HTTP。
+- 先一次离线构造通过，后唯一实际库准备2026-10-25T08:04:15.161936–08:04:21.609894Z完成：写前18业务表全0，schema前后18/226无缺陷，40P/6000T/9000E/11400reviews+3600decisions=15000，额外3600assessments。提交后全量读回35FK定义/评审轮次/artifact/批准评估baseline/两组状态和DAG通过，checkedout0/disposed。
+- 5用户实际m1/d2/d2=3/r4/x5，具体无歧义字典{m:1,d:2,d2:3,r:4,x:5}；m/d/r全项目角色1/2/4，d2只P1开发与capacity，x完全outsider。P1/I1的400DEVELOPING future+72h与400PENDING overdue-48h disjoint、owner=d，其他5200各133/134分到39项目，压力两组0依赖，明确偏斜不称均匀。
+- seed44/anchor08:03UTC/configrawhash/10复用源码对c8字节核验、builder逻辑hash05cd964...及精确derived-helper.patch保留；logical hash不包含随机用户密码hash/serverdefaults，不称物理库复现。原database-preparation.json24899bytes/SHAe67af95b0ba78d2b3badc8e10138a4343197784feabaea7690466b1972ccca76未修改。两个CLI预期拒绝guard（已存输出不变、错env在连接前拒绝）原stderr/失败JSON保留，不算产品失败/不重复8用例。
+- root08:07急调度腾槽，本岗完成source push后结束，五原件未跟踪保留，无进一步写库；后续恢复仅E/Issue/文档，不重跑/不连接DB。root提供08:15:44自行签5个合成actor_kind1会话事实单列，原回执auth_sessions0不回写，也不冒真人活动。中性public-inventory另列800实际ID供root，只是环境数据不是验收用例。
+- 恢复封E已实际发表Issue4评论6395326771，精确GET单ID全文与本地稿同，原响应/hash保存；原五文件hash逐一保持，public-inventory/provenance是从原receipt提取，不增加SQL/测试。未闭任何正式出口，源d8无变更。
