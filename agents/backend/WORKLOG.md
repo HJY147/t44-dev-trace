@@ -541,3 +541,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 自身旧end-wall先end-CPU出现短span超窗最多459ns，25b1e10窄修并必要重做一对56；各868span窗口合法/无负exclusive。最终list CPU7.796→5.865ms，但GET/contract无一致改善、flow近噪声；不全局部署原型，不把本地描述性指标冒云270ms或根因。
 - tmp纯ref展开原型35差分/回退/错误序/逐调用SPEC变化/并行状态绿；生产/合同/DDL对ade5逐字同，6316未达且未新cloc。六原件gzip/raw双hash/roundtrip、summary/report/验证齐；原型SIM105红提交后修复、首次patch上下文失败与TestClientwarning如实保留。最终Ruff/format三文件绿，工具import在DB/app导入禁止下无输出。
 - 仅代码/仪表与证据checkpoint交root，后续MySQL/审核/正式云/根因未完成。所有作者执行者后端AI，非学生手测/改码/手写报告。
+
+
+## DIAG-CLEANUP-01 执行前审核窄修
+
+- root转发审核实证后新branch基78bb，bc87197先设计/prompt，再d167冻结834_cleanup。原run两个preinstall目标真实2红：fixture创建失败未close；next主异常被snapshot盖住。只内存fake操作/fixture/observer，禁止真实app/DB库导入，原JUnit/argv/stdout保留。
+- b079f84553b8aa91a7f18a7f76f5b6319a2cdc07仅诊断run清理：requests优先保存、install成功标志、NOT_INSTALLED/NOT_REQUESTED、四步各自尝试；原异常原raise，清理错另记，无主异常时cleanup错抛专用错误而不绿。同文件全10通过，Ruff/format两文件绿。未重跑56/35，没生产/CI/SQL/云动作。
+- AST机械核Stages/fixture/observer_from/main不变、原测量body仅增install标志，旧78bb E/raw/prompt与生产合同DDL逐字不变。新driver SHA6f7c1a2d…已优先给root同步request/workflow，限定审核待root。所有作者执行者AI，非学生本人。

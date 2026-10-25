@@ -327,3 +327,8 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 ## 2026-10-25 CPU阶段诊断
 
 先设计25f9、工具最终25b1e10；三脚本在tmp/834_backend_performance，真实TestClient/SQLite固定合成数据，非400/600秒。修正时钟后一对各56请求成功/868span合法；纯ref原型35差分绿，但只list大响应CPU有明显下降，小GET/校验无一致改善，故不直接全局实施。生产/合同/DDL对ade5逐字同、6316仍超1216。六原始JSON已无损gzip+双SHA保存，失败输入/旧时钟样本不重写；详见agents/backend/performance-20261025/report.md、summary.json、artifact-manifest.json、verification.json。root freshMySQL CI使用DB最终observer4edbf…及新t44_diagnostics，真实MySQL/云根因/正式验收本岗未执行。
+
+
+### 诊断清理执行前P2
+
+DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1a2d…；先设计、旧2目标红、同10零DB目标绿。保主异常、requests先存、未install不snapshot、四清理步骤独立尝试、清理错不冒成功。旧E/raw和生产不改，不重跑56/35；报告agents/backend/performance-20261025-cleanup/report.md。root须以新source/hash再准入，不将此工具修复当云性能修复。
