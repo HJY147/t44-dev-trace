@@ -1,0 +1,21 @@
+# Neutral pagination/resource/account interface — v8
+
+Frozen OpenAPI page fields: page integer1..10000000, page_size1..100, total integer0..9007199254740991, items array up to100. The reader requests100. Invalid values or wrong echo remain errors. A bounded traversal visits at most the first response's page count, capped at100000, without chasing an active writer or automatically rescanning. All original pages remain in private HTTP evidence. Per-page cardinality mismatch and duplicate IDs are explicit enumeration proof gaps. A changing total can be legal concurrent change; differing from the first total is not itself a business failure. Stable observed enumeration is not an atomic cross-request snapshot. The current audit contract supplies no snapshot/asof/cursor.
+
+Workload and performance thresholds remain frozen. Full core metrics survive later resource/postcondition gaps. Complete-audit assertions retain their expected values but cannot be proven from the current page-only contract; complete formal acceptance remains NOT_PROVEN. This does not permit changing thresholds or declaring a full group PASS.
+
+Resource input is environment.performance.server_resource_jsonl, a path under this root's private/input. Supply exact raw JSONL, not a numeric-only view. Each completed nonblank line is an object with these required fields:
+
+```json
+{"utc":"2026-01-01T00:00:00Z","resource_id":"EXACT_GRANTED_ID","cpu_percent":12.5,"memory_bytes":123456}
+```
+
+cpu_percent and memory_bytes may be finite nonnegative numbers or null. Boolean is not numeric. A real0 remains measured0. Null means no observation for that metric at that timestamp, even if an extra status/pending field exists. Unknown fields are retained in raw bytes and do not create measurements. A usable paired observation needs both metrics numeric. Each exact granted resource ID needs actual numeric samples spanning the steady interval: first within10seconds of its beginning, last within10seconds of its end, no gap between paired numeric samples greater than10seconds. The new interior-gap check strengthens the former endpoint-only check; it is an evidence-quality convention, not a business threshold. These are sampled observations, not proof of continuous unsampled values. Null counts, invalid/partial lines, missing resources and largest numeric gaps are reported without interpolation or zero fill. A partial final line leaves sampled coverage NOT_PROVEN. Raw bytes are streamed into encrypted evidence in chunks with offsets before parsing, with exact source byte count and SHA256. Resource transport/quality gaps are not SUT business failures.
+
+Optional naturally expired human input is environment.accounts.expired:
+
+```json
+{"id":123,"username":"SYNTHETIC_HUMAN","token":"PRIVATE_NATURALLY_EXPIRED_SESSION"}
+```
+
+The credential field read is accounts.expired.token. A genuine60-second TTL session works after its real server expiration time has passed before the independent runner starts; allow scheduling margin. Do not change system time or stored expiry. Keep it separate from active m/d/d2/r/x sessions, whose TTL must cover the admitted window. Deliver real values only in the new private environment. This interface grants no login/issuance or SUT authorization.
