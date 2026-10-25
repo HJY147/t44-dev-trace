@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "仅PUBLIC控制审核与一次新无网络模拟探针；0 SUT，不是验收执行",
+  "implementation_status": "精确C/812/6738源与编排限定审完成；首次setup红case0及普通CI账本红保留，真实第二轮未由本岗验证",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v2/static-audit.json",
-  "latest_review_report": "reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md",
+  "latest_review_evidence": "agents/reviewer/evidence/shared-project-point-c8c/static-audit.json",
+  "latest_review_report": "reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1449,6 +1449,11 @@
       "id": "ROLE-reviewer-829-PUBLIC-CONTROL-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-CONTROL-v1.txt",
       "reason": "PUBLIC-only control review separate from private acceptance; preserve freeze and zero-SUT boundary, use generic budget arithmetic and one necessary synthetic no-network probe."
+    },
+    {
+      "id": "ROLE-reviewer-SHARED-PROJECT-POINT-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SHARED-PROJECT-POINT-v1.txt",
+      "reason": "Design-first exact two-node source review then separate exact workflow/resource/grant admission; preserve source/test/performance boundaries and corrected fixed-nonce plan."
     }
   ],
   "questions": [],
@@ -1492,9 +1497,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "NOT_ADMITTED_829_PUBLIC_V2_CONTROL_BOUNDARIES_AND_INPUTS",
+  "review_outcome": "C_READY_FOR_FRESH_MYSQL_DEVELOPMENT_CI;EXACT_6738_SECOND_RUN_ADMITTED;NO_GLOBAL_OR_MERGE_PASS",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
+  "review_target_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
   "review_targets": [
     {
       "pr": 14,
@@ -1576,7 +1581,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "829 PUBLIC v2控制边界暂不准入；三项P2与中性输入澄清经root转交",
+  "stage": "c8c两锁源码无新增阻断；812首次setup红保持；6738修订准入第二轮fresh开发执行",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1595,7 +1600,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-25T06:54:06.123152+00:00",
+  "updated_at": "2026-10-25T07:20:11.215635+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2565,7 +2570,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "independent tool PUBLIC freeze SHA256, not Git SHA",
+  "review_target_kind": "Git commit SHA1; workflow separately pinned by SHA1",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -2621,5 +2626,102 @@
       "verified_at_utc": "2026-10-25T06:54:06.123152+00:00"
     },
     "evidence_commit": "c1722ae990882f6f294f2ddd6253d1dcdad06ac9"
-  }
+  },
+  "previous_phase_before_shared_project_point_review": {
+    "stage": "829 PUBLIC v2控制边界暂不准入；三项P2与中性输入澄清经root转交",
+    "implementation_status": "仅PUBLIC控制审核与一次新无网络模拟探针；0 SUT，不是验收执行",
+    "review_target_sha": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
+    "review_target_kind": "independent tool PUBLIC freeze SHA256, not Git SHA",
+    "review_outcome": "NOT_ADMITTED_829_PUBLIC_V2_CONTROL_BOUNDARIES_AND_INPUTS",
+    "latest_review_report": "reports/reviews/829-public-control-v2-05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v2/static-audit.json"
+  },
+  "shared_project_point_review": {
+    "candidate": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "original_runtime_sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+    "candidate_runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "report": "reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md",
+    "audit": "agents/reviewer/evidence/shared-project-point-c8c/static-audit.json",
+    "two_nodes_reversed_whole_AST_equal": true,
+    "ids_assembly_AST_equal": true,
+    "BE_seal_checks": 22,
+    "compressed_failure_exact_roundtrips": 2,
+    "owner_JUnit_recount_not_rerun": {
+      "setup_errors": 9,
+      "structural_red": 9,
+      "point_green": 11,
+      "adjacent_green": 21,
+      "unique_green": 32
+    },
+    "owner_size_gate": {
+      "lines": 6326,
+      "upper_limit": 5100,
+      "exit": 1,
+      "passed": false,
+      "rerun": false
+    },
+    "HTTP7_only_source_reviewed": true,
+    "member_active_revocation_race_not_proven": true,
+    "FK_secondary_external_writer_global_deadlock_freedom_not_proven": true,
+    "own_new_tests_probes_SQL_HTTP_MySQL_CI_services_cloud": 0,
+    "829_or_other_independent_reads_or_contact": false,
+    "outcome": "NO_NEW_MATERIAL_STATIC_BLOCKER;C_READY_FOR_FRESH_MYSQL_DEVELOPMENT_CI_ONLY",
+    "prompt_ref": "ROLE-reviewer-SHARED-PROJECT-POINT-v1",
+    "workflow": {
+      "head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+      "report": "reports/reviews/lock-diagnostics-81250e8887336d6af417e02e73fca5692da7f0f5.md",
+      "audit": "agents/reviewer/evidence/shared-project-point-c8c/workflow-81250e8-audit.json",
+      "inputs_exact_HEAD": 5,
+      "mode_inventory_files_each": 76,
+      "app_refs": [
+        "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+        "c8cea7e82805de5283ce67501769fa9a4efc1047"
+      ],
+      "baseline_restore_in_memory_only_by_reviewer": true,
+      "DB_probe_sha256": "bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4",
+      "HTTP_driver_sha256": "f77f2872fe6dfb8230fec6edb24be5fdcbfe048bf83c4ed319e1a6c7e713caff",
+      "fixed_nonce": "locks-20261025-01",
+      "nonce_only_successor_plan_retracted_by_root": true,
+      "root_reported8guards_not_recounted_or_rerun": true,
+      "app_grants": "schema CRUD + SELECT only on P_S data_locks/data_lock_waits/threads; no PROCESS/global",
+      "outcome": "EXACT_812_UNCHANGED_REQUEST_FIRST_PUSH_ONE_DEVELOPMENT_RUN_ADMITTED"
+    },
+    "technical_conclusions_relayed_before_administrative_seal": true,
+    "APPROVE_main_global_merge_performance_product_pass": false,
+    "workflow_812_execution_after_static_admission": {
+      "source": "root direct message; reviewer has not independently read run logs or artifacts",
+      "run": 40171891410,
+      "source_head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+      "phase": "setup REVOKE",
+      "mysql_error": 1141,
+      "jobs_affected": 3,
+      "migration": "root reports successful",
+      "lock_HTTP_business_cases_executed": 0,
+      "classification": "preparation script failure; not product lock case failure",
+      "SHOW_GRANTS_observed_by_reviewer": false
+    },
+    "product_CI_root_relay": {
+      "run": 40171891359,
+      "failure": "old 986 unblock_pending task query count expected3 observed4",
+      "reviewer_independent_log_audit": false,
+      "overall_product_CI_green": false
+    },
+    "corrected_workflow": {
+      "head": "6738c07b150da0df8554ba3b90d52e0cbc101fe6",
+      "report": "reports/reviews/lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md",
+      "audit": "agents/reviewer/evidence/shared-project-point-c8c/workflow-6738c07-audit.json",
+      "fixed_nonce": "locks-20261025-02",
+      "owner_guard_JUnit_recount_not_rerun": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "no_existing_principal_modified": true,
+      "real_CREATE_USER_effective_grants_or_MySQL_cases_not_executed_by_reviewer": true,
+      "outcome": "EXACT_6738_ONE_SECOND_FRESH_DEVELOPMENT_RUN_ADMITTED;REAL_PRIVILEGES_AND_LOCK_CASES_PENDING;NO_MERGE_OR_PRODUCT_PASS",
+      "technical_conclusion_relayed_before_administrative_seal": true
+    }
+  },
+  "latest_workflow_review_report": "reports/reviews/lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md"
 }

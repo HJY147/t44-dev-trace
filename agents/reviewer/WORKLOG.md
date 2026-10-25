@@ -461,3 +461,13 @@ ROLE-reviewer-DIAGNOSTICS-20261025-v1，自有worktree/branch，8明确文件与
 
 
 829 PUBLIC v2限定审核行政封档：报告证据c1722ae990882f6f294f2ddd6253d1dcdad06ac9已push exit0；Issue12 COMMENT6394592295（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394592295）特定全文GET exit0，body及issue_url严格相等。仍为3项P2/中性输入待澄清、v2不准入，不联系829、不发SUT、不改验收工具；最终metadata封条另提交，交root单向转交问题。
+
+
+## 2026-10-25 生产共享项目门/逐点任务锁与精确fresh执行编排审
+
+实际ROLE-reviewer-SHARED-PROJECT-POINT-v1，先原设计/点锁勘误后源审，不是独立验收。C c8cea7e82805de5283ce67501769fa9a4efc1047，原Runtime8802416…→9e0d770e…，仅两AST节点，逆转后整个Runtime同基线，ids构造同，唯一产品路径Runtime；实际BE源同C。session/idem、writerX、门后membersS/active/role、任务set与原Business重读/CAS/审计/outbox/拒绝/ACK边界无弱化。显式task按sorted(unique)逐个PK+project/limit1，不推广为secondary/FK/外部writer全域全序；Business.check_graph旧batch仍projectX下。22项BE seal、2原红gzip raw+compressed精确roundtrip；JUnit9setup error/9结构红/11+21唯一32开发绿只复算不重跑。HTTP7仅设计/源审，role降级不冒active=0成员撤销动态证明；DB6/MySQL/权限/锁/FK及净性能仍待实际。DB实际bf9b与3dc01ff整AST同，按实际hash绑定。owner原固定规模6326超5100/1226、counter exit1仍FAIL，未重计。0新probe/tests/SQL/HTTP/MySQL/服务/CI/云，不读829或其他独立材料、不联系独立岗；没有必要反例故不造重复826模拟锁证明。
+
+明确先发root：C技术可进入fresh MySQL开发CI。追加精确workflow81250e8887336d6af417e02e73fca5692da7f0f5只读核，5入口同HEAD且干净；3mode各76显式app文件核，baseline仅内存虚拟恢复ade5Runtime，其余C；额外全app/986/CI lock相对C无差。工具bf9b/f77f固定，3独立service、库/loopback/CI/ref、一次性root迁移后app CRUD+3PS SELECT无PROCESS/global，120/150/180+5sec、10min、failfastfalse/always原件。root8guards仅root报告未读未跑。指出nonce-only后继会被固定01精确dict拒绝后，root明确撤回该计划，首次push精确812固定request01字节不变；无代码修复/不接受任意nonce。明确技术准入812首次一次运行，先结论后报告Issue，不需等行政。新源须另审；无merge/main/global/正式性能或产品通过。报告reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md及lock-diagnostics-81250e8887336d6af417e02e73fca5692da7f0f5.md，证据agents/reviewer/evidence/shared-project-point-c8c/。
+
+
+本阶段执行后新事实/复审：root实际run40171891410三job迁移后REVOKE1141停止，锁/HTTP/业务case0；本岗只收root转述、未独立读run日志/artifacts/SHOWGRANTS，不把准备失败记作候选竞争失败，原812静态准入快照/nonce01保留。修订6738c07b150da0df8554ba3b90d52e0cbc101fe6已新审：6文件差量，移除MYSQL_USER/PASS自动用户，先mysql.user拒绝已有t44，再CREATE USER密码绑定，库名_转义CRUD+原3表PS SELECT，无REVOKE/DROP/PROCESS/global；产品和两driver无改动。admission整AST除固定02同旧，request除同步02同旧；新8JUnit只复算8绿不重跑。查MySQL8.4官方GRANT规则确认schema级_转义方向，不冒实际SHOWGRANTS/有效权限已验。明确技术结论已先给root：精确6738一次第二轮fresh开发执行准入，真实setup/权限/锁/HTTP待CI，旧source/失败不回写。root另转product40171891359旧986unblock_pending查询账本预期3实际4失败，只记转述，不改产品/账本、不宣称fullCI绿。报告追加lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md，原件workflow-6738c07-audit.json。
