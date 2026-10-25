@@ -1,0 +1,47 @@
+{
+  "recorded_from": "actual tool stdout structured transcription, no stdout bytehash claim",
+  "inherited_stdout_scope_label": "original script label says counterexample only; actual recheck assertions/outcomes are stable and no alias",
+  "source": "d63fe18f3227e1779d3951072636efcdb6181550",
+  "scenarios": [
+    {
+      "direction": "append",
+      "before": {
+        "kind": "rejection",
+        "code": "EVIDENCE_REQUIRED"
+      },
+      "after": {
+        "kind": "rejection",
+        "code": "EVIDENCE_REQUIRED"
+      },
+      "same_context": true,
+      "outcome_changed": false,
+      "collection_alias_retained": false
+    },
+    {
+      "direction": "clear",
+      "before": {
+        "kind": "decision",
+        "values": {
+          "state": 6,
+          "blocked_from_state": null,
+          "block_reason": null,
+          "responsibility_stage": null
+        }
+      },
+      "after": {
+        "kind": "decision",
+        "values": {
+          "state": 6,
+          "blocked_from_state": null,
+          "block_reason": null,
+          "responsibility_stage": null
+        }
+      },
+      "same_context": true,
+      "outcome_changed": false,
+      "collection_alias_retained": false
+    }
+  ],
+  "SUT_HTTP_DB": 0,
+  "oracle_imports": []
+}

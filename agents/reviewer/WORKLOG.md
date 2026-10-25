@@ -579,3 +579,13 @@ ROLE-reviewer-V8-FP-ADMISSION-v1；index95e933/allowa3c/cold438/freezed113，11t
 
 
 v8工具/round8 F-P行政封档：技术e9bc7ada7016154a43b1f9edecfcd381e41790c2已push；Issue12 COMMENT6396627329（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396627329）特定全文GET exit0/body及issue严格同。旧Fddf拒绝保留，新F132/P285仅admitted true新文件的准确canonical和时限不改，F结束停owned后Pload/fullraw；完整audit snapshot gap NOT_PROVEN，不增完整formal组PASS。root说F阶段已结束和部署停F只记调度事实，不读取结果；新增中性packetmetadata记录未读、不拖延行政。本岗0SUT/private实际结果/测试联系，metadata封后释放槽。
+
+
+## 2026-10-25 后端内部v2与数据库规模两scope审核checkpoint
+
+ROLE-reviewer-DOMAIN-V2-SIZE-v1：a07/b54对e45/product935，17hash/外部byte/16关键AST与源码锁/身份/CAS审；发现P2 V2-SNAPSHOT-ALIAS-01，先design后一次808原probe确认同冻结context因caller合法evidence list append/clear从拒绝↔state6，0HTTP/DB/socket/oracle。原a07拒绝/反例单独封不改。d63限定复审ROLE-reviewer-DOMAIN-V2-ALIAS-RECHECK-v1：原initializer AST全prefix，唯一+6在合法list/tuple验证后tuple冻结实际消费成员；一次新808两方向稳定/无alias。owner2红→172/143绿只复算，15constructor-only仍分开；旧376/微基准不重绑，新净370，可集成候选非全局通过。
+
+ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/CLI/DDL/外部byte同、35FK、19初始化位置对18DDL默认字段、迁移/claim/Rows源语义审；新VERSION2算法/digest获root授权，性质/markers/不覆盖保持，当前14small+1full及原失败gzip机械复核不相加。净90/全局6245 exit1仍FAIL；不跑活DB/全CI/新seed自测，目录与backend改动不交叉，可根合并候选。两scope技术结论先发root，组合投影5875仍差775须实际重数/MySQLCI/新独立。无新agent/独立工具private/实际结果/keys/测试联系，不探尚未给白名单v9/tmp809。
+
+
+后端v2/DB规模双scope行政封档：技术de82bc4675c9b87195e5358ea09326b55053e3f8已push；Issue12 COMMENT6397694670（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6397694670）特定全文GET exit0/body及issue严格相同。原a07/b54 P2拒绝/一次反例独立保留，d63一次窄重查闭环，DB107/f0d无新窄scope阻断，仅组合候选；净370+90投影5875仍差775，非实际全局计数或CI/独立/性能通过。准确组合CI/真MySQL/新独立由根执行；不探v9/809，无新agent/私有实际结果/测试联系。metadata封后立即释放槽供消息/调度规模任务。

@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "PUBLIC prefix/hash/literal/34证据复算与root中性build/PID核；无本岗SUT或实际结果读取",
+  "implementation_status": "2次纯域808各2方向与静态/开发证据复算；0HTTP/DB/全CI，组合待根",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v8/static-audit.json",
-  "latest_review_report": "reports/reviews/v8-tool-FP-admission-d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56.md",
+  "latest_review_evidence": "agents/reviewer/evidence/domain-v2-d63fe18/static-audit.json",
+  "latest_review_report": "reports/reviews/domain-v2-d63fe18-snapshot-closure.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1517,9 +1517,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "OLD_F_DDF_REJECTED_RETAINED_CORRECTED_F132_AND_P285_ONCE_EXECUTION_ADMITTED_NO_FORMAL_PASS",
+  "review_outcome": "OLD_A07_P2_REJECTED_PRESERVED_D63_CLOSED_DB107_NO_NARROW_BLOCKER_PENDING_COMBINED_GATES",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56",
+  "review_target_sha": "d63fe18f3227e1779d3951072636efcdb6181550",
   "review_targets": [
     {
       "pr": 14,
@@ -1601,7 +1601,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "v8工具/round8旧F拒绝保留，新F/P精确顺序执行技术准入",
+  "stage": "后端v2原P2拒绝/精确d63闭环及DB107候选窄审完成",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -2590,7 +2590,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "PUBLIC declared toolfreeze plus exactroot6694/F132/P285 admission",
+  "review_target_kind": "backend exact repair plus independent DB product107/Ef0d, not global gate",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -3353,5 +3353,66 @@
       "file": "records/handoffs/history/reviewer-public-v5-20261025.json",
       "sha256": "e41893ac3df92b71ac504b74c17bf2a3a3d365a268789457aaffaef06c9d6664"
     }
-  ]
+  ],
+  "previous_phase_before_BE_DB_size": {
+    "stage": "v8工具/round8旧F拒绝保留，新F/P精确顺序执行技术准入",
+    "implementation_status": "PUBLIC prefix/hash/literal/34证据复算与root中性build/PID核；无本岗SUT或实际结果读取",
+    "review_target_sha": "d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56",
+    "review_target_kind": "PUBLIC declared toolfreeze plus exactroot6694/F132/P285 admission",
+    "review_outcome": "OLD_F_DDF_REJECTED_RETAINED_CORRECTED_F132_AND_P285_ONCE_EXECUTION_ADMITTED_NO_FORMAL_PASS",
+    "latest_review_report": "reports/reviews/v8-tool-FP-admission-d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v8/static-audit.json"
+  },
+  "BE_DB_size_reviews": {
+    "old_backend_source": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+    "old_E": "b54e6757cdf1eed72adf4eaea68d8ae0c34c42ca",
+    "P2": "V2-SNAPSHOT-ALIAS-01",
+    "old_outcome": "REJECTED_RETAINED",
+    "old_report": "reports/reviews/domain-v2-b54e675-P2-snapshot-alias.md",
+    "backend_repair": "d63fe18f3227e1779d3951072636efcdb6181550",
+    "backend_report": "reports/reviews/domain-v2-d63fe18-snapshot-closure.md",
+    "backend_outcome": "LIMITED_P2_CLOSED_INTEGRATION_CANDIDATE",
+    "backend_net_lines": 370,
+    "DB_product": "1076677527bbfc94e376ce1a564fc461622b5dee",
+    "DB_E": "f0d28596b65151f565eaf25b8a91f0edbc4eab4c",
+    "DB_report": "reports/reviews/database-size-1076677-seed-v2.md",
+    "DB_net_lines": 90,
+    "DB_outcome": "NO_NARROW_BLOCKER_INTEGRATION_CANDIDATE",
+    "own_pure_probe_executions": 2,
+    "own_SUT_DB_HTTP_CI_runs": 0,
+    "old15constructor_not_v2_validation": true,
+    "private_or_independent_results_or_tmp809_read_or_test_contact": false,
+    "combined_projection5875_is_not_fresh_count": true,
+    "actual_combinedCI_MySQL_independent_formal_global_size": "pending root",
+    "technical_before_admin": true,
+    "v9_not_explored_no_allowlist_yet": true,
+    "APPROVE_global_product_or_merge_PASS": false,
+    "prompt_refs": [
+      "ROLE-reviewer-DOMAIN-V2-SIZE-v1",
+      "ROLE-reviewer-DOMAIN-V2-ALIAS-RECHECK-v1",
+      "ROLE-reviewer-DATABASE-SIZE-V2-v1"
+    ],
+    "github": {
+      "id": 6397694670,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6397694670",
+      "issue": 12,
+      "technical_evidence_commit": "de82bc4675c9b87195e5358ea09326b55053e3f8",
+      "backend_original": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+      "backend_repair": "d63fe18f3227e1779d3951072636efcdb6181550",
+      "DB_product": "1076677527bbfc94e376ce1a564fc461622b5dee",
+      "DB_E": "f0d28596b65151f565eaf25b8a91f0edbc4eab4c",
+      "full_specific_GET_exit": 0,
+      "body_exact_match": true,
+      "correct_issue": true,
+      "body_sha256": "f5e9b42dd06bd33bb36d892491dab7d3be0393c2401a532beb75509e3048e44b",
+      "full_get_sha256": "5cd97bd6ecba1c92f649341fa60ffbe29063d4c13e749a08e89aff517c22ee90",
+      "full_get_bytes": 6578,
+      "verified_utc": "2026-10-25T12:34:48.813538+00:00",
+      "old_P2_rejection_retained": true,
+      "d63_closed_and_DB107_integration_candidates": true,
+      "APPROVE_global_product_or_merge_or_formal_size_PASS": false
+    },
+    "technical_evidence_commit": "de82bc4675c9b87195e5358ea09326b55053e3f8",
+    "role_release": "two requested scopes sealed; oldP2 and fixedsource separate; no v9/809 exploration; return slot for messages/scheduler size work"
+  }
 }

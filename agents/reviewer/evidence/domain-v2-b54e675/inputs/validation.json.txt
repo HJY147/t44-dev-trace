@@ -1,0 +1,126 @@
+{
+  "base": "e45a2b980c6ba8c61761f897414d54a10000409d",
+  "product_base": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "rollback_checkpoint": "a19af36",
+  "rollback_checkpoint_is_full_test_green": false,
+  "candidate_branch": "codex/backend-domain-v2-size-20261025",
+  "candidate_product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+  "product_bytes_equal_stage_commit": true,
+  "no_test_runtime_dependency": {
+    "product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+    "app_created": true,
+    "pure_start_decision": "developing",
+    "developer_oracle_imports_blocked": true,
+    "network_and_database_connects_blocked": true,
+    "connect_attempts": 0,
+    "scope": "lazy app construction and pure START only; no HTTP, database, locks or formal performance"
+  },
+  "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397299657",
+  "operator": "backend AI",
+  "product_sha256": {
+    "backend/t44/api.py": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+    "backend/t44/contracts/__init__.py": "30d3f2acdb2ce5adb49e47065fd684e5d06825d08f32eb6e06cc2375fb6f4688",
+    "backend/t44/domain/__init__.py": "6aae9b1fb4fcc87a0766c807ed8f036f09629811544c8b7db50485634cc4348e",
+    "backend/t44/domain/models.py": "550d817d5b5aadb5384d5ed319c3dd3cd0ee838feb97063d6e39cca5dbaec170",
+    "backend/t44/domain/state_machine.py": "65a743e2f30e3459568491dfb25e3db387bfb019db5a05dd7125c07fcd1ec9a8",
+    "backend/t44/services/__init__.py": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+    "backend/t44/services/application.py": "158fd13d7b0765b085a8dfa14beb6ccd441c55b2d7cfb0e8938cc3e5a5e61e75",
+    "backend/t44/services/codes.py": "bab51291d86feb0575796eab666cdd4170c2e6efcfc9a1c6d34b05d42ddea104",
+    "backend/t44/services/common.py": "39180236fb89536f3b068ddcf82ce7ba43cb92ea12ec21f0fdc50875d499c186",
+    "backend/t44/services/errors.py": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+    "backend/t44/services/history.py": "36b2fb1aed476bff3d852e113da4584e1906b53f1f5e3d476b730f9f8a1d98ae",
+    "backend/t44/services/identity.py": "9ec1537da5cad83ae99ec68872be5ea4ad8477f99519a03d0bf8439317132985",
+    "backend/t44/services/projects.py": "0cdadc0710d15ea837e5285f8e6ea278703f954d5afb4b09fe6aa9ca02f03a30",
+    "backend/t44/services/reviews.py": "688183095865d119e77dd8a7aa5db965bf1d0ca2ff81ff19e5188225a8234d92",
+    "backend/t44/services/runtime.py": "a8b6a6711f2a88249f760e05badd80c911ead6e25824e9d4400d8b3b1844a239",
+    "backend/t44/services/tasks.py": "2b47b84e281f022231adf863e116b82aade3e4174968ff2f68fe7ed5ee2638da",
+    "backend/t44/services/workflow.py": "e30455418a474eaf9a82809327c9567508610162cd3dc67dbed801f1d29c4d3c"
+  },
+  "deleted_product_files": [
+    "backend/t44/domain/commands.py"
+  ],
+  "fixed_cloc": {
+    "before": 2363,
+    "after": 1987,
+    "net_reduction": 376,
+    "version": "2.10",
+    "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83"
+  },
+  "tests": {
+    "domain": {
+      "tests": 170,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "http": {
+      "tests": 143,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "legacy_migration": {
+    "legacy_assertion_cases_exercising_v2": 91,
+    "historical_constructor_only_cases": 15
+  },
+  "differential": {
+    "base": "e45a2b980c6ba8c61761f897414d54a10000409d",
+    "comparisons": 57120,
+    "scope": "pure domain decisions/violations; not MySQL locks, HTTP or independent acceptance"
+  },
+  "static": {
+    "base": "e45a2b980c6ba8c61761f897414d54a10000409d",
+    "whole_rewrite_AST_equivalent": false,
+    "identical_functions": {
+      "backend/t44/services/runtime.py:_audit_integer": true,
+      "backend/t44/services/runtime.py:authorize": true,
+      "backend/t44/services/runtime.py:prepare": true,
+      "backend/t44/services/runtime.py:audit": true,
+      "backend/t44/services/runtime.py:rejection": true,
+      "backend/t44/services/runtime.py:complete": true,
+      "backend/t44/services/runtime.py:claim": true,
+      "backend/t44/services/runtime.py:_claim": true,
+      "backend/t44/services/runtime.py:execute": true,
+      "backend/t44/services/common.py:check_version": true,
+      "backend/t44/services/common.py:cas": true,
+      "backend/t44/services/common.py:model": true,
+      "backend/t44/services/common.py:wire": true,
+      "backend/t44/services/common.py:plan": true,
+      "backend/t44/services/common.py:plan_values": true,
+      "backend/t44/services/common.py:page": true
+    },
+    "workflow_preflight": {
+      "DELIVER_preflight_first_two_statements_AST_identical": true,
+      "ROLLBACK_preflight_first_two_statements_AST_identical": true
+    },
+    "legacy_test_function_bodies_and_assertions_AST_identical": true,
+    "HTTP_test_sources_byte_identical": {
+      "tmp/backend/contracts/986_http.py": "754739a7f0292856fe902ac51bfdae2a31d4a10ae9fe281007576e05a80c25bf",
+      "tmp/backend/contracts/987_faults.py": "d8b0ce199683ef7421ba761c0a53eeede1e07820f49a660b17737c344b37a576",
+      "tmp/backend/contracts/856_release_error_priority.py": "6a5e994f41386d15bb7f77828357aac29412367c67e7bc2dfed0dbb155c05eae",
+      "tmp/backend/contracts/859_dependency_delivered.py": "76641e44aff07317071de87f9176a645d1c540de417fa79ba916aad8ff0e129f",
+      "tmp/backend/contracts/816_acceptance_followup_20261025.py": "1fd7fc94c31c682f883b030d5fa6e23d1d3794faebb75f3fd90c00cbc8f3581a"
+    },
+    "api_and_frozen_openapi_sources_byte_identical": true,
+    "scope": "static checks do not establish MySQL locks, performance or independent acceptance"
+  },
+  "performance": {
+    "scope": "offline pure DTO/decision CPU microbench; no SQL/HTTP or formal acceptance",
+    "ratios": [
+      0.7909721668394609,
+      0.8127780334407118,
+      0.7696316390633924,
+      0.7384737897135953,
+      0.8022185508614585
+    ]
+  },
+  "not_proven": [
+    "full product CI on combined source",
+    "MySQL lock behavior after integration",
+    "frontend regression",
+    "independent acceptance",
+    "formal 400 clients/600 seconds/270ms/zero-error performance",
+    "global source <=5100"
+  ]
+}
