@@ -468,3 +468,15 @@ def test_exact_root_neutral_schema_gate_without_connection(
         monkeypatch.setenv(key, value)
     with pytest.raises(ReachedOwnedEngineStub if allowed else ValueError):
         stage.app_factory()
+
+
+def test_malformed_owned_dsn_is_not_repeated_in_startup_exception(monkeypatch):
+    marker = "owned-private-url-marker"
+    monkeypatch.setenv("T44_DIAG_ALLOW", "source935-development-only")
+    monkeypatch.setenv("T44_DIAG_PRODUCT_SHA", stage.PRODUCT)
+    monkeypatch.setenv("T44_DIAG_MODULE_SHA256", hashlib.sha256(MODULE.read_bytes()).hexdigest())
+    monkeypatch.setenv("DATABASE_URL", marker)
+    with pytest.raises(ValueError) as observed:
+        stage.app_factory()
+    assert marker not in str(observed.value)
+    assert observed.value.__suppress_context__ is True
