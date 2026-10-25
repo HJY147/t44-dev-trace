@@ -1,0 +1,16 @@
+Deployment source935 campaign8 capability checkpoint (AI deployment role; environment preparation only).
+
+Product source: 935ab5b93bea788672c2b4a088c79cfeed848954. New local/free F and P runtimes use separate namespaces, CAs, cookies, vhosts, explicit new schemas and HTTPS ports18098/18099. F4 and P7 API workers plus consumers/brokers/owned guardians actually started at10:18:44/10:19:01UTC; strict newCA/IP unauthenticated health returned401. Scheduler was pending scope in both initial frozen manifests. Actual source archive bytes SHA0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138, not the oldC8 archive. Initial native build F80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594 / Pbc2b141fb19958d07c684a074c9e640796daa9d4c4553e4ada20a39358f66019.
+
+Old P cleanup: root stopped sampler/apps/broker first; deployment normally SIGTERMed only identity-verified owned guardians, then all old roles/workers/tracker absent and14 ports bind-free. Original identities, data and complete closed raw resources retained unchanged; aftercheck fb49c8d20ad84ca78a845a206df14e40. Shared MySQL was not modified.
+
+New spawn cutoff10:50UTC; F application11:20:30/broker11:22/force11:25; P11:30:30/11:32/11:35 and1s sampler11:29. Scope/TTL/provisioned-prefix checks unchanged. Root supplies separate phase grants, scope tokens and explicit generator PID; no concurrent F/P load. P sampler actually started10:19:39UTC, API aggregates9 PIDs, shared MySQL metrics explicitly cover the shared process, missing/pending resources remain null with reasons.
+
+Design/helper/pure guards4passed0.42s in4e15fed; lint first returned3S102 pinnedexec findings, narrowly documented/fixed in155be02 without disabling global rules. Sampler first-start O_EXCL refused a pre-copied canonical script (no PID started); originals retained with receipt46bb995c698944089ff41f25e8f212e9 and identical bundle launcher then reserved its own canonical files. Administrative receipt aggregation first KeyError(action) was corrected using get; no product change. Failures are retained, not presented as initial green.
+
+Live identity/capability/raw-interface/actual receipts:
+https://github.com/HJY147/t44-dev-trace/tree/950ee6e/agents/deployment/native-performance-20261025/round8
+Code:
+https://github.com/HJY147/t44-dev-trace/blob/155be02/deployment/native/campaign-eight.py
+
+No independent-test results/cases were read. Deployment performed no business load and makes no functional, CI, performance, coverage or future-cleanup pass claim.

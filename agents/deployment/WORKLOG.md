@@ -551,3 +551,21 @@ root随后明确只允许新round2 idle API/consumer先启动建立身份及采�
 root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop：appguardian和broker guardian先核UID/lstart/PGID/argv hash并写owned request，再SIGTERM；forced=false，F API/四worker/tracker/consumer/当前scheduler/Rabbit/EPMD/两guardian全部absent。原controller/manifest/appbinding/artifact/nativebuild六件SHA前后相同，数据/所有原日志和两份闭合raw保留并列SHA/bytes，P和sharedMySQL未触碰。aftercheck receiptac3c4129cc7842dea98936edfd45aff8。
 
 首次端口后验24396 EADDRINUSE的false如实保留，其余指定端口free；另只读重核见functional-phase-end-port-recheck.json，不据此猜原因或杀unknown。此收尾只证明本岗owned服务消失，不替代F独立结论或P性能通过；P角色/门禁/采样未由本动作改变，正式generator由root后续显式注册到P74003采样。
+
+## 2026-10-25 source935 campaign8：先清理与设计
+
+root通知旧P phase结束并已正常停sampler/app/broker，本岗owned核验后SIGTERM仅两guardian；所有角色/7workers/tracker absent，14旧端口free，六件身份SHA不变，closed raw完整SHA/bytes核对，aftercheck fb49c8d20ad84ca78a845a206df14e40，sharedMySQL未触碰。新source935本地存在，lock与broker模板实际比对一致；先写round8/design.md，再新增campaign-eight.py精确固定adc5197 helper/SHA派生新source/schema/端口/窗口，不修改旧run。4项pure guard真实0.42s通过（错误source/未知profile拒绝、逐字可逆/UTC/端口/DB/原scopeprefix保持）；不接触SUT或独立目录。提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1，操作者/决策者均AI角色，未冒人亲历。此刻新run尚未启动，CI/业务/独立/性能未由本岗验收。
+
+本阶段首轮Ruff明确3项S102（SHA固定Git helper执行及pure policy/sampler只加载常量），4e15fed在lint结果返回后仍提交属于本岗流程失误；未宣称lint绿。保留失败位置，补局部noqa与具体固定源/不执行main理由，不关全局安全规则；随后重新check/format。
+
+source935 campaign8实际启动：10:18:44 F4API+consumer、10:19:01 P7API+consumer及两套newbroker/guardian，严格新CA/IP401；初始schedulerpending，构建身份冻结nativebuild80d8ea...与bc2b141...，新935archive0fe9ae...，非C8旧档。P sampler首启O_EXCL拒绝预复制canonical，无PID；原bytes及inputs以UUID保留，再由相同bundle launcher实际启动435（93e602...），真实1s采样已见API9PID/broker/sharedMySQL/consumer，pending资源null有原因。publiccap聚合首轮KeyError(action)改get过滤，纯行政不动SUT。所有真实失败、receipt和界限见round8/execution-notes/result；不读任何独立目录，未做负载，未判业务/独立/性能/未来stop。
+
+source935 campaign8能力950ee6e已push；GitHub Issue7评论6396452679经官方plugin发表，gh API实际回读全文相同，proof见round8/github-readback-proof.json。行政完成不改变正在运行的环境/原build/期限，不等待性能结果占槽。
+
+## source935 campaign8 F phase正常结束收尾
+
+root只传F阶段停止条件，部署未收/读case结果。10:39:45UTC仅functional_campaign8_20261025_5241d85b45f0477c：先核UID/lstart/PGID/argv SHA并写owned request后SIGTERM appguardian99629与broker guardian99225。实际watchdog receipt e1839dd5485b43c9a0001049f18127ab对最后scheduler/consumer/API均forced=false，4workers/tracker全absent；broker stop347b4c...及guardian e0b726...均success。aftercheck7be1b863c488450198cdee242dc06cf0全owned absent，六件源/controller/manifest/binding/artifact/nativebuild SHA不变；DB/全部原raw与所有旧false保留。P/435sampler/sharedMySQL7980/rootprovider10702均未触碰，未新起F。
+
+端口首次及10:40:11只读重核：14个指定端口中仅24398仍EADDRINUSE(false)，其余free；两份实际false都保留，不推测原因/不杀unknown，不把进程absent扩大为所有端口已free。后续如有只读新重核另档，不覆盖旧记录。F独立结论不在部署知悉/判定范围，P完整load由root后续准入。
+
+后续独立只读重核2026-10-25T10:40:56.264UTC：全部14指定F端口bind-free，早先两份24398 false未修改/删除。lsof对24398 LISTEN实查exit1无records；不推测占用原因，未发额外信号。最终端口证据另存functional-phase-end-port-final.json，P/MySQL/sampler未碰。
