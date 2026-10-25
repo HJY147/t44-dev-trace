@@ -4,6 +4,18 @@
   "rollback_checkpoint": "a19af36",
   "rollback_checkpoint_is_full_test_green": false,
   "candidate_branch": "codex/backend-domain-v2-size-20261025",
+  "candidate_product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+  "product_bytes_equal_stage_commit": true,
+  "no_test_runtime_dependency": {
+    "product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+    "app_created": true,
+    "pure_start_decision": "developing",
+    "developer_oracle_imports_blocked": true,
+    "network_and_database_connects_blocked": true,
+    "connect_attempts": 0,
+    "scope": "lazy app construction and pure START only; no HTTP, database, locks or formal performance"
+  },
+  "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397299657",
   "operator": "backend AI",
   "product_sha256": {
     "backend/t44/api.py": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",

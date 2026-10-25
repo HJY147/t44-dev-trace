@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -18,6 +19,11 @@ files = sorted(
 manifest = {
     str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in files
 }
+PRODUCT_COMMIT = "a07ad028a8efad4ecd186246bf2b7935c361b117"
+for path in manifest:
+    committed = subprocess.check_output(["git", "show", f"{PRODUCT_COMMIT}:{path}"], cwd=ROOT)
+    if hashlib.sha256(committed).hexdigest() != manifest[path]:
+        raise RuntimeError("Product bytes changed after the tested stage commit")
 counts = {
     phase: json.loads((HERE / (phase + "-cloc.json")).read_text())["SUM"]["code"]
     for phase in ("before", "after")
@@ -39,6 +45,12 @@ receipt = {
     "rollback_checkpoint": "a19af36",
     "rollback_checkpoint_is_full_test_green": False,
     "candidate_branch": "codex/backend-domain-v2-size-20261025",
+    "candidate_product_commit": PRODUCT_COMMIT,
+    "product_bytes_equal_stage_commit": True,
+    "no_test_runtime_dependency": json.loads(
+        (HERE / "no-test-runtime-dependency.json").read_text()
+    ),
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397299657",
     "operator": "backend AI",
     "product_sha256": manifest,
     "deleted_product_files": ["backend/t44/domain/commands.py"],
