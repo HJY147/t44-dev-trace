@@ -671,9 +671,11 @@ def test_transition_reads_only_dependencies_consumed_by_its_guard(application, o
             rejected_audit = uow.gateway.get("audit_events", rejected.json()["audit_id"])
             assert rejected_audit["outcome"] == 2
             assert uow.gateway.get("tasks", task["id"])["version"] == changed["version"]
-    # This goal counts actual SELECTs, including the unchanged graph-lock reads.
+    # Two task reads are Business.task and audit scope; scalar locks add K=1/2/1 reads.
+    # Pending UNBLOCK locks its predecessor but does not consume it in the business guard.
     assert counts == Counter(
-        tasks=3, task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[operation]
+        tasks={"block": 3, "unblock_pending": 4, "start_empty": 3}[operation],
+        task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[operation],
     )
 
 
