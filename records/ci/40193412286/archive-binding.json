@@ -1,0 +1,81 @@
+{
+  "run": 40193412286,
+  "head": "396b646adb87de183929ac6fc46bbe7e88074c8a",
+  "artifacts": [
+    {
+      "artifact_id": 12599435700,
+      "bytes": 20158,
+      "sha256": "182ecfe41dc6e5228894d8692ebd97613f7c9764571311eda2547864891f3f8f",
+      "verified": true,
+      "files": 13
+    },
+    {
+      "artifact_id": 12599296370,
+      "bytes": 338175,
+      "sha256": "efba678122693c5ceafa1c9240052f6548558d1083e5b00ae937d06899932906",
+      "verified": true,
+      "files": 66,
+      "gate": [
+        {
+          "suite": "all",
+          "exit_code": 1,
+          "real_success": false
+        },
+        {
+          "output": "xml",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "json",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "html",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "output": "report",
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "unmeasured_production_files": [],
+          "exit_code": 0,
+          "real_success": true
+        },
+        {
+          "metric": "line_coverage",
+          "covered_lines": 2451,
+          "total_lines": 2761,
+          "threshold_percent": 80,
+          "branch_coverage": "reported without an extra threshold",
+          "exit_code": 0,
+          "real_success": true
+        }
+      ],
+      "cases": {
+        "total": 664,
+        "failed": 10,
+        "error": 9,
+        "skipped": 0
+      }
+    },
+    {
+      "artifact_id": 12599066117,
+      "bytes": 3408,
+      "sha256": "39e814a37d8f4f36657c9220619756d796db8408c213e77fd725ae138b478ad2",
+      "verified": true,
+      "files": 10
+    },
+    {
+      "artifact_id": 12598737908,
+      "bytes": 86555,
+      "sha256": "42de9c4385e7296a7a9acd028e7641a9b96d52db955600b794fdeb4393344414",
+      "verified": true,
+      "files": 6
+    }
+  ]
+}
