@@ -530,3 +530,10 @@
 
 - root另开新round2，不延旧perf/functional；先e504970设计，旧perf guardian正常stop08:32:47真绿且三PID消失，首次bind EADDRINUSE观察exit1保留，08:34后验全free才复用。七件旧W8/W7/控制器SHA复核不变，functional/MySQL未动。
 - 9b57890显式新BASE/runid/UTC差量，新run447f7e9… prepare08:35:22/broker true08:35:34，guardian50547/Rabbit50558/EPMD50553；08:36:47新CA/54件c8档案/W7绑定/prestart ready。API/consumer/scheduler未启，等root单独phase；四项新guard0.10s/Ruff/diff绿。09:00首次准入/app09:10:30/broker09:12/force09:15仅新round生效。报告/原件/prompt在round2子目录，未预填性能/新轮停机/回收；准备后释放槽。
+
+
+## ROOT新增idle启动准入与资源接口（不准入性能负载）
+
+root随后明确只允许新round2 idle API/consumer先启动建立身份及采样，functional不触碰，400负载仍等functional结束后的另准入。08:39:47真实start receipt16256595c87a44f9a486be2d2dcca599：supervisor52829/七worker52847,52849,52850,52851,52852,52854,52855/tracker52846，consumer52897、appguardian52821；严格CA/IP401，scheduler未启动。正式native-build-w7.json一次新冻结SHA8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf，10真实应用process，旧prestart bfe6…不改。再次curl401原始headers/body及receipt保留，不发登录或性能请求。
+
+773bfd7新增只读interval-metrics，7项纯合成单位/真实delta/缺失/复用guard0.02s与Ruff绿；真实只读ps格式另以7980与自有API验证。08:46:05起sampler56656以1秒JSONL记录api/consumer/scheduler/broker/mysql/generator，CPU=累计user+system时间差/monotonic墙钟差，100=一CPU；首点/缺失/未注册为null，不插补。API七workers+parent+tracker聚合，RSS求和明示共享页重复；broker含EPMD，MySQL7980明确shared全进程非schema独占，generator只接root明确PID不读独立目录/发现子进程。真实第二API点08:46:06 interval1.008687709s/CPU0.9914%/RSS1043152896B已留interface。09:09自动停止及固定interval-final.json最终receipt，collection成功与coverage分开；此刻sampler仍运行、generator尚未注册，不预填完整覆盖/正式性能/最终停止。原10秒guardian raw逐字保留，未改产品源码或读取keys/admin/私有用例。

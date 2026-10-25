@@ -991,7 +991,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "performance-new-round2-w7-prepared-app-not-started",
+  "stage": "performance-round2-idle-app-running-load-pending-interval-sampler-active",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -1736,8 +1736,8 @@
       50553
     ],
     "api_workers": 7,
-    "new_app_started": false,
-    "new_app_phase_permission_pending": true,
+    "new_app_started": true,
+    "new_app_phase_permission_pending": false,
     "native_prestart_sha256": "bfe62d493adf4b579917e64845d49543462e2e69240200cac278ff4a0988da5a",
     "first_start_deadline_utc": "2026-10-25T09:00:00Z",
     "app_stop_utc": "2026-10-25T09:10:30Z",
@@ -1747,6 +1747,22 @@
     "formal_performance_verdict": null,
     "new_final_stop_or_recovery": null,
     "prompt_ref": "ROLE-deployment-NATIVE-PERFORMANCE-ROUND2-20261025-v1",
-    "administrative_issue_followup": "deferred;root requested immediate slot release"
+    "administrative_issue_followup": "deferred;root requested immediate slot release",
+    "new_app_start_utc": "2026-10-25T08:39:47.773949+00:00",
+    "permission_scope": "root explicit idle environment start only;not performance load",
+    "performance_load_permission_pending": true,
+    "native_build_running_initial_sha256": "8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf",
+    "interval_sampler": {
+      "pid": 56656,
+      "source_commit": "773bfd7",
+      "stop_utc": "2026-10-25T09:09:00Z",
+      "raw_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/state/interval-resources-8aba12609aa94310aeb46dc6518b6bb8.jsonl",
+      "final_receipt_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-round2-20261025/runs/performance_round2_20261025_447f7e9fd01c4629/interval-final.json",
+      "final_receipt_not_yet_observed": true,
+      "shared_mysql_whole_process": true,
+      "generator_explicit_pid_pending": true,
+      "formal_coverage_verdict": null
+    },
+    "scheduler_pending_scope_at_initial_build": true
   }
 }
