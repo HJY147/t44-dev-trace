@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "仅PUBLIC源/原件/1次2输入fake复核；0本岗SUT，实际业务结果待独立operator",
+  "implementation_status": "仅PUBLIC/source/stdlib静态核，无本岗新执行或业务验收",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v5/static-audit.json",
-  "latest_review_report": "reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-public-v6/static-audit.json",
+  "latest_review_report": "reports/reviews/829-public-v6-90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1517,9 +1517,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "EXACT_V5_ONE_FUNCTIONAL_PHASE_TECHNICALLY_ADMITTED;NO_FAULT_PERFORMANCE_OR_PRODUCT_PASS",
+  "review_outcome": "ONE_EXACT_V6_FUNCTIONAL_GRANT_SINGLE_FIELD_TRANSFORM_TECHNICALLY_ADMITTED",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+  "review_target_sha": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
   "review_targets": [
     {
       "pr": 14,
@@ -1601,7 +1601,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "829 PUBLIC v5原handoff/UTC反例闭环；精确两字段grant变换后一次functional技术准入",
+  "stage": "829 PUBLIC v6冷包与provider小接口限定审完成，一次精确functional技术准入",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -2590,7 +2590,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
+  "review_target_kind": "PUBLIC declared freeze SHA256; no private8core recomputation",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -2999,5 +2999,34 @@
     },
     "technical_evidence_commit": "5c287a32f981542b5a2f1c512efda4be41cade3d",
     "role_release": "exact PUBLIC control/grant transform technical review sealed; actual independent functional results remain uninspected; return slot"
+  },
+  "previous_phase_before_829_PUBLIC_v6": {
+    "stage": "829 PUBLIC v5原handoff/UTC反例闭环；精确两字段grant变换后一次functional技术准入",
+    "implementation_status": "仅PUBLIC源/原件/1次2输入fake复核；0本岗SUT，实际业务结果待独立operator",
+    "review_target_sha": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+    "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
+    "review_outcome": "EXACT_V5_ONE_FUNCTIONAL_PHASE_TECHNICALLY_ADMITTED;NO_FAULT_PERFORMANCE_OR_PRODUCT_PASS",
+    "latest_review_report": "reports/reviews/829-public-v5-50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v5/static-audit.json"
+  },
+  "829_PUBLIC_v6_review": {
+    "freeze": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+    "report": "reports/reviews/829-public-v6-90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d.md",
+    "audit": "agents/reviewer/evidence/829-public-v6/static-audit.json",
+    "PUBLIC_allowed_hash_checks": 10,
+    "PUBLIC_texts_including_allowlist": 11,
+    "private_bytes_hashed_read_or_executed": false,
+    "new_executions": 0,
+    "existing39_and_TLS4_not_rerun": true,
+    "unchanged_AST_components": 14,
+    "provider": "d7a178e444d0dd760bf2a7263fc068631d2340bd",
+    "draft_sha256": "96175a15d48d4c97122769f9d620703507860c9e3ac2e1da81be71946bb1fdad",
+    "only_change_in_new_grant": "admitted false to true",
+    "canonical_admitted_content_sha256": "d72fdf96e2f0946bb3a30746754bf2ae25f07b1258dc88468699a46b88894665",
+    "expiry_UTC": "2026-10-25T08:44:00.000000Z",
+    "technical_before_admin": true,
+    "fault_performance_business_global_merge_pass": false,
+    "prompt_ref": "ROLE-reviewer-829-PUBLIC-v6-v1",
+    "actual_business_results_read": false
   }
 }
