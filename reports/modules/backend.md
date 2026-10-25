@@ -344,3 +344,8 @@ DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1
 ### 项目共享门修订候选（未合并/性能未证）
 
 root先准入修订，4dc0ca6勘误后C c8cea7e82805de5283ce67501769fa9a4efc1047，Runtime9e0d770…：仅三读图transition项目S、writersX，原target/pred sorted unique逐scalar PK+project/limit1任务X。原批量锁路线未实施。AST除两节点全同，原auth/Tx/业务/错误/审计/CAS保持。初fixture缺reason9setup错误保留，补输入后旧Runtime9结构红→C新11及邻接21绿，共32唯一SQLite目标，非MySQL并发。原口径实cloc6326/超1226、净+10/exit1；K锁ID需K查询净K-1，不报性能收益。报告agents/backend/shared-project-point-lock-20261025/report.md，root统一freshMySQL7HTTP/DB6、全量CI和专审后另决定集成；当前正式性能/规模/独立验收仍未过。
+
+
+### 点锁开发查询账本test-only适配
+
+C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注释；原deps0/1/2和所有其它断言不动，AST恢复唯一参数后全文件同。原本机3参数1红2绿→同3+邻接2=5绿，root原40171891359 CI红gzip不改。Runtime仍9e0d770…/产品零改，原cloc6326超1226FAIL沿用无新计量；其它同类SQL账本静态核无新数需迁移，不运行完整CI或MySQL。另只引用root发表40172242303开发6+6+7 JSON终态，非性能或全局无死锁。报告agents/backend/point-lock-ledger-20261025/report.md；root另fullCI/审核/集成。

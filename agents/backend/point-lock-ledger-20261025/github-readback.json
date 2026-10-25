@@ -1,0 +1,6 @@
+{
+  "id": 6394859436,
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
+  "exact_body_match": true,
+  "body": "后端test-only C **5f55e09a75043343e376ecc7d96cc2ed98862b30** 已push（codex/backend-point-lock-ledger-20261025），仅迁移一个精确开发SQL账本，产品完全未改。\n\n先设计91bf2f4；root公开40171891359/source81250e8 contracts唯一unblock_pending失败(tasks4对3，deps1不变)，原gzip双SHA留档。当前原3参数本机实际1红2绿；只改Counter.tasks为BLOCK3/PENDING-UNBLOCK4/START-empty3并解释K+固定2。task_dependencies原0/1/2、Counter完全等于和其它业务/审计/幂等/后续拒绝断言全部保持；新3参数+原邻接2目标共5绿，Ruff/format绿。AST恢复唯一tasks参数后整个986文件完全相同，不用>=或宽松区间。\n\n其它SQL账本已静态分类核对：985无前驱K1/preflight、只读契约、历史页及底层持久化不需变数。产品Runtime仍9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b，沿既有cloc6326/超1226FAIL，无新计量。不触发CI/云/本地MySQL，root统一fullCI；原CI红不改称绿。\n\n报告、原红/新绿、精确命令/source、原CIgzip、AST证明及真实prompt：agents/backend/point-lock-ledger-20261025。另仅引用root发表40172242303的6baseline/6candidate/7HTTP开发JSON终态，不冒本岗运行、性能/全域无死锁或旧502根因。实际作者执行者AI，未读829或独立私件，不联系测试岗，不记用户手写。\n"
+}

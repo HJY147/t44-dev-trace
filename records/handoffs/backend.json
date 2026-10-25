@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "shared-project-point-lock-candidate-awaiting-review-ci",
-  "implementation_status": "Only Runtime candidate changed after explicit root design admission; not integrated/deployed; source review, fresh MySQL and CI pending",
+  "stage": "point-lock-query-ledger-test-only-ready-for-full-ci",
+  "implementation_status": "Test-only exact query ledger update; product unchanged from point-lock candidate; root full CI/review pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2229,5 +2229,35 @@
     "formal_acceptance": false,
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394674914",
     "github_exact_body_match": true
+  },
+  "point_lock_ledger_20261025": {
+    "design_first": "91bf2f4",
+    "source": "5f55e09a75043343e376ecc7d96cc2ed98862b30",
+    "report": "agents/backend/point-lock-ledger-20261025/report.md",
+    "prompt": "ROLE-backend-POINT-LOCK-LEDGER-20261025-v1",
+    "only_test_change": "986 Counter tasks scalar3 -> explicit map block3/unblock_pending4/start_empty3; comment explains K+2",
+    "deps_exact_unchanged": [
+      0,
+      1,
+      2
+    ],
+    "other_AST_unchanged": true,
+    "product_changed": false,
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "tests": {
+      "old_local_failed": 1,
+      "old_local_passed": 2,
+      "new_local_passed": 5,
+      "full_suite_run": false,
+      "mysql_run_by_this_role": false,
+      "ci_triggered": false
+    },
+    "original_red_ci": 40171891359,
+    "referenced_published_mysql_development_run": 40172242303,
+    "formal_acceptance": false,
+    "size": "same byte-equivalent product prior6326/over1226; no new cloc",
+    "next": "root unified exact-source full CI, source review and integration decision",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
+    "github_exact_body_readback": true
   }
 }

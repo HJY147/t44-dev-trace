@@ -1,0 +1,242 @@
+[
+  {
+    "published_file": "40172242303/extracted/lock-baseline/agents/database/graph-lock-20261025/mysql-lock-baseline.json",
+    "sha256": "570bb42f71d62158745a592227c3ff65bc7096499d6eac4e59d124ca352f3b8a",
+    "bytes": 51371,
+    "top_keys": [
+      "schema",
+      "started",
+      "expected_reader_lock",
+      "expected_task_lock_shape",
+      "expected_runtime_sha256",
+      "formal_acceptance",
+      "limits",
+      "mysql",
+      "active_phase",
+      "performance_schema_readiness",
+      "explain_actual_lock_queries",
+      "cases",
+      "status",
+      "checkedout_before_dispose",
+      "disposed",
+      "ended"
+    ],
+    "status": "passed finite Runtime/database development probes only",
+    "source": null,
+    "expected_runtime_sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+    "cases": [
+      {
+        "name": "disjoint_target_readers",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "disjoint_reverse_id_predecessor_sets",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "graph_writer_waits",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "two_shared_predecessors_still_serialize",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "predecessor_latest_after_wait",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "same_target_same_version_cas",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      }
+    ],
+    "case_count": 6,
+    "only_published_development_evidence": true,
+    "not_formal_acceptance_or_global_deadlock_proof": true
+  },
+  {
+    "published_file": "40172242303/extracted/lock-candidate/agents/database/graph-lock-20261025/mysql-lock-candidate.json",
+    "sha256": "fb74d7e371bd1566c8bb4dff3e98c92dfcd105c8cdfc2ba88ab0e52e7d26bc85",
+    "bytes": 55618,
+    "top_keys": [
+      "schema",
+      "started",
+      "expected_reader_lock",
+      "expected_task_lock_shape",
+      "expected_runtime_sha256",
+      "formal_acceptance",
+      "limits",
+      "mysql",
+      "active_phase",
+      "performance_schema_readiness",
+      "explain_actual_lock_queries",
+      "cases",
+      "status",
+      "checkedout_before_dispose",
+      "disposed",
+      "ended"
+    ],
+    "status": "passed finite Runtime/database development probes only",
+    "source": null,
+    "expected_runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "cases": [
+      {
+        "name": "disjoint_target_readers",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "disjoint_reverse_id_predecessor_sets",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "graph_writer_waits",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "two_shared_predecessors_still_serialize",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "predecessor_latest_after_wait",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      },
+      {
+        "name": "same_target_same_version_cas",
+        "status": null,
+        "failure": null,
+        "threads_alive": [
+          false,
+          false
+        ]
+      }
+    ],
+    "case_count": 6,
+    "only_published_development_evidence": true,
+    "not_formal_acceptance_or_global_deadlock_proof": true
+  },
+  {
+    "published_file": "40172242303/extracted/lock-http/reports/lock-diagnostics/http/cases.json",
+    "sha256": "9403f91db6b682cc67aa6b9d5d643877ccf6911dae775e7c6e38811ef10f6b37",
+    "bytes": 57853,
+    "top_keys": [
+      "source",
+      "source_files",
+      "db_probe_sha256",
+      "started",
+      "formal_performance_acceptance",
+      "cases",
+      "responses",
+      "diagnostic_only_session_innodb_lock_wait_timeout",
+      "mysql",
+      "cleanup_errors",
+      "checkedout_before_dispose",
+      "disposed",
+      "ended"
+    ],
+    "status": null,
+    "source": "6738c07b150da0df8554ba3b90d52e0cbc101fe6",
+    "expected_runtime_sha256": null,
+    "cases": [
+      {
+        "name": "disjoint_start_actual_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "graph_writer_waits_for_reader_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "predecessor_rollback_before_action_1_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "predecessor_rollback_before_action_3_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "rework_waits_for_capacity_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "rework_waits_for_role_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      },
+      {
+        "name": "same_version_start_cas_http",
+        "status": "passed development HTTP case only",
+        "failure": null,
+        "threads_alive": null
+      }
+    ],
+    "case_count": 7,
+    "only_published_development_evidence": true,
+    "not_formal_acceptance_or_global_deadlock_proof": true
+  }
+]

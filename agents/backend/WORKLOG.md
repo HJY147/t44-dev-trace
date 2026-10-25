@@ -566,3 +566,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - C c8cea7e82805de5283ce67501769fa9a4efc1047只Runtime两节点：三读图transition projectS/writersX；原ids sorted逐project+scalar唯一PK/limit1 taskX，全锁完再原Business重读。SHA9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b。AST恢复两节点后全文件同基线，ids构造同；auth3/两UoW/CAS/错误/独立拒审计/事件原样。
 - C真实SQLite Gateway9+缺失跨项目HTTP2=11绿，另必要业务邻接21绿，共32唯一目标、零fail/error/skip；不冒MySQL锁实证。Ruff/format限定文件通过，无56/35/完整CI/云/未知本地库执行。DB岗静态核点锁原件未发现新增结构反例，但全域FK资源无死锁不能据此证明，fresh执行由root统一。
 - 原固定cloc2.10/原counter在准确C实6326、Runtime276→286净+10、66应用集合全同、上限5100超1226/exit1，规模仍FAIL；实际physical13add2del与cloc区分。K唯一锁ID原1→K条锁SELECT净K-1，无前驱仍1；三前驱实测参数4条，不删安全逻辑换成本。报告/命令/JUnit/AST/计量在shared-project-point-lock-20261025，作者实现执行均AI，不记学生人工。
+
+
+## 点锁后单一精确开发SQL账本迁移
+
+- root公开product40171891359/source81250e8 contracts唯一unblock_pending tasks4对旧3、deps1不变，准仅test-only修正。91bf2f4先设计/prompt；原3参数真实1红2绿保留。C5f55e09a75043343e376ecc7d96cc2ed98862b30仅Counter.tasks明确map3/4/3及两注释；K1/2/1加Business/audit固定2，依赖边原0/1/2和Counter完全等于/业务与幂等拒审计所有断言全保留。
+- C同3+原DEVELOPING UNBLOCK/REWORK依赖guard2=5绿/零fail/error/skip，Ruff/format绿；恢复唯一tasks参数后整个986 AST同，产品根完全同0615017，Runtime9e0d770…不变。静态分类核其它985 preflight无依赖K1、只读契约/历史页、底层Rows/schema/seed及类别Counter，不盲改任何其它数字；本岗无完整suite/MySQL/CI/云重跑。
+- root原CI日志gzip逐字副本/raw与gzip双SHA保留，新本机红log/XML无损gzip+roundtrip与原文本ignored archive，不strip。只读明确发表40172242303/extracted三JSON，记录6baseline/6candidate/7HTTP名称/终态/SHA，属root开发运行不算本岗复测/19验收/性能或全局无死锁，不读829独立私件。
+- 产品同字节沿既有cloc6326超1226FAIL、无新计量或节省；报告/命令/AST/原件agents/backend/point-lock-ledger-20261025，后续准确新源fullCI及审核集成归root，旧红不改，作者执行者后端AI非学生手写。
