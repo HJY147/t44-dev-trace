@@ -334,3 +334,8 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1a2d…；先设计、旧2目标红、同10零DB目标绿。保主异常、requests先存、未install不snapshot、四清理步骤独立尝试、清理错不冒成功。旧E/raw和生产不改，不重跑56/35；报告agents/backend/performance-20261025-cleanup/report.md。root须以新source/hash再准入，不将此工具修复当云性能修复。
 
 清理后发准入：最终source124785d/driver e0a49…，再以1红→11绿覆盖已请求但observer构造失败的状态，原2红/10绿不重写不累计。见report-v2.md；不重跑CPU/35矩阵，不改生产，待root审定新源。
+
+
+### 2026-10-25 公开MySQL成本/共享项目门设计
+
+设计baf1f9e先于候选，当前工具4168666；生产零改，准入及MySQL并发PENDING。公开81c909的12/path：list响应schema CPU11.711/handler20.508ms，transition Rows10.313/14.380ms与cursor4.765/8.785重叠，不相加或追认云根因。仅拟START/UNBLOCK/REWORK project S，writersX/membersS/target+predX及全部原业务事务保持；DB审P_S/EXPLAIN，BE新7HTTP目标仅collect。真实SQLite顺序fixture初capacity非法1红1绿→仅修合成输入2绿，新增UNBLOCK1绿（3唯一目标，不冒并发）。报告agents/backend/shared-project-gate-20261025/report.md。tmp913物理行不是cloc；产品仍6316超1216、节省0，root/审核准入后才改一处Runtime，后续真实freshCI归root。

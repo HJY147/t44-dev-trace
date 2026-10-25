@@ -550,3 +550,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - AST机械核Stages/fixture/observer_from/main不变、原测量body仅增install标志，旧78bb E/raw/prompt与生产合同DDL逐字不变。新driver SHA6f7c1a2d…已优先给root同步request/workflow，限定审核待root。所有作者执行者AI，非学生本人。
 
 - 清理封档自检补loader构造前失败状态：初版b079虽保主异常却会把已请求而未返回实例标NOT_REQUESTED。2d405465先冻结目标，实际1红；124785d89e568dd5dddeb56ef9216ed2ccd1883d保requested意图后全11绿，不关闭不存在对象。旧2红/10绿和初版E d4fc不重写，报告report-v2/verification-v2新增；两文件Ruff/format绿，测量body/产品/旧raw不动，不重跑56/35。最终hash e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49已告root替换，限定复审待项。
+
+
+## 公开fresh MySQL成本与共享项目门预准入（生产未改）
+
+- root公开40169575755/81c909后，自有新branch先baf1f9e设计/prompt。实读mysql-before SHA b17f0fd5…333a9e；4×12普通样本复核，response schema只parent_id0，list11.711ms/handler20.508约57%；transition Rows CPU10.313/wall14.380、cursor4.765/8.785 inclusive不相加。顺序成本不冒旧云瓶颈或502根因，不优先global refs。
+- 与DB岗对齐仅START/UNBLOCK/REWORK project S候选，writers原X、members S、sorted target/pred X、session/idem/auth/2UoW/CAS/错误/审计/outbox不动；ORDER BY不足证明InnoDB锁序，EXPLAIN/真实P_S/交叉集归DB。我写7个HTTP业务竞争目标，仅collect未MySQL，root/审核准入前不写Runtime、不自行触发CI/开云。
+- 834真SQLite顺序fixture初2项1红1绿，capacity=[]违反原minItems而非产品缺陷；保留原日志后仅合成输入改另一有效developer容量，2绿；新增UNBLOCK目标1绿/其余2deselected，不累加重复样本。Ruff B905红和分析format红后窄修，patch上下文miss未改部分文件；原命令与JUnit保留。当前3唯一fixture正常链/错误副作用绿，不冒并发/验收。
+- 工具checkpoint4168666；三个tmp脚本113+663+137=913物理行含空白注释，非cloc、非规模节省。产品对d60/ade5逐字未变，原6316超1216仍失败，未新cloc。报告/summary/verification在shared-project-gate-20261025，作者执行者后端AI、非学生本人；旧78bb及cleanup E/raw不改，未读独立829/839/841/852私件、不联系tester。

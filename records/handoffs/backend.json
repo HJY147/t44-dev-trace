@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "diagnostic-cleanup-P2-fixed-awaiting-review",
-  "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
+  "stage": "shared-project-gate-design-test-pre-admission",
+  "implementation_status": "Shared project gate remains design/tests only, no production change; root limited design admission and fresh CI MySQL execution pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2166,5 +2166,29 @@
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394397897",
     "github_exact_readback": true,
     "diff_check": "global2 on immutable pytest raw; nine source/explanation paths0; boundary recorded"
+  },
+  "shared_project_gate_20261025": {
+    "design": "baf1f9e",
+    "tool_source": "416866688d2153d97664f9f7e062537fd1386ab8",
+    "report": "agents/backend/shared-project-gate-20261025/report.md",
+    "public_baseline_run": 40169575755,
+    "public_baseline_head": "81c909ad753aee7179ee0c464349a07273092fc0",
+    "raw_sha256": "b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e",
+    "production_changed": false,
+    "mysql_http_cases_collected_not_executed": 7,
+    "sqlite_sequential_unique_fixture_cases_passed": 3,
+    "original_fixture_failure_retained": true,
+    "formal_acceptance": false,
+    "size": {
+      "previous_product_cloc": 6316,
+      "excess": 1216,
+      "new_cloc": false,
+      "production_savings": 0,
+      "new_tmp_physical_lines_not_cloc": 913
+    },
+    "review": "PENDING root limited design admission before production edit",
+    "prompt": "ROLE-backend-SHARED-PROJECT-GATE-20261025-v1",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394622063",
+    "github_exact_body_readback": true
   }
 }
