@@ -1,0 +1,81 @@
+{
+  "tool": "pinnedcloc2.10 originalphysicalsourcepolicy",
+  "baseline303": {
+    "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    "migrations_code": 303,
+    "functions": {
+      "_check_signature": 80,
+      "_index_signature": 13,
+      "_foreign_signature": 21,
+      "check_schema": 84,
+      "migrate": 98
+    },
+    "tables": 18,
+    "checks": 59,
+    "foreign_keys": 35,
+    "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4"
+  },
+  "A_raw_canonical_compare": {
+    "potential_deleted_functions_code": 198,
+    "runtime_replacement_not_completed": true,
+    "admission": "REJECT;5trueold-compatiblecounterexamples",
+    "credible_savings": 0
+  },
+  "B1_structural_reference_retaining_known_normalizers": {
+    "retained_normalizers": 114,
+    "retained_migrate": 98,
+    "retained_imports_errorclass": 7,
+    "measured_retained_floor": 219,
+    "maximum_savings_before_any_new_code": 84,
+    "unimplemented_new_source_estimates": {
+      "catalog_collection_type_auto_engine_collation_enforcement": [
+        35,
+        60
+      ],
+      "reference_hash_source_loader": [
+        15,
+        25
+      ],
+      "compare_report": [
+        10,
+        18
+      ],
+      "pinned_version_session_identity": [
+        8,
+        12
+      ]
+    },
+    "projected_runtime_module_code": [
+      287,
+      334
+    ],
+    "projected_runtime_savings": [
+      -31,
+      16
+    ],
+    "build_reference_generator_additional_source_estimate": [
+      40,
+      80
+    ],
+    "projected_all_implementation_savings_including_generator": [
+      -111,
+      -24
+    ],
+    "all_ranges_are_estimates_notimplemented": true
+  },
+  "B2_rewrite_normalizers_using_information_schema": {
+    "implemented": false,
+    "new_full_equivalence_proof": false,
+    "credible_100to250_saving": false,
+    "note": "No universal impossibility claim;would require preservingoldnormalization and supplementingreflectionlosses;notanadmittedimplementation"
+  },
+  "actual_prototype_only_source_code": 413,
+  "prototype_function_code": {
+    "normalize_show": 2,
+    "cases": 121,
+    "run": 219,
+    "main": 53
+  },
+  "current_production_savings": 0,
+  "schema_Core_builder_removal_claimed": false
+}

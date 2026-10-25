@@ -340,3 +340,11 @@
 ## ROLE-database-CANONICAL-DDL-PROBE-v1：新架构探针先设计
 - 从指定f4bd382d新独立树codex/database-canonical-ddl-probe，读AGENTS/计数口径及现行migrations/schema和本岗公开956/988兼容案。只设计/原型，不读独立799/800/805/809/814 PRIVATE/runtime，不连接13306或根云。
 - 先设计A原生SHOW标准文本/B结构reference对比路线，明确只忽略表级auto counter、保全部有意义漂移及旧等价正例、可信reference不得来自目标marker，当前尚未生成reference/未做新MySQL实验。官方NO ACTION/RESTRICT SHOW差异提示raw-hash可能误拒，不能先称可替换。
+- root明确批准既有官方8.4.11 binary唯一例外与本岗新socket-only实例；原型fdb1b71b先提交，原型初次Ruff I001/B905保留并修，未安装新依赖。新tmp796/data+s+pid，--no-defaults/skip-networking/mysqlxOFF/128M/570秒alarm+清理余量；仅两新schema。第一轮7.559s/ownexit0正常关闭，30配方7个FK单ALTER同名1826为夹具错，不当负测成功，raw/log/data保留。
+- root批准同scope夹具修正，438fea60先提交，data2/s2/pid2新建且只复核7FK拆DROP/ADD；3.557s/ownexit0正常关闭，7项皆可执行。合并原生结果30唯一case=8旧兼容正/13旧负/9新意义漂移。未开第三轮/paid资源、不动旧PID7980/13306/oldschemas/config/env/datadir/log。只执行明确binary及其依赖，root允许的tmp796新数据保留。
+- 原公开956未改15passed；其7表达式断言保留，原988真迁移入口未跑避免旧fixture，957未明确公开许可未读。native-reference.json从冻结hashc0e740原bytes在新refschema生成并在actual变异前捕获，不取目标marker作预期，仅POC数据非运行冻结，无业务函数藏JSON/SQL。
+- 真实反证raw候选误拒5/8正例：仅改表auto计数（正确strip后CHECK仍_utf8mb4→_ascii）、括号、ASCII、ASC-BTREE、NOACTION/RESTRICT。FK同库限定等价可收敛；13负例raw均拒。原负DESC现checker实际放行；新增columnauto/engine/table和columncollation/NOTENFORCED也放行，未改产品。离线用已捕获SHOW回放SQLAlchemy2.1.6，parser留DESC而get_indexes不含sorting，事实另存，不把旧fixture负例当原生完整证明。
+- baseline cloc migrations303：CHECK80/index13/FK21/check_schema84/migrate98+7；B1保留normalizers114+migrate98+7=219，任何新增代码前最多省84，新collector/来源校验/报告/版本估68–115，模块投影287–334；生成器另估40–80（未实现），不称净省100–250。B2重写未证/未实现，不作普遍不可能断言，本轮不准入。当前生产节省0；无产品/旧freeze/依赖/计数变更，不用5862超762强推。
+- 官方MySQL/SQLAlchemy文档及当前锁定库源交叉核；8.0未跑，现migrate本就只接8.4.*，不能凭8.4.11快照收窄其他patch或声称8.0支持。目标库匹配/锁/摘要/部分迁移98行保留。
+- Issue4真实COMMENT及精确GET全文逐字一致：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6399750242。报告、完整case映射、原始SHOW、设置红、参考数据/净账/E seal归档；无MySQL之外的SQLite/HTTP/全CI或性能验证。已停止两个ownPID，保留新data/data2；不再扩大原生轮次。
+- 用户经root明确要求立即结束/停止服务器留数据；收到后未启动新实验/实例/测试，仅复核两ownPID均已不存在、data/data2存在，final-stop-confirmation.json留痕；未操作7980/13306。已完成A原生反证/B1预算、B2未实现/未证部分如实封档，后续由用户恢复再继续。

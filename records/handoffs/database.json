@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "request-bound-diagnostic-observer-ready-for-fresh-ci",
-  "implementation_status": "838排他创建+固定fd修复已提交；836旧源2红→新11绿；原71Rows/旧E seal未改，不是性能修复/审核通过。",
+  "stage": "CANONICAL-DDL-PROBE-v1：raw规范文本被原生反证，B未准入",
+  "implementation_status": "796研究原型/两轮获批socket校准完成；30唯一case/95615pass；产品0变更/实际0节省，未准入架构替换。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -609,6 +609,16 @@
       "path": "tmp/836_database_output_guard/836_output_guard.py",
       "kind": "零DB输出文件系统main回归",
       "status": "11通过；不调用原recipes"
+    },
+    {
+      "path": "agents/database/canonical-ddl-probe/",
+      "kind": "原生规范DDL探针/原失败/参考数据/净账/封条",
+      "status": "完成，架构未准入/生产0节省"
+    },
+    {
+      "path": "tmp/796_database_ddl_probe/796_canonical_probe.py",
+      "kind": "明确批准的socket-only可重放研究CLI",
+      "status": "原型代码，非产品；实际两新实例已停止"
     }
   ],
   "interfaces": [
@@ -879,13 +889,20 @@
     "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
   ],
   "unverified": [
-    "root暂不整合，原审核岗对新准确SHA独立复审待执行",
-    "未重跑19配方/71Rows，不能用旧矩阵为新工具完整背书",
-    "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
-    "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
-    "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
+    "B2完整native结构重设计未实现/未证明，B1净账不足100–250",
+    "8.0/其他8.4patch/Linux或实际部署reference兼容未验证",
+    "988原真实迁移入口/全CI/独立验收未跑；7表达式断言原956保留不称已替代",
+    "现checker原生六项漂移缺口未修，需单独owner任务；原型不改产品",
+    "reference只是新server研究数据，未冻结运行artifact；不得由目标marker自建预期"
   ],
-  "questions": [],
+  "questions": [
+    {
+      "to": "root/backend",
+      "question": "原生DESC/列auto/engine/表列collation/NOTENFORCED六项当前检查器未拒，是否另立完整性修复不混规模优化",
+      "status": "已公开Issue4报告，本轮不扩产品范围",
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6399750242"
+    }
+  ],
   "prompt_refs": [
     {
       "id": "ROLE-database-BOOTSTRAP-v1",
@@ -1070,22 +1087,30 @@
       "archive": "agents/database/prompts/ROLE-database-OUTPUT-EXCLUSIVE-v1.md",
       "improvement_reason": "真实审核P2驱动先红再原子O_EXCL/NOFOLLOW固定fd修复，保留原71和失败，不扩性能范围/不记用户亲改。"
     },
-    "ROLE-database-PERFORMANCE-20261025-v1"
+    "ROLE-database-PERFORMANCE-20261025-v1",
+    {
+      "id": "ROLE-database-CANONICAL-DDL-PROBE-v1",
+      "archive": "agents/database/prompts/ROLE-database-CANONICAL-DDL-PROBE-v1.md",
+      "improvement_reason": "先可反证架构/真实原生兼容与净账，明确新资源批准/不碰旧服务，拒绝更严格hash偷换等价/逻辑藏配置。"
+    }
   ],
-  "updated_at": "2026-10-25T06:12:17.872567+00:00",
+  "updated_at": "2026-10-25T15:53:57.334021+00:00",
   "publication": {
-    "branch": "codex/database-output-guard",
-    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
-    "base": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
-    "design_commit": "3981e6d986fb4ca129d0f5953fd104c0a6c0efc4",
-    "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
-    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265",
-    "readback": "agents/database/output-guard/github-readback.json; exact body equal",
-    "scope": "filesystem output P2 only; no performance repair",
+    "branch": "codex/database-canonical-ddl-probe",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-canonical-ddl-probe",
+    "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    "design_commit": "9ff75091",
+    "prototype_commits": [
+      "fdb1b71bb4d000c849c6369c5cf696c3d0c0a8a7",
+      "438fea60e4b56c66a7cbcad2f802f6f6db30767f"
+    ],
+    "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6399750242",
+    "readback": "agents/database/canonical-ddl-probe/github-readback.json;exact fullbody equal",
     "pull_request": null,
-    "reviewer_status": "pending;root holds integration",
+    "scope": "nonproductionarchitecturefeasibilityprobe",
     "window_released": true,
-    "raw_diff_check": "full raw check exit2 from pytest original whitespace; source/docs scoped exit0; records preserved"
+    "user_requested_end": true,
+    "final_stop_confirmation": "agents/database/canonical-ddl-probe/final-stop-confirmation.json"
   },
   "history": [
     {
@@ -1361,6 +1386,40 @@
         "scope": "offline synthetic SQLite/query recipes + MySQL compilation;not HTTP or realMySQL",
         "production_change": 0
       }
+    },
+    {
+      "stage": "request-bound-diagnostic-observer-ready-for-fresh-ci",
+      "implementation_status": "838排他创建+固定fd修复已提交；836旧源2红→新11绿；原71Rows/旧E seal未改，不是性能修复/审核通过。",
+      "unverified": [
+        "root暂不整合，原审核岗对新准确SHA独立复审待执行",
+        "未重跑19配方/71Rows，不能用旧矩阵为新工具完整背书",
+        "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
+        "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
+        "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
+      ],
+      "publication": {
+        "branch": "codex/database-output-guard",
+        "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
+        "base": "c4e8c696411975ee6964ef3b2254c8f3937ecb32",
+        "design_commit": "3981e6d986fb4ca129d0f5953fd104c0a6c0efc4",
+        "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+        "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265",
+        "readback": "agents/database/output-guard/github-readback.json; exact body equal",
+        "scope": "filesystem output P2 only; no performance repair",
+        "pull_request": null,
+        "reviewer_status": "pending;root holds integration",
+        "window_released": true,
+        "raw_diff_check": "full raw check exit2 from pytest original whitespace; source/docs scoped exit0; records preserved"
+      },
+      "current_interfaces": {
+        "affected_tool": "838 CLI output boundary only",
+        "regression": "tmp/836_database_output_guard/836_output_guard.py",
+        "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
+        "flags": "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW;0600;one heldfd",
+        "matrix_and_app_semantics": "unchanged;no DB/application imports in guard regression",
+        "original_evidence": "c4e8 bytes preserved",
+        "acceptance": "await original reviewer independent re-review"
+      }
     }
   ],
   "refactor_removed": [
@@ -1374,13 +1433,12 @@
     }
   ],
   "current_interfaces": {
-    "affected_tool": "838 CLI output boundary only",
-    "regression": "tmp/836_database_output_guard/836_output_guard.py",
-    "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
-    "flags": "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW;0600;one heldfd",
-    "matrix_and_app_semantics": "unchanged;no DB/application imports in guard regression",
-    "original_evidence": "c4e8 bytes preserved",
-    "acceptance": "await original reviewer independent re-review"
+    "input": "固定DDLhashc0e740与可信新空pinned8.4.11schema；公开956/988",
+    "output": "原生SHOW/ref/case差异与B净账，非运行reference",
+    "decision": "rejectA;B1insufficient/B2unproved",
+    "production_savings": 0,
+    "resource_scope": "approvednewtmp796data/data2 socketonly2schemas;bothstopped",
+    "existing13306": "no operations"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",

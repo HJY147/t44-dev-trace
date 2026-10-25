@@ -1,0 +1,45 @@
+{
+  "scope": "offline replay of already captured own nativeSHOW via installed SQLAlchemy parser;not newMySQLrun",
+  "sqlalchemy": "2.1.6",
+  "parsed_key": {
+    "type": null,
+    "name": "ix_tasks_project_state",
+    "using_pre": null,
+    "columns": [
+      [
+        "project_id",
+        null,
+        ""
+      ],
+      [
+        "state",
+        null,
+        "DESC"
+      ],
+      [
+        "id",
+        null,
+        ""
+      ]
+    ],
+    "using_post": null,
+    "keyblock": null,
+    "parser": null,
+    "comment": null,
+    "version_sql": null
+  },
+  "legacy_native_check_passed": true,
+  "native_text_contains_DESC": true,
+  "public_get_indexes_offline_replay": {
+    "name": "ix_tasks_project_state",
+    "column_names": [
+      "project_id",
+      "state",
+      "id"
+    ],
+    "unique": false
+  },
+  "public_sorting_field_absent": true,
+  "installed_get_indexes_source_sha256": "0599f2c5a5570426cfd4b7846f4fc3d4fc7061d34476395e687d7bf666370bfd",
+  "source_reference": "https://github.com/sqlalchemy/sqlalchemy/blob/rel_2_1_6/lib/sqlalchemy/dialects/mysql/base.py"
+}

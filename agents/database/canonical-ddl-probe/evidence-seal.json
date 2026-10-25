@@ -1,0 +1,99 @@
+{
+  "stage": "canonical-DDL architecture probe;not production admission",
+  "created_at_utc": "2026-10-25T15:53:57.334837+00:00",
+  "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+  "decision": "rejectraw;B1insufficient/B2unproved",
+  "production_savings": 0,
+  "unique_native_cases": 30,
+  "old_compatible_false_rejects": 5,
+  "legacy_public_tests": {
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "first_run_errors_preserved": 7,
+  "native_second_round_only_corrected_FK": 7,
+  "native_runs": [
+    {
+      "tool_commit": "fdb1b71bb4d000c849c6369c5cf696c3d0c0a8a7",
+      "pid": 53026,
+      "wall_seconds_including_cleanup": 7.55914774996927,
+      "exit": 0,
+      "datadir_retained": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data"
+    },
+    {
+      "tool_commit": "438fea60e4b56c66a7cbcad2f802f6f6db30767f",
+      "pid": 53292,
+      "wall_seconds_including_cleanup": 3.5573597499751486,
+      "exit": 0,
+      "datadir_retained": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data2"
+    }
+  ],
+  "original_13306_PID7980_operations": 0,
+  "both_owned_processes_stopped": true,
+  "old_frozen_product_metric_unchanged": true,
+  "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6399750242",
+  "exact_GET_equal": true,
+  "files_sha256": {
+    "archive-check.json": "693dacd375504c83892694a710d2927ed533128c25b479400c81c41639b1f12f",
+    "archive-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline-budget.json": "7406aa5cc5ed6565e370dec6bd012a5ba37edf531cad7f9ccc22fe85daf20fae",
+    "design.md": "abc87f353c6235f66d9f303c15e8ce393d27029731c02afe9eab90f782ecaa87",
+    "final-stop-confirmation.json": "c9af3fc399937961b5f923bb99b662f5ea8a03c8864d5e18b599165928015a9f",
+    "format-correction.log": "413a709001976657cb743636fd34e48fc41d8d302d665460d3f874b3313da127",
+    "format.log": "413a709001976657cb743636fd34e48fc41d8d302d665460d3f874b3313da127",
+    "github-issue4-comment.md": "e6305b9ea301c29e949e7c27b67f34c3d04fbd4a5fedc8d418c592b07439b6af",
+    "github-readback.json": "182d7260cfdec011891eb952fb9ecdb6e2ffa437d303dee815b8ebfec4d67e72",
+    "legacy-956-junit.xml": "f89ff550481126f5b076990e41c2362bb2195b0123a56a91661f0e81fae24f1c",
+    "legacy-956.log": "750e8fc7f82d0362413c811a25dd8018e93a29cf821384a50d297e2ffbfb3cfa",
+    "native-reference.json": "b75312f1edcf97b8b94a2858c4e0bdc912d4c3231d28661b22565915a41752ca",
+    "native-run1.json": "92083352cc3211e82c5a0cfc14378024ee146cda180973bda42af47106d2b5b4",
+    "native-run1.log": "4d212178f689163ef65d7a689b23adc2e25fddc4b29e48db94495f6f3a231d48",
+    "native-run2.json": "ea0941f08a1c5cab28436f694f7182fb7f79b25c4e1bba70b3ccc64d216b607a",
+    "native-run2.log": "c3a87a01593d240d41feb91b09bbd7021c225b0b9beefb23a1f74e854677e528",
+    "native-summary.json": "d7ee77667db9c127afe76e819ce2a3c40299077d83d3c2f1c6ba2ad4b8399c21",
+    "net-budget.json": "bd248d49af6b8f62949eb4126824c95d73890422eba3c16cbaa2b35a90c2f077",
+    "offline-dialect-desc.json": "7aaf60a2d02e0026caf44c90b1737f6540face4a82f5531d79e90e0f827a8468",
+    "report.md": "d661b0984f9b7ff710cc3b5553aa8a21706f826bd34f5902f2ebd8ae9d4caf26",
+    "ruff-correction.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "ruff-import-fix.log": "aac3a0503d8b95052cc85fb9f1717dc82b74aa55853a5aa9749b41e30275d472",
+    "ruff-run1.log": "b4b9799e4168c686e4adc485ac97c10d08ea8aa476b6584c0f2476157b138570",
+    "ruff-run2.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "own_resource_logs_sha256": {
+    "initialize.log": "d58ca9ade695b4cc6fbe5520012788d1f65a97914d2f2e94f9521dabe9a4b3d5",
+    "server.log": "a8a2a84670f474e8f3cf6646aed6fbc36c9eb820ab457e1c5ec3b00818239088",
+    "initialize2.log": "d3acf4f72a3e707898e3b7e4afb1be870eaf5dfa2dc976f460085ad0c2c9da0a",
+    "server2.log": "c6a88a2e5f81c694b9078930463a11c7057433fa2b61d6db41e24b245986b5c2"
+  },
+  "unverified": [
+    "B2完整native结构重设计未实现/未证明，B1净账不足100–250",
+    "8.0/其他8.4patch/Linux或实际部署reference兼容未验证",
+    "988原真实迁移入口/全CI/独立验收未跑；7表达式断言原956保留不称已替代",
+    "现checker原生六项漂移缺口未修，需单独owner任务；原型不改产品",
+    "reference只是新server研究数据，未冻结运行artifact；不得由目标marker自建预期"
+  ],
+  "user_requested_end": true,
+  "final_owned_stop_confirmation": [
+    {
+      "run": "native-run1.json",
+      "pid": 53026,
+      "datadir": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data",
+      "data_retained": true,
+      "state": "already_stopped_pid_absent"
+    },
+    {
+      "run": "native-run2.json",
+      "pid": 53292,
+      "datadir": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data2",
+      "data_retained": true,
+      "state": "already_stopped_pid_absent"
+    }
+  ],
+  "archive_check": {
+    "full_raw_diff_check_exit": 0,
+    "original_logs_preserved": true,
+    "scoped_source_docs_check_exit": 0
+  }
+}

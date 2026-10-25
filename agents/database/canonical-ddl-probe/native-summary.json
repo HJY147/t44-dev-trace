@@ -1,0 +1,404 @@
+{
+  "base": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+  "decision": "REJECT raw SHOW/hash route; structured route retaining old normalizers has no credible100line reduction",
+  "current_app_lines_parent_reported": 5862,
+  "current_app_excess_parent_reported": 762,
+  "production_savings": 0,
+  "legacy_public_956": {
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unique_native_cases": 30,
+  "original_compatibility_native_positive": 8,
+  "raw_false_rejects": 5,
+  "original_negative_native_cases": 13,
+  "new_required_attribute_drifts": 9,
+  "first_run_setup_errors": [
+    {
+      "name": "foreign_noaction_restrict",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_qualified_self",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_target_table",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_target_schema",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_source_order",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_target_order",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    },
+    {
+      "name": "foreign_cascade",
+      "error": {
+        "class": "OperationalError",
+        "driver_code": 1826
+      }
+    }
+  ],
+  "second_run_only_corrected_FK_cases": 7,
+  "native_runs": [
+    {
+      "tool_commit": "fdb1b71bb4d000c849c6369c5cf696c3d0c0a8a7",
+      "pid": 53026,
+      "wall_seconds_including_cleanup": 7.55914774996927,
+      "exit": 0,
+      "datadir_retained": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data"
+    },
+    {
+      "tool_commit": "438fea60e4b56c66a7cbcad2f802f6f6db30767f",
+      "pid": 53292,
+      "wall_seconds_including_cleanup": 3.5573597499751486,
+      "exit": 0,
+      "datadir_retained": "/Users/yang/Desktop/nothing/软件开发大作业/tmp796/data2"
+    }
+  ],
+  "old_13306_or_PID7980_operations": 0,
+  "third_native_run": false,
+  "offline_counter_guard": {
+    "only_table_count_removed": true,
+    "column_auto_literal_engine_charset_changes_preserved": true
+  },
+  "legacy_native_gaps": [
+    "index_desc",
+    "column_auto_increment",
+    "engine",
+    "table_collation",
+    "column_collation",
+    "check_enforcement"
+  ],
+  "case_map": {
+    "counter_growth": {
+      "old_required_pass": true,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": true,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "redundant_parentheses": {
+      "old_required_pass": true,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": true,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "utf8mb4_introducer": {
+      "old_required_pass": true,
+      "raw_canonical_pass": true,
+      "raw_canonical_defects": [],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "ascii_introducer": {
+      "old_required_pass": true,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": true,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "foreign_noaction_restrict": {
+      "old_required_pass": true,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "projects"
+      ],
+      "raw_breaks_old_compatible_case": true,
+      "legacy_passed": true,
+      "source_run": 2
+    },
+    "foreign_qualified_self": {
+      "old_required_pass": true,
+      "raw_canonical_pass": true,
+      "raw_canonical_defects": [],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 2
+    },
+    "index_asc_btree": {
+      "old_required_pass": true,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "tasks"
+      ],
+      "raw_breaks_old_compatible_case": true,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "index_rebuild_same_definition": {
+      "old_required_pass": true,
+      "raw_canonical_pass": true,
+      "raw_canonical_defects": [],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "index_order": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "tasks"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "index_unique": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "tasks"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "index_desc": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "tasks"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "unique_to_nonunique": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "unique_column_order": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "task_dependencies"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "foreign_target_table": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "projects"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 2
+    },
+    "foreign_target_schema": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "projects"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 2
+    },
+    "foreign_source_order": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "task_dependencies"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 2
+    },
+    "foreign_target_order": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "tasks",
+        "task_dependencies"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 2
+    },
+    "foreign_cascade": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "projects"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 2
+    },
+    "check_true": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "check_expanded_in": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "check_or_true": {
+      "old_required_pass": false,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "column_type": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "column_nullable": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "column_default": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "column_auto_increment": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "notifications"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "index_prefix": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": false,
+      "source_run": 1
+    },
+    "engine": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "idempotency_requests"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "table_collation": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "projects"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "column_collation": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    },
+    "check_enforcement": {
+      "old_required_pass": null,
+      "raw_canonical_pass": false,
+      "raw_canonical_defects": [
+        "users"
+      ],
+      "raw_breaks_old_compatible_case": false,
+      "legacy_passed": true,
+      "source_run": 1
+    }
+  },
+  "unverified": [
+    "No runtime reference admitted",
+    "8.0 and other8.4patch/OS not calibrated",
+    "Structured-reference alternative not implemented or proved equivalent; budget separately bounded",
+    "Seven expression-signature assertions retained in original15tests,not substituted by raw SHOW API",
+    "Raw reference generation is fresh-owned-server,not target marker; current product untouched"
+  ]
+}
