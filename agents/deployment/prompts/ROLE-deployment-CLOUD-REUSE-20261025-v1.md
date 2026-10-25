@@ -15,3 +15,5 @@ root AI协调要求：本岗只写本地可审脚本/配置/CI，不抢UI、不�
 真实新prompt（root AI协调）要求固定f4源、935镜像离线增量、全删旧t44避免commands.py残留、完整archive/文件集/hash、依赖/REST/DDL/web相同才复用，不新开VM/重下旧包。本岗据此固定source与base并将原web构建支持也纳入逐文件比较，初步source保留、新source-v2另写；本地21guard与prepare成功、未做云build分别记录。此为AI过程留痕，不伪装学生手写经历。
 
 真实质量把关：部署静态复核发现自身6609目录权限边界，即刻告root不做云build，原版/首工件保留，V2另文件/清单/工件；新增实际umask077遍历权限guard。root要求TLS不能只看APIrunning，给真实readonly日志后，部署另新overlay修tmp并要求真实CA+IP 401，root执行成功才记事实；未将网络错误猜成产品性能、未关闭verify或修改旧freeze。均AI调试留痕，不是学生个人手写。
+
+新root prompt要求f4独立generation、原entry、真实container全53核、不改旧三binding、所有负载≤21Z、独立systemd资源raw与私网单路径mirror。本岗先设计后实现generation，自身guard指令名错误保首失败纠正，遥测代码尚待后续，不冒执行事实。

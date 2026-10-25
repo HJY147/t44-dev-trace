@@ -619,3 +619,7 @@ root因153KB上传需过多UI段，追加仅dispatch源工件。offline-backend-
 root先得真实host errno111/data-only errno101，随后限定TLS日志明确readonly fastcgi_temp失败（原10140B/SHA673e...保留）。本岗c345新独立TLS helper只新增三个/tmp temp，固定770d/56d78和旧controller SHA，保CA/uid101/RO/caps/网络/端口/image；先nginx-t再仅upTLS、host严格CA+IP GET401新门禁，不用APIrunning代替。10guard0.04s/Ruff绿。root已实际执行成功：nginx-t passed/strict401/attempt1/no credentials，新binding546e3...，原stop未动；本岗只收root事实不读私有/测试结果。这是TLS环境修复，不是业务/400/600验收。未来新campaign必须原模板包含全部temp与真实HTTPS门禁；旧控制器仍原样。
 
 增量V2/receiver/TLS阶段push21eb4577f33734e5779469811fa7efe3b23da5d0；Issue7 #issuecomment-6399289754已发表，官方REST逐字回读一致，expected/readback/proof独立保存，不预填后续CI/镜像/业务结果。
+
+## 新f4 generation本地实现
+
+先设计提交e8751f0e，再实现generation-f4.py SHA9c1abe...；14本地guards0.03s/Ruff绿。首1fail是本岗guard误写client_temp_path而非真实client_body_temp_path，首XML另存，修断言非放宽要求。固定5200/47b50/30b1/f4归档和真实container全53项核、原entry/F4P7、新namespace/CA/双代码binding/timer、21Z上限；nginx-t与hostCA+IP401实际门禁，startup重启/缺失真实状态保原件并失败。root已dispatch V2源run40205362084；新环境cloud prepare/start仍未发生。resource-stream目前仅设计，不冒持续采样已实现。

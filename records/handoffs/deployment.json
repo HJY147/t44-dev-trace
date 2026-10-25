@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-reuse-f4-upgrade-V2-artifact-ready-and-root-TLS-repair-proven",
+  "stage": "new-f4-generation-local-ready-resource-stream-design",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2439,6 +2439,19 @@
       "child_cloud_operation": false,
       "business_or_performance_verdict": null,
       "steps": "deployment/cloud-reuse/TLS-REPAIR-STEPS.md"
+    },
+    "generation_f4": {
+      "tool": "deployment/cloud-reuse/generation-f4.py",
+      "tool_sha256": "9c1abe24da6fc775976505af84dd5172c0e6484d890f77179c5e9bc7df886cf4",
+      "design": "deployment/cloud-reuse/GENERATION-F4-DESIGN.md",
+      "steps": "deployment/cloud-reuse/GENERATION-F4-STEPS.md",
+      "guards": 14,
+      "failures": 0,
+      "first_guard_error_preserved": "agents/deployment/cloud-reuse-20261025/generation-f4-guards-first-failure.xml",
+      "cloud_prepare_or_start": false,
+      "root_V2_source_run_dispatched": 40205362084,
+      "resource_stream_implementation_pending": true,
+      "old_controller_or_lease_changed": false
     }
   }
 }
