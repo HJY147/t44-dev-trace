@@ -441,3 +441,5 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 ## 2026-10-25 鲜建MySQL诊断准入：b7825da拒绝执行
 
 ROLE-reviewer-DIAGNOSTICS-20261025-v1，自有worktree/branch，8明确文件与Git对象及两tool SHA同、应用/契约根对ade5 diff0，准入JUnit仅机械复算9绿不重跑。一次实际零DB微探针确认P2 DIAG-CLEANUP-01：fixture在observer.install前抛出合成异常后，被finally.snapshot的RuntimeError遮成主异常，observer.close与requests写入跳过；原异常只保留context，DB/application导入=[]。无SQL/HTTP/服务/CI或独立私件访问。已先报root阻断，由BE修实现和新SHA后窄复审；原反例保留，不将probe exit0写候选通过。八段/十项报告与source/probe回执已写。
+
+本阶段报告/反例commit8319923a1f28b9c50e1cb05c13b95a03b73648d9已实际push（skipCI），Issue12 COMMENT6394346325已POST并精确单ID REST GET正文与Issue归属逐字核同。只发布P2不通过，不发全局状态；工作流按精确root诊断分支触发，本review分支未触发诊断。
