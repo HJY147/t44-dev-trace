@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "backend-domain-v2-source-reduction-ready-for-review",
-  "implementation_status": "Internal domain v2 implemented; fixed-cloc net376; development313 cases pass; combined fullCI/source<=5100/formal performance/independent acceptance pending",
+  "stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
+  "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -574,6 +574,17 @@
         "backend/t44/services",
         "tmp/811_backend_size",
         "agents/backend/source-size-20261025/report.md"
+      ]
+    },
+    {
+      "id": "ROLE-backend-SNAPSHOT-ALIAS-v1",
+      "source": "actual coordinator repair dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/snapshot-alias-fix.md",
+      "human_code_edit": false,
+      "outputs": [
+        "backend/t44/domain/models.py",
+        "tmp/811_backend_size/812_v2_boundary.py",
+        "tmp/811_backend_size/snapshot-alias-validation.json"
       ]
     }
   ],
@@ -2353,6 +2364,60 @@
     "candidate_product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
     "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397299657",
     "issue3_body_exact_readback": true,
-    "production_without_test_oracle": "fresh process blocked tmp/oracle imports and socket connects; lazy app construction+pure START passed with0 connect attempts"
+    "production_without_test_oracle": "fresh process blocked tmp/oracle imports and socket connects; lazy app construction+pure START passed with0 connect attempts",
+    "current_after_snapshot_alias_fix": {
+      "after": 1993,
+      "net_reduction": 370,
+      "fix_cost": 6,
+      "earlier376_belongs_to_original_v2_stage": true
+    }
+  },
+  "snapshot_alias_fix_20261025": {
+    "finding": "V2-SNAPSHOT-ALIAS-01",
+    "base": "b54e6757cdf1eed72adf4eaea68d8ae0c34c42ca",
+    "operator": "backend AI",
+    "production_changed_files": [
+      "backend/t44/domain/models.py"
+    ],
+    "before_sha256": "550d817d5b5aadb5384d5ed319c3dd3cd0ee838feb97063d6e39cca5dbaec170",
+    "after_sha256": "67406cec4592a1d113ec68eb93ee952127b701688db5950340a779dacf983547",
+    "original_validation_statements_AST_identical_and_in_original_order": true,
+    "added_after_existing_validation": "freeze only assessment.review_evidence sequence membership as tuple; decision consumes its nonemptiness only",
+    "tests": {
+      "before": {
+        "tests": 2,
+        "failure": 2,
+        "error": 0,
+        "skipped": 0
+      },
+      "domain_after": {
+        "tests": 172,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "http_after": {
+        "tests": 143,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      }
+    },
+    "fixed_cloc": {
+      "allowed_scope_before": 2363,
+      "allowed_scope_after": 1993,
+      "net_reduction_from_e45": 370,
+      "fix_cost_over_b54": 6,
+      "tool_version": "2.10",
+      "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83"
+    },
+    "not_run": [
+      "full CI",
+      "cloud",
+      "MySQL",
+      "independent acceptance"
+    ],
+    "old_evidence_preserved": true,
+    "report": "agents/backend/source-size-20261025/snapshot-alias-fix.md"
   }
 }

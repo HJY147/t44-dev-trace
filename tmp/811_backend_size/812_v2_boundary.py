@@ -151,3 +151,72 @@ def test_type_safe_project_membership_and_stage_guards_keep_their_priority():
             replace(context(), roles=frozenset(), task={**context().task, "state": State.DELIVERED})
         )
     assert error.value.code == "INVALID_TRANSITION"
+
+
+def delivery_context(review_evidence):
+    return Transition(
+        {
+            "state": State.PENDING_RELEASE,
+            "blocked_from_state": None,
+            "delivery_cycle": 1,
+            "review_cycle": 1,
+            "schedule_version": 1,
+            "owner_id": 1,
+            "artifact_revision": "artifact",
+            "latest_review_id": 1,
+            "approved_review_id": 1,
+        },
+        {
+            "action": Action.DELIVER,
+            "assessment_id": 1,
+            "assessment_version": 1,
+            "release_version": "release",
+            "reason": "reason",
+        },
+        frozenset({Role.MANAGER}),
+        evidence=("decision-proof",),
+        review={
+            "id": 1,
+            "version": 1,
+            "delivery_cycle": 1,
+            "review_cycle": 1,
+            "artifact_revision": "artifact",
+            "verdict": 1,
+            "reviewer_id": 2,
+        },
+        assessment={
+            "id": 1,
+            "version": 1,
+            "delivery_cycle": 1,
+            "schedule_version": 1,
+            "status": 2,
+            "created_by": 1,
+            "reviewed_by": 2,
+            "review_evidence": review_evidence,
+        },
+        review_complete=True,
+    )
+
+
+def test_appending_caller_evidence_cannot_authorize_an_existing_delivery_snapshot():
+    caller_evidence = []
+    view = delivery_context(caller_evidence)
+    with pytest.raises(DomainViolation) as before:
+        decide(view)
+    assert before.value.code == "EVIDENCE_REQUIRED"
+    caller_evidence.append({"locator": "later-proof"})
+    with pytest.raises(DomainViolation) as after:
+        decide(view)
+    assert after.value.code == before.value.code
+    assert view.assessment["review_evidence"] == ()
+
+
+def test_clearing_caller_evidence_cannot_revoke_an_existing_delivery_snapshot():
+    caller_evidence = [{"locator": "original-proof"}]
+    view = delivery_context(caller_evidence)
+    before = decide(view)
+    assert before.values["state"] == State.DELIVERED
+    caller_evidence.clear()
+    after = decide(view)
+    assert after == before
+    assert len(view.assessment["review_evidence"]) == 1

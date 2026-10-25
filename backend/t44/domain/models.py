@@ -112,6 +112,12 @@ class Transition:
             and not isinstance(self.assessment["review_evidence"], (list, tuple))
         ):
             raise TypeError("assessment evidence must be a collection")
+        if self.assessment is not None and "review_evidence" in self.assessment:
+            values = {
+                **self.assessment,
+                "review_evidence": tuple(self.assessment["review_evidence"]),
+            }
+            object.__setattr__(self, "assessment", MappingProxyType(values))
 
 
 @dataclass(frozen=True, slots=True)
