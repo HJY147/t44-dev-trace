@@ -336,3 +336,7 @@
 - 当前975按VERSION运行，V1黄金/935来源保留，V2摘要在全业务性质和另空库不同batch再现后冻结；没有历史代码替代当前覆盖。signature AST全同/frozen specDDL净差异0，限定Ruff绿。原红log用gzip保原字节，verification记录实际测试而非相加计数。
 - 稳定codex/database-size-optimize-20261025和候选codex/database-seed-v2-optimize-20261025均实际push。Issue4 comment6397356591由connector发布，单ID GET正文与本地完全相同。root组合CI/审核/新MySQL与采用版本取舍待调度，本岗未读独立资料/凭据或接触旧MySQL。
 - 证据提交1af77aa全量diff-check因原始失败XML的E后空白exit2（后续commit成功不算检查通过），原字节不修剪；只对源码/说明文档的同commit diff-check exit0。另存raw-evidence-diff-check.log与verification条目，保留真实边界。
+
+## ROLE-database-CANONICAL-DDL-PROBE-v1：新架构探针先设计
+- 从指定f4bd382d新独立树codex/database-canonical-ddl-probe，读AGENTS/计数口径及现行migrations/schema和本岗公开956/988兼容案。只设计/原型，不读独立799/800/805/809/814 PRIVATE/runtime，不连接13306或根云。
+- 先设计A原生SHOW标准文本/B结构reference对比路线，明确只忽略表级auto counter、保全部有意义漂移及旧等价正例、可信reference不得来自目标marker，当前尚未生成reference/未做新MySQL实验。官方NO ACTION/RESTRICT SHOW差异提示raw-hash可能误拒，不能先称可替换。

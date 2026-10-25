@@ -1,0 +1,5 @@
+# 本轮实际任务（归档标识）
+
+> 新内部架构探针（先设计/原型，不改产品/旧冻结/计数）。项目现f4bd382d4668130793fc553df9ce6363c4656ea6，应用5862、超762，原seedV2/迁移默认字段90行削减已合且695CI+Docker过。固定cloc/保护功能/原MySQL13306不可动，禁止独立799/800/805/809/814 PRIVATE/runtime。请新worktree codex/database-canonical-ddl-probe，tmp796_database_ddl_probe。探查迁移约303行是否能真正用**已存在的MySQL服务器规范化输出作为DDL标准解析器**替代大段自写SQL parser：例如来自冻结schema.sql在受控pinned MySQL8.4真实生成的SHOW CREATE规范期望/结构反射契约（数据摘要是契约数据，绝不能把业务实现/函数塞JSON/SQL字符串骗行）。只允许忽略数据增长的表级AUTO_INCREMENT计数，列auto_increment/default/null/type/index/FK/CHECK35/engine/collation等任何有意义漂移必须保留检测；记录并完整比对所有原正/负兼容用例，不能借更严格hash默默拒绝原支持等价DDL，不能信任可被既有DB漂移污染的marker作基准，不能新建未授权数据库/索权/拉新paid资源。你可离线结合公开原tests/官方MySQL/SQLAlchemy文档调研、独立可抛**自己tmp SQLite只做非MySQL性质**，真实新MySQL实验必须先给root命令由root审批明确新资源（不要碰13306/根云）。把对pinned8.4与原声称8.0兼容/目标选择误差/生成reference成本/需要增加多少源码的净账说清。若无法保持原语义或只是逻辑迁移/换错误拒绝，明确拒绝这个路线，不为762强推；若可真实净省100–250且原契约行为完整，先给root设计/I/O/证明计划和预计净账再执行产品变更。模块报告/WORKLOG/handoff/prompt/Issue4留真迹，没做就写没做。目标是找可信架构变化，不反复做几个单行微调。
+
+操作者数据库AI；非用户亲改，不将旧CI/原生MySQL结果算本探针执行。
