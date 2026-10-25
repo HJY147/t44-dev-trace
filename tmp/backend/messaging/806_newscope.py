@@ -19,26 +19,23 @@ from t44.services.errors import Rejected
 
 
 @pytest.mark.parametrize("operation", ["publish", "get", "keepalive"])
-@pytest.mark.parametrize(
-    "failure", [OSError("synthetic"), pika.exceptions.AMQPConnectionError("synthetic")]
-)
+@pytest.mark.parametrize("failure", [OSError("synthetic"), pika.exceptions.AMQPConnectionError("synthetic")])
 def test_transport_operations_preserve_error_class_and_cleanup(operation, failure):
     connection, channel = Mock(), Mock()
     connection.channel.return_value = channel
-    broker = PikaBroker(
-        BrokerSettings("amqp://localhost/"), connect=Mock(return_value=connection)
-    )
+    broker = PikaBroker(BrokerSettings("amqp://localhost/"), connect=Mock(return_value=connection))
     broker._channel()
     if operation == "publish":
         channel.basic_publish.side_effect = failure
-        invoke = lambda: broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+
+        def invoke():
+            return broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+
         code = "BROKER_PUBLISH_FAILED"
     else:
         connection.process_data_events.side_effect = failure
         invoke = getattr(broker, operation)
-        code = (
-            "BROKER_RECEIVE_FAILED" if operation == "get" else "BROKER_HEARTBEAT_FAILED"
-        )
+        code = "BROKER_RECEIVE_FAILED" if operation == "get" else "BROKER_HEARTBEAT_FAILED"
     with pytest.raises(BrokerUnavailable, match=code) as error:
         invoke()
     assert str(error.value) == code and error.value.__suppress_context__
@@ -48,9 +45,7 @@ def test_transport_operations_preserve_error_class_and_cleanup(operation, failur
 
 @pytest.mark.parametrize("failure", [ValueError("config"), OSError("socket")])
 def test_connect_error_is_not_reclassified_as_publish_error(failure):
-    broker = PikaBroker(
-        BrokerSettings("amqp://localhost/"), connect=Mock(side_effect=failure)
-    )
+    broker = PikaBroker(BrokerSettings("amqp://localhost/"), connect=Mock(side_effect=failure))
     with pytest.raises(BrokerUnavailable, match="^BROKER_CONNECT_FAILED$"):
         broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
     assert broker.connection is None
@@ -59,9 +54,7 @@ def test_connect_error_is_not_reclassified_as_publish_error(failure):
 def test_false_nack_and_unexpected_application_error_keep_their_boundary():
     connection, channel = Mock(), Mock()
     connection.channel.return_value = channel
-    broker = PikaBroker(
-        BrokerSettings("amqp://localhost/"), connect=Mock(return_value=connection)
-    )
+    broker = PikaBroker(BrokerSettings("amqp://localhost/"), connect=Mock(return_value=connection))
     channel.basic_publish.return_value = False
     with pytest.raises(BrokerUnavailable, match="^BROKER_NACK$"):
         broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
@@ -72,9 +65,7 @@ def test_false_nack_and_unexpected_application_error_keep_their_boundary():
     connection.close.assert_not_called()
 
 
-@pytest.mark.parametrize(
-    "failure", [StatementRejected("bad ledger"), UnicodeError("bad encoding")]
-)
+@pytest.mark.parametrize("failure", [StatementRejected("bad ledger"), UnicodeError("bad encoding")])
 def test_value_error_subclasses_still_quarantine_without_ack(failure):
     store, channel = Mock(), Mock()
     store.get.side_effect = failure
@@ -136,17 +127,13 @@ def test_project_error_priority_and_membership_lock_are_preserved():
 
 @pytest.mark.parametrize("read", [None, False, True])
 @pytest.mark.parametrize("handled", [None, False, True])
-def test_pagination_and_unfiltered_counts_are_independent_properties(
-    case, read, handled
-):
+def test_pagination_and_unfiltered_counts_are_independent_properties(case, read, handled):
     store = OutboxStore(case.factory)
     for index in range(4):
         eid = case.event(recipients=[case.user, case.other])
         store.consume(eid)
         with case.factory() as uow:
-            own = uow.gateway.rows(
-                "notifications", {"event_id": eid, "recipient_id": case.user}
-            )[0]
+            own = uow.gateway.rows("notifications", {"event_id": eid, "recipient_id": case.user})[0]
             values = {}
             if index & 1:
                 values["read_at"] = case.now
@@ -167,13 +154,9 @@ def test_pagination_and_unfiltered_counts_are_independent_properties(
     expected = [
         index
         for index in range(4)
-        if (read is None or bool(index & 1) == read)
-        and (handled is None or bool(index & 2) == handled)
+        if (read is None or bool(index & 1) == read) and (handled is None or bool(index & 2) == handled)
     ]
     assert result["total"] == len(expected)
     assert result["unread_count"] == result["unhandled_count"] == 2
     assert len(result["items"]) == int(len(expected) > 1)
-    assert all(
-        item["recipient_id"] == case.user and item["fallback"] is False
-        for item in result["items"]
-    )
+    assert all(item["recipient_id"] == case.user and item["fallback"] is False for item in result["items"])
