@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "仅PUBLIC/source/stdlib静态核，无本岗新执行或业务验收",
+  "implementation_status": "仅draft/PUBLIC静态核，无本岗新SUT或资源测量验收",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/829-public-v6/static-audit.json",
-  "latest_review_report": "reports/reviews/829-public-v6-90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-performance-v6/static-audit.json",
+  "latest_review_report": "reports/reviews/829-performance-v6-63d0819e925d9fa6b5b12537794131b1ceb6e5128130dedbd4d71e693874b206.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1517,9 +1517,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "ONE_EXACT_V6_FUNCTIONAL_GRANT_SINGLE_FIELD_TRANSFORM_TECHNICALLY_ADMITTED",
+  "review_outcome": "ONE_EXACT_FROZEN_PERFORMANCE_GROUP_EXECUTION_TECHNICALLY_ADMITTED_NOT_ACCEPTED",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+  "review_target_sha": "63d0819e925d9fa6b5b12537794131b1ceb6e5128130dedbd4d71e693874b206",
   "review_targets": [
     {
       "pr": 14,
@@ -1601,7 +1601,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "829 PUBLIC v6冷包与provider小接口限定审完成，一次精确functional技术准入",
+  "stage": "v6 performance-only中性准入审完成，一次精确fullgroup执行技术准入",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -2590,7 +2590,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "PUBLIC declared freeze SHA256; no private8core recomputation",
+  "review_target_kind": "performance grant draft actual bytes SHA256; not SUT acceptance",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -3045,5 +3045,30 @@
     },
     "technical_evidence_commit": "b15888f33bbcfde72da1a0bd4a009ad86c59ea2c",
     "role_release": "PUBLIC/source/grant technical seal done; no actual business or private evidence read; root may request separate allowed PUBLIC lifecycle evidence followup"
+  },
+  "previous_phase_before_829_performance_v6": {
+    "stage": "829 PUBLIC v6冷包与provider小接口限定审完成，一次精确functional技术准入",
+    "implementation_status": "仅PUBLIC/source/stdlib静态核，无本岗新执行或业务验收",
+    "review_target_sha": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+    "review_target_kind": "PUBLIC declared freeze SHA256; no private8core recomputation",
+    "review_outcome": "ONE_EXACT_V6_FUNCTIONAL_GRANT_SINGLE_FIELD_TRANSFORM_TECHNICALLY_ADMITTED",
+    "latest_review_report": "reports/reviews/829-public-v6-90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d.md",
+    "latest_review_evidence": "agents/reviewer/evidence/829-public-v6/static-audit.json"
+  },
+  "829_performance_v6_review": {
+    "report": "reports/reviews/829-performance-v6-63d0819e925d9fa6b5b12537794131b1ceb6e5128130dedbd4d71e693874b206.md",
+    "audit": "agents/reviewer/evidence/829-performance-v6/static-audit.json",
+    "draft_sha256": "63d0819e925d9fa6b5b12537794131b1ceb6e5128130dedbd4d71e693874b206",
+    "freeze": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+    "canonical_admitted_sha256": "877edf51705c4240d22324c9194336ad555c100697e05ca6ed7582d1429c0d1e",
+    "only_newfile_change": "admitted false to true",
+    "expiry_UTC": "2026-10-25T09:07:00.000000Z",
+    "technical_before_admin": true,
+    "new_probes_or_SUT_requests": 0,
+    "private_case_env_values_logs_keys_Git_read": false,
+    "contacted_tester_or_injected_old_result": false,
+    "performance_or_coverage_pass": false,
+    "root_dynamic_metadata_not_reverified": true,
+    "prompt_ref": "ROLE-reviewer-829-PERFORMANCE-v6-v1"
   }
 }

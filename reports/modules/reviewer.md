@@ -392,3 +392,8 @@ ROLE-reviewer-829-PUBLIC-v6-v1；freeze90f88d，10个coordinator=true PUBLIC byt
 
 
 v6限定行政封档：技术报告/静态证据b15888f33bbcfde72da1a0bd4a009ad86c59ea2c已push；Issue12 COMMENT6395536736（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395536736）08:43:42特定全文GET exit0，body及issue严格匹配。无业务/fault/perf/global/main/merge通过；准入仍只exact新文件单字段变换，08:44不延长。本岗未运行SUT或读取动态/私有结果，行政不阻塞独立操作，公开TLS/离线原件如另有授权可另阶段追加，当前只记root relay。封条后释放槽。
+
+
+## 2026-10-25 v6 performance-only中性执行准入
+
+ROLE-reviewer-829-PERFORMANCE-v6-v1，draft63d0819e实核，只新文件admitted false→true canonical877edf51；cold6PUBLIC同已审v6，private未读/hash。PUBLIC performance子phase、formal50M>=3M/400/1200/64GiB+64GiB+1TiB相容；direct token方式仅关闭nonceGate，不审私有suite/env。root源c8/w7build8d7/runtime432b/TLS18097/数据/真实scopeTTL和采样元数据沿已核声明，不冒本岗动态结果。08:53:38余801s，630s之后171s理论余量，无case完成保证，09:07不延长；root后续采样/环境清理边界不回写旧functional。sharedMySQL整PID/不可stop、P1偏斜、numeric raw原字节/缺失不补、generatoractual登记/覆盖待事实；API8显式PID与tracker另列澄清只提metadata，不预填覆盖。技术准入一次精确fullgroup已先发root，0新probe/test/SQL/HTTP/CLI/SUT，不读private/联系tester/旧分数，不改case/阈值，非正式性能/资源/全局/main/merge通过。
