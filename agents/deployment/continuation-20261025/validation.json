@@ -1,0 +1,82 @@
+{
+  "operator": "deployment AI",
+  "recorded_at": "2026-10-25T06:42:37.638618+00:00",
+  "implementation_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942",
+  "environment": {
+    "python": "3.12.10",
+    "pytest": "9.1.1",
+    "ruff": "0.17.2",
+    "offline_uv": true
+  },
+  "executions": [
+    {
+      "command": "uv run --no-project --offline --with pytest --with ruff python -m pytest -q tmp/828_deployment_continuation/828_round_prepare.py --junitxml=agents/deployment/continuation-20261025/source-final-guards.xml",
+      "exit_code": 0,
+      "result": "22 passed in0.16s",
+      "source_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942"
+    },
+    {
+      "command": "cached ruff0.17.2 check --config scripts/ci/ruff.toml deployment/round-prepare.py tmp/828_deployment_continuation/828_round_prepare.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "cached ruff0.17.2 format --check --config scripts/ci/ruff.toml deployment/round-prepare.py tmp/828_deployment_continuation/828_round_prepare.py",
+      "exit_code": 0,
+      "result": "2 files already formatted"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 deployment/round-prepare.py --plan <ignored/private700/synthetic-plan.json> --repository <ownworktree> --output <new-private-bundle>",
+      "exit_code": 0,
+      "result": "7 files materialized;0700directory/0600files;generatedmainnotexecuted",
+      "source_sha": "a4055d1f01883c6e969f746ebe6b432f248c9942",
+      "receipt": "agents/deployment/continuation-20261025/local-cli.json"
+    },
+    {
+      "command": "gh api repos/HJY147/t44-dev-trace/issues/comments/6394509470; compare full body to issue-body.md",
+      "exit_code": 0,
+      "result": "exactIDandfullbodyidentical",
+      "receipt": "agents/deployment/continuation-20261025/issue-readback.json"
+    }
+  ],
+  "tooling_observations": [
+    {
+      "command": "python3 -m ruff check ...",
+      "exit_code": 1,
+      "result": "No module named ruff"
+    },
+    {
+      "command": "main-tree .venv/bin/python -m ruff check ...",
+      "exit_code": 1,
+      "result": "No module named ruff"
+    },
+    {
+      "command": "main-tree .venv/bin/python -m pytest --version",
+      "exit_code": 1,
+      "result": "No module named pytest"
+    },
+    {
+      "command": "ls -d with unmatched .venv or .runtime globs",
+      "exit_code": 1,
+      "result": "zsh no matches found; no state mutation"
+    },
+    {
+      "command": "rg ... scripts/ci/README.md .github/workflows/ci.yml",
+      "result": "ci.yml absent; README supplied existing commands",
+      "product_test": false
+    }
+  ],
+  "scope": {
+    "generated_main_executed": false,
+    "cloud_or_account_actions": false,
+    "docker_sql_http_proc_access": false,
+    "independent_private_material_read": false,
+    "hosted_ci_started_by_agent": false,
+    "formal_performance_verdict": null
+  },
+  "no_double_count": "18 original guards repeated after loop binding correction;4 new assumption checks;final22 unique;do not sum earlier checkpoints"
+}

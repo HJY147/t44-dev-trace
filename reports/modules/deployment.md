@@ -388,3 +388,23 @@
 
 - Real hosted run40084563406 success on execution416bb5e/source debf8d8: original fixed nginx UID101, two syntax checks0, actual baseline2-field counterexample and candidate23/23 raw/security-header cases. Full raw/ZIP/platform/source hashes in request-id-chain/validation and scope in result.md. ZIP/platform digest and raw member bytes match.
 - Formal reviewer later found no blocker for one hosted synthetic run; request timing preceded formal conclusion and is preserved, not treated as approval. Issue7 result6382958356 fullGET identical. This candidate has not changed cloud C or been admitted/deployed, and does not prove actual API/TLS/replay persistence/independent acceptance/performance or explicit contract equality violation.
+
+
+## CONTINUATION-20261025-v1
+
+- 部署AI在独立codex/deployment-continuation-20261025/worktree、基ade5e4c先设计17c1f8e，再实现6124ba2及源假设门禁a4055d1。新增本地round-prepare与可审执行清单，逐字固定七个公开模板，不改旧期限/旧失败，不执行生成main或访问云/账号/SUT/独立私有材料。
+- 新轮次source、唯一私有路径/project/DB、UTC操作→采样→回收→释放和预算全部显式；额外TLS计第七服务。W32最低540可选640，W64最低1020可选1280，必须另观测实际进程/pool/MySQL峰值/内存/镜像。原Compose默认、认证和业务锁不变，扩容不是软件收益，旧502原因未证明。
+- 最新源22项合成本地guard通过0.16s，Ruff/format/diff-check通过。前18项复跑不重复累计；增加4项拒绝源engine/settings/compose变化。初版B023与修正、续接系统python缺ruff/pytest并改用缓存离线工具的实际失败均如实记录于result.md。无hostedCI、Docker、SQL、HTTP、proc或正式性能执行。
+- 旧fixture的receiver/worker/source/expiry不得重用；需root与后端取得fresh公开绑定材料另审。原始资源逐文件SHA/官方单文件下载/实际释放与账单核验仍待运行。提示词ROLE-deployment-CONTINUATION-20261025-v1由AI记录，不冒充学生本人。具体设计/结果/原始JUnit见agents/deployment/continuation-20261025，源码规模和正式性能结论仍未解决。
+
+- 阶段分支已推送；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394509470 已由GitHub插件发布并以精确评论ID完整GET逐字核body一致。代码a4055d1与文档证据6e05d7a分开，docs提交skip-ci不冒称云或CI通过。
+
+
+## NATIVE-ISOLATED-20261025（运行中，非独立/性能结论）
+
+- 先设计ad9ada1，再7e96931实现；首次prepare因搬迁OpenSSL缺默认config真实失败，01df352仅本轮子进程OPENSSL_CONF修正后fresh目录prepare成功，原件保留。ade5 broker模板仅新端口/新broker父目录3组明列差量，旧cookie/owner/CLI/关闭代码保留。07:12:29UTC新broker真实start/inspect通过；旧MySQL13306/PID7980等未操作。
+- root最终准入c8cea7e82805de5283ce67501769fa9a4efc1047，6f8e288独立application目录和实际archive字节绑定；07:24:49UTC严格CA+IP本地TLS4workers与consumer真启动，401原件另存。初始native-build.json SHA c6eafe3c1ac398e226fb977ab48919421f9f25aa3470c57ffcaaa94842ce45ec一次冻结，不覆写；native/null image/source/actual archive/artifact/锁/执行/7process身份齐备，scheduler当时pending无假PID。
+- 10项broker合成与最终14项应用合成分别通过0.05/0.04s，非独立验收；Ruff/format/diff-check绿。scope控制8ec71dc只读核root提供的单session实际IDs/TTL3600，owned stop/start；未通配/猜ID/自行签发/撤销旧token。fault门面f552cf5尚未执行故障，graceful MQ stop不冒SIGKILL。
+- 原guardian与新application watchdog分别08:47/08:46:30UTC停止本轮新服务，08:50总停止计划；原始ps资源流仍私有采样中，实际cleanup/absence/回收待后验。详见agents/deployment/native-isolated-20261025/result.md与ROLE-deployment-NATIVE-ISOLATED-20261025-v1；未读admin/identities或独立目录，未联系tester，无云费用动作。
+
+- 本轮阶段公开Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394965607 已经插件发布、精确ID完整GET逐字body核对；运行中状态和待停机边界保留，未将GitHub操作当验收通过。
