@@ -1,42 +1,32 @@
-# 文档汇总岗位：2026-10-25自主续作补记
+# 文档汇总岗位：2026-10-25 Round8事实附录
 
-Agent-Role: documentation；Prompt-Ref: ROLE-documentation-AUTONOMOUS-20261025-v1；Refs: #9。操作者为AI，非学生研究作者。上一版CLOUD839模块报告可从本轮基线ade5恢复，历史过程和结果不回写。
+Agent-Role: documentation；Prompt-Ref: ROLE-documentation-ROUND8-20261025-v1；Refs: #9。作者与实际操作者为AI，非学生研究作者。
 
-## 任务与依据
+## 范围与产物
 
-- 独立worktree/分支codex/documentation-autonomous-20261025，基线ade5；先设计a3ca75a再汇总。
-- 仅读具名开发公开来源，不读独立目录/私有Git/case/raw/key，不联系测试岗。
-- 资料实际提前固定07:50:21UTC，早于07:55上限，之后不追成绩。
+- 从integration bcf01b1建立项目内独立worktree/branch；未在Documents cwd建立目录。
+- 新附录覆盖需求/设计约束、旧公开缺陷、4红4绿及11邻接、准确935审核/开发CI、新隔离F、P最终公开状态及开放出口。
+- docs/reports/round8-20261025-{design,sources,collection,validation}与本岗prompt/日志/handoff留痕。
+- submission-map只插入本轮新入口，旧正文、Word、封面、QA及历史截止保留。
 
-## 产物与状态
+## 真实对接与输入
 
-- reports/final/autonomous-20261025-process-addendum.md：需规→概设/详设→代码→分层验证、真实失败、门禁差距与本人自写入口。
-- submission-map只新增顶部入口，旧报告正文/Word/冻结/提交包保留。
-- docs/reports/autonomous-20261025设计、28来源、5次实问、43检查及后续范围验证分别归档。
-- 本岗prompt、WORKLOG、结构化handoff、Issue9正文/精确回读另记；无产品实现或新增产品测试。
+- 实际分别向既有backend_acceptance_followup_20261025与deployment_continuation_20261025发中性send_message。
+- 当前两问均无直接答复，collection如实记未答；已发表报告不充访谈原话。
+- 不联系独立测试者，不派生新agent，不读取原tmp829/818/817/814、private、.runtime或测试内部内容。
+- 28件具名公开来源与各准确Git对象逐字匹配：24件bcf01b1，4件后发e45a2b9；本轮P最终PUBLIC SHA561f333e已实核。
 
-## 输入输出与实际对接
+## 结果与限制
 
-- 向后端、数据库、部署、审核、提示词各发一条询问，截止审核答1条，另4条未答据发表来源；无真人访谈。
-- 审核答复只c8/812/6738上阶段，原静态准入与root转述范围保持；不混新独立内容。
-- 输出供技术报告与学生阅读选材，研究正文须本人手写，不代填人工12/3/5或版本数。
+- source935 CI40183757236四job绿；coverage/JUnit566、0fail/error/skip，子套件重叠不累加。
+- 新独立F1083完整HTTP、13PASS/1NP/0FAIL、94后置，整体NOT_PROVEN；旧F08FAIL保留。
+- 规模6335/5100超1235；净0/5临时原型未实施，生产节省0。
+- P认证runner已记录600秒核心时钟窗，386/400持续、14传输错误、三目标P95失败、post0/formal0/P01FAIL/overallNP；outer最终状态链和资源尾段覆盖仍缺，原因未证。
+- 新付费资源0不等旧阿里账单清零；最终研究正文/人的12-3-5仍需学生实际完成。
 
-## 设计与取舍
+## 实际执行与交接
 
-- c8、test-only5f、rootf237及各run准确分开；32 SQLite、6+6+7 fresh开发、562后端/89前端、独立/正式性能不混为一个总数。
-- 每部分自身验证分别说明，前端/消息/调度无本轮产品修改；部署401/guard不当业务验收。
-- 保留1141准备错误case0、fixture缺reason、Counter红、计时/OpenSSL工具问题和规模原型反增；发现与修改均AI。
-- 6326/5100超1226仍FAIL；正式性能、独立产品、未来停机和学生正文分别未证。
-
-## 执行与验证
-
-- 28件字节/Gitblob/发表提交、11 ZIP摘要、部署XML、prompt资料检查与算术，共43项元数据检查通过。
-- 未解包重判执行，无产品/SQL/HTTP/服务/负载/CI/云/浏览器/Word操作。
-- 本岗部署文件名定位失败、大输出截断及一次同路径双操作patch被拒均原样记过程，不冒产品错误。
-- 文档链接、旧submission正文、JSON、范围与diff-check另见validation，不计产品测试。
-
-## 交接与限制
-
-- 合并保留每个来源固定cutoff；后来独立/性能成绩另建公开补记。
-- 仍需资源停机后验、正式性能与独立完整后置、规模方案/人的决定、本人研究正文和最终封包。
-- 未作APPROVE、主干合并或全局放行；只发布本岗Issue9与文档证据。
+- 本岗只做文档/Git/hash/JSON/链接轻量核对；产品、测试、SQL、HTTP、CI、压测、云、Word执行0。
+- 工具大输出截断改按精确字段读取；没有把未显示字段猜成结果。
+- 本轮P已封入事实终章；42项轻量检查、27相对链接全部通过；实现d194019已commit/push；Issue9评论6396883029精确GET正文逐字一致，回执归档；未APPROVE、主干合并或全局放行。
+- 上轮模块报告和交接状态可从基线bcf01b1恢复，不将后发证据回填旧cutoff。

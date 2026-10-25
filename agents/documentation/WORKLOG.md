@@ -387,3 +387,25 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 - 实质261d4e9本人commit/push；GitHub connector实际POST评论6395089123，再按该精确ID GET核完整body及issue9 URL逐字匹配。结构化GET原件和摘要保存github-autonomous-20261025-readback.json；不是原始HTTP传输字节声明。
 - 此后仅存发布与handoff行政，不读取新源/成绩、不改固定07:50:21资料截止，不新增产品或Word操作。最终精确HEAD/远端核同后交总协调，释放本岗槽。
+
+## 2026-10-25T11:04:03.123404+00:00 Round8公开事实附录起草
+
+- 从当时integration bcf01b1新建Desktop项目内documentation-round8 worktree/branch，先写设计和实际prompt范围，再读具名公开证据。
+- 真实向既有后端、部署各send_message一问，当前两问均未答，不激活独立测试者或派生新agent。24来源bytes/SHA/Gitblob均同基线；不跟随任何私有引用。
+- 附录保留旧F08/P01红、后端4红4绿+11邻接、helper/root/部署工具原始失败，准确source935CI与新F分层；6335超1235和净0/5未实施方案不宣达标。
+- root转交P10:58:26三原PID absent且PUBLIC finalstatus缺失，已占位为异常终止/原因未证/窗口待认证；等待最终PUBLIC，不写600完成/通过。另转交bcfCI/Docker信息暂明示非本岗直接复核。
+- 两次大输出截断，已改精确字段及路径读取，无猜补。工作只文档/Git/hash/JSON，产品/测试/SQL/HTTP/CI/压测/云/Word执行0；未代写手写研究或人工12/3/5。
+
+- 2026-10-25T11:06:11.311658+00:00 root给单个P PUBLIC明确读取授权；12100bytes/SHA561f333e实核，原字节复制本岗docs。runner完整认证与outer缺status分开：600秒核心窗有记录，386/400持续、14ConnectionResetError、三目标P95失败、post0/formal0/overallNP，替换草稿占位并保留先前观测的时点限制。
+- 向root进度消息误报相对链接34，随后直接读取validation实为27并立即更正；原validation37/0始终准确，本文保留此本岗口误，不当产品或学生错误。
+
+- 2026-10-25T11:07:56.936972+00:00 改用root主树e45a2b9已提交的canonical P PUBLIC及copy-manifest、bcf两API job-status readback，四件原字节/Git实核；删除本岗临时重复P副本，来源最终28件。P三目标P95/全400持续/零错失败，runner完整与outer缺status分别披露，不重判旧v7。
+- 收尾据root转交11:04:53停sampler、11:04:55controller正常stopapps/brokerforcedfalse；部署完整owned后验尚未完成，本稿不提前写全停验证。两模块问询仍未答，不再激活任何实例。
+
+- 2026-10-25T11:08:52.455465+00:00 最终28公开来源与bcf/e45各准确Git对象对应、JSON/事实/范围/旧正文保留/gitdiff检查共42项全通过，27相对链接全存在；这些是文档核对，产品测试0。准备只stage本岗文件并提交/push/Issue9。
+
+## 2026-10-25T11:10:28.035545+00:00 Round8实际发表及原push失败
+
+- 实现d194019dd07be6d966b218b04c866c4829f60cd6本岗commit。首push返回curl16/HTTP2framing/unexpecteddisconnect/exit1，虽末尾Everythingup-to-date仍不当成功；随即ls-remote精确分支无结果，按单命令HTTP1.1重试push exit0新建远端分支，不改全局Git设置。原失败保留，为本岗网络工具问题，不冒产品失败。
+- GitHub connector实际发布Issue9评论6396883029；只GET该精确ID，body/URL与本地保存正文逐字同，receipt归档，未读讨论timeline。42文档核对/27相对链接仍非产品测试。
+- 本笔仅保存发表回执和交接，无新源/私有材料读取或产品操作；最终receipt commit/push并HEAD/远端一致后回传总协调。
