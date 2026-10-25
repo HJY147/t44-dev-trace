@@ -601,3 +601,5 @@ root实际app prepare/arm/infra/migrate/P seed与7worker factory up成功，F只
 ROOT805工具依赖crypto，82e4初版不执行；新f30 runtime只从已证明backend935 COPY sitepackages到freshofficialPython，清PYTHONPATH/USER10001，实际t44spec/产品路径/appenv缺失true，Python3.12.15/crypto50.0.2/SSL3.0.22，actualId3982与新config89ced独立，绝不冒原Python身份。7本地guard0.03s。第二版603假定sha256sum manifest不符合实际frozen包，root执行前指出，代码保留未上传/执行；V3仅读批准PUBLIC FILES.json及entry.verify公式，JSON11+自身12项、bytes/SHA/canonical10b8、0555/0444，10guard0.06s，无改包或第13manifest。V3 root已prepare/start/dispatch，主容器900s/包600s，结束/collect结果尚未由本岗核，不预填。
 
 94caf diagnostic-overlay新controller同源7worker、精确两PUBLIC SHA+10DIAGENV、源RO/输出RW和保留timer，5pureguard0.04s；不接sessionpacket。与backend岗位直接核了字段、CLIadmin及CA键，不向独立tester发消息或读private cases。所有fixture/短诊断不是400/600或最终coverage/代码规模通过，后续16worker/新source升级只设计，待root准入另记录。ROLE-deployment-CLOUD-REUSE-20261025-v1追加真实AI提示与错误修正，不记学生亲历。
+
+Cloud reuse script/runtime阶段已push dba053069dcdaa20ca5ed67794c230b83ce1ee27；Issue7 #issuecomment-6398961706已发表并REST逐字回读一致，原body/回读/proof保存在cloud-reuse-20261025；不追加新云结果或独立成绩。
