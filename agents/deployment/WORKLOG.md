@@ -627,3 +627,5 @@ root先得真实host errno111/data-only errno101，随后限定TLS日志明确re
 ## 连续资源raw与私网mirror实现（未云运行）
 
 resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirror，原f4 phase9c1abe pin；7role exactCID/image、cgroupv2累计CPU/mono/RSS/memory真字段、first/missing null/restart/延迟，固定FD/inode/owner/size/prefixhash/bytecap，自动/USR1 finaltail，21Z前bounded。只load私网peer＋TLS原leaf只读、单GET/raw、专用nonce/offset/chunkSHA，handoff私有无API/DB账号。load从offset0真append/wholeSHA/tail和各role实际coverage，independent verdict null，after-only包络不能冒通过。17本地checks0.10s/Ruff绿，含真实loopback TLS/CA拒绝/nonce/单路径/字节完整性；不等于云Docker/proc或跨VM持续执行。操作见RESOURCE-STREAM-STEPS；start前实际numeric预览/正式warmup前两端启动/seal后收全再stop，root另取原件。所有云进程/端口/采样区间/回收证明仍待root实操，无新账号/SG/IAM/VM动作。
+
+新generation/资源raw阶段已push0eeb42f13cd31776b506f9dca96e9dbcb229b9f1，Issue7 #issuecomment-6399756930发表，官方REST逐字回读一致；body/readback/proof已保存。新云prepare/collector/完整mirror和停止仍未由本岗执行或获回执，不预填。
