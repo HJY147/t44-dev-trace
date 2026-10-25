@@ -544,3 +544,10 @@ root随后明确只允许新round2 idle API/consumer先启动建立身份及采�
 - root重新给一次充足有界campaign，aa73585设计→adc5197显式固定F7/R3源helper派生两新namespace；原F7/R3正常停止及完整资源/true-false保留，旧hash不变，24397首次false后续真free才复用，sharedMySQL/generator未信号。
 - F09:30:58 API4/consumer、P09:31:04 API7/consumer及各新broker/guardian真idle/严格CA/IP401；actual nativebuild F8f7ac7…/Pe88e88…均新冻结，C8/archivec393同源，scope初始pending。共用新spawn10:00含动态scope，F10:20:30/10:22/10:25、P10:30:30/10:32/10:35，P interval74003/10:29。
 - root真实preflight和独立F≤9:45/P≤10:15另phase，不并发施压，部署未发case/负载/seed。四项纯campaign guard0.25s及Ruff/diff-check绿；actual capability/停止原件/新prompt在campaign目录，运行中/正式结果与最终stop不预填，行政Issue后补即释放槽。
+
+
+## F独立phase结束后正常收尾
+
+root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop：appguardian和broker guardian先核UID/lstart/PGID/argv hash并写owned request，再SIGTERM；forced=false，F API/四worker/tracker/consumer/当前scheduler/Rabbit/EPMD/两guardian全部absent。原controller/manifest/appbinding/artifact/nativebuild六件SHA前后相同，数据/所有原日志和两份闭合raw保留并列SHA/bytes，P和sharedMySQL未触碰。aftercheck receiptac3c4129cc7842dea98936edfd45aff8。
+
+首次端口后验24396 EADDRINUSE的false如实保留，其余指定端口free；另只读重核见functional-phase-end-port-recheck.json，不据此猜原因或杀unknown。此收尾只证明本岗owned服务消失，不替代F独立结论或P性能通过；P角色/门禁/采样未由本动作改变，正式generator由root后续显式注册到P74003采样。

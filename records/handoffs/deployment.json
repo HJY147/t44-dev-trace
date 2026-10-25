@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "new-sufficient-F-P-campaign-idle-running-root-preflight-and-phase-pending",
+  "stage": "functional-campaign-normally-stopped-performance-campaign-untouched",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -1004,7 +1004,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-25T09:36:29.685578+00:00",
+  "updated_at": "2026-10-25T09:59:45.997263+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -2163,6 +2163,80 @@
     "formal_verdict": null,
     "final_campaign_stop": null,
     "prompt_ref": "ROLE-deployment-NATIVE-CAMPAIGN-20261025-v1",
-    "issue_administration": "deferred;root requested capability priority and slot release"
+    "issue_administration": "deferred;root requested capability priority and slot release",
+    "functional_phase_root_notice_ended": true,
+    "functional_owned_stop": {
+      "at_utc": "2026-10-25T09:57:29.334902+00:00",
+      "all_apps_workers_tracker_broker_guardians_absent": true,
+      "forced": false,
+      "original_hashes_unchanged": true,
+      "data_logs_raw_preserved": true,
+      "receipt": "ac3c4129cc7842dea98936edfd45aff8",
+      "evidence": "agents/deployment/native-performance-20261025/campaign/functional-phase-end-stop.json",
+      "initial_epmd_port_bind_failed_preserved": true,
+      "read_only_port_recheck": {
+        "at_utc": "2026-10-25T09:59:45.994889+00:00",
+        "scope": "functional explicit ports read-only bind probe;no signal",
+        "ports": [
+          {
+            "port": 18096,
+            "bind_free": true
+          },
+          {
+            "port": 25696,
+            "bind_free": true
+          },
+          {
+            "port": 24396,
+            "bind_free": true
+          },
+          {
+            "port": 35696,
+            "bind_free": true
+          },
+          {
+            "port": 45696,
+            "bind_free": true
+          },
+          {
+            "port": 45697,
+            "bind_free": true
+          },
+          {
+            "port": 45698,
+            "bind_free": true
+          },
+          {
+            "port": 45699,
+            "bind_free": true
+          },
+          {
+            "port": 45700,
+            "bind_free": true
+          },
+          {
+            "port": 45701,
+            "bind_free": true
+          },
+          {
+            "port": 45702,
+            "bind_free": true
+          },
+          {
+            "port": 45703,
+            "bind_free": true
+          },
+          {
+            "port": 45704,
+            "bind_free": true
+          },
+          {
+            "port": 45705,
+            "bind_free": true
+          }
+        ]
+      },
+      "performance_or_mysql_touched": false
+    }
   }
 }

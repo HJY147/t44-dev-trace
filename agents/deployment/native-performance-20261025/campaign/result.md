@@ -9,3 +9,10 @@ root明确先前短窗口低估了串行准备/独立核验成本，F7与R3都�
 共同新spawn cap10:00覆盖动态scheduler，不绕旧09:20；F-app10:20:30/broker10:22/force10:25，P-app10:30:30/broker10:32/force10:35，P interval10:29。root另限定F phase≤09:45/P≤10:15，phase许可与资源lease分开；root先真实预检API/CLI/单scope/sealer链并声明neutral preflight project，再给独立operator，部署不代做case或造数据。F/P严禁同时负载，root真完成后可提前normal stop。
 
 P1s sampler74003于09:31:05实际独立运行，原guard raw保留；新root明确generator PID须注册到本run、预热前至少一个delta间隔，缺失/首点null，不冒满coverage。MySQL标shared全进程，RSS聚合/CPU一核100语义保持；最终receipt尚待10:29/提前stop，未预填。四项本岗campaign纯guard0.25s、Ruff/format/diff-check通过；新schema/UTC差量逐字可逆、10:00门禁包含动态scope、旧deadline变更拒绝。root负载/独立结果/新campaign最终停机回收均未由本结果判通过。
+
+
+## F独立phase结束后正常收尾
+
+root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop：appguardian和broker guardian先核UID/lstart/PGID/argv hash并写owned request，再SIGTERM；forced=false，F API/四worker/tracker/consumer/当前scheduler/Rabbit/EPMD/两guardian全部absent。原controller/manifest/appbinding/artifact/nativebuild六件SHA前后相同，数据/所有原日志和两份闭合raw保留并列SHA/bytes，P和sharedMySQL未触碰。aftercheck receiptac3c4129cc7842dea98936edfd45aff8。
+
+首次端口后验24396 EADDRINUSE的false如实保留，其余指定端口free；另只读重核见functional-phase-end-port-recheck.json，不据此猜原因或杀unknown。此收尾只证明本岗owned服务消失，不替代F独立结论或P性能通过；P角色/门禁/采样未由本动作改变，正式generator由root后续显式注册到P74003采样。
