@@ -115,3 +115,6 @@ independent materials, other runtime accounts or cloud diagnostics were read.
 Pushes use `[skip ci]` to honor no-new-full-CI; no workflow or main protection is
 changed. The next architecture route belongs to coordinator scheduling; this
 failed probe is stopped and not extended merely to manufacture the remaining 762.
+
+Probe/evidence stage: `56c7b91b25abf333c96b5c38b349b545b4a81e04`.
+[Issue 3 handoff](https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6399501754) was posted through the GitHub connector and fetched back with exact body equality; local `issue3.md` and `issue3-receipt.json` retain the public text/receipt.
