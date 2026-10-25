@@ -176,8 +176,7 @@ def lock_snapshot(engine, connection_ids, *, readiness=False):
         "JOIN performance_schema.threads b ON b.THREAD_ID=w.BLOCKING_THREAD_ID "
         "JOIN performance_schema.data_locks l "
         "ON l.ENGINE_LOCK_ID=w.REQUESTING_ENGINE_LOCK_ID "
-        "AND l.ENGINE=w.ENGINE WHERE a.PROCESSLIST_ID IN :ids"
-        + (" LIMIT 0" if readiness else "")
+        "AND l.ENGINE=w.ENGINE WHERE a.PROCESSLIST_ID IN :ids" + (" LIMIT 0" if readiness else "")
     ).bindparams(bindparam("ids", expanding=True))
     with engine.connect() as connection:
         return {
