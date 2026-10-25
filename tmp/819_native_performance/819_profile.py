@@ -64,3 +64,34 @@ def test_changed_template_refused(originals):
     changed["isolated.py"] += b"\n# changed"
     with pytest.raises(ValueError, match="HASH"):
         PROFILE.render("performance", changed)
+
+
+def w7_module():
+    spec = importlib.util.spec_from_file_location("native_w7_guard", ROOT / "deployment/native/worker-seven.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_w7_only_declared_changes_and_new_paths_restore_exact_w8(originals):
+    old, _ = PROFILE.render("performance", originals)
+    changed, receipts = w7_module().derive(old)
+    assert changed["isolated.py"] == old["isolated.py"]
+    for name, data in changed.items():
+        ast.parse(data)
+        restored = data.decode()
+        for item in reversed(receipts[name]["allowed_changes"]):
+            restored = restored.replace(item["new"], item["old"])
+        assert restored.encode() == old[name]
+    app = changed["isolated-application.py"]
+    assert b"!= 7" in app and b"'7'," in app
+    assert b"application-binding-w7.json" in app
+    assert b"module.STOP - 30" in app
+    assert b"application-binding-w7.json" not in old["isolated-application.py"]
+
+
+def test_w7_missing_exact_worker_patch_position_refused(originals):
+    old, _ = PROFILE.render("performance", originals)
+    old["isolated-application.py"] = old["isolated-application.py"].replace(b"!= 8", b"!= 9")
+    with pytest.raises(ValueError, match="PATCH_POSITION"):
+        w7_module().derive(old)
