@@ -1,0 +1,36 @@
+{
+  "implementation_sha": "7e96931",
+  "stage": "prepare",
+  "actual_exit_code": 1,
+  "services_started": false,
+  "failure": [
+    {
+      "at_utc": "2026-10-25T07:11:51.567724+00:00",
+      "argv": [
+        "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler/bin/openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-days",
+        "2",
+        "-keyout",
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-isolated-20261025/runs/isolated_20261025_2bda46566bd44d3b/tls/ca.key",
+        "-out",
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-isolated-20261025/runs/isolated_20261025_2bda46566bd44d3b/tls/ca.pem",
+        "-subj",
+        "/CN=T44 isolated native CA",
+        "-addext",
+        "basicConstraints=critical,CA:TRUE",
+        "-addext",
+        "keyUsage=critical,keyCertSign,cRLSign"
+      ],
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "09e0a11bf1bc20e5620186849f0ae6044b69e5f3b26ef7f0ba8e0a13c13ecf7d"
+    }
+  ],
+  "cause_observed": "bundled OpenSSL req default openssl.cnf points to absent build-host path",
+  "fix": "explicit per-run minimal OPENSSL_CONF,only this child environment;new attempt,old raw preserved"
+}

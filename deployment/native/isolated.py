@@ -129,12 +129,12 @@ def environment(extra=None):
     return value
 
 
-def command(run, argv, *, cwd=None, timeout=30):
+def command(run, argv, *, cwd=None, timeout=30, env_extra=None):
     tag = uuid4().hex
     result = subprocess.run(
         list(map(str, argv)),
         cwd=cwd or run,
-        env=environment(),
+        env=environment(env_extra),
         stdin=subprocess.DEVNULL,
         capture_output=True,
         timeout=timeout,
@@ -194,8 +194,12 @@ def receipt(run, action, **fields):
 
 def certificates(run, openssl):
     tls = run / "tls"
-    command(
-        run,
+    write(tls / "openssl.cnf", b"[req]\ndistinguished_name=dn\n[dn]\n")
+
+    def tls_command(argv):
+        return command(run, argv, env_extra={"OPENSSL_CONF": str(tls / "openssl.cnf")})
+
+    tls_command(
         [
             openssl,
             "req",
@@ -217,8 +221,7 @@ def certificates(run, openssl):
             "keyUsage=critical,keyCertSign,cRLSign",
         ],
     )
-    command(
-        run,
+    tls_command(
         [
             openssl,
             "req",
@@ -238,8 +241,7 @@ def certificates(run, openssl):
         tls / "server.ext",
         b"basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost,IP:127.0.0.1\n",
     )
-    command(
-        run,
+    tls_command(
         [
             openssl,
             "x509",
@@ -259,8 +261,7 @@ def certificates(run, openssl):
             tls / "server.pem",
         ],
     )
-    command(
-        run,
+    tls_command(
         [
             openssl,
             "verify",
@@ -275,8 +276,8 @@ def certificates(run, openssl):
             tls / "server.pem",
         ],
     )
-    key = command(run, [openssl, "pkey", "-in", tls / "server.key", "-pubout"])
-    cert = command(run, [openssl, "x509", "-in", tls / "server.pem", "-pubkey", "-noout"])
+    key = tls_command([openssl, "pkey", "-in", tls / "server.key", "-pubout"])
+    cert = tls_command([openssl, "x509", "-in", tls / "server.pem", "-pubkey", "-noout"])
     if key != cert:
         raise ValueError("TLS_KEYPAIR_DIFFERS")
     for path in tls.iterdir():
