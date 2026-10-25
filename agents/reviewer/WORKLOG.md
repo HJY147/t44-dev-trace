@@ -437,3 +437,9 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 行政封条实际完成：精确ead/终态E14a61报告与独立原件核验commit fca3a3fa764c41f5f30ac61a645631a7784e2add 已push。Issue3 COMMENT6383718463实际发布，特定REST全文GET body逐字、Issue归属、完整source/E SHA核同；https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383718463。回执github-comment-full-get.json/verification.json。仅限定代码+product门槛交root整合，旧5cc红CI/187保留，N07与云性能未通过；无新Docker/NGINX覆盖或global status。0本岗测试/SQL/负载/CI触发/独立私密读取或通信。DB修复已有独立审核岗，本阶段结束释放，不继续排队DB。
+
+## 2026-10-25T06:19:30.591024+00:00 Source-budget架构专项
+
+先设计2c96e42，三个只读工具先commit后执行。原正式计数器472a源实测6316/66文件、require-range exit1；44Py分段290段逐文件对齐，4386可调用/831声明导入；严格3–8语句≥8行AST克隆0组，不当作不可压缩证明。命名空间三文件566→577反增11，淘汰state_machine+44，仅Workflow-21/Schema-12原型合计33；生产净省0。初alias sql遮蔽guard失败保留。98公有Python显式消费者扫描0，不是动态兼容证明；BE实际反馈无现任务冲突但需晚绑定/错误优先回归，DB反馈未收到不推定同意。无应用/DB/HTTP/负载/独立测试执行；无冻结或计量口径变更。正式报告reports/reviews/source-budget-architecture-20261025.md；Prompt-Ref ROLE-reviewer-SOURCE-BUDGET-20261025。
+
+补记：统一diff原件必须含单空格context行，首次cached diff-check exit2已留patch-artifact-check.json；改为无损gzip封存并保留raw于ignored本地路径，不改原bytes、不改检查规则。

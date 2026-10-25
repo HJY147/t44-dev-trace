@@ -1,0 +1,20 @@
+{
+  "operator": "reviewer AI",
+  "questions": [
+    {
+      "target": "backend_performance_20261025",
+      "subject": "Workflow namespace prototype and current perf work boundary",
+      "question_summary": "Prototype-only -21 in Workflow; AST normalization is not runtime/export proof. Does namespace boundary conflict with current task?",
+      "answer_received": true,
+      "answer_summary": "Current API/contracts/Runtime/Business wrappers do not change Workflow or depend on its implicit exports; no conflict. Namespace late lookup is not fully equivalent to imported early binding; ordinary adjacent business/error-priority regression and exact source review still required. Do not interrupt profiling to implement now."
+    },
+    {
+      "target": "database_performance_20261025",
+      "subject": "Schema SQLAlchemy module namespace prototype",
+      "question_summary": "Prototype-only -12; module export/monkeypatch compatibility pending, no implementation request during profiling.",
+      "answer_received": false,
+      "answer_summary": null
+    }
+  ],
+  "human_decision_or_manual_execution_claimed": false
+}
