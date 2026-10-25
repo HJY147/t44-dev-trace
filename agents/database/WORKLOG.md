@@ -291,3 +291,26 @@
 - verification.json对c4e8的15份原公件/旧prompt逐文件hash/bytes全同，旧recipes/provenance源片段逐字不变。filesystem-observations.json抽取红绿标记与固定inode/symlink观测后仅清理本阶段零DB临时目录，不改原71Rows/旧E seal，不让旧矩阵冒充新工具已完整执行。
 - Issue4实际COMMENT与精确GET全文逐字同：https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6383619265，正文/原响应已存本岗output-guard目录。root明确暂不整合，等本阶段E seal后原审核岗独立复审；原c4e8 P2不改写，本岗不代宣布审核关闭，工具输出修复不算性能修复。原审核公开报告精确SHA尚未收到，本岗未查私有材料。
 - 全量git diff --cached --check因原始pytest失败log/XML尾空格退出2；同一shell后续commit/push仍执行为bc98ee8，未将其宣称通过。保留原字节，git show --check再次确认该原始空白提示；限定838/836源码及说明文档检查exit0，raw-diff-check.log/diff-check-result.json真实留痕。没有改写日志消提示、没有新增测试或更改source3fc。
+
+## ROLE-database-PERFORMANCE-20261025-v1：实际请求层诊断工具
+- 基root ade5独立worktree/branch，先读AGENTS及公开839联合、本岗公件；不读独立私件/env/未知DB，不联系独立岗。先设计df6fa10后源码c11f630，和BE实际对齐worker内request(operationId,UUID)/install/snapshot/close；root准入后续freshCI专库t44_diagnostics，当前未执行MySQL/HTTP。
+- 833仅诊断进程临时wrap，分层Rows/Session/UoW/engine/dialect/cursor/mapping/codec；SQL只verb/registry表/shapeSHA，含UTC/perf/mono/threadCPU，无参数/正文/DSN/消息。单engine/Result支持边界及inclusive重叠写明，不称纯queue/lock/server时间。
+- 精确c11上6个SQLite/导入/异常/上下文/恢复检查绿，89af321有限6请求SQLite样本2SQL每条；发现时钟终点先读wall后做UTC再读CPU导致短样本CPU略高1–2us，原样本保留，edc3e2a修读序后同6检查再绿、新6样本完成；不能累加为12独立测试或当提速A/B。两份均242映射行、pending0/checkedout0/disposed，临时toy库清理，原19/71未重跑。
+- 初次猜测conftest路径不存在、一次patch标记拒绝无部分写、初Ruff7条及demo1条import问题均在verification记录，未把工具错误算产品失败。最终三脚本Ruff绿，生产/冻结/DDL/池/锁净变更0，准确模块SHA和source已先给root/BE，不等行政归档才交技术接口。
+- 本阶段文档暂存check因report新EOF空行exit2但仍提交f0ce2aa，明确不算通过；只修本岗新说明EOF，原JUnit/SQLite样本不改。Issue4 COMMENT6394267281已通过connector实际POST，再精确GET该ID全文与本地实际正文逐字相同；无新测试或矩阵，最终证据封条仅统计本阶段公件。
+
+## ROLE-database-MYSQL-GRAPH-20261025-v1：真实公开MySQL分析与锁候选探针
+- 只读root已核官方40169575755公开mysql-before.json并核SHA/bytes，56/56 request_id+operation精确join；4warmup/4profile排除，48measured（每操作12）。新离线summary先运行后格式化，最终3e11源重算新输出字节相同，原件均保留。MySQL是root运行的fresh Linux service，HTTP路径为TestClient/ASGI，不是外部部署入口。
+- 每请求SQL9/10/4/27或29；cursor/Rows/mapping/codec/acquire/ping/commit/reset inclusive与CPU实际列报告。transition底层commit均值3.785ms但CPU.165ms，未将残差叫锁/服务器原因；observer装在首次fixture连接后，无physical-connect/timeout profiles，postdispose checkedin0也不倒推无连接。
+- 先设计9e0caf2后工具e631936，3e11b1a补两共用pred/反向id集合和精确P_S recordS/waittable断言。6个真实Runtime低层并发probe源码已交root；只允许明确freshCI专库/localhost、拒13306，不清数据，实际prepare/auth/locked_scope、独立物理连接、Event+MySQLwait边。当前DB岗未执行MySQL/HTTP/云，也未改生产Runtime/Rows/DDL/池/锁/准入。
+- 和BE明确其负责HTTP业务race/错误码/审计/capacity/revoke，本岗只DB层。已告知sorted IN/ORDER BY不能独自证明InnoDB取锁全序；有限EXPLAIN/并发passes也不是全域无死锁证明，共pred仍X串行，候选不得S→X升级且writer全保X。
+- 本地8工具检查首轮7pass/1fail为test bytes/str TypeError，原JUnit保留；text=True后同8pass，最终3e11同8pass0.40s。新三脚本Ruff绿，旧observer/六hook测试未改不重复跑。路径猜测错误另存verification，不叫产品失败；prompt真实保留AI操作者。
+- 源码3e11实际push后以connector发表Issue4评论6394606519，单ID GET完整body与本地稿精确相同，原响应/hash存stage目录；不关Issue/不宣称共享锁准入，报告明示MySQLprobe尚未本岗运行。
+
+## ROLE-database-MYSQL-POINT-20261025-v1：逐点锁修订工具
+- root后续明确准入BE的S+point候选，先静态读核BE c8cea7e Runtime SHA9e0d770...，设计勘误24ca1db先提交，再工具ee12656513af846c441e20ef858c6aee1126e8dc；本岗不写Runtime/Rows/生产。逐条sorted unique scalar id+project/limit1保证显式task请求顺序，但不夸大所有FK/内部资源无死锁；D前驱增加D条SELECT如实记录。
+- 新必需expected-task-lock-shape batch|point，真实Runtime当前UoW原rows透明观察/恢复，断言scalar/list/limit/集合/顺序和同线程实际cursor形状/数量；EXPLAIN真实捕获原参数化SELECT，原SQL/绑定只内存不落证据，最多8种形状。交叉共pred/反向编号和P_S边保留；未本机执行MySQL/13306/HTTP/云。
+- 浏览官方MySQL8.4主源核P_S最窄三表SELECT（data_locks/waits/threads），不需PROCESS或全库；root负责本次fresh授权，工具fixture前readiness将1142单列环境而非锁case红。
+- 首次patch因format换行上下文不符原子拒绝，核git diff无部分写，读准原件后分段应用；同8工具guard再次8pass0.39s，新两脚本Ruff与stagedcheck0。8guard不执行新增MySQL观察分支，待root统一freshCI。原报告/失败/seal按其旧source保留，本轮独立新E。
+- root明确两独立fresh jobs/MySQL service同t44_diagnostics，不扩本工具库白名单，HTTP另t44_gate_http。3dc8655只加LIMIT0 readiness，同8pass0.39s；最后format check一行拼接返回1，da166fe仅格式且AST机械比较完全等于已测3dc，最终Ruff/checkformat0，没有再次运行8项；真实失败/源hash均在point-lock-verification。最终probe SHA bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4。
+- Issue4初交接6394684218与最终6394701321均由connector实际POST、各单ID完整GET/body精确相同，实际原响应/hash分别保留。source和精确baseline/candidate命令已先发root，不自行触发CI，正式出口不变。

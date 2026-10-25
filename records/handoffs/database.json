@@ -1,6 +1,6 @@
 {
   "role": "database",
-  "stage": "OUTPUT-EXCLUSIVE-v1：P2工具输出窄修复/11零DB回归，待独立复审",
+  "stage": "request-bound-diagnostic-observer-ready-for-fresh-ci",
   "implementation_status": "838排他创建+固定fd修复已提交；836旧源2红→新11绿；原71Rows/旧E seal未改，不是性能修复/审核通过。",
   "artifacts": [
     {
@@ -1069,9 +1069,10 @@
       "id": "ROLE-database-OUTPUT-EXCLUSIVE-v1",
       "archive": "agents/database/prompts/ROLE-database-OUTPUT-EXCLUSIVE-v1.md",
       "improvement_reason": "真实审核P2驱动先红再原子O_EXCL/NOFOLLOW固定fd修复，保留原71和失败，不扩性能范围/不记用户亲改。"
-    }
+    },
+    "ROLE-database-PERFORMANCE-20261025-v1"
   ],
-  "updated_at": "2026-10-24T11:28:16.915522+00:00",
+  "updated_at": "2026-10-25T06:12:17.872567+00:00",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1429,5 +1430,58 @@
       "readback": "agents/database/plan-history/github-readback.json; exact bodies equal",
       "size": "baseline6124 ->product6186 delta62; --require-range exit1; not compliant"
     }
-  ]
+  ],
+  "performance_diagnostics_20261025": {
+    "base": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "design": "df6fa10",
+    "tool_source": "edc3e2a32a4e657964155d5137c251a0d972d586",
+    "module": "tmp/833_database_performance/833_database_trace.py",
+    "module_sha256": "4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9",
+    "report": "agents/database/performance-20261025/report.md",
+    "verification": "agents/database/performance-20261025/verification.json",
+    "results": "same6 hook checks passed before/after clock fix; two bounded6-request toySQLite traces retained,not12 distincttests",
+    "production_change": false,
+    "fresh_mysql_http": "NOT_RUN; only root freshCI t44_diagnostics authorized",
+    "open_gates": "original formal cloud/independent/size failures remain",
+    "prompt_ref": "ROLE-database-PERFORMANCE-20261025-v1",
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394267281",
+    "evidence_seal": "agents/database/performance-20261025/evidence-seal.json"
+  },
+  "mysql_graph_diagnostics_20261025": {
+    "design": "9e0caf2",
+    "tool_source": "3e11b1a",
+    "runtime_owned_by": "backend",
+    "report": "agents/database/graph-lock-20261025/report.md",
+    "verification": "agents/database/graph-lock-20261025/verification.json",
+    "probe": "tmp/833_database_performance/833_mysql_lock_probe.py",
+    "probe_sha256": "46dc00a57ff79ec51c0d8bcc92dd32c5bdcb76e794c8c9417c89bbb2c42256fb",
+    "public_mysql_baseline": "run40169575755/head81c909;56 exact joins;48 measured/4warmup/4profile",
+    "actual_db_role_execution": "offline join + same8 local tool checks; MySQL probe NOT_RUN",
+    "production_change": false,
+    "shared_lock_candidate_admission": "NOT_PROVEN; owner/root freshCI and lock-order review required",
+    "prompt_ref": "ROLE-database-MYSQL-GRAPH-20261025-v1",
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394606519"
+  },
+  "mysql_point_lock_probe_20261025": {
+    "design": "24ca1db206f8d85afe4acc9913b0b7ea914e87cc",
+    "source": "da166fea52abc25089bbd7001ae50bc686c6a180",
+    "probe": "tmp/833_database_performance/833_mysql_lock_probe.py",
+    "probe_sha256": "bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4",
+    "report": "agents/database/graph-lock-20261025/point-lock-report.md",
+    "verification": "agents/database/graph-lock-20261025/point-lock-verification.json",
+    "runtime_owner_reference": {
+      "commit": "c8cea7e",
+      "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+      "verification": "read exact runtime source/hash, did not execute product"
+    },
+    "new_required_argument": "--expected-task-lock-shape batch|point",
+    "actual_result": "same8 local tool guards passed; MySQL/HTTP not run by DB role",
+    "production_change": false,
+    "prompt_ref": "ROLE-database-MYSQL-POINT-20261025-v1",
+    "tested_logic_source": "3dc86559623914b447b9b0ce1ff3116e3f0863b8",
+    "format_only_ast_equal": true,
+    "environment_contract": "two independent fresh CI jobs/services, same precise t44_diagnostics; other HTTP job t44_gate_http not allowed by this tool",
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394684218",
+    "final_github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394701321"
+  }
 }

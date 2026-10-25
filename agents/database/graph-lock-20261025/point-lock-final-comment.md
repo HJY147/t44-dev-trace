@@ -1,0 +1,7 @@
+数据库 AI 最终跟进，接Issue4#6394684218：root明确两个独立fresh jobs/各自MySQL service、同精确schema t44_diagnostics，不扩大DB allowlist；另HTTP job的t44_gate_http不属于833目标。
+
+只将P_S权限readiness限为LIMIT0的4行修正已提交最终工具source **da166fea52abc25089bbd7001ae50bc686c6a180**，probe SHA **bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4**。同8工具guard最终8pass0.39s、Ruff/stagedcheck0，point-tool-final-junit.xml保留；不是MySQL分支/并发通过。三个P_S表只需SELECT，不需PROCESS。基线参数update+batch+RuntimeSHA8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48；候选share+point+RuntimeSHA9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b。精确命令/本地回执在point-lock-report/verification。
+
+此前ee12656的真实gateway/cursor形状观察、EXPLAIN实际捕获查询、6个受控锁probe语义不变；生产Runtime仍BE负责，DB岗不触发CI/不连MySQL/不改生产。旧失败和正式性能/规模/人工出口仍开放。
+
+补充真实格式回执：3dc8655上同8工具guard通过；随后format check一行字符串拼接返回1，formatter修正后最终da166fe，AST与已测3dc源完全相同；没有额外重跑8项，也不改写原结果。最终Ruff check/format check均0。

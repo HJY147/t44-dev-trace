@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="0.400" timestamp="2026-10-25T14:52:13.732905+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_join_excludes_profile_and_preserves_source" time="0.006" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[duplicate]" time="0.000" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[unmatched]" time="0.000" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[operation]" time="0.000" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[dropped]" time="0.000" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[pending]" time="0.000" /><testcase classname="" name="test_join_refuses_incomplete_or_wrong_requests[cleanup]" time="0.000" /><testcase classname="" name="test_mysql_probe_refuses_local_environment_and_retains_failure" time="0.370"><failure message="TypeError: a bytes-like object is required, not 'str'">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-64/test_mysql_probe_refuses_local0')
+
+    def test_mysql_probe_refuses_local_environment_and_retains_failure(tmp_path):
+        output = tmp_path / "guard.json"
+        env = {**os.environ, "PYTHONPATH": str(ROOT / "backend"), "DATABASE_URL": "invalid://unused"}
+        env.pop("CI", None)
+        process = subprocess.run(
+            [
+                sys.executable,
+                str(DIRECTORY / "833_mysql_lock_probe.py"),
+                "--allow-fresh-mysql-ci",
+                "--expected-reader-lock",
+                "update",
+                "--expected-runtime-sha256",
+                "unused",
+                "--output",
+                str(output),
+            ],
+            cwd=ROOT,
+            env=env,
+            capture_output=True,
+            check=False,
+            timeout=20,
+        )
+        assert process.returncode != 0
+        result = json.loads(output.read_text())
+        assert result["failure"]["exception_class"] == "ValueError"
+        assert result["status"] == "failed retained"
+&gt;       assert "Fresh CI MySQL gate required" in process.stderr
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: a bytes-like object is required, not 'str'
+
+tmp/833_database_performance/833_mysql_tool_checks.py:141: TypeError</failure></testcase></testsuite></testsuites>
