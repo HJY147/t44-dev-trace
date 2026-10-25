@@ -182,3 +182,5 @@
 - 本轮只做文档/Git/JSON/哈希核对；没有app/测试/负载/CI/服务/浏览器/数据库或云操作。学生手写报告与人工12/3/5不代写/补造。Issue11精确POST/GET和阶段commit/push以实际回执补记，不预填。
 
 - 本轮14项轻量文档检查全部通过：22公开来源提交/字节/截止、JSON、原U024摘要未变且新稿不重复、3模板未执行、全部证据链接固定commit、冻结需规摘要、UTF-8/冲突标记与git diff --check；证据CAMPAIGN-20261025-document-checks.json，不当产品测试。
+
+- 实质材料实际commit/push e7e52c26456dbde63c15e8dd7a8744980e7a3921；Issue11评论6396341316由GitHub插件POST成功，随后GET按确切ID找到且全文逐字相同。回执CAMPAIGN-20261025-publication.json。以下仅补行政记录，不取新性能状态或扩展10:03截止。
