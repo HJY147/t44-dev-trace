@@ -356,3 +356,8 @@ ROLE-reviewer-DATABASE-PUBLIC-C-v1；新worktree codex/review-database-public-c�
 
 
 本阶段行政封档：技术报告/证据38e5858185e824cc0e62b177b54212a5b96d8f42已push；Issue12 COMMENT6394823088（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6394823088）特定全文GET exit0且body/issue逐字同。root最新转述第二轮40172242303/6738 completedSUCCESS、3原artifact待下载解析；本岗未审run，不预填19或任何具体casecount/verdict。普通product账本红/规模FAIL仍开放；技术准入不冒global/merge/product通过。角色行政metadata封条后释放槽给BE，未来829 v3是另scope，不提前读其内容。
+
+
+## 2026-10-25 829 PUBLIC v3功能控制限定审
+
+实际ROLE-reviewer-829-PUBLIC-v3-v1，只读manifest inventory PUBLIC，14项bytes/hash同787d37，13文本原字节快照；opaque bundle/integrity仅wholehash。未读private/Git/cases/journal/keys，不联系测试，不用开发结果作输入。旧cap50M/formal至少3M及触顶非正式、证据zlib+CommonCrypto帧HMAC/增量SHA/实际disk预算已代码闭环；native无fakeimage和实际projectID nonce/OAEP scope可中性衔接，但实际grant/build/TLS/provider未交。持续UTC新P2：control197-199 init一次换算，request224只mono；supervisor57采UTC、63较后mono，后续仅monoTimer。先design后一次822新模拟：真实Gate构造/request，fakeUTC由0→20s超过expiry10s而mono0/hard10，仍fake request1/200 complete/errornull，0socket/SUT/private，Python3.12.10arm64 exit0只表反例捕获，非OS调钟/实际TLS/supervisor测试；未跑19。作者PUBLIC自检保留15项error1两次及最终19绿声明，原因/私有raw未读。明确先发root当前functional不准入，root仅排PUBLIC缺陷待v4，不提前赋权。RSS1s直接runner采样非硬分配/aggregate、kill lag如实披露，不另加RSS需求。原v2/反例保持；不准入fault/performance、不发业务/产品/global通过。报告reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md，证据agents/reviewer/evidence/829-public-v3/，probe tmp/822_review_829_v3/822_utc_expiry_probe.py。

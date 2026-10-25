@@ -558,7 +558,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "精确C/812/6738源与编排限定审完成；首次setup红case0及普通CI账本红保留，真实第二轮未由本岗验证",
+  "implementation_status": "仅PUBLIC控制审与一次新零网络822反例；0独立SUT，非业务验收",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -650,8 +650,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/shared-project-point-c8c/static-audit.json",
-  "latest_review_report": "reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md",
+  "latest_review_evidence": "agents/reviewer/evidence/829-public-v3/static-audit.json",
+  "latest_review_report": "reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1454,6 +1454,11 @@
       "id": "ROLE-reviewer-SHARED-PROJECT-POINT-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-SHARED-PROJECT-POINT-v1.txt",
       "reason": "Design-first exact two-node source review then separate exact workflow/resource/grant admission; preserve source/test/performance boundaries and corrected fixed-nonce plan."
+    },
+    {
+      "id": "ROLE-reviewer-829-PUBLIC-v3-v1",
+      "actual_scope_excerpt": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v3-v1.txt",
+      "reason": "Distinguish absolute monotonic lifetime from continuously enforced UTC authorization; one new no-network counterexample, no development oracle/private access; disclose RSS scope without expanding requirements."
     }
   ],
   "questions": [],
@@ -1497,9 +1502,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "C_READY_FOR_FRESH_MYSQL_DEVELOPMENT_CI;EXACT_6738_SECOND_RUN_ADMITTED;NO_GLOBAL_OR_MERGE_PASS",
+  "review_outcome": "FUNCTIONAL_NOT_ADMITTED_829_DEADLINE_UTC_01;NO_FAULT_PERFORMANCE_OR_PRODUCT_ACCEPTANCE",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "review_target_sha": "787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388",
   "review_targets": [
     {
       "pr": 14,
@@ -1581,7 +1586,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "c8c两锁源码无新增阻断；812首次setup红保持；6738修订准入第二轮fresh开发执行",
+  "stage": "829 PUBLIC v3功能准入被持续UTC到期P2阻断；先封档释放供v4修订",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1600,7 +1605,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-25T07:21:47.451072+00:00",
+  "updated_at": "2026-10-25T07:33:33.095910+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2570,7 +2575,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "Git commit SHA1; workflow separately pinned by SHA1",
+  "review_target_kind": "PUBLIC controller freeze SHA256, not application Git SHA",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -2753,5 +2758,45 @@
     "technical_evidence_commit": "38e5858185e824cc0e62b177b54212a5b96d8f42",
     "role_release": "static source and exact workflow technical reviews sealed; no independent CI artifact audit; return slot for backend ledger migration"
   },
-  "latest_workflow_review_report": "reports/reviews/lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md"
+  "latest_workflow_review_report": "reports/reviews/lock-diagnostics-6738c07b150da0df8554ba3b90d52e0cbc101fe6.md",
+  "previous_phase_before_829_PUBLIC_v3_review": {
+    "stage": "c8c两锁源码无新增阻断；812首次setup红保持；6738修订准入第二轮fresh开发执行",
+    "implementation_status": "精确C/812/6738源与编排限定审完成；首次setup红case0及普通CI账本红保留，真实第二轮未由本岗验证",
+    "review_target_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "review_target_kind": "Git commit SHA1; workflow separately pinned by SHA1",
+    "review_outcome": "C_READY_FOR_FRESH_MYSQL_DEVELOPMENT_CI;EXACT_6738_SECOND_RUN_ADMITTED;NO_GLOBAL_OR_MERGE_PASS",
+    "latest_review_report": "reports/reviews/shared-project-point-c8cea7e82805de5283ce67501769fa9a4efc1047.md",
+    "latest_review_evidence": "agents/reviewer/evidence/shared-project-point-c8c/static-audit.json"
+  },
+  "829_PUBLIC_v3_review": {
+    "public_freeze_sha256": "787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388",
+    "report": "reports/reviews/829-public-v3-787d37ec22e07e03cbb103820f86c3d903c0cb5439a50cd5bcf98555092b1388.md",
+    "evidence": "agents/reviewer/evidence/829-public-v3/static-audit.json",
+    "public_inventory_checks": 14,
+    "PUBLIC_text_snapshots": 13,
+    "opaque_access": "wholehash only",
+    "old_cap_and_wholefile_memory_P2": "closed within code boundary",
+    "absolute_mono_deadline_abort_supervisor": "substantial repair, continuous UTC remains blocked",
+    "P2": "829-DEADLINE-UTC-01",
+    "probe": "tmp/822_review_829_v3/822_utc_expiry_probe.py",
+    "design": "agents/reviewer/evidence/829-public-v3/probe-design.md",
+    "new_probe_runs": 1,
+    "probe_exit": 0,
+    "actual_socket_calls": 0,
+    "SUT_requests": 0,
+    "OS_clock_changed_real_TLS_or_supervisor_launched": false,
+    "existing19_selfchecks_rerun": false,
+    "selfcheck_results": "PUBLIC owner reports retained15/error1 twice then19green; no private raw read",
+    "native_scope_handoff": "static neutral identity/actual IDs/OAEP plausible; actual grant/provider/build/TLS not delivered or tested",
+    "RSS_note": "1s sampled runnerPID only, not hard allocation or aggregate; disclosed, not extra blocker",
+    "private_or_other_independent_or_development_inputs_read": false,
+    "contacted_testing_agent": false,
+    "business_oracle_injection": false,
+    "findings_relayed_to_root_only": true,
+    "root_queued_PUBLIC_only_v4_correction": true,
+    "technical_conclusion_relayed_before_admin": true,
+    "functional_admitted": false,
+    "fault_performance_product_global_APPROVE": false,
+    "prompt_ref": "ROLE-reviewer-829-PUBLIC-v3-v1"
+  }
 }
