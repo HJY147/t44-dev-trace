@@ -333,11 +333,11 @@ def run(args, root, report):
             fields = (
                 {"basis": "Resume intake", "evidence": EVIDENCE}
                 if blocked
-                else {"reason": "Synthetic block", "responsibility_stage": 1}
+                else {"reason": "Synthetic block", "responsibility_stage": 1, "evidence": EVIDENCE}
             )
             task = send(
                 "transitionTask",
-                token=tokens["developer"],
+                token=tokens["manager"],
                 project_id=pid,
                 task_id=task["id"],
                 body={
