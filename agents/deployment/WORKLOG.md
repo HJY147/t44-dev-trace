@@ -537,3 +537,10 @@
 root随后明确只允许新round2 idle API/consumer先启动建立身份及采样，functional不触碰，400负载仍等functional结束后的另准入。08:39:47真实start receipt16256595c87a44f9a486be2d2dcca599：supervisor52829/七worker52847,52849,52850,52851,52852,52854,52855/tracker52846，consumer52897、appguardian52821；严格CA/IP401，scheduler未启动。正式native-build-w7.json一次新冻结SHA8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf，10真实应用process，旧prestart bfe6…不改。再次curl401原始headers/body及receipt保留，不发登录或性能请求。
 
 773bfd7新增只读interval-metrics，7项纯合成单位/真实delta/缺失/复用guard0.02s与Ruff绿；真实只读ps格式另以7980与自有API验证。08:46:05起sampler56656以1秒JSONL记录api/consumer/scheduler/broker/mysql/generator，CPU=累计user+system时间差/monotonic墙钟差，100=一CPU；首点/缺失/未注册为null，不插补。API七workers+parent+tracker聚合，RSS求和明示共享页重复；broker含EPMD，MySQL7980明确shared全进程非schema独占，generator只接root明确PID不读独立目录/发现子进程。真实第二API点08:46:06 interval1.008687709s/CPU0.9914%/RSS1043152896B已留interface。09:09自动停止及固定interval-final.json最终receipt，collection成功与coverage分开；此刻sampler仍运行、generator尚未注册，不预填完整覆盖/正式性能/最终停止。原10秒guardian raw逐字保留，未改产品源码或读取keys/admin/私有用例。
+
+
+## SUFFICIENT-CAMPAIGN-IDLE-READY
+
+- root重新给一次充足有界campaign，aa73585设计→adc5197显式固定F7/R3源helper派生两新namespace；原F7/R3正常停止及完整资源/true-false保留，旧hash不变，24397首次false后续真free才复用，sharedMySQL/generator未信号。
+- F09:30:58 API4/consumer、P09:31:04 API7/consumer及各新broker/guardian真idle/严格CA/IP401；actual nativebuild F8f7ac7…/Pe88e88…均新冻结，C8/archivec393同源，scope初始pending。共用新spawn10:00含动态scope，F10:20:30/10:22/10:25、P10:30:30/10:32/10:35，P interval74003/10:29。
+- root真实preflight和独立F≤9:45/P≤10:15另phase，不并发施压，部署未发case/负载/seed。四项纯campaign guard0.25s及Ruff/diff-check绿；actual capability/停止原件/新prompt在campaign目录，运行中/正式结果与最终stop不预填，行政Issue后补即释放槽。

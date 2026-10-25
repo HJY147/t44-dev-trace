@@ -1,0 +1,133 @@
+{
+  "round": "new-performance-round3",
+  "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "api_workers": 7,
+  "database_exact": "t44_p829c_20261025",
+  "round2_helper_commit": "9b578909e9f39f2624f02259b2b999c4ca7b002a",
+  "round2_helper_sha256": "c00741fdd2ba112c311baaa14eadd7bf65d13e83b71eb0e3d82d6ce56ca413e8",
+  "metrics_template_commit": "773bfd7d0d240a646ed8b739f6d86331d9c4fdb0",
+  "metrics_template_sha256": "ba94524cbda4c12d151dfde552513e5d903e41c2141ddd28b9e08d867ae61b8f",
+  "first_start_deadline_utc": "2026-10-25T09:20:00Z",
+  "application_stop_utc": "2026-10-25T09:40:30Z",
+  "broker_stop_utc": "2026-10-25T09:42:00Z",
+  "force_stop_utc": "2026-10-25T09:45:00Z",
+  "interval_sampler_stop_utc": "2026-10-25T09:39:00Z",
+  "old_round_files_grants_changed": false,
+  "files": {
+    "isolated-build.py": {
+      "old_sha256": "7987573e115492f343faffcb5bd86aca6867524b9367a3898bef1a1904c70ab3",
+      "new_sha256": "fc68a24889634d9bd420f0f1dd83ec4d74009d2ab30bbb6b1dabcbc06043d59f",
+      "allowed_changes": [
+        {
+          "old": "2026-10-25T09:10:30Z",
+          "new": "2026-10-25T09:40:30Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated-application.py": {
+      "old_sha256": "f7e4bf233bd8a8ab2c6c134304db3061323d63521e6af7a6938afe14ab5d1bdb",
+      "new_sha256": "700bb2beb7d1bb131f98a830856b18002a5bcacea7d14519641e86bb23326b45",
+      "allowed_changes": [
+        {
+          "old": "native-performance-round2-20261025",
+          "new": "native-performance-round3-20261025",
+          "occurrences": 1
+        },
+        {
+          "old": "performance-db/application-env.json",
+          "new": "performance-db-round3/application-env.json",
+          "occurrences": 1
+        },
+        {
+          "old": "t44_p829_20261025",
+          "new": "t44_p829c_20261025",
+          "occurrences": 1
+        },
+        {
+          "old": "round2 09:12 broker guardian",
+          "new": "round3 09:42 broker guardian",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated.py": {
+      "old_sha256": "c165f950cc0f4200129299d440d227219bfa09da0623dcc973b0d1edeca35805",
+      "new_sha256": "b361524875e105f205182cd96ce8213a0b6dd4e019e14a532a36ccdfcce06dab",
+      "allowed_changes": [
+        {
+          "old": "native-performance-round2-20261025",
+          "new": "native-performance-round3-20261025",
+          "occurrences": 2
+        },
+        {
+          "old": "performance_round2_20261025_",
+          "new": "performance_round3_20261025_",
+          "occurrences": 1
+        },
+        {
+          "old": "datetime(2026, 10, 25, 9, 12, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 9, 42, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "datetime(2026, 10, 25, 9, 15, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 9, 45, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "datetime(2026, 10, 25, 9, 0, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 9, 20, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T09:12:00Z",
+          "new": "2026-10-25T09:42:00Z",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T09:15:00Z",
+          "new": "2026-10-25T09:45:00Z",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T09:00:00Z",
+          "new": "2026-10-25T09:20:00Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "fault-control.py": {
+      "old_sha256": "6f719f52a4b190a9038ad816a84cd7e7c3fff3d41ce9561639cb6d373e87b17d",
+      "new_sha256": "6f719f52a4b190a9038ad816a84cd7e7c3fff3d41ce9561639cb6d373e87b17d",
+      "allowed_changes": []
+    },
+    "scheduler-control.py": {
+      "old_sha256": "9b88cbcedc79112cf6db60d428f04b2b7683593a06db8e869e959b03a73a2eac",
+      "new_sha256": "9b88cbcedc79112cf6db60d428f04b2b7683593a06db8e869e959b03a73a2eac",
+      "allowed_changes": []
+    },
+    "interval-metrics.py": {
+      "old_sha256": "ba94524cbda4c12d151dfde552513e5d903e41c2141ddd28b9e08d867ae61b8f",
+      "new_sha256": "ffd49bd4aa8402fcdd2a2d2e356dcd4760c3962a3e8365692e854b224f9b00d9",
+      "allowed_changes": [
+        {
+          "old": "datetime(2026, 10, 25, 9, 9, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 9, 39, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "09:09UTC deadline",
+          "new": "09:39UTC deadline",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T09:09:00Z",
+          "new": "2026-10-25T09:39:00Z",
+          "occurrences": 1
+        }
+      ]
+    }
+  },
+  "generated_main_executed": false
+}
