@@ -1,0 +1,9 @@
+{
+  "id": 6394397897,
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394397897",
+  "body": "Agent-Role: backend\nPrompt-Ref: ROLE-backend-DIAG-CLEANUP-20261025-v1\n\n执行前限定审核发现DIAG-CLEANUP-01，本阶段只修834诊断清理，生产/冻结/旧78bb CPU raw与E不改。最终source124785d89e568dd5dddeb56ef9216ed2ccd1883d，driver SHA e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49；阶段E9f67ce0，分支codex/backend-diagnostic-cleanup-20261025。\n\n先设计bc87197、冻结窄测试d167；旧run两个真实preinstall目标红：fixture创建失败不close、next主异常被snapshot异常盖住。b079改requests先存/installed标志/四清理步骤独立尝试/保主异常/清理错不绿，原10绿保持。随后构造前失败会被误标NOT_REQUESTED，先实际1红，再124785d保留requested意图，最终同文件11通过（不是10+11累计）。测试调用真实run但全部操作/fixture/observer为内存替身，真实API/DB库导入禁止，无DB/HTTP/服务/云或56/35矩阵重跑。\n\nStages、fixture、observer_from、main AST未改；测量body只增加install成功标志和移动初始化入try。清理错误仅phase/类名，close本身失败会记录并使成功体失败，不虚称总能关闭。root request/workflow需改用上述新SHA，等待限定复审；旧150c或初版6f7c不可冒本次准入源。\n\n真实检查边界：两源Ruff/format通过；原始pytest loader-red.log/XML含E后空白，全量diff-check exit2，连续工具单元仍提交9f67。原字节保留，9个明列源/说明路径实际diff-check0，另存diff-check-boundary.json，不声称全量绿。原件/新旧JUnit/verification-v2与evidence-seal-v2均在agents/backend/performance-20261025-cleanup，report-v2为现行入口。操作者AI，不记为学生亲自测试或性能修复；6316超限及云原失败继续保持。",
+  "created_at": null,
+  "updated_at": null,
+  "exact_body_equal": true,
+  "method": "GitHub connector all-page Issue3 comments then exact ID selection"
+}
