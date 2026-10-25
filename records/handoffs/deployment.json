@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-reuse-package-SIGPIPE-fixed-bundle-CI-ready",
+  "stage": "cloud-reuse-crypto-images-proven-app-prepare-local-ready",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2335,13 +2335,28 @@
     "root_reported_both_release06saved": true,
     "child_cloud_UI_or_lifecycle_operated": false,
     "minimum_runtime_Python": "3.10 for helpers; pinned official3.12 image for frozen tools",
-    "next": "rootdispatch/buildartifact; private TLS/worker/timer materializer still pending",
+    "next": "root app prepare/arm/infra/migrate/idle and load15m purediagnostic container",
     "packages_pipefail_fix": {
       "evidence": "agents/deployment/cloud-reuse-20261025/packages-pipefail-fix.json",
       "script_sha256": "c2c32139baeda1efa6db503487800d47f6c92d2f77b0e11e36659bba4a39b529",
       "original_failure_log_preserved": true,
       "offline_old141_new0_verified": true,
       "actual_cloud_retry_result": null
-    }
+    },
+    "image_proof": "deployment/cloud-reuse/image-proof.py",
+    "v2_accept_loaded": "deployment/cloud-reuse/image-bundle-v2.py",
+    "crypto_guards": "13passed0.05s",
+    "root_actual_both_nodes_crypto_summary": "agents/deployment/cloud-reuse-20261025/image-proof-root-summary-projection.json",
+    "root_crypto_raw_complete_sha256": "30b1ca48f152cae797862319cdda80c0a0b65ed5af32acf4b18ea55d531cc8d0",
+    "root_crypto_raw_bytes": 50297,
+    "complete_cloud_crypto_raw_recovered_by_child": false,
+    "app_prepare": "deployment/cloud-reuse/app-campaign.py",
+    "app_steps": "deployment/cloud-reuse/APP-STEPS.md",
+    "app_local_guards": "6passed0.04s",
+    "app_cloud_execution_or_start": false,
+    "temporary_public_HTTP_scripts": "locally prepared; not used after root UI transfer issue",
+    "root_packaging_CI_run": 40193055249,
+    "root_actual_package_retry_succeeded_both": true,
+    "root_actual_935_image_transport_proven_both": true
   }
 }

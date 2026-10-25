@@ -470,3 +470,5 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 离线镜像CI路线已实现但尚未运行：准确source/context/hash、5官方固定镜像与2app镜像实际ID、manifest、save/gzip/artifact、加载完整校验与neverpull overlay，细节见cloud-reuse README。8项离线安全guard通过（0.13s），不能等同真实Docker build/load。root relay app16CPU/Ubuntu22/Python3.10匹配准备脚本；06:00延期成功属于rootUI实核转述，不作为本岗云执行。
 
 Ubuntu22首轮实际失败由root转述：app invoke20s exit141，apt官方update下载成功但无Candidate marker；本岗只读获授权的单一app-packages-first-failure.log，3502bytes/SHA24666301...，末Reading package lists.../0Candidate，原raw保留。旧awk找到Candidate就exit，在pipefail下早关管道；用2.4MBsynthetic policy真实复现旧管道141，改成只输出第一次但完整消费后0，2项guard0.10s绿；同时已有Docker的dpkg-query|grep-q改完整capture。新脚本4501bytes/SHA c2c32139...、bash-n绿；没有以离线复现夸称云端精确失败指令trace（raw未含trace），未操作dpkg/云或释放重买。root可同机执行新脚本，真实重跑结果待root。
+
+Docker29 identity语义问题已通过严格OCI链解决环境证明，非忽略ID：原CIconfig SHA、实际manifestDescriptor SHA、所有layer/解压diffIDs和labels/架构逐项cryptoproven。13项离线guard与root真实双机all7summary分开，完整50k原raw未由部署回收审阅。新V2accept不重复load、旧0a1/3c599/7905保持；设计见cloud-reuse-20261025/image-proof-design。App独立F/P Compose/strictTLS/新随机DB/env/持久timer本地6guard，操作步骤见deployment/cloud-reuse/APP-STEPS.md，真实app执行仍待root，不预填业务/coverage/600。
