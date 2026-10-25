@@ -376,8 +376,11 @@ def app_factory():
         for name, value in HASHES.items()
     ):
         raise ValueError("Product source fingerprint mismatch; not full image attestation")
-    settings = Settings.from_env()
-    mysql = settings.mysql_settings()
+    try:
+        settings = Settings.from_env()
+        mysql = settings.mysql_settings()
+    except Exception:
+        raise ValueError("Invalid diagnostic database configuration") from None
     database = os.environ["T44_DIAG_DATABASE"]
     if database != "t44c_r9diag935_p" and not re.fullmatch(
         r"t44_diag810_[A-Za-z0-9_]{1,40}", database
