@@ -180,7 +180,7 @@ def project(environment):
     pid = send(env, "createProject", expect=201, body={"name": "Finite gate HTTP case"})["data"][
         "id"
     ]
-    for role, roles in (("developer", [2]), ("reviewer", [1, 3])):
+    for role, roles in (("developer", [2]), ("reviewer", [1, 2, 3])):
         send(
             env,
             "addProjectMember",
@@ -509,7 +509,10 @@ def test_rework_rechecks_capacity_or_manager_after_wait(project, monkeypatch, wr
         body = (
             {
                 "expected_version": iteration["version"],
-                "plan": {**iteration["plan"], "capacity": []},
+                "plan": {
+                    **iteration["plan"],
+                    "capacity": [{"user_id": env.users["reviewer"], "available_hours": 40}],
+                },
                 "reason": "Remove rolled-back owner capacity",
                 "evidence": EVIDENCE,
             }

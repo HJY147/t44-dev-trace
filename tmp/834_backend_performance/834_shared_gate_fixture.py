@@ -41,7 +41,10 @@ def test_http_race_fixture_uses_valid_real_workflow_and_original_errors(writer):
                 iteration_id=iteration["id"],
                 body={
                     "expected_version": iteration["version"],
-                    "plan": {**iteration["plan"], "capacity": []},
+                    "plan": {
+                        **iteration["plan"],
+                        "capacity": [{"user_id": env.users["reviewer"], "available_hours": 40}],
+                    },
                     "reason": "Remove rolled-back owner capacity",
                     "evidence": gate.EVIDENCE,
                 },
