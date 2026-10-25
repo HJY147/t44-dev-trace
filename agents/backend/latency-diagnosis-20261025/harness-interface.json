@@ -1,0 +1,33 @@
+{
+  "status": "PROPOSED_NOT_IMPLEMENTED_OR_EXECUTED",
+  "product_source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "planned_own_source_directory": "tmp/810_backend_latency",
+  "product_patch_or_live_access_authorized_by_this_file": false,
+  "neutral_packet_required_from_root": {
+    "identity": ["product_sha", "product_files_manifest_sha256", "dependency_lock_sha256", "harness_sha256"],
+    "private_environment_reference_only": ["new_schema_exact", "dedicated_schema_user", "private_DSN_file", "expected_host", "expected_port"],
+    "database_scope": "A newly root-authorized diagnostic schema/user, distinct from every existing functional/performance schema; root migrates first. No implicit local/private fallback, no protected old schema/PID discovery.",
+    "runtime": ["TLS_CA_public_file", "server_IP_or_hostname", "new_API_port", "workers_7_baseline", "owned_output_directory", "UTC_and_monotonic_stop_deadline"],
+    "fixture_public_metadata": ["fixture_source_and_seed", "created_via_original_API_or_approved_owner_tool", "operation_counts", "synthetic_task_ids_and_versions", "target_predecessor_degree", "legal_block_unblock_cycle", "existing_dedup_escalation_event_and_schedule_versions", "private_user_and_service_session_file"],
+    "fixture_scale": "Start with 3 users, one project and 20 synthetic tasks for phase cost. Only later root-approved equal inventory 40 projects/6000 tasks/9000 dependencies/15000 review+decision rows for contention; never copy private acceptance construction."
+  },
+  "entrypoint": "Diagnostic ASGI wrapper around the original create_app plus original owner Factory; product bytes unchanged. Separate root launch grant required.",
+  "observation_points": [
+    "Outer ASGI ingress before request body consumption",
+    "Body-consumption end and framework worker submission/start",
+    "Original sync endpoint start/end with actual worker thread CPU",
+    "Runtime prepare/main/business/precommit validation, API request/response schema and wire",
+    "Original Rows/session/cursor/engine acquire and commit inclusive nested phases with checked-out gauges",
+    "JSONResponse.render start/end separately",
+    "ASGI response-start and final-body send completion, which is not client TCP acknowledgment"
+  ],
+  "record_fields": ["request_id", "fixed_operation_id", "diagnostic_sample_flag", "worker_pid", "UTC", "perf_counter_ns", "thread_time_ns", "parent_span_id", "inclusive_and_direct-child-exclusive_duration", "statement_verb_and_known_table_only", "connection_id_for_read_only_wait_correlation", "status_and_exception_class_only"],
+  "recording_limits": "Per-worker bounded sampled records, e.g. at most64; separate few cProfile samples, never profile every load request; atomic new files, explicit close/flush/error reporting. No tokens, DSNs, SQL text/binds, payloads or frozen operator source.",
+  "new_read_only_DB_wait_observation": "Only root-admitted new schema connections, low-privilege P_S data_locks/data_lock_waits/threads correlation; no old shared server polling now.",
+  "minimal_later_execution": [
+    "1 client, 20 requests for each of getTask, validateContractPayload, legal transitionTask and existing-event createEscalation; setup/warmup/profile-only excluded from normal timing",
+    "One paired same-server co-located versus separate-generator short developer diagnostic, fixed source/deps/fixture/mix/TLS/recording/workers; observe40 then400 clients if lower level succeeds",
+    "Choose one tuning pair only after measured dominant wait or CPU; no blind core/worker/pool matrix",
+    "Formal400-client600s/zero-error/P95 acceptance requires a new independent freeze/admission and complete evidence, not reuse of developer samples"
+  ]
+}

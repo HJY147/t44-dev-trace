@@ -1,0 +1,480 @@
+{
+  "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "inputs": {
+    "public_result": {
+      "path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/records/acceptance/814-performance-v8-20261025/performance-result.round8.PUBLIC.json",
+      "sha256": "561f333e8283e4ea8a085a7362990052a49870797b3bb55bf1202bc932fce9a9"
+    },
+    "interval_interface": {
+      "path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/agents/deployment/native-performance-20261025/round8/interval-interface.json",
+      "sha256": "513e65d81ebad27ee6ca47f38f6f5398742891531ad0ba0e1c95cae51b50e133"
+    },
+    "root_interval_final": {
+      "path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-performance-campaign8-20261025/runs/performance_campaign8_20261025_81ab764b2e104b0d/interval-final.json",
+      "sha256": "ba630d9f7d1aea65f92fe103560e002d7608f6a752beac4be8520422a2a2d8cf"
+    },
+    "root_raw": {
+      "path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-performance-campaign8-20261025/runs/performance_campaign8_20261025_81ab764b2e104b0d/state/interval-resources-3cf573d203234a86bcfed3f652ffc27f.jsonl",
+      "bytes": 8301045,
+      "sha256": "3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9",
+      "rows": 16284
+    }
+  },
+  "original_independent_mirror": {
+    "sha256": "e96d21fd1be734867c3dd6687dad5b9fca91f81474b52dd3d35dfdbeed84bd97",
+    "bytes": 6550785,
+    "coverage_status_unchanged": "NOT_PROVEN; all six resources lack the required final edge coverage",
+    "not_read_or_repaired": true
+  },
+  "window": {
+    "begin_utc": "2026-10-25T10:46:39.220422+00:00",
+    "end_utc": "2026-10-25T10:56:39.220422+00:00",
+    "seconds": 600.0
+  },
+  "method": {
+    "selection": "Sample endpoint UTC lies inside PUBLIC steady window; boundary intervals are not reconstructed",
+    "mean": "sum(cpu_percent * original interval_seconds) / sum(original interval_seconds)",
+    "p95": "descriptive nearest-rank of resource CPU samples, not request latency",
+    "cpu_100_means_one_core": true,
+    "null_not_zero": true,
+    "no_interpolation_or_zero_fill": true,
+    "rss_sum_is_not_unique_memory": true,
+    "mysql_whole_shared_process_not_schema_attribution": true
+  },
+  "resources": {
+    "api": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 398.6186176277683,
+      "cpu_percent_median": 439.375234218553,
+      "cpu_percent_p95_nearest_rank": 491.3024427985407,
+      "cpu_percent_min": 38.980301928170455,
+      "cpu_percent_max": 527.0661941348231,
+      "sampled_group_rss_max_bytes": 1524940800,
+      "observed_pid_sets": [
+        [
+          99786,
+          99787,
+          99788,
+          99789,
+          99790,
+          99791,
+          99792,
+          99793,
+          99794
+        ]
+      ]
+    },
+    "generator": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 78.4753840824663,
+      "cpu_percent_median": 81.02519006929569,
+      "cpu_percent_p95_nearest_rank": 109.99606302013105,
+      "cpu_percent_min": 5.99696952740035,
+      "cpu_percent_max": 129.65794392196818,
+      "sampled_group_rss_max_bytes": 161546240,
+      "observed_pid_sets": [
+        [
+          16674
+        ]
+      ]
+    },
+    "mysql": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 74.03036232717399,
+      "cpu_percent_median": 77.1105834467133,
+      "cpu_percent_p95_nearest_rank": 87.65017718860446,
+      "cpu_percent_min": 9.994949212333918,
+      "cpu_percent_max": 99.71319155600538,
+      "sampled_group_rss_max_bytes": 460259328,
+      "observed_pid_sets": [
+        [
+          7980
+        ]
+      ]
+    },
+    "consumer": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 9.741714345588097,
+      "cpu_percent_median": 9.388783722537436,
+      "cpu_percent_p95_nearest_rank": 17.979964331535157,
+      "cpu_percent_min": 0.0,
+      "cpu_percent_max": 23.026016520826275,
+      "sampled_group_rss_max_bytes": 60784640,
+      "observed_pid_sets": [
+        [
+          99836
+        ]
+      ]
+    },
+    "scheduler": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 11.771724281075917,
+      "cpu_percent_median": 13.973082207974304,
+      "cpu_percent_p95_nearest_rank": 22.958555994955613,
+      "cpu_percent_min": 0.0,
+      "cpu_percent_max": 50.97388011735306,
+      "sampled_group_rss_max_bytes": 149127168,
+      "observed_pid_sets": [
+        [
+          3800
+        ]
+      ]
+    },
+    "broker": {
+      "endpoint_rows": 600,
+      "numeric_cpu_rows": 600,
+      "null_cpu_rows": 0,
+      "status_counts": {
+        "observed": 600
+      },
+      "unique_sample_keys": 600,
+      "first_sample_utc": "2026-10-25T10:46:39.736986+00:00",
+      "last_sample_utc": "2026-10-25T10:56:38.733320+00:00",
+      "max_timestamp_gap_seconds": 1.089632,
+      "numeric_interval_seconds_sum": 599.9970634169877,
+      "cpu_percent_interval_weighted_mean": 2.1716772955177572,
+      "cpu_percent_median": 1.9992873004684828,
+      "cpu_percent_p95_nearest_rank": 4.023103844519687,
+      "cpu_percent_min": 0.0,
+      "cpu_percent_max": 5.021135843737195,
+      "sampled_group_rss_max_bytes": 45367296,
+      "observed_pid_sets": [
+        [
+          99438,
+          99433
+        ]
+      ]
+    }
+  },
+  "reset_window_neutral_samples": [
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "api",
+      "cpu_percent": 463.91583693749664,
+      "memory_bytes": 1431339008,
+      "status": "observed",
+      "pid_list": [
+        99786,
+        99787,
+        99788,
+        99789,
+        99790,
+        99791,
+        99792,
+        99793,
+        99794
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "consumer",
+      "cpu_percent": 2.0082936663957374,
+      "memory_bytes": 55296000,
+      "status": "observed",
+      "pid_list": [
+        99836
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "scheduler",
+      "cpu_percent": 16.06634933116875,
+      "memory_bytes": 73940992,
+      "status": "observed",
+      "pid_list": [
+        3800
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "broker",
+      "cpu_percent": 0.0,
+      "memory_bytes": 44892160,
+      "status": "observed",
+      "pid_list": [
+        99438,
+        99433
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "mysql",
+      "cpu_percent": 77.31930615624944,
+      "memory_bytes": 435011584,
+      "status": "observed",
+      "pid_list": [
+        7980
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:30.731944Z",
+      "resource_id": "generator",
+      "cpu_percent": 97.40224282020966,
+      "memory_bytes": 139542528,
+      "status": "observed",
+      "pid_list": [
+        16674
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "api",
+      "cpu_percent": 452.6914907450729,
+      "memory_bytes": 1431699456,
+      "status": "observed",
+      "pid_list": [
+        99786,
+        99787,
+        99788,
+        99789,
+        99790,
+        99791,
+        99792,
+        99793,
+        99794
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "consumer",
+      "cpu_percent": 10.992508605288755,
+      "memory_bytes": 55296000,
+      "status": "observed",
+      "pid_list": [
+        99836
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "scheduler",
+      "cpu_percent": 11.991827569406432,
+      "memory_bytes": 73940992,
+      "status": "observed",
+      "pid_list": [
+        3800
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "broker",
+      "cpu_percent": 3.9972758564685735,
+      "memory_bytes": 44892160,
+      "status": "observed",
+      "pid_list": [
+        99438,
+        99433
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "mysql",
+      "cpu_percent": 83.94279298581094,
+      "memory_bytes": 436273152,
+      "status": "observed",
+      "pid_list": [
+        7980
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:31.732622Z",
+      "resource_id": "generator",
+      "cpu_percent": 95.93462055525146,
+      "memory_bytes": 140165120,
+      "status": "observed",
+      "pid_list": [
+        16674
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "api",
+      "cpu_percent": 429.1376995712487,
+      "memory_bytes": 1439105024,
+      "status": "observed",
+      "pid_list": [
+        99786,
+        99787,
+        99788,
+        99789,
+        99790,
+        99791,
+        99792,
+        99793,
+        99794
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "consumer",
+      "cpu_percent": 13.00417271427994,
+      "memory_bytes": 55296000,
+      "status": "observed",
+      "pid_list": [
+        99836
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "scheduler",
+      "cpu_percent": 25.008024450537853,
+      "memory_bytes": 73940992,
+      "status": "observed",
+      "pid_list": [
+        3800
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "broker",
+      "cpu_percent": 2.0006419560429856,
+      "memory_bytes": 44892160,
+      "status": "observed",
+      "pid_list": [
+        99438,
+        99433
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "mysql",
+      "cpu_percent": 68.02182650549207,
+      "memory_bytes": 434847744,
+      "status": "observed",
+      "pid_list": [
+        7980
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:32.732300Z",
+      "resource_id": "generator",
+      "cpu_percent": 105.03370269226012,
+      "memory_bytes": 141066240,
+      "status": "observed",
+      "pid_list": [
+        16674
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "api",
+      "cpu_percent": 452.3320566235951,
+      "memory_bytes": 1440284672,
+      "status": "observed",
+      "pid_list": [
+        99786,
+        99787,
+        99788,
+        99789,
+        99790,
+        99791,
+        99792,
+        99793,
+        99794
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "consumer",
+      "cpu_percent": 7.988204090482794,
+      "memory_bytes": 55296000,
+      "status": "observed",
+      "pid_list": [
+        99836
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "scheduler",
+      "cpu_percent": 19.970510226207693,
+      "memory_bytes": 73940992,
+      "status": "observed",
+      "pid_list": [
+        3800
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "broker",
+      "cpu_percent": 1.997051022620876,
+      "memory_bytes": 44892160,
+      "status": "observed",
+      "pid_list": [
+        99438,
+        99433
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "mysql",
+      "cpu_percent": 81.87909192742133,
+      "memory_bytes": 428900352,
+      "status": "observed",
+      "pid_list": [
+        7980
+      ]
+    },
+    {
+      "utc": "2026-10-25T10:51:33.733776Z",
+      "resource_id": "generator",
+      "cpu_percent": 82.87761743875916,
+      "memory_bytes": 141033472,
+      "status": "observed",
+      "pid_list": [
+        16674
+      ]
+    }
+  ],
+  "acceptance_result_overridden": false,
+  "formal_performance_groups_unchanged": 0,
+  "root_cause_proven": false
+}

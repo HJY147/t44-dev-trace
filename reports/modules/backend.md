@@ -349,3 +349,8 @@ root先准入修订，4dc0ca6勘误后C c8cea7e82805de5283ce67501769fa9a4efc1047
 ### 点锁开发查询账本test-only适配
 
 C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注释；原deps0/1/2和所有其它断言不动，AST恢复唯一参数后全文件同。原本机3参数1红2绿→同3+邻接2=5绿，root原40171891359 CI红gzip不改。Runtime仍9e0d770…/产品零改，原cloc6326超1226FAIL沿用无新计量；其它同类SQL账本静态核无新数需迁移，不运行完整CI或MySQL。另只引用root发表40172242303开发6+6+7 JSON终态，非性能或全局无死锁。报告agents/backend/point-lock-ledger-20261025/report.md；root另fullCI/审核/集成。
+
+
+### 935 round8只读延迟诊断
+
+新worktree基935，3e09设计→1013df0标准库离线raw统计，产品0改；报告agents/backend/latency-diagnosis-20261025/report.md。root中性完整raw8301045B/3821564c…与final匹配，每组steady600采样，API约3.986核/gen0.785/MySQL共享0.740，不冒全机满/无DB锁；原独立mirror缺尾与formal0不重判。Server-Timing严格漏handler前等待和最后wire/render/send，已交root配对残差量化第一观测点，通用strictTLS canary与新schema四路径stage harness最小计划/packet另列，未执行。旧seq非935正式根因，list热点非round8；16/32仅条件容量对照、64无当前依据，不能盲升连接池/worker。无app/负载/DB访问/云/新agent/私件或operator联系，无新cloc/性能通过，作者AI非学生亲历。

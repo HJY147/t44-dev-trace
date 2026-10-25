@@ -574,3 +574,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - C同3+原DEVELOPING UNBLOCK/REWORK依赖guard2=5绿/零fail/error/skip，Ruff/format绿；恢复唯一tasks参数后整个986 AST同，产品根完全同0615017，Runtime9e0d770…不变。静态分类核其它985 preflight无依赖K1、只读契约/历史页、底层Rows/schema/seed及类别Counter，不盲改任何其它数字；本岗无完整suite/MySQL/CI/云重跑。
 - root原CI日志gzip逐字副本/raw与gzip双SHA保留，新本机红log/XML无损gzip+roundtrip与原文本ignored archive，不strip。只读明确发表40172242303/extracted三JSON，记录6baseline/6candidate/7HTTP名称/终态/SHA，属root开发运行不算本岗复测/19验收/性能或全局无死锁，不读829独立私件。
 - 产品同字节沿既有cloc6326超1226FAIL、无新计量或节省；报告/命令/AST/原件agents/backend/point-lock-ledger-20261025，后续准确新源fullCI及审核集成归root，旧红不改，作者执行者后端AI非学生手写。
+
+
+## 935 / round8离线延迟定位（无新SUT运行）
+
+- root只读轻离线派工后新Desktop worktree/branch基935，3e09c86先设计/prompt。仅认证round8.PUBLIC及部署round8 metadata，沿interval-interface→final核声明后读root完整中性raw：8301045B/16284行/SHA3821564c…036f9；不跟829 receipt/private引用、不读app访问日志/独立mirror，原mirror尾缺77s NOT_PROVEN与formal0保持。
+- 1013df0标准库分析脚本实际离线成功，steady端点窗每6资源600唯一observed/0null，无补值插值。API组加权398.62%=3.986核、gen78.48、共享MySQL74.03、consumer9.74/scheduler11.77/broker2.17；100=一核、RSS共享页与MySQL非schema独占，非整机利用率或瞬间coverage。reset32ms前后1Hz PID稳定不能归因/补终态。
+- 静态严格证Server-Timing同步handle内起、headers计算时截断，漏ASGI/body/线程进入前等待及末wire/render/send；已给root第一具体观测点：原record配对latency/appdur及逐请求残差分位（不是两P95相减）、response字节分位。支持维护者新strictTLS通用canary但非SUT/旧结果不重判。
+- 旧81c CPU证据只作历史，API/contracts/engine等逐字同而Runtime/Workflow已变，list热点非本轮四路径且旧无escalation，不泛化。harness-interface给新tmp810 stage开发方案/新schema专用user/私密env/四路径公开fixture/有界采样/双机短诊断与参数；未实现执行、不接受保护旧库或买云。量化16/32规划只是假设，当前API未吃满8核、64无依据，不保证32达标或盲升worker105→240/480连接。
+- 当前只诊断脚本159物理行含空注释，0产品改动/无新cloc/微benchmark/重测试；未触live、新agent或operator，Ruff/format绿。报告agents/backend/latency-diagnosis-20261025/report.md，作者执行者后端AI，非学生手写；独立旧失败、P95/14reset/400→386和formal0保持。root并行产品/DB规模岗不交叉写，待根另给新schema与执行准入才开发实测harness。

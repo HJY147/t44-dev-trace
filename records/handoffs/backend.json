@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "point-lock-query-ledger-test-only-ready-for-full-ci",
-  "implementation_status": "Test-only exact query ledger update; product unchanged from point-lock candidate; root full CI/review pending",
+  "stage": "round8-offline-latency-diagnosis-ready-for-root-isolation",
+  "implementation_status": "Only offline resource analyzer/report added at source935; no product patch or live execution; proposed stage harness awaits separate root packet/grant",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -2258,6 +2258,28 @@
     "size": "same byte-equivalent product prior6326/over1226; no new cloc",
     "next": "root unified exact-source full CI, source review and integration decision",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
+    "github_exact_body_readback": true
+  },
+  "latency_diagnosis_20261025": {
+    "product_source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "script_source": "1013df013ccd4d2ccb7f687f32d6d46e74a81638",
+    "report": "agents/backend/latency-diagnosis-20261025/report.md",
+    "prompt": "ROLE-backend-LATENCY-DIAGNOSIS-20261025-v1",
+    "root_resource_raw_sha256": "3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9",
+    "root_resource_bytes": 8301045,
+    "acceptance_mirror_or_result_modified": false,
+    "formal_groups": 0,
+    "api_group_mean_cores": 3.986186176277683,
+    "generator_mean_cores": 0.784753840824663,
+    "shared_mysql_mean_cores": 0.7403036232717399,
+    "first_observation": "paired per-request latency/appdur/residual anonymous quantiles and response-byte quantiles; appdur excludes pre-handler wait and final wire/render/send",
+    "harness_interface": "agents/backend/latency-diagnosis-20261025/harness-interface.json",
+    "harness_implemented_or_run": false,
+    "protected_mysql_or_activity_access": false,
+    "product_changed": false,
+    "new_cloc_or_microbenchmark": false,
+    "next": "root generic strictTLS+writer canary; separate new-schema stage profiler admission; no blind core scaling",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397037024",
     "github_exact_body_readback": true
   }
 }
