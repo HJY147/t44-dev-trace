@@ -42,7 +42,7 @@ def test_exact_new_profile(tmp_path, profile, api, stop, force, schema):
             text = text.replace(change["new"], change["old"])
         assert text.encode() == old[name]
     policy = types.ModuleType("new_policy")
-    exec(compile(new["isolated.py"], "generated.py", "exec"), policy.__dict__)
+    exec(compile(new["isolated.py"], "generated.py", "exec"), policy.__dict__)  # noqa: S102 - pinned generated policy; never call its main
     assert policy.SOURCE == h.SOURCE
     assert policy.PORTS["api"] == api
     assert datetime.fromtimestamp(policy.STOP, UTC).strftime("%H:%M:%S") == stop
@@ -55,7 +55,7 @@ def test_exact_new_profile(tmp_path, profile, api, stop, force, schema):
     assert b"provisioned" in new["scheduler-control.py"]
     if profile == "performance":
         metrics = types.ModuleType("new_metrics")
-        exec(
+        exec(  # noqa: S102 - pinned generated sampler; never call its main
             compile(new["interval-metrics.py"], "generated.py", "exec"),
             metrics.__dict__,
         )

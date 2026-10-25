@@ -194,7 +194,7 @@ def materialize(repository, profile, output):
     if hashlib.sha256(raw).hexdigest() != BASIS_SHA:
         raise ValueError("IMMUTABLE_CAMPAIGN_HELPER_CHANGED")
     module = types.ModuleType("immutable_campaign_basis")
-    exec(compile(raw, "campaign-prepare.py", "exec"), module.__dict__)
+    exec(compile(raw, "campaign-prepare.py", "exec"), module.__dict__)  # noqa: S102 - exact Git commit and SHA checked above
     output.mkdir(mode=0o700)
     module.materialize(repository, profile, output / "previous-campaign-basis")
     files = {
