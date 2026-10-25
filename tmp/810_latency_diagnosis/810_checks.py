@@ -279,3 +279,72 @@ def test_writer_failure_keeps_original_application_exception(tmp_path, monkeypat
         probe.close()
         engine.dispose()
     assert probe.errors["OSError"] > 0 and "T44_DIAG_INVALID" in capsys.readouterr().err
+
+
+def test_actual_source935_api_and_sqlite_preserve_response_and_internal_id(tmp_path):
+    from fastapi.testclient import TestClient
+    from t44.api import create_app
+    from t44.persistence import SqlAlchemyUnitOfWorkFactory
+    from t44.persistence.accounts import initialize_user
+    from t44.persistence.schema import metadata
+    from t44.services.identity import HASHER
+    from t44.settings import Settings
+
+    engine = engine_at(tmp_path)
+    metadata.create_all(engine)
+    factory = SqlAlchemyUnitOfWorkFactory(engine)
+    initialize_user(
+        factory,
+        username="owned810",
+        display_name="Owned diagnostic user",
+        password_hash=HASHER.hash("owned-810-password"),
+    )
+    with TestClient(create_app(factory=factory, settings=Settings())) as client:
+        token = client.post(
+            "/api/v1/auth/login", json={"username": "owned810", "password": "owned-810-password"}
+        ).json()["data"]["access_token"]
+        baseline = client.get("/api/v1/me", headers={"Authorization": "Bearer " + token})
+    app = create_app(factory=factory, settings=Settings())
+    probe = stage.Probe(engine, tmp_path).install_database().install_application(app)
+    try:
+        with TestClient(probe.wrap_asgi(app)) as client:
+            observed = client.get(
+                "/api/v1/me", headers={"Authorization": "Bearer " + token, "x-t44-diag-sample": "1"}
+            )
+        assert baseline.status_code == observed.status_code == 200
+        assert baseline.json()["data"] == observed.json()["data"]
+        item = next(row for row in rows(probe) if row["kind"] == "request")
+        assert item["request_id"] == item["response_request_id"] == observed.headers["x-request-id"]
+        assert item["request_id"] == observed.json()["meta"]["request_id"]
+        assert item["operation"] == "getMe"
+        for phase in (
+            "sync_handler_inclusive",
+            "runtime_execute",
+            "api_schema_validation",
+            "json_response_render",
+            "cursor_execute_inclusive",
+        ):
+            assert item["phases"][phase]["calls"] > 0
+        assert rows(probe)[-1]["diagnostic_valid"] is True
+        assert (
+            token not in probe.path.read_text()
+            and "owned-810-password" not in probe.path.read_text()
+        )
+    finally:
+        probe.close()
+        engine.dispose()
+
+
+def test_network_parser_only_keeps_neutral_counts():
+    path = MODULE.with_name("810_net_snapshot.py")
+    spec = importlib.util.spec_from_file_location("owned_net810", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    result = module.parse_ss(
+        "ESTAB 0 8 10.0.0.2:44556 10.0.0.3:18099\nTIME-WAIT 0 0 10.0.0.2:44557 10.0.0.3:18099",
+        18099,
+        (32768, 60999),
+    )
+    assert result["distinct_local_ephemeral_ports"] == 2
+    assert result["api_port_states"] == {"ESTAB": 1, "TIME-WAIT": 1}
+    assert "10.0.0" not in json.dumps(result)
