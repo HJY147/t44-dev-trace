@@ -92,7 +92,7 @@ def main(grant_path, supervisor_receipt):
     supervisor = load(supervisor_receipt)
     if (
         supervisor.get("tool_freeze_sha256") != grant["tool_freeze_sha256"]
-        or supervisor.get("expires_at") != grant["expires_at"]
+        or instant(supervisor["expires_at"]) != instant(grant["expires_at"])
         or not re.fullmatch("[a-f0-9]{48}", supervisor.get("nonce", ""))
     ):
         raise ValueError("Supervisor receipt identity mismatch")
