@@ -30,6 +30,12 @@ def validate(candidate, accounts, wanted_sha, actual_sha):
         raise http.InvalidDiagnostic("S1 candidate expired")
     if datetime.fromisoformat(candidate["service"]["expires_at"]) <= datetime.now(UTC):
         raise http.InvalidDiagnostic("Actual service session expired")
+    if (
+        candidate["service"].get("project_ids") != candidate["project_ids"]
+        or candidate["service"].get("scopes") != ["escalation:write"]
+        or candidate["service"].get("actor_kind") != 2
+    ):
+        raise http.InvalidDiagnostic("Actual scoped service binding differs")
     if set(accounts) != {"manager", "developer", "reviewer"} or any(
         set(value) != {"username", "password", "user_id"} for value in accounts.values()
     ):

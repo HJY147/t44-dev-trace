@@ -41,7 +41,7 @@ def main(argv=None):
     engine, writes_started, phase = None, False, "database_candidates"
     try:
         from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
-        from t44.services.common import task_model
+        from t44.services.common import task_model, wire
 
         engine = create_mysql_engine(mysql)
         factory = SqlAlchemyUnitOfWorkFactory(engine)
@@ -60,7 +60,13 @@ def main(argv=None):
                 for row in pair
             ]
             selected_events = g.count("escalation_events", {"task_id": selected})
-            events_before = g.count("escalation_events")
+            event_rows_before = g.rows("escalation_events", {})
+            events_before = len(event_rows_before)
+            event_sha_before = hashlib.sha256(
+                json.dumps(
+                    wire(event_rows_before), sort_keys=True, separators=(",", ":")
+                ).encode()
+            ).hexdigest()
             http.write_fd(
                 status_fd,
                 {
@@ -68,6 +74,7 @@ def main(argv=None):
                     "utc": http.utc(),
                     "selected_existing_events": selected_events,
                     "total_events": events_before,
+                    "event_rows_sha256": event_sha_before,
                 },
             )
             if selected_events:
@@ -118,9 +125,22 @@ def main(argv=None):
                 != hashlib.sha256(service["access_token"].encode()).digest()
             ):
                 raise http.InvalidDiagnostic("Actual scoped service session differs")
-            events_after = g.count("escalation_events")
-            if events_after != events_before or g.count(
-                "escalation_events", {"task_id": selected}
+            service.update(
+                actor_kind=session["actor_kind"],
+                project_ids=session["project_ids"],
+                scopes=session["scopes"],
+            )
+            event_rows_after = g.rows("escalation_events", {})
+            events_after = len(event_rows_after)
+            event_sha_after = hashlib.sha256(
+                json.dumps(
+                    wire(event_rows_after), sort_keys=True, separators=(",", ":")
+                ).encode()
+            ).hexdigest()
+            if (
+                events_after != events_before
+                or event_sha_after != event_sha_before
+                or g.count("escalation_events", {"task_id": selected})
             ):
                 raise http.InvalidDiagnostic(
                     "Escalation events changed during S1; preserve and review"
@@ -141,6 +161,11 @@ def main(argv=None):
                 "selected_escalation_events_before": selected_events,
                 "total_escalation_events_before": events_before,
                 "total_escalation_events_after": events_after,
+                "event_rows_sha256_before": event_sha_before,
+                "event_rows_sha256_after": event_sha_after,
+                "stage1_module_sha256": hashlib.sha256(
+                    Path(__file__).read_bytes()
+                ).hexdigest(),
             },
         }
         phase = "write_private_candidate"
@@ -158,6 +183,8 @@ def main(argv=None):
                 "project_scope_count": len(projects),
                 "candidate_sha256": digest,
                 "escalation_events_unchanged": True,
+                "event_rows_sha256_before": event_sha_before,
+                "event_rows_sha256_after": event_sha_after,
                 "http_constructed_or_called": False,
                 "diagnostic_valid": True,
             },
