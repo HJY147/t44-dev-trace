@@ -165,8 +165,15 @@ jobs:
         shell: bash
         run: python -m t44.cli migrate --database "$T44_DATABASE" 2>&1 | tee reports/ci/coverage/migration.log
       - name: Run full suite and cover every production t44 Python module
+        # The new differential tests compare with this immutable public source.
+        # Checkout is shallow, so request that single reference rather than dropping the comparisons.
         shell: bash
-        run: python scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log
+        run: |
+          set -euo pipefail
+          reference=935ab5b93bea788672c2b4a088c79cfeed848954
+          git fetch --no-tags --depth=1 origin "$reference"
+          test "$(git rev-parse "${reference}^{commit}")" = "$reference"
+          python scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log
       - name: Preserve real dependency logs
         if: always()
         env:
