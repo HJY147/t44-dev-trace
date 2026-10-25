@@ -617,3 +617,5 @@ root因153KB上传需过多UI段，追加仅dispatch源工件。offline-backend-
 6609首工具本地prepare后、云build前，静态复查发现umask077会把mkdir0755落成0700，COPY的root子目录可能使10001无法遍历。立即告root暂停使用旧工件build；不改6609/source/source-v2/首CIrun40204335612（prepare-only）。新V2 5200显式逐级chmod0755，22guard0.05s含真实文件系统权限检查绿；source-v3 manifestcd5bae...、同archivec74/gzip6fda保留，新manifest另存，不冒云失败。workflow切V2，新工件等待root再次dispatch；不是本岗云构建。新receiver ef6e严格wholeZIP/CRC/fivefiles/noextras/link/duplicate/size，再helper5200与内safeTar/source/fullSHA，O_EXCL/fixedfd；10guards0.09s，duplicate负例有预期stdlib warning，均0fail。
 
 root先得真实host errno111/data-only errno101，随后限定TLS日志明确readonly fastcgi_temp失败（原10140B/SHA673e...保留）。本岗c345新独立TLS helper只新增三个/tmp temp，固定770d/56d78和旧controller SHA，保CA/uid101/RO/caps/网络/端口/image；先nginx-t再仅upTLS、host严格CA+IP GET401新门禁，不用APIrunning代替。10guard0.04s/Ruff绿。root已实际执行成功：nginx-t passed/strict401/attempt1/no credentials，新binding546e3...，原stop未动；本岗只收root事实不读私有/测试结果。这是TLS环境修复，不是业务/400/600验收。未来新campaign必须原模板包含全部temp与真实HTTPS门禁；旧控制器仍原样。
+
+增量V2/receiver/TLS阶段push21eb4577f33734e5779469811fa7efe3b23da5d0；Issue7 #issuecomment-6399289754已发表，官方REST逐字回读一致，expected/readback/proof独立保存，不预填后续CI/镜像/业务结果。
