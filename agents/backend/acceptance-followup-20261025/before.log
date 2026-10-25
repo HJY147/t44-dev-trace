@@ -1,0 +1,274 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_unapproved_deliver_requires_manager_before_assessment_gate[False] ____
+
+application = (<starlette.testclient.TestClient object at 0x1089b6150>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1088c0f20>)
+stale_baseline = False
+
+    @pytest.mark.parametrize("stale_baseline", [False, True])
+    def test_unapproved_deliver_requires_manager_before_assessment_gate(application, stale_baseline):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = priority._assess(
+            client, tokens, pid, priority._ready(client, tokens, pid, iid)
+        )
+        if stale_baseline:
+            result = priority._approve(client, tokens, pid, result)
+            task = priority._replan(client, tokens, pid, result["task"])
+        else:
+            task = result["task"]
+        assessment = result["assessment"]
+        assert task["state"] == 5 and task["approved_assessment_id"] is None
+        assert (task["schedule_version"] != assessment["schedule_version"]) is stale_baseline
+        with factory() as uow:
+            member = uow.gateway.rows(
+                "project_members", {"project_id": pid, "user_id": 2, "active": 1}
+            )
+            assert len(member) == 1 and member[0]["roles_mask"] == 2
+        before, audit_before = priority._business(factory, pid), priority._audits(factory, pid)
+        body, key = priority._release_body(task, assessment), str(uuid4())
+        first = priority._release(
+            client, tokens, pid, task, body, key=key, expect=None, actor="developer"
+        )
+        payload = first.json()
+        # Check all rejection postconditions even on the old wrong-code response.
+        assert priority._business(factory, pid) == before
+        audits = priority._audits(factory, pid)
+        assert len(audits) == len(audit_before) + 1
+        saved = next(row for row in audits if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == first.headers["X-Request-ID"]
+        replay = priority._release(
+            client, tokens, pid, task, body, key=key, expect=first.status_code, actor="developer"
+        )
+        assert {k: v for k, v in replay.json().items() if k != "request_id"} == {
+            k: v for k, v in payload.items() if k != "request_id"
+        }
+        assert replay.json()["request_id"] != payload["request_id"]
+        assert priority._audits(factory, pid) == audits
+        assert priority._business(factory, pid) == before
+>       assert (first.status_code, payload["code"], saved["reason_code"]) == (
+            403, "ACTION_FORBIDDEN", 6
+        )
+E       AssertionError: assert (409, 'RELEAS...REQUIRED', 23) == (403, 'ACTION_FORBIDDEN', 6)
+E         
+E         At index 0 diff: 409 != 403
+E         Use -v to get more diff
+
+tmp/backend/contracts/816_acceptance_followup_20261025.py:55: AssertionError
+____ test_unapproved_deliver_requires_manager_before_assessment_gate[True] _____
+
+application = (<starlette.testclient.TestClient object at 0x1091d4bf0>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1088df2f0>)
+stale_baseline = True
+
+    @pytest.mark.parametrize("stale_baseline", [False, True])
+    def test_unapproved_deliver_requires_manager_before_assessment_gate(application, stale_baseline):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = priority._assess(
+            client, tokens, pid, priority._ready(client, tokens, pid, iid)
+        )
+        if stale_baseline:
+            result = priority._approve(client, tokens, pid, result)
+            task = priority._replan(client, tokens, pid, result["task"])
+        else:
+            task = result["task"]
+        assessment = result["assessment"]
+        assert task["state"] == 5 and task["approved_assessment_id"] is None
+        assert (task["schedule_version"] != assessment["schedule_version"]) is stale_baseline
+        with factory() as uow:
+            member = uow.gateway.rows(
+                "project_members", {"project_id": pid, "user_id": 2, "active": 1}
+            )
+            assert len(member) == 1 and member[0]["roles_mask"] == 2
+        before, audit_before = priority._business(factory, pid), priority._audits(factory, pid)
+        body, key = priority._release_body(task, assessment), str(uuid4())
+        first = priority._release(
+            client, tokens, pid, task, body, key=key, expect=None, actor="developer"
+        )
+        payload = first.json()
+        # Check all rejection postconditions even on the old wrong-code response.
+        assert priority._business(factory, pid) == before
+        audits = priority._audits(factory, pid)
+        assert len(audits) == len(audit_before) + 1
+        saved = next(row for row in audits if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == first.headers["X-Request-ID"]
+        replay = priority._release(
+            client, tokens, pid, task, body, key=key, expect=first.status_code, actor="developer"
+        )
+        assert {k: v for k, v in replay.json().items() if k != "request_id"} == {
+            k: v for k, v in payload.items() if k != "request_id"
+        }
+        assert replay.json()["request_id"] != payload["request_id"]
+        assert priority._audits(factory, pid) == audits
+        assert priority._business(factory, pid) == before
+>       assert (first.status_code, payload["code"], saved["reason_code"]) == (
+            403, "ACTION_FORBIDDEN", 6
+        )
+E       AssertionError: assert (409, 'ASSESS...MISMATCH', 24) == (403, 'ACTION_FORBIDDEN', 6)
+E         
+E         At index 0 diff: 409 != 403
+E         Use -v to get more diff
+
+tmp/backend/contracts/816_acceptance_followup_20261025.py:55: AssertionError
+_____ test_failed_approval_slot_keeps_state_before_manager_guard[manager] ______
+
+application = (<starlette.testclient.TestClient object at 0x10909e060>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108273890>)
+actor = 'manager'
+
+    @pytest.mark.parametrize("actor", ["manager", "developer"])
+    def test_failed_approval_slot_keeps_state_before_manager_guard(application, actor):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = priority._approve(
+            client,
+            tokens,
+            pid,
+            priority._assess(client, tokens, pid, priority._ready(client, tokens, pid, iid)),
+        )
+        task = priority._replan(client, tokens, pid, result["task"])
+        task = http.transition(
+            client, tokens["manager"], pid, task, 2,
+            reason="Synthetic release-stage block", responsibility_stage=4, evidence=http.EVIDENCE
+        )
+        assert task["state"] == 3 and task["blocked_from_state"] == 5
+        assert task["approved_assessment_id"] is None
+>       priority._reject(
+            client, factory, tokens, pid, task, result["assessment"],
+            "STATE_CONFLICT", actor=actor
+        )
+
+tmp/backend/contracts/816_acceptance_followup_20261025.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = <starlette.testclient.TestClient object at 0x10909e060>
+factory = <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108273890>
+tokens = {'manager': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'developer': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'reviewer': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'outsider': 'EPHEMERAL_SQLITE_TOKEN_REDACTED'}
+pid = 1
+task = {'id': 1, 'project_id': 1, 'iteration_id': 1, 'title': 'Implement synthetic task', ...}
+assessment = {'id': 1, 'project_id': 1, 'task_id': 1, 'version': 2, ...}
+code = 'STATE_CONFLICT', body = None, actor = 'manager'
+
+    def _reject(client, factory, tokens, pid, task, assessment, code, *, body=None, actor="manager"):
+        before, audit_before = _business(factory, pid), _audits(factory, pid)
+        response = _release(
+            client,
+            tokens,
+            pid,
+            task,
+            body or _release_body(task, assessment),
+            actor=actor,
+            expect=403 if code == "ACTION_FORBIDDEN" else 404 if code == "RESOURCE_NOT_FOUND" else 409,
+        )
+        payload = response.json()
+        assert _business(factory, pid) == before
+        audit_after = _audits(factory, pid)
+        assert len(audit_after) == len(audit_before) + 1
+        saved = next(row for row in audit_after if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == response.headers["X-Request-ID"]
+        if payload["code"] in {"RELEASE_APPROVAL_REQUIRED", "ASSESSMENT_BASELINE_MISMATCH"}:
+            # Stable persisted IDs23/24 are specified in the frozen field dictionary.
+            assert saved["reason_code"] == (
+                23 if payload["code"] == "RELEASE_APPROVAL_REQUIRED" else 24
+            )
+>       assert payload["code"] == code, {
+            "actual_code": payload["code"],
+            "audit_id": payload["audit_id"],
+            "business_unchanged": True,
+            "one_independent_rejection_audit_verified": True,
+        }
+E       AssertionError: {'actual_code': 'ASSESSMENT_BASELINE_MISMATCH', 'audit_id': 18, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}
+E       assert 'ASSESSMENT_BASELINE_MISMATCH' == 'STATE_CONFLICT'
+E         
+E         - STATE_CONFLICT
+E         + ASSESSMENT_BASELINE_MISMATCH
+
+tmp/backend/contracts/856_release_error_priority.py:161: AssertionError
+____ test_failed_approval_slot_keeps_state_before_manager_guard[developer] _____
+
+application = (<starlette.testclient.TestClient object at 0x10904a300>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108a47170>)
+actor = 'developer'
+
+    @pytest.mark.parametrize("actor", ["manager", "developer"])
+    def test_failed_approval_slot_keeps_state_before_manager_guard(application, actor):
+        client, factory = application
+        tokens, pid, iid = http.setup_project(client)
+        result = priority._approve(
+            client,
+            tokens,
+            pid,
+            priority._assess(client, tokens, pid, priority._ready(client, tokens, pid, iid)),
+        )
+        task = priority._replan(client, tokens, pid, result["task"])
+        task = http.transition(
+            client, tokens["manager"], pid, task, 2,
+            reason="Synthetic release-stage block", responsibility_stage=4, evidence=http.EVIDENCE
+        )
+        assert task["state"] == 3 and task["blocked_from_state"] == 5
+        assert task["approved_assessment_id"] is None
+>       priority._reject(
+            client, factory, tokens, pid, task, result["assessment"],
+            "STATE_CONFLICT", actor=actor
+        )
+
+tmp/backend/contracts/816_acceptance_followup_20261025.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = <starlette.testclient.TestClient object at 0x10904a300>
+factory = <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108a47170>
+tokens = {'manager': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'developer': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'reviewer': 'EPHEMERAL_SQLITE_TOKEN_REDACTED', 'outsider': 'EPHEMERAL_SQLITE_TOKEN_REDACTED'}
+pid = 1
+task = {'id': 1, 'project_id': 1, 'iteration_id': 1, 'title': 'Implement synthetic task', ...}
+assessment = {'id': 1, 'project_id': 1, 'task_id': 1, 'version': 2, ...}
+code = 'STATE_CONFLICT', body = None, actor = 'developer'
+
+    def _reject(client, factory, tokens, pid, task, assessment, code, *, body=None, actor="manager"):
+        before, audit_before = _business(factory, pid), _audits(factory, pid)
+        response = _release(
+            client,
+            tokens,
+            pid,
+            task,
+            body or _release_body(task, assessment),
+            actor=actor,
+            expect=403 if code == "ACTION_FORBIDDEN" else 404 if code == "RESOURCE_NOT_FOUND" else 409,
+        )
+        payload = response.json()
+        assert _business(factory, pid) == before
+        audit_after = _audits(factory, pid)
+        assert len(audit_after) == len(audit_before) + 1
+        saved = next(row for row in audit_after if row["id"] == payload["audit_id"])
+        assert saved["outcome"] == 2 and saved["operation_id"] == "transitionTask"
+        assert saved["request_id"] == payload["request_id"] == response.headers["X-Request-ID"]
+        if payload["code"] in {"RELEASE_APPROVAL_REQUIRED", "ASSESSMENT_BASELINE_MISMATCH"}:
+            # Stable persisted IDs23/24 are specified in the frozen field dictionary.
+            assert saved["reason_code"] == (
+                23 if payload["code"] == "RELEASE_APPROVAL_REQUIRED" else 24
+            )
+>       assert payload["code"] == code, {
+            "actual_code": payload["code"],
+            "audit_id": payload["audit_id"],
+            "business_unchanged": True,
+            "one_independent_rejection_audit_verified": True,
+        }
+E       AssertionError: {'actual_code': 'ASSESSMENT_BASELINE_MISMATCH', 'audit_id': 18, 'business_unchanged': True, 'one_independent_rejection_audit_verified': True}
+E       assert 'ASSESSMENT_BASELINE_MISMATCH' == 'STATE_CONFLICT'
+E         
+E         - STATE_CONFLICT
+E         + ASSESSMENT_BASELINE_MISMATCH
+
+tmp/backend/contracts/856_release_error_priority.py:161: AssertionError
+=============================== warnings summary ===============================
+../backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend::test_unapproved_deliver_requires_manager_before_assessment_gate[False]
+FAILED backend::test_unapproved_deliver_requires_manager_before_assessment_gate[True]
+FAILED backend::test_failed_approval_slot_keeps_state_before_manager_guard[manager]
+FAILED backend::test_failed_approval_slot_keeps_state_before_manager_guard[developer]
+4 failed, 1 warning in 1.29s

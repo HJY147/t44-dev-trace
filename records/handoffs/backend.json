@@ -2259,5 +2259,31 @@
     "next": "root unified exact-source full CI, source review and integration decision",
     "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
     "github_exact_body_readback": true
+  },
+  "acceptance_followup_20261025": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-ACCEPTANCE-FOLLOWUP-20261025-v1",
+    "branch": "codex/backend-acceptance-followup-20261025",
+    "base": "acae31a4b7e36bac38fa57367f4ca80066780273",
+    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "workflow_sha256": "e0db3ff784330adf949c4b38ef7677e78e73a5f0da48f74f0acf1e09595ed41f",
+    "scope": "one failed approval-reference statement; release state and manager before original D008 error selection; matching/early-version/ownership/auth/replay/Tx/audit unchanged",
+    "tests": {
+      "old_new_regressions_failed": 4,
+      "candidate_new_passed": 4,
+      "candidate_adjacent_passed": 11,
+      "candidate_unique_passed": 15,
+      "mysql_fullCI_liveSUT_performance": false
+    },
+    "report": "agents/backend/acceptance-followup-20261025/report.md",
+    "verification": "agents/backend/acceptance-followup-20261025/verification.json",
+    "original_independent_F08": "FAIL unchanged; candidate not independently retested",
+    "F11": "NOT_PROVEN unchanged; static TTL60 human real-login same admitted schema recipe only, no issuance",
+    "runtime_or_main_changed": false,
+    "source_size": "previous6326>5100 remains; no newcloc/savings",
+    "next": "root exact-source review, MySQL/full CI and fresh independent execution; separate approved F11 credential provisioning",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6396366099",
+    "issue_exact_body_readback": true,
+    "evidence_branch": "codex/backend-acceptance-followup-evidence-20261025"
   }
 }

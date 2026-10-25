@@ -574,3 +574,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - C同3+原DEVELOPING UNBLOCK/REWORK依赖guard2=5绿/零fail/error/skip，Ruff/format绿；恢复唯一tasks参数后整个986 AST同，产品根完全同0615017，Runtime9e0d770…不变。静态分类核其它985 preflight无依赖K1、只读契约/历史页、底层Rows/schema/seed及类别Counter，不盲改任何其它数字；本岗无完整suite/MySQL/CI/云重跑。
 - root原CI日志gzip逐字副本/raw与gzip双SHA保留，新本机红log/XML无损gzip+roundtrip与原文本ignored archive，不strip。只读明确发表40172242303/extracted三JSON，记录6baseline/6candidate/7HTTP名称/终态/SHA，属root开发运行不算本岗复测/19验收/性能或全局无死锁，不读829独立私件。
 - 产品同字节沿既有cloc6326超1226FAIL、无新计量或节省；报告/命令/AST/原件agents/backend/point-lock-ledger-20261025，后续准确新源fullCI及审核集成归root，旧红不改，作者执行者后端AI非学生手写。
+
+
+## 2026-10-25 公开F08角色优先级窄修
+
+- 初仅公开409不足定位，追加最小角色/动作交接后才实现；只读四件指定817 PUBLIC，不读独立隐藏构造/Git历史、不联系tester。自有分支be02fa4先scope，a9b9e4a先冻结816开发回归。
+- 真API合成SQLite4目标旧源码4红；935ab5b93bea788672c2b4a088c79cfeed848954只Workflow原批准引用不匹配槽先state5/manager再原D008判码，匹配引用/早期版本及归属/其它action/Runtime均不改。候选4+原856邻接11=15唯一目标绿，业务不变/拒审计/replay有实断言；非原F08后置验证或MySQL/验收。
+- 主.venv无pytest原失败保留；复用既有backend岗venv nice10串行4.4秒，无externalDB/liveSUT/fullCI/性能动作。首次Ruff外层规则和format红后显式backend配置修正。旧红helpertraceback出现自造内存token，原log/XML本机/tmp0700/0600封存，提交精确脱敏派生及双SHA；尖括号marker导致派生XML解析错后仅标记改XML安全，原失败不改。
+- CLI没有human-token，最短Settings TTL60，建议未来总协调在获准同campaign schema以真实HTTP login的一次性TTL60进程发行human并自然过期，不能用service-token或改到期时间；本轮只读未创建。F08旧FAIL/F11 NOT_PROVEN不回写；报告agents/backend/acceptance-followup-20261025/report.md。主树/活动.runtime和C8未改，源码规模旧6326超5100仍开放，未新cloc。实际作者执行者后端AI，非用户手改。

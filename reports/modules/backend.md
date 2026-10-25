@@ -349,3 +349,8 @@ root先准入修订，4dc0ca6勘误后C c8cea7e82805de5283ce67501769fa9a4efc1047
 ### 点锁开发查询账本test-only适配
 
 C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注释；原deps0/1/2和所有其它断言不动，AST恢复唯一参数后全文件同。原本机3参数1红2绿→同3+邻接2=5绿，root原40171891359 CI红gzip不改。Runtime仍9e0d770…/产品零改，原cloc6326超1226FAIL沿用无新计量；其它同类SQL账本静态核无新数需迁移，不运行完整CI或MySQL。另只引用root发表40172242303开发6+6+7 JSON终态，非性能或全局无死锁。报告agents/backend/point-lock-ledger-20261025/report.md；root另fullCI/审核/集成。
+
+
+### 公开F08发布角色优先级候选（2026-10-25）
+
+准确产品source935ab5b93bea788672c2b4a088c79cfeed848954；只Workflow原批准引用不匹配槽先state5/manager再D008双/单失效判码，matching及早期版本/归属不变。新增816真SQLite HTTP4红→4绿，原856邻接11绿，15唯一开发目标含业务不变/拒审计/重放；未MySQL/fullCI/独立复测。追加公开最小角色/动作证据才定位，无私件读取或测试岗联系，旧F08 FAIL/F11 NOT_PROVEN保留。CLI无human-token，TTL60真实login同获准schema单独认证进程方案仅建议未置备；活动C8/.runtime/性能未变，旧6326超5100未新cloc。证据、原红精确脱敏说明和边界见agents/backend/acceptance-followup-20261025/report.md及verification.json；root专审/新CI后另定整合。
