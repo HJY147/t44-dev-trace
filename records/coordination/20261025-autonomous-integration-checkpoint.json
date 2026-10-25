@@ -1,0 +1,52 @@
+{
+  "checkpoint_utc": "2026-10-25T08:05:50.802771+00:00",
+  "operator": "AI coordinator",
+  "integration_parent": "2e068b48ecbb4895c86df598c94a3e8460cd7aab",
+  "application_reference": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "application_roots_equal_to_reference": true,
+  "test_ledger_reference": "5f55e09a75043343e376ecc7d96cc2ed98862b30",
+  "developer_full_ci": {
+    "source": "f237956ea23ecebd85d5e0c43fe20574adbb5139",
+    "run": 40172571738,
+    "jobs": "4 success",
+    "backend_unique_cases": 562,
+    "frontend_cases": 89,
+    "line_coverage": 0.8923,
+    "branch_coverage": 0.8012
+  },
+  "fresh_mysql_development_probes": {
+    "source": "6738c07b150da0df8554ba3b90d52e0cbc101fe6",
+    "run": 40172242303,
+    "baseline_cases": 6,
+    "candidate_cases": 6,
+    "http_cases": 7,
+    "http_responses": 86,
+    "mysql_reported_version": "8.4.13",
+    "formal_performance": false
+  },
+  "retained_failures": [
+    {
+      "run": 40171891410,
+      "scope": "setup REVOKE 1141; zero lock/HTTP cases"
+    },
+    {
+      "run": 40171891359,
+      "scope": "one stale exact query-count development assertion before test-only migration"
+    }
+  ],
+  "gates": {
+    "source_size": "FAIL: 6326 > 5100 by 1226",
+    "independent_acceptance": "0 SUT requests at this checkpoint; PUBLIC v5 technical review pending",
+    "formal_performance": "NOT_PROVEN: no new completed 400-client 600-second group",
+    "native_runtime": "candidate API/consumer/new broker running, initial native build frozen, scheduler pending scope",
+    "cleanup": "future owned watchdog stop not yet observed",
+    "student_research": "student handwritten authorship required; AI materials only; human 12/3/5 evidence not fabricated"
+  },
+  "cost": {
+    "authorized_total_cny": 100,
+    "new_cloud_resources_this_continuation": 0,
+    "new_cloud_spend_cny": 0,
+    "existing_final_bill": "NOT_VERIFIED"
+  },
+  "integration_scope": "development integration only; no main merge or release approval"
+}
