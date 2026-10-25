@@ -1530,6 +1530,25 @@
     "actual_cumulative_saved": 68,
     "persistence_python_before": 1691,
     "persistence_python_current": 1623,
-    "sqlglot": "REJECTED:425 comparison pairs; only9 projected lines saved; no production or dependency changes"
+    "sqlglot": "REJECTED:425 comparison pairs; only9 projected lines saved; no production or dependency changes",
+    "seed_v2_candidate": {
+      "branch": "codex/database-seed-v2-optimize-20261025",
+      "stable_rollback": "5f779388",
+      "version": 2,
+      "seed_before": 348,
+      "seed_after": 326,
+      "additional_saved": 22,
+      "total_saved": 90,
+      "persistence_python_after": 1601,
+      "properties": "13 passed33.10s before final old-marker query protection; current source small marker delta needs verification",
+      "historical_v1": "old975 golden constants and935 SHA retained; current V2 production tested, no historical implementation substituted",
+      "scope": "candidate for root tradeoff; source-size target80-120 additional NOT_ACHIEVED",
+      "unverified": [
+        "real MySQL/new version native constraints",
+        "complete CI/coverage",
+        "independent acceptance",
+        "formal performance"
+      ]
+    }
   }
 }

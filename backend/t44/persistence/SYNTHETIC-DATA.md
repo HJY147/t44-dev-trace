@@ -11,3 +11,5 @@ seed_demo生成的项目、任务、依赖、八段评审、十项检查、预�
 生产入口seed_demo(factory, projects=40, tasks=6000, dependencies=9000, records=15000, seed=44, anchor_at=None, template_path=None, rules_path=None, batch_size=250)，无明文密码参数；生成账户使用随机秘密的合法Argon2id hash，复用已有账户时不修改hash。seed/version/anchor和真实模板、规则原字节hash组成manifest_sha256，这是生成描述摘要，不冒称整库内容或随机口令hash可重现。
 
 默认七态：已交付2400；待受理、开发、阻塞、待评审、待上线、已回滚各600。评审11400+决定3600=15000，预案另3600。当前delivery_cycle/schedule_version均1，review_cycle可递增；不声称覆盖所有历史周期组合或极端业务分布。
+
+算法VERSION2保留上述数量和业务代表性；改用每项目归一化6天slot，评审/评估/批准/交付/回滚均在各任务slot中依次发生，已交付前驱的交付时间早于任一后继的计划开始。依赖按前驱、后继、项目顺序枚举并截取，旧精确分布和全表摘要不再作为新版本相等要求。当前与所有已知旧seed版本的marker一并读取，旧version/config不匹配直接拒绝，绝不迁移或覆盖旧数据。新版本完整语义/再现性质在开发测试验证后才记录自己的摘要，V1历史golden另存。
