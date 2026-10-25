@@ -237,3 +237,11 @@
 - 首次只读sed误写contracts.ts exit2，实际文件contract.ts后正确读，无写或HTTP副作用；未运行应用导入/测试/浏览器/typecheck/build/服务/HTTP/CI；private/cases/raw/858/857/860未读，未联系tester。Issue2实际协商/全文GET及push随后封档。
 
 - 75cad8a文档/静态回执已push exit0；Issue2实际对接评论6379459487，经connector跨页完整GET选准确ID，正文逐字一致，回执contract-v12-draft-github-verification.json。本轮无APPROVE/验收/产品PR，待根新freeze与后端实施。
+
+
+## 2026-10-25T22:00+08:00｜ROLE-frontend-SIZE-ROUND9-v1
+- 新worktree codex/frontend-size-round9 从043fc464，只读前端源码与计数器；未读独立PRIVATE或操作云/数据。先设计8716055，再真实固定cloc一次。
+- 计数器原样/hash锁，应用5875、前端22文件1099有效行、超775，require-range真实exit1/stderr空。原stdout/JSON和逐文件SHA保存在tmp/803_frontend_size_round9；前端与计数器相对043的Git diff为空。
+- 现有递归表单/统一操作/七页面/详情已共用。异步helper预计+20/-13净增，映射迁JSON只是计数转移，CSS已有共用且视觉退路必须留；未找到可信150–400行方案。root同意no-candidate审计，不制造产品改动。
+- 没有产品/测试改变，未重跑无关CI/浏览器/构建/API/MySQL/性能，不拿历史绿当新验收。设计估计没有冒充实际削减。保留所有旧阶段/独立结论、学生研究正文不动。
+- Issue2评论6398588286真实发布并通过插件完整GET逐字核对；readback存size-round9/github-readback.json。未发布reviewer状态/APPROVE或合并。
