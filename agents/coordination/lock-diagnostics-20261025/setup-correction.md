@@ -1,0 +1,7 @@
+# Preparation failure retained; second admission
+
+Run 40171891410 on 81250e8887336d6af417e02e73fca5692da7f0f5 reached exact-source admission and migrated each fresh schema. All three jobs then failed before any lock/HTTP case at the coordinator setup's REVOKE statement, MySQL error 1141 (no matching grant for that principal/schema form). This is a preparation-script failure, not six/seven failed product cases. No root cause is inferred from unobserved SHOW GRANTS output; the original script wrongly assumed a particular entrypoint-generated grant form could be revoked by its literal schema expression.
+
+Correction creates no default MYSQL_USER through the image entrypoint. In each independent fresh service, coordinator setup verifies the named diagnostic principal does not exist, then creates it and grants only CRUD on the explicitly underscore-escaped schema pattern plus SELECT on the three P_S tables. This removes reliance on the image's generated grant representation. No existing/real principal is changed, and no REVOKE or DROP is used.
+
+The fixed admission's request and validator both use nonce locks-20261025-02. The first request/source remains in Git history and its failed run/artifacts remain immutable. The corrected exact source receives another review before the second run. Environment rejection checks are rerun because the validator changed; neither a green unit check nor the setup correction establishes real MySQL readiness.

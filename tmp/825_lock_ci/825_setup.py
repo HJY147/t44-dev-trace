@@ -28,11 +28,19 @@ try:
     if not result.get("passed"):
         raise RuntimeError("Disposable migration rejected")
     with engine.begin() as connection:
+        if connection.execute(
+            text("SELECT COUNT(*) FROM mysql.user WHERE User='t44'")
+        ).scalar_one():
+            raise RuntimeError("Disposable diagnostic principal already exists")
         connection.execute(
-            text(f"REVOKE ALL PRIVILEGES ON `{database}`.* FROM 't44'@'%'")
+            text("CREATE USER 't44'@'%' IDENTIFIED BY :password"),
+            {"password": "diag-app-disposable"},
         )
+        grant_database = database.replace("_", "\\_")
         connection.execute(
-            text(f"GRANT SELECT, INSERT, UPDATE, DELETE ON `{database}`.* TO 't44'@'%'")
+            text(
+                f"GRANT SELECT, INSERT, UPDATE, DELETE ON `{grant_database}`.* TO 't44'@'%'"
+            )
         )
         for table in ("data_locks", "data_lock_waits", "threads"):
             connection.execute(

@@ -80,7 +80,7 @@ def main(mode):
         "candidate": CANDIDATE,
         "modes": ["baseline", "candidate", "http"],
         "finite_development_only": True,
-        "execution_nonce": "locks-20261025-01",
+        "execution_nonce": "locks-20261025-02",
     }:
         raise ValueError("Explicit finite request mismatch")
     output = root / f"reports/lock-diagnostics/{mode}/admission.json"

@@ -37,8 +37,6 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: diag-root-disposable
           MYSQL_DATABASE: ${{ matrix.database }}
-          MYSQL_USER: t44
-          MYSQL_PASSWORD: diag-app-disposable
         ports: ['127.0.0.1:3306:3306']
         options: >-
           --health-cmd "MYSQL_PWD=diag-root-disposable mysql --protocol=tcp --host=127.0.0.1 --user=root --execute='SELECT 1' --silent"
