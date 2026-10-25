@@ -168,3 +168,17 @@
 - 本轮无产品测试/脚本导入/服务/数据库/浏览器/云/构建/Word操作；只Git/JSON/哈希和必要文档校核。Issue11、全文GET、阶段commit/push在真实完成后补回执，不预先填写成功。
 
 - 本轮素材实际commit/push fa20384e468b9221a84938025c5d5550d0767e19；Issue11评论6394956933真实POST，GET按单ID找到且完整body逐字相同，AUTONOMOUS-20261025-publication.json保留回执。部署4769a9b发表通知在07:36:05资料封档后收到，只记行政通知，不打开新资料或回写当时health401 commit=null。以下仅封发布回执，不追新CI/独立成绩。
+
+
+## 2026-10-25 独立campaign固定10:03附录
+
+- 实际ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1；从codex/integration acae31a新建独立codex/prompt-campaign-followup-20261025，不操作根索引。先读原prompt档案和本岗日志，U024已存仅引用、不重新编号。
+- 只读允许的协调10:01页、v5/v6已发表副本、v7功能PUBLIC MD/JSON与公开review/deployment报告、既有prompt和中性规格。没有进入任何tmp独立原目录/private/.runtime、读取凭据或实现、联系tester。Git worktree inventory只用于确认分支/路径，不打开其中私有目录。
+- 固定事实截止10:03，采集时间独立记录；本轮22来源的实际bytes/hash/Git commit全部对应截止前公开对象，不用后发性能结果倒填。
+- 保留v5 12见201/正文0/原12FAIL、v6功能1完整201但14NOT_PROVEN、v6性能19333完整200但union checker异常/无warmup-steady；错误归属依公开报告，不自行复现。
+- 记录v7新freeze、真实supervisor anchor/批准namespace/staged排他发布、单字段新grant及全新无历史operator流程。generic89绿只是公开checker范围，reviewer0重跑不写本岗实跑。
+- v7功能12PASS/F08FAIL/F11NOT_PROVEN，1027完整响应、原postconditions89及523错误分支未证；F08产品/前提归因不预断。F关闭原bind false和后续free另列；P只写10:00:14.562实际开始及10:00:27.713确切PID登记，截至10:03未有完整结果。
+- 需规/1.2冻结→限定设计→c8与精确开发CI→独立缺口链保持；N07 6326>5100超1226仍FAIL。3个新提炼模板仅proposed/未发送未执行，旧六版与原用户prompt不改，新增已使用版本0。
+- 本轮只做文档/Git/JSON/哈希核对；没有app/测试/负载/CI/服务/浏览器/数据库或云操作。学生手写报告与人工12/3/5不代写/补造。Issue11精确POST/GET和阶段commit/push以实际回执补记，不预填。
+
+- 本轮14项轻量文档检查全部通过：22公开来源提交/字节/截止、JSON、原U024摘要未变且新稿不重复、3模板未执行、全部证据链接固定commit、冻结需规摘要、UTF-8/冲突标记与git diff --check；证据CAMPAIGN-20261025-document-checks.json，不当产品测试。
