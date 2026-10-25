@@ -47,3 +47,14 @@
 - 既有 contracts 开发回归25通过/1失败/1跳过：依赖缺失用例未显式移除现已实现的通知门面，实际200；原失败 api-regression-run1.log 已上报根，请BE修夹具，本岗未改外岗断言。
 - 首阶段SHA b5a16e6、draft PR20已推送并attach；当前规模由根实测超范围，未宣称达标。
 - run10批次夹具假设失败已保留；只修测试容量并新增本次retry尝试断言，run11复跑通过，不改生产batch或清理共享数据。
+
+
+## 2026-10-25 结构规模候选
+- 基线396b646，独立codex/messaging-size-20261025；提示词ROLE-messaging-SIZE-20261025-v1。
+- 先设计再计数：agents/messaging/tmp806_newscope/DESIGN.md；固定cloc2.10基线5875，其中消息357。
+- 共用通知active membership锁/范围与既有page，Broker网络错误清理/脱敏单点维护；错误分类、权限/CAS、ACK/NACK/DLQ与恢复不变。
+- 保持原展开风格，未移出生产目录、不动DDL/OpenAPI/门禁/调度；初步diff仅净11行，未承诺100。最终cloc与SHA见后续RESULT。
+- 新22项性质/故障用例在原基线通过；当前现有+新增39项通过，23个integration不运行，不读凭据、不跑云/独立验收。原0收集和ruff失败保留。
+- 跨岗候选（调度event投影、scan_run事务内原语、outbox信封工厂）已交根排班，不自行落新sharedhelper。
+- 提交快照c4b3f114固定cloc净减13（application5875→5862，消息357→344）；只Facade-10/Broker-3，其他application不变。设计预算15–50未兑现上界，未达到100，未隐瞒总量仍超762。
+- 代码已stage push；Issue5实际评论6397897311。完整before/after、性质/故障和原始失败见tmp806_newscope/RESULT.md；不包含全CI或真实组件结论。
