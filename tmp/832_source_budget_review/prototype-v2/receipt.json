@@ -1,0 +1,45 @@
+{
+  "source": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+  "operator": "reviewer AI prototype; not independent acceptance",
+  "files": {
+    "backend/t44/domain/state_machine.py": {
+      "before_sha256": "81c9807e5088842e92aaee8f1d156579fb6fc1ca09beb5f3478b5f10f6655c00",
+      "after_sha256": "66bd7a12e8ecb293c169d8ea7317a7c9f0f40b8bae9990d160359ed2c24ec513",
+      "resolved_AST_equal": true,
+      "syntax_compiles_without_module_execution": true
+    },
+    "backend/t44/services/workflow.py": {
+      "before_sha256": "3beca5a5cd9b75fb7ed9c0df9549ec3024bf97611efedc55d7e4e5876150f91c",
+      "after_sha256": "24da78eae676d40006fff4aa18e7eed0f543324928451ee99a2904c49dc0546b",
+      "resolved_AST_equal": true,
+      "syntax_compiles_without_module_execution": true
+    },
+    "backend/t44/persistence/schema.py": {
+      "before_sha256": "cd1465fc7560c0f13bb80216507b237e297e2177eccf280d8802651f0458e4bd",
+      "after_sha256": "31c3f0518d5326f275a8363acbb5ce328d869e73642246c001eb46cf2ada8145",
+      "resolved_AST_equal": true,
+      "syntax_compiles_without_module_execution": true
+    }
+  },
+  "cloc_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+  "before": {
+    "blank": 41,
+    "comment": 9,
+    "code": 566,
+    "nFiles": 3
+  },
+  "after": {
+    "blank": 41,
+    "comment": 9,
+    "code": 577,
+    "nFiles": 3
+  },
+  "net_reduction_in_prototype_only": -11,
+  "production_modified": false,
+  "actual_production_savings": 0,
+  "limitations": [
+    "AST compares resolved symbol references; it does not prove runtime behavior or monkeypatch compatibility",
+    "Implicit imported module attributes disappear; module export policy needs owner review",
+    "No product, database, HTTP, functional or independent acceptance tests were run"
+  ]
+}

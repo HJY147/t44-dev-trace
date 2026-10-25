@@ -1,0 +1,2841 @@
+{
+  "source": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+  "operator": "reviewer AI static cost diagnostic",
+  "files": {
+    "backend/t44/persistence/seed.py": {
+      "source_sha256": "c9d2a3382b1eeffa67f9ae757e87bf292eacbe97932c79e30f576366cbb40f93",
+      "formal_code": 370,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/seed.py",
+          "function": "_snapshot",
+          "start": 29,
+          "end": 31,
+          "fragment_sha256": "7fda6368788920f200e47d4722ea6343ceecb2a07b0cad6e181d24391fa88ff8",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/seed.py",
+          "function": "_populate",
+          "start": 34,
+          "end": 291,
+          "fragment_sha256": "1893b7559e932fd088c9042832b1cc930aa52075476d748aefb9b90403c712b8",
+          "fragment_code": 255
+        },
+        {
+          "file": "backend/t44/persistence/seed.py",
+          "function": "seed_demo",
+          "start": 294,
+          "end": 384,
+          "fragment_sha256": "a43e0cce10612064e45c0f29f85b500924f2da788d1a8771e3c78056533077ae",
+          "fragment_code": 91
+        },
+        {
+          "file": "backend/t44/persistence/seed.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "902709a0bb7dbd299237a9f1705e445177a8f2cc3bc223465bcf3758f706a955",
+          "fragment_code": 21
+        }
+      ],
+      "segmented_code": 370,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/migrations.py": {
+      "source_sha256": "2f0a908e1c984502aa1e9027cec09eae92d6513972bcc0653431240d5da33d1a",
+      "formal_code": 321,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "_check_signature",
+          "start": 16,
+          "end": 104,
+          "fragment_sha256": "3650d6238486c1077dd92334aff01b1f1da7a918bc53309c1f15318764c2d1b0",
+          "fragment_code": 83
+        },
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "_index_signature",
+          "start": 107,
+          "end": 119,
+          "fragment_sha256": "a4b0e524af3de1c1862ceb47e5a765261317e6303b98a2e9f1cb246d2744aef6",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "_foreign_signature",
+          "start": 122,
+          "end": 142,
+          "fragment_sha256": "5fc879bb3a502169c49352ca4c1a5780d942ee32726a5e1f4b3e3b44a540d29a",
+          "fragment_code": 21
+        },
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "check_schema",
+          "start": 145,
+          "end": 241,
+          "fragment_sha256": "ad903df0f2d12a63be692daf7808077252688c4f68da7847e3c7c3e488d9f6fa",
+          "fragment_code": 95
+        },
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "migrate",
+          "start": 244,
+          "end": 345,
+          "fragment_sha256": "89cb4d2103f72d1ab273e99fb364db2123e0ce41ed4ec5f09570af7cd86f2878",
+          "fragment_code": 102
+        },
+        {
+          "file": "backend/t44/persistence/migrations.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "44706b316a26f4ab2f85118f81b5382b39b5e2c8321f68f2ad84c45061b34847",
+          "fragment_code": 7
+        }
+      ],
+      "segmented_code": 321,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/rows.py": {
+      "source_sha256": "063ec7d2b8f70c1ab6436ff0ae6aead8e748a7626c5694541036b34c94e2817b",
+      "formal_code": 299,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.__init__",
+          "start": 29,
+          "end": 31,
+          "fragment_sha256": "cd500f03728111fa551448284418ed15e9962617485973eceabcd3e1725053e6",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway._table",
+          "start": 33,
+          "end": 36,
+          "fragment_sha256": "ed761ab285c598df8e1722e9a894f5ecee2aed621751a177d11a0504b50a8ea1",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway._fields",
+          "start": 38,
+          "end": 59,
+          "fragment_sha256": "1ff144e25a739781eee2226c78a46f757508aec12faa38c8c1b5fda6b243c200",
+          "fragment_code": 20
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway._clauses",
+          "start": 61,
+          "end": 91,
+          "fragment_sha256": "8d0b13ba8aa566150d8eab61146e69318e527d2f8d16348fbbb32a554127d736",
+          "fragment_code": 31
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway._execute",
+          "start": 93,
+          "end": 127,
+          "fragment_sha256": "4483c1fc728378ad81e52e3d2eb8ab68297ddb1059a8c61cf768f159c7785ebe",
+          "fragment_code": 34
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway._failed",
+          "start": 129,
+          "end": 133,
+          "fragment_sha256": "cb252f51511d3d131bfc27429ac27f2a6a7ed288dc1d32e61a622c4a49c1d826",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.savepoint",
+          "start": 135,
+          "end": 148,
+          "fragment_sha256": "53a0907d112c31601f039ef35e5099508cc0a328cb3166ffe3bd198c313d9197",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.rows",
+          "start": 150,
+          "end": 189,
+          "fragment_sha256": "f680c10c8aea764a10def930ebdeb645cceef6580da6d6038999c0c682eafa63",
+          "fragment_code": 40
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.get",
+          "start": 191,
+          "end": 193,
+          "fragment_sha256": "465af45959f87c8830ed39c7433693b49488c7048362a47e46dcbe00e7055e93",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.task_schedule_changes",
+          "start": 195,
+          "end": 261,
+          "fragment_sha256": "c93654a22b216f082104e29c017df92ad37461ac83bb1c91dcfff0f61787630d",
+          "fragment_code": 62
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.confirmed_missing",
+          "start": 263,
+          "end": 287,
+          "fragment_sha256": "82b37c84ec2f819e885ec32da3577a70846079af53ece0f8cfbbc161b11deed1",
+          "fragment_code": 18
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.insert",
+          "start": 289,
+          "end": 293,
+          "fragment_sha256": "1588941488196fa025fb8d7f861dea114a5096ba457f2da1d2df56f949678f4a",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.insert_many",
+          "start": 295,
+          "end": 302,
+          "fragment_sha256": "157358effdbd6e684078f24a32e98fafc5093dc82743f8469b65ad0a5b894b82",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.update_many",
+          "start": 304,
+          "end": 316,
+          "fragment_sha256": "49ac407c426308510d614fc5af09524bf6ff2d070364ff2647aeb91127d135de",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.update",
+          "start": 318,
+          "end": 325,
+          "fragment_sha256": "14dda8a7076ffd854b43d90a39d31592fc7dc39ec3c7529e3242b79959a0686f",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.delete",
+          "start": 329,
+          "end": 333,
+          "fragment_sha256": "124dd45eea240faf6a17bb2fa885197711f2843e9fe8dbf5c81d63efcf23c41a",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "RowsGateway.count",
+          "start": 335,
+          "end": 339,
+          "fragment_sha256": "20f215293dfcf5f8641bccd1cc940025c4dab95c1d774e9f1d92c19b4a287dd2",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "4d733f9d5235cde69212eb085587eb974a5c4038d8cb637b308af0be573bbb5f",
+          "fragment_code": 21
+        }
+      ],
+      "segmented_code": 299,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/runtime.py": {
+      "source_sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+      "formal_code": 276,
+      "segments": [
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "_audit_integer",
+          "start": 31,
+          "end": 32,
+          "fragment_sha256": "31f6a6748953b85812bd58fd40580f3ecb16dacaa9c9d5e2dad8e555c0204bf5",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.__init__",
+          "start": 36,
+          "end": 38,
+          "fragment_sha256": "1b50e4a04194e11dbbaccfa45daf29f5834eb16529bc01b9b147d32f70080a74",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.authorize",
+          "start": 40,
+          "end": 43,
+          "fragment_sha256": "66dbda1b84f27f618d91c9bd290aa0af4ed2040b851181d9e9a680fb223ab185",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.prepare",
+          "start": 45,
+          "end": 52,
+          "fragment_sha256": "9d12c637d7d4b7b8da1130292929c3bcdb2ce18b9baff2c120add2e418f94cca",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.audit",
+          "start": 54,
+          "end": 83,
+          "fragment_sha256": "3d1e1d64bf24dfde7436647011050a3d477462c2c5e63022c1e87b57c45c2e58",
+          "fragment_code": 30
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.rejection",
+          "start": 85,
+          "end": 117,
+          "fragment_sha256": "340dd06cec9acfc0b51b3feebc35cb8edccb4eddfca7039b8affbd4cf0e6b1a4",
+          "fragment_code": 32
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.complete",
+          "start": 119,
+          "end": 134,
+          "fragment_sha256": "260eca6499f70213119e1bcf13ed31ec6b6bc0f09b08a3e9f9881c978593c650",
+          "fragment_code": 16
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.claim",
+          "start": 136,
+          "end": 138,
+          "fragment_sha256": "a15c222980737c758ebe886c975f283b6fd6e3176586d436758feaeb9b43d325",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime._claim",
+          "start": 140,
+          "end": 195,
+          "fragment_sha256": "032e3043b5ae09b928f55c90279eb0a00786467a3154d4a6b89da81087c79953",
+          "fragment_code": 55
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.locked_scope",
+          "start": 197,
+          "end": 233,
+          "fragment_sha256": "1c298d0bdadf33c747b360ccb73350f401b55795398b1ceddd36642f26a58b0a",
+          "fragment_code": 37
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "Runtime.execute",
+          "start": 235,
+          "end": 297,
+          "fragment_sha256": "ebff8c05e525400c7cf7335895ab6404d2e7cfaeecd479692f4b2c39770c7edd",
+          "fragment_code": 62
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "33026ac598f003dc1e8709698d0611146597bdb295e4e0c8c179eb6429b1cc49",
+          "fragment_code": 24
+        }
+      ],
+      "segmented_code": 276,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/workflow.py": {
+      "source_sha256": "3beca5a5cd9b75fb7ed9c0df9549ec3024bf97611efedc55d7e4e5876150f91c",
+      "formal_code": 256,
+      "segments": [
+        {
+          "file": "backend/t44/services/workflow.py",
+          "function": "reference",
+          "start": 57,
+          "end": 58,
+          "fragment_sha256": "c53d9eeda09fb2329f0d7434b04cf7f0a040391fa7ba57145b9766b1be828908",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/workflow.py",
+          "function": "Workflow.transitionTask",
+          "start": 62,
+          "end": 265,
+          "fragment_sha256": "025844e4737a0c9822d907c88164f8cbc08e6a29ec2c7d240f72b181c883243e",
+          "fragment_code": 203
+        },
+        {
+          "file": "backend/t44/services/workflow.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "2e6b4199e5872e26ab287545d1f2267fb67c9c20bcc68a350110b0721731e117",
+          "fragment_code": 51
+        }
+      ],
+      "segmented_code": 256,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/api.py": {
+      "source_sha256": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+      "formal_code": 244,
+      "segments": [
+        {
+          "file": "backend/t44/api.py",
+          "function": "_security",
+          "start": 29,
+          "end": 38,
+          "fragment_sha256": "0a64d4a8827c1f5fa68b783714ce371b51e05702242e91a497a16bc5e9b050d8",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "_unique_object",
+          "start": 41,
+          "end": 47,
+          "fragment_sha256": "5e43bb956a4b5321971a2d37dd64faaac5cd145933f2dd4ae4cb0a465bbc972e",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "_schema_type",
+          "start": 50,
+          "end": 53,
+          "fragment_sha256": "7986b0ebb6eaa3f3a887b1cd9288f526bc6785e781aef2789b791bd7c5005db2",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "_parameters",
+          "start": 56,
+          "end": 60,
+          "fragment_sha256": "8c069c2a7f4900c8aad56ad7f4520e2ae6ba42986b52592377d235d07d29b43f",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "_body_schema",
+          "start": 63,
+          "end": 76,
+          "fragment_sha256": "af9dca759bd8a9fc65ee01b10a91b273039f24881b3cee5f4399c418c99f6a78",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "_body_error",
+          "start": 79,
+          "end": 101,
+          "fragment_sha256": "d417a9be105cad2498fc5f11b006753c17c5bd17f13b4e0b47a388715b0b5272",
+          "fragment_code": 21
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "validate_request",
+          "start": 104,
+          "end": 166,
+          "fragment_sha256": "174ef919fad438c88eb6950ece2bb10afc4f924fcfe20353c86fc152d981cf1b",
+          "fragment_code": 63
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "create_app",
+          "start": 190,
+          "end": 279,
+          "fragment_sha256": "2b30757b690fed669491d17da7241f11173579a067a78ae5197aaa39ce56cb31",
+          "fragment_code": 84
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "LazyFactory.__init__",
+          "start": 172,
+          "end": 173,
+          "fragment_sha256": "921ac6fd43905d85c8095e07476bcf4ac68200588da65626d57808c99985330d",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "LazyFactory.__call__",
+          "start": 175,
+          "end": 184,
+          "fragment_sha256": "11fb795cd98c6223fc51b79af3ab7ca1c809fe659f095d2efcf889fe55d91e52",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/api.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "945a774f220178088adbacd9732cea3fa78a450e0d1275b9abd6f41a19230281",
+          "fragment_code": 24
+        }
+      ],
+      "segmented_code": 244,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/facade.py": {
+      "source_sha256": "17e293ec0389020f9269e75dbf9dd927eee877426181165c46cd7951c68f8ab6",
+      "formal_code": 205,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.__init__",
+          "start": 13,
+          "end": 14,
+          "fragment_sha256": "da3ea2fee962a3850b6df648ac005ee5582312985d7be08882d919846762a9a7",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.current",
+          "start": 16,
+          "end": 17,
+          "fragment_sha256": "08eead876bf08fe18f8a62107a64903f958fb035991d29ba2f63f2a6017be72a",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.rules",
+          "start": 19,
+          "end": 26,
+          "fragment_sha256": "d7eba092d56097e7c698afb07732c8f685a81665a81ff011efce269afc8c8a23",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.event",
+          "start": 28,
+          "end": 56,
+          "fragment_sha256": "204d64771ed47196a5314d9caaab2dc1a4f9fb82789666447ba6720d65f7784f",
+          "fragment_code": 29
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.list",
+          "start": 58,
+          "end": 68,
+          "fragment_sha256": "2918956140bab2c10ba9d3224f658c3bc9a62dc1e5d1fcee153694300374f1d9",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade._run",
+          "start": 70,
+          "end": 104,
+          "fragment_sha256": "a8c1f21e61e9fdeea29d8fdb25fa8247c17ed2451cd04b5d15c9533deb67f9b4",
+          "fragment_code": 35
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "EscalationFacade.create",
+          "start": 106,
+          "end": 217,
+          "fragment_sha256": "e7afa6f74fa2f148608a5d2e244bfe7515cc2c807c040f4a6b030bb6e327f788",
+          "fragment_code": 112
+        },
+        {
+          "file": "backend/t44/scheduling/facade.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "47f3ca4da95a7f0136b413a1bc74ec7cb6fc0dd5c281926bfe77aeacc9d9c2a5",
+          "fragment_code": 6
+        }
+      ],
+      "segmented_code": 205,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/domain/state_machine.py": {
+      "source_sha256": "81c9807e5088842e92aaee8f1d156579fb6fc1ca09beb5f3478b5f10f6655c00",
+      "formal_code": 193,
+      "segments": [
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_require",
+          "start": 36,
+          "end": 38,
+          "fragment_sha256": "b4d4bc3e684c8d82435d2a40b20e02daeedafe0d4c533c6c8243b836fa3297ee",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_present",
+          "start": 41,
+          "end": 42,
+          "fragment_sha256": "0d612b9f1fb83a6c6621e5062cc171cd7bd423c92d3860b514769eaef350faf4",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_evidence",
+          "start": 45,
+          "end": 49,
+          "fragment_sha256": "3ed2965a7d14aa194f60a9c8eed9422e818aa5002bd6eeb6f41b40a7d2550ace",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_stage_role",
+          "start": 52,
+          "end": 62,
+          "fragment_sha256": "147f6f7a72878036eefbca3d3b318705ca8e1f3e72805309911ea19f7f4055b7",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_dependencies",
+          "start": 65,
+          "end": 69,
+          "fragment_sha256": "5a2c6c579c5f85b4692f81bc26fb8d9da0660aa9cfe5eb277a32b21732a1540b",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "_review",
+          "start": 72,
+          "end": 87,
+          "fragment_sha256": "e50da2f6f9f4d0a727adfe308534876aaf48efaa173046c2fc52cb687b65204c",
+          "fragment_code": 16
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "decide",
+          "start": 90,
+          "end": 217,
+          "fragment_sha256": "c15e9300b49acd4a39aef8aad37e03701862a2b07501c6b7149742d19b6361d6",
+          "fragment_code": 121
+        },
+        {
+          "file": "backend/t44/domain/state_machine.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "ae3d7fb5e819fe11eab53157f4e2b029eeb35f08c932da4c3dcaa0fadbcaa064",
+          "fragment_code": 30
+        }
+      ],
+      "segmented_code": 193,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/projects.py": {
+      "source_sha256": "87493efe1d878a3fc0fc4095fd7d4050efe7ac52e52b7a6a7b4fccd1640088d3",
+      "formal_code": 182,
+      "segments": [
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.project_model",
+          "start": 9,
+          "end": 10,
+          "fragment_sha256": "484f71fd2fa31ae7ee5480c8cd8b1cabd705fd400d45b48d66ca774d35e857cd",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.member_model",
+          "start": 12,
+          "end": 19,
+          "fragment_sha256": "f861ac97a2bb15df3558e21de9ab8399c7155278c16ea41f097f2bcd19d28bc0",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.createProject",
+          "start": 21,
+          "end": 34,
+          "fragment_sha256": "2e44965f87a7120e34caac41040ae4faaa1f932740534017a7c6e40cd77e2333",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.listProjects",
+          "start": 36,
+          "end": 45,
+          "fragment_sha256": "129d6ef90ed82ed6fac1dd016f5e60faf3eeaa1c683f01a37e9a22104d0b5299",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.getProject",
+          "start": 47,
+          "end": 48,
+          "fragment_sha256": "7b3c117baea33087511a70b389c435e2225d1863e51c651105fb410ed0816bac",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.listProjectMembers",
+          "start": 50,
+          "end": 57,
+          "fragment_sha256": "76f28076a193f0781266aa89245b4c95f2ff87c1f83e97bef6fef9e673497d18",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.addProjectMember",
+          "start": 59,
+          "end": 77,
+          "fragment_sha256": "14ecd6efb4a4dfac7b45480c53d396ced40e963ddf27e70c33592a55571430d2",
+          "fragment_code": 19
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects._change_member",
+          "start": 79,
+          "end": 114,
+          "fragment_sha256": "0449cca2644063d00308166279562e8a37455ed956cce1f3c2570a68160be3b4",
+          "fragment_code": 36
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.changeProjectMember",
+          "start": 116,
+          "end": 117,
+          "fragment_sha256": "24fc5e9ca70c6bad875d6bd4e60b5f22a7bb451ef4180c808bd9350f2de6a81f",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.removeProjectMember",
+          "start": 119,
+          "end": 120,
+          "fragment_sha256": "3c6c20e068753c36e3f57bdef8400e16805698d87b96aab5296f8e9c574d9096",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.capacity",
+          "start": 122,
+          "end": 132,
+          "fragment_sha256": "1985d9ad2e3c5b10aa0160f73c5e641e2d7960408d079cc72b30d44158d3a002",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.iteration_model",
+          "start": 134,
+          "end": 135,
+          "fragment_sha256": "204bd77b11fc9199a600b77969c5767ff2f939640f44788b13e1172248170ecd",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.createIteration",
+          "start": 137,
+          "end": 140,
+          "fragment_sha256": "bdc64a5c95d3cd9d4074aae1047617add1590e84058eeade90e377e72624f63b",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.listIterations",
+          "start": 142,
+          "end": 143,
+          "fragment_sha256": "c3a79908ee020ebb166a456197c868a0a20d3b49c132b42efe2ac69384400520",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.changeIteration",
+          "start": 145,
+          "end": 171,
+          "fragment_sha256": "078dfcbe5101c45a370aedde39992058b2867bffed09123ab82e15bcc0868c4c",
+          "fragment_code": 27
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "Projects.schedule_diff",
+          "start": 173,
+          "end": 201,
+          "fragment_sha256": "abcf36217c6c50a230a14e7797d255391d66ae6aada56351a90b1d543a51d611",
+          "fragment_code": 29
+        },
+        {
+          "file": "backend/t44/services/projects.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "0d46a3c7b10653447952e144ea2a0f6b31786949f9929dbc183dcbe90134a898",
+          "fragment_code": 4
+        }
+      ],
+      "segmented_code": 182,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/domain/models.py": {
+      "source_sha256": "0c2452b0db634beea4fa64a94866c23a40a1b96573e312ff0f540fbb9a5a6b71",
+      "formal_code": 177,
+      "segments": [
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "_positive_counter",
+          "start": 94,
+          "end": 96,
+          "fragment_sha256": "a541183226fb6215bba2af6fb55d93f58d20f75bcc52cf89a9ffc87dd4485915",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "_boolean_flags",
+          "start": 99,
+          "end": 101,
+          "fragment_sha256": "f0c1bfd6b8381d353acfb3436557884bbfae5663b59349e993a09ee5d3f51f21",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "DomainViolation.__init__",
+          "start": 89,
+          "end": 91,
+          "fragment_sha256": "3a394ea63293393f1c8a59c26022af69c42717bf6ad43bcca534bf8994be6a49",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "TaskPosition.__post_init__",
+          "start": 119,
+          "end": 126,
+          "fragment_sha256": "e328d5e92691b63893699cc187ba51bd7f759ac95f6ddc1d392fefa58e0d8d6e",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "Cycle.__post_init__",
+          "start": 134,
+          "end": 136,
+          "fragment_sha256": "9f18397c725fb82f2768891004261b01c6c66a52caa38ade1b7eb99c29d5f250",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "ReviewGate.__post_init__",
+          "start": 148,
+          "end": 151,
+          "fragment_sha256": "9d8f1eecf173f0fee31a94603806e8d35fb58f17c5225266daad3365f93f1f01",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "ReleaseGate.__post_init__",
+          "start": 164,
+          "end": 172,
+          "fragment_sha256": "2e57b4fb429a9d415e656f7b04053cad85290623fa0446b03e1b35274b895242",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "RollbackGate.__post_init__",
+          "start": 182,
+          "end": 184,
+          "fragment_sha256": "d4993620ffe0fc56c69149c683a6863ef9bb86c1a7a351635aedcd04a1372516",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "TransitionContext.__post_init__",
+          "start": 203,
+          "end": 215,
+          "fragment_sha256": "5d93505c47cc98ca23e772e2808efd4e295d0eb396bc6744e333bff924c18453",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/domain/models.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "c741f866131e099c3842fd4e58c6e3e9e9e46720c8703a3f2d2492ecb12e3b37",
+          "fragment_code": 128
+        }
+      ],
+      "segmented_code": 177,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/application.py": {
+      "source_sha256": "9fab03fcfba28aacca6f6a479fda5410b1cd3882df63955818d39e4a88ab16ea",
+      "formal_code": 168,
+      "segments": [
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.__init__",
+          "start": 33,
+          "end": 34,
+          "fragment_sha256": "7c3682842f4c0511ee93c7a25a64842eb732cbc962230614f48160ecdd92a50f",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.status",
+          "start": 36,
+          "end": 37,
+          "fragment_sha256": "f50d82794405d4bcbcd1c33dbd2da30186126eea153e9db41f10a01d8883d7f9",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.dispatch",
+          "start": 39,
+          "end": 61,
+          "fragment_sha256": "506789ee391afbef4c3da58260a76157f4ee9cc1c9b43627b76dcd4ff262a6f5",
+          "fragment_code": 23
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.finalize",
+          "start": 63,
+          "end": 67,
+          "fragment_sha256": "0c1a77359526f9b6688f11a9a334b2e60f00ec0ee203e94a63a62f9d41891194",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.validate_data",
+          "start": 69,
+          "end": 70,
+          "fragment_sha256": "a3be6e708c9b988e7e533c2245fcd54c04ec753444ef374347290fc70c1042b6",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.outbox",
+          "start": 72,
+          "end": 82,
+          "fragment_sha256": "4a0c51752b3f02af58933bcc5b0683709b22e1f4e9ac4578017e4340884719d6",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.getMe",
+          "start": 84,
+          "end": 85,
+          "fragment_sha256": "5281c1cd8a64dad9baa227bfd16ad50ac44c0dd21e3cc2939a98a93d55a46bfd",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.getDictionaries",
+          "start": 87,
+          "end": 106,
+          "fragment_sha256": "2552dc7b3f8120048d64e77cea4a74ce6f39cae576b80feb02466fbb31848ece",
+          "fragment_code": 20
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.validateContractPayload",
+          "start": 108,
+          "end": 130,
+          "fragment_sha256": "f0b6fdbb4601042361687e6b14a60f6c6ec6cad63603c072d7c7619ec14d1e23",
+          "fragment_code": 22
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.listProjectAuditEvents",
+          "start": 132,
+          "end": 150,
+          "fragment_sha256": "f5d44f604463d9b43d7d8df2556e357c50cb745181d77b3179bee49debdf7a35",
+          "fragment_code": 19
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.listMyNotifications",
+          "start": 152,
+          "end": 154,
+          "fragment_sha256": "6abecac1facfedede7ebfee690ec18b4ef2bc48163a44a0dee0c696e795ccb69",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.markNotificationRead",
+          "start": 156,
+          "end": 165,
+          "fragment_sha256": "f917310ddd75e97b3fbf5a8c9bb1ea13652f04a9ea6f600552ede333ad1ed9ec",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.handleNotification",
+          "start": 167,
+          "end": 178,
+          "fragment_sha256": "9273a6f727ac18152cc8082b6939b068da061a942184f35e4d96f04679d4faeb",
+          "fragment_code": 12
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business._escalation",
+          "start": 180,
+          "end": 182,
+          "fragment_sha256": "38bd10ee63bcd3b4ec0a19b2391b94337c7df7187b0ed93198b104da139034f3",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.getEscalationRules",
+          "start": 184,
+          "end": 185,
+          "fragment_sha256": "1a04eb6a3924c1d826916f7b83bf5857494de242aac8d786f71d7563b94db161",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.listEscalations",
+          "start": 187,
+          "end": 188,
+          "fragment_sha256": "a46570c16d9a6621b5444db6ec766146ca652f5f63980146ba50c68fda226f45",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "Business.createEscalation",
+          "start": 190,
+          "end": 191,
+          "fragment_sha256": "899487cfaf3cd634a93917e2e17fab576df06d5931789d7eec7a115e8ab7c1d2",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/application.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "ca6000e451f219b8681a9c74d43e259c541e940972cfd4a1c714806bc42d4ae3",
+          "fragment_code": 26
+        }
+      ],
+      "segmented_code": 168,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/delivery.py": {
+      "source_sha256": "98300672dcababf20cf4e4de6fb4c67c629d1b04eb0736ef82dedf49f90d62f3",
+      "formal_code": 167,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.__init__",
+          "start": 12,
+          "end": 13,
+          "fragment_sha256": "7760037bb066a467eb2c15146de6d1ee5cf55337e11805c5bd5771c033781268",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.get",
+          "start": 15,
+          "end": 17,
+          "fragment_sha256": "0f646e6b50cee63ef79133cc33931df00a8dc8e28b77b45c4c7ea996d5653839",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.claim",
+          "start": 19,
+          "end": 54,
+          "fragment_sha256": "828075d37525668bdc48507ec63e1f4f131e1ff3175224716ce779f7345699c0",
+          "fragment_code": 36
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.confirm",
+          "start": 56,
+          "end": 70,
+          "fragment_sha256": "7bf7d13b393189f2976178b62fa79d1ce290d123f4beb5ea9a8cda0514381b41",
+          "fragment_code": 15
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore._notices",
+          "start": 72,
+          "end": 103,
+          "fragment_sha256": "82021884b6796a5ae73144f9a7c438d10e4b1aa9e3d505ccbb8b66015b560873",
+          "fragment_code": 32
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.consume",
+          "start": 105,
+          "end": 114,
+          "fragment_sha256": "6404a64eed6571ef5b1deada197740ea26d87e0d7ac04988d88c8cbffe28f540",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.recover_confirmed",
+          "start": 116,
+          "end": 136,
+          "fragment_sha256": "2a5c71478586e65e51af01e6e189507077335b7c46de9d56f472bc167b451ba0",
+          "fragment_code": 20
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.fallback",
+          "start": 138,
+          "end": 160,
+          "fragment_sha256": "c3ffa2ffadf778e022f86819ff0f0d832920c74ca2d7b9eb6c67a441a715d0a1",
+          "fragment_code": 23
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "OutboxStore.retry",
+          "start": 162,
+          "end": 182,
+          "fragment_sha256": "71ff4c25a5d3a272028704ee65ebe6a0f3baa5243c23f0e5ea3ea1baf41e0609",
+          "fragment_code": 21
+        },
+        {
+          "file": "backend/t44/persistence/delivery.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "dbdc68f21aa910a6e62e5d37a308e3a900786c25e90264e4fd201e47be2b8b8c",
+          "fragment_code": 6
+        }
+      ],
+      "segmented_code": 167,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/cli.py": {
+      "source_sha256": "da88377aed1131fb82aea31ef2783e02af01c6b620518f3d1b9e8b01175112db",
+      "formal_code": 147,
+      "segments": [
+        {
+          "file": "backend/t44/cli.py",
+          "function": "_parser",
+          "start": 18,
+          "end": 43,
+          "fragment_sha256": "bb10f41131e4993a1afd6f9c7e65a0537f2413b272f19a4abe29b985b785deb7",
+          "fragment_code": 26
+        },
+        {
+          "file": "backend/t44/cli.py",
+          "function": "main",
+          "start": 46,
+          "end": 157,
+          "fragment_sha256": "6ee2dc620425c5e06870ad9c7f37b08b976bdf9bfbe39a951b70766f163a4e21",
+          "fragment_code": 107
+        },
+        {
+          "file": "backend/t44/cli.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "6bb0bcf4e4378fe55fc0ceddfbe8288b4099ee2dc1a512d16e5a0860a6506aa9",
+          "fragment_code": 14
+        }
+      ],
+      "segmented_code": 147,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/tasks.py": {
+      "source_sha256": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+      "formal_code": 146,
+      "segments": [
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.owner",
+          "start": 9,
+          "end": 15,
+          "fragment_sha256": "1c49a7e85987be75554093856f98a9d865a8a5a75a02061f0e480ab1f4b5294a",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.capacity_owner",
+          "start": 17,
+          "end": 22,
+          "fragment_sha256": "5003a39929f03fa7f48e8a6e73cc9f4d870c7713f029a0f60ca5450aff18e187",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.iteration",
+          "start": 24,
+          "end": 27,
+          "fragment_sha256": "abdea0ee0ce3a6f95b78ab1a8b610322c480a57a84997b54c2125751bbfc3ea7",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.prestart",
+          "start": 29,
+          "end": 32,
+          "fragment_sha256": "c717980920a6a98d934a3818d82cf473c3f7faa09cb1a552a8f064e21afe5f4c",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.dependency_model",
+          "start": 34,
+          "end": 36,
+          "fragment_sha256": "03d6e74fd420905917c043a8a1a6c3712f527de807fcb6c1e85af3f01a0c02a3",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.check_graph",
+          "start": 38,
+          "end": 56,
+          "fragment_sha256": "9d70e8222f9d54bd8080efe2e54086b207673e78ba061a287a215d1a02a6ae59",
+          "fragment_code": 18
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.createTask",
+          "start": 58,
+          "end": 90,
+          "fragment_sha256": "714be60f122d9bdfb4e39147b3dd255f471ff1795801ae9f6d9809333af6c489",
+          "fragment_code": 32
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.listTasks",
+          "start": 92,
+          "end": 97,
+          "fragment_sha256": "6b40cca7a2c9856a19750b7498883dbacef514da7fb8bdabe289b9764a6da00d",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.getTask",
+          "start": 99,
+          "end": 100,
+          "fragment_sha256": "de232b59034be317d8ac8222b4cbb23c4aa07bfc4573dc7a81f780daf1714da0",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.changeTaskPlan",
+          "start": 102,
+          "end": 122,
+          "fragment_sha256": "76af1ce27d24a8813bb4a10e8f185d1a9e7051d20eeefd08673b6a032ac3c26f",
+          "fragment_code": 21
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.changeTaskAssignment",
+          "start": 124,
+          "end": 132,
+          "fragment_sha256": "b8a3772d1911e14384f624edd38abc72b757c7ef4cdef7d3aeeb9cabf6ab3d59",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.addTaskDependency",
+          "start": 134,
+          "end": 151,
+          "fragment_sha256": "cb90bc6839832fdb779769f17c4fc882e5c125b438c6f9e9f819ff6612bdab45",
+          "fragment_code": 18
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "Tasks.removeTaskDependency",
+          "start": 153,
+          "end": 164,
+          "fragment_sha256": "be966ca8c0f943383a334f4d969ef92e34e60c7ae04f4d0f3b6914719fc33aef",
+          "fragment_code": 12
+        },
+        {
+          "file": "backend/t44/services/tasks.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "9bdddd481e3e39e303aff408787ef271237c938541cd3965cc1dda2d61c6eadc",
+          "fragment_code": 4
+        }
+      ],
+      "segmented_code": 146,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/reviews.py": {
+      "source_sha256": "f69358370a4cb03935ec1a0fb5de71686a2582301e763a2f4273f4f1b76c34a9",
+      "formal_code": 145,
+      "segments": [
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "Reviews.getReviewTemplate",
+          "start": 17,
+          "end": 21,
+          "fragment_sha256": "37ed4a58b041d8c71a66243993c10d6babcaccb6c3dd50961ed37007d084ed36",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "Reviews.review_complete",
+          "start": 23,
+          "end": 26,
+          "fragment_sha256": "9a47f895975511c98f4f2ebb2ce29c788144413b20700d716bcf21b79aaa7438",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "Reviews.createTaskReview",
+          "start": 28,
+          "end": 62,
+          "fragment_sha256": "09d9cf5a98083e2be84a34f16083e4adbb16cbee8383f2ed1a12c096eca80feb",
+          "fragment_code": 35
+        },
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "Reviews.createReleaseAssessment",
+          "start": 64,
+          "end": 107,
+          "fragment_sha256": "03c41dc570a87095c777f90752eff101336b094b6152c1b17104706c3b576526",
+          "fragment_code": 44
+        },
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "Reviews.reviewReleaseAssessment",
+          "start": 109,
+          "end": 155,
+          "fragment_sha256": "76228c9c11286d95ea43f368d3ee5901085be427d36729db8d2e4fc0c7f59f4b",
+          "fragment_code": 47
+        },
+        {
+          "file": "backend/t44/services/reviews.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "45edb13403775cb0cf354c5e1a26e0884e3ffbe232478c966b92ceda3bad1ec3",
+          "fragment_code": 10
+        }
+      ],
+      "segmented_code": 145,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/scanner.py": {
+      "source_sha256": "6c724d7f0360128e9474cce631f9b2b9bf282072e8aeb9876457f9a720401ed4",
+      "formal_code": 141,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "validate_call",
+          "start": 21,
+          "end": 36,
+          "fragment_sha256": "f6f8278f53ecd03b7173dbe1cb0f939d02f4e1ebf9f1f23292e1af36c7938de6",
+          "fragment_code": 16
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "ScanFailure.__init__",
+          "start": 16,
+          "end": 18,
+          "fragment_sha256": "0c3dcc71bb371c9d8e592ad7df601b0e0d5d5e5af238ad1cc2ba671258bbc80d",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "Scanner.__init__",
+          "start": 40,
+          "end": 45,
+          "fragment_sha256": "890988b07c7295afca1f01d477a1c6e14ef2c21c3fd95a74c2b73a29118757e3",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "Scanner._scope",
+          "start": 47,
+          "end": 65,
+          "fragment_sha256": "3b88f479333d9c62cc3bbb0777dbedd6956d18595eb0bac0c7752ea84326cc02",
+          "fragment_code": 19
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "Scanner._execute",
+          "start": 67,
+          "end": 100,
+          "fragment_sha256": "c21d8a59dad04c1b21122b7c0be768c6eb0ee4f5c40c3e5b639dbaa824601b2c",
+          "fragment_code": 34
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "Scanner.run",
+          "start": 102,
+          "end": 143,
+          "fragment_sha256": "158ddf88f99ccc147bd079c7008ff164a198bb8bb90389e924c5d1d4a56cfd3e",
+          "fragment_code": 40
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "Scanner.tick",
+          "start": 145,
+          "end": 158,
+          "fragment_sha256": "96014cf6cb84cc4d91bd019e8a4ed1ac1240b6eb97d2fe440a938e5bf8705a4c",
+          "fragment_code": 12
+        },
+        {
+          "file": "backend/t44/scheduling/scanner.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "f05f6396400c762d1c80b79e6f78153483039fc644688c0f5cb10e3ff691d426",
+          "fragment_code": 11
+        }
+      ],
+      "segmented_code": 141,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/rules.py": {
+      "source_sha256": "4b182e8f531f22f86e8bfd019a84ce9a844ef29eca1a58ed341d38e86e1d1428",
+      "formal_code": 140,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "_unique_object",
+          "start": 69,
+          "end": 75,
+          "fragment_sha256": "cda59bb41a4a440d87dc160f6355677476a8dcd4d0cce3ac77d7d859c18f2320",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "load_rules",
+          "start": 78,
+          "end": 134,
+          "fragment_sha256": "7a2d28c5ef70fdfd3c5c0cd29ea7f26ded8a83b3e760a6361c9da05264655b35",
+          "fragment_code": 56
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "parse_utc_timestamp",
+          "start": 137,
+          "end": 150,
+          "fragment_sha256": "b609163694e1652321c215ba9d0556e4f693f8b294df848ff004e17bbe22a20a",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "select_window",
+          "start": 153,
+          "end": 171,
+          "fragment_sha256": "9ce5b562e558a8860c18ebd5a4148e606c0d14d91bcd2f5af74162923fd00fd3",
+          "fragment_code": 18
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "EscalationRules.rule_version",
+          "start": 45,
+          "end": 47,
+          "fragment_sha256": "f3f8ce7e9ba9973aefef926120d582ebee1dc79529bf2311590e75e67fab965a",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "EscalationRules.snapshot",
+          "start": 49,
+          "end": 50,
+          "fragment_sha256": "dc0925eab7ddc8b9cd02c85698b136ea71beaa9bec4483d415df98501432ada0",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "WindowMatch.code",
+          "start": 60,
+          "end": 62,
+          "fragment_sha256": "57052fef6af312efeefb9f2d587bfa521a8f7ed8af630f370337e15a38646e3f",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "WindowMatch.recipient_roles",
+          "start": 64,
+          "end": 66,
+          "fragment_sha256": "f6a20c1afd0eb8f32c3768e446a7c0691d240cb19d0a0f01f1a0629ad424d9ed",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/scheduling/rules.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "eb397473049d3115d0f9516d0f299f44f37f813af0b89f2246f04af60cfa6ce7",
+          "fragment_code": 35
+        }
+      ],
+      "segmented_code": 140,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/common.py": {
+      "source_sha256": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+      "formal_code": 132,
+      "segments": [
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "now",
+          "start": 16,
+          "end": 17,
+          "fragment_sha256": "e399e87a1a00a294c28353303626fc11e64c0aa3017cab89679384bacf607577",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "wire",
+          "start": 20,
+          "end": 29,
+          "fragment_sha256": "cb23848da02bb4ffe7eba5ffdd131245d529cd073d1ba2210155ab4fd9a25d50",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "time",
+          "start": 32,
+          "end": 33,
+          "fragment_sha256": "9dcd43eb3cea026fb1aea69cb7c2e2bc1fe50d54168c78b94995e3b260ff3d21",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "roles",
+          "start": 36,
+          "end": 37,
+          "fragment_sha256": "3b46e06b87290b3e970d8eeb365e1826415d1597e374961b27ca9a3f08d769b0",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "mask",
+          "start": 40,
+          "end": 41,
+          "fragment_sha256": "17d2e97516d5bf2425edd8a0c10a923b40f29c1ca02d16bde5c8d287228202df",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "model",
+          "start": 44,
+          "end": 46,
+          "fragment_sha256": "afc0873e91f2fc22436242e2838fdc391d2e1bd7f420339371a737b897a44965",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "plan",
+          "start": 49,
+          "end": 56,
+          "fragment_sha256": "a0e79095539c2e5787f10968378577a73c53de3a649fa46dd2a1aec9a194ae59",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "plan_values",
+          "start": 59,
+          "end": 70,
+          "fragment_sha256": "0e549478f69ccf9af35f7550e2337ea7d847499bd78a2684b6af368d8e5af061",
+          "fragment_code": 12
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "task_model",
+          "start": 73,
+          "end": 74,
+          "fragment_sha256": "7924ef295d49f23154f8ac7f2f98f1eab046055381570b4a31807cb7af722aee",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "page",
+          "start": 77,
+          "end": 92,
+          "fragment_sha256": "cec7e6d99c6498e8940ae2dd42f3738c83680008a9901001a5211f5b59719a09",
+          "fragment_code": 16
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "uuid_text",
+          "start": 169,
+          "end": 170,
+          "fragment_sha256": "d8a7257180fa115385eb2fec16b188ba19068abbdc5b00ccdb0212fdce4f6c60",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.project_id",
+          "start": 113,
+          "end": 115,
+          "fragment_sha256": "76ed9a75fef80674b4bbc3a3c67ec618c6b0d6b7660934d547303478a23207fd",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.actor_id",
+          "start": 117,
+          "end": 119,
+          "fragment_sha256": "bada997f897f2dbd3153d5e1a49581235213eafb13ea724a84333da1bcc5e313",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.manager",
+          "start": 121,
+          "end": 122,
+          "fragment_sha256": "fbba4b8caa380a44b004fa156eabfde1c9288993e6a7cd39c891cd033f9753bf",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.reviewer",
+          "start": 124,
+          "end": 125,
+          "fragment_sha256": "b164c6d7108938900ec8db7f2e1ec2c9e4df182a9e1353adc457cce511d04e62",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.task",
+          "start": 127,
+          "end": 130,
+          "fragment_sha256": "3f06899913e5f22c5c8249cfbc7c78adfef24d0a728afd686f62adc1a24db909",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.create",
+          "start": 132,
+          "end": 141,
+          "fragment_sha256": "e862ff359dc556de9639834c9abb393bf8706f388eaf0e1a078030f8ca429ff7",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.check_version",
+          "start": 143,
+          "end": 151,
+          "fragment_sha256": "87d2954117a9e321f4135bac174b1d7c38996f924362dc326a5fc4c73490f60e",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "Call.cas",
+          "start": 153,
+          "end": 166,
+          "fragment_sha256": "4431eed6ab3633d72d61a84e5e78d173d75f63b47597190ea85cab55fe476e56",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "53770d9d4b31a455106b239a2ceceae21d0fe824b3a3b96a7f3ea1d643ba7d23",
+          "fragment_code": 25
+        }
+      ],
+      "segmented_code": 132,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/messaging/broker.py": {
+      "source_sha256": "2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472",
+      "formal_code": 129,
+      "segments": [
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "consume_delivery",
+          "start": 122,
+          "end": 149,
+          "fragment_sha256": "2497615d21d8b0876bdae5fd37b29fe827fba09e5389b52cba7a19dddcdca618",
+          "fragment_code": 27
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "BrokerSettings.__post_init__",
+          "start": 22,
+          "end": 26,
+          "fragment_sha256": "4a27fdaf9cd85d62edac23f7751db5f67cda5dc343cb21cd1a1ad41088d38958",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker.__init__",
+          "start": 30,
+          "end": 32,
+          "fragment_sha256": "23e2aab5bd0a9e6347b1465be49514a36eea1c6b690b96c3915775949fc85cda",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker._channel",
+          "start": 34,
+          "end": 65,
+          "fragment_sha256": "705fc2bfcf611522ab21e6047e02fc40162a934e2d958353a59987b2d4230072",
+          "fragment_code": 32
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker.publish",
+          "start": 67,
+          "end": 92,
+          "fragment_sha256": "119e8c0489fe4a679deeffb20ddcd11cbf4adc7e800c0e4b71a0e8c6327f3313",
+          "fragment_code": 26
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker.get",
+          "start": 94,
+          "end": 102,
+          "fragment_sha256": "5689b791f072714df60314a65ee0d55a33d82f84173abc90402fedeb7dc0dae3",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker.keepalive",
+          "start": 104,
+          "end": 110,
+          "fragment_sha256": "3e4b54b2faa4a596293b578938067c42bb90a3c72feab1b1c2bd940f8f549516",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "PikaBroker.close",
+          "start": 112,
+          "end": 119,
+          "fragment_sha256": "20d19d8c4b9d1b7ab000fa11de9ad9c3005ea0c647a69dc63136ae3c08bc7e71",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/messaging/broker.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "1f20f77617a8a2da407f5e02e58867a1f8594a19bc3b04bb68f3b6a04f255ef0",
+          "fragment_code": 12
+        }
+      ],
+      "segmented_code": 129,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/schema.py": {
+      "source_sha256": "cd1465fc7560c0f13bb80216507b237e297e2177eccf280d8802651f0458e4bd",
+      "formal_code": 117,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "ddl_text",
+          "start": 28,
+          "end": 32,
+          "fragment_sha256": "70e28fc087ad12e924fc629a75ee72cf7e4dabaec86ca09b913b18bccb8836ef",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "_parts",
+          "start": 35,
+          "end": 45,
+          "fragment_sha256": "6aa81380d816995b95b0d321e9c67aa8243aeca4e6a81aacd594f00f4d654875",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "_type",
+          "start": 48,
+          "end": 65,
+          "fragment_sha256": "70cc89b24154f838d56427b4f310200b41190e7c98704688e7760cbc6434e45f",
+          "fragment_code": 18
+        },
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "_foreign_key",
+          "start": 68,
+          "end": 74,
+          "fragment_sha256": "3e60bbfe0700f4af59b330972f52abdfde9fabb1d904cc3570e5461c9bb8f39d",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "build_metadata",
+          "start": 77,
+          "end": 130,
+          "fragment_sha256": "a4596f04d63e7d10a51b7ffc8415864c95ce4b6810d5195d4ef2d7622e21de0d",
+          "fragment_code": 53
+        },
+        {
+          "file": "backend/t44/persistence/schema.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "1abf19ba49e87c21de69b857c825ab61f849c4181a29ed1a7b4cbefcc5c6d01e",
+          "fragment_code": 23
+        }
+      ],
+      "segmented_code": 117,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/identity.py": {
+      "source_sha256": "e27eca5dfb9074a0bf709bcc2f75fd47294c08c9736ea85ddc1968d06749ee01",
+      "formal_code": 111,
+      "segments": [
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "token_digest",
+          "start": 21,
+          "end": 22,
+          "fragment_sha256": "3c0e5f9a5106112d5da9f1ff465e5a7926f1ec191df6ef83e220bbd2b96375a9",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "authenticate",
+          "start": 45,
+          "end": 88,
+          "fragment_sha256": "00c697beb532eab454ae1aa228366c5b6a961bf18b250031a183b1917e434db1",
+          "fragment_code": 44
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "login",
+          "start": 91,
+          "end": 104,
+          "fragment_sha256": "f0d83a7c99efa8977fc42e4d08e1e55a18240001ace372e985a94cb748a4433f",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "issue_session",
+          "start": 107,
+          "end": 128,
+          "fragment_sha256": "5f0728bd208339a7b20e9301707f5596acd712cf5c3d09e45c43423a38eb7231",
+          "fragment_code": 21
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "LoginLimiter.__init__",
+          "start": 26,
+          "end": 28,
+          "fragment_sha256": "833ec6531f926c31e5365b9c2f385febe24a997f99609f89bdf0be36b8a7da4c",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "LoginLimiter.check",
+          "start": 30,
+          "end": 42,
+          "fragment_sha256": "0f894207130999558da32daea003a6242f730f39f95d1d43c98631adcb76e03d",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "339941168afe1210750b74162d6856813e72f9e2965f24a986f5f6bb7be994a1",
+          "fragment_code": 14
+        }
+      ],
+      "segmented_code": 111,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/scans.py": {
+      "source_sha256": "d818e394f4e292ecf3d266b945f3fabecd29ef7d6132a11e5a290b9f36f33aff",
+      "formal_code": 109,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.__init__",
+          "start": 11,
+          "end": 12,
+          "fragment_sha256": "7760037bb066a467eb2c15146de6d1ee5cf55337e11805c5bd5771c033781268",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore._run",
+          "start": 14,
+          "end": 18,
+          "fragment_sha256": "e36fd1d21713c61f8934c176ac4970f78c6f2b295482cc7c9c0d404c93f34078",
+          "fragment_code": 5
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.start",
+          "start": 20,
+          "end": 52,
+          "fragment_sha256": "f4d5307b635381e7a70eaedaa2a31dd7398fc97e6faa7a5bbbb778207f9bfbb6",
+          "fragment_code": 33
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.get",
+          "start": 54,
+          "end": 56,
+          "fragment_sha256": "d358b8a54d57deeb3a16eacf77118ab25a42f1f1d2edc92053f35c1feca41536",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.recoverable",
+          "start": 58,
+          "end": 65,
+          "fragment_sha256": "42666559270c85f3db4ffec8bfda93cf3b012116d996e9d396788ae207e7c476",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.page",
+          "start": 67,
+          "end": 83,
+          "fragment_sha256": "0d2847e8c720b0ebe9015c4891168d561f4e3115ae7206afc0257ff8d27a63d6",
+          "fragment_code": 17
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "ScanStore.checkpoint",
+          "start": 85,
+          "end": 120,
+          "fragment_sha256": "0793ed1c64db946636704ba36cf9dbdcc54038908a34535dfcfb9d6a5294e684",
+          "fragment_code": 36
+        },
+        {
+          "file": "backend/t44/persistence/scans.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "5dd3e3c6ac20d698f9c76e5d0e969277694521d12316d7478409a58bac4024cb",
+          "fragment_code": 5
+        }
+      ],
+      "segmented_code": 109,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/__main__.py": {
+      "source_sha256": "66743cc75f1558356c2c605690803310f5c9ecec0abdac579afe21c23fdbefbe",
+      "formal_code": 96,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/__main__.py",
+          "function": "read_token",
+          "start": 26,
+          "end": 33,
+          "fragment_sha256": "7053cb06397c2c9df97ca68792aeae58578b1eddcdd0ec283574861eaba2d23c",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/scheduling/__main__.py",
+          "function": "single_instance",
+          "start": 36,
+          "end": 45,
+          "fragment_sha256": "5955cd3dd4173538d6d073ca4795da558a8a6a14728f55149395ae8160990553",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/scheduling/__main__.py",
+          "function": "main",
+          "start": 48,
+          "end": 104,
+          "fragment_sha256": "d94aec53b3faf2a3d9ea3337c292c403f5c7052dd3520f17aa38dd44d961e7c2",
+          "fragment_code": 57
+        },
+        {
+          "file": "backend/t44/scheduling/__main__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "f7121205dcd527f98fd2a91405226a2e0f7ab49b01b3c72093b19c7c0f4e4921",
+          "fragment_code": 21
+        }
+      ],
+      "segmented_code": 96,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/history.py": {
+      "source_sha256": "36b2fb1aed476bff3d852e113da4584e1906b53f1f5e3d476b730f9f8a1d98ae",
+      "formal_code": 96,
+      "segments": [
+        {
+          "file": "backend/t44/services/history.py",
+          "function": "_snapshot",
+          "start": 11,
+          "end": 54,
+          "fragment_sha256": "201bf6e346043d44724f91c06c16c0936dff577738f18fe85604cf66f4ab5a35",
+          "fragment_code": 44
+        },
+        {
+          "file": "backend/t44/services/history.py",
+          "function": "_matches",
+          "start": 57,
+          "end": 90,
+          "fragment_sha256": "11d7a98fc26ec607589c58fa72208177af32205407a31776a49c8ae32703c043",
+          "fragment_code": 33
+        },
+        {
+          "file": "backend/t44/services/history.py",
+          "function": "project_reasons",
+          "start": 93,
+          "end": 108,
+          "fragment_sha256": "e58794d724143fd9991f6136faa709d53ce138d17b74020f20d792df165e5759",
+          "fragment_code": 15
+        },
+        {
+          "file": "backend/t44/services/history.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "9e33723b54ce1f8ac33afd3366fa1a8a24f9163b7dac0c862bb0d77a3ebdbd5b",
+          "fragment_code": 4
+        }
+      ],
+      "segmented_code": 96,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/messaging/facade.py": {
+      "source_sha256": "61a840949cd0060153ad390fdd0ccc4b5a48f0cb02fa8acf40a11e0ccafa4509",
+      "formal_code": 95,
+      "segments": [
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "notification",
+          "start": 8,
+          "end": 9,
+          "fragment_sha256": "428b21fdbdfd7ddab6dcd971fbec859cb57ed5d4e2aaf1f52f7123f19986fcd6",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "NotificationFacade._membership",
+          "start": 13,
+          "end": 20,
+          "fragment_sha256": "945c27fbb5e0d115ddc94ded19898e66150737f0222257ac64ea019d49cc893b",
+          "fragment_code": 8
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "NotificationFacade.list",
+          "start": 22,
+          "end": 62,
+          "fragment_sha256": "1a0e77035f06896f46fab2a35aaad8e9c7669f248d52e6eec8d438d3140d00f7",
+          "fragment_code": 41
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "NotificationFacade._update",
+          "start": 64,
+          "end": 80,
+          "fragment_sha256": "18c3d5e841cbd13ddf54c83e9ce5953e611f3e3a5832892f86f4163d4fd8811d",
+          "fragment_code": 17
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "NotificationFacade.mark_read",
+          "start": 82,
+          "end": 90,
+          "fragment_sha256": "a9275f28f02120ecb8684ade305a28f6fb5c6314ba28213ca6313e0712181010",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "NotificationFacade.handle",
+          "start": 92,
+          "end": 105,
+          "fragment_sha256": "821fecbaea5c0c1b8f7f8b50dc3435a9dd4223e5dd6fdf1c28d8cbd553415fa6",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/messaging/facade.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "2a7769d57de5fdb66451158b14c35162eaa6983a74dd6afe367ca71311089886",
+          "fragment_code": 4
+        }
+      ],
+      "segmented_code": 95,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/engine.py": {
+      "source_sha256": "f7ec591dad711e3755aeda2606cee8dcaa023b416d8c51592b7b87684121ab9d",
+      "formal_code": 93,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "function": "validate_identifier",
+          "start": 19,
+          "end": 22,
+          "fragment_sha256": "32d32712e4a7de9ca4a318cad58b4f1dcfeb716bf0d4783e720e05c04245b37b",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "function": "initialize_mysql_session",
+          "start": 66,
+          "end": 76,
+          "fragment_sha256": "f281e09503ab358ae11e3426358307fb205d83079036dd5bb5254aa16af66164",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "function": "create_mysql_engine",
+          "start": 79,
+          "end": 109,
+          "fragment_sha256": "f76e639a6f24a046eedffe41374fca1a0c720e18a14aae6cbbd41ff2885be356",
+          "fragment_code": 31
+        },
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "function": "MySQLSettings.__post_init__",
+          "start": 40,
+          "end": 63,
+          "fragment_sha256": "af59bd89c5c9e0539e1dfdb107a13c92aba6e56c5df526e45a783a8eba054d38",
+          "fragment_code": 24
+        },
+        {
+          "file": "backend/t44/persistence/engine.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "ef603c44c3946c396e9ed4e73fcd66dff433a27af6c0449ab8daed6f4526b854",
+          "fragment_code": 25
+        }
+      ],
+      "segmented_code": 93,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/uow.py": {
+      "source_sha256": "3063b8b29a07dd29f188720df637d4e31e0fbc9e8b401be1f2ecbc3188d5897f",
+      "formal_code": 86,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.__init__",
+          "start": 14,
+          "end": 19,
+          "fragment_sha256": "e85c18573ddd993fbadfd747199567a649759b9d8bbcf839f5871020c215b21f",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.__enter__",
+          "start": 21,
+          "end": 34,
+          "fragment_sha256": "19358c9f2c609499eee1ff5c417ce02aa6bc3c4cab1ab21a32bd328fd0498753",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork._require_active",
+          "start": 36,
+          "end": 41,
+          "fragment_sha256": "59c2580c44f9ab045a0a8b730c8c4f480cd019fd97c3f7a94f7a9ca05c61ccfe",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.gateway",
+          "start": 43,
+          "end": 46,
+          "fragment_sha256": "45bb432d70c66ce99c9d336de9ebc3aeb99995d37103a2545a21a6da1b44d262",
+          "fragment_code": 4
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork._mark_failed",
+          "start": 48,
+          "end": 49,
+          "fragment_sha256": "02152bf19188939e2549e9eb1eb540bf59ea613340aa5632c54ede55b8efeff5",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.commit",
+          "start": 51,
+          "end": 64,
+          "fragment_sha256": "a0e4d6645583d95dba55e8e80dac35d2a39f7b0bcdd5e37bc8dcbf9eda57a8ec",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.rollback",
+          "start": 66,
+          "end": 74,
+          "fragment_sha256": "ac83548317436f62a55861e84b017a005b8b27d97d03839b36bc227128ea3505",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork._close",
+          "start": 76,
+          "end": 85,
+          "fragment_sha256": "53d990293cad54f20233c5033db59223ebc7abe4718ac45ec8cb47e58a565b97",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWork.__exit__",
+          "start": 87,
+          "end": 96,
+          "fragment_sha256": "27f2efd4036b775d2a405d9896aa18a9b9e21a5ba946e20bef399eb34576b615",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWorkFactory.__init__",
+          "start": 100,
+          "end": 101,
+          "fragment_sha256": "b61a7e3468870182324b3db387cbde9954eb717861c2bd68d42c04247f8be924",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "SqlAlchemyUnitOfWorkFactory.__call__",
+          "start": 103,
+          "end": 104,
+          "fragment_sha256": "e2ff1f00feab0bbf49461571733bf6aa17b80165d5aeaaaea7a540be8ea48819",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/uow.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "422576c7108e01f440195b957bc3393917b6f7dcda3ef65e7ab951dc677edf0d",
+          "fragment_code": 8
+        }
+      ],
+      "segmented_code": 86,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/messaging/worker.py": {
+      "source_sha256": "266b39185b946484599584f0e49a1dfb6b14cde2566cc7efb73f5386cc86648b",
+      "formal_code": 84,
+      "segments": [
+        {
+          "file": "backend/t44/messaging/worker.py",
+          "function": "DeliveryWorker.__init__",
+          "start": 17,
+          "end": 31,
+          "fragment_sha256": "e898cc2f0876805649fec24da763d706e1db386bb83305e282c185ea5e20e09a",
+          "fragment_code": 15
+        },
+        {
+          "file": "backend/t44/messaging/worker.py",
+          "function": "DeliveryWorker.cycle",
+          "start": 33,
+          "end": 81,
+          "fragment_sha256": "5d463347145e5d7ed1a4ae9a727ceac368d4737bff3a7e0a6b21210973d87535",
+          "fragment_code": 48
+        },
+        {
+          "file": "backend/t44/messaging/worker.py",
+          "function": "DeliveryWorker.run",
+          "start": 83,
+          "end": 95,
+          "fragment_sha256": "d7cbf7f3fcc2f7a461258b8a158d5baaecf54b2cfafc977473febd7b4cead72f",
+          "fragment_code": 13
+        },
+        {
+          "file": "backend/t44/messaging/worker.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "2d8de8d23d65125bf3053d81a37f3eb9439d7afc1c3ae14caa595e0a2f17fb11",
+          "fragment_code": 8
+        }
+      ],
+      "segmented_code": 84,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/codes.py": {
+      "source_sha256": "d6908e0d5a486ebc75cd41f224c63ccd9db904d1aa9988373ea8746fc7475454",
+      "formal_code": 82,
+      "segments": [
+        {
+          "file": "backend/t44/services/codes.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "d6908e0d5a486ebc75cd41f224c63ccd9db904d1aa9988373ea8746fc7475454",
+          "fragment_code": 82
+        }
+      ],
+      "segmented_code": 82,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/accounts.py": {
+      "source_sha256": "c7b0fea49b3d07c275d0de7f47726beb3d9c3a625d34e36a138f418a6e63ad54",
+      "formal_code": 69,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/accounts.py",
+          "function": "initialize_user",
+          "start": 20,
+          "end": 79,
+          "fragment_sha256": "a5c3e10e4ba76538c3c5ef87f215d8244308708081d0349fcce0adeb45db2bec",
+          "fragment_code": 60
+        },
+        {
+          "file": "backend/t44/persistence/accounts.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "5c70b704d799b55404c27a4c3ed98e08627b5df9f6fa6788a9fb7798e9a95c8b",
+          "fragment_code": 9
+        }
+      ],
+      "segmented_code": 69,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/contracts/__init__.py": {
+      "source_sha256": "ee2a72d0ee435a63686e80548da2fdc1b0b2df05c399820e19973f8100dc8cdc",
+      "formal_code": 55,
+      "segments": [
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "function": "validator",
+          "start": 18,
+          "end": 23,
+          "fragment_sha256": "e1247a34531271ed3b663bc56c375da9c921b41bbf4242ac1c3058e1fde27eed",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "function": "_absolute_refs",
+          "start": 26,
+          "end": 34,
+          "fragment_sha256": "2c6c803305039f9bc87ebf7fa7da6ebab3bdd88e4e1c40b36b8d3576fe12c432",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "function": "violations",
+          "start": 37,
+          "end": 45,
+          "fragment_sha256": "4b679129d6eeba136218066f2c3e448a723147f44a19a13c4616779a1aa6bc29",
+          "fragment_code": 9
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "function": "normalized",
+          "start": 48,
+          "end": 53,
+          "fragment_sha256": "b6cb738134758365af09de5467a205f649c0cc2d1a30b8ab640814e9243ceb5e",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "ca6705f1731738e2362a6ac15975eb45f5c4bc756446a2515b99eec65990519e",
+          "fragment_code": 25
+        }
+      ],
+      "segmented_code": 55,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/domain/commands.py": {
+      "source_sha256": "61c746eda2ae8adf70dbff501cb57fb1e7f81a5c76e0586a1a15a3d6460e1f07",
+      "formal_code": 53,
+      "segments": [
+        {
+          "file": "backend/t44/domain/commands.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "61c746eda2ae8adf70dbff501cb57fb1e7f81a5c76e0586a1a15a3d6460e1f07",
+          "fragment_code": 53
+        }
+      ],
+      "segmented_code": 53,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/messaging/__main__.py": {
+      "source_sha256": "356ef3c0eeb5be3750df311fa2dd33cb420e3bf8218eedf9dd86e03ebe32493c",
+      "formal_code": 49,
+      "segments": [
+        {
+          "file": "backend/t44/messaging/__main__.py",
+          "function": "main",
+          "start": 17,
+          "end": 53,
+          "fragment_sha256": "da8c2efa5fc621d4479415a0d82ecb2e3c0b82abf9ffaf4063b3070dacae6b26",
+          "fragment_code": 37
+        },
+        {
+          "file": "backend/t44/messaging/__main__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "4b981ccd0b7ecb8264e8c98e13ed6da60c0c390df6e0d823597ead47afbe4c1f",
+          "fragment_code": 12
+        }
+      ],
+      "segmented_code": 49,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/runtime.py": {
+      "source_sha256": "19ccc353d794fb7d22ab39a3c2ad720d435c0e3fe0760ce508a2918b08fe3778",
+      "formal_code": 39,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/runtime.py",
+          "function": "build_scheduler",
+          "start": 15,
+          "end": 41,
+          "fragment_sha256": "0b32d5a95e91f4207a06c719f5fa115a88e289bf7696f43a13555dec6f1890e7",
+          "fragment_code": 22
+        },
+        {
+          "file": "backend/t44/scheduling/runtime.py",
+          "function": "run_scheduler",
+          "start": 44,
+          "end": 58,
+          "fragment_sha256": "57e16c37b8a1a5e78f5e46bc5a000001a80ddd419a88a4b2f575021c081378cf",
+          "fragment_code": 10
+        },
+        {
+          "file": "backend/t44/scheduling/runtime.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "3faa4e0e69e29ede5e9ff4b37bea3ac4be408ee7c15f26725bec89c1a668c616",
+          "fragment_code": 7
+        }
+      ],
+      "segmented_code": 39,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/settings.py": {
+      "source_sha256": "1c998fa935c2c63891278982cac859fe76899a1e1791f5d7641433416002beea",
+      "formal_code": 36,
+      "segments": [
+        {
+          "file": "backend/t44/settings.py",
+          "function": "Settings.__post_init__",
+          "start": 19,
+          "end": 21,
+          "fragment_sha256": "437d881867a83a1c2764026fb3873061d74ad5325766967c87e1ee7f498e8f58",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/settings.py",
+          "function": "Settings.from_env",
+          "start": 23,
+          "end": 28,
+          "fragment_sha256": "e301c827b72910b60f19238e46615a168943460cd7eb8dab9527d58a2a37ddaf",
+          "fragment_code": 6
+        },
+        {
+          "file": "backend/t44/settings.py",
+          "function": "Settings.mysql_settings",
+          "start": 30,
+          "end": 43,
+          "fragment_sha256": "621841f687b0e3a1c86753da333de7f0e6e00e5e9a60b7b1277d0e8c3e5a06ed",
+          "fragment_code": 14
+        },
+        {
+          "file": "backend/t44/settings.py",
+          "function": "Settings.__repr__",
+          "start": 45,
+          "end": 46,
+          "fragment_sha256": "b785119d7e0e351a8a0d9bc2b019be417586607f8f70f3c4c6b268a1586ef324",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/settings.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "7733faf6189d7ae3daad3385ea3cbce2d1f09614d260e3dc34764d1c8bf84d8e",
+          "fragment_code": 11
+        }
+      ],
+      "segmented_code": 36,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/errors.py": {
+      "source_sha256": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+      "formal_code": 28,
+      "segments": [
+        {
+          "file": "backend/t44/services/errors.py",
+          "function": "require",
+          "start": 34,
+          "end": 36,
+          "fragment_sha256": "a486f6d2123e3aa8db024eafbfb7f94983dd7b041b624f8bf354f57583ee2531",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/services/errors.py",
+          "function": "Rejected.__init__",
+          "start": 13,
+          "end": 19,
+          "fragment_sha256": "4f88fd0f50efd5db2dd2557c85181f4a142186572b05c6ed458bc8a861200797",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/services/errors.py",
+          "function": "Rejected.payload",
+          "start": 21,
+          "end": 31,
+          "fragment_sha256": "3fe1fd919bf76e9cbfe3a8a7f22c45eb3ff35244ffd89cfe288085e9f75a0a00",
+          "fragment_code": 11
+        },
+        {
+          "file": "backend/t44/services/errors.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "89d379baaff81ae9a19089e2cef3ff101bbc46de717218d7da64932162eb9d72",
+          "fragment_code": 7
+        }
+      ],
+      "segmented_code": 28,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/codecs.py": {
+      "source_sha256": "67ce7fe9d9492f8e92c66aa4080203114aaa578702663681c3d88d4a5b6b1c4e",
+      "formal_code": 27,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "utc_now",
+          "start": 8,
+          "end": 9,
+          "fragment_sha256": "0cb03e8da432ea7cb531968a80f93b2828cd8655b007f69c234e9ac80ac15f4b",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "to_db_time",
+          "start": 12,
+          "end": 18,
+          "fragment_sha256": "ae3b906be617ea15bfb0e825c3a389f63f645b1b21c29e4a4c5899cc42a9554a",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "from_db_time",
+          "start": 21,
+          "end": 22,
+          "fragment_sha256": "ad521684460e9346cba266920418131bd47c4342e0d09ca57c99bcce8044bfd5",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "hours_to_quarters",
+          "start": 25,
+          "end": 31,
+          "fragment_sha256": "9e75d0d3812005ca170ce45d692e0799489fca4be5f92e395bd5bee565d85055",
+          "fragment_code": 7
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "quarters_to_hours",
+          "start": 34,
+          "end": 35,
+          "fragment_sha256": "682fc477eff6dbae36d52075f0ba53cd6e8f41de4ab94dcb7f7288580888e088",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "uuid_to_bytes",
+          "start": 38,
+          "end": 39,
+          "fragment_sha256": "79b3c6ba19c50ab8cac37d6bb0a6082489fb0a07ec0a26d7e861d3be68bed6cc",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "bytes_to_uuid",
+          "start": 42,
+          "end": 43,
+          "fragment_sha256": "61173bdeb3f1798a07b8891b240e17d798b934151609a06e0c93902a44df2f50",
+          "fragment_code": 2
+        },
+        {
+          "file": "backend/t44/persistence/codecs.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "d4f6d77cb92d9382991ea7a9d6c098a7ef925f2b23e09bb3f88bf4c9dad4c49d",
+          "fragment_code": 3
+        }
+      ],
+      "segmented_code": 27,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/__init__.py": {
+      "source_sha256": "3a114365e08b4154ec9d5c4399559ee1d512d3cf1e9adeadb5bb9f10bc93d071",
+      "formal_code": 24,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "3a114365e08b4154ec9d5c4399559ee1d512d3cf1e9adeadb5bb9f10bc93d071",
+          "fragment_code": 24
+        }
+      ],
+      "segmented_code": 24,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/scheduling/__init__.py": {
+      "source_sha256": "13546feadd8867b987928a9178a984c1d96aae3e85f66ef6fe71662fb935f21b",
+      "formal_code": 21,
+      "segments": [
+        {
+          "file": "backend/t44/scheduling/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "13546feadd8867b987928a9178a984c1d96aae3e85f66ef6fe71662fb935f21b",
+          "fragment_code": 21
+        }
+      ],
+      "segmented_code": 21,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/persistence/errors.py": {
+      "source_sha256": "76fabd26e20706ba606a8904c23ebaef5b9306e0b65b4757c7d9d999f9156248",
+      "formal_code": 9,
+      "segments": [
+        {
+          "file": "backend/t44/persistence/errors.py",
+          "function": "PersistenceIntegrityError.__init__",
+          "start": 15,
+          "end": 17,
+          "fragment_sha256": "a4cddd64ff65e09fa629e9cb0088adb9c7c7b22d2f1af78ffc255af63fef6554",
+          "fragment_code": 3
+        },
+        {
+          "file": "backend/t44/persistence/errors.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "a2e5652937d90d32cff686f8f80d7367233d39464714672d5cd7845d54bfb8d6",
+          "fragment_code": 6
+        }
+      ],
+      "segmented_code": 9,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/__init__.py": {
+      "source_sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+      "formal_code": 0,
+      "segments": [
+        {
+          "file": "backend/t44/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+          "fragment_code": 0
+        }
+      ],
+      "segmented_code": 0,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/domain/__init__.py": {
+      "source_sha256": "594c0dc3da8797170cc2a4c91df0e1a03e28957ff6d9525838d316d1c97132bc",
+      "formal_code": 0,
+      "segments": [
+        {
+          "file": "backend/t44/domain/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "594c0dc3da8797170cc2a4c91df0e1a03e28957ff6d9525838d316d1c97132bc",
+          "fragment_code": 0
+        }
+      ],
+      "segmented_code": 0,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/messaging/__init__.py": {
+      "source_sha256": "0223fc2eea2e0bc490de900bcac14f7b17bf7ce8d83d4bbc02bbe11d569a8a63",
+      "formal_code": 0,
+      "segments": [
+        {
+          "file": "backend/t44/messaging/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "0223fc2eea2e0bc490de900bcac14f7b17bf7ce8d83d4bbc02bbe11d569a8a63",
+          "fragment_code": 0
+        }
+      ],
+      "segmented_code": 0,
+      "reconciles_formal_file_code": true
+    },
+    "backend/t44/services/__init__.py": {
+      "source_sha256": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+      "formal_code": 0,
+      "segments": [
+        {
+          "file": "backend/t44/services/__init__.py",
+          "function": "<module declarations/imports>",
+          "fragment_sha256": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+          "fragment_code": 0
+        }
+      ],
+      "segmented_code": 0,
+      "reconciles_formal_file_code": true
+    }
+  },
+  "backend_formal_code": 5217,
+  "file_partition_matches": true,
+  "largest_functions": [
+    {
+      "file": "backend/t44/persistence/seed.py",
+      "function": "_populate",
+      "start": 34,
+      "end": 291,
+      "fragment_sha256": "1893b7559e932fd088c9042832b1cc930aa52075476d748aefb9b90403c712b8",
+      "fragment_code": 255
+    },
+    {
+      "file": "backend/t44/services/workflow.py",
+      "function": "Workflow.transitionTask",
+      "start": 62,
+      "end": 265,
+      "fragment_sha256": "025844e4737a0c9822d907c88164f8cbc08e6a29ec2c7d240f72b181c883243e",
+      "fragment_code": 203
+    },
+    {
+      "file": "backend/t44/domain/state_machine.py",
+      "function": "decide",
+      "start": 90,
+      "end": 217,
+      "fragment_sha256": "c15e9300b49acd4a39aef8aad37e03701862a2b07501c6b7149742d19b6361d6",
+      "fragment_code": 121
+    },
+    {
+      "file": "backend/t44/scheduling/facade.py",
+      "function": "EscalationFacade.create",
+      "start": 106,
+      "end": 217,
+      "fragment_sha256": "e7afa6f74fa2f148608a5d2e244bfe7515cc2c807c040f4a6b030bb6e327f788",
+      "fragment_code": 112
+    },
+    {
+      "file": "backend/t44/cli.py",
+      "function": "main",
+      "start": 46,
+      "end": 157,
+      "fragment_sha256": "6ee2dc620425c5e06870ad9c7f37b08b976bdf9bfbe39a951b70766f163a4e21",
+      "fragment_code": 107
+    },
+    {
+      "file": "backend/t44/persistence/migrations.py",
+      "function": "migrate",
+      "start": 244,
+      "end": 345,
+      "fragment_sha256": "89cb4d2103f72d1ab273e99fb364db2123e0ce41ed4ec5f09570af7cd86f2878",
+      "fragment_code": 102
+    },
+    {
+      "file": "backend/t44/persistence/migrations.py",
+      "function": "check_schema",
+      "start": 145,
+      "end": 241,
+      "fragment_sha256": "ad903df0f2d12a63be692daf7808077252688c4f68da7847e3c7c3e488d9f6fa",
+      "fragment_code": 95
+    },
+    {
+      "file": "backend/t44/persistence/seed.py",
+      "function": "seed_demo",
+      "start": 294,
+      "end": 384,
+      "fragment_sha256": "a43e0cce10612064e45c0f29f85b500924f2da788d1a8771e3c78056533077ae",
+      "fragment_code": 91
+    },
+    {
+      "file": "backend/t44/api.py",
+      "function": "create_app",
+      "start": 190,
+      "end": 279,
+      "fragment_sha256": "2b30757b690fed669491d17da7241f11173579a067a78ae5197aaa39ce56cb31",
+      "fragment_code": 84
+    },
+    {
+      "file": "backend/t44/persistence/migrations.py",
+      "function": "_check_signature",
+      "start": 16,
+      "end": 104,
+      "fragment_sha256": "3650d6238486c1077dd92334aff01b1f1da7a918bc53309c1f15318764c2d1b0",
+      "fragment_code": 83
+    },
+    {
+      "file": "backend/t44/api.py",
+      "function": "validate_request",
+      "start": 104,
+      "end": 166,
+      "fragment_sha256": "174ef919fad438c88eb6950ece2bb10afc4f924fcfe20353c86fc152d981cf1b",
+      "fragment_code": 63
+    },
+    {
+      "file": "backend/t44/persistence/rows.py",
+      "function": "RowsGateway.task_schedule_changes",
+      "start": 195,
+      "end": 261,
+      "fragment_sha256": "c93654a22b216f082104e29c017df92ad37461ac83bb1c91dcfff0f61787630d",
+      "fragment_code": 62
+    },
+    {
+      "file": "backend/t44/services/runtime.py",
+      "function": "Runtime.execute",
+      "start": 235,
+      "end": 297,
+      "fragment_sha256": "ebff8c05e525400c7cf7335895ab6404d2e7cfaeecd479692f4b2c39770c7edd",
+      "fragment_code": 62
+    },
+    {
+      "file": "backend/t44/persistence/accounts.py",
+      "function": "initialize_user",
+      "start": 20,
+      "end": 79,
+      "fragment_sha256": "a5c3e10e4ba76538c3c5ef87f215d8244308708081d0349fcce0adeb45db2bec",
+      "fragment_code": 60
+    },
+    {
+      "file": "backend/t44/scheduling/__main__.py",
+      "function": "main",
+      "start": 48,
+      "end": 104,
+      "fragment_sha256": "d94aec53b3faf2a3d9ea3337c292c403f5c7052dd3520f17aa38dd44d961e7c2",
+      "fragment_code": 57
+    },
+    {
+      "file": "backend/t44/scheduling/rules.py",
+      "function": "load_rules",
+      "start": 78,
+      "end": 134,
+      "fragment_sha256": "7a2d28c5ef70fdfd3c5c0cd29ea7f26ded8a83b3e760a6361c9da05264655b35",
+      "fragment_code": 56
+    },
+    {
+      "file": "backend/t44/services/runtime.py",
+      "function": "Runtime._claim",
+      "start": 140,
+      "end": 195,
+      "fragment_sha256": "032e3043b5ae09b928f55c90279eb0a00786467a3154d4a6b89da81087c79953",
+      "fragment_code": 55
+    },
+    {
+      "file": "backend/t44/persistence/schema.py",
+      "function": "build_metadata",
+      "start": 77,
+      "end": 130,
+      "fragment_sha256": "a4596f04d63e7d10a51b7ffc8415864c95ce4b6810d5195d4ef2d7622e21de0d",
+      "fragment_code": 53
+    },
+    {
+      "file": "backend/t44/messaging/worker.py",
+      "function": "DeliveryWorker.cycle",
+      "start": 33,
+      "end": 81,
+      "fragment_sha256": "5d463347145e5d7ed1a4ae9a727ceac368d4737bff3a7e0a6b21210973d87535",
+      "fragment_code": 48
+    },
+    {
+      "file": "backend/t44/services/reviews.py",
+      "function": "Reviews.reviewReleaseAssessment",
+      "start": 109,
+      "end": 155,
+      "fragment_sha256": "76228c9c11286d95ea43f368d3ee5901085be427d36729db8d2e4fc0c7f59f4b",
+      "fragment_code": 47
+    },
+    {
+      "file": "backend/t44/services/reviews.py",
+      "function": "Reviews.createReleaseAssessment",
+      "start": 64,
+      "end": 107,
+      "fragment_sha256": "03c41dc570a87095c777f90752eff101336b094b6152c1b17104706c3b576526",
+      "fragment_code": 44
+    },
+    {
+      "file": "backend/t44/services/identity.py",
+      "function": "authenticate",
+      "start": 45,
+      "end": 88,
+      "fragment_sha256": "00c697beb532eab454ae1aa228366c5b6a961bf18b250031a183b1917e434db1",
+      "fragment_code": 44
+    },
+    {
+      "file": "backend/t44/services/history.py",
+      "function": "_snapshot",
+      "start": 11,
+      "end": 54,
+      "fragment_sha256": "201bf6e346043d44724f91c06c16c0936dff577738f18fe85604cf66f4ab5a35",
+      "fragment_code": 44
+    },
+    {
+      "file": "backend/t44/messaging/facade.py",
+      "function": "NotificationFacade.list",
+      "start": 22,
+      "end": 62,
+      "fragment_sha256": "1a0e77035f06896f46fab2a35aaad8e9c7669f248d52e6eec8d438d3140d00f7",
+      "fragment_code": 41
+    },
+    {
+      "file": "backend/t44/persistence/rows.py",
+      "function": "RowsGateway.rows",
+      "start": 150,
+      "end": 189,
+      "fragment_sha256": "f680c10c8aea764a10def930ebdeb645cceef6580da6d6038999c0c682eafa63",
+      "fragment_code": 40
+    },
+    {
+      "file": "backend/t44/scheduling/scanner.py",
+      "function": "Scanner.run",
+      "start": 102,
+      "end": 143,
+      "fragment_sha256": "158ddf88f99ccc147bd079c7008ff164a198bb8bb90389e924c5d1d4a56cfd3e",
+      "fragment_code": 40
+    },
+    {
+      "file": "backend/t44/services/runtime.py",
+      "function": "Runtime.locked_scope",
+      "start": 197,
+      "end": 233,
+      "fragment_sha256": "1c298d0bdadf33c747b360ccb73350f401b55795398b1ceddd36642f26a58b0a",
+      "fragment_code": 37
+    },
+    {
+      "file": "backend/t44/messaging/__main__.py",
+      "function": "main",
+      "start": 17,
+      "end": 53,
+      "fragment_sha256": "da8c2efa5fc621d4479415a0d82ecb2e3c0b82abf9ffaf4063b3070dacae6b26",
+      "fragment_code": 37
+    },
+    {
+      "file": "backend/t44/services/projects.py",
+      "function": "Projects._change_member",
+      "start": 79,
+      "end": 114,
+      "fragment_sha256": "0449cca2644063d00308166279562e8a37455ed956cce1f3c2570a68160be3b4",
+      "fragment_code": 36
+    },
+    {
+      "file": "backend/t44/persistence/delivery.py",
+      "function": "OutboxStore.claim",
+      "start": 19,
+      "end": 54,
+      "fragment_sha256": "828075d37525668bdc48507ec63e1f4f131e1ff3175224716ce779f7345699c0",
+      "fragment_code": 36
+    }
+  ],
+  "exact_statement_clones": [],
+  "limitations": [
+    "Fragment counters are diagnostic; the fixed committed whole-application metric remains unchanged",
+    "AST clones preserve literal/name identity; no semantic clone completeness or unavoidable lower bound is claimed",
+    "Clone spans overlap and cannot be summed as net savings",
+    "No application imports, functional execution, database or HTTP calls"
+  ]
+}
