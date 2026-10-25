@@ -69,3 +69,6 @@
 - 首次pytest未指定backend配置而0收集（exit5），before-tests.log保留；补-c backend/pyproject.toml后原17项模块开发用例通过。首次新用例ruff有4个C408，原lint-run1.log保留，仅修本岗测试literal，不放松规则。
 - 新806性质/故障22项在未修改396b646的归档backend包上通过（before-properties.log有实际导入路径），候选现有+新用例39项通过/23integration未运行。覆盖9组read/handled筛选、分页与全范围计数、项目拒绝优先级/share锁、4类错误脱敏与清理、False NACK、DB重投及Unicode/StatementRejected死信继承边界。
 - 未跑真实MySQL/Rabbit、全CI/云或正式验收，不读取凭据；已有历史通过不外推本候选。调度仅静态只读，已向根交精确跨岗候选，未越权实现。
+- 固定cloc正式提交快照c4b3f114a5525c0fe0fd031d2b3603070a2be892：application5875→5862净13；消息357→344，Facade95→85、Broker129→126，其他application逐文件均不变。RESULT.md记录真实低于预算，未称100目标或全产品规模达标。
+- c4b3f114已实际push至codex/messaging-size-20261025（stage [skip ci]，不改门禁），root统一全CI；Issue5真实评论 https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6397897311，原文保存在tmp806_newscope/issue-comment.md。
+- 根后续明确接受低风险实际收益并授权跨岗候选仅设计交接，本轮不追加调度/DB/BE代码；最终metadata不改application，准备交接释放slot。

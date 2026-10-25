@@ -1,7 +1,7 @@
 {
   "role": "messaging",
   "stage": "2026-10-25 消息规模结构候选与模块开发回归",
-  "implementation_status": "既有业务保留；结构候选39项本地回归通过，固定cloc快照待本轮RESULT确认",
+  "implementation_status": "规模候选完成并stage push，真实净13；原业务保留，未达到100目标或全产品范围",
   "artifacts": [
     {
       "path": "agents/messaging/WORKLOG.md",
@@ -255,23 +255,31 @@
     {
       "command": "基线归档backend/t44 + 新806_newscope性质用例（compare_properties.py为可复现脚本）",
       "result": "明确验证导入原396b646包，新22项passed/9integration未跑"
+    },
+    {
+      "command": "python agents/messaging/tmp806_newscope/measure.py --ref c4b3f114a5525c0fe0fd031d2b3603070a2be892 --label after",
+      "result": "5875→5862净13，逐文件仅Facade/Broker变化"
+    },
+    {
+      "command": "git push -u origin codex/messaging-size-20261025；gh issue comment 5 --repo HJY147/t44-dev-trace --body-file agents/messaging/tmp806_newscope/issue-comment.md",
+      "result": "stage push与Issue5评论成功；未触发/运行全CI或改门禁"
     }
   ],
   "results": [
-    "基线396b646固定cloc2.10：application5875，messaging357；设计文件先于计数写入",
-    "NotificationFacade共用锁内项目范围与既有分页；Broker IO错误清理/脱敏单点维护，原功能边界不删",
-    "原17项自测通过，新22项在原基线通过，当前39项通过/23 integration未跑；日志全部保留",
-    "初步diff净11，未为100目标压格式或迁生产目录；最终提交快照数字待RESULT",
-    "未越权改调度/DB/API/DDL/门禁，跨岗候选交根排班"
+    "固定已提交快照396b646→c4b3f114：application5875→5862，净13；消息357→344，Facade-10/Broker-3，其他application不变",
+    "没有格式压行/代码迁出或删除安全/恢复路径；原调用签名/契约/DDL/门禁保持",
+    "原17模块用例通过；新增22性质/故障在原基线通过；候选39通过/23integration未跑，Ruff通过",
+    "0收集exit5与首轮4C408原日志保留，已修命令/本岗测试literal",
+    "c4b3f114已push；Issue5实际评论6397897311；根明确跨岗只设计交接并排下一批"
   ],
   "unverified": [
-    "本候选未跑真实MySQL/Rabbit、全CI/云/正式验收；未读取任何凭据或私有独立材料",
-    "未达到100–200预算目标；全产品5875基线仍超范围，最终净减待提交快照计数"
+    "本候选未跑真实MySQL/Rabbit、全CI/云/正式验收；没有读取其他runtime/凭据/独立材料",
+    "未实现100–200净减目标；当前基线下全产品仍超762，root负责其他候选整合与统一全CI"
   ],
   "questions": [
     {
       "owner": "root/scheduler/backend/database",
-      "question": "按静态图候选协作调度event投影、scan_run事务内原语与outbox信封去重；保持各自事务与责任目录"
+      "question": "跨岗设计已交接；下一批责任岗在原gateway/UoW内验证run/default/outbox信封候选，预算不能简单相加"
     }
   ],
   "prompt_refs": [
@@ -340,11 +348,34 @@
     "pull_request": "https://github.com/HJY147/t44-dev-trace/pull/20",
     "application_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6360951760",
     "database_recovery_reply": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360999718",
-    "recovery_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6361084142"
+    "recovery_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6361084142",
+    "size_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6397897311"
   },
   "previous_stage_snapshot": {
     "stage": "冻结 v1 完整消息应用及真实MySQL/进程验证",
     "implementation_status": "完整实现与DB恢复已接线；首阶段真Rabbit三项CI通过，最新快照全产品CI待验证",
     "updated_at": "2026-10-23T16:43:28+08:00"
+  },
+  "scope_measurement": {
+    "baseline": "396b646adb87de183929ac6fc46bbe7e88074c8a",
+    "candidate": "c4b3f114a5525c0fe0fd031d2b3603070a2be892",
+    "tool": "cloc 2.10",
+    "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+    "application_before": 5875,
+    "application_after": 5862,
+    "net": 13,
+    "messaging_before": 357,
+    "messaging_after": 344,
+    "files": {
+      "backend/t44/messaging/facade.py": [
+        95,
+        85
+      ],
+      "backend/t44/messaging/broker.py": [
+        129,
+        126
+      ]
+    },
+    "evidence": "agents/messaging/tmp806_newscope/RESULT.md"
   }
 }

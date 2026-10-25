@@ -56,3 +56,5 @@
 - 保持原展开风格，未移出生产目录、不动DDL/OpenAPI/门禁/调度；初步diff仅净11行，未承诺100。最终cloc与SHA见后续RESULT。
 - 新22项性质/故障用例在原基线通过；当前现有+新增39项通过，23个integration不运行，不读凭据、不跑云/独立验收。原0收集和ruff失败保留。
 - 跨岗候选（调度event投影、scan_run事务内原语、outbox信封工厂）已交根排班，不自行落新sharedhelper。
+- 提交快照c4b3f114固定cloc净减13（application5875→5862，消息357→344）；只Facade-10/Broker-3，其他application不变。设计预算15–50未兑现上界，未达到100，未隐瞒总量仍超762。
+- 代码已stage push；Issue5实际评论6397897311。完整before/after、性质/故障和原始失败见tmp806_newscope/RESULT.md；不包含全CI或真实组件结论。
