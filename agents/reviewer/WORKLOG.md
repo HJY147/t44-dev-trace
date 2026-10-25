@@ -539,3 +539,6 @@ ROLE-reviewer-FUNCTIONAL-v7-CAMPAIGN-v1；exact3f51350八文件字节同，provi
 ## 2026-10-25 新P campaign performance精确授权/环境身份审
 
 ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1；draftb86830fd实核，仅新文件admitted true canonical87caec33；6PUBLIC逐字同v7。actualnativebuild e88e/sourcec8/archive/runtime424f/newDB/vhost同grant，CA公开证书SHA2260b061及有效期实读，未读key/跟artifact源或发TLS。14声明PID实际kill0/ps存活，API9parent/tracker/7worker父子PGID同，非执行字节证明。rootraw真实非symlink，最初6行原字节保留firstnull/scheduler&generator pending；private mirror只路径未读/hash，不冒数值/完整覆盖。directP1scopeTTL/packet沿root09:42实置备元数据，不读secret。09:57:41余1039s，630后理论409s不承诺完成，10:15/max2400取早不延；先给root技术准入一次fullfrozengroup并要求负载前完成F停止记录，不读F817结果，不spawnP服务/不延10:00spawn门禁。native manifest stop10:30:30Z与root概述10:30差30s仅metadata，不改phase。0test/SUT/HTTP/SQL/CLI/provider/supervisor，PID只读核另记；固定400/600/30/270/1000不改，sharedmysql/共宿主及RSSlimits披露，非正式性能/资源/业务/global/main/merge通过。
+
+
+新P campaign行政封档：技术d785fcf1a86938deebc9004f49e388aebddda5b0已push；Issue12 COMMENT6396261382（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6396261382）特定全文GET exit0/body及issue严格同。限定exact新文件单字段变换的一次fullgroup执行技术准入，10:15不延长，F停止在负载前由root实际记录；无正式性能/资源覆盖/业务/global/main/merge通过。本岗无SUT、private测试/817结果读取，只读root环境观察另列。metadata封后释放槽。
