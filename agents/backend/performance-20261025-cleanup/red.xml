@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.040" timestamp="2026-10-25T14:23:07.928226+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_preinstall_fixture_failure_preserves_primary_and_closes_observer[fixture_create]" time="0.006"><failure message="AssertionError: assert False&#10; +  where False = &lt;834_cleanup.harness.&lt;locals&gt;.Observer object at 0x108f33680&gt;.close_called&#10; +    where &lt;834_cleanup.harness.&lt;locals&gt;.Observer object at 0x108f33680&gt; = namespace(driver=&lt;module 'cleanup_driver_under_test' from '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backen...re object at 0x108f45e80&gt;, report={}, calls=[], args=namespace(samples=0), primary=PrimaryFailure('synthetic primary')).observer">tmp/834_backend_performance/834_cleanup.py:168: in test_preinstall_fixture_failure_preserves_primary_and_closes_observer
+    assert h.observer.close_called
+E   AssertionError: assert False
+E    +  where False = &lt;834_cleanup.harness.&lt;locals&gt;.Observer object at 0x108f33680&gt;.close_called
+E    +    where &lt;834_cleanup.harness.&lt;locals&gt;.Observer object at 0x108f33680&gt; = namespace(driver=&lt;module 'cleanup_driver_under_test' from '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backen...re object at 0x108f45e80&gt;, report={}, calls=[], args=namespace(samples=0), primary=PrimaryFailure('synthetic primary')).observer</failure></testcase><testcase classname="" name="test_preinstall_fixture_failure_preserves_primary_and_closes_observer[fixture_next]" time="0.001"><failure message="834_cleanup.CleanupFailure: snapshot unavailable">tmp/834_backend_performance/834_cleanup.py:127: in __next__
+    raise primary
+E   834_cleanup.PrimaryFailure: synthetic primary
+
+During handling of the above exception, another exception occurred:
+tmp/834_backend_performance/834_cleanup.py:166: in test_preinstall_fixture_failure_preserves_primary_and_closes_observer
+    h.driver.run(h.args, Path.cwd(), h.report)
+tmp/834_backend_performance/834_request_profile.py:372: in run
+    report["database_observer"] = observer.snapshot()
+                                  ^^^^^^^^^^^^^^^^^^^
+tmp/834_backend_performance/834_cleanup.py:78: in snapshot
+    raise CleanupFailure("snapshot unavailable")
+E   834_cleanup.CleanupFailure: snapshot unavailable</failure></testcase></testsuite></testsuites>

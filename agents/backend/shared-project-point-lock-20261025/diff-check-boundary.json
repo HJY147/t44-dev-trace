@@ -1,0 +1,29 @@
+{
+  "checks_before_compression": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 2,
+      "stdout": "agents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:7: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:15: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:23: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:31: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:39: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:47: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:55: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:62: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.log:69: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:4: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:10: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:16: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:22: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:28: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:34: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:40: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:45: trailing whitespace.\n+E     \nagents/backend/shared-project-point-lock-20261025/point-lock-structural-red.xml:50: trailing whitespace.\n+E     \n",
+      "stderr": ""
+    }
+  ],
+  "original_failure_retained": true,
+  "artifact_manifest": "artifact-manifest.json",
+  "after_compression_check_pending": false,
+  "after_compression": {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

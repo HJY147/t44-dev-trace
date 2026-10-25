@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "dependency-candidate-test-only-ci-terminal-evidence",
-  "implementation_status": "Original D008 C unchanged; isolated new worker ready for root review, runtime initialization not executed",
+  "stage": "point-lock-query-ledger-test-only-ready-for-full-ci",
+  "implementation_status": "Test-only exact query ledger update; product unchanged from point-lock candidate; root full CI/review pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -551,7 +551,7 @@
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
     }
   ],
-  "updated_at": "2026-10-23T15:11:00.914955+00:00",
+  "updated_at": "2026-10-25T06:30:25.669382+00:00",
   "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -2129,5 +2129,135 @@
       "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
       "both_stage_artifacts_preserved": true
     }
-  ]
+  ],
+  "performance_20261025": {
+    "baseline": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "tool_source": "25b1e10cab76270c20be579d39aa1c3048033266",
+    "report": "agents/backend/performance-20261025/report.md",
+    "api_tool_sha256": "150c019e1e307475cec6d599c7f85ac402b9c2f263d4020b8ff02590e08bff7e",
+    "fixed_clock_pair_requests_each": 56,
+    "spans_each": 868,
+    "pure_reference_checks": 35,
+    "prototype_production_applied": false,
+    "production_byte_equal_to_ade5": true,
+    "mysql_cloud_formal_acceptance": "NOT_RUN by this role",
+    "root_cause": "NOT_PROVEN",
+    "source_size": "6316 prior measured byte-equivalent; no new cloc",
+    "prompt": "ROLE-backend-PERFORMANCE-20261025-v1",
+    "scope": "public development diagnostics only, no independent private files read",
+    "main_evidence_seal": "9f0ec3d5161f0195646c4a1b4174f1484382cf3f",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394302816",
+    "github_comment_exact_body_readback": true,
+    "response_schema_stage_note": "schema-stage-split.json distinguishes direct response span from API validation aggregate; no pure JSON render span"
+  },
+  "diagnostic_cleanup_20261025": {
+    "base": "78bb0ac6cad31789e2990a14332199f141ef3d14",
+    "source": "124785d89e568dd5dddeb56ef9216ed2ccd1883d",
+    "driver_sha256": "e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49",
+    "tests": "old2 failures preserved; initial10 pass; loader-state1 red; final11 pass (not cumulative)",
+    "report": "agents/backend/performance-20261025-cleanup/report-v2.md",
+    "old_E_raw_production_unchanged": true,
+    "no_56_or_35_rerun": true,
+    "review": "PENDING root limited review",
+    "prompt": "ROLE-backend-DIAG-CLEANUP-20261025-v1",
+    "initial_source": "b079f84553b8aa91a7f18a7f76f5b6319a2cdc07",
+    "initial_E": "d4fc4ea239c8b5a4f276e791ad720fbaca419be3",
+    "final_E_source_context": "9f67ce0",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394397897",
+    "github_exact_readback": true,
+    "diff_check": "global2 on immutable pytest raw; nine source/explanation paths0; boundary recorded"
+  },
+  "shared_project_gate_20261025": {
+    "design": "baf1f9e",
+    "tool_source": "416866688d2153d97664f9f7e062537fd1386ab8",
+    "report": "agents/backend/shared-project-gate-20261025/report.md",
+    "public_baseline_run": 40169575755,
+    "public_baseline_head": "81c909ad753aee7179ee0c464349a07273092fc0",
+    "raw_sha256": "b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e",
+    "production_changed": false,
+    "mysql_http_cases_collected_not_executed": 7,
+    "sqlite_sequential_unique_fixture_cases_passed": 3,
+    "original_fixture_failure_retained": true,
+    "formal_acceptance": false,
+    "size": {
+      "previous_product_cloc": 6316,
+      "excess": 1216,
+      "new_cloc": false,
+      "production_savings": 0,
+      "new_tmp_physical_lines_not_cloc": 913
+    },
+    "review": "PENDING root limited design admission before production edit",
+    "prompt": "ROLE-backend-SHARED-PROJECT-GATE-20261025-v1",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394622063",
+    "github_exact_body_readback": true
+  },
+  "shared_project_point_lock_20261025": {
+    "design_first": "4dc0ca6",
+    "source": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "report": "agents/backend/shared-project-point-lock-20261025/report.md",
+    "actual_prompt": "ROLE-backend-SHARED-PROJECT-POINT-20261025-v1",
+    "tests": {
+      "original_fixture_setup_errors": 9,
+      "corrected_old_runtime_structural_failures": 9,
+      "candidate_new_passed": 11,
+      "candidate_adjacent_passed": 21,
+      "candidate_unique_passed": 32,
+      "mysql_run": false,
+      "full_ci_run": false
+    },
+    "scope": "three graph-reader projectS; writerX; sorted scalarPK+project/limit1 taskX; original sets and business retained",
+    "source_size": {
+      "application": 6326,
+      "runtime": 286,
+      "delta": 10,
+      "excess": 1226,
+      "within_range": false,
+      "counter_unchanged": true,
+      "files_same_66": true
+    },
+    "sql_cost": "K unique IDs:1->K Runtime task-lock SELECT; +K-1; no predecessor stays1",
+    "pending": [
+      "root code limited review",
+      "fresh MySQL7 HTTP+DB6",
+      "whole exact-source CI",
+      "root integration",
+      "formal performance",
+      "source budget"
+    ],
+    "production_other_files_unchanged": true,
+    "formal_acceptance": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394674914",
+    "github_exact_body_match": true
+  },
+  "point_lock_ledger_20261025": {
+    "design_first": "91bf2f4",
+    "source": "5f55e09a75043343e376ecc7d96cc2ed98862b30",
+    "report": "agents/backend/point-lock-ledger-20261025/report.md",
+    "prompt": "ROLE-backend-POINT-LOCK-LEDGER-20261025-v1",
+    "only_test_change": "986 Counter tasks scalar3 -> explicit map block3/unblock_pending4/start_empty3; comment explains K+2",
+    "deps_exact_unchanged": [
+      0,
+      1,
+      2
+    ],
+    "other_AST_unchanged": true,
+    "product_changed": false,
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "tests": {
+      "old_local_failed": 1,
+      "old_local_passed": 2,
+      "new_local_passed": 5,
+      "full_suite_run": false,
+      "mysql_run_by_this_role": false,
+      "ci_triggered": false
+    },
+    "original_red_ci": 40171891359,
+    "referenced_published_mysql_development_run": 40172242303,
+    "formal_acceptance": false,
+    "size": "same byte-equivalent product prior6326/over1226; no new cloc",
+    "next": "root unified exact-source full CI, source review and integration decision",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
+    "github_exact_body_readback": true
+  }
 }

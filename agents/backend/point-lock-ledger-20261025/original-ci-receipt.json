@@ -1,0 +1,19 @@
+{
+  "run": 40171891359,
+  "job": 121104271042,
+  "source_as_root_published": "81250e8",
+  "original_gzip_sha256": "603709789b9685746d46560ad8caea620e41a0c250dc458e3d41bdf01bbcb9d1",
+  "original_raw_sha256": "4d3f1b96e2564d548cb27ef17f0711bbd2368716a6e31c19c6900e143a99fd9c",
+  "raw_bytes": 128415,
+  "compressed_bytes": 24693,
+  "original_gzip_copied_exact": true,
+  "selected_actual_lines": [
+    "2026-10-25T07:15:30.1024829Z _ test_transition_reads_only_dependencies_consumed_by_its_guard[unblock_pending] _",
+    "2026-10-25T07:15:30.1070049Z E         {'tasks': 4} != {'tasks': 3}",
+    "2026-10-25T07:15:30.1080390Z FAILED backend/contracts/986_http.py::test_transition_reads_only_dependencies_consumed_by_its_guard[unblock_pending] - AssertionError: assert Counter({'tas...ndencies': 1}) == Counter({'tas...ndencies': 1})",
+    "2026-10-25T07:15:30.1082413Z   {'tasks': 4} != {'tasks': 3}",
+    "2026-10-25T07:15:30.1085998Z ===== 1 failed, 178 passed, 383 deselected, 1 warning in 71.46s (0:01:11) ======",
+    "2026-10-25T07:15:30.1098077Z =========== 93 passed, 469 deselected, 1 warning in 66.83s (0:01:06) ==========="
+  ],
+  "not_new_execution_by_this_role": true
+}

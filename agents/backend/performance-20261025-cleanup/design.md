@@ -1,0 +1,9 @@
+# DIAG-CLEANUP-01 窄清理修复设计（实施前）
+
+后端 AI，基78bb0ac；原834源码25b1e10及所有raw/E保留。限定审核已在执行前用零DB反例发现：fixture在observer.install前失败，finally的snapshot再次抛异常，原异常被替换、close和requests赋值跳过。不是产品业务缺陷。
+
+只修改诊断工具清理，不改生产。run先给requests空值；创建fixture和observer进入受控try；只有install成功才snapshot，未成功明确NOT_INSTALLED。finally先保requests，再独立尝试stages.close、fixture.close、snapshot、observer.close，任何一步失败都不能跳过后续关闭。
+
+原异常用原raise继续传播，不改成清理异常；各清理错误仅存phase/异常类，不存message或凭据。没有原异常但清理失败时抛DiagnosticCleanupError，主程序因此写failed状态而非completed。observer未请求时和未安装时分开记；部分install失败仍close。
+
+只在tmp/834追加零DB窄回归：fixture创建/迭代前失败，snapshot/close失败，原异常叠加多个清理错误、partial install和成功路径；真实run配内存fake操作模块/fixture/observer，不导入实际DB/app，不重跑56请求或35差分矩阵。先保存旧源码失败，再修源码、复验同一文件并交root限定审核。MySQL/root工作流待新source/hash同步后执行。

@@ -1,0 +1,16 @@
+/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-performance-20261025/tmp/834_backend_performance/834_request_profile.py", line 465, in <module>
+    main()
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-performance-20261025/tmp/834_backend_performance/834_request_profile.py", line 444, in main
+    run(args, root, report)
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-performance-20261025/tmp/834_backend_performance/834_request_profile.py", line 353, in run
+    operation()
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-performance-20261025/tmp/834_backend_performance/834_request_profile.py", line 338, in transition
+    task = send(
+           ^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-performance-20261025/tmp/834_backend_performance/834_request_profile.py", line 266, in send
+    assert response.status_code == op["success_status"], response.status_code
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 422

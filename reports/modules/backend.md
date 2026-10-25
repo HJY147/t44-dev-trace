@@ -322,3 +322,30 @@ root续准固定C宿主launcher，91d2bfb先设计后新增deployment/fixture-la
 原run40087756354两job真实FAIL已保留（985 block20/22 SELECT对旧22/24）；不是业务或环境根因证据，而是设计查询减少后开发精确账本未同步。新ead155e6204de9004bc968e9b9648358cfed75f8仅985两常量/注释，应用逐字5cc、其余AST全同，业务/auth/Tx/RC/audit/幂等断言不删。Ruff/format绿、collect-only5参数非执行。新product40088982094交接时frontend/static绿、其余两job仍跑，不预称全绿。报告/原两日志gzip/hash/AST证明与new-ci-at-handoff.json同agents/backend/performance-repair-839-ci-fix；Issue3 6383532393精确回读。原PR44/旧失败/规模6316未达/独立性能门槛全保留，后续完整CI/审核准入待项。
 
 终态补充：准确ead155e的product40088982094四job全部success；新原件实读full562/0failure/error/skip、markers179/93/19重叠；ledger5case全绿。44Py与Git全集/excluded0，line2641/2960=89.22297297%，branch663/828=80.07246377%；FE89/20TSVue/93.33行88.09分支。4官方ZIP先验digest/bytes后读18新原件，原成功job日志+selected双hash/roundtrip齐；汇总records/validation/composite-dependency-ead-ci.json。不含Nginx候选，旧5ccDocker非ead新运行且此轮不补actualcheckout证明；规模仍6316未达。旧5cc失败保留，无重新测试/生产/云操作，不构成独立性能通过或自动整合。
+
+
+## 2026-10-25 CPU阶段诊断
+
+先设计25f9、工具最终25b1e10；三脚本在tmp/834_backend_performance，真实TestClient/SQLite固定合成数据，非400/600秒。修正时钟后一对各56请求成功/868span合法；纯ref原型35差分绿，但只list大响应CPU有明显下降，小GET/校验无一致改善，故不直接全局实施。生产/合同/DDL对ade5逐字同、6316仍超1216。六原始JSON已无损gzip+双SHA保存，失败输入/旧时钟样本不重写；详见agents/backend/performance-20261025/report.md、summary.json、artifact-manifest.json、verification.json。root freshMySQL CI使用DB最终observer4edbf…及新t44_diagnostics，真实MySQL/云根因/正式验收本岗未执行。
+
+
+### 诊断清理执行前P2
+
+DIAG-CLEANUP-01经root审核转交，仅修834工具；源码b079f845，SHA6f7c1a2d…；先设计、旧2目标红、同10零DB目标绿。保主异常、requests先存、未install不snapshot、四清理步骤独立尝试、清理错不冒成功。旧E/raw和生产不改，不重跑56/35；报告agents/backend/performance-20261025-cleanup/report.md。root须以新source/hash再准入，不将此工具修复当云性能修复。
+
+清理后发准入：最终source124785d/driver e0a49…，再以1红→11绿覆盖已请求但observer构造失败的状态，原2红/10绿不重写不累计。见report-v2.md；不重跑CPU/35矩阵，不改生产，待root审定新源。
+
+
+### 2026-10-25 公开MySQL成本/共享项目门设计
+
+设计baf1f9e先于候选，当前工具4168666；生产零改，准入及MySQL并发PENDING。公开81c909的12/path：list响应schema CPU11.711/handler20.508ms，transition Rows10.313/14.380ms与cursor4.765/8.785重叠，不相加或追认云根因。仅拟START/UNBLOCK/REWORK project S，writersX/membersS/target+predX及全部原业务事务保持；DB审P_S/EXPLAIN，BE新7HTTP目标仅collect。真实SQLite顺序fixture初capacity非法1红1绿→仅修合成输入2绿，新增UNBLOCK1绿（3唯一目标，不冒并发）。报告agents/backend/shared-project-gate-20261025/report.md。tmp913物理行不是cloc；产品仍6316超1216、节省0，root/审核准入后才改一处Runtime，后续真实freshCI归root。
+
+
+### 项目共享门修订候选（未合并/性能未证）
+
+root先准入修订，4dc0ca6勘误后C c8cea7e82805de5283ce67501769fa9a4efc1047，Runtime9e0d770…：仅三读图transition项目S、writersX，原target/pred sorted unique逐scalar PK+project/limit1任务X。原批量锁路线未实施。AST除两节点全同，原auth/Tx/业务/错误/审计/CAS保持。初fixture缺reason9setup错误保留，补输入后旧Runtime9结构红→C新11及邻接21绿，共32唯一SQLite目标，非MySQL并发。原口径实cloc6326/超1226、净+10/exit1；K锁ID需K查询净K-1，不报性能收益。报告agents/backend/shared-project-point-lock-20261025/report.md，root统一freshMySQL7HTTP/DB6、全量CI和专审后另决定集成；当前正式性能/规模/独立验收仍未过。
+
+
+### 点锁开发查询账本test-only适配
+
+C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注释；原deps0/1/2和所有其它断言不动，AST恢复唯一参数后全文件同。原本机3参数1红2绿→同3+邻接2=5绿，root原40171891359 CI红gzip不改。Runtime仍9e0d770…/产品零改，原cloc6326超1226FAIL沿用无新计量；其它同类SQL账本静态核无新数需迁移，不运行完整CI或MySQL。另只引用root发表40172242303开发6+6+7 JSON终态，非性能或全局无死锁。报告agents/backend/point-lock-ledger-20261025/report.md；root另fullCI/审核/集成。

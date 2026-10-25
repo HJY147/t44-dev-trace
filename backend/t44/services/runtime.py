@@ -209,7 +209,11 @@ class Runtime:
             and call.body["action"] in (Action.START, Action.UNBLOCK, Action.REWORK)
         )
         if graph_lock:
-            g.get("projects", call.project_id, lock="update")
+            g.get(
+                "projects",
+                call.project_id,
+                lock="update" if call.operation in _PROJECT_LOCK else "share",
+            )
         members = g.rows(
             "project_members", {"project_id": call.project_id}, order_by=("user_id",), lock="share"
         )
@@ -230,7 +234,14 @@ class Runtime:
                 )
                 if "depends_on_task_id" in call.body:
                     ids.add(call.body["depends_on_task_id"])
-            g.rows("tasks", {"project_id": call.project_id, "id": sorted(ids)}, lock="update")
+            # Unique-PK statements make acquisition order independent of a multi-ID query plan.
+            for identifier in sorted(ids):
+                g.rows(
+                    "tasks",
+                    {"project_id": call.project_id, "id": identifier},
+                    limit=1,
+                    lock="update",
+                )
 
     def execute(self, call, validate, source="unknown"):
         try:

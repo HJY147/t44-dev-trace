@@ -532,3 +532,45 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 实际JUnit full562/0fail/error/skip，contract179/integration93/fault19重叠且零；原ledger5case在full/contract/integration全部真实passed。44Py Git全集/excluded0，行2641/2960=89.22297297%/分支663/828=80.07246377%；FE89pass/20TSVue Git全同，line93.33/branch88.09（不扩CSS/HTML）。原combined87.2228不是行覆盖。
 - 原Docker40087993372 APIhead5cc成功、不是ead新run；仅核5cc与ead相关源roots相同，本次无新实际PRmergecheckout证明，绝不拿APIhead冒checkout。ead不含后来Nginx候选、该CI不验证它。规模仍原5cc6316/超1216+应用身份沿用，未新cloc。新绿不取消原失败/正式270ms600秒零错门槛，不证明502根因/独立验收/自动集成。
 - Issue3终态6383616829 body-file发表且精确全文GET一致；本轮只官方开发CI只读，生产/测试/配置/云/本地suite/SUT/负载均无新执行，角色作者AI。最终E封档后释放，不等无关检查。
+
+
+## 2026-10-25 实际请求线程CPU诊断（无生产改动）
+
+- root新派任务后自有分支/树基ade5，25f9先设计，16014aa提交834再执行；第一次pending block合成输入缺evidence422原件留，05e4仅加证据/用manager后56顺序请求成功。API/Runtime/Business/validator/wire在真实worker线程临时计时，cProfile分开4样本；无独立私有读取或联系tester。
+- 新DB观察器c11/f102曾实际装一次56成功，但其微小时钟边界随后修，旧件不冒最终edc3/4edbf运行；root freshMySQL组合负责，不单独触发workflow/开云。parent给新schema t44_diagnostics，driver只显式CI/localhost/空应用库准入，MySQLDDL交root。
+- 自身旧end-wall先end-CPU出现短span超窗最多459ns，25b1e10窄修并必要重做一对56；各868span窗口合法/无负exclusive。最终list CPU7.796→5.865ms，但GET/contract无一致改善、flow近噪声；不全局部署原型，不把本地描述性指标冒云270ms或根因。
+- tmp纯ref展开原型35差分/回退/错误序/逐调用SPEC变化/并行状态绿；生产/合同/DDL对ade5逐字同，6316未达且未新cloc。六原件gzip/raw双hash/roundtrip、summary/report/验证齐；原型SIM105红提交后修复、首次patch上下文失败与TestClientwarning如实保留。最终Ruff/format三文件绿，工具import在DB/app导入禁止下无输出。
+- 仅代码/仪表与证据checkpoint交root，后续MySQL/审核/正式云/根因未完成。所有作者执行者后端AI，非学生手测/改码/手写报告。
+
+
+## DIAG-CLEANUP-01 执行前审核窄修
+
+- root转发审核实证后新branch基78bb，bc87197先设计/prompt，再d167冻结834_cleanup。原run两个preinstall目标真实2红：fixture创建失败未close；next主异常被snapshot盖住。只内存fake操作/fixture/observer，禁止真实app/DB库导入，原JUnit/argv/stdout保留。
+- b079f84553b8aa91a7f18a7f76f5b6319a2cdc07仅诊断run清理：requests优先保存、install成功标志、NOT_INSTALLED/NOT_REQUESTED、四步各自尝试；原异常原raise，清理错另记，无主异常时cleanup错抛专用错误而不绿。同文件全10通过，Ruff/format两文件绿。未重跑56/35，没生产/CI/SQL/云动作。
+- AST机械核Stages/fixture/observer_from/main不变、原测量body仅增install标志，旧78bb E/raw/prompt与生产合同DDL逐字不变。新driver SHA6f7c1a2d…已优先给root同步request/workflow，限定审核待root。所有作者执行者AI，非学生本人。
+
+- 清理封档自检补loader构造前失败状态：初版b079虽保主异常却会把已请求而未返回实例标NOT_REQUESTED。2d405465先冻结目标，实际1红；124785d89e568dd5dddeb56ef9216ed2ccd1883d保requested意图后全11绿，不关闭不存在对象。旧2红/10绿和初版E d4fc不重写，报告report-v2/verification-v2新增；两文件Ruff/format绿，测量body/产品/旧raw不动，不重跑56/35。最终hash e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49已告root替换，限定复审待项。
+
+
+## 公开fresh MySQL成本与共享项目门预准入（生产未改）
+
+- root公开40169575755/81c909后，自有新branch先baf1f9e设计/prompt。实读mysql-before SHA b17f0fd5…333a9e；4×12普通样本复核，response schema只parent_id0，list11.711ms/handler20.508约57%；transition Rows CPU10.313/wall14.380、cursor4.765/8.785 inclusive不相加。顺序成本不冒旧云瓶颈或502根因，不优先global refs。
+- 与DB岗对齐仅START/UNBLOCK/REWORK project S候选，writers原X、members S、sorted target/pred X、session/idem/auth/2UoW/CAS/错误/审计/outbox不动；ORDER BY不足证明InnoDB锁序，EXPLAIN/真实P_S/交叉集归DB。我写7个HTTP业务竞争目标，仅collect未MySQL，root/审核准入前不写Runtime、不自行触发CI/开云。
+- 834真SQLite顺序fixture初2项1红1绿，capacity=[]违反原minItems而非产品缺陷；保留原日志后仅合成输入改另一有效developer容量，2绿；新增UNBLOCK目标1绿/其余2deselected，不累加重复样本。Ruff B905红和分析format红后窄修，patch上下文miss未改部分文件；原命令与JUnit保留。当前3唯一fixture正常链/错误副作用绿，不冒并发/验收。
+- 工具checkpoint4168666；三个tmp脚本113+663+137=913物理行含空白注释，非cloc、非规模节省。产品对d60/ade5逐字未变，原6316超1216仍失败，未新cloc。报告/summary/verification在shared-project-gate-20261025，作者执行者后端AI、非学生本人；旧78bb及cleanup E/raw不改，未读独立829/839/841/852私件、不联系tester。
+
+
+## 共享项目门修订：逐scalar PK点锁候选
+
+- root明确准入修订方案，先4dc0ca6设计勘误/prompt；原S-only+batch未实施历史保留。新8db9点锁开发目标初缺addDependency必需reason9setup errors，非结构红；3f1e355仅补两个合成输入（含旧未执行HTTP7图writer）后，原Runtime真实9结构红，原件不改。
+- C c8cea7e82805de5283ce67501769fa9a4efc1047只Runtime两节点：三读图transition projectS/writersX；原ids sorted逐project+scalar唯一PK/limit1 taskX，全锁完再原Business重读。SHA9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b。AST恢复两节点后全文件同基线，ids构造同；auth3/两UoW/CAS/错误/独立拒审计/事件原样。
+- C真实SQLite Gateway9+缺失跨项目HTTP2=11绿，另必要业务邻接21绿，共32唯一目标、零fail/error/skip；不冒MySQL锁实证。Ruff/format限定文件通过，无56/35/完整CI/云/未知本地库执行。DB岗静态核点锁原件未发现新增结构反例，但全域FK资源无死锁不能据此证明，fresh执行由root统一。
+- 原固定cloc2.10/原counter在准确C实6326、Runtime276→286净+10、66应用集合全同、上限5100超1226/exit1，规模仍FAIL；实际physical13add2del与cloc区分。K唯一锁ID原1→K条锁SELECT净K-1，无前驱仍1；三前驱实测参数4条，不删安全逻辑换成本。报告/命令/JUnit/AST/计量在shared-project-point-lock-20261025，作者实现执行均AI，不记学生人工。
+
+
+## 点锁后单一精确开发SQL账本迁移
+
+- root公开product40171891359/source81250e8 contracts唯一unblock_pending tasks4对旧3、deps1不变，准仅test-only修正。91bf2f4先设计/prompt；原3参数真实1红2绿保留。C5f55e09a75043343e376ecc7d96cc2ed98862b30仅Counter.tasks明确map3/4/3及两注释；K1/2/1加Business/audit固定2，依赖边原0/1/2和Counter完全等于/业务与幂等拒审计所有断言全保留。
+- C同3+原DEVELOPING UNBLOCK/REWORK依赖guard2=5绿/零fail/error/skip，Ruff/format绿；恢复唯一tasks参数后整个986 AST同，产品根完全同0615017，Runtime9e0d770…不变。静态分类核其它985 preflight无依赖K1、只读契约/历史页、底层Rows/schema/seed及类别Counter，不盲改任何其它数字；本岗无完整suite/MySQL/CI/云重跑。
+- root原CI日志gzip逐字副本/raw与gzip双SHA保留，新本机红log/XML无损gzip+roundtrip与原文本ignored archive，不strip。只读明确发表40172242303/extracted三JSON，记录6baseline/6candidate/7HTTP名称/终态/SHA，属root开发运行不算本岗复测/19验收/性能或全局无死锁，不读829独立私件。
+- 产品同字节沿既有cloc6326超1226FAIL、无新计量或节省；报告/命令/AST/原件agents/backend/point-lock-ledger-20261025，后续准确新源fullCI及审核集成归root，旧红不改，作者执行者后端AI非学生手写。
