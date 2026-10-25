@@ -155,7 +155,7 @@ def seed(factory):
     return token, project, tasks
 
 
-def lock_snapshot(engine, connection_ids):
+def lock_snapshot(engine, connection_ids, *, readiness=False):
     from sqlalchemy import bindparam, text
 
     statement = text(
@@ -165,6 +165,7 @@ def lock_snapshot(engine, connection_ids):
         "FROM performance_schema.data_locks l JOIN performance_schema.threads t "
         "ON t.THREAD_ID=l.THREAD_ID WHERE t.PROCESSLIST_ID IN :ids "
         "ORDER BY connection_id, object_name, index_name, lock_mode"
+        + (" LIMIT 0" if readiness else "")
     ).bindparams(bindparam("ids", expanding=True))
     waits = text(
         "SELECT a.PROCESSLIST_ID AS requesting_connection, "
@@ -176,6 +177,7 @@ def lock_snapshot(engine, connection_ids):
         "JOIN performance_schema.data_locks l "
         "ON l.ENGINE_LOCK_ID=w.REQUESTING_ENGINE_LOCK_ID "
         "AND l.ENGINE=w.ENGINE WHERE a.PROCESSLIST_ID IN :ids"
+        + (" LIMIT 0" if readiness else "")
     ).bindparams(bindparam("ids", expanding=True))
     with engine.connect() as connection:
         return {
@@ -367,7 +369,7 @@ def run(args, report):
         report["active_phase"] = "performance_schema_readiness"
         report["performance_schema_readiness"] = {"started": stamp()}
         try:
-            lock_snapshot(engine, [-1])
+            lock_snapshot(engine, [-1], readiness=True)
         except BaseException as error:
             report["performance_schema_readiness"]["failure"] = failure(error)
             raise
