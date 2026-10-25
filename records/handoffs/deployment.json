@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "source935-campaign8-idle-running-real-builds-sampler-started",
+  "stage": "source935-functional-campaign8-normally-stopped-performance-untouched",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2264,6 +2264,24 @@
       "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6396452679",
       "exact_body_readback_equal": true,
       "proof": "agents/deployment/native-performance-20261025/round8/github-readback-proof.json"
+    },
+    "functional_owned_stop": {
+      "at_utc": "2026-10-25T10:39:45.171467+00:00",
+      "all_roles_workers_tracker_absent": true,
+      "aftercheck_receipt": "7be1b863c488450198cdee242dc06cf0",
+      "stop_evidence": "agents/deployment/native-performance-20261025/round8/functional-phase-end-stop.json",
+      "port_recheck_evidence": "agents/deployment/native-performance-20261025/round8/functional-phase-end-port-recheck.json",
+      "ports_all_free_at_first_recheck": false,
+      "original_identity_hashes_unchanged": true,
+      "forced_app_stops": false,
+      "data_and_all_raw_preserved": true,
+      "performance_mysql_Psampler_or_rootprovider_touched": false,
+      "new_F_started": false,
+      "independent_verdict_known": false,
+      "all_specified_ports_free_final": true,
+      "ports_final_utc": "2026-10-25T10:40:56.264109+00:00",
+      "ports_final_evidence": "agents/deployment/native-performance-20261025/round8/functional-phase-end-port-final.json",
+      "all_earlier_false_preserved": true
     }
   }
 }

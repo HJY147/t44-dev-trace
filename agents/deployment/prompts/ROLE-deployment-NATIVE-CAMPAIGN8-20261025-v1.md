@@ -7,3 +7,5 @@
 优化原因：先前window估算和工具准备不构成产品性能失败；新宽而有界窗口一次给足，不延长旧lease、不缩630秒。将源、schema、端口、时间和worker逐字差量记录为可逆allowlist，保护隐私与证据不覆盖。
 
 预期交付与实际结果分开：设计见round8/design.md；后续实际命令/原失败/纯guard与新runtime能力由本阶段result与WORKLOG补写，未执行的独立验收/负载不得预填。
+
+追加实际root AI停止指令：F phase结束，只停止准确campaign8 F，不见case结果/不新起F，不碰P/7980/435/provider。实际执行10:39:45所有owned absent、forced=false，10:40:56全14端口free；先前false保留。结果见round8三份phase-end原件，不把AI执行写成用户亲历。

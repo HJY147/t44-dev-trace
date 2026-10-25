@@ -13,3 +13,9 @@ P sampler首启因本岗提前复制canonical脚本触发O_EXCL保护明确失�
 聚合自己neutralreceipt首轮因部分broker回执无action出现KeyError，改用get过滤后成功，不改SUT/状态/证据。所有本岗失败范围见execution-notes.json；不把工具准备失败当产品缺陷，也不把部署401等同验收绿。提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1，AI决策与用户亲历区分。
 
 GitHub Issue7已发表本轮真实范围与首轮工具失败，评论6396452679，实际API回读全文相同；详见github-readback-proof。950ee6e能力原件已远程保存。
+
+## F phase结束正常stop（不知独立结论）
+
+root通知F独立phase已结束，仅传停止条件。10:39:45UTC实际owned appguardian/broker guardian正常SIGTERM退出，watchdog对最后scheduler/consumer/API均forced=false，四worker/tracker与Rabbit/EPMD全部absent；aftercheck7be1b863c488450198cdee242dc06cf0。六件初始身份SHA不变，数据/原始raw完整闭合列SHA/bytes，所有原false原样保留。P/nativeMySQL7980/435P sampler/rootprovider10702未动，未再创建F。端口初验及10:40:11复核仅24398 EADDRINUSE，其他13free；不能把进程全absent称作此刻端口全free，保留原件并可另只读复核。
+
+后续独立只读重核2026-10-25T10:40:56.264UTC：全部14指定F端口bind-free，早先两份24398 false未修改/删除。lsof对24398 LISTEN实查exit1无records；不推测占用原因，未发额外信号。最终端口证据另存functional-phase-end-port-final.json，P/MySQL/sampler未碰。

@@ -450,3 +450,7 @@ root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop
 旧C8 P资源与两guardian已正常退出，完整原件保留；见round8/previous-performance-stop.json。新935产品只做原生环境准备，依赖lock/runtime模板hash实际同现存可信依赖。显式新namespace/CA/vhost/schema与F18098四worker/P18099七worker，10:50新spawn cutoff及11点停止窗口详见round8/design.md；4项pure guard0.42s通过，不是产品功能或性能通过。新source须独立实际archive/nativebuild，不复用C8标签。
 
 source935 campaign8现已idle运行，F18098四worker/P18099七worker/newCA/vhost/schema；两build与实际新archive不同旧C8，具体hash/角色/时间/CLI见round8两running-capability。P1s sampler435真实观察API9PID聚合、broker、consumer和sharedMySQL，pending generator/scheduler明确null有原因；首启O_EXCL保护拒绝预复制文件的失败与纠正保留。共同spawn10:50和11点停止边界原样生效，不预填最终停止/回收/coverage或性能；rootphase/CI/独立结论另行。
+
+source935 campaign8 F阶段已按root停止条件正常结束，10:39:45所有actual最后角色/API4workers/tracker/MQ/EPMD/guardians absent，app watchdog三角色均forced=false；6件身份原件SHA不变、数据/raw全保留。端口后验与10:40:11复核24398仍bind false，其余free，原false保留不猜因，未操作unknown。P、采样器435、共享MySQL7980和rootprovider未触碰，也未新起F；不由停止事实推出独立业务验收结论。见round8/functional-phase-end-{stop,port-recheck}.json。
+
+后续独立只读重核2026-10-25T10:40:56.264UTC：全部14指定F端口bind-free，早先两份24398 false未修改/删除。lsof对24398 LISTEN实查exit1无records；不推测占用原因，未发额外信号。最终端口证据另存functional-phase-end-port-final.json，P/MySQL/sampler未碰。
