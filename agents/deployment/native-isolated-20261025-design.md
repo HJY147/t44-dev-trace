@@ -4,7 +4,7 @@
 
 先检查新API18096、Rabbit25696、EPMD24396、distribution35696、CLI45696–45705回环端口可bind；占用则不操作占用者，记录后另选新明确端口。broker复用ade5公开runtime.py的完整拥有权/私有Cookie/CLI/关闭逻辑，仅派生新端口常量副本并记录原SHA、新SHA、精确差量；原文件不修改。全新0700运行目录、Cookie、user、vhost及独占日志/state，没有管理插件和公网监听。原控制器不使用HOME内cookie，保持nocookie+显式0600文件前置setter；不沿用任何旧run的HOME或秘密，不修改用户HOME环境。
 
-本轮控制器只在新`.agent-worktrees/.runtime/native-isolated-20261025/<uuid>`写入。部署依赖从已准入native-mq layout的固定OTP/Rabbit路径取得；Python只复用已存在原生依赖，核ade5锁SHA、实际distribution清单与uv pip check，执行文件和入口/锁/源hash写build manifest。只导出Git中明确的backend/t44、backend/requirements.lock、backend/pyproject.toml，不导出或读取tmp/829/839/841/852任何内容；清单明确是运行源子集，提供准确commit/tree OID，不能声称全仓checkout。
+本轮控制器只在新`.agent-worktrees/.runtime/native-isolated-20261025/`内写入：runs/唯一ID为应用与控制器，brokers/同一唯一ID为broker。broker派生器除两处端口常量外仅将原固定broker父目录改到本轮brokers，精确差量留存。部署依赖从已准入native-mq layout的固定OTP/Rabbit路径取得；Python只复用已存在原生依赖，核ade5锁SHA、实际distribution清单与uv pip check，执行文件和入口/锁/源hash写build manifest。只导出Git中明确的backend/t44、backend/requirements.lock、backend/pyproject.toml，不导出或读取tmp/829/839/841/852任何内容；清单明确是运行源子集，提供准确commit/tree OID，不能声称全仓checkout。
 
 证书用现有OpenSSL生成全新私有CA及localhost/127.0.0.1 SAN叶证书，校签名/用途/SAN/有效期/keypair。Uvicorn原生TLS，API仅127.0.0.1:18096/4worker/no-access-log/no-proxy-headers。请求ready只用既有非破坏接口未鉴权状态作连通观测，不猜验收用例；不预置项目、ID、用户或业务数据。
 
