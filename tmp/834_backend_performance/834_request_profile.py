@@ -246,7 +246,7 @@ class DiagnosticCleanupError(RuntimeError):
     """A successful diagnostic body is still failed if resource cleanup did not complete."""
 
 
-def _cleanup(stages, fixture_generator, observer, installed, report, primary):
+def _cleanup(stages, fixture_generator, observer, installed, requested, report, primary):
     report["requests"] = stages.rows if stages is not None else []
     errors = report["cleanup_errors"] = []
 
@@ -262,7 +262,7 @@ def _cleanup(stages, fixture_generator, observer, installed, report, primary):
     if fixture_generator is not None:
         attempt("fixture_close", lambda: fixture_generator.close())
     if observer is None:
-        report["database_observer"] = {"status": "NOT_REQUESTED"}
+        report["database_observer"] = {"status": "NOT_INSTALLED" if requested else "NOT_REQUESTED"}
     else:
         report["database_observer"] = {"status": "NOT_INSTALLED"}
         if installed:
@@ -280,6 +280,7 @@ def run(args, root, report):
 
     observer = stages = fixture_generator = primary = None
     installed = False
+    requested = getattr(args, "db_observer", None) is not None
     try:
         observer = observer_from(args)
         stages = Stages(root, observer)
@@ -405,7 +406,7 @@ def run(args, root, report):
         report["primary_exception_class"] = type(error).__name__
         raise
     finally:
-        _cleanup(stages, fixture_generator, observer, installed, report, primary)
+        _cleanup(stages, fixture_generator, observer, installed, requested, report, primary)
 
 
 def main():
