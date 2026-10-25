@@ -1,0 +1,80 @@
+unformatted: File would be reformatted
+   --> tmp/backend/contracts/816_acceptance_followup_20261025.py:14:69
+    |
+13  | @pytest.mark.parametrize("stale_baseline", [False, True])
+    - def test_unapproved_deliver_requires_manager_before_assessment_gate(application, stale_baseline):
+14  + def test_unapproved_deliver_requires_manager_before_assessment_gate(
+15  +     application, stale_baseline
+16  + ):
+17  |     client, factory = application
+--------------------------------------------------------------------------------
+28  |     assert task["state"] == 5 and task["approved_assessment_id"] is None
+    -     assert (task["schedule_version"] != assessment["schedule_version"]) is stale_baseline
+29  +     assert (
+30  +         task["schedule_version"] != assessment["schedule_version"]
+31  +     ) is stale_baseline
+32  |     with factory() as uow:
+--------------------------------------------------------------------------------
+36  |         assert len(member) == 1 and member[0]["roles_mask"] == 2
+    -     before, audit_before = priority._business(factory, pid), priority._audits(factory, pid)
+37  +     before, audit_before = (
+38  +         priority._business(factory, pid),
+39  +         priority._audits(factory, pid),
+40  +     )
+41  |     body, key = priority._release_body(task, assessment), str(uuid4())
+--------------------------------------------------------------------------------
+53  |     replay = priority._release(
+    -         client, tokens, pid, task, body, key=key, expect=first.status_code, actor="developer"
+54  +         client,
+55  +         tokens,
+56  +         pid,
+57  +         task,
+58  +         body,
+59  +         key=key,
+60  +         expect=first.status_code,
+61  +         actor="developer",
+62  |     )
+--------------------------------------------------------------------------------
+69  |     assert (first.status_code, payload["code"], saved["reason_code"]) == (
+    -         403, "ACTION_FORBIDDEN", 6
+70  +         403,
+71  +         "ACTION_FORBIDDEN",
+72  +         6,
+73  |     )
+--------------------------------------------------------------------------------
+83  |         pid,
+    -         priority._assess(client, tokens, pid, priority._ready(client, tokens, pid, iid)),
+84  +         priority._assess(
+85  +             client, tokens, pid, priority._ready(client, tokens, pid, iid)
+86  +         ),
+87  |     )
+88  |     task = priority._replan(client, tokens, pid, result["task"])
+89  |     task = http.transition(
+    -         client, tokens["manager"], pid, task, 2,
+    -         reason="Synthetic release-stage block", responsibility_stage=4, evidence=http.EVIDENCE
+90  +         client,
+91  +         tokens["manager"],
+92  +         pid,
+93  +         task,
+94  +         2,
+95  +         reason="Synthetic release-stage block",
+96  +         responsibility_stage=4,
+97  +         evidence=http.EVIDENCE,
+98  |     )
+99  |     assert task["state"] == 3 and task["blocked_from_state"] == 5
+100 |     assert task["approved_assessment_id"] is None
+101 |     priority._reject(
+    -         client, factory, tokens, pid, task, result["assessment"],
+    -         "STATE_CONFLICT", actor=actor
+102 +         client,
+103 +         factory,
+104 +         tokens,
+105 +         pid,
+106 +         task,
+107 +         result["assessment"],
+108 +         "STATE_CONFLICT",
+109 +         actor=actor,
+110 |     )
+    |
+
+1 file would be reformatted, 1 file already formatted
