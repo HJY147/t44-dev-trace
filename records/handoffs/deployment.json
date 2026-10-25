@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "new-f4-generation-local-ready-resource-stream-design",
+  "stage": "f4-generation-and-continuous-private-resource-stream-local-ready",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2450,8 +2450,21 @@
       "first_guard_error_preserved": "agents/deployment/cloud-reuse-20261025/generation-f4-guards-first-failure.xml",
       "cloud_prepare_or_start": false,
       "root_V2_source_run_dispatched": 40205362084,
-      "resource_stream_implementation_pending": true,
+      "resource_stream_implementation_pending": false,
       "old_controller_or_lease_changed": false
+    },
+    "resource_stream": {
+      "tool": "deployment/cloud-reuse/resource-stream.py",
+      "tool_sha256": "f911acf470a61221197e58fbd18d4cc42c1a5a7693ae929454f540e2c400f76d",
+      "steps": "deployment/cloud-reuse/RESOURCE-STREAM-STEPS.md",
+      "checks": 17,
+      "failures": 0,
+      "synthetic_loopback_TLS_executed": true,
+      "Docker_cgroup_or_cloud_sampling_executed": false,
+      "cross_VM_mirror_executed": false,
+      "raw_region_complete_or_daemon_stop_proven": false,
+      "independent_results_read": false,
+      "SG_IAM_VM_or_business_access_changes": false
     }
   }
 }

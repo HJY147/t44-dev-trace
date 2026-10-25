@@ -17,3 +17,5 @@ root AI协调要求：本岗只写本地可审脚本/配置/CI，不抢UI、不�
 真实质量把关：部署静态复核发现自身6609目录权限边界，即刻告root不做云build，原版/首工件保留，V2另文件/清单/工件；新增实际umask077遍历权限guard。root要求TLS不能只看APIrunning，给真实readonly日志后，部署另新overlay修tmp并要求真实CA+IP 401，root执行成功才记事实；未将网络错误猜成产品性能、未关闭verify或修改旧freeze。均AI调试留痕，不是学生个人手写。
 
 新root prompt要求f4独立generation、原entry、真实container全53核、不改旧三binding、所有负载≤21Z、独立systemd资源raw与私网单路径mirror。本岗先设计后实现generation，自身guard指令名错误保首失败纠正，遥测代码尚待后续，不冒执行事实。
+
+连续资源prompt执行：原始区间要在warmup前启动而非after-only snapshot；CPU按cgroup累计us与同机mono求差，RSS和memory.current语义分开；身份/bytecap/finaltail/hash、单路径私网TLS nonce、独立systemd不依赖前台。用synthetic真实loopback TLS＋恶意offset/hash/文件替换反例验证，未读独立799/800或私有用例，不预填云采样/达标。
