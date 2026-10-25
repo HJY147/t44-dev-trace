@@ -430,3 +430,41 @@ def test_explicit_all_mode_does_not_require_client_header_change(tmp_path):
     engine.dispose()
     assert rows(probe)[0]["sample_mode"] == "all"
     assert rows(probe)[-1]["selected"] == rows(probe)[-1]["written"] == 1
+
+
+@pytest.mark.parametrize(
+    ("schema", "port", "allowed"),
+    [
+        ("t44c_r9diag935_p", 3306, True),
+        ("t44c_r9diag935_px", 3306, False),
+        ("t44_p816_20261025", 3306, False),
+        ("t44c_r9diag935_p", 13306, False),
+    ],
+)
+def test_exact_root_neutral_schema_gate_without_connection(
+    monkeypatch, tmp_path, schema, port, allowed
+):
+    from t44 import persistence
+
+    class ReachedOwnedEngineStub(Exception):
+        pass
+
+    def stub(_settings):
+        raise ReachedOwnedEngineStub
+
+    monkeypatch.setattr(persistence, "create_mysql_engine", stub)
+    for key, value in {
+        "T44_DIAG_ALLOW": "source935-development-only",
+        "T44_DIAG_PRODUCT_SHA": stage.PRODUCT,
+        "T44_DIAG_MODULE_SHA256": hashlib.sha256(MODULE.read_bytes()).hexdigest(),
+        "DATABASE_URL": f"mysql+pymysql://owned:synth@owned-mysql:{port}/{schema}",
+        "T44_DATABASE": schema,
+        "T44_DIAG_DATABASE": schema,
+        "T44_DIAG_HOST": "owned-mysql",
+        "T44_DIAG_PORT": str(port),
+        "T44_DIAG_USER": "owned",
+        "T44_DIAG_OUTPUT": str(tmp_path),
+    }.items():
+        monkeypatch.setenv(key, value)
+    with pytest.raises(ReachedOwnedEngineStub if allowed else ValueError):
+        stage.app_factory()

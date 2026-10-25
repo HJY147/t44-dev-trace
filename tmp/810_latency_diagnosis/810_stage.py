@@ -61,7 +61,8 @@ class Probe:
                 "kind": "probe_start",
                 "utc": utc(),
                 "pid": os.getpid(),
-                "product": PRODUCT,
+                "product_reference": PRODUCT,
+                "generic_probe_does_not_attest_product": True,
                 "limit": limit,
                 "sample_mode": "all" if sample_all else "explicit_header",
                 "inclusive_phases_overlap": True,
@@ -378,7 +379,9 @@ def app_factory():
     settings = Settings.from_env()
     mysql = settings.mysql_settings()
     database = os.environ["T44_DIAG_DATABASE"]
-    if not re.fullmatch(r"t44_diag810_[A-Za-z0-9_]{1,40}", database):
+    if database != "t44c_r9diag935_p" and not re.fullmatch(
+        r"t44_diag810_[A-Za-z0-9_]{1,40}", database
+    ):
         raise ValueError("New diagnostic schema declaration required")
     if (
         mysql.database != database
@@ -401,6 +404,15 @@ def app_factory():
         mode == "all",
     )
     probe.on_close = engine.dispose
+    probe.emit(
+        {
+            "kind": "source_binding",
+            "product": PRODUCT,
+            "verified_subset_sha256": HASHES,
+            "module_sha256": module_sha,
+            "full_image_attestation_is_external": True,
+        }
+    )
     try:
         probe.install_database()
         app = api.create_app(factory=SqlAlchemyUnitOfWorkFactory(engine), settings=settings)
