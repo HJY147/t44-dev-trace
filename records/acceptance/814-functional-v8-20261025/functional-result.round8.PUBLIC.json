@@ -1,0 +1,123 @@
+{
+  "visibility": "PUBLIC",
+  "phase": "functional",
+  "status": "EXECUTED_PARTIAL_CRITERIA_NOT_PROVEN",
+  "overall_acceptance": "NOT_PROVEN",
+  "execution_count": 1,
+  "automatic_reruns": 0,
+  "tool_freeze_sha256": "d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56",
+  "grant_bytes_sha256": "2289cc6e05d7388e58ace8cd2f23a1192c5e0a356037efde4e877396d976642d",
+  "source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "native_build_manifest_sha256": "80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594",
+  "runtime_identity": "native-sha256:0a9926fdf3b3e92c9db0ed46de9d9824d73e4dd0c13f92a8c6ca8f128c5551d4",
+  "receipt_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v8-fresh/PUBLIC/runtime/3b613bfaaf80350d.receipt.PUBLIC.json",
+  "supervisor_status_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v8-fresh/PUBLIC/runtime/3b613bfaaf80350d.status.PUBLIC.json",
+  "supervisor_pid": 11307,
+  "generator_pid": 11308,
+  "launch_utc": "2026-10-25T10:34:27.210825Z",
+  "end_utc": "2026-10-25T10:37:05.469434Z",
+  "elapsed_wall_seconds": 158.258609,
+  "process_status": "PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT",
+  "process_returncode": 0,
+  "process_exit_is_not_acceptance_verdict": true,
+  "deadline_or_rss_hardstop": false,
+  "max_observed_runner_rss_bytes": 44236800,
+  "case_catalogue_count": 14,
+  "cases_finished": 14,
+  "case_status_counts": {
+    "PASS": 13,
+    "NOT_PROVEN": 1
+  },
+  "case_statuses": [
+    {
+      "case_id": "F01",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F02",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F03",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F04",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F05",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F06",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F07",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F08",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F09",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F10",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F11",
+      "status": "NOT_PROVEN"
+    },
+    {
+      "case_id": "F12",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F13",
+      "status": "PASS"
+    },
+    {
+      "case_id": "F14",
+      "status": "PASS"
+    }
+  ],
+  "sut_requests": 1083,
+  "durable_request_begins": 1083,
+  "complete_http_body_records": 1083,
+  "durably_frozen_http_completion_records": 1083,
+  "http_completion_rejections": 0,
+  "transport_error_requests": 0,
+  "http_status_counts": {
+    "201": 102,
+    "200": 948,
+    "403": 5,
+    "409": 15,
+    "422": 9,
+    "401": 2,
+    "400": 2
+  },
+  "negative_http_statuses_include_expected_rejections": true,
+  "runtime_completed_postconditions_counter": 94,
+  "assertion_count": 8823,
+  "declared_error_branches": 551,
+  "observed_error_branches": 30,
+  "unproved_error_branches": 521,
+  "encrypted_raw_evidence_finalized_authenticated_complete": true,
+  "encrypted_evidence_sha256": "4c88d2a5163264a3d932ba28debde9526e640af0632cc0a415cd0970de816ff0",
+  "encrypted_evidence_bytes": 2370488,
+  "not_proven_criterion": "Revoked-token verification lacked a dedicated disposable revocation session; observed naturally expired token response retained. No rerun or fixture repair was inferred.",
+  "scope_limits": [
+    "This is one frozen functional phase, not full product acceptance.",
+    "Physical schema/DDL, architecture/source size, coverage/CI and human approval are outside this independent HTTP evidence.",
+    "All declared error branches were not demonstrated.",
+    "Fault phases and formal performance groups were not executed in this grant."
+  ],
+  "fault_cases_executed": 0,
+  "formal_performance_groups_completed": 0,
+  "read_boundary": "Four exact original authority files, authorized frozen cold tool, explicitly supplied new neutral runtime inputs and this new execution evidence only."
+}

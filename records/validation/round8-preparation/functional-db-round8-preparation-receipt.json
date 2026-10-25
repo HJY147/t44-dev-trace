@@ -1,0 +1,30 @@
+{
+  "database": "t44_f816_20261025",
+  "user": "t44_f816_20261025",
+  "initialization_source": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+  "started": "2026-10-25T10:12:44.696237+00:00",
+  "changes": [
+    "new named schema created",
+    "new named CRUD-only principal created"
+  ],
+  "formal_acceptance": false,
+  "before_schema_inventory_sha256": "d6baea965a86505f5952f0431c0b1c2eb175b4de08b142d15572f28ff1798056",
+  "before_principal_inventory_sha256": "c0661f405131f78388579f1e5eb53149594edafa7784e44e0766b5cedd63752d",
+  "migration": {
+    "version": 1,
+    "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "already_applied": false,
+    "tables": 18,
+    "columns": 226,
+    "defects": [],
+    "passed": true
+  },
+  "app_grants": [
+    "GRANT USAGE ON *.* TO `t44_f816_20261025`@`127.0.0.1`",
+    "GRANT SELECT, INSERT, UPDATE, DELETE ON `t44\\_f816\\_20261025`.* TO `t44_f816_20261025`@`127.0.0.1`"
+  ],
+  "status": "prepared; no projects, service token or application process started",
+  "synthetic_human_accounts": 5,
+  "protected_inventory_preserved": true,
+  "ended": "2026-10-25T10:12:45.044659+00:00"
+}

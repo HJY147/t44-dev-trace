@@ -1,0 +1,63 @@
+{
+  "admitted": true,
+  "operator": "AI",
+  "phase": "functional",
+  "tool_freeze_sha256": "d11369fae060b1d282f28e5e959abc7853a2d50bb7439178080e28241d084b56",
+  "base_url": "https://localhost:18098/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "ca_file": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign8-20261025/runs/functional_campaign8_20261025_5241d85b45f0477c/tls/ca.pem",
+  "network_scope": "loopback",
+  "expires_at": "2026-10-25T11:00:00.000000Z",
+  "max_wall_seconds": 900,
+  "max_requests": 100000,
+  "max_concurrency": 400,
+  "max_runner_rss_bytes": 4294967296,
+  "max_evidence_compressed_bytes": 2147483648,
+  "max_evidence_ciphertext_bytes": 3221225472,
+  "max_evidence_plaintext_bytes": 34359738368,
+  "build": {
+    "kind": "native",
+    "source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "source_archive_sha256": "0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138",
+    "build_manifest_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign8-20261025/runs/functional_campaign8_20261025_5241d85b45f0477c/native-build.json",
+    "build_manifest_sha256": "80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594",
+    "runtime_identity": "native-sha256:0a9926fdf3b3e92c9db0ed46de9d9824d73e4dd0c13f92a8c6ca8f128c5551d4",
+    "image_digest": null
+  },
+  "isolated_resource_ids": [
+    "functional-api-pgid:99635",
+    "functional-consumer-pgid:99674",
+    "functional-schema:t44_f816_20261025@127.0.0.1:13306",
+    "functional-vhost:t44.native.demo.functional_campaign8_20261025_5241d85b45f0477c@127.0.0.1:25698"
+  ],
+  "allowed_faults": [],
+  "fixture_handoff": "nonce-sealed-project-scope",
+  "cost_ceiling": "CNY0 new resources: existing isolated loopback native services only",
+  "scope_notes": [
+    "One new frozen functional phase only; no fault/performance authorization.",
+    "Existing neutral coordinator preflight project1 retained, no tasks. Root ASGI6 login requests (including genuine TTL60 human session naturally expired) are separate from independent requests.",
+    "New source935 requires new result, never inherit old source scores; approved-prefix per-project handoff stays bounded."
+  ],
+  "tool_public_root": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v8-fresh/PUBLIC",
+  "fixture_retention": {
+    "schema_is_empty": false,
+    "projects_retained": 1,
+    "project_ids": [
+      1
+    ],
+    "tasks_before_phase": 0,
+    "purpose": "Retained root neutral HTTPS-create/idempotent replay, CLI and scheduler integration; no new sealer canary and not independent acceptance.",
+    "cleanup_or_reset_performed": false
+  },
+  "credential_packet_note": "New same-schema environment-functional-v8.json delivered privately. Genuine human login preparation 2026-10-25T10:17:00.433882+00:00 to 2026-10-25T10:17:00.727582+00:00; five active sessions TTL3600; separate human TTL60 expires 2026-10-25T10:18:00.691306Z naturally, no revocation/clock rewrite.",
+  "provider_binding_sha256": "ef3837e51e3f354dcc7d19c66a6650eb831c5586d96ce2e48d1bbab93be65ae5",
+  "initial_scheduler_scope": {
+    "project_ids": [
+      1
+    ],
+    "pid": 3767,
+    "session_id": 7,
+    "token_expiry_utc": "2026-10-25T11:24:22.597089+00:00",
+    "origin": "Actual root neutral preflight after immutable native-build declared pending; each later case actual scope replaces the single scope."
+  }
+}
