@@ -40,13 +40,14 @@ def request_id(value):
 
 
 class Probe:
-    def __init__(self, engine, directory, limit=128):
+    def __init__(self, engine, directory, limit=128, sample_all=False):
         directory = Path(directory)
         if not directory.is_absolute() or directory.is_symlink() or not directory.is_dir():
             raise ValueError("Explicit existing nonsymlink output directory required")
         if type(limit) is not int or not 1 <= limit <= 10000:
             raise ValueError("Sample cap must be 1..10000")
         self.engine, self.limit = engine, limit
+        self.sample_all = sample_all
         self.active = contextvars.ContextVar("diag810_record", default=None)
         self.lock, self.write_lock = threading.Lock(), threading.Lock()
         self.selected = self.written = self.capped = self.writer_ns = 0
@@ -62,6 +63,7 @@ class Probe:
                 "pid": os.getpid(),
                 "product": PRODUCT,
                 "limit": limit,
+                "sample_mode": "all" if sample_all else "explicit_header",
                 "inclusive_phases_overlap": True,
                 "cpu_scope": "same synchronous calling thread only",
                 "pool_connect_scope": "includes queue/creation/preping/checkout, not pure wait",
@@ -259,7 +261,7 @@ class Probe:
                 finally:
                     if scope["type"] == "lifespan":
                         probe.close()
-            requested = (b"x-t44-diag-sample", b"1") in scope.get("headers", ())
+            requested = probe.sample_all or (b"x-t44-diag-sample", b"1") in scope.get("headers", ())
             with probe.lock:
                 chosen = requested and probe.selected < probe.limit
                 if chosen:
@@ -388,8 +390,16 @@ def app_factory():
         or mysql.username == "root"
     ):
         raise ValueError("Diagnostic target differs from explicit fresh-schema packet")
+    mode = os.getenv("T44_DIAG_SAMPLE_MODE", "header")
+    if mode not in ("header", "all"):
+        raise ValueError("Sample mode must be header or all")
     engine = create_mysql_engine(mysql)
-    probe = Probe(engine, os.environ["T44_DIAG_OUTPUT"], int(os.getenv("T44_DIAG_LIMIT", "128")))
+    probe = Probe(
+        engine,
+        os.environ["T44_DIAG_OUTPUT"],
+        int(os.getenv("T44_DIAG_LIMIT", "128")),
+        mode == "all",
+    )
     probe.on_close = engine.dispose
     try:
         probe.install_database()

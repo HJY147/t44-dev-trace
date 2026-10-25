@@ -415,3 +415,18 @@ def test_owned_engine_close_is_once_and_restores_original_pool_methods(tmp_path)
     final = rows(probe)[-1]
     assert final["checkedout_before_owner_dispose"] == 0
     assert final["owner_dispose_requested"] and final["diagnostic_valid"]
+
+
+def test_explicit_all_mode_does_not_require_client_header_change(tmp_path):
+    engine = engine_at(tmp_path)
+    probe = stage.Probe(engine, tmp_path, sample_all=True)
+
+    def handler(_request):
+        return 200
+
+    app = probe.wrap_asgi(owned_app(probe.handler(handler, "owned_all_mode")))
+    asyncio.run(request(app, str(uuid4()), selected=False))
+    probe.close()
+    engine.dispose()
+    assert rows(probe)[0]["sample_mode"] == "all"
+    assert rows(probe)[-1]["selected"] == rows(probe)[-1]["written"] == 1
