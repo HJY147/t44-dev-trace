@@ -1,0 +1,13 @@
+{
+  "operator": "deployment AI",
+  "command": "python -m ruff check --config scripts/ci/ruff.toml deployment/round-prepare.py tmp/828_deployment_continuation/828_round_prepare.py",
+  "actual_exit_code": 1,
+  "observed_before_formatting": true,
+  "diagnostics": [
+    "B023 nested replace function did not bind loop variable name",
+    "B023 nested replace function did not bind loop variable changes"
+  ],
+  "fix": "Bind each iteration's name and change-list through explicit default parameters; nonlocal text is consumed within the same loop iteration",
+  "source_bytes_not_previously_committed": true,
+  "not_a_product_or_cloud_failure": true
+}
