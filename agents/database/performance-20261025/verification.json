@@ -207,6 +207,13 @@
       "reported_errors": 1,
       "rule": "I001",
       "fixed": "import order only"
+    },
+    {
+      "kind": "staged diff check before f0ce2aa",
+      "exit_code": 2,
+      "cause": "new authored report extra blank line at EOF",
+      "commit_after_failure": "f0ce2aa; not described as passed",
+      "correction": "trim authored report EOF only; raw XML and SQLite samples unchanged"
     }
   ]
 }

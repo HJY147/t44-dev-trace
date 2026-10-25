@@ -27,4 +27,3 @@
 BE确认在APIRoute原同步handle worker内部传operationId和request.state.request_id，fixture/setup不当请求计量；其StageRecorder/cProfile分开解释重叠。已两次通知准确source/hash及时钟边界改动，最终模块接口不变。
 
 root明确本地无Docker、不连现存库，准入后续fresh GitHubActions MySQL service独立t44_diagnostics schema，沿现有锁定镜像/依赖，由root编排：DATABASE_URL所选schema、T44_DATABASE和 python -m t44.cli migrate --database t44_diagnostics 三者一致。后端供自有fixture/有限真实HTTP，本岗observer只接收其engine。下一阶段才有真实MySQL/HTTP数据；本报告不替它预判成功、不代独立验收，也不关闭原云502、0完整600秒组和6316行超限。
-

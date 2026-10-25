@@ -297,3 +297,4 @@
 - 833仅诊断进程临时wrap，分层Rows/Session/UoW/engine/dialect/cursor/mapping/codec；SQL只verb/registry表/shapeSHA，含UTC/perf/mono/threadCPU，无参数/正文/DSN/消息。单engine/Result支持边界及inclusive重叠写明，不称纯queue/lock/server时间。
 - 精确c11上6个SQLite/导入/异常/上下文/恢复检查绿，89af321有限6请求SQLite样本2SQL每条；发现时钟终点先读wall后做UTC再读CPU导致短样本CPU略高1–2us，原样本保留，edc3e2a修读序后同6检查再绿、新6样本完成；不能累加为12独立测试或当提速A/B。两份均242映射行、pending0/checkedout0/disposed，临时toy库清理，原19/71未重跑。
 - 初次猜测conftest路径不存在、一次patch标记拒绝无部分写、初Ruff7条及demo1条import问题均在verification记录，未把工具错误算产品失败。最终三脚本Ruff绿，生产/冻结/DDL/池/锁净变更0，准确模块SHA和source已先给root/BE，不等行政归档才交技术接口。
+- 本阶段文档暂存check因report新EOF空行exit2但仍提交f0ce2aa，明确不算通过；只修本岗新说明EOF，原JUnit/SQLite样本不改。Issue4 COMMENT6394267281已通过connector实际POST，再精确GET该ID全文与本地实际正文逐字相同；无新测试或矩阵，最终证据封条仅统计本阶段公件。
