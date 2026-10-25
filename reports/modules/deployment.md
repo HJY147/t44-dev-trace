@@ -398,3 +398,11 @@
 - 旧fixture的receiver/worker/source/expiry不得重用；需root与后端取得fresh公开绑定材料另审。原始资源逐文件SHA/官方单文件下载/实际释放与账单核验仍待运行。提示词ROLE-deployment-CONTINUATION-20261025-v1由AI记录，不冒充学生本人。具体设计/结果/原始JUnit见agents/deployment/continuation-20261025，源码规模和正式性能结论仍未解决。
 
 - 阶段分支已推送；Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394509470 已由GitHub插件发布并以精确评论ID完整GET逐字核body一致。代码a4055d1与文档证据6e05d7a分开，docs提交skip-ci不冒称云或CI通过。
+
+
+## NATIVE-ISOLATED-20261025（运行中，非独立/性能结论）
+
+- 先设计ad9ada1，再7e96931实现；首次prepare因搬迁OpenSSL缺默认config真实失败，01df352仅本轮子进程OPENSSL_CONF修正后fresh目录prepare成功，原件保留。ade5 broker模板仅新端口/新broker父目录3组明列差量，旧cookie/owner/CLI/关闭代码保留。07:12:29UTC新broker真实start/inspect通过；旧MySQL13306/PID7980等未操作。
+- root最终准入c8cea7e82805de5283ce67501769fa9a4efc1047，6f8e288独立application目录和实际archive字节绑定；07:24:49UTC严格CA+IP本地TLS4workers与consumer真启动，401原件另存。初始native-build.json SHA c6eafe3c1ac398e226fb977ab48919421f9f25aa3470c57ffcaaa94842ce45ec一次冻结，不覆写；native/null image/source/actual archive/artifact/锁/执行/7process身份齐备，scheduler当时pending无假PID。
+- 10项broker合成与最终14项应用合成分别通过0.05/0.04s，非独立验收；Ruff/format/diff-check绿。scope控制8ec71dc只读核root提供的单session实际IDs/TTL3600，owned stop/start；未通配/猜ID/自行签发/撤销旧token。fault门面f552cf5尚未执行故障，graceful MQ stop不冒SIGKILL。
+- 原guardian与新application watchdog分别08:47/08:46:30UTC停止本轮新服务，08:50总停止计划；原始ps资源流仍私有采样中，实际cleanup/absence/回收待后验。详见agents/deployment/native-isolated-20261025/result.md与ROLE-deployment-NATIVE-ISOLATED-20261025-v1；未读admin/identities或独立目录，未联系tester，无云费用动作。

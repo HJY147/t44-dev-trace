@@ -145,7 +145,19 @@
     "agents/deployment/continuation-20261025/local-cli.json",
     "agents/deployment/continuation-20261025/evidence-index.json",
     "agents/deployment/continuation-20261025/issue-body.md",
-    "agents/deployment/continuation-20261025/issue-readback.json"
+    "agents/deployment/continuation-20261025/issue-readback.json",
+    "deployment/native/isolated.py",
+    "deployment/native/isolated-application.py",
+    "deployment/native/isolated-build.py",
+    "deployment/native/scheduler-control.py",
+    "deployment/native/fault-control.py",
+    "agents/deployment/native-isolated-20261025-design.md",
+    "agents/deployment/native-isolated-20261025/result.md",
+    "agents/deployment/native-isolated-20261025/native-build-initial.json",
+    "agents/deployment/native-isolated-20261025/health401-receipt.json",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-ISOLATED-20261025-v1.md",
+    "tmp/824_native_isolated/824_guards.py",
+    "tmp/824_native_isolated/824_application_guards.py"
   ],
   "commands_executed": [
     {
@@ -824,7 +836,8 @@
       "archive": "agents/deployment/prompts/ROLE-deployment-REQUEST-ID-CHAIN-v1.md",
       "reason": "补严单一合法upstream UUID筛选，保留当前C与NOT_PROVEN边界；真实Nginx合成raw验证独立记录"
     },
-    "ROLE-deployment-CONTINUATION-20261025-v1"
+    "ROLE-deployment-CONTINUATION-20261025-v1",
+    "ROLE-deployment-NATIVE-ISOLATED-20261025-v1"
   ],
   "questions": [
     "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
@@ -965,7 +978,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "explicit-new-round-materializer-offline22passed-not-cloud-admitted",
+  "stage": "native-c8-functional-candidate-running-initial-scheduler-pending-not-acceptance",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -973,7 +986,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-25T06:42:37.638618+00:00",
+  "updated_at": "2026-10-25T07:36:49.349910+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1624,5 +1637,50 @@
     "issue_full_GET_body_identical": true,
     "evidence_commit_before_issue": "6e05d7a04ba56729baf1ea7a232c2f1c90ecc5e7",
     "archive_revision": "final Git metadata identifies documentation seal;implementation SHA remains a4055d1f01883c6e969f746ebe6b432f248c9942"
+  },
+  "prior_stage_before_native_isolated_20261025": "explicit-new-round-materializer-offline22passed-not-cloud-admitted",
+  "native_isolated_20261025": {
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "baseline_prepare_source": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "branch": "codex/deployment-continuation-20261025",
+    "artifact_paths": [
+      "deployment/native/isolated.py",
+      "deployment/native/isolated-application.py",
+      "deployment/native/isolated-build.py",
+      "deployment/native/scheduler-control.py",
+      "deployment/native/fault-control.py",
+      "agents/deployment/native-isolated-20261025-design.md",
+      "agents/deployment/native-isolated-20261025/result.md",
+      "agents/deployment/native-isolated-20261025/native-build-initial.json",
+      "agents/deployment/native-isolated-20261025/health401-receipt.json",
+      "agents/deployment/prompts/ROLE-deployment-NATIVE-ISOLATED-20261025-v1.md",
+      "tmp/824_native_isolated/824_guards.py",
+      "tmp/824_native_isolated/824_application_guards.py"
+    ],
+    "native_build_sha256": "c6eafe3c1ac398e226fb977ab48919421f9f25aa3470c57ffcaaa94842ce45ec",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "artifact_manifest_sha256": "2dcbffa45fe2dedb50349c4e12d1587300db069811fad4816ea4a8ac6648ca41",
+    "initial_app_start_utc": "2026-10-25T07:24:49.049967+00:00",
+    "initial_app_start_receipt": "10092e5b5568434ba0eb6a54372bd962",
+    "initial_scheduler_pending_scope": true,
+    "current_scheduler_status_in_running_resources": {
+      "pid": null,
+      "observed_alive": false,
+      "started": null
+    },
+    "separate_scope_receipts_required": true,
+    "native_manifest_never_overwritten": true,
+    "new_cloud_actions": false,
+    "independent_private_material_read": false,
+    "independent_or_cloud_performance_verdict": null,
+    "offline_unique_guards": {
+      "broker": 10,
+      "application": 14
+    },
+    "planned_application_stop_utc": "2026-10-25T08:46:30Z",
+    "planned_broker_stop_utc": "2026-10-25T08:47:00Z",
+    "hard_stop_utc": "2026-10-25T08:50:00Z",
+    "actual_final_stop_and_resource_export": null,
+    "issue": null
   }
 }
