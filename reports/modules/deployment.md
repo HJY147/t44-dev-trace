@@ -408,3 +408,12 @@
 - 原guardian与新application watchdog分别08:47/08:46:30UTC停止本轮新服务，08:50总停止计划；原始ps资源流仍私有采样中，实际cleanup/absence/回收待后验。详见agents/deployment/native-isolated-20261025/result.md与ROLE-deployment-NATIVE-ISOLATED-20261025-v1；未读admin/identities或独立目录，未联系tester，无云费用动作。
 
 - 本轮阶段公开Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394965607 已经插件发布、精确ID完整GET逐字body核对；运行中状态和待停机边界保留，未将GitHub操作当验收通过。
+
+
+## NATIVE-PERFORMANCE-PREPARE-20261025（W7待phase准入）
+
+- 先703a987设计，再4b27fde从固定53d五模板及精确两profile生成新performance副本，记录旧新SHA/位置/次数；新CA/目录/端口/用户/vhost，c8实际54源/档案绑定，08:08:31独立broker真实start/inspect绿。原functional及所有旧进程/库/用户不动，未读admin/独立目录。
+- 只读MySQL元数据151/Threads3含probe/历史峰值70并dispose，不重配或冒认旧连接已停。root明确8→7保守选择：105+30+其他2=137是上界模型，非实际使用/吞吐证明；3c4ed19另W7 namespace，W8所有原路径/字节核不变。08:14:46前W7预备build就绪且processes=[]，新API/consumer/scheduler均未启动，等待root确认functional结束及连接停止后phase许可。
+- 最终819六项合成guard0.12s、Ruff/format/diff-check绿；原四项重复不累计，初稿E701/E702格式化修正如实记录。源码c8/实际archive c393…，W7预备build64ac8d…/artifact3bf654…/新CA9177b3…，两层derivation、报告和prompt见native-performance-20261025。停止窗08:46:30/08:47/08:50未延长，运行/正式性能/实际停机/回收均未预填。
+
+- 本轮准备阶段Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6395309744 已插件发布并按精确ID完整GET逐字body核对；仍未启动新应用，未用发表动作充运行/性能证明。

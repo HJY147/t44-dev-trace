@@ -1,0 +1,11 @@
+部署岗第二原生性能环境准备（2026-10-25，应用未启动）
+
+阶段59ea0d9，branch codex/deployment-continuation-20261025。先703a987设计，再4b27fde固定53d五件公开模板及functional/performance两精确profile，逐项记录旧新SHA、替换位置/次数，未修改旧functional运行。新API18097/MQ25697/EPMD24397/dist35697/CLI45716–45725独立CA/目录/Cookie/user/vhost，源精确c8cea7e82805de5283ce67501769fa9a4efc1047。
+
+08:08:31新broker真实认证start/inspect通过，guardian独立运行。只读新performance appenv的MySQL metadata为max_connections151、Threads_connected3含probe、历史峰值70，连接已dispose，不改服务器。8worker声明120+两辅助engine30+当时其他2=152最坏模型，不能以当前连接低宣称容量。root随后明确保守7worker：105+30+其他2=137模型，余14仍须阶段实测。
+
+3c4ed19在同新perf broker/run另建W7 application/controller/binding/env/artifact/archive/prestart命名空间，实际配置只8→7，原W8预备文件原路径与bytes逐一核未变。W7在08:14:46前准备完成：预备build64ac8d001e9674dea227722c1eb728422ed98c490e4f4ea4162f7755139f71ca，artifact3bf6546d44dab3720e9e53a3e06fc1bdce4efdf9a57746de8f64394f62bc371f，实际c8 archive仍c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9。预备processes=[]明确尚未启动，不充运行grant或性能证据。
+
+最终819六项合成guard0.12s、Ruff/format/diff-check通过；前四项复跑不重复累计，初稿E701/E702修正记录如实保留。报告/两层derivation/prestart metadata/连接预算/提示词/evidence-index见agents/deployment/native-performance-20261025及ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1。
+
+root确认functional结束且其owned DB连接已停后才准入新API/consumer/scheduler；DB夹具/实际P1由数据库岗与root提供，部署不seed/猜ID/通配。运行后再冻结新的W7 native-build，不改旧预备记录。应用08:46:30/broker08:47/总08:50停止窗不延长。未读admin/identities或独立目录，未装Docker/Lima/全局依赖或开云。实际应用启动、正式性能、最终停止/回收均待后验，不预填通过。
