@@ -1,0 +1,154 @@
+{
+  "profile": "functional",
+  "product_source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "database_exact": "t44_f816_20261025",
+  "api_workers": 4,
+  "ports": {
+    "api": 18098,
+    "amqp": 25698,
+    "epmd": 24398,
+    "distribution": 35698,
+    "cli_first": 45736,
+    "cli_last": 45745
+  },
+  "basis_commit": "adc5197fa149d931a04d9eb210a6875ad8929cee",
+  "basis_sha256": "f54c5ce1ca296a1797132b2e62ad1be2f0f81a58d9c8946cffa9965ce7c5f725",
+  "first_spawn_deadline_utc": "2026-10-25T10:50:00Z",
+  "application_stop_utc": "2026-10-25T11:20:30Z",
+  "broker_stop_utc": "2026-10-25T11:22:00Z",
+  "force_stop_utc": "2026-10-25T11:25:00Z",
+  "sampler_stop_utc": null,
+  "phase_grant_supplied_separately_by_root": true,
+  "old_files_or_leases_modified": false,
+  "generated_main_executed": false,
+  "files": {
+    "isolated-build.py": {
+      "old_sha256": "ce9dc83867058ce17d24db6da9cf4d8705f3d057270a918d7e695c2020376fd0",
+      "new_sha256": "366c136fb3178191345e565804a6231425896cc91a1d3a494432f485b33d0138",
+      "allowed_changes": [
+        {
+          "old": "2026-10-25T10:20:30Z",
+          "new": "2026-10-25T11:20:30Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated-application.py": {
+      "old_sha256": "d925a39cca19b4507eb3b470b5750ff696770fe124688dedb062db6ad37bc7c4",
+      "new_sha256": "5930bbff16cea21e3df1187f4169914e794ad44c5d6c91e0b58bf210f216351c",
+      "allowed_changes": [
+        {
+          "old": "native-functional-campaign-20261025",
+          "new": "native-functional-campaign8-20261025",
+          "occurrences": 1
+        },
+        {
+          "old": "functional-db-v7/application-env.json",
+          "new": "functional-db-round8/application-env.json",
+          "occurrences": 1
+        },
+        {
+          "old": "t44_f817_20261025",
+          "new": "t44_f816_20261025",
+          "occurrences": 1
+        },
+        {
+          "old": "functional campaign 10:22 broker guardian",
+          "new": "functional campaign8 11:22 broker guardian",
+          "occurrences": 1
+        }
+      ]
+    },
+    "isolated.py": {
+      "old_sha256": "7e9c4a6cf7f774343335b55ef0c31276807393d059f3e76f90400521ed7cdc57",
+      "new_sha256": "a93add76134e7ff7c222d2af6b700bb548a41730d237c748804b0d255c6b86ee",
+      "allowed_changes": [
+        {
+          "old": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+          "new": "935ab5b93bea788672c2b4a088c79cfeed848954",
+          "occurrences": 1
+        },
+        {
+          "old": "native-functional-campaign-20261025",
+          "new": "native-functional-campaign8-20261025",
+          "occurrences": 2
+        },
+        {
+          "old": "functional_campaign_20261025_",
+          "new": "functional_campaign8_20261025_",
+          "occurrences": 1
+        },
+        {
+          "old": "datetime(2026, 10, 25, 10, 0, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 10, 50, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T10:00:00Z",
+          "new": "2026-10-25T10:50:00Z",
+          "occurrences": 1
+        },
+        {
+          "old": "18096",
+          "new": "18098",
+          "occurrences": 1
+        },
+        {
+          "old": "25696",
+          "new": "25698",
+          "occurrences": 2
+        },
+        {
+          "old": "24396",
+          "new": "24398",
+          "occurrences": 2
+        },
+        {
+          "old": "35696",
+          "new": "35698",
+          "occurrences": 2
+        },
+        {
+          "old": "45696",
+          "new": "45736",
+          "occurrences": 2
+        },
+        {
+          "old": "45705",
+          "new": "45745",
+          "occurrences": 2
+        },
+        {
+          "old": "datetime(2026, 10, 25, 10, 22, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 11, 22, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T10:22:00Z",
+          "new": "2026-10-25T11:22:00Z",
+          "occurrences": 1
+        },
+        {
+          "old": "datetime(2026, 10, 25, 10, 25, tzinfo=UTC)",
+          "new": "datetime(2026, 10, 25, 11, 25, tzinfo=UTC)",
+          "occurrences": 1
+        },
+        {
+          "old": "2026-10-25T10:25:00Z",
+          "new": "2026-10-25T11:25:00Z",
+          "occurrences": 1
+        }
+      ]
+    },
+    "fault-control.py": {
+      "old_sha256": "4534b5dd4637c28bb243809c8e2fc7ed394b4415c56a66d66ab39ad208b984b9",
+      "new_sha256": "4534b5dd4637c28bb243809c8e2fc7ed394b4415c56a66d66ab39ad208b984b9",
+      "allowed_changes": []
+    },
+    "scheduler-control.py": {
+      "old_sha256": "508cf4df0541189b4aae06cce0d1dab3d35cb6c334cedc31d416e6ea5cf40abb",
+      "new_sha256": "508cf4df0541189b4aae06cce0d1dab3d35cb6c334cedc31d416e6ea5cf40abb",
+      "allowed_changes": []
+    }
+  }
+}

@@ -448,3 +448,5 @@ root通知F phase结束后，部署于2026-10-25T09:57:29UTC完成仅F正常stop
 ## source935 campaign8设计阶段
 
 旧C8 P资源与两guardian已正常退出，完整原件保留；见round8/previous-performance-stop.json。新935产品只做原生环境准备，依赖lock/runtime模板hash实际同现存可信依赖。显式新namespace/CA/vhost/schema与F18098四worker/P18099七worker，10:50新spawn cutoff及11点停止窗口详见round8/design.md；4项pure guard0.42s通过，不是产品功能或性能通过。新source须独立实际archive/nativebuild，不复用C8标签。
+
+source935 campaign8现已idle运行，F18098四worker/P18099七worker/newCA/vhost/schema；两build与实际新archive不同旧C8，具体hash/角色/时间/CLI见round8两running-capability。P1s sampler435真实观察API9PID聚合、broker、consumer和sharedMySQL，pending generator/scheduler明确null有原因；首启O_EXCL保护拒绝预复制文件的失败与纠正保留。共同spawn10:50和11点停止边界原样生效，不预填最终停止/回收/coverage或性能；rootphase/CI/独立结论另行。

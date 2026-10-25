@@ -1,0 +1,13 @@
+# source935 campaign8部署结果（idle，无验收结论）
+
+先design.md与4e15fed设计/helper/pureguards，155be02解释限定SHA固定exec的三处S102后Ruff/format通过；纯guard4项0.42s包含逐字差量可逆、source/schema/端口、UTC门禁和原scope-prefix保护。4e15fed在lint已返回失败后仍提交是部署岗流程失误，历史保留，后续修正不冒首轮绿。
+
+旧C8 P root于10:10先停sampler/app/broker，部署再owned核验两guardian并正常SIGTERM，所有角色/7workers/tracker/Rabbit/EPMD/sampler/guardians absent，14端口均bind-free，六件controller/manifest/binding/artifact/nativebuild原件SHA不变。所有raw闭合SHA/bytes实核，aftercheck fb49c8d20ad84ca78a845a206df14e40，数据/全证据不删，共享MySQL7980未改。
+
+新F于10:18:44实际API99635、4worker99637..40、consumer99674以及独立Rabbit/EPMD/双guardian运行；新P于10:19:01 API99786、7worker99788..94、consumer99836和独立MQ/guardians运行。各新namespace/runid/CA/cookie/vhost，准确只bind root新F816/P816库，原生TLS新CA+IP校验401。产品实际935ab5b93bea788672c2b4a088c79cfeed848954，54文件runtime subset真实Git archive SHA0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138（不是旧C8c393）。依赖锁3b15a7未变，实际可执行文件/inventory/import与archive/sourcefiles校验，native-build一次冻结真实7/10应用process，scheduler初始pending；后续root单scope provisioning只appendreceipt不改初始build。F nativebuild80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594，Pbc2b141fb19958d07c684a074c9e640796daa9d4c4553e4ada20a39358f66019。
+
+共同spawn cap10:50涵盖动态scheduler/faultrestart；F app11:20:30/broker11:22/force11:25，P app11:30:30/broker11:32/force11:35，sampler11:29。UTC+monotonic守护独立于agent存活，不扩大旧grant/时间。root另给独立phase、串行F后P，部署无业务预置/测试负载/独立结果读取。
+
+P sampler首启因本岗提前复制canonical脚本触发O_EXCL保护明确失败，无采样PID；原脚本和已生成inputs以新UUID保留，记录46bb995c698944089ff41f25e8f212e9后从同bytes bundle启动，由launcher自行保留canonical，10:19:39实际PID435。CPU真实累计时间delta/monotonic、RSSbytes，9APIpid含parent/tracker/7workers；broker含Rabbit+EPMD；MySQL明确共享全进程；scheduler/generator尚未注册时null且原因保留，不假称完整coverage。原两guardian10秒raw不混作1秒interval。最终stop/final/独立/性能结论尚未发生，未预填；root只需将本轮真实generatorPID显式注册到此sampler。具体CLI/hash/CA/roles与原件见两capability及interval-interface。
+
+聚合自己neutralreceipt首轮因部分broker回执无action出现KeyError，改用get过滤后成功，不改SUT/状态/证据。所有本岗失败范围见execution-notes.json；不把工具准备失败当产品缺陷，也不把部署401等同验收绿。提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1，AI决策与用户亲历区分。

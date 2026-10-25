@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "source935-campaign8-designed-old-performance-normally-stopped",
+  "stage": "source935-campaign8-idle-running-real-builds-sampler-started",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2245,8 +2245,21 @@
     "previous_stop": "agents/deployment/native-performance-20261025/round8/previous-performance-stop.json",
     "helper": "deployment/native/campaign-eight.py",
     "pure_guards": "4 passed in 0.42s; no SUT access",
-    "new_runtime_started": false,
+    "new_runtime_started": true,
     "independent_or_performance_verdict": null,
-    "prompt_id": "ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1"
+    "prompt_id": "ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1",
+    "functional_capability": "agents/deployment/native-performance-20261025/round8/functional-running-capability.json",
+    "performance_capability": "agents/deployment/native-performance-20261025/round8/performance-running-capability.json",
+    "interval_interface": "agents/deployment/native-performance-20261025/round8/interval-interface.json",
+    "execution_notes": "agents/deployment/native-performance-20261025/round8/execution-notes.json",
+    "actual_source_archive_sha256": "0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138",
+    "functional_build_sha256": "80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594",
+    "performance_build_sha256": "bc2b141fb19958d07c684a074c9e640796daa9d4c4553e4ada20a39358f66019",
+    "sampler_pid": 435,
+    "scheduler_pending_scope_initial": true,
+    "first_spawn_cap_utc": "2026-10-25T10:50:00Z",
+    "old_files_modified": false,
+    "final_stop_or_coverage_proven": false,
+    "github_issue_administration": "after capability per root priority"
   }
 }

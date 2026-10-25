@@ -1,0 +1,31 @@
+{
+  "source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "helper_code_commit": "155be02",
+  "guard_result": "4 passed in0.42s",
+  "lint_initial": {
+    "exit_code": 1,
+    "errors": "S102 x3 pinned exec operations; committed4e15fed before addressing returned lint",
+    "fix": "155be02 local justifiednoqa only; no global disable; check/format passed"
+  },
+  "sampler_initial": {
+    "exit_code": 1,
+    "stdout": {
+      "success": false,
+      "error": "INTERVAL_RESOURCE_STEP_FAILED"
+    },
+    "reason": "launcher O_EXCL refused pre-copied canonical sampler file; no sampler process spawned",
+    "retention_receipt": "46bb995c698944089ff41f25e8f212e9",
+    "correction": "preserve identical prestart bytes/input using freshUUID hardlinks then remove only canonical aliases; bundle launcher reserves canonical files itself",
+    "actual_retry_receipt": "93e602f273044c01a1e3329cb5190f09",
+    "actual_retry_pid": 435
+  },
+  "public_capability_initial_mapping": {
+    "exit_code": 1,
+    "error": "KeyError: 'action'",
+    "reason": "own receipts include neutral broker command receipts with no action",
+    "correction": "filter value.get(action) before serializing; no product/process change"
+  },
+  "product_load_executed_by_deployment": false,
+  "independent_test_results_read": false,
+  "shared_mysql_modified": false
+}
