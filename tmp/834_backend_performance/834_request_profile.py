@@ -78,9 +78,8 @@ class Stages:
         try:
             yield
         finally:
-            row.update(
-                wall_ns=time.perf_counter_ns() - wall, thread_cpu_ns=time.thread_time_ns() - cpu
-            )
+            end_cpu, end_wall = time.thread_time_ns(), time.perf_counter_ns()
+            row.update(wall_ns=end_wall - wall, thread_cpu_ns=end_cpu - cpu)
             stack.pop()
             children = [s for s in spans if s["parent_id"] == index]
             row["exclusive_wall_ns"] = row["wall_ns"] - sum(s["wall_ns"] for s in children)
