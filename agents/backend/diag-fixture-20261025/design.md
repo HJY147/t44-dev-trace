@@ -30,3 +30,10 @@ service-token 为实际项目全集发令牌；三角色通过真实 TLS 登录�
 
 本地只跑 owned stub/offline/SQLite 开发检查。真实新 MySQL/TLS/CLI/session packet
 执行由根负责，未跑的部分明确为待执行。对旧 independent 资料不读、不联络。
+
+根后续明确要求区分原6000-task seed与本地400-task开发fixture：先只读输出实际
+候选counts，`--inspect-only`不发服务令牌/登录/业务写；不足400保留counts并拒绝，
+不是业务缺陷，不改guards，可先slots1或40。最终实现只选DEVELOPING/developer
+变更槽，另一提醒候选池排除全部合格变更任务（比只排除最终选中槽更保守）。原
+seed算法150/project前60已交付，余90六态循环→600 developing，前驱索引均<60，
+是静态性质；本次真实数据库是否满足仍以root实际profile为准，当前NOT_PROVEN。

@@ -296,6 +296,60 @@ def test_real_original_cli_three_login_sql_create_dedup_and_versioned_http_cycle
     monkeypatch.setattr(http, "Client", OwnedASGIClient)
     account_path = tmp_path / "accounts.private.json"
     store(account_path, accounts)
+    common = [
+        "--accounts",
+        str(account_path),
+        "--url",
+        "https://172.21.182.245:18445",
+        "--ca",
+        "owned-ca-not-opened",
+        "--host",
+        "owned-mysql",
+        "--port",
+        "3306",
+        "--user",
+        "owned",
+    ]
+    inspected = tmp_path / "readonly-inspection"
+    assert (
+        prepare.main(
+            [
+                *common,
+                "--output-dir",
+                str(inspected),
+                "--slots",
+                "400",
+                "--inspect-only",
+            ]
+        )
+        == 0
+    )
+    profile = json.loads(
+        (inspected / "status.public.jsonl").read_text().splitlines()[0]
+    )
+    assert (
+        profile["eligible_transition_tasks"] == 40 and profile["tasks_observed"] == 400
+    )
+    assert profile["requested_slots"] == 400 and profile["sufficient_observed"] is False
+    assert (
+        profile["dependencies_observed"] == 400 and profile["projects_observed"] == 40
+    )
+    assert executed == [] and not (inspected / "session.private.json").exists()
+    insufficient = tmp_path / "insufficient"
+    with pytest.raises(http.InvalidDiagnostic):
+        prepare.main([*common, "--output-dir", str(insufficient), "--slots", "400"])
+    profile = json.loads(
+        (insufficient / "status.public.jsonl").read_text().splitlines()[0]
+    )
+    assert (
+        profile["sufficient_observed"] is False
+        and profile["not_a_business_defect_if_insufficient"] is True
+    )
+    assert executed == [] and not (insufficient / "session.private.json").exists()
+    failure_status = json.loads(
+        (insufficient / "status.public.jsonl").read_text().splitlines()[-1]
+    )
+    assert failure_status["partial_business_commits_may_exist"] is False
     output = tmp_path / "fresh-prepared"
     try:
         assert (

@@ -70,7 +70,7 @@ def spread(rows, count):
     return result
 
 
-def candidates(g, accounts, count, clock):
+def candidates(g, accounts, count, clock, emit_profile, inspect_only=False):
     from t44.scheduling.rules import load_rules, select_window
 
     projects = g.rows("projects", {})
@@ -97,27 +97,24 @@ def candidates(g, accounts, count, clock):
     tasks = g.rows("tasks", {})
     by_id = {row["id"]: row for row in tasks}
     dependencies = defaultdict(list)
-    for row in g.rows("task_dependencies", {}):
+    edge_rows = g.rows("task_dependencies", {})
+    for row in edge_rows:
         dependencies[row["task_id"]].append(row["depends_on_task_id"])
     iterations = {row["id"]: row for row in g.rows("iterations", {})}
     uid = accounts["developer"]["user_id"]
-    transitions = spread(
-        [
-            row
-            for row in tasks
-            if row["state"] == 2
-            and row["owner_id"] == uid
-            and any(
-                entry["user_id"] == uid
-                for entry in iterations[row["iteration_id"]]["capacity"]
-            )
-            and all(
-                by_id[identifier]["state"] == 6
-                for identifier in dependencies[row["id"]]
-            )
-        ],
-        count,
-    )
+    transitions = [
+        row
+        for row in tasks
+        if row["state"] == 2
+        and row["owner_id"] == uid
+        and any(
+            entry["user_id"] == uid
+            for entry in iterations[row["iteration_id"]]["capacity"]
+        )
+        and all(
+            by_id[identifier]["state"] == 6 for identifier in dependencies[row["id"]]
+        )
+    ]
     used, rules = {row["id"] for row in transitions}, load_rules()
     escalations = []
     for row in tasks:
@@ -127,7 +124,29 @@ def candidates(g, accounts, count, clock):
         later = select_window(clock + timedelta(minutes=15), row["planned_end"], rules)
         if first is not None and later is not None and first.level == later.level:
             escalations.append(row)
-    return project_ids, transitions, spread(escalations, count), rules.version
+    emit_profile(
+        {
+            "kind": "actual-readonly-candidate-profile",
+            "utc": http.utc(),
+            "projects_observed": len(projects),
+            "tasks_observed": len(tasks),
+            "dependencies_observed": len(edge_rows),
+            "eligible_transition_tasks": len(transitions),
+            "eligible_disjoint_escalation_tasks": len(escalations),
+            "requested_slots": count,
+            "sufficient_observed": min(len(transitions), len(escalations)) >= count,
+            "selection_scope": "DEVELOPING developer owner, valid capacity, all actual predecessors DELIVERED; escalation excludes every eligible transition",
+            "not_a_business_defect_if_insufficient": True,
+        }
+    )
+    if inspect_only:
+        return project_ids, [], [], rules.version
+    return (
+        project_ids,
+        spread(transitions, count),
+        spread(escalations, count),
+        rules.version,
+    )
 
 
 def login(client, accounts):
@@ -175,15 +194,32 @@ def prepare(args):
     directory.mkdir(mode=0o700)
     status_fd, packet_fd = http.reserve(directory / "status.public.jsonl"), None
     engine = client = None
+    writes_started = False
     try:
-        packet_fd = http.reserve(directory / "session.private.json")
         from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
 
         engine = create_mysql_engine(mysql)
         with SqlAlchemyUnitOfWorkFactory(engine)() as uow:
             projects, transition_rows, escalation_rows, rule_version = candidates(
-                uow.gateway, accounts, args.slots, datetime.now(UTC)
+                uow.gateway,
+                accounts,
+                args.slots,
+                datetime.now(UTC),
+                lambda profile: http.write_fd(status_fd, profile),
+                args.inspect_only,
             )
+        if args.inspect_only:
+            http.write_fd(
+                status_fd,
+                {
+                    "kind": "readonly-inspection-complete",
+                    "utc": http.utc(),
+                    "no_service_token_login_or_business_write": True,
+                },
+            )
+            os.fsync(status_fd)
+            return 0
+        packet_fd = http.reserve(directory / "session.private.json")
         service_path = directory / "service.private.json"
         command = [
             sys.executable,
@@ -197,6 +233,7 @@ def prepare(args):
         ]
         for identifier in projects:
             command.extend(("--project-id", str(identifier)))
+        writes_started = True
         result = subprocess.run(
             command,
             stdin=subprocess.DEVNULL,
@@ -340,8 +377,8 @@ def prepare(args):
                 "diagnostic_valid": False,
                 "utc": http.utc(),
                 "failure": type(error).__name__,
-                "partial_business_commits_may_exist": True,
-                "retry_requires_new_fixture_review": True,
+                "partial_business_commits_may_exist": writes_started,
+                "retry_requires_new_fixture_review": writes_started,
             },
         )
         raise
@@ -361,6 +398,7 @@ def main(argv=None):
         parser.add_argument("--" + name, required=True)
     parser.add_argument("--port", type=int, required=True)
     parser.add_argument("--slots", type=int, default=400)
+    parser.add_argument("--inspect-only", action="store_true")
     return prepare(parser.parse_args(argv))
 
 
