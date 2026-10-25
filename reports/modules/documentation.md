@@ -28,5 +28,5 @@ Agent-Role: documentation；Prompt-Ref: ROLE-documentation-ROUND8-20261025-v1；
 
 - 本岗只做文档/Git/hash/JSON/链接轻量核对；产品、测试、SQL、HTTP、CI、压测、云、Word执行0。
 - 工具大输出截断改按精确字段读取；没有把未显示字段猜成结果。
-- 本轮P已封入事实终章；42项轻量检查、27相对链接全部通过；本人stagecommit/push并Issue9精确回读另记；未APPROVE、主干合并或全局放行。
+- 本轮P已封入事实终章；42项轻量检查、27相对链接全部通过；实现d194019已commit/push；Issue9评论6396883029精确GET正文逐字一致，回执归档；未APPROVE、主干合并或全局放行。
 - 上轮模块报告和交接状态可从基线bcf01b1恢复，不将后发证据回填旧cutoff。

@@ -117,6 +117,6 @@ D01 inventory PASS，40项目/6000任务/9000依赖/15000评审及决定经18086
 
 ## 9 交付与可审范围
 
-本稿新增入口加入[submission-map](submission-map.md)，原正文保留。作者设计、实际prompt、来源hash、问询、轻量验证及本岗交接一并归档；Issue9及提交/远端/精确读回在实际完成后记录。文档岗本轮应用/测试/SQL/HTTP探测/CI/压测/云/Word执行均0，不给主干APPROVE或全局发布PASS。
+本稿新增入口加入[submission-map](submission-map.md)，原正文保留。作者设计、实际prompt、来源hash、问询、轻量验证及本岗交接一并归档。实现d194019已实际commit/push；[Issue9本次评论](https://github.com/HJY147/t44-dev-trace/issues/9#issuecomment-6396883029)已按精确ID GET，正文与本地保存稿逐字相同，回执见本岗agents目录。文档岗本轮应用/测试/SQL/HTTP探测/CI/压测/云/Word执行均0，不给主干APPROVE或全局发布PASS。
 
 本轮P公开认证材料已纳入，核心三目标P95、零错与全400持续条件失败，后置0/完整组0、整体NOT_PROVEN；outer最终状态链和资源尾段仍缺。其他开放出口为F11及未观察错误矩阵、故障范围、规模、人的验收/研究材料、历史最终账单和新准确版本封包，不能由任何单项开发绿抵销。
