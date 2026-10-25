@@ -1,0 +1,1967 @@
+{
+  "schema": "offline_mysql_request_join_v1",
+  "source": "81c909ad753aee7179ee0c464349a07273092fc0",
+  "observer_sha256": "4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9",
+  "environment": {
+    "python": "3.12.15",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "packages": {
+      "fastapi": "0.161.1",
+      "jsonschema": "4.26.0",
+      "SQLAlchemy": "2.1.6",
+      "referencing": "0.37.0"
+    }
+  },
+  "utc_start": "2026-10-25T06:35:34.422008+00:00",
+  "utc_end": "2026-10-25T06:35:37.833930+00:00",
+  "requests_joined": 56,
+  "phase_counts": {
+    "warmup": 4,
+    "measured": 48,
+    "profile": 4
+  },
+  "actual_pool_snapshot_after_dispose": {
+    "type": "QueuePool",
+    "size": 5,
+    "checkedin": 0,
+    "checkedout": 0,
+    "overflow": -5,
+    "max_overflow": 10,
+    "timeout": 10,
+    "recycle": 1800,
+    "pre_ping": true
+  },
+  "actual_dbapi_timeout_profiles": [],
+  "outside_request_phases": {
+    "dbapi_do_close": {
+      "count": 1,
+      "wall_ns": 208294,
+      "thread_cpu_ns": 204585,
+      "errors": 0
+    }
+  },
+  "ping_returned_false": 0,
+  "operations": {
+    "getTask": {
+      "requests": 12,
+      "client_wall_ns": {
+        "mean": 10853043.166666666,
+        "min": 10044192,
+        "max": 11552601,
+        "median": 10881364.0
+      },
+      "observer_wall_ns": {
+        "mean": 8779607.333333334,
+        "min": 8231221,
+        "max": 9210546,
+        "median": 8857749.5
+      },
+      "observer_thread_cpu_ns": {
+        "mean": 7004798.5,
+        "min": 6671288,
+        "max": 7244146,
+        "median": 7007349.0
+      },
+      "sql_count_histogram": {
+        "9": 12
+      },
+      "mapped_rows": {
+        "mean": 9,
+        "min": 9,
+        "max": 9,
+        "median": 9.0
+      },
+      "phases_inclusive_not_additive": {
+        "codec_from_db_time": {
+          "count": {
+            "mean": 20,
+            "min": 20,
+            "max": 20,
+            "median": 20.0
+          },
+          "wall_ns": {
+            "mean": 68298.58333333333,
+            "min": 65481,
+            "max": 81924,
+            "median": 67247.5
+          },
+          "thread_cpu_ns": {
+            "mean": 49072.833333333336,
+            "min": 46570,
+            "max": 62915,
+            "median": 48027.5
+          }
+        },
+        "cursor_execute_inclusive": {
+          "count": {
+            "mean": 9,
+            "min": 9,
+            "max": 9,
+            "median": 9.0
+          },
+          "wall_ns": {
+            "mean": 2968539.75,
+            "min": 2748461,
+            "max": 3196559,
+            "median": 2971808.5
+          },
+          "thread_cpu_ns": {
+            "mean": 1651432.5,
+            "min": 1563529,
+            "max": 1719871,
+            "median": 1656737.5
+          }
+        },
+        "dbapi_do_commit": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 330021.9166666667,
+            "min": 287364,
+            "max": 380805,
+            "median": 322666.5
+          },
+          "thread_cpu_ns": {
+            "mean": 163845.5,
+            "min": 151465,
+            "max": 176363,
+            "median": 163643.0
+          }
+        },
+        "dbapi_do_ping": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 374046.1666666667,
+            "min": 310709,
+            "max": 449102,
+            "median": 372071.5
+          },
+          "thread_cpu_ns": {
+            "mean": 200607.33333333334,
+            "min": 170413,
+            "max": 234927,
+            "median": 199371.0
+          }
+        },
+        "dbapi_do_rollback": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 260951.5,
+            "min": 227704,
+            "max": 315676,
+            "median": 253256.5
+          },
+          "thread_cpu_ns": {
+            "mean": 124240.91666666667,
+            "min": 105996,
+            "max": 139667,
+            "median": 124244.5
+          }
+        },
+        "engine_acquire_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 462988.9166666667,
+            "min": 395676,
+            "max": 536163,
+            "median": 461721.0
+          },
+          "thread_cpu_ns": {
+            "mean": 291146.4166666667,
+            "min": 255600,
+            "max": 323842,
+            "median": 287763.5
+          }
+        },
+        "mapping_next_inclusive": {
+          "count": {
+            "mean": 18,
+            "min": 18,
+            "max": 18,
+            "median": 18.0
+          },
+          "wall_ns": {
+            "mean": 201882.66666666666,
+            "min": 142505,
+            "max": 366662,
+            "median": 149334.5
+          },
+          "thread_cpu_ns": {
+            "mean": 183566.66666666666,
+            "min": 124014,
+            "max": 348359,
+            "median": 130950.5
+          }
+        },
+        "rows_execute_inclusive": {
+          "count": {
+            "mean": 9,
+            "min": 9,
+            "max": 9,
+            "median": 9.0
+          },
+          "wall_ns": {
+            "mean": 5415995.75,
+            "min": 5035765,
+            "max": 5802578,
+            "median": 5440389.0
+          },
+          "thread_cpu_ns": {
+            "mean": 3932806.9166666665,
+            "min": 3698504,
+            "max": 4130163,
+            "median": 3929816.0
+          }
+        },
+        "session_close_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 30897.416666666668,
+            "min": 25489,
+            "max": 33571,
+            "median": 31442.0
+          },
+          "thread_cpu_ns": {
+            "mean": 28792.916666666668,
+            "min": 23415,
+            "max": 31557,
+            "median": 29284.0
+          }
+        },
+        "session_commit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 746901.3333333334,
+            "min": 683060,
+            "max": 833405,
+            "median": 723615.5
+          },
+          "thread_cpu_ns": {
+            "mean": 447695.75,
+            "min": 432073,
+            "max": 465923,
+            "median": 444700.5
+          }
+        },
+        "session_execute_inclusive": {
+          "count": {
+            "mean": 9,
+            "min": 9,
+            "max": 9,
+            "median": 9.0
+          },
+          "wall_ns": {
+            "mean": 4775831,
+            "min": 4479666,
+            "max": 5049534,
+            "median": 4769498.5
+          },
+          "thread_cpu_ns": {
+            "mean": 3292930.8333333335,
+            "min": 3134629,
+            "max": 3377924,
+            "median": 3310269.5
+          }
+        },
+        "uow_enter_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 91114.25,
+            "min": 61663,
+            "max": 310900,
+            "median": 71908.5
+          },
+          "thread_cpu_ns": {
+            "mean": 88364,
+            "min": 59138,
+            "max": 308179,
+            "median": 69719.0
+          }
+        },
+        "uow_exit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 831549.1666666666,
+            "min": 768778,
+            "max": 919246,
+            "median": 809034.5
+          },
+          "thread_cpu_ns": {
+            "mean": 532416.8333333334,
+            "min": 517861,
+            "max": 552381,
+            "median": 530339.5
+          }
+        }
+      },
+      "sql_shapes": [
+        {
+          "verb": "SELECT",
+          "tables": [
+            "auth_sessions"
+          ],
+          "shape_sha256": "1a151f06b2f7226906c8f6d3e478b6180d284332a5594a4d4a7647befdd58ea1",
+          "count": 24,
+          "wall_ns": {
+            "mean": 365893.7083333333,
+            "min": 293082,
+            "max": 449858,
+            "median": 371335.0
+          },
+          "thread_cpu_ns": {
+            "mean": 189598.04166666666,
+            "min": 165047,
+            "max": 227849,
+            "median": 190378.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "project_members"
+          ],
+          "shape_sha256": "0c48edbf355db7b99e8d903038a351804bed9b16973f74ba1a26c4a1a5414a39",
+          "count": 24,
+          "wall_ns": {
+            "mean": 308022.875,
+            "min": 265069,
+            "max": 358561,
+            "median": 303277.0
+          },
+          "thread_cpu_ns": {
+            "mean": 169859.79166666666,
+            "min": 154760,
+            "max": 189172,
+            "median": 168636.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "projects"
+          ],
+          "shape_sha256": "de4911995b4acd056029083ad43f213352c5042b68913d8450e432454f3ff241",
+          "count": 24,
+          "wall_ns": {
+            "mean": 283790.25,
+            "min": 251079,
+            "max": 321765,
+            "median": 280632.5
+          },
+          "thread_cpu_ns": {
+            "mean": 160308.20833333334,
+            "min": 147910,
+            "max": 177134,
+            "median": 158050.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "acd4dbd7c61c2005f808a9eb1e701e9cab98fba6b65e0548521472616626ea82",
+          "count": 12,
+          "wall_ns": {
+            "mean": 445707.4166666667,
+            "min": 421425,
+            "max": 484841,
+            "median": 442562.0
+          },
+          "thread_cpu_ns": {
+            "mean": 270447.4166666667,
+            "min": 254258,
+            "max": 298444,
+            "median": 267162.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "users"
+          ],
+          "shape_sha256": "6ee922190a2afb5931a2360d0d8c39bc124bb66eafc60f7ffe7d6365a5c48dee",
+          "count": 24,
+          "wall_ns": {
+            "mean": 303709.3333333333,
+            "min": 255905,
+            "max": 332842,
+            "median": 302806.5
+          },
+          "thread_cpu_ns": {
+            "mean": 170726.5,
+            "min": 154350,
+            "max": 182201,
+            "median": 171164.0
+          }
+        }
+      ]
+    },
+    "listTasks": {
+      "requests": 12,
+      "client_wall_ns": {
+        "mean": 24975304.5,
+        "min": 24040456,
+        "max": 26235980,
+        "median": 24904758.5
+      },
+      "observer_wall_ns": {
+        "mean": 22616994.916666668,
+        "min": 21852143,
+        "max": 23555941,
+        "median": 22605248.0
+      },
+      "observer_thread_cpu_ns": {
+        "mean": 20462310.916666668,
+        "min": 19698075,
+        "max": 20994806,
+        "median": 20526913.5
+      },
+      "sql_count_histogram": {
+        "10": 12
+      },
+      "mapped_rows": {
+        "mean": 28,
+        "min": 28,
+        "max": 28,
+        "median": 28.0
+      },
+      "phases_inclusive_not_additive": {
+        "codec_from_db_time": {
+          "count": {
+            "mean": 96,
+            "min": 96,
+            "max": 96,
+            "median": 96.0
+          },
+          "wall_ns": {
+            "mean": 259757.83333333334,
+            "min": 251020,
+            "max": 273705,
+            "median": 254660.5
+          },
+          "thread_cpu_ns": {
+            "mean": 169369.83333333334,
+            "min": 163909,
+            "max": 182809,
+            "median": 167178.5
+          }
+        },
+        "cursor_execute_inclusive": {
+          "count": {
+            "mean": 10,
+            "min": 10,
+            "max": 10,
+            "median": 10.0
+          },
+          "wall_ns": {
+            "mean": 3952791.4166666665,
+            "min": 3635910,
+            "max": 4383468,
+            "median": 3872530.0
+          },
+          "thread_cpu_ns": {
+            "mean": 2278828.4166666665,
+            "min": 2059214,
+            "max": 2733480,
+            "median": 2238134.0
+          }
+        },
+        "dbapi_do_commit": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 316709.9166666667,
+            "min": 287163,
+            "max": 382086,
+            "median": 304198.5
+          },
+          "thread_cpu_ns": {
+            "mean": 159239.41666666666,
+            "min": 148872,
+            "max": 180670,
+            "median": 156449.0
+          }
+        },
+        "dbapi_do_ping": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 457393.9166666667,
+            "min": 377940,
+            "max": 498987,
+            "median": 463633.5
+          },
+          "thread_cpu_ns": {
+            "mean": 255025.91666666666,
+            "min": 194728,
+            "max": 281389,
+            "median": 264048.0
+          }
+        },
+        "dbapi_do_rollback": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 258528.16666666666,
+            "min": 235686,
+            "max": 308545,
+            "median": 251374.0
+          },
+          "thread_cpu_ns": {
+            "mean": 119532.33333333333,
+            "min": 108542,
+            "max": 139979,
+            "median": 116413.5
+          }
+        },
+        "engine_acquire_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 566360.5833333334,
+            "min": 461727,
+            "max": 611371,
+            "median": 571481.0
+          },
+          "thread_cpu_ns": {
+            "mean": 366194.75,
+            "min": 279104,
+            "max": 406294,
+            "median": 373035.0
+          }
+        },
+        "mapping_next_inclusive": {
+          "count": {
+            "mean": 37,
+            "min": 37,
+            "max": 37,
+            "median": 37.0
+          },
+          "wall_ns": {
+            "mean": 228552.16666666666,
+            "min": 213034,
+            "max": 263219,
+            "median": 225579.0
+          },
+          "thread_cpu_ns": {
+            "mean": 192551.58333333334,
+            "min": 177174,
+            "max": 227054,
+            "median": 189372.5
+          }
+        },
+        "result_scalar_one_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 11453.083333333334,
+            "min": 10796,
+            "max": 12108,
+            "median": 11542.5
+          },
+          "thread_cpu_ns": {
+            "mean": 10410.416666666666,
+            "min": 9704,
+            "max": 11066,
+            "median": 10511.0
+          }
+        },
+        "rows_execute_inclusive": {
+          "count": {
+            "mean": 10,
+            "min": 10,
+            "max": 10,
+            "median": 10.0
+          },
+          "wall_ns": {
+            "mean": 7246204.416666667,
+            "min": 6700398,
+            "max": 7969681,
+            "median": 7164727.0
+          },
+          "thread_cpu_ns": {
+            "mean": 5377938.333333333,
+            "min": 4868191,
+            "max": 5854108,
+            "median": 5362882.5
+          }
+        },
+        "session_close_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 36457.083333333336,
+            "min": 31267,
+            "max": 50867,
+            "median": 35968.5
+          },
+          "thread_cpu_ns": {
+            "mean": 34373.75,
+            "min": 29173,
+            "max": 48783,
+            "median": 33899.5
+          }
+        },
+        "session_commit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 751636.75,
+            "min": 706364,
+            "max": 868359,
+            "median": 732383.5
+          },
+          "thread_cpu_ns": {
+            "mean": 459195.6666666667,
+            "min": 435737,
+            "max": 504961,
+            "median": 450875.5
+          }
+        },
+        "session_execute_inclusive": {
+          "count": {
+            "mean": 10,
+            "min": 10,
+            "max": 10,
+            "median": 10.0
+          },
+          "wall_ns": {
+            "mean": 6109778.583333333,
+            "min": 5624458,
+            "max": 6798577,
+            "median": 5954353.5
+          },
+          "thread_cpu_ns": {
+            "mean": 4241505.916666667,
+            "min": 3786864,
+            "max": 4726042,
+            "median": 4148660.0
+          }
+        },
+        "uow_enter_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 96256.75,
+            "min": 69234,
+            "max": 114963,
+            "median": 96545.5
+          },
+          "thread_cpu_ns": {
+            "mean": 93911.25,
+            "min": 67180,
+            "max": 112667,
+            "median": 94285.5
+          }
+        },
+        "uow_exit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 843805.8333333334,
+            "min": 792063,
+            "max": 961509,
+            "median": 827787.0
+          },
+          "thread_cpu_ns": {
+            "mean": 551450.8333333334,
+            "min": 524181,
+            "max": 603639,
+            "median": 547830.0
+          }
+        }
+      },
+      "sql_shapes": [
+        {
+          "verb": "SELECT",
+          "tables": [
+            "auth_sessions"
+          ],
+          "shape_sha256": "1a151f06b2f7226906c8f6d3e478b6180d284332a5594a4d4a7647befdd58ea1",
+          "count": 24,
+          "wall_ns": {
+            "mean": 468984.4166666667,
+            "min": 300803,
+            "max": 1082782,
+            "median": 388981.5
+          },
+          "thread_cpu_ns": {
+            "mean": 256903.125,
+            "min": 168170,
+            "max": 813251,
+            "median": 188200.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "project_members"
+          ],
+          "shape_sha256": "0c48edbf355db7b99e8d903038a351804bed9b16973f74ba1a26c4a1a5414a39",
+          "count": 24,
+          "wall_ns": {
+            "mean": 314027.0416666667,
+            "min": 279541,
+            "max": 401084,
+            "median": 310613.0
+          },
+          "thread_cpu_ns": {
+            "mean": 170368.08333333334,
+            "min": 157834,
+            "max": 208060,
+            "median": 166803.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "projects"
+          ],
+          "shape_sha256": "de4911995b4acd056029083ad43f213352c5042b68913d8450e432454f3ff241",
+          "count": 24,
+          "wall_ns": {
+            "mean": 289621.2083333333,
+            "min": 263176,
+            "max": 356367,
+            "median": 282661.0
+          },
+          "thread_cpu_ns": {
+            "mean": 160815.125,
+            "min": 151836,
+            "max": 180458,
+            "median": 156017.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "c155621dd35e1729dbb7ebf0d8c851c2e070accfbad231712de3b10fe2cd95f6",
+          "count": 12,
+          "wall_ns": {
+            "mean": 294383.5,
+            "min": 268595,
+            "max": 351019,
+            "median": 282966.5
+          },
+          "thread_cpu_ns": {
+            "mean": 126212.58333333333,
+            "min": 114019,
+            "max": 147359,
+            "median": 122257.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "dbad4d1e8b27c49588f455cdd1af6c07c90f199197e0357fd1265815a8e2ac26",
+          "count": 12,
+          "wall_ns": {
+            "mean": 883628.5,
+            "min": 857813,
+            "max": 949031,
+            "median": 871933.5
+          },
+          "thread_cpu_ns": {
+            "mean": 635401.5833333334,
+            "min": 611660,
+            "max": 655945,
+            "median": 637222.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "users"
+          ],
+          "shape_sha256": "6ee922190a2afb5931a2360d0d8c39bc124bb66eafc60f7ffe7d6365a5c48dee",
+          "count": 24,
+          "wall_ns": {
+            "mean": 314757.0416666667,
+            "min": 267733,
+            "max": 417199,
+            "median": 311515.0
+          },
+          "thread_cpu_ns": {
+            "mean": 170520.79166666666,
+            "min": 155992,
+            "max": 202792,
+            "median": 166783.5
+          }
+        }
+      ]
+    },
+    "validateContractPayload": {
+      "requests": 12,
+      "client_wall_ns": {
+        "mean": 6263656,
+        "min": 6034534,
+        "max": 7328845,
+        "median": 6148876.5
+      },
+      "observer_wall_ns": {
+        "mean": 4054455.1666666665,
+        "min": 3768891,
+        "max": 5014783,
+        "median": 3934870.5
+      },
+      "observer_thread_cpu_ns": {
+        "mean": 3299352.25,
+        "min": 3044941,
+        "max": 4000192,
+        "median": 3234407.5
+      },
+      "sql_count_histogram": {
+        "4": 12
+      },
+      "mapped_rows": {
+        "mean": 4,
+        "min": 4,
+        "max": 4,
+        "median": 4.0
+      },
+      "phases_inclusive_not_additive": {
+        "codec_from_db_time": {
+          "count": {
+            "mean": 8,
+            "min": 8,
+            "max": 8,
+            "median": 8.0
+          },
+          "wall_ns": {
+            "mean": 27345.583333333332,
+            "min": 26679,
+            "max": 28793,
+            "median": 27126.5
+          },
+          "thread_cpu_ns": {
+            "mean": 19723.416666666668,
+            "min": 19178,
+            "max": 21171,
+            "median": 19540.0
+          }
+        },
+        "cursor_execute_inclusive": {
+          "count": {
+            "mean": 4,
+            "min": 4,
+            "max": 4,
+            "median": 4.0
+          },
+          "wall_ns": {
+            "mean": 1207858.4166666667,
+            "min": 1135071,
+            "max": 1518473,
+            "median": 1171721.0
+          },
+          "thread_cpu_ns": {
+            "mean": 677847.6666666666,
+            "min": 627314,
+            "max": 780893,
+            "median": 676059.0
+          }
+        },
+        "dbapi_do_commit": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 154656.25,
+            "min": 144658,
+            "max": 180302,
+            "median": 148839.0
+          },
+          "thread_cpu_ns": {
+            "mean": 82656.16666666667,
+            "min": 74832,
+            "max": 107040,
+            "median": 80714.5
+          }
+        },
+        "dbapi_do_ping": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 193313.75,
+            "min": 166711,
+            "max": 311029,
+            "median": 174367.0
+          },
+          "thread_cpu_ns": {
+            "mean": 97164.41666666667,
+            "min": 78166,
+            "max": 165856,
+            "median": 86844.0
+          }
+        },
+        "dbapi_do_rollback": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 119797.16666666667,
+            "min": 112449,
+            "max": 133301,
+            "median": 118163.0
+          },
+          "thread_cpu_ns": {
+            "mean": 56922.083333333336,
+            "min": 49333,
+            "max": 67199,
+            "median": 55222.5
+          }
+        },
+        "engine_acquire_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 234507.5,
+            "min": 201744,
+            "max": 372031,
+            "median": 209130.5
+          },
+          "thread_cpu_ns": {
+            "mean": 138608.66666666666,
+            "min": 112697,
+            "max": 227278,
+            "median": 123313.5
+          }
+        },
+        "mapping_next_inclusive": {
+          "count": {
+            "mean": 8,
+            "min": 8,
+            "max": 8,
+            "median": 8.0
+          },
+          "wall_ns": {
+            "mean": 65167,
+            "min": 58647,
+            "max": 76105,
+            "median": 62502.5
+          },
+          "thread_cpu_ns": {
+            "mean": 57090.416666666664,
+            "min": 50528,
+            "max": 68009,
+            "median": 54381.0
+          }
+        },
+        "rows_execute_inclusive": {
+          "count": {
+            "mean": 4,
+            "min": 4,
+            "max": 4,
+            "median": 4.0
+          },
+          "wall_ns": {
+            "mean": 2246015.75,
+            "min": 2093145,
+            "max": 2923811,
+            "median": 2157737.0
+          },
+          "thread_cpu_ns": {
+            "mean": 1621328.8333333333,
+            "min": 1511759,
+            "max": 2044082,
+            "median": 1569309.5
+          }
+        },
+        "session_close_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 15217,
+            "min": 11978,
+            "max": 26200,
+            "median": 13755.5
+          },
+          "thread_cpu_ns": {
+            "mean": 14190.166666666666,
+            "min": 10966,
+            "max": 25148,
+            "median": 12709.0
+          }
+        },
+        "session_commit_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 350718.5833333333,
+            "min": 331459,
+            "max": 397329,
+            "median": 345551.0
+          },
+          "thread_cpu_ns": {
+            "mean": 217612.5,
+            "min": 193498,
+            "max": 262421,
+            "median": 212531.0
+          }
+        },
+        "session_execute_inclusive": {
+          "count": {
+            "mean": 4,
+            "min": 4,
+            "max": 4,
+            "median": 4.0
+          },
+          "wall_ns": {
+            "mean": 2000985.25,
+            "min": 1858470,
+            "max": 2640805,
+            "median": 1916208.5
+          },
+          "thread_cpu_ns": {
+            "mean": 1377778.0833333333,
+            "min": 1266254,
+            "max": 1761210,
+            "median": 1326990.5
+          }
+        },
+        "uow_enter_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 45328.333333333336,
+            "min": 26820,
+            "max": 189515,
+            "median": 29935.5
+          },
+          "thread_cpu_ns": {
+            "mean": 43888.75,
+            "min": 25698,
+            "max": 188300,
+            "median": 27881.5
+          }
+        },
+        "uow_exit_inclusive": {
+          "count": {
+            "mean": 1,
+            "min": 1,
+            "max": 1,
+            "median": 1.0
+          },
+          "wall_ns": {
+            "mean": 389674.9166666667,
+            "min": 370478,
+            "max": 442197,
+            "median": 383153.0
+          },
+          "thread_cpu_ns": {
+            "mean": 256636.5,
+            "min": 232106,
+            "max": 307318,
+            "median": 248589.0
+          }
+        }
+      },
+      "sql_shapes": [
+        {
+          "verb": "SELECT",
+          "tables": [
+            "auth_sessions"
+          ],
+          "shape_sha256": "1a151f06b2f7226906c8f6d3e478b6180d284332a5594a4d4a7647befdd58ea1",
+          "count": 12,
+          "wall_ns": {
+            "mean": 362263.25,
+            "min": 316607,
+            "max": 558397,
+            "median": 340744.0
+          },
+          "thread_cpu_ns": {
+            "mean": 186629.16666666666,
+            "min": 169693,
+            "max": 253217,
+            "median": 179427.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "project_members"
+          ],
+          "shape_sha256": "0c48edbf355db7b99e8d903038a351804bed9b16973f74ba1a26c4a1a5414a39",
+          "count": 12,
+          "wall_ns": {
+            "mean": 286471.8333333333,
+            "min": 276267,
+            "max": 310057,
+            "median": 284148.0
+          },
+          "thread_cpu_ns": {
+            "mean": 163522.5,
+            "min": 154130,
+            "max": 178836,
+            "median": 160974.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "projects"
+          ],
+          "shape_sha256": "de4911995b4acd056029083ad43f213352c5042b68913d8450e432454f3ff241",
+          "count": 12,
+          "wall_ns": {
+            "mean": 272971.25,
+            "min": 258990,
+            "max": 302696,
+            "median": 272725.5
+          },
+          "thread_cpu_ns": {
+            "mean": 162744,
+            "min": 146258,
+            "max": 191205,
+            "median": 157895.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "users"
+          ],
+          "shape_sha256": "6ee922190a2afb5931a2360d0d8c39bc124bb66eafc60f7ffe7d6365a5c48dee",
+          "count": 12,
+          "wall_ns": {
+            "mean": 286152.0833333333,
+            "min": 265720,
+            "max": 347323,
+            "median": 280617.5
+          },
+          "thread_cpu_ns": {
+            "mean": 164952,
+            "min": 153388,
+            "max": 195470,
+            "median": 162066.5
+          }
+        }
+      ]
+    },
+    "transitionTask": {
+      "requests": 12,
+      "client_wall_ns": {
+        "mean": 27671238.75,
+        "min": 24124107,
+        "max": 43531836,
+        "median": 25356697.5
+      },
+      "observer_wall_ns": {
+        "mean": 25429658.833333332,
+        "min": 22003862,
+        "max": 41057707,
+        "median": 23215382.5
+      },
+      "observer_thread_cpu_ns": {
+        "mean": 17484742.75,
+        "min": 16888864,
+        "max": 18439670,
+        "median": 17275355.0
+      },
+      "sql_count_histogram": {
+        "27": 6,
+        "29": 6
+      },
+      "mapped_rows": {
+        "mean": 21.5,
+        "min": 21,
+        "max": 22,
+        "median": 21.5
+      },
+      "phases_inclusive_not_additive": {
+        "codec_from_db_time": {
+          "count": {
+            "mean": 49,
+            "min": 48,
+            "max": 50,
+            "median": 49.0
+          },
+          "wall_ns": {
+            "mean": 163421.08333333334,
+            "min": 152853,
+            "max": 182495,
+            "median": 163105.0
+          },
+          "thread_cpu_ns": {
+            "mean": 114438.25,
+            "min": 107688,
+            "max": 134652,
+            "median": 113283.5
+          }
+        },
+        "cursor_execute_inclusive": {
+          "count": {
+            "mean": 28,
+            "min": 27,
+            "max": 29,
+            "median": 28.0
+          },
+          "wall_ns": {
+            "mean": 8796164.833333334,
+            "min": 8248803,
+            "max": 9412370,
+            "median": 8784875.0
+          },
+          "thread_cpu_ns": {
+            "mean": 4720357.333333333,
+            "min": 4465812,
+            "max": 5001254,
+            "median": 4764851.0
+          }
+        },
+        "dbapi_do_commit": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 3785357.8333333335,
+            "min": 1054059,
+            "max": 19592107,
+            "median": 1232111.5
+          },
+          "thread_cpu_ns": {
+            "mean": 164937.66666666666,
+            "min": 147058,
+            "max": 189972,
+            "median": 163784.0
+          }
+        },
+        "dbapi_do_ping": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 333012.75,
+            "min": 283777,
+            "max": 403394,
+            "median": 321490.0
+          },
+          "thread_cpu_ns": {
+            "mean": 174795,
+            "min": 148811,
+            "max": 218294,
+            "median": 169748.0
+          }
+        },
+        "dbapi_do_rollback": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 278230.0833333333,
+            "min": 259180,
+            "max": 310658,
+            "median": 278795.0
+          },
+          "thread_cpu_ns": {
+            "mean": 138298.75,
+            "min": 128641,
+            "max": 160799,
+            "median": 134505.0
+          }
+        },
+        "engine_acquire_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 420416,
+            "min": 357639,
+            "max": 509544,
+            "median": 409973.0
+          },
+          "thread_cpu_ns": {
+            "mean": 262925.1666666667,
+            "min": 227818,
+            "max": 318694,
+            "median": 260328.0
+          }
+        },
+        "mapping_next_inclusive": {
+          "count": {
+            "mean": 42.5,
+            "min": 41,
+            "max": 44,
+            "median": 42.5
+          },
+          "wall_ns": {
+            "mean": 405097.75,
+            "min": 297454,
+            "max": 682577,
+            "median": 331360.5
+          },
+          "thread_cpu_ns": {
+            "mean": 361689.0833333333,
+            "min": 256344,
+            "max": 638492,
+            "median": 288259.0
+          }
+        },
+        "rows_execute_inclusive": {
+          "count": {
+            "mean": 26,
+            "min": 25,
+            "max": 27,
+            "median": 26.0
+          },
+          "wall_ns": {
+            "mean": 14505129.75,
+            "min": 13688643,
+            "max": 15315523,
+            "median": 14380011.5
+          },
+          "thread_cpu_ns": {
+            "mean": 10363867.166666666,
+            "min": 9873287,
+            "max": 10920205,
+            "median": 10313235.0
+          }
+        },
+        "session_close_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 36559.333333333336,
+            "min": 28293,
+            "max": 54572,
+            "median": 34337.0
+          },
+          "thread_cpu_ns": {
+            "mean": 34424.333333333336,
+            "min": 26069,
+            "max": 52388,
+            "median": 32188.0
+          }
+        },
+        "session_commit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 4224511.333333333,
+            "min": 1448474,
+            "max": 20059581,
+            "median": 1672621.0
+          },
+          "thread_cpu_ns": {
+            "mean": 469291.0833333333,
+            "min": 418391,
+            "max": 548084,
+            "median": 465748.0
+          }
+        },
+        "session_execute_inclusive": {
+          "count": {
+            "mean": 26,
+            "min": 25,
+            "max": 27,
+            "median": 26.0
+          },
+          "wall_ns": {
+            "mean": 12932196.5,
+            "min": 12147537,
+            "max": 13859358,
+            "median": 12784747.0
+          },
+          "thread_cpu_ns": {
+            "mean": 8793257.083333334,
+            "min": 8342442,
+            "max": 9301760,
+            "median": 8733944.5
+          }
+        },
+        "uow_enter_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 61143.166666666664,
+            "min": 49524,
+            "max": 72109,
+            "median": 62189.5
+          },
+          "thread_cpu_ns": {
+            "mean": 58930.75,
+            "min": 47460,
+            "max": 69894,
+            "median": 59984.5
+          }
+        },
+        "uow_exit_inclusive": {
+          "count": {
+            "mean": 2,
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "wall_ns": {
+            "mean": 4320463.583333333,
+            "min": 1529335,
+            "max": 20162787,
+            "median": 1762356.0
+          },
+          "thread_cpu_ns": {
+            "mean": 565314.0833333334,
+            "min": 499142,
+            "max": 650718,
+            "median": 559666.5
+          }
+        }
+      },
+      "sql_shapes": [
+        {
+          "verb": "INSERT",
+          "tables": [
+            "audit_events"
+          ],
+          "shape_sha256": "b96d605bb77a4ad928b833d545914f36c4d0de0095523c1ccef88f6ec0f93f93",
+          "count": 12,
+          "wall_ns": {
+            "mean": 309999.75,
+            "min": 284669,
+            "max": 341255,
+            "median": 308360.0
+          },
+          "thread_cpu_ns": {
+            "mean": 125576.83333333333,
+            "min": 119557,
+            "max": 137104,
+            "median": 124014.5
+          }
+        },
+        {
+          "verb": "INSERT",
+          "tables": [
+            "idempotency_requests"
+          ],
+          "shape_sha256": "00b99dc75fab7e6052d424c7110919c94114a5081ffbe5a318a9fc9485fd497f",
+          "count": 12,
+          "wall_ns": {
+            "mean": 308957.75,
+            "min": 228985,
+            "max": 777252,
+            "median": 259676.5
+          },
+          "thread_cpu_ns": {
+            "mean": 111100.41666666667,
+            "min": 97205,
+            "max": 139108,
+            "median": 109007.0
+          }
+        },
+        {
+          "verb": "INSERT",
+          "tables": [
+            "outbox_events"
+          ],
+          "shape_sha256": "53d9c7dd7f54a607a95857e72e35415187aa501ad316de122d0232b7de2d1511",
+          "count": 12,
+          "wall_ns": {
+            "mean": 289825.0833333333,
+            "min": 263086,
+            "max": 316016,
+            "median": 294939.5
+          },
+          "thread_cpu_ns": {
+            "mean": 120019.41666666667,
+            "min": 107740,
+            "max": 135002,
+            "median": 119002.5
+          }
+        },
+        {
+          "verb": "OTHER",
+          "tables": [],
+          "shape_sha256": "a83745f24726618a48354c7892fb65b08ef3a362ad61c044614192016efb26f5",
+          "count": 12,
+          "wall_ns": {
+            "mean": 174923.66666666666,
+            "min": 157658,
+            "max": 200642,
+            "median": 172480.0
+          },
+          "thread_cpu_ns": {
+            "mean": 99043.91666666667,
+            "min": 89954,
+            "max": 115091,
+            "median": 95902.0
+          }
+        },
+        {
+          "verb": "OTHER",
+          "tables": [],
+          "shape_sha256": "e4d8093d4e1a8eaa07d07cc10f5ca8d0516ebc1f2a81e5199803e4a7b43abb21",
+          "count": 12,
+          "wall_ns": {
+            "mean": 169064.33333333334,
+            "min": 146400,
+            "max": 203186,
+            "median": 164628.5
+          },
+          "thread_cpu_ns": {
+            "mean": 90317,
+            "min": 81572,
+            "max": 103995,
+            "median": 89613.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "auth_sessions"
+          ],
+          "shape_sha256": "1a151f06b2f7226906c8f6d3e478b6180d284332a5594a4d4a7647befdd58ea1",
+          "count": 12,
+          "wall_ns": {
+            "mean": 354936.6666666667,
+            "min": 324179,
+            "max": 403057,
+            "median": 349962.5
+          },
+          "thread_cpu_ns": {
+            "mean": 188692.41666666666,
+            "min": 173238,
+            "max": 207208,
+            "median": 187388.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "auth_sessions"
+          ],
+          "shape_sha256": "4a0633f8707a944293a71daac2a9c5e5b2eeffce176bcde40528b3472de1847d",
+          "count": 24,
+          "wall_ns": {
+            "mean": 339702.9166666667,
+            "min": 302957,
+            "max": 414374,
+            "median": 334779.5
+          },
+          "thread_cpu_ns": {
+            "mean": 189053.66666666666,
+            "min": 175902,
+            "max": 210944,
+            "median": 189882.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "idempotency_requests"
+          ],
+          "shape_sha256": "1bc507c2935c75df61e6f78f6e642de6c7a349fae4a83fad0fba15e1405f8d7e",
+          "count": 12,
+          "wall_ns": {
+            "mean": 333273.8333333333,
+            "min": 302866,
+            "max": 372682,
+            "median": 334454.0
+          },
+          "thread_cpu_ns": {
+            "mean": 196557.5,
+            "min": 181210,
+            "max": 223633,
+            "median": 193443.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "idempotency_requests"
+          ],
+          "shape_sha256": "dc8cdb88e0713f7300245332a33075095e2c98417dd32d1b93afad6b17f5e5f9",
+          "count": 12,
+          "wall_ns": {
+            "mean": 343000.75,
+            "min": 308465,
+            "max": 403799,
+            "median": 339521.5
+          },
+          "thread_cpu_ns": {
+            "mean": 192106.91666666666,
+            "min": 174551,
+            "max": 220289,
+            "median": 192476.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "idempotency_requests"
+          ],
+          "shape_sha256": "e2e52a4bb6ecb577159d6d55eac94ec54c39a4c69e632d1883b7e80a11475c60",
+          "count": 12,
+          "wall_ns": {
+            "mean": 338795.4166666667,
+            "min": 301754,
+            "max": 380593,
+            "median": 335456.0
+          },
+          "thread_cpu_ns": {
+            "mean": 198745.66666666666,
+            "min": 184524,
+            "max": 224243,
+            "median": 192827.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "project_members"
+          ],
+          "shape_sha256": "0c48edbf355db7b99e8d903038a351804bed9b16973f74ba1a26c4a1a5414a39",
+          "count": 36,
+          "wall_ns": {
+            "mean": 298597.1388888889,
+            "min": 268795,
+            "max": 348755,
+            "median": 294619.0
+          },
+          "thread_cpu_ns": {
+            "mean": 168146.63888888888,
+            "min": 152697,
+            "max": 198926,
+            "median": 166418.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "project_members"
+          ],
+          "shape_sha256": "36b990a1f2b26470ab045a9a87f89ae8f5f5065c51b8977bc51366bd3abfabad",
+          "count": 12,
+          "wall_ns": {
+            "mean": 339740.25,
+            "min": 320042,
+            "max": 375025,
+            "median": 338385.0
+          },
+          "thread_cpu_ns": {
+            "mean": 185329.83333333334,
+            "min": 176052,
+            "max": 203412,
+            "median": 184304.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "projects"
+          ],
+          "shape_sha256": "4f6607386e1e658ef1207639900f89a2e6e1ce31e36512544af44becc022fb72",
+          "count": 6,
+          "wall_ns": {
+            "mean": 283966.3333333333,
+            "min": 260112,
+            "max": 302916,
+            "median": 287593.5
+          },
+          "thread_cpu_ns": {
+            "mean": 159089.66666666666,
+            "min": 152487,
+            "max": 170834,
+            "median": 154730.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "projects"
+          ],
+          "shape_sha256": "de4911995b4acd056029083ad43f213352c5042b68913d8450e432454f3ff241",
+          "count": 48,
+          "wall_ns": {
+            "mean": 280707.625,
+            "min": 245109,
+            "max": 329927,
+            "median": 277133.0
+          },
+          "thread_cpu_ns": {
+            "mean": 161184.60416666666,
+            "min": 145056,
+            "max": 182692,
+            "median": 159518.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "task_dependencies"
+          ],
+          "shape_sha256": "6b5d1b55be78c11c60b646567e20b9d1c9ad23b07300c1622ca62f41d81c4f72",
+          "count": 6,
+          "wall_ns": {
+            "mean": 271467.3333333333,
+            "min": 259381,
+            "max": 288415,
+            "median": 267738.0
+          },
+          "thread_cpu_ns": {
+            "mean": 130432.16666666667,
+            "min": 121049,
+            "max": 147068,
+            "median": 128126.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "94547f0cba316cd88d178e6615bf6d2e9a3164e1d4d50547d2dd2792e63f6e0d",
+          "count": 12,
+          "wall_ns": {
+            "mean": 414017.1666666667,
+            "min": 391961,
+            "max": 460193,
+            "median": 410554.0
+          },
+          "thread_cpu_ns": {
+            "mean": 263643.1666666667,
+            "min": 247618,
+            "max": 285405,
+            "median": 259761.5
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "acd4dbd7c61c2005f808a9eb1e701e9cab98fba6b65e0548521472616626ea82",
+          "count": 12,
+          "wall_ns": {
+            "mean": 407458.1666666667,
+            "min": 383157,
+            "max": 440814,
+            "median": 406377.5
+          },
+          "thread_cpu_ns": {
+            "mean": 257283.58333333334,
+            "min": 242381,
+            "max": 277031,
+            "median": 253172.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "b504569cb2333b93e38134e63ac22879c5c37646e86150bb2d5c810030961a7c",
+          "count": 12,
+          "wall_ns": {
+            "mean": 445943.8333333333,
+            "min": 432291,
+            "max": 477520,
+            "median": 440369.0
+          },
+          "thread_cpu_ns": {
+            "mean": 275766.9166666667,
+            "min": 261138,
+            "max": 291383,
+            "median": 275991.0
+          }
+        },
+        {
+          "verb": "SELECT",
+          "tables": [
+            "users"
+          ],
+          "shape_sha256": "6ee922190a2afb5931a2360d0d8c39bc124bb66eafc60f7ffe7d6365a5c48dee",
+          "count": 36,
+          "wall_ns": {
+            "mean": 287815.1388888889,
+            "min": 253823,
+            "max": 333102,
+            "median": 280352.5
+          },
+          "thread_cpu_ns": {
+            "mean": 165738,
+            "min": 151896,
+            "max": 195071,
+            "median": 162431.0
+          }
+        },
+        {
+          "verb": "UPDATE",
+          "tables": [
+            "idempotency_requests"
+          ],
+          "shape_sha256": "b1ae97975d2eb576e060bfbd3559bff7f258ddea3c33333b4fd2242389031102",
+          "count": 12,
+          "wall_ns": {
+            "mean": 349892.25,
+            "min": 323938,
+            "max": 393923,
+            "median": 346692.5
+          },
+          "thread_cpu_ns": {
+            "mean": 128304.41666666667,
+            "min": 117154,
+            "max": 159106,
+            "median": 124405.5
+          }
+        },
+        {
+          "verb": "UPDATE",
+          "tables": [
+            "tasks"
+          ],
+          "shape_sha256": "f6395f3100082e446732cfd9008f711390d2c6d5338605b1b98422a110ca1ea4",
+          "count": 12,
+          "wall_ns": {
+            "mean": 377145.9166666667,
+            "min": 326262,
+            "max": 415677,
+            "median": 372812.0
+          },
+          "thread_cpu_ns": {
+            "mean": 118608.75,
+            "min": 110284,
+            "max": 133508,
+            "median": 118065.5
+          }
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Sequential synthetic Linux MySQL diagnostic only, not old cloud root cause or acceptance",
+    "Warmup and cProfile requests excluded from measured summaries",
+    "Nested inclusive phases are not additive; execute may include buffered network fetch",
+    "Commit includes reset/return; DBAPI rollback is not labelled application rollback",
+    "Pool snapshot follows dispose; missing connect timing/timeouts remain unobserved"
+  ],
+  "input_sha256": "b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e"
+}

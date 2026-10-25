@@ -298,3 +298,11 @@
 - 精确c11上6个SQLite/导入/异常/上下文/恢复检查绿，89af321有限6请求SQLite样本2SQL每条；发现时钟终点先读wall后做UTC再读CPU导致短样本CPU略高1–2us，原样本保留，edc3e2a修读序后同6检查再绿、新6样本完成；不能累加为12独立测试或当提速A/B。两份均242映射行、pending0/checkedout0/disposed，临时toy库清理，原19/71未重跑。
 - 初次猜测conftest路径不存在、一次patch标记拒绝无部分写、初Ruff7条及demo1条import问题均在verification记录，未把工具错误算产品失败。最终三脚本Ruff绿，生产/冻结/DDL/池/锁净变更0，准确模块SHA和source已先给root/BE，不等行政归档才交技术接口。
 - 本阶段文档暂存check因report新EOF空行exit2但仍提交f0ce2aa，明确不算通过；只修本岗新说明EOF，原JUnit/SQLite样本不改。Issue4 COMMENT6394267281已通过connector实际POST，再精确GET该ID全文与本地实际正文逐字相同；无新测试或矩阵，最终证据封条仅统计本阶段公件。
+
+## ROLE-database-MYSQL-GRAPH-20261025-v1：真实公开MySQL分析与锁候选探针
+- 只读root已核官方40169575755公开mysql-before.json并核SHA/bytes，56/56 request_id+operation精确join；4warmup/4profile排除，48measured（每操作12）。新离线summary先运行后格式化，最终3e11源重算新输出字节相同，原件均保留。MySQL是root运行的fresh Linux service，HTTP路径为TestClient/ASGI，不是外部部署入口。
+- 每请求SQL9/10/4/27或29；cursor/Rows/mapping/codec/acquire/ping/commit/reset inclusive与CPU实际列报告。transition底层commit均值3.785ms但CPU.165ms，未将残差叫锁/服务器原因；observer装在首次fixture连接后，无physical-connect/timeout profiles，postdispose checkedin0也不倒推无连接。
+- 先设计9e0caf2后工具e631936，3e11b1a补两共用pred/反向id集合和精确P_S recordS/waittable断言。6个真实Runtime低层并发probe源码已交root；只允许明确freshCI专库/localhost、拒13306，不清数据，实际prepare/auth/locked_scope、独立物理连接、Event+MySQLwait边。当前DB岗未执行MySQL/HTTP/云，也未改生产Runtime/Rows/DDL/池/锁/准入。
+- 和BE明确其负责HTTP业务race/错误码/审计/capacity/revoke，本岗只DB层。已告知sorted IN/ORDER BY不能独自证明InnoDB取锁全序；有限EXPLAIN/并发passes也不是全域无死锁证明，共pred仍X串行，候选不得S→X升级且writer全保X。
+- 本地8工具检查首轮7pass/1fail为test bytes/str TypeError，原JUnit保留；text=True后同8pass，最终3e11同8pass0.40s。新三脚本Ruff绿，旧observer/六hook测试未改不重复跑。路径猜测错误另存verification，不叫产品失败；prompt真实保留AI操作者。
+- 源码3e11实际push后以connector发表Issue4评论6394606519，单ID GET完整body与本地稿精确相同，原响应/hash存stage目录；不关Issue/不宣称共享锁准入，报告明示MySQLprobe尚未本岗运行。

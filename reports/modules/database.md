@@ -16,3 +16,9 @@
 - 实际同6个hook回归在时钟修正前后均绿（非12独立测试）；两次有限SQLite各6请求/12cursor语句/242映射行，记录保留。最终样本wall0.295–1.037ms，只验证toy行和仪表，不是HTTP/MySQL或云成绩。
 - 各层UTC/perf/mono/threadCPU、生命周期及形状哈希已供后端/root组合；计时inclusive，单engine/Result范围明确，不能从acquire或cursor时间猜纯等待。
 - 本机无Docker，不连接既存库；root仅准入后续freshCI t44_diagnostics，新MySQL/HTTP尚未执行。原云失败、0完整组、规模超限不被本阶段关闭。
+
+## 2026-10-25 公开MySQL分层和项目S候选开发验证准备
+
+- 本岗读取并核root真实freshCI40169575755公开样本，56精确join/48measured；不是自己运行MySQL。SQL数9/10/4/27或29，消费/codec CPU较小；transition底层commit3.785ms/CPU.165ms只说明此样本非线程CPU时间，未定位旧云锁/502根因。详见[报告](../../agents/database/graph-lock-20261025/report.md)。
+- 项目S只允许三个读图action、writer仍X、members/target/pred锁不减、全程不升级；sorted IN/ORDER BY不是实际取锁全序证明，有限样本不抬升为安全准入。
+- 设计9e0caf2、最终工具源3e11b1a交root/BE，6个真实MySQL低层probe待root freshCI执行；本地同8guard/join检查通过、首轮测试类型错误原JUnit保留。没有生产或收费资源改动，正式性能和规模出口仍未关闭。

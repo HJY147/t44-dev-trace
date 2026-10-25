@@ -1446,5 +1446,20 @@
     "prompt_ref": "ROLE-database-PERFORMANCE-20261025-v1",
     "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394267281",
     "evidence_seal": "agents/database/performance-20261025/evidence-seal.json"
+  },
+  "mysql_graph_diagnostics_20261025": {
+    "design": "9e0caf2",
+    "tool_source": "3e11b1a",
+    "runtime_owned_by": "backend",
+    "report": "agents/database/graph-lock-20261025/report.md",
+    "verification": "agents/database/graph-lock-20261025/verification.json",
+    "probe": "tmp/833_database_performance/833_mysql_lock_probe.py",
+    "probe_sha256": "46dc00a57ff79ec51c0d8bcc92dd32c5bdcb76e794c8c9417c89bbb2c42256fb",
+    "public_mysql_baseline": "run40169575755/head81c909;56 exact joins;48 measured/4warmup/4profile",
+    "actual_db_role_execution": "offline join + same8 local tool checks; MySQL probe NOT_RUN",
+    "production_change": false,
+    "shared_lock_candidate_admission": "NOT_PROVEN; owner/root freshCI and lock-order review required",
+    "prompt_ref": "ROLE-database-MYSQL-GRAPH-20261025-v1",
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394606519"
   }
 }
