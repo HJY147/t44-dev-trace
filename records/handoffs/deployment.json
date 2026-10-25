@@ -157,7 +157,13 @@
     "agents/deployment/native-isolated-20261025/health401-receipt.json",
     "agents/deployment/prompts/ROLE-deployment-NATIVE-ISOLATED-20261025-v1.md",
     "tmp/824_native_isolated/824_guards.py",
-    "tmp/824_native_isolated/824_application_guards.py"
+    "tmp/824_native_isolated/824_application_guards.py",
+    "deployment/native/profile-prepare.py",
+    "deployment/native/worker-seven.py",
+    "agents/deployment/native-performance-20261025-design.md",
+    "agents/deployment/native-performance-20261025/result.md",
+    "agents/deployment/prompts/ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1.md",
+    "tmp/819_native_performance/819_profile.py"
   ],
   "commands_executed": [
     {
@@ -837,7 +843,8 @@
       "reason": "补严单一合法upstream UUID筛选，保留当前C与NOT_PROVEN边界；真实Nginx合成raw验证独立记录"
     },
     "ROLE-deployment-CONTINUATION-20261025-v1",
-    "ROLE-deployment-NATIVE-ISOLATED-20261025-v1"
+    "ROLE-deployment-NATIVE-ISOLATED-20261025-v1",
+    "ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1"
   ],
   "questions": [
     "总协调整合本岗最终提交；独立验收及正式性能由隔离流程另行执行",
@@ -978,7 +985,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "native-c8-functional-candidate-running-initial-scheduler-pending-not-acceptance",
+  "stage": "native-performance-w7-prepared-app-not-started-await-root-phase",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -986,7 +993,7 @@
     "本岗不读取或评价独立tester未发布的用例/脚本/结果/私钥；本次capability check未运行harness/profile",
     "本次能力包含stop/pause后的显式恢复及最终恢复；不把它写成独立业务fault覆盖或正式性能达标"
   ],
-  "updated_at": "2026-10-25T07:36:49.349910+00:00",
+  "updated_at": "2026-10-25T08:17:01.527983+00:00",
   "preparation_budget": {
     "base_sha": "217d89779440086ab727d280a0900efad36bd2c0",
     "branch": "codex/deployment-preparation-budget",
@@ -1684,5 +1691,27 @@
     "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6394965607",
     "issue_full_GET_body_identical": true,
     "stage_evidence_commit": "4769a9b485d1026293a348d3b0abbd658764f504"
+  },
+  "prior_stage_before_native_performance_20261025": "native-c8-functional-candidate-running-initial-scheduler-pending-not-acceptance",
+  "native_performance_20261025": {
+    "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "api_workers_root_selected": 7,
+    "phase": "prepared only;no new application started",
+    "root_confirmation_functional_end_and_connections_required": true,
+    "data_seed_by_deployment": false,
+    "new_broker_started_utc": "2026-10-25T08:08:31.630865+00:00",
+    "w7_ready_utc": "2026-10-25T08:14:46.445101+00:00",
+    "mysql_connection_metadata": "agents/deployment/native-performance-20261025/mysql-connection-budget.json",
+    "w7_prestart_sha256": "64ac8d001e9674dea227722c1eb728422ed98c490e4f4ea4162f7755139f71ca",
+    "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+    "w7_artifact_sha256": "3bf6546d44dab3720e9e53a3e06fc1bdce4efdf9a57746de8f64394f62bc371f",
+    "w8_original_paths_bytes_preserved": true,
+    "offline_unique_guards": 6,
+    "private_independent_or_admin_read": false,
+    "formal_performance_verdict": null,
+    "actual_application_start": null,
+    "actual_final_stop_or_resource_recovery": null,
+    "prompt_ref": "ROLE-deployment-NATIVE-PERFORMANCE-20261025-v1",
+    "issue": null
   }
 }
