@@ -466,3 +466,5 @@ root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e
 ## 同实例复用云准备
 
 新阶段仅本地设计/probe/packages脚本，root经官方云助手执行，本岗不碰UI/云服务。只读probe含最小硬件/软件/时钟/FD/磁盘/云助手/网络字段；安装仅临时Ubuntu官方签名源，保安全组件，Ubuntu22不假称原生Python3.12。可信镜像CI离线运输和精确source/image绑定、私网TLS、持久ownedstop/账单责任见agents/deployment/cloud-reuse-20261025/design.md；语法/compile不是云安装或性能证明。
+
+离线镜像CI路线已实现但尚未运行：准确source/context/hash、5官方固定镜像与2app镜像实际ID、manifest、save/gzip/artifact、加载完整校验与neverpull overlay，细节见cloud-reuse README。8项离线安全guard通过（0.13s），不能等同真实Docker build/load。root relay app16CPU/Ubuntu22/Python3.10匹配准备脚本；06:00延期成功属于rootUI实核转述，不作为本岗云执行。

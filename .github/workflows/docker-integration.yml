@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [codex/integration]
   workflow_dispatch:
+    inputs:
+      bundle_source_sha:
+        description: Optional exact product SHA for image bundle only; empty runs existing integration
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: read
@@ -16,6 +22,7 @@ concurrency:
 
 jobs:
   docker-application:
+    if: ${{ inputs.bundle_source_sha == '' }}
     name: docker-application
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -37,3 +44,9 @@ jobs:
           path: reports/docker-integration/
           if-no-files-found: error
           retention-days: 14
+
+  cloud-bundle:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.bundle_source_sha != '' }}
+    uses: ./.github/workflows/cloud-image-bundle.yml
+    with:
+      source_sha: ${{ inputs.bundle_source_sha }}

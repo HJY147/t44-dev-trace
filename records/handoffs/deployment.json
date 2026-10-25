@@ -996,7 +996,7 @@
     "post_implementation_runtime_changes": false,
     "checks_rerun_for_budget_note": false
   },
-  "stage": "cloud-reuse-probe-and-ubuntu22-preparation-local-only",
+  "stage": "cloud-reuse-bundle-CI-ready-local-guards-not-cloud-build",
   "unverified": [
     "本机无Docker；本次仅GitHub托管Linux synthetic Compose联调，并非云主机发布",
     "未执行服务器租赁、公网TLS/域名上线、正式400并发/10分钟/P95/吞吐或独立验收",
@@ -2324,6 +2324,17 @@
     "budget_or_release_changed": false,
     "images_or_TLStimer_prepared_yet": false,
     "independent_or_performance_verdict": null,
-    "prompt_id": "ROLE-deployment-CLOUD-REUSE-20261025-v1"
+    "prompt_id": "ROLE-deployment-CLOUD-REUSE-20261025-v1",
+    "bundle_builder": "deployment/cloud-reuse/image-bundle.py",
+    "workflow": ".github/workflows/cloud-image-bundle.yml",
+    "manual_bridge": ".github/workflows/docker-integration.yml bundle_source_sha input",
+    "root_commands": "deployment/cloud-reuse/README.md",
+    "bundle_local_guards": "8passed0.13s",
+    "bundle_ci_or_image_execution": false,
+    "root_reported_app_probe_matches_Ubuntu22": true,
+    "root_reported_both_release06saved": true,
+    "child_cloud_UI_or_lifecycle_operated": false,
+    "minimum_runtime_Python": "3.10 for helpers; pinned official3.12 image for frozen tools",
+    "next": "rootdispatch/buildartifact; private TLS/worker/timer materializer still pending"
   }
 }

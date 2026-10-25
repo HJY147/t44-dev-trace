@@ -583,3 +583,5 @@ P正常stop及complete raw封档b50c34e已push；Issue7 cleanup评论6396868598�
 ## 同实例复用云阶段：probe先交付（本地准备）
 
 root独占UI，本岗不操作云/费用/权限/服务。按root转述两节点身份仅存忽略0600 nodes.json，不公开ID/IP；先交4742bytes probe SHA17a42f...，bash-n与内嵌Pythoncompile通过，未执行云。新02Ubuntu22脚本使用临时官方signedsources，保原安全组件与全局源，分阶段限时/禁止upgrade/remove/repair，不拉镜像不启产品；bash-n通过。design明确官方CI save/load运输、source935与未来V2隔离、服务器owned stop保卷而root管云生命周期/预算，不把100视自动封顶。官方Ubuntu Compose页可取；docker.io/buildx页面抓取timeout，candidate待真实观测不猜版本。ROLE-deployment-CLOUD-REUSE-20261025-v1，AI写作/执行非学生亲历。
+
+同实例复用第二checkpoint：新增image-bundle.py与官方CI reusable+已有docker-integration manual桥接，完整source SHA/公开context subset/5官方basepinned digest/2app构建镜像/actualarchive与imageconfigID/labels/完整gzip及解压SHA绑定；锁仍3b15a7，不新增pip依赖。云load前必须root独立核manifest SHA，校验完整字节/平台/来源label/已存在alias冲突，neverpull overlay不启产品/不删卷；Python3.10兼容。不在本机运行Docker/CI/云（此刻仅准备）。8项纯guard0.13s真通过，首轮3lint问题已按loop API与局部Py3.10注释修，不宣称首轮绿；Ruff/format之后通过。README给root精确manual dispatch/CloudAssistant逐段粘贴命令，各payload<32KiB。root转述app实际probe和两节点06:00延期成功（非本岗独立云观察），只新记private relay原件，不改旧未保存历史。测试新前缀tmp806本岗，不读任何独立目录。
