@@ -1,0 +1,42 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> tmp/796_database_ddl_probe/796_canonical_probe.py:68:5
+   |
+67 |   def run(receipt):
+68 | /     import pymysql
+69 | |     from sqlalchemy import URL, create_engine
+70 | |
+71 | |     from t44.persistence.migrations import check_schema
+   | |_______________________________________________________^
+72 |
+73 |       root = Path(__file__).resolve().parents[2]
+   |
+help: Organize imports
+   |
+69 |     from sqlalchemy import URL, create_engine
+   -
+70 |     from t44.persistence.migrations import check_schema
+   |
+
+B905 `zip()` without an explicit `strict=` parameter
+   --> tmp/796_database_ddl_probe/796_canonical_probe.py:134:46
+    |
+132 |               if Path(values[0]).resolve() != data.resolve() or Path(values[1]) != pidfile:
+133 |                   raise RuntimeError("Connected server is not owned instance")
+134 |               receipt["server_context"] = dict(zip(
+    |  ______________________________________________^
+135 | |                 ("datadir", "pid_file", "version", "sql_mode", "sql_quote_show_create",
+136 | |                  "character_set_client", "collation_server", "lower_case_table_names"), values))
+    | |_______________________________________________________________________________________________^
+137 |               receipt["owned_command_before_cases"] = owned()
+    |
+help: Add explicit value for parameter `strict=`
+    |
+135 |                 ("datadir", "pid_file", "version", "sql_mode", "sql_quote_show_create",
+    -                  "character_set_client", "collation_server", "lower_case_table_names"), values))
+136 +                  "character_set_client", "collation_server", "lower_case_table_names"), values, strict=False))
+137 |             receipt["owned_command_before_cases"] = owned()
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+Found 2 errors.
+[*] 1 fixable with `--fix` (1 unsafe fix available with `--fix --unsafe-fixes`).
