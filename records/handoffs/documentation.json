@@ -1,20 +1,28 @@
 {
-  "stage": "Round9 official CI evidence phase1",
-  "implementation_status": "first E731 raw ZIP sealed; full collection/analysis pending",
+  "stage": "Round9 official CI evidence complete",
+  "implementation_status": "two push-run pairs sealed and parsed; CI/Docker bounded evidence only",
   "actor": "AI /root/ci_evidence_round9",
   "base_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
-  "updated_at": "2026-10-25T14:34:55.749993+00:00",
+  "updated_at": "2026-10-25T15:03:46.698536+00:00",
   "prompt_refs": [
     "ROLE-documentation-CI-ROUND9-20261025-v1"
   ],
   "artifacts": [
-    "records/ci/40200930857/archive-binding.phase1.json",
-    "reports/final/round9-ci-evidence.md"
+    "reports/final/round9-ci-evidence.md",
+    "docs/reports/round9-ci-analysis.json",
+    "docs/reports/round9-ci-collector.py",
+    "docs/reports/round9-ci-analyze.py",
+    "docs/reports/round9-ci-download-failure.json",
+    "records/ci/40200930857/archive-binding.json",
+    "records/ci/40200930957/archive-binding.json",
+    "records/ci/40201584671/archive-binding.json",
+    "records/ci/40201584699/archive-binding.json",
+    "docs/reports/round9-ci-validation.json"
   ],
   "interfaces": {
-    "input": "coordinator exact four run IDs and two source SHAs; official GitHub Actions API",
-    "output": "hash-bound raw ZIP evidence and bounded CI report",
-    "pending": "download all remaining original ZIPs/logs, verify full job binding, parse JUnit and coverage"
+    "input": "coordinator exact four run IDs and two source SHAs; official GitHub Actions metadata and original bytes",
+    "output": "10 original artifact ZIPs and 4 original run-log ZIPs, metadata/head/job/checkout bindings, actual JUnit and coverage analysis",
+    "pending": "coordinator integration and Issue publication; not performed by this role"
   },
   "unverified": [
     "independent acceptance",
@@ -775,5 +783,50 @@
       },
       "updated_at": "2026-10-25T07:53:37.849717+00:00"
     }
-  }
+  },
+  "phase1_commit": "14be82a3",
+  "results": {
+    "a162_product": "overall cancelled; static E731 failure; coverage cancelled without full-suite JUnit; contracts/frontend success",
+    "a162_docker": "success",
+    "f4bd_product": "success: four jobs",
+    "f4bd_docker": "success",
+    "backend_junit": {
+      "tests": 695,
+      "passed": 695,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "backend_lines": {
+      "covered": 2478,
+      "total": 2760,
+      "percent": 89.78260869565217
+    },
+    "backend_mixed_coverage_percent_not_line": 88.18131256952168,
+    "frontend": {
+      "tests": 89,
+      "passed": 89,
+      "failures": 0,
+      "pending": 0,
+      "todo": 0,
+      "covered_lines": 364,
+      "total_lines": 390
+    },
+    "artifact_original_zip_count": 10,
+    "official_run_log_zip_count": 4,
+    "server_digest_verified_for_artifacts_only": true,
+    "duplicate_pr_merge_refs_not_primary": [
+      40200935848,
+      40201588604
+    ]
+  },
+  "scope_limits": [
+    "CI/Docker are not independent acceptance or formal performance",
+    "source physical5862 exceeds5100 by762 per coordinator, not recounted",
+    "final billing not verified",
+    "metadata is official API representation, not HTTP transport original bytes",
+    "official run-log API exposes no server digest",
+    "all classroom attachments, student research prose and human identity/signatures untouched"
+  ],
+  "validation": "docs/reports/round9-ci-validation.json: evidence/document checks passed; not product tests"
 }

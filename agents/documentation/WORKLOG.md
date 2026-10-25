@@ -419,3 +419,17 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - static-3.log/static-console.log/static.json保留真实 E731：tmp/backend/messaging/806_newscope.py:34，ruff exit1；未改测试或重跑。绑定见 records/ci/40200930857/archive-binding.phase1.json。
 - metadata 是官方 API JSON 表示，非原始 HTTP 传输字节；ZIP 为未经重打包的原bytes。其余三run元数据已落盘，但全量ZIP/测试覆盖率解析尚待下一阶段，当前不据未核原件宣称。
 - 只做 Git、API下载、JSON/ZIP/hash；没有产品执行、独立验收、正式压测、云或浏览器操作。5862/5100超762据总协调，本岗未改口径/未重算。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1。
+
+
+## 2026-10-25T15:03:46.698536+00:00 Round9 CI 全量原件与解析封档
+
+- 原地接续阶段14be82a3，不重下已验原件；10 artifact ZIP合616448bytes均匹配官方digest/大小，四官方runlog ZIP合325158bytes只记本地SHA（API无服务端digest），14 ZIP共354成员CRC/path/symlink通过。四run各完整REST page的total_count匹配，所有10job/run/attempt/head/actualcheckout一致。
+- a162产品overallCANCELLED/staticE731FAIL/coverageCANCELLED不变；首次coverage六成员无JUnit/coverage，完整测试成绩不可得。f4bd产品40201584671四jobSUCCESS、Docker40201584699 SUCCESS。
+- f4bd XML实际695 tests/695passed/0failure/error/skip，声明与testcase outcome匹配；contract183/integration102/fault19的身份union245均在695内，不重复累加。前端89/89，0fail/pending/todo，实际assertionResults匹配。
+- 后端行2478/2760=89.7826087%，分支693/836=82.8947368%，混合3171/3596=88.1813126%不能当line；43文件执行行及XML分子分母一致。前端行364/390=93.33%，其余指标在analysis，不混用。Docker两次各source匹配、4workers、v2seed40tasks、恢复19表counts/checksums匹配，flock第二持有者exit1按既定拒绝保留。
+- 副PR40200935848/40201588604只收元数据和静态job原日志，实际pull/21/merge为00c1278/c6b140f，不当主要准确source证据；旧run nested PR head可随PR更新，未拿它回推checkout。
+- 一次frontend原ZIP重定向EOF、0bytes失败件另存.failed-attempt1；重试通过官方digest。副PRjob日志第一次0bytes失败（stderr未保留），重试CLI报终端转义拒绝，原脱敏回执保存，--allow-escape-sequences取原bytes成功。一次辅助JSON输出把list当dict触TypeError，修正读取，未猜补结论。
+- 原始失败与阶段1pending文字均保留；收集器、解析器、统一报告与完整bindings补齐。元数据是API JSON表示，不宣称HTTP原始传输bytes；signed URL未落文档。最终轻量范围/链接/JSON/hash/zip复核与提交随后记录。
+- 产品/测试/SQL/HTTP/独立验收/负载/云/浏览器实际运行0，CI取消/重跑0、workflow修改0、GitHub评论0；不触学生研究/签名或私有独立资料。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1；Refs:#9。
+
+- 2026-10-25T15:04:17.549391+00:00 封档验证：本岗解析器通过；10个本地报告链接存在；新增JSON可解析；预期695计数及10/4ZIP、354成员总量匹配；git diff --check通过；新增报告无签名URL/token模式。此为资料核验，非产品测试。随后本人commit/push完整阶段，未发GitHub评论。

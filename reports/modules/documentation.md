@@ -35,3 +35,12 @@ Agent-Role: documentation；Prompt-Ref: ROLE-documentation-ROUND8-20261025-v1；
 ## 2026-10-25 Round9 CI阶段1
 
 本岗AI先封存40200930857 / a16238b9的E731原始ZIP及官方run/artifact/job JSON，绑定attempt1/push。static FAILURE、coverage CANCELLED、run overall CANCELLED；后发绿不改写首次红。4157bytes与服务端sha256一致，10成员CRC/path/symlink核对通过。详见records/ci/40200930857/archive-binding.phase1.json。其余原件及测试覆盖率解析待阶段2，CI/Docker不代表独立、性能、规模或账单通过。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1；Refs: #9。
+
+
+## 2026-10-25 Round9 CI完整结果
+
+10 artifact原ZIP/616448bytes均对齐官方digest和大小，另4原run日志ZIP/325158bytes只有本地hash，14ZIP共354成员CRC/path/symlink通过。全run/job/attempt/head及实际checkout均绑定。统一报告为reports/final/round9-ci-evidence.md，精确解析docs/reports/round9-ci-analysis.json。阶段1原红与pending原文保留。
+
+f4bd产品40201584671与Docker40201584699 SUCCESS，后端695全通过/0failure/error/skip，行2478/2760=89.78%；前端89通过，行364/390=93.33%。contracts183/integration102/fault19为重复子集，不追加总数；混合88.18%不作line%。a162产品overallCANCELLED、staticE731FAIL、coverageCANCELLED且无全套JUnit，首次DockerSUCCESS不抹红。副PRmerge身份与主要head分离。
+
+本岗只证据分析，未运行SUT、重跑/取消CI、改应用/测试/workflow、发Issue或操作云/浏览器。规模5862/5100超762据总协调，不宣达标；独立、正式性能、规模、账单门禁仍各自开放。产物只在本岗与records/ci、docs/reports及统一CI报告，未读PRIVATE。Prompt-Ref: ROLE-documentation-CI-ROUND9-20261025-v1；Refs:#9。
