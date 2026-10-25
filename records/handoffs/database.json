@@ -1461,5 +1461,27 @@
     "shared_lock_candidate_admission": "NOT_PROVEN; owner/root freshCI and lock-order review required",
     "prompt_ref": "ROLE-database-MYSQL-GRAPH-20261025-v1",
     "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394606519"
+  },
+  "mysql_point_lock_probe_20261025": {
+    "design": "24ca1db206f8d85afe4acc9913b0b7ea914e87cc",
+    "source": "da166fea52abc25089bbd7001ae50bc686c6a180",
+    "probe": "tmp/833_database_performance/833_mysql_lock_probe.py",
+    "probe_sha256": "bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4",
+    "report": "agents/database/graph-lock-20261025/point-lock-report.md",
+    "verification": "agents/database/graph-lock-20261025/point-lock-verification.json",
+    "runtime_owner_reference": {
+      "commit": "c8cea7e",
+      "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+      "verification": "read exact runtime source/hash, did not execute product"
+    },
+    "new_required_argument": "--expected-task-lock-shape batch|point",
+    "actual_result": "same8 local tool guards passed; MySQL/HTTP not run by DB role",
+    "production_change": false,
+    "prompt_ref": "ROLE-database-MYSQL-POINT-20261025-v1",
+    "tested_logic_source": "3dc86559623914b447b9b0ce1ff3116e3f0863b8",
+    "format_only_ast_equal": true,
+    "environment_contract": "two independent fresh CI jobs/services, same precise t44_diagnostics; other HTTP job t44_gate_http not allowed by this tool",
+    "github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394684218",
+    "final_github_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6394701321"
   }
 }

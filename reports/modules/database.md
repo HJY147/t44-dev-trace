@@ -22,3 +22,8 @@
 - 本岗读取并核root真实freshCI40169575755公开样本，56精确join/48measured；不是自己运行MySQL。SQL数9/10/4/27或29，消费/codec CPU较小；transition底层commit3.785ms/CPU.165ms只说明此样本非线程CPU时间，未定位旧云锁/502根因。详见[报告](../../agents/database/graph-lock-20261025/report.md)。
 - 项目S只允许三个读图action、writer仍X、members/target/pred锁不减、全程不升级；sorted IN/ORDER BY不是实际取锁全序证明，有限样本不抬升为安全准入。
 - 设计9e0caf2、最终工具源3e11b1a交root/BE，6个真实MySQL低层probe待root freshCI执行；本地同8guard/join检查通过、首轮测试类型错误原JUnit保留。没有生产或收费资源改动，正式性能和规模出口仍未关闭。
+
+## 同日后续：S+point修订
+
+- root/BE修订为sorted unique逐个scalar id+project/limit1 X，D前驱新增D锁SELECT；本岗先24ca1db设计勘误后ee12656工具，仅tmp/833观察/验证，不改生产。
+- batch/point真实gateway与cursor形状/序列断言、真实捕获SQL的EXPLAIN、P_S三表readiness已供freshCI；本地仍同8guard绿，不是MySQL分支/race通过。新增[修订报告](../../agents/database/graph-lock-20261025/point-lock-report.md)保留旧source证据，明确显式task请求顺序与其他内部/FK资源边界。
