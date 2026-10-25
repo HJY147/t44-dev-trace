@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "Autonomous 2026-10-25: bounded factual prompt/quality evidence",
+  "stage": "CAMPAIGN-20261025 factual appendix; cutoff 10:03 UTC",
   "implementation_status": "未实现",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -85,7 +85,15 @@
     "records/prompts/U024-optimized.md",
     "records/prompts/U024-original.md",
     "docs/prompting/AUTONOMOUS-20261025-document-checks.json",
-    "docs/prompting/AUTONOMOUS-20261025-publication.json"
+    "docs/prompting/AUTONOMOUS-20261025-publication.json",
+    "records/prompts/ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1.md",
+    "docs/prompting/CAMPAIGN-20261025-scope.md",
+    "docs/prompting/CAMPAIGN-20261025-process-appendix.md",
+    "docs/prompting/CAMPAIGN-20261025-proposed-templates.md",
+    "docs/prompting/CAMPAIGN-20261025-source-index.json",
+    "docs/prompting/CAMPAIGN-20261025-document-checks.json",
+    "docs/prompting/CAMPAIGN-20261025-publication.json",
+    "agents/prompt_engineering/github-campaign-20261025-comment.md"
   ],
   "interfaces": {
     "inputs": [
@@ -106,7 +114,7 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "USER-RETURN-process-v1",
+    "version": "CAMPAIGN-20261025-cutoff-10:03-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
@@ -166,7 +174,8 @@
     "USER_RETURN_material_commit": "2382d30625c92821384d5b85037bded78d2ae408",
     "USER_RETURN_Issue10": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6379557747",
     "USER_RETURN_GET": "Full comment body exact match",
-    "autonomous_20261025_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6394956933"
+    "autonomous_20261025_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6394956933",
+    "campaign_20261025_issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6396341316"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -295,7 +304,10 @@
     "Student finalresearch andhuman12/5/3 no completionevidence; AIrole notstudent",
     "AUTONOMOUS: application6326>5100 and formal400x600 remain unpassed; no current full CI/independent result fetched",
     "AUTONOMOUS: student final handwritten report and human12/3/5 not completed by AI materials",
-    "AUTONOMOUS: health401 receipt was uncommitted at collection; native planned stops not yet observed at cutoff"
+    "AUTONOMOUS: health401 receipt was uncommitted at collection; native planned stops not yet observed at cutoff",
+    "At 10:03 UTC v7 formal performance has no complete result; do not backfill later output.",
+    "F08 product versus test premise attribution unresolved; F11 expired-token credential absent; 523/551 operation/error branches unproved.",
+    "N07 source size remains 6326 > 5100; human12/3/5 and student-authored handwritten report not completed by this AI appendix."
   ],
   "questions": [
     "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
@@ -509,7 +521,8 @@
         "records/prompts/U024-original.md"
       ],
       "reason": "Preserve actual autonomous authorization and bounded quality/debug evidence, not new counted evolution versions"
-    }
+    },
+    "ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1"
   ],
   "updated_at": "2026-10-25T07:35:09.823915+00:00",
   "previous_m4_unverified": [
@@ -520,26 +533,27 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "baseline": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
-    "cutoff_not_after": "2026-10-25T07:40:00Z",
-    "sources": 27,
-    "committed_matching_sources": 26,
-    "observed_uncommitted_public_receipts": 1,
-    "actual_user_inputs": [
-      "U023",
-      "U024"
-    ],
-    "optimizations_status": "proposed, not reissued",
-    "new_prompt_versions": 0,
-    "M6_versions_kept": 6,
-    "human_code_edits_claimed": 0,
-    "human_hallucination_corrections_claimed": 0,
-    "human_context_corrections_claimed": 0,
-    "independent_private_read": false,
-    "independent_test_contact": false,
-    "stage": "materials only; no student final prose or product acceptance",
-    "substantive_commit": "fa20384e468b9221a84938025c5d5550d0767e19",
-    "collection_closed_at": "2026-10-25T07:36:05.189009+00:00"
+    "base_commit": "acae31a4b7e36bac38fa57367f4ca80066780273",
+    "fact_cutoff_utc": "2026-10-25T10:03:00Z",
+    "source_count": 22,
+    "committed_matching_sources": 22,
+    "new_proposed_templates": 3,
+    "new_executed_prompt_versions": 0,
+    "U024_reused_without_duplicate_registration": true,
+    "functional_v7": "NOT_PROVEN: 12 PASS / F08 FAIL / F11 NOT_PROVEN",
+    "performance_v7_at_cutoff": "started 10:00:14.562 UTC; no complete result",
+    "source_size": "6326 > 5100; N07 FAIL +1226",
+    "human_12_3_5_new_completion_evidence": false,
+    "product_test_load_ci_execution": false,
+    "private_or_implementation_read": false,
+    "student_final_prose_written": false,
+    "issue11_publication": "POST comment6396341316; GET exact ID and full body matched",
+    "lightweight_document_checks": {
+      "passed": 14,
+      "failed": 0,
+      "product_tests": 0
+    },
+    "substantive_commit": "e7e52c26456dbde63c15e8dd7a8744980e7a3921"
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -577,5 +591,27 @@
     ],
     "human_code_edits_claimed": 0,
     "stage": "Specdraft pendingnewfreeze;857 onlystub"
+  },
+  "previous_autonomous_summary": {
+    "baseline": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "cutoff_not_after": "2026-10-25T07:40:00Z",
+    "sources": 27,
+    "committed_matching_sources": 26,
+    "observed_uncommitted_public_receipts": 1,
+    "actual_user_inputs": [
+      "U023",
+      "U024"
+    ],
+    "optimizations_status": "proposed, not reissued",
+    "new_prompt_versions": 0,
+    "M6_versions_kept": 6,
+    "human_code_edits_claimed": 0,
+    "human_hallucination_corrections_claimed": 0,
+    "human_context_corrections_claimed": 0,
+    "independent_private_read": false,
+    "independent_test_contact": false,
+    "stage": "materials only; no student final prose or product acceptance",
+    "substantive_commit": "fa20384e468b9221a84938025c5d5550d0767e19",
+    "collection_closed_at": "2026-10-25T07:36:05.189009+00:00"
   }
 }

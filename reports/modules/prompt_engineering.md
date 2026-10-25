@@ -127,3 +127,15 @@
 - 本岗不运行产品/测试/服务/数据库/浏览器/云/Word；检查只是来源/Git/JSON/原文一致。
 - 学生手写研究正文和人工12/3/5仍待本人事实；AI改码/发现/互审不冒人工操作。
 - 本轮不修改共享ledger/其他岗位/规格或旧cutoff；Issue11本岗发布与精确回读另附publication。
+
+
+## 2026-10-25 独立campaign固定10:03增补
+
+- 实际角色任务ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1，独立codex/prompt-campaign-followup-20261025，base acae31a；U024沿用不重复登记。
+- 产物：CAMPAIGN-20261025-process-appendix.md、source-index.json、scope.md和3个proposed未执行模板，22公开源hash/Git逐字节匹配；只做资料核对。
+- 输入：截止前冻结需求/公开协调、v5/v6摘要、v7两published功能结果及review/deployment报告；输出：供本人写作的事实附录/出处/边界，不是学生研究正文。
+- transport正文阻断、provider起点/namespace、union checker错误分别留原红；新freeze/精确grant/全新无历史operator不倒改旧结果。未执行或重跑任何工具/产品/负载/CI。
+- 开发CI精确c8/c317与独立v7 12PASS/F08FAIL/F11NOT_PROVEN分开；截至10:03性能只有真实启动，无最终P95/吞吐/600秒结论。N07仍6326>5100超1226 FAIL。
+- F08归属未决、F11无过期token输入、523错误分支未证；共享MySQL整进程/同机发压/采样null限制保留，不以进程登记声称资源覆盖。
+- 未读独立原目录/private/.runtime/实现，不联系tester；AI提炼与逐字摘录、人的D008/U024及AI操作分开。新增已使用演进版本0，人工12/3/5与本人手写正文无新完成证据。
+- 本岗WORKLOG/handoff同步；Issue11只发布具体交接并按确切ID回读全文，commit/push行政证据实际完成后另存。
