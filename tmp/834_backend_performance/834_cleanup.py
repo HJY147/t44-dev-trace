@@ -154,7 +154,9 @@ def harness(monkeypatch, *, failure=None, cleanup_errors=(), observer_requested=
         fixture=fixture,
         report={},
         calls=calls,
-        args=SimpleNamespace(samples=0),
+        args=SimpleNamespace(
+            samples=0, db_observer=Path("synthetic-observer") if observer_requested else None
+        ),
         primary=primary,
     )
 
@@ -179,6 +181,21 @@ def test_partial_install_failure_still_closes_without_snapshot(monkeypatch):
     assert h.observer.close_called
     assert h.report["database_observer"]["status"] == "NOT_INSTALLED"
     assert "observer_snapshot" not in h.calls
+
+
+def test_observer_construction_failure_is_requested_but_not_installed(monkeypatch):
+    h = harness(monkeypatch)
+
+    def fail(_args):
+        raise h.primary
+
+    monkeypatch.setattr(h.driver, "observer_from", fail)
+    with pytest.raises(PrimaryFailure) as caught:
+        h.driver.run(h.args, Path.cwd(), h.report)
+    assert caught.value is h.primary
+    assert h.report["requests"] == []
+    assert h.report["database_observer"]["status"] == "NOT_INSTALLED"
+    assert not h.observer.close_called  # No instance was returned for run to own.
 
 
 @pytest.mark.parametrize(
