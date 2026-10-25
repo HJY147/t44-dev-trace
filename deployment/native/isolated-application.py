@@ -100,6 +100,8 @@ def bind(run, repository, source_sha):
     raw = module.git(repository, "archive", source_sha, *SUBSET)
     source = run / ("application-" + source_sha)
     source.mkdir(mode=0o700)
+    archive_path = run / ("source-archive-" + source_sha + ".tar")
+    module.write(archive_path, raw)
     files = {}
     with tarfile.open(fileobj=io.BytesIO(raw)) as archive:
         for item in archive:
@@ -166,6 +168,7 @@ def bind(run, repository, source_sha):
         "repository_tree_oid": module.git(repository, "rev-parse", source_sha + "^{tree}").decode().strip(),
         "backend_tree_oid": module.git(repository, "rev-parse", source_sha + ":backend/t44").decode().strip(),
         "archive_sha256": module.sha(raw),
+        "source_archive_path": str(archive_path),
         "application_controller_sha256": module.sha(Path(__file__).read_bytes()),
         "baseline_prepare_commit": original["source_commit"],
         "database": DATABASE,
@@ -177,6 +180,21 @@ def bind(run, repository, source_sha):
         "created_at_utc": module.stamp(),
     }
     module.save(run / "application-binding.json", value)
+    module.save(
+        run / "artifact-manifest.json",
+        {
+            "source_sha": source_sha,
+            "source_files": files,
+            "source_archive_path": str(archive_path),
+            "source_archive_sha256": module.sha(archive_path.read_bytes()),
+            "python_executable_sha256": original["python_executable_sha256"],
+            "dependency_lock_sha256": value["dependency_lock_sha256"],
+            "application_controller_sha256": value["application_controller_sha256"],
+            "actual_module_files": imported,
+            "built_utc": value["created_at_utc"],
+            "kind": "native",
+        },
+    )
     return module.receipt(
         run,
         "final_application_bind",
@@ -271,14 +289,16 @@ def start(run):
     if broker.owner("rabbit")[1] is None or module.owned(run, "guardian")[1] is None:
         raise ValueError("OWNED_BROKER_AND_GUARDIAN_REQUIRED")
     try:
-        watcher = spawn(
-            run,
-            "application_guardian",
-            [value["python"], run / "application-controller.py", "watchdog", "--run-dir", run],
-            {},
-            value,
-            module,
-        )
+        watcher, watcher_actual = module.owned(run, "application_guardian")
+        if watcher_actual is None:
+            watcher = spawn(
+                run,
+                "application_guardian",
+                [value["python"], run / "application-controller.py", "watchdog", "--run-dir", run],
+                {},
+                value,
+                module,
+            )
         api = spawn(
             run,
             "api",
@@ -481,7 +501,7 @@ def scheduler_start(run, token, expiry):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("bind", "start", "scheduler-start", "watchdog"))
+    parser.add_argument("command", choices=("bind", "start", "scheduler-start", "scheduler-stop", "watchdog"))
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--repository", type=Path)
     parser.add_argument("--source")
@@ -496,6 +516,9 @@ def main():
             result = start(args.run_dir)
         elif args.command == "scheduler-start":
             result = scheduler_start(args.run_dir, args.token_file, args.token_expires_utc)
+        elif args.command == "scheduler-stop":
+            module = controller(args.run_dir)
+            result = module.receipt(args.run_dir, "scheduler_stop", **module.stop_app(args.run_dir, "scheduler"))
         else:
             result = watchdog(args.run_dir)
         print(json.dumps(result))
