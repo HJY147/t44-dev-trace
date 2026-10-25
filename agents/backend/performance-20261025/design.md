@@ -8,7 +8,7 @@
 
 仪表在APIRoute.dependant.call的真实同步handle线程中启动，保留原函数和signature。记录request_id、UTC、perf_counter_ns、thread_time_ns。Runtime.execute、validate_request、Business.dispatch/validate_data、schema violations/validator构造、wire的临时包裹保留包含层级；exclusive只减直接子跨度，inclusive不能跨层相加。客户端wall单独记录，差值不叫纯排队时间。cProfile使用thread_time，只在最后独立样本启用，不能把它的延迟当无开销指标。
 
-SQLite模式只本进程内存库及实际生产Gateway/HTTP适配层；缺MySQL锁/网络等。MySQL模式另要求CI=true、--allow-mysql-ci、显式DATABASE_URL/T44_DATABASE与期望新schema t44_perf_20261025一致且localhost；root工作流先建迁schema，驱动只读空库预检后初始化合成账号/实际HTTP。不读取任何旧云env或可选私有凭据文件。
+SQLite模式只本进程内存库及实际生产Gateway/HTTP适配层；缺MySQL锁/网络等。MySQL模式另要求CI=true、--allow-mysql-ci、显式DATABASE_URL/T44_DATABASE与root指定新schema t44_diagnostics一致且localhost；root工作流先建迁schema，驱动只读空库预检后初始化合成账号/实际HTTP。不读取任何旧云env或可选私有凭据文件。
 
 数据库岗提供诊断Observer的install(engine)、request(operation,request_id=uuid)、snapshot接口；只记录statement形状/阶段和关联ID，不存参数、token或正文。若观察器尚未可用，首轮API纯CPU可先不安装，后续MySQL组合须明确装载的精确模块SHA。
 
