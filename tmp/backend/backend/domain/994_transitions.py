@@ -1,11 +1,12 @@
 """Business-path unit tests, without API, database, broker or scheduler substitutes."""
 
 from dataclasses import FrozenInstanceError, replace
+from importlib import import_module
 
 import pytest
-from t44.domain import commands as cmd
-from t44.domain import models as domain
-from t44.domain.state_machine import decide
+
+_fixture = import_module("tmp.811_backend_size.legacy_fixture")
+cmd, domain, decide = _fixture.commands, _fixture.models, _fixture.decide
 
 PROOF = ("fixed-evidence-reference",)
 BLOCK = cmd.RecordBlock(

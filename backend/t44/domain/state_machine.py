@@ -1,217 +1,178 @@
-"""Decide permitted domain changes without mutating a task or touching infrastructure."""
+"""Pure v2 rules over trusted row snapshots; no SQL, mutation or HTTP decisions."""
 
-from typing import cast
-
-from .commands import (
-    AcceptReview,
-    ApproveDelivery,
-    AuthorizeRework,
-    Command,
-    RecordBlock,
-    RecordRollback,
-    ResolveBlock,
-    ReturnForChanges,
-    StartDevelopment,
-    SubmitForReview,
-)
 from .models import (
     BLOCKABLE,
     Action,
     Decision,
     DomainViolation,
-    Effect,
-    ProjectRole,
-    ReleaseGate,
-    ResponsibilityStage,
-    ReviewGate,
-    ReviewOutcome,
-    RollbackGate,
-    TaskPosition,
-    TaskState,
-    TransitionContext,
-    Violation,
+    Role,
+    Stage,
+    State,
+    Transition,
 )
 
+_RULES = {
+    Action.START: ((State.PENDING,), State.DEVELOPING, None),
+    Action.BLOCK: (BLOCKABLE, State.BLOCKED, None),
+    Action.UNBLOCK: ((State.BLOCKED,), None, None),
+    Action.SUBMIT_REVIEW: ((State.DEVELOPING,), State.PENDING_REVIEW, None),
+    Action.APPROVE_REVIEW: ((State.PENDING_REVIEW,), State.PENDING_RELEASE, None),
+    Action.REJECT_REVIEW: ((State.PENDING_REVIEW,), State.DEVELOPING, None),
+    Action.DELIVER: ((State.PENDING_RELEASE,), State.DELIVERED, 1),
+    Action.ROLLBACK: ((State.DELIVERED,), State.ROLLED_BACK, 2),
+    Action.REWORK: ((State.ROLLED_BACK,), State.DEVELOPING, 3),
+}
+_DETAILS = {
+    Action.BLOCK: ("BLOCK_REASON_REQUIRED", ("reason",)),
+    Action.UNBLOCK: ("UNBLOCK_BASIS_REQUIRED", ("basis",)),
+    Action.SUBMIT_REVIEW: ("ARTIFACT_REQUIRED", ("artifact_revision",)),
+    Action.REJECT_REVIEW: ("DECISION_DETAILS_REQUIRED", ("reason",)),
+    Action.DELIVER: ("DECISION_DETAILS_REQUIRED", ("release_version", "reason")),
+    Action.ROLLBACK: ("DECISION_DETAILS_REQUIRED", ("reason", "impact", "target_version")),
+    Action.REWORK: ("DECISION_DETAILS_REQUIRED", ("reason",)),
+}
 
-def _require(condition: bool, code: Violation) -> None:
+
+def _require(condition, code):
     if not condition:
         raise DomainViolation(code)
 
 
-def _present(value: object) -> bool:
+def _present(value):
     return isinstance(value, str) and bool(value.strip())
 
 
-def _evidence(values: tuple[str, ...]) -> None:
-    _require(
-        isinstance(values, tuple) and bool(values) and all(map(_present, values)),
-        Violation.EVIDENCE_REQUIRED,
-    )
-
-
-def _stage_role(state: TaskState, context: TransitionContext) -> None:
-    if state is TaskState.DEVELOPING:
-        _require(ProjectRole.DEVELOPER in context.roles, Violation.ROLE_FORBIDDEN)
-        _require(context.actor_is_owner, Violation.OWNER_REQUIRED)
-    elif state is TaskState.PENDING_REVIEW:
-        _require(
-            bool(context.roles & {ProjectRole.REVIEWER, ProjectRole.MANAGER}),
-            Violation.ROLE_FORBIDDEN,
-        )
+def _stage_role(state, context):
+    if state == State.DEVELOPING:
+        _require(Role.DEVELOPER in context.roles, "ROLE_FORBIDDEN")
+        _require(context.actor_is_owner, "OWNER_REQUIRED")
+    elif state == State.PENDING_REVIEW:
+        _require(bool(context.roles & {Role.REVIEWER, Role.MANAGER}), "ROLE_FORBIDDEN")
     else:
-        _require(ProjectRole.MANAGER in context.roles, Violation.ROLE_FORBIDDEN)
+        _require(Role.MANAGER in context.roles, "ROLE_FORBIDDEN")
 
 
-def _dependencies(context: TransitionContext) -> None:
+def _review(identifier, version, accepted, context):
+    review, task = context.review, context.task
+    _require(review is not None and identifier, "REVIEW_REQUIRED")
     _require(
-        all(state is TaskState.DELIVERED for state in context.dependency_states),
-        Violation.DEPENDENCIES_UNSATISFIED,
+        identifier == review["id"] == task["latest_review_id"]
+        and version == review["version"] == 1
+        and (review["delivery_cycle"], review["review_cycle"])
+        == (task["delivery_cycle"], task["review_cycle"])
+        and _present(review["artifact_revision"])
+        and review["artifact_revision"] == task["artifact_revision"],
+        "REVIEW_BASELINE_STALE",
     )
+    _require((review["verdict"] == 1) is accepted, "REVIEW_OUTCOME_MISMATCH")
+    if accepted:
+        _require(review["reviewer_id"] != task["owner_id"], "SELF_REVIEW_FORBIDDEN")
+        _require(context.review_complete, "EVIDENCE_REQUIRED")
 
 
-def _review(reference: str, outcome: ReviewOutcome, context: TransitionContext) -> ReviewGate:
-    gate = context.review
-    _require(gate is not None and _present(reference), Violation.REVIEW_REQUIRED)
-    gate = cast(ReviewGate, gate)  # Runtime rejection above remains active under python -O.
-    _require(
-        reference == gate.reference == context.latest_review_reference
-        and gate.cycle == context.cycle
-        and _present(gate.artifact_reference)
-        and gate.artifact_reference == context.artifact_reference,
-        Violation.REVIEW_BASELINE_STALE,
+def decide(context: Transition) -> Decision:
+    """Check membership, state, stage authorization, details, evidence, then proof rules."""
+    row, body = context.task, context.body
+    action, state = body["action"], row["state"]
+    _require(context.project_member, "PROJECT_ACCESS_REQUIRED")
+    sources, target, record_type = _RULES[action]
+    _require(state in sources, "INVALID_TRANSITION")
+    stage = (
+        State.DEVELOPING
+        if action == Action.START
+        else row["blocked_from_state"]
+        if action == Action.UNBLOCK
+        else state
     )
-    _require(gate.outcome is outcome, Violation.REVIEW_OUTCOME_MISMATCH)
-    if outcome is ReviewOutcome.ACCEPTED:
-        _require(not gate.reviewer_is_owner, Violation.SELF_REVIEW_FORBIDDEN)
-        _require(gate.evidence_complete, Violation.EVIDENCE_REQUIRED)
-    return gate
-
-
-def decide(position: TaskPosition, command: Command, context: TransitionContext) -> Decision:
-    """Return an immutable decision; never apply it or map errors to HTTP.
-
-    Transaction/CAS, audit, idempotency, plan parsing and proof loading belong to a later
-    facade. This function cannot be used as evidence that those concerns are implemented.
-    """
-    _require(context.project_member is True, Violation.PROJECT_ACCESS_REQUIRED)
-    state = position.state
-    effects: frozenset[Effect] = frozenset()
-
-    if isinstance(command, StartDevelopment):
-        _require(state is TaskState.PENDING, Violation.INVALID_TRANSITION)
-        _stage_role(TaskState.DEVELOPING, context)
-        _dependencies(context)
-        action, target = Action.START, TaskPosition(TaskState.DEVELOPING)
-    elif isinstance(command, RecordBlock):
-        _require(state in BLOCKABLE, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
-        _require(_present(command.reason), Violation.BLOCK_REASON_REQUIRED)
+    _stage_role(stage, context)
+    if action in _DETAILS:
+        code, names = _DETAILS[action]
+        _require(all(_present(body.get(name)) for name in names), code)
+    if action == Action.BLOCK:
+        value = body.get("responsibility_stage")
         _require(
-            isinstance(command.responsibility_stage, ResponsibilityStage),
-            Violation.RESPONSIBILITY_STAGE_REQUIRED,
+            type(value) is int and value in vars(Stage).values(), "RESPONSIBILITY_STAGE_REQUIRED"
         )
-        _evidence(command.evidence)
-        action, target = Action.BLOCK, TaskPosition(TaskState.BLOCKED, state)
-    elif isinstance(command, ResolveBlock):
-        _require(state is TaskState.BLOCKED, Violation.INVALID_TRANSITION)
-        previous = cast(TaskState, position.blocked_from)  # TaskPosition enforces this invariant.
-        _stage_role(previous, context)
-        _require(_present(command.basis), Violation.UNBLOCK_BASIS_REQUIRED)
-        _evidence(command.evidence)
-        if previous is TaskState.DEVELOPING:
-            _dependencies(context)
-        action, target = Action.UNBLOCK, TaskPosition(previous)
-    elif isinstance(command, SubmitForReview):
-        _require(state is TaskState.DEVELOPING, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
-        _require(_present(command.artifact_reference), Violation.ARTIFACT_REQUIRED)
-        _evidence(command.evidence)
-        action, target = Action.SUBMIT_REVIEW, TaskPosition(TaskState.PENDING_REVIEW)
-    elif isinstance(command, AcceptReview):
-        _require(state is TaskState.PENDING_REVIEW, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
-        _require(not context.actor_is_owner, Violation.SELF_REVIEW_FORBIDDEN)
-        _review(command.review_reference, ReviewOutcome.ACCEPTED, context)
-        action, target = Action.ACCEPT_REVIEW, TaskPosition(TaskState.PENDING_RELEASE)
-    elif isinstance(command, ReturnForChanges):
-        _require(state is TaskState.PENDING_REVIEW, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
-        _require(_present(command.reason), Violation.DECISION_DETAILS_REQUIRED)
-        _review(command.review_reference, ReviewOutcome.REJECTED, context)
-        effects = frozenset({Effect.ADVANCE_REVIEW_CYCLE, Effect.CLEAR_APPROVALS})
-        action, target = Action.REJECT_REVIEW, TaskPosition(TaskState.DEVELOPING)
-    elif isinstance(command, ApproveDelivery):
-        _require(state is TaskState.PENDING_RELEASE, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
+    if action in _DETAILS and action != Action.REJECT_REVIEW:
         _require(
-            _present(command.release_reference) and _present(command.reason),
-            Violation.DECISION_DETAILS_REQUIRED,
+            isinstance(context.evidence, tuple)
+            and bool(context.evidence)
+            and all(map(_present, context.evidence)),
+            "EVIDENCE_REQUIRED",
         )
-        _evidence(command.evidence)
-        _require(_present(context.approved_review_reference), Violation.REVIEW_REQUIRED)
-        _review(context.approved_review_reference or "", ReviewOutcome.ACCEPTED, context)
-        release = context.release
-        _require(release is not None, Violation.RELEASE_APPROVAL_REQUIRED)
-        release = cast(ReleaseGate, release)
+    if action == Action.APPROVE_REVIEW:
+        _require(not context.actor_is_owner, "SELF_REVIEW_FORBIDDEN")
+        _review(body.get("review_id"), body.get("review_version"), True, context)
+    elif action == Action.REJECT_REVIEW:
+        _review(body.get("review_id"), body.get("review_version"), False, context)
+    elif action == Action.DELIVER:
+        _require(row["approved_review_id"], "REVIEW_REQUIRED")
+        _review(row["approved_review_id"], 1, True, context)
+        assessment = context.assessment
+        _require(assessment is not None, "RELEASE_APPROVAL_REQUIRED")
         _require(
-            command.assessment_reference == release.reference
-            and _present(command.assessment_reference)
-            and release.delivery_cycle == context.cycle.delivery
-            and release.schedule_version == context.schedule_version,
-            Violation.RELEASE_BASELINE_STALE,
+            body.get("assessment_id") == assessment["id"]
+            and body.get("assessment_version") == assessment["version"]
+            and assessment["delivery_cycle"] == row["delivery_cycle"]
+            and assessment["schedule_version"] == row["schedule_version"],
+            "RELEASE_BASELINE_STALE",
+        )
+        _require(assessment["status"] == 2, "RELEASE_APPROVAL_REQUIRED")
+        _require(
+            assessment["created_by"] != assessment["reviewed_by"], "RELEASE_SELF_REVIEW_FORBIDDEN"
+        )
+        _require(bool(assessment["review_evidence"]), "EVIDENCE_REQUIRED")
+    elif action == Action.ROLLBACK:
+        assessment, delivery = context.assessment, context.delivery
+        _require(
+            assessment is not None
+            and body.get("assessment_id")
+            and body.get("rollback_plan_version"),
+            "ROLLBACK_PLAN_REQUIRED",
         )
         _require(
-            release.approved and release.rollback_plan_reviewed, Violation.RELEASE_APPROVAL_REQUIRED
+            body["assessment_id"] == assessment["id"]
+            and assessment["status"] == 2
+            and delivery
+            and delivery["assessment_id"] == assessment["id"]
+            and delivery["rollback_plan_version"] == body["rollback_plan_version"]
+            and assessment["delivery_cycle"] == row["delivery_cycle"],
+            "ROLLBACK_PLAN_REQUIRED",
         )
-        _require(not release.reviewer_is_creator, Violation.RELEASE_SELF_REVIEW_FORBIDDEN)
-        _require(release.evidence_complete, Violation.EVIDENCE_REQUIRED)
-        effects = frozenset({Effect.RECORD_DELIVERY_DECISION})
-        action, target = Action.DELIVER, TaskPosition(TaskState.DELIVERED)
-    elif isinstance(command, RecordRollback):
-        _require(state is TaskState.DELIVERED, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
+    elif action == Action.REWORK:
+        _require(context.new_plan, "REWORK_PLAN_REQUIRED")
+    if action in (Action.START, Action.REWORK) or (
+        action == Action.UNBLOCK and stage == State.DEVELOPING
+    ):
         _require(
-            all(map(_present, (command.reason, command.impact, command.target_reference))),
-            Violation.DECISION_DETAILS_REQUIRED,
+            all(state == State.DELIVERED for state in context.dependency_states),
+            "DEPENDENCIES_UNSATISFIED",
         )
-        _evidence(command.evidence)
-        rollback = context.rollback
-        _require(
-            rollback is not None and _present(command.rollback_plan_reference),
-            Violation.ROLLBACK_PLAN_REQUIRED,
+    values = {
+        "state": target or stage,
+        "blocked_from_state": state if action == Action.BLOCK else None,
+        "block_reason": body["reason"] if action == Action.BLOCK else None,
+        "responsibility_stage": body["responsibility_stage"] if action == Action.BLOCK else None,
+    }
+    if action == Action.SUBMIT_REVIEW:
+        values["artifact_revision"] = body["artifact_revision"]
+    if action == Action.APPROVE_REVIEW:
+        values["approved_review_id"] = body["review_id"]
+    if action in (Action.REJECT_REVIEW, Action.REWORK):
+        values.update(
+            latest_review_id=None,
+            approved_review_id=None,
+            approved_assessment_id=None,
+            approved_assessment_version=None,
+            artifact_revision=None,
         )
-        rollback = cast(RollbackGate, rollback)
-        _require(
-            command.rollback_plan_reference == rollback.reference
-            and rollback.approved
-            and rollback.used_for_delivery
-            and rollback.delivery_cycle == context.cycle.delivery,
-            Violation.ROLLBACK_PLAN_REQUIRED,
+    if action == Action.REJECT_REVIEW:
+        values["review_cycle"] = row["review_cycle"] + 1
+    if action == Action.REWORK:
+        values.update(
+            delivery_cycle=row["delivery_cycle"] + 1,
+            review_cycle=1,
+            schedule_version=row["schedule_version"] + 1,
+            **context.new_plan,
         )
-        effects = frozenset({Effect.RECORD_ROLLBACK_DECISION})
-        action, target = Action.ROLLBACK, TaskPosition(TaskState.ROLLED_BACK)
-    elif isinstance(command, AuthorizeRework):
-        _require(state is TaskState.ROLLED_BACK, Violation.INVALID_TRANSITION)
-        _stage_role(state, context)
-        _require(_present(command.reason), Violation.DECISION_DETAILS_REQUIRED)
-        _evidence(command.evidence)
-        _require(
-            _present(command.new_plan_reference)
-            and command.new_plan_reference == context.validated_rework_plan_reference,
-            Violation.REWORK_PLAN_REQUIRED,
-        )
-        _dependencies(context)
-        effects = frozenset(
-            {
-                Effect.ADVANCE_DELIVERY_CYCLE,
-                Effect.RESET_REVIEW_CYCLE,
-                Effect.ADVANCE_SCHEDULE,
-                Effect.CLEAR_APPROVALS,
-                Effect.RECORD_REWORK_DECISION,
-            }
-        )
-        action, target = Action.REWORK, TaskPosition(TaskState.DEVELOPING)
-    else:
-        raise TypeError("unsupported internal transition command")
-
-    return Decision(position, target, action, command, effects)
+    return Decision(values, record_type)

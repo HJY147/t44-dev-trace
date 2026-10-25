@@ -61,12 +61,7 @@ class Projects:
         users = g.rows("users", {"username": c.body["username"], "active": 1}, limit=1)
         require(users, "ACCOUNT_NOT_INITIALIZED")
         user_id = users[0]["id"]
-        existing = g.rows(
-            "project_members",
-            {"project_id": c.project_id, "user_id": user_id},
-            lock="update",
-            limit=1,
-        )
+        existing = c.members(g, {"user_id": user_id}, lock="update", limit=1)
         if existing and existing[0]["active"]:
             return self.member_model(g, existing[0])
         values = {"roles_mask": mask(c.body["roles"]), "active": 1}
@@ -78,16 +73,11 @@ class Projects:
 
     def _change_member(self, g, c, remove):
         c.manager()
-        rows = g.rows(
-            "project_members",
-            {"project_id": c.project_id, "user_id": c.path["user_id"], "active": 1},
-            lock="update",
-            limit=1,
-        )
+        rows = c.members(g, {"user_id": c.path["user_id"], "active": 1}, lock="update", limit=1)
         require(rows, "RESOURCE_NOT_FOUND")
         row = rows[0]
         new_mask = row["roles_mask"] if remove else mask(c.body["roles"])
-        members = g.rows("project_members", {"project_id": c.project_id, "active": 1})
+        members = c.members(g, {"active": 1})
         if row["roles_mask"] & 1 and (remove or not new_mask & 1):
             require(sum(bool(m["roles_mask"] & 1) for m in members) > 1, "LAST_MANAGER")
         if remove or not new_mask & 2:
@@ -122,9 +112,7 @@ class Projects:
     def capacity(self, g, c, payload):
         identifiers = [entry["user_id"] for entry in payload["capacity"]]
         require(len(identifiers) == len(set(identifiers)), "CAPACITY_REFERENCE_INVALID")
-        members = g.rows(
-            "project_members", {"project_id": c.project_id, "user_id": identifiers, "active": 1}
-        )
+        members = c.members(g, {"user_id": identifiers, "active": 1})
         require(
             len(members) == len(identifiers) and all(m["roles_mask"] & 2 for m in members),
             "CAPACITY_REFERENCE_INVALID",
@@ -144,8 +132,7 @@ class Projects:
 
     def changeIteration(self, g, c):
         c.manager()
-        row = g.get("iterations", c.path["iteration_id"], lock="update")
-        require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
+        row = c.resource(g, "iterations", c.path["iteration_id"], lock="update")
         values = self.capacity(g, c, c.body["plan"])
         c.check_version(row)
         owners = {entry["user_id"] for entry in values["capacity"]}

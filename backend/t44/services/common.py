@@ -125,11 +125,22 @@ class Call:
         require(self.membership and self.membership["roles_mask"] & 5, "ACTION_FORBIDDEN")
 
     def task(self, g, *, lock=None):
-        row = g.get("tasks", self.path["task_id"], lock=lock)
-        require(row and row["project_id"] == self.project_id, "RESOURCE_NOT_FOUND")
+        return self.resource(g, "tasks", self.path["task_id"], lock=lock)
+
+    def resource(self, g, table, identifier, *, parent="project_id", lock=None):
+        row = g.get(table, identifier, lock=lock)
+        require(row and row[parent] == self.path[parent], "RESOURCE_NOT_FOUND")
         return row
 
-    def create(self, g, table, values, *, actor_field=None, updated=False, project=True):
+    def members(self, g, where=None, **options):
+        return g.rows(
+            "project_members", {"project_id": self.project_id, **(where or {})}, **options
+        )
+
+    def create(self, g, table, values, **options):
+        return g.get(table, self.insert(g, table, values, **options))
+
+    def insert(self, g, table, values, *, actor_field=None, updated=False, project=True):
         """Trusted handler fields only; request bodies never choose a table or context field."""
         values = {**values, "created_at": self.clock}
         if project:
@@ -138,7 +149,7 @@ class Call:
             values["updated_at"] = self.clock
         if actor_field:
             values[actor_field] = self.actor_id
-        return g.get(table, g.insert(table, values))
+        return g.insert(table, values)
 
     def check_version(self, row, *, expected=None):
         expected = self.body.get("expected_version") if expected is None else expected

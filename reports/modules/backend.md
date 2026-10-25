@@ -354,3 +354,15 @@ C5f55e09a75043343e376ecc7d96cc2ed98862b30仅986的tasks精确3/4/3及解释注�
 ### 公开F08发布角色优先级候选（2026-10-25）
 
 准确产品source935ab5b93bea788672c2b4a088c79cfeed848954；只Workflow原批准引用不匹配槽先state5/manager再D008双/单失效判码，matching及早期版本/归属不变。新增816真SQLite HTTP4红→4绿，原856邻接11绿，15唯一开发目标含业务不变/拒审计/重放；未MySQL/fullCI/独立复测。追加公开最小角色/动作证据才定位，无私件读取或测试岗联系，旧F08 FAIL/F11 NOT_PROVEN保留。CLI无human-token，TTL60真实login同获准schema单独认证进程方案仅建议未置备；活动C8/.runtime/性能未变，旧6326超5100未新cloc。证据、原红精确脱敏说明和边界见agents/backend/acceptance-followup-20261025/report.md及verification.json；root专审/新CI后另定整合。
+
+## 2026-10-25 Internal-domain v2 source reduction
+
+Local branchcodex/backend-domain-v2-size-20261025 replaces private Command/Gate/Cycle/effect bridges with validated trusted-row Transition and immutable pure task-patch/decision_type; external REST/OpenAPI/DDL and transaction/guard order remain. Fixed cloc2.10 scope2363→1987/net376, including deleted commands.py and all new product helpers; initial600–700 not met and global5100 remains unproven. Relative to supplied6335, only this change projects5959, not a combined measurement.
+
+Final313 developer cases pass:170 domain(91 actual-v2 old behavior,15 historical constructor-only,63 actual-v2 safety,1×57120 differential) plus143 byte-unchanged SQLite HTTP/816. Static16-function/preflight proofs are narrow; whole rewrite has no AST-equivalence claim. Offline5-action bridge/decision CPU ratios0.738–0.813 do not establish HTTP/MySQL/formal performance. First display-Enum import regression138/1 was fixed and143 re-run twice through final task-patch version. a19af36 is only a recoverypoint: earlier139 green was incorrectly over-bound to its final ErrorCode lock and is explicitly corrected.
+
+Design/internal interface migration, exact hashes/count/JUnit/microbench and limits are inagents/backend/source-size-20261025/report.md andtmp/811_backend_size/validation.json. The committed historical test reference is test-only and no product code imports it. Root must integrate both local commits, recount the combined source and run full CI/review; no push/fullCI/MySQL/frontend/cloud/independent run occurred here. Actual authors/decisions: backend AI/coordinator; promptsROLE-backend-SIZE-v1/v2.
+
+### V2-SNAPSHOT-ALIAS-01 repair supersedes the current source count
+
+The b54 caller-evidence alias is reproduced by2 failing append/clear cases and repaired by6 counted production lines after the original initializer validations. review_evidence list/tuple membership now becomes an immutable tuple snapshot; only the consumed nonempty fact is frozen. Final172 developer domain +143 unchanged HTTP cases pass; original validation AST/order remains. Current source scope2363→1993/net370 (previous376 remains prior-stage evidence), no fresh performance claim. Seeagents/backend/source-size-20261025/snapshot-alias-fix.md andtmp/811_backend_size/snapshot-alias-validation.json. No fullCI/MySQL/cloud/independent run; exact repair is pushed with[skip ci] for coordinator-requested narrow review before combined CI.

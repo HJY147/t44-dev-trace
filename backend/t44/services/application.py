@@ -109,8 +109,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
         """Report the candidate Schema version independently from the envelope version."""
         category, payload = c.body["category"], c.body["payload"]
         if "task_id" in c.body:
-            task = g.get("tasks", c.body["task_id"])
-            require(task and task["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
+            c.resource(g, "tasks", c.body["task_id"])
         if category == 1:
             plan_values(payload["plan"])
         elif category == 2 and payload["action"] == Action.REWORK:
