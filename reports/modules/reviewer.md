@@ -400,3 +400,8 @@ ROLE-reviewer-829-PERFORMANCE-v6-v1，draft63d0819e实核，只新文件admitted
 
 
 性能中性准入行政封档：技术fd33f3e8d17dc9324086c31d8fced71aea43cb52已push；Issue12 COMMENT6395652251（https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6395652251）特定全文GET exit0/body及issue严格相同。只准入exact newgrant单字段变换，09:07不延长，不读取动态结果/资源raw/private，不作正式性能/覆盖/global/main/merge通过；角色metadata封后释放槽。
+
+
+## 2026-10-25 v7 PUBLIC通用type-union维护工具准入审
+
+ROLE-reviewer-829-PUBLIC-v7-v1；技术manifest04d71afd、allowlist289639与10truePUBLIC/5artifact exactbytes/hash匹配，coldadfc265。5PUBLICcore逐字同v6/4Python整体AST同，UTC/handoff/socket控制不漂移。仅源码读checker不执行或追private import；89两份generic输入/expected同且passed账本自洽，旧2绿87红（TypeError79/KeyError3等）/新89绿0红保留，不重跑89/36+3/TLS4。private dispatch/primitive与其它AST/业务contract不改仅作者PUBLICproof，非本岗读私有源/hash，89非全面JSONschema/业务/coverage证明。技术先发root：可进入精确phase/provider/grant审，当前不准入任何SUT/phase，不延旧grant，不将旧分数/缺陷给817。0probe/tests/checker/SUT/API/DB/CLI，不读private/keys/log/Git/credential，不联系tester。
