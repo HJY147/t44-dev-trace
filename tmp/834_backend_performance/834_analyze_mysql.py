@@ -64,8 +64,7 @@ def summarize(raw):
                 phase: {
                     **{
                         field.removesuffix("_ns") + "_median_ms": median_ms(
-                            db[r["request_id"]]["phases"].get(phase, {}).get(field, 0)
-                            for r in rows
+                            db[r["request_id"]]["phases"].get(phase, {}).get(field, 0) for r in rows
                         )
                         for field in ("wall_ns", "thread_cpu_ns")
                     },
