@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "point-lock-query-ledger-test-only-ready-for-full-ci",
-  "implementation_status": "Test-only exact query ledger update; product unchanged from point-lock candidate; root full CI/review pending",
+  "stage": "backend-domain-v2-source-reduction-ready-for-review",
+  "implementation_status": "Internal domain v2 implemented; fixed-cloc net376; development313 cases pass; combined fullCI/source<=5100/formal performance/independent acceptance pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -549,6 +549,32 @@
       "id": "ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1",
       "archive_path": "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md",
       "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
+    },
+    {
+      "id": "ROLE-backend-SIZE-v1",
+      "source": "actual AI coordinator dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/prompt.md",
+      "human_code_edit": false,
+      "reason": "measured structural implementation with explicit internal v2 migration and external behavior preservation",
+      "outputs": [
+        "backend/t44/domain",
+        "backend/t44/services",
+        "tmp/811_backend_size",
+        "agents/backend/source-size-20261025/report.md"
+      ]
+    },
+    {
+      "id": "ROLE-backend-SIZE-v2",
+      "source": "actual AI coordinator dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/prompt.md",
+      "human_code_edit": false,
+      "reason": "measured structural implementation with explicit internal v2 migration and external behavior preservation",
+      "outputs": [
+        "backend/t44/domain",
+        "backend/t44/services",
+        "tmp/811_backend_size",
+        "agents/backend/source-size-20261025/report.md"
+      ]
     }
   ],
   "updated_at": "2026-10-25T06:30:25.669382+00:00",
@@ -2285,5 +2311,44 @@
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6396366099",
     "issue_exact_body_readback": true,
     "evidence_branch": "codex/backend-acceptance-followup-evidence-20261025"
+  },
+  "source_size_20261025": {
+    "base": "e45a2b980c6ba8c61761f897414d54a10000409d",
+    "product_base": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "branch": "codex/backend-domain-v2-size-20261025",
+    "rollback_checkpoint": "a19af36",
+    "rollback_checkpoint_full_test_green": false,
+    "operator": "backend AI",
+    "report": "agents/backend/source-size-20261025/report.md",
+    "validation": "tmp/811_backend_size/validation.json",
+    "cloc": {
+      "version": "2.10",
+      "before": 2363,
+      "after": 1987,
+      "net": 376,
+      "initial600to700_target_met": false,
+      "whole_product_gate_proven": false
+    },
+    "tests": {
+      "domain_total": 170,
+      "legacy_real_v2_cases": 91,
+      "historical_constructor_only": 15,
+      "new_v2_boundary": 63,
+      "differential_comparisons": 57120,
+      "unchanged_http": 143,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "external_contract": "REST/OpenAPI/DDL unchanged; Workflow preflight/error ordering/CAS/locks/replay/audit remain",
+    "internal_migration": "v1 Command/Gate/Cycle/decide signature intentionally replaced; test-only historical call adapter; no product v1 shim",
+    "pending": [
+      "root combined source count",
+      "exact combined fullCI/review",
+      "MySQL locking verification",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "push": "deferred because codex/** push automatically starts fullCI before integration"
   }
 }

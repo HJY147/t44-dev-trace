@@ -1,40 +1,27 @@
 """Resolve persisted proofs, ask the pure state machine, and apply one CAS decision."""
 
-from t44.domain import commands as cmd
 from t44.domain import models as domain
 from t44.domain.state_machine import decide
 
-from .codes import (
-    DECISION_TYPE,
-    DOMAIN_TO_STATE,
-    ROLE_TO_DOMAIN,
-    STAGE_TO_DOMAIN,
-    STATE_TO_DOMAIN,
-    Action,
-    State,
-)
+from .codes import Action, State
 from .common import model, plan_values, roles, task_model
 from .errors import Rejected, require
 
 DOMAIN_ERRORS = {
-    domain.Violation.PROJECT_ACCESS_REQUIRED: "PROJECT_ACCESS_DENIED",
-    domain.Violation.INVALID_TRANSITION: "STATE_CONFLICT",
-    domain.Violation.DEPENDENCIES_UNSATISFIED: "DEPENDENCIES_UNSATISFIED",
-    domain.Violation.REVIEW_REQUIRED: "REVIEW_NOT_PASSED",
-    domain.Violation.REVIEW_OUTCOME_MISMATCH: "REVIEW_NOT_PASSED",
-    domain.Violation.REVIEW_BASELINE_STALE: "REVIEW_BASELINE_MISMATCH",
-    domain.Violation.RELEASE_APPROVAL_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
-    domain.Violation.RELEASE_BASELINE_STALE: "ASSESSMENT_BASELINE_MISMATCH",
-    domain.Violation.ROLLBACK_PLAN_REQUIRED: "RELEASE_APPROVAL_REQUIRED",
-    domain.Violation.ROLE_FORBIDDEN: "ACTION_FORBIDDEN",
-    domain.Violation.OWNER_REQUIRED: "ACTION_FORBIDDEN",
-    domain.Violation.SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
-    domain.Violation.RELEASE_SELF_REVIEW_FORBIDDEN: "ACTION_FORBIDDEN",
+    "PROJECT_ACCESS_REQUIRED": "PROJECT_ACCESS_DENIED",
+    "INVALID_TRANSITION": "STATE_CONFLICT",
+    "DEPENDENCIES_UNSATISFIED": "DEPENDENCIES_UNSATISFIED",
+    "REVIEW_REQUIRED": "REVIEW_NOT_PASSED",
+    "REVIEW_OUTCOME_MISMATCH": "REVIEW_NOT_PASSED",
+    "REVIEW_BASELINE_STALE": "REVIEW_BASELINE_MISMATCH",
+    "RELEASE_APPROVAL_REQUIRED": "RELEASE_APPROVAL_REQUIRED",
+    "RELEASE_BASELINE_STALE": "ASSESSMENT_BASELINE_MISMATCH",
+    "ROLLBACK_PLAN_REQUIRED": "RELEASE_APPROVAL_REQUIRED",
+    "ROLE_FORBIDDEN": "ACTION_FORBIDDEN",
+    "OWNER_REQUIRED": "ACTION_FORBIDDEN",
+    "SELF_REVIEW_FORBIDDEN": "ACTION_FORBIDDEN",
+    "RELEASE_SELF_REVIEW_FORBIDDEN": "ACTION_FORBIDDEN",
 }
-
-
-def reference(identifier, version):
-    return f"{identifier}:{version}"
 
 
 class Workflow:
@@ -72,21 +59,7 @@ class Workflow:
         )
         if assessment:
             require(assessment["task_id"] == row["id"], "RESOURCE_NOT_FOUND")
-        review_gate = (
-            domain.ReviewGate(
-                reference(review["id"], review["version"]),
-                domain.Cycle(review["delivery_cycle"], review["review_cycle"]),
-                review["artifact_revision"],
-                domain.ReviewOutcome.ACCEPTED
-                if review["verdict"] == 1
-                else domain.ReviewOutcome.REJECTED,
-                self.review_complete(review),
-                review["reviewer_id"] == row["owner_id"],
-            )
-            if review
-            else None
-        )
-        release_gate, rollback_gate = None, None
+        delivery = None
         if action == Action.DELIVER and assessment:
             require(
                 b["assessment_version"] == assessment["version"], "ASSESSMENT_BASELINE_MISMATCH"
@@ -109,15 +82,6 @@ class Workflow:
                     and assessment["schedule_version"] == row["schedule_version"]
                     else "ASSESSMENT_BASELINE_MISMATCH",
                 )
-            release_gate = domain.ReleaseGate(
-                reference(assessment["id"], assessment["version"]),
-                assessment["delivery_cycle"],
-                assessment["schedule_version"],
-                assessment["status"] == 2,
-                bool(assessment["review_evidence"]),
-                assessment["status"] == 2,
-                assessment["created_by"] == assessment["reviewed_by"],
-            )
         if action == Action.ROLLBACK and assessment:
             delivery = g.rows(
                 "decisions",
@@ -129,66 +93,23 @@ class Workflow:
                 and assessment["rollback_plan"]["target_version"] == b["target_version"],
                 "RELEASE_APPROVAL_REQUIRED",
             )
-            rollback_gate = domain.RollbackGate(
-                reference(assessment["id"], b["rollback_plan_version"]),
-                assessment["delivery_cycle"],
-                assessment["status"] == 2,
-                bool(
-                    delivery
-                    and delivery[0]["assessment_id"] == assessment["id"]
-                    and delivery[0]["rollback_plan_version"] == b["rollback_plan_version"]
-                ),
-            )
+            delivery = delivery[0] if delivery else None
         new_plan = plan_values(b["new_plan"]) if action == Action.REWORK else None
-        context = domain.TransitionContext(
-            True,
-            frozenset(ROLE_TO_DOMAIN[r] for r in roles(c.membership["roles_mask"])),
+        context = domain.Transition(
+            row,
+            b,
+            frozenset(roles(c.membership["roles_mask"])),
             c.actor_id == row["owner_id"],
-            tuple(STATE_TO_DOMAIN[t["state"]] for t in predecessors),
-            domain.Cycle(row["delivery_cycle"], row["review_cycle"]),
-            row["schedule_version"],
-            row["artifact_revision"],
-            reference(row["latest_review_id"], 1) if row["latest_review_id"] else None,
-            reference(row["approved_review_id"], 1) if row["approved_review_id"] else None,
-            review_gate,
-            release_gate,
-            rollback_gate,
-            "new-plan" if new_plan else None,
-        )
-        commands = {
-            Action.START: lambda: cmd.StartDevelopment(),
-            Action.BLOCK: lambda: cmd.RecordBlock(
-                b["reason"], STAGE_TO_DOMAIN[b["responsibility_stage"]], evidence
-            ),
-            Action.UNBLOCK: lambda: cmd.ResolveBlock(b["basis"], evidence),
-            Action.SUBMIT_REVIEW: lambda: cmd.SubmitForReview(b["artifact_revision"], evidence),
-            Action.APPROVE_REVIEW: lambda: cmd.AcceptReview(
-                reference(b["review_id"], b["review_version"])
-            ),
-            Action.REJECT_REVIEW: lambda: cmd.ReturnForChanges(
-                reference(b["review_id"], b["review_version"]), b["reason"]
-            ),
-            Action.DELIVER: lambda: cmd.ApproveDelivery(
-                reference(b["assessment_id"], b["assessment_version"]),
-                b["release_version"],
-                b["reason"],
-                evidence,
-            ),
-            Action.ROLLBACK: lambda: cmd.RecordRollback(
-                b["reason"],
-                b["impact"],
-                b["target_version"],
-                reference(b["assessment_id"], b["rollback_plan_version"]),
-                evidence,
-            ),
-            Action.REWORK: lambda: cmd.AuthorizeRework("new-plan", b["reason"], evidence),
-        }
-        position = domain.TaskPosition(
-            STATE_TO_DOMAIN[row["state"]],
-            STATE_TO_DOMAIN[row["blocked_from_state"]] if row["blocked_from_state"] else None,
+            evidence,
+            tuple(t["state"] for t in predecessors),
+            review,
+            assessment if action in (Action.DELIVER, Action.ROLLBACK) else None,
+            delivery,
+            self.review_complete(review) if review else False,
+            new_plan=new_plan,
         )
         try:
-            decision = decide(position, commands[action](), context)
+            decision = decide(context)
         except domain.DomainViolation as error:
             raise Rejected(
                 DOMAIN_ERRORS.get(error.code, "EVIDENCE_REQUIRED"), current_state=row["state"]
@@ -197,46 +118,17 @@ class Workflow:
             c.check_version(row)
             self.owner(g, c, row["owner_id"], code="CAPACITY_REFERENCE_INVALID")
             self.capacity_owner(g, c, row["owner_id"], row["iteration_id"])
-        values = {
-            "state": DOMAIN_TO_STATE[decision.target.state],
-            "blocked_from_state": DOMAIN_TO_STATE[decision.target.blocked_from]
-            if decision.target.blocked_from
-            else None,
-            "block_reason": b["reason"] if action == Action.BLOCK else None,
-            "responsibility_stage": b["responsibility_stage"] if action == Action.BLOCK else None,
-        }
-        if action == Action.SUBMIT_REVIEW:
-            values["artifact_revision"] = b["artifact_revision"]
-        if action == Action.APPROVE_REVIEW:
-            values["approved_review_id"] = b["review_id"]
-        if domain.Effect.CLEAR_APPROVALS in decision.effects:
-            values.update(
-                latest_review_id=None,
-                approved_review_id=None,
-                approved_assessment_id=None,
-                approved_assessment_version=None,
-                artifact_revision=None,
-            )
-        if domain.Effect.ADVANCE_REVIEW_CYCLE in decision.effects:
-            values["review_cycle"] = row["review_cycle"] + 1
-        if domain.Effect.ADVANCE_DELIVERY_CYCLE in decision.effects:
-            values.update(
-                delivery_cycle=row["delivery_cycle"] + 1,
-                review_cycle=1,
-                schedule_version=row["schedule_version"] + 1,
-                **new_plan,
-            )
-        changed = c.cas(g, "tasks", row, values)
+        changed = c.cas(g, "tasks", row, decision.values)
         if action == Action.REWORK:
             self.schedule_diff(g, c, row, changed)
         saved_decision = None
-        if action in DECISION_TYPE:
+        if decision.record_type:
             identifier = g.insert(
                 "decisions",
                 {
                     "project_id": c.project_id,
                     "task_id": row["id"],
-                    "type": DECISION_TYPE[action],
+                    "type": decision.record_type,
                     "decided_by": c.actor_id,
                     "delivery_cycle": changed["delivery_cycle"],
                     "reason": b["reason"],

@@ -1,210 +1,123 @@
-"""Internal semantic types, without HTTP codes or persistence representations."""
+"""Internal v2: validated trusted row views and immutable pure transition decisions."""
 
-from dataclasses import dataclass, field
+from collections.abc import Mapping
+from dataclasses import dataclass
 from enum import Enum
-from typing import TYPE_CHECKING
+from types import MappingProxyType
 
 from t44.contracts import SPEC
 
-if TYPE_CHECKING:
-    from .commands import Command
+
+def _dictionary(name):
+    schema = SPEC["components"]["schemas"][name]
+    pairs = tuple(zip(schema["x-enum-names"], schema["enum"], strict=True))
+    # Semantic enum views remain available for display; storage constants never depend on iteration.
+    semantic = Enum(name, {label.upper(): label for label, _ in pairs}, module=__name__)
+    codes = type(name, (), {label.upper(): code for label, code in pairs})
+    return semantic, codes
 
 
-def _semantic_enum(name, schema, *, aliases=None):
-    """Adapt frozen dictionary values once while keeping the semantic Enum facade."""
-    definition = SPEC["components"]["schemas"][schema]
-    aliases = aliases or {}
-    values = {
-        aliases.get(value, value).upper(): aliases.get(value, value)
-        for value in definition["x-enum-names"]
-    }
-    result = Enum(name, values, module=__name__)
-    for value, code in zip(values.values(), definition["enum"], strict=True):
-        result(value).code = code
-    return result
-
-
-TaskState = _semantic_enum("TaskState", "TaskState")
-Action = _semantic_enum("Action", "TransitionAction", aliases={"approve_review": "accept_review"})
-ProjectRole = _semantic_enum("ProjectRole", "ProjectRole")
-ResponsibilityStage = _semantic_enum("ResponsibilityStage", "ResponsibilityStage")
-
-
-class ReviewOutcome(Enum):
-    ACCEPTED = "accepted"
-    REJECTED = "rejected"
-
-
-class Effect(Enum):
-    CLEAR_APPROVALS = "clear_approvals"
-    ADVANCE_REVIEW_CYCLE = "advance_review_cycle"
-    ADVANCE_DELIVERY_CYCLE = "advance_delivery_cycle"
-    RESET_REVIEW_CYCLE = "reset_review_cycle"
-    ADVANCE_SCHEDULE = "advance_schedule"
-    RECORD_DELIVERY_DECISION = "record_delivery_decision"
-    RECORD_ROLLBACK_DECISION = "record_rollback_decision"
-    RECORD_REWORK_DECISION = "record_rework_decision"
-
-
-class Violation(Enum):
-    PROJECT_ACCESS_REQUIRED = "project_access_required"
-    INVALID_TRANSITION = "invalid_transition"
-    ROLE_FORBIDDEN = "role_forbidden"
-    OWNER_REQUIRED = "owner_required"
-    SELF_REVIEW_FORBIDDEN = "self_review_forbidden"
-    BLOCK_REASON_REQUIRED = "block_reason_required"
-    RESPONSIBILITY_STAGE_REQUIRED = "responsibility_stage_required"
-    UNBLOCK_BASIS_REQUIRED = "unblock_basis_required"
-    EVIDENCE_REQUIRED = "evidence_required"
-    DEPENDENCIES_UNSATISFIED = "dependencies_unsatisfied"
-    ARTIFACT_REQUIRED = "artifact_required"
-    REVIEW_REQUIRED = "review_required"
-    REVIEW_OUTCOME_MISMATCH = "review_outcome_mismatch"
-    REVIEW_BASELINE_STALE = "review_baseline_stale"
-    RELEASE_APPROVAL_REQUIRED = "release_approval_required"
-    RELEASE_BASELINE_STALE = "release_baseline_stale"
-    RELEASE_SELF_REVIEW_FORBIDDEN = "release_self_review_forbidden"
-    DECISION_DETAILS_REQUIRED = "decision_details_required"
-    ROLLBACK_PLAN_REQUIRED = "rollback_plan_required"
-    REWORK_PLAN_REQUIRED = "rework_plan_required"
+TaskState, State = _dictionary("TaskState")
+_TransitionAction, Action = _dictionary("TransitionAction")
+ProjectRole, Role = _dictionary("ProjectRole")
+ResponsibilityStage, Stage = _dictionary("ResponsibilityStage")
+BLOCKABLE = frozenset(
+    {State.PENDING, State.DEVELOPING, State.PENDING_REVIEW, State.PENDING_RELEASE}
+)
 
 
 class DomainViolation(ValueError):
-    """Internal rejection. A later API adapter chooses its approved HTTP mapping."""
-
-    def __init__(self, code: Violation):
+    def __init__(self, code):
         self.code = code
-        super().__init__(code.value)
+        super().__init__(code)
 
 
-def _positive_counter(value: int) -> None:
+def _counter(value):
     if type(value) is not int or value < 1:
         raise ValueError("domain counters must be positive integers")
 
 
-def _boolean_flags(*values: bool) -> None:
-    if any(type(value) is not bool for value in values):
-        raise TypeError("guard flags must be actual booleans")
-
-
-BLOCKABLE = frozenset(
-    {
-        TaskState.PENDING,
-        TaskState.DEVELOPING,
-        TaskState.PENDING_REVIEW,
-        TaskState.PENDING_RELEASE,
-    }
-)
-
-
 @dataclass(frozen=True, slots=True)
-class TaskPosition:
-    state: TaskState
-    blocked_from: TaskState | None = None
-
-    def __post_init__(self) -> None:
-        if not isinstance(self.state, TaskState):
-            raise TypeError("state must be an internal TaskState")
-        if self.state is TaskState.BLOCKED:
-            if self.blocked_from not in BLOCKABLE:
-                raise ValueError("blocked position requires a valid previous state")
-        elif self.blocked_from is not None:
-            raise ValueError("only blocked positions carry a previous state")
-
-
-@dataclass(frozen=True, slots=True)
-class Cycle:
-    delivery: int = 1
-    review: int = 1
-
-    def __post_init__(self) -> None:
-        _positive_counter(self.delivery)
-        _positive_counter(self.review)
-
-
-@dataclass(frozen=True, slots=True)
-class ReviewGate:
-    reference: str
-    cycle: Cycle
-    artifact_reference: str
-    outcome: ReviewOutcome
-    evidence_complete: bool
-    reviewer_is_owner: bool = False
-
-    def __post_init__(self) -> None:
-        if not isinstance(self.cycle, Cycle) or not isinstance(self.outcome, ReviewOutcome):
-            raise TypeError("review proof requires internal cycle and outcome types")
-        _boolean_flags(self.evidence_complete, self.reviewer_is_owner)
-
-
-@dataclass(frozen=True, slots=True)
-class ReleaseGate:
-    reference: str
-    delivery_cycle: int
-    schedule_version: int
-    approved: bool
-    evidence_complete: bool
-    rollback_plan_reviewed: bool
-    reviewer_is_creator: bool = False
-
-    def __post_init__(self) -> None:
-        _positive_counter(self.delivery_cycle)
-        _positive_counter(self.schedule_version)
-        _boolean_flags(
-            self.approved,
-            self.evidence_complete,
-            self.rollback_plan_reviewed,
-            self.reviewer_is_creator,
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class RollbackGate:
-    reference: str
-    delivery_cycle: int
-    approved: bool
-    used_for_delivery: bool
-
-    def __post_init__(self) -> None:
-        _positive_counter(self.delivery_cycle)
-        _boolean_flags(self.approved, self.used_for_delivery)
-
-
-@dataclass(frozen=True, slots=True)
-class TransitionContext:
-    project_member: bool
-    roles: frozenset[ProjectRole]
+class Transition:
+    task: Mapping
+    body: Mapping
+    roles: frozenset[int]
     actor_is_owner: bool = False
-    dependency_states: tuple[TaskState, ...] = ()
-    cycle: Cycle = field(default_factory=Cycle)
-    schedule_version: int = 1
-    artifact_reference: str | None = None
-    latest_review_reference: str | None = None
-    approved_review_reference: str | None = None
-    review: ReviewGate | None = None
-    release: ReleaseGate | None = None
-    rollback: RollbackGate | None = None
-    validated_rework_plan_reference: str | None = None
+    evidence: tuple[str, ...] = ()
+    dependency_states: tuple[int, ...] = ()
+    review: Mapping | None = None
+    assessment: Mapping | None = None
+    delivery: Mapping | None = None
+    review_complete: bool = False
+    project_member: bool = True
+    new_plan: Mapping | None = None
 
-    def __post_init__(self) -> None:
-        _boolean_flags(self.project_member, self.actor_is_owner)
-        _positive_counter(self.schedule_version)
-        if not isinstance(self.cycle, Cycle):
-            raise TypeError("context requires an internal Cycle")
+    def __post_init__(self):
+        if any(
+            type(value) is not bool
+            for value in (
+                self.actor_is_owner,
+                self.review_complete,
+                self.project_member,
+            )
+        ):
+            raise TypeError("guard flags must be actual booleans")
         if not isinstance(self.roles, frozenset) or any(
-            not isinstance(role, ProjectRole) for role in self.roles
+            type(role) is not int or role not in (Role.MANAGER, Role.DEVELOPER, Role.REVIEWER)
+            for role in self.roles
         ):
-            raise TypeError("roles must be a frozen set of internal ProjectRole values")
+            raise TypeError("roles must be a frozen set of internal role codes")
         if not isinstance(self.dependency_states, tuple) or any(
-            not isinstance(state, TaskState) for state in self.dependency_states
+            type(state) is not int or state not in range(1, 8) for state in self.dependency_states
         ):
-            raise TypeError("dependency states must be an immutable tuple of TaskState")
+            raise TypeError("dependency states must be an immutable tuple of state codes")
+        for field in ("task", "body", "review", "assessment", "delivery", "new_plan"):
+            row = getattr(self, field)
+            if row is None and field not in ("task", "body"):
+                continue
+            if not isinstance(row, Mapping):
+                raise TypeError("trusted rows must be mappings")
+            object.__setattr__(self, field, MappingProxyType(dict(row)))
+        state, previous = self.task["state"], self.task["blocked_from_state"]
+        if type(state) is not int or state not in range(1, 8):
+            raise TypeError("state must be an internal state code")
+        if (
+            state == State.BLOCKED and (type(previous) is not int or previous not in BLOCKABLE)
+        ) or (state != State.BLOCKED and previous is not None):
+            raise ValueError("blocked position requires its valid previous state exclusively")
+        if type(self.body["action"]) is not int or self.body["action"] not in range(1, 10):
+            raise TypeError("unsupported internal transition action")
+        for row, counters in (
+            (self.task, ("delivery_cycle", "review_cycle", "schedule_version")),
+            (self.review, ("delivery_cycle", "review_cycle")),
+            (self.assessment, ("delivery_cycle", "schedule_version")),
+        ):
+            if row is not None:
+                for counter in counters:
+                    _counter(row[counter])
+        for row, fields in (
+            (self.task, ("id", "owner_id")),
+            (self.review, ("id", "version", "reviewer_id", "verdict")),
+            (self.assessment, ("id", "version", "status", "created_by", "reviewed_by")),
+            (self.delivery, ("assessment_id", "rollback_plan_version")),
+        ):
+            if row is not None and any(
+                field in row and row[field] is not None and type(row[field]) is not int
+                for field in fields
+            ):
+                raise TypeError("trusted row identities and statuses must be integer codes")
+        if (
+            self.assessment is not None
+            and "review_evidence" in self.assessment
+            and not isinstance(self.assessment["review_evidence"], (list, tuple))
+        ):
+            raise TypeError("assessment evidence must be a collection")
 
 
 @dataclass(frozen=True, slots=True)
 class Decision:
-    source: TaskPosition
-    target: TaskPosition
-    action: Action
-    command: "Command"
-    effects: frozenset[Effect] = frozenset()
+    values: Mapping
+    record_type: int | None = None
+
+    def __post_init__(self):
+        object.__setattr__(self, "values", MappingProxyType(dict(self.values)))

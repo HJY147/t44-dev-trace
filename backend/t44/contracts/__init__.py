@@ -8,6 +8,7 @@ from referencing import Registry, Resource
 from referencing.jsonschema import DRAFT202012
 
 SPEC = json.loads(files(__package__).joinpath("openapi.json").read_text())
+FROZEN_ERROR_NAMES = tuple(SPEC["components"]["schemas"]["ErrorCode"]["enum"])
 VERSION = SPEC["info"]["version"]
 _URI = "urn:t44:api"
 _REGISTRY = Registry().with_resource(
