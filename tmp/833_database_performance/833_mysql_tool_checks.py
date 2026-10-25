@@ -123,6 +123,8 @@ def test_mysql_probe_refuses_local_environment_and_retains_failure(tmp_path):
             "--allow-fresh-mysql-ci",
             "--expected-reader-lock",
             "update",
+            "--expected-task-lock-shape",
+            "batch",
             "--expected-runtime-sha256",
             "unused",
             "--output",

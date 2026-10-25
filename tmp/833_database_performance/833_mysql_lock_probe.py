@@ -1,6 +1,7 @@
 """CI-only finite production Runtime.locked_scope probe; not HTTP/business acceptance."""
 
 import argparse
+import contextvars
 import hashlib
 import json
 import os
@@ -10,6 +11,48 @@ import time
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
+
+_ACTIVE_SQL = contextvars.ContextVar("db833_lock_selects", default=None)
+
+
+def observe_gate(runtime, gateway, call, expected_ids, shape, sql_samples, report):
+    original_rows, selectors = gateway.rows, []
+
+    def observed_rows(table, where=None, **kwargs):
+        if table == "tasks" and kwargs.get("lock") == "update":
+            selectors.append({"where": dict(where or {}), "limit": kwargs.get("limit")})
+        return original_rows(table, where, **kwargs)
+
+    gateway.rows = observed_rows
+    token = _ACTIVE_SQL.set(sql_samples)
+    completed = False
+    try:
+        runtime.locked_scope(gateway, call)
+        completed = True
+    finally:
+        _ACTIVE_SQL.reset(token)
+        gateway.rows = original_rows
+        expected = sorted(set(expected_ids))
+        if shape == "point":
+            valid = [s["where"].get("id") for s in selectors] == expected and all(
+                type(s["where"].get("id")) is int and s["limit"] == 1 for s in selectors
+            )
+        else:
+            pattern = [{"where": {"project_id": call.project_id, "id": expected}, "limit": None}]
+            valid = selectors == (pattern if expected else [])
+        valid = valid and all(s["where"].get("project_id") == call.project_id for s in selectors)
+        report["actual_task_lock_selects"] = {
+            "expected_shape": shape,
+            "expected_unique_rows": len(expected),
+            "actual_select_count": len(selectors),
+            "selector_sequence_matches": valid,
+            "sql_event_count": len(sql_samples),
+            "actual_statement_sha256": [
+                hashlib.sha256(s["statement"].encode()).hexdigest() for s in sql_samples
+            ],
+        }
+    if completed and (not valid or len(selectors) != len(sql_samples)):
+        raise AssertionError("Actual task lock selector/SQL events differ from expected shape")
 
 
 def stamp():
@@ -154,15 +197,33 @@ def pair(
     name,
     expect_parallel=False,
     expected_wait_table="projects",
+    expected_task_shape="batch",
+    expected_task_sets=None,
     first=None,
     second=None,
 ):
-    from sqlalchemy import text
+    from sqlalchemy import event, text
+    from sqlalchemy.sql.selectable import Select
 
     release = threading.Event()
     gates = [threading.Event(), threading.Event()]
     started = [threading.Event(), threading.Event()]
     report = {"name": name, "started": stamp(), "workers": [{}, {}]}
+    actual_sql = [[], []]
+
+    def before_cursor(_connection, _cursor, statement, parameters, context, _executemany):
+        samples = _ACTIVE_SQL.get()
+        compiled = context.compiled
+        if samples is None or compiled is None:
+            return
+        query = compiled.statement
+        if not isinstance(query, Select) or query._for_update_arg is None:
+            return
+        sources = query.get_final_froms()
+        if len(sources) == 1 and getattr(sources[0], "name", None) == "tasks":
+            samples.append({"statement": statement, "parameters": parameters})
+
+    event.listen(engine, "before_cursor_execute", before_cursor)
 
     def worker(index, action):
         row = report["workers"][index]
@@ -173,7 +234,15 @@ def pair(
                 session.execute(text("SET SESSION innodb_lock_wait_timeout=5"))
                 row["before_gate"] = stamp()
                 started[index].set()
-                runtime.locked_scope(uow.gateway, calls[index])
+                observe_gate(
+                    runtime,
+                    uow.gateway,
+                    calls[index],
+                    expected_task_sets[index],
+                    expected_task_shape,
+                    actual_sql[index],
+                    row,
+                )
                 row["gate_acquired"] = stamp()
                 gates[index].set()
                 # Keep both transactions open long enough for an actual lock inventory.
@@ -241,29 +310,21 @@ def pair(
         for thread in threads:
             if thread.ident is not None:
                 thread.join(8)
+        event.remove(engine, "before_cursor_execute", before_cursor)
         report["threads_alive"] = [t.is_alive() for t in threads]
         report["ended"] = stamp()
-    return report
+    return report, [sample for samples in actual_sql for sample in samples]
 
 
-def explain(engine, project, tasks):
-    from sqlalchemy import select
-    from t44.persistence.schema import TABLES
-
-    table = TABLES["tasks"]
-    statement = (
-        select(table)
-        .where(table.c.project_id == project, table.c.id.in_(sorted(tasks)))
-        .order_by(table.c.id)
-        .with_for_update()
-    )
-    compiled = statement.compile(
-        dialect=engine.dialect, compile_kwargs={"render_postcompile": True}
-    )
+def explain_observed(engine, sample):
     with engine.connect() as connection:
-        result = connection.exec_driver_sql("EXPLAIN " + str(compiled), compiled.params)
+        result = connection.exec_driver_sql("EXPLAIN " + sample["statement"], sample["parameters"])
         rows = [dict(r) for r in result.mappings()]
-    return {"shape_sha256": hashlib.sha256(str(compiled).encode()).hexdigest(), "plan": rows}
+    return {
+        "shape_sha256": hashlib.sha256(sample["statement"].encode()).hexdigest(),
+        "source": "actual Runtime.locked_scope cursor SELECT captured in this run",
+        "plan": rows,
+    }
 
 
 def run(args, report):
@@ -303,6 +364,15 @@ def run(args, report):
                 .mappings()
                 .one()
             )
+        report["active_phase"] = "performance_schema_readiness"
+        report["performance_schema_readiness"] = {"started": stamp()}
+        try:
+            lock_snapshot(engine, [-1])
+        except BaseException as error:
+            report["performance_schema_readiness"]["failure"] = failure(error)
+            raise
+        report["performance_schema_readiness"].update(status="readable", ended=stamp())
+        report["active_phase"] = "synthetic_fixture"
         token, project, tasks = seed(factory)
 
         def call(task_index=None, operation="transitionTask", action=Action.START):
@@ -320,12 +390,45 @@ def run(args, report):
             runtime.prepare(c, lambda _: None)
             return c
 
-        report["explain_target_pred"] = explain(engine, project, [tasks[0], tasks[2], tasks[4]])
+        report["active_phase"] = "controlled_lock_cases"
+        report["explain_actual_lock_queries"] = []
+        explained_shapes = set()
         report["cases"] = []
 
         def record(*calls, **kwargs):
-            case = pair(engine, factory, runtime, calls, **kwargs)
+            graph = {
+                tasks[0]: [tasks[2], tasks[4]],
+                tasks[1]: [tasks[2], tasks[4]],
+                tasks[6]: [tasks[5]],
+            }
+            expected_sets = []
+            for c in calls:
+                target = c.path.get("task_id")
+                identifiers = [] if target is None else [target]
+                if c.operation == "transitionTask" and c.body["action"] in (
+                    Action.START,
+                    Action.UNBLOCK,
+                    Action.REWORK,
+                ):
+                    identifiers.extend(graph.get(target, []))
+                expected_sets.append(identifiers)
+            case, actual_queries = pair(
+                engine,
+                factory,
+                runtime,
+                calls,
+                expected_task_shape=args.expected_task_lock_shape,
+                expected_task_sets=expected_sets,
+                **kwargs,
+            )
             report["cases"].append(case)
+            for query in actual_queries:
+                shape = hashlib.sha256(query["statement"].encode()).hexdigest()
+                if shape not in explained_shapes:
+                    if len(explained_shapes) >= 8:
+                        raise ValueError("Actual lock query shape cap exceeded")
+                    report["explain_actual_lock_queries"].append(explain_observed(engine, query))
+                    explained_shapes.add(shape)
             if "failure" in case or any(case["threads_alive"]):
                 raise AssertionError("Controlled lock probe failed; evidence retained")
             return case
@@ -394,6 +497,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--allow-fresh-mysql-ci", action="store_true")
     parser.add_argument("--expected-reader-lock", required=True, choices=("share", "update"))
+    parser.add_argument("--expected-task-lock-shape", required=True, choices=("batch", "point"))
     parser.add_argument("--expected-runtime-sha256", required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -401,12 +505,13 @@ def main():
         "schema": "runtime_mysql_lock_probe_v1",
         "started": stamp(),
         "expected_reader_lock": args.expected_reader_lock,
+        "expected_task_lock_shape": args.expected_task_lock_shape,
         "expected_runtime_sha256": args.expected_runtime_sha256,
         "formal_acceptance": False,
         "limits": [
             "Development DB lock/CAS probes, not HTTP/role/business-state acceptance",
             "Fixture task states are direct synthetic DB rows, not approved business history",
-            "EXPLAIN and held locks are observations, not a proof of lock acquisition order",
+            "Actual scalar request order asserted; EXPLAIN/held locks do not prove all internal lock order",
             "No token, DSN, SQL text, binding values, lock_data or exception messages retained",
         ],
     }
