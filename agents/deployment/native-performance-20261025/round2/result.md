@@ -1,0 +1,7 @@
+# 新性能round2准备结果
+
+root明确授权新round2，而非给旧轮改deadline。旧perf guardian38088经UID/lstart/PGID/argv哈希复核、先写owned receipt再SIGTERM，08:32:47正常完成自身broker/EPMD stop（receipt42fabcbb7ad84d30ac50a9fa0660809f/guardian69785a353b614fc28d21f5e10aec6174均true），无强杀；旧三PID均已absent。首次立即bind后验曾EADDRINUSE使观察命令exit1，未记具体端口、不猜原因；08:34:08指定全部端口bind-free且窄lsof无listener后才复用。原W8/W7与控制器七件历史SHA复核不变，原目录/日志/资源原件保留，functional/共享MySQL不动。
+
+新round2由9b57890精确分层派生旧W7，只有新BASE/runid和明确新时间边界：09:00首次准入、应用09:10:30（broker前90秒）、broker09:12/force09:15。原functional及旧perf期限/grant/报告不改。新run performance_round2_20261025_447f7e9fd01c4629于08:35:22 prepare、08:35:34 broker认证start/inspect成功，guardian50547先登记，再Rabbit50558/EPMD50553，新Cookie/vhost/CA。SUT仍c8/7worker/perf库，数据不修改、不seed。
+
+08:36:47预备build完成：processes=[]明确API/consumer/scheduler未启动。新CA cfdf985c614b93db2524f97d7ae0790d074e573669198f03a1fb4fd4fc321d0c，prestart bfe62d493adf4b579917e64845d49543462e2e69240200cac278ff4a0988da5a，artifact fabea3afa93a2601b44c87c5da95c10c78bd8694f20f8a2160466409b7e562bf；实际c8 archive仍c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9。四项新round2合成guard0.10s、Ruff/diff-check通过；原6项阶段证据不回写。本阶段未获应用phase准入，不预填实际启动/630秒性能/新轮停止或回收通过，准备后立即释放槽；Issue沿原线程后续行政补记，不等待发布。

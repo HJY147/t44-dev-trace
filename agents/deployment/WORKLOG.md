@@ -524,3 +524,9 @@
 - 最终819六项合成guard0.12s、Ruff/format/diff-check绿；原四项重复不累计，初稿E701/E702格式化修正如实记录。源码c8/实际archive c393…，W7预备build64ac8d…/artifact3bf654…/新CA9177b3…，两层derivation、报告和prompt见native-performance-20261025。停止窗08:46:30/08:47/08:50未延长，运行/正式性能/实际停机/回收均未预填。
 
 - 本轮准备阶段Issue7 https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6395309744 已插件发布并按精确ID完整GET逐字body核对；仍未启动新应用，未用发表动作充运行/性能证明。
+
+
+## PERFORMANCE-ROUND2-PREPARE
+
+- root另开新round2，不延旧perf/functional；先e504970设计，旧perf guardian正常stop08:32:47真绿且三PID消失，首次bind EADDRINUSE观察exit1保留，08:34后验全free才复用。七件旧W8/W7/控制器SHA复核不变，functional/MySQL未动。
+- 9b57890显式新BASE/runid/UTC差量，新run447f7e9… prepare08:35:22/broker true08:35:34，guardian50547/Rabbit50558/EPMD50553；08:36:47新CA/54件c8档案/W7绑定/prestart ready。API/consumer/scheduler未启，等root单独phase；四项新guard0.10s/Ruff/diff绿。09:00首次准入/app09:10:30/broker09:12/force09:15仅新round生效。报告/原件/prompt在round2子目录，未预填性能/新轮停机/回收；准备后释放槽。
