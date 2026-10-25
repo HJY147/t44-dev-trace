@@ -58,3 +58,14 @@
 - run10最终复跑1失败/27通过/3本地Rabbit未跑：共享测试库旧pending累计，新event未落入首个默认50条批次；原文module-run10.log保留。仅将该dispatch测试批次设为夹具事件数+1并断言本次普通事件attempts>=1，不改生产批次/不删共享数据，run11复跑28通过/3本地未跑。未把批次未含新event误诊为生产降级失效。
 - 根补充要求真实查Actions39925978579/39925904582：均b5a16e6。实际下载run原始ZIP字节、元数据；关键step原字节gzip及全部SHA保存在本岗ci/。两run的真实Rabbit三项均实际通过（contracts integration段三点、fault段两点；coverage全套三点），不是仅“代码已写”。整run失败：BE旧依赖缺失夹具、FE缺test:coverage；coverage 269pass/1fail，不能称全产品门禁通过。细节见ci/AUDIT.md，已真实消息交根。
 - 真实Rabbit成功只绑定首阶段b5a16e6；当前DB恢复/心跳等后续快照需新CI。没有改原日志尾空白/换行或覆盖失败，无测试私有资料。
+
+
+## 2026-10-25 规模结构候选（ROLE-messaging-SIZE-20261025-v1）
+
+- 根实际派工基线396b646，独立worktree messaging-size-20261025/branch codex/messaging-size-20261025；不派生agent，不使用root索引。先写agents/messaging/tmp806_newscope/DESIGN.md的静态调用图和15–50可信预算，再开始固定cloc计数。
+- 只读取指定cloc2.10工具（实际SHA与bf592724...d83一致），没有读取其他runtime/credentials或独立资料。计数复用未修改source_count.py.classify，仅归档已提交application文件；基线5875，消息357。
+- 真实结构改动：通知三条路径共用当前active成员/项目范围的共享锁查询，复用既有page，计数共用同一范围；Broker四种IO错误清理/脱敏收口，保持connect/publish/get/heartbeat独立错误码与close特殊语义。CAS、收件人、read/handled、owner确认、降级恢复、重试和DLQ未删。
+- 为避免格式收益，新逻辑保留原展开调用风格；当前原始diff净11物理行，待提交快照cloc正式确认。没为100目标改私有API成locals/动态dispatch、迁生产代码或制造不必要sharedhelper。
+- 首次pytest未指定backend配置而0收集（exit5），before-tests.log保留；补-c backend/pyproject.toml后原17项模块开发用例通过。首次新用例ruff有4个C408，原lint-run1.log保留，仅修本岗测试literal，不放松规则。
+- 新806性质/故障22项在未修改396b646的归档backend包上通过（before-properties.log有实际导入路径），候选现有+新用例39项通过/23integration未运行。覆盖9组read/handled筛选、分页与全范围计数、项目拒绝优先级/share锁、4类错误脱敏与清理、False NACK、DB重投及Unicode/StatementRejected死信继承边界。
+- 未跑真实MySQL/Rabbit、全CI/云或正式验收，不读取凭据；已有历史通过不外推本候选。调度仅静态只读，已向根交精确跨岗候选，未越权实现。

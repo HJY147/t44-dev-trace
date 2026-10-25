@@ -1,12 +1,15 @@
 """Pika 1.x blocking connections are used only by their owning process thread."""
 
 import json
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from urllib.parse import urlsplit
 
 import pika
 
-from t44.persistence import PersistenceError, StatementRejected
+from t44.persistence import PersistenceError
+
+TRANSPORT_ERRORS = (pika.exceptions.AMQPError, OSError)
 
 
 class BrokerUnavailable(Exception):
@@ -31,11 +34,19 @@ class PikaBroker:
         self.settings, self.publisher, self.connect = settings, publisher, connect
         self.connection = self.channel = None
 
+    @contextmanager
+    def _operation(self, code, *, extra=()):
+        try:
+            yield
+        except TRANSPORT_ERRORS + extra:
+            self.close()
+            raise BrokerUnavailable(code) from None
+
     def _channel(self):
         if self.connection is not None and self.connection.is_open and self.channel.is_open:
             return self.channel
         self.close()
-        try:
+        with self._operation("BROKER_CONNECT_FAILED", extra=(ValueError,)):
             params = pika.URLParameters(self.settings.url)
             params.heartbeat = 60
             params.blocked_connection_timeout = 5
@@ -60,12 +71,9 @@ class PikaBroker:
             if self.publisher:
                 ch.confirm_delivery()
             return ch
-        except (pika.exceptions.AMQPError, OSError, ValueError):
-            self.close()
-            raise BrokerUnavailable("BROKER_CONNECT_FAILED") from None
 
     def publish(self, event):
-        try:
+        with self._operation("BROKER_PUBLISH_FAILED"):
             ch = self._channel()
             result = ch.basic_publish(
                 exchange=self.settings.exchange,
@@ -87,34 +95,25 @@ class PikaBroker:
             )
             if result is False:
                 raise BrokerUnavailable("BROKER_NACK")
-        except (pika.exceptions.AMQPError, OSError):
-            self.close()
-            raise BrokerUnavailable("BROKER_PUBLISH_FAILED") from None
 
     def get(self):
-        try:
+        with self._operation("BROKER_RECEIVE_FAILED"):
             ch = self._channel()
             self.connection.process_data_events(time_limit=0)
             method, properties, body = ch.basic_get(self.settings.queue, auto_ack=False)
             return (ch, method, properties, body) if method else None
-        except (pika.exceptions.AMQPError, OSError):
-            self.close()
-            raise BrokerUnavailable("BROKER_RECEIVE_FAILED") from None
 
     def keepalive(self):
         if self.connection is not None and self.connection.is_open:
-            try:
+            with self._operation("BROKER_HEARTBEAT_FAILED"):
                 self.connection.process_data_events(time_limit=0)
-            except (pika.exceptions.AMQPError, OSError):
-                self.close()
-                raise BrokerUnavailable("BROKER_HEARTBEAT_FAILED") from None
 
     def close(self):
         if self.connection is not None:
             try:
                 if self.connection.is_open:
                     self.connection.close()
-            except (pika.exceptions.AMQPError, OSError):
+            except TRANSPORT_ERRORS:
                 pass
         self.connection = self.channel = None
 
@@ -139,7 +138,7 @@ def consume_delivery(store, channel, method, body):
         if event["event_type"] not in (1, 2):
             raise ValueError
         store.consume(event["id"])
-    except (ValueError, TypeError, UnicodeError, StatementRejected):
+    except (ValueError, TypeError):
         channel.basic_reject(delivery_tag=method.delivery_tag, requeue=False)
         return "quarantined"
     except PersistenceError:

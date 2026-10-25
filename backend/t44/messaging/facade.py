@@ -1,7 +1,7 @@
 """Notification operations inside the caller's authenticated business transaction."""
 
 from t44.persistence import Pred
-from t44.services.common import model
+from t44.services.common import model, page
 from t44.services.errors import require
 
 
@@ -10,59 +10,49 @@ def notification(row):
 
 
 class NotificationFacade:
-    def _membership(self, g, actor_id, project_id, *, lock=None):
-        require(g.get("projects", project_id), "RESOURCE_NOT_FOUND")
+    def _projects(self, g, actor_id, project_id=None):
+        where = {"user_id": actor_id, "active": 1}
+        if project_id is not None:
+            require(g.get("projects", project_id), "RESOURCE_NOT_FOUND")
+            where["project_id"] = project_id
         members = g.rows(
             "project_members",
-            {"project_id": project_id, "user_id": actor_id, "active": 1},
-            lock=lock,
+            where,
+            order_by=("project_id", "user_id"),
+            lock="share",
         )
-        require(members, "PROJECT_ACCESS_DENIED")
+        if project_id is not None:
+            require(members, "PROJECT_ACCESS_DENIED")
+        return [member["project_id"] for member in members]
 
     def list(self, g, *, actor_id, query):
-        if project_id := query.get("project_id"):
-            self._membership(g, actor_id, project_id, lock="share")
-            projects = [project_id]
-        else:
-            projects = [
-                m["project_id"]
-                for m in g.rows(
-                    "project_members",
-                    {"user_id": actor_id, "active": 1},
-                    order_by=("project_id", "user_id"),
-                    lock="share",
-                )
-            ]
-        where = {"recipient_id": actor_id, "project_id": projects}
+        where = {
+            "recipient_id": actor_id,
+            "project_id": self._projects(g, actor_id, query.get("project_id")),
+        }
         predicates = tuple(
             Pred(column, "ne" if query[key] else "is_null", None)
             for key, column in (("read", "read_at"), ("handled", "handled_at"))
             if key in query
         )
-        page, size = query.get("page", 1), query.get("page_size", 20)
-        rows = g.rows(
+        result = page(
+            g,
             "notifications",
             where,
+            {**query, "sort": "-id"},
+            notification,
             predicates=predicates,
-            order_by=("-id",),
-            limit=size,
-            offset=(page - 1) * size,
         )
-        return {
-            "items": [notification(row) for row in rows],
-            "page": page,
-            "page_size": size,
-            "total": g.count("notifications", where, predicates=predicates),
-            "unread_count": g.count(
-                "notifications", where, predicates=(Pred("read_at", "is_null"),)
-            ),
-            "unhandled_count": g.count(
-                "notifications", where, predicates=(Pred("handled_at", "is_null"),)
-            ),
-        }
+        for name, column in (("unread_count", "read_at"), ("unhandled_count", "handled_at")):
+            result[name] = g.count(
+                "notifications",
+                where,
+                predicates=(Pred(column, "is_null"),),
+            )
+        return result
 
     def _update(self, g, *, actor_id, project_id, notification_id, version, values):
-        self._membership(g, actor_id, project_id, lock="share")
+        self._projects(g, actor_id, project_id)
         row = g.get("notifications", notification_id, lock="update")
         require(row and row["project_id"] == project_id, "RESOURCE_NOT_FOUND")
         require(row["recipient_id"] == actor_id, "ACTION_FORBIDDEN")

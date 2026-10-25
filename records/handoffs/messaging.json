@@ -1,7 +1,7 @@
 {
   "role": "messaging",
-  "stage": "冻结 v1 完整消息应用及真实MySQL/进程验证",
-  "implementation_status": "完整实现与DB恢复已接线；首阶段真Rabbit三项CI通过，最新快照全产品CI待验证",
+  "stage": "2026-10-25 消息规模结构候选与模块开发回归",
+  "implementation_status": "既有业务保留；结构候选39项本地回归通过，固定cloc快照待本轮RESULT确认",
   "artifacts": [
     {
       "path": "agents/messaging/WORKLOG.md",
@@ -122,6 +122,18 @@
     {
       "path": "agents/messaging/ci/",
       "status": "实际追加证据，不覆盖原失败"
+    },
+    {
+      "path": "agents/messaging/tmp806_newscope/",
+      "status": "本轮实际新增/更新，详见tmp806_newscope设计与日志"
+    },
+    {
+      "path": "agents/messaging/prompts/ROLE-messaging-SIZE-20261025-v1.md",
+      "status": "本轮实际新增/更新，详见tmp806_newscope设计与日志"
+    },
+    {
+      "path": "tmp/backend/messaging/806_newscope.py",
+      "status": "本轮实际新增/更新，详见tmp806_newscope设计与日志"
     }
   ],
   "interfaces": [
@@ -231,32 +243,35 @@
     {
       "command": "PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/messaging -q --tb=short",
       "result": "run10:1failed/27passed；仅修测试批次后run11:28passed/3本地Rabbit未跑，原文保留"
+    },
+    {
+      "command": "python agents/messaging/tmp806_newscope/measure.py --ref 396b646adb87de183929ac6fc46bbe7e88074c8a --label before",
+      "result": "固定分类与工具SHA确认；application5875，messaging357"
+    },
+    {
+      "command": "PYTHONPATH=backend <authorized python> -m pytest -c backend/pyproject.toml tmp/backend/messaging -q -m not-integration",
+      "result": "当前39passed/23deselected；初始0收集exit5与ruff4C408已如实保留"
+    },
+    {
+      "command": "基线归档backend/t44 + 新806_newscope性质用例（compare_properties.py为可复现脚本）",
+      "result": "明确验证导入原396b646包，新22项passed/9integration未跑"
     }
   ],
   "results": [
-    "NotificationFacade实际HTTP/真MySQL/通知并发CAS与成员撤权并发验证通过",
-    "28项本岗验证通过：17基础/SQLite/fake/配置、11真实MySQL；3真Rabbit本地未执行",
-    "独立真实消息子进程+MySQL+TCP拒绝完成fallback，SIGTERM退出0；非真Rabbit成功证据",
-    "消息模块语句覆盖84%，Ruff通过；首轮85%事实保留",
-    "DB1602f359恢复门面已接入；完整事件不误标，缺失恢复后不二提醒",
-    "首阶段b5a16e6已push至draft PR20并attach_artifact",
-    "已真实核对b5a16e6两次Actions：三项真Rabbit执行通过；整体run仍因BE旧夹具/FE缺脚本失败，原始ZIP/gzip+SHA保留",
-    "run10本岗dispatch测试容量假设失败已只修夹具；run11复跑28通过/3本地Rabbit未跑"
+    "基线396b646固定cloc2.10：application5875，messaging357；设计文件先于计数写入",
+    "NotificationFacade共用锁内项目范围与既有分页；Broker IO错误清理/脱敏单点维护，原功能边界不删",
+    "原17项自测通过，新22项在原基线通过，当前39项通过/23 integration未跑；日志全部保留",
+    "初步diff净11，未为100目标压格式或迁生产目录；最终提交快照数字待RESULT",
+    "未越权改调度/DB/API/DDL/门禁，跨岗候选交根排班"
   ],
   "unverified": [
-    "当前后续快照的真实Rabbit/托管CI尚需重新执行；b5阶段三项真Rabbit已有通过证据",
-    "既有contracts依赖缺失夹具待BE显式注入，原回归1失败证据保留",
-    "全产品覆盖率/规模门禁、独立验收、正式性能未验证；根实测规模超范围",
-    "普通业务重试积压时升级事件领取公平性记录为待核风险，未凭首批无目标事件冒认为已证实生产故障"
+    "本候选未跑真实MySQL/Rabbit、全CI/云/正式验收；未读取任何凭据或私有独立材料",
+    "未达到100–200预算目标；全产品5875基线仍超范围，最终净减待提交快照计数"
   ],
   "questions": [
     {
-      "owner": "backend/root",
-      "question": "提供依赖缺失故障夹具修正SHA后复跑原contracts回归，保持原503断言"
-    },
-    {
-      "owner": "deployment/root",
-      "question": "在真实Rabbit+MySQL配置的CI执行本岗integration/fault测试并保留原结果"
+      "owner": "root/scheduler/backend/database",
+      "question": "按静态图候选协作调度event投影、scan_run事务内原语与outbox信封去重；保持各自事务与责任目录"
     }
   ],
   "prompt_refs": [
@@ -300,9 +315,21 @@
         "agents/messaging/module-run4.log",
         "agents/messaging/coverage-run4.log"
       ]
+    },
+    {
+      "id": "ROLE-messaging-SIZE-20261025-v1",
+      "source": "总协调实际派工消息，本岗标记ID",
+      "task_file": "agents/messaging/prompts/ROLE-messaging-SIZE-20261025-v1.md",
+      "reason": "先设计和固定计数后做可维护去重，不压行/改分母/删故障路径",
+      "artifacts": [
+        "backend/t44/messaging/facade.py",
+        "backend/t44/messaging/broker.py",
+        "tmp/backend/messaging/806_newscope.py",
+        "agents/messaging/tmp806_newscope/"
+      ]
     }
   ],
-  "updated_at": "2026-10-23T16:43:28+08:00",
+  "updated_at": "2026-10-25",
   "github": {
     "repo": "HJY147/t44-dev-trace",
     "issue": 5,
@@ -314,5 +341,10 @@
     "application_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6360951760",
     "database_recovery_reply": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360999718",
     "recovery_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6361084142"
+  },
+  "previous_stage_snapshot": {
+    "stage": "冻结 v1 完整消息应用及真实MySQL/进程验证",
+    "implementation_status": "完整实现与DB恢复已接线；首阶段真Rabbit三项CI通过，最新快照全产品CI待验证",
+    "updated_at": "2026-10-23T16:43:28+08:00"
   }
 }
