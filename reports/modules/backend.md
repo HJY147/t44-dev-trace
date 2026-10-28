@@ -386,3 +386,10 @@ Design/internal interface migration, exact hashes/count/JUnit/microbench and lim
 ### V2-SNAPSHOT-ALIAS-01 repair supersedes the current source count
 
 The b54 caller-evidence alias is reproduced by2 failing append/clear cases and repaired by6 counted production lines after the original initializer validations. review_evidence list/tuple membership now becomes an immutable tuple snapshot; only the consumed nonempty fact is frozen. Final172 developer domain +143 unchanged HTTP cases pass; original validation AST/order remains. Current source scope2363→1993/net370 (previous376 remains prior-stage evidence), no fresh performance claim. Seeagents/backend/source-size-20261025/snapshot-alias-fix.md andtmp/811_backend_size/snapshot-alias-validation.json. No fullCI/MySQL/cloud/independent run; exact repair is pushed with[skip ci] for coordinator-requested narrow review before combined CI.
+
+
+## 2026-10-28 790一次性密文搬运
+- root唯一云操作者，实际S1成功回传但S2未执行时派工。先设计d56dd863，再新独立helper a5524aa1，不改产品或冻结790七文件/manifest。三白名单control/session/CA+显式可选mirror第四件隔离目录；只搬公钥/PUBLIC校验值/OPAQUE密文，私钥不离LOAD，根不读真实私包。
+- 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
+- 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
+- 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。

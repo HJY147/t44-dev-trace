@@ -635,3 +635,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - root同意首配置对照scheduler尚未启动的6-role开发范围；正式7-role须另新namespace真实scope/首扫后稳定事件协议，当前fresh-create S1不能冒用。prompt岗收到明确AI访谈两次，不作学生本人经历。角色report/handoff已更新；后续真实S1/P7/P16/正式验收仍由root另记。
 
 - root复核发现runbook第5步仍残留旧load单段安装指令（替换时前文六→七导致原匹配未命中）；已用精确一次前像修正，只完整v2七文件新目录，不允许旧包覆盖，P7已seed明确跳过bootstrap。本次只改文档，工具hash不变。
+
+
+## 2026-10-28 790一次性密文搬运
+- root唯一云操作者，实际S1成功回传但S2未执行时派工。先设计d56dd863，再新独立helper a5524aa1，不改产品或冻结790七文件/manifest。三白名单control/session/CA+显式可选mirror第四件隔离目录；只搬公钥/PUBLIC校验值/OPAQUE密文，私钥不离LOAD，根不读真实私包。
+- 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
+- 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
+- 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。
