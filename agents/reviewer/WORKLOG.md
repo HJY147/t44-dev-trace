@@ -644,3 +644,10 @@ AI reviewer；ROLE-reviewer-V4-BRIDGE-RECHECK-20261028-v1。5cedb2ca源码/5f679
 AI reviewer；ROLE-reviewer-COMPONENT-A-20261028-v1。新隔离6977e5b7对5d产品仅application/common/messaging facade三文件；Call.cas去新kw并展开diff if后AST等旧、check_version全AST同；通知资格/归属/recipient/显式version→惰性values→原CAS/空audit但仍audit/handle不读保真。旧979/806完整函数类AST同、36assert逐序同(25+11)；兼容调用适配仅test tmp/780，生产无壳。真实跑780+782+旧979/806排integration，47绿15未选0fail/error/skip，一现有弃用warning；SQLite/进程内TestClient不冒native。原cloc固定计量6977=5898、exit1仍超798，净37非达标。报告reports/reviews/component-call-a-6977e5b7-20261028.md，条件可整合，根须显式CI收780/782并按新准确SHA全套/native/独立/云；旧5d成绩不重绑。未读独立私件或联络tester/访问云/改产品或断言。定位错读conftest和消息REPORT路径均为读取错误不冒测试失败。
 
 技术5e438198已push；Issue12 COMMENT6469521973精确ID/正文回读同。全scoped staged diff-check0；仅6977条件整合、整体5898仍FAIL，未发APPROVE或产品成功状态。metadata封后结束释放槽。
+
+
+## 2026-10-28 f7/16Z/P64短诊断预装审核及运输阻断修复
+
+AI reviewer；ROLE-reviewer-P64-F7-20261028-v1。新d17 worktree只读PUBLIC/准确f7自有product-source53夹具，不读783/792私件、不联络tester或访问云。13runtime1da与原三业务文件/HTTP非configure18函数类/原QUERY PROBE seed常量/transport只SOURCE-STOP核；原66assert原序仅两身份/时刻替换、删除0。prep false/noHTTP→空库bootstrap先于idle、pressure另真实六role/CA/source、e551薄适配原305f锁内admit/GEN父锁外、TTL/cohorts不降。自跑原P64 68绿/97.24秒/一原弃用warning，SQLite/TestClient/假Docker/MySQL+openssl，未native/cloud。发现P64-UI-01前三raw脚本外层base64+300=20444/21640/21112超18k，先发root；原owner27bc真实3红1绿gzip保留，原d17不改。20eb仅新transport7片，原P64目录Git diff空；独立复算max outer15968/UI16090，逐片解码与SHA同；本岗新7实际UI安装/拒覆盖/混包全绿57.51秒。只新7关闭运输，原4拒绝保持，可条件预装/环境预检，无HTTP/正式准入。报告reports/reviews/p64-f7-tools-20261028.md，完整副作用/一次marker固定inputs限制如实记录；初始审计把STOP写成ISO假设失败后仅改审计比较，另一次猜错新test文件名读失败，非业务红。
+
+P64 technicalcc29e5ec已push，原68与新7分列、P64-UI-01仅新7关闭；完整staged diff-check0。Issue12 COMMENT6471400305特定ID/正文回读相同，未发APPROVE或压力授权。metadata封后结束释放槽。

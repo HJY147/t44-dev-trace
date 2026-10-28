@@ -1,0 +1,51 @@
+{
+  "tool_final": "d17cf53c63e0fbe6f5a4df215d513993b0d6cc86",
+  "runtime_commit": "c0268820",
+  "manifest_sha256": "1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8",
+  "runtime_files_verified": 13,
+  "full_business_bytes_same": {
+    "data/790_select.py": "52739bea73c9a0cbb80b128706ae137be770c0a2cce267cce245e22a890df8bb",
+    "data/790_stage1.py": "e626b49194c5575e9983992d2028a27a23a1b05a381006d94b6fc912f29a63cd",
+    "edge/790_stage2.py": "bcd04539eef589b64ad2df2ef7c1da189a14630cbfe4747d65d1d730986fa57a"
+  },
+  "HTTP_nonconfigure_functions_classes_byte_identical": 18,
+  "bootstrap_QUERY_PROBE_seed_code_literal_identical": true,
+  "transport_only_SOURCE_and_STOP_assignment_byte_replacements": true,
+  "original_assert_AST_preserved_after_only_identity_clock_substitutions": {
+    "790_checks.py": 28,
+    "790_deadline_abort_checks.py": 21,
+    "transport/test_790_transfer.py": 17
+  },
+  "deleted_assertions": 0,
+  "old_installer_lengths": [
+    {
+      "name": "install-part01.PUBLIC.txt",
+      "raw_plus300": 15407,
+      "outer_base64_plus300": 20444,
+      "fits_outer_policy": false
+    },
+    {
+      "name": "install-part02.PUBLIC.txt",
+      "raw_plus300": 16304,
+      "outer_base64_plus300": 21640,
+      "fits_outer_policy": false
+    },
+    {
+      "name": "install-part03.PUBLIC.txt",
+      "raw_plus300": 15908,
+      "outer_base64_plus300": 21112,
+      "fits_outer_policy": false
+    },
+    {
+      "name": "install-part04.PUBLIC.txt",
+      "raw_plus300": 9799,
+      "outer_base64_plus300": 12968,
+      "fits_outer_policy": true
+    }
+  ],
+  "transport_blocker": "P64-UI-01: first3 outer-base64 whole scripts +300 exceed18000; raw policy is not outer encoded policy",
+  "initial_auditor_exit": "1: compared STOP as ISO string, but actual unchanged transport has datetime constructor; corrected only auditor exact statement matching, no runtime/threshold change",
+  "runtime_no_new_static_blocker": true,
+  "formal600s_authorized": false,
+  "no_cloud_or_independent_private_access": true
+}
