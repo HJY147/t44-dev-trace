@@ -633,3 +633,5 @@ AI reviewer；ROLE-reviewer-V4-BRIDGE-20261028-v1。b5926031部署+161b82ee桥�
 AI reviewer；ROLE-reviewer-V4-BRIDGE-RECHECK-20261028-v1。5cedb2ca源码/5f679130完整checkpoint工具字节相同；原P1两接口scope关闭，原95assert AST逐序不降（50+22+23）。本岗真实74局部绿；两次73/1环境fixture失败原log/XML保留，分别缺t44/PYTHONPATH和原product-source路径断言，后用精确5d归档fixture不改断言；首轮外shell0不冒pytest通过。25d profile3b3b/GEN3232/helper305f/六片max15372逐项核，实际本地重放6/6exit0，六文件字节同；本地source ZIP9ebb/166458B，原receiver exit0，53源对5d与47 frozen对935/5d，147Gitmode核。初始raw TAR mode假设错误导致一红（git archive0664由原builder规范化0644），原包/算法不改，失败目标保留后新目录复核。报告reports/reviews/v4-bridge-v3-recheck-20261028.md；可交root受限安装/新环境预检，不准入F/正式性能。无nativeMySQL/HTTP/Linux/systemd/云/独立private/测试联系，未改产品/原报告。临时公开source/test夹具在tmp/781…且不提交重复源码。
 
 复审scoped diff-check0；全原件包diff-check2为两轮失败pytest log/XML六处原尾空格，原字节保留，未伪称全包绿。
+
+复审technical71491f67已push；Issue12 COMMENT6468960839特定ID/全文回读相同。仅conditional install/new environment preflight，不准入F或正式性能；旧阻断与新复审分别保留，metadata封后结束释放槽。
