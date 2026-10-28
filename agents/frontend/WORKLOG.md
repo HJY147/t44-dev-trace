@@ -245,3 +245,10 @@
 - 现有递归表单/统一操作/七页面/详情已共用。异步helper预计+20/-13净增，映射迁JSON只是计数转移，CSS已有共用且视觉退路必须留；未找到可信150–400行方案。root同意no-candidate审计，不制造产品改动。
 - 没有产品/测试改变，未重跑无关CI/浏览器/构建/API/MySQL/性能，不拿历史绿当新验收。设计估计没有冒充实际削减。保留所有旧阶段/独立结论、学生研究正文不动。
 - Issue2评论6398588286真实发布并通过插件完整GET逐字核对；readback存size-round9/github-readback.json。未发布reviewer状态/APPROVE或合并。
+
+
+## 2026-10-28｜ROLE-frontend-SCALE-RESUME-20261028-v1｜设计阶段
+- 从固定a12e9e70新建独立codex/frontend-scale-resume-20261028 worktree。先读AGENTS/岗位/实现及Git协作边界与round9设计、报告、提示词；旧043到a12的frontend和source_count.py diff为空。
+- 总协调准入仅可信净减>30行；状态模板共同原行仅4，按钮配置循环毛收益不足，递归表单/记录/七页面已共用。CSS补做同context全规则重复静态清单后再下结论；暂不改产品、不重做旧无收益helper。
+- root批准789，在本worktree用O_EXCL|O_NOFOLLOW原子预留；未读792 private、未操作云/根产品/研究正文/独立测试实例。本轮是AI前端静态审计，不计学生改码或独立验收。
+- 准备期两条只读路径假定source_count在scripts/ci与backend/scale记录目录不存在，实际路径scripts/metrics/source_count.py已核；一次追加WORKLOG的apply_patch上下文错误整组未写入，检查status后改为精确文件追加，无产品/测试/服务副作用。
