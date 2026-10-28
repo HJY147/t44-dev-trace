@@ -1,0 +1,19 @@
+Actual session excerpts, not reconstructed full console logs.
+
+Initial PUBLIC inspection: exact matrix SHA/bytes matched, then JSONDecodeError on the leading OPAQUE_PART_3_VERIFIED_NO_DISCLOSURE line. Parser later admits only that exact marker and strict JSON for all remaining lines. Initial keyword-enumeration helper used Counter.update(dict) and raised TypeError; corrected to .keys() before using the resulting inspection. Neither was an application experiment.
+
+First static check of schema tools: 2 errors (1 fixed,1 remaining): unused time import automatically removed; B007 unused child renamed _child. Final checks pass.
+
+Run01: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+Traceback ends guard(), saved = gate.cache[key], KeyError.
+exit_code=1; failed raw and exact tool sources preserved.
+
+Pure pinned-library reproduction: detailed_exceptions=False -> KeyError 'definition_rule'; detailed_exceptions=True -> compile successful. No HTTP/DB in those compile checks.
+
+Run02: status=completed, HTTP_requests=159, pre-timing guard cases=424, false_accept=false. Full exact guard and timing data in response-02.json.gz; stdout was truncated by the tool display, file was not truncated.
+exit_code=0
+
+Supplement: status=passed, cases=13, false_accept=false. Post-timing pure supplement only, no HTTP or DB; raw in supplement-01.json.gz.
+exit_code=0
+
+Model capacity interruption was reported by root in dispatch. No provider raw error or code was supplied; it is not one of the above local failures.
