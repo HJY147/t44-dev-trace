@@ -59,7 +59,10 @@ def create_five(factory, settings, *, prefix, stop, cli=original_cli_runner):
     deadline(stop)
     with factory() as uow:
         counts = {name: uow.gateway.count(name) for name in TABLES}
-    if any(counts.values()):
+        startup_audits = {
+            row["id"]: row for row in uow.gateway.rows("audit_events", {})
+        }
+    if any(count for name, count in counts.items() if name != "audit_events"):
         raise ValueError("FRESH_EMPTY_APPLICATION_TABLES_REQUIRED_NO_RESEED")
     accounts = {}
     for label in LABELS:
@@ -87,7 +90,16 @@ def create_five(factory, settings, *, prefix, stop, cli=original_cli_runner):
     deadline(stop)
     with factory() as uow:
         users = uow.gateway.rows("users", {})
-        other = {name: uow.gateway.count(name) for name in TABLES if name != "users"}
+        other = {
+            name: uow.gateway.count(name)
+            for name in TABLES
+            if name not in {"users", "audit_events"}
+        }
+        current_audits = {
+            row["id"]: row for row in uow.gateway.rows("audit_events", {})
+        }
+    if any(current_audits.get(key) != row for key, row in startup_audits.items()):
+        raise ValueError("STARTUP_AUTHENTICATION_AUDITS_MUST_BE_PRESERVED")
     if len(users) != 5 or len({row["id"] for row in users}) != 5 or any(other.values()):
         raise ValueError("EXACT_FIVE_IDENTITIES_AND_NO_BUSINESS_DATA_REQUIRED")
     if {row["id"] for row in users} != {
