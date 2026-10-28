@@ -708,3 +708,11 @@ root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，�
 初38本地guard通过；扩为40后1个fixture因原SYSTEMD_SAFE_NEW_OUTPUT拒绝本机中文路径失败，原9550B XML/SHA dc1a4d10…逐字gzip保留。只在显式模拟cloud平台的准备测试映射此路径观察为ASCII，不修改冻结guard或实际输出约束；后40项5.92s全过。真实文件/跨进程flock/固定FD/持久pipe，Docker/MySQL/root平台观察均明确模拟；新P64 Compose与原factory逐字比较仅P API两个ENV差异、F原样及其他角色默认。新运输完整encoded+description界限/本地独占重组、重复/篡改拒绝已校核。首Ruff为本岗fixture赋值lambda E731，改局部def后绿，无noqa。
 
 固定mysql-budget21599B/SHA305f9eae…已交backend，其转回真实模块接口/争用/桥安装55项通过仅作其结果转述，不累加本岗case。root11:55前明确source5d、product40682367472四job与Docker40682640278成功及stop16Z；这些CI由root核，不冒本岗执行/性能通过。接下来按实际新源/窗口派生并封小段包；本checkpoint仍无云操作、新MySQL实测或业务准入。
+
+## v4精确5d/16:00Z封定与可审交付
+
+- 按root正式source5d5e0a15e3b15e2f509c4ae71a927bbc35579be7/2026-10-28T16:00:00Z，真实Git/冻结对照派生全53源文件新profile2059B/SHA3b3b6d4c…；GEN30497B/3232c18e…、resource44082B/d3814374…、helper21599B/305f9eae…完整闭环。旧模板/derive/10:30目录与base2b逐字无diff，不覆盖旧资料。配置mysql max字段明确标configured prior与not actual，不冒384实测。
+- 真实本地v4 package生成ZIP166458B/9ebb3563…、manifest3b398cd7…、source archive392222af…；严格receiver CRC/TAR/五文件/53文件源验证通过，builder53974361…；原输出字段official_zip仅遗留命名，此包明确为本地原件，不冒官方CI下载。首次新建own .runtime父权限755被严格private guard在输出创建前拒绝；仅该自建父改700后原件同SHA接收成功，不改guard。新build/镜像/CA尚未发生，不填旧a12/475a身份。
+- 实际最终小包5片+校验安装共6命令，manifest c257623f…、最大raw11337/整encoded+256=15372；实际5d/16Z分片逐字SHA、6bash-n、实际本地独占重组后六文件与profile原件逐字相同。仅remote-root字面值映射本机tmp夹具，source/stop未改；没有云提交。目标全新/root/t44-r9/v4-code-20261028-01/profile。
+- 本岗v4 40项加旧profile16项共56项12.17s通过，CI原范围加本岗新guard Ruff通过。backend另反馈桥56项是其结果，不累计成同一套产品或独立验收。完整source package/既有官方CI同builder运输、receiver/build、新namespace prepare64w5/0、arm/infra/probe、migrate/idle/observer与保卷stop命令在v4/STEPS.md；新GEN预算回执path+SHA两个必填已告root/backend，不能只接共享锁却忽略实际预算。
+- root代岗拟建783 source-free新镜像时询问授权，本岗确认只新副本删Dockerfile三安全ENV及PYTHONPATH缺省空两处，原f30/证明/no-network不变，实际改码构建由root另记，不冒本岗运行。此v4任务本岗0云/UI/变配/镜像构建/真实MySQL/SUT；root后续实际新F/短诊断及通过后新600秒授权，旧270/active400/600与LOC原门禁保留。
