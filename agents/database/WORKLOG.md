@@ -348,3 +348,13 @@
 - 新19native层单位检查、原956的15检查和真实31例分范围；956旧Inspector fixture仅隔离新增native层，原断言不降，实际MySQL31例不stub。报告/verification/源绑定/JUnit/原Bandit红及绿/四次stop证明保存；学生研究正文不代写。Git推送与Issue4阶段留痕由实际回执后再补。
 
 - 阶段检查点7a663f9d已真实push；Issue4评论6461241385实际发表，随后fetch按单ID找到且全文逐字一致，原响应与精确comment保存在github-publication.json。本次仅补发布回执，未改生产或新增测试。
+
+
+## ROLE-database-SELECT-RESUME-20261028-v1：默认全列查询一行候选
+
+- 基准确a12独立树codex/database-select-resume-20261028；先读AGENTS、原审计公件与本地SQLAlchemy2.1.6源码，官方rel_2_1_6三源bytes/SHA相同；6a1cb86b先封设计。只把Rows默认tuple(t.c)改(t,)，显式投影和其他产品逐字不动，18表无omit标记。
+- 产品/验证源码82e92dfc420690980a6e16c88f209d08ab709e49已commit/push；tmp787最终30目标通过0.56s，18×8×2=288对SQL/参数/结果列同，11拒绝目标和实际SQLite UTC/JSON/null/长文本/投影/事务rollback-only通过；初轮30与单独1为重叠重复，不累加。编译账本最终与初轮18份逐字同，最终测试输出改为pytest自有tmp_path以便复跑不覆写归档。
+- 原persistence+812全非integration138通过、17未选择、2原JUnit warning，90.22秒，含原native/semantics/全量6000seed；旧断言未改。限定CI配置Ruff/Bandit/diff-check绿。探索读不存在路径失败纠正，不记为产品红。
+- 原cloc对design6a1（应用与a12同）和精确82e92实测5933→5933/净0，均--require-range exit1/超833。boundaries对原catalog审计/七反例、migrations/schema/UoW/原测试/冻结/CI/计数器Git对象全同，未动根/原794工作树。
+- 仅根转PUBLIC性能c96dc391报告/manifest/query gzip；raw887024B与SHA03876a75...实核。a12进程内表达式候选纯构建ABBA约省5us/statement，不是82e的端到端、MySQL/HTTP/云收益或根因证明。当前云仍a12；准确源码review/完整CI/真实MySQL/独立及正式性能待根调度，未预填通过；没有访问原生库/旧tmp796/独立私件或研究正文。
+- 报告/commands/边界/原日志/JUnit/实际计数归档select-resume-20261028；四件及公开Issue4实际回执在最终封档补记。不扩展不必要测试。
