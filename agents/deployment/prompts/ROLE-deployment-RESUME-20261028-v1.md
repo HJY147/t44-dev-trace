@@ -19,3 +19,5 @@ root随后实际追加优先级：先交只读summary导出器本地回归和che
 实际后发root纠正运输和时间：旧31595raw未提交，官方全命令base64+description需<18000；实际clock07:54后原窗口过期，最终另派10:30Z/root02，保留原07:30/08:15一切字节。源a12/53/镜像与root01只读输入不变，P16gen02与独立F分别新namespace，root唯一UI/100预算，无购机IAM删数据。要求≤8500B opaque片、raw≤13000、encoded+256<18000，最后只重组校验并独占安装。实际交4命令、10本地守卫及全部完整SHA，未云动作。
 
 实际后发急件：新APP resource-r28p16-02原start再次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED，已知e5/helper与f762/原23c536失败。只允许该APP及未来LOAD mirror-02，在缺receipt且原失败精确为ready-race时，核binding/helper/plan/unit/argv/UID0/MainPID+cgroup/starttick，最多5秒等待匹配，O_EXCL late/not_original_start_success，再原status，不改冻结/产品或搭大系统。实际新增一个窄helper与5本地守卫/小安装指令，root唯一UI；模拟systemd/proc范围明确，原夹具错误保留，不写云成功。
+
+实际最后任务与转向：root要求P16封尾/保卷stop、新F五动作与T15中性身份；随后root自己完成资源/P16 stop并提交F启动，明确不要等文档/不要重复start，转优先proof-only。本岗先交05启动小脚本但未被执行，后06严格核已成功root原9786B启动与实际status/Config.Cmd/TTL/CA，T15外向schema只读取当次明确授权PUBLIC一件，不能进入其他792/private。旧status误读静态拦截后60fe修正、root确认旧版未执行，root实际新proof成功并授权唯一最终PUBLIC读取；真实worker4/TTL3600/18字段与SHA记录，不冒独立或性能成功，不猜scheduler真实scope。

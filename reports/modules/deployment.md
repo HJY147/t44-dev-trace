@@ -538,3 +538,14 @@ root实际补充：此前31595 raw<32KiB不满足云助手完整base64+描述限
 root转交resource-r28p16-02第二次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED，原e5/binding和失败不改。先ffff65d2设计，新增仅APP该目录与未来LOAD mirror同名02的operator helper，APP固定f762/原23c536失败；核精确原失败、缺receipt、helper/binding/plan/unit模板与SHA、UID0/MainPID/starttick/argv/cgroup成员，两次稳定且输入未变后O_EXCL写late/not_original_start_success回执，再原status及身份复核。只等argv最多5秒，status另限10；不start/restart/stop服务。
 
 5组本地guard通过（真实文件/FD，明确模拟systemd/proc，不能冒云成功），原4个Unicode目录夹具错误gzip留原件；Ruff/安装bash-n通过。helper13123B/SHA32ce5b43…，一次安装+APP调用raw6704B/encoded+256=9196。root唯一UI，未读792/private或改产品/1030冻结；实际operator与status结果待root。
+
+
+### P16真实收尾与新F中性运行身份闭环
+
+root实际完成09:49:19 APP封尾、LOAD完整23,269,876B/SHA045fa2e0…/pull0/from0/finaltrue和两资源停机；09:54:01 P16原owned stop六角色全false/exit0/noOOM、保卷。部署仅准备封尾验证helper（3本地guard通过）但未执行；原root PUBLIC1341B/7aeb39f0…按当次明确授权只读核验。
+
+root在09:56:36新F五动作全成功，原9786B启动PUBLIC1297a015…严格CA/IP401一次，6角色Running/Restart0、scheduler absent。部署05 start-only脚本未被运行；root要求立即转纯proof。f308版静态复核发现误读原status.source_sha，在root未执行前明确拦住，60fe版只改为真实status action契约，source从精确be绑定/原idle确认，新增3个冻结状态契约/T15键集/原start链检查通过，旧版留历史，不冒云失败。
+
+root实际执行修正proof t-hz071e5fxxb8q9s成功，唯一准读4340B PUBLIC/fe122392…已核：T15 sut_identity精确18字段，worker实际配置4、HTTP主TTL3600、lifecycle running、scheduler absent；runtimeproof91f46a88…、neutral9bda817d…与原始紧凑JSON hash闭环。只含中性实际身份/公共CA，不含账号/session/provider/grant，不是完整PRIVATE输入或SUT准入；backend/独立由root转交，本岗未联系测试岗。
+
+新schema读取限root明确批准f8fe6a…PUBLIC及具体root PUBLIC单文件，未读其他792/private。没有猜项目ID或启scheduler、没有云UI/服务动作。后续实际scope到达再由root派工，当前释放部署槽位。

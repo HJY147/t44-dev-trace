@@ -673,3 +673,12 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 精确ValueError reason/缺receipt才继续；私有文件集合/完整hash、原unit/plan/argv/保护模板、MainPID/UID四值0、cgroupv2归属/member与proc starttick均核。最多5秒等argv，只允许同PID/starttick/cgroup，两次稳定/重核输入后固定FD O_EXCL/NOFOLLOW/fsync late回执，明确not_original_start_success。再原controller status（10秒上限）及身份复核，晚到失败保留late和原拒绝，不补造原start通过。无start/restart/stop服务命令。
 - 5组本地守卫通过：真实fixture文件/FD/不覆盖与明确模拟Linux观察，APP/LOAD成功及其他错误/已有回执/外部目录/unit变化/PID切换/argv超时/UID/cgroup/member/status失败。首轮4失败来自原unit生成器拒绝项目Unicode路径；仅动态fixture目录由ASCII模板替换，冻结代码未改，原XML逐字gzip保留。首Ruff发现测试闭包未绑定循环值，显式绑定后格式/Ruff及5组重新通过，不noqa压警告。
 - helper13123B/SHA32ce5b43b3a9a38bb26e4005f17047236dfb3aa2d8198b6a79f5a2833e079941，一次安装+APP调用raw6704/encoded+256=9196；安装独占新helper路径，根负责实际云执行。未读792/private、未改产品/1030/原记录或操作云服务。
+
+## 10:30窗口P16收尾与新F中性身份最终交付
+
+- root09:46派小命令；0c771339先设计。最初只读root原PUBLIC generation/owner字段，随后仅按当次明确授权核T15 PUBLIC f8fe6a…、6830B init ba480…、9786B F原start1297a015…和4340B最终neutral fe122392…、1341B P16stop7aeb39f0…，没有读其他792/private/runtime文件。
+- 资源验证helper本地3guard过（原source/header/final-prefix/全SHA、缺值保留、wrong hash/partial/raw tamper/symlink拒绝），但root已实际原CLI封尾23,269,876B/045fa2e0…、镜像pull0/from0/finaltrue与两进程停止；root09:54:01保卷停P16，六owned全false/exit0/noOOM。本岗准备1/3/4收尾脚本未用，不重复实际stop。
+- 紧急05F-only脚本3472B先交9f535122；root已有自己的实际提交09:56:36五动作22秒成功，不运行本岗start。实际GEN4672/F be1975/sourcea12，TLS CA/IP401一次、6role Running/Restart0；scheduler absent等真实scope，F无seed、5账号provider负责，不推定独立准入。
+- 纯06proof初f308有原status无source_sha的适配错误，静态阅读实际冻结operate发现后先通知root暂缓，再60fe一行改status action；root确认旧版未执行。3个真实冻结status返回shape/T1518字段/原9786B五动作哈希检查过。新脚本8487B/SHA89693d79…仅status/实际Config.Cmd4和筛TTL/CA/同一actualCID，Env仅服务器内存筛TTL不输出或保存，旧代码/绑定不改，独占新F-neutral-runtime-01。
+- root实际t-hz071e5fxxb8q9s成功，明确授权的最终PUBLIC4340B SHAfe122392…已核并对T15常量/模式/18键、本地compact原neutral hash校验：runtimeproof91f46a88…/neutral9bda817d…、worker4、TTL3600、Running、scheduler absent。只中性元数据，非账号会话、非完整PRIVATE输入、非SUTgrant；root转交backend/独立，本岗不与tester通信。
+- 完成本岗四件留痕并释放槽位，无云UI/信号/账号/产品操作；不猜scheduler项目IDs，等待实际scope后才另领任务。
