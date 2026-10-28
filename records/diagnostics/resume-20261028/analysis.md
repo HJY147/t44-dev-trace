@@ -4,12 +4,14 @@
 
 七个writer均有唯一final、selected=written、无cap skip/observer error。80/400/800/8000四个UTC窗口行数分别与客户端完成数一致，400组每操作2000行，没有request ID不匹配。全文件11284请求包括准备/其他窗口，不能全算400性能样本。汇总的配对方法是NTP UTC窗口而非客户端request-ID join；不能跨分位相减推导网络，也不能把inclusive阶段相加。
 
-| 400组操作 | body到handler P95 ms | handler P95 ms | pool queue两次合计P95 ms | cursor执行合计P95 ms | API校验P95 ms | handler线程CPU P95 ms |
+| 400组操作 | body到handler P95 ms | handler P95 ms | pool queue每请求合计P95 ms | cursor执行合计P95 ms | API校验P95 ms | handler线程CPU P95 ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | getTask | 931.371 | 727.122 | 624.891 | 95.455 | 1.465 | 11.211 |
 | validateContractPayload | 646.254 | 629.888 | 570.879 | 57.536 | 1.488 | 7.641 |
 | transitionTask | 690.592 | 1080.757 | 749.341 | 373.199 | 1.935 | 23.851 |
 | createEscalation | 1002.105 | 1022.224 | 734.684 | 314.554 | 1.220 | 19.575 |
+
+get/transition/escalation每请求pool queue调用两次，validateContractPayload的专用Runtime路径仅一次，表内均为该请求真实调用的累计值。初稿标题误统称“两次合计”，在后端交叉核对后改正，未改原汇总。
 
 这些是观察到的等待，不是完整因果根因证明。body到handler含中间件/提交/线程调度等，pool queue的inclusive wall也可能包含OS/GIL调度延迟。每worker单次观测checkedout峰15，对应当前pool5+overflow10上限，但不能据峰值断言七个池同时饱和。cursor wall不是纯数据库服务时间/锁等待。API校验耗时相对很小，因此不重复旧cache/ref/wire原型。
 
