@@ -512,3 +512,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 ### 新纳入旧factory的E731
 
 真实组合CI40636976337/static122646082416（root转交）发现旧app-campaign.py赋值lambda。先fda70d33设计，再仅改同闭包局部def；精确历史daaf版与新repo版F4/P7/P16完整compose/TLS输出、映射访问次序及KeyError对照相同，加原保护13项通过，CI同配置同范围Ruff通过。新repo helper为c0358a0b43479a7695d8d6503393cee728611354882f3e380bb0e4c70dc365c8；云端旧daaf、四派生模板和绑定不改、不重装。首轮2个夹具错误XML原字节gzip保留；不是云失败。本次未跑完整CI、产品或云。
+
+
+### P7/P16资源与新P16命令计划（未执行）
+
+root原双机Running/P7已idle6-role的事实由其转交PUBLIC工作回执；本岗只读指定4份，不读792或private。先e17e3897设计，再写27个精确argv/节点/helperSHA/余窗和P16新namespace端口；31项本地校核通过，实际纯派生helper逐字SHA等于root已执行fd7d/3d9f，真实argparse解析后在dispatch前中止，未运行云动作。PUBLIC回执当时未Git提交，源hash/状态另记，不冒已发表commit。
+
+P7采集保留scheduler missing/null；先APP collector/LOAD offset0 mirror再warmup，seal/收全tail后stop、保卷停P7再P16 infra，避免双臂limits叠加。原07:30Z不延，07:20Z后SUT新操作因600秒门禁拒绝，cleanup不受未来余窗门禁。新P16同源/seed44/anchor04Z，正式7-role/600秒仅另列未执行方案，待root真实7vs16结果；未预填数值、根因或达标。
