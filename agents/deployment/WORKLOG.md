@@ -639,3 +639,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 
 - 新derive-resume-profile先核旧四模板完整SHA和每次替换精确前像数量，root显式新源/截止后写全新profile。真实Git源数量动态进入完整实际文件检查，原依赖/REST/DDL/schema.py/前端等字节检查不放宽；新builder→generation→resource/receiver SHA闭环。16项本地guard绿，含真实22f源打包五文件ZIP/receiver与动态49文件保护；22f仅工具验证，不预选最终源。profile还未为最终新产品生成，也未云运行。
 - profile实现第一轮Ruff提示timezone UTC别名及exec；改用精确SHA审核模块的importlib加载（不导入产品），Python3.10 timezone兼容用局部说明，测试使用实际3.12依赖环境，之后Ruff绿。原4模板SHA未改。summary首失败XML有4处pytest traceback尾空格，阶段cached diff-check实exit2而后提交；现明确归档原件例外，不改原XML、不声称全局diff-check零警告。
+
+## 2026-10-28 已合入运维factory的E731修复
+
+- root转交真实组合CI40636976337/static122646082416的新纳入旧app-campaign.py局部lambda E731。先fda70d33设计留痕，再仅将同作用域`image=lambda`改为局部def，捕获同一images映射、不改配置输出或其他逻辑。逐字差分确认只这一处替换；不加noqa或扩大排除。
+- 固定历史fb0里的原helper SHA daaf29…，对照新repo文件F4/P7/P16全compose与TLS输出相同，动态映射读取顺序和缺别名KeyError相同；加既有806保护13项真实通过。CI原配置/原范围Ruff全过。没有跑完整产品/CI或云。
+- 新等价夹具首轮2失败：本岗误估别名访问>5（真实为backend/mysql/rabbitmq/web/nginx各一次），以及误以为diagnostic-overlay有FACTORY_SHA常量。原字节XML经gzip逐字回解一致保留，修夹具为真实历史顺序和实际generation pin；没有修改工具断言目标来容忍输出差异。首轮资料定位曾猜不存在的CI配置路径，改读实际scripts/ci/static.py和ruff.toml，不作为产品失败。
+- 新repo helper SHA单独记录于factory-syntax-metadata.json；云端原daaf factory、旧phase factory、四个派生模板与旧binding不改、不安装新文件到旧路径。root转交新profile工件40637080936/source a12e9e70/CIhead569baa96成功仅作关联，不冒本岗取证或回写其身份。

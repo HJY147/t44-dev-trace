@@ -507,3 +507,8 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 旧21Z截止已过，不能直接重开旧controller。只读summary导出器已实现：固定66110字节与批准SHA、每块≤12000字符、全部SHA链、本机独占新文件；12项本地检查通过，原夹具2失败XML保留。一次安装并首块脚本3679字节供root审阅。尚无云执行、新源build或性能结论；新profile参数化继续准备。见deployment/cloud-reuse/RESUME-20261028-STEPS.md及agents/deployment/resume-20261028/design.md。
 
 新profile派生器已完成，16项本地检查通过：明确完整Git源与新30分钟至12小时UTC窗口、原模板精确SHA/前像、真实完整文件数、builder→generation→resource SHA链、原935依赖/REST/DDL/前端等字节保护、新receiver五文件包核验。实际本地Git22f打包/接收检查通过，但22f不预设为本轮最终源；没有云build/新phase/连续资源执行。原首失败XML尾空格导致一次cached diff-check exit2，作为原始证据例外保留，未以提交成功冒检查全绿。
+
+
+### 新纳入旧factory的E731
+
+真实组合CI40636976337/static122646082416（root转交）发现旧app-campaign.py赋值lambda。先fda70d33设计，再仅改同闭包局部def；精确历史daaf版与新repo版F4/P7/P16完整compose/TLS输出、映射访问次序及KeyError对照相同，加原保护13项通过，CI同配置同范围Ruff通过。新repo helper为c0358a0b43479a7695d8d6503393cee728611354882f3e380bb0e4c70dc365c8；云端旧daaf、四派生模板和绑定不改、不重装。首轮2个夹具错误XML原字节gzip保留；不是云失败。本次未跑完整CI、产品或云。
