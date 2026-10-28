@@ -1,0 +1,21 @@
+# ROLE-deployment-CLOUD-REUSE-20261025-v1
+
+root AI协调要求：本岗只写本地可审脚本/配置/CI，不抢UI、不触live云；用户要同两实例复用和100元费用边界，不释放重买。先只读probe，再Ubuntu22官方包（保原安全组件），官方固定镜像CI离线artifact，严格私网TLS、独立project/schema/真实source，服务hardstop与root费用责任分开；不读独立私有case或成绩。
+
+优化原因：旧工具硬绑10月24日源/时间/Ubuntu24不可直接改全局续跑；新物化必须准确input/manifest/hash与旧记录分离。网络下载受阻用可信官方CI运输，不用未知镜像源。Ubuntu22默认Python不同，工具runtime能力需实际观测。
+
+实际执行与结果：先本地probe/packages/设计与语法编译，后续script/CI真实结果单独补，不预填安装、部署、覆盖或600秒通过。操作者与决策者是AI岗位，不记为学生亲历。
+
+实际AI调试追加：root在官方云助手取得app exit141/aptupdate成功，要求不重买、保留raw、限定修pipefail早退出。部署AI只读授权单文件并用synthetic大输出复现141，完整消费awk/全捕获dpkg查询后离线0，不冒云重跑已成功/用户亲历。
+
+关键AI质量约束实际演进：root遇Docker29 ID不同，不准删镜像/改daemon/跳ID，05输出被截断不冒全量；部署改用原已核archive中完整manifest→config→layer真实SHA/size/DiffID链，classic对比保留，13恶意改动反例与真实双节点proof区分。后续App profile新CA/账户、持久ownedtimer先准备，不等fixture/不冒启动；未来升级必须清旧t44目录再完整COPY并集合hash比对，不拿935绿套新源。均AI过程，不是学生手写感想。
+
+真实补充约束：parent指出805需要crypto且测试OS不可见SUT，部署离线双stage只COPYsitepackages/freshPython清PYTHONPATH并实际findspec/path/crypto探针；新runtimeId独立，不冒旧officialID。PUBLIC清单格式被部署先前假设为sha256sum（603未执行），root指出真实JSONfreeze，V3只读批准PUBLIC公式后校canonical不改包；原82/603保留。810与backend直接明确无packet/twoPUBLIC/env精确字段，新profile保旧base/timer不变，CA键缺失明确纠正而不是猜字段。root真云回执与本地pureguard/未读私有结果严格区分。
+
+真实新prompt（root AI协调）要求固定f4源、935镜像离线增量、全删旧t44避免commands.py残留、完整archive/文件集/hash、依赖/REST/DDL/web相同才复用，不新开VM/重下旧包。本岗据此固定source与base并将原web构建支持也纳入逐文件比较，初步source保留、新source-v2另写；本地21guard与prepare成功、未做云build分别记录。此为AI过程留痕，不伪装学生手写经历。
+
+真实质量把关：部署静态复核发现自身6609目录权限边界，即刻告root不做云build，原版/首工件保留，V2另文件/清单/工件；新增实际umask077遍历权限guard。root要求TLS不能只看APIrunning，给真实readonly日志后，部署另新overlay修tmp并要求真实CA+IP 401，root执行成功才记事实；未将网络错误猜成产品性能、未关闭verify或修改旧freeze。均AI调试留痕，不是学生个人手写。
+
+新root prompt要求f4独立generation、原entry、真实container全53核、不改旧三binding、所有负载≤21Z、独立systemd资源raw与私网单路径mirror。本岗先设计后实现generation，自身guard指令名错误保首失败纠正，遥测代码尚待后续，不冒执行事实。
+
+连续资源prompt执行：原始区间要在warmup前启动而非after-only snapshot；CPU按cgroup累计us与同机mono求差，RSS和memory.current语义分开；身份/bytecap/finaltail/hash、单路径私网TLS nonce、独立systemd不依赖前台。用synthetic真实loopback TLS＋恶意offset/hash/文件替换反例验证，未读独立799/800或私有用例，不预填云采样/达标。

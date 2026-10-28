@@ -454,3 +454,54 @@ source935 campaign8现已idle运行，F18098四worker/P18099七worker/newCA/vhos
 source935 campaign8 F阶段已按root停止条件正常结束，10:39:45所有actual最后角色/API4workers/tracker/MQ/EPMD/guardians absent，app watchdog三角色均forced=false；6件身份原件SHA不变、数据/raw全保留。端口后验与10:40:11复核24398仍bind false，其余free，原false保留不猜因，未操作unknown。P、采样器435、共享MySQL7980和rootprovider未触碰，也未新起F；不由停止事实推出独立业务验收结论。见round8/functional-phase-end-{stop,port-recheck}.json。
 
 后续独立只读重核2026-10-25T10:40:56.264UTC：全部14指定F端口bind-free，早先两份24398 false未修改/删除。lsof对24398 LISTEN实查exit1无records；不推测占用原因，未发额外信号。最终端口证据另存functional-phase-end-port-final.json，P/MySQL/sampler未碰。
+
+## source935 campaign8 P单次runner结束收尾（资源事实）
+
+root仅传停止条件，不传测试内容。先只读确认root sampler-stop5e74e284e3704da4afac24c634428273成功，11:04:55 controller-stop c970b631c8fa482b97a1c496483353a2成功且scheduler/consumer/API均forced=false，不重复根入口、不覆写原输出。随后仅核UID/lstart/PGID/argv SHA后正常SIGTERM剩余appguardian99782和broker guardian99428。11:06:14全部P owned API7workers/tracker/consumer/scheduler3800/Rabbit/EPMD/sampler435/两guardian absent，aftercheck712d2fc2a90543178bd225b6cd0f0ecd，首次14端口全部bind-free；稍后只读重核另档，原首次结果/所有旧false保留。
+
+六件controller/manifest/applicationbinding/artifact/nativebuild SHA不变，actual application sourcefiles再次逐件核，935实际archive0fe9ae8cdb0684d272f54e22b574b9bc1bbe8b820c213b476bb6a6049d879138再核一致，数据/全部原始日志保留。actual interval-final60a8c633daee49df8cf6db49d42316ec：raw8301045bytes/SHA3821564cd1d160cd79f9c66dbdf0facf1907de44e152a750e6a8fee8cc6036f9、16284rows、10:19:39.733065至11:04:52.735388UTC，真实完整raw再核留在原ignored目录，另两guardian raw闭合SHA/bytes列档；collection_completed不是独立测试、资源coverage、瓶颈或性能通过。
+
+不读任何tmp814/817/818/829等独立资料，不解释测试根因，不动MySQL7980/旧F数据及环境，不开新服务。完整root原stop、guardian收尾与rawmetadata见round8/performance-phase-end-stop.json，原final副本performance-interval-final.json；提示词ROLE-deployment-NATIVE-CAMPAIGN8-20261025-v1追加此AI停止流程，不冒用户亲历。
+
+## 同实例复用云准备
+
+新阶段仅本地设计/probe/packages脚本，root经官方云助手执行，本岗不碰UI/云服务。只读probe含最小硬件/软件/时钟/FD/磁盘/云助手/网络字段；安装仅临时Ubuntu官方签名源，保安全组件，Ubuntu22不假称原生Python3.12。可信镜像CI离线运输和精确source/image绑定、私网TLS、持久ownedstop/账单责任见agents/deployment/cloud-reuse-20261025/design.md；语法/compile不是云安装或性能证明。
+
+离线镜像CI路线已实现但尚未运行：准确source/context/hash、5官方固定镜像与2app镜像实际ID、manifest、save/gzip/artifact、加载完整校验与neverpull overlay，细节见cloud-reuse README。8项离线安全guard通过（0.13s），不能等同真实Docker build/load。root relay app16CPU/Ubuntu22/Python3.10匹配准备脚本；06:00延期成功属于rootUI实核转述，不作为本岗云执行。
+
+Ubuntu22首轮实际失败由root转述：app invoke20s exit141，apt官方update下载成功但无Candidate marker；本岗只读获授权的单一app-packages-first-failure.log，3502bytes/SHA24666301...，末Reading package lists.../0Candidate，原raw保留。旧awk找到Candidate就exit，在pipefail下早关管道；用2.4MBsynthetic policy真实复现旧管道141，改成只输出第一次但完整消费后0，2项guard0.10s绿；同时已有Docker的dpkg-query|grep-q改完整capture。新脚本4501bytes/SHA c2c32139...、bash-n绿；没有以离线复现夸称云端精确失败指令trace（raw未含trace），未操作dpkg/云或释放重买。root可同机执行新脚本，真实重跑结果待root。
+
+Docker29 identity语义问题已通过严格OCI链解决环境证明，非忽略ID：原CIconfig SHA、实际manifestDescriptor SHA、所有layer/解压diffIDs和labels/架构逐项cryptoproven。13项离线guard与root真实双机all7summary分开，完整50k原raw未由部署回收审阅。新V2accept不重复load、旧0a1/3c599/7905保持；设计见cloud-reuse-20261025/image-proof-design。App独立F/P Compose/strictTLS/新随机DB/env/持久timer本地6guard，操作步骤见deployment/cloud-reuse/APP-STEPS.md，真实app执行仍待root，不预填业务/coverage/600。
+
+## 同机复用：工具OS隔离与观测profile
+
+root实际app prepare/arm/infra/migrate/P seed与7worker factory up成功，F只prepare未启；root回执与SHA见cloud-reuse-20261025/root-runtime-checkpoints.json，本岗无云操作、未读driver或私有/密封结果。原770d/env/compose/timer未改，新factory profile56d78...明确不是productionentry；CA接口发现binding.tls不含ca_path，已告两岗只用prepare receipt路径+ca_sha核，不杜撰字段。
+
+ROOT805工具依赖crypto，82e4初版不执行；新f30 runtime只从已证明backend935 COPY sitepackages到freshofficialPython，清PYTHONPATH/USER10001，实际t44spec/产品路径/appenv缺失true，Python3.12.15/crypto50.0.2/SSL3.0.22，actualId3982与新config89ced独立，绝不冒原Python身份。7本地guard0.03s。第二版603假定sha256sum manifest不符合实际frozen包，root执行前指出，代码保留未上传/执行；V3仅读批准PUBLIC FILES.json及entry.verify公式，JSON11+自身12项、bytes/SHA/canonical10b8、0555/0444，10guard0.06s，无改包或第13manifest。V3 root已prepare/start/dispatch，主容器900s/包600s，结束/collect结果尚未由本岗核，不预填。
+
+94caf diagnostic-overlay新controller同源7worker、精确两PUBLIC SHA+10DIAGENV、源RO/输出RW和保留timer，5pureguard0.04s；不接sessionpacket。与backend岗位直接核了字段、CLIadmin及CA键，不向独立tester发消息或读private cases。所有fixture/短诊断不是400/600或最终coverage/代码规模通过，后续16worker/新source升级只设计，待root准入另记录。ROLE-deployment-CLOUD-REUSE-20261025-v1追加真实AI提示与错误修正，不记学生亲历。
+
+## 同机增量镜像：准确 f4 源（本地 prepare/build-only 工具）
+
+root授权935 proven base到f4bd382d4668130793fc553df9ce6363c4656ea6，不新开/重买VM、不重运537MB。部署只做工具，未操云。实际git bytes/mode对照：lock/pyproject、两REST、DDL/schema/specs、完整frontend及API/web构建支持共47文件同字节。完整新backend/t44+两个依赖描述53源文件真实git archive，raw1259520bytes/c74c25b7...，gzip152941bytes/6fda4974...（较几十KB估计大，按真实量记录）。先前source/75fc准备记录保留；扩充web支持范围后的source-v2/6c211bc5...为最终包，完整source_package再核通过，PUBLIC清单副本和upgrade-local-prepare.json已入阶段目录。
+
+backend-upgrade.py SHA6609f859...固定源/基底/proof，不接受任意source/image；USER0真正删旧t44后全量COPY，恢复10001，none/pullfalse，无pip/download。新revision/archive/baseconfig/actualdescriptor/清单/DF标签、metadata、derived tar完整OCI链与实际临时容器文件集hash/mode核验；明确检测旧commands.py残留，保持原entry/env/工作目录与旧backend/web alias。21离线guards0.05s绿、Ruff绿，包含依赖/DDL/REST/web改变、link/traversal/重复、陈旧/缺失/内容/模式/UID/env、标签/entry改动以及manifest未信任先拒；不是Docker或业务验收。没有实际云build、新F/P服务/schema/端口/性能/代码规模结论。原app-campaign固定935，下一代控制器需新namespace/binding/全新数据库/CA/stop timer，设计写BACKEND-UPGRADE-STEPS，旧770d/diagnostic/stop锚原样。
+
+## V2权限边界、五文件接收器与实际TLS根因修复
+
+6609首工具本地prepare后、云build前，静态复查发现umask077会把mkdir0755落成0700，COPY的root子目录可能使10001无法遍历。立即告root暂停使用旧工件build；不改6609/source/source-v2/首CIrun40204335612（prepare-only）。新V2 5200显式逐级chmod0755，22guard0.05s含真实文件系统权限检查绿；source-v3 manifestcd5bae...、同archivec74/gzip6fda保留，新manifest另存，不冒云失败。workflow切V2，新工件等待root再次dispatch；不是本岗云构建。新receiver ef6e严格wholeZIP/CRC/fivefiles/noextras/link/duplicate/size，再helper5200与内safeTar/source/fullSHA，O_EXCL/fixedfd；10guards0.09s，duplicate负例有预期stdlib warning，均0fail。
+
+root先得真实host errno111/data-only errno101，随后限定TLS日志明确readonly fastcgi_temp失败（原10140B/SHA673e...保留）。本岗c345新独立TLS helper只新增三个/tmp temp，固定770d/56d78和旧controller SHA，保CA/uid101/RO/caps/网络/端口/image；先nginx-t再仅upTLS、host严格CA+IP GET401新门禁，不用APIrunning代替。10guard0.04s/Ruff绿。root已实际执行成功：nginx-t passed/strict401/attempt1/no credentials，新binding546e3...，原stop未动；本岗只收root事实不读私有/测试结果。这是TLS环境修复，不是业务/400/600验收。未来新campaign必须原模板包含全部temp与真实HTTPS门禁；旧控制器仍原样。
+
+## 新f4 generation本地实现
+
+先设计提交e8751f0e，再实现generation-f4.py SHA9c1abe...；14本地guards0.03s/Ruff绿。首1fail是本岗guard误写client_temp_path而非真实client_body_temp_path，首XML另存，修断言非放宽要求。固定5200/47b50/30b1/f4归档和真实container全53项核、原entry/F4P7、新namespace/CA/双代码binding/timer、21Z上限；nginx-t与hostCA+IP401实际门禁，startup重启/缺失真实状态保原件并失败。root已dispatch V2源run40205362084；新环境cloud prepare/start仍未发生。resource-stream目前仅设计，不冒持续采样已实现。
+
+## 连续资源raw与私网mirror实现（未云运行）
+
+resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirror，原f4 phase9c1abe pin；7role exactCID/image、cgroupv2累计CPU/mono/RSS/memory真字段、first/missing null/restart/延迟，固定FD/inode/owner/size/prefixhash/bytecap，自动/USR1 finaltail，21Z前bounded。只load私网peer＋TLS原leaf只读、单GET/raw、专用nonce/offset/chunkSHA，handoff私有无API/DB账号。load从offset0真append/wholeSHA/tail和各role实际coverage，independent verdict null，after-only包络不能冒通过。17本地checks0.10s/Ruff绿，含真实loopback TLS/CA拒绝/nonce/单路径/字节完整性；不等于云Docker/proc或跨VM持续执行。操作见RESOURCE-STREAM-STEPS；start前实际numeric预览/正式warmup前两端启动/seal后收全再stop，root另取原件。所有云进程/端口/采样区间/回收证明仍待root实操，无新账号/SG/IAM/VM动作。
+
+
+## 2026-10-28 恢复本地准备
+
+旧21Z截止已过，不能直接重开旧controller。只读summary导出器已实现：固定66110字节与批准SHA、每块≤12000字符、全部SHA链、本机独占新文件；12项本地检查通过，原夹具2失败XML保留。一次安装并首块脚本3679字节供root审阅。尚无云执行、新源build或性能结论；新profile参数化继续准备。见deployment/cloud-reuse/RESUME-20261028-STEPS.md及agents/deployment/resume-20261028/design.md。
