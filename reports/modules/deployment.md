@@ -555,3 +555,9 @@ root实际执行修正proof t-hz071e5fxxb8q9s成功，唯一准读4340B PUBLIC/f
 root实际收到项目1/escalation:write中性请求后，原GEN于10:15:50.382290Z签发服务凭据（本岗未读正文）。scheduler实际StartedAt10:15:51.146862474Z，健康启动回执10:15:57.400893Z；独立功能容器已于10:15:51.441769259Z自然退出0/noOOM。三份明确授权PUBLIC的bytes/完整SHA均已本地核实，顺序选择性保存于root-actual-scheduler-scope1-receipt.PUBLIC.json，不由时序推断失败原因。
 
 root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。进程exit0、SUT准入及调度器健康分别记录，不能代表功能或性能通过。较早neutral记录scheduler absent的事实不回写。root正保卷停F、VM仅停止不释放，实际完成待其回执；部署岗仅读指定PUBLIC、未执行云操作或读独立私证据，完成记录后释放槽位。
+
+### rows与Settings组合版本的coverage接线
+
+从fee30ae5独立工作树，仅将786_pool_settings.py及787_query_semantics.py各一次接入原完整coverage列表，保留tmp/backend、原五个补充模块、全部marker、80%行门禁和backend/t44完整分母；没有重复添加tmp/backend内7旧case。原coverage配置逐字不变，runner AST除列表外一致。
+
+实际发现浅checkout只fetch935，787收集依赖固定a12的git show；经root明确批准仅在coverage原935 fetch/完整SHA校验后加精确a12 fetch及校验。真实本地depth1克隆先缺a12时收集exit2，原1243B输出逐字gzip保留；补该对象后同克隆30项收集成功。两新模块正反顺序各61项通过、ENV和禁止MySQL连接钩子恢复，旧静态23项、CI Ruff和新增工作块bash-n通过。完整命令/bytes/SHA在pool-ci-20261028/validation.PUBLIC.json；此为本地wiring与模块验证，尚未全产品coverage/nativeMySQL/远程CI或云验证。各Settings角色新ENV及max_connections预算由下一profile显式设计。

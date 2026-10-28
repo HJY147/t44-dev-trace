@@ -2592,5 +2592,32 @@
       "private_reads": 0,
       "next": "release slot; wait root actual owned stop and independent published verdict; no duplicate commands"
     }
+  },
+  "pool_ci_20261028": {
+    "base_sha": "fee30ae5147aa36a858e694a3c9d4006e68b1101",
+    "branch": "codex/deployment-pool-ci-20261028",
+    "design": "agents/deployment/pool-ci-20261028/design.md",
+    "new_modules_once": [
+      "tmp/786_database_pool_20261028/786_pool_settings.py",
+      "tmp/787_database_select_resume_20261028/787_query_semantics.py"
+    ],
+    "old_suite_markers_threshold_denominator_unchanged": true,
+    "runner_only_list_AST_changed": true,
+    "coverage_yaml_only_exact_a12_fetch_added_after_original_935": true,
+    "shallow_missing_a12_collect_exit": 2,
+    "expected_failure_original_bytes": 1243,
+    "shallow_exact_a12_fetch_SHA_verified_collect_exit": 0,
+    "query_cases_collected": 30,
+    "new_modules_each_order_cases": 61,
+    "forward_seconds": 0.31,
+    "reverse_seconds": 0.3,
+    "ENV_and_pymysql_hook_restored_both_orders": true,
+    "old_static_unit_guards_passed": 23,
+    "CI_configured_Ruff_passed": true,
+    "coverage_bash_n_passed": true,
+    "evidence": "agents/deployment/pool-ci-20261028/validation.PUBLIC.json",
+    "full_coverage_nativeMySQL_remoteCI_Docker_or_cloud_executed": false,
+    "old_7_cases_readded_explicitly": false,
+    "next": "root merges exact SHA and runs full product/nativeMySQL/Docker; explicit role pool ENV plus actual max_connections budget remains new cloud-profile work; VMs stay stopped"
   }
 }

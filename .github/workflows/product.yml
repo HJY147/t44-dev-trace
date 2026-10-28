@@ -173,6 +173,9 @@ jobs:
           reference=935ab5b93bea788672c2b4a088c79cfeed848954
           git fetch --no-tags --depth=1 origin "$reference"
           test "$(git rev-parse "${reference}^{commit}")" = "$reference"
+          query_reference=a12e9e70b963bacafda3242bb6d82e53ee912ff1
+          git fetch --no-tags --depth=1 origin "$query_reference"
+          test "$(git rev-parse "${query_reference}^{commit}")" = "$query_reference"
           python scripts/ci/run_tests.py coverage 2>&1 | tee reports/ci/coverage/console.log
       - name: Preserve real dependency logs
         if: always()

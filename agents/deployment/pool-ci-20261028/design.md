@@ -1,0 +1,11 @@
+# Coverage接线限定设计（2026-10-28）
+
+输入是root已整合的fee30ae5147aa36a858e694a3c9d4006e68b1101，以及责任岗冻结的786_pool_settings.py与787_query_semantics.py；仅在scripts/ci/run_tests.py的OPTIMIZATION_TESTS末尾各追加一次。保留tmp/backend整套、原五个补充模块、contract/integration/fault选择器、拒空/跳过/失败门禁、80%行覆盖率与所有backend/t44源文件分母，不再显式添加已属于tmp/backend的7个旧case。
+
+786局部autouse fixture逐case清理五个相关ENV并用monkeypatch回滚，mock禁止MySQL连接；787使用新临时SQLite文件与独立命名的a12历史模块，无外部DB。本地实际按两个模块的正反顺序运行，并核调用前后相关ENV与pymysql.connect身份相同，不需要改测试或CI服务ENV。完整coverage只接入这两模块，不为其另造分母或成功计数。
+
+发现787在收集阶段git show固定a12，而现coverage浅克隆仅fetch935。已告root需要保持935并追加a12的完整SHA fetch/校验；此workflow在初始scripts/ci范围之外，先由root负责或等待明确授权，不能把本机已有历史对象当CI前置已满足。
+
+验证只做AST差分接线守卫、目标模块真实收集/运行和环境回滚，以及原CI静态单元/Ruff。没有真实MySQL/RabbitMQ、全coverage、远程CI、Docker或云动作；root后续合并精确SHA后另行完整验证。新ENV应用全部Settings角色，云profile各角色显式值与actual max_connections预算属于后续任务，不在此接线中默认选择。
+
+实施前root另明确授权：仅coverage job在原935 fetch与SHA校验后，追加精确a12定向fetch与同等完整SHA校验；不得改变token/权限/其他job/基线断言。实际验证使用本地file传输的真实浅克隆，先保留缺a12时目标收集失败原始输出，再补同一对象核SHA并重收集；不是远程GitHub CI执行。
