@@ -599,3 +599,17 @@ AI reviewer，ROLE-reviewer-ROUND9-v1；从043fc464建独立worktree。精确c4b
 实际派工 ROLE-reviewer-DATABASE-RESUME-20261028-v1；base22f666e25d2b7280224e58eb1c91cf6be0077ac7、production26d6328ab882b06eb9f6026a29656999e122f57d、checkpoint3d0dff7d91bd83b6ca73af585371b44b179d2c3a。在独立worktree核 AGENTS、字段字典、冻结DDL与实际产品diff；产品仅migrations.py +75/-1，production/checkpoint产品及测试blob一致。无新窄scope代码阻断，先向root交集成/受影响门禁候选结论，非合并/验收/发布通过。
 
 自己从冻结DDL物理行解析18表226列146索引列59CHECK，首次离线5组探针exit0且stderr空，含全量226原生列快照对照、PRIMARY方向、额外非唯一辅助索引、目录异常关闭。指定既有解释器执行，无真实MySQL/完整测试/云/CI/账号/浏览器/无关DB动作，未读解释器相邻env/log/DB。开发after-static原始回执31/31和4文件hash重算同源26d6328a，只作为owner运行证据；旧before7漏判/旧bandit1发现保留。source-count-static within_range=false仍全局门禁未过。没有产品/测试修改，无独立私件/用例/密钥读取，无开发/测试联系。报告及原始证据见reports/reviews/database-resume-20261028-26d6328ab882b06eb9f6026a29656999e122f57d.md与agents/reviewer/evidence/database-resume-20261028。
+
+技术资料ea26b8fb5e540441c20d55af13f177a93c6ee67a已push，git ls-remote精确同且工作区干净；无GitHub评论/状态。publication.json记录回读事实；不改变限定准入结论，封存后释放槽。
+
+## 2026-10-28 790开发对照工具限定审核
+
+ROLE-reviewer-CONTRAST790-20261028-v1；只gitshow2a832920全包/设计/manifest及324d16daLOAD，未读backend未提交或独立792/799/800/805。发现并先交root两P2：R790-STOP-01准备阶段S1原CLI/S2 HTTP派发前未重新核07:30硬截止；R790-STOP-02首worker失败没有共享abort，其余同cohort继续写入。一次无网络原函数探针exit0/stderr空，过期Client.call仍合成派发1次并成功，先失败后另worker仍完成4项。manifest6文件/LOADhash同、3host3.10语法可解析。无产品/云/DB/CLI/TLS/全套测试执行，不改产品/工具，不联系开发/测试。原版本edge/LOAD不准入，修复须新SHA复审；O_EXCL、data/edge隔离、441配对和0/1/41slot边界静态未见其他阻断。正式7role/600秒/两臂公平与真实TLS均未验证。报告reports/reviews/contrast790-2a832920-324d16da-20261028.md，证据agents/reviewer/evidence/contrast790-20261028。
+
+790工具阻断技术资料99f30a0fa7a64e16c20050e5fe62ed27c79a5674已push，远端精确同；publication.json留痕。没有发布外部评论/状态，旧2a/324阻断结论保持，新修复需另给精确SHA复审。
+
+## 2026-10-28 790v2 STOP01/02限定复核
+
+ROLE-reviewer-CONTRAST790-V2-20261028-v1；精确6f5698f2d2df04a2347b893c55d93cb9c3063aa9。原两P2在代码上闭合：S1 CLI/S2 Client/host和LOAD剩余窗守卫与timeout，shared abort传worker/Client并首错设置；在途读取真实结果但下一派发禁止，不称回滚。一次无网络最小闭环exit0/stderr空，manifest640b3d七文件hash同，33唯一owner XML无红错skip、原14红gzip与a43原件逐字同；不重跑全套，不跑TLS/HTTP/云/负载/产品。先向root交完整v2七文件限定6role可执行，正式7role/600秒/性能未验证。新增R790-DOC-01：runbook第5步旧LOAD01b/旧load-delivery覆盖指令拒绝，实际只用manifest内a7a2新LOAD；文档修正待owner。未读独立私件/后端未提交或联系开发测试。报告reports/reviews/contrast790-v2-6f5698f2-20261028.md及evidence/contrast790-v2-20261028。
+
+790v2文档追补：实核4ca7f908修runbook第5步为完整v2新目录，LOAD10279/a7a2并禁止旧覆盖，P7已seed跳过bootstrap。25a1fb5a相对6f七执行文件/manifest无差异，blob159f22f6同；R790-DOC-01关闭，旧6f问题记录保留。另复算5份proof SHA及a43原红7个test函数AST同，未新增测试/云/负载执行。技术资料7bf48cc7a57eaf1357425fabf2d33ba6bb70d214已push且远端核同；publication与doc01-closure回执封存。三发现均关闭，仅完整v2七文件6role开发诊断准入，非正式验收/性能通过。
