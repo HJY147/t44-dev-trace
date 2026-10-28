@@ -377,3 +377,12 @@ P7精确PUBLIC已核hash：400客户端8000完成/零HTTP与客户端错误，�
 本岗没有运行真实服务器raw、云UI、负载、MySQL、整套CI或独立验收，根因NOT_PROVEN。完整输入输出/命令/限制与prompt见agents/backend/resource-window-20261028/report.md、verification.json、prompt.md。P16公共结果待协调发布，需其将实际输出与精确raw SHA及窗口绑定。
 
 后续root实际LOAD聚合PUBLIC8491B/SHA94e7b031…已精确核窗口/raw绑定：各role22样本、21knownpair/0内部缺口/0采样错；API CPU P95/最大1016.408952/1208.942075%，MySQL153.853657/159.899578%，scheduler三指标全null。数据和统计限制追加于本岗report；只读公开输出核实，未在本岗独立重算raw，因果和正式验收仍未证明。
+
+
+## 2026-10-28 a12 CPU诊断与零增行数据库候选
+
+准确a12导出51文件逐Gitblob核对，在新SQLite+原生产SQLAlchemy/UoW/FastAPI实际worker完成135 HTTP，27准备与80无profile/20profile/4warm/4shape明确分开；全成功/原schema再核，阻断网络MySQL尝试0。get/contract/transition CPU中位7.581/4.330/20.398ms只是Mac/SQLite开发事实，非P7或正式性能。profile函数exclusive分组及完整inclusive调用树归档，不加重叠CPU/P95。
+
+profile指向SQLAlchemy表达式/缓存键构造的重复调用；root准入后纯原型tuple(t.c)→(t,)只一AST节点，18表99case×2方言198完整SQL/绑定/结果列/锁分页/拒绝签名一致；无profiler构建ABBA A1/B1=1.291153倍、A2/B2=1.320592倍，约每条5us，未做候选HTTP/DB运行。预计净0有效行，生产未改，由root转DB岗审查/回归；不删鉴权/RC/锁/审计/幂等，不复活旧失败路线。
+
+本轮未访问云UI、原生MySQL、tmp796/792私密或测试用例；无产品CI/独立验收/云成绩。报告与可复核完整压缩原件见agents/backend/cpu-profile-20261028/report.md、raw-manifest.json、summary.json、verification.json，prompt为ROLE-backend-CPU-PROFILE-20261028-v1。

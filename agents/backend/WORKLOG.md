@@ -615,3 +615,14 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 初次rg文件名枚举意外显示792私有路径名称，未打开/读内容；后续限制为独立树Git受控文件和明确白名单。未访问云UI、未执行服务器raw聚合/产品CI/MySQL/云负载/独立验收。采样器与PUBLIC原件不改。报告与真实命令输出见agents/backend/resource-window-20261028/。P16公共结果待总协调发布，瓶颈NOT_PROVEN。
 
 后续实际PUBLIC8491B/SHA94e7b031…已核，root服务器运行的P7聚合与准确raw/window一致，各role22样本；API CPU P95/最大1016.408952/1208.942075%，MySQL153.853657/159.899578%，scheduler全null。详见p7-resource-derived.json/linkage回执；本岗仅读输出未重算raw，不将资源相关性当因果/验收。
+
+
+## 2026-10-28 a12 Python CPU真实请求诊断与纯构建候选
+
+操作者backend AI，提示词ROLE-backend-CPU-PROFILE-20261028-v1；先写design，准确a12导出51产品文件逐Gitblob核对，独立venv按原锁hash装67依赖；复用834开发夹具的全新SQLite/生产SQLAlchemy/UoW/真实FastAPI worker，不运行测试用例或旧实验。实际135 HTTP：27准备、4预热、80无profiler计时、20独立cProfile、4shape，全部成功且原冻结响应schema再核；网络/MySQL阻断计数0，不读.env/tmp796/792，不上云UI。
+
+四路径get/list20/contract/transition无profile handlerCPU中位7.580688/31.396083/4.329709/20.397834ms；profile阶段单列，不外推MySQL或P7/400/600。profile与shape实证get两鉴权9rows、contract一鉴权4rows、transition三鉴权/shape21rows及SQLAlchemy表达式/缓存键构造调用；大列表schema遍历显著但不是P7工作负载，不复活旧schema缓存/委托/OperationPlan路线。
+
+经root明确后续准入，只在纯临时函数将RowsGateway.rows默认tuple(t.c)换(t,)：SQLAlchemy select(table)同全列。18表/99case/双dialect共198对SQL+params+列布局/拒绝完全相同，AST只改一节点；无DB/HTTP候选运行，产品零改，预计净0有效行。无profiler纯构建ABBA median A1/B1/B2/A2=21.665/16.77958/16.01333/21.14708us每语句；比值1.291153/1.320592，只有每条约5us，不称整体HTTP改善或因果根因。交root转DB岗审/实库回归，不改当前a12 P7/P16对照。
+
+baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+双hash/roundtrip；三工具check/format绿。首次summary有2 E702静态红，修后执行派生；Starlette httpx deprecated warning保留。没有重跑产品全CI/独立验收/原生MySQL/云负载。完整原件、统计、guard与prompt见agents/backend/cpu-profile-20261028。

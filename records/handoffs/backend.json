@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "p7-public-analysis-and-resource-window-tool-awaiting-server-execution",
-  "implementation_status": "read-only diagnostic tool and four synthetic CLI methods verified; P7 request metrics offline audited; no server raw aggregation/cloud load/product CI/independent acceptance by this role",
+  "stage": "a12-local-cpu-profile-and-zero-line-core-expression-candidate-awaiting-DB-owner-review",
+  "implementation_status": "135 fresh-SQLite HTTP diagnostics and198 pure dialect signature pairs complete; pure construction ABBA observed; production and cloud unchanged; DB owner implementation/MySQL regression pending",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -242,6 +242,42 @@
     {
       "path": "agents/backend/resource-window-20261028/prompt.md",
       "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/profile/diagnose.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/query_candidate.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/summarize.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/design.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/report.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/summary.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/verification.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "status": "actual development diagnostic, not acceptance"
     }
   ],
   "interfaces": [
@@ -411,6 +447,10 @@
     {
       "command": "python3 tmp/788/check_resource_window.py; uvx --from ruff==0.17.2 ruff check/format --check --config scripts/ci/ruff.toml tmp/788/{resource_window,check_resource_window}.py",
       "result": "4 unittest methods pass; ruff check and format check pass; original missing module and initial six lint failures recorded; see task-specific command evidence"
+    },
+    {
+      "command": "uv venv/pip sync --require-hashes; diagnose.py --run; query_candidate.py --run; summarize.py; ruff check/format --check",
+      "result": "135 HTTP successful incl27setup; 198 pure MySQL/SQLite signature pairs equal; ABBA construction median observed; three tools final static checks pass; raw command/data/hash evidence in agents/backend/cpu-profile-20261028"
     }
   ],
   "results": [
@@ -428,13 +468,15 @@
     "领域依赖只在start、unblock到develop、rework三处检查，reject_review不新增守卫，上游回滚不自动改下游",
     "106项领域单元通过，Ruff/格式/Bandit通过；仅领域覆盖约98%，不是HTTP/集成/独立验收",
     "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行",
-    "P7 observed8000, zeroHTTP/clienterror but per-pathP95>270ms; started21.890740s vs barrier21.742456s explicitly separated; no formal pass inferred"
+    "P7 observed8000, zeroHTTP/clienterror but per-pathP95>270ms; started21.890740s vs barrier21.742456s explicitly separated; no formal pass inferred",
+    "select(table) one-expression pure candidate predicts0 effective lines and observed~5us lower statement-construction CPU; no candidate HTTP/MySQL/cloud benefit proven"
   ],
   "unverified": [
     "independent retest",
     "performance thresholds",
     "final source range",
-    "P7/P16 real server resource-window aggregation and formal performance not executed by this role; P16 public matrix pending coordinator"
+    "P7/P16 real server resource-window aggregation and formal performance not executed by this role; P16 public matrix pending coordinator",
+    "DB owner adoption and real isolated MySQL rows/locks/regressions; query candidate HTTP performance; cloud400/600 and causal root remain unproven"
   ],
   "questions": [
     {
@@ -627,9 +669,19 @@
         "tmp/788/resource_window.py",
         "agents/backend/resource-window-20261028"
       ]
+    },
+    {
+      "id": "ROLE-backend-CPU-PROFILE-20261028-v1",
+      "source": "actual coordinator local-profile dispatch plus explicit pure-equivalence/ABBA followup, executed",
+      "task_path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "human_code_edit": false,
+      "outputs": [
+        "tmp/788/profile",
+        "agents/backend/cpu-profile-20261028"
+      ]
     }
   ],
-  "updated_at": "2026-10-28T06:52:23.956478+00:00",
+  "updated_at": "2026-10-28T08:48:51.674482+00:00",
   "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -2212,6 +2264,11 @@
       "incoming_stage": "p7-public-analysis-read-only-resource-window-tool",
       "incoming_evidence": "agents/backend/resource-window-20261028/verification.json",
       "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "p7-public-analysis-and-resource-window-tool-awaiting-server-execution",
+      "incoming_stage": "a12-cpu-profile-and-pure-core-expression-candidate",
+      "both_stage_artifacts_preserved": true
     }
   ],
   "performance_20261025": {
@@ -2493,5 +2550,33 @@
       "api_cpu_max_percent": 1208.9420749197743,
       "scheduler_metrics": null
     }
+  },
+  "cpu_profile_20261028": {
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "source_files_verified": 51,
+    "role": "backend AI",
+    "report": "agents/backend/cpu-profile-20261028/report.md",
+    "verification": "agents/backend/cpu-profile-20261028/verification.json",
+    "raw_manifest": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+    "baseline_raw_sha256": "0df044fba87bfe581125774ca2bc7006e76d34bb8b8f7b4b5f8ba4e9db5e532e",
+    "query_raw_sha256": "03876a7501eb0e2b9fe9f1a346c7dc42a7e2b9fb9a851dd68d1646b00c128462",
+    "HTTP_total": 135,
+    "setup": 27,
+    "profiled": 20,
+    "measured_unprofiled": 80,
+    "pure_signature_pairs_equal": 198,
+    "pure_ABBA_us_per_stmt": [
+      21.665,
+      16.77958,
+      16.01333,
+      21.14708
+    ],
+    "expected_net_effective_lines": 0,
+    "product_changes": 0,
+    "candidate_HTTP_DB_run": false,
+    "formal_acceptance": false,
+    "root_cause": "NOT_PROVEN",
+    "next_owner": "coordinator to database owner review/implementation/regression",
+    "prompt": "ROLE-backend-CPU-PROFILE-20261028-v1"
   }
 }
