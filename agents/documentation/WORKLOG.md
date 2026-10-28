@@ -444,3 +444,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - a12 product40636976337实际FAIL（static E731），其余3jobSUCCESS；backend714唯一JUnit/0failure/error/skip，行2508/2790、分支709/852与混合88.33059分列。标记183/102/19的唯一union245均属全套，未累计。FE89唯一断言绿、行364/390。Docker40636980359同a12实际SUCCESS、4workers、2项目40任务、19表停写备份恢复一致，预期第二flock退出1保留，不替云性能。
 - 后发root给40637880409/8c；已读Git83件backend/frontend路径/mode/blob/bytes/SHA逐字证明同a12，但不说两个提交相同、不重贴旧镜像、不造a12全绿。新run尚在运行，旧a12失败完整保留；sourcepackage40637080936的工作流head569baa与实际source参数a12分列，不重复下大包。
 - 本岗只读ZIP分析脚本实跑、JSON/AST及报告相对链接校核通过，不是产品/测试执行。未触发、重跑、取消CI、云、浏览器、SQL或Word动作；学生研究正文/人工经历未代写。原工具输出曾因读取历史handoff超预算截断，改定向字段，不猜未显示项；这是资料读取，不算产品失败。
+
+- 原件入Git自查修正：阶段1的目录git add因仓库ZIP忽略规则只提交元数据，71e78a90不能称远端七原件齐；本岗随后对仅七个明确公开ZIP逐一git add -f，逐个git show暂存blob重算SHA并核既有清单，原字节未变。该遗漏及修正如实记录，不以初次push成功替代原件归档核验。
