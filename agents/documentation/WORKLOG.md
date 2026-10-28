@@ -481,3 +481,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 只读分析脚本初版通过后，为完整性新增REST total_count及checkout命令后一行精确SHA核验，再运行加强版通过；没有改原件。固定source_count/cloc2.10在尚无本岗提交的准确f7实际执行5898、上限5100/超798、--require-range exit1，脚本/分类/门槛不变。
 - 报告reports/final/component-candidate-ci-f7-20261028.md；原件records/ci/40692462131及40692462380、机器分析及可复算脚本齐。该记录由AI写，不是学生研究正文或亲自debug经历。没有运行产品/测试/HTTP/数据库/云/浏览器/CI，没有读783/792私件，不处理另一个source-only run40694626672。
 - 本岗结果仅开发CI证据。规模、真实连接预算、独立验收、正式400/600秒、连续资源、最终账单及本人手写研究均未关闭。暂存原ZIP需具名force-add并从Git暂存blob逐件再核，完成后本岗自行commit/push准确回报。
+
+- 核心归档提交22702a4d7de9dfadd9d04666608db56e1a3c050e已实际push，git ls-remote精确读回同SHA、树clean；7原ZIP暂存blob与本地原字节逐件一致，scoped diff-check0。此最终交接补记不改产品、原件或被测f7身份。
