@@ -1,0 +1,45 @@
+{
+  "operator": "backend AI",
+  "script_sha256": "ad84dc632f19b8d4806057b727584ed1a70e1cb12280c1232031a2091991a28b",
+  "result_sha256": "c439b5e5b85a36947d2168fc5369c294a426406d40ac4cace5eca3a0cc185bc1",
+  "executed_source": "20970de6b955479c9ed089cea21d6f258ecf13b1",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "tmp/795_backend_resume_20261028/795_inventory.py"
+      ],
+      "exit_code": 0,
+      "scope": "source/metadata reconciliation only"
+    },
+    {
+      "argv": [
+        "approved-existing-venv/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/795_backend_resume_20261028/795_inventory.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "approved-existing-venv/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/795_backend_resume_20261028/795_inventory.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "product_tests_run": false,
+  "new_cloc_run": false,
+  "cloud_started": false,
+  "mysql_started": false
+}

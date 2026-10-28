@@ -604,3 +604,14 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - Only domain/models.py adds6 lines after unchanged original validation: approved list/tuple review_evidence membership is snapshotted to tuple under a fresh read-only assessment mapping. Existing guard/validation order is AST-identical; no compatibility shim or public/storage/transaction change.
 - Final172 domain cases (65 actualv2 boundaries +original91behavior/15historical constructors +57120 differential) and143 originalHTTP cases pass, zero fail/error/skip. Targeted Ruff/format pass after one initial format correction. Current fixedcloc2363→1993/net370, repaircost+6; earlier376 belongs to prior productstage only. Old raw artifacts restored/preserved, new snapshot-alias-* receipts hold2red→315green evidence.
 - Root requestedpush but no fullCI: [skip ci] stage commit avoids automatic codex/** full campaign, changes no workflow/main gate. No MySQL/cloud/fullCI/independent execution. Reportagents/backend/source-size-20261025/snapshot-alias-fix.md; exact narrow review follows push.
+
+
+## 2026-10-28 后端恢复分析与低收益路线停损
+- 总协调派工从22f666e2建独立codex/backend-resume-20261028；795由总协调分配，未动根索引/其他岗/云或数据库。先行设计4169d764，实际prompt见agents/backend/resume-20261028/prompt.md。
+- 先读OperationPlan和旧performance/shared-project-gate/latency-diagnosis/api-wire公开报告，撤回未测的validator构造主因预判；旧0.136ms及不一致小路径收益不能解释当前秒级尾延迟。未重造cache/ref/wire原型。
+- 静态六操作委托路线人工预算约15行，低于20停损线；保留方法兼容更少，未实施/测cloc，不冒充收益。当前scope1993、app5862>5100；没有可信400行候选，不删门禁/功能、不改口径或压排版。
+- 20970de6工具先提交再实际执行：既有计数65应用文件在c7dd/f4bd/22f与本worktree逐字一致，17模块AST/哈希清单、排他输出fsync，Ruff/format首次通过。无新cloc、产品测试、CI/MySQL/Docker/云或独立验收。
+- 未引用的缺失glob与猜测旧报告路径两次只读定位失败，后按实际目录定位；无产品错误/文件改动。旧1987估计经最终字节对齐校正1993。
+- 按总协调后续指令先提交分析交空闲槽，等实际七worker云汇总后再针对性修复；原性能/规模出口仍未通过。全部为AI操作，不替写学生经历。
+
+- 分析stage53bfd00c实际push；GitHub插件发布Issue3评论6461141955并按确切ID全文读回一致。首次本地发布回执的diff-check因补丁多加EOF空行exit2，去额外分隔空行后再检查；远端正文及原始API结果未修改。
