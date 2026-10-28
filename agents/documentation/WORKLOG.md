@@ -446,3 +446,11 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本岗只读ZIP分析脚本实跑、JSON/AST及报告相对链接校核通过，不是产品/测试执行。未触发、重跑、取消CI、云、浏览器、SQL或Word动作；学生研究正文/人工经历未代写。原工具输出曾因读取历史handoff超预算截断，改定向字段，不猜未显示项；这是资料读取，不算产品失败。
 
 - 原件入Git自查修正：阶段1的目录git add因仓库ZIP忽略规则只提交元数据，71e78a90不能称远端七原件齐；本岗随后对仅七个明确公开ZIP逐一git add -f，逐个git show暂存blob重算SHA并核既有清单，原字节未变。该遗漏及修正如实记录，不以初次push成功替代原件归档核验。
+
+
+## 2026-10-28 修正CI最终原件
+
+- 40637880409/8c实际四jobSUCCESS后才收最后coverage和原runlog；4artifact441181B逐一官方size/SHA及ZIP保护核，同期3件部分artifact/元数据原件单列phase1，未用pending冒成功。新runlog150770B/69成员只有本地SHA。新4job原checkout全8c，REST counts与connector集合均核，无PR merge-ref。
+- 从新原件重新解析714/0fail/error/skip、行2508/2790、分支709/852、混合88.33059，FE89/行364/390、标记union245；与旧数字相同是两次独立原件计算，不由83应用字节相同代替新执行。新static五命令exit0、23单元、Bandit无错误/发现；没有另跑或伪称8c Docker，云镜像/源包实际source仍a12。
+- 原9artifact913162B、3runlog316791B共12ZIP保存；全SHA/大小、CRC/路径/重复/链接、JSON/AST、报告链接与scope检查完成。仅具名公开ZIP force-add并从暂存Git blob复核后才称远端原件齐，首次忽略规则遗漏保留。
+- 新产品/测试/云/CI触发/重跑/取消仍0。报告和handoff已按实际最终状态更新；旧pending阶段与a12失败在历史提交/phase1原件保留，未改原始附件或学生正文。

@@ -32,7 +32,11 @@ def original(run, sha):
     binding = json.loads((directory / "archive-binding.json").read_bytes())
     for row in binding["artifacts"]:
         raw = (directory / (row["name"] + ".zip")).read_bytes()
+        assert len(raw) == row["bytes"]
         assert hashlib.sha256(raw).hexdigest() == row["sha256"]
+    raw_logs = (directory / "official-run-logs.zip").read_bytes()
+    assert len(raw_logs) == binding["run_logs"]["bytes"]
+    assert hashlib.sha256(raw_logs).hexdigest() == binding["run_logs"]["sha256"]
     checkout = []
     with ZipFile(directory / "official-run-logs.zip") as logs:
         for name in logs.namelist():
@@ -99,6 +103,12 @@ def product(run, sha):
     with ZipFile(directory / f"static-{sha}.zip") as z:
         result["static_commands"] = json.loads(z.read("static.json"))
         result["static_E731"] = "E731" in z.read("static-2.log").decode()
+        result["static_unit_log_passed_count"] = int(
+            re.search(r"(\d+) passed in", z.read("static-1.log").decode())[1]
+        )
+        bandit = json.loads(z.read("bandit.json"))
+        result["bandit_errors"] = len(bandit["errors"])
+        result["bandit_findings"] = len(bandit["results"])
     return result
 
 

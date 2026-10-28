@@ -210,7 +210,10 @@
         }
       ]
     },
-    "static_E731": true
+    "static_E731": true,
+    "static_unit_log_passed_count": 23,
+    "bandit_errors": 0,
+    "bandit_findings": 0
   },
   "old_docker": {
     "run": 40636980359,
@@ -845,6 +848,215 @@
   "corrected_product": {
     "run": 40637880409,
     "source_sha": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
-    "status": "NOT_YET_ARCHIVED"
+    "conclusion": "success",
+    "run_attempt": 1,
+    "actual_checkout_logs": [
+      {
+        "log": "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "actual_checkout": "8c98eb13dadef13f42e8c9973e6285e5781efb4a"
+      },
+      {
+        "log": "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "actual_checkout": "8c98eb13dadef13f42e8c9973e6285e5781efb4a"
+      },
+      {
+        "log": "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "actual_checkout": "8c98eb13dadef13f42e8c9973e6285e5781efb4a"
+      },
+      {
+        "log": "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt",
+        "actual_checkout": "8c98eb13dadef13f42e8c9973e6285e5781efb4a"
+      }
+    ],
+    "artifacts_verified": 4,
+    "run_log_zip_official_digest_available": false,
+    "backend": {
+      "tests": 714,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "covered_lines": 2508,
+      "total_lines": 2790,
+      "line_percent": 89.89247311827957,
+      "covered_branches": 709,
+      "total_branches": 852,
+      "branch_percent": 83.21596244131456,
+      "blended_coveragepy_percent": 88.33058758923669,
+      "excluded_lines": 0
+    },
+    "backend_gate": [
+      {
+        "suite": "all",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "xml",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "json",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "html",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "report",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "unmeasured_production_files": [],
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "metric": "line_coverage",
+        "covered_lines": 2508,
+        "total_lines": 2790,
+        "threshold_percent": 80,
+        "branch_coverage": "reported without an extra threshold",
+        "exit_code": 0,
+        "real_success": true
+      }
+    ],
+    "marker_subsets": {
+      "contract": {
+        "tests": 183,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "integration": {
+        "tests": 102,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "fault": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "marker_union_unique_tests": 245,
+    "marker_subsets_inside_backend_full_suite": true,
+    "frontend": {
+      "tests": 89,
+      "passed": 89,
+      "failed": 0,
+      "pending": 0,
+      "success": true,
+      "coverage": {
+        "lines": {
+          "total": 390,
+          "covered": 364,
+          "skipped": 0,
+          "pct": 93.33
+        },
+        "statements": {
+          "total": 712,
+          "covered": 631,
+          "skipped": 0,
+          "pct": 88.62
+        },
+        "functions": {
+          "total": 240,
+          "covered": 206,
+          "skipped": 0,
+          "pct": 85.83
+        },
+        "branches": {
+          "total": 932,
+          "covered": 821,
+          "skipped": 0,
+          "pct": 88.09
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      }
+    },
+    "static_commands": {
+      "missing": [],
+      "commands": [
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "scripts/ci/validate_config.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "pytest",
+            "-c",
+            "backend/pyproject.toml",
+            "tmp/deployment/997_ops.py",
+            "tmp/deployment/971_credentials.py",
+            "tmp/ci/996_gates.py",
+            "-q"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "scripts/ci/ruff.toml",
+            "deployment",
+            "scripts/ci",
+            "tmp/deployment",
+            "tmp/ci"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "scripts/ci/ruff.toml",
+            "backend/t44",
+            "tmp/backend"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "bandit",
+            "-r",
+            "backend/t44",
+            "-f",
+            "json",
+            "-o",
+            "/home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json"
+          ],
+          "exit_code": 0
+        }
+      ]
+    },
+    "static_E731": false,
+    "static_unit_log_passed_count": 23,
+    "bandit_errors": 0,
+    "bandit_findings": 0
   }
 }
