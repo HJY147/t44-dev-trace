@@ -702,6 +702,7 @@ def test_fresh_cli_help_parses_without_duplicate_arguments():
 
 def test_owned_command_timeout_preserves_prefix_if_process_disappears(tmp_path, monkeypatch):
     import subprocess
+
     import bridge_backend
 
     clock = Clock()

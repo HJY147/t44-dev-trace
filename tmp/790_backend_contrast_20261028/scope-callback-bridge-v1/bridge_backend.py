@@ -35,9 +35,19 @@ class Runner:
             stdout, stderr = process.communicate(timeout=deadline.remaining(30))
         except subprocess.TimeoutExpired as error:
             # This Popen is our unreaped child; never signal operator/scheduler groups.
-            if process.poll() is None and os.getpgid(process.pid) == process.pid:
-                os.killpg(process.pid, signal.SIGKILL)
-            stdout, stderr = process.communicate(timeout=5)
+            try:
+                if process.poll() is None and os.getpgid(process.pid) == process.pid:
+                    os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass  # Own child exited between poll and metadata lookup; no other PID is signalled.
+            try:
+                stdout, stderr = process.communicate(timeout=5)
+            except subprocess.TimeoutExpired as cleanup:
+                stdout = cleanup.stdout or error.stdout or b""
+                stderr = cleanup.stderr or error.stderr or b""
+                for pipe in (process.stdout, process.stderr):
+                    if pipe is not None:
+                        pipe.close()
             reserve(prefix.with_suffix(".stdout.private"), stdout or error.stdout or b"")
             reserve(prefix.with_suffix(".stderr.private"), stderr or error.stderr or b"")
             raise Refused("OWNED_COMMAND_TIMEOUT_INFLIGHT_MAY_COMPLETE") from None
@@ -80,18 +90,20 @@ class DockerBackend:
         self.source_files = parse(proof_raw)["files"]
         require(len(self.source_files) == binding["source_file_count"], "FULL_SOURCE_PROOF_COUNT")
 
-    def inspect(self, identifier):
-        return parse(
-            subprocess.check_output(
-                DOCKER + ["inspect", "--format", "{{json .}}", identifier],
-                timeout=5,
-                env=clean_environment(),
-            )
+    def output(self, argv):
+        self.deadline.remaining()
+        value = subprocess.check_output(
+            argv, timeout=self.deadline.remaining(5), env=clean_environment()
         )
+        self.deadline.remaining()
+        return value
+
+    def inspect(self, identifier):
+        return parse(self.output(DOCKER + ["inspect", "--format", "{{json .}}", identifier]))
 
     def scheduler_state(self, facts):
         ids = (
-            subprocess.check_output(
+            self.output(
                 DOCKER
                 + [
                     "ps",
@@ -102,9 +114,7 @@ class DockerBackend:
                     "label=com.docker.compose.project=" + self.binding["project"],
                     "--filter",
                     "label=com.docker.compose.service=scheduler",
-                ],
-                timeout=5,
-                env=clean_environment(),
+                ]
             )
             .decode()
             .split()
@@ -161,7 +171,7 @@ class DockerBackend:
         state = self.scheduler_state(facts)
         require(not state["absent"] and state["healthy_owned"], "SCHEDULER_NOT_RUNNING")
         ids = (
-            subprocess.check_output(
+            self.output(
                 DOCKER
                 + [
                     "ps",
@@ -171,9 +181,7 @@ class DockerBackend:
                     "label=com.docker.compose.project=" + self.binding["project"],
                     "--filter",
                     "label=com.docker.compose.service=scheduler",
-                ],
-                timeout=5,
-                env=clean_environment(),
+                ]
             )
             .decode()
             .split()
@@ -196,7 +204,13 @@ class DockerBackend:
             and "t44.scheduling" in info["Config"]["Cmd"],
             "ACTUAL_SCHEDULER_CREDENTIAL_READER_REQUIRED",
         )
-        raw = read(self.phase / "scheduler-secrets/scheduler-token.json", private=True)
+        token_path = self.phase / "scheduler-secrets/scheduler-token.json"
+        metadata = token_path.lstat()
+        require(
+            metadata.st_uid == 10001 and (metadata.st_mode & 0o777) == 0o600,
+            "ACTUAL_PRIVATE_CREDENTIAL_OWNER_MODE",
+        )
+        raw = read(token_path, private=True)
         proof = {
             "container_id": info["Id"],
             "image_id": info["Image"],
@@ -225,11 +239,7 @@ class DockerBackend:
         reserve(inputs / "control.PUBLIC.json", raw, mode=0o444)
         alias = self.binding["images"]["backend"]["alias"]
         actual = (
-            subprocess.check_output(
-                DOCKER + ["image", "inspect", "--format", "{{.Id}}", alias],
-                timeout=5,
-                env=clean_environment(),
-            )
+            self.output(DOCKER + ["image", "inspect", "--format", "{{.Id}}", alias])
             .decode()
             .strip()
         )

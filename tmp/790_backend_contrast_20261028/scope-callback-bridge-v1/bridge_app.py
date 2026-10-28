@@ -45,6 +45,7 @@ def provision(authority, state_dir, backend, clock, bundle_sha):
         (stamp(facts["binding"]["stop_utc"]) - clock.now()).total_seconds() >= 600,
         "GEN_WINDOW_MINIMUM600",
     )
+    backend.deadline = deadline
     backend.check_binding(facts, authority)
     state = Path(state_dir)
     state.mkdir(mode=0o700, exist_ok=True)

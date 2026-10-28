@@ -34,8 +34,6 @@ def main():
         "owner-locator-sha256",
     ):
         parser.add_argument("--" + name)
-    parser.add_argument("--owner-locator", type=Path)
-    parser.add_argument("--owner-locator-sha256")
     args = parser.parse_args()
     require(os.geteuid() == 0 and platform.system() == "Linux", "ROOT_LINUX_HOST_REQUIRED")
     folder = Path(__file__).resolve().parent
