@@ -143,6 +143,16 @@ def issue(factory, settings, account, *, ttl, stop):
         after_sessions = {
             item["id"]: item for item in uow.gateway.rows("auth_sessions", {})
         }
+    deadline(stop)
+    with factory() as uow:
+        audit_rows = uow.gateway.rows("audit_events", {"request_id": call.request_id})
+    if (
+        len(audit_rows) != 1
+        or audit_rows[0]["operation_id"] != "login"
+        or audit_rows[0]["outcome"] != 1
+        or audit_rows[0]["actor_id"] != account["user_id"]
+    ):
+        raise ValueError("ONE_ORIGINAL_SUCCESSFUL_LOGIN_AUDIT_REQUIRED")
     if (
         set(after_sessions) != set(before_sessions) | {row["id"]}
         or row["id"] in before_sessions
@@ -174,6 +184,7 @@ def issue(factory, settings, account, *, ttl, stop):
             "prior_auth_rows": len(before_sessions),
             "new_auth_rows": 1,
             "prior_auth_rows_unchanged": True,
+            "normal_login_audit_verified": True,
             "clock_override_used": False,
             "main_settings_ttl_seconds": settings.session_ttl_seconds,
         },
