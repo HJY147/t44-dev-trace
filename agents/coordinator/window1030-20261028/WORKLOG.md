@@ -27,3 +27,25 @@
 本轮以“独立测试只收中性运行资料；先冻结再准入；不把AI当学生；真实TTL不足则零请求”为约束，分别向部署岗要求精确停止和F身份接口，向后端岗要求新F供应器适配，向独立岗只发送PUBLIC原件和公钥。改进是把工具安装、资源镜像预先完成，再签发真实短期会话，避免此前转运耗尽TTL。加密包只移动与校验，不读其凭证或独立私例。
 
 证据索引：records/diagnostics/resume-20261028/window1030/ui-copy-evidence.json；每份UI原字节无损gzip保留，阅读投影只将CRLF转LF，原SHA与投影SHA分列。脚本仅操作明确拥有的本项目命名空间，不发布密钥、口令或账户余额。
+
+## 新F实际启动与供应准备
+
+09:54:01原generation stop确认P16六容器全部Running=false/ExitCode0/OOM=false，volumes_deleted=false；这是容器停止，不是ECS停机。新F在t-hz071e4uuyjwmbk按明确五动作执行，09:56:36 idle成功，strict_CA_and_IP_verified=true、401一次。MySQL初始探针有一次未就绪记录，后续healthy，原件没有删掉。六基础角色运行且Restart0，scheduler等待实际项目scope请求，未假造项目编号。
+
+新F身份脚本第一版在云前静态复查发现错误假设status带source_sha，未执行；责任岗按原status契约只改该断言，原f308版本保留历史。修正版89693d79...在t-hz071e5fxxb8q9s实际成功。18项T15身份由实际绑定、原启动回执、当前六资源及API Config.Cmd/TTL筛选得出；不打印保存其他Env。实际4worker、TTL3600；runtime-receipt SHA91f46a88209e8e15241b1a93d91b518c4e458934e057e33c0b6cc2aadab4271b。source_archive_sha256使用阶段真实binding的f2a8ad12...，不把另一个ZIP的c4fc0f45...代入此字段。
+
+新provider两片已安装到新目录，all_six_verified=true，manifest c222fff9...；T16b独立材料接收器也已安装，未接收或执行SUT。Backend岗云前发现原idle未登录探针会追加正常AUTH_REQUIRED audit，原“所有表为空”条件过严；改为保留audit原行且只允许正常追加，其余用户/会话/业务/服务/outbox初始空要求保留，17个本地检查通过（含真实60秒自然过期）。本地证据不是本次MySQL发行成功，发行与接收结果另记，未预撤销会话。
+
+## 实际发行、单次执行与对接迟到
+
+t-hz071e5xg8zcpa8实际发行五身份七会话；自然过期会话10:08:19.891766签发、10:09:19.891766到期、10:09:20.002312由原getMe得到401/TOKEN_EXPIRED且原session行未改。待撤销会话仍active，业务表0、auth_sessions7、users5、audit_events9。4902B T44FENV1仅由root搬运ciphertext，输入密钥/口令/会话token未进入PUBLIC。独立T16接收实际成功并停止，canonical final2800B SHA7d969f0cc6029eaa3187c791e4a0fedb9f8bc3fa70ff704015c95ea1fc55cc65；独立岗另核五身份七session、CA/源/镜像/真实runtime和严格2GiB。
+
+root随后明确AI操作者单次functional grant27add7ed236fe2e8a9b19317bd6ec586fbdc6025745771f67856fe3217e9689d，最多720秒、截止10:26Z，无fault/performance/retry。T17固定桥只允许新bridge到172.21.182.245:22443，28源逐件只读、原preflight不移不重跑。实际原冻结entry于10:13:49.666953启动监督进程；进度读取不接触私有用例或原始证据。
+
+实际SERVICE_SCOPE_REQUEST于10:13:51.208507产生，nonce393263e16def9135fdbb441bfa6e4777fe766ea07a0b833c，只请求真实project1。root在密封供应桥尚未准备完成时已准入，是本轮可以避免的协调问题；首次轮询后又等待构建回调，未在会话内返回sealed reply。原GEN的project1 scheduler-token于10:15:50.382290回执成功；scheduler StartedAt10:15:51.146862474，健康回执10:15:57.400893。独立功能容器10:15:51.441769已停止、exit0、无OOM或硬截止。时间接近不证明退出原因；不能把健康回执倒填成测试确认或把exit0当业务通过。
+
+T18后来把原launch、actual supervisor nonce9305d58aff607b3ff4449fea660e115af01d1a7b48e6bf8a与request context核为一致。此完整监督上下文核验在root最初provision之后完成，顺序缺口保留，不把后验核同改写为先验完成。会话结束后root立刻停止sealed回复准备，没有补包、重跑或改原用例。独立岗须通过operator专用证据公钥密封导出并自行解封判断真实请求数和失败原因，当前业务NOT_PROVEN。
+
+t-hz071e6t6zt3400原GEN stop随后确认F七容器全部Running=false/exit0/noOOM，数据卷未删。阿里云官方页面已确认APP“已停止/节省停机模式”，自动释放时间为“—”；LOAD暂只留证据导出。节省停机仍有云盘费用，不冒称费用归零或最终账单核清。
+
+下一轮准备改进：准入前完成全部neutral provider、密封、scope回包与读取桥的安装和无SUT守卫，收到actual request后只执行已备好的限定命令，避免在有限握手期内临时开发。该改进尚非下一轮执行或通过；不读取独立私例，不把AI自动处置写为学生人工debug。
