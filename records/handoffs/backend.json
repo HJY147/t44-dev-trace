@@ -3248,6 +3248,83 @@
       "method": "three-way keep unchanged parent fields; preserve disjoint role additions; union actual history lists; retain both scalar conflict values in this receipt",
       "scope": "handoff metadata only; product code unchanged",
       "scalar_conflicts": []
+    },
+    {
+      "incoming_commit": "8c5208bb7c0d047f4a57439bd217296e86c15709",
+      "method": "three-way metadata, both role histories and disjoint fields preserved; scalar conflicts retained here",
+      "scope": "metadata only; no product conflict accepted",
+      "scalar_conflicts": []
     }
-  ]
+  ],
+  "component_call_20261028": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-COMPONENT-CALL-20261028-v1",
+    "base": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "branch": "codex/backend-component-call-20261028",
+    "design_test_commit": "63748058db765e094f0b5012f6f3398edae868f2",
+    "product_commit": "2d947d237328521e46b9766859ca166a4c54f789",
+    "implementation_status": "backend part implemented; messaging signature migration pending, not an end-to-end or cloud candidate",
+    "product_files": [
+      "backend/t44/services/application.py",
+      "backend/t44/services/common.py"
+    ],
+    "contract": {
+      "six_component_operations": "same trusted gateway and Call object, missing owner -> DEPENDENCY_UNAVAILABLE before business fields",
+      "Call.cas": "keyword-only record_diff=True default; False preserves before/after contents and identity, does not disable audit or change guards/SQL/UoW/results",
+      "messaging_pending": "NotificationFacade methods(g,c), explicit check_version before values(row), cas(record_diff=False), handle does not mark_read"
+    },
+    "fixed_count": {
+      "before": 5935,
+      "after": 5916,
+      "net": 19,
+      "after_excess": 816,
+      "within_range": false,
+      "before_commit": "63748058db765e094f0b5012f6f3398edae868f2",
+      "after_commit": "2d947d237328521e46b9766859ca166a4c54f789",
+      "application_before": 167,
+      "application_after": 147,
+      "common_before": 140,
+      "common_after": 141
+    },
+    "tests": {
+      "red": {
+        "tests": 14,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0
+      },
+      "green": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sqlite_developer": {
+        "tests": 157,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "failed_cases": [
+          "test_default_notification_component_returns_empty_page"
+        ]
+      }
+    },
+    "initial_format_failure_preserved": true,
+    "final_ruff_and_format": true,
+    "boundary_proof": "agents/backend/component-call-20261028/ast-boundary.json",
+    "report": "agents/backend/component-call-20261028/report.md",
+    "failure_originals": "agents/backend/component-call-20261028/failure-originals.json",
+    "not_run": [
+      "full CI",
+      "MySQL",
+      "RabbitMQ",
+      "cloud",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "independent_783_792_accessed": false,
+    "student_research_changed": false,
+    "messaging_owner_handoff": "exact2d source, command,14 boundaries and sole old-signature failure sent directly; root retains cloud5d",
+    "next": "messaging migration, combined exact-SHA review and required regressions/count; no premature cloud deployment"
+  }
 }

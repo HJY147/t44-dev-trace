@@ -462,3 +462,8 @@ P16 PUBLIC两hash精确核，8000请求零HTTP错，started15.144699s较P721.890
 ## 2026-10-28 Scope桥v3预算修复（替代v2待审候选）
 v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁内admit，审核阻断保持原件。v3先e95设计→e5b原代码5红→5ced修复；显式PUBLIC budget原件及APP path/SHA进authority，GEN透传且父锁外，每SQL先原305f admit再派发。最终74目标通过，原56三文件95assert AST全序相同且0删除；原5红assert保持。Crypto/helper逐字同。真实helper与flock加合成metadata/query只证明本地守卫，未运行云/实际MySQL/SUT/CI或独立验收。
 最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，新两机/root/t44-r9/scope-bridge-v3-01；报告scope-bridge-v3-report.md、步骤scope-bridge-v3-runbook.md，工具tmp/790_backend_contrast_20261028/scope-callback-bridge-v3-budget；复审pending，原v2不得投云。
+
+
+## 2026-10-28 组件Call后端实际提交
+
+产品2d947d237328521e46b9766859ca166a4c54f789（基线5d）只改Business六组件(g,Call)分派及Call.cas record_diff默认True；False只保原diff不关闭审计，原guard/SQL/锁/UoW顺序不变。固定cloc5935→5916真实净减19，仍超816。新782先8红6绿后14绿；包含782的157个SQLite开发目标156绿1红，唯一旧NotificationFacade签名缺口500，原断言不改，不称端到端绿。Ruff/format最终绿，AST/FrozenAPI/DDL边界证明齐。消息owner已从2d接手另树迁移，后端不跨岗/不投云。真实prompt ROLE-backend-COMPONENT-CALL-20261028-v1，报告agents/backend/component-call-20261028/report.md；原失败/脱敏双SHA/四件齐，无CI/数据库/云/正式性能/独立验收新声明。

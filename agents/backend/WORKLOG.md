@@ -729,3 +729,13 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - 5cedb2ca：配置/authority显式mysql_budget原件及APP receipt path/SHA，SOURCE/binding/stop/namespace先核；GEN三action透传同两flag，父锁外；每直接SQL在同operation_lock内先原305f admit当前MySQL身份/max/完整预算，再发SQL。budget query wait仅clamp剩余lease，原SQL/解析不动。没有384默认或伪probe。
 - 最终74=原56+新18，0failure/error/skip；原56三个测试文件95assert AST按原序一致，原5红断言也保留；只补PUBLIC fixture/旧mutex专测中性admit stub。原crypto/helper字节同。真实305f admit+本机flock+合成query证明拒绝次序；当前128预算124可准、123拒绝，不冒实际MySQL。Ruff/diff绿。
 - 最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，四片12216/12953/15289/12840B各加300<18000；新/root/t44-r9/scope-bridge-v3-01；runbook/execute/config/dependencies/verification齐。已通知审核岗新源码与hash，待限定复审。不云/独立private/SUT/新CI/产品改动，原120和全部秘密边界不变。
+
+
+## 2026-10-28 后端组件Call实际实施
+
+- 后端AI，ROLE-backend-COMPONENT-CALL-20261028-v1，独立基线5d5e0a15；先63748058边界/782测试，产品2d947d237328521e46b9766859ca166a4c54f789已push读回。仅Business六项(g,c)静态分派与Call.cas record_diff=True默认开关两个文件；False保旧diff且审计照常，锁/SQL/expected/maxversion/错误顺序/UoW原样。无兼容壳、无跨owner产品变动。
+- 原固定counter/cloc基线5935→5916，Business167→147、Common140→141，真实净减19，仍超816/require-range退出1；不沿旧a12的5933，不把未实施消息18算入。
+- 必要782旧源8红6绿→14绿。随后包含782的原5个SQLite模块157项156绿1红/0error/0skip，36.50s；唯一旧NotificationFacade.list签名造成默认列表500而非200，原断言不改，明确中间态。消息owner已按同源独立接手，并收到接口/命令。
+- Ruff绿；format首次仅EOF空行红保留，窄修后3文件绿。common原AST仅unwrap新if/kw后整模块一致，Business除准入删/增节点外整模块一致；Runtime/其它产品/FrozenAPI/DDL不动。
+- HTTP失败trace里1个一次性SQLite token在log/XML各1处脱敏，精确原件0700/0600保存于/tmp/t44-backend-component-call-20261028-raw，双SHA及XML解析记录齐；原失败保留，不冒产品绿。
+- 报告agents/backend/component-call-20261028/report.md及verification/计量/JUnit/命令齐；无完整CI/MySQL/MQ/云/正式性能/独立验收，不读783/792、不改学生研究。后端独立提交不可投云，root待消息联合迁移/审核/全回归。
