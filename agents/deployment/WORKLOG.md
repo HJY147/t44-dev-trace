@@ -748,3 +748,5 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 新tar.gz120717B/SHA8002f6fd…包含25成员：原17安装片（6+4+7）、7原PUBLIC manifest/profile、1新传输清单；不打包P64已双层ui片、不复制安装算法。各片与source commit原件逐bytes/SHA相同，bundle manifest4fa4e564…记完整来源/目标/顺序。包中没有测试、私包、材料、账号、会话或原始云证据，runtime代码已经由原安装片压缩payload逐字承载。
 
 真实本地raw/JSON两路线分别执行原17安装片（仅测试执行边界把三个完整目标映射项目tmp793，原bundle bytes不改），逐原manifest核27份运行代码和3manifest完整字节/权限，均过。两次重复首片均被原O_EXCL拒且原件未改；整包SHA、内件身份、额外member负例均0执行。13522B真实安装输出完整gzip/3bcf144a…保存，HTTP/curl未实际联网，云/SUT/服务/callback未运行。先封此包固定commit，下一小commit给APP/LOAD curl API raw+json兼容wrapper并核完整outer，绝不拿只内层尺寸冒合格。
+
+固定包已push d80ea0578fb436e6f44743aed7d91e10cba3a512。APP/LOAD各一curl API raw+json小shell1925/1926B，完整outer base64各2568+300描述=2868，先包/逐件hash再原17片，正常TLS及HTTPS redirect，无Token/rawGithub；新私有临时响应保留。真实bash-n及实际shell+显式fake curl/captured Python核单API请求、raw/JSON响应保存600权限和core逐字相同通过，网络/云未执行。另等长单件SHA改变负例0执行，原始组件O_EXCL拒覆盖不改。root后发选旧授权端口22443/18480/22445/18481只是新CLI计划，与旧24443计划区分记录，不改算法/包/CI。所有本地交付完成，root实际两端安装仍另留回执。
