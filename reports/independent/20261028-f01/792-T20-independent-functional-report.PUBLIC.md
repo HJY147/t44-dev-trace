@@ -1,0 +1,9 @@
+本次单次功能验收为 **NOT_PROVEN**，不能发布通过结论。原私日志解封后确认实际只有1次独立SUT请求：POST /projects，HTTP201且响应完整；随后14项冻结功能记录全部NOT_PROVEN，0PASS、0FAIL、0完整后置条件、0条已观察错误分支。返回201仅是一次HTTP观察，不代表完整业务功能或持久化后置条件通过。Root的环境健康探针不计入本次数量。
+
+直接阻断是中性service/scheduler scope交接：真实请求nonce393263e16def9135fdbb441bfa6e4777fe766ea07a0b833c，实际项目ID1，原窗口10:13:51.208460Z至10:15:51.208460Z。120秒内未收到可接受的密封回复，10:15:51.208562Z按原边界记NOT_PROVEN，保留此前HTTP结果并阻止进一步SUT请求。Root所报token签发10:15:50.382290Z距截止约0.826秒，scheduler-start10:15:57.400893Z晚于截止约6.192秒；后两者仅来自Root消息，非本岗独立拿到的CLI原件。后续动作不能倒填本次READY，也不据此认定SUT业务失败。
+
+运行正常于10:15:51结束，原内层supervisor有12048次双钟采样，未hardstop/RSS stop，容器exit0且未OOM。另有独立执行边界缺口：新T17桥在声明为Python3.10.12的host上直接解析带Z的expires_at，未做兼容规范化；deadline线程异常未传回主控，readiness也不足以证明持续采样。本次外层max_poll_gap=0与该问题一致；stderr未保存，不能另行验证具体线程异常堆栈。因此要求的独立外层deadline执行边界仍是NOT_PROVEN，不能用内层正常退出替代。这是AI编写的新桥缺陷，不归因学生、SUT或原v11用例。原结果、源码和证据不回写，不修本次、不重跑。
+
+45972B密封证据SHA2a2067f2c1102300c309af8da6682351994d7d5bfad9a29830709e6f1aa9a714已在独立岗本地通过operator RSA、HMAC、AES/PKCS7、gzip、tar及70个原文件SHA核验；原journal26帧/24记录的链与最终HMAC均完整，无partial尾。原私日志、原密文和keys仅留独立岗private，Root只搬运opaque。最初Linux收件RSA未导出。原28冻结文件及四权威当前哈希均复核未变，原Linux52/52保留且未重跑；这些不构成本次F功能通过。
+
+后续只准备新的桥接修复候选，单列本地真实解释器检查及其平台限制。新的Linux无SUT外层deadline自检必须另取新窗口和准入；未来新F复测也必须由Root另建无历史环境并给新单次授权。本报告不授任何新执行权。

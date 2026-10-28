@@ -49,3 +49,13 @@ T18后来把原launch、actual supervisor nonce9305d58aff607b3ff4449fea660e115af
 t-hz071e6t6zt3400原GEN stop随后确认F七容器全部Running=false/exit0/noOOM，数据卷未删。阿里云官方页面已确认APP“已停止/节省停机模式”，自动释放时间为“—”；LOAD暂只留证据导出。节省停机仍有云盘费用，不冒称费用归零或最终账单核清。
 
 下一轮准备改进：准入前完成全部neutral provider、密封、scope回包与读取桥的安装和无SUT守卫，收到actual request后只执行已备好的限定命令，避免在有限握手期内临时开发。该改进尚非下一轮执行或通过；不读取独立私例，不把AI自动处置写为学生人工debug。
+
+## 独立结论、完整取证与云收尾
+
+独立岗通过不同于provider输入密钥的operator RSA密封导出，root仅移动六块cipher并逐块/全量验SHA，完整45972B/2a2067f2c1102300c309af8da6682351994d7d5bfad9a29830709e6f1aa9a714已在本地。独立岗自行解封，核70个原文件131462B及原journal26帧/24记录完整链，无partial尾；最初Linux receiver私钥未导出。公开事实报告按原字节收录于reports/independent/20261028-f01，未收未发布私例或keys。
+
+独立实际只有POST /projects一次201，14项均NOT_PROVEN，0PASS/0FAIL，0完整后置条件和0已观察错误分支。直接阻断经私证据确认是120秒内没有有效sealed scope回复，而非SUT业务FAIL。新T17桥还有Python3.10对Z时间戳解析及线程错误未上报缺陷，本次独立外层deadline边界NOT_PROVEN；原内层12048次双钟采样不替代该项。新桥实现是AI职责，原结果不修补；下一Linux无SUT保护自检须新候选/新证据，未来独立复测另建无历史实例。
+
+两台ECS已在官方页面确认“已停止/节省停机模式”，两项自动释放时间均“—”，云盘数据保留；源和LOAD副本资源文件仍在云盘，F独立选定70原件完整证据已安全取回。GUI投影回执cloud-closure.PUBLIC.json明确不是API或最终账单。财务余额与账户标识不发布；费用快照只在私有runtime，云盘继续计费，不称费用归零。
+
+用户最新明确必要费用充足、完成任务优先，原话另存USER-funding-priority-20261028-original.md。接下来的顺序以技术准备就绪为准，不把费用作为任务停止理由；已停止的机器暂不为等待本地代码而空转。后端准备可预装的完整scope回包桥，独立岗修新桥兼容/失效即拒绝保护，后端架构岗评估真实结构缩减；新报告不替学生亲写研究正文。

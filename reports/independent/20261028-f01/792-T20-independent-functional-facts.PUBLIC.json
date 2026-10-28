@@ -1,0 +1,133 @@
+{
+  "visibility": "PUBLIC",
+  "kind": "INDEPENDENT_SINGLE_FUNCTIONAL_FACT_REPORT_NOT_ACCEPTANCE_PASS",
+  "report_utc": "2026-10-28T10:36:32.025176+00:00",
+  "operator": "AI independent acceptance role",
+  "student_manual_execution_or_repair_claimed": false,
+  "overall": "NOT_PROVEN",
+  "formal_functional_acceptance_passed": false,
+  "actual_SUT_requests": 1,
+  "HTTP_observation": {
+    "method": "POST",
+    "path": "/projects",
+    "status": 201,
+    "response_body_complete": true,
+    "raw_HTTP_wire_matches_authenticated_result": true,
+    "transport_error": false,
+    "request_deadline_exceeded": false,
+    "utc_start": "2026-10-28T10:13:51.099823Z",
+    "utc_end": "2026-10-28T10:13:51.196741Z",
+    "a_single_201_is_not_business_postcondition_pass": true,
+    "Root_setup_health_probe_excluded_from_this_count": true
+  },
+  "aggregate_frozen_functional_results": {
+    "planned": 14,
+    "recorded": 14,
+    "status_counts": {
+      "NOT_PROVEN": 14
+    },
+    "PASS": 0,
+    "FAIL": 0,
+    "NOT_PROVEN": 14,
+    "complete_postconditions": 0,
+    "assertion_count": 0,
+    "declared_error_branches": 551,
+    "observed_error_branches": 0,
+    "unproved_error_branches": 551,
+    "fault_or_performance_executed": false
+  },
+  "neutral_scope_handoff": {
+    "nonce": "393263e16def9135fdbb441bfa6e4777fe766ea07a0b833c",
+    "actual_project_ids": [
+      1
+    ],
+    "request_utc": "2026-10-28T10:13:51.208507Z",
+    "anchor_utc": "2026-10-28T10:13:51.208467Z",
+    "deadline_utc": "2026-10-28T10:15:51.208460Z",
+    "completion_utc": "2026-10-28T10:15:51.208562Z",
+    "elapsed_ns": 120000114731,
+    "classification": "NOT_PROVEN",
+    "reason_type": "BoundaryError",
+    "valid_sealed_reply_received_before_deadline": false,
+    "archived_sealed_reply_count": 0,
+    "http_result_preserved": true,
+    "later_provider_events_cannot_retroactively_make_this_READY": true,
+    "Root_reported_token_issue_utc": "2026-10-28T10:15:50.382290Z",
+    "Root_reported_scheduler_start_utc": "2026-10-28T10:15:57.400893Z",
+    "last_two_events_provenance": "Root message only, not independently supplied CLI receipt bytes",
+    "interpretation": "A required neutral service/scheduler scope handoff was not accepted inside its original120s window; subsequent HTTP was blocked. This does not establish an SUT business failure."
+  },
+  "execution_boundary": {
+    "functional_grant_sha256": "27add7ed236fe2e8a9b19317bd6ec586fbdc6025745771f67856fe3217e9689d",
+    "expires_utc": "2026-10-28T10:26:00Z",
+    "max_wall_seconds": 720,
+    "actual_launch_utc": "2026-10-28T10:13:49.666953+00:00",
+    "supervisor_completion_utc": "2026-10-28T10:15:51.344152Z",
+    "supervisor_returncode": 0,
+    "inner_supervisor_hard_stopped": false,
+    "inner_supervisor_RSS_stopped": false,
+    "inner_poll_samples": 12048,
+    "inner_single_PID_max_RSS_bytes": 44064768,
+    "functional_container_stopped": true,
+    "functional_container_exitcode": 0,
+    "functional_container_OOM": false,
+    "strict2GiB_backing_after": {
+      "allocated_bytes": 2147487744,
+      "available_bytes": 2023342080,
+      "disk_major_minor": [
+        7,
+        4
+      ],
+      "logical_bytes": 2147483648
+    },
+    "outer_watchdog_continuous_deadline_enforcement": "NOT_PROVEN",
+    "outer_watchdog_max_observed_poll_gap_seconds": 0,
+    "bridge_defect": {
+      "source_sha256": "c3c0df2d01db4fcc1c0176197d60803821bca63ed2e8249ab31849de75e0deee",
+      "host_Python_version_from_prior_neutral_runtime": "3.10.12",
+      "expiry_input_endswith_Z": true,
+      "host_datetime_fromisoformat_used_without_Z_normalization": true,
+      "deadline_thread_errors_not_propagated_to_controller": true,
+      "readiness_can_precede_a_second_valid_clock_sample": true,
+      "thread_stderr_not_preserved_in_this_run": true,
+      "static_conclusion": "Given the declared Python3.10 host, the unnormalized Z parsing path is incompatible; zero observed continued polling is consistent with thread failure. There is no retained thread traceback to separately confirm its exact runtime exception.",
+      "responsibility": "AI-authored new PUBLIC bridge, not original frozen v11 cases or SUT",
+      "effect": "Actual early normal completion and inner supervisor evidence cannot certify the required independent outer deadline guard.",
+      "original_result_not_rewritten": true,
+      "no_repair_or_rerun_of_this_execution": true
+    }
+  },
+  "evidence_integrity": {
+    "opaque_bytes": 45972,
+    "opaque_sha256": "2a2067f2c1102300c309af8da6682351994d7d5bfad9a29830709e6f1aa9a714",
+    "outer_operator_RSA_OAEP_SHA256_HMAC_AES_PKCS7_gzip_tar_verified": true,
+    "selected_original_files": 70,
+    "selected_original_bytes": 131462,
+    "selected_source_file_hashes_verified": true,
+    "selected_sources_complete": true,
+    "unreadable_selected_sources": 0,
+    "initial_receiver_private_RSA_exported": false,
+    "provider_input_AES_key_used_for_results": false,
+    "journal_ciphertext_bytes": 11944,
+    "journal_ciphertext_sha256": "0acbdfe99fea6393bd7d137415251340570dc7e288b9137e3916fdf920634d85",
+    "journal_final_file_HMAC_and_frame_chain_verified": true,
+    "journal_authenticated_frames": 26,
+    "journal_records": 24,
+    "journal_plaintext_bytes": 47761,
+    "journal_partial_tail": false,
+    "journal_complete": true,
+    "source_private_files_and_original_ciphertext_preserved": true,
+    "raw_credentials_keys_case_catalogue_and_oracles_not_publicized": true
+  },
+  "freeze_and_authorities": {
+    "original28_local_bytes_reverified_unchanged": true,
+    "tool_freeze_sha256": "33dd522d382bb166d331489e46166a8a59c1b985e065b4849acbf7674ad5309e",
+    "tool_execution_build_sha256": "e8ac37bb41c474681f2ea36598806cb7ba0605ee26b82cfdc4fe462c7a2d16ae",
+    "original52_result": "52/52 original Linux tool preflight remains separate evidence, not an F acceptance pass",
+    "original52_rerun": false,
+    "all_four_authorities_current_hashes_verified": true
+  },
+  "no_new_execution_admission": true,
+  "no_automatic_retry": true,
+  "cloud_VM_stop_or_billing_state": "Outside this local acceptance evidence; Root handles separate neutral stop/retention receipts."
+}
