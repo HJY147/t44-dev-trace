@@ -1,0 +1,485 @@
+{
+  "source_sha": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "summary_sha256": "d554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053",
+  "formal_acceptance": false,
+  "all_seven_final_valid": true,
+  "total_requests": 11284,
+  "cohorts": {
+    "baseline1": {
+      "count_matches_client": true,
+      "operations": {
+        "createEscalation": {
+          "n": 20,
+          "statuses": {
+            "202": 20
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.057137,
+            "body_to_handler": 0.21662,
+            "handler": 16.924086,
+            "handler_end_to_send_end": 0.278677,
+            "ingress_to_send_end": 17.445834
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 0.821253,
+            "api_wire": 0.027855,
+            "business_dispatch": 2.948032,
+            "cursor_execute_inclusive": 4.003361,
+            "json_response_render": 0.01755,
+            "pool_connect_inclusive": 0.183942,
+            "pool_queue_get_inclusive": 0.007489,
+            "precommit_validation": 0.377556,
+            "request_validation": 0.378757,
+            "runtime_execute": 16.352616,
+            "runtime_wire": 0.017666,
+            "sync_handler_inclusive": 16.897212
+          },
+          "handler_thread_cpu_p95_ms": 10.955411,
+          "peak_checkedout": 1
+        },
+        "getTask": {
+          "n": 20,
+          "statuses": {
+            "200": 20
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.057243,
+            "body_to_handler": 0.198939,
+            "handler": 5.408109,
+            "handler_end_to_send_end": 0.291705,
+            "ingress_to_send_end": 5.954756
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 0.971413,
+            "api_wire": 0.025007,
+            "business_dispatch": 0.491325,
+            "cursor_execute_inclusive": 1.421512,
+            "json_response_render": 0.02534,
+            "pool_connect_inclusive": 0.217057,
+            "pool_queue_get_inclusive": 0.007933,
+            "request_validation": 0.193335,
+            "runtime_execute": 4.241361,
+            "runtime_wire": 0.00879,
+            "sync_handler_inclusive": 5.369052
+          },
+          "handler_thread_cpu_p95_ms": 4.592449,
+          "peak_checkedout": 1
+        },
+        "transitionTask": {
+          "n": 20,
+          "statuses": {
+            "200": 20
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.057331,
+            "body_to_handler": 0.22149,
+            "handler": 19.832061,
+            "handler_end_to_send_end": 0.291201,
+            "ingress_to_send_end": 20.345806
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.194381,
+            "api_wire": 0.029868,
+            "business_dispatch": 2.135693,
+            "cursor_execute_inclusive": 5.506139,
+            "json_response_render": 0.023648,
+            "pool_connect_inclusive": 0.19614,
+            "pool_queue_get_inclusive": 0.007492,
+            "precommit_validation": 0.74297,
+            "request_validation": 0.486825,
+            "runtime_execute": 18.870799,
+            "runtime_wire": 0.022016,
+            "sync_handler_inclusive": 19.804382
+          },
+          "handler_thread_cpu_p95_ms": 13.346249,
+          "peak_checkedout": 1
+        },
+        "validateContractPayload": {
+          "n": 20,
+          "statuses": {
+            "200": 20
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.05652,
+            "body_to_handler": 0.219942,
+            "handler": 3.451785,
+            "handler_end_to_send_end": 0.269599,
+            "ingress_to_send_end": 3.970156
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 0.938152,
+            "api_wire": 0.01941,
+            "business_dispatch": 0.546491,
+            "cursor_execute_inclusive": 0.855642,
+            "json_response_render": 0.014807,
+            "pool_connect_inclusive": 0.123709,
+            "pool_queue_get_inclusive": 0.004108,
+            "request_validation": 0.758261,
+            "runtime_execute": 3.099598,
+            "runtime_wire": 0.005167,
+            "sync_handler_inclusive": 3.421906
+          },
+          "handler_thread_cpu_p95_ms": 3.206424,
+          "peak_checkedout": 1
+        }
+      }
+    },
+    "clients20": {
+      "count_matches_client": true,
+      "operations": {
+        "createEscalation": {
+          "n": 100,
+          "statuses": {
+            "202": 100
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.076524,
+            "body_to_handler": 1.127215,
+            "handler": 69.753168,
+            "handler_end_to_send_end": 2.868011,
+            "ingress_to_send_end": 73.388137
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.053156,
+            "api_wire": 0.033983,
+            "business_dispatch": 15.063329,
+            "cursor_execute_inclusive": 40.883053,
+            "json_response_render": 0.02299,
+            "pool_connect_inclusive": 3.132198,
+            "pool_queue_get_inclusive": 0.009811,
+            "precommit_validation": 0.566774,
+            "request_validation": 0.567248,
+            "runtime_execute": 69.04187,
+            "runtime_wire": 0.023679,
+            "sync_handler_inclusive": 69.712388
+          },
+          "handler_thread_cpu_p95_ms": 17.951706,
+          "peak_checkedout": 6
+        },
+        "getTask": {
+          "n": 100,
+          "statuses": {
+            "200": 100
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.197033,
+            "body_to_handler": 2.759939,
+            "handler": 218.072993,
+            "handler_end_to_send_end": 3.46237,
+            "ingress_to_send_end": 225.348573
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.363673,
+            "api_wire": 0.042808,
+            "business_dispatch": 2.760169,
+            "cursor_execute_inclusive": 20.339002,
+            "json_response_render": 0.035703,
+            "pool_connect_inclusive": 181.641234,
+            "pool_queue_get_inclusive": 0.017642,
+            "request_validation": 0.345941,
+            "runtime_execute": 216.915239,
+            "runtime_wire": 0.018204,
+            "sync_handler_inclusive": 218.042499
+          },
+          "handler_thread_cpu_p95_ms": 169.382145,
+          "peak_checkedout": 6
+        },
+        "transitionTask": {
+          "n": 100,
+          "statuses": {
+            "200": 100
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.077751,
+            "body_to_handler": 1.354048,
+            "handler": 80.527344,
+            "handler_end_to_send_end": 2.846428,
+            "ingress_to_send_end": 83.493237
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.679177,
+            "api_wire": 0.047273,
+            "business_dispatch": 6.701825,
+            "cursor_execute_inclusive": 48.100205,
+            "json_response_render": 0.032708,
+            "pool_connect_inclusive": 3.417837,
+            "pool_queue_get_inclusive": 0.011874,
+            "precommit_validation": 1.069442,
+            "request_validation": 0.71232,
+            "runtime_execute": 79.528572,
+            "runtime_wire": 0.038085,
+            "sync_handler_inclusive": 80.486507
+          },
+          "handler_thread_cpu_p95_ms": 25.178991,
+          "peak_checkedout": 6
+        },
+        "validateContractPayload": {
+          "n": 100,
+          "statuses": {
+            "200": 100
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.082251,
+            "body_to_handler": 2.455986,
+            "handler": 20.079972,
+            "handler_end_to_send_end": 3.345206,
+            "ingress_to_send_end": 27.188032
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.339243,
+            "api_wire": 0.027401,
+            "business_dispatch": 3.376688,
+            "cursor_execute_inclusive": 12.713513,
+            "json_response_render": 0.020771,
+            "pool_connect_inclusive": 2.022413,
+            "pool_queue_get_inclusive": 0.005747,
+            "request_validation": 1.117419,
+            "runtime_execute": 19.636757,
+            "runtime_wire": 0.008417,
+            "sync_handler_inclusive": 20.047693
+          },
+          "handler_thread_cpu_p95_ms": 4.956019,
+          "peak_checkedout": 6
+        }
+      }
+    },
+    "clients40": {
+      "count_matches_client": true,
+      "operations": {
+        "createEscalation": {
+          "n": 200,
+          "statuses": {
+            "202": 200
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.091112,
+            "body_to_handler": 2.763268,
+            "handler": 93.54957,
+            "handler_end_to_send_end": 3.919136,
+            "ingress_to_send_end": 101.766323
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.150034,
+            "api_wire": 0.03743,
+            "business_dispatch": 20.148665,
+            "cursor_execute_inclusive": 54.793113,
+            "json_response_render": 0.024074,
+            "pool_connect_inclusive": 6.367277,
+            "pool_queue_get_inclusive": 0.010985,
+            "precommit_validation": 0.57649,
+            "request_validation": 0.579232,
+            "runtime_execute": 92.808929,
+            "runtime_wire": 0.027588,
+            "sync_handler_inclusive": 93.512008
+          },
+          "handler_thread_cpu_p95_ms": 19.199364,
+          "peak_checkedout": 8
+        },
+        "getTask": {
+          "n": 200,
+          "statuses": {
+            "200": 200
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.081476,
+            "body_to_handler": 4.438572,
+            "handler": 110.544224,
+            "handler_end_to_send_end": 3.819453,
+            "ingress_to_send_end": 114.447646
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.406458,
+            "api_wire": 0.049058,
+            "business_dispatch": 3.58757,
+            "cursor_execute_inclusive": 25.688479,
+            "json_response_render": 0.047339,
+            "pool_connect_inclusive": 97.852906,
+            "pool_queue_get_inclusive": 0.014138,
+            "request_validation": 0.279754,
+            "runtime_execute": 109.258237,
+            "runtime_wire": 0.019224,
+            "sync_handler_inclusive": 110.512956
+          },
+          "handler_thread_cpu_p95_ms": 62.151633,
+          "peak_checkedout": 8
+        },
+        "transitionTask": {
+          "n": 200,
+          "statuses": {
+            "200": 200
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.084035,
+            "body_to_handler": 2.569328,
+            "handler": 107.205635,
+            "handler_end_to_send_end": 4.221494,
+            "ingress_to_send_end": 110.672373
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.748222,
+            "api_wire": 0.0485,
+            "business_dispatch": 11.815161,
+            "cursor_execute_inclusive": 72.286633,
+            "json_response_render": 0.035056,
+            "pool_connect_inclusive": 9.024787,
+            "pool_queue_get_inclusive": 0.011219,
+            "precommit_validation": 1.111884,
+            "request_validation": 0.704735,
+            "runtime_execute": 106.119718,
+            "runtime_wire": 0.044833,
+            "sync_handler_inclusive": 107.174681
+          },
+          "handler_thread_cpu_p95_ms": 23.158293,
+          "peak_checkedout": 7
+        },
+        "validateContractPayload": {
+          "n": 200,
+          "statuses": {
+            "200": 200
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.087492,
+            "body_to_handler": 3.310094,
+            "handler": 40.495134,
+            "handler_end_to_send_end": 4.109089,
+            "ingress_to_send_end": 45.862233
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.32475,
+            "api_wire": 0.028233,
+            "business_dispatch": 4.084443,
+            "cursor_execute_inclusive": 13.566273,
+            "json_response_render": 0.019621,
+            "pool_connect_inclusive": 4.24042,
+            "pool_queue_get_inclusive": 0.006124,
+            "request_validation": 1.110777,
+            "runtime_execute": 40.008728,
+            "runtime_wire": 0.008723,
+            "sync_handler_inclusive": 40.458523
+          },
+          "handler_thread_cpu_p95_ms": 5.285906,
+          "peak_checkedout": 8
+        }
+      }
+    },
+    "clients400": {
+      "count_matches_client": true,
+      "operations": {
+        "createEscalation": {
+          "n": 2000,
+          "statuses": {
+            "202": 2000
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.086768,
+            "body_to_handler": 1002.105039,
+            "handler": 1022.224374,
+            "handler_end_to_send_end": 179.694058,
+            "ingress_to_send_end": 1808.240678
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.220346,
+            "api_wire": 0.039843,
+            "business_dispatch": 86.475965,
+            "cursor_execute_inclusive": 314.553817,
+            "json_response_render": 0.02481,
+            "pool_connect_inclusive": 753.864428,
+            "pool_queue_get_inclusive": 734.683587,
+            "precommit_validation": 0.59483,
+            "request_validation": 0.594964,
+            "runtime_execute": 1021.471484,
+            "runtime_wire": 0.028005,
+            "sync_handler_inclusive": 1022.189732
+          },
+          "handler_thread_cpu_p95_ms": 19.57506,
+          "peak_checkedout": 15
+        },
+        "getTask": {
+          "n": 2000,
+          "statuses": {
+            "200": 2000
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.090671,
+            "body_to_handler": 931.371377,
+            "handler": 727.121961,
+            "handler_end_to_send_end": 348.902496,
+            "ingress_to_send_end": 1444.66814
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.464899,
+            "api_wire": 0.04998,
+            "business_dispatch": 16.919064,
+            "cursor_execute_inclusive": 95.455053,
+            "json_response_render": 0.040721,
+            "pool_connect_inclusive": 633.739989,
+            "pool_queue_get_inclusive": 624.890957,
+            "request_validation": 0.286983,
+            "runtime_execute": 725.902566,
+            "runtime_wire": 0.019774,
+            "sync_handler_inclusive": 727.081338
+          },
+          "handler_thread_cpu_p95_ms": 11.21056,
+          "peak_checkedout": 15
+        },
+        "transitionTask": {
+          "n": 2000,
+          "statuses": {
+            "200": 2000
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.086832,
+            "body_to_handler": 690.591825,
+            "handler": 1080.757085,
+            "handler_end_to_send_end": 305.815875,
+            "ingress_to_send_end": 1626.248752
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.934712,
+            "api_wire": 0.049313,
+            "business_dispatch": 52.657939,
+            "cursor_execute_inclusive": 373.199182,
+            "json_response_render": 0.036396,
+            "pool_connect_inclusive": 766.541451,
+            "pool_queue_get_inclusive": 749.340703,
+            "precommit_validation": 1.19025,
+            "request_validation": 0.74309,
+            "runtime_execute": 1079.595065,
+            "runtime_wire": 0.044712,
+            "sync_handler_inclusive": 1080.720919
+          },
+          "handler_thread_cpu_p95_ms": 23.851243,
+          "peak_checkedout": 15
+        },
+        "validateContractPayload": {
+          "n": 2000,
+          "statuses": {
+            "200": 2000
+          },
+          "boundary_p95_ms": {
+            "ingress_to_body": 0.092374,
+            "body_to_handler": 646.25425,
+            "handler": 629.887571,
+            "handler_end_to_send_end": 371.9598,
+            "ingress_to_send_end": 1158.11372
+          },
+          "phase_wall_p95_ms": {
+            "api_schema_validation": 1.487849,
+            "api_wire": 0.028196,
+            "business_dispatch": 17.21982,
+            "cursor_execute_inclusive": 57.536102,
+            "json_response_render": 0.019865,
+            "pool_connect_inclusive": 576.915611,
+            "pool_queue_get_inclusive": 570.879398,
+            "request_validation": 1.211284,
+            "runtime_execute": 629.427024,
+            "runtime_wire": 0.00876,
+            "sync_handler_inclusive": 629.856059
+          },
+          "handler_thread_cpu_p95_ms": 7.640587,
+          "peak_checkedout": 15
+        }
+      }
+    }
+  }
+}
