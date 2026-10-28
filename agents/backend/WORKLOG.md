@@ -705,3 +705,13 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - 实际nonce393263...scope请求10:13:51；root原token10:15:50、functional容器10:15:51.441769自然exit0（非PASS）、scheduler-start10:15:57已迟。本岗只本地草案10420B/534f3b79，未发root/部署/执行/密封返包；收到停止即停，不给旧会话补封、不自动重跑，不读独立私证据。T18PUBLIC确认pending1和NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。
 - 草案原字节DRAFT_NOT_EXECUTED保留，旧入口替STOPPED说明；未提前准备完整通用callback桥是本岗准备缺口，草案仅墙钟不足证supervisor仍活，不可复用旧nonce/context。root独立证据归因待后续，不能从exit0宣告通过或伪说API失败。
 - 先前S1 fixture名从runbook误猜，root云前拦截且未采用，已承认；项目外本岗误建空/tmp/unused确认空后删除。原产品/790/旧F/独立原件不改，本岗无云执行/费用/新CI/独立private读取。记录皆AI岗位事实，不替学生写研究报告。
+
+
+## 2026-10-28 跨模块深层架构规模研究
+
+- 后端AI，prompt ROLE-backend-ARCHITECTURE-SCALE-20261028-v1；独立20000108分支codex/backend-architecture-scale-20261028，先57354c71设计再评估。产品65文件逐字同a12，原计量真实5933/5100超833/exit1；51后端路径中43.py计4834，前端1099，原分类不变。
+- 读完整后端实现/职责与原T44和冻结接口，核301个def/class及动态operation/隐式协议。没有可无条件删的大块legacy：README公开helper/ScanStore.recoverable、WindowMatch属性、Runtime.claim开发故障入口均不因无直接入口调用而删。
+- 新跨owner通知Call+CAS完整RFC片段普通Ruff100列+固定cloc：Business34→14、Notification65→47、CAS14→15，净37。显式版本检查先于values，record_diff=False保原通知空diff但审计不关闭；需消息owner明确内部Python签名迁移，未实施。
+- DDL14初始默认字段、异常helper静态式13/工厂式7互斥、first2、UTC/UUID alias3均为设计预算。全量94异常点改helper反而+131/+160；首次elif片段解析问题v2排除，旧失败保留。F schema目录189替换估160–210净-21..29；G scan双路径62估52–72净-10..10，重叠默认6扣除，全部最乐观102仍5831/5100超731，非实现保证/不声称架构不可能。
+- 用户继续现有口径，明确不删除/迁出CLI/seed/migration/前端或安全能力；来源映射只说明需求/工程成本。读锁SQLAlchemy2.1.6真实Inspector实现及官方文档，CHECK仅name/sqltext、索引缺visibility，不能删native新反例防线。
+- 只本岗设计/报告/日志/交接，产品改动0/实际净减0；无新tmp编号/产品测试/CI/MySQL/Rabbit/前端/云/正式性能/独立验收。完整报告含51路径哈希、301定义定位、94片段预算及37行RFC。未读792/private、未改研究正文或他岗文件。

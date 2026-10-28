@@ -448,3 +448,8 @@ P16 PUBLIC两hash精确核，8000请求零HTTP错，started15.144699s较P721.890
 - 实际nonce393263...scope请求10:13:51；root原token10:15:50、functional容器10:15:51.441769自然exit0（非PASS）、scheduler-start10:15:57已迟。本岗只本地草案10420B/534f3b79，未发root/部署/执行/密封返包；收到停止即停，不给旧会话补封、不自动重跑，不读独立私证据。T18PUBLIC确认pending1和NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。
 - 草案原字节DRAFT_NOT_EXECUTED保留，旧入口替STOPPED说明；未提前准备完整通用callback桥是本岗准备缺口，草案仅墙钟不足证supervisor仍活，不可复用旧nonce/context。root独立证据归因待后续，不能从exit0宣告通过或伪说API失败。
 - 先前S1 fixture名从runbook误猜，root云前拦截且未采用，已承认；项目外本岗误建空/tmp/unused确认空后删除。原产品/790/旧F/独立原件不改，本岗无云执行/费用/新CI/独立private读取。记录皆AI岗位事实，不替学生写研究报告。
+
+
+## 2026-10-28 全后端结构设计研究
+
+后端AI在codex/backend-architecture-scale-20261028自20000108先设计57354c71，再只读全43计入Python(4834行)/51路径及原T44/冻结接口；产品同a12，固定计量5933/5100仍失败。新通知受信Call+共享CAS跨backend/messaging设计片段净37，保版本/值求值次序、锁/UoW/空audit diff；需owner批准内部签名迁移，未实施。其它小预算32；F/G未实现工作包最乐观扣重合计102，仍5831超731，不能报目标可行或真实节省。301定义/动态注册/公开支持审计无已证可删大块；来源映射不授权删seed/migration/CLI/安全。用户明确继续现有口径。所有产品/契约/DDL不变、实际净减0；无新测试/CI/数据库/云/性能/独立验收。报告agents/backend/architecture-scale-20261028/report.md，prompt ROLE-backend-ARCHITECTURE-SCALE-20261028-v1。
