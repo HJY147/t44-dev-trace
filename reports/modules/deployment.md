@@ -531,3 +531,10 @@ root另授权原双机新functional窗口，不改变原诊断07:30。先2517299
 root实际补充：此前31595 raw<32KiB不满足云助手完整base64+描述限制，旧脚本未提交/08:15未云安装。原07:30与08:15字节保留，另8583c809设计后真实Git派生最终sourcea12/53文件/10:30，不改旧freeze。新root02/resume-profile供P16gen02及独立F各新namespace，使用相同已证镜像/root01 sourcechecked/buildbinding只读输入。
 
 三件delivery28102B整体gzip21229B，分7500/7500/6229三片加最终重组安装，共4命令；完整raw为12023/10880/9188/5180，整条base64+256描述为16288/14764/12508/7164，全部<18000。manifest/片/整包/原件SHA、有限解压、字面allowlist、O_EXCL/0600/fsync及拒覆盖检查齐备；10项本地守卫、该检查脚本Ruff、4条bash-n通过。没有云/792/private/产品/新购/IAM动作。新10:30真实运行与费用由root负责，10:20后新SUT动作仍600秒门禁；旧790窗口需责任岗另冻，不直接挪旧包。
+
+
+### 新resource ready-race的窄operator completion（未云执行）
+
+root转交resource-r28p16-02第二次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED，原e5/binding和失败不改。先ffff65d2设计，新增仅APP该目录与未来LOAD mirror同名02的operator helper，APP固定f762/原23c536失败；核精确原失败、缺receipt、helper/binding/plan/unit模板与SHA、UID0/MainPID/starttick/argv/cgroup成员，两次稳定且输入未变后O_EXCL写late/not_original_start_success回执，再原status及身份复核。只等argv最多5秒，status另限10；不start/restart/stop服务。
+
+5组本地guard通过（真实文件/FD，明确模拟systemd/proc，不能冒云成功），原4个Unicode目录夹具错误gzip留原件；Ruff/安装bash-n通过。helper13123B/SHA32ce5b43…，一次安装+APP调用raw6704B/encoded+256=9196。root唯一UI，未读792/private或改产品/1030冻结；实际operator与status结果待root。

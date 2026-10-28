@@ -666,3 +666,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 8583c809先设计，完整Git源a12/冻结比较真实派生新window1030 profile，53文件；旧07:30/08:15字节均保持。新root02/resume-profile、P16gen02与独立F分开namespace/CA/端口，不重建同源镜像，不改daaf/root01 source包。派生session实际等待exit0后才读产物，未重复早取。
 - 新PUBLIC delivery28102B/gzip21229B，opaque3片7500/7500/6229。4条完整raw/完整base64+256均实算，最大12023/16288，低于13000/18000。首条新root02/parts/manifest，后续各O_EXCL，最终全序号/片/整包/原件SHA、限量解压/字面路径/编译后新目录0600固定FD/fsync，旧件不覆盖。
 - 10本地守卫真实通过：完整编码和四条代码编译、真实项目tmp内完整重组/独占安装、缺片/额外/篡改/symlink/manifest拒绝、08:15原profile完整SHA不变、10:30源链及两个runid/端口真实argparse前拦截。新守卫Ruff/4bash-n绿；没有云或测试cohort执行，不读792/private，不改产品/购机/IAM/旧数据。旧790硬07:30已告root必须责任岗新冻结，不能因部署换窗口绕开旧grant。
+
+## 限定resource ready-race补录
+
+- root转交新resource-r28p16-02原start再次ready身份拒绝与f762/23c536失败，要求窄补录、不改冻结e5或旧记录。ffff65d2先设计，新增一个operator helper，仅该APP与未来LOAD resource-mirror-r28p16-02；APP另硬pin该binding/failure，LOAD显式root后续SHA。
+- 精确ValueError reason/缺receipt才继续；私有文件集合/完整hash、原unit/plan/argv/保护模板、MainPID/UID四值0、cgroupv2归属/member与proc starttick均核。最多5秒等argv，只允许同PID/starttick/cgroup，两次稳定/重核输入后固定FD O_EXCL/NOFOLLOW/fsync late回执，明确not_original_start_success。再原controller status（10秒上限）及身份复核，晚到失败保留late和原拒绝，不补造原start通过。无start/restart/stop服务命令。
+- 5组本地守卫通过：真实fixture文件/FD/不覆盖与明确模拟Linux观察，APP/LOAD成功及其他错误/已有回执/外部目录/unit变化/PID切换/argv超时/UID/cgroup/member/status失败。首轮4失败来自原unit生成器拒绝项目Unicode路径；仅动态fixture目录由ASCII模板替换，冻结代码未改，原XML逐字gzip保留。首Ruff发现测试闭包未绑定循环值，显式绑定后格式/Ruff及5组重新通过，不noqa压警告。
+- helper13123B/SHA32ce5b43b3a9a38bb26e4005f17047236dfb3aa2d8198b6a79f5a2833e079941，一次安装+APP调用raw6704/encoded+256=9196；安装独占新helper路径，根负责实际云执行。未读792/private、未改产品/1030/原记录或操作云服务。
