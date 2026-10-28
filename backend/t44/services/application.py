@@ -11,6 +11,15 @@ from .reviews import Reviews
 from .tasks import Tasks
 from .workflow import Workflow
 
+_COMPONENT_OPERATIONS = {
+    "listMyNotifications": ("notifications", "list"),
+    "markNotificationRead": ("notifications", "mark_read"),
+    "handleNotification": ("notifications", "handle"),
+    "getEscalationRules": ("escalations", "rules"),
+    "listEscalations": ("escalations", "list"),
+    "createEscalation": ("escalations", "create"),
+}
+
 _DICTIONARIES = {
     "task_states": "TaskState",
     "project_roles": "ProjectRole",
@@ -58,6 +67,12 @@ class Business(Projects, Tasks, Reviews, Workflow):
                 call.query,
                 serialize,
             )
+        target = _COMPONENT_OPERATIONS.get(call.operation)
+        if target:
+            component, method = target
+            owner = getattr(self, component)
+            require(owner is not None, "DEPENDENCY_UNAVAILABLE")
+            return getattr(owner, method)(g, call)
         return getattr(self, call.operation)(g, call)
 
     def finalize(self, result, call):
@@ -147,44 +162,3 @@ class Business(Projects, Tasks, Reviews, Workflow):
             ),
         )
         return project_reasons(g, c.project_id, result)
-
-    def listMyNotifications(self, g, c):
-        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
-        return self.notifications.list(g, actor_id=c.actor_id, query=c.query)
-
-    def markNotificationRead(self, g, c):
-        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
-        return self.notifications.mark_read(
-            g,
-            actor_id=c.actor_id,
-            project_id=c.project_id,
-            notification_id=c.path["notification_id"],
-            version=c.body["expected_version"],
-            now=c.clock,
-        )
-
-    def handleNotification(self, g, c):
-        require(self.notifications is not None, "DEPENDENCY_UNAVAILABLE")
-        return self.notifications.handle(
-            g,
-            actor_id=c.actor_id,
-            project_id=c.project_id,
-            notification_id=c.path["notification_id"],
-            version=c.body["expected_version"],
-            note=c.body["note"],
-            evidence=c.body["evidence"],
-            now=c.clock,
-        )
-
-    def _escalation(self, method, g, c):
-        require(self.escalations is not None, "DEPENDENCY_UNAVAILABLE")
-        return getattr(self.escalations, method)(g, c)
-
-    def getEscalationRules(self, g, c):
-        return self._escalation("rules", g, c)
-
-    def listEscalations(self, g, c):
-        return self._escalation("list", g, c)
-
-    def createEscalation(self, g, c):
-        return self._escalation("create", g, c)

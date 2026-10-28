@@ -161,7 +161,7 @@ class Call:
         )
         return expected
 
-    def cas(self, g, table, row, values, *, expected=None):
+    def cas(self, g, table, row, values, *, expected=None, record_diff=True):
         expected = self.check_version(row, expected=expected)
         values = {**values, "version": row["version"] + 1}
         if "updated_at" in row:
@@ -172,8 +172,9 @@ class Call:
             current_version=row["version"],
             current_state=row.get("state"),
         )
-        self.before = [{"field": "version", "value": str(row["version"])}]
-        self.after = [{"field": "version", "value": str(values["version"])}]
+        if record_diff:
+            self.before = [{"field": "version", "value": str(row["version"])}]
+            self.after = [{"field": "version", "value": str(values["version"])}]
         return {**row, **values}
 
 
