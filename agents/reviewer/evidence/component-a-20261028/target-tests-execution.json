@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-resource-resume-20261028/tmp/788/profile/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/782_component_call_refactor_20261028/782_backend_component.py",
+    "tmp/780_messaging_component_20261028/780_facade_semantics.py",
+    "tmp/backend/messaging/979_facade.py",
+    "tmp/backend/messaging/806_newscope.py",
+    "-m",
+    "not integration",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/reviewer-component-a-20261028/agents/reviewer/evidence/component-a-20261028/target-tests.xml",
+    "-q"
+  ],
+  "exit_code": 0,
+  "scope": "new780/782 plus original979/806, integration marker excluded explicitly; no nativeMySQL/Rabbit/cloud",
+  "database_and_cloud_env_removed": true
+}

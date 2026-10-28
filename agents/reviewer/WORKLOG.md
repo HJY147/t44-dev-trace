@@ -623,3 +623,8 @@ ROLE-reviewer-WINDOW1030-20261028-v1；精确5a88/a8c1包、4de69部署时间/na
 ## 2026-10-28 A默认投影/B池配置分别限定审核
 
 ROLE-reviewer-SELECT-POOL-20261028-v1；A82e92dfc/finalac7664f9与B92cf5c10/证据c4900aa8分别静态审核，a12基线/7947backend tree核同。一次纯probe首次exit0：SQLAlchemy2.1.6下18表226列144对旧新SQL/绑定/锁/结果元数据相等，内存users/auth_sessions平铺映射UTC/binary/JSON/NULL相等；B14配置检查、默认全字段相等、URL/声明库优先、无效整数/零负边界拒绝，lazy pool5/10和20/0到达，MySQL connect0。0外部DB/HTTP/云/完整测试/独立私件/产品测试修改；首次猜错B测试路径读exit128已定位实际tmp786，非产品失败。owner A30/原138与B旧4红1绿→38仅摘要/JUnitSHA复算，原B全包raw diffcheck2保留，源/测试scoped0不冒全包绿。各自conditional integration candidate，两个源提交生产/测试路径和接口不冲突；B ENV对所有Settings角色engine生效，需实际全部进程预算/max_connections，解析成功不是资源或性能通过。A LOC净0/B+2=5935超835仍FAILED，严格400协议不改。先交root结论后root回传仅整合至fee30ae5，部署待接tmp786/787 CI跑714+新增/native；不冒本岗已执行。只交报告+本岗四件，封存后释放槽，无继续扩大探针。报告reports/reviews/database-select-pool-20261028.md。
+
+
+## 2026-10-28 组件Call/通知CAS实际A重构限定审核
+
+AI reviewer；ROLE-reviewer-COMPONENT-A-20261028-v1。新隔离6977e5b7对5d产品仅application/common/messaging facade三文件；Call.cas去新kw并展开diff if后AST等旧、check_version全AST同；通知资格/归属/recipient/显式version→惰性values→原CAS/空audit但仍audit/handle不读保真。旧979/806完整函数类AST同、36assert逐序同(25+11)；兼容调用适配仅test tmp/780，生产无壳。真实跑780+782+旧979/806排integration，47绿15未选0fail/error/skip，一现有弃用warning；SQLite/进程内TestClient不冒native。原cloc固定计量6977=5898、exit1仍超798，净37非达标。报告reports/reviews/component-call-a-6977e5b7-20261028.md，条件可整合，根须显式CI收780/782并按新准确SHA全套/native/独立/云；旧5d成绩不重绑。未读独立私件或联络tester/访问云/改产品或断言。定位错读conftest和消息REPORT路径均为读取错误不冒测试失败。
