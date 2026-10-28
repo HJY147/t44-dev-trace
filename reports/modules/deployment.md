@@ -585,3 +585,9 @@ v4独占新派生器/预算模块/小分段运输，不改旧frozen。显式P池
 仅将782_backend_component.py与780_facade_semantics.py各一次加入原完整coverage补充列表。AST确认runner其余逻辑不变，原coverage分母/80%/marker、完整tmp/backend及七旧补充路径、workflow的935/a12 fetch逐字保留，无产品或测试断言改动。
 
 新21项收集及运行通过；旧979/806的test-only legacy_caller导入41项只收集通过，含原第三方deprecation warning；原静态23项与CI Ruff加新模块通过，未冒全服务/完整CI或覆盖率结果。证据在component-ci-20261028/validation.PUBLIC.json，root合并后统一product/Docker。旧5d/16Z产物原样，新源等待root新CI准确SHA，未读783私件或操作云。
+
+### f7候选16Z新包（旧5d冻结保留）
+
+root指定f7cdb5fa…和16Z时两完整CI尚在跑；本岗只新目录准备，不宣通过/部署。新profile37ff4910…、GEN6b2da1de…、resource b5dee15b…、helper仍21599B/305f9eae…；真实53文件/source冻结核验，五个派生代码与5d相比只source及SHA链变化，算法原样。新ZIP166582B/51c75eb3…、manifest f04ced96…、archive8f4f6f92…经本地严格receiver通过，官方CI实际ZIP由root另核，不混SHA。
+
+新运输01–05分片后06安装，manifest e0cb6b89…，最大完整encoded+256=15372，6bash-n及实际f7本地重组后六文件逐字相同；目标v4-code-20261028-02/profile。完整先写RUNBOOK.md，保持真实max预算/共享锁/64w5/0及其他角色默认；同seed44/04:00Z anchor沿后端原producer，不替换默认CLI。旧5d和v4工具不改，无云/真实MySQL/独立783私件/SUT，候选LOC和正式270/400/600门禁未改变。

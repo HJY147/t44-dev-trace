@@ -722,3 +722,11 @@ root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，�
 - root指定b0793aa1a9aa422a8bf3a7df66aaafc137560574，新codex/deployment-component-ci-20261028独立worktree；先component-ci设计再仅追加782_backend_component与780_facade_semantics各一次。runner AST除列表外一致，原七补充路径/tmp/backend/markers/覆盖率阈值和分母保留，product workflow含原935/a12定向fetch逐字不变。产品及测试断言不改，不靠接线解决root转述尚超限LOC。
 - 两新模块合21项收集0.59s、实际21项0.30s过；原979/806连同现有legacy_caller导入41项收集0.45s过，后者只有收集，不冒真实服务测试。第三方Starlette/httpx deprecation warning原样留日志，不改依赖。原静态guard23项0.21s过，CI同范围加两新模块Ruff过；两新/两旧测试及test-only adapter字节SHA与b079逐字相同，无额外Git基线或新运行依赖。完整原输出gzip/bytes/SHA/argv在component-ci-20261028/validation.PUBLIC.json。
 - 未跑完整product/Docker/coverage/真实MySQL或云，未读783私件/重做其保护检查。root转述两原机Running和APP64/128只作上下文，不冒本岗观察；旧5d/16Z profile/source/小包及结果保留，root新CI确切源到达后再另新目录派生，不能把候选写回旧身份。四件留痕后小commit交付，由root统一完整CI。
+
+## 2026-10-28 f7候选16Z另目录封包（不改v4算法）
+
+- root13:00明确新准确候选f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f/stop16Z，完整product40692462131和Docker40692462380当时仍在跑；新codex/deployment-v4-f7-20261028独立worktree，先短设计，不把在跑CI记通过、不启SUT。旧5d所有文件/包/结果原样，新远端v4-code-20261028-02/profile。
+- 已审v4三工具和helper305f完整字节未改。真实Git/冻结对照全53源文件，新profile2059B/37ff4910…、GEN30497B/6b2da1de…、resource44082B/b5dee15b…、builder23566B/d2fc28b2…、receiver4972B/ce064af5…；与5d五个派生代码逐字差分仅显式source和SHA链，其余算法相同。P64只5/0、F4及其他5/10、共享锁/actual-budget门闸原样，384不作实测。
+- 新本地五文件ZIP166582B/51c75eb3…、manifest f04ced96…、source archive8f4f6f92…，严格receiver CRC/TAR/完整源字节模式真实通过；新runtime父从一开始700，无权限放宽。此包是本地原件，旧receiver字段official_zip不构成官方运输证明；root后续统一workflow/官方ZIP完整SHA另核，不贴本地SHA。
+- 新5片+安装共6命令，manifest e0cb6b89…，最大raw11337/整encoded+256=15372；6bash-n/逐SHA尺寸及实际f7/16Z本地重组后六文件完整一致，只临时remote-root字面值映射fixture。RUNBOOK.md已先准备全流程CLI、source生成/官方同builder运输/receiver/build/prepare/budget/业务/保卷stop，未等云启动才写。不重复完整CI或旧算法整套guard；新增实际封包检查和限定diff够用。
+- 与backend对接profile02预算字段/同helper/admit/锁、GEN两预算flag；核原CLI存在性后其明确本次bootstrap须原显式seed44/04:00Z anchor producer，不能改用无anchor参数的seed-demo默认now，本岗已确认并在runbook记明，不预填IDs或启scheduler。783保护检查不读不重做。root报告两原机运行/APP64/128只作上下文，本岗0云/变配/build/真实MySQL/独立私件/新F/52/SUT操作。root候选LOC仍超限798不因打包通过，CI/预算/F/性能仍待对应实际证据。
