@@ -474,3 +474,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 ## ROUND9 消息去重限定复核
 
 c4b3/2c1dd 精确候选39模块通过/23真实integration未运行，固定源5875→5862净13，仍超762。静态未见新阻塞，建议root进入集成CI；不等于发布准入。API2914边界12通过但net0/整体收益NP，暂不作为规模优化推荐。本岗无产品实现、云或独立验收执行；真实提示词ROLE-reviewer-ROUND9-v1。报告messaging-size-c4b3f114-round9及evidence/round9。
+# 2026-10-28 DB native catalog resume 限定审核
+
+Reviewer实核base22f666e2→production26d6328a/checkpoint3d0dff7d：只新增原生目录性质补审计，原冻结DDL、API、迁移版本不变。未发现新代码阻断项，可交root集成/受影响门禁；整体源码规模within_range=false、完整CI/正式验收/性能等仍开放，不发布APPROVE或reviewer/stage成功。
+
+本岗离线5组探针通过，独立DDL对照18表226列146索引列59CHECK，与owner原生226列快照及4源hash同；没有真实MySQL、完整测试或外部操作。owner源绑定26d6328a的MySQL8.4.11/macOS31/31原始证据复算不冒本岗执行。原失败保留；没有独立私件读取或开发/测试联系。完整八段报告：reports/reviews/database-resume-20261028-26d6328ab882b06eb9f6026a29656999e122f57d.md；真实提示词ROLE-reviewer-DATABASE-RESUME-20261028-v1；结果/命令在agents/reviewer/evidence/database-resume-20261028。
