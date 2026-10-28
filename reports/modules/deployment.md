@@ -524,3 +524,10 @@ P7采集保留scheduler missing/null；先APP collector/LOAD offset0 mirror再wa
 ### 新functional专用08:15 profile（未云执行）
 
 root另授权原双机新functional窗口，不改变原诊断07:30。先25172993设计，真实Git/冻结比较派生sourcea12全53文件，runid r28funcgen01合法12字符，独立root/campaign/端口/08:15新helper身份；只F4worker空库五身份，P7只prepare不启。profile/gen/resource三件公共运输28111B，独占安装脚本31595B，全部完整SHA另档。11项本地guard、Ruff/bash-n通过；旧daaf/07:30派生件/绑定不改，新builder仍同a12 ebc91直接只读引用原已核source包/镜像。未读792/private、未云/产品/机器动作，功能测试与真实回执待root。
+
+
+### 最终10:30窗口与官方编码大小修正（未云执行）
+
+root实际补充：此前31595 raw<32KiB不满足云助手完整base64+描述限制，旧脚本未提交/08:15未云安装。原07:30与08:15字节保留，另8583c809设计后真实Git派生最终sourcea12/53文件/10:30，不改旧freeze。新root02/resume-profile供P16gen02及独立F各新namespace，使用相同已证镜像/root01 sourcechecked/buildbinding只读输入。
+
+三件delivery28102B整体gzip21229B，分7500/7500/6229三片加最终重组安装，共4命令；完整raw为12023/10880/9188/5180，整条base64+256描述为16288/14764/12508/7164，全部<18000。manifest/片/整包/原件SHA、有限解压、字面allowlist、O_EXCL/0600/fsync及拒覆盖检查齐备；10项本地守卫、该检查脚本Ruff、4条bash-n通过。没有云/792/private/产品/新购/IAM动作。新10:30真实运行与费用由root负责，10:20后新SUT动作仍600秒门禁；旧790窗口需责任岗另冻，不直接挪旧包。

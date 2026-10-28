@@ -15,3 +15,5 @@ root随后实际追加优先级：先交只读summary导出器本地回归和che
 实际后发任务：仅为已Running两机/P7配置编写核验可用P7/P16资源采集与新P16prepare命令和PUBLIC参数；不操云UI、不读792/private、不改产品。依root完整PUBLIC helper/phase/image/seed回执和余窗，不猜未来binding或指标，正式7-role/600秒另标未执行等待7vs16。root随后提供完整fd7d/3d9f/profile/manifest/buildbinding摘要及实际sourcechecked路径，本岗只作工具同字节重建和解析校核。27动作、31检查通过，不冒云执行或学生亲测。
 
 实际后发紧急任务：原诊断07:30保持；仅本地为sourcea12另派生08:15 functional profile，hostroot functional-20261028-01、campaign-r28functional-01、runid r28funcgen01合法性先核、F22443/18480四worker空库五身份、P22445/18481七worker仅prepare。给profile/generation/resource小公共运输与全SHA，root唯一UI，不读792/private，不购机/IAM/删数据。实际11项本地守卫通过及四件留痕，未写成云功能通过。
+
+实际后发root纠正运输和时间：旧31595raw未提交，官方全命令base64+description需<18000；实际clock07:54后原窗口过期，最终另派10:30Z/root02，保留原07:30/08:15一切字节。源a12/53/镜像与root01只读输入不变，P16gen02与独立F分别新namespace，root唯一UI/100预算，无购机IAM删数据。要求≤8500B opaque片、raw≤13000、encoded+256<18000，最后只重组校验并独占安装。实际交4命令、10本地守卫及全部完整SHA，未云动作。

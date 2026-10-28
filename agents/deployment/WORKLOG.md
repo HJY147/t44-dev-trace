@@ -659,3 +659,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - root明确新functional专用sourcea12/08:15，原P7/P16诊断07:30不可变；原两VM/100预算由root操控，本岗不云/IAM/购机或删数据。先25172993设计，核r28funcgen01实际12字符合法，新F22443/18480、P22445/18481，P7只prepare、F固定4worker空库/后续原CLI五身份。设计原长11笔误在实际len校验后更正，不影响regex。
 - 通过已审derive真实Git/冻结比较生成新local profile，全53文件/08:15与builder→generation→resource完整SHA链；同源builder仍ebc91不重建镜像。最初derive返回running session而依赖读取提前启动一次FileNotFoundError，保留事实；随后等待同一session真实exit0才运输，无重跑/覆盖profile。
 - 三件PUBLIC运输28111B、独占安装脚本最终31595B，先全SHA/解压上限/字面allowlist/代码解析，再O_EXCL新目录/0600/fsync；不含env/身份/私钥/nonce/session。11项本地guard两次真实通过，Ruff/bash-n绿；只有纯本地安装fixture，没有任何云dispatch。原daaf/四模板/07:30冻结不变，不读792/private，不触碰产品。
+
+## 最终10:30窗口：实际编码限制与一次封定
+
+- root明确官方立即不保存的完整命令base64+描述限制；本岗原31595raw<32KiB证明范围不足，旧原件保留且root未提交，不能记成云安装失败。root实际clock已超07:30、08:15不足，另授权原VM/100预算内最终10:30，root唯一UI。
+- 8583c809先设计，完整Git源a12/冻结比较真实派生新window1030 profile，53文件；旧07:30/08:15字节均保持。新root02/resume-profile、P16gen02与独立F分开namespace/CA/端口，不重建同源镜像，不改daaf/root01 source包。派生session实际等待exit0后才读产物，未重复早取。
+- 新PUBLIC delivery28102B/gzip21229B，opaque3片7500/7500/6229。4条完整raw/完整base64+256均实算，最大12023/16288，低于13000/18000。首条新root02/parts/manifest，后续各O_EXCL，最终全序号/片/整包/原件SHA、限量解压/字面路径/编译后新目录0600固定FD/fsync，旧件不覆盖。
+- 10本地守卫真实通过：完整编码和四条代码编译、真实项目tmp内完整重组/独占安装、缺片/额外/篡改/symlink/manifest拒绝、08:15原profile完整SHA不变、10:30源链及两个runid/端口真实argparse前拦截。新守卫Ruff/4bash-n绿；没有云或测试cohort执行，不读792/private，不改产品/购机/IAM/旧数据。旧790硬07:30已告root必须责任岗新冻结，不能因部署换窗口绕开旧grant。
