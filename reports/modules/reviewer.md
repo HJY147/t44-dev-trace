@@ -479,3 +479,7 @@ c4b3/2c1dd 精确候选39模块通过/23真实integration未运行，固定源58
 Reviewer实核base22f666e2→production26d6328a/checkpoint3d0dff7d：只新增原生目录性质补审计，原冻结DDL、API、迁移版本不变。未发现新代码阻断项，可交root集成/受影响门禁；整体源码规模within_range=false、完整CI/正式验收/性能等仍开放，不发布APPROVE或reviewer/stage成功。
 
 本岗离线5组探针通过，独立DDL对照18表226列146索引列59CHECK，与owner原生226列快照及4源hash同；没有真实MySQL、完整测试或外部操作。owner源绑定26d6328a的MySQL8.4.11/macOS31/31原始证据复算不冒本岗执行。原失败保留；没有独立私件读取或开发/测试联系。完整八段报告：reports/reviews/database-resume-20261028-26d6328ab882b06eb9f6026a29656999e122f57d.md；真实提示词ROLE-reviewer-DATABASE-RESUME-20261028-v1；结果/命令在agents/reviewer/evidence/database-resume-20261028。
+
+## 2026-10-28 790开发对照工具限定审核
+
+ROLE-reviewer-CONTRAST790-20261028-v1；只gitshow2a832920全包/设计/manifest及324d16daLOAD，未读backend未提交或独立792/799/800/805。发现并先交root两P2：R790-STOP-01准备阶段S1原CLI/S2 HTTP派发前未重新核07:30硬截止；R790-STOP-02首worker失败没有共享abort，其余同cohort继续写入。一次无网络原函数探针exit0/stderr空，过期Client.call仍合成派发1次并成功，先失败后另worker仍完成4项。manifest6文件/LOADhash同、3host3.10语法可解析。无产品/云/DB/CLI/TLS/全套测试执行，不改产品/工具，不联系开发/测试。原版本edge/LOAD不准入，修复须新SHA复审；O_EXCL、data/edge隔离、441配对和0/1/41slot边界静态未见其他阻断。正式7role/600秒/两臂公平与真实TLS均未验证。报告reports/reviews/contrast790-2a832920-324d16da-20261028.md，证据agents/reviewer/evidence/contrast790-20261028。
