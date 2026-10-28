@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "backend-source935-observer-analysis-worker-contrast-pending",
+  "stage": "backend-a12-contrast-fixture-v2-awaiting-root-review-and-cloud",
   "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
   "artifacts": [
     {
@@ -2476,5 +2476,59 @@
     "product_tests_cloud_mysql_ci_run": false,
     "new_source_performance_proven": false,
     "formal_acceptance": false
+  },
+  "contrast_20261028": {
+    "operator": "backend AI",
+    "product_target": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "tool_commit": "6f5698f2d2df04a2347b893c55d93cb9c3063aa9",
+    "manifest_sha256": "640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84",
+    "report": "agents/backend/contrast-20261028/report.md",
+    "runbook": "agents/backend/contrast-20261028/runbook.md",
+    "prompt": "agents/backend/contrast-20261028/prompt.md",
+    "seed": 44,
+    "anchor_utc": "2026-10-28T04:00:00Z",
+    "stop_utc": "2026-10-28T07:30:00Z",
+    "slots": 441,
+    "cohorts": {
+      "baseline": {
+        "clients": 1,
+        "cycles": 20,
+        "offset": 0,
+        "requests": 80
+      },
+      "warmup": {
+        "clients": 40,
+        "cycles": 5,
+        "offset": 1,
+        "requests": 800
+      },
+      "measure": {
+        "clients": 400,
+        "cycles": 5,
+        "offset": 41,
+        "requests": 8000
+      }
+    },
+    "local_red": {
+      "failures": 14,
+      "errors": 0,
+      "commit": "a43f60e43d7d002dc331d6cc4d3006238055eccb"
+    },
+    "local_final": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "old_test_AST_preserved": true,
+      "old_compat_assertions_removed": 0
+    },
+    "root_reported_bootstrap": "t-hz071dhyyg2hb0g success",
+    "cloud_execution_by_role": false,
+    "S1_edge_LOAD_cloud_verified": false,
+    "initial_scheduler_scope": "not started; developer six-role only",
+    "formal_seven_role_acceptance": false,
+    "no_independent_private_reads": true,
+    "production_changes": 0,
+    "new_ci": false
   }
 }

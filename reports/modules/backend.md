@@ -1,3 +1,11 @@
+## 2026-10-28 a12开发夹具v2交付
+
+本岗只改tmp/790运维诊断工具，不改产品。目标a12e9e70、seed44/04:00，同源7/16独立namespace，441对分开预热与400计量。原CLI用户+原seedV2/S1 SQL与真实service CLI、source-free严格TLS S2、0600会话及LOAD无重试/完整数/实际版本链已交付。
+
+首版schema/host3.10问题及后续截止/共享abort缺口均在云前被root审核阻断，旧包冻结；14无网络断言红→14绿，原15兼容+4边界最终33唯一绿，原assert AST不变、没删阈值。新v2工具6f5698f2/manifest640b3d...，源a12临时准确53文件仅用于本地兼容，未改本worktree产品f4。详见[报告](../../agents/backend/contrast-20261028/report.md)、[运行说明](../../agents/backend/contrast-20261028/runbook.md)、[真实prompt](../../agents/backend/contrast-20261028/prompt.md)。
+
+root回传bootstrap真实成功；本岗没有云/CI/独立执行，S1/edge/LOAD未补通过。首对照明确开发6-role，正式7-role独立600秒须另协议与namespace；不是学生本人手写研究报告。
+
 ## 2026-10-28 七worker汇总后续
 
 已核根公开935汇总66110B/d554caf6及逐值projection：7终态有效，总11284、指定cohort9280。400组每操作2000，观测显著池等待及handler前延迟，schema<2ms；validate池获取1次，其余3路径2次。不能证明7池同时满、DB锁或整机CPU根因，也不能合并P95/跨源沿用。
