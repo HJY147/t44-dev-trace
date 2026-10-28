@@ -1,0 +1,7 @@
+{"success": true, "directory": "/root/t44-r9/resource-r28p16-01", "binding_sha256": "98e99ccfac34f98375da6c255f42724efacb711a2ab3eea324fba23486e26224", "private_handoff_path": "/root/t44-r9/resource-r28p16-01/private-mirror-handoff.json", "handoff_sha256": "0c8f7bf4559299d8b0e504bda5c0eb2d1ad8d1d97f5ff8f5960e5ea7adb69726", "service_started": false}
+{"success": false, "error": "RESOURCE_STREAM_REFUSED", "private_failure_path": "/root/t44-r9/resource-r28p16-01/failure-1b55edd6ef734daf9964e97e86731000.json"}
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python3', '-B', '/root/t44-r9/resource-r28p16-01/controller.py', 'start', '--directory', '/root/t44-r9/resource-r28p16-01', '--binding-sha256', '98e99ccfac34f98375da6c255f42724efacb711a2ab3eea324fba23486e26224']' returned non-zero exit status 1.

@@ -112,3 +112,27 @@
 - 源935短窗20/40/400为400/800/8000请求、0HTTP错；400四类P95仍1544.154/1263.755/1752.446/1920.496ms，非600秒独立验收。7份stage全部final_valid且11284观察请求；66110字节汇总写出fsync，但压缩出口超过18000断言失败，本地尚无完整汇总。原网络errno101、TLS只读temp及原导出失败均保留。
 - 后发f4开发CI695与前端89全过、Docker成功，精确源码5862超762；不移植为旧935云性能证明。新f4离线源artifact已完整核SHA，云构建/新代际/连续资源采集尚未做。OperationPlan净增14淘汰；DB canonical探针无可信净收益并发现旧审计反射缺口，待后续独立修复。
 - 本次整理先前已执行的798/804工具、内部领域V2设计补记、现状handoff和恢复说明；不改产品，不读独立私有用例/密钥，不补造学生经历。元数据检查与提交另有回执，未新发CI。云盘继续计费，最后账单未知。
+
+## 2026-10-28 恢复分析、改码和原双机（进行中）
+
+用户已授权恢复，沿用100元总预算；原双机Running、保卷、自动释放取消，无新购。工作负载截止07:30Z，最终仍须经济停机核验。原935汇总66110B已完整导出，SHAd554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053，11284请求；指向派发前间隔与pool等待，未证明全部根因，不对inclusive P95相加减。
+
+DB审计7种反例修复原生MySQL31/31；产品5933行超833。a12首CI静态E731红保留，helper修正后8c98产品40637880409成功（714/89、后端line2508/2790），a12 Docker40636980359成功；83应用文件字节/模式逐项相同，仍不说同提交。全部官方ZIP核验封存。
+
+a12精确包构建镜像475a1dd0…，P7新环境seed40项目6000任务、idle严格CA/IP401，6角色无scheduler。790 v1经审核因绝对截止/peer首错不停发阻断，14红修复后33绿，完整v2七文件新目录manifest640b3d…、runbook旧覆盖也修复；实际S1选441对/40scope、无HTTP、提醒事件不变。LOAD首装因父目录不存在失败未产文件，补建本轮目录后完整安装成功。尚无本轮负载通过声明。
+
+独立792无开发上下文，子岗无浏览器能力由root仅搬PUBLIC/OPAQUE。一次900秒none网络Linux52任务t-hz071dkpde6sxds，独立岗核52唯一结果PASS、3owned容器exit0/stopped、SUT0。仅工具预检，SUT仍未准入、snapshot full audit NP不变。T09原raw满足但编码超限在提交前被root拒绝，改13小块后ACK核同，保留原件。私有用例/密钥root未读，学生研究正文不代写。
+
+已纠正的执行问题如实保留：新workflow直接dispatch404及错误源参数未排队，改注册reusable后实际a12包进入云；UI重绘缺目标时工具拒绝未执行，按新树恢复，复制加入sentinel防paste剪贴板假核同；早期bootstrap旧schema和hostUTC3.10兼容错误于提交前修正。一次本地日志脚本因默认cwd读不到runtime在任何写入前失败，改绝对路径完成。
+
+### 10月28日实际P7短测、P16包过期与旧窗口闭合
+
+P7实际80/800/8000三cohort完整、HTTP0错误，400时四路径P95 get1555.055565/contract1370.412573/transition1680.087258/escalation1840.028403ms，仍未过270ms门槛。源a12不变，6role不是7role/600s验收。resource原文7516207B/SHA2662a505…，LOAD从offset0全尾镜像、0pullerror；22窗口样本/role，API CPU样本P95约1016.41%单核单位、MySQL153.85%，不能相加P95或冒整机占用/因果根因。scheduler全null。
+
+新P16gen01与P7 seed_manifest8ffd0938…及selection4bf3514b…逐字一致。资源start首次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED拒绝，服务实际active；后续实际argv/uid0/unitSHA与start-plan完全一致、原start-result缺失，root在逐项重新核验后O_EXCL补记late实际PID/startticks/argv回执（明示not_original_start_success），原controller/binding/失败不改。随后真实S2完成441create+dedup，但浏览器搬运超时，600s包有效窗口先到；P16未执行任何cohort，禁止修改created_at/TTL或拿旧包继续。仅两片密文送LOAD，含matrix最后片未提交。
+
+root多处估时没有及时读clock，后来实读07:51才确认07:30旧窗口已过；原定时器保护实际生效。07:54:48官方UI status分别核P7/P16所有六role Runningfalse，scheduler absent，卷未删。P16gen02仅本地写计划，从未submit/prepare。后续改全新10:30Z隔离profile，旧07:30/未上云08:15材料保留；预算按私有费用核查及原两机本次约34元基础估算，仍100元上限，实际最终账单未核。完成后仍要经济停机，不以应用停掉冒VM免费。
+
+root本地两次生成器多余placeholder造成写完计划后NameError，只有本地计划落盘、无云submit；一次JSON读取旧Python repr失败后用ast.literal_eval读原记录，不改原件；一次私包seal构造旧SHA替换顺序错误被提交前guard拒绝，修后新SHA核同才执行。资源mirror初次root漏run-id拒绝且未建输出，补明确run-id后成功，原失败保留。公开/密文与私有界限保持，未读独立私有用例/密钥，不把AI过程冒学生经历。
+
+公开UI复制原件的CRLF使第一次cached diff-check真实exit2，commit未执行；采用逐件无损gzip封存原UI字节/双SHA并仅CRLF→LF生成可读projection，manifest区分UI复制字节和远端原文，不抹原件。随后再执行diff-check与提交。

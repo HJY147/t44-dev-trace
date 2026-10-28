@@ -1,39 +1,45 @@
 {
   "role": "coordinator AI",
-  "stage": "paused-retain-20261026",
-  "user_pause": true,
-  "prompt_ref": "records/prompts/coordinator-pause-20261026.md",
+  "stage": "resumed-20261028-new-window-preparation",
+  "user_pause": false,
+  "prompt_ref": "records/prompts/USER-resume-20261028-original.md",
   "cloud": {
     "same_instances": true,
     "node_count": 2,
-    "both_state_ui_verified": "Stopped",
-    "both_stop_mode_ui_verified": "Economical",
+    "both_state_ui_verified": "Running",
+    "both_stop_mode_ui_verified": "Economical stop on completion required",
     "automatic_release_cancelled_nodes": 2,
     "disks_retained": true,
     "budget_CNY": 100,
     "storage_still_billed": true,
-    "final_bill_verified": false
+    "final_bill_verified": false,
+    "new_instances_purchased": 0,
+    "workload_deadline_utc": "2026-10-28T07:30:00Z",
+    "old_diagnostic_workloads_stopped_ui_verified": "2026-10-28T07:54:48Z",
+    "next_planned_new_namespace_deadline_utc": "2026-10-28T10:30:00Z",
+    "planned_new_window_not_yet_on_cloud": true
   },
   "current_application": {
-    "source": "f4bd382d4668130793fc553df9ce6363c4656ea6",
-    "application_lines": 5862,
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "application_lines": 5933,
     "upper_bound": 5100,
-    "excess_lines": 762,
+    "excess_lines": 833,
     "size_passed": false
   },
   "development_CI": {
-    "product_run": 40201584671,
-    "docker_run": 40201584699,
-    "backend_tests": 695,
+    "product_source": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
+    "docker_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "product_run": 40637880409,
+    "docker_run": 40636980359,
+    "backend_tests": 714,
+    "frontend_tests": 89,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
-    "backend_covered_lines": 2478,
-    "backend_total_lines": 2760,
-    "frontend_tests": 89,
-    "frontend_covered_lines": 364,
-    "frontend_total_lines": 390,
-    "report": "reports/final/round9-ci-evidence.md"
+    "backend_covered_lines": 2508,
+    "backend_total_lines": 2790,
+    "application_83_files_identical": true,
+    "report": "reports/final/resume-ci-20261028.md"
   },
   "cloud_diagnostic": {
     "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
@@ -63,19 +69,54 @@
     "worker_traces_closed_valid": 7,
     "observer_requests": 11284,
     "summary_fsynced": true,
-    "summary_local_export_complete": false,
-    "root_cause_proven": false
+    "summary_local_export_complete": true,
+    "root_cause_proven": false,
+    "summary_sha256": "d554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053"
   },
   "pending": [
-    "user instruction to resume",
-    "exact f4 cloud generation and continuous resource capture",
-    "new naturally valid/expired/revocable sessions",
-    "fresh independent functional and full performance execution",
-    "genuine source reduction and separately reviewed database audit fixes",
-    "final billing",
+    "new P16 namespace/window and 600s-fresh private transfer then actual comparison",
+    "T12s2 neutral material setup actual verification",
+    "fresh actual F identity and isolated functional grant/launch",
+    "formal seven-role 600s performance acceptance",
+    "genuine source reduction currently 833 over",
+    "final billing and economical stop retaining disks",
     "student-authored research"
   ],
   "resume": "docs/deployment/resume-after-pause-20261026.md",
   "decision": "records/decisions/pause-retain-20261026.md",
-  "report": "reports/modules/coordinator.md"
+  "report": "reports/modules/coordinator.md",
+  "current_cloud_development": {
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "P7_bootstrap_and_idle": true,
+    "P7_stage1_complete": true,
+    "P7_stage2_executed": true,
+    "P7_pressure_executed": true,
+    "P16_prepared": true,
+    "role_count": 6,
+    "formal_acceptance": false,
+    "P7_measurement_requests": 8000,
+    "P7_HTTP_errors": 0,
+    "P7_path_p95_ms": {
+      "getTask": 1555.055565,
+      "validateContractPayload": 1370.412573,
+      "transitionTask": 1680.087258,
+      "createEscalation": 1840.028403
+    },
+    "P7_resource_raw_bytes": 7516207,
+    "P7_resource_raw_sha256": "2662a505f4034f63ae50f836d0c239cff1f2e018431cf2869af4a496ecbdd283",
+    "P16_stage2_executed": true,
+    "P16_pressure_executed": false,
+    "P16_packet_window_expired_before_any_cohort": true,
+    "P16_new_attempt02_prepared": false,
+    "all_old_running_containers_stopped": true
+  },
+  "independent_tool_preflight": {
+    "unique_run": "t-hz071dkpde6sxds",
+    "linux_checks": 52,
+    "passed": 52,
+    "SUT_requests": 0,
+    "SUT_admitted": false,
+    "scope": "PASS_TOOL_PREFLIGHT_ONLY",
+    "snapshot_full_audit": "NOT_PROVEN"
+  }
 }
