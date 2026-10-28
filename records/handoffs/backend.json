@@ -2799,6 +2799,14 @@
       ],
       "current_production_adoption": false,
       "existing_scalar_metadata_and_all_unique_list_history_preserved": true
+    },
+    {
+      "source_commit": "92f177d95ee9ddbe14ad55823b1a5310f174d063",
+      "new_named_sections": [
+        "scale_resume_20261028"
+      ],
+      "product_changed": false,
+      "existing_scalar_metadata_and_all_unique_list_history_preserved": true
     }
   ],
   "p16_response_prototype_20261028": {
@@ -2827,5 +2835,51 @@
     "production_admitted": false,
     "root_cause": "NOT_PROVEN",
     "prompt": "ROLE-backend-RESPONSE-FASTPATH-20261028-v1"
+  },
+  "scale_resume_20261028": {
+    "operator": "backend AI",
+    "base": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "branch": "codex/backend-scale-resume-20261028",
+    "design_commit": "27215e9",
+    "prompt": "ROLE-backend-SCALE-RESUME-20261028-v1",
+    "implementation_status": "diagnostic only; no candidate implemented",
+    "artifacts": [
+      "agents/backend/scale-resume-20261028/design.md",
+      "agents/backend/scale-resume-20261028/prompt.md",
+      "agents/backend/scale-resume-20261028/report.md",
+      "agents/backend/scale-resume-20261028/verification.json",
+      "agents/backend/scale-resume-20261028/source-count.json"
+    ],
+    "interfaces": "REST/OpenAPI/DDL and all owner implementations unchanged",
+    "application_lines": 5933,
+    "upper_bound": 5100,
+    "excess": 833,
+    "within_range": false,
+    "require_range_exit_code": 1,
+    "owned_module_files": 19,
+    "owned_module_lines": 2176,
+    "api_domain_services_contracts_lines": 1993,
+    "application_files_byte_equal_a12": 65,
+    "production_changes": 0,
+    "net_line_reduction": 0,
+    "new_tmp_or_test_files": 0,
+    "executed": [
+      "fixed source_count.py on committed a12 with verified cloc2.10",
+      "AST parse and exact-duplicate-location diagnostic of19 owned modules",
+      "65 application files compared byte-for-byte with a12",
+      "git product/contract/DDL diff empty"
+    ],
+    "unverified": [
+      "new product tests",
+      "full development CI",
+      "MySQL",
+      "frontend tests",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "finding": "No credible large net reduction identified; existing small or negative candidates not repeated; no audit/type/contract weakening",
+    "cloud_frozen_source_untouched": true,
+    "student_research_changed": false,
+    "next": "scale gate remains failed; root owns any future concrete architecture choice and exact-source campaign"
   }
 }

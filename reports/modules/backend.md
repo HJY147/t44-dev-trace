@@ -421,3 +421,7 @@ P16 PUBLIC两hash精确核，8000请求零HTTP错，started15.144699s较P721.890
 响应生成校验仅临时白名单与兼容子集，原请求/错误列表/顺序保持回退；冻结设计/明确修订后累计190HTTP。首31HTTP库compile/harness KeyError无计时保留；次159HTTP先424守卫后ABBA，另13纯守卫在计时后补、分开标注。列表20任务少5–6ms，get<1ms，contract/trans B2反向，未证明当前P7三条小响应有数毫秒安全收益，未测escalation。
 
 产品/SQL/权限/阈值/云均零改；原型约140行正成本、无全等价/生产准入/正式性能结论。报告及原件/manifest/verification/prompt见agents/backend/p16-schema-response-20261028，工具与冻结设计在tmp/788/schema-response。
+
+## 2026-10-28 冻结a12后端规模诊断
+
+本轮后端AI仅只读检查独立分支codex/backend-scale-resume-20261028的准确a12源码。固定脚本/cloc2.10实际5933/5100、超833，退出1；65应用文件逐字不变，产品/冻结OpenAPI/DDL无diff。19模块共2176行，其中api/domain/services/contracts1993、cli/settings183。未发现值得实施的大幅净减候选，净减0；旧六操作预算15、OperationPlan净增14等不重复引入。保留全部授权/错误次序/锁/CAS/审计与DB安全修复，没有产品测试/CI/MySQL/云/正式性能/独立验收新结论。未读独立私件、不改学生研究正文；报告与命令证据agents/backend/scale-resume-20261028，实际prompt ROLE-backend-SCALE-RESUME-20261028-v1。规模门继续失败。

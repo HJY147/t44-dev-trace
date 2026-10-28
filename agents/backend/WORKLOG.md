@@ -674,3 +674,11 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 第二run159HTTP，新a12 Git导出51源/新SQLite生产SQLAlchemy/FastAPI，先424守卫绿再ABBA；后另补13纯守卫绿，明确后补时序、不冒全部前置覆盖。累计190 HTTP全部原schema外层再核，网络/MySQL尝试0，产品/业务/SQL/权限/请求校验/阈值零改。列表20任务CPU A1/B1/B2/A2=8.583666/2.784209/3.364958/8.57ms；小get收益<1ms，contract与transition B2较A2反向，未测escalation，不能称当前P7主要修复或全等价。原型137非空非#行非cloc正成本，未生产准入。
 
 根报告模型capacity中断，无原始provider错误可核，本岗保留原context/模型继续，不编次数/错误码。两轮raw和supplement无损gzip+双SHA/roundtrip、精确工具hash、全部失败/警告、三工具静态绿见agents/backend/p16-schema-response-20261028。完整报告/提示词/交接齐，无正式400/600成绩或新云授权。
+
+## 2026-10-28 冻结a12后端源码规模再诊断
+
+- 实际操作者后端AI，prompt ROLE-backend-SCALE-RESUME-20261028-v1；独立分支/worktree从a12创建，先行留痕27215e9。本轮仅诊断，产品改动0、真实净减0。
+- 原source_count.py+固定cloc2.10准确a12实际5933/5100、超833、require-range退出1；65应用文件逐字等于a12，产品/冻结OpenAPI/DDL diff空。计量口径未改。
+- 19本岗模块2176行，其中api/domain/services/contracts1993，cli/settings另183；至少4物理行完全相同AST语句0不代表无未来优化空间。较大模块是职责成本，不是删除预算。
+- 初看六操作委托20–35估计在读旧完整15行预算后撤回，向root及时校正；旧OperationPlan+14、wire0、通知分页3不再重做。没有可信大幅净减新候选，不引入反射DSL/隐藏配置或删类型/审计/错误顺序。
+- 本轮无新tmp文件/产品测试/CI/MySQL/云/前端/正式性能/独立验收；DB七新反例源码不变但不冒复测。792私件、其它岗位源码和学生研究正文未触碰。report/verification/source-count/prompt在agents/backend/scale-resume-20261028；阶段push使用[skip ci]，不触发云重测。
