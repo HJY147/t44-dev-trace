@@ -474,3 +474,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 ## ROUND9 消息去重限定复核
 
 c4b3/2c1dd 精确候选39模块通过/23真实integration未运行，固定源5875→5862净13，仍超762。静态未见新阻塞，建议root进入集成CI；不等于发布准入。API2914边界12通过但net0/整体收益NP，暂不作为规模优化推荐。本岗无产品实现、云或独立验收执行；真实提示词ROLE-reviewer-ROUND9-v1。报告messaging-size-c4b3f114-round9及evidence/round9。
+
+
+## 2026-10-28 f7/16Z/P64短诊断预装审核及运输阻断修复
+
+AI reviewer；ROLE-reviewer-P64-F7-20261028-v1。新d17 worktree只读PUBLIC/准确f7自有product-source53夹具，不读783/792私件、不联络tester或访问云。13runtime1da与原三业务文件/HTTP非configure18函数类/原QUERY PROBE seed常量/transport只SOURCE-STOP核；原66assert原序仅两身份/时刻替换、删除0。prep false/noHTTP→空库bootstrap先于idle、pressure另真实六role/CA/source、e551薄适配原305f锁内admit/GEN父锁外、TTL/cohorts不降。自跑原P64 68绿/97.24秒/一原弃用warning，SQLite/TestClient/假Docker/MySQL+openssl，未native/cloud。发现P64-UI-01前三raw脚本外层base64+300=20444/21640/21112超18k，先发root；原owner27bc真实3红1绿gzip保留，原d17不改。20eb仅新transport7片，原P64目录Git diff空；独立复算max outer15968/UI16090，逐片解码与SHA同；本岗新7实际UI安装/拒覆盖/混包全绿57.51秒。只新7关闭运输，原4拒绝保持，可条件预装/环境预检，无HTTP/正式准入。报告reports/reviews/p64-f7-tools-20261028.md，完整副作用/一次marker固定inputs限制如实记录；初始审计把STOP写成ISO假设失败后仅改审计比较，另一次猜错新test文件名读失败，非业务红。
