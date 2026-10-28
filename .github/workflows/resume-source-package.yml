@@ -1,6 +1,14 @@
 name: resume-source-package
 
 on:
+  workflow_call:
+    inputs:
+      source:
+        required: true
+        type: string
+      stop_utc:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       source:
