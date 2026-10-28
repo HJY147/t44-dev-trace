@@ -16,6 +16,8 @@ OPTIMIZATION_TESTS = [
     "tmp/812_database_size/test_seed_v2.py",
     "tmp/786_database_pool_20261028/786_pool_settings.py",
     "tmp/787_database_select_resume_20261028/787_query_semantics.py",
+    "tmp/782_component_call_refactor_20261028/782_backend_component.py",
+    "tmp/780_messaging_component_20261028/780_facade_semantics.py",
 ]
 
 

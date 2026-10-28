@@ -716,3 +716,9 @@ root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，�
 - 实际最终小包5片+校验安装共6命令，manifest c257623f…、最大raw11337/整encoded+256=15372；实际5d/16Z分片逐字SHA、6bash-n、实际本地独占重组后六文件与profile原件逐字相同。仅remote-root字面值映射本机tmp夹具，source/stop未改；没有云提交。目标全新/root/t44-r9/v4-code-20261028-01/profile。
 - 本岗v4 40项加旧profile16项共56项12.17s通过，CI原范围加本岗新guard Ruff通过。backend另反馈桥56项是其结果，不累计成同一套产品或独立验收。完整source package/既有官方CI同builder运输、receiver/build、新namespace prepare64w5/0、arm/infra/probe、migrate/idle/observer与保卷stop命令在v4/STEPS.md；新GEN预算回执path+SHA两个必填已告root/backend，不能只接共享锁却忽略实际预算。
 - root代岗拟建783 source-free新镜像时询问授权，本岗确认只新副本删Dockerfile三安全ENV及PYTHONPATH缺省空两处，原f30/证明/no-network不变，实际改码构建由root另记，不冒本岗运行。此v4任务本岗0云/UI/变配/镜像构建/真实MySQL/SUT；root后续实际新F/短诊断及通过后新600秒授权，旧270/active400/600与LOC原门禁保留。
+
+## 2026-10-28 component/Call新模块coverage接线
+
+- root指定b0793aa1a9aa422a8bf3a7df66aaafc137560574，新codex/deployment-component-ci-20261028独立worktree；先component-ci设计再仅追加782_backend_component与780_facade_semantics各一次。runner AST除列表外一致，原七补充路径/tmp/backend/markers/覆盖率阈值和分母保留，product workflow含原935/a12定向fetch逐字不变。产品及测试断言不改，不靠接线解决root转述尚超限LOC。
+- 两新模块合21项收集0.59s、实际21项0.30s过；原979/806连同现有legacy_caller导入41项收集0.45s过，后者只有收集，不冒真实服务测试。第三方Starlette/httpx deprecation warning原样留日志，不改依赖。原静态guard23项0.21s过，CI同范围加两新模块Ruff过；两新/两旧测试及test-only adapter字节SHA与b079逐字相同，无额外Git基线或新运行依赖。完整原输出gzip/bytes/SHA/argv在component-ci-20261028/validation.PUBLIC.json。
+- 未跑完整product/Docker/coverage/真实MySQL或云，未读783私件/重做其保护检查。root转述两原机Running和APP64/128只作上下文，不冒本岗观察；旧5d/16Z profile/source/小包及结果保留，root新CI确切源到达后再另新目录派生，不能把候选写回旧身份。四件留痕后小commit交付，由root统一完整CI。
