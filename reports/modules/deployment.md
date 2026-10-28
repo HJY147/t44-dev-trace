@@ -500,3 +500,8 @@ root先得真实host errno111/data-only errno101，随后限定TLS日志明确re
 ## 连续资源raw与私网mirror实现（未云运行）
 
 resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirror，原f4 phase9c1abe pin；7role exactCID/image、cgroupv2累计CPU/mono/RSS/memory真字段、first/missing null/restart/延迟，固定FD/inode/owner/size/prefixhash/bytecap，自动/USR1 finaltail，21Z前bounded。只load私网peer＋TLS原leaf只读、单GET/raw、专用nonce/offset/chunkSHA，handoff私有无API/DB账号。load从offset0真append/wholeSHA/tail和各role实际coverage，independent verdict null，after-only包络不能冒通过。17本地checks0.10s/Ruff绿，含真实loopback TLS/CA拒绝/nonce/单路径/字节完整性；不等于云Docker/proc或跨VM持续执行。操作见RESOURCE-STREAM-STEPS；start前实际numeric预览/正式warmup前两端启动/seal后收全再stop，root另取原件。所有云进程/端口/采样区间/回收证明仍待root实操，无新账号/SG/IAM/VM动作。
+
+
+## 2026-10-28 恢复本地准备
+
+旧21Z截止已过，不能直接重开旧controller。只读summary导出器已实现：固定66110字节与批准SHA、每块≤12000字符、全部SHA链、本机独占新文件；12项本地检查通过，原夹具2失败XML保留。一次安装并首块脚本3679字节供root审阅。尚无云执行、新源build或性能结论；新profile参数化继续准备。见deployment/cloud-reuse/RESUME-20261028-STEPS.md及agents/deployment/resume-20261028/design.md。

@@ -629,3 +629,10 @@ root先得真实host errno111/data-only errno101，随后限定TLS日志明确re
 resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirror，原f4 phase9c1abe pin；7role exactCID/image、cgroupv2累计CPU/mono/RSS/memory真字段、first/missing null/restart/延迟，固定FD/inode/owner/size/prefixhash/bytecap，自动/USR1 finaltail，21Z前bounded。只load私网peer＋TLS原leaf只读、单GET/raw、专用nonce/offset/chunkSHA，handoff私有无API/DB账号。load从offset0真append/wholeSHA/tail和各role实际coverage，independent verdict null，after-only包络不能冒通过。17本地checks0.10s/Ruff绿，含真实loopback TLS/CA拒绝/nonce/单路径/字节完整性；不等于云Docker/proc或跨VM持续执行。操作见RESOURCE-STREAM-STEPS；start前实际numeric预览/正式warmup前两端启动/seal后收全再stop，root另取原件。所有云进程/端口/采样区间/回收证明仍待root实操，无新账号/SG/IAM/VM动作。
 
 新generation/资源raw阶段已push0eeb42f13cd31776b506f9dca96e9dbcb229b9f1，Issue7 #issuecomment-6399756930发表，官方REST逐字回读一致；body/readback/proof已保存。新云prepare/collector/完整mirror和停止仍未由本岗执行或获回执，不预填。
+
+## 2026-10-28 恢复分析与只读汇总出口
+
+- 用户恢复后root派部署岗仅本地准备。核integration22f666e2及原部署fb0a4334，新独立codex/deployment-resume-20261028 worktree；只合原已提交部署工具，不动根索引或产品。先c5fcb119记录设计再写代码；原模板/旧截止/旧证据不改。
+- 旧798在fsync原66110B汇总后仅因base64>18000断言失败。新observer-summary-export只认固定路径/长度/完整SHA，O_RDONLY|NOFOLLOW单FD，按12000字符分块，每任务一块；本机完整链校验后O_EXCL新0600输出/fsync。安装并首块脚本3679B，可一次粘贴；无密码/会话/产品导入或源文件写入。
+- 系统Python没有pytest/ruff的真实错误保留为环境发现，不安装。root给已批准纯依赖venv，只执行其Python/第三方包，不读相邻env/log/DB。首次12检查10过2失败，是本岗夹具的macOS /var路径非canonical；移至项目tmp793后12通过，原XML另存。Ruff/format通过，格式化后12再通过。没有放松源SHA或文件保护。
+- 旧generation/resource-stream硬编码2026-10-25T21Z过期；旧factory Persistent只停止冻结project/service保卷。新最终源待root pin，不能冒f4是最终源。继续本地派生profile准备，尚未云启动/build/采集/独立验收，不读独立未发表用例/密钥或私包。
