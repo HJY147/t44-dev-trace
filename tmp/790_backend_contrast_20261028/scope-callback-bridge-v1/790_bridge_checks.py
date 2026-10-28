@@ -187,7 +187,7 @@ def prepared(tmp_path, key):
         "launch": launch,
         "supervisor": sup,
         "binding": binding,
-        "neutral": {"sut_identity": identity},
+        "neutral": {"kind": "ROOT_NEUTRAL_NEW_F_RUNTIME_PUBLIC", "sut_identity": identity},
         "admission": admission,
     }.items():
         path = tmp_path / (name + ".PUBLIC.json")
@@ -567,6 +567,41 @@ def test_original_cli_and_readonly_data_guard_seal_roundtrip(tmp_path, monkeypat
             request, credential, request["context"], common.utc(datetime.now(UTC))
         )
         assert "token" not in sealed and path.read_bytes() == before
+        material = key[0].decrypt(
+            base64.b64decode(sealed["wrapped_key_b64"]),
+            rsa_padding.OAEP(
+                mgf=rsa_padding.MGF1(hashes.SHA256()), algorithm=hashes.SHA256(), label=None
+            ),
+        )
+        iv, encrypted = (
+            base64.b64decode(sealed["iv_b64"]),
+            base64.b64decode(sealed["ciphertext_b64"]),
+        )
+        authenticated = (
+            common.canonical(
+                {
+                    "nonce": request["nonce"],
+                    "project_ids": request["project_ids"],
+                    "context": request["context"],
+                }
+            )
+            + iv
+            + encrypted
+        )
+        assert hmac.compare_digest(
+            sealed["hmac_sha256"], hmac.digest(material[32:], authenticated, "sha256").hex()
+        )
+        decoder = Cipher(algorithms.AES(material[:32]), modes.CBC(iv)).decryptor()
+        padded = decoder.update(encrypted) + decoder.finalize()
+        unpadder = padding.PKCS7(128).unpadder()
+        decoded = common.parse(unpadder.update(padded) + unpadder.finalize())
+        with factory() as uow:
+            actual_row = uow.gateway.rows("auth_sessions", {})[0]
+            assert (
+                hashlib.sha256(decoded["credential"]["token"].encode()).digest()
+                == actual_row["token_hash"]
+            )
+        assert decoded["project_ids"] == request["project_ids"]
         with pytest.raises(common.Refused, match="SERVICE_SCOPE"):
             bridge_data.service_credential(
                 factory, {**request, "project_ids": [ids[0]]}, before, lambda: datetime.now(UTC)
@@ -736,3 +771,103 @@ def test_owned_command_timeout_preserves_prefix_if_process_disappears(tmp_path, 
         )
     assert (tmp_path / "owned.stdout.private").read_bytes() == b"public-prefix"
     assert (tmp_path / "owned.stderr.private").read_bytes() == b"error-prefix"
+
+
+def test_private_neutral_packet_cannot_be_exported_as_public_authority(prepared):
+    root, clock, observer, _, _, _, config = prepared
+    config = copy.deepcopy(config)
+    entry = config["originals"]["neutral"]
+    value = common.parse(common.read(Path(entry["path"])))
+    value["environment"] = {"accounts": {"m": {"token": "unit-private-not-for-export"}}}
+    raw = common.canonical(value)
+    altered = root / "wrong-private-input.json"
+    common.reserve(altered, raw)
+    entry.update(path=str(altered), sha256=common.sha(raw))
+    request_path = next((root / "PUBLIC/handoff").glob("*.request.PUBLIC.json"))
+    with pytest.raises(common.Refused, match="PRIVATE_FIELD"):
+        bridge_load.prepare(
+            config,
+            request_path,
+            common.sha(request_path.read_bytes()),
+            root / "blocked-export",
+            observer,
+            clock,
+        )
+    assert not (root / "blocked-export").exists()
+
+
+def test_final_publication_is_atomic_complete_json(prepared, monkeypatch):
+    result, _ = app_result(prepared)
+    root, clock, observer, _, folder, *_ = prepared
+    original = bridge_load.os.link
+    seen = []
+
+    def inspect_link(source, target, **kwargs):
+        raw = Path(source).read_bytes()
+        assert common.parse(raw)["kind"] == "SEALED_SERVICE_SCOPE"
+        assert not Path(target).exists()
+        original(source, target, **kwargs)
+        seen.append(Path(target).read_bytes() == raw)
+
+    monkeypatch.setattr(bridge_load.os, "link", inspect_link)
+    bridge_load.deliver(folder / "reservation.PUBLIC.json", result, observer, clock)
+    assert seen == [True]
+
+
+def test_readonly_preflight_failure_has_no_gen_or_auth_mutation(prepared):
+    root, clock, _, authority, *_ = prepared
+    backend = Backend(clock)
+
+    def refused(*_args):
+        raise common.Refused("READONLY_PROJECT_CHECK_FAILED")
+
+    backend.preflight = refused
+    with pytest.raises(common.Refused, match="READONLY"):
+        bridge_app.provision(authority, root / "readonly-refusal", backend, clock, "9" * 64)
+    assert not any(call.startswith("scheduler-") for call in backend.calls)
+    assert not list((root / "readonly-refusal").glob("*.inflight-or-quarantined"))
+
+
+def test_lease_extension_cannot_bypass_original_prepare_policy(prepared):
+    root, clock, _, authority, *_ = prepared
+    authority = copy.deepcopy(authority)
+    authority["app_lease_end_utc"] = authority["callback_deadline_utc"]
+    backend = Backend(clock)
+    with pytest.raises(common.Refused, match="LEASE_NOT_EXTENDABLE"):
+        bridge_app.provision(authority, root / "bad-lease", backend, clock, "9" * 64)
+    assert backend.calls == []
+
+
+def test_owner_probe_cli_is_preinstalled_and_parses_help():
+    import subprocess
+
+    path = Path(__file__).resolve().parent / "bridge_owner_probe.py"
+    result = subprocess.run([sys.executable, str(path), "--help"], capture_output=True, check=False)
+    assert result.returncode == 0 and b"--container-id" in result.stdout
+
+
+def test_scope_rsa_key_must_be_checked_before_any_data_query(key):
+    import bridge_data
+
+    def forbidden():
+        raise AssertionError("must not reach database")
+
+    with pytest.raises(ValueError):
+        bridge_data.preflight(
+            forbidden,
+            {
+                "public_key_pem": "-----BEGIN PUBLIC KEY-----\nnot-valid\n-----END PUBLIC KEY-----\n",
+                "project_ids": [1],
+                "iteration_ids": [],
+            },
+        )
+
+
+def test_actual_request_mutation_after_app_refuses_load_publish(prepared):
+    result, _ = app_result(prepared)
+    root, clock, observer, _, folder, *_ = prepared
+    request_path = next((root / "PUBLIC/handoff").glob("*.request.PUBLIC.json"))
+    request_path.write_bytes(b'{"new":"different request"}')
+    with pytest.raises(common.Refused, match="SHA"):
+        bridge_load.deliver(folder / "reservation.PUBLIC.json", result, observer, clock)
+    assert not list((root / "PUBLIC/handoff").glob("*.sealed.PUBLIC.json"))

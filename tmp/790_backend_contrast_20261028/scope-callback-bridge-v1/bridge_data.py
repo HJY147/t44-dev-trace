@@ -92,6 +92,7 @@ def service_credential(factory, request, private_raw, clock):
 
 
 def main():
+    from sqlalchemy import text
     from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
     from t44.settings import Settings
 
@@ -108,6 +109,11 @@ def main():
     verify_source(Path("/app/backend"), control["source_files"])
     engine = create_mysql_engine(settings.mysql_settings())
     try:
+        with engine.connect() as connection:
+            require(
+                connection.execute(text("SELECT DATABASE()")).scalar_one() == control["database"],
+                "ACTUAL_SELECTED_F_DATABASE_REQUIRED",
+            )
         factory = SqlAlchemyUnitOfWorkFactory(engine)
         preflight(factory, control["request"])
         if args.mode == "preflight":

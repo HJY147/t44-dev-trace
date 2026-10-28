@@ -27,6 +27,36 @@ def positive_ids(values, empty=False):
     require(len(set(values)) == len(values), "UNIQUE_IDS_REQUIRED")
 
 
+def public_only(value):
+    if isinstance(value, dict):
+        forbidden = {
+            "token",
+            "access_token",
+            "password",
+            "private_key",
+            "private_key_pem",
+            "accounts",
+            "sessions",
+            "environment",
+            "database_url",
+            "amqp_url",
+        }
+        require(
+            not any(key.lower() in forbidden for key in value),
+            "PRIVATE_FIELD_IN_PUBLIC_AUTHORITY_INPUT",
+        )
+        for item in value.values():
+            public_only(item)
+    elif isinstance(value, list):
+        for item in value:
+            public_only(item)
+    elif isinstance(value, str):
+        require(
+            not ("-----BEGIN " in value and "PRIVATE KEY-----" in value),
+            "PRIVATE_KEY_IN_PUBLIC_AUTHORITY_INPUT",
+        )
+
+
 def validate(authority, clock):
     require(authority["kind"] == "PUBLIC_SCOPE_AUTHORITY_V1", "AUTHORITY_KIND")
     docs = authority["documents"]
@@ -38,6 +68,12 @@ def validate(authority, clock):
     g, launch, sup, b, neutral, r = (
         decode_document(docs[name])
         for name in ("grant", "launch", "supervisor", "binding", "neutral", "request")
+    )
+    for name in docs:
+        public_only(decode_document(docs[name]))
+    require(
+        neutral.get("kind") == "ROOT_NEUTRAL_NEW_F_RUNTIME_PUBLIC",
+        "NEUTRAL_PUBLIC_RUNTIME_SHAPE_REQUIRED",
     )
     n = neutral["sut_identity"]
     admission = decode_document(docs["admission"])
