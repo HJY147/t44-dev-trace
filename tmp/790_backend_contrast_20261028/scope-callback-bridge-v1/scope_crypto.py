@@ -18,7 +18,9 @@ EXECUTION_BUILD = "e8ac37bb41c474681f2ea36598806cb7ba0605ee26b82cfdc4fe462c7a2d1
 
 
 def canonical(value):
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    return json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode()
 
 
 def sha(raw):
@@ -111,7 +113,9 @@ def scope(request, credential, expected_context, sealed_utc):
     plain = canonical({"nonce": nonce, "project_ids": ids, "credential": credential})
     key, iv, ciphertext, wrapped, _ = encrypt(plain, request["public_key_pem"])
     authenticated = (
-        canonical({"nonce": nonce, "project_ids": ids, "context": context}) + iv + ciphertext
+        canonical({"nonce": nonce, "project_ids": ids, "context": context})
+        + iv
+        + ciphertext
     )
     return {
         "kind": "SEALED_SERVICE_SCOPE",
