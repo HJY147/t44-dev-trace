@@ -22,6 +22,42 @@ python3 deployment/cloud-reuse/observer-summary-export.py assemble \
 
 原汇总是源935开发诊断观察，不是当前新源、完整600秒性能或根因证明。提取后由总协调/后端按真实阶段和重叠跨度解释，不能相加重复归因。
 
-## 新代际待补
+## 新源和新截止的独立派生profile
 
-旧generator和resource-stream绝对21Z已经过期，不能原样使用。新派生profile将显式pin最终完整Git源、新≤12小时UTC窗口、真实文件数量及builder→generator→resource-stream摘要链；依赖/DDL/REST/前端等同字节保护继续保留。输出必须用新目录/新namespace，不改旧935/f4绑定。此项目前仍在本地实现，不表示可以启动新SUT。
+旧generator和resource-stream绝对21Z已经过期，不能原样使用。新增`derive-resume-profile.py`只读精确审核的四个旧模板SHA，构造全新派生件；原935/f4不改变。root先明确最终完整源commit和真实未来30分钟至12小时的UTC截止，再在本机运行：
+
+```sh
+python3 deployment/cloud-reuse/derive-resume-profile.py derive \
+  --repository /Users/yang/Desktop/nothing/软件开发大作业 \
+  --source ROOT_FINAL_COMPLETE_40_HEX_COMMIT \
+  --stop-utc ROOT_NEW_ABSOLUTE_UTC_Z \
+  --output /ABSOLUTE_NEW_PARENT/profile-01
+```
+
+输出新builder、generation、resource-stream和五文件receiver以及profile.json/SHA；builder→generator→resource-stream/receiver摘要链、真实Git源文件数量和等字节集合摘要都记录。依赖/REST/DDL/schema.py/前端/支持文件仍与935完整比较，不同就拒绝；不能为了复用镜像删检查。如果本轮改到这些，先交总协调另行设计并重建必要镜像。
+
+本机生成小源制品（纯Git/stdlib，不Docker/不业务导入）：
+
+```sh
+python3 deployment/cloud-reuse/derive-resume-profile.py package \
+  --repository /Users/yang/Desktop/nothing/软件开发大作业 \
+  --profile /ABSOLUTE_NEW_PARENT/profile-01/profile.json \
+  --profile-sha256 ACTUAL_PROFILE_SHA \
+  --output /ABSOLUTE_NEW_PARENT/package-01
+```
+
+只在新目录产出source/原件和source-artifact.zip五文件（完整source.gz/manifest/frozen-equality/Dockerfile/新builder），回执给实际ZIP/manifest/builder摘要。派生receiver仍检查原ZIP全SHA/CRC、五文件allowlist、TAR及新builder SHA；不能拿旧5200 receiver接收新builder，也不能改新builder套旧manifest。
+
+运输方式由root选定并另有实际完整字节核验；本岗未上传/发CI。root把新profile脚本、source小包交APP后，依原BACKEND-UPGRADE和GENERATION步骤，使用**新**receiver→新builder build→新generation prepare/arm/infra/migrate，分别pin真实manifest、derived image binding、phase binding和新截止。新generation的完整源检查取真实文件数量，不固定假53；原entry/nonroot/networknone/TLS CA+IP/新namespace/保卷ownedstop保护仍在。
+
+连续资源步骤使用派生resource-stream.py与**该新generation**绑定，采样和finaltail截止≤新profile停止时间；warmup前启动APP collector及LOAD mirror，先确认真实数值，再跑正式阶段。seal→LOAD确认全尾/wholeSHA→两个observer stop→SUT ownedstop；独立验收自行判coverage/性能，不以运输complete替代数值完整。时间过期或工具SHA变化就新建profile，不改旧已冻结运行目录。
+
+16项profile本地检查包括：原模板精确SHA/前像次数、新窗口拒绝过期/无界/非Z、动态49文件完整检查、nonroot/环境/模式/缺文件拒绝、真实22f Git源53项五文件ZIP及receiver校验、拒覆盖和错误profile SHA。22f只是本岗本地工具验证源，不是本轮最终产品选择。没有新云build/新generation或跨VM采样结果。
+
+## 只读核旧定时器示例
+
+```sh
+systemctl list-timers --all --no-pager 't44-cloud-*'
+```
+
+随后只对实际列出的旧timer用`systemctl show EXACT_OLD_TIMER --property=Id,ActiveState,SubState,Result,LastTriggerUSec,NextElapseUSecRealtime`及旧phase/status/receipt只读核验。不要disable/delete旧锚或强杀unknown；旧到期任务完成后保留它的实际回执，用新的run-id/namespace建新代际。

@@ -505,3 +505,5 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 ## 2026-10-28 恢复本地准备
 
 旧21Z截止已过，不能直接重开旧controller。只读summary导出器已实现：固定66110字节与批准SHA、每块≤12000字符、全部SHA链、本机独占新文件；12项本地检查通过，原夹具2失败XML保留。一次安装并首块脚本3679字节供root审阅。尚无云执行、新源build或性能结论；新profile参数化继续准备。见deployment/cloud-reuse/RESUME-20261028-STEPS.md及agents/deployment/resume-20261028/design.md。
+
+新profile派生器已完成，16项本地检查通过：明确完整Git源与新30分钟至12小时UTC窗口、原模板精确SHA/前像、真实完整文件数、builder→generation→resource SHA链、原935依赖/REST/DDL/前端等字节保护、新receiver五文件包核验。实际本地Git22f打包/接收检查通过，但22f不预设为本轮最终源；没有云build/新phase/连续资源执行。原首失败XML尾空格导致一次cached diff-check exit2，作为原始证据例外保留，未以提交成功冒检查全绿。
