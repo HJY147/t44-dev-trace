@@ -33,3 +33,9 @@ root要求只在新F准备中性五身份、7真实会话与provider，禁止读
 ## ROLE-backend-CONTRAST-WINDOW1030-v1
 root07:51要求：旧07:30已过，旧P16gen02 init未UI、P16-01无cohort，后续新10:30窗口/全新namespaceP16gen02；原2机100预算root管理。另副本，不改v2七件/33proof；仅HARDSTOP/STOP窗口及manifest版本，600s/session/请求/失败停发不变，严格allowlist/33原断言回归、encoded+全部desc<18000，新transport独立；未来F等实际binding/schema/key。
 本岗先db9f设计、只两HARDSTOP和一STOP字面小时改动，5a88验证器先提交再真跑raw/AST/assert/hashes，33+13绿；把默认formatter上下文错配如实记录，不格式化副本以保持精确差分；原配置和宿主3.10定点豁免复核。a8c生成完整小命令且实际本地装/拒绝覆盖/拒绝旧bundle，长度包含所有encoded/包装逐字测；另只读检查S1选择受窗口影响仍441对相同，云结果仍待root，不伪比较。所有旧失败/过期材料保持；本岗无云/独立材料读取/收费。
+
+
+## ROLE-backend-PROVIDER-T15-1030-v1
+root09:44要求仅新F T15/真实S3-T16公开接口，别混旧DB/CA/截止，不部署旧provider；先精确S1 CLI后新F实际材料。最初本岗误把fixture名按runbook写v3，根核实际01未采用，这是实际AI错误，不写成人工修复。
+本岗按T15新binding/18字段运行证据及T16 nonce/key，保原crypto线格式/原Runtime60和正常authstore INSERT+audit，云前从controller探针发现旧“全表空”假定，先红1→修后17绿，原测试AST保留且不删audit；root执行一次实际发行5/7成功。
+实际scope请求在准入后到来，本岗只有codec、完整callback桥未预装，编码草案迟到。root核会话已结束明确停止，本岗不补封、不发callback、不重跑，草案保DRAFT且不冒实际applied或PASS；旧草案墙钟不足liveness也记录。改进应在SUT前把完整I/O/通用scope/revocation桥及断点链验证好，实际nonce只填参数，而不是在短等待窗才开发。此为真实AI流程改进素材，不充当学生本人研究报告。

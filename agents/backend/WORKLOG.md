@@ -657,3 +657,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 33新窗口P16gen02数据回归+13transport全绿/零fail/error/skip，原49与17断言经允许数据归一AST等价，完整a12真实V2/CLI/SQLite/handler仍测；Starlette警告保留。5a88验证工具先提交再实际运行，proof90bb7e48。初错用根80列Ruff/format只报告未改源，最终原backend100/transport80格式、backend检查和根仅FURB162宿主3.10定点豁免均过。
 - 实际本地6安装子进程正/反门通过：3片/transport正向，覆盖拒绝、旧bundle拒绝；完整命令含encoded/desc为13933/13792/16057/6374均<18000，新目录/O_EXCL/全7核hash。root先装全/建key准备运输再S2，不把600秒花在安装。
 - 延长稳定筛选窗口的本岗只读开发SQLite候选1680→1440，441已选pair变化0（IDs hash同31e402...），非云S1；仍要求root实际新selectionSHA核原P7公开4bf3514。全部实际AI过程，未写学生经历，未来F等真实新binding/publicschema/key另版。
+
+
+## 2026-10-28 T15新F：真实发行与迟到scope停止
+- 96e67设计/080ac初源/d281c108正常启动认证审计修复：先真实匿名Runtime probe→audit使全空假定1红，后保原audit逐行且其他业务/身份/服务表空，17唯一本地全绿、原testAST不变；红gzip双SHA/roundtrip保持。crypto c89原字节不变，原TTL/时钟/authstore未手改。
+- 0a8完整两片12099/13562B，manifestc222，cc4b579c实际18字段neutral9bda/runtime91f组装8628B命令；root actual发行t-hz071e5xg8zcpa8成功，5身份7session、audit9业务0、revocableactive；真60秒原getMe401TOKEN_EXPIRED/authrow不变，密文4902B/0c141c22，只root搬cipher。材料成功不等功能PASS。
+- 实际nonce393263...scope请求10:13:51；root原token10:15:50、functional容器10:15:51.441769自然exit0（非PASS）、scheduler-start10:15:57已迟。本岗只本地草案10420B/534f3b79，未发root/部署/执行/密封返包；收到停止即停，不给旧会话补封、不自动重跑，不读独立私证据。T18PUBLIC确认pending1和NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。
+- 草案原字节DRAFT_NOT_EXECUTED保留，旧入口替STOPPED说明；未提前准备完整通用callback桥是本岗准备缺口，草案仅墙钟不足证supervisor仍活，不可复用旧nonce/context。root独立证据归因待后续，不能从exit0宣告通过或伪说API失败。
+- 先前S1 fixture名从runbook误猜，root云前拦截且未采用，已承认；项目外本岗误建空/tmp/unused确认空后删除。原产品/790/旧F/独立原件不改，本岗无云执行/费用/新CI/独立private读取。记录皆AI岗位事实，不替学生写研究报告。
