@@ -1,0 +1,50 @@
+{
+  "cloud_or_SUT_executed": false,
+  "created_utc": "2026-10-28T11:58:31.636978+00:00",
+  "derived_files": {
+    "backend-upgrade.py": {
+      "bytes": 23566,
+      "sha256": "53974361404c1d25d11b5010d0b7bb40c9c5573da16d51d5b4e7134b9a118c2f"
+    },
+    "generation.py": {
+      "bytes": 30497,
+      "sha256": "3232c18eb304d02875411d43f922b63f36a1e162c633eb808e67b3373e3cbcc9"
+    },
+    "mysql-budget.py": {
+      "bytes": 21599,
+      "sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d"
+    },
+    "resource-stream.py": {
+      "bytes": 44082,
+      "sha256": "d38143741c9ffc78c0163b2badc9ce151628dd23dfc1e53292d8061cab741c87"
+    },
+    "source-artifact-receive.py": {
+      "bytes": 4972,
+      "sha256": "0a9260cf924de60713eda8f3a63339e4a6d5e41dea9ddc5fc8700a0f6a5d7219"
+    }
+  },
+  "final_source_CI_approval_is_root_responsibility": true,
+  "frozen_file_set_sha256": "90eb3754ac8d02ed4b5d69e5f434e0d5e457b27645b8c63a0d8543d22e65432b",
+  "generation_kind": "exact-pinned-production-entry-generation-v4",
+  "kind": "explicit-new-source-time-pool-profile-v4",
+  "mysql_max_connections_planned_not_observed": true,
+  "old_helpers_modified": false,
+  "original_template_sha256": {
+    "backend-upgrade-v2.py": "5200f9e74a6ddbefd975e4f6e1c256201cd786ee7d28820bc9240eb1b0151e88",
+    "generation-f4.py": "9c1abe24da6fc775976505af84dd5172c0e6484d890f77179c5e9bc7df886cf4",
+    "resource-stream.py": "f911acf470a61221197e58fbd18d4cc42c1a5a7693ae929454f540e2c400f76d",
+    "source-artifact-receive.py": "ef6e9c5f5b704ad2bf6c2d48f1bf9e6301c9a729acc7d4e4bb4ec17bcd34ecac"
+  },
+  "parent_deriver_sha256": "1846079ab7500e4c9ea4a206a6a01ff92c5b255b3926f7230bcecaf88bb7b004",
+  "phase_order": [
+    "prepare-files",
+    "arm-timer",
+    "infra-only",
+    "actual-probe-budget",
+    "migrate-and-business-admission"
+  ],
+  "source_file_count": 53,
+  "source_file_set_sha256": "5cfddb41c5e4d3d16e1c6d43958d8275e717be973c443ae295fac2b7864c8ea7",
+  "source_sha": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+  "stop_utc": "2026-10-28T16:00:00Z"
+}

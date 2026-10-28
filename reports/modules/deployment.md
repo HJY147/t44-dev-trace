@@ -561,3 +561,21 @@ root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍N
 从fee30ae5独立工作树，仅将786_pool_settings.py及787_query_semantics.py各一次接入原完整coverage列表，保留tmp/backend、原五个补充模块、全部marker、80%行门禁和backend/t44完整分母；没有重复添加tmp/backend内7旧case。原coverage配置逐字不变，runner AST除列表外一致。
 
 实际发现浅checkout只fetch935，787收集依赖固定a12的git show；经root明确批准仅在coverage原935 fetch/完整SHA校验后加精确a12 fetch及校验。真实本地depth1克隆先缺a12时收集exit2，原1243B输出逐字gzip保留；补该对象后同克隆30项收集成功。两新模块正反顺序各61项通过、ENV和禁止MySQL连接钩子恢复，旧静态23项、CI Ruff和新增工作块bash-n通过。完整命令/bytes/SHA在pool-ci-20261028/validation.PUBLIC.json；此为本地wiring与模块验证，尚未全产品coverage/nativeMySQL/远程CI或云验证。各Settings角色新ENV及max_connections预算由下一profile显式设计。
+
+### v4预算设计先行（待实现）
+
+新v4独占目录设计仅支持新明确source/未来窗口，不改旧冻结。root已撤回与创建顺序矛盾的“prepare/arm前查同新MySQL”，改为文件prepare→timer arm→基础infra→实际probe-budget→迁移/业务启动，真实CID/启动身份/镜像/库及max_connections再验。P64仅5/0、P16三组可比容量、仅P API ENV及64连接分项保留；其他角色默认5/10、运维单进程互斥，尚无真实容量测量或新发布源。详见v4-20261028/design.md；旧270/active400/600秒与LOC门禁不变。
+
+### v4实现与本地守卫checkpoint
+
+v4独占新派生器/预算模块/小分段运输，不改旧frozen。显式P池、64仅5/0和完整64连接分项；真实MySQL CID/宿主PID starttick/镜像/项目/库/@@max_connections probe与再验证，在迁移/业务前硬闸。共享phase操作互斥已交backend并获其真模块对接反馈，observer另计一持久连接，health/admin干扰单列，Config.Env只筛容量输出。
+
+本岗40项本地guard通过，包含实际原Compose新准备代码对照、真实文件/跨进程flock/pipe/独占运输；Docker/MySQL等观察明确模拟。扩展首1个中文路径fixture失败gzip原件保留，仅测试云路径观察映射ASCII后通过，冻结guard不改。新helper21599B/305f9eae…无第三方依赖。root已冻结下一source5d和16Z，报告CI成功仅据root转交；真实云/新MySQL预算/性能/规模尚无通过结论。
+
+### v4精确5d/16Z交付完成（仅本地）
+
+新profile3b3b6d4c…、GEN3232c18e…、resource d3814374…与固定helper305f9eae…已封定，真实53 Git文件、source package ZIP166458B/9ebb3563…、manifest3b398cd7…、archive392222af…由本地严格receiver完整验证。新build/image/CA仍待root真实执行，未用旧身份填空；本地包与后续官方artifact完整SHA分别核。首次receiver正确拒绝自建父目录755，仅修该目录700后过，原guard未改。
+
+最终公共运输5片加安装1条，manifest c257623f…，最大完整encoded+256=15372；真实5d/16Z本地分片回放和6条bash-n通过，六原件完整相同；全新远端v4-code-20261028-01/profile。40个v4加旧profile16个共56项12.17s过，CI范围Ruff过，旧四模板/派生器/已发表10:30无改动。v4/STEPS.md给完整可复制source/build/prepare64w5/0/实际probe预算/业务/observer/stop路径，双方共享锁与新增预算receipt path+SHA已对接。
+
+本岗没有云/变配/build/真实MySQL/SUT操作，未宣称容量或性能通过。root另代岗制作source-free标准ENV副本的两处修改已限定授权，实际执行由root留痕。实际预算/角色ENV/新F、短诊断后再新600秒和原LOC仍须分别证明。
