@@ -372,3 +372,13 @@
 - 封档git diff --cached --check真实exit2，原因是旧pytest红log/XML原始E行8处尾空格；原字节保留，raw-diff-check.json存完整原诊断。上一&&链因此未提交/推送，未把整包检查写成通过；限定产品/测试源码与说明check单列执行。
 
 - 四件/证据5248784a已push；按根明确授权仅Issue4发表一次交接6467541006，随后按comments/:id精确GET全文一致，github-publication.json保存实际回执。backend再次确认责任边界与38目标只属配置兼容。收尾仅证据，产品/测试仍92cf5c10，不再测试/SQL/HTTP/云。
+
+
+## ROLE-database-SCALE-NEXT-20261028-v1：有界规模复查与停止产品改动
+
+- 独立树 codex/database-scale-next-20261028 精确基于 f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f；先提交设计039e3a1131988157a39646dfa1ca0140666a0c7f。旧初始化 TASK 保留，本轮实施授权来自总协调当前派工；原文单列本岗 prompts。
+- 已读取 seed、schema、rows、migrations、delivery、engine、uow、accounts 及既有975/956接口。seed context/annotations/FK批量顺序、DDL元数据生成、统一Rows校验和native catalog比较循环已经共用；未发现值得引入的新局部抽象，具体拒绝方向见本轮设计。未编写/改写产品或测试，不把未发现收益写成不可能精简。
+- 固定原cloc2.10实跑设计HEAD：65应用文件5898行、持久化1672行、超上限798，原require-range exit1；wrapper自身完成不替代该失败。29份限定源码/原测试/契约逐字同f7，完整产品/契约/原测试/指标脚本diff为空，实际节省0。原命令、起止时间、stdout/stderr、完整JSON及边界归档tmp/777_database_scale_next_20261028。
+- 无候选就不制造测试与产品红例；本轮业务/原测试执行均0，没有重复全CI。未运行SQL/MySQL/HTTP/SUT/云/性能，未读独立测试私件。当前云f7版本不受影响。
+- 首次只读工具检索把不存在tools目录列为目标，rg退出1，已按实际scripts/metrics找到原计数器；没有据此修改产品或隐瞒结果。原岗位历史文件一次全读输出过大被截断，随后改为限定尾部与JSON键读取，未将截断输出作为完整核验。
+- 报告、设计、原派工prompt及四件交接齐备。后续大幅减量若涉及跨模块表示与接口重建须另列设计/责任边界；本轮不要求降低口径，不冒称规模/性能/独立验收通过，也不记作学生手写。
