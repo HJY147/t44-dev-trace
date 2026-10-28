@@ -700,3 +700,11 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 ## v4连接预算与新profile设计（实施前）
 
 root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，先记录v4设计。旧配置/旧phase/结果和停机VM不动，最终新source/窗口待root冻结，不拿a12冒新源。root已纠正“prepare/arm前查新MySQL”的顺序矛盾，保原prepare文件、arm保护、infra基础服务，之后probe-budget实际只读并在业务/迁移前硬闸。预算64分项、P16A/B/C和P64仅5/0、仅P API ENV、其他角色默认、只公开容量与只读observer在设计中明确；当前仅设计，尚未实现或运行。
+
+## v4本地实现checkpoint
+
+25cff235设计后新增v4派生器、mysql-budget与小分段delivery生成器；旧四模板/派生器和已发表冻结文件均不改。prepare只P API注入显式池ENV，F4/consumer/scheduler/operations原默认保留；P64仅5/0，真实max预算闸在infra后probe及所有迁移/业务前，stop/status不依赖预算或互斥。共享operation_lock已与backend对接，固定phase/.v4-operation.lock，0600/NOFOLLOW/CLOEXEC/EX|NB、50ms poll/默认10上限30秒，桥SQL各步同锁、子GEN前释放。observer独立计1，reserve64现在细分gate只读探针1+余量13，无新增连接凭空藏于余量。
+
+初38本地guard通过；扩为40后1个fixture因原SYSTEMD_SAFE_NEW_OUTPUT拒绝本机中文路径失败，原9550B XML/SHA dc1a4d10…逐字gzip保留。只在显式模拟cloud平台的准备测试映射此路径观察为ASCII，不修改冻结guard或实际输出约束；后40项5.92s全过。真实文件/跨进程flock/固定FD/持久pipe，Docker/MySQL/root平台观察均明确模拟；新P64 Compose与原factory逐字比较仅P API两个ENV差异、F原样及其他角色默认。新运输完整encoded+description界限/本地独占重组、重复/篡改拒绝已校核。首Ruff为本岗fixture赋值lambda E731，改局部def后绿，无noqa。
+
+固定mysql-budget21599B/SHA305f9eae…已交backend，其转回真实模块接口/争用/桥安装55项通过仅作其结果转述，不累加本岗case。root11:55前明确source5d、product40682367472四job与Docker40682640278成功及stop16Z；这些CI由root核，不冒本岗执行/性能通过。接下来按实际新源/窗口派生并封小段包；本checkpoint仍无云操作、新MySQL实测或业务准入。

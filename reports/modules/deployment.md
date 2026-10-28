@@ -565,3 +565,9 @@ root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍N
 ### v4预算设计先行（待实现）
 
 新v4独占目录设计仅支持新明确source/未来窗口，不改旧冻结。root已撤回与创建顺序矛盾的“prepare/arm前查同新MySQL”，改为文件prepare→timer arm→基础infra→实际probe-budget→迁移/业务启动，真实CID/启动身份/镜像/库及max_connections再验。P64仅5/0、P16三组可比容量、仅P API ENV及64连接分项保留；其他角色默认5/10、运维单进程互斥，尚无真实容量测量或新发布源。详见v4-20261028/design.md；旧270/active400/600秒与LOC门禁不变。
+
+### v4实现与本地守卫checkpoint
+
+v4独占新派生器/预算模块/小分段运输，不改旧frozen。显式P池、64仅5/0和完整64连接分项；真实MySQL CID/宿主PID starttick/镜像/项目/库/@@max_connections probe与再验证，在迁移/业务前硬闸。共享phase操作互斥已交backend并获其真模块对接反馈，observer另计一持久连接，health/admin干扰单列，Config.Env只筛容量输出。
+
+本岗40项本地guard通过，包含实际原Compose新准备代码对照、真实文件/跨进程flock/pipe/独占运输；Docker/MySQL等观察明确模拟。扩展首1个中文路径fixture失败gzip原件保留，仅测试云路径观察映射ASCII后通过，冻结guard不改。新helper21599B/305f9eae…无第三方依赖。root已冻结下一source5d和16Z，报告CI成功仅据root转交；真实云/新MySQL预算/性能/规模尚无通过结论。
