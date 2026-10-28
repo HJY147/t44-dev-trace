@@ -1,0 +1,1362 @@
+[
+  {
+    "dialect": "mysql",
+    "options": {},
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions ORDER BY decisions.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {},
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions ORDER BY decisions.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id IN (__[POSTCOMPILE_id_1]) ORDER BY decisions.id DESC \n LIMIT %s, %s",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 1,
+        "param_2": 2
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id IN (__[POSTCOMPILE_id_1]) ORDER BY decisions.id DESC\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 2,
+        "param_2": 1
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id = %s ORDER BY decisions.id FOR UPDATE SKIP LOCKED",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id = ? ORDER BY decisions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions ORDER BY decisions.id \n LIMIT %s LOCK IN SHARE MODE",
+      "parameters": {
+        "param_1": 1
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions ORDER BY decisions.id\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 1,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id >= %s AND decisions.id IS NOT NULL ORDER BY decisions.id FOR UPDATE",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id >= ? AND decisions.id IS NOT NULL ORDER BY decisions.id",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id = %s ORDER BY decisions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT decisions.id, decisions.project_id, decisions.task_id, decisions.type, decisions.decided_by, decisions.delivery_cycle, decisions.reason, decisions.impact, decisions.target_version, decisions.assessment_id, decisions.rollback_plan_version, decisions.evidence, decisions.decided_at \nFROM decisions \nWHERE decisions.id = ? ORDER BY decisions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "type",
+          "type",
+          "TINYINT"
+        ],
+        [
+          "decided_by",
+          "decided_by",
+          "INTEGER"
+        ],
+        [
+          "delivery_cycle",
+          "delivery_cycle",
+          "INTEGER"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "impact",
+          "impact",
+          "VARCHAR(3000)"
+        ],
+        [
+          "target_version",
+          "target_version",
+          "VARCHAR(128)"
+        ],
+        [
+          "assessment_id",
+          "assessment_id",
+          "INTEGER"
+        ],
+        [
+          "rollback_plan_version",
+          "rollback_plan_version",
+          "INTEGER"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "decided_at",
+        "id",
+        "decided_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT decisions.decided_at, decisions.id \nFROM decisions \n LIMIT %s",
+      "parameters": {
+        "param_1": 0
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "decided_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "decided_at",
+        "id",
+        "decided_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT decisions.decided_at, decisions.id \nFROM decisions\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 0,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "decided_at",
+          "decided_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "decided_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  }
+]

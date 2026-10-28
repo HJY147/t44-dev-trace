@@ -1,4 +1,12 @@
-# 数据库模块：当前原生目录审计修复待根复审
+# 数据库模块：默认全列查询候选待根审核/CI
+
+2026-10-28：准确基线a12，先行设计6a1cb86b，产品/验证源码82e92dfc420690980a6e16c88f209d08ab709e49。仅RowsGateway.rows默认tuple(t.c)→(t,)一行，SQLAlchemy2.1.6官方/本地三源字节相同；显式投影、参数/锁/排序分页、映射/事务及原schema审计不变。18表288对MySQL/SQLite编译签名同；最终新契约目标30通过，原persistence/812非integration138通过、17未选、2原警告；限定Ruff/Bandit通过。固定应用5933→5933，净有效行0，仍超833，不作规模通过声明。
+
+原catalog审计七反例及31例原件完整保留，本轮没有重跑MySQL。根转PUBLIC纯构建ABBA约省5us/statement，不是当前候选的端到端/HTTP/MySQL/云结论。云仍a12；根review/完整CI/真实MySQL/独立验收/正式性能待调度。报告、真实命令及原件见[本轮报告](../../agents/database/select-resume-20261028/report.md)。AI改动，未代写学生研究正文。
+
+[Issue4本轮实际交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6464790672)已发表并按单ID精确GET全文一致，原回执见本轮github-publication.json。
+
+## 历史：原生目录审计修复
 
 2026-10-28：先行设计cacd03b1，最终应用源26d6328ab882b06eb9f6026a29656999e122f57d。原schema反射漏判DESC、自增、引擎、表/列排序规则、CHECK执行性及必需索引可见性7项已在全新socket-only MySQL8.4.11真实复现并修复；31原生case（8兼容/23负例）符合原要求，最终53针对目标通过。先前7c94版完整本岗非integration106通过、17未选择，结果不相加。新增4条固定只读catalog查询；DDL/API/冻结/锁与marker协议不改。限定Bandit先因B608失败，改完整字面SQL后绿，不放宽门禁。固定cloc当前5933，较5862净增71，仍超833；这是正确性修复，不宣传减量。
 

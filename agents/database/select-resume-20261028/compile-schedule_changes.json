@@ -1,0 +1,1288 @@
+[
+  {
+    "dialect": "mysql",
+    "options": {},
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes ORDER BY schedule_changes.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {},
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes ORDER BY schedule_changes.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id IN (__[POSTCOMPILE_id_1]) ORDER BY schedule_changes.id DESC \n LIMIT %s, %s",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 1,
+        "param_2": 2
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id IN (__[POSTCOMPILE_id_1]) ORDER BY schedule_changes.id DESC\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 2,
+        "param_2": 1
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id = %s ORDER BY schedule_changes.id FOR UPDATE SKIP LOCKED",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id = ? ORDER BY schedule_changes.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes ORDER BY schedule_changes.id \n LIMIT %s LOCK IN SHARE MODE",
+      "parameters": {
+        "param_1": 1
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes ORDER BY schedule_changes.id\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 1,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id >= %s AND schedule_changes.id IS NOT NULL ORDER BY schedule_changes.id FOR UPDATE",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id >= ? AND schedule_changes.id IS NOT NULL ORDER BY schedule_changes.id",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id = %s ORDER BY schedule_changes.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.id, schedule_changes.project_id, schedule_changes.task_id, schedule_changes.iteration_id, schedule_changes.from_version, schedule_changes.to_version, schedule_changes.before_plan, schedule_changes.after_plan, schedule_changes.reason, schedule_changes.evidence, schedule_changes.changed_by, schedule_changes.changed_at \nFROM schedule_changes \nWHERE schedule_changes.id = ? ORDER BY schedule_changes.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "task_id",
+          "task_id",
+          "INTEGER"
+        ],
+        [
+          "iteration_id",
+          "iteration_id",
+          "INTEGER"
+        ],
+        [
+          "from_version",
+          "from_version",
+          "INTEGER"
+        ],
+        [
+          "to_version",
+          "to_version",
+          "INTEGER"
+        ],
+        [
+          "before_plan",
+          "before_plan",
+          "JSON"
+        ],
+        [
+          "after_plan",
+          "after_plan",
+          "JSON"
+        ],
+        [
+          "reason",
+          "reason",
+          "VARCHAR(2000)"
+        ],
+        [
+          "evidence",
+          "evidence",
+          "JSON"
+        ],
+        [
+          "changed_by",
+          "changed_by",
+          "INTEGER"
+        ],
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "changed_at",
+        "id",
+        "changed_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.changed_at, schedule_changes.id \nFROM schedule_changes \n LIMIT %s",
+      "parameters": {
+        "param_1": 0
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "changed_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "changed_at",
+        "id",
+        "changed_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT schedule_changes.changed_at, schedule_changes.id \nFROM schedule_changes\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 0,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "changed_at",
+          "changed_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "changed_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  }
+]
