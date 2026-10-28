@@ -1,0 +1,52 @@
+{
+  "operator": "backend AI",
+  "product_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+  "source_core_prior": "93bed41d",
+  "local_final_unique": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_files": {
+    "790_provider_core.py": {
+      "bytes": 9639,
+      "sha256": "e6c350d63dc2e8b911cd64c81c551edda9a93bc832c7e528e180a526657689b2"
+    },
+    "790_provider_crypto.py": {
+      "bytes": 4895,
+      "sha256": "c89d03005725cdc5eb36e1969f26d7c2bdc4b067fbcf67c1329133809802ad06"
+    },
+    "790_provider_worker.py": {
+      "bytes": 13367,
+      "sha256": "d5a26fc636a5cdceb3ad4fb62270e40cbb8b9e37d77b8c8157cdf5489ee9bf5e"
+    }
+  },
+  "public_interfaces_read_only": [
+    {
+      "file": "792-T12-v2-private-functional-packet-schema.PUBLIC.json",
+      "sha256": "6db48a86054e974be1240cdd6cad8a17a2d5c038166dece32a149b5889f04e56"
+    },
+    {
+      "file": "792-T12-v2-provider-packet-and-scope.PUBLIC.md",
+      "sha256": "f3027a4ad5d4639198bc874616a6371a7628fd486fe8fd536a5cd75ea1274cc4"
+    }
+  ],
+  "natural_expiry": {
+    "issued_at": "2026-10-28T06:59:05.847611Z",
+    "expires_at": "2026-10-28T07:00:05.847611Z",
+    "observed_at": "2026-10-28T07:00:06.043161Z",
+    "elapsed_seconds": 60.19555,
+    "original_getMe_status": 401,
+    "code": "TOKEN_EXPIRED",
+    "auth_row_unchanged": true,
+    "main5_tokens3600_valid": true
+  },
+  "actual_auth_store": "own SQLite only, not MySQL",
+  "cloud_execution": false,
+  "sut_admission": false,
+  "private_independent_inputs_read": false,
+  "root_descriptor_nonce_key_pending": true,
+  "scope": "wire codec checked; actual root controller apply + private service validation deferred until actual request",
+  "frozen_790_files_unchanged": true
+}
