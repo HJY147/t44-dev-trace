@@ -215,7 +215,9 @@ def run(stage, receipt):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--stage", choices=["before", "after", "after-proof"], required=True
+        "--stage",
+        choices=["before", "after", "after-proof", "after-static"],
+        required=True,
     )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

@@ -48,7 +48,9 @@ def native(monkeypatch):
 
         def exec_driver_sql(self, sql):
             self.queries.append(sql)
-            assert sql.endswith(" WHERE TABLE_SCHEMA=DATABASE()")
+            assert " WHERE TABLE_SCHEMA=DATABASE()" in sql
+            if "TABLE_CONSTRAINTS" in sql:
+                assert sql.endswith(" AND CONSTRAINT_TYPE='CHECK'")
             return copy.deepcopy(self.rows[sql.split("INFORMATION_SCHEMA.")[1].split()[0]])
 
     return Connection()
