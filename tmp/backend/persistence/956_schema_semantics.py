@@ -99,6 +99,8 @@ class Catalog:
 def catalog(monkeypatch):
     value = Catalog()
     monkeypatch.setattr(migrations, "inspect", lambda engine: value)
+    # This fixture covers Inspector semantics only; 794 exercises the native catalog on MySQL.
+    monkeypatch.setattr(migrations, "_catalog_defects", lambda engine: [])
     return value
 
 

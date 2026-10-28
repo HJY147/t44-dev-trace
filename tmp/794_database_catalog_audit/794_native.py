@@ -214,7 +214,9 @@ def run(stage, receipt):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", choices=["before", "after"], required=True)
+    parser.add_argument(
+        "--stage", choices=["before", "after", "after-proof"], required=True
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     fd = os.open(
@@ -231,6 +233,24 @@ def main():
     }
     with os.fdopen(fd, "w") as stream:
         try:
+            source_root = Path(__file__).resolve().parents[2]
+            receipt["source_commit"] = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=source_root, text=True
+            ).strip()
+            bindings = {}
+            for relative in (
+                "backend/t44/persistence/migrations.py",
+                "backend/requirements.lock",
+                "tmp/794_database_catalog_audit/794_native.py",
+                "tmp/794_database_catalog_audit/cases.py",
+            ):
+                value = (source_root / relative).read_bytes()
+                if value != subprocess.check_output(
+                    ["git", "show", "HEAD:" + relative], cwd=source_root
+                ):
+                    raise ValueError("Commit exact source and tool before native proof")
+                bindings[relative] = hashlib.sha256(value).hexdigest()
+            receipt["committed_source_bindings"] = bindings
             run(args.stage, receipt)
         except (
             OSError,
