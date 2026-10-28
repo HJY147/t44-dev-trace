@@ -653,3 +653,39 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - e17e3897先记录窗口/缺样/保盘设计，再写27动作PUBLIC argv与R28-P7-P16 runbook。用纯派生重建精确源/截止/53文件helper，其fd7d/3d9f和27199/44079 bytes与root完整PUBLIC回传相同；31项检查用真实argparse解析并在任何dispatch前中断，没有云行为。
 - 明确P7当前scheduler absent必须missing/null，首CPU delta null；warmup前采集与offset0镜像、seal后收全wholeSHA/tail再ownedstop。旧两机不重买、旧卷不删；P7先停后P16 infra，完整新namespace/DB/CA/端口和同seed/anchor。每动作标实际余窗，原07:30Z不改，07:20Z后非stop/status SUT动作拒绝；cleanup允许过期后执行。
 - 形成正式7-role/600秒设计边界，未派发/执行，不把790 fresh-create与scheduler改变事件前提的冲突删断言解决。等待root实际7vs16结果。两次资料搜索因zsh不存在glob报错，随后用已观察到的精确路径读PUBLIC资料，不当产品错误。
+
+## 2026-10-28 新functional 08:15窗口的独立本地profile
+
+- root明确新functional专用sourcea12/08:15，原P7/P16诊断07:30不可变；原两VM/100预算由root操控，本岗不云/IAM/购机或删数据。先25172993设计，核r28funcgen01实际12字符合法，新F22443/18480、P22445/18481，P7只prepare、F固定4worker空库/后续原CLI五身份。设计原长11笔误在实际len校验后更正，不影响regex。
+- 通过已审derive真实Git/冻结比较生成新local profile，全53文件/08:15与builder→generation→resource完整SHA链；同源builder仍ebc91不重建镜像。最初derive返回running session而依赖读取提前启动一次FileNotFoundError，保留事实；随后等待同一session真实exit0才运输，无重跑/覆盖profile。
+- 三件PUBLIC运输28111B、独占安装脚本最终31595B，先全SHA/解压上限/字面allowlist/代码解析，再O_EXCL新目录/0600/fsync；不含env/身份/私钥/nonce/session。11项本地guard两次真实通过，Ruff/bash-n绿；只有纯本地安装fixture，没有任何云dispatch。原daaf/四模板/07:30冻结不变，不读792/private，不触碰产品。
+
+## 最终10:30窗口：实际编码限制与一次封定
+
+- root明确官方立即不保存的完整命令base64+描述限制；本岗原31595raw<32KiB证明范围不足，旧原件保留且root未提交，不能记成云安装失败。root实际clock已超07:30、08:15不足，另授权原VM/100预算内最终10:30，root唯一UI。
+- 8583c809先设计，完整Git源a12/冻结比较真实派生新window1030 profile，53文件；旧07:30/08:15字节均保持。新root02/resume-profile、P16gen02与独立F分开namespace/CA/端口，不重建同源镜像，不改daaf/root01 source包。派生session实际等待exit0后才读产物，未重复早取。
+- 新PUBLIC delivery28102B/gzip21229B，opaque3片7500/7500/6229。4条完整raw/完整base64+256均实算，最大12023/16288，低于13000/18000。首条新root02/parts/manifest，后续各O_EXCL，最终全序号/片/整包/原件SHA、限量解压/字面路径/编译后新目录0600固定FD/fsync，旧件不覆盖。
+- 10本地守卫真实通过：完整编码和四条代码编译、真实项目tmp内完整重组/独占安装、缺片/额外/篡改/symlink/manifest拒绝、08:15原profile完整SHA不变、10:30源链及两个runid/端口真实argparse前拦截。新守卫Ruff/4bash-n绿；没有云或测试cohort执行，不读792/private，不改产品/购机/IAM/旧数据。旧790硬07:30已告root必须责任岗新冻结，不能因部署换窗口绕开旧grant。
+
+## 限定resource ready-race补录
+
+- root转交新resource-r28p16-02原start再次ready身份拒绝与f762/23c536失败，要求窄补录、不改冻结e5或旧记录。ffff65d2先设计，新增一个operator helper，仅该APP与未来LOAD resource-mirror-r28p16-02；APP另硬pin该binding/failure，LOAD显式root后续SHA。
+- 精确ValueError reason/缺receipt才继续；私有文件集合/完整hash、原unit/plan/argv/保护模板、MainPID/UID四值0、cgroupv2归属/member与proc starttick均核。最多5秒等argv，只允许同PID/starttick/cgroup，两次稳定/重核输入后固定FD O_EXCL/NOFOLLOW/fsync late回执，明确not_original_start_success。再原controller status（10秒上限）及身份复核，晚到失败保留late和原拒绝，不补造原start通过。无start/restart/stop服务命令。
+- 5组本地守卫通过：真实fixture文件/FD/不覆盖与明确模拟Linux观察，APP/LOAD成功及其他错误/已有回执/外部目录/unit变化/PID切换/argv超时/UID/cgroup/member/status失败。首轮4失败来自原unit生成器拒绝项目Unicode路径；仅动态fixture目录由ASCII模板替换，冻结代码未改，原XML逐字gzip保留。首Ruff发现测试闭包未绑定循环值，显式绑定后格式/Ruff及5组重新通过，不noqa压警告。
+- helper13123B/SHA32ce5b43b3a9a38bb26e4005f17047236dfb3aa2d8198b6a79f5a2833e079941，一次安装+APP调用raw6704/encoded+256=9196；安装独占新helper路径，根负责实际云执行。未读792/private、未改产品/1030/原记录或操作云服务。
+
+## 10:30窗口P16收尾与新F中性身份最终交付
+
+- root09:46派小命令；0c771339先设计。最初只读root原PUBLIC generation/owner字段，随后仅按当次明确授权核T15 PUBLIC f8fe6a…、6830B init ba480…、9786B F原start1297a015…和4340B最终neutral fe122392…、1341B P16stop7aeb39f0…，没有读其他792/private/runtime文件。
+- 资源验证helper本地3guard过（原source/header/final-prefix/全SHA、缺值保留、wrong hash/partial/raw tamper/symlink拒绝），但root已实际原CLI封尾23,269,876B/045fa2e0…、镜像pull0/from0/finaltrue与两进程停止；root09:54:01保卷停P16，六owned全false/exit0/noOOM。本岗准备1/3/4收尾脚本未用，不重复实际stop。
+- 紧急05F-only脚本3472B先交9f535122；root已有自己的实际提交09:56:36五动作22秒成功，不运行本岗start。实际GEN4672/F be1975/sourcea12，TLS CA/IP401一次、6role Running/Restart0；scheduler absent等真实scope，F无seed、5账号provider负责，不推定独立准入。
+- 纯06proof初f308有原status无source_sha的适配错误，静态阅读实际冻结operate发现后先通知root暂缓，再60fe一行改status action；root确认旧版未执行。3个真实冻结status返回shape/T1518字段/原9786B五动作哈希检查过。新脚本8487B/SHA89693d79…仅status/实际Config.Cmd4和筛TTL/CA/同一actualCID，Env仅服务器内存筛TTL不输出或保存，旧代码/绑定不改，独占新F-neutral-runtime-01。
+- root实际t-hz071e5fxxb8q9s成功，明确授权的最终PUBLIC4340B SHAfe122392…已核并对T15常量/模式/18键、本地compact原neutral hash校验：runtimeproof91f46a88…/neutral9bda817d…、worker4、TTL3600、Running、scheduler absent。只中性元数据，非账号会话、非完整PRIVATE输入、非SUTgrant；root转交backend/独立，本岗不与tester通信。
+- 完成本岗四件留痕并释放槽位，无云UI/信号/账号/产品操作；不猜scheduler项目IDs，等待实际scope后才另领任务。
+
+## 实际项目1 scope与未赶上的密封答复（仅PUBLIC复核）
+
+- root明确允许仅读3811B scope PUBLIC/afc26725…，真实nonce393263e1…、project_ids[1]、iteration_ids[]、scope escalation:write、sourcea12与实际新F API身份一致；本岗仅读原GEN scheduler-token/start的实际CLI，不生成新ID、不读token或独立私包。root随后通知原CLI已执行，立即停止准备重复命令。
+- root另授权12467B scheduler PUBLIC/e74bb93e…和16871B T18 progress PUBLIC/4b841bdd…，均真实核bytes及完整SHA。原token回执10:15:50.382290Z成功（project1来自root实际命令转述，token正文未读）；独立功能容器10:15:51.441769259Z自然退出0/noOOM；scheduler实际StartedAt10:15:51.146862474Z，10:15:57.400893Z启动回执healthy/Running/Restart0。不能把进程退出0或调度器健康写成业务通过，也不由时间接近推定退出根因。
+- root确认sealed reply未赶上且不补发、不rerun；PUBLIC仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE、private_evidence_exported=false，正式结论由独立岗核私证据。本岗没有读取测试用例/私证据，不与测试岗联络。原neutral中scheduler absent是较早观测事实，保留不倒写。
+- root当时正原GEN保卷停F，尚未给实际停止回执，故只记进行中；两VM后续仅停不释放由root执行。本岗0云动作，仅新建选择性PUBLIC顺序回执、更新四件留痕；不重试、不倒填成功、不延10:30窗口。

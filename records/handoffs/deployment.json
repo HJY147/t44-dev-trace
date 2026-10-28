@@ -2505,6 +2505,92 @@
       "source_receipts_git_committed_at_read": false,
       "cloud_commands_executed_by_agent": false,
       "metrics_or_acceptance_verdict": null
+    },
+    "functional_0815": {
+      "design_commit": "25172993",
+      "metadata": "agents/deployment/resume-20261028/functional-delivery-metadata.json",
+      "transport": "agents/deployment/resume-20261028/functional-transport.PUBLIC.json",
+      "install_once": "agents/deployment/resume-20261028/functional-install-once.sh",
+      "runbook": "deployment/cloud-reuse/R28-FUNCTIONAL-0815-STEPS.md",
+      "profile_sha256": "b940549052f149f616ae5e943cd6f6571d74142c497df8afb9b99f4513e85270",
+      "new_stop_utc": "2026-10-28T08:15:00Z",
+      "old_diagnostic_changed": false,
+      "local_checks_passed": 11,
+      "cloud_executed": false
+    },
+    "final_window1030": {
+      "design_commit": "8583c809",
+      "latest_window": "2026-10-28T10:30:00Z",
+      "delivery": "agents/deployment/resume-20261028/window1030/handoff.PUBLIC.json",
+      "command_sequence": [
+        "agents/deployment/resume-20261028/window1030/01-write-000.sh",
+        "agents/deployment/resume-20261028/window1030/02-write-001.sh",
+        "agents/deployment/resume-20261028/window1030/03-write-002.sh",
+        "agents/deployment/resume-20261028/window1030/04-reassemble-install.sh"
+      ],
+      "manifest_sha256": "52133caf5b77e8e061e8f2c489eff5a32b6bcca80d27c6ae01295a55f7c3b8a4",
+      "profile_sha256": "222c97a1a3711aafcb583f8683009411702f8d91a4cd65a601de631572da0b80",
+      "generation_sha256": "4672a5838879ab1fde599c45d464906600373fdb38da654e21879881204d11a8",
+      "resource_sha256": "e5b0324e1576f901cbacb1ba9b973096c6b575318cc9f336a6f7183ce94ca115",
+      "runbook": "deployment/cloud-reuse/R28-WINDOW1030-STEPS.md",
+      "local_checks_passed": 10,
+      "cloud_executed": false,
+      "old_windows_modified": false
+    },
+    "resource_operator_completion": {
+      "design_commit": "ffff65d2",
+      "helper": "deployment/cloud-reuse/resource-operator-completion.py",
+      "helper_sha256": "32ce5b43b3a9a38bb26e4005f17047236dfb3aa2d8198b6a79f5a2833e079941",
+      "metadata": "agents/deployment/resume-20261028/operator-completion-metadata.json",
+      "install_and_app": "agents/deployment/resume-20261028/operator-completion-install-and-app.sh",
+      "local_guard_groups_passed": 5,
+      "cloud_executed_by_agent": false,
+      "frozen_resource_controller_changed": false,
+      "status_recheck_required": true
+    },
+    "finalize_and_F_identity": {
+      "design_commit": "0c771339",
+      "resource_closure": "root completed original CLI; prepared helper not executed",
+      "closure_receipt": "agents/deployment/resume-20261028/finalize-functional/root-closure-relay.PUBLIC.json",
+      "F_startup": "root completed actual five actions 09:56:36Z; deployment start script not executed",
+      "F_original_start_sha256": "1297a0155bc9682685cc012129641181014084387f36a8fa37d16c436313404e",
+      "proof_script_commit": "60fe7472",
+      "proof_script_sha256": "89693d79f84947d3cb1f5d3612f72294db4a75c2950c644d78d11d654f36c7ad",
+      "actual_neutral_receipt": "agents/deployment/resume-20261028/finalize-functional/root-actual-neutral-receipt.PUBLIC.json",
+      "runtime_receipt_sha256": "91f46a88209e8e15241b1a93d91b518c4e458934e057e33c0b6cc2aadab4271b",
+      "neutral_sha256": "9bda817d6c641078db8176e39384248185c9a316504501491127d4ee5fc6dad2",
+      "F_worker_count_configured_actual": 4,
+      "F_HTTP_TTL_actual_seconds": 3600,
+      "scheduler_absent_until_actual_scope": true,
+      "independent_or_performance_verdict": null,
+      "deployment_cloud_actions": 0,
+      "read_scope": "only root explicitly permitted T15 PUBLIC schema and enumerated PUBLIC runtime files, no other792/private",
+      "next": "release deployment slot; scheduler scope followup only after real requested project IDs"
+    },
+    "actual_scope1_functional_close": {
+      "selected_PUBLIC_receipt": "agents/deployment/resume-20261028/finalize-functional/root-actual-scheduler-scope1-receipt.PUBLIC.json",
+      "request_project_ids": [
+        1
+      ],
+      "scope": [
+        "escalation:write"
+      ],
+      "root_scheduler_receipt_sha256": "e74bb93e748ce06a75ffaa85ddf3f0c5f9fa04772164830705cfe555ae4662e3",
+      "root_functional_progress_sha256": "4b841bdde939cc91a58d563624804b75abccd43e7620ed1ff2c81bd654131ce9",
+      "scheduler_token_utc": "2026-10-28T10:15:50.382290Z",
+      "functional_container_finished_utc": "2026-10-28T10:15:51.441769259Z",
+      "functional_container_exit": 0,
+      "scheduler_started_at": "2026-10-28T10:15:51.146862474Z",
+      "scheduler_healthy_receipt_utc": "2026-10-28T10:15:57.400893Z",
+      "scheduler_running_restart0": true,
+      "sealed_reply_not_delivered_before_exit_root_relay": true,
+      "no_backfill_no_rerun": true,
+      "business_verdict": "NOT_PROVEN_PENDING_PRIVATE_EVIDENCE",
+      "F_stop_preserve_volumes": "root in progress; actual final receipt not yet received",
+      "VM_lifecycle": "root to stop only; no release",
+      "deployment_cloud_actions": 0,
+      "private_reads": 0,
+      "next": "release slot; wait root actual owned stop and independent published verdict; no duplicate commands"
     }
   }
 }

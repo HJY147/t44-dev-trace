@@ -519,3 +519,39 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 root原双机Running/P7已idle6-role的事实由其转交PUBLIC工作回执；本岗只读指定4份，不读792或private。先e17e3897设计，再写27个精确argv/节点/helperSHA/余窗和P16新namespace端口；31项本地校核通过，实际纯派生helper逐字SHA等于root已执行fd7d/3d9f，真实argparse解析后在dispatch前中止，未运行云动作。PUBLIC回执当时未Git提交，源hash/状态另记，不冒已发表commit。
 
 P7采集保留scheduler missing/null；先APP collector/LOAD offset0 mirror再warmup，seal/收全tail后stop、保卷停P7再P16 infra，避免双臂limits叠加。原07:30Z不延，07:20Z后SUT新操作因600秒门禁拒绝，cleanup不受未来余窗门禁。新P16同源/seed44/anchor04Z，正式7-role/600秒仅另列未执行方案，待root真实7vs16结果；未预填数值、根因或达标。
+
+
+### 新functional专用08:15 profile（未云执行）
+
+root另授权原双机新functional窗口，不改变原诊断07:30。先25172993设计，真实Git/冻结比较派生sourcea12全53文件，runid r28funcgen01合法12字符，独立root/campaign/端口/08:15新helper身份；只F4worker空库五身份，P7只prepare不启。profile/gen/resource三件公共运输28111B，独占安装脚本31595B，全部完整SHA另档。11项本地guard、Ruff/bash-n通过；旧daaf/07:30派生件/绑定不改，新builder仍同a12 ebc91直接只读引用原已核source包/镜像。未读792/private、未云/产品/机器动作，功能测试与真实回执待root。
+
+
+### 最终10:30窗口与官方编码大小修正（未云执行）
+
+root实际补充：此前31595 raw<32KiB不满足云助手完整base64+描述限制，旧脚本未提交/08:15未云安装。原07:30与08:15字节保留，另8583c809设计后真实Git派生最终sourcea12/53文件/10:30，不改旧freeze。新root02/resume-profile供P16gen02及独立F各新namespace，使用相同已证镜像/root01 sourcechecked/buildbinding只读输入。
+
+三件delivery28102B整体gzip21229B，分7500/7500/6229三片加最终重组安装，共4命令；完整raw为12023/10880/9188/5180，整条base64+256描述为16288/14764/12508/7164，全部<18000。manifest/片/整包/原件SHA、有限解压、字面allowlist、O_EXCL/0600/fsync及拒覆盖检查齐备；10项本地守卫、该检查脚本Ruff、4条bash-n通过。没有云/792/private/产品/新购/IAM动作。新10:30真实运行与费用由root负责，10:20后新SUT动作仍600秒门禁；旧790窗口需责任岗另冻，不直接挪旧包。
+
+
+### 新resource ready-race的窄operator completion（未云执行）
+
+root转交resource-r28p16-02第二次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED，原e5/binding和失败不改。先ffff65d2设计，新增仅APP该目录与未来LOAD mirror同名02的operator helper，APP固定f762/原23c536失败；核精确原失败、缺receipt、helper/binding/plan/unit模板与SHA、UID0/MainPID/starttick/argv/cgroup成员，两次稳定且输入未变后O_EXCL写late/not_original_start_success回执，再原status及身份复核。只等argv最多5秒，status另限10；不start/restart/stop服务。
+
+5组本地guard通过（真实文件/FD，明确模拟systemd/proc，不能冒云成功），原4个Unicode目录夹具错误gzip留原件；Ruff/安装bash-n通过。helper13123B/SHA32ce5b43…，一次安装+APP调用raw6704B/encoded+256=9196。root唯一UI，未读792/private或改产品/1030冻结；实际operator与status结果待root。
+
+
+### P16真实收尾与新F中性运行身份闭环
+
+root实际完成09:49:19 APP封尾、LOAD完整23,269,876B/SHA045fa2e0…/pull0/from0/finaltrue和两资源停机；09:54:01 P16原owned stop六角色全false/exit0/noOOM、保卷。部署仅准备封尾验证helper（3本地guard通过）但未执行；原root PUBLIC1341B/7aeb39f0…按当次明确授权只读核验。
+
+root在09:56:36新F五动作全成功，原9786B启动PUBLIC1297a015…严格CA/IP401一次，6角色Running/Restart0、scheduler absent。部署05 start-only脚本未被运行；root要求立即转纯proof。f308版静态复核发现误读原status.source_sha，在root未执行前明确拦住，60fe版只改为真实status action契约，source从精确be绑定/原idle确认，新增3个冻结状态契约/T15键集/原start链检查通过，旧版留历史，不冒云失败。
+
+root实际执行修正proof t-hz071e5fxxb8q9s成功，唯一准读4340B PUBLIC/fe122392…已核：T15 sut_identity精确18字段，worker实际配置4、HTTP主TTL3600、lifecycle running、scheduler absent；runtimeproof91f46a88…、neutral9bda817d…与原始紧凑JSON hash闭环。只含中性实际身份/公共CA，不含账号/session/provider/grant，不是完整PRIVATE输入或SUT准入；backend/独立由root转交，本岗未联系测试岗。
+
+新schema读取限root明确批准f8fe6a…PUBLIC及具体root PUBLIC单文件，未读其他792/private。没有猜项目ID或启scheduler、没有云UI/服务动作。后续实际scope到达再由root派工，当前释放部署槽位。
+
+### 实际scope到达、调度器启动与独立功能进程结束
+
+root实际收到项目1/escalation:write中性请求后，原GEN于10:15:50.382290Z签发服务凭据（本岗未读正文）。scheduler实际StartedAt10:15:51.146862474Z，健康启动回执10:15:57.400893Z；独立功能容器已于10:15:51.441769259Z自然退出0/noOOM。三份明确授权PUBLIC的bytes/完整SHA均已本地核实，顺序选择性保存于root-actual-scheduler-scope1-receipt.PUBLIC.json，不由时序推断失败原因。
+
+root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。进程exit0、SUT准入及调度器健康分别记录，不能代表功能或性能通过。较早neutral记录scheduler absent的事实不回写。root正保卷停F、VM仅停止不释放，实际完成待其回执；部署岗仅读指定PUBLIC、未执行云操作或读独立私证据，完成记录后释放槽位。
