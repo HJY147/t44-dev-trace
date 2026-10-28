@@ -9,9 +9,10 @@ import re
 import secrets
 import stat
 import subprocess
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
+UTC = timezone.utc  # noqa: UP017 -- cloud host Python 3.10.
 SOURCE = "a12e9e70b963bacafda3242bb6d82e53ee912ff1"
 HARDSTOP = datetime(2026, 10, 28, 7, 30, tzinfo=UTC)
 ANCHOR = "2026-10-28T04:00:00Z"
@@ -40,7 +41,7 @@ def raw(path, private=False):
 
 
 def stamp(value):
-    result = datetime.fromisoformat(value)
+    result = datetime.fromisoformat(value.replace("Z", "+00:00"))
     if result.tzinfo is None or result.utcoffset().total_seconds() != 0:
         raise ValueError("EXPLICIT_UTC_REQUIRED")
     return result
@@ -52,6 +53,9 @@ def validate_binding(binding, now):
         not match
         or binding["source_sha"] != SOURCE
         or binding["phase"] != "p"
+        or binding["generation_kind"] != "exact-pinned-production-entry-generation"
+        or type(binding["source_file_count"]) is not int
+        or binding["source_file_count"] < 1
         or binding["database"] != "t44c_" + match[1] + "_p"
         or binding["api_workers"] != int(match[2])
         or binding["entrypoint"] != "t44.api:app"
@@ -126,10 +130,12 @@ def main(argv=None):
         path = phase / name
         if path.resolve() != path or hashlib.sha256(raw(path)).hexdigest() != wanted:
             raise ValueError("BOUND_PHASE_FILE_CHANGED")
-    proof_raw = raw(phase.parent / "actual53-source-files.json", True)
-    if hashlib.sha256(proof_raw).hexdigest() != binding["source53_actual_proof_sha256"]:
+    proof_raw = raw(phase.parent / "actual-source-files.json", True)
+    if hashlib.sha256(proof_raw).hexdigest() != binding["source_actual_proof_sha256"]:
         raise ValueError("FULL_SOURCE_PROOF_CHANGED")
     proof = json.loads(proof_raw)
+    if len(proof["files"]) != binding["source_file_count"]:
+        raise ValueError("SOURCE_FILE_COUNT_DIFFERS_FROM_BOUND_PROOF")
     env = environment()
     subprocess.run(
         ["systemctl", "is-active", "--quiet", binding["timer_unit"]],
@@ -172,7 +178,6 @@ def main(argv=None):
         "anchor_at": ANCHOR,
     }
     save(output / "control.private.json", control)
-    save(output / "identities.pending.private.json", {"reserved": True})
     base = DOCKER + [
         "compose",
         "--env-file",
