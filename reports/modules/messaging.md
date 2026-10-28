@@ -58,3 +58,8 @@
 - 跨岗候选（调度event投影、scan_run事务内原语、outbox信封工厂）已交根排班，不自行落新sharedhelper。
 - 提交快照c4b3f114固定cloc净减13（application5875→5862，消息357→344）；只Facade-10/Broker-3，其他application不变。设计预算15–50未兑现上界，未达到100，未隐瞒总量仍超762。
 - 代码已stage push；Issue5实际评论6397897311。完整before/after、性质/故障和原始失败见tmp806_newscope/RESULT.md；不包含全CI或真实组件结论。
+# 2026-10-28 通知 Call/CAS 候选
+
+已审A后半由messaging AI实际实现，产品6977e5b7、上游backend2d947d23；只改通知facade。list/mark_read/handle内部统一(g,c)，值构造前先核版本，复用cas(record_diff=False)保持成功审计before/after为空且Runtime.audit仍执行；项目资格/收件人/SQL锁/UoW/handle不隐式read保持。REST/DDL不变，旧平铺Python是明确迁移，产品没有兼容壳。
+
+原979/806函数与36assert AST完全同，仅test-only调用适配；新780直接7边界先7签名红、后7绿。联合模块60pass/23integration未执行，API164pass/40未执行，并集203而非224；Ruff首次I001修后绿。固定cloc：5935→5916→5898，消息85→67净18、合包37，仍超798/exit1。实际原件见agents/messaging/component-call-20261028/，不冒原生MySQL/Rabbit/完整CI/独立/正式性能通过；780需根接入CI，云候选仍5d。

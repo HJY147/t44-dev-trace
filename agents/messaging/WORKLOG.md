@@ -72,3 +72,10 @@
 - 固定cloc正式提交快照c4b3f114a5525c0fe0fd031d2b3603070a2be892：application5875→5862净13；消息357→344，Facade95→85、Broker129→126，其他application逐文件均不变。RESULT.md记录真实低于预算，未称100目标或全产品规模达标。
 - c4b3f114已实际push至codex/messaging-size-20261025（stage [skip ci]，不改门禁），root统一全CI；Issue5真实评论 https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6397897311，原文保存在tmp806_newscope/issue-comment.md。
 - 根后续明确接受低风险实际收益并授权跨岗候选仅设计交接，本轮不追加调度/DB/BE代码；最终metadata不改application，准备交接释放slot。
+# 2026-10-28：通知 Call 接口与 CAS 复用
+
+- messaging AI接受根明确授权的A责任部分，先读AGENTS/已审设计，与backend责任岗直接确认2d947d23及(g,c)/record_diff默认契约；设计82b6e576先提交push，Issue5评论6469103271实际回读全文一致。
+- 只改NotificationFacade生产文件；test-only caller保旧979/806正文和36assert AST，新增tmp/780直接新接口7边界。迁移前真实7个TypeError保留，迁移后7通过；不把迁移前签名差异伪称业务缺陷。
+- 联合模块60pass/23integration未执行；原API/contracts+782+780为164pass/40未执行，成功唯一并集203/交集21。旧默认通知500原断言自然转绿，未改外岗测试；未读独立783/792私件、未联系测试岗、未访问云或凭据。
+- Ruff首次I001由本岗新增import顺序引起，原log保留，仅排序后绿。实际源码6977e5b7已push；固定counter5898、facade67，本岗净18/合包37，严格出口仍exit1/超798，不写达标。
+- 具体命令、hash、未验证项及工作树检查/提交身份边界见component-call-20261028/REPORT.md和verification.json。完整CI需根将780测试加入既有列表，已明确交接，不把本岗局部绿当native/CI/独立/性能通过。

@@ -335,6 +335,17 @@
         "tmp/backend/messaging/806_newscope.py",
         "agents/messaging/tmp806_newscope/"
       ]
+    },
+    {
+      "id": "ROLE-messaging-COMPONENT-CALL-20261028-v1",
+      "source": "root actual delegated task; AI operator",
+      "task_file": "agents/messaging/prompts/ROLE-messaging-COMPONENT-CALL-20261028-v1.md",
+      "reason": "explicit internal Call migration and audit/error boundary retention",
+      "artifacts": [
+        "backend/t44/messaging/facade.py",
+        "tmp/780_messaging_component_20261028/",
+        "agents/messaging/component-call-20261028/"
+      ]
     }
   ],
   "updated_at": "2026-10-25",
@@ -377,5 +388,74 @@
       ]
     },
     "evidence": "agents/messaging/tmp806_newscope/RESULT.md"
-  }
+  },
+  "component_call_20261028": {
+    "operator": "messaging AI",
+    "prompt_ref": "ROLE-messaging-COMPONENT-CALL-20261028-v1",
+    "design_commit": "82b6e576",
+    "source_commit": "6977e5b7331e4c6cf64b719b6f161a082558ef25",
+    "backend_dependency": "2d947d237328521e46b9766859ca166a4c54f789",
+    "baseline": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "status": "implemented local development candidate; review/full CI/native services not yet run",
+    "production_paths": [
+      "backend/t44/messaging/facade.py"
+    ],
+    "interface": "NotificationFacade.list/mark_read/handle(g, Call); Call.cas(record_diff=False), explicit version check before values(row)",
+    "preserved": [
+      "REST/OpenAPI/DDL",
+      "membership scope/error priority",
+      "recipient/version/max/CAS/locks/UoW",
+      "handle independent from read",
+      "empty successful audit diffs and Runtime.audit",
+      "all old 979/806 test definitions and 36 assert ASTs"
+    ],
+    "measurement": {
+      "strict_baseline": 5935,
+      "backend_parent": 5916,
+      "combined": 5898,
+      "own_facade_before": 85,
+      "own_facade_after": 67,
+      "own_net": 18,
+      "combined_net": 37,
+      "range_pass": false,
+      "over_upper_limit": 798,
+      "counter_exit": 1
+    },
+    "verification": "agents/messaging/component-call-20261028/verification.json",
+    "report": "agents/messaging/component-call-20261028/REPORT.md",
+    "checks": {
+      "migration_before_new_API": {
+        "failed": 7,
+        "reason": "old flat interface TypeError"
+      },
+      "new_direct": {
+        "passed": 7
+      },
+      "joint_module": {
+        "passed": 60,
+        "integration_deselected": 23
+      },
+      "joint_API": {
+        "passed": 164,
+        "integration_deselected": 40
+      },
+      "success_unique_union": 203,
+      "overlap": 21,
+      "first_lint": "I001 import order failed; original retained",
+      "final_lint": "passed"
+    },
+    "remaining": [
+      "root CI must explicitly include tmp/780_messaging_component_20261028/780_facade_semantics.py",
+      "exact-source full CI/coverage",
+      "real MySQL concurrent CAS/RabbitMQ",
+      "independent acceptance/formal 400 active 600s performance",
+      "strict source size still 798 over"
+    ],
+    "github_design_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6469103271",
+    "cloud_candidate_unchanged": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "github_final_comment": "https://github.com/HJY147/t44-dev-trace/issues/5#issuecomment-6469417201",
+    "github_readback": "agents/messaging/component-call-20261028/github-readback.json"
+  },
+  "latest_stage_pointer": "component_call_20261028",
+  "latest_updated_at": "2026-10-28"
 }
