@@ -2468,13 +2468,19 @@
     }
   },
   "resume_20261028": {
-    "stage": "local-summary-export-checkpoint",
+    "stage": "local-resume-tools-complete",
     "design_commit": "c5fcb119",
     "summary_export_helper_sha256": "ce7ed1e96b97eea2f32db2d429c4d60d0e39b2c1b61c428c5041dfa6d4dd5ec0",
     "summary_export_local_checks": 12,
     "cloud_executed": false,
     "first_command": "agents/deployment/resume-20261028/install-and-emit-first.sh",
     "runbook": "deployment/cloud-reuse/RESUME-20261028-STEPS.md",
-    "profile_deriver": "in progress, no final source assumed"
+    "profile_deriver": "deployment/cloud-reuse/derive-resume-profile.py",
+    "profile_deriver_sha256": "1846079ab7500e4c9ea4a206a6a01ff92c5b255b3926f7230bcecaf88bb7b004",
+    "profile_local_checks_passed": 16,
+    "summary_local_checks_passed": 12,
+    "final_source_chosen": false,
+    "profile_created_for_final_source": false,
+    "raw_failure_xml_whitespace_exception": true
   }
 }

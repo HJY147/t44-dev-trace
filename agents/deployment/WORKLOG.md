@@ -636,3 +636,6 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 旧798在fsync原66110B汇总后仅因base64>18000断言失败。新observer-summary-export只认固定路径/长度/完整SHA，O_RDONLY|NOFOLLOW单FD，按12000字符分块，每任务一块；本机完整链校验后O_EXCL新0600输出/fsync。安装并首块脚本3679B，可一次粘贴；无密码/会话/产品导入或源文件写入。
 - 系统Python没有pytest/ruff的真实错误保留为环境发现，不安装。root给已批准纯依赖venv，只执行其Python/第三方包，不读相邻env/log/DB。首次12检查10过2失败，是本岗夹具的macOS /var路径非canonical；移至项目tmp793后12通过，原XML另存。Ruff/format通过，格式化后12再通过。没有放松源SHA或文件保护。
 - 旧generation/resource-stream硬编码2026-10-25T21Z过期；旧factory Persistent只停止冻结project/service保卷。新最终源待root pin，不能冒f4是最终源。继续本地派生profile准备，尚未云启动/build/采集/独立验收，不读独立未发表用例/密钥或私包。
+
+- 新derive-resume-profile先核旧四模板完整SHA和每次替换精确前像数量，root显式新源/截止后写全新profile。真实Git源数量动态进入完整实际文件检查，原依赖/REST/DDL/schema.py/前端等字节检查不放宽；新builder→generation→resource/receiver SHA闭环。16项本地guard绿，含真实22f源打包五文件ZIP/receiver与动态49文件保护；22f仅工具验证，不预选最终源。profile还未为最终新产品生成，也未云运行。
+- profile实现第一轮Ruff提示timezone UTC别名及exec；改用精确SHA审核模块的importlib加载（不导入产品），Python3.10 timezone兼容用局部说明，测试使用实际3.12依赖环境，之后Ruff绿。原4模板SHA未改。summary首失败XML有4处pytest traceback尾空格，阶段cached diff-check实exit2而后提交；现明确归档原件例外，不改原XML、不声称全局diff-check零警告。
