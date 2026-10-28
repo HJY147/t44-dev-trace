@@ -730,3 +730,11 @@ root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，�
 - 新本地五文件ZIP166582B/51c75eb3…、manifest f04ced96…、source archive8f4f6f92…，严格receiver CRC/TAR/完整源字节模式真实通过；新runtime父从一开始700，无权限放宽。此包是本地原件，旧receiver字段official_zip不构成官方运输证明；root后续统一workflow/官方ZIP完整SHA另核，不贴本地SHA。
 - 新5片+安装共6命令，manifest e0cb6b89…，最大raw11337/整encoded+256=15372；6bash-n/逐SHA尺寸及实际f7/16Z本地重组后六文件完整一致，只临时remote-root字面值映射fixture。RUNBOOK.md已先准备全流程CLI、source生成/官方同builder运输/receiver/build/prepare/budget/业务/保卷stop，未等云启动才写。不重复完整CI或旧算法整套guard；新增实际封包检查和限定diff够用。
 - 与backend对接profile02预算字段/同helper/admit/锁、GEN两预算flag；核原CLI存在性后其明确本次bootstrap须原显式seed44/04:00Z anchor producer，不能改用无anchor参数的seed-demo默认now，本岗已确认并在runbook记明，不预填IDs或启scheduler。783保护检查不读不重做。root报告两原机运行/APP64/128只作上下文，本岗0云/变配/build/真实MySQL/独立私件/新F/52/SUT操作。root候选LOC仍超限798不因打包通过，CI/预算/F/性能仍待对应实际证据。
+
+## 同f7新20Z窗口：仅新实例、复用原source-only镜像
+
+root14:21明确旧f7-16Z仅代码安装/backend镜像build，未GEN prepare/arm/infra/migrate/idle、无F/P grant或业务。另新codex/deployment-v4-f7-20z-20261028自e1b独立worktree，先设计，新source仍f7、HARDSTOP20Z，旧5d/f7-16Z原件保留。新profile2059B/60660d2a…、GEN30497B/9edafbbf…、resource44082B/3afd9a03…；helper305f、builderd2fc、receiverce064逐字相同。差分实核只有stop和resource所pin GEN SHA/profile元数据变化，完整53源集/冻结集相同；builder实际AST的build binding键无stop/deadline，验证路径原样。
+
+root提供并实际核官方manifest3368534a…/innerZIP70d09d1f…/archive8f4f6f92…、原df84 buildbinding与actual sha256:a7d…；本岗仅据完整PUBLIC转述加代码静态证明可原身份复用，不读私有binding或重建/重贴image，不把旧本地f04/51c75替官方。新GEN prepare仍实际核原源码/原build/archive/image完整证明，不能因静态说明跳过。
+
+新远端v4-code-20261028-03/profile，5分片+安装6命令、manifest60c234ac…、完整raw11337/完整base64+256=15372最大；6bash-n和实际20Z临时root映射重组后六原件逐字相同。RUNBOOK已给df84/官方336完整值的新prepare模板/新namespace计划/真实预算后迁移业务/保卷stop，不等待云才编步骤。固定PUBLIC commit的API outer wrapper随后独立封小commit，完整外层另核，不仅算内层；原六条现在可审。无算法/产品/全CI/云/SUT动作或测试私件读取，783票据与52/F事实只由root核。
