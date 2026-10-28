@@ -663,3 +663,14 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 经root明确后续准入，只在纯临时函数将RowsGateway.rows默认tuple(t.c)换(t,)：SQLAlchemy select(table)同全列。18表/99case/双dialect共198对SQL+params+列布局/拒绝完全相同，AST只改一节点；无DB/HTTP候选运行，产品零改，预计净0有效行。无profiler纯构建ABBA median A1/B1/B2/A2=21.665/16.77958/16.01333/21.14708us每语句；比值1.291153/1.320592，只有每条约5us，不称整体HTTP改善或因果根因。交root转DB岗审/实库回归，不改当前a12 P7/P16对照。
 
 baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+双hash/roundtrip；三工具check/format绿。首次summary有2 E702静态红，修后执行派生；Starlette httpx deprecated warning保留。没有重跑产品全CI/独立验收/原生MySQL/云负载。完整原件、统计、guard与prompt见agents/backend/cpu-profile-20261028。
+
+
+## 2026-10-28 P16公共对照与限定响应生成校验原型
+
+操作者backend AI，提示词ROLE-backend-RESPONSE-FASTPATH-20261028-v1。仅根准入两PUBLIC核SHA/bytes，未读private引用或云UI；P16与前P7各8000/零HTTP错，started21.890740→15.144699s，但四路径P951395.62/979.71/1499.96/1447.24ms均失败270。P16资源15采样nearest-rank P95=max，对比P722采样的第二大需保留粒度边界；scheduler仍全null，资源相关不证明因果。
+
+先本岗tmp冻结设计f4869039，官方primary确认fastjsonschema只Draft4/6/7，限定当前成功响应兼容子集、schema/ref内容指纹、formats委托原checker、默认不注入、unsupported/fastreject回原错误完整列表/顺序。首run31HTTP后在guard失败：库2.22.2 detailed_exceptions=False compile KeyError definition_rule，随后故障守卫误假定cache存在；无计时/未观察falseaccept。原raw及两工具源码封存。执行前修订ab4b9ff4，只改True诊断选项/可用性检查/样本8→7，累计HTTP限额不变。
+
+第二run159HTTP，新a12 Git导出51源/新SQLite生产SQLAlchemy/FastAPI，先424守卫绿再ABBA；后另补13纯守卫绿，明确后补时序、不冒全部前置覆盖。累计190 HTTP全部原schema外层再核，网络/MySQL尝试0，产品/业务/SQL/权限/请求校验/阈值零改。列表20任务CPU A1/B1/B2/A2=8.583666/2.784209/3.364958/8.57ms；小get收益<1ms，contract与transition B2较A2反向，未测escalation，不能称当前P7主要修复或全等价。原型137非空非#行非cloc正成本，未生产准入。
+
+根报告模型capacity中断，无原始provider错误可核，本岗保留原context/模型继续，不编次数/错误码。两轮raw和supplement无损gzip+双SHA/roundtrip、精确工具hash、全部失败/警告、三工具静态绿见agents/backend/p16-schema-response-20261028。完整报告/提示词/交接齐，无正式400/600成绩或新云授权。

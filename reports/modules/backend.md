@@ -412,3 +412,12 @@ P7精确PUBLIC已核hash：400客户端8000完成/零HTTP与客户端错误，�
 profile指向SQLAlchemy表达式/缓存键构造的重复调用；root准入后纯原型tuple(t.c)→(t,)只一AST节点，18表99case×2方言198完整SQL/绑定/结果列/锁分页/拒绝签名一致；无profiler构建ABBA A1/B1=1.291153倍、A2/B2=1.320592倍，约每条5us，未做候选HTTP/DB运行。预计净0有效行，生产未改，由root转DB岗审查/回归；不删鉴权/RC/锁/审计/幂等，不复活旧失败路线。
 
 本轮未访问云UI、原生MySQL、tmp796/792私密或测试用例；无产品CI/独立验收/云成绩。报告与可复核完整压缩原件见agents/backend/cpu-profile-20261028/report.md、raw-manifest.json、summary.json、verification.json，prompt为ROLE-backend-CPU-PROFILE-20261028-v1。
+
+
+## 2026-10-28 P16与成功响应校验原型
+
+P16 PUBLIC两hash精确核，8000请求零HTTP错，started15.144699s较P721.890740s短30.816871%，四路径P95仍979.71–1499.96ms失败270。P16资源15点P95=max，P722点P95第二大，不同粒度与单次顺序对照不能推因果/完整分钟/600s通过；scheduler全null。
+
+响应生成校验仅临时白名单与兼容子集，原请求/错误列表/顺序保持回退；冻结设计/明确修订后累计190HTTP。首31HTTP库compile/harness KeyError无计时保留；次159HTTP先424守卫后ABBA，另13纯守卫在计时后补、分开标注。列表20任务少5–6ms，get<1ms，contract/trans B2反向，未证明当前P7三条小响应有数毫秒安全收益，未测escalation。
+
+产品/SQL/权限/阈值/云均零改；原型约140行正成本、无全等价/生产准入/正式性能结论。报告及原件/manifest/verification/prompt见agents/backend/p16-schema-response-20261028，工具与冻结设计在tmp/788/schema-response。
