@@ -561,3 +561,7 @@ root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍N
 从fee30ae5独立工作树，仅将786_pool_settings.py及787_query_semantics.py各一次接入原完整coverage列表，保留tmp/backend、原五个补充模块、全部marker、80%行门禁和backend/t44完整分母；没有重复添加tmp/backend内7旧case。原coverage配置逐字不变，runner AST除列表外一致。
 
 实际发现浅checkout只fetch935，787收集依赖固定a12的git show；经root明确批准仅在coverage原935 fetch/完整SHA校验后加精确a12 fetch及校验。真实本地depth1克隆先缺a12时收集exit2，原1243B输出逐字gzip保留；补该对象后同克隆30项收集成功。两新模块正反顺序各61项通过、ENV和禁止MySQL连接钩子恢复，旧静态23项、CI Ruff和新增工作块bash-n通过。完整命令/bytes/SHA在pool-ci-20261028/validation.PUBLIC.json；此为本地wiring与模块验证，尚未全产品coverage/nativeMySQL/远程CI或云验证。各Settings角色新ENV及max_connections预算由下一profile显式设计。
+
+### v4预算设计先行（待实现）
+
+新v4独占目录设计仅支持新明确source/未来窗口，不改旧冻结。root已撤回与创建顺序矛盾的“prepare/arm前查同新MySQL”，改为文件prepare→timer arm→基础infra→实际probe-budget→迁移/业务启动，真实CID/启动身份/镜像/库及max_connections再验。P64仅5/0、P16三组可比容量、仅P API ENV及64连接分项保留；其他角色默认5/10、运维单进程互斥，尚无真实容量测量或新发布源。详见v4-20261028/design.md；旧270/active400/600秒与LOC门禁不变。

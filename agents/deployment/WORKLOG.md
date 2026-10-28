@@ -696,3 +696,7 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 发现787收集时git show固定a12，但现coverage浅克隆仅fetch935；告root后获明确扩展授权，仅coverage原935 fetch/完整SHA核验后追加a12的同等3行，不改token/权限/其他job。真实depth1本地file克隆先只取935，确认a12对象缺失，787收集exit2；完整原输出1243B/SHA与gzip留存。定向fetch同a12并核完整SHA后，同一克隆收集30项exit0。这是预期缺前置的红→绿本地CI复现，不是产品失败或远程CI。
 - 两新模块合61项，在synthetic DATABASE_URL/数据库名/TTL/19+1 pool ENV且pymysql.connect全程禁止外连下，正序61过0.31s、反序61过0.30s；各次环境与connect钩子身份恢复断言均过。不是122独立用例；786局部monkeypatch自动恢复、787只临时SQLite，不需修改CI ENV或服务。旧静态guard23项0.07s过，CI同范围Ruff过，coverage工作块bash-n过。
 - 证据在agents/deployment/pool-ci-20261028/，逐命令argv/exit/原字节SHA/完整gzip已记；仅本任务临时浅克隆清理，原证据保留。没有真实MySQL/RabbitMQ、全coverage、远程CI/Docker/云动作，两VM保持root停机状态；ENV适用全部Settings角色的显式各角色值与actual max_connections预算留后续新profile。root合并精确SHA后执行完整产品/nativeMySQL和Docker检查。
+
+## v4连接预算与新profile设计（实施前）
+
+root新任务另开codex/deployment-v4-profile-20261028自2b79独立worktree，先记录v4设计。旧配置/旧phase/结果和停机VM不动，最终新source/窗口待root冻结，不拿a12冒新源。root已纠正“prepare/arm前查新MySQL”的顺序矛盾，保原prepare文件、arm保护、infra基础服务，之后probe-budget实际只读并在业务/迁移前硬闸。预算64分项、P16A/B/C和P64仅5/0、仅P API ENV、其他角色默认、只公开容量与只读observer在设计中明确；当前仅设计，尚未实现或运行。
