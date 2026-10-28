@@ -53,3 +53,18 @@ root原契约：“backend 每个直接 SQL 步骤各自持锁，调用 GEN 前�
 ## ROLE-backend-SCOPE-BRIDGE-V3-BUDGET（审核反馈驱动，AI岗位修复）
 root原要求：“两个必须修复：1 generation argv 必须传 --budget-receipt PATH --budget-receipt-sha256 FULL64，新GEN的scheduler-token/rotate/start要求；2 _data(preflight/seal)当前只持operation_lock，锁内须先budget.admit绑定实际receipt/同MySQL真实身份与容量，再跑直接SQL。receipt path+SHA必须作为显式PUBLIC configuration/authority固定并验证，不能推384默认、不能借GEN拒绝前先SQL；GEN仍自己持共享锁，父不嵌套。”
 本岗先读部署25d v4/STEPS和确切305f helper，设计e95，再在原v2字节留5红封e5b；实现唯一实际预算回执完整绑定、GEN透传、同锁原admit后SQL，限定原query等待为剩余窗。新用例用原admit/measure/numeric parser及flock而只stub元数据/query transport，当前128/123围绕真实F4预算124验证无384默认。原56只补中性fixture/专测stub，95assert AST原序保持；最终74绿。仍未实际Linux/MySQL/云/SUT，不把自测写成审核已关闭。原失败不覆盖，不AI冒学生本人经历。
+
+
+## ROLE-backend-P64-F7-1600（根新候选的窄工具派生，AI岗位）
+根原要求关键原文：“当前fullCI40692462131+Docker40692462380在跑（真实净LOC37→5898，仍超798）”“不改原a12/P7/P16源/结果/门槛/seed44/anchor及400active无think”“若原工具已参数化则给明确调用/实际字节证明即可，别重写大框架/再加加密算法。”
+本岗先核旧工具确实固定a12/10:30/仅7|16和旧generation_kind，再只加新variant与必要v4 grant/budget宿主对接。根确认内部两阶段，避免先API401审计再空表seed；预算薄封装复用已审e551，不改其算法/来源。只读获准两具名PUBLIC producer/consumer先核SHA，不枚举runtime私包；路径和actual pins全部参数化，新opaque接收只搬密文。原HTTP核心18函数/类、三个数据业务文件、SQL/seed常量逐字证明；原46例66assert只准身份/时间字面替换，保原语义。实际f7 Git53快照验证原handler，68自测与正式云/性能/独立验收清楚分开。新wrapper初次import lint修正如实留日志；实际rootgrant等仍null，不把AI本地合成材料写成学生本人经历或云实测。
+
+
+## ROLE-backend-P64-UI-ENCODED-V2（审核反馈，AI岗位）
+根原要求：“外层base64(script)+300实际20444/21640/21112/12968，前三超18000；原delivery9只测raw+300不足。必须保原包/失败记录，仅重分片到raw≤13200（建议12000），新增真正完整外层encoded+300断言和本地端到端安装回放，13 runtime/业务/grant/原46断言字节都不改。”
+本岗承认原计数未包含实际外层；先旧4片真实3红1绿封27bc，再新目录7片raw上限12000。提示词检查对象从“文件大小”明确到“真正发送的完整外层命令+说明”，实际对解码后的同源13模块安装回放，不以API下载成功追认。新7绿同时核旧字节、拒覆盖/混包；不改运行算法/grant/断言，所有新hash交限定复审。属于AI错误与改进，不改写为学生亲自操作。
+
+
+## ROLE-backend-P64-F7-2000（根新窗口，AI窄派生）
+根原要求：“另新P64工具variant exact source仍f7，仅所有STOP16→20及新安装目录/root/t44-r9/p790-f7-2000-ui03；其他13runtime业务/门槛/权限/SQL/原用例都保真，包完整outer+300<18000和原raw/ui区别保持，20eb原包/3红失败不改”“原运行字节除STOP/路径允许变量证明即可，别再跑整套无关实验”。
+本岗把允许变化写成精确旧串替换白名单，旧13先核manifest，9文件逐字同，4文件只时间与对应错误标签。模板actual仍空，真实20Z GEN单STOP差分并锁新SHA；七片同时量base64 payload和真正完整外层，实回放安装。7项窄验证验证旧包全tracked字节及原失败而不重跑全68；首Ruff2条自测check参数真实修正，7唯一例前后均通过不重复计数。没有新phase/grant/session，不把AI工具准备或根报告CI/镜像冒作学生本人经历、云实测或正式验收。

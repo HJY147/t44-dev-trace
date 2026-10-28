@@ -739,3 +739,21 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - Ruff绿；format首次仅EOF空行红保留，窄修后3文件绿。common原AST仅unwrap新if/kw后整模块一致，Business除准入删/增节点外整模块一致；Runtime/其它产品/FrozenAPI/DDL不动。
 - HTTP失败trace里1个一次性SQLite token在log/XML各1处脱敏，精确原件0700/0600保存于/tmp/t44-backend-component-call-20261028-raw，双SHA及XML解析记录齐；原失败保留，不冒产品绿。
 - 报告agents/backend/component-call-20261028/report.md及verification/计量/JUnit/命令齐；无完整CI/MySQL/MQ/云/正式性能/独立验收，不读783/792、不改学生研究。后端独立提交不可投云，root待消息联合迁移/审核/全回归。
+## 2026-10-28 f7/64worker/16Z短P预装（ROLE-backend-P64-F7-1600）
+- 根新候选f7cdb5fa，8e235a34先设计。原a12/P7/P16/10:30及scope桥e551不动；source/stop/64/v4新kind另副本。实际新GEN6b2da1从已发布Git核30497B，避免旧schema假fixture。五个select子集hash与f7实际全同，实际f7后端53文件只读快照跑原CLI/seed/S1/S2/handler。
+- 根确认prep→bootstrap空库→GEN idle/TLS401→实际6角色→另short-P grant；不能先写audit再过空表门禁，prep不是HTTP授权。新control带真实root grant/raw SHA/nonce/source/image/source53，缺pressure grant在网络前拒绝；S2/matrix单次marker，不复用旧session。
+- 薄790_budget复用已审e551预算API，只读双pin，不调scope供应；每admin/S1完整容器分别锁→原305f admit→原命令→释放，GEN在外不嵌套，无384默认。root实际grant/phase/receipt/CA/key/roles尚待。
+- 原data/select/S1/S2三文件逐字同；HTTP除configure外18函数/类逐字同，原QUERY/PROBE/显式seed_code常量同；transport仅SOURCE/STOP。旧46例66assert经仅身份/时间字面变更AST原序保持，0删除。
+- 59+安装/opaque接收9=68唯一通过，0fail/error/skip；FastAPI旧依赖1上游warning未升级。初次新wrapper Ruff未用import等10项修后绿；本机Mac/Py3.12，host3.10只AST。无云/新CI/独立private/正式性能。
+- runtime c0268820，manifest 1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8，13件/四安装15107/16004/15608/9499B+300<18000，新/root/t44-r9/p790-f7-1600-01。两grant/两配置模板、producer/consumer/opaque receiver、原matrix、runbook、byteproof/verification/JUnit齐；根限定review pending。工具规模不计产品节省。
+
+
+## 2026-10-28 P64 UI外层编码漏算：仅重分片修复
+- 根审核指出旧四raw15107/16004/15608/9499，但实际base64(raw)+300=20444/21640/21112/12968。原9例只测raw+300不足，是本岗漏测，不用GitHub API成功追认。27bcdd3d原件4断言真实3红1绿，gzip原输出。
+- 新p64-f7-ui-encoded-v2目录只installer/delivery/测试，不动旧d17/1da/13 runtime/两grant/原46文件；按d17字节核同。raw上限12000，7片最大11750；完整UI launcher+300最大16090，编码payload+300最大15968，均<18000。
+- 新7检查全绿，真实outer→bash完整安装回放、13字节和0444、umask077、拒覆盖/混包；旧68不是此传输门禁证据。delivery SHA243d90ca022aaf1d336854066fd9c65e9e49a65f20047594d22fae95184097c5，新/root/t44-r9/p790-f7-1600-ui02，raw由helper包一次或ui-ready直接用，不能二次包。
+- 已向审核岗通知；无云/SUT/新CI/独立私件/产品改动；root告知API下载成功只作路径事实，非本岗验证。报告p64-ui-encoded-v2-report.md。
+
+
+### P64 f7新20:00窗口（AI岗位；旧16Z未执行业务据root）
+按新任务另建window2000/ui03，source f7不变。13运行9逐字同、4仅截止/窗口错误标签；manifest2af64448…4626de，delivery305c5a72…41352，7片max完整UI+300=16090。旧20eb目录/原46及失败证据逐Git相同，GEN新9edaf…单STOP差分，e551/305f依赖原字节。7项窄检查首轮1.61s通过；Ruff两个自测run缺check显式参数，补check=False后7项再通过126.60s（不算14例），限定Ruff/diff绿。只有本机安装回放和AST3.10，不重跑无关产品实验，无新actual grant/session/云/SUT/私件。设计/report/runbook/verification均新件，等待root限定审核及本次新授权执行。
