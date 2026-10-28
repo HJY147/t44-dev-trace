@@ -155,7 +155,7 @@ class RowsGateway:
     ):
         t = self._table(table)
         fields = (
-            tuple(t.c)
+            (t,)
             if columns is None
             else tuple(t.c[k] for k in self._fields(t, dict.fromkeys(columns)))
         )
