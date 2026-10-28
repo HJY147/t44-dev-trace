@@ -130,7 +130,10 @@
     "agents/reviewer/prompts/ROLE-reviewer-WINDOW1030-20261028-v1.md",
     "tmp/791_reviewer_resume_20261028/window1030_static.py",
     "reports/reviews/database-select-pool-20261028.md",
-    "agents/reviewer/prompts/ROLE-reviewer-SELECT-POOL-20261028-v1.md"
+    "agents/reviewer/prompts/ROLE-reviewer-SELECT-POOL-20261028-v1.md",
+    "reports/reviews/service-helpers-and-20z-20261028.md",
+    "tmp/778_reviewer_narrow_20261028",
+    "agents/reviewer/dispatches/ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1.txt"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -1497,6 +1500,11 @@
       "id": "ROLE-reviewer-829-PUBLIC-v5-v1",
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-829-PUBLIC-v5-v1.txt",
       "reason": "Replay exact prior timing counterexamples on new freeze without existing36/private/SUT execution; bind only two permitted grant field changes, preserve prior rejection and timing limits."
+    },
+    {
+      "id": "ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1",
+      "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1.txt",
+      "reason": "Exact Git AST inlining and byte-chain review, scoped original HTTP execution and fixed cloc; no full CI/cloud/independent execution."
     }
   ],
   "questions": [],
@@ -1643,7 +1651,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-28T11:27:19.001045+00:00",
+  "updated_at": "2026-10-28T15:22:05.393540+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -3947,5 +3955,42 @@
       "technical_commit": "cc29e5ec963c5301efb7347b024cc5c505b8b8ca"
     },
     "staged_diff_check_exit": 0
+  },
+  "service_helpers_and_20z_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1",
+    "candidate_source": "5cd0ad43d93bb9066e67bda04337815e6f6fa1b1",
+    "baseline_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "backend_tool": "7779681010de99cbb4d5946ded9c4bcd5f8ae132",
+    "deployment_tool": "d7b65303f67075c2239584d61c18ace65e4addfa",
+    "whole_product_modules_AST_equal_after_exact_helper_inlining": true,
+    "inlined_query_calls": 2,
+    "inlined_edit_calls": 3,
+    "own_HTTP_passed": 17,
+    "HTTP_deselected": 106,
+    "HTTP_errors_failures_skips": 0,
+    "HTTP_existing_warning": 1,
+    "original_HTTP_Assert_AST": 187,
+    "original_P64_Assert_AST": 66,
+    "old_runtime_UI_directories_unchanged": true,
+    "own_cloc": {
+      "before": 5898,
+      "after": 5894,
+      "net": 4,
+      "over": 794,
+      "passed": false
+    },
+    "P64_max_encoded_plus300": 15968,
+    "P64_max_whole_UI_plus300": 16090,
+    "deployment_whole_wrapper_encoded_plus256": 3680,
+    "decision": "NO_NEW_LIMITED_BLOCKER_CANDIDATE_INTEGRATION_AND_PREINSTALL_ONLY",
+    "full_CI_native_MySQL_real_socket_cloud_independent_acceptance": false,
+    "later_aggregate_bundle_reviewed": false,
+    "no_product_tool_original_test_changes": true,
+    "independent_private_read_or_tester_contact": false,
+    "report": "reports/reviews/service-helpers-and-20z-20261028.md",
+    "evidence": "tmp/778_reviewer_narrow_20261028",
+    "initial_own_exploration_audit_and_environment_errors_retained": true,
+    "updated_at": "2026-10-28T15:22:05.393540+00:00"
   }
 }
