@@ -690,3 +690,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 原data/select/S1/S2三文件逐字同；HTTP除configure外18函数/类逐字同，原QUERY/PROBE/显式seed_code常量同；transport仅SOURCE/STOP。旧46例66assert经仅身份/时间字面变更AST原序保持，0删除。
 - 59+安装/opaque接收9=68唯一通过，0fail/error/skip；FastAPI旧依赖1上游warning未升级。初次新wrapper Ruff未用import等10项修后绿；本机Mac/Py3.12，host3.10只AST。无云/新CI/独立private/正式性能。
 - runtime c0268820，manifest 1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8，13件/四安装15107/16004/15608/9499B+300<18000，新/root/t44-r9/p790-f7-1600-01。两grant/两配置模板、producer/consumer/opaque receiver、原matrix、runbook、byteproof/verification/JUnit齐；根限定review pending。工具规模不计产品节省。
+
+
+## 2026-10-28 P64 UI外层编码漏算：仅重分片修复
+- 根审核指出旧四raw15107/16004/15608/9499，但实际base64(raw)+300=20444/21640/21112/12968。原9例只测raw+300不足，是本岗漏测，不用GitHub API成功追认。27bcdd3d原件4断言真实3红1绿，gzip原输出。
+- 新p64-f7-ui-encoded-v2目录只installer/delivery/测试，不动旧d17/1da/13 runtime/两grant/原46文件；按d17字节核同。raw上限12000，7片最大11750；完整UI launcher+300最大16090，编码payload+300最大15968，均<18000。
+- 新7检查全绿，真实outer→bash完整安装回放、13字节和0444、umask077、拒覆盖/混包；旧68不是此传输门禁证据。delivery SHA243d90ca022aaf1d336854066fd9c65e9e49a65f20047594d22fae95184097c5，新/root/t44-r9/p790-f7-1600-ui02，raw由helper包一次或ui-ready直接用，不能二次包。
+- 已向审核岗通知；无云/SUT/新CI/独立私件/产品改动；root告知API下载成功只作路径事实，非本岗验证。报告p64-ui-encoded-v2-report.md。

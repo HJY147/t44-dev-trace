@@ -1,0 +1,125 @@
+{
+  "ceiling": 18000,
+  "cloud_actions_executed": false,
+  "destination": "/root/t44-r9/p790-f7-1600-ui02",
+  "kind": "P64_INSTALL_UI_OUTER_ENCODED_V2",
+  "parts": [
+    {
+      "base64_bytes": 12520,
+      "base64_plus_description": 12820,
+      "complete_ui_plus_description": 12942,
+      "description_allowance": 300,
+      "files": [
+        "790_bootstrap.py"
+      ],
+      "raw_bytes": 9389,
+      "raw_file": "raw-part01.PUBLIC.sh",
+      "raw_sha256": "c0e2f43593054e2dd2c5dbfb8b9d98427c159615bab7d9a3f54504192dde47c1",
+      "ui_bytes": 12642,
+      "ui_file": "ui-part01.PUBLIC.txt",
+      "ui_sha256": "d620395638155489769b3d72effae4bfb3e0747ccd3458b7d2a8fa926b14f0d5"
+    },
+    {
+      "base64_bytes": 15668,
+      "base64_plus_description": 15968,
+      "complete_ui_plus_description": 16090,
+      "description_allowance": 300,
+      "files": [
+        "790_host.py",
+        "790_load.py",
+        "790_budget.py"
+      ],
+      "raw_bytes": 11750,
+      "raw_file": "raw-part02.PUBLIC.sh",
+      "raw_sha256": "1a026c7f25340adab0a464e4bcbc7a18c686527caae592f0a94b0ee82a33cd94",
+      "ui_bytes": 15790,
+      "ui_file": "ui-part02.PUBLIC.txt",
+      "ui_sha256": "591f25cad96fd0db700432d54bcf7b0e2c4b643d0a50b4e658a9993adde67aa7"
+    },
+    {
+      "base64_bytes": 15224,
+      "base64_plus_description": 15524,
+      "complete_ui_plus_description": 15646,
+      "description_allowance": 300,
+      "files": [
+        "790_producer.py",
+        "790_consumer.py",
+        "790_receive.py",
+        "data/790_select.py"
+      ],
+      "raw_bytes": 11418,
+      "raw_file": "raw-part03.PUBLIC.sh",
+      "raw_sha256": "cc3f4f312c007f8b6f3fa9959ea0b93fe8e7be9a42798af547e848e7ed66b345",
+      "ui_bytes": 15346,
+      "ui_file": "ui-part03.PUBLIC.txt",
+      "ui_sha256": "d0e00faccfe9b5d8d33b13eb621dac4d66f1fac3c41b60a4fe7561a39a3d5988"
+    },
+    {
+      "base64_bytes": 8260,
+      "base64_plus_description": 8560,
+      "complete_ui_plus_description": 8682,
+      "description_allowance": 300,
+      "files": [
+        "data/790_stage1.py"
+      ],
+      "raw_bytes": 6194,
+      "raw_file": "raw-part04.PUBLIC.sh",
+      "raw_sha256": "9c4b5607e3ca7b4e80f78e84933bca28f1940358193c88fbddfaba5f2e701245",
+      "ui_bytes": 8382,
+      "ui_file": "ui-part04.PUBLIC.txt",
+      "ui_sha256": "baff7f825bb7c92e6ef9c5360027a681ab4046c93ebc33ed9a204b274e02b444"
+    },
+    {
+      "base64_bytes": 14628,
+      "base64_plus_description": 14928,
+      "complete_ui_plus_description": 15050,
+      "description_allowance": 300,
+      "files": [
+        "edge/790_http.py"
+      ],
+      "raw_bytes": 10970,
+      "raw_file": "raw-part05.PUBLIC.sh",
+      "raw_sha256": "148598dcb84aacbe43833a10e5f5085f929aaa1bcc410a599ac164e851395bb6",
+      "ui_bytes": 14750,
+      "ui_file": "ui-part05.PUBLIC.txt",
+      "ui_sha256": "54ad09cf95b598449c07fa19dacba1d3455e803538577b5fb2f6d049287804e5"
+    },
+    {
+      "base64_bytes": 11136,
+      "base64_plus_description": 11436,
+      "complete_ui_plus_description": 11558,
+      "description_allowance": 300,
+      "files": [
+        "edge/790_stage2.py",
+        "edge/790_authority.py"
+      ],
+      "raw_bytes": 8350,
+      "raw_file": "raw-part06.PUBLIC.sh",
+      "raw_sha256": "5c79fab2eb744c489df796be704500fe83f72c463e72579dbd87c44aaacbca61",
+      "ui_bytes": 11258,
+      "ui_file": "ui-part06.PUBLIC.txt",
+      "ui_sha256": "2703882ab2421d7f5c70a1726035458e17c2b9fa1e1eb20d9702921a053b079d"
+    },
+    {
+      "base64_bytes": 12668,
+      "base64_plus_description": 12968,
+      "complete_ui_plus_description": 13090,
+      "description_allowance": 300,
+      "files": [
+        "transport/790_transfer.py",
+        "manifest.json"
+      ],
+      "raw_bytes": 9501,
+      "raw_file": "raw-part07.PUBLIC.sh",
+      "raw_sha256": "cb107bf3910dce1d3e9720dea97ffb7a50e8424544e02524df0d4886d445b8f7",
+      "ui_bytes": 12790,
+      "ui_file": "ui-part07.PUBLIC.txt",
+      "ui_sha256": "4e96e5c5be7bfd056e571fa4abb6e6981ced47be20b8fc73da5e8c1988174a5f"
+    }
+  ],
+  "raw_cap": 12000,
+  "runtime_files_modified": false,
+  "runtime_manifest_sha256": "1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8",
+  "runtime_source_commit": "c0268820",
+  "usage": "raw_file may be base64-wrapped ONCE by root helper; ui_file is already complete and must be sent directly, never wrapped twice"
+}

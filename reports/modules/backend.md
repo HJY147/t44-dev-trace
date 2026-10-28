@@ -432,3 +432,7 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 ## 2026-10-28 f7 P64短诊断工具（本地交付，非性能结果）
 目标f7cdb5fa/16Z，8e235a设计、c0268820 runtime。原a12/7/16及scope e551保持；新两阶段prep/pressure grant，原CLI/seed anchor04:00，锁内原305f预算准入，GEN父锁外。数据/select/S1/S2三文件和HTTP除configure外18函数/类逐字同，原46例66assert经身份/时间字面更新AST原序同；400active无think/80+800+8000/600TTL及全部失败停发门禁保持。
 68本地目标通过（原33+13+新13+安装/opaque9）；实际f7源码SQLite/TestClient兼容，不是真MySQL/云/正式600秒。manifest 1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8，四小片/13模块，新/root/t44-r9/p790-f7-1600-01；p64-f7-report.md和p64-f7-runbook.md给出全部配置/步骤；实际grant/绑定/预算/roles/key未填，待根review。
+
+
+## 2026-10-28 P64安装编码预算勘误
+旧d17四分片raw+300通过并未覆盖外层base64；审核3片超限，27bcdd3d真实3红1绿封存，旧包和原68证据不改。仅新UI-v2重分片：7 raw最大11750，真实完整UI+300最大16090；7本地实际outer回放/完整源核验/拒覆盖/混包绿。runtime manifest1da/13模块/两grant/原46文件逐字保持。delivery243d90ca…097c5，新目录/root/t44-r9/p790-f7-1600-ui02；p64-ui-encoded-v2-report.md解释raw/helper包一次与ui-ready直接用。无云/性能结论；API成功不追认旧说法，待限定复核。
