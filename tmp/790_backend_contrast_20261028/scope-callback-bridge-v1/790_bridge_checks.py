@@ -871,3 +871,25 @@ def test_actual_request_mutation_after_app_refuses_load_publish(prepared):
     with pytest.raises(common.Refused, match="SHA"):
         bridge_load.deliver(folder / "reservation.PUBLIC.json", result, observer, clock)
     assert not list((root / "PUBLIC/handoff").glob("*.sealed.PUBLIC.json"))
+
+
+def test_key_domain_cannot_be_bypassed_by_pem_rewrapping(prepared):
+    import textwrap
+
+    root, clock, _, authority, *_ = prepared
+    authority = copy.deepcopy(authority)
+    request = common.decode_document(authority["documents"]["request"])
+    original = request["public_key_pem"]
+    encoded = "".join(original.strip().splitlines()[1:-1])
+    request["public_key_pem"] = (
+        "-----BEGIN PUBLIC KEY-----\n"
+        + "\n".join(textwrap.wrap(encoded, 32))
+        + "\n-----END PUBLIC KEY-----\n"
+    )
+    assert common.sha(request["public_key_pem"].encode()) != common.sha(original.encode())
+    authority["forbidden_key_shas"][0] = common.sha(original.encode())
+    authority["documents"]["request"] = common.document(common.canonical(request))
+    backend = Backend(clock)
+    with pytest.raises(common.Refused, match="KEY_DOMAIN_REUSE"):
+        bridge_app.provision(authority, root / "key-domain", backend, clock, "9" * 64)
+    assert backend.calls == []

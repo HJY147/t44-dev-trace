@@ -1,6 +1,8 @@
 """Strict PUBLIC document links. No cloud operations and no credentials in this module."""
 
+import base64
 import re
+import textwrap
 from datetime import timedelta
 from pathlib import Path
 
@@ -204,7 +206,15 @@ def validate(authority, clock):
     require(
         r["public_key_pem"].startswith("-----BEGIN PUBLIC KEY-----\n"), "PUBLIC_SCOPE_KEY_REQUIRED"
     )
-    key_sha = __import__("hashlib").sha256(r["public_key_pem"].encode()).hexdigest()
+    pem_lines = r["public_key_pem"].strip().splitlines()
+    require(pem_lines[-1] == "-----END PUBLIC KEY-----", "PUBLIC_SPKI_FOOTER_REQUIRED")
+    der = base64.b64decode("".join(pem_lines[1:-1]), validate=True)
+    normalized = (
+        "-----BEGIN PUBLIC KEY-----\n"
+        + "\n".join(textwrap.wrap(base64.b64encode(der).decode(), 64))
+        + "\n-----END PUBLIC KEY-----\n"
+    )
+    key_sha = __import__("hashlib").sha256(normalized.encode()).hexdigest()
     require(
         len(authority["forbidden_key_shas"]) >= 2
         and len(set(authority["forbidden_key_shas"])) == len(authority["forbidden_key_shas"])
