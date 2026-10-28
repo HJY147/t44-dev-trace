@@ -2619,5 +2619,37 @@
     "fixed_old_f_not_cloud_run": true,
     "root_new_f_window_notice": "07:04Z root plans new namespace/window08:15; actual binding/schema pending; do not reuse old F tool",
     "prompt": "ROLE-backend-FUNCTIONAL-PROVIDER-790-v1"
+  },
+  "contrast_window1030_20261028": {
+    "operator": "backend AI",
+    "source_tools": "5a88d11a",
+    "source_installers": "a8c1f7a2",
+    "manifest_sha256": "0ef08aab3e14887b703c9a2fa5e5265d60fbbcb4172d1d6deb20b5f746df048a",
+    "window": "2026-10-28T10:30:00Z",
+    "product": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "target_namespace": "r28p16gen02",
+    "old_v2_preserved": true,
+    "only_diagnostic_source_changes": "two HARDSTOP hours7to10",
+    "transport_sha256": "7e2dfb5b4c4fd3766769d4c5f15ac65fa8b61e7286e09ee402ff10fa650816f3",
+    "tests": {
+      "diagnostic": 33,
+      "transport": 13,
+      "failure_error_skip": 0,
+      "assertions_unchanged": 49,
+      "transport_assertions_unchanged": 17,
+      "local_installer_subprocess_checks": 6
+    },
+    "complete_install_command_bytes": [
+      13933,
+      13792,
+      16057,
+      6374
+    ],
+    "report": "agents/backend/contrast-20261028/window1030-report.md",
+    "runbook": "agents/backend/contrast-20261028/window1030-runbook.md",
+    "proof": "tmp/790_backend_contrast_20261028/v3-window1030/verification.json",
+    "cloud_CI_private_independent_execution": false,
+    "future_F": "wait actual new binding/schema/key, old F remains unused",
+    "prompt": "ROLE-backend-CONTRAST-WINDOW1030-v1"
   }
 }

@@ -401,3 +401,10 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 - 原cryptography50依赖内存T44FENV1 RSA3072 OAEP/AESCBC/HMAC，无secret argv/env；strict v2schema、密文600+PUBLICreceipt，descriptor来自root实际F后回填，不冒SUT授权。3文件投递13168字符，旧790七件/manifest/产品不改。
 - 最终14唯一目标(5协议+9原CLI/Runtime)零fail/error/skip，实际自然60.19555秒后getMe401TOKEN_EXPIRED、原auth行未变、五主有效；前两次9保留不累计。本地SQLite/Python3.12/3.10AST，不冒MySQL/云HTTP/worker-main/独立性能。scope只有纯线格式codec，真正root controller应用+原store查询待actualrequest。
 - root07:04新窗口通知：后续F另新namespace/08:15，当前c587固定旧F07:30尚未云用，不能延长/混用；等真实binding+PUBLIC更新另版。真实prompt、元数据/失败定位/lint过程见functional-provider-report.md，全部AI记录不是学生亲笔报告。
+
+
+## 2026-10-28 v3-window1030副本
+- root07:51派新10:30窗口，db9f设计/5a88工具差分验证源/a8c完整小段安装源。旧v2/33proof原件逐字保持，新7脚本仅bootstrap/http两处HARDSTOP7→10，其他5件同；独立transport只STOP7→10。manifest3前链640b→新0ef08aab，wire kind/600TTL/330准入/请求/abort/业务阈值全保持，无产品/云/独立/新CI。
+- 33新窗口P16gen02数据回归+13transport全绿/零fail/error/skip，原49与17断言经允许数据归一AST等价，完整a12真实V2/CLI/SQLite/handler仍测；Starlette警告保留。5a88验证工具先提交再实际运行，proof90bb7e48。初错用根80列Ruff/format只报告未改源，最终原backend100/transport80格式、backend检查和根仅FURB162宿主3.10定点豁免均过。
+- 实际本地6安装子进程正/反门通过：3片/transport正向，覆盖拒绝、旧bundle拒绝；完整命令含encoded/desc为13933/13792/16057/6374均<18000，新目录/O_EXCL/全7核hash。root先装全/建key准备运输再S2，不把600秒花在安装。
+- 延长稳定筛选窗口的本岗只读开发SQLite候选1680→1440，441已选pair变化0（IDs hash同31e402...），非云S1；仍要求root实际新selectionSHA核原P7公开4bf3514。全部实际AI过程，未写学生经历，未来F等真实新binding/publicschema/key另版。
