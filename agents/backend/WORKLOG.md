@@ -623,3 +623,15 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 本岗提出7/16 worker同源对照，随后与root明确先不加Settings配置面；原入口/全部鉴权/UoW/校验/审计、默认池5+10/10s不变。两臂用同新源/镜像、同等预热及独立等分布夹具顺序跑；API105→240理论连接预算须扣后台/管理，384-240不等于可全用144。
 - 设计先提交faf6683d，报告observer-analysis.md含proof limits和未运行试验；没有产品补丁、新cloc、产品/云/MySQL/CI/独立执行。源935旧五循环结果不能搬到新DB修复源。
 - 一次手工cohort别名c20读取KeyError后按实际clients20更正。新工具初Ruff过、format因一行需换行exit1，提交执行源b5原件保留；仅格式化且完整AST等价，最终Ruff/format过，未覆盖原JSON或重跑负载。
+
+
+## 2026-10-28 a12双臂诊断夹具及审核后v2
+- root明确目标a12e9e70，实际Git核相对f4仅migrations审计且与26d6328a产品相同；本岗仍不改产品，仅tmp/790。先设计bdc9f99b再适配原798/804/801，禁止读792/799/800及私有runtime/env/账号/session或独立岗。
+- bootstrap原CLI3真实用户+原seed_demo V2(seed44/04:00)；首版a2ec被根云前截获旧actual53/source53字段和宿主3.10 UTC/Z问题，d655按真实derive_texts binding AST fixture修复，13守卫绿。root随后真实回传bootstrap t-hz071dhyyg2hb0g成功，规模40/6000/9000/15000与53源；本岗没有云运行。
+- 2a832920/324d16da原S1/edge/LOAD包冻结；准确a12 53文件临时快照上CLI/V2完整种子SQL核441对882任务充分，真实handler小链、source-free导入、版本offset/不完整续包、严格SSL配置和host语法合15唯一开发目标绿，不算MySQL/TLS网络/正式400×600。
+- root单向派发审核协议阻断：Client未逐请求截止、S1只读后CLI未重核、失败未共享abort。先a43留14无网络假钟/屏障实际断言红(0error)，再最小修，原14 AST逐字结构不变转绿；加原15兼容及4 inflight/host边界最终33全绿。没改产品/阈值/样本数。
+- 新v2 6f5698f2 manifest640b3d...，完整7脚本+新manifest独立3段投递，旧包和manifest-v1逐字保留。每次HTTP派发/connect后deadline/abort、socket剩余预算，已inflight保真实前缀，不重试/伪零/假称全局回滚；S1新CLI/校验事务和host工作子进程等待同受07:30绝对窗。
+- 原红XML两处pytest尾空格使cached diff exit2后本岗仍提交，是流程失误。后保Git原a43和本地raw，gzip双SHA/roundtrip，不剔除失败内容；最终cached检查通过。旧紧凑手写测试E701/E702/import格式均在执行前经formatter修，无产品改断言。
+- root同意首配置对照scheduler尚未启动的6-role开发范围；正式7-role须另新namespace真实scope/首扫后稳定事件协议，当前fresh-create S1不能冒用。prompt岗收到明确AI访谈两次，不作学生本人经历。角色report/handoff已更新；后续真实S1/P7/P16/正式验收仍由root另记。
+
+- root复核发现runbook第5步仍残留旧load单段安装指令（替换时前文六→七导致原匹配未命中）；已用精确一次前像修正，只完整v2七文件新目录，不允许旧包覆盖，P7已seed明确跳过bootstrap。本次只改文档，工具hash不变。

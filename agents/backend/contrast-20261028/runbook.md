@@ -5,7 +5,7 @@
 全部由总协调在已授权原双机执行。本岗未操作云。目标固定`a12e9e70b963bacafda3242bb6d82e53ee912ff1`，seed44/anchor2026-10-28T04:00Z，最晚07:30Z停止；过期后不能改旧包时间继续。原任务、原935记录及F空环境不动。
 
 1. 新phase实际prepare→arm/config→infra→migrate；核原入口、P7或P16实际binding与完整源。安装本轮`split-v2-delivery-1/2/3.json`完整包；七脚本加manifest都进入全新tools目录。现bootstrap脚本13626B/SHA34893edc9fa6061b634e22b399d09ae67047d120835f446bc746294dc3f223e5。P7已由root用历史bootstrap-v2.json(9020847f…)真实成功，不要重跑或重置，后续新工具可接其原控制包。
-2. `python3 <tools>/790_bootstrap.py --phase-dir <actual-P-phase> --binding-sha256 <actualSHA> --output-name fixture790-01 --anchor-at 2026-10-28T04:00:00Z`。它只建用户/调用原seed_demo并核规模，不起API或负载。输出新phase/fixture790-01，账号/control/identities均0600，根不读正文。
+2. 仅对尚未seed的新P16或全新尝试运行；已成功P7跳过本步，不重seed。`python3 <tools>/790_bootstrap.py --phase-dir <actual-P-phase> --binding-sha256 <actualSHA> --output-name fixture790-01 --anchor-at 2026-10-28T04:00:00Z`。它只建用户/调用原seed_demo并核规模，不起API或负载。输出新phase/fixture790-01，账号/control/identities均0600，根不读正文。
 3. root用原controller idle启动API/consumer/web/TLS；**首个配置对照不启动scheduler**，实际scope记开发6-role，不是正式7-role。先启动scheduler会把任务提醒/版本改变，当前S1无事件前提将拒绝；不得删断言求绿。
 4. 将split-v2-delivery-1/2/3.json的每文件gzip+b64解码到一个新工具根，核原bytes/SHA，保持data/edge结构；目录0555、工具文件0444，manifest原件不要重排JSON。七文件manifest SHA `640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84`。三个v2投递须全部安装在新tools目录，旧工具根和所有v1投递保持冻结，不混装或覆盖。
 
@@ -16,7 +16,7 @@ python3 <tools>/790_host.py edge --phase-dir <actual-P-phase> --binding-sha256 <
 
 S1为原data-only admin，441对真实任务、40项目原CLI scope；S2是仅stdlib/edge/严格CA的真实登录及每对提醒create+dedup。完成metadata给出packet/control/CA路径和hash，不输出密码或session。应核S1 selection_sha256与两臂seed_manifest_sha256一致；若前提不同，先保留差异，不能称同夹具对照。
 
-5. LOAD通过既有受限私网TLS或一次性加密运输仅接收control.private.json/session.private.json/ca.pem，逐字核APP公布SHA与CA，保存新私有输入目录0600。不在聊天/UI/日志打印或base64展示私包；不得发送账号/DSN/候选到LOAD。安装相同工具根及`load-delivery.json`，额外load脚本10113B/SHA01b7185a73f5a1a1baa42d78f4a9236dd51c433bd2f1592183c29e97dd08965c，不改变上述七文件manifest。
+5. LOAD通过既有受限私网TLS或一次性加密运输仅接收control.private.json/session.private.json/ca.pem，逐字核APP公布SHA与CA，保存新私有输入目录0600。不在聊天/UI/日志打印或base64展示私包；不得发送账号/DSN/候选到LOAD。LOAD同样只安装完整`split-v2-delivery-1/2/3.json`七脚本包到新工具根；包内已含v2 load脚本10279B/SHAa7a2cc62b9771fec669be39cdcef76a961b7b66e7acf518b017b6d3ad132bb63。禁止再安装历史load-delivery.json或用任何旧脚本覆盖v2；manifest仍为上面的640b3d…原字节。
 
 ```text
 python3 <tools>/790_load.py --inputs-dir <new-private-inputs> --output-dir <new-absent-results> --control-sha256 <APP-actual-controlSHA> --packet-sha256 <APP-actual-packetSHA> --manifest-sha256 640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84 --expected-host <actual-LOAD-hostname> --python-image <proven-official-python-alias> --python-image-id <proven-LOAD-actual-image-Id>
