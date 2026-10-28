@@ -1,8 +1,14 @@
 """Owned local tool guards; no cloud operations or independent cases."""
 
 import ast
+import contextlib
+import hashlib
 import importlib.util
+import io
+import json
 import os
+import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from types import SimpleNamespace
@@ -143,3 +149,266 @@ def test_private_file_symlink_and_output_preservation(tmp_path):
     path.chmod(0o644)
     with pytest.raises(ValueError):
         bootstrap.raw(path, True)
+
+
+def test_source_free_edge_import_without_file_network_or_threads():
+    code = """import builtins,socket,threading,sys
+original=builtins.__import__
+def guarded(name,*args,**kwargs):
+ if name=='t44' or name.startswith('t44.') or name in ('sqlalchemy','fastapi','pymysql'): raise AssertionError('product import')
+ return original(name,*args,**kwargs)
+builtins.__import__=guarded
+def forbidden(*args,**kwargs):raise AssertionError('network/thread started')
+socket.socket.connect=threading.Thread.start=forbidden
+sys.path.insert(0,sys.argv[1]);__import__('790_http');__import__('790_stage2')
+print('SOURCE_FREE_IMPORT_OK')
+"""
+    result = subprocess.run(
+        [sys.executable, "-I", "-c", code, str(HERE / "edge")],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0 and result.stdout.strip() == "SOURCE_FREE_IMPORT_OK"
+
+
+def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, monkeypatch):
+    from uuid import UUID
+
+    from fastapi.testclient import TestClient
+    from sqlalchemy import create_engine
+    from t44 import cli, persistence
+    from t44.api import create_app
+    from t44.persistence.schema import metadata
+    from t44.persistence.seed import seed_demo
+    from t44.settings import Settings
+
+    assert "product-source" in cli.__file__
+    sys.path.insert(0, str(HERE / "edge"))
+    sys.path.insert(0, str(HERE / "data"))
+    http = __import__("790_http")
+    s1 = __import__("790_stage1")
+    s2 = __import__("790_stage2")
+    select = __import__("790_select")
+    http.CONTROL = None
+    control = {
+        "kind": http.KIND,
+        "source_sha": bootstrap.SOURCE,
+        "run_id": "r28p7gen01",
+        "binding_sha256": "c" * 64,
+        "namespace": "t44-cloud-r28p7gen01-p",
+        "database": "t44c_r28p7gen01_p",
+        "api_workers": 7,
+        "url": "https://172.21.182.245:19445",
+        "ca_sha256": hashlib.sha256(b"owned-ca").hexdigest(),
+        "stop_utc": "2026-10-28T07:30:00Z",
+        "seed": 44,
+        "anchor_at": bootstrap.ANCHOR,
+    }
+    control_path = tmp_path / "control.private.json"
+    bootstrap.save(control_path, control)
+    control_sha = hashlib.sha256(control_path.read_bytes()).hexdigest()
+    ca = tmp_path / "ca.pem"
+    ca.write_bytes(b"owned-ca")
+    http.configure(str(control_path), control_sha)
+    engine = create_engine(
+        "sqlite:///" + str(tmp_path / "owned.sqlite"), connect_args={"check_same_thread": False}
+    )
+    metadata.create_all(engine)
+    factory = persistence.SqlAlchemyUnitOfWorkFactory(engine)
+    monkeypatch.setenv(
+        "DATABASE_URL", "mysql+pymysql://owned:synthetic@mysql:3306/" + control["database"]
+    )
+    monkeypatch.setenv("T44_DATABASE", control["database"])
+    monkeypatch.setenv("T44_CONTRAST_ALLOW", http.KIND)
+    monkeypatch.setenv("T44_CONTRAST_SOURCE", bootstrap.SOURCE)
+    monkeypatch.setattr(persistence, "create_mysql_engine", lambda _settings: engine)
+    monkeypatch.setattr(cli, "create_mysql_engine", lambda _settings: engine)
+    accounts = {}
+    try:
+        for role in ("manager", "developer", "reviewer"):
+            output = io.StringIO()
+            monkeypatch.setattr(sys, "stdin", io.StringIO("owned-contrast-password\n"))
+            with contextlib.redirect_stdout(output):
+                assert (
+                    cli.main(
+                        [
+                            "init-user",
+                            "--username",
+                            "synthetic-" + role,
+                            "--display-name",
+                            "[synthetic] owned",
+                            "--password-stdin",
+                        ]
+                    )
+                    == 0
+                )
+            accounts[role] = {
+                "username": "synthetic-" + role,
+                "password": "owned-contrast-password",
+                "user_id": json.loads(output.getvalue())["user_id"],
+            }
+        seeded = seed_demo(factory, seed=44, anchor_at=http.parse_utc(bootstrap.ANCHOR))
+        assert (
+            seeded["manifest"]["version"] == 2
+            and seeded["tasks"] == 6000
+            and seeded["dependencies"] == 9000
+        )
+        assert seeded["reviews"] + seeded["decisions"] == 15000
+        with factory() as u:
+            projects, left, right, _ = select.candidates(
+                u.gateway, accounts, 441, http.parse_utc(bootstrap.ANCHOR), lambda _v: None
+            )
+            assert len(projects) == 40 and len(left) == len(right) == 441
+            assert len({r["id"] for r in left + right}) == 882
+
+        def actual_cli(command, **kwargs):
+            assert command[1:3] == ["-m", "t44.cli"]
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                status = cli.main(command[3:])
+            return SimpleNamespace(returncode=status, stdout=output.getvalue().encode(), stderr=b"")
+
+        monkeypatch.setattr(s1.subprocess, "run", actual_cli)
+        identities = {
+            role: {k: v[k] for k in ("username", "user_id")} for role, v in accounts.items()
+        }
+        identity_path = tmp_path / "identities.private.json"
+        bootstrap.save(identity_path, identities)
+        account_path = tmp_path / "accounts.private.json"
+        bootstrap.save(account_path, accounts)
+        s1_dir = tmp_path / "s1"
+        assert (
+            s1.main(
+                [
+                    "--identities",
+                    str(identity_path),
+                    "--output-dir",
+                    str(s1_dir),
+                    "--host",
+                    "mysql",
+                    "--port",
+                    "3306",
+                    "--user",
+                    "owned",
+                    "--slots",
+                    "4",
+                    "--control",
+                    str(control_path),
+                    "--control-sha256",
+                    control_sha,
+                ]
+            )
+            == 0
+        )
+        candidate_path = s1_dir / "candidate.private.json"
+        candidate_sha = hashlib.sha256(candidate_path.read_bytes()).hexdigest()
+        app = create_app(factory=factory, settings=Settings(login_attempts=1000))
+        with TestClient(app) as real:
+
+            class HandlerClient:
+                def __init__(self, url, ca):
+                    http.target(url)
+                    self.last = {}
+                    self.connects = 0
+                    self.connect_ns = 0
+                    self.requests = 0
+
+                def call(self, path, token=None, body=None, key=None, sample=True):
+                    headers = {}
+                    if token:
+                        headers["Authorization"] = "Bearer " + token
+                    if key:
+                        headers["Idempotency-Key"] = key
+                    response = real.request(
+                        "GET" if body is None else "POST", path, headers=headers, json=body
+                    )
+                    value = response.json()
+                    self.requests += 1
+                    self.last = {
+                        "status": response.status_code,
+                        "wall_ns": 1,
+                        "caller_thread_cpu_ns": 1,
+                    }
+                    assert response.status_code in (200, 201, 202), value
+                    assert value["meta"]["request_id"] == str(
+                        UUID(response.headers["X-Request-ID"])
+                    )
+                    assert value["meta"]["replayed"] is False
+                    return value["data"]
+
+                def close(self):
+                    pass
+
+            monkeypatch.setattr(http, "Client", HandlerClient)
+            s2_dir = tmp_path / "s2"
+            assert (
+                s2.main(
+                    [
+                        "--accounts",
+                        str(account_path),
+                        "--candidate",
+                        str(candidate_path),
+                        "--candidate-sha256",
+                        candidate_sha,
+                        "--output-dir",
+                        str(s2_dir),
+                        "--ca",
+                        str(ca),
+                        "--ca-sha256",
+                        control["ca_sha256"],
+                        "--url",
+                        control["url"],
+                        "--control",
+                        str(control_path),
+                        "--control-sha256",
+                        control_sha,
+                    ]
+                )
+                == 0
+            )
+            packet_path = s2_dir / "session.private.json"
+            packet = http.private_json(packet_path)
+            assert len(packet["slots"]) == 4 and packet["resumable"] is True
+            initial = [slot["transition"]["version"] for slot in packet["slots"]]
+            result = tmp_path / "run.public.jsonl"
+            updated = tmp_path / "after.private.json"
+            assert (
+                http.main(
+                    [
+                        "--control",
+                        str(control_path),
+                        "--control-sha256",
+                        control_sha,
+                        "--packet",
+                        str(packet_path),
+                        "--packet-sha256",
+                        hashlib.sha256(packet_path.read_bytes()).hexdigest(),
+                        "--ca",
+                        str(ca),
+                        "--output",
+                        str(result),
+                        "--updated-packet",
+                        str(updated),
+                        "--clients",
+                        "1",
+                        "--cycles",
+                        "2",
+                        "--seconds",
+                        "30",
+                        "--slot-offset",
+                        "1",
+                    ]
+                )
+                == 0
+            )
+            final = http.private_json(updated)
+            assert final["slots"][1]["transition"]["version"] == initial[1] + 2
+            assert all(final["slots"][i]["transition"]["version"] == initial[i] for i in (0, 2, 3))
+            report = json.loads(result.read_text().splitlines()[0])
+            assert (
+                report["diagnostic_complete"]
+                and report["expected_requests"] == report["observed_requests"] == 8
+            )
+    finally:
+        engine.dispose()
