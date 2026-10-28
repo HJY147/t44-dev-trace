@@ -1,7 +1,7 @@
 {
   "role": "prompt_engineering",
-  "stage": "CAMPAIGN-20261025 factual appendix; cutoff 10:03 UTC",
-  "implementation_status": "未实现",
+  "stage": "RESUME-20261028 public process evidence; fixed source snapshot 3be6f2a2",
+  "implementation_status": "过程素材完成；产品实现、运行和验收不在本岗范围",
   "artifacts": [
     "records/prompts/U001-optimized.md",
     "records/prompts/U001-changes.md",
@@ -93,7 +93,16 @@
     "docs/prompting/CAMPAIGN-20261025-source-index.json",
     "docs/prompting/CAMPAIGN-20261025-document-checks.json",
     "docs/prompting/CAMPAIGN-20261025-publication.json",
-    "agents/prompt_engineering/github-campaign-20261025-comment.md"
+    "agents/prompt_engineering/github-campaign-20261025-comment.md",
+    "docs/prompting/RESUME-20261028-design.md",
+    "docs/prompting/RESUME-20261028-process-evidence.md",
+    "docs/prompting/RESUME-20261028-source-index.json",
+    "docs/prompting/RESUME-20261028-inquiry.json",
+    "records/prompts/USER-resume-20261028-original.md",
+    "records/prompts/USER-resume-20261028-provenance.json",
+    "records/prompts/USER-resume-20261028-proposed.md",
+    "records/prompts/ROLE-prompt_engineering-RESUME-20261028-v1.md",
+    "docs/prompting/RESUME-20261028-document-checks.json"
   ],
   "interfaces": {
     "inputs": [
@@ -522,9 +531,26 @@
       ],
       "reason": "Preserve actual autonomous authorization and bounded quality/debug evidence, not new counted evolution versions"
     },
-    "ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1"
+    "ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1",
+    {
+      "id": "ROLE-prompt_engineering-RESUME-20261028-v1",
+      "status": "used",
+      "snapshot_kind": "faithful scope summary of actual AI role dispatch, not verbatim full text",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-RESUME-20261028-v1.md",
+      "artifact_refs": [
+        "docs/prompting/RESUME-20261028-design.md",
+        "docs/prompting/RESUME-20261028-process-evidence.md",
+        "docs/prompting/RESUME-20261028-source-index.json",
+        "docs/prompting/RESUME-20261028-inquiry.json",
+        "records/prompts/USER-resume-20261028-original.md",
+        "records/prompts/USER-resume-20261028-provenance.json",
+        "records/prompts/USER-resume-20261028-proposed.md",
+        "records/prompts/ROLE-prompt_engineering-RESUME-20261028-v1.md"
+      ],
+      "reason": "Bounded public evidence collection; no new counted evolution version"
+    }
   ],
-  "updated_at": "2026-10-25T07:35:09.823915+00:00",
+  "updated_at": "2026-10-28T05:46:11.184281+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -533,27 +559,26 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "base_commit": "acae31a4b7e36bac38fa57367f4ca80066780273",
-    "fact_cutoff_utc": "2026-10-25T10:03:00Z",
-    "source_count": 22,
-    "committed_matching_sources": 22,
-    "new_proposed_templates": 3,
-    "new_executed_prompt_versions": 0,
-    "U024_reused_without_duplicate_registration": true,
-    "functional_v7": "NOT_PROVEN: 12 PASS / F08 FAIL / F11 NOT_PROVEN",
-    "performance_v7_at_cutoff": "started 10:00:14.562 UTC; no complete result",
-    "source_size": "6326 > 5100; N07 FAIL +1226",
-    "human_12_3_5_new_completion_evidence": false,
-    "product_test_load_ci_execution": false,
-    "private_or_implementation_read": false,
-    "student_final_prose_written": false,
-    "issue11_publication": "POST comment6396341316; GET exact ID and full body matched",
-    "lightweight_document_checks": {
-      "passed": 14,
-      "failed": 0,
-      "product_tests": 0
-    },
-    "substantive_commit": "e7e52c26456dbde63c15e8dd7a8744980e7a3921"
+    "base_commit": "3be6f2a20321ca0007ec5dab04edc4432a514cb9",
+    "sources": 20,
+    "all_sources_git_bytes_match": true,
+    "user_input": "USER-resume-20261028",
+    "user_sent_at_known": false,
+    "proposed_template": "USER-resume-20261028-O1",
+    "new_executed_prompt_evolution_versions": 0,
+    "actual_AI_inquiries_received": 1,
+    "inquiry_claims_independently_replayed": false,
+    "source_size": "5933 > 5100; FAIL +833",
+    "CI": "a12 product FAIL / a12 Docker SUCCESS / 8c product SUCCESS; distinct full SHAs",
+    "formal_cloud_performance": "No formal pass claimed in this evidence appendix",
+    "human_code_edits_claimed": 0,
+    "human_hallucination_corrections_claimed": 0,
+    "human_context_corrections_claimed": 0,
+    "private_or_independent_tool_read": false,
+    "independent_test_contact": false,
+    "product_test_CI_cloud_executed_by_this_role": false,
+    "student_research_body_written": false,
+    "legacy_ledger_modified": false
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -613,5 +638,28 @@
     "stage": "materials only; no student final prose or product acceptance",
     "substantive_commit": "fa20384e468b9221a84938025c5d5550d0767e19",
     "collection_closed_at": "2026-10-25T07:36:05.189009+00:00"
+  },
+  "previous_campaign_20261025_summary": {
+    "base_commit": "acae31a4b7e36bac38fa57367f4ca80066780273",
+    "fact_cutoff_utc": "2026-10-25T10:03:00Z",
+    "source_count": 22,
+    "committed_matching_sources": 22,
+    "new_proposed_templates": 3,
+    "new_executed_prompt_versions": 0,
+    "U024_reused_without_duplicate_registration": true,
+    "functional_v7": "NOT_PROVEN: 12 PASS / F08 FAIL / F11 NOT_PROVEN",
+    "performance_v7_at_cutoff": "started 10:00:14.562 UTC; no complete result",
+    "source_size": "6326 > 5100; N07 FAIL +1226",
+    "human_12_3_5_new_completion_evidence": false,
+    "product_test_load_ci_execution": false,
+    "private_or_implementation_read": false,
+    "student_final_prose_written": false,
+    "issue11_publication": "POST comment6396341316; GET exact ID and full body matched",
+    "lightweight_document_checks": {
+      "passed": 14,
+      "failed": 0,
+      "product_tests": 0
+    },
+    "substantive_commit": "e7e52c26456dbde63c15e8dd7a8744980e7a3921"
   }
 }
