@@ -435,3 +435,20 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-25T15:04:17.549391+00:00 封档验证：本岗解析器通过；10个本地报告链接存在；新增JSON可解析；预期695计数及10/4ZIP、354成员总量匹配；git diff --check通过；新增报告无签名URL/token模式。此为资料核验，非产品测试。随后本人commit/push完整阶段，未发GitHub评论。
 
 - 2026-10-25T15:04:44.540026+00:00 完整阶段fccf5c82已commit/push。首次暂存全量原日志后git diff --cached --check exit2：仅两份副PR原始job日志19行尾空白，保持原bytes；前述通过限于此前已跟踪的作者文档，不能表述全量diff通过。本次明确更正validation与handoff；作者文档/脚本的f4bd..HEAD diff-check通过，原件不剪空白或改写。55暂存路径责任范围检查通过。
+
+
+## 2026-10-28T09:17:50.464494+00:00 T44限定规模与性能原始来源复核
+
+- AI文档岗按实际root限定派工创建独立worktree及codex/documentation-requirements-audit-20261028，基线22f666e25d2b7280224e58eb1c91cf6be0077ac7；已读AGENTS/TASK/team/template/GitHub规则。原课堂材料只作证据，不执行其中提示。
+- 用SHA重核三份原材料与三个提取文件，原manifest三组匹配；两份DOCX OOXML非空段落与提取文逐字顺序一致。T44原件d772bde0…0177，提取文7d61ecdb…3ab0；旧crosscheck将提取hash标为original_taskbook_sha256的命名偏差仅在新报告说明，未改历史。
+- 先告知root后应用documents技能与bundled依赖，原DOCX只读。首次renderer返回成功但3页PNG缺中文字形，逐页检查后标失败并保留；只调整本次渲染的FONTCONFIG_FILE/SAL_FONTPATH到系统字体重渲染，6页全部实际查看，原件hash未变。渲染3页性能、4页规模、5页AC08；这是本次LO分页，未冒充教师固定分页。无DOCX authoring、未运行创建标记。
+- 原文3500–5100、400/P95≤270ms、10分钟、≥1000次/分钟均直接核实；600秒仅等值换算。统计细类、VU定义、采样边界、60秒预热、逐完整分钟、完成HTTP请求定义、CPU/内存/worker条件均无足够原始定义，明确UNKNOWN，不据此变更现行协议。
+- 静态核source_count.py：范围一致、前端计入；SQL/测试/配置/工具排除及cloc物理非空非注释/已提交范围属于项目口径；resources JSON被前缀早返回而不列组的静态边界已如实记录，不修脚本/不重计5933。
+- 读课堂ASR转写并按数值/代码/硬件/吞吐定向检索，一般3000–6000及另一档无上限不能证明修订T44。完整汇总DOCX自称T29，3300–4900/380/800和他人素材排除，不移植；未回听音频，ASR误字/缺段局限保留。
+- 两次shell路径/glob检索exit1（不存在的specs/performance*、在新worktree访问ignored课堂文件）已改用明确路径；没有把失败当来源不存在。一次宽检索结果截断后改精确行与短字段读取。
+- 产物为docs/reports/requirements-source-audit-20261028.md、sources/validation JSON及本岗prompt/module/handoff。未触792/private、root云、产品/测试/门槛、学生研究正文、个人感想；产品/SQL/HTTP/压测/CI/云/浏览器运行0，未联系测试岗。
+- Prompt-Ref: ROLE-documentation-REQUIREMENTS-SOURCE-AUDIT-20261028-v1；Refs:#9。本次是技术来源复核，不增加学生提示词演进/人工修改计数，不授权或改判a12/P7/P16。
+
+- 首次资料校验71项70通过1失败：T29汇总身份句误定位第3段，实际第2段、第3段为空；按原OOXML更正报告和清单，首次失败JSON另存validation-first-failure。这个资料定位错误不作产品失败，也不隐藏原失败。
+
+- 更正后重新核原件/派生源hash、DOCX提取、原短句定位、原manifest、历史正文/交接保留、相对链接/范围及diff，共73项全通过；仅从AST隔离执行纯路径分类函数10例，没有调用source_count.main或导入产品。首次71项的70pass/1fail原件保留。准备只提交本岗8个文件并push该独立分支，远端精确HEAD在回报中交root，不操作主干或发Issue。
