@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 FOLDER = Path(__file__).resolve().parent
-DESTINATION = "/root/t44-r9/scope-bridge-v2-01"
+DESTINATION = "/root/t44-r9/scope-bridge-v3-01"
 
 
 def sha(raw):

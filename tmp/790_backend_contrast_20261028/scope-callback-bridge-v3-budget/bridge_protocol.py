@@ -59,12 +59,43 @@ def public_only(value):
         )
 
 
+def budget_receipt_binding(authority, binding):
+    path = Path(authority["budget_receipt_path"])
+    require(
+        path.is_absolute()
+        and path.parent == Path(authority["app_phase_dir"]) / "receipts"
+        and re.fullmatch(r"mysql-budget-[0-9a-f]{32}\.PUBLIC\.json", path.name),
+        "EXPLICIT_CURRENT_PHASE_BUDGET_PATH_REQUIRED",
+    )
+    saved = decode_document(authority["documents"]["mysql_budget"])
+    require(
+        saved["kind"] == "actual-owned-mysql-budget-v4"
+        and saved["binding_sha256"] == authority["documents"]["binding"]["sha256"]
+        and saved["source_sha"] == binding["source_sha"]
+        and saved["stop_utc"] == binding["stop_utc"]
+        and saved["mysql_identity"]["project"] == binding["project"]
+        and saved["mysql_identity"]["database"] == binding["database"]
+        and saved["actual_mysql_sample"]["database"] == binding["database"],
+        "PUBLIC_BUDGET_RECEIPT_PHASE_SOURCE_BINDING",
+    )
+    return path
+
+
 def validate(authority, clock):
     require(authority["kind"] == "PUBLIC_SCOPE_AUTHORITY_V1", "AUTHORITY_KIND")
     docs = authority["documents"]
     require(
         set(docs)
-        == {"grant", "launch", "supervisor", "binding", "neutral", "admission", "request"},
+        == {
+            "grant",
+            "launch",
+            "supervisor",
+            "binding",
+            "neutral",
+            "admission",
+            "request",
+            "mysql_budget",
+        },
         "EXACT_DOCUMENT_SET",
     )
     g, launch, sup, b, neutral, r = (
@@ -73,6 +104,7 @@ def validate(authority, clock):
     )
     for name in docs:
         public_only(decode_document(docs[name]))
+    budget_receipt_binding(authority, b)
     require(
         neutral.get("kind") == "ROOT_NEUTRAL_NEW_F_RUNTIME_PUBLIC",
         "NEUTRAL_PUBLIC_RUNTIME_SHAPE_REQUIRED",

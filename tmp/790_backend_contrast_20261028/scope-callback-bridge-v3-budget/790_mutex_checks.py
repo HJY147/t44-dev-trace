@@ -12,7 +12,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bridge_backend import DockerBackend, app_state_path
-from bridge_common import Deadline, Refused, canonical, sha
+from bridge_common import Deadline, Refused, canonical, document, sha
 
 UTC = timezone.utc  # noqa: UP017 -- host3.10-compatible data.
 
@@ -55,6 +55,14 @@ def backend(tmp_path, monkeypatch):
         "file_hashes": {},
     }
     value.authority = {"documents": {"binding": {"sha256": "b" * 64}}}
+    value.authority["budget_receipt_path"] = str(
+        phase / "receipts/mysql-budget-00000000000000000000000000000001.PUBLIC.json"
+    )
+    value.authority["documents"]["mysql_budget"] = document(b"{}")
+    # Mutex-focused legacy cases keep the budget step neutral; v3's new cases exercise real admit.
+    value.admit_budget = lambda _budget, _deadline: {
+        "budget_receipt_sha256": value.authority["documents"]["mysql_budget"]["sha256"]
+    }
     value.source_files = {}
     value.output = lambda _argv: ("sha256:" + "1" * 64 + "\n").encode()
     monkeypatch.setattr(os, "chown", lambda *_args: None)

@@ -111,7 +111,7 @@ class DockerProcObserver:
 def load_originals(configuration):
     require(
         set(configuration["originals"])
-        == {"grant", "launch", "supervisor", "binding", "neutral", "admission"},
+        == {"grant", "launch", "supervisor", "binding", "neutral", "admission", "mysql_budget"},
         "EXACT_ORIGINAL_INPUTS_REQUIRED",
     )
     require(
@@ -194,6 +194,7 @@ def prepare(configuration, request_path, request_sha, state_dir, observer, clock
         "documents": documents,
         "owner": configuration["owner"],
         "app_phase_dir": configuration["app_phase_dir"],
+        "budget_receipt_path": configuration["budget_receipt_path"],
         "forbidden_key_shas": configuration["forbidden_key_shas"],
         "supervisor_nonce": sup["nonce"],
         "callback_deadline_utc": utc(end),

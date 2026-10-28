@@ -181,6 +181,17 @@ def prepared(tmp_path, key):
         "tool_execution_build_sha256": protocol.EXECUTION,
         "no_automatic_retry": True,
     }
+    budget_path = phase / "receipts/mysql-budget-00000000000000000000000000000001.PUBLIC.json"
+    budget_path.parent.mkdir(mode=0o700)
+    budget_receipt = {
+        "kind": "actual-owned-mysql-budget-v4",
+        "binding_sha256": common.sha(binding_raw),
+        "source_sha": source,
+        "stop_utc": stop,
+        "mysql_identity": {"project": binding["project"], "database": binding["database"]},
+        "actual_mysql_sample": {"database": binding["database"]},
+    }
+    budget_path.write_bytes(common.canonical(budget_receipt) + b"\n")
     originals = {}
     for name, obj in {
         "grant": grant,
@@ -189,6 +200,7 @@ def prepared(tmp_path, key):
         "binding": binding,
         "neutral": {"kind": "ROOT_NEUTRAL_NEW_F_RUNTIME_PUBLIC", "sut_identity": identity},
         "admission": admission,
+        "mysql_budget": budget_receipt,
     }.items():
         path = tmp_path / (name + ".PUBLIC.json")
         raw = common.canonical(obj) + b"\n"
@@ -201,6 +213,7 @@ def prepared(tmp_path, key):
         "originals": originals,
         "bridge_bundle_sha256": "9" * 64,
         "app_phase_dir": str(phase),
+        "budget_receipt_path": str(budget_path),
         "forbidden_key_shas": ["1" * 64, "2" * 64],
         "owner": {
             "container_id": "3" * 64,

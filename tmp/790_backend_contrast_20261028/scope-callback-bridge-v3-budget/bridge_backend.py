@@ -9,6 +9,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from bridge_common import Refused, canonical, parse, read, require, reserve, sha, utc
+from bridge_protocol import budget_receipt_binding
 
 DOCKER = ["docker", "--context", "default"]
 
@@ -92,7 +93,7 @@ class DockerBackend:
                 timeout_seconds=min(10, deadline.remaining()),
             ):
                 deadline.remaining()
-                yield
+                yield module
         finally:
             sys.modules.pop(module.__name__, None)
 
@@ -113,6 +114,10 @@ class DockerBackend:
             binding["file_hashes"]["mysql-budget.py"]
             == manifest["phase_dependencies"]["mysql-budget.py"]["sha256"],
             "APP_PHASE_MUTEX_DEPENDENCY_VERSION",
+        )
+        read(
+            budget_receipt_binding(authority, binding),
+            authority["documents"]["mysql_budget"]["sha256"],
         )
         for name in ("controller.py", "factory.py", "compose.json"):
             read(phase / name, binding["file_hashes"][name])
@@ -137,6 +142,63 @@ class DockerBackend:
 
     def inspect(self, identifier):
         return parse(self.output(DOCKER + ["inspect", "--format", "{{json .}}", identifier]))
+
+    def live_mysql(self, role):
+        require(role == "mysql", "BUDGET_MYSQL_ROLE_ONLY")
+        ids = (
+            self.output(
+                DOCKER
+                + [
+                    "ps",
+                    "--all",
+                    "--quiet",
+                    "--no-trunc",
+                    "--filter",
+                    "label=com.docker.compose.project=" + self.binding["project"],
+                    "--filter",
+                    "label=com.docker.compose.service=mysql",
+                ]
+            )
+            .decode()
+            .split()
+        )
+        require(len(ids) == 1, "ONE_OWNED_MYSQL_FOR_BUDGET_REQUIRED")
+        info = self.inspect(ids[0])
+        require(
+            info["Id"] == ids[0]
+            and info["Config"]["Labels"].get("com.docker.compose.project")
+            == self.binding["project"]
+            and info["Config"]["Labels"].get("com.docker.compose.service") == "mysql",
+            "MYSQL_BUDGET_OWNER_CHANGED",
+        )
+        return {
+            "role": role,
+            "container_id": info["Id"],
+            "image_id": info["Image"],
+            "restart_count": info["RestartCount"],
+            "state": info["State"],
+        }
+
+    def admit_budget(self, budget, deadline):
+        # Keep the original helper SQL/measure/admit. Only clamp its subprocess wait to our lease.
+        def bounded_run(*args, **kwargs):
+            kwargs["timeout"] = deadline.remaining(kwargs.get("timeout", 10))
+            value = subprocess.run(*args, **kwargs)
+            deadline.remaining()
+            return value
+
+        budget.subprocess = types.SimpleNamespace(run=bounded_run)
+        deadline.remaining()
+        value = budget.admit(
+            self.phase,
+            self.authority["documents"]["binding"]["sha256"],
+            self.binding,
+            self.live_mysql,
+            Path(self.authority["budget_receipt_path"]),
+            self.authority["documents"]["mysql_budget"]["sha256"],
+        )
+        deadline.remaining()
+        return value
 
     def scheduler_state(self, facts):
         ids = (
@@ -189,6 +251,10 @@ class DockerBackend:
             str(self.phase),
             "--binding-sha256",
             self.authority["documents"]["binding"]["sha256"],
+            "--budget-receipt",
+            self.authority["budget_receipt_path"],
+            "--budget-receipt-sha256",
+            self.authority["documents"]["mysql_budget"]["sha256"],
         ]
         if action in {"scheduler-token", "scheduler-rotate"}:
             for identifier in facts["request"]["project_ids"]:
@@ -331,7 +397,9 @@ class DockerBackend:
             "/diag-output/result.PUBLIC.json",
         ]
         # Each SQL container owns this phase mutex independently. GEN above stays outside it.
-        with self.phase_operation_lock(deadline):
+        with self.phase_operation_lock(deadline) as budget:
+            admission = self.admit_budget(budget, deadline)
+            reserve(folder / (mode + "-budget-admission.PUBLIC.json"), canonical(admission) + b"\n")
             deadline.remaining()
             self.runner.run(argv, deadline, folder / (mode + "-container"))
             deadline.remaining()
