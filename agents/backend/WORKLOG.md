@@ -665,3 +665,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 实际nonce393263...scope请求10:13:51；root原token10:15:50、functional容器10:15:51.441769自然exit0（非PASS）、scheduler-start10:15:57已迟。本岗只本地草案10420B/534f3b79，未发root/部署/执行/密封返包；收到停止即停，不给旧会话补封、不自动重跑，不读独立私证据。T18PUBLIC确认pending1和NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。
 - 草案原字节DRAFT_NOT_EXECUTED保留，旧入口替STOPPED说明；未提前准备完整通用callback桥是本岗准备缺口，草案仅墙钟不足证supervisor仍活，不可复用旧nonce/context。root独立证据归因待后续，不能从exit0宣告通过或伪说API失败。
 - 先前S1 fixture名从runbook误猜，root云前拦截且未采用，已承认；项目外本岗误建空/tmp/unused确认空后删除。原产品/790/旧F/独立原件不改，本岗无云执行/费用/新CI/独立private读取。记录皆AI岗位事实，不替学生写研究报告。
+
+
+## 2026-10-28 可预装scope callback桥（仅离线，ROLE-backend-SCOPE-BRIDGE-V1/V2-MUTEX）
+- 4c9715a6先设计LOAD prepare→APP原GEN/credential验证/原wire密封→LOAD最终live/pending/UTC+mono检查及原子交付；不复用已结束393…nonce，不发rootACK/撤销，不改原120/600。v1源码/34+安装9候选447f611f完整保留。
+- 真正本地失败：alpha边界2红（重复argparse/timeout进程退出竞态）；封包metadata手填常量1红，改AST读取；v2新锁2红；首次v2运行PYTHONPATH/错误名2失败属自测设置错误；CLI umask077控制目录1红。原输出无损gzip，失败修后保持断言，不把AI错误记学生亲自修改。
+- root/deployment追加统一phase锁后3a7dc84e先设计，新v2目录。实际helper21599B/SHA305f9eae…（部署b5926031），每直接SQL单独锁、GEN前释放；预算只占one_serial_operation15，observer计1。双pin phase helper并按核定字节载入；固定phase state，防换目录绕过隔离。原34用例文件/50assert逐字不变，原c89 crypto字节同。
+- 最终56 passed=46桥/互斥/权限+10安装，0failure/error/skip；Ruff通过。实际原init-user/service-token→原Rows/authstore→seal→自有key解包，SQLite+本机flock只证明本地兼容。真实Linux3.10/双机/MySQL/SUT/CI未由本岗运行。
+- 最终manifest f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b，四小片11700/13021/16245/10852B加300说明均<18000；两机新目的/root/t44-r9/scope-bridge-v2-01。runbook、三阶段template、依赖清单、配置空模板、verification已备。根限定review pending；实际新grant/source/F/nonce和120秒跨机链路由根准入后运行，无自动retry。
+- 没有产品改动/规模节省/正式性能或独立验收结论。研究报告仅提供AI过程素材，不代写学生本人经历。

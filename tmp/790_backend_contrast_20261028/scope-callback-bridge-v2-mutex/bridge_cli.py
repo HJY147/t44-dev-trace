@@ -7,7 +7,7 @@ import platform
 from pathlib import Path
 
 from bridge_app import provision
-from bridge_backend import DockerBackend
+from bridge_backend import DockerBackend, app_state_path
 from bridge_common import Clock, import_packet, parse, read, require
 from bridge_load import DockerProcObserver, deliver, prepare
 
@@ -68,7 +68,13 @@ def main():
     elif args.action == "provision":
         authority = import_packet(read(args.packet), args.packet_sha256)
         backend = DockerBackend(authority["app_phase_dir"], folder, args.manifest_sha256, clock)
-        result = provision(authority, args.state_dir, backend, clock, args.manifest_sha256)
+        result = provision(
+            authority,
+            app_state_path(authority, args.state_dir),
+            backend,
+            clock,
+            args.manifest_sha256,
+        )
     else:
         result = deliver(
             args.reservation,

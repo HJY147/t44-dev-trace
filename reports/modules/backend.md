@@ -416,3 +416,9 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 - 实际nonce393263...scope请求10:13:51；root原token10:15:50、functional容器10:15:51.441769自然exit0（非PASS）、scheduler-start10:15:57已迟。本岗只本地草案10420B/534f3b79，未发root/部署/执行/密封返包；收到停止即停，不给旧会话补封、不自动重跑，不读独立私证据。T18PUBLIC确认pending1和NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。
 - 草案原字节DRAFT_NOT_EXECUTED保留，旧入口替STOPPED说明；未提前准备完整通用callback桥是本岗准备缺口，草案仅墙钟不足证supervisor仍活，不可复用旧nonce/context。root独立证据归因待后续，不能从exit0宣告通过或伪说API失败。
 - 先前S1 fixture名从runbook误猜，root云前拦截且未采用，已承认；项目外本岗误建空/tmp/unused确认空后删除。原产品/790/旧F/独立原件不改，本岗无云执行/费用/新CI/独立private读取。记录皆AI岗位事实，不替学生写研究报告。
+
+
+## 2026-10-28 Scope callback预装桥v2（离线交付）
+后端AI先写设计，再实现完整LOAD新鲜authority→APP原GEN/真实credential/原wire→LOAD末次live/pending/原子交付。冻结旧会话失败不补发，不改120秒，不代rootACK或撤销。v4 phase helper双pin305f9eae…，SQL每阶段单独共享锁、GEN前释放；实际入口固定phase state、防重复nonce/quarantine绕过。
+最终56本地目标全绿（原34逐字50assert、新12、安装10），含原CLI+SQLite加密roundtrip、真实本机flock衔接、私密输出、umask077和小分片安装守卫；alpha2红、metadata1红、锁2红、setup2失败、umask1红原证据均保留。原crypto c89逐字同。无云/独立私包/SUT/新CI；产品规模净变化0；Linux3.10仅AST，真实双机/MySQL/120秒传输预算和独立业务验收待根。
+报告：agents/backend/contrast-20261028/scope-bridge-v2-report.md；精确步骤：scope-bridge-v2-runbook.md；manifest f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b；工具tmp/790_backend_contrast_20261028/scope-callback-bridge-v2-mutex。根限定review pending。

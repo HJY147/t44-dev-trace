@@ -13,6 +13,17 @@ from bridge_common import Refused, canonical, parse, read, require, reserve, sha
 DOCKER = ["docker", "--context", "default"]
 
 
+def app_state_path(authority, state):
+    phase = Path(authority["app_phase_dir"])
+    require(
+        phase.is_absolute()
+        and phase.resolve() == phase
+        and state == phase / ".scope-callback-state",
+        "ONE_FIXED_APP_STATE_DIRECTORY_PER_PHASE",
+    )
+    return state
+
+
 def clean_environment():
     return {
         k: v
@@ -250,6 +261,7 @@ class DockerBackend:
     def _data(self, mode, facts, authority, folder, deadline, credential_sha=None):
         inputs = folder / (mode + "-inputs")
         inputs.mkdir(mode=0o755)
+        inputs.chmod(0o755)  # CLI umask077 must not hide this PUBLIC mount from UID10001.
         output = folder / (mode + "-output")
         output.mkdir(mode=0o700)
         os.chown(output, 10001, 10001)

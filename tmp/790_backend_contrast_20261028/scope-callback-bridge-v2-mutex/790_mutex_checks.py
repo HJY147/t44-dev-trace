@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bridge_backend import DockerBackend
+from bridge_backend import DockerBackend, app_state_path
 from bridge_common import Deadline, Refused, canonical, sha
 
 UTC = timezone.utc  # noqa: UP017 -- host3.10-compatible data.
@@ -277,8 +277,20 @@ def test_data_control_mount_remains_readable_with_actual_CLI_umask077(backend, t
     backend.runner = Runner()
     previous = os.umask(0o077)
     try:
-        assert backend._data(
-            "preflight", {"request": {}}, {"bridge_id": "owned"}, tmp_path, backend.deadline
-        ) == b"{}"
+        assert (
+            backend._data(
+                "preflight", {"request": {}}, {"bridge_id": "owned"}, tmp_path, backend.deadline
+            )
+            == b"{}"
+        )
     finally:
         os.umask(previous)
+
+
+def test_actual_entry_requires_same_phase_state_for_later_nonces(backend):
+    authority = {"app_phase_dir": str(backend.phase)}
+    expected = backend.phase / ".scope-callback-state"
+    assert app_state_path(authority, expected) == expected
+    for other in (backend.phase / "fresh-next-request", backend.phase.parent / "bypass"):
+        with pytest.raises(Refused, match="ONE_FIXED_APP_STATE_DIRECTORY_PER_PHASE"):
+            app_state_path(authority, other)
