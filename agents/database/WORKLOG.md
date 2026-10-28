@@ -346,3 +346,5 @@
 - 初用根.venv缺SQLAlchemy，另建ignored venv按锁装包，初TLS验证失败后只改系统CA路径成功，不禁TLS。工具先有C408/BLE001后修具体异常和literal；一次patch格式上下文拒绝且无部分写，按实际源码重试。定位读取不存在路径失败保留，不当产品红。
 - 实际四个自有临时实例全部exit0、PID不存在、data保留；没有云/CI/HTTP/负载/独立验收。本次固定cloc对精确26d6328a：5933，比5862净增71，超833、exit1；旧7c94为5929单列，不把Git差分+70当有效行数。未改固定统计，正确性代码不冒减量收益。
 - 新19native层单位检查、原956的15检查和真实31例分范围；956旧Inspector fixture仅隔离新增native层，原断言不降，实际MySQL31例不stub。报告/verification/源绑定/JUnit/原Bandit红及绿/四次stop证明保存；学生研究正文不代写。Git推送与Issue4阶段留痕由实际回执后再补。
+
+- 阶段检查点7a663f9d已真实push；Issue4评论6461241385实际发表，随后fetch按单ID找到且全文逐字一致，原响应与精确comment保存在github-publication.json。本次仅补发布回执，未改生产或新增测试。
