@@ -128,7 +128,9 @@
     "agents/reviewer/evidence/window1030-20261028/static-first.json",
     "agents/reviewer/evidence/window1030-20261028/audit.json",
     "agents/reviewer/prompts/ROLE-reviewer-WINDOW1030-20261028-v1.md",
-    "tmp/791_reviewer_resume_20261028/window1030_static.py"
+    "tmp/791_reviewer_resume_20261028/window1030_static.py",
+    "reports/reviews/database-select-pool-20261028.md",
+    "agents/reviewer/prompts/ROLE-reviewer-SELECT-POOL-20261028-v1.md"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -579,7 +581,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "两次静态复算，0测试负载/云/网络/SUT；双机安装成功及CUA读key超时仅root回传分列",
+  "implementation_status": "一次纯编译/内存映射/配置probe exit0，0外部DB/HTTP/云/完整测试；root已整合fee30ae5待精确CI/native",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -671,8 +673,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/window1030-20261028/static-first.json",
-  "latest_review_report": "reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md",
+  "latest_review_evidence": "reports/reviews/database-select-pool-20261028.md",
+  "latest_review_report": "reports/reviews/database-select-pool-20261028.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1538,9 +1540,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
+  "review_outcome": "A_AND_B_CONDITIONAL_INTEGRATION_CANDIDATES_COMBINATION_NO_PRODUCT_DEPENDENCY_CONFLICT_PENDING_EXACT_CI_NATIVE_LOC_FAILED",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "a8c1f7a26892f845d9d415076107aa77f17ac2ac",
+  "review_target_sha": "92cf5c108ee549b35dda6d775e0357ded9e40743",
   "review_targets": [
     {
       "pr": 14,
@@ -1622,7 +1624,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "新10:30窗口raw/namespace限定准入，仅新gen02；旧成绩不继承",
+  "stage": "A默认投影/B池配置分别条件整合，组合无依赖冲突；LOC/完整CI/native仍未过",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1641,7 +1643,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-28T08:30:57.981831+00:00",
+  "updated_at": "2026-10-28T11:27:19.001045+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2611,7 +2613,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "new v3 window tool package plus restricted deployment time/namespace proof",
+  "review_target_kind": "two independently reviewed product candidates A82/B92 with shared exact a12 baseline",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -3714,5 +3716,77 @@
       "outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
       "updated_at": "2026-10-28T08:31:38.425940+00:00"
     }
-  }
+  },
+  "select_pool_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-SELECT-POOL-20261028-v1",
+    "A_source": "82e92dfc420690980a6e16c88f209d08ab709e49",
+    "A_checkpoint": "ac7664f9bea12362bc1d1466a386659a3c9d0c5a",
+    "B_source": "92cf5c108ee549b35dda6d775e0357ded9e40743",
+    "B_evidence_checkpoint": "c4900aa87c4a5f9364e030a3d7a193372c766897",
+    "baseline": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "A_outcome": "CONDITIONAL_INTEGRATION_CANDIDATE",
+    "B_outcome": "CONDITIONAL_INTEGRATION_CANDIDATE",
+    "combination": "no production/new-test path or interface dependency conflict identified; exact new combination CI/native required",
+    "own_probe": {
+      "first_exit": 0,
+      "SQLAlchemy_runtime": "2.1.6",
+      "A_tables": 18,
+      "A_columns": 226,
+      "A_compile_pairs": 144,
+      "A_memory_mapping_tables": [
+        "users",
+        "auth_sessions"
+      ],
+      "B_config_checks": 14,
+      "B_lazy_engine_capacities": [
+        [
+          5,
+          10
+        ],
+        [
+          20,
+          0
+        ]
+      ],
+      "MySQL_connect_calls": 0
+    },
+    "owner_evidence": {
+      "A_final_targets": 30,
+      "A_original_persistence": 138,
+      "B_old_tests": 5,
+      "B_old_failures": 4,
+      "B_old_pass": 1,
+      "B_green": 38,
+      "B_new_config": 31,
+      "B_original_regressions": 7,
+      "JUnit_source_SHA_recomputed": true
+    },
+    "LOC": {
+      "A_net": 0,
+      "B_net": 2,
+      "application_after_B": 5935,
+      "over_upper": 835,
+      "gate": "FAILED"
+    },
+    "B_all_roles_capacity_budget_actual_not_queried": true,
+    "B_complete_evidence_raw_diff_check_exit": 2,
+    "limited_source_test_diff_check_exit": 0,
+    "full_CI_native_MySQL_HTTP_server_cloud_formal_performance_independent_acceptance": "NOT_RUN_BY_REVIEWER",
+    "independent_private_cases_or_research_body_read_or_modified": false,
+    "product_tests_modified": false,
+    "role_write_scope": "one review report plus WORKLOG/module/handoff/prompt only",
+    "root_callback": {
+      "integration_current": "fee30ae5",
+      "only_A_B_integrated": true,
+      "new_CI_test_dispatch_planned": "714 plus new tmp786/787 and nativeMySQL",
+      "not_reviewer_execution": true
+    },
+    "report": "reports/reviews/database-select-pool-20261028.md",
+    "updated_at": "2026-10-28T11:27:19.001045+00:00"
+  },
+  "review_target_shas": [
+    "82e92dfc420690980a6e16c88f209d08ab709e49",
+    "92cf5c108ee549b35dda6d775e0357ded9e40743"
+  ]
 }
