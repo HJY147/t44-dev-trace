@@ -1,0 +1,42 @@
+{
+  "kind": "one-bundle-local-raw-and-JSON-original-install-replay",
+  "checks": [
+    {
+      "route": "raw",
+      "actual_original_install_fragments_executed_under_temporary_mapped_targets": 17,
+      "actual_runtime_code_files_verified": 27,
+      "all_three_runtime_manifests_equal": true,
+      "installed_permissions_preserved": true,
+      "cloud_or_service_actions": false
+    },
+    {
+      "route": "json",
+      "actual_original_install_fragments_executed_under_temporary_mapped_targets": 17,
+      "actual_runtime_code_files_verified": 27,
+      "all_three_runtime_manifests_equal": true,
+      "installed_permissions_preserved": true,
+      "cloud_or_service_actions": false
+    },
+    {
+      "failure_fixture": "whole-sha",
+      "original_installer_executions": 0,
+      "outer_test_pin_changed_only_to_reach_inner_negative": false
+    },
+    {
+      "failure_fixture": "inner-file-sha",
+      "original_installer_executions": 0,
+      "outer_test_pin_changed_only_to_reach_inner_negative": true
+    },
+    {
+      "failure_fixture": "extra-member",
+      "original_installer_executions": 0,
+      "outer_test_pin_changed_only_to_reach_inner_negative": true
+    }
+  ],
+  "captured_real_install_output_bytes": 13522,
+  "captured_real_install_output_sha256": "3bcf144a0809a25f74a3ac1d8c9427101a120c09067e493e5cee191300cc83a1",
+  "original_scripts_modified_in_bundle": false,
+  "only_test_execution_target_paths_temporarily_replaced": true,
+  "HTTP_curl_network_not_executed_by_deployment": true,
+  "cloud_or_SUT_executed": false
+}

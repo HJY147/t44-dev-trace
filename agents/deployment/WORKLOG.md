@@ -740,3 +740,11 @@ root提供并实际核官方manifest3368534a…/innerZIP70d09d1f…/archive8f4f6
 新远端v4-code-20261028-03/profile，5分片+安装6命令、manifest60c234ac…、完整raw11337/完整base64+256=15372最大；6bash-n和实际20Z临时root映射重组后六原件逐字相同。RUNBOOK已给df84/官方336完整值的新prepare模板/新namespace计划/真实预算后迁移业务/保卷stop，不等待云才编步骤。固定PUBLIC commit的API outer wrapper随后独立封小commit，完整外层另核，不仅算内层；原六条现在可审。无算法/产品/全CI/云/SUT动作或测试私件读取，783票据与52/F事实只由root核。
 
 20Z固定PUBLIC代码c1303016a053d5b718d3df30ce5911d2e002c18c已push并ls-remote逐字核相同。新增一条install-via-github-api.sh，固定该commit与六脚本每个完整bytes/SHA；先全下载核验，再按序bash原件，不用Token/可变分支，不修改6条原件。整个outer shell+heredoc raw2567B，完整base643424+256描述=3680<18000，SHA e60ac8cb…；真实bash-n与3组显式模拟HTTP/捕获bash检查过，正确6/6、错误SHA或path均0执行。未把模拟网络/捕获命令写为真实GitHub或云执行。完整外层而非仅内层计量，proof另存；final wrapper小commit后交root审阅/实跑，本岗0云/SUT。
+
+## 单一PUBLIC传输包（先固定包commit）
+
+root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c130、scope5f679130/manifest e551、P6477796810/runtime2af644/delivery305c；e551是manifest不是commit，先前短引用解析到blob即停，随后只据backend完整来源读取批准目录，不读检查脚本/XML/fixtures或独立私件。root明确APP/LOAD都安装profile03、bridge-v3-01、P64-ui03三目标，均未创建，不碰旧profile02。
+
+新tar.gz120717B/SHA8002f6fd…包含25成员：原17安装片（6+4+7）、7原PUBLIC manifest/profile、1新传输清单；不打包P64已双层ui片、不复制安装算法。各片与source commit原件逐bytes/SHA相同，bundle manifest4fa4e564…记完整来源/目标/顺序。包中没有测试、私包、材料、账号、会话或原始云证据，runtime代码已经由原安装片压缩payload逐字承载。
+
+真实本地raw/JSON两路线分别执行原17安装片（仅测试执行边界把三个完整目标映射项目tmp793，原bundle bytes不改），逐原manifest核27份运行代码和3manifest完整字节/权限，均过。两次重复首片均被原O_EXCL拒且原件未改；整包SHA、内件身份、额外member负例均0执行。13522B真实安装输出完整gzip/3bcf144a…保存，HTTP/curl未实际联网，云/SUT/服务/callback未运行。先封此包固定commit，下一小commit给APP/LOAD curl API raw+json兼容wrapper并核完整outer，绝不拿只内层尺寸冒合格。
