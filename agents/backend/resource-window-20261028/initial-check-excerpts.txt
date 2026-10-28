@@ -1,0 +1,17 @@
+Initial tool output excerpts, copied from this role's actual session; not full raw logs.
+
+$ python3 -m ruff check --config scripts/ci/ruff.toml tmp/788/resource_window.py tmp/788/check_resource_window.py
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3: No module named ruff
+exit_code=1
+
+$ uvx --from ruff==0.17.2 ruff check --config scripts/ci/ruff.toml tmp/788/resource_window.py tmp/788/check_resource_window.py
+I001 [*] Import block is un-sorted or un-formatted
+F401 [*] `sys` imported but unused
+B905 `zip()` without an explicit `strict=` parameter
+B905 `zip()` without an explicit `strict=` parameter
+E731 Do not assign a `lambda` expression, use a `def`
+B905 `zip()` without an explicit `strict=` parameter
+Found 6 errors.
+exit_code=1
+
+Initial setup read also found no .github/workflows/ci.yml and no specs/sources/T44-taskbook.txt, submission-notes.txt, homework-requirements.txt in this tracked worktree. No replacement taskbook was invented; this role works under explicit current coordinator dispatch and AGENTS. Later read the actual product.yml workflow.

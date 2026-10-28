@@ -1,7 +1,7 @@
 {
   "role": "backend",
-  "stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
-  "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
+  "stage": "p7-public-analysis-and-resource-window-tool-awaiting-server-execution",
+  "implementation_status": "read-only diagnostic tool and four synthetic CLI methods verified; P7 request metrics offline audited; no server raw aggregation/cloud load/product CI/independent acceptance by this role",
   "artifacts": [
     {
       "path": "agents/backend/WORKLOG.md",
@@ -218,6 +218,30 @@
     {
       "path": "agents/backend/core-bandit.log",
       "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "tmp/788/resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/check_resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/report.md",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/verification.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/p7-derived-readings.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/prompt.md",
+      "status": "actual role artifact; development diagnostic only"
     }
   ],
   "interfaces": [
@@ -383,6 +407,10 @@
     {
       "command": "coverage json / coverage report",
       "result": "退出0，原始JSON/JUnit/报告已存本岗目录"
+    },
+    {
+      "command": "python3 tmp/788/check_resource_window.py; uvx --from ruff==0.17.2 ruff check/format --check --config scripts/ci/ruff.toml tmp/788/{resource_window,check_resource_window}.py",
+      "result": "4 unittest methods pass; ruff check and format check pass; original missing module and initial six lint failures recorded; see task-specific command evidence"
     }
   ],
   "results": [
@@ -399,12 +427,14 @@
     "D001七状态九动作纯领域实现存在，集中内部Enum/typed命令/不可变Decision/纯GuardContext，非法边与必要守卫有参数化自测",
     "领域依赖只在start、unblock到develop、rework三处检查，reject_review不新增守卫，上游回滚不自动改下游",
     "106项领域单元通过，Ruff/格式/Bandit通过；仅领域覆盖约98%，不是HTTP/集成/独立验收",
-    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
+    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行",
+    "P7 observed8000, zeroHTTP/clienterror but per-pathP95>270ms; started21.890740s vs barrier21.742456s explicitly separated; no formal pass inferred"
   ],
   "unverified": [
     "independent retest",
     "performance thresholds",
-    "final source range"
+    "final source range",
+    "P7/P16 real server resource-window aggregation and formal performance not executed by this role; P16 public matrix pending coordinator"
   ],
   "questions": [
     {
@@ -586,9 +616,20 @@
         "tmp/811_backend_size/812_v2_boundary.py",
         "tmp/811_backend_size/snapshot-alias-validation.json"
       ]
+    },
+    {
+      "id": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+      "source": "actual coordinator dispatch and numeric-unknown steering, executed",
+      "task_path": "agents/backend/resource-window-20261028/prompt.md",
+      "human_code_edit": false,
+      "reason": "explicit digest/window/metric semantics and missing-sequence evidence precision",
+      "outputs": [
+        "tmp/788/resource_window.py",
+        "agents/backend/resource-window-20261028"
+      ]
     }
   ],
-  "updated_at": "2026-10-25T06:30:25.669382+00:00",
+  "updated_at": "2026-10-28T06:47:18.807031+00:00",
   "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
   "application_v1": {
     "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
@@ -2165,6 +2206,12 @@
       "incoming_stage": "dependency-candidate-test-only-ci-terminal-evidence",
       "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
       "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
+      "incoming_stage": "p7-public-analysis-read-only-resource-window-tool",
+      "incoming_evidence": "agents/backend/resource-window-20261028/verification.json",
+      "both_stage_artifacts_preserved": true
     }
   ],
   "performance_20261025": {
@@ -2419,5 +2466,22 @@
     ],
     "old_evidence_preserved": true,
     "report": "agents/backend/source-size-20261025/snapshot-alias-fix.md"
+  },
+  "resource_window_20261028": {
+    "base": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+    "branch": "codex/backend-resource-resume-20261028",
+    "prompt": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+    "report": "agents/backend/resource-window-20261028/report.md",
+    "verification": "agents/backend/resource-window-20261028/verification.json",
+    "script_sha256": "f1df806992ba0c9b4508abf9ebe4a18cb80880b252559b9cf4e48a98e73037ab",
+    "p7_measure400_started_seconds": 21.89074,
+    "p7_measure400_barrier_seconds": 21.742456,
+    "p7_measure400_requests": 8000,
+    "formal_acceptance": false,
+    "cloud_UI_accessed": false,
+    "server_raw_executed_by_this_role": false,
+    "independent_private_content_read": false,
+    "initial_private_path_names_inadvertently_listed": true,
+    "root_handles_role_metadata_merge": true
   }
 }

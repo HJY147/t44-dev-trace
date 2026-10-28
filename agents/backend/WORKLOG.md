@@ -604,3 +604,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - Only domain/models.py adds6 lines after unchanged original validation: approved list/tuple review_evidence membership is snapshotted to tuple under a fresh read-only assessment mapping. Existing guard/validation order is AST-identical; no compatibility shim or public/storage/transaction change.
 - Final172 domain cases (65 actualv2 boundaries +original91behavior/15historical constructors +57120 differential) and143 originalHTTP cases pass, zero fail/error/skip. Targeted Ruff/format pass after one initial format correction. Current fixedcloc2363→1993/net370, repaircost+6; earlier376 belongs to prior productstage only. Old raw artifacts restored/preserved, new snapshot-alias-* receipts hold2red→315green evidence.
 - Root requestedpush but no fullCI: [skip ci] stage commit avoids automatic codex/** full campaign, changes no workflow/main gate. No MySQL/cloud/fullCI/independent execution. Reportagents/backend/source-size-20261025/snapshot-alias-fix.md; exact narrow review follows push.
+
+
+## 2026-10-28 P7公共短窗及资源窗口工具
+
+操作者backend AI；提示词ROLE-backend-RESOURCE-WINDOW-20261028-v1。按总协调实际派工，只读两个明确PUBLIC并核字节/SHA，再只读其明确采样器白名单44079B/SHA3d9f…；独立树codex/backend-resource-resume-20261028基于22f666e2，总协调确认无需重base。400客户端P7完成8000、HTTP/客户端错误0，但四路径P95 1370.412573–1840.028403ms。started窗21.890740s折算21927.079669/min，barrier窗21.742456s折算22076.622807/min；均短窗等效，不是完整分钟/600秒验收。
+
+实际实现tmp/788/resource_window.py，只读显式raw+SHA/UTC窗口，固定FD/O_NOFOLLOW/hash/64MiB输入与32KiB输出限额；分role CPU nearest-rank p50/p95/max、RSS/cgroup独立max、missing/null/错误与头尾/间隔/已知sequence。精确采样语义已核，CPU单核100可>100，RSS共享页重复，scheduler全null不补0。初版9225B/82c…经总协调序列未知值反馈及静态修正，最终9560B/SHAf1df806992ba0c9b4508abf9ebe4a18cb80880b252559b9cf4e48a98e73037ab。最终4个手算CLI方法绿，Ruff0.17.2 check/format绿；最初无ruff模块及6lint失败摘录保留。
+
+初次rg文件名枚举意外显示792私有路径名称，未打开/读内容；后续限制为独立树Git受控文件和明确白名单。未访问云UI、未执行服务器raw聚合/产品CI/MySQL/云负载/独立验收。采样器与PUBLIC原件不改。报告与真实命令输出见agents/backend/resource-window-20261028/。P16公共结果待总协调发布，瓶颈NOT_PROVEN。
