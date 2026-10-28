@@ -697,3 +697,7 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 新p64-f7-ui-encoded-v2目录只installer/delivery/测试，不动旧d17/1da/13 runtime/两grant/原46文件；按d17字节核同。raw上限12000，7片最大11750；完整UI launcher+300最大16090，编码payload+300最大15968，均<18000。
 - 新7检查全绿，真实outer→bash完整安装回放、13字节和0444、umask077、拒覆盖/混包；旧68不是此传输门禁证据。delivery SHA243d90ca022aaf1d336854066fd9c65e9e49a65f20047594d22fae95184097c5，新/root/t44-r9/p790-f7-1600-ui02，raw由helper包一次或ui-ready直接用，不能二次包。
 - 已向审核岗通知；无云/SUT/新CI/独立私件/产品改动；root告知API下载成功只作路径事实，非本岗验证。报告p64-ui-encoded-v2-report.md。
+
+
+### P64 f7新20:00窗口（AI岗位；旧16Z未执行业务据root）
+按新任务另建window2000/ui03，source f7不变。13运行9逐字同、4仅截止/窗口错误标签；manifest2af64448…4626de，delivery305c5a72…41352，7片max完整UI+300=16090。旧20eb目录/原46及失败证据逐Git相同，GEN新9edaf…单STOP差分，e551/305f依赖原字节。7项窄检查首轮1.61s通过；Ruff两个自测run缺check显式参数，补check=False后7项再通过126.60s（不算14例），限定Ruff/diff绿。只有本机安装回放和AST3.10，不重跑无关产品实验，无新actual grant/session/云/SUT/私件。设计/report/runbook/verification均新件，等待root限定审核及本次新授权执行。

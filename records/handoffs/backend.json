@@ -2912,5 +2912,53 @@
     "report": "agents/backend/contrast-20261028/p64-ui-encoded-v2-report.md",
     "review": "PENDING limited re-review",
     "prompt": "ROLE-backend-P64-UI-ENCODED-V2"
+  },
+  "p64_f7_2000_window_variant_20261028": {
+    "kind": "P64_F7_2000_NARROW_LOCAL_VERIFICATION",
+    "runtime_manifest_sha256": "2af6444892171c1004474379dff699f3ede876c6e7d55e85b72125cbce4626de",
+    "delivery_sha256": "305c5a722ee94d1339b2400a292bbc83416e6c40ba3c0a4b7fc49efdcfd41352",
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "old_commit": "20eb4ae340375a0b687324df15dacf11e2a73c0b",
+    "window_utc": "2026-10-28T20:00:00Z",
+    "unchanged_runtime_files": 9,
+    "deadline_literal_only_runtime_files": 4,
+    "initial_local": {
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.608"
+    },
+    "final_after_lint_local": {
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "126.305"
+    },
+    "unique_tests": 7,
+    "count_repeated_tests_twice": false,
+    "original46_and_old_failure_bytes_unchanged": true,
+    "actual_full_outer_installer_replay": true,
+    "python310": "AST only",
+    "local_runtime": "Mac/Python3.12",
+    "initial_lint_findings": {
+      "PLW1510": 2
+    },
+    "final_lint": "All checks passed",
+    "actual_phase_grant_session_received": false,
+    "cloud_SUT_SQL_HTTP_independent_by_role": false,
+    "test_file_sha256": "b571b253299a903265676ecd08abd16414cce6586c47cf46e7cd9afe10e86b0b",
+    "report": "agents/backend/contrast-20261028/p64-f7-2000-report.md",
+    "runbook": "agents/backend/contrast-20261028/p64-f7-2000-runbook.md",
+    "tools": "tmp/790_backend_contrast_20261028/p64-f7-window2000",
+    "install_destination": "/root/t44-r9/p790-f7-2000-ui03",
+    "parts": 7,
+    "max_raw": 11750,
+    "max_full_UI_plus300": 16090,
+    "deployment_public_commit": "c1303016a053d5b718d3df30ce5911d2e002c18c",
+    "GEN_sha256": "9edafbbff0586b5f77a701bd37f715685fba4169abaae510474343af75a8b427",
+    "review": "PENDING root limited review",
+    "prompt": "ROLE-backend-P64-F7-2000"
   }
 }

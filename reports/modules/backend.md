@@ -436,3 +436,6 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 
 ## 2026-10-28 P64安装编码预算勘误
 旧d17四分片raw+300通过并未覆盖外层base64；审核3片超限，27bcdd3d真实3红1绿封存，旧包和原68证据不改。仅新UI-v2重分片：7 raw最大11750，真实完整UI+300最大16090；7本地实际outer回放/完整源核验/拒覆盖/混包绿。runtime manifest1da/13模块/两grant/原46文件逐字保持。delivery243d90ca…097c5，新目录/root/t44-r9/p790-f7-1600-ui02；p64-ui-encoded-v2-report.md解释raw/helper包一次与ui-ready直接用。无云/性能结论；API成功不追认旧说法，待限定复核。
+
+
+2026-10-28 P64 f7 20:00窗口新variant：原16Z包与3红保留，window2000安装ui03；runtime2af64448…4626de，delivery305c5a72…41352。13运行9同/4仅时间字面；GEN9edaf…单STOP差分。7唯一窄检查通过含真实outer安装，最大完整UI+300=16090；原46及旧失败逐字同，未重复整套68。两阶段准入/600TTL/330与90/锁及预算/400active无think不变，模板null/admitted=false。详p64-f7-2000-report.md和runbook；本岗无云/SUT/正式性能结论，待限定review。
