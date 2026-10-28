@@ -681,3 +681,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 5cedb2ca：配置/authority显式mysql_budget原件及APP receipt path/SHA，SOURCE/binding/stop/namespace先核；GEN三action透传同两flag，父锁外；每直接SQL在同operation_lock内先原305f admit当前MySQL身份/max/完整预算，再发SQL。budget query wait仅clamp剩余lease，原SQL/解析不动。没有384默认或伪probe。
 - 最终74=原56+新18，0failure/error/skip；原56三个测试文件95assert AST按原序一致，原5红断言也保留；只补PUBLIC fixture/旧mutex专测中性admit stub。原crypto/helper字节同。真实305f admit+本机flock+合成query证明拒绝次序；当前128预算124可准、123拒绝，不冒实际MySQL。Ruff/diff绿。
 - 最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，四片12216/12953/15289/12840B各加300<18000；新/root/t44-r9/scope-bridge-v3-01；runbook/execute/config/dependencies/verification齐。已通知审核岗新源码与hash，待限定复审。不云/独立private/SUT/新CI/产品改动，原120和全部秘密边界不变。
+
+
+## 2026-10-28 f7/64worker/16Z短P预装（ROLE-backend-P64-F7-1600）
+- 根新候选f7cdb5fa，8e235a34先设计。原a12/P7/P16/10:30及scope桥e551不动；source/stop/64/v4新kind另副本。实际新GEN6b2da1从已发布Git核30497B，避免旧schema假fixture。五个select子集hash与f7实际全同，实际f7后端53文件只读快照跑原CLI/seed/S1/S2/handler。
+- 根确认prep→bootstrap空库→GEN idle/TLS401→实际6角色→另short-P grant；不能先写audit再过空表门禁，prep不是HTTP授权。新control带真实root grant/raw SHA/nonce/source/image/source53，缺pressure grant在网络前拒绝；S2/matrix单次marker，不复用旧session。
+- 薄790_budget复用已审e551预算API，只读双pin，不调scope供应；每admin/S1完整容器分别锁→原305f admit→原命令→释放，GEN在外不嵌套，无384默认。root实际grant/phase/receipt/CA/key/roles尚待。
+- 原data/select/S1/S2三文件逐字同；HTTP除configure外18函数/类逐字同，原QUERY/PROBE/显式seed_code常量同；transport仅SOURCE/STOP。旧46例66assert经仅身份/时间字面变更AST原序保持，0删除。
+- 59+安装/opaque接收9=68唯一通过，0fail/error/skip；FastAPI旧依赖1上游warning未升级。初次新wrapper Ruff未用import等10项修后绿；本机Mac/Py3.12，host3.10只AST。无云/新CI/独立private/正式性能。
+- runtime c0268820，manifest 1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8，13件/四安装15107/16004/15608/9499B+300<18000，新/root/t44-r9/p790-f7-1600-01。两grant/两配置模板、producer/consumer/opaque receiver、原matrix、runbook、byteproof/verification/JUnit齐；根限定review pending。工具规模不计产品节省。

@@ -53,3 +53,8 @@ root原契约：“backend 每个直接 SQL 步骤各自持锁，调用 GEN 前�
 ## ROLE-backend-SCOPE-BRIDGE-V3-BUDGET（审核反馈驱动，AI岗位修复）
 root原要求：“两个必须修复：1 generation argv 必须传 --budget-receipt PATH --budget-receipt-sha256 FULL64，新GEN的scheduler-token/rotate/start要求；2 _data(preflight/seal)当前只持operation_lock，锁内须先budget.admit绑定实际receipt/同MySQL真实身份与容量，再跑直接SQL。receipt path+SHA必须作为显式PUBLIC configuration/authority固定并验证，不能推384默认、不能借GEN拒绝前先SQL；GEN仍自己持共享锁，父不嵌套。”
 本岗先读部署25d v4/STEPS和确切305f helper，设计e95，再在原v2字节留5红封e5b；实现唯一实际预算回执完整绑定、GEN透传、同锁原admit后SQL，限定原query等待为剩余窗。新用例用原admit/measure/numeric parser及flock而只stub元数据/query transport，当前128/123围绕真实F4预算124验证无384默认。原56只补中性fixture/专测stub，95assert AST原序保持；最终74绿。仍未实际Linux/MySQL/云/SUT，不把自测写成审核已关闭。原失败不覆盖，不AI冒学生本人经历。
+
+
+## ROLE-backend-P64-F7-1600（根新候选的窄工具派生，AI岗位）
+根原要求关键原文：“当前fullCI40692462131+Docker40692462380在跑（真实净LOC37→5898，仍超798）”“不改原a12/P7/P16源/结果/门槛/seed44/anchor及400active无think”“若原工具已参数化则给明确调用/实际字节证明即可，别重写大框架/再加加密算法。”
+本岗先核旧工具确实固定a12/10:30/仅7|16和旧generation_kind，再只加新variant与必要v4 grant/budget宿主对接。根确认内部两阶段，避免先API401审计再空表seed；预算薄封装复用已审e551，不改其算法/来源。只读获准两具名PUBLIC producer/consumer先核SHA，不枚举runtime私包；路径和actual pins全部参数化，新opaque接收只搬密文。原HTTP核心18函数/类、三个数据业务文件、SQL/seed常量逐字证明；原46例66assert只准身份/时间字面替换，保原语义。实际f7 Git53快照验证原handler，68自测与正式云/性能/独立验收清楚分开。新wrapper初次import lint修正如实留日志；实际rootgrant等仍null，不把AI本地合成材料写成学生本人经历或云实测。

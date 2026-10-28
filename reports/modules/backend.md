@@ -427,3 +427,8 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 ## 2026-10-28 Scope桥v3预算修复（替代v2待审候选）
 v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁内admit，审核阻断保持原件。v3先e95设计→e5b原代码5红→5ced修复；显式PUBLIC budget原件及APP path/SHA进authority，GEN透传且父锁外，每SQL先原305f admit再派发。最终74目标通过，原56三文件95assert AST全序相同且0删除；原5红assert保持。Crypto/helper逐字同。真实helper与flock加合成metadata/query只证明本地守卫，未运行云/实际MySQL/SUT/CI或独立验收。
 最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，新两机/root/t44-r9/scope-bridge-v3-01；报告scope-bridge-v3-report.md、步骤scope-bridge-v3-runbook.md，工具tmp/790_backend_contrast_20261028/scope-callback-bridge-v3-budget；复审pending，原v2不得投云。
+
+
+## 2026-10-28 f7 P64短诊断工具（本地交付，非性能结果）
+目标f7cdb5fa/16Z，8e235a设计、c0268820 runtime。原a12/7/16及scope e551保持；新两阶段prep/pressure grant，原CLI/seed anchor04:00，锁内原305f预算准入，GEN父锁外。数据/select/S1/S2三文件和HTTP除configure外18函数/类逐字同，原46例66assert经身份/时间字面更新AST原序同；400active无think/80+800+8000/600TTL及全部失败停发门禁保持。
+68本地目标通过（原33+13+新13+安装/opaque9）；实际f7源码SQLite/TestClient兼容，不是真MySQL/云/正式600秒。manifest 1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8，四小片/13模块，新/root/t44-r9/p790-f7-1600-01；p64-f7-report.md和p64-f7-runbook.md给出全部配置/步骤；实际grant/绑定/预算/roles/key未填，待根review。
