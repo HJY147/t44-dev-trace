@@ -646,3 +646,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 固定历史fb0里的原helper SHA daaf29…，对照新repo文件F4/P7/P16全compose与TLS输出相同，动态映射读取顺序和缺别名KeyError相同；加既有806保护13项真实通过。CI原配置/原范围Ruff全过。没有跑完整产品/CI或云。
 - 新等价夹具首轮2失败：本岗误估别名访问>5（真实为backend/mysql/rabbitmq/web/nginx各一次），以及误以为diagnostic-overlay有FACTORY_SHA常量。原字节XML经gzip逐字回解一致保留，修夹具为真实历史顺序和实际generation pin；没有修改工具断言目标来容忍输出差异。首轮资料定位曾猜不存在的CI配置路径，改读实际scripts/ci/static.py和ruff.toml，不作为产品失败。
 - 新repo helper SHA单独记录于factory-syntax-metadata.json；云端原daaf factory、旧phase factory、四个派生模板与旧binding不改、不安装新文件到旧路径。root转交新profile工件40637080936/source a12e9e70/CIhead569baa96成功仅作关联，不冒本岗取证或回写其身份。
+
+## 2026-10-28 P7/P16资源与新代际最短命令
+
+- root转交实际APP/LOAD Running、P7源a12原入口/7worker、6-role idle及真实binding。仅在自身worktree读root指定generation/image/infra/bootstrap PUBLIC工作件（当时4件尚未Git跟踪，bytes/SHA另档），不读取792/私包/密钥，不操云UI或服务。
+- e17e3897先记录窗口/缺样/保盘设计，再写27动作PUBLIC argv与R28-P7-P16 runbook。用纯派生重建精确源/截止/53文件helper，其fd7d/3d9f和27199/44079 bytes与root完整PUBLIC回传相同；31项检查用真实argparse解析并在任何dispatch前中断，没有云行为。
+- 明确P7当前scheduler absent必须missing/null，首CPU delta null；warmup前采集与offset0镜像、seal后收全wholeSHA/tail再ownedstop。旧两机不重买、旧卷不删；P7先停后P16 infra，完整新namespace/DB/CA/端口和同seed/anchor。每动作标实际余窗，原07:30Z不改，07:20Z后非stop/status SUT动作拒绝；cleanup允许过期后执行。
+- 形成正式7-role/600秒设计边界，未派发/执行，不把790 fresh-create与scheduler改变事件前提的冲突删断言解决。等待root实际7vs16结果。两次资料搜索因zsh不存在glob报错，随后用已观察到的精确路径读PUBLIC资料，不当产品错误。
