@@ -336,3 +336,15 @@
 - 当前975按VERSION运行，V1黄金/935来源保留，V2摘要在全业务性质和另空库不同batch再现后冻结；没有历史代码替代当前覆盖。signature AST全同/frozen specDDL净差异0，限定Ruff绿。原红log用gzip保原字节，verification记录实际测试而非相加计数。
 - 稳定codex/database-size-optimize-20261025和候选codex/database-seed-v2-optimize-20261025均实际push。Issue4 comment6397356591由connector发布，单ID GET正文与本地完全相同。root组合CI/审核/新MySQL与采用版本取舍待调度，本岗未读独立资料/凭据或接触旧MySQL。
 - 证据提交1af77aa全量diff-check因原始失败XML的E后空白exit2（后续commit成功不算检查通过），原字节不修剪；只对源码/说明文档的同commit diff-check exit0。另存raw-evidence-diff-check.log与verification条目，保留真实边界。
+
+## ROLE-database-CATALOG-AUDIT-20261028-v1：真实反射缺口修复
+
+- 用户恢复后从22f666e2建独立codex/database-resume-20261028；先读AGENTS及已发表c998探针，设计cacd03b1先行，根认可补已冻结性质。原编号795被根更正为794，未冲突写其他岗目录。
+- 在原批准官方8.4.11 binary上，只启动本岗项目tmp/794的新socket-only/128M实例；原PID7980/13306和旧env/runtime/DB不读不动。改码前真实31配方24满足、7漏判：DESC/非自增/engine/表与列collation/NOT ENFORCED/INVISIBLE；无DDL设置错误。8正例/23负例均独立新空schema，保留变异后的数据，不伪称原地restore。
+- 首修7c94补4次schema级native元数据核验，保持原语义normalizer、DDL/API/lock/marker。先31实际满足但入口未绑定source，原件保留；随后入口核已提交源/工具/lock摘要，再31满足。首修53目标及全非integration持久化/812回归106通过、17未选择，原2个record_property警告保留，不累加。
+- 封档限定Bandit真实B608，改4条完整字面SQL并限制CHECK命名空间，不nosec/降门禁。最终生产26d6328a，native-after-static入口绑定当前migrations SHA cf2e6b30...，31/31满足、9.649秒含初始化清理；最终同53目标绿0.84秒、CI同配置Ruff绿、限定Bandit绿。原7c94结果与最终源分别说明。
+- 初用根.venv缺SQLAlchemy，另建ignored venv按锁装包，初TLS验证失败后只改系统CA路径成功，不禁TLS。工具先有C408/BLE001后修具体异常和literal；一次patch格式上下文拒绝且无部分写，按实际源码重试。定位读取不存在路径失败保留，不当产品红。
+- 实际四个自有临时实例全部exit0、PID不存在、data保留；没有云/CI/HTTP/负载/独立验收。本次固定cloc对精确26d6328a：5933，比5862净增71，超833、exit1；旧7c94为5929单列，不把Git差分+70当有效行数。未改固定统计，正确性代码不冒减量收益。
+- 新19native层单位检查、原956的15检查和真实31例分范围；956旧Inspector fixture仅隔离新增native层，原断言不降，实际MySQL31例不stub。报告/verification/源绑定/JUnit/原Bandit红及绿/四次stop证明保存；学生研究正文不代写。Git推送与Issue4阶段留痕由实际回执后再补。
+
+- 阶段检查点7a663f9d已真实push；Issue4评论6461241385实际发表，随后fetch按单ID找到且全文逐字一致，原响应与精确comment保存在github-publication.json。本次仅补发布回执，未改生产或新增测试。

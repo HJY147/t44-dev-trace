@@ -2,7 +2,7 @@
 
 import re
 
-from sqlalchemy import inspect, text
+from sqlalchemy import String, inspect, text
 from sqlalchemy.exc import SQLAlchemyError
 
 from .engine import validate_identifier
@@ -139,6 +139,79 @@ def _foreign_signature(foreign, database):
     )
 
 
+def _catalog_defects(engine):
+    """Audit native properties omitted by MySQL's SQLAlchemy reflection."""
+    table_options, column_options, index_options, check_enforcement = {}, {}, {}, {}
+    for name, table in TABLES.items():
+        options = table.dialect_options["mysql"]
+        table_options[(name,)] = (options["engine"], options["collate"])
+        for column in table.c:
+            charset = collation = None
+            if isinstance(column.type, String):
+                charset = column.type.charset or options["charset"]
+                collation = column.type.collation or options["collate"]
+            column_options[(name, column.name)] = (
+                "auto_increment" if column.primary_key else "",
+                charset,
+                collation,
+            )
+        for index in (*table.indexes, *table.constraints):
+            kind = index.__class__.__name__
+            if kind in ("Index", "UniqueConstraint", "PrimaryKeyConstraint"):
+                key = "PRIMARY" if kind == "PrimaryKeyConstraint" else index.name
+                unique = kind != "Index" or index.unique
+                for ordinal, column in enumerate(index.columns, start=1):
+                    index_options[(name, key, ordinal)] = (
+                        column.name,
+                        int(not unique),
+                        "A",
+                        None,
+                        "BTREE",
+                        "YES",
+                    )
+            elif kind == "CheckConstraint":
+                check_enforcement[(name, index.name)] = ("YES",)
+    queries = (
+        (
+            "table_options",
+            "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES "
+            "WHERE TABLE_SCHEMA=DATABASE()",
+            table_options,
+        ),
+        (
+            "column_options",
+            "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME "
+            "FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+            column_options,
+        ),
+        (
+            "index_options",
+            "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,"
+            "SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS "
+            "WHERE TABLE_SCHEMA=DATABASE()",
+            index_options,
+        ),
+        (
+            "check_enforcement",
+            "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS "
+            "WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'",
+            check_enforcement,
+        ),
+    )
+    defects = []
+    with engine.connect() as connection:
+        for label, query, expected in queries:
+            width = len(next(iter(expected)))
+            rows = connection.exec_driver_sql(query)
+            actual = {tuple(row[:width]): tuple(row[width:]) for row in rows}
+            defects.extend(
+                f"{'.'.join(map(str, key))}:{label}"
+                for key, value in expected.items()
+                if actual.get(key) != value
+            )
+    return defects
+
+
 def check_schema(engine) -> dict:
     inspector, defects = inspect(engine), []
     actual_tables = set(inspector.get_table_names())
@@ -219,6 +292,7 @@ def check_schema(engine) -> dict:
             x["name"]: _check_signature(x["sqltext"]) for x in inspector.get_check_constraints(name)
         } != checks:
             defects.append(f"{name}:check_definition")
+    defects.extend(_catalog_defects(engine))
     return {
         "tables": len(TABLES),
         "columns": sum(len(t.c) for t in TABLES.values()),
