@@ -1,0 +1,6 @@
+# TEMPLATE ONLY: fill every public placeholder from the new actual run; no old nonce/grant.
+python3 /root/t44-r9/scope-bridge-v2-01/bridge_cli.py deliver \
+  --manifest-sha256 f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b \
+  --reservation '<ACTUAL_PREPARE_FOLDER>/reservation.PUBLIC.json' \
+  --app-result '<COPIED_APP_RESULT_PUBLIC_PATH>' \
+  --app-result-sha256 '<ACTUAL_APP_RESULT_SHA256>'

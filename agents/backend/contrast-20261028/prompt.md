@@ -39,3 +39,17 @@ root07:51要求：旧07:30已过，旧P16gen02 init未UI、P16-01无cohort，后
 root09:44要求仅新F T15/真实S3-T16公开接口，别混旧DB/CA/截止，不部署旧provider；先精确S1 CLI后新F实际材料。最初本岗误把fixture名按runbook写v3，根核实际01未采用，这是实际AI错误，不写成人工修复。
 本岗按T15新binding/18字段运行证据及T16 nonce/key，保原crypto线格式/原Runtime60和正常authstore INSERT+audit，云前从controller探针发现旧“全表空”假定，先红1→修后17绿，原测试AST保留且不删audit；root执行一次实际发行5/7成功。
 实际scope请求在准入后到来，本岗只有codec、完整callback桥未预装，编码草案迟到。root核会话已结束明确停止，本岗不补封、不发callback、不重跑，草案保DRAFT且不冒实际applied或PASS；旧草案墙钟不足liveness也记录。改进应在SUT前把完整I/O/通用scope/revocation桥及断点链验证好，实际nonce只填参数，而不是在短等待窗才开发。此为真实AI流程改进素材，不充当学生本人研究报告。
+
+
+## ROLE-backend-SCOPE-BRIDGE-V1（root派发，AI岗位执行）
+原任务关键原文：“完成之前未执行scope sealed callback为可复用预装桥（新目录/新SHA），支持从根显式传入实际PUBLIC request+已验launch/supervisor/rootgrant+真实Fbinding，只核精确context/nonce/project scope；在任何provision前全上下文验明，然后原GEN token/start(or rotate for later actualscopes)，确认实际scheduler身份读取同actualtoken，再按原SEALED_SERVICE_SCOPE协议request公钥密封。任何private token/K不进argv/env/stdout，root只搬opaque；明确finite deadline/inflight/no automaticretry。”
+root后续明确跨机LOAD新鲜authority→APP有限供应→LOAD最终重验live/pending；原等待120秒不改。改进后的执行提示把“能编码scope”拆为全链I/O、owner PID映射、原始PUBLIC SHA、原CLI/真实authstore、无secret边界、时钟/nonce/quarantine、opaque及有限deadline；先提交设计，再fake-clock/no-network和原CLI+SQLite/RSA实测。v1 alpha真实截获重复参数和timeout竞态，封包又暴露本岗手填hash错误，改为原AST常量抽取；保红例而不冒已运行云。
+
+## ROLE-backend-SCOPE-BRIDGE-V2-MUTEX（AI自动迭代）
+root原契约：“backend 每个直接 SQL 步骤各自持锁，调用 GEN 前先释放，由 GEN 自取同锁；observer 独立锁计1。”
+先3a7dc84e设计、v1完整封存另v2，留两SQL缺锁红例后真实本机flock衔接；按部署模块SHA305f只读集成，双pin核字节后载入，等待上限取剩余窗，不跨GEN嵌套。首次联跑漏PYTHONPATH与自测错误名预期分别真实失败，修的是执行设置和测试契约名，原34用例/50assert逐字保持。再真实umask077红1→显式PUBLIC控制目录755，安装显式模式；固定每phase state以保nonce/quarantine。最终56绿，Linux双机/MySQL/SUT未跑，根review pending。记录为AI岗位行为，不能当学生本人手写研究报告。
+
+
+## ROLE-backend-SCOPE-BRIDGE-V3-BUDGET（审核反馈驱动，AI岗位修复）
+root原要求：“两个必须修复：1 generation argv 必须传 --budget-receipt PATH --budget-receipt-sha256 FULL64，新GEN的scheduler-token/rotate/start要求；2 _data(preflight/seal)当前只持operation_lock，锁内须先budget.admit绑定实际receipt/同MySQL真实身份与容量，再跑直接SQL。receipt path+SHA必须作为显式PUBLIC configuration/authority固定并验证，不能推384默认、不能借GEN拒绝前先SQL；GEN仍自己持共享锁，父不嵌套。”
+本岗先读部署25d v4/STEPS和确切305f helper，设计e95，再在原v2字节留5红封e5b；实现唯一实际预算回执完整绑定、GEN透传、同锁原admit后SQL，限定原query等待为剩余窗。新用例用原admit/measure/numeric parser及flock而只stub元数据/query transport，当前128/123围绕真实F4预算124验证无384默认。原56只补中性fixture/专测stub，95assert AST原序保持；最终74绿。仍未实际Linux/MySQL/云/SUT，不把自测写成审核已关闭。原失败不覆盖，不AI冒学生本人经历。
