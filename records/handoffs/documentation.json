@@ -1,11 +1,12 @@
 {
-  "stage": "Round9 official CI evidence complete",
-  "implementation_status": "two push-run pairs sealed and parsed; CI/Docker bounded evidence only",
-  "actor": "AI /root/ci_evidence_round9",
-  "base_sha": "f4bd382d4668130793fc553df9ce6363c4656ea6",
-  "updated_at": "2026-10-25T15:03:46.698536+00:00",
+  "stage": "Resume CI evidence phase1; corrected run pending",
+  "implementation_status": "Original old-source CI/Docker artifacts and application equality sealed; no product execution",
+  "actor": "AI /root/ci_evidence_resume_20261028",
+  "base_sha": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
+  "updated_at": "2026-10-28",
   "prompt_refs": [
-    "ROLE-documentation-CI-ROUND9-20261025-v1"
+    "ROLE-documentation-CI-ROUND9-20261025-v1",
+    "ROLE-documentation-RESUME-CI-20261028-v1"
   ],
   "artifacts": [
     "reports/final/round9-ci-evidence.md",
@@ -17,12 +18,19 @@
     "records/ci/40200930957/archive-binding.json",
     "records/ci/40201584671/archive-binding.json",
     "records/ci/40201584699/archive-binding.json",
-    "docs/reports/round9-ci-validation.json"
+    "docs/reports/round9-ci-validation.json",
+    "reports/final/resume-ci-20261028.md",
+    "docs/reports/resume-ci-20261028-analysis.json",
+    "docs/reports/resume-ci-20261028-analyze.py",
+    "docs/reports/resume-ci-20261028-app-equality.json",
+    "docs/reports/resume-ci-20261028-validation.json",
+    "records/ci/40636976337/archive-binding.json",
+    "records/ci/40636980359/archive-binding.json"
   ],
   "interfaces": {
-    "input": "coordinator exact four run IDs and two source SHAs; official GitHub Actions metadata and original bytes",
-    "output": "10 original artifact ZIPs and 4 original run-log ZIPs, metadata/head/job/checkout bindings, actual JUnit and coverage analysis",
-    "pending": "coordinator integration and Issue publication; not performed by this role"
+    "input": "Explicit old/source/run IDs, corrected run and public original artifact bytes",
+    "output": "Original ZIPs, exact head/checkouts, actual JUnit and separated coverage metrics; byte equality does not relabel source",
+    "pending": "Complete corrected product run and final original ZIP archive; root integration"
   },
   "unverified": [
     "independent acceptance",
@@ -785,7 +793,17 @@
     }
   },
   "phase1_commit": "14be82a3",
-  "results": {
+  "scope_limits": [
+    "development CI/Docker only; not independent or cloud performance",
+    "old a12 product remains FAILURE",
+    "new 8c is a distinct full commit despite 83 identical application files",
+    "official run-log ZIP API exposes no official digest",
+    "No new source-size or billing measurements",
+    "student handwritten research and human identities untouched"
+  ],
+  "validation": "docs/reports/round9-ci-validation.json: evidence/link/JSON/scope and authored-doc/script diff checks passed; full diff check exit2 on 19 original raw-log whitespace lines retained unchanged; not product tests",
+  "phase2_commit": "fccf5c82",
+  "history_round9_results": {
     "a162_product": "overall cancelled; static E731 failure; coverage cancelled without full-suite JUnit; contracts/frontend success",
     "a162_docker": "success",
     "f4bd_product": "success: four jobs",
@@ -820,14 +838,35 @@
       40201588604
     ]
   },
-  "scope_limits": [
-    "CI/Docker are not independent acceptance or formal performance",
-    "source physical5862 exceeds5100 by762 per coordinator, not recounted",
-    "final billing not verified",
-    "metadata is official API representation, not HTTP transport original bytes",
-    "official run-log API exposes no server digest",
-    "all classroom attachments, student research prose and human identity/signatures untouched"
-  ],
-  "validation": "docs/reports/round9-ci-validation.json: evidence/link/JSON/scope and authored-doc/script diff checks passed; full diff check exit2 on 19 original raw-log whitespace lines retained unchanged; not product tests",
-  "phase2_commit": "fccf5c82"
+  "results": {
+    "product_run": 40636976337,
+    "product_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "product_conclusion": "failure",
+    "failure": "static E731; three other jobs success",
+    "backend": {
+      "tests": 714,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "covered_lines": 2508,
+      "total_lines": 2790,
+      "covered_branches": 709,
+      "total_branches": 852
+    },
+    "frontend": {
+      "tests": 89,
+      "passed": 89,
+      "covered_lines": 364,
+      "total_lines": 390
+    },
+    "docker_run": 40636980359,
+    "docker_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "docker_conclusion": "success",
+    "artifact_original_ZIPs": 5,
+    "run_log_original_ZIPs": 2,
+    "corrected_product_run": 40637880409,
+    "corrected_source": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
+    "corrected_run_archived": false,
+    "identical_tracked_backend_frontend_files": 83
+  }
 }
