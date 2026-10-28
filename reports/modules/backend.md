@@ -1,3 +1,9 @@
+## 2026-10-28 七worker汇总后续
+
+已核根公开935汇总66110B/d554caf6及逐值projection：7终态有效，总11284、指定cohort9280。400组每操作2000，观测显著池等待及handler前延迟，schema<2ms；validate池获取1次，其余3路径2次。不能证明7池同时满、DB锁或整机CPU根因，也不能合并P95/跨源沿用。
+
+root认可先同一新源7/16 worker配置对照，默认池与完整产品门禁不变，不增加Settings接口。设计及限制见[对照设计](../../agents/backend/resume-20261028/worker-contrast-design.md)、[汇总分析](../../agents/backend/resume-20261028/observer-analysis.md)。本岗只做离线资料/元数据验证，没有产品修改或新运行。
+
 # 2026-10-28 后端恢复分析当前状态
 
 实际后端AI从22f666e2建立独立worktree，先核旧性能与淘汰探针。65应用文件对既有计数提交c7dd、产品f4bd、当前基线及本worktree逐字相同；已有固定计数app5862/超762、本岗scope1993，没有新cloc。六操作委托方案预算约15行低于20停损线，未实施；旧cache/ref/wire无充分收益证据，不重复。没有可信400行候选，不改产品或降低门禁。
