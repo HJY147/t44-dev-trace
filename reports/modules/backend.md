@@ -375,3 +375,5 @@ P7精确PUBLIC已核hash：400客户端8000完成/零HTTP与客户端错误，�
 新增tmp/788/resource_window.py（9560B/SHAf1df8069…）为供协调部署的只读工具：显式raw路径/精确SHA/UTC头尾，固定FD+O_NOFOLLOW+fstat，64MiB输入/32KiB输出；每role CPU p50/p95/max、RSS与cgroup独立max及缺失/错误/首尾/间隔，未知sequence/null不补0。采样器44079B/SHA3d9f…静态核实，CPU为单核100%口径、RSS共享页可重复；scheduler保留null。4手算CLI方法绿、Ruff0.17.2检查/格式绿，原失败摘录保留。
 
 本岗没有运行真实服务器raw、云UI、负载、MySQL、整套CI或独立验收，根因NOT_PROVEN。完整输入输出/命令/限制与prompt见agents/backend/resource-window-20261028/report.md、verification.json、prompt.md。P16公共结果待协调发布，需其将实际输出与精确raw SHA及窗口绑定。
+
+后续root实际LOAD聚合PUBLIC8491B/SHA94e7b031…已精确核窗口/raw绑定：各role22样本、21knownpair/0内部缺口/0采样错；API CPU P95/最大1016.408952/1208.942075%，MySQL153.853657/159.899578%，scheduler三指标全null。数据和统计限制追加于本岗report；只读公开输出核实，未在本岗独立重算raw，因果和正式验收仍未证明。
