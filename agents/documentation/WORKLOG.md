@@ -470,3 +470,14 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 首次资料校验71项70通过1失败：T29汇总身份句误定位第3段，实际第2段、第3段为空；按原OOXML更正报告和清单，首次失败JSON另存validation-first-failure。这个资料定位错误不作产品失败，也不隐藏原失败。
 
 - 更正后重新核原件/派生源hash、DOCX提取、原短句定位、原manifest、历史正文/交接保留、相对链接/范围及diff，共73项全通过；仅从AST隔离执行纯路径分类函数10例，没有调用source_count.main或导入产品。首次71项的70pass/1fail原件保留。准备只提交本岗8个文件并push该独立分支，远端精确HEAD在回报中交root，不操作主干或发Issue。
+
+
+## 2026-10-28 组件 Call 候选 f7：开发CI原件
+
+- AI /root/documentation_ci_f7_20261028；实际prompt ROLE-documentation-CI-F7-20261028-v1。按总协调明确派工先读AGENTS，独立worktree/codex分支从准确f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f建立，不操作根或其它岗索引。旧TASK的初始化派工不重复唤醒；本轮只收两次具名成功run原件，未联系独立测试岗。
+- GitHub连接器取5artifact/jobs；系统curl保TLS下载原ZIP。gh只读保存run REST、wrapper缺失的REST total_count与原run-log ZIP。5artifact470871B核官方size/SHA，2runlog165268B只有本地SHA，7ZIP CRC/duplicate/path/symlink均核。REST集合为product4artifact/4job、Docker1artifact/4job，其中Docker只有1实际job、3skip；五个实际checkout的git log -1完整输出均为f7。
+- 首批frontend Promise rejected，JS错误对象被序列化为{}，未保住精确错误详情；只记已知失败事实、不臆测原因，随后只重下该缺件并核成功。首次读取worktree/TASK目录输出较宽而截断，之后改具名文件和短键；没有读取独立私件或root runtime/resume目录其他内容；仅使用派工要求的既有固定cloc执行静态计量。临时下载URL不写入仓库。
+- 原JUnit796唯一全部通过、0失败/错/跳过；行2509/2780=90.25180%、分支721/856=84.22897%、混合88.83388%另列、excluded0。标记183/102/19唯一union245属796，不加总。FE89唯一通过，行364/390；static五命令0、Bandit errors/results空；Docker准确f7实际4worker、19表隔离恢复一致，预期第二scanner flock exit1保留。
+- 只读分析脚本初版通过后，为完整性新增REST total_count及checkout命令后一行精确SHA核验，再运行加强版通过；没有改原件。固定source_count/cloc2.10在尚无本岗提交的准确f7实际执行5898、上限5100/超798、--require-range exit1，脚本/分类/门槛不变。
+- 报告reports/final/component-candidate-ci-f7-20261028.md；原件records/ci/40692462131及40692462380、机器分析及可复算脚本齐。该记录由AI写，不是学生研究正文或亲自debug经历。没有运行产品/测试/HTTP/数据库/云/浏览器/CI，没有读783/792私件，不处理另一个source-only run40694626672。
+- 本岗结果仅开发CI证据。规模、真实连接预算、独立验收、正式400/600秒、连续资源、最终账单及本人手写研究均未关闭。暂存原ZIP需具名force-add并从Git暂存blob逐件再核，完成后本岗自行commit/push准确回报。
