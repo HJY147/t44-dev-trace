@@ -615,3 +615,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 按总协调后续指令先提交分析交空闲槽，等实际七worker云汇总后再针对性修复；原性能/规模出口仍未通过。全部为AI操作，不替写学生经历。
 
 - 分析stage53bfd00c实际push；GitHub插件发布Issue3评论6461141955并按确切ID全文读回一致。首次本地发布回执的diff-check因补丁多加EOF空行exit2，去额外分隔空行后再检查；远端正文及原始API结果未修改。
+
+
+## 2026-10-28 七worker真实汇总后的最小对照设计
+- root发布74bf7276的旧935汇总66110B/d554caf6，获准只读两公开文件。先核SHA，再由b5f31ba6只读工具实际验证7终态、11284总量、4cohort9280与外部2004、逐路径样本/状态及projection逐值一致；不读runtime或独立私有资料。
+- 400组池获取墙时P95约571–749ms、单池峰15，handler前P95约646–1002ms，schema<2ms；支持先看资源排队，不证明DB锁/CPU/磁盘根因。纠正validate专用路径每请求只1次池获取，其他三路径2次；不相加分位/父子inclusive、不把应用线程CPU叫MySQL CPU。
+- 本岗提出7/16 worker同源对照，随后与root明确先不加Settings配置面；原入口/全部鉴权/UoW/校验/审计、默认池5+10/10s不变。两臂用同新源/镜像、同等预热及独立等分布夹具顺序跑；API105→240理论连接预算须扣后台/管理，384-240不等于可全用144。
+- 设计先提交faf6683d，报告observer-analysis.md含proof limits和未运行试验；没有产品补丁、新cloc、产品/云/MySQL/CI/独立执行。源935旧五循环结果不能搬到新DB修复源。
+- 一次手工cohort别名c20读取KeyError后按实际clients20更正。新工具初Ruff过、format因一行需换行exit1，提交执行源b5原件保留；仅格式化且完整AST等价，最终Ruff/format过，未覆盖原JSON或重跑负载。

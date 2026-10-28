@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "backend-resume-analysis-20261028-no-product-change",
+  "stage": "backend-source935-observer-analysis-worker-contrast-pending",
   "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
   "artifacts": [
     {
@@ -2449,5 +2449,32 @@
     },
     "next": "coordinator retrieves source935 seven-worker summary; select a measured bottleneck before product rewrite",
     "student_authored_research": false
+  },
+  "observer_analysis_20261028": {
+    "operator": "backend AI",
+    "summary_publication_commit": "74bf72765c9a5f55e0fc82edd930682495584b9f",
+    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "summary_bytes": 66110,
+    "summary_sha256": "d554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053",
+    "analysis_execution_commit": "b5f31ba631ad2dd71221a64e1372f5d5d4d97dfe",
+    "seven_final_valid": true,
+    "total_observed_requests": 11284,
+    "selected_cohort_requests": 9280,
+    "outside_selected_cohorts": 2004,
+    "c400_per_operation": 2000,
+    "pool_get_calls_per_request": {
+      "getTask": 2,
+      "validateContractPayload": 1,
+      "transitionTask": 2,
+      "createEscalation": 2
+    },
+    "report": "agents/backend/resume-20261028/observer-analysis.md",
+    "design": "agents/backend/resume-20261028/worker-contrast-design.md",
+    "next": "root same-new-source 7/16 worker contrast, original entry/default pool/full business guards",
+    "settings_configuration_patch_added": false,
+    "production_changes": 0,
+    "product_tests_cloud_mysql_ci_run": false,
+    "new_source_performance_proven": false,
+    "formal_acceptance": false
   }
 }

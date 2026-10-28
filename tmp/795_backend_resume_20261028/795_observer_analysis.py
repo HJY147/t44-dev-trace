@@ -74,7 +74,10 @@ def analyze(raw, projection):
         "cohorts": result,
         "formal_acceptance": False,
         "new_product_test_or_load_run": False,
-        "limits": [summary["scope"], "No per-worker cohort saturation or external request-ID join."],
+        "limits": [
+            summary["scope"],
+            "No per-worker cohort saturation or external request-ID join.",
+        ],
     }
 
 
