@@ -4,6 +4,8 @@ import os
 import signal
 import subprocess
 import sys
+import types
+from contextlib import contextmanager
 from pathlib import Path
 
 from bridge_common import Refused, canonical, parse, read, require, reserve, sha, utc
@@ -64,6 +66,25 @@ class DockerBackend:
         self.bundle_sha, self.clock = bridge_manifest_sha256, clock
         self.runner = runner or Runner()
 
+    @contextmanager
+    def phase_operation_lock(self, deadline):
+        path = self.phase / "mysql-budget.py"
+        raw = read(path, self.binding["file_hashes"]["mysql-budget.py"])
+        module = types.ModuleType("t44_scope_mysql_budget_" + sha(raw))
+        sys.modules[module.__name__] = module
+        try:
+            # Execute the exact hashed bytes, avoiding a second loader read of a changed path.
+            exec(compile(raw, str(path), "exec"), module.__dict__)  # noqa: S102
+            with module.operation_lock(
+                self.phase,
+                self.authority["documents"]["binding"]["sha256"],
+                timeout_seconds=min(10, deadline.remaining()),
+            ):
+                deadline.remaining()
+                yield
+        finally:
+            sys.modules.pop(module.__name__, None)
+
     def check_binding(self, facts, authority):
         phase = self.phase
         require(
@@ -77,6 +98,11 @@ class DockerBackend:
         for name, item in manifest["files"].items():
             read(self.bridge_dir / name, item["sha256"])
         binding = facts["binding"]
+        require(
+            binding["file_hashes"]["mysql-budget.py"]
+            == manifest["phase_dependencies"]["mysql-budget.py"]["sha256"],
+            "APP_PHASE_MUTEX_DEPENDENCY_VERSION",
+        )
         for name in ("controller.py", "factory.py", "compose.json"):
             read(phase / name, binding["file_hashes"][name])
         composition = parse(read(phase / "compose.json"))
@@ -292,8 +318,12 @@ class DockerBackend:
             "--output",
             "/diag-output/result.PUBLIC.json",
         ]
-        self.runner.run(argv, deadline, folder / (mode + "-container"))
-        return read(output / "result.PUBLIC.json")
+        # Each SQL container owns this phase mutex independently. GEN above stays outside it.
+        with self.phase_operation_lock(deadline):
+            deadline.remaining()
+            self.runner.run(argv, deadline, folder / (mode + "-container"))
+            deadline.remaining()
+            return read(output / "result.PUBLIC.json")
 
     def preflight(self, facts, authority, folder, deadline):
         result = parse(self._data("preflight", facts, authority, folder, deadline))
