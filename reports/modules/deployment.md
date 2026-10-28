@@ -591,3 +591,11 @@ v4独占新派生器/预算模块/小分段运输，不改旧frozen。显式P池
 root指定f7cdb5fa…和16Z时两完整CI尚在跑；本岗只新目录准备，不宣通过/部署。新profile37ff4910…、GEN6b2da1de…、resource b5dee15b…、helper仍21599B/305f9eae…；真实53文件/source冻结核验，五个派生代码与5d相比只source及SHA链变化，算法原样。新ZIP166582B/51c75eb3…、manifest f04ced96…、archive8f4f6f92…经本地严格receiver通过，官方CI实际ZIP由root另核，不混SHA。
 
 新运输01–05分片后06安装，manifest e0cb6b89…，最大完整encoded+256=15372，6bash-n及实际f7本地重组后六文件逐字相同；目标v4-code-20261028-02/profile。完整先写RUNBOOK.md，保持真实max预算/共享锁/64w5/0及其他角色默认；同seed44/04:00Z anchor沿后端原producer，不替换默认CLI。旧5d和v4工具不改，无云/真实MySQL/独立783私件/SUT，候选LOC和正式270/400/600门禁未改变。
+
+### 同f7另20Z实例与原镜像复用
+
+root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。新20Z profile60660d2a…/GEN9edafbbf…/resource3afd9a03…，与16Z只HARDSTOP/互pin SHA变化，builderd2fc/receiverce064/helper305f逐字相同。build binding无时间字段，因此root已核的官方336/70d/8f4、原df84 buildbinding和actual a7d可原身份复用，新GEN仍完整实际校验，不重建/重贴或挪旧绑定时间。
+
+新03目录六小命令manifest60c234ac…，完整encoded+256最大15372；实际本地回放六文件相同、六bash-n过，原件全保留。新RUNBOOK直接用官方完整值准备新phase和预算后业务；另准备固定commit PUBLIC API外层完整编码证明。没有云/真实预算/业务/52/F结论，无新全CI或独立私件读取。
+
+固定c1303016…PUBLIC API wrapper完整外层已实算raw2567/base643424+256=3680，SHA e60ac8cb…，全部6原件下载并核bytes/SHA后才执行。真实bash-n与3组显式模拟HTTP/捕获bash守卫通过，失败路径0执行；无Token、无可变分支，未将模拟检查冒实际云。六原件及新profile算法不再变，部署岗完成本地交付，root实际安装/预算/业务另记。

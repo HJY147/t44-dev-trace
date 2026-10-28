@@ -1,0 +1,9 @@
+# 同f7新20Z窗口实例设计
+
+root14:21要求同f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f，另2026-10-28T20:00:00Z及远端/root/t44-r9/v4-code-20261028-03/profile；旧5d/f7-16Z原件保留。root明确旧16Z只有代码安装/实际backend build，无GEN prepare/arm/infra/migrate/idle和F/P grant、无业务运行。不得倒改旧窗口或把新时间贴回旧绑定。
+
+只用已审v4三工具和21599B/helper305f，不改算法/P64池5/0/F4默认/真实预算及共享锁。新profile/gen/resource的stop与对应SHA变；source-only builder/receiver应与旧f7完整字节相同。build CLI/binding没有stop字段，故在其source/archive/builder/镜像证明身份全部相同条件下，复用root已核原build与官方source，不能重贴image或把本地包SHA替官方。
+
+root已实核官方source manifest3368534aececbb5441225e7859338aa3079b6e41798e38673bd8f337f8993577、inner ZIP70d09d1f99d8a4fced5b4f8c5a5e9174d8a549cdc305dd8fd2689834fe7ad86b、archive8f4f6f9275b2f7fdb4cdfbf0f94a3a804fc61c84402446028b07127c04e4b050、builderd2fc28b2f0c19b19a81c2ac10c0712767c6182d8b3e2b5e7f2346da62bf2bbf5；原/root/t44-r9/backend-f7-build-01/upgrade-binding.json SHA df84e9b1dbcf8946209ae6ae0ea868d63dc96b60d01c2bae7f3d621e65b311b0、实际image sha256:a7d3dde54efda1405bbd7d9f5f5b7c5a6439f1afd1dc8c50b2ed8b37625fa5da。部署岗不读私有binding原件，仅据这些root完整PUBLIC转述和已审代码静态证明可复用，新GEN运行仍严格实际校验。
+
+验证新时间派生仅HARDSTOP/相应SHA/profile元数据变化；旧目录/三工具不变；新6条完整raw/base64+description界限/bash-n/真实本地重组。另按root授权准备固定PUBLIC commit的GitHub API安装wrapper，完整outer脚本编码界限独立实算；不靠仅内层小于32KiB宣称合格。不重建同源、不重跑完整CI、不读独立私件或783保护票据；未有52/F/SUT结论。
