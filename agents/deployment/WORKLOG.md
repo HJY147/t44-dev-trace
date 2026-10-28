@@ -682,3 +682,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - 纯06proof初f308有原status无source_sha的适配错误，静态阅读实际冻结operate发现后先通知root暂缓，再60fe一行改status action；root确认旧版未执行。3个真实冻结status返回shape/T1518字段/原9786B五动作哈希检查过。新脚本8487B/SHA89693d79…仅status/实际Config.Cmd4和筛TTL/CA/同一actualCID，Env仅服务器内存筛TTL不输出或保存，旧代码/绑定不改，独占新F-neutral-runtime-01。
 - root实际t-hz071e5fxxb8q9s成功，明确授权的最终PUBLIC4340B SHAfe122392…已核并对T15常量/模式/18键、本地compact原neutral hash校验：runtimeproof91f46a88…/neutral9bda817d…、worker4、TTL3600、Running、scheduler absent。只中性元数据，非账号会话、非完整PRIVATE输入、非SUTgrant；root转交backend/独立，本岗不与tester通信。
 - 完成本岗四件留痕并释放槽位，无云UI/信号/账号/产品操作；不猜scheduler项目IDs，等待实际scope后才另领任务。
+
+## 实际项目1 scope与未赶上的密封答复（仅PUBLIC复核）
+
+- root明确允许仅读3811B scope PUBLIC/afc26725…，真实nonce393263e1…、project_ids[1]、iteration_ids[]、scope escalation:write、sourcea12与实际新F API身份一致；本岗仅读原GEN scheduler-token/start的实际CLI，不生成新ID、不读token或独立私包。root随后通知原CLI已执行，立即停止准备重复命令。
+- root另授权12467B scheduler PUBLIC/e74bb93e…和16871B T18 progress PUBLIC/4b841bdd…，均真实核bytes及完整SHA。原token回执10:15:50.382290Z成功（project1来自root实际命令转述，token正文未读）；独立功能容器10:15:51.441769259Z自然退出0/noOOM；scheduler实际StartedAt10:15:51.146862474Z，10:15:57.400893Z启动回执healthy/Running/Restart0。不能把进程退出0或调度器健康写成业务通过，也不由时间接近推定退出根因。
+- root确认sealed reply未赶上且不补发、不rerun；PUBLIC仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE、private_evidence_exported=false，正式结论由独立岗核私证据。本岗没有读取测试用例/私证据，不与测试岗联络。原neutral中scheduler absent是较早观测事实，保留不倒写。
+- root当时正原GEN保卷停F，尚未给实际停止回执，故只记进行中；两VM后续仅停不释放由root执行。本岗0云动作，仅新建选择性PUBLIC顺序回执、更新四件留痕；不重试、不倒填成功、不延10:30窗口。

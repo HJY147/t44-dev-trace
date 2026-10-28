@@ -21,3 +21,5 @@ root随后实际追加优先级：先交只读summary导出器本地回归和che
 实际后发急件：新APP resource-r28p16-02原start再次EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED，已知e5/helper与f762/原23c536失败。只允许该APP及未来LOAD mirror-02，在缺receipt且原失败精确为ready-race时，核binding/helper/plan/unit/argv/UID0/MainPID+cgroup/starttick，最多5秒等待匹配，O_EXCL late/not_original_start_success，再原status，不改冻结/产品或搭大系统。实际新增一个窄helper与5本地守卫/小安装指令，root唯一UI；模拟systemd/proc范围明确，原夹具错误保留，不写云成功。
 
 实际最后任务与转向：root要求P16封尾/保卷stop、新F五动作与T15中性身份；随后root自己完成资源/P16 stop并提交F启动，明确不要等文档/不要重复start，转优先proof-only。本岗先交05启动小脚本但未被执行，后06严格核已成功root原9786B启动与实际status/Config.Cmd/TTL/CA，T15外向schema只读取当次明确授权PUBLIC一件，不能进入其他792/private。旧status误读静态拦截后60fe修正、root确认旧版未执行，root实际新proof成功并授权唯一最终PUBLIC读取；真实worker4/TTL3600/18字段与SHA记录，不冒独立或性能成功，不猜scheduler真实scope。
+
+实际scope后发任务：root批准唯一3811B PUBLIC请求，实际project_ids[1]/escalation:write/nonce393263e1…，先要原GEN最小命令，当前10:15、10:20后禁止新动作。本岗只核批准PUBLIC与原CLI；随即root通知已亲自执行token/start，要求停止重复命令，另准读12467B scheduler和16871B T18 progress PUBLIC。按真实token10:15:50/独立exit0于10:15:51/scheduler健康回执10:15:57的次序记录，密封reply未赶上、不补发、不rerun，不倒填PASS，不由公开时序猜私有原因；root保卷停F及仅停VM待其完成回执。AI只更新选择性PUBLIC与四件留痕，没有云动作/私包读取/测试岗交流，不记学生亲历。

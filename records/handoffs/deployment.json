@@ -2566,6 +2566,31 @@
       "deployment_cloud_actions": 0,
       "read_scope": "only root explicitly permitted T15 PUBLIC schema and enumerated PUBLIC runtime files, no other792/private",
       "next": "release deployment slot; scheduler scope followup only after real requested project IDs"
+    },
+    "actual_scope1_functional_close": {
+      "selected_PUBLIC_receipt": "agents/deployment/resume-20261028/finalize-functional/root-actual-scheduler-scope1-receipt.PUBLIC.json",
+      "request_project_ids": [
+        1
+      ],
+      "scope": [
+        "escalation:write"
+      ],
+      "root_scheduler_receipt_sha256": "e74bb93e748ce06a75ffaa85ddf3f0c5f9fa04772164830705cfe555ae4662e3",
+      "root_functional_progress_sha256": "4b841bdde939cc91a58d563624804b75abccd43e7620ed1ff2c81bd654131ce9",
+      "scheduler_token_utc": "2026-10-28T10:15:50.382290Z",
+      "functional_container_finished_utc": "2026-10-28T10:15:51.441769259Z",
+      "functional_container_exit": 0,
+      "scheduler_started_at": "2026-10-28T10:15:51.146862474Z",
+      "scheduler_healthy_receipt_utc": "2026-10-28T10:15:57.400893Z",
+      "scheduler_running_restart0": true,
+      "sealed_reply_not_delivered_before_exit_root_relay": true,
+      "no_backfill_no_rerun": true,
+      "business_verdict": "NOT_PROVEN_PENDING_PRIVATE_EVIDENCE",
+      "F_stop_preserve_volumes": "root in progress; actual final receipt not yet received",
+      "VM_lifecycle": "root to stop only; no release",
+      "deployment_cloud_actions": 0,
+      "private_reads": 0,
+      "next": "release slot; wait root actual owned stop and independent published verdict; no duplicate commands"
     }
   }
 }

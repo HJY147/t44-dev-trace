@@ -549,3 +549,9 @@ root在09:56:36新F五动作全成功，原9786B启动PUBLIC1297a015…严格CA/
 root实际执行修正proof t-hz071e5fxxb8q9s成功，唯一准读4340B PUBLIC/fe122392…已核：T15 sut_identity精确18字段，worker实际配置4、HTTP主TTL3600、lifecycle running、scheduler absent；runtimeproof91f46a88…、neutral9bda817d…与原始紧凑JSON hash闭环。只含中性实际身份/公共CA，不含账号/session/provider/grant，不是完整PRIVATE输入或SUT准入；backend/独立由root转交，本岗未联系测试岗。
 
 新schema读取限root明确批准f8fe6a…PUBLIC及具体root PUBLIC单文件，未读其他792/private。没有猜项目ID或启scheduler、没有云UI/服务动作。后续实际scope到达再由root派工，当前释放部署槽位。
+
+### 实际scope到达、调度器启动与独立功能进程结束
+
+root实际收到项目1/escalation:write中性请求后，原GEN于10:15:50.382290Z签发服务凭据（本岗未读正文）。scheduler实际StartedAt10:15:51.146862474Z，健康启动回执10:15:57.400893Z；独立功能容器已于10:15:51.441769259Z自然退出0/noOOM。三份明确授权PUBLIC的bytes/完整SHA均已本地核实，顺序选择性保存于root-actual-scheduler-scope1-receipt.PUBLIC.json，不由时序推断失败原因。
+
+root确认密封答复未赶上，本轮不补发、不重跑；PUBLIC结论仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE。进程exit0、SUT准入及调度器健康分别记录，不能代表功能或性能通过。较早neutral记录scheduler absent的事实不回写。root正保卷停F、VM仅停止不释放，实际完成待其回执；部署岗仅读指定PUBLIC、未执行云操作或读独立私证据，完成记录后释放槽位。
