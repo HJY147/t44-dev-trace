@@ -435,3 +435,22 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-25T15:04:17.549391+00:00 封档验证：本岗解析器通过；10个本地报告链接存在；新增JSON可解析；预期695计数及10/4ZIP、354成员总量匹配；git diff --check通过；新增报告无签名URL/token模式。此为资料核验，非产品测试。随后本人commit/push完整阶段，未发GitHub评论。
 
 - 2026-10-25T15:04:44.540026+00:00 完整阶段fccf5c82已commit/push。首次暂存全量原日志后git diff --cached --check exit2：仅两份副PR原始job日志19行尾空白，保持原bytes；前述通过限于此前已跟踪的作者文档，不能表述全量diff通过。本次明确更正validation与handoff；作者文档/脚本的f4bd..HEAD diff-check通过，原件不剪空白或改写。55暂存路径责任范围检查通过。
+
+
+## 2026-10-28 恢复CI原件阶段1
+
+- 总协调明确派发开发CI证据汇总；独立codex/ci-evidence-resume-20261028从8c98eb13建worktree，先提交设计291eb5e0，不触碰根索引。只公开Actions原件/具名公开staticZIP，没有读private/runtime或独立用例，不与测试岗通信。
+- 官方connector收run artifacts/jobs；gh只读保存run REST与官方原run-log ZIP，connector下载后系统curl跟随官方复用file引用，链接未写入仓库。5artifact/471981B的大小与官方SHA均核同；2runlog/166021B仅本地SHA，未伪称服务端digest。七ZIP CRC/duplicate/path/symlink均核，原件字节不改。所有5个已执行job的checkout SHA从原日志核a12。
+- a12 product40636976337实际FAIL（static E731），其余3jobSUCCESS；backend714唯一JUnit/0failure/error/skip，行2508/2790、分支709/852与混合88.33059分列。标记183/102/19的唯一union245均属全套，未累计。FE89唯一断言绿、行364/390。Docker40636980359同a12实际SUCCESS、4workers、2项目40任务、19表停写备份恢复一致，预期第二flock退出1保留，不替云性能。
+- 后发root给40637880409/8c；已读Git83件backend/frontend路径/mode/blob/bytes/SHA逐字证明同a12，但不说两个提交相同、不重贴旧镜像、不造a12全绿。新run尚在运行，旧a12失败完整保留；sourcepackage40637080936的工作流head569baa与实际source参数a12分列，不重复下大包。
+- 本岗只读ZIP分析脚本实跑、JSON/AST及报告相对链接校核通过，不是产品/测试执行。未触发、重跑、取消CI、云、浏览器、SQL或Word动作；学生研究正文/人工经历未代写。原工具输出曾因读取历史handoff超预算截断，改定向字段，不猜未显示项；这是资料读取，不算产品失败。
+
+- 原件入Git自查修正：阶段1的目录git add因仓库ZIP忽略规则只提交元数据，71e78a90不能称远端七原件齐；本岗随后对仅七个明确公开ZIP逐一git add -f，逐个git show暂存blob重算SHA并核既有清单，原字节未变。该遗漏及修正如实记录，不以初次push成功替代原件归档核验。
+
+
+## 2026-10-28 修正CI最终原件
+
+- 40637880409/8c实际四jobSUCCESS后才收最后coverage和原runlog；4artifact441181B逐一官方size/SHA及ZIP保护核，同期3件部分artifact/元数据原件单列phase1，未用pending冒成功。新runlog150770B/69成员只有本地SHA。新4job原checkout全8c，REST counts与connector集合均核，无PR merge-ref。
+- 从新原件重新解析714/0fail/error/skip、行2508/2790、分支709/852、混合88.33059，FE89/行364/390、标记union245；与旧数字相同是两次独立原件计算，不由83应用字节相同代替新执行。新static五命令exit0、23单元、Bandit无错误/发现；没有另跑或伪称8c Docker，云镜像/源包实际source仍a12。
+- 原9artifact913162B、3runlog316791B共12ZIP保存；全SHA/大小、CRC/路径/重复/链接、JSON/AST、报告链接与scope检查完成。仅具名公开ZIP force-add并从暂存Git blob复核后才称远端原件齐，首次忽略规则遗漏保留。
+- 新产品/测试/云/CI触发/重跑/取消仍0。报告和handoff已按实际最终状态更新；旧pending阶段与a12失败在历史提交/phase1原件保留，未改原始附件或学生正文。
