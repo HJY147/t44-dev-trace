@@ -25,6 +25,12 @@ class Tasks:
             row["state"] == State.BLOCKED and row["blocked_from_state"] == State.PENDING
         )
 
+    def _editable_task(self, g, c, code):
+        c.manager()
+        row = c.task(g)
+        require(self.prestart(row), code, current_state=row["state"])
+        return row
+
     def dependency_model(self, g, row):
         predecessor = g.get("tasks", row["depends_on_task_id"])
         return model("Dependency", row, satisfied=predecessor["state"] == State.DELIVERED)
@@ -112,9 +118,7 @@ class Tasks:
         return {"task": task_model(changed)}
 
     def changeTaskAssignment(self, g, c):
-        c.manager()
-        row = c.task(g)
-        require(self.prestart(row), "ASSIGNMENT_EDIT_LOCKED", current_state=row["state"])
+        row = self._editable_task(g, c, "ASSIGNMENT_EDIT_LOCKED")
         self.owner(g, c, c.body["owner_id"])
         c.check_version(row)
         self.capacity_owner(g, c, c.body["owner_id"], row["iteration_id"])
@@ -122,9 +126,7 @@ class Tasks:
         return {"task": task_model(changed)}
 
     def addTaskDependency(self, g, c):
-        c.manager()
-        row = c.task(g)
-        require(self.prestart(row), "DEPENDENCY_EDIT_LOCKED", current_state=row["state"])
+        row = self._editable_task(g, c, "DEPENDENCY_EDIT_LOCKED")
         predecessor = c.body["depends_on_task_id"]
         existing = g.rows(
             "task_dependencies", {"task_id": row["id"], "depends_on_task_id": predecessor}
@@ -141,9 +143,7 @@ class Tasks:
         return {"task": task_model(changed), "dependency": self.dependency_model(g, edge)}
 
     def removeTaskDependency(self, g, c):
-        c.manager()
-        row = c.task(g)
-        require(self.prestart(row), "DEPENDENCY_EDIT_LOCKED", current_state=row["state"])
+        row = self._editable_task(g, c, "DEPENDENCY_EDIT_LOCKED")
         edge = g.get("task_dependencies", c.path["dependency_id"])
         require(
             edge and edge["task_id"] == row["id"] and edge["project_id"] == c.project_id,

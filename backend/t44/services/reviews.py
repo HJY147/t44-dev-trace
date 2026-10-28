@@ -14,6 +14,14 @@ TEMPLATE_HASH = hashlib.sha256(_TEMPLATE_BYTES).digest()
 
 
 class Reviews:
+    def _assessment_versions(self, g, task_id):
+        return g.rows(
+            "release_assessments",
+            {"task_id": task_id},
+            order_by=("-rollback_plan_version",),
+            limit=1,
+        )
+
     def getReviewTemplate(self, g, c):
         require(
             c.query.get("version", TEMPLATE["version"]) == TEMPLATE["version"], "RESOURCE_NOT_FOUND"
@@ -72,12 +80,7 @@ class Reviews:
             g, {"user_id": c.body["rollback_plan"]["responsible_user_id"], "active": 1}, limit=1
         )
         require(responsible, "RESOURCE_NOT_FOUND")
-        last = g.rows(
-            "release_assessments",
-            {"task_id": row["id"]},
-            order_by=("-rollback_plan_version",),
-            limit=1,
-        )
+        last = self._assessment_versions(g, row["id"])
         assessment = c.create(
             g,
             "release_assessments",
@@ -112,12 +115,7 @@ class Reviews:
             "STATE_CONFLICT",
             current_state=row["state"],
         )
-        latest = g.rows(
-            "release_assessments",
-            {"task_id": row["id"]},
-            order_by=("-rollback_plan_version",),
-            limit=1,
-        )[0]
+        latest = self._assessment_versions(g, row["id"])[0]
         require(
             assessment["id"] == latest["id"]
             and assessment["schedule_version"] == row["schedule_version"]
