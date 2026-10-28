@@ -599,3 +599,11 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 新03目录六小命令manifest60c234ac…，完整encoded+256最大15372；实际本地回放六文件相同、六bash-n过，原件全保留。新RUNBOOK直接用官方完整值准备新phase和预算后业务；另准备固定commit PUBLIC API外层完整编码证明。没有云/真实预算/业务/52/F结论，无新全CI或独立私件读取。
 
 固定c1303016…PUBLIC API wrapper完整外层已实算raw2567/base643424+256=3680，SHA e60ac8cb…，全部6原件下载并核bytes/SHA后才执行。真实bash-n与3组显式模拟HTTP/捕获bash守卫通过，失败路径0执行；无Token、无可变分支，未将模拟检查冒实际云。六原件及新profile算法不再变，部署岗完成本地交付，root实际安装/预算/业务另记。
+
+### 单一PUBLIC原件包（不改安装算法）
+
+为两端节省API请求，汇总固定c130/5f679130/77796810的6+4+7原安装片与7原manifest/profile，新增来源清单；包120717B/SHA8002f6fd…、25成员，全部原片逐字相同。两端均装原profile03/bridge-v3-01/P64-ui03三目标，旧02不碰，无测试/私包/账户/session/云raw混入。
+
+真实本地raw和JSON响应各回放17片，仅测试root映射；每次27份运行代码和3manifest/权限核对通过，重复首片拒覆盖及整包/内件/额外文件负例0执行。curl网络/云/服务均未跑。固定包commit后再附2–3KB curl/API wrapper，只一响应，整包及每原件SHA通过后才按原片安装。
+
+最终APP/LOAD小shell1925/1926B，完整outer编码+300=2868，固定包d80ea057…/120717B/8002f6fd…；每端单curl API响应兼容raw/JSON，全部hash先过后原17片。真实本地安装与outer shell显式fake网络检查分别记录，等长SHA篡改0执行；无TLS绕过、云/服务/CI动作。新端口计划22443/18480/22445/18481仅记root选择，实际准入待root回执。

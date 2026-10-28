@@ -1,0 +1,43 @@
+{
+  "kind": "whole-outer-one-curl-API-bundle-wrapper-proof",
+  "bundle_commit": "d80ea0578fb436e6f44743aed7d91e10cba3a512",
+  "bundle_path": "agents/deployment/public-bundle-20261028/public-deployment-bundle.tar.gz",
+  "bundle_sha256": "8002f6fd51e189382798a3d60d62bf11bbd51891c0b70f92425fd2fc11aed94f",
+  "bundle_bytes": 120717,
+  "wrappers": [
+    {
+      "role": "APP",
+      "file": "agents/deployment/public-bundle-20261028/APP-install.PUBLIC.sh",
+      "whole_outer_raw_bytes": 1925,
+      "whole_outer_base64_bytes": 2568,
+      "description_allowance": 300,
+      "whole_outer_base64_plus_description": 2868,
+      "whole_outer_sha256": "ce639cbca02897e136bfeb884438b17aa85e49f980170b12f5ab6b606851c671",
+      "bash_n_exit": 0,
+      "actual_shell_test_with_explicit_fake_curl_and_captured_python": true,
+      "one_API_request_command_per_node": true,
+      "route_fixture": "raw",
+      "embedded_core_byte_identical_to_replayed_core": true,
+      "TLS_bypass": false,
+      "cloud_network_executed": false
+    },
+    {
+      "role": "LOAD",
+      "file": "agents/deployment/public-bundle-20261028/LOAD-install.PUBLIC.sh",
+      "whole_outer_raw_bytes": 1926,
+      "whole_outer_base64_bytes": 2568,
+      "description_allowance": 300,
+      "whole_outer_base64_plus_description": 2868,
+      "whole_outer_sha256": "0ee9fe57183cf86abbd6f023d0bb3fa5c71c51c066ee943278c3ab3ec601cbec",
+      "bash_n_exit": 0,
+      "actual_shell_test_with_explicit_fake_curl_and_captured_python": true,
+      "one_API_request_command_per_node": true,
+      "route_fixture": "json",
+      "embedded_core_byte_identical_to_replayed_core": true,
+      "TLS_bypass": false,
+      "cloud_network_executed": false
+    }
+  ],
+  "real_original_installation_replay_evidence": "local-replay.PUBLIC.json",
+  "HTTP_network_or_cloud_or_SUT_executed": false
+}
