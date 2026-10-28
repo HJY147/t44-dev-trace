@@ -3326,5 +3326,76 @@
     "student_research_changed": false,
     "messaging_owner_handoff": "exact2d source, command,14 boundaries and sole old-signature failure sent directly; root retains cloud5d",
     "next": "messaging migration, combined exact-SHA review and required regressions/count; no premature cloud deployment"
+  },
+  "scale_next_20261028": {
+    "application_after": 5894,
+    "application_before": 5898,
+    "baseline_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "candidate_review": "PENDING root limited review",
+    "candidate_source": "5cd0ad43d93bb9066e67bda04337815e6f6fa1b1",
+    "cloud_SUT_MySQL_CI_by_role": false,
+    "differential_after": {
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "44",
+      "time": "0.320"
+    },
+    "differential_before": {
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "44",
+      "time": "0.351"
+    },
+    "differential_unique": 44,
+    "excess": 794,
+    "existing_HTTP": {
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "17",
+      "time": "6.488"
+    },
+    "existing_HTTP_deselected": 106,
+    "existing_test_assertions_unchanged": 187,
+    "existing_test_bytes_unchanged": true,
+    "existing_test_file_sha256": "754739a7f0292856fe902ac51bfdae2a31d4a10ae9fe281007576e05a80c25bf",
+    "local_wrong_guard_order_mutant_discriminated": true,
+    "metric_tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+    "net_reduction": 4,
+    "new_global_framework_or_ignored_logic": false,
+    "operator": "backend AI",
+    "original_behavior_cases": 43,
+    "private_independent_data_read": false,
+    "product_bug_red_demonstrated": false,
+    "product_files": [
+      {
+        "after": 137,
+        "after_sha256": "2ca22132c97574ea123fd679ba6faddf4ec750ca136212cf5cd65ccc0a85aa5b",
+        "before": 140,
+        "before_sha256": "688183095865d119e77dd8a7aa5db965bf1d0ca2ff81ff19e5188225a8234d92",
+        "file": "backend/t44/services/reviews.py",
+        "net_reduction": 3
+      },
+      {
+        "after": 135,
+        "after_sha256": "df9c6e338d74dd57dc6317d99d83aaaccb121bc79662cecdc635ff9d845a4cc1",
+        "before": 136,
+        "before_sha256": "2b47b84e281f022231adf863e116b82aade3e4174968ff2f68fe7ed5ee2638da",
+        "file": "backend/t44/services/tasks.py",
+        "net_reduction": 1
+      }
+    ],
+    "require_range_exit_after": 1,
+    "require_range_exit_before": 1,
+    "root_20Z_tools_and_cloud_f7_modified": false,
+    "within_range": false,
+    "design_commit": "50b527557fc1e653a10b5db2bc6b08b9d3809682",
+    "tools": "tmp/779_backend_scale_next_20261028",
+    "report": "agents/backend/scale-next-20261028/report.md",
+    "design": "agents/backend/scale-next-20261028/design.md",
+    "prompt": "ROLE-backend-SCALE-NEXT-20261028",
+    "integration_or_cloud_source_changed": false
   }
 }

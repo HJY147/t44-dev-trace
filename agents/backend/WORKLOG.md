@@ -739,3 +739,7 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - Ruff绿；format首次仅EOF空行红保留，窄修后3文件绿。common原AST仅unwrap新if/kw后整模块一致，Business除准入删/增节点外整模块一致；Runtime/其它产品/FrozenAPI/DDL不动。
 - HTTP失败trace里1个一次性SQLite token在log/XML各1处脱敏，精确原件0700/0600保存于/tmp/t44-backend-component-call-20261028-raw，双SHA及XML解析记录齐；原失败保留，不冒产品绿。
 - 报告agents/backend/component-call-20261028/report.md及verification/计量/JUnit/命令齐；无完整CI/MySQL/MQ/云/正式性能/独立验收，不读783/792、不改学生研究。后端独立提交不可投云，root待消息联合迁移/审核/全回归。
+
+
+### backend下一批规模重构：实净4，仍未达标
+独立branch codex/backend-scale-next-20261028从精确f7开始，root将拟782更正为预留779，未向782写测试。设计50b52755先冻结；产品5cd0ad43只动Reviews/Tasks内部私有重复查询/编辑前置。43行为场景+1本地错误顺序mutant辨别=44，前后全绿；既有986相关17绿/106未选，原187 assert及字节保留。固定cloc对已提交应用5898→5894净4，仍超794，两次range门禁退出1；原10–15预算高估已回报纠正。新checkout未完提前读文件失败，转Git对象读后等完再写；自测Ruff排序/宽异常比较说明已修，最终限定lint/diff绿。无云/SUT/私件/全CI，冻结777/20Z不动；详scale-next报告与779证据，待root限定review决定是否取此维护性候选。
