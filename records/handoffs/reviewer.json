@@ -3868,6 +3868,40 @@
       "method": "three-way metadata merge preserving original blocker and subsequent scoped re-review, all disjoint history fields and both conflict values",
       "scope": "no product changes",
       "scalar_conflicts": []
+    },
+    {
+      "incoming_commit": "3ed57a94e8154cddb162733b77dd2d9568a2acb3",
+      "method": "three-way metadata, both role histories and disjoint fields preserved; scalar conflicts retained here",
+      "scope": "metadata only; no product conflict accepted",
+      "scalar_conflicts": []
     }
-  ]
+  ],
+  "component_a_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-COMPONENT-A-20261028-v1",
+    "base": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "product": "6977e5b7331e4c6cf64b719b6f161a082558ef25",
+    "upstream_product": "2d947d237328521e46b9766859ca166a4c54f789",
+    "report": "reports/reviews/component-call-a-6977e5b7-20261028.md",
+    "decision": "NO_NEW_LIMITED_BLOCKER_ROOT_INTEGRATION_CANDIDATE",
+    "original_assert_AST_unchanged": 36,
+    "old_test_all_functions_classes_AST_unchanged": true,
+    "own_passed": 47,
+    "integration_deselected": 15,
+    "failures_errors_skips": 0,
+    "existing_warning": 1,
+    "effective_LOC": 5898,
+    "scale_gate_exit": 1,
+    "over_5100": 798,
+    "actual_net_reduction": 37,
+    "full_CI_native_MySQL_cloud_formal_independent_run": false,
+    "independent_private_read_or_tester_contact": false,
+    "product_or_tests_modified": false,
+    "github": {
+      "id": 6469521973,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6469521973",
+      "body_exact_readback": true,
+      "technical_commit": "5e4381983e0f4c0e29576ecd9981a7326b35f09e"
+    }
+  }
 }

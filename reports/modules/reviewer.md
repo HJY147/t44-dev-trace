@@ -506,3 +506,7 @@ AI reviewer；ROLE-reviewer-V4-BRIDGE-20261028-v1。b5926031部署+161b82ee桥�
 ## 2026-10-28 v3预算修复与25d最终包限定复审
 
 AI reviewer；ROLE-reviewer-V4-BRIDGE-RECHECK-20261028-v1。5cedb2ca源码/5f679130完整checkpoint工具字节相同；原P1两接口scope关闭，原95assert AST逐序不降（50+22+23）。本岗真实74局部绿；两次73/1环境fixture失败原log/XML保留，分别缺t44/PYTHONPATH和原product-source路径断言，后用精确5d归档fixture不改断言；首轮外shell0不冒pytest通过。25d profile3b3b/GEN3232/helper305f/六片max15372逐项核，实际本地重放6/6exit0，六文件字节同；本地source ZIP9ebb/166458B，原receiver exit0，53源对5d与47 frozen对935/5d，147Gitmode核。初始raw TAR mode假设错误导致一红（git archive0664由原builder规范化0644），原包/算法不改，失败目标保留后新目录复核。报告reports/reviews/v4-bridge-v3-recheck-20261028.md；可交root受限安装/新环境预检，不准入F/正式性能。无nativeMySQL/HTTP/Linux/systemd/云/独立private/测试联系，未改产品/原报告。临时公开source/test夹具在tmp/781…且不提交重复源码。
+
+## 2026-10-28 组件Call/通知CAS实际A重构限定审核
+
+AI reviewer；ROLE-reviewer-COMPONENT-A-20261028-v1。新隔离6977e5b7对5d产品仅application/common/messaging facade三文件；Call.cas去新kw并展开diff if后AST等旧、check_version全AST同；通知资格/归属/recipient/显式version→惰性values→原CAS/空audit但仍audit/handle不读保真。旧979/806完整函数类AST同、36assert逐序同(25+11)；兼容调用适配仅test tmp/780，生产无壳。真实跑780+782+旧979/806排integration，47绿15未选0fail/error/skip，一现有弃用warning；SQLite/进程内TestClient不冒native。原cloc固定计量6977=5898、exit1仍超798，净37非达标。报告reports/reviews/component-call-a-6977e5b7-20261028.md，条件可整合，根须显式CI收780/782并按新准确SHA全套/native/独立/云；旧5d成绩不重绑。未读独立私件或联络tester/访问云/改产品或断言。定位错读conftest和消息REPORT路径均为读取错误不冒测试失败。
