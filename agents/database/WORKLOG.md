@@ -359,3 +359,5 @@
 - 16worker A5/10与B15/0同APImax240；C20/0及64worker5/0为APImax320+reserve64。下一云须actual query max_connections并核所有角色预算；不默认16×25/0或64×默认5+10。现仅预算设计，未查询/部署。四件/报告/命令/红绿原件在pool-config-20261028，根后独立review/CI。
 
 - 封档git diff --cached --check真实exit2，原因是旧pytest红log/XML原始E行8处尾空格；原字节保留，raw-diff-check.json存完整原诊断。上一&&链因此未提交/推送，未把整包检查写成通过；限定产品/测试源码与说明check单列执行。
+
+- 四件/证据5248784a已push；按根明确授权仅Issue4发表一次交接6467541006，随后按comments/:id精确GET全文一致，github-publication.json保存实际回执。backend再次确认责任边界与38目标只属配置兼容。收尾仅证据，产品/测试仍92cf5c10，不再测试/SQL/HTTP/云。

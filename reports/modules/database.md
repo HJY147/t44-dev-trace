@@ -4,6 +4,8 @@
 
 固定应用5933→5935/净+2，超835，strictLOC未过。未捆绑select(table)候选，原persistence/Rows/鉴权/事务/SQL与测试冻结完整不变。当前只有本地配置；下一云池预算须实际查max_connections及其他角色，未云/未SUT/未HTTP/未性能。完整证据见[本轮报告](../../agents/database/pool-config-20261028/report.md)。
 
+[本轮Issue4交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6467541006)已实际发表并单ID精确GET全文同，回执在本轮github-publication.json。
+
 ## 历史：原生目录审计修复
 
 2026-10-28：先行设计cacd03b1，最终应用源26d6328ab882b06eb9f6026a29656999e122f57d。原schema反射漏判DESC、自增、引擎、表/列排序规则、CHECK执行性及必需索引可见性7项已在全新socket-only MySQL8.4.11真实复现并修复；31原生case（8兼容/23负例）符合原要求，最终53针对目标通过。先前7c94版完整本岗非integration106通过、17未选择，结果不相加。新增4条固定只读catalog查询；DDL/API/冻结/锁与marker协议不改。限定Bandit先因B608失败，改完整字面SQL后绿，不放宽门禁。固定cloc当前5933，较5862净增71，仍超833；这是正确性修复，不宣传减量。
