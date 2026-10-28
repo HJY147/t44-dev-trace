@@ -615,3 +615,12 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 按总协调后续指令先提交分析交空闲槽，等实际七worker云汇总后再针对性修复；原性能/规模出口仍未通过。全部为AI操作，不替写学生经历。
 
 - 分析stage53bfd00c实际push；GitHub插件发布Issue3评论6461141955并按确切ID全文读回一致。首次本地发布回执的diff-check因补丁多加EOF空行exit2，去额外分隔空行后再检查；远端正文及原始API结果未修改。
+
+
+## 2026-10-28 冻结a12后端源码规模再诊断
+
+- 实际操作者后端AI，prompt ROLE-backend-SCALE-RESUME-20261028-v1；独立分支/worktree从a12创建，先行留痕27215e9。本轮仅诊断，产品改动0、真实净减0。
+- 原source_count.py+固定cloc2.10准确a12实际5933/5100、超833、require-range退出1；65应用文件逐字等于a12，产品/冻结OpenAPI/DDL diff空。计量口径未改。
+- 19本岗模块2176行，其中api/domain/services/contracts1993，cli/settings另183；至少4物理行完全相同AST语句0不代表无未来优化空间。较大模块是职责成本，不是删除预算。
+- 初看六操作委托20–35估计在读旧完整15行预算后撤回，向root及时校正；旧OperationPlan+14、wire0、通知分页3不再重做。没有可信大幅净减新候选，不引入反射DSL/隐藏配置或删类型/审计/错误顺序。
+- 本轮无新tmp文件/产品测试/CI/MySQL/云/前端/正式性能/独立验收；DB七新反例源码不变但不冒复测。792私件、其它岗位源码和学生研究正文未触碰。report/verification/source-count/prompt在agents/backend/scale-resume-20261028；阶段push使用[skip ci]，不触发云重测。

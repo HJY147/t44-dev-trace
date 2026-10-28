@@ -372,3 +372,8 @@ Design/internal interface migration, exact hashes/count/JUnit/microbench and lim
 ### V2-SNAPSHOT-ALIAS-01 repair supersedes the current source count
 
 The b54 caller-evidence alias is reproduced by2 failing append/clear cases and repaired by6 counted production lines after the original initializer validations. review_evidence list/tuple membership now becomes an immutable tuple snapshot; only the consumed nonempty fact is frozen. Final172 developer domain +143 unchanged HTTP cases pass; original validation AST/order remains. Current source scope2363→1993/net370 (previous376 remains prior-stage evidence), no fresh performance claim. Seeagents/backend/source-size-20261025/snapshot-alias-fix.md andtmp/811_backend_size/snapshot-alias-validation.json. No fullCI/MySQL/cloud/independent run; exact repair is pushed with[skip ci] for coordinator-requested narrow review before combined CI.
+
+
+## 2026-10-28 冻结a12后端规模诊断
+
+本轮后端AI仅只读检查独立分支codex/backend-scale-resume-20261028的准确a12源码。固定脚本/cloc2.10实际5933/5100、超833，退出1；65应用文件逐字不变，产品/冻结OpenAPI/DDL无diff。19模块共2176行，其中api/domain/services/contracts1993、cli/settings183。未发现值得实施的大幅净减候选，净减0；旧六操作预算15、OperationPlan净增14等不重复引入。保留全部授权/错误次序/锁/CAS/审计与DB安全修复，没有产品测试/CI/MySQL/云/正式性能/独立验收新结论。未读独立私件、不改学生研究正文；报告与命令证据agents/backend/scale-resume-20261028，实际prompt ROLE-backend-SCALE-RESUME-20261028-v1。规模门继续失败。
