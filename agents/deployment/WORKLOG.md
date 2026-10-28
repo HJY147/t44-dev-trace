@@ -653,3 +653,9 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - e17e3897先记录窗口/缺样/保盘设计，再写27动作PUBLIC argv与R28-P7-P16 runbook。用纯派生重建精确源/截止/53文件helper，其fd7d/3d9f和27199/44079 bytes与root完整PUBLIC回传相同；31项检查用真实argparse解析并在任何dispatch前中断，没有云行为。
 - 明确P7当前scheduler absent必须missing/null，首CPU delta null；warmup前采集与offset0镜像、seal后收全wholeSHA/tail再ownedstop。旧两机不重买、旧卷不删；P7先停后P16 infra，完整新namespace/DB/CA/端口和同seed/anchor。每动作标实际余窗，原07:30Z不改，07:20Z后非stop/status SUT动作拒绝；cleanup允许过期后执行。
 - 形成正式7-role/600秒设计边界，未派发/执行，不把790 fresh-create与scheduler改变事件前提的冲突删断言解决。等待root实际7vs16结果。两次资料搜索因zsh不存在glob报错，随后用已观察到的精确路径读PUBLIC资料，不当产品错误。
+
+## 2026-10-28 新functional 08:15窗口的独立本地profile
+
+- root明确新functional专用sourcea12/08:15，原P7/P16诊断07:30不可变；原两VM/100预算由root操控，本岗不云/IAM/购机或删数据。先25172993设计，核r28funcgen01实际12字符合法，新F22443/18480、P22445/18481，P7只prepare、F固定4worker空库/后续原CLI五身份。设计原长11笔误在实际len校验后更正，不影响regex。
+- 通过已审derive真实Git/冻结比较生成新local profile，全53文件/08:15与builder→generation→resource完整SHA链；同源builder仍ebc91不重建镜像。最初derive返回running session而依赖读取提前启动一次FileNotFoundError，保留事实；随后等待同一session真实exit0才运输，无重跑/覆盖profile。
+- 三件PUBLIC运输28111B、独占安装脚本最终31595B，先全SHA/解压上限/字面allowlist/代码解析，再O_EXCL新目录/0600/fsync；不含env/身份/私钥/nonce/session。11项本地guard两次真实通过，Ruff/bash-n绿；只有纯本地安装fixture，没有任何云dispatch。原daaf/四模板/07:30冻结不变，不读792/private，不触碰产品。

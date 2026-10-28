@@ -519,3 +519,8 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 root原双机Running/P7已idle6-role的事实由其转交PUBLIC工作回执；本岗只读指定4份，不读792或private。先e17e3897设计，再写27个精确argv/节点/helperSHA/余窗和P16新namespace端口；31项本地校核通过，实际纯派生helper逐字SHA等于root已执行fd7d/3d9f，真实argparse解析后在dispatch前中止，未运行云动作。PUBLIC回执当时未Git提交，源hash/状态另记，不冒已发表commit。
 
 P7采集保留scheduler missing/null；先APP collector/LOAD offset0 mirror再warmup，seal/收全tail后stop、保卷停P7再P16 infra，避免双臂limits叠加。原07:30Z不延，07:20Z后SUT新操作因600秒门禁拒绝，cleanup不受未来余窗门禁。新P16同源/seed44/anchor04Z，正式7-role/600秒仅另列未执行方案，待root真实7vs16结果；未预填数值、根因或达标。
+
+
+### 新functional专用08:15 profile（未云执行）
+
+root另授权原双机新functional窗口，不改变原诊断07:30。先25172993设计，真实Git/冻结比较派生sourcea12全53文件，runid r28funcgen01合法12字符，独立root/campaign/端口/08:15新helper身份；只F4worker空库五身份，P7只prepare不启。profile/gen/resource三件公共运输28111B，独占安装脚本31595B，全部完整SHA另档。11项本地guard、Ruff/bash-n通过；旧daaf/07:30派生件/绑定不改，新builder仍同a12 ebc91直接只读引用原已核source包/镜像。未读792/private、未云/产品/机器动作，功能测试与真实回执待root。

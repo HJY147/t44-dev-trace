@@ -13,3 +13,5 @@ root随后实际追加优先级：先交只读summary导出器本地回归和che
 实际后发任务：组合CI40636976337因旧app-campaign.py:133 image=lambda触发E731；只做局部def最小语法修复，同闭包/输出，先设计后等价检查和既有CI Ruff，不noqa或扩大排除。原云daaf与旧绑定/四派生模板不可变，新repo SHA另列，不安装到旧云路径。13本地检查与CI同口径Ruff通过；真实首轮夹具错误保留，不写为学生亲改或云失败。
 
 实际后发任务：仅为已Running两机/P7配置编写核验可用P7/P16资源采集与新P16prepare命令和PUBLIC参数；不操云UI、不读792/private、不改产品。依root完整PUBLIC helper/phase/image/seed回执和余窗，不猜未来binding或指标，正式7-role/600秒另标未执行等待7vs16。root随后提供完整fd7d/3d9f/profile/manifest/buildbinding摘要及实际sourcechecked路径，本岗只作工具同字节重建和解析校核。27动作、31检查通过，不冒云执行或学生亲测。
+
+实际后发紧急任务：原诊断07:30保持；仅本地为sourcea12另派生08:15 functional profile，hostroot functional-20261028-01、campaign-r28functional-01、runid r28funcgen01合法性先核、F22443/18480四worker空库五身份、P22445/18481七worker仅prepare。给profile/generation/resource小公共运输与全SHA，root唯一UI，不读792/private，不购机/IAM/删数据。实际11项本地守卫通过及四件留痕，未写成云功能通过。
