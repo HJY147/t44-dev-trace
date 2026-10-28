@@ -1,0 +1,20 @@
+Actual tool-session output excerpts; not reconstructed full console logs.
+
+$ env -u DATABASE_URL -u T44_DATABASE tmp/788/profile/.venv/bin/python tmp/788/profile/diagnose.py --run --output agents/backend/cpu-profile-20261028/baseline-01.json
+StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+{"status": "completed", "http_requests": 135, "output": "agents/backend/cpu-profile-20261028/baseline-01.json"}
+exit_code=0
+
+$ env -u DATABASE_URL -u T44_DATABASE tmp/788/profile/.venv/bin/python tmp/788/profile/query_candidate.py --run --output agents/backend/cpu-profile-20261028/query-construction-01.json
+status=completed; signature_pairs_equal=198
+The complete exact output data, including all original/candidate signatures and individual timing batches, are preserved without edits in query-construction-01.json.gz.
+exit_code=0
+
+First summarize.py static check before execution:
+E702 Multiple statements on one line (semicolon)
+tmp/788/profile/summarize.py:69:43
+E702 Multiple statements on one line (semicolon)
+tmp/788/profile/summarize.py:71:44
+Found 2 errors.
+exit_code=1
+Only these formatting errors were fixed; raw experiments were not rerun or edited.

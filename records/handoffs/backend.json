@@ -218,6 +218,66 @@
     {
       "path": "agents/backend/core-bandit.log",
       "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "tmp/788/resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/check_resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/report.md",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/verification.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/p7-derived-readings.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/prompt.md",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/profile/diagnose.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/query_candidate.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/summarize.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/design.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/report.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/summary.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/verification.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "status": "actual development diagnostic, not acceptance"
     }
   ],
   "interfaces": [
@@ -383,6 +443,14 @@
     {
       "command": "coverage json / coverage report",
       "result": "退出0，原始JSON/JUnit/报告已存本岗目录"
+    },
+    {
+      "command": "python3 tmp/788/check_resource_window.py; uvx --from ruff==0.17.2 ruff check/format --check --config scripts/ci/ruff.toml tmp/788/{resource_window,check_resource_window}.py",
+      "result": "4 unittest methods pass; ruff check and format check pass; original missing module and initial six lint failures recorded; see task-specific command evidence"
+    },
+    {
+      "command": "uv venv/pip sync --require-hashes; diagnose.py --run; query_candidate.py --run; summarize.py; ruff check/format --check",
+      "result": "135 HTTP successful incl27setup; 198 pure MySQL/SQLite signature pairs equal; ABBA construction median observed; three tools final static checks pass; raw command/data/hash evidence in agents/backend/cpu-profile-20261028"
     }
   ],
   "results": [
@@ -399,12 +467,16 @@
     "D001七状态九动作纯领域实现存在，集中内部Enum/typed命令/不可变Decision/纯GuardContext，非法边与必要守卫有参数化自测",
     "领域依赖只在start、unblock到develop、rework三处检查，reject_review不新增守卫，上游回滚不自动改下游",
     "106项领域单元通过，Ruff/格式/Bandit通过；仅领域覆盖约98%，不是HTTP/集成/独立验收",
-    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行"
+    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行",
+    "P7 observed8000, zeroHTTP/clienterror but per-pathP95>270ms; started21.890740s vs barrier21.742456s explicitly separated; no formal pass inferred",
+    "select(table) one-expression pure candidate predicts0 effective lines and observed~5us lower statement-construction CPU; no candidate HTTP/MySQL/cloud benefit proven"
   ],
   "unverified": [
     "independent retest",
     "performance thresholds",
-    "final source range"
+    "final source range",
+    "P7/P16 real server resource-window aggregation and formal performance not executed by this role; P16 public matrix pending coordinator",
+    "DB owner adoption and real isolated MySQL rows/locks/regressions; query candidate HTTP performance; cloud400/600 and causal root remain unproven"
   ],
   "questions": [
     {
@@ -585,6 +657,27 @@
         "backend/t44/domain/models.py",
         "tmp/811_backend_size/812_v2_boundary.py",
         "tmp/811_backend_size/snapshot-alias-validation.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+      "source": "actual coordinator dispatch and numeric-unknown steering, executed",
+      "task_path": "agents/backend/resource-window-20261028/prompt.md",
+      "human_code_edit": false,
+      "reason": "explicit digest/window/metric semantics and missing-sequence evidence precision",
+      "outputs": [
+        "tmp/788/resource_window.py",
+        "agents/backend/resource-window-20261028"
+      ]
+    },
+    {
+      "id": "ROLE-backend-CPU-PROFILE-20261028-v1",
+      "source": "actual coordinator local-profile dispatch plus explicit pure-equivalence/ABBA followup, executed",
+      "task_path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "human_code_edit": false,
+      "outputs": [
+        "tmp/788/profile",
+        "agents/backend/cpu-profile-20261028"
       ]
     }
   ],
@@ -2165,6 +2258,17 @@
       "incoming_stage": "dependency-candidate-test-only-ci-terminal-evidence",
       "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
       "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
+      "incoming_stage": "p7-public-analysis-read-only-resource-window-tool",
+      "incoming_evidence": "agents/backend/resource-window-20261028/verification.json",
+      "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "p7-public-analysis-and-resource-window-tool-awaiting-server-execution",
+      "incoming_stage": "a12-cpu-profile-and-pure-core-expression-candidate",
+      "both_stage_artifacts_preserved": true
     }
   ],
   "performance_20261025": {
@@ -2561,5 +2665,71 @@
     "design": "agents/backend/contrast-20261028/transport-design.md",
     "prompt": "ROLE-backend-TRANSPORT-790-v1",
     "review": "PENDING root review"
-  }
+  },
+  "resource_window_20261028": {
+    "base": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+    "branch": "codex/backend-resource-resume-20261028",
+    "prompt": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+    "report": "agents/backend/resource-window-20261028/report.md",
+    "verification": "agents/backend/resource-window-20261028/verification.json",
+    "script_sha256": "f1df806992ba0c9b4508abf9ebe4a18cb80880b252559b9cf4e48a98e73037ab",
+    "p7_measure400_started_seconds": 21.89074,
+    "p7_measure400_barrier_seconds": 21.742456,
+    "p7_measure400_requests": 8000,
+    "formal_acceptance": false,
+    "cloud_UI_accessed": false,
+    "server_raw_executed_by_this_role": false,
+    "independent_private_content_read": false,
+    "initial_private_path_names_inadvertently_listed": true,
+    "root_handles_role_metadata_merge": true,
+    "p7_published_server_summary": {
+      "bytes": 8491,
+      "sha256": "94e7b0317111d14da25d4181ba6fe9331c4ee3aafb20ba25ba5597c0dcd609fb",
+      "offline_linkage_verified": true,
+      "actual_raw_recomputed_by_this_role": false,
+      "derived_evidence": "agents/backend/resource-window-20261028/p7-resource-derived.json",
+      "api_cpu_p95_percent": 1016.4089523544123,
+      "api_cpu_max_percent": 1208.9420749197743,
+      "scheduler_metrics": null
+    }
+  },
+  "cpu_profile_20261028": {
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "source_files_verified": 51,
+    "role": "backend AI",
+    "report": "agents/backend/cpu-profile-20261028/report.md",
+    "verification": "agents/backend/cpu-profile-20261028/verification.json",
+    "raw_manifest": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+    "baseline_raw_sha256": "0df044fba87bfe581125774ca2bc7006e76d34bb8b8f7b4b5f8ba4e9db5e532e",
+    "query_raw_sha256": "03876a7501eb0e2b9fe9f1a346c7dc42a7e2b9fb9a851dd68d1646b00c128462",
+    "HTTP_total": 135,
+    "setup": 27,
+    "profiled": 20,
+    "measured_unprofiled": 80,
+    "pure_signature_pairs_equal": 198,
+    "pure_ABBA_us_per_stmt": [
+      21.665,
+      16.77958,
+      16.01333,
+      21.14708
+    ],
+    "expected_net_effective_lines": 0,
+    "product_changes": 0,
+    "candidate_HTTP_DB_run": false,
+    "formal_acceptance": false,
+    "root_cause": "NOT_PROVEN",
+    "next_owner": "coordinator to database owner review/implementation/regression",
+    "prompt": "ROLE-backend-CPU-PROFILE-20261028-v1"
+  },
+  "coordinator_scope_merge_receipts": [
+    {
+      "source_commit": "c96dc391d5e50ede25d2d3b4a3a9ba709c688acb",
+      "new_named_sections": [
+        "resource_window_20261028",
+        "cpu_profile_20261028"
+      ],
+      "shared_scalar_metadata": "prior coordinator values retained; distinct scoped sections and all unique list history preserved",
+      "acceptance_changed": false
+    }
+  ]
 }

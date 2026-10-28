@@ -393,3 +393,22 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 - 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
 - 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
 - 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。
+
+## 2026-10-28 P7开发短窗与资源窗口聚合
+
+P7精确PUBLIC已核hash：400客户端8000完成/零HTTP与客户端错误，四路径P95 1370.412573–1840.028403ms，全>270。started→finished21.890740s、折算21927.079669/min；barrier→finished21.742456s、折算22076.622807/min，均非完整分钟或600秒验收。来源a12/7worker；不相加路径P95，不把零错误当性能通过。
+
+新增tmp/788/resource_window.py（9560B/SHAf1df8069…）为供协调部署的只读工具：显式raw路径/精确SHA/UTC头尾，固定FD+O_NOFOLLOW+fstat，64MiB输入/32KiB输出；每role CPU p50/p95/max、RSS与cgroup独立max及缺失/错误/首尾/间隔，未知sequence/null不补0。采样器44079B/SHA3d9f…静态核实，CPU为单核100%口径、RSS共享页可重复；scheduler保留null。4手算CLI方法绿、Ruff0.17.2检查/格式绿，原失败摘录保留。
+
+本岗没有运行真实服务器raw、云UI、负载、MySQL、整套CI或独立验收，根因NOT_PROVEN。完整输入输出/命令/限制与prompt见agents/backend/resource-window-20261028/report.md、verification.json、prompt.md。P16公共结果待协调发布，需其将实际输出与精确raw SHA及窗口绑定。
+
+后续root实际LOAD聚合PUBLIC8491B/SHA94e7b031…已精确核窗口/raw绑定：各role22样本、21knownpair/0内部缺口/0采样错；API CPU P95/最大1016.408952/1208.942075%，MySQL153.853657/159.899578%，scheduler三指标全null。数据和统计限制追加于本岗report；只读公开输出核实，未在本岗独立重算raw，因果和正式验收仍未证明。
+
+
+## 2026-10-28 a12 CPU诊断与零增行数据库候选
+
+准确a12导出51文件逐Gitblob核对，在新SQLite+原生产SQLAlchemy/UoW/FastAPI实际worker完成135 HTTP，27准备与80无profile/20profile/4warm/4shape明确分开；全成功/原schema再核，阻断网络MySQL尝试0。get/contract/transition CPU中位7.581/4.330/20.398ms只是Mac/SQLite开发事实，非P7或正式性能。profile函数exclusive分组及完整inclusive调用树归档，不加重叠CPU/P95。
+
+profile指向SQLAlchemy表达式/缓存键构造的重复调用；root准入后纯原型tuple(t.c)→(t,)只一AST节点，18表99case×2方言198完整SQL/绑定/结果列/锁分页/拒绝签名一致；无profiler构建ABBA A1/B1=1.291153倍、A2/B2=1.320592倍，约每条5us，未做候选HTTP/DB运行。预计净0有效行，生产未改，由root转DB岗审查/回归；不删鉴权/RC/锁/审计/幂等，不复活旧失败路线。
+
+本轮未访问云UI、原生MySQL、tmp796/792私密或测试用例；无产品CI/独立验收/云成绩。报告与可复核完整压缩原件见agents/backend/cpu-profile-20261028/report.md、raw-manifest.json、summary.json、verification.json，prompt为ROLE-backend-CPU-PROFILE-20261028-v1。
