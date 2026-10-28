@@ -124,6 +124,14 @@ def test_expired_and_near_deadline_rejected(real_derived_binding):
 
 def test_host_310_syntax_and_utc_parser():
     raw = (HERE / "790_bootstrap.py").read_text()
+    for name in ("790_host.py", "790_load.py"):
+        host_tree = ast.parse((HERE / name).read_text(), feature_version=(3, 10))
+        assert not any(
+            isinstance(n, ast.ImportFrom)
+            and n.module == "datetime"
+            and any(a.name == "UTC" for a in n.names)
+            for n in ast.walk(host_tree)
+        )
     tree = ast.parse(raw, feature_version=(3, 10))
     assert not any(
         isinstance(n, ast.ImportFrom)
@@ -340,6 +348,7 @@ def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, mo
                 def close(self):
                     pass
 
+            original_client = http.Client
             monkeypatch.setattr(http, "Client", HandlerClient)
             s2_dir = tmp_path / "s2"
             assert (
@@ -410,5 +419,58 @@ def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, mo
                 report["diagnostic_complete"]
                 and report["expected_requests"] == report["observed_requests"] == 8
             )
+
+            def incomplete(index, slot, packet, ca, barrier, deadline, cycles):
+                barrier.wait(timeout=20)
+                return {"client": index, "rows": [], "deadline_reached": True, "slot": slot}
+
+            monkeypatch.setattr(http, "worker", incomplete)
+            truncated = tmp_path / "truncated.public.jsonl"
+            unusable = tmp_path / "unusable.private.json"
+            assert (
+                http.main(
+                    [
+                        "--control",
+                        str(control_path),
+                        "--control-sha256",
+                        control_sha,
+                        "--packet",
+                        str(packet_path),
+                        "--packet-sha256",
+                        hashlib.sha256(packet_path.read_bytes()).hexdigest(),
+                        "--ca",
+                        str(ca),
+                        "--output",
+                        str(truncated),
+                        "--updated-packet",
+                        str(unusable),
+                        "--clients",
+                        "1",
+                        "--cycles",
+                        "2",
+                        "--seconds",
+                        "30",
+                    ]
+                )
+                == 1
+            )
+            with pytest.raises(http.InvalidDiagnostic):
+                http.check_packet(http.private_json(unusable))
+            import ssl
+
+            import certifi
+
+            monkeypatch.setattr(http, "Client", original_client)
+            strict = http.Client(control["url"], certifi.where())
+            assert strict.context.check_hostname and strict.context.verify_mode == ssl.CERT_REQUIRED
+            strict.close()
+            for wrong in [
+                "http://172.21.182.245:19445",
+                "https://172.21.182.245:18445",
+                "https://user:password@172.21.182.245:19445",
+                "https://172.21.182.246:19445",
+            ]:
+                with pytest.raises(http.InvalidDiagnostic):
+                    http.target(wrong)
     finally:
         engine.dispose()
