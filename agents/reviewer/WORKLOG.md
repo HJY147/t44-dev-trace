@@ -628,3 +628,5 @@ ROLE-reviewer-SELECT-POOL-20261028-v1；A82e92dfc/finalac7664f9与B92cf5c10/证�
 ## 2026-10-28 组件Call/通知CAS实际A重构限定审核
 
 AI reviewer；ROLE-reviewer-COMPONENT-A-20261028-v1。新隔离6977e5b7对5d产品仅application/common/messaging facade三文件；Call.cas去新kw并展开diff if后AST等旧、check_version全AST同；通知资格/归属/recipient/显式version→惰性values→原CAS/空audit但仍audit/handle不读保真。旧979/806完整函数类AST同、36assert逐序同(25+11)；兼容调用适配仅test tmp/780，生产无壳。真实跑780+782+旧979/806排integration，47绿15未选0fail/error/skip，一现有弃用warning；SQLite/进程内TestClient不冒native。原cloc固定计量6977=5898、exit1仍超798，净37非达标。报告reports/reviews/component-call-a-6977e5b7-20261028.md，条件可整合，根须显式CI收780/782并按新准确SHA全套/native/独立/云；旧5d成绩不重绑。未读独立私件或联络tester/访问云/改产品或断言。定位错读conftest和消息REPORT路径均为读取错误不冒测试失败。
+
+技术5e438198已push；Issue12 COMMENT6469521973精确ID/正文回读同。全scoped staged diff-check0；仅6977条件整合、整体5898仍FAIL，未发APPROVE或产品成功状态。metadata封后结束释放槽。
