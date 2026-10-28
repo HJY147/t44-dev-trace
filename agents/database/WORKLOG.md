@@ -348,3 +348,14 @@
 - 新19native层单位检查、原956的15检查和真实31例分范围；956旧Inspector fixture仅隔离新增native层，原断言不降，实际MySQL31例不stub。报告/verification/源绑定/JUnit/原Bandit红及绿/四次stop证明保存；学生研究正文不代写。Git推送与Issue4阶段留痕由实际回执后再补。
 
 - 阶段检查点7a663f9d已真实push；Issue4评论6461241385实际发表，随后fetch按单ID找到且全文逐字一致，原响应与精确comment保存在github-publication.json。本次仅补发布回执，未改生产或新增测试。
+
+
+## ROLE-database-POOL-CONFIG-20261028-v1：backend委托显式池容量入口
+
+- 新独立codex/database-pool-config-20261028基准确b9847f8a；未带入select候选。BE实际确认T44_DB_POOL_SIZE/T44_DB_MAX_OVERFLOW及仅settings.py:mysql_settings两个参数范围，原确认完整保存prompt.md，先行设计fb5d622d已commit。
+- 旧源显式容量目标实跑4failed/1passed/26未选，真实仍5/10，原红保留。仅新增两个int(os.getenv)参数，默认逐值5/10，非法整数ValueError拒绝不回退，URL/库匹配先验不重排；原MySQLSettings/engine全同。源码92cf5c108ee549b35dda6d775e0357ded9e40743已commit/push。
+- 新配置守卫31+原850/993目标7，共38passed/0.26s；全过程不连接PyMySQL，真实QueuePool容量/overflow与原hook/RC/脱敏被验证，最后dispose。仅本地配置，不跑SUT/HTTP/MySQL/云/性能，限定CI Ruff/Bandit通过，原测试未改。
+- 固定cloc精确design应用5933，92cf应用5935/净+2/超835，两次范围exit1；strictLOC未过。boundaries保护persistence/Rows、SQL/事务/鉴权/API/冻结/原tests/CI/计数器Git对象；不把ENV入口叫作提速。
+- 16worker A5/10与B15/0同APImax240；C20/0及64worker5/0为APImax320+reserve64。下一云须actual query max_connections并核所有角色预算；不默认16×25/0或64×默认5+10。现仅预算设计，未查询/部署。四件/报告/命令/红绿原件在pool-config-20261028，根后独立review/CI。
+
+- 封档git diff --cached --check真实exit2，原因是旧pytest红log/XML原始E行8处尾空格；原字节保留，raw-diff-check.json存完整原诊断。上一&&链因此未提交/推送，未把整包检查写成通过；限定产品/测试源码与说明check单列执行。

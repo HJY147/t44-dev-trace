@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "native-catalog-audit-local-complete-awaiting-root-review",
-  "implementation_status": "修复反射漏失的7项原冻结性质；最终26d6328a本地31原生案例与53针对目标通过，完整CI/根复审/云验收未做；固定5933超833。",
+  "stage": "explicit-pool-env-local-complete-awaiting-root-review-ci",
+  "implementation_status": "BE委托仅settings两行ENV；精确92cf配置31+旧目标7共38通过，旧4红1绿保留；默认5/10与dataclass边界不变；应用5935净+2超835；无SUT/云/性能。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -609,6 +609,21 @@
       "path": "tmp/836_database_output_guard/836_output_guard.py",
       "kind": "零DB输出文件系统main回归",
       "status": "11通过；不调用原recipes"
+    },
+    {
+      "path": "backend/t44/settings.py",
+      "kind": "backend确认委托的两个参数",
+      "status": "92cf5c10已commit/push；其他产品不改"
+    },
+    {
+      "path": "tmp/786_database_pool_20261028/786_pool_settings.py",
+      "kind": "本岗配置契约",
+      "status": "31新目标通过，非独立验收"
+    },
+    {
+      "path": "agents/database/pool-config-20261028/report.md",
+      "kind": "本轮真实报告/命令/预算边界",
+      "status": "已创建"
     }
   ],
   "interfaces": [
@@ -784,7 +799,8 @@
     "git apply --check agents/database/scan-run-rfc/candidate-v2.patch；两个候选ast.parse",
     "git diff 162305f888ac094e38448ef95d4748248ae57bfc 5dcb73c -- backend/t44/persistence/scans.py backend/t44/scheduling/facade.py（无差异）",
     "PLAN-HISTORY: existing database/.venv PYTHONPATH=backend pytest993 newtarget48; full99366; only988 two newtargets2 with explicit t44_test + app credentials; Ruff3files/Bandit rows; freeze/method bytes; cloc2.10 fixed original policy. Exact outputs agents/database/plan-history/*.log/json/xml.",
-    "POOL-RETENTION: official tag bytes/hash2files; existing955 fixedpool_ABBA source and exactargv committed; offline synthetic proof; execution-plan once at23:02:14..53; offline exactsource/request/rawhash/secretscan after release. No secondload/HTTP/SQL."
+    "POOL-RETENTION: official tag bytes/hash2files; existing955 fixedpool_ABBA source and exactargv committed; offline synthetic proof; execution-plan once at23:02:14..53; offline exactsource/request/rawhash/secretscan after release. No secondload/HTTP/SQL.",
+    "本轮完整命令与退出码：agents/database/pool-config-20261028/commands.json"
   ],
   "results": [
     "已确认项目根目录、责任范围、原始需求与初始化限制。",
@@ -876,14 +892,15 @@
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
     "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
     "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained.",
-    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission."
+    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission.",
+    "92cf配置31+旧目标7共38passed/0.26s；5933→5935净+2超835；无云/SUT/性能。"
   ],
   "unverified": [
-    "root暂不整合，原审核岗对新准确SHA独立复审待执行",
-    "未重跑19配方/71Rows，不能用旧矩阵为新工具完整背书",
-    "本轮无SQLite/MySQL/HTTP/负载/全CI或性能修复",
-    "只保证叶节点排他创建/fd绑定，不保证外部路径名/同用户原inode不可修改",
-    "原c4e8审核公开报告精确commit待协调发送，未读私有资料"
+    "根独立审核及完整开发CI/覆盖率尚未执行",
+    "新目标实际MySQL max_connections/所有角色连接预算未查询，任何容量方案尚未部署",
+    "没有SUT/HTTP/云/负载/正式性能或独立验收结果",
+    "strictLOC仍失败：应用5935超5100上限835",
+    "select(table)候选82e92仍分开，不在本分支"
   ],
   "questions": [],
   "prompt_refs": [
@@ -1070,9 +1087,22 @@
       "archive": "agents/database/prompts/ROLE-database-OUTPUT-EXCLUSIVE-v1.md",
       "improvement_reason": "真实审核P2驱动先红再原子O_EXCL/NOFOLLOW固定fd修复，保留原71和失败，不扩性能范围/不记用户亲改。"
     },
-    "ROLE-database-PERFORMANCE-20261025-v1"
+    "ROLE-database-PERFORMANCE-20261025-v1",
+    {
+      "id": "ROLE-database-POOL-CONFIG-20261028-v1",
+      "actual_prompt_source": "agents/database/pool-config-20261028/prompt.md",
+      "improvement_reason": "责任岗先确认，仅加显式配置通道；默认/错误/无连接容量传播与未来资源预算分开验证",
+      "outputs": [
+        "backend/t44/settings.py",
+        "tmp/786_database_pool_20261028/786_pool_settings.py",
+        "agents/database/pool-config-20261028/report.md",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
+      ]
+    }
   ],
-  "updated_at": "2026-10-25T06:12:17.872567+00:00",
+  "updated_at": "2026-10-28T11:13:04.754809+00:00",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1361,6 +1391,12 @@
         "scope": "offline synthetic SQLite/query recipes + MySQL compilation;not HTTP or realMySQL",
         "production_change": 0
       }
+    },
+    {
+      "stage": "native-catalog-audit-local-complete-awaiting-root-review",
+      "implementation_status": "修复反射漏失的7项原冻结性质；最终26d6328a本地31原生案例与53针对目标通过，完整CI/根复审/云验收未做；固定5933超833。",
+      "superseded_by": "ROLE-database-POOL-CONFIG-20261028-v1",
+      "preserved_details": "catalog_audit_20261028"
     }
   ],
   "refactor_removed": [
@@ -1594,5 +1630,43 @@
     "verification": "agents/database/catalog-audit-20261028/verification.json",
     "github_issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6461241385",
     "github_exact_readback": true
+  },
+  "pool_config_20261028": {
+    "base": "b9847f8a946a310b90e8fb228a0e5c1061612e13",
+    "design_commit": "fb5d622dfd16de30dbde9676c295cc36715c275f",
+    "source_commit": "92cf5c108ee549b35dda6d775e0357ded9e40743",
+    "backend_delegation_confirmed": true,
+    "ENV": [
+      "T44_DB_POOL_SIZE",
+      "T44_DB_MAX_OVERFLOW"
+    ],
+    "defaults": [
+      5,
+      10
+    ],
+    "report": "agents/database/pool-config-20261028/report.md",
+    "commands": "agents/database/pool-config-20261028/commands.json",
+    "verification": "agents/database/pool-config-20261028/verification.json",
+    "new_config_passed": 31,
+    "original_targets_passed": 7,
+    "passed": 38,
+    "old_red": {
+      "failed": 4,
+      "passed": 1,
+      "deselected": 26
+    },
+    "application": 5935,
+    "net_effective_lines": 2,
+    "range_passed": false,
+    "not_bundled_select_candidate": true,
+    "actual_max_connections_query": "NOT_RUN",
+    "SUT": "NOT_RUN",
+    "cloud": "NOT_RUN",
+    "formal_performance": "NOT_RUN",
+    "raw_diff_check": {
+      "exit": 2,
+      "cause": "原pytest红log/XML尾空格8处，保留原字节",
+      "evidence": "agents/database/pool-config-20261028/raw-diff-check.json"
+    }
   }
 }

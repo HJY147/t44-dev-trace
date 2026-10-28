@@ -1,4 +1,10 @@
-# 数据库模块：当前原生目录审计修复待根复审
+# 数据库模块：显式连接池配置待根审核/CI
+
+2026-10-28：backend已确认委托，独立基b9847f8a，设计fb5d622d先行，产品/测试源92cf5c108ee549b35dda6d775e0357ded9e40743。只settings.py:mysql_settings新增T44_DB_POOL_SIZE/T44_DB_MAX_OVERFLOW的int转换，默认5/10逐值保持，无效文本拒绝、原MySQLSettings范围与URL/库匹配先验不改。新配置31+原目标7共38通过；旧源容量目标4红1绿原样保留，限定Ruff/Bandit通过；新engine lazy构造无数据库连接。
+
+固定应用5933→5935/净+2，超835，strictLOC未过。未捆绑select(table)候选，原persistence/Rows/鉴权/事务/SQL与测试冻结完整不变。当前只有本地配置；下一云池预算须实际查max_connections及其他角色，未云/未SUT/未HTTP/未性能。完整证据见[本轮报告](../../agents/database/pool-config-20261028/report.md)。
+
+## 历史：原生目录审计修复
 
 2026-10-28：先行设计cacd03b1，最终应用源26d6328ab882b06eb9f6026a29656999e122f57d。原schema反射漏判DESC、自增、引擎、表/列排序规则、CHECK执行性及必需索引可见性7项已在全新socket-only MySQL8.4.11真实复现并修复；31原生case（8兼容/23负例）符合原要求，最终53针对目标通过。先前7c94版完整本岗非integration106通过、17未选择，结果不相加。新增4条固定只读catalog查询；DDL/API/冻结/锁与marker协议不改。限定Bandit先因B608失败，改完整字面SQL后绿，不放宽门禁。固定cloc当前5933，较5862净增71，仍超833；这是正确性修复，不宣传减量。
 
