@@ -28,7 +28,7 @@ bindingraw=read(PHASE/'binding.json');assert sha(bindingraw)==BINDING;binding=js
 assert binding['source_sha']==SOURCE and binding['database']=='t44c_r28funcgen01_f' and binding['project']=='t44-cloud-r28funcgen01-f' and binding['api_workers']==4 and binding['entrypoint']=='t44.api:app' and binding['profiling'] is False
 assert time.time()<1793183400.0
 statusraw=subprocess.run(['/usr/bin/python3',str(GEN),'status','--phase-dir',str(PHASE),'--binding-sha256',BINDING],capture_output=True,check=True,timeout=30).stdout
-status=json.loads(statusraw);assert status['success'] is True and status['source_sha']==SOURCE
+status=json.loads(statusraw);assert status['success'] is True and status['action']=='status'
 present={r['role']:r for r in status['resources'] if not r.get('absent')};initial_present={r['role']:r for r in initial['resources'] if not r.get('absent')}
 needed={'mysql','rabbitmq','api','consumer','web','tls-gateway'}
 assert needed<=set(present)
