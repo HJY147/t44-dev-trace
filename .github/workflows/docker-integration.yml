@@ -6,6 +6,17 @@ on:
   pull_request:
     branches: [codex/integration]
   workflow_dispatch:
+    inputs:
+      bundle_source_sha:
+        description: Optional exact product SHA for image bundle only; empty runs existing integration
+        required: false
+        default: ""
+        type: string
+      source_upgrade_only:
+        description: Fixed public935/f4 source context artifact only; no Docker or SUT
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -16,6 +27,7 @@ concurrency:
 
 jobs:
   docker-application:
+    if: ${{ inputs.bundle_source_sha == '' && !inputs.source_upgrade_only }}
     name: docker-application
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -37,3 +49,36 @@ jobs:
           path: reports/docker-integration/
           if-no-files-found: error
           retention-days: 14
+
+  cloud-bundle:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.bundle_source_sha != '' && !inputs.source_upgrade_only }}
+    uses: ./.github/workflows/cloud-image-bundle.yml
+    with:
+      source_sha: ${{ inputs.bundle_source_sha }}
+
+  offline-source-context:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.source_upgrade_only }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Fixed public source objects, frozen equality and allowlisted artifact only
+        env:
+          T44_BUNDLE_SOURCE_INPUT: ${{ inputs.bundle_source_sha }}
+        shell: bash
+        run: bash deployment/cloud-reuse/prepare-source-artifact.sh
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: offline-backend-source-f4-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/t44-f4-source-artifact/source-backend.tar.gz
+            ${{ runner.temp }}/t44-f4-source-artifact/source-manifest.json
+            ${{ runner.temp }}/t44-f4-source-artifact/frozen-equality.json
+            ${{ runner.temp }}/t44-f4-source-artifact/Dockerfile
+            ${{ runner.temp }}/t44-f4-source-artifact/backend-upgrade.py
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
