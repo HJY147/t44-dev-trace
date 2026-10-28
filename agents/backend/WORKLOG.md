@@ -642,3 +642,11 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
 - 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
 - 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。
+
+
+## 2026-10-28 中性五身份/T12-v2 provider
+- 先设计c9a03461，再核心93bed41d、协议worker c5870926。只读root明确授权四个PUBLIC接口及原source/CLI，无792 private/用例/真实账号/私钥读取，无独立岗互发。指出v1虚构Runtime.dispatch名称后root转交，独立发布v2真实execute；不改独立原件。
+- 原CLI五身份、不seed/不项目角色，原Runtime/Business完整login/audit，独立Settings60签新会话、主3600不动；整auth表前后原行不变、实际request_id audit验证。7 token/id分开，云setup不撤销，后续唯一actualsessionid原CLI撤销；本地开发撤销测试与真实setup分开。
+- 原cryptography50依赖内存T44FENV1 RSA3072 OAEP/AESCBC/HMAC，无secret argv/env；strict v2schema、密文600+PUBLICreceipt，descriptor来自root实际F后回填，不冒SUT授权。3文件投递13168字符，旧790七件/manifest/产品不改。
+- 最终14唯一目标(5协议+9原CLI/Runtime)零fail/error/skip，实际自然60.19555秒后getMe401TOKEN_EXPIRED、原auth行未变、五主有效；前两次9保留不累计。本地SQLite/Python3.12/3.10AST，不冒MySQL/云HTTP/worker-main/独立性能。scope只有纯线格式codec，真正root controller应用+原store查询待actualrequest。
+- root07:04新窗口通知：后续F另新namespace/08:15，当前c587固定旧F07:30尚未云用，不能延长/混用；等真实binding+PUBLIC更新另版。真实prompt、元数据/失败定位/lint过程见functional-provider-report.md，全部AI记录不是学生亲笔报告。

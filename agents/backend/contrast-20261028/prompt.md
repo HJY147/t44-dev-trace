@@ -23,3 +23,8 @@ root实际单向派发审核阻断：先留无网络假钟/假连接的跨截止
 ## ROLE-backend-TRANSPORT-790-v1
 root在S1实际成功、S2尚未起600秒会话时要求：LOAD原openssl生成RSA-OAEP公钥且私钥只本机600；APP对control/session/CA三件及显式可选mirror做gzip+AES256CBC+HMACSHA256，用RSA-OAEP SHA256包装64byte，UI只公钥/PUBLIC hashes/OPAQUE，>18000分段，LOAD核APP pin后新600解包。只新增transport工具，不改冻结790七件/manifest/产品；Python3.10兼容、07:30截止、root唯一云操作者。
 执行先明确I/O/威胁边界并提交设计，再13合成目标和实际opensslCLI；通过root认证控制台pin公钥和PUBLIC，不声称RSA加密等于APP签名，不读任何真实私包。密钥仅LOAD，openssl enc argv短暂本机root可见且stdout/stderr/异常不泄露。全部为AI开发记录。
+
+
+## ROLE-backend-FUNCTIONAL-PROVIDER-790-v1
+root要求只在新F准备中性五身份、7真实会话与provider，禁止读独立private/用例；原init-user stdin；原Runtime Settings60合法新会话自然过期、主HTTP3600不动；待撤销token保持active到actual请求、原CLI唯一session-id撤销。root唯一云操作者，先设计本地验证后等明确PUBLIC packet/key/nonce；后续scope用每条actual request独立key/context，不预猜project。
+本岗将正常INSERT与手改authstore明确区分，真等60秒和整auth表/Audit读证实；指出实际Runtime只有execute，root协调PUBLIC v2后按真名。公开协议禁secret argv，故另用锁定cryptography内存T44FENV1，不复用前52 openssl -K；原七文件冻结保持。scope编码与真实scheduler应用分开，未有实际receipt不捏造'applied_to'。root另新F窗口通知后保旧包不用，待实际binding/publicschema再版本化。这是AI自动开发过程，不写学生经历。
