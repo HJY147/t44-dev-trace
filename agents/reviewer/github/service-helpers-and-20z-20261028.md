@@ -8,4 +8,3 @@ Prompt-Ref: ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1
 - 20Z13运行文件9件逐字同，4件仅确切截止/标签；原16Z目录和旧46测试/66断言保持。7片完整UI字节链、最大完整UI+300=16090核准。部署GEN/resource只截止与GEN SHA变化；builder/helper/receiver原字节同，准确d7 wrapper完整编码+256=3680。后续汇总PUBLIC包未审，不继承此结论。
 
 未见新增限定阻断，可由总协调取舍产品集成和受限预装；新产品组合仍需其准确CI，本审核不把f7 CI借给新候选。无云、native MySQL、真实HTTP socket、独立验收或正式600秒执行，不发新prep/pressure/F授权。三项本岗探索/审核器/旧venv探测错误已据实保留，不冒称产品修复。
-
