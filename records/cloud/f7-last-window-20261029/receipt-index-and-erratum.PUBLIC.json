@@ -1,0 +1,126 @@
+{
+  "visibility": "PUBLIC",
+  "operator": "coordinator_AI",
+  "recorded_utc": "2026-10-28T17:18:23.948205+00:00",
+  "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "user_boundary": "Exactly one final pressure iteration, then stop original VMs preserving disks and continue tomorrow. No next iteration tonight.",
+  "actual_outcome": "S1 succeeded once; S2 succeeded once; pressure matrix/consumer never started. No latency, throughput or HTTP pressure error statistics exist for this window.",
+  "raw_record_erratum": {
+    "affected_files": [
+      "APP-last-owned-stop-original.PUBLIC.json",
+      "LOAD-last-owned-stop-original.PUBLIC.json"
+    ],
+    "incorrect_operator_field": "S2_setup_succeeded_but_remaining_lease_below_original_330s=true",
+    "correction": "330s is an admission check on control.stop_utc, not a minimum remaining fixture/session TTL. The coordinator misread this condition and voluntarily did not dispatch the pressure consumer. No actual tool rejection on this condition occurred. The original raw statements are preserved as incorrect operator claims, not measured facts.",
+    "code_pointers": [
+      "tmp/790_backend_contrast_20261028/p64-f7-window2000/790_load.py:78",
+      "tmp/790_backend_contrast_20261028/p64-f7-window2000/edge/790_http.py:316"
+    ],
+    "S2_complete_UTC": "2026-10-28T16:44:23.301763+00:00",
+    "coordinator_clock_check_UTC": "2026-10-28T16:49:11Z",
+    "packet_600s_age_limit_and_actual_four_session_expiries": "Separate conditions; actual matrix validation was not executed."
+  },
+  "VM_observed_state": {
+    "i-bp13uag4r4u9r2hge0mt": "Stopped; economical stop; original64vCPU128GiB instance retained",
+    "i-bp13uag4r4u9r2hge0mu": "Stopped; economical stop; original16vCPU32GiB instance retained"
+  },
+  "volumes_deleted": false,
+  "owned_application_running_containers_after_stop": 0,
+  "raw_resource_retention": {
+    "APP": {
+      "bytes": 14715126,
+      "sha256": "3e651e864f2b20c66bbea66aa03c7a7e38fd4ea89742dc20e7618db599f080f0"
+    },
+    "LOAD_mirror": {
+      "bytes": 14714883,
+      "sha256": "0aa2ec759b777cdefe828c77a84ff81f31c5c0bbbab1871ee6953753e5ec1646",
+      "transport_complete": false,
+      "pull_errors": 6
+    },
+    "scope": "Setup and service lifetime observations only, not a pressure interval. Retained on original cloud disks; full raw files were not downloaded locally."
+  },
+  "admission_status": {
+    "LOC": {
+      "actual": 5898,
+      "maximum": 5100,
+      "passed": false
+    },
+    "formal600s_performance": false,
+    "fresh_independent52_F_P2_executed": false
+  },
+  "reproduction_next_day": "Recheck exact owned instance/disk/loop-mount state and actual image proofs after startup; create new windows/phase/grants and prebuild the full encrypted relay/start path before issuing new short-lived sessions. No replay/extension of expired packets or old results.",
+  "authorship": "AI coordination and debugging; not student manual work. Student research report remains student-authored.",
+  "no_private_keys_credentials_ciphertext_case_source_or_financial_records_archived": true,
+  "files": [
+    {
+      "file": "f7-20Z-prepare-original.PUBLIC.json",
+      "bytes": 2017,
+      "sha256": "c1eddd9143a7206d21a2b2d4bcda50a1bbd6edc57eba4df05cd3222d74ad2729"
+    },
+    {
+      "file": "f7-20Z-p-budget-original.PUBLIC.json",
+      "bytes": 775,
+      "sha256": "846e33634e0eb4ed10a2a07b4c58a3bf6fe7ab6316a9b887142c55a1624969b2"
+    },
+    {
+      "file": "f7-20Z-bootstrap-status-original.PUBLIC.json",
+      "bytes": 2367,
+      "sha256": "406dbb8386ce31255534ae97eb13294dcb3ae5e56ac5d4c4b590359b56350b27"
+    },
+    {
+      "file": "f7-last-existing-stage1-S2-launch-original.PUBLIC.json",
+      "bytes": 1058,
+      "sha256": "a731b2d2b7822d6fdce5595a979b75d676ef553910435d8375ff022fbe899233"
+    },
+    {
+      "file": "f7-last-S2-opaque-terminal-original.PUBLIC.json",
+      "bytes": 1575,
+      "sha256": "a1fe8c66fa547e96206d65ee866f61a44a2d41680eed887e129038a20a5f66ef"
+    },
+    {
+      "file": "APP-last-owned-stop-original.PUBLIC.json",
+      "bytes": 3371,
+      "sha256": "70b22ff4b65da62a2817ebb0fd3bd6f65dd7ba3d5b8279a85b7c994111659f53"
+    },
+    {
+      "file": "LOAD-last-owned-stop-original.PUBLIC.json",
+      "bytes": 1951,
+      "sha256": "d69e67d00fed91d2c07c3684fa9618b1ad4389add7db6cfb6961ff917bdf0e14"
+    },
+    {
+      "file": "f7-last-stage1-setup-attempt01-original.PUBLIC.txt",
+      "bytes": 366,
+      "sha256": "c253ce6d45f7bce6c3fb8ac53551bc5995fb1a37a7b151cbdace401ec053faa4"
+    },
+    {
+      "file": "APP-20Z-install-attempt01-original.PUBLIC.txt",
+      "bytes": 99,
+      "sha256": "0a5cc6f8874125d64f5836a619b3eade1ab514570beb425f5191584419a9e0ff"
+    },
+    {
+      "file": "LOAD-20Z-install-attempt01-original.PUBLIC.txt",
+      "bytes": 99,
+      "sha256": "4e19e69d3ebf6d3f252e7fb4157e3ca552a015ae8defce5ea03b1454692f31ac"
+    },
+    {
+      "file": "f7-20Z-load-keygen-attempt01-original.PUBLIC.txt",
+      "bytes": 89,
+      "sha256": "9f238ab87664909af7d7a3c19fe277f0c38de186eb3dfe30f40c55870749c765"
+    }
+  ],
+  "stopped_details_verified_UTC": "2026-10-28T17:21:38.972261+00:00",
+  "actual_stopped_details": {
+    "APP": {
+      "state": "Stopped",
+      "stop_mode": "economical",
+      "automatic_release_time": "-",
+      "private_UI_snapshot_sha256": "155c0c5e2fda78522bd1aa6328d1a284f593794cacbe940f91203e26d5ba7aad"
+    },
+    "LOAD": {
+      "state": "Stopped",
+      "stop_mode": "economical",
+      "automatic_release_time": "-",
+      "private_UI_snapshot_sha256": "13ea150432bb401cb7ac22339566e32695abf04e11b8fb016e5fa470d121dae5"
+    }
+  }
+}
