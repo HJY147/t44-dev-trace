@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="14" skipped="0" tests="14" time="0.340" timestamp="2026-10-28T13:53:43.852610+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[False-/api/v1/auth/login-body0]" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[False-/api/v1/projects/1/tasks/1-None]" time="0.000"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[False-/api/v1/projects/1/contract-validations-body2]" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[False-/api/v1/internal/projects/1/tasks/2/escalations-body3]" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[True-/api/v1/auth/login-body0]" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[True-/api/v1/projects/1/tasks/1-None]" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[True-/api/v1/projects/1/contract-validations-body2]" time="0.000"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_no_http_dispatch_after_absolute_deadline[True-/api/v1/internal/projects/1/tasks/2/escalations-body3]" time="0.000"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:112: in test_no_http_dispatch_after_absolute_deadline
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_deadline_expiring_during_connect_prevents_http_dispatch" time="0.000"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:121: in test_deadline_expiring_during_connect_prevents_http_dispatch
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_connect_and_existing_socket_timeout_bounded_by_remaining_window" time="0.001"><failure message="AssertionError: assert (1 == 1 and [15] and 15 &lt;= 2)&#10; +  where 1 = len([(datetime.datetime(2026, 10, 28, 7, 29, 58, tzinfo=datetime.timezone.utc), 'GET', '/api/v1/projects/1/tasks/1')])&#10; +  and   15 = max([15])">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:130: in test_connect_and_existing_socket_timeout_bounded_by_remaining_window
+    assert len(events) == 1 and timeouts and max(timeouts) &lt;= 2
+E   AssertionError: assert (1 == 1 and [15] and 15 &lt;= 2)
+E    +  where 1 = len([(datetime.datetime(2026, 10, 28, 7, 29, 58, tzinfo=datetime.timezone.utc), 'GET', '/api/v1/projects/1/tasks/1')])
+E    +  and   15 = max([15])</failure></testcase><testcase classname="" name="test_shared_abort_before_dispatch_is_checked_inside_client" time="0.001"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:138: in test_shared_abort_before_dispatch_is_checked_inside_client
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_shared_abort_during_connect_prevents_late_dispatch" time="0.000"><failure message="Failed: DID NOT RAISE InvalidDiagnostic">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:148: in test_shared_abort_during_connect_prevents_late_dispatch
+    with pytest.raises(http.InvalidDiagnostic):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidDiagnostic</failure></testcase><testcase classname="" name="test_another_worker_failure_stops_later_operations_after_inflight_get" time="0.001"><failure message="AssertionError: assert ['get', '/api.../escalations'] == ['get']&#10;  &#10;  Left contains 3 more items, first extra item: '/api/v1/projects/1/contract-validations'&#10;  Use -v to get more diff">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:243: in test_another_worker_failure_stops_later_operations_after_inflight_get
+    assert [value for index, value in calls if index == 1] == ["get"]
+E   AssertionError: assert ['get', '/api.../escalations'] == ['get']
+E     
+E     Left contains 3 more items, first extra item: '/api/v1/projects/1/contract-validations'
+E     Use -v to get more diff</failure></testcase><testcase classname="" name="test_s1_reads_crossing_deadline_do_not_dispatch_service_token_cli" time="0.244"><failure message="AssertionError: assert [(['/Users/ya...4dfd', ...],)] == []&#10;  &#10;  Left contains one more item: (['/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-demo-20261023/dependencies/3b15a7bdf9302475_46.../venv/bin/python', '-m', 't44.cli', 'service-token', '--name', 'contrast790s1-332ec1157a72405da9ad21a3d8844dfd', ...],)&#10;  Use -v to get more diff">tmp/790_backend_contrast_20261028/790_deadline_abort_checks.py:324: in test_s1_reads_crossing_deadline_do_not_dispatch_service_token_cli
+    assert writes == []
+E   AssertionError: assert [(['/Users/ya...4dfd', ...],)] == []
+E     
+E     Left contains one more item: (['/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-demo-20261023/dependencies/3b15a7bdf9302475_46.../venv/bin/python', '-m', 't44.cli', 'service-token', '--name', 'contrast790s1-332ec1157a72405da9ad21a3d8844dfd', ...],)
+E     Use -v to get more diff</failure></testcase></testsuite></testsuites>
