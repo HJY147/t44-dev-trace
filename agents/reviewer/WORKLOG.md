@@ -613,3 +613,9 @@ ROLE-reviewer-CONTRAST790-20261028-v1；只gitshow2a832920全包/设计/manifest
 ROLE-reviewer-CONTRAST790-V2-20261028-v1；精确6f5698f2d2df04a2347b893c55d93cb9c3063aa9。原两P2在代码上闭合：S1 CLI/S2 Client/host和LOAD剩余窗守卫与timeout，shared abort传worker/Client并首错设置；在途读取真实结果但下一派发禁止，不称回滚。一次无网络最小闭环exit0/stderr空，manifest640b3d七文件hash同，33唯一owner XML无红错skip、原14红gzip与a43原件逐字同；不重跑全套，不跑TLS/HTTP/云/负载/产品。先向root交完整v2七文件限定6role可执行，正式7role/600秒/性能未验证。新增R790-DOC-01：runbook第5步旧LOAD01b/旧load-delivery覆盖指令拒绝，实际只用manifest内a7a2新LOAD；文档修正待owner。未读独立私件/后端未提交或联系开发测试。报告reports/reviews/contrast790-v2-6f5698f2-20261028.md及evidence/contrast790-v2-20261028。
 
 790v2文档追补：实核4ca7f908修runbook第5步为完整v2新目录，LOAD10279/a7a2并禁止旧覆盖，P7已seed跳过bootstrap。25a1fb5a相对6f七执行文件/manifest无差异，blob159f22f6同；R790-DOC-01关闭，旧6f问题记录保留。另复算5份proof SHA及a43原红7个test函数AST同，未新增测试/云/负载执行。技术资料7bf48cc7a57eaf1357425fabf2d33ba6bb70d214已push且远端核同；publication与doc01-closure回执封存。三发现均关闭，仅完整v2七文件6role开发诊断准入，非正式验收/性能通过。
+
+## 2026-10-28 新10:30窗口限定审核
+
+ROLE-reviewer-WINDOW1030-20261028-v1；精确5a88/a8c1包、4de69部署时间/namespace。两次静态raw/AST/hash/gzip复算exit0：bootstrap/http仅各一处HARDSTOP7→10、五文件逐字同，transport仅STOP替换，新manifest0ef08a/transport7e2d同，600sTTL/abort/阈值/cohort不改；测试数据替换assert数28/21/17不变；payload全七件+manifest及transport核同；profile4672/222c/e5b0及新r28p16gen02/root02计划核。owner33+13 XML绿和6本地installer只核记录，不跑负载/云/SUT/私件。先交root新绑定新gen02限定6role准入，不延旧绑定/旧packet/成绩。编码真实18836/18648/21668超过保守18000，root回传经立即不保存通道双机实际part3 all7成功（APP t-hz071dw3ojmi8lc/LOAD t-hz071dw3tbb14w0）、transport安装/LOADkeygen后CUA读key超时，尚无新prepare/S2；按root实际来源分列，不冒本岗云观察/官方页面实核，不重投。旧P16过期/0cohort、旧0730timer停止保留原root回传，不移植新成绩。报告reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md；0独立792private/研究正文修改/开发测试联系。
+
+10:30窗口审核技术资料5e8aa6f1369eb947f29d7593c3bb8b27d7c6276c已push、远端核同；public receipt封存。旧失败/过期与新绑定隔离保持，root实际安装回传不冒本岗云观察。无外部评论或审核状态。

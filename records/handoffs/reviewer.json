@@ -123,7 +123,12 @@
     "agents/reviewer/evidence/contrast790-v2-20261028/offline-closure-first.json",
     "agents/reviewer/evidence/contrast790-v2-20261028/audit.json",
     "agents/reviewer/prompts/ROLE-reviewer-CONTRAST790-V2-20261028-v1.md",
-    "tmp/791_reviewer_resume_20261028/contrast_v2_probe.py"
+    "tmp/791_reviewer_resume_20261028/contrast_v2_probe.py",
+    "reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md",
+    "agents/reviewer/evidence/window1030-20261028/static-first.json",
+    "agents/reviewer/evidence/window1030-20261028/audit.json",
+    "agents/reviewer/prompts/ROLE-reviewer-WINDOW1030-20261028-v1.md",
+    "tmp/791_reviewer_resume_20261028/window1030_static.py"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -574,7 +579,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "一次最小离线闭环与33proof/原红逐字复算；未运行TLS/负载/云/产品",
+  "implementation_status": "两次静态复算，0测试负载/云/网络/SUT；双机安装成功及CUA读key超时仅root回传分列",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -666,8 +671,8 @@
     "report": "reports/reviews/capacity-v11-design-02ecdea9ced90cd46cbca898f123d6409f45ba80.md",
     "review_outcome": "U016补答后技术设计准入，后续仅RFC L33精确化"
   },
-  "latest_review_evidence": "agents/reviewer/evidence/contrast790-v2-20261028/offline-closure-first.json",
-  "latest_review_report": "reports/reviews/contrast790-v2-6f5698f2-20261028.md",
+  "latest_review_evidence": "agents/reviewer/evidence/window1030-20261028/static-first.json",
+  "latest_review_report": "reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md",
   "merge_provenance": {
     "foundation": "09dd3cf68171557ca13648296e9427571f5fe815",
     "checkpoint": "e9abf8899e31cfe1853344cdead37e4824f0663a",
@@ -1533,9 +1538,9 @@
     "HISTORY-EVIDENCE-01closedwithinbc5delta; PR21COMMENT5634448127actuallypublishedandcompleteGETstrictlyverified; original42243failureunchanged, overallNOT_ACCEPTED."
   ],
   "review_branch": "codex/review-diagnostics-20261025",
-  "review_outcome": "STOP01_STOP02_CLOSED_EXACT_V2_SEVEN_FILES_LIMITED_6ROLE_EXECUTION_ADMITTED",
+  "review_outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c",
+  "review_target_sha": "a8c1f7a26892f845d9d415076107aa77f17ac2ac",
   "review_targets": [
     {
       "pr": 14,
@@ -1617,7 +1622,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "790v2 STOP01/02及DOC01均关闭，完整v2七文件限定6role准入",
+  "stage": "新10:30窗口raw/namespace限定准入，仅新gen02；旧成绩不继承",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1636,7 +1641,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-28T06:12:55.848466+00:00",
+  "updated_at": "2026-10-28T08:30:57.981831+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2606,7 +2611,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "unchanged v2 tool6f plus exact doc/proof checkpoint25a1",
+  "review_target_kind": "new v3 window tool package plus restricted deployment time/namespace proof",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -3656,5 +3661,58 @@
       "updated_at": "2026-10-28T06:12:55.848466+00:00"
     },
     "latest_checkpoint": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c"
+  },
+  "window1030_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-WINDOW1030-20261028-v1",
+    "tool_source_commit": "5a88d11a8adc69570973e8bf1a7ef5778d2ff371",
+    "tool_delivery_commit": "a8c1f7a26892f845d9d415076107aa77f17ac2ac",
+    "deployment_time_namespace_commit": "4de69da8db08577762586a5ee28cfc2d0cf398f8",
+    "manifest_sha256": "0ef08aab3e14887b703c9a2fa5e5265d60fbbcb4172d1d6deb20b5f746df048a",
+    "transport_sha256": "7e2dfb5b4c4fd3766769d4c5f15ac65fa8b61e7286e09ee402ff10fa650816f3",
+    "outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
+    "only_two_HARDSTOP_and_one_transport_STOP_changed": true,
+    "other_five_scripts_byte_identical": true,
+    "600s_TTL_abort_cohorts_thresholds_unchanged": true,
+    "own_new_tests_cloud_network_SUT_calls": 0,
+    "owner_local_counts": {
+      "diagnostic": 33,
+      "transport": 13,
+      "installer_records": 6
+    },
+    "scope": "new bound gen02 and complete v3 package, no old binding/packet extension or result inheritance",
+    "real_run_and_formal_acceptance_pass": false,
+    "report": "reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md",
+    "evidence": "agents/reviewer/evidence/window1030-20261028/static-first.json",
+    "root_actual_callback_snapshot": "agents/reviewer/evidence/window1030-20261028/root-callback-snapshot.json",
+    "root_callback": {
+      "source": "root actual callback; reviewer did not access cloud originals",
+      "v3_part3_APP_invoke": "t-hz071dw3ojmi8lc",
+      "v3_part3_LOAD_invoke": "t-hz071dw3tbb14w0",
+      "part3_both_all_seven_verified": true,
+      "manifest": "0ef08aab3e14887b703c9a2fa5e5265d60fbbcb4172d1d6deb20b5f746df048a",
+      "transport_install_and_LOAD_keygen_invoke_literal": "t-hz071dw6f0se6tc/6npp6ku8",
+      "UI_key_read_timed_out_recovering": true,
+      "new_generation_prepare_or_S2_executed_as_of_callback": false,
+      "resubmission": false,
+      "root_18000_budget_is_conservative": true,
+      "root_channel": "immediate execution without saving",
+      "root_official_policy_reference": "https://help.aliyun.com/zh/ecs/user-guide/overview-10",
+      "policy_live_verified_by_reviewer": false,
+      "old_P16_post_S2_transport_over_600_seconds_and_no_cohort": "root reported, preserved only for old generation",
+      "old_P7_P16_timer_stopped_0730": "root reported, no new result inherited"
+    },
+    "updated_at": "2026-10-28T08:30:57.981831+00:00",
+    "publication": {
+      "technical_commit": "5e8aa6f1369eb947f29d7593c3bb8b27d7c6276c",
+      "branch": "codex/reviewer-resume-20261028",
+      "git_push_exit": 0,
+      "git_ls_remote_exit": 0,
+      "remote_sha": "5e8aa6f1369eb947f29d7593c3bb8b27d7c6276c",
+      "remote_matches": true,
+      "github_comment_or_status": false,
+      "outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
+      "updated_at": "2026-10-28T08:31:38.425940+00:00"
+    }
   }
 }
