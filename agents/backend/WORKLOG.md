@@ -642,3 +642,13 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
 - 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
 - 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。
+
+
+## 2026-10-28 跨模块深层架构规模研究
+
+- 后端AI，prompt ROLE-backend-ARCHITECTURE-SCALE-20261028-v1；独立20000108分支codex/backend-architecture-scale-20261028，先57354c71设计再评估。产品65文件逐字同a12，原计量真实5933/5100超833/exit1；51后端路径中43.py计4834，前端1099，原分类不变。
+- 读完整后端实现/职责与原T44和冻结接口，核301个def/class及动态operation/隐式协议。没有可无条件删的大块legacy：README公开helper/ScanStore.recoverable、WindowMatch属性、Runtime.claim开发故障入口均不因无直接入口调用而删。
+- 新跨owner通知Call+CAS完整RFC片段普通Ruff100列+固定cloc：Business34→14、Notification65→47、CAS14→15，净37。显式版本检查先于values，record_diff=False保原通知空diff但审计不关闭；需消息owner明确内部Python签名迁移，未实施。
+- DDL14初始默认字段、异常helper静态式13/工厂式7互斥、first2、UTC/UUID alias3均为设计预算。全量94异常点改helper反而+131/+160；首次elif片段解析问题v2排除，旧失败保留。F schema目录189替换估160–210净-21..29；G scan双路径62估52–72净-10..10，重叠默认6扣除，全部最乐观102仍5831/5100超731，非实现保证/不声称架构不可能。
+- 用户继续现有口径，明确不删除/迁出CLI/seed/migration/前端或安全能力；来源映射只说明需求/工程成本。读锁SQLAlchemy2.1.6真实Inspector实现及官方文档，CHECK仅name/sqltext、索引缺visibility，不能删native新反例防线。
+- 只本岗设计/报告/日志/交接，产品改动0/实际净减0；无新tmp编号/产品测试/CI/MySQL/Rabbit/前端/云/正式性能/独立验收。完整报告含51路径哈希、301定义定位、94片段预算及37行RFC。未读792/private、未改研究正文或他岗文件。

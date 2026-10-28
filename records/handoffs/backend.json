@@ -2561,5 +2561,82 @@
     "design": "agents/backend/contrast-20261028/transport-design.md",
     "prompt": "ROLE-backend-TRANSPORT-790-v1",
     "review": "PENDING root review"
+  },
+  "architecture_scale_20261028": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-ARCHITECTURE-SCALE-20261028-v1",
+    "base": "200001087d41113984a3f1a96ad7bdcf66bca90b",
+    "product_bytes_equal": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "branch": "codex/backend-architecture-scale-20261028",
+    "design_commit": "57354c7188e9ac0cf9addf36d9a40cdca9c70265",
+    "report": "agents/backend/architecture-scale-20261028/report.md",
+    "implementation_status": "design-only; no product changes",
+    "fixed_count": {
+      "application": 5933,
+      "backend": 4834,
+      "frontend": 1099,
+      "backend_py_files": 43,
+      "backend_all_paths": 51,
+      "upper_bound": 5100,
+      "excess": 833,
+      "exit_code": 1,
+      "within_range": false
+    },
+    "promising_RFC": {
+      "name": "trusted Call component signature and shared notification CAS",
+      "owners": [
+        "backend",
+        "messaging"
+      ],
+      "fragment_budget": 37,
+      "not_implemented": true,
+      "internal_Python_signature_change_requires_admission": true,
+      "REST_OpenAPI_DDL_change": false,
+      "record_diff_false_does_not_disable_success_audit": true
+    },
+    "other_small_design_budgets": {
+      "existing_DDL_initial_defaults": 14,
+      "reject_if_static": 13,
+      "reject_if_factory_alternative": 7,
+      "first_or_error": 2,
+      "codec_aliases": 3
+    },
+    "unproven_architecture_work_packages": {
+      "native_schema_snapshot_net_range": [
+        -21,
+        29
+      ],
+      "transaction_local_scan_registry_net_range": [
+        -10,
+        10
+      ],
+      "overlap_with_default_fields": 6,
+      "optimistic_combined_design_budget": 102,
+      "projected_if_all_optimistic_estimates_held": 5831,
+      "remaining_excess": 731,
+      "not_a_feasibility_guarantee": true
+    },
+    "dead_code_audit": {
+      "definition_class_method_count": 301,
+      "sound_whole_program_call_graph": false,
+      "large_unconditionally_removable_legacy_found": false,
+      "public_dynamic_implicit_test_only_paths_distinguished": true
+    },
+    "source_mapping": "original T44 requirements vs adopted D001/D004/D005/D006/D008 and frozen engineering choices; no removal authorization",
+    "user_latest_scope": "没有补充，继续现有口径",
+    "production_changes": 0,
+    "actual_net_line_reduction": 0,
+    "new_tmp_files": 0,
+    "not_run": [
+      "new product tests",
+      "full development CI",
+      "MySQL",
+      "RabbitMQ",
+      "frontend",
+      "cloud",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "next": "root may submit37-line design RFC to backend/messaging owners for explicit internal interface admission, implementation, exact-SHA review and full required verification; current833 gap remains open"
   }
 }

@@ -393,3 +393,8 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 - 原宿主openssl+stdlib，RSA3072 OAEP SHA256/MGF1 SHA256包64byte随机密钥，AES256CBC+HMACSHA256先验MAC后解密；16000字符分段，pin APP PUBLIC和三/四SHA、真实binding/source/CA/stop，O_EXCL新700目录/600文件。鉴别来源仍靠root认证控制台，非APP签名；本机openssl enc密钥短暂argv不打印，可信root边界明示。
 - 11初本地目标过后补三件无mirror、错binding/CA两目标，最终13全绿/零fail/error/skip（不累计24），合成随机包>18000实际分段、篡改后即使重算外层public仍在HMAC拒绝且无AES解密调用、权限/覆盖/丢段/过期守卫。Ruff首轮2格式+3lint问题先修兼容注释/闲置导入后绿；Python3.10 AST、本地Python3.12+LibreSSL3.3.6，不冒Ubuntu真实执行。原790七件逐hash仍同manifest640b3d。
 - 短操作单transport-runbook.md，公开投递5467字符。root实际云加解密/会话传递/LOAD/正式性能未由本岗执行，无私有云数据/独立用例读取。prompt ROLE-backend-TRANSPORT-790-v1，真实AI过程而非学生经历。
+
+
+## 2026-10-28 全后端结构设计研究
+
+后端AI在codex/backend-architecture-scale-20261028自20000108先设计57354c71，再只读全43计入Python(4834行)/51路径及原T44/冻结接口；产品同a12，固定计量5933/5100仍失败。新通知受信Call+共享CAS跨backend/messaging设计片段净37，保版本/值求值次序、锁/UoW/空audit diff；需owner批准内部签名迁移，未实施。其它小预算32；F/G未实现工作包最乐观扣重合计102，仍5831超731，不能报目标可行或真实节省。301定义/动态注册/公开支持审计无已证可删大块；来源映射不授权删seed/migration/CLI/安全。用户明确继续现有口径。所有产品/契约/DDL不变、实际净减0；无新测试/CI/数据库/云/性能/独立验收。报告agents/backend/architecture-scale-20261028/report.md，prompt ROLE-backend-ARCHITECTURE-SCALE-20261028-v1。
