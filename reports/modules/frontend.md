@@ -1,3 +1,14 @@
+# 前端模块报告｜2026-10-28 规模复核
+
+- ROLE-frontend-SCALE-RESUME-20261028-v1；独立worktree/分支codex/frontend-scale-resume-20261028从a12e9e70开始，设计6c06e16d已commit/push。产品与计数器对a12及旧round9前端diff为空。
+- 固定cloc实际应用5933，上限5100，超833；前端22文件1099行，CSS267（前端24.29%，全应用4.50%）。require-range真实exit1，stderr空；不是规模通过。
+- 已共用递归schema表单、统一操作、七页面、列表/详情。loading/error重复模板毛收益仅4行；按钮循环需新增配置，旧异步helper净增路线不重试。
+- CSS按media context完整声明比对7组，忽略cascade风险的毛收益上界仅9行；跨断点display:none适用范围不同。token/common class抽部分属性仍保留原规则行，无可信>30净收益。
+- no-candidate：产品0改动/实际减行0。米咖圆角液态玻璃与可访问性退路保持原字节；89目标未删改也未在本轮重跑，不把历史绿当新验收。
+- 报告agents/frontend/scale-resume-20261028/REPORT.md与tmp/789_frontend_scale_resume_20261028的固定计数、22文件SHA、CSS静态清单。未读792 private、未操作云/根产品/研究正文；a12云声明与规模/独立门禁不变。
+
+## 以下为旧阶段记录，不能替代本轮范围
+
 # 前端模块报告｜当前完整演示普通入口验证
 
 - ROLE-frontend-NATIVE-USER-PREVIEW-v1，基线13cce419/设计c300560，准确产品bc5未改。只验证已运行5178→18088普通身份入口；部署公开binding92源文件为身份依据，未读取私密runner或内部服务凭据。
