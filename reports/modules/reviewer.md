@@ -497,3 +497,12 @@ ROLE-reviewer-WINDOW1030-20261028-v1；精确5a88/a8c1包、4de69部署时间/na
 ## 2026-10-28 A默认投影/B池配置分别限定审核
 
 ROLE-reviewer-SELECT-POOL-20261028-v1；A82e92dfc/finalac7664f9与B92cf5c10/证据c4900aa8分别静态审核，a12基线/7947backend tree核同。一次纯probe首次exit0：SQLAlchemy2.1.6下18表226列144对旧新SQL/绑定/锁/结果元数据相等，内存users/auth_sessions平铺映射UTC/binary/JSON/NULL相等；B14配置检查、默认全字段相等、URL/声明库优先、无效整数/零负边界拒绝，lazy pool5/10和20/0到达，MySQL connect0。0外部DB/HTTP/云/完整测试/独立私件/产品测试修改；首次猜错B测试路径读exit128已定位实际tmp786，非产品失败。owner A30/原138与B旧4红1绿→38仅摘要/JUnitSHA复算，原B全包raw diffcheck2保留，源/测试scoped0不冒全包绿。各自conditional integration candidate，两个源提交生产/测试路径和接口不冲突；B ENV对所有Settings角色engine生效，需实际全部进程预算/max_connections，解析成功不是资源或性能通过。A LOC净0/B+2=5935超835仍FAILED，严格400协议不改。先交root结论后root回传仅整合至fee30ae5，部署待接tmp786/787 CI跑714+新增/native；不冒本岗已执行。只交报告+本岗四件，封存后释放槽，无继续扩大探针。报告reports/reviews/database-select-pool-20261028.md。
+
+## 2026-10-28 v4实际预算与scope桥限定审核
+
+AI reviewer；ROLE-reviewer-V4-BRIDGE-20261028-v1。b5926031部署+161b82ee桥精确Git/双SHA核：发现P1 V4-BRIDGE-01（GEN未传预算收据path/SHA）与V4-BRIDGE-02（direct SQL锁内未actual admit），已先发root并获当前包不投云的回复。原120秒/APP有限lease/LOAD二次活性与pending/同目录hardlink/quarantine/停止出口静态核；不将快照冒持续guard心跳。一次纯exact-generation+实际budget.admit探针初次mac临时别名canonical前置拒绝导致断言exit1，改fixture resolve后exit0，未改实现；JSON保两实际拒绝。无Docker/MySQL/HTTP/Linux/systemd/云/fullCI/业务测试、未读独立private/keys/实际结果或联系tester。报告reports/reviews/v4-bridge-20261028.md；结论BLOCKED_PENDING_OWNER_FIX_AND_REVIEW。当前最终派生包未审，原成绩不复用，修复由原owner，封档释放槽。
+
+
+## 2026-10-28 v3预算修复与25d最终包限定复审
+
+AI reviewer；ROLE-reviewer-V4-BRIDGE-RECHECK-20261028-v1。5cedb2ca源码/5f679130完整checkpoint工具字节相同；原P1两接口scope关闭，原95assert AST逐序不降（50+22+23）。本岗真实74局部绿；两次73/1环境fixture失败原log/XML保留，分别缺t44/PYTHONPATH和原product-source路径断言，后用精确5d归档fixture不改断言；首轮外shell0不冒pytest通过。25d profile3b3b/GEN3232/helper305f/六片max15372逐项核，实际本地重放6/6exit0，六文件字节同；本地source ZIP9ebb/166458B，原receiver exit0，53源对5d与47 frozen对935/5d，147Gitmode核。初始raw TAR mode假设错误导致一红（git archive0664由原builder规范化0644），原包/算法不改，失败目标保留后新目录复核。报告reports/reviews/v4-bridge-v3-recheck-20261028.md；可交root受限安装/新环境预检，不准入F/正式性能。无nativeMySQL/HTTP/Linux/systemd/云/独立private/测试联系，未改产品/原报告。临时公开source/test夹具在tmp/781…且不提交重复源码。

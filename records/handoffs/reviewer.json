@@ -3788,5 +3788,86 @@
   "review_target_shas": [
     "82e92dfc420690980a6e16c88f209d08ab709e49",
     "92cf5c108ee549b35dda6d775e0357ded9e40743"
+  ],
+  "v4_bridge_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-V4-BRIDGE-20261028-v1",
+    "deployment_commit": "b5926031a8a9d1ea4ac9efb2f0416fa00db61f7a",
+    "bridge_commit": "161b82ee792c272fd29a54a04cf2545007e1aa99",
+    "budget_helper_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+    "bridge_manifest_sha256": "f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b",
+    "report": "reports/reviews/v4-bridge-20261028.md",
+    "evidence": "agents/reviewer/evidence/v4-bridge-20261028/exact-interface-probe.json",
+    "decision": "BLOCKED_PENDING_OWNER_FIX_AND_REVIEW",
+    "blockers": [
+      "V4-BRIDGE-01",
+      "V4-BRIDGE-02"
+    ],
+    "own_inline_probe_exits": [
+      1,
+      0
+    ],
+    "owner_suites_rerun": false,
+    "cloud_or_SUT_or_native_MySQL": false,
+    "independent_private_reads_or_tester_contact": false,
+    "new_final_derived_profile_reviewed": false,
+    "technical_sent_to_root_before_admin": true,
+    "github": {
+      "id": 6468573419,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6468573419",
+      "exact_body_readback_match": true,
+      "technical_commit": "2fcbfee1111595b8bb3a667675b69a69bdb9855f",
+      "receipt_sha256": "8a151db3b97aeeb88f1e104c062690aa1ce2dd93ebf149b8f44ac47aad866e35"
+    }
+  },
+  "v4_bridge_v3_20261028_recheck": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-V4-BRIDGE-RECHECK-20261028-v1",
+    "source_commit": "5cedb2caf06369cf20c196eba106b072eaa61810",
+    "full_owner_checkpoint": "5f6791308772cab9b53b3eba46acc1d2b1f91831",
+    "deployment_final": "25d863c5afce1fb84ea32300c45d123bb7919c76",
+    "SUT_source": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "new_manifest": "e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7",
+    "report": "reports/reviews/v4-bridge-v3-recheck-20261028.md",
+    "old_blockers_retained": true,
+    "two_blockers_closed_in_narrow_code_scope": true,
+    "decision": "CONDITIONAL_INSTALL_AND_NEW_ENVIRONMENT_PREFLIGHT_ONLY",
+    "original_assert_AST_unchanged": 95,
+    "local_test_passes": 74,
+    "local_test_failures_errors_skips": 0,
+    "earlier_environment_failures_retained": 2,
+    "native_MySQL_Linux_cloud_business_or_performance": false,
+    "independent_private_read_or_tester_contact": false,
+    "exact_source_files_checked": 53,
+    "frozen_files_checked": 47,
+    "git_mode_records_checked": 147,
+    "six_installers_actual_local_replay_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_original_receiver_exit": 0,
+    "maximum_encoded_command_plus_256": 15372,
+    "formal_F_or_performance_execution_admitted": false,
+    "scoped_diff_check_exit": 0,
+    "whole_raw_evidence_diff_check_exit": 2,
+    "original_pytest_trailing_whitespace_locations_retained": 6,
+    "github": {
+      "id": 6468960839,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6468960839",
+      "technical_commit": "71491f671c47ce1ae6c5f0480c6c1fd06962b973",
+      "body_exact_readback": true
+    }
+  },
+  "coordinator_merge_receipts": [
+    {
+      "incoming_commit": "b51bbb7059dfb69ae14a0966de717d7445ffd152",
+      "method": "three-way metadata merge preserving original blocker and subsequent scoped re-review, all disjoint history fields and both conflict values",
+      "scope": "no product changes",
+      "scalar_conflicts": []
+    }
   ]
 }

@@ -1,0 +1,22 @@
+...................F.................................................... [ 97%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_original_cli_and_readonly_data_guard_seal_roundtrip ___________
+
+tmp_path = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-v4-bridge-20261028/tmp/781_reviewer_v4_20261028/pytest-temp/test_original_cli_and_readonly0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10a9c2450>
+key = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x10acd4d50>, '-----BEGIN PUBLIC KEY-----\nMI...iFZOJ/7OgK/EPL6fdm8hT+irQHU8xjEJJpt\ntYxcgp3uBwA9UsNoZR2MqP6F5qpXk8WgOirn2xxtj9oJAgMBAAE=\n-----END PUBLIC KEY-----\n')
+
+    def test_original_cli_and_readonly_data_guard_seal_roundtrip(tmp_path, monkeypatch, key):
+        import contextlib
+        import io
+    
+        import bridge_data
+        from sqlalchemy import create_engine
+>       from t44 import cli, persistence
+E       ModuleNotFoundError: No module named 't44'
+
+tmp/781_reviewer_v4_20261028/bridge-v3-exact/790_bridge_checks.py:483: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tmp/781_reviewer_v4_20261028/bridge-v3-exact/790_bridge_checks.py::test_original_cli_and_readonly_data_guard_seal_roundtrip
+1 failed, 73 passed in 2.26s
