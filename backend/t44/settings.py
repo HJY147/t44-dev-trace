@@ -40,6 +40,8 @@ class Settings:
             username=url.username,
             password=url.password or "",
             port=url.port or 3306,
+            pool_size=int(os.getenv("T44_DB_POOL_SIZE", "5")),
+            max_overflow=int(os.getenv("T44_DB_MAX_OVERFLOW", "10")),
         )
 
     def __repr__(self):
