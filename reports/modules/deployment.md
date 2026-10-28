@@ -579,3 +579,9 @@ v4独占新派生器/预算模块/小分段运输，不改旧frozen。显式P池
 最终公共运输5片加安装1条，manifest c257623f…，最大完整encoded+256=15372；真实5d/16Z本地分片回放和6条bash-n通过，六原件完整相同；全新远端v4-code-20261028-01/profile。40个v4加旧profile16个共56项12.17s过，CI范围Ruff过，旧四模板/派生器/已发表10:30无改动。v4/STEPS.md给完整可复制source/build/prepare64w5/0/实际probe预算/业务/observer/stop路径，双方共享锁与新增预算receipt path+SHA已对接。
 
 本岗没有云/变配/build/真实MySQL/SUT操作，未宣称容量或性能通过。root另代岗制作source-free标准ENV副本的两处修改已限定授权，实际执行由root留痕。实际预算/角色ENV/新F、短诊断后再新600秒和原LOC仍须分别证明。
+
+### component/Call模块接线（b079父链，仅CI列表）
+
+仅将782_backend_component.py与780_facade_semantics.py各一次加入原完整coverage补充列表。AST确认runner其余逻辑不变，原coverage分母/80%/marker、完整tmp/backend及七旧补充路径、workflow的935/a12 fetch逐字保留，无产品或测试断言改动。
+
+新21项收集及运行通过；旧979/806的test-only legacy_caller导入41项只收集通过，含原第三方deprecation warning；原静态23项与CI Ruff加新模块通过，未冒全服务/完整CI或覆盖率结果。证据在component-ci-20261028/validation.PUBLIC.json，root合并后统一product/Docker。旧5d/16Z产物原样，新源等待root新CI准确SHA，未读783私件或操作云。
