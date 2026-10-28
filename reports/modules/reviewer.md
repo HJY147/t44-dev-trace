@@ -483,3 +483,7 @@ Reviewer实核base22f666e2→production26d6328a/checkpoint3d0dff7d：只新增�
 ## 2026-10-28 790开发对照工具限定审核
 
 ROLE-reviewer-CONTRAST790-20261028-v1；只gitshow2a832920全包/设计/manifest及324d16daLOAD，未读backend未提交或独立792/799/800/805。发现并先交root两P2：R790-STOP-01准备阶段S1原CLI/S2 HTTP派发前未重新核07:30硬截止；R790-STOP-02首worker失败没有共享abort，其余同cohort继续写入。一次无网络原函数探针exit0/stderr空，过期Client.call仍合成派发1次并成功，先失败后另worker仍完成4项。manifest6文件/LOADhash同、3host3.10语法可解析。无产品/云/DB/CLI/TLS/全套测试执行，不改产品/工具，不联系开发/测试。原版本edge/LOAD不准入，修复须新SHA复审；O_EXCL、data/edge隔离、441配对和0/1/41slot边界静态未见其他阻断。正式7role/600秒/两臂公平与真实TLS均未验证。报告reports/reviews/contrast790-2a832920-324d16da-20261028.md，证据agents/reviewer/evidence/contrast790-20261028。
+
+## 2026-10-28 790v2 STOP01/02限定复核
+
+ROLE-reviewer-CONTRAST790-V2-20261028-v1；精确6f5698f2d2df04a2347b893c55d93cb9c3063aa9。原两P2在代码上闭合：S1 CLI/S2 Client/host和LOAD剩余窗守卫与timeout，shared abort传worker/Client并首错设置；在途读取真实结果但下一派发禁止，不称回滚。一次无网络最小闭环exit0/stderr空，manifest640b3d七文件hash同，33唯一owner XML无红错skip、原14红gzip与a43原件逐字同；不重跑全套，不跑TLS/HTTP/云/负载/产品。先向root交完整v2七文件限定6role可执行，正式7role/600秒/性能未验证。新增R790-DOC-01：runbook第5步旧LOAD01b/旧load-delivery覆盖指令拒绝，实际只用manifest内a7a2新LOAD；文档修正待owner。未读独立私件/后端未提交或联系开发测试。报告reports/reviews/contrast790-v2-6f5698f2-20261028.md及evidence/contrast790-v2-20261028。

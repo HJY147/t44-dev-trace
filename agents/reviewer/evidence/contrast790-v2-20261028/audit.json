@@ -1,0 +1,29 @@
+{
+  "operator": "AI reviewer",
+  "prompt_ref": "ROLE-reviewer-CONTRAST790-V2-20261028-v1",
+  "tool_commit": "6f5698f2d2df04a2347b893c55d93cb9c3063aa9",
+  "manifest_sha256": "640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84",
+  "manifest_files_verified": 7,
+  "outcome": "STOP01_STOP02_CLOSED_EXACT_V2_SEVEN_FILES_LIMITED_6ROLE_EXECUTION_ADMITTED",
+  "closed": [
+    "R790-STOP-01",
+    "R790-STOP-02"
+  ],
+  "open_findings": [
+    {
+      "id": "R790-DOC-01",
+      "priority": 2,
+      "summary": "runbook step5 points to old LOAD; reject old override and use exact complete v2 seven-file manifest"
+    }
+  ],
+  "owner_seal_unique_cases": 33,
+  "owner_original_red_cases": 14,
+  "owner_original_red_failures": 14,
+  "owner_red_gzip_byte_exact": true,
+  "own_offline_probe_exit": 0,
+  "own_real_network_product_DB_CLI_cloud_load_calls": 0,
+  "formal_7role_600second_or_performance_pass": false,
+  "report": "reports/reviews/contrast790-v2-6f5698f2-20261028.md",
+  "evidence": "agents/reviewer/evidence/contrast790-v2-20261028/offline-closure-first.json",
+  "updated_at": "2026-10-28T06:10:57.954490+00:00"
+}
