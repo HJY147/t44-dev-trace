@@ -18,3 +18,8 @@ root后来指出正式验收须全部7角色、scheduler会抢先创建提醒。
 root实际单向派发审核阻断：先留无网络假钟/假连接的跨截止派发红例，再最小修每次HTTP派发、connect后和socket剩余预算；共享abort阻止其他worker新操作，保已inflight真实前缀；S1长只读后的CLI签发/新事务与host等待也受同一绝对窗。必须冻结旧包、独立v2投递，不改样本/阈值求绿。
 
 本岗先得到14断言红，再实现最小协议修复；原真实handler兼容保持并补partial/inflight、host剩余窗定界，最终33唯一目标绿。原红XML有pytest尾空格，首次检查失败后仍提交的流程错误如实记；gzip无损封存，不规范化原失败。root已成功bootstrap不重跑，新S1/edge/LOAD先等待审核后实际运行。
+
+
+## ROLE-backend-TRANSPORT-790-v1
+root在S1实际成功、S2尚未起600秒会话时要求：LOAD原openssl生成RSA-OAEP公钥且私钥只本机600；APP对control/session/CA三件及显式可选mirror做gzip+AES256CBC+HMACSHA256，用RSA-OAEP SHA256包装64byte，UI只公钥/PUBLIC hashes/OPAQUE，>18000分段，LOAD核APP pin后新600解包。只新增transport工具，不改冻结790七件/manifest/产品；Python3.10兼容、07:30截止、root唯一云操作者。
+执行先明确I/O/威胁边界并提交设计，再13合成目标和实际opensslCLI；通过root认证控制台pin公钥和PUBLIC，不声称RSA加密等于APP签名，不读任何真实私包。密钥仅LOAD，openssl enc argv短暂本机root可见且stdout/stderr/异常不泄露。全部为AI开发记录。
