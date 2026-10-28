@@ -738,3 +738,5 @@ root14:21明确旧f7-16Z仅代码安装/backend镜像build，未GEN prepare/arm/
 root提供并实际核官方manifest3368534a…/innerZIP70d09d1f…/archive8f4f6f92…、原df84 buildbinding与actual sha256:a7d…；本岗仅据完整PUBLIC转述加代码静态证明可原身份复用，不读私有binding或重建/重贴image，不把旧本地f04/51c75替官方。新GEN prepare仍实际核原源码/原build/archive/image完整证明，不能因静态说明跳过。
 
 新远端v4-code-20261028-03/profile，5分片+安装6命令、manifest60c234ac…、完整raw11337/完整base64+256=15372最大；6bash-n和实际20Z临时root映射重组后六原件逐字相同。RUNBOOK已给df84/官方336完整值的新prepare模板/新namespace计划/真实预算后迁移业务/保卷stop，不等待云才编步骤。固定PUBLIC commit的API outer wrapper随后独立封小commit，完整外层另核，不仅算内层；原六条现在可审。无算法/产品/全CI/云/SUT动作或测试私件读取，783票据与52/F事实只由root核。
+
+20Z固定PUBLIC代码c1303016a053d5b718d3df30ce5911d2e002c18c已push并ls-remote逐字核相同。新增一条install-via-github-api.sh，固定该commit与六脚本每个完整bytes/SHA；先全下载核验，再按序bash原件，不用Token/可变分支，不修改6条原件。整个outer shell+heredoc raw2567B，完整base643424+256描述=3680<18000，SHA e60ac8cb…；真实bash-n与3组显式模拟HTTP/捕获bash检查过，正确6/6、错误SHA或path均0执行。未把模拟网络/捕获命令写为真实GitHub或云执行。完整外层而非仅内层计量，proof另存；final wrapper小commit后交root审阅/实跑，本岗0云/SUT。
