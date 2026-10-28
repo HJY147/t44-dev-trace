@@ -689,3 +689,10 @@ resource-stream.py SHAf911acf4...：独立systemd app collector+load append mirr
 - root另授权12467B scheduler PUBLIC/e74bb93e…和16871B T18 progress PUBLIC/4b841bdd…，均真实核bytes及完整SHA。原token回执10:15:50.382290Z成功（project1来自root实际命令转述，token正文未读）；独立功能容器10:15:51.441769259Z自然退出0/noOOM；scheduler实际StartedAt10:15:51.146862474Z，10:15:57.400893Z启动回执healthy/Running/Restart0。不能把进程退出0或调度器健康写成业务通过，也不由时间接近推定退出根因。
 - root确认sealed reply未赶上且不补发、不rerun；PUBLIC仍NOT_PROVEN_PENDING_PRIVATE_EVIDENCE、private_evidence_exported=false，正式结论由独立岗核私证据。本岗没有读取测试用例/私证据，不与测试岗联络。原neutral中scheduler absent是较早观测事实，保留不倒写。
 - root当时正原GEN保卷停F，尚未给实际停止回执，故只记进行中；两VM后续仅停不释放由root执行。本岗0云动作，仅新建选择性PUBLIC顺序回执、更新四件留痕；不重试、不倒填成功、不延10:30窗口。
+
+## 2026-10-28 组合rows/Settings后的完整coverage接线
+
+- root从fee30ae5147aa36a858e694a3c9d4006e68b1101派限定CI任务；新codex/deployment-pool-ci-20261028独立worktree，先记录pool-ci设计再实施，不改产品或责任岗测试。OPTIMIZATION_TESTS仅追加786_pool_settings与787_query_semantics各一次，旧五模块/tmp/backend和contracts各marker不变，tmp/backend内7旧case不重复添加。coverage配置逐字与fee父链相同，AST对照除列表外runner完全一致。
+- 发现787收集时git show固定a12，但现coverage浅克隆仅fetch935；告root后获明确扩展授权，仅coverage原935 fetch/完整SHA核验后追加a12的同等3行，不改token/权限/其他job。真实depth1本地file克隆先只取935，确认a12对象缺失，787收集exit2；完整原输出1243B/SHA与gzip留存。定向fetch同a12并核完整SHA后，同一克隆收集30项exit0。这是预期缺前置的红→绿本地CI复现，不是产品失败或远程CI。
+- 两新模块合61项，在synthetic DATABASE_URL/数据库名/TTL/19+1 pool ENV且pymysql.connect全程禁止外连下，正序61过0.31s、反序61过0.30s；各次环境与connect钩子身份恢复断言均过。不是122独立用例；786局部monkeypatch自动恢复、787只临时SQLite，不需修改CI ENV或服务。旧静态guard23项0.07s过，CI同范围Ruff过，coverage工作块bash-n过。
+- 证据在agents/deployment/pool-ci-20261028/，逐命令argv/exit/原字节SHA/完整gzip已记；仅本任务临时浅克隆清理，原证据保留。没有真实MySQL/RabbitMQ、全coverage、远程CI/Docker/云动作，两VM保持root停机状态；ENV适用全部Settings角色的显式各角色值与actual max_connections预算留后续新profile。root合并精确SHA后执行完整产品/nativeMySQL和Docker检查。
