@@ -2771,5 +2771,57 @@
     "old_ended_nonce_reused": false,
     "revocation_ACK_implemented": false,
     "automatic_retry": false
+  },
+  "scope_callback_bridge_v3_budget_20261028": {
+    "operator": "backend AI",
+    "review_blocked_v2": "39a20035; original161b/56 unchanged",
+    "design_commit": "e95a744c",
+    "red_commit": "e5b775f7",
+    "repair_commit": "5cedb2ca",
+    "manifest_sha256": "e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7",
+    "tools": "tmp/790_backend_contrast_20261028/scope-callback-bridge-v3-budget",
+    "phase_dependency_commit": "25d863c5afce1fb84ea32300c45d123bb7919c76",
+    "phase_dependency_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+    "local_red": {
+      "tests": 5,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0
+    },
+    "local_final": {
+      "tests": 74,
+      "legacy": 56,
+      "new_budget": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "legacy_assertions_AST_in_order": 95,
+      "removed": 0
+    },
+    "configuration": "originals.mysql_budget LOAD public copy path/SHA + budget_receipt_path APP actual phase original; bound authority",
+    "GEN_flags": [
+      "--budget-receipt",
+      "--budget-receipt-sha256"
+    ],
+    "SQL": "same operation_lock then original budget.admit current identity/capacity; no SQL on refusal",
+    "budget_query_timeout": "clamp original subprocess wait to callback remainder; original SQL/parser unchanged",
+    "GEN_parent_lock": false,
+    "default384": false,
+    "install_destination": "/root/t44-r9/scope-bridge-v3-01",
+    "complete_command_bytes": [
+      12216,
+      12953,
+      15289,
+      12840
+    ],
+    "description_allowance": 300,
+    "report": "agents/backend/contrast-20261028/scope-bridge-v3-report.md",
+    "runbook": "agents/backend/contrast-20261028/scope-bridge-v3-runbook.md",
+    "review": "PENDING limited re-review, notified new commit/hash",
+    "cloud_actualMySQL_SUT_CI_by_role": false,
+    "independent_private_read": false,
+    "new_product_changes": 0,
+    "original120_or_secret_boundary_changed": false,
+    "prompt": "ROLE-backend-SCOPE-BRIDGE-V3-BUDGET"
   }
 }

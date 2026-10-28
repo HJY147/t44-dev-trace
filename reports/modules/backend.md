@@ -422,3 +422,8 @@ The b54 caller-evidence alias is reproduced by2 failing append/clear cases and r
 后端AI先写设计，再实现完整LOAD新鲜authority→APP原GEN/真实credential/原wire→LOAD末次live/pending/原子交付。冻结旧会话失败不补发，不改120秒，不代rootACK或撤销。v4 phase helper双pin305f9eae…，SQL每阶段单独共享锁、GEN前释放；实际入口固定phase state、防重复nonce/quarantine绕过。
 最终56本地目标全绿（原34逐字50assert、新12、安装10），含原CLI+SQLite加密roundtrip、真实本机flock衔接、私密输出、umask077和小分片安装守卫；alpha2红、metadata1红、锁2红、setup2失败、umask1红原证据均保留。原crypto c89逐字同。无云/独立私包/SUT/新CI；产品规模净变化0；Linux3.10仅AST，真实双机/MySQL/120秒传输预算和独立业务验收待根。
 报告：agents/backend/contrast-20261028/scope-bridge-v2-report.md；精确步骤：scope-bridge-v2-runbook.md；manifest f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b；工具tmp/790_backend_contrast_20261028/scope-callback-bridge-v2-mutex。根限定review pending。
+
+
+## 2026-10-28 Scope桥v3预算修复（替代v2待审候选）
+v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁内admit，审核阻断保持原件。v3先e95设计→e5b原代码5红→5ced修复；显式PUBLIC budget原件及APP path/SHA进authority，GEN透传且父锁外，每SQL先原305f admit再派发。最终74目标通过，原56三文件95assert AST全序相同且0删除；原5红assert保持。Crypto/helper逐字同。真实helper与flock加合成metadata/query只证明本地守卫，未运行云/实际MySQL/SUT/CI或独立验收。
+最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，新两机/root/t44-r9/scope-bridge-v3-01；报告scope-bridge-v3-report.md、步骤scope-bridge-v3-runbook.md，工具tmp/790_backend_contrast_20261028/scope-callback-bridge-v3-budget；复审pending，原v2不得投云。

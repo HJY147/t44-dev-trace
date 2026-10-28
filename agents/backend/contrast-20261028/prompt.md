@@ -48,3 +48,8 @@ root后续明确跨机LOAD新鲜authority→APP有限供应→LOAD最终重验li
 ## ROLE-backend-SCOPE-BRIDGE-V2-MUTEX（AI自动迭代）
 root原契约：“backend 每个直接 SQL 步骤各自持锁，调用 GEN 前先释放，由 GEN 自取同锁；observer 独立锁计1。”
 先3a7dc84e设计、v1完整封存另v2，留两SQL缺锁红例后真实本机flock衔接；按部署模块SHA305f只读集成，双pin核字节后载入，等待上限取剩余窗，不跨GEN嵌套。首次联跑漏PYTHONPATH与自测错误名预期分别真实失败，修的是执行设置和测试契约名，原34用例/50assert逐字保持。再真实umask077红1→显式PUBLIC控制目录755，安装显式模式；固定每phase state以保nonce/quarantine。最终56绿，Linux双机/MySQL/SUT未跑，根review pending。记录为AI岗位行为，不能当学生本人手写研究报告。
+
+
+## ROLE-backend-SCOPE-BRIDGE-V3-BUDGET（审核反馈驱动，AI岗位修复）
+root原要求：“两个必须修复：1 generation argv 必须传 --budget-receipt PATH --budget-receipt-sha256 FULL64，新GEN的scheduler-token/rotate/start要求；2 _data(preflight/seal)当前只持operation_lock，锁内须先budget.admit绑定实际receipt/同MySQL真实身份与容量，再跑直接SQL。receipt path+SHA必须作为显式PUBLIC configuration/authority固定并验证，不能推384默认、不能借GEN拒绝前先SQL；GEN仍自己持共享锁，父不嵌套。”
+本岗先读部署25d v4/STEPS和确切305f helper，设计e95，再在原v2字节留5红封e5b；实现唯一实际预算回执完整绑定、GEN透传、同锁原admit后SQL，限定原query等待为剩余窗。新用例用原admit/measure/numeric parser及flock而只stub元数据/query transport，当前128/123围绕真实F4预算124验证无384默认。原56只补中性fixture/专测stub，95assert AST原序保持；最终74绿。仍未实际Linux/MySQL/云/SUT，不把自测写成审核已关闭。原失败不覆盖，不AI冒学生本人经历。

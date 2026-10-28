@@ -674,3 +674,10 @@ product40047832510及Docker40047836840两新run completed success/attempt1，未
 - 最终56 passed=46桥/互斥/权限+10安装，0failure/error/skip；Ruff通过。实际原init-user/service-token→原Rows/authstore→seal→自有key解包，SQLite+本机flock只证明本地兼容。真实Linux3.10/双机/MySQL/SUT/CI未由本岗运行。
 - 最终manifest f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b，四小片11700/13021/16245/10852B加300说明均<18000；两机新目的/root/t44-r9/scope-bridge-v2-01。runbook、三阶段template、依赖清单、配置空模板、verification已备。根限定review pending；实际新grant/source/F/nonce和120秒跨机链路由根准入后运行，无自动retry。
 - 没有产品改动/规模节省/正式性能或独立验收结论。研究报告仅提供AI过程素材，不代写学生本人经历。
+
+
+## 2026-10-28 Scope桥v3：修复新v4预算契约阻断
+- 根单向派发审核39a20035：v2缺GEN预算回执两flag且direct SQL未锁内admit；原161b/56证据保持，未用阻断版云试。e95a744c先设计，e5b775f7在原v2字节上实际5红（3 GEN+2 SQL），原XML无损gzip。
+- 5cedb2ca：配置/authority显式mysql_budget原件及APP receipt path/SHA，SOURCE/binding/stop/namespace先核；GEN三action透传同两flag，父锁外；每直接SQL在同operation_lock内先原305f admit当前MySQL身份/max/完整预算，再发SQL。budget query wait仅clamp剩余lease，原SQL/解析不动。没有384默认或伪probe。
+- 最终74=原56+新18，0failure/error/skip；原56三个测试文件95assert AST按原序一致，原5红断言也保留；只补PUBLIC fixture/旧mutex专测中性admit stub。原crypto/helper字节同。真实305f admit+本机flock+合成query证明拒绝次序；当前128预算124可准、123拒绝，不冒实际MySQL。Ruff/diff绿。
+- 最终manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7，四片12216/12953/15289/12840B各加300<18000；新/root/t44-r9/scope-bridge-v3-01；runbook/execute/config/dependencies/verification齐。已通知审核岗新源码与hash，待限定复审。不云/独立private/SUT/新CI/产品改动，原120和全部秘密边界不变。
