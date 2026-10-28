@@ -7,3 +7,5 @@
 - `git diff --check 324d16da 6f5698f2 -- tmp/790_backend_contrast_20261028/{790_bootstrap.py,790_host.py,790_load.py,data/790_stage1.py,edge/790_http.py}`：exit0。
 
 先向root报代码闭合和R790-DOC-01旧LOAD覆盖风险，再封存资料。远端提交/核同回执在publication.json；不发布外部评论或审核状态。
+
+后续只读 `git diff 6f5698f2 25a1fb5a -- agents/backend/contrast-20261028/runbook.md` 核文档修复，七执行文件与manifest diff空，manifest blob核同。再用同指定binary独立重算validation.json五proof摘要，以及a43原红7个test函数AST，全部同；原始结果proof-binding-readback.json，未重新执行任何套件/负载。DOC01关闭先交root，旧6f缺陷记录保留。

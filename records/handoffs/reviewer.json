@@ -1535,7 +1535,7 @@
   "review_branch": "codex/review-diagnostics-20261025",
   "review_outcome": "STOP01_STOP02_CLOSED_EXACT_V2_SEVEN_FILES_LIMITED_6ROLE_EXECUTION_ADMITTED",
   "review_scope": "Only exactC workflow minimalguard/errorarg and856/publicsanitized targeted evidence;fullCIpending",
-  "review_target_sha": "6f5698f2d2df04a2347b893c55d93cb9c3063aa9",
+  "review_target_sha": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c",
   "review_targets": [
     {
       "pr": 14,
@@ -1617,7 +1617,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "790v2 STOP01/02闭合，完整七文件限定6role准入；旧runbook覆盖指令拒绝",
+  "stage": "790v2 STOP01/02及DOC01均关闭，完整v2七文件限定6role准入",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1636,7 +1636,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-28T06:10:57.954490+00:00",
+  "updated_at": "2026-10-28T06:12:55.848466+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -2606,7 +2606,7 @@
     "latest_review_report": "reports/reviews/diagnostics-9a18a0fa7b59c25278cf0717d447962c0b1ba96c.md",
     "latest_review_evidence": "agents/reviewer/evidence/diagnostics-9a18a0f/static-audit.json"
   },
-  "review_target_kind": "exact developer diagnostic v2 seven-file manifest only",
+  "review_target_kind": "unchanged v2 tool6f plus exact doc/proof checkpoint25a1",
   "829_PUBLIC_v2_control_review": {
     "public_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
     "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
@@ -3611,15 +3611,10 @@
     "outcome": "STOP01_STOP02_CLOSED_EXACT_V2_SEVEN_FILES_LIMITED_6ROLE_EXECUTION_ADMITTED",
     "closed": [
       "R790-STOP-01",
-      "R790-STOP-02"
+      "R790-STOP-02",
+      "R790-DOC-01"
     ],
-    "open_findings": [
-      {
-        "id": "R790-DOC-01",
-        "priority": 2,
-        "summary": "runbook step5 points to old LOAD; reject old override and use exact complete v2 seven-file manifest"
-      }
-    ],
+    "open_findings": [],
     "owner_seal_unique_cases": 33,
     "owner_original_red_cases": 14,
     "owner_original_red_failures": 14,
@@ -3629,6 +3624,37 @@
     "formal_7role_600second_or_performance_pass": false,
     "report": "reports/reviews/contrast790-v2-6f5698f2-20261028.md",
     "evidence": "agents/reviewer/evidence/contrast790-v2-20261028/offline-closure-first.json",
-    "updated_at": "2026-10-28T06:10:57.954490+00:00"
+    "updated_at": "2026-10-28T06:12:55.848466+00:00",
+    "initial_open_findings": [
+      {
+        "id": "R790-DOC-01",
+        "priority": 2,
+        "summary": "runbook step5 points to old LOAD; reject old override and use exact complete v2 seven-file manifest"
+      }
+    ],
+    "doc01_closure": {
+      "finding": "R790-DOC-01",
+      "status": "closed",
+      "repair_commit": "4ca7f908912d15ac491def2f95488c1736820c78",
+      "latest_checkpoint": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c",
+      "tool_commit_unchanged": "6f5698f2d2df04a2347b893c55d93cb9c3063aa9",
+      "seven_execution_files_unchanged": true,
+      "manifest_blob_both": "159f22f6bbdb188d978a7689083fce39819b0af1",
+      "old_6f_document_risk_record_retained": true,
+      "new_SUT_or_load_or_cloud_execution": false,
+      "updated_at": "2026-10-28T06:12:55.848466+00:00"
+    },
+    "publication": {
+      "technical_commit": "7bf48cc7a57eaf1357425fabf2d33ba6bb70d214",
+      "branch": "codex/reviewer-resume-20261028",
+      "git_push_exit": 0,
+      "git_ls_remote_exit": 0,
+      "remote_sha": "7bf48cc7a57eaf1357425fabf2d33ba6bb70d214",
+      "remote_matches": true,
+      "github_comment_or_status": false,
+      "followup_doc01_closed_against": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c",
+      "updated_at": "2026-10-28T06:12:55.848466+00:00"
+    },
+    "latest_checkpoint": "25a1fb5aa4953f9fd320e780e96fd2161c6e782c"
   }
 }
