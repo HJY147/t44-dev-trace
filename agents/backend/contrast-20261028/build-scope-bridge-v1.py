@@ -1,5 +1,6 @@
 """Offline, deterministic scope bridge manifest and small public installation commands."""
 
+import ast
 import base64
 import gzip
 import hashlib
@@ -32,7 +33,7 @@ def digest(raw):
 
 def command(entries, manifest_sha, first, final):
     packed = base64.b64encode(gzip.compress(canonical(entries), mtime=0)).decode()
-    return f'''python3 - <<'PY'
+    return f"""python3 - <<'PY'
 import base64,gzip,hashlib,json,os,pathlib,stat
 root=pathlib.Path({DEST!r})
 bundle={manifest_sha!r}
@@ -53,7 +54,7 @@ assert root.is_dir() and not root.is_symlink() and root.resolve()==root
 assert json.loads((root/'install-bundle.PUBLIC.json').read_text())=={{'bundle_sha256':bundle}}
 installed=[]
 for name,item in data.items():
-    assert name==pathlib.Path(name).name and name in {list(FILES) + ['manifest.PUBLIC.json']!r}
+    assert name==pathlib.Path(name).name and name in {list(FILES) + ["manifest.PUBLIC.json"]!r}
     raw=base64.b64decode(item['base64'],validate=True)
     assert sha(raw)==item['sha256']
     write(root/name,raw,0o444)
@@ -66,17 +67,27 @@ if final:
         assert stat.S_IMODE(path.stat().st_mode)==0o444
 print(json.dumps({{'kind':'PUBLIC_SCOPE_BRIDGE_INSTALL','bundle_sha256':bundle,'installed':installed,'all_nine_verified':final,'no_SUT_or_cloud_action':True}},sort_keys=True))
 PY
-'''
+"""
 
 
 def main():
+    constants = {
+        statement.targets[0].id: ast.literal_eval(statement.value)
+        for statement in ast.parse((TOOLS / "bridge_protocol.py").read_text()).body
+        if isinstance(statement, ast.Assign)
+        and isinstance(statement.targets[0], ast.Name)
+        and statement.targets[0].id in {"FREEZE", "EXECUTION"}
+    }
     manifest = {
         "kind": "PUBLIC_SCOPE_CALLBACK_BRIDGE_MANIFEST_V1",
         "version": 1,
-        "tool_freeze_sha256": "33dd522d7b1c498e74848b571537a68a21ea2c815013725ad4a907500eb5309e",
-        "tool_execution_build_sha256": "e8ac37bb681661509873ab53bfa35a6c94f93608774b6f87c172cab5b457e16ae",
+        "tool_freeze_sha256": constants["FREEZE"],
+        "tool_execution_build_sha256": constants["EXECUTION"],
         "files": {
-            name: {"bytes": (TOOLS / name).stat().st_size, "sha256": digest((TOOLS / name).read_bytes())}
+            name: {
+                "bytes": (TOOLS / name).stat().st_size,
+                "sha256": digest((TOOLS / name).read_bytes()),
+            }
             for name in FILES
         },
         "policy_seconds": {
@@ -97,8 +108,10 @@ def main():
     (TOOLS / "manifest.PUBLIC.json").write_bytes(canonical(manifest))
     bundle_sha = digest((TOOLS / "manifest.PUBLIC.json").read_bytes())
     entries = {
-        name: {"base64": base64.b64encode((TOOLS / name).read_bytes()).decode(),
-               "sha256": digest((TOOLS / name).read_bytes())}
+        name: {
+            "base64": base64.b64encode((TOOLS / name).read_bytes()).decode(),
+            "sha256": digest((TOOLS / name).read_bytes()),
+        }
         for name in (*FILES, "manifest.PUBLIC.json")
     }
     groups = []
@@ -117,24 +130,40 @@ def main():
         assert len(text.encode()) + 300 < 18000
         filename = f"install-part{index + 1:02}.PUBLIC.txt"
         (TOOLS / filename).write_text(text)
-        pieces.append({"file": filename, "sha256": digest(text.encode()), "bytes": len(text.encode()),
-                       "description_allowance": 300, "files": list(group)})
+        pieces.append(
+            {
+                "file": filename,
+                "sha256": digest(text.encode()),
+                "bytes": len(text.encode()),
+                "description_allowance": 300,
+                "files": list(group),
+            }
+        )
     template = {
         "kind": "PUBLIC_SCOPE_BRIDGE_CONFIGURATION_V1",
         "bridge_bundle_sha256": bundle_sha,
-        "originals": {name: {"path": None, "sha256": None}
-                      for name in ("grant", "launch", "supervisor", "binding", "neutral", "admission")},
+        "originals": {
+            name: {"path": None, "sha256": None}
+            for name in ("grant", "launch", "supervisor", "binding", "neutral", "admission")
+        },
         "app_phase_dir": None,
         "owner": None,
         "forbidden_key_shas": [None, None],
         "status_path": None,
     }
     (TOOLS / "configuration.template.PUBLIC.json").write_bytes(canonical(template))
-    (TOOLS / "delivery.PUBLIC.json").write_bytes(canonical({
-        "kind": "PUBLIC_SCOPE_BRIDGE_INSTALL_DELIVERY_V1", "destination": DEST,
-        "manifest_sha256": bundle_sha, "parts": pieces,
-        "template_is_not_runnable_authority": True, "cloud_actions_executed": False,
-    }))
+    (TOOLS / "delivery.PUBLIC.json").write_bytes(
+        canonical(
+            {
+                "kind": "PUBLIC_SCOPE_BRIDGE_INSTALL_DELIVERY_V1",
+                "destination": DEST,
+                "manifest_sha256": bundle_sha,
+                "parts": pieces,
+                "template_is_not_runnable_authority": True,
+                "cloud_actions_executed": False,
+            }
+        )
+    )
     print(json.dumps({"manifest_sha256": bundle_sha, "parts": pieces}, sort_keys=True))
 
 
