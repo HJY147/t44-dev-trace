@@ -358,3 +358,5 @@
 - 原cloc对design6a1（应用与a12同）和精确82e92实测5933→5933/净0，均--require-range exit1/超833。boundaries对原catalog审计/七反例、migrations/schema/UoW/原测试/冻结/CI/计数器Git对象全同，未动根/原794工作树。
 - 仅根转PUBLIC性能c96dc391报告/manifest/query gzip；raw887024B与SHA03876a75...实核。a12进程内表达式候选纯构建ABBA约省5us/statement，不是82e的端到端、MySQL/HTTP/云收益或根因证明。当前云仍a12；准确源码review/完整CI/真实MySQL/独立及正式性能待根调度，未预填通过；没有访问原生库/旧tmp796/独立私件或研究正文。
 - 报告/commands/边界/原日志/JUnit/实际计数归档select-resume-20261028；四件及公开Issue4实际回执在最终封档补记。不扩展不必要测试。
+
+- 四件/证据2943271d已push；Issue4实际评论6464790672后按comments/:id精确GET，正文与提交文本逐字相同，github-publication.json保存回执。收尾仅证据，产品/验证源码仍82e92dfc，不新增测试/SQL/HTTP/负载。
