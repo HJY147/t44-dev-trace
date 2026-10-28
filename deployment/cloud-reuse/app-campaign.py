@@ -130,7 +130,8 @@ http {
 
 def compose_profile(images, phase, address, tls_port, http_port, workers):
     """Six persistent product services plus explicitly seventh TLS; operations profiles are one-off."""
-    image = lambda role: images[role]["alias"]
+    def image(role):
+        return images[role]["alias"]
     env = {
         "PYTHONPATH": "/app/backend",
         "DATABASE_URL": "mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}",
