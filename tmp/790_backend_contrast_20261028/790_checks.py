@@ -315,7 +315,7 @@ def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, mo
         with TestClient(app) as real:
 
             class HandlerClient:
-                def __init__(self, url, ca):
+                def __init__(self, url, ca, **kwargs):
                     http.target(url)
                     self.last = {}
                     self.connects = 0
@@ -337,6 +337,7 @@ def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, mo
                         "status": response.status_code,
                         "wall_ns": 1,
                         "caller_thread_cpu_ns": 1,
+                        "request_dispatch_attempted": True,
                     }
                     assert response.status_code in (200, 201, 202), value
                     assert value["meta"]["request_id"] == str(
@@ -420,7 +421,7 @@ def test_real_a12_v2_seed_candidates_cli_sessions_and_original_http(tmp_path, mo
                 and report["expected_requests"] == report["observed_requests"] == 8
             )
 
-            def incomplete(index, slot, packet, ca, barrier, deadline, cycles):
+            def incomplete(index, slot, packet, ca, barrier, deadline, cycles, abort):
                 barrier.wait(timeout=20)
                 return {"client": index, "rows": [], "deadline_reached": True, "slot": slot}
 

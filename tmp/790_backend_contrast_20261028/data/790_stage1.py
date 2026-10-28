@@ -108,17 +108,19 @@ def main(argv=None):
         for identifier in projects:
             command.extend(("--project-id", str(identifier)))
         phase, writes_started = "original_service_token_cli", True
+        budget = http.remaining_timeout(60)
         result = subprocess.run(
             command,
             stdin=subprocess.DEVNULL,
             capture_output=True,
             check=False,
-            timeout=60,
+            timeout=budget,
         )
         if result.returncode:
             raise http.InvalidDiagnostic("Original CLI failed")
         service = http.private_json(service_path)
         phase = "service_scope_and_event_verification"
+        http.remaining_timeout(60)
         with factory() as uow:
             g = uow.gateway
             session = g.get("auth_sessions", service["session_id"])
@@ -171,6 +173,7 @@ def main(argv=None):
                 "stage1_module_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             },
         }
+        http.remaining_timeout(60)
         phase = "write_private_candidate"
         http.write_fd(candidate_fd, packet)
         os.fsync(candidate_fd)

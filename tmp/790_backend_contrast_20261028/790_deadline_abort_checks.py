@@ -1,6 +1,7 @@
 """No-network diagnostic-protocol deadline/abort regressions, not product cases."""
 
 import importlib
+import importlib.util
 import inspect
 import json
 import sys
@@ -148,6 +149,30 @@ def test_shared_abort_during_connect_prevents_late_dispatch(setup):
     with pytest.raises(http.InvalidDiagnostic):
         client.call("/api/v1/internal/projects/1/tasks/2/escalations", body={"owned": True})
     assert events == []
+
+
+def test_already_dispatched_response_can_finish_after_other_client_aborts(setup):
+    control, events, _timeouts, hooks, _connection = setup
+    client = http.Client(control["url"], "unused-owned-ca")
+    client.abort = threading.Event()
+    hooks["request"] = client.abort.set
+    assert client.call("/api/v1/projects/1/tasks/1") == {}
+    assert client.last["request_dispatch_attempted"] and client.last["body_read_complete"]
+    assert len(events) == 1
+    with pytest.raises(http.InvalidDiagnostic):
+        client.call("/api/v1/projects/1/tasks/1")
+    assert len(events) == 1
+
+
+def test_deadline_after_dispatch_preserves_attempt_and_partial_response_state(setup):
+    control, events, _timeouts, hooks, _connection = setup
+    hooks["request"] = lambda: setattr(Clock, "instant", http.HARDSTOP + timedelta(microseconds=1))
+    client = http.Client(control["url"], "unused-owned-ca")
+    with pytest.raises(http.InvalidDiagnostic):
+        client.call("/api/v1/internal/projects/1/tasks/2/escalations", body={"owned": True})
+    assert len(events) == 1
+    assert client.last["request_dispatch_attempted"] is True
+    assert client.last["body_read_complete"] is False
 
 
 def test_another_worker_failure_stops_later_operations_after_inflight_get(setup, monkeypatch):
@@ -322,3 +347,39 @@ def test_s1_reads_crossing_deadline_do_not_dispatch_service_token_cli(setup, mon
             ]
         )
     assert writes == []
+
+
+@pytest.mark.parametrize("expired", [False, True])
+def test_host_oneoff_launch_budget_and_prefix_are_bounded(setup, monkeypatch, tmp_path, expired):
+    spec = importlib.util.spec_from_file_location("owned_host790_deadline", HERE / "790_host.py")
+    host = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(host)
+    monkeypatch.setattr(host.bootstrap, "datetime", Clock)
+    if expired:
+        Clock.instant = http.HARDSTOP + timedelta(microseconds=1)
+    calls = []
+
+    def run(command, **kwargs):
+        calls.append(kwargs["timeout"])
+        Clock.instant = http.HARDSTOP + timedelta(microseconds=1)
+        return SimpleNamespace(returncode=0, stdout=b"owned-prefix", stderr=b"")
+
+    monkeypatch.setattr(host.subprocess, "run", run)
+    public = tmp_path / "result.public.jsonl"
+    host.bootstrap.save(public, {"diagnostic_valid": True})
+    with pytest.raises(ValueError):
+        host.run_owned(
+            "owned",
+            ["never-executed"],
+            public,
+            tmp_path,
+            {"owned-image"},
+            "owned",
+            {},
+            "2026-10-28T07:30:00Z",
+        )
+    if expired:
+        assert calls == [] and not (tmp_path / "owned.stdout").exists()
+    else:
+        assert calls == [2.0]
+        assert (tmp_path / "owned.stdout").read_bytes() == b"owned-prefix"

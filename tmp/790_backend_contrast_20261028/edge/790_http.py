@@ -34,6 +34,10 @@ class InvalidDiagnostic(Exception):
     pass
 
 
+class DiagnosticAborted(InvalidDiagnostic):
+    pass
+
+
 def private_json(path):
     descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
     try:
@@ -152,26 +156,52 @@ def target(url):
     return parsed
 
 
+def remaining_timeout(cap, abort=None):
+    if abort is not None and abort.is_set():
+        raise DiagnosticAborted("Another client failed; no new dispatch")
+    if CONTROL is None:
+        raise InvalidDiagnostic("Explicit contrast control required")
+    remaining = (min(parse_utc(CONTROL["stop_utc"]), HARDSTOP) - datetime.now(UTC)).total_seconds()
+    if remaining <= 0:
+        raise InvalidDiagnostic("Absolute diagnostic deadline expired")
+    return min(cap, remaining)
+
+
 class Client:
-    def __init__(self, url, ca, timeout=15):
+    def __init__(self, url, ca, timeout=15, abort=None):
         self.parsed = target(url)
         self.context = ssl.create_default_context(cafile=ca)
-        self.timeout = timeout
+        self.timeout, self.abort = timeout, abort
         self.connection = None
         self.connects = self.connect_ns = self.requests = 0
         self.last = None
 
+    def socket_timeout(self, check_abort=True):
+        value = remaining_timeout(self.timeout, self.abort if check_abort else None)
+        if self.connection is not None:
+            self.connection.timeout = value
+            if self.connection.sock is not None:
+                self.connection.sock.settimeout(value)
+        return value
+
     def call(self, path, token=None, body=None, key=None, sample=True):
-        self.last = {"utc_start": utc(), "monotonic_start_ns": time.perf_counter_ns()}
+        self.last = {
+            "utc_start": utc(),
+            "monotonic_start_ns": time.perf_counter_ns(),
+            "request_dispatch_attempted": False,
+            "body_read_complete": False,
+        }
         start, cpu = time.perf_counter_ns(), time.thread_time_ns()
         try:
+            remaining_timeout(self.timeout, self.abort)
             if self.connection is None:
                 connection = http.client.HTTPSConnection(
                     self.parsed.hostname,
                     self.parsed.port,
-                    timeout=self.timeout,
+                    timeout=remaining_timeout(self.timeout, self.abort),
                     context=self.context,
                 )
+                self.connection = connection
                 connected = time.perf_counter_ns()
                 connection.connect()
                 self.connect_ns += time.perf_counter_ns() - connected
@@ -187,9 +217,19 @@ class Client:
             raw = None if body is None else json.dumps(body, separators=(",", ":")).encode()
             if raw is not None:
                 headers["Content-Type"] = "application/json"
+            self.socket_timeout()
+            self.last["request_dispatch_attempted"] = True
             self.connection.request("GET" if raw is None else "POST", path, raw, headers)
+            self.socket_timeout(check_abort=False)
             response = self.connection.getresponse()
+            self.last.update(
+                status=response.status,
+                response_headers_received=True,
+                request_id=response.getheader("X-Request-ID"),
+            )
+            self.socket_timeout(check_abort=False)
             content = response.read(2 * 1048576 + 1)
+            self.last["body_read_complete"] = True
             self.requests += 1
             self.last.update(
                 status=response.status,
@@ -283,13 +323,13 @@ def check_packet(packet):
         raise InvalidDiagnostic("Task assignment is not disjoint")
 
 
-def worker(index, slot, packet, ca, barrier, deadline, cycles):
+def worker(index, slot, packet, ca, barrier, deadline, cycles, abort):
     client, rows = None, []
     task, escalation = slot["transition"], slot["escalation"]
     sessions = packet["sessions"]
     token = sessions[slot["transition_role"]]["access_token"]
     try:
-        client = Client(packet["url"], ca)
+        client = Client(packet["url"], ca, abort=abort)
         barrier.wait(timeout=20)
         for _ in range(cycles):
             for operation in (
@@ -298,9 +338,12 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
                 "transitionTask",
                 "createEscalation",
             ):
+                if abort.is_set():
+                    return {"client": index, "rows": rows, "aborted": True, "slot": slot}
                 if time.perf_counter() >= deadline[0] or datetime.now(UTC) >= parse_utc(
                     CONTROL["stop_utc"]
                 ):
+                    abort.set()
                     return {
                         "client": index,
                         "rows": rows,
@@ -361,7 +404,11 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
                         ):
                             raise InvalidDiagnostic("Existing event deduplication not observed")
                     rows.append({"operation": operation, **client.last})
+                except DiagnosticAborted:
+                    rows.append({"operation": operation, **(client.last or {}), "aborted": True})
+                    return {"client": index, "rows": rows, "aborted": True, "slot": slot}
                 except Exception as error:  # noqa: BLE001 - anonymous per-client failure evidence
+                    abort.set()
                     rows.append(
                         {
                             "operation": operation,
@@ -372,6 +419,8 @@ def worker(index, slot, packet, ca, barrier, deadline, cycles):
                     return {"client": index, "rows": rows, "failed": True, "slot": slot}
         return {"client": index, "rows": rows, "slot": slot}
     except Exception as error:  # noqa: BLE001 - anonymous startup/barrier failure evidence
+        abort.set()
+        barrier.abort()
         return {
             "client": index,
             "rows": rows,
@@ -421,7 +470,7 @@ def main(argv=None):
     output, updated = reserve(args.output), None
     try:
         updated = reserve(args.updated_packet)
-        barrier, deadline = threading.Barrier(args.clients + 1), [None]
+        barrier, deadline, abort = threading.Barrier(args.clients + 1), [None], threading.Event()
         selected = packet["slots"][args.slot_offset : args.slot_offset + args.clients]
         before = json.loads(
             json.dumps([{k: slot[k] for k in ("transition", "escalation")} for slot in selected])
@@ -438,6 +487,7 @@ def main(argv=None):
                     barrier,
                     deadline,
                     args.cycles,
+                    abort,
                 )
                 for i in range(args.clients)
             ]
@@ -450,7 +500,8 @@ def main(argv=None):
             results = [future.result() for future in futures]
         packet["updated_at"] = utc()
         complete = not any(
-            result.get("failed") or result.get("deadline_reached") for result in results
+            result.get("failed") or result.get("deadline_reached") or result.get("aborted")
+            for result in results
         ) and all(len(result["rows"]) == args.cycles * 4 for result in results)
         packet["resumable"] = complete
         packet["previous_packet_sha256"] = hashlib.sha256(
@@ -500,6 +551,11 @@ def main(argv=None):
             "status_counts": dict(Counter(str(row.get("status")) for row in rows)),
             "summary": summary,
             "failed_clients": sum(bool(result.get("failed")) for result in results),
+            "aborted_clients": sum(bool(result.get("aborted")) for result in results),
+            "shared_abort_set": abort.is_set(),
+            "http_dispatch_attempts": sum(
+                bool(row.get("request_dispatch_attempted")) for row in rows
+            ),
             "deadline_clients": sum(bool(result.get("deadline_reached")) for result in results),
             "results": [
                 {key: value for key, value in result.items() if key != "slot"}

@@ -183,8 +183,11 @@ def main(argv=None):
             "--seconds",
             "90",
         ]
+        budget = bootstrap.remaining_timeout(control["stop_utc"], 240)
         try:
-            completed = subprocess.run(argv, capture_output=True, check=False, timeout=240, env=env)
+            completed = subprocess.run(
+                argv, capture_output=True, check=False, timeout=budget, env=env
+            )
         except subprocess.TimeoutExpired as error:
             bootstrap.write(args.output_dir / (cohort + ".stdout"), error.stdout or b"")
             bootstrap.write(args.output_dir / (cohort + ".stderr"), error.stderr or b"")
@@ -228,6 +231,7 @@ def main(argv=None):
             or rows[0].get("deadline_clients")
         ):
             raise RuntimeError("INCOMPLETE_OR_FAILED_COHORT_NO_NEXT_COHORT")
+        bootstrap.remaining_timeout(control["stop_utc"], 240)
         previous = directory / "session.private.json"
         previous_hash = sha(previous)
         results.append(

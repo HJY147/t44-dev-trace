@@ -47,6 +47,13 @@ def stamp(value):
     return result
 
 
+def remaining_timeout(stop_utc, cap):
+    remaining = (min(stamp(stop_utc), HARDSTOP) - datetime.now(UTC)).total_seconds()
+    if remaining <= 0:
+        raise ValueError("ABSOLUTE_DIAGNOSTIC_DEADLINE_EXPIRED")
+    return min(cap, remaining)
+
+
 def validate_binding(binding, now):
     match = re.fullmatch(r"t44-cloud-(r28p(7|16)gen[0-9]{2})-p", binding["project"])
     if (
@@ -207,9 +214,10 @@ def main(argv=None):
             "-B",
             *tail,
         ]
+        budget = remaining_timeout(binding["stop_utc"], timeout)
         try:
             result = subprocess.run(
-                command, input=data, capture_output=True, check=False, timeout=timeout, env=env
+                command, input=data, capture_output=True, check=False, timeout=budget, env=env
             )
         except subprocess.TimeoutExpired as error:
             write(output / (label + ".stdout"), error.stdout or b"")
@@ -237,6 +245,7 @@ def main(argv=None):
         write(output / (label + ".stderr"), result.stderr)
         if result.returncode:
             raise RuntimeError("ORIGINAL_PRODUCT_COMMAND_FAILED_PREFIX_PRESERVED")
+        remaining_timeout(binding["stop_utc"], timeout)
         return json.loads(result.stdout)
 
     observed = call("00-source", ["-c", PROBE])

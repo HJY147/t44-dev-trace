@@ -79,9 +79,10 @@ def checked(args):
     return phase, fixture, binding, control, hashlib.sha256(control_raw).hexdigest(), env
 
 
-def run_owned(name, argv, result_path, private, accepted, owner, env):
+def run_owned(name, argv, result_path, private, accepted, owner, env, stop_utc):
+    budget = bootstrap.remaining_timeout(stop_utc, 600)
     try:
-        result = subprocess.run(argv, capture_output=True, check=False, timeout=600, env=env)
+        result = subprocess.run(argv, capture_output=True, check=False, timeout=budget, env=env)
     except subprocess.TimeoutExpired as error:
         bootstrap.write(private / (name + ".stdout"), error.stdout or b"")
         bootstrap.write(private / (name + ".stderr"), error.stderr or b"")
@@ -115,6 +116,7 @@ def run_owned(name, argv, result_path, private, accepted, owner, env):
     if result.returncode:
         raise RuntimeError("ONEOFF_FAILED_NO_RETRY_PREFIX_PRESERVED")
     rows = [json.loads(line) for line in bootstrap.raw(result_path, True).decode().splitlines()]
+    bootstrap.remaining_timeout(stop_utc, 600)
     if rows[-1].get("diagnostic_valid") is not True:
         raise ValueError("EXPLICIT_COMPLETE_STAGE_FINAL_REQUIRED")
     return rows[-1]
@@ -215,6 +217,7 @@ def main(argv=None):
             accepted,
             owner,
             env,
+            binding["stop_utc"],
         )
         if sha(directory / "s1/candidate-01/candidate.private.json") != final["candidate_sha256"]:
             raise ValueError("S1_CANDIDATE_HASH_DIFFERS")
@@ -331,6 +334,7 @@ def main(argv=None):
         accepted,
         owner,
         env,
+        binding["stop_utc"],
     )
     packet = directory / "s2/session-01/session.private.json"
     print(
