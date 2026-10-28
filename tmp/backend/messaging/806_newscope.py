@@ -1,6 +1,7 @@
 """Public behavior properties for messaging's structure-only reduction; no external services."""
 
 import json
+from importlib import import_module
 from types import SimpleNamespace
 from unittest.mock import Mock
 
@@ -12,10 +13,13 @@ from t44.messaging.broker import (
     PikaBroker,
     consume_delivery,
 )
-from t44.messaging.facade import NotificationFacade
 from t44.persistence import PersistenceUnavailable, StatementRejected
 from t44.persistence.delivery import OutboxStore
 from t44.services.errors import Rejected
+
+NotificationFacade = import_module(
+    "tmp.780_messaging_component_20261028.legacy_caller"
+).NotificationFacade
 
 
 @pytest.mark.parametrize("operation", ["publish", "get", "keepalive"])

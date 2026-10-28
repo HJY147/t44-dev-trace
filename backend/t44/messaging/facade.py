@@ -25,7 +25,8 @@ class NotificationFacade:
             require(members, "PROJECT_ACCESS_DENIED")
         return [member["project_id"] for member in members]
 
-    def list(self, g, *, actor_id, query):
+    def list(self, g, c):
+        actor_id, query = c.actor_id, c.query
         where = {
             "recipient_id": actor_id,
             "project_id": self._projects(g, actor_id, query.get("project_id")),
@@ -51,45 +52,26 @@ class NotificationFacade:
             )
         return result
 
-    def _update(self, g, *, actor_id, project_id, notification_id, version, values):
-        self._projects(g, actor_id, project_id)
-        row = g.get("notifications", notification_id, lock="update")
-        require(row and row["project_id"] == project_id, "RESOURCE_NOT_FOUND")
-        require(row["recipient_id"] == actor_id, "ACTION_FORBIDDEN")
-        require(
-            row["version"] == version and version < 2147483647,
-            "VERSION_CONFLICT",
-            current_version=row["version"],
-        )
-        values = {**values(row), "version": version + 1}
-        require(
-            g.update("notifications", {"id": notification_id, "version": version}, values) == 1,
-            "VERSION_CONFLICT",
-            current_version=row["version"],
-        )
-        return notification({**row, **values})
+    def _update(self, g, c, values):
+        self._projects(g, c.actor_id, c.project_id)
+        row = g.get("notifications", c.path["notification_id"], lock="update")
+        require(row and row["project_id"] == c.project_id, "RESOURCE_NOT_FOUND")
+        require(row["recipient_id"] == c.actor_id, "ACTION_FORBIDDEN")
+        c.check_version(row)
+        changed = c.cas(g, "notifications", row, values(row), record_diff=False)
+        return notification(changed)
 
-    def mark_read(self, g, *, actor_id, project_id, notification_id, version, now):
+    def mark_read(self, g, c):
+        return self._update(g, c, lambda row: {"read_at": row["read_at"] or c.clock})
+
+    def handle(self, g, c):
+        require(bool(c.body["evidence"]), "EVIDENCE_REQUIRED")
         return self._update(
             g,
-            actor_id=actor_id,
-            project_id=project_id,
-            notification_id=notification_id,
-            version=version,
-            values=lambda row: {"read_at": row["read_at"] or now},
-        )
-
-    def handle(self, g, *, actor_id, project_id, notification_id, version, note, evidence, now):
-        require(bool(evidence), "EVIDENCE_REQUIRED")
-        return self._update(
-            g,
-            actor_id=actor_id,
-            project_id=project_id,
-            notification_id=notification_id,
-            version=version,
-            values=lambda row: {
-                "handled_at": now,
-                "handling_note": note,
-                "handling_evidence": evidence,
+            c,
+            lambda row: {
+                "handled_at": c.clock,
+                "handling_note": c.body["note"],
+                "handling_evidence": c.body["evidence"],
             },
         )

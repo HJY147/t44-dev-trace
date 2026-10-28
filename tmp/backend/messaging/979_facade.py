@@ -1,15 +1,19 @@
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
+from importlib import import_module
 from threading import Barrier, Event
 
 import pytest
 from fastapi.testclient import TestClient
 from t44.api import create_app
 from t44.contracts import violations
-from t44.messaging.facade import NotificationFacade
 from t44.persistence.delivery import OutboxStore
 from t44.services.common import SCHEMAS
 from t44.services.errors import Rejected
 from t44.settings import Settings
+
+NotificationFacade = import_module(
+    "tmp.780_messaging_component_20261028.legacy_caller"
+).NotificationFacade
 
 
 def notices(case):
