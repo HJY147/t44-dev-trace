@@ -453,3 +453,8 @@ P16 PUBLIC两hash精确核，8000请求零HTTP错，started15.144699s较P721.890
 ## 2026-10-28 全后端结构设计研究
 
 后端AI在codex/backend-architecture-scale-20261028自20000108先设计57354c71，再只读全43计入Python(4834行)/51路径及原T44/冻结接口；产品同a12，固定计量5933/5100仍失败。新通知受信Call+共享CAS跨backend/messaging设计片段净37，保版本/值求值次序、锁/UoW/空audit diff；需owner批准内部签名迁移，未实施。其它小预算32；F/G未实现工作包最乐观扣重合计102，仍5831超731，不能报目标可行或真实节省。301定义/动态注册/公开支持审计无已证可删大块；来源映射不授权删seed/migration/CLI/安全。用户明确继续现有口径。所有产品/契约/DDL不变、实际净减0；无新测试/CI/数据库/云/性能/独立验收。报告agents/backend/architecture-scale-20261028/report.md，prompt ROLE-backend-ARCHITECTURE-SCALE-20261028-v1。
+
+
+## 2026-10-28 组件Call后端实际提交
+
+产品2d947d237328521e46b9766859ca166a4c54f789（基线5d）只改Business六组件(g,Call)分派及Call.cas record_diff默认True；False只保原diff不关闭审计，原guard/SQL/锁/UoW顺序不变。固定cloc5935→5916真实净减19，仍超816。新782先8红6绿后14绿；包含782的157个SQLite开发目标156绿1红，唯一旧NotificationFacade签名缺口500，原断言不改，不称端到端绿。Ruff/format最终绿，AST/FrozenAPI/DDL边界证明齐。消息owner已从2d接手另树迁移，后端不跨岗/不投云。真实prompt ROLE-backend-COMPONENT-CALL-20261028-v1，报告agents/backend/component-call-20261028/report.md；原失败/脱敏双SHA/四件齐，无CI/数据库/云/正式性能/独立验收新声明。

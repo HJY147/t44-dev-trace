@@ -715,3 +715,13 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - DDL14初始默认字段、异常helper静态式13/工厂式7互斥、first2、UTC/UUID alias3均为设计预算。全量94异常点改helper反而+131/+160；首次elif片段解析问题v2排除，旧失败保留。F schema目录189替换估160–210净-21..29；G scan双路径62估52–72净-10..10，重叠默认6扣除，全部最乐观102仍5831/5100超731，非实现保证/不声称架构不可能。
 - 用户继续现有口径，明确不删除/迁出CLI/seed/migration/前端或安全能力；来源映射只说明需求/工程成本。读锁SQLAlchemy2.1.6真实Inspector实现及官方文档，CHECK仅name/sqltext、索引缺visibility，不能删native新反例防线。
 - 只本岗设计/报告/日志/交接，产品改动0/实际净减0；无新tmp编号/产品测试/CI/MySQL/Rabbit/前端/云/正式性能/独立验收。完整报告含51路径哈希、301定义定位、94片段预算及37行RFC。未读792/private、未改研究正文或他岗文件。
+
+
+## 2026-10-28 后端组件Call实际实施
+
+- 后端AI，ROLE-backend-COMPONENT-CALL-20261028-v1，独立基线5d5e0a15；先63748058边界/782测试，产品2d947d237328521e46b9766859ca166a4c54f789已push读回。仅Business六项(g,c)静态分派与Call.cas record_diff=True默认开关两个文件；False保旧diff且审计照常，锁/SQL/expected/maxversion/错误顺序/UoW原样。无兼容壳、无跨owner产品变动。
+- 原固定counter/cloc基线5935→5916，Business167→147、Common140→141，真实净减19，仍超816/require-range退出1；不沿旧a12的5933，不把未实施消息18算入。
+- 必要782旧源8红6绿→14绿。随后包含782的原5个SQLite模块157项156绿1红/0error/0skip，36.50s；唯一旧NotificationFacade.list签名造成默认列表500而非200，原断言不改，明确中间态。消息owner已按同源独立接手，并收到接口/命令。
+- Ruff绿；format首次仅EOF空行红保留，窄修后3文件绿。common原AST仅unwrap新if/kw后整模块一致，Business除准入删/增节点外整模块一致；Runtime/其它产品/FrozenAPI/DDL不动。
+- HTTP失败trace里1个一次性SQLite token在log/XML各1处脱敏，精确原件0700/0600保存于/tmp/t44-backend-component-call-20261028-raw，双SHA及XML解析记录齐；原失败保留，不冒产品绿。
+- 报告agents/backend/component-call-20261028/report.md及verification/计量/JUnit/命令齐；无完整CI/MySQL/MQ/云/正式性能/独立验收，不读783/792、不改学生研究。后端独立提交不可投云，root待消息联合迁移/审核/全回归。
