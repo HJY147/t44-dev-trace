@@ -493,3 +493,8 @@ ROLE-reviewer-CONTRAST790-V2-20261028-v1；精确6f5698f2d2df04a2347b893c55d93cb
 ## 2026-10-28 新10:30窗口限定审核
 
 ROLE-reviewer-WINDOW1030-20261028-v1；精确5a88/a8c1包、4de69部署时间/namespace。两次静态raw/AST/hash/gzip复算exit0：bootstrap/http仅各一处HARDSTOP7→10、五文件逐字同，transport仅STOP替换，新manifest0ef08a/transport7e2d同，600sTTL/abort/阈值/cohort不改；测试数据替换assert数28/21/17不变；payload全七件+manifest及transport核同；profile4672/222c/e5b0及新r28p16gen02/root02计划核。owner33+13 XML绿和6本地installer只核记录，不跑负载/云/SUT/私件。先交root新绑定新gen02限定6role准入，不延旧绑定/旧packet/成绩。编码真实18836/18648/21668超过保守18000，root回传经立即不保存通道双机实际part3 all7成功（APP t-hz071dw3ojmi8lc/LOAD t-hz071dw3tbb14w0）、transport安装/LOADkeygen后CUA读key超时，尚无新prepare/S2；按root实际来源分列，不冒本岗云观察/官方页面实核，不重投。旧P16过期/0cohort、旧0730timer停止保留原root回传，不移植新成绩。报告reports/reviews/window1030-a8c1f7a2-4de69da8-20261028.md；0独立792private/研究正文修改/开发测试联系。
+
+
+## 2026-10-28 v4实际预算与scope桥限定审核
+
+AI reviewer；ROLE-reviewer-V4-BRIDGE-20261028-v1。b5926031部署+161b82ee桥精确Git/双SHA核：发现P1 V4-BRIDGE-01（GEN未传预算收据path/SHA）与V4-BRIDGE-02（direct SQL锁内未actual admit），已先发root并获当前包不投云的回复。原120秒/APP有限lease/LOAD二次活性与pending/同目录hardlink/quarantine/停止出口静态核；不将快照冒持续guard心跳。一次纯exact-generation+实际budget.admit探针初次mac临时别名canonical前置拒绝导致断言exit1，改fixture resolve后exit0，未改实现；JSON保两实际拒绝。无Docker/MySQL/HTTP/Linux/systemd/云/fullCI/业务测试、未读独立private/keys/实际结果或联系tester。报告reports/reviews/v4-bridge-20261028.md；结论BLOCKED_PENDING_OWNER_FIX_AND_REVIEW。当前最终派生包未审，原成绩不复用，修复由原owner，封档释放槽。

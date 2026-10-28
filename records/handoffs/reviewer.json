@@ -3714,5 +3714,29 @@
       "outcome": "NARROW_WINDOW1030_SOURCE_AND_NAMESPACE_ADMITTED_NEW_GEN02_ONLY",
       "updated_at": "2026-10-28T08:31:38.425940+00:00"
     }
+  },
+  "v4_bridge_20261028_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-V4-BRIDGE-20261028-v1",
+    "deployment_commit": "b5926031a8a9d1ea4ac9efb2f0416fa00db61f7a",
+    "bridge_commit": "161b82ee792c272fd29a54a04cf2545007e1aa99",
+    "budget_helper_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+    "bridge_manifest_sha256": "f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b",
+    "report": "reports/reviews/v4-bridge-20261028.md",
+    "evidence": "agents/reviewer/evidence/v4-bridge-20261028/exact-interface-probe.json",
+    "decision": "BLOCKED_PENDING_OWNER_FIX_AND_REVIEW",
+    "blockers": [
+      "V4-BRIDGE-01",
+      "V4-BRIDGE-02"
+    ],
+    "own_inline_probe_exits": [
+      1,
+      0
+    ],
+    "owner_suites_rerun": false,
+    "cloud_or_SUT_or_native_MySQL": false,
+    "independent_private_reads_or_tester_contact": false,
+    "new_final_derived_profile_reviewed": false,
+    "technical_sent_to_root_before_admin": true
   }
 }
