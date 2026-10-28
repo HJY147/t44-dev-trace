@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="0.202" timestamp="2026-10-28T19:10:04.369575+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_explicit_pool_values_change_only_capacity[5-10-expected0]" time="0.033" /><testcase classname="" name="test_explicit_pool_values_change_only_capacity[15-0-expected1]" time="0.001"><failure message="assert (5, 10) == (15, 0)&#10;  &#10;  At index 0 diff: 5 != 15&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10535b1a0&gt;
+size = '15', overflow = '0', expected = (15, 0)
+
+    @pytest.mark.parametrize(
+        "size,overflow,expected",
+        [("5", "10", (5, 10)), ("15", "0", (15, 0)), ("20", "0", (20, 0)),
+         ("5", "0", (5, 0)), (" 15 ", "+0", (15, 0))],
+    )
+    def test_explicit_pool_values_change_only_capacity(monkeypatch, size, overflow, expected):
+        monkeypatch.setenv("T44_DB_POOL_SIZE", size)
+        monkeypatch.setenv("T44_DB_MAX_OVERFLOW", overflow)
+        actual = asdict(Settings(database_url=URL).mysql_settings())
+        capacity = actual.pop("pool_size"), actual.pop("max_overflow")
+        previous = asdict(original_defaults())
+        previous.pop("pool_size")
+        previous.pop("max_overflow")
+&gt;       assert capacity == expected
+E       assert (5, 10) == (15, 0)
+E         
+E         At index 0 diff: 5 != 15
+E         Use -v to get more diff
+
+tmp/786_database_pool_20261028/786_pool_settings.py:65: AssertionError</failure></testcase><testcase classname="" name="test_explicit_pool_values_change_only_capacity[20-0-expected2]" time="0.000"><failure message="assert (5, 10) == (20, 0)&#10;  &#10;  At index 0 diff: 5 != 20&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1067f6f60&gt;
+size = '20', overflow = '0', expected = (20, 0)
+
+    @pytest.mark.parametrize(
+        "size,overflow,expected",
+        [("5", "10", (5, 10)), ("15", "0", (15, 0)), ("20", "0", (20, 0)),
+         ("5", "0", (5, 0)), (" 15 ", "+0", (15, 0))],
+    )
+    def test_explicit_pool_values_change_only_capacity(monkeypatch, size, overflow, expected):
+        monkeypatch.setenv("T44_DB_POOL_SIZE", size)
+        monkeypatch.setenv("T44_DB_MAX_OVERFLOW", overflow)
+        actual = asdict(Settings(database_url=URL).mysql_settings())
+        capacity = actual.pop("pool_size"), actual.pop("max_overflow")
+        previous = asdict(original_defaults())
+        previous.pop("pool_size")
+        previous.pop("max_overflow")
+&gt;       assert capacity == expected
+E       assert (5, 10) == (20, 0)
+E         
+E         At index 0 diff: 5 != 20
+E         Use -v to get more diff
+
+tmp/786_database_pool_20261028/786_pool_settings.py:65: AssertionError</failure></testcase><testcase classname="" name="test_explicit_pool_values_change_only_capacity[5-0-expected3]" time="0.000"><failure message="assert (5, 10) == (5, 0)&#10;  &#10;  At index 1 diff: 10 != 0&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1067f7380&gt;
+size = '5', overflow = '0', expected = (5, 0)
+
+    @pytest.mark.parametrize(
+        "size,overflow,expected",
+        [("5", "10", (5, 10)), ("15", "0", (15, 0)), ("20", "0", (20, 0)),
+         ("5", "0", (5, 0)), (" 15 ", "+0", (15, 0))],
+    )
+    def test_explicit_pool_values_change_only_capacity(monkeypatch, size, overflow, expected):
+        monkeypatch.setenv("T44_DB_POOL_SIZE", size)
+        monkeypatch.setenv("T44_DB_MAX_OVERFLOW", overflow)
+        actual = asdict(Settings(database_url=URL).mysql_settings())
+        capacity = actual.pop("pool_size"), actual.pop("max_overflow")
+        previous = asdict(original_defaults())
+        previous.pop("pool_size")
+        previous.pop("max_overflow")
+&gt;       assert capacity == expected
+E       assert (5, 10) == (5, 0)
+E         
+E         At index 1 diff: 10 != 0
+E         Use -v to get more diff
+
+tmp/786_database_pool_20261028/786_pool_settings.py:65: AssertionError</failure></testcase><testcase classname="" name="test_explicit_pool_values_change_only_capacity[ 15 -+0-expected4]" time="0.000"><failure message="assert (5, 10) == (15, 0)&#10;  &#10;  At index 0 diff: 5 != 15&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x106836cf0&gt;
+size = ' 15 ', overflow = '+0', expected = (15, 0)
+
+    @pytest.mark.parametrize(
+        "size,overflow,expected",
+        [("5", "10", (5, 10)), ("15", "0", (15, 0)), ("20", "0", (20, 0)),
+         ("5", "0", (5, 0)), (" 15 ", "+0", (15, 0))],
+    )
+    def test_explicit_pool_values_change_only_capacity(monkeypatch, size, overflow, expected):
+        monkeypatch.setenv("T44_DB_POOL_SIZE", size)
+        monkeypatch.setenv("T44_DB_MAX_OVERFLOW", overflow)
+        actual = asdict(Settings(database_url=URL).mysql_settings())
+        capacity = actual.pop("pool_size"), actual.pop("max_overflow")
+        previous = asdict(original_defaults())
+        previous.pop("pool_size")
+        previous.pop("max_overflow")
+&gt;       assert capacity == expected
+E       assert (5, 10) == (15, 0)
+E         
+E         At index 0 diff: 5 != 15
+E         Use -v to get more diff
+
+tmp/786_database_pool_20261028/786_pool_settings.py:65: AssertionError</failure></testcase></testsuite></testsuites>
