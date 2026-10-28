@@ -894,5 +894,76 @@
   },
   "history_round9_validation": "docs/reports/round9-ci-validation.json: evidence/link/JSON/scope and authored-doc/script diff checks passed; full diff check exit2 on 19 original raw-log whitespace lines retained unchanged; not product tests",
   "history_round9_phase1_commit": "14be82a3",
-  "history_round9_phase2_commit": "fccf5c82"
+  "history_round9_phase2_commit": "fccf5c82",
+  "requirements_source_audit_20261028": {
+    "role": "documentation",
+    "stage": "bounded original T44 requirements audit",
+    "implementation_status": "original-source audit complete; no product or gate change",
+    "actor": "AI /root/documents_requirements_audit_20261028",
+    "base_sha": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+    "branch": "codex/documentation-requirements-audit-20261028",
+    "updated_at": "2026-10-28T09:17:50.464494+00:00",
+    "artifacts": [
+      "docs/reports/requirements-source-audit-20261028.md",
+      "docs/reports/requirements-source-audit-20261028-sources.json",
+      "docs/reports/requirements-source-audit-20261028-validation.json",
+      "agents/documentation/prompts/ROLE-documentation-REQUIREMENTS-SOURCE-AUDIT-20261028-v1.md",
+      "docs/reports/requirements-source-audit-20261028-validation-first-failure.json"
+    ],
+    "interfaces": {
+      "inputs": "original taskbook and classroom ASR transcripts, local provenance manifest, project source-count policy and specs mapping",
+      "outputs": "short verified original quotes, file SHA/text lines/current-render page locators, original vs derived metric distinction",
+      "no_acceptance_authority": true
+    },
+    "commands_executed": [
+      "read AGENTS/TASK/team/template/GitHub conventions",
+      "separate git worktree at22f666e2",
+      "SHA-256 and OOXML-to-extracted-text comparison",
+      "targeted rg/transcript text search",
+      "documents bundled read-only render; missing-CJK failure preserved; process-font retry; six final page PNG views",
+      "static source_count.py/derived specifications comparison",
+      "JSON/quotes/source hashes/scope/git diff correspondence checks; no product runs",
+      "isolated AST-extracted pure classify function evaluated on10paths; source_count.main and product imports not executed"
+    ],
+    "results": {
+      "original_range": [
+        3500,
+        5100
+      ],
+      "original_concurrency": 400,
+      "original_P95_ms_limit": 270,
+      "original_minutes": 10,
+      "seconds_conversion": 600,
+      "original_throughput": "at least1000次/分钟",
+      "frontend_counted_by_script": true,
+      "full_count_policy_equivalence": "UNKNOWN_FROM_ORIGINAL_MATERIALS",
+      "original_hardware_limits": "UNKNOWN_FROM_ORIGINAL_MATERIALS",
+      "local_original_hashes_match_manifest": true,
+      "T29_compilation_excluded": true,
+      "no_result_transplant": true,
+      "source_evidence_checks": 73,
+      "source_evidence_checks_all_passed": true,
+      "first_evidence_check_failure_preserved": "71 checks:70 pass/1 wrong T29 paragraph locator; corrected2 instead of3"
+    },
+    "unverified": [
+      "effective-code inclusion/exclusion algorithm",
+      "active-VU/request/connections concurrency definition",
+      "latency clock boundary and percentile aggregation",
+      "warmup duration and admission conditions",
+      "throughput operation definition and per-minute vs average window",
+      "hardware limits and permitted resource-change comparison protocol",
+      "ASR wording/audio accuracy; original audio not replayed",
+      "teacher fixed PDF/Word pagination; reported pages are current LO render"
+    ],
+    "questions": [
+      "no new user question; exact missing originals are effective-code counting rules, performance sampling protocol and hardware-condition clarification/amendment"
+    ],
+    "prompt_refs": [
+      "ROLE-documentation-REQUIREMENTS-SOURCE-AUDIT-20261028-v1"
+    ],
+    "delivery": {
+      "commit_push": "scoped commit/push and exact local-vs-remote HEAD receipt returned to coordinator after execution; no embedded self-SHA",
+      "no_issue_message_or_main_merge": true
+    }
+  }
 }

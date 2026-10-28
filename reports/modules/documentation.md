@@ -60,3 +60,13 @@ a12 product40636976337总FAIL：static E731；backend714全绿、行2508/2790=89
 40637880409/8c四job实际SUCCESS，原4artifact+原runlog完整归档、各job实际checkout核8c。新原件独立计算714全过、行2508/2790、分支709/852；FE89与行364/390，标记union245均属全套。a12旧productFAIL与其DockerSUCCESS仍独立保留。
 
 总9artifact913162B/3runlog316791B，artifact官方digest全部核同、runlog仅本地SHA；12ZIP保护与报告/JSON/AST/checkouts检查完成。阶段1ZIP忽略遗漏及明确force-add修正记录保留，不改原件。最终report/analysis/validation与handoff已更新，所有新产品/测试/云/CI动作仍0，独立/性能/规模/账单/本人研究仍开放。
+
+## 2026-10-28 原始规模与性能要求限定复核
+
+本岗AI在22f666e25d2b7280224e58eb1c91cf6be0077ac7独立worktree完成原件SHA、提取文及source_count.py静态来源对照。报告：docs/reports/requirements-source-audit-20261028.md；来源与资料检查另有同名前缀JSON；实际prompt为ROLE-documentation-REQUIREMENTS-SOURCE-AUDIT-20261028-v1。
+
+T44原文硬指标3500–5100行、400并发/P95≤270ms、持续10分钟、≥1000次/分钟确认；600秒为换算。原文未给有效代码纳入排除算法、VU/计时/逐分钟细则及CPU/内存/worker条件，均UNKNOWN_FROM_ORIGINAL_MATERIALS。脚本数值和前端计入可确认，SQL/测试/配置/工具排除属于项目解释，不能宣称与原要求完全一致。旧crosscheck原件hash字段实际指提取文hash，已在新报告辨明，旧文件未改。
+
+首次只读渲染缺中文字形保留为失败；仅补渲染进程字体环境后6页全看，性能/规模/AC08在本次渲染3/4/5页，原DOCX未变。课堂一般3000–6000、另一档无上限不自动覆盖T44；自称T29的完整汇总及其数字/经历排除。ASR未回听局限保留。
+
+输出仅需求证据，不改产品/测试/统计/门槛、不重计5933、不改判旧结果、a12/P7/P16或独立验收。无792/private、云、HTTP、SQL、负载或学生研究正文操作；待原始澄清缺口为有效代码算法、采样协议及硬件条件。资料核验与产品验证分别报告。
