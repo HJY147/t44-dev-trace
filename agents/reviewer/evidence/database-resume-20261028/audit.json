@@ -1,0 +1,41 @@
+{
+  "operator": "AI reviewer",
+  "prompt_ref": "ROLE-reviewer-DATABASE-RESUME-20261028-v1",
+  "base": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+  "production_source": "26d6328ab882b06eb9f6026a29656999e122f57d",
+  "candidate_checkpoint": "3d0dff7d91bd83b6ca73af585371b44b179d2c3a",
+  "production_and_checkpoint_migrations_blob": "6c1c3e843da41f42317a59ddfe181c26f48d6c6e",
+  "outcome": "NO_NEW_NARROW_CODE_BLOCKER_INTEGRATION_GATE_CANDIDATE_ONLY",
+  "new_actionable_code_findings": [],
+  "report": "reports/reviews/database-resume-20261028-26d6328ab882b06eb9f6026a29656999e122f57d.md",
+  "offline_probe": "agents/reviewer/evidence/database-resume-20261028/offline-probe-first.json",
+  "own_offline_probe_exit": 0,
+  "own_offline_probe_groups": 5,
+  "frozen_ddl_counts": {
+    "tables": 18,
+    "columns": 226,
+    "index_columns": 146,
+    "checks": 59
+  },
+  "owner_native_after_static_source": "26d6328ab882b06eb9f6026a29656999e122f57d",
+  "owner_native_cases": 31,
+  "owner_native_case_matches": 31,
+  "owner_source_bindings_recomputed": 4,
+  "owner_raw_before_mismatches_retained": 7,
+  "owner_source_count_within_range": false,
+  "own_mysql_execution": false,
+  "full_tests_or_CI_or_cloud_or_browser_or_account_operations": false,
+  "independent_private_or_cases_or_keys_read": false,
+  "developer_or_tester_contact": false,
+  "products_or_owner_tests_modified": false,
+  "merge_approve_reviewer_success_or_formal_acceptance": false,
+  "commands": "agents/reviewer/evidence/database-resume-20261028/commands.md",
+  "unverified": [
+    "reviewer real MySQL execution",
+    "full exact integration static/contracts/coverage CI",
+    "source-size gate remains failed",
+    "formal independent acceptance",
+    "formal performance"
+  ],
+  "updated_at": "2026-10-28T05:20:54.583195+00:00"
+}

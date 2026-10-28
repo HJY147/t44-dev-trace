@@ -594,3 +594,8 @@ ROLE-reviewer-DATABASE-SIZE-V2-v1：只immutable107/f0d，12持久旧signature/C
 ## ROUND9 消息候选与规模复核
 
 AI reviewer，ROLE-reviewer-ROUND9-v1；从043fc464建独立worktree。精确c4b3归档源码绑定39模块通过/23真integration未选，主5875→5862净13；原未绑定/后端only/未过滤数分别保留不重复。限定无新阻塞，待root新合并CI，不发发布success。API2914精确归档12边界通过，net0/总体收益NP建议暂缓。报告与证据reports/reviews/messaging-size-c4b3f114-round9.md、evidence/round9。无云、独立私件、产品改写。较大架构净账另续。
+# 2026-10-28 DB native catalog resume 独立限定审核
+
+实际派工 ROLE-reviewer-DATABASE-RESUME-20261028-v1；base22f666e25d2b7280224e58eb1c91cf6be0077ac7、production26d6328ab882b06eb9f6026a29656999e122f57d、checkpoint3d0dff7d91bd83b6ca73af585371b44b179d2c3a。在独立worktree核 AGENTS、字段字典、冻结DDL与实际产品diff；产品仅migrations.py +75/-1，production/checkpoint产品及测试blob一致。无新窄scope代码阻断，先向root交集成/受影响门禁候选结论，非合并/验收/发布通过。
+
+自己从冻结DDL物理行解析18表226列146索引列59CHECK，首次离线5组探针exit0且stderr空，含全量226原生列快照对照、PRIMARY方向、额外非唯一辅助索引、目录异常关闭。指定既有解释器执行，无真实MySQL/完整测试/云/CI/账号/浏览器/无关DB动作，未读解释器相邻env/log/DB。开发after-static原始回执31/31和4文件hash重算同源26d6328a，只作为owner运行证据；旧before7漏判/旧bandit1发现保留。source-count-static within_range=false仍全局门禁未过。没有产品/测试修改，无独立私件/用例/密钥读取，无开发/测试联系。报告及原始证据见reports/reviews/database-resume-20261028-26d6328ab882b06eb9f6026a29656999e122f57d.md与agents/reviewer/evidence/database-resume-20261028。
