@@ -1,22 +1,13 @@
 """Project membership and iteration planning, using the injected parameterized gateway."""
 
 from .codes import State
-from .common import mask, model, page, plan, plan_values, roles
+from .common import mask, model, plan, plan_values, roles
 from .errors import require
 
 
 class Projects:
     def project_model(self, row, membership):
         return model("Project", row, my_roles=roles(membership["roles_mask"]))
-
-    def member_model(self, g, row):
-        return model(
-            "Member",
-            row,
-            user=model("User", g.get("users", row["user_id"])),
-            roles=roles(row["roles_mask"]),
-            active=bool(row["active"]),
-        )
 
     def createProject(self, g, c):
         c.project = c.create(
@@ -33,28 +24,8 @@ class Projects:
         )
         return self.project_model(c.project, member)
 
-    def listProjects(self, g, c):
-        memberships = g.rows("project_members", {"user_id": c.actor_id, "active": 1})
-        by_project = {m["project_id"]: m for m in memberships}
-        return page(
-            g,
-            "projects",
-            {"id": list(by_project)},
-            c.query,
-            lambda r: self.project_model(r, by_project[r["id"]]),
-        )
-
     def getProject(self, g, c):
         return self.project_model(c.project, c.membership)
-
-    def listProjectMembers(self, g, c):
-        return page(
-            g,
-            "project_members",
-            {"project_id": c.project_id, "active": 1},
-            c.query,
-            lambda r: self.member_model(g, r),
-        )
 
     def addProjectMember(self, g, c):
         c.manager()
@@ -63,13 +34,13 @@ class Projects:
         user_id = users[0]["id"]
         existing = c.members(g, {"user_id": user_id}, lock="update", limit=1)
         if existing and existing[0]["active"]:
-            return self.member_model(g, existing[0])
+            return self.row_model(g, "Member", existing[0])
         values = {"roles_mask": mask(c.body["roles"]), "active": 1}
         if existing:
             row = c.cas(g, "project_members", existing[0], values, expected=existing[0]["version"])
         else:
             row = c.create(g, "project_members", {**values, "user_id": user_id}, updated=True)
-        return self.member_model(g, row)
+        return self.row_model(g, "Member", row)
 
     def _change_member(self, g, c, remove):
         c.manager()
@@ -101,7 +72,7 @@ class Projects:
         changed = c.cas(
             g, "project_members", row, {"roles_mask": new_mask, "active": 0 if remove else 1}
         )
-        return {"acknowledged": True} if remove else self.member_model(g, changed)
+        return {"acknowledged": True} if remove else self.row_model(g, "Member", changed)
 
     def changeProjectMember(self, g, c):
         return self._change_member(g, c, False)
@@ -119,16 +90,10 @@ class Projects:
         )
         return plan_values(payload)
 
-    def iteration_model(self, row):
-        return model("Iteration", row, plan=plan(row, iteration=True))
-
     def createIteration(self, g, c):
         c.manager()
         row = c.create(g, "iterations", self.capacity(g, c, c.body), updated=True)
-        return self.iteration_model(row)
-
-    def listIterations(self, g, c):
-        return page(g, "iterations", {"project_id": c.project_id}, c.query, self.iteration_model)
+        return self.row_model(g, "Iteration", row)
 
     def changeIteration(self, g, c):
         c.manager()
@@ -155,7 +120,7 @@ class Projects:
         require(all(task["owner_id"] in owners for task in active), "CAPACITY_REFERENCE_INVALID")
         changed = c.cas(g, "iterations", row, {**values, "plan_version": row["plan_version"] + 1})
         self.schedule_diff(g, c, row, changed, iteration=True)
-        return self.iteration_model(changed)
+        return self.row_model(g, "Iteration", changed)
 
     def schedule_diff(self, g, c, before, after, *, iteration=False):
         key = "plan_version" if iteration else "schedule_version"

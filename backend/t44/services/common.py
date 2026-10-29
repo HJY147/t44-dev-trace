@@ -74,7 +74,7 @@ def task_model(row):
     return model("Task", row, plan=plan(row))
 
 
-def page(g, table, where, query, serialize, *, predicates=()):
+def page(g, table, where, query, serialize, *, predicates=(), prepare=None):
     p, size = query.get("page", 1), query.get("page_size", 20)
     rows = g.rows(
         table,
@@ -84,6 +84,8 @@ def page(g, table, where, query, serialize, *, predicates=()):
         limit=size,
         predicates=predicates,
     )
+    if prepare is not None:
+        serialize = prepare(rows)
     return {
         "items": [serialize(row) for row in rows],
         "page": p,
