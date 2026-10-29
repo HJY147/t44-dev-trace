@@ -34,14 +34,15 @@
     "policy": "LOCAL_ONLY_UNTIL_REVIEWED_PREPARATION_AND_FIXED_TEST_RUNTIME"
   },
   "current_application": {
-    "tested_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
-    "effective_lines": 5887,
+    "effective_lines": 5880,
     "files": 65,
     "upper_bound": 5100,
-    "excess_lines": 787,
+    "excess_lines": 780,
     "size_passed": false,
     "range_check_exit": 1,
-    "count_record": "tmp/768_integration_r29/source-count.json"
+    "count_record": "tmp/768_integration_r29/source-count-r29b.json",
+    "source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "prior_native_CI_tested_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463"
   },
   "development_CI": {
     "source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
@@ -90,9 +91,27 @@
   },
   "local_followup": {
     "prompt": "records/prompts/ROOT-R29B-LOCAL-QUALITY-20261029.md",
-    "backend_candidate": "pending; no gain counted",
-    "database_candidate": "pending; no gain counted",
-    "independent_test_tool": "new full local sealed-package E2E pending; simulated HTTPS only; old cloud NP unchanged"
+    "backend_candidate": "41a111f2 integrated after limited reviewer verdict; -3 effective lines",
+    "database_candidate": "8f290307 integrated after limited reviewer verdict; -4 effective lines",
+    "independent_test_tool": "new full local sealed-package E2E pending; simulated HTTPS only; old cloud NP unchanged",
+    "current_native_CI": {
+      "source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+      "run_id": 40827655008,
+      "status": "in_progress",
+      "scope": "development regressions only"
+    },
+    "limited_review": {
+      "source_commits": [
+        "41a111f270e949326202b8af5770db8aa7102e82",
+        "8f29030756139061341e0a636c8774ca790964bd"
+      ],
+      "review_final": "d470a65d7153f91beb20c68c374cb5db0c3a551c",
+      "checks": 72,
+      "new_P1": 0,
+      "new_P2": 0,
+      "report": "reports/reviews/dry-r29b-20261029.md",
+      "overall_gate": "not_passed"
+    }
   },
   "reports": [
     "reports/final/performance-r29-20261029.md",
@@ -101,7 +120,7 @@
     "docs/prompting/R29-process-evidence.md"
   ],
   "open": [
-    "787-line strict size gap",
+    "780-line strict size gap",
     "next exact-source full independent acceptance and 400/600/270/1000 performance",
     "independent tool local E2E and limited review",
     "actual resource evidence analysis before performance claims",
