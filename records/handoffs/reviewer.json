@@ -4609,5 +4609,108 @@
     },
     "current_P1_code_open": 0,
     "current_P2_code_open": 0
+  },
+  "final_window_20261029_static_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-FINAL-WINDOW-20261029-v1",
+    "root_start": "10e8bd813a570951230eefc40abcb2dd03bfa0cd",
+    "product": "356f29983c904e949245aedfad464efc1bf7b63d",
+    "base": "5868779e949adef066fe26bffbc4f2e8afee7649",
+    "product_new_P1_P2": 0,
+    "ops_findings": [
+      {
+        "id": "F_LIMIT",
+        "priority": "P1",
+        "initial": "operator +2400/G-15 conflicts with root Fmax1500/G-120",
+        "status": "CLOSED_IN_REVIEWED_69bd7b_WORKTREE_BYTES"
+      },
+      {
+        "id": "FINAL18_PURPOSE",
+        "priority": "P1",
+        "initial": "derived HTTP rejects actual new manifest lacking old purpose",
+        "status": "CLOSED_IN_REVIEWED_92fb77_WORKTREE_BYTES"
+      }
+    ],
+    "current_additional_startup_P1": 0,
+    "exact_local_evidence": {
+      "source": "356f29983c904e949245aedfad464efc1bf7b63d",
+      "CI_build_git_sha": "63c781692b66bbf75f5bb5eed3eaf95a6eb82235",
+      "CI_build_tool_sha": "add7d91065ed32779f6d692e153d31c514e2d331c9a326f59131490a33644982",
+      "ops_snapshots": {
+        "final-image-bundle.py": "7d6ea9d8990ef2200ac73e062ade9962035247513ad46a5554114f0596618b9e",
+        "final-runtime-profile.py": "92fb77d7fa636f1ca69213dc6e0c35440e585e4d06ba6b4781a837de0585b1ac",
+        "final-f-operator.py": "69bd7b3fb8382467b8baf514e43eee274d8653df7aa4ea6568a6c7bd0bf9bfdc",
+        "final-app-backup.py": "677a44f1bf90735bdf2a7cf71084621882828a967eb06f3c400e6ca2ac5f4a01",
+        "final-timeplan.py": "e6005de24b75db19655dc69a465f0e9d7f38dc7d65b673871a19c9890b8e86c6",
+        "final-f-project.py": "41cf1a50629ec45c070b65d5abb97284cdfeb3e954b7d92a110b321ea666b2ce"
+      },
+      "context_Git_bytes_verified": 94,
+      "CI_runtime_records": 60,
+      "actual_APP_loaded": false,
+      "producer_final": "1b4f30c72beee10da14e0c56a0358a2c2ae16577",
+      "producer_manifest": "023063c342854c7b2bea107774007fcd89973a4d0ab85f5841db31a6a8cb2a5e",
+      "LOAD_config_distinct_runtime_pure_checks": true,
+      "new18_manifest_actual_derived_gate_pass": true,
+      "F_operator_pure_cases": [
+        {
+          "case": "valid",
+          "accepted": true
+        },
+        {
+          "case": "past1500",
+          "accepted": false
+        },
+        {
+          "case": "pastGreserve",
+          "accepted": false
+        }
+      ],
+      "backup_output_recursion_bounds": true,
+      "synthetic_approval_used_only_in_disposable_local_derive_fixture": true,
+      "cloud_services_HTTP_keys_or_QA_private_read": false
+    },
+    "native_product_run_from_root": 40869266343,
+    "native_CI_repeated": false,
+    "new_size_scope_from_user_via_root": {
+      "core_files": 62,
+      "core_lines": 5037,
+      "offline_auxiliary": 780,
+      "whole_lines": 5817,
+      "whole_require_range_original_exit": 1,
+      "reviewer_recount": false,
+      "size_is_not_current_startup_blocker": true
+    },
+    "decision": "LIMITED_STATIC_PREPARATION_ADMISSIBLE_ROOT_CONTROLS_BOOT",
+    "actual_target_live_tests_backup_restore_release": "NOT_APPROVED_NOT_EXECUTED",
+    "cloud_service_Docker_HTTP_keys_or_QA_PRIVATE_access": false,
+    "ops_Git_commit_binding": "OWNER_WORKTREE_SHA_SNAPSHOT_NOT_YET_FINAL_COMMITTED",
+    "report": "reports/reviews/final-window-20261029-static.md",
+    "evidence": "tmp/751_reviewer_final_window"
+  },
+  "ci90b_archive": {
+    "source_sha": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+    "product_run": 40928297882,
+    "docker_run": 40928465279,
+    "docker_actual_checkout": "56217f14568c7cd5ac6e83aaf4d890883e755ef9",
+    "backend_tests": 797,
+    "frontend_tests": 89,
+    "backend_lines": [
+      2485,
+      2754
+    ],
+    "backend_branches": [
+      719,
+      852
+    ],
+    "frontend_lines": [
+      364,
+      390
+    ],
+    "zip_count": 5,
+    "members": 128,
+    "no_rerun_cloud_QA_PRIVATE": true,
+    "report": "reports/reviews/90b734f6-ci-evidence.md",
+    "evidence": "records/ci/90b734f6-40928297882",
+    "prompt": "ROLE-reviewer-90B-CI-EVIDENCE-v1"
   }
 }
