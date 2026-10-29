@@ -1,0 +1,16 @@
+SIM102 Use a single `if` statement instead of nested `if` statements
+   --> backend/t44/persistence/migrations.py:292:9
+    |
+290 |               raise MigrationError("Frozen CHECK grammar is unsupported")
+291 |           table = key.split(":", 1)[0].split(".", 1)[0]
+292 | /         if not key.endswith(native) and label != "missing_table":
+293 | |             if not actual.get(f"{table}:missing_table") or (
+294 | |                 label in ("type", "nullable", "default") and key not in actual
+295 | |             ):
+    | |______________^
+296 |                   continue
+297 |           if key not in actual or actual[key] != value:
+    |
+help: Combine `if` statements using `and`
+
+Found 1 error.

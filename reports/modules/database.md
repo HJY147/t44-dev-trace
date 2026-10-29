@@ -1,3 +1,11 @@
+# 数据库模块：R30结构候选净增15，已否决并恢复产品
+
+2026-10-29，数据库AI，ROLE-database-ARCHITECTURE-R30-20261029-v1。独立树从7374b363建立，设计bd819c57；实际统一catalog快照原型009b7acdbfa0e0497d7cc36bbbae86805283dcfd替代反射临时字典/两类signature和native重复投影。规范Git物理+16；固定cloc应用5880→5895/migrations370→385，真实净增15，未找到安全百行方案。
+
+按无净减规则否决，4a1acafbc1b895a3df5f6cdbf6e47b59b546fb1d已恢复产品基准字节；重计5880/65文件，最终净0，严格范围仍exit1/超780。候选py_compile及导入/元数据构造smoke通过，Ruff真实SIM102失败保留；不称兼容回归/native/CI通过。旧R29B、原794/956及全部原assert/负例未改，无迁移要求。
+
+没有pytest/build/benchmark/MySQL/HTTP/独立/云执行，无新增依赖或跨岗接口变化。完整[本轮报告](../../agents/database/architecture-r30/report.md)、真实提示词、命令/原输出/计量/边界在architecture-r30；原型只作否决证据，不采用009b、不代root合并。以下历史保留。
+
 # 数据库模块：R29B本地查询注册候选，实减4，仍超783
 
 2026-10-29；数据库AI，ROLE-database-DRY-R29B-20261029-v1。基准确a92e5e73，设计4e317333，产品/测试8f29030756139061341e0a636c8774ca790964bd，独立分支codex/database-dry-r29b已push。仅migrations._catalog_defects四项注册改成有序标签映射；所有SQL、预期/比较、CHECK/DDLhash/版本/锁、seed/Rows/scan/事务与原断言不变。

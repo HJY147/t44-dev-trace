@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "r29b-local-catalog-registration-candidate-size-target-not-met",
-  "implementation_status": "R29B局部产品8f290307仅原生catalog查询注册结构；应用5887→5883净减4，仍超783，未找到百行/≥798安全方案。新6+原联合133通过/43未选；非native/CI/云验收，待root取舍。",
+  "stage": "r30-catalog-architecture-prototype-rejected-product-restored",
+  "implementation_status": "R30实际结构原型009b固定cloc净增15已否决；4a1恢复7374产品字节，应用5880/65文件、净0、仍超780。候选py_compile/构造smoke通过、Ruff SIM102红；未行为/native/CI验收，无百行方案。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -662,6 +662,21 @@
       "path": "agents/database/dry-r29b/verification.json",
       "kind": "Actual source-bound results and LOC",
       "status": "created"
+    },
+    {
+      "path": "agents/database/architecture-r30/report.md",
+      "kind": "Actual architecture prototype rejection report",
+      "status": "rejected and reverted"
+    },
+    {
+      "path": "tmp/762_database_architecture_r30/762_candidate_boundary.py",
+      "kind": "Exact-source boundary and construction smoke",
+      "status": "passed; not behavior acceptance"
+    },
+    {
+      "path": "agents/database/architecture-r30/verification.json",
+      "kind": "Actual candidate/restored LOC and failures",
+      "status": "created"
     }
   ],
   "interfaces": [
@@ -1174,6 +1189,19 @@
         "backend/t44/persistence/migrations.py",
         "tmp/765_database_dry_r29b/765_catalog_equivalence.py",
         "agents/database/dry-r29b/report.md"
+      ]
+    },
+    {
+      "id": "ROLE-database-ARCHITECTURE-R30-20261029-v1",
+      "archive": "agents/database/prompts/ROLE-database-ARCHITECTURE-R30-20261029-v1.md",
+      "actual_prompt_source": "Root task, scoped architecture approval and check release verbatim",
+      "improvement_reason": "Implemented and measured full structural candidate; reject net growth before changing owner assertions or consuming native CI",
+      "outputs": [
+        "agents/database/architecture-r30/report.md",
+        "tmp/762_database_architecture_r30/762_candidate_boundary.py",
+        "agents/database/WORKLOG.md",
+        "reports/modules/database.md",
+        "records/handoffs/database.json"
       ]
     }
   ],
@@ -1912,5 +1940,51 @@
     "full_staged_diff_check_exit": 2,
     "full_staged_diff_check_reason": "Raw git push stderr remote lines retain trailing whitespace",
     "source_docs_json_diff_check_exit": 0
+  },
+  "architecture_r30_20261029": {
+    "base": "7374b3637b06465d448fc2e81952ba18fc676315",
+    "design": "bd819c57",
+    "rejected_candidate": "009b7acdbfa0e0497d7cc36bbbae86805283dcfd",
+    "restored_source": "4a1acafbc1b895a3df5f6cdbf6e47b59b546fb1d",
+    "branch": "codex/database-architecture-r30",
+    "candidate_application": 5895,
+    "restored_application": 5880,
+    "application_files": 65,
+    "candidate_net": 15,
+    "final_net": 0,
+    "candidate_migrations": 385,
+    "restored_migrations": 370,
+    "candidate_persistence": 1672,
+    "restored_persistence": 1657,
+    "require_range_exits": [
+      1,
+      1
+    ],
+    "above_limit_after_restore": 780,
+    "candidate_py_compile_exit": 0,
+    "candidate_ruff_exit": 1,
+    "candidate_ruff_finding": "SIM102",
+    "candidate_construction_smoke_exit": 0,
+    "behavior_validation": false,
+    "original_tests_changed": false,
+    "pytest_run": false,
+    "build_run": false,
+    "benchmark_run": false,
+    "mysql_run": false,
+    "cloud_run": false,
+    "full_ci_run": false,
+    "production_diff_from_base": [],
+    "decision": "Rejected and reverted: no net source reduction; no hundred-line candidate",
+    "interfaces": {
+      "input": "Final product identical to base",
+      "output": "Final product identical to base",
+      "errors": "Final product identical to base",
+      "versions": "Frozen DDL/hash/version unchanged"
+    },
+    "unresolved": [
+      "StrictLOC remains 780 above limit",
+      "No hundred-line persistence reduction found"
+    ],
+    "evidence": "agents/database/architecture-r30"
   }
 }

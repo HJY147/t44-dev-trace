@@ -1,0 +1,38 @@
+{
+  "base": "7374b3637b06465d448fc2e81952ba18fc676315",
+  "candidate": "009b7acdbfa0e0497d7cc36bbbae86805283dcfd",
+  "exact_unchanged_functions": [
+    "_check_signature",
+    "migrate"
+  ],
+  "protected_paths_with_zero_diff": [
+    "specs",
+    "backend/t44/persistence/schema.py",
+    "backend/t44/persistence/schema_v1.sql",
+    "backend/t44/persistence/rows.py",
+    "backend/t44/persistence/uow.py",
+    "backend/t44/persistence/seed.py",
+    "backend/t44/persistence/scans.py",
+    "backend/t44/persistence/accounts.py",
+    "backend/t44/persistence/delivery.py",
+    "backend/t44/persistence/engine.py",
+    "backend/pyproject.toml",
+    "backend/requirements.lock",
+    "tmp/backend",
+    "tmp/812_database_size",
+    "scripts/metrics",
+    "agents/database/dry-r29b"
+  ],
+  "smoke": {
+    "row_counts": {
+      "tables": 18,
+      "columns": 226,
+      "indexes": 146,
+      "checks": 59,
+      "foreigns": 55
+    },
+    "projected_features": 1286,
+    "expected_conflicts": [],
+    "limitation": "Construction smoke only; no database or behavior acceptance"
+  }
+}

@@ -394,3 +394,12 @@
 - 首次新增临时文件format红后只格式化临时文件；首push TLS exit128原摘录保留、同命令retry成功。两次探索路径不存在及首轮runner并发metadata丢一条，真实记录exploration.json；stdout/stderr保存，runner现增加单命令JSON，最终顺序Ruff/format/Bandit绿，不掩盖失败。
 - 仅本地非integration开发验证，无MySQL/完整CI/coverage/HTTP/独立/云/性能，没有PRIVATE/未公开测试读取或测试岗联系，不代根merge。四件、prompt、命令/原日志/JUnit/计数/边界在dry-r29b。Issue4实际评论6489314712，经GitHub插件按单ID精确GET逐字一致，回执github-publication.json。根待取舍，当前规模目标未达。
 - 封档全量暂存diff-check真实exit2，4行原push成功stderr的remote尾空格，原字节保留；限定排除stdout/stderr/JUnit后的源码/说明/JSON检查exit0，不称整包绿。两个实际输出/command均归档。
+
+
+## 2026-10-29 — ROLE-database-ARCHITECTURE-R30-20261029-v1，结构候选净增否决
+
+- 新树codex/database-architecture-r30基准确7374b363，旧R29B不动。先读全persistence及SQLAlchemy2.1.6公开TypeEngine.compile源码；root限定准入统一TABLES预期+固定INFORMATION_SCHEMA快照。释放前仅阅读/设计/编辑，收到释放后才静态和计量，无校准CPU重检查干扰。
+- 设计bd819c57，实际产品原型009b7acdbfa0e0497d7cc36bbbae86805283dcfd：五类目录快照与统一features替代Inspector临时字典、_index_signature/_foreign_signature和分离native构造。规范Git+185/-169，物理+16；原固定cloc源码应用5895/migrations385/persistence1672，较基准5880/370/1657实际净增15，strict exit1。适配层抵消去重，不声称百行收益。
+- 原型py_compile和真实导入/构造smoke通过：18表226列、146索引行/59CHECK行/55FK列行、1286feature，仅构造不是DB/行为验收。CHECK parser与migrate完整字节同、其他所有产品/冻结/依赖/原测试/计数器/旧R29B零差异。候选Ruff SIM102真实红保留，没有把否决后的风格微调当成果。
+- 按无净减规则拒绝009b并4a1acafbc1b895a3df5f6cdbf6e47b59b546fb1d恢复产品到7374字节；原计数4a1实际5880/65files，范围仍exit1/超780，最终净0。无百行候选，不代root合并。原794/956需注入点适配，但从未改任何assert/负例；净增已否决，不再申请迁移/原生CI或做无意义全回归。
+- 没有pytest/build/benchmark/coverage/MySQL/HTTP/独立/云；无PRIVATE或未公开用例读取、无测试岗联系、无新增依赖。真实prompt/原型SHA/撤回/命令/失败/固定计量/边界在architecture-r30，四件同步。
