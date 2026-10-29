@@ -1,6 +1,7 @@
 """Frozen request/response contract used by the running API."""
 
 import json
+from functools import lru_cache
 from importlib.resources import files
 
 from jsonschema import Draft202012Validator, FormatChecker
@@ -35,6 +36,39 @@ def _absolute_refs(value):
     return value
 
 
+def _shape(value):
+    if type(value) is dict:
+        return dict, tuple((_shape(key), _shape(item)) for key, item in value.items())
+    if type(value) is list:
+        return list, tuple(map(_shape, value))
+    if type(value) in (str, int, float, bool, type(None)):
+        return type(value), value
+    raise TypeError("Non-native schema value")
+
+
+def _unshape(key):
+    kind, value = key
+    if kind is dict:
+        return {_unshape(name): _unshape(item) for name, item in value}
+    return list(map(_unshape, value)) if kind is list else value
+
+
+@lru_cache(maxsize=128)
+def _compiled(schema, checkers):
+    result = validator(_unshape(schema))
+    result.format_checker.checkers = dict(checkers)
+    return result
+
+
+def _validation_instance(schema):
+    try:
+        key, checkers = _shape(schema), tuple(FormatChecker.checkers.items())
+        hash((key, checkers))
+    except (TypeError, RecursionError):
+        return validator(schema)
+    return _compiled(key, checkers)
+
+
 def violations(schema, value):
     return [
         {
@@ -42,7 +76,7 @@ def violations(schema, value):
             "rule": str(error.validator),
             "message": f"Does not satisfy {error.validator}",
         }
-        for error in list(validator(schema).iter_errors(value))[:100]
+        for error in list(_validation_instance(schema).iter_errors(value))[:100]
     ]
 
 
