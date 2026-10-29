@@ -1,0 +1,31 @@
+{
+  "kind": "RELAY_FINAL_LOCAL_SCOPE",
+  "final_code_sha256": "0faba87792014ec0b16e18ef08286da234d8744f2d1792f409dccd01e939ea59",
+  "TLS_narrow_code_sha256": "9305e76d790b75e5cfb2c9834a6f04caef00e638db4fa44f3f8c33d210f80bb2",
+  "delta_after_TLS_run": "unit_status accepts successful explicit RemainAfterExit active/exited/MainPID0; no network or original runner code changed",
+  "actual_unit_status_mock_subchecks": [
+    {
+      "case": "not_created",
+      "expected_ready": false,
+      "actual_ready": false
+    },
+    {
+      "case": "running",
+      "expected_ready": false,
+      "actual_ready": false
+    },
+    {
+      "case": "completed_retained",
+      "expected_ready": true,
+      "actual_ready": true
+    },
+    {
+      "case": "completed_inactive",
+      "expected_ready": true,
+      "actual_ready": true
+    }
+  ],
+  "mock_not_Linux_systemd": true,
+  "Python310_grammar_checked": true,
+  "SUT_or_cloud_executed": false
+}

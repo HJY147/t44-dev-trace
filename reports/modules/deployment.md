@@ -607,3 +607,5 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 真实本地raw和JSON响应各回放17片，仅测试root映射；每次27份运行代码和3manifest/权限核对通过，重复首片拒覆盖及整包/内件/额外文件负例0执行。curl网络/云/服务均未跑。固定包commit后再附2–3KB curl/API wrapper，只一响应，整包及每原件SHA通过后才按原片安装。
 
 最终APP/LOAD小shell1925/1926B，完整outer编码+300=2868，固定包d80ea057…/120717B/8002f6fd…；每端单curl API响应兼容raw/JSON，全部hash先过后原17片。真实本地安装与outer shell显式fake网络检查分别记录，等长SHA篡改0执行；无TLS绕过、云/服务/CI动作。新端口计划22443/18480/22445/18481仅记root选择，实际准入待root回执。
+
+2026-10-29：交本地验证的自动私网TLS密文relay，LOAD预等待→原receiver→consumer一次，原SUT/13工具/矩阵门禁不改。11独特TLS/协议场景，真实原receiver，consumer只捕获未执行；4种完成unit状态只mock，3.10仅语法核。独立cost_stop_utc与540秒操作余量不改原330/600规则，云/Linux/性能/费用未由本岗验证。设计、接口、边界与实测位于agents/deployment/opaque-relay-20261029与tmp/776；根实际安装/准入另记。
