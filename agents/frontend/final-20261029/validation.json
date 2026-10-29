@@ -67,6 +67,9 @@
     },
     {
       "event": "Image pixel comparison preparation lacked PIL in Python3.12; exact PNG SHA comparison used instead. No images were edited."
+    },
+    {
+      "event": "git diff --cached --check first reported build.log trailing whitespace and test.log blank EOF. Original bytes retained in .raw.gz before text normalization; final aggregate diff check rerun."
     }
   ],
   "boundaries": [
@@ -75,5 +78,9 @@
     "Development self-check only, no independent acceptance, performance or full project scale pass."
   ],
   "updated_at": "2026-10-29T11:31:16.756800+00:00",
-  "cleanup": "Own Vite5186 stopped via its exec session; browsers closed; only own dependency symlinks removed, shared dependencies untouched."
+  "cleanup": "Own Vite5186 stopped via its exec session; browsers closed; only own dependency symlinks removed, shared dependencies untouched.",
+  "raw_log_sha256": {
+    "test.log": "e8db6f1755d36dd54778e6822496a37d3d5471d4c92ec0effce4f2f802092d5d",
+    "build.log": "c4630e4a905519c5baa49dc32adcf109989cbf9c58ddd5f6a72732f835418c1e"
+  }
 }
