@@ -25,4 +25,4 @@
 
 新未来准备版与原执行版分目录保存；原17件manifest66ab未改。新18件manifest0fc61e、9个Python运行件逐项核字节；严格409后只读核对原任务与唯一现存事件，不重试POST，不降低CAS，也不把冲突响应计作成功。81项本地检查通过；包含40个原断言不变的回归、合成并发和拒绝路径，不能说成云上六条冲突已全部恢复。
 
-新APP HTTP入口改为经实际绑定的官方backend运行时，保持edge网络、无数据库/AMQP业务环境、UID10001、只读及2CPU/1GiB/128PID限额；LOAD/独立工具继续无产品源的4f。新runner的G/C等式错误与资源限额遗漏经复审修正，5项本地mock和审核方6项纯时钟/真实parser检查通过；各范围不相加。原错误fixture首绿、真实契约红及后续绿均保留。代码有限准入通过，实际Docker/网络/新HTTP和整体准备仍未执行，保持CLOUD_UNREADY，不因此开机或发grant。具体字节与检查范围见同目录future-fix.PUBLIC.json。
+新APP HTTP入口改为经实际绑定的官方backend运行时，保持edge网络、无数据库/AMQP业务环境、UID10001、只读及2CPU/1GiB/128PID限额；LOAD/独立工具继续无产品源的4f。新runner的G/C等式错误与资源限额遗漏经复审修正，5项本地mock和审核方6项纯时钟/真实parser检查通过；各范围不相加。原错误fixture首绿、真实契约红及后续绿均保留。代码有限准入通过，实际Docker/网络/新HTTP和整体准备仍未执行，保持CLOUD_UNREADY，不因此开机或发grant。具体字节与检查范围见records/cloud/r30window01/future-fix.PUBLIC.json。
