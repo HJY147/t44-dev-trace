@@ -18,3 +18,10 @@
 - 按固定 cloc 2.10 与原应用范围独立复计。二候选的组合仅为临时字节投影；不由审核岗集成。
 - 先向 root 发送限定技术结论，再封 `reports/reviews/dry-r29b-20261029.md`、岗位三件及 `tmp/764_reviewer_dry_r29b` 的原始输出。
 - 未扩编 agent；没有访问云、PRIVATE 或独立测试岗。没有把本轮局部探针称为独立验收。
+
+
+## 后发实际派工原文
+
+极窄后发审核，不新增产品/测试，不联系测试岗。root最新deae80ce9cf4cbd12930f262df0f375425508caf（同0b应用），CI40827655008准确0b四job success、796/89、line2502/2773、branch713/848，4原ZIP官方size/digest已核95成员于records/ci/r29b-0bffe0c5-40827655008（你可只核summary、run、manifest及2个原XML/FE JSON，不重复95）。准备把经你审过两个候选的组合源和文档fast-forward到codex/integration，仅开发集成；main PR21仍draft，不发global reviewer/stage，不宣称规模/性能通过。请只核0b相对你审过a92e+两个产品的应用变更恰那2文件且字节匹配候选、后发元数据到deae没有app变更、CI准确source成功、5880仍over780，然后是否允许该有限开发同步。原raw Vite build.log有一个尾空格cachedcheck2，scopeJSON保留不当产品错误。若发现阻断先告知；通过也限定范围。可先给结论后1页追加自己审核记录；不改main保护或发布reviewer/stage。
+
+实际只读精确源/指定归档与GitHub官方run、PR21状态；不重复CI或95成员。原报告追加一页、岗位记录追加本次结论；没有新增产品/测试。
