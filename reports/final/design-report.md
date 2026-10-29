@@ -41,11 +41,11 @@
 
 迁移要求显式库名、受控MySQL版本、空库准入、锁、marker与checksum；失败后保留partial状态并拒绝冒充成功。当前CHECK解析使用锁定sqlglot30.25.0的MySQL AST，保留完整词法、单表达式及节点白名单，拒绝未知结构与注释，不运行优化器。只规范化不影响语义的标识符大小写/引号、括号和合法字符集引导，字符串、参数及逻辑算术树仍保留。
 
-列签名整体比较类型、长度、unsigned、fsp、nullable和default，内部CLI标签合并为column_definition不改变HTTP错误码或结果字段。Index/FK直接expected元组仅适用于完整hash绑定Frozen v1；四条原生目录SQL及_catalog_defects函数AST保持原样。SQLite与语法树等价关系不能替代真实MySQL返回CHECK形式的验证，当前准确源整体CI详细原件待统一核定。
+列签名整体比较类型、长度、unsigned、fsp、nullable和default，内部CLI标签合并为column_definition不改变HTTP错误码或结果字段。Index/FK直接expected元组仅适用于完整hash绑定Frozen v1；四条原生目录SQL及_catalog_defects函数AST保持原样。SQLite与语法树等价关系不能替代真实MySQL返回CHECK形式的验证，当前准确源796项开发CI原件已核；SQLite局部等价不能替代真实依赖或独立验收。
 
 ## 3 事务和并发设计
 
-![业务成功拒绝和幂等时序](../../docs/diagrams/design-report-03-transaction.png)
+![业务成功拒绝和幂等事务](../../docs/reports/diagrams/FINAL-20261029-transactions.png)
 
 Runtime先作当前身份校验及短事务claim。已完成的同键同内容请求只返回原业务快照与原response_request_id，但新请求仍须有当前项目访问权；同键异内容或租约竞争依原错误拒绝。当前owner进入主事务后再次锁定会话、幂等及业务范围，Business完成守卫和CAS，成功业务、审计、outbox及COMPLETE快照同一次提交。
 
@@ -123,10 +123,10 @@ App在无用户时卸载整个shell与浮层。clearSession先增加上下文序
 
 | 设计部分 | 开发证据和检验目的 | 尚未由此证明 |
 | --- | --- | --- |
-| schema及分页 | 新188差分、原305 HTTP/领域、N+1红绿 | 全量native、真实MySQL性能、独立验收 |
-| CHECK和通知批写 | DB239含18新owner、196表达式/38416等价关系、批写回滚 | 当前MySQL目录实际形式与云负载结果 |
+| schema及分页 | 新188差分、原305 HTTP/领域、N+1红绿 | 该局部未证全量；真实MySQL性能与独立验收另证 |
+| CHECK和通知批写 | DB239含18新owner、196表达式/38416等价关系、批写回滚 | CI覆盖外目录变体及云负载结果 |
 | UI及样式 | 89组件、typecheck/build、60状态/12PNG相同 | 云业务E2E、完整computed-style通过 |
-| 事务/MQ/扫描 | 原模块和真实依赖证据，准确源统一CI另核 | 全故障切点、真实人日、正式P95 |
+| 事务/MQ/扫描 | 原模块和真实依赖，准确源796项CI原件已核 | 全故障切点、真实人日、正式P95 |
 | 运行镜像和备份 | 本地5项真实Git/加密流验证及镜像构建 | 云已部署、APP已备份、删除后恢复 |
 
 本表反向关联需求FR01至08，完整对应见[双向追踪](../../docs/reports/FINAL-20261029-traceability.json)与[测试报告](test-results-report.md)。当前源码及冻结hash由本岗静态核对，不把静态检查、AI审核COMMENT或Word版式QA记为产品通过。

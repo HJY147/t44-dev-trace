@@ -17,6 +17,18 @@
       "sha256": "e6f16a8ce9521307b0ede551cb428350073c8bf401df790e8d5a895c4aaed235",
       "exit_code": 0,
       "log": "docs/reports/diagrams/FINAL-20261029-quality-trace-png.log"
+    },
+    {
+      "output": "docs/reports/diagrams/FINAL-20261029-transactions.svg",
+      "sha256": "13fb6158cc7022e839e4b09bff1fc77b8f816541558f14413a4f602700cf2426",
+      "exit_code": 0,
+      "log": "docs/reports/diagrams/FINAL-20261029-transactions-svg.log"
+    },
+    {
+      "output": "docs/reports/diagrams/FINAL-20261029-transactions.png",
+      "sha256": "c4f8bf5a0c61c3a1b0fab822fdecb03542e4ca674a9a83b6c2cb6a3328aa989c",
+      "exit_code": 0,
+      "log": "docs/reports/diagrams/FINAL-20261029-transactions-png.log"
     }
   ],
   "visual_inspection": {
@@ -27,5 +39,14 @@
   },
   "earlier_layout": "docs/reports/diagrams/FINAL-20261029-first-layout",
   "reason": "first image was too tall for readable Word; remove internal-node external edge, retain three horizontal groups",
-  "old_diagrams_modified": false
+  "old_diagrams_modified": false,
+  "additional_figures": [
+    {
+      "mermaid": "docs/reports/diagrams/FINAL-20261029-transactions.mmd",
+      "sha256": "57e9661cf212f44b0798f3b309e8a29d7e1767f2318a7642a765e67005e71e1d",
+      "reason": "replace too-small dense transaction chart in new FINAL Word only; old M3 source and image unchanged",
+      "elapsed_seconds": 2.1952891669934615,
+      "visual_inspection": "passed original PNG view by documentation AI; labels/arrows/edges complete; larger text than dense original sequence"
+    }
+  ]
 }

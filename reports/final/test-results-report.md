@@ -43,7 +43,7 @@ DB四件为[prompt](../../agents/database/final-20261029/prompt.md)、[报告](.
 
 ### 2.4 整体CI和镜像
 
-root已实时GET核定产品整体Actions40869266343于20261029 12:05:20 UTC完成success、四job均绿。root已下载并核五件官方ZIP的SHA/CRC，原XML/JSON逐字gzip保存：后端796项、0失败/0错误/0跳过；43生产Python全源、排除0，行2485/2754为90.232389%，分支719/852为84.389671%。88.8519%的混合值不能当行覆盖率。前端89/89、0失败/0pending，行364/390为93.33%，分支821/932为88.09%。这些是开发CI，不是独立验收。[公开CI原件摘要](../../records/ci/final-candidate-20261029/summary.PUBLIC.json)由root封档bdaa814c，本树只取该七记录为c2d273c0，产品源仍356f；不读取任何私密QA。
+root已实时GET核定产品整体Actions40869266343于20261029 12:05:20 UTC完成success、四job均绿。root已下载并核两个官方ZIP的SHA/CRC，五份原XML/JSON逐字gzip保存：后端796项、0失败/0错误/0跳过；43生产Python全源、排除0，行2485/2754为90.232389%，分支719/852为84.389671%。88.8519%的混合值不能当行覆盖率。前端89/89、0失败/0pending，行364/390为93.33%，分支821/932为88.09%。这些是开发CI，不是独立验收。[公开CI原件摘要](../../records/ci/final-candidate-20261029/summary.PUBLIC.json)由root封档bdaa814c，本树只取该七记录为c2d273c0，产品源仍356f；不读取任何私密QA。
 
 免费双镜像Actions40869531724真实成功，工具63c78169、产品源356f299；backend和web均新构建，部署岗后续已核官方artifact12894714534完整ZIP SHA及六原件，sourceprofile actual_loaded=false/root_approved=false，仍不能填已导入/部署。部署岗初始本地5项验证使用真实Git/generic函数、显式Docker seams及真实OpenSSL加密解密SHA相等，不等云、SQL、HTTP或正式负载；APP实际备份/恢复仍待执行。
 

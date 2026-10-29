@@ -242,7 +242,7 @@ def figure(doc, f, number, root):
     inline_shape.set('descr',name+' 复用M3已渲染图，非本轮重绘')
 
 
-def image_figure(doc, source, root, target, title, number):
+def image_figure(doc, source, root, target, title, number, *, restore_portrait=True):
     asset = (source.parent / target).resolve()
     relative = asset.relative_to(root).as_posix()
     if relative not in ASSET_HASHES or hashlib.sha256(asset.read_bytes()).hexdigest() != ASSET_HASHES[relative]:
@@ -284,7 +284,7 @@ def image_figure(doc, source, root, target, title, number):
     para.add_run().add_picture(str(asset), width=Inches(width), height=Inches(height))
     para.paragraph_format.space_after = Pt(5)
     para._p.xpath('.//wp:docPr')[0].set('descr', plain(title))
-    if wide:
+    if wide and restore_portrait:
         sec = doc.add_section(WD_SECTION.NEW_PAGE)
         boundary = doc.paragraphs[-1].paragraph_format
         boundary.space_before = boundary.space_after = Pt(0)
@@ -304,7 +304,16 @@ def body(doc, source, root, cutoff, figures):
         image = re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', line)
         if image:
             image_count += 1
-            image_figure(doc, source, root, image[2], image[1], image_count)
+            j = i + 1
+            while j < len(lines) and (not lines[j].strip() or re.match(r"^#{2,4}\s", lines[j].strip())):
+                j += 1
+            next_image = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", lines[j].strip()) if j < len(lines) else None
+            next_wide = False
+            if next_image:
+                next_asset = (source.parent / next_image[2]).resolve()
+                with Image.open(next_asset) as next_info:
+                    next_wide = next_info.width / next_info.height > 1.45 or next_asset.stem in ('m6-reason-projection', 'm6-quality-feedback')
+            image_figure(doc, source, root, image[2], image[1], image_count, restore_portrait=not next_wide)
             i += 1
             continue
         if line.startswith('```'):

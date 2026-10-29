@@ -1,0 +1,13 @@
+flowchart TB
+    subgraph A[请求和首个短事务]
+        direction LR
+        R[冻结请求转Call<br/>身份 版本 幂等键] --> C[当前身份与项目鉴权] --> K[claim核原key和内容<br/>取得owner或历史结果]
+    end
+    A -->|同键已完成| P[保留原data与原request_id<br/>当前权限仍须有效]
+    A -->|当前owner| B[主事务重核会话及锁序<br/>业务守卫与CAS]
+    B -->|成功| S[业务 审计 outbox<br/>COMPLETE快照同次提交]
+    B -->|业务拒绝| X[回滚主事务<br/>关闭原Session]
+    X --> E[独立拒绝审计及错误快照<br/>审计失败则返回503]
+    P --> O[成功 重放或安全错误<br/>统一Envelope]
+    S --> O
+    E --> O
