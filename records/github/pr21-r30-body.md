@@ -4,7 +4,7 @@
 
 R30在原两台机器实际核验官方制品、60个运行文件与OCI descriptor→config8e身份链、384连接预算和40项目/6000任务/9000依赖/15000评审及决定。准备程序的1385条HTTP中出现六条顶层VERSION_CONFLICT，未形成完整400客户端输入。未prepare、未发grant、未调用独立ENTRY；结论NOT_RUN_PREPARATION_INCOMPLETE，正式性能指标为空。不能据此判定性能通过/失败或推断正式请求数。约18:26已逐台节省停机，自动释放均“-”、各一块云盘保留；未购新机/未充值，计算停费而云盘仍计费，最终账单未结算。
 
-停机后仅离线修复未来准备版：严格409后只读核对原任务和唯一现存事件，不重试POST、不降低CAS或停正式测量的后台组件。81项本地检查及限定复审通过；未来HTTP执行入口固定官方APP backend、隔离edge网络、无DB/AMQP业务环境与2CPU/1GiB等限额，保留原执行版和所有失败。未来实际Docker、网络与新HTTP尚未验证，保持CLOUD_UNREADY，不自动开机或发grant。LOAD/独立工具保持无产品源；完整本地模拟工具链通过也不算项目云上性能。
+停机后仅离线修复未来准备版：严格409后只读核对原任务和唯一现存事件，不重试POST、不降低CAS或停正式测量的后台组件。81项本地检查及限定复审通过；未来HTTP执行入口固定官方APP backend、隔离edge网络、无DB/AMQP业务环境与2CPU/1GiB等限额，保留原执行版和所有失败。未来实际Docker、网络与新HTTP尚未验证，保持CLOUD_UNREADY，不自动开机或发grant。LOAD/独立工具保持无产品源；本地工具的PASS_LOCAL_TOOL_E2E也不算项目云上性能或MQ后置验收。
 
 [本轮原件、边界和离线修复记录](https://github.com/HJY147/t44-dev-trace/blob/codex/integration/reports/validation/r30-server-closure-20261029.md)区分开发CI、准备HTTP、独立执行与验收。旧f7短测超目标P95、旧r29独立NP及本地工具的早期失败均保留，未拼接结果或追改历史。
 
