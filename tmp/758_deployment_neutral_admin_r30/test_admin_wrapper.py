@@ -93,6 +93,7 @@ class AdminWrapper(unittest.TestCase):
                 "target": {"compose_project": value["project"], "database": value["database"], "binding_sha256": binding_hash,
                            "mysql_host": "mysql", "mysql_port": 3306, "mysql_user": value["database"] + "_app"},
                 "window": {"stop_utc": value["stop_utc"]}, "budget": {"helper_sha256": W.BUDGET_SHA, "actual_admission_receipt_sha256": probe_hash},
+                "gen_binding": {"path": "/neutral-input/binding.json", "sha256": binding_hash},
                 "authorized_project_ids": []}
         intent = {"run_id": plan["run_id"], "namespace": plan["namespace"], "database": value["database"]}
         plan_file, intent_file = base / "plan.private.json", base / "intent.private.json"
@@ -299,6 +300,38 @@ class AdminWrapper(unittest.TestCase):
         args = self.setup_phase()
         (args.code_dir / "admin.py").write_text("changed")
         with self.assertRaisesRegex(ValueError, "PRODUCER_CODE_BYTES_OR_HASH_CHANGED"):
+            self.invoke(args)
+        self.assertFalse(self.child_calls)
+
+    def test_actual_final_producer_manifest_stage_and_fixed_argv(self):
+        args = self.setup_phase()
+        actual = args.output_dir.parent / "actual-final-producer"
+        actual.mkdir(mode=0o700)
+        commit = "0a34a81e9fb59abf6c500f5acbe284c053d1f903"
+        prefix = "agents/backend/neutral-r30/"
+        manifest = subprocess.check_output(["git", "-C", str(ROOT), "show", commit + ":" + prefix + "code-manifest.PUBLIC.json"])
+        self.assertEqual(W.digest(manifest), "7c9d08a6b1b521dfb2046c8354686e367354d81f69c0813eb3ccfad42cfe841d")
+        declared = json.loads(manifest)
+        for name, expected in declared["files"].items():
+            content = subprocess.check_output(["git", "-C", str(ROOT), "show", commit + ":" + prefix + name])
+            self.assertEqual(W.digest(content), expected)
+            self.assertEqual(len(content), declared["file_sizes"][name])
+            W.write(actual / name, content)
+        W.write(actual / "code-manifest.PUBLIC.json", manifest)
+        args.code_dir, args.code_manifest = actual, actual / "code-manifest.PUBLIC.json"
+        args.code_manifest_sha256 = W.digest(manifest)
+        self.invoke(args)
+        for name, expected in declared["files"].items():
+            self.assertEqual(W.digest((args.output_dir / "code" / name).read_bytes()), expected)
+        self.assertEqual(len(self.child_calls), 1)
+
+    def test_host_binding_path_in_original_plan_is_refused(self):
+        args = self.setup_phase()
+        plan = json.loads(args.plan.read_bytes())
+        plan["gen_binding"]["path"] = str(args.phase_dir / "binding.json")
+        args.plan.unlink()
+        W.save(args.plan, plan)
+        with self.assertRaisesRegex(ValueError, "EXACT_ORIGINAL_PLAN_INTENT_BINDING_AND_PROBE_REQUIRED"):
             self.invoke(args)
         self.assertFalse(self.child_calls)
 

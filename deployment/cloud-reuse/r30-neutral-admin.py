@@ -93,6 +93,8 @@ def check_scope(profile, value, plan, intent, binding_hash, probe_hash):
             or plan["run_id"] != run or plan["source"]["git_commit"] != SOURCE or plan["namespace"] != value["project"]
             or target["compose_project"] != value["project"] or target["database"] != value["database"]
             or target["binding_sha256"] != binding_hash or target["mysql_host"] != "mysql"
+            or plan["gen_binding"]["path"] != "/neutral-input/binding.json"
+            or plan["gen_binding"]["sha256"] != binding_hash
             or target["mysql_port"] != 3306 or target["mysql_user"] != value["database"] + "_app"
             or plan["window"]["stop_utc"] != value["stop_utc"]
             or plan["budget"]["helper_sha256"] != BUDGET_SHA
@@ -137,11 +139,18 @@ def checked(args):
 
 def producer_files(args):
     manifest_raw = pinned(args.code_manifest, args.code_manifest_sha256)
-    table = json.loads(manifest_raw)["files"]
+    manifest = json.loads(manifest_raw)
+    table = manifest["files"]
     if isinstance(table, list):
         records = table
     elif isinstance(table, dict):
-        records = [{"path": key, **value} for key, value in table.items()]
+        if all(isinstance(value, str) for value in table.values()):
+            sizes = manifest["file_sizes"]
+            if set(sizes) != set(table):
+                raise ValueError("EXACT_PRODUCER_FILE_SIZES_TABLE_REQUIRED")
+            records = [{"path": key, "sha256": value, "bytes": sizes[key]} for key, value in table.items()]
+        else:
+            records = [{"path": key, **value} for key, value in table.items()]
     else:
         raise ValueError("EXPLICIT_PRODUCER_FILE_TABLE_REQUIRED")
     raw(args.code_dir, directory=True)
@@ -299,6 +308,9 @@ def run_admin(args, *, runner=None):
         save(args.output_dir / "admission.PUBLIC.json", {
             "kind": "r30-lock-held-live-readmission-v1", "source_sha": SOURCE,
             "binding_sha256": args.binding_sha256, "probe_receipt_sha256": args.budget_receipt_sha256,
+            "original_binding_path": str(args.phase_dir / "binding.json"),
+            "original_probe_receipt_path": str(args.budget_receipt),
+            "original_import_receipt_path": str(args.import_receipt),
             "probe_role": "original GEN probe evidence, not this readmission result",
             "actual_admit_return": admitted})
         if accounts is not None:
