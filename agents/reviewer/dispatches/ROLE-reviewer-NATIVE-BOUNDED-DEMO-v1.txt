@@ -1,3 +1,0 @@
-AI总协调/root实际派工。代码审核岗，不是独立黑盒或学生发现；不派生helper。
-
-Packaging narrowfix已root正确合入9307，原P2+后续green完整保留。新有限专审阶段：native bounded serve工具新PR37/codex/deployment-bounded-demo，工具初版4ef57b6、封档acdf9db，base原cc6capturefix。先在自己的隔离review分支从root5408c053准备/read-only审新serve/stop/TTL轮换/owner identity/信号/时限/清理范围，不重复旧capture已通过套件/无local HTTP SQL真实OS信号。部署agent正在封存唯一360实测：23:04:57→deadline23:10:57/外部exit1；ready+额外轮换1真实成功，但verify_stopped扫state/*.json误把新serve-owner.json的runner当应退出子进程，导致等待自己退出10sec必false。全部真实服务和runner外部核已absent/端口关/旧baseline一致。原失败不可倒填。它将设计后窄修角色generation+APIchildren选择、runner由外部wait。你现在可先 independently 设计/冻结最小无OS反例验证该原因、静态找其他P1/P2；最终部署准确fix SHA/原360公开白名单原件齐全后我发你，做同例窄回归+有限审查。请不自主真360/长serve/停止任何进程。最终具体Issue/PR37评论readback，COMMENT非APPROVE，无globalgate。保留完整工作记录/报告/交接。

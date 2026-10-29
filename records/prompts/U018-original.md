@@ -1,1 +1,0 @@
-可以先用opendesign设计好ui再导入

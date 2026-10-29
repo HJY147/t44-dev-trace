@@ -1,4 +1,0 @@
-$ node scripts/prepare-tests.mjs && vue-tsc --noEmit && vite build
-../tmp/frontend/983_application.test.ts(171,179): error TS2322: Type 'Json | { expected_version: number; plan: Json; reason: string; evidence: Row[]; title?: undefined; iteration_id?: undefined; owner_id?: undefined; dependency_task_ids?: undefined; action?: undefined; new_plan?: undefined; roles?: undefined; } | ... 4 more ... | { ...; }' is not assignable to type 'Row'.
-  Type 'null' is not assignable to type 'Row'.
-[ELIFECYCLE] Command failed with exit code 2.

@@ -1,3 +1,0 @@
-复验归档目录已按用户约定更正：13cd3d515c06b0408b5048c852a95a8f1b3ba9b2将三份含验证逻辑的公共脚本副本100%字节不变git mv至tmp/deployment/864_native_serve_driver.py、863_native_serve_post_attempt1.py、862_native_serve_post.py，编号由root预留。旧公开位置→现归档位置→实际私密执行路径/SHA见agents/deployment/native-bounded-demo-validation/serve-retest-script-path-migration.json。原运行argv/原始hash/失败/历史扫描scope不倒改，没有重跑服务/HTTP/SQL。
-
-新360成功证据仍10182b79906d60379e1ece6b37d0c8b9727f7b0a，实际工具仍62ac/084618、bc5/92源，exit0/cleanuptrue及九端口三时点相同；旧4ef360 exit1/cleanupfalse保持。PR37正文已整体同步当前归档状态，保持draft；4h演示仍未授权。此后仅GET精确读回/文档封档，最终docs head另列。

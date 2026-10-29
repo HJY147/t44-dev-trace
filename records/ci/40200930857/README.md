@@ -1,7 +1,0 @@
-# 消息合并后的首次CI
-
-源a16238b9eb3b47473c0332989d6b3dcc1d95d1f4。product run40200930857的static job121191761720在新增开发测试tmp/backend/messaging/806_newscope.py:34发现E731（lambda赋值）。这是实际失败，不能将该run写成全绿。decoded官方job原输出保留于static-job.log，完整官方artifact后续另下载校验。
-
-总协调将该局部测试函数改为def，并按原CI Ruff配置格式化该测试文件；没有修改产品、断言、范围或检查规则。使用现有缓存及两份锁文件在当前组合工作树运行消息开发目标：39通过、23真实integration未选；Ruff check全部backend/t44及tmp/backend通过。它不替代下一次完整CI/真库与独立验收。
-
-同源Docker run40200930957已完成success；contracts和frontend已success，coverage在当时仍运行。完整run结果、原ZIP和后续修正版应分别绑定准确提交，不移植旧绿结论。

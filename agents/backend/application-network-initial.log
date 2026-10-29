@@ -1,2 +1,0 @@
-Diagnostic summary; original tool trace remains in session.
-Initial network smoke used HTTPX environment proxy: login assertion failed; diagnostic JSONDecodeError on non-JSON response, then proxy ReadTimeout. Uvicorn had no matching access log. Retried loopback with trust_env=False (no TLS change); four HTTP checks passed. No body/credentials captured.

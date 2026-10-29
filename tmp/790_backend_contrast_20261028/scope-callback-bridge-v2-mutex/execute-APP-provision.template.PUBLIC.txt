@@ -1,7 +1,0 @@
-# TEMPLATE ONLY: fill every public placeholder from the new actual run; no old nonce/grant.
-python3 /root/t44-r9/scope-bridge-v2-01/bridge_cli.py provision \
-  --manifest-sha256 f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b \
-  --packet '<COPIED_AUTHORITY_PACKET_PUBLIC_PATH>' \
-  --packet-sha256 '<EXACT_LOAD_PACKET_SHA256>' \
-  --state-dir '<ACTUAL_F_PHASE>/.scope-callback-state' \
-  > '<NEW_APP_RESULT_PUBLIC_PATH>'

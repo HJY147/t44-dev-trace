@@ -1,7 +1,0 @@
-# Isolated local functional environment preparation
-
-This is a separate functional/fault environment, not 400-client cloud acceptance. The existing native MySQL server on loopback 13306 and every existing schema, account and process remain protected. Only the new exact schema/user `t44_i829_20261025` may be created. Existing project-private administrator socket credentials are read without logging, and are never shared with deployment or test operators. The application principal receives CRUD solely on that schema, no DDL/global rights.
-
-The frozen baseline migration is byte-bound to ade5e4c1998b4c2f014afde8c011645c6c5a7412. Five synthetic human accounts are initialized with random passwords saved only in a new 0700 runtime directory and 0600 files. No projects, iterations, service token or test case fixtures are guessed. Those must follow the independent operator's PUBLIC bootstrap protocol. Source changes after this schema-only initialization require a distinct final application manifest; initialization is not represented as a final SUT launch.
-
-The initializer refuses collisions/symlinks, records before/after schema and principal inventory hashes, migrates only the explicitly named new schema, and verifies app grants. It never resets, drops, reconfigures or stops the shared MySQL server. Deployment separately owns a fresh native Rabbit broker, isolated cookie/vhost and loopback HTTPS process. All newly started processes must have ownership receipts and an absolute stop before 08:50 UTC; old processes remain untouched.

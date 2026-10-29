@@ -1,1 +1,0 @@
-python3 /root/t44-r9/resource-operator-completion-20261028.py --directory /root/t44-r9/resource-r28p16-02 --binding-sha256 f76269ff54bd74bc762e98a2d1a41273b659f50c48eeaa7888bbcd7318988e97 --failure /root/t44-r9/resource-r28p16-02/failure-23c53697a08f4e84aedef94c3bc953e0.json

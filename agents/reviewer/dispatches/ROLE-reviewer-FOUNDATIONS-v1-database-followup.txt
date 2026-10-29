@@ -1,1 +1,0 @@
-数据库基础也已完成，可追加本轮同范围审核：PR17 https://github.com/HJY147/t44-dev-trace/pull/17，final head4ae865b8dc554813c04aacbb3a5033aa2745c799，产品commit7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc；只读.agent-worktrees/database。18项测试（SQLite真实生命周期+mock MySQL），无项目表/业务仓储，不能据此判MySQL集成通过。重点事务不确定提交、吞掉SQL错误、资源清理，以及参数化门面的可复用边界。两笔只是模块实现+发布回执，未merge。总协调不会提前替你结论。

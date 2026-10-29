@@ -1,9 +1,0 @@
-Command: .venv/bin/python; openapi_spec_validator.validate(specs/contracts/openapi.json)
-Traceback (most recent call last):
-  File "<stdin>", line 4, in <module>
-  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/openapi_spec_validator/shortcuts.py", line 55, in validate
-    return v.validate()
-           ^^^^^^^^^^^^
-  File "/Users/yang/Desktop/nothing/软件开发大作业/.venv/lib/python3.12/site-packages/openapi_spec_validator/validation/validators.py", line 73, in validate
-    raise err
-openapi_spec_validator.validation.exceptions.ParameterDuplicateError: Duplicate parameter 'Idempotency-Key'

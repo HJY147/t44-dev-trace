@@ -1,0 +1,38 @@
+name: QA772 generic tool Linux subset
+on:
+  push:
+    branches: ['codex/qa772-tool-linux-20261029']
+permissions:
+  contents: read
+jobs:
+  generic-tool-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Prepare official source-free Python and ephemeral localhost TLS
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/qa772-stage/report"
+          openssl req -x509 -newkey rsa:2048 -nodes -keyout "$RUNNER_TEMP/qa772-stage/tls.key" -out "$RUNNER_TEMP/qa772-stage/tls.crt" -days 1 -subj /CN=localhost -addext 'subjectAltName=DNS:localhost,IP:127.0.0.1' >/dev/null 2>&1
+          chmod 600 "$RUNNER_TEMP/qa772-stage/tls.key"
+          docker pull --platform linux/amd64 python:3.12-slim
+          docker image inspect python:3.12-slim --format '{{.Id}} {{join .RepoDigests " "}}' > "$RUNNER_TEMP/qa772-stage/report/observed-image.txt"
+      - name: Actual unconstrained Linux guard must reject
+        shell: bash
+        run: |
+          docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --user "$(id -u):$(id -g)" --tmpfs /tmp:rw,size=64m --mount "type=bind,src=$PWD/qa772-tools,dst=/work,readonly" --mount "type=bind,src=$RUNNER_TEMP/qa772-stage,dst=/stage" --entrypoint python3 python:3.12-slim /work/linux_checks.py reject-unbounded
+      - name: Actual constrained Linux 2 CPU 8GiB PID2048 generic tool checks
+        shell: bash
+        run: |
+          docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --cpus 2 --memory 8g --memory-swap 8g --pids-limit 2048 --user "$(id -u):$(id -g)" --env MALLOC_ARENA_MAX=2 --tmpfs /tmp:rw,size=64m --mount "type=bind,src=$PWD/qa772-tools,dst=/work,readonly" --mount "type=bind,src=$RUNNER_TEMP/qa772-stage,dst=/stage" --entrypoint python3 python:3.12-slim /work/linux_checks.py constrained
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa772-public-linux-tool-receipt
+          path: ${{ runner.temp }}/qa772-stage/report/
+          retention-days: 1

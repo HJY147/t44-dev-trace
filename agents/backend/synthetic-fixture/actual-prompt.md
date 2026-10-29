@@ -1,7 +1,0 @@
-# Actual dispatch
-
-Local archive reference: ROLE-backend-SYNTHETIC-FIXTURE-WORKER-v1 (descriptive archive label). Sender/root actual dispatch text follows; author and implementer are AI, not a human code change.
-
-> 请现在实现最小synthetic账号fixture worker，独立新worktree/branch，原产品C不改。root授权本次跨目录新增deployment/synthetic-fixture.py（只worker，不host运维wrapper），与部署岗另通知；不要改既有部署文件。它将在准确C backend/admin容器内、UID10001、只读rootfs+独立私有可写输出volume运行。只接受公开RSA recipient证书与公开envelope helper（可读以下852明确发布两文件，其他852一概禁读）：tmp/852_independent_cloud_acceptance/852_public_envelope_spec_v1.json和852_public_envelope_v1.py，公证书852_public_env_recipient_v1.cert.pem也明确发布可读，PEMSHA496ded07649d49078d9e20cebf4fbd80f989d5d2b777573857eb090d1b38af69，DERfingerprintf78e169a626c9eb3978428016996c2370ffd170b3f0cc83f3e96ba4bf199d19e。这只物流公开格式，不是用例；不与tester交流。格式RSAOAEP+AESGCM已11本地互通/篡改校验，C crypto50.0.2已有依赖。
-> worker检查明确t44数据库、business空+3用户名全不存在，生成3独立secrets.token_urlsafe(32)内存密码；先用公开envelope encrypt函数写0600 O_EXCL pending恢复密文，再通过原CLI init-user --password-stdin匿名stdin逐个新建synthetic-manager/developer/reviewer（不直接调用内部写库、不重置已有用户、不跳过错误、不自动重试）。捕获输出只向stdout发public user_id/exit/无密码，无秘密argv/env/明文文件。任一部分失败停止，保留pending密文，安全失败元数据，不回滚删用户；全部成功才写新的final账号包密文，账号包sourceC/用户名/密码/返回id，不生成sessions、不seed（seed由下一阶段明确执行）。证书/输出目录路径要严格只读/权限/owner/O_EXCL边界，校验公证书指纹，原3账号缺一存在即整个预检失败。工具本身不发网络请求；CLI内部只选定本项目DB是实际执行时才允许。CLI来源要绑定C容器可核publicsource expected仅运行参数，由root中性环境提供镜像和挂载保障。
-> 必要本地纯合成guards/加密已知数据测试放tmp/backend/850_xxx（851rootdeliveryguard已占、852tester私有），不连库/云，不读取未发布测试/日志。先给可审核心文件/hash，简短模块记录/提示词/commit按岗位要求。

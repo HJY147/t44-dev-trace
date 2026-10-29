@@ -1,7 +1,0 @@
-Prompt-ID: ROLE-reviewer-DEPENDENCY-QUERY-v1
-Operator: fixed AI code reviewer; not independent black-box tester or student.
-Actual parent dispatch:
-请独立有限审核一个新最小产品候选PR42，准确固定C=b66fa36a317145afec350d7f61ca374959b2eaf7，codex/backend-dependency-query-candidate（PR头保持C）。从bc5应用仅Workflow读取task_dependencies增加project_id（原74a的一行），pool仍5+10；另两处tmp/deployment864/871样式等价修复来自17e7ac5，owner封档8d8bc14，旧style CI红40047094732保留。先读root预定准入设计specs/changes/dependency-query-integration-gate.md（dde39/root最新有）和BE自身先行RFC ed2737d（请列文件元数据找实际路径），核Call.task授权项目=task project、tasks全局PK+依赖复合FK、id顺序/空集/错误优先/锁/鉴权/RC/事务/输出/14冻结不变。DB实际只读索引/普通EXPLAIN公开5948/agents/database/index-readonly/report.md，只小fixture估算非根因收益。必要已有986十八HTTP目标原字节：旧源18pass/候选18pass，不冒称旧bug红绿。新C完整CI正在执行，BE证据将发表单独E分支，暂勿取任何独立H2/private/cases/raw/密文，不联系tester，不跑本机服务/SQL/负载，不重复已过suite。你可先静态核C和17e精确两行AST，等root给明确公开E再核准确CI/源对应后最终有限结论/role records/PR42 COMMENT绑定C全文GET，禁止全局reviewer/stage或main放行。约15分钟内完成，若证据不足明确partial先保留；不得改候选。
-Scope before candidate source reads:
-Own clean existing review worktree switched to codex/review-dependency-query at C; no candidate edits.
-Read exact public RFC/root integration gate, Workflow callers/schema and owner published artifacts only. No independentH2/private/cases/raw/ciphertext/tester messages, no localHTTP/SQL/load/services or repeatedsuite. Complete CI evidence pending explicit public E, cannot claim clear until checked or markpartial.

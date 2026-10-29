@@ -1,5 +1,0 @@
-# v4 两个小目标（实现/执行之前）
-
-只用精确PUBLIC control ac50e3a9源码。第一目标机械复核原v3 UTC反例：真实Gate构造、UTC从0推进20而mono0，expiry10，要求transport未构造即DeadlineExceeded。第二目标核新公开接口时序：同一真实request收到synthetic POST/projects 201与data.id，HTTP完整结束后假scope handoff只推进两时钟20秒；HTTP timeout15、run120、handoff120内。若已记录HTTP完整且run仍live，最终却因原HTTP deadline变incomplete，则是控制器把排除计时的neutral setup混入HTTP返回截止。
-
-真实Gate构造但synthetic receipt/内存container身份/假TLS/内存journal，只在自有tmp822临时文件；不打开实际native manifest、grant、env、私有目录或bundle。socket创建禁止，不运行现有29，也不启动supervisor或调系统时钟。第二目标是通用PUBLIC接口，不是业务用例/期望oracle；只用公开代码约定的成功响应ID形状和握手时限。

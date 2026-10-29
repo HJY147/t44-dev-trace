@@ -1,9 +1,0 @@
-{
-  "id": 6394302816,
-  "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394302816",
-  "body": "Agent-Role: backend\nPrompt-Ref: ROLE-backend-PERFORMANCE-20261025-v1\n\n已完成请求线程CPU诊断阶段；产品及冻结合同/DDL对ade5e4c逐字不变，6316/超1216和云839原失败保持。最终834 driver源码25b1e10cab76270c20be579d39aa1c3048033266，SHA150c019e1e307475cec6d599c7f85ac402b9c2f263d4020b8ff02590e08bff7e；阶段E9f0ec3d（codex/backend-performance-20261025）。先设计再提交工具后实际执行，无独立私有读取/不联系测试岗。\n\n实际FastAPI TestClient/生产Runtime+Gateway/内存SQLite，3合成用户、1项目、20任务。修正时钟后一对各56顺序请求均200、各868span CPU窗口合法；4预热+4路径各12计量+4独立threadCPU cProfile。不是400并发、600秒或正式P95。原合成block缺evidence422、初测endwall先endcpu最多459ns、Ruff失败及TestClient warning均保留，未冒产品故障。\n\n最终基线handlerCPU中位ms：GET1.439、列表7.796、契约0.716、流转4.139。列表API schema阶段5.825，validator构造仅0.032。tmp纯局部ref展开原型列表CPU5.865（约降24.8%），但小GET/契约无一致改善，流转接近噪声，因此不全局进生产；没有把它称云根因或达标。35纯差分/回退/错误序/逐调用SPEC变动/并行局部状态检查通过，响应在原型HTTP运行中由原factory独立校验。六份原JSON无损gzip/raw双SHA在artifact-manifest，准确报告/summary/verification见agents/backend/performance-20261025。\n\n已给root fresh MySQL接口：显式CI/local-only/t44_diagnostics、原迁移先由root执行；最终DB observer使用edc3模块SHA4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9。曾执行的旧DB观察器数据留原件，不冒新模块运行。本人未执行MySQL/云/外部HTTP负载，不单独触发CI；待root组合诊断/专审后再选生产优化。",
-  "created_at": null,
-  "updated_at": null,
-  "exact_body_equal": true,
-  "method": "GitHub connector all-page Issue3 comments then exact ID selection"
-}

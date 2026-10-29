@@ -1,7 +1,0 @@
-# component/Call测试接线限定设计
-
-从root指定b0793aa1a9aa422a8bf3a7df66aaafc137560574新独立worktree，只向scripts/ci/run_tests.py的OPTIMIZATION_TESTS末尾各加入782_backend_component.py与780_facade_semantics.py一次。保留原七补充模块、tmp/backend完整树、marker、拒空/跳过/失败、80%行覆盖与全部生产文件分母，product workflow原935和a12 fetch逐字不变。
-
-两新增模块不依赖额外Git基线，也不创建DB/HTTP服务；测试用gateway/Mock/Call检查边界。legacy_caller已由tmp/backend/messaging/979_facade.py与806_newscope.py导入，只收集确认原导入路径，不把适配器加入运行依赖或重复显式计数。验证为runner AST除列表外不变、保留配置/原测试字节、两新增21项收集与运行、两原messaging模块收集、原静态单元与同配置Ruff。完整product/Docker统一由root合并精确SHA后执行，不在本岗重跑。
-
-候选产品及LOC未由接线改变。旧5d/16Z v4 profile/source/包/结果全部保留；root给新的完整CI实际准确SHA后才另目录派生，不把新候选套旧源身份。783独立保护检查不读取/不重做，原双机实际运行和APP64/128只按root转述，不执行云。

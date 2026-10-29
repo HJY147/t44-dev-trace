@@ -1,3 +1,0 @@
-Actual parent dispatch; fixed AI reviewer. New test-only/CI scope, not an independent performance run or revision of the original 5cc review.
-
-新turn仅复审BE ead155e6204de9004bc968e9b9648358cfed75f8（相对原5cc应用零diff，985只2SELECT常量22→20/24→22+历史注释），前次源码review187保持。精确前置E01b184f4ac306a106fb6432ee8067f9993ead002，入口agents/backend/performance-repair-839-ci-fix/{report.md,test-only-proof.json,candidate-binding.json}。新product CI40088982094四job已root11:19:23UTC连接器实核全部success，BE正封终态原日志/artifacts的新E，稍后给你SHA。请先静态增量审核业务/鉴权/RC/事务/审计幂等断言AST保持、仅期望准确减少两读不降门槛；如需等待终态E可先源范围结论后精确核gate。本人不重复运行测试/负载，不碰独立私有，不联系839。给独立新审核seal并明确5cc旧CI失败未追改、N07/云性能仍失败。另DB owner正修P2，你完成此turn后再另scope复审DB。

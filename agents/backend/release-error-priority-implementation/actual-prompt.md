@@ -1,5 +1,0 @@
-# 实际派工原文（总协调AI）
-
-> D008新规格已先freeze并push exact d5307551d6b467f84e8254abd0245cdf22bc0a70，records/spec-freezes/v1.2.json SHA00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e，专门规格review9115905对exact15通过，原v1.1未改。现在授权进入implementation，新worktree/codex分支基exactfreeze。只生产workflow.py既有批准引用失效槽最小改；新测试root已正式预留tmp/backend/contracts/856_release_error_priority.py，其他旧用例/859/独立case不动。先有意义新HTTP回归在旧逻辑记录原APPROVAL红，再最小改绿色；保留failure/audit/业务不变及相邻case：双失效schedule、仅批准失效、请求version优先、taskversion/跨任务assessment、引用匹配仍原domain/code-review/state顺序、旧COMPLETE重放业务/error/audit及当前request_id正确范围，重新有效评估+另一合规reviewer审批→经理成功发布。cycle合成边界若需只能明确标受控fixture，勿冒真实rework。全部按RFC和新freeze，无全局guard搬动；不改domain/auth/锁/幂等/SQL/DDL/pool/MQ/scheduler/front。可跑针对性TestClient/纯本地自测，不访问protected既有服务/DB/端口，真实MySQLRabbit仅仓库隔离CI。新代码提交正常触发exactcandidate全量CI/Docker，保留失败不复写，CI可随后给receipt；本次source LOC重新实际计量增量不能继续用6307。角色log/report/handoff/prompt及Issue3全文GET。先交代码checkpointSHA让root安排独立代码审核；不等所有CI封档才发。
-
-作者/实现及开发自测操作者：后端AI；用户D008选择是业务决定，非用户亲改码。归档标识ROLE-backend-D008-IMPLEMENT-v1（本岗AI标识）。

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.343" timestamp="2026-10-23T20:42:54.960855+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_capacity_v11_keeps_original_guard_precedence[rework_version_ceiling-VERSION_CONFLICT-409]" time="0.256"><failure message="AssertionError: {&quot;code&quot;:&quot;CAPACITY_REFERENCE_INVALID&quot;,&quot;message&quot;:&quot;Capacity reference invalid&quot;,&quot;request_id&quot;:&quot;11fb3dc9-e01b-49e7-8a6d-0a1cb623527d&quot;,&quot;audit_id&quot;:11,&quot;current_version&quot;:null,&quot;current_state&quot;:null,&quot;original_error_code&quot;:null,&quot;violations&quot;:[]}&#10;assert 422 == 409&#10; +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code">tmp/backend/contracts/986_http.py:1741: in test_capacity_v11_keeps_original_guard_precedence
-    response = request(
-tmp/backend/contracts/986_http.py:35: in request
-    assert response.status_code == expect, response.text
-E   AssertionError: {"code":"CAPACITY_REFERENCE_INVALID","message":"Capacity reference invalid","request_id":"11fb3dc9-e01b-49e7-8a6d-0a1cb623527d","audit_id":11,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
-E   assert 422 == 409
-E    +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code</failure></testcase></testsuite></testsuites>

@@ -1,7 +1,0 @@
-# ROLE-frontend-CONTRACT-V12-DRAFT-v1 — actual dispatch
-
-Fixed frontend role, new stage instance. Root authorized only frontend specification draft compatibility sync after D008 adopted / RFC R2 d328986 and limited design review891d676. Read AGENTS, D008 adopted/technical scope/RFC. Use separate codex worktree, no root index. Within five minutes statically inspect frontend SPEC/version/error mapping and owner981/982 cases for hardcoded1.1; do not run application/browser/tests/CI/services/HTTP, do not modify Vue/TS/cases/frozen files. Only update frontend README with 1.2/D008 pending new freeze/implementation; paths31/ops38/schemas130 and I/O/identity/all guards/error codes unchanged except adopted two-error ordering; successMeta1.2, innercandidate1.0, errors no outerMeta. Preserve prior1.1 history and no claim current demo1.2. Preserve separate reviewer/self-review constraints. Report real hardcoding to root before code edits. Own log/module/handoff/hash receipt, actual Issue2 interaction and full GET, commit/push. No independent private/cases/raw/858/857/860, tester contact, four Word/old ZIP/live copy changes.
-
-## Improvement reason
-
-Separate a compatibility draft from implementation and verification; bind the real dynamic metadata paths, distinguish outer wire version from inner schema version, and retain independent reviewer and historical evidence boundaries. AI documentation work, not student code edits or a new version of the user's original prompt.

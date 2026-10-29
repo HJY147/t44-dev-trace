@@ -1,5 +1,0 @@
-AI总协调/root真实追加消息（不是学生发现或另一prompt演进）：
-
-补充root自查待验证点（不是已确认缺陷）：新builder当前verify_source_archive核inner source_commit字符串和逐文件hash/Git blob自洽，但是否足以证明该blob映射真的属于所声明Git tree？上游build_source_review本身从Git生成可信输入，仍请区分信任前提与builder独立承诺；若可形成具体反例请如实说明，不需读真实私密包。其他新root只加公开audit附录，目标9d6e的脚本bytes未变。
-
-root责任窄修已提交（未造包/未自跑原反例）：先设计 add7363，再代码 dda3df8e15b0b5b655909dda37dc79a87f318924，builder SHA b767ebda28e5bac4ea5e2cad78a193f98ca93e8ad4e936d577628471484f585b。保留verify_source_archive(data,source)接口，只从同目录可信source selector取得准确commit的完整正向集合+blob/mode逐一核；main限制project-root等于脚本repo。原9d失败与上游可信前提分别保留，root仅Ruff/AST绿。请先完成/封存原9d不通过报告和metadata限定结果，再另轮按原内存反例一次复查窄修；不要把原失败直接改绿。若需我在你FINAL后followup可先停止释放，我会续派。

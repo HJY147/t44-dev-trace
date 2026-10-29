@@ -1,8 +1,0 @@
-Command: .venv/bin/python agents/backend/validate_contract_design_v2.py
-OpenAPI 3.1 normative validation: PASS
-C2: PASS: 101 recipients through event/create/history envelopes; UINT32 handled_count
-C3: PASS: FormatChecker+pattern 0001/0999 reject, 1000/9999 accept; shared Plan/TaskCreate/validation domain; no end+24h
-C4: PASS: 38 operations: annotation/response/HTTP/trigger equality; read-only has no idempotency errors
-C1: PASS: backend replay-source documentation only; database field/CHECK is another role's work
-Design checks: 1130; operations: 38; failures: 0
-LIMIT: specification/Schema-only examples and annotation checks; no HTTP, MySQL, scheduler or product test
