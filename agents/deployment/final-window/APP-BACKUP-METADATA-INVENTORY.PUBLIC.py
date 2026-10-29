@@ -19,10 +19,11 @@ def main():
  ids=docker('volume','ls','--quiet')
  if isinstance(ids,str):
   for name in ids.splitlines():
-   if not name.startswith(('t44','T44')):continue
    raw=docker('volume','inspect',name)
    if not isinstance(raw,str):continue
-   for v in json.loads(raw):report['volumes'].append({k:v.get(k) for k in ['Name','Driver','Mountpoint','CreatedAt','Labels','Scope']})
+   for v in json.loads(raw):
+    project=(v.get('Labels') or {}).get('com.docker.compose.project','')
+    if name.lower().startswith('t44') or project.startswith('t44'):report['volumes'].append({k:v.get(k) for k in ['Name','Driver','Mountpoint','CreatedAt','Labels','Scope']})
  ids=docker('ps','--all','--quiet','--no-trunc','--filter','label=com.docker.compose.project')
  if isinstance(ids,str):
   for cid in ids.splitlines():
