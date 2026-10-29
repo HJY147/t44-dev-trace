@@ -537,3 +537,10 @@ AI reviewer只读总协调5f25828e，原固定cloc2.10实际65应用文件5898�
 ### R29 schema274e2e6b局部审核（2026-10-29）
 
 AI reviewer限定schema.py：当前固定DDL范围无新增P1，可局部集成。自有4项通过0.158秒；20payload、18表226列双dialect共36组完整元数据/DDL差分一致，未知CREATE/ALTER/类型/缩进均在parser前原hash拒绝，导入/迁移connect前门禁实测。实际固定cloc117→106净11，当前候选推导5887仍超787；不把owner168/41重叠相加，native17skip仍未运行。未动产品/原测试/云/独立私件；报告 `reports/reviews/r29-schema-274e2e6b-20261029.md`，773/schema-review，prompt `ROLE-reviewer-R29-SCHEMA-20261029-v1`。
+
+
+### R29B 两件DRY局部审核（2026-10-29）
+
+AI reviewer，ROLE-reviewer-DRY-R29B-20261029-v1；从root f7ee5d3f独立worktree，基线a92e。准确后端41a111f2/finala13f74f1与数据库8f290307/finalbc4d4616，本岗仅审核四件、报告和tmp764；最初767派工及后续764更正均原样保留。两处helper展开后后端整模块AST等旧；DB四静态唯一label注册/循环归一后整模块AST等旧，原SQL/expected/顺序/缺陷不改。自有首轮50检查exit0，随后完善审核fixture插入回读并加明确预期断言，最终72检查exit0，20后端轨迹+8catalog情形；18表226列、18/226/146索引列条目/59CHECK预期、四SQL位置异常和上下文退出等旧。序列化隔离、catalog行由实际预期派生的限制明确，不冒真实MySQL。固定cloc65应用文件5887→后端5884净3/DB5883净4，临时组合字节投影5880仍超780；非本岗集成、非规模或性能通过。新增P1=0/P2=0，只作为root局部集成候选；先两次发root技术结论，root拟精确组合后单次原生CI，未冒本岗执行。DB最终17JSON解析成功，产品/原测试不变、限定source/docs/JSON diffcheck0；完整raw diffcheck2共8日志空白定位（push原4+重放4），保留原字节，不当产品阻断。早期定位路径/未匹配glob、过宽tmp边界探针实际非0保留说明。没有云/HTTP/native/fullCI/PRIVATE读取/独立测试联系，无产品或原测试改动。报告reports/reviews/dry-r29b-20261029.md，原始记录tmp/764_reviewer_dry_r29b。
+
+技术审核901a84e0已push并ls-remote精确匹配；通过GitHub插件发布Issue3 COMMENT6489417815、Issue4 COMMENT6489418188，均按特定ID回读正文完全一致。仅限定候选COMMENT，无APPROVE或整体成功状态；回执tmp/764_reviewer_dry_r29b/github-publication.json。

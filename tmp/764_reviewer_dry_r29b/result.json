@@ -1,0 +1,2781 @@
+{
+  "base": "a92e5e73da93ba23748c3bab113103036c395d50",
+  "backend": "41a111f270e949326202b8af5770db8aa7102e82",
+  "database": "8f29030756139061341e0a636c8774ca790964bd",
+  "checks": [
+    "helper exact arguments and single return",
+    "backend complete module AST equal after two exact helper expansions",
+    "catalog four unique labels retain insertion order",
+    "catalog item iteration exact static registration",
+    "database complete module AST equal after exact registration normalization",
+    "41a111f2 exact product path boundary",
+    "41a111f2 frozen contracts specs and original tests unchanged",
+    "8f290307 exact product path boundary",
+    "8f290307 frozen contracts specs and original tests unchanged",
+    "backend final handoff adds no product or original test change",
+    "backend transcript createReleaseAssessment/ok",
+    "backend expected success createReleaseAssessment/ok",
+    "backend exact created assessment version ok",
+    "backend transcript createReleaseAssessment/empty",
+    "backend expected success createReleaseAssessment/empty",
+    "backend exact created assessment version empty",
+    "backend transcript createReleaseAssessment/role",
+    "backend expected rejection createReleaseAssessment/role",
+    "backend transcript createReleaseAssessment/state",
+    "backend expected rejection createReleaseAssessment/state",
+    "backend transcript createReleaseAssessment/risks",
+    "backend expected rejection createReleaseAssessment/risks",
+    "backend transcript createReleaseAssessment/member",
+    "backend expected rejection createReleaseAssessment/member",
+    "backend transcript createReleaseAssessment/query",
+    "backend query exception propagated createReleaseAssessment",
+    "backend transcript createReleaseAssessment/task_version",
+    "backend expected rejection createReleaseAssessment/task_version",
+    "backend transcript reviewReleaseAssessment/ok",
+    "backend expected success reviewReleaseAssessment/ok",
+    "backend transcript reviewReleaseAssessment/reject",
+    "backend expected success reviewReleaseAssessment/reject",
+    "backend transcript reviewReleaseAssessment/empty",
+    "backend original empty list IndexError preserved",
+    "backend transcript reviewReleaseAssessment/role",
+    "backend expected rejection reviewReleaseAssessment/role",
+    "backend transcript reviewReleaseAssessment/self",
+    "backend expected rejection reviewReleaseAssessment/self",
+    "backend transcript reviewReleaseAssessment/state",
+    "backend expected rejection reviewReleaseAssessment/state",
+    "backend transcript reviewReleaseAssessment/status",
+    "backend expected rejection reviewReleaseAssessment/status",
+    "backend transcript reviewReleaseAssessment/stale",
+    "backend expected rejection reviewReleaseAssessment/stale",
+    "backend transcript reviewReleaseAssessment/baseline",
+    "backend expected rejection reviewReleaseAssessment/baseline",
+    "backend transcript reviewReleaseAssessment/query",
+    "backend query exception propagated reviewReleaseAssessment",
+    "backend transcript reviewReleaseAssessment/assessment_version",
+    "backend expected rejection reviewReleaseAssessment/assessment_version",
+    "backend transcript reviewReleaseAssessment/task_version",
+    "backend expected rejection reviewReleaseAssessment/task_version",
+    "catalog actual frozen metadata shared without changed schema source",
+    "catalog full metadata SQL result and context clean/None",
+    "catalog context exits clean/None",
+    "catalog clean output empty",
+    "catalog full metadata SQL result and context missing/None",
+    "catalog context exits missing/None",
+    "catalog full metadata SQL result and context changed/None",
+    "catalog context exits changed/None",
+    "catalog full metadata SQL result and context duplicate/None",
+    "catalog context exits duplicate/None",
+    "catalog full metadata SQL result and context clean/1",
+    "catalog context exits clean/1",
+    "catalog full metadata SQL result and context clean/2",
+    "catalog context exits clean/2",
+    "catalog full metadata SQL result and context clean/3",
+    "catalog context exits clean/3",
+    "catalog full metadata SQL result and context clean/4",
+    "catalog context exits clean/4",
+    "cloc tool pinned hash",
+    "actual independent candidate reductions exactly three and four"
+  ],
+  "backend_transcripts": [
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "ok",
+      "outcome": [
+        "return",
+        {
+          "task": {
+            "id": 21,
+            "project_id": 7,
+            "version": 4,
+            "state": 5,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "approved_assessment_id": null,
+            "approved_assessment_version": null
+          },
+          "assessment": [
+            "ReleaseAssessment",
+            {
+              "id": 40,
+              "version": 1,
+              "task_id": 21,
+              "schedule_version": 2,
+              "delivery_cycle": 1,
+              "risks": [
+                {
+                  "perspective": 1
+                },
+                {
+                  "perspective": 2
+                },
+                {
+                  "perspective": 3
+                },
+                {
+                  "perspective": 4
+                }
+              ],
+              "rollback_plan": {
+                "responsible_user_id": 8
+              },
+              "review_evidence": [],
+              "rollback_plan_version": 10,
+              "created_at": "2026-10-29 00:00:00+00:00",
+              "project_id": 7,
+              "created_by": 9
+            }
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "rows",
+          "project_members",
+          {
+            "project_id": 7,
+            "user_id": 8,
+            "active": 1
+          },
+          {
+            "limit": 1
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "insert",
+          "release_assessments",
+          {
+            "task_id": 21,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "risks": [
+              {
+                "perspective": 1
+              },
+              {
+                "perspective": 2
+              },
+              {
+                "perspective": 3
+              },
+              {
+                "perspective": 4
+              }
+            ],
+            "rollback_plan": {
+              "responsible_user_id": 8
+            },
+            "review_evidence": [],
+            "rollback_plan_version": 10,
+            "created_at": "2026-10-29 00:00:00+00:00",
+            "project_id": 7,
+            "created_by": 9
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          40,
+          {}
+        ],
+        [
+          "update",
+          "tasks",
+          {
+            "id": 21,
+            "version": 3
+          },
+          {
+            "approved_assessment_id": null,
+            "approved_assessment_version": null,
+            "version": 4
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 4,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "approved_assessment_id": null,
+        "approved_assessment_version": null
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [
+        {
+          "field": "version",
+          "value": "3"
+        }
+      ],
+      "after": [
+        {
+          "field": "version",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "empty",
+      "outcome": [
+        "return",
+        {
+          "task": {
+            "id": 21,
+            "project_id": 7,
+            "version": 4,
+            "state": 5,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "approved_assessment_id": null,
+            "approved_assessment_version": null
+          },
+          "assessment": [
+            "ReleaseAssessment",
+            {
+              "id": 40,
+              "version": 1,
+              "task_id": 21,
+              "schedule_version": 2,
+              "delivery_cycle": 1,
+              "risks": [
+                {
+                  "perspective": 1
+                },
+                {
+                  "perspective": 2
+                },
+                {
+                  "perspective": 3
+                },
+                {
+                  "perspective": 4
+                }
+              ],
+              "rollback_plan": {
+                "responsible_user_id": 8
+              },
+              "review_evidence": [],
+              "rollback_plan_version": 1,
+              "created_at": "2026-10-29 00:00:00+00:00",
+              "project_id": 7,
+              "created_by": 9
+            }
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "rows",
+          "project_members",
+          {
+            "project_id": 7,
+            "user_id": 8,
+            "active": 1
+          },
+          {
+            "limit": 1
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "insert",
+          "release_assessments",
+          {
+            "task_id": 21,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "risks": [
+              {
+                "perspective": 1
+              },
+              {
+                "perspective": 2
+              },
+              {
+                "perspective": 3
+              },
+              {
+                "perspective": 4
+              }
+            ],
+            "rollback_plan": {
+              "responsible_user_id": 8
+            },
+            "review_evidence": [],
+            "rollback_plan_version": 1,
+            "created_at": "2026-10-29 00:00:00+00:00",
+            "project_id": 7,
+            "created_by": 9
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          40,
+          {}
+        ],
+        [
+          "update",
+          "tasks",
+          {
+            "id": 21,
+            "version": 3
+          },
+          {
+            "approved_assessment_id": null,
+            "approved_assessment_version": null,
+            "version": 4
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 4,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "approved_assessment_id": null,
+        "approved_assessment_version": null
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [
+        {
+          "field": "version",
+          "value": "3"
+        }
+      ],
+      "after": [
+        {
+          "field": "version",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "role",
+      "outcome": [
+        "Rejected",
+        "ACTION_FORBIDDEN",
+        403,
+        null
+      ],
+      "trace": [],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "state",
+      "outcome": [
+        "Rejected",
+        "STATE_CONFLICT",
+        409,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 4,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "risks",
+      "outcome": [
+        "Rejected",
+        "PARAMETER_INVALID",
+        422,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "member",
+      "outcome": [
+        "Rejected",
+        "RESOURCE_NOT_FOUND",
+        404,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "rows",
+          "project_members",
+          {
+            "project_id": 7,
+            "user_id": 8,
+            "active": 1
+          },
+          {
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "query",
+      "outcome": [
+        "RuntimeError",
+        "query failed"
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "rows",
+          "project_members",
+          {
+            "project_id": 7,
+            "user_id": 8,
+            "active": 1
+          },
+          {
+            "limit": 1
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "scenario": "task_version",
+      "outcome": [
+        "Rejected",
+        "VERSION_CONFLICT",
+        409,
+        3
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "rows",
+          "project_members",
+          {
+            "project_id": 7,
+            "user_id": 8,
+            "active": 1
+          },
+          {
+            "limit": 1
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "insert",
+          "release_assessments",
+          {
+            "task_id": 21,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "risks": [
+              {
+                "perspective": 1
+              },
+              {
+                "perspective": 2
+              },
+              {
+                "perspective": 3
+              },
+              {
+                "perspective": 4
+              }
+            ],
+            "rollback_plan": {
+              "responsible_user_id": 8
+            },
+            "review_evidence": [],
+            "rollback_plan_version": 10,
+            "created_at": "2026-10-29 00:00:00+00:00",
+            "project_id": 7,
+            "created_by": 9
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          40,
+          {}
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "ok",
+      "outcome": [
+        "return",
+        {
+          "task": {
+            "id": 21,
+            "project_id": 7,
+            "version": 4,
+            "state": 5,
+            "schedule_version": 2,
+            "delivery_cycle": 1,
+            "approved_assessment_id": 31,
+            "approved_assessment_version": 2
+          },
+          "assessment": [
+            "ReleaseAssessment",
+            {
+              "id": 31,
+              "project_id": 7,
+              "task_id": 21,
+              "version": 2,
+              "status": 2,
+              "created_by": 8,
+              "schedule_version": 2,
+              "delivery_cycle": 1,
+              "rollback_plan_version": 9,
+              "reviewed_by": 9,
+              "reviewed_at": "2026-10-29 00:00:00+00:00",
+              "review_reason": "Reviewer synthetic",
+              "review_evidence": []
+            }
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "update",
+          "release_assessments",
+          {
+            "id": 31,
+            "version": 1
+          },
+          {
+            "status": 2,
+            "reviewed_by": 9,
+            "reviewed_at": "2026-10-29 00:00:00+00:00",
+            "review_reason": "Reviewer synthetic",
+            "review_evidence": [],
+            "version": 2
+          }
+        ],
+        [
+          "update",
+          "tasks",
+          {
+            "id": 21,
+            "version": 3
+          },
+          {
+            "approved_assessment_id": 31,
+            "approved_assessment_version": 2,
+            "version": 4
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 4,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "approved_assessment_id": 31,
+        "approved_assessment_version": 2
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 2,
+        "status": 2,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9,
+        "reviewed_by": 9,
+        "reviewed_at": "2026-10-29 00:00:00+00:00",
+        "review_reason": "Reviewer synthetic",
+        "review_evidence": []
+      },
+      "before": [
+        {
+          "field": "version",
+          "value": "3"
+        }
+      ],
+      "after": [
+        {
+          "field": "version",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "reject",
+      "outcome": [
+        "return",
+        {
+          "task": {
+            "id": 21,
+            "project_id": 7,
+            "version": 4,
+            "state": 5,
+            "schedule_version": 2,
+            "delivery_cycle": 1
+          },
+          "assessment": [
+            "ReleaseAssessment",
+            {
+              "id": 31,
+              "project_id": 7,
+              "task_id": 21,
+              "version": 2,
+              "status": 3,
+              "created_by": 8,
+              "schedule_version": 2,
+              "delivery_cycle": 1,
+              "rollback_plan_version": 9,
+              "reviewed_by": 9,
+              "reviewed_at": "2026-10-29 00:00:00+00:00",
+              "review_reason": "Reviewer synthetic",
+              "review_evidence": []
+            }
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "update",
+          "release_assessments",
+          {
+            "id": 31,
+            "version": 1
+          },
+          {
+            "status": 3,
+            "reviewed_by": 9,
+            "reviewed_at": "2026-10-29 00:00:00+00:00",
+            "review_reason": "Reviewer synthetic",
+            "review_evidence": [],
+            "version": 2
+          }
+        ],
+        [
+          "update",
+          "tasks",
+          {
+            "id": 21,
+            "version": 3
+          },
+          {
+            "version": 4
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 4,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 2,
+        "status": 3,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9,
+        "reviewed_by": 9,
+        "reviewed_at": "2026-10-29 00:00:00+00:00",
+        "review_reason": "Reviewer synthetic",
+        "review_evidence": []
+      },
+      "before": [
+        {
+          "field": "version",
+          "value": "3"
+        }
+      ],
+      "after": [
+        {
+          "field": "version",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "empty",
+      "outcome": [
+        "IndexError",
+        "list index out of range"
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "role",
+      "outcome": [
+        "Rejected",
+        "ACTION_FORBIDDEN",
+        403,
+        null
+      ],
+      "trace": [],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "self",
+      "outcome": [
+        "Rejected",
+        "ACTION_FORBIDDEN",
+        403,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "state",
+      "outcome": [
+        "Rejected",
+        "STATE_CONFLICT",
+        409,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 4,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "status",
+      "outcome": [
+        "Rejected",
+        "STATE_CONFLICT",
+        409,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 2,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "stale",
+      "outcome": [
+        "Rejected",
+        "ASSESSMENT_BASELINE_MISMATCH",
+        409,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "baseline",
+      "outcome": [
+        "Rejected",
+        "ASSESSMENT_BASELINE_MISMATCH",
+        409,
+        null
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 2,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "query",
+      "outcome": [
+        "RuntimeError",
+        "query failed"
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "assessment_version",
+      "outcome": [
+        "Rejected",
+        "VERSION_CONFLICT",
+        409,
+        1
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 1,
+        "status": 1,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9
+      },
+      "before": [],
+      "after": []
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "scenario": "task_version",
+      "outcome": [
+        "Rejected",
+        "VERSION_CONFLICT",
+        409,
+        3
+      ],
+      "trace": [
+        [
+          "get",
+          "tasks",
+          21,
+          {
+            "lock": null
+          }
+        ],
+        [
+          "get",
+          "release_assessments",
+          31,
+          {
+            "lock": "update"
+          }
+        ],
+        [
+          "rows",
+          "release_assessments",
+          {
+            "task_id": 21
+          },
+          {
+            "order_by": [
+              "-rollback_plan_version"
+            ],
+            "limit": 1
+          }
+        ],
+        [
+          "update",
+          "release_assessments",
+          {
+            "id": 31,
+            "version": 1
+          },
+          {
+            "status": 2,
+            "reviewed_by": 9,
+            "reviewed_at": "2026-10-29 00:00:00+00:00",
+            "review_reason": "Reviewer synthetic",
+            "review_evidence": [],
+            "version": 2
+          }
+        ]
+      ],
+      "task": {
+        "id": 21,
+        "project_id": 7,
+        "version": 3,
+        "state": 5,
+        "schedule_version": 2,
+        "delivery_cycle": 1
+      },
+      "assessment": {
+        "id": 31,
+        "project_id": 7,
+        "task_id": 21,
+        "version": 2,
+        "status": 2,
+        "created_by": 8,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "rollback_plan_version": 9,
+        "reviewed_by": 9,
+        "reviewed_at": "2026-10-29 00:00:00+00:00",
+        "review_reason": "Reviewer synthetic",
+        "review_evidence": []
+      },
+      "before": [
+        {
+          "field": "version",
+          "value": "1"
+        }
+      ],
+      "after": [
+        {
+          "field": "version",
+          "value": "2"
+        }
+      ]
+    }
+  ],
+  "catalog_transcripts": [
+    {
+      "scenario": "clean",
+      "fail_at": null,
+      "defect_count": 0,
+      "outcome": [],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "missing",
+      "fail_at": null,
+      "defect_count": 449,
+      "outcome": [
+        "users:table_options",
+        "service_accounts:table_options",
+        "auth_sessions:table_options",
+        "projects:table_options",
+        "project_members:table_options",
+        "iterations:table_options",
+        "tasks:table_options",
+        "task_dependencies:table_options",
+        "reviews:table_options",
+        "release_assessments:table_options",
+        "decisions:table_options",
+        "schedule_changes:table_options",
+        "audit_events:table_options",
+        "idempotency_requests:table_options",
+        "outbox_events:table_options",
+        "escalation_events:table_options",
+        "notifications:table_options",
+        "scan_runs:table_options",
+        "users.id:column_options",
+        "users.username:column_options",
+        "users.display_name:column_options",
+        "users.password_hash:column_options",
+        "users.active:column_options",
+        "users.created_at:column_options",
+        "users.updated_at:column_options",
+        "service_accounts.id:column_options",
+        "service_accounts.name:column_options",
+        "service_accounts.active:column_options",
+        "service_accounts.created_at:column_options",
+        "auth_sessions.id:column_options",
+        "auth_sessions.actor_kind:column_options",
+        "auth_sessions.user_id:column_options",
+        "auth_sessions.service_account_id:column_options",
+        "auth_sessions.token_hash:column_options",
+        "auth_sessions.project_ids:column_options",
+        "auth_sessions.scopes:column_options",
+        "auth_sessions.expires_at:column_options",
+        "auth_sessions.revoked_at:column_options",
+        "auth_sessions.created_at:column_options",
+        "projects.id:column_options",
+        "projects.name:column_options",
+        "projects.description:column_options",
+        "projects.version:column_options",
+        "projects.created_by:column_options",
+        "projects.created_at:column_options",
+        "projects.updated_at:column_options",
+        "project_members.id:column_options",
+        "project_members.project_id:column_options",
+        "project_members.user_id:column_options",
+        "project_members.roles_mask:column_options",
+        "project_members.active:column_options",
+        "project_members.version:column_options",
+        "project_members.created_at:column_options",
+        "project_members.updated_at:column_options",
+        "iterations.id:column_options",
+        "iterations.project_id:column_options",
+        "iterations.name:column_options",
+        "iterations.planned_start:column_options",
+        "iterations.planned_end:column_options",
+        "iterations.capacity:column_options",
+        "iterations.buffer_quarters:column_options",
+        "iterations.delay_contingency:column_options",
+        "iterations.version:column_options",
+        "iterations.plan_version:column_options",
+        "iterations.created_at:column_options",
+        "iterations.updated_at:column_options",
+        "tasks.id:column_options",
+        "tasks.project_id:column_options",
+        "tasks.iteration_id:column_options",
+        "tasks.title:column_options",
+        "tasks.description:column_options",
+        "tasks.owner_id:column_options",
+        "tasks.state:column_options",
+        "tasks.version:column_options",
+        "tasks.schedule_version:column_options",
+        "tasks.delivery_cycle:column_options",
+        "tasks.review_cycle:column_options",
+        "tasks.planned_start:column_options",
+        "tasks.planned_end:column_options",
+        "tasks.estimated_quarters:column_options",
+        "tasks.buffer_quarters:column_options",
+        "tasks.delay_contingency:column_options",
+        "tasks.blocked_from_state:column_options",
+        "tasks.block_reason:column_options",
+        "tasks.responsibility_stage:column_options",
+        "tasks.artifact_revision:column_options",
+        "tasks.latest_review_id:column_options",
+        "tasks.approved_review_id:column_options",
+        "tasks.approved_assessment_id:column_options",
+        "tasks.approved_assessment_version:column_options",
+        "tasks.escalation_count:column_options",
+        "tasks.created_at:column_options",
+        "tasks.updated_at:column_options",
+        "task_dependencies.id:column_options",
+        "task_dependencies.project_id:column_options",
+        "task_dependencies.task_id:column_options",
+        "task_dependencies.depends_on_task_id:column_options",
+        "task_dependencies.created_by:column_options",
+        "task_dependencies.created_at:column_options",
+        "reviews.id:column_options",
+        "reviews.project_id:column_options",
+        "reviews.task_id:column_options",
+        "reviews.version:column_options",
+        "reviews.delivery_cycle:column_options",
+        "reviews.review_cycle:column_options",
+        "reviews.template_version:column_options",
+        "reviews.template_hash:column_options",
+        "reviews.artifact_revision:column_options",
+        "reviews.sections:column_options",
+        "reviews.checklist:column_options",
+        "reviews.verdict:column_options",
+        "reviews.reviewer_id:column_options",
+        "reviews.created_at:column_options",
+        "release_assessments.id:column_options",
+        "release_assessments.project_id:column_options",
+        "release_assessments.task_id:column_options",
+        "release_assessments.version:column_options",
+        "release_assessments.schedule_version:column_options",
+        "release_assessments.delivery_cycle:column_options",
+        "release_assessments.status:column_options",
+        "release_assessments.risks:column_options",
+        "release_assessments.rollback_plan_version:column_options",
+        "release_assessments.rollback_plan:column_options",
+        "release_assessments.created_by:column_options",
+        "release_assessments.reviewed_by:column_options",
+        "release_assessments.reviewed_at:column_options",
+        "release_assessments.review_reason:column_options",
+        "release_assessments.review_evidence:column_options",
+        "release_assessments.created_at:column_options",
+        "decisions.id:column_options",
+        "decisions.project_id:column_options",
+        "decisions.task_id:column_options",
+        "decisions.type:column_options",
+        "decisions.decided_by:column_options",
+        "decisions.delivery_cycle:column_options",
+        "decisions.reason:column_options",
+        "decisions.impact:column_options",
+        "decisions.target_version:column_options",
+        "decisions.assessment_id:column_options",
+        "decisions.rollback_plan_version:column_options",
+        "decisions.evidence:column_options",
+        "decisions.decided_at:column_options",
+        "schedule_changes.id:column_options",
+        "schedule_changes.project_id:column_options",
+        "schedule_changes.task_id:column_options",
+        "schedule_changes.iteration_id:column_options",
+        "schedule_changes.from_version:column_options",
+        "schedule_changes.to_version:column_options",
+        "schedule_changes.before_plan:column_options",
+        "schedule_changes.after_plan:column_options",
+        "schedule_changes.reason:column_options",
+        "schedule_changes.evidence:column_options",
+        "schedule_changes.changed_by:column_options",
+        "schedule_changes.changed_at:column_options",
+        "audit_events.id:column_options",
+        "audit_events.project_id:column_options",
+        "audit_events.task_id:column_options",
+        "audit_events.attempted_project_id:column_options",
+        "audit_events.attempted_task_id:column_options",
+        "audit_events.actor_kind:column_options",
+        "audit_events.actor_id:column_options",
+        "audit_events.request_id:column_options",
+        "audit_events.operation_id:column_options",
+        "audit_events.outcome:column_options",
+        "audit_events.reason_code:column_options",
+        "audit_events.expected_version:column_options",
+        "audit_events.observed_version:column_options",
+        "audit_events.before_values:column_options",
+        "audit_events.after_values:column_options",
+        "audit_events.evidence:column_options",
+        "audit_events.created_at:column_options",
+        "idempotency_requests.id:column_options",
+        "idempotency_requests.actor_kind:column_options",
+        "idempotency_requests.actor_id:column_options",
+        "idempotency_requests.operation_id:column_options",
+        "idempotency_requests.idempotency_key:column_options",
+        "idempotency_requests.request_hash:column_options",
+        "idempotency_requests.status:column_options",
+        "idempotency_requests.owner_token:column_options",
+        "idempotency_requests.lease_until:column_options",
+        "idempotency_requests.response_status:column_options",
+        "idempotency_requests.response_body:column_options",
+        "idempotency_requests.response_request_id:column_options",
+        "idempotency_requests.created_at:column_options",
+        "idempotency_requests.completed_at:column_options",
+        "outbox_events.id:column_options",
+        "outbox_events.event_type:column_options",
+        "outbox_events.schema_version:column_options",
+        "outbox_events.project_id:column_options",
+        "outbox_events.task_id:column_options",
+        "outbox_events.payload:column_options",
+        "outbox_events.recipients:column_options",
+        "outbox_events.status:column_options",
+        "outbox_events.attempts:column_options",
+        "outbox_events.next_attempt_at:column_options",
+        "outbox_events.lease_token:column_options",
+        "outbox_events.lease_until:column_options",
+        "outbox_events.confirmed_at:column_options",
+        "outbox_events.fallback_at:column_options",
+        "outbox_events.last_error_code:column_options",
+        "outbox_events.created_at:column_options",
+        "outbox_events.updated_at:column_options",
+        "escalation_events.id:column_options",
+        "escalation_events.project_id:column_options",
+        "escalation_events.task_id:column_options",
+        "escalation_events.schedule_version:column_options",
+        "escalation_events.level:column_options",
+        "escalation_events.rule_version:column_options",
+        "escalation_events.rule_snapshot:column_options",
+        "escalation_events.rule_hash:column_options",
+        "escalation_events.scan_run_id:column_options",
+        "escalation_events.planned_end:column_options",
+        "escalation_events.observed_at:column_options",
+        "escalation_events.event_id:column_options",
+        "notifications.id:column_options",
+        "notifications.project_id:column_options",
+        "notifications.task_id:column_options",
+        "notifications.event_id:column_options",
+        "notifications.recipient_id:column_options",
+        "notifications.version:column_options",
+        "notifications.level:column_options",
+        "notifications.title:column_options",
+        "notifications.message:column_options",
+        "notifications.fallback:column_options",
+        "notifications.read_at:column_options",
+        "notifications.handled_at:column_options",
+        "notifications.handling_note:column_options",
+        "notifications.handling_evidence:column_options",
+        "notifications.created_at:column_options",
+        "scan_runs.id:column_options",
+        "scan_runs.run_key:column_options",
+        "scan_runs.rule_version:column_options",
+        "scan_runs.rule_snapshot:column_options",
+        "scan_runs.rule_hash:column_options",
+        "scan_runs.cutoff_at:column_options",
+        "scan_runs.status:column_options",
+        "scan_runs.last_task_id:column_options",
+        "scan_runs.scanned_count:column_options",
+        "scan_runs.created_count:column_options",
+        "scan_runs.duplicate_count:column_options",
+        "scan_runs.started_at:column_options",
+        "scan_runs.heartbeat_at:column_options",
+        "scan_runs.finished_at:column_options",
+        "scan_runs.error_code:column_options",
+        "users.PRIMARY.1:index_options",
+        "users.uq_users_username.1:index_options",
+        "service_accounts.PRIMARY.1:index_options",
+        "service_accounts.uq_service_accounts_name.1:index_options",
+        "auth_sessions.ix_auth_sessions_user.1:index_options",
+        "auth_sessions.ix_auth_sessions_user.2:index_options",
+        "auth_sessions.ix_auth_sessions_user.3:index_options",
+        "auth_sessions.ix_auth_sessions_service.1:index_options",
+        "auth_sessions.ix_auth_sessions_service.2:index_options",
+        "auth_sessions.ix_auth_sessions_service.3:index_options",
+        "auth_sessions.uq_auth_sessions_token_hash.1:index_options",
+        "auth_sessions.PRIMARY.1:index_options",
+        "projects.ix_projects_creator.1:index_options",
+        "projects.ix_projects_creator.2:index_options",
+        "projects.PRIMARY.1:index_options",
+        "project_members.ix_members_user_active.1:index_options",
+        "project_members.ix_members_user_active.2:index_options",
+        "project_members.ix_members_user_active.3:index_options",
+        "project_members.PRIMARY.1:index_options",
+        "project_members.uq_members_project_user.1:index_options",
+        "project_members.uq_members_project_user.2:index_options",
+        "iterations.ix_iterations_project_time.1:index_options",
+        "iterations.ix_iterations_project_time.2:index_options",
+        "iterations.ix_iterations_project_time.3:index_options",
+        "iterations.uq_iterations_project_id.1:index_options",
+        "iterations.uq_iterations_project_id.2:index_options",
+        "iterations.PRIMARY.1:index_options",
+        "tasks.ix_tasks_scan.1:index_options",
+        "tasks.ix_tasks_scan.2:index_options",
+        "tasks.ix_tasks_scan.3:index_options",
+        "tasks.ix_tasks_project_state.1:index_options",
+        "tasks.ix_tasks_project_state.2:index_options",
+        "tasks.ix_tasks_project_state.3:index_options",
+        "tasks.ix_tasks_owner_state.1:index_options",
+        "tasks.ix_tasks_owner_state.2:index_options",
+        "tasks.ix_tasks_owner_state.3:index_options",
+        "tasks.ix_tasks_owner_state.4:index_options",
+        "tasks.ix_tasks_iteration.1:index_options",
+        "tasks.ix_tasks_iteration.2:index_options",
+        "tasks.ix_tasks_iteration.3:index_options",
+        "tasks.PRIMARY.1:index_options",
+        "tasks.uq_tasks_project_id.1:index_options",
+        "tasks.uq_tasks_project_id.2:index_options",
+        "task_dependencies.ix_dependencies_creator.1:index_options",
+        "task_dependencies.ix_dependencies_reverse.1:index_options",
+        "task_dependencies.ix_dependencies_reverse.2:index_options",
+        "task_dependencies.ix_dependencies_reverse.3:index_options",
+        "task_dependencies.uq_dependencies_edge.1:index_options",
+        "task_dependencies.uq_dependencies_edge.2:index_options",
+        "task_dependencies.uq_dependencies_edge.3:index_options",
+        "task_dependencies.PRIMARY.1:index_options",
+        "reviews.ix_reviews_task_cycle.1:index_options",
+        "reviews.ix_reviews_task_cycle.2:index_options",
+        "reviews.ix_reviews_task_cycle.3:index_options",
+        "reviews.ix_reviews_task_cycle.4:index_options",
+        "reviews.ix_reviews_task_cycle.5:index_options",
+        "reviews.ix_reviews_reviewer.1:index_options",
+        "reviews.ix_reviews_reviewer.2:index_options",
+        "reviews.PRIMARY.1:index_options",
+        "reviews.uq_reviews_task_id.1:index_options",
+        "reviews.uq_reviews_task_id.2:index_options",
+        "release_assessments.ix_assessments_current.1:index_options",
+        "release_assessments.ix_assessments_current.2:index_options",
+        "release_assessments.ix_assessments_current.3:index_options",
+        "release_assessments.ix_assessments_current.4:index_options",
+        "release_assessments.ix_assessments_current.5:index_options",
+        "release_assessments.ix_assessments_current.6:index_options",
+        "release_assessments.ix_assessments_creator.1:index_options",
+        "release_assessments.ix_assessments_reviewer.1:index_options",
+        "release_assessments.PRIMARY.1:index_options",
+        "release_assessments.uq_assessments_plan_version.1:index_options",
+        "release_assessments.uq_assessments_plan_version.2:index_options",
+        "release_assessments.uq_assessments_task_id.1:index_options",
+        "release_assessments.uq_assessments_task_id.2:index_options",
+        "decisions.ix_decisions_project_task.1:index_options",
+        "decisions.ix_decisions_project_task.2:index_options",
+        "decisions.ix_decisions_project_task.3:index_options",
+        "decisions.ix_decisions_assessment.1:index_options",
+        "decisions.ix_decisions_assessment.2:index_options",
+        "decisions.ix_decisions_actor.1:index_options",
+        "decisions.ix_decisions_actor.2:index_options",
+        "decisions.uq_decisions_cycle_type.1:index_options",
+        "decisions.uq_decisions_cycle_type.2:index_options",
+        "decisions.uq_decisions_cycle_type.3:index_options",
+        "decisions.PRIMARY.1:index_options",
+        "schedule_changes.ix_schedule_project.1:index_options",
+        "schedule_changes.ix_schedule_project.2:index_options",
+        "schedule_changes.uq_schedule_iteration_version.1:index_options",
+        "schedule_changes.uq_schedule_iteration_version.2:index_options",
+        "schedule_changes.PRIMARY.1:index_options",
+        "schedule_changes.uq_schedule_task_version.1:index_options",
+        "schedule_changes.uq_schedule_task_version.2:index_options",
+        "audit_events.ix_audit_project_task.1:index_options",
+        "audit_events.ix_audit_project_task.2:index_options",
+        "audit_events.ix_audit_project_task.3:index_options",
+        "audit_events.ix_audit_actor.1:index_options",
+        "audit_events.ix_audit_actor.2:index_options",
+        "audit_events.ix_audit_actor.3:index_options",
+        "audit_events.ix_audit_request.1:index_options",
+        "audit_events.ix_audit_request.2:index_options",
+        "audit_events.PRIMARY.1:index_options",
+        "idempotency_requests.ix_idempotency_recovery.1:index_options",
+        "idempotency_requests.ix_idempotency_recovery.2:index_options",
+        "idempotency_requests.ix_idempotency_recovery.3:index_options",
+        "idempotency_requests.uq_idempotency_scope.1:index_options",
+        "idempotency_requests.uq_idempotency_scope.2:index_options",
+        "idempotency_requests.uq_idempotency_scope.3:index_options",
+        "idempotency_requests.uq_idempotency_scope.4:index_options",
+        "idempotency_requests.PRIMARY.1:index_options",
+        "outbox_events.ix_outbox_dispatch.1:index_options",
+        "outbox_events.ix_outbox_dispatch.2:index_options",
+        "outbox_events.ix_outbox_dispatch.3:index_options",
+        "outbox_events.ix_outbox_recovery.1:index_options",
+        "outbox_events.ix_outbox_recovery.2:index_options",
+        "outbox_events.ix_outbox_recovery.3:index_options",
+        "outbox_events.PRIMARY.1:index_options",
+        "outbox_events.uq_outbox_project_task_id.1:index_options",
+        "outbox_events.uq_outbox_project_task_id.2:index_options",
+        "outbox_events.uq_outbox_project_task_id.3:index_options",
+        "escalation_events.ix_escalation_scan.1:index_options",
+        "escalation_events.ix_escalation_scan.2:index_options",
+        "escalation_events.ix_escalation_project_task.1:index_options",
+        "escalation_events.ix_escalation_project_task.2:index_options",
+        "escalation_events.ix_escalation_project_task.3:index_options",
+        "escalation_events.uq_escalation_event.1:index_options",
+        "escalation_events.PRIMARY.1:index_options",
+        "escalation_events.uq_escalation_once.1:index_options",
+        "escalation_events.uq_escalation_once.2:index_options",
+        "escalation_events.uq_escalation_once.3:index_options",
+        "notifications.ix_notifications_recipient.1:index_options",
+        "notifications.ix_notifications_recipient.2:index_options",
+        "notifications.ix_notifications_recipient.3:index_options",
+        "notifications.ix_notifications_unhandled.1:index_options",
+        "notifications.ix_notifications_unhandled.2:index_options",
+        "notifications.ix_notifications_unhandled.3:index_options",
+        "notifications.ix_notifications_unread.1:index_options",
+        "notifications.ix_notifications_unread.2:index_options",
+        "notifications.ix_notifications_unread.3:index_options",
+        "notifications.PRIMARY.1:index_options",
+        "notifications.uq_notifications_consumer.1:index_options",
+        "notifications.uq_notifications_consumer.2:index_options",
+        "scan_runs.ix_scan_runs_recovery.1:index_options",
+        "scan_runs.ix_scan_runs_recovery.2:index_options",
+        "scan_runs.ix_scan_runs_recovery.3:index_options",
+        "scan_runs.uq_scan_run_key.1:index_options",
+        "scan_runs.PRIMARY.1:index_options",
+        "users.ck_users_hash_shape:check_enforcement",
+        "users.ck_users_active:check_enforcement",
+        "service_accounts.ck_service_accounts_active:check_enforcement",
+        "auth_sessions.ck_auth_sessions_scopes:check_enforcement",
+        "auth_sessions.ck_auth_sessions_actor:check_enforcement",
+        "auth_sessions.ck_auth_sessions_expiry:check_enforcement",
+        "projects.ck_projects_version:check_enforcement",
+        "project_members.ck_members_active:check_enforcement",
+        "project_members.ck_members_version:check_enforcement",
+        "project_members.ck_members_roles:check_enforcement",
+        "iterations.ck_iterations_time:check_enforcement",
+        "iterations.ck_iterations_buffer:check_enforcement",
+        "iterations.ck_iterations_versions:check_enforcement",
+        "iterations.ck_iterations_capacity:check_enforcement",
+        "tasks.ck_tasks_assessment_pair:check_enforcement",
+        "tasks.ck_tasks_time:check_enforcement",
+        "tasks.ck_tasks_state:check_enforcement",
+        "tasks.ck_tasks_escalations:check_enforcement",
+        "tasks.ck_tasks_hours:check_enforcement",
+        "tasks.ck_tasks_block:check_enforcement",
+        "tasks.ck_tasks_versions:check_enforcement",
+        "task_dependencies.ck_dependencies_not_self:check_enforcement",
+        "reviews.ck_reviews_sections:check_enforcement",
+        "reviews.ck_reviews_checklist:check_enforcement",
+        "reviews.ck_reviews_versions:check_enforcement",
+        "reviews.ck_reviews_verdict:check_enforcement",
+        "release_assessments.ck_assessments_versions:check_enforcement",
+        "release_assessments.ck_assessments_risks:check_enforcement",
+        "release_assessments.ck_assessments_status:check_enforcement",
+        "release_assessments.ck_assessments_plan:check_enforcement",
+        "release_assessments.ck_assessments_review:check_enforcement",
+        "decisions.ck_decisions_evidence:check_enforcement",
+        "decisions.ck_decisions_payload:check_enforcement",
+        "decisions.ck_decisions_cycle:check_enforcement",
+        "decisions.ck_decisions_type:check_enforcement",
+        "decisions.ck_decisions_reason:check_enforcement",
+        "schedule_changes.ck_schedule_reason:check_enforcement",
+        "schedule_changes.ck_schedule_versions:check_enforcement",
+        "schedule_changes.ck_schedule_target:check_enforcement",
+        "schedule_changes.ck_schedule_json:check_enforcement",
+        "audit_events.ck_audit_arrays:check_enforcement",
+        "audit_events.ck_audit_project_task:check_enforcement",
+        "audit_events.ck_audit_actor:check_enforcement",
+        "audit_events.ck_audit_outcome:check_enforcement",
+        "idempotency_requests.ck_idempotency_state:check_enforcement",
+        "idempotency_requests.ck_idempotency_actor:check_enforcement",
+        "outbox_events.ck_outbox_state:check_enforcement",
+        "outbox_events.ck_outbox_type:check_enforcement",
+        "outbox_events.ck_outbox_payload:check_enforcement",
+        "escalation_events.ck_escalation_rules:check_enforcement",
+        "escalation_events.ck_escalation_level:check_enforcement",
+        "escalation_events.ck_escalation_versions:check_enforcement",
+        "notifications.ck_notifications_version:check_enforcement",
+        "notifications.ck_notifications_fallback:check_enforcement",
+        "notifications.ck_notifications_handling:check_enforcement",
+        "notifications.ck_notifications_level:check_enforcement",
+        "scan_runs.ck_scan_runs_rules:check_enforcement",
+        "scan_runs.ck_scan_runs_state:check_enforcement",
+        "scan_runs.ck_scan_runs_version:check_enforcement"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "changed",
+      "fail_at": null,
+      "defect_count": 449,
+      "outcome": [
+        "users:table_options",
+        "service_accounts:table_options",
+        "auth_sessions:table_options",
+        "projects:table_options",
+        "project_members:table_options",
+        "iterations:table_options",
+        "tasks:table_options",
+        "task_dependencies:table_options",
+        "reviews:table_options",
+        "release_assessments:table_options",
+        "decisions:table_options",
+        "schedule_changes:table_options",
+        "audit_events:table_options",
+        "idempotency_requests:table_options",
+        "outbox_events:table_options",
+        "escalation_events:table_options",
+        "notifications:table_options",
+        "scan_runs:table_options",
+        "users.id:column_options",
+        "users.username:column_options",
+        "users.display_name:column_options",
+        "users.password_hash:column_options",
+        "users.active:column_options",
+        "users.created_at:column_options",
+        "users.updated_at:column_options",
+        "service_accounts.id:column_options",
+        "service_accounts.name:column_options",
+        "service_accounts.active:column_options",
+        "service_accounts.created_at:column_options",
+        "auth_sessions.id:column_options",
+        "auth_sessions.actor_kind:column_options",
+        "auth_sessions.user_id:column_options",
+        "auth_sessions.service_account_id:column_options",
+        "auth_sessions.token_hash:column_options",
+        "auth_sessions.project_ids:column_options",
+        "auth_sessions.scopes:column_options",
+        "auth_sessions.expires_at:column_options",
+        "auth_sessions.revoked_at:column_options",
+        "auth_sessions.created_at:column_options",
+        "projects.id:column_options",
+        "projects.name:column_options",
+        "projects.description:column_options",
+        "projects.version:column_options",
+        "projects.created_by:column_options",
+        "projects.created_at:column_options",
+        "projects.updated_at:column_options",
+        "project_members.id:column_options",
+        "project_members.project_id:column_options",
+        "project_members.user_id:column_options",
+        "project_members.roles_mask:column_options",
+        "project_members.active:column_options",
+        "project_members.version:column_options",
+        "project_members.created_at:column_options",
+        "project_members.updated_at:column_options",
+        "iterations.id:column_options",
+        "iterations.project_id:column_options",
+        "iterations.name:column_options",
+        "iterations.planned_start:column_options",
+        "iterations.planned_end:column_options",
+        "iterations.capacity:column_options",
+        "iterations.buffer_quarters:column_options",
+        "iterations.delay_contingency:column_options",
+        "iterations.version:column_options",
+        "iterations.plan_version:column_options",
+        "iterations.created_at:column_options",
+        "iterations.updated_at:column_options",
+        "tasks.id:column_options",
+        "tasks.project_id:column_options",
+        "tasks.iteration_id:column_options",
+        "tasks.title:column_options",
+        "tasks.description:column_options",
+        "tasks.owner_id:column_options",
+        "tasks.state:column_options",
+        "tasks.version:column_options",
+        "tasks.schedule_version:column_options",
+        "tasks.delivery_cycle:column_options",
+        "tasks.review_cycle:column_options",
+        "tasks.planned_start:column_options",
+        "tasks.planned_end:column_options",
+        "tasks.estimated_quarters:column_options",
+        "tasks.buffer_quarters:column_options",
+        "tasks.delay_contingency:column_options",
+        "tasks.blocked_from_state:column_options",
+        "tasks.block_reason:column_options",
+        "tasks.responsibility_stage:column_options",
+        "tasks.artifact_revision:column_options",
+        "tasks.latest_review_id:column_options",
+        "tasks.approved_review_id:column_options",
+        "tasks.approved_assessment_id:column_options",
+        "tasks.approved_assessment_version:column_options",
+        "tasks.escalation_count:column_options",
+        "tasks.created_at:column_options",
+        "tasks.updated_at:column_options",
+        "task_dependencies.id:column_options",
+        "task_dependencies.project_id:column_options",
+        "task_dependencies.task_id:column_options",
+        "task_dependencies.depends_on_task_id:column_options",
+        "task_dependencies.created_by:column_options",
+        "task_dependencies.created_at:column_options",
+        "reviews.id:column_options",
+        "reviews.project_id:column_options",
+        "reviews.task_id:column_options",
+        "reviews.version:column_options",
+        "reviews.delivery_cycle:column_options",
+        "reviews.review_cycle:column_options",
+        "reviews.template_version:column_options",
+        "reviews.template_hash:column_options",
+        "reviews.artifact_revision:column_options",
+        "reviews.sections:column_options",
+        "reviews.checklist:column_options",
+        "reviews.verdict:column_options",
+        "reviews.reviewer_id:column_options",
+        "reviews.created_at:column_options",
+        "release_assessments.id:column_options",
+        "release_assessments.project_id:column_options",
+        "release_assessments.task_id:column_options",
+        "release_assessments.version:column_options",
+        "release_assessments.schedule_version:column_options",
+        "release_assessments.delivery_cycle:column_options",
+        "release_assessments.status:column_options",
+        "release_assessments.risks:column_options",
+        "release_assessments.rollback_plan_version:column_options",
+        "release_assessments.rollback_plan:column_options",
+        "release_assessments.created_by:column_options",
+        "release_assessments.reviewed_by:column_options",
+        "release_assessments.reviewed_at:column_options",
+        "release_assessments.review_reason:column_options",
+        "release_assessments.review_evidence:column_options",
+        "release_assessments.created_at:column_options",
+        "decisions.id:column_options",
+        "decisions.project_id:column_options",
+        "decisions.task_id:column_options",
+        "decisions.type:column_options",
+        "decisions.decided_by:column_options",
+        "decisions.delivery_cycle:column_options",
+        "decisions.reason:column_options",
+        "decisions.impact:column_options",
+        "decisions.target_version:column_options",
+        "decisions.assessment_id:column_options",
+        "decisions.rollback_plan_version:column_options",
+        "decisions.evidence:column_options",
+        "decisions.decided_at:column_options",
+        "schedule_changes.id:column_options",
+        "schedule_changes.project_id:column_options",
+        "schedule_changes.task_id:column_options",
+        "schedule_changes.iteration_id:column_options",
+        "schedule_changes.from_version:column_options",
+        "schedule_changes.to_version:column_options",
+        "schedule_changes.before_plan:column_options",
+        "schedule_changes.after_plan:column_options",
+        "schedule_changes.reason:column_options",
+        "schedule_changes.evidence:column_options",
+        "schedule_changes.changed_by:column_options",
+        "schedule_changes.changed_at:column_options",
+        "audit_events.id:column_options",
+        "audit_events.project_id:column_options",
+        "audit_events.task_id:column_options",
+        "audit_events.attempted_project_id:column_options",
+        "audit_events.attempted_task_id:column_options",
+        "audit_events.actor_kind:column_options",
+        "audit_events.actor_id:column_options",
+        "audit_events.request_id:column_options",
+        "audit_events.operation_id:column_options",
+        "audit_events.outcome:column_options",
+        "audit_events.reason_code:column_options",
+        "audit_events.expected_version:column_options",
+        "audit_events.observed_version:column_options",
+        "audit_events.before_values:column_options",
+        "audit_events.after_values:column_options",
+        "audit_events.evidence:column_options",
+        "audit_events.created_at:column_options",
+        "idempotency_requests.id:column_options",
+        "idempotency_requests.actor_kind:column_options",
+        "idempotency_requests.actor_id:column_options",
+        "idempotency_requests.operation_id:column_options",
+        "idempotency_requests.idempotency_key:column_options",
+        "idempotency_requests.request_hash:column_options",
+        "idempotency_requests.status:column_options",
+        "idempotency_requests.owner_token:column_options",
+        "idempotency_requests.lease_until:column_options",
+        "idempotency_requests.response_status:column_options",
+        "idempotency_requests.response_body:column_options",
+        "idempotency_requests.response_request_id:column_options",
+        "idempotency_requests.created_at:column_options",
+        "idempotency_requests.completed_at:column_options",
+        "outbox_events.id:column_options",
+        "outbox_events.event_type:column_options",
+        "outbox_events.schema_version:column_options",
+        "outbox_events.project_id:column_options",
+        "outbox_events.task_id:column_options",
+        "outbox_events.payload:column_options",
+        "outbox_events.recipients:column_options",
+        "outbox_events.status:column_options",
+        "outbox_events.attempts:column_options",
+        "outbox_events.next_attempt_at:column_options",
+        "outbox_events.lease_token:column_options",
+        "outbox_events.lease_until:column_options",
+        "outbox_events.confirmed_at:column_options",
+        "outbox_events.fallback_at:column_options",
+        "outbox_events.last_error_code:column_options",
+        "outbox_events.created_at:column_options",
+        "outbox_events.updated_at:column_options",
+        "escalation_events.id:column_options",
+        "escalation_events.project_id:column_options",
+        "escalation_events.task_id:column_options",
+        "escalation_events.schedule_version:column_options",
+        "escalation_events.level:column_options",
+        "escalation_events.rule_version:column_options",
+        "escalation_events.rule_snapshot:column_options",
+        "escalation_events.rule_hash:column_options",
+        "escalation_events.scan_run_id:column_options",
+        "escalation_events.planned_end:column_options",
+        "escalation_events.observed_at:column_options",
+        "escalation_events.event_id:column_options",
+        "notifications.id:column_options",
+        "notifications.project_id:column_options",
+        "notifications.task_id:column_options",
+        "notifications.event_id:column_options",
+        "notifications.recipient_id:column_options",
+        "notifications.version:column_options",
+        "notifications.level:column_options",
+        "notifications.title:column_options",
+        "notifications.message:column_options",
+        "notifications.fallback:column_options",
+        "notifications.read_at:column_options",
+        "notifications.handled_at:column_options",
+        "notifications.handling_note:column_options",
+        "notifications.handling_evidence:column_options",
+        "notifications.created_at:column_options",
+        "scan_runs.id:column_options",
+        "scan_runs.run_key:column_options",
+        "scan_runs.rule_version:column_options",
+        "scan_runs.rule_snapshot:column_options",
+        "scan_runs.rule_hash:column_options",
+        "scan_runs.cutoff_at:column_options",
+        "scan_runs.status:column_options",
+        "scan_runs.last_task_id:column_options",
+        "scan_runs.scanned_count:column_options",
+        "scan_runs.created_count:column_options",
+        "scan_runs.duplicate_count:column_options",
+        "scan_runs.started_at:column_options",
+        "scan_runs.heartbeat_at:column_options",
+        "scan_runs.finished_at:column_options",
+        "scan_runs.error_code:column_options",
+        "users.PRIMARY.1:index_options",
+        "users.uq_users_username.1:index_options",
+        "service_accounts.PRIMARY.1:index_options",
+        "service_accounts.uq_service_accounts_name.1:index_options",
+        "auth_sessions.ix_auth_sessions_user.1:index_options",
+        "auth_sessions.ix_auth_sessions_user.2:index_options",
+        "auth_sessions.ix_auth_sessions_user.3:index_options",
+        "auth_sessions.ix_auth_sessions_service.1:index_options",
+        "auth_sessions.ix_auth_sessions_service.2:index_options",
+        "auth_sessions.ix_auth_sessions_service.3:index_options",
+        "auth_sessions.uq_auth_sessions_token_hash.1:index_options",
+        "auth_sessions.PRIMARY.1:index_options",
+        "projects.ix_projects_creator.1:index_options",
+        "projects.ix_projects_creator.2:index_options",
+        "projects.PRIMARY.1:index_options",
+        "project_members.ix_members_user_active.1:index_options",
+        "project_members.ix_members_user_active.2:index_options",
+        "project_members.ix_members_user_active.3:index_options",
+        "project_members.PRIMARY.1:index_options",
+        "project_members.uq_members_project_user.1:index_options",
+        "project_members.uq_members_project_user.2:index_options",
+        "iterations.ix_iterations_project_time.1:index_options",
+        "iterations.ix_iterations_project_time.2:index_options",
+        "iterations.ix_iterations_project_time.3:index_options",
+        "iterations.uq_iterations_project_id.1:index_options",
+        "iterations.uq_iterations_project_id.2:index_options",
+        "iterations.PRIMARY.1:index_options",
+        "tasks.ix_tasks_scan.1:index_options",
+        "tasks.ix_tasks_scan.2:index_options",
+        "tasks.ix_tasks_scan.3:index_options",
+        "tasks.ix_tasks_project_state.1:index_options",
+        "tasks.ix_tasks_project_state.2:index_options",
+        "tasks.ix_tasks_project_state.3:index_options",
+        "tasks.ix_tasks_owner_state.1:index_options",
+        "tasks.ix_tasks_owner_state.2:index_options",
+        "tasks.ix_tasks_owner_state.3:index_options",
+        "tasks.ix_tasks_owner_state.4:index_options",
+        "tasks.ix_tasks_iteration.1:index_options",
+        "tasks.ix_tasks_iteration.2:index_options",
+        "tasks.ix_tasks_iteration.3:index_options",
+        "tasks.PRIMARY.1:index_options",
+        "tasks.uq_tasks_project_id.1:index_options",
+        "tasks.uq_tasks_project_id.2:index_options",
+        "task_dependencies.ix_dependencies_creator.1:index_options",
+        "task_dependencies.ix_dependencies_reverse.1:index_options",
+        "task_dependencies.ix_dependencies_reverse.2:index_options",
+        "task_dependencies.ix_dependencies_reverse.3:index_options",
+        "task_dependencies.uq_dependencies_edge.1:index_options",
+        "task_dependencies.uq_dependencies_edge.2:index_options",
+        "task_dependencies.uq_dependencies_edge.3:index_options",
+        "task_dependencies.PRIMARY.1:index_options",
+        "reviews.ix_reviews_task_cycle.1:index_options",
+        "reviews.ix_reviews_task_cycle.2:index_options",
+        "reviews.ix_reviews_task_cycle.3:index_options",
+        "reviews.ix_reviews_task_cycle.4:index_options",
+        "reviews.ix_reviews_task_cycle.5:index_options",
+        "reviews.ix_reviews_reviewer.1:index_options",
+        "reviews.ix_reviews_reviewer.2:index_options",
+        "reviews.PRIMARY.1:index_options",
+        "reviews.uq_reviews_task_id.1:index_options",
+        "reviews.uq_reviews_task_id.2:index_options",
+        "release_assessments.ix_assessments_current.1:index_options",
+        "release_assessments.ix_assessments_current.2:index_options",
+        "release_assessments.ix_assessments_current.3:index_options",
+        "release_assessments.ix_assessments_current.4:index_options",
+        "release_assessments.ix_assessments_current.5:index_options",
+        "release_assessments.ix_assessments_current.6:index_options",
+        "release_assessments.ix_assessments_creator.1:index_options",
+        "release_assessments.ix_assessments_reviewer.1:index_options",
+        "release_assessments.PRIMARY.1:index_options",
+        "release_assessments.uq_assessments_plan_version.1:index_options",
+        "release_assessments.uq_assessments_plan_version.2:index_options",
+        "release_assessments.uq_assessments_task_id.1:index_options",
+        "release_assessments.uq_assessments_task_id.2:index_options",
+        "decisions.ix_decisions_project_task.1:index_options",
+        "decisions.ix_decisions_project_task.2:index_options",
+        "decisions.ix_decisions_project_task.3:index_options",
+        "decisions.ix_decisions_assessment.1:index_options",
+        "decisions.ix_decisions_assessment.2:index_options",
+        "decisions.ix_decisions_actor.1:index_options",
+        "decisions.ix_decisions_actor.2:index_options",
+        "decisions.uq_decisions_cycle_type.1:index_options",
+        "decisions.uq_decisions_cycle_type.2:index_options",
+        "decisions.uq_decisions_cycle_type.3:index_options",
+        "decisions.PRIMARY.1:index_options",
+        "schedule_changes.ix_schedule_project.1:index_options",
+        "schedule_changes.ix_schedule_project.2:index_options",
+        "schedule_changes.uq_schedule_iteration_version.1:index_options",
+        "schedule_changes.uq_schedule_iteration_version.2:index_options",
+        "schedule_changes.PRIMARY.1:index_options",
+        "schedule_changes.uq_schedule_task_version.1:index_options",
+        "schedule_changes.uq_schedule_task_version.2:index_options",
+        "audit_events.ix_audit_project_task.1:index_options",
+        "audit_events.ix_audit_project_task.2:index_options",
+        "audit_events.ix_audit_project_task.3:index_options",
+        "audit_events.ix_audit_actor.1:index_options",
+        "audit_events.ix_audit_actor.2:index_options",
+        "audit_events.ix_audit_actor.3:index_options",
+        "audit_events.ix_audit_request.1:index_options",
+        "audit_events.ix_audit_request.2:index_options",
+        "audit_events.PRIMARY.1:index_options",
+        "idempotency_requests.ix_idempotency_recovery.1:index_options",
+        "idempotency_requests.ix_idempotency_recovery.2:index_options",
+        "idempotency_requests.ix_idempotency_recovery.3:index_options",
+        "idempotency_requests.uq_idempotency_scope.1:index_options",
+        "idempotency_requests.uq_idempotency_scope.2:index_options",
+        "idempotency_requests.uq_idempotency_scope.3:index_options",
+        "idempotency_requests.uq_idempotency_scope.4:index_options",
+        "idempotency_requests.PRIMARY.1:index_options",
+        "outbox_events.ix_outbox_dispatch.1:index_options",
+        "outbox_events.ix_outbox_dispatch.2:index_options",
+        "outbox_events.ix_outbox_dispatch.3:index_options",
+        "outbox_events.ix_outbox_recovery.1:index_options",
+        "outbox_events.ix_outbox_recovery.2:index_options",
+        "outbox_events.ix_outbox_recovery.3:index_options",
+        "outbox_events.PRIMARY.1:index_options",
+        "outbox_events.uq_outbox_project_task_id.1:index_options",
+        "outbox_events.uq_outbox_project_task_id.2:index_options",
+        "outbox_events.uq_outbox_project_task_id.3:index_options",
+        "escalation_events.ix_escalation_scan.1:index_options",
+        "escalation_events.ix_escalation_scan.2:index_options",
+        "escalation_events.ix_escalation_project_task.1:index_options",
+        "escalation_events.ix_escalation_project_task.2:index_options",
+        "escalation_events.ix_escalation_project_task.3:index_options",
+        "escalation_events.uq_escalation_event.1:index_options",
+        "escalation_events.PRIMARY.1:index_options",
+        "escalation_events.uq_escalation_once.1:index_options",
+        "escalation_events.uq_escalation_once.2:index_options",
+        "escalation_events.uq_escalation_once.3:index_options",
+        "notifications.ix_notifications_recipient.1:index_options",
+        "notifications.ix_notifications_recipient.2:index_options",
+        "notifications.ix_notifications_recipient.3:index_options",
+        "notifications.ix_notifications_unhandled.1:index_options",
+        "notifications.ix_notifications_unhandled.2:index_options",
+        "notifications.ix_notifications_unhandled.3:index_options",
+        "notifications.ix_notifications_unread.1:index_options",
+        "notifications.ix_notifications_unread.2:index_options",
+        "notifications.ix_notifications_unread.3:index_options",
+        "notifications.PRIMARY.1:index_options",
+        "notifications.uq_notifications_consumer.1:index_options",
+        "notifications.uq_notifications_consumer.2:index_options",
+        "scan_runs.ix_scan_runs_recovery.1:index_options",
+        "scan_runs.ix_scan_runs_recovery.2:index_options",
+        "scan_runs.ix_scan_runs_recovery.3:index_options",
+        "scan_runs.uq_scan_run_key.1:index_options",
+        "scan_runs.PRIMARY.1:index_options",
+        "users.ck_users_hash_shape:check_enforcement",
+        "users.ck_users_active:check_enforcement",
+        "service_accounts.ck_service_accounts_active:check_enforcement",
+        "auth_sessions.ck_auth_sessions_scopes:check_enforcement",
+        "auth_sessions.ck_auth_sessions_actor:check_enforcement",
+        "auth_sessions.ck_auth_sessions_expiry:check_enforcement",
+        "projects.ck_projects_version:check_enforcement",
+        "project_members.ck_members_active:check_enforcement",
+        "project_members.ck_members_version:check_enforcement",
+        "project_members.ck_members_roles:check_enforcement",
+        "iterations.ck_iterations_time:check_enforcement",
+        "iterations.ck_iterations_buffer:check_enforcement",
+        "iterations.ck_iterations_versions:check_enforcement",
+        "iterations.ck_iterations_capacity:check_enforcement",
+        "tasks.ck_tasks_assessment_pair:check_enforcement",
+        "tasks.ck_tasks_time:check_enforcement",
+        "tasks.ck_tasks_state:check_enforcement",
+        "tasks.ck_tasks_escalations:check_enforcement",
+        "tasks.ck_tasks_hours:check_enforcement",
+        "tasks.ck_tasks_block:check_enforcement",
+        "tasks.ck_tasks_versions:check_enforcement",
+        "task_dependencies.ck_dependencies_not_self:check_enforcement",
+        "reviews.ck_reviews_sections:check_enforcement",
+        "reviews.ck_reviews_checklist:check_enforcement",
+        "reviews.ck_reviews_versions:check_enforcement",
+        "reviews.ck_reviews_verdict:check_enforcement",
+        "release_assessments.ck_assessments_versions:check_enforcement",
+        "release_assessments.ck_assessments_risks:check_enforcement",
+        "release_assessments.ck_assessments_status:check_enforcement",
+        "release_assessments.ck_assessments_plan:check_enforcement",
+        "release_assessments.ck_assessments_review:check_enforcement",
+        "decisions.ck_decisions_evidence:check_enforcement",
+        "decisions.ck_decisions_payload:check_enforcement",
+        "decisions.ck_decisions_cycle:check_enforcement",
+        "decisions.ck_decisions_type:check_enforcement",
+        "decisions.ck_decisions_reason:check_enforcement",
+        "schedule_changes.ck_schedule_reason:check_enforcement",
+        "schedule_changes.ck_schedule_versions:check_enforcement",
+        "schedule_changes.ck_schedule_target:check_enforcement",
+        "schedule_changes.ck_schedule_json:check_enforcement",
+        "audit_events.ck_audit_arrays:check_enforcement",
+        "audit_events.ck_audit_project_task:check_enforcement",
+        "audit_events.ck_audit_actor:check_enforcement",
+        "audit_events.ck_audit_outcome:check_enforcement",
+        "idempotency_requests.ck_idempotency_state:check_enforcement",
+        "idempotency_requests.ck_idempotency_actor:check_enforcement",
+        "outbox_events.ck_outbox_state:check_enforcement",
+        "outbox_events.ck_outbox_type:check_enforcement",
+        "outbox_events.ck_outbox_payload:check_enforcement",
+        "escalation_events.ck_escalation_rules:check_enforcement",
+        "escalation_events.ck_escalation_level:check_enforcement",
+        "escalation_events.ck_escalation_versions:check_enforcement",
+        "notifications.ck_notifications_version:check_enforcement",
+        "notifications.ck_notifications_fallback:check_enforcement",
+        "notifications.ck_notifications_handling:check_enforcement",
+        "notifications.ck_notifications_level:check_enforcement",
+        "scan_runs.ck_scan_runs_rules:check_enforcement",
+        "scan_runs.ck_scan_runs_state:check_enforcement",
+        "scan_runs.ck_scan_runs_version:check_enforcement"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "duplicate",
+      "fail_at": null,
+      "defect_count": 4,
+      "outcome": [
+        "users:table_options",
+        "users.id:column_options",
+        "users.PRIMARY.1:index_options",
+        "users.ck_users_hash_shape:check_enforcement"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "clean",
+      "fail_at": 1,
+      "defect_count": null,
+      "outcome": [
+        "OperationalError",
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "reviewer catalog failure"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "clean",
+      "fail_at": 2,
+      "defect_count": null,
+      "outcome": [
+        "OperationalError",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "reviewer catalog failure"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "clean",
+      "fail_at": 3,
+      "defect_count": null,
+      "outcome": [
+        "OperationalError",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "reviewer catalog failure"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    },
+    {
+      "scenario": "clean",
+      "fail_at": 4,
+      "defect_count": null,
+      "outcome": [
+        "OperationalError",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'",
+        "reviewer catalog failure"
+      ],
+      "sql": [
+        "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
+        "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'"
+      ],
+      "metadata_counts": [
+        [
+          "table_options",
+          18
+        ],
+        [
+          "column_options",
+          226
+        ],
+        [
+          "index_options",
+          146
+        ],
+        [
+          "check_enforcement",
+          59
+        ]
+      ]
+    }
+  ],
+  "pinned_cloc_application_recount": {
+    "baseline": {
+      "application": 5887,
+      "files": 65,
+      "reviews": 140,
+      "migrations": 374
+    },
+    "backend_only": {
+      "application": 5884,
+      "files": 65,
+      "reviews": 137,
+      "migrations": 374
+    },
+    "database_only": {
+      "application": 5883,
+      "files": 65,
+      "reviews": 140,
+      "migrations": 370
+    },
+    "combined_projection_only": {
+      "application": 5880,
+      "files": 65,
+      "reviews": 137,
+      "migrations": 370
+    }
+  },
+  "limitations": [
+    "Local exact-source stubs only; serialization is isolated in backend trace checks",
+    "Catalog metadata-derived rows compare transformations, not actual MySQL behavior",
+    "No full CI, real database, RabbitMQ, HTTP, cloud, performance, or independent acceptance",
+    "Combined count is uncommitted byte-level projection; root has not integrated here"
+  ]
+}
