@@ -766,3 +766,5 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 根06真实import失败，尚无S1split；部署调用者-I阻断790_budget本地导入，原失败保留。根显式允许有限06b：新增after-grant窄脚本验证原06/05/现有grantSHA及split不存在，只从原argv移除-I，原13代码字节不动，成功再接已审后半配置relay。部署本地实际原host --help对照：-I -B exit1 790_budget；-B exit0帮助。没有S1、Docker、Linux、云动作。这个实错也已如实记录，不把调用错误归为业务失败。
 
 根要求正式中性材料密文大于47KB短协议时独立单文件搬运：新增69行/5979B工具，固定新18448、APP/LOAD私网地址和单一sealed-neutral路径，原叶证书/CA、≤4MiB实际size/hash，只搬opaque；LOAD一次获取+排他校验后原790_transfer open，仅读PUBLIC receipt，解密结果仅测试岗读。原18447/13文件不改，未额外加scope/新凭据或SG/IAM。根必须以实际complete PUBLIC字段运行和记录；部署仅语法/3个文件guard检查，未宣称新TLS/原open/云通过。
+
+最后收尾按根明确任务仅准备≤8KB脚本，不接触或通信独立QA：原APP资源seal先、LOAD mirror精确追尾与原stop、APP原GEN保卷stop和collector stop、只本轮APP compose ps。绑定从本机原PUBLIC记录取完整值并核实际文件SHA；不以9d/66372前缀猜数字。原status完整0/null/false保留，缺APP尾或mirror不完整先missing后有限stop保prefix，不以等待拖延成本。Guest不声称云停费，provider经济停/autoRelease-由根负责。3个本地receipt/empty/missing实测；未云/GEN/resource/Docker执行、未读QA。
