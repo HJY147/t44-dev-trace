@@ -514,3 +514,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 收root正式PUBLIC后ff准确70b24c90；仅核允许本地QA v2.3结果3802B/SHA49b0f76e…755468和发布回执，字节与Git同。整体NP，后置114/100/286、真实5/15误配vs15/40，运行段PASS不补整体门；不读PRIVATE、cipher或测试内部记录、不联系测试岗。后续有限回归和新完整包待，不等待未知绿或拼接片段。旧云NP不改，无新SUT/云动作。
 
 - 2026-10-29T06:30:27.443863+00:00 R29B最终增量校核通过：新增27本地链接、恰7自身路径/无新建、JSON解析与旧顶层逐值保留、原promptrefs前缀、限定作者key/token形状无匹配；显式暂存后的本岗作者diff-check单独exit0，非root原CI整包check绿。准备实质commit/push并只补实际发布回执，产品/测试/云执行0。
+
+- 2026-10-29T06:31:16.125434+00:00 R29B实质提交c7d650a3dcb97b03b3681e505704474b034a3dba已由本岗commit/push至origin/codex/documentation-r29；精确ls-remote核同、worktree clean。[skip ci]仅避免纯文档归档启动产品CI，未改workflow。此后只补发布回执，不读取新QA/云资料、不变更70b24c90公开截止或NP结论，不新建PR/Issue/审核success。

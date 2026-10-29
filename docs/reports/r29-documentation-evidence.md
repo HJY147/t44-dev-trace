@@ -146,3 +146,5 @@ root转交已提交4b4e792b后，本岗在保留7个自身未提交路径的情�
 v2.3的scope严格为`LOCAL_NATIVE_TLS_SIMULATION_ONLY_NOT_SUT_ACCEPTANCE`；05:58:57.014651—06:10:13.225976Z，676.268秒，400客户60+600网络cohort为true、runtime_metrics_verdict=PASS；整体独立结论NP，状态为`NP_POSTCONDITION_INCOMPLETE_AND_LOCAL_FIXTURE_BUDGET_MISMATCH`。快照114、审计100、后置预算未观察286；实际request/post=5/15、要求15/40，原结果未修改。后续正确预算有限后置回归和经协调授权的一次全新完整E2E仍待，不拼接成功段。SUT/cloud0仅属于该模拟；Darwin未运行正式Linux cgroup守卫，拟4CPU免费Actions通用子集不称8CPU正式环境。旧云r29qa772-01 NP不变。
 
 R29B最终增量资料校核：新增27个本地链接全部存在；恰7个自身路径、没有新建文件；handoff JSON可解析且每个被改旧顶层值都与70b24c90基线逐项同存，旧prompt_refs保留前缀。新增Markdown限定私钥/token形状无匹配。本岗7文件显式暂存后`git diff --cached --check`单独exit0；这只检查本岗作者改动，不改写root原CI归档全量exit2。没有重复旧97或重新运行产品/测试/CI/云。
+
+R29B实质提交 `c7d650a3dcb97b03b3681e505704474b034a3dba` 已实际push到`codex/documentation-r29`；远端精确head核同，worktree clean。只补此次行政回执，最终行政HEAD由回报提供；资料截止仍为70b24c90，不跟随或拼接后发未知绿。
