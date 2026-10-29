@@ -1,0 +1,24 @@
+{
+  "schema": "772-env-v1",
+  "run_id": "REPLACE_NEW_RUN_ID",
+  "created_at": "REPLACE_UTC",
+  "origin": "https://REPLACE_REAL_HOST",
+  "connect_ip": "REPLACE_PRIVATE_IP",
+  "ca_file": "/private/ca.pem",
+  "sessions_file": "/private/sessions.json",
+  "inventory_file": "/private/inventory.json",
+  "output_dir": "/private/results/REPLACE_NEW_RUN_ID",
+  "grant_file": "/private/grant.json",
+  "identity": {
+    "source_sha256": "REQUIRED",
+    "image_digest": "sha256:REQUIRED",
+    "fixture_sha256": "REQUIRED",
+    "openapi_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+  },
+  "declared_fixture_counts": {
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "reviews_and_decisions": 15000
+  }
+}

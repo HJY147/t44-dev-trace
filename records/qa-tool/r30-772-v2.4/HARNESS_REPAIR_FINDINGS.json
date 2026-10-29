@@ -1,0 +1,47 @@
+{
+  "scope": "Harness diagnosis only; does not establish a SUT defect",
+  "v1_cloud_result": "NP_UNCHANGED",
+  "confirmed_harness_defect": "A non-daemon evidence writer was started before fallible TLS/client initialization. Missing startup cleanup could leave it waiting on an empty queue until the owned deadline, without a runtime result.",
+  "local_original_reproductions": [
+    {
+      "mode": "bad_ca",
+      "source": "original frozen runner",
+      "local_only": true,
+      "SUT_calls": 0,
+      "exit_returncode": -15,
+      "shell_equivalent_exit_status": 241,
+      "supervisor_reason": "HARD_DEADLINE",
+      "elapsed_seconds": 2.057015583035536,
+      "result_present": false,
+      "cipher_bytes": 76
+    },
+    {
+      "mode": "thread_start_failure",
+      "source": "original frozen runner",
+      "local_only": true,
+      "SUT_calls": 0,
+      "exit_returncode": -15,
+      "shell_equivalent_exit_status": 241,
+      "supervisor_reason": "HARD_DEADLINE",
+      "elapsed_seconds": 2.041099917027168,
+      "result_present": false,
+      "cipher_bytes": 76
+    }
+  ],
+  "cloud_specific_trigger": "UNCONFIRMED; the original private worker stderr/CA contents were not available locally. Empty safe-journal classification covered a limited class-name regex and does not rule out FileNotFoundError/KeyError/TypeError/SSLError or all startup exceptions.",
+  "new_harness_changes": [
+    "TLS/input initialization before writer creation",
+    "always-explicit NP metadata and bounded startup/owned stop",
+    "stage/resource/count receipts without credentials",
+    "bounded initial TLS setup followed by the same 400-client barrier",
+    "transient evidence pressure waits for the same record; permanent stall gives NP and retains its authenticated prefix",
+    "post-only 16-way collection and four spawn processes running the unchanged Validator",
+    "same complete pagination targets and assertions; 40-second absolute post budget",
+    "prefix authentication cannot turn incomplete evidence into PASS"
+  ],
+  "old_artifact_sha256": "745f4d8b369729fab59a59bfbba17f0baace8541d7b627a43bbe117c09dea085",
+  "old_artifact_modified": false,
+  "new_source_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "request_assertions_and_steady_metrics": "UNCHANGED",
+  "new_SUT_run": false
+}

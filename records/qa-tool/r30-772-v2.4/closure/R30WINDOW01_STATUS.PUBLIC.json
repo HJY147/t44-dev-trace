@@ -1,0 +1,45 @@
+{
+  "schema": "772-r30-window-status-v1",
+  "run_id": "r30window01",
+  "status": "NOT_RUN_PREPARATION_INCOMPLETE",
+  "recorded_utc": "2026-10-29T10:21:47.871719Z",
+  "basis": "Root reported preparation incomplete and no prepare/grant/ENTRY execute; the specifically authorized actual LOAD closure original has now been read and its exact bytes/SHA256 verified. No application/development/APP records were read.",
+  "prepare_called": false,
+  "grant_issued": false,
+  "ENTRY_execute_called": false,
+  "performance_verdict": null,
+  "observed_request_count": null,
+  "observed_error_counts": null,
+  "closure_evidence": {
+    "status": "ACTUAL_LOAD_PUBLIC_ORIGINAL_VERIFIED",
+    "file": "R30WINDOW01_LOAD_CLOSURE.original.PUBLIC.txt",
+    "sha256": "a0d1e143206c137086473fe19081603f0f442ada724f526aab1fc5e7256983d0",
+    "bytes": 246,
+    "utc": "2026-10-29T10:21:09.004036+00:00",
+    "remaining_running_containers": "",
+    "run_directory_exists": false,
+    "result_directory_exists": false,
+    "data_deleted": false,
+    "does_not_establish_request_count": true
+  },
+  "analyze_or_EXPORT_run_for_this_notice": false,
+  "window_changed_or_successor_started": false,
+  "historical_results": "Original cloud NP and existing local tool PASS unchanged.",
+  "public_statement": "r30window01因中性材料准备未完成而未运行，标记NOT_RUN_PREPARATION_INCOMPLETE；不作性能通过/失败判定，不推断请求数，不续窗或重试新轮。",
+  "updated_utc": "2026-10-29T10:33:47.912469Z",
+  "first_notice_original": {
+    "file": "R30WINDOW01_STATUS.first-notice.original.PUBLIC.json",
+    "sha256": "9fb147c9cba45f5368c947f8e53c4278f344773990e62ea3362ab7856f7c7db5",
+    "bytes": 970,
+    "unchanged": true
+  },
+  "provider_closure_notice": {
+    "source": "Root neutral notice only; private provider UI originals not supplied or independently inspected",
+    "approximately_utc": "2026-10-29T10:26Z",
+    "original_VM_count": 2,
+    "state": "ECONOMICALLY_STOPPED",
+    "disks_preserved": true,
+    "auto_release": "-",
+    "independent_UI_verification": false
+  }
+}

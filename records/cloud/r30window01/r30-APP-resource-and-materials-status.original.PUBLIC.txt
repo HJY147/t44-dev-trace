@@ -1,0 +1,11 @@
+{"success": true, "unit": "t44-resource-r30res01.service", "pid": 27405, "start_ticks": 75008, "deadline_utc": "2026-10-29T10:35:00Z"}
+{"success": true, "directory": "/root/t44-r30/resource-r30window01", "binding_sha256": "3304539220c7224b100009b8ded6c7921b28acf270d687f792f21335123b5e65", "private_handoff_path": "/root/t44-r30/resource-r30window01/private-mirror-handoff.json", "handoff_sha256": "14365edce5579092fe8ce2acae4cc4d3cfc04991ca0243c16799f9450fd1fb56", "service_started": false}
+ExecMainStatus=1
+ActiveState=failed
+SubState=failed
+
+{"material_step_receipts": [{"completed_at": "2026-10-29T10:14:11.875018Z", "exit_code": 0, "label": "empty-count"}, {"completed_at": "2026-10-29T10:14:15.944194Z", "exit_code": 0, "label": "init"}, {"completed_at": "2026-10-29T10:14:23.717783Z", "exit_code": 0, "label": "seed"}, {"completed_at": "2026-10-29T10:14:25.533974Z", "exit_code": 0, "label": "baseline"}, {"completed_at": "2026-10-29T10:14:25.898411Z", "exit_code": 0, "label": "scope"}, {"completed_at": "2026-10-29T10:14:28.165375Z", "exit_code": 0, "label": "service"}, {"completed_at": "2026-10-29T10:14:35.538081Z", "exit_code": 0, "label": "scheduler-start"}, {"completed_at": "2026-10-29T10:14:58.368068Z", "exit_code": 1, "label": "http"}]}
+ValueError: STEP_FAILED_PREFIX_PRESERVED:http
+t44-r30-r30window01-materials.service: Main process exited, code=exited, status=1/FAILURE
+t44-r30-r30window01-materials.service: Failed with result 'exit-code'.
+t44-r30-r30window01-materials.service: Consumed 3.303s CPU time.

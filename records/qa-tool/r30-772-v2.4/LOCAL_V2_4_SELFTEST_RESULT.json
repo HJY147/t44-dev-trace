@@ -1,0 +1,208 @@
+{
+  "schema": "772-local-tool-e2e-result-v1",
+  "status": "PASS_LOCAL_TOOL_E2E",
+  "runtime_revision": "2.4",
+  "scope": "Native localhost TLS simulation verifies this test tool only; not application SUT acceptance.",
+  "actual_start_utc": "2026-10-29T06:37:39.536933Z",
+  "cohort_start_utc_recorded": "2026-10-29T06:37:39.929321Z",
+  "actual_finish_utc": "2026-10-29T06:49:05.436602Z",
+  "elapsed_seconds": 685.927843790967,
+  "actual_input": {
+    "request_timeout_seconds": 15,
+    "postcheck_seconds": 40,
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "fresh_synthetic_fixture": true,
+    "prior_samples_reused": false,
+    "runtime_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+    "capsule_sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f",
+    "readback_utc": "2026-10-29T06:37:39.534370Z"
+  },
+  "fresh_independent_cohort": true,
+  "prior_samples_spliced": false,
+  "monotonic_warmup_seconds": 60.0,
+  "monotonic_steady_seconds": 600.0,
+  "logical_clients": 400,
+  "runtime_metrics_verdict": "PASS",
+  "classes": {
+    "query": {
+      "count": 361972,
+      "p95_ms": 52.368
+    },
+    "transition": {
+      "count": 723941,
+      "p95_ms": 52.590375
+    },
+    "contract": {
+      "count": 361963,
+      "p95_ms": 52.223917
+    },
+    "escalation": {
+      "count": 361982,
+      "p95_ms": 52.647958
+    }
+  },
+  "minute_buckets": [
+    {
+      "index": 0,
+      "completed": 209501,
+      "classes": {
+        "transition": 83792,
+        "escalation": 41905,
+        "contract": 41902,
+        "query": 41902
+      }
+    },
+    {
+      "index": 1,
+      "completed": 207790,
+      "classes": {
+        "transition": 83125,
+        "contract": 41547,
+        "query": 41557,
+        "escalation": 41561
+      }
+    },
+    {
+      "index": 2,
+      "completed": 183057,
+      "classes": {
+        "query": 36618,
+        "escalation": 36614,
+        "transition": 73213,
+        "contract": 36612
+      }
+    },
+    {
+      "index": 3,
+      "completed": 172757,
+      "classes": {
+        "escalation": 34551,
+        "query": 34550,
+        "transition": 69106,
+        "contract": 34550
+      }
+    },
+    {
+      "index": 4,
+      "completed": 169962,
+      "classes": {
+        "contract": 33986,
+        "query": 33991,
+        "escalation": 34002,
+        "transition": 67983
+      }
+    },
+    {
+      "index": 5,
+      "completed": 175559,
+      "classes": {
+        "escalation": 35099,
+        "query": 35118,
+        "contract": 35131,
+        "transition": 70211
+      }
+    },
+    {
+      "index": 6,
+      "completed": 174543,
+      "classes": {
+        "transition": 69836,
+        "escalation": 34907,
+        "query": 34895,
+        "contract": 34905
+      }
+    },
+    {
+      "index": 7,
+      "completed": 170000,
+      "classes": {
+        "transition": 67989,
+        "escalation": 34002,
+        "query": 34006,
+        "contract": 34003
+      }
+    },
+    {
+      "index": 8,
+      "completed": 173033,
+      "classes": {
+        "transition": 69211,
+        "query": 34616,
+        "escalation": 34605,
+        "contract": 34601
+      }
+    },
+    {
+      "index": 9,
+      "completed": 173570,
+      "classes": {
+        "transition": 69437,
+        "contract": 34714,
+        "escalation": 34720,
+        "query": 34699
+      }
+    }
+  ],
+  "steady_failure_counts": {},
+  "total_steady_latency_samples": 1809858,
+  "postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400
+  },
+  "post_schema_validation_jobs": 8800,
+  "post_validator_processes": 4,
+  "post_pool_stopped": true,
+  "post_and_result_tail_seconds": 25.503022833000045,
+  "writer_finalized": true,
+  "writer_stop": null,
+  "writer_queue_peak": 209,
+  "writer_enqueue_block_ns_sum_across_clients": 96038292005674,
+  "inter_request_gap_observation": {
+    "count": 1809858,
+    "sum_ms": 176934981.430828,
+    "p95_ms": 134.01075
+  },
+  "raw_plain_bytes": 5511466468,
+  "raw_compressed_bytes": 862635678,
+  "raw_cipher_bytes": 864213573,
+  "escalation_api_created_counts": {
+    "true": 0,
+    "false": 361982,
+    "null": 0
+  },
+  "authentication": {
+    "status": "PASS_LOCAL_TOOL_E2E",
+    "scope": "REAL_NATIVE_LOCAL_TLS_SIMULATION_OF_TOOL_ONLY; NOT_REAL_SUT_ACCEPTANCE",
+    "authentication_seconds": 24.599693708936684,
+    "complete_authenticated_footer": true,
+    "gzip_complete": true,
+    "integrity_error": null,
+    "serialized_records": 2034320,
+    "evidence_sha256": "e0adc3f0123987acb532b04a975aaba0982dc0d0a071c6c08ed0df82bcd8e941",
+    "counts_p95_buckets_errors_match": true,
+    "recomputed_metrics_verdict": "PASS",
+    "cohort_observation_scope": "FULL_COHORT",
+    "owned_client_process_group_absent": true,
+    "original_cloud_np_unchanged": true,
+    "authenticated_at_utc": "2026-10-29T06:51:26.057974Z"
+  },
+  "owned_processes_stopped": {
+    "client_group": true,
+    "mock_server_group": true
+  },
+  "formal_linux_private_executor_guard": "NOT_EXECUTED_ON_LOCAL_DARWIN; unchanged guard AST",
+  "simulated_service_scope": {
+    "fixture_tasks": 800,
+    "projects": 40,
+    "processing_delay_seconds": 0.02,
+    "database_and_MQ": "NOT_REAL_SUT_DB_OR_MQ",
+    "actual_MQ_new_event_throughput": "NOT_MEASURED; existing-event API calls are not new MQ throughput"
+  },
+  "runtime_independent_conclusion": "METRICS_PASS_MQ_POSTCONDITION_NOT_OBSERVED",
+  "SUT_or_cloud_requests_in_local_repair": 0,
+  "cloud_run_r29qa772_01": "NP_NO_RUNTIME_RESULT_UNCHANGED",
+  "function_52_gate": "NOT_IN_SCOPE",
+  "next_SUT_run": "NOT_AUTHORIZED; requires a separate explicit grant"
+}

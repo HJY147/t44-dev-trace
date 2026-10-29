@@ -1,0 +1,52 @@
+{
+  "status": "PASS_GENERIC_LINUX_SUBSET",
+  "scope": "GENERIC_TOOL_ONLY_LINUX_SUBSET",
+  "branch": "codex/qa772-tool-linux-20261029",
+  "commit": "44c4fb4934fe0996d1cc88b064b28e98ab6182bd",
+  "workflow_run": "https://github.com/HJY147/t44-dev-trace/actions/runs/40831365252",
+  "actual": {
+    "utc": "2026-10-29T06:47:54.287698+00:00",
+    "python": "3.12.16 (main, Oct 28 2026, 02:01:20) [GCC 14.2.0]",
+    "system": "Linux",
+    "machine": "x86_64",
+    "os_cpu_count": 4,
+    "affinity_count": 4,
+    "ssl": "OpenSSL 3.5.7 9 Jun 2026",
+    "cgroup": {
+      "cpu.max": "200000 100000",
+      "memory.max": "8589934592",
+      "pids.max": "2048"
+    }
+  },
+  "native_tls_clients": 400,
+  "native_tls_requests": 12834,
+  "errors": [],
+  "checks": [
+    "transient_pressure_no_drop_zero_null",
+    "exact_cleanup_wrapper_explicit_np",
+    "owned_deadline_preserves_unrelated",
+    "400_native_linux_tls_clients_finite"
+  ],
+  "source_package_unwrap_exact": true,
+  "unbounded_guard_rejected": true,
+  "negative_guard_reason": "CPU_CGROUP",
+  "no_private_workload_or_production_key_uploaded": true,
+  "repo_permissions_or_credentials_changed": false,
+  "actual_host_cpu_count": 4,
+  "actual_container_cpu_quota": 2,
+  "formal_8CPU_machine_claim": false,
+  "full_private_business_executor_tested": false,
+  "original_LOAD_4f3b_image_tested": false,
+  "SUT_calls": 0,
+  "standard_public_runner_reference": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "initial_failed_workflows": [
+    {
+      "run_id": 40830862367,
+      "reason": "image metadata Go template formatting before guard tests"
+    },
+    {
+      "run_id": 40831066468,
+      "reason": "same image metadata formatting before guard tests"
+    }
+  ]
+}

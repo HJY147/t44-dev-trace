@@ -1,0 +1,432 @@
+{
+  "F_started": false,
+  "app_private_ip": "172.21.182.245",
+  "binding": {
+    "bytes": 8689,
+    "path": "/root/t44-r30/r30window01/run/campaign/p/binding.json",
+    "sha256": "0c50f2d775b4aa9c724ff3cd287fd4cf6b86c88b1806098ac8d668ee091a89e8"
+  },
+  "import_receipt": {
+    "bytes": 13008,
+    "full_runtime_files": 60,
+    "path": "/root/t44-r30/r30window01/run/backend-import-receipt.PUBLIC.json",
+    "sha256": "e104f804ceae96de88d108d0bc8e4a4896775c8bcc916b9e99cf896b3a478d2b"
+  },
+  "kind": "r30-app-preparation-public-v1",
+  "original_probe": {
+    "actual_max_connections": 384,
+    "budget_receipt": "/root/t44-r30/r30window01/run/campaign/p/receipts/mysql-budget-d102ea0f35a2412a9f3b8f424e5402aa.PUBLIC.json",
+    "budget_receipt_sha256": "065dd447ecda2677402fc1dd85bf1f35547dc66b186770a70cc560bf7da47073",
+    "connection_budget": {
+      "api_capacity": 320,
+      "api_max_overflow": 0,
+      "api_pool_size": 5,
+      "api_workers": 64,
+      "operation_mutex_contract": "one operation at a time; bridge SQL releases before GEN child",
+      "other_settings_roles_default": {
+        "max_overflow": 10,
+        "pool_size": 5
+      },
+      "required_max_connections": 384,
+      "reserve_breakdown": {
+        "consumer": 15,
+        "health_probes": 4,
+        "one_serial_operation": 15,
+        "persistent_observer": 1,
+        "scheduler": 15,
+        "transient_budget_probe": 1,
+        "unallocated_safety": 13
+      },
+      "reserve_capacity": 64
+    },
+    "success": true
+  },
+  "phase": {
+    "api_workers": 64,
+    "binding_sha256": "0c50f2d775b4aa9c724ff3cd287fd4cf6b86c88b1806098ac8d668ee091a89e8",
+    "ca_path": "/root/t44-r30/r30window01/run/campaign/p/tls/ca.pem",
+    "ca_sha256": "af056413d8c7183bc318755a6a61459e0e3d92939a99b2e5a7d210d92f291aa0",
+    "database": "t44c_r30window01_p",
+    "phase_dir": "/root/t44-r30/r30window01/run/campaign/p",
+    "project": "t44-cloud-r30window01-p",
+    "stop_utc": "2026-10-29T10:35:00Z",
+    "tls_port": 26445,
+    "v4_pool_plan": {
+      "api_capacity": 320,
+      "api_max_overflow": 0,
+      "api_pool_size": 5,
+      "api_workers": 64,
+      "operation_mutex_contract": "one operation at a time; bridge SQL releases before GEN child",
+      "other_settings_roles_default": {
+        "max_overflow": 10,
+        "pool_size": 5
+      },
+      "required_max_connections": 384,
+      "reserve_breakdown": {
+        "consumer": 15,
+        "health_probes": 4,
+        "one_serial_operation": 15,
+        "persistent_observer": 1,
+        "scheduler": 15,
+        "transient_budget_probe": 1,
+        "unallocated_safety": 13
+      },
+      "reserve_capacity": 64
+    }
+  },
+  "resources": [
+    {
+      "container_id": "c2fc5901ba45f2922296c918d8737b301ead58431b61a206f99f0c215c3b3843",
+      "image_id": "sha256:b8d06da71f6a65cce2ea38fce20cc0ce67bc985a84bc191d0544c2e948722625",
+      "restart_count": 0,
+      "role": "mysql",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-29T18:09:55.039072634+08:00",
+              "ExitCode": 1,
+              "Output": "ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)\n",
+              "Start": "2026-10-29T18:09:54.999589058+08:00"
+            },
+            {
+              "End": "2026-10-29T18:10:00.068201872+08:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-29T18:10:00.040231701+08:00"
+            },
+            {
+              "End": "2026-10-29T18:10:10.094076747+08:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-29T18:10:10.068861132+08:00"
+            }
+          ],
+          "Status": "healthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 6268,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:09:49.825173516Z",
+        "Status": "running"
+      }
+    },
+    {
+      "container_id": "a5d7fa688c903b0460232cf6c90013d57f54e16628a20ce0ca95f352479db7cf",
+      "image_id": "sha256:c28902361a33b5bb10be304eaea11e07dda484715dcc8a08477351c79a0646f9",
+      "restart_count": 0,
+      "role": "rabbitmq",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-29T18:09:55.441124768+08:00",
+              "ExitCode": 0,
+              "Output": "Ping succeeded\n",
+              "Start": "2026-10-29T18:09:54.995978015+08:00"
+            },
+            {
+              "End": "2026-10-29T18:10:06.704714496+08:00",
+              "ExitCode": 0,
+              "Output": "Ping succeeded\n",
+              "Start": "2026-10-29T18:10:05.442350349+08:00"
+            }
+          ],
+          "Status": "healthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 6267,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:09:49.826136584Z",
+        "Status": "running"
+      }
+    },
+    {
+      "container_id": "facbd720429bd21b27c3d4b9771b18d129a68d019873c9f1f8b01b48ac75d3d5",
+      "image_id": "sha256:6a3bab22a6bd36fd4d7be73b3cb745d9a0f73a504efab6c496701ceb6c96c762",
+      "restart_count": 0,
+      "role": "api",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-29T18:10:09.507160798+08:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-29T18:10:09.25603695+08:00"
+            }
+          ],
+          "Status": "healthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 8753,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:10:04.041340149Z",
+        "Status": "running"
+      }
+    },
+    {
+      "container_id": "cd7c438168a3ba14ad022f4073d56d39f7b454d468fd03ca663c6259426f9490",
+      "image_id": "sha256:6a3bab22a6bd36fd4d7be73b3cb745d9a0f73a504efab6c496701ceb6c96c762",
+      "restart_count": 0,
+      "role": "consumer",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-29T18:10:09.456098663+08:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-29T18:10:09.204005112+08:00"
+            }
+          ],
+          "Status": "healthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 8761,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:10:04.04223349Z",
+        "Status": "running"
+      }
+    },
+    {
+      "absent": true,
+      "role": "scheduler"
+    },
+    {
+      "container_id": "fa00b2d2086adff4482be1a1108bb5c0cc6381439c8813c75baf82e18eb2191f",
+      "image_id": "sha256:9096cb704b401f12e77fe5520d3d62b837517628ac6bbf2963b6d5f4da2728f6",
+      "restart_count": 0,
+      "role": "web",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 12308,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:10:09.766523723Z",
+        "Status": "running"
+      }
+    },
+    {
+      "container_id": "a6c327f0830076a24a0b0c1154ec8ee1489ecce6da5df60782a5c95fc17e6214",
+      "image_id": "sha256:ffd136ccde8154eff64f7ceeb3ba67a1fcb5fe2339eb37ff2f28cb6af502cce8",
+      "restart_count": 0,
+      "role": "tls-gateway",
+      "state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 12956,
+        "Restarting": false,
+        "Running": true,
+        "StartedAt": "2026-10-29T10:10:11.336445533Z",
+        "Status": "running"
+      }
+    }
+  ],
+  "run_id": "r30window01",
+  "scheduler_start_requested": false,
+  "seed_requested": false,
+  "sessions_issued": false,
+  "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+  "status": "IDLE_ONLY_NO_SEED_OR_SESSIONS",
+  "steps": [
+    {
+      "finished_epoch": 1793268576.219432,
+      "returncode": 0,
+      "started_epoch": 1793268574.7542303,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/01-verify-bundle.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 307,
+        "path": "/root/t44-r30/r30window01/run/commands/01-verify-bundle.stdout.private",
+        "sha256": "0627761fe2dc0f87bffaf4d1d3814d78c63a60978eb3eaf39121f2d83b85c450"
+      },
+      "step": "verify-bundle"
+    },
+    {
+      "finished_epoch": 1793268584.0940537,
+      "returncode": 0,
+      "started_epoch": 1793268576.2210994,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/02-import-backend.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 155,
+        "path": "/root/t44-r30/r30window01/run/commands/02-import-backend.stdout.private",
+        "sha256": "a022a9b5433f6fd0d10f9e6255063c484d5eeae3493ccece57454d86fd76ef08"
+      },
+      "step": "import-backend"
+    },
+    {
+      "finished_epoch": 1793268584.2594223,
+      "returncode": 0,
+      "started_epoch": 1793268584.095667,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/03-verify-cache.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 3392,
+        "path": "/root/t44-r30/r30window01/run/commands/03-verify-cache.stdout.private",
+        "sha256": "1edaed1d213535c675c8a87c748cf5a16aee97445a1dc547f4b6f9a40fc60179"
+      },
+      "step": "verify-cache"
+    },
+    {
+      "finished_epoch": 1793268588.5798,
+      "returncode": 0,
+      "started_epoch": 1793268584.261104,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/04-prepare.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2042,
+        "path": "/root/t44-r30/r30window01/run/commands/04-prepare.stdout.private",
+        "sha256": "6f6e70c28209234d7303ccd44a84de7663e6f8ae69c95fb1aadf2413eeab0fa7"
+      },
+      "step": "prepare"
+    },
+    {
+      "finished_epoch": 1793268588.9457955,
+      "returncode": 0,
+      "started_epoch": 1793268588.5817866,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/05-arm.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 264,
+        "path": "/root/t44-r30/r30window01/run/commands/05-arm.stdout.private",
+        "sha256": "2ca12a1a78118ad2db5b7a21df7c558e52b88a5d87a340b454469d3797159e7e"
+      },
+      "step": "arm"
+    },
+    {
+      "finished_epoch": 1793268589.5122368,
+      "returncode": 0,
+      "started_epoch": 1793268588.947971,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/06-config.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 586,
+        "path": "/root/t44-r30/r30window01/run/commands/06-config.stdout.private",
+        "sha256": "0ef5586f1e3ee8fc3b8735af385f18ca3e8ba0c716017ac8b03a50d3f569ca84"
+      },
+      "step": "config"
+    },
+    {
+      "finished_epoch": 1793268600.5910532,
+      "returncode": 0,
+      "started_epoch": 1793268589.5140488,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/07-infra.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2052,
+        "path": "/root/t44-r30/r30window01/run/commands/07-infra.stdout.private",
+        "sha256": "f27a7892e5cf75abe7fd2f3d22944b4b33bb280857c4a28d86508d61c0cf82cf"
+      },
+      "step": "infra"
+    },
+    {
+      "finished_epoch": 1793268600.7566643,
+      "returncode": 0,
+      "started_epoch": 1793268600.5928948,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/08-probe-budget.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 782,
+        "path": "/root/t44-r30/r30window01/run/commands/08-probe-budget.stdout.private",
+        "sha256": "2a33508fd6a95d5cfb76e3a72910ca6452aec6fde4af03b8e51e1c301cf643b7"
+      },
+      "step": "probe-budget"
+    },
+    {
+      "finished_epoch": 1793268603.1251984,
+      "returncode": 0,
+      "started_epoch": 1793268600.7587178,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/09-migrate.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2228,
+        "path": "/root/t44-r30/r30window01/run/commands/09-migrate.stdout.private",
+        "sha256": "23df2b63729e453ac34e73ac9f12cc44f67f27668a34d41d0f5b5a8b44af0518"
+      },
+      "step": "migrate"
+    },
+    {
+      "finished_epoch": 1793268611.8544993,
+      "returncode": 0,
+      "started_epoch": 1793268603.1272223,
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/t44-r30/r30window01/run/commands/10-idle.stderr.private",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 4986,
+        "path": "/root/t44-r30/r30window01/run/commands/10-idle.stdout.private",
+        "sha256": "2a99431eb5c98bdffec4d1803404fd63243d43dfb7fa49be39211a4c0a38aef4"
+      },
+      "step": "idle"
+    }
+  ],
+  "success": true
+}

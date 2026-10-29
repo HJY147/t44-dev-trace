@@ -1,0 +1,243 @@
+{
+  "kind": "r30-actual-preparation-closure-not-performance-v1",
+  "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+  "status": "NOT_RUN_PREPARATION_INCOMPLETE",
+  "product_effective_lines": 5880,
+  "range_max": 5100,
+  "over_range": 780,
+  "native_CI_run": 40827655008,
+  "SUT_backend_import_receipt_sha256": "e104f804ceae96de88d108d0bc8e4a4896775c8bcc916b9e99cf896b3a478d2b",
+  "actual_backend_runtime_files": 60,
+  "run": "r30window01",
+  "reference_t0_utc": "2026-10-29T10:00:00Z",
+  "VM_start_request_observed_minute_utc": "2026-10-29T10:04Z",
+  "VM_both_stop_verified_minute_utc": "2026-10-29T10:26Z",
+  "cutoff_utc": "2026-10-29T10:17:30Z",
+  "planned_start_utc": "2026-10-29T10:20:00Z",
+  "planned_end_utc": "2026-10-29T10:33:00Z",
+  "guest_stop_utc": "2026-10-29T10:35:00Z",
+  "provider_cost_stop_limit_utc": "2026-10-29T10:40:00Z",
+  "actual_baseline_counts": {
+    "dependencies": 9000,
+    "projects": 40,
+    "reviews_and_decisions": 15000,
+    "tasks": 6000
+  },
+  "preparation_HTTP_records": {
+    "count": 1385,
+    "failures": [
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:52.841154Z",
+        "path": "/internal/projects/18/tasks/2613/escalations",
+        "started_at": "2026-10-29T10:14:52.778954Z",
+        "status": 409
+      },
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:55.849114Z",
+        "path": "/internal/projects/20/tasks/2917/escalations",
+        "started_at": "2026-10-29T10:14:55.790915Z",
+        "status": 409
+      },
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:50.313096Z",
+        "path": "/internal/projects/16/tasks/2312/escalations",
+        "started_at": "2026-10-29T10:14:50.255091Z",
+        "status": 409
+      },
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:51.509102Z",
+        "path": "/internal/projects/17/tasks/2463/escalations",
+        "started_at": "2026-10-29T10:14:51.451591Z",
+        "status": 409
+      },
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:54.061093Z",
+        "path": "/internal/projects/19/tasks/2763/escalations",
+        "started_at": "2026-10-29T10:14:53.994912Z",
+        "status": 409
+      },
+      {
+        "error_code": null,
+        "failure_type": "ValueError",
+        "finished_at": "2026-10-29T10:14:56.861106Z",
+        "path": "/internal/projects/21/tasks/3069/escalations",
+        "started_at": "2026-10-29T10:14:56.803882Z",
+        "status": 409
+      }
+    ],
+    "status_counts": {
+      "200": 1015,
+      "201": 185,
+      "202": 179,
+      "409": 6
+    }
+  },
+  "confirmed_failure_codes": [
+    {
+      "path": "/internal/projects/18/tasks/2613/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    },
+    {
+      "path": "/internal/projects/20/tasks/2917/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    },
+    {
+      "path": "/internal/projects/16/tasks/2312/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    },
+    {
+      "path": "/internal/projects/17/tasks/2463/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    },
+    {
+      "path": "/internal/projects/19/tasks/2763/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    },
+    {
+      "path": "/internal/projects/21/tasks/3069/escalations",
+      "status": 409,
+      "response_keys": [
+        "audit_id",
+        "code",
+        "current_state",
+        "current_version",
+        "message",
+        "original_error_code",
+        "request_id",
+        "violations"
+      ],
+      "code": "VERSION_CONFLICT",
+      "message": "Version conflict",
+      "error_code": null,
+      "error_message": null,
+      "meta": null
+    }
+  ],
+  "confirmed_fault": "neutral preparation rejects genuine VERSION_CONFLICT; exact competing-writer cause requires further verification",
+  "scheduler_started_before_HTTP": true,
+  "four_material_sessions_do_not_constitute_performance_acceptance": true,
+  "QA_prepare_called": false,
+  "QA_grant_issued": false,
+  "QA_execute_called": false,
+  "formal_metrics": null,
+  "provider_stop": [
+    {
+      "role": "app",
+      "state": "STOPPED",
+      "stop_mode": "economical",
+      "automatic_release_time": null,
+      "retained_block_devices": 1,
+      "raw_private_AX_bytes": 25845,
+      "raw_private_AX_sha256": "6ca4887c7cb1cf92916a64b7fc09615a160452477f7a47a48a59c97a6a6e195e",
+      "automatic_release_field_observed": "-",
+      "raw_account_UI_not_published": true
+    },
+    {
+      "role": "load",
+      "state": "STOPPED",
+      "stop_mode": "economical",
+      "automatic_release_time": null,
+      "retained_block_devices": 1,
+      "raw_private_AX_bytes": 25873,
+      "raw_private_AX_sha256": "57389ad0417a1e87af20e02ca98d08f2a607e6bd9c212b672da7248ec3ae37a8",
+      "automatic_release_field_observed": "-",
+      "raw_account_UI_not_published": true
+    }
+  ],
+  "operator_additional_cloud_budget_CNY": 15,
+  "actual_settled_cloud_cost_CNY": null,
+  "no_recharge_or_new_VM_purchase": true,
+  "compute_billing_mode": "CPU/memory stopped; retained disks remain billed according to provider",
+  "VMs_or_disks_released": false,
+  "private_raw_and_partial_dataset_preserved_on_cloud_disks": true,
+  "local_materials_script_sha256": "c2835a7fbc85c5c20c6b7936401f15710db5c7c615c2ae7aab4a08292d9b763c",
+  "protocol_or_test_gates_waived": false,
+  "old_failures_or_results_rewritten": false,
+  "new_automatic_round": false,
+  "recorded_at": "2026-10-29T10:32:45.570904+00:00"
+}
