@@ -2905,6 +2905,22 @@
     ],
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6490677019",
     "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/45",
-    "pr_scope_note": "Root requested base737 has inherited coordinator differences against current integration ab469; integrate only deployment commits, not complete PR."
+    "pr_scope_note": "Root requested base737 has inherited coordinator differences against current integration ab469; integrate only deployment commits, not complete PR.",
+    "budget_kind_fix": {
+      "finding": "R30-BUDGET-KIND-01",
+      "status": "offline red-green; pending root exact-commit review; BOOT/SUT HOLD",
+      "original_budget_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+      "derived_budget_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+      "adapter_sha256": "f2f850b5e17bd688811413ac535d36c0345ec9a0472df18dc22b65e758342896",
+      "red": "5 tests:3FAIL/2ERROR; exact V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION",
+      "green": "same5 passed; real flock; GEN probe reaches non-network mysql sentinel",
+      "old_regression": "7 passed; source assertions retained/new derived pin assertion added",
+      "old_profile": "a605-derived profile invalid for run; regenerate new directory",
+      "manifest_and_image": "unchanged; no rebuild",
+      "loaded_interface": "agents/deployment/preparation-r30/LOADED-PROOF-INTERFACE.md",
+      "real_loaded_proof": "not created",
+      "prompt_ref": "ROLE-deployment-PREPARATION-R30-BUDGET-KIND-v1",
+      "cloud_SUT_or_full_product_CI_executed": false
+    }
   }
 }

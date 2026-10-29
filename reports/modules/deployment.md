@@ -628,3 +628,8 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 操作者deployment AI。root7374b363独立worktree/分支，产品0b不变；旧935 frozen47仅schema.py不同，46件真实相等，DDL/contract不改，不重放f7旧窗口。新backend-only工具与免费Actions40833943007/tool61179fca真实成功；artifact12880320744/94895161B完整官方digest69b252...复核，backend gz94620657B，新config8e3e2a...，CI完整60运行源文件实际非root/none/readonly探针通过，完整53backend源包含在内。它不是SUT/性能验收。
 
 13源边界+7window边界共20独特检查；7项factory携带后复跑不加数。首次Ruff UP017/GitHub EOF/环境pytest缺失等原错误保留，最终Ruff及3.10语法解析通过。新window adapter接新backend manifest，原budget305f/操作方法/栈不改；Docker29保留descriptor→config→layers完整proof，factory从精确公开8784ba22携带。RUNBOOK含boot清单、只给APP95MB/LOAD工具、实际loaded/cache/prepare接口、35min封存/40min节省停机/45min逐机STOP+auto-release-+保盘后验。正式run/time、neutral seed/四角色真实TTL、完整Linux工具和QA仍root门禁。0云/SSH/实例变更，0独立PRIVATE/case读取，0测试岗联系；fixture已销毁、未签session。实际提示词ROLE-deployment-PREPARATION-R30-v1在agents/deployment/preparation-r30/PROMPT.md。
+
+
+## 2026-10-29 P1 R30-BUDGET-KIND-01
+
+root转审核发现后独立实复现：a605 R30 generation与旧305f预算kind不兼容，原20项确实漏接口。tmp760先真实derive→磁盘binding→fcntl锁/GEN probe入口，5项红（3FAIL/2ERROR）原日志保留。仅派生预算唯一KIND literal为R30，新9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61 pin入GEN再入resource；旧305f原件/其他预算bytes不改，旧kind拒绝。5项首次绿，原7项窄回归绿，首Ruff F401保留后修正绿；3.10只语法。外部phase_binding/systemctl/live是明确替身，断在mysql哨兵前，无Docker/SQL/云/actual预算/SUT结论。BOOT/SUT仍HOLD待root准确commit复审，旧a605 profile须新目录重派生；准确0b镜像/原两manifest不变。另仅文档给root两原manifest绝对路径、未来loaded proof PUBLIC schema/path/hash和7角色/6 idle/scheduler后置枚举，不签真实proof，不联系QA/审核。实际prompt在PROMPT-P1.md。

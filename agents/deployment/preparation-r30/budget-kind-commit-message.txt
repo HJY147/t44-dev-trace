@@ -1,0 +1,9 @@
+fix(deployment): derive strict R30 budget kind and hash chain [skip ci]
+
+Reproduce R30-BUDGET-KIND-01 before changing one budget KIND literal.
+Keep original v4 bytes and all admission logic, bind the new budget digest
+into GEN/resource, and verify actual offline binding/lock/probe entry red-green.
+
+Agent-Role: deployment AI
+Prompt-Ref: ROLE-deployment-PREPARATION-R30-BUDGET-KIND-v1
+Issue: #7

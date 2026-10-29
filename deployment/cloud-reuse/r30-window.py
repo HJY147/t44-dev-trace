@@ -16,6 +16,7 @@ V4_SHA = "59422f53fb8d5069218b483fe237204177a2c6af9c229a91a882b45aeba69680"
 RAW_SHA = "30b1ca48f152cae797862319cdda80c0a0b65ed5af32acf4b18ea55d531cc8d0"
 FACTORY_COMMIT = "8784ba2279ec82834fc967f56b756ed708e20bed"
 FACTORY_SHA = "daaf29d3b47ab266ae4546f001e322275db5c3c902c9f36f8b8a2528690af2ea"
+ORIGINAL_BUDGET_SHA = "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d"
 HERE = Path(__file__).resolve().parent
 KIND = "r30-official-backend-production-entry-window-v1"
 
@@ -153,23 +154,30 @@ def derive(args):
         raise ValueError("NEW_EXPLICIT_R30_WINDOW_RUN_ID_REQUIRED")
     texts = legacy_v4.derive_texts(parent, a.SOURCE, args.stop_utc, 53)
     old_generation_sha = a.digest(texts["generation.py"].encode())
+    if a.digest(texts["mysql-budget.py"].encode()) != ORIGINAL_BUDGET_SHA:
+        raise ValueError("EXACT_ORIGINAL_V4_BUDGET_TEMPLATE_REQUIRED")
+    budget = parent.replacement(texts["mysql-budget.py"], 'KIND = "' + legacy_v4.KIND + '"',
+                                'KIND = "' + KIND + '"')
+    budget_sha = a.digest(budget.encode())
     generation = texts["generation.py"]
     generation = replace_function(generation, "verified_images", '''def verified_images(args, lib):
     adapter = load(Path(__file__).resolve().parent / "r30-window.py", R30_ADAPTER_SHA, "r30_backend_window")
     return adapter.verified_images(args, lib)''')
     generation = parent.replacement(generation, legacy_v4.KIND, KIND, 2)
+    generation = parent.replacement(generation, 'BUDGET_SHA = "' + ORIGINAL_BUDGET_SHA + '"',
+                                    'BUDGET_SHA = "' + budget_sha + '"')
     generation = parent.replacement(generation, "def prepare(args):\n", "def prepare(args):\n    if args.run_id != " + repr(args.run_id) + ":\n        raise ValueError('EXACT_R30_WINDOW_RUN_ID_REQUIRED')\n")
     generation = parent.replacement(generation, 'DOCKER = ["docker", "--context", "default"]',
                                     'R30_ADAPTER_SHA = "' + a.sha(Path(__file__)) + '"\nDOCKER = ["docker", "--context", "default"]')
     generation = generation.replace("target_frontend_frozen_equal_file_set_sha256", "r30_46_unchanged_frozen_file_set_sha256")
-    # Retain arm/infra/actual-budget/migration/scheduler/stop/status and stack unchanged.
+    # Retain budget logic and operation methods; bind the sole budget KIND change by a new pin.
     stream = parent.replacement(texts["resource-stream.py"], legacy_v4.KIND, KIND)
     stream = parent.replacement(stream, old_generation_sha, a.digest(generation.encode()))
     factory = a.command(["git", "-C", HERE.parent.parent, "show", FACTORY_COMMIT + ":deployment/cloud-reuse/app-campaign.py"])
     if a.digest(factory) != FACTORY_SHA:
         raise ValueError("EXACT_PUBLIC_FROZEN_FACTORY_BYTES_REQUIRED")
     outputs = {"generation.py": generation.encode(), "resource-stream.py": stream.encode(),
-               "mysql-budget.py": texts["mysql-budget.py"].encode(), "r30-window.py": Path(__file__).read_bytes(),
+               "mysql-budget.py": budget.encode(), "r30-window.py": Path(__file__).read_bytes(),
                "r30-backend-artifact.py": (HERE / "r30-backend-artifact.py").read_bytes(),
                "image-proof.py": (HERE / "image-proof.py").read_bytes(), "factory.py": factory}
     for name, raw in outputs.items():
@@ -181,7 +189,7 @@ def derive(args):
              "backend_bundle_manifest_sha256": args.manifest_sha256,
              "derived_files": {n: {"sha256": a.digest(raw), "bytes": len(raw)} for n, raw in outputs.items()},
              "source_probe_backend_files": 53, "full_runtime_context_files": 60,
-             "inherited_budget_sha256": a.digest(outputs["mysql-budget.py"]),
+             "original_budget_sha256": ORIGINAL_BUDGET_SHA, "derived_budget_sha256": budget_sha,
              "frozen_factory_source_commit": FACTORY_COMMIT,
              "legacy_templates_modified": False, "old_source_only_builder_used": False,
              "cloud_or_SUT_or_session_issued": False,
