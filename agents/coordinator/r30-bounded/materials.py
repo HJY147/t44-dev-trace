@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 
 ROOT = Path('/root/t44-r30/r30window01')
@@ -26,6 +27,13 @@ def sha(path):
 
 def now():
     return datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+
+
+def wait_until(value):
+    """Schedule first collection/assembly; never edit an existing packet or clock."""
+    target = datetime.fromisoformat(value.replace('Z', '+00:00')).timestamp()
+    while target > time.time():
+        time.sleep(max(0, min(1, target - time.time())))
 
 
 def save(path, value, uid=None):
@@ -175,8 +183,10 @@ class Run:
         material['runtime_roles'], _ = self.roles('before-human-sessions', True)
         material_path = save(self.out / 'material-plan-scheduler.json', material)
         common = {'plan.json': material_path, 'binding.json': self.phase / 'binding.json', 'backend-import-receipt.json': self.import_path, 'ca.pem': self.phase / 'tls/ca.pem'}
+        wait_until('2026-10-29T10:12:30Z')
         http = self.container('http', {**common, 'accounts.json': initialized / 'accounts.initialized.private.json', 'service.json': service / 'result/service.json'}, 'prepare_http.py', ['--plan', '/neutral-input/plan.json', '--binding', '/neutral-input/binding.json', '--import-receipt', '/neutral-input/backend-import-receipt.json', '--ca', '/neutral-input/ca.pem', '--accounts', '/neutral-input/accounts.json', '--service', '/neutral-input/service.json', '--output', '/neutral-output/http', '--root-admit-http-preparation'], PYTHON, self.binding['project'] + '_edge', 330)
         final_counts = self.wrapper('counts', material_path, self.intent(material, 'read', 'final-count'), 'final-count')
+        wait_until('2026-10-29T10:15:30Z')
         material['runtime_roles'], writer_proof = self.roles('after-api-current-writers', True)
         material['readiness']['fixture_ready_at'] = now()
         final_plan = save(self.out / 'final-plan.json', material)
