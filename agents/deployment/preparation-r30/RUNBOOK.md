@@ -94,6 +94,8 @@ python3 "$R30_PROFILE/generation.py" prepare \
 
 实际prepare返回F/P新phase路径及绑定SHA后，root对获准phase逐条 `generation.py arm`、`config`、`infra`、`probe-budget`、`migrate`、`idle`。每条带`--phase-dir`与完整`--binding-sha256`；migrate/idle另给probe实际输出的`--budget-receipt`及`--budget-receipt-sha256`，不猜路径/数字。scheduler仅获准项目明确scope后独立启动。F/P不并行启动，不把未启phase记已测。
 
+初始化三个人类账号及neutral seed/counts/service唯一正式入口另见 [NEUTRAL-ADMIN-RUNBOOK.md](NEUTRAL-ADMIN-RUNBOOK.md) 的固定wrapper命令。它在同一实际9e锁内live admit并持到固定credential-admin子进程退出，不能用`--root-budget-admitted`或proof格式替代锁；先正常CLI init-user/stdin，后seed/counts、真实project IDs、再service/HTTP。原GEN probe SHA与本次readmission分别留痕，原plan/intent不改。ROOT写原plan时gen_binding.path必须是容器固定`/neutral-input/binding.json`，host原路径单列。无准入或无最终producer准确manifest/hash时不运行。
+
 结束时对本轮已启动phase执行 `generation.py stop --phase-dir ... --binding-sha256 ...`，保留卷；新resource-stream按实际binding seal/stop和mirror尾部回执收全。收到真实PID/unit结果后核进程停止，不预写success。provider节省停机和取消自动释放仍由root执行，guest工具不会声称云费已停。
 
 首次build、接收、加载、预检、调度各层证据独立保留；它们都不等于系统性能达标。原f7短测P95与QA772旧NP保持原结论，0b新SUT结果必须另有实际窗口证据。
