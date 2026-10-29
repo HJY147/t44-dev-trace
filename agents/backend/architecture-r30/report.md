@@ -9,8 +9,10 @@
 - 原986/856 SQLite HTTP **134通过**，32.26秒、0失败/错误/跳过；1条原上游Starlette弃用警告。冻结业务回归通过**不能抵消**新增通用引用回归。
 - 原固定script/cloc2.10准确提交实测：**5880→5861，候选净减19**；仍超761，两次require-range均退出1。物理diff的23没有当作cloc。
 - 修复成本判断：保持旧任意嵌套$id→API根语义，直接方式是保留原绝对ref规范化；恢复原validator/规范化后只剩约7行静态预算。另造自定义ref keyword扩展还需处理嵌套$schema演进，复杂度与风险不配十余行收益。该预算不是已实现收益。
-- 决定：**拒绝evolve这条已实现结构方向，不建议集成**。保留原可运行候选、真实红和完整计量；接下来将两个产品文件恢复准确基线，最终应用净减应为0，需以实际后续记录为准。
+- 决定：**拒绝evolve这条已实现结构方向，不建议集成**。保留原可运行候选、真实红和完整计量；最终保留本独立分支的红候选，便于直接复现新tmp763（它使用候选resolve入口）；不删除/跳过断言，也不将该分支交作可合并改进。总协调集成树未由本岗修改，可采纳净减0。
 - 尚无保留全部防护、错误次序、权限、事务/幂等/审计/CAS/锁仍省数百行的可证方案。Runtime、可信行防护和各业务门禁有独立语义；不为规模删除或迁入excluded文件，也不把这个负结果说成数学上证明不存在其他架构。
 - 没有改原测试/断言/统计口径或既有岗位边界，未读PRIVATE/未公开独立资料，未联系独立测试岗，无云/完整CI/真实MySQL/MQ/正式性能新结论。
 - GitHub阶段记录：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627 。没有merge。
 - 原始证据：differential-initial.log/xml、original-http.log/xml、两command.json、count-before/candidate.json/log、count-commands.json、static-initial.json、phase1.json。
+
+- 收口调整：先前提出的回退产品计划没有执行。为了保留新差分在准确候选上的直接可运行性，分支明确标记 **REJECTED / DO NOT MERGE**。最终HEAD应用字节与ad4a候选保持相同，候选真实5861与可采纳净减0必须区分。

@@ -3689,7 +3689,7 @@
     "prompt_ref": "ROLE-backend-ARCHITECTURE-R30-v1",
     "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
     "branch": "codex/backend-architecture-r30",
-    "status": "CANDIDATE_REJECTED_NESTED_ID_REGRESSION_PENDING_PRODUCT_RESTORE",
+    "status": "REJECTED_RETAINED_FOR_EXACT_REPRO_DO_NOT_MERGE",
     "product_paths": [
       "backend/t44/api.py",
       "backend/t44/contracts/__init__.py"
@@ -3727,6 +3727,12 @@
       "upstream_warnings": 1
     },
     "report": "agents/backend/architecture-r30/report.md",
-    "accepted_application_reduction": 0
+    "accepted_application_reduction": 0,
+    "product_restore_executed": false,
+    "reason_for_retaining_candidate": "New unchanged differential tests exercise candidate resolve entry; retain failed source and assertions for direct reproduction",
+    "root_product_integration_by_backend": false,
+    "final_candidate_application": 5861,
+    "remaining_above_5100": 761,
+    "merge_recommended": false
   }
 }

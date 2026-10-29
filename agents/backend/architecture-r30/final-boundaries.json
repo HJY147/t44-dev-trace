@@ -1,0 +1,46 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "ad4a7415f195fff571b67e7d4b7b5cada5c28f72",
+      "HEAD",
+      "--",
+      "backend/t44",
+      "frontend/src",
+      "frontend/index.html"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "7374b3637b06465d448fc2e81952ba18fc676315",
+      "--",
+      "backend/t44/contracts/openapi.json",
+      "specs/contracts/openapi.json",
+      "specs/database/schema.sql",
+      "backend/requirements.lock",
+      "backend/pyproject.toml",
+      "tmp/backend"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]
