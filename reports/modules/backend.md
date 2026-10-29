@@ -489,3 +489,5 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 
 
 2026-10-29 独立性能中性输入准备：原短诊断结束后，另经root双显式flag准入，通过真实API新建/启动400任务并在另400任务形成当前level3事件；原882短测ID不动。服务CLI/最终只读counts全程原预算锁；四真实会话实际expires覆盖cost stop；原transfer密封，不能进原consumer。5唯一本地检查绿（含完整sh/请求契约/拒覆盖），umask首次失败原样存；本岗真实云/SUT=0。最终实际6400任务必须明确，未验证云准备/正式性能。
+
+neutral实际远端01首导入失败（-I与原镜像PYTHONPATH冲突）保留。root明确准入一次01b续步；无重host、无原inputs/01覆盖、无SUT操作重试，只修admin解释器标记。新4窄检查通过不代替真实云结果；原离线充分性声明不扩张。
