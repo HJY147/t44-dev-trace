@@ -1,0 +1,3724 @@
+{
+  "source": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "spec_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+  "version": "1.2.0",
+  "operations": [
+    {
+      "operation": "login",
+      "method": "POST",
+      "path": "/auth/login",
+      "parameters": [],
+      "request_schema": "LoginRequest",
+      "success": [
+        "200:LoginEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "413",
+        "422",
+        "429",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 401,
+          "code": "INVALID_CREDENTIALS",
+          "condition": "登录账号未匹配或口令校验失败，统一消息不枚举账号。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 429,
+          "code": "RATE_LIMITED",
+          "condition": "仅登录入口的真实进程内IP+账号token bucket达到10次/60秒，返回Retry-After。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "logout",
+      "method": "POST",
+      "path": "/auth/logout",
+      "parameters": [],
+      "request_schema": "无body",
+      "success": [
+        "200:AckEnvelope"
+      ],
+      "http_errors": [
+        "401",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "getMe",
+      "method": "GET",
+      "path": "/auth/me",
+      "parameters": [],
+      "request_schema": "无body",
+      "success": [
+        "200:UserEnvelope"
+      ],
+      "http_errors": [
+        "401",
+        "403",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "getDictionaries",
+      "method": "GET",
+      "path": "/dictionaries",
+      "parameters": [],
+      "request_schema": "无body",
+      "success": [
+        "200:DictionariesEnvelope"
+      ],
+      "http_errors": [
+        "401",
+        "403",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createProject",
+      "method": "POST",
+      "path": "/projects",
+      "parameters": [
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "ProjectCreate",
+      "success": [
+        "201:ProjectEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listProjects",
+      "method": "GET",
+      "path": "/projects",
+      "parameters": [
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:ProjectPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "本入口不限制项目/角色，但人类专用Bearer入口拒绝已识别的有效服务身份；没有项目越权分支。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "getProject",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "parameters": [
+        "path.project_id"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:ProjectEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listProjectMembers",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "parameters": [
+        "path.project_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:MemberPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "addProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "parameters": [
+        "path.project_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "MemberCreate",
+      "success": [
+        "201:MemberEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "ACCOUNT_NOT_INITIALIZED",
+          "condition": "指定待加入username或负责人账号尚未由初始化入口建立。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "changeProjectMember",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "parameters": [
+        "path.project_id",
+        "path.user_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "MemberChange",
+      "success": [
+        "200:MemberEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "LAST_MANAGER",
+          "condition": "成员变更会移除本项目最后一个有效manager。"
+        },
+        {
+          "http_status": 409,
+          "code": "MEMBER_IN_USE",
+          "condition": "成员移除/降角色会使其活动负责任务失去有效developer负责人。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "removeProjectMember",
+      "method": "POST",
+      "path": "/projects/{project_id}/members/{user_id}/removal",
+      "parameters": [
+        "path.project_id",
+        "path.user_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "MemberRemove",
+      "success": [
+        "200:AckEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "LAST_MANAGER",
+          "condition": "成员变更会移除本项目最后一个有效manager。"
+        },
+        {
+          "http_status": 409,
+          "code": "MEMBER_IN_USE",
+          "condition": "成员移除/降角色会使其活动负责任务失去有效developer负责人。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createIteration",
+      "method": "POST",
+      "path": "/projects/{project_id}/iterations",
+      "parameters": [
+        "path.project_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "IterationCreate",
+      "success": [
+        "201:IterationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。"
+        },
+        {
+          "http_status": 422,
+          "code": "CAPACITY_REFERENCE_INVALID",
+          "condition": "迭代产能/任务人力引用不是本项目有效成员或不匹配其迭代容量记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listIterations",
+      "method": "GET",
+      "path": "/projects/{project_id}/iterations",
+      "parameters": [
+        "path.project_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:IterationPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "changeIteration",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/iterations/{iteration_id}",
+      "parameters": [
+        "path.project_id",
+        "path.iteration_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "IterationChange",
+      "success": [
+        "200:IterationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。"
+        },
+        {
+          "http_status": 422,
+          "code": "CAPACITY_REFERENCE_INVALID",
+          "condition": "capacity含重复/无效developer引用，或未包含本迭代全部状态1–5任务负责人；即使新旧capacity名单相同也核对全量任务。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "parameters": [
+        "path.project_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "TaskCreate",
+      "success": [
+        "201:TaskMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "DEPENDENCY_CYCLE",
+          "condition": "项目锁保护下将新增依赖加入图后形成有向环。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "OWNER_NOT_PROJECT_DEVELOPER",
+          "condition": "指定owner_id存在但不是本项目有效developer成员。"
+        },
+        {
+          "http_status": 422,
+          "code": "ACCOUNT_NOT_INITIALIZED",
+          "condition": "指定待加入username或负责人账号尚未由初始化入口建立。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。"
+        },
+        {
+          "http_status": 422,
+          "code": "DEPENDENCY_SELF_REFERENCE",
+          "condition": "所建依赖的task_id与depends_on_task_id相同。"
+        },
+        {
+          "http_status": 422,
+          "code": "CAPACITY_REFERENCE_INVALID",
+          "condition": "任务负责人未登记在所选迭代capacity；无项目开发角色仍使用OWNER_NOT_PROJECT_DEVELOPER。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listTasks",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "parameters": [
+        "path.project_id",
+        "query.page",
+        "query.page_size",
+        "query.state",
+        "query.owner_id",
+        "query.iteration_id",
+        "query.sort"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:TaskPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "getTask",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}",
+      "parameters": [
+        "path.project_id",
+        "path.task_id"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:TaskEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "changeTaskPlan",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/plan",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "TaskPlanChange",
+      "success": [
+        "200:TaskMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "changeTaskAssignment",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/tasks/{task_id}/assignment",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "AssignmentChange",
+      "success": [
+        "200:TaskMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 409,
+          "code": "ASSIGNMENT_EDIT_LOCKED",
+          "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改负责人。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "OWNER_NOT_PROJECT_DEVELOPER",
+          "condition": "指定owner_id存在但不是本项目有效developer成员。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        },
+        {
+          "http_status": 422,
+          "code": "CAPACITY_REFERENCE_INVALID",
+          "condition": "接手人已通过有效developer检查，但未登记在任务当前迭代capacity。"
+        }
+      ]
+    },
+    {
+      "operation": "listTaskDependencies",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:DependencyPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "addTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "DependencyCreate",
+      "success": [
+        "201:DependencyMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "DEPENDENCY_CYCLE",
+          "condition": "项目锁保护下将新增依赖加入图后形成有向环。"
+        },
+        {
+          "http_status": 409,
+          "code": "DEPENDENCY_EDIT_LOCKED",
+          "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改依赖。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "DEPENDENCY_SELF_REFERENCE",
+          "condition": "所建依赖的task_id与depends_on_task_id相同。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "removeTaskDependency",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "path.dependency_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "DependencyRemove",
+      "success": [
+        "200:TaskMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "DEPENDENCY_EDIT_LOCKED",
+          "condition": "任务既不是待受理，也不是从待受理进入阻塞；D002禁止此时修改依赖。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "transitionTask",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/transitions",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "TransitionRequest",
+      "success": [
+        "200:TransitionEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "DEPENDENCIES_UNSATISFIED",
+          "condition": "开始/解除阻塞回开发/返工守卫发现至少一个当前前驱不是已交付。"
+        },
+        {
+          "http_status": 409,
+          "code": "REVIEW_NOT_PASSED",
+          "condition": "通过评审动作引用的当前评审verdict非通过，或必需检查未全部通过。"
+        },
+        {
+          "http_status": 409,
+          "code": "REVIEW_BASELINE_MISMATCH",
+          "condition": "评审不是该任务当前delivery_cycle/review_cycle、最新评审或审核对象SHA。"
+        },
+        {
+          "http_status": 409,
+          "code": "RELEASE_APPROVAL_REQUIRED",
+          "condition": "保留原发布批准/预案门禁。D008仅在action7原批准引用不匹配失败槽：已解析评估delivery_cycle及schedule_version相对当前任务均有效，才返回本码；双失效先ASSESSMENT_BASELINE_MISMATCH。不扩大其它domain守卫的全局顺序。"
+        },
+        {
+          "http_status": 409,
+          "code": "ASSESSMENT_BASELINE_MISMATCH",
+          "condition": "保留action7请求assessment_version与该评估自身version不符的原前置检查。D008：已归属的评估delivery_cycle或schedule_version过期且原批准引用失效时，在原批准失败槽优先返回本码；引用匹配则沿原domain次序，missing/跨任务评估和其它action不被覆盖。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "EVIDENCE_REQUIRED",
+          "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "仅rework动作的新计划先通过共享UtcTime域后，planned_end仍不晚于planned_start；其他动作没有该分支。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        },
+        {
+          "http_status": 422,
+          "code": "CAPACITY_REFERENCE_INVALID",
+          "condition": "仅action9返工：当前负责人不再是本项目有效developer，或未登记在当前迭代capacity；原权限/版本/状态/证据/依赖守卫先保持，拒绝不激活任务。"
+        }
+      ]
+    },
+    {
+      "operation": "getReviewTemplate",
+      "method": "GET",
+      "path": "/projects/{project_id}/review-template",
+      "parameters": [
+        "path.project_id",
+        "query.version"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:ReviewTemplateEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createTaskReview",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "ReviewCreate",
+      "success": [
+        "201:ReviewMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "REVIEW_BASELINE_MISMATCH",
+          "condition": "评审不是该任务当前delivery_cycle/review_cycle、最新评审或审核对象SHA。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "EVIDENCE_REQUIRED",
+          "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listTaskReviews",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/reviews",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:ReviewPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "ReleaseAssessmentCreate",
+      "success": [
+        "201:AssessmentMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "EVIDENCE_REQUIRED",
+          "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listReleaseAssessments",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:AssessmentPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "reviewReleaseAssessment",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "path.assessment_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "ReleaseAssessmentReview",
+      "success": [
+        "200:AssessmentMutationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "ASSESSMENT_BASELINE_MISMATCH",
+          "condition": "引用评估的版本、当前schedule_version或delivery_cycle与任务不一致。"
+        },
+        {
+          "http_status": 409,
+          "code": "STATE_CONFLICT",
+          "condition": "本次非重放写不满足操作允许的当前状态，且没有执行任何状态修改。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "EVIDENCE_REQUIRED",
+          "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listTaskDecisions",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks/{task_id}/decisions",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "query.page",
+        "query.page_size"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:DecisionPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "validateContractPayload",
+      "method": "POST",
+      "path": "/projects/{project_id}/contract-validations",
+      "parameters": [
+        "path.project_id"
+      ],
+      "request_schema": "ContractValidationRequest",
+      "success": [
+        "200:ContractValidationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "CONTRACT_INVALID",
+          "condition": "只读契约校验候选payload不满足所选主接口结构或跨字段规则，不执行业务变更。"
+        },
+        {
+          "http_status": 422,
+          "code": "TIME_RANGE_INVALID",
+          "condition": "本操作的时间已通过共享UtcTime域校验，但planned_end不晚于planned_start。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "getEscalationRules",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalation-rules",
+      "parameters": [
+        "path.project_id",
+        "query.version"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:EscalationRuleEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listEscalations",
+      "method": "GET",
+      "path": "/projects/{project_id}/escalations",
+      "parameters": [
+        "path.project_id",
+        "query.page",
+        "query.page_size",
+        "query.task_id",
+        "query.level"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:EscalationPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "createEscalation",
+      "method": "POST",
+      "path": "/internal/projects/{project_id}/tasks/{task_id}/escalations",
+      "parameters": [
+        "path.project_id",
+        "path.task_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "EscalationRequest",
+      "success": [
+        "202:EscalationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "SERVICE_SCOPE_REQUIRED",
+          "condition": "内部升级入口收到非服务主体，或服务无escalation:write及目标项目授权。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "SCHEDULE_VERSION_CONFLICT",
+          "condition": "扫描请求schedule_version不是锁定任务的当前排期版本。"
+        },
+        {
+          "http_status": 409,
+          "code": "RULE_VERSION_CONFLICT",
+          "condition": "扫描请求rule_version不是当前生效的已采用规则版本。"
+        },
+        {
+          "http_status": 409,
+          "code": "NOT_ELIGIBLE_FOR_ESCALATION",
+          "condition": "服务端当前UTC按有效规则没有匹配升级级别，或任务已交付/已回滚。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listMyNotifications",
+      "method": "GET",
+      "path": "/me/notifications",
+      "parameters": [
+        "query.page",
+        "query.page_size",
+        "query.project_id",
+        "query.read",
+        "query.handled"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:NotificationPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "仅当可选project_id过滤已提供且该项目不存在；无过滤且无通知时返回200空列表。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "markNotificationRead",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/read",
+      "parameters": [
+        "path.project_id",
+        "path.notification_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "MarkReadRequest",
+      "success": [
+        "200:NotificationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "handleNotification",
+      "method": "POST",
+      "path": "/projects/{project_id}/notifications/{notification_id}/handling",
+      "parameters": [
+        "path.project_id",
+        "path.notification_id",
+        "header.Idempotency-Key"
+      ],
+      "request_schema": "HandleNotificationRequest",
+      "success": [
+        "200:NotificationEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "INVALID_JSON",
+          "condition": "本入口的application/json请求体不是语法有效JSON。"
+        },
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 409,
+          "code": "VERSION_CONFLICT",
+          "condition": "本次非重放写expected_version与被锁定资源当前版本不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_CONTENT_CONFLICT",
+          "condition": "本业务写同主体、operationId和Idempotency-Key已存在，规范化path/body摘要不同。"
+        },
+        {
+          "http_status": 409,
+          "code": "IDEMPOTENCY_IN_PROGRESS",
+          "condition": "本业务写同键摘要相同但原owner仍持有未完成租约/事务，尚无已保存结果可回放，附Retry-After。"
+        },
+        {
+          "http_status": 413,
+          "code": "PAYLOAD_TOO_LARGE",
+          "condition": "本入口JSON请求体超过已声明1MiB上限，由统一中间件/反代返回本错误。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 422,
+          "code": "EVIDENCE_REQUIRED",
+          "condition": "本操作必要通过项/解除依据/决策或评估证据为空，不能判通过或执行变更。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 503,
+          "code": "TRANSACTION_UNCERTAIN",
+          "condition": "本业务写提交确认丢失，不能断言成功或回滚；同幂等键重试恢复。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    },
+    {
+      "operation": "listProjectAuditEvents",
+      "method": "GET",
+      "path": "/projects/{project_id}/audit-events",
+      "parameters": [
+        "path.project_id",
+        "query.page",
+        "query.page_size",
+        "query.task_id",
+        "query.outcome"
+      ],
+      "request_schema": "无body",
+      "success": [
+        "200:AuditPageEnvelope"
+      ],
+      "http_errors": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "503",
+        "500"
+      ],
+      "x_error_cases": [
+        {
+          "http_status": 400,
+          "code": "SECURITY_INPUT_REJECTED",
+          "condition": "本入口的ID/枚举/排序选择器含明确SQL攻击表达式，或非凭据业务文本含禁止NUL控制字符；普通标题引号不触发。"
+        },
+        {
+          "http_status": 401,
+          "code": "AUTH_REQUIRED",
+          "condition": "缺少或不能认证本端点所需的有效会话凭据；错误不得回显Token。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_EXPIRED",
+          "condition": "会话已认证且expires_at不晚于服务端当前UTC。"
+        },
+        {
+          "http_status": 401,
+          "code": "TOKEN_REVOKED",
+          "condition": "会话已被logout或CLI撤销，或其主体已失效。"
+        },
+        {
+          "http_status": 403,
+          "code": "PROJECT_ACCESS_DENIED",
+          "condition": "本操作project_id或引用资源属于调用者未参与项目，当前成员检查失败。"
+        },
+        {
+          "http_status": 403,
+          "code": "ACTION_FORBIDDEN",
+          "condition": "有效身份不满足本入口角色/负责人/收件人/防自审限制；人类专用入口拒绝有效服务身份。"
+        },
+        {
+          "http_status": 404,
+          "code": "RESOURCE_NOT_FOUND",
+          "condition": "已授权范围内的路径/请求引用资源不存在；不存在项目与无权项目分别处理，不泄露其他项目内容。"
+        },
+        {
+          "http_status": 422,
+          "code": "PARAMETER_INVALID",
+          "condition": "本入口已定义body/路径/查询/幂等头违反类型、必需、枚举、额外字段、固定集合或范围（含UtcTime）约束。"
+        },
+        {
+          "http_status": 503,
+          "code": "AUDIT_UNAVAILABLE",
+          "condition": "所需拒绝审计独立事务不能提交，audit_id=null，部署承接脱敏故障记录。"
+        },
+        {
+          "http_status": 503,
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "condition": "认证/查询/业务所必需MySQL持久能力无法使用；MQ断开但outbox已提交不触发本码。"
+        },
+        {
+          "http_status": 500,
+          "code": "INTERNAL_ERROR",
+          "condition": "本入口未预期内部异常，统一脱敏兜底；不返回原body、凭据、SQL或堆栈。"
+        }
+      ]
+    }
+  ]
+}

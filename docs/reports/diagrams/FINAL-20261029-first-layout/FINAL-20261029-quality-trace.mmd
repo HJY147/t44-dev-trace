@@ -1,0 +1,15 @@
+flowchart TB
+    subgraph A[当前业务与实现]
+        direction LR
+        R[人的选择 D001至D008<br/>需求 FR01至FR08] --> S[v1.2冻结<br/>38操作 18表226列] --> P[产品356f299<br/>模块与函数I/O对应]
+    end
+    subgraph B[已取得的开发证据]
+        direction LR
+        L[后端差分与DB前端自测<br/>原红和工具失败保持] --> C[准确源统一CI<br/>后端796 前端89绿] --> I[准确源双镜像构建成功<br/>不等云已部署]
+    end
+    subgraph D[独立验证与出口]
+        direction LR
+        Q[新独立QA先冻结<br/>只收明确发表结果] --> F[新云功能与正式性能<br/>当前尚待结果] --> X[整体尚未放行<br/>5817行超717 研究及人工材料待补]
+    end
+    A --> B --> D
+    H[历史独立失败与H2不确定<br/>按各自版本保留] -.-> X

@@ -1,108 +1,134 @@
-# T44概要设计与详细设计报告
+# T44 概要设计与详细设计报告
 
-> 本轮版本说明：第1至4节保留M6概设/详设快照；云C运行边界和本轮验证缺口见第5节及[云复核839补记](cloud839-evidence-addendum.md)。旧函数表/原图不冒充对云C新建的完整源码核验，旧Word未更新。
+本系统以单体分层和显式事务实现研发交付记录，浏览器、API、数据库、消息与扫描进程各有明确责任。当前实现源356f29983c904e949245aedfad464efc1bf7b63d遵守v1.2冻结的38操作、130 Schema和18业务表226列。本报告说明模块协作、存储、一致性和关键函数输入输出；开发检查、实际运行和独立验收分别列证，当前5817行超717的规模问题未解决。
 
-本报告说明固定bc5aef9c62393134582affb7a690acb33ac2b833的模块边界、数据和事务，以及会话生命周期、历史理由投影的关键实现。方案按1.1冻结规则实现，已有准确SHA开发和专项审核证据；有效代码规模、正式性能、完整独立验收仍未达最终出口。设计与证据由AI整理，学生研究正文另行本人完成。
+## 1 设计依据和架构
 
-## 1 依据和概要设计
+[需求规格](requirements-report.md)、[后端设计](../../specs/backend-design.md)、[持久契约](../../specs/database/persistence-contract.md)及[v1.2冻结](../../records/spec-freezes/v1.2.json)是实现依据。Vue3、TypeScript、Element Plus负责交互，FastAPI与同步Python服务负责编排，SQLAlchemy/PyMySQL访问MySQL，RabbitMQ承担异步投递，APScheduler驱动扫描。该方案让单个业务操作可以在一个UoW内提交，避免为课程规模引入分布式业务事务；未测量的技术性能优劣不作结论。
 
-依据[1.1冻结清单](../../records/spec-freezes/v1.1.json)、[需求报告](requirements-report.md)、[后端设计](../../specs/backend-design.md)和Issue28理由RFC。38操作和130 Schema保持，新增history内部实现没有改冻结OpenAPI/DDL。M6文档设计a7eef3a先于本稿，旧M4/M5由历史索引绑定，不把新代码回填旧稿。
+![模块与进程架构](../../docs/diagrams/design-report-01-architecture.png)
 
-### 1.1 技术和进程选择
-
-采用Vue3、TypeScript、Element Plus的浏览器前端，Python FastAPI分层单体、MySQL8、RabbitMQ、APScheduler及Docker Compose。业务规模与作业要求适合一个后端服务的明确事务边界；没有业务微服务、集群或在线LLM依赖。候选栈及选择的历史依据在[architecture](../../docs/architecture.md)，没有测量的性能优劣不写成结论。
-
-![模块进程架构](../../docs/diagrams/design-report-01-architecture.png)
-
-| 模块 | 输入与输出 | 事务或进程责任 | 对应验证 |
+| 模块 | 责任和主要输出 | 不能代替的职责 | 关联需求 |
 | --- | --- | --- | --- |
-| Vue工作空间 | 用户动作/冻结Schema→API意图、中文记录 | DOM/局部状态；token与卸载双边界，不能判断最终业务准入 | 982/983/895、当前89用例及开发浏览器 |
-| API/Runtime | HTTP→Call→Envelope/错误 | 结构/鉴权/幂等/锁/CAS；统一成功提交及独立拒绝审计 | 986 HTTP、985 MySQL、同源510 |
-| Business/domain | Call、行快照→业务data或Decision | 纯状态机不做SQL；服务经活动gateway工作，不自行commit | 994、986、985 |
-| Rows/UoW | 白名单/typed keys→物化行 | 参数化、一事务Session、失败毒化/关闭；不解释业务批准 | 988/989/993、bounded pairs验证 |
-| 通知worker | outbox claim/三字段MQ包→inbox/ACK | publish在事务外；DB提交后ACK，重试/隔离/fallback | 976至980真实MQ/进程及Docker |
-| 扫描器 | cutoff/run游标/当前规则→升级Call | 持久续扫与任务短事务，按结果确定后推进游标 | 973/974/990/991、Docker扫描completed2 |
-| 部署工具 | 明确项目库/受控配置→生命周期回执 | 迁移/停写备份/隔离恢复，不代替业务发布决定 | 托管Docker；native阶段1有限守卫 |
+| Vue工作区 | 当前身份和项目数据、表单及真实错误解释 | 最终权限、版本及状态准入 | FR01及FR04至06 |
+| API和contracts | 解析HTTP为Call、冻结结构校验、Envelope | 完整业务校验或数据库提交 | FR01 |
+| Runtime | 鉴权、幂等、锁序、事务、审计及快照 | 人的业务选择 | FR01及FR06 |
+| Business和domain | 业务对象、排期、评审和纯状态Decision | 自行建立连接或旁路commit | FR03至06 |
+| Rows和UoW | 白名单参数化SQL、锁、CAS和关闭失败Session | 发布批准、评审判断 | FR02及FR06 |
+| scanner和消息 | 持久续扫、outbox、通知幂等及降级 | 本人已读/处理、端到端交付证明 | FR07 |
+| 部署工具 | 明确源镜像、环境生命周期、备份和隔离恢复 | 产品发布决定或独立验收 | FR08及NFR03 |
 
-### 1.2 UI结构与生命周期
+业务模块经门面注入通知与升级组件。生产存储只有活动UoW的gateway，不建立替代内存数据库。辅助原型、开发夹具和独立验收分别存放，不能混入产品实现或测试计数。
 
-七导航是工作台、项目空间、交付任务、迭代排期、评审与发布、通知中心、审计记录。业务页从授权项目上下文读取，任务抽屉含详情/依赖/评审/评估/决定/升级/变更；操作表单依冻结Schema收集输入并展示业务拒绝。OpenDesign本地原型到Vue的840/75视觉链是历史资料；当前会话边界来自9560，新理由来自c79。
+## 2 数据模型与存储
 
-App在user为空时卸载整个shell及条件对话框；clearSession先增加contextSequence，再清token、项目上下文、用户、项目集合、字典与通知。allPages、bootstrap和context保存token，异步完成后重验；context还比对序号及project_id。request在fetch和JSON解析后的成功与错误路径检查会话；旧请求变为客户端SESSION_CHANGED而不传播旧403。OperationForm、LoginView和TaskDrawer通过active与当前token/序号拒绝卸载后的回调。当前会话401仍清空，当前403/409仍可刷新。
-
-![会话卸载与迟到响应边界](../../docs/reports/diagrams/m6-session-lifecycle.png)
-
-开发最初39绿仍漏A旧POST→退出→B登录→旧403→旧父refresh擦除B上下文。895原反例1红2绿后，经7df先设计、9560修复、babc交接，原895三绿和全51开发用例支持限定关闭；当前组合89包括后续容量/理由用例，不能相加成为140。
-
-## 2 详细设计
-
-### 2.1 状态与持久数据
-
-七状态由整数码稳定映射到domain枚举，九命令经decide产生Decision/effects。任务、依赖、评审、决定四核心表连到项目、迭代、人力、评估、审计、幂等、排期历史、扫描、outbox/inbox等支撑表，共18业务表226字段，另有技术迁移表。账户、任务和审计身份是显式关联，不依声明顺序推持久码。
+### 2.1 核心关系与版本
 
 ![核心实体关系](../../docs/diagrams/design-report-02-entities.png)
 
-依赖边无环、当前计划/评审/回滚预案引用匹配、任务及评估版本必须一致。1.1 capacity仅保护状态1至5，成员/开发角色保护1至5及7。项目锁序列化工时调整与任务激活；行锁和CAS拒绝旧expected_version，不在前端“强制开始”。验证为994/985/986与1.1MySQL竞争，完整独立并发矩阵仍未完成。
+四核心表是tasks、task_dependencies、reviews、decisions；项目、成员、迭代、上线评估、审计、幂等、outbox、升级与通知支撑其完整生命周期。ER图展示主要业务关系而非替代全部18表DDL。migration版本表另计，不能将业务18表与恢复19表的口径混同。
 
-### 2.2 成功 拒绝 幂等与预检
-
-API先解析并按冻结Schema验证，Runtime完成实时身份/项目检查，写意图claim幂等行后进入业务事务。成功由同一事务提交任务/版本/决定/排期差异/成功audit/outbox/幂等完成；业务拒绝先回滚业务事务，再单独持久拒绝audit和可重放错误。若审计存储不可用，返回503和明确缺审计边界；未知提交不能伪装失败后安全重做。
-
-![事务与重放](../../docs/diagrams/design-report-03-transaction.png)
-
-prepare的3→2 UoW预检优化保留三次实时鉴权与原SELECT；旧authorize/claim薄包装兼容原调用者。候选validateContractPayload只检查三category结构/时间，返回business_guards_executed:false；内层候选schema_version仍1.0.0，外层协议1.1.0。结构预检成功不写业务、成功audit、outbox或幂等记录，也不代替真正提交时的人力/状态/依赖判定。原caller遗漏两红和修复+6的勘误保留，不声称自动提速或正式P95达标。
-
-### 2.3 新写理由与历史保守投影
-
-Projects.schedule_diff统一接收活动g/Call/before/after，写schedule_changes并将c.body.reason原样追加c.after；任务变更和返工还记录排期版本及五个Plan字段。Runtime.audit在同一成功事务落c.after。失败则全部业务写回滚，不通过“补旧audit”使历史看似完整。
-
-旧数据读取保持原COUNT、授权筛选、排序和分页。Business.listProjectAuditEvents先返回当前页，再交history.project_reasons；_snapshot只接受成功、human actor、有效task、无已有reason、字段数允许、特定计划变更或7→2返工、可证明+1版本。只提取本页去重(task_id,to_version)，RowsGateway.task_schedule_changes同项目最多100对，一次精确tuple-IN读取；空对不执行SQL。错误形状、跨项目、非请求pair、重复pair/id或超界结果使UoW失败并抛PersistenceUnavailable，不任选一条凑匹配。
-
-_matches再核项目/task、无iteration关联、from/to、actor、微秒时间、五字段Plan及冻结EvidenceRefs。证据先分别过Schema，再使用JSON sort_keys比较；对象键序忽略，数组保序，字符串不trim/正规化，bool不等于number。历史1与1.0按生产字形保守区分，不宣称1.0违反integer Schema；新请求normalization不变。仅完全匹配时向本响应after追加reason，不写数据库、不改总数/顺序/重放快照。
-
-![理由写入与旧记录投影](../../docs/reports/diagrams/m6-reason-projection.png)
-
-前端auditReason只在单个有效reason和符合记录上下文时提升为“理由”，保留字符串原文；RecordView按纯文本转义，不调用通用日期格式化改写前缀。缺理由的相关成功记录提示“此历史记录未提供可核对的变更理由”；原始未核对条目单独标识，保留其余actor/time/evidence。新42项目浏览器开发例验证7次写入、两宽度六图和2000字符尾部原文，不是独立验收。
-
-### 2.4 扫描 消息与故障边界
-
-![扫描与通知](../../docs/diagrams/design-report-04-notifications.png)
-
-扫描器以固定cutoff和keyset遍历候选，持久scan_run游标，候选处重取当前时钟和任务版本；确定结果后前移，版本/排期冲突有限重试。升级事件按task/schedule_version/level幂等，计数、收件人快照和outbox同事务；发MQ失败可落站内待办。消息只携event_id/schema_version/event_type，消费者查权威DB并提交inbox后ACK。MQ confirmed不表示本人已读/处理，恢复也不能重复业务效果。
-
-若每批b、候选N、每事件收件人r，遍历工作量按候选和收件人约O(N+总r)，每次keyset查询依索引；数据库/网络、锁和重试不以此复杂度保证时延。已有v2故障四子集不覆盖中批崩溃、选择性事务barrier和原消息捕获全矩阵。
-
-## 3 函数接口与模块测试
-
-[M6函数I/O](../../docs/reports/M6-function-contracts.md)将前端request/current、Runtime、history、bounded reader、domain、UoW、MQ、扫描和CLI的输入/输出/异常/事务明确分开；[38操作接口表](../../docs/reports/M6-api-contracts.md)来自冻结OpenAPI。64个源文件hash及Python真实签名、TS/Vue原始声明行见[静态索引](../../docs/reports/M6-function-sources.json)，不通过import应用获得。
-
-模块测试与FR/AC对应见[M6追踪](../../docs/reports/M6-traceability.md)。同源bc5后端510、前端89及Docker都是真实开发执行；本岗没有重跑产品。Rows原66含48，不和2个MySQL目标相加；后端18理由用例包含既有案，窄修7包含6新+1旧，不和504/510累计。
-
-### 3.1 代表函数的直接接口
-
-| 函数 | 输入与输出 | 异常与副作用 |
+| 版本字段 | 变化时机 | 不变边界 |
 | --- | --- | --- |
-| Runtime.execute | Call/validate/source→status、payload、replayed、原request_id四元组 | 成功统一Tx；拒绝独立审计，未知提交503 |
-| Business.validateContractPayload | category/payload→valid及guards:false | 只结构/时间，不写业务或成功审计 |
-| Projects.schedule_diff | before/after/Call→None | 原文reason与排期差异同成功Tx，不自commit |
-| history.project_reasons | 授权project/当前页→同页dict | 0或1次bounded读取，只响应copy，不写旧audit |
-| RowsGateway.task_schedule_changes | 正整数项目、最多100个task/version tuple→完整行list | 坏入参拒绝；结果越界/重复使UoW失败 |
-| decide | position/Command/context→Decision | 纯函数，无数据库副作用 |
-| request/checkSession | 操作/意图或旧token→Envelope或ApiError | 跨身份SESSION_CHANGED；当前401清会话 |
-| auditReason | 审计Row→text/missing或undefined | 保留字面，不推测未核对理由 |
-| DeliveryWorker.cycle | 注入store/MQ→确认/重试等计数 | 提交inbox后ACK，计数不是本人已读 |
-| Scanner.run | run_id可选→scan_run | 持久游标，失败不冒称扫描完成 |
+| task.version | 每个成功任务关联写增加 | 幂等重放不增加 |
+| schedule_version | 改期和回滚后返工增加 | 普通阻塞不增加 |
+| delivery_cycle | 回滚返工增加 | 与评审轮次分开 |
+| review_cycle | 评审拒绝后增加、返工重置 | 旧轮评审不可充新批准 |
 
-## 4 真实审核反馈与未验边界
+状态、枚举和错误映射集中定义。UTC时间经Schema、语义与持久入口检查后存DATETIME(6)，仅允许合法UTC域及六位小数，连接采用UTC、严格SQL模式及READ COMMITTED。工时用四分之一小时整数，避免浮点截断。决定和评审历史不可变，成员软撤销且保留引用。
 
-![质量门禁反馈](../../docs/reports/diagrams/m6-quality-feedback.png)
+### 2.2 迁移及原生目录检查
 
-原42243组合504CI绿后，专审真实HTTP发现Python true==1使坏历史EvidenceRefs被误配，HISTORY-EVIDENCE-01/P2成立。原报告和COMMENT5634370911永久保持不通过；ad6先设计勘误，bcb仅修history与追加案例，bc5同原HTTP一次复审绿，COMMENT5634448127仅关闭该缺陷。开发绿和窄关闭不能证明所有历史数据可安全推断、全产品放行或学生人工识别幻觉。
+迁移要求显式库名、受控MySQL版本、空库准入、锁、marker与checksum；失败后保留partial状态并拒绝冒充成功。当前CHECK解析使用锁定sqlglot30.25.0的MySQL AST，保留完整词法、单表达式及节点白名单，拒绝未知结构与注释，不运行优化器。只规范化不影响语义的标识符大小写/引号、括号和合法字符集引导，字符串、参数及逻辑算术树仍保留。
 
-准确新CI510/89及4worker Docker见[测试报告](test-results-report.md)。cloc6307超1207仍失败；无新正式性能通过。native阶段1只认证/回环/正常停机，13465cc时阶段2尚无完整周期回执，后发有限周期见测试报告附录；独立v3只已发布环境前置阻塞，不以无产品失败写成产品通过。
+列签名整体比较类型、长度、unsigned、fsp、nullable和default，内部CLI标签合并为column_definition不改变HTTP错误码或结果字段。Index/FK直接expected元组仅适用于完整hash绑定Frozen v1；四条原生目录SQL及_catalog_defects函数AST保持原样。SQLite与语法树等价关系不能替代真实MySQL返回CHECK形式的验证，当前准确源整体CI详细原件待统一核定。
 
-## 5 云C运行设计与验证边界补记
+## 3 事务和并发设计
 
-本轮云被测身份C为0dfb55c2191200d947c5423fd9ee74bb0812cc5a。资源raw列出API、MySQL、RabbitMQ、consumer、scheduler、web及额外TLS gateway共7服务，不能称原六服务条件；严格CA/IP HTTPS与4 API worker属于中性执行输入，不能仅由资源样本独立证明全部配置。稳定容器ID也不替代镜像/内容鉴证。
+![业务成功拒绝和幂等时序](../../docs/diagrams/design-report-03-transaction.png)
 
-[云追踪表](cloud839-evidence-addendum.md#2-需求设计验证的当前追踪)将API结构和业务守卫、写事务和成功历史、扫描与消息后置条件分开。现有记录不足以证明所有定时响应的完整schema/header、排期持久闭环、全局只读无写和拒绝审计持久化，不从入口0或设置响应推断已完成。资源高CPU/重传仅为伴随现象，502所在层和性能根因未证实；后续修复须另作设计、准确SHA审核及新冻结复测。C6310/超1210和候选6316/超1216在本稿截止均不能写成规模已解决，不以压行或改变分母过门禁。
+Runtime先作当前身份校验及短事务claim。已完成的同键同内容请求只返回原业务快照与原response_request_id，但新请求仍须有当前项目访问权；同键异内容或租约竞争依原错误拒绝。当前owner进入主事务后再次锁定会话、幂等及业务范围，Business完成守卫和CAS，成功业务、审计、outbox及COMPLETE快照同一次提交。
+
+业务拒绝退出并关闭原UoW后，使用独立事务记录拒绝审计和约定错误快照；拒绝审计自身失败返回依赖错误，不能声称已留痕。SQL驱动异常不直出。提交结果不明与普通业务拒绝分开，返回TRANSACTION_UNCERTAIN后应查询原幂等键，不盲目以新键重做。
+
+锁序为session、幂等、必要的project、按user_id升序的membership、按task.id升序的任务，最后评审/评估等子记录。依赖编辑和开始/解除至开发/返工先锁项目，依赖图读写与任务CAS同事务；成员、人力与任务激活按统一次序串行。普通单任务操作无需全部项目串行，但不能拿task后反锁project或逆向锁另一任务。
+
+## 4 服务门面和函数输入输出
+
+当前完整源码hash与函数签名见[当前来源和函数索引](../../docs/reports/FINAL-20261029-source-index.json)，外部38操作及Schema/错误索引见[接口附表](../../docs/reports/FINAL-20261029-interfaces.md)。下表列出跨模块使用时必须遵守的约定，不用函数名清单代替输入输出。
+
+| 函数或门面 | 输入和前置条件 | 输出 | 异常及副作用 |
+| --- | --- | --- | --- |
+| API endpoint | 路径/query/body、当前Token、写幂等键 | Call或冻结错误Envelope | 先结构校验，不自行判业务批准 |
+| Runtime.prepare | Call及validate回调 | 可执行或已重放的上下文 | 鉴权/claim在原UoW，保留原调用者兼容 |
+| Runtime.execute | Call、结构校验、来源标记 | 成功data或约定错误 | 编排业务事务、独立拒绝审计及失败关闭 |
+| Business.dispatch | 活动gateway和已授权Call | 操作data，最终由finalize封装 | 保留原path/query过滤和父task归属 |
+| Business.row_model | g、schema名、可信row、可选related映射 | 原冻结DTO | 缺related时沿原单行读取；不接用户任意表名 |
+| common.page | g、白名单table/where/query、serializer，可选predicates和prepare | items/page/page_size/total | 先读当前页，prepare只为该页构造serializer，count保原条件 |
+| contracts.violations | schema对象和候选值 | 前100项path/rule/message | 仅冻结对象身份复用validator；动态schema保持原完整构造/late-ref异常 |
+| Workflow.transitionTask | 锁定任务、动作、expected_version、证据 | CAS后任务及必要决定 | D008只细化批准引用失配分支；拒绝无半写 |
+| domain.decide | 纯Transition及角色/依赖/评审快照 | Decision | 不执行SQL或提交，领域码经服务映射 |
+| project_reasons | g、project_id、已授权审计页 | 当前响应副本的保守理由投影 | 每页≤100pairs一次批读；不改旧审计/排序/总数 |
+| RowsGateway | 白名单表/列、typed keys、谓词/锁 | 物化行、count或CAS结果 | 参数化，失败Session不可复用 |
+| UoW | 显式连接工厂与上下文 | 活动gateway及提交/回滚边界 | 关闭必须确定；业务层不越过它commit |
+| check_schema和migrate | 受控engine及明确expected_database | 结构缺陷或迁移报告 | 错库/目录不符/partial拒绝，不自动修改未知库 |
+| 通知批写 | 已锁outbox及冻结收件人快照 | 去重后的站内通知 | 单事务批插，缺收件人等失败全部回滚，不清已读处理字段 |
+| scanner/facade | cutoff、run游标、规则和scoped主体 | 可靠升级Call及持久推进 | 结果确定后推进；不能将202等同已送达 |
+
+### 4.1 分页批量关系读取
+
+九集合由_COLLECTIONS声明表和DTO。listProjects先按当前主体有效成员范围限定项目；Member只取active成员；子任务集合先调用call.task核对父任务归属。过滤字段只取明确白名单，其他输入不会被展开成任意where。
+
+page先按原sort/id、offset和limit读取本页rows，再调用prepare(rows)。Member收集该页唯一user_id批读users，Dependency收集depends_on_task_id批读tasks，然后以ID映射构建serializer。空页不新增关联查询；其他DTO继续原serializer。row_model派生Member.roles/active、Dependency.satisfied、任务与迭代plan及AuditEvent前后值，与冻结形状一致。开发夹具中20成员页SELECT22→3、23依赖页23→4，仅证明该夹具的查询次数，不能当真实MySQL或正式性能提升。
+
+### 4.2 契约校验器复用
+
+缓存项保存id(schema)到原schema强引用与原validator，并再次用is判断身份，只对冻结SPEC中预先锁定对象复用。保留强引用避免对象回收后id复用命中错误schema。冻结对象错误迭代在前100项停止；动态schema仍沿原validator构造和完整错误迭代再切片，保留任意根/嵌套$id及迟发引用异常，不使用已否决的evolve方案。候选schema_version与成功meta.contract_version不同，不因缓存统一改值。
+
+188项新差分及原305项SQLiteHTTP/顺序/领域自测通过；集合N+1、错误上限和身份问题的原红证据保持。本机ABBA仅为开发CPU观察，Task1.080x、body1.243x、envelope1.041x及极端无效EvidenceRefs样本不能外推云上吞吐、400并发或正式P95。
+
+### 4.3 评估和历史理由
+
+发布先核任务及评估归属、请求版本等更早条件。原批准引用不匹配且评估基线同时失效时，D008先提示更新评估；批准引用匹配时原领域守卫顺序不变。代码评审、评估独立审核及经理决定均保留，不允许自审。
+
+新计划修改和返工reason在原CAS、schedule_changes、审计、outbox及幂等主事务写入。旧审计只在同页、同项目、task/to_version唯一配对且actor、微秒时间、完整五项Plan、证据严格一致时投影响应副本；旧iteration或歧义不猜。bool与整数不同，数组顺序和原文保留。
+
+![历史理由保守投影](../../docs/reports/diagrams/m6-reason-projection.png)
+
+## 5 消息与扫描算法
+
+![扫描消息和降级时序](../../docs/diagrams/design-report-04-notifications.png)
+
+扫描run在开始固定cutoff和高水位，以keyset和持久last_task_id续扫。单任务短事务内按规则/计划版本/级别去重，生成升级及收件人快照；已交付不再作为当前超期任务。失败保留可恢复游标，重启不得跳过未确定结果。若本次遍历N任务、每页B条，遍历本身为O(N)，页面内存O(B)；具体SQL成本还受谓词、索引和锁影响，不能据渐进式直接保证P95。
+
+outbox先短事务claim，再在事务外publish。消费者验证三字段消息与数据库权威事件，锁outbox、插入通知、提交后ACK。fallback和consumer都先锁同一outbox再按收件人顺序写，唯一键(event_id,recipient_id)防重复，原通知read/handled不覆盖。批量INSERT保留去重、顺序和回滚边界；一次executemany观察不等正式吞吐证明。publisher ACK仅表示broker确认，不能替代消费者持久化或用户处理。
+
+## 6 前端交互与会话
+
+导航包括工作台、项目空间、交付任务、迭代排期、评审与发布、通知中心、审计记录。任务抽屉展示详情、依赖、评审、评估、决定、升级和变更记录；表单依冻结Schema构造意图，错误说明按HTTP/code/operation映射，不从局部分页猜负责人。0、null及空串语义分开。
+
+App在无用户时卸载整个shell与浮层。clearSession先增加上下文序号再清身份、项目、字典和通知；request在fetch及JSON解析后的成功/失败路径重验token，旧响应转为SESSION_CHANGED。工作区、表单、登录和抽屉同时检查active、卸载及当前token，防旧catch触发新会话刷新。当前401清空，当前403/409继续原恢复流程；退出503或网络失败保留当前身份。
+
+![会话卸载和迟到响应边界](../../docs/reports/diagrams/m6-session-lifecycle.png)
+
+最终前端只合并七组相同CSS声明。254组selector/media声明序列一致，十二组开发夹具PNG字节相同；五宽度六十状态无页面错误/横溢出。完整computed-style探针严格比较失败且保留，不能以PNG相同宣称其也通过。组件89项/typecheck/build与真实后端E2E、独立浏览器验收分别记录。
+
+## 7 部署备份与恢复
+
+运行镜像须绑定准确产品Git字节、锁文件及完整运行时文件集；镜像构建成功不等已加载或部署。20261029免费双镜像Actions40869531724已成功，官方artifact仍在责任岗核验阶段。当前设计使用非root镜像与独立source-aware包装，沿准确锁/文件集计算，不复用旧镜像身份。
+
+备份先停所有应用数据卷使用者，再将APP配置和数据流式CMS公钥加密，私钥只在本地受控目录。完整下载并解密SHA一致后才给总协调永久释放依据，隔离恢复需要单独实证；本次尚未实际备份或恢复。费用、VM最终删除和资源核对归总协调，不由报告推定已完成。
+
+## 8 设计验证和变更记录
+
+| 设计部分 | 开发证据和检验目的 | 尚未由此证明 |
+| --- | --- | --- |
+| schema及分页 | 新188差分、原305 HTTP/领域、N+1红绿 | 全量native、真实MySQL性能、独立验收 |
+| CHECK和通知批写 | DB239含18新owner、196表达式/38416等价关系、批写回滚 | 当前MySQL目录实际形式与云负载结果 |
+| UI及样式 | 89组件、typecheck/build、60状态/12PNG相同 | 云业务E2E、完整computed-style通过 |
+| 事务/MQ/扫描 | 原模块和真实依赖证据，准确源统一CI另核 | 全故障切点、真实人日、正式P95 |
+| 运行镜像和备份 | 本地5项真实Git/加密流验证及镜像构建 | 云已部署、APP已备份、删除后恢复 |
+
+本表反向关联需求FR01至08，完整对应见[双向追踪](../../docs/reports/FINAL-20261029-traceability.json)与[测试报告](test-results-report.md)。当前源码及冻结hash由本岗静态核对，不把静态检查、AI审核COMMENT或Word版式QA记为产品通过。
+
+历史M6/M7设计、当时33/35页及M8至M10附录均以原Git和manifest保留；本版以当前结构重写，不覆盖私密旧Word。需求变更由人选择，AI负责当前设计实现和复核；范围、性能及学生研究材料缺口仍列当前提交导航。

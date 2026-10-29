@@ -1,0 +1,181 @@
+{
+  "source": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "forward": [
+    {
+      "requirement": "FR01",
+      "modules": [
+        "API/contracts",
+        "Runtime",
+        "Business.dispatch"
+      ],
+      "developer_evidence": [
+        "backend188new",
+        "backend305original",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR02",
+      "modules": [
+        "Rows/UoW",
+        "migrations",
+        "schema/engine"
+      ],
+      "developer_evidence": [
+        "DB239includes18new",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR03",
+      "modules": [
+        "Reviews",
+        "templates"
+      ],
+      "developer_evidence": [
+        "HTTP/domain",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR04",
+      "modules": [
+        "Projects/Tasks",
+        "page.prepare/row_model",
+        "history"
+      ],
+      "developer_evidence": [
+        "capacity/dependency",
+        "N+1/collection differential",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR05",
+      "modules": [
+        "Workflow",
+        "D008"
+      ],
+      "developer_evidence": [
+        "error precedence/HTTP",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR06",
+      "modules": [
+        "domain.decide",
+        "Runtime/CAS/idempotency"
+      ],
+      "developer_evidence": [
+        "domain/HTTP",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR07",
+      "modules": [
+        "scanner",
+        "outbox/worker",
+        "notifications"
+      ],
+      "developer_evidence": [
+        "scan/MQ",
+        "DB batch rollback",
+        "fullCI796"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    },
+    {
+      "requirement": "FR08",
+      "modules": [
+        "CI/reviewer",
+        "deployment",
+        "frontend"
+      ],
+      "developer_evidence": [
+        "FE89",
+        "local static",
+        "image build",
+        "source count fail"
+      ],
+      "independent_current": "pending explicit root publication; developer evidence does not establish acceptance"
+    }
+  ],
+  "reverse": {
+    "API/contracts": [
+      "FR01"
+    ],
+    "Runtime": [
+      "FR01"
+    ],
+    "Business.dispatch": [
+      "FR01"
+    ],
+    "Rows/UoW": [
+      "FR02"
+    ],
+    "migrations": [
+      "FR02"
+    ],
+    "schema/engine": [
+      "FR02"
+    ],
+    "Reviews": [
+      "FR03"
+    ],
+    "templates": [
+      "FR03"
+    ],
+    "Projects/Tasks": [
+      "FR04"
+    ],
+    "page.prepare/row_model": [
+      "FR04"
+    ],
+    "history": [
+      "FR04"
+    ],
+    "Workflow": [
+      "FR05"
+    ],
+    "D008": [
+      "FR05"
+    ],
+    "domain.decide": [
+      "FR06"
+    ],
+    "Runtime/CAS/idempotency": [
+      "FR06"
+    ],
+    "scanner": [
+      "FR07"
+    ],
+    "outbox/worker": [
+      "FR07"
+    ],
+    "notifications": [
+      "FR07"
+    ],
+    "CI/reviewer": [
+      "FR08"
+    ],
+    "deployment": [
+      "FR08"
+    ],
+    "frontend": [
+      "FR08"
+    ]
+  },
+  "requirements_report": "reports/final/requirements-report.md",
+  "design_report": "reports/final/design-report.md",
+  "test_report": "reports/final/test-results-report.md",
+  "test_counts_overlap_not_additive": true,
+  "current_fullCI_counts": "root explicitly published796/89; artifact receipt commit pending integration into this branch"
+}
