@@ -111,7 +111,7 @@ def assemble(
         "window": {
             "start_utc": plan["window"]["start_utc"],
             "end_utc": plan["window"]["end_utc"],
-            "cost_stop_utc": plan["window"]["stop_utc"],
+            "cost_stop_utc": plan["lifecycle"]["cost_stop_utc"],
         },
         "environment": {
             "origin": plan["target"]["origin"],

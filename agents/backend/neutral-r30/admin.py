@@ -17,18 +17,23 @@ from http_primitives import save, stamp
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("seed", "counts", "service"))
-    for key in ("plan", "intent", "budget-proof", "output", "import-receipt"):
+    for key in ("plan", "intent", "budget-proof", "output", "import-receipt", "binding"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--root-budget-admitted", action="store_true")
     args = parser.parse_args()
     need(args.root_budget_admitted, "ROOT_MUST_HOLD_NEW_BUDGET_ADMISSION_LOCK")
     plan, intent, now = read_json(args.plan), read_json(args.intent), datetime.now(UTC)
+    need(str(args.binding) == plan["gen_binding"]["path"], "SAME_MOUNTED_BINDING_PATH_REQUIRED")
     check_plan(plan, now, require_fixture_ready=False)
     validate_loaded_receipt(plan, args.import_receipt.read_bytes())
     need(
         hashlib.sha256(args.budget_proof.read_bytes()).hexdigest()
         == plan["budget"]["actual_admission_receipt_sha256"],
         "ACTUAL_NEW_BUDGET_PROOF_REQUIRED",
+    )
+    need(
+        read_json(args.budget_proof)["kind"] == "actual-owned-mysql-budget-v4",
+        "ORIGINAL_GEN_PROBE_SCHEMA_REQUIRED_NOT_LIVE_READMISSION",
     )
     need(not args.output.exists(), "EXCLUSIVE_NEW_ADMIN_OUTPUT_REQUIRED")
     from t44.persistence import SqlAlchemyUnitOfWorkFactory, create_mysql_engine
@@ -63,7 +68,8 @@ def main():
         need(
             intent["database"] == target["database"]
             and intent["namespace"] == plan["namespace"]
-            and intent["run_id"] == plan["run_id"],
+            and intent["run_id"] == plan["run_id"]
+            and intent["binding_sha256"] == target["binding_sha256"],
             "EXACT_READONLY_SCOPE_REQUIRED",
         )
         with factory() as uow:

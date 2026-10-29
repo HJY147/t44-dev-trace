@@ -1,0 +1,68 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--config",
+        "backend/pyproject.toml",
+        "--check",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "13 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "7374b3637b06465d448fc2e81952ba18fc676315",
+        "--",
+        "backend/t44",
+        "backend/pyproject.toml",
+        "backend/requirements.lock",
+        "frontend",
+        "specs/contracts",
+        "specs/database",
+        "tmp/backend"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "local_unique_tests": 36,
+  "passed": 36,
+  "seconds": 1.83,
+  "code_manifest_sha256": "7c9d08a6b1b521dfb2046c8354686e367354d81f69c0813eb3ccfad42cfe841d"
+}

@@ -134,9 +134,21 @@
   "budget": {
     "helper_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
     "actual_admission_receipt_sha256": null,
-    "must_hold_new_strict_kind_admission_and_operation_lock": true
+    "must_hold_new_strict_kind_admission_and_operation_lock": true,
+    "probe_receipt_kind": "actual-owned-mysql-budget-v4",
+    "legacy_sha_field_meaning": "actual_admission_receipt_sha256 binds original GEN probe raw bytes; live readmission is separate wrapper admission.PUBLIC.json"
   },
   "role_count_note": "APP idle6; scheduler actual token plus scheduler-start => APP7; LOAD separate; one-off operation containers separate",
   "session_expiry_reserve_seconds": 30,
-  "service_name": null
+  "service_name": null,
+  "gen_binding": {
+    "path": null,
+    "sha256": null,
+    "original_host_path": null
+  },
+  "lifecycle": {
+    "t0_utc": null,
+    "cost_stop_utc": null,
+    "packet_cutoff_utc": null
+  }
 }

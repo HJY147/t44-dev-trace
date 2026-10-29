@@ -3689,16 +3689,16 @@
     "prompt_ref": "ROLE-backend-NEUTRAL-R30-v1",
     "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
     "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
-    "status": "LOCAL_EXECUTION_SEAMS_CHECKED_NOT_SUT_READY_PENDING_ROOT_REVIEW",
+    "status": "GEN_BOUND_LOCAL_SEAMS_CHECKED_PENDING_ROOT_WRAPPER_REVIEW_AND_ACTUAL_FIELDS",
     "records": "agents/backend/neutral-r30",
     "source_context_records": 62,
     "expected_actual_runtime_files": 60,
     "actual_APP_import_verified": false,
     "cloud_SUT_or_real_sessions_executed": false,
     "original_tests_or_product_changed": false,
-    "local_unique_checks": 27,
-    "local_passed": 27,
-    "local_seconds": 1.66,
+    "local_unique_checks": 36,
+    "local_passed": 36,
+    "local_seconds": 1.83,
     "source_stage": "ffae5d84",
     "target_red_stage": "2402792b",
     "target_red": {
@@ -3721,6 +3721,16 @@
     "public_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6492148126",
     "previous_reviewed_execution_stage": "3c1967b34c2f724682b47920145497e4df4abcdc",
     "extra_stale_service_red_green": true,
-    "initial_branch_push_exit_code": 0
+    "initial_branch_push_exit_code": 0,
+    "gen_schema_fixture_sha256": "e52132b83ef2e9ecf77a1bc2fe9b68d196761d02943e5570cf6ac7efe8b15622",
+    "gen_binding_run_key_exists": false,
+    "gen_run_mapping": "project=t44-cloud-RUN-PHASE database=t44c_RUN_PHASE; parse RUN r30[a-z0-9]{5,12}",
+    "G35_C40_separate": true,
+    "packet_cutoff": "start minus150 seconds; no retime",
+    "original_probe_kind": "actual-owned-mysql-budget-v4",
+    "legacy_plan_budget_SHA_means": "original GEN probe raw SHA; not live readmission",
+    "formal_budget_entry": "root-reviewed wrapper holds actual9e operation_lock/admitted across whole fixed Docker admin; directadmin is not authorization",
+    "code_manifest_sha256": "7c9d08a6b1b521dfb2046c8354686e367354d81f69c0813eb3ccfad42cfe841d",
+    "last_unsafe_stage_not_for_actual_admission": "b36abcd1f184dea8cadfd0534e289ca017cd032e"
   }
 }
