@@ -1,3 +1,13 @@
+# 数据库模块：R29B本地查询注册候选，实减4，仍超783
+
+2026-10-29；数据库AI，ROLE-database-DRY-R29B-20261029-v1。基准确a92e5e73，设计4e317333，产品/测试8f29030756139061341e0a636c8774ca790964bd，独立分支codex/database-dry-r29b已push。仅migrations._catalog_defects四项注册改成有序标签映射；所有SQL、预期/比较、CHECK/DDLhash/版本/锁、seed/Rows/scan/事务与原断言不变。
+
+原固定cloc应用5887→5883/65文件，净减4，migrations374→370、persistence1661→1657。strict范围exit1，仍超783；没有百行或≥798安全去重方案，不称规模达标。完整AST仅规范化注册和循环解包后逐节点同；原文件/规格/计数器边界差异零。
+
+新6精确父源差分与原本地persistence/812/消息980/扫描990+974最终联合133通过、43未选、3原警告52.26秒，含6000任务seed exact摘要和V2全量性质；先行56重叠不累加。限定Ruff/format/Bandit绿，初format失败、TLS push失败和探索/runner记录真实保留。没有nativeMySQL/完整CI/coverage/HTTP/独立/云或性能执行；待root review/取舍，不代合并。
+
+完整[本轮报告](../../agents/database/dry-r29b/report.md)、verification/commands/原日志/JUnit/边界/计数在agents/database/dry-r29b/。[Issue4真实交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6489314712)已单ID GET逐字一致。以下历史不改。
+
 # 数据库模块：R29 固定DDL适配局部候选，实减11，规模仍未达标
 
 2026-10-29，数据库AI，ROLE-database-SCALE-R29-20261029-v1。独立分支 codex/database-scale-r29，从精确 f5e0d95e 派生，产品274e2e6b。只改 schema.py 的三份列表汇合与校验和保护下的固定声明分段；DDL/hash、迁移、Rows、锁、事务、鉴权重验、审计及seed规模与原测试均不改。
