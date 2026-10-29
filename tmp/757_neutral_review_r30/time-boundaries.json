@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "guard": "local derive >=1800s",
+      "T0_offset": 300,
+      "accepted": true
+    },
+    {
+      "guard": "local derive >=1800s",
+      "T0_offset": 301,
+      "accepted": false
+    },
+    {
+      "guard": "GEN prepare/operate >=600s",
+      "T0_offset": 600,
+      "accepted": true
+    },
+    {
+      "guard": "GEN prepare/operate >=600s",
+      "T0_offset": 900,
+      "accepted": true
+    },
+    {
+      "guard": "GEN prepare/operate >=600s",
+      "T0_offset": 1500,
+      "accepted": true
+    },
+    {
+      "guard": "GEN prepare/operate >=600s",
+      "T0_offset": 1501,
+      "accepted": false
+    }
+  ],
+  "fixed_example": {
+    "packet": 1050,
+    "transfer_prepare": 120,
+    "authorization_dispatch": 30,
+    "start": 1200,
+    "duration": 780,
+    "end": 1980,
+    "GEN_stop": 2100,
+    "cost_stop": 2400
+  },
+  "actual_start_allowed": "S <= execute < S+20s",
+  "packet_creation_and_windows_are_never_retimed": true,
+  "not_a_generation_or_grant": true,
+  "service_or_Docker_or_HTTP_or_session_calls": 0
+}
