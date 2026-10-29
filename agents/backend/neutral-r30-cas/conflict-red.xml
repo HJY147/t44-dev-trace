@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.285" timestamp="2026-10-29T18:32:11.424665+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="tmp.756_backend_neutral_cas_r30.756_conflict" name="test_actual_error_parser_preserves_status_top_level_envelope_and_evidence" time="0.004"><failure message="AssertionError: assert None == 409&#10; +  where None = getattr(ValueError('REAL_HTTP_PREPARATION_REJECTED'), 'status', None)&#10; +    where ValueError('REAL_HTTP_PREPARATION_REJECTED') = &lt;ExceptionInfo ValueError('REAL_HTTP_PREPARATION_REJECTED') tblen=3&gt;.value">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-151/test_actual_error_parser_prese0')
+
+    def test_actual_error_parser_preserves_status_top_level_envelope_and_evidence(tmp_path):
+        with pytest.raises(ValueError) as caught:
+            reject_request(tmp_path)
+&gt;       assert getattr(caught.value, 'status', None) == 409
+E       AssertionError: assert None == 409
+E        +  where None = getattr(ValueError('REAL_HTTP_PREPARATION_REJECTED'), 'status', None)
+E        +    where ValueError('REAL_HTTP_PREPARATION_REJECTED') = &lt;ExceptionInfo ValueError('REAL_HTTP_PREPARATION_REJECTED') tblen=3&gt;.value
+
+tmp/756_backend_neutral_cas_r30/756_conflict.py:58: AssertionError</failure></testcase><testcase classname="tmp.756_backend_neutral_cas_r30.756_conflict" name="test_full_400_flow_adopts_six_real_readback_events_without_post_retry" time="0.209"><failure message="ValueError: REAL_HTTP_PREPARATION_REJECTED">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-151/test_full_400_flow_adopts_six_0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x102392a80&gt;
+
+    def test_full_400_flow_adopts_six_real_readback_events_without_post_retry(tmp_path, monkeypatch):
+        original_prepare = prepare.prepare
+        races = []
+    
+        def run(*args, client_type, **kwargs):
+            class SchedulerClient(client_type):
+                def request(self, path, token=None, body=None, method=None):
+                    if path.startswith('/internal/projects/') and int(path.split('/')[3]) in range(16, 22) and int(path.split('/')[5]) not in races:
+                        # The synthetic scheduler wins the CAS before this request. Its original
+                        # persisted event remains in the fake store and must be read back intact.
+                        raced = dict(body, scan_run_id='44444444-4444-4444-8444-444444444444')
+                        super().request(path, token, raced, method)
+                        races.append(int(path.split('/')[5]))
+                        reject_request(args[4] / 'requests', path=path)
+                    return super().request(path, token, body, method)
+            return original_prepare(*args, client_type=SchedulerClient, **kwargs)
+    
+        monkeypatch.setattr(prepare, 'prepare', run)
+&gt;       regression.test_complete_40_project_400_api_preparation_fake_only(tmp_path, monkeypatch)
+
+tmp/756_backend_neutral_cas_r30/756_conflict.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tmp/756_backend_neutral_cas_r30/756_regression.py:678: in test_complete_40_project_400_api_preparation_fake_only
+    result = prepare_http.prepare(
+tmp/756_backend_neutral_cas_r30/756_conflict.py:83: in run
+    return original_prepare(*args, client_type=SchedulerClient, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-r30-cas/prepare_http.py:245: in prepare
+    results = list(pool.map(project_setup, ids))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:619: in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:317: in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-r30-cas/prepare_http.py:202: in project_setup
+    event = api.request(
+tmp/756_backend_neutral_cas_r30/756_conflict.py:81: in request
+    reject_request(args[4] / 'requests', path=path)
+tmp/756_backend_neutral_cas_r30/756_conflict.py:52: in reject_request
+    return client.request(path, 'synthetic-only', {'expected_version': 1})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;http_primitives.Client object at 0x10241ad50&gt;
+path = '/internal/projects/16/tasks/32/escalations', token = 'synthetic-only'
+body = {'expected_version': 1}, method = 'POST'
+
+    def request(self, path, token=None, body=None, method=None):
+        left = self.deadline - time.monotonic()
+        if left &lt;= 0:
+            raise TimeoutError("NEUTRAL_PREPARATION_DEADLINE")
+        self.number += 1
+        identifier = f"{uuid.uuid4()}"
+        method = method or ("POST" if body is not None else "GET")
+        headers = {"Accept": "application/json", "X-Request-ID": identifier}
+        if token:
+            headers["Authorization"] = "Bearer " + token
+        payload = None if body is None else json.dumps(body, separators=(",", ":")).encode()
+        if payload is not None:
+            headers["Content-Type"] = "application/json"
+            headers["Idempotency-Key"] = identifier
+        # Credentials are never copied into command lines, public logs or request evidence.
+        record = {
+            "request_id": identifier,
+            "path": path,
+            "method": method,
+            "started_at": stamp(dt.datetime.now(UTC)),
+        }
+        try:
+            if self.connection is None:
+                self.connection = http.client.HTTPSConnection(
+                    self.target.hostname,
+                    self.target.port or 443,
+                    timeout=min(20, left),
+                    context=ssl.create_default_context(cafile=str(self.ca)),
+                )
+            self.connection.timeout = min(20, left)
+            self.connection.request(method, "/api/v1" + path, body=payload, headers=headers)
+            response = self.connection.getresponse()
+            raw = response.read(1024 * 1024 + 1)
+            if len(raw) &gt; 1024 * 1024:
+                raise ValueError("RESPONSE_SIZE_CAP")
+            record.update(
+                status=response.status,
+                response_bytes=len(raw),
+                response_sha256=hashlib.sha256(raw).hexdigest(),
+            )
+            result = json.loads(raw)
+            self.last_meta = result.get("meta")
+            # Full successful non-login data stays private, preserving 0/null.
+            if path != "/auth/login":
+                record["response"] = result
+            else:
+                raw_path = self.output / (identifier + ".login-response.private.bin")
+                descriptor = os.open(raw_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+                with os.fdopen(descriptor, "wb") as stream:
+                    stream.write(raw)
+                record["raw_login_response_file"] = str(raw_path)
+                record["response_meta"] = self.last_meta
+            if response.status not in (200, 201, 202) or "data" not in result:
+&gt;               raise ValueError("REAL_HTTP_PREPARATION_REJECTED")
+E               ValueError: REAL_HTTP_PREPARATION_REJECTED
+
+agents/backend/neutral-r30-cas/http_primitives.py:109: ValueError</failure></testcase></testsuite></testsuites>
