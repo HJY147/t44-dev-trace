@@ -307,10 +307,10 @@ class AdminWrapper(unittest.TestCase):
         args = self.setup_phase()
         actual = args.output_dir.parent / "actual-final-producer"
         actual.mkdir(mode=0o700)
-        commit = "0a34a81e9fb59abf6c500f5acbe284c053d1f903"
+        commit = "3be27131398a049f1a509918e5308f1bda7c8cec"
         prefix = "agents/backend/neutral-r30/"
         manifest = subprocess.check_output(["git", "-C", str(ROOT), "show", commit + ":" + prefix + "code-manifest.PUBLIC.json"])
-        self.assertEqual(W.digest(manifest), "7c9d08a6b1b521dfb2046c8354686e367354d81f69c0813eb3ccfad42cfe841d")
+        self.assertEqual(W.digest(manifest), "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606")
         declared = json.loads(manifest)
         for name, expected in declared["files"].items():
             content = subprocess.check_output(["git", "-C", str(ROOT), "show", commit + ":" + prefix + name])
