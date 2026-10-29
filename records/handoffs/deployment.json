@@ -2937,6 +2937,37 @@
       "source_artifact_rebuilt": false,
       "Docker_HTTP_core_private_cloud_SUT_executed": false,
       "prompt_ref": "ROLE-deployment-R30-NEUTRAL-RECEIPT-03-v1"
+    },
+    "neutral_admin_wrapper": {
+      "status": "local fake-environment complete; root exact-code review/producer owner gate required; no cloud",
+      "code_commits": [
+        "749e8e877d0257f8cbe9ac4a789bb39e573d4a0c",
+        "8c73486440720506357ffa90efdb5b59cdd91028"
+      ],
+      "wrapper_path": "deployment/cloud-reuse/r30-neutral-admin.py",
+      "wrapper_bytes": 19840,
+      "wrapper_sha256": "8e9d024b7aa38692a633b620a23a27380d155ed7a8725f45c9ee25dac0fe4d9a",
+      "budget_sha256_unchanged": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+      "modes": [
+        "init-accounts",
+        "seed",
+        "counts",
+        "service"
+      ],
+      "operation_lock": "real9e; runtime env guard+actual admit+all child process lifetime/owned exit; no child flock protocol",
+      "original_probe_role": "kind actual-owned-mysql-budget-v4 passed unchanged; live readmission result separately recorded",
+      "actual_producer_smoke": {
+        "commit": "0a34a81e9fb59abf6c500f5acbe284c053d1f903",
+        "manifest_sha256": "7c9d08a6b1b521dfb2046c8354686e367354d81f69c0813eb3ccfad42cfe841d",
+        "files": 17,
+        "scope": "real staging and fixed argv with explicit external seams; not producer execution"
+      },
+      "tests": "10 local fake-env cases passed; first test-seam and Ruff failures retained",
+      "runbook": "agents/deployment/preparation-r30/NEUTRAL-ADMIN-RUNBOOK.md",
+      "installer": "agents/deployment/preparation-r30/install-neutral-admin.PUBLIC.txt",
+      "installer_whole_base64_plus256": 12232,
+      "prompt_ref": "ROLE-deployment-R30-NEUTRAL-ADMIN-v1",
+      "cloud_Docker_SQL_HTTP_or_SUT_executed": false
     }
   }
 }

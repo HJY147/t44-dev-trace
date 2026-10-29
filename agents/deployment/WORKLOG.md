@@ -785,3 +785,10 @@ root转审核发现后独立实复现：a605 R30 generation与旧305f预算kind�
 ## 2026-10-29 P1 R30-NEUTRAL-RECEIPT-03
 
 root单向转发公开接口缺陷：2ca import receipt固定string被PUBLIC adapter694fc3纯validate拒。tmp759先真实provider函数（仅环境/Docker/backend为明确seam）→原save/JSON→公开validate，首次5项2FAIL/1ERROR准确拒shape，原红保留。只改3行捕获真实observed、package_resolution原样写observed、count=len(observed.files)；source/bundle/identity/kind-v1和预算9e不变。同5项首次绿，含原bytes直传正例、完整60行结构相等、重绑hash的旧string拒绝、receipt bytes篡改拒绝、backend失败不出receipt；5预算回归+1derive全pin链回归绿、Ruff首绿。仅SYNTHETIC数据/临时CA，不执行Docker/HTTP/core/private/云/SUT；旧候选保留。当前接口页已改为原import receipt直接含全60行raw证明，不再补第二次探针。新adapter SHA7efee30a2e3ef9552c9e2a5b321cebe4ddbd3eb3d8e652484017fd45e5f8d70f；实际窗口须root复审后另派生GEN/resource链。实际prompt在PROMPT-RECEIPT03.md。
+
+
+## 2026-10-29 固定neutral-admin运行接缝
+
+root明确唯一正式入口薄wrapper，不改GEN/产品/artifact/预算逻辑。代码749e8e87→实际manifest适配8c734864，最终wrapper19840B/SHA8e9d024b7aa38692a633b620a23a27380d155ed7a8725f45c9ee25dac0fe4d9a。按root准确profile/GEN/adapter7ef/预算9e pin，原binding raw/SHA解析r30window01/project/db/stop，持真实operation_lock内新actual admit并覆盖完整固定credential-admin子进程/owned退出处理；原probe与本次readmit分开落证，不改plan/intents原件。code全bytes/hash后RO，新私密inputs/outputs，3admin模式argv/root目录映射逐字固定；后加init-accounts正常官方CLI串3synthetic人，stdin秘密，真实CLI parser/main AST JSON形状配外部seams核，实际user_id仅新私密文件，已有同名失败保prefix不重置/不继续后续角色。
+
+10项fake-env最终绿（含真实9e flock/admit逻辑、真实替身子进程期间host观察锁、actualCLI JSON正负、旧source/错namespace/code/预算拒、原input不改，actual producer0a34 manifest7c9d与17原blob真实staging和固定argv），无Docker/SQL/HTTP/云/SUT。首测试缺t44.persistence.accounts seam的1FAIL/1ERROR与首Ruff unused-time保留后修正，不掩饰首次失败。新单条公共安装8980B，整base64+256=12232<18000，只hash/O_EXCL安装，不执行。ROOT须预填plan.gen_binding.path=/neutral-input/binding.json；host原binding/import/probe路径另在PUBLIC readmit回执保存。发现producer对transport_proofs原键差异仅报root，owner另修；不因此改变原GEN/binding。最终命令/输入schema/四模式host结果路径见NEUTRAL-ADMIN-RUNBOOK，实际prompt见PROMPT-NEUTRAL-ADMIN；root先拿代码SHA复审，不等行政留痕。
