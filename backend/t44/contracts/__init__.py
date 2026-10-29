@@ -40,7 +40,8 @@ _COMPILED = {}
 
 
 def violations(schema, value):
-    prepared = _COMPILED.get(id(schema))
+    entry = _COMPILED.get(id(schema))
+    prepared = entry[1] if entry is not None and entry[0] is schema else None
     errors = (prepared if prepared is not None else validator(schema)).iter_errors(value)
     bounded = islice(errors, 100) if prepared is not None else list(errors)[:100]
     return [
@@ -91,4 +92,4 @@ for schema in (
         for response in operation["responses"].values()
     ),
 ):
-    _COMPILED[id(schema)] = validator(schema)
+    _COMPILED[id(schema)] = (schema, validator(schema))
