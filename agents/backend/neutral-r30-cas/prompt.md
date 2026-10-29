@@ -5,3 +5,5 @@ root原文：新的实际开发准备缺陷（非QA私例/不操作云）：原r
 root补充原文：两明确PUBLIC导出实际目录：/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/resume-20261029/r30-APP-closure.original.PUBLIC.txt；同目录/r30-APP-original-409-envelope-fields.PUBLIC.txt。只这两件可读。方案同意严格判定、不重试POST、不停正常组件，future副本保原17很好。请以原schema/rule选择函数验证正常current task+events，不能靠猜level3硬塞，也不能从API409 current_version直接拼Task。正常GET可变化要验证快照排期一致，失败保prefix。保持源source0b既定SUT/API契约，不变计数口径。
 
 工作边界：新future producer副本neutral-r30-cas；原neutral-r30十七文件/66ab manifest、运输686均不改。新tmp756。原40自测复制至新目录，仅CODE路径改future、旧不完整Fake规则响应改完整冻结GET快照；AST确认全部原assert原样。新真实HTTP错误解析与完整400任务/60调度抢先合成案例先2红0绿，0.29s；实际远端仅六409，不把60合成竞争当真实云事实。首轮检索误用不存在coord .runtime及不存在services/escalations.py，退出2保留于命令记录；后按root精确两PUBLIC路径与真实scheduling/facade.py读取，无其他私有源。
+
+实施结果：新副本只改两个旧runtime文件，新增官方schema/rule只读核对helper；不改变产品/旧producer/旧运输。原40复制测试全部assert AST原样，38新增/参数化检查含完整400流程60个合成竞争，最终78项4.23s绿。新测试首次一个state mutation无效（2→2）导致77绿1红，保原log/XML，仅修数据为不同合法state、不改断言；lint错误保留。验证runner初未设main guard，在原全模块import自测中启动嵌套本地pytest，主动Ctrl-C exit130并确认无遗留进程后修main guard，最终一次78绿与静态/历史零diff全部exit0。未隐去失败，未启动云/服务/签session，也未读取QA PRIVATE。

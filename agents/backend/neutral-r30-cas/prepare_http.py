@@ -5,10 +5,10 @@ import concurrent.futures
 import hashlib
 import os
 import time
-import uuid
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
+from escalation_readback import create_or_read_existing
 from guard import check_intent, check_plan, need, read_json, timestamp, validate_loaded_receipt
 from http_primitives import Client, all_pages, choose_escalations, save, stamp
 
@@ -145,6 +145,9 @@ def prepare(
     save(output / "sessions.json", sessions)
     save(output / "session-attestations.json", issued)
 
+    event_readbacks = output / "event-readbacks"
+    event_readbacks.mkdir(mode=0o700)
+
     def project_setup(pid):
         api = client_type(origin, ca, records, deadline)
         manager, developer = sessions["manager"]["token"], sessions["developer"]["token"]
@@ -199,27 +202,18 @@ def prepare(
                     {"expected_version": created["version"], "action": 1},
                 )["task"]
                 intent("createEscalation", [pid])
-                event = api.request(
-                    f"/internal/projects/{pid}/tasks/{escalation['id']}/escalations",
-                    sessions["service"]["token"],
-                    {
-                        "expected_version": escalation["version"],
-                        "schedule_version": escalation["schedule_version"],
-                        "rule_version": rules["version"],
-                        "scan_run_id": str(uuid.uuid4()),
-                    },
-                )["event"]
-                actual_task = api.request(f"/projects/{pid}/tasks/{task['id']}", developer)
-                actual_escalation = api.request(
-                    f"/projects/{pid}/tasks/{escalation['id']}", manager
-                )
-                existing = all_pages(
+                actual_escalation, actual_event = create_or_read_existing(
                     api,
-                    f"/projects/{pid}/escalations?task_id={escalation['id']}&level={event['level']}",
+                    pid,
+                    escalation,
+                    rules,
                     manager,
+                    sessions["service"]["token"],
+                    plan["window"],
+                    clock,
+                    event_readbacks,
                 )
-                actual_event = next((row for row in existing if row["id"] == event["id"]), None)
-                need(actual_event is not None, "ACTUAL_EXISTING_EVENT_READBACK_REQUIRED")
+                actual_task = api.request(f"/projects/{pid}/tasks/{task['id']}", developer)
                 edges = all_pages(api, f"/projects/{pid}/tasks/{task['id']}/dependencies", manager)
                 need(not edges, "NEW_TASK_ACTUAL_DEPENDENCY_READBACK_REQUIRED")
                 dependencies[str(task["id"])] = {
