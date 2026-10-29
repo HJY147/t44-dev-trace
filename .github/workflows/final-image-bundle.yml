@@ -1,5 +1,8 @@
 name: final-image-bundle
 on:
+  push:
+    branches: [codex/deployment-final-window]
+    paths: [.github/workflows/final-build-request.json]
   workflow_dispatch:
     inputs:
       source_sha:
@@ -21,6 +24,9 @@ jobs:
           FINAL_SOURCE: ${{ inputs.source_sha }}
         run: |
           set -euo pipefail
+          if [[ -z "$FINAL_SOURCE" ]]; then
+            FINAL_SOURCE="$(python3 -c 'import json;print(json.load(open(".github/workflows/final-build-request.json"))["source_sha"])')"
+          fi
           [[ "$FINAL_SOURCE" =~ ^[0-9a-f]{40}$ ]]
           timeout 120 git fetch --no-tags --depth=1 origin "$FINAL_SOURCE"
           python3 deployment/cloud-reuse/final-image-bundle.py build \

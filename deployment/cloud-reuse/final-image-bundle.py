@@ -220,6 +220,7 @@ def build(repository, source, output):
         "dependency_lock_sha256": expected_lock, "frontend_lock_sha256": digest(frontend_lock),
         "transport_roles": ["backend", "web"], "runtime_file_count": len(observed["files"]),
         "tool_sha256": sha(Path(__file__)), "generic_helper_sha256": GENERIC_SHA,
+        "tool_git_sha": original_command(["git", "-C", repository, "rev-parse", "HEAD"]).decode().strip(),
         "github_run_id": os.environ.get("GITHUB_RUN_ID"), "root_approved": False,
         "business_HTTP_SQL_cloud_QA_or_sessions_executed": False}
     save(output / "backend-bundle-manifest.json", bundle)
