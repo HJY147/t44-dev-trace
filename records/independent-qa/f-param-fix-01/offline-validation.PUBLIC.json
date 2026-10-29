@@ -1,0 +1,20 @@
+{
+  "schema": "753-fparamfix-offline-validation-v1",
+  "contract_operations": 38,
+  "required_idempotency_header_operations": 18,
+  "calls_captured_without_network": 39,
+  "checks": [
+    "all38_frozen_operations_construct_correct_path_and_body",
+    "required_referenced_idempotency_headers_present",
+    "readonly_and_login_logout_no_automatic_key",
+    "explicit_caller_key_preserved",
+    "all_python_syntax",
+    "original_tool_delivery_manifest_unchanged"
+  ],
+  "functional_sha256": "f877292eaf951ebf7609e23d7e010ce50d2d0cb7218a3f6f1a4dbf035037b453",
+  "core_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "openapi_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+  "oracle_changed": false,
+  "product_changed": false,
+  "SUT_requests": 0
+}
