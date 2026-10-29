@@ -209,3 +209,5 @@
 - 本轮只核Git对象/源字节/SHA/JSON/资料链接与diff；无新测试编号、产品/测试器/CI/云/浏览器/数据库/Word执行，无学生12/3/5新增证明。只阶段commit/push本岗文档，实际回执另补。
 
 - 最终资料核对初次误要求原DB候选274e2e6b为祖先而AssertionError；实际是cherry-pick，核候选/38d11a5e/7b15的schema.py Git blob均f944a6ce89028555e61a3eceb4499fd9517a4aab后改正核对方法。初次失败写入document-checks，不改产品或测试。最终81项资料核对通过、45源Git字节/SHA一致；git ls-remote核根公开分支仍精确6f91960b。
+
+- 仅显式暂存本岗10件文件，cached diff-check通过；实质commit/push 175173f308b4d134d481e7141f742b8ddecd9b05，git ls-remote按分支核远端精确相同，首次push后本树clean。未发表评论/建PR/触发CI。R29-publication.json保存回执；此后仅补本岗发布行政记录，不取新结果或改截止。

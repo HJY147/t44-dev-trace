@@ -109,7 +109,8 @@
     "docs/prompting/R29-process-evidence.md",
     "docs/prompting/R29-source-index.json",
     "docs/prompting/R29-source-notifications.json",
-    "docs/prompting/R29-document-checks.json"
+    "docs/prompting/R29-document-checks.json",
+    "docs/prompting/R29-publication.json"
   ],
   "interfaces": {
     "inputs": [
@@ -204,7 +205,8 @@
       "real prompt/feedback/artifact mapping",
       "unexecuted improvement suggestion",
       "public/private and human/AI attribution boundaries"
-    ]
+    ],
+    "R29_substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -339,6 +341,13 @@
     {
       "stage": "R29",
       "result": "45 fixed-base public sources match Git bytes/SHA; 81 final documentation checks passed after preserved ancestry-check correction; no acceptance result"
+    },
+    {
+      "stage": "R29 publication",
+      "commit": "175173f308b4d134d481e7141f742b8ddecd9b05",
+      "push_exit": 0,
+      "ls_remote_exact_match": true,
+      "scope": "10 own documentation files, no Issue/PR post or test/CI execution"
     }
   ],
   "unverified": [
@@ -619,7 +628,7 @@
       "reason": "propose exact schema, Linux import boundary, limited continuation and evidence-based closure after observed AI errors; never executed"
     }
   ],
-  "updated_at": "2026-10-29T05:36:07.961460+00:00",
+  "updated_at": "2026-10-29T05:37:14.573239+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -658,7 +667,10 @@
     "legacy_ledger_modified": false,
     "new_test_number": null,
     "document_checks_passed": 81,
-    "document_check_scope": "source documents only"
+    "document_check_scope": "source documents only",
+    "substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05",
+    "push_remote_exact_match": true,
+    "publication_receipt": "docs/prompting/R29-publication.json"
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
