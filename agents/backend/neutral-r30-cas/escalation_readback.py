@@ -1,11 +1,19 @@
 """Keep the POST CAS intact; adopt only a schema-checked, stable existing GET event."""
 
+import argparse
+import inspect
+import json
 import uuid
+from pathlib import Path
 
-from guard import need, timestamp
+from guard import BACKEND_CONFIG, need, timestamp
 from http_primitives import HttpRejected, all_pages, save
-from t44.contracts import violations
-from t44.scheduling.rules import load_rules, select_window
+
+try:
+    from t44.contracts import violations
+    from t44.scheduling.rules import load_rules, select_window
+except ImportError as error:
+    raise RuntimeError("OFFICIAL_BACKEND_T44_RUNTIME_REQUIRED_NOT_READY") from error
 
 
 def valid_task(task, selected, pid, observed_at):
@@ -140,3 +148,40 @@ def create_or_read_existing(
         },
     )
     return after, event
+
+
+def check_runtime_only():
+    """Resolve real package/functions; container identity remains the owner's proof."""
+    rules = load_rules()
+    rule_valid = not violations({"$ref": "#/components/schemas/EscalationRule"}, rules.snapshot())
+    task_rejected = bool(violations({"$ref": "#/components/schemas/Task"}, {}))
+    match = select_window(rules.effective_at, rules.effective_at, rules)
+    need(
+        rule_valid and task_rejected and match is not None,
+        "REAL_VALIDATOR_AND_RULE_FUNCTIONS_REQUIRED",
+    )
+    return {
+        "kind": "NEUTRAL_HTTP_RUNTIME_FUNCTION_PROBE_ONLY",
+        "scope": "PACKAGE_RESOLUTION_ONLY_NOT_IMAGE_OR_CLOUD_READINESS",
+        "required_backend_config": BACKEND_CONFIG,
+        "actual_image_identity_verified_by_probe": False,
+        "resolved_functions": {
+            function.__name__: {
+                "module": function.__module__,
+                "file": str(Path(inspect.getfile(function)).resolve()),
+            }
+            for function in (violations, load_rules, select_window)
+        },
+        "frozen_rule_schema_valid": rule_valid,
+        "invalid_task_rejected": task_rejected,
+        "rule_version": rules.version,
+    }
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Read-only package/function probe; no sessions, HTTP or readiness grant"
+    )
+    parser.add_argument("--check-runtime-only", action="store_true", required=True)
+    parser.parse_args()
+    print(json.dumps(check_runtime_only(), sort_keys=True))

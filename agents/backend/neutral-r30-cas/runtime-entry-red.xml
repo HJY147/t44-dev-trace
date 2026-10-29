@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.249" timestamp="2026-10-29T18:45:46.650451+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="tmp.756_backend_neutral_cas_r30.756_runtime_entry" name="test_source_free_environment_cannot_be_ready" time="0.050"><failure message="assert 'OFFICIAL_BACKEND_T44_RUNTIME_REQUIRED_NOT_READY' in 'Traceback (most recent call last):\n  File &quot;/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/...ack.py&quot;, line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n'&#10; +  where 'Traceback (most recent call last):\n  File &quot;/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/...ack.py&quot;, line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n' = CompletedProcess(args=['/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/pyth...ck.py&quot;, line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n').stderr">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-164/test_source_free_environment_c0')
+
+    def test_source_free_environment_cannot_be_ready(tmp_path):
+        environment = {key: value for key, value in os.environ.items() if key != 'PYTHONPATH'}
+        result = subprocess.run(
+            [sys.executable, '-B', str(HELPER), '--check-runtime-only'],
+            cwd=tmp_path, env=environment, capture_output=True, text=True,
+        )
+        assert result.returncode != 0
+&gt;       assert 'OFFICIAL_BACKEND_T44_RUNTIME_REQUIRED_NOT_READY' in result.stderr
+E       assert 'OFFICIAL_BACKEND_T44_RUNTIME_REQUIRED_NOT_READY' in 'Traceback (most recent call last):\n  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/...ack.py", line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n'
+E        +  where 'Traceback (most recent call last):\n  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/...ack.py", line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n' = CompletedProcess(args=['/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/pyth...ck.py", line 7, in &lt;module&gt;\n    from t44.contracts import violations\nModuleNotFoundError: No module named \'t44\'\n').stderr
+
+tmp/756_backend_neutral_cas_r30/756_runtime_entry.py:19: AssertionError</failure></testcase><testcase classname="tmp.756_backend_neutral_cas_r30.756_runtime_entry" name="test_local_project_runtime_resolves_real_validator_and_rules_only" time="0.166"><failure message="json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-164/test_local_project_runtime_res0')
+
+    def test_local_project_runtime_resolves_real_validator_and_rules_only(tmp_path):
+        environment = dict(os.environ, PYTHONPATH=str(ROOT / 'backend'))
+        result = subprocess.run(
+            [sys.executable, '-B', str(HELPER), '--check-runtime-only'],
+            cwd=tmp_path, env=environment, capture_output=True, text=True,
+        )
+        assert result.returncode == 0, result.stderr
+&gt;       receipt = json.loads(result.stdout)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/756_backend_neutral_cas_r30/756_runtime_entry.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;json.decoder.JSONDecoder object at 0x102faaea0&gt;, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+&gt;           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py:356: JSONDecodeError</failure></testcase></testsuite></testsuites>

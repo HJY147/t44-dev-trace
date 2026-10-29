@@ -9,3 +9,5 @@ root公开导出的1385次准备HTTP包含200=1015、201=185、202=179、409=6�
 原40自测仅复制CODE路径并把旧不完整Fake规则GET补为正式完整冻结快照，40个原assert AST完全不改，原测试文件不改；迁移SHA见test-migration.PUBLIC.json。新增负例首次有一个mutation把原state=2再次设2而未形成变化，77绿1红真实日志保留local-all-initial，纠正测试数据为另一合法state，未减弱断言。首轮import排序、fixture重构unused import lint失败保留；验证脚本初缺__main__使原全模块import自测触发嵌套本地pytest，立即Ctrl-C退出130、无遗留子进程，增加main guard后正常完成一次，详verification-interrupted/initial记录。没有把这些失败当通过。
 
 新manifest18运行件，kind/name→sha/file_sizes形状保留；baseline manifest原66ab和执行过686均不变，新helper需要部署owner未来审包。产品source0b及API/DDL/业务/权限/版本/事务/幂等/锁/审计/MQ全部不改；没有新依赖、云/SUT/真实session或额外CI。旧窗口绝不重开/改钟，本候选仅供下一新窗口前审查，不是QA或性能验收。
+
+5635阶段之后root转运行时与代码目录P1：helper实际依赖t44，原APP4f source-free环境无法就绪。root未来方案明确APP官方backend8e/edge/UID10001/read-only/drop caps/无DB-AMQP业务env/保镜像PYTHONPATH，旧镜像/17历史不改、产品源不投LOAD/QA。新只读--check-runtime-only无t44明确NOT_READY；本机真实项目函数正例仅LOCAL_PROJECT_RUNTIME_ONLY，不代表Docker8e执行/云READY。原新入口2红0绿0.25s原件保留，无validator/rules stub。verify-local.py已从运行目录迁tmp756，新命令及invocation在verification.json，运行.py集合严格等于18manifest内9项，不把验证脚本塞入manifest/不放宽wrapper。最终81项4.33s、所有静态与旧目录零diff全绿；前78阶段结果由5635 Git原件保留。仍无云/实际session/额外CI。

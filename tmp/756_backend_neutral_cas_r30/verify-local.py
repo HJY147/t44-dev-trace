@@ -7,8 +7,8 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
+HERE = ROOT / "agents/backend/neutral-r30-cas"
 commands = [
     [
         sys.executable,
@@ -17,6 +17,7 @@ commands = [
         "-q",
         "tmp/756_backend_neutral_cas_r30/756_conflict.py",
         "tmp/756_backend_neutral_cas_r30/756_regression.py",
+        "tmp/756_backend_neutral_cas_r30/756_runtime_entry.py",
         "--junitxml=agents/backend/neutral-r30-cas/local-all.xml",
     ],
     [
@@ -73,7 +74,12 @@ def main():
         records.append(record)
     (HERE / "verification.json").write_text(
         json.dumps(
-            {"scope": "LOCAL_SYNTHETIC_ONLY_NO_CLOUD_SUT_OR_SESSIONS", "checks": records}, indent=2
+            {
+                "scope": "LOCAL_PROJECT_RUNTIME_ONLY_NO_DOCKER_IMAGE_CLOUD_SUT_OR_SESSIONS",
+                "invocation": [sys.executable, "-B", str(Path(__file__).resolve())],
+                "checks": records,
+            },
+            indent=2,
         )
         + "\n"
     )
