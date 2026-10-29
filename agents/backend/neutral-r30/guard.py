@@ -1,6 +1,7 @@
 """Local metadata consistency guards. Never connects, issues sessions or authorizes a run."""
 
 import argparse
+import hashlib
 import ipaddress
 import json
 import re
@@ -15,6 +16,8 @@ NEW_ADAPTER = "694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938"
 SOURCE_MANIFEST = "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b"
 BUNDLE_MANIFEST = "b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345"
 BUDGET_HELPER = "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61"
+BACKEND_CONFIG = "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845"
+LOAD_CONFIG = "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1"
 APP_ROLES = {"mysql", "rabbit", "api", "consumer", "scheduler", "web", "tls-gateway"}
 IDENTITIES = {"manager", "developer", "reviewer", "service"}
 BASE_COUNTS = {"projects": 40, "tasks": 6000, "dependencies": 9000, "reviews_and_decisions": 15000}
@@ -106,6 +109,10 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         "FRESH_ACTUAL_IMPORT_OBSERVATION_REQUIRED",
     )
     need(plan["budget"]["helper_sha256"] == BUDGET_HELPER, "R30_STRICT_KIND_BUDGET_HELPER_REQUIRED")
+    need(
+        plan["source"]["actual_loaded_full_chain_reviewed_by_root"] is True,
+        "ROOT_ACTUAL_IMPORT_CHAIN_REVIEW_REQUIRED",
+    )
     digest(plan["budget"]["actual_admission_receipt_sha256"])
     approval = plan["public_tool_approval"]
     need(approval["supports_source_git"] == SOURCE, "NEW_PUBLIC_TOOL_APPROVAL_REQUIRED")
@@ -142,11 +149,28 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         "EXACT_TLS_ORIGIN_REQUIRED",
     )
     try:
-        need(ipaddress.ip_address(target["connect_ip"]).is_private, "PRIVATE_CONNECT_IP_REQUIRED")
-    except ValueError:
-        raise Refused("ACTUAL_CONNECT_IP_REQUIRED") from None
+        address = ipaddress.IPv4Address(target["connect_ip"])
+        host = ipaddress.IPv4Address(origin.hostname)
+        port = origin.port or 443
+        need(
+            address == host
+            and address.is_private
+            and not address.is_loopback
+            and not address.is_link_local
+            and not address.is_unspecified
+            and not address.is_multicast
+            and 1 <= port <= 65535,
+            "EXACT_PRIVATE_IPV4_TLS_TARGET_REQUIRED",
+        )
+    except (ValueError, TypeError):
+        raise Refused("EXACT_PRIVATE_IPV4_TLS_TARGET_REQUIRED") from None
     for key in ("backend", "load_python"):
         digest(plan["images"][key], image=True)
+    need(
+        plan["images"]["backend"] == BACKEND_CONFIG
+        and plan["images"]["load_python"] == LOAD_CONFIG,
+        "EXACT_BACKEND_AND_LOAD_CONFIG_IDENTITIES_REQUIRED",
+    )
     roles = plan["runtime_roles"]
     need(set(roles) == APP_ROLES | {"load"}, "SEVEN_APP_ROLES_LOAD_SEPARATE_REQUIRED")
     for role in roles:
@@ -162,7 +186,7 @@ def check_plan(plan, now, *, require_fixture_ready=True):
     start, end, stop = (timestamp(window[key]) for key in ("start_utc", "end_utc", "stop_utc"))
     need(
         now < start < end < stop
-        and (end - start).total_seconds() >= 780
+        and 780 <= (end - start).total_seconds() <= 900
         and (stop - end).total_seconds() >= 90,
         "FRESH_COMPLETE_WINDOW_REQUIRED",
     )
@@ -250,8 +274,14 @@ def check_evidence(plan, evidence, now):
     need(set(issued) == IDENTITIES, "FOUR_ACTUAL_SESSION_ATTESTATIONS_REQUIRED")
     for role, item in issued.items():
         digest(item["token_sha256"])
+        if role == "service":
+            earliest = latest = timestamp(item["issued_at"])
+        else:
+            earliest = timestamp(item["login_request_started_at"])
+            latest = timestamp(item["response_observed_at"])
+            timestamp(item["response_meta"]["server_time"])
         need(
-            ready_at <= timestamp(item["issued_at"]) <= now < start
+            ready_at <= earliest <= latest <= now < start
             and timestamp(item["expires_at"])
             > end + timedelta(seconds=plan["session_expiry_reserve_seconds"]),
             "LATE_FRESH_FULL_WINDOW_SESSION_REQUIRED",
@@ -415,6 +445,32 @@ def check_evidence(plan, evidence, now):
         "projects": len(projects),
         "benchmark_authorized": False,
     }
+
+
+def validate_loaded_receipt(plan, raw):
+    need(isinstance(raw, bytes), "ORIGINAL_ACTUAL_IMPORT_BYTES_REQUIRED_BEFORE_ACTION")
+    need(
+        hashlib.sha256(raw).hexdigest() == plan["source"]["actual_loaded_receipt_sha256"],
+        "ACTUAL_IMPORT_RAW_HASH_MISMATCH",
+    )
+    proof = json.loads(raw)
+    need(
+        proof["kind"] == "r30-backend-import-receipt-v1"
+        and proof["source_sha"] == SOURCE
+        and proof["source_manifest_sha256"] == SOURCE_MANIFEST
+        and proof["bundle_manifest_sha256"] == BUNDLE_MANIFEST
+        and type(proof["full_runtime_files"]) is int
+        and proof["full_runtime_files"] == 60
+        and bool(proof["identity"])
+        and bool(proof["package_resolution"])
+        and BACKEND_CONFIG in json.dumps(proof["identity"])
+        and proof["business_services_started"] is False
+        and proof["volumes_modified"] is False,
+        "EXACT_ACTUAL_APP_IMPORT_RECEIPT_REQUIRED",
+    )
+    # Config identity is pinned; Docker actual_id may differ for OCI descriptors.
+    # Root reviews the complete same-SHA config/descriptor/DiffID/package chain.
+    return proof
 
 
 def read_json(path):

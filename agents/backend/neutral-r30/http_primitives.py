@@ -10,7 +10,7 @@ import time
 import urllib.parse
 import uuid
 
-UTC = dt.timezone.utc
+UTC = dt.UTC
 
 
 def stamp(value):
@@ -94,9 +94,17 @@ class Client:
                 response_sha256=hashlib.sha256(raw).hexdigest(),
             )
             result = json.loads(raw)
+            self.last_meta = result.get("meta")
             # Full successful non-login data stays private, preserving 0/null.
             if path != "/auth/login":
                 record["response"] = result
+            else:
+                raw_path = self.output / (identifier + ".login-response.private.bin")
+                descriptor = os.open(raw_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+                with os.fdopen(descriptor, "wb") as stream:
+                    stream.write(raw)
+                record["raw_login_response_file"] = str(raw_path)
+                record["response_meta"] = self.last_meta
             if response.status not in (200, 201, 202) or "data" not in result:
                 raise ValueError("REAL_HTTP_PREPARATION_REJECTED")
             return result["data"]
