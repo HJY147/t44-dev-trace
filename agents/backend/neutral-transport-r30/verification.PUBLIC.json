@@ -1,0 +1,13 @@
+{
+  "scope": "SYNTHETIC_LOCAL_CRYPTO_TLS_ONLY_NOT_CLOUD_OR_SUT",
+  "unique_checks": 7,
+  "passed": 7,
+  "seconds": 0.66,
+  "real_crypto": "original RSA3072/OAEP/AES256-CBC/HMAC/gzip seal and open unchanged",
+  "real_TLS": "low-level local loopback one GET with ordinary CA/IP verification, wrong CA and peer negative; production CLI separately rejects loopback/public",
+  "five_original_bytes_equal": true,
+  "C_alarm_real": true,
+  "original_module_sha256": "8600110b54f45240a6e45ea62c9be6f567529e374807d0ca593dde3fd7605db7",
+  "producer17_bytes_unchanged": true,
+  "actual_cloud_SUT_sessions": 0
+}
