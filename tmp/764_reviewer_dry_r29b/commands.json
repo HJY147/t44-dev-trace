@@ -1,0 +1,56 @@
+{
+  "operator": "AI reviewer",
+  "created_utc": "2026-10-29T06:11:37.815825+00:00",
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-dry-r29b",
+  "records": [
+    {
+      "label": "first-run",
+      "command": [
+        "env",
+        "-u",
+        "DATABASE_URL",
+        "-u",
+        "T44_TEST_CREDENTIALS",
+        "-u",
+        "CI",
+        "PYTHONPATH=backend",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "tmp/764_reviewer_dry_r29b/764_review.py"
+      ],
+      "exit_code": 0,
+      "checks": 50,
+      "stdout": "first-run.stdout.txt",
+      "stderr": "first-run.stderr.txt",
+      "note": "Before reviewer fixture insert readback and explicit expected-result refinement"
+    },
+    {
+      "label": "final-run",
+      "command": [
+        "env",
+        "-u",
+        "DATABASE_URL",
+        "-u",
+        "T44_TEST_CREDENTIALS",
+        "-u",
+        "CI",
+        "PYTHONPATH=backend",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "tmp/764_reviewer_dry_r29b/764_review.py"
+      ],
+      "exit_code": 0,
+      "checks": 72,
+      "backend_scenarios": 20,
+      "catalog_scenarios": 8,
+      "stdout": "final-run.stdout.txt",
+      "stderr": "final-run.stderr.txt"
+    },
+    {
+      "label": "final-handoffs",
+      "evidence": "final-handoffs.json",
+      "product_and_original_tests_boundary_exit": 0,
+      "source_docs_json_diff_check_exit": 0,
+      "whole_raw_diff_check_exit": 2,
+      "json_files_parsed": 17
+    }
+  ]
+}
