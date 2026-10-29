@@ -2968,6 +2968,38 @@
       "installer_whole_base64_plus256": 12232,
       "prompt_ref": "ROLE-deployment-R30-NEUTRAL-ADMIN-v1",
       "cloud_Docker_SQL_HTTP_or_SUT_executed": false
+    },
+    "final_transport": {
+      "bundle_commit": "abe2d0bd71023a19a4801a994143bc6c96e2ff30",
+      "workflow_commit": "3bc139e167e578eca5a2f800bbecb06cf3d195a7",
+      "Actions_run": 40853915121,
+      "Actions_conclusion": "success",
+      "artifact_id": 12888875391,
+      "official_zip_bytes": 211243,
+      "official_zip_sha256": "c9bb834877ac22dbb7e6307c0ca3cc1f222c3439657848cd6d21cac55757e7fc",
+      "all_16_members_verified": true,
+      "public_ops_bytes": 78319,
+      "public_ops_sha256": "894b4b50b957bde282eda8d7f10bf7d48c68dba28ed56ececcf0195d30c0c2cf",
+      "profile_sha256": "6d4b7bc4c4f77515da429df9cbf82554a3a0f5d379ef4fd3a638bf04eaf94584",
+      "producer_commit": "3be27131398a049f1a509918e5308f1bda7c8cec",
+      "producer_manifest_sha256": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606",
+      "app_runner_sha256": "735a33e08a38f9c1a0cae34df170842b83a38738f3349bc4c69cee3122cbcdb6",
+      "app_scope": "only P idle; no seed/session/F/scheduler; actual commands not executed by deployment",
+      "runbook": "agents/deployment/preparation-r30/FINAL-TRANSPORT-AND-APP.md",
+      "official_SAS": "root private only; never received or committed by deployment",
+      "opaque": "c189 approved public raw blobs only; no interpretation/decryption/private",
+      "local_tests": "producer17 smoke;3 app command seams; full official ZIP and local install/launcher seams passed",
+      "ECS_VM_Docker_SQL_SUT_or_sessions_executed_by_deployment": false,
+      "prompt_ref": "ROLE-deployment-R30-FINAL-DELIVERY-v1"
+    },
+    "resource_contract_query": {
+      "scope": "local original311d contract only, no execution or code change",
+      "root_reported_actual_P_binding_sha256": "0c50f2d775b4aa9c724ff3cd287fd4cf6b86c88b1806098ac8d668ee091a89e8",
+      "root_requested_sample_G_serve_C": "original helper rejects: serve<=G and serve>=sample+30",
+      "original_legal_option": "sample10:34:30 serve10:35; covers S10:20/E10:33; root choice required",
+      "required_start_end": "only prepare-mirror consumes these flags",
+      "root_notified_within45seconds": true,
+      "command_reference": "agents/deployment/preparation-r30/FINAL-TRANSPORT-AND-APP.md"
     }
   }
 }

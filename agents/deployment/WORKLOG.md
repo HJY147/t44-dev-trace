@@ -792,3 +792,15 @@ root单向转发公开接口缺陷：2ca import receipt固定string被PUBLIC ada
 root明确唯一正式入口薄wrapper，不改GEN/产品/artifact/预算逻辑。代码749e8e87→实际manifest适配8c734864，最终wrapper19840B/SHA8e9d024b7aa38692a633b620a23a27380d155ed7a8725f45c9ee25dac0fe4d9a。按root准确profile/GEN/adapter7ef/预算9e pin，原binding raw/SHA解析r30window01/project/db/stop，持真实operation_lock内新actual admit并覆盖完整固定credential-admin子进程/owned退出处理；原probe与本次readmit分开落证，不改plan/intents原件。code全bytes/hash后RO，新私密inputs/outputs，3admin模式argv/root目录映射逐字固定；后加init-accounts正常官方CLI串3synthetic人，stdin秘密，真实CLI parser/main AST JSON形状配外部seams核，实际user_id仅新私密文件，已有同名失败保prefix不重置/不继续后续角色。
 
 10项fake-env最终绿（含真实9e flock/admit逻辑、真实替身子进程期间host观察锁、actualCLI JSON正负、旧source/错namespace/code/预算拒、原input不改，actual producer0a34 manifest7c9d与17原blob真实staging和固定argv），无Docker/SQL/HTTP/云/SUT。首测试缺t44.persistence.accounts seam的1FAIL/1ERROR与首Ruff unused-time保留后修正，不掩饰首次失败。新单条公共安装8980B，整base64+256=12232<18000，只hash/O_EXCL安装，不执行。ROOT须预填plan.gen_binding.path=/neutral-input/binding.json；host原binding/import/probe路径另在PUBLIC readmit回执保存。发现producer对transport_proofs原键差异仅报root，owner另修；不因此改变原GEN/binding。最终命令/输入schema/四模式host结果路径见NEUTRAL-ADMIN-RUNBOOK，实际prompt见PROMPT-NEUTRAL-ADMIN；root先拿代码SHA复审，不等行政留痕。
+
+
+## 2026-10-29 最终SAS运输与APP到idle准备
+
+root选T0=10Z/S10:20/D780/E10:33/G10:35/C10:40/最终核10:45/packet10:17:30，生成原profile SHA6d4b7bc4...，本岗逐7件实核。最新producer3be2713/manifest66ab1642原17件真实staging/固定argv纯mock smoke绿，旧0a34历史保留。OPS tar78319B/894b4b50...含29成员（28payload+新manifest），原profile/producer17/wrapper8c不改；新增APP runner735a33...仅verify/import/cache/GEN prepare→P arm/config/infra/probe/migrate/idle，独占run，原stdout/stderr0600流落全，PUBLIC≤22KB。3外部命令seam首次绿，无实际Docker/SQL/ECS/SUT。固定G后台unit仅参数捕获测试，未创建unit。
+
+按root急令停止匿名路线研究，正常API匿名首SSL timeout和叫停前单IPv4本地成功分别保留，不称云失败/通过。改免费标准Actions40853915121实际success，工具commit3bc139e1，artifact12888875391/211243B，API digest与完整本地ZIP SHA c9bb834877ac22dbb7e6307c0ca3cc1f222c3439657848cd6d21cac55757e7fc相同，16成员逐bytes/hash过。root d4材料原16368B/8db05a...及批准c1898件opaque只复制原blob，不解释/解密/读PRIVATE。新本地文件安装器只建ops不碰现有root/package，真实从官方ZIP取脚本后仅映射项目tmp执行，29件正确且package marker未改；launcher systemd seam捕获G秒数2095，整命令2352<18000。
+
+根可从官方SAS取ZIP按FINAL-TRANSPORT-AND-APP.md直接安装/启动准备；签名位置仅root私有，本岗未获取/提交SAS。scheduler复用同一原service CLI token的root显式选择已按原GEN/原read_token核格式/UID10001/600/TTL/CLI，未签/复制实际token。source/artifact/预算不改。product自动run已申请取消，docker自动run先API TLS timeout后已completed不可取消，不冒主动全产品CI。无本岗ECS/VM操作，不把准备/运输当验收。实际prompt在PROMPT-FINAL-DELIVERY.md，原root相对output失败如实标root报告。
+
+
+现场resource-stream合同核验：root报告P准备真实完成/binding0c50f2d.../max384，随后要求sampleG/serveC。45秒内读原311d public源码给原CLI，并明确其双重serve<=G且serve>=sample+30保护令该组合不可能；原合法sample10:34:30/serve10:35仍盖S/E，root可选；required-start/end只有mirror处理。未改代码、未开云、不加封装或依赖，真实resource binding/PID/nonce都由root运行后出。完整命令/边界追加FINAL-TRANSPORT-AND-APP.md。
