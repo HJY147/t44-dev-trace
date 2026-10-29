@@ -1,12 +1,14 @@
-# 文档汇总岗位 20261029 最终技术稿候选
+# 文档汇总岗位 20261029 三技术Word阶段交付
 
-Agent-Role documentation；Prompt-Ref ROLE-documentation-FINAL-20261029-v1；Refs #9。文档AI整理，不是学生研究作者。
+Agent-Role documentation；Prompt-Ref ROLE-documentation-FINAL-20261029-v1；Refs #9。实际操作者为文档AI，不是学生研究作者。
 
-- 产品源356f299独立树，先设计325b2bd5；root明确授权的5195三公开记录cherry-pick为ab39b752，未改变产品源。
-- 四正式稿按当前v1.2统一结构，当前导航压缩为四稿/当前证据/短历史表/研究待办；原Git及M4/M6/M7 Word与manifest不改。
-- 需规含FR/NFR/AC、人的变更选择和多图；设计更新row_model/page.prepare、validator身份、DB AST/批通知及会话，38API/DDL不变；8FR双向映射。
-- 65应用hash、43Py AST、15当前冻结、38操作接口、53公开来源及96本地链接有限检查；新质量图原版太高保留，修分组后SVG/PNG退出0并实际original目视通过。
-- 四非测试岗实送问题，BE/部署已回，DB/FE四件已读但直接答复未回；不假装采访学生/QA，不读753 PRIVATE/代码/日志或任何私密原始独立材料。
-- 当前准确源开发CI796/89和全源覆盖率据root公开取证，等待其原件commit；计数5817/65超717仍失败，旧独立和正式失败保持。
-- documents技能/loader已读，bundle26.1017；仅bundled LO。新四Word将独立FINAL-20261029目录，首次author前新批marker create4一次，每批render及100%实际逐页PNG检查；目前未author，不借旧QA。
-- 学生最终研究/人工12/3/5无新完成证据；U001/U002原文与AI建议、used/proposed明确。本阶段只交Markdown候选，后续公开云结果再更新测试稿与新Word。
+- 产品固定356f299；先设计325b，Markdown候选fe8，root授权记录5195/bdaa分别取ab39/c2；当前产品65文件hash和15冻结再次一致，不改生产/冻结。
+- 四正式MD与导航已连贯当前版本，短历史表保留旧Git；row_model/page.prepare、schema身份缓存、DB/FE边界、38API和8FR双向对应更新。
+- 当前准确源CI原5gzip/bytesSHA、后端796零失败错误跳过及43源、前端89全绿由本岗静态核对；行与分支分母分别列，不当独立F/P通过。
+- 新需规12页/设计14页/AI规格5页共31最终页，本实例100% original逐页实看。首轮32页保留，事务图小字和相邻横图空页修后设计14页全看，累计真实46页views。
+- 新批create4 marker成功一次；仅bundled LO，private FINAL-20261029新目录，旧M4/M6/M7全部254文件bytes/hash仍一致、个人值不公开、日期空、QA图和DOCX未进Git。
+- 第四份测试Word尚未author，严格等root明确发表真实结果后followup，不再等待或占槽、不重复marker。
+- 四非测试岗实际送问，BE/部署直回已收，DB/FE四件公开资料已读但本轮直回未获；不联系或读取753 QA PRIVATE/代码/日志。
+- U001/U002三段原文逐字核对，建议/used/proposed及AI/人的归属分开；学生正文/真实人工12/3/5仍缺证，5817超717仍fail。
+- QA提交9596已真实push；网络首长等/45秒超时124保留，HTTP1.1有界40秒push exit0恢复。Issue9评论6496951652精确ID全文GET逐字body/URL一致。
+- 本笔只存发布/交接，不APPROVE、statussuccess或mainmerge；root需要槽位，receipt提交后立即释放，云结束不冒整体作业完成。
