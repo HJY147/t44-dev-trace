@@ -9,3 +9,5 @@
 初始系统Python与项目venv均缺pytest，在启动测试前报ModuleNotFoundError；未安装依赖，直接改用标准库unittest。原失败事实保留在verification元记录，不写成测试用例失败。
 
 固定commit下载wrapper已交付，完整5228B（SHA d5546d0f2bcbd19c24a5648d7b089ed6dd9ecd2ae3bd43fae5d199da81361bf0），raw全文+300为5528、整全文base64+300为7272，均低于18000。按根指定加入 --ipv4 --http1.1 后重新运行仅3项wrapper检查通过，9+3=12唯一测试；旧3项执行不重复计数。完整POSIX sh经本地fake curl分别返回raw/JSON真实安装20件，并验证篡改写入前拒绝；只移动本地受控目标根和暂存目录，canonical manifest目标/校验不改。这不证明真实网络、原服务器或Linux安装成功。现有镜像/原盘恢复、source53与budget实际核验、单次root授权、会话与压测均由根后续决定。详见design及runbook。
+
+追加单次APP预备worker与7669B小launcher，默认IP空/prep准入false。四项新增标准库检查通过：JSONL唯一选择/重复拒绝和完整launcher源码/大小/sh语法；stub原CLI顺序与动态角色/source/budget/prep-only；模拟迁移失败阻止后续造数；真实本地exit3 stdout/stderr完整留存。它们未执行live preflight/root/Linux/Docker/MySQL/SUT，不能当云流水成功。合计9核心+3下载wrapper+4worker=16唯一项；重复窄验证不累加。无需等行政交付才让根核原机库存，实际派发由根独立执行。

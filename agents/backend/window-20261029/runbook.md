@@ -79,3 +79,11 @@ python3 "$TOOLS/790_consumer.py" --configuration "$LOAD_CONFIG" --configuration-
 330秒门槛针对control.stop_utc；600秒针对packet.created_at；sessions四个expires_at分别有效。它们与约一小时计算资源预算不是同一个条件。无效/过期停止并保前缀，不续会话/改TTL/悄悄重跑。80/800/8000是短开发诊断，不能替代400并发完整600秒验收。
 
 完成后APP先seal、LOAD确认尾段完整再停镜像；保留原始数值、0/null、错误与SHA。最后GEN stop/status只停owned容器保卷，再经济停两原实例并核自动释放为空。任何成本/库存/失败不允许自动新购或删除旧证据。
+
+## 单次APP预备worker
+
+在安装20件后，根可使用 `app-prep-launch.PUBLIC.sh`（7669B，SHA `828421f6833681ffd0e0a678f2af1778f15d805fb777da0fae74d4f2617360da`），先把开头 `R29_APP_IP` 从空填写本次实测APP内网IP、将 `R29_ROOT_ADMIT_PREP=0` 明确改为1。其完整raw+300=7969、整体base64+300=10528；修改实际IP后根再量完整字节。默认拒绝，不能空IP或默许prep准入。只安装内嵌SHA固定的11117B worker `app-prep-once.py`（9ea78f415e9775efcda0d8f8b2e3aa0d29141fca6828bef15f373c0fbc404737），排他新路径 `/root/t44-r9/r29-app-prep-once.py`，然后异步systemd unit `t44-r29-app-prep-01`，RuntimeMaxSec=1800/KillMode=control-group/UMask=0077。完整worker在后台顺序运行，bootstrap不受GUI单条命令超时中断。
+
+worker先核profile/P64/原e551全逐件pin和旧buildbinding，然后仅原CLI prepare→P arm/config/infra→actual probe-budget→migrate→status实际mysql/rabbit/实际backend image/source53→本次prep-only grant→bootstrap一次→idle/TLS401/六角色0restart/scheduler缺席。source proof SHA、budget、角色容器ID/镜像ID均来自本轮实际输出，seed44/04:00锚点保持，不硬填384。f阶段只准备文件，不启动；没有pressure grant/S1/S2/资源/relay ready声明。
+
+每条原命令argv、stdout、stderr、returncode、双SHA记录在0700 `/root/t44-r9/r29-app-prep-01`（内部原件0600）。unit自身 stdout/stderr为 `/root/t44-r9/r29-app-prep-unit.stdout.private` 和同名stderr。已派发标记不等于ready，根核 `systemctl show t44-r29-app-prep-01.service -p ActiveState -p SubState -p Result -p ExecMainStatus`、`complete.PUBLIC.json`、真实idle metadata后再继续。失败保留prefix，不自动retry/重新seed/删除，不自动S1/S2；根先决策失败处置和停机。全链尚无真实云执行。

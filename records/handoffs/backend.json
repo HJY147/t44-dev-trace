@@ -3535,7 +3535,7 @@
       "operator": "backend_AI",
       "executed_UTC": "2026-10-29T03:19:44.985418+00:00",
       "local_python": "Python 3.12.10",
-      "unique_unittest_cases": 12,
+      "unique_unittest_cases": 16,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
@@ -3568,7 +3568,11 @@
       "wrapper_stderr_SHA256": "82c408ad381fc9846d56da6c582b6de1f09d46b1c457eec76cc01fcecf09ac21",
       "wrapper_actual_POSIX_sh_raw_and_JSON_install_and_tamper_rejection": true,
       "wrapper_network": "fake local curl returning fixed PUBLIC bytes; no cloud/network execution",
-      "wrapper_transport_flags": "--ipv4 --http1.1"
+      "wrapper_transport_flags": "--ipv4 --http1.1",
+      "app_prep_unique_cases": 4,
+      "app_prep_executed_UTC": "2026-10-29T03:30:12.476357+00:00",
+      "app_prep_stderr_SHA256": "74e1943b3e11188f81aac8cf2f5f0c86be4b9c0f6e133de1a069d1ffdc997eca",
+      "app_prep_checks_scope": "Fake original CLI orchestration with actual local dynamic fixtures; real local failure subprocess raw streams; JSONL and packaged shell/source/size. Preflight root/Linux/live pins deliberately not executed."
     },
     "actual_cloud_or_grant_or_session": false,
     "report": "agents/backend/window-20261029/report.md",
@@ -3588,6 +3592,26 @@
       "old_wrapper_modified": false,
       "cloud_executed": false
     },
-    "runbook": "agents/backend/window-20261029/runbook.md"
+    "runbook": "agents/backend/window-20261029/runbook.md",
+    "app_prep": {
+      "worker_bytes": 11117,
+      "worker_sha256": "9ea78f415e9775efcda0d8f8b2e3aa0d29141fca6828bef15f373c0fbc404737",
+      "launcher_bytes": 7669,
+      "launcher_sha256": "828421f6833681ffd0e0a678f2af1778f15d805fb777da0fae74d4f2617360da",
+      "raw_UI_plus_description": 7969,
+      "base64_entire_command_plus_description": 10528,
+      "description_allowance": 300,
+      "unknown_app_ip": null,
+      "root_prep_admitted_default": false,
+      "S1_or_S2_or_pressure_grant_authorized": false,
+      "unit_runtime_max_seconds": 1800,
+      "cloud_executed": false,
+      "POSIX_sh_syntax_exit": 0,
+      "Python310": "AST only",
+      "local_checks": 4,
+      "preflight_live_or_cloud_proven": false,
+      "worker": "agents/backend/window-20261029/app-prep-once.py",
+      "launcher": "agents/backend/window-20261029/app-prep-launch.PUBLIC.sh"
+    }
   }
 }
