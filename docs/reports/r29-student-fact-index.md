@@ -2,6 +2,14 @@
 
 本页是AI整理的事实和来源，不是“胡锦洋研究报告”正文，也不供换署名提交。本人应阅读原证据、选择确实理解的案例，再独立组织观点；不把AI写的方案、操作、错误和修复改成“我亲手完成”。工程当前状态见[R29 checkpoint](../../reports/final/engineering-checkpoint-r29-20261029.md)。
 
+## R29B 可核追加（新CI成功，其他门仍未闭合）
+
+- 两个真实局部去重已集成到源码`0bffe0c535e5897890aebf30879fdd3839dc52d6`：后端query helper净减3、模块152通过；数据库catalog有序注册净减4、模块133通过/43未选；审核自有72检查无新增P1/P2，均是AI实际工作，不算本人亲改。见[工程补记](../../reports/final/engineering-checkpoint-r29-20261029.md)。
+- 当前[已跟踪固定计数](../../tmp/768_integration_r29/source-count-r29b.json)为5880/65文件、仍超780。可由本人分析“实际微收益为什么没有闭合整体目标”，不能写规模已通过。
+- [新CI40827655008摘要](../../records/ci/r29b-0bffe0c5-40827655008/summary.PUBLIC.json)已四job成功：原后端796、前端89，行2502/2773=90.2271908%，分支713/848=84.0801887%。原CI发现目录不含tmp765/766的新本地项，不把152/133加进796；新旧CI独立记录，旧f7云P95/NP不转挂新源。
+- [QA v2.3正式PUBLIC](../../records/qa-tool/r29b/LOCAL_V2_3_SELFTEST_RESULT.json)为本地模拟HTTPS：400客户60+600秒运行段有记录，但后置只114/400快照、100审计，286预算未观察；实际5/15误配而要求15/40，整体NP。正确预算有限后置回归及全新完整运行仍待，不拼接片段。SUT/cloud0只描述本地模拟，Darwin未执行Linux正式cgroup守卫，拟4CPU免费Actions工具子集不等正式8CPU环境；本人只能将它作为工具质量过程素材。
+- [原CI日志格式回执](../../records/ci/r29b-0bffe0c5-40827655008/diff-check-scope.PUBLIC.json)保留真实ANSI尾空格导致全量diff-check exit2及root首次回执脚本终止符错误；限定其他源码/metadata检查0不等整包clean，均属AI过程而非本人亲自debug。
+
 ## 可供本人选择的六组材料
 
 | 研究方面 | 公开材料与可核事实 | 本人需要独立回答的问题 |

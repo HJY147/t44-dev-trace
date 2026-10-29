@@ -92,3 +92,59 @@ CI的`artifact-manifest.PUBLIC.json`另列97个解包文件。本岗逐件核存
 ## 实际发布回执
 
 实质提交 `9c183a537b9f44bcf39af7c0ca2dc08b627e278b` 已实际push到 `codex/documentation-r29`；`git ls-remote origin refs/heads/codex/documentation-r29`精确读回同SHA，worktree clean。该提交使用`[skip ci]`避免纯文档归档触发产品CI，未修改工作流或降低门禁。未新建PR/Issue评论/审核success。此后仅本岗日志和handoff发布行政补记，最终行政HEAD由交接回复提供，不新增产品或验收结论。
+
+## R29B 后发收集（2530ee2e起点，后发4b4e792b CI）
+
+先核原文档worktree clean且原HEAD为3dfa20f9，再按root指令fast-forward到准确0b、随后2530ee2e。没有覆盖或修改别岗文件。仅追加本岗三份文档及本岗记录，不重跑旧97件资料核验、不读独立PRIVATE或联系测试者。
+
+后端/数据库的公开WORKLOG、模块报告、handoff、实际prompt已定向读取；后端模块报告保留较早“进行中”文字，当前152以其最终report/原XML为准，不伪造岗位本轮回复。两份原JUnit分别152与133，声明/testcase均同且各0failure/error/skip；DB43未选另列。已读d470公开限定审核（技术901a），72不计为产品或owner模块用例总量。
+
+以下8件与准确2530ee2e Git blob逐字核同；集成0b的reviews.py/migrations.py分别与准确41a111f2/8f290307产品blob相同。计数JSON的commit字段准确0b，application.summary为5880/65，逐文件code和为5880、within_range=false。未新跑cloc或产品。
+
+| R29B公开来源 | bytes | SHA-256 |
+| --- | ---: | --- |
+| [agents/backend/dry-r29b/report.md](../../agents/backend/dry-r29b/report.md) | 2482 | `67058230b7349243d762b5ec1d9a81bef99ea966a7f2fbd681701a21bb7bf372` |
+| [agents/backend/dry-r29b/module-tests.xml](../../agents/backend/dry-r29b/module-tests.xml) | 1067221 | `bfee22c4902ce71a3708badf5f6935da262e8c6a9a055a74ae84dd9f0e576bf5` |
+| [records/handoffs/backend.json](../../records/handoffs/backend.json) | 165504 | `5508ebbc94cf77bf07144b8ada19c10d3ab9e14f1e6fd0d01f85099ad1e79bd1` |
+| [agents/database/dry-r29b/report.md](../../agents/database/dry-r29b/report.md) | 4203 | `11e3171f433ee4b193eff78d51b546c9fb0f7c81514b52433e58bdaa740adad9` |
+| [agents/database/dry-r29b/full-local.xml](../../agents/database/dry-r29b/full-local.xml) | 17739 | `73de40b047a54a1b1be97586955d27fcecbbde4ae70079ec320e664cfbed3586` |
+| [records/handoffs/database.json](../../records/handoffs/database.json) | 100128 | `3a25b0dc5abd0ba52b4c2466e0c727cc6a110d09274de2d0db9b0ae7a4b3ea9c` |
+| [reports/reviews/dry-r29b-20261029.md](../../reports/reviews/dry-r29b-20261029.md) | 9230 | `7f0af7ed2d225db29accf9e7f90d9e24e866de6364952430ae32b54f84819f08` |
+| [tmp/768_integration_r29/source-count-r29b.json](../../tmp/768_integration_r29/source-count-r29b.json) | 31730 | `85740515254a489077946d4837e1cbd8a9ddd2fa47a97720daae1b09172e4544` |
+
+准备阶段曾将CI与QA均标pending，未先写passed；之后只据新公开原件更新CI。QA v2.3后续已收到正式PUBLIC且整体NP；准备阶段和CI到达时仍据root转交占位，当前精确终态见本节末；修正后的有限回归/新完整运行仍待后发；不拼接运行段成功。拟免费4CPU Actions子集不升级为8CPU正式环境。旧云NP、旧f7性能、两VM保盘停止保持原范围。
+
+初次读取新count时本岗把groups字典当列表，辅助解析报AttributeError；改按application.summary读取并核65成员和，原数据无改动。该资料解析错误不是产品失败。后读新归档曾沿用旧`artifact-manifest.PUBLIC.json`文件名，实际不存在；按该目录实际`members.PUBLIC.json`修正，只读定位错误保留。后续仅做增量链接/7文件范围校核，不复测旧资料或产品。
+
+### 新CI公开终态与原件限定核验
+
+root转交已提交4b4e792b后，本岗在保留7个自身未提交路径的情况下ff-only到该准确提交；没有覆盖他岗文件。source仍为0b，app目录与先前集成保持不变。以下5份新公开元数据与4b4e792b Git blob逐字匹配：
+
+| 新CI公开来源 | bytes | SHA-256 |
+| --- | ---: | --- |
+| [summary.PUBLIC.json](../../records/ci/r29b-0bffe0c5-40827655008/summary.PUBLIC.json) | 3250 | `3b34573203efc77a24180beba4d601953248bc8ffdd900d37f986a8b7f1305e3` |
+| [run.PUBLIC.json](../../records/ci/r29b-0bffe0c5-40827655008/run.PUBLIC.json) | 12652 | `679fa80f9be263e797f69bc14a0f3029219cd9cbb929365a5d35497e2c62f1ce` |
+| [members.PUBLIC.json](../../records/ci/r29b-0bffe0c5-40827655008/members.PUBLIC.json) | 24227 | `825eba3d2cd91898b4081ffb306951838ece7e95f4439fff2b320768e5d005d3` |
+| [artifacts.PUBLIC.json](../../records/ci/r29b-0bffe0c5-40827655008/artifacts.PUBLIC.json) | 16164 | `f4ac556eafbf32ef345f9f9f4d712e9ebec39ea7656af12d5072dfc56a675cb2` |
+| [diff-check-scope.PUBLIC.json](../../records/ci/r29b-0bffe0c5-40827655008/diff-check-scope.PUBLIC.json) | 965 | `e094f86658587ee633daa4f317dff21af779221f3d5199eb1a5907eb511f7a31` |
+
+- 只核新归档95个成员：5,845,889字节，全部本地bytes/SHA/4b Git blob同；没有重复旧97、没有重新下载或声称本岗核原ZIP。官方4原ZIP size/digest验证属于root归档回执，文档岗在当前仓库没有原ZIP，不补造。
+- 新run source0b、四job success、coverage结束06:18:37Z；从新原XML重新核19/102/183/796、声明和实际testcase一致且各0failure/error/skip；原FE JSON89/89，原coverage JSON行2502/2773、分支713/848、组合88.7876277%分列。
+- `new_role_specific_local_tests_in_CI=false`：新tmp765/766不在原tmp/backend discovery，152/133和审核72均单独留证，不累加为796；本岗没有新跑这些测试。
+- 原build.log第12行ANSI警告确有尾空格，本岗直接核字节仍在。root全量cached diff-check exit2、其他源码/metadata限定0与首次heredoc终止符SyntaxError均按原回执保留；不把整包称clean，也不改原CI字节。
+- 当时QA v2.3后置NP及后续待回归来自root消息，之后仅核下列正式PUBLIC，不读取未公开测试器文件。06:18:12Z只读VM列表的STOP/节省只按root转交记载，自动释放仍引用04:59原详情，不声称新查auto。没有新SUT/云执行。
+
+### 正式PUBLIC本地QA终态（70b24c90）
+
+只按root新指令ff到准确70b24c9082e47130c4a58af8ecdccabc3691c8fe，读取允许的下列两件PUBLIC；bytes/SHA与该Git blob和发布回执一致。没有沿引用读取PRIVATE、原cipher、用例或工作日志，没有联系测试岗。
+
+| 允许公开原件 | bytes | SHA-256 |
+| --- | ---: | --- |
+| [LOCAL_V2_3_SELFTEST_RESULT.json](../../records/qa-tool/r29b/LOCAL_V2_3_SELFTEST_RESULT.json) | 3802 | `49b0f76e1b2f2a1b736236a21c6d48c74ee7679a09c816408097e06baa755468` |
+| [publication-receipt.PUBLIC.json](../../records/qa-tool/r29b/publication-receipt.PUBLIC.json) | 495 | `9f4632ddb4a81b5005d856fd36e9196f014d14758ccf3af369a36ace54d4ccaf` |
+
+v2.3的scope严格为`LOCAL_NATIVE_TLS_SIMULATION_ONLY_NOT_SUT_ACCEPTANCE`；05:58:57.014651—06:10:13.225976Z，676.268秒，400客户60+600网络cohort为true、runtime_metrics_verdict=PASS；整体独立结论NP，状态为`NP_POSTCONDITION_INCOMPLETE_AND_LOCAL_FIXTURE_BUDGET_MISMATCH`。快照114、审计100、后置预算未观察286；实际request/post=5/15、要求15/40，原结果未修改。后续正确预算有限后置回归和经协调授权的一次全新完整E2E仍待，不拼接成功段。SUT/cloud0仅属于该模拟；Darwin未运行正式Linux cgroup守卫，拟4CPU免费Actions通用子集不称8CPU正式环境。旧云r29qa772-01 NP不变。
+
+R29B最终增量资料校核：新增27个本地链接全部存在；恰7个自身路径、没有新建文件；handoff JSON可解析且每个被改旧顶层值都与70b24c90基线逐项同存，旧prompt_refs保留前缀。新增Markdown限定私钥/token形状无匹配。本岗7文件显式暂存后`git diff --cached --check`单独exit0；这只检查本岗作者改动，不改写root原CI归档全量exit2。没有重复旧97或重新运行产品/测试/CI/云。
+
+R29B实质提交 `c7d650a3dcb97b03b3681e505704474b034a3dba` 已实际push到`codex/documentation-r29`；远端精确head核同，worktree clean。只补此次行政回执，最终行政HEAD由回报提供；资料截止仍为70b24c90，不跟随或拼接后发未知绿。

@@ -30,3 +30,33 @@ Agent-Role: documentation；Prompt-Ref: `ROLE-documentation-R29-CHECKPOINT-20261
 | 本岗留痕和下游登记 | `agents/documentation/WORKLOG.md`、`reports/modules/documentation.md`、`records/handoffs/documentation.json`、本prompt |
 
 实际采用直接核已发表报告/Git的分支：本轮没有开发岗活跃实例，未伪造其答复。实际向提示词岗通知本ID和产物映射，测试岗通信0。未执行任何“优化prompt建议版”，不增加学生人工12/3/5或自动充六版数量。只做文档、公开数据解析/hash和Git；没有新产品测试、云动作或独立验收。
+
+## R29B 后发实际派工（另一个实际任务，不充作同prompt演进）
+
+追加Prompt-Ref：`ROLE-documentation-R29B-APPEND-20261029-v1`；发送者/执行者均为AI岗位。原R29派工和来源截止不回写。
+
+实际主派工原文：
+
+```text
+追加R29B事实更新，仍文档岗不接触独立测试PRIVATE、不联系测试岗。root当前0bffe0c535e5897890aebf30879fdd3839dc52d6（reviewer文档d470a65d将随后合），请在你的原worktree先clean核验后ff/merge准确root0b，不覆盖任何别岗文件。只更新你自有 reports/final/engineering-checkpoint-r29-20261029.md、docs/reports/r29-student-fact-index.md、docs/reports/r29-documentation-evidence.md +四件。新后端41a111f2/final a13：相同queryhelper净-3，152本地passed；DB8f290307/finalbc4d：catalog有序映射净-4，133 passed/43未选；审核d470（技术901a）报告reports/reviews/dry-r29b-20261029.md，72检查无新增P1/P2。两产品准确集成0b，固定cloc tmp/768_integration_r29/source-count-r29b.json 当前root还未提交（我稍后给已追踪版），5880/65files仍超780。原生CI40827655008(0b push)真实进行中，目前static/frontend success、native contracts/coverage仍跑，不能先写passed。旧CI7b/796/89单独保留历史。QA本地v2.3新完整E2E05:58:57Z模拟HTTPS，结果尚未收到，Linux通用工具子集拟免费Actions明确4CPU不是正式8CPU。旧cloud NP/旧f7性能与原两机04:59保盘停止自动释放-仍不改；无新启云。先核公开角色四件/准备事实更新，等root给CI和QA公开终态再封档，不写预测事实。root同步会改README/coordinator handoff，勿碰。较短追加即可，不重复97旧artifact/全量文档测试。
+```
+
+实际后续指令原文：
+
+```text
+root新docs-only精确2530ee2e，已包含d470审核及已跟踪tmp/768_integration_r29/source-count-r29b.json（count.commit仍准确0b），README和handoff当前5880已同步。可ff到2530再仅写你自有文件。新CI和QA终态仍等待，不重跑旧97件文档核验。
+```
+
+实际采用：clean后ff到准确0b再2530；只在原三文档和岗位留痕追加R29B；两产品blob/8件公开来源和原152/133 XML定向核，不复验旧97。CI与QA等公开终态再写结果，未以测试器模拟或4CPU子集替代云/SUT性能。不改学生研究正文、不新增本人12/3/5计数。该ID对应三文档R29B区及本岗四件，改进理由是避免后发源、旧CI和云证据串错版本。
+
+实际收尾指令原文：
+
+```text
+root完整公开CI/count归档已commit 4b4e792b（push进行中），请ff到该准确commit再仅写你的7文件。有新一个格式边界：原CI build.log第12行Vite ANSI警告带真实尾空格，cached全量diff-check exit2；没有抹原件，原ZIP及memberSHA对上，限定其他源码/metadata检查0，原始stdout/原因见records/ci/r29b-0bffe0c5-40827655008/diff-check-scope.PUBLIC.json。root首回执脚本heredoc终止符拼错导致SyntaxError、未写文件后修正，也在该JSON诚实保留。不称全量diff-check clean。QA PUBLIC NP待测试岗，先可封当前已知CI/代码/NP未放行阶段，后发若新工具结果再追加准确截止，别一直等未知绿。
+```
+
+```text
+QA已正式PUBLIC NP，root仅复制允许原件到 records/qa-tool/r29b/LOCAL_V2_3_SELFTEST_RESULT.json +publication-receipt.PUBLIC.json，SHA49b0f76e1b2f2a1b736236a21c6d48c74ee7679a09c816408097e06baa755468，3802B。已commit root70b24c9082e47130c4a58af8ecdccabc3691c8fe（含4b全部CI）。可ff该准确源后核这一件PUBLIC并将本阶段准确NP封档，不等未知新绿。来源范围scope模拟HTTPS、SUT/cloud0；fullcohort但后置114/400 snapshot、audit100、286预算未观察，真实5/15误配vs要求15/40。新正确预算有限后置+后续全新完整链尚待，不把片段拼接。root未读PRIVATE。你只改自己7文件，简短追加并实际commit/push后交SHA。
+```
+
+本轮末实际收到CI终态消息的限定补充：原tmp/backend CI发现范围不含tmp765/766新本地项，CI796不含152/133；新行覆盖2502/2773=90.22719076812116%、分支713/848=84.08018867924528%、组合88.7876不是行覆盖。06:18:12Z只读VM列表两行只复核STOP/节省，auto“-”仍引用04:59详情。以上只按实际公开材料与root消息更新，不造新用户原话或学生经历。
