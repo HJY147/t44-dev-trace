@@ -1,0 +1,158 @@
+{
+  "schema": "t44-neutral-r30-plan-v1",
+  "status": "TEMPLATE_UNREADY_NOT_AUTHORIZED",
+  "synthetic": true,
+  "root_admit_preparation": false,
+  "run_id": null,
+  "namespace": null,
+  "source": {
+    "git_commit": null,
+    "native_ci_run": 40827655008,
+    "manifest_sha256": null,
+    "files_proof_sha256": "ed7a7d613c8ccb31ccd7dceb3151a4d4da9ca2402aa2ba6645457a9b12273d6c",
+    "artifact_sha256": "650ad1a2782396bdebfb05d722685d7ba9a65e519786447972612f0a1c407656",
+    "openapi_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "bundle_manifest_sha256": null,
+    "context_records": null,
+    "expected_runtime_files": null,
+    "actual_loaded_receipt_sha256": null,
+    "actual_loaded_receipt_path": null,
+    "actual_loaded_observed_at": null,
+    "actual_loaded_full_chain_reviewed_by_root": false
+  },
+  "public_tool_approval": {
+    "status": "PUBLIC_0B_V24_INTERFACE_PUBLISHED_ACTUAL_APP_STILL_PENDING",
+    "supports_source_git": null,
+    "adapter_sha256": null,
+    "receipt_sha256": null,
+    "root_relayed_approval": false
+  },
+  "target": {
+    "compose_project": null,
+    "database": null,
+    "mysql_host": "mysql",
+    "mysql_port": 3306,
+    "mysql_user": null,
+    "binding_sha256": null,
+    "origin": null,
+    "connect_ip": null,
+    "ca_sha256": null
+  },
+  "images": {
+    "backend": null,
+    "load_python": null
+  },
+  "runtime_roles": {
+    "mysql": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "rabbit": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "api": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "consumer": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "web": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "tls-gateway": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "scheduler": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    },
+    "load": {
+      "required": true,
+      "running_observed": false,
+      "receipt_sha256": null
+    }
+  },
+  "window": {
+    "start_utc": null,
+    "end_utc": null,
+    "stop_utc": null
+  },
+  "seed": {
+    "seed": null,
+    "anchor_utc": null,
+    "fresh_empty_database_required": true,
+    "all_records_are_synthetic": true
+  },
+  "fixture_baseline_counts": {
+    "projects": 40,
+    "tasks": 6000,
+    "dependencies": 9000,
+    "reviews_and_decisions": 15000
+  },
+  "authorized_count_delta": {
+    "projects": 0,
+    "tasks": 400,
+    "dependencies": 0,
+    "reviews_and_decisions": 0
+  },
+  "authorized_project_ids": [],
+  "allowed_writes": [],
+  "benchmark_grant_allow": false,
+  "readiness": {
+    "source": {
+      "sha256": null,
+      "completed_at": null
+    },
+    "images": {
+      "sha256": null,
+      "completed_at": null
+    },
+    "transfer": {
+      "sha256": null,
+      "completed_at": null
+    },
+    "preflight": {
+      "sha256": null,
+      "completed_at": null
+    },
+    "all_ready_at": null,
+    "admin_preserves_image_pythonpath": false,
+    "fixture_ready_at": null
+  },
+  "budget": {
+    "helper_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+    "actual_admission_receipt_sha256": null,
+    "must_hold_new_strict_kind_admission_and_operation_lock": true,
+    "probe_receipt_kind": "actual-owned-mysql-budget-v4",
+    "legacy_sha_field_meaning": "actual_admission_receipt_sha256 binds original GEN probe raw bytes; live readmission is separate wrapper admission.PUBLIC.json"
+  },
+  "role_count_note": "APP idle6; scheduler actual token plus scheduler-start => APP7; LOAD separate; one-off operation containers separate",
+  "session_expiry_reserve_seconds": 30,
+  "service_name": null,
+  "gen_binding": {
+    "path": null,
+    "sha256": null,
+    "original_host_path": null
+  },
+  "lifecycle": {
+    "t0_utc": null,
+    "cost_stop_utc": null,
+    "packet_cutoff_utc": null
+  },
+  "source_profile": {
+    "path": "/neutral-input/source-profile.PUBLIC.json",
+    "sha256": null
+  }
+}

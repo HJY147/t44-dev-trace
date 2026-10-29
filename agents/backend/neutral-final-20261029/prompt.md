@@ -1,0 +1,9 @@
+# ROLE-backend-FINAL-PROFILE-20261029-v1
+
+root原文：部署岗发现新候选入口阻塞：agents/backend/neutral-r30-cas/ 的 guard/manifest仍硬钉旧0b、source0c5b/bundleb2db/backend8e/60runtimefiles。新候选冻结后需要你提供新目标身份绑定的18文件manifest；先将结构/事实校验与明确root冻结的目标profile分开，使profile显式包含实际source SHA/source/bundle manifest SHA/镜像config/实际runtimefiles集合，严格验证而非跳guard。不能把旧0b材料重标为新源，不改历史已执行目录。请给部署岗中性接口（部署岗/root/deployment_preparation_r30），使其能用最终真实build receipt派生新profile，backend负责review该profile/新producer后固化精确manifest。产品代码优先20:15冻结，这个准备可之后紧接着做。
+
+root后续原文：最终集成product source已冻结356f29983c904e949245aedfad464efc1bf7b63d（含DB/FE），请producer新profile只支持这个实际source。部署正build此source；不要混用你单岗17771e产品SHA。QA公开approval后续会匹配这个source（未有actual image时模板拒）。f accounts中性schema/operator schema由新独立QA发布后我转你们，不能从用例猜；f fixture你与部署owner直接对齐固定CLI。最终真实规模5817超717，我们不造达标。
+
+root后续原文：为节省并发槽，请source-aware producer先完成严拒null/false模板的代码与离线测试并提交；实际build身份出来前不必占槽等待。与部署把纯数据profile/manifest派生和审核边界明确后即可最终返回，我会接续或在需要时定向唤醒。文档汇总岗接下来需要槽位，不能让“等artifact实际值”成为空转。f fixture若归部署固定admin action，则你交对齐schema即可，不要扩写第二套准备工具。
+
+授权只读753中性两PUBLIC文件（非case/私源）及部署实际6JSON。实际已读source/bundle/profile/fileprobe；F字段据PUBLIC契约对齐schema，执行归部署，未另写F工具。新目录18 runtime，新SOURCE356/ADAPTER15b，真实CI两manifest原字节、profile原false不改。结构事实独立check不授权，生产load必须原profile SHA+roottrue。原brief中actual_runtime_files_sha256字段未在真实bundle出现，实际原件差分8红31绿保留；源码按原files['actual-runtime-files.json'].sha256修，不改原bundle/补别名。最终40离线检查0.31s绿：动态3/2合成与实际CI94/60事实均核，实际CIprofile仍false被拒；无云/APP导入/真实session/QA验收。actualimport observed_utc与plan新鲜时间严格原值等，不retime旧receipt。运输新薄policy归部署，不改旧运输。
