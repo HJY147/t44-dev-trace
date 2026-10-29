@@ -2,6 +2,7 @@
 import argparse,ast,hashlib,json,os,re
 from pathlib import Path
 NEW='90b734f65ce6ee9f5c217e885bc7ea4857e32b48';OLD='356f29983c904e949245aedfad464efc1bf7b63d'
+TEMPLATE_PINS={'F04-CONTINUOUS.PUBLIC.py': '2a9084a085f880da86428b04bf15149ce9fed67eadd74ace2cb1cdf3775df7c5', 'P04-CONTINUOUS.PUBLIC.py': '7e662ad294cbadc146f6f8ed4fcfb79d4048077eb25eeab0428ad7d81085464d', 'F04-TRANSPORT-APP.PUBLIC.py': 'c9a600a583de51885c6d57461e61955bda5fcb0348051537c964cc64b558f66e', 'F04-TRANSPORT-LOAD.PUBLIC.py': '8774d8f68a19db5dfe7742378a9f32c9912f9610fde8353879473ff0053bdb34', 'P04-TRANSPORT-APP.PUBLIC.py': '8f15a8e4487ffc51097f411141a66dd4f05f87cb5d1f9d3537e34ed39592dfce', 'P04-TRANSPORT-LOAD.PUBLIC.py': 'f7215ee85f5f6229bdf6ba6c82d4870b52b8369a4df4eedf84bff24e76a50006', 'final-app-prepare-resume04.py': 'd3a02f332d577e5e66738ebe279983447a7fb56481e88bd876ec42779e403b25', 'final-timeplan-resume04.py': '524c65ab7713a6d4581f452147a655a591c67a6de0793c8d122dff1e83e816dd', 'final-transport-profile.py': 'b3d4f734c83f55975d25ff3a09f1463d61b8e3b943e9991021cfa861dc2d3e2b', 'final-f-operator.py': '69bd7b3fb8382467b8baf514e43eee274d8653df7aa4ea6568a6c7bd0bf9bfdc'}
 OLD_CODE='023063c342854c7b2bea107774007fcd89973a4d0ab85f5841db31a6a8cb2a5e';OLD_PROFILE='ce3975d1fb5e6f219467fa61cdd0386a182851145993a2a4cf5300688a5cbe5c';OLD_BUNDLE='1ddafb7aaa1c552172cc5a0c0f48881412a8fa1fabbb400037854f4bba77a6a2'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def read(p):return json.loads(p.read_bytes())
@@ -40,6 +41,8 @@ def main():
  for n,v in files.items():put(a.output_code/n,v)
  put(a.output_code/'code-manifest.PUBLIC.json',encoded(newmanifest));codepin=sha(a.output_code/'code-manifest.PUBLIC.json')
  tools=a.tools
+ for name,pin in TEMPLATE_PINS.items():
+  if sha(tools/name)!=pin:raise ValueError('EXACT_REVIEWED_TEMPLATE_PIN_REQUIRED:'+name)
  texts={n:(tools/n).read_text() for n in ['F04-CONTINUOUS.PUBLIC.py','P04-CONTINUOUS.PUBLIC.py','F04-TRANSPORT-APP.PUBLIC.py','F04-TRANSPORT-LOAD.PUBLIC.py','P04-TRANSPORT-APP.PUBLIC.py','P04-TRANSPORT-LOAD.PUBLIC.py','final-app-prepare-resume04.py','final-timeplan-resume04.py','final-transport-profile.py']}
  outputs={}
  for n,text in texts.items():
