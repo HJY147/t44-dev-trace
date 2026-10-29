@@ -1,0 +1,19 @@
+F401 [*] `time` imported but unused
+  --> tmp/758_deployment_neutral_admin_r30/test_admin_wrapper.py:19:8
+   |
+17 | import tempfile
+18 | import threading
+19 | import time
+   |        ^^^^
+20 | import types
+21 | import unittest
+   |
+help: Remove unused import: `time`
+   |
+18 | import threading
+   - import time
+19 | import types
+   |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.
