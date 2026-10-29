@@ -527,3 +527,8 @@ Issue12限定评论6473102439已发布并原文回读完全匹配，技术提交
 ### R29 准备链限定审核（2026-10-29）
 
 backend650ba6a + deployment40631378/coread1f183c：限定离线范围无新增 P1，仅作为安装/新环境 preflight 候选。自有7项检查通过0.163秒；首次macOS临时目录canonical测试脚本失败保留，仅修审核脚本resolve。13件白名单日期差与assert保留、manifest/CLI/pin、整段三sh大小、JSONL、540成本阈值前不启动consumer、错image清理不发stop已核。未动云/Docker/SUT/真实session/独立测试私件；无正式性能或规模通过结论。报告 `reports/reviews/r29-preflight-20261029.md`，证据 `tmp/773_reviewer_r29_preflight_20261029`，提示词 `ROLE-reviewer-R29-PREFLIGHT-20261029-v1`。先向根发技术结论，再补行政留痕。
+
+
+### R29 严格规模独立复计与边界（2026-10-29）
+
+AI reviewer只读总协调5f25828e，原固定cloc2.10实际65应用文件5898、超798，对f7应用diff空。产品改动/实际净减0；未找到≥798等价方案。14字段现有DDL默认重复仅在副本205→191、整项目投影5884仍超784；没有行为回归或生产应用。旧37方案已实施，剩余旧预算不重叠最乐观74仍超724。报告 `reports/reviews/r29-scale-boundary-20261029.md`；773/scale-readonly保留脚本、计数、未应用patch；prompt `ROLE-reviewer-R29-SCALE-20261029-v1`。未动云/正式测试/独立测试私件。
