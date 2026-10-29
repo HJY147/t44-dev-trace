@@ -1,0 +1,145 @@
+[
+  {
+    "label": "before committed application metric",
+    "command": [
+      "python3",
+      "scripts/metrics/source_count.py",
+      "--cloc",
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/cloc-2.10.pl",
+      "--output",
+      "agents/database/scale-r29/before-cloc.json",
+      "--require-range"
+    ],
+    "exit": 1,
+    "source": "f5e0d95ea68af33dfb213ac6e8d6b496527ed7b2",
+    "result": "5898 / 65 files"
+  },
+  {
+    "label": "final original module and new equivalence checks",
+    "env": {
+      "PYTHONPATH": "backend"
+    },
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "pytest",
+      "-c",
+      "backend/pyproject.toml",
+      "tmp/769_database_scale_r29/769_schema_equivalence.py",
+      "tmp/backend/persistence",
+      "tmp/812_database_size",
+      "tmp/backend/messaging/980_delivery.py",
+      "tmp/backend/scheduling/990_runtime.py",
+      "tmp/backend/scheduling/974_application.py",
+      "-m",
+      "not integration",
+      "-q",
+      "--junitxml=agents/database/scale-r29/final-original-and-equivalence.xml"
+    ],
+    "exit": 0,
+    "result": "168 passed, 43 deselected, 3 warnings in 28.77s",
+    "log": "final-original-and-equivalence.log"
+  },
+  {
+    "label": "new equivalence after test-text wording correction",
+    "env": {
+      "PYTHONPATH": "backend"
+    },
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "pytest",
+      "-c",
+      "backend/pyproject.toml",
+      "tmp/769_database_scale_r29/769_schema_equivalence.py",
+      "-q",
+      "--junitxml=agents/database/scale-r29/final-equivalence.xml"
+    ],
+    "exit": 0,
+    "result": "41 passed in 0.24s",
+    "log": "final-equivalence.log"
+  },
+  {
+    "label": "original native MySQL target without disposable DB configuration",
+    "env": {
+      "PYTHONPATH": "backend"
+    },
+    "unset_env": [
+      "DATABASE_URL",
+      "T44_TEST_CREDENTIALS",
+      "CI"
+    ],
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "pytest",
+      "-c",
+      "backend/pyproject.toml",
+      "tmp/backend/persistence/988_mysql.py",
+      "-q",
+      "--junitxml=agents/database/scale-r29/mysql-unavailable.xml"
+    ],
+    "exit": 0,
+    "result": "17 skipped in 0.18s; no native database test executed",
+    "log": "mysql-unavailable.log"
+  },
+  {
+    "label": "Ruff",
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "--config",
+      "backend/pyproject.toml",
+      "backend/t44/persistence/schema.py",
+      "tmp/769_database_scale_r29/769_schema_equivalence.py"
+    ],
+    "exit": 0,
+    "log": "ruff.log"
+  },
+  {
+    "label": "format",
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "format",
+      "--config",
+      "backend/pyproject.toml",
+      "--check",
+      "backend/t44/persistence/schema.py",
+      "tmp/769_database_scale_r29/769_schema_equivalence.py"
+    ],
+    "exit": 0,
+    "log": "format.log"
+  },
+  {
+    "label": "Bandit touched production file",
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "bandit",
+      "-q",
+      "backend/t44/persistence/schema.py"
+    ],
+    "exit": 0,
+    "log": "bandit.log"
+  },
+  {
+    "label": "after committed application metric",
+    "command": [
+      "python3",
+      "scripts/metrics/source_count.py",
+      "--cloc",
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/cloc-2.10.pl",
+      "--output",
+      "agents/database/scale-r29/after-cloc.json",
+      "--require-range"
+    ],
+    "exit": 1,
+    "source": "274e2e6bfa6dfb2d90926773002a1a62808ec060",
+    "result": "5887 / 65 files; still 787 above limit",
+    "log": "after-cloc.log"
+  }
+]

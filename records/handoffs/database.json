@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "core-table-default-select-local-complete-awaiting-root-review-ci",
-  "implementation_status": "准确82e92dfc仅Rows默认全列构造一行；本地288编译对等价/最终契约30通过，原非integration138通过17未选；应用5933净0超833；新MySQL/完整CI/独立及正式性能未运行。",
+  "stage": "r29-frozen-ddl-adapter-local-candidate-size-target-not-met",
+  "implementation_status": "局部产品274e2e6b仅schema适配；应用5898→5887净减11仍超787，100–250未达；本地联合168通过/43未选，新增最后41通过；原988无测试库17跳过。待根决定是否采用，未独立/native/云验收。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -639,7 +639,15 @@
       "path": "agents/database/pool-config-20261028/report.md",
       "kind": "本轮真实报告/命令/预算边界",
       "status": "已创建"
-    }
+    },
+    "backend/t44/persistence/schema.py",
+    "tmp/769_database_scale_r29/769_schema_equivalence.py",
+    "agents/database/scale-r29/report.md",
+    "agents/database/scale-r29/verification.json",
+    "agents/database/scale-r29/before-cloc.json",
+    "agents/database/scale-r29/after-cloc.json",
+    "agents/database/scale-r29/boundaries.json",
+    "agents/database/prompts/ROLE-database-SCALE-R29-20261029-v1.md"
   ],
   "interfaces": [
     {
@@ -1135,9 +1143,15 @@
         "reports/modules/database.md",
         "records/handoffs/database.json"
       ]
+    },
+    {
+      "id": "ROLE-database-SCALE-R29-20261029-v1",
+      "archive": "agents/database/prompts/ROLE-database-SCALE-R29-20261029-v1.md",
+      "actual_prompt_source": "本轮总协调派工原文",
+      "improvement_reason": "先落地并同口径量度候选、拒绝净增和格式收益，明确字节不变边界与本地/native验收差别，不编造百行收益"
     }
   ],
-  "updated_at": "2026-10-28T08:56:50.906711+00:00",
+  "updated_at": "2026-10-29T05:01:10.246571+00:00",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1438,6 +1452,12 @@
       "implementation_status": "修复反射漏失的7项原冻结性质；最终26d6328a本地31原生案例与53针对目标通过，完整CI/根复审/云验收未做；固定5933超833。",
       "superseded_by": "ROLE-database-POOL-CONFIG-20261028-v1",
       "preserved_details": "catalog_audit_20261028"
+    },
+    {
+      "stage": "core-table-default-select-local-complete-awaiting-root-review-ci",
+      "implementation_status": "准确82e92dfc仅Rows默认全列构造一行；本地288编译对等价/最终契约30通过，原非integration138通过17未选；应用5933净0超833；新MySQL/完整CI/独立及正式性能未运行。",
+      "superseded_by": "ROLE-database-SCALE-R29-20261029-v1",
+      "preserved_details": "select_resume_20261028 / pool_config_20261028"
     }
   ],
   "refactor_removed": [
@@ -1760,5 +1780,49 @@
       "within_5100": false,
       "all_unique_list_history_preserved": true
     }
-  ]
+  ],
+  "scale_r29_20261029": {
+    "base": "f5e0d95ea68af33dfb213ac6e8d6b496527ed7b2",
+    "source_commit": "274e2e6bfa6dfb2d90926773002a1a62808ec060",
+    "branch": "codex/database-scale-r29",
+    "prompt_ref": "ROLE-database-SCALE-R29-20261029-v1",
+    "report": "agents/database/scale-r29/report.md",
+    "verification": "agents/database/scale-r29/verification.json",
+    "boundaries": "agents/database/scale-r29/boundaries.json",
+    "application_before": 5898,
+    "application_after": 5887,
+    "application_files": 65,
+    "persistence_before": 1672,
+    "persistence_after": 1661,
+    "net_saved": 11,
+    "excess": 787,
+    "range_passed": false,
+    "target_100_to_250": "NOT_ACHIEVED",
+    "rejected_projection_delta": 3,
+    "combined_passed": 168,
+    "combined_deselected": 43,
+    "combined_warnings": 3,
+    "last_new_tests_passed": 41,
+    "counts_overlap": true,
+    "native_mysql": "NOT_RUN: original 988 17 skipped; no disposable database configured",
+    "full_ci": "NOT_RUN",
+    "independent_acceptance": "NOT_RUN",
+    "cloud": "NOT_RUN",
+    "formal_performance": "NOT_RUN",
+    "public_interfaces": "unchanged",
+    "frozen_sql_checksum": "unchanged",
+    "original_tests": "unchanged",
+    "cross_backend_business_changes": false,
+    "limitations": [
+      "Four-space declaration boundaries are valid only after the original frozen-DDL checksum succeeds; new DDL versions must re-review adapter.",
+      "SQLAlchemy constraints are sets; iteration order is not guaranteed, ordered columns and full compiled declaration content checked.",
+      "Local module checks and dialect compilation do not prove native MySQL, concurrent locks or independent acceptance."
+    ],
+    "publication": {
+      "authorized": "stage commit/push",
+      "status": "stage committed; branch push receipt returned separately to coordinator",
+      "pr": null,
+      "integrated": false
+    }
+  }
 }

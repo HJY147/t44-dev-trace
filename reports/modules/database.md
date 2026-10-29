@@ -1,3 +1,13 @@
+# 数据库模块：R29 固定DDL适配局部候选，实减11，规模仍未达标
+
+2026-10-29，数据库AI，ROLE-database-SCALE-R29-20261029-v1。独立分支 codex/database-scale-r29，从精确 f5e0d95e 派生，产品274e2e6b。只改 schema.py 的三份列表汇合与校验和保护下的固定声明分段；DDL/hash、迁移、Rows、锁、事务、鉴权重验、审计及seed规模与原测试均不改。
+
+原source_count/cloc2.10对已提交源实测应用5898→5887/65文件、persistence1672→1661，净减11；两次范围检查exit1，仍超787，本岗争取100–250未达到。首个共用列投影实测净增3已否决，原件保留；不以格式化和SQL目录SUM冒充应用收益。
+
+原模块与新增769最终联合168通过/43未选/3警告；新增41再跑通过，两组重叠不累加。18表双方言DDL/列/索引与20个冻结payload逐项旧源等价、checksum仍先于parser；原988无显式测试库配置17跳过，未称真实MySQL通过。完整CI/覆盖率/独立验收/HTTP/云性能未跑。缩进格式依赖限定在原checksum通过的现有DDL，新版本需重审；等待根审核是否采用。
+
+完整[本轮报告](../../agents/database/scale-r29/report.md)、verification.json、原始失败/警告、计数和边界对象证据归档在 agents/database/scale-r29/。以下历史原样保留。
+
 # 数据库模块：默认全列查询候选待根审核/CI
 
 2026-10-28：准确基线a12，先行设计6a1cb86b，产品/验证源码82e92dfc420690980a6e16c88f209d08ab709e49。仅RowsGateway.rows默认tuple(t.c)→(t,)一行，SQLAlchemy2.1.6官方/本地三源字节相同；显式投影、参数/锁/排序分页、映射/事务及原schema审计不变。18表288对MySQL/SQLite编译签名同；最终新契约目标30通过，原persistence/812非integration138通过、17未选、2原警告；限定Ruff/Bandit通过。固定应用5933→5933，净有效行0，仍超833，不作规模通过声明。

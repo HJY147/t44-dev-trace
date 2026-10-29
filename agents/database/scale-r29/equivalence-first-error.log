@@ -1,0 +1,18 @@
+F........................................                                [100%]
+=================================== FAILURES ===================================
+_________ test_769_every_frozen_ddl_payload_has_identical_declarations _________
+
+baseline = <module 't44.persistence.baseline_schema_r29' from '/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-127/frozen-schema0/baseline_schema.py'>
+
+    def test_769_every_frozen_ddl_payload_has_identical_declarations(baseline):
+        sql = schema.ddl_text()
+        bodies = [body for _, body in re.findall(r"CREATE TABLE (\w+) \(\n(.*?)\n\) ENGINE=", sql, re.S)]
+        bodies.extend(body for _, body in re.findall(r"ALTER TABLE (\w+)\s+(.*?);", sql, re.S))
+>       assert len(bodies) == 19
+E       assert 20 == 19
+E        +  where 20 = len(["    id INT UNSIGNED NOT NULL AUTO_INCREMENT,\n    username VARCHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NUL...TRAINT ck_iterations_versions CHECK (version BETWEEN 1 AND 2147483647 AND plan_version BETWEEN 1 AND 2147483647)', ...])
+
+tmp/769_database_scale_r29/769_schema_equivalence.py:33: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_769_every_frozen_ddl_payload_has_identical_declarations
+1 failed, 40 passed in 0.30s

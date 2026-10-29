@@ -372,3 +372,15 @@
 - 封档git diff --cached --check真实exit2，原因是旧pytest红log/XML原始E行8处尾空格；原字节保留，raw-diff-check.json存完整原诊断。上一&&链因此未提交/推送，未把整包检查写成通过；限定产品/测试源码与说明check单列执行。
 
 - 四件/证据5248784a已push；按根明确授权仅Issue4发表一次交接6467541006，随后按comments/:id精确GET全文一致，github-publication.json保存实际回执。backend再次确认责任边界与38目标只属配置兼容。收尾仅证据，产品/测试仍92cf5c10，不再测试/SQL/HTTP/云。
+
+
+## 2026-10-29 — ROLE-database-SCALE-R29-20261029-v1，固定DDL适配局部候选
+
+- 本岗独立codex/database-scale-r29从f5e0d95e派生；读取AGENTS、目录/工作流约定、原计数器及persistence主要实现。当前调度覆盖旧初始化TASK阶段，不读独立私有目录/讨论，不联系测试岗，不操作云或生产库。
+- 固定工具核hash，原source_count对精确基线实测5898/65files、exit1；persistence1672。首个列属性投影共用候选已真正实现并跑原956+794共34通过，但migrations374→377/净+3，否决并存差异。首次直接目录cloc漏py筛选包含SQL，原JSON保留且明确不用于应用SUM。
+- 真正产品候选274e2e6b只改schema.py：声明列表三合一、原checksum保护下按固定声明缩进分段。原20个CREATE/ALTER payload差分、18表×MySQL/SQLite完整列/DDL/索引及四种未审文本拒绝由新增769验证；没有改SQL、checksum、API、事务/锁/审计/重验/seed规模。
+- 新增测试初稿误计19payload导致1红40绿，实际18CREATE+2ALTER=20，核原SQL后只修新增测试。失败log/XML原样归档。初次Ruff F401未使用Path已移除，最终Ruff/format/schema Bandit通过。
+- 最终原persistence/812/Outbox980/Scan990+974和新增769联合168通过/43未选/3原警告，28.77s；新增769最后41通过0.24s，结果重叠不累加。原975默认6000规模和V2性质回归实际执行，原文件未改。
+- 无显式可丢弃测试库配置：原988实际17跳过，不冒充真实MySQL。没有读取生产凭据或新建DB连接，没有完整CI/覆盖率/HTTP/独立/云性能。
+- 原source_count/cloc2.10对精确274e2e6b实测5887/65files、exit1；persistence1661/schema106，真实净减11，仍超787。主动排除formatter额外两行收益，本岗100–250目标未达到。历史SQL必须保留；没有找到能保持完整语义的可信百行去重块。
+- 风险：适配器只针对checksum已通过的既有声明格式，新DDL版本必须重审；约束set迭代顺序不承诺，已独立核列顺序和完整DDL声明内容；原生MySQL/完整门禁仍待总协调安排。只交局部候选，不自行整合。完整命令/日志/JSON在agents/database/scale-r29/，四件及提示词归档。
