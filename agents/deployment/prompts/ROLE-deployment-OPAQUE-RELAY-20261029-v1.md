@@ -17,3 +17,5 @@
 导入故障恢复提示摘要（部署AI）：原06尚未进入main，stdout空、790_budget导入失败。不能重新签授权或重跑完整wrapper。根明确准许的06b必须核现有grantSHA/05/旧失败及split不存在，只移除调用者-I，原host和全部参数不动，排他新日志再接后半。先在本地用原--help复现-I失败/去-I可达，不用云试错；不将help成功当业务完成。
 
 单文件搬运提示摘要（部署AI）：中性封包可能数百KB，不复用47KB短诊断协议。用≤100行可审工具固定原sealed路径/18448/exactLOAD来源/原phase证书，≤4MiB实际PUBLIC size/hash；LOAD严格CA/IP fetch一次和排他保存，再原helper open。不得解读payload或独立测试PRIVATE，解密后仅测试岗读。成本截止独立保留，不加新凭据/SG/IAM或SUT动作，先给简单可执行CLI再补记录。
+
+收尾提示摘要（部署AI）：只在根实观测QA结束后封本岗collector，LOAD对原mirror-final与真实raw和APP公开封尾bytes/SHA精确核尾；预算截止前未完整就先missing再停保prefix，不继续拖延。原GEN stop保卷，owned compose ps只本轮APP，不查询/停止独立QA。保留完整0/null和SHA；guest日志不能声称云停费，根另做provider经济停与autoRelease“-”。只给一个有限≤8KB工具，不加新protocol/credentials/server，不与QA通信。
