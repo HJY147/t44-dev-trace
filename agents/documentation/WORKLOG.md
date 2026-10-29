@@ -516,3 +516,9 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-29T06:30:27.443863+00:00 R29B最终增量校核通过：新增27本地链接、恰7自身路径/无新建、JSON解析与旧顶层逐值保留、原promptrefs前缀、限定作者key/token形状无匹配；显式暂存后的本岗作者diff-check单独exit0，非root原CI整包check绿。准备实质commit/push并只补实际发布回执，产品/测试/云执行0。
 
 - 2026-10-29T06:31:16.125434+00:00 R29B实质提交c7d650a3dcb97b03b3681e505704474b034a3dba已由本岗commit/push至origin/codex/documentation-r29；精确ls-remote核同、worktree clean。[skip ci]仅避免纯文档归档启动产品CI，未改workflow。此后只补发布回执，不读取新QA/云资料、不变更70b24c90公开截止或NP结论，不新建PR/Issue/审核success。
+
+## 2026-10-29T12:07:22.231386+00:00 FINAL20261029 先行设计
+
+- 从356f299新建documentation-final-20261029独立树。读AGENTS/TASK、documents主技能/create/render规则和workspace loader；实际向四个具名非测试岗送问，BE/部署已实回，DB/FE初始未回。只读公开产品/spec/旧文档及root指定PUBLIC计数；根status只显私密目录名称未开内容。
+- 初次路径猜specs/requirements等目录不存在，随后git索引确认实际specs/*.md；首次长技能/旧稿/计数输出截断后分段和定向取字段，不据截断称完成全部来源校验。
+- 先设计提交，尚未author新DOCX或marker；计划新三稿先导、测试稿等明确公开结果。保留5817/65超717、学生研究及人工证据缺口。
