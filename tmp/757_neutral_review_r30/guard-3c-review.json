@@ -1,0 +1,46 @@
+{
+  "target": "3c1967b34c2f724682b47920145497e4df4abcdc",
+  "real_pure_module_compile_imports": [
+    "guard",
+    "http_primitives",
+    "admin_seed",
+    "admin",
+    "prepare_http",
+    "make_evidence",
+    "assemble"
+  ],
+  "results": [
+    {
+      "scenario": "baseline",
+      "result": "ACCEPTED"
+    },
+    {
+      "scenario": "wrong-sut",
+      "result": "REFUSED:EXACT_BACKEND_AND_LOAD_CONFIG_IDENTITIES_REQUIRED"
+    },
+    {
+      "scenario": "wrong-load",
+      "result": "REFUSED:EXACT_BACKEND_AND_LOAD_CONFIG_IDENTITIES_REQUIRED"
+    },
+    {
+      "scenario": "wrong-IP",
+      "result": "REFUSED:EXACT_PRIVATE_IPV4_TLS_TARGET_REQUIRED"
+    },
+    {
+      "scenario": "window901",
+      "result": "REFUSED:FRESH_COMPLETE_WINDOW_REQUIRED"
+    },
+    {
+      "scenario": "actual-GEN-project",
+      "result": "REFUSED:FRESH_R30_NAMESPACE_REQUIRED"
+    },
+    {
+      "scenario": "actual-GEN-run",
+      "result": "REFUSED:FRESH_R30_RUN_REQUIRED"
+    }
+  ],
+  "original_target_IP_window_guard_defects_closed": true,
+  "GEN_binding_mapping_still_blocked": true,
+  "owner_26_tests_not_rerun": true,
+  "HTTP_or_services_or_session_calls": 0
+}
