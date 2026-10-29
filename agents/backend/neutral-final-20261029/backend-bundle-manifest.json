@@ -1,0 +1,149 @@
+{
+  "business_HTTP_SQL_cloud_QA_or_sessions_executed": false,
+  "ci_image_proofs": {
+    "backend": {
+      "actual_id": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+      "config_id": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+      "identity_kind": "classic-config-id",
+      "labels_architecture_rootfs_checked": true,
+      "ordered_layer_count": 11,
+      "success": true
+    },
+    "web": {
+      "actual_id": "sha256:8d9ee1c0f238272c89229d0d178e3a9ee7c70adc4217fbe413eea222ec953368",
+      "config_id": "sha256:8d9ee1c0f238272c89229d0d178e3a9ee7c70adc4217fbe413eea222ec953368",
+      "identity_kind": "classic-config-id",
+      "labels_architecture_rootfs_checked": true,
+      "ordered_layer_count": 11,
+      "success": true
+    }
+  },
+  "dependency_lock_sha256": "6150ccbbadfc9b94f85833785d03b3d97f231d7214ad1df14367b0ef37bc29e4",
+  "files": {
+    "actual-runtime-files.json": {
+      "bytes": 11363,
+      "sha256": "8c1fd064241ccaf86b8ca26f3cd89920c82d517aa227475f096df0155dd72958"
+    },
+    "images.tar.gz": {
+      "bytes": 125021231,
+      "sha256": "2a218e6b228c20bfa89755b6db2d4437d7afc964a5354d011be14263d3ff7b88"
+    },
+    "source-manifest.json": {
+      "bytes": 29749,
+      "sha256": "50684876e08d74e8579e99b30cd3f53b676f5e4367cadbc3bfa610714ce6b088"
+    },
+    "source-runtime-context.tar.gz": {
+      "bytes": 393912,
+      "sha256": "c0c8491d276b2388127c36a8bcb5f52eb1126a9d49da244b603ef1b227694337"
+    }
+  },
+  "frontend_lock_sha256": "461a4f3c05a314b230089298cb8551d34201127b771cd240253042370d1da335",
+  "generic_helper_sha256": "0a1c2cd5bf57717ba5218ff6bb5086d6acbb60ff54713940a6da73f495a1cfcd",
+  "github_run_id": "40869531724",
+  "images": {
+    "backend": {
+      "actual_id_in_CI": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+      "alias": "t44-backend:src-356f29983c904e949245aedfad464efc1bf7b63d",
+      "architecture": "amd64",
+      "archive_label": "21abe0842c62836f333bab6cf1b8d7d03cd19777eab49284e2ae80b570b49eb6",
+      "image_id": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+      "official_upstream_pin": null,
+      "os": "linux",
+      "repo_digests_observed_in_CI": [],
+      "revision_label": "356f29983c904e949245aedfad464efc1bf7b63d"
+    },
+    "web": {
+      "actual_id_in_CI": "sha256:8d9ee1c0f238272c89229d0d178e3a9ee7c70adc4217fbe413eea222ec953368",
+      "alias": "t44-web:src-356f29983c904e949245aedfad464efc1bf7b63d",
+      "architecture": "amd64",
+      "archive_label": "21abe0842c62836f333bab6cf1b8d7d03cd19777eab49284e2ae80b570b49eb6",
+      "image_id": "sha256:8d9ee1c0f238272c89229d0d178e3a9ee7c70adc4217fbe413eea222ec953368",
+      "official_upstream_pin": null,
+      "os": "linux",
+      "repo_digests_observed_in_CI": [],
+      "revision_label": "356f29983c904e949245aedfad464efc1bf7b63d"
+    }
+  },
+  "kind": "final-backend-web-bundle-v1",
+  "official_cache": {
+    "mysql": {
+      "alias": "t44-official-mysql:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69",
+      "architecture": "amd64",
+      "archive_label": null,
+      "image_id": "sha256:b35575a03e5327131916eb8d39222c4c89590881fb44ed69b5814910e5fefa34",
+      "official_upstream_pin": "mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69",
+      "os": "linux",
+      "repo_digests_observed_in_CI": [
+        "mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69"
+      ],
+      "revision_label": null
+    },
+    "nginx": {
+      "alias": "t44-official-nginx:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951",
+      "architecture": "amd64",
+      "archive_label": null,
+      "image_id": "sha256:88f52f3d58a505b7e1ad96ca6969478517bcccb58418e75a54223271a64da7df",
+      "official_upstream_pin": "nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951",
+      "os": "linux",
+      "repo_digests_observed_in_CI": [
+        "nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951"
+      ],
+      "revision_label": null
+    },
+    "node": {
+      "alias": "t44-official-node:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205",
+      "architecture": "amd64",
+      "archive_label": null,
+      "image_id": "sha256:dc1f22974dab4be31a8b56d58cb1f8fc218e83de83ccd831d885b3d7ac1223fb",
+      "official_upstream_pin": "node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205",
+      "os": "linux",
+      "repo_digests_observed_in_CI": [
+        "node@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205"
+      ],
+      "revision_label": null
+    },
+    "python": {
+      "alias": "t44-official-python:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70",
+      "architecture": "amd64",
+      "archive_label": null,
+      "image_id": "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77",
+      "official_upstream_pin": "python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70",
+      "os": "linux",
+      "repo_digests_observed_in_CI": [
+        "python@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70"
+      ],
+      "revision_label": null
+    },
+    "rabbitmq": {
+      "alias": "t44-official-rabbitmq:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292",
+      "architecture": "amd64",
+      "archive_label": null,
+      "image_id": "sha256:9ff2176ebe25a747d6438e419abf0afb768414ac3222e4bdd8256bc3720a57c5",
+      "official_upstream_pin": "rabbitmq:4-management-alpine@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292",
+      "os": "linux",
+      "repo_digests_observed_in_CI": [
+        "rabbitmq@sha256:0452ee3fd3b9a74160b251e693338616b464f22df4d4ba43304c101bebdca292"
+      ],
+      "revision_label": null
+    }
+  },
+  "official_load_python_identity": {
+    "actual_id": "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77",
+    "config_id": "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77",
+    "identity_kind": "classic-config-id",
+    "labels_architecture_rootfs_checked": true,
+    "ordered_layer_count": 4,
+    "success": true
+  },
+  "root_approved": false,
+  "runtime_file_count": 60,
+  "source_archive_sha256": "21abe0842c62836f333bab6cf1b8d7d03cd19777eab49284e2ae80b570b49eb6",
+  "source_manifest_sha256": "50684876e08d74e8579e99b30cd3f53b676f5e4367cadbc3bfa610714ce6b088",
+  "source_sha": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "tool_git_sha": "63c781692b66bbf75f5bb5eed3eaf95a6eb82235",
+  "tool_sha256": "add7d91065ed32779f6d692e153d31c514e2d331c9a326f59131490a33644982",
+  "transport_roles": [
+    "backend",
+    "web"
+  ]
+}

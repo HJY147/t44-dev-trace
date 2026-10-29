@@ -1,0 +1,845 @@
+F.................FF.............F.FFFF                                  [100%]
+=================================== FAILURES ===================================
+__ test_new_source_dynamic_context_and_runtime_are_accepted_as_metadata_only ___
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_new_source_dynamic_contex0/synthetic-profile.json'))
+
+    def test_new_source_dynamic_context_and_runtime_are_accepted_as_metadata_only(target):
+        plan, profile, receipt, _, _ = target
+>       assert guard.load_source_profile(plan) == profile
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/752_backend_profile_final_20261029/752_profile.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+_ test_actual_qa_approval_has_to_match_new_source_profile[qa_adapter_sha256-70e7adde284dfc543026dc15b7c1425be66197068bd59adf3862609fc7f701e5] _
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_actual_qa_approval_has_to0/synthetic-profile.json'))
+field = 'qa_adapter_sha256'
+value = '70e7adde284dfc543026dc15b7c1425be66197068bd59adf3862609fc7f701e5'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("qa_adapter_sha256", sha("not approved")),
+            ("qa_approval_receipt_sha256", sha("old receipt")),
+        ],
+    )
+    def test_actual_qa_approval_has_to_match_new_source_profile(target, field, value):
+        plan, profile, _, _, path = target
+        profile[field] = value
+        save_profile(plan, profile, path)
+        with pytest.raises(guard.Refused):
+>           guard.check_plan(plan, NOW)
+
+tmp/752_backend_profile_final_20261029/752_profile.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:225: in check_plan
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+_ test_actual_qa_approval_has_to_match_new_source_profile[qa_approval_receipt_sha256-5528467168f63dbfec6b5d3176198d2aa00dfe6903dd2b69284e94c5bac015f9] _
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_actual_qa_approval_has_to1/synthetic-profile.json'))
+field = 'qa_approval_receipt_sha256'
+value = '5528467168f63dbfec6b5d3176198d2aa00dfe6903dd2b69284e94c5bac015f9'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("qa_adapter_sha256", sha("not approved")),
+            ("qa_approval_receipt_sha256", sha("old receipt")),
+        ],
+    )
+    def test_actual_qa_approval_has_to_match_new_source_profile(target, field, value):
+        plan, profile, _, _, path = target
+        profile[field] = value
+        save_profile(plan, profile, path)
+        with pytest.raises(guard.Refused):
+>           guard.check_plan(plan, NOW)
+
+tmp/752_backend_profile_final_20261029/752_profile.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:225: in check_plan
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+_______ test_oci_descriptor_is_distinct_from_config_with_complete_proofs _______
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_oci_descriptor_is_distinc0/synthetic-profile.json'))
+
+    def test_oci_descriptor_is_distinct_from_config_with_complete_proofs(target):
+        plan, _, receipt, _, _ = target
+        for identity in receipt["identities"].values():
+            identity.update(
+                identity_kind="oci-descriptor-to-original-config",
+                actual_id="sha256:" + sha("actual OCI descriptor"),
+                actual_descriptor_sha256_recomputed_from_archive=True,
+                all_config_and_layer_descriptors_sha256_size_verified=True,
+            )
+        receipt["identity"] = deepcopy(receipt["identities"]["backend"])
+        plan["source"]["actual_loaded_receipt_sha256"] = sha(raw(receipt))
+>       assert guard.validate_loaded_receipt(plan, raw(receipt)) == receipt
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/752_backend_profile_final_20261029/752_profile.py:372: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:667: in validate_loaded_receipt
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+___ test_all_runtime_modules_compile_and_helpers_resolve_real_local_package ____
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_all_runtime_modules_compi0/synthetic-profile.json'))
+tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_all_runtime_modules_compi0')
+
+    def test_all_runtime_modules_compile_and_helpers_resolve_real_local_package(target, tmp_path):
+        plan, profile, _, directory, _ = target
+        for path in CODE.glob("*.py"):
+            py_compile.compile(str(path), cfile=str(tmp_path / (path.stem + ".pyc")), doraise=True)
+            importlib.import_module(path.stem)
+        helper = importlib.import_module("escalation_readback")
+>       result = helper.check_runtime_only(plan)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/752_backend_profile_final_20261029/752_profile.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/escalation_readback.py:155: in check_runtime_only
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+_____ test_plan_cannot_override_approved_profile_config_identity[backend] ______
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_plan_cannot_override_appr0/synthetic-profile.json'))
+role = 'backend'
+
+    @pytest.mark.parametrize("role", ["backend", "load_python"])
+    def test_plan_cannot_override_approved_profile_config_identity(target, role):
+        plan, *_ = target
+        plan["images"][role] = "sha256:" + sha("other valid config")
+        with pytest.raises(guard.Refused):
+>           guard.check_plan(plan, NOW)
+
+tmp/752_backend_profile_final_20261029/752_profile.py:442: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:225: in check_plan
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+___ test_plan_cannot_override_approved_profile_config_identity[load_python] ____
+
+target = ({'schema': 't44-neutral-r30-plan-v1', 'status': 'TEMPLATE_UNREADY_NOT_AUTHORIZED', 'synthetic': True, 'root_admit_pre...9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-182/test_plan_cannot_override_appr1/synthetic-profile.json'))
+role = 'load_python'
+
+    @pytest.mark.parametrize("role", ["backend", "load_python"])
+    def test_plan_cannot_override_approved_profile_config_identity(target, role):
+        plan, *_ = target
+        plan["images"][role] = "sha256:" + sha("other valid config")
+        with pytest.raises(guard.Refused):
+>           guard.check_plan(plan, NOW)
+
+tmp/752_backend_profile_final_20261029/752_profile.py:442: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-final-20261029/guard.py:225: in check_plan
+    profile = load_source_profile(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-final-20261029/guard.py:128: in load_source_profile
+    return check_source_profile_facts(profile)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': 'a2e19a2075fa7ab29420877bc445ff7af200fb22cfa3ded9a2e6bff231c1e262', 'actual_loaded': F...4cfd0e192838f3e4', 'backend_config_id': 'sha256:98008f92897ee0da45c2c7cc0c04ea6ba25309a549fded1a927550474f6b2c3a', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+__ test_actual_public_ci_build_shape_is_valid_without_granting_root_approval ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10569dac0>
+
+    def test_actual_public_ci_build_shape_is_valid_without_granting_root_approval(monkeypatch):
+        monkeypatch.setattr(guard, "PRODUCER_DIRECTORY", CODE)
+        profile = json.loads((CODE / "source-profile.BUILD_UNAPPROVED.PUBLIC.json").read_bytes())
+>       checked = guard.check_source_profile_facts(profile)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/752_backend_profile_final_20261029/752_profile.py:448: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = {'actual_build_receipt_sha256': '8c1fd064241ccaf86b8ca26f3cd89920c82d517aa227475f096df0155dd72958', 'actual_loaded': F...37854f4bba77a6a2', 'backend_config_id': 'sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d', ...}
+
+    def check_source_profile_facts(profile):
+        """Pure local metadata checks only; this does not approve or authorize a profile."""
+        need(
+            profile.get("schema") == "t44-final-source-profile-v1"
+            and type(profile.get("version")) is int
+            and profile["version"] == 1,
+            "SOURCE_PROFILE_SCHEMA_REQUIRED",
+        )
+        no_secrets(profile)
+        need(profile.get("source_sha") == SOURCE, "ONLY_ROOT_FROZEN_FINAL_PRODUCT_SOURCE_SUPPORTED")
+        need(profile.get("actual_loaded") is False, "BUILD_PROFILE_IS_NOT_ACTUAL_APP_IMPORT")
+        need(
+            profile.get("gen_kind") == "r30-official-backend-production-entry-window-v1"
+            and profile.get("budget_helper_sha256") == BUDGET_HELPER,
+            "SAME_REVIEWED_GENERATION_AND_BUDGET_REQUIRED",
+        )
+        for name in (
+            "source_manifest_sha256",
+            "backend_bundle_manifest_sha256",
+            "root_manifest_sha256",
+            "backend_requirements_lock_sha256",
+            "frontend_lock_sha256",
+            "actual_build_receipt_sha256",
+        ):
+            digest(profile[name])
+        for name in ("backend_config_id", "web_config_id", "load_python_config_id"):
+            digest(profile[name], image=True)
+        need(
+            type(profile["runtime_file_count"]) is int
+            and profile["runtime_file_count"] > 0
+            and type(profile["context_file_count"]) is int
+            and profile["context_file_count"] >= profile["runtime_file_count"],
+            "ACTUAL_DYNAMIC_FILE_COUNTS_REQUIRED",
+        )
+        source = read_json(
+            PRODUCER_DIRECTORY / "source-manifest.json",
+            expected_sha256=profile["source_manifest_sha256"],
+        )
+        bundle = read_json(
+            PRODUCER_DIRECTORY / "backend-bundle-manifest.json",
+            expected_sha256=profile["backend_bundle_manifest_sha256"],
+        )
+        need(
+            source["kind"] == "final-exact-public-runtime-context-v1"
+            and bundle["kind"] == "final-backend-web-bundle-v1"
+            and source["source_sha"] == bundle["source_sha"] == profile["source_sha"]
+            and bundle["source_manifest_sha256"] == profile["source_manifest_sha256"]
+            and source["dependency_lock_sha256"] == profile["backend_requirements_lock_sha256"]
+            and source["frontend_lock_sha256"] == profile["frontend_lock_sha256"],
+            "SAME_ACTUAL_BUILD_MANIFESTS_AND_LOCKS_REQUIRED",
+        )
+        need(
+            len(source["files"]) == profile["context_file_count"]
+            and source["context_file_count"] == profile["context_file_count"]
+            and bundle["runtime_file_count"] == profile["runtime_file_count"]
+            and len(source["backend_runtime_files"]) == profile["runtime_file_count"]
+            and runtime_map(source["backend_runtime_files"]) == profile["runtime_files"],
+            "COMPLETE_ACTUAL_PROFILE_RUNTIME_SET_REQUIRED",
+        )
+        context_files = runtime_map(source["files"], context=True)
+        need(
+            all(
+                context_files.get(name) == digest_value
+                for name, digest_value in profile["runtime_files"].items()
+            ),
+            "RUNTIME_SET_MUST_MATCH_PUBLIC_SOURCE_CONTEXT",
+        )
+        need(
+            profile["root_manifest_sha256"] == profile["backend_bundle_manifest_sha256"]
+            and source["source_archive_sha256"] == bundle["source_archive_sha256"]
+            and profile["actual_build_receipt_sha256"]
+            == bundle["files"]["actual-runtime-files.json"]["sha256"]
+>           and bundle["actual_runtime_files_sha256"] == profile["actual_build_receipt_sha256"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "SAME_ROOT_BUNDLE_ARCHIVE_AND_ACTUAL_CI_FILEPROBE_REQUIRED",
+        )
+E       KeyError: 'actual_runtime_files_sha256'
+
+agents/backend/neutral-final-20261029/guard.py:203: KeyError
+=========================== short test summary info ============================
+FAILED backend::test_new_source_dynamic_context_and_runtime_are_accepted_as_metadata_only
+FAILED backend::test_actual_qa_approval_has_to_match_new_source_profile[qa_adapter_sha256-70e7adde284dfc543026dc15b7c1425be66197068bd59adf3862609fc7f701e5]
+FAILED backend::test_actual_qa_approval_has_to_match_new_source_profile[qa_approval_receipt_sha256-5528467168f63dbfec6b5d3176198d2aa00dfe6903dd2b69284e94c5bac015f9]
+FAILED backend::test_oci_descriptor_is_distinct_from_config_with_complete_proofs
+FAILED backend::test_all_runtime_modules_compile_and_helpers_resolve_real_local_package
+FAILED backend::test_plan_cannot_override_approved_profile_config_identity[backend]
+FAILED backend::test_plan_cannot_override_approved_profile_config_identity[load_python]
+FAILED backend::test_actual_public_ci_build_shape_is_valid_without_granting_root_approval
+8 failed, 31 passed in 0.31s
