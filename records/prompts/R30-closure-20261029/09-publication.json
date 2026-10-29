@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-29T10:40:11.238039+00:00",
+  "operator": "prompt_engineering AI",
+  "kind": "publication receipt only; no new runtime fact collection",
+  "base_commit": "36f9e9c92ea04764429916f115980339e4cf5437",
+  "substantive_commit": "30a43d51e58212e729778515db97f836fdea9253",
+  "branch": "codex/prompt-closure-r30",
+  "remote": "https://github.com/HJY147/t44-dev-trace.git",
+  "first_push": {
+    "command": "git push -u origin HEAD:refs/heads/codex/prompt-closure-r30",
+    "exit_code": 128,
+    "stderr": "fatal: unable to access 'https://github.com/HJY147/t44-dev-trace.git/': LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443"
+  },
+  "intermediate_readonly_remote_check": {
+    "command": "git -c http.lowSpeedLimit=1 -c http.lowSpeedTime=20 ls-remote --exit-code origin refs/heads/codex/prompt-closure-r30",
+    "exit_code": 2,
+    "stdout": "",
+    "meaning": "branch not found at that check; not a product or cloud failure"
+  },
+  "successful_retry": {
+    "command": "git -c http.version=HTTP/1.1 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=25 push -u origin HEAD:refs/heads/codex/prompt-closure-r30",
+    "bounded_at_seconds": 45,
+    "exit_code": 0,
+    "result": "new branch published; local branch tracks origin/codex/prompt-closure-r30"
+  },
+  "exact_remote_readback": {
+    "command": "git ls-remote --exit-code origin refs/heads/codex/prompt-closure-r30",
+    "exit_code": 0,
+    "stdout": "30a43d51e58212e729778515db97f836fdea9253\trefs/heads/codex/prompt-closure-r30\n",
+    "matches_substantive_commit": true
+  },
+  "worktree_after_substantive_push": "clean",
+  "external_issue_comment_or_PR_created": false,
+  "next_change_scope": "publication receipt and this role administrative log/handoff only; final administrative HEAD reported after actual push"
+}
