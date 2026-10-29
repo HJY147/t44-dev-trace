@@ -668,3 +668,8 @@ backend650ba6a + deployment40631378/coread1f183c：限定离线范围无新增 P
 ### R29 严格规模独立复计与边界（2026-10-29）
 
 AI reviewer只读总协调5f25828e，原固定cloc2.10实际65应用文件5898、超798，对f7应用diff空。产品改动/实际净减0；未找到≥798等价方案。14字段现有DDL默认重复仅在副本205→191、整项目投影5884仍超784；没有行为回归或生产应用。旧37方案已实施，剩余旧预算不重叠最乐观74仍超724。报告 `reports/reviews/r29-scale-boundary-20261029.md`；773/scale-readonly保留脚本、计数、未应用patch；prompt `ROLE-reviewer-R29-SCALE-20261029-v1`。未动云/正式测试/独立测试私件。
+
+
+### R29 schema274e2e6b局部审核（2026-10-29）
+
+AI reviewer限定schema.py：当前固定DDL范围无新增P1，可局部集成。自有4项通过0.158秒；20payload、18表226列双dialect共36组完整元数据/DDL差分一致，未知CREATE/ALTER/类型/缩进均在parser前原hash拒绝，导入/迁移connect前门禁实测。实际固定cloc117→106净11，当前候选推导5887仍超787；不把owner168/41重叠相加，native17skip仍未运行。未动产品/原测试/云/独立私件；报告 `reports/reviews/r29-schema-274e2e6b-20261029.md`，773/schema-review，prompt `ROLE-reviewer-R29-SCHEMA-20261029-v1`。
