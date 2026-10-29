@@ -226,3 +226,5 @@
 - 实际只读明确公开岗位资料、Git/JSON/哈希及文档链接核对；无.runtime/QA私件/用例/工作日志/密钥/session读取，无云/浏览器/支付/产品/测试/CI操作，未联系独立测试或发布外部评论。阶段commit/push与精确远端核验实际后另记。
 
 - R30 39项资料检查通过：原文UTF-8精确字节、用户发送时刻未知、参考源hash/Git、旧历史保留、proposed/used、1385/6/未发grant边界、780差额、资料链接、独占写范围与diff-check；不计作产品/测试器/云验证。证据为R30目录08-document-checks.json。
+
+- R30实质commit/push `30a43d51e58212e729778515db97f836fdea9253`，11件本岗文件，远端精确branch经ls-remote逐字匹配且首次成功push后worktree clean。首次push真实exit128/SSL_ERROR_SYSCALL；只读进程名查看及限时ls-remote当时exit2/分支未发表，随后单次限时HTTP/1.1重试exit0。失败与成功均存09-publication.json，不将网络错误当产品错误。未发Issue评论/建PR；此后仅补本岗发布行政记录，不追后发运行结果。
