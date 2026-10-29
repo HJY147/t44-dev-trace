@@ -15,7 +15,7 @@ jsonschema4.26.0 对现代引用路径使用局部解析状态，referencing0.37
 - 新774用例最终 **163通过、0失败/错误/跳过**。直接加载准确 f7 Git blob 作差分 oracle，未复制一份“优化实现”充当测试。含原870的19样本、全部130组件×9类边界输入、有序多错误/105错误截断、异常/非原生schema、动态schema/SPEC/格式注册、公有实例隔离、12线程760任务与128项上限。额外计数格式器证明每次105项均实际运行，连续两次210次，避免只验证返回前100项。
 - 新HTTP实测两次createProject，每次提交前 data 和完整HTTP schema各运行一次；坏data回传被提交前校验拒绝并实际回滚项目插入。原 `tmp/backend/contracts/986_http.py` **123通过、0失败/错误/跳过**。合计286唯一开发用例；首轮162与最终163为重复轮次，不累计为448。
 - 61个已有测试目录跟踪文件与f7逐字相同；v1.2清单实际15个冻结文件hash全部保持（不是沿用旧14文件数量）。OpenAPI副本/DDL/错误枚举不变。全部65个应用路径集合保持，唯一代码diff为contracts模块。Ruff0.17.2 check/format通过。
-- 复用协调者批准的既有venv，实核jsonschema4.26.0、referencing0.37.0、attrs26.1.0。没有安装依赖、全CI、MySQL、RabbitMQ、真实云负载或独立验收。Starlette/httpx旧适配路径产生一条上游弃用警告，本轮未更换依赖。
+- 复用协调者批准的既有venv，实核jsonschema4.26.0、referencing0.37.0、attrs26.1.0。本地没有安装依赖、运行MySQL/RabbitMQ、真实云负载或独立验收；未完成全CI，归档push意外触发的取消run见末节。Starlette/httpx旧适配路径产生一条上游弃用警告，本轮未更换依赖。
 
 ## 有界微基准：收益太小，不能外推云性能
 
@@ -60,3 +60,13 @@ python3 scripts/metrics/source_count.py --cloc <approved-cloc-2.10.pl> --output 
 ```
 
 初次用system/rootvenv寻找工具遇到ruff/SQLAlchemy/pytest不存在，未安装；随后使用批准venv。初次baseline计数命令后跟cat，外层shell退出0掩盖其range返回码；报告只引用within_range=false及候选结构化执行的真实退出1。原pytest日志/XML均保存，报告不以外层tail退出值当内层门禁证据。以上均为实际AI过程，未写入学生本人研究正文。
+
+## 归档push意外触发CI（实际纠正）
+
+首次push报告头ad54322e时，我把检查product.yml和push放在同一命令，没有先读返回值再决定，导致所有codex/**匹配自动触发[product40812638415](https://github.com/HJY147/t44-dev-trace/actions/runs/40812638415)。这是本岗的调度错误，已立即通知总协调并仅取消本分支/本头run；没有改动根的云或集成run。CI确实短暂启动：static检查运行，frontend到构建阶段，coverage/contracts在初始化容器阶段收到取消，产品后端完整suite步骤未运行。不能再把本轮说成“完全未触发CI”，也不以取消run作通过证据。
+
+此后的纠正归档提交使用[GitHub官方支持的skip ci标记](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs)，只跳过这次文档push；没有改工作流或降低根以后集成准入门槛。取消原件/最终状态保存于tmp/774_backend_scale_20261029/accidental-ci*.json。无ECS或付费云资源操作。
+
+普通取消后static上传清理仍在运行，追加仅本run的force-cancel，API实际202接受；最终状态以accidental-ci-final.json为准。
+
+最终复核40812638415为completed/cancelled，coverage/frontend/contracts/static四job均completed/cancelled，原JSON保存；不是CI PASS。

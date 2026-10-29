@@ -471,3 +471,5 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 ## 2026-10-29 契约缓存：已测候选、暂不建议集成
 
 设计c0671440先于产品7d101e02；精确f7只改contracts私有有界复用，public fresh及请求/内外两层仍运行。新增163+原HTTP123=286唯一开发测试绿，15冻结与61旧测试文件保持。纯CPU ABBA×4真实getTask两层仅省19.835μs，非HTTP/400并发成绩；初轮争用诊断不作收益依据。真实cloc5898→5924、净增26、超824/exit1；没有可信798闭合包，建议保留候选先不集成、不单独开云重测。无云/MySQL/全CI/独立验收，无研究正文代写。证据与真实prompt：agents/backend/scale-20261029/，原件tmp/774_backend_scale_20261029/。
+
+归档更正：push报告ad54322e意外触发product40812638415，已仅取消本run，普通取消后force-cancel最终四job全cancelled/整runcompleted-cancelled；完整后端suite未运行。不是CI通过，后续纠正文档push用官方skip ci，不修改集成门禁。

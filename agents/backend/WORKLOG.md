@@ -743,3 +743,5 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 ## 2026-10-29 契约复用候选与真实规模
 
 后端AI依据root新派工，从精确f7建立codex/backend-scale-20261029；先行设计c0671440，候选7d101e02。只有contracts/__init__.py产品改动：public validator保持fresh，violations私有128项有序/有类型schema+格式注册快照复用。新增163与原HTTP123共286唯一开发用例全通过；旧61测试文件与15冻结hash保持。getTask data/envelope顺序ABBA CPU中位仅共省约0.020ms，不推云P95；首轮与HTTP并行的争用诊断保留。固定cloc5898→5924净增26，超824/exit1，建议不集成或为微收益付费重测。没有可信798闭合架构包，规模/正式性能/独立验收仍未通过；云/SQL/全CI均未操作。真实提示词、设计、原件、限制与命令见agents/backend/scale-20261029/{prompt.md,design.md,report.md,verification.json}和tmp/774_backend_scale_20261029/，不冒学生写研究报告。
+
+归档纠正：首次报告头ad54322e push意外触发匹配codex/**的product40812638415，检查和push放在同一命令导致未先作准入判断。本岗立即通知root并取消仅自身run；CI确实启动初始化/部分static/frontend，完整后端suite未运行，不能称完全未触发CI或通过。纠正记录用官方skip ci仅跳过文档push，不修改workflow；实际细节在本轮report追加节。
