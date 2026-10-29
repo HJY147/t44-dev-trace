@@ -1,0 +1,1038 @@
+{
+  "scope": "local sequential CPU only; SQLite HTTP fixture preparation excluded",
+  "base": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "candidate_contracts_sha256": "0250539d3a8fe50e508023c13ffcdac6bdb32fa3f37a043ddfc1daf16e9e285d",
+  "versions": {
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0",
+    "attrs": "26.1.0"
+  },
+  "iterations_per_case_per_phase": 100,
+  "phase_order": "ABBAABBAABBAABBA",
+  "gc_enabled": true,
+  "phases": [
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.00576399999999988,
+      "wall_seconds": 0.0058492079842835665,
+      "error_count": 0
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0021700000000000053,
+      "wall_seconds": 0.0021762079559266567,
+      "error_count": 100
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.009319999999999995,
+      "wall_seconds": 0.009499834035523236,
+      "error_count": 0
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014353999999999978,
+      "wall_seconds": 0.014396999962627888,
+      "error_count": 0
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.1566430000000001,
+      "wall_seconds": 0.15746595803648233,
+      "error_count": 10000
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.0315939999999999,
+      "wall_seconds": 0.03173258400056511,
+      "error_count": 0
+    },
+    {
+      "phase": 0,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03652300000000008,
+      "wall_seconds": 0.03665875003207475,
+      "error_count": 0
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004583000000000004,
+      "wall_seconds": 0.004602083005011082,
+      "error_count": 0
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.001467000000000107,
+      "wall_seconds": 0.0014695420395582914,
+      "error_count": 100
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.008055999999999841,
+      "wall_seconds": 0.008075541933067143,
+      "error_count": 0
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.01331900000000008,
+      "wall_seconds": 0.013356042094528675,
+      "error_count": 0
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15530500000000003,
+      "wall_seconds": 0.15615279192570597,
+      "error_count": 10000
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.030462999999999907,
+      "wall_seconds": 0.030583458952605724,
+      "error_count": 0
+    },
+    {
+      "phase": 1,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03569900000000015,
+      "wall_seconds": 0.0358927920460701,
+      "error_count": 0
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004631000000000052,
+      "wall_seconds": 0.004658167017623782,
+      "error_count": 0
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0015330000000000066,
+      "wall_seconds": 0.0015493329847231507,
+      "error_count": 100
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.008145999999999987,
+      "wall_seconds": 0.008187374914996326,
+      "error_count": 0
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.013349000000000055,
+      "wall_seconds": 0.013384166057221591,
+      "error_count": 0
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15499700000000005,
+      "wall_seconds": 0.15584154205862433,
+      "error_count": 10000
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03100499999999995,
+      "wall_seconds": 0.031200541998259723,
+      "error_count": 0
+    },
+    {
+      "phase": 2,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.035864999999999814,
+      "wall_seconds": 0.036035666009411216,
+      "error_count": 0
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.00541299999999989,
+      "wall_seconds": 0.0054514589719474316,
+      "error_count": 0
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0021290000000000475,
+      "wall_seconds": 0.0021357500227168202,
+      "error_count": 100
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.009079999999999977,
+      "wall_seconds": 0.009099417016841471,
+      "error_count": 0
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014329000000000036,
+      "wall_seconds": 0.014398915925994515,
+      "error_count": 0
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15354500000000026,
+      "wall_seconds": 0.15438183303922415,
+      "error_count": 10000
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03146300000000002,
+      "wall_seconds": 0.031559916911646724,
+      "error_count": 0
+    },
+    {
+      "phase": 3,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.035914,
+      "wall_seconds": 0.03604016709141433,
+      "error_count": 0
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.005222999999999978,
+      "wall_seconds": 0.0052310420433059335,
+      "error_count": 0
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.002107000000000081,
+      "wall_seconds": 0.002109167049638927,
+      "error_count": 100
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.009011000000000102,
+      "wall_seconds": 0.009058083989657462,
+      "error_count": 0
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.01430599999999993,
+      "wall_seconds": 0.014367499970830977,
+      "error_count": 0
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15574900000000014,
+      "wall_seconds": 0.15676820802036673,
+      "error_count": 10000
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.031118999999999897,
+      "wall_seconds": 0.03121599997393787,
+      "error_count": 0
+    },
+    {
+      "phase": 4,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03584599999999982,
+      "wall_seconds": 0.035972499987110496,
+      "error_count": 0
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.00455899999999998,
+      "wall_seconds": 0.004590542055666447,
+      "error_count": 0
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0014979999999997773,
+      "wall_seconds": 0.0014997499529272318,
+      "error_count": 100
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.008216000000000001,
+      "wall_seconds": 0.00826150004286319,
+      "error_count": 0
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.01328399999999963,
+      "wall_seconds": 0.013361916993744671,
+      "error_count": 0
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15231799999999973,
+      "wall_seconds": 0.15293524996377528,
+      "error_count": 10000
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.029922000000000004,
+      "wall_seconds": 0.03004170802887529,
+      "error_count": 0
+    },
+    {
+      "phase": 5,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03500199999999998,
+      "wall_seconds": 0.0351499579846859,
+      "error_count": 0
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004526999999999948,
+      "wall_seconds": 0.004547624965198338,
+      "error_count": 0
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0014630000000002141,
+      "wall_seconds": 0.0014824579702690244,
+      "error_count": 100
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.007903999999999911,
+      "wall_seconds": 0.007912624976597726,
+      "error_count": 0
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.013309000000000015,
+      "wall_seconds": 0.01335704093798995,
+      "error_count": 0
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15252,
+      "wall_seconds": 0.15317075001075864,
+      "error_count": 10000
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.030190999999999857,
+      "wall_seconds": 0.03031520894728601,
+      "error_count": 0
+    },
+    {
+      "phase": 6,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03480400000000028,
+      "wall_seconds": 0.0349086249480024,
+      "error_count": 0
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.005238000000000298,
+      "wall_seconds": 0.005256333970464766,
+      "error_count": 0
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.002162999999999915,
+      "wall_seconds": 0.002178999944590032,
+      "error_count": 100
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.00928099999999965,
+      "wall_seconds": 0.009361958946101367,
+      "error_count": 0
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014113000000000042,
+      "wall_seconds": 0.014151458977721632,
+      "error_count": 0
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15232400000000013,
+      "wall_seconds": 0.15286504197865725,
+      "error_count": 10000
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03137199999999973,
+      "wall_seconds": 0.03154233400709927,
+      "error_count": 0
+    },
+    {
+      "phase": 7,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03559200000000029,
+      "wall_seconds": 0.03571095899678767,
+      "error_count": 0
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.005495999999999945,
+      "wall_seconds": 0.0055597079917788506,
+      "error_count": 0
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.001994999999999969,
+      "wall_seconds": 0.0019979170756414533,
+      "error_count": 100
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.008875000000000188,
+      "wall_seconds": 0.00890879100188613,
+      "error_count": 0
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014022000000000201,
+      "wall_seconds": 0.014046540949493647,
+      "error_count": 0
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.154188,
+      "wall_seconds": 0.15494279202539474,
+      "error_count": 10000
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03220699999999965,
+      "wall_seconds": 0.03244795894715935,
+      "error_count": 0
+    },
+    {
+      "phase": 8,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.036272000000000304,
+      "wall_seconds": 0.03642250003758818,
+      "error_count": 0
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004610000000000003,
+      "wall_seconds": 0.004630833049304783,
+      "error_count": 0
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.001427000000000067,
+      "wall_seconds": 0.0014269999228417873,
+      "error_count": 100
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.007900999999999936,
+      "wall_seconds": 0.007930624997243285,
+      "error_count": 0
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.01329199999999986,
+      "wall_seconds": 0.013345833984203637,
+      "error_count": 0
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15357999999999983,
+      "wall_seconds": 0.1543267919914797,
+      "error_count": 10000
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.030259000000000036,
+      "wall_seconds": 0.03038729098625481,
+      "error_count": 0
+    },
+    {
+      "phase": 9,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03490200000000021,
+      "wall_seconds": 0.035057042026892304,
+      "error_count": 0
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004520999999999997,
+      "wall_seconds": 0.004524375079199672,
+      "error_count": 0
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0014289999999999026,
+      "wall_seconds": 0.0014366250252351165,
+      "error_count": 100
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.00806600000000035,
+      "wall_seconds": 0.008100542007014155,
+      "error_count": 0
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.013249000000000066,
+      "wall_seconds": 0.01327991602011025,
+      "error_count": 0
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15311899999999978,
+      "wall_seconds": 0.15370549994986504,
+      "error_count": 10000
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03078700000000012,
+      "wall_seconds": 0.03102741704788059,
+      "error_count": 0
+    },
+    {
+      "phase": 10,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03497400000000006,
+      "wall_seconds": 0.035104375099763274,
+      "error_count": 0
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.005430999999999742,
+      "wall_seconds": 0.005458167055621743,
+      "error_count": 0
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0021100000000000563,
+      "wall_seconds": 0.002112249960191548,
+      "error_count": 100
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.009030000000000094,
+      "wall_seconds": 0.009083749959245324,
+      "error_count": 0
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014018000000000086,
+      "wall_seconds": 0.014052708982490003,
+      "error_count": 0
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.1525250000000007,
+      "wall_seconds": 0.15313195798080415,
+      "error_count": 10000
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.03125399999999967,
+      "wall_seconds": 0.031398250022903085,
+      "error_count": 0
+    },
+    {
+      "phase": 11,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03591600000000028,
+      "wall_seconds": 0.03610908298287541,
+      "error_count": 0
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.0052120000000002165,
+      "wall_seconds": 0.005226208013482392,
+      "error_count": 0
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0020139999999999603,
+      "wall_seconds": 0.0020164999878033996,
+      "error_count": 100
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.008757999999999377,
+      "wall_seconds": 0.008769250009208918,
+      "error_count": 0
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014285000000000103,
+      "wall_seconds": 0.014341457979753613,
+      "error_count": 0
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.1529910000000001,
+      "wall_seconds": 0.15354054095223546,
+      "error_count": 10000
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.031299999999999883,
+      "wall_seconds": 0.03139104205183685,
+      "error_count": 0
+    },
+    {
+      "phase": 12,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03539899999999996,
+      "wall_seconds": 0.0355137080186978,
+      "error_count": 0
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004506000000000121,
+      "wall_seconds": 0.004518541973084211,
+      "error_count": 0
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0014079999999996318,
+      "wall_seconds": 0.001408000010997057,
+      "error_count": 100
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.00805400000000045,
+      "wall_seconds": 0.008083624998107553,
+      "error_count": 0
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.013392999999999766,
+      "wall_seconds": 0.013417082955129445,
+      "error_count": 0
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.15290900000000018,
+      "wall_seconds": 0.15356674999929965,
+      "error_count": 10000
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.030539000000000094,
+      "wall_seconds": 0.030706166988238692,
+      "error_count": 0
+    },
+    {
+      "phase": 13,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.034724999999999895,
+      "wall_seconds": 0.03482045896816999,
+      "error_count": 0
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "plan-valid",
+      "cpu_seconds": 0.004586999999999897,
+      "wall_seconds": 0.0045990420039743185,
+      "error_count": 0
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0014760000000002549,
+      "wall_seconds": 0.0014762500068172812,
+      "error_count": 100
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "task-valid",
+      "cpu_seconds": 0.008138999999999896,
+      "wall_seconds": 0.008187665953300893,
+      "error_count": 0
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "contract-valid",
+      "cpu_seconds": 0.013402999999999388,
+      "wall_seconds": 0.013443625066429377,
+      "error_count": 0
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "all105-errors",
+      "cpu_seconds": 0.1521619999999997,
+      "wall_seconds": 0.15280666598118842,
+      "error_count": 10000
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.029949000000000225,
+      "wall_seconds": 0.03005599998869002,
+      "error_count": 0
+    },
+    {
+      "phase": 14,
+      "mode": "B",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03506900000000002,
+      "wall_seconds": 0.03520837496034801,
+      "error_count": 0
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "plan-valid",
+      "cpu_seconds": 0.005449000000000481,
+      "wall_seconds": 0.005475916084833443,
+      "error_count": 0
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "id-boolean",
+      "cpu_seconds": 0.0021449999999996194,
+      "wall_seconds": 0.0021673329174518585,
+      "error_count": 100
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "task-valid",
+      "cpu_seconds": 0.008844999999999992,
+      "wall_seconds": 0.008856708998791873,
+      "error_count": 0
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "contract-valid",
+      "cpu_seconds": 0.014339000000000546,
+      "wall_seconds": 0.014422792010009289,
+      "error_count": 0
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "all105-errors",
+      "cpu_seconds": 0.1536439999999999,
+      "wall_seconds": 0.15438470896333456,
+      "error_count": 10000
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "real-getTask-data",
+      "cpu_seconds": 0.031486000000000125,
+      "wall_seconds": 0.03161720896605402,
+      "error_count": 0
+    },
+    {
+      "phase": 15,
+      "mode": "A",
+      "case": "real-getTask-envelope",
+      "cpu_seconds": 0.03630699999999987,
+      "wall_seconds": 0.03653508401475847,
+      "error_count": 0
+    }
+  ],
+  "summary": {
+    "plan-valid": {
+      "median_cpu_us_per_call": {
+        "A": 54.21999999999816,
+        "B": 45.709999999999916
+      },
+      "relative_reduction": 0.15695315381775232,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.0052120000000002165,
+          0.00576399999999988
+        ],
+        "B": [
+          0.004506000000000121,
+          0.004631000000000052
+        ]
+      }
+    },
+    "id-boolean": {
+      "median_cpu_us_per_call": {
+        "A": 21.19500000000052,
+        "B": 14.650000000001606
+      },
+      "relative_reduction": 0.30879924510491874,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.001994999999999969,
+          0.0021700000000000053
+        ],
+        "B": [
+          0.0014079999999996318,
+          0.0015330000000000066
+        ]
+      }
+    },
+    "task-valid": {
+      "median_cpu_us_per_call": {
+        "A": 90.20500000000098,
+        "B": 80.61000000000095
+      },
+      "relative_reduction": 0.10636882656171964,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.008757999999999377,
+          0.009319999999999995
+        ],
+        "B": [
+          0.007900999999999936,
+          0.008216000000000001
+        ]
+      }
+    },
+    "contract-valid": {
+      "median_cpu_us_per_call": {
+        "A": 142.95500000000015,
+        "B": 133.14000000000047
+      },
+      "relative_reduction": 0.0686579692910334,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.014018000000000086,
+          0.014353999999999978
+        ],
+        "B": [
+          0.013249000000000066,
+          0.013402999999999388
+        ]
+      }
+    },
+    "all105-errors": {
+      "median_cpu_us_per_call": {
+        "A": 1535.9450000000008,
+        "B": 1530.1399999999999
+      },
+      "relative_reduction": 0.003779432206232003,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.15232400000000013,
+          0.1566430000000001
+        ],
+        "B": [
+          0.1521619999999997,
+          0.15530500000000003
+        ]
+      }
+    },
+    "real-getTask-data": {
+      "median_cpu_us_per_call": {
+        "A": 314.17499999999876,
+        "B": 303.60999999999973
+      },
+      "relative_reduction": 0.033627755231953715,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.031118999999999897,
+          0.03220699999999965
+        ],
+        "B": [
+          0.029922000000000004,
+          0.03100499999999995
+        ]
+      }
+    },
+    "real-getTask-envelope": {
+      "median_cpu_us_per_call": {
+        "A": 359.1500000000014,
+        "B": 349.88000000000017
+      },
+      "relative_reduction": 0.02581094250313576,
+      "range_cpu_seconds_per_batch": {
+        "A": [
+          0.03539899999999996,
+          0.03652300000000008
+        ],
+        "B": [
+          0.034724999999999895,
+          0.035864999999999814
+        ]
+      }
+    }
+  },
+  "cache": {
+    "hits": 5703,
+    "misses": 23,
+    "maxsize": 128,
+    "currsize": 23
+  }
+}

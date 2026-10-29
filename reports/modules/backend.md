@@ -467,3 +467,7 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 ## 2026-10-28 组件Call后端实际提交
 
 产品2d947d237328521e46b9766859ca166a4c54f789（基线5d）只改Business六组件(g,Call)分派及Call.cas record_diff默认True；False只保原diff不关闭审计，原guard/SQL/锁/UoW顺序不变。固定cloc5935→5916真实净减19，仍超816。新782先8红6绿后14绿；包含782的157个SQLite开发目标156绿1红，唯一旧NotificationFacade签名缺口500，原断言不改，不称端到端绿。Ruff/format最终绿，AST/FrozenAPI/DDL边界证明齐。消息owner已从2d接手另树迁移，后端不跨岗/不投云。真实prompt ROLE-backend-COMPONENT-CALL-20261028-v1，报告agents/backend/component-call-20261028/report.md；原失败/脱敏双SHA/四件齐，无CI/数据库/云/正式性能/独立验收新声明。
+
+## 2026-10-29 契约缓存：已测候选、暂不建议集成
+
+设计c0671440先于产品7d101e02；精确f7只改contracts私有有界复用，public fresh及请求/内外两层仍运行。新增163+原HTTP123=286唯一开发测试绿，15冻结与61旧测试文件保持。纯CPU ABBA×4真实getTask两层仅省19.835μs，非HTTP/400并发成绩；初轮争用诊断不作收益依据。真实cloc5898→5924、净增26、超824/exit1；没有可信798闭合包，建议保留候选先不集成、不单独开云重测。无云/MySQL/全CI/独立验收，无研究正文代写。证据与真实prompt：agents/backend/scale-20261029/，原件tmp/774_backend_scale_20261029/。

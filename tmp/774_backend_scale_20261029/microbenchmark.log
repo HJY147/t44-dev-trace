@@ -1,0 +1,123 @@
+/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-demo-20261023/dependencies/3b15a7bdf9302475_461a4f3c05a314b2_attempt_c53026c6/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{
+  "plan-valid": {
+    "median_cpu_us_per_call": {
+      "A": 59.28000000000155,
+      "B": 50.22000000000082
+    },
+    "relative_reduction": 0.1528340080971743,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.005508999999999986,
+        0.006604999999999972
+      ],
+      "B": [
+        0.004701000000000288,
+        0.005632999999999999
+      ]
+    }
+  },
+  "id-boolean": {
+    "median_cpu_us_per_call": {
+      "A": 21.725000000001327,
+      "B": 15.490000000000226
+    },
+    "relative_reduction": 0.2869965477560745,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.002112000000000336,
+        0.003198000000000256
+      ],
+      "B": [
+        0.0014660000000001894,
+        0.002300000000000413
+      ]
+    }
+  },
+  "task-valid": {
+    "median_cpu_us_per_call": {
+      "A": 96.83000000000108,
+      "B": 91.84500000000372
+    },
+    "relative_reduction": 0.051481978725573696,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.008988999999999692,
+        0.011577000000000393
+      ],
+      "B": [
+        0.008468999999999838,
+        0.01098900000000036
+      ]
+    }
+  },
+  "contract-valid": {
+    "median_cpu_us_per_call": {
+      "A": 160.81500000000082,
+      "B": 146.07000000000258
+    },
+    "relative_reduction": 0.09168920809624825,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.01496900000000001,
+        0.018444999999999823
+      ],
+      "B": [
+        0.013839000000000157,
+        0.017273000000000316
+      ]
+    }
+  },
+  "all105-errors": {
+    "median_cpu_us_per_call": {
+      "A": 1791.3749999999995,
+      "B": 1711.100000000001
+    },
+    "relative_reduction": 0.04481194613076467,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.17342000000000013,
+        0.18477600000000027
+      ],
+      "B": [
+        0.1643260000000002,
+        0.17705800000000016
+      ]
+    }
+  },
+  "real-getTask-data": {
+    "median_cpu_us_per_call": {
+      "A": 354.9649999999971,
+      "B": 343.9450000000033
+    },
+    "relative_reduction": 0.031045314326747397,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.03347200000000017,
+        0.03803200000000029
+      ],
+      "B": [
+        0.03150499999999967,
+        0.0380910000000001
+      ]
+    }
+  },
+  "real-getTask-envelope": {
+    "median_cpu_us_per_call": {
+      "A": 409.30500000000205,
+      "B": 394.35499999999956
+    },
+    "relative_reduction": 0.036525329522000494,
+    "range_cpu_seconds_per_batch": {
+      "A": [
+        0.03772299999999973,
+        0.04490000000000016
+      ],
+      "B": [
+        0.037677000000000405,
+        0.041995000000000005
+      ]
+    }
+  }
+}

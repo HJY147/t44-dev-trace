@@ -3326,5 +3326,46 @@
     "student_research_changed": false,
     "messaging_owner_handoff": "exact2d source, command,14 boundaries and sole old-signature failure sent directly; root retains cloud5d",
     "next": "messaging migration, combined exact-SHA review and required regressions/count; no premature cloud deployment"
+  },
+  "contract_reuse_20261029": {
+    "operator": "backend AI",
+    "prompt": [
+      "ROLE-backend-SCALE-20261029-v1",
+      "ROLE-backend-CONTRACT-CACHE-20261029-v1"
+    ],
+    "base": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "branch": "codex/backend-scale-20261029",
+    "design_commit": "c0671440d4f1b7f463e691e97d60e947218cae0a",
+    "candidate_commit": "7d101e02590566bcde5385563c45d9c8866cc53f",
+    "candidate_recommended_for_cloud": false,
+    "tests": {
+      "new_differential_and_HTTP": 163,
+      "old_HTTP": 123,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "unique_total": 286
+    },
+    "old_test_files_unchanged": 61,
+    "frozen_files_unchanged": 15,
+    "fixed_count": {
+      "before": 5898,
+      "after": 5924,
+      "net_added": 26,
+      "upper": 5100,
+      "excess": 824,
+      "within_range": false,
+      "exit_code": 1
+    },
+    "local_CPU_only_getTask_two_layer_median_saved_us": 19.835,
+    "formal_performance_or_size_achieved": false,
+    "credible_798_line_architecture_closure_found": false,
+    "cloud_MySQL_full_CI_independent_acceptance_run": false,
+    "private_independent_inputs_read": false,
+    "student_research_changed": false,
+    "report": "agents/backend/scale-20261029/report.md",
+    "verification": "agents/backend/scale-20261029/verification.json",
+    "originals": "tmp/774_backend_scale_20261029",
+    "next": "preserve candidate; root decides review; no paid retest solely for micro-benefit, current f7 performance and size remain open"
   }
 }

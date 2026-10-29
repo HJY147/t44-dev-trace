@@ -739,3 +739,7 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 - Ruff绿；format首次仅EOF空行红保留，窄修后3文件绿。common原AST仅unwrap新if/kw后整模块一致，Business除准入删/增节点外整模块一致；Runtime/其它产品/FrozenAPI/DDL不动。
 - HTTP失败trace里1个一次性SQLite token在log/XML各1处脱敏，精确原件0700/0600保存于/tmp/t44-backend-component-call-20261028-raw，双SHA及XML解析记录齐；原失败保留，不冒产品绿。
 - 报告agents/backend/component-call-20261028/report.md及verification/计量/JUnit/命令齐；无完整CI/MySQL/MQ/云/正式性能/独立验收，不读783/792、不改学生研究。后端独立提交不可投云，root待消息联合迁移/审核/全回归。
+
+## 2026-10-29 契约复用候选与真实规模
+
+后端AI依据root新派工，从精确f7建立codex/backend-scale-20261029；先行设计c0671440，候选7d101e02。只有contracts/__init__.py产品改动：public validator保持fresh，violations私有128项有序/有类型schema+格式注册快照复用。新增163与原HTTP123共286唯一开发用例全通过；旧61测试文件与15冻结hash保持。getTask data/envelope顺序ABBA CPU中位仅共省约0.020ms，不推云P95；首轮与HTTP并行的争用诊断保留。固定cloc5898→5924净增26，超824/exit1，建议不集成或为微收益付费重测。没有可信798闭合架构包，规模/正式性能/独立验收仍未通过；云/SQL/全CI均未操作。真实提示词、设计、原件、限制与命令见agents/backend/scale-20261029/{prompt.md,design.md,report.md,verification.json}和tmp/774_backend_scale_20261029/，不冒学生写研究报告。
