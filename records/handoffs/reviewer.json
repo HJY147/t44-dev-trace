@@ -141,7 +141,11 @@
     "reports/reviews/r29-scale-boundary-20261029.md",
     "agents/reviewer/dispatches/ROLE-reviewer-R29-SCALE-20261029-v1.md",
     "tmp/773_reviewer_r29_preflight_20261029/scale-readonly",
-    "agents/reviewer/github/r29-scale-boundary-20261029.md"
+    "agents/reviewer/github/r29-scale-boundary-20261029.md",
+    "reports/reviews/r29-schema-274e2e6b-20261029.md",
+    "agents/reviewer/dispatches/ROLE-reviewer-R29-SCHEMA-20261029-v1.md",
+    "tmp/773_reviewer_r29_preflight_20261029/schema-review",
+    "agents/reviewer/github/r29-schema-274e2e6b-20261029.md"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -4094,6 +4098,48 @@
       "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6487677136",
       "body_exact_readback_except_terminal_newline": true,
       "receipt_sha256": "e2b8394e5b612a0958e8d37935237996e649c3ba0590a3e91c5724743bd01329"
+    }
+  },
+  "r29_schema_274e2e6b_20261029_review": {
+    "operator": "AI reviewer",
+    "product": "274e2e6bfa6dfb2d90926773002a1a62808ec060",
+    "base": "f5e0d95ea68af33dfb213ac6e8d6b496527ed7b2",
+    "cloud_Docker_native_MySQL_or_private_test_reads": false,
+    "checksum_gate_at_import_and_before_migration_connect": true,
+    "actual_create_alter_payloads": 20,
+    "tables": 18,
+    "columns": 226,
+    "table_dialect_comparisons": 36,
+    "unknown_DDL_unchanged_hash_rejections_before_parser": 4,
+    "passed": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "decision": "NO_NEW_P1_FIXED_HASH_DDL_SCOPE_LOCAL_INTEGRATION_CANDIDATE",
+    "prompt_ref": "ROLE-reviewer-R29-SCHEMA-20261029-v1",
+    "report": "reports/reviews/r29-schema-274e2e6b-20261029.md",
+    "evidence": "tmp/773_reviewer_r29_preflight_20261029/schema-review",
+    "own_pinned_cloc": {
+      "source_before": 117,
+      "source_after": 106,
+      "own_pinned_cloc_reduction": 11,
+      "whole_application_before_previously_recounted": 5898,
+      "derived_candidate_total": 5887,
+      "upper": 5100,
+      "remaining_over": 787,
+      "application_base_diff_from_f7": [],
+      "full_counter_rerun": false
+    },
+    "native_MySQL_not_run": true,
+    "owner168_and41_not_added": true,
+    "original_native17_skips_not_changed": true,
+    "product_or_original_tests_modified": false,
+    "future_DDL_hash_or_version_outside_scope": true,
+    "github": {
+      "id": 6488489456,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6488489456",
+      "body_exact_readback_except_terminal_newline": true,
+      "receipt_sha256": "6a5454f9d89423b65f79f4243a4d017058b06b418469f1af0be123ccdd90444b"
     }
   }
 }
