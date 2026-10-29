@@ -1,0 +1,59 @@
+{
+  "schema": "772-v24-opaque-transport-stage-v1",
+  "status": "LOCAL_READY_ACTUAL_LOAD_RSA_AND_INSTALL_PENDING",
+  "utc": "2026-10-29T08:45:35.703112Z",
+  "files": {
+    "capsule-v24-key.rsa-oaep-sha256": {
+      "sha256": "09ea1d000451160e3d1c0d18f5dd2b80fc82116f27e2d23460a6ec460610b07e",
+      "bytes": 384
+    },
+    "RSA_PROBE_V24.sh": {
+      "sha256": "72285cf77e1a55f57a3662c9aae797dd0ecb8fe9a2282699ddf919442f910d70",
+      "bytes": 1600
+    },
+    "INSTALL_V24_VERIFY.py": {
+      "sha256": "2ebcbed80df155a9cd1be819dc550b3c60b503a5b12019598efdf551bbf3b77c",
+      "bytes": 4161
+    },
+    "INSTALL_V24_OPAQUE.sh": {
+      "sha256": "9244e970ed9418b54c0e5a9b41505beac74a2cc29969097e2dca90811fd7fb2a",
+      "bytes": 2043
+    },
+    "TRANSPORT_V24_0B_MANIFEST.json": {
+      "sha256": "8d73f8d02b8db3f2059d4f1740c0fc0ba7b287577a2ca55c7e751a80c3e7acd3",
+      "bytes": 3682
+    },
+    "opaque-install-v24-0b.tar.gz": {
+      "sha256": "82bef025877230b51b6d95eae18f3abc320442aa5b436b8524b12e946ff458c0",
+      "bytes": 83219
+    },
+    "RELAY_V24_UPLOADED.sh": {
+      "sha256": "942f78b460ad68429b83bab71d3568d702958e82dd9cf0c6553d7d7229a7b832",
+      "bytes": 1678
+    },
+    "TRANSPORT_V24_0B_CHECKS.json": {
+      "sha256": "bb80e51b92bf4b51924844ee777915c0252ed0692c29c13dd88fe21a7b59eabc",
+      "bytes": 1963
+    },
+    "RSA_PROBE_V24_GUI_COMMAND.txt": {
+      "sha256": "bbbd458a0a02711e7923d401d9fba07bbfccc0a51a166f629c0c3922c2844583",
+      "bytes": 2225
+    },
+    "RELAY_V24_GUI_COMMAND.txt": {
+      "sha256": "dd26d6ab843dda424c1fdf9aad28401a0cbf3dc20f02405191e52a991e4e28e7",
+      "bytes": 2407
+    },
+    "TRANSPORT_V24_0B_README.md": {
+      "sha256": "fd98d87275761e3c74efe0cc6083118e0c86d78da84f8b8b04b74f874f1f4256",
+      "bytes": 4237
+    }
+  },
+  "git_status": "UNCOMMITTED_LOCAL_PUBLIC_STAGE; no immutable URL claimed",
+  "public_artifact_key_material": "RSA-wrapped only; no plaintext keys",
+  "old_v1_envelope_matches_v24_key": false,
+  "actual_LOAD_private_presence_or_install": "NOT_OBSERVED",
+  "finite_local_transport_checks": 8,
+  "cloud_SUT_HTTP_or_new_long_test": false,
+  "grant_allow": false,
+  "new_RSA_seam": "Only if readonly probe blocks: root sends newly generated PUBLIC RSA PEM+SHA; tester rewraps same private artifact key and republishes transport kit. No key/core/case/grant shared or changed."
+}
