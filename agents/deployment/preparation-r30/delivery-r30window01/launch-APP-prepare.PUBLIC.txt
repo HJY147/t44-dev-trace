@@ -1,0 +1,15 @@
+python3 - <<'PYLAUNCH'
+import datetime,hashlib,json,os,pathlib,subprocess,sys,time
+root=pathlib.Path('/root/t44-r30/r30window01');ops=root/'ops'
+assert os.geteuid()==0
+assert hashlib.sha256((ops/'r30-app-prepare.py').read_bytes()).hexdigest()=='735a33e08a38f9c1a0cae34df170842b83a38738f3349bc4c69cee3122cbcdb6'
+assert hashlib.sha256((ops/'profile/profile.json').read_bytes()).hexdigest()=='6d4b7bc4c4f77515da429df9cbf82554a3a0f5d379ef4fd3a638bf04eaf94584'
+end=datetime.datetime.fromisoformat('2026-10-29T10:35:00+00:00').timestamp()
+t0=datetime.datetime.fromisoformat('2026-10-29T10:00:00+00:00').timestamp()
+cutoff=datetime.datetime.fromisoformat('2026-10-29T10:17:30+00:00').timestamp()
+assert t0<=time.time()<cutoff,'ROOT_FIXED_START_TO_PACKET_CUTOFF_REQUIRED'
+seconds=int(end-time.time());assert seconds>600
+argv=['systemd-run','--unit=t44-r30-r30window01-prepare','--property=Type=exec','--property=User=root','--property=UMask=0077','--property=RuntimeMaxSec='+str(seconds),'--property=TimeoutStopSec=30','--property=KillMode=mixed','--collect',sys.executable,str(ops/'r30-app-prepare.py'),'--ops',str(ops),'--package',str(root/'package'),'--run-root',str(root),'--profile-sha256','6d4b7bc4c4f77515da429df9cbf82554a3a0f5d379ef4fd3a638bf04eaf94584']
+subprocess.run(argv,check=True,timeout=30)
+print(json.dumps({'unit':'t44-r30-r30window01-prepare','bounded_G':'2026-10-29T10:35:00Z','runtime_max_seconds':seconds,'public_metadata':str(root/'run/preparation.PUBLIC.json'),'private_full_prefixes':str(root/'run/commands'),'seed_or_sessions_requested':False}))
+PYLAUNCH
