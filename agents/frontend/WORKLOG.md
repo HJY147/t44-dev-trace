@@ -275,3 +275,5 @@
 - 原89/89、typecheck、build实际exit0，831.48kB chunk警告保留。5屏宽60状态夹具无页面错误/横溢出，12组桌面/手机PNG SHA完全相同；工作台与错误表单4图实看。全部API截获，无真实业务/云连接。
 - computed-style原始序列比较失败且保留，不作通过结论；该探针含运行时ID及未规范化属性序列。准备期枚举夹具.map错误、exit130受控内存中断及PIL缺失均写validation，原部分图/失败原log保留。未改原测试断言、不把自测当独立验收。
 - 完整证据final-20261029/validation.json及REPORT；本次AI改码，不记学生人工操作。最终云备份/删除与统一部署不属本岗，未执行。
+
+- 收尾diff-check首次发现两份原始命令log尾空白；先保存逐字节raw.gz/SHA再规范可读副本，并复跑整体diff-check。首次产品push遇GitHub LibreSSL连接中断，按当前分支重新推送；不把该失败写成成功。
