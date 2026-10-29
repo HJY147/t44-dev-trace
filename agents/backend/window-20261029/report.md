@@ -1,0 +1,11 @@
+# 29日工具窗口本地交付
+
+准确产品为f7；本岗未修改backend/frontend任何产品文件，不改善或宣称达到代码规模、性能和独立验收。
+
+新的profile、P64和摘要清单已生成。GEN `95802bf9e2a0d263bc00e1f2e5f046c553e29037e3c100eefebf09e81a95acc3`；P64 manifest `a5510d962deee65ace91a3fa7cf93d0c720e1cb08e4b841220b75e9cc082e590`；transport `8600110b54f45240a6e45ea62c9be6f567529e374807d0ca593dde3fd7605db7`。单包64819B、SHA `0f2aef008a8cbf69fdfaad27a59eea85a3b5c149301a4018aa064ca4d76bd6c1`，21成员，实际安装20文件。生成器源码、派生字面值清单和全部文件摘要在本目录。
+
+本机Python3.12.10，标准库unittest九项通过：13源严格差分和逐件pin、GEN链/原builder复用静态检查、模板默认拒绝授权、原产品及旧46所在包保持、三个时限谓词独立、完整raw/JSON安装回放/0444/拒覆盖、整包篡改在写入前拒绝。四种session过期是同一测试中的四个子检查，不重复计数。未运用完整旧68/CI/云/原独立私件，3.10仅语法检查。
+
+初始系统Python与项目venv均缺pytest，在启动测试前报ModuleNotFoundError；未安装依赖，直接改用标准库unittest。原失败事实保留在verification元记录，不写成测试用例失败。
+
+固定commit下载wrapper及其完整shell/尺寸检查正在另封；本报告初版不把未交付wrapper或实际云安装称为完成。现有镜像/原盘恢复、source53与budget实际核验、单次root授权、会话与压测均由根后续决定。详见design及runbook。

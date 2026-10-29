@@ -1,0 +1,32 @@
+{
+  "operator": "backend_AI",
+  "executed_UTC": "2026-10-29T03:19:44.985418+00:00",
+  "local_python": "Python 3.12.10",
+  "unique_unittest_cases": 9,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "stderr_SHA256": "b500c3680b66a68df06060c698208d6c25960d945f5582d957593a2b3ddc90fd",
+  "actual_install_routes": [
+    "raw gzip",
+    "GitHub JSON/base64"
+  ],
+  "actual_complete_file_and_permission_roundtrip": true,
+  "same_target_overwrite_rejected_with_existing_bytes_unchanged": true,
+  "tampered_whole_archive_refused_before_target_creation": true,
+  "Python310": "AST compatibility only; no native Linux execution",
+  "original_business_tests_rerun": false,
+  "cloud_SUT_HTTP_SQL_pressure_executed": false,
+  "preparation_environment_attempts": [
+    {
+      "action": "import pytest in system Python",
+      "result": "ModuleNotFoundError before any tests started"
+    },
+    {
+      "action": "import pytest in existing project venv",
+      "result": "ModuleNotFoundError before any tests started"
+    }
+  ],
+  "framework_choice": "stdlib unittest; no dependencies installed",
+  "scope_note": "Time-condition tests isolate exact unchanged AST predicates; context/HTTP/routing are stubbed and not claimed as validated."
+}

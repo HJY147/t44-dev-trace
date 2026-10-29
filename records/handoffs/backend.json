@@ -3521,5 +3521,51 @@
     "product_LOC_or_performance_claim": false,
     "report": "agents/backend/contrast-20261028/p64-f7-2000-template-pin-report.md",
     "prompt": "ROLE-backend-P64-20Z-TEMPLATE-PIN"
+  },
+  "window_20261029": {
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "stop_utc": "2026-10-29T12:00:00Z",
+    "profile_destination": "/root/t44-r9/r29-code-01/profile",
+    "p64_destination": "/root/t44-r9/p790-r29-01",
+    "planned_legacy_compatible_run_id": "r28p64gen04",
+    "GEN_sha256": "95802bf9e2a0d263bc00e1f2e5f046c553e29037e3c100eefebf09e81a95acc3",
+    "P64_manifest_sha256": "a5510d962deee65ace91a3fa7cf93d0c720e1cb08e4b841220b75e9cc082e590",
+    "bundle_sha256": "0f2aef008a8cbf69fdfaad27a59eea85a3b5c149301a4018aa064ca4d76bd6c1",
+    "local_checks": {
+      "operator": "backend_AI",
+      "executed_UTC": "2026-10-29T03:19:44.985418+00:00",
+      "local_python": "Python 3.12.10",
+      "unique_unittest_cases": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "stderr_SHA256": "b500c3680b66a68df06060c698208d6c25960d945f5582d957593a2b3ddc90fd",
+      "actual_install_routes": [
+        "raw gzip",
+        "GitHub JSON/base64"
+      ],
+      "actual_complete_file_and_permission_roundtrip": true,
+      "same_target_overwrite_rejected_with_existing_bytes_unchanged": true,
+      "tampered_whole_archive_refused_before_target_creation": true,
+      "Python310": "AST compatibility only; no native Linux execution",
+      "original_business_tests_rerun": false,
+      "cloud_SUT_HTTP_SQL_pressure_executed": false,
+      "preparation_environment_attempts": [
+        {
+          "action": "import pytest in system Python",
+          "result": "ModuleNotFoundError before any tests started"
+        },
+        {
+          "action": "import pytest in existing project venv",
+          "result": "ModuleNotFoundError before any tests started"
+        }
+      ],
+      "framework_choice": "stdlib unittest; no dependencies installed",
+      "scope_note": "Time-condition tests isolate exact unchanged AST predicates; context/HTTP/routing are stubbed and not claimed as validated."
+    },
+    "actual_cloud_or_grant_or_session": false,
+    "report": "agents/backend/window-20261029/report.md",
+    "prompt": "ROLE-backend-WINDOW-20261029-v1",
+    "wrapper": "pending separate commit"
   }
 }

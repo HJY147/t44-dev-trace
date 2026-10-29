@@ -761,3 +761,7 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 
 ### 20Z模板pin纠错：本岗遗漏，非SUT缺陷
 root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前拒绝：运行12574B transport和manifest2af正确ba11a4d5…73f6b07，两模板错误继承f89e旧16Z pin。旧7自测盲用旧模板作期望未测跨产物一致性，本岗承认遗漏。先本机两红封0174c41d，修模板和生成器当前manifest取pin，保原断言并补必要检查，6相关绿/6未选。APP新模板SHA1c1db93d…7e67c73，LOAD ed79ef8d…9f3efaa；其他sha实际输入逐项仍null。13runtime/manifest/delivery/7raw-ui逐Git不变，无重构包/重装/云/68重跑，旧16Z和原失败不动。report/prompt/新verification齐，root继续实际流程不由本岗宣称keygen成功。
+
+
+## 2026-10-29 新窗口准备（ROLE-backend-WINDOW-20261029-v1）
+已先合并594b08f0 pin修正；新29日profile/P64严格派生，不改产品/旧窗口。九项本地标准库检查通过，无云/SUT/新会话；详细摘要、真实失败与边界见agents/backend/window-20261029/report.md。固定commit单下载wrapper另封。

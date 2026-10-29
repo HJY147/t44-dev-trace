@@ -480,3 +480,7 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 
 
 2026-10-28 20Z PUBLIC输入勘误：模板transfer_sha256漏随runtime更新，本地先真实2红后6相关绿，纠正为ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07。只模板/生成器及一致性自测说明变化，13运行和manifest2af/delivery305c/7分片不动，无SUT/阈值/性能结论。root预keygen额外校验实际拒绝事实保留，不把旧7假定完善。详p64-f7-2000-template-pin-report.md；实际参数仍由root本次回执填写。
+
+
+### 2026-10-29 新时窗准备
+准确f7原产品不变，新的profile/P64保持业务和旧断言；完成九项本地窄检查/原安装raw与JSON回放。无云或正式性能结论，runtime输出与root部署接口见agents/backend/window-20261029。
