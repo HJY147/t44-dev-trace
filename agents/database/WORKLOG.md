@@ -403,3 +403,5 @@
 - 原型py_compile和真实导入/构造smoke通过：18表226列、146索引行/59CHECK行/55FK列行、1286feature，仅构造不是DB/行为验收。CHECK parser与migrate完整字节同、其他所有产品/冻结/依赖/原测试/计数器/旧R29B零差异。候选Ruff SIM102真实红保留，没有把否决后的风格微调当成果。
 - 按无净减规则拒绝009b并4a1acafbc1b895a3df5f6cdbf6e47b59b546fb1d恢复产品到7374字节；原计数4a1实际5880/65files，范围仍exit1/超780，最终净0。无百行候选，不代root合并。原794/956需注入点适配，但从未改任何assert/负例；净增已否决，不再申请迁移/原生CI或做无意义全回归。
 - 没有pytest/build/benchmark/coverage/MySQL/HTTP/独立/云；无PRIVATE或未公开用例读取、无测试岗联系、无新增依赖。真实prompt/原型SHA/撤回/命令/失败/固定计量/边界在architecture-r30，四件同步。
+
+- 四件/证据2f6a0967已真实push；Issue4实际评论6490260726由GitHub插件发布，再按单ID GET核全文逐字一致，原回执github-publication.json。收尾只补发布回执，不新增产品/测试执行；最终产品仍基准原字节。

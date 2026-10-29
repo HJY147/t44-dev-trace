@@ -20,3 +20,5 @@
 其他结构取舍：SQLAlchemy已安装2.1.6；TypeEngine.compile是公开渲染能力，但Table/Column身份比较不能替代所有字段/约束语义，也不能消除native属性检查。UoW自有状态包含单次使用、rollback-only和commit-uncertain/cleanup优先级，不能直接用Session.begin上下文删掉；seed先行插入和后续指针回写对应循环FK，Rows白名单/结果校验不是重复业务功能。本轮没有把这些必要边界删去，也没有引入SQLGlot/其他依赖或改变技术栈。
 
 上下游：最终gateway/UoW/check_schema输入、输出、错误、版本与基准完全相同，无跨岗接口变更，无fixture迁移要求。开放项仅为原严格LOC超780及其他根调度工作；本岗没有可交付的百行减量方案。四件、真实prompt、commands、原输出、计数、边界和GitHub实际交接回执在本目录。
+
+[Issue4实际否决交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6490260726)已发表并按单ID GET核全文逐字一致；四件/证据2f6a0967已push，github-publication.json保留回执。
