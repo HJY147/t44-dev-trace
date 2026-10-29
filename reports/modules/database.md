@@ -1,3 +1,11 @@
+# 数据库当前候选：待全新 native CI
+
+2026-10-29，`b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb`，真实净减74（5880→5806/65files），仍超706；250–350减量目标未达。SQLGlot30.25.0 MySQL AST替换手写CHECK，完整签名与事务内通知executemany/engine分组落地；Frozen DDL/原生目录函数/业务/API门禁保留。内部CLI列诊断合并为 `column_definition`。
+
+最终239本地模块测试通过/27 integration未选；18新owner、196表达式38416对等价差分、6000seed golden/V2、769双方言及通知批写/回滚证据已执行。Ruff/format/Bandit绿。本地不替代真实MySQL、全新镜像完整CI/coverage/HTTP或正式性能；统一native CI须实际消费MySQL全部CHECK显示形式。
+
+[本轮完整紧凑报告](../../agents/database/final-20261029/report.md)；[结构化证据](../../agents/database/final-20261029/verification.json)。以下历史原样保留。
+
 # 数据库模块：R29B本地查询注册候选，实减4，仍超783
 
 2026-10-29；数据库AI，ROLE-database-DRY-R29B-20261029-v1。基准确a92e5e73，设计4e317333，产品/测试8f29030756139061341e0a636c8774ca790964bd，独立分支codex/database-dry-r29b已push。仅migrations._catalog_defects四项注册改成有序标签映射；所有SQL、预期/比较、CHECK/DDLhash/版本/锁、seed/Rows/scan/事务与原断言不变。
