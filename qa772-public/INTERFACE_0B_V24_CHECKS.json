@@ -1,0 +1,248 @@
+{
+  "schema": "772-0b-v24-interface-checks-v1",
+  "status": "PASS_LOCAL_INTERFACE_ONLY",
+  "actual_start_utc": "2026-10-29T07:47:57.056252Z",
+  "actual_finish_utc": "2026-10-29T07:47:57.633278Z",
+  "elapsed_seconds": 0.5768495419761166,
+  "checks": [
+    {
+      "check": "fixed_0b_constants_match_declared_target",
+      "status": "PASS"
+    },
+    {
+      "check": "exact_0b_source_manifest_raw_bytes",
+      "status": "PASS"
+    },
+    {
+      "check": "exact_0b_bundle_manifest_raw_bytes",
+      "status": "PASS"
+    },
+    {
+      "check": "source_manifest_has_62_context_metadata_records",
+      "status": "PASS"
+    },
+    {
+      "check": "synthetic_neutral_shape_positive_no_actual_proof",
+      "status": "PASS"
+    },
+    {
+      "check": "old_f7_target_rejected",
+      "status": "PASS",
+      "rejection": "TARGET_GIT_COMMIT"
+    },
+    {
+      "check": "old_a7_sut_image_rejected",
+      "status": "PASS",
+      "rejection": "TARGET_SUT_IMAGE_CONFIG_DIGEST"
+    },
+    {
+      "check": "wrong_load_image_rejected",
+      "status": "PASS",
+      "rejection": "TARGET_LOAD_RUNTIME_IMAGE_CONFIG_DIGEST"
+    },
+    {
+      "check": "source_manifest_wrong_raw_bytes_rejected",
+      "status": "PASS",
+      "rejection": "SOURCE_MANIFEST_BYTES"
+    },
+    {
+      "check": "bundle_manifest_wrong_raw_bytes_rejected",
+      "status": "PASS",
+      "rejection": "BACKEND_BUNDLE_MANIFEST_BYTES"
+    },
+    {
+      "check": "old_neutral_schema_rejected",
+      "status": "PASS",
+      "rejection": "NEW_NEUTRAL_SCHEMA_REQUIRED"
+    },
+    {
+      "check": "stale_packet_rejected",
+      "status": "PASS",
+      "rejection": "FRESH_PACKET_REQUIRED"
+    },
+    {
+      "check": "different_run_cannot_relabel_old_packet",
+      "status": "PASS",
+      "rejection": "RUN_ID_BINDING"
+    },
+    {
+      "check": "short_window_rejected",
+      "status": "PASS",
+      "rejection": "FINITE_WINDOW_BEFORE_COST_STOP"
+    },
+    {
+      "check": "long_window_rejected",
+      "status": "PASS",
+      "rejection": "FINITE_WINDOW_BEFORE_COST_STOP"
+    },
+    {
+      "check": "cost_stop_reserve_rejected",
+      "status": "PASS",
+      "rejection": "FINITE_WINDOW_BEFORE_COST_STOP"
+    },
+    {
+      "check": "actual_expiry_equal_to_grant_end_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_SESSION_EXPIRY_COVERS_WHOLE_WINDOW"
+    },
+    {
+      "check": "service_scope_missing_rejected",
+      "status": "PASS",
+      "rejection": "SERVICE_SCOPE"
+    },
+    {
+      "check": "missing_role_rejected",
+      "status": "PASS",
+      "rejection": "FOUR_REAL_ROLES_REQUIRED"
+    },
+    {
+      "check": "duplicate_task_id_rejected",
+      "status": "PASS",
+      "rejection": "EXCLUSIVE_800_AND_PROJECT_SPREAD"
+    },
+    {
+      "check": "nonexclusive_project_membership_rejected",
+      "status": "PASS",
+      "rejection": "SESSION_PROJECT_MEMBERSHIP"
+    },
+    {
+      "check": "due_before_whole_window_plus24h_rejected",
+      "status": "PASS",
+      "rejection": "TASK_NOT_DUE_IN_WHOLE_WINDOW"
+    },
+    {
+      "check": "ca_hash_mismatch_rejected",
+      "status": "PASS",
+      "rejection": "CA_BYTES_BINDING"
+    },
+    {
+      "check": "origin_query_rejected",
+      "status": "PASS",
+      "rejection": "STRICT_HTTPS_ORIGIN"
+    },
+    {
+      "check": "receipt_byte_binding_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_IMPORT_RECEIPT_BYTES_BINDING"
+    },
+    {
+      "check": "receipt_59_files_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_IMPORT_EXACT_60_FILES"
+    },
+    {
+      "check": "business_started_receipt_rejected",
+      "status": "PASS",
+      "rejection": "IMPORT_RECEIPT_NONBUSINESS_BOUNDARY"
+    },
+    {
+      "check": "volume_modified_receipt_rejected",
+      "status": "PASS",
+      "rejection": "IMPORT_RECEIPT_NONBUSINESS_BOUNDARY"
+    },
+    {
+      "check": "wrong_receipt_source_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_IMPORT_RECEIPT_SOURCE_SHA"
+    },
+    {
+      "check": "wrong_actual_receipt_config_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_CONFIG_ID_PRESENT_IN_IDENTITY"
+    },
+    {
+      "check": "missing_package_resolution_rejected",
+      "status": "PASS",
+      "rejection": "ACTUAL_IDENTITY_AND_PACKAGE_RESOLUTION_REQUIRED"
+    },
+    {
+      "check": "explicit_zero_and_null_are_not_filtered",
+      "status": "PASS"
+    },
+    {
+      "check": "whole_packet_binding_mismatch_rejected",
+      "status": "PASS",
+      "rejection": "NEUTRAL_BINDING_SHA256"
+    },
+    {
+      "check": "prepare_writes_default_false_only",
+      "status": "PASS"
+    },
+    {
+      "check": "prepare_keeps_sessions_versions_and_receipt_unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "new_receipt_sha_and_original_reference_in_env_and_grant",
+      "status": "PASS"
+    },
+    {
+      "check": "same_run_prepare_cannot_be_replayed",
+      "status": "PASS",
+      "rejection": "FRESH_PREPARATION_DIRECTORY_REQUIRED"
+    },
+    {
+      "check": "execute_without_explicit_matching_authorization_rejected",
+      "status": "PASS",
+      "rejection": "EXPLICIT_SINGLE_AUTHORIZATION_REQUIRED"
+    },
+    {
+      "check": "edited_prepared_environment_rejected",
+      "status": "PASS",
+      "rejection": "PREPARED_ENV_BINDING"
+    },
+    {
+      "check": "retimed_external_grant_rejected",
+      "status": "PASS",
+      "rejection": "EXACT_FRESH_EXTERNAL_GRANT_REQUIRED"
+    },
+    {
+      "check": "exact_authorized_synthetic_dispatch_targets_unchanged_core_only",
+      "status": "PASS"
+    },
+    {
+      "check": "single_grant_replay_rejected",
+      "status": "PASS",
+      "rejection": "GRANT_ALREADY_USED"
+    },
+    {
+      "check": "core_bytes_unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "private_case_freeze_unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "historical_v1_adapter_entry_unchanged",
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 45,
+  "adapter_sha256": "694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938",
+  "core_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "core_modified": false,
+  "original_metrics_Validator_case_guard_AST": "UNCHANGED_CORE_BYTES; NOT_REPLACED_BY_ADAPTER",
+  "exact_raw_neutral_manifests_checked": true,
+  "synthetic_inputs": true,
+  "actual_APP_loaded_imported_proof": "NOT_AVAILABLE_NOT_VERIFIED",
+  "actual_sessions_read": 0,
+  "network_calls": 0,
+  "SUT_requests": 0,
+  "cloud_actions": 0,
+  "new_long_tests": 0,
+  "actual_Linux_Docker_resource_guard": "NOT_EXECUTED_THIS_STAGE",
+  "synthetic_dispatch_scope": "os.execv captured; no core process, HTTP or resource acceptance inferred",
+  "future_grant_allow": false,
+  "actual_SUT_admission": "NOT_ESTABLISHED",
+  "historical_cloud_NP": "UNCHANGED",
+  "v1_public_hashes_unchanged": {
+    "LOAD_NEUTRAL_ADAPTER.py": "7b785defc44c91754ec4ea5a25cc07edced3605a130f4436d68572d1aec1ba18",
+    "LOAD_NEUTRAL_ENTRY.sh": "222d2065507f9054ec12dfa150329f991a6dd96a83e826d9902a1a405b61e377"
+  },
+  "initial_draft_check": {
+    "status": "BLOCKED_BEFORE_FORMAL_FREEZE",
+    "reason": "The pinned source manifest has 62 context records, whereas the actual import receipt declares 60 runtime files. An initial draft assumed both counts were60; mapping-only correction now keeps these counts separate.",
+    "private_failed_prefix_retained": true
+  }
+}

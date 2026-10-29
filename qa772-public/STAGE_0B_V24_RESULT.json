@@ -1,0 +1,43 @@
+{
+  "schema": "772-0b-v24-interface-stage-v1",
+  "status": "LOCAL_INTERFACE_PREPARED_ONLY",
+  "created_utc": "2026-10-29T07:49:09.020203Z",
+  "four_artifacts": [
+    {
+      "name": "CORE_COMPATIBILITY_0B_V24.json",
+      "sha256": "0b8b5e19250a19ea83dab74a5c62379fdae9445a9ea458334e8c4b60431a5107"
+    },
+    {
+      "name": "INTERFACE_0B_V24_CHECKS.json",
+      "sha256": "1a6be2c1304bd9db87b98abc277b415ad4ce60f24b6ec7e2bb6e5d0286898614"
+    },
+    {
+      "name": "INTERFACE_0B_V24_FREEZE.json",
+      "sha256": "e2d97c62eb4485a70a502594c5368586f81fbb808dd6c82169bebacccc97c976"
+    },
+    {
+      "name": "TARGET_0B_V24.json",
+      "sha256": "024117e5d1c17b16253537f38840f3b2bdf35087038ced6f0e3bbc51d4242410"
+    }
+  ],
+  "neutral_material_owner_read_allowlist": [
+    "INTERFACE_0B_V24.md",
+    "NEUTRAL_0B_V24.template.json",
+    "IMPORT_RECEIPT_0B_V24.expected-shape.json",
+    "TARGET_0B_V24.json",
+    "GRANT_0B_V24.default-false.json",
+    "INTERFACE_0B_V24_FREEZE.json",
+    "INTERFACE_0B_V24_CHECKS.json"
+  ],
+  "handoff": "Root may forward only PUBLIC protocol/template/receipt paths and hashes; tester contacts root only.",
+  "finite_interface_checks": 45,
+  "core_modified": false,
+  "actual_loaded_imported_target_verified": false,
+  "real_session_reads": 0,
+  "SUT_requests": 0,
+  "cloud_actions": 0,
+  "new_long_tests": 0,
+  "original_cloud_NP": "UNCHANGED",
+  "actual_SUT_admission": "NOT_ESTABLISHED",
+  "future_run_authorized": false
+}

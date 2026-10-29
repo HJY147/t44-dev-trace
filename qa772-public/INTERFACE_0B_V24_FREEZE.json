@@ -1,0 +1,38 @@
+{
+  "schema": "772-0b-v24-interface-freeze-v1",
+  "version": "0b-v24-interface-1",
+  "frozen_utc": "2026-10-29T07:49:09.018900Z",
+  "status": "FROZEN_LOCAL_INTERFACE_CHECKED_NOT_SUT_ADMITTED",
+  "files": {
+    "ADAPTER_0B_V24.py": "694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938",
+    "ENTRY_0B_V24.sh": "615966a5fba2e5136dea8748c23ace80cf7707c8a4bd755edc50e12e253e4e02",
+    "TARGET_0B_V24.json": "024117e5d1c17b16253537f38840f3b2bdf35087038ced6f0e3bbc51d4242410",
+    "NEUTRAL_0B_V24.template.json": "df9491f23a9e16a818361a2008b4b070d7037d62906d61cfc080b64823256009",
+    "IMPORT_RECEIPT_0B_V24.expected-shape.json": "d5aa21c55e4cd4fa6364f2aba0daa8c43e5708a74e1f2a8314e0841606c46f35",
+    "GRANT_0B_V24.default-false.json": "15de62f29a87d827f405a8fdafccd3b7341d2bffe8f6e9e8898ae2385bbae025",
+    "INTERFACE_0B_V24.md": "0896c0d92ad027a5ca4c84ad8adb267a96ed6ca90fac8c4e7e2b4928c0ee703c",
+    "CORE_COMPATIBILITY_0B_V24.json": "0b8b5e19250a19ea83dab74a5c62379fdae9445a9ea458334e8c4b60431a5107",
+    "INTERFACE_0B_V24_CHECKS.json": "1a6be2c1304bd9db87b98abc277b415ad4ce60f24b6ec7e2bb6e5d0286898614"
+  },
+  "core_compatibility": "CORE_GENERIC_NO_CHANGE_REQUIRED",
+  "core_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "old_V1_files_unchanged": true,
+  "exact_manifest_bytes_authorized_and_checked": {
+    "source-manifest.json": {
+      "sha256": "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b",
+      "bytes": 12838,
+      "source_context_records": 62
+    },
+    "backend-bundle-manifest.json": {
+      "sha256": "b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345",
+      "bytes": 2937,
+      "actual_future_import_receipt_runtime_files": 60
+    }
+  },
+  "real_values_in_PUBLIC": false,
+  "loaded_receipt": "Must be actual r30-backend-import-receipt-v1 output after real APP import; raw SHA/path/observed UTC bound into env and exact external grant. Nested full OCI/config/DiffID/package chain requires root/reviewer inspection of same SHA.",
+  "default_grant_allow": false,
+  "cloud_SUT_long_test_authorization": false,
+  "actual_loaded_resource_guard_environment_session_grant": "PENDING_SEPARATE_ACTUAL_EVIDENCE_AND_EXPLICIT_AUTHORIZATION",
+  "source_read_scope": "Own exact tester source plus the two explicitly authorized neutral manifests only; no application implementation."
+}
