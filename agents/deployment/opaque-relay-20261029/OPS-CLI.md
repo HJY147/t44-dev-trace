@@ -26,3 +26,13 @@
 安装 `install-resource-continuation.PUBLIC.sh`（仅装新文件不执行），再运行 `python3 -I -B /root/t44-r9/continue-resource-r29-01.py --public-input-zlib-b64 '原app-resource同一个PUBLIC_INPUT_BLOB'`。它不重start、不重prepare、不重建namespace、不覆盖02，只验证原文件hash、unit plan和现时实际PID/root/完整argv/start_ticks/raw首记录。若这些仍成立且start-result缺失，排他记录有明确fresh-observation-recovered标记的真实当前receipt；已有则核对拒覆盖。不是伪称旧start返回success。然后只续尚未执行的03原seal与bridge/state输出，仍以marker密文接原load-resource。若argv有-I/-B等差异则拒绝；原代码没有argv重写，不能放宽原guard。
 
 部署AI只做Python3.10语法及shell语法解析，未执行云恢复。以上云事实来自根转交原件及其实际观测；根仍须保存恢复步骤原stdout/exit并核验完成。
+
+## 原status输出形状修复（必须换两个入口）
+
+根实际APP原app-stage1在04成功读取GEN status后因不存在host_https而失败，尚未grant/05/06/S1。部署AI复核原GEN源码，status早返回仅success/resources；原resource control status则含action/unit/PID/progress，不含success。旧ops两个通用字段假设是部署编排缺陷，原失败/日志保持。没有改原13件。
+
+APP先安装 `install-app-stage1-wrapper.PUBLIC.sh`，以同一个原PUBLIC blob运行 `python3 -I -B /root/t44-r9/app-stage1-r29-01.py --public-input-zlib-b64 'BLOB'`。新04b独立实际roles状态、新04c严格原CA/IP/端口访问原无凭据projects路由，实际401才继续原05/06。不会重idle或重原04；若05/06已存在就排他失败，不启动第二次S1。输出仍原公开bridge。
+
+LOAD先安装 `install-load-start-wrapper.PUBLIC.sh`，以APP新bridge整个公开对象压缩blob运行 `python3 -I -B /root/t44-r9/load-start-r29-01.py --public-input-zlib-b64 'BLOB'`。04b按原resource status的action和unit取真实记录，核PID不变和raw字节，不伪造success字段，worker仍调用固定旧ops的load-wait。APP producer入口不变。
+
+新增小检查直接解析原GEN/resource AST确认实际输出字段，并用相应形状代表性fixture检查新选择规则；没有用额外云尝试猜字段，也没有声称是Linux整链实测。工具仍须由根保存实际运行证据。
