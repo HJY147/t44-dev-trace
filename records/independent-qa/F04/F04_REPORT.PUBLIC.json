@@ -1,0 +1,172 @@
+{
+  "AC01_all_errors_verdict": "UNVERIFIED_INCOMPLETE_BRANCH_COVERAGE",
+  "P04_scope": "Any P04 result remains bound only to source356f, not subsequent repaired source. No full product acceptance implied.",
+  "actual_environment_sha256": "6b9f8b9c66860bb41fea3833781f3163a41daf2807e68b322054c067886660ad",
+  "actual_max_seconds": 1497,
+  "classification_summary": {
+    "QA_oracle_or_scope_errors": 4,
+    "confirmed_product_contract_deviations": 1,
+    "coordinator_operator_failure_in_raw_FAIL": 1,
+    "raw_UNEXECUTED": 11
+  },
+  "control_notes": [
+    "002 api_restart is raw UNEXECUTED response timeout; backup contains a success=false/ValueError response. Response observed_utc is not proof of its delivery time to runner. No restart-durability verdict is available.",
+    "180.001-second coordinator precision tolerance did not rewrite001/002 or replay them.",
+    "Missing scheduler_scan_wait/notification_delivery_wait and DB/audit/commit-loss/browser/whitebox capabilities remain unverified; no-notification immediate observation is not a delivery-SLA failure."
+  ],
+  "evidence": {
+    "adjacent_receipt_json_matches_cipher_bytes_sha_files_and_tar_sha": true,
+    "adjacent_receipt_sha256": "34b2aad726a7557a29647fa87a3fe07b94f303e64c712b33d347f0f0d2e725d8",
+    "all_internal_file_hashes_match": true,
+    "cipher_bytes": 147339,
+    "cipher_sha256": "2d73639713c2370f9f518b8bb6fcc86ce68110df4b8fd99824b419ea165af5a7",
+    "compressed_tar_sha256": "e557f225a362f7d07c843d563f21cbe89960fd26e7e33063449698363c669b56",
+    "credential_or_key_published": false,
+    "formal_performance_proven": false,
+    "functional_evidence_authenticated_records": 312,
+    "functional_evidence_complete_footer": true,
+    "functional_evidence_sha256": "7dfac9b9c19998ce978681c9bdae385d49fca9a6796c17d852b500a903a6fa60",
+    "http_records": 274,
+    "internal_files": 10,
+    "original_results_preserved": {
+      "FAIL": 6,
+      "PASS": 13,
+      "UNEXECUTED": 11
+    },
+    "product_acceptance_proven": false,
+    "run_id": "r30finalf04",
+    "schema": "753-F04-local-backup-verification-v1",
+    "status": "LOCAL_BACKUP_DECRYPT_AUTHENTICATE_AND_ALL_FILE_SHA256_VERIFIED",
+    "verified_utc": "2026-10-29T18:09:24.344941Z"
+  },
+  "failed_case_classification": [
+    {
+      "case": "F02-login",
+      "classification": "QA_ORACLE_ERROR",
+      "fact": "Login HTTP200 passed frozen LoginResult schema and returned access_token/token_type/expires_at/user; extra tool assertion looked for token, which is not a contract field.",
+      "raw": "FAIL"
+    },
+    {
+      "case": "F03-project-rules",
+      "classification": "QA_UNSUPPORTED_EXPECTATION",
+      "fact": "Tool expected409 for adding an existing member. Frozen addProjectMember does not specify mandatory duplicate rejection; actual201 returned unchanged roles[2,3]/version1. No product defect established.",
+      "raw": "FAIL"
+    },
+    {
+      "case": "S01-input-security",
+      "classification": "CONFIRMED_PRODUCT_CONTRACT_DEVIATION",
+      "finding_id": "753-F04-P01",
+      "raw": "FAIL"
+    },
+    {
+      "case": "F10-D008",
+      "classification": "QA_ORACLE_ERROR",
+      "fact": "Request assessment_version3 disagreed with actual assessment version2. Frozen transitionTask x-error-cases specifically prescribes ASSESSMENT_BASELINE_MISMATCH for this earlier guard; actual409/code matches it. Tool incorrectly expected VERSION_CONFLICT, which is for expected_version mismatch.",
+      "raw": "FAIL"
+    },
+    {
+      "case": "X02-MQ-fallback-restore",
+      "classification": "COORDINATOR_OPERATOR_PROTOCOL_FAILURE",
+      "fact": "001 mq_stop returned success=false/ValueError; no valid MQ fault result established. Original failure remains unchanged.",
+      "raw": "FAIL"
+    },
+    {
+      "case": "S01-durable-rejection-audits",
+      "classification": "QA_SCOPE_ASSUMPTION_ERROR",
+      "fact": "Tool compared all rejection audit IDs, including global/unauthenticated/unauthorized requests, with a single project audit listing.44 audit IDs absent there do not prove loss.37 visible references cover36 unique project rejection audits, all outcome2.",
+      "raw": "FAIL"
+    }
+  ],
+  "identity": {
+    "backend_bundle_manifest_sha256": "1ddafb7aaa1c552172cc5a0c0f48881412a8fa1fabbb400037854f4bba77a6a2",
+    "backend_import_receipt_sha256": "7b78481ec8737af6f56152216eba604608270c7987427193021ca47b98c855af",
+    "image_digest": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+    "openapi_sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "source_git_commit": "356f29983c904e949245aedfad464efc1bf7b63d",
+    "source_manifest_sha256": "50684876e08d74e8579e99b30cd3f53b676f5e4367cadbc3bfa610714ce6b088"
+  },
+  "original_blackbox_full_acceptance": false,
+  "original_counts_preserved": {
+    "FAIL": 6,
+    "PASS": 13,
+    "UNEXECUTED": 11
+  },
+  "original_operation_count": 38,
+  "overall_verdict": "NOT_ACCEPTED_INCOMPLETE_WITH_ONE_CONFIRMED_CONTRACT_DEVIATION_AND_TOOL_CONTROL_ERRORS",
+  "passed_case_groups": [
+    "SETUP",
+    "F02-auth-matrix",
+    "F02-token-expired-service",
+    "F02-token-revocation",
+    "F01-contract-three-categories",
+    "F04-F05-staffing",
+    "F04-F12-capacity-missing-race",
+    "F06-dependency",
+    "F11-idempotency",
+    "F12-concurrency",
+    "F07-F08-F09-lifecycle",
+    "F08-review-rejection",
+    "F04-F09-rolledback-capacity"
+  ],
+  "private_code_cases_keys_sessions_published": false,
+  "published_utc": "2026-10-29T18:09:24.344941Z",
+  "raw_http_status_counts": {
+    "200": 142,
+    "201": 51,
+    "400": 2,
+    "401": 40,
+    "403": 6,
+    "409": 15,
+    "413": 1,
+    "422": 17
+  },
+  "run_id": "r30finalf04",
+  "schema": "753-F04-independent-report-v1",
+  "source_git_commit": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "unexecuted": [
+    {
+      "case": "F13-escalation20-scheduler-restart",
+      "reason": "OPERATOR_scheduler_scan_wait"
+    },
+    {
+      "case": "F14-notifications",
+      "reason": "NO_DELIVERED_NOTIFICATION"
+    },
+    {
+      "case": "X01-API-restart-durability",
+      "reason": "OPERATOR_RESPONSE_TIMEOUT_api_restart"
+    },
+    {
+      "case": "X03-DB-fault",
+      "reason": "OPERATOR_db_stop"
+    },
+    {
+      "case": "S02-plaintext-init",
+      "reason": "HASH_ONLY_INITIALIZATION_IS_SEPARATE_NEUTRAL_OPERATOR_CAPABILITY"
+    },
+    {
+      "case": "S02-secret-leak",
+      "reason": "REQUIRES_NEUTRAL_REDACTED_LOG_SCAN_AND_PROCESS_ENV_ATTESTATION"
+    },
+    {
+      "case": "X03-audit-specific-fault",
+      "reason": "NO_AUDIT_ONLY_FAULT_BOUNDARY_UNLESS_PROVIDED"
+    },
+    {
+      "case": "X01-commit-loss",
+      "reason": "NO_COMMIT_CONFIRM_LOSS_BOUNDARY_UNLESS_PROVIDED"
+    },
+    {
+      "case": "U01-browser",
+      "reason": "BROWSER_UI_REQUIRES_SEPARATE_BROWSER_EXECUTION"
+    },
+    {
+      "case": "N01-source-schema",
+      "reason": "PUBLIC_COUNTER_AND_NEUTRAL_SCHEMA_SNAPSHOT_SEPARATE"
+    },
+    {
+      "case": "N02-whitebox-provenance",
+      "reason": "SEPARATE_EVIDENCE_GATES"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "all_product_acceptance": false,
+  "backend_config_id": "sha256:a3f4bf81c8275dc949a91485097cb210a06f3880b5476cb05dfd2f98018d192d",
+  "findings": [
+    {
+      "actual": {
+        "audit_id": 75,
+        "code": "PARAMETER_INVALID",
+        "http_status": 422,
+        "observed_utc": "2026-10-29T17:51:00.136376Z",
+        "request_id": "16dedb15-a2a9-4cb6-9343-3b2635531348"
+      },
+      "basis": "Frozen specs/contracts/openapi.json listTasks x-error-cases: clear SQL attack expression in ID/enum/sort selectors =>400 SECURITY_INPUT_REJECTED. Frozen contract SHA6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478.",
+      "evidence": {
+        "record_seq": 75,
+        "response_raw_sha256": "019b89afedb4fce4e139fa0a3a88abb715e1027a96fed537892ae2e393515dfd",
+        "sealed_functional_sha256": "7dfac9b9c19998ce978681c9bdae385d49fca9a6796c17d852b500a903a6fa60"
+      },
+      "expected": {
+        "code": "SECURITY_INPUT_REJECTED",
+        "http_status": 400,
+        "redacted_durable_rejection_audit_required": true
+      },
+      "id": "753-F04-P01",
+      "impact": "Contract/error-classification deviation. The request was rejected; no SQL execution, data leak or injection success is established by this observation.",
+      "precondition": "Authenticated current project member; observed role manager in isolated F04 project1.",
+      "priority": "P2",
+      "request": {
+        "body": null,
+        "method": "GET",
+        "path": "/api/v1/projects/1/tasks?owner_id=1%20OR%201%3D1"
+      },
+      "retest_scope": "New independent run against explicitly identified repaired source; verify this selector and ordinary quoted free text against the same frozen rules. Do not reinterpret P04/source356f results as repaired-source acceptance.",
+      "title": "ID选择器明确SQL攻击输入返回通用参数错误，偏离冻结安全错误码"
+    }
+  ],
+  "private_cases_credentials_or_keys_published": false,
+  "product_defect_count_confirmed": 1,
+  "published_utc": "2026-10-29T18:09:24.344941Z",
+  "run_id": "r30finalf04",
+  "schema": "753-F04-product-findings-v1",
+  "source_git_commit": "356f29983c904e949245aedfad464efc1bf7b63d"
+}

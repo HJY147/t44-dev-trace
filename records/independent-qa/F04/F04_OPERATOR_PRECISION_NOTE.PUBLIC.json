@@ -1,0 +1,30 @@
+{
+  "SUT_requests_by_tester_this_review": 0,
+  "actual_wait_or_G_C_extended": false,
+  "approved": true,
+  "assertions_changed": false,
+  "cases_changed": false,
+  "conditions": [
+    "Original request bytes, requested_utc and deadline_utc remain unchanged.",
+    "Only first attempts initiated after this approval; never retry/replay any already attempted, failed or responded request.",
+    "Check actual current UTC against the exact original declared deadline, not deadline+0.001, and respect immutable G18:17:56Z/C18:22:56Z.",
+    "The<=180.001 comparison is only an admission precision tolerance on declared duration; do not extend any actual operation deadline or tester wait.",
+    "Original001false remains false.002if already attempted or expired remains failure/unexecuted as observed; no retrospective conversion.",
+    "Source/project/phase/owned-role/action whitelist/id/no-response checks and all other controls remain unchanged."
+  ],
+  "declared_duration_comparison_max_seconds": 180.001,
+  "issued_utc": "2026-10-29T17:56:42.098554Z",
+  "not_product_acceptance": true,
+  "observed_example_declared_durations_seconds": [
+    180.000003,
+    180.000004
+  ],
+  "original_diagnostic_sha256": "7329beee36364e03e8d804d6177bc360a41b5b6b60545297554d58572792f604",
+  "original_failure_rewritten": false,
+  "phase": "f",
+  "precision_basis": "Independent functional tool reads requested_utc and deadline_utc on separate clock calls; 3-4 microseconds difference does not constitute a requested extension of the180-second wait.",
+  "product_changed": false,
+  "run_id": "r30finalf04",
+  "schema": "753-F04-neutral-operator-precision-v1",
+  "scope": "Coordinator-only serialization precision tolerance for future first operator attempts"
+}
