@@ -3769,10 +3769,10 @@
     "red_stage": "7936fe2a",
     "red_failed": 2,
     "red_passed": 0,
-    "unique_local_checks": 78,
-    "passed": 78,
-    "seconds": 4.23,
-    "new_manifest_sha256": "8f4b7ffc3df32aa2a2f8e180a9b0319cc5d7a5fb8d989d6b33d7b5f327d8da1c",
+    "unique_local_checks": 81,
+    "passed": 81,
+    "seconds": 4.33,
+    "new_manifest_sha256": "0fc61e463692622f167548b7b00aed42fc18a58a0ae127317d6138e0a6136b8b",
     "runtime_file_count": 18,
     "historical_producer17_manifest_unchanged_sha256": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606",
     "executed_source_stage_unchanged": "686d79da3967123be7a3c24d6740d77be008c1bb",
@@ -3782,6 +3782,18 @@
     "409_counted_as_success": false,
     "actual_matching_events_for_six_old_failures_observed": false,
     "actual_cloud_SUT_sessions_extra_CI": 0,
-    "future_owner_dependency": "Review/install 18-file manifest including new escalation_readback helper before a separately authorized new window"
+    "future_owner_dependency": "Review/install 18-file manifest including new escalation_readback helper before a separately authorized new window",
+    "runtime_scope": "LOCAL_PROJECT_RUNTIME_ONLY_NOT_DOCKER_OR_CLOUD_READY",
+    "runtime_check": "python -B /neutral-code/escalation_readback.py --check-runtime-only",
+    "future_runtime": "APP actualbinding official backend8e; edge UID10001 read-only no caps no DB/AMQP business env; preserve image PYTHONPATH; no product source to LOAD/QA",
+    "verifier": "tmp/756_backend_neutral_cas_r30/verify-local.py",
+    "runtime_python_file_set_exact": true,
+    "previous_review_stage": "5635cac1a416fc1bea8178ca0991dd1cf5747c0d",
+    "runtime_entry_red": {
+      "failed": 2,
+      "passed": 0,
+      "seconds": 0.25
+    },
+    "actual_Docker_8e_run": false
   }
 }
