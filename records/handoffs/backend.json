@@ -3648,5 +3648,40 @@
       "script": "agents/backend/neutral-fixture-20261029/resume-import-launch.PUBLIC.sh",
       "SHA256": "eec6056af0eb59828e1370529da7f481f0b6bfd2dcf2369d8457207a25746244"
     }
+  },
+  "dry_r29b_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-DRY-R29B-v1",
+    "base_sha": "a92e5e73da93ba23748c3bab113103036c395d50",
+    "branch": "codex/backend-dry-r29b",
+    "status": "MODULE_VALIDATED_SCALE_GATE_STILL_FAILS_PENDING_ROOT_REVIEW",
+    "product_paths": [
+      "backend/t44/services/reviews.py"
+    ],
+    "application_before": 5887,
+    "application_after": 5884,
+    "behavior": "Two latest release-assessment queries share one private query; original call sites/list handling preserved",
+    "evidence": "agents/backend/dry-r29b",
+    "test_path": "tmp/766_backend_dry_r29b/766_assessment_query.py",
+    "cloud_independent_PRIVATE_accessed": false,
+    "full_CI_MySQL_RabbitMQ_acceptance_or_performance_executed": false,
+    "product_commit": "41a111f270e949326202b8af5770db8aa7102e82",
+    "application_net_reduction": 3,
+    "remaining_above_5100": 784,
+    "require_range_exit_code": 1,
+    "local_developer_checks": {
+      "new_differential": 18,
+      "original_SQLite_HTTP": 134,
+      "total": 152,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 50.23,
+      "upstream_deprecation_warnings": 1
+    },
+    "whole_module_AST_equal_after_helper_expansion": true,
+    "report": "agents/backend/dry-r29b/report.md",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840",
+    "initial_product_push_exit_code": 0
   }
 }
