@@ -1,0 +1,9 @@
+fix(deployment): stage actual producer manifest and bind container paths [skip ci]
+
+Accept the published files/hash plus file_sizes layout, test the exact
+producer0a34 files, and reject a host path in the mounted binding plan.
+Preserve original host provenance separately and provide bounded public install.
+
+Agent-Role: deployment AI
+Prompt-Ref: ROLE-deployment-R30-NEUTRAL-ADMIN-v1
+Issue: #7
