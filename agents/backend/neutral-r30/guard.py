@@ -1,7 +1,6 @@
 """Local metadata consistency guards. Never connects, issues sessions or authorizes a run."""
 
 import argparse
-import hashlib
 import ipaddress
 import json
 import re
@@ -20,8 +19,15 @@ APP_ROLES = {"mysql", "rabbit", "api", "consumer", "scheduler", "web", "tls-gate
 IDENTITIES = {"manager", "developer", "reviewer", "service"}
 BASE_COUNTS = {"projects": 40, "tasks": 6000, "dependencies": 9000, "reviews_and_decisions": 15000}
 OPERATIONS = {
-    "seed_demo", "init-user", "login", "service-token", "createTask", "transitionTask",
-    "createEscalation", "addProjectMember", "createIteration",
+    "seed_demo",
+    "init-user",
+    "login",
+    "service-token",
+    "createTask",
+    "transitionTask",
+    "createEscalation",
+    "addProjectMember",
+    "createIteration",
 }
 SECRET_KEYS = {"token", "access_token", "password", "private_key", "database_url"}
 
@@ -36,9 +42,11 @@ def need(condition, code):
 
 
 def timestamp(value):
-    need(isinstance(value, str) and re.fullmatch(
-        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z", value
-    ), "EXACT_UTC_REQUIRED")
+    need(
+        isinstance(value, str)
+        and re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z", value),
+        "EXACT_UTC_REQUIRED",
+    )
     try:
         return datetime.fromisoformat(value)
     except ValueError:
@@ -66,23 +74,37 @@ def check_plan(plan, now, *, require_fixture_ready=True):
     need(plan.get("schema") == "t44-neutral-r30-plan-v1", "PLAN_SCHEMA_REQUIRED")
     need(plan.get("synthetic") is True, "SYNTHETIC_DECLARATION_REQUIRED")
     need(plan.get("root_admit_preparation") is True, "ROOT_PREPARATION_ADMISSION_REQUIRED")
-    need(re.fullmatch(r"r30-[a-z0-9][a-z0-9-]{0,55}", plan.get("run_id") or ""), "FRESH_R30_RUN_REQUIRED")
+    need(
+        re.fullmatch(r"r30-[a-z0-9][a-z0-9-]{0,55}", plan.get("run_id") or ""),
+        "FRESH_R30_RUN_REQUIRED",
+    )
     namespace = plan.get("namespace") or ""
-    need(re.fullmatch(r"t44-r30-[a-z0-9][a-z0-9-]{0,47}", namespace), "FRESH_R30_NAMESPACE_REQUIRED")
+    need(
+        re.fullmatch(r"t44-r30-[a-z0-9][a-z0-9-]{0,47}", namespace), "FRESH_R30_NAMESPACE_REQUIRED"
+    )
     need(plan["source"]["git_commit"] == SOURCE, "EXACT_0B_SOURCE_REQUIRED")
     need(plan["source"]["openapi_sha256"] == OPENAPI, "FROZEN_OPENAPI_REQUIRED")
     for key in ("manifest_sha256", "files_proof_sha256", "artifact_sha256"):
         digest(plan["source"][key])
-    need(plan["source"]["manifest_sha256"] == SOURCE_MANIFEST
-         and plan["source"]["bundle_manifest_sha256"] == BUNDLE_MANIFEST,
-         "EXACT_DEPLOYMENT_MANIFESTS_REQUIRED")
-    need(plan["source"]["context_records"] == 62 and plan["source"]["expected_runtime_files"] == 60,
-         "CONTEXT62_AND_RUNTIME60_ARE_DISTINCT")
+    need(
+        plan["source"]["manifest_sha256"] == SOURCE_MANIFEST
+        and plan["source"]["bundle_manifest_sha256"] == BUNDLE_MANIFEST,
+        "EXACT_DEPLOYMENT_MANIFESTS_REQUIRED",
+    )
+    need(
+        plan["source"]["context_records"] == 62 and plan["source"]["expected_runtime_files"] == 60,
+        "CONTEXT62_AND_RUNTIME60_ARE_DISTINCT",
+    )
     digest(plan["source"]["actual_loaded_receipt_sha256"])
-    need(isinstance(plan["source"]["actual_loaded_receipt_path"], str)
-         and Path(plan["source"]["actual_loaded_receipt_path"]).is_absolute(), "ORIGINAL_ACTUAL_IMPORT_PATH_REQUIRED")
-    need(0 <= (now - timestamp(plan["source"]["actual_loaded_observed_at"])).total_seconds() <= 3600,
-         "FRESH_ACTUAL_IMPORT_OBSERVATION_REQUIRED")
+    need(
+        isinstance(plan["source"]["actual_loaded_receipt_path"], str)
+        and Path(plan["source"]["actual_loaded_receipt_path"]).is_absolute(),
+        "ORIGINAL_ACTUAL_IMPORT_PATH_REQUIRED",
+    )
+    need(
+        0 <= (now - timestamp(plan["source"]["actual_loaded_observed_at"])).total_seconds() <= 3600,
+        "FRESH_ACTUAL_IMPORT_OBSERVATION_REQUIRED",
+    )
     need(plan["budget"]["helper_sha256"] == BUDGET_HELPER, "R30_STRICT_KIND_BUDGET_HELPER_REQUIRED")
     digest(plan["budget"]["actual_admission_receipt_sha256"])
     approval = plan["public_tool_approval"]
@@ -94,16 +116,31 @@ def check_plan(plan, now, *, require_fixture_ready=True):
     need(approval["root_relayed_approval"] is True, "ROOT_RELAYED_TOOL_APPROVAL_REQUIRED")
     target = plan["target"]
     need(target["compose_project"] == namespace, "EXACT_COMPOSE_NAMESPACE_REQUIRED")
-    need(re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,63}", target["database"] or ""), "EXACT_PROJECT_DATABASE_REQUIRED")
+    need(
+        re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,63}", target["database"] or ""),
+        "EXACT_PROJECT_DATABASE_REQUIRED",
+    )
     need("r30" in target["database"].lower(), "OLD_DATABASE_NAMESPACE_REFUSED")
-    need(target["mysql_host"] == "mysql" and type(target["mysql_port"]) is int
-         and target["mysql_port"] == 3306 and target["mysql_user"] == target["database"] + "_app",
-         "EXACT_DATABASE_BINDING_REQUIRED")
+    need(
+        target["mysql_host"] == "mysql"
+        and type(target["mysql_port"]) is int
+        and target["mysql_port"] == 3306
+        and target["mysql_user"] == target["database"] + "_app",
+        "EXACT_DATABASE_BINDING_REQUIRED",
+    )
     digest(target["binding_sha256"])
     digest(target["ca_sha256"])
     origin = urlsplit(target["origin"] or "")
-    need(origin.scheme == "https" and origin.hostname and not origin.username and not origin.password
-         and origin.path in ("", "/") and not origin.query and not origin.fragment, "EXACT_TLS_ORIGIN_REQUIRED")
+    need(
+        origin.scheme == "https"
+        and origin.hostname
+        and not origin.username
+        and not origin.password
+        and origin.path in ("", "/")
+        and not origin.query
+        and not origin.fragment,
+        "EXACT_TLS_ORIGIN_REQUIRED",
+    )
     try:
         need(ipaddress.ip_address(target["connect_ip"]).is_private, "PRIVATE_CONNECT_IP_REQUIRED")
     except ValueError:
@@ -116,24 +153,38 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         if role == "scheduler" and not require_fixture_ready:
             need(roles[role]["required"] is True, "SCHEDULER_MUST_REMAIN_REQUIRED")
             continue
-        need(roles[role]["required"] is True and roles[role]["running_observed"] is True,
-             "REQUIRED_BACKGROUND_ROLE_NOT_OBSERVED")
+        need(
+            roles[role]["required"] is True and roles[role]["running_observed"] is True,
+            "REQUIRED_BACKGROUND_ROLE_NOT_OBSERVED",
+        )
         digest(roles[role]["receipt_sha256"])
     window = plan["window"]
     start, end, stop = (timestamp(window[key]) for key in ("start_utc", "end_utc", "stop_utc"))
-    need(now < start < end < stop and (end - start).total_seconds() >= 780
-         and (stop - end).total_seconds() >= 90, "FRESH_COMPLETE_WINDOW_REQUIRED")
+    need(
+        now < start < end < stop
+        and (end - start).total_seconds() >= 780
+        and (stop - end).total_seconds() >= 90,
+        "FRESH_COMPLETE_WINDOW_REQUIRED",
+    )
     need(timestamp(plan["seed"]["anchor_utc"]) <= now, "ACTUAL_SEED_ANCHOR_REQUIRED")
-    need(type(plan["seed"]["seed"]) is int and plan["seed"]["fresh_empty_database_required"] is True,
-         "EXPLICIT_FRESH_SYNTHETIC_SEED_REQUIRED")
+    need(
+        type(plan["seed"]["seed"]) is int and plan["seed"]["fresh_empty_database_required"] is True,
+        "EXPLICIT_FRESH_SYNTHETIC_SEED_REQUIRED",
+    )
     need(plan["fixture_baseline_counts"] == BASE_COUNTS, "DECLARED_BASELINE_COUNTS_REQUIRED")
-    need(set(plan["authorized_count_delta"]) == set(BASE_COUNTS)
-         and all(type(v) is int and v >= 0 for v in plan["authorized_count_delta"].values()),
-         "EXPLICIT_PREPARATION_DELTA_REQUIRED")
+    need(
+        set(plan["authorized_count_delta"]) == set(BASE_COUNTS)
+        and all(type(v) is int and v >= 0 for v in plan["authorized_count_delta"].values()),
+        "EXPLICIT_PREPARATION_DELTA_REQUIRED",
+    )
     need(set(plan["allowed_writes"]) <= OPERATIONS, "UNSUPPORTED_PREPARATION_WRITE")
     ids = plan["authorized_project_ids"]
-    need(isinstance(ids, list) and len(ids) == len(set(ids))
-         and all(type(pid) is int and pid > 0 for pid in ids), "EXPLICIT_PROJECT_WRITE_SCOPE_REQUIRED")
+    need(
+        isinstance(ids, list)
+        and len(ids) == len(set(ids))
+        and all(type(pid) is int and pid > 0 for pid in ids),
+        "EXPLICIT_PROJECT_WRITE_SCOPE_REQUIRED",
+    )
     need(plan["benchmark_grant_allow"] is False, "PREPARATION_IS_NOT_RUN_AUTHORIZATION")
     ready = []
     for key in ("source", "images", "transfer", "preflight"):
@@ -145,52 +196,90 @@ def check_plan(plan, now, *, require_fixture_ready=True):
     if require_fixture_ready:
         fixture_ready = timestamp(plan["readiness"]["fixture_ready_at"])
         need(completed <= fixture_ready <= now, "ACTUAL_FIXTURE_READY_BEFORE_PACKET_REQUIRED")
-    need(plan["readiness"]["admin_preserves_image_pythonpath"] is True,
-         "ADMIN_MINUS_I_PYTHONPATH_HAZARD_REFUSED")
+    need(
+        plan["readiness"]["admin_preserves_image_pythonpath"] is True,
+        "ADMIN_MINUS_I_PYTHONPATH_HAZARD_REFUSED",
+    )
     return start, end, completed
 
 
 def check_intent(plan, intent, now):
     check_plan(plan, now, require_fixture_ready=intent.get("purpose") == "final_packet")
     no_secrets(intent)
-    need(intent["run_id"] == plan["run_id"] and intent["namespace"] == plan["namespace"], "CROSS_RUN_INTENT_REFUSED")
-    need(intent["database"] == plan["target"]["database"]
-         and intent["binding_sha256"] == plan["target"]["binding_sha256"], "CROSS_DATABASE_INTENT_REFUSED")
+    need(
+        intent["run_id"] == plan["run_id"] and intent["namespace"] == plan["namespace"],
+        "CROSS_RUN_INTENT_REFUSED",
+    )
+    need(
+        intent["database"] == plan["target"]["database"]
+        and intent["binding_sha256"] == plan["target"]["binding_sha256"],
+        "CROSS_DATABASE_INTENT_REFUSED",
+    )
     need(intent["operation"] in plan["allowed_writes"], "WRITE_NOT_AUTHORIZED")
-    need(set(intent["project_ids"]) <= set(plan["authorized_project_ids"]), "CROSS_PROJECT_WRITE_REFUSED")
-    need(intent["operation"] != "seed_demo" or intent["empty_scope_observed"] is True,
-         "SEED_REQUIRES_ACTUAL_EMPTY_SCOPE")
+    need(
+        set(intent["project_ids"]) <= set(plan["authorized_project_ids"]),
+        "CROSS_PROJECT_WRITE_REFUSED",
+    )
+    need(
+        intent["operation"] != "seed_demo" or intent["empty_scope_observed"] is True,
+        "SEED_REQUIRES_ACTUAL_EMPTY_SCOPE",
+    )
     return {"status": "METADATA_CONSISTENT_NOT_EXECUTED", "operation": intent["operation"]}
 
 
 def check_evidence(plan, evidence, now):
     start, end, ready_at = check_plan(plan, now)
     no_secrets(evidence)
-    need(evidence["run_id"] == plan["run_id"] and evidence["namespace"] == plan["namespace"], "CROSS_RUN_EVIDENCE_REFUSED")
-    need(evidence["database"] == plan["target"]["database"]
-         and evidence["binding_sha256"] == plan["target"]["binding_sha256"], "CROSS_DATABASE_EVIDENCE_REFUSED")
+    need(
+        evidence["run_id"] == plan["run_id"] and evidence["namespace"] == plan["namespace"],
+        "CROSS_RUN_EVIDENCE_REFUSED",
+    )
+    need(
+        evidence["database"] == plan["target"]["database"]
+        and evidence["binding_sha256"] == plan["target"]["binding_sha256"],
+        "CROSS_DATABASE_EVIDENCE_REFUSED",
+    )
     actual = evidence["actual_fixture_counts"]
-    need(actual == {key: value + plan["authorized_count_delta"][key] for key, value in BASE_COUNTS.items()},
-         "ACTUAL_COUNTS_DIFFER_FROM_EXPLICIT_BASELINE_PLUS_DELTA")
+    need(
+        actual
+        == {key: value + plan["authorized_count_delta"][key] for key, value in BASE_COUNTS.items()},
+        "ACTUAL_COUNTS_DIFFER_FROM_EXPLICIT_BASELINE_PLUS_DELTA",
+    )
     digest(evidence["actual_fixture_sha256"])
     issued = evidence["session_attestations"]
     need(set(issued) == IDENTITIES, "FOUR_ACTUAL_SESSION_ATTESTATIONS_REQUIRED")
     for role, item in issued.items():
         digest(item["token_sha256"])
-        need(ready_at <= timestamp(item["issued_at"]) <= now < start
-             and timestamp(item["expires_at"]) > end + timedelta(seconds=plan["session_expiry_reserve_seconds"]),
-             "LATE_FRESH_FULL_WINDOW_SESSION_REQUIRED")
-        need(type(item["user_id"]) is int and item["user_id"] > 0
-             and len(item["project_ids"]) == len(set(item["project_ids"])), "ACTUAL_IDENTITY_SCOPE_REQUIRED")
-    need(len({issued[role]["user_id"] for role in ("manager", "developer", "reviewer")}) == 3,
-         "THREE_DISTINCT_HUMAN_ROLE_ACCOUNTS_REQUIRED")
-    need(len({item["token_sha256"] for item in issued.values()}) == 4, "FOUR_DISTINCT_SESSION_DIGESTS_REQUIRED")
+        need(
+            ready_at <= timestamp(item["issued_at"]) <= now < start
+            and timestamp(item["expires_at"])
+            > end + timedelta(seconds=plan["session_expiry_reserve_seconds"]),
+            "LATE_FRESH_FULL_WINDOW_SESSION_REQUIRED",
+        )
+        need(
+            type(item["user_id"]) is int
+            and item["user_id"] > 0
+            and len(item["project_ids"]) == len(set(item["project_ids"])),
+            "ACTUAL_IDENTITY_SCOPE_REQUIRED",
+        )
+    need(
+        len({issued[role]["user_id"] for role in ("manager", "developer", "reviewer")}) == 3,
+        "THREE_DISTINCT_HUMAN_ROLE_ACCOUNTS_REQUIRED",
+    )
+    need(
+        len({item["token_sha256"] for item in issued.values()}) == 4,
+        "FOUR_DISTINCT_SESSION_DIGESTS_REQUIRED",
+    )
     need(issued["service"]["scopes"] == ["escalation:write"], "EXACT_SERVICE_SCOPE_REQUIRED")
     inventory = evidence["inventory"]
-    need(inventory["schema"] == "772-inventory-v1" and len(inventory["clients"]) == 400,
-         "ACTUAL_400_CLIENT_INVENTORY_REQUIRED")
-    need(0 <= (now - timestamp(inventory["captured_at"])).total_seconds() <= 300,
-         "FRESH_INVENTORY_REQUIRED")
+    need(
+        inventory["schema"] == "772-inventory-v1" and len(inventory["clients"]) == 400,
+        "ACTUAL_400_CLIENT_INVENTORY_REQUIRED",
+    )
+    need(
+        0 <= (now - timestamp(inventory["captured_at"])).total_seconds() <= 300,
+        "FRESH_INVENTORY_REQUIRED",
+    )
     need(ready_at <= timestamp(inventory["captured_at"]) <= now, "CURRENT_SNAPSHOT_TIME_REQUIRED")
     clients = inventory["clients"]
     need({c["client_id"] for c in clients} == set(range(400)), "CLIENT_IDS_REQUIRED")
@@ -199,14 +288,24 @@ def check_evidence(plan, evidence, now):
     event_ids = [c["escalation_event"]["id"] for c in clients]
     need(len(set(event_ids)) == 400, "DISTINCT_400_EXISTING_EVENTS_REQUIRED")
     projects = {c["project_id"] for c in clients}
-    need(len(projects) >= 35 and projects <= set(plan["authorized_project_ids"]), "ACTUAL_AUTHORIZED_PROJECT_SPREAD_REQUIRED")
+    need(
+        len(projects) >= 35 and projects <= set(plan["authorized_project_ids"]),
+        "ACTUAL_AUTHORIZED_PROJECT_SPREAD_REQUIRED",
+    )
     exclusive = evidence["exclusive_scope"]
-    need(set(exclusive["task_ids"]) == set(task_ids) and set(exclusive["event_ids"]) == set(event_ids)
-         and exclusive["other_workload_writer_absent"] is True,
-         "ACTUAL_EXCLUSIVE_OBJECT_SCOPE_REQUIRED")
+    need(
+        set(exclusive["task_ids"]) == set(task_ids)
+        and set(exclusive["event_ids"]) == set(event_ids)
+        and exclusive["other_workload_writer_absent"] is True,
+        "ACTUAL_EXCLUSIVE_OBJECT_SCOPE_REQUIRED",
+    )
     digest(exclusive["writer_evidence_sha256"])
-    need(exclusive["scheduler_running"] is True and exclusive["consumer_running"] is True
-         and exclusive["all_notifications_precreated"] is False, "BACKGROUND_BEHAVIOR_MUST_REMAIN_REAL")
+    need(
+        exclusive["scheduler_running"] is True
+        and exclusive["consumer_running"] is True
+        and exclusive["all_notifications_precreated"] is False,
+        "BACKGROUND_BEHAVIOR_MUST_REMAIN_REAL",
+    )
     from t44.contracts import violations
     from t44.scheduling.rules import load_rules, select_window
 
@@ -215,65 +314,123 @@ def check_evidence(plan, evidence, now):
     managers = {}
     for pid in projects:
         members = evidence["memberships"][str(pid)]
-        need(all(not violations({"$ref": "#/components/schemas/Member"}, member)
-                 and member["project_id"] == pid for member in members), "CURRENT_MEMBERSHIP_SNAPSHOTS_REQUIRED")
+        need(
+            all(
+                not violations({"$ref": "#/components/schemas/Member"}, member)
+                and member["project_id"] == pid
+                for member in members
+            ),
+            "CURRENT_MEMBERSHIP_SNAPSHOTS_REQUIRED",
+        )
         for role, code in (("manager", 1), ("developer", 2), ("reviewer", 3)):
-            need(any(member["user"]["id"] == issued[role]["user_id"] and member["active"]
-                     and code in member["roles"] for member in members), "ACTUAL_ROLE_MEMBERSHIP_REQUIRED")
-        managers[pid] = {member["user"]["id"] for member in members
-                         if member["active"] and 1 in member["roles"]}
+            need(
+                any(
+                    member["user"]["id"] == issued[role]["user_id"]
+                    and member["active"]
+                    and code in member["roles"]
+                    for member in members
+                ),
+                "ACTUAL_ROLE_MEMBERSHIP_REQUIRED",
+            )
+        managers[pid] = {
+            member["user"]["id"] for member in members if member["active"] and 1 in member["roles"]
+        }
     for client in clients:
         pid = client["project_id"]
         for item in issued.values():
             need(pid in item["project_ids"], "ACTUAL_SESSION_PROJECT_SCOPE_REQUIRED")
-        transition, escalation, event = (client[key] for key in ("transition_task", "escalation_task", "escalation_event"))
+        transition, escalation, event = (
+            client[key] for key in ("transition_task", "escalation_task", "escalation_event")
+        )
         for task in (transition, escalation):
-            need(not violations({"$ref": "#/components/schemas/Task"}, task), "COMPLETE_CURRENT_TASK_SNAPSHOT_REQUIRED")
-            need(task["project_id"] == pid and timestamp(task["updated_at"]) <= now,
-                 "TASK_OWNERSHIP_OR_TIME_MISMATCH")
-            need(timestamp(task["plan"]["planned_start"]) < timestamp(task["plan"]["planned_end"]),
-                 "ACTUAL_TASK_TIME_RANGE_REQUIRED")
-        need(transition["state"] == 2 and transition["owner_id"] == issued["developer"]["user_id"],
-             "DEVELOPING_TASK_ACTUAL_OWNER_REQUIRED")
+            need(
+                not violations({"$ref": "#/components/schemas/Task"}, task),
+                "COMPLETE_CURRENT_TASK_SNAPSHOT_REQUIRED",
+            )
+            need(
+                task["project_id"] == pid and timestamp(task["updated_at"]) <= now,
+                "TASK_OWNERSHIP_OR_TIME_MISMATCH",
+            )
+            need(
+                timestamp(task["plan"]["planned_start"]) < timestamp(task["plan"]["planned_end"]),
+                "ACTUAL_TASK_TIME_RANGE_REQUIRED",
+            )
+        need(
+            transition["state"] == 2 and transition["owner_id"] == issued["developer"]["user_id"],
+            "DEVELOPING_TASK_ACTUAL_OWNER_REQUIRED",
+        )
         facts = evidence["transition_dependency_facts"][str(transition["id"])]
-        need(facts["project_id"] == pid and facts["task_id"] == transition["id"]
-             and len(facts["predecessor_ids"]) == len(facts["predecessor_states"])
-             and all(state == 6 for state in facts["predecessor_states"]), "ACTUAL_DELIVERED_DEPENDENCY_FACTS_REQUIRED")
+        need(
+            facts["project_id"] == pid
+            and facts["task_id"] == transition["id"]
+            and len(facts["predecessor_ids"]) == len(facts["predecessor_states"])
+            and all(state == 6 for state in facts["predecessor_states"]),
+            "ACTUAL_DELIVERED_DEPENDENCY_FACTS_REQUIRED",
+        )
         iteration = evidence["iterations"][str(transition["iteration_id"])]
-        need(not violations({"$ref": "#/components/schemas/Iteration"}, iteration)
-             and iteration["project_id"] == pid
-             and any(item["user_id"] == transition["owner_id"] for item in iteration["plan"]["capacity"]),
-             "ACTUAL_ITERATION_CAPACITY_FACTS_REQUIRED")
+        need(
+            not violations({"$ref": "#/components/schemas/Iteration"}, iteration)
+            and iteration["project_id"] == pid
+            and any(
+                item["user_id"] == transition["owner_id"] for item in iteration["plan"]["capacity"]
+            ),
+            "ACTUAL_ITERATION_CAPACITY_FACTS_REQUIRED",
+        )
         # This proves non-eligibility under the frozen scheduler rules, not a hidden QA case.
-        need(select_window(start, transition["plan"]["planned_end"], rules) is None
-             and select_window(end, transition["plan"]["planned_end"], rules) is None,
-             "SCHEDULER_CAN_TOUCH_TRANSITION_SCOPE")
-        need(timestamp(transition["plan"]["planned_end"]) > end + timedelta(days=1),
-             "PUBLISHED_V24_WHOLE_WINDOW_PLUS24H_REQUIRED")
-        need(not violations({"$ref": "#/components/schemas/EscalationEvent"}, event), "COMPLETE_EXISTING_EVENT_REQUIRED")
+        need(
+            select_window(start, transition["plan"]["planned_end"], rules) is None
+            and select_window(end, transition["plan"]["planned_end"], rules) is None,
+            "SCHEDULER_CAN_TOUCH_TRANSITION_SCOPE",
+        )
+        need(
+            timestamp(transition["plan"]["planned_end"]) > end + timedelta(days=1),
+            "PUBLISHED_V24_WHOLE_WINDOW_PLUS24H_REQUIRED",
+        )
+        need(
+            not violations({"$ref": "#/components/schemas/EscalationEvent"}, event),
+            "COMPLETE_EXISTING_EVENT_REQUIRED",
+        )
         match = select_window(start, escalation["plan"]["planned_end"], rules)
         last = select_window(end, escalation["plan"]["planned_end"], rules)
-        need(match and last and match.level == last.level == event["level"]
-             and escalation["state"] in (1, 2, 3, 4, 5)
-             and event["project_id"] == pid and event["task_id"] == escalation["id"]
-             and event["schedule_version"] == escalation["schedule_version"]
-             and event["rule_version"] == rules.version, "EXISTING_CURRENT_HIGHEST_EVENT_REQUIRED")
-        need(set(client["project_manager_ids"]) == managers[pid],
-             "ALL_ACTUAL_ACTIVE_MANAGERS_REQUIRED")
-    return {"status": "LOCAL_METADATA_CONSISTENT_NOT_SUT_READY", "sessions": 4, "clients": 400,
-            "distinct_tasks": 800, "projects": len(projects), "benchmark_authorized": False}
+        need(
+            match
+            and last
+            and match.level == last.level == event["level"]
+            and escalation["state"] in (1, 2, 3, 4, 5)
+            and event["project_id"] == pid
+            and event["task_id"] == escalation["id"]
+            and event["schedule_version"] == escalation["schedule_version"]
+            and event["rule_version"] == rules.version,
+            "EXISTING_CURRENT_HIGHEST_EVENT_REQUIRED",
+        )
+        need(
+            set(client["project_manager_ids"]) == managers[pid],
+            "ALL_ACTUAL_ACTIVE_MANAGERS_REQUIRED",
+        )
+    return {
+        "status": "LOCAL_METADATA_CONSISTENT_NOT_SUT_READY",
+        "sessions": 4,
+        "clients": 400,
+        "distinct_tasks": 800,
+        "projects": len(projects),
+        "benchmark_authorized": False,
+    }
 
 
 def read_json(path):
     path = Path(path)
-    need(not path.is_symlink() and path.is_file() and path.stat().st_size <= 16 * 1024 * 1024,
-         "BOUNDED_REGULAR_METADATA_FILE_REQUIRED")
+    need(
+        not path.is_symlink() and path.is_file() and path.stat().st_size <= 16 * 1024 * 1024,
+        "BOUNDED_REGULAR_METADATA_FILE_REQUIRED",
+    )
+
     def unique(pairs):
         result = {}
         for key, value in pairs:
             need(key not in result, "DUPLICATE_JSON_KEY")
             result[key] = value
         return result
+
     return json.loads(path.read_bytes(), object_pairs_hook=unique)
 
 

@@ -1,0 +1,32 @@
+
+==================================== ERRORS ====================================
+________________________ ERROR collecting test session _________________________
+../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tmp/759_backend_neutral_r30/759_materials.py:16: in <module>
+    import assemble
+agents/backend/neutral-r30/assemble.py:12: in <module>
+    from http_primitives import save, stamp
+E     File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/agents/backend/neutral-r30/http_primitives.py", line 1
+E       """Owned HTTP primitives copied from the published neutral preparation; no old entrypoint.""""
+E                                                                                                    ^
+E   SyntaxError: unterminated string literal (detected at line 1)
+=========================== short test summary info ============================
+ERROR backend
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.09s
