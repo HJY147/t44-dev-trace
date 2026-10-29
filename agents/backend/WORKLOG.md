@@ -772,3 +772,12 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 2026-10-29 ROLE-backend-NEUTRAL-FIXTURE-R29-v1：在root新预算窗做离线中性fixture准备，不接触独立PRIVATE。分析原seed600 state2且没有新窗口+24h自然未来任务，root采用正常API新增400、保留原882短测ID，明确总6400。交付source-free HTTPS准备、原CLI/只读counts的预算锁适配、APP序列/加密seal；产品/原13不改。5唯一最终局部检查通过，初版umask0400失败和修复留存；没有云、真实SUT或性能通过。详neutral-fixture-20261029。
 
 2026-10-29 neutral真实云首admin import失败由root回传：本岗host误加-I，忽略原镜像PYTHONPATH；原5本地检查没覆盖镜像导入，不声称其充分。root确认无service/HTTP，显式批一次新label01b。交新精确故障hash/原inputs不变/无旧sideeffect门禁的续步，只去admin-I，原01/代码/13保持，4窄检查0.065s绿；新云是否通过未获回传。
+
+
+## 2026-10-29 同职责查询去重候选（ROLE-backend-DRY-R29B-v1）
+- AI固定后端岗从准确a92e5e73建立独立codex/backend-dry-r29b，先读AGENTS/本岗/协作布局；范围只services/reviews.py与本岗记录、新tmp/766测试。未读PRIVATE/未发布独立用例，不联系测试岗，不操作云，不修改旧测试/断言。
+- 两处相同最新上线评估查询共用_latest_assessments；保留task_id过滤、-rollback_plan_version、limit=1、调用位置、列表返回及review的[0]，未改接口/DDL/角色与错误次序/CAS/审计/UoW/幂等/MQ。
+- 固定source_count/cloc2.10在a92e实际5887，require-range退出1。候选尚未计入committed HEAD；不声称补齐787。有限AST重复语句扫描未见更大完全重复赋值/返回块，不扩展风险重构。
+- 真实prompt与后续协调原文：agents/backend/dry-r29b/prompt.md；本地差分/旧HTTP模块验证进行中，原命令与结果在module-command.json/module-tests.log/XML。不是独立验收、MySQL、RabbitMQ、完整CI或性能通过。
+- 探索命令失败如实保留：首次全量AGENTS定向文件搜索因不可访问路径退出2，但实际AGENTS成功找到并读取；rg包含不存在的根pyproject.toml退出2，后读backend/pyproject.toml；zsh未匹配tmp/766*退出1，后用test -e确认指定新目录未占用并建立。未借这些命令声称检查通过。
+- 模块验证完成：新18差分场景+原986/856合计152项通过，0失败/错误/跳过，50.23秒；1条上游Starlette弃用警告保留。完整模块AST仅展开新增helper后与a92e完全一致，原tmp/backend差异为空。Ruff检查/格式均通过。
