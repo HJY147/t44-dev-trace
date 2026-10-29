@@ -35,7 +35,7 @@ def main():
   ids=subprocess.run(['docker','--context','default','ps','--quiet','--filter','label=com.docker.compose.project='+binding['project']],capture_output=True,check=True,timeout=20).stdout.decode().split()
   actual=json.loads(subprocess.run(['docker','--context','default','inspect',*ids],capture_output=True,check=True,timeout=20).stdout)
   roles={x['Config']['Labels']['com.docker.compose.service']:x for x in actual}
-  required={'mysql','rabbit','api','consumer','web','tls-gateway'}|({'scheduler'} if name=='all-seven' else set())
+  required={'mysql','rabbitmq','api','consumer','web','tls-gateway'}|({'scheduler'} if name=='all-seven' else set())
   if not required<=set(roles) or any(not roles[k]['State']['Running'] for k in required):raise ValueError('ACTUAL_REQUIRED_P_ROLES_MISSING')
   receipt=inputs/(name+'.PUBLIC.json');save(receipt,{'observed_utc':stamp(),'project':binding['project'],'roles':{k:{'id':v['Id'],'running':v['State']['Running'],'image':v['Image']} for k,v in roles.items()}});return receipt,roles
  live,roles=observe('idle-six');plan=read(C/'plan.template.PUBLIC.json');loaded=read(phase['import']['receipt'])
@@ -47,7 +47,7 @@ def main():
  plan['target'].update(compose_project=binding['project'],database=binding['database'],mysql_user=binding['database']+'_app',binding_sha256=bh,origin='https://172.21.182.245:'+str(binding['tls_port']),connect_ip='172.21.182.245',ca_sha256=binding['tls']['ca_sha256'])
  plan['images']={'backend':profile['backend_config_id'],'load_python':profile['load_python_config_id']};plan['budget'].update(helper_sha256=profile['budget_helper_sha256'],actual_admission_receipt_sha256=budget['budget_receipt_sha256'])
  plan['seed'].update(seed=44,anchor_utc='2026-10-28T04:00:00Z');now=stamp()
- for role in plan['runtime_roles']:plan['runtime_roles'][role].update(running_observed=(role in roles or role=='load'),receipt_sha256=(a.load_ready_sha256 if role=='load' else sha(live)))
+ for role in plan['runtime_roles']:plan['runtime_roles'][role].update(running_observed=(('rabbitmq' if role=='rabbit' else role) in roles or role=='load'),receipt_sha256=(a.load_ready_sha256 if role=='load' else sha(live)))
  for k,source in {'source':Path(phase['import']['receipt']),'images':Path(phase['import']['receipt']),'transfer':a.load_ready,'preflight':live}.items():plan['readiness'][k]={'sha256':sha(source),'completed_at':now}
  plan['readiness'].update(all_ready_at=now,admin_preserves_image_pythonpath=True)
  common=['--phase-dir',d,'--binding-sha256',bh,'--profile-json',gen/'profile.json','--profile-sha256',sha(gen/'profile.json'),'--code-dir',C,'--code-manifest',C/'code-manifest.PUBLIC.json','--code-manifest-sha256',CS,'--source-profile',PROFILE,'--import-receipt',phase['import']['receipt'],'--budget-receipt',budget['budget_receipt'],'--budget-receipt-sha256',budget['budget_receipt_sha256']]
@@ -79,7 +79,7 @@ def main():
  actual=read(finalcounts['output'])['actual_fixture_counts']
  if actual!={'projects':40,'tasks':6400,'dependencies':9000,'reviews_and_decisions':15000}:raise ValueError('REAL_POST_HTTP_COUNTS_REQUIRED')
  observed,roles=observe('packet-all-seven')
- if set(roles)!={'mysql','rabbit','api','consumer','web','tls-gateway','scheduler'}:raise ValueError('UNEXPECTED_P_WORKLOAD_ROLE')
+ if set(roles)!={'mysql','rabbitmq','api','consumer','web','tls-gateway','scheduler'}:raise ValueError('UNEXPECTED_P_WORKLOAD_ROLE')
  if ready.get('QA_or_other_writer_started') is not False:raise ValueError('ROOT_QA_NOT_STARTED_AT_ADMISSION_REQUIRED')
  exclusive={'run_id':clock['run_id'],'namespace':binding['project'],'database':binding['database'],'binding_sha256':bh,'observed_at':stamp(),
  'other_workload_writer_absent':True,'scheduler_running':True,'consumer_running':True,'all_notifications_precreated':False,
