@@ -1,0 +1,7 @@
+# ROLE-reviewer-OLD-COLD-METADATA-v1
+
+Exact root request:
+
+Need urgent backup feasibility now whilevalidP07preparation active. Rootruntime /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/resume-20261029/final-boot01/APP-backup-inventory.original.PUBLIC.json isactualAPPmetadata(noenv) old26vols, dirs /root/t44-r9 1.7GB,/root/t44-r30 199MB, final255MB pluslatestnewP6/P7 volumes. Userwantsallcloudworkdoneanddelete. Needpreparetiny SCRIPT metadata preflightforcold old26 volumes+2oldrootdirs (excludeactivefinal tree/P7currentvol) checks tarverify incompatibilities (symlinkabsolute/..,specialfiles,duplicatebackup-selection basename), computesdu sizes/volume-Running refs, and selection draft only usingactual metadata paths/rootowned0600, restore_required_files pickstatonlyoneperroot. No backup/cloudexecution/privatecontent/QA PRIVATE. Goaloldcoldbulk encryptedbackup canstreambeforeformalP07measurement starts19:21:54; current~19:17. Timeveryshort—return concise plan/script≤4KB ASAP. Allcurrentimages source90 loaded/797+89CIgreen; formalPnotstarted. OfficialECS FilesDownload API500Mlimit nowaccessible viainstance全部操作→上传下载文件, so needparts≤450MiB afterencryption. Don'tinventnewgates, bytesverifiedbackup+logicalDBsafe sufficesuserpreservedata, don'trequireQAacceptance forfiletransfer. Wehaveuntil19:50within40budgetquote36.6+3reserve. Rootreviews/execs.
+
+Application: only authorized original metadata read; helper is root-reviewed proposal with no execution here, no data-file read, no cloud or deletion authority.

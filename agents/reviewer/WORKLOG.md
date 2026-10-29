@@ -714,3 +714,7 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 ### 90b official CI archive (2026-10-29)
 
 Exact product40928297882 four successes independently fetched with GitHub connector; original797 backend/89 frontend, no failure/error/skip; line2485/2754, branch719/852, FE line364/390, backend excluded0. Five official ZIP size/digest matched and128 members hashed. Docker40928465279 success actually checked out PR46 merge56217 (parents bdaa+90b), matching backend/frontend/specs/deployment/986 bytes to90b, not pure90b checkout; three non-Docker jobs originally skipped retained. No rerun/cloud/QA PRIVATE. Report reports/reviews/90b734f6-ci-evidence.md; exact task prompt ROLE-reviewer-90B-CI-EVIDENCE-v1. Initial urllib trust failure retained; system curl verified TLS and official digests.
+
+### Old cold backup metadata helper (2026-10-29)
+
+Prepared3796B/d0c1c785 metadata-only root proposal from authorized original PUBLIC032e231e metadata (26 exact old volumes, two old dirs). Python3.10 AST passed only; no script/cloud/backup/private contents/QA access. Reports compatibility and actual current refs via root later, draft stays unapproved; no active final/P6/P7 names selected. Root received exact path and450MiB split recipe; two-dir size correction1.811GiB sent immediately. Report old-cold-backup-preflight-20261029.md.
