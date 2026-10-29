@@ -63,6 +63,10 @@ def target(tmp_path, monkeypatch):
         role: "sha256:" + sha("synthetic config " + role)
         for role in ("backend", "web", "load_python")
     }
+    configs["load_python"] = (
+        "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77"
+    )
+    shutil.copyfile(CODE / "TARGET_753.template.json", directory / "TARGET_753.template.json")
     probe = sha("synthetic actual fileprobe bytes")
     bundle = {
         "kind": "final-backend-web-bundle-v1",
@@ -101,6 +105,8 @@ def target(tmp_path, monkeypatch):
         "backend_config_id": configs["backend"],
         "web_config_id": configs["web"],
         "load_python_config_id": configs["load_python"],
+        "load_python_expected_runtime_id": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
+        "load_python_identity_projection_sha256": "ce562c117428face0b421e06b33c361b291cab26d8d3a51d24484dbd0841da2a",
         "backend_requirements_lock_sha256": source["dependency_lock_sha256"],
         "frontend_lock_sha256": source["frontend_lock_sha256"],
         "runtime_files": {r["path"]: r["sha256"] for r in records[:2]},
@@ -467,3 +473,21 @@ def test_actual_observation_time_must_match_original_receipt_without_retime(targ
     plan["source"]["actual_loaded_receipt_sha256"] = sha(raw(receipt))
     with pytest.raises(guard.Refused):
         guard.validate_loaded_receipt(plan, raw(receipt))
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        (
+            "load_python_expected_runtime_id",
+            "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77",
+        ),
+        ("load_python_identity_projection_sha256", sha("not original projection")),
+    ],
+)
+def test_legacy_load_runtime_cannot_be_confused_with_config_or_wrong_proof(target, field, value):
+    plan, profile, _, _, path = target
+    profile[field] = value
+    save_profile(plan, profile, path)
+    with pytest.raises(guard.Refused):
+        guard.load_source_profile(plan)

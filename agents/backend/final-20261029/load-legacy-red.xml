@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.031" timestamp="2026-10-29T20:39:21.030439+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_packet_legacy_load_field_matches_public_adapter_target_and_original_cloud_identity" time="0.004"><failure message="AssertionError: assert 'sha256:3c4d8...205a70bdcda77' == 'sha256:4f3ba...b630b9102b2a1'&#10;  &#10;  - sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1&#10;  + sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77">tmp/752_backend_profile_final_20261029/752_legacy_load_identity.py:33: in test_packet_legacy_load_field_matches_public_adapter_target_and_original_cloud_identity
+    assert result['load_runtime_image_config_digest']==constant
+E   AssertionError: assert 'sha256:3c4d8...205a70bdcda77' == 'sha256:4f3ba...b630b9102b2a1'
+E     
+E     - sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1
+E     + sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77</failure></testcase></testsuite></testsuites>

@@ -4,7 +4,7 @@
   "source_manifest_sha256": null,
   "backend_bundle_manifest_sha256": null,
   "sut_image_config_digest": null,
-  "load_runtime_image_config_digest": null,
+  "load_runtime_image_config_digest": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
   "runtime_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
   "runtime_capsule_sha256": null,
   "runtime_capsule_bytes": null,
@@ -12,5 +12,20 @@
   "actual_loaded_environment_verified": false,
   "grant_allow": false,
   "expected_source_context_records": null,
-  "expected_loaded_runtime_files": null
+  "expected_loaded_runtime_files": null,
+  "load_runtime_identity_reference": {
+    "scope": "OFFICIAL_PYTHON_IDENTITY_ONLY_NOT_CURRENT_APP_OR_FRESH_LIVE_STATE",
+    "original_public_projection_path": "agents/deployment/cloud-reuse-20261025/image-proof-root-summary-projection.json",
+    "original_public_projection_sha256": "ce562c117428face0b421e06b33c361b291cab26d8d3a51d24484dbd0841da2a",
+    "python_identity": {
+      "success": true,
+      "identity_kind": "oci-descriptor-to-original-config",
+      "actual_id": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
+      "config_id": "sha256:3c4d812a6efe003770aafbdba65f9c1960ba8234ab23a133934205a70bdcda77"
+    },
+    "qa_adapter_sha256": "15b91449627218b011fff0768b1f84fe2e9274ec06c0486fd28f2ae9dce03f5d",
+    "qa_target_template_sha256": "4ae10631acb0d30dc04ab366ebe2d13701970e00baea6d979f217396f0ea5021",
+    "qa_target_load_runtime_image_config_digest": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
+    "fresh_live_recheck_required": true
+  }
 }
