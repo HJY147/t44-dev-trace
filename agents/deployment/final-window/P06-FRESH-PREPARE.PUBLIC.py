@@ -21,6 +21,17 @@ def main():
  adapter=adapter.replace(needle,patch)
  clock=(T/'final-timeplan-pfast05.py').read_text().replace('if args.phase != "p":','if args.phase != "p" or args.run_id != "r30finalp06":')
  prepare=(T/'final-app-prepare-pfast05.py').read_text().replace('final-timeplan-pfast05.py','final-timeplan-pfast06.py').replace('HERE / "final-image-bundle.py"','HERE / "final-image-bundle-pfast06.py"')
+ # P05 already closed F05 after proving no running owned containers. Preserve its marker; accept only the exact empty owned regular original.
+ marker='            fd = os.open(a.previous_f_phase_dir / "F-CLOSED", os.O_CREAT|os.O_EXCL|os.O_WRONLY, 0o600)\n            os.close(fd)'
+ replacement='''            marker=a.previous_f_phase_dir / "F-CLOSED"
+            if marker.exists():
+                import stat
+                st=marker.lstat()
+                if not stat.S_ISREG(st.st_mode) or st.st_nlink!=1 or st.st_size!=0 or st.st_uid!=os.geteuid() or stat.S_IMODE(st.st_mode)!=0o600:raise ValueError("EXACT_PREVIOUS_CLOSED_MARKER_REQUIRED")
+            else:
+                fd=os.open(marker,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600);os.close(fd)'''
+ if prepare.count(marker)!=1:raise ValueError('EXACT_OLD_F_CLOSED_CREATION_PREIMAGE_REQUIRED')
+ prepare=prepare.replace(marker,replacement)
  launcher=old.read_text().replace('r30finalp05','r30finalp06').replace("R/'P05'","R/'P06'").replace('final-app-prepare-pfast05.py','final-app-prepare-pfast06.py')
  outputs={'final-image-bundle-pfast06.py':adapter,'final-timeplan-pfast06.py':clock,'final-app-prepare-pfast06.py':prepare,'P06-CONTINUOUS-fast10.PUBLIC.py':launcher}
  for n,s in outputs.items():put(T/n,s)
