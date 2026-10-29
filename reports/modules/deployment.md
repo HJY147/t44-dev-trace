@@ -615,3 +615,5 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 根云执行资源start时，原返回拒绝但服务随后实际运行且proc完整argv与原plan相同。部署AI保留失败，依据根当前身份观测准备只续seal工具，重新严格核PID/root/argv/starttime、原hash和resource_header；缺失的start-result以明确recovered标记的新观测排他建立，不伪称原start成功，不重启或改guard。具体原因尚未证实，恢复结果由根实执行记录。此debug过程不能写成产品或性能验收通过。
 
 后半CLI曾误把GEN status当idle输出读取host_https，又误把resource status当prepare/start读取success；前者在根实执行时失败，后者在部署源码复核中发现。修复采用新窄wrapper保留错误前缀，使用原status实际字段，并另做严格CA/IP401而不重启idle。原源码AST/schema及代表性fixture窄核验已补，完整云执行仍由根记录。此项属于部署编排的实际debug留痕，不能删去或美化为最初即正确。
+
+原host调用额外加-I导致790_budget导入失败，真实S1尚未开始。经根明确允许，以06b新日志保留现有授权和05，仅移除调用者-I，不改原13件。部署AI本地原host --help对照复现失败/修正后的import可达性；帮助页成功不等于S1或性能成功。根负责实际S1/relay后续证据。

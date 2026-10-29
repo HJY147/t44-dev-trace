@@ -1,0 +1,26 @@
+usage: 790_host.py [-h] --phase-dir PHASE_DIR --binding-sha256 BINDING_SHA256
+                   --manifest-sha256 MANIFEST_SHA256 --fixture-name
+                   FIXTURE_NAME --split-name SPLIT_NAME --budget-receipt
+                   BUDGET_RECEIPT --root-grant ROOT_GRANT --scope-bridge-dir
+                   SCOPE_BRIDGE_DIR --budget-receipt-sha256
+                   BUDGET_RECEIPT_SHA256 --root-grant-sha256 ROOT_GRANT_SHA256
+                   {stage1,edge}
+
+Python 3.10 APP host runner: data-only S1, then separately requested stdlib
+edge S2.
+
+positional arguments:
+  {stage1,edge}
+
+options:
+  -h, --help            show this help message and exit
+  --phase-dir PHASE_DIR
+  --binding-sha256 BINDING_SHA256
+  --manifest-sha256 MANIFEST_SHA256
+  --fixture-name FIXTURE_NAME
+  --split-name SPLIT_NAME
+  --budget-receipt BUDGET_RECEIPT
+  --root-grant ROOT_GRANT
+  --scope-bridge-dir SCOPE_BRIDGE_DIR
+  --budget-receipt-sha256 BUDGET_RECEIPT_SHA256
+  --root-grant-sha256 ROOT_GRANT_SHA256

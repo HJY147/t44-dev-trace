@@ -762,3 +762,5 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 云上02由根报告失败（EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED），但同一resource unit运行；部署AI只读根明确许可的APP-resource-failure-original.private.jsonl（自己的资源编排，非772/783/792独立私件），未用云。查固定helper无argv transform，不放宽-I/-B。根后来实证当前argv完整匹配/start-result缺失/原raw已采样，故新增排他continuation：再次核当前身份→明确fresh observation recovered receipt→只续03 seal，不重start、不改失败或13代码。未宣称启动竞态为已证明原因；新脚本只有本地语法解析，没有云恢复实测。
 
 原status两个输出形状假设有误：根app-stage1在原04成功后KeyError host_https，未grant/S1；部署AI同时查出LOAD原resource status无success，旧通用one会误拒绝。承认编排缺陷，保留前缀，单独APP/LOAD窄wrapper新路径：APP fresh04b roles+04c严格原CA/IP401，不重idle；LOAD按action/unit/PID/progress认原status，worker保留旧ops固定字节。直接对原源码AST的GEN status success/resources及resource控制row字段做窄核验，不再假设输出shape；代表性fixture通过，未云执行。原05/06仍排他防重复，不改13。
+
+根06真实import失败，尚无S1split；部署调用者-I阻断790_budget本地导入，原失败保留。根显式允许有限06b：新增after-grant窄脚本验证原06/05/现有grantSHA及split不存在，只从原argv移除-I，原13代码字节不动，成功再接已审后半配置relay。部署本地实际原host --help对照：-I -B exit1 790_budget；-B exit0帮助。没有S1、Docker、Linux、云动作。这个实错也已如实记录，不把调用错误归为业务失败。

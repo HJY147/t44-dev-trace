@@ -36,3 +36,11 @@ APP先安装 `install-app-stage1-wrapper.PUBLIC.sh`，以同一个原PUBLIC blob
 LOAD先安装 `install-load-start-wrapper.PUBLIC.sh`，以APP新bridge整个公开对象压缩blob运行 `python3 -I -B /root/t44-r9/load-start-r29-01.py --public-input-zlib-b64 'BLOB'`。04b按原resource status的action和unit取真实记录，核PID不变和raw字节，不伪造success字段，worker仍调用固定旧ops的load-wait。APP producer入口不变。
 
 新增小检查直接解析原GEN/resource AST确认实际输出字段，并用相应形状代表性fixture检查新选择规则；没有用额外云尝试猜字段，也没有声称是Linux整链实测。工具仍须由根保存实际运行证据。
+
+## 原host isolated调用失败后只续06b
+
+根原06真实stdout为空、stderr在导入bootstrap时ModuleNotFoundError:790_budget，尚未进入main且split未建。调用者误加-I移除了脚本目录的模块搜索路径；这是部署调用错误，原host代码不改。根明确允许保留grant/05/06并只做一次06b同参原host -B调用。
+
+安装 `install-app-after-grant.PUBLIC.sh`，执行 `python3 -I -B /root/t44-r9/app-after-grant-r29-01.py --root-admit-06b --public-input-zlib-b64 '原app-stage1同一个PUBLIC blob'`。严格核原06字节/exit/SHA/导入错误、05实际镜像、现有grant字节SHA及CLI中的phase/binding/manifest、split不存在后，原06命令仅去掉-I，写06b新日志。保留原失败，不重grant/05，不重旧wrapper；成功接原后半配置和APP relay。任何已有split/06b/artifact都拒覆盖，没有下一轮或正式压力授权。
+
+部署AI本地实跑未改原host的两种 `--help`：Python3.12下-I -B同样导入790_budget失败；去-I保留-B可正常显示帮助exit0。没有进入S1或连接Docker，不是Linux运行或云压测通过。原producer仅stdlib，内部host显式python3 -B，因此本身-I不会传递进子进程；relay对子receiver/consumer同样显式-B不含-I。
