@@ -1,0 +1,43 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "--config",
+      "backend/pyproject.toml",
+      "backend/t44/services/reviews.py",
+      "tmp/766_backend_dry_r29b/766_assessment_query.py"
+    ],
+    "exit_code": 0,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "format",
+      "--config",
+      "backend/pyproject.toml",
+      "--check",
+      "backend/t44/services/reviews.py",
+      "tmp/766_backend_dry_r29b/766_assessment_query.py"
+    ],
+    "exit_code": 0,
+    "stdout": "2 files already formatted\n",
+    "stderr": ""
+  }
+]

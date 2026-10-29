@@ -496,3 +496,5 @@ neutral实际远端01首导入失败（-I与原镜像PYTHONPATH冲突）保留�
 ## 2026-10-29 后端同职责查询去重候选
 AI后端岗在准确a92e独立分支实施Reviews两处最新上线评估查询的共同函数；输入g/task_id、输出原rows列表，排序/limit/调用时机/后续空结果和守卫均保留。产品仅reviews.py，冻结接口/DDL、审计、版本、事务、幂等、MQ不变。固定基线5887/5100失败，候选计量和模块验证尚在进行，不声称目标达成。新tmp/766行为轨迹对照与旧SQLite HTTP模块结果、真实提示词见agents/backend/dry-r29b；无云/完整CI/真实MySQL/MQ/独立验收结论。
 后续模块结果：152项通过（新18+原134），0失败/错误/跳过，50.23秒；仅上游Starlette弃用警告。新增helper原地展开后整个模块AST等同基线，原测试diff为空；Ruff/格式通过。待阶段提交后固定计量。
+阶段产品SHA `41a111f270e949326202b8af5770db8aa7102e82`，原固定committed cloc实测5887→5884，净减3，仍超784/require-range退出1；详见本次report.md。待总协调限定审核/集成。
+公开岗位留痕：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840；阶段代码已push，无merge。

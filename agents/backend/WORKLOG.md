@@ -781,3 +781,5 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 真实prompt与后续协调原文：agents/backend/dry-r29b/prompt.md；本地差分/旧HTTP模块验证进行中，原命令与结果在module-command.json/module-tests.log/XML。不是独立验收、MySQL、RabbitMQ、完整CI或性能通过。
 - 探索命令失败如实保留：首次全量AGENTS定向文件搜索因不可访问路径退出2，但实际AGENTS成功找到并读取；rg包含不存在的根pyproject.toml退出2，后读backend/pyproject.toml；zsh未匹配tmp/766*退出1，后用test -e确认指定新目录未占用并建立。未借这些命令声称检查通过。
 - 模块验证完成：新18差分场景+原986/856合计152项通过，0失败/错误/跳过，50.23秒；1条上游Starlette弃用警告保留。完整模块AST仅展开新增helper后与a92e完全一致，原tmp/backend差异为空。Ruff检查/格式均通过。
+- 产品阶段提交 `41a111f270e949326202b8af5770db8aa7102e82`；原固定计量5887→5884，Reviews净减3，仍超784，require-range明确退出1，原始JSON/log保存。本岗未进行云或全量CI，没有把规模失败记通过。
+- 已实际push产品41a111f2到origin/codex/backend-dry-r29b，退出0；用原样body-file向Issue #3发布候选和限制，实际回执https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840。最后3条静态命令全部退出0，见static-checks.json。
