@@ -1,122 +1,111 @@
 {
   "role": "coordinator AI",
-  "stage": "resumed-20261028-new-window-preparation",
-  "user_pause": false,
-  "prompt_ref": "records/prompts/USER-resume-20261028-original.md",
+  "stage": "r29-cloud-stopped-local-followup",
+  "updated_utc": "2026-10-29T05:59:32.783522+00:00",
+  "previous_handoff": {
+    "commit": "a92e5e73da93ba23748c3bab113103036c395d50",
+    "path": "records/handoffs/coordinator.json",
+    "git_blob": "06a7e2b5ff7008fd6870eb4d52b09d2c02691d92",
+    "scope": "historical R28 current-state snapshot retained in Git"
+  },
   "cloud": {
-    "same_instances": true,
-    "node_count": 2,
-    "both_state_ui_verified": "Running",
-    "both_stop_mode_ui_verified": "Economical stop on completion required",
-    "automatic_release_cancelled_nodes": 2,
-    "disks_retained": true,
-    "budget_CNY": 100,
+    "last_actual_UI_verification_utc": "2026-10-29T04:59:31.712946+00:00",
+    "same_original_instances": 2,
+    "provider_states": [
+      "Stopped",
+      "Stopped"
+    ],
+    "stop_modes": [
+      "StopCharging",
+      "StopCharging"
+    ],
+    "automatic_release_times": [
+      null,
+      null
+    ],
+    "original_volumes_retained": true,
+    "new_orders": 0,
+    "resource_closure_bytes": 19661075,
+    "resource_closure_sha256": "0f973182e7674ab6a266fce27fb4c5b3fb1499fec98ba032f4faa260cdc09191",
+    "compute_window_approximately_minutes": 50,
     "storage_still_billed": true,
-    "final_bill_verified": false,
-    "new_instances_purchased": 0,
-    "workload_deadline_utc": "2026-10-28T07:30:00Z",
-    "old_diagnostic_workloads_stopped_ui_verified": "2026-10-28T07:54:48Z",
-    "next_planned_new_namespace_deadline_utc": "2026-10-28T10:30:00Z",
-    "planned_new_window_not_yet_on_cloud": true
+    "settled_total_charge_verified": false,
+    "receipt": "records/cloud/f7-r29-window-20261029/stop-and-continuation.PUBLIC.json",
+    "policy": "LOCAL_ONLY_UNTIL_REVIEWED_PREPARATION_AND_FIXED_TEST_RUNTIME"
   },
   "current_application": {
-    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
-    "application_lines": 5933,
+    "tested_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+    "effective_lines": 5887,
+    "files": 65,
     "upper_bound": 5100,
-    "excess_lines": 833,
-    "size_passed": false
+    "excess_lines": 787,
+    "size_passed": false,
+    "range_check_exit": 1,
+    "count_record": "tmp/768_integration_r29/source-count.json"
   },
   "development_CI": {
-    "product_source": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
-    "docker_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
-    "product_run": 40637880409,
-    "docker_run": 40636980359,
-    "backend_tests": 714,
-    "frontend_tests": 89,
-    "failures": 0,
-    "errors": 0,
-    "skipped": 0,
-    "backend_covered_lines": 2508,
-    "backend_total_lines": 2790,
-    "application_83_files_identical": true,
-    "report": "reports/final/resume-ci-20261028.md"
-  },
-  "cloud_diagnostic": {
-    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
-    "clients": [
-      20,
-      40,
-      400
-    ],
-    "requests": [
-      400,
-      800,
-      8000
-    ],
-    "http_errors": [
-      0,
-      0,
-      0
-    ],
-    "c400_p95_ms": [
-      1544.154,
-      1263.755,
-      1752.446,
-      1920.496
-    ],
-    "formal_600s_run": false,
-    "performance_passed": false,
-    "worker_traces_closed_valid": 7,
-    "observer_requests": 11284,
-    "summary_fsynced": true,
-    "summary_local_export_complete": true,
-    "root_cause_proven": false,
-    "summary_sha256": "d554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053"
-  },
-  "pending": [
-    "new P16 namespace/window and 600s-fresh private transfer then actual comparison",
-    "T12s2 neutral material setup actual verification",
-    "fresh actual F identity and isolated functional grant/launch",
-    "formal seven-role 600s performance acceptance",
-    "genuine source reduction currently 833 over",
-    "final billing and economical stop retaining disks",
-    "student-authored research"
-  ],
-  "resume": "docs/deployment/resume-after-pause-20261026.md",
-  "decision": "records/decisions/pause-retain-20261026.md",
-  "report": "reports/modules/coordinator.md",
-  "current_cloud_development": {
-    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
-    "P7_bootstrap_and_idle": true,
-    "P7_stage1_complete": true,
-    "P7_stage2_executed": true,
-    "P7_pressure_executed": true,
-    "P16_prepared": true,
-    "role_count": 6,
-    "formal_acceptance": false,
-    "P7_measurement_requests": 8000,
-    "P7_HTTP_errors": 0,
-    "P7_path_p95_ms": {
-      "getTask": 1555.055565,
-      "validateContractPayload": 1370.412573,
-      "transitionTask": 1680.087258,
-      "createEscalation": 1840.028403
+    "source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+    "run_id": 40821621806,
+    "four_jobs": "success",
+    "backend": {
+      "tests": 796,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "line_covered": 2500,
+      "line_valid": 2771,
+      "branches_covered": 713,
+      "branches_valid": 848
     },
-    "P7_resource_raw_bytes": 7516207,
-    "P7_resource_raw_sha256": "2662a505f4034f63ae50f836d0c239cff1f2e018431cf2869af4a496ecbdd283",
-    "P16_stage2_executed": true,
-    "P16_pressure_executed": false,
-    "P16_packet_window_expired_before_any_cohort": true,
-    "P16_new_attempt02_prepared": false,
-    "all_old_running_containers_stopped": true
+    "frontend_tests": 89,
+    "frontend_typecheck_and_build": "success",
+    "artifact_manifest": "records/ci/r29-7b15f893-40821621806/summary.PUBLIC.json",
+    "scope": "development regressions only; not independent or performance acceptance"
   },
-  "independent_tool_preflight": {
-    "unique_run": "t-hz071dkpde6sxds",
-    "linux_checks": 52,
-    "passed": 52,
-    "SUT_requests": 0,
-    "SUT_admitted": false,
-    "scope": "PASS_TOOL_PREFLIGHT_ONLY",
-    "snapshot_full_audit": "NOT_PROVEN"
-  }
+  "cloud_development_short": {
+    "source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "c400_requests": 8000,
+    "failed_clients": 0,
+    "aborted_clients": 0,
+    "c400_duration_approximately_seconds": 5.26,
+    "c400_p95_ms": {
+      "getTask": 456.946701,
+      "transitionTask": 617.347266,
+      "validateContractPayload": 343.225717,
+      "createEscalation": 635.948648
+    },
+    "performance_passed": false,
+    "formal_600s": false,
+    "HTTP_202_proves_delivery": false
+  },
+  "independent_cloud_772": {
+    "run_id": "r29qa772-01",
+    "scope": "NP_NO_RUNTIME_RESULT",
+    "exit": 241,
+    "reason": "HARD_DEADLINE",
+    "evidence_header_bytes": 76,
+    "runtime_result_present": false,
+    "SUT_request_count": "unknown",
+    "scope_record": "records/cloud/f7-r29-window-20261029/QA772-PUBLIC/qa772-final-scope.json"
+  },
+  "local_followup": {
+    "prompt": "records/prompts/ROOT-R29B-LOCAL-QUALITY-20261029.md",
+    "backend_candidate": "pending; no gain counted",
+    "database_candidate": "pending; no gain counted",
+    "independent_test_tool": "new full local sealed-package E2E pending; simulated HTTPS only; old cloud NP unchanged"
+  },
+  "reports": [
+    "reports/final/performance-r29-20261029.md",
+    "reports/final/engineering-checkpoint-r29-20261029.md",
+    "docs/reports/r29-student-fact-index.md",
+    "docs/prompting/R29-process-evidence.md"
+  ],
+  "open": [
+    "787-line strict size gap",
+    "next exact-source full independent acceptance and 400/600/270/1000 performance",
+    "independent tool local E2E and limited review",
+    "actual resource evidence analysis before performance claims",
+    "final settled billing",
+    "student-authored research and genuine manual materials"
+  ]
 }

@@ -136,3 +136,12 @@ root多处估时没有及时读clock，后来实读07:51才确认07:30旧窗口�
 root本地两次生成器多余placeholder造成写完计划后NameError，只有本地计划落盘、无云submit；一次JSON读取旧Python repr失败后用ast.literal_eval读原记录，不改原件；一次私包seal构造旧SHA替换顺序错误被提交前guard拒绝，修后新SHA核同才执行。资源mirror初次root漏run-id拒绝且未建输出，补明确run-id后成功，原失败保留。公开/密文与私有界限保持，未读独立私有用例/密钥，不把AI过程冒学生经历。
 
 公开UI复制原件的CRLF使第一次cached diff-check真实exit2，commit未执行；采用逐件无损gzip封存原UI字节/双SHA并仅CRLF→LF生成可读projection，manifest区分UI复制字节和远端原文，不抹原件。随后再执行diff-check与提交。
+
+
+## 2026-10-29 R29实测、保盘收尾及本地阶段
+
+- f7原双机约50分钟计算窗口完成开发80/800/8000队列；400组P95仍343–636ms，未过270ms。独立772的900秒唯一grant到时退出241，仅76B头、无runtime结果，保留NP而非零请求/业务失败/验收通过。
+- 已封APP资源流并核LOAD完整尾19661075B/SHA0f973182…一致；owned服务停止、sync。04:59:31Z前官方UI分别核两原VM节省停机、自动释放“-”、原盘卷数据保留，没有新购。浏览器中断由用户“已恢复”后才恢复控制；不是学生改码或完成短信的事实。精确账单未核，云盘仍计费。
+- 后续只本地：受审DB固定DDL适配真实减11行；7b15产品CI40821621806四job全部success，796后端与89前端，行2500/2771、分支713/848；97件CI产物逐件hash归档。当前5887行仍超787，exit1。CI、云旧f7和当前应用源分别记录。
+- 合并提示词岗f9d03110与文档岗3dfa20f9，原始材料与AI过程/学生手写报告边界清楚。同步此前滞后的coordinator当前handoff；原R28 JSON在Git blob06a7e2b5…保留，不改历史证据。
+- 新派backend_dry_r29b与database_dry_r29b从a92e隔离本地去重，候选未审定、未计任何收益。测试岗自行修复工具，只接收中性协调；PRIVATE未读，模拟HTTPS结果不得代替项目性能。真实派工见ROOT-R29B-LOCAL-QUALITY-20261029。准备可靠前不重新计费启动云机器。
