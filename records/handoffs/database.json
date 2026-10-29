@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "r29b-local-catalog-registration-candidate-size-target-not-met",
-  "implementation_status": "R29B局部产品8f290307仅原生catalog查询注册结构；应用5887→5883净减4，仍超783，未找到百行/≥798安全方案。新6+原联合133通过/43未选；非native/CI/云验收，待root取舍。",
+  "stage": "final-20261029-local-candidate-native-ci-pending",
+  "implementation_status": "SQLGlot AST and atomic notification batching source b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb; 239 local passed, 27 integration deselected; net -74 to5806, strictLOC not achieved; native/full CI pending.",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -662,7 +662,9 @@
       "path": "agents/database/dry-r29b/verification.json",
       "kind": "Actual source-bound results and LOC",
       "status": "created"
-    }
+    },
+    "agents/database/final-20261029/report.md",
+    "agents/database/final-20261029/verification.json"
   ],
   "interfaces": [
     {
@@ -841,111 +843,20 @@
     "本轮完整实际命令及退出码：agents/database/select-resume-20261028/commands.json",
     "本轮完整命令与退出码：agents/database/pool-config-20261028/commands.json"
   ],
-  "results": [
-    "已确认项目根目录、责任范围、原始需求与初始化限制。",
-    "指定规则和三份原始材料已读取；目录检索中 records/database 不存在使该次 rg 返回2，未据此推断业务状态。",
-    "三份目标文件创建前不存在；本轮仅创建本岗初始化日志、模块报告、交接单。",
-    "已向总协调发送设计需求摘要；接口尚无跨岗确认。",
-    "未创建模型、DDL、迁移或产品代码，未运行任何业务测试或数据库操作。",
-    "资料自检的 python3 命令退出码0：JSON可解析、必需字段齐全、三份产物存在、实现状态为未实现；首次自检报告49行，记录该结果后报告50行。",
-    "2026-10-23T13:26:57+08:00核验codex/team-bootstrap且暂存区为空；frontend提交005ce55dec988a9038c6cc8df91e85698ad84989正文与5文件已核对。",
-    "文档岗本轮资料问取及本岗原文答复已记入agents/database/WORKLOG.md，未发现本岗过时的当前无HEAD陈述。",
-    "本岗阶段说明与backend接口问题均已通过body-file发表，两个gh命令退出0；URL记录于artifacts。",
-    "提交前python3资料复核退出0：JSON可解析，5份产物存在，两个实际提示词引用一致，报告55行；Git复核分支正确、暂存区为空、HEAD仍为frontend提交，所列本岗文件diff-check退出0。",
-    "ROLE-database-DESIGN-v1：三份完整设计已生成；本轮18表225列DDL仅文本，未执行。M0结果是当时事实，不代表当前没有DDL文本。",
-    "静态自查退出0：18表225列、35外键、94唯一命名约束、41显式原因码、关键唯一键/level/ID范围一致；非MySQL运行或完整SQL解析。",
-    "本轮数据库Issue说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358608869 已发表；backend确认 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358617437 已读取核验。",
-    "未写模型/产品代码，无数据库操作或Git索引操作；未来生产责任目录按implementation-layout更新。",
-    "设计归档时首检codex/team-bootstrap且空暂存区，HEAD为backend b893353c9bcf45e833f70f56bf6f72025f611271；设计/OpenAPI SHA和会话锁序一致。",
-    "范围/待审核评论已发表 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6358694236 ，未声明审核通过。",
-    "v2仅C1/C3：新增response_request_id与完成状态约束，保存最终生成结果的处理request_id；重放meta直接读此列，不依赖audit_id/旧meta。",
-    "当前18表226列静态检查退出0；35FK/94约束/41原因码，字典与DDL列定义精确一致。",
-    "实际共享UtcTime九个边界值Schema验证9/9，未做MySQL/HTTP验证。",
-    "原失败审核717cd65报告保持原样；新设计尚待新SHA复审，未宣称通过。",
-    "本修复轮根索引仍由backend持有，数据库岗未操作Git/未提交，等待总协调授权。",
-    "获ROLE-database-DESIGN-v2-COMMIT后核验codex/team-bootstrap、空暂存区及父HEAD=72c6c0064e52cb091e8ca4533a1cb862fc46866d；所有设计/OpenAPI/time-check hash一致，原失败报告未变。",
-    "backend直接确认response_request_id最终完成者语义与其v2文档一致；沿用本岗已有Issue回复，无重复评论。",
-    "FOUNDATION-v1真实Engine/UoW/受限CoreGateway基础落盘，没有业务仓储占位成功实现。",
-    "首轮pytest15通过；首轮Ruff7风格问题保留；最终18项本岗SQLite/mock测试通过，Ruff通过；SQLAlchemy2.1.6/PyMySQL1.2.3来自backend只读hash锁。",
-    "Issue阶段说明 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6359431821 已发表；文档岗原文问答与当时未提交状态已记录。",
-    "产品提交7caa2eff8e6b4fbb145c7160a3a859d5bba8b3cc已push；draft PR#17已创建并attach，未合并/未发reviewer成功。",
-    "PR创建后本树和索引干净，本地远端SHA一致；当前仅补实际发布记录，无产品变化。",
-    "PERSISTENCE-stage2最后33项通过：21 SQLite/mock + 12真实MySQL8.4.11；首次3失败26通过保留后修CHECK分类。首次/重复迁移18表226列通过；未用admin，未触acceptance/bench。",
-    "CI兼容入口修复后run5全模块33 passed；本机DATABASE_URL+T44_DATABASE入口12真库passed，无skip，非GitHub CI结果。",
-    "真实t44_bench首次迁移/seed40项目6000任务9000依赖11400评审+3600决定，7态；全量引用/JSON/轮次/容量校验通过、真实CLI重复exit0；Rows/原安全事务/seed23项通过；实际Runtime幂等真库通过；confirmed14项通过；claim公平性先真失败后同例通过。",
-    "INTEGRATION-FIX: 原seed两测试2通过；新t44_seed_verify官方MySQL8.4.11迁移18/226、生成40/6000/9000/11400+3600、7态全量一致性与重复同manifest通过；旧bench配置差异明确拒绝、前后计数与原manifest相同；无测试文件编辑。",
-    {
-      "stage": "REVIEW-FIX-v2 hosted correctness",
-      "head": "4301a68ce379292f68ef1c5c8f9644540fa25274",
-      "run": 39940121559,
-      "result": "4 jobs success; 332 passed / 0 failed / 0 skipped",
-      "boundary": "Hosted schema initialization and 956 Inspector tests; not dedicated t44_review drift/recovery",
-      "evidence": "agents/database/ci/review-fix-v2/4301-baseline/evidence.json"
-    },
-    {
-      "stage": "REVIEW-FIX-v2 full original seed baseline",
-      "head": "2dc2e6d785958fd7386fd91faa9f4b781b934bf5",
-      "run": 39940459708,
-      "result": "4 jobs success; 333 passed / 0 failed / 0 skipped; small and default full fixture digests recorded",
-      "evidence": "agents/database/ci/review-fix-v2/2dc2-baseline/evidence.json",
-      "boundary": "SQLite full synthetic fixture and hosted whole suite; not actual MySQL seed refactor verification"
-    },
-    {
-      "stage": "REVIEW-FIX-v2 final hosted product",
-      "head": "0a676ee6f7c287893153cdca0c6c6823aacca8a1",
-      "run": 39941263169,
-      "push_run": 39941255427,
-      "result": "4 jobs success; 333 passed / 0 failed / 0 errors / 0 skipped; both exact original persisted-row digests equal; Bandit zero/Ruff pass",
-      "evidence": "agents/database/ci/review-fix-v2/0a676-result/evidence.json",
-      "boundary": "Hosted full suite + SQLite full fixture equivalence; dedicated MySQL controlled drift/recovery and full seed not executed"
-    },
-    {
-      "stage": "LIVE-VERIFY-v1",
-      "base": "43f51570e62e3160f7995c45bdddaf2f123242b3",
-      "review": "4 real same-name mutation classes rejected, each restored, repeated migrate accepted",
-      "seed": "New MySQL default40/6000/9000/15000 exact original digest, native7 rejection savepoints, same-repeat/changed-manifest protection passed",
-      "targeted": "18 passed / 0 failed / 0 errors / 0 skipped; 2 retained warnings",
-      "ruff": "Original I001 retained, fixed then passed",
-      "bandit_findings": 0,
-      "evidence": "agents/database/live-verify-v1/summary.json"
-    },
-    {
-      "stage": "CAPACITY-V11-CONTRACTS-v1",
-      "base": "eac253039cd85873d3b262e648b2b74d94d715a8",
-      "scope": "Documentation static checks only",
-      "result": "Original11 freeze hashes recoverable at ae60dc3, manifest unchanged; 18/226 and both DDL hashes unchanged; 226 column/type rows unchanged; stable error30 unchanged; 19 relative links/anchors valid; RFC hash matches reviewed object",
-      "evidence": "agents/database/capacity-v11-static-check.json",
-      "product_validation": false
-    },
-    {
-      "stage": "DDL-AST-POC-v1",
-      "scope": "Pure isolated parsing only",
-      "result": "SQLGlot30.24.0 MIT>=Python3.9; final46/1 with13 mixed-parser blockers retained",
-      "evidence": "agents/database/ddl-ast-poc/summary.json",
-      "production_ready": false,
-      "production_savings": 0
-    },
-    "SCAN-RUN候选两文件314→315净增1，生产实际改动/节省0；总协调明确否决实施",
-    "仅补丁适用性与AST语法通过，不将此当运行测试；未改变规模口径/冻结件/DDL/产品/独立测试资料",
-    "保留不同锁/查询顺序/返回投影/错误策略的真实成本；API未知row内部异常仍不等价，候选不能投产",
-    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6367575884",
-    "本轮真实评论 https://github.com/HJY147/t44-dev-trace/issues/6#issuecomment-6367576440",
-    "PLAN-HISTORY: source old target real red; new48 included in full66; two actual MySQL owner cases pass, final2 is repeat for SQL ledger not additive. Scope/SQL/error/rollback proof in summary and ledger; original failures retained.",
-    "POOL-RETENTION oneABBA38.842s/exit0; actual fourP95 and lifecycle counts in summary;43rawfiles hashed; original fixture unchanged;19sourcehash/frozen14equal; closed port and ownedpids/profile-visible connections0. Not formal or production admission.",
-    "82e92dfc本地契约30通过/原持久138通过17未选；5933净0超833；详select_resume_20261028，重复轮次不累加。",
-    "92cf配置31+旧目标7共38passed/0.26s；5933→5935净+2超835；无云/SUT/性能。"
-  ],
+  "results": {
+    "source": "b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb",
+    "local_passed": 239,
+    "integration_deselected": 27,
+    "application_code": 5806,
+    "net_saved": 74,
+    "within_3500_5100": false
+  },
   "unverified": [
-    "根对准确候选SHA审核及完整开发CI/覆盖率尚未执行",
-    "候选真实MySQL结果/锁竞争/隔离级别/故障与Linux尚未执行",
-    "独立验收、候选HTTP/云和正式性能尚未执行；当前云仍准确a12",
-    "规模门禁仍失败：5933超5100上限833；本次净有效行0",
-    "PUBLIC纯构建约5us收益不证明整体接口加速或云CPU/502根因",
-    "根独立审核及完整开发CI/覆盖率尚未执行",
-    "新目标实际MySQL max_connections/所有角色连接预算未查询，任何容量方案尚未部署",
-    "没有SUT/HTTP/云/负载/正式性能或独立验收结果",
-    "strictLOC仍失败：应用5935超5100上限835",
-    "select(table)候选82e92仍分开，不在本分支"
+    "native MySQL 8.4 CHECK display forms and constraints",
+    "full native CI/coverage/HTTP",
+    "independent acceptance",
+    "cloud/formal performance",
+    "global source-size compliance"
   ],
   "questions": [],
   "prompt_refs": [
@@ -1175,9 +1086,10 @@
         "tmp/765_database_dry_r29b/765_catalog_equivalence.py",
         "agents/database/dry-r29b/report.md"
       ]
-    }
+    },
+    "ROLE-database-FINAL-20261029-v1"
   ],
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-10-29T19:41:08+08:00",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1497,13 +1409,10 @@
     }
   ],
   "current_interfaces": {
-    "affected_tool": "838 CLI output boundary only",
-    "regression": "tmp/836_database_output_guard/836_output_guard.py",
-    "source_checkpoint": "3fc58d18614c394cc588a16b316cf89c1810ecf1",
-    "flags": "O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW;0600;one heldfd",
-    "matrix_and_app_semantics": "unchanged;no DB/application imports in guard regression",
-    "original_evidence": "c4e8 bytes preserved",
-    "acceptance": "await original reviewer independent re-review"
+    "api_error_codes": "unchanged",
+    "ddl": "original bytes unchanged",
+    "internal_cli_diagnostics": "column type/nullable/default differences now reported as :column_definition; report fields unchanged",
+    "expected_signatures": "direct index/FK tuples apply only to complete hash-bound Frozen v1 metadata"
   },
   "scan_run_rfc": {
     "baseline_commit": "162305f888ac094e38448ef95d4748248ae57bfc",
@@ -1912,5 +1821,86 @@
     "full_staged_diff_check_exit": 2,
     "full_staged_diff_check_reason": "Raw git push stderr remote lines retain trailing whitespace",
     "source_docs_json_diff_check_exit": 0
+  },
+  "final_20261029": {
+    "base": "5868779e949adef066fe26bffbc4f2e8afee7649",
+    "source": "b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb",
+    "dependency_lock_commit": "4c71161f9eec65c0d73ffa81a611536256811fee",
+    "branch": "codex/database-final-20261029",
+    "prompt_ref": "ROLE-database-FINAL-20261029-v1",
+    "local_regression": {
+      "passed": 239,
+      "integration_deselected": 27,
+      "new_owner_tests_included": 18,
+      "expression_cases": 196,
+      "ordered_equality_pairs": 38416,
+      "evidence": "agents/database/final-20261029/final-local.xml",
+      "seconds": 24.1
+    },
+    "static": {
+      "ruff": "passed",
+      "format": "4 files already formatted",
+      "bandit": "passed with no suppressions",
+      "diff_check": "passed for product/test source"
+    },
+    "source_count": {
+      "application_before": 5880,
+      "application_after": 5806,
+      "net_saved": 74,
+      "files": 65,
+      "range": [
+        3500,
+        5100
+      ],
+      "within_range": false,
+      "excess": 706,
+      "require_range_exit": 1,
+      "module_changes": {
+        "migrations": [
+          370,
+          307
+        ],
+        "delivery": [
+          159,
+          153
+        ],
+        "engine": [
+          93,
+          88
+        ]
+      }
+    },
+    "interfaces": {
+      "api_error_codes": "unchanged",
+      "ddl": "original bytes unchanged",
+      "internal_cli_diagnostics": "column type/nullable/default differences now reported as :column_definition; report fields unchanged",
+      "expected_signatures": "direct index/FK tuples apply only to complete hash-bound Frozen v1 metadata"
+    },
+    "performance_evidence": "SQLite before_cursor_execute observed one executemany INSERT for three deduplicated recipients; repeat creates zero; missing-recipient FK failure rolls back all notices and fallback status. No throughput claim.",
+    "unverified": [
+      "native MySQL 8.4 CHECK display forms and constraints",
+      "full native CI/coverage/HTTP",
+      "independent acceptance",
+      "cloud/formal performance",
+      "global source-size compliance"
+    ],
+    "early_failures": [
+      {
+        "stage": "first SQLGlot normalization",
+        "result": "1 failed, 49 passed",
+        "cause": "top-down transform skipped normalization beneath replaced Paren; fixed with bottom-up tree walk"
+      },
+      {
+        "stage": "new owner first run",
+        "result": "4 failed, 14 passed",
+        "cause": "unknown charset stripping fixed; generated NOT x IS NULL adapted to original-supported IS NOT NULL in fixture; new scan/outbox fixture required explicit status fields"
+      },
+      {
+        "stage": "first Bandit",
+        "result": "B105 low and B608 medium",
+        "evidence": "agents/database/final-20261029/bandit.json",
+        "resolution": "lexeme variable name; original four complete SQL literals restored, no rule suppression"
+      }
+    ]
   }
 }

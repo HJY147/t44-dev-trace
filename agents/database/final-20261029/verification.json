@@ -1,0 +1,81 @@
+{
+  "base": "5868779e949adef066fe26bffbc4f2e8afee7649",
+  "source": "b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb",
+  "dependency_lock_commit": "4c71161f9eec65c0d73ffa81a611536256811fee",
+  "branch": "codex/database-final-20261029",
+  "prompt_ref": "ROLE-database-FINAL-20261029-v1",
+  "local_regression": {
+    "passed": 239,
+    "integration_deselected": 27,
+    "new_owner_tests_included": 18,
+    "expression_cases": 196,
+    "ordered_equality_pairs": 38416,
+    "evidence": "agents/database/final-20261029/final-local.xml",
+    "seconds": 24.1
+  },
+  "static": {
+    "ruff": "passed",
+    "format": "4 files already formatted",
+    "bandit": "passed with no suppressions",
+    "diff_check": "passed for product/test source"
+  },
+  "source_count": {
+    "application_before": 5880,
+    "application_after": 5806,
+    "net_saved": 74,
+    "files": 65,
+    "range": [
+      3500,
+      5100
+    ],
+    "within_range": false,
+    "excess": 706,
+    "require_range_exit": 1,
+    "module_changes": {
+      "migrations": [
+        370,
+        307
+      ],
+      "delivery": [
+        159,
+        153
+      ],
+      "engine": [
+        93,
+        88
+      ]
+    }
+  },
+  "interfaces": {
+    "api_error_codes": "unchanged",
+    "ddl": "original bytes unchanged",
+    "internal_cli_diagnostics": "column type/nullable/default differences now reported as :column_definition; report fields unchanged",
+    "expected_signatures": "direct index/FK tuples apply only to complete hash-bound Frozen v1 metadata"
+  },
+  "performance_evidence": "SQLite before_cursor_execute observed one executemany INSERT for three deduplicated recipients; repeat creates zero; missing-recipient FK failure rolls back all notices and fallback status. No throughput claim.",
+  "unverified": [
+    "native MySQL 8.4 CHECK display forms and constraints",
+    "full native CI/coverage/HTTP",
+    "independent acceptance",
+    "cloud/formal performance",
+    "global source-size compliance"
+  ],
+  "early_failures": [
+    {
+      "stage": "first SQLGlot normalization",
+      "result": "1 failed, 49 passed",
+      "cause": "top-down transform skipped normalization beneath replaced Paren; fixed with bottom-up tree walk"
+    },
+    {
+      "stage": "new owner first run",
+      "result": "4 failed, 14 passed",
+      "cause": "unknown charset stripping fixed; generated NOT x IS NULL adapted to original-supported IS NOT NULL in fixture; new scan/outbox fixture required explicit status fields"
+    },
+    {
+      "stage": "first Bandit",
+      "result": "B105 low and B608 medium",
+      "evidence": "agents/database/final-20261029/bandit.json",
+      "resolution": "lexeme variable name; original four complete SQL literals restored, no rule suppression"
+    }
+  ]
+}

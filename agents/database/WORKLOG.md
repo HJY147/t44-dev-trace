@@ -394,3 +394,11 @@
 - 首次新增临时文件format红后只格式化临时文件；首push TLS exit128原摘录保留、同命令retry成功。两次探索路径不存在及首轮runner并发metadata丢一条，真实记录exploration.json；stdout/stderr保存，runner现增加单命令JSON，最终顺序Ruff/format/Bandit绿，不掩盖失败。
 - 仅本地非integration开发验证，无MySQL/完整CI/coverage/HTTP/独立/云/性能，没有PRIVATE/未公开测试读取或测试岗联系，不代根merge。四件、prompt、命令/原日志/JUnit/计数/边界在dry-r29b。Issue4实际评论6489314712，经GitHub插件按单ID精确GET逐字一致，回执github-publication.json。根待取舍，当前规模目标未达。
 - 封档全量暂存diff-check真实exit2，4行原push成功stderr的remote尾空格，原字节保留；限定排除stdout/stderr/JUnit后的源码/说明/JSON检查exit0，不称整包绿。两个实际输出/command均归档。
+
+
+## 2026-10-29 — ROLE-database-FINAL-20261029-v1，最终本地候选
+
+- 基准 `5868779e949adef066fe26bffbc4f2e8afee7649`，产品/owner 测试 `b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb`；实际 AI 数据库岗完成 SQLGlot MySQL AST、完整列/Index/FK 签名、事务内通知批写及已校验 engine 参数分组。backend 单独精确锁 sqlglot30.25.0，未重锁其他依赖。
+- 全部原生目录函数 AST/四完整 SQL 与 Frozen DDL 字节保留；CLI 列诊断合并为 column_definition，API错误码不变。原 769 双方言、6000 seed golden/V2、消息/查询/池及新18 owner 联合239通过/27 integration未选；新196表达式38416对等价差分和真实SQLite批写/失败回滚通过。Ruff/format/Bandit最终通过；早期失败及修正如实记录。
+- 原工具对提交源5880→5806/65文件，真实净减74，仍超706/范围exit1，未达250–350。没有可信百行seed重复块，保持原字节，不压格式/搬实现/删门禁。
+- 未运行native MySQL/完整CI/覆盖率/HTTP/独立/云/正式性能，需根对全新镜像检查MySQL真实全部CHECK返回形式。未读QA私件或操作云。证据见 `agents/database/final-20261029/`，源先提交并推送，记录另封。

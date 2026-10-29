@@ -1,0 +1,27 @@
+{
+  "source": "b9d15aca2d1716c0a85b1c5f4e5ff285a89f5dfb",
+  "commands": [
+    {
+      "command": "python -m pytest -c backend/pyproject.toml tmp/backend/persistence tmp/backend/messaging/980_delivery.py tmp/backend/messaging/979_facade.py tmp/812_database_size tmp/769_database_scale_r29/769_schema_equivalence.py tmp/786_database_pool_20261028/786_pool_settings.py tmp/787_database_select_resume_20261028/787_query_semantics.py tmp/755_database_final_20261029/755_parser_batch.py -m \"not integration\" -q --junitxml=tmp/755_database_final_20261029/final-local.xml",
+      "exit": 0,
+      "log": "final-local.log"
+    },
+    {
+      "command": "python -m ruff check --config backend/pyproject.toml backend/t44/persistence tmp/755_database_final_20261029/755_parser_batch.py",
+      "exit": 0
+    },
+    {
+      "command": "python -m ruff format --check --config backend/pyproject.toml backend/t44/persistence/{migrations,delivery,engine}.py tmp/755_database_final_20261029/755_parser_batch.py",
+      "exit": 0
+    },
+    {
+      "command": "python -m bandit -q -r backend/t44/persistence -f json -o tmp/755_database_final_20261029/bandit-final.json",
+      "exit": 0
+    },
+    {
+      "command": "python3.12 scripts/metrics/source_count.py --cloc /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/cloc-2.10.pl --output agents/database/final-20261029/source-count.json --require-range",
+      "exit": 1,
+      "reason": "5806 outside 3500-5100; 706 above upper bound"
+    }
+  ]
+}
