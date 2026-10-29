@@ -1,7 +1,7 @@
 {
   "role": "frontend",
-  "stage": "scale-resume-20261028-no-candidate",
-  "implementation_status": "静态复核无可信>30净收益候选；前端产品0改动，固定规模5933仍超833，非新功能/独立/性能验收。",
+  "stage": "final-css-equivalence-20261029",
+  "implementation_status": "仅styles.css真实净减9；89/type/build通过，12组PNG完全相同；应用5871仍超771。开发自测，不是独立/性能/规模验收。",
   "artifacts": [
     {
       "path": "frontend/",
@@ -222,46 +222,27 @@
     {
       "path": "tmp/789_frontend_scale_resume_20261028/",
       "status": "原始固定计数、SHA和CSS静态清单"
+    },
+    {
+      "path": "agents/frontend/final-20261029/",
+      "status": "本轮实际代码计数、命令、截图、失败与交付证据"
+    },
+    {
+      "path": "tmp/frontend/754_style_equivalence.mjs",
+      "status": "新开发夹具采样器，严格computed-style比较失败保留，不进入89现有测试"
     }
   ],
   "interfaces": [
     {
-      "peer": "backend",
-      "status": "正式1.1 freeze189dc4a，authority a77a5cd6已由前端直接import；本轮仅fixture/docs同步，1.1真实服务尚未本岗验证",
+      "peer": "backend/messaging/deployment",
+      "status": "本轮接口无变化",
       "inputs": [
-        "Bearer内存身份",
-        "冻结operationId、schema和版本/证据",
-        "同body同key恢复"
+        "既有38冻结API与v1.2 schema/包络/错误"
       ],
       "outputs": [
-        "data/meta及Error",
-        "403/409刷新、422字段提示",
-        "最新权威任务与审计"
+        "原dist与相同UI/输入/权限/导航边界"
       ],
-      "evidence": "agents/frontend/iat-ui-counts-runtime.json / iat-ui-counts-browser/counts-result.json"
-    },
-    {
-      "peer": "messaging",
-      "status": "以下为1.0历史：event179根真实故障worker生成通知5/6；读处理/双总计开发验证通过，不能充作1.1验收",
-      "inputs": [
-        "个人通知分页、已读、处理说明与证据"
-      ],
-      "outputs": [
-        "API权威已读/处理状态"
-      ],
-      "boundary": "不SQL伪造/不重置旧项；三次task21 state1/version2；非Rabbit成功链，worker由根执行。"
-    },
-    {
-      "peer": "deployment",
-      "status": "沿用dist及同源API；实际dev代理18080已联调",
-      "inputs": [
-        "frontend/pnpm-lock.yaml",
-        "pnpm build"
-      ],
-      "outputs": [
-        "frontend/dist"
-      ],
-      "boundary": "未改部署；生产路径由Nginx保留，dev代理仅本地"
+      "boundary": "未对真实后端/数据库/云执行；不新增上下游接口要求"
     }
   ],
   "commands_executed": [
@@ -426,23 +407,38 @@
       "result": "once exit0,66GET+4sessionPOST,70status200,6PNGviewed,normal logout,9listener identity same,Chromeclosed"
     },
     "git diff --exit-code a12e9e70 HEAD -- backend/t44 frontend scripts/metrics/source_count.py（exit0）",
-    "python3.12 tmp/789_frontend_scale_resume_20261028/789_collect_scale_audit.py（收集exit0，内部range exit1）"
+    "python3.12 tmp/789_frontend_scale_resume_20261028/789_collect_scale_audit.py（收集exit0，内部range exit1）",
+    {
+      "command": "pnpm test",
+      "exit_code": 0,
+      "seconds": 4.65,
+      "log": "agents/frontend/final-20261029/test.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 2.651,
+      "log": "agents/frontend/final-20261029/typecheck.log"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 2.751,
+      "log": "agents/frontend/final-20261029/build.log"
+    }
   ],
   "results": [
-    "固定cloc：应用5933/5100，超833；range退出1、stderr空",
-    "前端22文件1099行，CSS267，占前端24.29%",
-    "同context完整CSS重复7组，忽略cascade风险毛收益上界9行",
-    "已有schema表单/七页面/记录共用；无可信>30净收益，不修改产品"
+    "应用5880→5871、FE1099→1090、CSS267→258，真实-9；range exit1仍超771",
+    "原89/89，typecheck/build通过，chunk警告保留",
+    "254 selector/media声明展开全等；5屏宽60状态无pageerror/横溢出；12组PNG SHA全同、关键4图实看",
+    "新computed-style严格对象序列探针失败，原始证据保留，不计通过"
   ],
   "unverified": [
-    "本轮未运行89目标、coverage、typecheck/build、浏览器、CI、API、MySQL或性能",
-    "无产品改变，不发布新功能/独立验收通过；规模门禁仍失败",
-    "a12云冻结与正式性能证据不受本轮文档影响"
+    "新准确HEAD独立验收、CI与正式性能未由本岗运行",
+    "总规模仍失败，最终部署/云备份验证与释放交总协调",
+    "浏览器为明确拦截模块夹具，不是真实后端HTTP验证"
   ],
-  "questions": [
-    "1.1正式freeze189dc4a已收到；后端新守卫刚准入，本轮不宣称容量行为或真实1.1通过。",
-    "资源深链仍无已实施参数约定，边界保持。"
-  ],
+  "questions": [],
   "prompt_refs": [
     {
       "id": "ROLE-frontend-BOOTSTRAP-v1",
@@ -590,9 +586,19 @@
     "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md",
     "records/prompts/ROLE-frontend-NATIVE-USER-PREVIEW-v1.md",
     "records/prompts/ROLE-frontend-CONTRACT-V12-DRAFT-v1.md",
-    "records/prompts/ROLE-frontend-SCALE-RESUME-20261028-v1.md"
+    "records/prompts/ROLE-frontend-SCALE-RESUME-20261028-v1.md",
+    {
+      "id": "ROLE-frontend-FINAL-20261029-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-FINAL-20261029-v1.md",
+      "artifacts": [
+        "frontend/src/styles.css",
+        "agents/frontend/final-20261029/",
+        "tmp/frontend/754_style_equivalence.mjs"
+      ],
+      "improvement_reason": "按真实可维护CSS去重收窄，不伪造百行收益；绑定现有测试、固定计数与相同截图"
+    }
   ],
-  "updated_at": "2026-10-28T06:28:04.136797+00:00",
+  "updated_at": "2026-10-29T11:31:16.756800+00:00",
   "delivery": {
     "branch": "codex/frontend-native-preview",
     "pull_request": null,

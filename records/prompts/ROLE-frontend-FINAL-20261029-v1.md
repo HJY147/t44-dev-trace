@@ -12,4 +12,10 @@
 
 改进理由：将宽泛百行目标约束为有源码计数和界面等价证据的可复核变更，避免新的 helper 净增、视觉退化或口径迁移。
 
-产物：agents/frontend/final-20261029/PLAN.md、前端样式入口与去重、tmp/frontend/754_style_equivalence.mjs、模块/交接/工作日志和实际验证证据。
+产物：agents/frontend/final-20261029/PLAN.md、前端样式去重、tmp/frontend/754_style_equivalence.mjs、模块/交接/工作日志和实际验证证据。
+
+## 总协调实际收窄范围
+
+> 按真实9行结构去重交即可，别为目标100继续无收益搜索，保效果/89/type/build，尽快阶段commit+push/四件收尾，root需要释放slot给最终部署准备。你预计余下多久？可不另加低价值新测试；现有验证+必要截图足够。要求sourcecount不改变计数自然格式，不出现压行diff。
+
+已接纳为最终实施范围；不更改样式导入或业务源码。浏览器夹具脚本已在执行改前采样，仅提供等价证据，不代替原 89 项测试。

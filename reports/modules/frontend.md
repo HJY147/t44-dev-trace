@@ -141,3 +141,10 @@
 - 基线043fc464，先设计8716055；固定cloc真实应用5875、前端22文件1099有效行、仍超775，require-range exit1。
 - 前端和计数器字节不变；共用schema/工作台/记录已集中，无可信150–400行收益。生命周期helper预计净增，配置迁移/压行/视觉删减拒绝；root同意no-candidate。
 - 详见agents/frontend/size-round9/REPORT.md与tmp/803_frontend_size_round9原计数/SHA清单。没有新产品测试、云/API/性能或独立验收执行，不宣称规模门禁解除。
+
+
+## 2026-10-29 最终 CSS 等价去重（开发自测）
+- 产品9cf79dde仅styles.css的7组同声明选择器复用，254 selector/media声明展开全等；固定计数应用5880→5871、FE1099→1090、CSS267→258，真实-9、总量仍超771。
+- 原89测试、typecheck/build全绿；831.48kB警告保留。5屏宽60夹具状态无页面异常/横溢出，12组PNG SHA完全相同、关键4图实际视检。新computed-style序列探针失败保留并不计通过。
+- 38冻结API/v1.2、0/null/输入校验/导航/权限和状态流程原字节；未改后端、冻结、计数器或原测试/断言，未启云/真实API/DB/性能或独立验收。
+- 证据agents/frontend/final-20261029/REPORT.md、validation.json、原命令/截图/失败；提示词ROLE-frontend-FINAL-20261029-v1，实际AI改码。总规模和最终验收仍交总协调。
