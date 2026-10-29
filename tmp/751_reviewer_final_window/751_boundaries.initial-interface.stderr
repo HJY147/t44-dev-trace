@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-final-window-20261029/tmp/751_reviewer_final_window/751_boundaries.py", line 81, in <module>
+    try:operator.request(values,{'run_id':'r30review01'},{'stop_utc':stamp(stop)});actual=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-final-window/deployment/cloud-reuse/final-f-operator.py", line 85, in request
+    plan=json.loads(pinned(args.timeplan,args.timeplan_sha256))
+                           ^^^^^^^^^^^^^
+AttributeError: 'types.SimpleNamespace' object has no attribute 'timeplan'

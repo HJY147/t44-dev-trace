@@ -570,3 +570,7 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 后发runner：初054661中C=G与guard G35/C40不相容P1、原资源限额遗漏P2均即时报root；owner保留真实C红后修。准确ac005e1c runner14966B/c2c322，交付6ae6d291源码不变；固定8e/edge/10001/readonly/无业务env/18staging/runtime→HTTP/仅owned cleanup核。自有6真实窗口block同输入对照+cb实际argparse/资源边界全绿，无外部执行；owner5mock原件/自己stop/错owner拒核。当前代码P1/P2关闭可窄集成，actual平台仍CLOUD_UNREADY，无BOOT/SUT/新轮授权。旧R30/产品/QA原件不改。
 
 后发runner技术1de7f897已push且远端精确匹配；GitHub插件Issue7 COMMENT6494889782按ID正文完全回读，明确更新前阶段代码P1为准确代码范围关闭、实际CLOUD_UNREADY，无BOOT/SUT。公开回执tmp755/755_runner_publication.json。
+
+### Final window 限定静态审核（2026-10-29）
+
+独立root10e8树，产品586→356限差分及四ops工具：产品静态无新增P1/P2；实际发现F operator旧2400/G−15与1500/G−120冲突、派生HTTP保旧purpose会拒准确18manifest两P1，均先报root由owner修，69bd/92fb字节纯fixture关闭。94 Git context/60 CI表、准确1b4f18manifest023063、3c config vs4f runtime/ce562、真实derive→producer_files→manifest gate、F三时间case及backup输出边界核通过；build Git63c/tooladd7与ops7d6分列，未改原件/实现。仅静态准备准入，无云/服务/HTTP/keys/QA私件，actual target/live/完整测试/备份restore释放不批准。用户新主要代码口径核心62/5037、辅助780/总5817取root分组，原exit1保留但不列启动阻碍；不冒全部5817≤5100。报告final-window-20261029-static.md，tmp751，原prompt与命令/两个自有fixture失败保留，20分钟内封交，不等待云。
