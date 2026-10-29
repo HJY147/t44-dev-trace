@@ -1,0 +1,39 @@
+{
+  "source_sha256": "c2c322bd0c932928fcd811d49a4c92f2b45188d2f32b2669fab79a27df9e4e2e",
+  "time_cases": [
+    {
+      "case": "valid",
+      "runner": true,
+      "producer_guard": true
+    },
+    {
+      "case": "C_equals_G",
+      "runner": false,
+      "producer_guard": false
+    },
+    {
+      "case": "wrong_G",
+      "runner": false,
+      "producer_guard": false
+    },
+    {
+      "case": "cutoff_not_S_minus150",
+      "runner": false,
+      "producer_guard": false
+    },
+    {
+      "case": "duration779",
+      "runner": false,
+      "producer_guard": false
+    },
+    {
+      "case": "E_after_G",
+      "runner": false,
+      "producer_guard": false
+    }
+  ],
+  "actual_producer_argparse_pass": true,
+  "fixed_resources_and_UID": true,
+  "external_or_HTTP_execution": false,
+  "full_check_plan_or_Docker_not_claimed": true
+}

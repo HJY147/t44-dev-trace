@@ -17,3 +17,11 @@ R30正式未运行且服务器已约10:26Z经济停机、逐台auto-release '-' 
 Backend准确final cb966f2117730d6b60227e85e30b6a8b0e3cc79a，18 manifest0fc61e463692622f167548b7b00aed42fc18a58a0ae127317d6138e0a6136b8b；81本地4.33s（label仅LOCAL_PROJECT_RUNTIME_ONLY，未Docker8e），verify-local.py迁tmp756，runtime.py集合==18manifest九py。RUNBOOK+RUNTIME_INTERFACE精确APP8e/edge/no DBenv/10001/readonly；helper --check-runtime-only。请快核最终代码可集成范围；dep岗正在离线实现固定HTTP runner，未完成仍留执行P1，不阻塞历史封存/不说云READY。
 
 实际按准确Git逐18件hash/size/九py与原17件diff、关键函数AST及81原XML核，最终2组纯负例0.060s通过；允许future代码集成且保留executor P1，先发root后封档，无云/服务动作。
+
+## 后发runner派工与最终绑定原文
+
+部署新窄runner已实现，在 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-http-prepare.py，当前14573B SHA054661914670dbd73fd09bf0406c4e4484561e2dd84f55b627e6cd684a807900（final commit将马上给）。实际cb966f原18件staging＋5项本地mock首绿（Docker29不同actualId/config、DBenv拒、身份/expired/旧run/额外py坏bytes拒、preflight→HTTP固定argv/timeoutprefix）。请立刻快审闭合future runtime代码P1所需scope，实际cloud/images还未执行保持UNREADY；只核新固定helper/18staging/4f禁止/没业务env/旧r30不改。服务器仍停机，无新轮。我们19点前本地收尾，当前18:52。
+
+最终Git字节：ac005e1c1b842d5813b6dfefa73885f9a1df44e0含14966B/c2c322；owner交付HEAD6ae6d291a526c6317d6e950cfca7e100418a15e3源码不变，只测试补owned_exit inspect→own stop及wrongowner拒绝（5项仍绿）和四件。请补该绑定，未来代码P1/P2关闭、CLOUD_UNREADY/不发boot保留。Root据你已审字节窄集成，不重复云或长测。
+
+本岗先报初C=G与真实guard矛盾P1及漏原资源限额P2，由owner修且原红保留。六纯时钟案例同时执行两方原block并核真实argparse/资源UID，无完整guard/Docker之称；最终c2/ac005/6ae绑定后代码P1/P2关闭，实际云门禁UNREADY不变。
