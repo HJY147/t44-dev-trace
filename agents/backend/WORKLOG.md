@@ -783,3 +783,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 模块验证完成：新18差分场景+原986/856合计152项通过，0失败/错误/跳过，50.23秒；1条上游Starlette弃用警告保留。完整模块AST仅展开新增helper后与a92e完全一致，原tmp/backend差异为空。Ruff检查/格式均通过。
 - 产品阶段提交 `41a111f270e949326202b8af5770db8aa7102e82`；原固定计量5887→5884，Reviews净减3，仍超784，require-range明确退出1，原始JSON/log保存。本岗未进行云或全量CI，没有把规模失败记通过。
 - 已实际push产品41a111f2到origin/codex/backend-dry-r29b，退出0；用原样body-file向Issue #3发布候选和限制，实际回执https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840。最后3条静态命令全部退出0，见static-checks.json。
+
+
+## 2026-10-29 中性R30准备（ROLE-backend-NEUTRAL-R30-v1）
+- 由7374独立backend-neutral-r30建立，保留用户两次中断前未提交文件；root明确恢复后继续。仅本地免费编辑，尚未执行本地验证/云/SUT/session，不读PRIVATE/未公布用例、不联系QA。
+- 只读root明确allowlist的历史中立六件与新0b PUBLIC接口/两部署manifest；raw SHA已核，区分62 context与未来actual60 runtime，未假称APP import。新9e预算pin；APP idle6实际包含tls-gateway，scheduler实际start后APP7，LOAD和一次性容器另算，旧常驻计数假设已修正。
+- 现有模板/guard/seed正式函数接缝/HTTP执行代码已编辑；source0b/接口freeze固定，真实run/window/DB/CA/角色/ID/会话仍null/false。6000seed+400真实API准备拟声明6400，不删数凑6000。最后四session路径按root技术决定，原issued/expires和首次完成时间保留，不retime/延token。
