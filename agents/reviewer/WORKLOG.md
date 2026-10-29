@@ -718,3 +718,7 @@ Exact product40928297882 four successes independently fetched with GitHub connec
 ### Old cold backup metadata helper (2026-10-29)
 
 Prepared3796B/d0c1c785 metadata-only root proposal from authorized original PUBLIC032e231e metadata (26 exact old volumes, two old dirs). Python3.10 AST passed only; no script/cloud/backup/private contents/QA access. Reports compatibility and actual current refs via root later, draft stays unapproved; no active final/P6/P7 names selected. Root received exact path and450MiB split recipe; two-dir size correction1.811GiB sent immediately. Report old-cold-backup-preflight-20261029.md.
+
+### Exact stale MySQL socket wrapper (2026-10-29)
+
+Root-authorized PUBLIC cold preflight only13 stale-socket links; prepared2567B/de97749c import wrapper pinning original677a and actual draft3ce5. Original inventory/main/encrypt/verify maintained, only tar_command exact anchored/literal13 exclusions; fresh original all26 cold checks, exact lstat/readlink target, root explicit approval and separate omission receipt. One synthetic temporary archive fixture green with disclosed BSD/GNU option adaptation; no cloud/backup/private content/QA PRIVATE. Report reports/reviews/old-cold-socket-wrapper-20261029.md; actualscript not executed.

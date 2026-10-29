@@ -1,0 +1,7 @@
+# ROLE-reviewer-OLD-COLD-SOCKET-v1
+
+Exact root request:
+
+Actualcoldpreflight complete rootruntime/old-cold-preflight-result.original.PUBLIC.json, only13 UNSAFE_LINK mysql_data/_data/mysql.sock; noVOLUMEINUSE/QAprivate/special/duplicate. Old26+dirs logical~7.4GB; rootP07nowexactownedcoldstop0Data preserved allVMstillrunning,45capapprovalpending keeping40 old19:50. Needminimal backup wrapper preservingorig final-app-backup.py SHA677a4... &frozen localverify: omit ONLY verified stale mysql.sock symlinks withtarget /var/run/mysqld/mysqld.sock underactualselectedmysql mountpoints+allusersstopped; recordpreciseomissions innewroot-approved selection/receipt, no originalunlink/chown/weakenverify. Newtarfunction add exact --exclude paths before '--' and --sparseoptional, useorigbackup/encrypt/verify untouched viaimport wrapper. Sourceinventorydraft /root/APP-old-cold-preflight-01/selection.draft.private.json root_approvedfalse. Sourceactualnewrootcert backupkeyonlylocal. Needwrapper≤3KB, one meaningful tempfixturetest excludesonlyruntime link preservesDBfile; noinventnewrestoregates. Canbackupoldcold26+2dirs NOW while0PQA, perfnewP08ONLYafteruser45reply. Dataallhashlocal, parts450MiB thenofficialdownloadworks ECSdetails. Return ASAP.
+
+Application: sidecar operator proposal, root reviews/executes. Preserve exact original crypto/verify, log runtime metadata omissions, no data file reads or cloud action by reviewer.
