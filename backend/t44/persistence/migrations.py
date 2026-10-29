@@ -1,7 +1,6 @@
 """Explicit MySQL 8.4 initialization. DDL is not transactional or automatically dropped."""
 
 import re
-from collections import defaultdict
 
 from sqlalchemy import String, inspect, text
 from sqlalchemy.exc import SQLAlchemyError
@@ -102,209 +101,194 @@ def _check_signature(expression):
         return None
 
 
-def _catalog_rows(engine):
-    queries = {
-        "tables": "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()",
-        "columns": "SELECT TABLE_NAME,COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,DATETIME_PRECISION,COLUMN_TYPE,IS_NULLABLE,COLUMN_DEFAULT,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
-        "indexes": "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA=DATABASE()",
-        "checks": "SELECT t.TABLE_NAME,t.CONSTRAINT_NAME,c.CHECK_CLAUSE,t.ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS t JOIN INFORMATION_SCHEMA.CHECK_CONSTRAINTS c ON c.CONSTRAINT_SCHEMA=t.CONSTRAINT_SCHEMA AND c.CONSTRAINT_NAME=t.CONSTRAINT_NAME WHERE t.TABLE_SCHEMA=DATABASE() AND t.CONSTRAINT_TYPE='CHECK'",
-        "foreigns": "SELECT k.TABLE_NAME,k.CONSTRAINT_NAME,k.ORDINAL_POSITION,k.COLUMN_NAME,k.REFERENCED_TABLE_SCHEMA,k.REFERENCED_TABLE_NAME,k.REFERENCED_COLUMN_NAME,r.UPDATE_RULE,r.DELETE_RULE,r.MATCH_OPTION FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE k JOIN INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS r ON r.CONSTRAINT_SCHEMA=k.CONSTRAINT_SCHEMA AND r.CONSTRAINT_NAME=k.CONSTRAINT_NAME AND r.TABLE_NAME=k.TABLE_NAME WHERE k.TABLE_SCHEMA=DATABASE()",
+def _index_signature(index):
+    options = index.get("dialect_options", {})
+    sorting = {
+        k: tuple(v for v in values if v.lower() != "asc")
+        for k, values in index.get("column_sorting", {}).items()
     }
-    with engine.connect() as connection:
-        rows = {
-            kind: [tuple(row) for row in connection.exec_driver_sql(sql)]
-            for kind, sql in queries.items()
-        }
-    rows["columns"] = [
-        (
-            name,
-            column,
-            (
-                "integer" if kind == "int" else kind,
-                length if kind in ("varchar", "char", "binary") else None,
-                "unsigned" in specification
-                if kind
-                in (
-                    "int",
-                    "tinyint",
-                    "smallint",
-                    "mediumint",
-                    "bigint",
-                    "decimal",
-                    "float",
-                    "double",
-                )
-                else None,
-                precision if kind in ("datetime", "timestamp", "time") else None,
-            ),
-            nullable == "YES",
-            str(default).strip("'\"") if default is not None else None,
-            extra,
-            charset,
-            collation,
-        )
-        for name, column, kind, length, precision, specification, nullable, default, extra, charset, collation in rows[
-            "columns"
-        ]
-    ]
-    return rows
+    return (
+        tuple(index["column_names"]),
+        bool(index.get("unique")),
+        {k: v for k, v in sorting.items() if v},
+        options.get("mysql_length"),
+        (options.get("mysql_using") or "BTREE").upper(),
+    )
 
 
-def _expected_rows():
-    rows = {kind: [] for kind in ("tables", "columns", "indexes", "checks", "foreigns")}
-    for name, table in TABLES.items():
-        options = table.dialect_options["mysql"]
-        rows["tables"].append((name, options["engine"], options["collate"]))
-        for column in table.c:
-            kind = column.type
-            charset = (kind.charset or options["charset"]) if isinstance(kind, String) else None
-            collation = (kind.collation or options["collate"]) if isinstance(kind, String) else None
-            rows["columns"].append(
-                (
-                    name,
-                    column.name,
-                    (
-                        kind.__class__.__name__.lower(),
-                        *(getattr(kind, key, None) for key in ("length", "unsigned", "fsp")),
-                    ),
-                    column.nullable,
-                    str(column.server_default.arg) if column.server_default is not None else None,
-                    "auto_increment" if column.primary_key else "",
-                    charset,
-                    collation,
-                )
-            )
-        for item in (*table.indexes, *table.constraints):
-            kind = item.__class__.__name__
-            if kind in ("Index", "UniqueConstraint", "PrimaryKeyConstraint"):
-                key = "PRIMARY" if kind == "PrimaryKeyConstraint" else item.name
-                for ordinal, column in enumerate(item.columns, start=1):
-                    rows["indexes"].append(
-                        (
-                            name,
-                            key,
-                            ordinal,
-                            column.name,
-                            int(kind == "Index" and not item.unique),
-                            "A",
-                            None,
-                            "BTREE",
-                            "YES",
-                        )
-                    )
-            elif kind == "CheckConstraint":
-                rows["checks"].append((name, item.name, str(item.sqltext), "YES"))
-            elif kind == "ForeignKeyConstraint":
-                for ordinal, element in enumerate(item.elements, start=1):
-                    rows["foreigns"].append(
-                        (
-                            name,
-                            item.name,
-                            ordinal,
-                            element.parent.name,
-                            element.column.table.schema,
-                            element.column.table.name,
-                            element.column.name,
-                            "RESTRICT",
-                            "RESTRICT",
-                            "NONE",
-                        )
-                    )
-    return rows
-
-
-def _catalog_features(rows, database):
-    grouped = {kind: defaultdict(list) for kind in rows}
-    for kind, records in rows.items():
-        for name, *record in records:
-            grouped[kind][name].append(tuple(record))
-    facts, conflicts = {}, []
-    for name in TABLES:
-        present = name in grouped["tables"]
-        facts[f"{name}:missing_table"] = present
-        if not present:
-            continue
-        columns = {column: values for column, *values in grouped["columns"][name]}
-        facts[f"{name}:column_set"] = set(columns)
-        for column, values in columns.items():
-            for label, value in zip(("type", "nullable", "default"), values[:3], strict=True):
-                facts[f"{name}.{column}:{label}"] = value
-        indexes = defaultdict(dict)
-        for key, ordinal, *values in grouped["indexes"][name]:
-            if ordinal in indexes[key] and indexes[key][ordinal] != tuple(values):
-                conflicts.append(f"{name}.{key}:index_catalog_conflict")
-            indexes[key][ordinal] = tuple(values)
-        indexes = {
-            key: [values[ordinal] for ordinal in sorted(values)] for key, values in indexes.items()
-        }
-        facts[f"{name}:primary_key"] = [row[0] for row in indexes.get("PRIMARY", [])]
-        for key, values in indexes.items():
-            if key != "PRIMARY":
-                facts[f"{name}.{key}:index_definition"] = [row[:-1] for row in values]
-        facts[f"{name}:unique_set"] = {
-            key
-            for key, values in indexes.items()
-            if key != "PRIMARY" and any(row[1] == 0 for row in values)
-        }
-        facts[f"{name}:foreign_key_definition"] = {
-            (
-                key,
-                ordinal,
-                column,
-                None if schema == database else schema,
-                parent,
-                target,
-                *(
-                    "RESTRICT" if action.upper() in ("NO ACTION", "RESTRICT") else action.upper()
-                    for action in actions[:2]
-                ),
-                actions[2],
-            )
-            for key, ordinal, column, schema, parent, target, *actions in grouped["foreigns"][name]
-        }
-        facts[f"{name}:check_definition"] = {
-            key: _check_signature(expression) for key, expression, _ in grouped["checks"][name]
-        }
-    for name, engine, collation in rows["tables"]:
-        facts[f"{name}:table_options"] = (engine, collation)
-    for name, column, *values in rows["columns"]:
-        facts[f"{name}.{column}:column_options"] = tuple(values[-3:])
-    for name, key, ordinal, *values in rows["indexes"]:
-        facts[f"{name}.{key}.{ordinal}:index_options"] = tuple(values)
-    for name, key, _, enforced in rows["checks"]:
-        facts[f"{name}.{key}:check_enforcement"] = (enforced,)
-    return facts, conflicts
-
-
-def _schema_defects(engine, *, native_only=False):
-    database = getattr(getattr(engine, "url", None), "database", None)
-    expected, _ = _catalog_features(_expected_rows(), database)
-    actual, conflicts = _catalog_features(_catalog_rows(engine), database)
-    native = (":table_options", ":column_options", ":index_options", ":check_enforcement")
-    defects = []
-    for key, value in expected.items():
-        label = key.rsplit(":", 1)[1]
-        if native_only and not key.endswith(native):
-            continue
-        if label == "check_definition" and None in value.values():
-            raise MigrationError("Frozen CHECK grammar is unsupported")
-        table = key.split(":", 1)[0].split(".", 1)[0]
-        if not key.endswith(native) and label != "missing_table":
-            if not actual.get(f"{table}:missing_table") or (
-                label in ("type", "nullable", "default") and key not in actual
-            ):
-                continue
-        if key not in actual or actual[key] != value:
-            defects.append(key)
-    return defects if native_only else defects + conflicts
+def _foreign_signature(foreign, database):
+    options = foreign.get("options", {})
+    actions = tuple(
+        "RESTRICT"
+        if (options.get(key) or "RESTRICT").upper() in ("NO ACTION", "RESTRICT")
+        else options[key].upper()
+        for key in ("ondelete", "onupdate")
+    )
+    schema = foreign.get("referred_schema")
+    return (
+        tuple(foreign["constrained_columns"]),
+        None if schema == database else schema,
+        foreign["referred_table"],
+        tuple(foreign["referred_columns"]),
+        actions,
+        {
+            key: value
+            for key, value in options.items()
+            if key not in ("ondelete", "onupdate") and value is not None
+        },
+    )
 
 
 def _catalog_defects(engine):
-    return _schema_defects(engine, native_only=True)
+    """Audit native properties omitted by MySQL's SQLAlchemy reflection."""
+    table_options, column_options, index_options, check_enforcement = {}, {}, {}, {}
+    for name, table in TABLES.items():
+        options = table.dialect_options["mysql"]
+        table_options[(name,)] = (options["engine"], options["collate"])
+        for column in table.c:
+            charset = collation = None
+            if isinstance(column.type, String):
+                charset = column.type.charset or options["charset"]
+                collation = column.type.collation or options["collate"]
+            column_options[(name, column.name)] = (
+                "auto_increment" if column.primary_key else "",
+                charset,
+                collation,
+            )
+        for index in (*table.indexes, *table.constraints):
+            kind = index.__class__.__name__
+            if kind in ("Index", "UniqueConstraint", "PrimaryKeyConstraint"):
+                key = "PRIMARY" if kind == "PrimaryKeyConstraint" else index.name
+                unique = kind != "Index" or index.unique
+                for ordinal, column in enumerate(index.columns, start=1):
+                    index_options[(name, key, ordinal)] = (
+                        column.name,
+                        int(not unique),
+                        "A",
+                        None,
+                        "BTREE",
+                        "YES",
+                    )
+            elif kind == "CheckConstraint":
+                check_enforcement[(name, index.name)] = ("YES",)
+    queries = {
+        "table_options": (
+            "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES "
+            "WHERE TABLE_SCHEMA=DATABASE()",
+            table_options,
+        ),
+        "column_options": (
+            "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME "
+            "FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
+            column_options,
+        ),
+        "index_options": (
+            "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,"
+            "SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS "
+            "WHERE TABLE_SCHEMA=DATABASE()",
+            index_options,
+        ),
+        "check_enforcement": (
+            "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS "
+            "WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'",
+            check_enforcement,
+        ),
+    }
+    defects = []
+    with engine.connect() as connection:
+        for label, (query, expected) in queries.items():
+            width = len(next(iter(expected)))
+            rows = connection.exec_driver_sql(query)
+            actual = {tuple(row[:width]): tuple(row[width:]) for row in rows}
+            defects.extend(
+                f"{'.'.join(map(str, key))}:{label}"
+                for key, value in expected.items()
+                if actual.get(key) != value
+            )
+    return defects
 
 
 def check_schema(engine) -> dict:
-    defects = _schema_defects(engine)
+    inspector, defects = inspect(engine), []
+    actual_tables = set(inspector.get_table_names())
+    for name, expected in TABLES.items():
+        if name not in actual_tables:
+            defects.append(f"{name}:missing_table")
+            continue
+        columns = {c["name"]: c for c in inspector.get_columns(name)}
+        if set(columns) != set(expected.c.keys()):
+            defects.append(f"{name}:column_set")
+        for c in expected.c:
+            actual = columns.get(c.name)
+            if actual is None:
+                continue
+
+            def signature(kind):
+                return (
+                    kind.__class__.__name__.lower(),
+                    *(getattr(kind, field, None) for field in ("length", "unsigned", "fsp")),
+                )
+
+            if signature(actual["type"]) != signature(c.type):
+                defects.append(f"{name}.{c.name}:type")
+            if actual["nullable"] != c.nullable:
+                defects.append(f"{name}.{c.name}:nullable")
+            expected_default = str(c.server_default.arg) if c.server_default is not None else None
+            actual_default = (
+                str(actual["default"]).strip("'\"") if actual["default"] is not None else None
+            )
+            if actual_default != expected_default:
+                defects.append(f"{name}.{c.name}:default")
+        if inspector.get_pk_constraint(name)["constrained_columns"] != ["id"]:
+            defects.append(f"{name}:primary_key")
+        actual_keys = {x["name"]: _index_signature(x) for x in inspector.get_indexes(name)}
+        for unique in inspector.get_unique_constraints(name):
+            signature = _index_signature({**unique, "unique": True})
+            if unique["name"] in actual_keys and actual_keys[unique["name"]] != signature:
+                defects.append(f"{name}.{unique['name']}:index_catalog_conflict")
+            actual_keys.setdefault(unique["name"], signature)
+        keys = {
+            x.name: _index_signature(
+                dict(column_names=[c.name for c in x.columns], unique=getattr(x, "unique", True))
+            )
+            for x in (*expected.indexes, *expected.constraints)
+            if x.__class__.__name__ in ("Index", "UniqueConstraint")
+        }
+        for key, signature in keys.items():
+            if actual_keys.get(key) != signature:
+                defects.append(f"{name}.{key}:index_definition")
+        if {k for k, v in actual_keys.items() if v[1]} != {k for k, v in keys.items() if v[1]}:
+            defects.append(f"{name}:unique_set")
+        database = getattr(getattr(engine, "url", None), "database", None)
+        foreigns = {
+            x.name: _foreign_signature(
+                dict(
+                    constrained_columns=[c.name for c in x.columns],
+                    referred_table=x.referred_table.name,
+                    referred_schema=x.referred_table.schema,
+                    referred_columns=[e.column.name for e in x.elements],
+                ),
+                database,
+            )
+            for x in expected.foreign_key_constraints
+        }
+        actual_foreigns = {
+            x["name"]: _foreign_signature(x, database) for x in inspector.get_foreign_keys(name)
+        }
+        if actual_foreigns != foreigns:
+            defects.append(f"{name}:foreign_key_definition")
+        checks = {
+            x.name: _check_signature(x.sqltext)
+            for x in expected.constraints
+            if x.__class__.__name__ == "CheckConstraint"
+        }
+        if None in checks.values():
+            raise MigrationError("Frozen CHECK grammar is unsupported")
+        if {
+            x["name"]: _check_signature(x["sqltext"]) for x in inspector.get_check_constraints(name)
+        } != checks:
+            defects.append(f"{name}:check_definition")
+    defects.extend(_catalog_defects(engine))
     return {
         "tables": len(TABLES),
         "columns": sum(len(t.c) for t in TABLES.values()),
