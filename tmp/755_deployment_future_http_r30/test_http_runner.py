@@ -110,6 +110,9 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(fixed.count("--network"), 1)
         self.assertIn(R.ALIAS, fixed)
         self.assertIn("/neutral-code/prepare_http.py", fixed)
+        for key, limit in (("--cpus", "2"), ("--memory", "1g"), ("--pids-limit", "128"),
+                           ("--tmpfs", "/tmp:rw,nosuid,nodev,size=32m")):
+            self.assertEqual(fixed[fixed.index(key) + 1], limit)
         self.assertEqual(R.argv(self.args, value, "edge", "new", runtime=True)[-3:],
                          ["-B", "/neutral-code/escalation_readback.py", "--check-runtime-only"])
         with patch.dict(os.environ, {"DATABASE_URL": "fixture", "PYTHONPATH": "fixture", "DOCKER_HOST": "fixture"}):
