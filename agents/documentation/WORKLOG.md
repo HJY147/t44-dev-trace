@@ -498,3 +498,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - Prompt-Ref: ROLE-documentation-R29-CHECKPOINT-20261029-v1；实际命令和限制见docs/reports/r29-documentation-evidence.md。最终文档/链接/JSON/范围校核与本岗显式commit/push随后补记；没有先写未执行项通过。
 
 - 2026-10-29T05:38:56.628006+00:00 收尾核验：67本地链接/11handoff字段/7产物路径与7文件责任范围通过，四新Markdown限定私钥/token形状无匹配。初版validator错误要求英文pending、后误读no-index正常差异exit1，两次辅助失败原样写证据记录，非产品测试；真实staged diff-check单独核exit0。所有被改handoff历史值逐项与基线核同保存。提示词岗后发f9d03110已Git对象和远端head实核，单列补充，不混入20件基线来源或自称复验其81项。
+
+- 2026-10-29T05:39:47.771864+00:00 实质提交9c183a537b9f44bcf39af7c0ca2dc08b627e278b已由本岗显式commit并push至origin/codex/documentation-r29，`git ls-remote`精确读回同SHA，提交后worktree clean。提交带[skip ci]只跳过本次文档push，不修改workflow或产品门禁；没有建PR、发Issue或设置审核success。随后只补本发布回执，不读新源、不跟随QA v2，不改变事实截止或验收状态。

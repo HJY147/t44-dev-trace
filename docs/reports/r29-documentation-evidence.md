@@ -88,3 +88,7 @@ CI的`artifact-manifest.PUBLIC.json`另列97个解包文件。本岗逐件核存
 - 范围检查恰为本岗7文件：4份新Markdown、3份既有岗位记录；没有产品/测试/云路径变化。最终暂存检查执行结果随后补记。
 
 - 实际显式暂存7文件后，`git diff --cached --check`无输出；随后以单独命令核真实exit0。handoff被更新的历史顶层值逐项与6f91960b核同，原prompt_refs完整保留为前缀；无历史资料丢失。
+
+## 实际发布回执
+
+实质提交 `9c183a537b9f44bcf39af7c0ca2dc08b627e278b` 已实际push到 `codex/documentation-r29`；`git ls-remote origin refs/heads/codex/documentation-r29`精确读回同SHA，worktree clean。该提交使用`[skip ci]`避免纯文档归档触发产品CI，未修改工作流或降低门禁。未新建PR/Issue评论/审核success。此后仅本岗日志和handoff发布行政补记，最终行政HEAD由交接回复提供，不新增产品或验收结论。
