@@ -11,3 +11,5 @@ F05原18/1/11保留，唯一FAIL严格状态码oracle缺无歧义冻结依据，
 学生研究由本人自写；U001/U002原话及AI建议/实际使用分开，AI调试失败和修复不计学生亲为。私密封面/Word/QA不进公开Git。未改产品、未运行产品测试、未操作云、未读QA PRIVATE或旧case。
 
 本轮每页QA与可复核hash见FINAL90b-deliverable-manifest.json。总协调可按本分支小提交cherry-pick，性能到达后只更新有证据字段并重新渲染受影响Word。
+
+最终Word13/15/5/5共38页；全页内容已实看，改变页原尺寸重看，不变页以bytes核等已看图。准确文件hash和每页PNG hash已封档，旧输出未覆盖。

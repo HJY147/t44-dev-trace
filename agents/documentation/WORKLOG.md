@@ -523,3 +523,5 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 原source_count.py/cloc2.10执行全5818/65，require-range exit1；原62+3文件组复算5038+780，产品对90b路径空diff。未改变计数脚本、根或测试门槛，用户采用核心口径不等老师批准。
 - 只读明确开放753 F05两PUBLIC并同字节副本，18/1/11、原FAIL工具400与冻结422优先级不明保留，完整验收未成立；无PRIVATE/旧case/测试岗消息。精确官方CI797/89、Docker merge56217限定。
 - 本轮create4 marker成功一次，bundled Python/Node/LO。四Word先渲染12/15/5/5页；实看发现旧证据图标旧源/数，新增90b图修复。新输出只私密FINAL90b，封面日期空。P06正式结果尚待root PUBLIC，不编数字。
+- 最终需规13、设计15、测试5、AI规格5页，共38页内容实看；final不变页与已看图逐字节相同，6个改变页原尺寸重看，需规最后图再次改Docker merge56217后重新渲染13页，仅page11改变且实看11至13。初轮1至7先high后均以original重开；没有把sample冒全部。最终Word链接绑定19010c57/17c05fc8，导出器补文档ref一致性。
+- 独立具名PUBLIC副本、四MD本地所有链接存在；逐文件hash和私密输出路径见FINAL90b manifest。原cloc再跑明确捕获returncode1、全5818，不隐去失败。无产品测试/云/公开PII。
