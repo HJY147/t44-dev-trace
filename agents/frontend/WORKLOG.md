@@ -268,3 +268,4 @@
 - 固定cloc基线5898/65、FE1099/22；提交候选5902/66、FE1103/23，净增4、仍超802，require-range均真实exit1。200–400未实现，建议仅审阅而不作为规模优化集成。
 - 基线原89与候选原89均89绿；新增3并发回归最终3绿；typecheck/build与新测试typecheck均exit0。首轮新增驱动在loading按钮二次click未触发，91绿1红原日志保留，仅本轮测试改为项目切换后绿。构建831.45kB和770配置提示保留。
 - 证据tmp/770_frontend_scale_r29，详细REPORT与validation.json；没有新浏览器/性能/独立验收/coverage结论。全部为AI产物，不计学生实际改码。
+- 证据阶段首次staged diff-check真实exit2，仅原始Vite/Vitest日志尾空白/EOF空行；保留逐条原始gzip与raw SHA，另规范可读log尾空白并更新manifest。不是产品或断言失败，原始失败未删除。

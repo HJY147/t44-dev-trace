@@ -961,7 +961,9 @@
         "exit_code": 0,
         "collected_tests": 89,
         "log": "tmp/770_frontend_scale_r29/baseline-test.log",
-        "log_sha256": "0346aaa1b81a09d6ab789e654caac9a1c561b57d1927439d2a09dcc3954b5305"
+        "log_sha256": "60db00666f773c22f766a7b322a06baccecd478354b3753a9c0ae1a124061081",
+        "raw_log": "tmp/770_frontend_scale_r29/baseline-test.log.gz",
+        "raw_sha256": "0346aaa1b81a09d6ab789e654caac9a1c561b57d1927439d2a09dcc3954b5305"
       },
       {
         "name": "candidate-original89",
@@ -970,7 +972,9 @@
         "exit_code": 0,
         "collected_tests": 89,
         "log": "tmp/770_frontend_scale_r29/candidate-original89.log",
-        "log_sha256": "5c41ca007be447dcd3621b8589c4fba86ede4cc3b0cb26fbb95b3a85e6797bf4"
+        "log_sha256": "bfbd31ef93a7187406c4d645d2d1d9b23aaf6dfa9e22184726043ccfbb27047c",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-original89.log.gz",
+        "raw_sha256": "5c41ca007be447dcd3621b8589c4fba86ede4cc3b0cb26fbb95b3a85e6797bf4"
       },
       {
         "name": "candidate-regression-first-driver-failure",
@@ -979,7 +983,9 @@
         "exit_code": 1,
         "collected_tests": 92,
         "log": "tmp/770_frontend_scale_r29/candidate-regression-first-failure.log",
-        "log_sha256": "5d3efee885d8c31a259f868293bd1118637503685082a508f41e1b6977620d14"
+        "log_sha256": "5d47947e234222ebf0c703df31d52d386a8279a092fe5865b3d4e28169b45212",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-regression-first-failure.log.gz",
+        "raw_sha256": "5d3efee885d8c31a259f868293bd1118637503685082a508f41e1b6977620d14"
       },
       {
         "name": "candidate-regression-final",
@@ -988,7 +994,9 @@
         "exit_code": 0,
         "collected_tests": 3,
         "log": "tmp/770_frontend_scale_r29/candidate-regression.log",
-        "log_sha256": "e7bfbf94ffa423a5bf141f64c3ce98178b62822f8a220ac5cf9a0534bb4cb436"
+        "log_sha256": "22d37ba4d465c3461cec13d8281b880dd1b4c5e5b2b9463f46f0653714f79e45",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-regression.log.gz",
+        "raw_sha256": "e7bfbf94ffa423a5bf141f64c3ce98178b62822f8a220ac5cf9a0534bb4cb436"
       },
       {
         "name": "candidate-typecheck",
@@ -997,7 +1005,9 @@
         "exit_code": 0,
         "collected_tests": null,
         "log": "tmp/770_frontend_scale_r29/candidate-typecheck.log",
-        "log_sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e"
+        "log_sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-typecheck.log.gz",
+        "raw_sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e"
       },
       {
         "name": "candidate-build",
@@ -1006,7 +1016,9 @@
         "exit_code": 0,
         "collected_tests": null,
         "log": "tmp/770_frontend_scale_r29/candidate-build.log",
-        "log_sha256": "ec0854f9340c439531ba76ef7df224c01a91f67563eb9f25d467a8e48196aa1c"
+        "log_sha256": "9550070b119ce7235f6330d64cfe0c6a4243356c7f4d0460b86f2911a33ec615",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-build.log.gz",
+        "raw_sha256": "ec0854f9340c439531ba76ef7df224c01a91f67563eb9f25d467a8e48196aa1c"
       },
       {
         "name": "candidate-regression-typecheck",
@@ -1015,7 +1027,9 @@
         "exit_code": 0,
         "collected_tests": null,
         "log": "tmp/770_frontend_scale_r29/candidate-regression-typecheck.log",
-        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_log": "tmp/770_frontend_scale_r29/candidate-regression-typecheck.log.gz",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       }
     ],
     "baseline_count_exit": 1,
@@ -1034,6 +1048,17 @@
       "new coverage measurement"
     ],
     "prompt_ref": "ROLE-frontend-SCALE-R29-v1",
+    "execution_prefix": {
+      "PATH": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/usr/bin:/bin",
+      "node": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "pnpm_cli": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.cjs"
+    },
+    "evidence_formatting": {
+      "first_staged_diff_check_exit": 2,
+      "reason": "raw Vitest/Vite logs contained trailing whitespace and blank EOF lines",
+      "raw_preserved": "gzip originals per check with raw_sha256",
+      "readable_logs": "trailing whitespace normalized; raw evidence not changed"
+    },
     "report": "agents/frontend/scale-r29/REPORT.md",
     "evidence": "tmp/770_frontend_scale_r29/validation.json"
   }
