@@ -1,0 +1,81 @@
+FF......F..                                                              [100%]
+=================================== FAILURES ===================================
+____ test_complete_same_page_without_per_item_selects[listProjectMembers-3] ____
+
+store = (<t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x10764ff80>, ['SELECT project_members.id, project_members...rs.created_at, users.updated_at \nFROM users \nWHERE users.id = ? ORDER BY users.id\n LIMIT ? OFFSET ?', ...], 1, 1, 1)
+original_business = <class '_final_original_services.application.Business'>
+operation = 'listProjectMembers', bound = 3
+
+    @pytest.mark.parametrize('operation,bound', [('listProjectMembers',3),('listTaskDependencies',4)])
+    def test_complete_same_page_without_per_item_selects(store, original_business, operation, bound):
+        factory, statements, pid, uid, tid = store
+        expected = read(factory, original_business, operation, pid, uid, tid)
+        baseline_selects = len(statements)
+        statements.clear()
+        candidate = original_business if os.getenv('FINAL_BACKEND_BASELINE') else Business
+        actual = read(factory, candidate, operation, pid, uid, tid)
+        assert actual == expected
+        assert len(actual['items']) == 20 and actual['total'] == 20
+        assert baseline_selects == bound + 19
+>       assert len(statements) == bound
+E       AssertionError: assert 22 == 3
+E        +  where 22 = len(['SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_...ctive, users.created_at, users.updated_at \nFROM users \nWHERE users.id = ? ORDER BY users.id\n LIMIT ? OFFSET ?', ...])
+
+tmp/754_backend_final_20261029/754_collections.py:78: AssertionError
+___ test_complete_same_page_without_per_item_selects[listTaskDependencies-4] ___
+
+store = (<t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x1101157c0>, ['SELECT tasks.id, tasks.project_id, tasks.i...ks.created_at, tasks.updated_at \nFROM tasks \nWHERE tasks.id = ? ORDER BY tasks.id\n LIMIT ? OFFSET ?', ...], 1, 1, 1)
+original_business = <class '_final_original_services.application.Business'>
+operation = 'listTaskDependencies', bound = 4
+
+    @pytest.mark.parametrize('operation,bound', [('listProjectMembers',3),('listTaskDependencies',4)])
+    def test_complete_same_page_without_per_item_selects(store, original_business, operation, bound):
+        factory, statements, pid, uid, tid = store
+        expected = read(factory, original_business, operation, pid, uid, tid)
+        baseline_selects = len(statements)
+        statements.clear()
+        candidate = original_business if os.getenv('FINAL_BACKEND_BASELINE') else Business
+        actual = read(factory, candidate, operation, pid, uid, tid)
+        assert actual == expected
+        assert len(actual['items']) == 20 and actual['total'] == 20
+        assert baseline_selects == bound + 19
+>       assert len(statements) == bound
+E       AssertionError: assert 23 == 4
+E        +  where 23 = len(['SELECT tasks.id, tasks.project_id, tasks.iteration_id, tasks.title, tasks.description, tasks.owner_id, tasks.state, ...count, tasks.created_at, tasks.updated_at \nFROM tasks \nWHERE tasks.id = ? ORDER BY tasks.id\n LIMIT ? OFFSET ?', ...])
+
+tmp/754_backend_final_20261029/754_collections.py:78: AssertionError
+_ test_other_collection_projection_filter_and_paging_unchanged[listReleaseAssessments] _
+
+store = (<t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x11027b9b0>, ['SELECT release_assessments.id, release_ass...FFSET ?', 'SELECT count(*) AS count_1 \nFROM release_assessments \nWHERE release_assessments.project_id = ?'], 1, 1, 1)
+original_business = <class '_final_original_services.application.Business'>
+operation = 'listReleaseAssessments'
+
+    @pytest.mark.parametrize('operation', ['listProjects','listIterations','listTasks','listTaskReviews','listReleaseAssessments','listTaskDecisions','listProjectAuditEvents'])
+    def test_other_collection_projection_filter_and_paging_unchanged(store, original_business, operation):
+        factory, statements, pid, uid, tid = store
+>       assert read(factory, Business, operation, pid, uid, tid) == read(factory, original_business, operation, pid, uid, tid)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/754_backend_final_20261029/754_collections.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tmp/754_backend_final_20261029/754_collections.py:64: in read
+    return business().dispatch(uow.gateway, call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-172/exact-baseline-services0/application.py:56: in dispatch
+    call.task(g)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Call(operation='listReleaseAssessments', request_id='synthetic-request', token=None, path={'project_id': 1}, query={'p...idem=None, before=[], after=[], clock=datetime.datetime(2026, 10, 29, 11, 32, 4, 302024, tzinfo=datetime.timezone.utc))
+g = <t44.persistence.rows.RowsGateway object at 0x11027b290>, lock = None
+
+    def task(self, g, *, lock=None):
+>       return self.resource(g, "tasks", self.path["task_id"], lock=lock)
+                                         ^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'task_id'
+
+backend/t44/services/common.py:130: KeyError
+=========================== short test summary info ============================
+FAILED backend::test_complete_same_page_without_per_item_selects[listProjectMembers-3]
+FAILED backend::test_complete_same_page_without_per_item_selects[listTaskDependencies-4]
+FAILED backend::test_other_collection_projection_filter_and_paging_unchanged[listReleaseAssessments]
+3 failed, 8 passed in 0.54s

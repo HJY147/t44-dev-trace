@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.387" timestamp="2026-10-29T19:43:23.300630+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix" time="0.042"><failure message="assert 501 == 100&#10; +  where 501 = len([&lt;ValidationError: &quot;None is not of type 'object'&quot;&gt;, &lt;ValidationError: &quot;None is not of type 'object'&quot;&gt;, &lt;ValidationErro... 'object'&quot;&gt;, &lt;ValidationError: &quot;None is not of type 'object'&quot;&gt;, &lt;ValidationError: &quot;None is not of type 'object'&quot;&gt;, ...])">original = &lt;module '_final_original_contracts'&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x108e2e330&gt;
+
+    def test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix(original,monkeypatch):
+        schema=contracts.SPEC['components']['schemas']['EvidenceRefs']
+        value=[None]*500
+        expected=original.violations(schema,value)
+        assert len(expected)==100
+        prepared=contracts._COMPILED[id(schema)]
+        old=type(prepared).iter_errors
+        emitted=[]
+        def tracked(self,instance,*args,**kwargs):
+            for error in old(self,instance,*args,**kwargs):
+                if self is prepared:
+                    emitted.append(error)
+                yield error
+        monkeypatch.setattr(type(prepared),'iter_errors',tracked)
+        assert contracts.violations(schema,value)==expected
+&gt;       assert len(emitted)==100
+E       assert 501 == 100
+E        +  where 501 = len([&lt;ValidationError: "None is not of type 'object'"&gt;, &lt;ValidationError: "None is not of type 'object'"&gt;, &lt;ValidationErro... 'object'"&gt;, &lt;ValidationError: "None is not of type 'object'"&gt;, &lt;ValidationError: "None is not of type 'object'"&gt;, ...])
+
+tmp/754_backend_final_20261029/754_validation.py:138: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,7 +1,7 @@
 """Task registration, immutable execution boundaries, and dependency graph policy."""
 
 from .codes import State
-from .common import model, page, plan_values, task_model
+from .common import plan_values, task_model
 from .errors import require
 
 
@@ -24,10 +24,6 @@ class Tasks:
         return row["state"] == State.PENDING or (
             row["state"] == State.BLOCKED and row["blocked_from_state"] == State.PENDING
         )
-
-    def dependency_model(self, g, row):
-        predecessor = g.get("tasks", row["depends_on_task_id"])
-        return model("Dependency", row, satisfied=predecessor["state"] == State.DELIVERED)
 
     def check_graph(self, g, c, identifier, dependencies):
         require(identifier not in dependencies, "DEPENDENCY_SELF_REFERENCE")
@@ -78,13 +74,6 @@ class Tasks:
             )
         c.path["task_id"] = row["id"]
         return {"task": task_model(row)}
-
-    def listTasks(self, g, c):
-        where = {
-            "project_id": c.project_id,
-            **{k: v for k, v in c.query.items() if k in ("state", "owner_id", "iteration_id")},
-        }
-        return page(g, "tasks", where, c.query, task_model)
 
     def getTask(self, g, c):
         return task_model(c.task(g))
@@ -138,7 +127,7 @@ class Tasks:
             {"task_id": row["id"], "depends_on_task_id": predecessor},
             actor_field="created_by",
         )
-        return {"task": task_model(changed), "dependency": self.dependency_model(g, edge)}
+        return {"task": task_model(changed), "dependency": self.row_model(g, "Dependency", edge)}
 
     def removeTaskDependency(self, g, c):
         c.manager()

@@ -811,3 +811,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 新manifest18件，15原runtime逐字不变，2改+1新增；部署owner未来需审新helper，9e wrapper/产品source0b/冻结契约/计数/角色不动。原40断言AST全同，新78项4.23s绿；Ruff/格式/diff及旧producer/运输/产品冻结零diff全部exit0。报告/真实prompt/命令/输入PUBLIC SHA/红绿/log/XML在新目录，0云/SUT/真实session/额外CI，未merge。
 - 自测真实失败保留：负例state mutation误2→2（77绿1红）后仅纠正数据；lint imports/unused报错；verify runner少main guard被原导入测试发现并触发嵌套本地pytest，主动Ctrl-C130后加guard并确认无遗留，再一次完整验证通过。原独立用例/断言无改。
 - 运行时P1续修：root明确future HTTP只用APP actualbinding官方backend config8e，edge/UID10001/read-only/no caps、不注入DB/AMQP业务env、保镜像PYTHONPATH；source-free4f不可用，不向LOAD/QA投产品源。现有helper增加--check-runtime-only，原2红0绿0.25s保留；缺t44明确NOT_READY，真实本机package/validator/rules纯函数正例label仅LOCAL_PROJECT_RUNTIME_ONLY，实际Docker8e未跑。verify-local.py迁tmp756，18运行件只9个.py，严格集合自测通过，旧5635命令/78日志留Git历史。最终新入口81项4.33s与静态全绿，manifest更新，0云/SUT/session，不把本机绿当云READY。
+
+## ROLE-backend-FINAL-20261029-v1
+- 从integration5868779e独立backend-final worktree/branch；原CAS/材料/旧报告未修改。真实首切片读目录接近零净减，350-500目标没有成立证据，向root及时报告，不强凑规模。
+- 九集合统一只读scope/filter/model投影，Member/Dependency20项页SQL SELECT22→3、23→4，完整结果/顺序/total与精确586基线同；空页不增关联查询。原权限/事务/锁阶段、版本、审计/MQ不删改。
+- 同原jsonschema4.26 validator/_absolute_refs算法，仅冻结SPEC对象复用预编译实例；任意动态schema仍原构造/全枚举，包含root/nested$id/oneOf/late-$ref异常。冻结有效schema只枚举前100错误，保完全相同前100/顺序；并发与全冻结组件差分。186→最终188项1.27s全绿；原SQLiteHTTP/错误优先级/domain可信边界305项29.92s全绿。原tests/断言未改，真实红与fixture/文本补丁失败保留。
+- root请求DB候选依赖已隔离4c71161f锁sqlglot30.25.0，唯一pin新增，其他依赖版本不动；未在共享runtime/云安装。若DB拒绝需要撤该独立依赖。微基准/精确cloc/免费native CI另随冻结SHA实证，不当规模或正式性能通过。0云/SUT/实际session。

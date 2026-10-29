@@ -2,6 +2,7 @@
 
 import json
 from importlib.resources import files
+from itertools import islice
 
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
@@ -35,14 +36,20 @@ def _absolute_refs(value):
     return value
 
 
+_COMPILED = {}
+
+
 def violations(schema, value):
+    prepared = _COMPILED.get(id(schema))
+    errors = (prepared if prepared is not None else validator(schema)).iter_errors(value)
+    bounded = islice(errors, 100) if prepared is not None else list(errors)[:100]
     return [
         {
             "path": "/" + "/".join(map(str, error.absolute_path)),
             "rule": str(error.validator),
             "message": f"Does not satisfy {error.validator}",
         }
-        for error in list(validator(schema).iter_errors(value))[:100]
+        for error in bounded
     ]
 
 
@@ -70,3 +77,18 @@ for operation in OPERATIONS.values():
     operation["data_fields"] = (
         SPEC["components"]["schemas"][data["$ref"].split("/")[-1]] if "$ref" in data else data
     )["properties"]
+
+
+# Only identity-locked frozen inputs are shared. Dynamic schemas retain the original
+# constructor and reference-context behavior, including arbitrary root/nested $id.
+for schema in (
+    *SPEC["components"]["schemas"].values(),
+    *(parameter["schema"] for parameter in SPEC["components"]["parameters"].values()),
+    *(operation["data_schema"] for operation in OPERATIONS.values()),
+    *(
+        response["content"]["application/json"]["schema"]
+        for operation in OPERATIONS.values()
+        for response in operation["responses"].values()
+    ),
+):
+    _COMPILED[id(schema)] = validator(schema)

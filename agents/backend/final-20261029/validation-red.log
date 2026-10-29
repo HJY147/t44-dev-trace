@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_frozen_schema_reuses_prepared_validator_but_arbitrary_schema_does_not __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1083241a0>
+
+    def test_frozen_schema_reuses_prepared_validator_but_arbitrary_schema_does_not(monkeypatch):
+        schema=contracts.SPEC['components']['schemas']['TaskState']
+        original=contracts.validator
+        calls=[]
+        def count(candidate):
+            calls.append(candidate)
+            return original(candidate)
+        monkeypatch.setattr(contracts,'validator',count)
+        for value in VALUES:
+            contracts.violations(schema,value)
+>       assert not calls
+E       AssertionError: assert not [{'type': 'integer', 'enum': [1, 2, 3, 4, 5, 6, ...], 'x-enum-names': ['pending', 'developing', 'blocked', 'pending_re...', 'pending_release', 'delivered', ...], 'description': '对应待受理、开发中、阻塞、待评审、待上线、已交付、已回滚；状态出口仅采用business-rules v1。'}, ...]
+
+tmp/754_backend_final_20261029/754_validation.py:92: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_frozen_schema_reuses_prepared_validator_but_arbitrary_schema_does_not
+1 failed, 174 deselected in 0.37s

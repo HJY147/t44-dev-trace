@@ -1,0 +1,30 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix ___
+
+original = <module '_final_original_contracts'>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108e2e330>
+
+    def test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix(original,monkeypatch):
+        schema=contracts.SPEC['components']['schemas']['EvidenceRefs']
+        value=[None]*500
+        expected=original.violations(schema,value)
+        assert len(expected)==100
+        prepared=contracts._COMPILED[id(schema)]
+        old=type(prepared).iter_errors
+        emitted=[]
+        def tracked(self,instance,*args,**kwargs):
+            for error in old(self,instance,*args,**kwargs):
+                if self is prepared:
+                    emitted.append(error)
+                yield error
+        monkeypatch.setattr(type(prepared),'iter_errors',tracked)
+        assert contracts.violations(schema,value)==expected
+>       assert len(emitted)==100
+E       assert 501 == 100
+E        +  where 501 = len([<ValidationError: "None is not of type 'object'">, <ValidationError: "None is not of type 'object'">, <ValidationErro... 'object'">, <ValidationError: "None is not of type 'object'">, <ValidationError: "None is not of type 'object'">, ...])
+
+tmp/754_backend_final_20261029/754_validation.py:138: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix
+1 failed, 176 deselected in 0.39s

@@ -2,8 +2,8 @@
 
 from t44.contracts import OPERATIONS, violations
 
-from .codes import ERROR_CODES, Action
-from .common import SCHEMAS, model, page, plan_values
+from .codes import ERROR_CODES, Action, State
+from .common import SCHEMAS, model, page, plan, plan_values, roles
 from .errors import require
 from .history import project_reasons
 from .projects import Projects
@@ -19,6 +19,20 @@ _COMPONENT_OPERATIONS = {
     "listEscalations": ("escalations", "list"),
     "createEscalation": ("escalations", "create"),
 }
+
+_COLLECTIONS = {
+    "listProjects": ("projects", "Project"),
+    "listProjectMembers": ("project_members", "Member"),
+    "listIterations": ("iterations", "Iteration"),
+    "listTasks": ("tasks", "Task"),
+    "listTaskDependencies": ("task_dependencies", "Dependency"),
+    "listTaskReviews": ("reviews", "Review"),
+    "listReleaseAssessments": ("release_assessments", "ReleaseAssessment"),
+    "listTaskDecisions": ("decisions", "Decision"),
+    "listProjectAuditEvents": ("audit_events", "AuditEvent"),
+}
+_FILTERS = {"Task": ("state", "owner_id", "iteration_id"), "AuditEvent": ("task_id", "outcome")}
+_RELATED = {"Member": ("users", "user_id"), "Dependency": ("tasks", "depends_on_task_id")}
 
 _DICTIONARIES = {
     "task_states": "TaskState",
@@ -45,28 +59,81 @@ class Business(Projects, Tasks, Reviews, Workflow):
     def status(self, operation):
         return OPERATIONS[operation]["success_status"]
 
+    def row_model(self, g, schema, row, related=None):
+        if schema == "Member":
+            user = (
+                g.get("users", row["user_id"]) if related is None else related.get(row["user_id"])
+            )
+            return model(
+                "Member",
+                row,
+                user=model("User", user),
+                roles=roles(row["roles_mask"]),
+                active=bool(row["active"]),
+            )
+        if schema == "Dependency":
+            predecessor = (
+                g.get("tasks", row["depends_on_task_id"])
+                if related is None
+                else related.get(row["depends_on_task_id"])
+            )
+            return model("Dependency", row, satisfied=predecessor["state"] == State.DELIVERED)
+        if schema in ("Task", "Iteration"):
+            return model(schema, row, plan=plan(row, iteration=schema == "Iteration"))
+        if schema == "AuditEvent":
+            return model(
+                schema,
+                row,
+                before=row["before_values"],
+                after=row["after_values"],
+                reason_code=ERROR_CODES[row["reason_code"]] if row["reason_code"] else None,
+            )
+        return model(schema, row)
+
     def dispatch(self, g, call):
-        collections = {
-            "listTaskDependencies": ("task_dependencies", "Dependency"),
-            "listTaskReviews": ("reviews", "Review"),
-            "listReleaseAssessments": ("release_assessments", "ReleaseAssessment"),
-            "listTaskDecisions": ("decisions", "Decision"),
-        }
-        if call.operation in collections:
-            call.task(g)
-            table, schema = collections[call.operation]
-            serialize = (
-                (lambda row: self.dependency_model(g, row))
-                if schema == "Dependency"
-                else (lambda row: model(schema, row))
-            )
-            return page(
-                g,
-                table,
-                {"project_id": call.project_id, "task_id": call.path["task_id"]},
-                call.query,
-                serialize,
-            )
+        if call.operation in _COLLECTIONS:
+            table, schema = _COLLECTIONS[call.operation]
+            if "task_id" in call.path:
+                call.task(g)
+            where = {
+                **call.path,
+                **{
+                    key: value
+                    for key, value in call.query.items()
+                    if key in _FILTERS.get(schema, ())
+                },
+            }
+
+            def serialize(row):
+                return self.row_model(g, schema, row)
+
+            if schema == "Project":
+                memberships = g.rows("project_members", {"user_id": call.actor_id, "active": 1})
+                by_project = {row["project_id"]: row for row in memberships}
+                where = {"id": list(by_project)}
+
+                def serialize(row):
+                    return self.project_model(row, by_project[row["id"]])
+
+            if schema == "Member":
+                where["active"] = 1
+
+            def prepare(rows):
+                if schema not in _RELATED:
+                    return serialize
+                target, key = _RELATED[schema]
+                related = (
+                    {
+                        row["id"]: row
+                        for row in g.rows(target, {"id": sorted({row[key] for row in rows})})
+                    }
+                    if rows
+                    else {}
+                )
+                return lambda row: self.row_model(g, schema, row, related)
+
+            result = page(g, table, where, call.query, serialize, prepare=prepare)
+            return project_reasons(g, call.project_id, result) if schema == "AuditEvent" else result
         target = _COMPONENT_OPERATIONS.get(call.operation)
         if target:
             component, method = target
@@ -142,23 +209,3 @@ class Business(Projects, Tasks, Reviews, Workflow):
             ],
             "business_guards_executed": False,
         }
-
-    def listProjectAuditEvents(self, g, c):
-        where = {
-            "project_id": c.project_id,
-            **{k: v for k, v in c.query.items() if k in ("task_id", "outcome")},
-        }
-        result = page(
-            g,
-            "audit_events",
-            where,
-            c.query,
-            lambda row: model(
-                "AuditEvent",
-                row,
-                before=row["before_values"],
-                after=row["after_values"],
-                reason_code=ERROR_CODES[row["reason_code"]] if row["reason_code"] else None,
-            ),
-        )
-        return project_reasons(g, c.project_id, result)
