@@ -276,21 +276,29 @@ def imported(package, expected):
     return bundle, source, identities, observed
 
 
-def import_bundle(args):
+def import_bundle(args, *, load_images=True):
     if (os.geteuid() != 0 or platform.system() != "Linux" or platform.machine() not in {"amd64", "x86_64"}
             or args.receipt.exists()):
         raise ValueError("ROOT_NEW_ORIGINAL_IMPORT_RECEIPT_REQUIRED")
     bundle, _ = verify(args.package, args.manifest_sha256)
-    for row in bundle["images"].values():
-        result = subprocess.run([*DOCKER, "image", "inspect", row["alias"]], check=False, capture_output=True, timeout=20)
-        if result.returncode != 1 or b"no such image" not in result.stderr.lower():
-            raise ValueError("NEW_ALIASES_REQUIRED_NO_RETAG_OR_OVERWRITE")
-    generic().command([*DOCKER, "image", "load", "--input", args.package / "images.tar.gz"], timeout=300)
+    if load_images:
+        for row in bundle["images"].values():
+            result = subprocess.run([*DOCKER, "image", "inspect", row["alias"]], check=False, capture_output=True, timeout=20)
+            if result.returncode != 1 or b"no such image" not in result.stderr.lower():
+                raise ValueError("NEW_ALIASES_REQUIRED_NO_RETAG_OR_OVERWRITE")
+        generic().command([*DOCKER, "image", "load", "--input", args.package / "images.tar.gz"], timeout=300)
     bundle, source, identities, observed = imported(args.package, args.manifest_sha256)
+    observed_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")  # noqa: UP017 -- APP Python3.10
     save(args.receipt, {"kind": "final-backend-web-import-v1", "source_sha": source["source_sha"],
         "bundle_manifest_sha256": args.manifest_sha256, "source_manifest_sha256": bundle["source_manifest_sha256"],
         "identity": identities["backend"], "identities": identities, "full_runtime_files": len(observed["files"]),
-        "package_resolution": observed, "business_services_started": False})
+        "package_resolution": observed, "observed_utc": observed_utc,
+        "business_services_started": False, "volumes_modified": False, "images_loaded_this_observation": load_images})
+    stat = args.receipt.stat()
+    save(args.receipt.with_name(args.receipt.name + ".observation.PUBLIC.json"), {
+        "kind": "actual-APP-import-file-observation-v1", "receipt_path": str(args.receipt), "receipt_sha256": sha(args.receipt),
+        "observed_utc": observed_utc, "receipt_mtime_ns": stat.st_mtime_ns, "receipt_bytes": stat.st_size,
+        "receipt_uid": stat.st_uid, "receipt_mode": stat.st_mode & 0o777})
     return {"status": "IMPORTED_PROVEN_NOT_ACCEPTANCE", "receipt": str(args.receipt), "sha256": sha(args.receipt)}
 
 
@@ -370,7 +378,8 @@ def derive(args):
     if (cost - stop).total_seconds() != 300:
         raise ValueError("G35_C40_OBSERVER_EXPORT_RESERVE_REQUIRED")
     stream = parent.replacement(stream, 'HARDSTOP = "' + args.stop_utc + '"', 'HARDSTOP = "' + args.cost_stop_utc + '"')
-    factory = generic().command(["git", "-C", HERE.parent.parent, "show", "8784ba2279ec82834fc967f56b756ed708e20bed:deployment/cloud-reuse/app-campaign.py"])
+    factory = (HERE / "factory.py").read_bytes() if (HERE / "factory.py").exists() else generic().command([
+        "git", "-C", HERE.parent.parent, "show", "8784ba2279ec82834fc967f56b756ed708e20bed:deployment/cloud-reuse/app-campaign.py"])
     if digest(factory) != FACTORY_SHA:
         raise ValueError("ORIGINAL_FROZEN_FACTORY_REQUIRED")
     outputs = {"generation.py": gen.encode(), "resource-stream.py": stream.encode(), "mysql-budget.py": budget.encode(),
@@ -391,7 +400,7 @@ def derive(args):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("action", choices=("build", "verify", "import", "derive", "verify-cache"))
+    p.add_argument("action", choices=("build", "verify", "import", "prove-loaded", "derive", "verify-cache"))
     for key in ("repository", "output", "package", "receipt", "original-proof"):
         p.add_argument("--" + key, type=Path)
     for key in ("source-sha", "manifest-sha256", "run-id", "stop-utc", "cost-stop-utc"):
@@ -402,8 +411,8 @@ def main():
         value = build(args.repository, args.source_sha, args.output)
     elif args.action == "derive":
         value = derive(args)
-    elif args.action == "import":
-        value = import_bundle(args)
+    elif args.action in {"import", "prove-loaded"}:
+        value = import_bundle(args, load_images=args.action == "import")
     elif args.action == "verify-cache":
         images, identities = cached(args.original_proof)
         value = {"status": "CACHE_PROVEN", "images": images, "identities": identities}

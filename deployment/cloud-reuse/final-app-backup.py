@@ -1,17 +1,20 @@
 """APP-only offline-recipient encrypted backup; release authority is always outside this tool."""
 
 import argparse
+import gzip
 import hashlib
+import io
 import json
 import os
 import re
 import signal
 import stat
 import subprocess
+import tarfile
 import threading
 import time
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 
 def sha(path):
@@ -46,13 +49,13 @@ def inspect(argv):
 def checked_inventory(value):
     if (os.geteuid() != 0 or value.get("kind") != "root-approved-APP-backup-selection-v1"
             or value.get("role") != "APP" or value.get("root_approved") is not True
-            or not value.get("directories") or not value.get("volumes")):
+            or not value.get("directories") or not value.get("volumes") or not value.get("restore_required_files")):
         raise ValueError("ROOT_APPROVED_APP_SETTINGS_AND_DATA_SELECTION_REQUIRED")
     paths = []
     for text in value["directories"]:
         path = Path(text)
         if (not re.fullmatch(r"/root/t44-[A-Za-z0-9_./-]+", text) or path.resolve() != path
-                or not path.is_dir() or "private" in text.lower() or "qa" in text.lower()):
+                or not path.is_dir() or any(p.lower() in {"qa-private", "qa_private"} for p in path.parts)):
             raise ValueError("EXPLICIT_CANONICAL_APP_DIRECTORY_ONLY_NO_QA_PRIVATE")
         paths.append(path)
     for wanted in value["volumes"]:
@@ -73,6 +76,17 @@ def checked_inventory(value):
             raise ValueError("ACTUAL_CANONICAL_DOCKER_DATA_MOUNTPOINT_REQUIRED")
         paths.append(path)
     return paths
+
+
+def checked_output(output, paths):
+    if (not output.is_absolute() or output.exists() or output.parent.resolve() != output.parent
+            or any(output == p or output.is_relative_to(p) or p.is_relative_to(output) for p in paths)):
+        raise ValueError("NEW_BACKUP_REQUIRED")
+
+
+def tar_command(paths):
+    return ["tar", "--create", "--gzip", "--file", "-", "--one-file-system", "--directory", "/", "--",
+            *(str(path).lstrip("/") for path in paths)]
 
 
 def encrypt_stream(tar_argv, cert, cipher, log, timeout):
@@ -119,26 +133,78 @@ def encrypt_stream(tar_argv, cert, cipher, log, timeout):
 def local_verify(args):
     regular(args.backup, args.backup_sha256)
     regular(args.receipt, args.receipt_sha256)
-    row = json.loads(args.receipt.read_bytes())
-    if row["encrypted_sha256"] != args.backup_sha256:
+    receipt = json.loads(args.receipt.read_bytes())
+    if receipt["encrypted_sha256"] != args.backup_sha256:
         raise ValueError("ORIGINAL_BACKUP_RECEIPT_REQUIRED")
-    h, count = hashlib.sha256(), 0
+    h, count, members, selections = hashlib.sha256(), 0, [], []
     with args.output.open("xb") as private_log:
         args.output.chmod(0o600)
         proc = subprocess.Popen(["openssl", "cms", "-decrypt", "-binary", "-inform", "DER", "-in", str(args.backup),
              "-recip", str(args.recipient_cert), "-inkey", str(args.private_key)], stdout=subprocess.PIPE, stderr=private_log)
         try:
-            for block in iter(lambda: proc.stdout.read(1024 * 1024), b""):
-                h.update(block)
-                count += len(block)
-            if proc.wait(timeout=30) != 0 or h.hexdigest() != row["plaintext_stream_sha256"] or count != row["plaintext_stream_bytes"]:
+            class HashedReader(io.RawIOBase):
+                def read(self, size=-1):
+                    nonlocal count
+                    data = proc.stdout.read(size)
+                    h.update(data)
+                    count += len(data)
+                    return data
+            reader = HashedReader()
+            seen = set()
+            with gzip.GzipFile(fileobj=reader, mode="rb") as zipped:
+                with tarfile.open(fileobj=zipped, mode="r|") as archive:
+                    for member in archive:
+                        name = member.name.rstrip("/")
+                        path = PurePosixPath(name)
+                        if (not name or path.is_absolute() or ".." in path.parts or str(path) != name
+                                or name in seen or not (member.isfile() or member.isdir() or member.issym() or member.islnk())):
+                            raise ValueError("INVALID_OR_DUPLICATE_RESTORE_MEMBER")
+                        seen.add(name)
+                        row = {"path": name, "mode": member.mode, "bytes": member.size, "type": member.type.decode()}
+                        if member.isfile():
+                            stream = archive.extractfile(member)
+                            file_hash, file_bytes = hashlib.sha256(), 0
+                            private_selection = bytearray() if path.name == "backup-selection.private.json" else None
+                            if private_selection is not None and member.size > 4 * 1024 * 1024:
+                                raise ValueError("PRIVATE_RESTORE_SELECTION_SIZE_BOUND")
+                            for block in iter(lambda stream=stream: stream.read(1024 * 1024), b""):
+                                file_hash.update(block)
+                                file_bytes += len(block)
+                                if private_selection is not None:
+                                    private_selection.extend(block)
+                            stream.close()
+                            if file_bytes != member.size:
+                                raise ValueError("TRUNCATED_RESTORE_FILE")
+                            row["sha256"] = file_hash.hexdigest()
+                            if private_selection is not None:
+                                selections.append(bytes(private_selection))
+                        if member.issym() or member.islnk():
+                            link = PurePosixPath(member.linkname)
+                            if link.is_absolute() or ".." in link.parts:
+                                raise ValueError("UNSAFE_RESTORE_LINK")
+                            row["linkname"] = member.linkname
+                        members.append(row)
+                while zipped.read(1024 * 1024):
+                    pass  # Consume gzip trailer and verify CRC/length.
+            while reader.read(1024 * 1024):
+                pass
+            if proc.wait(timeout=30) != 0 or h.hexdigest() != receipt["plaintext_stream_sha256"] or count != receipt["plaintext_stream_bytes"]:
                 raise ValueError("FULL_LOCAL_DECRYPT_STREAM_BYTES_HASH_MISMATCH")
         finally:
             proc.stdout.close()
             if proc.poll() is None:
                 proc.kill()
                 proc.wait(timeout=10)
-    return {"status": "FULL_LOCAL_DECRYPT_MATCH_NOT_RELEASE_AUTHORITY", "encrypted_sha256": args.backup_sha256}
+    if len(selections) != 1 or hashlib.sha256(selections[0]).hexdigest() != receipt["inventory_sha256"]:
+        raise ValueError("ORIGINAL_PRIVATE_RESTORE_SELECTION_NOT_PROVEN")
+    selected = json.loads(selections[0])
+    required = {p.lstrip("/") for p in selected["restore_required_files"]}
+    if not required or not required <= {r["path"] for r in members if "sha256" in r}:
+        raise ValueError("REQUIRED_APP_SETTINGS_OR_DATA_FILE_MISSING")
+    manifest = args.output.with_name(args.output.name + ".restore-manifest.private.json")
+    save(manifest, {"members": members, "required_files": sorted(required), "plaintext_stream_sha256": h.hexdigest()})
+    return {"status": "FULL_LOCAL_DECRYPT_TAR_VERIFIED_NOT_RESTORE_TEST_OR_RELEASE_AUTHORITY", "encrypted_sha256": args.backup_sha256,
+            "regular_files": sum("sha256" in r for r in members), "members": len(members), "private_manifest_sha256": sha(manifest)}
 
 
 def main():
@@ -157,14 +223,18 @@ def main():
     regular(args.recipient_cert, args.recipient_cert_sha256)
     selected = json.loads(args.inventory.read_bytes())
     paths = checked_inventory(selected)
+    checked_output(args.output, paths)
     end = datetime.fromisoformat(selected["absolute_cost_cutoff_utc"].replace("Z", "+00:00")).timestamp()  # noqa: FURB162 -- APP Python3.10
     timeout = min(600, end - time.time() - 60)
     if timeout < 30 or args.output.exists() or args.output.parent.resolve() != args.output.parent:
         raise ValueError("NEW_BACKUP_AND_FINAL_COST_STOP_RESERVE_REQUIRED")
     args.output.mkdir(mode=0o700)
     cipher = args.output / "APP-data-settings.cms"
-    argv = ["tar", "--create", "--gzip", "--file", "-", "--one-file-system", "--exclude=*PRIVATE*", "--exclude=*private*",
-            "--exclude=*qa-*", "--directory", "/", "--", *(str(path).lstrip("/") for path in paths)]
+    selection = args.output / "backup-selection.private.json"
+    fd = os.open(selection, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
+    with os.fdopen(fd, "wb") as stream:
+        stream.write(args.inventory.read_bytes())
+    argv = tar_command([*paths, selection])
     result = encrypt_stream(argv, args.recipient_cert, cipher, args.output / "backup.stderr.private", timeout)
     result.update(status="ENCRYPTED_ON_APP_NOT_YET_LOCAL_VERIFIED", inventory_sha256=args.inventory_sha256,
                   recipient_cert_sha256=args.recipient_cert_sha256)

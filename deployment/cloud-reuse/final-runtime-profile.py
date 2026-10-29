@@ -70,6 +70,39 @@ def _source_profile(args, pin, plan):
         '    plan, intent = json.loads(inputs["plan.json"]), json.loads(inputs["intent.json"])\n    inputs["source-profile.PUBLIC.json"] = _source_profile(args, pinned, plan)')
     # Both old templates expose Path in argparse; add only the fixed source-profile file input.
     admin = replace(admin, '    args = p.parse_args()', '    p.add_argument("--source-profile", type=Path, required=True)\n    args = p.parse_args()')
+    f_init = constant(admin, "ACCOUNT_ROLES", ("manager", "developer_a", "developer_b", "reviewer_a", "reviewer_b", "outsider", "login_only"))
+    f_init = constant(f_init, "MODES", ("init-accounts",))
+    f_init = replace(f_init, '    lib, value = generation.phase_binding(args.phase_dir, args.binding_sha256)',
+                     '    lib, value = generation.phase_binding(args.phase_dir, args.binding_sha256)\n    if value["phase"] != "f":\n        raise ValueError("F_ONLY_ACCOUNT_INITIALIZATION_REQUIRED")')
+    account_function = '''def accounts_for_init(args):
+    value = json.loads(raw(args.accounts, private=True))
+    plan = json.loads(raw(args.plan, private=True))
+    if (value.get("schema") != "final-f-account-init-v1" or value.get("synthetic") is not True
+            or value.get("phase") != "f" or value.get("binding_sha256") != args.binding_sha256
+            or value.get("source_profile_sha256") != EXPECTED_SOURCE_PROFILE_SHA
+            or set(value["accounts"]) != set(ACCOUNT_ROLES)):
+        raise ValueError("EXACT_NEW_F_ACCOUNT_BINDING_AND_LABELS_REQUIRED")
+    accounts = value["accounts"]
+    for role in ACCOUNT_ROLES:
+        account = accounts[role]
+        if (account["username"] != "synthetic-" + plan["run_id"] + "-f-" + role
+                or account.get("user_id") is not None
+                or account["display_name"] != "[synthetic] " + role):
+            raise ValueError("FIXED_F_SYNTHETIC_NEW_USERNAME_AND_DISPLAY_REQUIRED")
+        if account["password"] is None:
+            account["password"] = secrets.token_urlsafe(32)
+        if (not isinstance(account["password"], str) or not 1 <= len(account["password"]) <= 128
+                or "\\n" in account["password"] or "\\r" in account["password"]):
+            raise ValueError("PRIVATE_SINGLE_LINE_PASSWORD_REQUIRED")
+    return accounts
+'''
+    node = next(n for n in ast.parse(f_init).body if isinstance(n, ast.FunctionDef) and n.name == "accounts_for_init")
+    lines = f_init.splitlines(keepends=True)
+    f_init = "".join(lines[:node.lineno - 1]) + account_function + "\n\n" + "".join(lines[node.end_lineno:])
+    f_init = replace(f_init, '"--username", "synthetic-" + step,\n                         "--display-name", "synthetic-" + step,',
+                     '"--username", accounts[step]["username"],\n                         "--display-name", accounts[step]["display_name"],')
+    f_init = replace(f_init, '            output = args.output_dir / "output/accounts.initialized.private.json"',
+                     '            if len({accounts[r]["user_id"] for r in ACCOUNT_ROLES}) != len(ACCOUNT_ROLES):\n                raise ValueError("DISTINCT_ACTUAL_F_USER_IDS_REQUIRED")\n            output = args.output_dir / "output/accounts.initialized.private.json"')
     http = texts["r30-http-prepare.py"]
     for key, value in {"SOURCE": source["source_sha"], "CONFIG": source["backend_config_id"],
                        "ALIAS": "t44-backend:src-" + source["source_sha"],
@@ -80,6 +113,9 @@ def _source_profile(args, pin, plan):
     http = replace(http, '["-B", "/neutral-code/escalation_readback.py", "--check-runtime-only"]',
                    '["-B", "/neutral-code/escalation_readback.py", "--check-runtime-only", "--plan", "/neutral-input/plan.json"]')
     http = replace(http, '"r30-backend-import-receipt-v1"', '"final-backend-web-import-v1"')
+    http = replace(http, 'manifest.get("purpose") != "FUTURE_NEW_WINDOW_ONLY_NOT_R30WINDOW01_REPLAY"',
+        'manifest.get("kind") != "r30-neutral-producer-code-manifest-v1"\n'
+        '            or manifest.get("status") != "BUILD_FACTS_BOUND_ROOT_APPROVAL_AND_ACTUAL_IMPORT_PENDING"')
     http = replace(http, 'receipt.get("full_runtime_files") != 60', 'receipt.get("full_runtime_files") != ' + str(source["runtime_file_count"]))
     http = replace(http, 'len(observed.get("files", [])) != 60', 'len(observed.get("files", [])) != ' + str(source["runtime_file_count"]))
     # The original archive source binding is obtained from its actual source-manifest bytes, not an old constant.
@@ -89,10 +125,33 @@ def _source_profile(args, pin, plan):
     http = replace(http, '    plan = json.loads(plan_raw)', '    plan = json.loads(plan_raw)\n    profile_raw = _source_profile(args, a.pinned, plan)')
     http = replace(http, '"ca.pem": a.raw(args.ca)}', '"ca.pem": a.raw(args.ca), "source-profile.PUBLIC.json": profile_raw}')
     http = replace(http, '    args = p.parse_args()', '    p.add_argument("--source-profile", type=Path, required=True)\n    args = p.parse_args()')
+    f_http = http
+    begin = f_http.index("    t0, start, end, stop, cutoff =", f_http.index("def checked(args, a):"))
+    end = f_http.index('    inputs = {"plan.json":', begin)
+    f_http = f_http[:begin] + '''    t0, stop, cost = (deadline(plan["lifecycle"]["t0_utc"]), deadline(binding["stop_utc"]), deadline(plan["lifecycle"]["cost_stop_utc"]))
+    if binding["phase"] != "f" or stop != t0 + 2100 or cost != t0 + 2400 or not t0 <= now < stop - 600:
+        raise ValueError("FINITE_SEPARATE_F_PREPARATION_AND_RESERVE_REQUIRED")
+    timeout = min(180, stop - now - 600)
+''' + f_http[end:]
+    begin = f_http.index('        timeout = min(timeout, deadline(plan["lifecycle"]["packet_cutoff_utc"])')
+    end = f_http.index('        if timeout < 1:',begin)
+    f_http = f_http[:begin] + '        timeout = min(timeout, deadline(value["stop_utc"]) - time.time() - 600)\n' + f_http[end:]
+    extra_raw = (HERE / "final-f-project.py").read_bytes()
+    f_http = replace(f_http, '"-B", "/neutral-code/prepare_http.py",', '"-B", "/neutral-extra/f-fixture.py",')
+    f_http = replace(f_http, '    a.stage(args, inputs, code)', '    a.stage(args, inputs, code)\n'
+        '    extra = args.output_dir / "extra"\n    extra.mkdir(mode=0o755)\n    extra.chmod(0o755)\n'
+        '    extra_raw = Path(__file__).with_name("final-f-project.py").read_bytes()\n'
+        '    if a.digest(extra_raw) != ' + repr(sha(extra_raw)) + ':\n        raise ValueError("EXACT_FIXED_F_EXTRA_CODE_REQUIRED")\n'
+        '    a.write(extra / "f-fixture.py", extra_raw)\n    (extra / "f-fixture.py").chmod(0o644)\n'
+        '    a.save(args.output_dir / "extra-code.PUBLIC.json", {"files":{"f-fixture.py":{"sha256":a.digest(extra_raw),"bytes":len(extra_raw)}}})')
+    f_http = replace(f_http, '"--volume", str(args.output_dir / "code") + ":/neutral-code:ro",',
+        '"--volume", str(args.output_dir / "extra") + ":/neutral-extra:ro",\n            "--volume", str(args.output_dir / "code") + ":/neutral-code:ro",')
     if args.output.exists() or not args.output.is_absolute() or args.output.parent.resolve() != args.output.parent:
         raise ValueError("NEW_CANONICAL_RUNTIME_OUTPUT_REQUIRED")
     args.output.mkdir(mode=0o700)
-    output = {"r30-neutral-admin.py": admin.encode(), "http-prepare.py": http.encode(), "source-profile.PUBLIC.json": source_raw}
+    output = {"r30-neutral-admin.py": admin.encode(), "http-prepare.py": http.encode(),
+              "f-init-accounts.py": f_init.encode(), "f-http-prepare.py": f_http.encode(), "final-f-project.py": extra_raw,
+              "source-profile.PUBLIC.json": source_raw}
     for name, raw in output.items():
         if name.endswith(".py"):
             compile(raw, name, "exec")
