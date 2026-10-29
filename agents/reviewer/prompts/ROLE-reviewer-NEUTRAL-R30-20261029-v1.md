@@ -23,3 +23,9 @@
 最终修复 producer 已推送 3be27131398a049f1a509918e5308f1bda7c8cec，manifest SHA 66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606。唯一运行改动 crypto_transport_proofs→cryptographic_transport_proofs；请与实际 GEN required16字段、wrapper最终8c73486440720506357ffa90efdb5b59cdd91028、原预算9e一起做准确SHA有限复审，给明确是否可进入一次云准备窗口，不以缺尚未开机才能有的 actual 证明无限HOLD。勿开云/读PRIVATE/SUT。今天19:00前服务器收尾，请尽快给范围化结论。
 
 root另明确LOAD采用准确4f/8CPU/8GiB source-free standby作orchestration readiness，无HTTP/core import，正式driver前停；实际回执不冒完整工具/负载通过。实际执行只新增11项受影响链，先回root允许一次有限准备窗口，再补行政；不重跑旧case/fullCI。
+
+## root材料编排追加派工原文
+
+Root补一个实际开机后材料编排候选（尚未运行、仅py_compile绿）：/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/resume-coordination-20261029/agents/coordinator/r30-bounded/materials.py。请快速审关键接口是否真能接final wrapper/producer/GEN，特别paths/empty counts/init→seed→40ids service原token复用scheduler→sourcefree HTTP→counts/backend证据/assemble，以及clock cutoff/roles/UID。不接QA PRIVATE；没有云动作。已根据你语义把LOAD receipt严格限定orchestration-readiness/is_actual_driver=false等。可以给局部必要修复由root改，别扩重构，18:00boot距今14min。
+
+实际回应先报4个接口/权限问题，root修复后准确8db05a89字节只核相关链；本岗新增4项真实parser和临时文件I/O边界，无Docker/HTTP等。有限准备准入先消息发root，报告封档不加新boot门禁。root自己修改materials，本岗未冒作用户亲自改码或审核岗修改。
