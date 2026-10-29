@@ -609,3 +609,5 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 最终APP/LOAD小shell1925/1926B，完整outer编码+300=2868，固定包d80ea057…/120717B/8002f6fd…；每端单curl API响应兼容raw/JSON，全部hash先过后原17片。真实本地安装与outer shell显式fake网络检查分别记录，等长SHA篡改0执行；无TLS绕过、云/服务/CI动作。新端口计划22443/18480/22445/18481仅记root选择，实际准入待root回执。
 
 2026-10-29：交本地验证的自动私网TLS密文relay，LOAD预等待→原receiver→consumer一次，原SUT/13工具/矩阵门禁不改。11独特TLS/协议场景，真实原receiver，consumer只捕获未执行；4种完成unit状态只mock，3.10仅语法核。独立cost_stop_utc与540秒操作余量不改原330/600规则，云/Linux/性能/费用未由本岗验证。设计、接口、边界与实测位于agents/deployment/opaque-relay-20261029与tmp/776；根实际安装/准入另记。
+
+29日后半程编排由部署AI实现，入口 `agents/deployment/opaque-relay-20261029/OPS-CLI.md`，根须逐项实测而不能把脚本安装当运行。原P790 grant默认规则、S1/S2及13份运行代码保持，root_admit_pressure和root_start_producer两处显式true才推进；公钥/公开相关字段及资源密文是GUI唯一桥接材料。根实际窗口是启动约50分钟后的独立cost_stop，预留云停机检查，不把原协议12Z当租赁授权。新增工具未云上执行；6个helper/source小检查不能替代压测。

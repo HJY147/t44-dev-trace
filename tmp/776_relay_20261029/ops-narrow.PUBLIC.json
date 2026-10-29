@@ -1,0 +1,14 @@
+{
+  "source_sha256": "ca9a2953a847c03f4e644c3204412b0234703469722c67392006c111cff3571f",
+  "local_checks": {
+    "exclusive_write_roundtrip": true,
+    "exclusive_reject_overwrite": true,
+    "jsonl_one_actual": true,
+    "public_IP_refused": true,
+    "expired_cost_refused": true,
+    "explicit_root_gates_and_original_paths_in_source": true
+  },
+  "actual_cloud_Linux_or_original_consumer_executed": false,
+  "checks_scope": "6 small helper/source checks only; not whole ops integration",
+  "first_fixture_failure": "macOS /var temp symlink refused by canonical-file guard; fixture resolved, guard unchanged"
+}
