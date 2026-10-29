@@ -137,7 +137,11 @@
     "reports/reviews/r29-preflight-20261029.md",
     "agents/reviewer/dispatches/ROLE-reviewer-R29-PREFLIGHT-20261029-v1.md",
     "tmp/773_reviewer_r29_preflight_20261029",
-    "agents/reviewer/github/r29-preflight-20261029.md"
+    "agents/reviewer/github/r29-preflight-20261029.md",
+    "reports/reviews/r29-scale-boundary-20261029.md",
+    "agents/reviewer/dispatches/ROLE-reviewer-R29-SCALE-20261029-v1.md",
+    "tmp/773_reviewer_r29_preflight_20261029/scale-readonly",
+    "agents/reviewer/github/r29-scale-boundary-20261029.md"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -4063,6 +4067,33 @@
       "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6487230422",
       "body_exact_readback_except_terminal_newline": true,
       "receipt_sha256": "2d68dc4d7882df162165bf911c37322d8800a5133a9799e62d2300961f65e77e"
+    }
+  },
+  "r29_scale_boundary_20261029_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-R29-SCALE-20261029-v1",
+    "source_head": "5f25828ed5a9f333de501fcd2a5e3882d39c43a0",
+    "source_diff_from_f7": [],
+    "own_cloc": 5898,
+    "files": 65,
+    "upper": 5100,
+    "over": 798,
+    "product_change_or_actual_reduction": 0,
+    "unapplied_projection_reduction": 14,
+    "unapplied_projection_total": 5884,
+    "unapplied_projection_behavior_tested": false,
+    "remaining_old_optimistic_budget_nonoverlap": 74,
+    "even_optimistic_remaining_gap": 724,
+    "large_equivalent_798_plan_found": false,
+    "decision": "SCALE_FAIL_RETAINED_NO_PROVEN_798_PLAN_IN_BOUNDED_REVIEW",
+    "report": "reports/reviews/r29-scale-boundary-20261029.md",
+    "evidence": "tmp/773_reviewer_r29_preflight_20261029/scale-readonly",
+    "cloud_Docker_SUT_or_private_tester_reads": false,
+    "github": {
+      "id": 6487677136,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6487677136",
+      "body_exact_readback_except_terminal_newline": true,
+      "receipt_sha256": "e2b8394e5b612a0958e8d37935237996e649c3ba0590a3e91c5724743bd01329"
     }
   }
 }

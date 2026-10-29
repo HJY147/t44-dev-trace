@@ -1,0 +1,97 @@
+{
+  "applied_to_product": false,
+  "behavior_tested": false,
+  "syntax_only": true,
+  "fields": [
+    [
+      "outbox_events",
+      "schema_version",
+      160,
+      160
+    ],
+    [
+      "outbox_events",
+      "status",
+      174,
+      174
+    ],
+    [
+      "outbox_events",
+      "attempts",
+      175,
+      175
+    ],
+    [
+      "outbox_events",
+      "lease_token",
+      177,
+      177
+    ],
+    [
+      "outbox_events",
+      "lease_until",
+      178,
+      178
+    ],
+    [
+      "outbox_events",
+      "confirmed_at",
+      179,
+      179
+    ],
+    [
+      "outbox_events",
+      "fallback_at",
+      180,
+      180
+    ],
+    [
+      "outbox_events",
+      "last_error_code",
+      181,
+      181
+    ],
+    [
+      "scan_runs",
+      "last_task_id",
+      85,
+      85
+    ],
+    [
+      "scan_runs",
+      "scanned_count",
+      86,
+      86
+    ],
+    [
+      "scan_runs",
+      "created_count",
+      87,
+      87
+    ],
+    [
+      "scan_runs",
+      "duplicate_count",
+      88,
+      88
+    ],
+    [
+      "scan_runs",
+      "finished_at",
+      91,
+      91
+    ],
+    [
+      "scan_runs",
+      "error_code",
+      92,
+      92
+    ]
+  ],
+  "before": 205,
+  "after": 191,
+  "physical_cloc_reduction": 14,
+  "whole_application_projection": 5884,
+  "remaining_over_5100": 784,
+  "risk": "Requires owner confirmation, actual MySQL full-row equivalence and fault/concurrency regressions; size-only projection is not safe product acceptance."
+}

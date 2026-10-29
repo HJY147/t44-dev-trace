@@ -1,0 +1,40 @@
+--- a/backend/t44/scheduling/facade.py
++++ b/backend/t44/scheduling/facade.py
+@@ -82,14 +82,8 @@
+                             rule_hash=rules.raw_hash,
+                             cutoff_at=c.clock,
+                             status=1,
+-                            last_task_id=0,
+-                            scanned_count=0,
+-                            created_count=0,
+-                            duplicate_count=0,
+                             started_at=c.clock,
+                             heartbeat_at=c.clock,
+-                            finished_at=None,
+-                            error_code=None,
+                         ),
+                     )
+                 return identifier
+@@ -157,7 +151,6 @@
+                     "outbox_events",
+                     dict(
+                         event_type=2,
+-                        schema_version=1,
+                         project_id=c.project_id,
+                         task_id=task["id"],
+                         payload=wire(
+@@ -171,14 +164,7 @@
+                             }
+                         ),
+                         recipients=sorted(recipients),
+-                        status=1,
+-                        attempts=0,
+                         next_attempt_at=c.clock,
+-                        lease_token=None,
+-                        lease_until=None,
+-                        confirmed_at=None,
+-                        fallback_at=None,
+-                        last_error_code=None,
+                         created_at=c.clock,
+                         updated_at=c.clock,
+                     ),
