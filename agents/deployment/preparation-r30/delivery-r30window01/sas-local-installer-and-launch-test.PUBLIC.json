@@ -1,0 +1,31 @@
+{
+  "official_artifact_zip_sha256": "c9bb834877ac22dbb7e6307c0ca3cc1f222c3439657848cd6d21cac55757e7fc",
+  "source": "installer and launcher read from verified official ZIP",
+  "same_extraction_logic_local_paths_mapped": true,
+  "all_payloads": 28,
+  "existing_package_unchanged": true,
+  "installer_stdout": "{\"kind\": \"R30_PUBLIC_OPS_INSTALLED_NOT_RUN\", \"path\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/ops\", \"bundle_sha256\": \"894b4b50b957bde282eda8d7f10bf7d48c68dba28ed56ececcf0195d30c0c2cf\", \"files\": 29, \"SUT_services_started\": false, \"sessions_issued\": false}",
+  "launcher_systemd_seam_captured": [
+    "systemd-run",
+    "--unit=t44-r30-r30window01-prepare",
+    "--property=Type=exec",
+    "--property=User=root",
+    "--property=UMask=0077",
+    "--property=RuntimeMaxSec=2095",
+    "--property=TimeoutStopSec=30",
+    "--property=KillMode=mixed",
+    "--collect",
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/ops/r30-app-prepare.py",
+    "--ops",
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/ops",
+    "--package",
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/package",
+    "--run-root",
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root",
+    "--profile-sha256",
+    "6d4b7bc4c4f77515da429df9cbf82554a3a0f5d379ef4fd3a638bf04eaf94584"
+  ],
+  "launcher_stdout": "{\"unit\": \"t44-r30-r30window01-prepare\", \"bounded_G\": \"2026-10-29T10:35:00Z\", \"runtime_max_seconds\": 2095, \"public_metadata\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/run/preparation.PUBLIC.json\", \"private_full_prefixes\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/deployment-preparation-r30/tmp/757_deployment_delivery_r30/sas-local-install-root/run/commands\", \"seed_or_sessions_requested\": false}",
+  "ECS_Docker_SQL_HTTP_or_sessions_executed": false
+}
