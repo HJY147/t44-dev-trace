@@ -1,0 +1,40 @@
+{
+  "phase": "READ_DESIGN_EDIT_ONLY",
+  "CPU_release_received": false,
+  "candidate_stage": "ad4a7415",
+  "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627",
+  "executed": [
+    "git worktree add from exact7374b363",
+    "read AGENTS/role/layout/workflow and expanded product scope",
+    "read installed jsonschema/referencing source and METADATA and frozen lock",
+    "read official API documentation",
+    "edit candidate, new tmp763 differential checks and four role records",
+    "git stage commit with explicit unvalidated label",
+    "gh issue comment using exact body file"
+  ],
+  "not_executed": [
+    "candidate import",
+    "pytest",
+    "build",
+    "cloc/source_count",
+    "benchmark",
+    "cloud",
+    "independent tests"
+  ],
+  "ordinary_negative_searches": [
+    {
+      "command": "test -e tmp/763_backend_architecture_r30",
+      "exit_code": 1,
+      "meaning": "new directory absent before creation"
+    },
+    {
+      "command": "rg -n quoted-dollar-id in both frozen OpenAPI copies",
+      "exit_code": 1,
+      "meaning": "no $id fields found"
+    }
+  ],
+  "dependency_versions": {
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0"
+  }
+}

@@ -502,3 +502,5 @@ AI后端岗在准确a92e独立分支实施Reviews两处最新上线评估查询�
 
 ## 2026-10-29 R30结构切片：待资源门释放验证
 AI后端岗从准确7374b363建新树，尝试由契约层根validator.evolve与公开Registry resolver集中解析职责，删除API多套手工解引用/契约绝对ref递归。没有新依赖/资源OpenAPI/DDL/跨岗签名变动。源码已编辑，当前+14/-37物理行，未计量/运行，不声称兼容或规模收益。风险为根/嵌套$id、oneOf及详细错误顺序；新tmp763差分已准备，原测试断言不改。按root资源门只读/编辑，等待明确释放；无云/PRIVATE/独立验收结论，尚无可证数百行方案。真实prompt/设计见agents/backend/architecture-r30。
+阶段源码ad4a7415（未验证、未push）；公开岗位记录：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627；第一阶段执行清单phase1.json明确未跑导入/pytest/build/cloc。
+R30实际结果：新174差分173通过1真实nested$id回归；原134 SQLite HTTP通过不能抵消它。固定cloc准确7374的5880→ad4a的5861，候选净19/仍超761，require-range退出1。拒绝evolve方向、原红保留；后续恢复产品基线，不能作为19行可集成收益。尚无数百行可证方案。详细报告architecture-r30/report.md。

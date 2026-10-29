@@ -1,0 +1,48 @@
+........................................................................ [ 41%]
+........................................................................ [ 82%]
+...........................F..                                           [100%]
+=================================== FAILURES ===================================
+_____ test_relative_references_ids_oneof_and_detailed_violations[schema3] ______
+
+original = <module '_r30_contracts'>
+schema = {'type': 'object', 'properties': {'state': {'$id': 'urn:r30:nested', '$ref': '#/components/schemas/TaskState'}}}
+
+    @pytest.mark.parametrize(
+        "schema",
+        [
+            {"$ref": "#/components/schemas/TaskState"},
+            {"$id": "urn:r30:inline", "$ref": "#/components/schemas/TaskState"},
+            {
+                "$id": "urn:r30:inline",
+                "type": "object",
+                "properties": {"state": {"$ref": "#/components/schemas/TaskState"}},
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "state": {
+                        "$id": "urn:r30:nested",
+                        "$ref": "#/components/schemas/TaskState",
+                    }
+                },
+            },
+            {
+                "oneOf": [
+                    {"$ref": "#/components/schemas/TaskState"},
+                    {"type": "object", "required": ["a", "b"], "additionalProperties": False},
+                ]
+            },
+        ],
+    )
+    def test_relative_references_ids_oneof_and_detailed_violations(original, schema):
+        for value in (*VALUES, {"state": 1}, {"state": "bad"}, {"a": 1, "b": 2, "c": 3}):
+>           assert errors(contracts, schema, value) == errors(original, schema, value)
+E           AssertionError: assert ('_WrappedRef...as/TaskState') == ([], [])
+E             
+E             At index 0 diff: '_WrappedReferencingError' != []
+E             Use -v to get more diff
+
+tmp/763_backend_architecture_r30/763_contract_context.py:102: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_relative_references_ids_oneof_and_detailed_violations[schema3]
+1 failed, 173 passed in 0.72s

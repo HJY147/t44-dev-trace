@@ -791,3 +791,7 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 读取现有锁和本机METADATA：jsonschema4.26.0、referencing0.37.0；官方URL及关键风险见architecture-r30/design.md，无新依赖。库descend会进入nested$id，可能与旧绝对ref语义不同，已写必要差分而非掩盖风险。
 - 先查tmp/763_backend_architecture_r30未占用（test-e退出1），后创建新测试；没有改原测试/断言，没有已知迁移请求。冻结两份OpenAPI搜索$id无匹配（rg退出1，正常负查找）。
 - 按root资源隔离要求：此阶段只读/设计/编辑/记录，未运行导入、pytest、build、固定计量、基准或其他重检查，等待明确释放门；未云/PRIVATE/未公开独立用例/联系独立岗。初步没有可证数百行方案，不拿其他模块功能凑。
+- 本地候选阶段ad4a7415明确标记未运行/skip-ci，未push；已实际用body-file发布Issue #3阶段记录：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627。第一阶段实际动作/未运行清单见phase1.json，继续等root明确CPU释放。
+- root明确释放CPU门后才执行：新差分174项173绿1红（nested$id，0.72s），原134 SQLite HTTP全绿32.26s但不能抵消该回归；原红log/XML和命令完整保留，原断言未改。Ruff/format、冻结资源/domain/services/旧测试diff检查全退出0。
+- 原固定counter在独立共享对象、无checkout临时clone对准确7374计5880，在ad4a候选计5861（净19）；原脚本字节由git show取得，不改统计口径，两个require-range均退出1。临时clone自动清理。
+- 决定拒绝evolve结构方向，原任意nested$id语义需要保留；修复只剩约7行静态预算，不为该收益加自定义扩展风险。没有数百行可证方案。将保留ad4a和失败证据并恢复两产品文件，不宣布规模门/验收通过。

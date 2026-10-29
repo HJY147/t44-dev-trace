@@ -3689,7 +3689,7 @@
     "prompt_ref": "ROLE-backend-ARCHITECTURE-R30-v1",
     "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
     "branch": "codex/backend-architecture-r30",
-    "status": "SOURCE_CANDIDATE_EDITED_CPU_GATE_CLOSED_NOT_VALIDATED",
+    "status": "CANDIDATE_REJECTED_NESTED_ID_REGRESSION_PENDING_PRODUCT_RESTORE",
     "product_paths": [
       "backend/t44/api.py",
       "backend/t44/contracts/__init__.py"
@@ -3700,11 +3700,33 @@
     "frozen_resources_changed": false,
     "original_tests_changed": false,
     "known_old_assertion_migrations": [],
-    "CPU_tests_build_or_count_executed": false,
+    "CPU_tests_build_or_count_executed": true,
     "risk": "Relative reference roots and nested $id may differ; explicit baseline differential pending",
     "hundreds_of_lines_solution_proven": false,
     "cloud_PRIVATE_or_independent_contacts": false,
     "records": "agents/backend/architecture-r30",
-    "new_test": "tmp/763_backend_architecture_r30/763_contract_context.py"
+    "candidate_stage": "ad4a7415f195fff571b67e7d4b7b5cada5c28f72",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627",
+    "new_test": "tmp/763_backend_architecture_r30/763_contract_context.py",
+    "CPU_release_received": true,
+    "verified_application_before": 5880,
+    "verified_candidate_application": 5861,
+    "candidate_net_reduction": 19,
+    "candidate_range_exit_code": 1,
+    "differential": {
+      "total": 174,
+      "passed": 173,
+      "failed": 1,
+      "seconds": 0.72,
+      "failure": "nested $id relative reference root changed"
+    },
+    "original_SQLite_HTTP": {
+      "passed": 134,
+      "failed": 0,
+      "seconds": 32.26,
+      "upstream_warnings": 1
+    },
+    "report": "agents/backend/architecture-r30/report.md",
+    "accepted_application_reduction": 0
   }
 }

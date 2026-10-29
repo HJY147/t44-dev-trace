@@ -1,0 +1,63 @@
+[
+  {
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "--config",
+      "backend/pyproject.toml",
+      "backend/t44/api.py",
+      "backend/t44/contracts/__init__.py",
+      "tmp/763_backend_architecture_r30/763_contract_context.py"
+    ],
+    "exit_code": 0,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+      "-m",
+      "ruff",
+      "format",
+      "--config",
+      "backend/pyproject.toml",
+      "--check",
+      "backend/t44/api.py",
+      "backend/t44/contracts/__init__.py",
+      "tmp/763_backend_architecture_r30/763_contract_context.py"
+    ],
+    "exit_code": 0,
+    "stdout": "3 files already formatted\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "7374b3637b06465d448fc2e81952ba18fc676315",
+      "--",
+      "backend/t44/domain",
+      "backend/t44/services",
+      "backend/t44/contracts/openapi.json",
+      "specs/contracts/openapi.json",
+      "specs/database/schema.sql",
+      "tmp/backend"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]
