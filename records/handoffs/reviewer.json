@@ -1667,7 +1667,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-29T06:11:37.815825+00:00",
+  "updated_at": "2026-10-29T06:35:01.552019+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -4238,6 +4238,84 @@
       ],
       "receipt": "tmp/764_reviewer_dry_r29b/github-publication.json",
       "receipt_sha256": "16b85f3a2cfccbb1d561ca9cbfdf19514adfa8f51ea5ffa23b102d80c932d091"
+    },
+    "post_CI_development_sync_review": {
+      "operator": "AI reviewer",
+      "prompt_ref": "ROLE-reviewer-DRY-R29B-20261029-v1",
+      "ci_source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+      "target": "deae80ce9cf4cbd12930f262df0f375425508caf",
+      "integration_observed": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+      "integration_is_ancestor": true,
+      "application_changed_from_a92e": [
+        "backend/t44/persistence/migrations.py",
+        "backend/t44/services/reviews.py"
+      ],
+      "exact_owner_bytes_match": true,
+      "post_source_application_delta": [],
+      "official_live_run": {
+        "id": 40827655008,
+        "head_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40827655008"
+      },
+      "archived_four_jobs_success": [
+        "coverage",
+        "contracts",
+        "static",
+        "frontend"
+      ],
+      "raw_junit": {
+        "tests": 796,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "raw_coverage": {
+        "covered_lines": 2502,
+        "lines": 2773,
+        "covered_branches": 713,
+        "branches": 848
+      },
+      "raw_frontend": {
+        "total": 89,
+        "passed": 89,
+        "failed": 0,
+        "success": true
+      },
+      "selected_members_size_SHA_verified": [
+        "coverage/junit.xml",
+        "coverage/coverage.xml",
+        "frontend/coverage/test-results.json"
+      ],
+      "all95_or_official_ZIP_download_repeated": false,
+      "root_manifest_members": 95,
+      "root_official_zip_size_digest_receipt": true,
+      "exact_source_count": {
+        "code": 5880,
+        "over": 780,
+        "within_range": false,
+        "require_range_exit": 1
+      },
+      "new_P1": 0,
+      "new_P2": 0,
+      "decision": "ALLOW_EXACT_DEAE_FAST_FORWARD_TO_CODEX_INTEGRATION_FOR_DEVELOPMENT_ONLY",
+      "PR21_live_observed": {
+        "state": "open",
+        "draft": true,
+        "base": "main",
+        "head": "22f666e25d2b7280224e58eb1c91cf6be0077ac7"
+      },
+      "raw_vite_one_trailing_space_preserved": true,
+      "global_reviewer_stage_or_main_protection_changed": false,
+      "product_or_tests_changed": false,
+      "independent_NP_body_or_private_test_read": false,
+      "tester_contact": false,
+      "own_CI_or_tests_rerun": false,
+      "technical_verdict_sent_before_record": true,
+      "initial_summary_filename_read_exit": 128,
+      "initial_summary_filename_note": "summary.json absent; actual summary.PUBLIC.json then read successfully",
+      "updated_at": "2026-10-29T06:35:01.552019+00:00"
     }
   }
 }
