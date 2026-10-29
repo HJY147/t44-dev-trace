@@ -4,6 +4,8 @@ import re
 
 from sqlalchemy import String, inspect, text
 from sqlalchemy.exc import SQLAlchemyError
+from sqlglot import exp, parse
+from sqlglot.errors import ParseError, TokenError
 
 from .engine import validate_identifier
 from .schema import DDL_SHA256, SCHEMA_VERSION, TABLES, ddl_text
@@ -14,90 +16,39 @@ class MigrationError(RuntimeError):
 
 
 def _check_signature(expression):
-    """Parse frozen CHECK grammar; preserve precedence, literals and function arguments."""
+    """Compare MySQL expression trees without optimizing literals or operator order."""
     source = str(expression).strip()
-    pattern = re.compile(
-        r"\s*(`[^`]+`|(?:(?:_utf8mb4|_ascii)\s*)?'(?:''|\\.|[^'])*'|[a-zA-Z_]\w*|\d+|<=|>=|<>|!=|[=<>+(),-])",
-        re.I,
-    )
-    tokens, position = [], 0
-    while position < len(source):
-        match = pattern.match(source, position)
-        if not match:
-            return None
-        lexeme = match[1]
-        if lexeme.startswith("_") and "'" in lexeme:
-            charset, quoted = lexeme.split("'", 1)
-            if charset.strip().lower() == "_ascii" and not quoted.isascii():
-                return None
-            lexeme = "'" + quoted
-        tokens.append(lexeme if lexeme.startswith("'") else lexeme.strip("`").lower())
-        position = match.end()
-    position = 0
-    precedence = {
-        operator: priority
-        for priority, operators in enumerate(
-            (
-                ("or",),
-                ("and",),
-                ("=", "<>", "!=", "<", ">", "<=", ">=", "is", "in", "between"),
-                ("+", "-"),
-            ),
-            start=1,
-        )
-        for operator in operators
-    }
-
-    def pop(expected=None):
-        nonlocal position
-        lexeme = tokens[position]
-        position += 1
-        if expected is not None and lexeme != expected:
-            raise ValueError("Unsupported CHECK syntax")
-        return lexeme
-
-    def peek():
-        return tokens[position] if position < len(tokens) else None
-
-    def arguments():
-        pop("(")
-        values = [parse()]
-        while peek() == ",":
-            pop(",")
-            values.append(parse())
-        pop(")")
-        return tuple(values)
-
-    def parse(minimum=0):
-        lexeme = pop()
-        if lexeme == "(":
-            left = parse()
-            pop(")")
-        else:
-            left = ("call", lexeme, arguments()) if peek() == "(" else lexeme
-        while peek() in precedence and precedence[peek()] >= minimum:
-            operator = pop()
-            priority = precedence[operator]
-            if operator == "in":
-                left = (operator, left, arguments())
-            elif operator == "between":
-                lower = parse(priority + 1)
-                pop("and")
-                left = (operator, left, lower, parse(priority + 1))
-            elif operator == "is":
-                negate = peek() == "not"
-                if negate:
-                    pop("not")
-                pop("null")
-                left = (operator, left, negate)
-            else:
-                left = ("<>" if operator == "!=" else operator, left, parse(priority + 1))
-        return left
-
+    lexeme = r"`[^`]+`|(?:(?:_utf8mb4|_ascii)\s*)?'(?:''|\\.|[^'])*'|[a-zA-Z_]\w*|\d+|<=|>=|<>|!=|[=<>+(),-]"
+    if not re.fullmatch(rf"(?:\s*(?:{lexeme}))*", source, re.I):
+        return None
     try:
-        result = parse()
-        return result if position == len(tokens) else None
-    except (IndexError, ValueError):
+        expressions = parse(source, read="mysql")
+        if len(expressions) != 1 or expressions[0] is None:
+            return None
+        tree = expressions[0]
+        for node in reversed(list(tree.walk())):
+            if (
+                not isinstance(node, (exp.Condition, exp.Identifier, exp.Introducer))
+                or node.comments
+            ):
+                return None
+            if isinstance(node, exp.Introducer) and (
+                node.this.lower() not in ("_utf8mb4", "_ascii")
+                or (node.this.lower() == "_ascii" and not node.expression.this.isascii())
+            ):
+                return None
+            if isinstance(node, (exp.Identifier, exp.Anonymous)):
+                node.set("this", node.this.lower())
+                if isinstance(node, exp.Identifier):
+                    node.set("quoted", False)
+            if isinstance(node, (exp.Paren, exp.Introducer)):
+                child = node.this if isinstance(node, exp.Paren) else node.expression
+                if node.parent is None:
+                    tree = child
+                else:
+                    node.replace(child)
+        return tree
+    except (ParseError, TokenError):
         return None
 
 
@@ -113,6 +64,15 @@ def _index_signature(index):
         {k: v for k, v in sorting.items() if v},
         options.get("mysql_length"),
         (options.get("mysql_using") or "BTREE").upper(),
+    )
+
+
+def _column_signature(kind, nullable, default):
+    return (
+        kind.__class__.__name__.lower(),
+        *(getattr(kind, field, None) for field in ("length", "unsigned", "fsp")),
+        nullable,
+        None if default is None else str(default).strip("'\""),
     )
 
 
@@ -215,30 +175,16 @@ def check_schema(engine) -> dict:
         if name not in actual_tables:
             defects.append(f"{name}:missing_table")
             continue
-        columns = {c["name"]: c for c in inspector.get_columns(name)}
+        columns = {
+            c["name"]: _column_signature(c["type"], c["nullable"], c["default"])
+            for c in inspector.get_columns(name)
+        }
         if set(columns) != set(expected.c.keys()):
             defects.append(f"{name}:column_set")
         for c in expected.c:
-            actual = columns.get(c.name)
-            if actual is None:
-                continue
-
-            def signature(kind):
-                return (
-                    kind.__class__.__name__.lower(),
-                    *(getattr(kind, field, None) for field in ("length", "unsigned", "fsp")),
-                )
-
-            if signature(actual["type"]) != signature(c.type):
-                defects.append(f"{name}.{c.name}:type")
-            if actual["nullable"] != c.nullable:
-                defects.append(f"{name}.{c.name}:nullable")
-            expected_default = str(c.server_default.arg) if c.server_default is not None else None
-            actual_default = (
-                str(actual["default"]).strip("'\"") if actual["default"] is not None else None
-            )
-            if actual_default != expected_default:
-                defects.append(f"{name}.{c.name}:default")
+            default = c.server_default.arg if c.server_default is not None else None
+            if columns.get(c.name) != _column_signature(c.type, c.nullable, default):
+                defects.append(f"{name}.{c.name}:column_definition")
         if inspector.get_pk_constraint(name)["constrained_columns"] != ["id"]:
             defects.append(f"{name}:primary_key")
         actual_keys = {x["name"]: _index_signature(x) for x in inspector.get_indexes(name)}
@@ -248,9 +194,7 @@ def check_schema(engine) -> dict:
                 defects.append(f"{name}.{unique['name']}:index_catalog_conflict")
             actual_keys.setdefault(unique["name"], signature)
         keys = {
-            x.name: _index_signature(
-                dict(column_names=[c.name for c in x.columns], unique=getattr(x, "unique", True))
-            )
+            x.name: (tuple(x.columns.keys()), getattr(x, "unique", True), {}, None, "BTREE")
             for x in (*expected.indexes, *expected.constraints)
             if x.__class__.__name__ in ("Index", "UniqueConstraint")
         }
@@ -261,14 +205,13 @@ def check_schema(engine) -> dict:
             defects.append(f"{name}:unique_set")
         database = getattr(getattr(engine, "url", None), "database", None)
         foreigns = {
-            x.name: _foreign_signature(
-                dict(
-                    constrained_columns=[c.name for c in x.columns],
-                    referred_table=x.referred_table.name,
-                    referred_schema=x.referred_table.schema,
-                    referred_columns=[e.column.name for e in x.elements],
-                ),
-                database,
+            x.name: (
+                tuple(x.column_keys),
+                x.referred_table.schema,
+                x.referred_table.name,
+                tuple(e.column.name for e in x.elements),
+                ("RESTRICT", "RESTRICT"),
+                {},
             )
             for x in expected.foreign_key_constraints
         }
@@ -304,29 +247,24 @@ def migrate(engine, *, expected_database: str) -> dict:
     sql = ddl_text()  # Verify the packaged frozen checksum before touching the database.
     digest = bytes.fromhex(DDL_SHA256)
     with engine.connect() as connection:
+
+        def query(statement, parameters=None):
+            return connection.execute(text(statement), parameters)
+
         lock_name = f"t44:migrate:{expected_database}"
         locked, step = False, 0
         try:
-            server, database = connection.execute(text("SELECT VERSION(), DATABASE()")).one()
+            server, database = query("SELECT VERSION(), DATABASE()").one()
             if not re.match(r"8\.4\.", server) or database != expected_database:
                 raise MigrationError("MySQL 8.4 and the selected project database are required")
-            locked = (
-                connection.execute(
-                    text("SELECT GET_LOCK(:name, 30)"), {"name": lock_name}
-                ).scalar_one()
-                == 1
-            )
+            locked = query("SELECT GET_LOCK(:name, 30)", {"name": lock_name}).scalar_one() == 1
             if not locked:
                 raise MigrationError("Project migration lock is unavailable")
             existing = set(inspect(connection).get_table_names())
             already_applied = "t44_schema_migrations" in existing
             if already_applied:
                 row = (
-                    connection.execute(
-                        text(
-                            "SELECT version, ddl_sha256, state FROM t44_schema_migrations WHERE id=1"
-                        )
-                    )
+                    query("SELECT version, ddl_sha256, state FROM t44_schema_migrations WHERE id=1")
                     .mappings()
                     .one_or_none()
                 )
@@ -350,10 +288,8 @@ def migrate(engine, *, expected_database: str) -> dict:
                     "version INT UNSIGNED NOT NULL, ddl_sha256 BINARY(32) NOT NULL, "
                     "state TINYINT UNSIGNED NOT NULL, applied_at DATETIME(6) NULL) ENGINE=InnoDB"
                 )
-                connection.execute(
-                    text(
-                        "INSERT INTO t44_schema_migrations(id,version,ddl_sha256,state) VALUES(1,:version,:digest,1)"
-                    ),
+                query(
+                    "INSERT INTO t44_schema_migrations(id,version,ddl_sha256,state) VALUES(1,:version,:digest,1)",
                     {"version": SCHEMA_VERSION, "digest": digest},
                 )
                 connection.commit()
@@ -371,10 +307,8 @@ def migrate(engine, *, expected_database: str) -> dict:
                     else "Created schema failed the frozen field/index/constraint check"
                 )
             if not already_applied:
-                connection.execute(
-                    text(
-                        "UPDATE t44_schema_migrations SET state=2,applied_at=UTC_TIMESTAMP(6) WHERE id=1"
-                    )
+                query(
+                    "UPDATE t44_schema_migrations SET state=2,applied_at=UTC_TIMESTAMP(6) WHERE id=1"
                 )
                 connection.commit()
             return {
@@ -391,7 +325,7 @@ def migrate(engine, *, expected_database: str) -> dict:
         finally:
             if locked:
                 try:
-                    connection.execute(text("SELECT RELEASE_LOCK(:name)"), {"name": lock_name})
+                    query("SELECT RELEASE_LOCK(:name)", {"name": lock_name})
                     connection.commit()
                 except SQLAlchemyError:
                     pass  # A lost connection releases its server-owned advisory lock.
