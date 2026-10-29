@@ -1,0 +1,105 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/runner/work/t44-dev-trace/t44-dev-trace/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 796 items
+
+backend/850_synthetic_fixture.py ...................................     [  4%]
+backend/backend/domain/994_transitions.py .............................. [  8%]
+........................................................................ [ 17%]
+....                                                                     [ 17%]
+backend/contracts/816_acceptance_followup_20261025.py ....               [ 18%]
+backend/contracts/856_release_error_priority.py ...........              [ 19%]
+backend/contracts/859_dependency_delivered.py .                          [ 19%]
+backend/contracts/985_mysql_http.py .................................... [ 24%]
+....                                                                     [ 24%]
+backend/contracts/986_http.py .......................................... [ 30%]
+........................................................................ [ 39%]
+.........                                                                [ 40%]
+backend/contracts/987_faults.py ....                                     [ 40%]
+backend/messaging/806_newscope.py ...............................        [ 44%]
+backend/messaging/976_process_mysql.py .                                 [ 44%]
+backend/messaging/977_rabbit.py ...                                      [ 45%]
+backend/messaging/978_process.py ....                                    [ 45%]
+backend/messaging/979_facade.py ..........                               [ 46%]
+backend/messaging/980_delivery.py .............                          [ 48%]
+backend/persistence/794_native_catalog.py ...................            [ 50%]
+backend/persistence/956_schema_semantics.py ...............              [ 52%]
+backend/persistence/975_seed.py ...                                      [ 53%]
+backend/persistence/988_mysql.py .................                       [ 55%]
+backend/persistence/989_rows.py ...                                      [ 55%]
+backend/persistence/993_foundation.py .................................. [ 59%]
+................................                                         [ 63%]
+backend/scheduling/973_extensible_rules.py ......                        [ 64%]
+backend/scheduling/974_application.py ......................             [ 67%]
+backend/scheduling/990_runtime.py ............                           [ 68%]
+backend/scheduling/991_rules.py ........................................ [ 73%]
+...........................                                              [ 77%]
+backend ................................................................ [ 85%]
+........................................................................ [ 94%]
+............................................                             [100%]
+
+=============================== warnings summary ===============================
+../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[2-20-20-30-92ea1b638c3b5b5d48aa49bd3c87240da896b99e5ad2d061d798fbcd4b439bed]
+persistence/975_seed.py::test_seed_references_json_states_capacity_repeat_and_no_overwrite[40-6000-9000-15000-a21004ad29232af176fa4be4e65bfad2eb5e1f7f77436c9516c66b9de080a055]
+  ../tmp/backend/persistence/975_seed.py:183: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/coverage/junit.xml -
+================= 796 passed, 3 warnings in 494.38s (0:08:14) ==================
+Wrote XML report to reports/ci/coverage/coverage.xml
+Wrote JSON report to reports/ci/coverage/coverage.json
+Wrote HTML report to reports/ci/coverage/html/index.html
+Name                                    Stmts   Miss Branch BrPart   Cover   Missing
+------------------------------------------------------------------------------------
+backend/t44/__init__.py                     0      0      0      0 100.00%
+backend/t44/api.py                        163     13     74      3  91.56%   66->76, 133-134, 176-184, 254-255
+backend/t44/cli.py                        101    101     26      0   0.00%   3-161
+backend/t44/contracts/__init__.py          34      0     10      0 100.00%
+backend/t44/domain/__init__.py              0      0      0      0 100.00%
+backend/t44/domain/models.py               76      1     34      1  98.18%   89
+backend/t44/domain/state_machine.py        73      0     36      0 100.00%
+backend/t44/messaging/__init__.py           0      0      0      0 100.00%
+backend/t44/messaging/__main__.py          43     18      8      2  52.94%   27-45, 53, 57
+backend/t44/messaging/broker.py           101      7     26      7  88.98%   27, 29, 107->exit, 114->118, 116-117, 132, 134, 139
+backend/t44/messaging/facade.py            36      0      6      0 100.00%
+backend/t44/messaging/worker.py            57      5     12      1  88.41%   39-40, 68, 69->81, 88-89
+backend/t44/persistence/__init__.py         5      0      0      0 100.00%
+backend/t44/persistence/accounts.py        28      4      2      0  86.67%   55-58
+backend/t44/persistence/codecs.py          27      6      8      4  71.43%   14, 17, 27, 30, 35, 43
+backend/t44/persistence/delivery.py        87      4     28      5  92.17%   70, 73, 103, 116->113, 136
+backend/t44/persistence/engine.py          48      3     12      3  90.00%   22, 49, 63
+backend/t44/persistence/errors.py           9      0      0      0 100.00%
+backend/t44/persistence/migrations.py     207     15     94     10  91.69%   56, 100-101, 220-221, 224, 228, 237, 239, 245, 247, 290, 307, 400-401
+backend/t44/persistence/rows.py           188     10     80     10  92.54%   41, 69, 135, 260, 286, 292, 295, 301, 305, 326
+backend/t44/persistence/scans.py           66      8     20      5  84.88%   17, 42, 53-54, 69->75, 72-73, 94, 100
+backend/t44/persistence/schema.py          60      2     28      2  95.45%   31, 45
+backend/t44/persistence/seed.py           128      5     50      5  94.38%   123, 281, 320, 325, 341
+backend/t44/persistence/uow.py             83      2     18      3  95.05%   68, 78->84, 82
+backend/t44/scheduling/__init__.py          3      0      0      0 100.00%
+backend/t44/scheduling/__main__.py         76     25     14      4  63.33%   32, 41, 60-98, 104, 108
+backend/t44/scheduling/facade.py           72      5     12      1  90.48%   96-99, 202
+backend/t44/scheduling/rules.py            97      1     28      0  99.20%   47
+backend/t44/scheduling/runtime.py          23      0      6      0 100.00%
+backend/t44/scheduling/scanner.py          86     21     26      4  70.54%   17-18, 42, 62-64, 90-100, 126-131, 132->137
+backend/t44/services/__init__.py            0      0      0      0 100.00%
+backend/t44/services/application.py        64      1     16      1  97.50%   131
+backend/t44/services/codes.py              11      1      2      1  84.62%   13
+backend/t44/services/common.py            112      1     22      1  98.51%   24
+backend/t44/services/errors.py             15      0      2      0 100.00%
+backend/t44/services/history.py            49      1     32      1  97.53%   49
+backend/t44/services/identity.py           76      4     14      4  91.11%   35, 40, 83, 108
+backend/t44/services/projects.py           85      2     12      2  95.88%   66, 69
+backend/t44/services/reviews.py            55      0      2      1  98.25%   141->146
+backend/t44/services/runtime.py           156      4     50      2  97.09%   41->exit, 176, 304-306
+backend/t44/services/tasks.py              86      0     10      1  98.96%   48->45
+backend/t44/services/workflow.py           58      0     22      0 100.00%
+backend/t44/settings.py                    27      1      6      1  93.94%   21
+------------------------------------------------------------------------------------
+TOTAL                                    2771    271    848     85  88.78%

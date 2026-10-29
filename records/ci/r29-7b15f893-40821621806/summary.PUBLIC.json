@@ -1,0 +1,112 @@
+{
+  "run": {
+    "conclusion": "success",
+    "headSha": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+    "jobs": [
+      {
+        "completedAt": "2026-10-29T05:11:58Z",
+        "conclusion": "success",
+        "databaseId": 123275167276,
+        "name": "contracts",
+        "startedAt": "2026-10-29T05:08:10Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T05:08:51Z",
+        "conclusion": "success",
+        "databaseId": 123275167578,
+        "name": "frontend",
+        "startedAt": "2026-10-29T05:08:11Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T05:17:27Z",
+        "conclusion": "success",
+        "databaseId": 123275167631,
+        "name": "coverage",
+        "startedAt": "2026-10-29T05:08:10Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T05:08:31Z",
+        "conclusion": "success",
+        "databaseId": 123275167795,
+        "name": "static",
+        "startedAt": "2026-10-29T05:08:10Z",
+        "status": "completed"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40821621806"
+  },
+  "junit": [
+    {
+      "file": "contracts-7b15f8932b78e99a2b3daef2411f2cefeab98463/contracts/fault.xml",
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "contracts-7b15f8932b78e99a2b3daef2411f2cefeab98463/contracts/integration.xml",
+      "tests": 102,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "contracts-7b15f8932b78e99a2b3daef2411f2cefeab98463/contracts/contract.xml",
+      "tests": 183,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "coverage-7b15f8932b78e99a2b3daef2411f2cefeab98463/coverage/junit.xml",
+      "tests": 796,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "coverage": [
+    {
+      "file": "coverage-7b15f8932b78e99a2b3daef2411f2cefeab98463/coverage/coverage.json",
+      "totals": {
+        "covered_lines": 2500,
+        "num_statements": 2771,
+        "percent_covered": 88.78143133462282,
+        "percent_covered_display": "88.78",
+        "missing_lines": 271,
+        "excluded_lines": 0,
+        "percent_statements_covered": 90.22013713460845,
+        "percent_statements_covered_display": "90.22",
+        "num_branches": 848,
+        "num_partial_branches": 85,
+        "covered_branches": 713,
+        "missing_branches": 135,
+        "percent_branches_covered": 84.08018867924528,
+        "percent_branches_covered_display": "84.08"
+      }
+    }
+  ],
+  "frontend": [
+    {
+      "file": "frontend-7b15f8932b78e99a2b3daef2411f2cefeab98463/reports/ci/frontend/test.log",
+      "last": "$ node scripts/prepare-tests.mjs && vitest run --coverage --reporter=json --outputFile=frontend/coverage/test-results.json --coverage.reporter=json --coverage.reporter=json-summary '--coverage.include=frontend/src/**/*.{ts,vue}'\nJSON report written to /home/runner/work/t44-dev-trace/t44-dev-trace/frontend/coverage/test-results.json\n"
+    }
+  ],
+  "not_additive_test_count": "same logical cases may occur in contracts and coverage; do not sum runs",
+  "source_count_code": 5887,
+  "source_count_require_range_exit": 1,
+  "performance_pass_claim": false,
+  "frontend_test_results": [
+    {
+      "file": "frontend-7b15f8932b78e99a2b3daef2411f2cefeab98463/frontend/coverage/test-results.json",
+      "total_tests": 89,
+      "passed_tests": 89,
+      "failed_tests": 0,
+      "success": true
+    }
+  ]
+}
