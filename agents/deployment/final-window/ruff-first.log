@@ -1,0 +1,38 @@
+RUF100 [*] Unused `noqa` directive (non-enabled: `S324`)
+   --> deployment/cloud-reuse/final-image-bundle.py:107:96
+    |
+105 | …     path = context / name
+106 | …     data = path.read_bytes()
+107 | …     git_oid = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()  # noqa: S324 -- compare Git object ID; S…
+    |                                                                                              ^^^^^^^^^^^^
+108 | …     if git_oid != oid or path.is_symlink():
+109 | …         raise ValueError("ARCHIVE_BYTES_DIFFER_FROM_EXACT_GIT_BLOB")
+    |
+help: Remove unused `noqa` directive
+    |
+106 |         data = path.read_bytes()
+    -         git_oid = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()  # noqa: S324 -- compare Git object ID; SHA256 below
+107 +         git_oid = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+108 |         if git_oid != oid or path.is_symlink():
+    |
+
+RUF059 Unpacked variable `bundle` is never used
+   --> deployment/cloud-reuse/final-image-bundle.py:310:5
+    |
+309 | def derive(args):
+310 |     bundle, source = verify(args.package, args.manifest_sha256)
+    |     ^^^^^^
+311 |     v4 = load(HERE / "v4/derive-profile.py", "59422f53fb8d5069218b483fe237204177a2c6af9c229a91a882b45aeba69680")
+312 |     parent = v4.parent()
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+    |
+309 | def derive(args):
+    -     bundle, source = verify(args.package, args.manifest_sha256)
+310 +     _bundle, source = verify(args.package, args.manifest_sha256)
+311 |     v4 = load(HERE / "v4/derive-profile.py", "59422f53fb8d5069218b483fe237204177a2c6af9c229a91a882b45aeba69680")
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+Found 2 errors.
+[*] 1 fixable with `--fix` (1 unsafe fix available with `--fix --unsafe-fixes`).

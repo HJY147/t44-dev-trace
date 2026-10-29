@@ -1,0 +1,77 @@
+FURB162 Unnecessary timezone replacement with zero offset
+   --> deployment/cloud-reuse/final-app-backup.py:146:34
+    |
+144 |     selected = json.loads(args.inventory.read_bytes())
+145 |     paths = checked_inventory(selected)
+146 |     end = datetime.fromisoformat(selected["absolute_cost_cutoff_utc"].replace("Z", "+00:00")).timestamp()
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+147 |     timeout = min(600, end - time.time() - 60)
+148 |     if timeout < 30 or args.output.exists() or args.output.parent.resolve() != args.output.parent:
+    |
+help: Remove `.replace()` call
+    |
+145 |     paths = checked_inventory(selected)
+    -     end = datetime.fromisoformat(selected["absolute_cost_cutoff_utc"].replace("Z", "+00:00")).timestamp()
+146 +     end = datetime.fromisoformat(selected["absolute_cost_cutoff_utc"]).timestamp()
+147 |     timeout = min(600, end - time.time() - 60)
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+F401 [*] `gzip` imported but unused
+ --> tmp/753_deployment_final_window/test_final.py:2:8
+  |
+1 | """Real Git/source/generic build functions; Docker/image observation explicitly mocked."""
+2 | import gzip
+  |        ^^^^
+3 | import importlib.util
+4 | import json
+  |
+help: Remove unused import: `gzip`
+  |
+1 | """Real Git/source/generic build functions; Docker/image observation explicitly mocked."""
+  - import gzip
+2 | import importlib.util
+  |
+
+F401 [*] `shutil` imported but unused
+ --> tmp/753_deployment_final_window/test_final.py:5:8
+  |
+3 | import importlib.util
+4 | import json
+5 | import shutil
+  |        ^^^^^^
+6 | import subprocess
+7 | import tempfile
+  |
+help: Remove unused import: `shutil`
+  |
+4 | import json
+  - import shutil
+5 | import subprocess
+  |
+
+UP017 [*] Use `datetime.UTC` alias
+  --> tmp/753_deployment_final_window/test_final.py:97:29
+   |
+95 |     def test_real_derive_binding_actual_9e_lock_entry_and_observer_horizon(self):
+96 |         out, result, _ = self.build("derive-input")
+97 |         stop = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(minutes=35)
+   |                             ^^^^^^^^^^^^
+98 |         args = SimpleNamespace(package=out, manifest_sha256=result["manifest_sha256"], run_id="r30final02",
+99 |             stop_utc=stop.strftime("%Y-%m-%dT%H:%M:%SZ"), cost_stop_utc=(stop + timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ"), …
+   |
+help: Convert to `datetime.UTC` alias
+   |
+8  | import unittest
+   - from datetime import datetime, timedelta, timezone
+9  + from datetime import datetime, timedelta, timezone, UTC
+10 | from pathlib import Path
+--------------------------------------------------------------------------------
+96 |         out, result, _ = self.build("derive-input")
+   -         stop = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(minutes=35)
+97 +         stop = datetime.now(UTC).replace(microsecond=0) + timedelta(minutes=35)
+98 |         args = SimpleNamespace(package=out, manifest_sha256=result["manifest_sha256"], run_id="r30final02",
+   |
+
+Found 4 errors.
+[*] 3 fixable with `--fix` (1 unsafe fix available with `--fix --unsafe-fixes`).

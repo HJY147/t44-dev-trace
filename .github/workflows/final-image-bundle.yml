@@ -1,0 +1,51 @@
+name: final-image-bundle
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact final reviewed product commit; build only, no cloud authority
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  dual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Fetch exact source and build two transported images
+        env:
+          FINAL_SOURCE: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$FINAL_SOURCE" =~ ^[0-9a-f]{40}$ ]]
+          timeout 120 git fetch --no-tags --depth=1 origin "$FINAL_SOURCE"
+          python3 deployment/cloud-reuse/final-image-bundle.py build \
+            --repository "$GITHUB_WORKSPACE" --source-sha "$FINAL_SOURCE" \
+            --output "$RUNNER_TEMP/final-dual"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: final-dual-${{ inputs.source_sha }}-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/final-dual/images.tar.gz
+            ${{ runner.temp }}/final-dual/source-runtime-context.tar.gz
+            ${{ runner.temp }}/final-dual/source-manifest.json
+            ${{ runner.temp }}/final-dual/actual-runtime-files.json
+            ${{ runner.temp }}/final-dual/backend-bundle-manifest.json
+            ${{ runner.temp }}/final-dual/source-profile.PUBLIC.json
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: error
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: failure()
+        with:
+          name: final-dual-failure-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/final-dual/build-failure.PUBLIC.json
+            ${{ runner.temp }}/final-dual/build.stdout.private
+            ${{ runner.temp }}/final-dual/build.stderr.private
+          retention-days: 3
+          if-no-files-found: warn
