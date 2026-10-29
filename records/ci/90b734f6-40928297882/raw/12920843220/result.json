@@ -1,0 +1,380 @@
+{
+  "source_sha": "56217f14568c7cd5ac6e83aaf4d890883e755ef9",
+  "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+  "steps": [
+    {
+      "name": "docker-version",
+      "exit_code": 0
+    },
+    {
+      "name": "compose-version",
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "exit_code": 0
+    },
+    {
+      "name": "infra",
+      "exit_code": 0
+    },
+    {
+      "name": "migration",
+      "exit_code": 0
+    },
+    {
+      "name": "init-user",
+      "exit_code": 0
+    },
+    {
+      "name": "seed",
+      "exit_code": 0
+    },
+    {
+      "name": "project-scopes",
+      "exit_code": 0
+    },
+    {
+      "name": "credential-issue",
+      "exit_code": 0
+    },
+    {
+      "name": "application-up",
+      "exit_code": 0
+    },
+    {
+      "name": "application-ps",
+      "exit_code": 0
+    },
+    {
+      "name": "four-api-workers",
+      "exit_code": 0
+    },
+    {
+      "name": "credential-permissions",
+      "exit_code": 0
+    },
+    {
+      "name": "shared-flock-probe",
+      "exit_code": 0
+    },
+    {
+      "name": "shared-flock-rejects-second-scanner",
+      "exit_code": 1
+    },
+    {
+      "name": "credential-rotate",
+      "exit_code": 0
+    },
+    {
+      "name": "scheduler-progress",
+      "exit_code": 0
+    },
+    {
+      "name": "quiesce-writers",
+      "exit_code": 0
+    },
+    {
+      "name": "source-table-names",
+      "exit_code": 0
+    },
+    {
+      "name": "source-counts",
+      "exit_code": 0
+    },
+    {
+      "name": "source-checksums",
+      "exit_code": 0
+    },
+    {
+      "name": "backup",
+      "exit_code": 0
+    },
+    {
+      "name": "isolated-restore",
+      "exit_code": 0
+    },
+    {
+      "name": "recovered-table-names",
+      "exit_code": 0
+    },
+    {
+      "name": "recovered-counts",
+      "exit_code": 0
+    },
+    {
+      "name": "recovered-checksums",
+      "exit_code": 0
+    },
+    {
+      "name": "restored-schema",
+      "exit_code": 0
+    },
+    {
+      "name": "restart-primary",
+      "exit_code": 0
+    },
+    {
+      "name": "primary-logs",
+      "exit_code": 0
+    },
+    {
+      "name": "primary-stop",
+      "exit_code": 0
+    },
+    {
+      "name": "recovery-logs",
+      "exit_code": 0
+    },
+    {
+      "name": "recovery-stop",
+      "exit_code": 0
+    }
+  ],
+  "http": [
+    {
+      "method": "GET",
+      "path": "/projects",
+      "status": 401,
+      "request_id": "e8217bce-aea2-48b7-9fb8-5f735deb9467"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "request_id": "42caf08b-5d03-4169-b57d-8acaa4cac7b1"
+    },
+    {
+      "method": "GET",
+      "path": "/projects",
+      "status": 200,
+      "request_id": "48aa9ba1-8a28-4a79-9959-82e8c7976662"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/1/tasks",
+      "status": 200,
+      "request_id": "50cfd893-1820-431a-8474-56127f5c9d10"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/1/tasks/1",
+      "status": 200,
+      "request_id": "79406b65-596a-4161-a5db-e002cdda57f1"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 413,
+      "request_id": "e97b9dde-df6d-4c38-a3f4-531d50dfae8d"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 413,
+      "request_id": "8292f6310b5ffe4e2d6d377a982af2a6"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/1/tasks/1",
+      "status": 200,
+      "request_id": "5e07ee1e-20a9-475f-a271-5d4b606b5349"
+    }
+  ],
+  "passed": true,
+  "synthetic_user": {
+    "user_id": 1
+  },
+  "seed": {
+    "already_seeded": false,
+    "projects": 2,
+    "tasks": 40,
+    "dependencies": 30,
+    "reviews": 56,
+    "decisions": 24,
+    "assessments": 24,
+    "states": {
+      "6": 16,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 4,
+      "5": 4,
+      "7": 4
+    },
+    "manifest": {
+      "version": 2,
+      "seed": 44,
+      "anchor_at": "2026-10-29T18:12:36+00:00",
+      "projects": 2,
+      "tasks": 40,
+      "dependencies": 30,
+      "records": 80,
+      "template_version": 1,
+      "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+      "rule_version": 1,
+      "rule_effective_at": "2026-10-23T05:33:29Z",
+      "rule_decided_by": 1,
+      "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+      "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+      "synthetic": true
+    },
+    "manifest_sha256": "b687457f8d119ed5229591426ebc0f3bfa67ce4b12aceb5e8b358c3a73ce6d26"
+  },
+  "service_session": {
+    "session_id": 1,
+    "expires_at": "2026-10-29T19:12:39.476735Z",
+    "credential_written": true,
+    "rotated": false,
+    "previous_session_revoked": false,
+    "previous_session_already_inactive": false
+  },
+  "api_processes": {
+    "api_parents": 1,
+    "workers": 4
+  },
+  "observed_task_id": 1,
+  "frontend_routes": {
+    "/": "7fac5d1e789a578694dc44163fffd59774c91cc0f015ff105be60cc2222ec1d5",
+    "/projects/1/tasks": "7fac5d1e789a578694dc44163fffd59774c91cc0f015ff105be60cc2222ec1d5"
+  },
+  "api-one-mib": {
+    "code": "PAYLOAD_TOO_LARGE",
+    "audit_id": 26
+  },
+  "proxy-two-mib": {
+    "code": "PAYLOAD_TOO_LARGE",
+    "audit_id": null
+  },
+  "credential_permissions": {
+    "mode": "0o600",
+    "uid": 10001,
+    "readonly": true
+  },
+  "shared_flock": {
+    "shared_lock_held": true,
+    "inode": 9437544
+  },
+  "rotated_service_session": {
+    "session_id": 3,
+    "expires_at": "2026-10-29T19:13:12.984350Z",
+    "credential_written": true,
+    "rotated": true,
+    "previous_session_revoked": true,
+    "previous_session_already_inactive": false
+  },
+  "scheduler_progress": {
+    "created": 20,
+    "completed": 2
+  },
+  "backup_manifest": {
+    "format": "t44-table-dump-v1",
+    "database": "t44_smoke",
+    "sha256": "f3f1de2c57430605f46e9ceced65dd8790d61695a457a436379ab25948a47787",
+    "created_at": "2026-10-29T18:13:37.623284+00:00",
+    "table_count": 19,
+    "scope": "InnoDB tables; no routines/events/triggers/views"
+  },
+  "restoration": {
+    "source": {
+      "counts": {
+        "tasks": 40,
+        "users": 3,
+        "reviews": 56,
+        "projects": 2,
+        "decisions": 24,
+        "scan_runs": 2,
+        "iterations": 2,
+        "audit_events": 48,
+        "auth_sessions": 3,
+        "notifications": 20,
+        "outbox_events": 20,
+        "project_members": 6,
+        "schedule_changes": 0,
+        "service_accounts": 1,
+        "escalation_events": 20,
+        "task_dependencies": 30,
+        "release_assessments": 24,
+        "idempotency_requests": 40,
+        "t44_schema_migrations": 1
+      },
+      "checksums": {
+        "audit_events": 713188206,
+        "auth_sessions": 2054354742,
+        "decisions": 2469473833,
+        "escalation_events": 3025743754,
+        "idempotency_requests": 3162213767,
+        "iterations": 2937998989,
+        "notifications": 3748268090,
+        "outbox_events": 2688774510,
+        "project_members": 3406996688,
+        "projects": 774778894,
+        "release_assessments": 1853782687,
+        "reviews": 2626588599,
+        "scan_runs": 207878019,
+        "schedule_changes": 0,
+        "service_accounts": 2386804246,
+        "t44_schema_migrations": 2400313016,
+        "task_dependencies": 2646825117,
+        "tasks": 263201040,
+        "users": 1448797292
+      }
+    },
+    "recovered": {
+      "counts": {
+        "tasks": 40,
+        "users": 3,
+        "reviews": 56,
+        "projects": 2,
+        "decisions": 24,
+        "scan_runs": 2,
+        "iterations": 2,
+        "audit_events": 48,
+        "auth_sessions": 3,
+        "notifications": 20,
+        "outbox_events": 20,
+        "project_members": 6,
+        "schedule_changes": 0,
+        "service_accounts": 1,
+        "escalation_events": 20,
+        "task_dependencies": 30,
+        "release_assessments": 24,
+        "idempotency_requests": 40,
+        "t44_schema_migrations": 1
+      },
+      "checksums": {
+        "audit_events": 713188206,
+        "auth_sessions": 2054354742,
+        "decisions": 2469473833,
+        "escalation_events": 3025743754,
+        "idempotency_requests": 3162213767,
+        "iterations": 2937998989,
+        "notifications": 3748268090,
+        "outbox_events": 2688774510,
+        "project_members": 3406996688,
+        "projects": 774778894,
+        "release_assessments": 1853782687,
+        "reviews": 2626588599,
+        "scan_runs": 207878019,
+        "schedule_changes": 0,
+        "service_accounts": 2386804246,
+        "t44_schema_migrations": 2400313016,
+        "task_dependencies": 2646825117,
+        "tasks": 263201040,
+        "users": 1448797292
+      }
+    },
+    "matched": true
+  },
+  "restored_schema": {
+    "version": 1,
+    "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+    "already_applied": true,
+    "tables": 18,
+    "columns": 226,
+    "defects": [],
+    "passed": true
+  },
+  "redacted_secret_occurrences": 0
+}

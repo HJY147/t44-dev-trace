@@ -574,3 +574,7 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 ### Final window 限定静态审核（2026-10-29）
 
 独立root10e8树，产品586→356限差分及四ops工具：产品静态无新增P1/P2；实际发现F operator旧2400/G−15与1500/G−120冲突、派生HTTP保旧purpose会拒准确18manifest两P1，均先报root由owner修，69bd/92fb字节纯fixture关闭。94 Git context/60 CI表、准确1b4f18manifest023063、3c config vs4f runtime/ce562、真实derive→producer_files→manifest gate、F三时间case及backup输出边界核通过；build Git63c/tooladd7与ops7d6分列，未改原件/实现。仅静态准备准入，无云/服务/HTTP/keys/QA私件，actual target/live/完整测试/备份restore释放不批准。用户新主要代码口径核心62/5037、辅助780/总5817取root分组，原exit1保留但不列启动阻碍；不冒全部5817≤5100。报告final-window-20261029-static.md，tmp751，原prompt与命令/两个自有fixture失败保留，20分钟内封交，不等待云。
+
+### 90b official CI archive (2026-10-29)
+
+Exact product40928297882 four successes independently fetched with GitHub connector; original797 backend/89 frontend, no failure/error/skip; line2485/2754, branch719/852, FE line364/390, backend excluded0. Five official ZIP size/digest matched and128 members hashed. Docker40928465279 success actually checked out PR46 merge56217 (parents bdaa+90b), matching backend/frontend/specs/deployment/986 bytes to90b, not pure90b checkout; three non-Docker jobs originally skipped retained. No rerun/cloud/QA PRIVATE. Report reports/reviews/90b734f6-ci-evidence.md; exact task prompt ROLE-reviewer-90B-CI-EVIDENCE-v1. Initial urllib trust failure retained; system curl verified TLS and official digests.

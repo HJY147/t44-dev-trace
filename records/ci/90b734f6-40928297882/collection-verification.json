@@ -1,0 +1,18 @@
+{
+  "full_cached_diff_check": 2,
+  "reason": "Seven trailing-whitespace lines in original decoded Docker job log; original text preserved.",
+  "scoped_cached_diff_check": 0,
+  "excluded_from_whitespace_check_only": "docker-job-123640221396.log",
+  "artifacts_or_test_results_omitted": false,
+  "cloud_or_rerun": false,
+  "commands": [
+    "GitHub connector GET official runs/jobs/artifacts (6 calls)",
+    "GitHub connector download_workflow_artifact for five official IDs",
+    "GitHub connector fetch_workflow_job_logs job123640221396",
+    "system curl verified-TLS download followed by original official size/digest comparison",
+    "zipfile hash every128 member; XML ElementTree and JSON parse counters",
+    "git fetch origin56217; git diff90b..56217 backend/frontend/specs/deployment/986 empty",
+    "git diff --cached --check exit2 on preserved original log",
+    "git diff --cached --check excluding only original decoded Docker log exit0"
+  ]
+}
