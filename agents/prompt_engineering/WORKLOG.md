@@ -211,3 +211,18 @@
 - 最终资料核对初次误要求原DB候选274e2e6b为祖先而AssertionError；实际是cherry-pick，核候选/38d11a5e/7b15的schema.py Git blob均f944a6ce89028555e61a3eceb4499fd9517a4aab后改正核对方法。初次失败写入document-checks，不改产品或测试。最终81项资料核对通过、45源Git字节/SHA一致；git ls-remote核根公开分支仍精确6f91960b。
 
 - 仅显式暂存本岗10件文件，cached diff-check通过；实质commit/push 175173f308b4d134d481e7141f742b8ddecd9b05，git ls-remote按分支核远端精确相同，首次push后本树clean。未发表评论/建PR/触发CI。R29-publication.json保存回执；此后仅补本岗发布行政记录，不取新结果或改截止。
+
+
+## 2026-10-29 R30 真实准备阻塞与保盘收尾留痕
+
+- 实收 `ROLE-prompt_engineering-R30-CLOSURE-v1`；从指定36f9e9c9建立独立worktree `.agent-worktrees/prompt-closure-r30`、分支 `codex/prompt-closure-r30`，未动根索引。
+- 首次按派工别名读取agents/prompt等三路径失败；依AGENTS/team定位实际prompt_engineering后定向读取。失败仅为本岗资料路径定位，不是产品故障。现有旧日志/报告/原文/共享ledger保持历史。
+- 三句用户原文由总协调逐字转交，分别存R30新目录01/02/03纯文本；没有读取session或推定用户发送时刻。优化建议另存proposed未用，实际AI派工原样单列，新增已执行演进版本0。
+- 本轮运行事实只据总协调实际交接自动记录：1385准备HTTP、6条409顶层VERSION_CONFLICT、400中性输入未完成；QA prepare/grant/ENTRY均未调用，NOT_RUN_PREPARATION_INCOMPLETE。不得写正式性能失败或全流程0请求。
+- 原短链过期且root未预检有效期、失败后真实刷新按AI责任留痕；本岗未读原件，不捏URL/状态码。离线审查不替代真实API准备；CAS不绕过测试/不拼窗口。
+- 总协调通报10:21Z guest全停资源封存、约10:26Z原两VM节省停机，逐台autoRelease“-”、各1云盘保留；CPU内存停计费、云盘仍少量计费。本轮无充值/新购买，不编精确资金缺口。
+- 业务5880仍超5100上限780，未达标；后端仅离线修CAS准备接缝，未云复测，不提前记完成。短source/config/hash仅保留总协调提供缩写，不伪造完整标识或本岗复验。
+- U001/U002既有亮点索引沿用，原文SHA核相同；无新版本凑数、人工12/3/5补造或学生研究正文。
+- 实际只读明确公开岗位资料、Git/JSON/哈希及文档链接核对；无.runtime/QA私件/用例/工作日志/密钥/session读取，无云/浏览器/支付/产品/测试/CI操作，未联系独立测试或发布外部评论。阶段commit/push与精确远端核验实际后另记。
+
+- R30 39项资料检查通过：原文UTF-8精确字节、用户发送时刻未知、参考源hash/Git、旧历史保留、proposed/used、1385/6/未发grant边界、780差额、资料链接、独占写范围与diff-check；不计作产品/测试器/云验证。证据为R30目录08-document-checks.json。
