@@ -1,5 +1,8 @@
 # T44 AI开发过程与研究素材
 
+
+本轮文档AI更新：产品90b官方CI797/89，Docker实际合成merge56217产品字节等同；独立F05原18/1/11保留，完整验收未成立，P06待回填。四技术报告和私密Word已刷新，过程见[文档任务原文与实际改进](../../agents/documentation/prompts/ROLE-documentation-FINAL90b-v1.md)及[交付清单](../../docs/reports/FINAL90b-deliverable-manifest.json)。本页以下历史材料按各自截止阅读，AI排版和纠错不能计作学生亲为。
+
 > 本轮版本说明：以下第1至7节保持各原截止；新增第8节及[云复核839补记](cloud839-evidence-addendum.md)记录本轮AI错误与纠正。全部仍为供学生本人手写研究报告取材的第三人称事实，不是研究成品。
 
 这是供学生阅读证据、自行选材和成文的AI整理资料，不是学生署名的最终研究正文。源码固定bc5aef9，过程来源按各自准确提交；既有人的原创输入、人的业务决定、AI设计/代码/审核和synthetic运行数据分别归属。
