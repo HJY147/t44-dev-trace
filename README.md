@@ -2,6 +2,23 @@
 
 本项目选题为“中小软件外包团队研发流程留痕与上线评估管理系统”，应用名“留痕”。[公开仓库](https://github.com/HJY147/t44-dev-trace)采用MIT许可证。已实现Vue业务界面、38项冻结API、MySQL事务与审计、RabbitMQ通知、独立APScheduler扫描和Compose部署工具，仍在审核、独立验收与规模优化阶段。完整集成见[draft PR #21](https://github.com/HJY147/t44-dev-trace/pull/21)；受保护main尚未发布该完整产品。
 
+## 2026年10月29日工程检查点
+
+最新协调分支为 `codex/resume-coordination-20261029`。完整事实、需求追溯与未达项见[工程检查点](reports/final/engineering-checkpoint-r29-20261029.md)及[本轮实测与保盘停机](reports/final/performance-r29-20261029.md)。下方10月24日及其他早期段落均保留为历史，不代表当前运行状态、代码规模或购买授权。
+
+| 范围 | 已取得的证据 | 尚未通过的出口 |
+| --- | --- | --- |
+| 开发回归 | 准确源码7b15f893的[原生CI](https://github.com/HJY147/t44-dev-trace/actions/runs/40821621806)后端796、前端89全过，类型与构建成功；行覆盖2500/2771 | 不是独立功能或性能验收 |
+| 代码规模 | 65个应用文件、5887有效行；固定计数器和cloc未改 | 超5100上限787行，范围检查exit1 |
+| 云上开发短测 | 旧f7源码400并发8000请求全部完成，0失败/中止客户 | 三个正式目标P95仍343–636ms，超过270ms；约5.26秒不是600秒稳态 |
+| 独立云轮次 | 唯一900秒窗口原始记录完整保留 | `NP_NO_RUNTIME_RESULT`，76字节证据头，无runtime结果，不能推断请求量或业务成败 |
+| 云资源 | 两台原实例保留；04:59Z前分别核为节省停机、自动释放均“-”，原数据和卷保留 | 云盘仍计费，最终结算未核；本地准备可靠前不重启 |
+| 过程材料 | [真实prompt及证据索引](docs/prompting/R29-process-evidence.md)、[本人自写素材入口](docs/reports/r29-student-fact-index.md) | 学生本人研究正文与真实人工材料仍须本人完成 |
+
+后发本地重构候选及独立测试工具模拟HTTPS复测均单列，未经审定的候选不计收益，模拟结果不充作项目性能。截止按用户确定的11月28日安排；当前不新购云机器，也不以历史“尚无购买授权”的段落覆盖后续实际授权与操作。
+
+## 10月24日及此前的历史记录
+
 截至2026年10月24日08:03（北京时间），[独立黑盒封存](reports/independent-v3/stage06-formal-blackbox.md)为功能25/26通过（1项错误优先级未决）、界面6/6、可执行故障4/4通过；三类正式压力均未达标。性能、6307行超限及学生本人研究材料仍待完成，后续[限定白盒](reports/independent-v3/stage07-whitebox.md)与[交付物核查](reports/independent-v3/stage08-deliverables.md)已完成范围审阅，仍有部分证据和未达项，整体NOT_ACCEPTED_INCOMPLETE。
 
 完整本机四小时演示已按原截止自然结束，`http://127.0.0.1:5178`已停止；[实际结束报告](agents/deployment/demo-natural-close-report.md)确认driver/post退出0、清理成功。该运行仍固定bc5，不是后续开发候选或正式性能验证。另保留 `http://127.0.0.1:5173` 的API/网页大数据预览，末次监听元数据核对见同报告。[醒来后查看项目](docs/user-guide/wake-up-review.md)区分入口及本机私密登录说明，账号未公开。
