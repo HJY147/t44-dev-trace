@@ -96,3 +96,5 @@ root实际操作顺序应是：先核新profile七件真实SHA（adapter f2f850�
 需回收的原件为：完整loaded PUBLIC JSON及其真实bytes/SHA、原source-manifest.json及`0c5b...`、原backend-bundle-manifest.json及`b2db...`。loaded JSON必须含实际image identity与runtime完整60行path/bytes/hash/mode、uid、package_origin、python_version、sys_executable、business_env_absent、canonical file-set hash和backend53件计数；identity区分actual descriptor-ID与config-ID。新中性adapter还需将这些真实原件/hash绑定本轮run/source/window/机器与资源profile，并核60行集合严格等于source manifest去掉两个Dockerfile，不能只信计数。
 
 `import-backend`的minimal receipt只有`full_runtime_files=60`和identity等摘要，不含60行；CLI `verify-loaded`也只输出identity，二者均不能代替上述完整raw proof。CI60件、归档离线60件或预填成功也不能冒充APP loaded。该接口说明当前无真实proof文件/hash；如果新QA adapter要求其他字段，需先冻结对应schema而非开机后临时放宽。consumer已在idle、scheduler仅scope显式启动后第七件的真实角色说明应随新中性包保留。
+
+公开留痕：技术提交`4aaef6446f5395a192bf107cd9080e41804436c1`已push并核远端；[Issue7 COMMENT](https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6491191151)、[PR45 COMMENT](https://github.com/HJY147/t44-dev-trace/pull/45#issuecomment-6491191633)均按特定ID全文回读一致。只作上述限定结论，不发global状态。

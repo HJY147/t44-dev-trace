@@ -1,0 +1,22 @@
+{
+  "method": "GitHub plugin add_comment_to_issue and exact-ID fetch readback",
+  "technical_commit": "4aaef6446f5395a192bf107cd9080e41804436c1",
+  "technical_push_exit": 0,
+  "remote_sha_exact_match": true,
+  "comments": [
+    {
+      "id": 6491191151,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6491191151",
+      "created_at": "2026-10-29T07:56:40Z",
+      "body_exact_readback": true,
+      "body": "Agent-Role: reviewer AI\nPrompt-Ref: ROLE-reviewer-DEPLOYMENT-R30-20261029-v1\n\n限定审查对象：61179fca68f09e89b3f8de24b910dd42ae78a434、a3a1fdc4acae861491190f3b97b310f0a41191e2、a6054ef5d5346be8ca55103f70012ee08d333bb8，以及其上准确修复2ca7fd377b7ad0bbe37ff9aea8924825b092a803。PR45含继承root差异，本COMMENT不准许全量merge，也不是APPROVE或global reviewer/stage。\n\n原P1 R30-BUDGET-KIND-01已实际复现并保留：a605新generation kind与原305f预算v4 kind失配，真实checked_binding拒绝。准确2ca7修复的本岗窄复核exit0：实际derive→新binding→checked_binding接受→真实fcntl operation_lock→GEN probe-budget到无网络mysql live哨兵；旧v4 kind仍拒。预算完整字节仅改一个KIND字面量，旧305f不动；新9e9863/adapter f2f850/GEN预算与adapter pin/resource GEN SHA/profile七件hash链一致。当前新增未决P1=0、P2=0，仅作为受限部署准备、安装及新环境预检候选。BOOT与SUT grant仍HOLD。\n\n制品独立核：官方run40833943007工具head61179fca及artifact12880320744官方bytes/digest；允许七成员完整pins、62Gitcontext、11有序层回放60运行文件，官方Docker Hub不可变index/manifest/config的四层DiffID前缀均匹配。真实archive的classic/OCI descriptor→原config8e3e…路径正例与三身份反例保持校验；这不是实际APP Docker29 load/cache。owner20边界本岗重定向临时路径重放20OK；外层最终退出状态捕获缺失在报告如实说明。没有重跑产品CI或云/SUT。\n\n实际APP idle为6常驻，包含consumer、尚无scheduler；明确scope后scheduler为第7件。一次串行operation可能临时+1，常驻只用5种镜像，新运1backend不证明运行容量。LOAD实际driver/工具资源仍待新adapter冻结。\n\n实际import之后、业务之前，root须按准确LOADED-PROOF-INTERFACE.md调用window.backend并排他序列化完整loaded PUBLIC JSON，回收其真实bytes/SHA以及原source/bundle两manifest；60行raw/uid/origin/python/executable/业务Env缺失/identity/file-set hash必须齐全并绑定本轮真实run/source/window/机器资源。minimal import receipt计数60、verify-loaded CLI的identity或CI60件不能代替APP完整raw proof。真实Linux load/cache、后端seed/四角色/TTL、新QA adapter及限定工具/SUT准入尚未完成；35/40/45封存/节省停机/auto-release -/盘后验计划未执行。\n\n[完整报告与原失败/修复证据](https://github.com/HJY147/t44-dev-trace/blob/4aaef6446f5395a192bf107cd9080e41804436c1/reports/reviews/deployment-r30-20261029.md)，技术提交4aaef6446f5395a192bf107cd9080e41804436c1。无产品/compose/specs/原测试/云/服务/会话修改，未读QA PRIVATE或REVIEW_R30_ONLY，未联系测试岗、未改main保护。"
+    },
+    {
+      "id": 6491191633,
+      "url": "https://github.com/HJY147/t44-dev-trace/pull/45#issuecomment-6491191633",
+      "created_at": "2026-10-29T07:56:41Z",
+      "body_exact_readback": true,
+      "body": "Agent-Role: reviewer AI\nPrompt-Ref: ROLE-reviewer-DEPLOYMENT-R30-20261029-v1\n\n限定审查对象：61179fca68f09e89b3f8de24b910dd42ae78a434、a3a1fdc4acae861491190f3b97b310f0a41191e2、a6054ef5d5346be8ca55103f70012ee08d333bb8，以及其上准确修复2ca7fd377b7ad0bbe37ff9aea8924825b092a803。PR45含继承root差异，本COMMENT不准许全量merge，也不是APPROVE或global reviewer/stage。\n\n原P1 R30-BUDGET-KIND-01已实际复现并保留：a605新generation kind与原305f预算v4 kind失配，真实checked_binding拒绝。准确2ca7修复的本岗窄复核exit0：实际derive→新binding→checked_binding接受→真实fcntl operation_lock→GEN probe-budget到无网络mysql live哨兵；旧v4 kind仍拒。预算完整字节仅改一个KIND字面量，旧305f不动；新9e9863/adapter f2f850/GEN预算与adapter pin/resource GEN SHA/profile七件hash链一致。当前新增未决P1=0、P2=0，仅作为受限部署准备、安装及新环境预检候选。BOOT与SUT grant仍HOLD。\n\n制品独立核：官方run40833943007工具head61179fca及artifact12880320744官方bytes/digest；允许七成员完整pins、62Gitcontext、11有序层回放60运行文件，官方Docker Hub不可变index/manifest/config的四层DiffID前缀均匹配。真实archive的classic/OCI descriptor→原config8e3e…路径正例与三身份反例保持校验；这不是实际APP Docker29 load/cache。owner20边界本岗重定向临时路径重放20OK；外层最终退出状态捕获缺失在报告如实说明。没有重跑产品CI或云/SUT。\n\n实际APP idle为6常驻，包含consumer、尚无scheduler；明确scope后scheduler为第7件。一次串行operation可能临时+1，常驻只用5种镜像，新运1backend不证明运行容量。LOAD实际driver/工具资源仍待新adapter冻结。\n\n实际import之后、业务之前，root须按准确LOADED-PROOF-INTERFACE.md调用window.backend并排他序列化完整loaded PUBLIC JSON，回收其真实bytes/SHA以及原source/bundle两manifest；60行raw/uid/origin/python/executable/业务Env缺失/identity/file-set hash必须齐全并绑定本轮真实run/source/window/机器资源。minimal import receipt计数60、verify-loaded CLI的identity或CI60件不能代替APP完整raw proof。真实Linux load/cache、后端seed/四角色/TTL、新QA adapter及限定工具/SUT准入尚未完成；35/40/45封存/节省停机/auto-release -/盘后验计划未执行。\n\n[完整报告与原失败/修复证据](https://github.com/HJY147/t44-dev-trace/blob/4aaef6446f5395a192bf107cd9080e41804436c1/reports/reviews/deployment-r30-20261029.md)，技术提交4aaef6446f5395a192bf107cd9080e41804436c1。无产品/compose/specs/原测试/云/服务/会话修改，未读QA PRIVATE或REVIEW_R30_ONLY，未联系测试岗、未改main保护。"
+    }
+  ]
+}
