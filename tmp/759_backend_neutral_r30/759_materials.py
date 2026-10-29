@@ -640,3 +640,32 @@ def test_complete_40_project_400_api_preparation_fake_only(tmp_path, monkeypatch
         "issued_at" not in result["session_attestations"][role]
         for role in ("manager", "developer", "reviewer")
     )
+
+
+def test_stale_service_refuses_before_first_human_login(tmp_path):
+    plan, evidence, sessions, _, receipt = fixture()
+    service = {
+        "session": sessions["service"],
+        "attestation": evidence["session_attestations"]["service"],
+    }
+    service["session"]["expires_at"] = plan["window"]["end_utc"]
+    ca = tmp_path / "ca.pem"
+    ca.write_bytes(b"synthetic-ca")
+    called = []
+
+    def client(*args):
+        called.append(True)
+        raise RuntimeError("HUMAN_LOGIN_CLIENT_MUST_NOT_BE_CREATED")
+
+    with pytest.raises(guard.Refused):
+        prepare_http.prepare(
+            plan,
+            {},
+            service,
+            ca,
+            tmp_path / "out",
+            clock=lambda: NOW,
+            client_type=client,
+            import_receipt_raw=receipt,
+        )
+    assert not called

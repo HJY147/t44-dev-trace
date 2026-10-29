@@ -1,0 +1,85 @@
+{
+  "scope": "LOCAL_SYNTHETIC_ONLY_NOT_SUT_OR_SESSION_READY",
+  "unique_local_checks": 27,
+  "passed": 27,
+  "seconds": 1.66,
+  "actual_cloud_SUT_sessions": 0,
+  "checks": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--config",
+        "backend/pyproject.toml",
+        "--check",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "11 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "7374b3637b06465d448fc2e81952ba18fc676315",
+        "--",
+        "backend/t44",
+        "backend/requirements.lock",
+        "backend/pyproject.toml",
+        "frontend",
+        "specs/contracts",
+        "specs/database",
+        "tmp/backend"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "python_sources": {
+    "prepare_http.py": "2d9dc1ba4c839b799b2a0e4e056191fc892ab80d973d08980ecb8097fd5d1c08",
+    "assemble.py": "fe0ffcc67ffe8f42396b0b7b73b7c6f52da0c054f3d9f251c64f4a7613f30628",
+    "admin.py": "e6ef7dceff8f78a43883eaa729836fe08fcb108a8bb00609e960c990b2741f4c",
+    "admin_seed.py": "830d410201ef241c5d62bfaabc2e16ed049eabc160f65a7a71c4fd0e9522440e",
+    "guard.py": "b02e7ff80aea9614b3201d54ba0c525f0d30b0201f593bb50c1fc11a748e9eb7",
+    "make_evidence.py": "53b8ba348ca7aec0c0396a8c404b31bea92cda1fba952fc2572301de2e66f402",
+    "http_primitives.py": "6b74fffa54452f71325f5a1302ac4b9ace8dea085fd99d6aa9626ab9917290d6"
+  },
+  "failures_preserved": [
+    "local-initial",
+    "review-target-red",
+    "login-prefix-red",
+    "login-prefix-red2",
+    "stale-service-red"
+  ]
+}
