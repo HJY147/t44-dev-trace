@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onUnmounted, ref, shallowRef } from 'vue'
+import { computed, ref, shallowRef } from 'vue'
 import { ElButton, ElDialog } from 'element-plus'
 import { api, ApiError, intentFor, request } from '../api'
 import type { Intent } from '../api'
@@ -7,6 +7,7 @@ import { asArray, asRow, initial, label, operationLabels, resolve, schemas, vali
 import type { Json, Row } from '../contract'
 import { display, workspace } from '../workspace'
 import { businessRejection } from '../forms'
+import { useRequestState } from '../useRequestState'
 import FieldEditor from './FieldEditor.vue'
 
 const props = defineProps<{ operation: string; schemaName: string; params: Row; preset: Row; refresh: () => Promise<Row | void>; saved: (data: Row) => Promise<void> }>()
@@ -17,21 +18,18 @@ const schema = computed(() => {
 })
 const draft = shallowRef<Json>({ ...asRow(initial(schema.value)), ...JSON.parse(JSON.stringify(props.preset)) })
 const errors = ref<Record<string, string>>({})
-const failure = ref<ApiError | null>(null)
+const { busy, failure, isActive } = useRequestState()
 const rejection = computed(() => failure.value ? businessRejection(failure.value.status, String(failure.value.detail.code), props.operation, props.schemaName) : undefined)
-const busy = ref(false)
 const intent = ref<Intent>()
 const currentVersion = ref<number | null>(null)
-let active = true
-onUnmounted(() => { active = false })
 const title = computed(() => operationLabels[props.operation] ?? '保存记录')
 async function submit(checkOnly = false): Promise<void> {
-  if (!active) return
+  if (!isActive()) return
   errors.value = validate(props.schemaName, draft.value)
   if (Object.keys(errors.value).length) return
   busy.value = true; failure.value = null
   const token = api.token
-  const current = () => active && api.token === token
+  const current = () => isActive() && api.token === token
   try {
     if (checkOnly) {
       const category = props.operation === 'createTask' ? 1 : props.operation === 'transitionTask' ? 2 : 3

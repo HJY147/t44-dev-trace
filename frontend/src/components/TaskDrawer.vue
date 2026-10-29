@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, onUnmounted, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { ElButton, ElDrawer } from 'element-plus'
-import { api, ApiError, request } from '../api'
+import { request } from '../api'
 import { asArray, asRow } from '../contract'
 import type { Row } from '../contract'
 import { options, workspace } from '../workspace'
 import { formSchemas, presets, transitionSchema } from '../forms'
+import { useRequestState } from '../useRequestState'
 import DataState from './DataState.vue'
 import RecordList from './RecordList.vue'
 import RecordView from './RecordView.vue'
@@ -16,27 +17,16 @@ const task = ref<Row>({})
 const tab = ref('detail')
 const page = ref(1)
 const data = ref<Row>({ items: [], total: 0 })
-const busy = ref(false)
-const failure = ref<ApiError | null>(null)
+const { busy, failure, run } = useRequestState()
 const action = ref('')
 const tabs: Record<string, [string, string]> = { detail: ['任务概览', ''], dependencies: ['前置依赖', 'listTaskDependencies'], reviews: ['代码评审', 'listTaskReviews'], assessments: ['上线评估与预案', 'listReleaseAssessments'], decisions: ['发布与回滚决定', 'listTaskDecisions'], escalations: ['升级历史', 'listEscalations'], audit: ['变更与排期差异', 'listProjectAuditEvents'] }
 const params = computed(() => ({ project_id: props.projectId, task_id: props.taskId }))
-let sequence = 0
-let active = true
-onUnmounted(() => { active = false; sequence++ })
-async function refresh(): Promise<void> {
-  if (!active) return
-  const token = api.token
-  const current = ++sequence; busy.value = true; failure.value = null
-  try {
-    const result = asRow((await request('getTask', params.value)).data)
-    if (!active || current !== sequence || api.token !== token) return
-    const records = tab.value === 'detail' ? {} : asRow((await request(tabs[tab.value]![1], params.value, { page: page.value, page_size: 20, ...(['escalations', 'audit'].includes(tab.value) ? { task_id: props.taskId } : {}) })).data)
-    if (!active || current !== sequence || api.token !== token) return
-    task.value = result; data.value = records
-  } catch (cause) { if (current === sequence) failure.value = cause as ApiError }
-  finally { if (current === sequence) busy.value = false }
-}
+const refresh = () => run(async current => {
+  const result = asRow((await request('getTask', params.value)).data)
+  if (!current()) return
+  const records = tab.value === 'detail' ? {} : asRow((await request(tabs[tab.value]![1], params.value, { page: page.value, page_size: 20, ...(['escalations', 'audit'].includes(tab.value) ? { task_id: props.taskId } : {}) })).data)
+  if (current()) { task.value = result; data.value = records }
+})
 watch(() => [props.taskId, props.revision, tab.value, page.value], refresh, { immediate: true })
 function operate(operation: string, row: Row = {}): void {
   const extra: Row = operation === 'removeTaskDependency' ? { dependency_id: row.id! } : operation === 'reviewReleaseAssessment' ? { assessment_id: row.id! } : {}

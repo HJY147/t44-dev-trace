@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import { onUnmounted, ref } from 'vue'
+import { ref } from 'vue'
 import { ElButton } from 'element-plus'
 import { api, request } from '../api'
 import { asRow } from '../contract'
 import { bootstrap, workspace } from '../workspace'
+import { useRequestState } from '../useRequestState'
 const username = ref('')
 const password = ref('')
-const busy = ref(false)
-const error = ref('')
-let active = true
-onUnmounted(() => { active = false })
+const { busy, failure: error, isActive } = useRequestState<string>()
 async function login(): Promise<void> {
-  if (!active || busy.value) return
+  if (!isActive() || busy.value) return
   if (!username.value || !password.value) { error.value = '请填写账号和密码。'; return }
   busy.value = true; error.value = ''
   let token = api.token
   try {
     const result = asRow((await request('login', {}, {}, { username: username.value, password: password.value })).data)
-    if (!active || api.token !== token) return
+    if (!isActive() || api.token !== token) return
     api.token = token = String(result.access_token)
     await bootstrap()
     if (api.token === token) workspace.notice = '已登录，工作空间已同步。'
-  } catch (cause) { if (!active || api.token !== token) return; api.token = ''; error.value = cause instanceof Error ? cause.message : '登录暂未完成，请稍后再试。' }
+  } catch (cause) { if (!isActive() || api.token !== token) return; api.token = ''; error.value = cause instanceof Error ? cause.message : '登录暂未完成，请稍后再试。' }
   finally { password.value = ''; busy.value = false }
 }
 </script>
