@@ -1,0 +1,108 @@
+{
+  "run": {
+    "conclusion": "success",
+    "headSha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "jobs": [
+      {
+        "completedAt": "2026-10-29T06:18:37Z",
+        "conclusion": "success",
+        "databaseId": 123294283745,
+        "name": "coverage",
+        "startedAt": "2026-10-29T06:10:49Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T06:14:18Z",
+        "conclusion": "success",
+        "databaseId": 123294284013,
+        "name": "contracts",
+        "startedAt": "2026-10-29T06:10:49Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T06:11:11Z",
+        "conclusion": "success",
+        "databaseId": 123294284034,
+        "name": "static",
+        "startedAt": "2026-10-29T06:10:49Z",
+        "status": "completed"
+      },
+      {
+        "completedAt": "2026-10-29T06:11:27Z",
+        "conclusion": "success",
+        "databaseId": 123294284070,
+        "name": "frontend",
+        "startedAt": "2026-10-29T06:10:49Z",
+        "status": "completed"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40827655008"
+  },
+  "junit": [
+    {
+      "file": "contracts-0bffe0c535e5897890aebf30879fdd3839dc52d6/contracts/fault.xml",
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "contracts-0bffe0c535e5897890aebf30879fdd3839dc52d6/contracts/integration.xml",
+      "tests": 102,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "contracts-0bffe0c535e5897890aebf30879fdd3839dc52d6/contracts/contract.xml",
+      "tests": 183,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "coverage-0bffe0c535e5897890aebf30879fdd3839dc52d6/coverage/junit.xml",
+      "tests": 796,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "coverage": [
+    {
+      "file": "coverage-0bffe0c535e5897890aebf30879fdd3839dc52d6/coverage/coverage.json",
+      "totals": {
+        "covered_lines": 2502,
+        "num_statements": 2773,
+        "percent_covered": 88.7876277271472,
+        "percent_covered_display": "88.79",
+        "missing_lines": 271,
+        "excluded_lines": 0,
+        "percent_statements_covered": 90.22719076812116,
+        "percent_statements_covered_display": "90.23",
+        "num_branches": 848,
+        "num_partial_branches": 85,
+        "covered_branches": 713,
+        "missing_branches": 135,
+        "percent_branches_covered": 84.08018867924528,
+        "percent_branches_covered_display": "84.08"
+      }
+    }
+  ],
+  "frontend_test_results": [
+    {
+      "file": "frontend-0bffe0c535e5897890aebf30879fdd3839dc52d6/frontend/coverage/test-results.json",
+      "total_tests": 89,
+      "passed_tests": 89,
+      "failed_tests": 0,
+      "success": true
+    }
+  ],
+  "not_additive_test_count": "contracts groups overlap full coverage suite; do not sum",
+  "source_count_code": 5880,
+  "source_count_require_range_exit": 1,
+  "performance_pass_claim": false,
+  "new_role_specific_local_tests_in_CI": false,
+  "local_tests_note": "tmp765/766 have independent owner/reviewer evidence; this unchanged workflow runs original tmp/backend suite"
+}

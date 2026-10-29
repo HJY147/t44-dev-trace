@@ -31,7 +31,14 @@
     "storage_still_billed": true,
     "settled_total_charge_verified": false,
     "receipt": "records/cloud/f7-r29-window-20261029/stop-and-continuation.PUBLIC.json",
-    "policy": "LOCAL_ONLY_UNTIL_REVIEWED_PREPARATION_AND_FIXED_TEST_RUNTIME"
+    "policy": "LOCAL_ONLY_UNTIL_REVIEWED_PREPARATION_AND_FIXED_TEST_RUNTIME",
+    "last_list_only_recheck": {
+      "utc": "2026-10-29T06:18:12.120Z",
+      "stopped_rows": 2,
+      "economical_rows": 2,
+      "full_UI_original_sha256": "822771612fbb01b711277e925afcc6409c6efd2be0c9f8d1c1caf6f4b632f9b5",
+      "automatic_release_rechecked_this_time": false
+    }
   },
   "current_application": {
     "effective_lines": 5880,
@@ -45,23 +52,25 @@
     "prior_native_CI_tested_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463"
   },
   "development_CI": {
-    "source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
-    "run_id": 40821621806,
+    "source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "run_id": 40827655008,
     "four_jobs": "success",
     "backend": {
       "tests": 796,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "line_covered": 2500,
-      "line_valid": 2771,
+      "line_covered": 2502,
+      "line_valid": 2773,
       "branches_covered": 713,
       "branches_valid": 848
     },
     "frontend_tests": 89,
     "frontend_typecheck_and_build": "success",
-    "artifact_manifest": "records/ci/r29-7b15f893-40821621806/summary.PUBLIC.json",
-    "scope": "development regressions only; not independent or performance acceptance"
+    "artifact_manifest": "records/ci/r29b-0bffe0c5-40827655008/summary.PUBLIC.json",
+    "official_zips_verified": 4,
+    "members": 95,
+    "scope": "development regressions only; new tmp765/766 local cases are separately recorded and outside original CI discovery; not independent/performance/size acceptance"
   },
   "cloud_development_short": {
     "source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
@@ -93,12 +102,13 @@
     "prompt": "records/prompts/ROOT-R29B-LOCAL-QUALITY-20261029.md",
     "backend_candidate": "41a111f2 integrated after limited reviewer verdict; -3 effective lines",
     "database_candidate": "8f290307 integrated after limited reviewer verdict; -4 effective lines",
-    "independent_test_tool": "new full local sealed-package E2E pending; simulated HTTPS only; old cloud NP unchanged",
+    "independent_test_tool": "new local v2.3 E2E not passed; tester PUBLIC report pending; simulated HTTPS only; old cloud NP unchanged",
     "current_native_CI": {
       "source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
       "run_id": 40827655008,
-      "status": "in_progress",
-      "scope": "development regressions only"
+      "status": "completed",
+      "scope": "development regressions only",
+      "conclusion": "success"
     },
     "limited_review": {
       "source_commits": [
@@ -126,5 +136,26 @@
     "actual resource evidence analysis before performance claims",
     "final settled billing",
     "student-authored research and genuine manual materials"
+  ],
+  "previous_development_CI": [
+    {
+      "source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+      "run_id": 40821621806,
+      "four_jobs": "success",
+      "backend": {
+        "tests": 796,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "line_covered": 2500,
+        "line_valid": 2771,
+        "branches_covered": 713,
+        "branches_valid": 848
+      },
+      "frontend_tests": 89,
+      "frontend_typecheck_and_build": "success",
+      "artifact_manifest": "records/ci/r29-7b15f893-40821621806/summary.PUBLIC.json",
+      "scope": "development regressions only; not independent or performance acceptance"
+    }
   ]
 }

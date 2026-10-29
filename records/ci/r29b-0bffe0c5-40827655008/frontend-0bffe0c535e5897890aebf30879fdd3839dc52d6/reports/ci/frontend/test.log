@@ -1,0 +1,2 @@
+$ node scripts/prepare-tests.mjs && vitest run --coverage --reporter=json --outputFile=frontend/coverage/test-results.json --coverage.reporter=json --coverage.reporter=json-summary '--coverage.include=frontend/src/**/*.{ts,vue}'
+JSON report written to /home/runner/work/t44-dev-trace/t44-dev-trace/frontend/coverage/test-results.json
