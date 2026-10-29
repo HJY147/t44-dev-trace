@@ -1,0 +1,54 @@
+{
+  "operator": "AI reviewer",
+  "prompt_ref": "ROLE-reviewer-R29-PREFLIGHT-20261029-v1",
+  "base": "fcc847f395a636f8100c7df0dadef446cb647165",
+  "backend": "650ba6a85c964d0df7cfbea6ba2ef917343f40bc",
+  "deployment": "40631378ab9e34c408130d4d87c74a259dc0c284",
+  "relay_core": "ad1f183c5ed734fc52f640d8b042f0fc95c3b838",
+  "source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "decision": "NO_NEW_P1_IN_LIMITED_OFFLINE_PREP_CANDIDATE_ONLY",
+  "own_passed": 7,
+  "own_failed": 0,
+  "own_elapsed_seconds": 0.163,
+  "initial_harness_failure_retained": true,
+  "initial_failure_reason": "macOS /var alias noncanonical scratch; reviewer-only resolve correction",
+  "runtime_exact_literal_derivations": 13,
+  "runtime_assert_AST_unchanged": true,
+  "original_business_gates_unchanged": {
+    "control_stop_remaining_seconds": 330,
+    "diagnostic_packet_age_seconds": 600,
+    "actual_four_session_expiry": "each separately checked"
+  },
+  "new_operational_cost_gate_seconds": 540,
+  "consumer_outer_cap_seconds": 420,
+  "owned_cleanup_bound_seconds": 90,
+  "receipt_margin_seconds": 30,
+  "independent_private_read_or_tester_contact": false,
+  "cloud_Docker_SUT_real_session_or_consumer_executed": false,
+  "owner16_TLS11_full_CI_rerun": false,
+  "formal_performance_accepted": false,
+  "code_scale_failure_not_closed": true,
+  "report": "reports/reviews/r29-preflight-20261029.md",
+  "evidence": "tmp/773_reviewer_r29_preflight_20261029",
+  "updated_at": "2026-10-29T03:38:33.837879+00:00",
+  "whole_scripts": [
+    {
+      "file": "agents/backend/window-20261029/install-via-github-api.PUBLIC.sh",
+      "sha256": "d5546d0f2bcbd19c24a5648d7b089ed6dd9ecd2ae3bd43fae5d199da81361bf0",
+      "raw_plus300": 5528,
+      "entire_base64_plus300": 7272
+    },
+    {
+      "file": "agents/backend/window-20261029/app-prep-launch.PUBLIC.sh",
+      "sha256": "828421f6833681ffd0e0a678f2af1778f15d805fb777da0fae74d4f2617360da",
+      "raw_plus300": 7969,
+      "entire_base64_plus300": 10528
+    },
+    {
+      "file": "agents/deployment/opaque-relay-20261029/install.PUBLIC.sh",
+      "sha256": "b880a0a5ee0d45576a59de8fad96405562f4c62bfe971c766866c23d3f9a80b9",
+      "raw_plus300": 1879,
+      "entire_base64_plus300": 2408
+    }
+  ]
+}
