@@ -525,3 +525,7 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本轮create4 marker成功一次，bundled Python/Node/LO。四Word先渲染12/15/5/5页；实看发现旧证据图标旧源/数，新增90b图修复。新输出只私密FINAL90b，封面日期空。P06正式结果尚待root PUBLIC，不编数字。
 - 最终需规13、设计15、测试5、AI规格5页，共38页内容实看；final不变页与已看图逐字节相同，6个改变页原尺寸重看，需规最后图再次改Docker merge56217后重新渲染13页，仅page11改变且实看11至13。初轮1至7先high后均以original重开；没有把sample冒全部。最终Word链接绑定19010c57/17c05fc8，导出器补文档ref一致性。
 - 独立具名PUBLIC副本、四MD本地所有链接存在；逐文件hash和私密输出路径见FINAL90b manifest。原cloc再跑明确捕获returncode1、全5818，不隐去失败。无产品测试/云/公开PII。
+
+## P07公开准入后续
+
+root追加明确允许读取753_P07_ADMISSION_BLOCKED.PUBLIC.json，已只读该件并同字节存档。root告知P07四sessions及其AI汇集时间错误；未读取packet/会话或其他私件。四MD、AI过程索引及导航现写尚无有效正式性能结论、未通过最终性能验收；P07准备与未发压分开。学生研究未改，未操作云。按照root要求暂不重导Word，保持原38页hash；等待最后PUBLIC结果统一导出并核新增改变页。
