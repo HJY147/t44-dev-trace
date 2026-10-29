@@ -1,0 +1,38 @@
+{
+  "role": "backend/review technical audit",
+  "prompt_id": "internal-task:/root/backend_size_architecture",
+  "source_commit": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "production_changed": false,
+  "script_changed": false,
+  "contract_or_ddl_changed": false,
+  "independent_acceptance": false,
+  "cloud_started": false,
+  "counts": {
+    "commit": "356f29983c904e949245aedfad464efc1bf7b63d",
+    "tool": "cloc 2.10",
+    "full_application": {
+      "blank": 574,
+      "comment": 117,
+      "code": 5817,
+      "nFiles": 65
+    },
+    "auxiliary": {
+      "backend/t44/cli.py": 147,
+      "backend/t44/persistence/migrations.py": 307,
+      "backend/t44/persistence/seed.py": 326
+    },
+    "auxiliary_code": 780,
+    "core_runtime_code": 5037,
+    "core_runtime_files": 62,
+    "original_full_range_passed": false,
+    "reclassification_only": true,
+    "count_script_changed": false
+  },
+  "report": "reports/modules/backend-size-architecture-20261029.md",
+  "remaining": [
+    "Full application still 5817 and original full-range result false",
+    "New user scope relayed by coordinator is core runtime 5037 <= 5100; auxiliary 780 remains delivered",
+    "No new runtime or performance validation from this audit"
+  ],
+  "prototype_status": "No production replacement; exploratory run failed missing dependency and install failed certificate/proxy"
+}
