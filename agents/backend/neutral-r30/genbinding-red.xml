@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.056" timestamp="2026-10-29T17:01:40.399325+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_exact_published_gen_scope_has_a_real_plan_intersection" time="0.009"><failure message="guard.Refused: FRESH_R30_RUN_REQUIRED">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-142/test_exact_published_gen_scope0')
+
+    def test_exact_published_gen_scope_has_a_real_plan_intersection(tmp_path):
+        plan, *_ = fixture()
+        original = json.loads((CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_text())
+        for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes"):
+            original[key] = {"synthetic_local_test_only": sha(key)}
+        original["stop_utc"] = stamp(NOW + timedelta(seconds=1080))
+        path = tmp_path / "synthetic-full-binding.json"
+        raw = json.dumps(original).encode()
+        path.write_bytes(raw)
+        plan.update(run_id="r30window01", namespace=original["project"])
+        plan["target"].update(compose_project=original["project"], database=original["database"],
+                              mysql_user=original["database"] + "_app", binding_sha256=hashlib.sha256(raw).hexdigest(),
+                              origin="https://10.0.0.1:26445")
+        plan["gen_binding"] = {"path": str(path), "sha256": hashlib.sha256(raw).hexdigest()}
+        plan["window"] = {"start_utc": stamp(NOW + timedelta(seconds=180)), "end_utc": stamp(NOW + timedelta(seconds=960)),
+                          "stop_utc": original["stop_utc"]}
+        plan["lifecycle"] = {"t0_utc": stamp(NOW - timedelta(seconds=1020)), "cost_stop_utc": stamp(NOW + timedelta(seconds=1380)),
+                             "packet_cutoff_utc": stamp(NOW + timedelta(seconds=30))}
+&gt;       assert guard.check_plan(plan, NOW)[0] == guard.timestamp(plan["window"]["start_utc"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/759_backend_neutral_r30/759_materials.py:692: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/guard.py:80: in check_plan
+    need(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = None, code = 'FRESH_R30_RUN_REQUIRED'
+
+    def need(condition, code):
+        if not condition:
+&gt;           raise Refused(code)
+E           guard.Refused: FRESH_R30_RUN_REQUIRED
+
+agents/backend/neutral-r30/guard.py:44: Refused</failure></testcase></testsuite></testsuites>

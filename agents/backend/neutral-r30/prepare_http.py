@@ -53,7 +53,7 @@ def prepare(
     prefix = output / "session-prefix"
     prefix.mkdir(mode=0o700)
     deadline = time.monotonic() + min(
-        300, (timestamp(plan["window"]["start_utc"]) - now).total_seconds() - 30
+        300, (timestamp(plan["lifecycle"]["packet_cutoff_utc"]) - now).total_seconds()
     )
     need(deadline > time.monotonic(), "FINITE_PREPARATION_BEFORE_UNCHANGED_WINDOW_REQUIRED")
 
@@ -287,14 +287,16 @@ def prepare(
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("plan", "accounts", "service", "ca", "output", "import-receipt"):
+    for name in ("plan", "accounts", "service", "ca", "output", "import-receipt", "binding"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--root-admit-http-preparation", action="store_true")
     args = parser.parse_args()
     need(args.root_admit_http_preparation, "EXPLICIT_ROOT_HTTP_PREPARATION_REQUIRED")
     os.umask(0o077)
+    plan = read_json(args.plan)
+    need(str(args.binding) == plan["gen_binding"]["path"], "SAME_MOUNTED_BINDING_PATH_REQUIRED")
     prepare(
-        read_json(args.plan),
+        plan,
         read_json(args.accounts),
         read_json(args.service),
         args.ca,

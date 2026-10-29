@@ -36,26 +36,43 @@ def fixture():
     plan = json.loads((CODE / "plan.template.PUBLIC.json").read_text())
     plan.update(
         root_admit_preparation=True,
-        run_id="r30-synthetic-tests",
-        namespace="t44-r30-synthetic-tests",
+        run_id="r30window01",
+        namespace="t44-cloud-r30window01-p",
         authorized_project_ids=list(range(1, 41)),
         allowed_writes=list(guard.OPERATIONS),
     )
     plan["target"].update(
         compose_project=plan["namespace"],
-        database="t44_r30_synthetic_tests",
-        mysql_user="t44_r30_synthetic_tests_app",
+        database="t44c_r30window01_p",
+        mysql_user="t44c_r30window01_p_app",
         binding_sha256=sha("binding"),
-        origin="https://10.0.0.1:8443",
+        origin="https://10.0.0.1:26445",
         connect_ip="10.0.0.1",
         ca_sha256=sha("synthetic-ca"),
     )
     plan["budget"]["actual_admission_receipt_sha256"] = sha("synthetic-budget")
     plan["window"] = {
-        "start_utc": stamp(NOW + timedelta(seconds=120)),
-        "end_utc": stamp(NOW + timedelta(seconds=1020)),
-        "stop_utc": stamp(NOW + timedelta(seconds=1110)),
+        "start_utc": stamp(NOW + timedelta(seconds=180)),
+        "end_utc": stamp(NOW + timedelta(seconds=960)),
+        "stop_utc": stamp(NOW + timedelta(seconds=1080)),
     }
+    plan["lifecycle"] = {
+        "t0_utc": stamp(NOW - timedelta(seconds=1020)),
+        "cost_stop_utc": stamp(NOW + timedelta(seconds=1380)),
+        "packet_cutoff_utc": stamp(NOW + timedelta(seconds=30)),
+    }
+    gen = json.loads((CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_text())
+    gen["stop_utc"] = plan["window"]["stop_utc"]
+    for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes"):
+        gen[key] = {"synthetic_local_metadata_only": sha(key)}
+    binding_path = Path(__file__).with_name("GEN_BINDING_SYNTHETIC_FULL_TEST_ONLY.json")
+    binding_raw = json.dumps(gen).encode()
+    binding_path.write_bytes(binding_raw)
+    plan["gen_binding"] = {
+        "path": str(binding_path),
+        "sha256": hashlib.sha256(binding_raw).hexdigest(),
+    }
+    plan["target"]["binding_sha256"] = plan["gen_binding"]["sha256"]
     plan["seed"].update(seed=44, anchor_utc=stamp(NOW - timedelta(days=1)))
     for role, value in plan["runtime_roles"].items():
         value.update(running_observed=True, receipt_sha256=sha(role))
@@ -409,8 +426,20 @@ def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation)
     elif mutation == "public":
         plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
     elif mutation == "window901":
-        plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
-        plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        start = guard.timestamp(plan["window"]["start_utc"])
+        plan["window"]["end_utc"] = stamp(start + timedelta(seconds=901))
+        stop = start + timedelta(seconds=1021)
+        binding_path = Path(plan["gen_binding"]["path"])
+        raw = json.loads(binding_path.read_text())
+        raw["stop_utc"] = stamp(stop)
+        data = json.dumps(raw).encode()
+        binding_path.write_bytes(data)
+        plan["gen_binding"]["sha256"] = plan["target"]["binding_sha256"] = hashlib.sha256(
+            data
+        ).hexdigest()
+        plan["window"]["stop_utc"] = stamp(stop)
+        plan["lifecycle"]["t0_utc"] = stamp(stop - timedelta(minutes=35))
+        plan["lifecycle"]["cost_stop_utc"] = stamp(stop + timedelta(minutes=5))
     ca = tmp_path / "synthetic-ca.pem"
     ca.write_bytes(b"synthetic-ca")
     called = []
@@ -487,7 +516,14 @@ def test_all_owned_modules_real_compile_import_and_cli_help(tmp_path):
     for path in CODE.glob("*.py"):
         py_compile.compile(str(path), cfile=str(tmp_path / (path.stem + ".pyc")), doraise=True)
         importlib.import_module(path.stem)
-    for name in ("admin.py", "prepare_http.py", "assemble.py", "make_evidence.py", "guard.py"):
+    for name in (
+        "admin.py",
+        "prepare_http.py",
+        "assemble.py",
+        "make_evidence.py",
+        "guard.py",
+        "stage_scope.py",
+    ):
         result = subprocess.run(
             [sys.executable, "-B", str(CODE / name), "--help"],
             capture_output=True,
@@ -669,3 +705,96 @@ def test_stale_service_refuses_before_first_human_login(tmp_path):
             import_receipt_raw=receipt,
         )
     assert not called
+
+
+def test_exact_published_gen_scope_has_a_real_plan_intersection(tmp_path):
+    plan, *_ = fixture()
+    original = json.loads((CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_text())
+    for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes"):
+        original[key] = {"synthetic_local_test_only": sha(key)}
+    original["stop_utc"] = stamp(NOW + timedelta(seconds=1080))
+    path = tmp_path / "synthetic-full-binding.json"
+    raw = json.dumps(original).encode()
+    path.write_bytes(raw)
+    plan.update(run_id="r30window01", namespace=original["project"])
+    plan["target"].update(
+        compose_project=original["project"],
+        database=original["database"],
+        mysql_user=original["database"] + "_app",
+        binding_sha256=hashlib.sha256(raw).hexdigest(),
+        origin="https://10.0.0.1:26445",
+    )
+    plan["gen_binding"] = {"path": str(path), "sha256": hashlib.sha256(raw).hexdigest()}
+    plan["window"] = {
+        "start_utc": stamp(NOW + timedelta(seconds=180)),
+        "end_utc": stamp(NOW + timedelta(seconds=960)),
+        "stop_utc": original["stop_utc"],
+    }
+    plan["lifecycle"] = {
+        "t0_utc": stamp(NOW - timedelta(seconds=1020)),
+        "cost_stop_utc": stamp(NOW + timedelta(seconds=1380)),
+        "packet_cutoff_utc": stamp(NOW + timedelta(seconds=30)),
+    }
+    assert guard.check_plan(plan, NOW)[0] == guard.timestamp(plan["window"]["start_utc"])
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "raw_sha",
+        "run",
+        "database",
+        "gen_stop",
+        "cost_is_not_gen_stop",
+        "late_packet",
+        "minimal_projection",
+    ],
+)
+def test_gen_binding_and_lifecycle_refuse_before_action(tmp_path, mutation):
+    plan, *_ = fixture()
+    if mutation == "raw_sha":
+        plan["gen_binding"]["sha256"] = sha("wrong-raw")
+    elif mutation == "run":
+        plan["run_id"] = "r30window02"
+    elif mutation == "database":
+        plan["target"]["database"] = "t44c_r30window01_f"
+    elif mutation == "gen_stop":
+        plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1079))
+    elif mutation == "cost_is_not_gen_stop":
+        plan["window"]["stop_utc"] = plan["lifecycle"]["cost_stop_utc"]
+    elif mutation == "late_packet":
+        plan["lifecycle"]["packet_cutoff_utc"] = stamp(NOW - timedelta(seconds=1))
+    elif mutation == "minimal_projection":
+        raw = (CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_bytes()
+        path = tmp_path / "minimal-only.json"
+        path.write_bytes(raw)
+        plan["gen_binding"] = {"path": str(path), "sha256": hashlib.sha256(raw).hexdigest()}
+        plan["target"]["binding_sha256"] = plan["gen_binding"]["sha256"]
+    with pytest.raises(guard.Refused):
+        guard.check_plan(plan, NOW)
+
+
+def test_seed_before_project_ids_then_actual_count_scope_without_retime():
+    plan, *_ = fixture()
+    plan["authorized_project_ids"] = []
+    plan["runtime_roles"]["scheduler"]["running_observed"] = False
+    intent = {
+        "run_id": plan["run_id"],
+        "namespace": plan["namespace"],
+        "database": plan["target"]["database"],
+        "binding_sha256": plan["target"]["binding_sha256"],
+        "operation": "seed_demo",
+        "project_ids": [],
+        "empty_scope_observed": True,
+    }
+    assert guard.check_intent(plan, intent, NOW)["status"] == "METADATA_CONSISTENT_NOT_EXECUTED"
+    scope = importlib.import_module("stage_scope")
+    counts = {key: intent[key] for key in ("run_id", "namespace", "database", "binding_sha256")}
+    counts.update(project_ids=list(range(101, 141)), raw_counts={"projects": 40})
+    result = scope.advance(
+        plan, counts, ["login", "service-token", "createTask", "transitionTask", "createEscalation"]
+    )
+    assert result["authorized_project_ids"] == list(range(101, 141))
+    assert plan["authorized_project_ids"] == []
+    for key in ("source", "target", "gen_binding", "window", "lifecycle"):
+        assert result[key] == plan[key]

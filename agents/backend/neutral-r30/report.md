@@ -8,3 +8,5 @@
 - 原始失败保留：首行四引号SyntaxError、hash import NameError、target7例6红、第三login prefix缺失红、过期service晚拒绝红；后续修源码，不改独立用例/接口或删除新断言。
 - 原产品/冻结规格/旧测试diff为空；Ruff/格式/diff检查通过。原应用5880/over780沿root既有值，本轮产品净改0，不靠工具计数降规模。
 - 全部实际命令/输出在同目录*-command.json/log/xml，final-verification含模块字节SHA。公开阶段：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6492148126 。root负责实际填值/限定复审/有限窗口与保盘停机，本岗未merge/未部署。
+
+GEN04跨岗P1补充：旧b36自造namespace不可实际准入，现读取原GEN rawSHA并按实际project/database配对解析run；source/stop/IP/TLS同原件，最小公开投影拒actual。真实红保留，36项1.83s全绿。G35与C40分别约束、packet≤S−150；先空scope seed/count再stage_scope据真实IDs新phase、immutable源/绑定/时间不变。正式入口仅root已审wrapper的真实9e operation_lock/admitted，原probe bytes与另live-readmission分开，不能拿直接CLI旗标授权。root明确不增flock接缝，已照办。code-manifest.PUBLIC.json供owner固定子进程调用校验，实际服务器仍未执行。

@@ -77,14 +77,19 @@ def check_plan(plan, now, *, require_fixture_ready=True):
     need(plan.get("schema") == "t44-neutral-r30-plan-v1", "PLAN_SCHEMA_REQUIRED")
     need(plan.get("synthetic") is True, "SYNTHETIC_DECLARATION_REQUIRED")
     need(plan.get("root_admit_preparation") is True, "ROOT_PREPARATION_ADMISSION_REQUIRED")
+    binding = load_gen_binding(plan)
+    match = re.fullmatch(r"t44-cloud-(r30[a-z0-9]{5,12})-([pf])", binding["project"])
+    need(match is not None, "ACTUAL_GEN_PROJECT_FORMAT_REQUIRED")
+    run, phase = match.groups()
     need(
-        re.fullmatch(r"r30-[a-z0-9][a-z0-9-]{0,55}", plan.get("run_id") or ""),
-        "FRESH_R30_RUN_REQUIRED",
+        binding["database"] == f"t44c_{run}_{phase}" and binding["phase"] == phase,
+        "ACTUAL_GEN_PROJECT_DATABASE_PAIR_REQUIRED",
     )
-    namespace = plan.get("namespace") or ""
     need(
-        re.fullmatch(r"t44-r30-[a-z0-9][a-z0-9-]{0,47}", namespace), "FRESH_R30_NAMESPACE_REQUIRED"
+        plan["run_id"] == run and plan["namespace"] == binding["project"],
+        "PLAN_MUST_USE_ACTUAL_GEN_RUN_AND_PROJECT",
     )
+    namespace = binding["project"]
     need(plan["source"]["git_commit"] == SOURCE, "EXACT_0B_SOURCE_REQUIRED")
     need(plan["source"]["openapi_sha256"] == OPENAPI, "FROZEN_OPENAPI_REQUIRED")
     for key in ("manifest_sha256", "files_proof_sha256", "artifact_sha256"):
@@ -127,7 +132,7 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,63}", target["database"] or ""),
         "EXACT_PROJECT_DATABASE_REQUIRED",
     )
-    need("r30" in target["database"].lower(), "OLD_DATABASE_NAMESPACE_REFUSED")
+    need(target["database"] == binding["database"], "EXACT_GEN_DATABASE_REQUIRED")
     need(
         target["mysql_host"] == "mysql"
         and type(target["mysql_port"]) is int
@@ -136,6 +141,10 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         "EXACT_DATABASE_BINDING_REQUIRED",
     )
     digest(target["binding_sha256"])
+    need(
+        target["binding_sha256"] == plan["gen_binding"]["sha256"],
+        "SAME_ORIGINAL_BINDING_SHA_REQUIRED",
+    )
     digest(target["ca_sha256"])
     origin = urlsplit(target["origin"] or "")
     need(
@@ -162,6 +171,10 @@ def check_plan(plan, now, *, require_fixture_ready=True):
             and 1 <= port <= 65535,
             "EXACT_PRIVATE_IPV4_TLS_TARGET_REQUIRED",
         )
+        need(
+            str(address) == binding["app_private_ip"] and port == binding["tls_port"],
+            "EXACT_GEN_TLS_TARGET_REQUIRED",
+        )
     except (ValueError, TypeError):
         raise Refused("EXACT_PRIVATE_IPV4_TLS_TARGET_REQUIRED") from None
     for key in ("backend", "load_python"):
@@ -184,10 +197,24 @@ def check_plan(plan, now, *, require_fixture_ready=True):
         digest(roles[role]["receipt_sha256"])
     window = plan["window"]
     start, end, stop = (timestamp(window[key]) for key in ("start_utc", "end_utc", "stop_utc"))
+    lifecycle = plan["lifecycle"]
+    t0, cost, cutoff = (
+        timestamp(lifecycle[key]) for key in ("t0_utc", "cost_stop_utc", "packet_cutoff_utc")
+    )
     need(
-        now < start < end < stop
+        window["stop_utc"] == binding["stop_utc"]
+        and stop == t0 + timedelta(minutes=35)
+        and cost == t0 + timedelta(minutes=40),
+        "ACTUAL_GEN_G35_AND_COST_C40_REQUIRED",
+    )
+    need(
+        cutoff == start - timedelta(seconds=150) and now <= cutoff,
+        "PACKET_CUTOFF_RESERVES_TRANSFER_PREPARE120_AUTH30",
+    )
+    need(
+        now < start < end <= stop
         and 780 <= (end - start).total_seconds() <= 900
-        and (stop - end).total_seconds() >= 90,
+        and (cost - end).total_seconds() >= 90,
         "FRESH_COMPLETE_WINDOW_REQUIRED",
     )
     need(timestamp(plan["seed"]["anchor_utc"]) <= now, "ACTUAL_SEED_ANCHOR_REQUIRED")
@@ -445,6 +472,36 @@ def check_evidence(plan, evidence, now):
         "projects": len(projects),
         "benchmark_authorized": False,
     }
+
+
+def load_gen_binding(plan):
+    path = Path(plan["gen_binding"]["path"])
+    need(
+        not path.is_symlink() and path.is_file() and path.stat().st_size <= 16 * 1024 * 1024,
+        "ORIGINAL_GEN_BINDING_REGULAR_FILE_REQUIRED",
+    )
+    raw = path.read_bytes()
+    need(
+        hashlib.sha256(raw).hexdigest() == plan["gen_binding"]["sha256"],
+        "ORIGINAL_GEN_BINDING_SHA_MISMATCH",
+    )
+    binding = json.loads(raw)
+    need(
+        binding["kind"] == "isolated-cloud-campaign"
+        and binding["generation_kind"] == "r30-official-backend-production-entry-window-v1"
+        and binding["source_sha"] == SOURCE
+        and binding["source_manifest_sha256"] == SOURCE_MANIFEST
+        and binding["upgrade_binding_sha256"] == BUNDLE_MANIFEST,
+        "EXACT_R30_GEN_BINDING_SOURCE_REQUIRED",
+    )
+    need(
+        all(
+            binding.get(key)
+            for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes")
+        ),
+        "MINIMAL_SCHEMA_PROJECTION_IS_NOT_FULL_ACTUAL_BINDING",
+    )
+    return binding
 
 
 def validate_loaded_receipt(plan, raw):
