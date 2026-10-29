@@ -13,9 +13,16 @@
 | 测试结果 | [测试结果报告](test-results-report.md) | 当前模块/CI、旧独立结果及新云结果待发表范围，不混版本计数 |
 | AI可执行规格 | [规格和过程说明](ai-spec-guide.md) | 权威输入/执行约束、U001/U002原文亮点及建议/used区别、真实归属 |
 
-新四Word输出到私密review-documents/FINAL-20261029，封面个人值不入Git、日期空；新稿均须render及逐页实际PNG QA。最终hash/页数/QA结果将在本岗公开交付manifest中登记，尚未完成的不能借旧QA宣布通过。当前源码、38API及双向映射见[来源函数索引](../../docs/reports/FINAL-20261029-source-index.json)、[接口表](../../docs/reports/FINAL-20261029-interfaces.md)、[追踪矩阵](../../docs/reports/FINAL-20261029-traceability.json)。
+新四Word输出到私密review-documents/FINAL-20261029，封面个人值不入Git、日期空；新稿均须render及逐页实际PNG QA。新需规12页、设计14页、AI规格5页共31页已逐页实际PNG看；测试Word尚未导出，等待明确公开云结果。准确hash及范围见[新交付manifest](../../docs/reports/FINAL-20261029-deliverable-manifest.json)与[新逐页QA](../../docs/reports/FINAL-20261029-word-qa.json)，未完成部分不借旧QA宣布通过。当前源码、38API及双向映射见[来源函数索引](../../docs/reports/FINAL-20261029-source-index.json)、[接口表](../../docs/reports/FINAL-20261029-interfaces.md)、[追踪矩阵](../../docs/reports/FINAL-20261029-traceability.json)。
 
 ## 2 当前证据和待办
+
+| 状态类别 | 当前结论 | 不可扩称 |
+| --- | --- | --- |
+| 技术实现和开发CI | 候选356f已实现当前技术功能，796后端及89前端开发CI全绿，原件和覆盖率已核 | 不等于独立F/P或整体作业通过 |
+| 独立功能和正式性能 | 新独立F/P待准确源实测及明确发表报告 | 不用镜像、ready或旧报告预填通过 |
+| 严格范围和本人材料 | 5817行超717，学生自写研究与真实人工12/3/5证据仍缺 | 今晚云工作结束也不标全部作业完成 |
+
 
 产品整体run40869266343已核后端796/前端89全绿，行覆盖90.232389%/93.33%，原件commit绑定另记；DB单岗40867341358成功，免费双镜像40869531724成功但不等云已部署。新的753独立结果仅在root明确发表后纳入，文档不读取其PRIVATE/代码/日志、不传开发结论。[源计数](../../records/metrics/final-candidate-20261029.PUBLIC.json)仍5817/65超717；旧性能失败与H2 INCONCLUSIVE保持。
 

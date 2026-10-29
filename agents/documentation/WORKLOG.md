@@ -528,3 +528,7 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-29T12:25:10.666454+00:00 root明确发表CI七记录bdaa814c授权cherry-pick为c2d273c0；本岗五gzip及原bytesSHA、JUnit796/0/0/0、43源2485/2754与719/852、FE89及覆盖率分子分母静态读回一致，不运行CI。exporter只增加FINAL阶段/新四稿名称和有变化先私密留版本，旧文件未author；后发部署artifact核验事实按AI实际答复归属，不当已加载。
 
 - 2026-10-29T12:32:44.852480+00:00 首次author前新批create4 marker成功一次，先核旧M4/M6/M7全254文件hash、私密cover0600；author三件及bundled render均exit0（12/15/5页）。本实例实际original逐页打开全部32页：需规12与AI规格5无裁切/丢字/坏表；设计15中原事务图字小及相邻横图恢复产生空白第11页，保留qa-v1/原DOCX后新紧凑事务图并实际看、修相邻横图切页，只重导设计。CI摘要原“5官方ZIP”表述在artifact2 ZIP/5 member核对时发现，测试MD改为2 ZIP/5原件，不改原证据或测试。
+
+- 2026-10-29T12:37:43.186464+00:00 设计新14页全数original逐页实看，原第11空白消除、事务图文字清晰；需规12/AI5首轮已实看，合31最终新页，累计真实46页views。旧254文件逐一hash/bytes仍同，新DOCX及QA私密权限0600/目录0700，封面值不入Git，测试Word未author。
+- 阶段a582推送网络长等，lsof精确核本树git PID3975后仅TERM该请求，让已提交本地author/render继续；中途过早取未创建qa-v2日志FileNotFound保留为资料时序错误，实际render最终exit0。后续独立重试push，不当LO或产品失败。
+- 导航按root新要求明确开发已验、独立F/P待验、规模/本人材料缺口三栏；没有为了百行目标另行优化产品。
