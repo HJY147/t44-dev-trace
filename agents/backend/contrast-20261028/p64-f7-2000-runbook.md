@@ -6,6 +6,8 @@ APP、LOAD各按顺序投递`ui-part01.PUBLIC.txt`至`ui-part07.PUBLIC.txt`，�
 
 APP仍依赖已审原scope桥`/root/t44-r9/scope-bridge-v3-01`（manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7），只读复用budget方法，不改旧scope桥或执行其callback。新GEN路径`/root/t44-r9/v4-code-20261028-03/profile/generation.py`，SHA9edafbbff0586b5f77a701bd37f715685fba4169abaae510474343af75a8b427；每phase helper仍305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d。真实预算receipt路径/SHA必须由本次probe提供，不推384实测。GEN所有必要budget flags保持；父进程不跨GEN持锁。
 
+模板pin勘误：777968原两配置模板误继承16Z transport摘要；须用本次修正模板，`transfer_sha256`精确为`ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07`，与manifest所列及已安装12574B transport一致。修正后APP模板SHA`1c1db93d19a985ea48681eb0e96d3122031d149297c8bd7c36ece95647e67c73`，LOAD模板SHA`ed79ef8d8b53e09cac8318a1d1a75aa98c80a06779ed7a0a4c298bc0c9f3efaa`。只更新准备配置的输入pin，13运行文件、manifest、delivery和七分片不重装/不重打包；actual配置填入真实字段后需重新计算其自身SHA，模板SHA不是实际配置SHA。
+
 在S1前完成全部安装、资源collector/mirror、LOAD keygen及公钥搬APP、两侧PUBLIC配置和读取/接收命令预写。LOAD私钥只存新0600目录，只有公钥与真实SHA可搬APP：
 
 ```sh

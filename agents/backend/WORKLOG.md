@@ -757,3 +757,7 @@ baseline611580B/SHA0df044fb…和纯query887024B/SHA03876a75…无损gzip归档+
 
 ### P64 f7新20:00窗口（AI岗位；旧16Z未执行业务据root）
 按新任务另建window2000/ui03，source f7不变。13运行9逐字同、4仅截止/窗口错误标签；manifest2af64448…4626de，delivery305c5a72…41352，7片max完整UI+300=16090。旧20eb目录/原46及失败证据逐Git相同，GEN新9edaf…单STOP差分，e551/305f依赖原字节。7项窄检查首轮1.61s通过；Ruff两个自测run缺check显式参数，补check=False后7项再通过126.60s（不算14例），限定Ruff/diff绿。只有本机安装回放和AST3.10，不重跑无关产品实验，无新actual grant/session/云/SUT/私件。设计/report/runbook/verification均新件，等待root限定审核及本次新授权执行。
+
+
+### 20Z模板pin纠错：本岗遗漏，非SUT缺陷
+root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前拒绝：运行12574B transport和manifest2af正确ba11a4d5…73f6b07，两模板错误继承f89e旧16Z pin。旧7自测盲用旧模板作期望未测跨产物一致性，本岗承认遗漏。先本机两红封0174c41d，修模板和生成器当前manifest取pin，保原断言并补必要检查，6相关绿/6未选。APP新模板SHA1c1db93d…7e67c73，LOAD ed79ef8d…9f3efaa；其他sha实际输入逐项仍null。13runtime/manifest/delivery/7raw-ui逐Git不变，无重构包/重装/云/68重跑，旧16Z和原失败不动。report/prompt/新verification齐，root继续实际流程不由本岗宣称keygen成功。

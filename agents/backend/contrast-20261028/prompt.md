@@ -68,3 +68,8 @@ root原要求：“两个必须修复：1 generation argv 必须传 --budget-rec
 ## ROLE-backend-P64-F7-2000（根新窗口，AI窄派生）
 根原要求：“另新P64工具variant exact source仍f7，仅所有STOP16→20及新安装目录/root/t44-r9/p790-f7-2000-ui03；其他13runtime业务/门槛/权限/SQL/原用例都保真，包完整outer+300<18000和原raw/ui区别保持，20eb原包/3红失败不改”“原运行字节除STOP/路径允许变量证明即可，别再跑整套无关实验”。
 本岗把允许变化写成精确旧串替换白名单，旧13先核manifest，9文件逐字同，4文件只时间与对应错误标签。模板actual仍空，真实20Z GEN单STOP差分并锁新SHA；七片同时量base64 payload和真正完整外层，实回放安装。7项窄验证验证旧包全tracked字节及原失败而不重跑全68；首Ruff2条自测check参数真实修正，7唯一例前后均通过不重复计数。没有新phase/grant/session，不把AI工具准备或根报告CI/镜像冒作学生本人经历、云实测或正式验收。
+
+
+## ROLE-backend-P64-20Z-TEMPLATE-PIN（root额外checksum发现，AI修正）
+root原要求：“新runtime transport/790_transfer.py 实际12574B SHA ba11a4d5…73f6b07，manifest2af644已正确列此；但APP/LOAD…transfer_sha256仍f89e81…旧16Z摘要”“明确只模板输入修正不重打包/不改阈值”。
+本岗承认复制旧模板漏pin、旧测试同源期望不足；先模板→当前manifest→实际文件三方核对留2红，再模板与生成器只纠一字段，其他sha实际输入逐项核null，6相关检查绿。原13/manifest/7raw-ui逐Git冻结不改，无云/重包/全68。提示词检查从单文件允许差分扩充至跨产物引用一致性，旧原始失败保留，不把AI模板错记成SUT缺陷/学生人工修正。

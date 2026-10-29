@@ -128,7 +128,11 @@ def main():
         value = json.loads(
             (OLD / f"{side}-configuration.template.PUBLIC.json").read_bytes()
         )
-        value.update(tools_dir=DEST, manifest_sha256=bundle)
+        value.update(
+            tools_dir=DEST,
+            manifest_sha256=bundle,
+            transfer_sha256=manifest["files"]["transport/790_transfer.py"]["sha256"],
+        )
         write(f"{side}-configuration.template.PUBLIC.json", canonical(value))
     for mode in ("prep", "pressure"):
         value = json.loads((OLD / f"{mode}-grant.template.PUBLIC.json").read_bytes())

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.042" timestamp="2026-10-28T23:57:55.599955+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="tmp.790_backend_contrast_20261028.p64-f7-window2000.790_template_pin_checks" name="test_template_transfer_pin_matches_manifest_and_actual_runtime[APP]" time="0.001"><failure message="AssertionError: assert 'f89e81c1813c...0fe95d129d181' == 'ba11a4d5cf7b...546d8773f6b07'&#10;  &#10;  - ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07&#10;  + f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181">side = 'APP'
+
+    @pytest.mark.parametrize("side", ["APP", "LOAD"])
+    def test_template_transfer_pin_matches_manifest_and_actual_runtime(side):
+        template = json.loads(
+            (HERE / f"{side}-configuration.template.PUBLIC.json").read_bytes()
+        )
+        manifest_raw = (HERE / "manifest.json").read_bytes()
+        manifest = json.loads(manifest_raw)
+        transfer_raw = (HERE / "transport/790_transfer.py").read_bytes()
+        assert template["manifest_sha256"] == sha(manifest_raw)
+&gt;       assert (
+            template["transfer_sha256"]
+            == manifest["files"]["transport/790_transfer.py"]["sha256"]
+            == sha(transfer_raw)
+        )
+E       AssertionError: assert 'f89e81c1813c...0fe95d129d181' == 'ba11a4d5cf7b...546d8773f6b07'
+E         
+E         - ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07
+E         + f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181
+
+tmp/790_backend_contrast_20261028/p64-f7-window2000/790_template_pin_checks.py:28: AssertionError</failure></testcase><testcase classname="tmp.790_backend_contrast_20261028.p64-f7-window2000.790_template_pin_checks" name="test_template_transfer_pin_matches_manifest_and_actual_runtime[LOAD]" time="0.001"><failure message="AssertionError: assert 'f89e81c1813c...0fe95d129d181' == 'ba11a4d5cf7b...546d8773f6b07'&#10;  &#10;  - ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07&#10;  + f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181">side = 'LOAD'
+
+    @pytest.mark.parametrize("side", ["APP", "LOAD"])
+    def test_template_transfer_pin_matches_manifest_and_actual_runtime(side):
+        template = json.loads(
+            (HERE / f"{side}-configuration.template.PUBLIC.json").read_bytes()
+        )
+        manifest_raw = (HERE / "manifest.json").read_bytes()
+        manifest = json.loads(manifest_raw)
+        transfer_raw = (HERE / "transport/790_transfer.py").read_bytes()
+        assert template["manifest_sha256"] == sha(manifest_raw)
+&gt;       assert (
+            template["transfer_sha256"]
+            == manifest["files"]["transport/790_transfer.py"]["sha256"]
+            == sha(transfer_raw)
+        )
+E       AssertionError: assert 'f89e81c1813c...0fe95d129d181' == 'ba11a4d5cf7b...546d8773f6b07'
+E         
+E         - ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07
+E         + f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181
+
+tmp/790_backend_contrast_20261028/p64-f7-window2000/790_template_pin_checks.py:28: AssertionError</failure></testcase></testsuite></testsuites>

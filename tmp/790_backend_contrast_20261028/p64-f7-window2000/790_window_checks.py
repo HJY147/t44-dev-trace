@@ -73,7 +73,13 @@ def test_templates_only_window_path_and_manifest_pins_change_and_stay_unadmitted
     for side in ("APP", "LOAD"):
         name = f"{side}-configuration.template.PUBLIC.json"
         expected = json.loads((OLD / name).read_bytes())
-        expected.update(tools_dir=builder.DEST, manifest_sha256=manifest_sha)
+        expected.update(
+            tools_dir=builder.DEST,
+            manifest_sha256=manifest_sha,
+            transfer_sha256=document("manifest.json")["files"][
+                "transport/790_transfer.py"
+            ]["sha256"],
+        )
         assert document(name) == expected
         assert (
             expected["root_grant_sha256"] is None and expected["binding_sha256"] is None

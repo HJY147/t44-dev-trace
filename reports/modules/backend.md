@@ -477,3 +477,6 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 
 
 2026-10-28 P64 f7 20:00窗口新variant：原16Z包与3红保留，window2000安装ui03；runtime2af64448…4626de，delivery305c5a72…41352。13运行9同/4仅时间字面；GEN9edaf…单STOP差分。7唯一窄检查通过含真实outer安装，最大完整UI+300=16090；原46及旧失败逐字同，未重复整套68。两阶段准入/600TTL/330与90/锁及预算/400active无think不变，模板null/admitted=false。详p64-f7-2000-report.md和runbook；本岗无云/SUT/正式性能结论，待限定review。
+
+
+2026-10-28 20Z PUBLIC输入勘误：模板transfer_sha256漏随runtime更新，本地先真实2红后6相关绿，纠正为ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07。只模板/生成器及一致性自测说明变化，13运行和manifest2af/delivery305c/7分片不动，无SUT/阈值/性能结论。root预keygen额外校验实际拒绝事实保留，不把旧7假定完善。详p64-f7-2000-template-pin-report.md；实际参数仍由root本次回执填写。
