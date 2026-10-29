@@ -804,3 +804,10 @@ root选T0=10Z/S10:20/D780/E10:33/G10:35/C10:40/最终核10:45/packet10:17:30，�
 
 
 现场resource-stream合同核验：root报告P准备真实完成/binding0c50f2d.../max384，随后要求sampleG/serveC。45秒内读原311d public源码给原CLI，并明确其双重serve<=G且serve>=sample+30保护令该组合不可能；原合法sample10:34:30/serve10:35仍盖S/E，root可选；required-start/end只有mirror处理。未改代码、未开云、不加封装或依赖，真实resource binding/PID/nonce都由root运行后出。完整命令/边界追加FINAL-TRANSPORT-AND-APP.md。
+
+
+## 2026-10-29 Future APP HTTP runner (offline only)
+
+Root reports VMs economically stopped10:26Z; no deployment cloud/Docker/SQL/HTTP/QA/session execution. Added fixed r30-http-prepare.py (14842B/SHA0d5288b800cb56a0fed3cb9c28a5b83b8e200eacd73a7bfd84358b84440cc903), pinned existing staging library8e9d only, no SQL lock. Root-approved future actual raw binding/source0b/config8e/Docker29 actualID distinct config, 18 original producer files cb966f/manifest0fc61e, edge only UID10001/RO/capdrop/no businessenv and official PYTHONPATH; fixed runtime probe then prepare_http args. Oldrun/materials/17/LOAD4f unchanged; root must separately approve a real new window.
+
+5 local seam tests use actual18 Git blobs; no producer business execution. First mock green had incorrect C=G fixture; not admission proof. Actual producer guard/materials C=G+300 fixture then2ERROR red retained, narrow G35/C40/cutoff=S−150/D780–900/E≤G/E≤C−90 fix now5green. Python Ruff missing and offline Ruff6 initial findings retained; final offline Ruff green. Originals unchanged, failure prefix/logs0600, own unique child stop only, max300 with packet/G reserve, stdout path/hash/status. Known C/G P1 locally fixed; independent exact-SHA review and future runtime pending, no present cloud admission. Runbook FUTURE-HTTP-RUNBOOK.md, actual prompt ROLE-deployment-R30-FUTURE-HTTP-v1 in PROMPT-FUTURE-HTTP.md.

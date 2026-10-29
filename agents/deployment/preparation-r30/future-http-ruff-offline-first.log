@@ -1,0 +1,88 @@
+FURB162 Unnecessary timezone replacement with zero offset
+  --> deployment/cloud-reuse/r30-http-prepare.py:39:35
+   |
+37 |     if not isinstance(text, str) or not re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ", text):
+38 |         raise ValueError("EXACT_IMMUTABLE_UTC_REQUIRED")
+39 |     return datetime.fromisoformat(text.replace("Z", "+00:00")).timestamp()
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: Remove `.replace()` call
+   |
+38 |         raise ValueError("EXACT_IMMUTABLE_UTC_REQUIRED")
+   -     return datetime.fromisoformat(text.replace("Z", "+00:00")).timestamp()
+39 +     return datetime.fromisoformat(text).timestamp()
+40 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> deployment/cloud-reuse/r30-http-prepare.py:164:14
+    |
+163 | def owned_exit(value, name, *, stop=False):
+164 |     result = subprocess.run([*DOCKER, "inspect", name], capture_output=True, timeout=10, env=environment())
+    |              ^^^^^^^^^^^^^^
+165 |     if result.returncode == 1 and b"no such" in result.stderr.lower():
+166 |         return
+    |
+help: Add explicit `check=False`
+    |
+163 | def owned_exit(value, name, *, stop=False):
+    -     result = subprocess.run([*DOCKER, "inspect", name], capture_output=True, timeout=10, env=environment())
+164 +     result = subprocess.run([*DOCKER, "inspect", name], check=False, capture_output=True, timeout=10, env=environment())
+165 |     if result.returncode == 1 and b"no such" in result.stderr.lower():
+    |
+note: This suggestion may be incorrect or produce invalid syntax. It requires manual review and cannot be applied automatically
+
+BLE001 Do not catch blind exception: `Exception`
+   --> deployment/cloud-reuse/r30-http-prepare.py:244:12
+    |
+242 |     try:
+243 |         print(json.dumps(run(args)))
+244 |     except Exception as error:
+    |            ^^^^^^^^^
+245 |         print(json.dumps({"status": "FAILED", "error_type": type(error).__name__, "output": str(args.output_dir)}))
+246 |         raise SystemExit(1) from None
+    |
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+  --> tmp/755_deployment_future_http_r30/test_http_runner.py:65:73
+   |
+63 |         receipt = {"kind": "r30-backend-import-receipt-v1", "source_sha": R.SOURCE, "identity": self.proof,
+64 |              "bundle_manifest_sha256": R.BUNDLE, "source_manifest_sha256": R.SOURCE_MANIFEST,
+65 |              "full_runtime_files": 60, "package_resolution": {"files": [dict(i=i) for i in range(60)],
+   |                                                                         ^^^^^^^^^
+66 |                 "uid": 10001, "business_env_absent": True, "package_origin": "/app/backend/t44/__init__.py"}}
+67 |         self.put(self.args.import_receipt, receipt)
+   |
+help: Rewrite as a literal
+   |
+64 |              "bundle_manifest_sha256": R.BUNDLE, "source_manifest_sha256": R.SOURCE_MANIFEST,
+   -              "full_runtime_files": 60, "package_resolution": {"files": [dict(i=i) for i in range(60)],
+65 +              "full_runtime_files": 60, "package_resolution": {"files": [{"i": i} for i in range(60)],
+66 |                 "uid": 10001, "business_env_absent": True, "package_origin": "/app/backend/t44/__init__.py"}}
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+B023 Function definition does not bind loop variable `calls`
+   --> tmp/755_deployment_future_http_r30/test_http_runner.py:180:17
+    |
+178 |             calls = []
+179 |             def child(cmd, out, err, stdin, timeout, env, cleanup):
+180 |                 calls.append(cmd)
+    |                 ^^^^^
+181 |                 is_runtime = "--check-runtime-only" in cmd
+182 |                 payload = {"kind": "NEUTRAL_HTTP_RUNTIME_FUNCTION_PROBE_ONLY", "required_backend_config": R.CONFIG,
+    |
+
+B023 Function definition does not bind loop variable `fail`
+   --> tmp/755_deployment_future_http_r30/test_http_runner.py:188:20
+    |
+186 |                 out.chmod(0o600)
+187 |                 err.chmod(0o600)
+188 |                 if fail and not is_runtime:
+    |                    ^^^^
+189 |                     cleanup(stop=True)
+190 |                     raise subprocess.TimeoutExpired(cmd, timeout)
+    |
+
+Found 6 errors.
+2 unsafe fixes available with `--fix --unsafe-fixes`.

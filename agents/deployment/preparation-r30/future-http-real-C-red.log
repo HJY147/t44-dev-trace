@@ -1,0 +1,38 @@
+test_docker29_actual_id_distinct_config_and_business_env_refusal (__main__.RunnerTests.test_docker29_actual_id_distinct_config_and_business_env_refusal) ... ok
+test_extra_python_and_tampered_declared_bytes_rejected (__main__.RunnerTests.test_extra_python_and_tampered_declared_bytes_rejected) ... ok
+test_full_runner_success_and_timeout_preserve_original_prefix (__main__.RunnerTests.test_full_runner_success_and_timeout_preserve_original_prefix) ... ERROR
+test_real_final18_staging_fixed_runtime_http_argv_and_modes (__main__.RunnerTests.test_real_final18_staging_fixed_runtime_http_argv_and_modes) ... ERROR
+test_source_namespace_old_run_and_expired_packet_refused_before_docker (__main__.RunnerTests.test_source_namespace_old_run_and_expired_packet_refused_before_docker) ... ok
+
+======================================================================
+ERROR: test_full_runner_success_and_timeout_preserve_original_prefix (__main__.RunnerTests.test_full_runner_success_and_timeout_preserve_original_prefix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/755_deployment_future_http_r30/test_http_runner.py", line 192, in test_full_runner_success_and_timeout_preserve_original_prefix
+    self.assertEqual(R.run(self.args)["status"], "CHILD_EXITED_ZERO_NOT_ACCEPTANCE")
+                     ^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-http-prepare.py", line 180, in run
+    value, inputs, timeout = checked(args, a)
+                             ^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-http-prepare.py", line 86, in checked
+    raise ValueError("LIVE_NEW_IMMUTABLE_PACKET_WINDOW_REQUIRED")
+ValueError: LIVE_NEW_IMMUTABLE_PACKET_WINDOW_REQUIRED
+
+======================================================================
+ERROR: test_real_final18_staging_fixed_runtime_http_argv_and_modes (__main__.RunnerTests.test_real_final18_staging_fixed_runtime_http_argv_and_modes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/755_deployment_future_http_r30/test_http_runner.py", line 96, in test_real_final18_staging_fixed_runtime_http_argv_and_modes
+    value, inputs, timeout = self.checked()
+                             ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/755_deployment_future_http_r30/test_http_runner.py", line 93, in checked
+    return R.checked(self.args, A)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-http-prepare.py", line 86, in checked
+    raise ValueError("LIVE_NEW_IMMUTABLE_PACKET_WINDOW_REQUIRED")
+ValueError: LIVE_NEW_IMMUTABLE_PACKET_WINDOW_REQUIRED
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.281s
+
+FAILED (errors=2)
