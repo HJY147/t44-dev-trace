@@ -772,3 +772,6 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 2026-10-29 ROLE-backend-NEUTRAL-FIXTURE-R29-v1：在root新预算窗做离线中性fixture准备，不接触独立PRIVATE。分析原seed600 state2且没有新窗口+24h自然未来任务，root采用正常API新增400、保留原882短测ID，明确总6400。交付source-free HTTPS准备、原CLI/只读counts的预算锁适配、APP序列/加密seal；产品/原13不改。5唯一最终局部检查通过，初版umask0400失败和修复留存；没有云、真实SUT或性能通过。详neutral-fixture-20261029。
 
 2026-10-29 neutral真实云首admin import失败由root回传：本岗host误加-I，忽略原镜像PYTHONPATH；原5本地检查没覆盖镜像导入，不声称其充分。root确认无service/HTTP，显式批一次新label01b。交新精确故障hash/原inputs不变/无旧sideeffect门禁的续步，只去admin-I，原01/代码/13保持，4窄检查0.065s绿；新云是否通过未获回传。
+
+
+2026-10-29 ROLE-backend-R29-ARCHITECTURE-v1：仅读root发布开发短测PUBLIC和f7源，未碰正在测SUT/QA私件。400短burst四P95约343–636ms、0失败不能定位Python/SQL/网络层；旧raw已有wall/callerCPU/ServerTiming，可停机后关联而非新云包装。提出身份事实outer-join预检查跨DB接口，保留所有原认证阶段/锁/错误顺序，可能净增故不当规模方案。没发现真实≥798闭合；已实现schema/DDL/UI抽象不得重扣。RFC明确净减0/未改产物，需完整离线替代再owner验证。

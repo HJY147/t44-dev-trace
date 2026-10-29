@@ -1,0 +1,76 @@
+{
+  "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "scope": "offline source analysis; no running SUT changes",
+  "function_spans": [
+    {
+      "path": "backend/t44/api.py",
+      "function": "validate_request",
+      "first_line": 104,
+      "last_line": 166,
+      "physical_span": 63
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "function": "check_schema",
+      "first_line": 215,
+      "last_line": 301,
+      "physical_span": 87
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "function": "migrate",
+      "first_line": 304,
+      "last_line": 401,
+      "physical_span": 98
+    },
+    {
+      "path": "backend/t44/persistence/seed.py",
+      "function": "_populate",
+      "first_line": 37,
+      "last_line": 250,
+      "physical_span": 214
+    },
+    {
+      "path": "backend/t44/services/identity.py",
+      "function": "authenticate",
+      "first_line": 45,
+      "last_line": 84,
+      "physical_span": 40
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "function": "prepare",
+      "first_line": 45,
+      "last_line": 52,
+      "physical_span": 8
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "function": "_claim",
+      "first_line": 140,
+      "last_line": 195,
+      "physical_span": 56
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "function": "locked_scope",
+      "first_line": 197,
+      "last_line": 242,
+      "physical_span": 46
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "function": "execute",
+      "first_line": 244,
+      "last_line": 306,
+      "physical_span": 63
+    },
+    {
+      "path": "backend/t44/services/workflow.py",
+      "function": "transitionTask",
+      "first_line": 28,
+      "last_line": 148,
+      "physical_span": 121
+    }
+  ]
+}

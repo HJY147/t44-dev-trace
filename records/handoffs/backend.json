@@ -3648,5 +3648,17 @@
       "script": "agents/backend/neutral-fixture-20261029/resume-import-launch.PUBLIC.sh",
       "SHA256": "eec6056af0eb59828e1370529da7f481f0b6bfd2dcf2369d8457207a25746244"
     }
+  },
+  "r29_architecture_followup": {
+    "status": "RFC_ONLY_NO_798_CLOSURE",
+    "prompt_ref": "ROLE-backend-R29-ARCHITECTURE-v1",
+    "developer_summary_only": true,
+    "independent_QA_accessed": false,
+    "production_changed": false,
+    "cloud_operations": 0,
+    "actual_LOC_reduction": 0,
+    "architecture": "agents/backend/architecture-20261029/RFC.md",
+    "cross_owner_proposal": "identity_snapshot: DB-provided joined facts, backend preserves original phase/error semantics",
+    "risk": "May increase LOC; no SQL/Python attribution from cohort summary alone"
   }
 }

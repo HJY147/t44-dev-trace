@@ -1,0 +1,5 @@
+# ROLE-backend-R29-ARCHITECTURE-v1
+
+Actual root task: use only published developer short summary and f7 source to examine Python/SQL/HTTP cost and strict5898/798 excess. Do not touch the running SUT or independent QA. Seek a structural equivalent architecture rather than microcache/minification/excluded relocation/feature loss; first produce risk and equivalence review before any owned implementation, cross-module changes require root/owner interface proposal. Preserve all796 behavior/assertions.
+
+Actual outcome: analyzed existing raw timing fields and transaction/authentication call graph; proposed an owner-reviewed identity-snapshot join interface while keeping auth stages and lock semantics. No unmeasured CPU/SQL bottleneck or≥798 savings is claimed. Source already contains contract/DDL/UI abstraction; no honest800 closure found in the limited window. The proposal records explicit zero implemented savings and no production/QA changes rather than inventing a passing architecture budget.
