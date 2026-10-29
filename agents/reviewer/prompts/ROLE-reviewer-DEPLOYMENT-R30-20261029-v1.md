@@ -1,0 +1,30 @@
+# ROLE-reviewer-DEPLOYMENT-R30-20261029-v1
+
+实际操作者：固定AI reviewer；决策/集成者：root；不是独立验收测试岗。
+
+## 实际派工原文
+
+下一固定审核岗任务：仅审核新部署准备，不操作云/运行服务/签会话，不读任何QA PRIVATE或REVIEW_R30_ONLY（那只新测试岗可读）。从root7374b3637b06465d448fc2e81952ba18fc676315建独立 .agent-worktrees/reviewer-deployment-r30 / codex/reviewer-deployment-r30。部署岗待审准确三提交61179fca68f09e89b3f8de24b910dd42ae78a434、a3a1fdc4acae861491190f3b97b310f0a41191e2、a6054ef5d5346be8ca55103f70012ee08d333bb8（不可直接merge PR45全量，PR含继承root差异）。报告/真实commands/20边界/新adapter/RUNBOOK在 .agent-worktrees/deployment-preparation-r30/agents/deployment/preparation-r30/。该树tmp/761_deployment_preparation_r30/official-artifact-12880320744是官方已回收无凭据artifact，允许只读必要字节；不读其余runtime私件。独立核source/context/manifest绑定、config/ordered layers/base/runtime source proof、loaded的Docker29 containerd兼容且不降校验、new run/source/time/replay及budget gate、资源封存/节省停机/auto-release-后验方案。明确方案到底启动哪些APP services/LOAD、镜像件数与运行资源计数及scheduler/消费者影响，不能拿镜像包数当实际并发运行能力。
+
+事实供核对：精确产品0bffe0c535e5897890aebf30879fdd3839dc52d6，原生CI40827655008；新backend-only run40833943007官方artifact12880320744 ZIP94895161B/SHA69b2522744b9b9c4d0bd2845c04aeb4bb570c2efe1f8c84645950cc595fd7b4e；bundle b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345；config8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845；source manifest0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b。部署岗声称officialPython4层prefix、62context、非root none/read-only60runtime件一致，20本地边界绿，实际Linux loaded/cache/SUT均未执行；你核后限定表态，不照抄成功。应用代码/compose/specs不改。
+
+boot目前仍HOLD，QA方法仅允许补齐真实绑定后的有限性能观察，后端新neutral与QA新0b适配接口还未定，必须不因制品ready就放grant。新测试如需用tmp/758_deployment_review_r30，先查冲突并保持降序；不重跑全产品CI。先实质P1/P2/准入范围/缺口，后四件及真实prompt/commit/push/GitHub限定评论，不发global reviewer/stage或main保护状态。
+
+## 后发steering原文
+
+用户刚要求今天尽量结束所有服务器工作，root优先一次35/40/45分钟有限窗口。请尽快先发部署实质审核P1/P2/BOOT vs SUTgrant门禁结论与需修项，不等行政封档；不加全产品CI/压测。新QA core已确认可动态接受0b无需改，adapter单独新版仍待。真实seed/4roles/TTL材料模板待后端，两原机仍OFF。root会等你限定审完才整合部署三commit，不给global批准。
+
+## 实际执行改进与产物映射
+
+- 从实际新generation连接实际预算checked_binding复现kind失配，未把旧预算hash相同或20边界绿视为新接口正确。先发P1和精确错误，再封档。
+- 不只核摘要：62Git完整源、原11层顺序回放60运行件、官方Python不可变index/manifest/config和4DiffID、OCI descriptor到原config/层正反例分开核。
+- 只重定向owner20边界的路径/临时输出，未改断言；明确本岗20OK及外层状态捕获缺失，不重跑产品CI。
+- 镜像运输1件、APP6/7常驻、串行operation临时+1、LOAD接口待定分别列明；consumer/scheduler实际影响及费用停止后验单列。
+- 本岗测试/归档全在758，产品实现、compose/specs和原测试不改；旧失败、TLS与工具封装错误保留。产物为本岗三件、此prompt、报告及758原始证据。
+
+
+## P1修复复审派工原文
+
+P1修复准确2ca7fd377b7ad0bbe37ff9aea8924825b092a803已push，在a605之上。owner报告预算仅KIND变化新pin9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61，原305f不改；adapterf2f850b5e17bd688811413ac535d36c0345ec9a0472df18dc22b65e758342896；5新入口先3FAIL/2ERROR→全绿，旧7绿Ruff绿，未跑云/SQL/Docker。请优先窄复核真实derive→binding→checked_binding/operation_lock/probe-budget到live哨兵及旧kind拒绝，确认完整预算逻辑不变和newsha链更新后给代码准入边界，行政封档可随后。新增LOADED-PROOF-INTERFACE.md写清minimal receipt不含60行raw表，完整proof需实际window.backend返回中性序列化；你请明确根执行时需要何命令/原件，不能把计数60当完整raw核查或CI当APP loaded。APP idle6含consumer无scheduler、scope启动后7已明，root中性材料将保留真实角色说明。用户今天收尾优先，BOOT仍HOLD。
+
+实际自有758_budget_fix_review.py exit0已先交root，保留原三提交P1/首轮审核assert错误及fix后精确新SHA复审，未改任何owner代码或测试。

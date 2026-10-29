@@ -1,0 +1,95 @@
+{
+  "operator": "AI reviewer",
+  "candidate_commits": [
+    "61179fca68f09e89b3f8de24b910dd42ae78a434",
+    "a3a1fdc4acae861491190f3b97b310f0a41191e2",
+    "a6054ef5d5346be8ca55103f70012ee08d333bb8"
+  ],
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "tmp/758_deployment_review_r30/758_kind_probe.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "stdout": "kind-probe.stdout.txt",
+      "stderr": "kind-probe.stderr.txt",
+      "result": "Reviewer assertion expected variable KIND rather than actual string literal; budget rejection had already occurred"
+    },
+    {
+      "command": [
+        "python3",
+        "tmp/758_deployment_review_r30/758_kind_probe.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "stdout": "kind-probe-final.stdout.txt",
+      "stderr": "kind-probe-final.stderr.txt",
+      "result": "After reviewer-only literal assertion correction, actual P1 rejection confirmed"
+    },
+    {
+      "command": [
+        "python3",
+        "tmp/758_deployment_review_r30/758_artifact_review.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": null,
+      "stdout": "artifact-review.stdout.txt",
+      "stderr": "artifact-review.stderr.txt",
+      "result": "Final result.json and full stdout written; unittest20 tests OK/0 fail/error, offline archive/OCI checks complete. Final process status was consumed by a parallel poll whose outer orchestration then failed while parsing unsupported artifact fetch; do not relabel this as a captured shell exit0."
+    },
+    {
+      "command": "Python stdlib HTTPS Docker Hub read via stdin",
+      "exit_code": 1,
+      "stdout": "official-python-prefix.json",
+      "stderr": "official-python-prefix.stderr.txt",
+      "result": "Local default CA issuer unavailable; no registry claim from this first attempt"
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "tmp/758_deployment_review_r30/758_official_base.py"
+      ],
+      "exit_code": 0,
+      "stdout": "official-python-prefix-final.json",
+      "stderr": "official-python-prefix-final.stderr.txt",
+      "result": "Normal certifi CA verification, immutable index/manifest/config digest and four official DiffIDs all equal; no token persisted"
+    },
+    {
+      "command": [
+        "python3",
+        "tmp/758_deployment_review_r30/758_budget_fix_review.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "stdout": "budget-fix-review.stdout.txt",
+      "stderr": "budget-fix-review.stderr.txt",
+      "result": "Exact2ca7 real derived binding/flock and GEN probe to nonnetwork sentinel passes; old kind rejected; only kind literal and complete SHA chain verified"
+    }
+  ],
+  "other_read_errors": [
+    {
+      "exit_code": 2,
+      "reason": "Guessed absent v4/generation-template.py in rg; actual parent generation-f4.py located"
+    },
+    {
+      "exit_code": 1,
+      "reason": "System Python certifi import absent; existing dependency venv provided certifi"
+    },
+    {
+      "exit_code": 128,
+      "reason": "Guessed missing test_r30_budget_binding.py; actual new test is tmp/760_deployment_budget_kind_r30/test_budget_chain.py"
+    }
+  ],
+  "service_cloud_session_commands_executed": 0,
+  "QA_PRIVATE_or_REVIEW_R30_ONLY_read": false
+}

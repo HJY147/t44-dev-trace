@@ -148,7 +148,10 @@
     "agents/reviewer/github/r29-schema-274e2e6b-20261029.md",
     "agents/reviewer/prompts/ROLE-reviewer-DRY-R29B-20261029-v1.md",
     "reports/reviews/dry-r29b-20261029.md",
-    "tmp/764_reviewer_dry_r29b"
+    "tmp/764_reviewer_dry_r29b",
+    "agents/reviewer/prompts/ROLE-reviewer-DEPLOYMENT-R30-20261029-v1.md",
+    "reports/reviews/deployment-r30-20261029.md",
+    "tmp/758_deployment_review_r30"
   ],
   "backend_preflight_review": {
     "head": "7584cd31f0abfd6727d552b5fef31a9303247d58",
@@ -599,7 +602,7 @@
     "CI_triggered": false,
     "verified_at_utc": "2026-10-23T23:30:29.994606+00:00"
   },
-  "implementation_status": "限定审核完成，新增P1/P2均0；两精确产品可交root局部集成；组合投影5880仍超780，整体门未放行，无产品实现/独立验收。",
+  "implementation_status": "原三提交P1实际复现保留，准确2ca7修复已关闭；新增未决P1/P2=0，只准受限准备/安装与新环境预检候选，BOOT/SUT仍HOLD。无云/服务/会话/PRIVATE操作。",
   "integration_history_note": "Coordinator conflict resolution preserves both original3c failure and babc followup; reports/raw evidence unchanged. Latest phase is session_r1_followup, old session_cleanup_review remains historical.",
   "interfaces": [
     {
@@ -1521,7 +1524,8 @@
       "actual_dispatch": "agents/reviewer/dispatches/ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1.txt",
       "reason": "Exact Git AST inlining and byte-chain review, scoped original HTTP execution and fixed cloc; no full CI/cloud/independent execution."
     },
-    "ROLE-reviewer-DRY-R29B-20261029-v1"
+    "ROLE-reviewer-DRY-R29B-20261029-v1",
+    "ROLE-reviewer-DEPLOYMENT-R30-20261029-v1"
   ],
   "questions": [],
   "readonly_uow_design": {
@@ -1648,7 +1652,7 @@
     "D": "POC only, zero counted benefit",
     "E": "0-15; existing seed context/add/pointer reuse not counted twice"
   },
-  "stage": "r29b-two-local-dry-candidates-limited-review",
+  "stage": "r30-deployment-preparation-reviewed-budget-kind-fix-scoped",
   "unresolved_items": [
     "source5980超上限880",
     "正式400并发600秒三组仍未通过，本候选未测延迟收益",
@@ -1667,7 +1671,7 @@
     "No reviewer full18/FE89/DB66/MySQL/browser872/CI/native/load rerun; overall remains failed, root6303 size not recounted.",
     "No reviewer owner6neighbor/7target/fullsuite/MySQL/browser872/load/CItrigger/independent run; fullCI rawartifacts not reaudited; size not recounted."
   ],
-  "updated_at": "2026-10-29T06:35:01.552019+00:00",
+  "updated_at": "2026-10-29T07:54:21.446727+00:00",
   "user_choice_update": {
     "source": "总协调真实派工通知",
     "quote": "采用推荐方案，继续开发",
@@ -4316,6 +4320,124 @@
       "initial_summary_filename_read_exit": 128,
       "initial_summary_filename_note": "summary.json absent; actual summary.PUBLIC.json then read successfully",
       "updated_at": "2026-10-29T06:35:01.552019+00:00"
+    }
+  },
+  "deployment_r30_20261029_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-DEPLOYMENT-R30-20261029-v1",
+    "root_start": "7374b3637b06465d448fc2e81952ba18fc676315",
+    "targets": [
+      "61179fca68f09e89b3f8de24b910dd42ae78a434",
+      "a3a1fdc4acae861491190f3b97b310f0a41191e2",
+      "a6054ef5d5346be8ca55103f70012ee08d333bb8"
+    ],
+    "product": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "product_native_CI": 40827655008,
+    "backend_build_CI": 40833943007,
+    "official_artifact": 12880320744,
+    "official_zip_bytes": 94895161,
+    "official_zip_digest": "69b2522744b9b9c4d0bd2845c04aeb4bb570c2efe1f8c84645950cc595fd7b4e",
+    "reviewer_original_ZIP_read": false,
+    "bundle_sha256": "b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345",
+    "source_manifest": "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b",
+    "config": "8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+    "own_git_context": 62,
+    "own_layer_replayed_runtime_files": 60,
+    "ordered_layers": 11,
+    "official_base_prefix": 4,
+    "official_registry_index_manifest_config_digests_verified": true,
+    "synthetic_classic_and_OCI_descriptors_passed": true,
+    "identity_negative_checks": 3,
+    "owner_boundaries_replayed": {
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "final_outer_exit_code": null,
+      "why": "Final status lost by outer parallel-response parsing error; final JSON/stdout and unittest OK recorded"
+    },
+    "findings": [
+      {
+        "id": "R30-BUDGET-KIND-01",
+        "priority": "P1",
+        "generated_kind": "r30-official-backend-production-entry-window-v1",
+        "budget_kind": "exact-pinned-production-entry-generation-v4",
+        "actual_error": "V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION",
+        "evidence": "tmp/758_deployment_review_r30/kind-probe.json",
+        "responsible": "deployment",
+        "status": "CLOSED_IN_EXACT_CODE_SCOPE_2ca7fd37"
+      }
+    ],
+    "P1": 0,
+    "P2": 0,
+    "decision": "NO_NEW_CODE_BLOCKER_RESTRICTED_PREPARATION_INSTALL_AND_NEW_ENVIRONMENT_PREFLIGHT_CANDIDATE_ONLY",
+    "BOOT": "HOLD",
+    "SUT_grant": "HOLD",
+    "runtime_counts": {
+      "new_backend_images_transported": 1,
+      "APP_idle_persistent": 6,
+      "APP_with_scoped_scheduler": 7,
+      "APP_distinct_used_images": 5,
+      "cache_role_identities": 6,
+      "serial_operation_transient_extra": 1,
+      "LOAD_actual_driver_resources": "unresolved until new adapter frozen",
+      "P_workers": 64,
+      "P_API_pool_capacity": 320,
+      "P_total_connection_plan": 384,
+      "actual_capacity_measured": false
+    },
+    "resource_preservation_plan": "35min workload seal/stop; provider economical stop before40; verify STOP/economical/auto-release -/retained disks by45; not executed",
+    "cloud_service_Docker_session_commands": 0,
+    "QA_PRIVATE_or_REVIEW_R30_ONLY_read": false,
+    "tester_contact": false,
+    "product_compose_specs_or_original_tests_changed": false,
+    "global_reviewer_status_or_main_protection_changed": false,
+    "PR45_full_merge_authorized": false,
+    "technical_P1_sent_before_administration": true,
+    "unverified": [
+      "actual Linux/Docker29 load and current caches",
+      "new real run/source/time/resource profile",
+      "backend true seed/four roles/TTL",
+      "new QA adapter and complete Linux tool/SUT grant",
+      "resource collection/seal/LOAD tail/provider stop and auto-release posterior"
+    ],
+    "report": "reports/reviews/deployment-r30-20261029.md",
+    "evidence": "tmp/758_deployment_review_r30",
+    "updated_at": "2026-10-29T07:54:21.446727+00:00",
+    "original_three_commit_P1": 1,
+    "fix_commit": "2ca7fd377b7ad0bbe37ff9aea8924825b092a803",
+    "fix_review": {
+      "target": "2ca7fd377b7ad0bbe37ff9aea8924825b092a803",
+      "P1": "R30-BUDGET-KIND-01",
+      "status": "CLOSED_IN_EXACT_CODE_SCOPE",
+      "adapter_sha256": "f2f850b5e17bd688811413ac535d36c0345ec9a0472df18dc22b65e758342896",
+      "original_budget_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+      "derived_budget_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+      "budget_only_one_kind_literal_changed": true,
+      "new_binding_accepted": true,
+      "real_operation_flock_entered": true,
+      "GEN_probe_reached_nonnetwork_mysql_live": [
+        "mysql"
+      ],
+      "systemctl_command_was_stubbed": true,
+      "phase_binding_outer_wrapper_stubbed": true,
+      "old_kind_rejected": "V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION",
+      "resource_generation_and_profile_SHA_chain_verified": true,
+      "actual_budget_SQL_or_cloud_or_Docker_or_service_or_session": false,
+      "own_exit_code": 0
+    },
+    "loaded_proof_requirements": {
+      "actual_proof_exists": false,
+      "full_exit": "After import, execute exact LOADED-PROOF-INTERFACE.md window.backend serialization before infra/business",
+      "originals_required": [
+        "full loaded-runtime-proof.PUBLIC.json with actual bytes/SHA",
+        "original source-manifest.json 0c5b...",
+        "original backend-bundle-manifest.json b2db..."
+      ],
+      "complete_runtime_rows": 60,
+      "backend_rows": 53,
+      "minimal_import_count_or_verify_loaded_CLI_or_CI_is_not_raw_proof": true,
+      "actual_id_may_differ_from_config_id": true,
+      "new_neutral_adapter_must_bind_run_source_window_machine_resources": true
     }
   }
 }
