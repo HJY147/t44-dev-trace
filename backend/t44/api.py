@@ -22,7 +22,8 @@ from t44.settings import Settings
 _REF = "#/components/parameters/"
 _ATTACK = re.compile(
     r"(?is)(?:\bunion\s+(?:all\s+)?select\b|;\s*(?:drop|truncate)\s+table\b|"
-    r"['\"]\s*(?:or|and)\s+\d+\s*=\s*\d+\s*(?:--|#))"
+    r"['\"]\s*(?:or|and)\s+\d+\s*=\s*\d+\s*(?:--|#)|"
+    r"\b\d+\s+(?:or|and)\s+\d+\s*=\s*\d+\b)"
 )
 
 
