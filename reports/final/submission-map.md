@@ -1,5 +1,8 @@
 # T44作业提交物对照表
 
+
+本轮最新技术材料：产品90b734f6，四份Markdown及私密FINAL90b四Word，开发CI797/89全绿；独立F05原18/1/11保留，完整验收未成立；P06性能待明确PUBLIC结果回填。规模为主要核心5038加辅助780、原全量5818；用户采用核心口径，不称老师批准。旧M6/M7/FINAL20261029均按原截止保留。当前交付及逐页QA见[FINAL90b清单](../../docs/reports/FINAL90b-deliverable-manifest.json)。
+
 > **2026-10-25 Round8后发入口：** [Round8自主续作事实附录](round8-autonomous-process-addendum.md)记录source935开发CI566、新独立F13PASS/1NOT_PROVEN/0FAIL（整体NOT_PROVEN）、规模6335/超1235；本轮P已认证600秒核心时钟窗但仅386/400持续、14传输错误、三目标P95失败，P01FAIL/完整正式组0；outer最终状态链仍缺。旧F08/P01红、旧报告/Word截止保持；本人手写研究正文和人工12/3/5未由AI代作。
 
 > **2026-10-25开发续作入口：** [自主续作过程补记](autonomous-20261025-process-addendum.md)记录准确f237完整开发CI、有限MySQL开发验证及c8规模6326/超1226。它不替代独立产品/400×600正式性能验收，也未重导旧Word或最终封包。下面原云839与M7等说明保持各自历史截止。

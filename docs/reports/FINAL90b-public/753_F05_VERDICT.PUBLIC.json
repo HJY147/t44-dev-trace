@@ -1,0 +1,254 @@
+{
+  "schema": "753-independent-F05-verified-verdict-v1",
+  "issued_utc": "2026-10-29T18:47:09.274247+00:00",
+  "run_id": "r30finalf05",
+  "source_git_commit": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "verdict": "PARTIAL_BLACKBOX_EVIDENCE_FULL_ACCEPTANCE_NOT_ESTABLISHED",
+  "raw_tool_counts": {
+    "PASS": 18,
+    "FAIL": 1,
+    "UNEXECUTED": 11
+  },
+  "raw_tool_blackbox_full_acceptance": false,
+  "operation_count": 38,
+  "all_error_branches_acceptance": false,
+  "unobserved_error_branches": 479,
+  "failure_classification": {
+    "case": "S01-input-security",
+    "raw_status": "FAIL",
+    "category": "ORACLE_STRICT_STATUS_NOT_ESTABLISHED_BY_UNAMBIGUOUS_FROZEN_REQUIREMENT",
+    "product_defect_confirmed": false,
+    "environment_failure_evidenced": false,
+    "tool_status_assertion_failed": true,
+    "request": "GET /api/v1/projects/1/tasks?page=1%3BSELECT%20sleep(5)",
+    "expected_by_tool": "400 SECURITY_INPUT_REJECTED",
+    "actual": "422 PARAMETER_INVALID",
+    "response_schema_valid": true,
+    "audit_id": 76,
+    "audit_persistence_verified": true,
+    "audit_outcome": 2,
+    "reason": "OpenAPI400 trigger names ID/enum/sort selectors; page is pagination and explicitly fails declared query integer type, covered by422 PARAMETER_INVALID. Broad README selectors wording may suggest broader security classification but no explicit mandatory priority for malformed pagination is frozen. Actual request rejected and persisted; a mandatory400 oracle is not sufficient to establish product deviation. Preserve raw FAIL; do not rewrite as PASS.",
+    "limits": "This does not establish absence of SQL injection or all security correctness; no implementation inspected. Contract classification remains explicitly unresolved if broader selector wording is intended."
+  },
+  "cases": [
+    {
+      "id": "SETUP",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:33.944903Z",
+      "finished_utc": "2026-10-29T18:34:34.120967Z"
+    },
+    {
+      "id": "F02-auth-matrix",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:34.121081Z",
+      "finished_utc": "2026-10-29T18:34:34.469557Z"
+    },
+    {
+      "id": "F02-token-expired-service",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:34.469743Z",
+      "finished_utc": "2026-10-29T18:34:34.501862Z"
+    },
+    {
+      "id": "F02-token-revocation",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:34.502187Z",
+      "finished_utc": "2026-10-29T18:34:34.519372Z"
+    },
+    {
+      "id": "F02-login",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:34.519526Z",
+      "finished_utc": "2026-10-29T18:34:34.605746Z"
+    },
+    {
+      "id": "F03-project-rules",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:34.605905Z",
+      "finished_utc": "2026-10-29T18:34:34.667764Z"
+    },
+    {
+      "id": "S01-input-security",
+      "status": "FAIL",
+      "reason": "AssertionError:HTTP_EXPECTED:400:ACTUAL:422",
+      "started_utc": "2026-10-29T18:34:34.667924Z",
+      "finished_utc": "2026-10-29T18:34:35.003705Z"
+    },
+    {
+      "id": "F01-contract-three-categories",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:35.003882Z",
+      "finished_utc": "2026-10-29T18:34:35.316815Z"
+    },
+    {
+      "id": "F04-F05-staffing",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:35.316989Z",
+      "finished_utc": "2026-10-29T18:34:36.088652Z"
+    },
+    {
+      "id": "F04-F12-capacity-missing-race",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:36.088855Z",
+      "finished_utc": "2026-10-29T18:34:36.636810Z"
+    },
+    {
+      "id": "F06-dependency",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:36.637022Z",
+      "finished_utc": "2026-10-29T18:34:37.784772Z"
+    },
+    {
+      "id": "F11-idempotency",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:37.785010Z",
+      "finished_utc": "2026-10-29T18:34:38.328753Z"
+    },
+    {
+      "id": "F12-concurrency",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:38.328974Z",
+      "finished_utc": "2026-10-29T18:34:38.700967Z"
+    },
+    {
+      "id": "F07-F08-F09-lifecycle",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:38.701768Z",
+      "finished_utc": "2026-10-29T18:34:41.360537Z"
+    },
+    {
+      "id": "F08-review-rejection",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:41.360802Z",
+      "finished_utc": "2026-10-29T18:34:41.816820Z"
+    },
+    {
+      "id": "F10-D008",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:41.817064Z",
+      "finished_utc": "2026-10-29T18:34:43.112908Z"
+    },
+    {
+      "id": "F04-F09-rolledback-capacity",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:34:43.113176Z",
+      "finished_utc": "2026-10-29T18:34:44.420893Z"
+    },
+    {
+      "id": "F13-escalation20-scheduler-restart",
+      "status": "UNEXECUTED",
+      "reason": "OPERATOR_scheduler_scan_wait",
+      "started_utc": "2026-10-29T18:34:44.421146Z",
+      "finished_utc": "2026-10-29T18:34:45.660773Z"
+    },
+    {
+      "id": "F14-notifications",
+      "status": "UNEXECUTED",
+      "reason": "NO_DELIVERED_NOTIFICATION",
+      "started_utc": "2026-10-29T18:34:45.661032Z",
+      "finished_utc": "2026-10-29T18:34:45.712626Z"
+    },
+    {
+      "id": "X02-MQ-fallback-restore",
+      "status": "UNEXECUTED",
+      "reason": "OPERATOR_scheduler_scan_wait",
+      "started_utc": "2026-10-29T18:34:45.712858Z",
+      "finished_utc": "2026-10-29T18:36:57.519198Z"
+    },
+    {
+      "id": "X01-API-restart-durability",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:36:57.519467Z",
+      "finished_utc": "2026-10-29T18:39:20.868922Z"
+    },
+    {
+      "id": "X03-DB-fault",
+      "status": "UNEXECUTED",
+      "reason": "OPERATOR_db_stop",
+      "started_utc": "2026-10-29T18:39:20.869219Z",
+      "finished_utc": "2026-10-29T18:39:20.984792Z"
+    },
+    {
+      "id": "S01-durable-rejection-audits",
+      "status": "PASS",
+      "started_utc": "2026-10-29T18:39:20.985065Z",
+      "finished_utc": "2026-10-29T18:39:21.108335Z"
+    },
+    {
+      "id": "S02-plaintext-init",
+      "status": "UNEXECUTED",
+      "reason": "HASH_ONLY_INITIALIZATION_IS_SEPARATE_NEUTRAL_OPERATOR_CAPABILITY",
+      "started_utc": "2026-10-29T18:39:21.108590Z",
+      "finished_utc": "2026-10-29T18:39:21.108599Z"
+    },
+    {
+      "id": "S02-secret-leak",
+      "status": "UNEXECUTED",
+      "reason": "REQUIRES_NEUTRAL_REDACTED_LOG_SCAN_AND_PROCESS_ENV_ATTESTATION",
+      "started_utc": "2026-10-29T18:39:21.109066Z",
+      "finished_utc": "2026-10-29T18:39:21.109072Z"
+    },
+    {
+      "id": "X03-audit-specific-fault",
+      "status": "UNEXECUTED",
+      "reason": "NO_AUDIT_ONLY_FAULT_BOUNDARY_UNLESS_PROVIDED",
+      "started_utc": "2026-10-29T18:39:21.109523Z",
+      "finished_utc": "2026-10-29T18:39:21.109529Z"
+    },
+    {
+      "id": "X01-commit-loss",
+      "status": "UNEXECUTED",
+      "reason": "NO_COMMIT_CONFIRM_LOSS_BOUNDARY_UNLESS_PROVIDED",
+      "started_utc": "2026-10-29T18:39:21.109988Z",
+      "finished_utc": "2026-10-29T18:39:21.109993Z"
+    },
+    {
+      "id": "U01-browser",
+      "status": "UNEXECUTED",
+      "reason": "BROWSER_UI_REQUIRES_SEPARATE_BROWSER_EXECUTION",
+      "started_utc": "2026-10-29T18:39:21.110445Z",
+      "finished_utc": "2026-10-29T18:39:21.110449Z"
+    },
+    {
+      "id": "N01-source-schema",
+      "status": "UNEXECUTED",
+      "reason": "PUBLIC_COUNTER_AND_NEUTRAL_SCHEMA_SNAPSHOT_SEPARATE",
+      "started_utc": "2026-10-29T18:39:21.110900Z",
+      "finished_utc": "2026-10-29T18:39:21.110905Z"
+    },
+    {
+      "id": "N02-whitebox-provenance",
+      "status": "UNEXECUTED",
+      "reason": "SEPARATE_EVIDENCE_GATES",
+      "started_utc": "2026-10-29T18:39:21.111353Z",
+      "finished_utc": "2026-10-29T18:39:21.111357Z"
+    }
+  ],
+  "audit_scope": {
+    "project_rejection_audit_ids_verified": 39,
+    "outside_project_scope_audit_ids": 44,
+    "outside_project_persistence_verdict": "UNOBSERVED_REQUIRES_NEUTRAL_SECURITY_AUDIT_VISIBILITY"
+  },
+  "evidence": {
+    "backup_cipher_sha256": "82411f1e62100888ba1d1c050e0ea27306b35e7a52d3596b5cc989d814327d06",
+    "backup_cipher_bytes": 156285,
+    "backup_compressed_tar_sha256": "2f251a8bd1ec2fef9957d165cfcb7eb0d44c7efbde2c2930c22d71141bbb3ccb",
+    "backup_all_files_verified": 14,
+    "unique_final_footer_and_member_names_and_complete_gzip": true,
+    "functional_cipher_sha256": "712d85d8b5432187c2254f86e2a36ba9465dc1f9f0247929bfdc4ced5a789b83",
+    "functional_authenticated_records": 325,
+    "functional_footer_utc": "2026-10-29T18:39:21.112184Z",
+    "result_json_sha256": "26e85dd6336fa69c488b12072c677740e584ba9e7bb54231ff0aba89172dea13",
+    "actual_environment_sha256": "49b63b70b4b5338ee8b98506cba2939b2f5f4486b7708a3d93e43b8a44ab6ab5"
+  },
+  "additional_scope_limits": [
+    "Failure aborts remainder of grouped security case: subsequent date-domain/pagination-boundary calls in that case were not executed; do not count the group as wholly validated.",
+    "38 operationIds observed includes unauthenticated probes; does not imply38 successful business paths or every error branch.",
+    "20 overdue fixtures were created, but scheduler_scan_wait absent, so full20 notification and restart acceptance unexecuted. No delivered notification in immediate query is not proof of persistent product failure.",
+    "MQ stop/start controls succeeded but fallback/restore assertions unexecuted because scheduler_scan_wait unavailable.",
+    "API restart durability case passed for one committed synthetic task/audit only.",
+    "DB/audit-only/commit-loss fault injection, plaintext-init, secret-log scan, browser UI, source/schema/coverage/CI/provenance gates remain unexecuted.",
+    "Project39 rejection audit references independently observed;44 outside-project security audit references remain unobserved.",
+    "No performance execution result or authorization established by this report."
+  ]
+}
