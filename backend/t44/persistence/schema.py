@@ -33,16 +33,8 @@ def ddl_text() -> str:
 
 
 def _parts(body: str) -> list[str]:
-    depth, quoted, start, parts = 0, False, 0, []
-    for index, char in enumerate(body):
-        if char == "'":
-            quoted = not quoted
-        if not quoted:
-            depth += (char == "(") - (char == ")")
-            if char == "," and depth == 0:
-                parts.append(body[start:index].strip())
-                start = index + 1
-    return [*parts, body[start:].strip()]
+    """Split hash-verified DDL at its four-space declaration boundaries."""
+    return [part.strip() for part in re.split(r",\n    (?=\S)", body)]
 
 
 def _type(spec: str):
@@ -78,19 +70,19 @@ def build_metadata() -> MetaData:
     metadata = MetaData()
     sql = ddl_text()
     for name, body in re.findall(r"CREATE TABLE (\w+) \(\n(.*?)\n\) ENGINE=", sql, re.S):
-        columns, constraints, indexes = [], [], []
+        declarations = []
         for part in _parts(body):
             if part.startswith("PRIMARY KEY"):
                 continue
             if part.startswith("CONSTRAINT"):
                 if " FOREIGN KEY " in part:
-                    constraints.append(_foreign_key(part))
+                    declarations.append(_foreign_key(part))
                 else:
                     cname, expression = re.fullmatch(
                         r"CONSTRAINT (\w+) CHECK \((.*)\)", part, re.S
                     ).groups()
                     # MySQL checks remain intact; SQLite fixtures do not claim MySQL CHECK coverage.
-                    constraints.append(
+                    declarations.append(
                         CheckConstraint(expression, name=cname).ddl_if(dialect="mysql")
                     )
             elif part.startswith(("UNIQUE KEY", "KEY")):
@@ -98,13 +90,13 @@ def build_metadata() -> MetaData:
                     r"(UNIQUE KEY|KEY) (\w+) \(([^)]+)\)", part
                 ).groups()
                 args = fields.split(",")
-                (constraints if kind == "UNIQUE KEY" else indexes).append(
+                declarations.append(
                     UniqueConstraint(*args, name=key) if kind == "UNIQUE KEY" else Index(key, *args)
                 )
             else:
                 field, spec = part.split(" ", 1)
                 default = re.search(r"\bDEFAULT (\d+)", spec)
-                columns.append(
+                declarations.append(
                     Column(
                         field,
                         _type(spec),
@@ -117,9 +109,7 @@ def build_metadata() -> MetaData:
         Table(
             name,
             metadata,
-            *columns,
-            *constraints,
-            *indexes,
+            *declarations,
             mysql_engine="InnoDB",
             mysql_charset="utf8mb4",
             mysql_collate="utf8mb4_0900_ai_ci",
