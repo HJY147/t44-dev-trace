@@ -171,36 +171,32 @@ def _catalog_defects(engine):
                     )
             elif kind == "CheckConstraint":
                 check_enforcement[(name, index.name)] = ("YES",)
-    queries = (
-        (
-            "table_options",
+    queries = {
+        "table_options": (
             "SELECT TABLE_NAME,ENGINE,TABLE_COLLATION FROM INFORMATION_SCHEMA.TABLES "
             "WHERE TABLE_SCHEMA=DATABASE()",
             table_options,
         ),
-        (
-            "column_options",
+        "column_options": (
             "SELECT TABLE_NAME,COLUMN_NAME,EXTRA,CHARACTER_SET_NAME,COLLATION_NAME "
             "FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE()",
             column_options,
         ),
-        (
-            "index_options",
+        "index_options": (
             "SELECT TABLE_NAME,INDEX_NAME,SEQ_IN_INDEX,COLUMN_NAME,NON_UNIQUE,COLLATION,"
             "SUB_PART,INDEX_TYPE,IS_VISIBLE FROM INFORMATION_SCHEMA.STATISTICS "
             "WHERE TABLE_SCHEMA=DATABASE()",
             index_options,
         ),
-        (
-            "check_enforcement",
+        "check_enforcement": (
             "SELECT TABLE_NAME,CONSTRAINT_NAME,ENFORCED FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS "
             "WHERE TABLE_SCHEMA=DATABASE() AND CONSTRAINT_TYPE='CHECK'",
             check_enforcement,
         ),
-    )
+    }
     defects = []
     with engine.connect() as connection:
-        for label, query, expected in queries:
+        for label, (query, expected) in queries.items():
             width = len(next(iter(expected)))
             rows = connection.exec_driver_sql(query)
             actual = {tuple(row[:width]): tuple(row[width:]) for row in rows}
