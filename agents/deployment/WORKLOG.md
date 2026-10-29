@@ -764,3 +764,5 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 原status两个输出形状假设有误：根app-stage1在原04成功后KeyError host_https，未grant/S1；部署AI同时查出LOAD原resource status无success，旧通用one会误拒绝。承认编排缺陷，保留前缀，单独APP/LOAD窄wrapper新路径：APP fresh04b roles+04c严格原CA/IP401，不重idle；LOAD按action/unit/PID/progress认原status，worker保留旧ops固定字节。直接对原源码AST的GEN status success/resources及resource控制row字段做窄核验，不再假设输出shape；代表性fixture通过，未云执行。原05/06仍排他防重复，不改13。
 
 根06真实import失败，尚无S1split；部署调用者-I阻断790_budget本地导入，原失败保留。根显式允许有限06b：新增after-grant窄脚本验证原06/05/现有grantSHA及split不存在，只从原argv移除-I，原13代码字节不动，成功再接已审后半配置relay。部署本地实际原host --help对照：-I -B exit1 790_budget；-B exit0帮助。没有S1、Docker、Linux、云动作。这个实错也已如实记录，不把调用错误归为业务失败。
+
+根要求正式中性材料密文大于47KB短协议时独立单文件搬运：新增69行/5979B工具，固定新18448、APP/LOAD私网地址和单一sealed-neutral路径，原叶证书/CA、≤4MiB实际size/hash，只搬opaque；LOAD一次获取+排他校验后原790_transfer open，仅读PUBLIC receipt，解密结果仅测试岗读。原18447/13文件不改，未额外加scope/新凭据或SG/IAM。根必须以实际complete PUBLIC字段运行和记录；部署仅语法/3个文件guard检查，未宣称新TLS/原open/云通过。

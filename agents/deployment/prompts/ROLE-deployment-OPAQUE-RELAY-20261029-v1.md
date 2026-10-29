@@ -15,3 +15,5 @@
 接口修复提示摘要（部署AI）：先按原CLI实际源码/原stdout确认schema，不可假设status与idle/prepare同形状。保留已写04和失败，GEN status仅用resources；当前TLS401另探原CA/IP不重idle；resource status按action/unit和当前PID/progress验证，不捏造success字段。新wrapper同旧ops输入、原05/06排他，原运行代码和单次会话不动。补直接原源码schema窄核验，坦诚记录这两个编排错误。
 
 导入故障恢复提示摘要（部署AI）：原06尚未进入main，stdout空、790_budget导入失败。不能重新签授权或重跑完整wrapper。根明确准许的06b必须核现有grantSHA/05/旧失败及split不存在，只移除调用者-I，原host和全部参数不动，排他新日志再接后半。先在本地用原--help复现-I失败/去-I可达，不用云试错；不将help成功当业务完成。
+
+单文件搬运提示摘要（部署AI）：中性封包可能数百KB，不复用47KB短诊断协议。用≤100行可审工具固定原sealed路径/18448/exactLOAD来源/原phase证书，≤4MiB实际PUBLIC size/hash；LOAD严格CA/IP fetch一次和排他保存，再原helper open。不得解读payload或独立测试PRIVATE，解密后仅测试岗读。成本截止独立保留，不加新凭据/SG/IAM或SUT动作，先给简单可执行CLI再补记录。

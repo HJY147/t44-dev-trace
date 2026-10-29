@@ -617,3 +617,5 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 后半CLI曾误把GEN status当idle输出读取host_https，又误把resource status当prepare/start读取success；前者在根实执行时失败，后者在部署源码复核中发现。修复采用新窄wrapper保留错误前缀，使用原status实际字段，并另做严格CA/IP401而不重启idle。原源码AST/schema及代表性fixture窄核验已补，完整云执行仍由根记录。此项属于部署编排的实际debug留痕，不能删去或美化为最初即正确。
 
 原host调用额外加-I导致790_budget导入失败，真实S1尚未开始。经根明确允许，以06b新日志保留现有授权和05，仅移除调用者-I，不改原13件。部署AI本地原host --help对照复现失败/修正后的import可达性；帮助页成功不等于S1或性能成功。根负责实际S1/relay后续证据。
+
+正式中性材料采用独立18448单文件密文交接，以实际complete PUBLIC size/SHA和原seal记录pin绑定，避免错误复用短诊断47KB/4片上限。源路径和两个私网IP固定，原phase叶证书与严格CA/IP验证，4MiB cap，新LOAD目录排他写，调用原open且不读明文结果。该工具是搬运准备；实际解密/测试证据仍由根和独立测试岗提供，不能把安装或PUBLIC receipt当性能通过。
