@@ -621,3 +621,10 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 正式中性材料采用独立18448单文件密文交接，以实际complete PUBLIC size/SHA和原seal记录pin绑定，避免错误复用短诊断47KB/4片上限。源路径和两个私网IP固定，原phase叶证书与严格CA/IP验证，4MiB cap，新LOAD目录排他写，调用原open且不读明文结果。该工具是搬运准备；实际解密/测试证据仍由根和独立测试岗提供，不能把安装或PUBLIC receipt当性能通过。
 
 收尾工具在根确认独立QA结束后仅触及本岗资源与原APP GEN，原collector封尾→LOAD以原transport_complete+实际bytes/SHA核尾并有限停止→APP原GEN保卷停和owned compose ps；预算内缺失也明确记录后停，保留原始前缀。完整receipt保留0/null/false及完整SHA，不把guest停容器写成云停止计费。最终provider经济停机、原盘与自动释放“-”由根实核。本岗没有读取QA材料或杀QA unit/case。
+
+
+## 2026-10-29 R30 准确0b免费/本地准备
+
+操作者deployment AI。root7374b363独立worktree/分支，产品0b不变；旧935 frozen47仅schema.py不同，46件真实相等，DDL/contract不改，不重放f7旧窗口。新backend-only工具与免费Actions40833943007/tool61179fca真实成功；artifact12880320744/94895161B完整官方digest69b252...复核，backend gz94620657B，新config8e3e2a...，CI完整60运行源文件实际非root/none/readonly探针通过，完整53backend源包含在内。它不是SUT/性能验收。
+
+13源边界+7window边界共20独特检查；7项factory携带后复跑不加数。首次Ruff UP017/GitHub EOF/环境pytest缺失等原错误保留，最终Ruff及3.10语法解析通过。新window adapter接新backend manifest，原budget305f/操作方法/栈不改；Docker29保留descriptor→config→layers完整proof，factory从精确公开8784ba22携带。RUNBOOK含boot清单、只给APP95MB/LOAD工具、实际loaded/cache/prepare接口、35min封存/40min节省停机/45min逐机STOP+auto-release-+保盘后验。正式run/time、neutral seed/四角色真实TTL、完整Linux工具和QA仍root门禁。0云/SSH/实例变更，0独立PRIVATE/case读取，0测试岗联系；fixture已销毁、未签session。实际提示词ROLE-deployment-PREPARATION-R30-v1在agents/deployment/preparation-r30/PROMPT.md。

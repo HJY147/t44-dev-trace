@@ -25,3 +25,12 @@
 ## boot 前仍须关闭的缺口
 
 准确新镜像 artifact 尚待免费build/完整回收验证；新的backend-only接收/loaded identity探针与新generation必须接新manifest接口，旧v4 generator要求旧upgrade binding，不能直接接本包。新run/namespace/端口/硬绝对时间尚未由root选择，因此现在不发行任何带旧日期的可执行窗口包。旧grants/session expired，不复用。完整Linux v2.4执行器和实际Python3.12.15/8CPU适配仍需QA公开准入；不能以本地模拟或generic subset代替。
+
+
+## 后续实际关闭的缺口（保留上面的首次审计）
+
+公开标准Actions40833943007实际成功，artifact12880320744完整官方ZIP94895161B/digest69b2522744b9b9c4d0bd2845c04aeb4bb570c2efe1f8c84645950cc595fd7b4e本地相等；7成员/新bundle及其所有source/runtime/镜像config和层验证通过，具体全值见RUNBOOK及artifact-verification-first.json。实际backend压缩94620657B；CI真实60件非root隔离文件探针通过。第一次run回读网络EOF（run-first.json空前缀保留），第二次run回读成功；不是build失败。无关product自动run40833942950已申请取消，不替代原0b native CI。
+
+新r30-window.py已实际本地适配新manifest、旧cache只读证明及Docker29 descriptor/config差异；不启云。新窗口generation的verified_images接口和prepare精确run guard是唯一函数变化，其余方法AST逐一与同源v4派生物比较相同，预算模块完整305f9e。7项新增边界首次全绿，随后加入从精确公开Git对象携带factory后同7项再通过（不累计成14项）。首个合并Ruff检查在test datetime.UTC上有1条UP017，已记录首次失败并修正；最终Ruff通过。两份新工具另做Python3.10语法解析，不宣称Python3.10/Linux实执行。
+
+仍待root/QA的真实run/time/新neutral seed+四角色+真实TTL、传输与Linux实加载、完整工具/SUT准入，逐项见RUNBOOK。window测试只在临时目录用两小时future fixture，已删除，不是实际窗口包。正式构建tool61179fca提交正文误把三个footer间换行写为字面反斜杠n；第二阶段commit用实际多行正文纠正后续留痕，不重写首提交/首次证据。一次收尾apply_patch因空hunk被拒，整次未写入，随后删去空hunk再执行，没有覆盖其他岗文件。
