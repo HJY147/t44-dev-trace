@@ -500,3 +500,17 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-29T05:38:56.628006+00:00 收尾核验：67本地链接/11handoff字段/7产物路径与7文件责任范围通过，四新Markdown限定私钥/token形状无匹配。初版validator错误要求英文pending、后误读no-index正常差异exit1，两次辅助失败原样写证据记录，非产品测试；真实staged diff-check单独核exit0。所有被改handoff历史值逐项与基线核同保存。提示词岗后发f9d03110已Git对象和远端head实核，单列补充，不混入20件基线来源或自称复验其81项。
 
 - 2026-10-29T05:39:47.771864+00:00 实质提交9c183a537b9f44bcf39af7c0ca2dc08b627e278b已由本岗显式commit并push至origin/codex/documentation-r29，`git ls-remote`精确读回同SHA，提交后worktree clean。提交带[skip ci]只跳过本次文档push，不修改workflow或产品门禁；没有建PR、发Issue或设置审核success。随后只补本发布回执，不读新源、不跟随QA v2，不改变事实截止或验收状态。
+
+
+## 2026-10-29T06:18:23.225428+00:00 R29B后发事实准备，终态待收
+
+- 本岗原worktree先核clean/HEAD3dfa20f9，实际ff-only到准确0b、随后docs-only2530ee2edcda834da44274192af8da0ef67be0fb；没有覆盖别岗文件，仅准备原三文档和四件追加，不碰README/coordinator。Prompt-Ref: ROLE-documentation-R29B-APPEND-20261029-v1。
+- 定向核BE/DB公开WORKLOG、模块、handoff、prompt、report；最终原XML152/133的suite/testcase同且0fail/error/skip，DB43未选不称通过、不与原56累加。已读d470公开审核自有72、无新增P1/P2，不重跑或重复计入owner数。
+- 8件新公开源与2530 Git blob逐字同；集成0b两产品文件分别与41a111f2/8f290307精确字节相同。已跟踪count.commit=0b、application.summary=5880/65、65成员和5880，within_range=false，仍超780；未新跑cloc。
+- 资料解析首轮误把groups字典作列表报AttributeError，修为application.summary并核成员和；属于本岗解析问题，未改原件，不作产品失败。没有重核旧97或运行产品。
+- CI40827655008和QA v2.3本地模拟HTTPS均待root公开终态，当前三文档明确pending，不写预测passed。免费Actions仅拟4CPU通用工具子集，不是正式8CPU环境；旧f7云NP/P95与两机保盘节省停机不变。
+
+- 2026-10-29T06:28:55.201387+00:00 后发CI完整公开归档4b4e792b到达后ff；仅核新95成员5,845,889B尺寸/SHA/Git blob、四原XML19/102/183/796、FE JSON89/89、行2502/2773/分支713/848及发现范围。4原ZIP官方size/digest是root回执，本岗仓库无原ZIP、不补造；保留build.log第12行ANSI尾空格和root全量diff-check2/限定0与首次回执heredoc错误。初读沿用旧manifest文件名不存在，改实际members.PUBLIC.json，属定位错误。
+- 收root正式PUBLIC后ff准确70b24c90；仅核允许本地QA v2.3结果3802B/SHA49b0f76e…755468和发布回执，字节与Git同。整体NP，后置114/100/286、真实5/15误配vs15/40，运行段PASS不补整体门；不读PRIVATE、cipher或测试内部记录、不联系测试岗。后续有限回归和新完整包待，不等待未知绿或拼接片段。旧云NP不改，无新SUT/云动作。
+
+- 2026-10-29T06:30:27.443863+00:00 R29B最终增量校核通过：新增27本地链接、恰7自身路径/无新建、JSON解析与旧顶层逐值保留、原promptrefs前缀、限定作者key/token形状无匹配；显式暂存后的本岗作者diff-check单独exit0，非root原CI整包check绿。准备实质commit/push并只补实际发布回执，产品/测试/云执行0。

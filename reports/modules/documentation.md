@@ -1,3 +1,15 @@
+# 文档汇总岗位：R29B当前阶段封存
+
+Prompt-Ref: `ROLE-documentation-R29B-APPEND-20261029-v1`；文档岗AI。原树clean后ff准确0b/2530，后发CI与正式本地QA再ff至70b24c90；只改原7个自身路径。
+
+- BE41a111f2净减3/本地152、DB8f290307净减4/本地133与43未选、d470限定72审核分列；集成source0b严格5880/65，仍超780。8件新角色来源及两份原XML定向核，未重核旧97。
+- CI40827655008准确0b四job成功；原后端796、前端89，行2502/2773=90.2271908%、分支713/848=84.0801887%。原CI不发现tmp765/766，新本地152/133不计入796；新95成员5,845,889B核尺寸/SHA/Git blob同，原build日志尾空格保留，root全量diff-check exit2不能称整包clean。
+- QA v2.3只核正式PUBLIC3802B/SHA49b0f76e…755468及发布回执：本地模拟HTTPS运行段有400/60+600记录，后置114快照/100审计/286预算未观察；实际5/15误配vs要求15/40，整体NP。正确有限回归/全新完整链仍待，不拼接片段；无新SUT/云，Darwin未跑Linux正式守卫，拟4CPU Actions不当正式8CPU。
+- 原f7性能/云NP、原两机04:59保盘停机/auto“-”保持；06:18列表复核只支持STOP/节省，不说新查auto。学生本人自写、人工材料缺口与AI操作者边界保持。
+- 新增27链接、JSON/历史保留、恰7自身路径范围及本岗作者staged diff-check exit0；实质commit/push回执随后登记。不改他岗文件、不读PRIVATE、不联系测试岗、不运行产品/测试/云。
+
+以下R29报告保持其历史截止。
+
 # 文档汇总岗位：R29工程 checkpoint
 
 Agent-Role: documentation；Prompt-Ref: `ROLE-documentation-R29-CHECKPOINT-20261029-v1`；Refs: #9。作者和操作者为文档岗AI，不是学生研究作者。

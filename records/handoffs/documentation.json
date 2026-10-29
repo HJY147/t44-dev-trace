@@ -1,13 +1,14 @@
 {
-  "stage": "R29 public engineering checkpoint for review; not final acceptance",
-  "implementation_status": "Documentation-only checkpoint, traceability, real failure timeline, state diagram and student self-writing fact index. No product implementation or new test execution.",
+  "stage": "R29B exact-source native CI successful; current stage still not accepted",
+  "implementation_status": "Documentation-only short addendum; 5880 lines still 780 over; local QA v2.3 formal PUBLIC NP retained, no new SUT/cloud performance acceptance.",
   "actor": "AI /root/documentation_r29",
-  "base_sha": "6f91960bca1d59b9ac424c082de403241b5f9115",
-  "updated_at": "2026-10-29T05:39:47.771864+00:00",
+  "base_sha": "70b24c9082e47130c4a58af8ecdccabc3691c8fe",
+  "updated_at": "2026-10-29T06:30:27.443863+00:00",
   "prompt_refs": [
     "ROLE-documentation-CI-ROUND9-20261025-v1",
     "ROLE-documentation-RESUME-CI-20261028-v1",
-    "ROLE-documentation-R29-CHECKPOINT-20261029-v1"
+    "ROLE-documentation-R29-CHECKPOINT-20261029-v1",
+    "ROLE-documentation-R29B-APPEND-20261029-v1"
   ],
   "artifacts": [
     "reports/final/engineering-checkpoint-r29-20261029.md",
@@ -19,16 +20,15 @@
     "records/prompts/ROLE-documentation-R29-CHECKPOINT-20261029-v1.md"
   ],
   "interfaces": {
-    "inputs": "Frozen v1.2 and parent manifests, root R29 public report, named PUBLIC cloud records, exact-source CI artifacts, four owners published reports/Git. No private testing materials.",
-    "outputs": "Reviewable Markdown facts and unresolved gates to coordinator and prompt engineering; factual source index for student own writing.",
-    "collection": "No active frontend/database/backend/deployment agents; direct published-source audit, no invented responses. No tester contact."
+    "inputs": "R29B published owner four-part records, exact integrated 0b, reviewer d470, tracked source count, exact CI originals at 4b4e792b and allowed QA PUBLIC at 70b24c90.",
+    "outputs": "Same three Markdown sources plus four own records; exact CI and local NP; no student-authored research or whole acceptance claim."
   },
   "unverified": [
-    "source size gate: 787 lines above 5100",
-    "full independent functionality and formal 400-client 600-second performance acceptance for next exact source",
-    "QA v2 local-only tester fix pending at cutoff; no new SUT/cloud result",
-    "final billing",
-    "student handwritten research and real human 12/3/5 evidence"
+    "strict size gate: 780 above 5100",
+    "full independent functional and formal performance acceptance for current exact source",
+    "correct 15/40 finite postcondition replay and one authorized fresh complete local E2E",
+    "formal Linux cgroup environment; proposed free4CPU subset is not required8CPU formal profile",
+    "final billing and student own handwritten research / real12-3-5 material"
   ],
   "history_before_ci_round9": {
     "role": "documentation",
@@ -794,9 +794,23 @@
     "original_teacher_material_modified_or_published": false
   },
   "validation": {
-    "source_and_CI_checks": "passed as recorded in evidence Markdown",
-    "final_document_links_json_scope": "passed: 67 local links; 11 handoff required fields; seven artifact paths; exact seven-file scope; authored token-pattern scan; staged diff check exit0",
-    "historical_handoff_values": "all changed prior top-level values retained exactly in history_before_r29_checkpoint; prior prompt_refs remain prefix"
+    "new_role_sources": 8,
+    "new_CI_metadata": 5,
+    "new_CI_members": 95,
+    "owner_and_CI_XML_FE_JSON": "checked without running tests",
+    "QA_PUBLIC_bytes": 3802,
+    "QA_PUBLIC_sha256": "49b0f76e1b2f2a1b736236a21c6d48c74ee7679a09c816408097e06baa755468",
+    "root_raw_archive_diff_check": "exit2 retained original ANSI trailing space; limited other source metadata exit0, not whole clean",
+    "final_own_added_links_scope_author_diff": {
+      "added_local_links": 27,
+      "missing": 0,
+      "own_changed_paths": 7,
+      "new_files": 0,
+      "historical_top_values_retained": true,
+      "old_prompt_refs_prefix_retained": true,
+      "own_staged_diff_check_exit": 0,
+      "not_a_claim_about_root_full_raw_archive_diff": true
+    }
   },
   "history_round9_results": {
     "a162_product": "overall cancelled; static E731 failure; coverage cancelled without full-suite JUnit; contracts/frontend success",
@@ -834,26 +848,31 @@
     ]
   },
   "results": {
-    "public_source_files_bound_to_base": 20,
-    "CI_manifest_files_hash_size_and_git_blob_matched": 97,
-    "backend_full_suite": 796,
-    "backend_failures_errors_skips": 0,
-    "frontend_passed": 89,
-    "line_covered": 2500,
-    "line_total": 2771,
-    "branch_covered": 713,
-    "branch_total": 848,
-    "suite_counts_not_additive": true,
-    "v1_2_frozen_files_matched": 15,
-    "current_application_lines": 5887,
+    "current_application_lines": 5880,
     "application_files": 65,
-    "source_excess": 787,
-    "cloud_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
-    "CI_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
-    "independent_public_status": "NP_NO_RUNTIME_RESULT",
-    "cloud_short_P95_target_passed": false,
-    "new_product_or_cloud_test_executions": 0,
-    "student_research_authored_by_AI": false
+    "source_excess": 780,
+    "product_source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "CI_run": 40827655008,
+    "CI_four_job_conclusion": "success",
+    "backend_original_CI_suite": 796,
+    "frontend_original_CI_suite": 89,
+    "new_role_local_tests_in_original_CI": false,
+    "backend_owner_local_passed": 152,
+    "database_owner_local_passed": 133,
+    "database_owner_deselected": 43,
+    "reviewer_limited_checks": 72,
+    "counts_not_additive": true,
+    "covered_lines": 2502,
+    "total_statements": 2773,
+    "covered_branches": 713,
+    "total_branches": 848,
+    "new_CI_members_verified": 95,
+    "new_CI_member_bytes": 5845889,
+    "QA_local_v2_3_status": "NP_POSTCONDITION_INCOMPLETE_AND_LOCAL_FIXTURE_BUDGET_MISMATCH",
+    "QA_local_scope": "LOCAL_NATIVE_TLS_SIMULATION_ONLY_NOT_SUT_ACCEPTANCE",
+    "QA_local_SUT_or_cloud_calls": 0,
+    "old_cloud_NP_unchanged": true,
+    "new_product_or_cloud_test_executions_by_documentation": 0
   },
   "history_round9_validation": "docs/reports/round9-ci-validation.json: evidence/link/JSON/scope and authored-doc/script diff checks passed; full diff check exit2 on 19 original raw-log whitespace lines retained unchanged; not product tests",
   "history_round9_phase1_commit": "14be82a3",
@@ -1111,11 +1130,11 @@
   },
   "role": "documentation",
   "commands_executed": [
-    "git worktree add -b codex/documentation-r29 from codex/resume-coordination-20261029 at 6f91960b",
-    "read named public files and exact git show for published frontend/backend/database/deployment records",
-    "git ls-remote for the three named candidate owner branches",
-    "Python standard library SHA/byte/Git blob checks, JUnit XML and coverage/frontend JSON parsing",
-    "git diff --quiet 7b15f893 6f91960b -- backend/t44 frontend/src"
+    "clean status and ff-only exact 0b then 2530ee2e, later 4b4e792b and 70b24c90; preserve own uncommitted paths",
+    "read only named published owner records and reviewer report; compare two product Git blobs",
+    "parse owner XML152/133; hash eight role sources and five new CI metadata Git blobs",
+    "new CI95 members size/SHA/Git; XML19/102/183/796; FE JSON89/89 and coverage JSON",
+    "read/hash allowed QA PUBLIC3802B and publication receipt only"
   ],
   "questions": [],
   "r29_checkpoint": {
@@ -1133,6 +1152,84 @@
       "PR_created": false,
       "issue_comment_posted": false,
       "review_success_set": false
+    }
+  },
+  "r29b_documentation_append": {
+    "prompt_ref": "ROLE-documentation-R29B-APPEND-20261029-v1",
+    "prepared_at": "2026-10-29T06:18:23.225428+00:00",
+    "documentation_base": "2530ee2edcda834da44274192af8da0ef67be0fb",
+    "product_source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "application_lines": 5880,
+    "application_files": 65,
+    "source_excess": 780,
+    "owner_backend_local_passed": 152,
+    "owner_database_local_passed": 133,
+    "owner_database_deselected": 43,
+    "reviewer_limited_checks": 72,
+    "named_public_sources_verified": 8,
+    "new_CI_run": 40827655008,
+    "new_CI_status": "SUCCESS_FOUR_JOBS_EXACT_0B",
+    "QA_v2_3_status": "FORMAL_PUBLIC_NP_POSTCONDITION_INCOMPLETE_AND_LOCAL_FIXTURE_BUDGET_MISMATCH",
+    "cloud_or_SUT_new_tests": false,
+    "formal_8CPU_environment_verified": false,
+    "status": "Current public source/CI/local NP sealed; own commit/push and receipt next",
+    "publication": "not yet committed or pushed",
+    "original_R29_handoff_retained": true,
+    "public_terminal_base": "70b24c9082e47130c4a58af8ecdccabc3691c8fe",
+    "QA_PUBLIC_result": "records/qa-tool/r29b/LOCAL_V2_3_SELFTEST_RESULT.json",
+    "new_CI_members_verified": 95
+  },
+  "history_before_r29b_checkpoint": {
+    "stage": "R29 public engineering checkpoint for review; not final acceptance",
+    "implementation_status": "Documentation-only checkpoint, traceability, real failure timeline, state diagram and student self-writing fact index. No product implementation or new test execution.",
+    "actor": "AI /root/documentation_r29",
+    "base_sha": "6f91960bca1d59b9ac424c082de403241b5f9115",
+    "updated_at": "2026-10-29T05:39:47.771864+00:00",
+    "interfaces": {
+      "inputs": "Frozen v1.2 and parent manifests, root R29 public report, named PUBLIC cloud records, exact-source CI artifacts, four owners published reports/Git. No private testing materials.",
+      "outputs": "Reviewable Markdown facts and unresolved gates to coordinator and prompt engineering; factual source index for student own writing.",
+      "collection": "No active frontend/database/backend/deployment agents; direct published-source audit, no invented responses. No tester contact."
+    },
+    "commands_executed": [
+      "git worktree add -b codex/documentation-r29 from codex/resume-coordination-20261029 at 6f91960b",
+      "read named public files and exact git show for published frontend/backend/database/deployment records",
+      "git ls-remote for the three named candidate owner branches",
+      "Python standard library SHA/byte/Git blob checks, JUnit XML and coverage/frontend JSON parsing",
+      "git diff --quiet 7b15f893 6f91960b -- backend/t44 frontend/src"
+    ],
+    "results": {
+      "public_source_files_bound_to_base": 20,
+      "CI_manifest_files_hash_size_and_git_blob_matched": 97,
+      "backend_full_suite": 796,
+      "backend_failures_errors_skips": 0,
+      "frontend_passed": 89,
+      "line_covered": 2500,
+      "line_total": 2771,
+      "branch_covered": 713,
+      "branch_total": 848,
+      "suite_counts_not_additive": true,
+      "v1_2_frozen_files_matched": 15,
+      "current_application_lines": 5887,
+      "application_files": 65,
+      "source_excess": 787,
+      "cloud_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+      "CI_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+      "independent_public_status": "NP_NO_RUNTIME_RESULT",
+      "cloud_short_P95_target_passed": false,
+      "new_product_or_cloud_test_executions": 0,
+      "student_research_authored_by_AI": false
+    },
+    "unverified": [
+      "source size gate: 787 lines above 5100",
+      "full independent functionality and formal 400-client 600-second performance acceptance for next exact source",
+      "QA v2 local-only tester fix pending at cutoff; no new SUT/cloud result",
+      "final billing",
+      "student handwritten research and real human 12/3/5 evidence"
+    ],
+    "validation": {
+      "source_and_CI_checks": "passed as recorded in evidence Markdown",
+      "final_document_links_json_scope": "passed: 67 local links; 11 handoff required fields; seven artifact paths; exact seven-file scope; authored token-pattern scan; staged diff check exit0",
+      "historical_handoff_values": "all changed prior top-level values retained exactly in history_before_r29_checkpoint; prior prompt_refs remain prefix"
     }
   }
 }
