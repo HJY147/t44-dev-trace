@@ -509,3 +509,5 @@ GEN04修复后36项1.83s全绿：真实GEN命名/同原binding rawSHA/stop绑定
 
 中性运输闭环已新目录交付：复用原790原字节/算法wire，仅新0b/C薄政策；JSON mirror承载五件tar.gz，操作员解出原NEUTRAL五件。7本地真实crypto/TLS检查绿0.66s，producer17原66ab不动；0云/SUT/session，实际root仅有限窗口/授权搬运。命令neutral-transport-r30/RUNBOOK.md。
 运输PUBLIC内嵌安装器完成：完整命令13143B，外层base6417524B+256=17780<18000；七件同原manifest2b147b，目标/root/t44-r30/neutral-transport-01排他，原6运行文件与producer17不变。新增2本机安装检查0.05s绿，精确字节与0444回读、已存在拒绝；只替换synthetic tmp目标，无云。完整命令SHA f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e，实际路径参数页neutral-transport-r30/ROOT_CLI.md。
+
+2026-10-29未来中性准备CAS候选：原r30window01六内部POST 409已据root两PUBLIC原件核实，原窗口已关闭不续跑；只在新neutral-r30-cas副本修。严格HTTP409/顶层VERSION_CONFLICT及完整Error才只读核官方Task/event/rules，保持POST CAS与单次请求；已有唯一同排期/规则/官方全窗口等级原事件可采用，其他/变化拒绝。consumer合法变化如实读回、0600prefix保留，不补写/换对象/把409变2xx。原producer17/manifest66ab/运输686和产品source0b全部零diff，未来新manifest18需owner审包。78项4.23s本机合成验证及静态全部通过，原40断言AST不变，真实红/数据mutation错误/lint/import验证脚本中断均留档；0云/SUT/真实session/额外CI，不宣称原六对象可恢复或性能通过。新目录RUNBOOK/report/verification可审。

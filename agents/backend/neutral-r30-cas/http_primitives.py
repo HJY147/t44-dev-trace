@@ -44,6 +44,14 @@ def choose_escalations(tasks, excluded, stop, count=10):
     return eligible[:count]
 
 
+class HttpRejected(ValueError):
+    """Retain the original HTTP outcome without treating it as a successful response."""
+
+    def __init__(self, status, envelope, request_id):
+        super().__init__("REAL_HTTP_PREPARATION_REJECTED")
+        self.status, self.envelope, self.request_id = status, envelope, request_id
+
+
 class Client:
     def __init__(self, origin, ca, output, deadline):
         target = urllib.parse.urlsplit(origin)
@@ -106,7 +114,7 @@ class Client:
                 record["raw_login_response_file"] = str(raw_path)
                 record["response_meta"] = self.last_meta
             if response.status not in (200, 201, 202) or "data" not in result:
-                raise ValueError("REAL_HTTP_PREPARATION_REJECTED")
+                raise HttpRejected(response.status, result, identifier)
             return result["data"]
         except Exception as error:
             record["failure_type"] = type(error).__name__

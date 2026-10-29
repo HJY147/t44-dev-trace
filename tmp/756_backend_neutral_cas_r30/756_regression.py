@@ -14,6 +14,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
 import pytest
+from t44.scheduling.rules import load_rules
 
 CODE = Path(__file__).resolve().parents[2] / "agents/backend/neutral-r30-cas"
 sys.path.insert(0, str(CODE))
@@ -599,7 +600,7 @@ def test_complete_40_project_400_api_preparation_fake_only(tmp_path, monkeypatch
                     elif parts[2] == "iterations":
                         rows = [evidence["iterations"][str(pid)]]
                     elif parts[2] == "escalation-rules":
-                        return __import__("t44.scheduling.rules", fromlist=["load_rules"]).load_rules().snapshot()
+                        return load_rules().snapshot()
                     elif parts[2] == "escalations":
                         rows = [deepcopy(events[int(query["task_id"][0])])]
                     elif parts[2] == "tasks" and len(parts) == 3:

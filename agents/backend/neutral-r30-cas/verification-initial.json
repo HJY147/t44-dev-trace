@@ -1,0 +1,89 @@
+{
+  "scope": "LOCAL_SYNTHETIC_ONLY_NO_CLOUD_SUT_OR_SESSIONS",
+  "checks": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tmp/756_backend_neutral_cas_r30/756_conflict.py",
+        "tmp/756_backend_neutral_cas_r30/756_regression.py",
+        "--junitxml=agents/backend/neutral-r30-cas/local-all.xml"
+      ],
+      "started_at": "2026-10-29T10:39:56.143472+00:00",
+      "exit_code": 0,
+      "stdout": "........................................................................ [ 92%]\n......                                                                   [100%]\n78 passed in 4.12s\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:40:00.471854+00:00"
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30-cas",
+        "tmp/756_backend_neutral_cas_r30"
+      ],
+      "started_at": "2026-10-29T10:40:00.471878+00:00",
+      "exit_code": 1,
+      "stdout": "F401 [*] `t44.scheduling.rules.load_rules` imported but unused\n  --> tmp/756_backend_neutral_cas_r30/756_regression.py:17:34\n   |\n16 | import pytest\n17 | from t44.scheduling.rules import load_rules\n   |                                  ^^^^^^^^^^\n18 |\n19 | CODE = Path(__file__).resolve().parents[2] / \"agents/backend/neutral-r30-cas\"\n   |\nhelp: Remove unused import: `t44.scheduling.rules.load_rules`\n   |\n16 | import pytest\n   - from t44.scheduling.rules import load_rules\n17 |\n   |\n\nFound 1 error.\n[*] 1 fixable with `--fix`.\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:40:00.512473+00:00"
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30-cas",
+        "tmp/756_backend_neutral_cas_r30"
+      ],
+      "started_at": "2026-10-29T10:40:00.512510+00:00",
+      "exit_code": 0,
+      "stdout": "13 files already formatted\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:40:00.541408+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_at": "2026-10-29T10:40:00.541448+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:40:00.559156+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "686d79da3967123be7a3c24d6740d77be008c1bb",
+        "--",
+        "agents/backend/neutral-r30",
+        "agents/backend/neutral-transport-r30",
+        "tmp/759_backend_neutral_r30",
+        "tmp/758_backend_transport_r30",
+        "backend",
+        "frontend",
+        "specs"
+      ],
+      "started_at": "2026-10-29T10:40:00.559195+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:40:00.571211+00:00"
+    }
+  ]
+}

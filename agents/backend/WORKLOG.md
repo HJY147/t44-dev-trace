@@ -804,3 +804,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 新独立neutral-transport-r30目录，producer17原manifest66ab逐件复核不动。原790 mirror仅JSON且原实例f7/12Z不可直用；原文件8600110b逐字保留，新薄policy只SOURCE0b/显式C，wire/crypto/caps不改。五原件tar.gz→base64 JSON mirror，native session仅小reference，避免重复实际大session；operator解出最终五件给QA，不改core。
 - 新私网TLS单密文relay参数化新路径/IP/CA/SHA/大小/marker/C，无SG/IAM/安装/权限扩张。7唯一本地检查实际全绿0.66s：真实OpenSSL及TLS完整往返五件逐字同，错误CA/peer/篡改/覆盖/一次请求/cap与真实C alarm。仅低层loopback harness，生产CLI拒loopback，未证明私网VM或Linux实况。0云/SUT/真实session，失败前缀保留不自动重试。
 - 安装闭环补交：同字节PUBLIC七件内嵌gzip/base64，固定新/root/t44-r30/neutral-transport-01，mkdir已存在拒绝；整体shell13143B、外层base6417524B+256=17780<18000，完整SHA f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e。新增2本机安装检查0.05s绿（仅synthetic tmp路径替代，逐字/0444/拒覆盖）；原7crypto/TLS检查不重跑不累计声称9项。producer17/运输6原件manifest均不动，root一步参数页ROOT_CLI.md，0云/SUT/session。
+
+## ROLE-backend-NEUTRAL-CAS-R30-v1：未来中性准备409读回
+- root明确本轮r30window01不发grant/已停机；只读两精确PUBLIC导出核1385请求/6内部升级409顶层VERSION_CONFLICT，原六对象是否已有匹配事件未获GET证据，不作推断。未重开云/改钟/重用会话。
+- 新neutral-r30-cas副本保留原17/66ab与运输686；红阶段7936fe2a先2红0绿0.29s。新类型化HTTP失败+官方schema/rule只读task→分页event→task，严格同规则/排期/级别/唯一对象，POST不重试/不降CAS，409仍失败记录；正确现存原事件可采用，否则明确失败。正常scheduler/consumer保持，独立0600readback prefix保原GET事实。
+- 新manifest18件，15原runtime逐字不变，2改+1新增；部署owner未来需审新helper，9e wrapper/产品source0b/冻结契约/计数/角色不动。原40断言AST全同，新78项4.23s绿；Ruff/格式/diff及旧producer/运输/产品冻结零diff全部exit0。报告/真实prompt/命令/输入PUBLIC SHA/红绿/log/XML在新目录，0云/SUT/真实session/额外CI，未merge。
+- 自测真实失败保留：负例state mutation误2→2（77绿1红）后仅纠正数据；lint imports/unused报错；verify runner少main guard被原导入测试发现并触发嵌套本地pytest，主动Ctrl-C130后加guard并确认无遗留，再一次完整验证通过。原独立用例/断言无改。

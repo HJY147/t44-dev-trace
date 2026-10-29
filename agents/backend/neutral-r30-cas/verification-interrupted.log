@@ -1,0 +1,1 @@
+Initial verification runner missed __main__ guard. Existing compile/import regression imported it and started a nested local pytest process. Agent interrupted unified session 75313 with Ctrl-C, exit130, then added main guard. No cloud/SUT/session or original artifacts touched. Subsequent verification must complete once.
