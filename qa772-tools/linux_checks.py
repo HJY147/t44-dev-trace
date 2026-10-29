@@ -47,7 +47,10 @@ def main():
    while True:
     line=await reader.readline()
     if not line:break
-    while await reader.readline()!=b'\r\n':pass
+    while True:
+     header=await reader.readline()
+     if not header:raise asyncio.IncompleteReadError(b'',1)
+     if header==b'\r\n':break
     body=b'{"ok":true,"zero":0,"null":null}';writer.write(b'HTTP/1.1 200 OK\r\nContent-Length: '+str(len(body)).encode()+b'\r\nContent-Type: application/json\r\n\r\n'+body);await writer.drain()
   except (ConnectionError,asyncio.IncompleteReadError):pass
   finally:writer.close()

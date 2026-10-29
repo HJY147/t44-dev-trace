@@ -21,7 +21,7 @@ jobs:
           openssl req -x509 -newkey rsa:2048 -nodes -keyout "$RUNNER_TEMP/qa772-stage/tls.key" -out "$RUNNER_TEMP/qa772-stage/tls.crt" -days 1 -subj /CN=localhost -addext 'subjectAltName=DNS:localhost,IP:127.0.0.1' >/dev/null 2>&1
           chmod 600 "$RUNNER_TEMP/qa772-stage/tls.key"
           docker pull --platform linux/amd64 python:3.12-slim
-          docker image inspect python:3.12-slim --format '{{.Id}} {{join .RepoDigests " "}}' > "$RUNNER_TEMP/qa772-stage/report/observed-image.txt"
+          docker image inspect python:3.12-slim --format '{{.Id}} {{json .RepoDigests}}' > "$RUNNER_TEMP/qa772-stage/report/observed-image.txt"
       - name: Actual unconstrained Linux guard must reject
         shell: bash
         run: |
