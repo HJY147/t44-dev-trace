@@ -1,0 +1,88 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+_________ test_actual_gen_cryptographic_field_contract[exact_gen_keys] _________
+
+variant = 'exact_gen_keys'
+
+    @pytest.mark.parametrize("variant", ["exact_gen_keys", "wrong_short_name", "missing_proof"])
+    def test_actual_gen_cryptographic_field_contract(variant):
+        plan, *_ = fixture()
+        path = Path(plan["gen_binding"]["path"])
+        value = json.loads(path.read_text())
+        assert set(value) <= GEN_FIELDS
+        if variant != "exact_gen_keys":
+            proof = value.pop("cryptographic_transport_proofs")
+            if variant == "wrong_short_name": value["crypto_transport_proofs"] = proof
+            raw = json.dumps(value).encode()
+            path.write_bytes(raw)
+            plan["gen_binding"]["sha256"] = plan["target"]["binding_sha256"] = hashlib.sha256(raw).hexdigest()
+            with pytest.raises(guard.Refused): guard.check_plan(plan, NOW)
+        else:
+>           assert guard.check_plan(plan, NOW)[0] == guard.timestamp(plan["window"]["start_utc"])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tmp/759_backend_neutral_r30/759_materials.py:827: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/guard.py:80: in check_plan
+    binding = load_gen_binding(plan)
+              ^^^^^^^^^^^^^^^^^^^^^^
+agents/backend/neutral-r30/guard.py:497: in load_gen_binding
+    need(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, code = 'MINIMAL_SCHEMA_PROJECTION_IS_NOT_FULL_ACTUAL_BINDING'
+
+    def need(condition, code):
+        if not condition:
+>           raise Refused(code)
+E           guard.Refused: MINIMAL_SCHEMA_PROJECTION_IS_NOT_FULL_ACTUAL_BINDING
+
+agents/backend/neutral-r30/guard.py:44: Refused
+________ test_actual_gen_cryptographic_field_contract[wrong_short_name] ________
+
+variant = 'wrong_short_name'
+
+    @pytest.mark.parametrize("variant", ["exact_gen_keys", "wrong_short_name", "missing_proof"])
+    def test_actual_gen_cryptographic_field_contract(variant):
+        plan, *_ = fixture()
+        path = Path(plan["gen_binding"]["path"])
+        value = json.loads(path.read_text())
+        assert set(value) <= GEN_FIELDS
+        if variant != "exact_gen_keys":
+            proof = value.pop("cryptographic_transport_proofs")
+            if variant == "wrong_short_name": value["crypto_transport_proofs"] = proof
+            raw = json.dumps(value).encode()
+            path.write_bytes(raw)
+            plan["gen_binding"]["sha256"] = plan["target"]["binding_sha256"] = hashlib.sha256(raw).hexdigest()
+>           with pytest.raises(guard.Refused): guard.check_plan(plan, NOW)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE Refused
+
+tmp/759_backend_neutral_r30/759_materials.py:825: Failed
+______ test_every_required_binding_key_exists_in_original_gen_dictionary _______
+
+    def test_every_required_binding_key_exists_in_original_gen_dictionary():
+        tree = ast.parse((CODE / "guard.py").read_text())
+        keys = {node.slice.value for node in ast.walk(tree) if isinstance(node, ast.Subscript)
+                and isinstance(node.value, ast.Name) and node.value.id == "binding"
+                and isinstance(node.slice, ast.Constant) and isinstance(node.slice.value, str)}
+        for node in ast.walk(tree):
+            if (isinstance(node, ast.GeneratorExp) and isinstance(node.elt, ast.Call)
+            and isinstance(node.elt.func, ast.Attribute) and isinstance(node.elt.func.value, ast.Name)
+            and node.elt.func.value.id == "binding" and node.elt.func.attr == "get"):
+                for generator in node.generators:
+                    if isinstance(generator.iter, ast.Tuple):
+                        keys.update(item.value for item in generator.iter.elts)
+>       assert keys <= GEN_FIELDS, sorted(keys - GEN_FIELDS)
+E       AssertionError: ['crypto_transport_proofs']
+E       assert {'app_private...on_kind', ...} <= {'api_workers...atabase', ...}
+E         
+E         Extra items in the left set:
+E         'crypto_transport_proofs'
+
+tmp/759_backend_neutral_r30/759_materials.py:842: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_actual_gen_cryptographic_field_contract[exact_gen_keys]
+FAILED backend::test_actual_gen_cryptographic_field_contract[wrong_short_name]
+FAILED backend::test_every_required_binding_key_exists_in_original_gen_dictionary
+3 failed, 1 passed, 36 deselected in 0.10s

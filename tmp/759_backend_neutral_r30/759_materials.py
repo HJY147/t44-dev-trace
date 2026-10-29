@@ -1,5 +1,6 @@
 """Synthetic local checks only: no server, real account, signature or session issuance."""
 
+import ast
 import hashlib
 import importlib
 import json
@@ -22,6 +23,23 @@ guard = importlib.import_module("guard")
 prepare_http = importlib.import_module("prepare_http")
 
 NOW = datetime(2026, 11, 1, 12, tzinfo=UTC)
+GEN_SOURCE = CODE.parent / "window-20261029/profile/generation.py"
+GEN_TREE = ast.parse(GEN_SOURCE.read_text())
+GEN_DICTIONARY = next(
+    node.value
+    for node in ast.walk(GEN_TREE)
+    if isinstance(node, ast.Assign)
+    and isinstance(node.value, ast.Dict)
+    and any(isinstance(target, ast.Name) and target.id == "binding" for target in node.targets)
+)
+GEN_FIELDS = {key.value for key in GEN_DICTIONARY.keys}
+EXACT_PROOF_FIELDS = (
+    "config_ids",
+    "image_ids",
+    "cryptographic_transport_proofs",
+    "tls",
+    "file_hashes",
+)
 
 
 def stamp(value):
@@ -63,7 +81,8 @@ def fixture():
     }
     gen = json.loads((CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_text())
     gen["stop_utc"] = plan["window"]["stop_utc"]
-    for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes"):
+    for key in EXACT_PROOF_FIELDS:
+        assert key in GEN_FIELDS
         gen[key] = {"synthetic_local_metadata_only": sha(key)}
     binding_path = Path(__file__).with_name("GEN_BINDING_SYNTHETIC_FULL_TEST_ONLY.json")
     binding_raw = json.dumps(gen).encode()
@@ -710,7 +729,8 @@ def test_stale_service_refuses_before_first_human_login(tmp_path):
 def test_exact_published_gen_scope_has_a_real_plan_intersection(tmp_path):
     plan, *_ = fixture()
     original = json.loads((CODE / "GEN_BINDING_SCHEMA_FIXTURE.PUBLIC.json").read_text())
-    for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes"):
+    for key in EXACT_PROOF_FIELDS:
+        assert key in GEN_FIELDS
         original[key] = {"synthetic_local_test_only": sha(key)}
     original["stop_utc"] = stamp(NOW + timedelta(seconds=1080))
     path = tmp_path / "synthetic-full-binding.json"
@@ -798,3 +818,52 @@ def test_seed_before_project_ids_then_actual_count_scope_without_retime():
     assert plan["authorized_project_ids"] == []
     for key in ("source", "target", "gen_binding", "window", "lifecycle"):
         assert result[key] == plan[key]
+
+
+@pytest.mark.parametrize("variant", ["exact_gen_keys", "wrong_short_name", "missing_proof"])
+def test_actual_gen_cryptographic_field_contract(variant):
+    plan, *_ = fixture()
+    path = Path(plan["gen_binding"]["path"])
+    value = json.loads(path.read_text())
+    assert set(value) <= GEN_FIELDS
+    if variant != "exact_gen_keys":
+        proof = value.pop("cryptographic_transport_proofs")
+        if variant == "wrong_short_name":
+            value["crypto_transport_proofs"] = proof
+        raw = json.dumps(value).encode()
+        path.write_bytes(raw)
+        plan["gen_binding"]["sha256"] = plan["target"]["binding_sha256"] = hashlib.sha256(
+            raw
+        ).hexdigest()
+        with pytest.raises(guard.Refused):
+            guard.check_plan(plan, NOW)
+    else:
+        assert guard.check_plan(plan, NOW)[0] == guard.timestamp(plan["window"]["start_utc"])
+
+
+def test_every_required_binding_key_exists_in_original_gen_dictionary():
+    tree = ast.parse((CODE / "guard.py").read_text())
+    keys = {
+        node.slice.value
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Subscript)
+        and isinstance(node.value, ast.Name)
+        and node.value.id == "binding"
+        and isinstance(node.slice, ast.Constant)
+        and isinstance(node.slice.value, str)
+    }
+    for node in ast.walk(tree):
+        if (
+            isinstance(node, ast.GeneratorExp)
+            and isinstance(node.elt, ast.Call)
+            and isinstance(node.elt.func, ast.Attribute)
+            and isinstance(node.elt.func.value, ast.Name)
+            and node.elt.func.value.id == "binding"
+            and node.elt.func.attr == "get"
+        ):
+            for generator in node.generators:
+                if isinstance(generator.iter, ast.Tuple):
+                    keys.update(item.value for item in generator.iter.elts)
+    assert keys <= GEN_FIELDS, sorted(keys - GEN_FIELDS)
+    assert "cryptographic_transport_proofs" in GEN_FIELDS
+    assert "crypto_transport_proofs" not in GEN_FIELDS
