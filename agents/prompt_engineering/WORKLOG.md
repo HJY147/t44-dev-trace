@@ -195,3 +195,17 @@
 - a12 productFAIL、Dockera12SUCCESS、8c productSUCCESS按精确源分列；714/89及行/分支分开，不加总重叠标记。5933超833仍FAIL；正式云性能、独立验收、账单及本人研究不补通过。
 - 本岗仅Git/JSON/摘要/链接/文档核对，无产品/测试/CI/服务/数据库/云/浏览器/Word执行，不读runtime/private/独立792/799/800/805/未发表用例或密钥。AI素材不冒学生亲改或手写正文。
 - 根要求立即封存释放槽位，已收到后端访谈，未为额外采访延长；后续实跑结果只能新补记，不追填本页历史。
+
+## 2026-10-29 R29 公开事实与提示词索引
+
+- 实收 `ROLE-prompt_engineering-R29-20261029-v1`，保存原样AI派工；读AGENTS与公开协作规则后，从6f91960b建立独立worktree/分支codex/prompt-engineering-r29，不动根索引。
+- 最初两次cat错误使用prompt-engineering目录名，实际岗位为prompt_engineering；随后rg定位并准确读取。一次apply_patch末尾锚点不匹配，工具原子拒绝且未改文件，按真实尾行重新应用。这些只是本岗资料定位/编辑错误，不是产品失败。
+- 先存R29-scope与实际prompt，后创建R29-process-evidence/source-index；只读既有公开U001/U002及本轮公开报告、handoff、PUBLIC云/CI摘要，不跟随其PRIVATE或原始日志路径，不联系独立测试。
+- U001/U002原文SHA重核不变，选为用户原创亮点；现有O1仍proposed。新改进模板另存proposed未执行，本轮不新增Uxxx、不补六版、不改共享ledger或学生研究正文。
+- 核公开短测80/800/8000与400P95未过、QA772仅NP/899.786秒/76B，以及19,661,075B完整资源尾段和两机保盘节省停机/autoRelease“-”；采集器0请求与SUT未知分开，无账单精确金额。
+- status误读、host/admin两次-I导入失败、单次新label继续和浏览器阻塞如实登记；离线检查没有覆盖Linux整链，不把未知QA内部根因改成产品bug或学生亲自纠错。
+- 新DB候选274e2e6b/集成38d11a5e净减11，5887超787仍FAIL；新源7b15原nativeCI四job成功/796后端0skip/89前端只作回归证据，与旧f7云结论分开，重叠用例不累加。
+- 实际收到文档岗两条AI资料通知，并向其答复本岗ID/产物范围；没有主动采访或真人访谈。通知明确用户只恢复浏览器、grant由AI总协调签发，QA v2仅本地修复pending；不把通知当新用户原文或完成证据。
+- 本轮只核Git对象/源字节/SHA/JSON/资料链接与diff；无新测试编号、产品/测试器/CI/云/浏览器/数据库/Word执行，无学生12/3/5新增证明。只阶段commit/push本岗文档，实际回执另补。
+
+- 最终资料核对初次误要求原DB候选274e2e6b为祖先而AssertionError；实际是cherry-pick，核候选/38d11a5e/7b15的schema.py Git blob均f944a6ce89028555e61a3eceb4499fd9517a4aab后改正核对方法。初次失败写入document-checks，不改产品或测试。最终81项资料核对通过、45源Git字节/SHA一致；git ls-remote核根公开分支仍精确6f91960b。

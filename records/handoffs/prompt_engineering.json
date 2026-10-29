@@ -1,6 +1,6 @@
 {
   "role": "prompt_engineering",
-  "stage": "RESUME-20261028 public process evidence; fixed source snapshot 3be6f2a2",
+  "stage": "R29 fixed public evidence at 6f91960b; no new product/test/cloud run",
   "implementation_status": "过程素材完成；产品实现、运行和验收不在本岗范围",
   "artifacts": [
     "records/prompts/U001-optimized.md",
@@ -102,7 +102,14 @@
     "records/prompts/USER-resume-20261028-provenance.json",
     "records/prompts/USER-resume-20261028-proposed.md",
     "records/prompts/ROLE-prompt_engineering-RESUME-20261028-v1.md",
-    "docs/prompting/RESUME-20261028-document-checks.json"
+    "docs/prompting/RESUME-20261028-document-checks.json",
+    "records/prompts/ROLE-prompt_engineering-R29-20261029-v1.md",
+    "records/prompts/PROPOSED-r29-evidence-first-orchestration-v1.md",
+    "docs/prompting/R29-scope.md",
+    "docs/prompting/R29-process-evidence.md",
+    "docs/prompting/R29-source-index.json",
+    "docs/prompting/R29-source-notifications.json",
+    "docs/prompting/R29-document-checks.json"
   ],
   "interfaces": {
     "inputs": [
@@ -184,7 +191,20 @@
     "USER_RETURN_Issue10": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6379557747",
     "USER_RETURN_GET": "Full comment body exact match",
     "autonomous_20261025_issue_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6394956933",
-    "campaign_20261025_issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6396341316"
+    "campaign_20261025_issue11_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6396341316",
+    "R29_version": "R29-public-evidence-v1",
+    "R29_inputs": [
+      "U001/U002 unchanged originals and proposed O1",
+      "45 fixed-base public source files",
+      "actual coordinator AI dispatch",
+      "two received documentation AI notifications"
+    ],
+    "R29_outputs": [
+      "student self-authored report factual source index",
+      "real prompt/feedback/artifact mapping",
+      "unexecuted improvement suggestion",
+      "public/private and human/AI attribution boundaries"
+    ]
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -241,7 +261,18 @@
     "24publicsource SHA/JSON/Git and designbeforestyle ancestry checks only; no tests/service/CI/Word",
     "New isolatedcodex/prompt-user-return-checkpoint at exact7daff2b; scopebeforepubliccollection; no root index",
     "Read U020/U021/U022/D008 scope/RFC/R2 and explicit857metadata/summary858INVALID/859publicreview only;20sourceSHA/JSON checks",
-    "No useroriginal/studentprose/frozen/app/test/oldarchive edits and no tester/private access or test/CI/service execution"
+    "No useroriginal/studentprose/frozen/app/test/oldarchive edits and no tester/private access or test/CI/service execution",
+    {
+      "stage": "R29",
+      "commands": [
+        "git worktree add -b codex/prompt-engineering-r29 .agent-worktrees/prompt-engineering-r29 codex/resume-coordination-20261029",
+        "cat/rg exact published source and role files (initial hyphenated role paths failed, corrected to underscore)",
+        "shasum -a 256 records/prompts/U001-original.md records/prompts/U002-original.md",
+        "python3 inline source Git-byte/hash and JSON/link checks",
+        "git diff --check"
+      ],
+      "scope": "documentation checks only; no product/test/cloud commands executed"
+    }
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -304,7 +335,11 @@
     "858FD/timingINVALID original retained; new857 F2/newadmission unchangedthreshold limitedstubpass notSUT600performance",
     "859owner2targetHTTP meaningfulnonemptydeps notfullCI/independent; RFC/R2 replayCOMPLETE/meta refinements spec-only before newfreeze/application",
     "Actualmeaningfulpromptfeedback linked to source/artifact without adding evolutioncount; U001/U002 originalhighlights retained",
-    "User-return material2382d30 committed/pushed; Issue10 comment6379557747 actually published and full GET exact body matched; only publication receipt followup"
+    "User-return material2382d30 committed/pushed; Issue10 comment6379557747 actually published and full GET exact body matched; only publication receipt followup",
+    {
+      "stage": "R29",
+      "result": "45 fixed-base public sources match Git bytes/SHA; 81 final documentation checks passed after preserved ancestry-check correction; no acceptance result"
+    }
   ],
   "unverified": [
     "NewD008freeze/readiness/applicationimplementation/newCI/independenttest notcomplete atcutoff; no future pass filled",
@@ -316,7 +351,18 @@
     "AUTONOMOUS: health401 receipt was uncommitted at collection; native planned stops not yet observed at cutoff",
     "At 10:03 UTC v7 formal performance has no complete result; do not backfill later output.",
     "F08 product versus test premise attribution unresolved; F11 expired-token credential absent; 523/551 operation/error branches unproved.",
-    "N07 source size remains 6326 > 5100; human12/3/5 and student-authored handwritten report not completed by this AI appendix."
+    "N07 source size remains 6326 > 5100; human12/3/5 and student-authored handwritten report not completed by this AI appendix.",
+    {
+      "stage": "R29",
+      "items": [
+        "full QA772 SUT call count and internal failure cause",
+        "QA v2 completed local fix or new runtime",
+        "new user original wording beyond existing public archives",
+        "exact settled cost",
+        "student manual quotas and hand-written research report",
+        "scale/performance acceptance remains unmet or unproven"
+      ]
+    }
   ],
   "questions": [
     "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
@@ -548,9 +594,32 @@
         "records/prompts/ROLE-prompt_engineering-RESUME-20261028-v1.md"
       ],
       "reason": "Bounded public evidence collection; no new counted evolution version"
+    },
+    {
+      "id": "ROLE-prompt_engineering-R29-20261029-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/ROLE-prompt_engineering-R29-20261029-v1.md",
+      "snapshot_kind": "verbatim actual coordinator AI dispatch, not user original",
+      "reason": "preserve R29 real errors and exact source/result scope; user highlights unchanged",
+      "artifact_refs": [
+        "records/prompts/ROLE-prompt_engineering-R29-20261029-v1.md",
+        "records/prompts/PROPOSED-r29-evidence-first-orchestration-v1.md",
+        "docs/prompting/R29-scope.md",
+        "docs/prompting/R29-process-evidence.md",
+        "docs/prompting/R29-source-index.json",
+        "docs/prompting/R29-source-notifications.json",
+        "docs/prompting/R29-document-checks.json"
+      ]
+    },
+    {
+      "id": "PROPOSED-r29-evidence-first-orchestration-v1",
+      "status": "proposed",
+      "used_at": null,
+      "path": "records/prompts/PROPOSED-r29-evidence-first-orchestration-v1.md",
+      "reason": "propose exact schema, Linux import boundary, limited continuation and evidence-based closure after observed AI errors; never executed"
     }
   ],
-  "updated_at": "2026-10-28T05:46:11.184281+00:00",
+  "updated_at": "2026-10-29T05:36:07.961460+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -559,26 +628,37 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "base_commit": "3be6f2a20321ca0007ec5dab04edc4432a514cb9",
-    "sources": 20,
+    "base_commit": "6f91960bca1d59b9ac424c082de403241b5f9115",
+    "sources": 45,
     "all_sources_git_bytes_match": true,
-    "user_input": "USER-resume-20261028",
-    "user_sent_at_known": false,
-    "proposed_template": "USER-resume-20261028-O1",
+    "actual_prompt_id": "ROLE-prompt_engineering-R29-20261029-v1",
+    "user_highlights": [
+      "U001",
+      "U002"
+    ],
+    "original_hashes_unchanged": true,
+    "existing_O1_status": "proposed; no execution evidence",
+    "new_user_original_collected": false,
     "new_executed_prompt_evolution_versions": 0,
-    "actual_AI_inquiries_received": 1,
-    "inquiry_claims_independently_replayed": false,
-    "source_size": "5933 > 5100; FAIL +833",
-    "CI": "a12 product FAIL / a12 Docker SUCCESS / 8c product SUCCESS; distinct full SHAs",
-    "formal_cloud_performance": "No formal pass claimed in this evidence appendix",
-    "human_code_edits_claimed": 0,
-    "human_hallucination_corrections_claimed": 0,
-    "human_context_corrections_claimed": 0,
+    "actual_AI_notifications_received": 2,
+    "human_interviews": 0,
+    "new_student_manual_operation_evidence": 0,
+    "source_size": "5887 > 5100; FAIL +787",
+    "short_f7": "80/800/8000 complete; zero failed/aborted clients; 400-client P95 fails; not 600s acceptance",
+    "QA772": "NP_NO_RUNTIME_RESULT; HARD_DEADLINE899.786s; 76B; SUT call total unknown",
+    "CI": "7b15f893 / run40821621806 four jobs success; backend796 zero skip and frontend89; no scale/performance substitution",
+    "cloud_shutdown": "original APP/LOAD Stopped StopCharging; autoRelease null/dash; disks preserved; 19661075B exact resource tail",
+    "grants_actor": "AI coordinator under existing authorization; user browser recovery is not student-authored grant",
+    "QA_v2": "AI notification says local tester repair pending; no new SUT/cloud result supplied",
+    "precise_cost_claimed": false,
     "private_or_independent_tool_read": false,
     "independent_test_contact": false,
     "product_test_CI_cloud_executed_by_this_role": false,
     "student_research_body_written": false,
-    "legacy_ledger_modified": false
+    "legacy_ledger_modified": false,
+    "new_test_number": null,
+    "document_checks_passed": 81,
+    "document_check_scope": "source documents only"
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -661,5 +741,33 @@
       "product_tests": 0
     },
     "substantive_commit": "e7e52c26456dbde63c15e8dd7a8744980e7a3921"
-  }
+  },
+  "current_summary_history": [
+    {
+      "stage": "RESUME-20261028 public process evidence; fixed source snapshot 3be6f2a2",
+      "summary": {
+        "base_commit": "3be6f2a20321ca0007ec5dab04edc4432a514cb9",
+        "sources": 20,
+        "all_sources_git_bytes_match": true,
+        "user_input": "USER-resume-20261028",
+        "user_sent_at_known": false,
+        "proposed_template": "USER-resume-20261028-O1",
+        "new_executed_prompt_evolution_versions": 0,
+        "actual_AI_inquiries_received": 1,
+        "inquiry_claims_independently_replayed": false,
+        "source_size": "5933 > 5100; FAIL +833",
+        "CI": "a12 product FAIL / a12 Docker SUCCESS / 8c product SUCCESS; distinct full SHAs",
+        "formal_cloud_performance": "No formal pass claimed in this evidence appendix",
+        "human_code_edits_claimed": 0,
+        "human_hallucination_corrections_claimed": 0,
+        "human_context_corrections_claimed": 0,
+        "private_or_independent_tool_read": false,
+        "independent_test_contact": false,
+        "product_test_CI_cloud_executed_by_this_role": false,
+        "student_research_body_written": false,
+        "legacy_ledger_modified": false
+      },
+      "preserved_by": "R29"
+    }
+  ]
 }

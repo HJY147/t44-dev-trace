@@ -146,3 +146,15 @@
 输入为固定3be6f2a2的20份公开来源、当前用户恢复原话和一次实际后端AI问答。先设计再核Git/字节/SHA，保存原文/来源、未执行O1、事实索引及真实纠偏。输出见docs/prompting/RESUME-20261028-process-evidence.md与source-index.json，handoff已更新。
 
 本岗不改产品或统计/验收门禁，不运行测试/CI/云，不联系独立测试或读取私件。a12失败、Dockera12成功、8c成功来源分开；5933超833仍FAIL，正式性能和本人研究未完成。当前AI聊天的后发云报告明确未复演。本轮新增已执行演进版本0，旧六版与用户原件不改，人工改码/纠错新增证明均0。
+
+## 2026-10-29 R29 真实派工、纠偏与事实索引
+
+- 实际 `ROLE-prompt_engineering-R29-20261029-v1`，原样派工另存；独立 `codex/prompt-engineering-r29`，固定读取 `6f91960bca1d59b9ac424c082de403241b5f9115`。历史 TASK、原文、旧 cutoff 与共享 ledger 均不改。
+- 主入口 [R29事实素材索引](../../docs/prompting/R29-process-evidence.md)；来源清单含准确 Git blob/SHA/公开链接。它供学生本人手写报告时核事实，不是学生感想、研究正文或人工操作记录。
+- U001/U002 仍选作用户原创亮点，原件 hash 重核相同；U001-O1/U002-O1 仍 proposed。新建议 `PROPOSED-r29-evidence-first-orchestration-v1` 未发送/未执行，新增已执行演进计数0；缺本轮新公开用户原话则不造 Uxxx。
+- 用户组织要求/授权，AI总协调签发grant与执行，AI改码与测试器错误分别归属。文档岗两条实际通知另存，不冒真人访谈；用户浏览器恢复不算用户编写grant或审码。
+- 保存 status schema误读、两次 `-I` 导入失败、离线检查未覆盖Linux整链、QA无runtime及浏览器阻塞事实。原失败保留、新label受限继续，不写学生手工debug或未知内部根因。
+- f7短测80/800/8000均完成、0失败客户，但400客户四项P95全部>270ms；约5.26秒不是正式600秒。QA772为NP_NO_RUNTIME_RESULT/HARD_DEADLINE899.786秒/76B，采集器自身0请求不代表SUT总请求数0。
+- 收尾原两机Stopped/StopCharging、autoRelease“-”、原卷保留；19,661,075B尾段SHA两侧一致。无精确账单金额，经济停机不称零费用。
+- 停机后DB固定DDL候选真实净减11、5887仍超787；限定审核→集成38d11a5e→新源7b15/run40821621806四job成功，后端796/0skip、前端89。重叠测试不相加，CI≠规模/性能，旧f7结论不转挂新源。
+- 仅公开来源/Git字节/SHA/JSON/链接及diff核对；本岗无新测试编号、产品/测试器/全CI/云/浏览器/Word执行，无独立PRIVATE读取或测试岗通信。只提交本岗文档commit/push，回执实际完成后补记。
