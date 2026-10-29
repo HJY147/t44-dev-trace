@@ -564,3 +564,7 @@ AI reviewer，ROLE-reviewer-NEUTRAL-R30-20261029-v1；root7374独立树。ffae U
 ### Future neutral CAS（固定审核岗，2026-10-29）
 
 准确cb966f21/18manifest0fc61e逐项核，九py集合全等且verify-local迁tmp；相对66ab只改HTTP parser/prepare并加helper，旧执行原件/产品0b/运输/部署/specs/tests不变。严格409+顶层VERSION_CONFLICT+完整Error schema才只读核同对象规则/task→分页events→task，无POST retry，不改scheduler/core/门禁；不将六个原409都归因scheduler。原40assert AST相同、owner81/0fail/error只核原证据。自有2组纯parser/隔离import负例最终0.060s全绿，无服务/HTTP/云。实发现source-free4f无t44及运行目录多verify入口，owner将后者移tmp，root明确未来APP官方8e/edge/10001/readonly/无业务DBAMQP env/保留PYTHONPATH；真正executor仍未实现，P1保持OPEN不行政闭环，P2代码新增0。允许仅future代码集成，绝无BOOT/SUT/云READY/自动新轮；原R30 NOT_RUN及经济停机按root已发表PUBLIC转述。报告neutral-r30-cas-20261029，证据tmp755，实质先发root，四件/原prompt另存。
+
+CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按ID正文精确回读，明确future executor P1开放，无global/BOOT/SUT状态；回执tmp755/755_publication.json。
+
+后发runner：初054661中C=G与guard G35/C40不相容P1、原资源限额遗漏P2均即时报root；owner保留真实C红后修。准确ac005e1c runner14966B/c2c322，交付6ae6d291源码不变；固定8e/edge/10001/readonly/无业务env/18staging/runtime→HTTP/仅owned cleanup核。自有6真实窗口block同输入对照+cb实际argparse/资源边界全绿，无外部执行；owner5mock原件/自己stop/错owner拒核。当前代码P1/P2关闭可窄集成，actual平台仍CLOUD_UNREADY，无BOOT/SUT/新轮授权。旧R30/产品/QA原件不改。

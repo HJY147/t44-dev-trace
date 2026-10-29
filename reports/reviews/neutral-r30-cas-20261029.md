@@ -37,3 +37,13 @@
 ## 8. 结论状态
 
 **允许root仅集成准确cb966f21及18manifest0fc61e的未来CAS准备代码/运行接口。** 相对原66ab运行清单只修改http_primitives/prepare_http并新增helper，其余15件hash不变；valid_task/create_or_read_existing函数AST在563→cb相同，新增runtime probe明确只验真实包/函数，actual_image_identity_verified_by_probe=false。旧产品/neutral17/运输/部署/specs/frontend/原tests实际diff空。本次代码P2新增0，未来执行P1仍开放，不发BOOT/SUT/global grant，不将future部署记READY，不阻塞历史R30封存。最终绑定原件`755_final_source_review.json`；报告、四件、原prompt及真实命令只在本岗分支维护，技术结论先发root。
+
+### 后发固定runner：代码P1关闭，实际云门禁未执行
+
+上一段及Issue3 COMMENT6494709568是cb交付时的真实状态。随后root派审新r30-http-prepare.py：初14573B/SHA054661的checked要求C=G，与producer G35/C40严格矛盾，本岗即时P1报root；原5mock绿使用错误C=G fixture，不能当跨owner可执行证据。owner保留真实C fixture2ERROR红后修G=t0+2100/C=t0+2400、cutoff=S−150、D780..900/E≤G/C−E≥90。本岗另报原HTTP资源限额遗漏P2，恢复CPU2/1GiB/pids128/tmp32MiB。修改均由部署owner执行，旧c283/产品/guard不改。
+
+最终runner14966B/SHA c2c322bd0c932928fcd811d49a4c92f2b45188d2f32b2669fab79a27df9e4e2e，位于准确提交ac005e1c1b842d5813b6dfefa73885f9a1df44e0；交付HEAD6ae6d291a526c6317d6e950cfca7e100418a15e3无runner源码delta，仅补测试/日志/receipt。固定官方8e alias/actualId与原config证明链兼容Docker29，拒4f/旧run/错scope/过期；清洁host env且不传env/env-file，edge唯一网络、10001/readonly/cap-drop，复用准确8c库核18manifest/九py及原source/bundle。先真实函数runtime probe，再固定HTTP argv；原inputs不改，超时只按自己新UUID/owner/image inspect→stop→inspect，不重试，前缀排他保留。函数probe不声称镜像identity，wrapper另核实际alias/config。
+
+本岗755_runner_boundary.py纯本地直接执行runner与准确cb guard各自真实窗口block（不是完整check_plan或Docker）：合法G35/C40共同接受；C=G、错G、错cutoff、D779、E越G都共同拒绝。固定HTTP argv交cb真实argparse通过，UID/资源/env边界通过。owner最终5mock源码/原log及owned_exit仅自己stop/错owner拒绝补断言已核。原错误C红、首资源test seam ERROR等保留，没有新绿替换历史。
+
+**当前更新：cb966f21+ac005e1c（交付6ae6d291）可由root窄集成，future runtime代码P1及资源P2在准确代码范围关闭。** 实际官方8e容器/平台/UID/edge/无业务env/18staging/真实HTTP、预算/新session/新窗口门禁均未执行，仍CLOUD_UNREADY，没有BOOT/SUT grant或新轮授权。代码缺口关闭与实际平台待验分开记录，不阻塞历史R30封存。
