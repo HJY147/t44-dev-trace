@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="7" time="0.134" timestamp="2026-10-29T16:33:49.702811+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[backend]" time="0.009"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece0')
+mutation = 'backend'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://10.0.0.1:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-13...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece0/output/requests'), 694481.808953583)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[load]" time="0.008"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece1')
+mutation = 'load'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://10.0.0.1:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-13...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece1/output/requests'), 694481.834435666)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[dns]" time="0.007"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece2')
+mutation = 'dns'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://different.example:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece2/output/requests'), 694481.847736041)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[mismatch]" time="0.007"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece3')
+mutation = 'mismatch'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://10.0.0.2:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-13...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece3/output/requests'), 694481.861699125)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[loopback]" time="0.013"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece4')
+mutation = 'loopback'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://127.0.0.1:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-1...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece4/output/requests'), 694481.880805791)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[public]" time="0.008" /><testcase classname="" name="test_review_target_guard_precedes_every_client_and_write[window901]" time="0.007"><failure message="RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD">tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece6')
+mutation = 'window901'
+
+    @pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+    def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
+        plan, *_ = fixture()
+        if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
+        elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
+        elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
+        elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
+        elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+        elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+        elif mutation == "window901":
+            plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
+            plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
+        ca = tmp_path / "synthetic-ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+        with pytest.raises(guard.Refused):
+&gt;           prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+
+tmp/759_backend_neutral_r30/759_materials.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:48: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://10.0.0.1:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-13...7_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-134/test_review_target_guard_prece6/output/requests'), 694481.902188083)
+
+    def client(*args):
+        called.append(True)
+&gt;       raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+E       RuntimeError: UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD
+
+tmp/759_backend_neutral_r30/759_materials.py:400: RuntimeError</failure></testcase></testsuite></testsuites>
