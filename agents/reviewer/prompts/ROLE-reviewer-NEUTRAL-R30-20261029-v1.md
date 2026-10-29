@@ -16,3 +16,10 @@
 - 只读9个明确获准PUBLIC文件，核freeze/checks与逐文件hash；没有打开CORE_COMPATIBILITY、PRIVATE、REVIEW_R30_ONLY或未发布case。
 - 用纯本地合成plan复现阶段目标image pin、origin/connect_ip、901秒窗口前置校验缺口；没有HTTP/会话动作。尝试fake login前缀时先遇到阶段http_primitives首行SyntaxError，保留原stderr，不冒作已完成该fake流程。
 - 实质问题先发root；等准确最终SHA后仅核相关修复与新增入口，不代改owner、产品、QA core或grant。
+
+
+## 最终复审派工原文
+
+最终修复 producer 已推送 3be27131398a049f1a509918e5308f1bda7c8cec，manifest SHA 66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606。唯一运行改动 crypto_transport_proofs→cryptographic_transport_proofs；请与实际 GEN required16字段、wrapper最终8c73486440720506357ffa90efdb5b59cdd91028、原预算9e一起做准确SHA有限复审，给明确是否可进入一次云准备窗口，不以缺尚未开机才能有的 actual 证明无限HOLD。勿开云/读PRIVATE/SUT。今天19:00前服务器收尾，请尽快给范围化结论。
+
+root另明确LOAD采用准确4f/8CPU/8GiB source-free standby作orchestration readiness，无HTTP/core import，正式driver前停；实际回执不冒完整工具/负载通过。实际执行只新增11项受影响链，先回root允许一次有限准备窗口，再补行政；不重跑旧case/fullCI。
