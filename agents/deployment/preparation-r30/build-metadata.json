@@ -1,0 +1,45 @@
+{
+  "buildx.build.provenance": {
+    "builder": {
+      "id": ""
+    },
+    "buildType": "https://mobyproject.org/buildkit@v1",
+    "materials": [
+      {
+        "uri": "pkg:docker/python@3.12-slim-bookworm?digest=sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70\u0026platform=linux%2Famd64",
+        "digest": {
+          "sha256": "c36c18b0a0826697360e231bfb354fc6abe3dadd4ab868e3a795f7f21f4839d5"
+        }
+      }
+    ],
+    "invocation": {
+      "configSource": {
+        "entryPoint": "api.Dockerfile"
+      },
+      "parameters": {
+        "frontend": "dockerfile.v0",
+        "args": {
+          "label:io.t44.r30.run": "r30ci40833943007",
+          "label:io.t44.r30.source-manifest-sha256": "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b",
+          "label:io.t44.source-archive-sha256": "275970aa18117751e3a4fc8c404d0750cb9698310a70146d64061a634c37bf09",
+          "label:org.opencontainers.image.revision": "0bffe0c535e5897890aebf30879fdd3839dc52d6"
+        },
+        "locals": [
+          {
+            "name": "context"
+          },
+          {
+            "name": "dockerfile"
+          }
+        ]
+      },
+      "environment": {
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "buildx.build.ref": "default/default/vil0wi1mx3onww0nocctq5ydk",
+  "containerimage.config.digest": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+  "containerimage.digest": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+  "image.name": "docker.io/library/t44-backend-r30:src-0bffe0c535e5897890aebf30879fdd3839dc52d6-r30ci40833943007"
+}

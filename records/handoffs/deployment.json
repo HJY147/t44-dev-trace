@@ -2872,5 +2872,32 @@
       "QA_accessed_or_contacted": false,
       "provider_economical_stop_and_auto_release_dash_by_root": true
     }
+  },
+  "preparation_r30": {
+    "role": "deployment AI",
+    "prompt_ref": "ROLE-deployment-PREPARATION-R30-v1",
+    "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
+    "product_source": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "tool_build_commit": "61179fca68f09e89b3f8de24b910dd42ae78a434",
+    "run_id": 40833943007,
+    "run_conclusion": "success",
+    "artifact_id": 12880320744,
+    "official_zip_bytes": 94895161,
+    "official_zip_sha256": "69b2522744b9b9c4d0bd2845c04aeb4bb570c2efe1f8c84645950cc595fd7b4e",
+    "bundle_manifest_sha256": "b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345",
+    "config_id": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+    "backend_archive_bytes": 94620657,
+    "actual_CI_nonroot_file_probe": 60,
+    "complete_backend_source_files": 53,
+    "local_unique_boundaries": 20,
+    "runtime_adapter": "deployment/cloud-reuse/r30-window.py",
+    "runbook": "agents/deployment/preparation-r30/RUNBOOK.md",
+    "evidence": "agents/deployment/preparation-r30/",
+    "cloud_actions_executed": false,
+    "SUT_performance_executed": false,
+    "sessions_issued": false,
+    "boot_gate": "root review + QA + fresh run/time/neutral seed and real TTL + verified new transport; no old f7 grant/package replay",
+    "remaining": "Actual cloud receive/load/cache/namespace/timer/infra/actual-budget and independent full Linux executor/SUT not run",
+    "no_private_or_cases_read": true
   }
 }

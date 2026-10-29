@@ -768,3 +768,10 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 根要求正式中性材料密文大于47KB短协议时独立单文件搬运：新增69行/5979B工具，固定新18448、APP/LOAD私网地址和单一sealed-neutral路径，原叶证书/CA、≤4MiB实际size/hash，只搬opaque；LOAD一次获取+排他校验后原790_transfer open，仅读PUBLIC receipt，解密结果仅测试岗读。原18447/13文件不改，未额外加scope/新凭据或SG/IAM。根必须以实际complete PUBLIC字段运行和记录；部署仅语法/3个文件guard检查，未宣称新TLS/原open/云通过。
 
 最后收尾按根明确任务仅准备≤8KB脚本，不接触或通信独立QA：原APP资源seal先、LOAD mirror精确追尾与原stop、APP原GEN保卷stop和collector stop、只本轮APP compose ps。绑定从本机原PUBLIC记录取完整值并核实际文件SHA；不以9d/66372前缀猜数字。原status完整0/null/false保留，缺APP尾或mirror不完整先missing后有限stop保prefix，不以等待拖延成本。Guest不声称云停费，provider经济停/autoRelease-由根负责。3个本地receipt/empty/missing实测；未云/GEN/resource/Docker执行、未读QA。
+
+
+## 2026-10-29 R30 准确0b免费/本地准备
+
+操作者deployment AI。root7374b363独立worktree/分支，产品0b不变；旧935 frozen47仅schema.py不同，46件真实相等，DDL/contract不改，不重放f7旧窗口。新backend-only工具与免费Actions40833943007/tool61179fca真实成功；artifact12880320744/94895161B完整官方digest69b252...复核，backend gz94620657B，新config8e3e2a...，CI完整60运行源文件实际非root/none/readonly探针通过，完整53backend源包含在内。它不是SUT/性能验收。
+
+13源边界+7window边界共20独特检查；7项factory携带后复跑不加数。首次Ruff UP017/GitHub EOF/环境pytest缺失等原错误保留，最终Ruff及3.10语法解析通过。新window adapter接新backend manifest，原budget305f/操作方法/栈不改；Docker29保留descriptor→config→layers完整proof，factory从精确公开8784ba22携带。RUNBOOK含boot清单、只给APP95MB/LOAD工具、实际loaded/cache/prepare接口、35min封存/40min节省停机/45min逐机STOP+auto-release-+保盘后验。正式run/time、neutral seed/四角色真实TTL、完整Linux工具和QA仍root门禁。0云/SSH/实例变更，0独立PRIVATE/case读取，0测试岗联系；fixture已销毁、未签session。实际提示词ROLE-deployment-PREPARATION-R30-v1在agents/deployment/preparation-r30/PROMPT.md。
