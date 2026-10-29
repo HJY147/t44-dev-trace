@@ -14,25 +14,19 @@ _URI = "urn:t44:api"
 _REGISTRY = Registry().with_resource(
     _URI, Resource.from_contents(SPEC, default_specification=DRAFT202012)
 )
+_ROOT_VALIDATOR = Draft202012Validator(
+    {"$id": _URI, **SPEC}, registry=_REGISTRY, format_checker=FormatChecker()
+)
 
 
 def validator(schema):
-    return Draft202012Validator(
-        {"$id": "urn:t44:validation", **_absolute_refs(schema)},
-        registry=_REGISTRY,
-        format_checker=FormatChecker(),
-    )
+    return _ROOT_VALIDATOR.evolve(schema=schema)
 
 
-def _absolute_refs(value):
-    if isinstance(value, dict):
-        return {
-            key: _URI + item if key == "$ref" and item.startswith("#/") else _absolute_refs(item)
-            for key, item in value.items()
-        }
-    if isinstance(value, list):
-        return [_absolute_refs(item) for item in value]
-    return value
+def resolve(schema):
+    while "$ref" in schema:
+        schema = _REGISTRY.resolver(_URI).lookup(schema["$ref"]).contents
+    return schema
 
 
 def violations(schema, value):
@@ -64,9 +58,7 @@ OPERATIONS = {
 for operation in OPERATIONS.values():
     status = next(code for code in operation["responses"] if code.startswith("2"))
     schema = operation["responses"][status]["content"]["application/json"]["schema"]
-    data = SPEC["components"]["schemas"][schema["$ref"].split("/")[-1]]["properties"]["data"]
+    data = resolve(schema)["properties"]["data"]
     operation["success_status"] = int(status)
     operation["data_schema"] = data
-    operation["data_fields"] = (
-        SPEC["components"]["schemas"][data["$ref"].split("/")[-1]] if "$ref" in data else data
-    )["properties"]
+    operation["data_fields"] = resolve(data)["properties"]

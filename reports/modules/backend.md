@@ -498,3 +498,7 @@ AI后端岗在准确a92e独立分支实施Reviews两处最新上线评估查询�
 后续模块结果：152项通过（新18+原134），0失败/错误/跳过，50.23秒；仅上游Starlette弃用警告。新增helper原地展开后整个模块AST等同基线，原测试diff为空；Ruff/格式通过。待阶段提交后固定计量。
 阶段产品SHA `41a111f270e949326202b8af5770db8aa7102e82`，原固定committed cloc实测5887→5884，净减3，仍超784/require-range退出1；详见本次report.md。待总协调限定审核/集成。
 公开岗位留痕：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840；阶段代码已push，无merge。
+
+
+## 2026-10-29 R30结构切片：待资源门释放验证
+AI后端岗从准确7374b363建新树，尝试由契约层根validator.evolve与公开Registry resolver集中解析职责，删除API多套手工解引用/契约绝对ref递归。没有新依赖/资源OpenAPI/DDL/跨岗签名变动。源码已编辑，当前+14/-37物理行，未计量/运行，不声称兼容或规模收益。风险为根/嵌套$id、oneOf及详细错误顺序；新tmp763差分已准备，原测试断言不改。按root资源门只读/编辑，等待明确释放；无云/PRIVATE/独立验收结论，尚无可证数百行方案。真实prompt/设计见agents/backend/architecture-r30。

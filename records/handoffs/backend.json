@@ -3683,5 +3683,28 @@
     "report": "agents/backend/dry-r29b/report.md",
     "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840",
     "initial_product_push_exit_code": 0
+  },
+  "architecture_r30_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-ARCHITECTURE-R30-v1",
+    "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
+    "branch": "codex/backend-architecture-r30",
+    "status": "SOURCE_CANDIDATE_EDITED_CPU_GATE_CLOSED_NOT_VALIDATED",
+    "product_paths": [
+      "backend/t44/api.py",
+      "backend/t44/contracts/__init__.py"
+    ],
+    "root_reported_application_before": 5880,
+    "verified_application_after": null,
+    "new_dependencies": false,
+    "frozen_resources_changed": false,
+    "original_tests_changed": false,
+    "known_old_assertion_migrations": [],
+    "CPU_tests_build_or_count_executed": false,
+    "risk": "Relative reference roots and nested $id may differ; explicit baseline differential pending",
+    "hundreds_of_lines_solution_proven": false,
+    "cloud_PRIVATE_or_independent_contacts": false,
+    "records": "agents/backend/architecture-r30",
+    "new_test": "tmp/763_backend_architecture_r30/763_contract_context.py"
   }
 }

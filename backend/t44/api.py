@@ -9,7 +9,7 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, validator, violations
+from t44.contracts import OPERATIONS, VERSION, normalized, resolve, validator, violations
 from t44.messaging.facade import NotificationFacade
 from t44.persistence import PersistenceUnavailable, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
 from t44.scheduling.facade import EscalationFacade
@@ -19,7 +19,6 @@ from t44.services.errors import Rejected, require
 from t44.services.runtime import Runtime
 from t44.settings import Settings
 
-_REF = "#/components/parameters/"
 _ATTACK = re.compile(
     r"(?is)(?:\bunion\s+(?:all\s+)?select\b|;\s*(?:drop|truncate)\s+table\b|"
     r"['\"]\s*(?:or|and)\s+\d+\s*=\s*\d+\s*(?:--|#))"
@@ -47,22 +46,8 @@ def _unique_object(pairs):
     return result
 
 
-def _schema_type(schema):
-    if "$ref" in schema:
-        return _schema_type(SPEC["components"]["schemas"][schema["$ref"].split("/")[-1]])
-    return schema.get("type")
-
-
-def _parameters(operation):
-    return [
-        SPEC["components"]["parameters"][p["$ref"].removeprefix(_REF)] if "$ref" in p else p
-        for p in operation.get("parameters", [])
-    ]
-
-
 def _body_schema(schema, payload):
-    while "$ref" in schema:
-        schema = SPEC["components"]["schemas"][schema["$ref"].split("/")[-1]]
+    schema = resolve(schema)
     if isinstance(payload, dict):
         for choice in schema.get("oneOf", []):
             choice = _body_schema(choice, payload)
@@ -104,7 +89,7 @@ def _body_error(schema, payload, operation):
 def validate_request(request, operation, c):
     if "requestBody" in operation:
         require(not request.state.too_large, "PAYLOAD_TOO_LARGE")
-    parameters = _parameters(operation)
+    parameters = [resolve(parameter) for parameter in operation.get("parameters", [])]
     known_queries = {p["name"] for p in parameters if p["in"] == "query"}
     if parameters:
         require(not (set(request.query_params) - known_queries), "PARAMETER_INVALID")
@@ -125,7 +110,7 @@ def validate_request(request, operation, c):
         if p["in"] == "query":
             require(len(request.query_params.getlist(p["name"])) == 1, "PARAMETER_INVALID")
         require(not _ATTACK.search(value) and "\x00" not in value, "SECURITY_INPUT_REJECTED")
-        kind = _schema_type(p["schema"])
+        kind = resolve(p["schema"]).get("type")
         if kind == "integer":
             require(bool(re.fullmatch(r"[0-9]+", value)), "PARAMETER_INVALID")
             value = int(value)

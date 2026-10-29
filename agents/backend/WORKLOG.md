@@ -783,3 +783,11 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 模块验证完成：新18差分场景+原986/856合计152项通过，0失败/错误/跳过，50.23秒；1条上游Starlette弃用警告保留。完整模块AST仅展开新增helper后与a92e完全一致，原tmp/backend差异为空。Ruff检查/格式均通过。
 - 产品阶段提交 `41a111f270e949326202b8af5770db8aa7102e82`；原固定计量5887→5884，Reviews净减3，仍超784，require-range明确退出1，原始JSON/log保存。本岗未进行云或全量CI，没有把规模失败记通过。
 - 已实际push产品41a111f2到origin/codex/backend-dry-r29b，退出0；用原样body-file向Issue #3发布候选和限制，实际回执https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840。最后3条静态命令全部退出0，见static-checks.json。
+
+
+## 2026-10-29 R30契约上下文结构切片（ROLE-backend-ARCHITECTURE-R30-v1，重检查门关闭）
+- AI后端岗从准确7374b363新建独立codex/backend-architecture-r30；R29B原件不改。已读AGENTS/本岗/边界和旧架构报告，产品范围api与contracts/__init__，不改资源OpenAPI/DDL或其他owner产品。
+- 已编辑实际候选：根validator.evolve共用schema解析上下文，替代手写绝对ref递归；API参数/类型/body与成功data共用公开Registry resolver入口。物理diff+14/-37，仅是文本差额，尚无cloc事实。
+- 读取现有锁和本机METADATA：jsonschema4.26.0、referencing0.37.0；官方URL及关键风险见architecture-r30/design.md，无新依赖。库descend会进入nested$id，可能与旧绝对ref语义不同，已写必要差分而非掩盖风险。
+- 先查tmp/763_backend_architecture_r30未占用（test-e退出1），后创建新测试；没有改原测试/断言，没有已知迁移请求。冻结两份OpenAPI搜索$id无匹配（rg退出1，正常负查找）。
+- 按root资源隔离要求：此阶段只读/设计/编辑/记录，未运行导入、pytest、build、固定计量、基准或其他重检查，等待明确释放门；未云/PRIVATE/未公开独立用例/联系独立岗。初步没有可证数百行方案，不拿其他模块功能凑。
