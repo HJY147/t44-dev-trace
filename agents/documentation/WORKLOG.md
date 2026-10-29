@@ -516,3 +516,10 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 2026-10-29T06:30:27.443863+00:00 R29B最终增量校核通过：新增27本地链接、恰7自身路径/无新建、JSON解析与旧顶层逐值保留、原promptrefs前缀、限定作者key/token形状无匹配；显式暂存后的本岗作者diff-check单独exit0，非root原CI整包check绿。准备实质commit/push并只补实际发布回执，产品/测试/云执行0。
 
 - 2026-10-29T06:31:16.125434+00:00 R29B实质提交c7d650a3dcb97b03b3681e505704474b034a3dba已由本岗commit/push至origin/codex/documentation-r29；精确ls-remote核同、worktree clean。[skip ci]仅避免纯文档归档启动产品CI，未改workflow。此后只补发布回执，不读取新QA/云资料、不变更70b24c90公开截止或NP结论，不新建PR/Issue/审核success。
+
+## FINAL90b 20261030
+
+- Actor documentation AI /root/documentation_finish_90b；Prompt ROLE-documentation-FINAL90b-v1。从07b1bbe1新独立worktree/index codex/docs-final90b，读取AGENTS/documents技能，采用2e339c6d四稿和原导出器，不改他岗worktree或产品。
+- 原source_count.py/cloc2.10执行全5818/65，require-range exit1；原62+3文件组复算5038+780，产品对90b路径空diff。未改变计数脚本、根或测试门槛，用户采用核心口径不等老师批准。
+- 只读明确开放753 F05两PUBLIC并同字节副本，18/1/11、原FAIL工具400与冻结422优先级不明保留，完整验收未成立；无PRIVATE/旧case/测试岗消息。精确官方CI797/89、Docker merge56217限定。
+- 本轮create4 marker成功一次，bundled Python/Node/LO。四Word先渲染12/15/5/5页；实看发现旧证据图标旧源/数，新增90b图修复。新输出只私密FINAL90b，封面日期空。P06正式结果尚待root PUBLIC，不编数字。

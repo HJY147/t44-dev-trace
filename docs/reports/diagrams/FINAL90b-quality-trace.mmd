@@ -1,0 +1,14 @@
+flowchart TB
+    subgraph A[当前业务与实现]
+        direction LR
+        R[人的业务选择<br/>需求 FR01至FR08] --> S[v1.2冻结<br/>38操作 18表226列] --> P[产品90b734f<br/>模块与函数I/O对应]
+    end
+    subgraph B[已取得的开发证据]
+        direction LR
+        L[后端差分与DB前端自测<br/>原红和工具失败保持] --> C[准确源统一CI<br/>后端797 前端89绿] --> I[准确源双镜像构建成功<br/>不等云已部署]
+    end
+    subgraph D[独立验证与出口]
+        direction LR
+        Q[独立F05公开结果<br/>18通过 1原失败 11未执行] --> F[P06正式性能<br/>结果待回填] --> X[整体尚未放行<br/>核心5038 辅助780 全量5818<br/>研究及人工材料待补]
+    end
+    A --> B --> D

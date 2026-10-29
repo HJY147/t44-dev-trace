@@ -1,7 +1,7 @@
 """Export four private technical review DOCX files from the project's own Markdown.
 
-Run only with the bundled Python. This session already completed the four-DOCX
-create marker in M4; M6 incrementally continues that operation without repeating it.
+Run only with the bundled Python. Historical M6/M7 continue their original operation;
+the separately authorized FINAL-20261029 batch has one new create-four marker.
 No product imports, requests, tests or generic document templates are used.
 """
 from __future__ import annotations
@@ -12,6 +12,8 @@ import json
 import os
 import re
 import stat
+import shutil
+from datetime import datetime, timezone
 import subprocess
 import sys
 from pathlib import Path
@@ -135,7 +137,7 @@ def configure(doc, title):
             st.paragraph_format.space_before = Pt(14)
             st.paragraph_format.keep_with_next = True
     h = sec.header.paragraphs[0]; h.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    font(h.add_run(title + '  技术审阅稿'), 8.5)
+    font(h.add_run(title), 8.5)
     footer = sec.footer.paragraphs[0]; footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     font(footer.add_run('第 '), 9)
     f = OxmlElement('w:fldSimple'); f.set(qn('w:instr'), 'PAGE'); footer._p.append(f)
@@ -161,9 +163,9 @@ def cover(doc, title, info, cutoff):
     for r in p.runs: font(r, 26, True)
     p.paragraph_format.space_after = Pt(20)
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    font(p.add_run('阶段技术审阅材料'), 15, True)
+    font(p.add_run('技术报告'), 15, True)
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    font(p.add_run('未通过最终验收'), 12)
+    font(p.add_run('验收状态以测试结果报告为准'), 12)
     p.paragraph_format.space_after = Pt(38)
     for key, label in [('class_name', '专业班级'), ('student_id', '学号'),
                        ('student_name', '姓名'), ('instructor', '指导教师')]:
@@ -181,7 +183,7 @@ def table(doc, lines, source, root, cutoff):
     rows = [[x.strip() for x in line.strip().strip('|').split('|')] for line in lines]
     data = [rows[0]] + rows[2:]
     n = len(data[0]); t = doc.add_table(rows=0, cols=n); t.autofit = False
-    width = 7.0
+    width = (doc.sections[-1].page_width - doc.sections[-1].left_margin - doc.sections[-1].right_margin) / 914400
     if n >= 5:
         fractions = ([.09, .25, .28, .28, .1] if n == 5 else [1/n]*n)
     else:
@@ -240,7 +242,7 @@ def figure(doc, f, number, root):
     inline_shape.set('descr',name+' 复用M3已渲染图，非本轮重绘')
 
 
-def image_figure(doc, source, root, target, title, number):
+def image_figure(doc, source, root, target, title, number, *, restore_portrait=True):
     asset = (source.parent / target).resolve()
     relative = asset.relative_to(root).as_posix()
     if relative not in ASSET_HASHES or hashlib.sha256(asset.read_bytes()).hexdigest() != ASSET_HASHES[relative]:
@@ -282,7 +284,7 @@ def image_figure(doc, source, root, target, title, number):
     para.add_run().add_picture(str(asset), width=Inches(width), height=Inches(height))
     para.paragraph_format.space_after = Pt(5)
     para._p.xpath('.//wp:docPr')[0].set('descr', plain(title))
-    if wide:
+    if wide and restore_portrait:
         sec = doc.add_section(WD_SECTION.NEW_PAGE)
         boundary = doc.paragraphs[-1].paragraph_format
         boundary.space_before = boundary.space_after = Pt(0)
@@ -302,7 +304,16 @@ def body(doc, source, root, cutoff, figures):
         image = re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', line)
         if image:
             image_count += 1
-            image_figure(doc, source, root, image[2], image[1], image_count)
+            j = i + 1
+            while j < len(lines) and (not lines[j].strip() or re.match(r"^#{2,4}\s", lines[j].strip())):
+                j += 1
+            next_image = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", lines[j].strip()) if j < len(lines) else None
+            next_wide = False
+            if next_image:
+                next_asset = (source.parent / next_image[2]).resolve()
+                with Image.open(next_asset) as next_info:
+                    next_wide = next_info.width / next_info.height > 1.45 or next_asset.stem in ('m6-reason-projection', 'm6-quality-feedback')
+            image_figure(doc, source, root, image[2], image[1], image_count, restore_portrait=not next_wide)
             i += 1
             continue
         if line.startswith('```'):
@@ -341,7 +352,7 @@ def main():
     parser.add_argument('--private-root',type=Path,required=True)
     parser.add_argument('--cutoff',required=True)
     parser.add_argument('--documentation-ref',default='HEAD')
-    parser.add_argument('--stage', choices=['M6', 'M7'], required=True)
+    parser.add_argument('--stage', choices=['M6', 'M7', 'FINAL-20261029', 'FINAL90b'], required=True)
     parser.add_argument('--only', nargs='+', choices=[row[0] for row in REPORTS])
     args=parser.parse_args();root=args.root.resolve();private=args.private_root.resolve()
     args.cutoff = subprocess.check_output(['git','rev-parse','--verify',args.cutoff+'^{commit}'],cwd=root,text=True).strip()
@@ -384,13 +395,14 @@ def main():
     figures=json.loads((root/'docs/diagrams/manifest.json').read_text())['figures']
     for item in figures:
         ASSET_HASHES[item['artifacts']['png']['path']] = item['artifacts']['png']['sha256']
-    for name in ['M5-render-manifest.json', 'M6-render-manifest.json']:
+    for name in ['M5-render-manifest.json', 'M6-render-manifest.json', 'FINAL-20261029-render-manifest.json']:
         for item in json.loads((root/'docs/reports/diagrams'/name).read_text())['artifacts']:
             if item['output'].endswith('.png'): ASSET_HASHES[item['output']] = item['sha256']
     prior_path = out/'export-manifest.json'
     records = json.loads(prior_path.read_text())['reports'] if prior_path.exists() else []
     exporter_hash = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     for name,target,title in REPORTS:
+        if args.stage in {'FINAL-20261029', 'FINAL90b'}: target = name.replace('.md', '.docx')
         if args.only and name not in args.only: continue
         source=root/'reports/final'/name;doc=Document();configure(doc,title);cover(doc,title,info,args.cutoff)
         selected=[f for f in figures if f['source']==source.relative_to(root).as_posix()]
@@ -399,14 +411,21 @@ def main():
         if prior and prior['source_sha256'] == source_hash and prior.get('exporter_sha256') == exporter_hash and (out/target).exists():
             continue
         figure_count = body(doc,source,root,args.documentation_ref,selected)
-        output=out/target;doc.save(output);output.chmod(0o600)
+        output=out/target
+        if output.exists():
+            archive = out/'iterations'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+            archive.mkdir(parents=True, mode=0o700)
+            shutil.copy2(output, archive/target)
+            if prior_path.exists(): shutil.copy2(prior_path, archive/'export-manifest-before.json')
+        doc.save(output);output.chmod(0o600)
         records = [row for row in records if row['source'] != source.relative_to(root).as_posix()]
         records.append({'source':source.relative_to(root).as_posix(),'source_sha256':source_hash,
                         'output':target,'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest(),
                         'figures':figure_count,'cutoff':args.cutoff,'documentation_ref':args.documentation_ref,'date_blank':True,
                         'exporter_sha256':exporter_hash,'visual_QA':'pending rendering and every-page inspection'})
     (out/'export-manifest.json').write_text(json.dumps({'reports':records,'private_cover_used':True,
-        'stage':args.stage,'M6_reused_reports':reused,'M4_archive_preserved':True,'marker_repeated':False,
+        'stage':args.stage,'M6_reused_reports':reused,'M4_archive_preserved':True,
+        'operation_marker': ('new create4 marker required once immediately before first authoring' if args.stage in {'FINAL-20261029', 'FINAL90b'} else 'original M4 operation not repeated'),
         'student_research_authored':False,'visual_QA':'pending rendering and every-page inspection'},ensure_ascii=False,indent=2)+'\n')
     print('Selected private technical review DOCX sources exported incrementally; render and every-page QA still required.')
 
