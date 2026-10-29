@@ -1,0 +1,22 @@
+test_docker29_actual_id_distinct_config_and_business_env_refusal (__main__.RunnerTests.test_docker29_actual_id_distinct_config_and_business_env_refusal) ... ok
+test_extra_python_and_tampered_declared_bytes_rejected (__main__.RunnerTests.test_extra_python_and_tampered_declared_bytes_rejected) ... ok
+test_full_runner_success_and_timeout_preserve_original_prefix (__main__.RunnerTests.test_full_runner_success_and_timeout_preserve_original_prefix) ... ok
+test_real_final18_staging_fixed_runtime_http_argv_and_modes (__main__.RunnerTests.test_real_final18_staging_fixed_runtime_http_argv_and_modes) ... ERROR
+test_source_namespace_old_run_and_expired_packet_refused_before_docker (__main__.RunnerTests.test_source_namespace_old_run_and_expired_packet_refused_before_docker) ... ok
+
+======================================================================
+ERROR: test_real_final18_staging_fixed_runtime_http_argv_and_modes (__main__.RunnerTests.test_real_final18_staging_fixed_runtime_http_argv_and_modes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/755_deployment_future_http_r30/test_http_runner.py", line 116, in test_real_final18_staging_fixed_runtime_http_argv_and_modes
+    self.assertEqual(R.argv(self.args, value, "edge", "new", runtime=True)[-3:],
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-http-prepare.py", line 149, in argv
+    "--label", "io.t44.r30.http.owner=" + value["project"], "--network", network,
+                                          ~~~~~^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.242s
+
+FAILED (errors=1)

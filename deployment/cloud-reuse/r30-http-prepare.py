@@ -147,6 +147,8 @@ def image_and_edge(value):
 def argv(args, value, network, name, *, runtime=False):
     prefix = [*DOCKER, "run", "--rm", "--pull", "never", "--name", name,
             "--label", "io.t44.r30.http.owner=" + value["project"], "--network", network,
+            "--cpus", "2", "--memory", "1g", "--pids-limit", "128",
+            "--tmpfs", "/tmp:rw,nosuid,nodev,size=32m",
             "--user", "10001:10001", "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true",
             "--volume", str(args.output_dir / "code") + ":/neutral-code:ro",
             "--volume", str(args.output_dir / "inputs") + ":/neutral-input:ro",
