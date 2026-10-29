@@ -789,3 +789,7 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 由7374独立backend-neutral-r30建立，保留用户两次中断前未提交文件；root明确恢复后继续。仅本地免费编辑，尚未执行本地验证/云/SUT/session，不读PRIVATE/未公布用例、不联系QA。
 - 只读root明确allowlist的历史中立六件与新0b PUBLIC接口/两部署manifest；raw SHA已核，区分62 context与未来actual60 runtime，未假称APP import。新9e预算pin；APP idle6实际包含tls-gateway，scheduler实际start后APP7，LOAD和一次性容器另算，旧常驻计数假设已修正。
 - 现有模板/guard/seed正式函数接缝/HTTP执行代码已编辑；source0b/接口freeze固定，真实run/window/DB/CA/角色/ID/会话仍null/false。6000seed+400真实API准备拟声明6400，不删数凑6000。最后四session路径按root技术决定，原issued/expires和首次完成时间保留，不retime/延token。
+- 实际阶段ffae5d84默认未验证；root限定审查转P1/P2后保留2402792b红：完整HTTP入口target7例6红1绿。固定backend8e/LOAD4f config、同私网IPv4字面量origin/connect_ip并拒DNS/public/loopback、780..900上界、actual raw import/source/manifests/60runtime proof前置修复后7绿，不把OCI actual_id当config。
+- 原始失败均保留：四引号SyntaxError（0.09s collection error）、新增hash函数漏import的NameError、第三login失败prefix缺失真实红。逐次纠正source，没有改独立用例/接口或删除新负断言。
+- 最终本地26项通过1.58s：400条正常API材料流程FakeClient回放（禁止真实HTTPS）、全部模块py_compile/import、5个CLI --help、target guard、逐login0600排他prefix/原meta/原响应、whole400库存、原seed_demo explicit anchor stub、packet canonical binding/O_EXCL。人的时间明确request_started/response_observed/meta server_time，不伪称server issued_at，service保实际auth row created_at。所有实际SUT/session/云=0。
+- Ruff检查/格式、git diff --check、产品/冻结规格/旧tmp/backend无差异全部退出0。模块源码/执行命令见RUNBOOK；新9e外层预算admitted锁仍由root已审P1入口全程持有，本模块proof SHA检查不能替代这个外层锁。未独立验收、无Linux/Docker/MySQL/TLS真实新结论。

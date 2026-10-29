@@ -10,20 +10,21 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from admin_seed import seed_in_admitted_context
-from guard import check_intent, check_plan, need, read_json, timestamp
+from guard import check_intent, check_plan, need, read_json, timestamp, validate_loaded_receipt
 from http_primitives import save, stamp
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("seed", "counts", "service"))
-    for key in ("plan", "intent", "budget-proof", "output"):
+    for key in ("plan", "intent", "budget-proof", "output", "import-receipt"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--root-budget-admitted", action="store_true")
     args = parser.parse_args()
     need(args.root_budget_admitted, "ROOT_MUST_HOLD_NEW_BUDGET_ADMISSION_LOCK")
     plan, intent, now = read_json(args.plan), read_json(args.intent), datetime.now(UTC)
     check_plan(plan, now, require_fixture_ready=False)
+    validate_loaded_receipt(plan, args.import_receipt.read_bytes())
     need(
         hashlib.sha256(args.budget_proof.read_bytes()).hexdigest()
         == plan["budget"]["actual_admission_receipt_sha256"],

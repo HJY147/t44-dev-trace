@@ -3,10 +3,14 @@
 import hashlib
 import importlib
 import json
+import py_compile
+import subprocess
 import sys
+import threading
 from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
@@ -98,6 +102,13 @@ def fixture():
             "token_sha256": sha(session["token"]),
             "issued_at": stamp(NOW - timedelta(seconds=45)),
         }
+        if role != "service":
+            issued[role].pop("issued_at")
+            issued[role].update(
+                login_request_started_at=stamp(NOW - timedelta(seconds=45)),
+                response_observed_at=stamp(NOW - timedelta(seconds=40)),
+                response_meta={"server_time": stamp(NOW - timedelta(seconds=42))},
+            )
     members, iterations, clients, deps = {}, {}, [], {}
     for pid in range(1, 41):
         members[str(pid)] = [
@@ -271,7 +282,7 @@ def test_refuses_unsafe_or_stale_materials(mutation):
     elif mutation == "expiry":
         evidence["session_attestations"]["manager"]["expires_at"] = plan["window"]["end_utc"]
     elif mutation == "early_issue":
-        evidence["session_attestations"]["manager"]["issued_at"] = stamp(
+        evidence["session_attestations"]["manager"]["login_request_started_at"] = stamp(
             NOW - timedelta(seconds=61)
         )
     elif mutation == "duplicates":
@@ -380,25 +391,252 @@ def test_wrong_write_scope_and_default_template_refuse():
         guard.check_plan(json.loads((CODE / "plan.template.PUBLIC.json").read_text()), NOW)
 
 
-@pytest.mark.parametrize("mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"])
+@pytest.mark.parametrize(
+    "mutation", ["backend", "load", "dns", "mismatch", "loopback", "public", "window901"]
+)
 def test_review_target_guard_precedes_every_client_and_write(tmp_path, mutation):
     plan, *_ = fixture()
-    if mutation == "backend": plan["images"]["backend"] = "sha256:" + sha("other-backend")
-    elif mutation == "load": plan["images"]["load_python"] = "sha256:" + sha("other-load")
-    elif mutation == "dns": plan["target"]["origin"] = "https://different.example:8443"
-    elif mutation == "mismatch": plan["target"]["origin"] = "https://10.0.0.2:8443"
-    elif mutation == "loopback": plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
-    elif mutation == "public": plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
+    if mutation == "backend":
+        plan["images"]["backend"] = "sha256:" + sha("other-backend")
+    elif mutation == "load":
+        plan["images"]["load_python"] = "sha256:" + sha("other-load")
+    elif mutation == "dns":
+        plan["target"]["origin"] = "https://different.example:8443"
+    elif mutation == "mismatch":
+        plan["target"]["origin"] = "https://10.0.0.2:8443"
+    elif mutation == "loopback":
+        plan["target"].update(origin="https://127.0.0.1:8443", connect_ip="127.0.0.1")
+    elif mutation == "public":
+        plan["target"].update(origin="https://8.8.8.8:8443", connect_ip="8.8.8.8")
     elif mutation == "window901":
         plan["window"]["end_utc"] = stamp(NOW + timedelta(seconds=1021))
         plan["window"]["stop_utc"] = stamp(NOW + timedelta(seconds=1111))
     ca = tmp_path / "synthetic-ca.pem"
     ca.write_bytes(b"synthetic-ca")
     called = []
+
     def client(*args):
         called.append(True)
         raise RuntimeError("UNSAFE_CLIENT_CONSTRUCTION_BEFORE_TARGET_GUARD")
+
     with pytest.raises(guard.Refused):
-        prepare_http.prepare(plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client)
+        prepare_http.prepare(
+            plan, {}, {}, ca, tmp_path / "output", clock=lambda: NOW, client_type=client
+        )
     assert not called
     assert not (tmp_path / "output").exists()
+
+
+def test_third_login_failure_keeps_original_first_two_prefixes(tmp_path):
+    plan, evidence, sessions, _, receipt = fixture()
+    ca = tmp_path / "ca.pem"
+    ca.write_bytes(b"synthetic-ca")
+    calls = []
+
+    class LoginClient:
+        def __init__(self, *args):
+            self.last_meta = {"server_time": stamp(NOW)}
+
+        def request(self, path, token=None, body=None):
+            role = body["username"]
+            calls.append(role)
+            if role == "reviewer":
+                raise RuntimeError("THIRD_LOGIN_SYNTHETIC_FAILURE")
+            return {
+                "access_token": sessions[role]["token"],
+                "user": {"id": sessions[role]["user_id"]},
+                "expires_at": sessions[role]["expires_at"],
+            }
+
+        def close(self):
+            pass
+
+    accounts = {
+        role: {"username": role, "password": "synthetic-only", "user_id": sessions[role]["user_id"]}
+        for role in ("manager", "developer", "reviewer")
+    }
+    service = {
+        "session": sessions["service"],
+        "attestation": evidence["session_attestations"]["service"],
+    }
+    with pytest.raises(RuntimeError, match="THIRD_LOGIN_SYNTHETIC_FAILURE"):
+        prepare_http.prepare(
+            plan,
+            accounts,
+            service,
+            ca,
+            tmp_path / "out",
+            clock=lambda: NOW,
+            client_type=LoginClient,
+            import_receipt_raw=receipt,
+        )
+    assert calls == ["manager", "developer", "reviewer"]
+    for role in ("manager", "developer"):
+        path = tmp_path / "out" / "session-prefix" / (role + ".json")
+        assert path.is_file()
+        value = json.loads(path.read_text())
+        assert value["original_login_data"]["access_token"] == sessions[role]["token"]
+        assert value["original_login_data"]["expires_at"] == sessions[role]["expires_at"]
+        assert path.stat().st_mode & 0o777 == 0o600
+        assert value["login_request_started_at"] == stamp(NOW)
+        assert value["response_observed_at"] == stamp(NOW)
+        assert value["response_meta"]["server_time"] == stamp(NOW)
+
+
+def test_all_owned_modules_real_compile_import_and_cli_help(tmp_path):
+    for path in CODE.glob("*.py"):
+        py_compile.compile(str(path), cfile=str(tmp_path / (path.stem + ".pyc")), doraise=True)
+        importlib.import_module(path.stem)
+    for name in ("admin.py", "prepare_http.py", "assemble.py", "make_evidence.py", "guard.py"):
+        result = subprocess.run(
+            [sys.executable, "-B", str(CODE / name), "--help"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert result.returncode == 0, result.stderr
+
+
+def test_complete_40_project_400_api_preparation_fake_only(tmp_path, monkeypatch):
+    plan, evidence, sessions, _, receipt = fixture()
+    ca = tmp_path / "ca.pem"
+    ca.write_bytes(b"synthetic-ca")
+    source_tasks = {
+        item["escalation_task"]["id"]: deepcopy(item["escalation_task"])
+        for item in evidence["inventory"]["clients"]
+    }
+    template = deepcopy(evidence["inventory"]["clients"][0]["transition_task"])
+    events, calls, next_id, lock = {}, [], [6000], threading.Lock()
+
+    def no_connection(*args, **kwargs):
+        raise AssertionError("REAL_HTTPS_IS_FORBIDDEN_IN_THIS_TEST")
+
+    monkeypatch.setattr("http.client.HTTPSConnection", no_connection)
+
+    class FakeClient:
+        def __init__(self, *args):
+            self.last_meta = {"server_time": stamp(NOW)}
+
+        def close(self):
+            pass
+
+        def request(self, path, token=None, body=None, method=None):
+            with lock:
+                calls.append((path, deepcopy(body)))
+                parsed = urlsplit(path)
+                parts, query = parsed.path.strip("/").split("/"), parse_qs(parsed.query)
+                if parts == ["auth", "login"]:
+                    role = body["username"]
+                    return {
+                        "access_token": sessions[role]["token"],
+                        "user": {"id": sessions[role]["user_id"]},
+                        "expires_at": sessions[role]["expires_at"],
+                    }
+                if parts == ["projects"]:
+                    rows = [{"id": pid} for pid in range(1, 41)]
+                else:
+                    internal = parts[0] == "internal"
+                    if internal:
+                        parts = parts[1:]
+                    pid = int(parts[1])
+                    if parts[2] == "members":
+                        rows = evidence["memberships"][str(pid)]
+                    elif parts[2] == "iterations":
+                        rows = [evidence["iterations"][str(pid)]]
+                    elif parts[2] == "escalation-rules":
+                        return {"version": 1}
+                    elif parts[2] == "escalations":
+                        rows = [deepcopy(events[int(query["task_id"][0])])]
+                    elif parts[2] == "tasks" and len(parts) == 3:
+                        if body is None:
+                            rows = [
+                                deepcopy(row)
+                                for row in source_tasks.values()
+                                if row["project_id"] == pid
+                            ]
+                        else:
+                            next_id[0] += 1
+                            row = {
+                                **deepcopy(template),
+                                **{
+                                    key: deepcopy(body[key])
+                                    for key in (
+                                        "title",
+                                        "description",
+                                        "iteration_id",
+                                        "owner_id",
+                                        "plan",
+                                    )
+                                },
+                                "id": next_id[0],
+                                "project_id": pid,
+                                "state": 1,
+                                "version": 1,
+                                "updated_at": stamp(NOW),
+                            }
+                            source_tasks[row["id"]] = row
+                            return {"task": deepcopy(row)}
+                    else:
+                        tid = int(parts[3])
+                        row = source_tasks[tid]
+                        if len(parts) == 4:
+                            return deepcopy(row)
+                        if parts[4] == "dependencies":
+                            rows = []
+                        elif parts[4] == "transitions":
+                            assert body == {"expected_version": row["version"], "action": 1}
+                            row.update(state=2, version=row["version"] + 1, updated_at=stamp(NOW))
+                            return {"task": deepcopy(row)}
+                        elif internal and parts[4] == "escalations":
+                            assert body["expected_version"] == row["version"]
+                            row.update(
+                                version=row["version"] + 1,
+                                escalation_count=row["escalation_count"] + 1,
+                            )
+                            event = {
+                                "id": tid + 10000,
+                                "task_id": tid,
+                                "project_id": pid,
+                                "schedule_version": row["schedule_version"],
+                                "rule_version": 1,
+                                "level": 3,
+                                "recipient_ids": [11, 12],
+                                "disposition": 1,
+                                "scan_run_id": body["scan_run_id"],
+                                "created_at": stamp(NOW),
+                                "handled_count": 0,
+                            }
+                            events[tid] = event
+                            return {"event": deepcopy(event)}
+                        else:
+                            raise AssertionError(path)
+                return {"items": deepcopy(rows), "total": len(rows), "page": 1, "page_size": 100}
+
+    accounts = {
+        role: {"username": role, "password": "synthetic-only", "user_id": sessions[role]["user_id"]}
+        for role in ("manager", "developer", "reviewer")
+    }
+    service = {
+        "session": sessions["service"],
+        "attestation": evidence["session_attestations"]["service"],
+    }
+    result = prepare_http.prepare(
+        plan,
+        accounts,
+        service,
+        ca,
+        tmp_path / "out",
+        clock=lambda: NOW,
+        client_type=FakeClient,
+        import_receipt_raw=receipt,
+    )
+    assert len(result["inventory"]["clients"]) == 400 and next_id[0] == 6400
+    assert sum(path == "/auth/login" for path, _ in calls) == 3
+    assert sum(path.endswith("/transitions") for path, _ in calls) == 400
+    assert sum(path.startswith("/internal/") for path, _ in calls) == 400
+    assert json.loads((tmp_path / "out" / "sessions.json").read_text()) == sessions
+    assert result["generated_complete_utc"] == stamp(NOW)
+    assert all(
+        "issued_at" not in result["session_attestations"][role]
+        for role in ("manager", "developer", "reviewer")
+    )

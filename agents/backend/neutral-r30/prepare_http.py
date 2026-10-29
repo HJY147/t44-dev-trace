@@ -9,15 +9,24 @@ import uuid
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from guard import check_intent, check_plan, need, read_json, timestamp
+from guard import check_intent, check_plan, need, read_json, timestamp, validate_loaded_receipt
 from http_primitives import Client, all_pages, choose_escalations, save, stamp
 
 
 def prepare(
-    plan, accounts, service, ca, output, *, clock=lambda: datetime.now(UTC), client_type=Client
+    plan,
+    accounts,
+    service,
+    ca,
+    output,
+    *,
+    clock=lambda: datetime.now(UTC),
+    client_type=Client,
+    import_receipt_raw=None,
 ):
     now = clock()
     check_plan(plan, now, require_fixture_ready=False)
+    validate_loaded_receipt(plan, import_receipt_raw)
     need(plan["authorized_count_delta"]["tasks"] == 400, "EXPLICIT_400_API_TASK_DELTA_REQUIRED")
     need(not output.exists(), "EXCLUSIVE_NEW_PREPARATION_OUTPUT_REQUIRED")
     need(
@@ -27,6 +36,8 @@ def prepare(
     output.mkdir(mode=0o700)
     records = output / "requests"
     records.mkdir(mode=0o700)
+    prefix = output / "session-prefix"
+    prefix.mkdir(mode=0o700)
     deadline = time.monotonic() + min(
         300, (timestamp(plan["window"]["start_utc"]) - now).total_seconds() - 30
     )
@@ -58,6 +69,21 @@ def prepare(
                     "password": accounts[role]["password"],
                 },
             )
+            observed = clock()
+            metadata = getattr(api, "last_meta", None)
+            save(
+                prefix / (role + ".json"),
+                {
+                    "original_login_data": response,
+                    "response_meta": metadata,
+                    "login_request_started_at": stamp(before),
+                    "response_observed_at": stamp(observed),
+                },
+            )
+            need(
+                isinstance(metadata, dict) and "server_time" in metadata,
+                "ORIGINAL_LOGIN_RESPONSE_META_REQUIRED_PREFIX_PRESERVED",
+            )
             need(
                 response["user"]["id"] == accounts[role]["user_id"], "ACTUAL_ROLE_USER_ID_REQUIRED"
             )
@@ -70,7 +96,9 @@ def prepare(
             }
             sessions[role] = session
             issued[role] = {
-                "issued_at": stamp(before),
+                "login_request_started_at": stamp(before),
+                "response_observed_at": stamp(observed),
+                "response_meta": metadata,
                 "expires_at": response["expires_at"],
                 "token_sha256": hashlib.sha256(response["access_token"].encode()).hexdigest(),
                 "user_id": session["user_id"],
@@ -214,7 +242,7 @@ def prepare(
         "namespace": plan["namespace"],
         "database": plan["target"]["database"],
         "binding_sha256": plan["target"]["binding_sha256"],
-        "sessions_generated_at": {role: issued[role]["issued_at"] for role in issued},
+        "session_time_evidence": issued,
         "generated_complete_utc": completed,
         "inventory": {
             "schema": "772-inventory-v1",
@@ -245,7 +273,7 @@ def prepare(
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("plan", "accounts", "service", "ca", "output"):
+    for name in ("plan", "accounts", "service", "ca", "output", "import-receipt"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--root-admit-http-preparation", action="store_true")
     args = parser.parse_args()
@@ -257,6 +285,7 @@ def main():
         read_json(args.service),
         args.ca,
         args.output,
+        import_receipt_raw=args.import_receipt.read_bytes(),
     )
 
 

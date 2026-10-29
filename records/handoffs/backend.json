@@ -3689,12 +3689,34 @@
     "prompt_ref": "ROLE-backend-NEUTRAL-R30-v1",
     "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
     "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
-    "status": "LOCAL_SOURCE_STAGE_UNVALIDATED_NO_CLOUD",
+    "status": "LOCAL_EXECUTION_SEAMS_CHECKED_NOT_SUT_READY_PENDING_ROOT_REVIEW",
     "records": "agents/backend/neutral-r30",
     "source_context_records": 62,
     "expected_actual_runtime_files": 60,
     "actual_APP_import_verified": false,
     "cloud_SUT_or_real_sessions_executed": false,
-    "original_tests_or_product_changed": false
+    "original_tests_or_product_changed": false,
+    "local_unique_checks": 26,
+    "local_passed": 26,
+    "local_seconds": 1.58,
+    "source_stage": "ffae5d84",
+    "target_red_stage": "2402792b",
+    "target_red": {
+      "failed": 6,
+      "passed": 1
+    },
+    "core_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+    "budget_helper_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+    "runbook": "agents/backend/neutral-r30/RUNBOOK.md",
+    "root_fields_pending": [
+      "run/namespace/database binding",
+      "actual import raw receipt/path/UTC and full-chain review",
+      "T0/end/cost-stop",
+      "CA/private IPv4 origin",
+      "APP idle6 and after actual scheduler7 plus separate LOAD observations",
+      "actual40 project IDs/accounts",
+      "four actual original sessions/expires and fresh snapshot/counts",
+      "actual exclusive writer evidence and outer new budget admission lock"
+    ]
   }
 }
