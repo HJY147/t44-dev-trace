@@ -1,0 +1,45 @@
+{
+  "schema": "753-independent-P07-admission-v1",
+  "status": "BLOCKED_EXPIRED_START_WINDOW",
+  "execution_authorized": false,
+  "benchmark_authorized": false,
+  "grant_allow": false,
+  "run_id": "r30finalp07",
+  "review_time_observed_utc": "2026-10-29T19:22:40Z",
+  "original_start_utc": "2026-10-29T19:21:54Z",
+  "original_start_plus20_utc": "2026-10-29T19:22:14Z",
+  "latest_supplied_app_resource_observed_utc": "2026-10-29T19:22:17.271612+00:00",
+  "packet_created_utc": "2026-10-29T19:18:00.249701Z",
+  "packet_age_expiry_utc": "2026-10-29T19:23:00.249701Z",
+  "reason": "Original adapter requires start<=actual_now<start+20 seconds. Review observation and supplied fresh APP resource receipt are already later than start+20; impossible to grant this original window now. Do not shift original window or override adapter/freshness guards.",
+  "preparation_facts": {
+    "transport_original_five_opened": true,
+    "adapter_prepare_success": true,
+    "default_grant_allow": false,
+    "environment_sha256": "ea5de8477e6d8f72b09476548c942cd8ac02d9b4fadee67757d965a71ab7934c",
+    "fixture_counts": {
+      "decisions": 3600,
+      "dependencies": 9000,
+      "projects": 40,
+      "reviews": 11400,
+      "tasks": 6400
+    },
+    "clients": 400,
+    "distinct_tasks": 800,
+    "projects": 40,
+    "sessions_cover_original_window": true,
+    "result_exists": false,
+    "grant_exists": false
+  },
+  "performance_result": "NOT_EXECUTED; preparation and inventory are not latency/throughput/concurrency acceptance evidence",
+  "inputs_sha256": {
+    "P07-transport-prepare.original.PUBLIC.txt": "e8825ab964037fb9d986fe52c34793ea8c92ed4db604ea435a0578a8fa7f389b",
+    "P07-packet-default-false-metadata.original.PUBLIC.json": "1393a335e67c0f917c8d96a2f66b7ac633ceb75bfede95c16501a0a7afb175b7",
+    "P07-current-APP-fixture-resources.original.PUBLIC.json": "95d0d2fb041033fa6ef9eeaf024054e49c8f5ad67150cbe3731499e0f6de8ce0",
+    "QA753P07-install.original.PUBLIC.json": "f17af137321e1e1fda19a7bca752b2d757bbe6c91048d678c45b7ab965e6a131"
+  },
+  "preservation": [
+    "Keep all original P07/P06/P05/F05 receipts and defaultfalse grant unchanged.",
+    "No run, retry, time shift, session extension, worker change or successor is authorized by this decision."
+  ]
+}

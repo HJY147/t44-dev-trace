@@ -1,7 +1,7 @@
 # T44 AI开发过程与研究素材
 
 
-本轮文档AI更新：产品90b官方CI797/89，Docker实际合成merge56217产品字节等同；独立F05原18/1/11保留，完整验收未成立，P06待回填。四技术报告和私密Word已刷新，过程见[文档任务原文与实际改进](../../agents/documentation/prompts/ROLE-documentation-FINAL90b-v1.md)及[交付清单](../../docs/reports/FINAL90b-deliverable-manifest.json)。本页以下历史材料按各自截止阅读，AI排版和纠错不能计作学生亲为。
+本轮文档AI更新：产品90b官方CI797/89，Docker实际合成merge56217产品字节等同；独立F05原18/1/11保留，完整验收未成立，尚无有效正式性能结论；P07错过启动窗口未发压。四技术报告和私密Word已刷新，过程见[文档任务原文与实际改进](../../agents/documentation/prompts/ROLE-documentation-FINAL90b-v1.md)及[交付清单](../../docs/reports/FINAL90b-deliverable-manifest.json)。本页以下历史材料按各自截止阅读，AI排版和纠错不能计作学生亲为。
 
 > 本轮版本说明：以下第1至7节保持各原截止；新增第8节及[云复核839补记](cloud839-evidence-addendum.md)记录本轮AI错误与纠正。全部仍为供学生本人手写研究报告取材的第三人称事实，不是研究成品。
 
@@ -76,3 +76,7 @@ M7增补[夜间AI过程索引](../../docs/prompting/M7-night-process-evidence.md
 839公开复核确认0完整600秒组；任务短窗1个502、流转P95 3645.763385ms，校验预热2个502后中止。1396计划、30251次oracle通过和9个触及case不等完整后置条件通过，现有证据完整case为0。哈希完整、入口0、资源采集0错误、实际释放等分别证明自己的范围。资源高CPU/重传与错误只有伴随关系，不编造根因。
 
 这次材料可支持本人思考“怎样审需求和保证AI质量”：权威是否支持断言、设计是否明示事务/接口、执行是否足够、原始证据是否可重检、协调者是否遵守信息边界。文档不代写本人的观点，不将AI修复计作人工修改、幻觉识别或本人测试；不增加提示词历史数量。详见[完整事实与追踪](cloud839-evidence-addendum.md)。
+
+## P07 AI调度时间错误素材
+
+P07原adapter准备成功、defaultfalse，但总协调AI汇集现场元数据过晚，资源回执和独立审查均晚于原S加20秒。独立决定BLOCKED_EXPIRED_START_WINDOW，未授准、未发压、无性能结果。此为AI过程素材，学生可自行核读分析，不能冒充学生亲历或充抵人工配额。P05/P06准备工具错误、原始失败与P07时间门均保留。后续建议先完成现场证据并预留独立准入时间，不通过平移旧窗口或覆盖guard解决。准确时点与证据见[测试报告P07节](test-results-report.md)。
