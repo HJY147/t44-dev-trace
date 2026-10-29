@@ -125,7 +125,35 @@ def load_source_profile(plan):
     need(Path(reference["path"]).is_absolute(), "EXACT_ABSOLUTE_SOURCE_PROFILE_REQUIRED")
     profile = read_json(reference["path"], expected_sha256=reference["sha256"])
     need(profile.get("root_approved") is True, "ROOT_APPROVED_ACTUAL_SOURCE_PROFILE_REQUIRED")
-    return check_source_profile_facts(profile)
+    check_source_profile_facts(profile)
+    validate_load_runtime_target(profile)
+    return profile
+
+
+def validate_load_runtime_target(profile):
+    """Bind CI config and the legacy QA runtime-ImageID field as distinct facts."""
+    target = read_json(PRODUCER_DIRECTORY / "TARGET_753.template.json")
+    reference = target["load_runtime_identity_reference"]
+    identity = reference["python_identity"]
+    need(
+        profile.get("load_python_identity_projection_sha256")
+        == reference["original_public_projection_sha256"]
+        == "ce562c117428face0b421e06b33c361b291cab26d8d3a51d24484dbd0841da2a",
+        "EXACT_ORIGINAL_PUBLIC_LOAD_IDENTITY_PROJECTION_REQUIRED",
+    )
+    digest(profile["load_python_expected_runtime_id"], image=True)
+    need(
+        identity["success"] is True
+        and identity["identity_kind"] == "oci-descriptor-to-original-config"
+        and identity["config_id"] == profile["load_python_config_id"]
+        and identity["actual_id"]
+        == profile["load_python_expected_runtime_id"]
+        == target["load_runtime_image_config_digest"]
+        == reference["qa_target_load_runtime_image_config_digest"]
+        and reference["qa_adapter_sha256"] == NEW_ADAPTER
+        and reference["fresh_live_recheck_required"] is True,
+        "DISTINCT_CONFIG_AND_QA_LEGACY_RUNTIME_IMAGE_ID_REQUIRED",
+    )
 
 
 def check_source_profile_facts(profile):

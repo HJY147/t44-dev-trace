@@ -94,7 +94,7 @@ def assemble(
             "source_manifest_sha256": profile["source_manifest_sha256"],
             "backend_bundle_manifest_sha256": profile["backend_bundle_manifest_sha256"],
             "sut_image_config_digest": profile["backend_config_id"],
-            "load_runtime_image_config_digest": profile["load_python_config_id"],
+            "load_runtime_image_config_digest": profile["load_python_expected_runtime_id"],
         },
         "packet_nonce": secrets.token_hex(32),
         "created_at": stamp(now),
