@@ -1,0 +1,26 @@
+{
+  "primary_source_schema": {
+    "GEN_status_keywords": [
+      "success",
+      "resources"
+    ],
+    "resource_control_fields": [
+      "utc",
+      "action",
+      "progress",
+      "unit",
+      "observed_before_pid",
+      "observed_after_pid",
+      "owned_process_stopped",
+      "raw_or_data_deleted"
+    ]
+  },
+  "checks": {
+    "GEN_actual_source_schema_has_no_host_https": true,
+    "APP_wrapper_uses_roles_and_separate_strict_probe": true,
+    "resource_actual_source_schema_has_no_success": true,
+    "LOAD_wrapper_selects_action_unit_and_verifies_progress": true
+  },
+  "actual_cloud_original_status_execution_by_deployment": false,
+  "scope": "Primary-source AST schema and representative status fixtures, not cloud integration"
+}

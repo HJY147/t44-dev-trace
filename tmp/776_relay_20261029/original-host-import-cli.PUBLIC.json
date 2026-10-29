@@ -1,0 +1,34 @@
+{
+  "original_host_sha256": "fc5f6bf900aeb3929331b26ec2069c4a36496810de7da068e13fb2013d686370",
+  "actual_local_execution": [
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-I",
+        "-B",
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-window-20261029/agents/backend/window-20261029/p64/790_host.py",
+        "--help"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bcfc0dcdaf632ff0102cc78b4ad05577c91e603f4221bedfd6a7d7a192561e28",
+      "expected_import_budget_failure": true,
+      "help_shown": false
+    },
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-window-20261029/agents/backend/window-20261029/p64/790_host.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "bd195957d5958c085ea634ebbc8e7ac8489b3407a1723fa872af517c6ce5021b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_import_budget_failure": false,
+      "help_shown": true
+    }
+  ],
+  "S1_or_Linux_or_cloud_executed": false,
+  "scope": "original CLI --help import reachability only; confirms caller flag problem before main"
+}

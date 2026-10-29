@@ -611,3 +611,9 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 2026-10-29：交本地验证的自动私网TLS密文relay，LOAD预等待→原receiver→consumer一次，原SUT/13工具/矩阵门禁不改。11独特TLS/协议场景，真实原receiver，consumer只捕获未执行；4种完成unit状态只mock，3.10仅语法核。独立cost_stop_utc与540秒操作余量不改原330/600规则，云/Linux/性能/费用未由本岗验证。设计、接口、边界与实测位于agents/deployment/opaque-relay-20261029与tmp/776；根实际安装/准入另记。
 
 29日后半程编排由部署AI实现，入口 `agents/deployment/opaque-relay-20261029/OPS-CLI.md`，根须逐项实测而不能把脚本安装当运行。原P790 grant默认规则、S1/S2及13份运行代码保持，root_admit_pressure和root_start_producer两处显式true才推进；公钥/公开相关字段及资源密文是GUI唯一桥接材料。根实际窗口是启动约50分钟后的独立cost_stop，预留云停机检查，不把原协议12Z当租赁授权。新增工具未云上执行；6个helper/source小检查不能替代压测。
+
+根云执行资源start时，原返回拒绝但服务随后实际运行且proc完整argv与原plan相同。部署AI保留失败，依据根当前身份观测准备只续seal工具，重新严格核PID/root/argv/starttime、原hash和resource_header；缺失的start-result以明确recovered标记的新观测排他建立，不伪称原start成功，不重启或改guard。具体原因尚未证实，恢复结果由根实执行记录。此debug过程不能写成产品或性能验收通过。
+
+后半CLI曾误把GEN status当idle输出读取host_https，又误把resource status当prepare/start读取success；前者在根实执行时失败，后者在部署源码复核中发现。修复采用新窄wrapper保留错误前缀，使用原status实际字段，并另做严格CA/IP401而不重启idle。原源码AST/schema及代表性fixture窄核验已补，完整云执行仍由根记录。此项属于部署编排的实际debug留痕，不能删去或美化为最初即正确。
+
+原host调用额外加-I导致790_budget导入失败，真实S1尚未开始。经根明确允许，以06b新日志保留现有授权和05，仅移除调用者-I，不改原13件。部署AI本地原host --help对照复现失败/修正后的import可达性；帮助页成功不等于S1或性能成功。根负责实际S1/relay后续证据。
