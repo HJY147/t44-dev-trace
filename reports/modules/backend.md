@@ -486,3 +486,6 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 准确f7原产品不变，新的profile/P64保持业务和旧断言；完成九项核心+三项完整sh wrapper共12唯一本地窄检查；raw与JSON安装20件/只读权限/拒覆盖/篡改写入前拒绝，完整UI与编码均<18000。无云或正式性能结论，runtime输出与root部署接口见agents/backend/window-20261029。
 
 29日APP单次原CLI编排另交，新增4个局部检查后合16唯一项。实际prep grant字段动态读取、不签pressure、不自动S1/S2，默认拒绝；尚非云执行或正式性能。
+
+
+2026-10-29 独立性能中性输入准备：原短诊断结束后，另经root双显式flag准入，通过真实API新建/启动400任务并在另400任务形成当前level3事件；原882短测ID不动。服务CLI/最终只读counts全程原预算锁；四真实会话实际expires覆盖cost stop；原transfer密封，不能进原consumer。5唯一本地检查绿（含完整sh/请求契约/拒覆盖），umask首次失败原样存；本岗真实云/SUT=0。最终实际6400任务必须明确，未验证云准备/正式性能。

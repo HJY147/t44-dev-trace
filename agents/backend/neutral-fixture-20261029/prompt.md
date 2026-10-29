@@ -1,0 +1,7 @@
+# ROLE-backend-NEUTRAL-FIXTURE-R29-v1
+
+Actual requester: root coordinator AI, executing the user's authorized multi-agent development and finite-budget performance follow-up. Actual author: backend AI. No student manual authorship is claimed.
+
+Task: prepare a separate factual fixture and credential export after the original short diagnostic; preserve all original 13 runtime assertions, 600-second control, original task scope and source f7. Use real business APIs/CLI for 400 independent developing tasks and 400 distinct stable current escalation events, exact real four-role sessions, all confidential material private or encrypted to original LOAD. Do not access tester cases/source/keys or contact the test role. Every direct database operation must use the original phase budget admission. Report insufficient inputs honestly and retain failure prefixes.
+
+Refinement from actual code reading: original seed has only 600 developing tasks, original short takes 441, and old planned ends cannot meet a new full-window+24h horizon. Root approved 400 additional API-created tasks, with the resulting 6400 count made explicit. The fixture is not a developer replacement for independent cases. A local installer check found umask077 turned requested0444 into0400; the fix explicitly applies file and directory modes and retains the original failed check. This is an actual AI implementation correction, not a human-written report.

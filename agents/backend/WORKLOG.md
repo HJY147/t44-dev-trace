@@ -767,3 +767,6 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 已先合并594b08f0 pin修正；新29日profile/P64严格派生，不改产品/旧窗口。九项核心+三项完整sh wrapper共12唯一本地检查通过；真实raw/JSON安装20件，篡改前拒绝，无云/SUT/新会话。5228B wrapper固定f1fff60f代码包，含--ipv4 --http1.1，完整UI和整体编码均<18000。详细摘要、真实环境错误与边界见agents/backend/window-20261029/report.md。
 
 29日追加APP单次worker/7669B小launcher，默认准入false/IP空；4局部测试绿，合16唯一本地项，不叠加重复检查。动态actual budget/source53/2基础角色prep grant，异步unit中原CLI到bootstrap一次再idle；不自动S1/S2，失败留原流。云/真实preflight未执行。
+
+
+2026-10-29 ROLE-backend-NEUTRAL-FIXTURE-R29-v1：在root新预算窗做离线中性fixture准备，不接触独立PRIVATE。分析原seed600 state2且没有新窗口+24h自然未来任务，root采用正常API新增400、保留原882短测ID，明确总6400。交付source-free HTTPS准备、原CLI/只读counts的预算锁适配、APP序列/加密seal；产品/原13不改。5唯一最终局部检查通过，初版umask0400失败和修复留存；没有云、真实SUT或性能通过。详neutral-fixture-20261029。

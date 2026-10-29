@@ -1,0 +1,11 @@
+# Neutral fixture preparation delivery
+
+- Role: backend AI; source f7 unchanged; root integration base 5f25828e. No independent private source/cases/keys read, no test-agent contact, no cloud operation.
+- Actual seed analysis: 600 developing tasks; 441 original short pairs must stay untouched; no natural planned end meets a new window+24h horizon. No attempt to relabel an old packet or extend its expiry.
+- Implemented three public orchestration files: budget-admitted original service CLI/DB count attestation; source-free standard-library HTTPS business API preparation; APP host sequence and original encrypted seal to the existing LOAD recipient. No raw business SQL mutation or product code edit.
+- Legitimate resulting fixture: 400 normal API-created tasks in 40 projects, then real developer starts; additional 400 disjoint existing stable severe-overdue tasks obtain real escalation events. Original short scope is excluded. Actual final 6400/9000/15000 counts and snapshot digest are required remotely.
+- Input: original APP complete receipt, actual phase/budget/source53 identity, original private accounts, original S1 task IDs, actual new CA, original LOAD public key, separate root preparation admit, proof short is over, finite paid-window cost stop.
+- Output: private exact four sessions/expiries and full Task/event/member/capacity snapshots; public final actual count/digest/exit; opaque neutral inputs. No independent grant is issued, no original consumer receives this payload.
+- Local validation: five unique final checks passed; complete actual POSIX-sh installer/permission/hash/exclusive-target check; fake API full 40-project/800-task preparation; request bodies validated against frozen OpenAPI; original IDs excluded; no overwrite on a second attempt. Fake local operations are not SUT evidence.
+- Original local failure: first installer inherited umask077, producing0400; directory would also be0700. Final installer explicitly sets0444/0755; failed stderr retained, no passed result retroactively applied to old installer.
+- Pending: limited reviewer check; actual Linux/Docker/DB/TLS login+TTL/counts/seal gates; original short completion; optional separately authorized independent 660-second run; final VM economic stop by root. None is claimed complete here.
