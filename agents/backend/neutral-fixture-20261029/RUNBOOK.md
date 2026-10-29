@@ -1,0 +1,28 @@
+# Separate neutral fixture preparation, 2026-10-29
+
+This is developer-owned setup code, not an independent test, not a performance result. It does not read independent test source, cases, keys or PRIVATE. Only its published neutral environment shape was read. Product source and all original 13 P790 modules remain unchanged.
+
+1. Keep the original short diagnostic and its 882 task IDs unchanged. Root must first observe that short consumer has finished and no cohort is active. This package never renews the original 600-second grant or session packet.
+2. On the original APP only, send the entire `install.PUBLIC.sh` directly as POSIX sh. Fixed final installer: 13,526 bytes; SHA-256 `c25a0d90683cf183153118f6f433fc922c8a5d673eeebad52a3162aef3ff50a2`. This creates only `/root/t44-r9/neutral-fixture-r29-01/code/`, explicit 0755 directory and four read-only 0444 code files. It rejects existing target. The first 13,487-byte installer had an actual local umask permission failure; its failed result is retained. Do not use the old installer.
+3. After actual short completion, root explicitly admits separate real-API fixture preparation. There must be >1200 seconds left to the paid-window cost stop. Current root plan cost stop is `2026-10-29T04:56:19.801Z`; the server itself must be economically stopped by root separately. Launch once asynchronously, preserving stdout/stderr, for example:
+
+```sh
+systemd-run --unit=t44-r29-neutral-prep-01 --property=Type=exec \
+ --property=RuntimeMaxSec=600 --property=TimeoutStopSec=20 \
+ --property=KillMode=control-group --property=UMask=0077 \
+ --property=StandardOutput=append:/root/t44-r9/neutral-prep-r29.stdout.private \
+ --property=StandardError=append:/root/t44-r9/neutral-prep-r29.stderr.private \
+ python3 -I -B /root/t44-r9/neutral-fixture-r29-01/code/host.py \
+ --cost-stop-utc 2026-10-29T04:56:19.801Z \
+ --root-admit-http-preparation --root-confirm-original-short-finished
+```
+
+This example has not been run on Linux/cloud. Default invocation without both root flags rejects before reading credentials or sending requests. Root checks actual unit exit and `output/complete.PUBLIC.json`; dispatch is not readiness. Do not retry after partial writes or overwrite any output.
+
+4. Scope: actual existing accounts are read privately from the exact new APP bootstrap fixture; original `t44.cli service-token` creates one service identity/session with 3600-second configuration in a data-only admin one-off. Its DB hash, account, project scope and actual expiry are verified. Three human sessions are real HTTPS logins against the unchanged product; all four `expires_at` must be later than the entire current cost stop. An API configured with insufficient TTL fails; this script never changes API settings, token expiry, stored session fields or clocks.
+5. All direct SQL/CLI operations take the original phase operation lock, actual MySQL budget/identity admission, perform the operation, then release. The edge one-off is source-free, carries no DB ENV and makes only real TLS HTTP calls, using four bounded setup workers. Every real operation retains its exit/output or private response evidence; no login password/token is printed. A timeout may stop only an exact-owned one-off with its exact expected image/label. It never stops/deletes VMs, disks, volumes or unrelated resources.
+6. The seed has 600 developing tasks, but none naturally has an end >full new window+24h. Original short selection consumes 441 pairs. Setup therefore creates **400 additional tasks via normal manager createTask, then developer start**, ten per each of 40 projects, valid existing capacity, no dependencies, due two days beyond the cost stop. From distinct old tasks outside all 882 original short IDs, it chooses ten stable severe-overdue tasks per project and creates or observes their real current level-3 escalation events. Nothing is inserted through raw SQL. Final actual counts must be **40 projects, 6400 tasks, 9000 dependencies, 11400 reviews +3600 decisions**. It must not be represented as exact 6000 tasks.
+7. Private `sessions.json`, `inventory.json` and extra member/iteration/dependency facts use the published neutral shape. Root gets no credential plaintext. An original transfer seal targets the fresh existing LOAD public key SHA `1752c101a1182690a1d320b000d3259fea92eb90b45edf8005ff701319d17b12`; private key remains original LOAD. The generic transfer preserves its own 12Z hard stop; the independent paid cost stop remains separate. The neutral payload is **not** an original P790 test-session packet and must never enter the P790 consumer/matrix.
+8. Root transfers only the resulting OPAQUE stream. Original LOAD can run original `790_transfer.py open` into a new directory; only the independent tester reads the decrypted neutral payload, splits factual sessions/inventory, builds its own new environment and consumes its separately authorized grant. Preparation complete does not authorize an independent run, its runtime import, or acceptance. The optional independent run still needs its own fresh grant, exact fixture digest, image/CA/OpenAPI identity and whole 660-second window.
+
+Limitations: no Linux/MySQL/RabbitMQ/Docker/real SUT was executed by this agent. Four initial pure checks passed; final five unique local checks passed, including complete fixed-installer POSIX-sh execution, byte/permission verification, overwrite refusal, all 40 projects fake transport setup, and frozen OpenAPI validation of all setup request bodies. Fake transport does not establish real fixture readiness, throughput or latency. The real final count query, seal size cap, service/API TTL, and original consumer completion are fail-closed remote gates.

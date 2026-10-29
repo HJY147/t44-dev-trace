@@ -3613,5 +3613,29 @@
       "worker": "agents/backend/window-20261029/app-prep-once.py",
       "launcher": "agents/backend/window-20261029/app-prep-launch.PUBLIC.sh"
     }
+  },
+  "neutral_fixture_r29_20261029": {
+    "status": "OFFLINE_DELIVERED_NOT_REMOTE_READY",
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "prompt_ref": "ROLE-backend-NEUTRAL-FIXTURE-R29-v1",
+    "artifacts": [
+      "agents/backend/neutral-fixture-20261029/RUNBOOK.md",
+      "agents/backend/neutral-fixture-20261029/report.md",
+      "agents/backend/neutral-fixture-20261029/host.py",
+      "agents/backend/neutral-fixture-20261029/edge.py",
+      "agents/backend/neutral-fixture-20261029/admin.py"
+    ],
+    "unique_final_local_tests_passed": 5,
+    "original_permission_failure_retained": true,
+    "actual_SUT_requests": 0,
+    "cloud_operations": 0,
+    "root_flags_required": [
+      "root_admit_http_preparation",
+      "root_confirm_original_short_finished"
+    ],
+    "expected_actual_final_tasks": 6400,
+    "production_code_changed": false,
+    "independent_PRIVATE_accessed": false,
+    "formal_performance_passed": false
   }
 }
