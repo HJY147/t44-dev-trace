@@ -1,0 +1,69 @@
+name: r30-ops-transport
+
+on:
+  push:
+    branches: [codex/deployment-preparation-r30]
+    paths:
+      - .github/workflows/r30-ops-transport.yml
+      - agents/deployment/preparation-r30/delivery-r30window01/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r30-ops-transport
+  cancel-in-progress: false
+
+jobs:
+  publish-public-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Fetch approved public root material and opaque source only
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 120s git fetch --no-tags --depth=1 origin \
+            d4b5ff1e80f17662558779d26e09eddec8ae2ce8 c189b55742e27c1b8c317ae321f4dde73f3854b9
+      - name: Verify and copy exact public bytes without executing their contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,subprocess
+          source=pathlib.Path('agents/deployment/preparation-r30/delivery-r30window01')
+          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'r30-ops-transport'
+          out.mkdir(mode=0o700)
+          def digest(raw):return hashlib.sha256(raw).hexdigest()
+          def write(name,raw):
+              p=out/name;p.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
+              with p.open('xb') as f:f.write(raw)
+          ops=(source/'public-ops.tar.gz').read_bytes()
+          assert len(ops)==78319 and digest(ops)=='894b4b50b957bde282eda8d7f10bf7d48c68dba28ed56ececcf0195d30c0c2cf'
+          for name in ['public-ops.tar.gz','bundle-manifest.PUBLIC.json','delivery-proof.PUBLIC.json','install-from-local-public-ops.py','launch-APP-prepare.PUBLIC.txt','command-length-proof.PUBLIC.json']:
+              write(name,(source/name).read_bytes())
+          material=subprocess.check_output(['git','show','d4b5ff1e80f17662558779d26e09eddec8ae2ce8:agents/coordinator/r30-bounded/materials.py'])
+          assert len(material)==16368 and digest(material)=='8db05a89d7805054304900d2a10c05f1f07b906ac8712fc7b8d4561d61421ba6'
+          write('materials.py',material)
+          commit='c189b55742e27c1b8c317ae321f4dde73f3854b9';prefix='records/qa-tool/r30-772-v2.4/opaque-transport/'
+          names=subprocess.check_output(['git','ls-tree','-r','--name-only',commit,'--',prefix]).decode().splitlines()
+          assert len(names)==8
+          for name in names:
+              relative=name.removeprefix(prefix)
+              assert name.startswith(prefix) and '/' not in relative and '..' not in relative
+              write('qa-opaque/'+relative,subprocess.check_output(['git','show',commit+':'+name]))
+          files={p.relative_to(out).as_posix():{'bytes':p.stat().st_size,'sha256':digest(p.read_bytes())} for p in sorted(out.rglob('*')) if p.is_file()}
+          write('transport-manifest.PUBLIC.json',(json.dumps({'kind':'r30-approved-public-ops-material-opaque-transport-v1','source_sha':'0bffe0c535e5897890aebf30879fdd3839dc52d6','run_id':'r30window01','files':files,'opaque_read_or_decrypted':False,'cloud_or_SUT_executed':False},sort_keys=True,indent=2)+'\n').encode())
+          print(json.dumps({'public_file_count':len(files)+1,'public_ops_bytes':len(ops),'materials_bytes':len(material),'opaque_files':len(names),'private_or_runtime_read':False}))
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: r30-ops-material-opaque-${{ github.run_id }}
+          path: ${{ runner.temp }}/r30-ops-transport/
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
