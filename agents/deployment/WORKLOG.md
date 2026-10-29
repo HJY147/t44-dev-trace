@@ -758,3 +758,5 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 固定source ad1与安装wrapper406已push；wrapper1579B/b880a0a5…，完整base64+300=2408，POSIX sh-n及内Python编译实际过，未下载/写Linux。Issue7评论6487160852已single-ID回读原body，未声称逐byte比较。公开任务摘要将用户具体余额换为预算紧张，未含账户账单或云截图；该摘要脱敏写完后尾标PY同类NameError退出1也保留事实，最终差分核实有效。
 
 2026-10-29 后半程编排：根要求10分钟内交付短CLI，部署AI只读根自己的旧shell/python编排及公开新29工具，未读772/783/792PRIVATE。新增ops.py + 排他安装器 + 公开输入压缩UI生成器，六步为LOAD公钥、APP资源marker seal、LOAD原open及mirror、根显式pressure批准后原S1/APP relay、LOAD严格TLS425预等待、根再次显式启动原producer。资源handoff严格为opened/mirror而非inputs；收到600年龄的session之前所有GUI复制已完成。真实cost_stop与原GEN、330总窗、600TTL独立；原13运行文件未改。实际仅6helper/source检查及语法/byte cap；没有Linux、云、SUT、systemd或原consumer整链验证。fixture软链接与一次heredoc错误保留在说明，不改统计。
+
+云上02由根报告失败（EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED），但同一resource unit运行；部署AI只读根明确许可的APP-resource-failure-original.private.jsonl（自己的资源编排，非772/783/792独立私件），未用云。查固定helper无argv transform，不放宽-I/-B。根后来实证当前argv完整匹配/start-result缺失/原raw已采样，故新增排他continuation：再次核当前身份→明确fresh observation recovered receipt→只续03 seal，不重start、不改失败或13代码。未宣称启动竞态为已证明原因；新脚本只有本地语法解析，没有云恢复实测。

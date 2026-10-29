@@ -18,3 +18,11 @@
 原consumer有open60s+mirror15s+load300s；relay父级420s、异常精确owned清理最多90s、落盘30s，消费前独立成本余量≥540s。producer派发前仍需>960s；传输按原600包年龄/会话实际expires检查，原330秒control总余量不改。任何超时/非425失败保前缀停止，必须回收证据并由root停止原两台保留盘，核自动释放为“-”，不删卷、不再开新迭代。
 
 本地验证仅Python3.10语法（在3.12解析）、shell语法、6个helper/source小检查；没有整链Linux/systemd/资源/原consumer测试。初次fixture /var软链接被canonical guard拒绝，改为resolve fixture；guard没放宽。一条本地封装命令的heredoc终止符误写，Python解析失败且未改文件，随后正确重跑。这些不是产品缺陷或云压测结果。
+
+## 已启动但原start观察失败的单次续封包
+
+根实际云证据：02-resource-start返回RESOURCE_STREAM_REFUSED，原因EXACT_OWNED_SYSTEMD_PROCESS_REQUIRED；不是daemon启动成功的receipt。随后根观测同一原unit active/running、MainPID49694/root UID0、当前argv逐字等于原start-plan，cmdlineSHA 29d073ef686a10b4956f3eeeaf775cede1f324972de5f4f57f1c9414a9939c98，raw已1,365,789字节；原start-result缺失。原因为何在初次观察时不匹配尚未证实，不能直接写成已证明竞态。
+
+安装 `install-resource-continuation.PUBLIC.sh`（仅装新文件不执行），再运行 `python3 -I -B /root/t44-r9/continue-resource-r29-01.py --public-input-zlib-b64 '原app-resource同一个PUBLIC_INPUT_BLOB'`。它不重start、不重prepare、不重建namespace、不覆盖02，只验证原文件hash、unit plan和现时实际PID/root/完整argv/start_ticks/raw首记录。若这些仍成立且start-result缺失，排他记录有明确fresh-observation-recovered标记的真实当前receipt；已有则核对拒覆盖。不是伪称旧start返回success。然后只续尚未执行的03原seal与bridge/state输出，仍以marker密文接原load-resource。若argv有-I/-B等差异则拒绝；原代码没有argv重写，不能放宽原guard。
+
+部署AI只做Python3.10语法及shell语法解析，未执行云恢复。以上云事实来自根转交原件及其实际观测；根仍须保存恢复步骤原stdout/exit并核验完成。
