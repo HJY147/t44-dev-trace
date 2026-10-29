@@ -260,3 +260,11 @@
 - CSS占前端24.29%/全应用4.50%。同at-rule context完整有序声明7组，完全忽略cascade风险也最多可删9个规则行；跨断点display:none另组不能同条件合并。token/common class抽部分属性仍留原规则行，不能可信净减>30。
 - 表单/工作台/记录已共用，两个loading/error分支重复原4行，按钮循环需增配置；最终no-candidate、产品0改动/实际减行0。没有修改89目标/启动回归、类型构建、coverage、浏览器、API、数据库、CI或性能，不拿历史绿补新声明。
 - 789原始计数/空stderr/22文件SHA/CSS枚举与收集器保留；REPORT、module、handoff、prompt按本轮真实范围更新。准备期路径与patch错误已在设计阶段如实记录，没有产品失败被隐去；未读792 private/未碰云、根产品、研究正文、独立测试岗。
+
+
+## 2026-10-29｜ROLE-frontend-SCALE-R29-v1｜实际候选
+- 从协调f5e0d95e建立独立codex/frontend-scale-r29，全部FE与原89用例先读；未读独立PRIVATE/内部资料或与测试岗通信，未碰协调索引/服务/云。
+- 实际候选56e62caa集中四组件busy/failure/卸载和两读取器latest框架；CSS/四模板/原89/冻结API/计数器逐字SHA一致。没有压行、删特性、改断言或迁移统计。
+- 固定cloc基线5898/65、FE1099/22；提交候选5902/66、FE1103/23，净增4、仍超802，require-range均真实exit1。200–400未实现，建议仅审阅而不作为规模优化集成。
+- 基线原89与候选原89均89绿；新增3并发回归最终3绿；typecheck/build与新测试typecheck均exit0。首轮新增驱动在loading按钮二次click未触发，91绿1红原日志保留，仅本轮测试改为项目切换后绿。构建831.45kB和770配置提示保留。
+- 证据tmp/770_frontend_scale_r29，详细REPORT与validation.json；没有新浏览器/性能/独立验收/coverage结论。全部为AI产物，不计学生实际改码。

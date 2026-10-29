@@ -141,3 +141,10 @@
 - 基线043fc464，先设计8716055；固定cloc真实应用5875、前端22文件1099有效行、仍超775，require-range exit1。
 - 前端和计数器字节不变；共用schema/工作台/记录已集中，无可信150–400行收益。生命周期helper预计净增，配置迁移/压行/视觉删减拒绝；root同意no-candidate。
 - 详见agents/frontend/size-round9/REPORT.md与tmp/803_frontend_size_round9原计数/SHA清单。没有新产品测试、云/API/性能或独立验收执行，不宣称规模门禁解除。
+
+
+## 2026-10-29 R29实际重构候选
+- 准确产品56e62caa：useRequestState复用四组件状态与两读取器最新请求生命周期；接口、CSS、模板和原89不变。
+- 固定计数5898/65→5902/66，前端1099/22→1103/23，净增4、上限仍超802；未实现200–400收益，建议不以规模优化集成。
+- 原89基线/候选均89通过；新增3通过；类型、构建和新测试类型均exit0。首轮新测试驱动失败保留，未改原89；大chunk/配置提示保留。
+- 报告agents/frontend/scale-r29/REPORT.md、原始日志/边界SHA/validation在tmp/770_frontend_scale_r29。无云、API、浏览器、性能、独立验收或新coverage执行。

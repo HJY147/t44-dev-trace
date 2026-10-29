@@ -1,0 +1,114 @@
+{
+  "base_commit": "f5e0d95ea68af33dfb213ac6e8d6b496527ed7b2",
+  "candidate_commit": "56e62caacbe0380d5d82212b0c051a57da23dfd5",
+  "branch": "codex/frontend-scale-r29",
+  "tool": "cloc 2.10",
+  "before": {
+    "application_code": 5898,
+    "application_files": 65,
+    "frontend_code": 1099,
+    "frontend_files": 22,
+    "within_range": false
+  },
+  "after": {
+    "application_code": 5902,
+    "application_files": 66,
+    "frontend_code": 1103,
+    "frontend_files": 23,
+    "within_range": false
+  },
+  "code_delta": 4,
+  "net_reduction": -4,
+  "goal_met": false,
+  "recommendation": "review-only; do not integrate as a source-budget optimization",
+  "runtime": {
+    "node": "24.19.0",
+    "dependencies": "existing frozen-lock dependency installation; no dependency change"
+  },
+  "checks": [
+    {
+      "name": "baseline-original89",
+      "command": "pnpm test",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": 89,
+      "log": "tmp/770_frontend_scale_r29/baseline-test.log",
+      "log_sha256": "0346aaa1b81a09d6ab789e654caac9a1c561b57d1927439d2a09dcc3954b5305"
+    },
+    {
+      "name": "candidate-original89",
+      "command": "pnpm test",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": 89,
+      "log": "tmp/770_frontend_scale_r29/candidate-original89.log",
+      "log_sha256": "5c41ca007be447dcd3621b8589c4fba86ede4cc3b0cb26fbb95b3a85e6797bf4"
+    },
+    {
+      "name": "candidate-regression-first-driver-failure",
+      "command": "pnpm exec vitest run --config ../tmp/770_frontend_scale_r29/vite.config.ts",
+      "cwd": "frontend",
+      "exit_code": 1,
+      "collected_tests": 92,
+      "log": "tmp/770_frontend_scale_r29/candidate-regression-first-failure.log",
+      "log_sha256": "5d3efee885d8c31a259f868293bd1118637503685082a508f41e1b6977620d14"
+    },
+    {
+      "name": "candidate-regression-final",
+      "command": "pnpm exec vitest run tmp/770_frontend_scale_r29/770_request_state.test.ts --config ../tmp/770_frontend_scale_r29/vite.config.mts",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": 3,
+      "log": "tmp/770_frontend_scale_r29/candidate-regression.log",
+      "log_sha256": "e7bfbf94ffa423a5bf141f64c3ce98178b62822f8a220ac5cf9a0534bb4cb436"
+    },
+    {
+      "name": "candidate-typecheck",
+      "command": "pnpm typecheck",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": null,
+      "log": "tmp/770_frontend_scale_r29/candidate-typecheck.log",
+      "log_sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e"
+    },
+    {
+      "name": "candidate-build",
+      "command": "pnpm build",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": null,
+      "log": "tmp/770_frontend_scale_r29/candidate-build.log",
+      "log_sha256": "ec0854f9340c439531ba76ef7df224c01a91f67563eb9f25d467a8e48196aa1c"
+    },
+    {
+      "name": "candidate-regression-typecheck",
+      "command": "pnpm exec vue-tsc --noEmit --project ../tmp/770_frontend_scale_r29/tsconfig.json",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "collected_tests": null,
+      "log": "tmp/770_frontend_scale_r29/candidate-regression-typecheck.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "baseline_count_exit": 1,
+  "candidate_count_exit": 1,
+  "unchanged_boundaries": true,
+  "boundary_manifest": "tmp/770_frontend_scale_r29/unchanged-boundaries.json",
+  "warnings": [
+    "831.45kB JavaScript build chunk exceeds existing 500kB advisory",
+    "770 config import extension advisory for future native config loader"
+  ],
+  "not_run": [
+    "browser",
+    "API or database",
+    "cloud or performance",
+    "independent acceptance",
+    "new coverage measurement"
+  ],
+  "prompt_ref": "ROLE-frontend-SCALE-R29-v1",
+  "execution_prefix": {
+    "PATH": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/usr/bin:/bin",
+    "node": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "pnpm_cli": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.cjs"
+  }
+}
