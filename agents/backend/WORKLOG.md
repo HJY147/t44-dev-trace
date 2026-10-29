@@ -803,3 +803,4 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 ## ROLE-backend-NEUTRAL-TRANSPORT-R30-v1
 - 新独立neutral-transport-r30目录，producer17原manifest66ab逐件复核不动。原790 mirror仅JSON且原实例f7/12Z不可直用；原文件8600110b逐字保留，新薄policy只SOURCE0b/显式C，wire/crypto/caps不改。五原件tar.gz→base64 JSON mirror，native session仅小reference，避免重复实际大session；operator解出最终五件给QA，不改core。
 - 新私网TLS单密文relay参数化新路径/IP/CA/SHA/大小/marker/C，无SG/IAM/安装/权限扩张。7唯一本地检查实际全绿0.66s：真实OpenSSL及TLS完整往返五件逐字同，错误CA/peer/篡改/覆盖/一次请求/cap与真实C alarm。仅低层loopback harness，生产CLI拒loopback，未证明私网VM或Linux实况。0云/SUT/真实session，失败前缀保留不自动重试。
+- 安装闭环补交：同字节PUBLIC七件内嵌gzip/base64，固定新/root/t44-r30/neutral-transport-01，mkdir已存在拒绝；整体shell13143B、外层base6417524B+256=17780<18000，完整SHA f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e。新增2本机安装检查0.05s绿（仅synthetic tmp路径替代，逐字/0444/拒覆盖）；原7crypto/TLS检查不重跑不累计声称9项。producer17/运输6原件manifest均不动，root一步参数页ROOT_CLI.md，0云/SUT/session。

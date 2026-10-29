@@ -508,3 +508,4 @@ GEN04修复后36项1.83s全绿：真实GEN命名/同原binding rawSHA/stop绑定
 实际GEN字段名纠错：cryptographic_transport_proofs，不收错短名/缺proof；全部16必需键已对公开GEN字典独立AST核，只有这一个guard字符串变化。真实3红1绿→全部40项1.90s绿，GEN未改，source/G/C/targets均不变；17文件manifest更新供owner复核。
 
 中性运输闭环已新目录交付：复用原790原字节/算法wire，仅新0b/C薄政策；JSON mirror承载五件tar.gz，操作员解出原NEUTRAL五件。7本地真实crypto/TLS检查绿0.66s，producer17原66ab不动；0云/SUT/session，实际root仅有限窗口/授权搬运。命令neutral-transport-r30/RUNBOOK.md。
+运输PUBLIC内嵌安装器完成：完整命令13143B，外层base6417524B+256=17780<18000；七件同原manifest2b147b，目标/root/t44-r30/neutral-transport-01排他，原6运行文件与producer17不变。新增2本机安装检查0.05s绿，精确字节与0444回读、已存在拒绝；只替换synthetic tmp目标，无云。完整命令SHA f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e，实际路径参数页neutral-transport-r30/ROOT_CLI.md。
