@@ -4487,6 +4487,46 @@
         "technical_commit": "339c19ee0e0c069ded9858b3f0cfb901d5a1ada6",
         "receipt": "tmp/757_neutral_review_r30/materials-publication.json"
       }
+    },
+    "post_boot_schedule_transport_review": {
+      "materials_commit": "36f9e9c92ea04764429916f115980339e4cf5437",
+      "materials_sha256": "c2835a7fbc85c5c20c6b7936401f15710db5c7c615c2ae7aab4a08292d9b763c",
+      "materials_bytes": 16744,
+      "wait_loop_pure_clock_pass": true,
+      "transport_commit": "686d79da3967123be7a3c24d6740d77be008c1bb",
+      "transport_manifest_sha256": "2b147bfce49e299337defb6d04e4f0d48ab7e3179ea9588b2f1368aeafe57704",
+      "pinned_transport_files": 6,
+      "original790_exact_bytes": true,
+      "host_Python310_AST": true,
+      "installer_sha256": "f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e",
+      "complete_command_base64_plus_256": 17780,
+      "installer_rebuild_exact": true,
+      "owner_raw_XML_reviewed": {
+        "local-final.xml": {
+          "cases": 7,
+          "failures": 0,
+          "errors": 0,
+          "skips": 0
+        },
+        "install-tests.xml": {
+          "cases": 2,
+          "failures": 0,
+          "errors": 0,
+          "skips": 0
+        }
+      },
+      "own_installer_tests": {
+        "passed": 2,
+        "seconds": 0.05,
+        "exit_code": 0
+      },
+      "own_crypto_TLS_rerun": false,
+      "actual_cloud_Docker_HTTP_sessions": false,
+      "product_producer17_deployment_delta": false,
+      "P1_open": 0,
+      "P2_code_open": 0,
+      "documentation_note": "Installed 7-file code set excludes RUNBOOK; operator must use reviewed local seal argv",
+      "decision": "ALLOW_EXACT_CODE_FOR_SAME_FIXED_WINDOW_TRANSPORT_NOT_GRANT"
     }
   }
 }

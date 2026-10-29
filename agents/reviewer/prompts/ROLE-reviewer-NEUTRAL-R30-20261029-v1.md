@@ -29,3 +29,9 @@ root另明确LOAD采用准确4f/8CPU/8GiB source-free standby作orchestration re
 Root补一个实际开机后材料编排候选（尚未运行、仅py_compile绿）：/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/resume-coordination-20261029/agents/coordinator/r30-bounded/materials.py。请快速审关键接口是否真能接final wrapper/producer/GEN，特别paths/empty counts/init→seed→40ids service原token复用scheduler→sourcefree HTTP→counts/backend证据/assemble，以及clock cutoff/roles/UID。不接QA PRIVATE；没有云动作。已根据你语义把LOAD receipt严格限定orchestration-readiness/is_actual_driver=false等。可以给局部必要修复由root改，别扩重构，18:00boot距今14min。
 
 实际回应先报4个接口/权限问题，root修复后准确8db05a89字节只核相关链；本岗新增4项真实parser和临时文件I/O边界，无Docker/HTTP等。有限准备准入先消息发root，报告封档不加新boot门禁。root自己修改materials，本岗未冒作用户亲自改码或审核岗修改。
+
+## 首次调度及运输追加原文
+
+Root原两机已于10:04:35Z启动，固定G10:35/C10:40不延后。APP官方95MB已实际SHA匹配，ops后台准备现运行；LOAD exact4f/core81e安装+standby8CPU8GiB实际成功，无SUTgrant。根材料脚本因公开adapter执行时packet≤300秒门禁，新增首次采集/首次组装调度（不retime）：commit36f9e9c9，文件16744B SHA c2835a7fbc85c5c20c6b7936401f15710db5c7c615c2ae7aab4a08292d9b763c；HTTP不早于10:12:30，首次evidence/assemble不早于10:15:30，cutoff17:30仍保留。请快速核这小差异并审backend运输0836→686d79da manifest2b147/installf4b3源码/7真实本机cryptoTLS+2安装测试，root将用新ROOT_CLI，不改QA core/source17。不要云动作/不读PRIVATE。实际paid时钟在走，请限定快审可执行/硬阻塞，不加新范围。
+
+实际执行只核准确调度diff/纯clock及运输PUBLIC原件/源/manifest/builder/历史XML，自跑2项无服务安装（0.05s）。不重新启动本机TLS或云；先发root代码限定无新增阻断，另提醒云安装包不含RUNBOOK应取本地完整seal argv。
