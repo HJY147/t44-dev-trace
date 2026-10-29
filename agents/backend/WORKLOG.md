@@ -796,3 +796,4 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 原固定counter在独立共享对象、无checkout临时clone对准确7374计5880，在ad4a候选计5861（净19）；原脚本字节由git show取得，不改统计口径，两个require-range均退出1。临时clone自动清理。
 - 决定拒绝evolve结构方向，原任意nested$id语义需要保留；修复只剩约7行静态预算，不为该收益加自定义扩展风险。没有数百行可证方案。将保留ad4a和失败证据并恢复两产品文件，不宣布规模门/验收通过。
 - 收口调整，原回退计划未执行：新tmp763直接验证候选resolve入口，回退会使原断言无法直接复现。保留红候选独立分支并标记REJECTED/DO NOT MERGE，不删除/跳过/改断言；本岗未merge/root产品无本岗集成变化，可采纳净减0。原候选真实5861/净19仍保留作为失败实验计量。
+- 已实际push拒绝候选/证据分支codex/backend-architecture-r30（f96ec658阶段，退出0），未merge；用body-file发布最终失败结果：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490255441。状态为REJECTED/DO NOT MERGE，可采纳产品净减0，不将134业务回归绿抵消174差分1红。

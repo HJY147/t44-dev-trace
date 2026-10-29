@@ -16,3 +16,4 @@
 - 原始证据：differential-initial.log/xml、original-http.log/xml、两command.json、count-before/candidate.json/log、count-commands.json、static-initial.json、phase1.json。
 
 - 收口调整：先前提出的回退产品计划没有执行。为了保留新差分在准确候选上的直接可运行性，分支明确标记 **REJECTED / DO NOT MERGE**。最终HEAD应用字节与ad4a候选保持相同，候选真实5861与可采纳净减0必须区分。
+- 已实际push红候选/证据分支，最终公开结果回执：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490255441。

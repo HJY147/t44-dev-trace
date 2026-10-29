@@ -505,3 +505,4 @@ AI后端岗从准确7374b363建新树，尝试由契约层根validator.evolve与
 阶段源码ad4a7415（未验证、未push）；公开岗位记录：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490016627；第一阶段执行清单phase1.json明确未跑导入/pytest/build/cloc。
 R30实际结果：新174差分173通过1真实nested$id回归；原134 SQLite HTTP通过不能抵消它。固定cloc准确7374的5880→ad4a的5861，候选净19/仍超761，require-range退出1。拒绝evolve方向、原红保留；后续恢复产品基线，不能作为19行可集成收益。尚无数百行可证方案。详细报告architecture-r30/report.md。
 最终选择保留独立红候选供原样复现，不执行先前回退计划；标记REJECTED/DO NOT MERGE，不删改新断言。候选本身5861/净19，未被本岗集成、可采纳净减0，两者不混用。
+拒绝分支已push、未merge；最终公开结果：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6490255441。
