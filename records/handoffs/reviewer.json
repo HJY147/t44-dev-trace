@@ -4528,5 +4528,49 @@
       "documentation_note": "Installed 7-file code set excludes RUNBOOK; operator must use reviewed local seal argv",
       "decision": "ALLOW_EXACT_CODE_FOR_SAME_FIXED_WINDOW_TRANSPORT_NOT_GRANT"
     }
+  },
+  "neutral_cas_r30_20261029_review": {
+    "operator": "AI reviewer",
+    "prompt_ref": "ROLE-reviewer-NEUTRAL-CAS-R30-20261029-v1",
+    "root_parent": "c4f6027c5af8121a97d55b8450fce556c9f5c7f4",
+    "final_source": "cb966f2117730d6b60227e85e30b6a8b0e3cc79a",
+    "manifest_sha256": "0fc61e463692622f167548b7b00aed42fc18a58a0ae127317d6138e0a6136b8b",
+    "files": 18,
+    "python_files": 9,
+    "baseline_manifest": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606",
+    "only_baseline_runtime_changes": [
+      "http_primitives.py",
+      "prepare_http.py",
+      "new escalation_readback.py"
+    ],
+    "original40_assert_AST_exact": true,
+    "own_tests": {
+      "initial_groups": 2,
+      "initial_seconds": 0.056,
+      "final_groups": 2,
+      "HTTP_outcome_subcases": 5,
+      "final_seconds": 0.06,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "owner_final_local_cases": 81,
+    "owner_final_local_failures": 0,
+    "owner_final_local_errors": 0,
+    "owner_final_scope": "LOCAL_PROJECT_RUNTIME_ONLY_NOT_DOCKER8e",
+    "old_product_producer17_transport_specs_deployment_original_tests_unchanged": true,
+    "P1_future_executor": "OPEN_PENDING_FIXED_APP8e_EDGE_UID10001_READONLY_NO_BUSINESS_ENV_EXACT18_STAGING",
+    "P2_code_new": 0,
+    "decision": "ALLOW_EXACT_FUTURE_CAS_PREPARATION_CODE_INTEGRATION_ONLY",
+    "BOOT_SUT_grant": "NONE",
+    "R30_actual_status_from_root_PUBLIC": "NOT_RUN_PREPARATION_INCOMPLETE",
+    "actual_409_competing_writer_independently_proven": false,
+    "PUBLIC_facts_read_root": "records/cloud/r30window01",
+    "PRIVATE_REVIEW_R30_ONLY_QA_core_cases_or_runtime_read": false,
+    "actual_cloud_Docker_service_HTTP_sessions": false,
+    "new_window_authorized_or_started": false,
+    "report": "reports/reviews/neutral-r30-cas-20261029.md",
+    "evidence": "tmp/755_neutral_cas_review_r30",
+    "technical_verdict_before_administration": true
   }
 }
