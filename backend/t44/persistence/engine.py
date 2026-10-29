@@ -1,7 +1,7 @@
 """Composition-root engine construction; no connection at import or business-call time."""
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 
 from sqlalchemy import URL, Engine, create_engine, event
 
@@ -77,21 +77,20 @@ def initialize_mysql_session(dbapi_connection, _connection_record) -> None:
 
 
 def create_mysql_engine(settings: MySQLSettings) -> Engine:
+    options = asdict(settings)
+    connect_args = {
+        name: options.pop(name) for name in ("connect_timeout", "read_timeout", "write_timeout")
+    }
     url = URL.create(
         "mysql+pymysql",
-        username=settings.username,
-        password=settings.password,
-        host=settings.host,
-        port=settings.port,
-        database=settings.database,
+        **{
+            name: options.pop(name) for name in ("username", "password", "host", "port", "database")
+        },
         query={"charset": "utf8mb4"},
     )
     engine = create_engine(
         url,
-        pool_size=settings.pool_size,
-        max_overflow=settings.max_overflow,
-        pool_timeout=settings.pool_timeout,
-        pool_recycle=settings.pool_recycle,
+        **options,
         pool_pre_ping=True,
         pool_use_lifo=True,
         pool_reset_on_return="rollback",
@@ -99,11 +98,7 @@ def create_mysql_engine(settings: MySQLSettings) -> Engine:
         hide_parameters=True,
         echo=False,
         echo_pool=False,
-        connect_args={
-            "connect_timeout": settings.connect_timeout,
-            "read_timeout": settings.read_timeout,
-            "write_timeout": settings.write_timeout,
-        },
+        connect_args=connect_args,
     )
     event.listen(engine, "connect", initialize_mysql_session, insert=True)
     return engine

@@ -12,6 +12,9 @@ class OutboxStore:
     def __init__(self, factory):
         self.factory = factory
 
+    def _update(self, g, where, now, **values):
+        return g.update("outbox_events", where, dict(updated_at=now, **values))
+
     def get(self, event_id):
         with self.factory() as uow:
             return uow.gateway.get("outbox_events", event_id)
@@ -56,12 +59,14 @@ class OutboxStore:
             event = g.get("outbox_events", event_id, lock="update")
             if not event or event["status"] != 2 or event["lease_token"] != lease_token:
                 return False
-            g.update(
-                "outbox_events",
+            self._update(
+                g,
                 {"id": event_id},
-                dict(
-                    status=3, confirmed_at=now, lease_token=None, lease_until=None, updated_at=now
-                ),
+                now,
+                status=3,
+                confirmed_at=now,
+                lease_token=None,
+                lease_until=None,
             )
             return True
 
@@ -72,27 +77,23 @@ class OutboxStore:
         if not ledger:
             raise StatementRejected("Escalation event has no committed ledger")
         existing = {n["recipient_id"] for n in g.rows("notifications", {"event_id": event["id"]})}
-        created = 0
-        for recipient in sorted(set(event["recipients"])):
-            if recipient in existing:
-                continue
-            g.insert(
-                "notifications",
-                dict(
-                    project_id=event["project_id"],
-                    task_id=event["task_id"],
-                    event_id=event["id"],
-                    recipient_id=recipient,
-                    level=ledger[0]["level"],
-                    title=event["payload"].get("title", f"任务 {event['task_id']} 升级"),
-                    message=event["payload"].get("message", "计划时间已触发升级，请处理"),
-                    fallback=int(fallback),
-                    handling_evidence=[],
-                    created_at=now,
-                ),
+        notices = [
+            dict(
+                project_id=event["project_id"],
+                task_id=event["task_id"],
+                event_id=event["id"],
+                recipient_id=recipient,
+                level=ledger[0]["level"],
+                title=event["payload"].get("title", f"任务 {event['task_id']} 升级"),
+                message=event["payload"].get("message", "计划时间已触发升级，请处理"),
+                fallback=int(fallback),
+                handling_evidence=[],
+                created_at=now,
             )
-            created += 1
-        return created
+            for recipient in sorted(set(event["recipients"]) - existing)
+        ]
+        g.insert_many("notifications", notices)
+        return len(notices)
 
     def consume(self, event_id, *, now=None):
         now = now or utc_now()
@@ -114,15 +115,13 @@ class OutboxStore:
                 # Recheck after locking: a racing consumer may already have filled every notice.
                 count = self._notices(g, event, fallback=True, now=now)
                 if count:
-                    g.update(
-                        "outbox_events",
+                    self._update(
+                        g,
                         {"id": event["id"], "status": 3},
-                        dict(
-                            status=4,
-                            fallback_at=now,
-                            updated_at=now,
-                            last_error_code="CONSUMER_TIMEOUT",
-                        ),
+                        now,
+                        status=4,
+                        fallback_at=now,
+                        last_error_code="CONSUMER_TIMEOUT",
                     )
                     recovered.append(dict(event_id=event["id"], created=count, fallback=True))
         return recovered
@@ -137,17 +136,15 @@ class OutboxStore:
             if lease_token is not None and event["lease_token"] != lease_token:
                 return {"event_id": event_id, "created": 0, "stale_owner": True}
             count = self._notices(g, event, fallback=True, now=now)
-            g.update(
-                "outbox_events",
+            self._update(
+                g,
                 {"id": event_id},
-                dict(
-                    status=4,
-                    fallback_at=event["fallback_at"] or now,
-                    lease_token=None,
-                    lease_until=None,
-                    last_error_code=error_code,
-                    updated_at=now,
-                ),
+                now,
+                status=4,
+                fallback_at=event["fallback_at"] or now,
+                lease_token=None,
+                lease_until=None,
+                last_error_code=error_code,
             )
             return {"event_id": event_id, "created": count, "fallback": True}
 
@@ -158,17 +155,15 @@ class OutboxStore:
         with self.factory() as uow:
             g = uow.gateway
             return (
-                g.update(
-                    "outbox_events",
+                self._update(
+                    g,
                     {"id": event_id, "status": 2, "lease_token": lease_token},
-                    dict(
-                        status=1,
-                        lease_token=None,
-                        lease_until=None,
-                        next_attempt_at=now + timedelta(seconds=delay_seconds),
-                        last_error_code=error_code,
-                        updated_at=now,
-                    ),
+                    now,
+                    status=1,
+                    lease_token=None,
+                    lease_until=None,
+                    next_attempt_at=now + timedelta(seconds=delay_seconds),
+                    last_error_code=error_code,
                 )
                 == 1
             )
