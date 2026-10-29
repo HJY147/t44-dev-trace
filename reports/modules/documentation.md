@@ -1,3 +1,37 @@
+# 文档汇总岗位：R29工程 checkpoint
+
+Agent-Role: documentation；Prompt-Ref: `ROLE-documentation-R29-CHECKPOINT-20261029-v1`；Refs: #9。作者和操作者为文档岗AI，不是学生研究作者。
+
+## 当前任务与产物
+
+- 从协调准确截止6f91960b建立独立worktree/分支codex/documentation-r29；只写本岗报告、事实索引和留痕。
+- [工程checkpoint](../final/engineering-checkpoint-r29-20261029.md)：需求/设计/实现/验证/缺口追溯、真实失败时间线、准备至停机状态图、四岗候选与开放项。
+- [学生自写素材索引](../../docs/reports/r29-student-fact-index.md)：六方面问题与公开事实；未代写个人感想或研究正文。
+- [来源与核验](../../docs/reports/r29-documentation-evidence.md)：20件公开来源bytes/SHA/Git绑定，四岗准确发布head，97件CI清单核验和实际文档定位错误。
+
+## 输入输出与对接
+
+- 上游为冻结v1.2及父链、root公开R29报告、CI归档、cloud具名PUBLIC和四岗已发布报告；下游为总协调、提示词岗与本人自写研究。
+- list_agents只见root/文档/独立性能/提示词四实例，四开发岗本轮未活跃，按授权直接核报告/Git；没有重新访谈、未答复不代写。
+- 已向prompt_engineering_r29实际通知本prompt ID/产物及actor边界；测试岗通信0、PRIVATE读取0，不派生任何测试实例。
+
+## 核验结果与限制
+
+- CI清单97/97文件尺寸/SHA/Git blob同；四原JUnit为19/102/183/796且各0failure/error/skip，不累加；前端原JSON89/89。
+- 新源7b15行2500/2771=90.2201%、分支713/848=84.0802%；v1.2当前15件hash一致；与截止6f919应用目录diff exit0。
+- 旧f7云短测P95未达，独立r29qa772-01只有76B头无runtime/NP；未推断SUT0请求、业务失败或600秒覆盖。
+- DB已集成净减11后5887/65文件仍超787；前端+4、缓存+26未集成。保盘节省停机、资源尾段完整与性能验收分开。
+- QA v2截止时仅本地测试器修复pending，无新云或SUT结论；用户“已恢复”只是浏览器恢复，具体grant由AI总协调签发。
+- 文档核验非产品测试。本岗产品/HTTP/SQL/云/CI触发/独立验收0；未建Word/PDF/Pages、未改原教师材料或既有需规冻结。
+
+## 待办
+
+规模787差额、准确下一源码独立功能/正式性能、测试器本地修复复审、最终账单，以及学生本人研究正文和真实人工12/3/5材料仍未完成。旧grant无自动重试/接续授权，原云盘数据保留。文档提交/push不代表整体放行。
+
+---
+
+以下为历史岗位报告，保持原截止，不替代上面R29状态。
+
 # 文档汇总岗位：2026-10-25 Round8事实附录
 
 Agent-Role: documentation；Prompt-Ref: ROLE-documentation-ROUND8-20261025-v1；Refs: #9。作者与实际操作者为AI，非学生研究作者。

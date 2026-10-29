@@ -483,3 +483,20 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 - 本岗结果仅开发CI证据。规模、真实连接预算、独立验收、正式400/600秒、连续资源、最终账单及本人手写研究均未关闭。暂存原ZIP需具名force-add并从Git暂存blob逐件再核，完成后本岗自行commit/push准确回报。
 
 - 核心归档提交22702a4d7de9dfadd9d04666608db56e1a3c050e已实际push，git ls-remote精确读回同SHA、树clean；7原ZIP暂存blob与本地原字节逐件一致，scoped diff-check0。此最终交接补记不改产品、原件或被测f7身份。
+
+
+## 2026-10-29T05:36:20.409012+00:00 R29工程checkpoint公开事实汇总
+
+- AI /root/documentation_r29，从协调6f91960b建独立codex/documentation-r29，读AGENTS及本岗/协作规范。初始轻量memory只用于提醒保盘/证据边界，当前结论均重核具名公开资料，不沿旧记忆宣称新结果。
+- list_agents确认四开发岗无活跃实例，实际选直接核已发布报告/Git而非采访；未给独立测试岗任何消息、不读PRIVATE或账号/keys/财务私件。测试只读冻结PUBLIC。
+- 20件公开来源与截止Git blob逐字同；CI清单97/97尺寸/SHA/Git blob一致；XML实际testcase和声明均为19/102/183/796、各0fail/error/skip，FE JSON89/89；子套重叠不累加。新source7b15与截止6f919应用目录diff exit0；v1.2当前15件SHA核同。
+- 实核远端FE6aed8b24/BE753f1bff/DB4223c9ca；DB产品274e2e6b已协调集成38d11a5e，净减11仍超787；前端+4、cache+26不集成。部署9e605204工具与root云回执分列。
+- 保留旧f7短测三正式目标P95超270；QA772公开NP/76B头/无result，不推断请求0、业务失败或600秒覆盖；19,661,075B资源尾段与VM保盘停机分别有公开回执。QA v2仅本地pending，不拼成新云成绩。
+- root明确actor边界已原文归档：用户“已恢复”仅浏览器恢复；grant由AI总协调签发。向prompt岗真实通知本ID/产物并收到其进度消息，非学生访谈。
+- 初次历史日志/handoff宽读截断改精确字段；错误读取不存在specs/architecture.md、猜测部署分支不存在均原样记录并改具名准确来源；rg忽略coverage清单外观后按manifest逐件证明97存在且已跟踪。这些是本岗文档定位问题，不是产品或学生debug。
+- 本次三份Markdown分别为工程checkpoint、学生自写事实索引、来源/核验记录；未写学生研究正文、个人感想/署名，不增人工12/3/5。不改产品/测试/云/原教师材料/冻结，产品执行0。
+- Prompt-Ref: ROLE-documentation-R29-CHECKPOINT-20261029-v1；实际命令和限制见docs/reports/r29-documentation-evidence.md。最终文档/链接/JSON/范围校核与本岗显式commit/push随后补记；没有先写未执行项通过。
+
+- 2026-10-29T05:38:56.628006+00:00 收尾核验：67本地链接/11handoff字段/7产物路径与7文件责任范围通过，四新Markdown限定私钥/token形状无匹配。初版validator错误要求英文pending、后误读no-index正常差异exit1，两次辅助失败原样写证据记录，非产品测试；真实staged diff-check单独核exit0。所有被改handoff历史值逐项与基线核同保存。提示词岗后发f9d03110已Git对象和远端head实核，单列补充，不混入20件基线来源或自称复验其81项。
+
+- 2026-10-29T05:39:47.771864+00:00 实质提交9c183a537b9f44bcf39af7c0ca2dc08b627e278b已由本岗显式commit并push至origin/codex/documentation-r29，`git ls-remote`精确读回同SHA，提交后worktree clean。提交带[skip ci]只跳过本次文档push，不修改workflow或产品门禁；没有建PR、发Issue或设置审核success。随后只补本发布回执，不读新源、不跟随QA v2，不改变事实截止或验收状态。

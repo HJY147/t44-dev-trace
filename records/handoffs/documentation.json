@@ -1,45 +1,34 @@
 {
-  "stage": "Resume original CI evidence complete",
-  "implementation_status": "Nine original artifact ZIPs and three original run-log ZIPs sealed and parsed; no product execution",
-  "actor": "AI /root/ci_evidence_resume_20261028",
-  "base_sha": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
-  "updated_at": "2026-10-28",
+  "stage": "R29 public engineering checkpoint for review; not final acceptance",
+  "implementation_status": "Documentation-only checkpoint, traceability, real failure timeline, state diagram and student self-writing fact index. No product implementation or new test execution.",
+  "actor": "AI /root/documentation_r29",
+  "base_sha": "6f91960bca1d59b9ac424c082de403241b5f9115",
+  "updated_at": "2026-10-29T05:39:47.771864+00:00",
   "prompt_refs": [
     "ROLE-documentation-CI-ROUND9-20261025-v1",
-    "ROLE-documentation-RESUME-CI-20261028-v1"
+    "ROLE-documentation-RESUME-CI-20261028-v1",
+    "ROLE-documentation-R29-CHECKPOINT-20261029-v1"
   ],
   "artifacts": [
-    "reports/final/round9-ci-evidence.md",
-    "docs/reports/round9-ci-analysis.json",
-    "docs/reports/round9-ci-collector.py",
-    "docs/reports/round9-ci-analyze.py",
-    "docs/reports/round9-ci-download-failure.json",
-    "records/ci/40200930857/archive-binding.json",
-    "records/ci/40200930957/archive-binding.json",
-    "records/ci/40201584671/archive-binding.json",
-    "records/ci/40201584699/archive-binding.json",
-    "docs/reports/round9-ci-validation.json",
-    "reports/final/resume-ci-20261028.md",
-    "docs/reports/resume-ci-20261028-analysis.json",
-    "docs/reports/resume-ci-20261028-analyze.py",
-    "docs/reports/resume-ci-20261028-app-equality.json",
-    "docs/reports/resume-ci-20261028-validation.json",
-    "records/ci/40636976337/archive-binding.json",
-    "records/ci/40636980359/archive-binding.json",
-    "records/ci/40637880409/archive-binding.json",
-    "docs/reports/resume-ci-20261028-helper-diff.json"
+    "reports/final/engineering-checkpoint-r29-20261029.md",
+    "docs/reports/r29-student-fact-index.md",
+    "docs/reports/r29-documentation-evidence.md",
+    "agents/documentation/WORKLOG.md",
+    "reports/modules/documentation.md",
+    "records/handoffs/documentation.json",
+    "records/prompts/ROLE-documentation-R29-CHECKPOINT-20261029-v1.md"
   ],
   "interfaces": {
-    "input": "Explicit old/source/run IDs, corrected run and public original artifact bytes",
-    "output": "Original ZIPs, exact head/checkouts, actual JUnit and separated coverage metrics; byte equality does not relabel source",
-    "pending": "Root integration; product/independent/performance/size/billing gates remain separate"
+    "inputs": "Frozen v1.2 and parent manifests, root R29 public report, named PUBLIC cloud records, exact-source CI artifacts, four owners published reports/Git. No private testing materials.",
+    "outputs": "Reviewable Markdown facts and unresolved gates to coordinator and prompt engineering; factual source index for student own writing.",
+    "collection": "No active frontend/database/backend/deployment agents; direct published-source audit, no invented responses. No tester contact."
   },
   "unverified": [
-    "independent acceptance",
-    "formal performance and continuous resource proof",
-    "source-size gate not remeasured by this role",
+    "source size gate: 787 lines above 5100",
+    "full independent functionality and formal 400-client 600-second performance acceptance for next exact source",
+    "QA v2 local-only tester fix pending at cutoff; no new SUT/cloud result",
     "final billing",
-    "student handwritten research"
+    "student handwritten research and real human 12/3/5 evidence"
   ],
   "history_before_ci_round9": {
     "role": "documentation",
@@ -795,15 +784,20 @@
       "updated_at": "2026-10-25T07:53:37.849717+00:00"
     }
   },
-  "scope_limits": [
-    "development CI/Docker only; not independent or cloud performance",
-    "new 8c is a distinct full commit despite 83 identical application files",
-    "official run-log ZIP API exposes no official digest",
-    "No new source-size or billing measurements",
-    "student handwritten research and human identities untouched",
-    "old a12 product remains FAILURE; corrected 8c product SUCCESS and a12 Docker SUCCESS are distinct"
-  ],
-  "validation": "docs/reports/resume-ci-20261028-validation.json (original byte/hash/path/JSON/AST/link/checkouts and documentary scope only)",
+  "scope_limits": {
+    "tester_contact": false,
+    "independent_PRIVATE_read": false,
+    "product_changes": false,
+    "cloud_operations": false,
+    "CI_trigger_retry_cancel": false,
+    "new_Word_PDF_Pages": false,
+    "original_teacher_material_modified_or_published": false
+  },
+  "validation": {
+    "source_and_CI_checks": "passed as recorded in evidence Markdown",
+    "final_document_links_json_scope": "passed: 67 local links; 11 handoff required fields; seven artifact paths; exact seven-file scope; authored token-pattern scan; staged diff check exit0",
+    "historical_handoff_values": "all changed prior top-level values retained exactly in history_before_r29_checkpoint; prior prompt_refs remain prefix"
+  },
   "history_round9_results": {
     "a162_product": "overall cancelled; static E731 failure; coverage cancelled without full-suite JUnit; contracts/frontend success",
     "a162_docker": "success",
@@ -840,57 +834,26 @@
     ]
   },
   "results": {
-    "product_run": 40636976337,
-    "product_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
-    "product_conclusion": "failure",
-    "failure": "static E731; three other jobs success",
-    "backend": {
-      "tests": 714,
-      "failures": 0,
-      "errors": 0,
-      "skips": 0,
-      "covered_lines": 2508,
-      "total_lines": 2790,
-      "covered_branches": 709,
-      "total_branches": 852
-    },
-    "frontend": {
-      "tests": 89,
-      "passed": 89,
-      "covered_lines": 364,
-      "total_lines": 390
-    },
-    "docker_run": 40636980359,
-    "docker_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
-    "docker_conclusion": "success",
-    "artifact_original_ZIPs": 9,
-    "run_log_original_ZIPs": 3,
-    "corrected_product_run": 40637880409,
-    "corrected_source": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
-    "corrected_run_archived": true,
-    "identical_tracked_backend_frontend_files": 83,
-    "corrected_product_conclusion": "success",
-    "corrected_backend": {
-      "tests": 714,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "covered_lines": 2508,
-      "total_lines": 2790,
-      "line_percent": 89.89247311827957,
-      "covered_branches": 709,
-      "total_branches": 852,
-      "branch_percent": 83.21596244131456,
-      "blended_coveragepy_percent": 88.33058758923669,
-      "excluded_lines": 0
-    },
-    "corrected_frontend": {
-      "tests": 89,
-      "passed": 89,
-      "failed": 0,
-      "pending": 0,
-      "success": true
-    }
+    "public_source_files_bound_to_base": 20,
+    "CI_manifest_files_hash_size_and_git_blob_matched": 97,
+    "backend_full_suite": 796,
+    "backend_failures_errors_skips": 0,
+    "frontend_passed": 89,
+    "line_covered": 2500,
+    "line_total": 2771,
+    "branch_covered": 713,
+    "branch_total": 848,
+    "suite_counts_not_additive": true,
+    "v1_2_frozen_files_matched": 15,
+    "current_application_lines": 5887,
+    "application_files": 65,
+    "source_excess": 787,
+    "cloud_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "CI_source": "7b15f8932b78e99a2b3daef2411f2cefeab98463",
+    "independent_public_status": "NP_NO_RUNTIME_RESULT",
+    "cloud_short_P95_target_passed": false,
+    "new_product_or_cloud_test_executions": 0,
+    "student_research_authored_by_AI": false
   },
   "history_round9_validation": "docs/reports/round9-ci-validation.json: evidence/link/JSON/scope and authored-doc/script diff checks passed; full diff check exit2 on 19 original raw-log whitespace lines retained unchanged; not product tests",
   "history_round9_phase1_commit": "14be82a3",
@@ -1043,5 +1006,133 @@
     "staged_ZIP_blob_validation": "agents/documentation/component-ci-f7-20261028/staged-validation.PUBLIC.json",
     "delivery_status": "Core evidence pushed and remote HEAD verified; this final administrative receipt changes no source or originals"
   },
-  "latest_documentation_append": "component_candidate_ci_f7_20261028"
+  "latest_documentation_append": "component_candidate_ci_f7_20261028",
+  "history_before_r29_checkpoint": {
+    "stage": "Resume original CI evidence complete",
+    "implementation_status": "Nine original artifact ZIPs and three original run-log ZIPs sealed and parsed; no product execution",
+    "actor": "AI /root/ci_evidence_resume_20261028",
+    "base_sha": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
+    "updated_at": "2026-10-28",
+    "artifacts": [
+      "reports/final/round9-ci-evidence.md",
+      "docs/reports/round9-ci-analysis.json",
+      "docs/reports/round9-ci-collector.py",
+      "docs/reports/round9-ci-analyze.py",
+      "docs/reports/round9-ci-download-failure.json",
+      "records/ci/40200930857/archive-binding.json",
+      "records/ci/40200930957/archive-binding.json",
+      "records/ci/40201584671/archive-binding.json",
+      "records/ci/40201584699/archive-binding.json",
+      "docs/reports/round9-ci-validation.json",
+      "reports/final/resume-ci-20261028.md",
+      "docs/reports/resume-ci-20261028-analysis.json",
+      "docs/reports/resume-ci-20261028-analyze.py",
+      "docs/reports/resume-ci-20261028-app-equality.json",
+      "docs/reports/resume-ci-20261028-validation.json",
+      "records/ci/40636976337/archive-binding.json",
+      "records/ci/40636980359/archive-binding.json",
+      "records/ci/40637880409/archive-binding.json",
+      "docs/reports/resume-ci-20261028-helper-diff.json"
+    ],
+    "interfaces": {
+      "input": "Explicit old/source/run IDs, corrected run and public original artifact bytes",
+      "output": "Original ZIPs, exact head/checkouts, actual JUnit and separated coverage metrics; byte equality does not relabel source",
+      "pending": "Root integration; product/independent/performance/size/billing gates remain separate"
+    },
+    "results": {
+      "product_run": 40636976337,
+      "product_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+      "product_conclusion": "failure",
+      "failure": "static E731; three other jobs success",
+      "backend": {
+        "tests": 714,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "covered_lines": 2508,
+        "total_lines": 2790,
+        "covered_branches": 709,
+        "total_branches": 852
+      },
+      "frontend": {
+        "tests": 89,
+        "passed": 89,
+        "covered_lines": 364,
+        "total_lines": 390
+      },
+      "docker_run": 40636980359,
+      "docker_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+      "docker_conclusion": "success",
+      "artifact_original_ZIPs": 9,
+      "run_log_original_ZIPs": 3,
+      "corrected_product_run": 40637880409,
+      "corrected_source": "8c98eb13dadef13f42e8c9973e6285e5781efb4a",
+      "corrected_run_archived": true,
+      "identical_tracked_backend_frontend_files": 83,
+      "corrected_product_conclusion": "success",
+      "corrected_backend": {
+        "tests": 714,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "covered_lines": 2508,
+        "total_lines": 2790,
+        "line_percent": 89.89247311827957,
+        "covered_branches": 709,
+        "total_branches": 852,
+        "branch_percent": 83.21596244131456,
+        "blended_coveragepy_percent": 88.33058758923669,
+        "excluded_lines": 0
+      },
+      "corrected_frontend": {
+        "tests": 89,
+        "passed": 89,
+        "failed": 0,
+        "pending": 0,
+        "success": true
+      }
+    },
+    "unverified": [
+      "independent acceptance",
+      "formal performance and continuous resource proof",
+      "source-size gate not remeasured by this role",
+      "final billing",
+      "student handwritten research"
+    ],
+    "validation": "docs/reports/resume-ci-20261028-validation.json (original byte/hash/path/JSON/AST/link/checkouts and documentary scope only)",
+    "scope_limits": [
+      "development CI/Docker only; not independent or cloud performance",
+      "new 8c is a distinct full commit despite 83 identical application files",
+      "official run-log ZIP API exposes no official digest",
+      "No new source-size or billing measurements",
+      "student handwritten research and human identities untouched",
+      "old a12 product remains FAILURE; corrected 8c product SUCCESS and a12 Docker SUCCESS are distinct"
+    ]
+  },
+  "role": "documentation",
+  "commands_executed": [
+    "git worktree add -b codex/documentation-r29 from codex/resume-coordination-20261029 at 6f91960b",
+    "read named public files and exact git show for published frontend/backend/database/deployment records",
+    "git ls-remote for the three named candidate owner branches",
+    "Python standard library SHA/byte/Git blob checks, JUnit XML and coverage/frontend JSON parsing",
+    "git diff --quiet 7b15f893 6f91960b -- backend/t44 frontend/src"
+  ],
+  "questions": [],
+  "r29_checkpoint": {
+    "prompt_ref": "ROLE-documentation-R29-CHECKPOINT-20261029-v1",
+    "main": "reports/final/engineering-checkpoint-r29-20261029.md",
+    "student_facts_only": "docs/reports/r29-student-fact-index.md",
+    "evidence": "docs/reports/r29-documentation-evidence.md",
+    "publication": {
+      "content_commit": "9c183a537b9f44bcf39af7c0ca2dc08b627e278b",
+      "branch": "codex/documentation-r29",
+      "push_exit": 0,
+      "remote_exact_head_matched": true,
+      "worktree_clean_after_content_push": true,
+      "administrative_receipt_follows": true,
+      "PR_created": false,
+      "issue_comment_posted": false,
+      "review_success_set": false
+    }
+  }
 }
