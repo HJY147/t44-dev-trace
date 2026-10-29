@@ -1493,6 +1493,60 @@ def test_raw_http_json_and_size_errors_are_audited(
         assert uow.gateway.count("projects") == 0
 
 
+def test_numeric_id_sql_expression_is_security_rejection_before_task_query(application):
+    from sqlalchemy import event
+    from t44.services.codes import ERROR_IDS
+
+    client, factory = application
+    tokens, pid, iid = setup_project(client)
+    task = create_task(client, tokens, pid, iid)
+    url = f"/api/v1/projects/{pid}/tasks?owner_id=1%20OR%201%3D1"
+    engine = factory._sessions.kw["bind"]
+    task_selects = []
+
+    def selected(_connection, _cursor, _sql, _parameters, context, _many):
+        statement = context.compiled.statement
+        if statement.is_select and any(t.name == "tasks" for t in statement.get_final_froms()):
+            task_selects.append(1)
+
+    event.listen(engine, "before_cursor_execute", selected)
+    try:
+        response = client.get(url, headers={"Authorization": f"Bearer {tokens['manager']}"})
+    finally:
+        event.remove(engine, "before_cursor_execute", selected)
+    assert response.status_code == 400
+    assert response.json()["code"] == "SECURITY_INPUT_REJECTED"
+    assert not violations(
+        OPERATIONS["listTasks"]["responses"]["400"]["content"]["application/json"]["schema"],
+        response.json(),
+    )
+    assert task_selects == []
+    with factory() as uow:
+        audit = uow.gateway.get("audit_events", response.json()["audit_id"])
+        assert audit["outcome"] == 2
+        assert audit["reason_code"] == ERROR_IDS["SECURITY_INPUT_REJECTED"]
+        assert uow.gateway.get("tasks", task["id"])["version"] == task["version"]
+    malformed = request(
+        client,
+        "listTasks",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"owner_id": "one"},
+        expect=422,
+    )
+    assert malformed.json()["code"] == "PARAMETER_INVALID"
+    valid = request(
+        client,
+        "listTasks",
+        token=tokens["manager"],
+        project_id=pid,
+        query={"owner_id": task["owner_id"]},
+        expect=200,
+    )
+    assert [row["id"] for row in valid.json()["data"]["items"]] == [task["id"]]
+    assert client.get(url).status_code == 401
+
+
 def test_query_selectors_and_project_reference_errors(application):
     client, _ = application
     tokens, pid, iid = setup_project(client)
