@@ -1,7 +1,7 @@
 {
   "role": "prompt_engineering",
-  "stage": "R29 fixed public evidence at 6f91960b; no new product/test/cloud run",
-  "implementation_status": "过程素材完成；产品实现、运行和验收不在本岗范围",
+  "stage": "R30 preparation incomplete and economical-stop process evidence; no new product/test/cloud run by this role",
+  "implementation_status": "本岗过程素材已整理；真实API准备未完成，正式性能未运行，学生研究报告仍由本人撰写",
   "artifacts": [
     "records/prompts/U001-optimized.md",
     "records/prompts/U001-changes.md",
@@ -110,7 +110,15 @@
     "docs/prompting/R29-source-index.json",
     "docs/prompting/R29-source-notifications.json",
     "docs/prompting/R29-document-checks.json",
-    "docs/prompting/R29-publication.json"
+    "docs/prompting/R29-publication.json",
+    "records/prompts/R30-closure-20261029/01-user-progress-original.txt",
+    "records/prompts/R30-closure-20261029/02-user-continue-original.txt",
+    "records/prompts/R30-closure-20261029/03-user-funding-original.txt",
+    "records/prompts/R30-closure-20261029/04-actual-role-dispatch.md",
+    "records/prompts/R30-closure-20261029/05-proposed-prompts.md",
+    "records/prompts/R30-closure-20261029/06-process-evidence.md",
+    "records/prompts/R30-closure-20261029/07-provenance.json",
+    "records/prompts/R30-closure-20261029/08-document-checks.json"
   ],
   "interfaces": {
     "inputs": [
@@ -131,7 +139,7 @@
       "待登记 prompt 引用",
       "用户原创亮点候选及所需实际证据清单"
     ],
-    "version": "CAMPAIGN-20261025-cutoff-10:03-v1",
+    "version": "R30-CLOSURE-20261029-v1",
     "error_policy": "缺正文、缺执行证据或作者不明时标为待补，不计作已使用或人工改码",
     "coordination": "总协调登记共享台账；本岗不联系独立测试岗",
     "stage_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/11#issuecomment-6358401077",
@@ -206,7 +214,9 @@
       "unexecuted improvement suggestion",
       "public/private and human/AI attribution boundaries"
     ],
-    "R29_substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05"
+    "R29_substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05",
+    "R30_input_scope": "coordinator AI actual dispatch and relayed exact user text; existing public prompt references; no runtime/private/session/QA case reads",
+    "R30_output_scope": "originals, unexecuted optimization suggestions, AI operation attribution and factual source index only; no student research report"
   },
   "commands_executed": [
     "pwd && rg --files -g 'AGENTS.md' -g 'TASK.md' -g '*U001*' -g '*instruction*' -g '*prompt*' .",
@@ -274,7 +284,12 @@
         "git diff --check"
       ],
       "scope": "documentation checks only; no product/test/cloud commands executed"
-    }
+    },
+    "git worktree add -b codex/prompt-closure-r30 .agent-worktrees/prompt-closure-r30 36f9e9c92ea04764429916f115980339e4cf5437",
+    "cat AGENTS.md and explicitly scoped public prompt/team/github role files; initial prompt alias paths missing then corrected to prompt_engineering",
+    "shasum -a 256 U001-original/U002-original and existing R29 highlight indexes; originals unchanged",
+    "python3: save three exact relayed user texts; actual dispatch; separate proposed prompts; evidence index and update this role three files",
+    "python3: 39 exact-original/hash/history/link/scope/document assertions passed; git diff --check passed; no product tests"
   ],
   "results": [
     "已生成 U001 优化建议稿与逐项变更说明，未将建议稿冒充实际派工",
@@ -348,35 +363,23 @@
       "push_exit": 0,
       "ls_remote_exact_match": true,
       "scope": "10 own documentation files, no Issue/PR post or test/CI execution"
-    }
+    },
+    "R30: three exact user inputs relayed by coordinator stored separately; sent times unknown; proposed suggestions are not used versions",
+    "R30: preparation HTTP1385 and six top-level VERSION_CONFLICT409; neutral400 incomplete; QA prepare/grant/ENTRY not called; NOT_RUN_PREPARATION_INCOMPLETE",
+    "R30: AI coordinator reported original two VMs economical stop and per-VM autoRelease dash with one retained disk; no payment or purchase; disk billing continues",
+    "R30: 5880 LOC still exceeds5100 by780; backend offline CAS repair not cloud retested; no completion claim",
+    "R30: original U001/U002 highlight hashes preserved and existing indexes reused; no new executed evolution count or student research prose"
   ],
   "unverified": [
-    "NewD008freeze/readiness/applicationimplementation/newCI/independenttest notcomplete atcutoff; no future pass filled",
-    "Real400x600 SUT performance and6307size remain unresolved by shortstub or2HTTPtargets",
-    "Cloud configuration/cost request is notpurchase/deployment authorization",
-    "Student finalresearch andhuman12/5/3 no completionevidence; AIrole notstudent",
-    "AUTONOMOUS: application6326>5100 and formal400x600 remain unpassed; no current full CI/independent result fetched",
-    "AUTONOMOUS: student final handwritten report and human12/3/5 not completed by AI materials",
-    "AUTONOMOUS: health401 receipt was uncommitted at collection; native planned stops not yet observed at cutoff",
-    "At 10:03 UTC v7 formal performance has no complete result; do not backfill later output.",
-    "F08 product versus test premise attribution unresolved; F11 expired-token credential absent; 523/551 operation/error branches unproved.",
-    "N07 source size remains 6326 > 5100; human12/3/5 and student-authored handwritten report not completed by this AI appendix.",
-    {
-      "stage": "R29",
-      "items": [
-        "full QA772 SUT call count and internal failure cause",
-        "QA v2 completed local fix or new runtime",
-        "new user original wording beyond existing public archives",
-        "exact settled cost",
-        "student manual quotas and hand-written research report",
-        "scale/performance acceptance remains unmet or unproven"
-      ]
-    }
+    "Complete artifact SHA and full 0b/60/config8e/descriptor6a identities were not supplied to this role; runtime facts are coordinator-reported, not independently replayed",
+    "Backend offline preparation CAS fix has no cloud retest/completion evidence in this checkpoint",
+    "400 neutral API preparation incomplete; formal performance not run; total flow includes preparation requests and is not claimed zero",
+    "Exact settled cost or last-top-up deficit not verified; cloud disks still bill; no new payment/purchase occurred this round",
+    "5880 source lines exceed5100 by780; size acceptance remains unmet",
+    "Expired-link failure/refresh originals not opened by this role; coordinator must preserve actual originals, no URL/status/time invented",
+    "Student-authored research prose and manual12/3/5 completion not supplied or written by this AI role"
   ],
-  "questions": [
-    "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
-    "Downstream retain H2rawstatus versus SUTinconclusive, target866NOT_MEASURED, candidate/gate/CI cutoff separation"
-  ],
+  "questions": [],
   "prompt_refs": [
     {
       "id": "ROLE-prompt_engineering-BOOTSTRAP-v1",
@@ -626,9 +629,32 @@
       "used_at": null,
       "path": "records/prompts/PROPOSED-r29-evidence-first-orchestration-v1.md",
       "reason": "propose exact schema, Linux import boundary, limited continuation and evidence-based closure after observed AI errors; never executed"
+    },
+    {
+      "id": "ROLE-prompt_engineering-R30-CLOSURE-v1",
+      "status": "used",
+      "actual_prompt_file": "records/prompts/R30-closure-20261029/04-actual-role-dispatch.md",
+      "reason": "record relayed user originals and coordinator-reported preparation failure/stop with AI attribution",
+      "artifact_refs": [
+        "records/prompts/R30-closure-20261029/01-user-progress-original.txt",
+        "records/prompts/R30-closure-20261029/02-user-continue-original.txt",
+        "records/prompts/R30-closure-20261029/03-user-funding-original.txt",
+        "records/prompts/R30-closure-20261029/04-actual-role-dispatch.md",
+        "records/prompts/R30-closure-20261029/05-proposed-prompts.md",
+        "records/prompts/R30-closure-20261029/06-process-evidence.md",
+        "records/prompts/R30-closure-20261029/07-provenance.json",
+        "records/prompts/R30-closure-20261029/08-document-checks.json"
+      ]
+    },
+    {
+      "id": "PROPOSED-R30-user-clarifications-v1",
+      "status": "proposed",
+      "used_at": null,
+      "path": "records/prompts/R30-closure-20261029/05-proposed-prompts.md",
+      "new_executed_evolution_versions": 0
     }
   ],
-  "updated_at": "2026-10-29T05:37:14.573239+00:00",
+  "updated_at": "2026-10-29T10:36:25.030994+00:00",
   "previous_m4_unverified": [
     "单族六版尚未核实；人工12/3/5可证实完成数本轮仍0，AI行为不顶替",
     "docs/guidance本轮异步回执pending，不表示角色没有产物",
@@ -637,40 +663,36 @@
     "本人研究完整成稿/课程建议未收到；R001只证明已有本人反思"
   ],
   "current_summary": {
-    "base_commit": "6f91960bca1d59b9ac424c082de403241b5f9115",
-    "sources": 45,
-    "all_sources_git_bytes_match": true,
-    "actual_prompt_id": "ROLE-prompt_engineering-R29-20261029-v1",
-    "user_highlights": [
-      "U001",
-      "U002"
-    ],
-    "original_hashes_unchanged": true,
-    "existing_O1_status": "proposed; no execution evidence",
-    "new_user_original_collected": false,
+    "base_commit": "36f9e9c92ea04764429916f115980339e4cf5437",
+    "branch": "codex/prompt-closure-r30",
+    "fact_source": "coordinator AI actual dispatch; not replayed by this role",
+    "user_originals_collected": 3,
+    "user_sent_at_known": false,
+    "proposed_prompts_used": false,
     "new_executed_prompt_evolution_versions": 0,
-    "actual_AI_notifications_received": 2,
-    "human_interviews": 0,
-    "new_student_manual_operation_evidence": 0,
-    "source_size": "5887 > 5100; FAIL +787",
-    "short_f7": "80/800/8000 complete; zero failed/aborted clients; 400-client P95 fails; not 600s acceptance",
-    "QA772": "NP_NO_RUNTIME_RESULT; HARD_DEADLINE899.786s; 76B; SUT call total unknown",
-    "CI": "7b15f893 / run40821621806 four jobs success; backend796 zero skip and frontend89; no scale/performance substitution",
-    "cloud_shutdown": "original APP/LOAD Stopped StopCharging; autoRelease null/dash; disks preserved; 19661075B exact resource tail",
-    "grants_actor": "AI coordinator under existing authorization; user browser recovery is not student-authored grant",
-    "QA_v2": "AI notification says local tester repair pending; no new SUT/cloud result supplied",
-    "precise_cost_claimed": false,
-    "private_or_independent_tool_read": false,
+    "preparation_status": "NOT_RUN_PREPARATION_INCOMPLETE",
+    "preparation_http_records": 1385,
+    "top_level_VERSION_CONFLICT_409": 6,
+    "neutral_400_complete": false,
+    "qa_prepare_called": false,
+    "grant_issued": false,
+    "qa_entry_called": false,
+    "formal_performance": "not run because preparation incomplete",
+    "all_flow_requests_zero_claimed": false,
+    "source_size": "5880 > 5100; FAIL +780",
+    "backend_cas_fix": "offline in progress; no cloud retest",
+    "cloud_shutdown": "coordinator reported guest stopped/resource sealed10:21Z; economical stop~10:26Z; autoRelease dash per VM;1disk each retained",
+    "new_payment_or_purchase": false,
+    "exact_cost_claimed": false,
+    "student_manual_operation_evidence_added": 0,
+    "private_or_session_or_qa_case_read": false,
     "independent_test_contact": false,
-    "product_test_CI_cloud_executed_by_this_role": false,
+    "cloud_browser_payment_or_product_test_CI_operation": false,
     "student_research_body_written": false,
     "legacy_ledger_modified": false,
     "new_test_number": null,
-    "document_checks_passed": 81,
-    "document_check_scope": "source documents only",
-    "substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05",
-    "push_remote_exact_match": true,
-    "publication_receipt": "docs/prompting/R29-publication.json"
+    "document_check_scope": "documentation only; runtime facts not replayed",
+    "document_checks_passed": 39
   },
   "previous_m6_unverified": [
     "Student-authored final research prose; R001/R002 provenance is not final report",
@@ -780,6 +802,73 @@
         "legacy_ledger_modified": false
       },
       "preserved_by": "R29"
+    },
+    {
+      "stage": "R29 fixed public evidence at 6f91960b; no new product/test/cloud run",
+      "summary": {
+        "base_commit": "6f91960bca1d59b9ac424c082de403241b5f9115",
+        "sources": 45,
+        "all_sources_git_bytes_match": true,
+        "actual_prompt_id": "ROLE-prompt_engineering-R29-20261029-v1",
+        "user_highlights": [
+          "U001",
+          "U002"
+        ],
+        "original_hashes_unchanged": true,
+        "existing_O1_status": "proposed; no execution evidence",
+        "new_user_original_collected": false,
+        "new_executed_prompt_evolution_versions": 0,
+        "actual_AI_notifications_received": 2,
+        "human_interviews": 0,
+        "new_student_manual_operation_evidence": 0,
+        "source_size": "5887 > 5100; FAIL +787",
+        "short_f7": "80/800/8000 complete; zero failed/aborted clients; 400-client P95 fails; not 600s acceptance",
+        "QA772": "NP_NO_RUNTIME_RESULT; HARD_DEADLINE899.786s; 76B; SUT call total unknown",
+        "CI": "7b15f893 / run40821621806 four jobs success; backend796 zero skip and frontend89; no scale/performance substitution",
+        "cloud_shutdown": "original APP/LOAD Stopped StopCharging; autoRelease null/dash; disks preserved; 19661075B exact resource tail",
+        "grants_actor": "AI coordinator under existing authorization; user browser recovery is not student-authored grant",
+        "QA_v2": "AI notification says local tester repair pending; no new SUT/cloud result supplied",
+        "precise_cost_claimed": false,
+        "private_or_independent_tool_read": false,
+        "independent_test_contact": false,
+        "product_test_CI_cloud_executed_by_this_role": false,
+        "student_research_body_written": false,
+        "legacy_ledger_modified": false,
+        "new_test_number": null,
+        "document_checks_passed": 81,
+        "document_check_scope": "source documents only",
+        "substantive_commit": "175173f308b4d134d481e7141f742b8ddecd9b05",
+        "push_remote_exact_match": true,
+        "publication_receipt": "docs/prompting/R29-publication.json"
+      },
+      "unverified": [
+        "NewD008freeze/readiness/applicationimplementation/newCI/independenttest notcomplete atcutoff; no future pass filled",
+        "Real400x600 SUT performance and6307size remain unresolved by shortstub or2HTTPtargets",
+        "Cloud configuration/cost request is notpurchase/deployment authorization",
+        "Student finalresearch andhuman12/5/3 no completionevidence; AIrole notstudent",
+        "AUTONOMOUS: application6326>5100 and formal400x600 remain unpassed; no current full CI/independent result fetched",
+        "AUTONOMOUS: student final handwritten report and human12/3/5 not completed by AI materials",
+        "AUTONOMOUS: health401 receipt was uncommitted at collection; native planned stops not yet observed at cutoff",
+        "At 10:03 UTC v7 formal performance has no complete result; do not backfill later output.",
+        "F08 product versus test premise attribution unresolved; F11 expired-token credential absent; 523/551 operation/error branches unproved.",
+        "N07 source size remains 6326 > 5100; human12/3/5 and student-authored handwritten report not completed by this AI appendix.",
+        {
+          "stage": "R29",
+          "items": [
+            "full QA772 SUT call count and internal failure cause",
+            "QA v2 completed local fix or new runtime",
+            "new user original wording beyond existing public archives",
+            "exact settled cost",
+            "student manual quotas and hand-written research report",
+            "scale/performance acceptance remains unmet or unproven"
+          ]
+        }
+      ],
+      "questions": [
+        "Student may analyze why independentcontext does notguarantee oracle/pressure validity; no AI firstperson report",
+        "Downstream retain H2rawstatus versus SUTinconclusive, target866NOT_MEASURED, candidate/gate/CI cutoff separation"
+      ],
+      "preserved_by": "R30"
     }
   ]
 }

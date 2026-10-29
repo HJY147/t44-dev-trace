@@ -1,0 +1,168 @@
+{
+  "checked_at": "2026-10-29T10:36:25.030994+00:00",
+  "scope": "documentation and Git only; no product, test, API, cloud or QA replay",
+  "passed": 39,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "isolated requested branch",
+      "pass": true
+    },
+    {
+      "check": "requested starting HEAD before first commit",
+      "pass": true
+    },
+    {
+      "check": "exact original bytes: 01-user-progress-original.txt",
+      "pass": true
+    },
+    {
+      "check": "exact original bytes: 02-user-continue-original.txt",
+      "pass": true
+    },
+    {
+      "check": "exact original bytes: 03-user-funding-original.txt",
+      "pass": true
+    },
+    {
+      "check": "original provenance hash: USER-r30-progress-20261029",
+      "pass": true
+    },
+    {
+      "check": "original provenance hash: USER-r30-continue-20261029",
+      "pass": true
+    },
+    {
+      "check": "original provenance hash: USER-r30-funding-20261029",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: AGENTS.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: docs/collaboration/team.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: docs/collaboration/github-workflow.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: docs/prompting/prompt-recording.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: docs/prompting/R29-process-evidence.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: docs/prompting/highlight-candidates.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: records/prompts/U001-original.md",
+      "pass": true
+    },
+    {
+      "check": "fixed reference bytes/hash: records/prompts/U002-original.md",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/01-user-progress-original.txt",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/02-user-continue-original.txt",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/03-user-funding-original.txt",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/04-actual-role-dispatch.md",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/05-proposed-prompts.md",
+      "pass": true
+    },
+    {
+      "check": "local material hash: records/prompts/R30-closure-20261029/06-process-evidence.md",
+      "pass": true
+    },
+    {
+      "check": "historical bytes preserved by append: agents/prompt_engineering/WORKLOG.md",
+      "pass": true
+    },
+    {
+      "check": "historical bytes preserved by append: reports/modules/prompt_engineering.md",
+      "pass": true
+    },
+    {
+      "check": "old handoff summary/unverified preserved in history",
+      "pass": true
+    },
+    {
+      "check": "separate proposed/used provenance",
+      "pass": true
+    },
+    {
+      "check": "preparation status and request boundary",
+      "pass": true
+    },
+    {
+      "check": "no QA prepare/grant/entry claimed",
+      "pass": true
+    },
+    {
+      "check": "code budget gap arithmetic",
+      "pass": true
+    },
+    {
+      "check": "no payment/full hash or student authorship fabricated",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> 07-provenance.json",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> 05-proposed-prompts.md",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> ../../../docs/prompting/R29-process-evidence.md#用户原创亮点只从原文选取",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> ../../../docs/prompting/highlight-candidates.md",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> ../U001-original.md",
+      "pass": true
+    },
+    {
+      "check": "local link exists: 06-process-evidence.md -> ../U002-original.md",
+      "pass": true
+    },
+    {
+      "check": "tracked write scope",
+      "pass": true
+    },
+    {
+      "check": "new process directory only",
+      "pass": true
+    },
+    {
+      "check": "git diff --check",
+      "pass": true
+    }
+  ],
+  "known_non_product_lookup_failures": [
+    "Initial agents/prompt/TASK.md, agents/prompt/WORKLOG.md, reports/modules/prompt.md, records/handoffs/prompt.json lookups failed; corrected to AGENTS role prompt_engineering"
+  ],
+  "runtime_fact_verification": "coordinator-reported, not replayed by this role"
+}
