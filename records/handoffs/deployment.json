@@ -2808,5 +2808,30 @@
       22445,
       18481
     ]
+  },
+  "opaque_relay_20261029": {
+    "operator": "deployment_AI",
+    "created_UTC": "2026-10-29T03:29:31.451600+00:00",
+    "base": "fcc847f395a636f8100c7df0dadef446cb647165",
+    "directory": "agents/deployment/opaque-relay-20261029",
+    "relay_sha256": "0faba87792014ec0b16e18ef08286da234d8744f2d1792f409dccd01e939ea59",
+    "source_api": "app/load/check --configuration ABS --configuration-sha256 SHA",
+    "original_runtime_modified": false,
+    "source_default": "actual source/binding/grant/key/nonce/time/IP/path supplied by coordinator, no guessed identities",
+    "actual_local_TLS_unique_scenarios": 11,
+    "actual_original_receiver_CLI": true,
+    "actual_original_consumer_or_matrix": false,
+    "final_unit_status_mock_subchecks": 4,
+    "Linux_or_cloud": false,
+    "cost_stop_utc": "separate mandatory absolute field, <=1h",
+    "parent_consumer_cap_seconds": 420,
+    "owned_cleanup_cap_seconds": 90,
+    "final_record_margin_seconds": 30,
+    "minimum_cost_window_before_consumer": 540,
+    "original_330s_control_stop_and_600s_packet_age_unchanged": true,
+    "cost_VM_stop_responsible": "coordinator, economical stop both original instances retaining disks; guest/service stop is not billing proof",
+    "evidence": "tmp/776_relay_20261029",
+    "prompt": "agents/deployment/prompts/ROLE-deployment-OPAQUE-RELAY-20261029-v1.md",
+    "next": "coordinator/reviewer verify exact fresh configs, install, Linux preflight and only then issue new S2; no permission inferred from local exit0"
   }
 }

@@ -750,3 +750,7 @@ root新任务仅汇总原PUBLIC部署原件，backend明确full来源profile c13
 真实本地raw/JSON两路线分别执行原17安装片（仅测试执行边界把三个完整目标映射项目tmp793，原bundle bytes不改），逐原manifest核27份运行代码和3manifest完整字节/权限，均过。两次重复首片均被原O_EXCL拒且原件未改；整包SHA、内件身份、额外member负例均0执行。13522B真实安装输出完整gzip/3bcf144a…保存，HTTP/curl未实际联网，云/SUT/服务/callback未运行。先封此包固定commit，下一小commit给APP/LOAD curl API raw+json兼容wrapper并核完整outer，绝不拿只内层尺寸冒合格。
 
 固定包已push d80ea0578fb436e6f44743aed7d91e10cba3a512。APP/LOAD各一curl API raw+json小shell1925/1926B，完整outer base64各2568+300描述=2868，先包/逐件hash再原17片，正常TLS及HTTPS redirect，无Token/rawGithub；新私有临时响应保留。真实bash-n及实际shell+显式fake curl/captured Python核单API请求、raw/JSON响应保存600权限和core逐字相同通过，网络/云未执行。另等长单件SHA改变负例0执行，原始组件O_EXCL拒覆盖不改。root后发选旧授权端口22443/18480/22445/18481只是新CLI计划，与旧24443计划区分记录，不改算法/包/CI。所有本地交付完成，root实际两端安装仍另留回执。
+
+## 2026-10-29 自动密文交接（仅本地）
+
+新独立worktree deployment-transfer-20261029自fcc，先写design再代码。按根要求不云、不购买/启动，原13源码和矩阵/门禁不改。实现APP producer完成后固定路径密文快照/严格peerIP与TLS、LOAD会话前有界等待425/全片SHA→原receiver→consumer排他一次；当前manifest逐件校验，纠正过的模板pin规则由backend594原提交提供，不重新引入旧f89。原receiver实测四片37KB字节相同，consumer只捕获命令未实际执行。初9本地TLS绿4.327s；成本字段变更后三项窄复核绿1.743s(重跑1不加数)，共11独特场景；仅RemainAfterExit差分后4状态mock绿、3.10语法核，不冒Linux。新cost_stop_utc与540秒余量独立于原330/600；parent420+owned cleanup90+落盘30，云机经济停机/费用仍根负责。模板生成末尾PY NameError真实保留说明，未损坏已闭合模板。prompt ROLE-deployment-OPAQUE-RELAY-20261029-v1；代码SHA 0faba87792014ec0b16e18ef08286da234d8744f2d1792f409dccd01e939ea59。
