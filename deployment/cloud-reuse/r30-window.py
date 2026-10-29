@@ -103,12 +103,12 @@ def import_backend(args):
     if before.returncode != 1 or b"no such image" not in before.stderr.lower():
         raise ValueError("FRESH_ALIAS_ABSENCE_REQUIRED_NO_RETAG_OR_OVERWRITE")
     a.command([*a.DOCKER, "image", "load", "--input", args.package / "backend-image.tar.gz"], timeout=240)
-    bundle, source, identity, _ = backend(args.package, args.manifest_sha256)
+    bundle, _source, identity, observed = backend(args.package, args.manifest_sha256)
     a.save(args.receipt, {"kind": "r30-backend-import-receipt-v1", "source_sha": a.SOURCE,
                          "bundle_manifest_sha256": args.manifest_sha256,
                          "source_manifest_sha256": bundle["source_manifest_sha256"],
-                         "identity": identity, "full_runtime_files": len(source["files"]) - 2,
-                         "package_resolution": "find_spec(t44) -> /app/backend/t44/__init__.py; checked after load, no business import",
+                         "identity": identity, "full_runtime_files": len(observed["files"]),
+                         "package_resolution": observed,
                          "business_services_started": False, "volumes_modified": False})
     return {"success": True, "receipt": str(args.receipt), "source_sha": a.SOURCE}
 

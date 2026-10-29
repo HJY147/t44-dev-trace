@@ -1,0 +1,13 @@
+# P1 R30-NEUTRAL-RECEIPT-03
+
+原2ca provider写固定package_resolution字符串，而已发表PUBLIC adapter要求非空dict/list；接口缺陷成立。原kind修复和预算9e不变。
+
+先核root/worktree的tmp759未占用，再用真实import_backend函数（仅Linux身份、Docker加载和backend实际环境边界为明确seam）→原a.save排他序列化→已核PUBLIC ADAPTER_0B_V24.py纯validate。只读明确获准的这份PUBLIC源码，完整SHA `694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938`；不读其相邻文件/PRIVATE/core或独立case。
+
+首次红5项为2FAIL/1ERROR，正例准确报 `ACTUAL_IDENTITY_AND_PACKAGE_RESOLUTION_REQUIRED`，`neutral-receipt-red-first.log`保留。修复仅三行：接backend真实observed；package_resolution直接写observed，不包装旧字符串；full_runtime_files直接len(observed.files)。仍在backend验证成功后才写；source/bundle/identity/kind-v1/非业务边界字段不变。backend原函数已验证完整源bytes/hash/mode、UID、origin和环境，不另探测一次。
+
+同5项首次绿：原provider JSON直接通过公开validate；完整60行和UID/origin/python/sys_executable/business_env_absent逐结构保留；旧字符串在重绑全部hash后仍被公开adapter拒；原receipt bytes修改被拒；backend拒绝后没有receipt。测试只用SYNTHETIC结构数据和临时CA，CA私钥在setup即删除、临时目录清理；没有实际登录/会话/fixture业务、HTTP、Docker、SQL、core或云。
+
+新adapter SHA `7efee30a2e3ef9552c9e2a5b321cebe4ddbd3eb3d8e652484017fd45e5f8d70f`；预算仍 `9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61`。原5预算入口回归绿，另实际derive的1项全输出hash/pin链回归绿；新profile会由新adapter SHA进入GEN，再进入resource SHA链，真实窗口的最终GEN/resource hash须root新派生后核，不能用临时fixture的hash。Ruff首次通过，Python3.10只语法解析。
+
+两个官方manifest和backend artifact不变，无重建。旧未执行候选/历史保留；root复审准确新commit前不使用新provider/profile。修复后**原import receipt本身就是完整raw文件观察证明**，交后端/公开adapter的应是它的原始bytes及root实际计算的SHA，不能另构造或替换原件。不要再按旧文档为补文件表另运行第二次探针。

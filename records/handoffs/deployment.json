@@ -2921,6 +2921,22 @@
       "real_loaded_proof": "not created",
       "prompt_ref": "ROLE-deployment-PREPARATION-R30-BUDGET-KIND-v1",
       "cloud_SUT_or_full_product_CI_executed": false
+    },
+    "neutral_receipt_03": {
+      "finding": "R30-NEUTRAL-RECEIPT-03",
+      "status": "minimal provider repair; offline red-green; pending root exact-commit review",
+      "code_change": "3 lines: take verified observed; package_resolution=observed; count=len(observed.files)",
+      "adapter_sha256": "7efee30a2e3ef9552c9e2a5b321cebe4ddbd3eb3d8e652484017fd45e5f8d70f",
+      "public_validator_sha256": "694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938",
+      "derived_budget_sha256_unchanged": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+      "red": "same5:2FAIL/1ERROR; exact ACTUAL_IDENTITY_AND_PACKAGE_RESOLUTION_REQUIRED",
+      "green": "same5 passed; real provider serialization then public pure validate, explicit environment seams and synthetic inputs",
+      "regression": "5 budget+1 real derive full hash-chain passed; Ruff first pass",
+      "proof_interface": "original import receipt now retains full observed raw dict/60 files; do not rerun a second probe or rewrite original bytes",
+      "actual_loaded_proof": "not claimed; only root actual import may produce it",
+      "source_artifact_rebuilt": false,
+      "Docker_HTTP_core_private_cloud_SUT_executed": false,
+      "prompt_ref": "ROLE-deployment-R30-NEUTRAL-RECEIPT-03-v1"
     }
   }
 }
