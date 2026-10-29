@@ -1,0 +1,134 @@
+{
+  "kind": "R29_ACTUAL_DEVELOPER_SHORT_DIAGNOSTIC_NOT_ACCEPTANCE",
+  "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "matrix_stdout_sha256": "00480beb0e9d82503b070818fdd6f8a9ad815e8b094d21a0e2f8d2d56c27252b",
+  "formal_600_second_acceptance": false,
+  "strict_LOC": 5898,
+  "LOC_limit": 5100,
+  "LOC_excess": 798,
+  "cohorts": [
+    {
+      "expected_requests": 80,
+      "observed_requests": 80,
+      "diagnostic_complete": true,
+      "utc_started": "2026-10-29T04:25:43.165371+00:00",
+      "utc_barrier_released": "2026-10-29T04:25:43.178077+00:00",
+      "utc_finished": "2026-10-29T04:25:47.605709+00:00",
+      "clients": 1,
+      "status_counts": {
+        "200": 60,
+        "202": 20
+      },
+      "summary": {
+        "createEscalation": {
+          "observed": 20,
+          "p50_ms": 59.98074,
+          "p95_ms": 63.976065,
+          "max_ms": 64.027037
+        },
+        "getTask": {
+          "observed": 20,
+          "p50_ms": 51.930768,
+          "p95_ms": 52.010326,
+          "max_ms": 52.013201
+        },
+        "transitionTask": {
+          "observed": 20,
+          "p50_ms": 63.956832,
+          "p95_ms": 67.981206,
+          "max_ms": 72.042266
+        },
+        "validateContractPayload": {
+          "observed": 20,
+          "p50_ms": 47.966536,
+          "p95_ms": 51.993815,
+          "max_ms": 52.034326
+        }
+      },
+      "failed_clients": 0,
+      "aborted_clients": 0
+    },
+    {
+      "expected_requests": 800,
+      "observed_requests": 800,
+      "diagnostic_complete": true,
+      "utc_started": "2026-10-29T04:25:48.241801+00:00",
+      "utc_barrier_released": "2026-10-29T04:25:48.263792+00:00",
+      "utc_finished": "2026-10-29T04:25:49.667203+00:00",
+      "clients": 40,
+      "status_counts": {
+        "200": 600,
+        "202": 200
+      },
+      "summary": {
+        "createEscalation": {
+          "observed": 200,
+          "p50_ms": 67.958832,
+          "p95_ms": 79.926256,
+          "max_ms": 91.323296
+        },
+        "getTask": {
+          "observed": 200,
+          "p50_ms": 51.955314,
+          "p95_ms": 131.039419,
+          "max_ms": 152.093634
+        },
+        "transitionTask": {
+          "observed": 200,
+          "p50_ms": 72.028373,
+          "p95_ms": 86.263562,
+          "max_ms": 96.610025
+        },
+        "validateContractPayload": {
+          "observed": 200,
+          "p50_ms": 48.842756,
+          "p95_ms": 54.458299,
+          "max_ms": 151.73151
+        }
+      },
+      "failed_clients": 0,
+      "aborted_clients": 0
+    },
+    {
+      "expected_requests": 8000,
+      "observed_requests": 8000,
+      "diagnostic_complete": true,
+      "utc_started": "2026-10-29T04:25:50.294743+00:00",
+      "utc_barrier_released": "2026-10-29T04:25:50.456857+00:00",
+      "utc_finished": "2026-10-29T04:25:55.714389+00:00",
+      "clients": 400,
+      "status_counts": {
+        "200": 6000,
+        "202": 2000
+      },
+      "summary": {
+        "createEscalation": {
+          "observed": 2000,
+          "p50_ms": 174.039574,
+          "p95_ms": 635.948648,
+          "max_ms": 1212.353765
+        },
+        "getTask": {
+          "observed": 2000,
+          "p50_ms": 116.369759,
+          "p95_ms": 456.946701,
+          "max_ms": 951.673202
+        },
+        "transitionTask": {
+          "observed": 2000,
+          "p50_ms": 186.791954,
+          "p95_ms": 617.347266,
+          "max_ms": 1020.66443
+        },
+        "validateContractPayload": {
+          "observed": 2000,
+          "p50_ms": 84.132459,
+          "p95_ms": 343.225717,
+          "max_ms": 1393.214901
+        }
+      },
+      "failed_clients": 0,
+      "aborted_clients": 0
+    }
+  ]
+}
