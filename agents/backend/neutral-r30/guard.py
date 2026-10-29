@@ -497,7 +497,13 @@ def load_gen_binding(plan):
     need(
         all(
             binding.get(key)
-            for key in ("config_ids", "image_ids", "crypto_transport_proofs", "tls", "file_hashes")
+            for key in (
+                "config_ids",
+                "image_ids",
+                "cryptographic_transport_proofs",
+                "tls",
+                "file_hashes",
+            )
         ),
         "MINIMAL_SCHEMA_PROJECTION_IS_NOT_FULL_ACTUAL_BINDING",
     )

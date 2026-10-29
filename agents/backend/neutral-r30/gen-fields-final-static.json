@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--config",
+        "backend/pyproject.toml",
+        "--check",
+        "agents/backend/neutral-r30",
+        "tmp/759_backend_neutral_r30"
+      ],
+      "exit_code": 0,
+      "stdout": "13 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "code_manifest_sha256": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606"
+}
