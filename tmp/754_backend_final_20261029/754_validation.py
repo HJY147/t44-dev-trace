@@ -127,7 +127,7 @@ def test_frozen_error_iterator_stops_at_exact_hundred_without_changing_prefix(
     value = [None] * 500
     expected = original.violations(schema, value)
     assert len(expected) == 100
-    prepared = contracts._COMPILED[id(schema)]
+    prepared = contracts._COMPILED[id(schema)][1]
     old = type(prepared).iter_errors
     emitted = []
 
