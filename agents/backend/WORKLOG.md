@@ -793,3 +793,4 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 原始失败均保留：四引号SyntaxError（0.09s collection error）、新增hash函数漏import的NameError、第三login失败prefix缺失真实红。逐次纠正source，没有改独立用例/接口或删除新负断言。
 - 最终本地26项通过1.58s：400条正常API材料流程FakeClient回放（禁止真实HTTPS）、全部模块py_compile/import、5个CLI --help、target guard、逐login0600排他prefix/原meta/原响应、whole400库存、原seed_demo explicit anchor stub、packet canonical binding/O_EXCL。人的时间明确request_started/response_observed/meta server_time，不伪称server issued_at，service保实际auth row created_at。所有实际SUT/session/云=0。
 - Ruff检查/格式、git diff --check、产品/冻结规格/旧tmp/backend无差异全部退出0。模块源码/执行命令见RUNBOOK；新9e外层预算admitted锁仍由root已审P1入口全程持有，本模块proof SHA检查不能替代这个外层锁。未独立验收、无Linux/Docker/MySQL/TLS真实新结论。
+- 3c1967b3已push并发布Issue#3阶段：https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6492148126 。收口又先实测stale-service红：有效proof但过期service会先创建人类login客户端；将service token/hash/原expiry/新infra后issued_at/实际40项目scope检查前置到任何客户端和输出创建前。新增负断言不改，最终27项全部通过1.66s（不把26+27累计），含原全模块编译/完整fake流程。无真实session或SUT。

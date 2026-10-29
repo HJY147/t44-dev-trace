@@ -1,0 +1,38 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_stale_service_refuses_before_first_human_login ______________
+
+tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-140/test_stale_service_refuses_bef0')
+
+    def test_stale_service_refuses_before_first_human_login(tmp_path):
+        plan, evidence, sessions, _, receipt = fixture()
+        service = {"session": sessions["service"], "attestation": evidence["session_attestations"]["service"]}
+        service["session"]["expires_at"] = plan["window"]["end_utc"]
+        ca = tmp_path / "ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        called = []
+        def client(*args):
+            called.append(True)
+            raise RuntimeError("HUMAN_LOGIN_CLIENT_MUST_NOT_BE_CREATED")
+        with pytest.raises(guard.Refused):
+>           prepare_http.prepare(plan, {}, service, ca, tmp_path / "out", clock=lambda: NOW,
+                                 client_type=client, import_receipt_raw=receipt)
+
+tmp/759_backend_neutral_r30/759_materials.py:656: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agents/backend/neutral-r30/prepare_http.py:59: in prepare
+    api = client_type(origin, ca, records, deadline)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('https://10.0.0.1:8443', PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-14...q597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-140/test_stale_service_refuses_bef0/out/requests'), 695368.477347125)
+
+    def client(*args):
+        called.append(True)
+>       raise RuntimeError("HUMAN_LOGIN_CLIENT_MUST_NOT_BE_CREATED")
+E       RuntimeError: HUMAN_LOGIN_CLIENT_MUST_NOT_BE_CREATED
+
+tmp/759_backend_neutral_r30/759_materials.py:654: RuntimeError
+=========================== short test summary info ============================
+FAILED backend::test_stale_service_refuses_before_first_human_login - Runtime...
+1 failed, 26 deselected in 0.06s

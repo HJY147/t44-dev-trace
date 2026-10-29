@@ -33,6 +33,20 @@ def prepare(
         hashlib.sha256(ca.read_bytes()).hexdigest() == plan["target"]["ca_sha256"],
         "ACTUAL_CA_PIN_REQUIRED",
     )
+    existing, attestation = service["session"], service["attestation"]
+    need(
+        hashlib.sha256(existing["token"].encode()).hexdigest() == attestation["token_sha256"]
+        and existing["expires_at"] == attestation["expires_at"]
+        and timestamp(existing["expires_at"])
+        > timestamp(plan["window"]["end_utc"])
+        + timedelta(seconds=plan["session_expiry_reserve_seconds"])
+        and timestamp(plan["readiness"]["all_ready_at"])
+        <= timestamp(attestation["issued_at"])
+        <= now
+        and sorted(existing["project_ids"]) == sorted(plan["authorized_project_ids"])
+        and existing["scopes"] == ["escalation:write"],
+        "ACTUAL_FRESH_SERVICE_MUST_PRECEDE_ANY_HUMAN_LOGIN",
+    )
     output.mkdir(mode=0o700)
     records = output / "requests"
     records.mkdir(mode=0o700)
