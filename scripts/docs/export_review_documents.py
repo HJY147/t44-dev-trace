@@ -408,7 +408,7 @@ def main():
         selected=[f for f in figures if f['source']==source.relative_to(root).as_posix()]
         source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
         prior = next((row for row in records if row['source'] == source.relative_to(root).as_posix()), None)
-        if prior and prior['source_sha256'] == source_hash and prior.get('exporter_sha256') == exporter_hash and (out/target).exists():
+        if prior and prior['source_sha256'] == source_hash and prior.get('exporter_sha256') == exporter_hash and prior.get('documentation_ref') == args.documentation_ref and (out/target).exists():
             continue
         figure_count = body(doc,source,root,args.documentation_ref,selected)
         output=out/target
