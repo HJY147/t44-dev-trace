@@ -9,35 +9,23 @@
 
 QA中性adapter只需这两manifest和未来真实loaded proof，无须读其相邻源/镜像、部署日志或任何凭据。
 
-现有 `r30-window.py import-backend --receipt <new PUBLIC json path>` 成功后才排他写 `r30-backend-import-receipt-v1`。它绑定source/bundle/source-manifest、image identity、full_runtime_files=60和package resolution；**它不含60行实际文件表，不能冒充完整raw proof**。receipt本身SHA由root按实际bytes计算。若QA需要完整60行，用下面现有backend验证函数序列化实际结果，不修改执行器core。
+当前R30-NEUTRAL-RECEIPT-03修复后，现有 `r30-window.py import-backend --receipt <new PUBLIC json path>` 只有在backend实际验证成功后，才排他写 `r30-backend-import-receipt-v1`。原receipt本身保留完整60行raw观察，不再补跑第二次探针。旧候选字符串格式只保留历史，不重写云原件或包装旧字符串。
 
-建议新云路径：`/root/t44-r30/<new-run>/loaded-runtime-proof.PUBLIC.json`。这只是未来路径约定，文件目前不存在；由root实际完成import后运行。`R30_PROFILE`为新修复后profile，`R30_PACKAGE`为已核本轮七件artifact目录；所有变量传普通路径，无口令/会话。
+建议新云路径：`/root/t44-r30/<new-run>/backend-import-receipt.PUBLIC.json`。路径只是约定，本岗没有创建真实APP proof；root在实际import成功后直接核原文件bytes/SHA并交中性adapter，不另重建receipt：
 
 ```bash
-python3 - "$R30_PROFILE" "$R30_PACKAGE" "$R30_HOSTROOT/loaded-runtime-proof.PUBLIC.json" <<'PY'
-import importlib.util,json,pathlib,sys
-profile,package,output=map(pathlib.Path,sys.argv[1:])
-spec=importlib.util.spec_from_file_location('r30_loaded',profile/'r30-window.py')
-window=importlib.util.module_from_spec(spec);spec.loader.exec_module(window)
-a=window.artifact()
-bundle_hash='b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345'
-bundle,source,identity,observed=window.backend(package,bundle_hash)
-value={'kind':'r30-loaded-runtime-proof-v1','source_sha':a.SOURCE,
- 'bundle_manifest_sha256':bundle_hash,
- 'source_manifest_sha256':bundle['source_manifest_sha256'],
- 'image_alias':bundle['declared']['alias'],'image_identity':identity,
- 'runtime':observed,'runtime_file_count':len(observed['files']),
- 'runtime_file_set_sha256':a.digest(a.canonical(observed['files'])),
- 'backend_file_count':sum(r['path'].startswith('backend/') for r in observed['files']),
- 'business_services_started':False,'volumes_modified':False}
-a.save(output,value)
-print(json.dumps({'path':str(output),'bytes':output.stat().st_size,'sha256':a.sha(output)}))
-PY
+python3 "$R30_PROFILE/r30-window.py" import-backend \
+  --package "$R30_PACKAGE" \
+  --manifest-sha256 b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345 \
+  --receipt "$R30_HOSTROOT/backend-import-receipt.PUBLIC.json"
+sha256sum "$R30_HOSTROOT/backend-import-receipt.PUBLIC.json"
 ```
 
-`window.backend`先完整验证artifact与源，然后用原image-proof将实际Docker29 descriptor/Id与归档config/layers/DiffID闭环，再实际执行none/read-only/UID10001文件探针；它检查完整60运行文件、`find_spec('t44').origin=/app/backend/t44/__init__.py`、业务环境缺失。`runtime`只含uid/package_origin/python_version/sys_executable/business_env_absent/files，各files行是path/bytes/sha256/mode。没有账号、令牌或Env值。不会import业务应用或派业务请求。
+原始receipt字段仍为kind/source_sha/bundle_manifest_sha256/source_manifest_sha256/identity/full_runtime_files/package_resolution/business_services_started/volumes_modified。`package_resolution`现在**原样等于backend真实observed字典**：uid、package_origin、python_version、sys_executable、business_env_absent、files；完整files有60行path/bytes/sha256/mode，full_runtime_files取真实len(files)，不是源条数推算。identity继续保存Docker29实际descriptor→保存config→layers/DiffID的原证明，config与actual_id不要求字符串相等。v1 kind和已发布expected-shape语义不变。
 
-中性adapter应核root实际公布的整proof SHA和bytes，schema kind/source/两manifest hash，runtime uid=10001/origin/业务环境缺失，实际60 rows与source manifest去掉两Dockerfile后的完整集合相等，backend count=53，file-set canonical hash相等；镜像identity分清actual_id与config_id，不能要求两者字符串相同。任意缺项/错hash拒绝。当前不预填success或proof SHA。
+backend在返回observed前已验证全部60运行文件（含完整53backend）与官方source manifest去掉两Dockerfile后的完整bytes/hash/mode集合相等、UID10001、`find_spec('t44').origin=/app/backend/t44/__init__.py`及业务环境缺失。它没有import业务应用、派HTTP或启动业务。原receipt不含账号、令牌或Env值；CI文件表不能代替这份实际APP观察。
+
+root交接只给原receipt bytes、原路径、实际bytes/SHA与观察时间。已公开adapter694fc3纯validate只确认其声明范围内的structure/raw SHA绑定；root仍负责完整source/base/config/layer/运行来源链复核，不能把结构通过变成SUT验收。任意缺项/错hash/旧字符串拒绝，绝不为了接收而修改QA类型或重写原receipt。实际新profile必须经root准确commit复审并重新派生pin链。
 
 ## APP服务角色与scheduler状态
 

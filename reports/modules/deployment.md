@@ -633,3 +633,8 @@ root确认旧16Z尚无任何GEN业务生命周期或grant，仅代码和build。
 ## 2026-10-29 P1 R30-BUDGET-KIND-01
 
 root转审核发现后独立实复现：a605 R30 generation与旧305f预算kind不兼容，原20项确实漏接口。tmp760先真实derive→磁盘binding→fcntl锁/GEN probe入口，5项红（3FAIL/2ERROR）原日志保留。仅派生预算唯一KIND literal为R30，新9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61 pin入GEN再入resource；旧305f原件/其他预算bytes不改，旧kind拒绝。5项首次绿，原7项窄回归绿，首Ruff F401保留后修正绿；3.10只语法。外部phase_binding/systemctl/live是明确替身，断在mysql哨兵前，无Docker/SQL/云/actual预算/SUT结论。BOOT/SUT仍HOLD待root准确commit复审，旧a605 profile须新目录重派生；准确0b镜像/原两manifest不变。另仅文档给root两原manifest绝对路径、未来loaded proof PUBLIC schema/path/hash和7角色/6 idle/scheduler后置枚举，不签真实proof，不联系QA/审核。实际prompt在PROMPT-P1.md。
+
+
+## 2026-10-29 P1 R30-NEUTRAL-RECEIPT-03
+
+root单向转发公开接口缺陷：2ca import receipt固定string被PUBLIC adapter694fc3纯validate拒。tmp759先真实provider函数（仅环境/Docker/backend为明确seam）→原save/JSON→公开validate，首次5项2FAIL/1ERROR准确拒shape，原红保留。只改3行捕获真实observed、package_resolution原样写observed、count=len(observed.files)；source/bundle/identity/kind-v1和预算9e不变。同5项首次绿，含原bytes直传正例、完整60行结构相等、重绑hash的旧string拒绝、receipt bytes篡改拒绝、backend失败不出receipt；5预算回归+1derive全pin链回归绿、Ruff首绿。仅SYNTHETIC数据/临时CA，不执行Docker/HTTP/core/private/云/SUT；旧候选保留。当前接口页已改为原import receipt直接含全60行raw证明，不再补第二次探针。新adapter SHA7efee30a2e3ef9552c9e2a5b321cebe4ddbd3eb3d8e652484017fd45e5f8d70f；实际窗口须root复审后另派生GEN/resource链。实际prompt在PROMPT-RECEIPT03.md。
