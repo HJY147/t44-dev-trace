@@ -1,0 +1,47 @@
+{
+  "recorded_from": "actual functions.exec tool-return JSON stdout, structured transcription; no stdout-bytehash claim",
+  "source": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+  "scope": "pure internal API immutable snapshot counterexample, not REST exploit or DB race",
+  "scenarios": [
+    {
+      "direction": "append",
+      "same_frozen_context": true,
+      "before": {
+        "kind": "rejection",
+        "code": "EVIDENCE_REQUIRED"
+      },
+      "after": {
+        "kind": "decision",
+        "values": {
+          "state": 6,
+          "blocked_from_state": null,
+          "block_reason": null,
+          "responsibility_stage": null
+        }
+      },
+      "outcome_changed": true,
+      "collection_alias_retained": true
+    },
+    {
+      "direction": "clear",
+      "same_frozen_context": true,
+      "before": {
+        "kind": "decision",
+        "values": {
+          "state": 6,
+          "blocked_from_state": null,
+          "block_reason": null,
+          "responsibility_stage": null
+        }
+      },
+      "after": {
+        "kind": "rejection",
+        "code": "EVIDENCE_REQUIRED"
+      },
+      "outcome_changed": true,
+      "collection_alias_retained": true
+    }
+  ],
+  "SUT_HTTP_DB_requests": 0,
+  "oracle_imports": []
+}

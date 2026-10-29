@@ -1,0 +1,78 @@
+{
+  "at_utc": "2026-10-23T21:26:13.374333+00:00",
+  "origin_run": "app_20261023_212055_35aa09",
+  "origin_driver_exit_code": 1,
+  "origin_cleanup_success": false,
+  "broker_processes_absent": {
+    "rabbit": true,
+    "epmd": true
+  },
+  "application_processes": {
+    "receipt_id": "ddc479c50519438ab8a6c21d7a3ed733",
+    "at_utc": "2026-10-23T21:26:13.390805+00:00",
+    "action": "post_stop_processes",
+    "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "success": true,
+    "observations": [
+      {
+        "pid": 17081,
+        "absent": true
+      },
+      {
+        "pid": 17088,
+        "absent": true
+      },
+      {
+        "pid": 17045,
+        "absent": true
+      },
+      {
+        "pid": 17095,
+        "absent": true
+      },
+      {
+        "pid": 17047,
+        "absent": true
+      },
+      {
+        "pid": 17048,
+        "absent": true
+      },
+      {
+        "pid": 17049,
+        "absent": true
+      },
+      {
+        "pid": 17050,
+        "absent": true
+      },
+      {
+        "pid": 17046,
+        "absent": true
+      }
+    ]
+  },
+  "own_ports_no_listeners": {
+    "18088": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "5178": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "25674": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "35674": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "24369": {
+      "exit_code": 1,
+      "listeners": []
+    }
+  },
+  "rewrites_original_stop_success": false
+}

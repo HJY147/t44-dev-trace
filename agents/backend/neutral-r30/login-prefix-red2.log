@@ -1,0 +1,41 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_third_login_failure_keeps_original_first_two_prefixes __________
+
+tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-137/test_third_login_failure_keeps0')
+
+    def test_third_login_failure_keeps_original_first_two_prefixes(tmp_path):
+        plan, evidence, sessions, _, receipt = fixture()
+        ca = tmp_path / "ca.pem"
+        ca.write_bytes(b"synthetic-ca")
+        calls = []
+        class LoginClient:
+            def __init__(self, *args):
+                self.last_meta = {"server_time": stamp(NOW)}
+            def request(self, path, token=None, body=None):
+                role = body["username"]
+                calls.append(role)
+                if role == "reviewer":
+                    raise RuntimeError("THIRD_LOGIN_SYNTHETIC_FAILURE")
+                return {"access_token": sessions[role]["token"], "user": {"id": sessions[role]["user_id"]},
+                        "expires_at": sessions[role]["expires_at"]}
+            def close(self):
+                pass
+        accounts = {role: {"username": role, "password": "synthetic-only", "user_id": sessions[role]["user_id"]}
+                    for role in ("manager", "developer", "reviewer")}
+        service = {"session": sessions["service"], "attestation": evidence["session_attestations"]["service"]}
+        with pytest.raises(RuntimeError, match="THIRD_LOGIN_SYNTHETIC_FAILURE"):
+            prepare_http.prepare(plan, accounts, service, ca, tmp_path / "out", clock=lambda: NOW,
+                                 client_type=LoginClient, import_receipt_raw=receipt)
+        assert calls == ["manager", "developer", "reviewer"]
+        for role in ("manager", "developer"):
+            path = tmp_path / "out" / "session-prefix" / (role + ".json")
+>           assert path.is_file()
+E           AssertionError: assert False
+E            +  where False = is_file()
+E            +    where is_file = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-137/test_third_login_failure_keeps0/out/session-prefix/manager.json').is_file
+
+tmp/759_backend_neutral_r30/759_materials.py:433: AssertionError
+=========================== short test summary info ============================
+FAILED backend::test_third_login_failure_keeps_original_first_two_prefixes - ...
+1 failed, 23 deselected in 0.04s

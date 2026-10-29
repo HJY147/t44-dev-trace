@@ -1,0 +1,442 @@
+{
+  "version": "independent-v2-ui-capacity-dependency-reviewed-1",
+  "published_at_utc": "2026-10-23T19:06:08.118058+00:00",
+  "operator": "independent AI; blackbox browser + public-API fixtures + read-only SQL",
+  "overall": "NOT_ACCEPTED_INCOMPLETE",
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "product_files_changed": false,
+  "original_manifest_sha256": "994309f0f394ed42ee01016f6d737de20089c13a72757a459c470e0d29a981e7",
+  "original8_payload_aggregate_sha256": "56a3db8a76bdbcf4506fba430e13ba166c333c3dfbbd485b9111086c5d05bdb5",
+  "original_UI_protocol_sha256": "1855efd4bd18d7d725305ff7d62fbf6f6c7ee9d53a0412feaa60a245b38a1e7d",
+  "assertions_changed": false,
+  "environment": {
+    "web_origin": "http://127.0.0.1:5175",
+    "api_port": 18084,
+    "database": "t44_ui_v2",
+    "browser": "Chrome156.0.8078.47 headless / Playwright1.62.1",
+    "viewport": {
+      "width": 1360,
+      "height": 980
+    },
+    "locale": "zh-CN",
+    "timezone": "Asia/Shanghai",
+    "readonly_client": "Explicit neutral generic interpreter -I; PyMySQL1.2.3, no application import/source read",
+    "neutral_receipt_sha256": {
+      "ui_runtime": "cfd0bd0569a7aa04c21fc4e9feaecff62f6d2179edde6094c2b6f3d6da676ed4",
+      "ui_recovery": "9da09c5dcadc36df722c39aa18837e78352ace74ff2879bb2e6e35e9661fa7da"
+    },
+    "resource_changes": [
+      "Root coordinated quiet windows18:25–18:30 and18:38–18:43UTC; no UI actions during those windows.",
+      "Root separate18083 diagnosis18:38:01–18:38:41 and static rendering18:40:14–18:40:19; no independent4c data/process interaction reported.",
+      "After18:43 root frontend development at5176/18080 shares CPU; independent5175/18084 kept separate. Functional observations only; no latency/throughput claims."
+    ],
+    "HTTP504_observed": false,
+    "pageerrors_observed": 0
+  },
+  "mechanical_supplements": [
+    {
+      "file": "911_ui-pending.mjs",
+      "sha256": "df0e23c46f823d0273fcf6ae9c1988e5234fe8a7ccd86525aa48595566876f1a"
+    },
+    {
+      "file": "910_ui-pending-freeze.json",
+      "sha256": "beb387271131bb0fa20651c76d0978aad6fa8cb64145b820be7a1554df132603"
+    },
+    {
+      "file": "906_ui-fixtures.py",
+      "sha256": "bb04863b1466b37d86fc04afa7b4619f1e3730315c45dab372ddc5f9ff8966a0"
+    },
+    {
+      "file": "905_ui-fixtures-freeze.json",
+      "sha256": "b91a7d2af8af1a61176e4120a336fe31703ef4cc10dda0013a2e6d546affbd8c"
+    },
+    {
+      "file": "904_ui-readonly.py",
+      "sha256": "99f5c4234ef43ff47f325d1d86084bdbaed6dd23336488b3cca111153f8c1dc6"
+    },
+    {
+      "file": "903_ui-readonly-freeze.json",
+      "sha256": "5bc2a993e4c8b0ce64aa7023173c0cddd1b16d5603ec7d0d5fc4253747cb17a4"
+    }
+  ],
+  "private_evidence_hashes": {
+    "ui-events.jsonl": "bff8003b6980cbbabc0daa5edd32ea5879d5aac0b3c2bcf77775bfbd9cce495f",
+    "API_fixture_events.jsonl": "233a4467fecdfc7541bb7c58cde751317db0a1415a0f5c45b5788bd396d24e5e",
+    "ui-operator-notes.jsonl": "ed81b5fa230d12928bcbcf58b55a6804afdc7cd96ed92a2b1c50a2d92e54231f",
+    "readonly_evidence.json": "be8ad88b8c1f3d551f2928e076c6137a837f06b954f4072da5b3a02fdf23f6bb"
+  },
+  "counts": {
+    "raw_UI_events": 859,
+    "UI_API_network_responses": 274,
+    "readonly_SQL_queries": 8,
+    "rejections_matched_to_actual_SQL_audit": 8,
+    "new_driver_selector_errors": 5,
+    "new_confirmed_findings": 2,
+    "fully_passed_UI_cases": 0
+  },
+  "fixtures": {
+    "API_assisted": true,
+    "project_id": 42,
+    "iteration_id": 41,
+    "description": "New independent synthetic project, developerA2 and B3; B has developer+reviewer only in this project. Public API fixture created dependency tasks6002/6003, advanced6001 to6 and7 and6002 to6. These are setup, not browser passes or real human release decisions.",
+    "UI_actual_actions": "Created project/member/iteration/task6001 via UI; capacity/assignment/rework/plan/dependency commands as described.",
+    "no_seed_reset": true,
+    "no_real_production_deployment": true
+  },
+  "findings": [
+    {
+      "id": "V2-UI-002",
+      "frozen_case": "UI03",
+      "status": "FAIL",
+      "severity": "P2",
+      "title": "Capacity rejection alert does not explain the active-owner constraint",
+      "expected": "Frozen UI03 requires clear reason when active owner capacity removal is rejected and no false success. Explain which business condition blocks the operation and what must change.",
+      "actual": "Attempt to remove B from iteration capacity while B owns pending task6001 returns422 CAPACITY_REFERENCE_INVALID. Product-owned alert text only says modify prompted fields/check fields and evidence; it does not explain protected task owner capacity. Form remains, iteration stays version2 with B present. Similar missing-capacity assignment/rework produce the same generic422 alert; rolled-back member removal409 gives generic refresh guidance.",
+      "network": {
+        "at": "2026-10-23T18:46:37.547Z",
+        "case": "UI03-PENDING",
+        "kind": "network",
+        "path": "/api/v1/projects/42/iterations/41",
+        "query": "",
+        "method": "PATCH",
+        "status": 422,
+        "request_id": "0f454afc-d1ab-45d8-a114-d54ff40dcdd3",
+        "code": "CAPACITY_REFERENCE_INVALID"
+      },
+      "sanitized_alert_text": "请修改提示的字段\n\n填写内容不符合要求，请检查字段与证据。\n\n追踪编号：0f454afc-d1ab-45d8-a114-d54ff40dcdd3",
+      "raw_UI_network_line": 356,
+      "raw_UI_snapshot_line": 358,
+      "at": "2026-10-23T18:46:46.921Z",
+      "actual_rejection_audit_id": 87,
+      "scope_limit": "Business guard/data protection succeeded. Finding is explanation/actionability in rendered form alert, not failed authorization, incorrect state mutation or backend persistence. Existing viewport screenshot is scrolled lower and is not used as proof of alert pixel visibility."
+    },
+    {
+      "id": "V2-UI-003",
+      "frozen_case": "UI04",
+      "status": "FAIL",
+      "severity": "P2",
+      "title": "Expanded task plan change history omits the entered reason",
+      "expected": "Frozen UI04 requires task plan edits to show before/after, reason/evidence, actor/time and version.",
+      "actual": "Task6003 plan changed version1→2/schedule1→2, end2026-10-31 02:49 Beijing→2026-11-01 00:15. Expanded change record114 shows before/after, actor1, time, versions and evidence; entered reason is absent from this complete rendered record. Read-only schedule_changes row7 confirms exact reason was stored.",
+      "entered_reason": "Synthetic task plan extension; iteration plan is a separate record",
+      "history_at": "2026-10-23T18:57:16.921Z",
+      "raw_UI_snapshot_line": 661,
+      "raw_UI_body_chars": 2723,
+      "driver_truncation_limit": 18000,
+      "SQL_schedule_change_id": 7,
+      "scope_limit": "Omission from the inspected expanded task history view only. Stored reason is present; no backend data-loss claim, no assertion about every other application view."
+    }
+  ],
+  "cases": [
+    {
+      "id": "UI03",
+      "status": "FAIL",
+      "completed_subconditions": [
+        "Iteration39.75 hours/2.25 buffer and Beijing dates entered/displayed;2.1 hour addition rejected client-side, corrected2.25 accepted.",
+        "Missing B capacity rejects task creation/assignment; current task ownerA/version1 retained.",
+        "Add B capacity, pending assignment toB succeeds/version2. Removing active pending B capacity rejected and iterationversion2/B retained.",
+        "API-assisted delivered6001 allows B capacity removal viaUI, iterationversion3. API-assisted rollback6001 retains member protection; memberB removal409 and SQL active/version1 retained.",
+        "Missing B capacity rework422 leaves task7/version10/cycle1; restoring capacity iteration4 then legal UIrework yields task2/version11/schedule2/delivery2.",
+        "Eight actual rejection request IDs correlate to durable read-only SQL audits across UI03/04."
+      ],
+      "remaining": [
+        "UI removal of capacity while task already7 and B stillpresent was not separately performed; capacity was removed in6 then fixture rolled back.",
+        "Failure is clear business explanation; data guard subconditions are positive."
+      ]
+    },
+    {
+      "id": "UI04",
+      "status": "FAIL",
+      "completed_subconditions": [
+        "API-assisted task6003 depends6002. Expanded dependency9001 shows unmet. Self reference422, back-edge cycle409; task state/owner unaffected.",
+        "Task6003 replan UI success, before/after, versions, evidence/actor/time visible; SQL verifies saved human reason absent from inspected history.",
+        "Owner start before precondition delivery409 DEPENDENCIES_UNSATISFIED, error visible and task state1/version2 retained.",
+        "API-assisted predecessor delivery then re-open shows dependency satisfied; actual UI start200, taskstate2/version3.",
+        "150 actual project1 tasks across8 default pages exactly IDs1..150, no gaps/duplicates, matching read-only SQL. State filter frompage8 resets to1 with14 pending tasks, matching SQL; clearing returns150/page1."
+      ],
+      "remaining": [
+        "Cycle rejection response/audit is confirmed; no stable post-response error-prompt snapshot was captured before cancel, so that particular UI message subcondition remains unproved.",
+        "Arbitrary sort-control variants and every record-family pagination not covered.",
+        "Failure is missing plan reason in the inspected expanded history, not loss of the saved reason."
+      ]
+    }
+  ],
+  "pagination_evidence": {
+    "pages": [
+      {
+        "page": 1,
+        "ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "at": "2026-10-23T18:59:30.659Z"
+      },
+      {
+        "page": 2,
+        "ids": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ],
+        "at": "2026-10-23T18:59:30.725Z"
+      },
+      {
+        "page": 3,
+        "ids": [
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "at": "2026-10-23T18:59:30.807Z"
+      },
+      {
+        "page": 4,
+        "ids": [
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80
+        ],
+        "at": "2026-10-23T18:59:38.910Z"
+      },
+      {
+        "page": 5,
+        "ids": [
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100
+        ],
+        "at": "2026-10-23T18:59:38.991Z"
+      },
+      {
+        "page": 6,
+        "ids": [
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120
+        ],
+        "at": "2026-10-23T18:59:39.076Z"
+      },
+      {
+        "page": 7,
+        "ids": [
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140
+        ],
+        "at": "2026-10-23T18:59:39.153Z"
+      },
+      {
+        "page": 8,
+        "ids": [
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150
+        ],
+        "at": "2026-10-23T18:59:39.216Z"
+      }
+    ],
+    "all_ids_match_SQL": true,
+    "filter_pending_total": 14,
+    "all_total": 150
+  },
+  "persisted_current_state": {
+    "tasks": [
+      {
+        "id": 6001,
+        "project_id": 42,
+        "iteration_id": 41,
+        "owner_id": 3,
+        "state": 2,
+        "version": 11,
+        "schedule_version": 2,
+        "delivery_cycle": 2,
+        "review_cycle": 1,
+        "planned_start": "2026-10-26T16:15:00",
+        "planned_end": "2026-10-28T15:45:00"
+      },
+      {
+        "id": 6002,
+        "project_id": 42,
+        "iteration_id": 41,
+        "owner_id": 2,
+        "state": 6,
+        "version": 8,
+        "schedule_version": 1,
+        "delivery_cycle": 1,
+        "review_cycle": 1,
+        "planned_start": "2026-10-29T18:49:24.984454",
+        "planned_end": "2026-10-30T18:49:24.984454"
+      },
+      {
+        "id": 6003,
+        "project_id": 42,
+        "iteration_id": 41,
+        "owner_id": 2,
+        "state": 2,
+        "version": 3,
+        "schedule_version": 2,
+        "delivery_cycle": 1,
+        "review_cycle": 1,
+        "planned_start": "2026-10-29T18:49:25.001746",
+        "planned_end": "2026-10-31T16:15:00"
+      }
+    ],
+    "iteration": [
+      {
+        "id": 41,
+        "version": 4,
+        "plan_version": 4,
+        "capacity": "[{\"user_id\": 2, \"available_hours\": 39.75}, {\"user_id\": 3, \"available_hours\": 2.25}]"
+      }
+    ],
+    "member3": [
+      {
+        "user_id": 3,
+        "roles_mask": 6,
+        "active": 1,
+        "version": 1
+      }
+    ]
+  },
+  "non_product_errors": [
+    "Five selector/interaction timeouts: navigation attempted while member drawer open, selecting generic detail label that is a summary rather thanbutton, and text-is selector did not match nested member-button text. Corrected using observed title/visible close/has-text mechanics; no product failure counted.",
+    "First911 plain-pipe invocation stdin closed before any login command; own process terminated, no UI action delivered. Same driver restarted with tty, observation preserved.",
+    "First906 system Python lacked jsonschema before Fixture constructor could make HTTP calls; existing generic Python3.12/jsonschema environment used. No app import or rerun of completed product action."
+  ],
+  "publication": {
+    "allowed_files": [
+      "reports/independent-tests/v2-ui-capacity-dependency-stage-report.md",
+      "reports/independent-tests/v2-ui-capacity-dependency-stage-results.json"
+    ],
+    "private_scripts_logs_screenshots_released": false,
+    "private_credentials_or_key_released": false
+  },
+  "earlier_results_unchanged": "V2-UI-001 and all earlier report bytes retained. This adds two findings; it does not rerun or overwrite completed earlier UI observations. Full acceptance remains incomplete."
+}

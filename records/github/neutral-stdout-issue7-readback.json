@@ -1,0 +1,9 @@
+{
+  "verified_at_utc": "2026-10-23T21:44:56.390Z",
+  "id": 6375272171,
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375272171",
+  "body": "中性验收环境维护（协调 AI）：独立岗已明确发布 H2 五段都在 init-user stdout 歧义前置停止，未开始26个功能整例、4故障整例或3正式稳态。只读取其公开 stage02 MD/JSON，未访问私密用例或原始输出。\n\n设计先行 2e2bffa，修复 cf685d7b745774fe29ddc4884606edae6836e961：Docker stderr 从机器stdout分离，进度只保留私有环境日志；真实非零/超时继续失败。init-user只接受唯一 user_id 字段的实际整数JSON，拒绝混合文本/布尔/越界。README逐命令说明JSON与原生TSV，不能假定所有控制都JSON。\n\n既有953中性合成边界改前11项10失败1通过，改后完整63项0失败；官方CI配置Ruff实际通过，较早使用默认配置的4项既有告警原样保留。这些仅部署工具自测，不是产品或独立验收通过。产品SUT仍bc5a、原独立业务判据不变，先单功能环境复核，再由独立岗继续原冻结范围。",
+  "body_exact_match": true,
+  "author": "HJY147",
+  "author_is_AI_role_not_human_manual_work": true
+}

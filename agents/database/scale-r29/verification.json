@@ -1,0 +1,116 @@
+{
+  "base": "f5e0d95ea68af33dfb213ac6e8d6b496527ed7b2",
+  "source": "274e2e6bfa6dfb2d90926773002a1a62808ec060",
+  "prompt_ref": "ROLE-database-SCALE-R29-20261029-v1",
+  "application": {
+    "before": 5898,
+    "after": 5887,
+    "net_saved": 11,
+    "before_files": 65,
+    "after_files": 65,
+    "upper_bound": 5100,
+    "excess": 787,
+    "range_passed": false,
+    "metric_exits": [
+      1,
+      1
+    ]
+  },
+  "persistence_python": {
+    "before": 1672,
+    "after": 1661
+  },
+  "rejected_projection": {
+    "migrations_before": 374,
+    "migrations_after": 377,
+    "delta": 3,
+    "original_targets": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "34",
+        "time": "0.346",
+        "timestamp": "2026-10-29T12:51:20.930393+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ],
+    "archived_diff": "rejected-projection.patch.gz",
+    "caveat": "candidate-first-cloc.json includes SQL because extension filter was missing; only .py entries support +3, directory SUM is not application LOC"
+  },
+  "first_equivalence_fixture_error": {
+    "result": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "tests": "41",
+        "time": "0.292",
+        "timestamp": "2026-10-29T12:56:00.595943+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ],
+    "cause": "Test assumed 19 payloads; frozen SQL contains 18 CREATE + 2 ALTER. Corrected new owner test to exactly 20; original tests untouched."
+  },
+  "first_static_error": {
+    "command": "ruff check --config backend/pyproject.toml schema.py 769_schema_equivalence.py",
+    "exit": 1,
+    "diagnostic": "F401 pathlib.Path imported but unused",
+    "resolved": "Removed unused import; final ruff.log passes"
+  },
+  "final_combined_owner_regressions": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "168",
+      "time": "28.763",
+      "timestamp": "2026-10-29T12:57:26.200358+08:00",
+      "hostname": "hujinyangdeMacBook-Air.local"
+    }
+  ],
+  "final_new_equivalence_tests": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "41",
+      "time": "0.238",
+      "timestamp": "2026-10-29T12:58:13.245311+08:00",
+      "hostname": "hujinyangdeMacBook-Air.local"
+    }
+  ],
+  "original_mysql": {
+    "result": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "17",
+        "tests": "17",
+        "time": "0.176",
+        "timestamp": "2026-10-29T12:56:38.329694+08:00",
+        "hostname": "hujinyangdeMacBook-Air.local"
+      }
+    ],
+    "native_executed": false,
+    "reason": "No explicit disposable test database configured. Original 988 run without database URL, credentials or CI; 17 skipped, not a MySQL pass."
+  },
+  "static": {
+    "ruff": "passed",
+    "format": "passed",
+    "bandit_schema": "passed"
+  },
+  "semantic_scope": "Same 20 frozen DDL declaration lists and complete column/table/index DDL compiled for 18 tables on MySQL and SQLite; checksum rejection remains before parsing.",
+  "risks": [
+    "Parser intentionally depends on the existing four-space declaration format after the original checksum gate. A new frozen DDL version must re-review this adapter and its differential fixtures.",
+    "SQLAlchemy constraint sets do not promise iteration order; Table item construction order changes while compiled declaration content and ordered columns remain equal.",
+    "No native MySQL execution, complete CI, coverage, independent acceptance or formal/cloud performance was run."
+  ],
+  "target_100_to_250_saved": "NOT_ACHIEVED",
+  "integration": "LOCAL_CANDIDATE_ONLY"
+}

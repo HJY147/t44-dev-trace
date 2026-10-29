@@ -1,0 +1,32 @@
+{
+  "source_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+  "source_files_sha256": {
+    "backend/t44/api.py": "2db431218d7c182dd114b7e616442478539396dcf86cccca42a537250356075e",
+    "backend/t44/services/runtime.py": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48",
+    "backend/t44/services/errors.py": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+    "deployment/nginx/api.conf": "90422ba62b336f93ed6ced61beb7faec39d7d7b0e9cda0d93f4aee9a144c59cd",
+    "deployment/nginx/nginx.conf": "29422c1bfd5495338c09a16c1655fafa678db56e2351f539e36f1d78df762d54",
+    "deployment/web.Dockerfile": "5c48cbd435e171d1a23b931305be4b7de147e4de93ec0b3dcead0ac11bdbe2ae"
+  },
+  "released_report_sha256": "8d1c4018354ac0a574f59b221f917b22c20587a89685357accc813d54fbb3361",
+  "read_scope": "only expressly released852interim file;private refs not followed;private origin not copied",
+  "source_read_only": true,
+  "runtime_actions": 0,
+  "root_reported_developer_observation": {
+    "operator": "root,not backend/not independent",
+    "time_reported": "17:36:48 Beijing",
+    "method": "GET",
+    "path": "/api/v1/projects",
+    "status": 401,
+    "raw_x_request_id_count": 2,
+    "body_id_not_measured": true,
+    "earlier_login_raw_count_not_inferred": true
+  },
+  "implementation_admitted": false,
+  "existing_LOC_design": "paused/unimplemented;no cloc rerun or changed metric",
+  "official_docs_consulted": [
+    "https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header",
+    "https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_hide_header",
+    "https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id"
+  ]
+}

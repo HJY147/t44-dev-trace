@@ -1,0 +1,37 @@
+{
+  "python_collection": {
+    "exit_code": 0,
+    "test_cases": 317,
+    "scope": "tmp/backend; collection only, not execution"
+  },
+  "frontend_typecheck": {
+    "exit_code": 0,
+    "log": "test-migration-frontend-typecheck.log"
+  },
+  "frontend_coverage": {
+    "attempts": [
+      {
+        "number": 1,
+        "exit_code": 1,
+        "reason": "tests outside frontend root not resolved",
+        "log": "test-migration-frontend-test-coverage.log"
+      },
+      {
+        "number": 2,
+        "exit_code": 1,
+        "reason": "changed test root needed explicit frontend public asset directory",
+        "log": "test-migration-frontend-coverage-attempt2.log"
+      },
+      {
+        "number": 3,
+        "exit_code": 0,
+        "log": "test-migration-frontend-coverage-attempt3.log"
+      }
+    ],
+    "passed_tests": 21,
+    "whole_production_line_coverage_percent": 92.21,
+    "source_includes": "all frontend/src TS and Vue"
+  },
+  "python_assertions_removed": false,
+  "ci_path_updates": "deployment role pending checkpoint"
+}

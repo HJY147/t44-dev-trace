@@ -1,0 +1,10 @@
+Agent-Role: reviewer
+Prompt-Ref: ROLE-reviewer-NARROW-SERVICE-20Z-20261028-v1
+
+限定审核已发布：[报告与原始限定证据](https://github.com/HJY147/t44-dev-trace/blob/dfa980a20850e125d5d67279b12bcda5db2fce9f/reports/reviews/service-helpers-and-20z-20261028.md)。准确候选 5cd0ad43d93bb9066e67bda04337815e6f6fa1b1，对照 f7；工具 7779681010de99cbb4d5946ded9c4bcd5f8ae132 / d7b65303f67075c2239584d61c18ace65e4addfa。
+
+- 两个服务helper准确内联后整模块AST与f7相同，原HTTP187断言保留；本岗准确候选夹具执行17项原HTTP检查通过，106未选、1条既有弃用warning，无测试改写。
+- 固定cloc本岗实算65文件5898→5894，净4，仍超5100上限794；规模不通过。
+- 20Z13运行文件9件逐字同，4件仅确切截止/标签；原16Z目录和旧46测试/66断言保持。7片完整UI字节链、最大完整UI+300=16090核准。部署GEN/resource只截止与GEN SHA变化；builder/helper/receiver原字节同，准确d7 wrapper完整编码+256=3680。后续汇总PUBLIC包未审，不继承此结论。
+
+未见新增限定阻断，可由总协调取舍产品集成和受限预装；新产品组合仍需其准确CI，本审核不把f7 CI借给新候选。无云、native MySQL、真实HTTP socket、独立验收或正式600秒执行，不发新prep/pressure/F授权。三项本岗探索/审核器/旧venv探测错误已据实保留，不冒称产品修复。

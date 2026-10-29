@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-23T14:26:03.108214+00:00",
+  "file": "tmp/acceptance/929_v2_runtime.py",
+  "file_sha256": "1731f29a5d40f1a1fe75cf77fe3a1503d85c62a01792fda6ccc5d23dbf9fa786",
+  "provisioning_run_exit": 0,
+  "original_run_preserved": "records/validation/local-acceptance-v2-provisioning.json",
+  "changes_after_provisioning": [
+    "argparse parse_known_args prevents target being captured by CLI remainder",
+    "explicit bind current loop label for operational subprocess helper",
+    "explicit subprocess check=False; returncode still checked",
+    "combine context managers preserving enter/exit order; UTC spelling; formatter"
+  ],
+  "static_runs": [
+    {
+      "command": ".agent-worktrees/backend/.venv/bin/ruff check tmp/acceptance/929_v2_runtime.py",
+      "exit": 1,
+      "diagnostics": {
+        "SIM117": 2,
+        "PLW1510": 1,
+        "B023": 2,
+        "UP017": 1
+      }
+    },
+    {
+      "command": ".agent-worktrees/backend/.venv/bin/ruff check --fix tmp/acceptance/929_v2_runtime.py",
+      "exit": 1,
+      "reported_total": 5,
+      "fixed": 4,
+      "remaining": "one SIM117"
+    },
+    {
+      "command": ".agent-worktrees/backend/.venv/bin/ruff check tmp/acceptance/929_v2_runtime.py",
+      "exit": 0
+    }
+  ],
+  "unchanged_provisioning_repeated": false,
+  "tests_run": false,
+  "private_cases_accessed": false,
+  "notes": "Static history transcribed from actual tool outputs, not a separately captured original stdout file. No business production change."
+}

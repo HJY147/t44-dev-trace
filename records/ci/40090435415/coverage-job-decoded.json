@@ -1,0 +1,30 @@
+{
+  "source": "GitHub connector decoded job log",
+  "run_id": 40090435415,
+  "job_id": 120861816049,
+  "product_source": "0c5127df8f4c4afb031b887e4dfd1f76fa4174ba",
+  "encoding": "UTF-8 re-encoding of connector-decoded text; not original HTTP transport bytes",
+  "decoded_log_bytes": 119116,
+  "decoded_log_sha256": "57232e317d1e3aab487bc3ba8fe5bb75edc327817573d227221c951464ad63ac",
+  "gzip_bytes": 23647,
+  "gzip_sha256": "5f148f8ba7906a6b2bd87ed79f0d5e345126afe33012337291fd3ed0e8c064eb",
+  "gzip_member": "coverage-job-decoded.log.gz",
+  "roundtrip_verified": true,
+  "selected_proof_lines": [
+    "2026-10-24T11:34:55.4495871Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0c5127df8f4c4afb031b887e4dfd1f76fa4174ba:refs/remotes/origin/codex/integration",
+    "2026-10-24T11:34:56.9862581Z  * [new ref]         0c5127df8f4c4afb031b887e4dfd1f76fa4174ba -> origin/codex/integration",
+    "2026-10-24T11:34:56.9944899Z 0c5127df8f4c4afb031b887e4dfd1f76fa4174ba",
+    "2026-10-24T11:34:57.4015208Z [command]/usr/bin/git log -1 --format=%H",
+    "2026-10-24T11:34:57.4041699Z 0c5127df8f4c4afb031b887e4dfd1f76fa4174ba",
+    "2026-10-24T11:40:28.2957453Z ================= 562 passed, 3 warnings in 311.96s (0:05:11) ==================",
+    "2026-10-24T11:40:28.3664887Z   name: coverage-0c5127df8f4c4afb031b887e4dfd1f76fa4174ba",
+    "2026-10-24T11:40:28.9135930Z Uploading artifact: coverage-0c5127df8f4c4afb031b887e4dfd1f76fa4174ba.zip",
+    "2026-10-24T11:40:30.2211731Z Artifact coverage-0c5127df8f4c4afb031b887e4dfd1f76fa4174ba successfully finalized. Artifact ID 12559116963",
+    "2026-10-24T11:40:30.2213652Z Artifact coverage-0c5127df8f4c4afb031b887e4dfd1f76fa4174ba has been successfully uploaded! Final size is 339946 bytes. Artifact ID is 12559116963"
+  ],
+  "backend_full_suite": {
+    "passed": 562,
+    "warnings": 3,
+    "not_independent_acceptance": true
+  }
+}

@@ -1,0 +1,15 @@
+flowchart TB
+    subgraph S1[设计和首次开发验证]
+        direction LR
+        A[Issue28理由RFC准入] --> B[DB reader 后端0549 前端c79] --> C[42243组合504绿]
+    end
+    subgraph S2[专审发现与窄修]
+        direction LR
+        D[真实HTTP发现true误同1] --> E[ad6先设计勘误] --> F[bcb窄修 6新加1旧绿]
+    end
+    subgraph S3[复审和保留的出口]
+        direction LR
+        G[bc5同原HTTP一次绿<br/>仅关闭该缺陷] --> H[同源CI 510与89绿<br/>小规模Docker绿] --> I[6307超限 原P95失败<br/>独立v3待发表]
+    end
+    S1 --> S2 --> S3
+    S2 -.-> J[原42243失败报告和COMMENT永久保留]

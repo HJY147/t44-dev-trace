@@ -1,0 +1,66 @@
+{
+  "actual_Linux_two_VM_MySQL_SUT_CI_by_role": false,
+  "all_legacy_assertions_removed": 0,
+  "design_commit": "e95a744c",
+  "evidence": {
+    "budget-red.xml.gz": {
+      "bytes": 1964,
+      "sha256": "33b6a27c2eb70b558206ea59a2cb863f626c939dc061b2d4d047e9c0aa480650"
+    },
+    "final74-local.xml": {
+      "bytes": 14354,
+      "sha256": "82cde2d4275c7730678d3123d7b9d5fe034ac5cbf45b5930d9a1cdcc4466532e"
+    }
+  },
+  "final_local": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 74
+  },
+  "kind": "PUBLIC_SCOPE_BRIDGE_V3_BUDGET_EVIDENCE",
+  "legacy56_assertion_ledger": {
+    "790_bridge_checks.py": {
+      "AST_sequence_identical": true,
+      "assertions": 50,
+      "fixture_only_contract_update": true,
+      "removed": 0
+    },
+    "790_install_checks.py": {
+      "AST_sequence_identical": true,
+      "assertions": 23,
+      "fixture_only_contract_update": true,
+      "removed": 0
+    },
+    "790_mutex_checks.py": {
+      "AST_sequence_identical": true,
+      "assertions": 22,
+      "fixture_only_contract_update": true,
+      "removed": 0
+    }
+  },
+  "manifest_sha256": "e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7",
+  "new_budget_red": {
+    "errors": 0,
+    "failures": 5,
+    "skipped": 0,
+    "tests": 5
+  },
+  "operator": "backend AI",
+  "original_callback_120s_modified": false,
+  "original_new5_regression_assertions_unchanged": true,
+  "phase_dependency_commit": "25d863c5afce1fb84ea32300c45d123bb7919c76",
+  "phase_dependency_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+  "private_independent_read": false,
+  "product_changed": false,
+  "red_commit": "e5b775f7",
+  "repair_commit": "5cedb2ca",
+  "root_restricted_review": "PENDING re-review",
+  "test_transport": "original305f admit/measure/numeric parser and flock, synthetic Docker metadata/read-only numeric query; no live MySQL",
+  "unique_cases": {
+    "legacy": 56,
+    "new_budget": 18
+  },
+  "v2_original56_and_manifest_modified": false,
+  "wire_sha256": "c89d03005725cdc5eb36e1969f26d7c2bdc4b067fbcf67c1329133809802ad06"
+}

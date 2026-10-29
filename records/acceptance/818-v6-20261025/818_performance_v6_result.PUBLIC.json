@@ -1,0 +1,124 @@
+{
+  "visibility": "PUBLIC",
+  "operator": "AI",
+  "phase": "performance",
+  "run_kind": "formal_candidate",
+  "one_shot_execution": true,
+  "automatic_rerun": false,
+  "recorded_utc": "2026-10-25T09:02:02.424006+00:00",
+  "grant_file_sha256": "6f2b468d030334964722f3249223bf45ea7cc4b6853b75e0eca5544032126c84",
+  "grant_canonical_sha256": "877edf51705c4240d22324c9194336ad555c100697e05ca6ed7582d1429c0d1e",
+  "tool_freeze_sha256": "90f88ddc500a03e15f50ea2672ca730e1ea277813920e104c90f4d8829a9b24d",
+  "frozen_core_unchanged_after_run": true,
+  "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "native_build_manifest_sha256": "8d7c8dec72ee6a1400a7566663786f48e6a9c9ee40f388313f7bfc508e7b47bf",
+  "runtime_identity": "native-sha256:432b80600eeb66bd5241a79c4535976d91faa1b556b313f1a7d949e6f8d902be",
+  "admitted_base_url": "https://localhost:18097/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "expires_at": "2026-10-25T09:07:00.000000Z",
+  "supervisor_receipt": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v6-fresh/PUBLIC/runtime/778d97083c2d4c68.receipt.PUBLIC.json",
+  "supervisor_status": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v6-fresh/PUBLIC/runtime/778d97083c2d4c68.status.PUBLIC.json",
+  "process_status": "PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT",
+  "process_exit_code": 0,
+  "process_hard_stopped": false,
+  "ended_utc": "2026-10-25T08:58:32.450311Z",
+  "http_timeline": {
+    "first_request_utc": "2026-10-25T08:55:16.114312Z",
+    "last_response_utc": "2026-10-25T08:58:32.435781Z",
+    "dataset_inventory_recorded_utc": "2026-10-25T08:58:21.282146Z"
+  },
+  "counts": {
+    "planned_formal_groups": 1,
+    "actual_group_attempts": 1,
+    "actual_sut_http_requests": 19333,
+    "complete_http_responses": 19333,
+    "http_status_counts": {
+      "200": 19333
+    },
+    "inventory_requests": 18086,
+    "performance_preparation_requests_labelled_warmup": 1247,
+    "load_warmup_cohorts_started": 0,
+    "load_warmup_cohorts_completed": 0,
+    "steady_cohorts_started": 0,
+    "steady_cohorts_completed": 0,
+    "complete_postconditions": 0,
+    "complete_formal_400clients_600s_groups": 0,
+    "assertions_completed": 189544,
+    "functional_runs_this_phase": 0,
+    "fault_runs_this_phase": 0
+  },
+  "dataset_inventory": {
+    "original_status": "PASS",
+    "actual_observed_counts": {
+      "dependencies": 9000,
+      "projects": 40,
+      "reviews_and_decisions": 15000,
+      "tasks": 6000
+    }
+  },
+  "original_case_results": [
+    {
+      "case_id": "D01",
+      "original_status": "PASS",
+      "sut_requests": 18086,
+      "complete_postconditions": 0,
+      "elapsed_ns": 185168634708,
+      "error": null
+    },
+    {
+      "case_id": "P01",
+      "original_status": "FAIL",
+      "sut_requests": 1247,
+      "complete_postconditions": 0,
+      "elapsed_ns": 11154415291,
+      "error": "TypeError: unhashable type: 'list'"
+    }
+  ],
+  "performance_metrics": null,
+  "tool_defect": {
+    "classification": "FROZEN_VALIDATOR_UNION_TYPE_COMPATIBILITY_ERROR",
+    "observed_exception": "TypeError: unhashable type: 'list'",
+    "stage": "P01 preparation, captured escalation-rules HTTP200 validation; before workload warmup or steady",
+    "offline_captured_response_reproduction": "TypeError: unhashable type: 'list'",
+    "offline_minimal_declared_union_reproduction": "TypeError: unhashable type: 'list'",
+    "minimal_offline_schema": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "minimal_offline_value": 0,
+    "network_used_for_reproduction": false,
+    "sut_response_contract_pass_claimed": false,
+    "raw_case_status_retained": "P01 FAIL",
+    "sut_business_defect_inferred": false
+  },
+  "private_evidence": {
+    "authenticated_recovery_complete": true,
+    "records": 305823,
+    "parsed_records": 305823,
+    "authenticated_frames": 305825,
+    "ciphertext_sha256": "3d65c9416134a37ae5256eaa986929a522b381a577ae29cc552bad9c2656d92d",
+    "raw_bodies_credentials_keys_and_case_source": "PRIVATE_ONLY_NOT_PUBLISHED"
+  },
+  "resource_mirror": {
+    "mode": "UNCHANGED_RAW_COMPLETE_LINE_PREFIX_VIEW",
+    "mirror_pid": 60532,
+    "mirror_status": "MIRROR_STOPPED",
+    "mirror_ended_utc": "2026-10-25T09:00:27.315789+00:00",
+    "mirrored_complete_lines": 5172,
+    "mirrored_bytes": 2623513,
+    "mirror_sha256": "c7a84394b30cbf4986248cfae33c8861c046ebb4c7f8cbde69f5848348dadf67",
+    "bytes_equal_authorized_original_source_prefix": true,
+    "null_cpu_records_preserved": 861,
+    "null_memory_records_preserved": 855,
+    "first_observed_numeric_generator_utc": "2026-10-25T08:55:48.606837Z",
+    "numeric_generator_records": 164,
+    "interpolation_zero_fill_gap_repair_or_filtering": false,
+    "coverage_verdict": "NOT_EVALUATED_NO_LOAD_COHORT",
+    "shared_resource_limit": "mysql shared=true is the whole shared process, not isolated-schema usage; API memory is aggregate; CPU100 is one core",
+    "full_original_raw_source_retained": true
+  },
+  "overall_business_verdict": "NOT_PROVEN",
+  "interpretation": "Exact dataset inventory passed. Formal performance was not measured: no load warmup/steady cohort or complete postconditions. Retain P01 FAIL caused by the reproducible frozen validator compatibility exception. All HTTP200 responses and process exit0 do not establish AC08. No oracle, thresholds, load, time windows or case catalogue changed; no rerun."
+}

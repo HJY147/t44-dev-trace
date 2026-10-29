@@ -1,0 +1,34 @@
+{
+  "at_utc": "2026-10-23T23:56:43.774921+00:00",
+  "round": "v4-performance",
+  "phase": "Post-freeze exact SUT and neutral runtime authorization",
+  "case_freeze_H": "9f8b5eab4061c14f1b7a314cd418c2663a6b0634",
+  "public_metadata_M": "fad2d7482261c8d79890f04020d8341d533ab5fb",
+  "frozen_cases_precede_this_binding": true,
+  "sources": {
+    "S1": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "S2": "db87d30449356f3473b645a5c246dcc6c21d7cbe"
+  },
+  "scope": "Execute each of the three already frozen entrypoints against each source in separate fresh hosted environments; six source/entrypoint observations. Same H/criteria/fixture rules, no expected direction supplied.",
+  "neutral_environment_binding": "records/acceptance/v4-performance-environment-binding.json",
+  "environment_implementation_origin": "f5214a27af4ec4886c30ce36de38a70def479efd",
+  "request_provenance": "Create exact immutable R commits using the declared environment files; R references H. Actual workflow executes R, record it separately from implementation origin and SUT. Use distinct matching branch names for concurrent environments.",
+  "execution_constraints": [
+    "Do not read product Python/TS/Vue or import t44 during blackbox; no developer/reviewer reports, logs, prompts or previous independent rounds.",
+    "Do not change frozen workload, expected outcomes, concurrency, data size, pacing or thresholds between sources; no added waiting, reduced load or discarded failures.",
+    "Retain original400-active concurrency, complete600-second steady window excluding warmup, P95<=270ms, throughput>=1000/min and zero business failure requirements; use own pre-frozen sampling/statistics and disclose actual request composition.",
+    "Only actual readiness, resource observations, exits and final recovery determine observed facts. Incomplete observation remains unknown.",
+    "All fixtures are synthetic and isolated; no local runtimes, other projects or global database operations.",
+    "Mechanical driver/environment failure must retain original attempt and revised H provenance; do not silently redesign business cases or mark an old attempt passed.",
+    "This is performance-only with newly frozen protocol, not byte-for-byte repetition or changed verdict of any prior round, not whole coursework acceptance.",
+    "Only tester downloads/decrypts/reviews private outputs; publish expressly reviewed redacted summaries. Coordinator does not open cases/scripts/manifests/logs/keys/ciphertext/raw outputs."
+  ],
+  "operational_limits": {
+    "harness_timeout_max_seconds": 1200,
+    "job_timeout_minutes": 40,
+    "artifact_retention_days": 14,
+    "complete_by_if_possible_utc": "2026-10-24T01:43:00Z",
+    "deadline_is_not_permission_to_reduce_test_requirements": true
+  },
+  "no_developer_result_or_expected_defect_supplied": true
+}

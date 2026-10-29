@@ -1,0 +1,31 @@
+{
+  "status": "STATIC_IN_MEMORY_THOUGHT_EXPERIMENT_NOT_APPLIED_OR_PROVED_EQUIVALENT",
+  "source": "f986782311f227082b4445bf7508522aa49c043d",
+  "scope": "NotificationFacade.list pagination assembly delegates existing common.page; keep membership and3counts and -id order",
+  "before": {
+    "facade": 95,
+    "common": 132
+  },
+  "after_unapplied": {
+    "facade": 92,
+    "common": 132
+  },
+  "old_fragment": {
+    "start": 42,
+    "end": 62,
+    "code": 21
+  },
+  "new_fragment_code": 18,
+  "extra_import_code_lines": 0,
+  "helper_extra_lines": 0,
+  "candidate_example": "        result = page(\n            g,\n            \"notifications\",\n            where,\n            query,\n            notification,\n            predicates=predicates,\n            order_by=(\"-id\",),\n        )\n        result.update(\n            unread_count=g.count(\n                \"notifications\", where, predicates=(Pred(\"read_at\", \"is_null\"),)\n            ),\n            unhandled_count=g.count(\n                \"notifications\", where, predicates=(Pred(\"handled_at\", \"is_null\"),)\n            ),\n        )\n        return result\n",
+  "common_signature_example": "def page(g, table, where, query, serialize, *, predicates=(), order_by=None):",
+  "common_order_example": "order_by=order_by or (query.get(\"sort\", \"id\"), \"id\"),",
+  "risks": [
+    "needsBE/MQowneradmission",
+    "preserve membership/auth and count/evaluation/error order",
+    "exact same SQL -id order/offset/limit/predicates; no sort override",
+    "no equivalence tests requested/run;0production savings"
+  ],
+  "net_saving_projection": 3
+}

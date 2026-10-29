@@ -1,0 +1,54 @@
+{
+  "interpreter": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-pool-config-20261028",
+  "commands": [
+    {
+      "name": "old_source_red",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend <python> -m pytest -p no:cacheprovider -c backend/pyproject.toml tmp/786_database_pool_20261028/786_pool_settings.py -k explicit_pool_values -q --basetemp .agent-worktrees/.runtime/786-red --junitxml agents/database/pool-config-20261028/old-source-red.xml",
+      "exit": 1,
+      "failed": 4,
+      "passed": 1,
+      "deselected": 26
+    },
+    {
+      "name": "config_green",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend <python> -m pytest -p no:cacheprovider -c backend/pyproject.toml tmp/786_database_pool_20261028/786_pool_settings.py tmp/backend/850_synthetic_fixture.py::test_settings_parse_and_cli_digest_without_connecting tmp/backend/850_synthetic_fixture.py::test_database_and_source_are_explicit_before_engine_creation tmp/backend/persistence/993_foundation.py::test_mysql_engine_is_lazy_pooled_and_redacts_credentials tmp/backend/persistence/993_foundation.py::test_mock_mysql_connection_initializes_every_session_and_closes_cursor tmp/backend/persistence/993_foundation.py::test_mock_mysql_initialization_failure_redacts_and_closes -q --basetemp .agent-worktrees/.runtime/786-config-green --junitxml agents/database/pool-config-20261028/config-green.xml",
+      "exit": 0,
+      "passed": 38
+    },
+    {
+      "name": "ruff",
+      "command": "<python> -m ruff check --config scripts/ci/ruff.toml backend/t44/settings.py tmp/786_database_pool_20261028/786_pool_settings.py",
+      "exit": 0
+    },
+    {
+      "name": "format",
+      "command": "<python> -m ruff format tmp/786_database_pool_20261028/786_pool_settings.py",
+      "exit": 0
+    },
+    {
+      "name": "bandit",
+      "command": "<python> -m bandit backend/t44/settings.py -f json -o agents/database/pool-config-20261028/bandit.json",
+      "exit": 0
+    },
+    {
+      "name": "fixed_source_count",
+      "command": "<python> scripts/metrics/source_count.py --cloc <repo>/.agent-worktrees/.runtime/cloc-2.10.pl --output agents/database/pool-config-20261028/{baseline,candidate}-source-count.json --require-range",
+      "exit": [
+        1,
+        1
+      ],
+      "application": [
+        5933,
+        5935
+      ]
+    },
+    {
+      "name": "raw_evidence_diff_check",
+      "command": "git diff --cached --check",
+      "exit": 2,
+      "reason": "8 original whitespace lines in pytest failure log/XML; retained bytes",
+      "evidence": "raw-diff-check.json"
+    }
+  ]
+}

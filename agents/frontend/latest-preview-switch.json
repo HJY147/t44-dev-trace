@@ -1,0 +1,104 @@
+{
+  "operator": "AI frontend developer",
+  "started_at_utc": "2026-10-23T22:07:14.546558+00:00",
+  "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "old_verified": [
+    {
+      "pid": 63514,
+      "uid": 501,
+      "pgid": 63514,
+      "start": "Sat Oct 24 01:49:25 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python -m uvicorn t44.api:app --host 127.0.0.1 --port 18080 --workers 1 --no-access-log",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-v11/source/5dcb73cc10c38deb14fae68d33318b04d538fecf/backend"
+    },
+    {
+      "pid": 72044,
+      "uid": 501,
+      "pgid": 72044,
+      "start": "Sat Oct 24 03:31:29 2026",
+      "command": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-warm-glass/start-vite-5173.mjs",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-warm-glass/source/9560e7bd23b68eddbdb733a5ee671999f46a44cd/frontend"
+    }
+  ],
+  "retired": [
+    {
+      "pid": 63514,
+      "at_utc": "2026-10-23T22:07:14.861315+00:00",
+      "signal": "SIGTERM",
+      "exited": true
+    },
+    {
+      "pid": 72044,
+      "at_utc": "2026-10-23T22:07:15.016692+00:00",
+      "signal": "SIGTERM",
+      "exited": true
+    }
+  ],
+  "new_processes": [
+    {
+      "kind": "api",
+      "pid": 24604,
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/source/bc5aef9c62393134582affb7a690acb33ac2b833/backend",
+      "arguments": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/bin/python",
+        "-m",
+        "uvicorn",
+        "t44.api:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18080",
+        "--workers",
+        "4",
+        "--no-access-log"
+      ],
+      "identity": {
+        "pid": 24604,
+        "uid": 501,
+        "pgid": 24604,
+        "start": "Sat Oct 24 06:07:15 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python -m uvicorn t44.api:app --host 127.0.0.1 --port 18080 --workers 4 --no-access-log",
+        "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/source/bc5aef9c62393134582affb7a690acb33ac2b833/backend"
+      }
+    },
+    {
+      "kind": "frontend",
+      "pid": 24610,
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/source/bc5aef9c62393134582affb7a690acb33ac2b833/frontend",
+      "arguments": [
+        "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/start-vite-5173.mjs"
+      ],
+      "identity": {
+        "pid": 24610,
+        "uid": 501,
+        "pgid": 24610,
+        "start": "Sat Oct 24 06:07:15 2026",
+        "command": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/start-vite-5173.mjs",
+        "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/demo-latest-bc5/source/bc5aef9c62393134582affb7a690acb33ac2b833/frontend"
+      }
+    }
+  ],
+  "rollback_executed": false,
+  "api_readiness": {
+    "url": "http://127.0.0.1:18080/api/v1/auth/me",
+    "status": 401,
+    "at_utc": "2026-10-23T22:07:15.757787+00:00",
+    "body": "{\"code\":\"AUTH_REQUIRED\",\"message\":\"Auth required\",\"request_id\":\"f50a16c5-e1ba-4a67-829a-d3dd5fee3e5a\",\"audit_id\":127,\"current_version\":null,\"current_state\":null,\"original_error_code\":null,\"violations\":[]}"
+  },
+  "frontend_readiness": {
+    "url": "http://127.0.0.1:5173",
+    "status": 200,
+    "at_utc": "2026-10-23T22:07:15.999046+00:00",
+    "body": "<!doctype html>\n<html lang=\"zh-CN\">\n  <head>\n    <script type=\"module\" src=\"/@vite/client\"></script>\n\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"theme-color\" content=\"#183f75\" />\n    <meta name=\"description\" content=\"留痕，让研发流程与每次交付有据可循。\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n    <title>留痕 · 研发交付工作空间</title>\n  </head>\n  <body>\n    <div id=\"app\"></div>\n    <script type=\"module\" src=\"/src/main.ts\"></script>\n  </body>\n</html>\n"
+  },
+  "api_children_ps": [
+    "24605",
+    "24606",
+    "24607",
+    "24608",
+    "24609"
+  ],
+  "ready": true,
+  "finished_at_utc": "2026-10-23T22:07:16.602722+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "admitted": false,
+  "operator": "AI",
+  "phase": "functional",
+  "tool_freeze_sha256": "REPLACE_FROM_V4_MANIFEST",
+  "base_url": "https://REQUIRED_LOOPBACK_HOST:ACTUAL_NEW_PORT/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "ca_file": "EXPLICIT_SUPPLIED_CA_PATH",
+  "network_scope": "loopback",
+  "expires_at": "REQUIRED_FUTURE_EXACT_UTC",
+  "max_wall_seconds": 2400,
+  "max_requests": 100000,
+  "max_concurrency": 400,
+  "max_runner_rss_bytes": 4294967296,
+  "max_evidence_compressed_bytes": 2147483648,
+  "max_evidence_ciphertext_bytes": 3221225472,
+  "max_evidence_plaintext_bytes": 34359738368,
+  "build": {
+    "kind": "native",
+    "source_sha": "REQUIRED_40_HEX",
+    "source_archive_sha256": "REQUIRED_64_HEX",
+    "build_manifest_path": "EXPLICIT_SUPPLIED_NEUTRAL_NATIVE_BUILD_MANIFEST",
+    "build_manifest_sha256": "REQUIRED_64_HEX",
+    "runtime_identity": "ACTUAL_NATIVE_RUN_NONCE",
+    "image_digest": null
+  },
+  "isolated_resource_ids": [],
+  "allowed_faults": [],
+  "fixture_handoff": "nonce-sealed-project-scope",
+  "cost_ceiling": "No new paid resources; root supplies exact existing native resource/time boundary",
+  "performance_note": "This functional template does not admit performance. A separately reviewed performance grant needs >=3000000 request cap; recommended technical cap 50000000 and explicit disk/RSS budgets. Exhaustion is incomplete/diagnostic, never formal."
+}

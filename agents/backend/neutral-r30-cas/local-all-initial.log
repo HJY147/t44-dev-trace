@@ -1,0 +1,25 @@
+.............................F.......................................... [ 92%]
+......                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_invalid_or_unstable_readback_fails_and_keeps_409_prefix[changed-final-state] _
+
+tmp_path = PosixPath('/private/var/folders/9n/169yyq597_zcdy4x1wx7xh400000gn/T/pytest-of-yang/pytest-153/test_invalid_or_unstable_readb18')
+case = 'changed-final-state'
+
+    @pytest.mark.parametrize('case', [
+        'no-event', 'wrong-rule', 'old-schedule-event', 'wrong-level', 'wrong-project',
+        'wrong-task', 'missing-event-schema', 'future-event', 'duplicate-current-event',
+        'changed-rules', 'missing-task-schema', 'changed-initial-schedule',
+        'changed-initial-plan', 'changed-initial-project', 'not-eligible-state',
+        'conflict-with-no-version-advance', 'changed-final-schedule', 'changed-final-plan',
+        'changed-final-state', 'changed-final-owner', 'task-version-moved-backwards',
+    ])
+    def test_invalid_or_unstable_readback_fails_and_keeps_409_prefix(tmp_path, case):
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tmp/756_backend_neutral_cas_r30/756_conflict.py:231: Failed
+=========================== short test summary info ============================
+FAILED tmp/756_backend_neutral_cas_r30/756_conflict.py::test_invalid_or_unstable_readback_fails_and_keeps_409_prefix[changed-final-state]
+1 failed, 77 passed in 4.26s

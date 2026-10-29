@@ -1,0 +1,26 @@
+{
+  "status": "unapplied design draft; production delta zero",
+  "basis": "c83f627331acf43fb508fac7e16525a48c0389ab",
+  "source_file": "backend/t44/services/runtime.py",
+  "source_sha256": "a43febb12e391588548a047674efbcae78d9f40d70d7713ba005713d3d31e942",
+  "source_physical_lines": 282,
+  "candidate_physical_lines": 289,
+  "patch_added_lines": 8,
+  "patch_deleted_lines": 1,
+  "net_candidate_lines": 7,
+  "patch_sha256": "1637807d8e517e1fe3d11071596b408729317a81160438071fb946f95b097a36",
+  "candidate_ast": "parses; no module import/execution",
+  "operations": [
+    "validateContractPayload"
+  ],
+  "predicted_success_selects_by_category": {
+    "1": 4,
+    "2": 5,
+    "3": 5
+  },
+  "predicted_success_acquires": 1,
+  "measured_after_change": false,
+  "rfc_file": "specs/changes/contract-validation-read-uow-rfc.md",
+  "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
+  "decision": "No new read locks; preserve snapshot-based in-flight read semantics; waiting coordinator implementation admission"
+}

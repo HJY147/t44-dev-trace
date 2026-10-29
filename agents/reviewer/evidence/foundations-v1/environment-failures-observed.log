@@ -1,0 +1,11 @@
+Actual reviewer environment failures retained; not product defects.
+
+1. Shell node --version: exit 127, command not found. Located preinstalled Node at /Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node; frontend snapshot commands use explicit PATH. No system or owner code changed.
+
+2. DB test with borrowed backend .venv: exit 2, ModuleNotFoundError: No module named t44.persistence. Follow-up import confirmed t44 from backend/.venv/lib/python3.12/site-packages/t44/__init__.py shadows the database branch namespace.
+
+3. DB test with root .venv: exit 1, No module named pytest.
+
+4. DB own .venv selected: Python3.12.10, SQLAlchemy2.1.6, PyMySQL1.2.3, pytest9.1.1; t44 namespace resolves database/backend/t44; 18 tests then passed.
+
+5. GitHub initial metadata calls encountered EOF/TLS handshake timeout; recovered by exact-PR REST metadata reads. No status or approval was posted by those reads.

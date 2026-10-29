@@ -1,0 +1,36 @@
+{
+  "recorded_at_utc": "2026-10-23T22:08:38.584913+00:00",
+  "actor": "coordinator AI",
+  "base": "30d66a3ec636b0659d4fdd6e3fe7ec083ac7a282",
+  "root": "cee7a574fb2061c76123070e304655b6c12db967",
+  "incoming": "cc6a211bb1692460ffba09f7ee764c64545602ee",
+  "scope": "three public deployment history/metadata conflicts only; no tests or production edited",
+  "markdown": [
+    {
+      "path": "agents/deployment/WORKLOG.md",
+      "common_prefix_bytes": 39634,
+      "root_suffix_bytes": 2109,
+      "incoming_suffix_bytes": 10668,
+      "method": "unchanged common prefix + full root metadata suffix + full native suffix",
+      "merged_sha256": "34d94eb1037f27574a3dc9ab00920ddda9ae2943acac4379def34a7fad0b6e90"
+    },
+    {
+      "path": "reports/modules/deployment.md",
+      "common_prefix_bytes": 20005,
+      "root_suffix_bytes": 1110,
+      "incoming_suffix_bytes": 3670,
+      "method": "unchanged common prefix + full root metadata suffix + full native suffix",
+      "merged_sha256": "ede6167ed61bc32f38d2246877cade3f8579ce3a3a57b014407c60601f7c6bb9"
+    }
+  ],
+  "handoff": {
+    "conflicting_scalar_keys": [
+      "stage"
+    ],
+    "stage_resolution": "incoming native stage retained; root metadata stage retained as explicit parallel field",
+    "runtime_metadata_exact_root": true,
+    "native_sections_exact_incoming": true
+  },
+  "premerge_application_and_resources_files_identical": 74,
+  "native_application_exact_reviewed_source": true
+}

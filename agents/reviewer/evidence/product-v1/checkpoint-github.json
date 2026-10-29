@@ -1,0 +1,116 @@
+{
+  "at": "2026-10-23T17:50:38.648701+08:00",
+  "review_target_sha": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+  "commands": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21",
+        "--jq",
+        "{head:.head.sha,base:.base.sha,html_url,draft}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base\":\"1996d44425e09930b5ba3ae5391b728980241f55\",\"draft\":true,\"head\":\"86dfd7d3f4c15e789d26abca6d39e46af3b2caf1\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/21/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"message\":\"Unprocessable Entity\",\"errors\":[\"The commitOID is not part of the pull request\"],\"documentation_url\":\"https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request\",\"status\":\"422\"}",
+      "stderr": "gh: Unprocessable Entity (HTTP 422)\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21/reviews",
+        "--jq",
+        "[.[] | select(.commit_id==\"e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\" and (.body | contains(\"首次完整产品审核checkpoint\")))]"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "comment",
+        "12",
+        "--repo",
+        "HJY147/t44-dev-trace",
+        "--body-file",
+        "agents/reviewer/github/product-v1-e01-checkpoint.md"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21",
+        "--jq",
+        "{head:.head.sha,base:.base.sha,html_url,draft}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"base\":\"1996d44425e09930b5ba3ae5391b728980241f55\",\"draft\":true,\"head\":\"ff83bc98b27d0e671a8d000cfd72c29b27dea669\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/HJY147/t44-dev-trace/pulls/21/reviews",
+        "--jq",
+        "[.[] | select(.commit_id==\"e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\" and (.body | contains(\"首次完整产品审核checkpoint\")))]"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/HJY147/t44-dev-trace/pulls/21/reviews",
+        "--input",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"id\":5626647867,\"node_id\":\"PRR_kwDOVUR6Q88AAAABT1_VOw\",\"user\":{\"login\":\"HJY147\",\"id\":204539444,\"node_id\":\"U_kgDODDEGNA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/204539444?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/HJY147\",\"html_url\":\"https://github.com/HJY147\",\"followers_url\":\"https://api.github.com/users/HJY147/followers\",\"following_url\":\"https://api.github.com/users/HJY147/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/HJY147/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/HJY147/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/HJY147/subscriptions\",\"organizations_url\":\"https://api.github.com/users/HJY147/orgs\",\"repos_url\":\"https://api.github.com/users/HJY147/repos\",\"events_url\":\"https://api.github.com/users/HJY147/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/HJY147/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"body\":\"Agent-Role: reviewer\\nPrompt-Ref: ROLE-reviewer-PRODUCT-v1\\nReviewed-SHA: e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\\n\\n首次完整产品审核checkpoint，尚未放行：\\n\\n- C-P1 [P2] forms.ts:15与FieldEditor.vue:17把冻结Iteration.plan当顶层字段；真实响应形状打开改期得到plan={}，迭代选项名称也读取错误。原981夹具恰为扁平形状，983未校验真实响应。\\n- C-P2 [P2] OperationForm.vue:37-40刷新后仍用幂等原响应task.state宣称“任务现为”。959真实组件复现：重放state2/v2，权威刷新state6/v9，最终仍显示“任务现为开发中…最新记录已刷新”，违反D001快照边界。\\n- C-P3 原统计脚本/cloc口径复算精确e01为5944行，超5100上限844，--require-range退出1。\\n\\n- C-P4 [P2] migrations.py:57-77结构检查只比约束/索引名字。957 Inspector替身保持列类型和名称，却改索引列/unique、FK目标与CHECK表达式后仍passed=true/defects=[]；这是检查器误接受，未操作或声称真实MySQL已漂移。DB owner修复。\\n\\n复现编号959由总协调登记，2项正确行为断言均失败；日志agents/reviewer/evidence/product-v1/959-ui-probe.log。这是审核岗的显式mock组件复现，非浏览器HTTP或独立验收。完整报告checkpoint：reports/reviews/product-v1-e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef-checkpoint.md。责任岗修复，新SHA差异复审；本岗不改owner实现/现有断言，不APPROVE或发布success，不合并。完整后端/消息/扫描/部署/文档及精简建议继续核对；性能/独立结果仍未完成。\\n\",\"state\":\"COMMENTED\",\"html_url\":\"https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867\",\"pull_request_url\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/21\",\"author_association\":\"OWNER\",\"_links\":{\"html\":{\"href\":\"https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867\"},\"pull_request\":{\"href\":\"https://api.github.com/repos/HJY147/t44-dev-trace/pulls/21\"}},\"submitted_at\":\"2026-10-23T09:53:22Z\",\"commit_id\":\"e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef\"}",
+      "stderr": ""
+    }
+  ],
+  "current_pr": {
+    "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+    "draft": true,
+    "head": "86dfd7d3f4c15e789d26abca6d39e46af3b2caf1",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+  },
+  "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6362218769",
+  "current_pr_after_root_push": {
+    "base": "1996d44425e09930b5ba3ae5391b728980241f55",
+    "draft": true,
+    "head": "ff83bc98b27d0e671a8d000cfd72c29b27dea669",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21"
+  },
+  "review": {
+    "id": 5626647867,
+    "commit_id": "e01f5dcf9d8ef5a88161fcbc87ab142fba74cdef",
+    "state": "COMMENTED",
+    "html_url": "https://github.com/HJY147/t44-dev-trace/pull/21#pullrequestreview-5626647867"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "publication": "Only this MD and JSON explicitly released; private raw outputs, payload and scripts not released",
+  "stage": "05-original-operational-fault-scope",
+  "published_at_utc": "2026-10-23T22:15:49.369060+00:00",
+  "exact_product_source_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "original_freeze": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
+  "executable_operational_cases": {
+    "frozen": 4,
+    "passed_distinct": 4,
+    "repeated_previously_passed_whole_cases": 0,
+    "confirmed_product_defects": 0,
+    "cases": {
+      "O01": {
+        "status": "pass",
+        "run_id": 40030191650
+      },
+      "O02": {
+        "status": "pass",
+        "run_id": 40030191650
+      },
+      "O03": {
+        "status": "pass",
+        "run_id": 40030191650
+      },
+      "O04": {
+        "status": "pass",
+        "run_id": 40031510946
+      }
+    }
+  },
+  "exact_cutpoint_cases": {
+    "capability_blocked": 5,
+    "cases": [
+      {
+        "id": "O05",
+        "status": "capability_blocked",
+        "reason": "Need deterministic transaction cutpoint before COMMIT and release receipt; whole MySQL stop is not equivalent"
+      },
+      {
+        "id": "O06",
+        "status": "capability_blocked",
+        "reason": "Need selective COMMIT acknowledgement loss after known commit with same-key retry; no such neutral control"
+      },
+      {
+        "id": "O07",
+        "status": "capability_blocked",
+        "reason": "Need broker publish accepted but confirm ACK selectively withheld plus timeline; stop/pause alone does not establish this"
+      },
+      {
+        "id": "O08",
+        "status": "capability_blocked",
+        "reason": "Need deterministic consumer commit-completed/ACK-not-sent barrier and release; no cutpoint capability"
+      },
+      {
+        "id": "O09",
+        "status": "capability_blocked",
+        "reason": "Need controlled original owner paused/terminated at leased main transaction boundary plus lease metadata; no cutpoint capability"
+      }
+    ],
+    "no_substitution": "Whole-service stop/recover does not establish transaction COMMIT, broker confirm, consumer commit-before-ACK or owner lease cutpoints"
+  },
+  "runs": [
+    {
+      "run_id": 40030191650,
+      "request_commit": "f9c4d80249ccca969bba1fe6d32f3cd7ab105fc3",
+      "harness_commit": "21dee8c842e593a0fd5e3e7b589a16d75497c1e6",
+      "environment_ready": true,
+      "final_recovery_completed": true,
+      "artifact_zip_sha256": "ae803048312140ed68a6d992455f6b3027f1c1e96384beaf29ce853b58058ae8",
+      "result_sha256": "669703c8c7a4031a9bea0b8631f4e311927ab319890800146361399d16b354c5"
+    },
+    {
+      "run_id": 40031510946,
+      "request_commit": "24709d1355f41f3d31b23bb19d7204f4671ae505",
+      "harness_commit": "9a638e8999bf540e6778df33f5558884e766bb71",
+      "environment_ready": true,
+      "final_recovery_completed": true,
+      "artifact_zip_sha256": "64ccdbb207935a64afd8a64a758360059a1ca16b6bacc805fe077b090b401218",
+      "result_sha256": "fac1901caed338abde794e20fdb71d45feadc314d450d228bae58e5bd68a49ae"
+    }
+  ],
+  "mechanical_continuation": {
+    "freeze": "9a638e8999bf540e6778df33f5558884e766bb71",
+    "payload_set_sha256": "267a8f1de443e068d1133d0c62613229d9b03977f40bc63889f13b13b29aa101",
+    "manifest_sha256": "28f817c87f1e8f2636b9ec835f2d819c74e4dd9625f0dfad2a97a3a962a9ada3",
+    "observer_identity_projection_fixed_against_original_dictionary": true,
+    "original_run_function_AST_identical_after_only_SQL_identity_projection_normalization": true,
+    "synthetic_offline_checks": 78,
+    "synthetic_actual_SUT_cases": 0,
+    "original_nonzero_observer_attempt_retained": true
+  },
+  "separate_resource_observations": {
+    "scope": "Only new run40031510946; MUST NOT fill earlier formal runs",
+    "same_scoped_service_container_identity_hash_before_after": "2272fed9d55d01ae6e55f574d220f7f0acdf91bb2c70043547c55d1296ee1720",
+    "both_observations_complete": false,
+    "reason": "api-processes OBSERVATION_UNAVAILABLE, actual exit1, api_processes null",
+    "snapshots": [
+      {
+        "label": "before-remaining-original-fault-case",
+        "exit_code": 1,
+        "observation_complete": false,
+        "errors": [
+          {
+            "component": "api-processes",
+            "code": "OBSERVATION_UNAVAILABLE"
+          }
+        ],
+        "api_processes": null,
+        "runner": {
+          "logical_cpu_count": 4,
+          "affinity_cpu_count": 4,
+          "visible_memory_total_bytes": 16766410752,
+          "cgroup": {
+            "version": 2,
+            "visible_ancestry": [
+              {
+                "ancestor_level": 0,
+                "limits": {
+                  "cpu.max": "max 100000",
+                  "memory.max": "max",
+                  "memory.swap.max": "max",
+                  "pids.max": "19151",
+                  "cpuset.cpus.effective": "0-3"
+                }
+              },
+              {
+                "ancestor_level": 1,
+                "limits": {
+                  "cpu.max": "max 100000",
+                  "memory.max": "max",
+                  "memory.swap.max": "max",
+                  "pids.max": "max",
+                  "cpuset.cpus.effective": "0-3"
+                }
+              },
+              {
+                "ancestor_level": 2,
+                "limits": {
+                  "cpuset.cpus.effective": "0-3"
+                }
+              }
+            ],
+            "meaning": "Raw visible controller values; max is that controller's setting, not infinite physical resources."
+          },
+          "scope": "Current command/harness runner OS view, not a physical-machine inventory."
+        },
+        "six_services_sampled_running": true,
+        "service_limit_settings": {
+          "mysql": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "rabbitmq": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "api": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "consumer": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "scheduler": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "web": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          }
+        },
+        "mysql_max_connections": 151,
+        "nginx": {
+          "directives": {
+            "worker_processes": [
+              "auto"
+            ],
+            "worker_connections": [
+              "1024"
+            ],
+            "upstream_keepalive": [
+              "32"
+            ],
+            "proxy_connect_timeout": [
+              "3s"
+            ],
+            "proxy_read_timeout": [
+              "30s"
+            ],
+            "proxy_send_timeout": [
+              "30s"
+            ]
+          },
+          "source": "running container nginx -T; current config files validated; no reload",
+          "limitation": "Does not prove the last reload used identical files; per-location values are listed, not guessed defaults."
+        },
+        "daemon_relation": {
+          "transport": "local-unix",
+          "local_unix_socket": true,
+          "load_process_location": "Workflow executes the frozen Python harness on this runner; individual traffic origins are not traced",
+          "services_relation": "six scoped containers queried through the same Docker context/daemon",
+          "physical_colocation": "unknown; a unix socket alone does not establish physical-machine identity"
+        },
+        "background_activity": {
+          "scheduler_baseline_interval_seconds": 60,
+          "scheduler_cadence_source": "neutral environment baseline, not measured traffic or an arbitrary SQL read",
+          "scheduler_running": true,
+          "consumer_running": true,
+          "health_probes": "Container health intervals are reported above; probes/scheduler/consumer may run during load.",
+          "other_traffic": "unknown; no continuous packet capture or workload attribution performed"
+        }
+      },
+      {
+        "label": "after-remaining-original-fault-case",
+        "exit_code": 1,
+        "observation_complete": false,
+        "errors": [
+          {
+            "component": "api-processes",
+            "code": "OBSERVATION_UNAVAILABLE"
+          }
+        ],
+        "api_processes": null,
+        "runner": {
+          "logical_cpu_count": 4,
+          "affinity_cpu_count": 4,
+          "visible_memory_total_bytes": 16766410752,
+          "cgroup": {
+            "version": 2,
+            "visible_ancestry": [
+              {
+                "ancestor_level": 0,
+                "limits": {
+                  "cpu.max": "max 100000",
+                  "memory.max": "max",
+                  "memory.swap.max": "max",
+                  "pids.max": "19151",
+                  "cpuset.cpus.effective": "0-3"
+                }
+              },
+              {
+                "ancestor_level": 1,
+                "limits": {
+                  "cpu.max": "max 100000",
+                  "memory.max": "max",
+                  "memory.swap.max": "max",
+                  "pids.max": "max",
+                  "cpuset.cpus.effective": "0-3"
+                }
+              },
+              {
+                "ancestor_level": 2,
+                "limits": {
+                  "cpuset.cpus.effective": "0-3"
+                }
+              }
+            ],
+            "meaning": "Raw visible controller values; max is that controller's setting, not infinite physical resources."
+          },
+          "scope": "Current command/harness runner OS view, not a physical-machine inventory."
+        },
+        "six_services_sampled_running": true,
+        "service_limit_settings": {
+          "mysql": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "rabbitmq": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "api": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "consumer": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "scheduler": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          },
+          "web": {
+            "CpuQuota": 0,
+            "CpuPeriod": 0,
+            "NanoCpus": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "CpusetCpus": "",
+            "PidsLimit": null
+          }
+        },
+        "mysql_max_connections": 151,
+        "nginx": {
+          "directives": {
+            "worker_processes": [
+              "auto"
+            ],
+            "worker_connections": [
+              "1024"
+            ],
+            "upstream_keepalive": [
+              "32"
+            ],
+            "proxy_connect_timeout": [
+              "3s"
+            ],
+            "proxy_read_timeout": [
+              "30s"
+            ],
+            "proxy_send_timeout": [
+              "30s"
+            ]
+          },
+          "source": "running container nginx -T; current config files validated; no reload",
+          "limitation": "Does not prove the last reload used identical files; per-location values are listed, not guessed defaults."
+        },
+        "daemon_relation": {
+          "transport": "local-unix",
+          "local_unix_socket": true,
+          "load_process_location": "Workflow executes the frozen Python harness on this runner; individual traffic origins are not traced",
+          "services_relation": "six scoped containers queried through the same Docker context/daemon",
+          "physical_colocation": "unknown; a unix socket alone does not establish physical-machine identity"
+        },
+        "background_activity": {
+          "scheduler_baseline_interval_seconds": 60,
+          "scheduler_cadence_source": "neutral environment baseline, not measured traffic or an arbitrary SQL read",
+          "scheduler_running": true,
+          "consumer_running": true,
+          "health_probes": "Container health intervals are reported above; probes/scheduler/consumer may run during load.",
+          "other_traffic": "unknown; no continuous packet capture or workload attribution performed"
+        }
+      }
+    ],
+    "interpretation": "Observed raw 0/null/max resource settings are not infinite physical capacity; local-unix does not prove physical colocation; background traffic unknown"
+  },
+  "formal_runs_pending": [
+    40030195416,
+    40030199950,
+    40030202604
+  ],
+  "human_participation": "none; synthetic automated users only",
+  "overall_limit": "This passes only4 coarse operational cases. The5 exact cutpoints and other unresolved acceptance scopes remain separately blocked."
+}

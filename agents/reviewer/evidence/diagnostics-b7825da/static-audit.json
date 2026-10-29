@@ -1,0 +1,63 @@
+{
+  "candidate": "b7825dab4d09b9201660e4d0810da2a4949c6ee6",
+  "application_reference": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+  "application_and_contract_roots_diff_exit": 0,
+  "files": {
+    ".github/workflows/performance-diagnostics.yml": {
+      "bytes": 3251,
+      "sha256": "8d89b545f86ccaa7280c4c5fa5160e122263d31bac2c49087e874b9f4735112b",
+      "candidate_bytes_equal": true
+    },
+    "records/diagnostics/20261025/request-before.json": {
+      "bytes": 563,
+      "sha256": "48abb3ed3c9d322357a6ffcbdf49c913e62122ea8b57a681af19292da6dccf76",
+      "candidate_bytes_equal": true
+    },
+    "tmp/831_diagnostic_admission/831_admission.py": {
+      "bytes": 3219,
+      "sha256": "08a4c031351ce4aea7b78b9c37459afcded1dbb3d7bb4c2a6db835dbb80a7429",
+      "candidate_bytes_equal": true
+    },
+    "tmp/831_diagnostic_admission/831_gate_checks.py": {
+      "bytes": 4324,
+      "sha256": "34b716fa2cc1c27a924b1ea5bdf2cc269e88923524eb508e3adb2d9e34a2201e",
+      "candidate_bytes_equal": true
+    },
+    "tmp/834_backend_performance/834_request_profile.py": {
+      "bytes": 17875,
+      "sha256": "150c019e1e307475cec6d599c7f85ac402b9c2f263d4020b8ff02590e08bff7e",
+      "candidate_bytes_equal": true
+    },
+    "tmp/833_database_performance/833_database_trace.py": {
+      "bytes": 14367,
+      "sha256": "4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9",
+      "candidate_bytes_equal": true
+    },
+    "agents/coordination/performance-20261025/admission-tests.xml": {
+      "bytes": 1262,
+      "sha256": "ff41302db7ffdb5e5a12c5e9439ad2576c1cbca1d1dfbbdd7207c68f0121f700",
+      "candidate_bytes_equal": true
+    },
+    "agents/coordination/performance-20261025/design.md": {
+      "bytes": 2128,
+      "sha256": "5c5e42b32181b9dacf998edb539c5b3ed85f5173c0e5ede856f96a92c4b88079",
+      "candidate_bytes_equal": true
+    }
+  },
+  "owner_junit_recount": {
+    "cases": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "reviewer_reexecuted_owner_tests": false,
+  "probe_only_executions": 1,
+  "source_ast_parse_passed": true,
+  "not_mysql_or_http_or_ci_execution": true,
+  "probe_source": {
+    "file": "tmp/830_review_diagnostics/830_fixture_failure_probe.py",
+    "bytes": 2460,
+    "sha256": "41e66d9694aa7d9a57a1be798acc90ad9ee7989bbf745a74c7c6e81fc24e481c",
+    "ruff_exit_code": 0
+  }
+}

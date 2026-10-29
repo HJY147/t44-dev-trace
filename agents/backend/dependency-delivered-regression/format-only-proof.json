@@ -1,0 +1,47 @@
+{
+  "before_sha256": "c769533bee13e4443c3f6aacb00dedf30db42c638c41ab3bfb05d8b36cdbe534",
+  "after_sha256": "76641e44aff07317071de87f9176a645d1c540de417fa79ba916aad8ff0e129f",
+  "AST_dump_without_locations_equal": true,
+  "change": "formatter joins only predecessor list comprehension line wrapping",
+  "pytest_executed_before_format_only": true,
+  "pytest_repeated": false,
+  "commands": [
+    {
+      "argv": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/backend/contracts/859_dependency_delivered.py"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/backend/contracts/859_dependency_delivered.py"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend/.venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/backend/contracts/859_dependency_delivered.py"
+      ],
+      "exit": 0
+    }
+  ]
+}

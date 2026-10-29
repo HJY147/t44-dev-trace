@@ -1,0 +1,65 @@
+"""PUBLIC independent process-group hard deadline and RSS boundary.
+Production entry launches only the frozen private runner, never a supplied command.
+No network code. Hard stop is SIGKILL, without a post-expiry grace period.
+"""
+from __future__ import annotations
+import argparse,datetime as dt,hashlib,json,os,secrets,signal,subprocess,sys,threading,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+
+def write_json(path,value):
+    temp=path.with_suffix(path.suffix+'.pending');temp.write_text(json.dumps(value,indent=2));temp.replace(path)
+def supervise(command,deadline,receipt_path,status_path,freeze,stdout_path,max_rss_bytes=4294967296):
+    nonce=secrets.token_hex(24);environment=dict(os.environ,I829_SUPERVISOR_RECEIPT=str(receipt_path),I829_SUPERVISOR_NONCE=nonce)
+    stdout_path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
+    output=os.open(stdout_path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+    # Child waits for this public supervisor's receipt before running any payload.
+    wrapper=[sys.executable,str(Path(__file__).resolve()),'--child-wait',str(receipt_path),'--nonce',nonce,'--',*command]
+    child=subprocess.Popen(wrapper,start_new_session=True,stdout=output,stderr=subprocess.STDOUT,env=environment);os.close(output)
+    receipt={'nonce':nonce,'supervisor_pid':os.getpid(),'child_pid':child.pid,'tool_freeze_sha256':freeze,'hard_deadline_monotonic':deadline,'created_monotonic_ns':time.monotonic_ns(),'max_rss_bytes':max_rss_bytes,'kill_policy':'SIGKILL process group at absolute deadline; no grace'};write_json(receipt_path,receipt)
+    event=threading.Event();result={'hard_stopped':False,'rss_stopped':False,'deadline_monotonic':deadline,'max_observed_rss_bytes':0}
+    def hard_stop(reason):
+        if child.poll() is not None:return
+        actual=time.monotonic();result[reason]=True;result['kill_signal_monotonic']=actual;result['deadline_enforcement_lag_seconds']=max(0,actual-deadline)
+        try:os.killpg(child.pid,signal.SIGKILL)
+        except ProcessLookupError:pass
+        event.set()
+    timer=threading.Timer(max(0,deadline-time.monotonic()),lambda:hard_stop('hard_stopped'));timer.daemon=True;timer.start()
+    next_rss=time.monotonic()
+    try:
+        while child.poll() is None:
+            if time.monotonic()>=next_rss:
+                next_rss=time.monotonic()+1
+                try:
+                    r=subprocess.run(['/bin/ps','-o','rss=','-p',str(child.pid)],capture_output=True,text=True,timeout=.2)
+                    rss=int(r.stdout.strip() or 0)*1024;result['max_observed_rss_bytes']=max(result['max_observed_rss_bytes'],rss)
+                    if rss>max_rss_bytes:hard_stop('rss_stopped')
+                except (ValueError,subprocess.TimeoutExpired):pass
+            event.wait(.01)
+        result['returncode']=child.wait();result['ended_monotonic']=time.monotonic()
+    finally:
+        timer.cancel()
+        if child.poll() is None:hard_stop('hard_stopped');child.wait()
+        result['status']='HARD_STOP_INCOMPLETE_NOT_PROVEN' if result['hard_stopped'] or result['rss_stopped'] else ('PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT' if result.get('returncode')==0 else 'PROCESS_FAILED_NOT_PROVEN')
+        write_json(status_path,result)
+    return result
+
+def main():
+    if '--child-wait' in sys.argv:
+        i=sys.argv.index('--child-wait');receipt=Path(sys.argv[i+1]);nonce=sys.argv[sys.argv.index('--nonce')+1];split=sys.argv.index('--');deadline=time.monotonic()+10
+        while not receipt.exists() and time.monotonic()<deadline:time.sleep(.005)
+        r=json.loads(receipt.read_text())
+        if r['nonce']!=nonce or r['child_pid']!=os.getpid() or r['supervisor_pid']!=os.getppid() or time.monotonic()>=r['hard_deadline_monotonic']:raise SystemExit('invalid/expired supervisor receipt')
+        os.execv(sys.argv[split+1],sys.argv[split+1:]);return
+    p=argparse.ArgumentParser();p.add_argument('--grant',required=True);p.add_argument('--environment',required=True);p.add_argument('--phase',choices=['functional','fault','performance'],required=True);a=p.parse_args()
+    g=json.loads(Path(a.grant).read_text());m=json.loads((ROOT/'PUBLIC/manifest.PUBLIC.json').read_text())
+    if g.get('admitted') is not True or g.get('phase')!=a.phase or g.get('tool_freeze_sha256')!=m['tool_freeze_sha256']:raise SystemExit('explicit matching admission absent; zero network')
+    expiry=dt.datetime.fromisoformat(g['expires_at'].replace('Z','+00:00'));remaining=(expiry-dt.datetime.now(dt.timezone.utc)).total_seconds();wall=min(float(g['max_wall_seconds']),2400,remaining)
+    if wall<=0:raise SystemExit('expired admission; zero network')
+    rss_limit=min(int(g.get('max_runner_rss_bytes',4294967296)),8589934592)
+    if rss_limit<=0:raise SystemExit('nonpositive RSS budget; zero network')
+    run=secrets.token_hex(8);pub=ROOT/'PUBLIC/runtime';pub.mkdir(exist_ok=True);private=ROOT/'private/runs'
+    command=[sys.executable,str(ROOT/'private/suite.py'),'--grant',str(Path(a.grant).resolve()),'--environment',str(Path(a.environment).resolve()),'--phases',a.phase]
+    result=supervise(command,time.monotonic()+wall,pub/(run+'.receipt.PUBLIC.json'),pub/(run+'.status.PUBLIC.json'),m['tool_freeze_sha256'],private/(run+'.stdout.PRIVATE.txt'),rss_limit)
+    print(json.dumps({'public_supervisor_status':str(pub/(run+'.status.PUBLIC.json')),'status':result['status']}))
+if __name__=='__main__':main()

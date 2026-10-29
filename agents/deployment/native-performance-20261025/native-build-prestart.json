@@ -1,0 +1,43 @@
+{
+  "kind": "native",
+  "image_digest": null,
+  "source_sha": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "source_archive_sha256": "c3930f0c6fd5907ace0b860ae0964746eaf006d8722de975628f4832bd2b3bd9",
+  "artifact_manifest_sha256": "61c020e70239b671c0e207e3d4b05708aa44c4ad013d314057bcded7201d916c",
+  "dependency_lock_sha256": "3b15a7bdf93024750835ac20584a140eb93f1dc7476be61bb0af145e8ff0cc30",
+  "built_utc": "2026-10-25T08:09:04.876491+00:00",
+  "runtime_identity": "native-sha256:abfcec9c930ef3f34458729f2c4e9bb560089d61936c1c3d0c7cc2c616608dc7",
+  "launch_argv_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "launch_argv_canonicalization": "UTF8 JSON;sorted keys;no whitespace;actual credential-free argv arrays",
+  "python": {
+    "version": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "architecture": "arm64",
+    "executable_sha256": "d4f152f2a753c94e0e7935c8ebbe6b2609979e1df7898422b577d0076383d08b",
+    "distribution_inventory_sha256": "ffd900a3c5f895c33289f0fad818b1e8d82f08a3c9f5c9616375bf4b35b34699"
+  },
+  "processes": [],
+  "data_services": [
+    {
+      "kind": "mysql",
+      "version": "8.4.11",
+      "version_provenance": "root-supplied observed existing protected server",
+      "endpoint": "127.0.0.1:13306",
+      "schema": "t44_p829_20261025",
+      "user": "t44_p829_20261025"
+    },
+    {
+      "kind": "rabbitmq",
+      "version": "4.3.6",
+      "endpoint": "127.0.0.1:25697",
+      "vhost": "t44.native.demo.performance_20261025_a32db96cee7e43c2",
+      "version_receipt_id": "f1db9942efec4feb978028fac361392e"
+    }
+  ],
+  "provenance_status": "root-supplied native metadata;not image attestation",
+  "scheduler_pending_scope": true,
+  "captured_utc": "2026-10-25T08:09:39.245336+00:00",
+  "global_application_stop_utc": "2026-10-25T08:46:30Z",
+  "source_archive_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-20261025/runs/performance_20261025_a32db96cee7e43c2/source-archive-c8cea7e82805de5283ce67501769fa9a4efc1047.tar",
+  "artifact_manifest_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-20261025/runs/performance_20261025_a32db96cee7e43c2/artifact-manifest.json",
+  "ca_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-20261025/runs/performance_20261025_a32db96cee7e43c2/tls/ca.pem"
+}

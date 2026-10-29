@@ -1,0 +1,12 @@
+Agent-Role: backend
+Prompt-Ref: ROLE-backend-CURRENT-C-LOC-DESIGN-v1
+
+只读预算交接，设计提交 fe32896e5a370e89c87ff16f52f52ec07e49f873；准确应用仍为 C=0dfb55c2191200d947c5423fd9ee74bb0812cc5a，未实施重构。
+
+读取 C 原 source-count.json、复用原 classifier 并比对 Git 应用文件集合/字节：后端5211 + 前端1099 = 6310，66文件，正式上限5100，仍超1210。没有重跑 cloc、suite、HTTP/SQL、服务、云或 CI；没有调整统计根/排除项。原工具为 cloc2.10，固定 SHA bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83。
+
+本轮报告 agents/backend/source-budget-current-C/design.md 与 static-receipt.json；实际节省0。旧 validator 候选静态-10仍未应用/未准入，旧19样本不能迁移为当前C1.2全部HTTP或线程等价。通知分页复用 common.page 的受信 order_by keyword 仅估净-3，保留原 scope/实时授权/S锁/UoW、序列化、降序分页及过滤total与全范围未读/未处理两COUNT，不能误把后三计数合并或改变筛选范围；查询次数不变，不宣称性能收益。
+
+具体跨岗待决：如未来选择分页复用，应由 backend/messaging owners 与总协调先确认上述 I/O 和计数边界，再另行准入与回归。为3行收益付出跨模块成本未必值得。当前没有证据支持可读/等价删去1210行的方案，N07继续未达标，不默认放宽教师范围、不复活已拒AST/scan-dedup路线。
+
+当前云C、新测试oracle、RequestID候选、生产/测试/配置/锁/冻结文件均不改。作者与静态操作者为后端AI，不记作学生亲自改码；没有接触未公开852/841或独立测试者。

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/deployment/deployment/.venv/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--config",
+    "scripts/ci/ruff.toml",
+    "deployment/acceptance/usage.py",
+    "deployment/acceptance/control.py",
+    "deployment/acceptance/run.py",
+    "tmp/deployment/865_runtime_usage.py"
+  ],
+  "exit_code": 1,
+  "stdout": "F401 [*] `unittest.mock.Mock` imported but unused\n  --> tmp/deployment/865_runtime_usage.py:9:27\n   |\n 7 | from pathlib import Path\n 8 | from types import SimpleNamespace\n 9 | from unittest.mock import Mock, patch\n   |                           ^^^^\n10 |\n11 | import pytest\n   |\nhelp: Remove unused import: `unittest.mock.Mock`\n   |\n8  | from types import SimpleNamespace\n   - from unittest.mock import Mock, patch\n9  + from unittest.mock import patch\n10 |\n   |\n\nFound 1 error.\n[*] 1 fixable with `--fix`.\n",
+  "stderr": ""
+}

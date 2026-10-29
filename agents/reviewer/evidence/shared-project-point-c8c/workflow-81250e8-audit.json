@@ -1,0 +1,102 @@
+{
+  "utc": "2026-10-25T07:11:42.260199+00:00",
+  "workflow_head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+  "scope": "pre-execution static review; no database or network requests",
+  "clean_at_read": true,
+  "inputs": {
+    ".github/workflows/lock-diagnostics.yml": {
+      "bytes": 4923,
+      "sha256": "89e8fd838720da728c223a18f2b60ed2f5c2e07f50c4db98b1295c05a670d230",
+      "actual_equals_HEAD": true
+    },
+    "tmp/825_lock_ci/825_admission.py": {
+      "bytes": 3709,
+      "sha256": "dd0bc3784a76fff3f6ac8b08a336584ebfb1fb5a4ab523ac7dcf6df2188c86d0",
+      "actual_equals_HEAD": true
+    },
+    "tmp/825_lock_ci/825_setup.py": {
+      "bytes": 1452,
+      "sha256": "f1e5a695d500d54df4e0ae8e623149d7d054162d9d783ac6561d9b41dc64dd6d",
+      "actual_equals_HEAD": true
+    },
+    "records/diagnostics/20261025/request-locks.json": {
+      "bytes": 243,
+      "sha256": "9d6ba74ec139670a004edbf1b3419c8226f105aadda54f0818b77b385bad71c9",
+      "actual_equals_HEAD": true
+    },
+    "agents/coordination/lock-diagnostics-20261025/design.md": {
+      "bytes": 2392,
+      "sha256": "131c7e7ab459a59975444e33f1a969250d3a659e9a67ca589e807b6f7ec4bc21",
+      "actual_equals_HEAD": true
+    }
+  },
+  "tools": {
+    "tmp/833_database_performance/833_mysql_lock_probe.py": {
+      "bytes": 21810,
+      "sha256": "bf9bbedd1dd09196c99ca986a3072a3a506b5b9ffda38f48fc1e5dcd11af37a4",
+      "actual_equals_HEAD": true
+    },
+    "tmp/834_backend_performance/834_shared_gate_http.py": {
+      "bytes": 25554,
+      "sha256": "f77f2872fe6dfb8230fec6edb24be5fdcbfe048bf83c4ed319e1a6c7e713caff",
+      "actual_equals_HEAD": true
+    }
+  },
+  "candidate_application_and_extra_build_fixture_paths_equal_C": [
+    "backend",
+    "frontend",
+    "database",
+    "specs/contracts",
+    "specs/database",
+    "scripts/ci/requirements.lock",
+    "tmp/backend/contracts/986_http.py"
+  ],
+  "selected_mode_inventories": {
+    "baseline": {
+      "reference": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+      "files": 76,
+      "baseline_Runtime_restore_simulated_in_memory_only": true,
+      "all_selected_reference_bytes_match": true
+    },
+    "candidate": {
+      "reference": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+      "files": 76,
+      "baseline_Runtime_restore_simulated_in_memory_only": false,
+      "all_selected_reference_bytes_match": true
+    },
+    "http": {
+      "reference": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+      "files": 76,
+      "baseline_Runtime_restore_simulated_in_memory_only": false,
+      "all_selected_reference_bytes_match": true
+    }
+  },
+  "fixed_initial_request_nonce": "locks-20261025-01",
+  "nonce_contract": "Root corrected prior plan: exact first-push HEAD with unchanged request, no nonce-only successor. Any changed source requires fresh review.",
+  "runtime_restore_performed": false,
+  "owner_eight_guard_tests": "root reported green; not reread or rerun by reviewer",
+  "setup_privileges": "disposable root migration; revoke initial schema ALL, grant schema SELECT/INSERT/UPDATE/DELETE and only three P_S table SELECTs to t44@%; no PROCESS/global grant",
+  "limits": {
+    "job_minutes": 10,
+    "DB_internal_seconds": 120,
+    "DB_outer_seconds": 150,
+    "HTTP_outer_seconds": 180,
+    "kill_after_seconds": 5
+  },
+  "matrix_fail_fast": false,
+  "new_tests_SQL_HTTP_DB_CI_services_cloud": 0,
+  "829_or_other_independent_reads_or_contact": false,
+  "outcome": "ADMITTED_FOR_EXACT_81250e8_ONE_FRESH_DEVELOPMENT_WORKFLOW_RUN;NO_PRODUCT_MERGE_OR_FORMAL_ACCEPTANCE",
+  "post_review_execution_root_relay": {
+    "source": "root direct message; reviewer has not independently read run logs or artifacts",
+    "run": 40171891410,
+    "source_head": "81250e8887336d6af417e02e73fca5692da7f0f5",
+    "phase": "setup REVOKE",
+    "mysql_error": 1141,
+    "jobs_affected": 3,
+    "migration": "root reports successful",
+    "lock_HTTP_business_cases_executed": 0,
+    "classification": "preparation script failure; not product lock case failure",
+    "SHOW_GRANTS_observed_by_reviewer": false
+  }
+}

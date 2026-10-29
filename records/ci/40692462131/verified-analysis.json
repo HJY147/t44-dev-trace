@@ -1,0 +1,470 @@
+{
+  "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+  "actor": "AI documentation / documentation_ci_f7_20261028",
+  "scope": "development CI and hosted Linux Compose; not independent acceptance or cloud performance",
+  "runs": {
+    "40692462131": {
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40692462131",
+      "actual_jobs": [
+        {
+          "id": 122830533400,
+          "name": "coverage",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 122830533511,
+          "name": "frontend",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 122830533580,
+          "name": "contracts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 122830533712,
+          "name": "static",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact_id": 12818501276,
+          "name": "coverage-f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "bytes": 330445,
+          "sha256": "dedf90494325740cb60ecd845b1bc96e5b9d93b8ea00db740cd7f2887d228e17",
+          "official_size_digest_match": true
+        },
+        {
+          "artifact_id": 12817977470,
+          "name": "frontend-f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "bytes": 86505,
+          "sha256": "b0fba5ee5ffad94c3d0e60ce51efa83631c3ed2ca5ee00e68b93727a2823ce30",
+          "official_size_digest_match": true
+        },
+        {
+          "artifact_id": 12817598161,
+          "name": "contracts-f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "bytes": 20482,
+          "sha256": "f3ce9b2470048b1093723fdb59c355eb7729191ef5cefc0916f903ede75467bd",
+          "official_size_digest_match": true
+        },
+        {
+          "artifact_id": 12817119149,
+          "name": "static-f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "bytes": 3415,
+          "sha256": "082573fc52e96d041f664c53fea65916003845acb3c2c2ebb8d6511c4480ee7d",
+          "official_size_digest_match": true
+        }
+      ],
+      "original_run_log_bytes": 150724,
+      "original_run_log_sha256": "7ebe60c9fd2f3e10749fc4aa031906ecf3997568a222a8f8e299b9127119e923",
+      "log_digest_source": "local only; no server digest supplied",
+      "REST_complete_artifact_count": 4,
+      "REST_complete_job_count": 4,
+      "actual_checkout_full_sha_checks": {
+        "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": {
+          "git_log_result_full_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "exact": true
+        },
+        "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": {
+          "git_log_result_full_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "exact": true
+        },
+        "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": {
+          "git_log_result_full_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "exact": true
+        },
+        "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": {
+          "git_log_result_full_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "exact": true
+        }
+      }
+    },
+    "40692462380": {
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40692462380",
+      "actual_jobs": [
+        {
+          "id": 122830538604,
+          "name": "docker-application",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 122830540427,
+          "name": "resume-source-context",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 122830541059,
+          "name": "offline-source-context",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 122830602655,
+          "name": "cloud-bundle",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact_id": 12817747564,
+          "name": "docker-application-f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "bytes": 30024,
+          "sha256": "cd04dc04a2c58a7f0c450f1de2fe37e97cad877251760aad10221d057a3fceaf",
+          "official_size_digest_match": true
+        }
+      ],
+      "original_run_log_bytes": 14544,
+      "original_run_log_sha256": "faeccf7db5efc716f8d4022925172aeeb0633917b23bdf165b0ba2a08d1f4f0f",
+      "log_digest_source": "local only; no server digest supplied",
+      "REST_complete_artifact_count": 1,
+      "REST_complete_job_count": 4,
+      "actual_checkout_full_sha_checks": {
+        "docker-application/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": {
+          "git_log_result_full_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+          "exact": true
+        }
+      }
+    }
+  },
+  "backend": {
+    "passed_unique": 796,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "covered_lines": 2509,
+    "total_lines": 2780,
+    "line_percent": 90.25179856115108,
+    "covered_branches": 721,
+    "total_branches": 856,
+    "branch_percent": 84.22897196261682,
+    "mixed_percent_separate": 88.83388338833883,
+    "excluded_lines": 0,
+    "full_gate": [
+      {
+        "suite": "all",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "xml",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "json",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "html",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "output": "report",
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "unmeasured_production_files": [],
+        "exit_code": 0,
+        "real_success": true
+      },
+      {
+        "metric": "line_coverage",
+        "covered_lines": 2509,
+        "total_lines": 2780,
+        "threshold_percent": 80,
+        "branch_coverage": "reported without an extra threshold",
+        "exit_code": 0,
+        "real_success": true
+      }
+    ],
+    "new_modules_in_actual_full_JUnit": {
+      "tmp/782_component_call_refactor_20261028/782_backend_component.py": {
+        "actual_passed_cases": 14,
+        "actual_JUnit_case_names": [
+          "test_cas_default_records_versions_false_preserves_existing_diff[False]",
+          "test_cas_default_records_versions_false_preserves_existing_diff[None]",
+          "test_component_receives_exact_trusted_gateway_and_call[createEscalation-escalations-create]",
+          "test_component_receives_exact_trusted_gateway_and_call[getEscalationRules-escalations-rules]",
+          "test_component_receives_exact_trusted_gateway_and_call[handleNotification-notifications-handle]",
+          "test_component_receives_exact_trusted_gateway_and_call[listEscalations-escalations-list]",
+          "test_component_receives_exact_trusted_gateway_and_call[listMyNotifications-notifications-list]",
+          "test_component_receives_exact_trusted_gateway_and_call[markNotificationRead-notifications-mark_read]",
+          "test_false_diff_keeps_explicit_expected_override_and_updated_at",
+          "test_false_diff_keeps_version_guards_and_failed_cas_side_effects[maximum]",
+          "test_false_diff_keeps_version_guards_and_failed_cas_side_effects[race]",
+          "test_false_diff_keeps_version_guards_and_failed_cas_side_effects[stale]",
+          "test_missing_owner_precedes_missing_context_fields[createEscalation]",
+          "test_missing_owner_precedes_missing_context_fields[handleNotification]"
+        ],
+        "public_test_function_names_matched_from_AST": [
+          "test_cas_default_records_versions_false_preserves_existing_diff",
+          "test_component_receives_exact_trusted_gateway_and_call",
+          "test_false_diff_keeps_explicit_expected_override_and_updated_at",
+          "test_false_diff_keeps_version_guards_and_failed_cas_side_effects",
+          "test_missing_owner_precedes_missing_context_fields"
+        ]
+      },
+      "tmp/780_messaging_component_20261028/780_facade_semantics.py": {
+        "actual_passed_cases": 7,
+        "actual_JUnit_case_names": [
+          "test_empty_evidence_refuses_before_any_scope_query",
+          "test_failed_compare_and_swap_keeps_error_version_and_empty_diffs",
+          "test_handle_keeps_read_independent_and_runtime_still_audits_empty_diffs",
+          "test_mark_read_preserves_existing_timestamp_and_call_diffs",
+          "test_recipient_rejection_precedes_stale_version_and_values",
+          "test_version_refuses_before_lazy_values_or_write[2-1]",
+          "test_version_refuses_before_lazy_values_or_write[2147483647-2147483647]"
+        ],
+        "public_test_function_names_matched_from_AST": [
+          "test_empty_evidence_refuses_before_any_scope_query",
+          "test_failed_compare_and_swap_keeps_error_version_and_empty_diffs",
+          "test_handle_keeps_read_independent_and_runtime_still_audits_empty_diffs",
+          "test_mark_read_preserves_existing_timestamp_and_call_diffs",
+          "test_recipient_rejection_precedes_stale_version_and_values",
+          "test_version_refuses_before_lazy_values_or_write"
+        ]
+      }
+    }
+  },
+  "marked_subsets": {
+    "groups": {
+      "contract": {
+        "passed_unique": 183,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "integration": {
+        "passed_unique": 102,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "fault": {
+        "passed_unique": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "unique_union": 245,
+    "subset_of_full_suite": true,
+    "not_added_to_total": true
+  },
+  "frontend": {
+    "passed_unique_assertions": 89,
+    "failed": 0,
+    "pending": 0,
+    "coverage": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    }
+  },
+  "static": {
+    "bandit_errors": 0,
+    "bandit_findings": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "scripts/ci/validate_config.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "pytest",
+          "-c",
+          "backend/pyproject.toml",
+          "tmp/deployment/997_ops.py",
+          "tmp/deployment/971_credentials.py",
+          "tmp/ci/996_gates.py",
+          "-q"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "deployment",
+          "scripts/ci",
+          "tmp/deployment",
+          "tmp/ci"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "--config",
+          "scripts/ci/ruff.toml",
+          "backend/t44",
+          "tmp/backend"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+          "-m",
+          "bandit",
+          "-r",
+          "backend/t44",
+          "-f",
+          "json",
+          "-o",
+          "/home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json"
+        ],
+        "exit_code": 0
+      }
+    ]
+  },
+  "docker": {
+    "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+    "passed": true,
+    "api_processes": {
+      "api_parents": 1,
+      "workers": 4
+    },
+    "seed": {
+      "already_seeded": false,
+      "projects": 2,
+      "tasks": 40,
+      "dependencies": 30,
+      "reviews": 56,
+      "decisions": 24,
+      "assessments": 24,
+      "states": {
+        "6": 16,
+        "1": 4,
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4,
+        "7": 4
+      },
+      "manifest": {
+        "version": 2,
+        "seed": 44,
+        "anchor_at": "2026-10-28T13:00:54+00:00",
+        "projects": 2,
+        "tasks": 40,
+        "dependencies": 30,
+        "records": 80,
+        "template_version": 1,
+        "template_sha256": "4fdaad483abe00a41335546f11dda58f8b87da66cf5d158521c24c125d99f199",
+        "rule_version": 1,
+        "rule_effective_at": "2026-10-23T05:33:29Z",
+        "rule_decided_by": 1,
+        "rules_sha256": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41",
+        "artifact_revision": "a83fe2806a68ec8dc938748d623bf28c9a16b293",
+        "synthetic": true
+      },
+      "manifest_sha256": "24b7ea0d54451504d006e5bc648640055f61969a74bfaf2d1fe26b5e8e2ffe7b"
+    },
+    "scheduler_progress": {
+      "created": 20,
+      "completed": 2
+    },
+    "backup_manifest": {
+      "format": "t44-table-dump-v1",
+      "database": "t44_smoke",
+      "sha256": "6d3d3f7cc084e91b9d37b542a778d1693d7d681959d5ef22b8738e6bc4b97065",
+      "created_at": "2026-10-28T13:01:53.978768+00:00",
+      "table_count": 19,
+      "scope": "InnoDB tables; no routines/events/triggers/views"
+    },
+    "restored_schema": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "redacted_secret_occurrences": 0,
+    "all_19_table_counts_checksums_equal": true,
+    "expected_nonzero_steps": [
+      {
+        "name": "shared-flock-rejects-second-scanner",
+        "exit_code": 1
+      }
+    ]
+  },
+  "source_count": {
+    "application_code": 5898,
+    "range": [
+      3500,
+      5100
+    ],
+    "within_range": false,
+    "over_upper_bound": 798,
+    "counter_exit_code": 1,
+    "tool": "cloc 2.10",
+    "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83"
+  },
+  "not_closed": [
+    "strict source-size gate",
+    "independent business/fault acceptance",
+    "400 active clients / 600 seconds formal performance",
+    "continuous cloud resource evidence",
+    "actual cloud connection budget",
+    "final billing",
+    "student handwritten research"
+  ]
+}

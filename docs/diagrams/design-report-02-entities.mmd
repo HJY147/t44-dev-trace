@@ -1,0 +1,36 @@
+erDiagram
+  PROJECTS ||--o{ TASKS : contains
+  TASKS ||--o{ TASK_DEPENDENCIES : task_id
+  TASKS ||--o{ TASK_DEPENDENCIES : depends_on_task_id
+  TASKS ||--o{ REVIEWS : evidence
+  TASKS ||--o{ RELEASE_ASSESSMENTS : risk_plan
+  TASKS ||--o{ DECISIONS : human_decision
+  RELEASE_ASSESSMENTS o|--o{ DECISIONS : optional_assessment
+  TASKS o|--o{ OUTBOX_EVENTS : optional_task
+  OUTBOX_EVENTS ||--o| ESCALATION_EVENTS : escalation_only
+  OUTBOX_EVENTS ||--o{ NOTIFICATIONS : per_recipient
+  TASKS {
+    uint id PK
+    uint project_id FK
+    int version
+    int schedule_version
+    int delivery_cycle
+    int review_cycle
+    tinyint state
+  }
+  TASK_DEPENDENCIES {
+    uint id PK
+    uint task_id FK
+    uint depends_on_task_id FK
+  }
+  REVIEWS {
+    uint id PK
+    uint task_id FK
+    int delivery_cycle
+    int review_cycle
+  }
+  DECISIONS {
+    uint id PK
+    uint task_id FK
+    tinyint type
+  }

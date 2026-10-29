@@ -1,0 +1,36 @@
+{
+  "job_id": 120706441971,
+  "original_job_log_sha256": "ba2f525d91fa0805486183292306f7a1fc6bc0fee43252a5466f3fd6f4ffb4ad",
+  "original_job_log_bytes": 23393,
+  "source": "official authenticated GitHub job logs",
+  "official_archive_digest_claimed": false,
+  "selected_line_numbers_1based": [
+    110,
+    111,
+    112,
+    113,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133
+  ],
+  "selected_sha256": "089859443461dda547a9b74d95d59be3f43c5aad6bdf070bdec389369bd9deab",
+  "selected_gzip_sha256": "0cede5f593ebe48621ed4c81df2e56a82f70854d24760326b99febaea10a15a6",
+  "actual_git_log_head": "400a5cac444be15565dc48fe4ee2a1869f31e9a3",
+  "scope": "checkout git checkout/git log actual lines;result.source_sha is GITHUB_SHA and is corroboration, not standalone checkout proof",
+  "initial_retrieval_failure": {
+    "exit": 1,
+    "class": "gh terminal escape protection",
+    "message": "the response contains terminal escape sequences; pass --allow-escape-sequences to output it anyway",
+    "empty_original_file_kept": true
+  },
+  "corrected_retrieval_argv": [
+    "gh",
+    "api",
+    "--allow-escape-sequences",
+    "repos/HJY147/t44-dev-trace/actions/jobs/120706441971/logs"
+  ],
+  "no_CI_rerun": true
+}

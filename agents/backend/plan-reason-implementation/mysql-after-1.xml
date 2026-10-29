@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.862" timestamp="2026-10-24T04:27:08.536273+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_real_mysql_schedule_reason_exact_and_mismatched_history" time="0.435" /><testcase classname="" name="test_real_mysql_schedule_reason_100_row_page_has_one_select" time="0.253"><failure message="AssertionError: {&quot;code&quot;:&quot;PARAMETER_INVALID&quot;,&quot;message&quot;:&quot;Parameter invalid&quot;,&quot;request_id&quot;:&quot;70285346-d056-4ba2-b322-e0b2a907a102&quot;,&quot;audit_id&quot;:1640,&quot;current_version&quot;:null,&quot;current_state&quot;:null,&quot;original_error_code&quot;:null,&quot;violations&quot;:[]}&#10;assert 422 == 200&#10; +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code">real_task = (&lt;starlette.testclient.TestClient object at 0x108abaa80&gt;, &lt;t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0...ICCVRHOXSFi6xo9Go76RyFMVGtbNkNxX1Vk0'}, 325, {'id': 318, 'project_id': 325, 'version': 1, 'plan_version': 1, ...}, ...)
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x108ba2d80&gt;
+
+    def test_real_mysql_schedule_reason_100_row_page_has_one_select(real_task, monkeypatch):
+        from sqlalchemy import event
+    
+        client, factory, _, tokens, pid, _, task = real_task
+        engine = factory._sessions.kw["bind"]
+        selects = []
+    
+        def statement(_connection, _cursor, sql, _parameters, _context, _many):
+            if sql.lstrip().upper().startswith("SELECT") and "FROM schedule_changes" in sql:
+                selects.append(1)
+    
+        event.listen(engine, "before_cursor_execute", statement)
+        try:
+&gt;           _http._check_reason_page_bound(client, factory, tokens, pid, task, monkeypatch)
+
+tmp/backend/contracts/985_mysql_http.py:1316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tmp/backend/contracts/986_http.py:2409: in _check_reason_page_bound
+    first = request(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = &lt;starlette.testclient.TestClient object at 0x108abaa80&gt;
+operation = 'listProjectAuditEvents'
+token = 't8VBF0WNuNWjEz2tX3vIiql9Mahp1QiP0-eBVVp_ogw', body = None, key = None
+expect = 200, query = {'page_size': 100, 'sort': '-id'}
+path = {'project_id': 325}
+
+    def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+        op = OPERATIONS[operation]
+        headers = {"Authorization": f"Bearer {token}"} if token else {}
+        if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+            headers["Idempotency-Key"] = key or str(uuid4())
+        response = client.request(
+            op["method"],
+            "/api/v1" + op["path"].format(**path),
+            headers=headers,
+            json=body,
+            params=query,
+        )
+        if expect is not None:
+&gt;           assert response.status_code == expect, response.text
+E           AssertionError: {"code":"PARAMETER_INVALID","message":"Parameter invalid","request_id":"70285346-d056-4ba2-b322-e0b2a907a102","audit_id":1640,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E           assert 422 == 200
+E            +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code
+
+tmp/backend/contracts/986_http.py:35: AssertionError</failure></testcase><testcase classname="" name="test_real_mysql_schedule_reason_batch_failure_closes_before_rejection" time="0.099" /></testsuite></testsuites>

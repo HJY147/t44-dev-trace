@@ -1,0 +1,397 @@
+{
+  "publication": "Only this MD and JSON released; private raw payload/driver/trace/context remains unavailable to root or other roles",
+  "stage": "06-original-formal-performance-and-blackbox-closure",
+  "published_at_utc": "2026-10-23T22:24:38.670360+00:00",
+  "exact_product_source_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "original_case_freeze": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
+  "formal_harness_freeze": "21dee8c842e593a0fd5e3e7b589a16d75497c1e6",
+  "formal_environment_implementation": "cf685d7b745774fe29ddc4884606edae6836e961",
+  "formal_whole_cases": {
+    "original_groups": 3,
+    "completed_full_entries": 3,
+    "passed": 0,
+    "fail_observed": 3,
+    "not_executed": 0,
+    "timed_out": 0
+  },
+  "groups": [
+    {
+      "mode": "transition",
+      "label": "任务流转",
+      "whole_case_status": "fail_observed",
+      "formal_entry": "879_formal_transition.py",
+      "run_id": 40030195416,
+      "request_commit": "755bda999a9abaa9a425d97db7d22f283c6f49cb",
+      "harness_commit": "21dee8c842e593a0fd5e3e7b589a16d75497c1e6",
+      "environment_ready": true,
+      "final_recovery_completed": true,
+      "harness_timed_out": false,
+      "artifact_zip_sha256": "6c7abac4b820dde74b21cf07a889a170f08b2e44d3fc82a2aeb6b1b42fecea65",
+      "result_sha256": "dd72ce5b192394c50f12ba540eba4a87e8cc92834baec3b0a31efe174efd49a8",
+      "trace_sha256": "21d43eb7d6ed4aa00752ab3ec55b3801dd9397338e251d96f22163b8f75e868b",
+      "decoded_CSV_sha256": "ff23aa0d582a69ed866b89cae9fb1e4507911f4c096302b32fd85a0a4e6be370",
+      "independent_crosscheck_sha256": "429ced5862fbccb9051222fcbefaebe24cc2a15b9e3b136a3ebd5f64e102608b",
+      "data_census": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "warmup_rows_excluded": 1760,
+      "steady_started_requests": 68010,
+      "target_requests": 54374,
+      "target_P95_ms": 9512.069,
+      "target_successful_completions_per_minute": 5301.6,
+      "all_operation_failures": 1021,
+      "failure_breakdown": [
+        {
+          "operation": "transitionTask",
+          "http_status": 503,
+          "schema_ok": true,
+          "business_ok": false,
+          "count": 1021
+        }
+      ],
+      "per_operation_status_counts": [
+        {
+          "operation": "getTask",
+          "http_status": 200,
+          "count": 13636
+        },
+        {
+          "operation": "transitionTask",
+          "http_status": 200,
+          "count": 53353
+        },
+        {
+          "operation": "transitionTask",
+          "http_status": 503,
+          "count": 1021
+        }
+      ],
+      "target_effective_writes": 53353,
+      "target_replays": 0,
+      "late_target_responses_not_counted_in_throughput": 340,
+      "active_and_inflight_samples": {
+        "count": 5824,
+        "active_min": 400,
+        "active_max": 400,
+        "inflight_min": 399,
+        "inflight_max": 400,
+        "inflight_mean": 399.9991414835165,
+        "first_t": 15.028,
+        "last_t": 614.954,
+        "largest_sample_gap_seconds": 0.32099999999999795
+      },
+      "conditions": {
+        "data_census": true,
+        "sampled_active_VUs_400": true,
+        "sample_density_at_least5900": false,
+        "zero_all_operation_failure": false,
+        "target_P95_le270ms": false,
+        "target_successful_completions_per_min_ge1000": true,
+        "zero_target_replay": true,
+        "trace_under20MiB": true
+      },
+      "machine_observed_by_original_engine": {
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_count": 4,
+        "loadavg_before": [
+          7.2587890625,
+          4.8681640625,
+          2.20849609375
+        ],
+        "topology": "Neutral runner client process to supplied reverse-proxy endpoint; no separate physical host attestation",
+        "duration_seconds": 600,
+        "warmup_seconds": 15,
+        "active_virtual_users": 400,
+        "client_memory_limit_bytes": [
+          -1,
+          -1
+        ]
+      },
+      "loadavg_after": [
+        23.841796875,
+        23.6708984375,
+        14.29931640625
+      ],
+      "client_maxrss_raw": 104140,
+      "contract_category_counts": null
+    },
+    {
+      "mode": "contract",
+      "label": "契约校验",
+      "whole_case_status": "fail_observed",
+      "formal_entry": "878_formal_contract.py",
+      "run_id": 40030199950,
+      "request_commit": "704be4a1c4ac322bc4358b8f6ae6ad827953320e",
+      "harness_commit": "21dee8c842e593a0fd5e3e7b589a16d75497c1e6",
+      "environment_ready": true,
+      "final_recovery_completed": true,
+      "harness_timed_out": false,
+      "artifact_zip_sha256": "f85dec0e7c63654c8d7224ffa32e509b5e21e6b0595876dcfc0215d7ad09e601",
+      "result_sha256": "cb8412fba02e82877b1d9d890e242da95ea6513ecd09783ea6f32bcfd0fea0d5",
+      "trace_sha256": "3b0b646032030b0f69a450279e6262fd0f00c39eac7bc1a4767828b86d43259f",
+      "decoded_CSV_sha256": "78b2ed9eb0cb90a7c25d8b6b57cd7b3d355d94993551b67e7eb33dfff3daed5c",
+      "independent_crosscheck_sha256": "43b1f2803fc0c8b6467f4d86349f72c2637c4aea28d83b7be539d644153521af",
+      "data_census": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "warmup_rows_excluded": 2819,
+      "steady_started_requests": 111898,
+      "target_requests": 111898,
+      "target_P95_ms": 3086.148,
+      "target_successful_completions_per_minute": 11149.8,
+      "all_operation_failures": 0,
+      "failure_breakdown": [],
+      "per_operation_status_counts": [
+        {
+          "operation": "validateContractPayload",
+          "http_status": 200,
+          "count": 111898
+        }
+      ],
+      "target_effective_writes": 0,
+      "target_replays": 0,
+      "late_target_responses_not_counted_in_throughput": 400,
+      "active_and_inflight_samples": {
+        "count": 5909,
+        "active_min": 400,
+        "active_max": 400,
+        "inflight_min": 391,
+        "inflight_max": 400,
+        "inflight_mean": 399.99323066508714,
+        "first_t": 15.095,
+        "last_t": 614.903,
+        "largest_sample_gap_seconds": 0.4189999999999827
+      },
+      "conditions": {
+        "data_census": true,
+        "sampled_active_VUs_400": true,
+        "sample_density_at_least5900": true,
+        "zero_all_operation_failure": true,
+        "target_P95_le270ms": false,
+        "target_successful_completions_per_min_ge1000": true,
+        "zero_target_replay": true,
+        "trace_under20MiB": true
+      },
+      "machine_observed_by_original_engine": {
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_count": 4,
+        "loadavg_before": [
+          7.27001953125,
+          5.7294921875,
+          2.92919921875
+        ],
+        "topology": "Neutral runner client process to supplied reverse-proxy endpoint; no separate physical host attestation",
+        "duration_seconds": 600,
+        "warmup_seconds": 15,
+        "active_virtual_users": 400,
+        "client_memory_limit_bytes": [
+          -1,
+          -1
+        ]
+      },
+      "loadavg_after": [
+        31.62353515625,
+        28.11083984375,
+        16.88818359375
+      ],
+      "client_maxrss_raw": 118052,
+      "contract_category_counts": {
+        "3": 37276,
+        "1": 37303,
+        "2": 37319
+      }
+    },
+    {
+      "mode": "escalation",
+      "label": "升级接口",
+      "whole_case_status": "fail_observed",
+      "formal_entry": "877_formal_escalation.py",
+      "run_id": 40030202604,
+      "request_commit": "a6ab9a6151271b4267039b42e31fe3d79c6f1422",
+      "harness_commit": "21dee8c842e593a0fd5e3e7b589a16d75497c1e6",
+      "environment_ready": true,
+      "final_recovery_completed": true,
+      "harness_timed_out": false,
+      "artifact_zip_sha256": "260f96391aa9644aeffe4a9d0281ab2016c23136a014fe762273b01cda712193",
+      "result_sha256": "9d2bee81dfcdd45d9323c9ee79a38185e77bd7f90bb8e1e81a081248b8b2a830",
+      "trace_sha256": "6a8326f3c1e4f0e20c316b40a1fd7b34fc6f9baf5e00af4a017918a2831366f3",
+      "decoded_CSV_sha256": "e574adf84900a922a67bb419e3acc05234ce682c6a6067db4aafcf96a61f0fa4",
+      "independent_crosscheck_sha256": "71c44535cd0b0306d558a97314481cb2b8841f75d73aa2e14ff78ef7e33af647",
+      "data_census": {
+        "projects": 40,
+        "tasks": 6000,
+        "dependencies": 9000,
+        "reviews_and_decisions": 15000
+      },
+      "warmup_seconds": 15,
+      "steady_seconds": 600,
+      "warmup_rows_excluded": 2351,
+      "steady_started_requests": 69088,
+      "target_requests": 23051,
+      "target_P95_ms": 8272.364,
+      "target_successful_completions_per_minute": 2291.3,
+      "all_operation_failures": 2,
+      "failure_breakdown": [
+        {
+          "operation": "changeTaskPlan",
+          "http_status": 503,
+          "schema_ok": true,
+          "business_ok": false,
+          "count": 1
+        },
+        {
+          "operation": "createEscalation",
+          "http_status": 202,
+          "schema_ok": true,
+          "business_ok": false,
+          "count": 1
+        }
+      ],
+      "per_operation_status_counts": [
+        {
+          "operation": "changeTaskPlan",
+          "http_status": 200,
+          "count": 23044
+        },
+        {
+          "operation": "changeTaskPlan",
+          "http_status": 503,
+          "count": 1
+        },
+        {
+          "operation": "createEscalation",
+          "http_status": 202,
+          "count": 23051
+        },
+        {
+          "operation": "getTask",
+          "http_status": 200,
+          "count": 22992
+        }
+      ],
+      "target_effective_writes": 23050,
+      "target_replays": 0,
+      "late_target_responses_not_counted_in_throughput": 137,
+      "active_and_inflight_samples": {
+        "count": 5786,
+        "active_min": 400,
+        "active_max": 400,
+        "inflight_min": 391,
+        "inflight_max": 400,
+        "inflight_mean": 399.92879363982024,
+        "first_t": 15.08,
+        "last_t": 614.955,
+        "largest_sample_gap_seconds": 0.3380000000000223
+      },
+      "conditions": {
+        "data_census": true,
+        "sampled_active_VUs_400": true,
+        "sample_density_at_least5900": false,
+        "zero_all_operation_failure": false,
+        "target_P95_le270ms": false,
+        "target_successful_completions_per_min_ge1000": true,
+        "zero_target_replay": true,
+        "trace_under20MiB": true
+      },
+      "machine_observed_by_original_engine": {
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_count": 4,
+        "loadavg_before": [
+          3.3837890625,
+          4.25390625,
+          2.2119140625
+        ],
+        "topology": "Neutral runner client process to supplied reverse-proxy endpoint; no separate physical host attestation",
+        "duration_seconds": 600,
+        "warmup_seconds": 15,
+        "active_virtual_users": 400,
+        "client_memory_limit_bytes": [
+          -1,
+          -1
+        ]
+      },
+      "loadavg_after": [
+        32.30810546875,
+        26.93212890625,
+        15.5068359375
+      ],
+      "client_maxrss_raw": 103752,
+      "contract_category_counts": null
+    }
+  ],
+  "measurement_definition": {
+    "P95": "Nearest rank ceil(.95*N) of all attempted target requests started during steady window, including failed target attempts",
+    "throughput": "Schema/business successful target responses completed inside steady deadline divided by10 minutes; requests completing later excluded",
+    "failure": "All operation classes in the named group, including supporting read/plan operations; no expected rejection counted as success",
+    "concurrency": "400 active closed-loop VUs,400 independent mutable task contexts; actual in-flight counts separately reported; shared synthetic role credentials, not400 distinct people",
+    "schema_validation": "Frozen1.1 response schemas validated by independent client; no product-code import",
+    "latency_scope": "HTTP request through supplied reverse proxy and full response read; escalation202 measures reliable acceptance, not end-to-end notification delivery",
+    "sampling_density": "Original criterion>=5900 steady samples preserved. transition5824/escalation5786 fail this instrumentation gate; contract5909 passes. Sampled active minimum/max remains400 in all groups.",
+    "resource_scope": "Only same-run original engine machine fields are observed; the later operational-run resource snapshots MUST NOT fill these3 runs."
+  },
+  "independent_recalculation": {
+    "procedure_sha256": "cf8bc5641a9d7b9861cb8953d38f2b6fd30738c6e356b85646a4c7cb8235a398",
+    "prepared_before_any_formal_payload_retrieval": true,
+    "all_trace_frame_SHA_and_CSV_recalculation_succeeded": true,
+    "P95_original_vs_rounded_CSV_max_difference_ms": 0.0004270000117685413
+  },
+  "data_and_workload_limits": {
+    "preparation": "Each independent request began empty and used original public HTTP generator; independent SELECT-only census; no root preseed environment reused",
+    "record_distribution": "Initial15000 combined evidence records are15000 synthetic reviews and0 decisions; satisfies frozen count, limited business distribution",
+    "task_distribution": "Per project125 initially pending plus25 in review;10 independent mutable contexts per project drive400 VUs; does not benchmark all seven states",
+    "auth_distribution": "6 synthetic human accounts initialized per environment; load shares manager credential, escalation adds40 project-scoped service credentials; no human actions",
+    "shape": "40 projects use the same synthetic shape; representative-size counts are not a claim of all production workload distributions"
+  },
+  "observed_requirement_failures": {
+    "performance": "All3 target P95 exceed270ms in this supplied environment",
+    "availability": "Transition has1021 actual structured503 responses. Escalation group has1 structured503 plan response plus1 accepted202 failing frozen effective-new-event predicate. Contract group has0 failures.",
+    "attribution": "Real measured unmet outcomes, no generic product-logic/root-cause claim. Error-code/body details for bulk failures were not retained in the raw CSV, so exact cause is unknown. No database, worker, proxy or client bottleneck inferred."
+  },
+  "unknown_fields": [
+    "Same-run server container CPU/memory limits",
+    "Same-run actual API process/worker counts",
+    "Same-run MySQL connection limits",
+    "Same-run Nginx active-file/reload and connection limits",
+    "Visible physical memory/cgroup limits of these original formal runners",
+    "Physical host colocation and other traffic"
+  ],
+  "reproduction": {
+    "protocol": "Exact hosted neutral README at cf685d7; separate whitelist request per entry with exact product/harness SHA and recipient certificate; timeout1200",
+    "entry_root": "tmp/independent/private-v3/",
+    "entries": [
+      "879_formal_transition.py",
+      "878_formal_contract.py",
+      "877_formal_escalation.py"
+    ],
+    "certificate_path": "tmp/independent/private-v3/recipient.pem",
+    "certificate_sha256": "77eda2727a39e953c4e8e9e8e515ee7cc0ef25e40bc122f675cc6e40d2f5a560",
+    "no_repeat_performed": "Each original group executed once after actual control preconditions became usable; earlier H2 starts never reached preparation/load and remain environment-blocked evidence"
+  },
+  "blackbox_scope_cumulative": {
+    "functional_whole_pass": 25,
+    "functional_original_priority_mismatch_preserved": 1,
+    "browser_whole_pass": 6,
+    "browser_original_predicates_pass": 15,
+    "coarse_operational_whole_pass": 4,
+    "formal_whole_pass": 0,
+    "formal_whole_failed": 3,
+    "predeclared_functional_capability_or_spec_blocks": 3,
+    "exact_cutpoint_capability_blocks": 5,
+    "unobserved_declared_error_response_tuples": 421,
+    "unreached_statements": "F08 tail remains unexecuted after original assertion mismatch; no inference of passing",
+    "source_access_before_closure": "No SUT Python/TS/Vue, development tests/reports or other role logs opened",
+    "later_whitebox_and_deliverable": "Original4+4 scope items not yet executed; not counted as8 tested cases"
+  },
+  "overall_verdict": "Blackbox scopes are independently recorded, not whole-system acceptance. Formal performance did not pass. Unresolved priority/capabilities/declared-error conditions and later review scopes remain explicit.",
+  "human_participation": "none; automated synthetic actors and AI evidence review only"
+}

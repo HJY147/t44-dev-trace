@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.087" timestamp="2026-10-29T16:31:36.917929+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="" time="0.000"><error message="collection failure">../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+&lt;frozen importlib._bootstrap&gt;:1387: in _gcd_import
+    ???
+&lt;frozen importlib._bootstrap&gt;:1360: in _find_and_load
+    ???
+&lt;frozen importlib._bootstrap&gt;:1331: in _find_and_load_unlocked
+    ???
+&lt;frozen importlib._bootstrap&gt;:935: in _load_unlocked
+    ???
+../.runtime/database-scale-r29-venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tmp/759_backend_neutral_r30/759_materials.py:16: in &lt;module&gt;
+    import assemble
+agents/backend/neutral-r30/assemble.py:12: in &lt;module&gt;
+    from http_primitives import save, stamp
+E     File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-neutral-r30/agents/backend/neutral-r30/http_primitives.py", line 1
+E       """Owned HTTP primitives copied from the published neutral preparation; no old entrypoint.""""
+E                                                                                                    ^
+E   SyntaxError: unterminated string literal (detected at line 1)</error></testcase></testsuite></testsuites>

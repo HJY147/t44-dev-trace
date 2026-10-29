@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-24T08:29:38+08:00",
+  "operator": "AI guidance",
+  "cutoff": "5ce98e0d46aec9ccde9a9a177d34137d6a651ae9",
+  "application_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "design_commit": "cdf9547c4ca09fa9a7a6c109b8a0530ab8f662ee",
+  "chinese_character_count": 1066,
+  "range_800_1200": true,
+  "simple_table_count": 1,
+  "local_links_checked": [
+    "../../reports/final/requirements-report.md",
+    "../../reports/final/design-report.md",
+    "../../reports/final/test-results-report.md",
+    "../../agents/frontend/native-user-preview-validation.json",
+    "../../backend/t44/services/tasks.py#L102",
+    "../../backend/t44/services/projects.py#L173"
+  ],
+  "source_hashes": [
+    {
+      "path": "README.md",
+      "sha256": "18cf5a59c166421c6c317cf582823dbffc942a83842c44a9c9113a99dc9a41b8"
+    },
+    {
+      "path": "agents/frontend/native-user-preview-validation.json",
+      "sha256": "6b3c6b51a9800d8eaa14e22d460fefa180e319fb84fcd1f2488538b080227191"
+    },
+    {
+      "path": "docs/user-guide/wake-up-review.md",
+      "sha256": "26c08e262a718b9bf3350a5de8fcb239549e6c40648b413ca2bfe99f978a6825"
+    },
+    {
+      "path": "reports/final/requirements-report.md",
+      "sha256": "874437ed8fcb332dc877f12a969b953475902f685fef377160b601f3a2861cac"
+    },
+    {
+      "path": "reports/final/design-report.md",
+      "sha256": "8e6cd29519d50d52ee930c80a30689c743a5cd0b2d4a9f1588727fd2e188fb60"
+    },
+    {
+      "path": "backend/t44/services/tasks.py",
+      "sha256": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607"
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "sha256": "87493efe1d878a3fc0fc4095fd7d4050efe7ac52e52b7a6a7b4fccd1640088d3"
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "sha256": "8802416ee003a464a8433eed80890a1c2069550ff4717ca5e07a10cf2b840b48"
+    },
+    {
+      "path": "frontend/src/components/OperationForm.vue",
+      "sha256": "b0e4c56d2fc224f066ae297905fab41f45807092c83dc928ca121e184f2ce6c7"
+    },
+    {
+      "path": "frontend/src/navigation.ts",
+      "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39"
+    },
+    {
+      "path": "frontend/src/views/WorkspaceView.vue",
+      "sha256": "f03ff257777c79d860d8761ca9c78ad02a8035772ccd86d92d434c8599de6b36"
+    }
+  ],
+  "application_source_files_equal_bc5": true,
+  "wake_up_review_unchanged": true,
+  "preview_used_as_published_developer_evidence_only": true,
+  "screenshots_viewed_this_stage": [],
+  "private_files_read": false,
+  "browser_service_sql_product_or_test_executed": false,
+  "human_actions_recorded": false,
+  "notes": [
+    "初查一个猜测的coordinator-sample路径不存在（rg退出2），未据此作结论；改用明确允许的native-user-preview-validation.json",
+    "测试报告初稿链接经核对发现文件名错误，已在发布前修正为test-results-report.md；只是文稿修正，不是产品缺陷或人工识别"
+  ]
+}

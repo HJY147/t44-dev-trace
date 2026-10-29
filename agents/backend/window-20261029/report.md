@@ -1,0 +1,13 @@
+# 29日工具窗口本地交付
+
+准确产品为f7；本岗未修改backend/frontend任何产品文件，不改善或宣称达到代码规模、性能和独立验收。
+
+新的profile、P64和摘要清单已生成。GEN `95802bf9e2a0d263bc00e1f2e5f046c553e29037e3c100eefebf09e81a95acc3`；P64 manifest `a5510d962deee65ace91a3fa7cf93d0c720e1cb08e4b841220b75e9cc082e590`；transport `8600110b54f45240a6e45ea62c9be6f567529e374807d0ca593dde3fd7605db7`。单包64819B、SHA `0f2aef008a8cbf69fdfaad27a59eea85a3b5c149301a4018aa064ca4d76bd6c1`，21成员，实际安装20文件。生成器源码、派生字面值清单和全部文件摘要在本目录。
+
+本机Python3.12.10，标准库unittest九项通过：13源严格差分和逐件pin、GEN链/原builder复用静态检查、模板默认拒绝授权、原产品及旧46所在包保持、三个时限谓词独立、完整raw/JSON安装回放/0444/拒覆盖、整包篡改在写入前拒绝。四种session过期是同一测试中的四个子检查，不重复计数。未运用完整旧68/CI/云/原独立私件，3.10仅语法检查。
+
+初始系统Python与项目venv均缺pytest，在启动测试前报ModuleNotFoundError；未安装依赖，直接改用标准库unittest。原失败事实保留在verification元记录，不写成测试用例失败。
+
+固定commit下载wrapper已交付，完整5228B（SHA d5546d0f2bcbd19c24a5648d7b089ed6dd9ecd2ae3bd43fae5d199da81361bf0），raw全文+300为5528、整全文base64+300为7272，均低于18000。按根指定加入 --ipv4 --http1.1 后重新运行仅3项wrapper检查通过，9+3=12唯一测试；旧3项执行不重复计数。完整POSIX sh经本地fake curl分别返回raw/JSON真实安装20件，并验证篡改写入前拒绝；只移动本地受控目标根和暂存目录，canonical manifest目标/校验不改。这不证明真实网络、原服务器或Linux安装成功。现有镜像/原盘恢复、source53与budget实际核验、单次root授权、会话与压测均由根后续决定。详见design及runbook。
+
+追加单次APP预备worker与7669B小launcher，默认IP空/prep准入false。四项新增标准库检查通过：JSONL唯一选择/重复拒绝和完整launcher源码/大小/sh语法；stub原CLI顺序与动态角色/source/budget/prep-only；模拟迁移失败阻止后续造数；真实本地exit3 stdout/stderr完整留存。它们未执行live preflight/root/Linux/Docker/MySQL/SUT，不能当云流水成功。合计9核心+3下载wrapper+4worker=16唯一项；重复窄验证不累加。无需等行政交付才让根核原机库存，实际派发由根独立执行。

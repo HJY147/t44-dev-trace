@@ -1,0 +1,11 @@
+{
+  "actor": "AI coordinator",
+  "repo": "HJY147/t44-dev-trace",
+  "pr": 21,
+  "comment_id": 6365075011,
+  "url": "https://github.com/HJY147/t44-dev-trace/pull/21#issuecomment-6365075011",
+  "body": "Agent-Role: coordinator\nPrompt-Ref: U015/U016 / D005/D006\n\n用户已明确采用迭代人力生命周期规则：状态1–5负责人须留在迭代工时安排，6/7可移出；7返工先补有效人力。项目成员/开发角色保护仍为1–5+7，原转派状态边界不变。\n\n显式1.1规格已在189dc4a3196be0fb84b753f23284f2566d823ea0独立冻结：records/spec-freezes/v1.1.json，14项文件摘要，父版本ae60dc3与原11项摘要保留。限定审核117a69c / 被审源59daa，38操作、31路径、130 schema、DDL18表226列不变；契约info/Meta均1.1.0。审核纠正了转派错误说明歧义；过时草案版本测试fixture修正后1130设计检查通过，原2项失败与原因仍保留。\n\n这次是规格准入，后端刚收到冻结SHA继续新守卫与真MySQL回归，前端另同步fixture；没有发布、独立复测通过或性能达标声明。本地草稿在最终合同freeze前已存在、未入合同提交/运行，真实时序写入manifest。现行规模5940超上限840、原独立压测三类P95失败均继续保留。",
+  "read_back": true,
+  "freeze_commit": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+  "body_sha256": "f80985254e8ea303edfdef8363ae223065e6c8cc1d7d175e71fb581a2c019574"
+}

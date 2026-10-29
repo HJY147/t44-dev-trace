@@ -1,0 +1,992 @@
+[
+  {
+    "dialect": "mysql",
+    "options": {},
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members ORDER BY project_members.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {},
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members ORDER BY project_members.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id IN (__[POSTCOMPILE_id_1]) ORDER BY project_members.id DESC \n LIMIT %s, %s",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 1,
+        "param_2": 2
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id IN (__[POSTCOMPILE_id_1]) ORDER BY project_members.id DESC\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 2,
+        "param_2": 1
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id = %s ORDER BY project_members.id FOR UPDATE SKIP LOCKED",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id = ? ORDER BY project_members.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members ORDER BY project_members.id \n LIMIT %s LOCK IN SHARE MODE",
+      "parameters": {
+        "param_1": 1
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members ORDER BY project_members.id\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 1,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id >= %s AND project_members.id IS NOT NULL ORDER BY project_members.id FOR UPDATE",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id >= ? AND project_members.id IS NOT NULL ORDER BY project_members.id",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id = %s ORDER BY project_members.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT project_members.id, project_members.project_id, project_members.user_id, project_members.roles_mask, project_members.active, project_members.version, project_members.created_at, project_members.updated_at \nFROM project_members \nWHERE project_members.id = ? ORDER BY project_members.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "project_id",
+          "project_id",
+          "INTEGER"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "roles_mask",
+          "roles_mask",
+          "TINYINT"
+        ],
+        [
+          "active",
+          "active",
+          "TINYINT"
+        ],
+        [
+          "version",
+          "version",
+          "INTEGER"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "updated_at",
+        "id",
+        "updated_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT project_members.updated_at, project_members.id \nFROM project_members \n LIMIT %s",
+      "parameters": {
+        "param_1": 0
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "updated_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "updated_at",
+        "id",
+        "updated_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT project_members.updated_at, project_members.id \nFROM project_members\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 0,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "updated_at",
+          "updated_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "updated_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  }
+]

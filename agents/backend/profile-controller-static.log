@@ -1,0 +1,8 @@
+$ .venv/bin/ruff check --config backend/pyproject.toml tmp/backend/955_perf_profile.py
+All checks passed!
+exit_code=0
+$ .venv/bin/ruff format --check --config backend/pyproject.toml tmp/backend/955_perf_profile.py
+1 file already formatted
+exit_code=0
+AST parse passed; no import/start/load executed
+Pinned local uvicorn/server.py332-349 re-raises SIGTERM after graceful close; tool installs/restores its own stop handler so final metadata can be written. Runtime not verified yet.

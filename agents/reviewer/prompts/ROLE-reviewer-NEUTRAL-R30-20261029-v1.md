@@ -1,0 +1,37 @@
+# ROLE-reviewer-NEUTRAL-R30-20261029-v1
+
+实际操作者：固定AI reviewer；仅与root对接；不是独立验收测试岗。
+
+## 实际派工原文
+
+接着做最小中性材料准备审核（无服务/云/会话执行）：后端新worktree .agent-worktrees/backend-neutral-r30 起点7374，阶段ffae5d84（UNVALIDATED，owner正补admin CLI+packet入口+本地fake验证，最终SHA随后root转）。当前19件，源码在agents/backend/neutral-r30/；请先审实际API造数与会话顺序/权限/窗口/源/包原件/独占对象/默认拒绝，尽快P1/P2，不等行政。root技术决定：全部源码镜像工具传输和infra检查ready后，签4个实际身份session，再用正常API做400create/start+400existing task事件/真实读回，最后密封新包（实际6400如实记）。issued/expires/首次完成UTC不伪写，grant前剩余TTL覆盖完整运行，绝不retime；默认false/null/TBD拒绝。0b产品不改，QA v2.4 core81e不改，旧V1不复用。
+
+允许看已发表中性PUBLIC接口：/Users/yang/Desktop/nothing/软件开发大作业/tmp/772_independent_perf_20261029/PUBLIC/ 内 INTERFACE_0B_V24.md、NEUTRAL_0B_V24.template.json、IMPORT_RECEIPT_0B_V24.expected-shape.json、TARGET_0B_V24.json、GRANT_0B_V24.default-false.json、INTERFACE_0B_V24_FREEZE.json(e2d97c62eb4485a70a502594c5368586f81fbb808dd6c82169bebacccc97c976)、INTERFACE_0B_V24_CHECKS.json(1a6be2c1304bd9db87b98abc277b415ad4ce60f24b6ec7e2bb6e5d0286898614)，必要只读ADAPTER_0B_V24.py/ENTRY_0B_V24.sh。绝不读PRIVATE/REVIEW_R30_ONLY/未发布case。原source/bundle两manifest在rootcoord records/deployment/r30-backend-0b（已有校验）。newbudget9e...，APP idle6且scheduler另scope启动成7，不凭镜像数推实跑。
+
+新审核小测试若需请用tmp/757_neutral_review_r30（此前新P1用了tmp760，数字不是全局顺序，不再扩大），只真实纯本地fixture/fake，不签实际token或HTTP。无产品/全CI重跑。最终owner仍改动时给你审核的精确SHA和未核diff，不抢改owner文件，不替root发grant。今天集中一次窗口，角色四件之后可简短封档。
+
+## 实际执行范围与改进
+
+- 从7374建立独立reviewer-neutral-r30树；未读取owner未提交admin/assemble等文件。阶段检查从Git精确读取ffae5d84源，避免owner继续修改污染原复现。
+- 只读9个明确获准PUBLIC文件，核freeze/checks与逐文件hash；没有打开CORE_COMPATIBILITY、PRIVATE、REVIEW_R30_ONLY或未发布case。
+- 用纯本地合成plan复现阶段目标image pin、origin/connect_ip、901秒窗口前置校验缺口；没有HTTP/会话动作。尝试fake login前缀时先遇到阶段http_primitives首行SyntaxError，保留原stderr，不冒作已完成该fake流程。
+- 实质问题先发root；等准确最终SHA后仅核相关修复与新增入口，不代改owner、产品、QA core或grant。
+
+
+## 最终复审派工原文
+
+最终修复 producer 已推送 3be27131398a049f1a509918e5308f1bda7c8cec，manifest SHA 66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606。唯一运行改动 crypto_transport_proofs→cryptographic_transport_proofs；请与实际 GEN required16字段、wrapper最终8c73486440720506357ffa90efdb5b59cdd91028、原预算9e一起做准确SHA有限复审，给明确是否可进入一次云准备窗口，不以缺尚未开机才能有的 actual 证明无限HOLD。勿开云/读PRIVATE/SUT。今天19:00前服务器收尾，请尽快给范围化结论。
+
+root另明确LOAD采用准确4f/8CPU/8GiB source-free standby作orchestration readiness，无HTTP/core import，正式driver前停；实际回执不冒完整工具/负载通过。实际执行只新增11项受影响链，先回root允许一次有限准备窗口，再补行政；不重跑旧case/fullCI。
+
+## root材料编排追加派工原文
+
+Root补一个实际开机后材料编排候选（尚未运行、仅py_compile绿）：/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/resume-coordination-20261029/agents/coordinator/r30-bounded/materials.py。请快速审关键接口是否真能接final wrapper/producer/GEN，特别paths/empty counts/init→seed→40ids service原token复用scheduler→sourcefree HTTP→counts/backend证据/assemble，以及clock cutoff/roles/UID。不接QA PRIVATE；没有云动作。已根据你语义把LOAD receipt严格限定orchestration-readiness/is_actual_driver=false等。可以给局部必要修复由root改，别扩重构，18:00boot距今14min。
+
+实际回应先报4个接口/权限问题，root修复后准确8db05a89字节只核相关链；本岗新增4项真实parser和临时文件I/O边界，无Docker/HTTP等。有限准备准入先消息发root，报告封档不加新boot门禁。root自己修改materials，本岗未冒作用户亲自改码或审核岗修改。
+
+## 首次调度及运输追加原文
+
+Root原两机已于10:04:35Z启动，固定G10:35/C10:40不延后。APP官方95MB已实际SHA匹配，ops后台准备现运行；LOAD exact4f/core81e安装+standby8CPU8GiB实际成功，无SUTgrant。根材料脚本因公开adapter执行时packet≤300秒门禁，新增首次采集/首次组装调度（不retime）：commit36f9e9c9，文件16744B SHA c2835a7fbc85c5c20c6b7936401f15710db5c7c615c2ae7aab4a08292d9b763c；HTTP不早于10:12:30，首次evidence/assemble不早于10:15:30，cutoff17:30仍保留。请快速核这小差异并审backend运输0836→686d79da manifest2b147/installf4b3源码/7真实本机cryptoTLS+2安装测试，root将用新ROOT_CLI，不改QA core/source17。不要云动作/不读PRIVATE。实际paid时钟在走，请限定快审可执行/硬阻塞，不加新范围。
+
+实际执行只核准确调度diff/纯clock及运输PUBLIC原件/源/manifest/builder/历史XML，自跑2项无服务安装（0.05s）。不重新启动本机TLS或云；先发root代码限定无新增阻断，另提醒云安装包不含RUNBOOK应取本地完整seal argv。

@@ -1,0 +1,16 @@
+SIM105 Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+   --> deployment/synthetic-fixture.py:306:13
+    |
+304 |               os.close(directory)
+305 |           if engine is not None:
+306 | /             try:
+307 | |                 engine.dispose()
+308 | |             except Exception:
+309 | |                 pass  # Preserve the primary account outcome; never leak driver details.
+    | |____________________^
+310 |       print(json.dumps(result, sort_keys=True))
+311 |       return 0 if result["success"] else 1
+    |
+help: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`
+
+Found 1 error.

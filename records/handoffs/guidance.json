@@ -1,0 +1,102 @@
+{
+  "role": "guidance",
+  "stage": "最终入口收尾 / 两入口与本岗记录",
+  "implementation_status": "两个入口已更新；未修改产品、其他文档或运行任何服务/测试",
+  "source_commit": "aaea7cd7690a088b8c4fa1fd79045e849370e874",
+  "application_source": "b66fa36a317145afec350d7f61ca374959b2eaf7（root已准入开发集成，最终以实际admission收据为准）",
+  "demo_and_fixed_word_source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "branch": "codex/guidance-final-entry",
+  "artifacts": [
+    "README.md",
+    "docs/user-guide/wake-up-review.md",
+    "agents/guidance/WORKLOG.md",
+    "records/handoffs/guidance.json",
+    "agents/guidance/prompts/ROLE-guidance-FINAL-ENTRY-v1.md",
+    "agents/guidance/final-entry-issue10.md",
+    "agents/guidance/final-entry-issue10-readback.json"
+  ],
+  "interfaces": {
+    "inputs": [
+      "root准确收尾要求及后发准入/M11/M12消息",
+      "18b0271公开有限审核与准确PR42",
+      "H2/Pcal明确发表摘要"
+    ],
+    "outputs": [
+      "版本与结论边界明确的README/wake-up入口",
+      "本岗日志/prompt/真实Issue全文GET"
+    ],
+    "unchanged": [
+      "代码/服务/test/private",
+      "固定四Word",
+      "pool db87未合入"
+    ],
+    "handoff_to": [
+      "root"
+    ]
+  },
+  "commands_executed": [
+    {
+      "command": "git show/read-only diff/worktree; public MD JSON reads",
+      "result": "C相对bc5一行project_id谓词；新工作树基aaea，无产品执行"
+    },
+    {
+      "command": "gh issue comment 10; gh api Issue10与具体评论全文GET",
+      "result": "6378092076，id/body/url/login一致"
+    },
+    {
+      "command": "static text/existence checks; git diff --check",
+      "result": "新M11/M12/Pcal/admission在root当前树存在；两入口准确保留manifest句，包身份未预填"
+    }
+  ],
+  "results": [
+    "C开发准入与bc5演示/Word分开",
+    "H2与本机校准限制、原v3失败、6307超限/整体未过/main未放行保留",
+    "演示北京11:49:43截止不改",
+    "真实Issue10对话和全文GET已记录"
+  ],
+  "unverified": [
+    "本岗没有重测入口/四小时周期/产品/性能",
+    "未生成或核验最后审阅包，准确文件名和SHA以coursework-review-final.json为准",
+    "不是完整独立验收或main放行"
+  ],
+  "questions": [
+    {
+      "owner": "root",
+      "question": "后续实际生成最终审阅包并写coursework-review-final.json；本岗不预填文件名或SHA"
+    }
+  ],
+  "prompt_refs": [
+    {
+      "id": "ROLE-guidance-FINAL-ENTRY-v1",
+      "task_file": "agents/guidance/prompts/ROLE-guidance-FINAL-ENTRY-v1.md",
+      "dispatch_source": "root实际派工及后续准入/M11/M12消息",
+      "status": "实际执行",
+      "rationale": "区分C开发准入、bc5运行与Word、测量有效性、未生成包身份",
+      "artifacts": [
+        "README.md",
+        "docs/user-guide/wake-up-review.md",
+        "agents/guidance/WORKLOG.md",
+        "records/handoffs/guidance.json",
+        "agents/guidance/prompts/ROLE-guidance-FINAL-ENTRY-v1.md",
+        "agents/guidance/final-entry-issue10.md",
+        "agents/guidance/final-entry-issue10-readback.json"
+      ],
+      "counts_as_prompt_evolution": false
+    }
+  ],
+  "github": {
+    "issue": 10,
+    "comment_url": "https://github.com/HJY147/t44-dev-trace/issues/10#issuecomment-6378092076",
+    "full_get": "agents/guidance/final-entry-issue10-readback.json",
+    "body_exact_readback": true,
+    "review_success_posted": false
+  },
+  "history": [
+    {
+      "stage": "M8 五分钟纯查看导览",
+      "source_commit": "5ce98e0d46aec9ccde9a9a177d34137d6a651ae9",
+      "note": "此前M8导览与设计保留历史，不改其截止"
+    }
+  ],
+  "updated_at": "2026-10-24T09:21:56+08:00"
+}

@@ -1,0 +1,157 @@
+{
+  "scope": "new P campaign performance-only execution admission; allowed coordinator environment observations only",
+  "recorded_utc": "2026-10-25T09:59:29.482905+00:00",
+  "draft_bytes_SHA256": "b86830fd50e429652048c5fe191c54e2c040253606c01edad17c9fe285d1cc55",
+  "only_new_file_change": "admitted false to true",
+  "canonical_admitted_content_SHA256": "87caec332a7843cdd0e629eb3d40e9c69bc0c692fd67b5cd8664d0f6273da679",
+  "serialized_output_bytes_hash_not_claimed": true,
+  "PUBLIC_rechecks": [
+    {
+      "name": "control.py",
+      "actual_sha256": "3495a3faa958b66792ed7a71d9db00f14d7c1873872470a86014782be1670a89",
+      "byte_equal_reviewed_v7": true
+    },
+    {
+      "name": "handoff.PUBLIC.py",
+      "actual_sha256": "b957291dbf19ff72ba37577bf0272f78b087e4406eb4c2404037dabcf39bb88a",
+      "byte_equal_reviewed_v7": true
+    },
+    {
+      "name": "routes.PUBLIC.json",
+      "actual_sha256": "e7cfa136736a05700e4d9f9048bda6634673736e74a48131be03d65adb895050",
+      "byte_equal_reviewed_v7": true
+    },
+    {
+      "name": "runner.PUBLIC.py",
+      "actual_sha256": "e5e0d72ff8ed338e2cd0b2fec8457c228ecb0cc386db120309057e042e173b83",
+      "byte_equal_reviewed_v7": true
+    },
+    {
+      "name": "supervisor.PUBLIC.py",
+      "actual_sha256": "1fe574c3ed154c5e4837d8014d2c50b44de05a8083feec0c89ad8b9421946edc",
+      "byte_equal_reviewed_v7": true
+    },
+    {
+      "name": "manifest.PUBLIC.json",
+      "actual_sha256": "adfc26563fb23122350138eeb3d73be251a865f3764b19ea6915dff57a72fd1f",
+      "byte_equal_reviewed_v7": true
+    }
+  ],
+  "native_build_neutral_observation": "neutral-build-observation.json",
+  "build_manifest_actual_hash_matches_grant": true,
+  "source_artifact_files_or_process_command_argv_byte_audited": false,
+  "CA_certificate_metadata": "ca-public-cert-metadata.txt",
+  "CA_sha256": "2260b0615a2340b8df88f8e5bd835473f473ae0a265df6d26f540fd83c51667b",
+  "actual_declared_PID_liveness_probe_count": 14,
+  "signals_used": "kill(pid,0) liveness/permission only; no process altered",
+  "process_hierarchy_observation": "declared-process-ps.txt",
+  "API_map_includes_parent_tracker7workers": true,
+  "resource_source": {
+    "path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-performance-campaign-20261025/runs/performance_campaign_20261025_1a5a4f04e24541aa/state/interval-resources-d7b4e053aa514552a86fdf22e07b6cb9.jsonl",
+    "exists": true,
+    "is_symlink": false,
+    "stat_bytes": 5167225,
+    "first6_exact_original_bytes": "resource-source-first6.original.jsonl",
+    "first6_identity": [
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "api",
+        "shared": false,
+        "pid_list": [
+          73906,
+          73907,
+          73908,
+          73909,
+          73910,
+          73911,
+          73912,
+          73913,
+          73914
+        ],
+        "status": "first_sample_no_cpu_delta",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once",
+        "aggregation": "seven workers plus supervisor and resource tracker"
+      },
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "consumer",
+        "shared": false,
+        "pid_list": [
+          73964
+        ],
+        "status": "first_sample_no_cpu_delta",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once"
+      },
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "scheduler",
+        "shared": false,
+        "pid_list": [],
+        "status": "not_registered_or_not_started",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once"
+      },
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "broker",
+        "shared": false,
+        "pid_list": [
+          73736,
+          73731
+        ],
+        "status": "first_sample_no_cpu_delta",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once",
+        "aggregation": "new Rabbit VM plus its EPMD"
+      },
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "mysql",
+        "shared": true,
+        "pid_list": [
+          7980
+        ],
+        "status": "first_sample_no_cpu_delta",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once"
+      },
+      {
+        "utc": "2026-10-25T09:31:04.938868Z",
+        "resource_id": "generator",
+        "shared": false,
+        "pid_list": [],
+        "status": "not_registered_or_not_started",
+        "cpu_semantics": "cumulative process user+system CPU delta / monotonic wall delta;100=one CPU",
+        "memory_semantics": "sum process RSS bytes;shared pages may be counted more than once"
+      }
+    ],
+    "complete_series_or_formal_resource_coverage_audited": false
+  },
+  "private_resource_mirror": {
+    "path_declared_only": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/private/input/performance-resource-v7.jsonl",
+    "not_opened_or_hashed": true
+  },
+  "direct_service_scope_TTL_and_environment_packet": "root09:42 prepared actualscope per explicit root message; credential not read or SQL queried",
+  "root_F_stop_before_load": "required by draft phase_note; root action pending confirmation; no F test result read",
+  "time_metadata_at_technical_conclusion": {
+    "utc": "2026-10-25T09:57:41.038685+00:00",
+    "expiry_UTC": "10:15:00",
+    "remaining_seconds": 1038.961315,
+    "warmup_plus_steady": 630,
+    "remaining_excluding630_not_completion_promise": 408.961315,
+    "max_wall": 2400,
+    "P_environment_stop_root": "10:30",
+    "existing_processes_no_new_spawn_needed_before10UTC": true
+  },
+  "fixed_case_threshold_or_oracle_changes": false,
+  "shared_mysql_and_same_host_generator_limits_disclosed": true,
+  "actual_new_generator_PID_registration_and_numeric_raw_coverage": "future actual execution facts, not preapproved",
+  "new_tests_SUT_HTTP_SQL_CLI_provider_or_supervisor_executions": 0,
+  "817_private_or_results_or_old_logs_keys_Git_read": false,
+  "testing_agent_contact": false,
+  "technical_before_admin": true,
+  "outcome": "ONE_EXACT_NEW_P_CAMPAIGN_FULL_FROZEN_GROUP_TECHNICALLY_ADMITTED_NOT_PERFORMANCE_ACCEPTED",
+  "prompt_ref": "ROLE-reviewer-PERFORMANCE-v7-CAMPAIGN-v1"
+}

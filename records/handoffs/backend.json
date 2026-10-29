@@ -1,0 +1,3826 @@
+{
+  "role": "backend",
+  "stage": "backend-a12-contrast-fixture-v2-awaiting-root-review-and-cloud",
+  "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
+  "artifacts": [
+    {
+      "path": "agents/backend/WORKLOG.md",
+      "status": "初始化日志"
+    },
+    {
+      "path": "reports/modules/backend.md",
+      "status": "proposal-v0，未冻结"
+    },
+    {
+      "path": "records/handoffs/backend.json",
+      "status": "本次结构化交接单"
+    },
+    {
+      "path": "agents/backend/github-stage-comment.md",
+      "status": "M0阶段评论正文"
+    },
+    {
+      "path": "agents/backend/github-interface-question.md",
+      "status": "M0消息接口问题正文"
+    },
+    {
+      "path": "agents/backend/github-interface-response.md",
+      "status": "M0逐项回答前端和数据库问题正文"
+    },
+    {
+      "path": "specs/contracts/openapi.json",
+      "status": "OpenAPI3.1草案，31路径38操作130schemas，未冻结"
+    },
+    {
+      "path": "specs/contracts/README.md",
+      "status": "统一语义/错误触发/性能入口及验证限制"
+    },
+    {
+      "path": "specs/backend-design.md",
+      "status": "同步包/权限/状态机/事务/锁序/消息设计草案"
+    },
+    {
+      "path": "agents/backend/CONTRACT-v1-prompt.md",
+      "status": "实际派工摘录及协调细化来源"
+    },
+    {
+      "path": "agents/backend/contract-stage-comment.md",
+      "status": "本轮阶段正文"
+    },
+    {
+      "path": "agents/backend/contract-interface-confirmation.md",
+      "status": "本轮数据库真实对齐正文"
+    },
+    {
+      "path": "agents/backend/openapi-validation-failure.log",
+      "status": "重复参数真实规范校验失败，已修复"
+    },
+    {
+      "path": "agents/backend/openapi-offline-resolver-failure.log",
+      "status": "辅助样例引用解析用法失败，已修复"
+    },
+    {
+      "path": "agents/backend/openapi-validation-success.log",
+      "status": "最终规范及离线检查真实通过，非HTTP测试"
+    },
+    {
+      "path": "agents/backend/contract-final-check.log",
+      "status": "最终规范/草案状态/产物核对及三规格SHA256，非产品测试"
+    },
+    {
+      "path": "agents/backend/validate_contract_design_v2.py",
+      "status": "可重复设计/Schema/逐操作错误一致性校验，非产品测试"
+    },
+    {
+      "path": "agents/backend/contract-v2-before-fix.log",
+      "status": "修复前真实退出1，90项设计失败，原样保留"
+    },
+    {
+      "path": "agents/backend/contract-v2-validation.log",
+      "status": "修复后真实退出0，1130项设计检查/38操作/0失败"
+    },
+    {
+      "path": "agents/backend/CONTRACT-v2-prompt.md",
+      "status": "本轮实际派工原文归档"
+    },
+    {
+      "path": "agents/backend/contract-v2-response.md",
+      "status": "Issue#3/#12实际答复正文"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/requirements.lock",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/__init__.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/__init__.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/commands.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/models.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/t44/domain/state_machine.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "backend/tests/backend/domain/test_transitions.py",
+      "status": "纯领域基础代码/依赖配置"
+    },
+    {
+      "path": "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-interface-notes.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-stage-comment.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pr-body.md",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-lock-compile.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-uv-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-package-install.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-package-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-linux-wheel-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-linux-resolution.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-lock-check.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-initial.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-fix.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-ruff-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-format-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pytest-initial.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-initial.xml",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-pytest-final.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-final.xml",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-coverage.json",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-domain-coverage.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-coverage-json.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-bandit.json",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "agents/backend/core-bandit.log",
+      "status": "本轮真实过程/验证证据，限制见core-interface-notes"
+    },
+    {
+      "path": "tmp/788/resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/check_resource_window.py",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/report.md",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/verification.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/p7-derived-readings.json",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "agents/backend/resource-window-20261028/prompt.md",
+      "status": "actual role artifact; development diagnostic only"
+    },
+    {
+      "path": "tmp/788/profile/diagnose.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/query_candidate.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "tmp/788/profile/summarize.py",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/design.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/report.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/summary.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/verification.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "status": "actual development diagnostic, not acceptance"
+    },
+    {
+      "path": "agents/backend/p16-schema-response-20261028/report.md",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "agents/backend/p16-schema-response-20261028/p7-p16-comparison.json",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "agents/backend/p16-schema-response-20261028/verification.json",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "agents/backend/p16-schema-response-20261028/raw-manifest.json",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "agents/backend/p16-schema-response-20261028/prompt.md",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "tmp/788/schema-response/DESIGN-FROZEN.md",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "tmp/788/schema-response/DESIGN-AMENDMENT-01.md",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "tmp/788/schema-response/prototype.py",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "tmp/788/schema-response/experiment.py",
+      "status": "development/public derivation only, not formal acceptance"
+    },
+    {
+      "path": "tmp/788/schema-response/supplemental.py",
+      "status": "development/public derivation only, not formal acceptance"
+    }
+  ],
+  "interfaces": [
+    {
+      "peer": "frontend",
+      "version": "0.1.0-draft",
+      "status": "技术方案已对齐，契约未冻结",
+      "input": "资源/项目标识、业务字段、预期版本、幂等键",
+      "output": "资源状态/版本、证据、错误码及拒绝原因",
+      "errors": "401/403/404/409/422 为候选，三类 API 未冻结前不联调",
+      "contract_path": "specs/contracts/openapi.json"
+    },
+    {
+      "peer": "database",
+      "version": "0.1.0-draft",
+      "status": "技术方案已对齐，契约未冻结",
+      "input": "成员/依赖检查、条件更新、评审/决策/留痕写入及事务请求",
+      "output": "事务结果、版本冲突、幂等结果、可靠事件意图",
+      "errors": "事务失败/唯一冲突/审计失败策略待确认",
+      "contract_path": "specs/contracts/openapi.json"
+    },
+    {
+      "peer": "messaging",
+      "version": "0.1.0-draft",
+      "status": "技术方案已对齐，契约未冻结",
+      "input": "提交后事件标识及项目/任务/接收人/升级上下文",
+      "output": "受理/去重/站内待办降级结果",
+      "errors": "MQ 不可用及提交后投递重试待确认",
+      "contract_path": "specs/contracts/openapi.json"
+    },
+    {
+      "peer": "scheduler",
+      "version": "0.1.0-draft",
+      "status": "技术方案已对齐，契约未冻结",
+      "input": "业务门面与任务排期/升级语义",
+      "output": "扫描触发处理结果",
+      "errors": "过期上下文/重试/重复升级边界待确认",
+      "contract_path": "specs/contracts/openapi.json"
+    },
+    {
+      "peer": "future transaction facade",
+      "version": "internal-domain-v1",
+      "status": "纯领域接口已存在；未集成，不是冻结HTTP契约",
+      "input": "TaskPosition、九种typed Command、服务端已加载的纯GuardContext",
+      "output": "不可变Decision(source/target/action/command/effects)或内部DomainViolation",
+      "errors": "内部Violation语义，不选择Q002 HTTP状态/外部编码",
+      "code_path": "backend/t44/domain/state_machine.py"
+    }
+  ],
+  "commands_executed": [
+    {
+      "command": "pwd 与定向 rg --files 文件名枚举",
+      "result": "退出码 0，确认根目录及本岗任务位置；未读取独立测试内容"
+    },
+    {
+      "command": "cat AGENTS.md agents/backend/TASK.md",
+      "result": "退出码 0"
+    },
+    {
+      "command": "cat docs/collaboration/team.md docs/collaboration/report-template.md",
+      "result": "退出码 0"
+    },
+    {
+      "command": "cat specs/sources/T44-taskbook.txt specs/sources/submission-notes.txt specs/sources/homework-requirements.txt",
+      "result": "退出码 0"
+    },
+    {
+      "command": "三处输出文件存在性检查",
+      "result": "创建前均不存在，退出码 0"
+    },
+    {
+      "command": "date '+%Y-%m-%dT%H:%M:%S%:z'，再以 date '+%Y-%m-%dT%H:%M:%S%z' 纠正",
+      "result": "前者时区格式不支持；后者取得有效本地时间，退出码均为 0"
+    },
+    {
+      "command": "apply_patch 创建本岗三份资料",
+      "result": "实际文件路径见 artifacts；未写产品代码"
+    },
+    {
+      "command": "python3 解析 JSON 并核对必需字段、未实现状态、产物路径及行数",
+      "result": "退出码 0，JSON/路径核对通过，模块报告 46 行；仅资料结构检查"
+    },
+    {
+      "command": "git branch --show-current 与 git diff --cached --name-only",
+      "result": "codex/team-bootstrap，暂存区为空"
+    },
+    {
+      "command": "gh issue view 3 / gh issue list --repo HJY147/t44-dev-trace",
+      "result": "退出码0，读到前端和数据库真实接口问题，并定位消息岗Issue"
+    },
+    {
+      "command": "gh issue comment 3/3/5 --repo HJY147/t44-dev-trace --body-file 本岗阶段/答复/提问文件",
+      "result": "三次均退出0；评论URL见WORKLOG"
+    },
+    {
+      "command": "git add显式6份本岗M0文件，git commit并回传完整SHA",
+      "result": "提交29ec3401564243dc34f41e6a1bcca81b73528455；提交后空索引并释放，无push/checkout/merge"
+    },
+    {
+      "command": ".venv/bin/python openapi_spec_validator.validate",
+      "result": "先退出1，重复Idempotency-Key；保存失败，修复后最终退出0，日志见artifacts"
+    },
+    {
+      "command": ".venv/bin/python 组件schema与合成例/整数/布尔/extra/UTC/扩展ID离线检查",
+      "result": "辅助引用解析器曾失败，已保留；最终130schemas/6个例检查退出0；非业务或HTTP测试"
+    },
+    {
+      "command": "git branch --show-current / git diff --cached --name-only / git rev-parse HEAD",
+      "result": "合同提交前核对codex/team-bootstrap、空索引、HEAD 4b3d6e5e5ca21627db03c308a23f95744a35c717"
+    },
+    {
+      "command": "gh issue view 4 --repo HJY147/t44-dev-trace --json number,comments",
+      "result": "14:04实际只有数据库M0评论；本轮正文记录真实岗位协商，不假称已回未发布评论"
+    },
+    {
+      "command": "gh issue comment 3/4 --repo HJY147/t44-dev-trace --body-file 本岗合同阶段/接口正文",
+      "result": "均退出0；阶段issuecomment-6358616906，确认issuecomment-6358617437；随后实读数据库6358608869并核对一致"
+    },
+    {
+      "command": ".venv/bin/python 最终规范及产物核对",
+      "result": "退出0，日志contract-final-check.log；没有产品或HTTP运行结论"
+    },
+    {
+      "command": ".venv/bin/python agents/backend/validate_contract_design_v2.py（修复前）",
+      "result": "退出1；90项设计失败，contract-v2-before-fix.log；未改v1审核/证据"
+    },
+    {
+      "command": ".venv/bin/python agents/backend/validate_contract_design_v2.py（修复后）",
+      "result": "退出0；1130项设计检查、38操作、0失败；不是HTTP/MySQL/调度运行结果"
+    },
+    {
+      "command": "gh issue comment 3/12 --repo HJY147/t44-dev-trace --body-file agents/backend/contract-v2-response.md",
+      "result": "均退出0；Issue#3评论6358981390，Issue#12评论6358981840，见WORKLOG"
+    },
+    {
+      "command": "uv pip compile backend/pyproject.toml --extra dev --python-version 3.12 --universal --generate-hashes --output-file backend/requirements.lock",
+      "result": "退出0，68包通用hash锁，uv0.12.17；PyMySQL[rsa]/cryptography和argon2-cffi已含，无JWT"
+    },
+    {
+      "command": "pip install --require-hashes / Linux目标pip download",
+      "result": "均因本机SSL证书链验证失败退出1；原日志保留，未关闭TLS或改全局证书"
+    },
+    {
+      "command": "uv pip install --python .venv/bin/python --require-hashes -r backend/requirements.lock",
+      "result": "退出0，真实本机安装"
+    },
+    {
+      "command": "pip install --no-deps --no-build-isolation ./backend / pip check / RSA后端导入",
+      "result": "退出0，本地wheel构建安装、依赖检查及导入成功；未连接数据库"
+    },
+    {
+      "command": "uv Linux x86_64/Python3.12 target compile with universal pins as constraints / hash pin check",
+      "result": "退出0，67个Linux目标版本全部匹配通用锁；未执行Linux运行"
+    },
+    {
+      "command": "ruff check / ruff format --check / bandit -r backend/t44",
+      "result": "最终均退出0；初始两处import排序失败及修复日志保留"
+    },
+    {
+      "command": "coverage run --branch --source=t44.domain -m pytest -c backend/pyproject.toml backend/tests/backend/domain --junitxml=agents/backend/core-domain-final.xml -ra",
+      "result": "退出0，106领域单元测试通过；仅领域含分支覆盖约98%，非全项目门禁"
+    },
+    {
+      "command": "coverage json / coverage report",
+      "result": "退出0，原始JSON/JUnit/报告已存本岗目录"
+    },
+    {
+      "command": "python3 tmp/788/check_resource_window.py; uvx --from ruff==0.17.2 ruff check/format --check --config scripts/ci/ruff.toml tmp/788/{resource_window,check_resource_window}.py",
+      "result": "4 unittest methods pass; ruff check and format check pass; original missing module and initial six lint failures recorded; see task-specific command evidence"
+    },
+    {
+      "command": "uv venv/pip sync --require-hashes; diagnose.py --run; query_candidate.py --run; summarize.py; ruff check/format --check",
+      "result": "135 HTTP successful incl27setup; 198 pure MySQL/SQLite signature pairs equal; ABBA construction median observed; three tools final static checks pass; raw command/data/hash evidence in agents/backend/cpu-profile-20261028"
+    },
+    {
+      "command": "hash two PUBLIC; official fastjsonschema docs; locked local dependency; response prototype run01/run02; post-timing pure supplement; ruff checks",
+      "result": "P16 still all four400 P95>270; run01 failed before timing31HTTP; run02 completed159HTTP with424pre guards;13purepost guards;190HTTP total; static final pass; exact evidence in agents/backend/p16-schema-response-20261028"
+    }
+  ],
+  "results": [
+    "完成指定资料阅读、职责确认和服务/状态机/鉴权/事务/跨岗接口草案",
+    "未冻结业务契约，未实施数据库模型或业务代码",
+    "模块自测、集成验证、独立验收、性能指标均无运行结果",
+    "完成三份完整合同/后端设计草案，所有接口未冻结、业务未实现",
+    "已依协调者指令收敛开发最小权限/非自审/开始前编辑/改期评估失效/版本化规则可扩展性",
+    "数据库对齐cycle/INT UNSIGNED/租约幂等/会话锁/升级CAS；还需正式交叉审核",
+    "C2完整收件人集合不设人数上限，handled_count UINT32，创建/历史嵌套共用事件Schema",
+    "C3共享1000～9999/UTC Z/≤6微秒时间域，真实FormatChecker和Plan/TaskCreate/只读候选边界验证，扫描now−end不做end+24h",
+    "C4逐操作注解/response枚举/HTTP/触发条件设计一致性验证通过，GET/只读无幂等错误；全局字典无虚构项目/资源分支",
+    "C1后端采用response_request_id作为最终实际生成已保存结果请求ID来源；数据库字段/COMPLETE约束由数据库岗另交，不冒称整体复审通过",
+    "D001七状态九动作纯领域实现存在，集中内部Enum/typed命令/不可变Decision/纯GuardContext，非法边与必要守卫有参数化自测",
+    "领域依赖只在start、unblock到develop、rework三处检查，reject_review不新增守卫，上游回滚不自动改下游",
+    "106项领域单元通过，Ruff/格式/Bandit通过；仅领域覆盖约98%，不是HTTP/集成/独立验收",
+    "真实通用hash锁与本机包安装成功，Linux目标解析一致，未执行Linux运行",
+    "P7 observed8000, zeroHTTP/clienterror but per-pathP95>270ms; started21.890740s vs barrier21.742456s explicitly separated; no formal pass inferred",
+    "select(table) one-expression pure candidate predicts0 effective lines and observed~5us lower statement-construction CPU; no candidate HTTP/MySQL/cloud benefit proven",
+    "Response-generated validation list20 CPU improvement5.2–5.8ms observed; current P7 small response improvement not established consistently; B2 regressions preserved; no production adoption"
+  ],
+  "unverified": [
+    "independent retest",
+    "performance thresholds",
+    "final source range",
+    "P7/P16 real server resource-window aggregation and formal performance not executed by this role; P16 public matrix pending coordinator",
+    "DB owner adoption and real isolated MySQL rows/locks/regressions; query candidate HTTP performance; cloud400/600 and causal root remain unproven",
+    "response prototype full38-operation/fault/concurrency/whole-Draft equivalence; complete pre-timing supplemental sequencing; P7-relevant major performance gain; formal400/600 remain unproven"
+  ],
+  "questions": [
+    {
+      "owner": "coordinator/user",
+      "question": "assignment/capacity removal lifecycle and full iteration.capacity public differences remain undecided; frozen11unchanged"
+    },
+    {
+      "owner": "coordinator",
+      "question": "after CI-stable checkpoint coordinate profile1/8/32 diagnostic window away from Word rendering; no diagnostic load yet"
+    }
+  ],
+  "prompt_refs": [
+    {
+      "id": "ROLE-backend-BOOTSTRAP-v1",
+      "task_path": "agents/backend/TASK.md",
+      "source": "总协调本轮实际派工消息",
+      "reason": "限定初始化范围，保留未冻结/未实现状态及独立测试隔离",
+      "outputs": [
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-M0-COMMIT-v1",
+      "source": "documentation本轮实际问取及串行索引授权",
+      "reason": "先归档M0真实产物并逐项答复Issue，不混入后续合同设计",
+      "outputs": [
+        "agents/backend/github-stage-comment.md",
+        "agents/backend/github-interface-question.md",
+        "agents/backend/github-interface-response.md",
+        "agents/backend/WORKLOG.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-CONTRACT-v1",
+      "source": "总协调实际新设计派工及后续技术约束",
+      "archive_path": "agents/backend/CONTRACT-v1-prompt.md",
+      "reason": "覆盖初始化阶段范围但不编码，完整契约先审后冻结，保留真实失败与最小权限",
+      "outputs": [
+        "specs/contracts/openapi.json",
+        "specs/contracts/README.md",
+        "specs/backend-design.md",
+        "agents/backend/CONTRACT-v1-prompt.md",
+        "agents/backend/contract-stage-comment.md",
+        "agents/backend/contract-interface-confirmation.md",
+        "agents/backend/openapi-validation-failure.log",
+        "agents/backend/openapi-offline-resolver-failure.log",
+        "agents/backend/openapi-validation-success.log",
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-CONTRACT-v2",
+      "source": "总协调针对reviewer不通过报告的实际定向修复派工",
+      "archive_path": "agents/backend/CONTRACT-v2-prompt.md",
+      "reason": "只修本岗C2/C3/C4及C1后端说明，保留原失败并增加真正设计一致性检查，不宣称产品通过",
+      "outputs": [
+        "specs/contracts/openapi.json",
+        "specs/contracts/README.md",
+        "specs/backend-design.md",
+        "agents/backend/validate_contract_design_v2.py",
+        "agents/backend/contract-v2-before-fix.log",
+        "agents/backend/contract-v2-validation.log",
+        "agents/backend/CONTRACT-v2-prompt.md",
+        "agents/backend/contract-v2-response.md",
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-CORE-FOUNDATION-v1",
+      "source": "总协调实际独立树基础实现派工及三处依赖守卫澄清",
+      "archive_path": "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+      "reason": "将已采用D001实现为真正纯领域包，不绑定待用户取舍字段/HTTP，不制造API stub",
+      "outputs": [
+        "backend/pyproject.toml",
+        "backend/requirements.lock",
+        "backend/t44/__init__.py",
+        "backend/t44/domain/__init__.py",
+        "backend/t44/domain/commands.py",
+        "backend/t44/domain/models.py",
+        "backend/t44/domain/state_machine.py",
+        "backend/tests/backend/domain/test_transitions.py",
+        "agents/backend/CORE-FOUNDATION-v1-prompt.md",
+        "agents/backend/core-interface-notes.md",
+        "agents/backend/core-stage-comment.md",
+        "agents/backend/core-pr-body.md",
+        "agents/backend/core-lock-compile.log",
+        "agents/backend/core-install.log",
+        "agents/backend/core-uv-install.log",
+        "agents/backend/core-package-install.log",
+        "agents/backend/core-package-check.log",
+        "agents/backend/core-linux-wheel-check.log",
+        "agents/backend/core-linux-resolution.log",
+        "agents/backend/core-lock-check.log",
+        "agents/backend/core-ruff-initial.log",
+        "agents/backend/core-ruff-fix.log",
+        "agents/backend/core-ruff-final.log",
+        "agents/backend/core-format-final.log",
+        "agents/backend/core-pytest-initial.log",
+        "agents/backend/core-domain-initial.xml",
+        "agents/backend/core-pytest-final.log",
+        "agents/backend/core-domain-final.xml",
+        "agents/backend/core-domain-coverage.json",
+        "agents/backend/core-domain-coverage.log",
+        "agents/backend/core-coverage-json.log",
+        "agents/backend/core-bandit.json",
+        "agents/backend/core-bandit.log",
+        "agents/backend/WORKLOG.md",
+        "reports/modules/backend.md",
+        "records/handoffs/backend.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-APPLICATION-v1",
+      "archive_path": "agents/backend/APPLICATION-v1-prompt.md",
+      "reason": "full frozen application authorized after Q002; actual HTTP tests, no fake store",
+      "outputs": [
+        "backend/t44/api.py",
+        "backend/t44/cli.py",
+        "backend/t44/services/",
+        "backend/t44/contracts/",
+        "backend/t44/resources/review-template.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-INTEGRATION-v1",
+      "archive_path": "agents/backend/INTEGRATION-v1-prompt.md",
+      "reason": "actual GHA/code-map fixes, complete owner integration and full source coverage; no private acceptance contact"
+    },
+    {
+      "id": "ROLE-backend-REFACTOR-v1",
+      "archive_path": "agents/backend/REFACTOR-v1-prompt.md",
+      "reason": "真实重复消除保持业务/安全/可读性；性能隔离期间仅编辑/Git，保留远端原失败与修复事实"
+    },
+    {
+      "id": "ROLE-backend-PERFORMANCE-DIAGNOSTICS-v1",
+      "archive_path": "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md",
+      "reason": "实际dispatch只准备，proposed保持历史；先分层观测而不推定瓶颈或以删安全/校验提速"
+    },
+    {
+      "id": "ROLE-backend-SIZE-v1",
+      "source": "actual AI coordinator dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/prompt.md",
+      "human_code_edit": false,
+      "reason": "measured structural implementation with explicit internal v2 migration and external behavior preservation",
+      "outputs": [
+        "backend/t44/domain",
+        "backend/t44/services",
+        "tmp/811_backend_size",
+        "agents/backend/source-size-20261025/report.md"
+      ]
+    },
+    {
+      "id": "ROLE-backend-SIZE-v2",
+      "source": "actual AI coordinator dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/prompt.md",
+      "human_code_edit": false,
+      "reason": "measured structural implementation with explicit internal v2 migration and external behavior preservation",
+      "outputs": [
+        "backend/t44/domain",
+        "backend/t44/services",
+        "tmp/811_backend_size",
+        "agents/backend/source-size-20261025/report.md"
+      ]
+    },
+    {
+      "id": "ROLE-backend-SNAPSHOT-ALIAS-v1",
+      "source": "actual coordinator repair dispatch, executed",
+      "task_path": "agents/backend/source-size-20261025/snapshot-alias-fix.md",
+      "human_code_edit": false,
+      "outputs": [
+        "backend/t44/domain/models.py",
+        "tmp/811_backend_size/812_v2_boundary.py",
+        "tmp/811_backend_size/snapshot-alias-validation.json"
+      ]
+    },
+    {
+      "id": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+      "source": "actual coordinator dispatch and numeric-unknown steering, executed",
+      "task_path": "agents/backend/resource-window-20261028/prompt.md",
+      "human_code_edit": false,
+      "reason": "explicit digest/window/metric semantics and missing-sequence evidence precision",
+      "outputs": [
+        "tmp/788/resource_window.py",
+        "agents/backend/resource-window-20261028"
+      ]
+    },
+    {
+      "id": "ROLE-backend-CPU-PROFILE-20261028-v1",
+      "source": "actual coordinator local-profile dispatch plus explicit pure-equivalence/ABBA followup, executed",
+      "task_path": "agents/backend/cpu-profile-20261028/prompt.md",
+      "human_code_edit": false,
+      "outputs": [
+        "tmp/788/profile",
+        "agents/backend/cpu-profile-20261028"
+      ]
+    },
+    {
+      "id": "ROLE-backend-RESPONSE-FASTPATH-20261028-v1",
+      "source": "actual coordinator PUBLIC/profile task and capacity-resumption dispatch",
+      "task_path": "agents/backend/p16-schema-response-20261028/prompt.md",
+      "human_code_edit": false,
+      "outputs": [
+        "tmp/788/schema-response",
+        "agents/backend/p16-schema-response-20261028"
+      ]
+    }
+  ],
+  "updated_at": "2026-10-25T06:30:25.669382+00:00",
+  "current_stage": "static write-path ledger and bounded contract comparison plan only; no load/source change; slot released",
+  "application_v1": {
+    "status": "27 HTTP self-tests passed:26 SQLite and1 actual MySQL8.4.11; real loopback Uvicorn running",
+    "entrypoints": [
+      "backend/t44/api.py",
+      "backend/t44/cli.py",
+      "backend/t44/services/",
+      "backend/t44/contracts/",
+      "backend/t44/resources/review-template.json"
+    ],
+    "tests": "agents/backend/application-contract-stage2.log",
+    "interface_comment": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6360456261",
+    "unverified": [
+      "messaging/scheduler facade integration",
+      "seed owner delivery",
+      "RabbitMQ",
+      "full t44 coverage",
+      "full workflow MySQL",
+      "performance",
+      "independent acceptance"
+    ],
+    "network_evidence": "agents/backend/application-network-smoke.json",
+    "service": {
+      "url": "http://127.0.0.1:18080/api/v1",
+      "pid": 14985,
+      "demo_project_id": 3,
+      "demo_iteration_id": 3,
+      "demo_task_id": 3,
+      "credentials": "ignored private0600 runtime JSON; path sent to coordinator/frontend, no secret in repository",
+      "snapshot": "b49a5de"
+    },
+    "mysql_configuration": "CI DATABASE_URL+T44_DATABASE exact match; local four-key file+explicit T44_HTTP_TEST_DATABASE; CI missing config fails",
+    "url_fixture_evidence": "agents/backend/application-mysql-url-fixture.log"
+  },
+  "integration_v1": {
+    "basis": "ef79f04323e05326d0d5a14b44af8c5e0a474690",
+    "result": "314 passed,0 failed,3 skipped(local Rabbit unavailable)",
+    "coverage_scope": "all backend/t44; no omit",
+    "statements": 2724,
+    "covered": 2391,
+    "line_percent": 87.77533039647577,
+    "branch_inclusive_percent": 85.36443148688046,
+    "evidence": [
+      "agents/backend/integration-full-second.log",
+      "agents/backend/integration-full-second.xml",
+      "agents/backend/integration-coverage-second.json",
+      "agents/backend/integration-38-http.json",
+      "agents/backend/integration-live-chain.json",
+      "agents/backend/integration-live-revocation.json"
+    ],
+    "still_required": [
+      "Rabbit success real CI",
+      "final source size",
+      "performance",
+      "independent acceptance"
+    ],
+    "all_http_operations": 38,
+    "actual_network_requests": 53,
+    "test_layout_commit": "5e07887",
+    "test_collection": "317 collected, integration-tmp-collection.log",
+    "current_test_command": "PYTHONPATH=backend .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend",
+    "owned_test_paths": [
+      "tmp/backend/contracts/985_mysql_http.py",
+      "tmp/backend/contracts/986_http.py",
+      "tmp/backend/contracts/987_faults.py",
+      "tmp/backend/backend/domain/994_transitions.py"
+    ]
+  },
+  "refactor_v1": {
+    "basis": "003ef6b",
+    "first_checkpoint": "729344e681253443c45dfbbec0ece97f68d2080f",
+    "remote_failure_run": "39937742613",
+    "remote_failure": "Ruff I001/F823;18 failed/299 passed; module namespace shadowed by local commands dict",
+    "failure_evidence": [
+      "agents/backend/refactor-ci-39937742613-failed.log",
+      "agents/backend/refactor-ci-39937737014.json"
+    ],
+    "changes": [
+      "direct domain module imports remove unused barrel",
+      "trusted Call.create shared context/insert-get",
+      "issue_session shared opaque session creation",
+      "cmd alias fixes observed namespace collision; assertions retained"
+    ],
+    "physical_line_delta_from_basis": -112,
+    "validation": "remote GHA39938619826 and39938612582 all four jobs success; local performance window quiet",
+    "unverified": [
+      "final whole-product cloc3500-5100",
+      "independent acceptance",
+      "formal performance conclusion",
+      "updated local live service after performance window"
+    ],
+    "tested_source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+    "remote_results": {
+      "source_commit": "64b4f891ee77eeb2b1054c3a40af084eb6691d5c",
+      "run_id": 39938619826,
+      "checkout_pr_merge_sha": "f5e9904c339e204574fcf2f630af28b0a6779e94",
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938619826",
+      "junit": {
+        "tests": 317,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "python_files": 43,
+      "scope": "all backend/t44; excluded_lines=0",
+      "covered_lines": 2406,
+      "statements": 2729,
+      "line_percent": 88.1641626969586,
+      "branch_percent": 76.47058823529412,
+      "branch_inclusive_percent": 85.73918094684868,
+      "marker_passed": {
+        "contract": 35,
+        "integration": 52,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "jobs": {
+        "static": "success",
+        "contracts": "success",
+        "coverage": "success",
+        "frontend": "success"
+      },
+      "warning": "one StarletteDeprecationWarning for FastAPI TestClient/httpx",
+      "limits": [
+        "remote developer CI, not independent acceptance or performance",
+        "CLI remains in full coverage denominator with 0 covered lines; prior live CLI evidence is separate",
+        "no local pytest/build/DB/HTTP during formal performance window",
+        "whole-product final source cloc not established by this change"
+      ]
+    },
+    "evidence": [
+      "agents/backend/refactor-ci-39938619826.json",
+      "agents/backend/refactor-ci-39938612582.json",
+      "agents/backend/refactor-ci-39938619826-coverage.log",
+      "agents/backend/refactor-ci-39938619826-contracts.log",
+      "agents/backend/refactor-ci-39938619826-static.log",
+      "agents/backend/refactor-ci-39938619826-coverage.json",
+      "agents/backend/refactor-ci-39938619826-junit.xml",
+      "agents/backend/refactor-validation-summary.json"
+    ],
+    "issue_stage": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362735528",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16",
+    "issue_final": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6362814205"
+  },
+  "performance_diagnostics_v1": {
+    "phase": "B contract validation short diagnostic executed; analysis only; no production optimization",
+    "basis": "397bd7973cfd835c635634d32e0c98ae56d74949",
+    "specified_parent_product": "43f51570e62e3160f7995c45bdddaf2f123242b3",
+    "artifacts": [
+      "tmp/backend/955_perf_profile.py",
+      "agents/backend/performance-diagnostics-plan.md",
+      "agents/backend/PERFORMANCE-DIAGNOSTICS-v1-prompt.md",
+      "agents/backend/profile-contract-03-analysis.md",
+      "agents/backend/profile-contract-03-summary.json",
+      "agents/backend/profile-contract-03-raw-manifest.json",
+      "agents/backend/profile-contract-03-metrics.zip",
+      "agents/backend/profile-offline-controller-check.json",
+      "agents/backend/profile-controller-fix-static.log",
+      "agents/backend/profile-offline-validation.log"
+    ],
+    "tool_status": "final assertion assignment fixed; original controller exit1 preserved; fixed controller not rerun",
+    "production_changes": false,
+    "isolated_target": "t44_profile /127.0.0.1:18083 /1worker; all three children exited0; no own load remains",
+    "blocked_execution_prerequisites": [
+      "new coordinator window and scope required for any further load"
+    ],
+    "unverified": [
+      "pure pool checkout versus pre_ping/new connection versus driver/network scheduling",
+      "DB internal CPU/locks and write/escalation endpoint attribution",
+      "corrected controller runtime result",
+      "optimization benefit, formal performance and source-size compliance"
+    ],
+    "independence": "no unreleased independent report/scripts read; no tester contact; existing immutable services/databases untouched",
+    "next_priority": "use retained valid samples; coordinator chooses next scoped measurement/optimization",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366172145",
+    "execution_gate": "No further live load without coordinator; offline only after RuntimeError",
+    "source_identity": "actual imported module paths/key file SHA; reject other source tree or dirty product code",
+    "first_cohort": "contract validation1:1:1;1worker,client1/8/32shortsamples,profile1worker3requests",
+    "setup_evidence": [
+      "agents/backend/profile-first-launch-failure.json",
+      "agents/backend/profile-bootstrap-failure.json",
+      "agents/backend/profile-bootstrap-attempts.json",
+      "agents/backend/profile-proxy-static.log",
+      "agents/backend/profile-window2-lifecycle-failure.json"
+    ],
+    "resource_release": "PIDs42015/42103/42148 normal exit0, no forcedkill, root notified quiet window released",
+    "production_source": "4c20f32b71635016815420472b9d4bb4fa850df0 byte-identical; CI394 pass",
+    "controller": {
+      "mode": "orchestrate",
+      "sample_seconds": 10,
+      "baseline_and_timings_concurrency": [
+        1,
+        8,
+        32
+      ],
+      "sanity_and_profile": "1worker3validrequests,categories1/2/3",
+      "server_max_lifetime_seconds": 120,
+      "overall_limit_seconds": 160,
+      "normal_shutdown": "ownedchildSIGTERM+wait5s;finallycleanup;forcedkillrecordedandrunfails",
+      "argv": "recordactualserver/clientargv+start/endUTC+exitcodes;noDSN/password/tokeninargv",
+      "static": "post-fix Ruff/format/AST passed; offline original profile category assertion passes; no rerun"
+    },
+    "measured_run": {
+      "tool_source": "245e56b9866b34d5c75b5d0670ba735a5ee75249",
+      "window": {
+        "started_at": "2026-10-23T13:18:49.973332+00:00",
+        "ended_at": "2026-10-23T13:19:57.093091+00:00",
+        "wall_seconds": 67.11943487502867
+      },
+      "controller_exit": 1,
+      "failure": "RuntimeError: profile assertion used stale bootstrap metadata",
+      "valid_main_samples": 18289,
+      "sanity_samples": 3,
+      "errors": 0,
+      "records_matched": 9099,
+      "all_child_exits": 0,
+      "baseline_p95_ms": [
+        5.44375,
+        33.143209,
+        149.208
+      ],
+      "timings_p95_ms": [
+        4.856042,
+        35.18475,
+        151.56425
+      ],
+      "summary": "agents/backend/profile-contract-03-summary.json",
+      "raw_archive_sha256": "707ead0d4d6b6083ccafccbf7740b6468145554d966794eadb3a6b1a6c3c1a9d"
+    },
+    "optimization_design": {
+      "status": "exact source5dcb full CI412pass; only one readonly endpoint changed; no latency benefit measured",
+      "basis": "c83f627331acf43fb508fac7e16525a48c0389ab",
+      "rfc": "specs/changes/contract-validation-read-uow-rfc.md",
+      "rfc_sha256": "8cdfc9b29bf7ed36022ef54d6d3dac4df8b03f06228cdf22da9c939b827d818a",
+      "unapplied_patch": "agents/backend/drafts/contract-validation-read-uow.patch",
+      "receipt": "agents/backend/profile-read-uow-design-receipt.json",
+      "only_operation": "validateContractPayload",
+      "old_selects": [
+        8,
+        9,
+        9
+      ],
+      "predicted_selects": [
+        4,
+        5,
+        5
+      ],
+      "predicted_acquires": 1,
+      "production_delta_lines": 7,
+      "draft_net_lines": 7,
+      "new_read_locks": false,
+      "retracted_option": "Initially proposed session/member S locks; withdrawn after coordinator/reviewer clarified minimum in-flight semantics; not a discovered vulnerability",
+      "tests": "appended18 meaningful cases: HTTP/SQLite11 + real MySQL7; before9failed9passed; after18pass; no original assertion changed",
+      "risks": [
+        "no overall four-table atomic authorization snapshot; in-flight reads may finish",
+        "connection held during CPU-only validation; throughput benefit unproven",
+        "future identity.active management requires separate review"
+      ],
+      "write_paths": "byte-identical existing write path; only added contract-validation branch and now import",
+      "execution": "no production edits, HTTP/DB/service/load or pytest in design phase",
+      "next": "release slot; coordinator may later request write-path static ledger or separately schedule profile comparison",
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366478169",
+      "implementation": {
+        "design_parent": "3187bc6615a821f1123ef10f64d99b7a39a9862d",
+        "only_file": "backend/t44/services/runtime.py",
+        "line_delta": 7,
+        "actual_mysql_selects": [
+          4,
+          5,
+          5
+        ],
+        "actual_mysql_acquires": [
+          1,
+          1,
+          1
+        ],
+        "no_new_read_locks": true,
+        "freeze14_match": true,
+        "summary": "agents/backend/read-uow-validation-summary.json",
+        "logs": [
+          "agents/backend/read-uow-http-before.log",
+          "agents/backend/read-uow-http-before.xml",
+          "agents/backend/read-uow-mysql-before.log",
+          "agents/backend/read-uow-mysql-before.xml",
+          "agents/backend/read-uow-http-after.log",
+          "agents/backend/read-uow-http-after.xml",
+          "agents/backend/read-uow-mysql-after.log",
+          "agents/backend/read-uow-mysql-after.xml",
+          "agents/backend/read-uow-static.log"
+        ],
+        "unverified": [
+          "latency benefit/formal performance",
+          "source-size compliance",
+          "independent acceptance"
+        ],
+        "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367359611",
+        "ci": {
+          "source_sha": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+          "run": 39970988113,
+          "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39970988113",
+          "status": "allfourjobs success",
+          "junit": {
+            "tests": 412,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "markers": {
+            "fault": {
+              "tests": 11,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "integration": {
+              "tests": 70,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "contract": {
+              "tests": 114,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          "marker_counts_overlap": true,
+          "production_python_files": 43,
+          "excluded_lines": 0,
+          "coverage_totals": {
+            "covered_lines": 2550,
+            "num_statements": 2872,
+            "percent_covered": 86.65021929824562,
+            "percent_covered_display": "86.65",
+            "missing_lines": 322,
+            "excluded_lines": 0,
+            "percent_statements_covered": 88.7883008356546,
+            "percent_statements_covered_display": "88.79",
+            "num_branches": 776,
+            "num_partial_branches": 107,
+            "covered_branches": 611,
+            "missing_branches": 165,
+            "percent_branches_covered": 78.73711340206185,
+            "percent_branches_covered_display": "78.74"
+          },
+          "line_coverage_percent": 88.7883008356546,
+          "branch_coverage_percent": 78.73711340206185,
+          "artifact_checkout": "320272ca1d11f103367af6780b725fb15332cf6d",
+          "original_files_sha256": {
+            "coverage.json": "811c226ce19c2e5703a247b1ded0c80987d3a04141cb34f5b3339d2605da05d3",
+            "junit.xml": "0b439b64e2364d0f45e1ed1f6dc12099c41c423eec3e4b9dd4d6e44d0805d3f9"
+          },
+          "scope": "exact-source Linux CI with real MySQL/Rabbit services; not independent acceptance or performance/size pass",
+          "minimal_archive": "full downloaded originals retained ignored private runtime; selected raw coverage/JUnit plus metadata archived now; no latency rerun",
+          "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6367573515"
+        }
+      }
+    },
+    "write_path_followup": {
+      "basis": "22647b4eef87f7486293c64dc6d0b3d6809b1a53; production5dcb73c",
+      "ledger": "agents/backend/write-path-static-ledger.md",
+      "ledger_sha256": "a3ad87e78bd378c0426e9026e163bb6d7e43da87aa7a875ef1d382ec6ed8132e",
+      "plan": "agents/backend/contract-short-compare-plan.md",
+      "plan_sha256": "ab6c228c9a91833f4493dcc3a748cb30f7fdf6304678589975d53c0318d809fe",
+      "status": "static only; no production/test/frozen change, SQL/HTTP/service/pytest/load",
+      "new_tool930": "reserved, not created; no next script allocation used",
+      "candidate": "guard-specific dependency loading and empty-IN skip; not implemented; all current locks retained",
+      "comparison": "A4c20/B5dcb, same own profile fixture,1worker,8concurrency,120warmup;ABBA4x8s;deadline90s;notrun",
+      "unknown": [
+        "formal400task project distribution",
+        "R/M/N in formal report",
+        "actual write-path SQL trace/latency attribution",
+        "any new comparison/optimization benefit"
+      ],
+      "locks": "no S/X RFC proposed, no project lock or join changes",
+      "next": "release slot for frontend; root must separately admit code/tool and quiet window after UI",
+      "source_size": "still unresolved; no line reduction or performance pass claimed",
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6368102715"
+    }
+  },
+  "iat_repairs_v1": {
+    "source_report_verification": "agents/backend/iat-public-report-verification.json",
+    "IAT-v1-01": {
+      "status": "fixed with32 HTTP/SQLite tests passed; original2fail preserved",
+      "changes": [
+        "new assessment clears approval pointers within existing task CAS",
+        "only latest rollback_plan_version can be reviewed",
+        "replay returns saved snapshot without repeated invalidation"
+      ],
+      "evidence": [
+        "agents/backend/iat01-before.log",
+        "agents/backend/iat01-before.xml",
+        "agents/backend/iat01-failure-provenance.json",
+        "agents/backend/iat01-after.log",
+        "agents/backend/iat01-after.xml",
+        "agents/backend/iat01-ruff-initial.log",
+        "agents/backend/iat01-ruff.log",
+        "agents/backend/iat01-bandit.json"
+      ],
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363586113",
+      "remote_ci": "65007a source product39944613492 success; newer combined fixes need fresh CI"
+    },
+    "pending": [],
+    "unverified": [
+      "independent retest",
+      "performance thresholds",
+      "final source range"
+    ],
+    "IAT-v1-02..05": {
+      "status": "55 real HTTP/SQLite cases passed; Ruff/Bandit passed",
+      "scope": [
+        "owner is listed in createTask iteration.capacity only",
+        "invalid resource/attempted references bounded for independent rejection audit",
+        "complete public task/rework plan fields and versions,2000chars retained",
+        "required evidence vs parameter vs candidate error branches per frozen operation"
+      ],
+      "before": [
+        "13 failed for02-04",
+        "8failed/2passed for05"
+      ],
+      "evidence": [
+        "agents/backend/iat02-04-before.log",
+        "agents/backend/iat02-04-before.xml",
+        "agents/backend/iat05-before.log",
+        "agents/backend/iat05-before.xml",
+        "agents/backend/iat02-05-final.log",
+        "agents/backend/iat02-05-final.xml",
+        "agents/backend/iat02-05-ruff-final.log",
+        "agents/backend/iat02-05-bandit-final.json"
+      ],
+      "mysql_cases": "added in existing985, not run locally; awaiting new source CI",
+      "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6363885608"
+    },
+    "combined_ci": {
+      "tested_product_source": "479fc8fbb1c1abac1055a25f935d30c247c90f69",
+      "run": 39946771417,
+      "status": "all four product jobs success",
+      "junit": {
+        "tests": 362,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "mysql_http_cases": [
+        {
+          "name": "test_real_mysql_atomic_workflow_and_competing_cas",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[True]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_assessment_supersession_and_creation_replay[False]",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_invalid_selectors_keep_independent_rejection_audits",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_capacity_plan_audit_and_input_errors",
+          "classname": "contracts.985_mysql_http"
+        },
+        {
+          "name": "test_real_mysql_concurrent_notification_cas_exactly_one_update[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_list_scope_serializes_with_membership_revocation[mysql]",
+          "classname": "messaging.979_facade"
+        },
+        {
+          "name": "test_real_mysql_worker_default_confirmed_recovery_preserves_complete_event[mysql]",
+          "classname": "messaging.980_delivery"
+        }
+      ],
+      "coverage_scope": "all43 backend/t44 files,excluded_lines0",
+      "totals": {
+        "covered_lines": 2524,
+        "num_statements": 2850,
+        "percent_covered": 86.33351739370514,
+        "percent_covered_display": "86.33",
+        "missing_lines": 326,
+        "excluded_lines": 0,
+        "percent_statements_covered": 88.56140350877193,
+        "percent_statements_covered_display": "88.56",
+        "num_branches": 772,
+        "num_partial_branches": 109,
+        "covered_branches": 603,
+        "missing_branches": 169,
+        "percent_branches_covered": 78.10880829015544,
+        "percent_branches_covered_display": "78.11"
+      },
+      "markers": {
+        "contract": 64,
+        "integration": 56,
+        "fault": 7
+      },
+      "marker_counts_overlap": true,
+      "not_claimed": [
+        "independent retest",
+        "formal performance",
+        "final3500-5100source range"
+      ]
+    }
+  },
+  "capacity_v11": {
+    "basis": "eac253039cd85873d3b262e648b2b74d94d715a8",
+    "rfc": "bbc4be681f19a386fbca40baf97a63ab902b3f89",
+    "rfc_sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+    "status": "production guards/locks implemented after formalfreeze merge; not deployed; fullCIpending",
+    "paths": 31,
+    "operations": 38,
+    "DDL": "18tables226columns unchanged",
+    "artifacts": [
+      "specs/contracts/openapi.json",
+      "backend/t44/contracts/openapi.json",
+      "specs/contracts/README.md",
+      "specs/backend-design.md",
+      "agents/backend/CAPACITY-V11-IMPLEMENT-v1-prompt.md",
+      "agents/backend/capacity-v11-contract-validation.log",
+      "agents/backend/capacity-v11-contract-validation.json",
+      "agents/backend/capacity-v11-before.log",
+      "agents/backend/capacity-v11-before.xml",
+      "tmp/validation/995_contract_design_v2.py",
+      "agents/backend/capacity-v11-995-before.log",
+      "agents/backend/capacity-v11-995-after.log",
+      "agents/backend/capacity-v11-prefreeze-correction.json",
+      "agents/backend/capacity-v11-postfreeze-validation.json",
+      "agents/backend/capacity-v11-postfreeze-http.log",
+      "agents/backend/capacity-v11-postfreeze-http.xml",
+      "agents/backend/capacity-v11-postfreeze-mysql.log",
+      "agents/backend/capacity-v11-postfreeze-mysql.xml",
+      "agents/backend/capacity-v11-ceiling-before.log",
+      "agents/backend/capacity-v11-ceiling-before.xml",
+      "agents/backend/capacity-v11-ceiling-after.log",
+      "agents/backend/capacity-v11-ceiling-after.xml",
+      "agents/backend/capacity-v11-ruff-initial.log",
+      "agents/backend/capacity-v11-ruff-final.log",
+      "agents/backend/capacity-v11-bandit.json"
+    ],
+    "scope": [
+      "assignment receiver must be current effective developer and in iteration.capacity",
+      "new iteration capacity covers all owners of states1-5,not onlyremoved entries",
+      "states6/7 may leave capacity;action9rework rechecks effective developer+capacity",
+      "project member/developer removal protection1-5+7 unchanged",
+      "shared project lock for assignment/createTask/createIteration/changeIteration/rework",
+      "reuseID30;assignment/rework422;oldv1manifest unchanged"
+    ],
+    "checks": "real openapi_spec_validator+38operationerrorresponse/caseconsistency+copy/version/request/nonMeta invariance passed",
+    "before_regression": "new986draft13cases onoldproduction logic11failed2passed55deselected;raw log/XML preserved",
+    "unverified": [
+      "frontendrealcapacitylifecycleUI",
+      "independentretest",
+      "formalperformance",
+      "source-size3500-5100"
+    ],
+    "next": "handoff capacity implementation; committed toolcontroller awaits separate rootquietwindow",
+    "prefreeze_correction": {
+      "coordinator_metadata_source": "9aeb40c48c35139e29a5e997253d606e5c96139a",
+      "only_delta_to_that_contract": "changeTaskAssignment.description separatesOWNER_NOT_PROJECT_DEVELOPERfromCAPACITY_REFERENCE_INVALID",
+      "runtime_copy_identical": true,
+      "sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "995_before": "1130checks/38ops/2fail due to obsolete0.1.0-draft fixture",
+      "995_after": "1130checks/38ops/0fail; fixture usesSPEC.info.version; no old assertions removed",
+      "guard_implementation_in_this_checkpoint": false,
+      "new_parent_freeze": "pending coordinator manifest"
+    },
+    "formal_freeze": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+    "postfreeze_validation": {
+      "recorded_at": "2026-10-23T12:45:47.373977+00:00",
+      "postfreeze_base": "189dc4a3196be0fb84b753f23284f2566d823ea0",
+      "manifest_sha256": "c95076a1598eb56b9bb34923ba712acb18cdc2de64db5e5b8117203b22ada96c",
+      "all14_frozen_files_unchanged": true,
+      "contract_sha256": "a77a5cd635b8f6a9927b60f9befac017055442504e34a95b40eddda809e2782f",
+      "postfreeze_working_tree_files_sha256": {
+        "backend/t44/services/common.py": "631b7bfc748ad2f7cbf047e4a03fd243db529314b1bca3d5c02a4bb7022508c7",
+        "backend/t44/services/projects.py": "2449516069bd48b1b17e0cf946e4e6b4055071be87f9af3106e9fd7dd208d84e",
+        "backend/t44/services/runtime.py": "a43febb12e391588548a047674efbcae78d9f40d70d7713ba005713d3d31e942",
+        "backend/t44/services/tasks.py": "d04c62f372a30f29510997355734ac398715c4356ddd4dae4d4d68852f3a4607",
+        "backend/t44/services/workflow.py": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc",
+        "tmp/backend/contracts/985_mysql_http.py": "fdf927abe36d348df065ed1b3e6894ba7cf398293b4a41592db1647be063072e",
+        "tmp/backend/contracts/986_http.py": "df85587bd71f8c430b81c791c16a1924343ed604262c682b7d1a4a369f147fe1",
+        "tmp/backend/persistence/975_seed.py": "82bc2089cf588e7c6129d658eeb9036944478159d91d08a42cafeddbd822223e"
+      },
+      "http_sqlite": "21 capacity+guardpriority cases passed on first postfreeze draft; added version-ceiling case failed once then passed after fix; final common source awaits CIall",
+      "mysql": "7newcases passed/5oldcases deselected;MySQL8.4officialprojectt44_test;own synthetic project prefixes only",
+      "race_cases": "assignment/create/rework x capacity-first/action-first with overlapping requests and actual held project lock; plus safehandover+oldownerremovalbothcommit",
+      "fixture_limit": "terminalstates set by explicit synthetic fixtures; not an end-to-end deliveryhistory claim",
+      "static": "full strict localRuff passed after root-authorized existing975contextstylefix;7changedfilesformatpassed;Banditpassed",
+      "scope": "development regression; not independent acceptance/performance/source-sizepass"
+    },
+    "ci_failure": "8f6e75d product39956073530/66523:391 tests,2fail,0error/skip; inner candidate const1.0.0 versus wrong VERSION1.1.0",
+    "schema_version_repair": {
+      "code": "Business.validateContractPayload reads frozen ContractValidationResult.schema_version.const; Meta still1.1.0",
+      "local_before": "3categories actualHTTP500",
+      "local_after": "3positivecategories+7UTCdomaincases=10passed",
+      "freeze_changed": false,
+      "evidence": [
+        "agents/backend/capacity-v11-ci-failure-provenance.json",
+        "agents/backend/capacity-v11-schema-version-before.log",
+        "agents/backend/capacity-v11-schema-version-after.log"
+      ],
+      "source_checkpoint": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "source_checkpoint_files": [
+        "backend/t44/services/application.py",
+        "tmp/backend/contracts/986_http.py"
+      ],
+      "evidence_checkpoint": "following separate evidence-only commit; not contained in source checkpoint"
+    },
+    "combined_ci": {
+      "source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "run": 39958165108,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39958165108",
+      "status": "allfourjobs success",
+      "junit": {
+        "tests": 394,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "markers": {
+        "contract": {
+          "tests": 96,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "integration": {
+          "tests": 63,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "fault": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "marker_counts_overlap": true,
+      "production_python_files": 43,
+      "coverage_totals": {
+        "covered_lines": 2542,
+        "num_statements": 2865,
+        "percent_covered": 86.56224237427865,
+        "percent_covered_display": "86.56",
+        "missing_lines": 323,
+        "excluded_lines": 0,
+        "percent_statements_covered": 88.7260034904014,
+        "percent_statements_covered_display": "88.73",
+        "num_branches": 774,
+        "num_partial_branches": 108,
+        "covered_branches": 608,
+        "missing_branches": 166,
+        "percent_branches_covered": 78.55297157622739,
+        "percent_branches_covered_display": "78.55"
+      },
+      "full_source_coverage_denominator": true,
+      "excluded_lines": 0,
+      "new_metadata_cases": [
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[1]",
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[2]",
+        "test_contract_validation_keeps_candidate_schema_version_separate_from_envelope[3]"
+      ],
+      "original_failed_boundary_cases_now_pass": [
+        "test_utc_domain_readonly_and_mutation_match[1000-01-01T00:00:00Z-True]",
+        "test_utc_domain_readonly_and_mutation_match[9999-01-01T00:00:00Z-True]"
+      ],
+      "provenance": [
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-coverage.json",
+          "sha256": "4ce9324f9403528b79ba713a86793b46d65bc0803dc87a13412c75d0c9b686d8",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/coverage.json"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-junit.xml",
+          "sha256": "3797240e47d6751f8d052d6c410790d45ca188709492ca5a500b44f5db0088b6",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/junit.xml"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-coverage.log",
+          "sha256": "0c20d0e0a920104f4753f6c139b865241b579b161a5d4b5884ef175fc3714e97",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/coverage/coverage-54ef6787d2ece62c977280d7367a569c520a36a5/coverage/console.log"
+        },
+        {
+          "file": "agents/backend/capacity-v11-ci-39958165108-contracts.log",
+          "sha256": "d3134c226a3382df2587764763ec726ee9f5e258feaad13957650545967da2e5",
+          "private_original": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/backend-capacity-v11-ci/39958165108/contracts/contracts-54ef6787d2ece62c977280d7367a569c520a36a5/contracts/console.log"
+        }
+      ],
+      "limits": [
+        "developmentCI not independentacceptance",
+        "formalperformance notpassed",
+        "source-size3500-5100notpassed"
+      ],
+      "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6366169525"
+    }
+  },
+  "night_abba_tool": {
+    "branch": "codex/backend-contract-abba",
+    "merge_base": "2a34243476461f4aab0c29ec383aa37766b93c9c",
+    "tool": "tmp/backend/930_contract_abba.py",
+    "sources": {
+      "A": "4c20f32b71635016815420472b9d4bb4fa850df0",
+      "B": "5dcb73cc10c38deb14fae68d33318b04d538fecf"
+    },
+    "plan": "agents/backend/contract-short-compare-plan.md",
+    "preparation": "agents/backend/abba-tool-preparation.md",
+    "static": "agents/backend/abba-tool-static.json",
+    "checks": "11offline helperchecks+explicit projectRuff/format passed; implicit defaultconfig failure preserved",
+    "execution": "root coordinator executed once; overall0/39.88s,18083closed observed by root",
+    "scope": "own t44_profile/18083/1worker/40threads/pool5+10,ABBA4x8s at8concurrency,deadline90s",
+    "production_delta": 0,
+    "unresolved": [
+      "formal performance",
+      "actual ABBA result",
+      "source6051exceeds5100",
+      "independent acceptance"
+    ],
+    "next": "static RFC with error/lock/revoke/idem/audit/outbox/CommitUncertain protections; no production or load without root approval",
+    "tool_checkpoint": "5b0e1529e5e56e1e76aef557012da79807ad8e04",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6371903455",
+    "pr_comment": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6371904025",
+    "publication": "agents/backend/contract-abba-night-01/publication.json",
+    "interpretation": "agents/backend/contract-abba-interpretation.md",
+    "verification": "agents/backend/contract-abba-interpretation.json",
+    "main_requests": 15557,
+    "errors": 0,
+    "result_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372543944",
+    "result_pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372544653"
+  },
+  "runtime_roundtrip_rfc": {
+    "path": "specs/changes/runtime-roundtrip-reduction-rfc.md",
+    "base_production": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+    "recommendation": "A preflight only first: preserve two auth in first UoW and original main auth;3to2UoW,SELECTunchanged",
+    "patch_budget": "agents/backend/runtime-plan-loc-budget.json",
+    "static": "agents/backend/runtime-plan-static.json",
+    "patches": [
+      "agents/backend/runtime-plan-preflight-not-applied.patch",
+      "agents/backend/runtime-plan-dependencies-not-applied.patch",
+      "agents/backend/runtime-plan-validator-not-applied.patch"
+    ],
+    "semantics": [
+      "RC statement snapshots, no identity cache",
+      "ordinary connection held during local validation, no earlier S lock",
+      "read commit fault point removed; validation rollback differs",
+      "main locks/CAS/owner fence/audit/outbox/uncertain commit preserved"
+    ],
+    "new_code_execution": "none",
+    "production_delta": 0,
+    "frozen14": "unchanged",
+    "next": "root choose one and limited review/admission; no automatic implementation or load",
+    "size": "A-1/B+6/C-10 are draft text counts only;6051baseline still exceeds5100",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6372757511",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6372758155",
+    "caller_erratum": {
+      "report": "agents/backend/preflight-caller-correction-design.json",
+      "patch": "agents/backend/runtime-plan-preflight-corrected-not-applied.patch",
+      "old_missing_caller_statement": "incorrect; actualscanner.authorize andDB oldclaim callers",
+      "original_A_targeted": "25passed",
+      "caller_before": "2failed AttributeError,preflight-caller-before.log/xml",
+      "root_correction": "816ba60",
+      "proposal": "restoreauthorize + claim(call)thin UoW wrapper/private_claim; no DB/scheduler edit",
+      "corrected_cloc_delta": 6,
+      "status": "designerratum5a19f80 committed before correction; correction now implemented"
+    }
+  },
+  "runtime_preflight_implementation": {
+    "summary": "agents/backend/preflight-validation-summary.json",
+    "before": "14newstructuralfail/11semanticpass on5dcb",
+    "original_A": "25pass",
+    "caller_before": "2AttributeError fail",
+    "corrected": "2originalcaller+5newledger passed; samebatch1CASfixtureisolation fail retained",
+    "final_CAS_keys": "2pass plan-before-CAS with actual2keys/allCOMPLETE/exactresponse_request_id",
+    "production": "runtime.py only, +6cloc/+8physical",
+    "frozen14": "unchanged",
+    "unchanged_cross_owner": [
+      "backend/t44/scheduling",
+      "tmp/backend/persistence/988_mysql.py"
+    ],
+    "static": "Ruff/format/Bandit passed",
+    "database": "t44_test isolated fixtures only; no performance samples",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373129344",
+    "pr": "https://github.com/HJY147/t44-dev-trace/pull/16#issuecomment-6373129804",
+    "CI": {
+      "summary": "agents/backend/preflight-ci-summary.json",
+      "source": "7584cd31f0abfd6727d552b5fef31a9303247d58",
+      "run": 40012517513,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40012517513",
+      "status": "all4jobs success",
+      "tests": 437,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "markers": {
+        "contract": 139,
+        "integration": 84,
+        "fault": 17
+      },
+      "marker_counts_overlap": true,
+      "files": 43,
+      "excluded_lines": 0,
+      "line": "2558/2878=88.881167%",
+      "branch": "612/778=78.663239%",
+      "archive": "agents/backend/preflight-ci-40012517513",
+      "source_count": 6108,
+      "within_range": false
+    },
+    "next": "root dedicated review and integration; Issue28 separate design-only branch, no performance without window",
+    "PR29": "https://github.com/HJY147/t44-dev-trace/pull/29",
+    "actual_review_target": "review_backend_preflight COMMENT on7584, not oldreviewer_v11_implementation",
+    "old_PR16": "history only; not forceupdated",
+    "CI_issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6373351698",
+    "CI_PR": "https://github.com/HJY147/t44-dev-trace/pull/29#issuecomment-6373352190",
+    "metadata_commit_scope": "evidence-only [skip ci] permitted byroot; production/tests/config byteidentical7584"
+  },
+  "plan_history_reason_design": {
+    "base": "982623381e9cfa1d6a7bad1de222e160503cbf08",
+    "branch": "codex/backend-plan-reason",
+    "prompt": "agents/backend/PLAN-REASON-DESIGN-dispatch.md",
+    "rfc": "specs/changes/plan-history-reason-projection-rfc.md",
+    "examples": "agents/backend/plan-reason-design-examples.json",
+    "static": "agents/backend/plan-reason-design-static.json",
+    "wire": "existing AuditEvent.after[{field:reason,value:raw text}], no frozen field/version change",
+    "old_history": "exact project/task/schedule from-to/task version/actor/microsecond time/full five-plan/evidence; immutable read projection only, no guessing",
+    "iteration": "changeIteration does not reschedule tasks; old audit lacks sufficient linkage and stays unavailable",
+    "db_proposal": "RowsGateway.task_schedule_changes(project_id,pairs), <=100 exact pairs, empty zero SQL, one parameterized bounded batch, full decoded rows/stable sort; needs DB owner",
+    "db_delivery": "old /database message failed agent thread limit reached; not delivered/confirmed; root will dispatch new DB instance",
+    "frontend": "current frontend_logout notified; existing Issue28 comment6373333383 requires raw text/title and relevant-record missing marker; unimplemented",
+    "validation": "8 AuditEvent examples schema-only passed with FormatChecker;14freeze hash unchanged;31paths/38ops",
+    "not_run": [
+      "matcher",
+      "SQL",
+      "HTTP",
+      "pytest",
+      "full CI",
+      "performance",
+      "independent acceptance"
+    ],
+    "production_delta": 0,
+    "estimated_future_effective_loc_delta": [
+      66,
+      121
+    ],
+    "loc_budget_is_measured": false,
+    "size_limit": "root prior6108 exceeds5100; no new whole-source count or claimed improvement",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373605774",
+    "readback_matches": true,
+    "ci_skip": "root explicitly allowed design-only [skip ci]",
+    "next": "root review -> DB owner fixed gateway -> explicit implementation admission -> existing986/985 meaningful red/green and owned realMySQL fixtures; frontend separately assigned",
+    "new_script_number_used": null
+  },
+  "plan_history_reason_implementation": {
+    "source": "0549ea89ce218ecb945cd4346671f20d46fad215",
+    "base": "6205b85e14277ce8cb1d06c12b85a76c2228ad38",
+    "branch": "codex/backend-plan-reason",
+    "db_gateway_source": "3b7bc0c92f92a20bc69ee76293f547fe9f1e9a9a",
+    "prompt": "agents/backend/PLAN-REASON-IMPLEMENT-dispatch.md",
+    "evidence": "agents/backend/plan-reason-implementation/summary.json",
+    "actual": "schedule_diff reason same original transaction; existing authorized audit page plus0/1 exactpairs read; response copy only",
+    "history_guards": "exact project/task,fromto schedule versions,task CAS expected,actor,UTC microsecond,complete five canonical plan/evidence; existing reasons preserved; related duplicates rejected; unrelated details kept",
+    "no_guess": "olditeration,missing/ambiguous/nonproducer spelling/full50 unavailable; no immutable or replay update",
+    "final": "18passed0failure/error/skip;11SQLiteHTTP incl1existing five-plan regression;7realMySQLHTTP; previous12/16/18overlap",
+    "failures": "unsupported sort fixture422 corrected without API change; oldsource corrected2red; writer3red; canonical2draftred; unrelatedduplicate2draftred retained",
+    "database": "only t44_test UUID synthetic HTTP fixtures; no clear/stop/independent data; controlled wrappers not physical outages",
+    "static": "strictRuff/5format/Banditpassed;14hashunchanged;runtime/DBbytesunchanged;original986/985prefixunchanged",
+    "loc_net_measured": 95,
+    "prior_root_application": 6186,
+    "derived_application_if_other_bytes_same": 6281,
+    "whole_project_recount": false,
+    "within_range": false,
+    "new_runtime_dependencies": "none;existinghashlock/t44.api:app/6205DBfixedgateway",
+    "new_script_number_used": null,
+    "ci": "not started;rootcombinesfrontendfirst,sourcecheckpointskipci",
+    "unverified": [
+      "fullcombinedCI",
+      "dedicatedsource-review",
+      "same-sourceUI",
+      "independentacceptance",
+      "formalperformance",
+      "source-sizepass"
+    ],
+    "next": "root exactAPI runtime to frontend872,combine once CI/review; no self-started service/load",
+    "archive_timing": "source0549 pushed before evidence-only commit; not all artifacts were in source checkpoint",
+    "production_python_files_in_source": 44,
+    "issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374349961",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374350449",
+    "readback_matches": true
+  },
+  "plan_history_reason_evidence_fix": {
+    "finding": "HISTORY-EVIDENCE-01/P2",
+    "identified_by": "AI reviewer review_backend_preflight",
+    "fixed_by": "AI backend,not student manual edit",
+    "original_target": "42243eb23aedf0edda7541ad83fd87ec3d17b616 / backend0549",
+    "original_review": "not passed, retained despite old504CI success",
+    "design_first": "ad6a9b3f63b1bd810df1e71cfef39cb2cc134baf",
+    "source": "bcb0e1bbb1440df958a04e87afea0e5b015d2f17",
+    "prompt": "agents/backend/PLAN-REASON-EVIDENCE-dispatch.md",
+    "summary": "agents/backend/plan-reason-evidence-type/summary.json",
+    "before": "6newactualSQLiteHTTP2fail4pass,booloriginalcounterexample+1/1.0adjacentrepresentation",
+    "after": "7passed0failure/error/skip,6new+1existingnormallegacy;overlaps old18/504",
+    "change": "both frozenEvidenceRefs valid; exact JSON sortedobjectkeys,arrayorder,stringvalues/types;no bool-number alias/no trim/no change newinputnormalization",
+    "scope": "actual synthetic SQLite JSON columns/TestClient/RowsGateway,no gateway/matcher mock;no MySQL/server/load/private independent inputs",
+    "static": "strictRuff/format/Bandit;14freeze unchanged;original986prefix/runtime/DB unchanged",
+    "loc_net_vs0549": 4,
+    "backend_issue28_net_vs6205": 99,
+    "global_range": "still unmet;no new globalcount",
+    "production_python_files": 44,
+    "full_new_source_CI": "rootwillrun separately;old42243/504notapplied",
+    "next": "root precise combined CI + dedicated rereview + later independent verification;no oldbrowser/fullsuite repeat",
+    "archive_timing": "ad6design/prompt beforebcb0;executionevidence sealed afterwards",
+    "github_comments": {
+      "issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374617443",
+      "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374617903"
+    },
+    "readback_matches": true
+  },
+  "source_budget_validator_profile": {
+    "branch": "codex/backend-source-budget-profile",
+    "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-source-budget-profile",
+    "base": "cee7a574fb2061c76123070e304655b6c12db967",
+    "application": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "prompt": "agents/backend/SOURCE-BUDGET-PROFILE-dispatch.md",
+    "design_first": "84fee74443ea118cbaf9d541a0d642e4e19377d2",
+    "tool_commit": "964f4bb4796c6bcfa546f3ccba157ce2c5b88515",
+    "plan": "agents/backend/source-budget-profile/design.md",
+    "n07": "agents/backend/source-budget-profile/n07-source-budget-one-page.md",
+    "summary": "agents/backend/source-budget-profile/summary.json",
+    "raw": "agents/backend/source-budget-profile/raw.json",
+    "result": "agents/backend/source-budget-profile/result.md",
+    "execution": "only1optin batch,exit0;mainwall0.350673s/cpu0.350167s;under15s cap",
+    "samples": "19synthetic,errortriples+fullcounts same;unknownlocalrefbothfailclosed;570iterjobs/3450errors/30exceptions eachmode",
+    "measurement": "constructcpu3.670ms/0.438ms,iter95.267/87.347ms;constructshare3.7094%ofthese2components only;prebuildcostseparate",
+    "instance_boundary": "distinctvalidators/interleavedgenerators;prototypeFormatChecker sharedreadonly,no threadproof",
+    "source_size": "fixed6307gap1207;productionreduction0;oldC-10draftunapplied leavesconditional1197gap;noothernetproven",
+    "boundaries": "app/lock/14freeze/metricsunchanged;noHTTP/SQL/browser/credentials/privateinputs/servers/load",
+    "limits": [
+      "singlefixedorder",
+      "synthetic105errorcasebiasedmix",
+      "notfull38HTTP",
+      "notthreadsafeproof",
+      "notformalP95explanation",
+      "notN07pass"
+    ],
+    "next": "root decide only after formal results;separate design/review before anyproductionC;no automaticB/C/load",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6375961904",
+    "readback_matches": true
+  },
+  "bc5_contract_diagnostics": {
+    "branch": "codex/backend-bc5-diagnostics",
+    "application": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "prompt": "agents/backend/BC5-CONTRACT-DIAGNOSTICS-dispatch.md",
+    "design_first": "08f8050d44b5bcc2786192514f65fa35fc1c6975",
+    "first_tool": "231445d61f708894cb73fa7a51d740d065870e29",
+    "continuation_design_tool": "44b9e8c48e2beb2c0ed52fb4b2d92787d46ef48a",
+    "result": "agents/backend/bc5-contract-diagnostic/result.md",
+    "summaries": [
+      "agents/backend/bc5-contract-diagnostic/summary.json",
+      "agents/backend/bc5-contract-diagnostic/continuation-summary.json"
+    ],
+    "raw_manifests": [
+      "agents/backend/bc5-contract-diagnostic/raw-manifest.json",
+      "agents/backend/bc5-contract-diagnostic/continuation-raw-manifest.json"
+    ],
+    "operator": "backend AI",
+    "first_execution": "22:35:01.756-22:35:19.146Z exit1;3766 valid baseline,tool500/connection errors0runtime",
+    "continuation_execution": "22:37:42.655-22:37:55.745Z exit0;3419 valid observation incl3profile;no repeated bootstrap/sanity/baseline",
+    "baseline_p95_ms": [
+      3.680709,
+      24.382625,
+      87.778666
+    ],
+    "timings_p95_ms": [
+      4.198625,
+      25.010167,
+      89.705125
+    ],
+    "actual_counts": "1auth/acquire/checkout/dispatch;categories4/5/5SELECT;0SQLerrors",
+    "observation": "concurrency32 runtimewall28.630/threadCPU1.766ms;cursor9.239/acquire14.525/dispatch6.123ms inclusive;newconnections1/69/211",
+    "bounds": "onlyt44_profile/18083;portfree beforeafter;otherprofileconnections0;allownserversnormalexit;noreset/seed/resourceschange",
+    "private_fixture": "excluded;knownpassword/token matches0",
+    "source_size": "production0change;fixed6307gap1207 remains",
+    "frozen_files": "14unchanged",
+    "unverified": [
+      "formal503cause",
+      "hosted400x600attribution",
+      "SQLserverlockwait",
+      "purepoolwait/queue",
+      "transition/escalationphases",
+      "productionC/B",
+      "N07pass"
+    ],
+    "next": "seal and release;future write-path diagnostic requires root admission;no automatic load",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376181741",
+    "readback_matches": true
+  },
+  "pool_retention_compatibility": {
+    "branch": "codex/backend-pool-compat",
+    "application": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope_first": "e534dee090f9de841dc1eb5612f668fd452d7f90",
+    "prompt": "agents/backend/POOL-RETENTION-COMPAT-dispatch.md",
+    "rfc_reviewed": "ac826cb9",
+    "one_page": "agents/backend/pool-retention-compat/caller-handoff.md",
+    "static_receipt": "agents/backend/pool-retention-compat/static-receipt.json",
+    "MySQLSettings_direct_calls": 8,
+    "explicit_concerns": [
+      "partial pool_size3 follows new overflow0,peak13->3",
+      "old930 fixed5+10 must not relax",
+      "CLI no explicit dispose,standaloneprocess exits;MQ/scanner finallydispose",
+      "6defaultpool peak90 retainedupper30->90;others extra"
+    ],
+    "semantics": "auth/lock/txn/idem/audit/outbox/ACKunknown code unchanged;availability/errorfrequency not proven",
+    "owner_state": "database_plan_history confirmed diagnostics only,no candidateSHA yet;requirements received",
+    "issue4": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376569009",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376597757",
+    "readback_matches": true,
+    "runtime_SQL_HTTP_load_tests": false,
+    "production_tests_tools_specs_unchanged": true,
+    "decision": "static no backendAPI wiring blocker;candidate source/fullCI/dedicatedreview/root decision pending;not approval"
+  },
+  "pool_candidate_CI_archive": {
+    "branch": "codex/backend-pool-ci-evidence",
+    "root_base": "8df658ac2ef418f57c36c47105fa925e797f3aa9",
+    "prompt": "agents/backend/POOL-CANDIDATE-CI-ARCHIVE-dispatch.md",
+    "candidate": "db87d30449356f3473b645a5c246dcc6c21d7cbe",
+    "PR": 39,
+    "source_scope": "productpush exact candidate;DockerPR actual merge400a with candidate-equivalent166runtime files",
+    "product_run": 40039282322,
+    "docker_run": 40039333270,
+    "official_final": "bothcompleted/success",
+    "summary": "records/validation/composite-db87-pool-ci.json",
+    "raw": [
+      "records/ci/40039282322",
+      "records/ci/40039333270"
+    ],
+    "official_zip_digest_verified_before_read": 5,
+    "selected_originals": [
+      18,
+      33
+    ],
+    "all_hash_roundtrips": true,
+    "raw_zips_committed": false,
+    "backend": "520/0failure/error/skip;86910collected;9300cases/no workload;44Python exactGit;excluded0;line2638/2957 branch659/824",
+    "frontend": "89pass/0fail/pending;20TSVue exactGit;line93.33/branch88.09",
+    "docker": "actualgitlogcheckout400a5cac444be15565dc48fe4ee2a1869f31e9a3 base70f4+db87;4workers;scanner16/2;19table rows/checksums restored;18business226;expectedflockexit1",
+    "source_proof": "records/ci/40039333270/checkout-source-proof.json +rawgzip +candidate-merge-byte-equivalence.json",
+    "local_runtime_or_ci_rerun": false,
+    "independent_logs_or_ciphertext_read": false,
+    "current_local_production": "stillbc5;no source edits",
+    "source_count": "6307gap1207 preserved,no newcloc",
+    "decision": "archive only;dedicatedreview/root admission/formal performance/independent acceptance not claimed",
+    "github_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376880468",
+    "readback_matches": true
+  },
+  "static_performance_path_handoff": {
+    "branch": "codex/backend-static-perf-handoff",
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope_first": "0a84ff6",
+    "prompt": "agents/backend/STATIC-PERFORMANCE-HANDOFF-dispatch.md",
+    "one_page": "agents/backend/static-performance-next-measurement.md",
+    "source_IO_and_counts": "agents/backend/static-perf-path-receipt.json",
+    "method": "manual static success path with explicit actors/key/page assumptions;not querytrace or performance",
+    "counts": {
+      "listTasks": "10S/2U",
+      "validateContractPayload": "4or5S/1U",
+      "listEscalations": "10+3E S/2U",
+      "listMyNotifications": "9or10S/2U",
+      "listTaskDependencies": "11+E S/2U",
+      "fresh_write_preflight": "human10S/service8S+1INSERT+2savepointcontrols/1U;main secondU,authunchanged"
+    },
+    "future_batch_scope": "scheduler/DB/root admission needed;authorizedproject/page/runIDs,originalorder,IOdedup-only,allnotifications/null/extra recipientcounts/missingreference failure,RC/error/audit preserved",
+    "followup_measurement": "only future bounded ownfixtures after root;queue/connection/SQLfetch/auth/serialization phases and resources separated",
+    "issues": {
+      "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377635272",
+      "full_GET_exact_match": true
+    },
+    "runtime_SQL_HTTP_load_services_tests": false,
+    "source_tests_locks_specs_changes": 0,
+    "independent_material_access": false,
+    "root_cause_or_benefit_claimed": false,
+    "source_count": "6307gap1207 unchanged,no newcount",
+    "next": "seal/release;future measurement/implementation separately admitted"
+  },
+  "dependency_query_candidate": {
+    "candidate": "b66fa36a317145afec350d7f61ca374959b2eaf7",
+    "predicate_source": "74aeb2a8d2e60e0c972688a3d68422d3d4a16f2b",
+    "design": "ed2737d",
+    "draft_PR": 42,
+    "evidence_branch": "codex/backend-dependency-query-evidence",
+    "report": "agents/backend/dependency-query-candidate/report.md",
+    "prompt": "agents/backend/DEPENDENCY-QUERY-CANDIDATE-dispatch.md",
+    "DB_evidence": "5948cf80a5dd318db370072f9741ed150bdb1487",
+    "equivalence": "globaltaskPK+compositeFK+verifiedproject;legalFKdata only",
+    "local_targets": "sameoriginal98618before18after;SQLiteHTTP,notlatency",
+    "old_product": {
+      "run": 40047094732,
+      "overall": "failure static UP022/B007",
+      "full_junit": "510/0failure/error/skip",
+      "line": "2638/2957",
+      "branch": "659/824",
+      "files": 44,
+      "excluded": 0
+    },
+    "old_docker": {
+      "run": 40047211444,
+      "checkout": "d74cfc8f3cd8a7cf680b88403b4d08d352b14766",
+      "result": "success",
+      "runtime_equal_files": 169
+    },
+    "old_summary": "records/validation/composite-dependency-query-74a-ci.json",
+    "style_owner": "17e7ac5f05e3ab85cd7a0f2db439c7097c422dba",
+    "new_product": 40047832510,
+    "new_docker": 40047836840,
+    "new_CI_state": "both completed success attempt1",
+    "source_count_C": "6307/exit1,gap1207",
+    "14freeze_same": true,
+    "pool_still": "5+10",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377896107",
+    "full_GET_exact": true,
+    "decision": "draft candidate only; root gate/dedicated review pending; not formal performance/integration/acceptance",
+    "new_summary": "records/validation/composite-dependency-query-b66-ci.json",
+    "new_results": {
+      "full": "510/0failure/error/skip",
+      "markers_overlap": [
+        162,
+        93,
+        19
+      ],
+      "python": "44exactGit/excluded0,line2638/2957 branch659/824",
+      "frontend": "89pass/20exactGit TS-Vue,line93.33/branch88.09",
+      "docker_checkout": "9b538128cdb711c0bf08f5a2a7b9774e47069201",
+      "docker_parents": [
+        "dde39aa1c3ccf122caff5c24584ab69537d09007",
+        "b66fa36a317145afec350d7f61ca374959b2eaf7"
+      ],
+      "runtime_files_equal": 169,
+      "docker": "4workers/scanner16created2completed/19tablecountschecksums matched/18business226cols",
+      "expected_nonzero": "secondscanner flock exit1",
+      "new_verified_ZIPs": 5,
+      "new_selected_raw": [
+        18,
+        33
+      ]
+    },
+    "next": "dedicated reviewer scoped C and published E; root predeclared gate decides; no automatic integration/load",
+    "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6377962466",
+    "final_full_GET_exact": true
+  },
+  "dependency_delivered_regression": {
+    "base": "f986782311f227082b4445bf7508522aa49c043d",
+    "branch": "codex/backend-dependency-delivered-regression",
+    "design_first": "536162c",
+    "prompt": "agents/backend/dependency-delivered-regression/actual-prompt.md",
+    "design": "agents/backend/dependency-delivered-regression/design.md",
+    "performance_summary": "agents/backend/dependency-delivered-regression/performance-summary.md",
+    "performance_summary_sent_within_5min": true,
+    "test_root_assigned": "tmp/backend/contracts/859_dependency_delivered.py",
+    "scope": "two real predecessor deliveries throughHTTP;0/2 and1/2 deny,no taskversion/edge change;2/2 start200/version+1",
+    "actual_tests": "2passed/0failure/error/skip,existingTestClientwarning",
+    "execution": "testbeforeformat;formatteronlylinewrap/ASTequal;notrerun",
+    "logs": "agents/backend/dependency-delivered-regression/targeted.log",
+    "junit": "agents/backend/dependency-delivered-regression/targeted.xml",
+    "report": "agents/backend/dependency-delivered-regression/report.md",
+    "original_format_failure": "agents/backend/dependency-delivered-regression/format-initial-failure.log",
+    "source_changes": 0,
+    "old_test_changes": 0,
+    "new_CI_or_external_MySQL_HTTP_load_servers": false,
+    "source_size": "priorfixed6307gap1207unchanged/no newcloc",
+    "independent_access": false,
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379240354",
+    "full_GET_exact_match": true,
+    "next": "release;no automatic performance/load/refactor;human architecture/scope decisions remain with root/user"
+  },
+  "release_error_priority_rfc": {
+    "base": "14b57c66d69bf80759417e42af04432cea1ca795",
+    "branch": "codex/backend-release-error-priority-rfc",
+    "RFC": "specs/changes/release-error-priority-rfc.md",
+    "prompt": "agents/backend/release-error-priority/actual-prompt.md",
+    "decision": "records/decisions/D008-release-error-priority-adopted.md",
+    "human_input": "records/prompts/U021-original.md",
+    "recommendation": "only failed approval-reference slot selects stale baseline first; preserve matched-reference domain order",
+    "version_proposed": "1.2.0 info+Meta,innercandidate1.0.0 unchanged",
+    "scope_open": "late domain state/role/code-review and dualfailure combination totalorder not newlydecided; limitedreview/root confirm no expansion",
+    "14freeze_unchanged": true,
+    "application_tests_DDL_changed": false,
+    "suite_SUT_CI_load_executed": false,
+    "F08_history": "originalfail/unexecutedtail unchanged; no independent artifacts read",
+    "next": "root limiteddesign review then new freeze, then separate implementation dispatch",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379327041",
+    "full_GET_exact_match": true
+  },
+  "prior_stage_before_D008": "Delivered dependency acceptance gap covered by bounded SQLite HTTP self-test; no application edits",
+  "release_priority_spec_draft": {
+    "base": "398c3d3621843aa536755ae106c78a0fd1c60aff",
+    "branch": "codex/backend-release-priority-spec-draft",
+    "prompt": "agents/backend/release-priority-spec-draft/actual-prompt.md",
+    "report": "agents/backend/release-priority-spec-draft/report.md",
+    "version": "1.2.0 info+successMeta",
+    "candidate_schema_version": "1.0.0",
+    "state": "draft pendingfreeze",
+    "four_file_hashes": {
+      "specs/backend-design.md": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "specs/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "specs/contracts/README.md": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "backend/t44/contracts/openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+    },
+    "OpenAPI_copies_byte_equal": true,
+    "design_validation": "original995 OpenAPI PASS/1130checks/38ops/0failure",
+    "allowed_diff": "45leaves:2info+1Meta+39status+3transition descriptions",
+    "structural_counts": [
+      31,
+      38,
+      130
+    ],
+    "enum_and_other_schemas_unchanged": true,
+    "original_1_1_doc_suffix_preserved": true,
+    "old_freeze_manifest_changed": false,
+    "current_four_files_match_old14": "No, explicitnewdraftintentional",
+    "application_tests_DB_DDL_changed": false,
+    "suite_SUT_CI_load_run": false,
+    "next": "root requirements/business/AGENTS;limited finalspec review/newfreeze;then separately implement and verify",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379477604",
+    "full_GET_exact_match": true
+  },
+  "D008_implementation": {
+    "freeze": "d5307551d6b467f84e8254abd0245cdf22bc0a70",
+    "manifest_sha": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+    "plan_first": "9bab3cc",
+    "source_C": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "PR": 43,
+    "source_branch": "codex/backend-release-error-priority-implementation",
+    "evidence_branch": "codex/backend-d008-implementation-evidence",
+    "worktree": "backend-release-error-priority",
+    "prompt": "agents/backend/release-error-priority-implementation/actual-prompt.md",
+    "report": "agents/backend/release-error-priority-implementation/report.md",
+    "test": "tmp/backend/contracts/856_release_error_priority.py",
+    "before": "3fail8pass/0errors/skips;actualAPPROVAL and businessunchanged+audit verified",
+    "after": "identical11pass",
+    "adjacent": "4original986pass",
+    "scope": "SQLiteTestClient only;controlledcycle/matchingreference boundaries labelled",
+    "production": "onlyworkflowexisting requireerrorargument;noSQL/lock/domain/auth/idem/audit/outbox changes",
+    "frozen15_same": true,
+    "static": "Ruff/format2filespass",
+    "metric": {
+      "actual_candidate": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "application_code": 6310,
+      "prior_measured_candidate": "b66fa36a317145afec350d7f61ca374959b2eaf7",
+      "prior_code": 6307,
+      "freeze_base_app_66_file_bytes_equal_prior": true,
+      "delta": 3,
+      "workflow_before": 247,
+      "workflow_after": 250,
+      "within_range": false,
+      "require_range_exit": 1,
+      "extra_lines_over5100": 1210
+    },
+    "product_run": 40060857352,
+    "docker_run": 40060980119,
+    "CI_state": "both completed success attempt1;actual artifacts archived",
+    "not_reused": "oldC510/89",
+    "private_raw_failure": "0600original beforelog/XML,publicsynthetic-sessionredaction/hash documented",
+    "limits": [
+      "notMySQLorRabbitlocal",
+      "notfullcoverage",
+      "notindependentacceptance",
+      "notformalperformance",
+      "no new5xx/owner/auditfaultinjection"
+    ],
+    "protected_resources_accessed": false,
+    "next": "pause/release;root verifies E originals and records scopedadmission;noautomaticload/main",
+    "CI_summary": "records/validation/composite-D008-0dfb-ci.json",
+    "CI_actual": {
+      "tests": 522,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "856": 11,
+      "markers_overlap": [
+        174,
+        93,
+        19
+      ],
+      "Python_files": 44,
+      "line": [
+        2638,
+        2957
+      ],
+      "branch": [
+        659,
+        824
+      ],
+      "excluded": 0,
+      "frontend_tests": 89,
+      "frontend_files": 20,
+      "Docker_actual_checkout": "f8c04285533ebbbdd1b0e3d4f5a95e43e19bb6d7",
+      "Docker_parents": [
+        "3fa88293dd9ff51a86fe1c054fdf5318b318c3d3",
+        "0dfb55c2191200d947c5423fd9ee74bb0812cc5a"
+      ],
+      "runtime_equal_files": 171,
+      "Docker_scope": "4workers/scanner16created2completed/19tablecountschecksums matched/18business226",
+      "raw_ZIPs": 5,
+      "selected_originals": [
+        18,
+        33
+      ]
+    },
+    "code_review": {
+      "commit": "8659d444b2f3ce7bf0ea8a358304be719adf6fbf",
+      "review_id": 5636767886,
+      "state": "COMMENTED",
+      "commit_id": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+      "full_GET": true
+    },
+    "root_reported_integration": "da2d3084696b8458004f554e75ddca722f88bf5a;root operator,main unchanged",
+    "checkpoint_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379680394",
+    "final_issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6379751050",
+    "full_issue_and_PR_GET_exact": true
+  },
+  "synthetic_fixture_worker": {
+    "base": "6df6b3cd3bd026ebd9bb00f86a71f071724cac1f",
+    "branch": "codex/backend-synthetic-fixture-worker",
+    "design_first": "04f1ef8",
+    "expected_application": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "worker": "deployment/synthetic-fixture.py",
+    "worker_sha256": "7b6332517473266b99a6121cd6ddaaaf08a61080b8e0667996689daf4542a626",
+    "test": "tmp/backend/850_synthetic_fixture.py",
+    "prompt": "agents/backend/synthetic-fixture/actual-prompt.md",
+    "report": "agents/backend/synthetic-fixture/report.md",
+    "offline_tests": "20passed/0failure/error/skip;fakeGateway/CLI,realfilesystem and own known-data RSA/AES envelope",
+    "static": "originalRuffSIM105 preserved;finalRuff/formatpassed",
+    "runtime": "notexecuted:noDB/cloud/HTTP/services/CI/load",
+    "output": "pending/final ciphertext and safe status only;0600O_EXCL,owner10001directory0700flock",
+    "limits": [
+      "threeCLIcommits/filesnotatomic",
+      "quiescentnewDBrequired",
+      "fullimagebindingownedbyroot",
+      "nozeroization/rootsecrecyclaim",
+      "no actualrecipientprivatekeyread"
+    ],
+    "next": "root review worker and RO delivery inputs before separate initialization authorization",
+    "source_checkpoint": "1c0ae87713f128fe355b41c76e0258e08c58bfe3",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6381577719",
+    "full_GET_exact": true,
+    "host_launcher": {
+      "design_first": "91d2bfb",
+      "file": "deployment/fixture-launcher-cloud.py",
+      "sha256": "39f210450c491c8b6407185cf190d333abb80547de64bcd9de3022951fd9cf11",
+      "report": "agents/backend/synthetic-fixture/launcher-report.md",
+      "actual_prompt": "agents/backend/synthetic-fixture/launcher-actual-prompt.md",
+      "static_result": "4passed/20deselected,parameter/env/receipt only;ruffpassed",
+      "T44_DATABASE": "inherited originalC MYSQL_DATABASE=t44;no newoverride",
+      "executed": false,
+      "root_outer_timeout": 240,
+      "inner_timeout": "remaining220 and originalTLSdeadline minus120",
+      "next": "root review exact hash then separate host execution;nonzero stop without retry/seed"
+    }
+  },
+  "encrypted_service_fixture": {
+    "design_first": "4ab5e7d",
+    "worker": "deployment/encrypted-service-fixture.py",
+    "worker_sha256": "d1cd66c13b90874a8519ccc6c307bd41678671232f212632839e3391227dc5b0",
+    "launcher": "deployment/service-fixture-launcher-cloud.py",
+    "launcher_sha256": "e8c38dc32dc88d8943ff3e1593e221829c62b455dbe7622f3c5f46075b0b69cb",
+    "report": "agents/backend/service-fixture/report.md",
+    "prompt": "agents/backend/service-fixture/actual-prompt.md",
+    "source_C_unchanged": true,
+    "name": "notification-cohort",
+    "projects": 40,
+    "TTL": 5400,
+    "final": "/run/t44-delivery/cohort-secrets/neutral-service.envelope.json",
+    "tests": "9pass then3pass(one repeated)=11unique;offline only",
+    "runtime_executed": false,
+    "independent_private_read": false,
+    "new_TLS_dependency": "root0ef2c2e/ea1b5873fixed extended path, review pending per dispatch",
+    "next": "root dedicated review then separate actual host issuance;only ciphertext relay",
+    "source_checkpoint": "0faf2cd457076be422c1cb7771a3a24333253a70",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6382300556",
+    "full_GET_exact": true
+  },
+  "request_id_chain_design": {
+    "report": "agents/backend/request-id-chain-design/design.md",
+    "prompt": "agents/backend/request-id-chain-design/actual-prompt.md",
+    "receipt": "agents/backend/request-id-chain-design/receipt.json",
+    "source": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "status": "source-supported transport improvement; teacher equality violationNOT_PROVEN",
+    "observed_scope": "releasedlogin normalizedmismatch;root-only401rawduplicate2",
+    "proposal": "deploymentowner two nginxconfigs only; trustedupstreamID+fallback;unimplemented",
+    "runtime_executed": false,
+    "private852read": false,
+    "LOC": "unimplemented/no new measurement;prior6310failure preserved",
+    "next": "root review/admit new candidate before implementation;no currentC/cloud edits"
+  },
+  "source_budget_current_C": {
+    "source": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "branch": "codex/backend-source-budget-current-C",
+    "scope_first": "ba70be2",
+    "prompt": "agents/backend/source-budget-current-C/scope-and-prompt.md",
+    "design": "agents/backend/source-budget-current-C/design.md",
+    "receipt": "agents/backend/source-budget-current-C/static-receipt.json",
+    "backend": 5211,
+    "frontend": 1099,
+    "total": 6310,
+    "files": 66,
+    "cap": 5100,
+    "excess": 1210,
+    "within_range": false,
+    "existing_counter_and_application_roots_byte_equal_C": true,
+    "new_cloc_or_tests_or_SUT_actions": false,
+    "proposals": "oldunappliedvalidator-10 referenced only;notificationpage trustedorder_by estimated-3,notapplied/notcloc",
+    "production_savings": 0,
+    "rejected_scan_dedup_AST_revived": false,
+    "private_independent_material_read": false,
+    "next": "root review;no production implementation admitted;report unresolved1210 honestly",
+    "design_commit": "fe32896e5a370e89c87ff16f52f52ec07e49f873",
+    "issue_comment_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6382927110",
+    "github_exact_body_match": true,
+    "status": "design-only-sealed-no-implementation-no-new-runtime-validation",
+    "workspace_release": "本轮封档后释放；当前云C/RequestID候选/独立oracle未改"
+  },
+  "performance_repair_839": {
+    "status": "candidate-only-no-cloud-change-no-performance-proof",
+    "source_commit": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "source_branch": "codex/backend-performance-repair-plan",
+    "evidence_branch": "codex/backend-performance-repair-evidence",
+    "base_application": "0dfb55c2191200d947c5423fd9ee74bb0812cc5a",
+    "report": "agents/backend/performance-repair-839/report.md",
+    "prompt": "agents/backend/performance-repair-839/scope-and-prompt.md",
+    "design": "agents/backend/performance-repair-839/design.md",
+    "validation": "agents/backend/performance-repair-839/validation.json",
+    "changed_application_files": [
+      "backend/t44/services/workflow.py"
+    ],
+    "tests": {
+      "before_structural_failed": 3,
+      "after_unique_sqlite_http_passed": 36,
+      "after_failed": 0,
+      "after_skipped": 0,
+      "mysql_run": false,
+      "load_run": false
+    },
+    "source_count": {
+      "actual": 6316,
+      "backend": 5217,
+      "frontend": 1099,
+      "range": [
+        3500,
+        5100
+      ],
+      "within_range": false,
+      "delta_vs_C": 6,
+      "excess": 1216
+    },
+    "frozen_hashes_matched": 15,
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383378839",
+    "pr_url": "https://github.com/HJY147/t44-dev-trace/pull/44",
+    "github_exact_readback": true,
+    "ci_receipt": "agents/backend/performance-repair-839/ci-at-handoff.json",
+    "not_claimed": [
+      "502 root cause",
+      "performance pass",
+      "MySQL lock equivalence",
+      "independent acceptance",
+      "size compliance",
+      "cloud C update"
+    ],
+    "pending": [
+      "whole exact-source CI evidence",
+      "source review",
+      "root integration decision",
+      "same-run safe resource/proxy/DB evidence before diagnosis"
+    ]
+  },
+  "dependency_candidate_ci_fix": {
+    "status": "test-only-candidate-exact-source-product-ci-completed-success-root-decision-pending",
+    "source_commit": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "source_branch": "codex/backend-dependency-ci-fix",
+    "evidence_branch": "codex/backend-dependency-ci-fix-evidence",
+    "previous_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+    "original_pr": 44,
+    "original_pr_head_kept": true,
+    "application_byte_equal_to_previous_source": true,
+    "only_non_record_diff": "tmp/backend/contracts/985_mysql_http.py: 2 SELECT constants and historical comment",
+    "original_failed_run": 40087756354,
+    "original_failed_jobs": [
+      120854051910,
+      120854052090
+    ],
+    "new_run": 40088982094,
+    "new_ci_receipt": "agents/backend/performance-repair-839-ci-fix/new-ci-at-handoff.json",
+    "report": "agents/backend/performance-repair-839-ci-fix/report.md",
+    "prompt": "agents/backend/performance-repair-839-ci-fix/scope-and-prompt.md",
+    "ast_proof": "agents/backend/performance-repair-839-ci-fix/test-only-proof.json",
+    "local_checks": {
+      "ruff": "pass",
+      "format": "pass",
+      "collection_only_cases": 5,
+      "mysql_test_execution": false,
+      "prior_36_targets_not_repeated": true
+    },
+    "issue_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383532393",
+    "github_body_exact_match": true,
+    "size": {
+      "count_reused_from_byte_equal_source": 6316,
+      "within_range": false,
+      "new_cloc_run": false
+    },
+    "pending": [
+      "root/reviewer final precise-source integration decision",
+      "formal performance and size compliance remain unproven"
+    ],
+    "no_cloud_change": true,
+    "no_independent_private_material_read": true,
+    "final_ci_evidence": {
+      "run": 40088982094,
+      "source": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "status": "completed",
+      "conclusion": "success",
+      "full_junit": {
+        "tests": 562,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "markers_overlap_full": {
+        "contract": 179,
+        "integration": 93,
+        "fault": 19
+      },
+      "ledger_cases_passed": 5,
+      "python": {
+        "files": 44,
+        "git_set_equal": true,
+        "excluded": 0,
+        "line": [
+          2641,
+          2960
+        ],
+        "branch": [
+          663,
+          828
+        ]
+      },
+      "frontend": {
+        "tests": 89,
+        "files": 20,
+        "git_ts_vue_set_equal": true,
+        "line": [
+          364,
+          390
+        ],
+        "branch": [
+          821,
+          932
+        ]
+      },
+      "official_zips_digest_verified": 4,
+      "selected_originals_roundtrip": 18,
+      "summary": "records/validation/composite-dependency-ead-ci.json",
+      "issue_final_url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6383616829",
+      "issue_body_exact_get": true,
+      "new_docker_run": false,
+      "prior_docker_api_source": "5cc856d6fa94b1fdde32605543b53822f9747f00",
+      "new_nginx_candidate_included": false
+    }
+  },
+  "integration_merge_stage_history": [
+    {
+      "root_stage": "Current-C LOC6310 confirmed from existing artifact; reduction design only, no production change",
+      "incoming_stage": "dependency-candidate-test-only-ci-terminal-evidence",
+      "incoming_evidence_seal": "14a61c4e771042adc6113942723782f71568e432",
+      "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "backend-v2-snapshot-alias-fixed-awaiting-narrow-review",
+      "incoming_stage": "p7-public-analysis-read-only-resource-window-tool",
+      "incoming_evidence": "agents/backend/resource-window-20261028/verification.json",
+      "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "p7-public-analysis-and-resource-window-tool-awaiting-server-execution",
+      "incoming_stage": "a12-cpu-profile-and-pure-core-expression-candidate",
+      "both_stage_artifacts_preserved": true
+    },
+    {
+      "root_stage": "a12-local-cpu-profile-and-zero-line-core-expression-candidate-awaiting-DB-owner-review",
+      "incoming_stage": "p16-finite-contrast-and-response-only-validation-prototype",
+      "both_stage_artifacts_preserved": true
+    }
+  ],
+  "performance_20261025": {
+    "baseline": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+    "tool_source": "25b1e10cab76270c20be579d39aa1c3048033266",
+    "report": "agents/backend/performance-20261025/report.md",
+    "api_tool_sha256": "150c019e1e307475cec6d599c7f85ac402b9c2f263d4020b8ff02590e08bff7e",
+    "fixed_clock_pair_requests_each": 56,
+    "spans_each": 868,
+    "pure_reference_checks": 35,
+    "prototype_production_applied": false,
+    "production_byte_equal_to_ade5": true,
+    "mysql_cloud_formal_acceptance": "NOT_RUN by this role",
+    "root_cause": "NOT_PROVEN",
+    "source_size": "6316 prior measured byte-equivalent; no new cloc",
+    "prompt": "ROLE-backend-PERFORMANCE-20261025-v1",
+    "scope": "public development diagnostics only, no independent private files read",
+    "main_evidence_seal": "9f0ec3d5161f0195646c4a1b4174f1484382cf3f",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394302816",
+    "github_comment_exact_body_readback": true,
+    "response_schema_stage_note": "schema-stage-split.json distinguishes direct response span from API validation aggregate; no pure JSON render span"
+  },
+  "diagnostic_cleanup_20261025": {
+    "base": "78bb0ac6cad31789e2990a14332199f141ef3d14",
+    "source": "124785d89e568dd5dddeb56ef9216ed2ccd1883d",
+    "driver_sha256": "e0a49e630957268195adc6d6f1cd924bf6481b533f7c3c276b3e832b21aeba49",
+    "tests": "old2 failures preserved; initial10 pass; loader-state1 red; final11 pass (not cumulative)",
+    "report": "agents/backend/performance-20261025-cleanup/report-v2.md",
+    "old_E_raw_production_unchanged": true,
+    "no_56_or_35_rerun": true,
+    "review": "PENDING root limited review",
+    "prompt": "ROLE-backend-DIAG-CLEANUP-20261025-v1",
+    "initial_source": "b079f84553b8aa91a7f18a7f76f5b6319a2cdc07",
+    "initial_E": "d4fc4ea239c8b5a4f276e791ad720fbaca419be3",
+    "final_E_source_context": "9f67ce0",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394397897",
+    "github_exact_readback": true,
+    "diff_check": "global2 on immutable pytest raw; nine source/explanation paths0; boundary recorded"
+  },
+  "shared_project_gate_20261025": {
+    "design": "baf1f9e",
+    "tool_source": "416866688d2153d97664f9f7e062537fd1386ab8",
+    "report": "agents/backend/shared-project-gate-20261025/report.md",
+    "public_baseline_run": 40169575755,
+    "public_baseline_head": "81c909ad753aee7179ee0c464349a07273092fc0",
+    "raw_sha256": "b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e",
+    "production_changed": false,
+    "mysql_http_cases_collected_not_executed": 7,
+    "sqlite_sequential_unique_fixture_cases_passed": 3,
+    "original_fixture_failure_retained": true,
+    "formal_acceptance": false,
+    "size": {
+      "previous_product_cloc": 6316,
+      "excess": 1216,
+      "new_cloc": false,
+      "production_savings": 0,
+      "new_tmp_physical_lines_not_cloc": 913
+    },
+    "review": "PENDING root limited design admission before production edit",
+    "prompt": "ROLE-backend-SHARED-PROJECT-GATE-20261025-v1",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394622063",
+    "github_exact_body_readback": true
+  },
+  "shared_project_point_lock_20261025": {
+    "design_first": "4dc0ca6",
+    "source": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "report": "agents/backend/shared-project-point-lock-20261025/report.md",
+    "actual_prompt": "ROLE-backend-SHARED-PROJECT-POINT-20261025-v1",
+    "tests": {
+      "original_fixture_setup_errors": 9,
+      "corrected_old_runtime_structural_failures": 9,
+      "candidate_new_passed": 11,
+      "candidate_adjacent_passed": 21,
+      "candidate_unique_passed": 32,
+      "mysql_run": false,
+      "full_ci_run": false
+    },
+    "scope": "three graph-reader projectS; writerX; sorted scalarPK+project/limit1 taskX; original sets and business retained",
+    "source_size": {
+      "application": 6326,
+      "runtime": 286,
+      "delta": 10,
+      "excess": 1226,
+      "within_range": false,
+      "counter_unchanged": true,
+      "files_same_66": true
+    },
+    "sql_cost": "K unique IDs:1->K Runtime task-lock SELECT; +K-1; no predecessor stays1",
+    "pending": [
+      "root code limited review",
+      "fresh MySQL7 HTTP+DB6",
+      "whole exact-source CI",
+      "root integration",
+      "formal performance",
+      "source budget"
+    ],
+    "production_other_files_unchanged": true,
+    "formal_acceptance": false,
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394674914",
+    "github_exact_body_match": true
+  },
+  "point_lock_ledger_20261025": {
+    "design_first": "91bf2f4",
+    "source": "5f55e09a75043343e376ecc7d96cc2ed98862b30",
+    "report": "agents/backend/point-lock-ledger-20261025/report.md",
+    "prompt": "ROLE-backend-POINT-LOCK-LEDGER-20261025-v1",
+    "only_test_change": "986 Counter tasks scalar3 -> explicit map block3/unblock_pending4/start_empty3; comment explains K+2",
+    "deps_exact_unchanged": [
+      0,
+      1,
+      2
+    ],
+    "other_AST_unchanged": true,
+    "product_changed": false,
+    "runtime_sha256": "9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b",
+    "tests": {
+      "old_local_failed": 1,
+      "old_local_passed": 2,
+      "new_local_passed": 5,
+      "full_suite_run": false,
+      "mysql_run_by_this_role": false,
+      "ci_triggered": false
+    },
+    "original_red_ci": 40171891359,
+    "referenced_published_mysql_development_run": 40172242303,
+    "formal_acceptance": false,
+    "size": "same byte-equivalent product prior6326/over1226; no new cloc",
+    "next": "root unified exact-source full CI, source review and integration decision",
+    "github_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394859436",
+    "github_exact_body_readback": true
+  },
+  "acceptance_followup_20261025": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-ACCEPTANCE-FOLLOWUP-20261025-v1",
+    "branch": "codex/backend-acceptance-followup-20261025",
+    "base": "acae31a4b7e36bac38fa57367f4ca80066780273",
+    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "workflow_sha256": "e0db3ff784330adf949c4b38ef7677e78e73a5f0da48f74f0acf1e09595ed41f",
+    "scope": "one failed approval-reference statement; release state and manager before original D008 error selection; matching/early-version/ownership/auth/replay/Tx/audit unchanged",
+    "tests": {
+      "old_new_regressions_failed": 4,
+      "candidate_new_passed": 4,
+      "candidate_adjacent_passed": 11,
+      "candidate_unique_passed": 15,
+      "mysql_fullCI_liveSUT_performance": false
+    },
+    "report": "agents/backend/acceptance-followup-20261025/report.md",
+    "verification": "agents/backend/acceptance-followup-20261025/verification.json",
+    "original_independent_F08": "FAIL unchanged; candidate not independently retested",
+    "F11": "NOT_PROVEN unchanged; static TTL60 human real-login same admitted schema recipe only, no issuance",
+    "runtime_or_main_changed": false,
+    "source_size": "previous6326>5100 remains; no newcloc/savings",
+    "next": "root exact-source review, MySQL/full CI and fresh independent execution; separate approved F11 credential provisioning",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6396366099",
+    "issue_exact_body_readback": true,
+    "evidence_branch": "codex/backend-acceptance-followup-evidence-20261025"
+  },
+  "source_size_20261025": {
+    "base": "e45a2b980c6ba8c61761f897414d54a10000409d",
+    "product_base": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "branch": "codex/backend-domain-v2-size-20261025",
+    "rollback_checkpoint": "a19af36",
+    "rollback_checkpoint_full_test_green": false,
+    "operator": "backend AI",
+    "report": "agents/backend/source-size-20261025/report.md",
+    "validation": "tmp/811_backend_size/validation.json",
+    "cloc": {
+      "version": "2.10",
+      "before": 2363,
+      "after": 1987,
+      "net": 376,
+      "initial600to700_target_met": false,
+      "whole_product_gate_proven": false
+    },
+    "tests": {
+      "domain_total": 170,
+      "legacy_real_v2_cases": 91,
+      "historical_constructor_only": 15,
+      "new_v2_boundary": 63,
+      "differential_comparisons": 57120,
+      "unchanged_http": 143,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "external_contract": "REST/OpenAPI/DDL unchanged; Workflow preflight/error ordering/CAS/locks/replay/audit remain",
+    "internal_migration": "v1 Command/Gate/Cycle/decide signature intentionally replaced; test-only historical call adapter; no product v1 shim",
+    "pending": [
+      "root combined source count",
+      "exact combined fullCI/review",
+      "MySQL locking verification",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "push": "deferred because codex/** push automatically starts fullCI before integration",
+    "candidate_product_commit": "a07ad028a8efad4ecd186246bf2b7935c361b117",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6397299657",
+    "issue3_body_exact_readback": true,
+    "production_without_test_oracle": "fresh process blocked tmp/oracle imports and socket connects; lazy app construction+pure START passed with0 connect attempts",
+    "current_after_snapshot_alias_fix": {
+      "after": 1993,
+      "net_reduction": 370,
+      "fix_cost": 6,
+      "earlier376_belongs_to_original_v2_stage": true
+    }
+  },
+  "snapshot_alias_fix_20261025": {
+    "finding": "V2-SNAPSHOT-ALIAS-01",
+    "base": "b54e6757cdf1eed72adf4eaea68d8ae0c34c42ca",
+    "operator": "backend AI",
+    "production_changed_files": [
+      "backend/t44/domain/models.py"
+    ],
+    "before_sha256": "550d817d5b5aadb5384d5ed319c3dd3cd0ee838feb97063d6e39cca5dbaec170",
+    "after_sha256": "67406cec4592a1d113ec68eb93ee952127b701688db5950340a779dacf983547",
+    "original_validation_statements_AST_identical_and_in_original_order": true,
+    "added_after_existing_validation": "freeze only assessment.review_evidence sequence membership as tuple; decision consumes its nonemptiness only",
+    "tests": {
+      "before": {
+        "tests": 2,
+        "failure": 2,
+        "error": 0,
+        "skipped": 0
+      },
+      "domain_after": {
+        "tests": 172,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "http_after": {
+        "tests": 143,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      }
+    },
+    "fixed_cloc": {
+      "allowed_scope_before": 2363,
+      "allowed_scope_after": 1993,
+      "net_reduction_from_e45": 370,
+      "fix_cost_over_b54": 6,
+      "tool_version": "2.10",
+      "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83"
+    },
+    "not_run": [
+      "full CI",
+      "cloud",
+      "MySQL",
+      "independent acceptance"
+    ],
+    "old_evidence_preserved": true,
+    "report": "agents/backend/source-size-20261025/snapshot-alias-fix.md"
+  },
+  "resume_20261028": {
+    "operator": "backend AI",
+    "base": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+    "product": "f4bd382d4668130793fc553df9ce6363c4656ea6",
+    "branch": "codex/backend-resume-20261028",
+    "design_commit": "4169d764",
+    "analysis_execution_commit": "20970de6b955479c9ed089cea21d6f258ecf13b1",
+    "prompt": "ROLE-backend-RESUME-20261028-v1",
+    "report": "agents/backend/resume-20261028/report.md",
+    "inventory": "tmp/795_backend_resume_20261028/inventory.json",
+    "byte_equal_application_files": 65,
+    "scope_files": 17,
+    "existing_scope_cloc": 1993,
+    "existing_application_cloc": 5862,
+    "new_cloc_executed": false,
+    "production_changes": 0,
+    "new_product_tests_executed": false,
+    "ci_cloud_mysql_started": false,
+    "static_tool_checks": {
+      "ruff": "passed",
+      "format": "passed"
+    },
+    "small_adapter_budget": {
+      "estimated_lines": 15,
+      "actual_prototype_implemented": false,
+      "decision": "stop below 20-line threshold"
+    },
+    "next": "coordinator retrieves source935 seven-worker summary; select a measured bottleneck before product rewrite",
+    "student_authored_research": false
+  },
+  "observer_analysis_20261028": {
+    "operator": "backend AI",
+    "summary_publication_commit": "74bf72765c9a5f55e0fc82edd930682495584b9f",
+    "source": "935ab5b93bea788672c2b4a088c79cfeed848954",
+    "summary_bytes": 66110,
+    "summary_sha256": "d554caf63e38238ab1b3e75abc2823b670b078d60c84a9097b031c03044e3053",
+    "analysis_execution_commit": "b5f31ba631ad2dd71221a64e1372f5d5d4d97dfe",
+    "seven_final_valid": true,
+    "total_observed_requests": 11284,
+    "selected_cohort_requests": 9280,
+    "outside_selected_cohorts": 2004,
+    "c400_per_operation": 2000,
+    "pool_get_calls_per_request": {
+      "getTask": 2,
+      "validateContractPayload": 1,
+      "transitionTask": 2,
+      "createEscalation": 2
+    },
+    "report": "agents/backend/resume-20261028/observer-analysis.md",
+    "design": "agents/backend/resume-20261028/worker-contrast-design.md",
+    "next": "root same-new-source 7/16 worker contrast, original entry/default pool/full business guards",
+    "settings_configuration_patch_added": false,
+    "production_changes": 0,
+    "product_tests_cloud_mysql_ci_run": false,
+    "new_source_performance_proven": false,
+    "formal_acceptance": false
+  },
+  "contrast_20261028": {
+    "operator": "backend AI",
+    "product_target": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "tool_commit": "6f5698f2d2df04a2347b893c55d93cb9c3063aa9",
+    "manifest_sha256": "640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84",
+    "report": "agents/backend/contrast-20261028/report.md",
+    "runbook": "agents/backend/contrast-20261028/runbook.md",
+    "prompt": "agents/backend/contrast-20261028/prompt.md",
+    "seed": 44,
+    "anchor_utc": "2026-10-28T04:00:00Z",
+    "stop_utc": "2026-10-28T07:30:00Z",
+    "slots": 441,
+    "cohorts": {
+      "baseline": {
+        "clients": 1,
+        "cycles": 20,
+        "offset": 0,
+        "requests": 80
+      },
+      "warmup": {
+        "clients": 40,
+        "cycles": 5,
+        "offset": 1,
+        "requests": 800
+      },
+      "measure": {
+        "clients": 400,
+        "cycles": 5,
+        "offset": 41,
+        "requests": 8000
+      }
+    },
+    "local_red": {
+      "failures": 14,
+      "errors": 0,
+      "commit": "a43f60e43d7d002dc331d6cc4d3006238055eccb"
+    },
+    "local_final": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "old_test_AST_preserved": true,
+      "old_compat_assertions_removed": 0
+    },
+    "root_reported_bootstrap": "t-hz071dhyyg2hb0g success",
+    "cloud_execution_by_role": false,
+    "S1_edge_LOAD_cloud_verified": false,
+    "initial_scheduler_scope": "not started; developer six-role only",
+    "formal_seven_role_acceptance": false,
+    "no_independent_private_reads": true,
+    "production_changes": 0,
+    "new_ci": false
+  },
+  "transport_790_20261028": {
+    "operator": "backend AI",
+    "product_changed": false,
+    "cloud_run": false,
+    "private_cloud_files_read": false,
+    "helper_source": "a5524aa1",
+    "helper_sha256": "4508b92f1f9106b112cc0e9f0a9e5c4e8445f5e276ad12184570a15450996db2",
+    "local_final": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frozen_790_all_files_unchanged": {
+      "790_bootstrap.py": true,
+      "790_host.py": true,
+      "790_load.py": true,
+      "data/790_select.py": true,
+      "data/790_stage1.py": true,
+      "edge/790_http.py": true,
+      "edge/790_stage2.py": true
+    },
+    "frozen_manifest_sha256": "640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84",
+    "host_python310": "AST only; actual local Python3.12",
+    "openssl_local": "LibreSSL3.3.6; actual Ubuntu openssl execution pending root",
+    "deadline_utc": "2026-10-28T07:30:00Z",
+    "runbook": "agents/backend/contrast-20261028/transport-runbook.md",
+    "design": "agents/backend/contrast-20261028/transport-design.md",
+    "prompt": "ROLE-backend-TRANSPORT-790-v1",
+    "review": "PENDING root review"
+  },
+  "resource_window_20261028": {
+    "base": "22f666e25d2b7280224e58eb1c91cf6be0077ac7",
+    "branch": "codex/backend-resource-resume-20261028",
+    "prompt": "ROLE-backend-RESOURCE-WINDOW-20261028-v1",
+    "report": "agents/backend/resource-window-20261028/report.md",
+    "verification": "agents/backend/resource-window-20261028/verification.json",
+    "script_sha256": "f1df806992ba0c9b4508abf9ebe4a18cb80880b252559b9cf4e48a98e73037ab",
+    "p7_measure400_started_seconds": 21.89074,
+    "p7_measure400_barrier_seconds": 21.742456,
+    "p7_measure400_requests": 8000,
+    "formal_acceptance": false,
+    "cloud_UI_accessed": false,
+    "server_raw_executed_by_this_role": false,
+    "independent_private_content_read": false,
+    "initial_private_path_names_inadvertently_listed": true,
+    "root_handles_role_metadata_merge": true,
+    "p7_published_server_summary": {
+      "bytes": 8491,
+      "sha256": "94e7b0317111d14da25d4181ba6fe9331c4ee3aafb20ba25ba5597c0dcd609fb",
+      "offline_linkage_verified": true,
+      "actual_raw_recomputed_by_this_role": false,
+      "derived_evidence": "agents/backend/resource-window-20261028/p7-resource-derived.json",
+      "api_cpu_p95_percent": 1016.4089523544123,
+      "api_cpu_max_percent": 1208.9420749197743,
+      "scheduler_metrics": null
+    }
+  },
+  "cpu_profile_20261028": {
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "source_files_verified": 51,
+    "role": "backend AI",
+    "report": "agents/backend/cpu-profile-20261028/report.md",
+    "verification": "agents/backend/cpu-profile-20261028/verification.json",
+    "raw_manifest": "agents/backend/cpu-profile-20261028/raw-manifest.json",
+    "baseline_raw_sha256": "0df044fba87bfe581125774ca2bc7006e76d34bb8b8f7b4b5f8ba4e9db5e532e",
+    "query_raw_sha256": "03876a7501eb0e2b9fe9f1a346c7dc42a7e2b9fb9a851dd68d1646b00c128462",
+    "HTTP_total": 135,
+    "setup": 27,
+    "profiled": 20,
+    "measured_unprofiled": 80,
+    "pure_signature_pairs_equal": 198,
+    "pure_ABBA_us_per_stmt": [
+      21.665,
+      16.77958,
+      16.01333,
+      21.14708
+    ],
+    "expected_net_effective_lines": 0,
+    "product_changes": 0,
+    "candidate_HTTP_DB_run": false,
+    "formal_acceptance": false,
+    "root_cause": "NOT_PROVEN",
+    "next_owner": "coordinator to database owner review/implementation/regression",
+    "prompt": "ROLE-backend-CPU-PROFILE-20261028-v1"
+  },
+  "coordinator_scope_merge_receipts": [
+    {
+      "source_commit": "c96dc391d5e50ede25d2d3b4a3a9ba709c688acb",
+      "new_named_sections": [
+        "resource_window_20261028",
+        "cpu_profile_20261028"
+      ],
+      "shared_scalar_metadata": "prior coordinator values retained; distinct scoped sections and all unique list history preserved",
+      "acceptance_changed": false
+    },
+    {
+      "source_commit": "61777305ff72d9f51638b49b68b85840200bfafd",
+      "new_named_sections": [
+        "p16_response_prototype_20261028"
+      ],
+      "current_production_adoption": false,
+      "existing_scalar_metadata_and_all_unique_list_history_preserved": true
+    },
+    {
+      "source_commit": "92f177d95ee9ddbe14ad55823b1a5310f174d063",
+      "new_named_sections": [
+        "scale_resume_20261028"
+      ],
+      "product_changed": false,
+      "existing_scalar_metadata_and_all_unique_list_history_preserved": true
+    },
+    {
+      "source_commit": "5f8c4f2c",
+      "new_named_sections": [
+        "functional_provider_20261028",
+        "contrast_window1030_20261028",
+        "provider_t15_20261028"
+      ],
+      "all_unique_list_history_preserved": true,
+      "scope_replies_delivered": false,
+      "independent_business_pass_claimed": false
+    },
+    {
+      "source_commit": "0474b0aabf417eeb55aa69a6bae5e2d49d755011",
+      "new_named_sections": [
+        "architecture_scale_20261028"
+      ],
+      "product_changed": false,
+      "candidate_savings_are_design_only": true,
+      "source_size_passed": false,
+      "all_unique_list_history_preserved": true
+    }
+  ],
+  "p16_response_prototype_20261028": {
+    "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "report": "agents/backend/p16-schema-response-20261028/report.md",
+    "verification": "agents/backend/p16-schema-response-20261028/verification.json",
+    "comparison": "agents/backend/p16-schema-response-20261028/p7-p16-comparison.json",
+    "raw_manifest": "agents/backend/p16-schema-response-20261028/raw-manifest.json",
+    "HTTP_runs": [
+      31,
+      159
+    ],
+    "pre_timing_guards": 424,
+    "post_timing_pure_guards": 13,
+    "false_accept_observed": false,
+    "library": "fastjsonschema2.22.2 limited draft7-compatible response subset only",
+    "library_compileFalse_failure_preserved": true,
+    "current_small_response_major_benefit": "NOT_PROVEN; negative B2 retained",
+    "list20_cpu_delta_ms": [
+      5.799457,
+      5.205042
+    ],
+    "product_changes": 0,
+    "request_validation_fastpath": false,
+    "formal_acceptance": false,
+    "production_admitted": false,
+    "root_cause": "NOT_PROVEN",
+    "prompt": "ROLE-backend-RESPONSE-FASTPATH-20261028-v1"
+  },
+  "scale_resume_20261028": {
+    "operator": "backend AI",
+    "base": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "branch": "codex/backend-scale-resume-20261028",
+    "design_commit": "27215e9",
+    "prompt": "ROLE-backend-SCALE-RESUME-20261028-v1",
+    "implementation_status": "diagnostic only; no candidate implemented",
+    "artifacts": [
+      "agents/backend/scale-resume-20261028/design.md",
+      "agents/backend/scale-resume-20261028/prompt.md",
+      "agents/backend/scale-resume-20261028/report.md",
+      "agents/backend/scale-resume-20261028/verification.json",
+      "agents/backend/scale-resume-20261028/source-count.json"
+    ],
+    "interfaces": "REST/OpenAPI/DDL and all owner implementations unchanged",
+    "application_lines": 5933,
+    "upper_bound": 5100,
+    "excess": 833,
+    "within_range": false,
+    "require_range_exit_code": 1,
+    "owned_module_files": 19,
+    "owned_module_lines": 2176,
+    "api_domain_services_contracts_lines": 1993,
+    "application_files_byte_equal_a12": 65,
+    "production_changes": 0,
+    "net_line_reduction": 0,
+    "new_tmp_or_test_files": 0,
+    "executed": [
+      "fixed source_count.py on committed a12 with verified cloc2.10",
+      "AST parse and exact-duplicate-location diagnostic of19 owned modules",
+      "65 application files compared byte-for-byte with a12",
+      "git product/contract/DDL diff empty"
+    ],
+    "unverified": [
+      "new product tests",
+      "full development CI",
+      "MySQL",
+      "frontend tests",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "finding": "No credible large net reduction identified; existing small or negative candidates not repeated; no audit/type/contract weakening",
+    "cloud_frozen_source_untouched": true,
+    "student_research_changed": false,
+    "next": "scale gate remains failed; root owns any future concrete architecture choice and exact-source campaign"
+  },
+  "functional_provider_20261028": {
+    "operator": "backend AI",
+    "product_source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "source_core_prior": "93bed41d",
+    "local_final_unique": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "source_files": {
+      "790_provider_core.py": {
+        "bytes": 9639,
+        "sha256": "e6c350d63dc2e8b911cd64c81c551edda9a93bc832c7e528e180a526657689b2"
+      },
+      "790_provider_crypto.py": {
+        "bytes": 4895,
+        "sha256": "c89d03005725cdc5eb36e1969f26d7c2bdc4b067fbcf67c1329133809802ad06"
+      },
+      "790_provider_worker.py": {
+        "bytes": 13367,
+        "sha256": "d5a26fc636a5cdceb3ad4fb62270e40cbb8b9e37d77b8c8157cdf5489ee9bf5e"
+      }
+    },
+    "public_interfaces_read_only": [
+      {
+        "file": "792-T12-v2-private-functional-packet-schema.PUBLIC.json",
+        "sha256": "6db48a86054e974be1240cdd6cad8a17a2d5c038166dece32a149b5889f04e56"
+      },
+      {
+        "file": "792-T12-v2-provider-packet-and-scope.PUBLIC.md",
+        "sha256": "f3027a4ad5d4639198bc874616a6371a7628fd486fe8fd536a5cd75ea1274cc4"
+      }
+    ],
+    "natural_expiry": {
+      "issued_at": "2026-10-28T06:59:05.847611Z",
+      "expires_at": "2026-10-28T07:00:05.847611Z",
+      "observed_at": "2026-10-28T07:00:06.043161Z",
+      "elapsed_seconds": 60.19555,
+      "original_getMe_status": 401,
+      "code": "TOKEN_EXPIRED",
+      "auth_row_unchanged": true,
+      "main5_tokens3600_valid": true
+    },
+    "actual_auth_store": "own SQLite only, not MySQL",
+    "cloud_execution": false,
+    "sut_admission": false,
+    "private_independent_inputs_read": false,
+    "root_descriptor_nonce_key_pending": true,
+    "scope": "wire codec checked; actual root controller apply + private service validation deferred until actual request",
+    "frozen_790_files_unchanged": true,
+    "tool_commit": "c5870926",
+    "report": "agents/backend/contrast-20261028/functional-provider-report.md",
+    "runbook": "agents/backend/contrast-20261028/functional-provider-runbook.md",
+    "fixed_old_f_not_cloud_run": true,
+    "root_new_f_window_notice": "07:04Z root plans new namespace/window08:15; actual binding/schema pending; do not reuse old F tool",
+    "prompt": "ROLE-backend-FUNCTIONAL-PROVIDER-790-v1"
+  },
+  "contrast_window1030_20261028": {
+    "operator": "backend AI",
+    "source_tools": "5a88d11a",
+    "source_installers": "a8c1f7a2",
+    "manifest_sha256": "0ef08aab3e14887b703c9a2fa5e5265d60fbbcb4172d1d6deb20b5f746df048a",
+    "window": "2026-10-28T10:30:00Z",
+    "product": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "target_namespace": "r28p16gen02",
+    "old_v2_preserved": true,
+    "only_diagnostic_source_changes": "two HARDSTOP hours7to10",
+    "transport_sha256": "7e2dfb5b4c4fd3766769d4c5f15ac65fa8b61e7286e09ee402ff10fa650816f3",
+    "tests": {
+      "diagnostic": 33,
+      "transport": 13,
+      "failure_error_skip": 0,
+      "assertions_unchanged": 49,
+      "transport_assertions_unchanged": 17,
+      "local_installer_subprocess_checks": 6
+    },
+    "complete_install_command_bytes": [
+      13933,
+      13792,
+      16057,
+      6374
+    ],
+    "report": "agents/backend/contrast-20261028/window1030-report.md",
+    "runbook": "agents/backend/contrast-20261028/window1030-runbook.md",
+    "proof": "tmp/790_backend_contrast_20261028/v3-window1030/verification.json",
+    "cloud_CI_private_independent_execution": false,
+    "future_F": "wait actual new binding/schema/key, old F remains unused",
+    "prompt": "ROLE-backend-CONTRAST-WINDOW1030-v1"
+  },
+  "provider_t15_20261028": {
+    "operator": "backend AI",
+    "final_local_unique": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "startup_audit_regression": "1 real red on080ac190 then17 unique green afterd281c108; test AST unchanged",
+    "core_source": "d281c108",
+    "installer_source": "0a8aee3f",
+    "issue_command_source": "cc4b579c",
+    "manifest_sha256": "c222fff9fa2770eb779b685328f02b505a0324c3a6c188f6a5d79dc1eb247a71",
+    "crypto_byte_identical_to_original": true,
+    "actual_cloud_operator": "root only; child never cloud",
+    "actual_root_issuance": {
+      "invoke": "t-hz071e5xg8zcpa8",
+      "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+      "binding": "be1975a7625eae32bf8aaae7e1f2de7d7aef8b20968aa5552320b22202258a9f",
+      "descriptor_sha256": "43bd1c03cef62c3602fffe34d48f391557aa9dcf9bac10e7714c1b7e601c9c6c",
+      "identities": 5,
+      "sessions": 7,
+      "audit_rows": 9,
+      "business_rows": 0,
+      "revocation_session_active": true,
+      "natural_expiry_created_at": "2026-10-28T10:08:19.891766Z",
+      "natural_expiry_expires_at": "2026-10-28T10:09:19.891766Z",
+      "natural_expiry_observed_at": "2026-10-28T10:09:20.002312Z",
+      "original_getMe_status": 401,
+      "original_getMe_code": "TOKEN_EXPIRED",
+      "auth_row_unchanged": true,
+      "sealed_bytes": 4902,
+      "sealed_sha256": "0c141c220cda75aecd6b2e1c6b0c3150df34c170acc7996ed6d5cb25a373f199",
+      "PUBLIC_receipt_sha256": "ff15f2653105a7196ef42a3b611f38404f9ca958a8d2fcb38c439043b76f1a32"
+    },
+    "scope_callback": {
+      "actual_request_nonce": "393263e16def9135fdbb441bfa6e4777fe766ea07a0b833c",
+      "actual_request_sha256": "1334c7941c1b00378697df0ff814024e547812dcdf9f6b61a2ac0962703facf1",
+      "requested_utc": "2026-10-28T10:13:51.208507Z",
+      "functional_finished_utc": "2026-10-28T10:15:51.441769259Z",
+      "container_exit": 0,
+      "exit_is_business_PASS": false,
+      "scheduler_token_utc": "2026-10-28T10:15:50.382290+00:00",
+      "scheduler_start_utc": "2026-10-28T10:15:57.400893+00:00",
+      "draft_only_bytes": 10420,
+      "draft_only_sha256": "534f3b7946431675871adcabbf7796fb7c4aed73c3bfff1e1e9b58ccda709daf",
+      "draft_sent_to_root": false,
+      "draft_cloud_executed": false,
+      "sealed_reply_generated": false,
+      "late_callback_authorized": false,
+      "stopped_by_root": true,
+      "business_verdict": "NOT_PROVEN_PENDING_INDEPENDENT_PRIVATE_EVIDENCE"
+    },
+    "independent_private_case_key_or_evidence_read": false,
+    "new_cloud_or_retry_by_role": false,
+    "report": "agents/backend/contrast-20261028/provider-t15-report.md",
+    "prompt": "ROLE-backend-PROVIDER-T15-1030-v1",
+    "root_stop_instruction_honored": true,
+    "new_bridge_incomplete_not_authorized_for_late_callback": true,
+    "draft": "agents/backend/contrast-20261028/provider-t15-actual-scope-seal-once.DRAFT_NOT_EXECUTED.txt"
+  },
+  "architecture_scale_20261028": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-ARCHITECTURE-SCALE-20261028-v1",
+    "base": "200001087d41113984a3f1a96ad7bdcf66bca90b",
+    "product_bytes_equal": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "branch": "codex/backend-architecture-scale-20261028",
+    "design_commit": "57354c7188e9ac0cf9addf36d9a40cdca9c70265",
+    "report": "agents/backend/architecture-scale-20261028/report.md",
+    "implementation_status": "design-only; no product changes",
+    "fixed_count": {
+      "application": 5933,
+      "backend": 4834,
+      "frontend": 1099,
+      "backend_py_files": 43,
+      "backend_all_paths": 51,
+      "upper_bound": 5100,
+      "excess": 833,
+      "exit_code": 1,
+      "within_range": false
+    },
+    "promising_RFC": {
+      "name": "trusted Call component signature and shared notification CAS",
+      "owners": [
+        "backend",
+        "messaging"
+      ],
+      "fragment_budget": 37,
+      "not_implemented": true,
+      "internal_Python_signature_change_requires_admission": true,
+      "REST_OpenAPI_DDL_change": false,
+      "record_diff_false_does_not_disable_success_audit": true
+    },
+    "other_small_design_budgets": {
+      "existing_DDL_initial_defaults": 14,
+      "reject_if_static": 13,
+      "reject_if_factory_alternative": 7,
+      "first_or_error": 2,
+      "codec_aliases": 3
+    },
+    "unproven_architecture_work_packages": {
+      "native_schema_snapshot_net_range": [
+        -21,
+        29
+      ],
+      "transaction_local_scan_registry_net_range": [
+        -10,
+        10
+      ],
+      "overlap_with_default_fields": 6,
+      "optimistic_combined_design_budget": 102,
+      "projected_if_all_optimistic_estimates_held": 5831,
+      "remaining_excess": 731,
+      "not_a_feasibility_guarantee": true
+    },
+    "dead_code_audit": {
+      "definition_class_method_count": 301,
+      "sound_whole_program_call_graph": false,
+      "large_unconditionally_removable_legacy_found": false,
+      "public_dynamic_implicit_test_only_paths_distinguished": true
+    },
+    "source_mapping": "original T44 requirements vs adopted D001/D004/D005/D006/D008 and frozen engineering choices; no removal authorization",
+    "user_latest_scope": "没有补充，继续现有口径",
+    "production_changes": 0,
+    "actual_net_line_reduction": 0,
+    "new_tmp_files": 0,
+    "not_run": [
+      "new product tests",
+      "full development CI",
+      "MySQL",
+      "RabbitMQ",
+      "frontend",
+      "cloud",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "next": "root may submit37-line design RFC to backend/messaging owners for explicit internal interface admission, implementation, exact-SHA review and full required verification; current833 gap remains open"
+  },
+  "scope_callback_bridge_v2_20261028": {
+    "operator": "backend AI",
+    "design_v1": "4c9715a6",
+    "design_mutex": "3a7dc84e",
+    "preserved_v1_candidate": "447f611f",
+    "manifest_sha256": "f5623b9e9ea4b44d967c4c6ab1c2f1dbe22cfbcdd2165c440b5e20253c38df8b",
+    "tools": "tmp/790_backend_contrast_20261028/scope-callback-bridge-v2-mutex",
+    "phase_dependency": {
+      "owner": "deployment",
+      "commit": "b5926031a8a9d1ea4ac9efb2f0416fa00db61f7a",
+      "bytes": 21599,
+      "sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d"
+    },
+    "final_local": {
+      "tests": 56,
+      "bridge_mutex_permissions": 46,
+      "installer": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "old_34_byte_identical": true,
+      "old_assertions": 50,
+      "old_assertions_removed": 0
+    },
+    "wire_original_sha256": "c89d03005725cdc5eb36e1969f26d7c2bdc4b067fbcf67c1329133809802ad06",
+    "shared_lock": "each direct SQL stage; GEN outside parent mutex; max wait min(10,remaining)",
+    "connection_budget": "same one_serial_operation15; observer independent1; deployment whole64reserve",
+    "fixed_APP_state": "<phase>/.scope-callback-state",
+    "install_destination": "/root/t44-r9/scope-bridge-v2-01",
+    "complete_command_bytes": [
+      11700,
+      13021,
+      16245,
+      10852
+    ],
+    "per_piece_description_allowance": 300,
+    "deadlines_unchanged": {
+      "callback": 120,
+      "GEN_minimum": 600,
+      "lease_max": 80,
+      "APP_snapshot_max": 30,
+      "APP_minimum": 45,
+      "APP_maximum": 60
+    },
+    "report": "agents/backend/contrast-20261028/scope-bridge-v2-report.md",
+    "runbook": "agents/backend/contrast-20261028/scope-bridge-v2-runbook.md",
+    "prompt_ids": [
+      "ROLE-backend-SCOPE-BRIDGE-V1",
+      "ROLE-backend-SCOPE-BRIDGE-V2-MUTEX"
+    ],
+    "review": "PENDING root limited review",
+    "cloud_SUT_MySQL_CI_by_role": false,
+    "new_product_changes": 0,
+    "new_production_size_savings": 0,
+    "private_independent_inputs_read": false,
+    "old_ended_nonce_reused": false,
+    "revocation_ACK_implemented": false,
+    "automatic_retry": false
+  },
+  "scope_callback_bridge_v3_budget_20261028": {
+    "operator": "backend AI",
+    "review_blocked_v2": "39a20035; original161b/56 unchanged",
+    "design_commit": "e95a744c",
+    "red_commit": "e5b775f7",
+    "repair_commit": "5cedb2ca",
+    "manifest_sha256": "e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7",
+    "tools": "tmp/790_backend_contrast_20261028/scope-callback-bridge-v3-budget",
+    "phase_dependency_commit": "25d863c5afce1fb84ea32300c45d123bb7919c76",
+    "phase_dependency_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+    "local_red": {
+      "tests": 5,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0
+    },
+    "local_final": {
+      "tests": 74,
+      "legacy": 56,
+      "new_budget": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "legacy_assertions_AST_in_order": 95,
+      "removed": 0
+    },
+    "configuration": "originals.mysql_budget LOAD public copy path/SHA + budget_receipt_path APP actual phase original; bound authority",
+    "GEN_flags": [
+      "--budget-receipt",
+      "--budget-receipt-sha256"
+    ],
+    "SQL": "same operation_lock then original budget.admit current identity/capacity; no SQL on refusal",
+    "budget_query_timeout": "clamp original subprocess wait to callback remainder; original SQL/parser unchanged",
+    "GEN_parent_lock": false,
+    "default384": false,
+    "install_destination": "/root/t44-r9/scope-bridge-v3-01",
+    "complete_command_bytes": [
+      12216,
+      12953,
+      15289,
+      12840
+    ],
+    "description_allowance": 300,
+    "report": "agents/backend/contrast-20261028/scope-bridge-v3-report.md",
+    "runbook": "agents/backend/contrast-20261028/scope-bridge-v3-runbook.md",
+    "review": "PENDING limited re-review, notified new commit/hash",
+    "cloud_actualMySQL_SUT_CI_by_role": false,
+    "independent_private_read": false,
+    "new_product_changes": 0,
+    "original120_or_secret_boundary_changed": false,
+    "prompt": "ROLE-backend-SCOPE-BRIDGE-V3-BUDGET"
+  },
+  "coordinator_merge_receipts": [
+    {
+      "incoming_commit": "5f6791308772cab9b53b3eba46acc1d2b1f91831",
+      "method": "three-way keep unchanged parent fields; preserve disjoint role additions; union actual history lists; retain both scalar conflict values in this receipt",
+      "scope": "handoff metadata only; product code unchanged",
+      "scalar_conflicts": []
+    },
+    {
+      "incoming_commit": "8c5208bb7c0d047f4a57439bd217296e86c15709",
+      "method": "three-way metadata, both role histories and disjoint fields preserved; scalar conflicts retained here",
+      "scope": "metadata only; no product conflict accepted",
+      "scalar_conflicts": []
+    },
+    {
+      "incoming_commit": "7779681010de99cbb4d5946ded9c4bcd5f8ae132",
+      "method": "three-way metadata, both role histories and disjoint fields preserved; scalar conflicts retained here",
+      "scope": "metadata only; no product conflict accepted",
+      "scalar_conflicts": []
+    }
+  ],
+  "component_call_20261028": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-COMPONENT-CALL-20261028-v1",
+    "base": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "branch": "codex/backend-component-call-20261028",
+    "design_test_commit": "63748058db765e094f0b5012f6f3398edae868f2",
+    "product_commit": "2d947d237328521e46b9766859ca166a4c54f789",
+    "implementation_status": "backend part implemented; messaging signature migration pending, not an end-to-end or cloud candidate",
+    "product_files": [
+      "backend/t44/services/application.py",
+      "backend/t44/services/common.py"
+    ],
+    "contract": {
+      "six_component_operations": "same trusted gateway and Call object, missing owner -> DEPENDENCY_UNAVAILABLE before business fields",
+      "Call.cas": "keyword-only record_diff=True default; False preserves before/after contents and identity, does not disable audit or change guards/SQL/UoW/results",
+      "messaging_pending": "NotificationFacade methods(g,c), explicit check_version before values(row), cas(record_diff=False), handle does not mark_read"
+    },
+    "fixed_count": {
+      "before": 5935,
+      "after": 5916,
+      "net": 19,
+      "after_excess": 816,
+      "within_range": false,
+      "before_commit": "63748058db765e094f0b5012f6f3398edae868f2",
+      "after_commit": "2d947d237328521e46b9766859ca166a4c54f789",
+      "application_before": 167,
+      "application_after": 147,
+      "common_before": 140,
+      "common_after": 141
+    },
+    "tests": {
+      "red": {
+        "tests": 14,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0
+      },
+      "green": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sqlite_developer": {
+        "tests": 157,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "failed_cases": [
+          "test_default_notification_component_returns_empty_page"
+        ]
+      }
+    },
+    "initial_format_failure_preserved": true,
+    "final_ruff_and_format": true,
+    "boundary_proof": "agents/backend/component-call-20261028/ast-boundary.json",
+    "report": "agents/backend/component-call-20261028/report.md",
+    "failure_originals": "agents/backend/component-call-20261028/failure-originals.json",
+    "not_run": [
+      "full CI",
+      "MySQL",
+      "RabbitMQ",
+      "cloud",
+      "formal performance",
+      "independent acceptance"
+    ],
+    "independent_783_792_accessed": false,
+    "student_research_changed": false,
+    "messaging_owner_handoff": "exact2d source, command,14 boundaries and sole old-signature failure sent directly; root retains cloud5d",
+    "next": "messaging migration, combined exact-SHA review and required regressions/count; no premature cloud deployment"
+  },
+  "p64_f7_short_diagnostic_20261028": {
+    "operator": "backend AI",
+    "target_source": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "design_commit": "8e235a34",
+    "runtime_commit": "c0268820",
+    "manifest_sha256": "1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8",
+    "tools": "tmp/790_backend_contrast_20261028/p64-f7-window1600",
+    "installation": "/root/t44-r9/p790-f7-1600-01",
+    "runtime_files": 13,
+    "complete_command_bytes": [
+      15107,
+      16004,
+      15608,
+      9499
+    ],
+    "description_allowance": 300,
+    "scope_bridge_readonly_dependency": "e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7",
+    "mysql_budget_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+    "GEN_sha256": "6b2da1de7d494527447078ba5ec427edf5a23f203129d5149f20d66a0b2410fd",
+    "cohorts_requests": [
+      80,
+      800,
+      8000
+    ],
+    "active_measure_clients": 400,
+    "think_time": 0,
+    "sessionTTL600_330_90_fail_stop_unchanged": true,
+    "seed": 44,
+    "anchor_at": "2026-10-28T04:00:00Z",
+    "stop_utc": "2026-10-28T16:00:00Z",
+    "grants": "prep infrastructure data-only then separate six-role short pressure; default false",
+    "local_tests": {
+      "total_unique": 68,
+      "legacy": 46,
+      "new_grant_budget": 13,
+      "delivery": 9,
+      "failure_error_skip": 0,
+      "legacy_assertions_normalized_AST_order_identical": 66,
+      "removed": 0
+    },
+    "full_byte_identical": [
+      "data/790_select.py",
+      "data/790_stage1.py",
+      "edge/790_stage2.py"
+    ],
+    "HTTP_functions_classes_except_configure_byte_identical": 18,
+    "transport_diff": "SOURCE/STOP only; algorithm unchanged",
+    "old_versions_scope_bridge_and_results_modified": false,
+    "actual_root_grant_phase_budget_CA_roles_session_key_received": false,
+    "actual_cloud_SUT_MySQL_newCI_independent_by_role": false,
+    "formal600s_authorization": false,
+    "product_changes": 0,
+    "report": "agents/backend/contrast-20261028/p64-f7-report.md",
+    "runbook": "agents/backend/contrast-20261028/p64-f7-runbook.md",
+    "review": "PENDING root limited review",
+    "prompt": "ROLE-backend-P64-F7-1600"
+  },
+  "p64_UI_outer_encoded_fix_20261028": {
+    "operator": "backend AI",
+    "old_candidate": "d17cf53c",
+    "old_runtime_manifest_unchanged": "1da8ff5eaede6d6349c04ee8c3208a85ea2628b6a7604351e9dcfe332feb1de8",
+    "red_commit": "27bcdd3d",
+    "old_outer_plus300": [
+      20444,
+      21640,
+      21112,
+      12968
+    ],
+    "red_counts": {
+      "failed": 3,
+      "passed": 1
+    },
+    "delivery_sha256": "243d90ca022aaf1d336854066fd9c65e9e49a65f20047594d22fae95184097c5",
+    "tools": "tmp/790_backend_contrast_20261028/p64-f7-ui-encoded-v2",
+    "new_install_destination": "/root/t44-r9/p790-f7-1600-ui02",
+    "parts": 7,
+    "max_raw": 11750,
+    "max_base64_payload_plus300": 15968,
+    "max_complete_UI_plus300": 16090,
+    "raw_cap": 12000,
+    "test7_passed": true,
+    "actual_local_outer_install_replay": true,
+    "runtime13_grant_legacy46_files_byte_unchanged": true,
+    "cloud_SUT_CI_independent_private": false,
+    "API_download_not_retroactive_validation": true,
+    "report": "agents/backend/contrast-20261028/p64-ui-encoded-v2-report.md",
+    "review": "PENDING limited re-review",
+    "prompt": "ROLE-backend-P64-UI-ENCODED-V2"
+  },
+  "p64_f7_2000_window_variant_20261028": {
+    "kind": "P64_F7_2000_NARROW_LOCAL_VERIFICATION",
+    "runtime_manifest_sha256": "2af6444892171c1004474379dff699f3ede876c6e7d55e85b72125cbce4626de",
+    "delivery_sha256": "305c5a722ee94d1339b2400a292bbc83416e6c40ba3c0a4b7fc49efdcfd41352",
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "old_commit": "20eb4ae340375a0b687324df15dacf11e2a73c0b",
+    "window_utc": "2026-10-28T20:00:00Z",
+    "unchanged_runtime_files": 9,
+    "deadline_literal_only_runtime_files": 4,
+    "initial_local": {
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.608"
+    },
+    "final_after_lint_local": {
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "126.305"
+    },
+    "unique_tests": 7,
+    "count_repeated_tests_twice": false,
+    "original46_and_old_failure_bytes_unchanged": true,
+    "actual_full_outer_installer_replay": true,
+    "python310": "AST only",
+    "local_runtime": "Mac/Python3.12",
+    "initial_lint_findings": {
+      "PLW1510": 2
+    },
+    "final_lint": "All checks passed",
+    "actual_phase_grant_session_received": false,
+    "cloud_SUT_SQL_HTTP_independent_by_role": false,
+    "test_file_sha256": "b571b253299a903265676ecd08abd16414cce6586c47cf46e7cd9afe10e86b0b",
+    "report": "agents/backend/contrast-20261028/p64-f7-2000-report.md",
+    "runbook": "agents/backend/contrast-20261028/p64-f7-2000-runbook.md",
+    "tools": "tmp/790_backend_contrast_20261028/p64-f7-window2000",
+    "install_destination": "/root/t44-r9/p790-f7-2000-ui03",
+    "parts": 7,
+    "max_raw": 11750,
+    "max_full_UI_plus300": 16090,
+    "deployment_public_commit": "c1303016a053d5b718d3df30ce5911d2e002c18c",
+    "GEN_sha256": "9edafbbff0586b5f77a701bd37f715685fba4169abaae510474343af75a8b427",
+    "review": "PENDING root limited review",
+    "prompt": "ROLE-backend-P64-F7-2000"
+  },
+  "p64_20Z_template_pin_correction_20261028": {
+    "kind": "P64_20Z_TEMPLATE_PIN_INPUT_CORRECTION",
+    "operator": "backend AI",
+    "frozen_runtime_commit": "7779681010de99cbb4d5946ded9c4bcd5f8ae132",
+    "red_commit": "0174c41d",
+    "root_reported_pre_keygen_refusal": "t-hz071f0gt2fylts",
+    "root_reported_keygen_called": false,
+    "root_reported_new_key_dir_created": false,
+    "templates": {
+      "APP": {
+        "old_template_sha256": "17e61e372132ac7721078afe330500b7e83267231c01be42927da5f456b76f81",
+        "corrected_template_sha256": "1c1db93d19a985ea48681eb0e96d3122031d149297c8bd7c36ece95647e67c73",
+        "only_changed_field": "transfer_sha256",
+        "old_pin": "f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181",
+        "new_pin": "ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07",
+        "all_other_actual_sha256_inputs_unset": true
+      },
+      "LOAD": {
+        "old_template_sha256": "2d616659ff6af14141aa4c27a61e24d0efe5571d6bad957148f4e440d7528aca",
+        "corrected_template_sha256": "ed79ef8d8b53e09cac8318a1d1a75aa98c80a06779ed7a0a4c298bc0c9f3efaa",
+        "only_changed_field": "transfer_sha256",
+        "old_pin": "f89e81c1813c45d04db27d6c4030b1f8fb661846b9d7eeea0240fe95d129d181",
+        "new_pin": "ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07",
+        "all_other_actual_sha256_inputs_unset": true
+      }
+    },
+    "runtime_manifest_sha256": "2af6444892171c1004474379dff699f3ede876c6e7d55e85b72125cbce4626de",
+    "delivery_sha256": "305c5a722ee94d1339b2400a292bbc83416e6c40ba3c0a4b7fc49efdcfd41352",
+    "transport_bytes": 12574,
+    "transport_sha256": "ba11a4d5cf7bdf70f632beafcccb09129831b91c958b6ba7d7f546d8773f6b07",
+    "red": {
+      "tests": "2",
+      "failures": "2",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.042"
+    },
+    "final": {
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.370"
+    },
+    "final_deselected": 6,
+    "frozen13_manifest_delivery7_raw_ui_unchanged": true,
+    "old16_unchanged": true,
+    "repack_reinstall_or_cloud_by_role": false,
+    "product_LOC_or_performance_claim": false,
+    "report": "agents/backend/contrast-20261028/p64-f7-2000-template-pin-report.md",
+    "prompt": "ROLE-backend-P64-20Z-TEMPLATE-PIN"
+  },
+  "window_20261029": {
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "stop_utc": "2026-10-29T12:00:00Z",
+    "profile_destination": "/root/t44-r9/r29-code-01/profile",
+    "p64_destination": "/root/t44-r9/p790-r29-01",
+    "planned_legacy_compatible_run_id": "r28p64gen04",
+    "GEN_sha256": "95802bf9e2a0d263bc00e1f2e5f046c553e29037e3c100eefebf09e81a95acc3",
+    "P64_manifest_sha256": "a5510d962deee65ace91a3fa7cf93d0c720e1cb08e4b841220b75e9cc082e590",
+    "bundle_sha256": "0f2aef008a8cbf69fdfaad27a59eea85a3b5c149301a4018aa064ca4d76bd6c1",
+    "local_checks": {
+      "operator": "backend_AI",
+      "executed_UTC": "2026-10-29T03:19:44.985418+00:00",
+      "local_python": "Python 3.12.10",
+      "unique_unittest_cases": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "stderr_SHA256": "b500c3680b66a68df06060c698208d6c25960d945f5582d957593a2b3ddc90fd",
+      "actual_install_routes": [
+        "raw gzip",
+        "GitHub JSON/base64"
+      ],
+      "actual_complete_file_and_permission_roundtrip": true,
+      "same_target_overwrite_rejected_with_existing_bytes_unchanged": true,
+      "tampered_whole_archive_refused_before_target_creation": true,
+      "Python310": "AST compatibility only; no native Linux execution",
+      "original_business_tests_rerun": false,
+      "cloud_SUT_HTTP_SQL_pressure_executed": false,
+      "preparation_environment_attempts": [
+        {
+          "action": "import pytest in system Python",
+          "result": "ModuleNotFoundError before any tests started"
+        },
+        {
+          "action": "import pytest in existing project venv",
+          "result": "ModuleNotFoundError before any tests started"
+        }
+      ],
+      "framework_choice": "stdlib unittest; no dependencies installed",
+      "scope_note": "Time-condition tests isolate exact unchanged AST predicates; context/HTTP/routing are stubbed and not claimed as validated.",
+      "core_unique_cases": 9,
+      "wrapper_unique_cases": 3,
+      "wrapper_executed_UTC": "2026-10-29T03:25:17.536139+00:00",
+      "wrapper_stderr_SHA256": "82c408ad381fc9846d56da6c582b6de1f09d46b1c457eec76cc01fcecf09ac21",
+      "wrapper_actual_POSIX_sh_raw_and_JSON_install_and_tamper_rejection": true,
+      "wrapper_network": "fake local curl returning fixed PUBLIC bytes; no cloud/network execution",
+      "wrapper_transport_flags": "--ipv4 --http1.1",
+      "app_prep_unique_cases": 4,
+      "app_prep_executed_UTC": "2026-10-29T03:30:12.476357+00:00",
+      "app_prep_stderr_SHA256": "74e1943b3e11188f81aac8cf2f5f0c86be4b9c0f6e133de1a069d1ffdc997eca",
+      "app_prep_checks_scope": "Fake original CLI orchestration with actual local dynamic fixtures; real local failure subprocess raw streams; JSONL and packaged shell/source/size. Preflight root/Linux/live pins deliberately not executed."
+    },
+    "actual_cloud_or_grant_or_session": false,
+    "report": "agents/backend/window-20261029/report.md",
+    "prompt": "ROLE-backend-WINDOW-20261029-v1",
+    "wrapper": {
+      "fixed_public_commit": "f1fff60facc1e10378164e4b79c4d9c2894ba326",
+      "bundle_bytes": 64819,
+      "bundle_sha256": "0f2aef008a8cbf69fdfaad27a59eea85a3b5c149301a4018aa064ca4d76bd6c1",
+      "wrapper_bytes": 5228,
+      "wrapper_sha256": "d5546d0f2bcbd19c24a5648d7b089ed6dd9ecd2ae3bd43fae5d199da81361bf0",
+      "description_allowance": 300,
+      "raw_UI_plus_description": 5528,
+      "base64_entire_command_plus_description": 7272,
+      "actual_wrapper_uses_extra_base64": false,
+      "POSIX_sh_syntax_exit": 0,
+      "embedded_install_source_sha256": "044a561df817b2245723a278af7084ed8e79161f6eaffd8f8a7913755adb6292",
+      "old_wrapper_modified": false,
+      "cloud_executed": false
+    },
+    "runbook": "agents/backend/window-20261029/runbook.md",
+    "app_prep": {
+      "worker_bytes": 11117,
+      "worker_sha256": "9ea78f415e9775efcda0d8f8b2e3aa0d29141fca6828bef15f373c0fbc404737",
+      "launcher_bytes": 7669,
+      "launcher_sha256": "828421f6833681ffd0e0a678f2af1778f15d805fb777da0fae74d4f2617360da",
+      "raw_UI_plus_description": 7969,
+      "base64_entire_command_plus_description": 10528,
+      "description_allowance": 300,
+      "unknown_app_ip": null,
+      "root_prep_admitted_default": false,
+      "S1_or_S2_or_pressure_grant_authorized": false,
+      "unit_runtime_max_seconds": 1800,
+      "cloud_executed": false,
+      "POSIX_sh_syntax_exit": 0,
+      "Python310": "AST only",
+      "local_checks": 4,
+      "preflight_live_or_cloud_proven": false,
+      "worker": "agents/backend/window-20261029/app-prep-once.py",
+      "launcher": "agents/backend/window-20261029/app-prep-launch.PUBLIC.sh"
+    }
+  },
+  "neutral_fixture_r29_20261029": {
+    "status": "OFFLINE_DELIVERED_NOT_REMOTE_READY",
+    "source_sha": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+    "prompt_ref": "ROLE-backend-NEUTRAL-FIXTURE-R29-v1",
+    "artifacts": [
+      "agents/backend/neutral-fixture-20261029/RUNBOOK.md",
+      "agents/backend/neutral-fixture-20261029/report.md",
+      "agents/backend/neutral-fixture-20261029/host.py",
+      "agents/backend/neutral-fixture-20261029/edge.py",
+      "agents/backend/neutral-fixture-20261029/admin.py"
+    ],
+    "unique_final_local_tests_passed": 5,
+    "original_permission_failure_retained": true,
+    "actual_SUT_requests": 0,
+    "cloud_operations": 0,
+    "root_flags_required": [
+      "root_admit_http_preparation",
+      "root_confirm_original_short_finished"
+    ],
+    "expected_actual_final_tasks": 6400,
+    "production_code_changed": false,
+    "independent_PRIVATE_accessed": false,
+    "formal_performance_passed": false,
+    "import_failure_followup": {
+      "actual_remote_error": "ModuleNotFoundError before first service CLI/HTTP",
+      "actual_actor": "root cloud execution; backend AI authored the missed -I argument",
+      "root_explicit_one_01b_continuation": true,
+      "old_files_and_failed_logs_overwritten": false,
+      "new_unique_offline_checks": 4,
+      "offline_check_seconds": 0.065,
+      "cloud_continuation_result": "NOT_OBSERVED_BY_BACKEND",
+      "script": "agents/backend/neutral-fixture-20261029/resume-import-launch.PUBLIC.sh",
+      "SHA256": "eec6056af0eb59828e1370529da7f481f0b6bfd2dcf2369d8457207a25746244"
+    }
+  },
+  "dry_r29b_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-DRY-R29B-v1",
+    "base_sha": "a92e5e73da93ba23748c3bab113103036c395d50",
+    "branch": "codex/backend-dry-r29b",
+    "status": "MODULE_VALIDATED_SCALE_GATE_STILL_FAILS_PENDING_ROOT_REVIEW",
+    "product_paths": [
+      "backend/t44/services/reviews.py"
+    ],
+    "application_before": 5887,
+    "application_after": 5884,
+    "behavior": "Two latest release-assessment queries share one private query; original call sites/list handling preserved",
+    "evidence": "agents/backend/dry-r29b",
+    "test_path": "tmp/766_backend_dry_r29b/766_assessment_query.py",
+    "cloud_independent_PRIVATE_accessed": false,
+    "full_CI_MySQL_RabbitMQ_acceptance_or_performance_executed": false,
+    "product_commit": "41a111f270e949326202b8af5770db8aa7102e82",
+    "application_net_reduction": 3,
+    "remaining_above_5100": 784,
+    "require_range_exit_code": 1,
+    "local_developer_checks": {
+      "new_differential": 18,
+      "original_SQLite_HTTP": 134,
+      "total": 152,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 50.23,
+      "upstream_deprecation_warnings": 1
+    },
+    "whole_module_AST_equal_after_helper_expansion": true,
+    "report": "agents/backend/dry-r29b/report.md",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489275840",
+    "initial_product_push_exit_code": 0
+  },
+  "neutral_r30_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-NEUTRAL-R30-v1",
+    "base_sha": "7374b3637b06465d448fc2e81952ba18fc676315",
+    "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "status": "GEN_BOUND_LOCAL_SEAMS_CHECKED_PENDING_ROOT_WRAPPER_REVIEW_AND_ACTUAL_FIELDS",
+    "records": "agents/backend/neutral-r30",
+    "source_context_records": 62,
+    "expected_actual_runtime_files": 60,
+    "actual_APP_import_verified": false,
+    "cloud_SUT_or_real_sessions_executed": false,
+    "original_tests_or_product_changed": false,
+    "local_unique_checks": 40,
+    "local_passed": 40,
+    "local_seconds": 1.9,
+    "source_stage": "ffae5d84",
+    "target_red_stage": "2402792b",
+    "target_red": {
+      "failed": 6,
+      "passed": 1
+    },
+    "core_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+    "budget_helper_sha256": "9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61",
+    "runbook": "agents/backend/neutral-r30/RUNBOOK.md",
+    "root_fields_pending": [
+      "run/namespace/database binding",
+      "actual import raw receipt/path/UTC and full-chain review",
+      "T0/end/cost-stop",
+      "CA/private IPv4 origin",
+      "APP idle6 and after actual scheduler7 plus separate LOAD observations",
+      "actual40 project IDs/accounts",
+      "four actual original sessions/expires and fresh snapshot/counts",
+      "actual exclusive writer evidence and outer new budget admission lock"
+    ],
+    "public_stage_comment": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6492148126",
+    "previous_reviewed_execution_stage": "3c1967b34c2f724682b47920145497e4df4abcdc",
+    "extra_stale_service_red_green": true,
+    "initial_branch_push_exit_code": 0,
+    "gen_schema_fixture_sha256": "e52132b83ef2e9ecf77a1bc2fe9b68d196761d02943e5570cf6ac7efe8b15622",
+    "gen_binding_run_key_exists": false,
+    "gen_run_mapping": "project=t44-cloud-RUN-PHASE database=t44c_RUN_PHASE; parse RUN r30[a-z0-9]{5,12}",
+    "G35_C40_separate": true,
+    "packet_cutoff": "start minus150 seconds; no retime",
+    "original_probe_kind": "actual-owned-mysql-budget-v4",
+    "legacy_plan_budget_SHA_means": "original GEN probe raw SHA; not live readmission",
+    "formal_budget_entry": "root-reviewed wrapper holds actual9e operation_lock/admitted across whole fixed Docker admin; directadmin is not authorization",
+    "code_manifest_sha256": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606",
+    "last_unsafe_stage_not_for_actual_admission": "b36abcd1f184dea8cadfd0534e289ca017cd032e",
+    "actual_GEN_proof_field": "cryptographic_transport_proofs",
+    "all_16_guard_binding_keys_matched_actual_GEN": true,
+    "field_fix_only_runtime_AST_change": true,
+    "field_contract": "agents/backend/neutral-r30/gen-field-contract.PUBLIC.json",
+    "previous_unsafe_gen_key_stage": "0a34a81e9fb59abf6c500f5acbe284c053d1f903"
+  },
+  "neutral_transport_r30_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-NEUTRAL-TRANSPORT-R30-v1",
+    "status": "LOCAL_REAL_CRYPTO_TLS_ROUNDTRIP_ONLY_PENDING_ROOT_DEPLOYMENT",
+    "records": "agents/backend/neutral-transport-r30",
+    "unique_local_passed": 7,
+    "seconds": 0.66,
+    "producer17_unchanged": true,
+    "transport_manifest_sha256": "2b147bfce49e299337defb6d04e4f0d48ab7e3179ea9588b2f1368aeafe57704",
+    "actual_cloud_SUT_sessions": 0,
+    "root_C": "2026-10-29T10:40:00Z",
+    "embedded_install": {
+      "command": "agents/backend/neutral-transport-r30/install.PUBLIC.sh",
+      "proof": "agents/backend/neutral-transport-r30/install-proof.PUBLIC.json",
+      "command_sha256": "f4b3d9dd120e8e948d31e2876a3c9c6cc698255130b64dd36738cc46dd47332e",
+      "complete_command_base64_plus_256": 17780,
+      "exclusive_limit": 18000,
+      "extra_unique_local_install_checks": 2,
+      "seconds": 0.05,
+      "actual_root_install": false,
+      "operator_cli": "agents/backend/neutral-transport-r30/ROOT_CLI.md"
+    }
+  },
+  "neutral_cas_future_r30_20261029": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-NEUTRAL-CAS-R30-v1",
+    "status": "LOCAL_FUTURE_CANDIDATE_ONLY_R30WINDOW01_CLOSED_NOT_REPLAY",
+    "records": "agents/backend/neutral-r30-cas",
+    "red_stage": "7936fe2a",
+    "red_failed": 2,
+    "red_passed": 0,
+    "unique_local_checks": 81,
+    "passed": 81,
+    "seconds": 4.33,
+    "new_manifest_sha256": "0fc61e463692622f167548b7b00aed42fc18a58a0ae127317d6138e0a6136b8b",
+    "runtime_file_count": 18,
+    "historical_producer17_manifest_unchanged_sha256": "66ab164258803a8a62edfc3dbc713837431ce8b649664ab8de4c5a48a2359606",
+    "executed_source_stage_unchanged": "686d79da3967123be7a3c24d6740d77be008c1bb",
+    "source_sha_unchanged": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "original_40_assert_AST_unchanged": true,
+    "post_retry": false,
+    "409_counted_as_success": false,
+    "actual_matching_events_for_six_old_failures_observed": false,
+    "actual_cloud_SUT_sessions_extra_CI": 0,
+    "future_owner_dependency": "Review/install 18-file manifest including new escalation_readback helper before a separately authorized new window",
+    "runtime_scope": "LOCAL_PROJECT_RUNTIME_ONLY_NOT_DOCKER_OR_CLOUD_READY",
+    "runtime_check": "python -B /neutral-code/escalation_readback.py --check-runtime-only",
+    "future_runtime": "APP actualbinding official backend8e; edge UID10001 read-only no caps no DB/AMQP business env; preserve image PYTHONPATH; no product source to LOAD/QA",
+    "verifier": "tmp/756_backend_neutral_cas_r30/verify-local.py",
+    "runtime_python_file_set_exact": true,
+    "previous_review_stage": "5635cac1a416fc1bea8178ca0991dd1cf5747c0d",
+    "runtime_entry_red": {
+      "failed": 2,
+      "passed": 0,
+      "seconds": 0.25
+    },
+    "actual_Docker_8e_run": false
+  },
+  "backend_final_20261029": {
+    "operator": "backend AI",
+    "prompt": "ROLE-backend-FINAL-20261029-v1",
+    "baseline": "5868779e949adef066fe26bffbc4f2e8afee7649",
+    "status": "LOCAL_CANDIDATE_PENDING_FULL_NATIVE_AND_ROOT_INTEGRATION",
+    "records": "agents/backend/final-20261029",
+    "sqlglot_dependency_commit": "4c71161f9eec65c0d73ffa81a611536256811fee",
+    "new_differential_passed": 188,
+    "new_seconds": 1.27,
+    "original_local_HTTP_domain_passed": 305,
+    "original_seconds": 29.92,
+    "full_796_not_claimed_by_local_tests": true,
+    "SELECTs_member_20": [
+      22,
+      3
+    ],
+    "SELECTs_dependency_20": [
+      23,
+      4
+    ],
+    "dynamic_schema_algorithm_unchanged": true,
+    "frozen_error_iteration_limit": 100,
+    "schema_evolve_candidate_used": false,
+    "claimed_350_500_line_reduction": false,
+    "original_tests_modified": false,
+    "actual_cloud_SUT_sessions": 0
+  }
+}

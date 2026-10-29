@@ -1,0 +1,96 @@
+{
+  "schema": "772-v24-0b-opaque-install-v1",
+  "prepared_utc": "2026-10-29T08:41:35.484691Z",
+  "capsule_sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f",
+  "capsule_bytes": 69195,
+  "load_image_config_digest": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
+  "public_files": {
+    "runtime-v2.4.772seal": {
+      "sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f",
+      "bytes": 69195
+    },
+    "capsule-v24-key.rsa-oaep-sha256": {
+      "sha256": "09ea1d000451160e3d1c0d18f5dd2b80fc82116f27e2d23460a6ec460610b07e",
+      "bytes": 384
+    },
+    "bootstrap.py": {
+      "sha256": "09266efde00e382d019365766df68b9f2d78d6e750454aaac76d5e853844bf93",
+      "bytes": 2527
+    },
+    "INSTALL_V24_VERIFY.py": {
+      "sha256": "2ebcbed80df155a9cd1be819dc550b3c60b503a5b12019598efdf551bbf3b77c",
+      "bytes": 4161
+    },
+    "INSTALL_V24_OPAQUE.sh": {
+      "sha256": "9244e970ed9418b54c0e5a9b41505beac74a2cc29969097e2dca90811fd7fb2a",
+      "bytes": 2043
+    },
+    "RSA_PROBE_V24.sh": {
+      "sha256": "72285cf77e1a55f57a3662c9aae797dd0ecb8fe9a2282699ddf919442f910d70",
+      "bytes": 1600
+    },
+    "ADAPTER_0B_V24.py": {
+      "sha256": "694fc3aa09aa6442a1763f3866a24ac274cc0b76f052cd98dd4cf82f346db938",
+      "bytes": 15528
+    },
+    "ENTRY_0B_V24.sh": {
+      "sha256": "615966a5fba2e5136dea8748c23ace80cf7707c8a4bd755edc50e12e253e4e02",
+      "bytes": 2552
+    },
+    "TARGET_0B_V24.json": {
+      "sha256": "024117e5d1c17b16253537f38840f3b2bdf35087038ced6f0e3bbc51d4242410",
+      "bytes": 973
+    },
+    "INTERFACE_0B_V24_FREEZE.json": {
+      "sha256": "e2d97c62eb4485a70a502594c5368586f81fbb808dd6c82169bebacccc97c976",
+      "bytes": 2369
+    }
+  },
+  "private_members": {
+    "analyze.py": {
+      "sha256": "39411e943f9fb750f69a7e2dfdd59925c15b01eba936c6b259656fd660e47e7a",
+      "bytes": 3053
+    },
+    "local_tls.crt": {
+      "sha256": "bd1d7464b21708ce0178d4156ac7931e342fe735245e11f75140dfa4e1043802",
+      "bytes": 1025
+    },
+    "local_tls.key": {
+      "sha256": "9dd65af74b21feda1015907e5a667c8ed70da30b673db757f39c5108bb55e6da",
+      "bytes": 1704
+    },
+    "offline_checks.py": {
+      "sha256": "3a77e45ed95e4b247b152342704e6663a811be56ec31c815d536c50eeb7b92e9",
+      "bytes": 15185
+    },
+    "openapi.json": {
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "bytes": 865396
+    },
+    "runtime.py": {
+      "sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+      "bytes": 42141
+    },
+    "timer_gate.py": {
+      "sha256": "766b8d750a56647b14eebc01ba2461d8b373ce21f6a66f218ee2c1b412d24db2",
+      "bytes": 1597
+    }
+  },
+  "RSA_transport": {
+    "padding": "RSA-OAEP",
+    "hash": "SHA256",
+    "mgf1": "SHA256",
+    "public_PEM_sha256": "1752c101a1182690a1d320b000d3259fea92eb90b45edf8005ff701319d17b12",
+    "public_DER_sha256": "385f2632f9c82260639db1c0994ebf951a9c1e9efa97a2cd5249b190220f5e66",
+    "private_key_path": "NOT_ASSUMED; caller must supply path after read-only derived-public fingerprint match",
+    "historical_candidate_only": "/root/t44-r9/r29-load-key-01/load-only-private.pem",
+    "actual_private_key_presence": "NOT_OBSERVED",
+    "old_v1_envelope_usable_for_v24": false,
+    "new_v24_envelope": "capsule-v24-key.rsa-oaep-sha256",
+    "private_plaintext_key_in_PUBLIC": false
+  },
+  "grant_allow": false,
+  "runtime_or_preflight_executed": false,
+  "SUT_requests": 0,
+  "scope": "Public or opaque transport data only; private members are hashes, never source or key values. Exact authenticated bootstrap is retained; wrapper enforces O_EXCL and all member hashes."
+}

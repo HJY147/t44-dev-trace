@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="2" time="0.046" timestamp="2026-10-24T19:19:28.368803+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_result_appears_after_old_precheck" time="0.004"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red'&quot;">self = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="" name="test_existing_objects_are_untouched[dangling_symlink]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red'&quot;">self = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard/agents/database/output-guard/.runtime/red'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

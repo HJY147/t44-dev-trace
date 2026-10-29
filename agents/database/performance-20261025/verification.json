@@ -1,0 +1,219 @@
+{
+  "tool_source": "edc3e2a32a4e657964155d5137c251a0d972d586",
+  "base": "ade5e4c1998b4c2f014afde8c011645c6c5a7412",
+  "commands": [
+    {
+      "kind": "initial_pytest",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+      "env_overrides": {
+        "PYTHONPATH": "backend"
+      },
+      "argv": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "tmp/833_database_performance/833_trace_checks.py",
+        "-q",
+        "--junitxml=agents/database/performance-20261025/initial-junit.xml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "kind": "final_pytest_after_clock_change",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+      "env_overrides": {
+        "PYTHONPATH": "backend"
+      },
+      "argv": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "tmp/833_database_performance/833_trace_checks.py",
+        "-q",
+        "--junitxml=agents/database/performance-20261025/final-junit.xml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "kind": "sqlite-initial",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+      "env_overrides": {
+        "PYTHONPATH": "backend"
+      },
+      "argv": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+        "tmp/833_database_performance/833_sqlite_initial.py",
+        "--run-sqlite-demo",
+        "--output",
+        "agents/database/performance-20261025/sqlite-initial.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "kind": "sqlite-final",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+      "env_overrides": {
+        "PYTHONPATH": "backend"
+      },
+      "argv": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+        "tmp/833_database_performance/833_sqlite_initial.py",
+        "--run-sqlite-demo",
+        "--output",
+        "agents/database/performance-20261025/sqlite-final.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "kind": "Ruff_final",
+      "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+      "argv": [
+        "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "tmp/833_database_performance"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "junit": {
+    "initial-junit.xml": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "final-junit.xml": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "samples": {
+    "sqlite-initial.json": {
+      "source": "89af321a2e106ee433a502b36230bbbd9de3c670",
+      "records": 6,
+      "cursor_statements": 12,
+      "mapping_rows": 242,
+      "cpu_le_wall": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "wall_ns": [
+        949875,
+        423167,
+        741375,
+        279458,
+        351917,
+        662375
+      ],
+      "pending": 0,
+      "checkedout": 0,
+      "disposed": true
+    },
+    "sqlite-final.json": {
+      "source": "edc3e2a32a4e657964155d5137c251a0d972d586",
+      "records": 6,
+      "cursor_statements": 12,
+      "mapping_rows": 242,
+      "cpu_le_wall": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "wall_ns": [
+        1036625,
+        434084,
+        915708,
+        294750,
+        332417,
+        656416
+      ],
+      "pending": 0,
+      "checkedout": 0,
+      "disposed": true
+    }
+  },
+  "files": {
+    "agents/database/performance-20261025/final-junit.xml": {
+      "bytes": 845,
+      "sha256": "995f500d95ffb7862644e6bb8e04dde00f9e7c6e5c8624faeccf57f4d1e7d430"
+    },
+    "agents/database/performance-20261025/initial-junit.xml": {
+      "bytes": 845,
+      "sha256": "c2c8755aecb519cc981d36cfd6035ff55c8cb8adf43edd2510bf7369aa210eb8"
+    },
+    "agents/database/performance-20261025/sqlite-final.json": {
+      "bytes": 54499,
+      "sha256": "6d2818e7a11ff82b3e29b73fa0676cb156dd5bfaf8f4af35a5c979b27cd532a2"
+    },
+    "agents/database/performance-20261025/sqlite-initial.json": {
+      "bytes": 54253,
+      "sha256": "8348e8e3996c49b93fb33e70aac3356d82d9008bd0cedc573597d23fa50908a8"
+    },
+    "tmp/833_database_performance/833_database_trace.py": {
+      "bytes": 14367,
+      "sha256": "4edbf24779794a826bbe754ccad26890ea4c5c1d3f13f05778bad0e52ec307a9"
+    },
+    "tmp/833_database_performance/833_sqlite_initial.py": {
+      "bytes": 7024,
+      "sha256": "2d56c78936ad2195d9c33a393cd424919c60f6ab60b0cbfd6c4df1923b1ea220"
+    },
+    "tmp/833_database_performance/833_trace_checks.py": {
+      "bytes": 6130,
+      "sha256": "84298426c6289162f99282f7235911823666608dcce50c65e62e6bdfb5b0319c"
+    }
+  },
+  "production_change_exit": 0,
+  "not_mysql_http_or_cloud": true,
+  "transient_tool_failures": [
+    {
+      "kind": "read guessed conftest path",
+      "exit_code": 1,
+      "effect": "file absent; no mutation; used existing public993 toy pattern"
+    },
+    {
+      "kind": "apply_patch bad hunk marker",
+      "effect": "verification refused whole patch; no partial write"
+    },
+    {
+      "kind": "initial Ruff",
+      "exit_code": 1,
+      "reported_errors": 7,
+      "rules": [
+        "I001",
+        "SIM117"
+      ],
+      "fixed": "six automatic fixes then one explicit with grouping; original lint rules unchanged"
+    },
+    {
+      "kind": "demo initial Ruff",
+      "exit_code": 1,
+      "reported_errors": 1,
+      "rule": "I001",
+      "fixed": "import order only"
+    },
+    {
+      "kind": "staged diff check before f0ce2aa",
+      "exit_code": 2,
+      "cause": "new authored report extra blank line at EOF",
+      "commit_after_failure": "f0ce2aa; not described as passed",
+      "correction": "trim authored report EOF only; raw XML and SQLite samples unchanged"
+    }
+  ]
+}

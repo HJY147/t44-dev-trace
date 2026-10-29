@@ -1,0 +1,65 @@
+name: r30-backend-artifact
+
+on:
+  push:
+    branches: [codex/deployment-preparation-r30]
+    paths:
+      - deployment/cloud-reuse/r30-backend-artifact.py
+      - .github/workflows/r30-backend-artifact.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r30-backend-only-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-backend-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Fetch only exact public source and comparison anchor
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 120s git fetch --no-tags --depth=1 origin \
+            0bffe0c535e5897890aebf30879fdd3839dc52d6 935ab5b93bea788672c2b4a088c79cfeed848954
+      - name: Build backend only and verify archived bytes plus actual nonroot runtime files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python deployment/cloud-reuse/r30-backend-artifact.py build \
+            --repository "$GITHUB_WORKSPACE" --run-id "r30ci${GITHUB_RUN_ID}" \
+            --output "$RUNNER_TEMP/r30-backend"
+          manifest_sha=$(sha256sum "$RUNNER_TEMP/r30-backend/backend-bundle-manifest.json" | cut -d ' ' -f 1)
+          python deployment/cloud-reuse/r30-backend-artifact.py verify-bundle \
+            --package "$RUNNER_TEMP/r30-backend" --manifest-sha256 "$manifest_sha"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: r30-backend-0b-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/r30-backend/backend-image.tar.gz
+            ${{ runner.temp }}/r30-backend/backend-bundle-manifest.json
+            ${{ runner.temp }}/r30-backend/source-runtime-context.tar.gz
+            ${{ runner.temp }}/r30-backend/source-manifest.json
+            ${{ runner.temp }}/r30-backend/frozen-comparison.json
+            ${{ runner.temp }}/r30-backend/actual-runtime-files.json
+            ${{ runner.temp }}/r30-backend/build-metadata.json
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: failure()
+        with:
+          name: r30-backend-first-failure-${{ github.run_id }}
+          path: ${{ runner.temp }}/r30-backend/first-failure.json
+          if-no-files-found: warn
+          retention-days: 7

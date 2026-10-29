@@ -1,0 +1,67 @@
+{
+  "deployment_commit": "25d863c5afce1fb84ea32300c45d123bb7919c76",
+  "source_commit": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+  "profile_sha256": "3b3b6d4ca4f01a3f7bc36ac60cd2a56ce3930220251abc886de778db6d90f6f7",
+  "generation_constants": {
+    "SOURCE": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+    "SOURCE_COUNT": 53,
+    "HARDSTOP": "2026-10-28T16:00:00Z",
+    "BUDGET_SHA": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d"
+  },
+  "six_code_files_exact": true,
+  "small_install_original_scripts_verified": 6,
+  "largest_encoded_with_256_allowance": 15372,
+  "local_replay": "only destination literal rewritten to new reviewer temp; payload bytes unchanged",
+  "install_subprocess_results": [
+    {
+      "name": "01-part-000.sh",
+      "exit": 0,
+      "stdout": "PUBLIC_CODE_PART_SAVED 0\n",
+      "stderr": ""
+    },
+    {
+      "name": "02-part-001.sh",
+      "exit": 0,
+      "stdout": "PUBLIC_CODE_PART_SAVED 1\n",
+      "stderr": ""
+    },
+    {
+      "name": "03-part-002.sh",
+      "exit": 0,
+      "stdout": "PUBLIC_CODE_PART_SAVED 2\n",
+      "stderr": ""
+    },
+    {
+      "name": "04-part-003.sh",
+      "exit": 0,
+      "stdout": "PUBLIC_CODE_PART_SAVED 3\n",
+      "stderr": ""
+    },
+    {
+      "name": "05-part-004.sh",
+      "exit": 0,
+      "stdout": "PUBLIC_CODE_PART_SAVED 4\n",
+      "stderr": ""
+    },
+    {
+      "name": "06-verify-install.sh",
+      "exit": 0,
+      "stdout": "{\"success\": true, \"profile_dir\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/reviewer-v4-bridge-20261028/tmp/781_reviewer_v4_20261028/deployment-install-replay02/profile\", \"source_sha\": \"5d5e0a15e3b15e2f509c4ae71a927bbc35579be7\", \"stop_utc\": \"2026-10-28T16:00:00Z\", \"files\": {\"backend-upgrade.py\": {\"bytes\": 23566, \"sha256\": \"53974361404c1d25d11b5010d0b7bb40c9c5573da16d51d5b4e7134b9a118c2f\"}, \"generation.py\": {\"bytes\": 30497, \"sha256\": \"3232c18eb304d02875411d43f922b63f36a1e162c633eb808e67b3373e3cbcc9\"}, \"mysql-budget.py\": {\"bytes\": 21599, \"sha256\": \"305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d\"}, \"profile.json\": {\"bytes\": 2059, \"sha256\": \"3b3b6d4ca4f01a3f7bc36ac60cd2a56ce3930220251abc886de778db6d90f6f7\"}, \"resource-stream.py\": {\"bytes\": 44082, \"sha256\": \"d38143741c9ffc78c0163b2badc9ce151628dd23dfc1e53292d8061cab741c87\"}, \"source-artifact-receive.py\": {\"bytes\": 4972, \"sha256\": \"0a9260cf924de60713eda8f3a63339e4a6d5e41dea9ddc5fc8700a0f6a5d7219\"}}, \"SUT_or_services_started\": false}\n",
+      "stderr": ""
+    }
+  ],
+  "package_zip_bytes": 166458,
+  "package_zip_sha256": "9ebb356360d190f466219a596f8d0954bb38399c0210d9aa75f9b47d81b9eea6",
+  "source_archive_sha256": "392222af763b6f7fe969d25e17621c381b7588a61f950adac79b6378e6f4bffb",
+  "exact_source_files_and_normalized_modes_checked": 53,
+  "tar_mode_distribution": {
+    "0o664": 53
+  },
+  "mode_normalization": "same original immutable builder archive_contents: 755 if any exec bit else644; build writes those normalized modes",
+  "frozen_equal_files_checked": 47,
+  "actual_original_source_receiver_exit": 0,
+  "actual_original_source_receiver_stdout": "{\"success\": true, \"directory\": \"/Users/yang/Desktop/nothing/\\u8f6f\\u4ef6\\u5f00\\u53d1\\u5927\\u4f5c\\u4e1a/.agent-worktrees/reviewer-v4-bridge-20261028/tmp/781_reviewer_v4_20261028/actual-source-received\", \"official_zip_sha256\": \"9ebb356360d190f466219a596f8d0954bb38399c0210d9aa75f9b47d81b9eea6\", \"actual_manifest_sha256\": \"3b398cd74322d52169d1267946cc90d80c7755ed708d6bc0f9aa5029a32f9763\", \"builder_sha256\": \"53974361404c1d25d11b5010d0b7bb40c9c5573da16d51d5b4e7134b9a118c2f\", \"source_sha\": \"5d5e0a15e3b15e2f509c4ae71a927bbc35579be7\", \"source_archive_sha256\": \"392222af763b6f7fe969d25e17621c381b7588a61f950adac79b6378e6f4bffb\", \"files\": 5, \"ZIP_CRC_and_safe_TAR_verified\": true, \"Docker_or_business_started\": false}\n",
+  "first_probe_failure": "initial six replay commands succeeded, but reviewer incorrectly assumed tar archive mode exact equals Git mode; source bytes/hash matched; git archive files0664 are normalized by existing builder to0644. Initial target preserved; no source/production/verifier changed. New replay separately recorded.",
+  "Docker_or_native_MySQL_or_cloud_or_SUT_started": false,
+  "official_CI_artifact_claimed": false
+}

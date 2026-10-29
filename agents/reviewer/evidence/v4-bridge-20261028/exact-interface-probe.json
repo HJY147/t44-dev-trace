@@ -1,0 +1,33 @@
+{
+  "operator": "AI reviewer",
+  "scope": "exact public tool fragments; no Docker, MySQL, network, cloud or SUT",
+  "deployment_commit": "b5926031a8a9d1ea4ac9efb2f0416fa00db61f7a",
+  "backend_commit": "161b82ee792c272fd29a54a04cf2545007e1aa99",
+  "bridge_backend_sha256": "75e97ddcfb820bd5355f1575b55d2e8234c16860c6e3af9a91e556e23c5ac305",
+  "budget_helper_sha256": "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d",
+  "executed_original_generation_action": "scheduler-token",
+  "captured_GEN_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/review-only/f/controller.py",
+    "scheduler-token",
+    "--phase-dir",
+    "/review-only/f",
+    "--binding-sha256",
+    "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "--project-id",
+    "1"
+  ],
+  "budget_receipt_flags_present": false,
+  "actual_budget_admit_missing_input_refusal": "EXPLICIT_CURRENT_PHASE_BUDGET_RECEIPT_AND_SHA_REQUIRED",
+  "macOS_temp_alias_and_canonical_refusals": [
+    "CANONICAL_OWNED_PRIVATE_OBJECT_REQUIRED",
+    "EXPLICIT_CURRENT_PHASE_BUDGET_RECEIPT_AND_SHA_REQUIRED"
+  ],
+  "first_probe_exit": 1,
+  "first_probe_error": "AssertionError because temporary alias /var resolved to /private/var and hit CANONICAL_OWNED_PRIVATE_OBJECT_REQUIRED before missing-receipt assertion; original tool output preserved in session",
+  "direct_data_method_budget_admit_calls": 0,
+  "stop_status_return_precedes_budget_module": true,
+  "production_changes": 0,
+  "independent_private_reads": 0,
+  "verdict": "BLOCKED_PENDING_OWNER_FIX_AND_REVIEW"
+}

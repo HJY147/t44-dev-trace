@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.372" timestamp="2026-10-29T19:38:23.163236+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_frozen_schema_reuses_prepared_validator_but_arbitrary_schema_does_not" time="0.001"><failure message="AssertionError: assert not [{'type': 'integer', 'enum': [1, 2, 3, 4, 5, 6, ...], 'x-enum-names': ['pending', 'developing', 'blocked', 'pending_re...', 'pending_release', 'delivered', ...], 'description': '对应待受理、开发中、阻塞、待评审、待上线、已交付、已回滚；状态出口仅采用business-rules v1。'}, ...]">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1083241a0&gt;
+
+    def test_frozen_schema_reuses_prepared_validator_but_arbitrary_schema_does_not(monkeypatch):
+        schema=contracts.SPEC['components']['schemas']['TaskState']
+        original=contracts.validator
+        calls=[]
+        def count(candidate):
+            calls.append(candidate)
+            return original(candidate)
+        monkeypatch.setattr(contracts,'validator',count)
+        for value in VALUES:
+            contracts.violations(schema,value)
+&gt;       assert not calls
+E       AssertionError: assert not [{'type': 'integer', 'enum': [1, 2, 3, 4, 5, 6, ...], 'x-enum-names': ['pending', 'developing', 'blocked', 'pending_re...', 'pending_release', 'delivered', ...], 'description': '对应待受理、开发中、阻塞、待评审、待上线、已交付、已回滚；状态出口仅采用business-rules v1。'}, ...]
+
+tmp/754_backend_final_20261029/754_validation.py:92: AssertionError</failure></testcase></testsuite></testsuites>

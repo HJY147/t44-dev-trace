@@ -1,0 +1,79 @@
+{
+  "operator": "database AI",
+  "utc": "2026-10-25T06:55:15.601522+00:00",
+  "design_source": "9e0caf2",
+  "initial_source": "e631936",
+  "final_tool_source": "3e11b1a88e33da317466edcf76c4bba4a75afc36",
+  "tool_files": {
+    "tmp/833_database_performance/833_mysql_summary.py": {
+      "sha256": "2f825f3d4f0f52b7c675a43ea070d371bcfac51f3516f6ee9fc3301dea78ca19",
+      "bytes": 5505
+    },
+    "tmp/833_database_performance/833_mysql_lock_probe.py": {
+      "sha256": "46dc00a57ff79ec51c0d8bcc92dd32c5bdcb76e794c8c9417c89bbb2c42256fb",
+      "bytes": 16944
+    },
+    "tmp/833_database_performance/833_mysql_tool_checks.py": {
+      "sha256": "831f498e5e4033c3edf7844ac11955082d40cef67931554a554d677dd2e4503b",
+      "bytes": 4867
+    }
+  },
+  "public_input": {
+    "run": 40169575755,
+    "source": "81c909ad753aee7179ee0c464349a07273092fc0",
+    "path": "records/ci/40169575755/mysql-before.json",
+    "bytes": 1387070,
+    "sha256": "b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e",
+    "artifact_zip_check": "parent supplied verified metadata; DB child did not download/check ZIP"
+  },
+  "commands": [
+    {
+      "argv": "python tmp/833_database_performance/833_mysql_summary.py --input ../diagnostics-20261025/records/ci/40169575755/mysql-before.json --input-sha256 b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e --expected-source 81c909ad753aee7179ee0c464349a07273092fc0 --output agents/database/graph-lock-20261025/mysql-before-summary.json",
+      "exit": 0,
+      "source_scope": "authored source before formatting; byte-identical result repeated on final committed source"
+    },
+    {
+      "argv": "python -m ruff check --config backend/pyproject.toml tmp/833_database_performance/833_mysql_summary.py tmp/833_database_performance/833_mysql_lock_probe.py tmp/833_database_performance/833_mysql_tool_checks.py",
+      "exit": 0
+    },
+    {
+      "argv": "PYTHONPATH=backend python -m pytest -c backend/pyproject.toml tmp/833_database_performance/833_mysql_tool_checks.py -q --junitxml=agents/database/graph-lock-20261025/tool-junit.xml",
+      "exit": 1,
+      "passed": 7,
+      "failed": 1,
+      "cause": "test compares bytes stderr and str; TypeError, not a product failure"
+    },
+    {
+      "argv": "PYTHONPATH=backend python -m pytest -c backend/pyproject.toml tmp/833_database_performance/833_mysql_tool_checks.py -q --junitxml=agents/database/graph-lock-20261025/tool-final-junit.xml",
+      "exit": 0,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "argv": "PYTHONPATH=backend python -m pytest -c backend/pyproject.toml tmp/833_database_performance/833_mysql_tool_checks.py -q --junitxml=agents/database/graph-lock-20261025/tool-final-v2-junit.xml",
+      "exit": 0,
+      "passed": 8,
+      "failed": 0,
+      "source": "3e11b1a"
+    },
+    {
+      "argv": "python tmp/833_database_performance/833_mysql_summary.py --input ../diagnostics-20261025/records/ci/40169575755/mysql-before.json --input-sha256 b17f0fd502f9342ec11f9ae12064edccb11f139b3a90997c6be022f5ec333a9e --expected-source 81c909ad753aee7179ee0c464349a07273092fc0 --output agents/database/graph-lock-20261025/mysql-before-summary-final.json",
+      "exit": 0,
+      "source": "3e11b1a",
+      "bytes_identical_to_initial": true
+    }
+  ],
+  "interpreter": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database/.venv/bin/python",
+  "working_directory": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-performance-20261025",
+  "same_distinct_tool_tests": 8,
+  "read_only_path_errors": [
+    "store.py nonexistent exit1",
+    "unit_of_work.py nonexistent exit1",
+    "unmatched tmp/835* zsh glob exit1",
+    "diagnostics.yml nonexistent exit1"
+  ],
+  "mysql_lock_probe_execution": "NOT_RUN_BY_DB_ROLE; source delivered for root-owned freshCI only",
+  "production_diff": "",
+  "formal_acceptance": false,
+  "prompt": "ROLE-database-MYSQL-GRAPH-20261025-v1"
+}

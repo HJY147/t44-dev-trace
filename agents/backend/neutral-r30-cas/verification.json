@@ -1,0 +1,95 @@
+{
+  "scope": "LOCAL_PROJECT_RUNTIME_ONLY_NO_DOCKER_IMAGE_CLOUD_SUT_OR_SESSIONS",
+  "invocation": [
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+    "-B",
+    "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-neutral-r30/tmp/756_backend_neutral_cas_r30/verify-local.py"
+  ],
+  "checks": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tmp/756_backend_neutral_cas_r30/756_conflict.py",
+        "tmp/756_backend_neutral_cas_r30/756_regression.py",
+        "tmp/756_backend_neutral_cas_r30/756_runtime_entry.py",
+        "--junitxml=agents/backend/neutral-r30-cas/local-all.xml"
+      ],
+      "started_at": "2026-10-29T10:47:50.779044+00:00",
+      "exit_code": 0,
+      "stdout": "........................................................................ [ 88%]\n.........                                                                [100%]\n81 passed in 4.33s\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:47:55.384779+00:00"
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30-cas",
+        "tmp/756_backend_neutral_cas_r30"
+      ],
+      "started_at": "2026-10-29T10:47:55.384806+00:00",
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:47:55.419778+00:00"
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "agents/backend/neutral-r30-cas",
+        "tmp/756_backend_neutral_cas_r30"
+      ],
+      "started_at": "2026-10-29T10:47:55.419811+00:00",
+      "exit_code": 0,
+      "stdout": "16 files already formatted\n",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:47:55.449871+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_at": "2026-10-29T10:47:55.449901+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:47:55.477772+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "686d79da3967123be7a3c24d6740d77be008c1bb",
+        "--",
+        "agents/backend/neutral-r30",
+        "agents/backend/neutral-transport-r30",
+        "tmp/759_backend_neutral_r30",
+        "tmp/758_backend_transport_r30",
+        "backend",
+        "frontend",
+        "specs"
+      ],
+      "started_at": "2026-10-29T10:47:55.477793+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "finished_at": "2026-10-29T10:47:55.490121+00:00"
+    }
+  ]
+}

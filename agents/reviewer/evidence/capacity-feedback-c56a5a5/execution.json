@@ -1,0 +1,27 @@
+{
+  "operator": "AI reviewer, not independent or student manual test",
+  "candidate": "c56a5a5485ccd80bbd6d34ed81a4fd073edb430e",
+  "recorded_at_utc": "2026-10-23T19:54:31.348394+00:00",
+  "test_command": "node scripts/prepare-tests.mjs && node node_modules/vitest/vitest.mjs run --reporter=verbose --reporter=junit --outputFile=../agents/reviewer/evidence/capacity-feedback-c56a5a5/13-targeted.xml -t 'staffing rejection feedback'",
+  "runtime": "Existing Codex bundled Node and existing root frontend/node_modules through own ignored symlinks; no dependency install",
+  "environment": {
+    "PATH_prepend": "/Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin",
+    "T44_VITE_CACHE_DIR": "own-worktree/frontend/.reviewer-vite-cache"
+  },
+  "exit_code": 0,
+  "passed": 13,
+  "deselected_or_skipped": 52,
+  "runs": 1,
+  "warning": "JUnit outputFile resolves relative to Vitest test.root, so original report was in .agent-worktrees/agents/reviewer/evidence/...; moved the one owned output to intended own evidence path without rerun. Log preserves original path.",
+  "new_test_files": [],
+  "not_run": [
+    "whole65suite",
+    "build",
+    "typecheck",
+    "browser",
+    "MySQL",
+    "CI",
+    "independent acceptance"
+  ],
+  "cleanup": "Own misplaced JUnit moved; only owned empty leaf removed. Empty-only rmdir of existing parent directories returned nonempty and preserved them; no other contents read/deleted."
+}

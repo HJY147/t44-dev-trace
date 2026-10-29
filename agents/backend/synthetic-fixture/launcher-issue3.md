@@ -1,0 +1,8 @@
+Agent-Role: backend
+Prompt-Ref: ROLE-backend-SYNTHETIC-FIXTURE-LAUNCHER-v1
+
+Root-authorized host launcher delivered in e3fd10b1eb8a498b333b2307c1caafbf29178900 after design91d2bfb. File deployment/fixture-launcher-cloud.py SHA256 39f210450c491c8b6407185cf190d333abb80547de64bcd9de3022951fd9cf11. Reviewed synthetic worker SHA7b6332517473266b99a6121cd6ddaaaf08a61080b8e0667996689daf4542a626, exact application C and existing deployment files unchanged.
+
+Fixed C source and TLS paths, original ops.load_env kept in memory, local unix Docker context, exactly two-f operations/admin run --rm -T --pull never --no-deps --entrypoint python, three RO public-file binds and one private output bind. It inherits original admin UID10001/cap_drop/read_only. Existing compose provides T44_DATABASE=${MYSQL_DATABASE}; launcher requires t44 and worker validates again. Raw logs0600, strict public receipt allowlist; failure/timeout stops without retry/seed, does not claim daemon/container cleanup. Root owns separately reviewed host execution and outer timeout240/process tree; inner bound220 and original TLS deadline reserve.
+
+Only four new850 static parameter/env/receipt targets ran and passed, 20 original worker targets deselected, Ruff passed. No launcher.main/TLS/OpenSSL/Docker/cloud/CLI/DB/service/load operation occurred. Report and exact log/JUnit: agents/backend/synthetic-fixture/launcher-report.md and launcher-static.*. Actor: backend AI; neither human code change nor deployment/performance acceptance. Only expressly published logistics files were used; no independent private material or tester contact.

@@ -1,0 +1,26 @@
+...................F.................................................... [ 97%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_original_cli_and_readonly_data_guard_seal_roundtrip ___________
+
+tmp_path = PosixPath('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-v4-bridge-20261028/tmp/781_reviewer_v4_20261028/pytest-final-temp/test_original_cli_and_readonly0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x109768290>
+key = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x109aae110>, '-----BEGIN PUBLIC KEY-----\nMI...kK1xR4DHPdMxD3HlBJMiyMeFctgnIMsmmuw\nEL/r6HlqoQMB8fFDN4A7Le6vTWKf0000bqscnwUm3WLpAgMBAAE=\n-----END PUBLIC KEY-----\n')
+
+    def test_original_cli_and_readonly_data_guard_seal_roundtrip(tmp_path, monkeypatch, key):
+        import contextlib
+        import io
+    
+        import bridge_data
+        from sqlalchemy import create_engine
+        from t44 import cli, persistence
+        from t44.persistence.schema import metadata
+    
+>       assert "product-source" in cli.__file__
+E       AssertionError: assert 'product-source' in '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-v4-bridge-20261028/backend/t44/cli.py'
+E        +  where '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-v4-bridge-20261028/backend/t44/cli.py' = <module 't44.cli' from '/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/reviewer-v4-bridge-20261028/backend/t44/cli.py'>.__file__
+
+tmp/781_reviewer_v4_20261028/bridge-v3-exact/790_bridge_checks.py:486: AssertionError
+=========================== short test summary info ============================
+FAILED tmp/781_reviewer_v4_20261028/bridge-v3-exact/790_bridge_checks.py::test_original_cli_and_readonly_data_guard_seal_roundtrip
+1 failed, 73 passed in 1.80s

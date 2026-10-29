@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="1.087" timestamp="2026-10-25T14:53:53.302151+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_http_race_fixture_uses_valid_real_workflow_and_original_errors[capacity]" time="0.777"><failure message="AssertionError: ('changeIteration', 422, 'PARAMETER_INVALID')&#10;assert 422 == 200&#10; +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code">tmp/834_backend_performance/834_shared_gate_fixture.py:37: in test_http_race_fixture_uses_valid_real_workflow_and_original_errors
+    gate.send(
+tmp/834_backend_performance/834_shared_gate_http.py:68: in send
+    assert response.status_code == expect, (operation, response.status_code, value.get("code"))
+E   AssertionError: ('changeIteration', 422, 'PARAMETER_INVALID')
+E   assert 422 == 200
+E    +  where 422 = &lt;Response [422 Unprocessable Entity]&gt;.status_code</failure></testcase><testcase classname="" name="test_http_race_fixture_uses_valid_real_workflow_and_original_errors[role]" time="0.258" /></testsuite></testsuites>

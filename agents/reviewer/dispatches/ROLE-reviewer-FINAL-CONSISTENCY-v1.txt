@@ -1,0 +1,5 @@
+Prompt-ID: ROLE-reviewer-FINAL-CONSISTENCY-v1
+Operator: fixed AI reviewer; public-text consistency only.
+Actual parent dispatch:
+另一个有限收尾任务，先自己的worktree/新codex分支以root最新为起点，限8min。只做只读公开材料一致性审查：reports/final/M12-final-source-and-measurement-note.md、root records/decisions/dependency-query-development-admission.json、新公开v4-driver-calibration-public-summary.md/json、H2摘要及你原报告；检查有无过度性能/整体通过/同源宣称、错误数字或链接。可自己写新报告/日志/handoff/prompt并commit，不跑测试/服务/网络负载/CI，不读private/cases/raw/860。M12讲包仍将建，实际包还没生成，不对此判完成；无需对旧Word再QA。发现问题立即通知，我修；没有则有限声明。不要重复你已审C/CI源证据。GitHub可在PR21只COMMENT说明有限审查并全文GET，但不要APPROVE/global stage。1:30UTC前完成。
+Scope before public-text reads: new codex/review-final-consistency in own clean worktree at root committed31637dd53924b2e1aab8bf5ab215dacdd3ca62ed. Read expressly published M12/admission/v4 calibration publicmd+json/H2 summary/prior own report only. Link checks through Git path/commit metadata, never follow private/cases/raw/860 refs or open actual package/Word; no source CI re-audit, test/service/load/CI/networkworkload runs. Actual package not yet built.

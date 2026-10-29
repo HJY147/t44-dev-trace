@@ -1,0 +1,11 @@
+# ROLE-backend-WINDOW-20261029-v1
+
+用户原始最新要求：先检查压测准备和传输，再启动原两台服务器，继续达标；余额只有六十多元，要求抓紧时间，不可随意消耗。原文在会话中，本文件为岗位执行提示词，不替换用户原文。
+
+岗位提示：从fcc847f3在独立worktree派生准确f7的新29日窗口；只改必要的时刻/新目录/摘要链，保留旧源、SQL、种子、测试和独立性。先纳入594b08f0模板修正。分清330秒总窗口、600秒包年龄与四类真实session有效期；给完整公开源码包与严格一次下载安装器，在本地真实回放和拒覆盖/篡改边界中验证。原云源f7不修改，不访问云或独立测试PRIVATE，不把本地语法和安装测试称为云端或性能通过。
+
+改进理由：原流程把安装、取摘要和手动接收放在会话临界路径；这次在开机前固定代码、manifest和接收接口。运维必须明确shell，避免CloudAssistant默认sh与pipefail冲突。新输入的pin由manifest生成，防止旧窗口摘要滞留。总协调与部署岗以新manifest和原CLI中性接口对接。
+
+根后续提示：使用两原机已验证的 curl --ipv4 --http1.1，单次APP预备编排另封，不自动S1/S2。实际处理：wrapper只加传输选项并复跑3项完整sh检查；runtime20件/摘要未改，避免重复原68或9项核心测试。
+
+根追加ROLE-backend-WINDOW-20261029-APP-PREP-ONCE：本地交单次APP预备脚本，原CLI prepare/arm/config/infra→实际probe→migrate→动态实际prep grant→异步worker内bootstrap→idle，每步原stdout/stderr，JSONL多条解析，不自动S1/S2、失败保存无retry。实际完成原CLI编排和四个局部测试；不伪装云执行。

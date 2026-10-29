@@ -1,0 +1,86 @@
+{
+  "operator": "AI frontend",
+  "base": "5868779e949adef066fe26bffbc4f2e8afee7649",
+  "design_commit": "93d58051",
+  "product_commit": "9cf79dde2cd098e1e7c218ccbcf4cba549162cb7",
+  "scope": [
+    "frontend/src/styles.css"
+  ],
+  "application_before": 5880,
+  "application_after": 5871,
+  "frontend_before": 1099,
+  "frontend_after": 1090,
+  "net_reduction": 9,
+  "range_exit_code": 1,
+  "within_range": false,
+  "remaining_above_5100": 771,
+  "tests": 89,
+  "commands": [
+    {
+      "command": "pnpm test",
+      "exit_code": 0,
+      "seconds": 4.65,
+      "log": "agents/frontend/final-20261029/test.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 2.651,
+      "log": "agents/frontend/final-20261029/typecheck.log"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 2.751,
+      "log": "agents/frontend/final-20261029/build.log"
+    }
+  ],
+  "selector_media_declarations_equal": 254,
+  "ui_fixture_states": 60,
+  "ui_widths": [
+    1440,
+    1180,
+    1000,
+    760,
+    390
+  ],
+  "page_errors": 0,
+  "horizontal_overflows": 0,
+  "identical_png_pairs": 12,
+  "visually_reviewed": [
+    "1440-overview.png",
+    "390-overview.png",
+    "1440-form-errors.png",
+    "390-form-errors.png"
+  ],
+  "ui_full_computed_style_comparison": "FAILED / NOT ACCEPTED; probe records runtime ids and property serialization without normalization; raw failure retained. Screenshot SHA comparison is separate and passed.",
+  "build_warning": "831.48 kB JS chunk >500 kB; retained, no warning limit changed.",
+  "preparation_events": [
+    {
+      "event": "Default PATH lacked Node; existing Node24.19.0 used by absolute directory, no installation or lock change."
+    },
+    {
+      "event": "Initial new probe fixture enum.map failed before browser/API setup; corrected optional enum source to the existing developer fixture fallback."
+    },
+    {
+      "event": "First complete-property sampling was intentionally interrupted at exit130 to bound memory; partial images retained in ui-before-partial. Retried with per-node SHA snapshots."
+    },
+    {
+      "event": "Image pixel comparison preparation lacked PIL in Python3.12; exact PNG SHA comparison used instead. No images were edited."
+    },
+    {
+      "event": "git diff --cached --check first reported build.log trailing whitespace and test.log blank EOF. Original bytes retained in .raw.gz before text normalization; final aggregate diff check rerun."
+    }
+  ],
+  "boundaries": [
+    "No cloud/server actions or actual backend HTTP. All browser /api/v1 routes intercepted with synthetic fixtures.",
+    "No backend, contract, counter, original test/assertion, independent/private files changed.",
+    "Development self-check only, no independent acceptance, performance or full project scale pass."
+  ],
+  "updated_at": "2026-10-29T11:31:16.756800+00:00",
+  "cleanup": "Own Vite5186 stopped via its exec session; browsers closed; only own dependency symlinks removed, shared dependencies untouched.",
+  "raw_log_sha256": {
+    "test.log": "e8db6f1755d36dd54778e6822496a37d3d5471d4c92ec0effce4f2f802092d5d",
+    "build.log": "c4630e4a905519c5baa49dc32adcf109989cbf9c58ddd5f6a72732f835418c1e"
+  }
+}

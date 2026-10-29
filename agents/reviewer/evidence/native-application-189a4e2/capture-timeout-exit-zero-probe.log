@@ -1,0 +1,39 @@
+{
+  "operator": "AI reviewer; existing871-style mock process only, not deployment run or independenttest",
+  "archive_target": "5ef1bde95e511c14dcff7b5fa0af2449de83836c",
+  "implementation": "0a6da88c404c04515c3c07039f0e231908fddc0e",
+  "source_path": "deployment/native/application.py",
+  "source_sha256": "df5d11bcaa9a2b2b138d1ab31e1379efdd42ea7f1c8d6c464301a963ac906823",
+  "capture_ast_sha256": "39b24cd735c8bab85c7e03c4267d212470f926f4ab2c302ab0c2003b5cc1855f",
+  "scope": "Exact unmodified capture() AST with synthetic Popen/identity/kill/filewrite globals; no actual Popen, ps, signals, service, privateinput or output reads",
+  "first_communicate": "TimeoutExpired",
+  "cleanup_signal_requested": true,
+  "second_communicate": "controlled child handles SIGTERM and exits0",
+  "communicate_timeouts": [
+    1,
+    5
+  ],
+  "actual_receipt": {
+    "started_at_utc": "2026-10-23T21:43:52.988331+00:00",
+    "ended_at_utc": "2026-10-23T21:43:52.988633+00:00",
+    "argv": [
+      "synthetic-owned-command"
+    ],
+    "cwd": "/synthetic-owned-source",
+    "exit_code": 0,
+    "stdout_sha256": "39b4cf477b00ec44bf6ac9c7ce9e7951ee873671152bdbcab90da28f7f95c36f",
+    "stderr_sha256": "38947e8c69521ae10a88a58a406be92249f218ca07ff2efa177b171dd8efdc6e",
+    "private_output_id": "48155a3d225a4400854457a0c6f44128"
+  },
+  "actual_returned_normally": true,
+  "expected_rejected_timeout": true,
+  "actual_rejected_timeout": false,
+  "timeout_marker_present": false,
+  "actual_os_processes_started": 0,
+  "actual_os_signals_sent": 0,
+  "existing_run2_receipts_modified": false,
+  "test_files_created": []
+}
+Traceback (most recent call last):
+  File "<stdin>", line 30, in <module>
+AssertionError: NATIVE-CAPTURE-TIMEOUT-01: initial TimeoutExpired followed by cleanup exit0 was returned as successful command without timeout marker

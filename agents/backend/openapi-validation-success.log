@@ -1,0 +1,4 @@
+Command: .venv/bin/python; openapi_spec_validator.validate(specs/contracts/openapi.json)
+PASS: OpenAPI3.1 validator; 31 paths; 38 operations; 130 schemas; unique IDs/parameters; required mutation keys exactly once; GET no keys
+PASS: component schemas checked, 6 synthetic examples validated with format checks; negative offline integer/bool/extra/UTC checks; standard integer-valued 1.0 semantics; future identifiers structurally extensible
+LIMIT: specification/offline checks only; active v1 sets require template/rule business validation; no product HTTP implementation, contract tests, business tests or performance run

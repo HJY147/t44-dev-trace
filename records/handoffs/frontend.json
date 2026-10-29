@@ -1,0 +1,931 @@
+{
+  "role": "frontend",
+  "stage": "final-css-equivalence-20261029",
+  "implementation_status": "仅styles.css真实净减9；89/type/build通过，12组PNG完全相同；应用5871仍超771。开发自测，不是独立/性能/规模验收。",
+  "artifacts": [
+    {
+      "path": "frontend/",
+      "status": "实际业务代码、pnpm锁与测试"
+    },
+    {
+      "path": "agents/frontend/WORKLOG.md",
+      "status": "保留历史并追加真实应用阶段"
+    },
+    {
+      "path": "reports/modules/frontend.md",
+      "status": "当前模块报告"
+    },
+    {
+      "path": "records/handoffs/frontend.json",
+      "status": "当前交接"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "status": "实际派工与后续steering"
+    },
+    {
+      "path": "agents/frontend/application-interface.md",
+      "status": "真实后端问询正文"
+    },
+    {
+      "path": "agents/frontend/application-test-coverage-final2.log",
+      "status": "21测试与覆盖率原始结果"
+    },
+    {
+      "path": "agents/frontend/application-coverage-summary.json",
+      "status": "全源覆盖率摘要"
+    },
+    {
+      "path": "agents/frontend/application-coverage-manifest.json",
+      "status": "19文件完整分母"
+    },
+    {
+      "path": "agents/frontend/application-build-final2.log",
+      "status": "真实类型检查与构建"
+    },
+    {
+      "path": "agents/frontend/application-frozen-install.log",
+      "status": "冻结锁安装"
+    },
+    {
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "用户统一迁入tmp；真实七态脚本，历史结果保留agents"
+    },
+    {
+      "path": "agents/frontend/application-real-browser-result.json",
+      "status": "282条真实HTTP与错误结果"
+    },
+    {
+      "path": "agents/frontend/application-screenshots/",
+      "status": "1440/390真实截图"
+    },
+    {
+      "path": "tmp/frontend/981_fixtures.ts",
+      "status": "冻结Iteration嵌套结构；原错误结构在Git历史保留"
+    },
+    {
+      "path": "tmp/frontend/982_client.test.ts",
+      "status": "冻结plan预填与schema回归"
+    },
+    {
+      "path": "tmp/frontend/983_application.test.ts",
+      "status": "实际组件交互及历史重放回归"
+    },
+    {
+      "path": "agents/frontend/integration-ui-regression-before.log",
+      "status": "修复前真实3失败21通过；对应raw gzip留存"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "status": "实际派工和正式缺陷转交原文"
+    },
+    {
+      "path": "agents/frontend/integration-browser/",
+      "status": "94HTTP布局、真实迭代与失败记录、前后截图"
+    },
+    {
+      "path": "agents/frontend/integration-full/",
+      "status": "完整后端七态282HTTP新证据，不覆盖历史"
+    },
+    {
+      "path": "agents/frontend/integration-css-removal.json",
+      "status": "83规则删除依据与哈希"
+    },
+    {
+      "path": "tmp/frontend/958_integration-browser.mjs",
+      "status": "根分配编号；真实模块联调脚本"
+    },
+    {
+      "path": "tmp/frontend/984_application-real-browser.mjs",
+      "status": "迁移后的完整七态脚本，支持新证据输出目录"
+    },
+    {
+      "path": "agents/frontend/integration-notifications/",
+      "status": "真实read/handling及三次权威GET业务断言通过，随后即时resize失败保留"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-final/",
+      "status": "只读首轮多个drawer严格选择器失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-settled/",
+      "status": "稳定视口无溢出、折叠details文本断言失败证据"
+    },
+    {
+      "path": "agents/frontend/integration-notifications-complete/",
+      "status": "最终114HTTP只读全成功，手机已处理截图，零浏览器/console错误"
+    },
+    {
+      "path": "agents/frontend/integration-browser/escalation-preparation.json",
+      "status": "仅新task20创建event173的真实202公共响应，无Token"
+    },
+    {
+      "path": "agents/frontend/iat-ui-public-report-verification.json",
+      "status": "授权报告哈希和e8对象校验"
+    },
+    {
+      "path": "agents/frontend/iat-ui-deeplink-boundary.md",
+      "status": "实际未支持资源深链，无发明参数"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-before.log",
+      "status": "修前3失败；原始gzip保留"
+    },
+    {
+      "path": "agents/frontend/iat-ui-01-targeted-after.log",
+      "status": "修后3项针对性通过，非全套"
+    },
+    {
+      "path": "agents/frontend/iat-ui-ci-f654/",
+      "status": "原CI ZIP摘要校验、metadata、27测试/全19源码覆盖和类型构建log"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-browser/",
+      "status": "新真实fixture、升级响应、80HTTP双计数/任务不变/错误恢复与1440/390截图"
+    },
+    {
+      "path": "agents/frontend/iat-ui-counts-runtime.json",
+      "status": "新dev SHA/端口/库/公开worker receipt哈希，无凭据"
+    },
+    {
+      "path": "agents/frontend/contract-v11-validation.json",
+      "status": "权威hash/版本/shape与最小必要检查结果"
+    },
+    {
+      "path": "agents/frontend/contract-v11-fixture-before.log",
+      "status": "旧硬编码与新权威不一致的真实失败，raw gzip保留"
+    },
+    {
+      "path": "agents/frontend/contract-v11-fixture-after.log",
+      "status": "7/7客户端测试通过"
+    },
+    {
+      "path": "agents/frontend/contract-v11-typecheck.log",
+      "status": "类型检查通过"
+    },
+    {
+      "path": "records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md",
+      "status": "实际派工及执行对应"
+    },
+    {
+      "path": "docs/ui/plan-history-reason.md",
+      "status": "当前专项设计与实施边界"
+    },
+    {
+      "path": "agents/frontend/plan-reason-validation.json",
+      "status": "全源/冻结hash与红绿/浏览器证据"
+    },
+    {
+      "path": "tmp/frontend/872_plan_reason_browser.mjs",
+      "status": "root分配872，准确新后端真实开发回归"
+    },
+    {
+      "path": "agents/frontend/plan-reason-browser/first/",
+      "status": "原始真实结果/原文/6PNG"
+    },
+    {
+      "path": "docs/ui/latest-preview-update.md",
+      "status": "切换范围/回滚设计"
+    },
+    {
+      "path": "agents/frontend/latest-preview-validation.json",
+      "status": "准确运行身份与只读smoke"
+    },
+    {
+      "path": "agents/frontend/latest-preview-smoke/",
+      "status": "实际907原JSON/4PNG"
+    },
+    {
+      "path": "agents/frontend/latest-preview-secret-scan.json",
+      "status": "本岗公开产物精确密钥扫描"
+    },
+    {
+      "path": "docs/ui/native-user-preview-check.md",
+      "status": "本轮设计范围"
+    },
+    {
+      "path": "tmp/frontend/861_native_user_preview.mjs",
+      "status": "root分配新窄入口脚本"
+    },
+    {
+      "path": "agents/frontend/native-user-preview-validation.json",
+      "status": "实际HTTP/身份/限制"
+    },
+    {
+      "path": "agents/frontend/native-user-preview-first/",
+      "status": "脱敏原件与6PNG"
+    },
+    {
+      "path": "agents/frontend/scale-resume-20261028/REPORT.md",
+      "status": "本轮no-candidate审计报告"
+    },
+    {
+      "path": "tmp/789_frontend_scale_resume_20261028/",
+      "status": "原始固定计数、SHA和CSS静态清单"
+    },
+    {
+      "path": "agents/frontend/final-20261029/",
+      "status": "本轮实际代码计数、命令、截图、失败与交付证据"
+    },
+    {
+      "path": "tmp/frontend/754_style_equivalence.mjs",
+      "status": "新开发夹具采样器，严格computed-style比较失败保留，不进入89现有测试"
+    }
+  ],
+  "interfaces": [
+    {
+      "peer": "backend/messaging/deployment",
+      "status": "本轮接口无变化",
+      "inputs": [
+        "既有38冻结API与v1.2 schema/包络/错误"
+      ],
+      "outputs": [
+        "原dist与相同UI/输入/权限/导航边界"
+      ],
+      "boundary": "未对真实后端/数据库/云执行；不新增上下游接口要求"
+    }
+  ],
+  "commands_executed": [
+    {
+      "command": "pwd; rg --files -g AGENTS.md -g TASK.md -g *frontend* -g *BOOTSTRAP* .",
+      "result": "定位根目录、规范与岗位任务路径；仅输出路径，不读取独立测试岗内容。"
+    },
+    {
+      "command": "cat AGENTS.md agents/frontend/TASK.md; rg --files agents/frontend records | sort",
+      "result": "读取本岗约束并确认本岗原有文件；records 仅检索路径，未读取独立测试内容。"
+    },
+    {
+      "command": "cat docs/collaboration/team.md docs/collaboration/report-template.md specs/sources/T44-taskbook.txt specs/sources/submission-notes.txt specs/sources/homework-requirements.txt",
+      "result": "读取所有指定协作规范和原始需求来源。"
+    },
+    {
+      "command": "date '+%Y-%m-%dT%H:%M:%S%z'",
+      "result": "2026-10-23T11:45:32+0800"
+    },
+    {
+      "command": "python3 heredoc: write and validate frontend initialization artifacts",
+      "result": "写入并读取校验三份文件；JSON 必需字段、未实现状态、提示词关联及报告行数断言通过。"
+    },
+    {
+      "command": "git status --short --branch; git diff --cached --name-only; git log -1 --format",
+      "result": "分支 codex/team-bootstrap；首次检查暂存区为空；存在 HEAD baa9a5816504b8439e170b274bc962da3f7143d9。各命令分别执行。"
+    },
+    {
+      "command": "rg -n stale HEAD phrases agents/frontend reports/modules/frontend.md records/handoffs/frontend.json",
+      "result": "未检出本岗无 HEAD/无提交等过时表述；未重写历史。"
+    },
+    {
+      "command": "gh issue list --repo HJY147/t44-dev-trace --state open --json number,title,url --limit 30; gh issue view 3 --repo HJY147/t44-dev-trace --json number,title,body,url",
+      "result": "各命令分别执行，确认本岗 #2 和后端 #3 的真实上下游关系；只读取后端 Issue 正文。"
+    },
+    {
+      "command": "gh issue comment 2 --repo HJY147/t44-dev-trace --body-file agents/frontend/github-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358078032"
+    },
+    {
+      "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/github-backend-interface-question.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358079122"
+    },
+    {
+      "command": "absolute Node + pnpm add exact Vue/ElementPlus/router and build/test tooling; pin typescript@5.9.3",
+      "result": "依赖真实安装并生成frontend/pnpm-lock.yaml；初次TS7兼容失败如实记录"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm typecheck; pnpm test; pnpm build (separate subprocesses with Node bin in PATH)",
+      "result": "全部exit0；5测试通过；dist生成；完整输出agents/frontend/foundation-validation.log"
+    },
+    {
+      "command": "CUA getState",
+      "result": "Mac锁定，无可用浏览器；未继续重复锁屏操作"
+    },
+    {
+      "command": "pnpm preview --port 4173 --strictPort; Node agents/frontend/headless-foundation-check.mjs (PLAYWRIGHT_MODULE=runtime playwright)",
+      "result": "根据后续明确建议使用预装Chrome headless；1440/390检查通过；截图与JSON保存；无业务请求"
+    },
+    {
+      "command": "gh issue comment 2 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-stage-comment.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6358871067"
+    },
+    {
+      "command": "gh issue comment 3 --repo HJY147/t44-dev-trace --body-file agents/frontend/foundation-backend-question.md",
+      "result": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6358873565"
+    },
+    {
+      "command": "git diff --cached --check; git commit with role/prompt/issue footer",
+      "result": "各步骤顺序执行；实现提交 5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；30文件仅本岗范围"
+    },
+    {
+      "command": "git push -u origin codex/frontend-app",
+      "result": "成功推送新分支并建立upstream"
+    },
+    {
+      "command": "GitHub create_pull_request draft=true base=codex/team-bootstrap head=codex/frontend-app; gh pr list; attach_artifact; gh pr diff 14 --name-only",
+      "result": "草稿PR https://github.com/HJY147/t44-dev-trace/pull/14；isDraft=true；创建HEAD=5437f169d5430a023aa5e5cbfc0c398c1c03a9e3；已attach；diff仅本岗30文件"
+    },
+    {
+      "command": "stop temporary Vite preview with Ctrl-C",
+      "result": "截图完成后预期exit130，不是构建失败"
+    },
+    {
+      "command": "git merge --no-edit 6afd13fd56d51f27b83ee9847b4e2b0dbd26cc73",
+      "result": "干净工作树安全fast-forward"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile; pnpm build; pnpm test:coverage (separate subprocesses)",
+      "result": "安装/类型/构建成功；21测试通过；行92.21/分支86.13/函数83.85，19源文件全分母"
+    },
+    {
+      "command": "Node application-real-browser.mjs with PLAYWRIGHT_MODULE and DEMO_CREDENTIALS env",
+      "result": "真实浏览器→18080→MySQL，282 HTTP，七态+返工；pageerror0，33资源console错误为403/503；不输出凭据"
+    },
+    {
+      "command": "pnpm test (new regression before fix)",
+      "result": "24项3失败21通过，原始失败保留"
+    },
+    {
+      "command": "pnpm test:coverage; pnpm build (separate processes)",
+      "result": "24/24，完整src行92.19%、分支86.76%、函数83.78%，类型/构建通过"
+    },
+    {
+      "command": "958 PHASE=prepare; PHASE=escalate (separate runs)",
+      "result": "真UI创建task20/version1/schedule1；内部202创建event173；NodeResponse.ok误用导致记录后脚本exit1，未重试写，失败保留"
+    },
+    {
+      "command": "958 PHASE=final NOTIFICATION_TASK_ID=20",
+      "result": "通知3真实read/handling200，三次权威task state1/version2；随后即时resize断言失败，原证据保留"
+    },
+    {
+      "command": "958 PHASE=resume NOTIFICATION_TASK_ID=20, new output directory",
+      "result": "114HTTP全成功，pageerror/console0，稳定390无溢出、详情接收人/规则/审计通过；不重放写"
+    },
+    {
+      "command": "stop own Vite5173 via Ctrl-C",
+      "result": "预期exit130；Chrome均关闭，通知根可开始性能静默窗口"
+    },
+    {
+      "command": "gh run list --commit f654...; gh run view39948047446; download artifact12498618830 ZIP",
+      "result": "准确headSHA和success、原ZIPdigest匹配、27/27零skip、类型构建、19全源码分母92.79%；无重复本地全套"
+    },
+    {
+      "command": "958 counts-prepare/escalate/counts using new output directory",
+      "result": "真实task21/event179/notification5，80HTTP且exit0；计数1/1→1/0→0/0、task不变、scope/错误恢复通过"
+    },
+    {
+      "command": "stop own Vite5173 Ctrl-C",
+      "result": "exit130预期停止，Chrome关闭，未碰tester服务"
+    },
+    {
+      "command": "pnpm test --reporter=verbose -t 'literal plan history reasons' (before/after product as separate processes)",
+      "result": "原15失败7通过65未选→同22通过；原日志/gzip保存"
+    },
+    {
+      "command": "pnpm build; pnpm test:coverage (separate processes)",
+      "result": "构建含vue-tsc成功；后两条同类型数据变体后全89成功，全20源分母，无重复全套"
+    },
+    {
+      "command": "Node tmp/frontend/872_plan_reason_browser.mjs, exact BE source env and private credential path only",
+      "result": "一次exit0；新project42/iter42/task6002，7businesswrites，真实legacy+两次2000字；61browser全200/14control，Chrome/Vite5176关闭"
+    },
+    {
+      "command": "git archive bc5 backend frontend specs/contracts/openapi.json; exact hash verify; chmod source readonly",
+      "result": "85trackedfiles match before/after; old snapshots retained"
+    },
+    {
+      "command": "UID/starttime/PGID/command/cwd checks; SIGTERM exact old PIDs; Popen backend.venv uvicorn workers4 and Node Vite",
+      "result": "new24604/24610 running on same ownpreview URLs, API401/Web200; no rollback needed"
+    },
+    {
+      "command": "Node tmp/frontend/907_demo_preview_smoke.mjs with private credentials path and unique output",
+      "result": "once exit0,1440/390 fourimages viewed,20requests/0businesswrites; browser closed, servers continue"
+    },
+    {
+      "command": "node --check tmp/frontend/861_native_user_preview.mjs; frozen path inspection",
+      "result": "syntax valid; notification selector corrected before first actual run"
+    },
+    {
+      "command": "Node tmp/frontend/861_native_user_preview.mjs with0600ordinary adapter path, new5178 target",
+      "result": "once exit0,66GET+4sessionPOST,70status200,6PNGviewed,normal logout,9listener identity same,Chromeclosed"
+    },
+    "git diff --exit-code a12e9e70 HEAD -- backend/t44 frontend scripts/metrics/source_count.py（exit0）",
+    "python3.12 tmp/789_frontend_scale_resume_20261028/789_collect_scale_audit.py（收集exit0，内部range exit1）",
+    {
+      "command": "pnpm test",
+      "exit_code": 0,
+      "seconds": 4.65,
+      "log": "agents/frontend/final-20261029/test.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 2.651,
+      "log": "agents/frontend/final-20261029/typecheck.log"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 2.751,
+      "log": "agents/frontend/final-20261029/build.log"
+    }
+  ],
+  "results": [
+    "应用5880→5871、FE1099→1090、CSS267→258，真实-9；range exit1仍超771",
+    "原89/89，typecheck/build通过，chunk警告保留",
+    "254 selector/media声明展开全等；5屏宽60状态无pageerror/横溢出；12组PNG SHA全同、关键4图实看",
+    "新computed-style严格对象序列探针失败，原始证据保留，不计通过"
+  ],
+  "unverified": [
+    "新准确HEAD独立验收、CI与正式性能未由本岗运行",
+    "总规模仍失败，最终部署/云备份验证与释放交总协调",
+    "浏览器为明确拦截模块夹具，不是真实后端HTTP验证"
+  ],
+  "questions": [],
+  "prompt_refs": [
+    {
+      "id": "ROLE-frontend-BOOTSTRAP-v1",
+      "task": "agents/frontend/TASK.md",
+      "actual_dispatch": "本轮总协调发送的实际派工消息",
+      "artifacts": [
+        "agents/frontend/WORKLOG.md",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "明确仅设计、后端权威与责任边界，避免初始化被误记成实现或新增提示词迭代。"
+    },
+    {
+      "id": "ROLE-frontend-M0-COMMIT-v1",
+      "task": "agents/frontend/TASK.md",
+      "actual_dispatch": "documentation 发来的真实问取与串行阶段提交消息",
+      "artifacts": [
+        "agents/frontend/WORKLOG.md",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json",
+        "agents/frontend/github-stage-comment.md",
+        "agents/frontend/github-backend-interface-question.md"
+      ],
+      "improvement_reason": "记录本岗实际资料回答、评论证据及隔离提交边界；不新增产品设计，不将未冻结草案记为已实现。"
+    },
+    {
+      "id": "ROLE-frontend-FOUNDATION-v1",
+      "task": "agents/frontend/TASK.md（初始化限制由本轮明确派工覆盖）",
+      "actual_dispatch": "records/prompts/ROLE-frontend-FOUNDATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "将仅设计阶段推进为独立可构建工程，冻结前不联调，记录真实失败/修复/验证而不虚报业务与覆盖率。"
+    },
+    {
+      "id": "ROLE-frontend-APPLICATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-APPLICATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "agents/frontend/application-*",
+        "reports/modules/frontend.md",
+        "records/handoffs/frontend.json"
+      ],
+      "improvement_reason": "从骨架推进真实契约业务，并明确模块夹具/真MySQL联调/独立验收边界；凭据不进入产物。"
+    },
+    {
+      "id": "ROLE-frontend-INTEGRATION-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INTEGRATION-v1.md",
+      "artifacts": [
+        "frontend/",
+        "tmp/frontend/",
+        "agents/frontend/integration-*"
+      ],
+      "improvement_reason": "先实际复现正式缺陷并保留失败，再修复和验证完整后端；禁止镜像假数据或删业务降行数。"
+    },
+    {
+      "id": "ROLE-frontend-INDEPENDENT-UI-FIX-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-INDEPENDENT-UI-FIX-v1.md",
+      "artifacts": [
+        "frontend/src/views/WorkspaceView.vue",
+        "tmp/frontend/983_application.test.ts",
+        "agents/frontend/iat-ui-*"
+      ],
+      "improvement_reason": "正式独立报告仅作缺陷输入；先复现再最小修复，保护private证据和诊断quiet窗口，不把开发回归当独立复测。"
+    },
+    {
+      "id": "ROLE-frontend-CONTRACT-V11-SYNC-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-CONTRACT-V11-SYNC-v1.md",
+      "artifacts": [
+        "tmp/frontend/981_fixtures.ts",
+        "tmp/frontend/982_client.test.ts",
+        "frontend/README.md",
+        "agents/frontend/contract-v11-*"
+      ],
+      "improvement_reason": "显式区分契约元版本与业务模板版本，authority单一来源；不把旧1.0 CI/真HTTP迁名为1.1验证，不碰shared ledger/未提交后端。"
+    },
+    {
+      "id": "ROLE-frontend-WARM-GLASS-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-WARM-GLASS-v1.md",
+      "artifacts": [
+        "docs/ui/warm-glass/",
+        "tmp/frontend/918_warm_glass_browser.mjs",
+        "agents/frontend/warm-glass-browser/"
+      ],
+      "improvement_reason": "将用户审美转为tokens/原型/材质和回退，先设计提交后实现，区分OpenDesign本地技能与未运行的桌面MCP。"
+    },
+    {
+      "id": "ROLE-frontend-EMPTY-VALUE-FIX-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-EMPTY-VALUE-FIX-v1.md",
+      "artifacts": [
+        "frontend/src/components/FieldEditor.vue",
+        "tmp/frontend/982_client.test.ts",
+        "tmp/frontend/983_application.test.ts",
+        "docs/ui/form-empty-values.md",
+        "agents/frontend/empty-value-*"
+      ],
+      "improvement_reason": "区分初始化输出与框架运行时props自动转换，用真实控件和表单回归红→绿，不猜业务默认。"
+    },
+    {
+      "id": "ROLE-frontend-LOGOUT-CLEANUP-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-LOGOUT-CLEANUP-v1.md",
+      "artifacts": [
+        "docs/ui/session-cleanup.md",
+        "frontend/src/workspace.ts",
+        "frontend/src/api.ts",
+        "frontend/src/App.vue",
+        "tmp/frontend/982_client.test.ts",
+        "tmp/frontend/983_application.test.ts",
+        "tmp/frontend/896_logout_browser.mjs",
+        "agents/frontend/logout-validation.json"
+      ],
+      "improvement_reason": "限制公开DOM缺陷范围，实际红绿覆盖完整缓存/DOM/异步边界；保留退出失败及原独立FAIL，不把开发修复记作学生或独立验收。"
+    },
+    {
+      "id": "ROLE-frontend-SESSION-R1-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-SESSION-R1-v1.md",
+      "artifacts": [
+        "docs/ui/session-cleanup.md",
+        "frontend/src/api.ts",
+        "frontend/src/components/OperationForm.vue",
+        "frontend/src/views/WorkspaceView.vue",
+        "frontend/src/components/LoginView.vue",
+        "frontend/src/components/TaskDrawer.vue",
+        "tmp/frontend/895_session_lifecycle_probe.test.ts",
+        "agents/frontend/session-r1-validation.json"
+      ],
+      "improvement_reason": "正视39绿漏掉错误/卸载组合，保留审核反例与真实红，双重检查会话归属和组件存活，不用改期待或截图替代证明。"
+    },
+    {
+      "id": "ROLE-frontend-BUSINESS-FEEDBACK-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-BUSINESS-FEEDBACK-v1.md",
+      "artifacts": [
+        "docs/ui/business-rejection-feedback.md",
+        "frontend/src/forms.ts",
+        "frontend/src/components/OperationForm.vue",
+        "tmp/frontend/884_capacity_feedback_browser.mjs",
+        "agents/frontend/business-feedback-validation.json"
+      ],
+      "improvement_reason": "按冻结状态/码/操作解释人力业务约束，保留未知/字段/503/session退路，不把数据保护成功当界面验收通过。"
+    },
+    "records/prompts/ROLE-frontend-PLAN-REASON-v1.md",
+    "records/prompts/ROLE-frontend-LATEST-PREVIEW-v1.md",
+    "records/prompts/ROLE-frontend-NATIVE-USER-PREVIEW-v1.md",
+    "records/prompts/ROLE-frontend-CONTRACT-V12-DRAFT-v1.md",
+    "records/prompts/ROLE-frontend-SCALE-RESUME-20261028-v1.md",
+    {
+      "id": "ROLE-frontend-FINAL-20261029-v1",
+      "actual_dispatch": "records/prompts/ROLE-frontend-FINAL-20261029-v1.md",
+      "artifacts": [
+        "frontend/src/styles.css",
+        "agents/frontend/final-20261029/",
+        "tmp/frontend/754_style_equivalence.mjs"
+      ],
+      "improvement_reason": "按真实可维护CSS去重收窄，不伪造百行收益；绑定现有测试、固定计数与相同截图"
+    }
+  ],
+  "updated_at": "2026-10-29T11:31:16.756800+00:00",
+  "delivery": {
+    "branch": "codex/frontend-native-preview",
+    "pull_request": null,
+    "base": "codex/integration",
+    "draft": true,
+    "basis_commit": "13cce419d5232126324ad88c88c26c60dd4a7334",
+    "status": "Native ordinary entry once verified; evidence9902a29 pushed, Issue2comment6377347811 exactGET body matched; services unchanged, browser closed, no product/independent claim",
+    "latest_checkpoint": "9902a2933769accc621a5d2f1c76c93e67a6cb9f",
+    "product_source_note": "No product modification; fixedbc5 live source binding from published deployment receipt.",
+    "historical_v1_0_product_source_sha": "f6547f237bba12262b95d2701a7d0c9c0b474280",
+    "application_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "stage_comments": {
+      "warm_glass_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371125127",
+      "warm_glass_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371128657",
+      "empty_value_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6371254382",
+      "empty_value_pr": "https://github.com/HJY147/t44-dev-trace/pull/14#issuecomment-6371257392",
+      "readback": "exact body match for all4",
+      "logout_issue": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551",
+      "logout_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+      "logout_readback": "agents/frontend/logout-github-verification.json",
+      "plan_reason_issue": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374496391",
+      "plan_reason_pr": "https://github.com/HJY147/t44-dev-trace/pull/32",
+      "plan_reason_readback": "agents/frontend/plan-reason-github-verification.json",
+      "latest_preview_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6375754006",
+      "latest_preview_readback": "agents/frontend/latest-preview-github-verification.json",
+      "native_user_preview_issue": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6377347811",
+      "native_user_preview_readback": "agents/frontend/native-user-preview-github-verification.json"
+    },
+    "previous_warm_glass_branch": "codex/frontend-warm-glass",
+    "previous_pr14": "https://github.com/HJY147/t44-dev-trace/pull/14",
+    "previous_session_branch": "codex/frontend-logout",
+    "previous_pr26": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "previous_business_feedback_branch": "codex/frontend-business-feedback",
+    "previous_pr30": "https://github.com/HJY147/t44-dev-trace/pull/30",
+    "previous_plan_reason_branch": "codex/frontend-plan-reason",
+    "previous_pr32": "https://github.com/HJY147/t44-dev-trace/pull/32",
+    "previous_latest_preview_branch": "codex/frontend-latest-preview"
+  },
+  "warm_glass": {
+    "basis_commit": "5815a4d48bb72c3eb50b274617e16a9dfe7be84f",
+    "design": "docs/ui/warm-glass/DESIGN.md",
+    "prototype": "docs/ui/warm-glass/prototype.html",
+    "sources": "docs/ui/warm-glass/sources.json",
+    "browser_result": "agents/frontend/warm-glass-browser/live-stable/results.json",
+    "prototype_screenshots_reviewed": 8,
+    "production_source_changed": true,
+    "implementation_status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
+    "test_script": "tmp/frontend/918_warm_glass_browser.mjs",
+    "design_commit": "326f971",
+    "application_commit": "840b1a88e6976f0ecfb0b0ba45676b208aae4d98",
+    "live_screenshots_reviewed": 18,
+    "validation": "agents/frontend/warm-glass-validation.json",
+    "port5176_stopped": true
+  },
+  "empty_value_fix": {
+    "id": "FE-INIT-01",
+    "design_commit": "7369400",
+    "application_commit": "75c3468de07303cc47b9afd0e4a169664743470e",
+    "validation": "agents/frontend/empty-value-validation.json",
+    "status": "Historical stage: developer checks completed; later limited reviewer COMMENT recorded in root dce940a / reviewer36b90e3. This is not overall product approval or independent acceptance.",
+    "initial_502_environment_failure_retained": true,
+    "resumed_browser_passed": true,
+    "source_coverage_not_rerun": true
+  },
+  "logout_cleanup": {
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/25",
+    "design_commit": "844bf71",
+    "application_commit": "363ac4d6b7081407bf9086fded2a470ab6b045b8",
+    "validation": "agents/frontend/logout-validation.json",
+    "status": "Historical source363 checks passed but exact head3c received reviewer NOT_PASSED/SESSION-R1; superseded by session_r1 developer follow-up, independent retest pending.",
+    "target_before": {
+      "failed": 7,
+      "passed": 2
+    },
+    "target_after_passed": 9,
+    "full_frontend_tests_passed": 39,
+    "source_file_count": 19,
+    "lines": {
+      "covered": 327,
+      "total": 351,
+      "pct": 93.16
+    },
+    "branches": {
+      "covered": 706,
+      "total": 804,
+      "pct": 87.81
+    },
+    "browser_screenshots_viewed": 8,
+    "browser_http": 60,
+    "browser_expected_401": 6,
+    "business_writes": 0,
+    "own_port5176_stopped": true,
+    "private_independent_material_read": false,
+    "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/26",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372314551"
+  },
+  "session_r1": {
+    "design_commit": "7dfefd2",
+    "application_commit": "9560e7bd23b68eddbdb733a5ee671999f46a44cd",
+    "reviewed_old_head": "3c160c57c56af47eea2c524d93340a679eeb441b",
+    "previous_review": "https://github.com/HJY147/t44-dev-trace/pull/26#pullrequestreview-5633150236",
+    "status": "Historical source9560/exactbabc limited review completed (COMMENT5633421899), integrated by coordinator499a2a4; not overall approval/independent acceptance.",
+    "validation": "agents/frontend/session-r1-validation.json",
+    "reviewer_probe_unchanged_sha256": "f42aef302d520ef91ffb9afe3938adba5d2220476f5059e43bb4bd36f00aa2e4",
+    "reviewer_probe_before": {
+      "failed": 1,
+      "passed": 2
+    },
+    "reviewer_probe_after": {
+      "failed": 0,
+      "passed": 3
+    },
+    "adjacent_final_passed": 9,
+    "full_tests_passed": 51,
+    "lines": {
+      "covered": 347,
+      "total": 373,
+      "pct": 93.02
+    },
+    "branches": {
+      "covered": 755,
+      "total": 868,
+      "pct": 86.98
+    },
+    "source_files": 19,
+    "initial_driver_errors_retained": true,
+    "browser_screenshots_viewed": 8,
+    "browser_responses": 60,
+    "expected_401": 6,
+    "driver_session_logout_actions": 2,
+    "business_writes": 0,
+    "chrome_and_port5176_stopped": true,
+    "github_verification": "agents/frontend/session-r1-github-verification.json",
+    "comments": [
+      "https://github.com/HJY147/t44-dev-trace/issues/25#issuecomment-6372739464",
+      "https://github.com/HJY147/t44-dev-trace/pull/26#issuecomment-6372739873"
+    ]
+  },
+  "business_feedback": {
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/27",
+    "basis_commit": "499a2a4",
+    "design_commit": "3c804d3",
+    "application_commit": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+    "validation": "agents/frontend/business-feedback-validation.json",
+    "target_before": {
+      "failed_business": 9,
+      "passed_fallback": 4
+    },
+    "target_after_passed": 13,
+    "full_tests_passed": 65,
+    "lines": {
+      "covered": 353,
+      "total": 379,
+      "pct": 93.13
+    },
+    "branches": {
+      "covered": 783,
+      "total": 894,
+      "pct": 87.58
+    },
+    "source_files": 19,
+    "first_typecheck_failure_retained": true,
+    "driver_failures_retained": 2,
+    "fixture_resources": {
+      "demo_project": 41,
+      "iteration": 41,
+      "task": 6001,
+      "api_business_creations": 5,
+      "project_count_created": 1
+    },
+    "browser_final_responses": 50,
+    "browser_final_expected422": 4,
+    "browser_business_success_writes": 0,
+    "screenshots_viewed": 4,
+    "chrome_and_port5176_stopped": true,
+    "ui003_interface_comments": [
+      "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373191287",
+      "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6373333383"
+    ],
+    "status": "developer checks only; exact new-SHA review and isolated independent retest pending",
+    "draft_pr": "https://github.com/HJY147/t44-dev-trace/pull/30",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/27#issuecomment-6373406222",
+    "github_verification": "agents/frontend/business-feedback-github-verification.json"
+  },
+  "historical_results_before_ui003": [
+    "OpenDesign local skills/templates design326f971 precedes Vue import840b1a8; official source hashes/licenses recorded",
+    "27 existing tests passed, full19 source lines310/334=92.81%; final typecheck/build exit0; chunk warning retained",
+    "1440/390 real UI/API:18 screenshots reviewed,40HTTP200,0 pageerrors/overflow, no business writes; form independent scroll/close reachable; task tabs and bottom reachable",
+    "First CSS close-out-of-viewport failure and script selector failure preserved; reduced-transparency proven with CDP matchMedia",
+    "API/permission/business unchanged; original form string initial true observation handed to root, not fixed in visual scope"
+  ],
+  "plan_reason": {
+    "status": "developer verified; pending exact review and combined integration validation",
+    "validation": "agents/frontend/plan-reason-validation.json",
+    "application_commit": "c79cd9930febadfa77cb2d0eede7626d4039c305",
+    "backend_source": "0549ea89ce218ecb945cd4346671f20d46fad215",
+    "browser_result": "agents/frontend/plan-reason-browser/first/results.json",
+    "resources": {
+      "project_id": 42,
+      "iteration_id": 42,
+      "task_id": 6002
+    },
+    "real_business_writes": 7,
+    "independent_acceptance_claimed": false
+  },
+  "historical_results_before_latest_preview": [
+    "UI003设计41776d0→产品c79cd99；22目标旧15红7绿→22绿；2额外字面变体后全前端89/89",
+    "20源全分母93.33%行/88.09%分支；类型构建通过，原chunk警告保留",
+    "872FEc79/BE0549/sourcehash绑定，唯一新project42/iter42/task6002，7成功业务写入；旧audit119投影/2000字新audit121与124真实API/DOM相同",
+    "1440/390六图已看，0pageerror/横溢出；5176/Chrome已关，18089根管理；既有阶段结果保留历史用途"
+  ],
+  "historical_unverified_before_latest_preview": [
+    "Independent acceptance and formal400VU performance not performed by this role",
+    "Headless viewport is not a physical phone",
+    "Non-backdrop supporting engine not executed; fallback source-inspected",
+    "JS825.22kB chunk warning remains",
+    "Source-size gate still failing before this visual change; same-policy recount belongs to root",
+    "FullWCAG audit not claimed; token contrast computed and muted color darkened",
+    "CurrentUI003 exact newHEAD review, combined CI and fresh isolated independent retest pending; missing/rework/iteration display only component fixtures, no false real E2E claim."
+  ],
+  "latest_preview": {
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "validation": "agents/frontend/latest-preview-validation.json",
+    "api_parent_pid": 24604,
+    "frontend_pid": 24610,
+    "frontend_url": "http://127.0.0.1:5173",
+    "api_url": "http://127.0.0.1:18080",
+    "api_workers": 4,
+    "services_left_running": true,
+    "scope": "API+Web local preview only; no business writes",
+    "independent_acceptance_claimed": false
+  },
+  "historical_results_before_native_user_preview": [
+    "85文件不可变archive前后hash同bc5，原锁依赖/旧副本保留",
+    "旧63514/72044核身份后退役；APIparent24604/四worker、Vite24610新运行",
+    "907原样一次20API请求（2login+18GET）/0businesswrites/failedResponses/pageerror；1440/390四图已看",
+    "私密本机说明0600账号不变；公开新产物密钥精确扫描零匹配"
+  ],
+  "historical_unverified_before_native_user_preview": [
+    "Current preview only API+Web, MQ/scanner not started; not full deployment or new functional independent acceptance.",
+    "907 only records requests and error-status response events, not all completed success response statuses."
+  ],
+  "native_user_preview": {
+    "validation": "agents/frontend/native-user-preview-validation.json",
+    "web": "http://127.0.0.1:5178",
+    "api": "http://127.0.0.1:18088",
+    "source": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "requests": 70,
+    "get": 66,
+    "normal_session_posts": 4,
+    "business_mutations": 0,
+    "attempts": 1,
+    "protected_listeners_equal": true,
+    "independent_acceptance_claimed": false
+  },
+  "contract_v12_draft": {
+    "base_commit": "398c3d3621843aa536755ae106c78a0fd1c60aff",
+    "branch": "codex/frontend-contract-v12-draft",
+    "status": "Draft compatibility documentation pushed; Issue2 full GET matched, new freeze/implementation/verification pending",
+    "static_receipt": "agents/frontend/contract-v12-draft-static-receipt.json",
+    "production_test_frozen_changed": false,
+    "hardcoded_1_1_0_found": false,
+    "tests_http_services_ci_run": false,
+    "separate_review_constraints_preserved": true,
+    "documentation_commit": "75cad8a1a6b7d550591fcafd43a73397c46e208c",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6379459487",
+    "github_verification": "agents/frontend/contract-v12-draft-github-verification.json",
+    "full_get_body_exact_match": true
+  },
+  "size_round9": {
+    "base_commit": "043fc464acd327f6b7639e89dbe4f603fc524880",
+    "branch": "codex/frontend-size-round9",
+    "design_commit": "8716055a095a41d54a6fb7a5cb2b5b77b20817b4",
+    "status": "no credible 150-400 line frontend candidate; coordinator acknowledged no product mutation",
+    "application_code": 5875,
+    "frontend_code": 1099,
+    "frontend_files": 22,
+    "upper_bound": 5100,
+    "excess": 775,
+    "count_exit": 1,
+    "production_changed": false,
+    "test_or_browser_or_cloud_run": false,
+    "independent_acceptance_claimed": false,
+    "report": "agents/frontend/size-round9/REPORT.md",
+    "inventory": "tmp/803_frontend_size_round9/803_source_inventory.json",
+    "prompt": "records/prompts/ROLE-frontend-SIZE-ROUND9-v1.md",
+    "issue_comment": "https://github.com/HJY147/t44-dev-trace/issues/2#issuecomment-6398588286",
+    "full_GET_body_exact_match": true
+  },
+  "historical_stage_before_scale_resume_20261028": {
+    "stage": "native-user-demo-entry-developer-verified",
+    "implementation_status": "861一次只读普通入口通过，产品未改；已运行新5178/18088服务不变，浏览器关闭，本轮非独立验收。",
+    "results": [
+      "70API响应实际全200/requestid70；66GET+2login+2logout；业务修改0",
+      "1440/390选project2，任务/通知/审计可读，六图已看/无溢出，正常退出shell卸载",
+      "9保护端口listener身份前后相同；新旧服务配置不变，907原件未改/未跑",
+      "精确appbc5/92source身份引用公开部署绑定，不读私密runner"
+    ],
+    "unverified": [
+      "Native ordinary entry smoke only, not independent acceptance or all roles/records/full functional reacceptance.",
+      "Background MQ/scan and authentication may write DB; no all-DB-zero-write or finished4h claim."
+    ],
+    "updated_at": "2026-10-24T03:44:52.474284+00:00"
+  },
+  "scale_resume_20261028": {
+    "base_commit": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+    "branch": "codex/frontend-scale-resume-20261028",
+    "design_commit": "6c06e16d8894147ed5e85aceb6ed40a8036ab6fb",
+    "count_commit": "6c06e16d8894147ed5e85aceb6ed40a8036ab6fb",
+    "application_code": 5933,
+    "upper_bound": 5100,
+    "excess": 833,
+    "count_exit": 1,
+    "frontend_code": 1099,
+    "frontend_files": 22,
+    "css_code": 267,
+    "css_frontend_percent": 24.29,
+    "css_same_context_exact_groups": 7,
+    "css_rule_line_upper_bound_ignoring_cascade": 9,
+    "production_changed": false,
+    "net_line_reduction": 0,
+    "candidate_prototype_run": false,
+    "tests_browser_api_ci_cloud_run": false,
+    "independent_acceptance_claimed": false,
+    "report": "agents/frontend/scale-resume-20261028/REPORT.md",
+    "inventory": "tmp/789_frontend_scale_resume_20261028/789_source_inventory.json",
+    "css_static_audit": "tmp/789_frontend_scale_resume_20261028/789_css_static_audit.json",
+    "prompt": "records/prompts/ROLE-frontend-SCALE-RESUME-20261028-v1.md"
+  }
+}

@@ -1,0 +1,2732 @@
+{
+  "source": "frontend/src/styles.css",
+  "source_sha256": "f4adf20db3e5b6af7a7e8a4c761e12a370c0fb5af878d6d45fbb70e70fe4406a",
+  "method": "recursive at-rule blocks; identical ordered declaration tuples within same at-rule context",
+  "limits": [
+    "Static inventory only; no cascade equivalence or browser acceptance claimed",
+    "Exact-rule merge upper bound ignores order and specificity conflicts",
+    "Partial-declaration reuse leaves original rule lines and adds common selectors/tokens",
+    "No source rewrite, minification, property packing or CSS prototype performed"
+  ],
+  "css_cloc_code": 267,
+  "frontend_cloc_code": 1099,
+  "qualified_rule_count": 210,
+  "same_context_exact_duplicate_groups": [
+    [
+      {
+        "selector": "h1, h2, p",
+        "context": [],
+        "line": 50,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "margin: 0"
+        ]
+      },
+      {
+        "selector": ".record-detail .record-details",
+        "context": [],
+        "line": 171,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "margin: 0"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".breadcrumb__root, .breadcrumb .el-icon",
+        "context": [],
+        "line": 80,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: var(--muted)"
+        ]
+      },
+      {
+        "selector": ".record-detail dt",
+        "context": [],
+        "line": 168,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: var(--muted)"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".text-link:hover",
+        "context": [],
+        "line": 99,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: #694a36",
+          "text-decoration: underline"
+        ]
+      },
+      {
+        "selector": ".text-button:hover",
+        "context": [],
+        "line": 157,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: #694a36",
+          "text-decoration: underline"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".business-records",
+        "context": [],
+        "line": 152,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "min-width: 0"
+        ]
+      },
+      {
+        "selector": ".form-field",
+        "context": [],
+        "line": 187,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "min-width: 0"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".required-mark, .danger, .field-error",
+        "context": [],
+        "line": 197,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: #a34839"
+        ]
+      },
+      {
+        "selector": ".login-card > .field-error",
+        "context": [],
+        "line": 199,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "color: #a34839"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".topbar",
+        "context": [
+          "@media (max-width: 1180px)"
+        ],
+        "line": 211,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "padding-inline: 18px"
+        ]
+      },
+      {
+        "selector": ".metric-card",
+        "context": [
+          "@media (max-width: 1180px)"
+        ],
+        "line": 214,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "padding-inline: 18px"
+        ]
+      }
+    ],
+    [
+      {
+        "selector": ".sidebar",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 223,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".breadcrumb__root, .breadcrumb > .el-icon, .topbar__divider",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 227,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".topbar__right .access-help, .topbar__right .account",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 229,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".login-story h2, .login-story > p, .login-story__note",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 257,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      }
+    ]
+  ],
+  "same_context_mergeable_rule_line_upper_bound": 9,
+  "same_declarations_different_context_groups": [
+    [
+      {
+        "selector": ".mobile-menu.el-button",
+        "context": [],
+        "line": 86,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".account > span:last-child",
+        "context": [
+          "@media (max-width: 1180px)"
+        ],
+        "line": 213,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".sidebar",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 223,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".breadcrumb__root, .breadcrumb > .el-icon, .topbar__divider",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 227,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".topbar__right .access-help, .topbar__right .account",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 229,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      },
+      {
+        "selector": ".login-story h2, .login-story > p, .login-story__note",
+        "context": [
+          "@media (max-width: 760px)"
+        ],
+        "line": 257,
+        "physical_rule_lines": 1,
+        "declarations": [
+          "display: none"
+        ]
+      }
+    ]
+  ],
+  "rules": [
+    {
+      "selector": ":root",
+      "context": [],
+      "line": 1,
+      "physical_rule_lines": 42,
+      "declarations": [
+        "font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "color: #3e3029",
+        "background: #f4eee5",
+        "font-synthesis: none",
+        "text-rendering: optimizeLegibility",
+        "-webkit-font-smoothing: antialiased",
+        "color-scheme: light",
+        "--paper: #fffdf9",
+        "--ink: #3e3029",
+        "--secondary: #74675c",
+        "--muted: #77695d",
+        "--coffee: #805d46",
+        "--latte: #e9dccd",
+        "--line: #d9cbbc",
+        "--glass: rgb(255 253 249 / 76%)",
+        "--soft-shadow: 0 10px 36px rgb(94 68 44 / 6%)",
+        "--el-color-primary: #805d46",
+        "--el-color-primary-light-3: #a98b72",
+        "--el-color-primary-light-5: #c0a78f",
+        "--el-color-primary-light-7: #dbc8b5",
+        "--el-color-primary-light-8: #e9dccd",
+        "--el-color-primary-light-9: #f4ece2",
+        "--el-color-primary-dark-2: #694a36",
+        "--el-color-success: #3e6953",
+        "--el-color-warning: #865f24",
+        "--el-color-danger: #a34839",
+        "--el-font-family: inherit",
+        "--el-border-radius-base: 14px",
+        "--el-text-color-primary: var(--ink)",
+        "--el-text-color-regular: var(--secondary)",
+        "--el-text-color-secondary: var(--muted)",
+        "--el-border-color: var(--line)",
+        "--el-border-color-light: #e8ded2",
+        "--el-color-info: var(--secondary)",
+        "--el-fill-color-blank: var(--paper)",
+        "--el-bg-color: var(--paper)",
+        "--el-bg-color-overlay: var(--paper)",
+        "--el-fill-color-light: #f3ece2",
+        "--el-disabled-text-color: #8c7d70",
+        "--el-disabled-bg-color: #eee8df"
+      ]
+    },
+    {
+      "selector": "*",
+      "context": [],
+      "line": 44,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "box-sizing: border-box"
+      ]
+    },
+    {
+      "selector": "body",
+      "context": [],
+      "line": 45,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0",
+        "min-width: 320px",
+        "background: radial-gradient(ellipse at 100% 0, #e6d6c3, transparent 50%), #f4eee5",
+        "background-attachment: fixed"
+      ]
+    },
+    {
+      "selector": "button, input, select, textarea",
+      "context": [],
+      "line": 46,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font: inherit"
+      ]
+    },
+    {
+      "selector": "a",
+      "context": [],
+      "line": 47,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: inherit",
+        "text-decoration: none"
+      ]
+    },
+    {
+      "selector": "button, a, [tabindex]",
+      "context": [],
+      "line": 48,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "-webkit-tap-highlight-color: transparent"
+      ]
+    },
+    {
+      "selector": "a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .el-button:focus-visible",
+      "context": [],
+      "line": 49,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "outline: 3px solid #78523b",
+        "outline-offset: 4px",
+        "border-radius: 14px"
+      ]
+    },
+    {
+      "selector": "h1, h2, p",
+      "context": [],
+      "line": 50,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0"
+      ]
+    },
+    {
+      "selector": ".sr-only",
+      "context": [],
+      "line": 51,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "position: absolute",
+        "width: 1px",
+        "height: 1px",
+        "padding: 0",
+        "overflow: hidden",
+        "clip: rect(0, 0, 0, 0)",
+        "white-space: nowrap",
+        "border: 0"
+      ]
+    },
+    {
+      "selector": ".skip-link",
+      "context": [],
+      "line": 52,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "position: fixed",
+        "top: -60px",
+        "left: 16px",
+        "padding: 12px 20px",
+        "background: var(--paper)",
+        "color: var(--coffee)",
+        "z-index: 6000",
+        "border-radius: 999px"
+      ]
+    },
+    {
+      "selector": ".skip-link:focus",
+      "context": [],
+      "line": 53,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "top: 12px"
+      ]
+    },
+    {
+      "selector": ".app-shell",
+      "context": [],
+      "line": 54,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "min-height: 100vh"
+      ]
+    },
+    {
+      "selector": ".sidebar, .topbar, .login-card, .login-story__note",
+      "context": [],
+      "line": 55,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: var(--glass)",
+        "border: 1px solid rgb(255 255 255 / 85%)",
+        "box-shadow: var(--soft-shadow), inset 0 1px 0 rgb(255 255 255 / 80%)",
+        "backdrop-filter: blur(22px) saturate(125%)",
+        "-webkit-backdrop-filter: blur(22px) saturate(125%)"
+      ]
+    },
+    {
+      "selector": ".sidebar",
+      "context": [],
+      "line": 56,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 244px",
+        "position: fixed",
+        "inset: 16px auto 16px 16px",
+        "display: flex",
+        "flex-direction: column",
+        "border-radius: 30px",
+        "padding: 28px 18px 20px",
+        "z-index: 10",
+        "overflow-y: auto"
+      ]
+    },
+    {
+      "selector": ".brand",
+      "context": [],
+      "line": 57,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center",
+        "gap: 12px",
+        "padding: 0 2px"
+      ]
+    },
+    {
+      "selector": ".brand img",
+      "context": [],
+      "line": 58,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "filter: drop-shadow(0 5px 7px rgb(128 93 70 / 14%))"
+      ]
+    },
+    {
+      "selector": ".brand strong",
+      "context": [],
+      "line": 59,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "color: var(--ink)",
+        "font-size: 25px",
+        "line-height: 1.3",
+        "letter-spacing: 3px"
+      ]
+    },
+    {
+      "selector": ".brand small",
+      "context": [],
+      "line": 60,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "margin-top: 5px",
+        "color: var(--secondary)",
+        "font-size: 11px",
+        "letter-spacing: 1px"
+      ]
+    },
+    {
+      "selector": ".project-switch",
+      "context": [],
+      "line": 61,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 28px 0",
+        "padding: 14px 12px",
+        "display: flex",
+        "gap: 10px",
+        "align-items: center",
+        "border: 1px solid var(--line)",
+        "border-radius: 18px",
+        "background: rgb(255 253 249 / 65%)"
+      ]
+    },
+    {
+      "selector": ".project-switch:hover",
+      "context": [],
+      "line": 62,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-color: #ad927a",
+        "background: var(--paper)"
+      ]
+    },
+    {
+      "selector": ".project-switch__avatar",
+      "context": [],
+      "line": 63,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: grid",
+        "place-items: center",
+        "width: 34px",
+        "height: 36px",
+        "flex-shrink: 0",
+        "border-radius: 12px",
+        "color: var(--coffee)",
+        "background: var(--latte)",
+        "font-size: 13px"
+      ]
+    },
+    {
+      "selector": ".project-switch strong",
+      "context": [],
+      "line": 64,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 13px",
+        "font-weight: 600",
+        "display: block",
+        "max-width: 124px",
+        "overflow: hidden",
+        "text-overflow: ellipsis",
+        "white-space: nowrap"
+      ]
+    },
+    {
+      "selector": ".project-switch small",
+      "context": [],
+      "line": 65,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "color: var(--secondary)",
+        "font-size: 11px",
+        "margin-top: 5px"
+      ]
+    },
+    {
+      "selector": ".project-switch > .el-icon",
+      "context": [],
+      "line": 66,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)",
+        "margin-left: auto",
+        "font-size: 12px"
+      ]
+    },
+    {
+      "selector": ".navigation__group",
+      "context": [],
+      "line": 67,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-bottom: 24px"
+      ]
+    },
+    {
+      "selector": ".navigation__label",
+      "context": [],
+      "line": 68,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)",
+        "font-size: 11px",
+        "letter-spacing: 1.8px",
+        "margin: 0 13px 9px"
+      ]
+    },
+    {
+      "selector": ".navigation__link",
+      "context": [],
+      "line": 69,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center",
+        "gap: 12px",
+        "padding: 12px 14px",
+        "margin: 4px 0",
+        "font-size: 13px",
+        "color: var(--secondary)",
+        "border-radius: 15px",
+        "transition: background .15s ease, color .15s ease"
+      ]
+    },
+    {
+      "selector": ".navigation__link:hover",
+      "context": [],
+      "line": 70,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: #f0e7dc",
+        "color: var(--coffee)"
+      ]
+    },
+    {
+      "selector": ".navigation__link--active",
+      "context": [],
+      "line": 71,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--coffee)",
+        "background: var(--latte)",
+        "font-weight: 600",
+        "box-shadow: inset 0 1px 0 var(--paper), 0 3px 9px rgb(128 93 70 / 5%)"
+      ]
+    },
+    {
+      "selector": ".sidebar-footer",
+      "context": [],
+      "line": 72,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "gap: 10px",
+        "align-items: center",
+        "margin: auto 6px 0",
+        "padding-top: 20px",
+        "border-top: 1px solid var(--line)"
+      ]
+    },
+    {
+      "selector": ".sidebar-footer__icon",
+      "context": [],
+      "line": 73,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--coffee)",
+        "background: #eee3d5",
+        "padding: 8px",
+        "border-radius: 12px",
+        "display: flex"
+      ]
+    },
+    {
+      "selector": ".sidebar-footer strong",
+      "context": [],
+      "line": 74,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--secondary)",
+        "font-size: 11px",
+        "font-weight: 500"
+      ]
+    },
+    {
+      "selector": ".sidebar-footer p",
+      "context": [],
+      "line": 75,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)",
+        "font-size: 11px",
+        "margin-top: 5px"
+      ]
+    },
+    {
+      "selector": ".app-main",
+      "context": [],
+      "line": 76,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-left: 276px",
+        "width: calc(100% - 276px)",
+        "min-width: 0",
+        "padding: 16px 24px 0 8px"
+      ]
+    },
+    {
+      "selector": ".topbar",
+      "context": [],
+      "line": 77,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-height: 62px",
+        "border-radius: 23px",
+        "padding: 12px 22px",
+        "display: flex",
+        "align-items: center",
+        "justify-content: space-between",
+        "gap: 12px"
+      ]
+    },
+    {
+      "selector": ".topbar__left, .topbar__right, .breadcrumb, .account",
+      "context": [],
+      "line": 78,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center"
+      ]
+    },
+    {
+      "selector": ".breadcrumb",
+      "context": [],
+      "line": 79,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 13px",
+        "font-size: 12px",
+        "color: var(--ink)"
+      ]
+    },
+    {
+      "selector": ".breadcrumb__root, .breadcrumb .el-icon",
+      "context": [],
+      "line": 80,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)"
+      ]
+    },
+    {
+      "selector": ".topbar__right",
+      "context": [],
+      "line": 81,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 14px"
+      ]
+    },
+    {
+      "selector": ".topbar__right .el-button",
+      "context": [],
+      "line": 82,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 12px",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".topbar__divider",
+      "context": [],
+      "line": 83,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "height: 20px",
+        "width: 1px",
+        "background: var(--line)"
+      ]
+    },
+    {
+      "selector": ".account",
+      "context": [],
+      "line": 84,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 8px",
+        "color: var(--secondary)",
+        "font-size: 12px",
+        "white-space: nowrap"
+      ]
+    },
+    {
+      "selector": ".account__avatar",
+      "context": [],
+      "line": 85,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "padding: 8px",
+        "border: 1px solid rgb(255 255 255 / 80%)",
+        "background: var(--latte)",
+        "border-radius: 50%",
+        "color: var(--coffee)"
+      ]
+    },
+    {
+      "selector": ".mobile-menu.el-button",
+      "context": [],
+      "line": 86,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".workspace",
+      "context": [],
+      "line": 87,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 34px 8px 22px",
+        "max-width: 1640px",
+        "margin: 0 auto"
+      ]
+    },
+    {
+      "selector": ".page-heading",
+      "context": [],
+      "line": 88,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "justify-content: space-between",
+        "align-items: center",
+        "gap: 20px",
+        "margin-bottom: 26px"
+      ]
+    },
+    {
+      "selector": ".eyebrow",
+      "context": [],
+      "line": 89,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)",
+        "letter-spacing: 2px",
+        "font-size: 10px",
+        "margin-bottom: 12px"
+      ]
+    },
+    {
+      "selector": ".page-heading h1",
+      "context": [],
+      "line": 90,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--ink)",
+        "font-size: 30px",
+        "letter-spacing: 1px",
+        "line-height: 1.3",
+        "font-weight: 650"
+      ]
+    },
+    {
+      "selector": ".page-heading h1:focus",
+      "context": [],
+      "line": 91,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "outline: none"
+      ]
+    },
+    {
+      "selector": ".page-description",
+      "context": [],
+      "line": 92,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 13px",
+        "color: var(--secondary)",
+        "line-height: 1.9",
+        "margin-top: 10px"
+      ]
+    },
+    {
+      "selector": ".metric-grid",
+      "context": [],
+      "line": 93,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: grid",
+        "grid-template-columns: repeat(4, minmax(0, 1fr))",
+        "gap: 15px",
+        "margin-bottom: 26px"
+      ]
+    },
+    {
+      "selector": ".metric-card",
+      "context": [],
+      "line": 94,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 22px 23px",
+        "background: rgb(255 253 249 / 75%)",
+        "border: 1px solid rgb(255 255 255 / 85%)",
+        "border-radius: 23px",
+        "box-shadow: var(--soft-shadow)",
+        "color: var(--secondary)",
+        "font-size: 12px"
+      ]
+    },
+    {
+      "selector": ".metric-card__value",
+      "context": [],
+      "line": 95,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 34px",
+        "line-height: 1",
+        "color: var(--coffee)",
+        "font-weight: 500",
+        "margin: 18px 0 14px",
+        "font-variant-numeric: tabular-nums"
+      ]
+    },
+    {
+      "selector": ".metric-card__hint",
+      "context": [],
+      "line": 96,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 11px",
+        "color: var(--muted)"
+      ]
+    },
+    {
+      "selector": ".surface",
+      "context": [],
+      "line": 97,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: rgb(255 253 249 / 94%)",
+        "border: 1px solid var(--paper)",
+        "border-radius: 28px",
+        "min-width: 0",
+        "box-shadow: var(--soft-shadow)",
+        "overflow: hidden"
+      ]
+    },
+    {
+      "selector": ".text-link",
+      "context": [],
+      "line": 98,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--coffee)",
+        "font-size: 12px",
+        "display: inline-flex",
+        "align-items: center",
+        "gap: 5px",
+        "white-space: nowrap"
+      ]
+    },
+    {
+      "selector": ".text-link:hover",
+      "context": [],
+      "line": 99,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #694a36",
+        "text-decoration: underline"
+      ]
+    },
+    {
+      "selector": ".data-state",
+      "context": [],
+      "line": 100,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "flex-direction: column",
+        "align-items: center",
+        "justify-content: center",
+        "padding: 48px 24px",
+        "min-height: 280px",
+        "text-align: center"
+      ]
+    },
+    {
+      "selector": ".data-state__art",
+      "context": [],
+      "line": 101,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 68px",
+        "height: 68px",
+        "display: grid",
+        "place-items: center",
+        "color: #a18469",
+        "background: #f3ece2",
+        "border: 1px solid #e6d8c7",
+        "border-radius: 23px",
+        "margin-bottom: 20px",
+        "box-shadow: 7px -6px 0 -1px var(--paper), 7px -6px 0 0 #e9dccd"
+      ]
+    },
+    {
+      "selector": ".data-state__title",
+      "context": [],
+      "line": 102,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 13px",
+        "font-weight: 500",
+        "color: var(--secondary)",
+        "margin-bottom: 10px"
+      ]
+    },
+    {
+      "selector": ".data-state__description",
+      "context": [],
+      "line": 103,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "max-width: 340px",
+        "color: var(--secondary)",
+        "font-size: 12px",
+        "line-height: 1.9"
+      ]
+    },
+    {
+      "selector": ".data-state .el-button, .data-state > .text-link",
+      "context": [],
+      "line": 104,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-top: 20px"
+      ]
+    },
+    {
+      "selector": ".data-state--error .data-state__art",
+      "context": [],
+      "line": 105,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #865f24",
+        "background: #fbf2dc",
+        "border-color: #ebd7b2",
+        "box-shadow: none"
+      ]
+    },
+    {
+      "selector": ".data-state--loading",
+      "context": [],
+      "line": 106,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "padding: 50px 32px"
+      ]
+    },
+    {
+      "selector": ".workspace-footer",
+      "context": [],
+      "line": 107,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "justify-content: space-between",
+        "gap: 16px",
+        "color: var(--muted)",
+        "font-size: 10px",
+        "margin-top: 24px",
+        "padding-top: 14px"
+      ]
+    },
+    {
+      "selector": ".access-description",
+      "context": [],
+      "line": 108,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 14px",
+        "line-height: 2",
+        "color: var(--secondary)",
+        "margin: 0 0 12px"
+      ]
+    },
+    {
+      "selector": ".mobile-navigation .el-drawer__body",
+      "context": [],
+      "line": 109,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "flex-direction: column",
+        "padding: 28px 20px 24px"
+      ]
+    },
+    {
+      "selector": ".drawer-close.el-button",
+      "context": [],
+      "line": 110,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "position: absolute",
+        "right: 12px",
+        "top: 12px",
+        "width: 28px",
+        "height: 28px"
+      ]
+    },
+    {
+      "selector": "body .el-button",
+      "context": [],
+      "line": 111,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-height: 38px",
+        "border-radius: 999px",
+        "padding-inline: 18px",
+        "font-size: 13px"
+      ]
+    },
+    {
+      "selector": "body .el-button.is-text",
+      "context": [],
+      "line": 112,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-inline: 9px"
+      ]
+    },
+    {
+      "selector": "body .el-button.is-circle",
+      "context": [],
+      "line": 113,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 9px"
+      ]
+    },
+    {
+      "selector": "body .el-dialog, body .el-drawer",
+      "context": [],
+      "line": 114,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: rgb(255 253 249 / 96%)",
+        "border: 1px solid rgb(255 255 255 / 90%)",
+        "box-shadow: 0 24px 90px rgb(62 48 41 / 15%)",
+        "backdrop-filter: blur(22px) saturate(125%)",
+        "-webkit-backdrop-filter: blur(22px) saturate(125%)"
+      ]
+    },
+    {
+      "selector": "body .el-dialog",
+      "context": [],
+      "line": 115,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-radius: 28px",
+        "padding: 28px",
+        "display: flex",
+        "flex-direction: column",
+        "max-height: calc(100dvh - 40px)",
+        "margin-block: 20px"
+      ]
+    },
+    {
+      "selector": ".el-dialog__body",
+      "context": [],
+      "line": 116,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "overflow-y: auto",
+        "min-height: 0"
+      ]
+    },
+    {
+      "selector": ".el-drawer.rtl",
+      "context": [],
+      "line": 117,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-radius: 30px 0 0 30px"
+      ]
+    },
+    {
+      "selector": ".el-drawer.ltr",
+      "context": [],
+      "line": 118,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-radius: 0 30px 30px 0"
+      ]
+    },
+    {
+      "selector": "body .el-dialog__title, body .el-drawer__title",
+      "context": [],
+      "line": 119,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--ink)",
+        "font-weight: 600",
+        "line-height: 1.5",
+        "font-size: 22px"
+      ]
+    },
+    {
+      "selector": "body .el-dialog__header, body .el-drawer__header",
+      "context": [],
+      "line": 120,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-bottom: 20px",
+        "margin-bottom: 0",
+        "color: var(--ink)",
+        "flex-shrink: 0"
+      ]
+    },
+    {
+      "selector": "body .el-drawer__body",
+      "context": [],
+      "line": 121,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 12px 28px 28px"
+      ]
+    },
+    {
+      "selector": "body .el-overlay",
+      "context": [],
+      "line": 122,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background-color: rgb(62 48 41 / 22%)"
+      ]
+    },
+    {
+      "selector": "input, select, textarea",
+      "context": [],
+      "line": 125,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "max-width: 100%",
+        "border: 1px solid var(--line)",
+        "border-radius: 14px",
+        "color: var(--ink)",
+        "padding: 10px 12px",
+        "background: var(--paper)",
+        "font-size: 14px"
+      ]
+    },
+    {
+      "selector": "input:focus-visible, select:focus-visible, textarea:focus-visible",
+      "context": [],
+      "line": 126,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "outline: 3px solid #78523b",
+        "outline-offset: 2px"
+      ]
+    },
+    {
+      "selector": "input:disabled, button:disabled",
+      "context": [],
+      "line": 127,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "opacity: .6",
+        "cursor: not-allowed"
+      ]
+    },
+    {
+      "selector": ".project-picker select",
+      "context": [],
+      "line": 128,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 170px",
+        "font-size: 12px",
+        "padding: 8px 12px",
+        "border-radius: 999px"
+      ]
+    },
+    {
+      "selector": ".inline-notice",
+      "context": [],
+      "line": 129,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center",
+        "justify-content: space-between",
+        "gap: 12px",
+        "background: #f4ece0",
+        "border: 1px solid #dfcdb7",
+        "color: #6d513b",
+        "border-radius: 18px",
+        "padding: 13px 16px",
+        "margin: 0 0 18px",
+        "font-size: 13px",
+        "line-height: 1.8"
+      ]
+    },
+    {
+      "selector": ".login-page",
+      "context": [],
+      "line": 130,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "position: fixed",
+        "inset: 0",
+        "z-index: 5000",
+        "background: radial-gradient(ellipse at 100% 0, #e6d6c3, transparent 55%), #f4eee5",
+        "display: grid",
+        "place-items: center",
+        "padding: 40px",
+        "overflow-y: auto"
+      ]
+    },
+    {
+      "selector": ".login-layout",
+      "context": [],
+      "line": 131,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: grid",
+        "grid-template-columns: minmax(0, 1fr) 430px",
+        "align-items: center",
+        "gap: clamp(50px, 10vw, 145px)",
+        "width: min(1040px, 100%)"
+      ]
+    },
+    {
+      "selector": ".login-story > .brand",
+      "context": [],
+      "line": 132,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-bottom: 68px"
+      ]
+    },
+    {
+      "selector": ".login-story h2",
+      "context": [],
+      "line": 133,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 46px",
+        "font-weight: 550",
+        "letter-spacing: 1px",
+        "line-height: 1.45",
+        "color: var(--ink)"
+      ]
+    },
+    {
+      "selector": ".login-story > p",
+      "context": [],
+      "line": 134,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 22px 0 38px",
+        "color: var(--secondary)",
+        "font-size: 14px",
+        "line-height: 2"
+      ]
+    },
+    {
+      "selector": ".login-story__note",
+      "context": [],
+      "line": 135,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-radius: 24px",
+        "padding: 23px",
+        "max-width: 340px"
+      ]
+    },
+    {
+      "selector": ".login-story__note > small",
+      "context": [],
+      "line": 136,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 10px",
+        "letter-spacing: 2px",
+        "color: var(--muted)"
+      ]
+    },
+    {
+      "selector": ".login-story__note > p",
+      "context": [],
+      "line": 137,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 13px 0 17px",
+        "font-size: 14px"
+      ]
+    },
+    {
+      "selector": ".login-story__steps",
+      "context": [],
+      "line": 138,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "justify-content: space-between",
+        "gap: 8px",
+        "padding-top: 16px",
+        "border-top: 1px solid var(--line)",
+        "font-size: 10px",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".login-card",
+      "context": [],
+      "line": 139,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 100%",
+        "border-radius: 30px",
+        "padding: 38px",
+        "display: grid",
+        "gap: 13px"
+      ]
+    },
+    {
+      "selector": ".login-card h1",
+      "context": [],
+      "line": 140,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 24px",
+        "color: var(--ink)"
+      ]
+    },
+    {
+      "selector": ".login-card > p",
+      "context": [],
+      "line": 141,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 13px",
+        "color: var(--secondary)",
+        "line-height: 1.9"
+      ]
+    },
+    {
+      "selector": ".login-card label",
+      "context": [],
+      "line": 142,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--secondary)",
+        "font-size: 13px",
+        "margin-top: 6px"
+      ]
+    },
+    {
+      "selector": ".login-card input",
+      "context": [],
+      "line": 143,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-height: 45px",
+        "width: 100%",
+        "background: rgb(255 253 249 / 85%)"
+      ]
+    },
+    {
+      "selector": ".login-submit",
+      "context": [],
+      "line": 144,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-top: 14px",
+        "width: 100%",
+        "min-height: 44px"
+      ]
+    },
+    {
+      "selector": ".login-card > small",
+      "context": [],
+      "line": 145,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "line-height: 1.9",
+        "font-size: 11px",
+        "color: var(--muted)"
+      ]
+    },
+    {
+      "selector": ".business-panel",
+      "context": [],
+      "line": 146,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 25px"
+      ]
+    },
+    {
+      "selector": ".business-toolbar, .task-actions, .task-toolbar, .record-actions, .form-actions",
+      "context": [],
+      "line": 147,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "flex-wrap: wrap",
+        "align-items: center",
+        "gap: 10px",
+        "margin-bottom: 20px"
+      ]
+    },
+    {
+      "selector": ".business-toolbar > .el-button + .el-button, .task-actions > .el-button + .el-button, .record-actions > .el-button + .el-button",
+      "context": [],
+      "line": 148,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-left: 0"
+      ]
+    },
+    {
+      "selector": ".compact-filter",
+      "context": [],
+      "line": 149,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center",
+        "gap: 9px",
+        "font-size: 12px",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".compact-filter input",
+      "context": [],
+      "line": 150,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 120px"
+      ]
+    },
+    {
+      "selector": ".compact-filter select",
+      "context": [],
+      "line": 151,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 12px",
+        "padding: 8px 12px",
+        "border-radius: 999px"
+      ]
+    },
+    {
+      "selector": ".business-records",
+      "context": [],
+      "line": 152,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-width: 0"
+      ]
+    },
+    {
+      "selector": ".business-card",
+      "context": [],
+      "line": 153,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 22px 0",
+        "border-top: 1px solid #ebe2d7"
+      ]
+    },
+    {
+      "selector": ".business-card__heading",
+      "context": [],
+      "line": 154,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "justify-content: space-between",
+        "align-items: start",
+        "gap: 14px"
+      ]
+    },
+    {
+      "selector": ".business-card h3",
+      "context": [],
+      "line": 155,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0",
+        "font-size: 15px",
+        "color: var(--ink)",
+        "overflow-wrap: anywhere"
+      ]
+    },
+    {
+      "selector": ".text-button",
+      "context": [],
+      "line": 156,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border: 0",
+        "padding: 0",
+        "background: transparent",
+        "color: var(--coffee)",
+        "cursor: pointer",
+        "font-size: inherit",
+        "text-align: left",
+        "line-height: 1.7"
+      ]
+    },
+    {
+      "selector": ".text-button:hover",
+      "context": [],
+      "line": 157,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #694a36",
+        "text-decoration: underline"
+      ]
+    },
+    {
+      "selector": ".state-pill",
+      "context": [],
+      "line": 158,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 6px 11px",
+        "border-radius: 999px",
+        "background: #f0e6da",
+        "color: #765238",
+        "font-size: 12px",
+        "white-space: nowrap"
+      ]
+    },
+    {
+      "selector": ".state-pill[data-state=\"3\"]",
+      "context": [],
+      "line": 159,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #865f24",
+        "background: #fbf2dc"
+      ]
+    },
+    {
+      "selector": ".state-pill[data-state=\"6\"]",
+      "context": [],
+      "line": 160,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #3e6953",
+        "background: #edf4ee"
+      ]
+    },
+    {
+      "selector": ".state-pill[data-state=\"7\"]",
+      "context": [],
+      "line": 161,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #a34839",
+        "background: #faece6"
+      ]
+    },
+    {
+      "selector": ".record-summary",
+      "context": [],
+      "line": 162,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--secondary)",
+        "margin-top: 12px",
+        "font-size: 13px",
+        "line-height: 1.9",
+        "white-space: pre-wrap"
+      ]
+    },
+    {
+      "selector": ".record-meta",
+      "context": [],
+      "line": 163,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "flex-wrap: wrap",
+        "gap: 8px 18px",
+        "color: var(--muted)",
+        "font-size: 12px",
+        "margin: 13px 0"
+      ]
+    },
+    {
+      "selector": ".business-card summary",
+      "context": [],
+      "line": 164,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--secondary)",
+        "font-size: 12px",
+        "cursor: pointer",
+        "margin-top: 12px",
+        "padding: 5px 0"
+      ]
+    },
+    {
+      "selector": ".record-actions",
+      "context": [],
+      "line": 165,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 12px 0"
+      ]
+    },
+    {
+      "selector": ".record-details",
+      "context": [],
+      "line": 166,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 12px 0",
+        "min-width: 0"
+      ]
+    },
+    {
+      "selector": ".record-detail",
+      "context": [],
+      "line": 167,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: grid",
+        "grid-template-columns: 145px minmax(0, 1fr)",
+        "gap: 12px",
+        "padding: 12px 0",
+        "border-bottom: 1px solid #ebe2d7",
+        "font-size: 13px",
+        "line-height: 1.9"
+      ]
+    },
+    {
+      "selector": ".record-detail dt",
+      "context": [],
+      "line": 168,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)"
+      ]
+    },
+    {
+      "selector": ".record-detail dd",
+      "context": [],
+      "line": 169,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0",
+        "min-width: 0",
+        "color: var(--ink)",
+        "overflow-wrap: anywhere",
+        "white-space: pre-wrap"
+      ]
+    },
+    {
+      "selector": ".record-detail dd a",
+      "context": [],
+      "line": 170,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--coffee)",
+        "text-decoration: underline"
+      ]
+    },
+    {
+      "selector": ".record-detail .record-details",
+      "context": [],
+      "line": 171,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0"
+      ]
+    },
+    {
+      "selector": ".record-detail .record-detail",
+      "context": [],
+      "line": 172,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: 115px minmax(0, 1fr)"
+      ]
+    },
+    {
+      "selector": ".record-array",
+      "context": [],
+      "line": 173,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-left: 20px",
+        "margin: 0"
+      ]
+    },
+    {
+      "selector": ".record-array > li",
+      "context": [],
+      "line": 174,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 4px 0"
+      ]
+    },
+    {
+      "selector": ".business-pagination",
+      "context": [],
+      "line": 175,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "align-items: center",
+        "flex-wrap: wrap",
+        "justify-content: end",
+        "gap: 10px",
+        "padding-top: 22px",
+        "border-top: 1px solid #ebe2d7",
+        "font-size: 12px",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".business-pagination > span",
+      "context": [],
+      "line": 176,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-right: auto"
+      ]
+    },
+    {
+      "selector": ".secondary-button",
+      "context": [],
+      "line": 177,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border: 1px solid var(--line)",
+        "border-radius: 999px",
+        "background: var(--paper)",
+        "color: var(--coffee)",
+        "padding: 9px 14px",
+        "font-size: 12px",
+        "cursor: pointer"
+      ]
+    },
+    {
+      "selector": ".secondary-button:hover, .business-tabs button:hover",
+      "context": [],
+      "line": 178,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: #f0e7dc"
+      ]
+    },
+    {
+      "selector": ".business-tabs",
+      "context": [],
+      "line": 179,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: flex",
+        "flex-wrap: wrap",
+        "gap: 6px",
+        "margin-bottom: 20px",
+        "padding: 7px",
+        "background: #efe7dc",
+        "border-radius: 20px"
+      ]
+    },
+    {
+      "selector": ".business-tabs button",
+      "context": [],
+      "line": 180,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border: 0",
+        "padding: 9px 12px",
+        "border-radius: 999px",
+        "background: transparent",
+        "color: var(--secondary)",
+        "font-size: 12px",
+        "cursor: pointer"
+      ]
+    },
+    {
+      "selector": ".business-tabs button[aria-selected=\"true\"]",
+      "context": [],
+      "line": 181,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: var(--paper)",
+        "color: var(--coffee)",
+        "box-shadow: 0 2px 6px rgb(62 48 41 / 7%)"
+      ]
+    },
+    {
+      "selector": ".task-toolbar",
+      "context": [],
+      "line": 182,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-top: 10px"
+      ]
+    },
+    {
+      "selector": ".task-toolbar label",
+      "context": [],
+      "line": 183,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 13px",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".task-toolbar select",
+      "context": [],
+      "line": 184,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-width: 160px",
+        "border-radius: 999px"
+      ]
+    },
+    {
+      "selector": ".form-help",
+      "context": [],
+      "line": 185,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--secondary)",
+        "font-size: 12px",
+        "line-height: 1.9",
+        "margin-bottom: 20px"
+      ]
+    },
+    {
+      "selector": ".operation-form .field-object",
+      "context": [],
+      "line": 186,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: grid",
+        "grid-template-columns: repeat(2, minmax(0, 1fr))",
+        "gap: 18px"
+      ]
+    },
+    {
+      "selector": ".form-field",
+      "context": [],
+      "line": 187,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-width: 0"
+      ]
+    },
+    {
+      "selector": ".form-field > label",
+      "context": [],
+      "line": 188,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "font-size: 13px",
+        "color: var(--secondary)",
+        "margin-bottom: 8px"
+      ]
+    },
+    {
+      "selector": ".form-field--nested",
+      "context": [],
+      "line": 189,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-column: 1 / -1",
+        "border-top: 1px solid #ebe2d7",
+        "padding-top: 18px"
+      ]
+    },
+    {
+      "selector": ".field-control input, .field-control textarea, .field-control select",
+      "context": [],
+      "line": 190,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 100%"
+      ]
+    },
+    {
+      "selector": ".field-control textarea",
+      "context": [],
+      "line": 191,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "resize: vertical",
+        "min-height: 90px"
+      ]
+    },
+    {
+      "selector": ".readonly-field",
+      "context": [],
+      "line": 192,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: #f3ece2",
+        "color: var(--secondary)"
+      ]
+    },
+    {
+      "selector": ".array-editor fieldset",
+      "context": [],
+      "line": 193,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border: 1px solid var(--line)",
+        "border-radius: 18px",
+        "padding: 18px",
+        "margin: 12px 0",
+        "min-width: 0"
+      ]
+    },
+    {
+      "selector": ".array-editor legend",
+      "context": [],
+      "line": 194,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--coffee)",
+        "font-size: 13px",
+        "padding: 0 7px"
+      ]
+    },
+    {
+      "selector": ".array-editor .text-button",
+      "context": [],
+      "line": 195,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-top: 10px",
+        "font-size: 12px"
+      ]
+    },
+    {
+      "selector": ".array-editor .field-object",
+      "context": [],
+      "line": 196,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: repeat(2, minmax(0, 1fr))"
+      ]
+    },
+    {
+      "selector": ".required-mark, .danger, .field-error",
+      "context": [],
+      "line": 197,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #a34839"
+      ]
+    },
+    {
+      "selector": ".field-error",
+      "context": [],
+      "line": 198,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 12px",
+        "line-height: 1.8",
+        "margin: 8px 0"
+      ]
+    },
+    {
+      "selector": ".login-card > .field-error",
+      "context": [],
+      "line": 199,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #a34839"
+      ]
+    },
+    {
+      "selector": ".operation-error",
+      "context": [],
+      "line": 200,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 14px 16px",
+        "border: 1px solid #dfb9a6",
+        "background: #faece6",
+        "border-radius: 18px",
+        "color: #8d4736",
+        "font-size: 13px",
+        "margin-bottom: 16px",
+        "line-height: 1.9"
+      ]
+    },
+    {
+      "selector": ".form-actions",
+      "context": [],
+      "line": 201,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "justify-content: end",
+        "margin: 28px 0 0",
+        "border-top: 1px solid var(--line)",
+        "padding-top: 20px"
+      ]
+    },
+    {
+      "selector": ".muted",
+      "context": [],
+      "line": 202,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: var(--muted)",
+        "font-size: 12px"
+      ]
+    },
+    {
+      "selector": ".warm-text",
+      "context": [],
+      "line": 203,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "color: #865f24"
+      ]
+    },
+    {
+      "selector": ".workspace",
+      "context": [
+        "@media (min-width: 1500px)"
+      ],
+      "line": 206,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-top: 40px"
+      ]
+    },
+    {
+      "selector": ".sidebar",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 209,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 220px",
+        "padding-inline: 14px"
+      ]
+    },
+    {
+      "selector": ".app-main",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 210,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-left: 250px",
+        "width: calc(100% - 250px)",
+        "padding-right: 16px"
+      ]
+    },
+    {
+      "selector": ".topbar",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 211,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-inline: 18px"
+      ]
+    },
+    {
+      "selector": ".topbar__right",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 212,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 9px"
+      ]
+    },
+    {
+      "selector": ".account > span:last-child",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 213,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".metric-card",
+      "context": [
+        "@media (max-width: 1180px)"
+      ],
+      "line": 214,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-inline: 18px"
+      ]
+    },
+    {
+      "selector": ".metric-grid",
+      "context": [
+        "@media (max-width: 1000px)"
+      ],
+      "line": 217,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 12px"
+      ]
+    },
+    {
+      "selector": ".metric-card__hint",
+      "context": [
+        "@media (max-width: 1000px)"
+      ],
+      "line": 218,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 10px"
+      ]
+    },
+    {
+      "selector": ".login-layout",
+      "context": [
+        "@media (max-width: 1000px)"
+      ],
+      "line": 219,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: minmax(0, 1fr) 400px",
+        "gap: 40px"
+      ]
+    },
+    {
+      "selector": ".login-story h2",
+      "context": [
+        "@media (max-width: 1000px)"
+      ],
+      "line": 220,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 38px"
+      ]
+    },
+    {
+      "selector": ".sidebar",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 223,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".app-main",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 224,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 100%",
+        "margin-left: 0",
+        "padding: 12px"
+      ]
+    },
+    {
+      "selector": ".topbar",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 225,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-height: 62px",
+        "padding: 10px 14px",
+        "border-radius: 20px"
+      ]
+    },
+    {
+      "selector": ".mobile-menu.el-button",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 226,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: inline-flex",
+        "margin-right: 10px"
+      ]
+    },
+    {
+      "selector": ".breadcrumb__root, .breadcrumb > .el-icon, .topbar__divider",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 227,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".topbar__right",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 228,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "gap: 5px"
+      ]
+    },
+    {
+      "selector": ".topbar__right .access-help, .topbar__right .account",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 229,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".topbar__right .el-button",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 230,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-inline: 8px"
+      ]
+    },
+    {
+      "selector": ".workspace",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 231,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 25px 3px 20px"
+      ]
+    },
+    {
+      "selector": ".page-heading",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 232,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "align-items: flex-start",
+        "gap: 12px",
+        "margin-bottom: 22px"
+      ]
+    },
+    {
+      "selector": ".page-heading h1",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 233,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 26px"
+      ]
+    },
+    {
+      "selector": ".page-heading > .el-button",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 234,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 12px",
+        "padding-inline: 14px"
+      ]
+    },
+    {
+      "selector": ".page-description",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 235,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 12px",
+        "max-width: 245px"
+      ]
+    },
+    {
+      "selector": ".metric-grid",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 236,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: repeat(2, minmax(0, 1fr))",
+        "gap: 12px",
+        "margin-bottom: 20px"
+      ]
+    },
+    {
+      "selector": ".metric-card",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 237,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 18px",
+        "border-radius: 21px"
+      ]
+    },
+    {
+      "selector": ".metric-card__value",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 238,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin-top: 14px",
+        "font-size: 30px"
+      ]
+    },
+    {
+      "selector": ".metric-card__hint",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 239,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 11px"
+      ]
+    },
+    {
+      "selector": ".data-state",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 240,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 40px 22px"
+      ]
+    },
+    {
+      "selector": ".workspace-footer",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 241,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "font-size: 9px",
+        "gap: 8px"
+      ]
+    },
+    {
+      "selector": ".project-picker select",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 242,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "width: 124px",
+        "max-width: 32vw"
+      ]
+    },
+    {
+      "selector": ".business-panel",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 243,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 20px",
+        "border-radius: 24px"
+      ]
+    },
+    {
+      "selector": ".business-card",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 244,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 20px 0"
+      ]
+    },
+    {
+      "selector": ".business-toolbar",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 245,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "align-items: start"
+      ]
+    },
+    {
+      "selector": ".business-toolbar > .el-button",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 246,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "min-height: 42px",
+        "font-size: 12px"
+      ]
+    },
+    {
+      "selector": ".operation-form .field-object, .array-editor .field-object",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 247,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: 1fr"
+      ]
+    },
+    {
+      "selector": ".record-detail, .record-detail .record-detail",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 248,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "grid-template-columns: 1fr",
+        "gap: 3px"
+      ]
+    },
+    {
+      "selector": ".record-detail .record-details",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 249,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-left: 2px solid #e9dccd",
+        "padding-left: 12px"
+      ]
+    },
+    {
+      "selector": ".task-actions > .el-button",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 250,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0",
+        "flex: 1 0 42%",
+        "min-height: 42px"
+      ]
+    },
+    {
+      "selector": "body .el-dialog",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 251,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 24px 20px"
+      ]
+    },
+    {
+      "selector": "body .el-drawer__body",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 252,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding-inline: 20px"
+      ]
+    },
+    {
+      "selector": ".el-drawer.rtl",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 253,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border-radius: 26px 0 0 26px"
+      ]
+    },
+    {
+      "selector": ".login-page",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 254,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 40px 20px"
+      ]
+    },
+    {
+      "selector": ".login-layout",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 255,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: block",
+        "max-width: 420px",
+        "margin: auto"
+      ]
+    },
+    {
+      "selector": ".login-story > .brand",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 256,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "margin: 0 8px 30px"
+      ]
+    },
+    {
+      "selector": ".login-story h2, .login-story > p, .login-story__note",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 257,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "display: none"
+      ]
+    },
+    {
+      "selector": ".login-card",
+      "context": [
+        "@media (max-width: 760px)"
+      ],
+      "line": 258,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "padding: 30px 26px",
+        "border-radius: 28px"
+      ]
+    },
+    {
+      "selector": ".sidebar, .topbar, .login-card, .login-story__note, body .el-dialog, body .el-drawer",
+      "context": [
+        "@supports not (backdrop-filter: blur(1px))"
+      ],
+      "line": 261,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: var(--paper)"
+      ]
+    },
+    {
+      "selector": ".sidebar, .topbar, .login-card, .login-story__note, body .el-dialog, body .el-drawer",
+      "context": [
+        "@media (prefers-reduced-transparency: reduce)"
+      ],
+      "line": 264,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "background: var(--paper)",
+        "backdrop-filter: none",
+        "-webkit-backdrop-filter: none"
+      ]
+    },
+    {
+      "selector": "*, *::before, *::after",
+      "context": [
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "line": 267,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "animation-duration: .01ms !important",
+        "transition-duration: .01ms !important"
+      ]
+    },
+    {
+      "selector": ".sidebar, .topbar, .surface, .metric-card, .login-card, .login-story__note, .el-dialog, .el-drawer",
+      "context": [
+        "@media (forced-colors: active)"
+      ],
+      "line": 270,
+      "physical_rule_lines": 1,
+      "declarations": [
+        "border: 1px solid CanvasText",
+        "box-shadow: none"
+      ]
+    }
+  ]
+}

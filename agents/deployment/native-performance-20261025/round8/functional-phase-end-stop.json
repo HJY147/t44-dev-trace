@@ -1,0 +1,258 @@
+{
+  "at_utc": "2026-10-25T10:39:45.171467+00:00",
+  "functional_run": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-functional-campaign8-20261025/runs/functional_campaign8_20261025_5241d85b45f0477c",
+  "initial_current_roles": {
+    "api": {
+      "pid": 99635,
+      "running": true
+    },
+    "consumer": {
+      "pid": 99674,
+      "running": true
+    },
+    "scheduler": {
+      "pid": 13323,
+      "running": true
+    },
+    "application_guardian": {
+      "pid": 99629,
+      "running": true
+    },
+    "guardian": {
+      "pid": 99225,
+      "running": true
+    }
+  },
+  "steps": [
+    {
+      "role": "application_guardian",
+      "success": true,
+      "forced_by_deployment": false,
+      "request_receipt": "7ffb2556f5d44047929fecf0f7880a6c"
+    },
+    {
+      "role": "guardian",
+      "success": true,
+      "forced_by_deployment": false,
+      "request_receipt": "4eeeb5e5b4ce4078b9e3641d0fe8c70f"
+    }
+  ],
+  "owned_roles_absent": {
+    "api": true,
+    "consumer": true,
+    "scheduler": true,
+    "application_guardian": true,
+    "guardian": true,
+    "rabbit": true,
+    "epmd": true
+  },
+  "api_children": [
+    {
+      "pid": 99636,
+      "worker": false,
+      "absent": true
+    },
+    {
+      "pid": 99637,
+      "worker": true,
+      "absent": true
+    },
+    {
+      "pid": 99638,
+      "worker": true,
+      "absent": true
+    },
+    {
+      "pid": 99639,
+      "worker": true,
+      "absent": true
+    },
+    {
+      "pid": 99640,
+      "worker": true,
+      "absent": true
+    }
+  ],
+  "all_functional_roles_workers_tracker_absent": true,
+  "stop_aftercheck_receipt": "7be1b863c488450198cdee242dc06cf0",
+  "original_sha256_unchanged": {
+    "controller.py": "a93add76134e7ff7c222d2af6b700bb548a41730d237c748804b0d255c6b86ee",
+    "manifest.json": "f69b7760e78787e6e9fe882f91328884ebf2803221aa61bced44a19a93bc7a1e",
+    "application-controller.py": "5930bbff16cea21e3df1187f4169914e794ad44c5d6c91e0b58bf210f216351c",
+    "application-binding.json": "3d3211687df5da9270e12079a6144487adbe7e3a37c2446abb298acd4cd40889",
+    "artifact-manifest.json": "582d7a2e6be4f79ed186daba9877ea3bf2605d7050398af4aff15728d7c210fc",
+    "native-build.json": "80d8ea9791e9d8e8a6ff9f48240f125bd4af5661347a1385cbb29df0d3b5b594"
+  },
+  "ports_aftercheck": [
+    {
+      "port": 18098,
+      "bind_free": true
+    },
+    {
+      "port": 25698,
+      "bind_free": true
+    },
+    {
+      "port": 24398,
+      "bind_free": false,
+      "errno": 48
+    },
+    {
+      "port": 35698,
+      "bind_free": true
+    },
+    {
+      "port": 45736,
+      "bind_free": true
+    },
+    {
+      "port": 45737,
+      "bind_free": true
+    },
+    {
+      "port": 45738,
+      "bind_free": true
+    },
+    {
+      "port": 45739,
+      "bind_free": true
+    },
+    {
+      "port": 45740,
+      "bind_free": true
+    },
+    {
+      "port": 45741,
+      "bind_free": true
+    },
+    {
+      "port": 45742,
+      "bind_free": true
+    },
+    {
+      "port": 45743,
+      "bind_free": true
+    },
+    {
+      "port": 45744,
+      "bind_free": true
+    },
+    {
+      "port": 45745,
+      "bind_free": true
+    }
+  ],
+  "closed_raw_resource_files": [
+    {
+      "name": "application-resources-2fca27a98dd54e5dbfaf4cfa63cb8d12.ndjson",
+      "bytes": 71436,
+      "sha256": "ea61af9b0ccd7e94439bb492e49088275773b9e2790b7e9e168fca3b20b579a6"
+    },
+    {
+      "name": "resources-430551eac9334bd0a251bd23fe77c4e0.ndjson",
+      "bytes": 64285,
+      "sha256": "874e7a8b7b491dcdd0e7fa20e7797a57b3af2987681073af6f939219fec7bc95"
+    }
+  ],
+  "owned_stop_receipts": [
+    {
+      "at_utc": "2026-10-25T10:39:43.080779+00:00",
+      "receipt_id": "e1839dd5485b43c9a0001049f18127ab",
+      "action": "application_watchdog_stop",
+      "success": true,
+      "sampling_failed": false,
+      "steps": [
+        {
+          "role": "scheduler",
+          "forced": false,
+          "success": true
+        },
+        {
+          "role": "consumer",
+          "forced": false,
+          "success": true
+        },
+        {
+          "role": "api",
+          "forced": false,
+          "success": true
+        }
+      ],
+      "children": [
+        {
+          "pid": 99636,
+          "success": true,
+          "absent": true
+        },
+        {
+          "pid": 99637,
+          "success": true,
+          "absent": true
+        },
+        {
+          "pid": 99638,
+          "success": true,
+          "absent": true
+        },
+        {
+          "pid": 99639,
+          "success": true,
+          "absent": true
+        },
+        {
+          "pid": 99640,
+          "success": true,
+          "absent": true
+        }
+      ]
+    },
+    {
+      "at_utc": "2026-10-25T10:39:45.029448+00:00",
+      "receipt_id": "347b4c3f07e0436784c139190933b41d",
+      "action": "stop",
+      "success": true,
+      "steps": [
+        {
+          "role": "scheduler",
+          "absent": true,
+          "success": true
+        },
+        {
+          "role": "consumer",
+          "absent": true,
+          "success": true
+        },
+        {
+          "role": "api",
+          "absent": true,
+          "success": true
+        },
+        {
+          "role": "broker",
+          "success": true,
+          "receipt_id": "e95d8d1166694dba82be9a7170f15766"
+        },
+        {
+          "role": "rabbit",
+          "success": true
+        },
+        {
+          "role": "epmd",
+          "success": true
+        }
+      ]
+    },
+    {
+      "at_utc": "2026-10-25T10:39:45.029877+00:00",
+      "receipt_id": "e0b726d6dceb4e9da216d5a5e3d78aa2",
+      "action": "guardian",
+      "success": true,
+      "cleanup_receipt": "347b4c3f07e0436784c139190933b41d"
+    }
+  ],
+  "performance_or_shared_mysql_or_P_sampler_touched": false,
+  "root_provider_touched": false,
+  "data_and_all_original_logs_preserved": true,
+  "new_functional_run_started": false,
+  "independent_verdict_read": false
+}

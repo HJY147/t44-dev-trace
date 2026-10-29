@@ -1,0 +1,322 @@
+{
+  "at_utc": "2026-10-23T21:33:02.311338+00:00",
+  "run_id": "app_20261023_212959_fc2dc9",
+  "exact_application_implementation_commit": "0a6da88",
+  "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "controller_sha256": "df5d11bcaa9a2b2b138d1ab31e1379efdd42ea7f1c8d6c464301a963ac906823",
+  "broker_controller_sha256": "a251989f589943bf513fa506015a7bba356fbb167a525a7fd79a29306689fa6b",
+  "driver_exit_code": 0,
+  "cycle_success": true,
+  "cleanup_success": true,
+  "source_files_verified": 92,
+  "backend_python_files": 44,
+  "frontend_src_ts_vue_files": 20,
+  "all_source_hash_mismatches": 0,
+  "owned_env_final_source_correct": true,
+  "own_ports_no_listeners": {
+    "18088": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "5178": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "25674": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "35674": {
+      "exit_code": 1,
+      "listeners": []
+    },
+    "24369": {
+      "exit_code": 1,
+      "listeners": []
+    }
+  },
+  "broker_owned_pid_absent": {
+    "rabbit": true,
+    "epmd": true
+  },
+  "protected_listener_comparison": {
+    "5173": {
+      "before": {
+        "exit_code": 0,
+        "listeners": [
+          "p72044",
+          "f15",
+          "n127.0.0.1:5173"
+        ]
+      },
+      "after": {
+        "exit_code": 0,
+        "listeners": [
+          "p72044",
+          "f15",
+          "n127.0.0.1:5173"
+        ]
+      },
+      "exact_match": true
+    },
+    "18080": {
+      "before": {
+        "exit_code": 0,
+        "listeners": [
+          "p63514",
+          "f6",
+          "n127.0.0.1:18080"
+        ]
+      },
+      "after": {
+        "exit_code": 0,
+        "listeners": [
+          "p63514",
+          "f6",
+          "n127.0.0.1:18080"
+        ]
+      },
+      "exact_match": true
+    },
+    "5175": {
+      "before": {
+        "exit_code": 0,
+        "listeners": [
+          "p64290",
+          "f11",
+          "n127.0.0.1:5175"
+        ]
+      },
+      "after": {
+        "exit_code": 0,
+        "listeners": [
+          "p64290",
+          "f11",
+          "n127.0.0.1:5175"
+        ]
+      },
+      "exact_match": true
+    },
+    "18084": {
+      "before": {
+        "exit_code": 0,
+        "listeners": [
+          "p64289",
+          "f6",
+          "n127.0.0.1:18084"
+        ]
+      },
+      "after": {
+        "exit_code": 0,
+        "listeners": [
+          "p64289",
+          "f6",
+          "n127.0.0.1:18084"
+        ]
+      },
+      "exact_match": true
+    },
+    "5176": {
+      "before": {
+        "exit_code": 1,
+        "listeners": []
+      },
+      "after": {
+        "exit_code": 1,
+        "listeners": []
+      },
+      "exact_match": true
+    },
+    "18089": {
+      "before": {
+        "exit_code": 1,
+        "listeners": []
+      },
+      "after": {
+        "exit_code": 1,
+        "listeners": []
+      },
+      "exact_match": true
+    },
+    "13306": {
+      "before": {
+        "exit_code": 0,
+        "listeners": [
+          "p7980",
+          "f17",
+          "n127.0.0.1:13306"
+        ]
+      },
+      "after": {
+        "exit_code": 0,
+        "listeners": [
+          "p7980",
+          "f17",
+          "n127.0.0.1:13306"
+        ]
+      },
+      "exact_match": true
+    }
+  },
+  "session_metadata_all_revoked": [
+    {
+      "id": 1,
+      "actor_kind": 1,
+      "user_id": 1,
+      "service_account_id": null,
+      "project_ids": "[]",
+      "scopes": "[]",
+      "created_at": "2026-10-23T21:21:18.620950",
+      "expires_at": "2026-10-23T21:26:18.620950",
+      "revoked_at": "2026-10-23T21:22:21.575524"
+    },
+    {
+      "id": 2,
+      "actor_kind": 2,
+      "user_id": null,
+      "service_account_id": 1,
+      "project_ids": "[1, 2]",
+      "scopes": "[\"escalation:write\"]",
+      "created_at": "2026-10-23T21:21:19.100921",
+      "expires_at": "2026-10-23T21:26:19.100921",
+      "revoked_at": "2026-10-23T21:22:21.532238"
+    },
+    {
+      "id": 3,
+      "actor_kind": 1,
+      "user_id": 1,
+      "service_account_id": null,
+      "project_ids": "[]",
+      "scopes": "[]",
+      "created_at": "2026-10-23T21:30:10.287918",
+      "expires_at": "2026-10-23T21:35:10.287918",
+      "revoked_at": "2026-10-23T21:31:14.797024"
+    },
+    {
+      "id": 4,
+      "actor_kind": 2,
+      "user_id": null,
+      "service_account_id": 2,
+      "project_ids": "[1, 2]",
+      "scopes": "[\"escalation:write\"]",
+      "created_at": "2026-10-23T21:30:10.738384",
+      "expires_at": "2026-10-23T21:35:10.738384",
+      "revoked_at": "2026-10-23T21:31:12.891661"
+    },
+    {
+      "id": 5,
+      "actor_kind": 2,
+      "user_id": null,
+      "service_account_id": 2,
+      "project_ids": "[1, 2]",
+      "scopes": "[\"escalation:write\"]",
+      "created_at": "2026-10-23T21:31:12.567981",
+      "expires_at": "2026-10-23T21:36:12.567981",
+      "revoked_at": "2026-10-23T21:31:14.743278"
+    }
+  ],
+  "actual_scan_rows": [
+    {
+      "id": 1,
+      "status": 2,
+      "cutoff_at": "2026-10-23T21:21:19.481891",
+      "started_at": "2026-10-23T21:21:19.481891",
+      "finished_at": "2026-10-23T21:21:19.837340",
+      "scanned_count": 16,
+      "created_count": 16,
+      "duplicate_count": 0,
+      "error_code": null
+    },
+    {
+      "id": 2,
+      "status": 2,
+      "cutoff_at": "2026-10-23T21:22:19.865885",
+      "started_at": "2026-10-23T21:22:19.865885",
+      "finished_at": "2026-10-23T21:22:20.128617",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "id": 3,
+      "status": 2,
+      "cutoff_at": "2026-10-23T21:30:11.120217",
+      "started_at": "2026-10-23T21:30:11.120217",
+      "finished_at": "2026-10-23T21:30:11.401586",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "id": 4,
+      "status": 2,
+      "cutoff_at": "2026-10-23T21:31:11.423287",
+      "started_at": "2026-10-23T21:31:11.423287",
+      "finished_at": "2026-10-23T21:31:11.765041",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "id": 5,
+      "status": 2,
+      "cutoff_at": "2026-10-23T21:31:13.208612",
+      "started_at": "2026-10-23T21:31:13.208612",
+      "finished_at": "2026-10-23T21:31:13.428367",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    }
+  ],
+  "shutdown_cli": {
+    "receipt_id": "6350a9f0a500461fbce9a3241e5602d4",
+    "at_utc": "2026-10-23T21:31:16.022086+00:00",
+    "action": "cli",
+    "run_id": "app_20261023_212959_fc2dc9",
+    "argv": [
+      "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/native-mq-20261023/rabbitmq_server-4.3.6/sbin/rabbitmqctl",
+      "-q",
+      "-n",
+      "t44_native_demo_app_20261023_212959_fc2dc9@localhost",
+      "shutdown",
+      "--no-wait"
+    ],
+    "started_at_utc": "2026-10-23T21:31:15.713263+00:00",
+    "ended_at_utc": "2026-10-23T21:31:16.022018+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "cookie_init_marker": true,
+    "cookie_init_args_sha256": "ffc169dd79f5ebed4e5eb971cdfe472757e2cd3a84d5f03a634285557cf47f64",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "secret_literal_found": false,
+    "success": true
+  },
+  "shutdown_raw": [
+    {
+      "file": "run2-shutdown.raw.stdout.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "file": "run2-shutdown.raw.stderr.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    }
+  ],
+  "new_publish_by_run2_claimed": false,
+  "normal_delivery_origin": "app_20261023_212055_35aa09",
+  "evidence_boundary": "local developer capability only; HTTP UI/proxy, no browser business/independent/performance/cloud acceptance",
+  "staging_pythonpath_still_original_named_directory": "plan-reason-api/source/backend",
+  "staging_pythonpath_distinct_from_owned_final": true,
+  "staging_path_does_not_encode_commit_sha": true,
+  "staging_byte_before_after_hash_not_captured": true,
+  "staging_write_operations_by_controller": 0,
+  "staging_input_immutability_synthetic_guard_passed": true,
+  "direct_broker_bindings_table_readback": false,
+  "normal_amqp_path_evidence": "Exact Pika source + actual run1 two connections +16confirmed outbox/26normalnotifications and their exact scan/UTC/recipient joins; no separate list_bindings command"
+}

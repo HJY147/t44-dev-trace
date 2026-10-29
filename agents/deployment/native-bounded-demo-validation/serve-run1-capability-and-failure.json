@@ -1,0 +1,195 @@
+{
+  "at_utc": "2026-10-23T23:13:19.691806+00:00",
+  "implementation": "4ef57b6129c712c1fad88de56775c53b84009b15",
+  "controller_sha256": "942354aec3dc18eb2518a565fc23d3ae51d8975ac7a4b2d6d497ea1c8dbe3c07",
+  "run": "app_20261023_230429_cc2f5b",
+  "source_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "original_driver_exit_code": 1,
+  "original_summary_success": false,
+  "original_cleanup_success": false,
+  "original_failure": "post_stop_processes wrongly includes still-live serve runner from serve-owner.json",
+  "sole_original_failed_pid_is_runner": true,
+  "original_stop_reason": "duration_elapsed",
+  "started_at_utc": "2026-10-23T23:04:57.316057+00:00",
+  "deadline_at_utc": "2026-10-23T23:10:57.316057+00:00",
+  "stop_requested_at_utc": "2026-10-23T23:10:57.387000+00:00",
+  "finished_at_utc": "2026-10-23T23:11:09.969114+00:00",
+  "actual_total_until_summary_seconds": 372.653057,
+  "capability_ready": true,
+  "first_scan_interval_seconds": 60.292813,
+  "additional_rotations": 1,
+  "spawn_counts": {
+    "api": 1,
+    "consumer": 1,
+    "ui": 1,
+    "scanner": 3
+  },
+  "controller_wait_scans_observed_completed_count": 4,
+  "actual_db_completed_scan_count": 8,
+  "scans": [
+    {
+      "ordinal": 1,
+      "status": 2,
+      "started_at": "2026-10-23T23:05:03.317664",
+      "finished_at": "2026-10-23T23:05:03.589837",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 2,
+      "status": 2,
+      "started_at": "2026-10-23T23:06:03.610477",
+      "finished_at": "2026-10-23T23:06:03.893891",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 3,
+      "status": 2,
+      "started_at": "2026-10-23T23:06:05.906782",
+      "finished_at": "2026-10-23T23:06:06.111610",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 4,
+      "status": 2,
+      "started_at": "2026-10-23T23:07:06.144028",
+      "finished_at": "2026-10-23T23:07:06.537824",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 5,
+      "status": 2,
+      "started_at": "2026-10-23T23:08:06.123503",
+      "finished_at": "2026-10-23T23:08:06.422043",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 6,
+      "status": 2,
+      "started_at": "2026-10-23T23:09:06.134653",
+      "finished_at": "2026-10-23T23:09:06.618948",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 7,
+      "status": 2,
+      "started_at": "2026-10-23T23:09:08.528502",
+      "finished_at": "2026-10-23T23:09:08.733087",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    },
+    {
+      "ordinal": 8,
+      "status": 2,
+      "started_at": "2026-10-23T23:10:08.760040",
+      "finished_at": "2026-10-23T23:10:09.187017",
+      "scanned_count": 16,
+      "created_count": 0,
+      "duplicate_count": 16,
+      "error_code": null
+    }
+  ],
+  "own_service_credentials_count": 3,
+  "all_own_service_ttl_seconds": 300,
+  "all_own_service_project_counts": [
+    2,
+    2,
+    2
+  ],
+  "all_own_service_scopes": [
+    [
+      "escalation:write"
+    ],
+    [
+      "escalation:write"
+    ],
+    [
+      "escalation:write"
+    ]
+  ],
+  "all_own_sessions_revoked": true,
+  "ready_login_reclaimed": true,
+  "historical_confirmed_event_count": 16,
+  "historical_notification_count": 26,
+  "historical_message_origin": "app_20261023_212055_35aa09",
+  "new_publish_by_this_run_claimed": false,
+  "actual_new_outbox_events_in_run_utc": 0,
+  "cleanup_steps": [
+    {
+      "action": "stop_role",
+      "role": "ui",
+      "success": true,
+      "needed": true
+    },
+    {
+      "action": "stop_role",
+      "role": "scanner",
+      "success": true,
+      "needed": true
+    },
+    {
+      "action": "stop_role",
+      "role": "consumer",
+      "success": true,
+      "needed": true
+    },
+    {
+      "action": "service_revoked",
+      "success": true
+    },
+    {
+      "action": "stop_role",
+      "role": "api",
+      "success": true,
+      "needed": true
+    },
+    {
+      "action": "post_stop_processes",
+      "success": false
+    },
+    {
+      "action": "stop",
+      "success": true
+    }
+  ],
+  "separate_post_stop_all_recorded_pids_absent": true,
+  "separate_post_stop_broker_pids_absent": {
+    "rabbit": true,
+    "epmd": true
+  },
+  "separate_post_stop_new_ports_unbound": true,
+  "protected_listener_exact_matches": {
+    "5173": true,
+    "18080": true,
+    "5175": true,
+    "18084": true,
+    "5176": true,
+    "18089": true,
+    "13306": true
+  },
+  "source_files_verified": 92,
+  "source_hash_mismatches": 0,
+  "private_proof_sha256": "2091aafc02a83fee91fc657a295bb140f7d9eadf287d3fa549bc6cad638b1f2d",
+  "original_cleanup_rewritten": false,
+  "second360run_admitted": false,
+  "long4hserve_admitted": false
+}

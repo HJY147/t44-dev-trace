@@ -1,0 +1,11 @@
+{
+  "scope": "AST/module import only; no diagnostic benchmark, payload validation, HTTP or SQL",
+  "new_t44_modules": [],
+  "benchmark_run": false,
+  "ast_pass": true,
+  "tool_sha256": "74821a006749b623aba8bdc2a5c3af65a7b101f6213b1d713acc6e7bad2ed5e4",
+  "application_matches_bc5": true,
+  "shared_boundaries_unchanged_from_base": true,
+  "boundary_probe_erratum": "Comparing all specs against old productbc5 includes coordinator RFC additions already in basecee7; use basecee7 for shared specs and bc5 for actual application bytes. No unrelated material used.",
+  "ruff_first": "F401 unused sys and B023/F821 closure binding; original log preserved; removed unused import and explicitly bound immediate lambdas without lowering lint"
+}

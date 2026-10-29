@@ -1,0 +1,27 @@
+diff --git a/tmp/821_functional_provider/821_provider.py b/tmp/821_functional_provider/821_provider.py
+index d8bf886..2c4522f 100644
+--- a/tmp/821_functional_provider/821_provider.py
++++ b/tmp/821_functional_provider/821_provider.py
+@@ -11,7 +11,7 @@ from datetime import UTC, datetime
+ from pathlib import Path
+ 
+ PROJECT = Path("/Users/yang/Desktop/nothing/软件开发大作业")
+-PUBLIC = PROJECT / "tmp/829_independent_acceptance_20261025/PUBLIC"
++PUBLIC = PROJECT / "tmp/829_independent_acceptance_20261025/execution-v6-fresh/PUBLIC"
+ ROOT_PRIVATE = PROJECT / ".agent-worktrees/.runtime/continuation-20261025"
+ RUN = (
+     PROJECT
+@@ -101,9 +101,10 @@ def main(grant_path, supervisor_receipt):
+             raise ValueError("Supervisor process identity missing")
+         os.kill(supervisor[key], 0)
+     helper = PUBLIC / "handoff.PUBLIC.py"
+-    if (
+-        hashlib.sha256(helper.read_bytes()).hexdigest()
+-        != manifest["public_file_inventory"][helper.name]["sha256"]
++    if hashlib.sha256(helper.read_bytes()).hexdigest() != next(
++        item["sha256"]
++        for item in manifest["core_files"]
++        if item["path"] == "PUBLIC/handoff.PUBLIC.py"
+     ):
+         raise ValueError("Public sealer mismatch")
+     controller = RUN / "scheduler-control.py"

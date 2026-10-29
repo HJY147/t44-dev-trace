@@ -1,0 +1,6 @@
+{
+  "id": 6394674914,
+  "exact_body_match": true,
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6394674914",
+  "body": "后端修订候选 C c8cea7e82805de5283ce67501769fa9a4efc1047（分支 codex/backend-shared-project-point-lock-20261025）已提交，尚未合并或云部署。\n\nroot明确准入后先设计勘误4dc0ca6：原S-only+batch未实施。仅Runtime两处：START/UNBLOCK/REWORK project S；原writer集合仍X；原target/pred set sorted unique后逐scalar唯一PK+project/limit1取X，全体锁完再原Business重读。Runtime SHA9e0d770e4d5a646b406e1b1a3e328a7e369219d8821dbfcc008303547fe6825b。机械AST恢复两节点后全文件等同基线；鉴权三次/两UoW/锁集合/成员/CAS/原错误/拒绝独立审计/outbox/幂等未改。\n\n真实SQLite原Gateway观察：初fixture缺必需reason为9setup errors（原件保留），只补合成输入后旧Runtime结构9红；产品修改后同9+缺失跨项目404两项=11绿，另21邻接绿，共本源32唯一目标，非MySQL锁证明。前阶段未执行HTTP7图writer同缺reason一并只补输入，其当前SHAf77f2872fe6dfb8230fec6edb24be5fdcbfe048bf83c4ed319e1a6c7e713caff。\n\n成本：K唯一任务ID原1条锁SELECT→K条，净K-1，无依赖仍1；不删认证或前驱锁抵消。原固定cloc实际6326/上限5100/超1226、exit1；66文件集合不变，Runtime276→286净+10，规模仍FAIL。root统一fresh MySQL HTTP7/DB6和全量CI、专审后另决定集成；正式性能与旧502根因均未证明。\n\n报告/原始红绿/命令/JUnit/源码与AST/规模证据：agents/backend/shared-project-point-lock-20261025。实际设计/改码/验证者后端AI，不冒用户手写或人工改码；不读独立私件，不联系测试岗，不开云、不另触发CI。\n"
+}

@@ -1,0 +1,34 @@
+{
+  "label": "full-local",
+  "command": [
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "backend/pyproject.toml",
+    "tmp/765_database_dry_r29b/765_catalog_equivalence.py",
+    "tmp/backend/persistence",
+    "tmp/812_database_size",
+    "tmp/backend/messaging/980_delivery.py",
+    "tmp/backend/scheduling/990_runtime.py",
+    "tmp/backend/scheduling/974_application.py",
+    "-m",
+    "not integration",
+    "-q",
+    "--junitxml=agents/database/dry-r29b/full-local.xml"
+  ],
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-dry-r29b",
+  "source": "8f29030756139061341e0a636c8774ca790964bd",
+  "started_utc": "2026-10-29T06:02:25.942712+00:00",
+  "exit": 0,
+  "environment": {
+    "PYTHONPATH": "backend"
+  },
+  "unset_environment": [
+    "DATABASE_URL",
+    "T44_TEST_CREDENTIALS",
+    "CI"
+  ],
+  "stdout": "full-local.stdout.txt",
+  "stderr": "full-local.stderr.txt"
+}

@@ -1,0 +1,450 @@
+"""Explicit derived synthetic fixture; only the newly authorized performance schema."""
+
+import argparse
+import copy
+import hashlib
+import json
+import os
+import stat
+import subprocess
+from collections import Counter
+from datetime import UTC, datetime, timedelta
+from pathlib import Path
+from secrets import token_bytes
+
+PRODUCT = "935ab5b93bea788672c2b4a088c79cfeed848954"
+DATABASE = "t44_p816_20261025"
+ENVIRONMENT = Path(
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/continuation-20261025/performance-db-round8/application-env.json"
+)
+SOURCE_FILES = (
+    "backend/t44/persistence/seed.py",
+    "backend/t44/persistence/rows.py",
+    "backend/t44/persistence/schema.py",
+    "backend/t44/persistence/schema_v1.sql",
+    "backend/t44/persistence/codecs.py",
+    "backend/t44/persistence/uow.py",
+    "backend/t44/persistence/engine.py",
+    "backend/t44/persistence/migrations.py",
+    "backend/t44/resources/review-template.json",
+    "backend/t44/resources/escalation-rules.json",
+)
+
+
+def canonical(value):
+    if isinstance(value, datetime):
+        return value.astimezone(UTC).isoformat()
+    if isinstance(value, bytes):
+        return value.hex()
+    raise TypeError(type(value).__name__)
+
+
+class Collector:
+    def __init__(self):
+        self.tables = {}
+
+    def insert_many(self, table, rows):
+        self.tables.setdefault(table, []).extend(copy.deepcopy(rows))
+
+    def update_many(self, table, rows):
+        by_id = {r["id"]: r for r in self.tables[table]}
+        for row in rows:
+            by_id[row["id"]].update(copy.deepcopy(row))
+
+
+def build(anchor, actors):
+    from t44.persistence import seed
+
+    template, thash = seed._snapshot("review-template.json", None)
+    rules, rhash = seed._snapshot("escalation-rules.json", None)
+    manifest = dict(
+        version=seed.VERSION,
+        seed=44,
+        anchor_at=anchor.isoformat(),
+        projects=40,
+        tasks=6000,
+        dependencies=9000,
+        records=15000,
+        template_version=template["version"],
+        template_sha256=thash,
+        rules_sha256=rhash,
+        rule_version=rules["version"],
+        rule_effective_at=rules["effective_at"],
+        rule_decided_by=rules["decided_by"],
+        artifact_revision=seed.ARTIFACT,
+        synthetic=True,
+    )
+    collector = Collector()
+    original = seed._populate(
+        collector, manifest, template, [actors[k] for k in ("m", "d", "r")], 250
+    )
+    tables = collector.tables
+    tasks = tables["tasks"]
+    developing = [t for t in tasks if t["state"] == 2][:400]
+    overdue = [t for t in tasks if t["state"] == 1][:400]
+    concentrated = {t["id"] for t in developing + overdue}
+    for index, task in enumerate(t for t in tasks if t["id"] not in concentrated):
+        task["project_id"] = task["iteration_id"] = 2 + index % 39
+    for group, end in (
+        (developing, anchor + timedelta(hours=72)),
+        (overdue, anchor - timedelta(hours=48)),
+    ):
+        for task in group:
+            task.update(
+                project_id=1,
+                iteration_id=1,
+                planned_start=anchor - timedelta(days=4),
+                planned_end=end,
+            )
+    by_task = {t["id"]: t for t in tasks}
+    for table in ("reviews", "release_assessments", "decisions"):
+        for row in tables[table]:
+            row["project_id"] = by_task[row["task_id"]]["project_id"]
+    counts = Counter(t["project_id"] for t in tasks)
+    for row in tables["iterations"]:
+        row["capacity"] = [
+            {"user_id": actors["d"], "available_hours": counts[row["id"]] * 1.25 + 20}
+        ]
+        if row["id"] == 1:
+            row["capacity"].append({"user_id": actors["d2"], "available_hours": 40})
+    extra = copy.deepcopy(tables["project_members"][1])
+    extra.update(project_id=1, user_id=actors["d2"], roles_mask=2)
+    tables["project_members"].append(extra)
+    delivered = {}
+    for task in tasks:
+        if task["state"] == 6:
+            delivered.setdefault(task["project_id"], []).append(task["id"])
+    eligible = {
+        t["id"]: [p for p in delivered.get(t["project_id"], []) if p < t["id"]]
+        for t in tasks
+        if t["id"] not in concentrated
+    }
+    edges = []
+    for distance in range(1, 100):
+        for task in tasks:
+            predecessors = eligible.get(task["id"], [])
+            if len(predecessors) >= distance:
+                edges.append(
+                    dict(
+                        project_id=task["project_id"],
+                        task_id=task["id"],
+                        depends_on_task_id=predecessors[-distance],
+                        created_by=actors["m"],
+                        created_at=anchor - timedelta(days=14),
+                    )
+                )
+                if len(edges) == 9000:
+                    break
+        if len(edges) == 9000:
+            break
+    tables["task_dependencies"] = edges
+    for row in tables["audit_events"]:
+        row.update(
+            operation_id="syntheticPerfFixture833",
+            after_values=[
+                {
+                    "field": "fixture_kind",
+                    "value": "direct synthetic; concentrated project; not human history",
+                }
+            ],
+        )
+    for rows in tables.values():
+        for index, row in enumerate(rows, 1):
+            row.setdefault("id", index)
+    metadata = dict(
+        original=original,
+        manifest=manifest,
+        users=actors,
+        pressure_project_id=1,
+        pressure_iteration_id=1,
+        developing_task_ids=[t["id"] for t in developing],
+        overdue_task_ids=[t["id"] for t in overdue],
+        project_task_counts=dict(sorted(counts.items())),
+        records_definition="reviews + decisions = 15000; assessments 3600 additional",
+        distribution="800 concentrated in project1; remaining5200 round-robin across39projects; intentionally skewed",
+        history="direct synthetic rows derived from frozen helper; not executed business or human approval history",
+    )
+    return tables, metadata
+
+
+def validate(tables, actors, metadata):
+    from t44.persistence.schema import TABLES
+
+    augmented = {**tables, "users": [{"id": value} for value in actors.values()]}
+    fk_count = 0
+    for name, table in TABLES.items():
+        for fk in table.foreign_key_constraints:
+            elements = list(fk.elements)
+            parent = elements[0].column.table.name
+            targets = {
+                tuple(r.get(e.column.name) for e in elements) for r in augmented.get(parent, [])
+            }
+            for row in augmented.get(name, []):
+                values = tuple(row.get(e.parent.name) for e in elements)
+                if all(v is not None for v in values):
+                    assert values in targets, (name, fk.name)
+            fk_count += 1
+    expected = {
+        "projects": 40,
+        "tasks": 6000,
+        "task_dependencies": 9000,
+        "reviews": 11400,
+        "decisions": 3600,
+        "release_assessments": 3600,
+    }
+    assert all(len(tables[name]) == count for name, count in expected.items())
+    by_task = {t["id"]: t for t in tables["tasks"]}
+    reviews = {r["id"]: r for r in tables["reviews"]}
+    assessments = {r["id"]: r for r in tables["release_assessments"]}
+    for task in by_task.values():
+        assert task["owner_id"] == actors["d"] and task["version"] >= 1
+        assert task["iteration_id"] == task["project_id"]
+        for key in ("latest_review_id", "approved_review_id"):
+            if task[key] is not None:
+                r = reviews[task[key]]
+                assert r["task_id"] == task["id"] and r["delivery_cycle"] == task["delivery_cycle"]
+                assert r["artifact_revision"] == task["artifact_revision"]
+                assert (
+                    r["review_cycle"] == task["review_cycle"]
+                    and r["reviewer_id"] != task["owner_id"]
+                )
+                if key == "approved_review_id":
+                    assert r["verdict"] == 1
+        if task["approved_assessment_id"] is not None:
+            a = assessments[task["approved_assessment_id"]]
+            assert (
+                a["task_id"] == task["id"] and a["version"] == task["approved_assessment_version"]
+            )
+            assert (
+                a["schedule_version"] == task["schedule_version"]
+                and a["delivery_cycle"] == task["delivery_cycle"]
+            )
+            assert a["status"] == 2 and a["created_by"] != a["reviewed_by"]
+    for row in tables["reviews"]:
+        t = by_task[row["task_id"]]
+        assert (
+            row["delivery_cycle"] == t["delivery_cycle"]
+            and row["review_cycle"] <= t["review_cycle"]
+        )
+        assert (
+            row["artifact_revision"] == t["artifact_revision"]
+            and row["reviewer_id"] != t["owner_id"]
+        )
+    for row in tables["release_assessments"]:
+        t = by_task[row["task_id"]]
+        assert (
+            row["schedule_version"] == t["schedule_version"]
+            and row["delivery_cycle"] == t["delivery_cycle"]
+        )
+    for edge in tables["task_dependencies"]:
+        t, p = by_task[edge["task_id"]], by_task[edge["depends_on_task_id"]]
+        assert (
+            t["project_id"] == p["project_id"] == edge["project_id"]
+            and p["id"] < t["id"]
+            and p["state"] == 6
+        )
+    assert (
+        len({(e["task_id"], e["depends_on_task_id"]) for e in tables["task_dependencies"]}) == 9000
+    )
+    anchor = datetime.fromisoformat(metadata["manifest"]["anchor_at"])
+    a, b = metadata["developing_task_ids"], metadata["overdue_task_ids"]
+    assert len(a) == len(set(a)) == len(b) == len(set(b)) == 400 and set(a).isdisjoint(b)
+    for ids, state in ((a, 2), (b, 1)):
+        assert all(by_task[i]["project_id"] == 1 and by_task[i]["state"] == state for i in ids)
+    assert all(by_task[i]["planned_end"] > anchor + timedelta(hours=48) for i in a)
+    assert all(by_task[i]["planned_end"] < anchor for i in b)
+    return {
+        "foreign_key_definitions_checked": fk_count,
+        "counts": {name: len(rows) for name, rows in tables.items()},
+        "references_and_groups_passed": True,
+    }
+
+
+def content_hash(tables):
+    digest = hashlib.sha256()
+    for name in sorted(tables):
+        for row in tables[name]:
+            digest.update(
+                json.dumps(
+                    [name, row], default=canonical, sort_keys=True, separators=(",", ":")
+                ).encode()
+            )
+            digest.update(b"\n")
+    return digest.hexdigest()
+
+
+def execute(args, report):
+    from argon2 import PasswordHasher
+    from sqlalchemy import make_url, text
+    from t44.persistence import MySQLSettings, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
+    from t44.persistence.migrations import check_schema
+    from t44.persistence.schema import TABLES
+
+    root = Path(__file__).resolve().parents[2]
+    assert (
+        subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        == args.expected_source
+    )
+    script = Path(__file__).relative_to(root)
+    assert (root / script).read_bytes() == subprocess.check_output(
+        ["git", "show", f"HEAD:{script}"], cwd=root
+    )
+    report["generator_source"] = args.expected_source
+    report["generator_sha256"] = hashlib.sha256((root / script).read_bytes()).hexdigest()
+    report["reused_product_files"] = {}
+    for path in SOURCE_FILES:
+        data = (root / path).read_bytes()
+        assert data == subprocess.check_output(["git", "show", f"{PRODUCT}:{path}"], cwd=root)
+        report["reused_product_files"][path] = hashlib.sha256(data).hexdigest()
+    anchor = datetime.fromisoformat(args.anchor)
+    assert anchor.tzinfo is not None
+    if args.check_only:
+        tables, metadata = build(anchor, dict(m=1, d=2, d2=3, r=4, x=5))
+        report.update(
+            metadata=metadata,
+            validation=validate(tables, metadata["users"], metadata),
+            logical_content_sha256=content_hash(tables),
+            status="offline synthetic construction checked; no DB access",
+        )
+        return
+    assert args.run_authorized_schema and args.app_env == ENVIRONMENT
+    assert stat.S_IMODE(ENVIRONMENT.stat().st_mode) == 0o600 and not ENVIRONMENT.is_symlink()
+    env = json.loads(ENVIRONMENT.read_text())
+    url = make_url(env["DATABASE_URL"])
+    assert env["T44_DATABASE"] == url.database == url.username == DATABASE
+    assert url.drivername == "mysql+pymysql" and url.host == "127.0.0.1" and url.port == 13306
+    settings = MySQLSettings(
+        host=url.host,
+        database=url.database,
+        username=url.username,
+        password=url.password,
+        port=url.port,
+    )
+    del env, url
+    engine = create_mysql_engine(settings)
+    factory = SqlAlchemyUnitOfWorkFactory(engine)
+    try:
+        with engine.connect() as c:
+            assert c.execute(text("SELECT DATABASE()")).scalar_one() == DATABASE
+        report["schema_before"] = check_schema(engine)
+        assert report["schema_before"]["passed"]
+        with factory() as uow:
+            g = uow.gateway
+            report["empty_before"] = {name: g.count(name) for name in TABLES}
+            assert not any(report["empty_before"].values())
+            actors = {}
+            for name in ("m", "d", "d2", "r", "x"):
+                actors[name] = g.insert(
+                    "users",
+                    dict(
+                        username=name,
+                        display_name="[synthetic] " + name,
+                        active=1,
+                        password_hash=PasswordHasher().hash(token_bytes(32)),
+                        created_at=anchor,
+                        updated_at=anchor,
+                    ),
+                )
+            tables, metadata = build(anchor, actors)
+            report.update(
+                metadata=metadata,
+                validation_before_write=validate(tables, actors, metadata),
+                logical_content_sha256=content_hash(tables),
+            )
+            pointers = [
+                {
+                    key: t[key]
+                    for key in (
+                        "id",
+                        "latest_review_id",
+                        "approved_review_id",
+                        "approved_assessment_id",
+                        "approved_assessment_version",
+                    )
+                }
+                for t in tables["tasks"]
+            ]
+            for name, rows in tables.items():
+                insertion = rows
+                if name == "tasks":
+                    insertion = [
+                        {
+                            **r,
+                            **dict.fromkeys(
+                                (
+                                    "latest_review_id",
+                                    "approved_review_id",
+                                    "approved_assessment_id",
+                                    "approved_assessment_version",
+                                )
+                            ),
+                        }
+                        for r in rows
+                    ]
+                for first in range(0, len(insertion), 250):
+                    g.insert_many(name, insertion[first : first + 250])
+            for first in range(0, len(pointers), 250):
+                g.update_many("tasks", pointers[first : first + 250])
+        report["write_committed"] = True
+        with factory() as uow:
+            g = uow.gateway
+            actual = {name: g.rows(name) for name in tables}
+            report["validation_after_readback"] = validate(actual, actors, metadata)
+            report["actual_table_counts"] = {name: g.count(name) for name in TABLES}
+            assert (
+                report["actual_table_counts"]["users"] == 5
+                and report["actual_table_counts"]["auth_sessions"] == 0
+            )
+            for name, rows in tables.items():
+                assert len(actual[name]) == len(rows)
+            report["actual_id_lists"] = {
+                "users": actors,
+                "project": 1,
+                "iteration": 1,
+                "developing": metadata["developing_task_ids"],
+                "overdue": metadata["overdue_task_ids"],
+            }
+        report["schema_after"] = check_schema(engine)
+        assert report["schema_after"]["passed"]
+        report["status"] = "synthetic fixture committed and readback checked; not acceptance"
+    finally:
+        report["checkedout_before_dispose"] = engine.pool.checkedout()
+        engine.dispose()
+        report["disposed"] = True
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--expected-source", required=True)
+    parser.add_argument("--anchor", required=True)
+    parser.add_argument("--check-only", action="store_true")
+    parser.add_argument("--run-authorized-schema", action="store_true")
+    parser.add_argument("--app-env", type=Path)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    assert args.check_only != args.run_authorized_schema
+    report = {
+        "product_source": PRODUCT,
+        "database": DATABASE if args.run_authorized_schema else None,
+        "started_utc": datetime.now(UTC).isoformat(),
+        "synthetic": True,
+        "formal_acceptance": False,
+    }
+    fd = os.open(args.output, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    with os.fdopen(fd, "w") as stream:
+        try:
+            execute(args, report)
+        except BaseException as error:
+            report["status"], report["exception_class"] = (
+                "failed retained; no reset/retry",
+                type(error).__name__,
+            )
+            raise
+        finally:
+            report["ended_utc"] = datetime.now(UTC).isoformat()
+            stream.write(json.dumps(report, default=canonical, indent=2, ensure_ascii=False) + "\n")
+    print(json.dumps({"status": report["status"], "output": str(args.output)}))
+
+
+if __name__ == "__main__":
+    main()

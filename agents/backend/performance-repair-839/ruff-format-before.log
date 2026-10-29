@@ -1,0 +1,859 @@
+unformatted: File would be reformatted
+    --> tmp/backend/contracts/986_http.py:11:6
+     |
+10   | EVIDENCE = [
+     -     {"kind": 2, "locator": "self-test/evidence", "description": "Synthetic module self-test"}
+11   +     {
+12   +         "kind": 2,
+13   +         "locator": "self-test/evidence",
+14   +         "description": "Synthetic module self-test",
+15   +     }
+16   | ]
+--------------------------------------------------------------------------------
+25   |
+     - def request(client, operation, *, token=None, body=None, key=None, expect=None, query=None, **path):
+26   + def request(
+27   +     client,
+28   +     operation,
+29   +     *,
+30   +     token=None,
+31   +     body=None,
+32   +     key=None,
+33   +     expect=None,
+34   +     query=None,
+35   +     **path,
+36   + ):
+37   |     op = OPERATIONS[operation]
+38   |     headers = {"Authorization": f"Bearer {token}"} if token else {}
+     -     if any(p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])):
+39   +     if any(
+40   +         p.get("$ref", "").endswith("/IdempotencyKey") for p in op.get("parameters", [])
+41   +     ):
+42   |         headers["Idempotency-Key"] = key or str(uuid4())
+--------------------------------------------------------------------------------
+51   |         assert response.status_code == expect, response.text
+     -     schema = op["responses"][str(response.status_code)]["content"]["application/json"]["schema"]
+52   +     schema = op["responses"][str(response.status_code)]["content"]["application/json"][
+53   +         "schema"
+54   +     ]
+55   |     assert not violations(schema, response.json()), response.text
+--------------------------------------------------------------------------------
+61   |     return request(
+     -         client, "login", body={"username": name, "password": "test-only-password"}, expect=200
+62   +         client,
+63   +         "login",
+64   +         body={"username": name, "password": "test-only-password"},
+65   +         expect=200,
+66   |     ).json()["data"]["access_token"]
+--------------------------------------------------------------------------------
+70   |     tokens = {
+     -         name: login(client, name) for name in ("manager", "developer", "reviewer", "outsider")
+71   +         name: login(client, name)
+72   +         for name in ("manager", "developer", "reviewer", "outsider")
+73   |     }
+--------------------------------------------------------------------------------
+142  |         "sections": [
+     -             {"section_id": s["section_id"], "content": "Synthetic review", "evidence": EVIDENCE}
+143  +             {
+144  +                 "section_id": s["section_id"],
+145  +                 "content": "Synthetic review",
+146  +                 "evidence": EVIDENCE,
+147  +             }
+148  |             for s in TEMPLATE["sections"]
+--------------------------------------------------------------------------------
+323  |     task = transition(
+     -         client, tokens["developer"], pid, task, 3, basis="Dependency available", evidence=EVIDENCE
+324  +         client,
+325  +         tokens["developer"],
+326  +         pid,
+327  +         task,
+328  +         3,
+329  +         basis="Dependency available",
+330  +         evidence=EVIDENCE,
+331  |     )
+332  |     task = transition(
+     -         client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+333  +         client,
+334  +         tokens["developer"],
+335  +         pid,
+336  +         task,
+337  +         4,
+338  +         artifact_revision="a" * 40,
+339  +         evidence=EVIDENCE,
+340  |     )
+--------------------------------------------------------------------------------
+351  |     task = transition(
+     -         client, tokens["reviewer"], pid, task, 5, review_id=review["id"], review_version=1
+352  +         client,
+353  +         tokens["reviewer"],
+354  +         pid,
+355  +         task,
+356  +         5,
+357  +         review_id=review["id"],
+358  +         review_version=1,
+359  |     )
+--------------------------------------------------------------------------------
+429  |     task = transition(
+     -         client, tokens["manager"], pid, task, 9, new_plan=PLAN, reason="Rework", evidence=EVIDENCE
+430  +         client,
+431  +         tokens["manager"],
+432  +         pid,
+433  +         task,
+434  +         9,
+435  +         new_plan=PLAN,
+436  +         reason="Rework",
+437  +         evidence=EVIDENCE,
+438  |     )
+--------------------------------------------------------------------------------
+459  |         for a in audit
+     -         if any(v == {"field": "version", "value": str(task["version"])} for v in a["after"])
+460  +         if any(
+461  +             v == {"field": "version", "value": str(task["version"])} for v in a["after"]
+462  +         )
+463  |     )
+     -     assert {v["field"]: v["value"] for v in rework["after"]}["delay_contingency"] == PLAN[
+464  +     assert {v["field"]: v["value"] for v in rework["after"]}[
+465  |         "delay_contingency"
+     -     ]
+466  +     ] == PLAN["delay_contingency"]
+467  |
+--------------------------------------------------------------------------------
+494  |     assert replay.json()["data"] == first.json()["data"]
+     -     assert replay.json()["meta"]["original_request_id"] == first.json()["meta"]["request_id"]
+495  +     assert (
+496  +         replay.json()["meta"]["original_request_id"]
+497  +         == first.json()["meta"]["request_id"]
+498  +     )
+499  |     assert replay.json()["meta"]["replayed"] is True
+--------------------------------------------------------------------------------
+545  |         assert uow.gateway.get("tasks", task["id"])["version"] == task["version"] + 1
+     -         assert uow.gateway.get("audit_events", failure.json()["audit_id"])["outcome"] == 2
+546  +         assert (
+547  +             uow.gateway.get("audit_events", failure.json()["audit_id"])["outcome"] == 2
+548  +         )
+549  |
+--------------------------------------------------------------------------------
+591  |         "iteration_id": iid,
+     -         "plan": {**PLAN, "planned_start": stamp, "planned_end": "9999-12-31T23:59:59.999999Z"},
+592  +         "plan": {
+593  +             **PLAN,
+594  +             "planned_start": stamp,
+595  +             "planned_end": "9999-12-31T23:59:59.999999Z",
+596  +         },
+597  |         "dependency_task_ids": [],
+--------------------------------------------------------------------------------
+627  |         task_id=predecessor["id"],
+     -         body={"expected_version": 1, "depends_on_task_id": dependent["id"], "reason": "Cycle"},
+628  +         body={
+629  +             "expected_version": 1,
+630  +             "depends_on_task_id": dependent["id"],
+631  +             "reason": "Cycle",
+632  +         },
+633  |         expect=409,
+--------------------------------------------------------------------------------
+655  | @pytest.mark.parametrize("operation", ["block", "unblock_pending", "start_empty"])
+     - def test_transition_reads_only_dependencies_consumed_by_its_guard(application, operation):
+656  + def test_transition_reads_only_dependencies_consumed_by_its_guard(
+657  +     application, operation
+658  + ):
+659  |     import re
+--------------------------------------------------------------------------------
+667  |     task = create_task(
+     -         client, tokens, pid, iid, [] if operation == "start_empty" else [predecessor["id"]]
+668  +         client,
+669  +         tokens,
+670  +         pid,
+671  +         iid,
+672  +         [] if operation == "start_empty" else [predecessor["id"]],
+673  |     )
+--------------------------------------------------------------------------------
+687  |
+     -     def selected_tables(connection, cursor, statement, parameters, context, executemany):
+688  +     def selected_tables(
+689  +         connection, cursor, statement, parameters, context, executemany
+690  +     ):
+691  |         if statement.lstrip().upper().startswith("SELECT"):
+     -             match = re.search(r"\bFROM\s+(task_dependencies|tasks)\b", statement, re.IGNORECASE)
+692  +             match = re.search(
+693  +                 r"\bFROM\s+(task_dependencies|tasks)\b", statement, re.IGNORECASE
+694  +             )
+695  |             if match:
+--------------------------------------------------------------------------------
+699  |     if operation == "block":
+     -         body.update(action=2, reason="Block despite unresolved dependency", responsibility_stage=1)
+700  +         body.update(
+701  +             action=2,
+702  +             reason="Block despite unresolved dependency",
+703  +             responsibility_stage=1,
+704  +         )
+705  |         body["evidence"] = EVIDENCE
+706  |     elif operation == "unblock_pending":
+     -         body.update(action=3, basis="Return to intake without starting development", evidence=EVIDENCE)
+707  +         body.update(
+708  +             action=3,
+709  +             basis="Return to intake without starting development",
+710  +             evidence=EVIDENCE,
+711  +         )
+712  |     else:
+--------------------------------------------------------------------------------
+731  |     assert changed["version"] == task["version"] + 1
+     -     assert changed["state"] == {"block": 3, "unblock_pending": 1, "start_empty": 2}[operation]
+732  +     assert (
+733  +         changed["state"]
+734  +         == {"block": 3, "unblock_pending": 1, "start_empty": 2}[operation]
+735  +     )
+736  |     with factory() as uow:
+--------------------------------------------------------------------------------
+755  |         with factory() as uow:
+     -             rejected_audit = uow.gateway.get("audit_events", rejected.json()["audit_id"])
+756  +             rejected_audit = uow.gateway.get(
+757  +                 "audit_events", rejected.json()["audit_id"]
+758  +             )
+759  |             assert rejected_audit["outcome"] == 2
+760  |             assert uow.gateway.get("tasks", task["id"])["version"] == changed["version"]
+761  |     # This goal counts actual SELECTs, including the unchanged graph-lock reads.
+762  |     assert counts == Counter(
+     -         tasks=3, task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[operation]
+763  +         tasks=3,
+764  +         task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[
+765  +             operation
+766  +         ],
+767  |     )
+--------------------------------------------------------------------------------
+771  |     client, _ = application
+     -     request(client, "createProject", body={"invalid": "not relevant before auth"}, expect=401)
+772  +     request(
+773  +         client,
+774  +         "createProject",
+775  +         body={"invalid": "not relevant before auth"},
+776  +         expect=401,
+777  +     )
+778  |     tokens, pid, _ = setup_project(client)
+779  |     response = request(
+     -         client, "createTask", token=tokens["outsider"], project_id=pid, body={}, expect=403
+780  +         client,
+781  +         "createTask",
+782  +         token=tokens["outsider"],
+783  +         project_id=pid,
+784  +         body={},
+785  +         expect=403,
+786  |     )
+--------------------------------------------------------------------------------
+822  |     members = request(
+     -         client, "listProjectMembers", token=tokens["manager"], project_id=pid, expect=200
+823  +         client,
+824  +         "listProjectMembers",
+825  +         token=tokens["manager"],
+826  +         project_id=pid,
+827  +         expect=200,
+828  |     ).json()["data"]["items"]
+--------------------------------------------------------------------------------
+908  |     task = transition(
+     -         client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+909  +         client,
+910  +         tokens["developer"],
+911  +         pid,
+912  +         task,
+913  +         4,
+914  +         artifact_revision="a" * 40,
+915  +         evidence=EVIDENCE,
+916  |     )
+--------------------------------------------------------------------------------
+937  |     task = transition(
+     -         client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+938  +         client,
+939  +         tokens["developer"],
+940  +         pid,
+941  +         task,
+942  +         4,
+943  +         artifact_revision="a" * 40,
+944  +         evidence=EVIDENCE,
+945  |     )
+--------------------------------------------------------------------------------
+1014 |     ).json()["data"]["task"]
+     -     assert task["state"] == 5 and task["approved_review_id"] == result["task"]["approved_review_id"]
+1015 +     assert (
+1016 +         task["state"] == 5
+1017 +         and task["approved_review_id"] == result["task"]["approved_review_id"]
+1018 +     )
+1019 |     assert task["approved_assessment_id"] is None
+--------------------------------------------------------------------------------
+1032 |     )
+     -     assert response.json()["code"] in ("ASSESSMENT_BASELINE_MISMATCH", "RELEASE_APPROVAL_REQUIRED")
+1033 +     assert response.json()["code"] in (
+1034 +         "ASSESSMENT_BASELINE_MISMATCH",
+1035 +         "RELEASE_APPROVAL_REQUIRED",
+1036 +     )
+1037 |
+--------------------------------------------------------------------------------
+1125 | @pytest.mark.parametrize("invalid", [0, 4294967296])
+     - def test_invalid_task_selector_retains_parameter_rejection_audit(application, operation, invalid):
+1126 + def test_invalid_task_selector_retains_parameter_rejection_audit(
+1127 +     application, operation, invalid
+1128 + ):
+1129 |     client, factory = application
+--------------------------------------------------------------------------------
+1234 |         with factory() as uow:
+     -             event = uow.gateway.rows("outbox_events", {"task_id": task["id"]}, limit=1)[0]
+1235 +             event = uow.gateway.rows("outbox_events", {"task_id": task["id"]}, limit=1)[
+1236 +                 0
+1237 +             ]
+1238 |             notification = uow.gateway.insert(
+--------------------------------------------------------------------------------
+1262 |     task = transition(
+     -         client, tokens["developer"], pid, task, 4, artifact_revision="a" * 40, evidence=EVIDENCE
+1263 +         client,
+1264 +         tokens["developer"],
+1265 +         pid,
+1266 +         task,
+1267 +         4,
+1268 +         artifact_revision="a" * 40,
+1269 +         evidence=EVIDENCE,
+1270 |     )
+--------------------------------------------------------------------------------
+1331 | )
+     - def test_contract_validation_outer_shape_is_distinct_from_candidate(application, case, code):
+1332 + def test_contract_validation_outer_shape_is_distinct_from_candidate(
+1333 +     application, case, code
+1334 + ):
+1335 |     client, _ = application
+--------------------------------------------------------------------------------
+1410 |     pid = request(
+     -         client, "createProject", token=token, body={"name": "Single manager"}, expect=201
+1411 +         client,
+1412 +         "createProject",
+1413 +         token=token,
+1414 +         body={"name": "Single manager"},
+1415 +         expect=201,
+1416 |     ).json()["data"]["id"]
+--------------------------------------------------------------------------------
+1494 |
+     - def test_display_order_never_changes_persisted_audit_or_domain_state(application, monkeypatch):
+1495 + def test_display_order_never_changes_persisted_audit_or_domain_state(
+1496 +     application, monkeypatch
+1497 + ):
+1498 |     import importlib
+--------------------------------------------------------------------------------
+1512 |             r"\| (\d+) \| ([A-Z_]+) \|",
+     -             (Path(__file__).parents[3] / "specs/database/field-dictionary.md").read_text(),
+1513 +             (
+1514 +                 Path(__file__).parents[3] / "specs/database/field-dictionary.md"
+1515 +             ).read_text(),
+1516 |         )
+1517 |     }
+     -     monkeypatch.setitem(SCHEMAS["ErrorCode"], "enum", list(reversed(SCHEMAS["ErrorCode"]["enum"])))
+1518 +     monkeypatch.setitem(
+1519 +         SCHEMAS["ErrorCode"], "enum", list(reversed(SCHEMAS["ErrorCode"]["enum"]))
+1520 +     )
+1521 |     for enum in (TaskState, ProjectRole, ResponsibilityStage):
+--------------------------------------------------------------------------------
+1527 |     with factory() as uow:
+     -         assert uow.gateway.get("audit_events", rejected.json()["audit_id"])["reason_code"] == 6
+1528 +         assert (
+1529 +             uow.gateway.get("audit_events", rejected.json()["audit_id"])["reason_code"]
+1530 +             == 6
+1531 +         )
+1532 |     audit = request(
+     -         client, "listProjectAuditEvents", token=tokens["manager"], project_id=pid, expect=200
+1533 +         client,
+1534 +         "listProjectAuditEvents",
+1535 +         token=tokens["manager"],
+1536 +         project_id=pid,
+1537 +         expect=200,
+1538 +     )
+1539 +     assert any(
+1540 +         row["reason_code"] == "ACTION_FORBIDDEN"
+1541 +         for row in audit.json()["data"]["items"]
+1542 |     )
+     -     assert any(row["reason_code"] == "ACTION_FORBIDDEN" for row in audit.json()["data"]["items"])
+1543 |     task = transition(client, tokens["developer"], pid, task, 1)
+--------------------------------------------------------------------------------
+1552 |         ('{"name":"a"}', "text/plain", 400, "INVALID_JSON"),
+     -         ('{"name":"' + "a" * 1048576 + '"}', "application/json", 413, "PAYLOAD_TOO_LARGE"),
+1553 +         (
+1554 +             '{"name":"' + "a" * 1048576 + '"}',
+1555 +             "application/json",
+1556 +             413,
+1557 +             "PAYLOAD_TOO_LARGE",
+1558 +         ),
+1559 |     ],
+--------------------------------------------------------------------------------
+1577 |     assert not violations(
+     -         OPERATIONS["createProject"]["responses"][str(status)]["content"]["application/json"][
+     -             "schema"
+     -         ],
+1578 +         OPERATIONS["createProject"]["responses"][str(status)]["content"][
+1579 +             "application/json"
+1580 +         ]["schema"],
+1581 |         result.json(),
+1582 |     )
+1583 |     with factory() as uow:
+     -         assert uow.gateway.get("audit_events", result.json()["audit_id"])["outcome"] == 2
+1584 +         assert (
+1585 +             uow.gateway.get("audit_events", result.json()["audit_id"])["outcome"] == 2
+1586 +         )
+1587 |         assert uow.gateway.count("projects") == 0
+--------------------------------------------------------------------------------
+1604 |     request(
+     -         client, "getTask", token=tokens["manager"], project_id=pid, task_id=4294967295, expect=404
+1605 +         client,
+1606 +         "getTask",
+1607 +         token=tokens["manager"],
+1608 +         project_id=pid,
+1609 +         task_id=4294967295,
+1610 +         expect=404,
+1611 |     )
+--------------------------------------------------------------------------------
+1645 |         task_id=task["id"],
+     -         body={"expected_version": 1, "depends_on_task_id": task["id"], "reason": "Self edge"},
+1646 +         body={
+1647 +             "expected_version": 1,
+1648 +             "depends_on_task_id": task["id"],
+1649 +             "reason": "Self edge",
+1650 +         },
+1651 |         expect=422,
+--------------------------------------------------------------------------------
+1675 |     client.app.state.runtime.limiter.attempts = 1
+     -     request(client, "login", body={"username": "manager", "password": "wrong-password"}, expect=429)
+1676 |     request(
+1677 |         client,
+1678 |         "login",
+1679 +         body={"username": "manager", "password": "wrong-password"},
+1680 +         expect=429,
+1681 +     )
+1682 +     request(
+1683 +         client,
+1684 +         "login",
+1685 |         body={"username": "unknown-login", "password": "wrong-password"},
+--------------------------------------------------------------------------------
+1709 |                 "capacity": [
+     -                     {"user_id": identifier, "available_hours": 40} for identifier in owners
+1710 +                     {"user_id": identifier, "available_hours": 40}
+1711 +                     for identifier in owners
+1712 |                 ],
+--------------------------------------------------------------------------------
+1726 |         project_id=pid,
+     -         body={"username": "outsider", "roles": [2], "reason": "Synthetic replacement developer"},
+1727 +         body={
+1728 +             "username": "outsider",
+1729 +             "roles": [2],
+1730 +             "reason": "Synthetic replacement developer",
+1731 +         },
+1732 |         expect=201,
+--------------------------------------------------------------------------------
+1781 |         assert audit["reason_code"] == 30
+     -     iteration = capacity_change(client, tokens["manager"], pid, iteration, [2, 4]).json()["data"]
+1782 +     iteration = capacity_change(
+1783 +         client, tokens["manager"], pid, iteration, [2, 4]
+1784 +     ).json()["data"]
+1785 |     replay = request(
+--------------------------------------------------------------------------------
+1809 |     assert (changed["owner_id"], changed["version"]) == (4, task["version"] + 1)
+     -     removed = capacity_change(client, tokens["manager"], pid, iteration, [4]).json()["data"]
+1810 +     removed = capacity_change(client, tokens["manager"], pid, iteration, [4]).json()[
+1811 +         "data"
+1812 +     ]
+1813 |     assert removed["plan"]["capacity"] == [{"user_id": 4, "available_hours": 40}]
+--------------------------------------------------------------------------------
+1876 |         member = request(
+     -             client, "listProjectMembers", token=tokens["manager"], project_id=pid, expect=200
+1877 +             client,
+1878 +             "listProjectMembers",
+1879 +             token=tokens["manager"],
+1880 +             project_id=pid,
+1881 +             expect=200,
+1882 |         ).json()["data"]["items"]
+--------------------------------------------------------------------------------
+1903 |         uow.gateway.update(
+     -             "iterations", {"id": iid}, {"capacity": [{"user_id": 4, "available_hours": 40}]}
+1904 +             "iterations",
+1905 +             {"id": iid},
+1906 +             {"capacity": [{"user_id": 4, "available_hours": 40}]},
+1907 |         )
+--------------------------------------------------------------------------------
+1913 | @pytest.mark.parametrize("missing", ["capacity", "inactive", "developer_role"])
+     - def test_capacity_v11_rework_requires_current_effective_owner_and_capacity(application, missing):
+1914 + def test_capacity_v11_rework_requires_current_effective_owner_and_capacity(
+1915 +     application, missing
+1916 + ):
+1917 |     client, factory = application
+--------------------------------------------------------------------------------
+1922 |         uow.gateway.update("tasks", {"id": task["id"]}, {"state": 7})
+     -         member = uow.gateway.rows("project_members", {"project_id": pid, "user_id": 2})[0]
+1923 +         member = uow.gateway.rows("project_members", {"project_id": pid, "user_id": 2})[
+1924 +             0
+1925 +         ]
+1926 |     task["state"] = 7
+1927 |     if missing == "capacity":
+     -         iteration = capacity_change(client, tokens["manager"], pid, iteration, [4]).json()["data"]
+1928 +         iteration = capacity_change(
+1929 +             client, tokens["manager"], pid, iteration, [4]
+1930 +         ).json()["data"]
+1931 |     else:
+--------------------------------------------------------------------------------
+1962 |         ) == (7, 1, 1, 1)
+     -         assert before == {table: uow.gateway.count(table, {"project_id": pid}) for table in before}
+     -         uow.gateway.update("project_members", {"id": member["id"]}, {"active": 1, "roles_mask": 2})
+     -     iteration = capacity_change(client, tokens["manager"], pid, iteration, [2, 4]).json()["data"]
+1963 +         assert before == {
+1964 +             table: uow.gateway.count(table, {"project_id": pid}) for table in before
+1965 +         }
+1966 +         uow.gateway.update(
+1967 +             "project_members", {"id": member["id"]}, {"active": 1, "roles_mask": 2}
+1968 +         )
+1969 +     iteration = capacity_change(
+1970 +         client, tokens["manager"], pid, iteration, [2, 4]
+1971 +     ).json()["data"]
+1972 |     changed = transition(
+--------------------------------------------------------------------------------
+1981 |     )
+     -     assert (changed["state"], changed["delivery_cycle"], changed["schedule_version"]) == (2, 2, 2)
+1982 +     assert (
+1983 +         changed["state"],
+1984 +         changed["delivery_cycle"],
+1985 +         changed["schedule_version"],
+1986 +     ) == (2, 2, 2)
+1987 |
+--------------------------------------------------------------------------------
+2005 |     tokens, pid, iid = setup_project(client)
+     -     predecessor = create_task(client, tokens, pid, iid) if case == "rework_dependency" else None
+     -     task = create_task(client, tokens, pid, iid, [predecessor["id"]] if predecessor else [])
+2006 +     predecessor = (
+2007 +         create_task(client, tokens, pid, iid) if case == "rework_dependency" else None
+2008 +     )
+2009 +     task = create_task(
+2010 +         client, tokens, pid, iid, [predecessor["id"]] if predecessor else []
+2011 +     )
+2012 |     iteration = capacity_team(client, tokens, pid)
+2013 |     with factory() as uow:
+2014 |         if case.startswith("rework"):
+2015 |             uow.gateway.update(
+     -                 "tasks", {"id": task["id"]}, {"state": 1 if case == "rework_state" else 7}
+2016 +                 "tasks",
+2017 +                 {"id": task["id"]},
+2018 +                 {"state": 1 if case == "rework_state" else 7},
+2019 |             )
+2020 |             uow.gateway.update(
+     -                 "iterations", {"id": iid}, {"capacity": [{"user_id": 4, "available_hours": 40}]}
+2021 +                 "iterations",
+2022 +                 {"id": iid},
+2023 +                 {"capacity": [{"user_id": 4, "available_hours": 40}]},
+2024 |             )
+--------------------------------------------------------------------------------
+2035 |     if case == "iteration_version":
+     -         response = capacity_change(client, tokens["manager"], pid, iteration, [4], expect=status)
+2036 +         response = capacity_change(
+2037 +             client, tokens["manager"], pid, iteration, [4], expect=status
+2038 +         )
+2039 |     else:
+--------------------------------------------------------------------------------
+2045 |         body.update(
+     -             {"owner_id": 4} if case.startswith("assignment") else {"action": 9, "new_plan": PLAN}
+2046 +             {"owner_id": 4}
+2047 +             if case.startswith("assignment")
+2048 +             else {"action": 9, "new_plan": PLAN}
+2049 |         )
+2050 |         response = request(
+2051 |             client,
+     -             "changeTaskAssignment" if case.startswith("assignment") else "transitionTask",
+2052 +             "changeTaskAssignment"
+2053 +             if case.startswith("assignment")
+2054 +             else "transitionTask",
+2055 |             token=tokens["developer"] if case.endswith("role") else tokens["manager"],
+--------------------------------------------------------------------------------
+2084 |             table: uow.gateway.count(table)
+     -             for table in ("tasks", "audit_events", "outbox_events", "idempotency_requests")
+2085 +             for table in (
+2086 +                 "tasks",
+2087 +                 "audit_events",
+2088 +                 "outbox_events",
+2089 +                 "idempotency_requests",
+2090 +             )
+2091 |         }
+--------------------------------------------------------------------------------
+2119 |
+     - @pytest.mark.parametrize("identity", ["missing", "revoked", "expired", "nonmember", "service"])
+2120 + @pytest.mark.parametrize(
+2121 +     "identity", ["missing", "revoked", "expired", "nonmember", "service"]
+2122 + )
+2123 | def test_read_uow_auth_still_precedes_invalid_json(application, identity):
+--------------------------------------------------------------------------------
+2138 |                 service = g.insert(
+     -                     "service_accounts", {"name": "readonly-test", "active": 1, "created_at": clock}
+2139 +                     "service_accounts",
+2140 +                     {"name": "readonly-test", "active": 1, "created_at": clock},
+2141 |                 )
+--------------------------------------------------------------------------------
+2150 |             else:
+     -                 session = g.rows("auth_sessions", {"token_hash": token_digest(token)})[0]
+2151 +                 session = g.rows("auth_sessions", {"token_hash": token_digest(token)})[
+2152 +                     0
+2153 +                 ]
+2154 |                 values = (
+--------------------------------------------------------------------------------
+2180 |         audit = uow.gateway.get("audit_events", response.json()["audit_id"])
+     -         assert audit["request_id"] == response.json()["request_id"] and audit["outcome"] == 2
+2181 +         assert (
+2182 +             audit["request_id"] == response.json()["request_id"]
+2183 +             and audit["outcome"] == 2
+2184 +         )
+2185 |
+--------------------------------------------------------------------------------
+2205 |         expiry = clock[0] + timedelta(minutes=1)
+     -         uow.gateway.update("auth_sessions", {"id": session["id"]}, {"expires_at": expiry})
+2206 +         uow.gateway.update(
+2207 +             "auth_sessions", {"id": session["id"]}, {"expires_at": expiry}
+2208 +         )
+2209 |     monkeypatch.setattr(identity, "now", lambda: clock[0])
+--------------------------------------------------------------------------------
+2246 |     )
+     -     assert response.json()["code"] == ("TOKEN_EXPIRED" if valid_body else "PARAMETER_INVALID")
+2247 +     assert response.json()["code"] == (
+2248 +         "TOKEN_EXPIRED" if valid_body else "PARAMETER_INVALID"
+2249 +     )
+2250 |     assert not dispatched
+2251 |     with factory() as uow:
+     -         assert uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2252 +         assert (
+2253 +             uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2254 +         )
+2255 |
+--------------------------------------------------------------------------------
+2322 |     expected = "DEPENDENCY_UNAVAILABLE" if dependency_fault else "CONTRACT_INVALID"
+     -     assert response.json()["code"] == (expected if audit_available else "AUDIT_UNAVAILABLE")
+2323 +     assert response.json()["code"] == (
+2324 +         expected if audit_available else "AUDIT_UNAVAILABLE"
+2325 +     )
+2326 |     assert events == [("enter", 0), ("closed", 0), ("enter", 1), ("closed", 1)]
+2327 |     assert sessions[0] is not sessions[1]
+2328 |     with factory() as uow:
+     -         rows = uow.gateway.rows("audit_events", {"request_id": response.json()["request_id"]})
+2329 +         rows = uow.gateway.rows(
+2330 +             "audit_events", {"request_id": response.json()["request_id"]}
+2331 +         )
+2332 |         assert len(rows) == int(audit_available)
+--------------------------------------------------------------------------------
+2391 |     with factory() as uow:
+     -         session = uow.gateway.rows("auth_sessions", {"token_hash": token_digest(token)})[0]
+2392 +         session = uow.gateway.rows(
+2393 +             "auth_sessions", {"token_hash": token_digest(token)}
+2394 +         )[0]
+2395 |         expiry = clock[0] + timedelta(minutes=1)
+     -         uow.gateway.update("auth_sessions", {"id": session["id"]}, {"expires_at": expiry})
+2396 +         uow.gateway.update(
+2397 +             "auth_sessions", {"id": session["id"]}, {"expires_at": expiry}
+2398 +         )
+2399 |     monkeypatch.setattr(identity, "now", lambda: clock[0])
+--------------------------------------------------------------------------------
+2417 |     )
+     -     assert response.json()["code"] == ("TOKEN_EXPIRED" if valid_body else "PARAMETER_INVALID")
+2418 +     assert response.json()["code"] == (
+2419 +         "TOKEN_EXPIRED" if valid_body else "PARAMETER_INVALID"
+2420 +     )
+2421 |     with factory() as uow:
+2422 |         assert uow.gateway.count("idempotency_requests", {"idempotency_key": key}) == 0
+     -         assert uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2423 +         assert (
+2424 +             uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2425 +         )
+2426 |
+--------------------------------------------------------------------------------
+2445 |         if dependency_fault:
+     -             raise PersistenceUnavailable("Injected synchronous input dependency failure")
+2446 +             raise PersistenceUnavailable(
+2447 +                 "Injected synchronous input dependency failure"
+2448 +             )
+2449 |         raise Rejected("PARAMETER_INVALID")
+--------------------------------------------------------------------------------
+2466 |     expected = "DEPENDENCY_UNAVAILABLE" if dependency_fault else "PARAMETER_INVALID"
+     -     assert result.json()["code"] == (expected if audit_available else "AUDIT_UNAVAILABLE")
+2467 +     assert result.json()["code"] == (
+2468 +         expected if audit_available else "AUDIT_UNAVAILABLE"
+2469 +     )
+2470 |     assert len(records) == 2 and all(r["closed"] for r in records)
+--------------------------------------------------------------------------------
+2480 |
+     - @pytest.mark.parametrize("identity", ["missing", "revoked", "expired", "nonmember", "service"])
+2481 + @pytest.mark.parametrize(
+2482 +     "identity", ["missing", "revoked", "expired", "nonmember", "service"]
+2483 + )
+2484 | def test_preflight_write_auth_precedes_invalid_json(application, identity):
+--------------------------------------------------------------------------------
+2512 |             else:
+     -                 session = g.rows("auth_sessions", {"token_hash": token_digest(token)})[0]
+2513 +                 session = g.rows("auth_sessions", {"token_hash": token_digest(token)})[
+2514 +                     0
+2515 +                 ]
+2516 |                 values = (
+--------------------------------------------------------------------------------
+2543 |     with factory() as uow:
+     -         assert uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2544 +         assert (
+2545 +             uow.gateway.get("audit_events", response.json()["audit_id"])["outcome"] == 2
+2546 +         )
+2547 |         assert uow.gateway.count("idempotency_requests", {"idempotency_key": key}) == 0
+--------------------------------------------------------------------------------
+2553 |         iteration = request(
+     -             client, "listIterations", token=tokens["manager"], project_id=pid, expect=200
+2554 +             client,
+2555 +             "listIterations",
+2556 +             token=tokens["manager"],
+2557 +             project_id=pid,
+2558 +             expect=200,
+2559 |         ).json()["data"]["items"][0]
+--------------------------------------------------------------------------------
+2571 |     body.update(reason=reason, evidence=EVIDENCE)
+     -     args = {"token": tokens["manager"], "project_id": pid, "body": body, "key": key, **path}
+2572 +     args = {
+2573 +         "token": tokens["manager"],
+2574 +         "project_id": pid,
+2575 +         "body": body,
+2576 +         "key": key,
+2577 +         **path,
+2578 +     }
+2579 |     return operation, args, request(client, operation, **args, expect=200)
+--------------------------------------------------------------------------------
+2593 |         g = uow.gateway
+     -         audit = g.rows("audit_events", {"request_id": response.headers["x-request-id"]})[0]
+2594 +         audit = g.rows(
+2595 +             "audit_events", {"request_id": response.headers["x-request-id"]}
+2596 +         )[0]
+2597 |         schedule = g.rows("schedule_changes", {"project_id": pid})[0]
+2598 |         assert [d for d in audit["after_values"] if d["field"] == "reason"] == [
+2599 |             {"field": "reason", "value": reason}
+2600 |         ]
+     -         assert schedule["reason"] == reason and schedule["changed_at"] == audit["created_at"]
+2601 +         assert (
+2602 +             schedule["reason"] == reason
+2603 +             and schedule["changed_at"] == audit["created_at"]
+2604 +         )
+2605 |         before = {
+2606 |             table: g.rows(table, {"project_id": pid})
+     -             for table in ("audit_events", "schedule_changes", "outbox_events", "decisions")
+2607 +             for table in (
+2608 +                 "audit_events",
+2609 +                 "schedule_changes",
+2610 +                 "outbox_events",
+2611 +                 "decisions",
+2612 +             )
+2613 |         }
+2614 |     replay = request(client, operation, **args, expect=200)
+     -     assert replay.json()["meta"]["replayed"] and replay.json()["data"] == response.json()["data"]
+2615 +     assert (
+2616 +         replay.json()["meta"]["replayed"]
+2617 +         and replay.json()["data"] == response.json()["data"]
+2618 +     )
+2619 |     result = request(
+--------------------------------------------------------------------------------
+2629 |     with factory() as uow:
+     -         assert {table: uow.gateway.rows(table, {"project_id": pid}) for table in before} == before
+2630 +         assert {
+2631 +             table: uow.gateway.rows(table, {"project_id": pid}) for table in before
+2632 +         } == before
+2633 |
+--------------------------------------------------------------------------------
+2656 |     legacy.pop("id")
+     -     legacy["after_values"] = [d for d in legacy["after_values"] if d["field"] != "reason"]
+2657 +     legacy["after_values"] = [
+2658 +         d for d in legacy["after_values"] if d["field"] != "reason"
+2659 +     ]
+2660 |     return legacy, schedule
+--------------------------------------------------------------------------------
+2725 |         elif name == "full50":
+     -             after.extend({"field": f"legacy_{n}", "value": "keep"} for n in range(50 - len(after)))
+2726 +             after.extend(
+2727 +                 {"field": f"legacy_{n}", "value": "keep"}
+2728 +                 for n in range(50 - len(after))
+2729 +             )
+2730 |         elif name == "unrelated_duplicate":
+2731 |             after.extend(
+     -                 [{"field": "legacy_note", "value": "one"}, {"field": "legacy_note", "value": "two"}]
+2732 +                 [
+2733 +                     {"field": "legacy_note", "value": "one"},
+2734 +                     {"field": "legacy_note", "value": "two"},
+2735 +                 ]
+2736 |             )
+--------------------------------------------------------------------------------
+2828 |     assert all(
+     -         a["after"][-1] == {"field": "reason", "value": schedule["reason"]} for a in first["items"]
+2829 +         a["after"][-1] == {"field": "reason", "value": schedule["reason"]}
+2830 +         for a in first["items"]
+2831 |     )
+--------------------------------------------------------------------------------
+2845 |     assert first_page["total"] == first["total"] and calls == []
+     -     assert not ({a["id"] for a in first_page["items"]} & {a["id"] for a in first["items"]})
+2846 +     assert not (
+2847 +         {a["id"] for a in first_page["items"]} & {a["id"] for a in first["items"]}
+2848 +     )
+2849 |     with factory() as uow:
+--------------------------------------------------------------------------------
+2853 |
+     - def test_schedule_reason_100_row_current_page_uses_one_exact_batch(application, monkeypatch):
+2854 + def test_schedule_reason_100_row_current_page_uses_one_exact_batch(
+2855 +     application, monkeypatch
+2856 + ):
+2857 |     client, factory = application
+--------------------------------------------------------------------------------
+2862 |
+     - def test_schedule_reason_failed_write_rolls_back_reason_and_plan(application, monkeypatch):
+2863 + def test_schedule_reason_failed_write_rolls_back_reason_and_plan(
+2864 +     application, monkeypatch
+2865 + ):
+2866 |     from t44.persistence.errors import PersistenceUnavailable
+--------------------------------------------------------------------------------
+2898 |         assert uow.gateway.get("tasks", task["id"]) == original_task
+     -         assert uow.gateway.rows("outbox_events", {"task_id": task["id"]}) == original_outbox
+2899 +         assert (
+2900 +             uow.gateway.rows("outbox_events", {"task_id": task["id"]})
+2901 +             == original_outbox
+2902 +         )
+2903 |         assert not uow.gateway.rows("schedule_changes", {"task_id": task["id"]})
+--------------------------------------------------------------------------------
+2907 |
+     - def test_schedule_reason_authorization_and_empty_page_do_not_load_history(application, monkeypatch):
+2908 + def test_schedule_reason_authorization_and_empty_page_do_not_load_history(
+2909 +     application, monkeypatch
+2910 + ):
+2911 |     from t44.persistence.rows import RowsGateway
+--------------------------------------------------------------------------------
+2931 |     rejected = request(
+     -         client, "listProjectAuditEvents", token=tokens["outsider"], project_id=pid, expect=403
+2932 +         client,
+2933 +         "listProjectAuditEvents",
+2934 +         token=tokens["outsider"],
+2935 +         project_id=pid,
+2936 +         expect=403,
+2937 |     )
+--------------------------------------------------------------------------------
+3006 |     def old_format(_g, _project_id, _pairs):
+     -         return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+3007 +         return [
+3008 +             {
+3009 +                 **deepcopy(schedule),
+3010 +                 "before_plan": {**schedule["before_plan"], field: value},
+3011 +             }
+3012 +         ]
+3013 |
+--------------------------------------------------------------------------------
+3027 | @pytest.mark.parametrize(
+     -     "case", ["boolean_kind", "float_kind", "exact", "reordered_keys", "changed_text", "array_order"]
+3028 +     "case",
+3029 +     [
+3030 +         "boolean_kind",
+3031 +         "float_kind",
+3032 +         "exact",
+3033 +         "reordered_keys",
+3034 +         "changed_text",
+3035 +         "array_order",
+3036 +     ],
+3037 | )
+--------------------------------------------------------------------------------
+3054 |     if case == "array_order":
+     -         evidence.append({"kind": 2, "locator": "synthetic/additional", "description": "Second"})
+3055 +         evidence.append(
+3056 +             {"kind": 2, "locator": "synthetic/additional", "description": "Second"}
+3057 +         )
+3058 |     candidate = deepcopy(evidence)
+     |
+
+1 file would be reformatted, 1 file already formatted

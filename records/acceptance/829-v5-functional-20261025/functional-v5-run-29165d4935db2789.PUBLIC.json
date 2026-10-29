@@ -1,0 +1,186 @@
+{
+  "visibility": "PUBLIC",
+  "name": "T44-829-functional-v5-run-29165d4935db2789",
+  "reported_utc": "2026-10-25T08:13:49.049511+00:00",
+  "operator": "AI",
+  "overall_business_acceptance": "NOT_PROVEN",
+  "execution_classification": "TOOL_TRANSPORT_EVIDENCE_BLOCKED",
+  "not_startup_denial": true,
+  "not_a_proven_sut_business_rejection": true,
+  "root_cause": "NOT_PROVEN; observed local response-body descriptor failure; no diagnosis SUT requests made",
+  "frozen_tool_sha256": "50408b5315df42c0d1240132c597a2a016130aa0c3d35ab5a1b1c633f79a6324",
+  "source_sha_from_verified_native_grant": "c8cea7e82805de5283ce67501769fa9a4efc1047",
+  "native_runtime_identity": "native-sha256:8053aae7215e9f54a5ba1aff2dc75cd10ccb48cfde6d73916bcc8bca70a5d4a7",
+  "native_build_manifest_sha256": "c6eafe3c1ac398e226fb977ab48919421f9f25aa3470c57ffcaaa94842ce45ec",
+  "grant_canonical_sha256": "d6d3d24a8409795c0277d566f3f4e7d348eb6e0a94b64e13487a3313e959cdd8",
+  "grant_file_sha256": "b0c1730fc9b57c9572deb5e3e3d13c869d78a7d207a13ba74aeffcbff2518dfb",
+  "phase": "functional",
+  "base_url": "https://localhost:18096/api/v1",
+  "pinned_ip": "127.0.0.1",
+  "grant_expiry_utc": "2026-10-25T08:15:00.000000Z",
+  "supervisor_receipt": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/runtime/29165d4935db2789.receipt.PUBLIC.json",
+  "supervisor_receipt_sha256": "f61022a4d0e2977594f173513ae97d10b4c34b996f1b4d8894648e798515e06c",
+  "supervisor_status": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/runtime/29165d4935db2789.status.PUBLIC.json",
+  "supervisor_status_sha256": "f8f7eac13f3208ff76e9964783afcb8ea6b4d61b4b074d78043bd35e13a429ff",
+  "supervisor_result": "PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT",
+  "supervisor_returncode": 0,
+  "first_request_utc": "2026-10-25T08:09:26.373285Z",
+  "last_request_utc": "2026-10-25T08:09:26.545312Z",
+  "scope_handoff_requests": 0,
+  "planned": {
+    "functional_cases": 14,
+    "fault_cases_not_admitted": 3,
+    "formal_performance_groups_not_admitted": 1
+  },
+  "offline": {
+    "v5_controller_selfchecks_passed": 36,
+    "not_sut_execution": true
+  },
+  "actual_execution": {
+    "case_attempts": 14,
+    "sut_requests": 12,
+    "observed_http_status_counts": {
+      "201": 12
+    },
+    "complete_http_responses": 0,
+    "complete_business_cases": 0,
+    "complete_postcondition_checks": 0,
+    "complete_formal_performance_groups": 0,
+    "raw_case_status_counts": {
+      "PASS": 0,
+      "FAIL": 12,
+      "NOT_PROVEN": 2
+    },
+    "automatic_reruns": 0,
+    "fault_actions": 0,
+    "performance_requests": 0,
+    "deletions_or_cleanup": 0
+  },
+  "raw_case_results": [
+    {
+      "case_id": "F01",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F02",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F03",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F04",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F05",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F06",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F07",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F08",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F09",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F10",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F11",
+      "raw_recorded_status": "NOT_PROVEN",
+      "actual_sut_requests": 0,
+      "complete_postcondition_checks": 0,
+      "interpretation": "NOT_PROVEN_PREREQUISITE"
+    },
+    {
+      "case_id": "F12",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    },
+    {
+      "case_id": "F13",
+      "raw_recorded_status": "NOT_PROVEN",
+      "actual_sut_requests": 0,
+      "complete_postcondition_checks": 0,
+      "interpretation": "NOT_PROVEN_PREREQUISITE"
+    },
+    {
+      "case_id": "F14",
+      "raw_recorded_status": "FAIL",
+      "actual_sut_requests": 1,
+      "complete_postcondition_checks": 0,
+      "interpretation": "TOOL_TRANSPORT_EVIDENCE_BLOCKED"
+    }
+  ],
+  "observed_blocker": {
+    "stage": "after HTTP 201 headers, during response-body read",
+    "exception": "OSError [Errno 9] Bad file descriptor",
+    "affected_requests": 12,
+    "body_completeness": "incomplete for all 12 requests; no full-body claim",
+    "no_oracle_rewrite": true,
+    "no_secret_or_raw_http_released": true
+  },
+  "interpretation": [
+    "Raw 12 FAIL and 2 NOT_PROVEN remain unchanged; transport/evidence failure does not prove a SUT business-rule failure.",
+    "No case has complete observable postconditions; functional acceptance is NOT_PROVEN.",
+    "Twelve write requests may have taken effect despite incomplete reception. Do not infer rollback or safe deletion targets from this report.",
+    "No scope handoff was emitted, so lack of an active provider is not the observed blocker.",
+    "The current single-project active scheduler limitation was not exercised; no expectation was changed to accommodate it.",
+    "No fault, performance, extra diagnostic HTTP, retry, replay or cleanup was performed. Return code zero means runner completion only."
+  ],
+  "private_encrypted_evidence_commitment": {
+    "ciphertext_sha256": "f16388f87abe732c5518626b55ad9696717756eb5862f0c1b29511e01766bb05",
+    "ciphertext_bytes": 18632,
+    "integrity_manifest_sha256": "371a90a1b14c6cee9090c6d475c0acf4af5ca3f7abd4f22623b55337e49c7685",
+    "authenticated_complete_journal": true,
+    "records": 77,
+    "frames": 79,
+    "raw_request_count": 12,
+    "raw_private_summary_sha256": "888599dc0668856c2045b6228f7389cd6021667ab7f8b00559783131e6d937c4",
+    "keys_and_raw_records_remain_private": true
+  }
+}

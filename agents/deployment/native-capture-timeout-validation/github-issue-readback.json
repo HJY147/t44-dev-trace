@@ -1,0 +1,22 @@
+{
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6375565697",
+  "body": "已按公开P2 NATIVE-CAPTURE-TIMEOUT-01窄修，候选 `b23897879142de3bd77190c67d4947eccf1c8263`，先行设计7f4845e；原审核COMMENT5634837225/精确5ef原红保留，待根复审。\n\n首次communicate超时永久记录timed_out=true/success=false，清理后actual child rc0也失败；普通非零、超时后非零及清理未确认/null均保留实际码/稳定错误。相对5ef产品仅capture改变，runtime.py和旧守卫未变。同一原断言红→绿、仅五项CaptureGuards/Ruff/diff通过，所有Popen/身份/等待/信号全mock；没有真实服务/cycle、私密输入读取或其他套件重跑。\n\napplication.py SHA256 `5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98`，新证据 `agents/deployment/native-capture-timeout-validation/README.md`。原0a6 run2实际成功仍仅是旧实现历史，新修复没有完整cycle验证。PR34正文已按当前修复重写，保持draft；不把自检写作审查放行。\n\nAgent-Role: deployment\nPrompt-Ref: ROLE-deployment-NATIVE-CAPTURE-TIMEOUT-v1\nRefs #7\n",
+  "user": {
+    "login": "HJY147",
+    "name": "HJY147",
+    "email": null,
+    "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+    "id": 204539444
+  },
+  "id": 6375565697,
+  "pull_request_review_id": null,
+  "in_reply_to_id": null,
+  "created_at": null,
+  "updated_at": null,
+  "review": null,
+  "side": null,
+  "line": null,
+  "start_line": null,
+  "path": null,
+  "body_html": "<p dir=\"auto\">已按公开P2 NATIVE-CAPTURE-TIMEOUT-01窄修，候选 <code class=\"notranslate\">b23897879142de3bd77190c67d4947eccf1c8263</code>，先行设计7f4845e；原审核COMMENT5634837225/精确5ef原红保留，待根复审。</p>\n<p dir=\"auto\">首次communicate超时永久记录timed_out=true/success=false，清理后actual child rc0也失败；普通非零、超时后非零及清理未确认/null均保留实际码/稳定错误。相对5ef产品仅capture改变，runtime.py和旧守卫未变。同一原断言红→绿、仅五项CaptureGuards/Ruff/diff通过，所有Popen/身份/等待/信号全mock；没有真实服务/cycle、私密输入读取或其他套件重跑。</p>\n<p dir=\"auto\">application.py SHA256 <code class=\"notranslate\">5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98</code>，新证据 <code class=\"notranslate\">agents/deployment/native-capture-timeout-validation/README.md</code>。原0a6 run2实际成功仍仅是旧实现历史，新修复没有完整cycle验证。PR34正文已按当前修复重写，保持draft；不把自检写作审查放行。</p>\n<p dir=\"auto\">Agent-Role: deployment<br>\nPrompt-Ref: ROLE-deployment-NATIVE-CAPTURE-TIMEOUT-v1<br>\nRefs <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5992348594\" data-permission-text=\"Title is private\" data-url=\"https://github.com/HJY147/t44-dev-trace/issues/7\" data-hovercard-type=\"issue\" data-hovercard-url=\"/HJY147/t44-dev-trace/issues/7/hovercard\" href=\"https://github.com/HJY147/t44-dev-trace/issues/7\">#7</a></p>"
+}

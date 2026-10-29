@@ -1,0 +1,11 @@
+{
+  "product_source_sha": "4c20f32b71635016815420472b9d4bb4fa850df0",
+  "files_sha256": {
+    "compose.yaml": "4061c7b10b50f3be9f5299f9be31690631f70fd60258f672dfcc1221c5e55732",
+    "backend/t44/messaging/__main__.py": "356ef3c0eeb5be3750df311fa2dd33cb420e3bf8218eedf9dd86e03ebe32493c",
+    "backend/t44/messaging/broker.py": "2266217bf59f3ef570b960d2dab4ee563b9806daac125c508b432396a894d472",
+    "backend/t44/messaging/worker.py": "266b39185b946484599584f0e49a1dfb6b14cde2566cc7efb73f5386cc86648b"
+  },
+  "configuration": "compose supplies AMQP_URL only;worker constructs BrokerSettings(AMQP_URL) without exchange/queue overrides",
+  "wire": "wrapper fields from real claimed outbox rows,not fabricated;publisher properties and routing verified in this source"
+}

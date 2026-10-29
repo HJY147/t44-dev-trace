@@ -1,0 +1,7 @@
+{
+  "initial_guard_exit_code": 1,
+  "stage": "local prepare verify_tls openssl x509 -checkip",
+  "local_openssl": "LibreSSL 3.3.6",
+  "reason": "local tool does not implement target OpenSSL3 -checkip; production command kept strict",
+  "cloud_execution": false
+}

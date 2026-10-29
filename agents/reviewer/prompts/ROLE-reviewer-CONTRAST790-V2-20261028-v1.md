@@ -1,0 +1,7 @@
+# ROLE-reviewer-CONTRAST790-V2-20261028-v1
+
+总协调实际派工原文：
+
+> 请复核 backend_resume 新commit6f5698f2，重点R790-STOP-01/02是否关闭，33proof证据/声明界限，deadline/inflight/abort，新的manifest640b3d386a756547d940b638ef6ccfc9bc49adaa2c071a2794aca8464b2edd84。工作树backend-resume-20261028。独立只评这两个和v2新增风险，不跑测试负载/不碰云/不读独立测试私有。优先尽快给是否可执行6role开发诊断的结论，再提交记录。
+
+本次落实：只gitshow精确新commit与旧工具diff；先报旧runbook覆盖风险，再以一次无网络最小闭环核两个原缺口、在途结果和后续禁止派发；复算manifest7文件、33唯一XML与原红gzip。先交root限定6role可执行结论，随后交报告与过程资料。提示词改进重点是把代码闭合与整本文档可执行性分开，保留在途真实部分状态及33proof的本地/无网络边界。

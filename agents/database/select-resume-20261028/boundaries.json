@@ -1,0 +1,417 @@
+{
+  "base": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+  "source_commit": "82e92dfc420690980a6e16c88f209d08ab709e49",
+  "rows_before_sha256": "417b32a7d9ac29ecd7ce9c301d8fd530ecc0086a43d0926053c733e9964bd76b",
+  "rows_after_sha256": "e76f196812d6154c7108c892374a630a988a47648d3a96e8719ca4bc989ecd55",
+  "exact_one_line_change": true,
+  "production_changed_paths": [
+    "backend/t44/persistence/rows.py"
+  ],
+  "explicit_columns_branch_unchanged": true,
+  "protected_git_objects": {
+    "specs": {
+      "git_object": "ad23ec9c5870066f6f463e2626894b8897a6b614",
+      "same_as_a12": true
+    },
+    "backend/t44/resources": {
+      "git_object": "f78d12af41cc98f08f56b70c4a40ecf9111ade06",
+      "same_as_a12": true
+    },
+    "backend/requirements.lock": {
+      "git_object": "16e47966eb2d75207e3596c8dadf8e5ab6eeb096",
+      "same_as_a12": true
+    },
+    "backend/t44/persistence/migrations.py": {
+      "git_object": "6c1c3e843da41f42317a59ddfe181c26f48d6c6e",
+      "same_as_a12": true
+    },
+    "backend/t44/persistence/schema.py": {
+      "git_object": "fdd1f25524da81efe426e0d70ff38ce01b2d4779",
+      "same_as_a12": true
+    },
+    "backend/t44/persistence/uow.py": {
+      "git_object": "6d66b7f24436ffd0646f1b60ef0efb7a3e25c408",
+      "same_as_a12": true
+    },
+    "tmp/backend/persistence": {
+      "git_object": "a8c77b0f8d1a12b1297cc9efc9ada23aec1bf4c3",
+      "same_as_a12": true
+    },
+    "tmp/812_database_size": {
+      "git_object": "c710177f06d85902a69908bdd8a25f75ddb301bf",
+      "same_as_a12": true
+    },
+    "agents/database/catalog-audit-20261028": {
+      "git_object": "a8653e1806fe53666a97384b1257df5deddb65ac",
+      "same_as_a12": true
+    },
+    "scripts/metrics/source_count.py": {
+      "git_object": "524c156b76a5f40e2dd6c2dc1bf25ae6aaed813d",
+      "same_as_a12": true
+    },
+    ".github": {
+      "git_object": "82905cb62a6e13eb889b763f84a80f98188e4b44",
+      "same_as_a12": true
+    }
+  },
+  "tables": {
+    "users": {
+      "columns": 7,
+      "column_names": [
+        "id",
+        "username",
+        "display_name",
+        "password_hash",
+        "active",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "service_accounts": {
+      "columns": 4,
+      "column_names": [
+        "id",
+        "name",
+        "active",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "auth_sessions": {
+      "columns": 10,
+      "column_names": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "projects": {
+      "columns": 7,
+      "column_names": [
+        "id",
+        "name",
+        "description",
+        "version",
+        "created_by",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "project_members": {
+      "columns": 8,
+      "column_names": [
+        "id",
+        "project_id",
+        "user_id",
+        "roles_mask",
+        "active",
+        "version",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "iterations": {
+      "columns": 12,
+      "column_names": [
+        "id",
+        "project_id",
+        "name",
+        "planned_start",
+        "planned_end",
+        "capacity",
+        "buffer_quarters",
+        "delay_contingency",
+        "version",
+        "plan_version",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "tasks": {
+      "columns": 27,
+      "column_names": [
+        "id",
+        "project_id",
+        "iteration_id",
+        "title",
+        "description",
+        "owner_id",
+        "state",
+        "version",
+        "schedule_version",
+        "delivery_cycle",
+        "review_cycle",
+        "planned_start",
+        "planned_end",
+        "estimated_quarters",
+        "buffer_quarters",
+        "delay_contingency",
+        "blocked_from_state",
+        "block_reason",
+        "responsibility_stage",
+        "artifact_revision",
+        "latest_review_id",
+        "approved_review_id",
+        "approved_assessment_id",
+        "approved_assessment_version",
+        "escalation_count",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "task_dependencies": {
+      "columns": 6,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "depends_on_task_id",
+        "created_by",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "reviews": {
+      "columns": 14,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "version",
+        "delivery_cycle",
+        "review_cycle",
+        "template_version",
+        "template_hash",
+        "artifact_revision",
+        "sections",
+        "checklist",
+        "verdict",
+        "reviewer_id",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "release_assessments": {
+      "columns": 16,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "version",
+        "schedule_version",
+        "delivery_cycle",
+        "status",
+        "risks",
+        "rollback_plan_version",
+        "rollback_plan",
+        "created_by",
+        "reviewed_by",
+        "reviewed_at",
+        "review_reason",
+        "review_evidence",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "decisions": {
+      "columns": 13,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "type",
+        "decided_by",
+        "delivery_cycle",
+        "reason",
+        "impact",
+        "target_version",
+        "assessment_id",
+        "rollback_plan_version",
+        "evidence",
+        "decided_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "schedule_changes": {
+      "columns": 12,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "iteration_id",
+        "from_version",
+        "to_version",
+        "before_plan",
+        "after_plan",
+        "reason",
+        "evidence",
+        "changed_by",
+        "changed_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "audit_events": {
+      "columns": 17,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "attempted_project_id",
+        "attempted_task_id",
+        "actor_kind",
+        "actor_id",
+        "request_id",
+        "operation_id",
+        "outcome",
+        "reason_code",
+        "expected_version",
+        "observed_version",
+        "before_values",
+        "after_values",
+        "evidence",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "idempotency_requests": {
+      "columns": 14,
+      "column_names": [
+        "id",
+        "actor_kind",
+        "actor_id",
+        "operation_id",
+        "idempotency_key",
+        "request_hash",
+        "status",
+        "owner_token",
+        "lease_until",
+        "response_status",
+        "response_body",
+        "response_request_id",
+        "created_at",
+        "completed_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "outbox_events": {
+      "columns": 17,
+      "column_names": [
+        "id",
+        "event_type",
+        "schema_version",
+        "project_id",
+        "task_id",
+        "payload",
+        "recipients",
+        "status",
+        "attempts",
+        "next_attempt_at",
+        "lease_token",
+        "lease_until",
+        "confirmed_at",
+        "fallback_at",
+        "last_error_code",
+        "created_at",
+        "updated_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "escalation_events": {
+      "columns": 12,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "schedule_version",
+        "level",
+        "rule_version",
+        "rule_snapshot",
+        "rule_hash",
+        "scan_run_id",
+        "planned_end",
+        "observed_at",
+        "event_id"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "notifications": {
+      "columns": 15,
+      "column_names": [
+        "id",
+        "project_id",
+        "task_id",
+        "event_id",
+        "recipient_id",
+        "version",
+        "level",
+        "title",
+        "message",
+        "fallback",
+        "read_at",
+        "handled_at",
+        "handling_note",
+        "handling_evidence",
+        "created_at"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    },
+    "scan_runs": {
+      "columns": 15,
+      "column_names": [
+        "id",
+        "run_key",
+        "rule_version",
+        "rule_snapshot",
+        "rule_hash",
+        "cutoff_at",
+        "status",
+        "last_task_id",
+        "scanned_count",
+        "created_count",
+        "duplicate_count",
+        "started_at",
+        "heartbeat_at",
+        "finished_at",
+        "error_code"
+      ],
+      "omit_from_statements": false,
+      "class": "Table"
+    }
+  },
+  "application_count_before": 5933,
+  "application_count_after": 5933,
+  "net_effective_lines": 0,
+  "application_per_file_counts_same": true,
+  "baseline_count_product_matches_a12": true,
+  "temporary_test_source_sha256": "9728799fa60f503f9e6062014f0710644df2fb8872b542d46d78165c1b88cf00"
+}

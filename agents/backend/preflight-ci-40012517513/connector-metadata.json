@@ -1,0 +1,492 @@
+{
+  "jobs": {
+    "jobs": [
+      {
+        "id": 120616208986,
+        "name": "static",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40012517513,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare raw evidence directory",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install hash-locked checking tools",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Validate Compose with placeholders and Nginx syntax in official container",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Check configuration, Python static rules and implementation presence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 120616209233,
+        "name": "frontend",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40012517513,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run mkdir -p reports/ci/frontend",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Require real frontend manifest and lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Install frozen frontend dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Typecheck",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Production build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Real Vue/TypeScript tests and full source coverage",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Require actual passed tests and all TS/Vue production sources at 80 percent",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Post Run pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      },
+      {
+        "id": 120616209253,
+        "name": "coverage",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40012517513,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run mkdir -p reports/ci/coverage",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python -m pip install --require-hashes -r scripts/ci/requirements.lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Require real application and test files",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run python -m pip install --require-hashes -r backend/requirements.lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Apply reviewed schema to explicitly selected disposable test database",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run full suite and cover every production t44 Python module",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Preserve real dependency logs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          }
+        ]
+      },
+      {
+        "id": 120616209285,
+        "name": "contracts",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40012517513,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run mkdir -p reports/ci/contracts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python -m pip install --require-hashes -r scripts/ci/requirements.lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Require real application and test files",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Install real application dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Apply reviewed schema to explicitly selected disposable test database",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run contract, integration and fault tests against real services",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Preserve real dependency logs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 12527845134,
+        "name": "coverage-7584cd31f0abfd6727d552b5fef31a9303247d58",
+        "size_in_bytes": 328886,
+        "url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527845134",
+        "archive_download_url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527845134/zip",
+        "expired": false,
+        "created_at": "2026-10-23T19:40:28Z",
+        "expires_at": "2026-11-06T19:40:27Z",
+        "updated_at": "2026-10-23T19:40:28Z",
+        "digest": "sha256:bc940dce3fd5cf3df63d84ffc76e69b8d1d2a69d199ed1b1b46ad26d4165907a",
+        "workflow_run": {
+          "id": 40012517513,
+          "repository_id": 1430551107,
+          "head_repository_id": 1430551107,
+          "head_branch": "codex/backend-runtime-plan",
+          "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58"
+        }
+      },
+      {
+        "id": 12527600232,
+        "name": "static-7584cd31f0abfd6727d552b5fef31a9303247d58",
+        "size_in_bytes": 3416,
+        "url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527600232",
+        "archive_download_url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527600232/zip",
+        "expired": false,
+        "created_at": "2026-10-23T19:35:21Z",
+        "expires_at": "2026-11-06T19:35:20Z",
+        "updated_at": "2026-10-23T19:35:21Z",
+        "digest": "sha256:7b1a0a57dbe27cd770d76a5e1340e71594599d973069f6d60ff5d914f04ba34b",
+        "workflow_run": {
+          "id": 40012517513,
+          "repository_id": 1430551107,
+          "head_repository_id": 1430551107,
+          "head_branch": "codex/backend-runtime-plan",
+          "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58"
+        }
+      },
+      {
+        "id": 12527495432,
+        "name": "frontend-7584cd31f0abfd6727d552b5fef31a9303247d58",
+        "size_in_bytes": 81490,
+        "url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527495432",
+        "archive_download_url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527495432/zip",
+        "expired": false,
+        "created_at": "2026-10-23T19:35:27Z",
+        "expires_at": "2026-11-06T19:35:26Z",
+        "updated_at": "2026-10-23T19:35:27Z",
+        "digest": "sha256:db8c0b66eed389682ac4e068aadbf5b9a2cb7adf4ea0879856bd154ad035e714",
+        "workflow_run": {
+          "id": 40012517513,
+          "repository_id": 1430551107,
+          "head_repository_id": 1430551107,
+          "head_branch": "codex/backend-runtime-plan",
+          "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58"
+        }
+      },
+      {
+        "id": 12527072333,
+        "name": "contracts-7584cd31f0abfd6727d552b5fef31a9303247d58",
+        "size_in_bytes": 18683,
+        "url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527072333",
+        "archive_download_url": "https://api.github.com/repos/HJY147/t44-dev-trace/actions/artifacts/12527072333/zip",
+        "expired": false,
+        "created_at": "2026-10-23T19:37:48Z",
+        "expires_at": "2026-11-06T19:37:47Z",
+        "updated_at": "2026-10-23T19:37:48Z",
+        "digest": "sha256:b5b042e7ed34fab8c7be063d6353720dcad2dd62356af1d4006fe49b5cf9c6e4",
+        "workflow_run": {
+          "id": 40012517513,
+          "repository_id": 1430551107,
+          "head_repository_id": 1430551107,
+          "head_branch": "codex/backend-runtime-plan",
+          "head_sha": "7584cd31f0abfd6727d552b5fef31a9303247d58"
+        }
+      }
+    ]
+  }
+}

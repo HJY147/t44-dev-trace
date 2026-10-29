@@ -1,0 +1,63 @@
+{
+  "source": "ddad371f4f8414e1a1d729d0b2335d0f2ad383bb",
+  "scanned_git_roots": [
+    "backend",
+    "tmp/backend",
+    "tmp/frontend",
+    "tmp/ci",
+    "tmp/deployment",
+    "scripts"
+  ],
+  "python_files": 98,
+  "removed_implicit_symbols": {
+    "t44.services.workflow": [
+      "AcceptReview",
+      "Action",
+      "ApproveDelivery",
+      "AuthorizeRework",
+      "Cycle",
+      "DECISION_TYPE",
+      "DOMAIN_TO_STATE",
+      "DomainViolation",
+      "Effect",
+      "ROLE_TO_DOMAIN",
+      "RecordBlock",
+      "RecordRollback",
+      "ReleaseGate",
+      "ResolveBlock",
+      "ReturnForChanges",
+      "ReviewGate",
+      "ReviewOutcome",
+      "RollbackGate",
+      "STAGE_TO_DOMAIN",
+      "STATE_TO_DOMAIN",
+      "StartDevelopment",
+      "State",
+      "SubmitForReview",
+      "TaskPosition",
+      "TransitionContext",
+      "Violation"
+    ],
+    "t44.persistence.schema": [
+      "CheckConstraint",
+      "Column",
+      "DateTime",
+      "ForeignKeyConstraint",
+      "Index",
+      "Integer",
+      "JSON",
+      "LargeBinary",
+      "MetaData",
+      "String",
+      "Table",
+      "UniqueConstraint",
+      "text"
+    ]
+  },
+  "explicit_consumer_findings": [],
+  "limitations": [
+    "No claim about uncommitted/private tests, external consumers, relative aliases or dynamic getattr/monkeypatch",
+    "A zero finding count is not a module-export or runtime binding compatibility proof",
+    "Namespace changes still need owner review and functional regression before production"
+  ]
+}

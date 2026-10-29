@@ -1,0 +1,91 @@
+{
+  "name": "T44-829-independent-acceptance-20261025-v2",
+  "visibility": "PUBLIC",
+  "status": "EXECUTABLE_TOOL_FROZEN_SUT_NOT_ADMITTED",
+  "revision": 2,
+  "supersedes_freeze_sha256": "f88650fec9de26b12ab61859d36d13b22386bb1ffed21ab928c3dfa7f55d9c9b",
+  "frozen_utc": "2026-10-25T06:35:04.526161Z",
+  "tool_freeze_sha256": "05e3bad64c7761e78db71d36cb43c15cc0e3c06e81aa8c1463a86a1991cd2f3e",
+  "operator": "AI",
+  "authority_files": [
+    {
+      "file": "T44_外包研发留痕_学生版任务书(1).docx",
+      "bytes": 44077,
+      "sha256": "d772bde097e77082f433c5bbb1bca5ab154fbb0316a5555c211cb532488b0177"
+    },
+    {
+      "file": "specs/requirements.md",
+      "bytes": 9643,
+      "sha256": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a"
+    },
+    {
+      "file": "specs/business-rules.md",
+      "bytes": 6632,
+      "sha256": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83"
+    },
+    {
+      "file": "specs/contracts/openapi.json",
+      "bytes": 865396,
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478"
+    }
+  ],
+  "public_review_entry": "README.PUBLIC.md",
+  "public_boundary": "control.py",
+  "public_file_inventory": {
+    "README.PUBLIC.md": {
+      "sha256": "ac444a09db4348115472d5edac920bf782a3566eba0a7d10240378271a932a70",
+      "bytes": 9704
+    },
+    "admission.template.PUBLIC.json": {
+      "sha256": "c2bbce0f1858933e6eec41e89c84a22ef0c0eea7ee67973fe8cfa3dae86548d7",
+      "bytes": 624
+    },
+    "control.py": {
+      "sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
+      "bytes": 10614
+    },
+    "environment.template.PUBLIC.json": {
+      "sha256": "f87169de978f43c365f5dea49d5aff7fe9a410bebf2eec8213af63d0e4b56518",
+      "bytes": 776
+    },
+    "routes.PUBLIC.json": {
+      "sha256": "e7cfa136736a05700e4d9f9048bda6634673736e74a48131be03d65adb895050",
+      "bytes": 2879
+    },
+    "suite.bundle.PUBLIC.aes": {
+      "sha256": "152140478abd7fccd9ea33302ad9b1a324bba6648fc602ad72430600cd52a25a",
+      "bytes": 126032
+    },
+    "suite.bundle.PUBLIC.aes.integrity.json": {
+      "sha256": "a79783d1a5c7e61bdfe5e79ed52d212e38d151a10b0b51e22536d65f62e94868",
+      "bytes": 292
+    }
+  },
+  "opaque_bundle": "suite.bundle.PUBLIC.aes",
+  "bundle_encryption": "AES-256-CBC/PBKDF2(200000)+HMAC-SHA256; independent private key; verify MAC before decrypt",
+  "dependencies": {
+    "python": "3.12 standard library",
+    "openssl": "/usr/bin/openssl LibreSSL 3.3.6; PBKDF2/encrypted evidence roundtrip verified"
+  },
+  "counts": {
+    "planned_functional_cases": 14,
+    "planned_fault_cases": 3,
+    "planned_formal_performance_groups": 1,
+    "offline_selftests_passed": 12,
+    "authority_operations_catalogued": 38,
+    "authority_error_branches_catalogued": 551,
+    "actual_sut_requests": 0,
+    "complete_sut_postcondition_checks": 0,
+    "complete_formal_performance_groups": 0
+  },
+  "approval_required_next": "Root technical review of PUBLIC control boundary, then explicit exact SUT/build/resource/time/cost/phase/fault admission and neutral environment delivery. No healthcheck or SUT request until then.",
+  "isolation": "Shared-filesystem workflow isolation; no OS isolation claim. Root/development read only explicitly PUBLIC files.",
+  "known_proof_limits": [
+    "All unexecuted error branches are NOT_PROVEN; exhaustive catalogue is not execution coverage.",
+    "No source/DDL/coverage/merge/human evidence available through four-authority HTTP blackbox.",
+    "Steady escalation workload measures existing-event deduplication, not new-event throughput.",
+    "Sequential capacity tests do not prove every concurrent capacity-lifecycle race.",
+    "Passing implemented subset cannot establish complete AC01-AC09 acceptance."
+  ],
+  "private_freeze_commit": "7c765d030fab9358463e2b08be3ece8c85d14e42"
+}

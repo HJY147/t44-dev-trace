@@ -1,0 +1,110 @@
+name: acceptance-environment
+
+on:
+  push:
+    branches: [codex/deployment-acceptance-environment, 'codex/independent-harness-*']
+    paths: [deployment/acceptance/request.json]
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [harness, environment-check]
+        default: harness
+        required: true
+      product_source_sha:
+        description: Exact 40-character product commit
+        required: true
+        type: string
+      harness_ref:
+        description: Exact separately frozen harness commit; required in harness mode
+        type: string
+      harness_path:
+        description: Frozen Python entry under tmp/independent/
+        type: string
+      recipient_certificate_path:
+        description: Frozen tester RSA recipient PEM certificate under tmp/independent/
+        type: string
+      harness_timeout_seconds:
+        description: 60..1800 seconds
+        default: '900'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: acceptance-environment-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  acceptance-environment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Initialize public metadata directory
+        run: mkdir -p "$RUNNER_TEMP/acceptance-public"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: control
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /deployment/
+            /tmp/deployment/953_acceptance_environment.py
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Validate exact source and frozen harness request
+        id: request
+        env:
+          ACCEPTANCE_INPUT_JSON: ${{ toJSON(inputs) }}
+          ACCEPTANCE_EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$ACCEPTANCE_EVENT" = push ]; then
+            python control/deployment/acceptance/run.py request --file control/deployment/acceptance/request.json --normalized "$RUNNER_TEMP/acceptance-request.json"
+          else
+            python control/deployment/acceptance/run.py request --normalized "$RUNNER_TEMP/acceptance-request.json"
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ steps.request.outputs.product_source_sha }}
+          path: product
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /backend/
+            /frontend/
+            /deployment/
+            /specs/contracts/
+            /specs/database/
+            /compose.yaml
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        if: steps.request.outputs.has_harness == 'true'
+        with:
+          ref: ${{ steps.request.outputs.harness_ref }}
+          path: harness
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /tmp/independent/
+      - name: Install hash-locked Python client and harness dependencies
+        run: |
+          python -m venv "$RUNNER_TEMP/acceptance-python"
+          "$RUNNER_TEMP/acceptance-python/bin/python" -m pip install --require-hashes -r product/backend/requirements.lock
+      - name: Run neutral deployment guard checks
+        run: |
+          "$RUNNER_TEMP/acceptance-python/bin/python" -m pytest -c product/backend/pyproject.toml control/tmp/deployment/953_acceptance_environment.py -q
+      - name: Provision environment and optionally execute the frozen harness
+        run: |
+          "$RUNNER_TEMP/acceptance-python/bin/python" control/deployment/acceptance/run.py run --request "$RUNNER_TEMP/acceptance-request.json" --product product --harness harness --runtime "$RUNNER_TEMP/t44-acceptance" --public "$RUNNER_TEMP/acceptance-public"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: acceptance-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/acceptance-public/execution.json
+            ${{ runner.temp }}/acceptance-public/control-events.jsonl
+            ${{ runner.temp }}/acceptance-public/encrypted-archive.json
+            ${{ runner.temp }}/acceptance-public/tester-output.cms
+            ${{ runner.temp }}/acceptance-public/environment-diagnostics.log.gz
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,104 @@
+{
+  "source": "bcb0e1bbb1440df958a04e87afea0e5b015d2f17",
+  "design_first": "ad6a9b3f63b1bd810df1e71cfef39cb2cc134baf",
+  "before_product": "0549ea89ce218ecb945cd4346671f20d46fad215",
+  "original_review_target": "42243eb23aedf0edda7541ad83fd87ec3d17b616",
+  "finding": "HISTORY-EVIDENCE-01/P2; reviewer AI identified and backend AI fixed, not student edit",
+  "original_review_status": "NOT PASSED remains; old504CI success is separate and does not disprove counterexample",
+  "scope": "SQLite TestClient/realRowsGateway/actual synthetic JSON columns; no gateway/matcher mocks,MySQL/server/load/private independent material",
+  "comparison": "both frozenEvidenceRefs valid then JSON sortkeys/ensure_asciiFalse/allow_nanFalse exact; bool distinct fromnumber,strings unmodified,arrays ordered,objectkeyorder ignored,1 vs1.0 historical spelling conservative; normalinputnormalization unchanged",
+  "runs": {
+    "before.xml": {
+      "tests": 6,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "after.xml": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "file_sha256": {
+    "backend/t44/services/history.py": "36b2fb1aed476bff3d852e113da4584e1906b53f1f5e3d476b730f9f8a1d98ae",
+    "tmp/backend/contracts/986_http.py": "46accc66b0c6217a028fb186e1b551a29bf10e8b29cdd44403334d96459bd836"
+  },
+  "overlap": "after7 includes6new evidence cases and1existing legacy HTTP regression already in old18; do not sum old18/504 with this stage",
+  "reviewer_explicitly_shared_evidence": {
+    "evidence-kind-bool-http.json": "ea233630a8dbd63535161212b77763076fccde4e0268f6f93c76934b55072149",
+    "evidence-kind-bool-http.log": "d6afc79a54ac5cb5b0b54eb6773c816f2b565852fe715082a16d960d8809d82a"
+  },
+  "freeze14": {
+    "AGENTS.md": true,
+    "specs/requirements.md": true,
+    "specs/business-rules.md": true,
+    "specs/backend-design.md": true,
+    "specs/contracts/openapi.json": true,
+    "specs/contracts/README.md": true,
+    "specs/database/field-dictionary.md": true,
+    "specs/database/schema.sql": true,
+    "specs/database/persistence-contract.md": true,
+    "docs/collaboration/implementation-layout.md": true,
+    "docs/reviews/review-protocol.md": true,
+    "backend/t44/contracts/openapi.json": true,
+    "backend/t44/persistence/schema_v1.sql": true,
+    "specs/changes/capacity-lifecycle-v1.1.md": true
+  },
+  "unmodified_runtime_database": {
+    "backend/t44/services/runtime.py": true,
+    "backend/t44/persistence/rows.py": true,
+    "backend/t44/services/projects.py": true,
+    "backend/t44/services/application.py": true
+  },
+  "original986_prefix_unchanged": true,
+  "static": {
+    "ruff": "All checks passed!",
+    "format": "2 files already formatted",
+    "bandit_issues": 0
+  },
+  "private_input_loaded": "none;SQLite synthetic fixture only",
+  "actual_bearer_pattern_matches": [],
+  "affected_source_count": {
+    "scope": "one changed production file only;not global sourcecount",
+    "tool_sha256": "bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83",
+    "counts": {
+      "0549ea8": {
+        "blank": 8,
+        "comment": 3,
+        "code": 92,
+        "nFiles": 1
+      },
+      "bcb0e1b": {
+        "blank": 9,
+        "comment": 3,
+        "code": 96,
+        "nFiles": 1
+      }
+    },
+    "net_effective_loc": 4,
+    "range_status": "global source-size still unmet; no new global count/claim"
+  },
+  "fullCI_UI_independent": "pending root new-source combined CI/review; no repeats of unchanged18/504/browser; not acceptance/performance pass",
+  "artifact_sha256": {
+    "before.xml": "1f156cc62bc729ca4a623e7f113ee0b03cdb80b856e6ce63a656df1881efd65a",
+    "after.xml": "aa77d0dab65e93e04f59bfca46247700f0cf5cb3d4360e3a6f70ab4e35d4dbde",
+    "format-final.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
+    "issue28-readback.json": "d0e81b476e58459db42415bc7b64a0053579a58db0732bd3c23018d4eab2b517",
+    "issue3-readback.json": "90fb3460e10a176c8cec82a49730fa99f1b7e997150b6642c5bfd65bb36edb2e",
+    "github-comment.md": "da7761a268e442cc6f09a14c843111dd960ca936094768d9b3ca313f9bccd229",
+    "bandit-final.json": "aa1c113f7f9fc969b3535e88d70b63b3d895cb80d3a8e91799ac1909877f47ff",
+    "ruff-test.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "before.log": "304f1717f309d606ed8ad6c47b4ea6a7ecd8df19b2575350b8aa49b14e2079bc",
+    "after.log": "6138a91580f8f45eb9759df7bb6e0fff738339294799f911ed0e9817226467ff"
+  },
+  "github_comments": {
+    "issue28": "https://github.com/HJY147/t44-dev-trace/issues/28#issuecomment-6374617443",
+    "issue3": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6374617903"
+  },
+  "github_readback_matches": true,
+  "comment_timing_erratum": "Corrected initial wording that grouped prompt with later execution artifacts: actual prompt/design were already committed in ad6; only execution evidence follows source. Exact comment IDs patched and read back.",
+  "source_and_tests_still_bcb0": true
+}

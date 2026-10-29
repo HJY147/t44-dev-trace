@@ -1,0 +1,697 @@
+{
+  "status": "one bounded developer ABBA completed; not production admission/formal acceptance",
+  "operator": "database AI, not student human work",
+  "tool_source_commit": "f75a8a419d04531a30788a734e56d2dda64baed0",
+  "tool_sha256": "570a6b1186bec6ca2af611159006305a60e235c00957d48f035cfe30eded77ae",
+  "application_commit": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "window": {
+    "started_at": "2026-10-23T23:02:14.376665+00:00",
+    "ended_at": "2026-10-23T23:02:53.234248+00:00",
+    "wall_seconds": 38.84159508300945,
+    "exit_code": 0,
+    "port_free_before": true,
+    "port_free_after": true,
+    "profile_connections_after": 0,
+    "owned_servers_after": [
+      {
+        "pid": 31926,
+        "exists": false,
+        "recorded_exit_code": 0
+      },
+      {
+        "pid": 31946,
+        "exists": false,
+        "recorded_exit_code": 0
+      },
+      {
+        "pid": 31965,
+        "exists": false,
+        "recorded_exit_code": 0
+      },
+      {
+        "pid": 31975,
+        "exists": false,
+        "recorded_exit_code": 0
+      }
+    ]
+  },
+  "preflight": [
+    {
+      "segment": "A1",
+      "other_profile_connections": 0,
+      "port_free": true,
+      "visibility": "current app-visible PROCESSLIST; not cross-account proof"
+    },
+    {
+      "segment": "B1",
+      "other_profile_connections": 0,
+      "port_free": true,
+      "visibility": "current app-visible PROCESSLIST; not cross-account proof"
+    },
+    {
+      "segment": "B2",
+      "other_profile_connections": 0,
+      "port_free": true,
+      "visibility": "current app-visible PROCESSLIST; not cross-account proof"
+    },
+    {
+      "segment": "A2",
+      "other_profile_connections": 0,
+      "port_free": true,
+      "visibility": "current app-visible PROCESSLIST; not cross-account proof"
+    }
+  ],
+  "total_requests_including_warmup": 10882,
+  "steady_requests": 8684,
+  "warmup_requests": 2198,
+  "request_failures": 0,
+  "groups": [
+    {
+      "segment": "A1",
+      "pool_size": 5,
+      "max_overflow": 10,
+      "warmup": {
+        "started_at": "2026-10-23T23:02:15.828983+00:00",
+        "ended_at": "2026-10-23T23:02:18.241355+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 1,
+        "sample_phase": "warmup",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 2412369875,
+        "sample_active_wall_ns": 1028505750,
+        "process_cpu_ns": 9973213000,
+        "requests": 551,
+        "failures": 0,
+        "pid": 31931,
+        "category_counts": {
+          "1": 184,
+          "2": 182,
+          "3": 185
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 551,
+          "mean_ms": 59.30153152268603,
+          "p95_ms": 88.0105
+        },
+        "success_throughput_per_second": 535.7286529511381,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 551,
+          "mean_ms": 16.223464544464612,
+          "p95_ms": 44.96175
+        },
+        "acquire_thread_cpu": {
+          "count": 551,
+          "mean_ms": 0.31451065698729586,
+          "p95_ms": 1.365459
+        }
+      },
+      "steady": {
+        "started_at": "2026-10-23T23:02:18.713954+00:00",
+        "ended_at": "2026-10-23T23:02:23.879935+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 4,
+        "sample_phase": "steady",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 5165978750,
+        "sample_active_wall_ns": 4046287667,
+        "process_cpu_ns": 8321918000,
+        "requests": 2079,
+        "failures": 0,
+        "pid": 31940,
+        "category_counts": {
+          "1": 695,
+          "2": 693,
+          "3": 691
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 2079,
+          "mean_ms": 62.068549959595956,
+          "p95_ms": 91.591041
+        },
+        "success_throughput_per_second": 513.8042994213047,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 2079,
+          "mean_ms": 15.761146632996633,
+          "p95_ms": 40.596417
+        },
+        "acquire_thread_cpu": {
+          "count": 2079,
+          "mean_ms": 0.32322649302549306,
+          "p95_ms": 1.372291
+        }
+      },
+      "lifecycle": {
+        "phase_counts": {
+          "startup": {},
+          "warmup": {
+            "connect": 112,
+            "ping": 439,
+            "close": 107
+          },
+          "steady": {
+            "ping": 1643,
+            "connect": 436,
+            "close": 436
+          },
+          "cleanup": {
+            "close": 5
+          },
+          "unclassified": {}
+        },
+        "failed_calls": 0,
+        "ping_returned_false": 0,
+        "peak_open": 15,
+        "open_after_dispose": 0,
+        "before_dispose": {
+          "checked_out": 0,
+          "checked_in": 5,
+          "overflow": 0,
+          "retained_capacity": 5,
+          "overflow_capacity": 10
+        }
+      },
+      "sql_counts_by_category": {
+        "1": {
+          "4": 879
+        },
+        "2": {
+          "5": 875
+        },
+        "3": {
+          "5": 876
+        }
+      },
+      "request_association_and_original_auth_sql_counts": true,
+      "thread_tokens": 40,
+      "python": "3.12.10",
+      "machine": "arm64",
+      "cpu_count": 8,
+      "packages": {
+        "fastapi": "0.161.1",
+        "starlette": "1.9.0",
+        "sqlalchemy": "2.1.6",
+        "uvicorn": "0.54.0"
+      }
+    },
+    {
+      "segment": "B1",
+      "pool_size": 15,
+      "max_overflow": 0,
+      "warmup": {
+        "started_at": "2026-10-23T23:02:25.136447+00:00",
+        "ended_at": "2026-10-23T23:02:27.595894+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 1,
+        "sample_phase": "warmup",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 2459447958,
+        "sample_active_wall_ns": 1043355875,
+        "process_cpu_ns": 10531388000,
+        "requests": 554,
+        "failures": 0,
+        "pid": 31950,
+        "category_counts": {
+          "1": 184,
+          "2": 185,
+          "3": 185
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 554,
+          "mean_ms": 59.280293113718415,
+          "p95_ms": 80.45925
+        },
+        "success_throughput_per_second": 530.9789433063767,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 554,
+          "mean_ms": 6.847302048736462,
+          "p95_ms": 31.138208
+        },
+        "acquire_thread_cpu": {
+          "count": 554,
+          "mean_ms": 0.10852542418772562,
+          "p95_ms": 0.093583
+        }
+      },
+      "steady": {
+        "started_at": "2026-10-23T23:02:28.203483+00:00",
+        "ended_at": "2026-10-23T23:02:33.503171+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 4,
+        "sample_phase": "steady",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 5299680166,
+        "sample_active_wall_ns": 4025672542,
+        "process_cpu_ns": 9458545000,
+        "requests": 2255,
+        "failures": 0,
+        "pid": 31955,
+        "category_counts": {
+          "1": 752,
+          "2": 752,
+          "3": 751
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 2255,
+          "mean_ms": 56.99875638758315,
+          "p95_ms": 74.471792
+        },
+        "success_throughput_per_second": 560.1548502699851,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 2255,
+          "mean_ms": 2.561286031042129,
+          "p95_ms": 10.949917
+        },
+        "acquire_thread_cpu": {
+          "count": 2255,
+          "mean_ms": 0.057076670953436805,
+          "p95_ms": 0.075833
+        }
+      },
+      "lifecycle": {
+        "phase_counts": {
+          "startup": {},
+          "warmup": {
+            "connect": 15,
+            "ping": 539
+          },
+          "steady": {
+            "ping": 2255
+          },
+          "cleanup": {
+            "close": 15
+          },
+          "unclassified": {}
+        },
+        "failed_calls": 0,
+        "ping_returned_false": 0,
+        "peak_open": 15,
+        "open_after_dispose": 0,
+        "before_dispose": {
+          "checked_out": 0,
+          "checked_in": 15,
+          "overflow": 0,
+          "retained_capacity": 15,
+          "overflow_capacity": 0
+        }
+      },
+      "sql_counts_by_category": {
+        "1": {
+          "4": 936
+        },
+        "2": {
+          "5": 937
+        },
+        "3": {
+          "5": 936
+        }
+      },
+      "request_association_and_original_auth_sql_counts": true,
+      "thread_tokens": 40,
+      "python": "3.12.10",
+      "machine": "arm64",
+      "cpu_count": 8,
+      "packages": {
+        "fastapi": "0.161.1",
+        "starlette": "1.9.0",
+        "sqlalchemy": "2.1.6",
+        "uvicorn": "0.54.0"
+      }
+    },
+    {
+      "segment": "B2",
+      "pool_size": 15,
+      "max_overflow": 0,
+      "warmup": {
+        "started_at": "2026-10-23T23:02:34.813932+00:00",
+        "ended_at": "2026-10-23T23:02:37.248750+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 1,
+        "sample_phase": "warmup",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 2434821125,
+        "sample_active_wall_ns": 1047068209,
+        "process_cpu_ns": 10164070000,
+        "requests": 556,
+        "failures": 0,
+        "pid": 31969,
+        "category_counts": {
+          "1": 186,
+          "2": 185,
+          "3": 185
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 556,
+          "mean_ms": 59.72045807553957,
+          "p95_ms": 81.110041
+        },
+        "success_throughput_per_second": 531.0064761979609,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 556,
+          "mean_ms": 5.650709678057554,
+          "p95_ms": 31.36275
+        },
+        "acquire_thread_cpu": {
+          "count": 556,
+          "mean_ms": 0.09870914208633093,
+          "p95_ms": 0.093458
+        }
+      },
+      "steady": {
+        "started_at": "2026-10-23T23:02:37.750273+00:00",
+        "ended_at": "2026-10-23T23:02:43.005077+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 4,
+        "sample_phase": "steady",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 5254796750,
+        "sample_active_wall_ns": 4039050500,
+        "process_cpu_ns": 9304586000,
+        "requests": 2237,
+        "failures": 0,
+        "pid": 31972,
+        "category_counts": {
+          "1": 745,
+          "2": 748,
+          "3": 744
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 2237,
+          "mean_ms": 57.58898355699598,
+          "p95_ms": 72.90825
+        },
+        "success_throughput_per_second": 553.8430381100707,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 2237,
+          "mean_ms": 2.9163201063924897,
+          "p95_ms": 13.900333
+        },
+        "acquire_thread_cpu": {
+          "count": 2237,
+          "mean_ms": 0.058474363880196695,
+          "p95_ms": 0.079291
+        }
+      },
+      "lifecycle": {
+        "phase_counts": {
+          "startup": {},
+          "warmup": {
+            "connect": 15,
+            "ping": 541
+          },
+          "steady": {
+            "ping": 2237
+          },
+          "cleanup": {
+            "close": 15
+          },
+          "unclassified": {}
+        },
+        "failed_calls": 0,
+        "ping_returned_false": 0,
+        "peak_open": 15,
+        "open_after_dispose": 0,
+        "before_dispose": {
+          "checked_out": 0,
+          "checked_in": 15,
+          "overflow": 0,
+          "retained_capacity": 15,
+          "overflow_capacity": 0
+        }
+      },
+      "sql_counts_by_category": {
+        "1": {
+          "4": 931
+        },
+        "2": {
+          "5": 933
+        },
+        "3": {
+          "5": 929
+        }
+      },
+      "request_association_and_original_auth_sql_counts": true,
+      "thread_tokens": 40,
+      "python": "3.12.10",
+      "machine": "arm64",
+      "cpu_count": 8,
+      "packages": {
+        "fastapi": "0.161.1",
+        "starlette": "1.9.0",
+        "sqlalchemy": "2.1.6",
+        "uvicorn": "0.54.0"
+      }
+    },
+    {
+      "segment": "A2",
+      "pool_size": 5,
+      "max_overflow": 10,
+      "warmup": {
+        "started_at": "2026-10-23T23:02:44.360632+00:00",
+        "ended_at": "2026-10-23T23:02:46.860885+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 1,
+        "sample_phase": "warmup",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 2500255584,
+        "sample_active_wall_ns": 1032219833,
+        "process_cpu_ns": 10966269000,
+        "requests": 537,
+        "failures": 0,
+        "pid": 31982,
+        "category_counts": {
+          "1": 178,
+          "2": 181,
+          "3": 178
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 537,
+          "mean_ms": 60.28911691247673,
+          "p95_ms": 91.408375
+        },
+        "success_throughput_per_second": 520.2380179416684,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 537,
+          "mean_ms": 15.833688329608938,
+          "p95_ms": 42.552917
+        },
+        "acquire_thread_cpu": {
+          "count": 537,
+          "mean_ms": 0.3160538454376164,
+          "p95_ms": 1.372208
+        }
+      },
+      "steady": {
+        "started_at": "2026-10-23T23:02:47.365159+00:00",
+        "ended_at": "2026-10-23T23:02:52.679395+00:00",
+        "source_sha": "f75a8a419d04531a30788a734e56d2dda64baed0",
+        "mode": "client",
+        "concurrency": 32,
+        "requested_seconds": 4,
+        "sample_phase": "steady",
+        "fixture_sha256": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+        "actual_wall_ns": 5314234167,
+        "sample_active_wall_ns": 4045452084,
+        "process_cpu_ns": 9583038000,
+        "requests": 2113,
+        "failures": 0,
+        "pid": 31994,
+        "category_counts": {
+          "1": 707,
+          "2": 705,
+          "3": 701
+        },
+        "url": "http://127.0.0.1:18083/api/v1",
+        "client_trust_env": false,
+        "scope": "short developer diagnostic,not formal400VU/600seconds",
+        "missing_workers": [],
+        "e2e": {
+          "count": 2113,
+          "mean_ms": 60.98168965972551,
+          "p95_ms": 92.600542
+        },
+        "success_throughput_per_second": 522.3149245437954,
+        "error_codes": {},
+        "exceptions": {},
+        "request_id_matches_exact": true,
+        "acquire_inclusive_wall": {
+          "count": 2113,
+          "mean_ms": 15.357135828206342,
+          "p95_ms": 39.4
+        },
+        "acquire_thread_cpu": {
+          "count": 2113,
+          "mean_ms": 0.3102761916706105,
+          "p95_ms": 1.3475
+        }
+      },
+      "lifecycle": {
+        "phase_counts": {
+          "startup": {},
+          "warmup": {
+            "connect": 109,
+            "ping": 428,
+            "close": 104
+          },
+          "steady": {
+            "ping": 1686,
+            "connect": 427,
+            "close": 427
+          },
+          "cleanup": {
+            "close": 5
+          },
+          "unclassified": {}
+        },
+        "failed_calls": 0,
+        "ping_returned_false": 0,
+        "peak_open": 15,
+        "open_after_dispose": 0,
+        "before_dispose": {
+          "checked_out": 0,
+          "checked_in": 5,
+          "overflow": 0,
+          "retained_capacity": 5,
+          "overflow_capacity": 10
+        }
+      },
+      "sql_counts_by_category": {
+        "1": {
+          "4": 885
+        },
+        "2": {
+          "5": 886
+        },
+        "3": {
+          "5": 879
+        }
+      },
+      "request_association_and_original_auth_sql_counts": true,
+      "thread_tokens": 40,
+      "python": "3.12.10",
+      "machine": "arm64",
+      "cpu_count": 8,
+      "packages": {
+        "fastapi": "0.161.1",
+        "starlette": "1.9.0",
+        "sqlalchemy": "2.1.6",
+        "uvicorn": "0.54.0"
+      }
+    }
+  ],
+  "actual_source_and_resource_hashes_match": {
+    "backend/t44/__init__.py": true,
+    "backend/t44/api.py": true,
+    "backend/t44/contracts/__init__.py": true,
+    "backend/t44/services/application.py": true,
+    "backend/t44/services/common.py": true,
+    "backend/t44/services/runtime.py": true,
+    "backend/t44/services/tasks.py": true,
+    "backend/t44/services/projects.py": true,
+    "backend/t44/services/reviews.py": true,
+    "backend/t44/services/workflow.py": true,
+    "backend/t44/persistence/rows.py": true,
+    "backend/t44/persistence/engine.py": true,
+    "backend/t44/persistence/uow.py": true,
+    "backend/t44/contracts/openapi.json": true,
+    "backend/t44/resources/review-template.json": true,
+    "backend/t44/resources/escalation-rules.json": true,
+    "backend/t44/persistence/schema_v1.sql": true,
+    "sqlalchemy.pool.impl": true,
+    "sqlalchemy.pool.base": true
+  },
+  "frozen14_match": true,
+  "session_refreshed": false,
+  "fixture_unchanged_hash": "1fd476ea96811e188e9483c35fc0e678b26b3333cfa89cbc8041db3180e0785c",
+  "known_secret_scan": {
+    "files": 43,
+    "known_private_values_or_authorization_markers_matched": 0,
+    "private_values_not_printed": true
+  },
+  "limitations": [
+    "Once-fixed ABBA,4s steady each,32concurrency,local client+server; no statistical significance/formal400VU600s/270ms conclusion",
+    "All values are observed with timings and lifecycle hooks; hook/thread/client overhead not separately calibrated",
+    "Acquisition includes queue/ping/connect/initialization/checkout/scheduler; inclusive wall and threadCPU cannot be summed or called pure wait",
+    "B retains10 more idle connections than A in this one-worker run; per-connection server memory unmeasured and future multi-worker budget needs separate design",
+    "Only current app-visible profile PROCESSLIST checked, not cross-account global absence; no expanded privilege",
+    "No production/default pool/SQL/locks/global configuration changes, no followup load/retry/profile; prior formal failures/size/human-material gaps remain"
+  ],
+  "original_fixture_after_bytes_hash_equal": true,
+  "result_commit": "9d1deff3592d12e169f30a25537540c93096abf0",
+  "github_comments": [
+    {
+      "issue": 4,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6376531906",
+      "body_equals_exact_get": true
+    },
+    {
+      "issue": 3,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6376532216",
+      "body_equals_exact_get": true
+    }
+  ],
+  "github_readback": "github-readback.json",
+  "raw_gzip_delivery_verified_all43": true
+}

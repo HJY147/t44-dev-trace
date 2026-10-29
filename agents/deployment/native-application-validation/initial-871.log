@@ -1,0 +1,157 @@
+test_boolean_project_id_cannot_reach_service_cli (__main__.ApplicationGuards.test_boolean_project_id_cannot_reach_service_cli) ... ERROR
+test_exact_source_hash_and_denominator_required (__main__.ApplicationGuards.test_exact_source_hash_and_denominator_required) ... ok
+test_explicit_expected_commit_does_not_accept_other_candidate (__main__.ApplicationGuards.test_explicit_expected_commit_does_not_accept_other_candidate) ... ok
+test_foreign_dependency_rejected_before_run_or_broker_creation (__main__.ApplicationGuards.test_foreign_dependency_rejected_before_run_or_broker_creation) ... ok
+test_manifest_symlink_rejected (__main__.ApplicationGuards.test_manifest_symlink_rejected) ... ok
+test_manifest_traversal_or_test_path_rejected_before_file_read (__main__.ApplicationGuards.test_manifest_traversal_or_test_path_rejected_before_file_read) ... ok
+test_occupied_app_port_never_stops_any_process (__main__.ApplicationGuards.test_occupied_app_port_never_stops_any_process) ... ok
+test_old_database_or_admin_user_rejected (__main__.ApplicationGuards.test_old_database_or_admin_user_rejected) ... ok
+test_overlay_points_only_to_owner_and_correct_proxy (__main__.ApplicationGuards.test_overlay_points_only_to_owner_and_correct_proxy) ... ERROR
+test_pid_reuse_and_wrong_cwd_never_signalled (__main__.ApplicationGuards.test_pid_reuse_and_wrong_cwd_never_signalled) ... ERROR
+test_prepare_copies_pythonpath_without_modifying_staging_input (__main__.ApplicationGuards.test_prepare_copies_pythonpath_without_modifying_staging_input) ... ERROR
+test_public_private_inputs_rejected (__main__.ApplicationGuards.test_public_private_inputs_rejected) ... ok
+test_public_receipt_rejects_real_fixture_secrets (__main__.ApplicationGuards.test_public_receipt_rejects_real_fixture_secrets) ... ERROR
+test_source_changes_after_prepare_rejected (__main__.ApplicationGuards.test_source_changes_after_prepare_rejected) ... ERROR
+test_sql_writer_is_rejected_before_driver_import (__main__.ApplicationGuards.test_sql_writer_is_rejected_before_driver_import) ... ERROR
+test_ui_environment_has_no_database_amqp_or_token (__main__.ApplicationGuards.test_ui_environment_has_no_database_amqp_or_token) ... ERROR
+test_wrong_private_pythonpath_rejected (__main__.ApplicationGuards.test_wrong_private_pythonpath_rejected) ... ERROR
+
+======================================================================
+ERROR: test_boolean_project_id_cannot_reach_service_cli (__main__.ApplicationGuards.test_boolean_project_id_cannot_reach_service_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 208, in test_boolean_project_id_cannot_reach_service_cli
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_overlay_points_only_to_owner_and_correct_proxy (__main__.ApplicationGuards.test_overlay_points_only_to_owner_and_correct_proxy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 138, in test_overlay_points_only_to_owner_and_correct_proxy
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_pid_reuse_and_wrong_cwd_never_signalled (__main__.ApplicationGuards.test_pid_reuse_and_wrong_cwd_never_signalled)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 177, in test_pid_reuse_and_wrong_cwd_never_signalled
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_prepare_copies_pythonpath_without_modifying_staging_input (__main__.ApplicationGuards.test_prepare_copies_pythonpath_without_modifying_staging_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 124, in test_prepare_copies_pythonpath_without_modifying_staging_input
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_public_receipt_rejects_real_fixture_secrets (__main__.ApplicationGuards.test_public_receipt_rejects_real_fixture_secrets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 170, in test_public_receipt_rejects_real_fixture_secrets
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_source_changes_after_prepare_rejected (__main__.ApplicationGuards.test_source_changes_after_prepare_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 154, in test_source_changes_after_prepare_rejected
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_sql_writer_is_rejected_before_driver_import (__main__.ApplicationGuards.test_sql_writer_is_rejected_before_driver_import)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 202, in test_sql_writer_is_rejected_before_driver_import
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_ui_environment_has_no_database_amqp_or_token (__main__.ApplicationGuards.test_ui_environment_has_no_database_amqp_or_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 132, in test_ui_environment_has_no_database_amqp_or_token
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+======================================================================
+ERROR: test_wrong_private_pythonpath_rejected (__main__.ApplicationGuards.test_wrong_private_pythonpath_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 161, in test_wrong_private_pythonpath_rejected
+    app = self.prepare()
+          ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/tmp/deployment/871_native_application.py", line 78, in prepare
+    return appmod.Application.prepare(self.project, self.binding_file, self.commit, self.dependency)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-native/deployment/native/application.py", line 308, in prepare
+    AMQP_URL="amqp://" + urllib.parse.quote(amqp["username"], safe="") + ":"
+                                            ~~~~^^^^^^^^^^^^
+KeyError: 'username'
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.118s
+
+FAILED (errors=9)

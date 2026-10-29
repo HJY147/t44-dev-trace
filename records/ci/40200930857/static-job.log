@@ -1,0 +1,384 @@
+﻿2026-10-25T14:09:47.8768353Z Current runner version: '2.338.0'
+2026-10-25T14:09:47.8793057Z ##[group]Runner Image Provisioner
+2026-10-25T14:09:47.8793913Z Hosted Compute Agent
+2026-10-25T14:09:47.8794591Z Version: 20261021.618
+2026-10-25T14:09:47.8795249Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-25T14:09:47.8795963Z Build Date: 2026-10-21T00:45:21Z
+2026-10-25T14:09:47.8796749Z Worker ID: {1b1ab4f1-b0ff-4304-9f55-55c902cc3b67}
+2026-10-25T14:09:47.8797454Z Region: westus
+2026-10-25T14:09:47.8798400Z Cloud: Azure
+2026-10-25T14:09:47.8798986Z ##[endgroup]
+2026-10-25T14:09:47.8801311Z ##[group]Operating System
+2026-10-25T14:09:47.8802085Z Ubuntu
+2026-10-25T14:09:47.8802614Z 24.04.5
+2026-10-25T14:09:47.8803221Z LTS
+2026-10-25T14:09:47.8803762Z ##[endgroup]
+2026-10-25T14:09:47.8804341Z ##[group]Runner Image
+2026-10-25T14:09:47.8804995Z Image: ubuntu-24.04
+2026-10-25T14:09:47.8805573Z Version: 20261012.334.1
+2026-10-25T14:09:47.8806898Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-25T14:09:47.8808529Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-25T14:09:47.8809553Z ##[endgroup]
+2026-10-25T14:09:47.8810900Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T14:09:47.8813078Z Contents: read
+2026-10-25T14:09:47.8813696Z Metadata: read
+2026-10-25T14:09:47.8814278Z ##[endgroup]
+2026-10-25T14:09:47.8816458Z Secret source: Actions
+2026-10-25T14:09:47.8817364Z Cache mode: write
+2026-10-25T14:09:47.8818157Z Prepare workflow directory
+2026-10-25T14:09:47.9181141Z Prepare all required actions
+2026-10-25T14:09:47.9254285Z Getting action download info
+2026-10-25T14:09:48.2817769Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-25T14:09:48.3962263Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+2026-10-25T14:09:48.8341771Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-25T14:09:49.3652833Z Complete job name: static
+2026-10-25T14:09:49.4611345Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-25T14:09:49.4613217Z with:
+2026-10-25T14:09:49.4614115Z   persist-credentials: false
+2026-10-25T14:09:49.4615212Z   repository: HJY147/t44-dev-trace
+2026-10-25T14:09:49.4624040Z   token: ***
+2026-10-25T14:09:49.4624950Z   ssh-strict: true
+2026-10-25T14:09:49.4625856Z   ssh-user: git
+2026-10-25T14:09:49.4626732Z   clean: true
+2026-10-25T14:09:49.4627655Z   sparse-checkout-cone-mode: true
+2026-10-25T14:09:49.4628758Z   fetch-depth: 1
+2026-10-25T14:09:49.4629665Z   fetch-tags: false
+2026-10-25T14:09:49.4630750Z   show-progress: true
+2026-10-25T14:09:49.4631679Z   lfs: false
+2026-10-25T14:09:49.4632553Z   submodules: false
+2026-10-25T14:09:49.4633520Z   set-safe-directory: true
+2026-10-25T14:09:49.4634605Z   allow-unsafe-pr-checkout: false
+2026-10-25T14:09:49.4636039Z ##[endgroup]
+2026-10-25T14:09:49.5643602Z Syncing repository: HJY147/t44-dev-trace
+2026-10-25T14:09:49.5647816Z ##[group]Getting Git version info
+2026-10-25T14:09:49.5649688Z Working directory is '/home/runner/work/t44-dev-trace/t44-dev-trace'
+2026-10-25T14:09:49.5655071Z [command]/usr/bin/git version
+2026-10-25T14:09:49.5782078Z git version 2.55.0
+2026-10-25T14:09:49.5810164Z ##[endgroup]
+2026-10-25T14:09:49.5822606Z Temporarily overriding HOME='/home/runner/work/_temp/84491068-2b72-496b-af0f-2f4717b31828' before making global git config changes
+2026-10-25T14:09:49.5830312Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T14:09:49.5834502Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+2026-10-25T14:09:49.5885284Z Deleting the contents of '/home/runner/work/t44-dev-trace/t44-dev-trace'
+2026-10-25T14:09:49.5890390Z ##[group]Determining repository object format
+2026-10-25T14:09:49.5894467Z ##[endgroup]
+2026-10-25T14:09:49.5897662Z ##[group]Initializing the repository
+2026-10-25T14:09:49.5901063Z [command]/usr/bin/git init /home/runner/work/t44-dev-trace/t44-dev-trace
+2026-10-25T14:09:49.6018192Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T14:09:49.6022089Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T14:09:49.6025702Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T14:09:49.6028354Z hint: call:
+2026-10-25T14:09:49.6029701Z hint:
+2026-10-25T14:09:49.6031660Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T14:09:49.6033808Z hint:
+2026-10-25T14:09:49.6036003Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T14:09:49.6040313Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T14:09:49.6043536Z hint:
+2026-10-25T14:09:49.6044972Z hint: 	git branch -m <name>
+2026-10-25T14:09:49.6046187Z hint:
+2026-10-25T14:09:49.6048296Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T14:09:49.6052597Z Initialized empty Git repository in /home/runner/work/t44-dev-trace/t44-dev-trace/.git/
+2026-10-25T14:09:49.6058463Z [command]/usr/bin/git remote add origin https://github.com/HJY147/t44-dev-trace
+2026-10-25T14:09:49.6114317Z ##[endgroup]
+2026-10-25T14:09:49.6117605Z ##[group]Disabling automatic garbage collection
+2026-10-25T14:09:49.6120519Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-25T14:09:49.6156229Z ##[endgroup]
+2026-10-25T14:09:49.6158981Z ##[group]Setting up auth
+2026-10-25T14:09:49.6161448Z Removing SSH command configuration
+2026-10-25T14:09:49.6164469Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T14:09:49.6204626Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T14:09:49.6620079Z Removing HTTP extra header
+2026-10-25T14:09:49.6626336Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T14:09:49.6663719Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T14:09:49.6878361Z Removing includeIf entries pointing to credentials config files
+2026-10-25T14:09:49.6882813Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T14:09:49.6921298Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T14:09:49.7148654Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T14:09:49.7188848Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path /home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:49.7224410Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:49.7262340Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:49.7296821Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:49.7332007Z ##[endgroup]
+2026-10-25T14:09:49.7334926Z ##[group]Fetching the repository
+2026-10-25T14:09:49.7338645Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a16238b9eb3b47473c0332989d6b3dcc1d95d1f4:refs/remotes/origin/codex/integration
+2026-10-25T14:09:51.8387940Z From https://github.com/HJY147/t44-dev-trace
+2026-10-25T14:09:51.8388859Z  * [new ref]         a16238b9eb3b47473c0332989d6b3dcc1d95d1f4 -> origin/codex/integration
+2026-10-25T14:09:51.8400077Z [command]/usr/bin/git branch --list --remote origin/codex/integration
+2026-10-25T14:09:51.8429156Z   origin/codex/integration
+2026-10-25T14:09:51.8437483Z [command]/usr/bin/git rev-parse refs/remotes/origin/codex/integration
+2026-10-25T14:09:51.8464854Z a16238b9eb3b47473c0332989d6b3dcc1d95d1f4
+2026-10-25T14:09:51.8477167Z ##[endgroup]
+2026-10-25T14:09:51.8478252Z ##[group]Determining the checkout info
+2026-10-25T14:09:51.8479372Z ##[endgroup]
+2026-10-25T14:09:51.8482067Z [command]/usr/bin/git sparse-checkout disable
+2026-10-25T14:09:51.8566875Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T14:09:51.8604256Z ##[group]Checking out the ref
+2026-10-25T14:09:51.8610437Z [command]/usr/bin/git checkout --progress --force -B codex/integration refs/remotes/origin/codex/integration
+2026-10-25T14:09:52.3312854Z Switched to a new branch 'codex/integration'
+2026-10-25T14:09:52.3316697Z branch 'codex/integration' set up to track 'origin/codex/integration'.
+2026-10-25T14:09:52.3339447Z ##[endgroup]
+2026-10-25T14:09:52.3390670Z [command]/usr/bin/git log -1 --format=%H
+2026-10-25T14:09:52.3422321Z a16238b9eb3b47473c0332989d6b3dcc1d95d1f4
+2026-10-25T14:09:52.3433574Z ##[group]Removing auth
+2026-10-25T14:09:52.3434328Z Removing SSH command configuration
+2026-10-25T14:09:52.3438631Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T14:09:52.3479280Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T14:09:52.3729233Z Removing HTTP extra header
+2026-10-25T14:09:52.3733688Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T14:09:52.3769697Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T14:09:52.3999080Z Removing includeIf entries pointing to credentials config files
+2026-10-25T14:09:52.4005272Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T14:09:52.4037073Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+2026-10-25T14:09:52.4038038Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+2026-10-25T14:09:52.4039202Z includeif.gitdir:/github/workspace/.git.path
+2026-10-25T14:09:52.4040541Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-25T14:09:52.4045865Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+2026-10-25T14:09:52.4072343Z /home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:52.4084063Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-eba75760\-84f1\-437c\-947b\-132a0da809c7\.config
+2026-10-25T14:09:52.4125459Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+2026-10-25T14:09:52.4151167Z /home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:52.4160361Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-eba75760\-84f1\-437c\-947b\-132a0da809c7\.config
+2026-10-25T14:09:52.4198954Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-25T14:09:52.4225996Z /github/runner_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:52.4234450Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-eba75760\-84f1\-437c\-947b\-132a0da809c7\.config
+2026-10-25T14:09:52.4269046Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-25T14:09:52.4295402Z /github/runner_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config
+2026-10-25T14:09:52.4303987Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-eba75760\-84f1\-437c\-947b\-132a0da809c7\.config
+2026-10-25T14:09:52.4340241Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T14:09:52.4564389Z Removing credentials config '/home/runner/work/_temp/git-credentials-eba75760-84f1-437c-947b-132a0da809c7.config'
+2026-10-25T14:09:52.4574279Z ##[endgroup]
+2026-10-25T14:09:52.4898865Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+2026-10-25T14:09:52.4899281Z with:
+2026-10-25T14:09:52.4899482Z   python-version: 3.12
+2026-10-25T14:09:52.4899710Z   check-latest: false
+2026-10-25T14:09:52.4902488Z   token: ***
+2026-10-25T14:09:52.4902831Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+2026-10-25T14:09:52.4903244Z   update-environment: true
+2026-10-25T14:09:52.4903486Z   allow-prereleases: false
+2026-10-25T14:09:52.4903715Z   freethreaded: false
+2026-10-25T14:09:52.4903927Z ##[endgroup]
+2026-10-25T14:09:52.6037106Z ##[group]Installed versions
+2026-10-25T14:09:52.6133618Z Successfully set up CPython (3.12.15)
+2026-10-25T14:09:52.6134537Z ##[endgroup]
+2026-10-25T14:09:52.6304807Z ##[group]Run mkdir -p reports/ci
+2026-10-25T14:09:52.6305350Z [36;1mmkdir -p reports/ci[0m
+2026-10-25T14:09:52.6612197Z shell: /usr/bin/bash -e {0}
+2026-10-25T14:09:52.6612535Z env:
+2026-10-25T14:09:52.6612816Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6613285Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T14:09:52.6613720Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6614107Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6614501Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6614884Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T14:09:52.6615225Z ##[endgroup]
+2026-10-25T14:09:52.6802203Z ##[group]Run python -m pip install --require-hashes -r scripts/ci/requirements.lock
+2026-10-25T14:09:52.6802834Z [36;1mpython -m pip install --require-hashes -r scripts/ci/requirements.lock[0m
+2026-10-25T14:09:52.6858715Z shell: /usr/bin/bash -e {0}
+2026-10-25T14:09:52.6858992Z env:
+2026-10-25T14:09:52.6859261Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6859704Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T14:09:52.6860294Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6860675Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6861054Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:52.6861434Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T14:09:52.6861754Z ##[endgroup]
+2026-10-25T14:09:53.5738378Z Collecting attrs==26.1.0 (from -r scripts/ci/requirements.lock (line 3))
+2026-10-25T14:09:53.6179579Z   Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-25T14:09:53.6518606Z Collecting bandit==1.9.4 (from -r scripts/ci/requirements.lock (line 9))
+2026-10-25T14:09:53.6543052Z   Downloading bandit-1.9.4-py3-none-any.whl (134 kB)
+2026-10-25T14:09:54.0867944Z Collecting coverage==7.17.0 (from -r scripts/ci/requirements.lock (line 13))
+2026-10-25T14:09:54.0895014Z   Downloading coverage-7.17.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (261 kB)
+2026-10-25T14:09:54.1051853Z Collecting iniconfig==2.3.1 (from -r scripts/ci/requirements.lock (line 134))
+2026-10-25T14:09:54.1075488Z   Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-10-25T14:09:54.1258209Z Collecting jsonschema==4.26.0 (from -r scripts/ci/requirements.lock (line 138))
+2026-10-25T14:09:54.1284294Z   Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-10-25T14:09:54.1421160Z Collecting jsonschema-specifications==2025.9.1 (from -r scripts/ci/requirements.lock (line 142))
+2026-10-25T14:09:54.1446888Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-25T14:09:54.1574440Z Collecting markdown-it-py==4.2.0 (from -r scripts/ci/requirements.lock (line 146))
+2026-10-25T14:09:54.1602479Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+2026-10-25T14:09:54.1733190Z Collecting mdurl==0.1.2 (from -r scripts/ci/requirements.lock (line 150))
+2026-10-25T14:09:54.1757646Z   Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-10-25T14:09:54.1895602Z Collecting packaging==26.3 (from -r scripts/ci/requirements.lock (line 154))
+2026-10-25T14:09:54.1920451Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-25T14:09:54.2055613Z Collecting pluggy==1.7.0 (from -r scripts/ci/requirements.lock (line 158))
+2026-10-25T14:09:54.2080718Z   Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-10-25T14:09:54.2243059Z Collecting pygments==2.21.0 (from -r scripts/ci/requirements.lock (line 162))
+2026-10-25T14:09:54.2267343Z   Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-25T14:09:54.2366823Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 144.9 MB/s  0:00:00
+2026-10-25T14:09:54.2617356Z Collecting pytest==9.1.1 (from -r scripts/ci/requirements.lock (line 168))
+2026-10-25T14:09:54.2647455Z   Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-25T14:09:54.3020409Z Collecting pyyaml==6.0.3 (from -r scripts/ci/requirements.lock (line 172))
+2026-10-25T14:09:54.3047362Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-10-25T14:09:54.3135071Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 106.5 MB/s  0:00:00
+2026-10-25T14:09:54.3328673Z Collecting referencing==0.37.0 (from -r scripts/ci/requirements.lock (line 249))
+2026-10-25T14:09:54.3353695Z   Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-25T14:09:54.3615668Z Collecting rich==15.0.0 (from -r scripts/ci/requirements.lock (line 255))
+2026-10-25T14:09:54.3640231Z   Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+2026-10-25T14:09:54.6305774Z Collecting rpds-py==2026.9.1 (from -r scripts/ci/requirements.lock (line 259))
+2026-10-25T14:09:54.6335179Z   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+2026-10-25T14:09:54.9474538Z Collecting ruff==0.17.2 (from -r scripts/ci/requirements.lock (line 391))
+2026-10-25T14:09:54.9502365Z   Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.5 MB)
+2026-10-25T14:09:54.9907421Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 269.2 MB/s  0:00:00
+2026-10-25T14:09:55.0176906Z Collecting stevedore==5.9.1 (from -r scripts/ci/requirements.lock (line 411))
+2026-10-25T14:09:55.0202177Z   Downloading stevedore-5.9.1-py3-none-any.whl (54 kB)
+2026-10-25T14:09:55.0351517Z Collecting typing-extensions==4.16.0 (from -r scripts/ci/requirements.lock (line 415))
+2026-10-25T14:09:55.0377452Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-25T14:09:55.1153661Z Installing collected packages: typing-extensions, stevedore, ruff, rpds-py, pyyaml, pygments, pluggy, packaging, mdurl, iniconfig, coverage, attrs, referencing, pytest, markdown-it-py, rich, jsonschema-specifications, jsonschema, bandit
+2026-10-25T14:09:57.0876100Z 
+2026-10-25T14:09:57.0899105Z Successfully installed attrs-26.1.0 bandit-1.9.4 coverage-7.17.0 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.1.1 pyyaml-6.0.3 referencing-0.37.0 rich-15.0.0 rpds-py-2026.9.1 ruff-0.17.2 stevedore-5.9.1 typing-extensions-4.16.0
+2026-10-25T14:09:57.0908056Z 
+2026-10-25T14:09:57.0908447Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-25T14:09:57.0909201Z [notice] To update, run: pip install --upgrade pip
+2026-10-25T14:09:57.1657744Z ##[group]Run docker compose --env-file deployment/.env.example config --quiet
+2026-10-25T14:09:57.1658390Z [36;1mdocker compose --env-file deployment/.env.example config --quiet[0m
+2026-10-25T14:09:57.1658995Z [36;1mdocker run --rm --network none --add-host api:127.0.0.1 --read-only --tmpfs /tmp \[0m
+2026-10-25T14:09:57.1659640Z [36;1m  --volume "$PWD/deployment/nginx/nginx.conf:/etc/nginx/nginx.conf:ro" \[0m
+2026-10-25T14:09:57.1660364Z [36;1m  --volume "$PWD/deployment/nginx/api.conf:/etc/nginx/t44-api.conf:ro" \[0m
+2026-10-25T14:09:57.1660794Z [36;1m  --entrypoint nginx \[0m
+2026-10-25T14:09:57.1661253Z [36;1m  nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 \[0m
+2026-10-25T14:09:57.1661768Z [36;1m  -t 2>&1 | tee reports/ci/nginx-syntax.log[0m
+2026-10-25T14:09:57.1726377Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-25T14:09:57.1726726Z env:
+2026-10-25T14:09:57.1727034Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:57.1727480Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T14:09:57.1727920Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:57.1728313Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:57.1728711Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:57.1729119Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T14:09:57.1729460Z ##[endgroup]
+2026-10-25T14:09:57.5055723Z Unable to find image 'nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951' locally
+2026-10-25T14:09:58.1188930Z docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951: Pulling from library/nginx
+2026-10-25T14:09:58.3783150Z 7b229517ed22: Pulling fs layer
+2026-10-25T14:09:58.3788326Z 9f0afb44f10e: Pulling fs layer
+2026-10-25T14:09:58.3788883Z f19a2d3b6951: Pulling fs layer
+2026-10-25T14:09:58.3789303Z 885725a63a7c: Pulling fs layer
+2026-10-25T14:09:58.3789705Z e125989d16f0: Pulling fs layer
+2026-10-25T14:09:58.3790302Z 81b64ae234ef: Pulling fs layer
+2026-10-25T14:09:58.3790676Z bb658a254196: Pulling fs layer
+2026-10-25T14:09:58.3791046Z 5b8cb54cfa40: Pulling fs layer
+2026-10-25T14:09:58.3791402Z 885725a63a7c: Waiting
+2026-10-25T14:09:58.3791728Z e125989d16f0: Waiting
+2026-10-25T14:09:58.3792076Z 81b64ae234ef: Waiting
+2026-10-25T14:09:58.3792406Z bb658a254196: Waiting
+2026-10-25T14:09:58.3792763Z 5b8cb54cfa40: Waiting
+2026-10-25T14:09:58.6024167Z f19a2d3b6951: Verifying Checksum
+2026-10-25T14:09:58.6025327Z f19a2d3b6951: Download complete
+2026-10-25T14:09:58.6180986Z 9f0afb44f10e: Verifying Checksum
+2026-10-25T14:09:58.6181476Z 9f0afb44f10e: Download complete
+2026-10-25T14:09:58.6186047Z 7b229517ed22: Verifying Checksum
+2026-10-25T14:09:58.6186671Z 7b229517ed22: Download complete
+2026-10-25T14:09:58.7274235Z 7b229517ed22: Pull complete
+2026-10-25T14:09:58.8172121Z 885725a63a7c: Verifying Checksum
+2026-10-25T14:09:58.8172990Z 885725a63a7c: Download complete
+2026-10-25T14:09:58.8230338Z 81b64ae234ef: Verifying Checksum
+2026-10-25T14:09:58.8231198Z 81b64ae234ef: Download complete
+2026-10-25T14:09:58.8297177Z e125989d16f0: Verifying Checksum
+2026-10-25T14:09:58.8297669Z e125989d16f0: Download complete
+2026-10-25T14:09:59.0303324Z bb658a254196: Verifying Checksum
+2026-10-25T14:09:59.0319722Z bb658a254196: Download complete
+2026-10-25T14:09:59.1000516Z 9f0afb44f10e: Pull complete
+2026-10-25T14:09:59.1313259Z f19a2d3b6951: Pull complete
+2026-10-25T14:09:59.1443604Z 885725a63a7c: Pull complete
+2026-10-25T14:09:59.1537529Z e125989d16f0: Pull complete
+2026-10-25T14:09:59.1539465Z 5b8cb54cfa40: Verifying Checksum
+2026-10-25T14:09:59.1540419Z 5b8cb54cfa40: Download complete
+2026-10-25T14:09:59.1634056Z 81b64ae234ef: Pull complete
+2026-10-25T14:09:59.1709626Z bb658a254196: Pull complete
+2026-10-25T14:09:59.5959993Z 5b8cb54cfa40: Pull complete
+2026-10-25T14:09:59.6052295Z Digest: sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+2026-10-25T14:09:59.6059159Z Status: Downloaded newer image for nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+2026-10-25T14:09:59.7457367Z nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+2026-10-25T14:09:59.7458316Z nginx: configuration file /etc/nginx/nginx.conf test is successful
+2026-10-25T14:09:59.7883608Z ##[group]Run python scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log
+2026-10-25T14:09:59.7884768Z [36;1mpython scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log[0m
+2026-10-25T14:09:59.7978547Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-25T14:09:59.7979151Z env:
+2026-10-25T14:09:59.7979591Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:59.7980755Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T14:09:59.7981493Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:59.7982157Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:59.7982843Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:09:59.7983529Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T14:09:59.7984098Z ##[endgroup]
+2026-10-25T14:09:59.8447586Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/ci/validate_config.py
+2026-10-25T14:10:00.0004155Z Compose schema and deployment invariants passed; Docker/Nginx runtime NOT executed.
+2026-10-25T14:10:00.0005707Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m pytest -c backend/pyproject.toml tmp/deployment/997_ops.py tmp/deployment/971_credentials.py tmp/ci/996_gates.py -q
+2026-10-25T14:10:00.5136919Z .......................                                                  [100%]
+2026-10-25T14:10:00.5137542Z 23 passed in 0.23s
+2026-10-25T14:10:00.5138514Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m ruff check --config scripts/ci/ruff.toml deployment scripts/ci tmp/deployment tmp/ci
+2026-10-25T14:10:00.5533114Z All checks passed!
+2026-10-25T14:10:00.5533763Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m ruff check --config scripts/ci/ruff.toml backend/t44 tmp/backend
+2026-10-25T14:10:00.5956954Z E731 Do not assign a `lambda` expression, use a `def`
+2026-10-25T14:10:00.5957430Z   --> tmp/backend/messaging/806_newscope.py:34:9
+2026-10-25T14:10:00.5957737Z    |
+2026-10-25T14:10:00.5957980Z 32 |     if operation == "publish":
+2026-10-25T14:10:00.5958434Z 33 |         channel.basic_publish.side_effect = failure
+2026-10-25T14:10:00.5959110Z 34 |         invoke = lambda: broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+2026-10-25T14:10:00.5960166Z    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-25T14:10:00.5960871Z 35 |         code = "BROKER_PUBLISH_FAILED"
+2026-10-25T14:10:00.5961314Z 36 |     else:
+2026-10-25T14:10:00.5961647Z    |
+2026-10-25T14:10:00.5961990Z help: Rewrite `invoke` as a `def`
+2026-10-25T14:10:00.5962403Z    |
+2026-10-25T14:10:00.5962811Z 33 |         channel.basic_publish.side_effect = failure
+2026-10-25T14:10:00.5963602Z    -         invoke = lambda: broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+2026-10-25T14:10:00.5964289Z 34 +         def invoke():
+2026-10-25T14:10:00.5964867Z 35 +             return broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+2026-10-25T14:10:00.5965557Z 36 |         code = "BROKER_PUBLISH_FAILED"
+2026-10-25T14:10:00.5966302Z    |
+2026-10-25T14:10:00.5966719Z note: This is an unsafe fix and may change runtime behavior
+2026-10-25T14:10:00.5967131Z 
+2026-10-25T14:10:00.5967272Z Found 1 error.
+2026-10-25T14:10:00.5967698Z 1 unsafe fix available with `--fix --unsafe-fixes`.
+2026-10-25T14:10:00.5968906Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m bandit -r backend/t44 -f json -o /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json
+2026-10-25T14:10:01.2952825Z [main]	INFO	profile include tests: None
+2026-10-25T14:10:01.2953206Z [main]	INFO	profile exclude tests: None
+2026-10-25T14:10:01.2953507Z [main]	INFO	cli include tests: None
+2026-10-25T14:10:01.2953773Z [main]	INFO	cli exclude tests: None
+2026-10-25T14:10:01.2954281Z [json]	INFO	JSON output written to file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json
+2026-10-25T14:10:01.3022673Z ##[error]Process completed with exit code 1.
+2026-10-25T14:10:01.3143888Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-25T14:10:01.3144319Z with:
+2026-10-25T14:10:01.3144564Z   name: static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4
+2026-10-25T14:10:01.3144874Z   path: reports/ci/
+2026-10-25T14:10:01.3145093Z   if-no-files-found: error
+2026-10-25T14:10:01.3145327Z   retention-days: 14
+2026-10-25T14:10:01.3145541Z   compression-level: 6
+2026-10-25T14:10:01.3145753Z   overwrite: false
+2026-10-25T14:10:01.3145966Z   include-hidden-files: false
+2026-10-25T14:10:01.3146199Z   archive: true
+2026-10-25T14:10:01.3146385Z env:
+2026-10-25T14:10:01.3146639Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:10:01.3147062Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T14:10:01.3147482Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:10:01.3147854Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:10:01.3148258Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T14:10:01.3148644Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T14:10:01.3148962Z ##[endgroup]
+2026-10-25T14:10:01.4621346Z With the provided path, there will be 10 files uploaded
+2026-10-25T14:10:01.4622472Z Artifact name is valid!
+2026-10-25T14:10:01.4623011Z Root directory input is valid!
+2026-10-25T14:10:01.8394227Z Uploading artifact: static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip
+2026-10-25T14:10:01.8446220Z Beginning upload of artifact content to blob storage
+2026-10-25T14:10:02.1473518Z Uploaded bytes 4157
+2026-10-25T14:10:02.2158668Z Finished uploading artifact content to blob storage!
+2026-10-25T14:10:02.2160408Z SHA256 digest of uploaded artifact is 911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6
+2026-10-25T14:10:02.2161638Z Finalizing artifact upload
+2026-10-25T14:10:02.8167114Z Artifact static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4 successfully finalized. Artifact ID 12601838817
+2026-10-25T14:10:02.8168629Z Artifact static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4 has been successfully uploaded! Final size is 4157 bytes. Artifact ID is 12601838817
+2026-10-25T14:10:02.8171693Z Artifact download URL: https://github.com/HJY147/t44-dev-trace/actions/runs/40200930857/artifacts/12601838817
+2026-10-25T14:10:02.8364763Z Post job cleanup.
+2026-10-25T14:10:02.9210057Z [command]/usr/bin/git version
+2026-10-25T14:10:02.9260172Z git version 2.55.0
+2026-10-25T14:10:02.9298433Z Temporarily overriding HOME='/home/runner/work/_temp/8a9165d6-f226-4d29-a48e-9581b96aa551' before making global git config changes
+2026-10-25T14:10:02.9300237Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T14:10:02.9304467Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+2026-10-25T14:10:02.9337541Z Removing SSH command configuration
+2026-10-25T14:10:02.9344534Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T14:10:02.9381347Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T14:10:02.9648285Z Removing HTTP extra header
+2026-10-25T14:10:02.9655119Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T14:10:02.9703006Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T14:10:02.9965685Z Removing includeIf entries pointing to credentials config files
+2026-10-25T14:10:02.9977266Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T14:10:03.0015390Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T14:10:03.0389227Z Cleaning up orphan processes

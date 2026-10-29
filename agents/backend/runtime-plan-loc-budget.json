@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-10-23T19:06:08.251063+00:00",
+  "base_production": "5dcb73cc10c38deb14fae68d33318b04d538fecf",
+  "actual_production_change": 0,
+  "scope": "three unexecuted/unapplied design candidates; AST/projectRuff syntax only, not equivalence or performance",
+  "cloc_tool": "pinned2.10",
+  "files": [
+    {
+      "path": "backend/t44/services/runtime.py",
+      "before": {
+        "physical": 289,
+        "cloc_code": 270,
+        "sha256": "73fa26b60ac9cf78fe8398afac49dc30f85091b393627d6f2fadd720a4a2ac58"
+      },
+      "proposal": {
+        "physical": 288,
+        "cloc_code": 269,
+        "sha256": "5da5b61b559f0d2988e201fb23582d3fb32969121300cf6a0dc74a0faf45ecf3"
+      },
+      "physical_delta": -1,
+      "cloc_delta": -1,
+      "patch": "agents/backend/runtime-plan-preflight-not-applied.patch",
+      "patch_sha256": "f5aac2429fa4a2e16f8434ef21b78ecdd10d879b5f7191482697c43fbac8662b"
+    },
+    {
+      "path": "backend/t44/services/workflow.py",
+      "before": {
+        "physical": 256,
+        "cloc_code": 247,
+        "sha256": "40bbb1ed5a164c3eb61e0c50e571b1841ef6f6df0eac63f1ebf2fb9d1e37d8cc"
+      },
+      "proposal": {
+        "physical": 262,
+        "cloc_code": 253,
+        "sha256": "0fc0a1460a036d30c0236181582738821c6d84472fcdfca98830e2f559341449"
+      },
+      "physical_delta": 6,
+      "cloc_delta": 6,
+      "patch": "agents/backend/runtime-plan-dependencies-not-applied.patch",
+      "patch_sha256": "315b12b3fd8105415d0503367f7da651399b7ed20a3383af30299722047270c5"
+    },
+    {
+      "path": "backend/t44/contracts/__init__.py",
+      "before": {
+        "physical": 71,
+        "cloc_code": 55,
+        "sha256": "ee2a72d0ee435a63686e80548da2fdc1b0b2df05c399820e19973f8100dc8cdc"
+      },
+      "proposal": {
+        "physical": 61,
+        "cloc_code": 45,
+        "sha256": "a537def15dff5c43a30711a98ad0cca06c096070b97ae91357822c97bdb77a10"
+      },
+      "physical_delta": -10,
+      "cloc_delta": -10,
+      "patch": "agents/backend/runtime-plan-validator-not-applied.patch",
+      "patch_sha256": "251000818f1dcbade0ab35a0bb0c2f5a5f1ac9aea4428b7fd03e1d6036cb1854"
+    }
+  ],
+  "physical_delta": -5,
+  "cloc_delta": -5,
+  "combination": "Budget sum is illustrative only; three candidates are separate, never a request to apply together."
+}

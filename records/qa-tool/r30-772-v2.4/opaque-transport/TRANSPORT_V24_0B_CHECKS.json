@@ -1,0 +1,58 @@
+{
+  "schema": "772-v24-opaque-transport-check-v1",
+  "status": "PASS_LOCAL_TRANSPORT_ONLY",
+  "utc": "2026-10-29T08:44:06.173863Z",
+  "elapsed_seconds": 0.16368750005494803,
+  "checks": [
+    {
+      "test": "same_69195B_capsule_exact_bootstrap_exclusive_wrapper_full_hash_roundtrip",
+      "status": "PASS",
+      "observed_status": "INSTALLED_V24_0B_OPAQUE_ONLY"
+    },
+    {
+      "test": "existing_private_directory_rejected",
+      "status": "PASS",
+      "observed_status": "BLOCKED_INSTALL_INCOMPLETE"
+    },
+    {
+      "test": "wrong_key_authenticated_bootstrap_rejected",
+      "status": "PASS",
+      "observed_status": "BLOCKED_INSTALL_INCOMPLETE"
+    },
+    {
+      "test": "old_v1_envelope_rejected_by_exact_new_envelope_hash",
+      "status": "PASS",
+      "observed_status": "BLOCKED_INSTALL_INCOMPLETE"
+    },
+    {
+      "test": "changed_public_adapter_rejected_before_unseal",
+      "status": "PASS",
+      "observed_status": "BLOCKED_INSTALL_INCOMPLETE"
+    },
+    {
+      "test": "RSA_PROBE_V24.sh_shell_syntax",
+      "status": "PASS"
+    },
+    {
+      "test": "INSTALL_V24_OPAQUE.sh_shell_syntax",
+      "status": "PASS"
+    },
+    {
+      "test": "RELAY_V24_UPLOADED.sh_shell_syntax",
+      "status": "PASS"
+    }
+  ],
+  "passed": 8,
+  "same_opaque_capsule_bytes": 69195,
+  "same_opaque_capsule_sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f",
+  "exact_original_bootstrap_sha256": "09266efde00e382d019365766df68b9f2d78d6e750454aaac76d5e853844bf93",
+  "actual_LOAD_RSA_private_key_presence": "NOT_OBSERVED",
+  "actual_LOAD_RSA_OAEP_decryption": "NOT_EXECUTED; pending read-only public-fingerprint match and actual install",
+  "Linux_Docker_image_execution": "NOT_EXECUTED_THIS_LOCAL_CHECK",
+  "core_or_benchmark_or_HTTP_executed": false,
+  "SUT_requests": 0,
+  "cloud_actions": 0,
+  "new_long_tests": 0,
+  "private_key_or_source_emitted": false,
+  "archive_status": "LOCAL_PUBLIC_READY_NOT_YET_GIT_PUBLISHED"
+}

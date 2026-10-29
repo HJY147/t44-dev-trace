@@ -1,0 +1,27 @@
+{
+  "operator": "AI reviewer",
+  "method": "GitHub plugin add_comment_to_issue and exact-ID fetch readback",
+  "technical_push_exit": 0,
+  "remote_sha": "901a84e0c498a2ee66d3983436f143efcf8aa1ca",
+  "remote_matches": true,
+  "comments": [
+    {
+      "issue": 3,
+      "comment_id": 6489417815,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6489417815",
+      "created_at": "2026-10-29T06:12:49Z",
+      "technical_commit": "901a84e0c498a2ee66d3983436f143efcf8aa1ca",
+      "body_exact_readback": true,
+      "body": "Agent-Role: reviewer AI\nPrompt-Ref: ROLE-reviewer-DRY-R29B-20261029-v1\n\n限定本地审核：新增 P1=0、P2=0，可交总协调作为局部集成候选；这是同账号AI固定审核岗位的COMMENT，没有APPROVE或整体成功状态。\n\n共同基线 a92e5e73da93ba23748c3bab113103036c395d50。自有72项检查退出0，包含20个后端同输入轨迹、8个catalog情形（原生属性预期/SQL顺序/缺陷及四查询位置异常/上下文退出），不是独立验收。冻结契约、DDL、原测试和断言无改动。没有运行全CI、真实MySQL/RabbitMQ/HTTP、云、性能或独立验收；未读PRIVATE或联系测试岗。\n\n固定cloc2.10、65应用文件独立复计：基线5887，后端单件5884净3，数据库单件5883净4；两件仅临时字节投影5880，仍超5100上限780行。7行不构成规模达标或性能改善。本岗没有集成，准确组合及同源原生CI由总协调执行。\n\n报告与原始证据已push：[审核报告](https://github.com/HJY147/t44-dev-trace/blob/901a84e0c498a2ee66d3983436f143efcf8aa1ca/reports/reviews/dry-r29b-20261029.md)；技术提交 901a84e0c498a2ee66d3983436f143efcf8aa1ca，分支 codex/reviewer-dry-r29b。\n\n本Issue对象：产品41a111f270e949326202b8af5770db8aa7102e82，最终交接a13f74f1021e67ea5cb35c2b69ab94f5651bca79。两处_latest_assessments精确展开后整个reviews.py AST等于基线；调用时机、g.rows参数、原列表/[0]、守卫/错误/版本/CAS与审计保持。序列化在本岗轨迹中隔离，owner152模块通过未计入本岗结果。"
+    },
+    {
+      "issue": 4,
+      "comment_id": 6489418188,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6489418188",
+      "created_at": "2026-10-29T06:12:50Z",
+      "technical_commit": "901a84e0c498a2ee66d3983436f143efcf8aa1ca",
+      "body_exact_readback": true,
+      "body": "Agent-Role: reviewer AI\nPrompt-Ref: ROLE-reviewer-DRY-R29B-20261029-v1\n\n限定本地审核：新增 P1=0、P2=0，可交总协调作为局部集成候选；这是同账号AI固定审核岗位的COMMENT，没有APPROVE或整体成功状态。\n\n共同基线 a92e5e73da93ba23748c3bab113103036c395d50。自有72项检查退出0，包含20个后端同输入轨迹、8个catalog情形（原生属性预期/SQL顺序/缺陷及四查询位置异常/上下文退出），不是独立验收。冻结契约、DDL、原测试和断言无改动。没有运行全CI、真实MySQL/RabbitMQ/HTTP、云、性能或独立验收；未读PRIVATE或联系测试岗。\n\n固定cloc2.10、65应用文件独立复计：基线5887，后端单件5884净3，数据库单件5883净4；两件仅临时字节投影5880，仍超5100上限780行。7行不构成规模达标或性能改善。本岗没有集成，准确组合及同源原生CI由总协调执行。\n\n报告与原始证据已push：[审核报告](https://github.com/HJY147/t44-dev-trace/blob/901a84e0c498a2ee66d3983436f143efcf8aa1ca/reports/reviews/dry-r29b-20261029.md)；技术提交 901a84e0c498a2ee66d3983436f143efcf8aa1ca，分支 codex/reviewer-dry-r29b。\n\n本Issue对象：产品8f29030756139061341e0a636c8774ca790964bd，最终交接bc4d4616298bc9012c14901045bf2a47f5e8afcd。四静态唯一label的映射注册与.items()解包归一后整个migrations.py AST等于基线，SQL/expected/顺序保持。最终产品/原测试边界不变，17份JSON可解析；source/docs/JSON diff-check0，完整原日志diff-check2的8个空白定位为push原4处及其复录，原字节保留，非产品阻断。catalog行由实际预期派生，仅证明变换等价，未证明MySQL原生行为；owner133/43未选未计入本岗结果。"
+    }
+  ]
+}

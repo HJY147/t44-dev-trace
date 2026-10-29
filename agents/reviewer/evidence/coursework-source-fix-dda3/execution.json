@@ -1,0 +1,35 @@
+{
+  "operator": "AI reviewer, not student or independenttester",
+  "target": "dda3df8e15b0b5b655909dda37dc79a87f318924",
+  "branch": "codex/review-coursework-source-fix",
+  "single_original_semantic_replay": {
+    "runs": 1,
+    "exit_code": 0,
+    "original_command_archived": true,
+    "declared_source_input_remains": "9d6ead5fa3e1494946f2bb8d7ef33c1a97758077",
+    "payload_manifest_member_and_original_rejection_assertion_unchanged": true,
+    "harness_only_changes": "SUT code source, actualnewselector globals(__file__/Path/importlib/re), outputs/resultmetadata",
+    "selector_mocked": false,
+    "Git_tree_reads": "ls-tree metadata only, no actual archive source payload",
+    "actual_rejection": "Inner source member set differs from exact Git selection",
+    "per_blob_mode_branch": "Static only, not reached by this incomplete originalfixture",
+    "real_review_package_or_disk_ZIP_created": false
+  },
+  "static_audit": {
+    "exit_code": 0,
+    "source_SHA": "b767ebda28e5bac4ea5e2cad78a193f98ca93e8ad4e936d577628471484f585b",
+    "selector_SHA": "540fe63ddedcdb3184b923cd176da493da9e80384599d0684164d6f477de6faf",
+    "selector_unchanged": true,
+    "changed_functions": [
+      "verify_source_archive",
+      "main"
+    ],
+    "main_only_adds_repo_guard": true,
+    "frozen14_unchanged": true
+  },
+  "private_Word_R002_archive_or_independent_material_read": false,
+  "metadata_whole_suite_CI_browser_DB_or_service_rerun": false,
+  "new_persistent_tmp_scripts": [],
+  "original9d6_failure_preserved": true,
+  "outcome": "P2 closed within exactdda3 only;actualbundle still unverified"
+}

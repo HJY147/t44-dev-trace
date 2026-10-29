@@ -1,0 +1,17 @@
+{
+  "full_cached_diff_check": {
+    "exit": 2,
+    "stdout": "records/ci/r29b-0bffe0c5-40827655008/frontend-0bffe0c535e5897890aebf30879fdd3839dc52d6/reports/ci/frontend/build.log:12: trailing whitespace.\n+\u001b[33m[plugin builtin:vite-reporter] \n",
+    "stderr": ""
+  },
+  "identified_original_artifact_member": "records/ci/r29b-0bffe0c5-40827655008/frontend-0bffe0c535e5897890aebf30879fdd3839dc52d6/reports/ci/frontend/build.log",
+  "reason": "exact original Vite ANSI warning ends with one space; raw bytes retained and verified against original archive member SHA",
+  "current_source_and_metadata_outside_raw_CI_directory_check": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "product_test_change": false,
+  "overall_diff_check_claim": "not_clean; one preserved original artifact formatting warning",
+  "first_receipt_script_attempt": "heredoc terminator typo produced SyntaxError before any write; corrected rerun did not change raw artifact"
+}

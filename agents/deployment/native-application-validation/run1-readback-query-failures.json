@@ -1,0 +1,16 @@
+{
+  "failures": [
+    {
+      "query": "SELECT * FROM escalations ORDER BY id LIMIT 1",
+      "mysql_error": 1146,
+      "reason": "Wrong table name; actual escalation_events"
+    },
+    {
+      "operation": "readback assembler UTC comparison",
+      "error": "AssertionError",
+      "reason": "Compared space-format datetime JSON text to T-format string, corrected to datetime values"
+    }
+  ],
+  "read_only": true,
+  "database_changed": false
+}

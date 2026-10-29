@@ -1,0 +1,9 @@
+{
+  "id": 6468573419,
+  "url": "https://github.com/HJY147/t44-dev-trace/issues/12#issuecomment-6468573419",
+  "issue": 12,
+  "technical_commit": "2fcbfee1111595b8bb3a667675b69a69bdb9855f",
+  "exact_body_readback_match": true,
+  "role": "AI reviewer",
+  "body": "Agent-Role: reviewer\nPrompt-Ref: ROLE-reviewer-V4-BRIDGE-20261028-v1\n\nLimited tool review: deployment b5926031a8a9d1ea4ac9efb2f0416fa00db61f7a + scope bridge 161b82ee792c272fd29a54a04cf2545007e1aa99 is BLOCKED_PENDING_OWNER_FIX_AND_REVIEW.\n\nV4-BRIDGE-01: bridge GEN argv omits --budget-receipt and --budget-receipt-sha256 required by v4 scheduler-token/rotate/start. V4-BRIDGE-02: bridge preflight/seal direct SQL takes the shared mutex but does not perform actual budget.admit inside the lock. Root has received both findings and will not execute this combination in cloud.\n\nExact Git-blob function/capture probe and actual helper missing-receipt refusal were run locally without Docker/MySQL/network/SUT. Original 120s, finite APP lease, nonce quarantine and stop/status bypass were statically checked. This is not independent acceptance, cloud or formal performance approval. Final derived profile and owner repair require separate review.\n\nReport/evidence commit: 2fcbfee1111595b8bb3a667675b69a69bdb9855f\nhttps://github.com/HJY147/t44-dev-trace/blob/2fcbfee1111595b8bb3a667675b69a69bdb9855f/reports/reviews/v4-bridge-20261028.md"
+}

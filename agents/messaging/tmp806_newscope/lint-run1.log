@@ -1,0 +1,76 @@
+C408 Unnecessary `dict()` call (rewrite as a literal)
+  --> tmp/backend/messaging/806_newscope.py:34:41
+   |
+32 |     if operation == "publish":
+33 |         channel.basic_publish.side_effect = failure
+34 |         invoke = lambda: broker.publish(dict(id=1, schema_version=1, event_type=2))
+   |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |         code = "BROKER_PUBLISH_FAILED"
+36 |     else:
+   |
+help: Rewrite as a literal
+   |
+33 |         channel.basic_publish.side_effect = failure
+   -         invoke = lambda: broker.publish(dict(id=1, schema_version=1, event_type=2))
+34 +         invoke = lambda: broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+35 |         code = "BROKER_PUBLISH_FAILED"
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+  --> tmp/backend/messaging/806_newscope.py:55:24
+   |
+53 |     )
+54 |     with pytest.raises(BrokerUnavailable, match="^BROKER_CONNECT_FAILED$"):
+55 |         broker.publish(dict(id=1, schema_version=1, event_type=2))
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |     assert broker.connection is None
+   |
+help: Rewrite as a literal
+   |
+54 |     with pytest.raises(BrokerUnavailable, match="^BROKER_CONNECT_FAILED$"):
+   -         broker.publish(dict(id=1, schema_version=1, event_type=2))
+55 +         broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+56 |     assert broker.connection is None
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+  --> tmp/backend/messaging/806_newscope.py:67:24
+   |
+65 |     channel.basic_publish.return_value = False
+66 |     with pytest.raises(BrokerUnavailable, match="^BROKER_NACK$"):
+67 |         broker.publish(dict(id=1, schema_version=1, event_type=2))
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |     assert broker.connection is connection
+69 |     channel.basic_publish.side_effect = ValueError("application")
+   |
+help: Rewrite as a literal
+   |
+66 |     with pytest.raises(BrokerUnavailable, match="^BROKER_NACK$"):
+   -         broker.publish(dict(id=1, schema_version=1, event_type=2))
+67 +         broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+68 |     assert broker.connection is connection
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+C408 Unnecessary `dict()` call (rewrite as a literal)
+  --> tmp/backend/messaging/806_newscope.py:71:24
+   |
+69 |     channel.basic_publish.side_effect = ValueError("application")
+70 |     with pytest.raises(ValueError, match="application"):
+71 |         broker.publish(dict(id=1, schema_version=1, event_type=2))
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+72 |     connection.close.assert_not_called()
+   |
+help: Rewrite as a literal
+   |
+70 |     with pytest.raises(ValueError, match="application"):
+   -         broker.publish(dict(id=1, schema_version=1, event_type=2))
+71 +         broker.publish({"id": 1, "schema_version": 1, "event_type": 2})
+72 |     connection.close.assert_not_called()
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+Found 4 errors.
+4 unsafe fixes available with `--fix --unsafe-fixes`.

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.030" timestamp="2026-10-25T14:27:05.100709+08:00" hostname="hujinyangdeMacBook-Air.local"><testcase classname="" name="test_observer_construction_failure_is_requested_but_not_installed" time="0.006"><failure message="AssertionError: assert 'NOT_REQUESTED' == 'NOT_INSTALLED'&#10;  &#10;  - NOT_INSTALLED&#10;  + NOT_REQUESTED">tmp/834_backend_performance/834_cleanup.py:197: in test_observer_construction_failure_is_requested_but_not_installed
+    assert h.report["database_observer"]["status"] == "NOT_INSTALLED"
+E   AssertionError: assert 'NOT_REQUESTED' == 'NOT_INSTALLED'
+E     
+E     - NOT_INSTALLED
+E     + NOT_REQUESTED</failure></testcase></testsuite></testsuites>

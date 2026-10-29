@@ -1,0 +1,31 @@
+$ .venv/bin/python -m pytest -c backend/pyproject.toml tmp/backend/contracts/986_http.py -k rework_version_ceiling --tb=short -ra --junitxml=agents/backend/capacity-v11-ceiling-before.xml
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 77 items / 76 deselected / 1 selected
+
+backend F                                                                [100%]
+
+=================================== FAILURES ===================================
+_ test_capacity_v11_keeps_original_guard_precedence[rework_version_ceiling-VERSION_CONFLICT-409] _
+tmp/backend/contracts/986_http.py:1741: in test_capacity_v11_keeps_original_guard_precedence
+    response = request(
+tmp/backend/contracts/986_http.py:35: in request
+    assert response.status_code == expect, response.text
+E   AssertionError: {"code":"CAPACITY_REFERENCE_INVALID","message":"Capacity reference invalid","request_id":"11fb3dc9-e01b-49e7-8a6d-0a1cb623527d","audit_id":11,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E   assert 422 == 409
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/capacity-v11-ceiling-before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_capacity_v11_keeps_original_guard_precedence[rework_version_ceiling-VERSION_CONFLICT-409]
+================= 1 failed, 76 deselected, 1 warning in 0.35s ==================
+
+exit_code=1

@@ -1,0 +1,40 @@
+{
+  "scope": "static and synthetic time arithmetic only",
+  "T0_reference": "synthetic offset seconds",
+  "G_workload_stop_seconds": 2100,
+  "C_provider_stop_seconds": 2400,
+  "local_derive_max_offset_seconds": 300,
+  "GEN_prepare_latest_offset_seconds": 1500,
+  "GEN_prepare_min_remaining_seconds": 600,
+  "local_derive_min_remaining_seconds": 1800,
+  "packet_freshness_seconds": 300,
+  "execute_start_gate_seconds": 20,
+  "transfer_prepare_assumption_seconds": 120,
+  "cost_stop_minimum_reserve_seconds": 90,
+  "not_enforced_host_reserve_operator_policy_seconds": 90,
+  "latest_start_without_host_reserve_seconds": {
+    "D780": 1320,
+    "D900": 1200
+  },
+  "latest_start_with90_host_reserve_seconds": {
+    "D780": 1230,
+    "D900": 1110
+  },
+  "latest_packet_with90_host_reserve_before_auth_delay_seconds": {
+    "D780": 1110,
+    "D900": 990
+  },
+  "fixed_feasible_example": {
+    "S": 1200,
+    "D": 780,
+    "E": 1980,
+    "G": 2100,
+    "C": 2400,
+    "host_reserve": 120,
+    "cost_reserve": 420,
+    "packet_latest_with120_transfer_and30_auth_seconds": 1050
+  },
+  "no_retime": true,
+  "must_bind_original_G_phase_stop_and_distinct_C": true,
+  "cloud_or_Docker_or_HTTP_or_session_calls": 0
+}

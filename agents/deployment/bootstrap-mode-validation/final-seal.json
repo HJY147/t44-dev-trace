@@ -1,0 +1,47 @@
+{
+  "sealed_at": "2026-10-24T08:16:45.171279+00:00",
+  "design_commit": "e9c9115",
+  "implementation_sha": "59b7d2f7f0af1ab8baa836ec3baea859bccb02a7",
+  "old_bootstrap_git_ref": "44e315a7a33d6802651013d911ecfc91731dd2a5:deployment/ubuntu24-bootstrap.sh",
+  "old_bootstrap_git_blob": "8ae5e1fce73851510fe9a6e05a875a68b0ce8bd8",
+  "old_bootstrap_sha256": "a99091f55f4b285712edc7b043114460f6dce5235705f289991cb31e3bece025",
+  "files": {
+    "deployment/ubuntu24-bootstrap.sh": {
+      "sha256": "9786139dfb39583f8809fd2c39044ea8ea441f9df55ed22032d8c323190f1929",
+      "bytes": 9135
+    },
+    "deployment/ubuntu24-bootstrap.md": {
+      "sha256": "6837bea02f83f49218bd1575a6f13ccae875731d3d95632cbd746f33770cbd26",
+      "bytes": 10799
+    },
+    "tmp/deployment/846_bootstrap_modes.py": {
+      "sha256": "c8e53975a49050472078cd5277565770a9b745a02671478ff8449b256acc8644",
+      "bytes": 5194
+    },
+    "agents/deployment/bootstrap-mode-validation/red.stdout.txt": {
+      "sha256": "b97b08d70b4f729d2e4eeef970f2f04c0e2f76f2ee5a0d176c40d3bbc5202593",
+      "bytes": 1190
+    },
+    "agents/deployment/bootstrap-mode-validation/green.stdout.txt": {
+      "sha256": "e556513ec3bda8bcd93d4c2611fe94bc05e6ea16e6e3ca504753d251d552dfc6",
+      "bytes": 98
+    },
+    "agents/deployment/bootstrap-mode-validation/root-cloud-relay.json": {
+      "sha256": "bcc27dc9aa98b42c2a9e122c4acced355a1fb202530d09fa6ac2e1b17f8f32a9",
+      "bytes": 2075
+    },
+    "agents/deployment/bootstrap-mode-validation/issue-readback.json": {
+      "sha256": "765cb64525098e5af3549f1580b3e0908e6b3d17956b5c06c9137693b16c6c92",
+      "bytes": 6203
+    }
+  },
+  "red": 1,
+  "green": 7,
+  "CI_config_ruff_test_and_embedded": 0,
+  "bash_syntax_compile_staged_diffcheck": 0,
+  "issue": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6381884806",
+  "issue_full_GET_body_identical": true,
+  "actual_cloud_CI_service_execution_by_deployment": false,
+  "cloud_results": "root relay only;new bootstrap not executed there",
+  "C_business_untouched": true
+}

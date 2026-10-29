@@ -1,0 +1,67 @@
+{
+  "operator": "AI prompt_engineering",
+  "checked_at_utc": "2026-10-25T10:09:47.872353+00:00",
+  "scope": "documentation/Git/JSON/hash checks only; no application tests, load, CI or private reads",
+  "checks": [
+    {
+      "name": "22 public source Git byte matches; cutoff preserved",
+      "passed": true
+    },
+    {
+      "name": "JSON parse docs/prompting/CAMPAIGN-20261025-source-index.json",
+      "passed": true
+    },
+    {
+      "name": "JSON parse records/handoffs/prompt_engineering.json",
+      "passed": true
+    },
+    {
+      "name": "fixed cutoff + functional original statuses + N07 fail",
+      "passed": true
+    },
+    {
+      "name": "three new proposals explicitly not executed",
+      "passed": true
+    },
+    {
+      "name": "U024 exact file digest unchanged from admitted source",
+      "passed": true
+    },
+    {
+      "name": "U024 exact user sentence not duplicated in newly written artifacts",
+      "passed": true
+    },
+    {
+      "name": "appendix evidence links all fixed admitted commits",
+      "passed": true
+    },
+    {
+      "name": "frozen neutral requirements/rules still exact",
+      "passed": true
+    },
+    {
+      "name": "UTF8 nonempty and no conflict markers docs/prompting/CAMPAIGN-20261025-scope.md",
+      "passed": true
+    },
+    {
+      "name": "UTF8 nonempty and no conflict markers docs/prompting/CAMPAIGN-20261025-process-appendix.md",
+      "passed": true
+    },
+    {
+      "name": "UTF8 nonempty and no conflict markers docs/prompting/CAMPAIGN-20261025-proposed-templates.md",
+      "passed": true
+    },
+    {
+      "name": "UTF8 nonempty and no conflict markers records/prompts/ROLE-prompt_engineering-CAMPAIGN-FOLLOWUP-20261025-v1.md",
+      "passed": true
+    },
+    {
+      "name": "git diff --check",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "new_executed_prompt_versions": 0,
+  "formal_performance_final_result_read": false
+}

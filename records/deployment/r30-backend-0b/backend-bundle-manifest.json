@@ -1,0 +1,68 @@
+{
+  "kind": "r30-exact-0b-backend-only-image-v1",
+  "source_sha": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+  "run_id": "r30ci40833943007",
+  "source_manifest_sha256": "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b",
+  "declared": {
+    "alias": "t44-backend-r30:src-0bffe0c535e5897890aebf30879fdd3839dc52d6-r30ci40833943007",
+    "image_id": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+    "revision_label": "0bffe0c535e5897890aebf30879fdd3839dc52d6",
+    "archive_label": "275970aa18117751e3a4fc8c404d0750cb9698310a70146d64061a634c37bf09"
+  },
+  "source_archive_sha256": "275970aa18117751e3a4fc8c404d0750cb9698310a70146d64061a634c37bf09",
+  "image_identity_proof": {
+    "success": true,
+    "identity_kind": "classic-config-id",
+    "actual_id": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+    "config_id": "sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845",
+    "ordered_layer_count": 11,
+    "labels_architecture_rootfs_checked": true
+  },
+  "runtime_verification": {
+    "uid": 10001,
+    "exact_files": 60,
+    "stale_or_missing_files": false
+  },
+  "official_python": {
+    "pin": "python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70",
+    "repo_digests_observed": [
+      "python@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70"
+    ],
+    "diff_ids": [
+      "sha256:9b35de7893378218e365c34c2c735fb0032a859112fb7345ca8ea73f9aa1db70",
+      "sha256:535ecd2088497f5955e24fd33c534fc9ba37fb717a33a841315a358dd4ff8b35",
+      "sha256:536ebec0f9d8119e620ed0e261faa2cfdeab88621f35924fb0ec74f646b5c53b",
+      "sha256:b8a5c0b25a3657c3b43a3a4cf1815f27fd7ca6c8bc3ffd36164f90731ca83db4"
+    ]
+  },
+  "objects": {
+    "backend-image.tar.gz": {
+      "sha256": "650ad1a2782396bdebfb05d722685d7ba9a65e519786447972612f0a1c407656",
+      "bytes": 94620657
+    },
+    "source-manifest.json": {
+      "sha256": "0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b",
+      "bytes": 12838
+    },
+    "source-runtime-context.tar.gz": {
+      "sha256": "6bd1023d8e5c56c8acd60411b1b1b47c249c5a8f82f2425315b13cea4f67c693",
+      "bytes": 235707
+    },
+    "frozen-comparison.json": {
+      "sha256": "44988b6cd229aabceeddf0fc9c3caf512843725de4480da9b183ddf1de0bd707",
+      "bytes": 9233
+    },
+    "actual-runtime-files.json": {
+      "sha256": "999ddcdb16d7829e715baffdb5a86bb30cc53c4cdee061fc56a085409f399965",
+      "bytes": 11161
+    },
+    "build-metadata.json": {
+      "sha256": "f52c9352d5a7491c716613ae7760988285bfa3bc783419f84df1a5d69cefd03f",
+      "bytes": 1636
+    }
+  },
+  "uncompressed_image_archive_sha256": "f8e539337d18426fb98cddba55488df5a65dd7732faef3dbe14c1bc8ecaf97a0",
+  "tool_sha256": "e5af027a79cd5d5733a5ae28521757428b6c2c0317a1d2ab3e0267dfff3c3c01",
+  "github_run_id": "40833943007",
+  "cloud_or_SUT_or_performance_executed": false
+}

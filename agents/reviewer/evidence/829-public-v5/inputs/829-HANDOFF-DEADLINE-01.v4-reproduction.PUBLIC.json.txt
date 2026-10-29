@@ -1,0 +1,13 @@
+{
+  "visibility": "PUBLIC",
+  "defect": "829-HANDOFF-DEADLINE-01",
+  "source": "own preserved PUBLIC v4 only",
+  "probe": "HTTP timeout15/run120; fake HTTP201 complete at0; legal neutral handoff advances UTC+mono20",
+  "observed_http_status": 201,
+  "observed_complete": false,
+  "observed_error": "DeadlineExceeded: return UTC/monotonic deadline expired",
+  "raw_http_record_complete": true,
+  "legacy_bug_reproduced": true,
+  "sut_requests": 0,
+  "sockets": 0
+}

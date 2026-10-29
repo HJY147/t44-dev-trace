@@ -1,0 +1,41 @@
+{
+  "schema": "772-grant-v1",
+  "allow": false,
+  "run_id": "REPLACE_NEW_RUN_ID",
+  "created_at": "REPLACE_UTC",
+  "window_start_utc": "REPLACE_UTC",
+  "window_end_utc": "REPLACE_UTC",
+  "origin": "https://REPLACE_REAL_HOST",
+  "environment_sha256": "REQUIRED",
+  "runtime_sha256": "REQUIRED",
+  "source_sha256": "REQUIRED",
+  "image_digest": "sha256:REQUIRED",
+  "fixture_sha256": "REQUIRED",
+  "warmup_seconds": 60,
+  "steady_seconds": 600,
+  "clients": 400,
+  "request_timeout_seconds": 15,
+  "postcheck_seconds": 40,
+  "limits": {
+    "cpu": 8,
+    "memory_bytes": 8589934592,
+    "pids": 2048,
+    "plain_bytes": 10737418240,
+    "compressed_bytes": 11811160064,
+    "cipher_bytes": 12884901888
+  },
+  "permissions": [
+    "linux-preflight",
+    "one-cohort",
+    "read-postconditions"
+  ],
+  "prohibitions": [
+    "cloud-control",
+    "install",
+    "login",
+    "session-extension",
+    "request-retry",
+    "restart",
+    "successor-run"
+  ]
+}

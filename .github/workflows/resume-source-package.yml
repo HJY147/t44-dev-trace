@@ -1,0 +1,58 @@
+name: resume-source-package
+
+on:
+  workflow_call:
+    inputs:
+      source:
+        required: true
+        type: string
+      stop_utc:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Exact public product commit
+        required: true
+        type: string
+      stop_utc:
+        description: Absolute future UTC workload deadline (Z)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      T44_SOURCE_COMMIT: ${{ inputs.source }}
+      T44_STOP_UTC: ${{ inputs.stop_utc }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Pin public commits and package without Docker or SUT
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$T44_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --no-tags --depth=1 origin "$T44_SOURCE_COMMIT" 935ab5b93bea788672c2b4a088c79cfeed848954
+          python3 deployment/cloud-reuse/derive-resume-profile.py derive \
+            --repository "$GITHUB_WORKSPACE" --source "$T44_SOURCE_COMMIT" \
+            --stop-utc "$T44_STOP_UTC" --output "$RUNNER_TEMP/resume-profile"
+          profile_sha=$(sha256sum "$RUNNER_TEMP/resume-profile/profile.json" | cut -d ' ' -f 1)
+          python3 deployment/cloud-reuse/derive-resume-profile.py package \
+            --repository "$GITHUB_WORKSPACE" --profile "$RUNNER_TEMP/resume-profile/profile.json" \
+            --profile-sha256 "$profile_sha" --output "$RUNNER_TEMP/resume-package"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: resume-source-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/resume-profile/
+            ${{ runner.temp }}/resume-package/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0

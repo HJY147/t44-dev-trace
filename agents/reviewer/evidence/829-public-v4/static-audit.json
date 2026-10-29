@@ -1,0 +1,150 @@
+{
+  "utc": "2026-10-25T07:55:39.365158+00:00",
+  "freeze": "2996e1e71f1c1160282520b7273ac85c42f4b75acc5042e74836841d75bf1424",
+  "manifest_sha256": "b4187c068574676a6723964381700341f3902c96dfccd812f15b4d43df9bb264",
+  "inventory": {
+    "829-DEADLINE-UTC-01.v3-reproduction.PUBLIC.json": {
+      "bytes": 314,
+      "sha256": "1b6a405544aa1f71ec276756912c3114fba15078d31d9d3e621d4848ae533782",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "README.PUBLIC.md": {
+      "bytes": 15280,
+      "sha256": "1f53eaaa16361baac29cb1656bf4a7383b054b927b1e548bf009a201540d0aab",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "admission.template.PUBLIC.json": {
+      "bytes": 1397,
+      "sha256": "2305e3d6fffc8fb6141567527c02953173fdca7963f8b090f59513adb4f8bbee",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "control.py": {
+      "bytes": 27474,
+      "sha256": "ac50e3a92ff46181d056410d632b19f1050e04483db4794b63a3d16377fe1b99",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "environment.template.PUBLIC.json": {
+      "bytes": 1536,
+      "sha256": "9c6965d07385ec668379cb6671bfeee77b2713169dc0c8713365533bb8e57569",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "handoff.PUBLIC.py": {
+      "bytes": 8298,
+      "sha256": "6b399f7b93654585e92583d73b03c09dfd3141f53577e69403198540caaf1926",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "native-build.template.PUBLIC.json": {
+      "bytes": 1267,
+      "sha256": "830577a6757277bb4c720beae533eebfab3ee4cf645b1ec34dc59da097c1565f",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "routes.PUBLIC.json": {
+      "bytes": 2879,
+      "sha256": "e7cfa136736a05700e4d9f9048bda6634673736e74a48131be03d65adb895050",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "selfcheck-attempt-01.PUBLIC.json": {
+      "bytes": 230,
+      "sha256": "b9517a9c5c69ab117e36b4370b8e4f256697c25b12b7bf6540f382477648eee8",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "selfcheck-attempt-02.PUBLIC.json": {
+      "bytes": 230,
+      "sha256": "3182a2da14af06c84ccf7357335694ee2bef25f62083d894669f249eb46931ce",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "selfcheck-result.PUBLIC.json": {
+      "bytes": 229,
+      "sha256": "df29a74d0ba3d2e99631ac18f66b0adb124063e51d90a0093b1efdeb93013df4",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "selfcheck-v4-attempt-01.PUBLIC.json": {
+      "bytes": 230,
+      "sha256": "3cc409d8c8b4d563345734a72f9d0eeb1171d9d5b6481a8134fcc5b208ed3f51",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "selfcheck.PUBLIC.py": {
+      "bytes": 21144,
+      "sha256": "34adefaf557a66abc3c423a6e1e352b2c574ad0e6a5b119eaae5f90cf06dfce4",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    },
+    "suite.bundle.PUBLIC.aes": {
+      "bytes": 120504,
+      "sha256": "d28b112dc7d55a30a71d208b338735910f5f311d9be574d7da1f165194b23632",
+      "matches": true,
+      "access": "wholehash only"
+    },
+    "suite.bundle.PUBLIC.aes.integrity.json": {
+      "bytes": 549,
+      "sha256": "a59551cce5646a122848b5120a22dbbc004ec63c65bbd6d698984f5f036f69f0",
+      "matches": true,
+      "access": "wholehash only"
+    },
+    "supervisor.PUBLIC.py": {
+      "bytes": 8984,
+      "sha256": "ac6e367c45c176f8a599b09bd74242e6ba65115781f629d7d7e217a0953365ff",
+      "matches": true,
+      "access": "explicit PUBLIC text"
+    }
+  },
+  "source_selfcheck_methods": 29,
+  "owner_PUBLIC_result": {
+    "visibility": "PUBLIC",
+    "kind": "controller_v4_offline_selfcheck",
+    "tests_run": 29,
+    "failures": 0,
+    "errors": 0,
+    "sut_requests": 0,
+    "synthetic_sockets": 0,
+    "passed": true,
+    "utc": "2026-10-25T07:43:42.671092Z"
+  },
+  "owner_PUBLIC_v4_error_attempt": {
+    "visibility": "PUBLIC",
+    "kind": "controller_v4_offline_selfcheck",
+    "tests_run": 28,
+    "failures": 0,
+    "errors": 1,
+    "sut_requests": 0,
+    "synthetic_sockets": 0,
+    "passed": false,
+    "utc": "2026-10-25T07:42:25.981114Z"
+  },
+  "existing29_rerun": false,
+  "UTC_defect_closure": "paired mono_before conservative conversion; real dual checks before transport/body/completion/return; continuous supervisor .01sec dualwatch + monoTimer, lag disclosure",
+  "new_P2": "829-HANDOFF-DEADLINE-01",
+  "probe_runs": 1,
+  "probe_path": "tmp/822_review_829_v3/822_v4_scope_return_probe.py",
+  "probe_result": "previous UTC jump denied; valid20s neutral handoff with HTTP15/run120 causes returned incomplete while HTTP recordcomplete/runlive",
+  "SUT_requests": 0,
+  "private_values_or_independent_Git_cases_journals_keys_read": false,
+  "testing_agent_contacted": false,
+  "draft": {
+    "source_path": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/diagnostics-20261025/records/acceptance/829-native-functional-v4-draft-20261025.json",
+    "sha256": "01fb722a181c73f9c592ab22c942e40e186da51b1b27161de5daee19c221bf9a",
+    "admitted": false,
+    "phase": "functional",
+    "expiry": "2026-10-25T08:15:00.000000Z",
+    "wall_seconds": 1800,
+    "requests": 100000,
+    "faults": [],
+    "native_build_identity": "root-supplied exact manifest/archive/runtime hashes, no image",
+    "actual_build_CA_resources_values_independently_opened": false,
+    "activation_not_admitted": true
+  },
+  "provider_review_separate_HEAD": "49ef08a7e726fa163106647b96e415213f2aae8f",
+  "outcome": "FUNCTIONAL_NOT_ADMITTED_PENDING_NEUTRAL_HANDOFF_HTTP_DEADLINE_SEPARATION;DRAFT_REMAINS_FALSE"
+}

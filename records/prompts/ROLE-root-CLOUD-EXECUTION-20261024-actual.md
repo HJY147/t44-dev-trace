@@ -1,0 +1,32 @@
+# 总协调实际云执行提示词留痕
+
+操作者为 AI 总协调；不是学生亲自编码、调试或撰写研究报告。用户已经批准两台临时机器、官方 Workbench 角色及20元实际预算；沿用17:00自动释放，不扩展权限或费用。下列为实际任务内容的归纳，不伪称逐字原始用户 prompt。
+
+## 权限故障与职责分离
+
+实际向审核岗说明：迁移在导入 t44.cli 前失败，先用 network-none、read-only、cap-drop 的非root镜像探针确认权限；只有确认原因后，按 C 的 Git 清单恢复公开源码的标准权限，不遍历 .git/.env 或私有文件；保留旧镜像和失败原件，再重建和单独迁移。审核岗补发现前端两个配置也受影响，并撤销“前端已构建就可启动”的假设。责任是 AI 实现和审核漏查，不能改写为学生发现。
+
+实际向后端岗下发固定 synthetic fixture launcher：准确 C、两个显式 Compose -f、三份哈希锁定只读公开输入、UID10001私有输出；不打印凭据、不seed、不自动重试；失败保留 pending 密文，先观察账号是否提交。先设计，再实现、静态检查、审核、云执行，最终三账号成功。
+
+## 测试上下文独立
+
+新测试实例 fork_turns=none，先冻结用例和量测方法，再交付中性环境。协调员只复制、分块、哈希及重新组装 opaque 原始字节，不解包、不搜索字符串、不读取私有用例、密钥或日志。公开物流代码可以审核；测试原始结果通过密文回传给测试员自己认证解密。共享机器中的root在技术上仍有访问能力，因此只能称流程及上下文隔离，不冒称密码学或操作系统隔离全部私有材料。
+
+实际向测试员转交公开诊断事实：/sys/class/net仍是宿主挂载视图；当前 netns 应用 if_nameindex/proc/ioctl 核验。v2在降权后读取 /proc/1/ns/net 被Linux权限拒绝，先用只读公开探针实测，v3以root先缓存可信host/isolated身份，降权后要求current保持同一isolated且异于host，并继续核lo DOWN、能力为0和NNP。只修公开物流，原用例、冻结方法和失败记录不改。
+
+测试员未接收旧性能数字、开发讨论、预期缺陷或“应当通过”断言。72项离线校准在真实负载机通过只代表工具准备，不代表应用验收。正式负载仍须满足原并发、预热及持续量测门槛；窗口不足项写NOT_RUN，不能缩短门槛或用局部代替全通过。
+
+
+## 17:27 actual checkpoint
+
+Root relayed reviewed scheduler stop/rotation/start and encrypted independent synthetic service fixture, then started host-network resource series and verified both actual first samples. First formal entry failed after one second. Root did not read private errors or test code; recovered complete960B ciphertext and1245B metadata, matched both hashes and requested private tester diagnosis. Original failure and truthful missing performance result preserved. User confirmed default Downloads delivery; only the expected named encrypted file was located and hashed. Root integrated role commits while diagnosis continued; no product-C changes or standards reduced.
+
+
+## Independent oracle evidence and fresh review
+
+A released test report established that the first failure was an unsupported cross-field equality invariant, not proven product nonconformance. Root retained the original test freeze/run, dispatched only that published finding one-way to backend for an independent code-level correlation design, and started a separate fork-none test instance841 with original authority, neutral environment and immutable reusable independent artifacts. It receives no development source/discussions, old performance outcomes or expected defects. It must establish normative support before freezing a revised round; no case/standard change for a passing score. All original counts remain1 actual HTTPS,0 completed formal cohorts. This is AI test-design error and AI coordination work, not student-authored reflection.
+
+
+## Complete evidence recovery and bounded extension
+
+Root never treated driver0 as application acceptance. The new flow/validation entries exited after132s/31s, so a600s steady interval remains unproven pending independent analysis. Root retained both sealed results, copied only four explicit encrypted files plus opaque metadata through a reviewed byte-only USTAR helper, and verified the user-downloaded4,741,120B whole archive. No testcase/log/driver/key was read. The original key holder performs deterministic authentication/decryption only; fresh841 analyzes the new raw evidence. Both real samplers completed353/314 samples with0collection errors and full raw archives were prepared. The cloud vendor repeated an SMS challenge during a delayed19:00 schedule; user completed it and both actual success receipts were observed. Original test deadlines/failures were not rewritten; third cohort remains NOT_RUN.

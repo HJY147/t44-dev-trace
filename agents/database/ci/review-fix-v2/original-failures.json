@@ -1,0 +1,76 @@
+{
+  "source": "Original hosted Actions job logs and downloaded static artifacts",
+  "failures": [
+    {
+      "run_id": 39938428158,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938428158",
+      "head": "3ed3f72b15e70276be7681b02c04afa0ed20cdb7",
+      "results": [
+        {
+          "code": "67         token = pop()\n68         if token == \"(\":\n69             left = parse()\n",
+          "col_offset": 20,
+          "end_col_offset": 23,
+          "filename": "backend/t44/persistence/migrations.py",
+          "issue_confidence": "MEDIUM",
+          "issue_cwe": {
+            "id": 259,
+            "link": "https://cwe.mitre.org/data/definitions/259.html"
+          },
+          "issue_severity": "LOW",
+          "issue_text": "Possible hardcoded password: '('",
+          "line_number": 68,
+          "line_range": [
+            68
+          ],
+          "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html",
+          "test_id": "B105",
+          "test_name": "hardcoded_password_string"
+        }
+      ]
+    },
+    {
+      "run_id": 39938417442,
+      "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/39938417442",
+      "head": "3ed3f72b15e70276be7681b02c04afa0ed20cdb7",
+      "results": [
+        {
+          "code": "67         token = pop()\n68         if token == \"(\":\n69             left = parse()\n",
+          "col_offset": 20,
+          "end_col_offset": 23,
+          "filename": "backend/t44/persistence/migrations.py",
+          "issue_confidence": "MEDIUM",
+          "issue_cwe": {
+            "id": 259,
+            "link": "https://cwe.mitre.org/data/definitions/259.html"
+          },
+          "issue_severity": "LOW",
+          "issue_text": "Possible hardcoded password: '('",
+          "line_number": 68,
+          "line_range": [
+            68
+          ],
+          "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html",
+          "test_id": "B105",
+          "test_name": "hardcoded_password_string"
+        }
+      ]
+    }
+  ],
+  "fix": "Rename CHECK parser token variable to lexeme; no nosec or checker policy changes",
+  "local_execution": "No pytest/MySQL/seed/HTTP/build during active performance window",
+  "command_errors": [
+    "Initial second run metadata lookup misspelled owner HJ147 and returned404; retried HJY147 successfully.",
+    "Initial gh api log downloads rejected ANSI escapes; retried --allow-escape-sequences successfully.",
+    "Initial read of nonexistent verify_static.py corrected to static.py."
+  ],
+  "sha256": {
+    "39938417442/bandit.json": "718b73f6d64fd6ab18780823f45fa74f47b724e39de7ee676b669d9aadfb3b70",
+    "39938417442/run.json": "197e963084382c85c6adbb7db2dc069feb8707ee187087e2826670fdf8d59501",
+    "39938417442/static-console.log": "53687b9d68e6748c555ce04ff7aaeb8d308cddd10ccbb918114d67811ae06c44",
+    "39938417442/static-job.log": "3a10f991fc91a4d1ef089a5ca44b7b72fe7a7f431ec0e7ea791a5c4b8f8f71b3",
+    "39938428158/bandit.json": "dd7e7c4d17ad53f60a4185fb34ca2563450ec47c3e1e7643096c534ecc83d7ea",
+    "39938428158/run.json": "d6fa26368fc854874d0f0834e25d82086326880a5bf098ae7554c12449f2606c",
+    "39938428158/static-console.log": "d251d2b88906a11e4bad4c85ae0f9ef587dbc822be02fbed40e1ec07f0a110c7",
+    "39938428158/static-job.log": "f041e3c84510cb050d7e56976612f8e27d1161e216195163b1825265a85844b0"
+  }
+}

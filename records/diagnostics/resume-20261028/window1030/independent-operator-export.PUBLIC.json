@@ -1,0 +1,87 @@
+{
+  "Linux52_rerun": false,
+  "SUT_requests_by_export": 0,
+  "VM_not_stopped": true,
+  "allocation_after": {
+    "allocated_bytes": 2147487744,
+    "available_bytes": 2023284736,
+    "disk_major_minor": [
+      7,
+      4
+    ],
+    "logical_bytes": 2147483648
+  },
+  "functional_rerun": false,
+  "kind": "ONE_SHOT_OPERATOR_ONLY_EVIDENCE_EXPORTED_NOT_SUT",
+  "receipt": {
+    "Linux52_rerun": false,
+    "SUT_requests_by_export": 0,
+    "effective_kernel_limits": {
+      "AS_is_conservative_RSS_upper_bound": true,
+      "RLIMIT_AS_hard": 2147483648,
+      "RLIMIT_AS_soft": 2147483648,
+      "RLIMIT_RSS_not_used": true,
+      "SUT_admitted": false,
+      "UID10001_available_bytes": 2023337984,
+      "cgroup": "v2",
+      "cgroup_memory_hard_bytes": 2147483648,
+      "disk_major_minor": [
+        7,
+        4
+      ],
+      "filesystem_available_inodes": 130993,
+      "filesystem_total_bytes": 2040373248,
+      "memory_plus_swap_total_hard_bytes": 2147483648,
+      "pids_hard": 256,
+      "tmpfs_total_bytes": 67108864
+    },
+    "export_nonce": "e868c13f02182065f67b65f92b47238f0a2753dcf475f207",
+    "functional_rerun": false,
+    "initial_receiver_private_RSA_exported": false,
+    "kind": "OPERATOR_ONLY_ORIGINAL_EVIDENCE_OPAQUE",
+    "opaque_bytes": 45972,
+    "opaque_file": "/root/t44-r9/independent-v11-r28-01/functional-r28-02/disk/opaque-export-r01/functional-original-evidence.T44FEV01.opaque",
+    "opaque_sha256": "2a2067f2c1102300c309af8da6682351994d7d5bfad9a29830709e6f1aa9a714",
+    "operator_public_key_sha256": "cc991a707a0966b730b01a7aea51eefe5ae493672f2de81c17684553daf108ab",
+    "original_file_bytes": 131462,
+    "original_file_count": 70,
+    "original_input_and_output_files_preserved": true,
+    "payload_gzip_bytes": 44729,
+    "payload_gzip_sha256": "abcf6a636bc248edab7e54ca4c96f5f2463c4dc08e3214ed05fb042bb150ab75",
+    "provider_known_input_AES_key_used": false,
+    "root_functional_grant_sha256": "27add7ed236fe2e8a9b19317bd6ec586fbdc6025745771f67856fe3217e9689d",
+    "selected_sources_complete": true,
+    "source_phase_final_sha256": "973ae7c84858253c30d25f2c8ef147e9345b6faab8782e823deebdcc32a39f10",
+    "unreadable_original_count": 0,
+    "visibility": "PUBLIC"
+  },
+  "receiver_RSA_stays_Linux": true,
+  "source_private_files_unchanged": true,
+  "stopped": {
+    "OOMKilled": false,
+    "container_id": "630068bbc7304dba578bc5ff4fa96ad903d58154775abd2f2c466312151d23bb",
+    "exit_code": 0,
+    "finished_at": "2026-10-28T10:23:42.676232952Z",
+    "log_driver": "none",
+    "memory_bytes": 2147483648,
+    "memory_plus_swap_total_bytes": 2147483648,
+    "network": "none",
+    "readonly_rootfs": true,
+    "role": "export",
+    "running": false,
+    "status": "exited",
+    "user": "10001:10001"
+  },
+  "visibility": "PUBLIC",
+  "PUBLIC_terminal_file": "/root/t44-r9/independent-v11-r28-01/functional-r28-02/evidence-export-r01/PUBLIC/final.PUBLIC.json",
+  "PUBLIC_terminal_file_bytes": 2328,
+  "PUBLIC_terminal_file_sha256": "d71122b61e5632fbd8029ce9689e93dbf295a7c67d45e9213c3507e99c005e32",
+  "root_projection": {
+    "kind": "derived metadata projection, not original UI bytes",
+    "opaque_first_chunk_removed": true,
+    "source_ui_terminal_bytes": 14879,
+    "source_ui_terminal_sha256": "28687dd9401495ce4e0de5d29b182e118210fd8897171d549ac1183f1a08ac5f",
+    "whole_opaque_transported_and_verified": true,
+    "root_did_not_decrypt": true
+  }
+}

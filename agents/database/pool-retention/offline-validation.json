@@ -1,0 +1,62 @@
+{
+  "at_utc": "2026-10-23T22:59:17.050237+00:00",
+  "tool_commit": "14490fe3a457afcccc0126189222b53a7fa08824",
+  "tool_sha256": "54cbdf42e0e23e3af1e78ea598ae1ef738fab994f7e52c3838b78af4352bc894",
+  "scope": "offline only; actual QueuePool2.1.6 with synthetic DBAPI, synthetic ASGI and mocked subprocess/socket/DB preflight; no HTTP/SQL or load",
+  "import_safe": true,
+  "settings_copy_and_peak15": true,
+  "lifecycle": {
+    "A": {
+      "phase_counts": {
+        "startup": {},
+        "warmup": {
+          "connect": 15,
+          "close": 10
+        },
+        "steady": {
+          "ping": 5,
+          "connect": 10,
+          "close": 10
+        },
+        "cleanup": {
+          "close": 5
+        },
+        "unclassified": {}
+      },
+      "failed_calls": 0,
+      "ping_returned_false": 0,
+      "peak_open": 15,
+      "open_after_dispose": 0,
+      "before_dispose": {
+        "checked_out": 0
+      }
+    },
+    "B": {
+      "phase_counts": {
+        "startup": {},
+        "warmup": {
+          "connect": 15
+        },
+        "steady": {
+          "ping": 15
+        },
+        "cleanup": {
+          "close": 15
+        },
+        "unclassified": {}
+      },
+      "failed_calls": 0,
+      "ping_returned_false": 0,
+      "peak_open": 15,
+      "open_after_dispose": 0,
+      "before_dispose": {
+        "checked_out": 0
+      }
+    }
+  },
+  "asgi_phase_and_return_transparent": true,
+  "invalid_cli_cases_rejected": 4,
+  "controller_fixed_ABBA_32_1s4s": true,
+  "synthetic_failure_stops_and_cleans": true,
+  "nearest_rank_p95": true
+}

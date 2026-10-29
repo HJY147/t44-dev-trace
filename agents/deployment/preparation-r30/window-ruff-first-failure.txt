@@ -1,0 +1,11 @@
+Actual first combined lint result (2026-10-29, after 7 window boundaries passed):
+
+UP017 [*] Use `datetime.UTC` alias
+  --> tmp/761_deployment_preparation_r30/test_r30_window.py:24:46
+Found 1 error.
+[*] 1 fixable with the `--fix` option.
+
+Corrected the deployment-owned test import to UTC. The runtime adapter keeps
+timezone.utc with its explicit Python3.10 compatibility annotation. No product,
+CI assertion, or runtime contract changed. This file records the real lint failure;
+it is not a failed image build or SUT test.

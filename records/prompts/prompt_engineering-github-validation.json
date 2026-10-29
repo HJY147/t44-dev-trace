@@ -1,0 +1,85 @@
+{
+  "kind": "documentation_static_validation",
+  "at": "2026-10-23T13:18:00+08:00",
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "records/prompts/U002-optimized.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "records/prompts/U002-changes.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "docs/prompting/highlight-candidates.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "records/prompts/ROLE-prompt_engineering-GITHUB-v1.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "agents/prompt_engineering/WORKLOG.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "reports/modules/prompt_engineering.md",
+      "passed": true
+    },
+    {
+      "check": "file_exists_utf8_nonempty",
+      "path": "records/handoffs/prompt_engineering.json",
+      "passed": true
+    },
+    {
+      "check": "handoff_required_fields",
+      "passed": true
+    },
+    {
+      "check": "still_unimplemented",
+      "passed": true
+    },
+    {
+      "check": "actual_dispatch_recorded",
+      "passed": true
+    },
+    {
+      "check": "U002_optimization_proposed_with_U003",
+      "passed": true
+    },
+    {
+      "check": "module_report_30_to_60_lines",
+      "value": 53,
+      "passed": true
+    },
+    {
+      "check": "source_hash_unchanged",
+      "path": "records/prompts/U002-original.md",
+      "value": "54db3212d69faa2c75201f4fc88dbcd8b0bfd0245eb69f8f5c18da3094bb0c55",
+      "passed": true
+    },
+    {
+      "check": "source_hash_unchanged",
+      "path": "records/prompts/U003-original.md",
+      "value": "9af1aba831ac54641e3219e0b0f835cd9aaddfac46add05d5cb75a65e4f74721",
+      "passed": true
+    },
+    {
+      "check": "artifact_references_exist",
+      "passed": true
+    }
+  ],
+  "not_performed": [
+    "Git commit/push/PR",
+    "远端仓库复核",
+    "产品实现与模块/集成/独立测试"
+  ],
+  "scope": "仅本岗提示词与亮点候选资料静态检查，不证明产品完成或协作效果"
+}

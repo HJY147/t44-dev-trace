@@ -1,0 +1,52 @@
+F
+=================================== FAILURES ===================================
+_________________ test_complete_delivery_rollback_rework_http __________________
+
+application = (<starlette.testclient.TestClient object at 0x109364140>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x108fd85c0>)
+
+    def test_complete_delivery_rollback_rework_http(application):
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+>       task = create_task(client, tokens, pid, iid)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/contracts/test_http.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+backend/tests/contracts/test_http.py:49: in create_task
+    return request(client, 'createTask', token=tokens['manager'], project_id=pid,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = <starlette.testclient.TestClient object at 0x109364140>
+operation = 'createTask', token = '<redacted ephemeral self-test session>'
+body = {'title': 'Implement synthetic task', 'owner_id': 2, 'iteration_id': 1, 'plan': {'planned_start': '2026-10-23T00:00:00Z', 'planned_end': '2026-10-25T00:00:00Z', 'estimated_hours': 8, 'buffer_hours': 1, ...}, ...}
+key = None, expect = 201, path = {'project_id': 1}
+
+    def request(client, operation, *, token=None, body=None, key=None, expect=None, **path):
+        op = OPERATIONS[operation]
+        headers = {'Authorization': f'Bearer {token}'} if token else {}
+        if any(p.get('$ref', '').endswith('/IdempotencyKey') for p in op.get('parameters', [])):
+            headers['Idempotency-Key'] = key or str(uuid4())
+        response = client.request(op['method'], '/api/v1' + op['path'].format(**path), headers=headers, json=body)
+        if expect is not None:
+>           assert response.status_code == expect, response.text
+E           AssertionError: {"code":"INTERNAL_ERROR","message":"Internal error","request_id":"eebf1670-9b62-47fe-a0a8-74f9b3af28c5","audit_id":9,"current_version":null,"current_state":null,"original_error_code":null,"violations":[]}
+E           assert 500 == 201
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+backend/tests/contracts/test_http.py:24: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    t44.audit:runtime.py:185 internal_error request_id=eebf1670-9b62-47fe-a0a8-74f9b3af28c5 operation=createTask
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/contracts/test_http.py::test_complete_delivery_rollback_rework_http
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend/t44/persistence/rows.py:99: SAWarning: Column 'tasks.id' is marked as a member of the primary key for table 'tasks', but has no Python-side or server-side default generator indicated, nor does it indicate 'autoincrement=True' or 'nullable=True', and no explicit value is passed.  Primary key columns typically may not store NULL.
+    with self._session().execute(statement) as result:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend/tests/contracts/test_http.py::test_complete_delivery_rollback_rework_http
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 2 warnings in 0.28s

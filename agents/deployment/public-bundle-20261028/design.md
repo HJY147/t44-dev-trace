@@ -1,0 +1,11 @@
+# 单一PUBLIC部署传输包设计
+
+root授权只合并已提交PUBLIC安装原件，避免每端6+4+7次API读取：20Z部署profile/GEN原件固定c1303016a053d5b718d3df30ce5911d2e002c18c；scope-bridge-v3-budget固定5f6791308772cab9b53b3eba46acc1d2b1f91831/manifest e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7；P64/ui03固定7779681010de99cbb4d5946ded9c4bcd5f8ae132，runtime2af6444892171c1004474379dff699f3ede876c6e7d55e85b72125cbce4626de/delivery305c5a722ee94d1339b2400a292bbc83416e6c40ba3c0a4b7fc49efdcfd41352。e551只是manifest SHA，不是可当commit的引用，来源commit由backend明确提供。仅读这三个批准PUBLIC目录的安装片及运行manifest，不读测试、XML、fixture、材料、账号、session、authority、原始云证据。
+
+包只收profile六原片与原profile/delivery/transport manifest、scope四原install片与原runtime/delivery manifest、P64七原raw片与原runtime/delivery manifest。raw片已是可执行完整shell，P64 ui片已双层封装，不再次打包它。运行代码已逐字嵌入原片；不会另复制测试或复刻任何安装算法。新bundle manifest记每个原件的完整commit/path/bytes/SHA及原目标和顺序；外层tar.gz固定字节，wrapper先核整包再内存读取每个regular file和全部hash，之后按原17片顺序bash。
+
+root确认APP/LOAD都要全部三组，原新目标均未创建：/root/t44-r9/v4-code-20261028-03/profile、/root/t44-r9/scope-bridge-v3-01、/root/t44-r9/p790-f7-2000-ui03。桥三步骤LOAD.prepare→APP.provision→LOAD.deliver只说明未来使用，不调用callback、bootstrap、GEN prepare或服务。旧16Z profile02不碰。
+
+每端一条2–3KB小shell，用root已验证curl api.github.com Accept application/vnd.github.raw+json +官方API版本；正常TLS、不用Token、不走失败的rawGithub域名。一curl响应若raw则原样，若JSON则严格base64解码同一响应；不用第二网络请求。完整tar包SHA/bytes和各原件SHA全过后才执行，不extractall，不覆盖旧目标；下载响应留新私有临时目录以保留失败。包先固定commit，后封引用该准确commit的APP/LOAD wrapper，完整outer编码另实算。
+
+本地真实回放所有原安装：仅在测试执行边界临时替换三个完整目标为项目tmp/793下新目录，源码压缩payload和安装算法不改，完成后按原runtime manifest核5/9/13文件完整字节/权限；raw和JSON路线分别测。负例整包或单件hash失败必须0执行。无云访问、起服务、新CI或SUT/独立私件读取。四件记录、实际commit/push，不把本地curl路线模拟写成云网络实跑。

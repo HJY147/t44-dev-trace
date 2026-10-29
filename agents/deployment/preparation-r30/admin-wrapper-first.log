@@ -1,0 +1,34 @@
+test_cli_duplicate_failure_retains_first_account_and_all_prefixes (test_admin_wrapper.AdminWrapper.test_cli_duplicate_failure_retains_first_account_and_all_prefixes) ... FAIL
+test_counts_lock_covers_complete_real_surrogate_process (test_admin_wrapper.AdminWrapper.test_counts_lock_covers_complete_real_surrogate_process) ... ok
+test_init_accounts_serializes_actual_cli_main_json (test_admin_wrapper.AdminWrapper.test_init_accounts_serializes_actual_cli_main_json) ... ERROR
+test_live_admission_failure_has_no_child_or_completion (test_admin_wrapper.AdminWrapper.test_live_admission_failure_has_no_child_or_completion) ... ok
+test_modified_producer_is_refused_before_child (test_admin_wrapper.AdminWrapper.test_modified_producer_is_refused_before_child) ... ok
+test_old_source_is_refused_before_child (test_admin_wrapper.AdminWrapper.test_old_source_is_refused_before_child) ... ok
+test_wrong_namespace_pair_is_refused_before_child (test_admin_wrapper.AdminWrapper.test_wrong_namespace_pair_is_refused_before_child) ... ok
+
+======================================================================
+ERROR: test_init_accounts_serializes_actual_cli_main_json (test_admin_wrapper.AdminWrapper.test_init_accounts_serializes_actual_cli_main_json)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/758_deployment_neutral_admin_r30/test_admin_wrapper.py", line 243, in test_init_accounts_serializes_actual_cli_main_json
+    result = self.invoke(args)
+             ^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/758_deployment_neutral_admin_r30/test_admin_wrapper.py", line 222, in invoke
+    return W.run_admin(args, runner=runner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/deployment/cloud-reuse/r30-neutral-admin.py", line 330, in run_admin
+    raise RuntimeError("ADMIN_CHILD_FAILED_NO_RETRY_PREFIX_PRESERVED")
+RuntimeError: ADMIN_CHILD_FAILED_NO_RETRY_PREFIX_PRESERVED
+
+======================================================================
+FAIL: test_cli_duplicate_failure_retains_first_account_and_all_prefixes (test_admin_wrapper.AdminWrapper.test_cli_duplicate_failure_retains_first_account_and_all_prefixes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/758_deployment_neutral_admin_r30/test_admin_wrapper.py", line 257, in test_cli_duplicate_failure_retains_first_account_and_all_prefixes
+    self.assertEqual(len(self.child_calls), 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.981s
+
+FAILED (failures=1, errors=1)

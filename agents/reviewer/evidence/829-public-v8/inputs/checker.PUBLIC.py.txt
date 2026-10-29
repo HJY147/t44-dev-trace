@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Generic offline paging/resource checks; no case import, socket or SUT.
+Only the generic Suite.page method is AST-extracted from the explicitly named frozen source.
+"""
+import argparse,ast,base64,datetime as dt,hashlib,importlib.util,json,pathlib,sys,tempfile
+sys.dont_write_bytecode=True
+class NotProven(Exception):pass
+class Journal:
+    def __init__(self):self.records=[]
+    def append(self,r):self.records.append(r)
+
+def load_control(root):
+    p=pathlib.Path(root)/'PUBLIC/control.py';spec=importlib.util.spec_from_file_location('offline_control_'+hashlib.sha256(str(p).encode()).hexdigest()[:8],p);m=importlib.util.module_from_spec(spec);sys.modules[spec.name]=m;spec.loader.exec_module(m);return m
+
+def page_function(root,control):
+    text=(pathlib.Path(root)/'private/suite.py').read_text();tree=ast.parse(text);cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Suite');fn=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='page')
+    module=ast.Module(body=[fn],type_ignores=[]);ast.fix_missing_locations(module);env={'NotProven':NotProven,'PaginationObservation':getattr(control,'PaginationObservation',None)};exec(compile(module,'<generic-page-only>','exec'),env);return env['page']
+
+def page_rows(total,ids,page,size=100):return {'total':total,'page':page,'page_size':size,'items':[{'id':x} for x in ids]}
+
+def pagination_cases():
+    stable=[page_rows(205,range(1,101),1),page_rows(205,range(101,201),2),page_rows(205,range(201,206),3)]
+    return [
+      ('stable-empty',[page_rows(0,[],1)],False,'stable'),
+      ('stable-single',[page_rows(3,[1,2,3],1)],False,'stable'),
+      ('stable-multipage',stable,False,'stable'),
+      ('stable-exact-boundary',[page_rows(200,range(1,101),1),page_rows(200,range(101,201),2)],False,'stable'),
+      ('legal-append',[page_rows(101,range(1,101),1),page_rows(103,range(101,104),2)],True,'dynamic'),
+      ('append-beyond-initial-page-budget',[page_rows(101,range(1,101),1),page_rows(301,range(101,201),2)],True,'dynamic'),
+      ('legal-delete',[page_rows(205,range(1,101),1),page_rows(204,range(101,201),2),page_rows(204,range(201,205),3)],True,'dynamic'),
+      ('dynamic-default-needs-enumeration',[page_rows(101,range(1,101),1),page_rows(103,range(101,104),2)],False,'not_proven'),
+      ('really-missing-middle',[stable[0],page_rows(205,[],2),stable[2]],False,'not_proven'),
+      ('cross-page-duplicate',[page_rows(200,range(1,101),1),page_rows(200,range(100,200),2)],False,'not_proven'),
+      ('within-page-duplicate',[page_rows(2,[1,1],1)],False,'not_proven'),
+      ('items-exceed-zero-total',[page_rows(0,[1],1)],False,'not_proven'),
+      ('illegal-negative-total',[page_rows(-1,[],1)],True,'invalid'),
+      ('illegal-bool-total',[page_rows(True,[1],1)],True,'invalid'),
+      ('illegal-fractional-total',[page_rows(1.5,[1],1)],True,'invalid'),
+      ('illegal-too-large-total',[page_rows(9007199254740992,[],1)],True,'invalid'),
+      ('wrong-page-echo',[page_rows(1,[1],2)],True,'invalid'),
+      ('wrong-page-size-echo',[page_rows(1,[1],1,99)],True,'invalid')]
+
+def run_pages(root,control):
+    fn=page_function(root,control);results=[]
+    for name,pages,observation_only,wanted in pagination_cases():
+        class Fake:
+            phase='offline';case='GENERIC';journal=Journal();calls=0
+            def ok(self,op,role,query,**ids):
+                self.calls+=1
+                if self.calls>len(pages):raise RuntimeError('unexpected page request outside supplied synthetic sequence')
+                return pages[self.calls-1]
+            def check(self,condition,*args):
+                if not condition:raise AssertionError(' '.join(map(str,args)))
+        fake=Fake();error=None;observation=None
+        try:
+            rows=fn(fake,'syntheticList',observation_only=observation_only);observation=getattr(fake,'last_pagination_observation',None)
+            observed='dynamic' if observation and observation['totals_changed'] else 'stable'
+        except NotProven as e:observed='not_proven';error={'type':type(e).__name__,'message':str(e)};observation=getattr(fake,'last_pagination_observation',None)
+        except (ValueError,AssertionError) as e:observed='invalid';error={'type':type(e).__name__,'message':str(e)}
+        except Exception as e:observed='unexpected_exception';error={'type':type(e).__name__,'message':str(e)}
+        okay=observed==wanted
+        if observation is not None:okay=okay and observation['snapshot_status']=='NOT_PROVEN' and not observation['snapshot_proven'] and fake.calls<=len(pages)
+        results.append({'name':name,'synthetic_pages':pages,'observation_only':observation_only,'expected':wanted,'observed':observed,'request_stub_calls':fake.calls,'exception':error,'observation':observation,'passed':okay})
+    return results
+
+def run_resources(control,temp):
+    begin=dt.datetime(2026,1,1,tzinfo=dt.timezone.utc);end=begin+dt.timedelta(seconds=600)
+    def row(second,cpu=12.5,memory=1024,rid='r'):
+        return {'utc':(begin+dt.timedelta(seconds=second)).isoformat(),'resource_id':rid,'cpu_percent':cpu,'memory_bytes':memory}
+    full=[row(i) for i in range(0,601,10)]
+    fixtures=[('complete-numeric',full,True),('real-zero-numeric',[row(i,0,0) for i in range(0,601,10)],True),('null-only',[row(i,None,None) for i in range(0,601,10)],False),('numeric-with-retained-pending',full+[row(15,None,None)],True),('numeric-endpoints-gap',[row(0),row(600)],False),('one-null-gap',[row(i,None,None) if i==300 else row(i) for i in range(0,601,10)],False),('missing-resource',[row(i,rid='other') for i in range(0,601,10)],False),('bool-is-not-numeric',full+[row(20,False,1024)],False),('negative-is-invalid',full+[row(20,-1,1024)],False),('infinite-is-invalid',full+[row(20,float('inf'),1024)],False),('missing-field',full+[{'utc':begin.isoformat(),'resource_id':'r','cpu_percent':1}],False),('naive-time-invalid',full+[{'utc':'2026-01-01T00:00:00','resource_id':'r','cpu_percent':1,'memory_bytes':1}],False),('null-time-invalid',full+[{'utc':None,'resource_id':'r','cpu_percent':1,'memory_bytes':1}],False),('outside-window-only',[row(-100),row(700)],False)]
+    results=[]
+    for name,rows,wanted in fixtures:
+        raw=b''.join(('  '+json.dumps(r,sort_keys=False)+'  \n').encode() for r in rows);path=temp/(name+'.jsonl');path.write_bytes(raw);events=[]
+        report=control.analyze_resource_jsonl(path,['r'],begin,end,emit=events.append)
+        recovered=b''.join(base64.b64decode(e['raw_b64']) for e in events if e['kind']=='server_resource_jsonl_raw');okay=report['sampled_coverage_proven']==wanted and recovered==raw and report['source_sha256']==hashlib.sha256(raw).hexdigest() and not report['zero_fill'] and not report['interpolation']
+        if name=='numeric-with-retained-pending':okay=okay and report['null_metric_rows']==1 and report['numeric_pair_rows']==61
+        results.append({'name':name,'expected_sampled_coverage':wanted,'observed':report,'exact_raw_bytes_recovered':recovered==raw,'passed':okay})
+    for name,extra in [('partial-tail',b'{"pending":'),('malformed-complete-line',b'not-json\n')]:
+        raw=b''.join((json.dumps(x)+'\n').encode() for x in full)+extra;p=temp/(name+'.jsonl');p.write_bytes(raw);events=[];report=control.analyze_resource_jsonl(p,['r'],begin,end,emit=events.append);recovered=b''.join(base64.b64decode(e['raw_b64']) for e in events if e['kind']=='server_resource_jsonl_raw');results.append({'name':name,'expected_sampled_coverage':False,'observed':report,'exact_raw_bytes_recovered':recovered==raw,'passed':not report['sampled_coverage_proven'] and recovered==raw})
+    return results
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--old-root',required=True);parser.add_argument('--new-root',required=True);parser.add_argument('--output-root',required=True);args=parser.parse_args();out=pathlib.Path(args.output_root)
+    def no_socket(event,args):
+        if event.startswith('socket.'):raise RuntimeError('offline-only: socket event rejected')
+    sys.addaudithook(no_socket)
+    old=load_control(args.old_root);new=load_control(args.new_root);red=run_pages(args.old_root,old);green=run_pages(args.new_root,new)
+    with tempfile.TemporaryDirectory(prefix='generic-resource-',dir=out) as directory:resources=run_resources(new,pathlib.Path(directory))
+    reports={
+      'red-v7.PUBLIC.json':{'visibility':'PUBLIC','kind':'generic-pagination-offline-red','checks':len(red),'passed':sum(x['passed'] for x in red),'failed':sum(not x['passed'] for x in red),'results':red},
+      'green-v8.PUBLIC.json':{'visibility':'PUBLIC','kind':'generic-pagination-resource-offline-green','pagination_checks':len(green),'resource_checks':len(resources),'checks':len(green)+len(resources),'passed':sum(x['passed'] for x in green+resources),'failed':sum(not x['passed'] for x in green+resources),'results':green+resources}}
+    for name,report in reports.items():
+        report.update(actual_sut_requests=0,socket_calls=0,system_clock_changed=False)
+        with (out/name).open('x') as f:json.dump(report,f,ensure_ascii=False,indent=2);f.write('\n')
+        print(json.dumps({k:v for k,v in report.items() if k!='results'}))
+    return bool(reports['green-v8.PUBLIC.json']['failed'])
+if __name__=='__main__':raise SystemExit(main())

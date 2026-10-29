@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://github.com/HJY147/t44-dev-trace/issues/7#issuecomment-6377155221",
+    "body": "一次14400秒本机用户演示已获root新准入并在后台运行，初始交接证据dcad31d32eeeef33e48afe367f8b102c0f845886。工具仍精确62ac2f327e7523ffed69a2bd9f98c87ba2372931/application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25、runtimea251，目标应用bc5/92文件，未采用其他候选源、未改规则/TTL。PR37实时GET已merged/closed、历史head4cee，故历史正文保持不变；本评论记录后来新获准的运行，不把dcad当旧PRhead。\n\nfresh app_20261023_234943_3f9bad/新manifest-cookie-vhost，界面http://127.0.0.1:5178/API18088，与原5173并存。2026-10-23 23:49:43.904838 UTC开始→2026-10-24 03:49:43.904838 UTC（北京时间11:49:43.904838）到期开始清理，实际finished可能稍晚。初始时点已ready/首两新持久scan60.319299s/首次hold额外TTL300轮换23:53:55.380033Z、旧撤销/新tick/锁；API/consumer/UI各1次、scanner3代、4workers。九端口prepare前→serve前→ready身份逐项相同，仅三时点，非未来全时保证；旧16confirmed/26通知仅复核，不称本轮新publish。本长演示未另查全量DB扫描/outbox数，不把wait_scans4条子集当全部扫描。\n\n当前14400演示进行中，实际最终exit/cleanup=null，外部wait/post尚未产生，不能称4h完整通过。后台detached driverPID43819位于.agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023；它只复制参数化既有864/862运维编排，duration14400/外部等待15000、ready基线及最终wait后只读post，无新增案例/公共.py或覆盖旧原件。root在本岗FINAL后监测，agent不等4h。实时状态JSON：.agent-worktrees/.runtime/native-demo-20261023/runs/app_20261023_234943_3f9bad/state/serve-status.json；届时最终driver receipt/post proof/post receipt都在user-demo-20261023目录。\n\n私密.submission-private/完整演示登录说明.md已0600保存入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop命令和状态位置，公开不放密码。证据入口agents/deployment/native-bounded-demo-validation/user-demo-current-capability.json、user-demo-operational-binding.json。初始69public/214private已观察非秘密outputs对26knownliteral匹配0，3实际输出对4账号literal0；仅当时字节，不提前扫描未来4h日志。旧失败360与新成功360原件分别保持，无独立/性能/云或4h最终放行结论。实际prompt ROLE-deployment-NATIVE-BOUNDED-DEMO-v1。",
+    "user": {
+      "login": "HJY147",
+      "name": "HJY147",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+      "id": 204539444
+    },
+    "id": 6377155221,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\">一次14400秒本机用户演示已获root新准入并在后台运行，初始交接证据dcad31d32eeeef33e48afe367f8b102c0f845886。工具仍精确62ac2f327e7523ffed69a2bd9f98c87ba2372931/application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25、runtimea251，目标应用bc5/92文件，未采用其他候选源、未改规则/TTL。PR37实时GET已merged/closed、历史head4cee，故历史正文保持不变；本评论记录后来新获准的运行，不把dcad当旧PRhead。</p>\n<p dir=\"auto\">fresh app_20261023_234943_3f9bad/新manifest-cookie-vhost，界面<a href=\"http://127.0.0.1:5178/API18088%EF%BC%8C%E4%B8%8E%E5%8E%9F5173%E5%B9%B6%E5%AD%98%E3%80%822026-10-23\" rel=\"nofollow\">http://127.0.0.1:5178/API18088，与原5173并存。2026-10-23</a> 23:49:43.904838 UTC开始→2026-10-24 03:49:43.904838 UTC（北京时间11:49:43.904838）到期开始清理，实际finished可能稍晚。初始时点已ready/首两新持久scan60.319299s/首次hold额外TTL300轮换23:53:55.380033Z、旧撤销/新tick/锁；API/consumer/UI各1次、scanner3代、4workers。九端口prepare前→serve前→ready身份逐项相同，仅三时点，非未来全时保证；旧16confirmed/26通知仅复核，不称本轮新publish。本长演示未另查全量DB扫描/outbox数，不把wait_scans4条子集当全部扫描。</p>\n<p dir=\"auto\">当前14400演示进行中，实际最终exit/cleanup=null，外部wait/post尚未产生，不能称4h完整通过。后台detached driverPID43819位于.agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023；它只复制参数化既有864/862运维编排，duration14400/外部等待15000、ready基线及最终wait后只读post，无新增案例/公共.py或覆盖旧原件。root在本岗FINAL后监测，agent不等4h。实时状态JSON：.agent-worktrees/.runtime/native-demo-20261023/runs/app_20261023_234943_3f9bad/state/serve-status.json；届时最终driver receipt/post proof/post receipt都在user-demo-20261023目录。</p>\n<p dir=\"auto\">私密.submission-private/完整演示登录说明.md已0600保存入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop命令和状态位置，公开不放密码。证据入口agents/deployment/native-bounded-demo-validation/user-demo-current-capability.json、user-demo-operational-binding.json。初始69public/214private已观察非秘密outputs对26knownliteral匹配0，3实际输出对4账号literal0；仅当时字节，不提前扫描未来4h日志。旧失败360与新成功360原件分别保持，无独立/性能/云或4h最终放行结论。实际prompt ROLE-deployment-NATIVE-BOUNDED-DEMO-v1。</p>"
+  },
+  {
+    "url": "https://github.com/HJY147/t44-dev-trace/pull/37#issuecomment-6377155474",
+    "body": "一次14400秒本机用户演示已获root新准入并在后台运行，初始交接证据dcad31d32eeeef33e48afe367f8b102c0f845886。工具仍精确62ac2f327e7523ffed69a2bd9f98c87ba2372931/application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25、runtimea251，目标应用bc5/92文件，未采用其他候选源、未改规则/TTL。PR37实时GET已merged/closed、历史head4cee，故历史正文保持不变；本评论记录后来新获准的运行，不把dcad当旧PRhead。\n\nfresh app_20261023_234943_3f9bad/新manifest-cookie-vhost，界面http://127.0.0.1:5178/API18088，与原5173并存。2026-10-23 23:49:43.904838 UTC开始→2026-10-24 03:49:43.904838 UTC（北京时间11:49:43.904838）到期开始清理，实际finished可能稍晚。初始时点已ready/首两新持久scan60.319299s/首次hold额外TTL300轮换23:53:55.380033Z、旧撤销/新tick/锁；API/consumer/UI各1次、scanner3代、4workers。九端口prepare前→serve前→ready身份逐项相同，仅三时点，非未来全时保证；旧16confirmed/26通知仅复核，不称本轮新publish。本长演示未另查全量DB扫描/outbox数，不把wait_scans4条子集当全部扫描。\n\n当前14400演示进行中，实际最终exit/cleanup=null，外部wait/post尚未产生，不能称4h完整通过。后台detached driverPID43819位于.agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023；它只复制参数化既有864/862运维编排，duration14400/外部等待15000、ready基线及最终wait后只读post，无新增案例/公共.py或覆盖旧原件。root在本岗FINAL后监测，agent不等4h。实时状态JSON：.agent-worktrees/.runtime/native-demo-20261023/runs/app_20261023_234943_3f9bad/state/serve-status.json；届时最终driver receipt/post proof/post receipt都在user-demo-20261023目录。\n\n私密.submission-private/完整演示登录说明.md已0600保存入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop命令和状态位置，公开不放密码。证据入口agents/deployment/native-bounded-demo-validation/user-demo-current-capability.json、user-demo-operational-binding.json。初始69public/214private已观察非秘密outputs对26knownliteral匹配0，3实际输出对4账号literal0；仅当时字节，不提前扫描未来4h日志。旧失败360与新成功360原件分别保持，无独立/性能/云或4h最终放行结论。实际prompt ROLE-deployment-NATIVE-BOUNDED-DEMO-v1。",
+    "user": {
+      "login": "HJY147",
+      "name": "HJY147",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/204539444?v=4",
+      "id": 204539444
+    },
+    "id": 6377155474,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\">一次14400秒本机用户演示已获root新准入并在后台运行，初始交接证据dcad31d32eeeef33e48afe367f8b102c0f845886。工具仍精确62ac2f327e7523ffed69a2bd9f98c87ba2372931/application SHA08461886f631e070b206d1533be8be320a90eeea27a0f813795d970f7d9a1e25、runtimea251，目标应用bc5/92文件，未采用其他候选源、未改规则/TTL。PR37实时GET已merged/closed、历史head4cee，故历史正文保持不变；本评论记录后来新获准的运行，不把dcad当旧PRhead。</p>\n<p dir=\"auto\">fresh app_20261023_234943_3f9bad/新manifest-cookie-vhost，界面<a href=\"http://127.0.0.1:5178/API18088%EF%BC%8C%E4%B8%8E%E5%8E%9F5173%E5%B9%B6%E5%AD%98%E3%80%822026-10-23\" rel=\"nofollow\">http://127.0.0.1:5178/API18088，与原5173并存。2026-10-23</a> 23:49:43.904838 UTC开始→2026-10-24 03:49:43.904838 UTC（北京时间11:49:43.904838）到期开始清理，实际finished可能稍晚。初始时点已ready/首两新持久scan60.319299s/首次hold额外TTL300轮换23:53:55.380033Z、旧撤销/新tick/锁；API/consumer/UI各1次、scanner3代、4workers。九端口prepare前→serve前→ready身份逐项相同，仅三时点，非未来全时保证；旧16confirmed/26通知仅复核，不称本轮新publish。本长演示未另查全量DB扫描/outbox数，不把wait_scans4条子集当全部扫描。</p>\n<p dir=\"auto\">当前14400演示进行中，实际最终exit/cleanup=null，外部wait/post尚未产生，不能称4h完整通过。后台detached driverPID43819位于.agent-worktrees/.runtime/native-demo-20261023/user-demo-20261023；它只复制参数化既有864/862运维编排，duration14400/外部等待15000、ready基线及最终wait后只读post，无新增案例/公共.py或覆盖旧原件。root在本岗FINAL后监测，agent不等4h。实时状态JSON：.agent-worktrees/.runtime/native-demo-20261023/runs/app_20261023_234943_3f9bad/state/serve-status.json；届时最终driver receipt/post proof/post receipt都在user-demo-20261023目录。</p>\n<p dir=\"auto\">私密.submission-private/完整演示登录说明.md已0600保存入口/准确版本/有效截止/双合成项目范围/普通合成账号/提前stop命令和状态位置，公开不放密码。证据入口agents/deployment/native-bounded-demo-validation/user-demo-current-capability.json、user-demo-operational-binding.json。初始69public/214private已观察非秘密outputs对26knownliteral匹配0，3实际输出对4账号literal0；仅当时字节，不提前扫描未来4h日志。旧失败360与新成功360原件分别保持，无独立/性能/云或4h最终放行结论。实际prompt ROLE-deployment-NATIVE-BOUNDED-DEMO-v1。</p>"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "control_sha256": "3a1de1e9080937d0c6195caae6c7ead04e8a88ec158bf39934d5b69780e0579d",
+  "method": "real PUBLIC Gate with fake transport and simulated time only",
+  "actual_socket_calls": 0,
+  "SUT_requests": 0,
+  "private_files_read": false,
+  "grant_expiry_after_seconds": 1,
+  "grant_wall_seconds": 2,
+  "requested_socket_timeout_seconds": 0.1,
+  "simulated_transport_duration_seconds": 61,
+  "returned_status": 200,
+  "returned_complete": true,
+  "returned_error": null,
+  "fake_connection_close_calls": 1,
+  "finding": "PUBLIC Gate does not itself enforce a total in-flight deadline",
+  "not_proven": "actual socket/TLS behavior or private suite watchdog behavior"
+}

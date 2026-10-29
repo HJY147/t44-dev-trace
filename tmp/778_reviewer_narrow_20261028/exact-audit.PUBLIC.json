@@ -1,0 +1,122 @@
+{
+  "operator": "AI reviewer",
+  "cloud_or_SUT_or_independent_private_access": false,
+  "product": [
+    {
+      "file": "backend/t44/services/reviews.py",
+      "helper": "_assessment_versions",
+      "inlined_calls": 2,
+      "whole_module_AST_equal_after_exact_inlining": true
+    },
+    {
+      "file": "backend/t44/services/tasks.py",
+      "helper": "_editable_task",
+      "inlined_calls": 3,
+      "whole_module_AST_equal_after_exact_inlining": true
+    }
+  ],
+  "unchanged_original_HTTP_test": {
+    "sha256": "754739a7f0292856fe902ac51bfdae2a31d4a10ae9fe281007576e05a80c25bf",
+    "assert_AST_count": 187
+  },
+  "P64": {
+    "manifest_sha256": "2af6444892171c1004474379dff699f3ede876c6e7d55e85b72125cbce4626de",
+    "identical_runtime_files": [
+      "790_budget.py",
+      "790_consumer.py",
+      "790_host.py",
+      "790_load.py",
+      "790_producer.py",
+      "790_receive.py",
+      "data/790_select.py",
+      "data/790_stage1.py",
+      "edge/790_stage2.py"
+    ],
+    "only_exact_deadline_or_label_changed": [
+      "790_bootstrap.py",
+      "edge/790_authority.py",
+      "edge/790_http.py",
+      "transport/790_transfer.py"
+    ],
+    "business_algorithms_and_thresholds_unchanged": true
+  },
+  "P64_delivery": {
+    "delivery_sha256": "305c5a722ee94d1339b2400a292bbc83416e6c40ba3c0a4b7fc49efdcfd41352",
+    "parts": [
+      {
+        "part": "raw-part01.PUBLIC.sh",
+        "raw_bytes": 9393,
+        "encoded_plus300": 12824,
+        "whole_UI_plus300": 12946
+      },
+      {
+        "part": "raw-part02.PUBLIC.sh",
+        "raw_bytes": 11750,
+        "encoded_plus300": 15968,
+        "whole_UI_plus300": 16090
+      },
+      {
+        "part": "raw-part03.PUBLIC.sh",
+        "raw_bytes": 11418,
+        "encoded_plus300": 15524,
+        "whole_UI_plus300": 15646
+      },
+      {
+        "part": "raw-part04.PUBLIC.sh",
+        "raw_bytes": 6194,
+        "encoded_plus300": 8560,
+        "whole_UI_plus300": 8682
+      },
+      {
+        "part": "raw-part05.PUBLIC.sh",
+        "raw_bytes": 10966,
+        "encoded_plus300": 14924,
+        "whole_UI_plus300": 15046
+      },
+      {
+        "part": "raw-part06.PUBLIC.sh",
+        "raw_bytes": 8354,
+        "encoded_plus300": 11440,
+        "whole_UI_plus300": 11562
+      },
+      {
+        "part": "raw-part07.PUBLIC.sh",
+        "raw_bytes": 9505,
+        "encoded_plus300": 12976,
+        "whole_UI_plus300": 13098
+      }
+    ],
+    "all14_installed_bytes_equal_exact_runtime_and_manifest": true,
+    "executed_installer": false
+  },
+  "deployment": {
+    "profile_sha256": "60660d2a10c6aba9de92bf843270e95ab2014292badc88d6579eac70224e3e66",
+    "identical_files": [
+      "backend-upgrade.py",
+      "mysql-budget.py",
+      "source-artifact-receive.py"
+    ],
+    "only_deadline_and_GEN_hash_changed": [
+      "generation.py",
+      "resource-stream.py"
+    ],
+    "builder_has_no_deadline_binding_strings": true,
+    "whole_wrapper_bytes": 2567,
+    "whole_wrapper_encoded_plus256": 3680,
+    "actual_image_reused_or_verified": false
+  },
+  "own_fixed_cloc": {
+    "baseline": {
+      "commit": "f7cdb5fa3b19f84d8ab0d0b042bf51a5b8484e8f",
+      "files": 65,
+      "code": 5898
+    },
+    "candidate": {
+      "commit": "5cd0ad43d93bb9066e67bda04337815e6f6fa1b1",
+      "files": 65,
+      "code": 5894
+    }
+  },
+  "size_range_passed": false,
+  "full_CI_native_MySQL_cloud_or_formal_execution": false
+}

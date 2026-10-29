@@ -1,0 +1,327 @@
+{
+  "candidate": "ead155e6204de9004bc968e9b9648358cfed75f8",
+  "terminal_E": "14a61c4e771042adc6113942723782f71568e432",
+  "run": {
+    "id": 40088982094,
+    "head_sha": "ead155e6204de9004bc968e9b9648358cfed75f8",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1
+  },
+  "live_connector_metadata_matches_E": true,
+  "all_four_live_jobs_and_steps_success": true,
+  "official_ZIPs_independently_downloaded_and_preverified": [
+    {
+      "id": 12558570445,
+      "name": "contracts-ead155e6204de9004bc968e9b9648358cfed75f8",
+      "bytes": 20105,
+      "official_digest": "sha256:3fad4c4facda49734eb25fd1558c50cdcf6a3b17d7e6018469d2740749e76d90",
+      "download_sha256": "3fad4c4facda49734eb25fd1558c50cdcf6a3b17d7e6018469d2740749e76d90",
+      "digest_and_bytes_verified_before_any_ZIP_open": true,
+      "download_method": "readonly gh api official artifact endpoint;no CI run triggered"
+    },
+    {
+      "id": 12558480899,
+      "name": "frontend-ead155e6204de9004bc968e9b9648358cfed75f8",
+      "bytes": 86591,
+      "official_digest": "sha256:6c2f921a61bf3e9edc340a0b03f0852ea0bd18650bd5b08984d64878f61f1b9c",
+      "download_sha256": "6c2f921a61bf3e9edc340a0b03f0852ea0bd18650bd5b08984d64878f61f1b9c",
+      "digest_and_bytes_verified_before_any_ZIP_open": true,
+      "download_method": "readonly gh api official artifact endpoint;no CI run triggered"
+    },
+    {
+      "id": 12558425536,
+      "name": "static-ead155e6204de9004bc968e9b9648358cfed75f8",
+      "bytes": 3414,
+      "official_digest": "sha256:cffa276154c07661d1b6b0af9fddce052f3dc4376bb2cf90373fc1620e176258",
+      "download_sha256": "cffa276154c07661d1b6b0af9fddce052f3dc4376bb2cf90373fc1620e176258",
+      "digest_and_bytes_verified_before_any_ZIP_open": true,
+      "download_method": "readonly gh api official artifact endpoint;no CI run triggered"
+    },
+    {
+      "id": 12557938162,
+      "name": "coverage-ead155e6204de9004bc968e9b9648358cfed75f8",
+      "bytes": 339977,
+      "official_digest": "sha256:675beec32434c1fb58d526b7f15d5b5a6771e1cf641185c5b25ef0eb2fd8f476",
+      "download_sha256": "675beec32434c1fb58d526b7f15d5b5a6771e1cf641185c5b25ef0eb2fd8f476",
+      "digest_and_bytes_verified_before_any_ZIP_open": true,
+      "download_method": "readonly gh api official artifact endpoint;no CI run triggered"
+    }
+  ],
+  "selected_members_verified": [
+    {
+      "artifact_id": 12558570445,
+      "source": "contracts/contract.xml",
+      "bytes": 1073740,
+      "raw_sha256": "93f725b27c65d473702b218f5e3c2fc503f624d176210df48d1adf3085ac0f8b",
+      "gzip_sha256": "7543e204d3a922978c5c00320a20f43ee80e1d3e3494a4b4602feb6d6cd482e3",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558570445,
+      "source": "contracts/integration.xml",
+      "bytes": 12844,
+      "raw_sha256": "1fff2f64b923c7f591cfc83cecaad47eafcf4c93dd91895426f6014f4bb70b65",
+      "gzip_sha256": "485d2633462bdd3423f4eb6d5459d3338fa9e819ad4800ea908b3fe32c0b0ace",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558570445,
+      "source": "contracts/fault.xml",
+      "bytes": 2864,
+      "raw_sha256": "24a696e6385f66df84be83c369ea56825ad3bacb2bd0d33d0a9b387924269249",
+      "gzip_sha256": "16b2a10626f920ad4d7fb0601caa9819afb24dda922d8afc9f0c3db612d8e208",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558570445,
+      "source": "contracts/gate.json",
+      "bytes": 243,
+      "raw_sha256": "0cd723ceace28e0097e5258e8ffb9da0df1576429f4ce4a9be443ddb1fe365ce",
+      "gzip_sha256": "7e46ee09bd3356795a2d32f736fba1868bf9dc2d11290e4f5760d54016ac46de",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "frontend/coverage/coverage-final.json",
+      "bytes": 264865,
+      "raw_sha256": "6aa3f0f92acc8db3ea428ad0bf7fb0c81188da74b99cf142fed50fb24eea2ee3",
+      "gzip_sha256": "30949fbc1d854d974d4aa2a34cfe7972420865fb8b5886b297ba64e50771dc89",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "frontend/coverage/coverage-summary.json",
+      "bytes": 6710,
+      "raw_sha256": "861cf3743c0e3bc3fc782d18c7499f67614ba4011c1fe4b1ef995312a7461ec4",
+      "gzip_sha256": "7949f8eaa6ae581d987cf7522870e3c365c2c289b9362544d97dc2940b5d208f",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "frontend/coverage/test-results.json",
+      "bytes": 299047,
+      "raw_sha256": "0f38f9118600db34bcf0eaaadea6be4dab0ef774480419fc473162b1863ffda4",
+      "gzip_sha256": "93ee432c80de7b361d8d9088c4e7453cb88f5df2f50933f74626cf9074dfe76e",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "reports/ci/frontend/build.log",
+      "bytes": 820,
+      "raw_sha256": "0b2c56510cb3ef204605ede340ed6bccc0a8ddb8f6d7c07841efd0887665b725",
+      "gzip_sha256": "9d559fe5d406aa3407302740ab8c728fa3aad9722773330752faf60ff62299df",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "reports/ci/frontend/test.log",
+      "bytes": 334,
+      "raw_sha256": "5d04eea7328c294b7e291c1120ce06a01c5770bdcdf462e4159678a946ad2d6e",
+      "gzip_sha256": "de8e63693754e377a5b12e646a41fe873d5e548a004213aac560e519c6a4be89",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558480899,
+      "source": "reports/ci/frontend/typecheck.log",
+      "bytes": 53,
+      "raw_sha256": "7a6c3841439aa0b90fa2d556e17b1ec85e092462e2d14d33ba5ccdf39861972e",
+      "gzip_sha256": "fc2251f6c0439f99843a209378a6ba2534d91c380a33bdc001321f573cc10093",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558425536,
+      "source": "static.json",
+      "bytes": 1428,
+      "raw_sha256": "2e3742c72ef92188740b941ceb2eae234e4aaa21f8ac18ccbdb3b7b9c51be35e",
+      "gzip_sha256": "066667a46ecc7c1ea6d3c3199a0b3c21b3f85fabeb01bcde985e029329b6c365",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558425536,
+      "source": "preflight.json",
+      "bytes": 37,
+      "raw_sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01",
+      "gzip_sha256": "9477fd259dc81d8a16e772712dd6195a42c8395c9d7716f2b59719ad6fe90de2",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558425536,
+      "source": "static-console.log",
+      "bytes": 1168,
+      "raw_sha256": "4b14b622ed04b4579f19e3f96798a1da4e95e85b955773498f418eaad93831ad",
+      "gzip_sha256": "dc738f27e9fd2f2ca5d2e07e7297a41dfe471d40d49621204edc983225c314f7",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558425536,
+      "source": "bandit.json",
+      "bytes": 15214,
+      "raw_sha256": "44fa2df21fdeee3920081267b402ef97abded4b48e3950c283161bdede05c9be",
+      "gzip_sha256": "6acff1176eec9c911bf8fbbdac25fb4d338689b14f8a30caff6a7f6db6270326",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12558425536,
+      "source": "nginx-syntax.log",
+      "bytes": 1575,
+      "raw_sha256": "1a19573818b9dfde6bc69704f75cfe7d0f1d0b4f1047657c2d947b7b158e5190",
+      "gzip_sha256": "346068141087d558c35ef28e2ab07c34447b6220d41cc9c89031ab86311ec76d",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12557938162,
+      "source": "coverage/coverage.json",
+      "bytes": 328252,
+      "raw_sha256": "f908052236d59eafa998413bac57f3e1e1c7eb4dbe61b0cc8524ba74b8c4578e",
+      "gzip_sha256": "6e894f3c47e9f9311da4ba2bdf132d7274042f2afc5b3994730c8aa48e0852f7",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12557938162,
+      "source": "coverage/junit.xml",
+      "bytes": 1130800,
+      "raw_sha256": "ae37be3027255a8a5d3c55df8a1509d10d118cd5aa1969a2211981a12d01fa39",
+      "gzip_sha256": "748d19d5f4e81b5ad27ae3e3f2bb22cc13ea5e1dfac5f1fcd0a2754c9dac95f9",
+      "roundtrip_exact": true
+    },
+    {
+      "artifact_id": 12557938162,
+      "source": "coverage/gate.json",
+      "bytes": 703,
+      "raw_sha256": "889b61a36e311ca1c7530177676d821b7ad1f5547357ed80673c94058517021f",
+      "gzip_sha256": "304139a08f7c816fb5b6d770f4b77e93f70054f8177cad9219b9aa8a95a1a0a7",
+      "roundtrip_exact": true
+    }
+  ],
+  "JUnit": {
+    "full": {
+      "tests": 562,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ledger_case_names": [
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]"
+      ]
+    },
+    "contract": {
+      "tests": 179,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ledger_case_names": [
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]"
+      ]
+    },
+    "integration": {
+      "tests": 93,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ledger_case_names": [
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[block]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[unblock]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[plan]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[escalation]",
+        "test_preflight_real_mysql_transaction_and_unchanged_sql_ledger[replay]"
+      ]
+    },
+    "fault": {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ledger_case_names": []
+    }
+  },
+  "backend_coverage": {
+    "all_44_Git_python_paths_exact": true,
+    "line": [
+      2641,
+      2960
+    ],
+    "line_pct": 89.22297297297297,
+    "branch": [
+      663,
+      828
+    ],
+    "branch_pct": 80.07246376811594,
+    "excluded_lines": 0,
+    "combined_pct_not_line": 87.22280887011615
+  },
+  "frontend": {
+    "all_20_Git_TS_Vue_paths_exact": true,
+    "tests_passed": 89,
+    "failed_pending": 0,
+    "coverage_total": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "scope": "TS/Vue;no CSS/HTML expansion"
+  },
+  "all_static_and_suite_gate_exit_codes_zero": true,
+  "official_job_logs_verified": [
+    {
+      "id": 120857579219,
+      "raw_sha256": "6be5f8dd48ea9b4a79a5ff0875462912a0df63b5e18beec15b976018a21f2d19",
+      "gzip_sha256": "cf18a1b4f6c63c4d20bfb7eb73ca0d49f91ba3bf76136aa19134ca21c69da83c",
+      "raw_bytes": 119656,
+      "actual_checkout_from_git_log": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "roundtrip_exact": true
+    },
+    {
+      "id": 120857579310,
+      "raw_sha256": "f4dd29b73f145a01af65015f39e26c665d76ee49ecb36736de86cf2a5df59e45",
+      "gzip_sha256": "cf7fd968571b31e73d83018337d9f5b1573e1cc8702ae5edaca91a0ea246faec",
+      "raw_bytes": 119520,
+      "actual_checkout_from_git_log": "ead155e6204de9004bc968e9b9648358cfed75f8",
+      "roundtrip_exact": true
+    }
+  ],
+  "temporary_ZIP_files_removed": true,
+  "new_Docker_run": false,
+  "Nginx_candidate_in_ead": false,
+  "historical_5cc_failures_unchanged": true,
+  "LOC6316_excess1216_still_failed": true,
+  "performance_and_independent_acceptance_NOT_PROVEN": true,
+  "own_test_SQL_HTTP_service_load_CI_runs": 0,
+  "verified_utc": "2026-10-24T11:32:12.036532+00:00",
+  "outcome": "LIMITED_TEST_DELTA_AND_EXACT_PRODUCT_CI_CLEAR_FOR_COORDINATOR_INTEGRATION;NO_GLOBAL_OR_PERFORMANCE_PASS"
+}

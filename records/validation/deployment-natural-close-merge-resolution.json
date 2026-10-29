@@ -1,0 +1,16 @@
+{
+  "incoming_commit": "04c1027dbd29ff160f292924d690a79920992190",
+  "conflicts": [
+    "agents/deployment/WORKLOG.md",
+    "reports/modules/deployment.md",
+    "records/handoffs/deployment.json"
+  ],
+  "shared_keys_with_different_values": [
+    "prompt_refs",
+    "stage",
+    "updated_at"
+  ],
+  "resolution": "Both appended text histories retained; JSON unique objects retained; new timestamp/stage selected with previous stage kept; incoming prompt_refs verified exact previous prefix plus one actual new dispatch.",
+  "initial_helper_attempt": "Expected stage-only common delta; assertion exposed updated_at and appended prompt_refs too. set-e stopped before staging/commit/push. Text concatenation already completed; JSON then resolved using the exact observed three keys.",
+  "no_runtime_or_original_evidence_changes": true
+}

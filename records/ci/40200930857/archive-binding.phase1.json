@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "collected_at": "2026-10-25T14:34:17.114232+00:00",
+  "phase": "first-failure-sealed",
+  "run_id": 40200930857,
+  "source_sha": "a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+  "event": "push",
+  "head_branch": "codex/integration",
+  "run_attempt": 1,
+  "run_conclusion": "cancelled",
+  "static_job_id": 121191761720,
+  "static_conclusion": "failure",
+  "coverage_conclusion": "cancelled",
+  "artifact": {
+    "id": 12601838817,
+    "name": "static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4",
+    "zip_file": "static-a16238b9eb3b47473c0332989d6b3dcc1d95d1f4.zip",
+    "official_size": 4157,
+    "actual_size": 4157,
+    "official_digest": "sha256:911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6",
+    "actual_digest": "sha256:911b65a4a440754eff73ced53c727415ce203bd50c6e831b5d229c733c5f7fd6",
+    "size_digest_match": true,
+    "zip_crc_all_passed": true,
+    "absolute_parent_path_or_symlink": false,
+    "members": [
+      {
+        "path": "bandit.json",
+        "size": 14879,
+        "crc32": "b7922646",
+        "sha256": "783740c78eba21b70c05f1ef3f688e76943d7407f905a9343b0c662393cb5111",
+        "symlink": false
+      },
+      {
+        "path": "nginx-syntax.log",
+        "size": 1674,
+        "crc32": "586b8708",
+        "sha256": "ce4677c992b5a051ca96a81118b08e1cac1a07431560a206e2da0992a7b7847f",
+        "symlink": false
+      },
+      {
+        "path": "preflight.json",
+        "size": 37,
+        "crc32": "7ddfd08b",
+        "sha256": "bcc87068860e845b79f7b652022a57431d7051c29bbe60aebedae404941f1a01",
+        "symlink": false
+      },
+      {
+        "path": "static-0.log",
+        "size": 84,
+        "crc32": "e9e020dd",
+        "sha256": "cd2c8921b8300e70ca6b3896401562fed1632d0a80747924eab286b8d95ea441",
+        "symlink": false
+      },
+      {
+        "path": "static-1.log",
+        "size": 99,
+        "crc32": "d988cd65",
+        "sha256": "acbd8afb334d9f80dd17722f4dfed5570c321dcbb5f0a6037b4f5bc6d0c12f1b",
+        "symlink": false
+      },
+      {
+        "path": "static-2.log",
+        "size": 19,
+        "crc32": "9b863f92",
+        "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "symlink": false
+      },
+      {
+        "path": "static-3.log",
+        "size": 935,
+        "crc32": "10252dd6",
+        "sha256": "d9e0a32c4508a3ef37cc4746f5ff313e59033c6679326940f14316406f472536",
+        "symlink": false
+      },
+      {
+        "path": "static-4.log",
+        "size": 262,
+        "crc32": "5db61dc4",
+        "sha256": "d9117361c2d52ad77676675c2169bfb0920b112554639820c70c23d699873e4b",
+        "symlink": false
+      },
+      {
+        "path": "static-console.log",
+        "size": 2084,
+        "crc32": "6dc34d37",
+        "sha256": "0eefdbc4a299b773ba53e0bda8ad05ca077ce3d2666dc402cbef4211a2199062",
+        "symlink": false
+      },
+      {
+        "path": "static.json",
+        "size": 1428,
+        "crc32": "8fd3114f",
+        "sha256": "686727d4a2a6e5647a8254f2ccb90ef47dd8a08bc2ddba634ea30a7a02171544",
+        "symlink": false
+      }
+    ]
+  },
+  "failure": {
+    "rule": "E731",
+    "path": "tmp/backend/messaging/806_newscope.py",
+    "line": 34,
+    "ruff_exit_code": 1,
+    "raw_evidence_members": [
+      "static-3.log",
+      "static-console.log",
+      "static.json"
+    ]
+  },
+  "acquisition": {
+    "metadata": "GitHub connector GET and gh REST jobs JSON; API representations, not original HTTP transport bytes",
+    "zip": "gh api repos/HJY147/t44-dev-trace/actions/artifacts/12601838817/zip streamed unchanged into exclusive-create file",
+    "connector_download_limitation": "Connector returned a remote reusable file reference and no local path; gh used for original ZIP bytes; signed URL not persisted"
+  },
+  "claims": {
+    "CI_failure_preserved": true,
+    "independent_acceptance": false,
+    "formal_performance": false,
+    "size_gate_passed": false,
+    "final_billing_verified": false
+  }
+}

@@ -1,0 +1,63 @@
+F401 [*] `sys` imported but unused
+  --> tmp/backend/870_validator_profile.py:10:8
+   |
+ 8 | import resource
+ 9 | import signal
+10 | import sys
+   |        ^^^
+11 | import sysconfig
+12 | import time
+   |
+help: Remove unused import: `sys`
+   |
+9  | import signal
+   - import sys
+10 | import sysconfig
+   |
+
+B023 Function definition does not bind loop variable `factory`
+   --> tmp/backend/870_validator_profile.py:324:81
+    |
+322 |             }
+323 |         for mode, factory in factories.items():
+324 |             report["phases"][mode] = {"construct": measured(lambda: constructor(factory, samples))}
+    |                                                                                 ^^^^^^^
+325 |             setup = measured(
+326 |                 lambda: [(factory(case["schema"]), case) for _ in range(ROUNDS) for case in samples]
+    |
+
+B023 Function definition does not bind loop variable `factory`
+   --> tmp/backend/870_validator_profile.py:326:27
+    |
+324 |             report["phases"][mode] = {"construct": measured(lambda: constructor(factory, samples))}
+325 |             setup = measured(
+326 |                 lambda: [(factory(case["schema"]), case) for _ in range(ROUNDS) for case in samples]
+    |                           ^^^^^^^
+327 |             )
+328 |             jobs = setup.pop("result")
+    |
+
+B023 Function definition does not bind loop variable `jobs`
+   --> tmp/backend/870_validator_profile.py:330:78
+    |
+328 |             jobs = setup.pop("result")
+329 |             report["phases"][mode]["iterate_setup_excluded"] = setup
+330 |             report["phases"][mode]["iter_errors"] = measured(lambda: iterate(jobs))
+    |                                                                              ^^^^
+331 |             del jobs
+332 |             report["phases"][mode]["profile"] = profile(factory, samples, project)
+    |
+
+F821 Undefined name `jobs`
+   --> tmp/backend/870_validator_profile.py:330:78
+    |
+328 |             jobs = setup.pop("result")
+329 |             report["phases"][mode]["iterate_setup_excluded"] = setup
+330 |             report["phases"][mode]["iter_errors"] = measured(lambda: iterate(jobs))
+    |                                                                              ^^^^
+331 |             del jobs
+332 |             report["phases"][mode]["profile"] = profile(factory, samples, project)
+    |
+
+Found 5 errors.
+[*] 1 fixable with `--fix`.

@@ -1,0 +1,127 @@
+{
+  "recorded_at_utc": "2026-10-23T20:12:07.170591+00:00",
+  "source": "83236928792043e5b84890c37443786190c862ce",
+  "backend_product": "153b9c8c72acc76c5295ae3890236a2ac279b476",
+  "frontend_product": "3628ee1f98647fba3fa5b6b09bd86a06cbd7fc1c",
+  "runs": [
+    {
+      "id": 40016165656,
+      "event": "push",
+      "head_sha": "83236928792043e5b84890c37443786190c862ce",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T20:02:53Z",
+      "updated_at": "2026-10-23T20:08:25Z"
+    },
+    {
+      "id": 40016173174,
+      "event": "pull_request",
+      "head_sha": "83236928792043e5b84890c37443786190c862ce",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T20:02:57Z",
+      "updated_at": "2026-10-23T20:08:38Z"
+    },
+    {
+      "id": 40016165658,
+      "event": "push",
+      "head_sha": "83236928792043e5b84890c37443786190c862ce",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T20:02:53Z",
+      "updated_at": "2026-10-23T20:05:38Z"
+    }
+  ],
+  "automatic_duplicate_note": "One push triggered both existing push and pull_request product workflows; no manual rerun. Exact push run chosen for full raw archive; secondary PR run metadata retained without double-counting tests.",
+  "backend": {
+    "junit": {
+      "tests": 437,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "files": 43,
+    "line": [
+      2558,
+      2878
+    ],
+    "branch": [
+      612,
+      778
+    ],
+    "excluded_lines": 0,
+    "file_set_exact_git": true
+  },
+  "frontend": {
+    "tests": 65,
+    "failed": 0,
+    "pending": 0,
+    "files": 19,
+    "coverage": {
+      "lines": {
+        "total": 379,
+        "covered": 353,
+        "skipped": 0,
+        "pct": 93.13
+      },
+      "statements": {
+        "total": 696,
+        "covered": 615,
+        "skipped": 0,
+        "pct": 88.36
+      },
+      "functions": {
+        "total": 234,
+        "covered": 200,
+        "skipped": 0,
+        "pct": 85.47
+      },
+      "branches": {
+        "total": 894,
+        "covered": 783,
+        "skipped": 0,
+        "pct": 87.58
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "file_set_exact_git": true
+  },
+  "docker": {
+    "passed": true,
+    "workers": 4,
+    "projects": 2,
+    "tasks": 40,
+    "tables": 19,
+    "restoration_rows_and_checksums_equal": true,
+    "schema_tables": 18,
+    "schema_columns": 226,
+    "scanner_created": 16,
+    "scanner_completed": 2,
+    "expected_flock_nonzero_is_not_failure": true,
+    "nonzero_steps": [
+      {
+        "name": "shared-flock-rejects-second-scanner",
+        "exit_code": 1
+      }
+    ]
+  },
+  "raw_files_archived": {
+    "product": 18,
+    "docker": 33
+  },
+  "source_count": {
+    "application": 6124,
+    "within_range": false,
+    "source_record": "records/metrics/source-count-preflight-ui002.json"
+  },
+  "limits": [
+    "Developer exact-source CI and hosted Linux synthetic integration only; not independent acceptance, formal performance or rented cloud.",
+    "Private nativeMQ runtime build is distinct and not counted as Docker proof.",
+    "Existing failures, limited reviews, v2 incomplete results and human coursework gaps remain."
+  ]
+}

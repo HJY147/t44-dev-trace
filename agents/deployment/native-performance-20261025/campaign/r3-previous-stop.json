@@ -1,0 +1,133 @@
+{
+  "at_utc": "2026-10-25T09:27:24.349804+00:00",
+  "old_environment": "R3",
+  "old_run": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-performance-round3-20261025/runs/performance_round3_20261025_709c824f9b664725",
+  "steps": [
+    {
+      "role": "application_guardian",
+      "forced": false,
+      "success": true,
+      "request_receipt": "b1c318af567f43b783e4af905fdf2035"
+    },
+    {
+      "role": "guardian",
+      "forced": false,
+      "success": true,
+      "request_receipt": "64140c441fae44688ec4b2d6b33e7db2"
+    }
+  ],
+  "all_old_owned_roles_and_children_absent": true,
+  "old_hashes_unchanged": {
+    "controller.py": "b361524875e105f205182cd96ce8213a0b6dd4e019e14a532a36ccdfcce06dab",
+    "manifest.json": "fe8f0c1ffad2f3a617fe93ed762e9e2a24d9e33ccdb935d0080e861a9fdae79a",
+    "application-controller-w7.py": "700bb2beb7d1bb131f98a830856b18002a5bcacea7d14519641e86bb23326b45",
+    "application-binding-w7.json": "a011b4b9fcc9e37a9a6ed506bddd442c514d0aa9734109235e7fa5930bf34355",
+    "artifact-manifest-w7.json": "3aa8d5096d82269ca79e4da666e132e6b13b45df518a0a379f7481f3c2894560",
+    "native-build-w7.json": "4ca4e9cd83c6fa63e6ccbd0dac21bc29b12220b3bda993ad0da4f431471e4a0d"
+  },
+  "raw_files": [
+    {
+      "name": "resources-3bf63bc25e0f47a9b486edfa55c84be5.ndjson",
+      "bytes": 30413,
+      "sha256": "6ce101d32e30d973fe07fbed12ae3d422d86adac2ec7c3f75c6540dd0f10a4b4"
+    },
+    {
+      "name": "application-resources-7f25324627fe4d10bfbc94fa6b3d35e1.ndjson",
+      "bytes": 55510,
+      "sha256": "e6399c24be5493686849df00db2c68d23d11277b711cdbbe2d835d64746d2f33"
+    },
+    {
+      "name": "interval-resources-10b89883b2004bd4bb2e0a318db0f008.jsonl",
+      "bytes": 1565006,
+      "sha256": "8bf7d81e3e09a215da0d58b410234ba4c2d860f0d32bd862e982d3b4457bfe74"
+    }
+  ],
+  "interval_final": {
+    "at_utc": "2026-10-25T09:27:21.253592+00:00",
+    "receipt_id": "c2b8e24769e243349ec8ec1d97115b2a",
+    "action": "interval_sampler_final",
+    "success": true,
+    "collection_completed": true,
+    "error": null,
+    "output_path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/native-performance-round3-20261025/runs/performance_round3_20261025_709c824f9b664725/state/interval-resources-10b89883b2004bd4bb2e0a318db0f008.jsonl",
+    "output_sha256": "8bf7d81e3e09a215da0d58b410234ba4c2d860f0d32bd862e982d3b4457bfe74",
+    "output_bytes": 1565006,
+    "first_utc": "2026-10-25T09:18:42.378763Z",
+    "last_utc": "2026-10-25T09:27:20.380395Z",
+    "rows_written": 3114,
+    "resource_status_counts": {
+      "api:first_sample_no_cpu_delta": 1,
+      "consumer:first_sample_no_cpu_delta": 1,
+      "scheduler:not_registered_or_not_started": 519,
+      "broker:first_sample_no_cpu_delta": 1,
+      "mysql:first_sample_no_cpu_delta": 1,
+      "generator:not_registered_or_not_started": 519,
+      "api:observed": 518,
+      "consumer:observed": 518,
+      "broker:observed": 518,
+      "mysql:observed": 518
+    },
+    "stop_reason": "signal",
+    "resource_coverage_is_separate_from_collection_success": true
+  },
+  "ports_aftercheck": [
+    {
+      "port": 18097,
+      "free": true
+    },
+    {
+      "port": 25697,
+      "free": true
+    },
+    {
+      "port": 24397,
+      "free": false,
+      "errno": 48
+    },
+    {
+      "port": 35697,
+      "free": true
+    },
+    {
+      "port": 45716,
+      "free": true
+    },
+    {
+      "port": 45717,
+      "free": true
+    },
+    {
+      "port": 45718,
+      "free": true
+    },
+    {
+      "port": 45719,
+      "free": true
+    },
+    {
+      "port": 45720,
+      "free": true
+    },
+    {
+      "port": 45721,
+      "free": true
+    },
+    {
+      "port": 45722,
+      "free": true
+    },
+    {
+      "port": 45723,
+      "free": true
+    },
+    {
+      "port": 45724,
+      "free": true
+    },
+    {
+      "port": 45725,
+      "free": true
+    }
+  ],
+  "shared_mysql_generator_signals": false
+}

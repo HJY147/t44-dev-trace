@@ -1,0 +1,277 @@
+{
+  "published_at_utc": "2026-10-23T22:47:11.892651+00:00",
+  "author": "independent acceptance v3 AI tester",
+  "sut_exact_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+  "original_harness_freeze": "b6fd0a830319df10076a6fd8a7342153c0eb6661",
+  "source_phase_release_commit": "9c742c6ca325fa7a477184a88e339c398d7ad264",
+  "blackbox_sealed": true,
+  "blackbox_redesign_or_rerun": false,
+  "scope_warning": "These are four whitebox/four deliverable scope audits, not eight pre-frozen executable blackbox cases; producer tests and pure interpreter probes receive zero new blackbox case credit.",
+  "raw_materials_released": false,
+  "private_cover_values_released": false,
+  "stage": "07 limited whitebox",
+  "overall": "PARTIAL_NOT_FINAL_ACCEPTANCE",
+  "scope_counts": {
+    "total": 4,
+    "pass": 2,
+    "partial": 2,
+    "confirmed_new_application_logic_defects": 0
+  },
+  "scopes": [
+    {
+      "id": "W01",
+      "result": "PASS_REVIEWED_SCOPE",
+      "subitems": {
+        "parameterized_repository_paths": "observed SQLAlchemy bound values, allowlisted identifiers/operators, fixed internal text only",
+        "pure_state_machine": "observed no SQL inside decide",
+        "facade_and_DI": "observed explicit composition-root factory/notification/escalation injection; independent scanner runtime"
+      }
+    },
+    {
+      "id": "W02",
+      "result": "PASS_PRODUCER_SUITE",
+      "backend_tests": 510,
+      "frontend_tests": 89,
+      "backend_line": [
+        2638,
+        2957
+      ],
+      "backend_branch": [
+        659,
+        824
+      ],
+      "frontend_line": [
+        364,
+        390
+      ],
+      "frontend_branch": [
+        821,
+        932
+      ],
+      "excluded_backend_lines": 0,
+      "production_files_backend": 44,
+      "production_files_frontend": 20
+    },
+    {
+      "id": "W03",
+      "result": "PARTIAL",
+      "subitems": {
+        "exact_bc5_three_gates_and_frontend": "actual success run40033980420",
+        "historical_real_PR_rejection": "verified717cd65 reviewer/stage=failure,ready,mergeexit1,main unchanged",
+        "current_five_required_contexts": "snapshot verified with app binding,strict/enforce_admins",
+        "current_individual_failing_gate_causal_rejections": "NOT_EXECUTED; no new merge/branch protection mutation authorized"
+      }
+    },
+    {
+      "id": "W04",
+      "result": "PARTIAL",
+      "subitems": {
+        "rule_extension_file_budget": "private pure probe one config zero modules",
+        "template_item_extension_file_budget": "private pure probe one config zero modules",
+        "diff_and_validation": "actual private unified diff and six interpreter checks",
+        "human_person_day": "NOT_PROVIDED",
+        "deployed_extension_rollout": "NOT_EXECUTED"
+      }
+    }
+  ],
+  "source_integrity": {
+    "allowed_files": 190,
+    "all_hash_and_blob_equal": true,
+    "all_readonly_0444": true,
+    "all_unchanged_after_review": true,
+    "integrity_sha256": "ceb2ade727955b9677e0030fed6848eaf305d3aa96e6d3887dfc0ce439ae684c",
+    "warning": "190 integrity-checked files does not mean every line underwent deep manual review."
+  },
+  "producer": {
+    "run_id": 40033980420,
+    "url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40033980420",
+    "event": "push",
+    "branch": "codex/whitebox-v3-source",
+    "sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "jobs": {
+      "coverage": "success",
+      "contracts": "success",
+      "static": "success",
+      "frontend": "success"
+    },
+    "artifact_sha256": {
+      "coverage-bc5aef9c62393134582affb7a690acb33ac2b833": "d21e185be8751f7a1c09476c56b2cc9426f30e53543a8aa4c35f498931b44a86",
+      "contracts-bc5aef9c62393134582affb7a690acb33ac2b833": "95bfea5e784385f1f69486d7e0c859fed1c6711da358f249cc66f50122bef81d",
+      "frontend-bc5aef9c62393134582affb7a690acb33ac2b833": "77ad0fed045a0b71fec5b3aefa029b3b2a9ed759dc94d4e9b7520cd0f9c798d7",
+      "static-bc5aef9c62393134582affb7a690acb33ac2b833": "0b6448e9ec1031b649e9737ba28af575dc3c0845f70b146f3e30fdcd9390f3df"
+    },
+    "backend": {
+      "totals": {
+        "covered_lines": 2638,
+        "num_statements": 2957,
+        "percent_covered": 87.1991536630521,
+        "percent_covered_display": "87.20",
+        "missing_lines": 319,
+        "excluded_lines": 0,
+        "percent_statements_covered": 89.21203922894826,
+        "percent_statements_covered_display": "89.21",
+        "num_branches": 824,
+        "num_partial_branches": 107,
+        "covered_branches": 659,
+        "missing_branches": 165,
+        "percent_branches_covered": 79.97572815533981,
+        "percent_branches_covered_display": "79.98"
+      },
+      "file_count": 44,
+      "expected": 44,
+      "missing": [],
+      "extra": [],
+      "line_pct_recomputed": 89.21203922894826
+    },
+    "frontend": {
+      "totals": {
+        "lines": {
+          "total": 390,
+          "covered": 364,
+          "skipped": 0,
+          "pct": 93.33
+        },
+        "statements": {
+          "total": 712,
+          "covered": 631,
+          "skipped": 0,
+          "pct": 88.62
+        },
+        "functions": {
+          "total": 240,
+          "covered": 206,
+          "skipped": 0,
+          "pct": 85.83
+        },
+        "branches": {
+          "total": 932,
+          "covered": 821,
+          "skipped": 0,
+          "pct": 88.09
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "file_count": 20,
+      "expected": 20,
+      "missing": [],
+      "extra": [],
+      "line_pct_recomputed": 93.33333333333333,
+      "tests": {
+        "numTotalTestSuites": 15,
+        "numPassedTestSuites": 15,
+        "numFailedTestSuites": 0,
+        "numPendingTestSuites": 0,
+        "numTotalTests": 89,
+        "numPassedTests": 89,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "numTodoTests": 0,
+        "success": true
+      }
+    },
+    "junit": [
+      {
+        "file": "coverage/coverage/junit.xml",
+        "cases": 510,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      {
+        "file": "contracts/contracts/fault.xml",
+        "cases": 19,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      {
+        "file": "contracts/contracts/integration.xml",
+        "cases": 93,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      {
+        "file": "contracts/contracts/contract.xml",
+        "cases": 162,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      }
+    ],
+    "marker_counts_overlap_full_suite": true,
+    "fresh_service_setup": "Workflow-provisioned isolated MySQL8.4/Rabbit4 services, explicit migration; no local shared database used."
+  },
+  "gate_evidence": {
+    "historical_pr": 13,
+    "historical_head": "717cd65ef73560fde7ff5bca2821c9fe2b20d68a",
+    "failure_context": "reviewer/stage",
+    "status_id": 57066080416,
+    "real_merge_exit": 1,
+    "main_before_and_after": "1996d44425e09930b5ba3ae5391b728980241f55",
+    "first_attempt": "GET main EOF; no merge call",
+    "current_contexts": [
+      "reviewer/stage",
+      "static",
+      "contracts",
+      "coverage",
+      "frontend"
+    ],
+    "current_enforce_admins": true,
+    "current_strict": true,
+    "current_PR21": {
+      "head": "47184824bbe613ac74b15cf14798ec4c71c1f1ae",
+      "draft": true,
+      "state": "open",
+      "application_blob_tree_matches_bc5": true
+    },
+    "current_each_gate_causal_merge_rejection": "not executed; historical single context is not five independent proofs",
+    "probe_files": {
+      "protected-merge-probe.json": "be88f65996ddb7bf41cdf3ef4799200685a6a3f51932c3fb3530883ba00ea21a",
+      "protected-merge-probe-attempt1.json": "62dc1dac9ac4df989d6de941213cda9c2f68ca453dede74cddcafba0326452f6"
+    }
+  },
+  "extension": {
+    "started_utc": "2026-10-23T22:39:57.506443+00:00",
+    "finished_utc": "2026-10-23T22:39:57.731150+00:00",
+    "automated_elapsed_seconds": 0.2245755839976482,
+    "source_sha": "bc5aef9c62393134582affb7a690acb33ac2b833",
+    "scope": "pure private resource interpreter probes; no HTTP/DB/MQ",
+    "rule_changed": [
+      "backend/t44/resources/escalation-rules.json"
+    ],
+    "template_changed": [
+      "backend/t44/resources/review-template.json"
+    ],
+    "python_modules_changed": [],
+    "checks_passed": 6,
+    "human_person_day_evidence": null,
+    "limits": [
+      "Does not measure student or human effort",
+      "Does not change production adopted three rules/eight sections/ten items",
+      "Does not demonstrate deployed API/config rollout or persistence of extended template"
+    ],
+    "diff_sha256": "937b7ffe85e8d2cdec45f776375eed18f26a19c1f39bdf6eec028ecc9defa09b"
+  },
+  "process_disclosures": [
+    {
+      "event": "one wrong working-directory read of six modules after source release",
+      "resolution": "6/6 byte-identical to allowed bc5; discarded invocation and reread approved snapshot; no foreign candidate source, blackbox already sealed"
+    },
+    {
+      "event": "private metric-summary writer variable shadowing TypeError",
+      "resolution": "original error retained; recomputed successfully; not product failure"
+    }
+  ],
+  "evidence_digests": {
+    "independent-producer-crosscheck.json": "37e8dae845a46cf22599424839c327693f0bdd5352154c58351ce5861a0c0e93",
+    "gate-probe-independent-summary.json": "ae7e77600387c95581e09bae08ec12ca912ccc92f08e09ba11e95e1d9d1c5ff6",
+    "extension-probe-result.json": "c7198adeb8caea4b9b8e796bd28dd92eef4779b2eff2b0fb78c6eee1ef342857",
+    "application-tree-equivalence.json": "93431669553b50404526e56282951b8859aacf674d92782a3e329d68293c6504"
+  }
+}

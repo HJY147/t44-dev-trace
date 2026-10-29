@@ -1,0 +1,207 @@
+{
+  "source_sha": "5d5e0a15e3b15e2f509c4ae71a927bbc35579be7",
+  "scope": "development CI and hosted Linux Compose only; not independent or formal performance",
+  "runs": {
+    "40682367472": {
+      "conclusion": "success",
+      "run_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40682367472",
+      "original_log_zip_bytes": 151095,
+      "original_log_zip_sha256": "0bd030171b8a09084aa3a58f345c98d59de4b9f998836b91b303c72df39f308b",
+      "checkout_exact_head_checks": {
+        "contracts/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": true,
+        "frontend/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": true,
+        "static/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": true,
+        "coverage/3_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": true
+      },
+      "original_log_digest_source": "local hash; REST run-log endpoint has no server SHA"
+    },
+    "40682640278": {
+      "conclusion": "success",
+      "run_url": "https://github.com/HJY147/t44-dev-trace/actions/runs/40682640278",
+      "original_log_zip_bytes": 14591,
+      "original_log_zip_sha256": "e2520584527a9eb2bd06b3fb3c191c4430bdf8ba8bd97826a01dc1f4ef722c94",
+      "checkout_exact_head_checks": {
+        "docker-application/2_Run actions_checkout@3d3c42e5aac5ba805825da76410c181273ba90b1.txt": true
+      },
+      "original_log_digest_source": "local hash; REST run-log endpoint has no server SHA"
+    }
+  },
+  "backend": {
+    "passed_unique": 775,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "covered_lines": 2517,
+    "total_lines": 2790,
+    "line_percent": 90.21505376344086,
+    "covered_branches": 717,
+    "total_branches": 852,
+    "branch_percent": 84.15492957746478,
+    "mixed_percent_separate": 88.79736408566721,
+    "excluded_lines": 0
+  },
+  "backend_marked_subsets": {
+    "counts": {
+      "contract": 183,
+      "integration": 102,
+      "fault": 19
+    },
+    "unique_union": 245,
+    "subset_of_full_775": true,
+    "not_added_to_total": true
+  },
+  "frontend": {
+    "passed_assertions": 89,
+    "failed": 0,
+    "pending": 0,
+    "coverage": {
+      "lines": {
+        "total": 390,
+        "covered": 364,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "statements": {
+        "total": 712,
+        "covered": 631,
+        "skipped": 0,
+        "pct": 88.62
+      },
+      "functions": {
+        "total": 240,
+        "covered": 206,
+        "skipped": 0,
+        "pct": 85.83
+      },
+      "branches": {
+        "total": 932,
+        "covered": 821,
+        "skipped": 0,
+        "pct": 88.09
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    }
+  },
+  "static": {
+    "bandit_errors": 0,
+    "bandit_findings": 0,
+    "commands": {
+      "missing": [],
+      "commands": [
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "scripts/ci/validate_config.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "pytest",
+            "-c",
+            "backend/pyproject.toml",
+            "tmp/deployment/997_ops.py",
+            "tmp/deployment/971_credentials.py",
+            "tmp/ci/996_gates.py",
+            "-q"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "scripts/ci/ruff.toml",
+            "deployment",
+            "scripts/ci",
+            "tmp/deployment",
+            "tmp/ci"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "scripts/ci/ruff.toml",
+            "backend/t44",
+            "tmp/backend"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+            "-m",
+            "bandit",
+            "-r",
+            "backend/t44",
+            "-f",
+            "json",
+            "-o",
+            "/home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json"
+          ],
+          "exit_code": 0
+        }
+      ]
+    }
+  },
+  "docker": {
+    "passed": true,
+    "scope": "synthetic hosted-Linux Compose integration; not independent acceptance or load",
+    "api_processes": {
+      "api_parents": 1,
+      "workers": 4
+    },
+    "scheduler_progress": {
+      "created": 20,
+      "completed": 2
+    },
+    "backup_manifest": {
+      "format": "t44-table-dump-v1",
+      "database": "t44_smoke",
+      "sha256": "0d06b9e6b281707483743532b515a5b38538057e8e8ad637b724b96c79c2c566",
+      "created_at": "2026-10-28T11:49:19.163502+00:00",
+      "table_count": 19,
+      "scope": "InnoDB tables; no routines/events/triggers/views"
+    },
+    "restored_schema": {
+      "version": 1,
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "already_applied": true,
+      "tables": 18,
+      "columns": 226,
+      "defects": [],
+      "passed": true
+    },
+    "all_19_table_counts_checksums_equal": true,
+    "expected_second_scanner_rejection_exit1": [
+      {
+        "name": "shared-flock-rejects-second-scanner",
+        "exit_code": 1
+      }
+    ]
+  },
+  "source_count": {
+    "code": 5935,
+    "within_range": false,
+    "range": [
+      3500,
+      5100
+    ],
+    "counter_exit_code": 1
+  }
+}

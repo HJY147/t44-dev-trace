@@ -1,0 +1,1140 @@
+[
+  {
+    "dialect": "mysql",
+    "options": {},
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions ORDER BY auth_sessions.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {},
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions ORDER BY auth_sessions.id",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id IN (__[POSTCOMPILE_id_1]) ORDER BY auth_sessions.id DESC \n LIMIT %s, %s",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 1,
+        "param_2": 2
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": [
+          1,
+          7
+        ]
+      },
+      "order_by": [
+        "-id"
+      ],
+      "limit": 2,
+      "offset": 1
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id IN (__[POSTCOMPILE_id_1]) ORDER BY auth_sessions.id DESC\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "id_1": [
+          1,
+          7
+        ],
+        "param_1": 2,
+        "param_2": 1
+      },
+      "positiontup": [
+        "id_1",
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id = %s ORDER BY auth_sessions.id FOR UPDATE SKIP LOCKED",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "where": {
+        "id": 7
+      },
+      "lock": "update",
+      "skip_locked": true
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id = ? ORDER BY auth_sessions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions ORDER BY auth_sessions.id \n LIMIT %s LOCK IN SHARE MODE",
+      "parameters": {
+        "param_1": 1
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "lock": "share",
+      "limit": 1
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions ORDER BY auth_sessions.id\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 1,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id >= %s AND auth_sessions.id IS NOT NULL ORDER BY auth_sessions.id FOR UPDATE",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "predicates": [
+        [
+          "id",
+          "ge",
+          1
+        ],
+        [
+          "id",
+          "is_null",
+          false
+        ]
+      ],
+      "lock": "update"
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id >= ? AND auth_sessions.id IS NOT NULL ORDER BY auth_sessions.id",
+      "parameters": {
+        "id_1": 1
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id = %s ORDER BY auth_sessions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ],
+      "where": {
+        "id": 7
+      }
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.id, auth_sessions.actor_kind, auth_sessions.user_id, auth_sessions.service_account_id, auth_sessions.token_hash, auth_sessions.project_ids, auth_sessions.scopes, auth_sessions.expires_at, auth_sessions.revoked_at, auth_sessions.created_at \nFROM auth_sessions \nWHERE auth_sessions.id = ? ORDER BY auth_sessions.id",
+      "parameters": {
+        "id_1": 7
+      },
+      "positiontup": [
+        "id_1"
+      ],
+      "result_columns": [
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ],
+        [
+          "actor_kind",
+          "actor_kind",
+          "TINYINT"
+        ],
+        [
+          "user_id",
+          "user_id",
+          "INTEGER"
+        ],
+        [
+          "service_account_id",
+          "service_account_id",
+          "INTEGER"
+        ],
+        [
+          "token_hash",
+          "token_hash",
+          "BINARY(32)"
+        ],
+        [
+          "project_ids",
+          "project_ids",
+          "JSON"
+        ],
+        [
+          "scopes",
+          "scopes",
+          "JSON"
+        ],
+        [
+          "expires_at",
+          "expires_at",
+          "DATETIME"
+        ],
+        [
+          "revoked_at",
+          "revoked_at",
+          "DATETIME"
+        ],
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ]
+      ],
+      "selected_columns": [
+        "id",
+        "actor_kind",
+        "user_id",
+        "service_account_id",
+        "token_hash",
+        "project_ids",
+        "scopes",
+        "expires_at",
+        "revoked_at",
+        "created_at"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [
+        "created_at",
+        "id",
+        "created_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.created_at, auth_sessions.id \nFROM auth_sessions \n LIMIT %s",
+      "parameters": {
+        "param_1": 0
+      },
+      "positiontup": [
+        "param_1"
+      ],
+      "result_columns": [
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "created_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [
+        "created_at",
+        "id",
+        "created_at"
+      ],
+      "order_by": [],
+      "limit": 0
+    },
+    "shape": {
+      "sql": "SELECT auth_sessions.created_at, auth_sessions.id \nFROM auth_sessions\n LIMIT ? OFFSET ?",
+      "parameters": {
+        "param_1": 0,
+        "param_2": 0
+      },
+      "positiontup": [
+        "param_1",
+        "param_2"
+      ],
+      "result_columns": [
+        [
+          "created_at",
+          "created_at",
+          "DATETIME"
+        ],
+        [
+          "id",
+          "id",
+          "INTEGER"
+        ]
+      ],
+      "selected_columns": [
+        "created_at",
+        "id"
+      ]
+    }
+  },
+  {
+    "dialect": "mysql",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  },
+  {
+    "dialect": "sqlite",
+    "options": {
+      "columns": [],
+      "order_by": []
+    },
+    "shape": {
+      "sql": "SELECT",
+      "parameters": {},
+      "positiontup": [],
+      "result_columns": [],
+      "selected_columns": []
+    }
+  }
+]

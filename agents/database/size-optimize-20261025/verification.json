@@ -1,0 +1,245 @@
+{
+  "source_product_commit": "1076677527bbfc94e376ce1a564fc461622b5dee",
+  "base_product_commit": "935ab5b93bea788672c2b4a088c79cfeed848954",
+  "stable_compatibility_commit": "5f779388",
+  "source_metric_exit_code": 1,
+  "application": {
+    "before": 6335,
+    "after": 6245,
+    "saved": 90,
+    "upper": 5100,
+    "still_over": 1145
+  },
+  "persistence_python": {
+    "before": 1691,
+    "stable": 1623,
+    "candidate": 1601,
+    "stable_saved": 68,
+    "additional_seed_v2_saved": 22
+  },
+  "tests": [
+    {
+      "junit": "first-targets.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "17",
+          "time": "0.698",
+          "timestamp": "2026-10-25T19:17:54.032285+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "ceb3bc50273f6f897ba32633364816d54f839b461e063e85c24e5944809d9d95"
+    },
+    {
+      "junit": "rows-targets.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "69",
+          "time": "0.336",
+          "timestamp": "2026-10-25T19:19:38.938499+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "49d229237bf200b37b6eed7cde2460a0d4b35b7ce28d5d16dd81b9d0c9ebc438"
+    },
+    {
+      "junit": "migration-seed-targets.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "12",
+          "time": "23.759",
+          "timestamp": "2026-10-25T19:20:57.494962+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "43a04abb3ff9fe7c9a5f1ad48e033ad371e7b1fe83dc19bfaffc221b4a712360"
+    },
+    {
+      "junit": "order-delivery-targets.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "25",
+          "time": "0.605",
+          "timestamp": "2026-10-25T19:23:38.786445+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "7f140491b14cc533e45a9fa204e881ca0571fa44bab49c0422a47ee2663d8d59"
+    },
+    {
+      "junit": "defaults-targets.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "12",
+          "time": "0.466",
+          "timestamp": "2026-10-25T19:34:59.237147+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "bb2b061d8f07771d38f7f02b6eba0725d90b03f5c6b52c6f8f4a2c6a1117faed"
+    },
+    {
+      "junit": "final-seed.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "3",
+          "time": "28.116",
+          "timestamp": "2026-10-25T19:32:59.881683+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "d6ad075dbeb30b51bd4543d0c34ef8785d1d0edb612230379a94e38a4fb202f6"
+    },
+    {
+      "junit": "defaults-seed-small.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "2",
+          "time": "0.527",
+          "timestamp": "2026-10-25T19:42:39.005649+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "68fb704bd9e80b736bcd3401e72a59d48fdda6990f8e292db4b9e68e284abc2b"
+    },
+    {
+      "junit": "v2-old-golden.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "2",
+          "time": "0.617",
+          "timestamp": "2026-10-25T19:52:30.513286+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "c66b96ed063221e44a22c89eebcc940d9fc975bb1179cc8da348232e31f4dd43"
+    },
+    {
+      "junit": "v2-properties.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "2",
+          "skipped": "0",
+          "tests": "13",
+          "time": "26.949",
+          "timestamp": "2026-10-25T19:53:11.607259+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "0172aabf41efb2a7a809ae808d990e0ef0a2a35bac1c96b296d73e1359b0a878"
+    },
+    {
+      "junit": "v2-properties-fixed.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "13",
+          "time": "33.100",
+          "timestamp": "2026-10-25T19:54:06.138153+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "3175c936628503f1bdf68ef5941567cdddb2d5841315c503ec490adc8bf8005e"
+    },
+    {
+      "junit": "v2-final-small.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "14",
+          "time": "1.843",
+          "timestamp": "2026-10-25T19:57:23.287018+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "7afe6938c34c5538016c612130de0de57934a42b5ab4c91806de2092136d2ea2"
+    },
+    {
+      "junit": "v2-final-full.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "25.943",
+          "timestamp": "2026-10-25T19:58:00.954043+08:00",
+          "hostname": "hujinyangdeMacBook-Air.local"
+        }
+      ],
+      "sha256": "95fe593d04c68d860fa633fd1b9225627e26324f43b9dc834462bd000cff8439"
+    }
+  ],
+  "results_not_additive": true,
+  "retained_failures": {
+    "old_v1_golden_on_v2": "expected snapshot mismatch; not hidden or replaced with historical code",
+    "first_v2_properties": "new test incorrectly counted read-only UoW commits; fixed assertion position; source behavior unchanged",
+    "initial_pyPI_download": "TLS local CA unavailable; certifi trust used, TLS not disabled",
+    "ruff": "C408 with nonproject config; later I001 imports; SIM118 ColumnCollection suggestion not applied because not dict"
+  },
+  "scope": "Only SQLite/mock owner verification; no live MySQL, protected services, credentials, private/independent cases, HTTP/cloud/full CI or formal performance. SQLGlot not adopted.",
+  "git_diff_check": {
+    "evidence_commit": "1af77aa",
+    "full_raw_evidence_exit": 2,
+    "reason": "Unchanged raw pytest failure XML contains E plus trailing spaces; exact raw bytes preserved",
+    "source_and_narrative_docs_check_exit": 0,
+    "log": "raw-evidence-diff-check.log",
+    "second_evidence_commit_staged_exit": 2,
+    "second_reason": "The raw diff-check log itself reproduced original trailing whitespace; subsequently gzip-wrapped without changing decompressed bytes."
+  },
+  "raw_evidence_storage": {
+    "v2-old-golden.xml": {
+      "stored": "v2-old-golden.xml.gz",
+      "raw_sha256": "c66b96ed063221e44a22c89eebcc940d9fc975bb1179cc8da348232e31f4dd43",
+      "raw_bytes": 1370,
+      "decompressed_equals_original": true
+    },
+    "raw-evidence-diff-check.log": {
+      "stored": "raw-evidence-diff-check.log.gz",
+      "raw_sha256": "8c0e083f6a25265744e41ad88074d3f9d179b72cc55d3c09c006e4451b86f529",
+      "raw_bytes": 89,
+      "decompressed_equals_original": true
+    }
+  }
+}

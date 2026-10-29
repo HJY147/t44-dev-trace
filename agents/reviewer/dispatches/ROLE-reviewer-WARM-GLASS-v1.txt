@@ -1,0 +1,17 @@
+ROLE-reviewer-WARM-GLASS-v1
+实际操作者：审核岗 AI。以下是总协调实际派工原文，不是用户原话，也不计为学生亲改代码。
+
+【初始派工】
+你是本项目固定审核岗本轮实例，只负责新暖米咖玻璃 UI 的限定审核，不是独立验收tester。项目 /Users/yang/Desktop/nothing/软件开发大作业；先读根AGENTS.md、docs/reviews/review-protocol.md及docs/ui/warm-glass/{DESIGN.md,sources.json,coordinator-design-review.md}。用户明确U017米色浅咖啡/苹果液态玻璃风格/多圆角，U018先OpenDesign原型再导入。设计326f971已完成；Vue实现SHA正在前端岗最终视检，稍后由我发给你。现在先核对设计和生产基线5dcb73cc10c38deb14fae68d33318b04d538fecf的组件接口，勿读取其他agent未提交文件。你可在 .agent-worktrees/review-warm-glass 创建自己的codex/review-warm-glass worktree，基于根codex/integration当前已提交HEAD；不要更改根索引或其他worktree。
+边界：只静态看frontend、原型和允许的开发浏览器公开记录；确认视觉映射、移动端溢出/长表单滚动与关闭/焦点/错误/状态语义/通知双计数、API与业务脚本是否保持契约、Vite独立缓存变更范围；许可证和设计先行提交时间。可以实际视检开发截图，必要时受限浏览器核对，不重复整套业务/负载测试。任何新测试脚本先向我领tmp降序号码；不写镜像CSS单测。根已有本轮开发脚本 tmp/frontend/918_warm_glass_browser.mjs，可在实现明确后参考其公开检查记录。你不改业务代码，发现实质问题先通过我给责任岗。
+严格禁止读取 tmp/independent/** 或未发布独立v2任何用例/截图/日志/输出；不联系独立tester。当前独立SUT4c，与UI新版本不同。不要读取私人credentials/token；浏览器若确需账号向我申请明确本项目demo0600账号路径，只脚本读取不输出。
+交付本岗实际prompt、WORKLOG、reports/modules/reviewer.md、records/handoffs/reviewer.json以及reports/reviews/warm-glass-<精确实现SHA>.md，自己阶段commit/push并在PR21提交COMMENT（同账号不得APPROVE，不设reviewer/stage成功、不合并main）。整体验收/性能/源码规模仍未通过，UI限定审核不能替代。其余开发/报告范围不处理。先通知我准备完成，待精确实现SHA再评定。
+
+【环境补充】
+实现尚在最后移动长表单视检，具体SHA随后发。工具若需要：Node /Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node；Playwright /Users/yang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs；Chrome /Applications/Google Chrome.app/Contents/MacOS/Google Chrome。产品日常用户演示入口是5173→18080，新主题前端岗自己的5176→18080；独立5175→18084严格勿碰。不需做全量/负载构建；先阅读设计/基线并准备精准diff审查，现有27项/类型检查/build已有开发证据，将以精确实现SHA说明。
+
+【精确目标续派】
+继续本轮限定审核。用户已授权接下来八小时自主推进，小问题自行解决，大决策记录，不等用户回复。精确UI实现为840b1a88e6976f0ecfb0b0ba45676b208aae4d98，父设计326f971；公开开发验证与截图补充为63519c2（可git show读取已提交对象）。请基于这两个checkpoint进行原限定审核，root将集成并更新5173。不要读取任何独立未发布材料或访问5175。现有27 FE测试310/334行92.81、build/typecheck、开发1440/390实浏览器记录为公开待核证据，不等于你应通过。前端岗会另修一个原有initial文本true问题，尚无新实现SHA，该问题不归因于840CSS，也不能总放行。请核对源码diff及可触达移动表单/关闭/焦点等原限定范围，自己commit/PR21 COMMENT。若仍遇额度限制，保留现状并报告限制，不写假审核结论。
+
+【执行取舍】
+沿用精确提交读取、SHA256复核和开发原截图实际视检；不新建测试脚本，不重复前端/业务/负载整套，不申请或读取账号。把样式和保留的组件路径、已实际观察的行为、未执行的可访问性场景分开记录。该取舍是审核岗AI判断，不是新的人工业务决策。

@@ -1,0 +1,92 @@
+"""PUBLIC v4 process-group hard stop: continuously check UTC AND monotonic.
+Production CLI launches only the frozen private runner. No network code.
+RSS is sampled at 1 second for the runner PID only, not process-group aggregate.
+"""
+from __future__ import annotations
+import argparse,datetime as dt,json,os,secrets,signal,subprocess,sys,threading,time
+from pathlib import Path
+from control import BoundaryError,CLOCK_POLL_SECONDS,SystemClock,conservative_deadline_anchor,dual_deadline_sample,format_utc,paired_clock_sample,parse_utc
+ROOT=Path(__file__).resolve().parents[1]
+
+def write_json(path,value):
+    temp=path.with_suffix(path.suffix+'.pending');temp.write_text(json.dumps(value,indent=2));temp.replace(path)
+
+def watch_dual_deadline(clock,expires,deadline,cancel,on_expired,stats,poll_seconds=CLOCK_POLL_SECONDS):
+    """Same production loop is exercised with fake clocks and fake wait events.
+    UTC step forward never needs to move monotonic time to be detected.
+    """
+    previous=None;stats.update({'configured_poll_seconds':poll_seconds,'samples':0,'max_observed_poll_interval_seconds':0,'first_sample':None,'last_sample':None})
+    while not cancel.is_set():
+        sample=dual_deadline_sample(clock,expires,deadline);stats['samples']+=1
+        if stats['first_sample'] is None:stats['first_sample']=sample
+        stats['last_sample']=sample
+        if previous is not None:stats['max_observed_poll_interval_seconds']=max(stats['max_observed_poll_interval_seconds'],sample['mono_after']-previous)
+        previous=sample['mono_after']
+        if sample['expired']:
+            stats['first_expiry_observed']=sample;on_expired(sample);return
+        if cancel.wait(poll_seconds):return
+
+def supervise(command,deadline,receipt_path,status_path,freeze,stdout_path,max_rss_bytes=4294967296,expires=None,clock=None,anchor=None):
+    clock=clock or SystemClock();expires=expires or dt.datetime.max.replace(tzinfo=dt.timezone.utc)
+    initial=dual_deadline_sample(clock,expires,deadline)
+    if initial['expired']:raise BoundaryError('supervisor prelaunch UTC/monotonic deadline expired; no child launched')
+    nonce=secrets.token_hex(24);environment=dict(os.environ,I829_SUPERVISOR_RECEIPT=str(receipt_path),I829_SUPERVISOR_NONCE=nonce)
+    stdout_path.parent.mkdir(parents=True,exist_ok=True,mode=0o700);output=os.open(stdout_path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+    wrapper=[sys.executable,str(Path(__file__).resolve()),'--child-wait',str(receipt_path),'--nonce',nonce,'--',*command]
+    child=subprocess.Popen(wrapper,start_new_session=True,stdout=output,stderr=subprocess.STDOUT,env=environment);os.close(output)
+    receipt={'nonce':nonce,'supervisor_pid':os.getpid(),'child_pid':child.pid,'tool_freeze_sha256':freeze,'hard_deadline_monotonic':deadline,'expires_at':format_utc(expires),'clock_anchor':anchor,'launch_clock':initial,'max_rss_bytes':max_rss_bytes,'rss_scope':'single runner PID only; not aggregate','rss_poll_seconds':1,'clock_poll_seconds':CLOCK_POLL_SECONDS,'kill_policy':'SIGKILL process group when either UTC or monotonic expires; no grace; actual scheduling lag recorded'};write_json(receipt_path,receipt)
+    cancelled=threading.Event();wake=threading.Event();kill_lock=threading.Lock();poll_stats={};result={'hard_stopped':False,'rss_stopped':False,'deadline_monotonic':deadline,'expires_at':format_utc(expires),'max_observed_rss_bytes':0,'clock_anchor':anchor,'rss_scope':'single runner PID only; not aggregate','rss_poll_seconds':1,'clock_poll_seconds':CLOCK_POLL_SECONDS}
+    def hard_stop(reason,observed=None,trigger=None):
+        with kill_lock:
+            if child.poll() is not None or 'kill_signal_clock' in result:return
+            actual=paired_clock_sample(clock);result[reason]=True;result['kill_signal_clock']=actual;result['kill_signal_monotonic']=actual['mono_after'];result['stop_trigger']=trigger;result['expiry_observation']=observed
+            result['monotonic_deadline_enforcement_lag_seconds']=max(0,actual['mono_after']-deadline)
+            result['observation_to_signal_seconds']=None if observed is None else max(0,actual['mono_after']-observed['mono_after'])
+            result['utc_overshoot_at_signal_seconds']=max(0,(parse_utc(actual['utc'])-expires).total_seconds())
+            try:os.killpg(child.pid,signal.SIGKILL)
+            except ProcessLookupError:pass
+            wake.set()
+    timer=threading.Timer(max(0,deadline-clock.monotonic()),lambda:hard_stop('hard_stopped',dual_deadline_sample(clock,expires,deadline),'monotonic_timer'));timer.daemon=True;timer.start()
+    watchdog=threading.Thread(target=watch_dual_deadline,args=(clock,expires,deadline,cancelled,lambda sample:hard_stop('hard_stopped',sample,'utc_or_monotonic_poll'),poll_stats),daemon=True);watchdog.start();next_rss=clock.monotonic()
+    try:
+        while child.poll() is None:
+            if clock.monotonic()>=next_rss:
+                next_rss=clock.monotonic()+1
+                try:
+                    r=subprocess.run(['/bin/ps','-o','rss=','-p',str(child.pid)],capture_output=True,text=True,timeout=.2);rss=int(r.stdout.strip() or 0)*1024;result['max_observed_rss_bytes']=max(result['max_observed_rss_bytes'],rss)
+                    if rss>max_rss_bytes:hard_stop('rss_stopped',trigger='single_pid_rss')
+                except (ValueError,subprocess.TimeoutExpired):pass
+            wake.wait(.01)
+        result['returncode']=child.wait();result['ended_clock']=paired_clock_sample(clock);result['ended_monotonic']=result['ended_clock']['mono_after'];completion=dual_deadline_sample(clock,expires,deadline);result['completion_clock']=completion
+        result['process_completion_observed_after_expiry']=completion['expired']
+        if 'kill_signal_monotonic' in result:result['signal_to_exit_observation_seconds']=max(0,result['ended_monotonic']-result['kill_signal_monotonic'])
+    finally:
+        timer.cancel();cancelled.set();watchdog.join(timeout=.1)
+        if child.poll() is None:hard_stop('hard_stopped',dual_deadline_sample(clock,expires,deadline),'supervisor_finally');child.wait()
+        result['clock_poll_observations']=poll_stats
+        if result['hard_stopped'] or result['rss_stopped']:result['status']='HARD_STOP_INCOMPLETE_NOT_PROVEN'
+        elif result.get('process_completion_observed_after_expiry'):result['status']='PROCESS_DEADLINE_VIOLATION_NOT_PROVEN'
+        else:result['status']='PROCESS_FINISHED_AWAIT_PRIVATE_VERDICT' if result.get('returncode')==0 else 'PROCESS_FAILED_NOT_PROVEN'
+        write_json(status_path,result)
+    return result
+
+def main():
+    if '--child-wait' in sys.argv:
+        i=sys.argv.index('--child-wait');receipt=Path(sys.argv[i+1]);nonce=sys.argv[sys.argv.index('--nonce')+1];split=sys.argv.index('--');wait_deadline=time.monotonic()+10
+        while not receipt.exists() and time.monotonic()<wait_deadline:time.sleep(.005)
+        r=json.loads(receipt.read_text());clock=SystemClock();expiry=parse_utc(r['expires_at'])
+        if r['nonce']!=nonce or r['child_pid']!=os.getpid() or r['supervisor_pid']!=os.getppid() or dual_deadline_sample(clock,expiry,r['hard_deadline_monotonic'])['expired']:raise SystemExit('invalid/UTC-or-monotonic-expired supervisor receipt')
+        os.execv(sys.argv[split+1],sys.argv[split+1:]);return
+    p=argparse.ArgumentParser();p.add_argument('--grant',required=True);p.add_argument('--environment',required=True);p.add_argument('--phase',choices=['functional','fault','performance'],required=True);a=p.parse_args();g=json.loads(Path(a.grant).read_text());m=json.loads((ROOT/'PUBLIC/manifest.PUBLIC.json').read_text())
+    if g.get('admitted') is not True or g.get('phase')!=a.phase or g.get('tool_freeze_sha256')!=m['tool_freeze_sha256']:raise SystemExit('explicit matching admission absent; zero network')
+    clock=SystemClock();expiry=parse_utc(g['expires_at']);wall=min(float(g['max_wall_seconds']),2400)
+    if wall<=0:raise SystemExit('nonpositive wall budget; zero network')
+    anchor=conservative_deadline_anchor(clock,expiry,wall)
+    if anchor['expired']:raise SystemExit('expired UTC/monotonic admission; zero network')
+    rss_limit=min(int(g.get('max_runner_rss_bytes',4294967296)),8589934592)
+    if rss_limit<=0:raise SystemExit('nonpositive RSS budget; zero network')
+    run=secrets.token_hex(8);pub=ROOT/'PUBLIC/runtime';pub.mkdir(exist_ok=True);private=ROOT/'private/runs';command=[sys.executable,str(ROOT/'PUBLIC/runner.PUBLIC.py'),'--grant',str(Path(a.grant).resolve()),'--environment',str(Path(a.environment).resolve()),'--phases',a.phase]
+    # Pass the original conservative anchor, never take a later mono+remaining.
+    result=supervise(command,anchor['deadline_monotonic'],pub/(run+'.receipt.PUBLIC.json'),pub/(run+'.status.PUBLIC.json'),m['tool_freeze_sha256'],private/(run+'.stdout.PRIVATE.txt'),rss_limit,expires=expiry,clock=clock,anchor=anchor)
+    print(json.dumps({'public_supervisor_status':str(pub/(run+'.status.PUBLIC.json')),'status':result['status']}))
+if __name__=='__main__':main()

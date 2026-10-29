@@ -1,0 +1,53 @@
+{
+  "retrieved_at_utc": "2026-10-24T03:33:50.415513+00:00",
+  "primary_only": true,
+  "selected_provider": "AWS",
+  "official_sources": [
+    {
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/",
+      "supports": "Linux per-second min60s;100GB monthly aggregate internet egress allowance,remaining entitlement unknown"
+    },
+    {
+      "url": "https://c0.b0.p.awsstatic.com/configurations/aws/ec2/on-demand-plan.json",
+      "supports": "official page iframe config;hourly-rate column and active feed prefix"
+    },
+    {
+      "url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
+      "supports": "current exact Linux hourly prices+vCPU/GiB;publication2026-10-23T22:13:55Z"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/en_en/emr/latest/ManagementGuide/emr-plan-storage-compare-volume-types.html",
+      "supports": "us-east1 gp3 $0.08/GiBmonth;baseline3000IOPS/125MiBps"
+    },
+    {
+      "url": "https://aws.amazon.com/ebs/pricing/",
+      "supports": "storage billed per-second min60s,monthly provisioned until release;official proration formula"
+    },
+    {
+      "url": "https://aws.amazon.com/vpc/pricing/",
+      "supports": "publicIPv4 inuse/idle0.005USD/hour each"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-share-billing.html",
+      "supports": "sameAZ-ID internal traffic free"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
+      "supports": "default hardware shared tenancy;Dedicated Instance/Host distinction"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
+      "supports": "stopped compute not billed;retainedEBS billed"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html",
+      "supports": "terminate instance;EBS delete-on-termination must be verified;preserved resources may remain"
+    }
+  ],
+  "lookups_not_used_as_price_evidence": [
+    "Vultr official pricing403;vultr2 or other unofficial domain not used",
+    "retired guessed AWS feeds404;Python certificate-chain failure;retried verified systemcurl without disablingTLS",
+    "2019 legacy hourly data lackedC7i;older AWS blog examples not used for current quote"
+  ],
+  "no_account_credentials_resources_or_payment_accessed": true
+}

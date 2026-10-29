@@ -1,0 +1,101 @@
+
+ RUN  v5.0.5 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/frontend/frontend
+      Coverage enabled with v8
+
+ ❯ tests/application.test.ts (10 tests | 5 failed) 258ms
+   ❯ typed editor interactions (2)
+     × emits boolean, integer, date, text, enum and array changes as proper JSON values 15ms
+   ❯ operation forms (3)
+     × keeps a draft through 409, refreshes, explicitly adopts version, then confirms the authoritative result 17ms
+     × retains the same write key and body on uncertain retry and displays 422 field errors without closing 5ms
+     × blocks missing proof, checks fill content without performing the write, and renders every real business form 10ms
+   ❯ session and user flows (5)
+     × shows project selection, iteration edits, personal notification read/handling separately, audit and rules 78ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  5 failed | 15 passed (20)
+   Start at  16:16:32
+   Duration  1.81s (transform 39%, import 37%, environment 14%, tests 10%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
+$ vitest run --coverage
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/application.test.ts > typed editor interactions > emits boolean, integer, date, text, enum and array changes as proper JSON values
+RangeError: Invalid time value
+ ❯ ComputedRefImpl.fn src/components/FieldEditor.vue:20:123
+     18|   return options(props.name)
+     19| })
+     20| const localTime = computed(() => props.modelValue ? new Date(new Date(…
+       |                                                                                                                           ^
+     21| const updateObject = (key: string, value: Json) => emit('update:modelV…
+     22| const updateRow = (index: number, value: Json) => emit('update:modelVa…
+ ❯ refreshComputed node_modules/.pnpm/@vue+reactivity@3.5.44/node_modules/@vue/reactivity/dist/reactivity.cjs.js:422:28
+ ❯ get value node_modules/.pnpm/@vue+reactivity@3.5.44/node_modules/@vue/reactivity/dist/reactivity.cjs.js:1769:5
+ ❯ unref node_modules/.pnpm/@vue+reactivity@3.5.44/node_modules/@vue/reactivity/dist/reactivity.cjs.js:1594:45
+ ❯ Object.get node_modules/.pnpm/@vue+reactivity@3.5.44/node_modules/@vue/reactivity/dist/reactivity.cjs.js:1600:64
+ ❯ Proxy._sfc_render src/components/FieldEditor.vue:50:91
+ ❯ renderComponentRoot node_modules/.pnpm/@vue+runtime-core@3.5.44/node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:4727:16
+ ❯ ReactiveEffect.componentUpdateFn [as fn] node_modules/.pnpm/@vue+runtime-core@3.5.44/node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:6275:46
+ ❯ ReactiveEffect.run node_modules/.pnpm/@vue+reactivity@3.5.44/node_modules/@vue/reactivity/dist/reactivity.cjs.js:268:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/application.test.ts > operation forms > keeps a draft through 409, refreshes, explicitly adopts version, then confirms the authoritative result
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2001; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="推进交付任务" aria-describedby="el-id-6178-1" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tests/application.test.ts:61:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/application.test.ts > operation forms > retains the same write key and body on uncertain retry and displays 422 field errors without closing
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2002; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="创建项目" aria-describedby="el-id-6178-3" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tests/application.test.ts:70:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/application.test.ts > operation forms > blocks missing proof, checks fill content without performing the write, and renders every real business form
+Error: Unable to get form within: <teleport-stub to="body" disabled="true">
+  <transition-stub name="dialog-fade" appear="false" persisted="true" css="true">
+    <div class="el-overlay el-modal-dialog" style="z-index: 2003; display: none;">
+      <div role="dialog" aria-modal="true" aria-label="推进交付任务" aria-describedby="el-id-6178-5" class="el-overlay-dialog"></div>
+    </div>
+  </transition-stub>
+</teleport-stub>
+ ❯ VueWrapper.get node_modules/.pnpm/@vue+test-utils@2.5.1_@vue+compiler-dom@3.5.44_@vue+server-renderer@3.5.44_vue@3.5.44_typescript@5.9.3_/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7333:15
+ ❯ tests/application.test.ts:78:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/application.test.ts > session and user flows > shows project selection, iteration edits, personal notification read/handling separately, audit and rules
+AssertionError: expected '研发交付 / WORKSPACE通知中心阅读与处理分别留痕，处理提醒不会自…' to contain '扫描间隔'
+
+Expected: "扫描间隔"
+Received: "研发交付 / WORKSPACE通知中心阅读与处理分别留痕，处理提醒不会自动解除阻塞。刷新记录个人通知项目升级历史升级规则项目成员与角色"
+
+ ❯ tests/application.test.ts:108:96
+    106|         await button(wrapper, '记录处理结果').trigger('click'); expect(wrapp…
+    107|         await button(wrapper, '项目升级历史').trigger('click'); await settle…
+    108|         await button(wrapper, '升级规则').trigger('click'); await settle()…
+       |                                                                                                ^
+    109|       }
+    110|       if (area === 'tasks') { await wrapper.get('.business-card h3 but…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯

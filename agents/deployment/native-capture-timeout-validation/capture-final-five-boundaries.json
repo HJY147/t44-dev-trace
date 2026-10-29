@@ -1,0 +1,157 @@
+{
+  "at_utc": "2026-10-23T21:56:08.129475+00:00",
+  "source_sha256": "5ed6844d4b44dcb9561141f9984100fcb034ad6f0984b4a4863219694c5dfe98",
+  "test_source_sha256": "41ebd3a98f7e386ae1471c4a76e5a6eb16824f8fa66b8fc6f36011c7d5f0184f",
+  "capture_ast_sha256": "6c61acd63d983cab32f478b6e1777a26a9217f816200528dde499f5f92e87d85",
+  "same_published_assertion_included": true,
+  "exit_code": 0,
+  "tests_run": 5,
+  "failures": 0,
+  "errors": 0,
+  "observations": [
+    {
+      "scenario": "test_cleanup_timeout_records_unconfirmed_and_actual_null_code",
+      "communicate_timeouts": [
+        1,
+        5
+      ],
+      "returned_normally": false,
+      "error": "COMMAND_STOP_UNCONFIRMED",
+      "actual_child_returncode": null,
+      "receipt": {
+        "started_at_utc": "2026-10-23T21:56:08.116668+00:00",
+        "ended_at_utc": "2026-10-23T21:56:08.117412+00:00",
+        "argv": [
+          "synthetic-owned-command"
+        ],
+        "cwd": "/synthetic-owned-source",
+        "exit_code": null,
+        "timed_out": true,
+        "stop_unconfirmed": true,
+        "success": false,
+        "stdout_sha256": "4322d236b7a6012c7ec654e95e6d46a4a052485d52cc0db9d47b886a6314172c",
+        "stderr_sha256": "a9bdeacf4f344f823f0cd95f52b747f6771d6862b986485685d477afde29ac2d",
+        "private_output_id": "eaf4eb7836044f548c4ff2481c3fe930"
+      },
+      "actual_os_processes_started": 0,
+      "actual_os_signals_sent": 0,
+      "actual_private_inputs_read": false
+    },
+    {
+      "scenario": "test_normal_nonzero_preserves_code_and_fails",
+      "communicate_timeouts": [
+        1
+      ],
+      "returned_normally": false,
+      "error": "OWNED_COMMAND_FAILED",
+      "actual_child_returncode": 7,
+      "receipt": {
+        "started_at_utc": "2026-10-23T21:56:08.118169+00:00",
+        "ended_at_utc": "2026-10-23T21:56:08.118418+00:00",
+        "argv": [
+          "synthetic-owned-command"
+        ],
+        "cwd": "/synthetic-owned-source",
+        "exit_code": 7,
+        "timed_out": false,
+        "stop_unconfirmed": false,
+        "success": false,
+        "stdout_sha256": "377726a215625edab480966bf3c3991d01d2e0272d3e06c1d7d53af738055c43",
+        "stderr_sha256": "4e49bcbae575c562aa975b9fce1e17bd5eda7f0b642c7c52edf374596f8d0421",
+        "private_output_id": "b091aa20fd844279ac046b6d255e4190"
+      },
+      "actual_os_processes_started": 0,
+      "actual_os_signals_sent": 0,
+      "actual_private_inputs_read": false
+    },
+    {
+      "scenario": "test_normal_zero_returns_success_without_timeout",
+      "communicate_timeouts": [
+        1
+      ],
+      "returned_normally": true,
+      "error": null,
+      "actual_child_returncode": 0,
+      "receipt": {
+        "started_at_utc": "2026-10-23T21:56:08.119171+00:00",
+        "ended_at_utc": "2026-10-23T21:56:08.119430+00:00",
+        "argv": [
+          "synthetic-owned-command"
+        ],
+        "cwd": "/synthetic-owned-source",
+        "exit_code": 0,
+        "timed_out": false,
+        "stop_unconfirmed": false,
+        "success": true,
+        "stdout_sha256": "377726a215625edab480966bf3c3991d01d2e0272d3e06c1d7d53af738055c43",
+        "stderr_sha256": "4e49bcbae575c562aa975b9fce1e17bd5eda7f0b642c7c52edf374596f8d0421",
+        "private_output_id": "a8c2ff0f07a04ba8af7841c98d0b72af"
+      },
+      "actual_os_processes_started": 0,
+      "actual_os_signals_sent": 0,
+      "actual_private_inputs_read": false
+    },
+    {
+      "scenario": "test_original_timeout_then_cleanup_zero_is_rejected",
+      "communicate_timeouts": [
+        1,
+        5
+      ],
+      "returned_normally": false,
+      "error": "OWNED_COMMAND_TIMEOUT",
+      "actual_child_returncode": 0,
+      "receipt": {
+        "started_at_utc": "2026-10-23T21:56:08.120801+00:00",
+        "ended_at_utc": "2026-10-23T21:56:08.121162+00:00",
+        "argv": [
+          "synthetic-owned-command"
+        ],
+        "cwd": "/synthetic-owned-source",
+        "exit_code": 0,
+        "timed_out": true,
+        "stop_unconfirmed": false,
+        "success": false,
+        "stdout_sha256": "377726a215625edab480966bf3c3991d01d2e0272d3e06c1d7d53af738055c43",
+        "stderr_sha256": "4e49bcbae575c562aa975b9fce1e17bd5eda7f0b642c7c52edf374596f8d0421",
+        "private_output_id": "a8974790ee3946249aa8a018d868d146"
+      },
+      "actual_os_processes_started": 0,
+      "actual_os_signals_sent": 0,
+      "actual_private_inputs_read": false
+    },
+    {
+      "scenario": "test_timeout_then_nonzero_preserves_actual_code",
+      "communicate_timeouts": [
+        1,
+        5
+      ],
+      "returned_normally": false,
+      "error": "OWNED_COMMAND_TIMEOUT",
+      "actual_child_returncode": -15,
+      "receipt": {
+        "started_at_utc": "2026-10-23T21:56:08.122070+00:00",
+        "ended_at_utc": "2026-10-23T21:56:08.122519+00:00",
+        "argv": [
+          "synthetic-owned-command"
+        ],
+        "cwd": "/synthetic-owned-source",
+        "exit_code": -15,
+        "timed_out": true,
+        "stop_unconfirmed": false,
+        "success": false,
+        "stdout_sha256": "377726a215625edab480966bf3c3991d01d2e0272d3e06c1d7d53af738055c43",
+        "stderr_sha256": "4e49bcbae575c562aa975b9fce1e17bd5eda7f0b642c7c52edf374596f8d0421",
+        "private_output_id": "e1d93a1c1a8a4097aef407885fe30ae1"
+      },
+      "actual_os_processes_started": 0,
+      "actual_os_signals_sent": 0,
+      "actual_private_inputs_read": false
+    }
+  ],
+  "output_sha256": "5f31a85fd3fa71416e14dd2db5bbdf838ea372a7208fa92319d60c84bdd7c29b",
+  "actual_os_processes_started": 0,
+  "actual_os_signals_sent": 0,
+  "actual_private_inputs_read": false,
+  "full_cycle_executed": false,
+  "other_guards_executed": false
+}

@@ -1,0 +1,17 @@
+$ .venv/bin/ruff check --config backend/pyproject.toml backend/t44 tmp/backend
+SIM117 Use a single `with` statement with multiple contexts instead of nested `with` statements
+   --> tmp/backend/persistence/975_seed.py:247:13
+    |
+245 |       with factory() as uow:
+246 |           for table, changes, kind in violations:
+247 | /             with pytest.raises(PersistenceIntegrityError) as rejected:
+248 | |                 with uow.gateway.savepoint():
+    | |_____________________________________________^
+249 |                       uow.gateway.update(table, {"id": 1}, changes)
+250 |               assert rejected.value.kind == kind
+    |
+help: Combine `with` statements
+
+Found 1 error.
+
+exit_code=1

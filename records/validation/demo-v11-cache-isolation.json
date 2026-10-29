@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-23T15:02:55.796807+00:00",
+  "actor": "coordinator_AI",
+  "initial_demo_frontend_pid": 50612,
+  "initial_demo_port": 5173,
+  "initial_console_local_time": "2026-10-23 22:57:15 Asia/Shanghai",
+  "observed_initial_log": "Re-optimizing dependencies because vite config has changed",
+  "shared_cache_observed": "frontend/node_modules/.vite via dependencies symlink",
+  "independent_ui_port": 5175,
+  "risk": "Dependency optimizer cache may have interfered with another Vite process; no private observations or actual failure inspected by coordinator",
+  "correction": "SIGTERM only own demo frontend; restart same source/database at5173 with private cacheDir",
+  "correction_completed_by": "2026-10-23T14:58:53Z",
+  "new_demo_frontend_pid": 50726,
+  "independent_source_data_process_modified": false,
+  "independent_tester_notified": true,
+  "private_cases_results_screenshots_accessed": false,
+  "student_hallucination_identification": false,
+  "private_screenshot_QA": {
+    "initial": "demo-v11.png legitimately captured loading state",
+    "followup": "demo-v11-ready.png viewed by coordinator;40/150/3/1 and20 visible synthetic task cards",
+    "title_selector_note": "Developer smoke .record-card h3 selector matched none; not asserted and does not imply no records"
+  }
+}

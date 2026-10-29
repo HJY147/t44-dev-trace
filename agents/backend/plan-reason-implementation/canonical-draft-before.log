@@ -1,0 +1,119 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 112 items / 110 deselected / 2 selected
+
+backend FF                                                               [100%]
+
+=================================== FAILURES ===================================
+_ test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[integer_hours] _
+
+application = (<starlette.testclient.TestClient object at 0x115e8f2c0>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x115d3c080>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x115e90d40>
+legacy_format = 'integer_hours'
+
+    @pytest.mark.parametrize("legacy_format", ["integer_hours", "short_utc"])
+    def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
+        application, monkeypatch, legacy_format
+    ):
+        from copy import deepcopy
+    
+        from t44.persistence.rows import RowsGateway
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        legacy["request_id"] = uuid4().hex
+        if legacy_format == "integer_hours":
+            field, value, text = "estimated_hours", 8, "8"
+        else:
+            field = "planned_start"
+            value = text = schedule["before_plan"][field].replace(".000000Z", "Z")
+        next(d for d in legacy["before_values"] if d["field"] == field)["value"] = text
+        with factory() as uow:
+            identifier = uow.gateway.insert("audit_events", legacy)
+    
+        # This is synthetic identical alternate spelling, not an observed legacy database format.
+        def old_format(_g, _project_id, _pairs):
+            return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+    
+        monkeypatch.setattr(RowsGateway, "task_schedule_changes", old_format)
+        result = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in result["items"] if row["id"] == identifier)
+>       assert record["after"] == legacy["after_values"]
+E       AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan <literal> historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2611: AssertionError
+_ test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[short_utc] _
+
+application = (<starlette.testclient.TestClient object at 0x115e7d490>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x115ddb290>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x115e7e8a0>
+legacy_format = 'short_utc'
+
+    @pytest.mark.parametrize("legacy_format", ["integer_hours", "short_utc"])
+    def test_schedule_reason_matching_nonproducer_spelling_still_unverifiable(
+        application, monkeypatch, legacy_format
+    ):
+        from copy import deepcopy
+    
+        from t44.persistence.rows import RowsGateway
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        legacy, schedule = _legacy_reason_fixture(client, factory, tokens, pid, task)
+        legacy["request_id"] = uuid4().hex
+        if legacy_format == "integer_hours":
+            field, value, text = "estimated_hours", 8, "8"
+        else:
+            field = "planned_start"
+            value = text = schedule["before_plan"][field].replace(".000000Z", "Z")
+        next(d for d in legacy["before_values"] if d["field"] == field)["value"] = text
+        with factory() as uow:
+            identifier = uow.gateway.insert("audit_events", legacy)
+    
+        # This is synthetic identical alternate spelling, not an observed legacy database format.
+        def old_format(_g, _project_id, _pairs):
+            return [{**deepcopy(schedule), "before_plan": {**schedule["before_plan"], field: value}}]
+    
+        monkeypatch.setattr(RowsGateway, "task_schedule_changes", old_format)
+        result = request(
+            client,
+            "listProjectAuditEvents",
+            token=tokens["manager"],
+            project_id=pid,
+            query={"task_id": task["id"]},
+            expect=200,
+        ).json()["data"]
+        record = next(row for row in result["items"] if row["id"] == identifier)
+>       assert record["after"] == legacy["after_values"]
+E       AssertionError: assert [{'field': 'v...: '1.0'}, ...] == [{'field': 'v...: '1.0'}, ...]
+E         
+E         Left contains one more item: {'field': 'reason', 'value': '2026-10-24\nchangeTaskPlan <literal> historical reason'}
+E         Use -v to get more diff
+
+tmp/backend/contracts/986_http.py:2611: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/agents/backend/plan-reason-implementation/canonical-draft-before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[integer_hours]
+FAILED backend::test_schedule_reason_matching_nonproducer_spelling_still_unverifiable[short_utc]
+================= 2 failed, 110 deselected, 1 warning in 0.60s =================

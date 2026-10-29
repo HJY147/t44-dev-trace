@@ -1,0 +1,76 @@
+{
+  "database_final": "bc4d4616298bc9012c14901045bf2a47f5e8afcd",
+  "database_product": "8f29030756139061341e0a636c8774ca790964bd",
+  "json_files_parsed": [
+    "agents/database/dry-r29b/bandit-final.command.json",
+    "agents/database/dry-r29b/baseline-count.json",
+    "agents/database/dry-r29b/boundaries.json",
+    "agents/database/dry-r29b/boundary-check.command.json",
+    "agents/database/dry-r29b/commands.json",
+    "agents/database/dry-r29b/diff-check-raw.command.json",
+    "agents/database/dry-r29b/diff-check-source.command.json",
+    "agents/database/dry-r29b/exploration.json",
+    "agents/database/dry-r29b/format-final.command.json",
+    "agents/database/dry-r29b/full-local.command.json",
+    "agents/database/dry-r29b/github-publication.json",
+    "agents/database/dry-r29b/push-retry.command.json",
+    "agents/database/dry-r29b/ruff-boundary.command.json",
+    "agents/database/dry-r29b/ruff-final.command.json",
+    "agents/database/dry-r29b/source-count.command.json",
+    "agents/database/dry-r29b/source-count.json",
+    "agents/database/dry-r29b/verification.json"
+  ],
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--quiet",
+        "8f29030756139061341e0a636c8774ca790964bd",
+        "bc4d4616298bc9012c14901045bf2a47f5e8afcd",
+        "--",
+        "backend",
+        "frontend",
+        "specs",
+        "records/spec-freezes",
+        "tmp/backend",
+        "tmp/frontend",
+        "tmp/ci"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "a92e5e73da93ba23748c3bab113103036c395d50",
+        "bc4d4616298bc9012c14901045bf2a47f5e8afcd",
+        "--",
+        "backend/t44/persistence/migrations.py",
+        "tmp/765_database_dry_r29b",
+        "agents/database/dry-r29b/*.json",
+        "agents/database/dry-r29b/*.md",
+        "agents/database/prompts/ROLE-database-DRY-R29B-20261029-v1.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "a92e5e73da93ba23748c3bab113103036c395d50",
+        "bc4d4616298bc9012c14901045bf2a47f5e8afcd"
+      ],
+      "exit_code": 2,
+      "stdout": "agents/database/dry-r29b/diff-check-raw.stdout.txt:2: trailing whitespace.\n++remote: \nagents/database/dry-r29b/diff-check-raw.stdout.txt:4: trailing whitespace.\n++remote: Create a pull request for 'codex/database-dry-r29b' on GitHub by visiting:        \nagents/database/dry-r29b/diff-check-raw.stdout.txt:6: trailing whitespace.\n++remote:      https://github.com/HJY147/t44-dev-trace/pull/new/codex/database-dry-r29b        \nagents/database/dry-r29b/diff-check-raw.stdout.txt:8: trailing whitespace.\n++remote: \nagents/database/dry-r29b/push-retry.stderr.txt:1: trailing whitespace.\n+remote: \nagents/database/dry-r29b/push-retry.stderr.txt:2: trailing whitespace.\n+remote: Create a pull request for 'codex/database-dry-r29b' on GitHub by visiting:        \nagents/database/dry-r29b/push-retry.stderr.txt:3: trailing whitespace.\n+remote:      https://github.com/HJY147/t44-dev-trace/pull/new/codex/database-dry-r29b        \nagents/database/dry-r29b/push-retry.stderr.txt:4: trailing whitespace.\n+remote: \n",
+      "stderr": ""
+    }
+  ],
+  "original_logs_edited": false
+}

@@ -1,0 +1,64 @@
+{
+  "visibility": "PUBLIC",
+  "name": "T44-829-v7-type-union-tool-maintenance",
+  "revision": 7,
+  "status": "FROZEN_TOOL_ONLY_NEW_GRANT_REQUIRED",
+  "utc": "2026-10-25T09:11:51.401092+00:00",
+  "tool_freeze_sha256": "9e247e8cab9b4f04dbc2c2a9865222967881576597aee7adbe2c9ab6ebe0cb07",
+  "scope": "Only private schema helper type dispatch; no business source, oracle, assertion, threshold or PUBLIC controller changes",
+  "cold_root": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh",
+  "cold_public_root": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC",
+  "public_review_entry": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/technical.PUBLIC.md",
+  "cold_manifest": {
+    "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v7-fresh/PUBLIC/manifest.PUBLIC.json",
+    "bytes": 3363,
+    "sha256": "adfc26563fb23122350138eeb3d73be251a865f3764b19ea6915dff57a72fd1f",
+    "visibility": "PUBLIC"
+  },
+  "cold_allowlist": {
+    "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/cold-run-allowlist-v7.PUBLIC.json",
+    "bytes": 12598,
+    "sha256": "2896392fc98582c3f97c260f962d7ff5235eb4a031e793c1f1559d1d373ed990",
+    "visibility": "PUBLIC"
+  },
+  "artifacts": [
+    {
+      "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/union-checker.PUBLIC.py",
+      "bytes": 7094,
+      "sha256": "ae6a888f9776ca2821fc9b98eb4f4a4b6e7393d26e191d1bba1468dc899bb070",
+      "visibility": "PUBLIC"
+    },
+    {
+      "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/red-v6.PUBLIC.json",
+      "bytes": 44261,
+      "sha256": "b8a6b6f9d9905be245739169c017c4d85a534878de535764e9680b13bcdc3781",
+      "visibility": "PUBLIC"
+    },
+    {
+      "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/green-v7.PUBLIC.json",
+      "bytes": 41652,
+      "sha256": "2c3271d196f71447a445e546deb96d8db3024ae3dcd784d50d7a0de8afa85608",
+      "visibility": "PUBLIC"
+    },
+    {
+      "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/maintenance-proof.PUBLIC.json",
+      "bytes": 3111,
+      "sha256": "e109ddb30e74e59316eecf37c90a4530968b6d9c9aba6d7ff81877ed5ab2c86e",
+      "visibility": "PUBLIC"
+    },
+    {
+      "path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/PUBLIC/v7-type-union/technical.PUBLIC.md",
+      "bytes": 4803,
+      "sha256": "6560e2f30a39cb3aebf76d7dd15b991afd332b08ed74581e5423803d9d7f69e0",
+      "visibility": "PUBLIC"
+    }
+  ],
+  "actual_sut_requests_this_maintenance": 0,
+  "actual_canary_requests_this_maintenance": 0,
+  "new_generic_offline_checks": 89,
+  "green_passed": 89,
+  "preserved_v6_and_prior_run_facts": true,
+  "v6_core_reverified": true,
+  "new_cold_output_roots_verified_empty": true,
+  "fresh_execution_context_policy": "Only four original authorities + exact v7 allowlist + future neutral grant/environment; no old reports, scores, logs, keys or history."
+}

@@ -1,0 +1,18 @@
+F401 [*] `json` imported but unused
+ --> tmp/760_deployment_budget_kind_r30/test_budget_chain.py:4:8
+  |
+3 | import importlib.util
+4 | import json
+  |        ^^^^
+5 | import shutil
+6 | import tempfile
+  |
+help: Remove unused import: `json`
+  |
+3 | import importlib.util
+  - import json
+4 | import shutil
+  |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.

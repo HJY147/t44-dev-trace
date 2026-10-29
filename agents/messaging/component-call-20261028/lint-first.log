@@ -1,0 +1,30 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> tmp/backend/messaging/979_facade.py:1:1
+   |
+ 1 | / from concurrent.futures import ThreadPoolExecutor, TimeoutError
+ 2 | | from threading import Barrier, Event
+ 3 | | from importlib import import_module
+ 4 | |
+ 5 | | import pytest
+ 6 | | from fastapi.testclient import TestClient
+ 7 | | from t44.api import create_app
+ 8 | | from t44.contracts import violations
+ 9 | | from t44.persistence.delivery import OutboxStore
+10 | | from t44.services.common import SCHEMAS
+11 | | from t44.services.errors import Rejected
+12 | | from t44.settings import Settings
+   | |_________________________________^
+13 |
+14 |   NotificationFacade = import_module(
+   |
+help: Organize imports
+  |
+1 | from concurrent.futures import ThreadPoolExecutor, TimeoutError
+2 + from importlib import import_module
+3 | from threading import Barrier, Event
+  - from importlib import import_module
+4 |
+  |
+
+Found 1 error.
+[*] 1 fixable with `--fix`.

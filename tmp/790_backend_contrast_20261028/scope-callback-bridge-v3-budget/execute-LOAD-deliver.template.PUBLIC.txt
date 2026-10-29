@@ -1,0 +1,6 @@
+# TEMPLATE ONLY: new actual receipt/grant/request required; no old nonce or budget default.
+python3 /root/t44-r9/scope-bridge-v3-01/bridge_cli.py deliver \
+  --manifest-sha256 e5512dd264a2199bb599742ea72f671d184ab5e41a3d102bed498d49b244d5f7 \
+  --reservation '<ACTUAL_PREPARE_FOLDER>/reservation.PUBLIC.json' \
+  --app-result '<COPIED_APP_RESULT_PUBLIC_PATH>' \
+  --app-result-sha256 '<ACTUAL_APP_RESULT_SHA256>'

@@ -1,0 +1,56 @@
+............FF                                                           [100%]
+=================================== FAILURES ===================================
+______ test_confirmed_recovery_excludes_old_complete_events_before_limit _______
+
+mysql = (Engine(mysql+pymysql://t44:***@127.0.0.1:13306/t44_test?charset=utf8mb4), <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x107ce4050>)
+fixture = {'user': 163, 'project': 59, 'iteration': 52, 'task': 60}
+
+    def test_confirmed_recovery_excludes_old_complete_events_before_limit(mysql, fixture):
+        _, factory = mysql
+        store = OutboxStore(factory)
+        complete = [confirm_fixture(factory, fixture, consumed=True)[0] for _ in range(3)]
+        missing, token = confirm_fixture(factory, fixture)
+        now = utc_now()
+        recovered = store.recover_confirmed(confirmed_before=now, now=now, limit=1)
+>       assert recovered == [dict(event_id=missing, created=1, fallback=True)]
+E       AssertionError: assert [{'event_id':...lback': True}] == [{'event_id':...lback': True}]
+E         
+E         At index 0 diff: {'event_id': 12, 'created': 1, 'fallback': True} != {'event_id': 64, 'created': 1, 'fallback': True}
+E         Use -v to get more diff
+
+backend/tests/persistence/test_mysql.py:403: AssertionError
+_ test_confirmed_recovery_skips_consumer_lock_and_never_marks_complete_fallback _
+
+mysql = (Engine(mysql+pymysql://t44:***@127.0.0.1:13306/t44_test?charset=utf8mb4), <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x107ce4050>)
+fixture = {'user': 163, 'project': 59, 'iteration': 52, 'task': 60}
+
+    def test_confirmed_recovery_skips_consumer_lock_and_never_marks_complete_fallback(mysql, fixture):
+        from threading import Event
+    
+        _, factory = mysql
+        store = OutboxStore(factory)
+        event, _ = confirm_fixture(factory, fixture)
+        inserted, finish = Event(), Event()
+    
+        class PausedConsumer(OutboxStore):
+            def _notices(self, *args, **kwargs):
+                count = super()._notices(*args, **kwargs)
+                inserted.set()
+                assert finish.wait(timeout=10)
+                return count
+    
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(PausedConsumer(factory).consume, event)
+            try:
+                assert inserted.wait(timeout=10)
+>               assert store.recover_confirmed(confirmed_before=utc_now(), limit=1) == []
+E               AssertionError: assert [{'event_id':...lback': True}] == []
+E                 
+E                 Left contains one more item: {'event_id': 22, 'created': 1, 'fallback': True}
+E                 Use -v to get more diff
+
+backend/tests/persistence/test_mysql.py:430: AssertionError
+=========================== short test summary info ============================
+FAILED backend/tests/persistence/test_mysql.py::test_confirmed_recovery_excludes_old_complete_events_before_limit
+FAILED backend/tests/persistence/test_mysql.py::test_confirmed_recovery_skips_consumer_lock_and_never_marks_complete_fallback
+2 failed, 12 passed in 0.44s

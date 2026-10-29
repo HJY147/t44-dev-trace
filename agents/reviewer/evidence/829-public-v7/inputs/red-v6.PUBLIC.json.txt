@@ -1,0 +1,2246 @@
+{
+  "visibility": "PUBLIC",
+  "purpose": "generic_schema_helper_offline_only",
+  "utc": "2026-10-25T09:10:13.105981+00:00",
+  "validator_path": "/Users/yang/Desktop/nothing/软件开发大作业/tmp/829_independent_acceptance_20261025/execution-v6-fresh/private/schema.py",
+  "validator_sha256": "2d12831838fa622ffc4a5a5034c882cbae60561de088139f6ff97a208d1a634e",
+  "planned_checks": 89,
+  "executed_offline_checks": 89,
+  "passed_checks": 2,
+  "failed_checks": 87,
+  "actual_sut_requests": 0,
+  "socket_calls": 0,
+  "system_clock_changed": false,
+  "results": [
+    {
+      "name": "forward-0",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-1",
+      "instance": 7,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-2",
+      "instance": -2,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-3",
+      "instance": null,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-4",
+      "instance": "0",
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-5",
+      "instance": false,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-6",
+      "instance": true,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-7",
+      "instance": [],
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-8",
+      "instance": {},
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "forward-9",
+      "instance": 1.25,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-0",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-1",
+      "instance": 7,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-2",
+      "instance": -2,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-3",
+      "instance": null,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-4",
+      "instance": "0",
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-5",
+      "instance": false,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-6",
+      "instance": true,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-7",
+      "instance": [],
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-8",
+      "instance": {},
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "reverse-9",
+      "instance": 1.25,
+      "schema": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-object",
+      "instance": {},
+      "schema": {
+        "type": [
+          "object"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "object"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-object",
+      "instance": [],
+      "schema": {
+        "type": [
+          "object"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "object"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-array",
+      "instance": [],
+      "schema": {
+        "type": [
+          "array"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "array"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-array",
+      "instance": {},
+      "schema": {
+        "type": [
+          "array"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "array"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-string",
+      "instance": "a",
+      "schema": {
+        "type": [
+          "string"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "string"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-string",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "string"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "string"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-integer",
+      "instance": 3,
+      "schema": {
+        "type": [
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-integer",
+      "instance": false,
+      "schema": {
+        "type": [
+          "integer"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-number",
+      "instance": 1.25,
+      "schema": {
+        "type": [
+          "number"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "number"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-number",
+      "instance": true,
+      "schema": {
+        "type": [
+          "number"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "number"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-boolean",
+      "instance": false,
+      "schema": {
+        "type": [
+          "boolean"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "boolean"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-boolean",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "boolean"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "boolean"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-null",
+      "instance": null,
+      "schema": {
+        "type": [
+          "null"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "singleton-reject-null",
+      "instance": "null",
+      "schema": {
+        "type": [
+          "null"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "null"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "overlap-integer",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "number"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "number"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "overlap-number",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "number",
+          "integer"
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "number",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-0",
+      "instance": 0,
+      "schema": {
+        "type": "unknown"
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": "unknown"
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "KeyError",
+        "message": "'unknown'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-1",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "unknown"
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "unknown"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-2",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "unknown",
+          "integer"
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "unknown",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-3",
+      "instance": 0,
+      "schema": {
+        "type": []
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": []
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": false
+    },
+    {
+      "name": "malformed-type-4",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "integer"
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "integer"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-5",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          null
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          null
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-6",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          false
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          false
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-7",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          1
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          1
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-8",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          []
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          []
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-9",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          {}
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          {}
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "malformed-type-10",
+      "instance": 0,
+      "schema": {
+        "type": {}
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": {}
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": false
+    },
+    {
+      "name": "malformed-type-11",
+      "instance": 0,
+      "schema": {
+        "type": null
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": null
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": false
+    },
+    {
+      "name": "malformed-type-12",
+      "instance": 0,
+      "schema": {
+        "type": false
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": false
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": false
+    },
+    {
+      "name": "malformed-type-13",
+      "instance": 0,
+      "schema": {
+        "type": 0
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": 0
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": false
+    },
+    {
+      "name": "malformed-type-14",
+      "instance": 0,
+      "schema": {
+        "type": 1
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "type": 1
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "KeyError",
+        "message": "1"
+      },
+      "passed": false
+    },
+    {
+      "name": "minimum-ok",
+      "instance": 2,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "minimum-fails",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "minimum-null",
+      "instance": null,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "maximum-fails",
+      "instance": 9,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "maximum": 8
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "maximum": 8
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "multiple-ok",
+      "instance": 4,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "multipleOf": 2
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "multipleOf": 2
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "multiple-fails",
+      "instance": 3,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "multipleOf": 2
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "multipleOf": 2
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "exclusive-minimum-fails",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "exclusiveMinimum": 0
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "exclusiveMinimum": 0
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "const-ok",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "const": 0
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "const": 0
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "const-fails",
+      "instance": null,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "const": 0
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "const": 0
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "enum-ok",
+      "instance": null,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "enum": [
+          0,
+          null
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "enum": [
+          0,
+          null
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "enum-fails",
+      "instance": 1,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "enum": [
+          0,
+          null
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "enum": [
+          0,
+          null
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "allof-ok",
+      "instance": 2,
+      "schema": {
+        "allOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "minimum": 1
+          }
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "allOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "minimum": 1
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "allof-fails",
+      "instance": 0,
+      "schema": {
+        "allOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "minimum": 1
+          }
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "allOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "minimum": 1
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "anyof-ok",
+      "instance": null,
+      "schema": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "expected": "accept",
+      "doc": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "anyof-fails",
+      "instance": false,
+      "schema": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "oneof-overlap-fails",
+      "instance": 0,
+      "schema": {
+        "oneOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "oneOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "anyof-unknown-not-swallowed",
+      "instance": 0,
+      "schema": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": [
+              "integer",
+              "unknown"
+            ]
+          }
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": [
+              "integer",
+              "unknown"
+            ]
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "allof-unknown-not-swallowed",
+      "instance": 0,
+      "schema": {
+        "allOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "unknown"
+          }
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "allOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "unknown"
+          }
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "KeyError",
+        "message": "'unknown'"
+      },
+      "passed": false
+    },
+    {
+      "name": "local-ref-int",
+      "instance": 0,
+      "schema": {
+        "$ref": "#/$defs/value"
+      },
+      "expected": "accept",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "local-ref-null",
+      "instance": null,
+      "schema": {
+        "$ref": "#/$defs/value"
+      },
+      "expected": "accept",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "local-ref-str",
+      "instance": "0",
+      "schema": {
+        "$ref": "#/$defs/value"
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "local-ref-bool",
+      "instance": false,
+      "schema": {
+        "$ref": "#/$defs/value"
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "local-ref-min",
+      "instance": -1,
+      "schema": {
+        "$ref": "#/$defs/value"
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "ref-sibling-fails",
+      "instance": 0,
+      "schema": {
+        "$ref": "#/$defs/value",
+        "minimum": 1
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "ref-unknown-fails",
+      "instance": 0,
+      "schema": {
+        "$ref": "#/$defs/value",
+        "type": [
+          "integer",
+          "unknown"
+        ]
+      },
+      "expected": "schema_rejected",
+      "doc": {
+        "$defs": {
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "object-required-ok",
+      "instance": {
+        "n": null
+      },
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "n"
+        ],
+        "properties": {
+          "n": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "n"
+        ],
+        "properties": {
+          "n": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "object-required-fails",
+      "instance": {},
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "n"
+        ]
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "n"
+        ]
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "object-child-fails",
+      "instance": {
+        "n": false
+      },
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "n": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "n": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "object-extra-fails",
+      "instance": {
+        "extra": 1
+      },
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": false
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": false
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "array-items-ok",
+      "instance": [
+        0,
+        null
+      ],
+      "schema": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "minItems": 2
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "minItems": 2
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "array-items-fails",
+      "instance": [
+        0,
+        false
+      ],
+      "schema": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "array-length-fails",
+      "instance": [],
+      "schema": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "minItems": 1
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "minItems": 1
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "string-ok",
+      "instance": "ab",
+      "schema": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 2,
+        "pattern": "^a"
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 2,
+        "pattern": "^a"
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "string-length-fails",
+      "instance": "a",
+      "schema": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 2
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 2
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "string-pattern-fails",
+      "instance": "bb",
+      "schema": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^a"
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^a"
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "conditional-ok",
+      "instance": null,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "if": {
+          "type": "integer"
+        },
+        "then": {
+          "minimum": 1
+        },
+        "else": {
+          "const": null
+        }
+      },
+      "expected": "accept",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "if": {
+          "type": "integer"
+        },
+        "then": {
+          "minimum": 1
+        },
+        "else": {
+          "const": null
+        }
+      },
+      "observed": "unexpected_exception",
+      "exception": {
+        "type": "TypeError",
+        "message": "unhashable type: 'list'"
+      },
+      "passed": false
+    },
+    {
+      "name": "conditional-fails",
+      "instance": 0,
+      "schema": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "if": {
+          "type": "integer"
+        },
+        "then": {
+          "minimum": 1
+        },
+        "else": {
+          "const": null
+        }
+      },
+      "expected": "instance_rejected",
+      "doc": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "if": {
+          "type": "integer"
+        },
+        "then": {
+          "minimum": 1
+        },
+        "else": {
+          "const": null
+        }
+      },
+      "observed": "instance_rejected",
+      "exception": {
+        "type": "Invalid",
+        "message": "$: minimum"
+      },
+      "passed": true
+    },
+    {
+      "name": "no-type-original-subset",
+      "instance": "x",
+      "schema": {
+        "minimum": 0
+      },
+      "expected": "accept",
+      "doc": {
+        "minimum": 0
+      },
+      "observed": "accept",
+      "exception": null,
+      "passed": true
+    }
+  ]
+}

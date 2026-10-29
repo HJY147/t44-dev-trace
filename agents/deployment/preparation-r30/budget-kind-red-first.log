@@ -1,0 +1,73 @@
+test_derived_budget_accepts_exact_r30_binding (test_budget_chain.R30BudgetChain.test_derived_budget_accepts_exact_r30_binding) ... FAIL
+test_gen_probe_budget_reaches_mysql_boundary_without_network (test_budget_chain.R30BudgetChain.test_gen_probe_budget_reaches_mysql_boundary_without_network) ... ERROR
+test_old_v4_kind_is_refused (test_budget_chain.R30BudgetChain.test_old_v4_kind_is_refused) ... FAIL
+test_only_budget_kind_literal_changes_and_new_pin_is_complete (test_budget_chain.R30BudgetChain.test_only_budget_kind_literal_changes_and_new_pin_is_complete) ... FAIL
+test_real_operation_lock_enters_after_derived_binding_check (test_budget_chain.R30BudgetChain.test_real_operation_lock_enters_after_derived_binding_check) ... ERROR
+
+======================================================================
+ERROR: test_gen_probe_budget_reaches_mysql_boundary_without_network (test_budget_chain.R30BudgetChain.test_gen_probe_budget_reaches_mysql_boundary_without_network)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/test_budget_chain.py", line 90, in test_gen_probe_budget_reaches_mysql_boundary_without_network
+    self.g.operate(args)
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/tmp25ynfqtd/profile/generation.py", line 655, in operate
+    with budget.operation_lock(args.phase_dir, args.binding_sha256):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/tmp25ynfqtd/test_gen_probe_budget_reaches_mysql_boundary_without_network/mysql-budget.py", line 97, in operation_lock
+    checked_binding(phase, binding_sha256)
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/tmp25ynfqtd/test_gen_probe_budget_reaches_mysql_boundary_without_network/mysql-budget.py", line 88, in checked_binding
+    raise ValueError("V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION")
+ValueError: V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION
+
+======================================================================
+ERROR: test_real_operation_lock_enters_after_derived_binding_check (test_budget_chain.R30BudgetChain.test_real_operation_lock_enters_after_derived_binding_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/test_budget_chain.py", line 64, in test_real_operation_lock_enters_after_derived_binding_check
+    with self.b.operation_lock(path, expected, timeout_seconds=0) as descriptor:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/tmp25ynfqtd/profile/mysql-budget.py", line 97, in operation_lock
+    checked_binding(phase, binding_sha256)
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/tmp25ynfqtd/profile/mysql-budget.py", line 88, in checked_binding
+    raise ValueError("V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION")
+ValueError: V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION
+
+======================================================================
+FAIL: test_derived_budget_accepts_exact_r30_binding (test_budget_chain.R30BudgetChain.test_derived_budget_accepts_exact_r30_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/test_budget_chain.py", line 59, in test_derived_budget_accepts_exact_r30_binding
+    self.assertEqual(self.b.KIND, self.metadata["kind"])
+AssertionError: 'exact-pinned-production-entry-generation-v4' != 'r30-official-backend-production-entry-window-v1'
+- exact-pinned-production-entry-generation-v4
++ r30-official-backend-production-entry-window-v1
+
+
+======================================================================
+FAIL: test_old_v4_kind_is_refused (test_budget_chain.R30BudgetChain.test_old_v4_kind_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/test_budget_chain.py", line 95, in test_old_v4_kind_is_refused
+    with self.assertRaisesRegex(ValueError, "V4_ONLY_NO_OLD_CAMPAIGN_ADOPTION"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_only_budget_kind_literal_changes_and_new_pin_is_complete (test_budget_chain.R30BudgetChain.test_only_budget_kind_literal_changes_and_new_pin_is_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/deployment-preparation-r30/tmp/760_deployment_budget_kind_r30/test_budget_chain.py", line 104, in test_only_budget_kind_literal_changes_and_new_pin_is_complete
+    self.assertEqual((self.profile / "mysql-budget.py").read_text(), expected)
+AssertionError: '"""R[450 chars]D = "exact-pinned-production-entry-generation-[21683 chars] }\n' != '"""R[450 chars]D = "r30-official-backend-production-entry-win[21687 chars] }\n'
+Diff is 22797 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.780s
+
+FAILED (failures=3, errors=2)

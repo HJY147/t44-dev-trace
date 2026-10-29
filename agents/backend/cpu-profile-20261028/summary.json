@@ -1,0 +1,1666 @@
+{
+  "source": "a12e9e70b963bacafda3242bb6d82e53ee912ff1",
+  "total_http_requests": 135,
+  "setup_requests": 27,
+  "network_or_mysql_attempts_blocked": 0,
+  "profile_clock": "actual handler thread CPU; separate measured/profile phases",
+  "profiles": {
+    "getTask": {
+      "unprofiled_samples": 20,
+      "unprofiled_handler_cpu_median_ms": 7.5806875,
+      "unprofiled_handler_wall_median_ms": 8.702521,
+      "profile_samples": 5,
+      "instrumented_profile_cpu_mean_ms": 21.408139200000004,
+      "exclusive_groups_instrumented_ms_per_request": {
+        "other": 8.466591399999997,
+        "sqlalchemy_sql_expression": 4.333168799999998,
+        "jsonschema_referencing": 4.850935400000003,
+        "t44_wire": 0.4207782,
+        "sqlalchemy_other": 3.3366653999999984
+      },
+      "top_exclusive": [
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Cursor' objects>",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.004923038,
+          "inclusive_cpu_seconds": 0.004923038
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.isinstance>",
+          "primitive_calls": 8193,
+          "calls": 8193,
+          "exclusive_cpu_seconds": 0.004757310000000001,
+          "inclusive_cpu_seconds": 0.006072401
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/coercions.py",
+          "line": 323,
+          "function": "expect",
+          "primitive_calls": 720,
+          "calls": 720,
+          "exclusive_cpu_seconds": 0.0038451240000000005,
+          "inclusive_cpu_seconds": 0.010809721000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/cache_key.py",
+          "line": 209,
+          "function": "_generate_cache_key",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.003730291,
+          "inclusive_cpu_seconds": 0.005575334
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 15,
+          "calls": 489,
+          "exclusive_cpu_seconds": 0.0036455240000000002,
+          "inclusive_cpu_seconds": 0.030903623000000005
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 339,
+          "function": "evolve",
+          "primitive_calls": 424,
+          "calls": 424,
+          "exclusive_cpu_seconds": 0.002267045,
+          "inclusive_cpu_seconds": 0.005241337
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.0022409080000000002,
+          "inclusive_cpu_seconds": 0.032471459
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 254,
+          "function": "pointer",
+          "primitive_calls": 133,
+          "calls": 133,
+          "exclusive_cpu_seconds": 0.00220216,
+          "inclusive_cpu_seconds": 0.006037950000000001
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 20,
+          "function": "wire",
+          "primitive_calls": 30,
+          "calls": 685,
+          "exclusive_cpu_seconds": 0.002103891,
+          "inclusive_cpu_seconds": 0.0035261669999999998
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "primitive_calls": 2238,
+          "calls": 2238,
+          "exclusive_cpu_seconds": 0.002006606,
+          "inclusive_cpu_seconds": 0.002176691
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.getattr>",
+          "primitive_calls": 2987,
+          "calls": 2987,
+          "exclusive_cpu_seconds": 0.001750484,
+          "inclusive_cpu_seconds": 0.001750484
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.001675836,
+          "inclusive_cpu_seconds": 0.056911462
+        },
+        {
+          "file": "site-packages/sqlalchemy/util/langhelpers.py",
+          "line": 1452,
+          "function": "__get__",
+          "primitive_calls": 135,
+          "calls": 180,
+          "exclusive_cpu_seconds": 0.00135708,
+          "inclusive_cpu_seconds": 0.003181331
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 282,
+          "function": "__attrs_post_init__",
+          "primitive_calls": 439,
+          "calls": 439,
+          "exclusive_cpu_seconds": 0.0013329880000000002,
+          "inclusive_cpu_seconds": 0.0035839640000000007
+        },
+        {
+          "file": "site-packages/jsonschema/_types.py",
+          "line": 94,
+          "function": "is_type",
+          "primitive_calls": 670,
+          "calls": 670,
+          "exclusive_cpu_seconds": 0.001285305,
+          "inclusive_cpu_seconds": 0.003058598
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 2060,
+          "function": "__init__",
+          "primitive_calls": 110,
+          "calls": 110,
+          "exclusive_cpu_seconds": 0.00107894,
+          "inclusive_cpu_seconds": 0.004325462
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 282,
+          "function": "type",
+          "primitive_calls": 277,
+          "calls": 277,
+          "exclusive_cpu_seconds": 0.001068359,
+          "inclusive_cpu_seconds": 0.004083658
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 165,
+          "function": "create_resource",
+          "primitive_calls": 700,
+          "calls": 700,
+          "exclusive_cpu_seconds": 0.0010131760000000002,
+          "inclusive_cpu_seconds": 0.0017633790000000002
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 39,
+          "function": "_fields",
+          "primitive_calls": 110,
+          "calls": 110,
+          "exclusive_cpu_seconds": 0.0009136050000000001,
+          "inclusive_cpu_seconds": 0.0028403390000000003
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/default.py",
+          "line": 1564,
+          "function": "_init_compiled",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.000871791,
+          "inclusive_cpu_seconds": 0.002291543
+        }
+      ],
+      "top_inclusive_do_not_sum": [
+        {
+          "file": "backend/t44/api.py",
+          "line": 216,
+          "function": "handle",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000448835,
+          "inclusive_cpu_seconds": 0.10681079300000001
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 244,
+          "function": "execute",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00013754400000000002,
+          "inclusive_cpu_seconds": 0.070852292
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 78,
+          "function": "rows",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.000712625,
+          "inclusive_cpu_seconds": 0.05767117
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.001675836,
+          "inclusive_cpu_seconds": 0.056911462
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 86,
+          "function": "authenticate",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 8.6582e-05,
+          "inclusive_cpu_seconds": 0.051649334000000005
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 0.000490292,
+          "inclusive_cpu_seconds": 0.051554250999999995
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 38,
+          "function": "violations",
+          "primitive_calls": 15,
+          "calls": 15,
+          "exclusive_cpu_seconds": 0.00020666700000000003,
+          "inclusive_cpu_seconds": 0.036697293000000006
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 45,
+          "function": "prepare",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00010579000000000002,
+          "inclusive_cpu_seconds": 0.035541749
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 349,
+          "function": "iter_errors",
+          "primitive_calls": 15,
+          "calls": 22,
+          "exclusive_cpu_seconds": 6.895499999999999e-05,
+          "inclusive_cpu_seconds": 0.033743792
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 274,
+          "function": "ref",
+          "primitive_calls": 15,
+          "calls": 161,
+          "exclusive_cpu_seconds": 0.000493876,
+          "inclusive_cpu_seconds": 0.03369637600000001
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.0022409080000000002,
+          "inclusive_cpu_seconds": 0.032471459
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 15,
+          "calls": 489,
+          "exclusive_cpu_seconds": 0.0036455240000000002,
+          "inclusive_cpu_seconds": 0.030903623000000005
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 290,
+          "function": "properties",
+          "primitive_calls": 5,
+          "calls": 32,
+          "exclusive_cpu_seconds": 0.000398102,
+          "inclusive_cpu_seconds": 0.029576335000000002
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 184,
+          "function": "get",
+          "primitive_calls": 25,
+          "calls": 25,
+          "exclusive_cpu_seconds": 9.932900000000001e-05,
+          "inclusive_cpu_seconds": 0.029141082000000002
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2406,
+          "function": "execute",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.000169879,
+          "inclusive_cpu_seconds": 0.025522122
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2201,
+          "function": "_execute_internal",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.0008673219999999999,
+          "inclusive_cpu_seconds": 0.025352243
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1419,
+          "function": "execute",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.00020841599999999998,
+          "inclusive_cpu_seconds": 0.021841123
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 524,
+          "function": "_execute_on_connection",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.00015050000000000003,
+          "inclusive_cpu_seconds": 0.021632707
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1633,
+          "function": "_execute_clauseelement",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.000781295,
+          "inclusive_cpu_seconds": 0.021482207000000003
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 135,
+          "function": "members",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 8.162499999999999e-05,
+          "inclusive_cpu_seconds": 0.013619916
+        }
+      ],
+      "shape_observation": [
+        {
+          "phase": "shape",
+          "operation": "getTask",
+          "queries": {
+            "('auth_sessions', ('token_hash',), None, 1)": 2,
+            "('users', ('id',), None, 1)": 2,
+            "('project_members', ('active', 'project_id', 'user_id'), None, 1)": 2,
+            "('projects', ('id',), None, 1)": 2,
+            "('tasks', ('id',), None, 1)": 1
+          },
+          "authenticate_calls": 2,
+          "status": 200,
+          "thread_cpu_ms": 8.258333,
+          "handler_wall_ms": 8.93275
+        }
+      ]
+    },
+    "listTasks": {
+      "unprofiled_samples": 20,
+      "unprofiled_handler_cpu_median_ms": 31.396083,
+      "unprofiled_handler_wall_median_ms": 37.3339785,
+      "profile_samples": 5,
+      "instrumented_profile_cpu_mean_ms": 137.18293259999996,
+      "exclusive_groups_instrumented_ms_per_request": {
+        "jsonschema_referencing": 77.0844284,
+        "other": 44.48240579999999,
+        "t44_wire": 6.989370200000001,
+        "sqlalchemy_sql_expression": 4.774843400000001,
+        "sqlalchemy_other": 3.8518847999999983
+      },
+      "top_exclusive": [
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 10,
+          "calls": 9159,
+          "exclusive_cpu_seconds": 0.060559235,
+          "inclusive_cpu_seconds": 0.543199165
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.isinstance>",
+          "primitive_calls": 91878,
+          "calls": 91878,
+          "exclusive_cpu_seconds": 0.048540589,
+          "inclusive_cpu_seconds": 0.06824368700000001
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 339,
+          "function": "evolve",
+          "primitive_calls": 7384,
+          "calls": 7384,
+          "exclusive_cpu_seconds": 0.03851133,
+          "inclusive_cpu_seconds": 0.088051866
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 20,
+          "function": "wire",
+          "primitive_calls": 220,
+          "calls": 12350,
+          "exclusive_cpu_seconds": 0.034946851,
+          "inclusive_cpu_seconds": 0.056955783
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 254,
+          "function": "pointer",
+          "primitive_calls": 2128,
+          "calls": 2128,
+          "exclusive_cpu_seconds": 0.034492034000000005,
+          "inclusive_cpu_seconds": 0.094986925
+        },
+        {
+          "file": "site-packages/jsonschema/_types.py",
+          "line": 94,
+          "function": "is_type",
+          "primitive_calls": 10720,
+          "calls": 10720,
+          "exclusive_cpu_seconds": 0.020345379,
+          "inclusive_cpu_seconds": 0.04983986600000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.getattr>",
+          "primitive_calls": 40547,
+          "calls": 40547,
+          "exclusive_cpu_seconds": 0.019537945999999997,
+          "inclusive_cpu_seconds": 0.019537945999999997
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 282,
+          "function": "__attrs_post_init__",
+          "primitive_calls": 7394,
+          "calls": 7394,
+          "exclusive_cpu_seconds": 0.018792898000000002,
+          "inclusive_cpu_seconds": 0.024015838
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 282,
+          "function": "type",
+          "primitive_calls": 4857,
+          "calls": 4857,
+          "exclusive_cpu_seconds": 0.017875012000000003,
+          "inclusive_cpu_seconds": 0.06845411
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 165,
+          "function": "create_resource",
+          "primitive_calls": 11550,
+          "calls": 11550,
+          "exclusive_cpu_seconds": 0.016986608,
+          "inclusive_cpu_seconds": 0.029388641
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "primitive_calls": 23633,
+          "calls": 23633,
+          "exclusive_cpu_seconds": 0.014407668000000002,
+          "inclusive_cpu_seconds": 0.014572911000000003
+        },
+        {
+          "file": "<attrs generated methods referencing._core.Resource>",
+          "line": 29,
+          "function": "__init__",
+          "primitive_calls": 11550,
+          "calls": 11550,
+          "exclusive_cpu_seconds": 0.012402033,
+          "inclusive_cpu_seconds": 0.012402033
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 452,
+          "function": "is_type",
+          "primitive_calls": 10720,
+          "calls": 10720,
+          "exclusive_cpu_seconds": 0.011235555000000001,
+          "inclusive_cpu_seconds": 0.061075421000000005
+        },
+        {
+          "file": "<frozen abc>",
+          "line": 117,
+          "function": "__instancecheck__",
+          "primitive_calls": 12503,
+          "calls": 12503,
+          "exclusive_cpu_seconds": 0.011084818000000001,
+          "inclusive_cpu_seconds": 0.019849812
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 653,
+          "function": "lookup",
+          "primitive_calls": 2128,
+          "calls": 2128,
+          "exclusive_cpu_seconds": 0.010687307,
+          "inclusive_cpu_seconds": 0.145461004
+        },
+        {
+          "file": "site-packages/jsonschema/exceptions.py",
+          "line": 165,
+          "function": "_set",
+          "primitive_calls": 1972,
+          "calls": 1972,
+          "exclusive_cpu_seconds": 0.009492708,
+          "inclusive_cpu_seconds": 0.016228952
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method _abc._abc_instancecheck>",
+          "primitive_calls": 12503,
+          "calls": 12503,
+          "exclusive_cpu_seconds": 0.008654282000000001,
+          "inclusive_cpu_seconds": 0.008764994
+        },
+        {
+          "file": "<attrs generated methods jsonschema.validators.create.<locals>.Validator>",
+          "line": 26,
+          "function": "__init__",
+          "primitive_calls": 7394,
+          "calls": 7394,
+          "exclusive_cpu_seconds": 0.00843414,
+          "inclusive_cpu_seconds": 0.032449978000000004
+        },
+        {
+          "file": "site-packages/referencing/jsonschema.py",
+          "line": 47,
+          "function": "_dollar_id",
+          "primitive_calls": 5166,
+          "calls": 5166,
+          "exclusive_cpu_seconds": 0.007915803,
+          "inclusive_cpu_seconds": 0.013673099
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 285,
+          "function": "<genexpr>",
+          "primitive_calls": 8122,
+          "calls": 8122,
+          "exclusive_cpu_seconds": 0.007411469,
+          "inclusive_cpu_seconds": 0.030882778
+        }
+      ],
+      "top_inclusive_do_not_sum": [
+        {
+          "file": "backend/t44/api.py",
+          "line": 216,
+          "function": "handle",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000618252,
+          "inclusive_cpu_seconds": 0.685767043
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 38,
+          "function": "violations",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 0.00017420800000000002,
+          "inclusive_cpu_seconds": 0.548057082
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 349,
+          "function": "iter_errors",
+          "primitive_calls": 10,
+          "calls": 207,
+          "exclusive_cpu_seconds": 0.0006814950000000001,
+          "inclusive_cpu_seconds": 0.5456866650000001
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 274,
+          "function": "ref",
+          "primitive_calls": 10,
+          "calls": 2916,
+          "exclusive_cpu_seconds": 0.006737663,
+          "inclusive_cpu_seconds": 0.5456368340000001
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 10,
+          "calls": 9159,
+          "exclusive_cpu_seconds": 0.060559235,
+          "inclusive_cpu_seconds": 0.543199165
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 290,
+          "function": "properties",
+          "primitive_calls": 5,
+          "calls": 512,
+          "exclusive_cpu_seconds": 0.006356249,
+          "inclusive_cpu_seconds": 0.542166708
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 59,
+          "function": "items",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00034279600000000003,
+          "inclusive_cpu_seconds": 0.5367094990000001
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 337,
+          "function": "anyOf",
+          "primitive_calls": 805,
+          "calls": 805,
+          "exclusive_cpu_seconds": 0.005708124,
+          "inclusive_cpu_seconds": 0.191122284
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 459,
+          "function": "_validate_reference",
+          "primitive_calls": 2128,
+          "calls": 2128,
+          "exclusive_cpu_seconds": 0.0037938610000000004,
+          "inclusive_cpu_seconds": 0.14925486500000001
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 653,
+          "function": "lookup",
+          "primitive_calls": 2128,
+          "calls": 2128,
+          "exclusive_cpu_seconds": 0.010687307,
+          "inclusive_cpu_seconds": 0.145461004
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 244,
+          "function": "execute",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00014246000000000002,
+          "inclusive_cpu_seconds": 0.11146308400000002
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 254,
+          "function": "pointer",
+          "primitive_calls": 2128,
+          "calls": 2128,
+          "exclusive_cpu_seconds": 0.034492034000000005,
+          "inclusive_cpu_seconds": 0.094986925
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 339,
+          "function": "evolve",
+          "primitive_calls": 7384,
+          "calls": 7384,
+          "exclusive_cpu_seconds": 0.03851133,
+          "inclusive_cpu_seconds": 0.088051866
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 282,
+          "function": "type",
+          "primitive_calls": 4857,
+          "calls": 4857,
+          "exclusive_cpu_seconds": 0.017875012000000003,
+          "inclusive_cpu_seconds": 0.06845411
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.isinstance>",
+          "primitive_calls": 91878,
+          "calls": 91878,
+          "exclusive_cpu_seconds": 0.048540589,
+          "inclusive_cpu_seconds": 0.06824368700000001
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 78,
+          "function": "rows",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.0007194890000000001,
+          "inclusive_cpu_seconds": 0.06370262300000001
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 45,
+          "calls": 45,
+          "exclusive_cpu_seconds": 0.0017102509999999999,
+          "inclusive_cpu_seconds": 0.062941258
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 452,
+          "function": "is_type",
+          "primitive_calls": 10720,
+          "calls": 10720,
+          "exclusive_cpu_seconds": 0.011235555000000001,
+          "inclusive_cpu_seconds": 0.061075421000000005
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 20,
+          "function": "wire",
+          "primitive_calls": 220,
+          "calls": 12350,
+          "exclusive_cpu_seconds": 0.034946851,
+          "inclusive_cpu_seconds": 0.056955783
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 86,
+          "function": "authenticate",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 6.6084e-05,
+          "inclusive_cpu_seconds": 0.05110279100000001
+        }
+      ],
+      "shape_observation": [
+        {
+          "phase": "shape",
+          "operation": "listTasks",
+          "queries": {
+            "('auth_sessions', ('token_hash',), None, 1)": 2,
+            "('users', ('id',), None, 1)": 2,
+            "('project_members', ('active', 'project_id', 'user_id'), None, 1)": 2,
+            "('projects', ('id',), None, 1)": 2,
+            "('tasks', ('project_id',), None, 20)": 1
+          },
+          "authenticate_calls": 2,
+          "status": 200,
+          "thread_cpu_ms": 33.764166,
+          "handler_wall_ms": 43.909791
+        }
+      ]
+    },
+    "validateContractPayload": {
+      "unprofiled_samples": 20,
+      "unprofiled_handler_cpu_median_ms": 4.329708500000001,
+      "unprofiled_handler_wall_median_ms": 5.2254165,
+      "profile_samples": 5,
+      "instrumented_profile_cpu_mean_ms": 11.621692200000002,
+      "exclusive_groups_instrumented_ms_per_request": {
+        "other": 5.005613999999999,
+        "jsonschema_referencing": 2.6926115999999993,
+        "sqlalchemy_sql_expression": 2.1778334000000004,
+        "sqlalchemy_other": 1.6363344000000009,
+        "t44_wire": 0.1092988
+      },
+      "top_exclusive": [
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Cursor' objects>",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.002496709,
+          "inclusive_cpu_seconds": 0.002496709
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.isinstance>",
+          "primitive_calls": 3665,
+          "calls": 3665,
+          "exclusive_cpu_seconds": 0.002183387,
+          "inclusive_cpu_seconds": 0.002753515
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 20,
+          "calls": 190,
+          "exclusive_cpu_seconds": 0.001899328,
+          "inclusive_cpu_seconds": 0.015711084
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/cache_key.py",
+          "line": 209,
+          "function": "_generate_cache_key",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.001822422,
+          "inclusive_cpu_seconds": 0.0027834180000000006
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/coercions.py",
+          "line": 323,
+          "function": "expect",
+          "primitive_calls": 280,
+          "calls": 280,
+          "exclusive_cpu_seconds": 0.001782145,
+          "inclusive_cpu_seconds": 0.005254339
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.0011617740000000002,
+          "inclusive_cpu_seconds": 0.016190455000000003
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 339,
+          "function": "evolve",
+          "primitive_calls": 185,
+          "calls": 185,
+          "exclusive_cpu_seconds": 0.001114739,
+          "inclusive_cpu_seconds": 0.0025694990000000003
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 254,
+          "function": "pointer",
+          "primitive_calls": 55,
+          "calls": 55,
+          "exclusive_cpu_seconds": 0.001026914,
+          "inclusive_cpu_seconds": 0.002760793
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "primitive_calls": 1165,
+          "calls": 1165,
+          "exclusive_cpu_seconds": 0.000990193,
+          "inclusive_cpu_seconds": 0.0010630700000000002
+        },
+        {
+          "file": "site-packages/jsonschema/_types.py",
+          "line": 94,
+          "function": "is_type",
+          "primitive_calls": 425,
+          "calls": 425,
+          "exclusive_cpu_seconds": 0.000897944,
+          "inclusive_cpu_seconds": 0.001805371
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.0008905840000000001,
+          "inclusive_cpu_seconds": 0.028440917
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 282,
+          "function": "__attrs_post_init__",
+          "primitive_calls": 200,
+          "calls": 200,
+          "exclusive_cpu_seconds": 0.0008000760000000002,
+          "inclusive_cpu_seconds": 0.002915829
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.getattr>",
+          "primitive_calls": 1210,
+          "calls": 1210,
+          "exclusive_cpu_seconds": 0.0007840500000000001,
+          "inclusive_cpu_seconds": 0.0007840500000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/util/langhelpers.py",
+          "line": 1452,
+          "function": "__get__",
+          "primitive_calls": 60,
+          "calls": 80,
+          "exclusive_cpu_seconds": 0.000686124,
+          "inclusive_cpu_seconds": 0.0015692050000000002
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 282,
+          "function": "type",
+          "primitive_calls": 145,
+          "calls": 145,
+          "exclusive_cpu_seconds": 0.0006674280000000001,
+          "inclusive_cpu_seconds": 0.0024142499999999997
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 2060,
+          "function": "__init__",
+          "primitive_calls": 50,
+          "calls": 50,
+          "exclusive_cpu_seconds": 0.000594126,
+          "inclusive_cpu_seconds": 0.0023255010000000002
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'disable' of '_lsprof.Profiler' objects>",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000558709,
+          "inclusive_cpu_seconds": 0.000558709
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 20,
+          "function": "wire",
+          "primitive_calls": 20,
+          "calls": 165,
+          "exclusive_cpu_seconds": 0.000546494,
+          "inclusive_cpu_seconds": 0.0009283350000000002
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 165,
+          "function": "create_resource",
+          "primitive_calls": 310,
+          "calls": 310,
+          "exclusive_cpu_seconds": 0.000524833,
+          "inclusive_cpu_seconds": 0.0008989970000000001
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 452,
+          "function": "is_type",
+          "primitive_calls": 425,
+          "calls": 425,
+          "exclusive_cpu_seconds": 0.000488468,
+          "inclusive_cpu_seconds": 0.0022938389999999998
+        }
+      ],
+      "top_inclusive_do_not_sum": [
+        {
+          "file": "backend/t44/api.py",
+          "line": 216,
+          "function": "handle",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00040779,
+          "inclusive_cpu_seconds": 0.057724959
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 244,
+          "function": "execute",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000168795,
+          "inclusive_cpu_seconds": 0.0473285
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 86,
+          "function": "authenticate",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 4.0207e-05,
+          "inclusive_cpu_seconds": 0.029421625000000003
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000251548,
+          "inclusive_cpu_seconds": 0.029377376
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 78,
+          "function": "rows",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.000389295,
+          "inclusive_cpu_seconds": 0.028847709000000003
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.0008905840000000001,
+          "inclusive_cpu_seconds": 0.028440917
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 38,
+          "function": "violations",
+          "primitive_calls": 15,
+          "calls": 15,
+          "exclusive_cpu_seconds": 0.000251959,
+          "inclusive_cpu_seconds": 0.021224501
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 349,
+          "function": "iter_errors",
+          "primitive_calls": 15,
+          "calls": 15,
+          "exclusive_cpu_seconds": 0.00012574599999999998,
+          "inclusive_cpu_seconds": 0.018128832
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 274,
+          "function": "ref",
+          "primitive_calls": 15,
+          "calls": 55,
+          "exclusive_cpu_seconds": 0.00024745,
+          "inclusive_cpu_seconds": 0.017167833
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.0011617740000000002,
+          "inclusive_cpu_seconds": 0.016190455000000003
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 20,
+          "calls": 190,
+          "exclusive_cpu_seconds": 0.001899328,
+          "inclusive_cpu_seconds": 0.015711084
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 290,
+          "function": "properties",
+          "primitive_calls": 10,
+          "calls": 30,
+          "exclusive_cpu_seconds": 0.00030517000000000006,
+          "inclusive_cpu_seconds": 0.014901544000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 228,
+          "function": "<lambda>",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 2.0249999999999998e-05,
+          "inclusive_cpu_seconds": 0.014769250000000001
+        },
+        {
+          "file": "backend/t44/api.py",
+          "line": 104,
+          "function": "validate_request",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000365208,
+          "inclusive_cpu_seconds": 0.014749000000000002
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2406,
+          "function": "execute",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 9.9001e-05,
+          "inclusive_cpu_seconds": 0.012606459
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2201,
+          "function": "_execute_internal",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.00047794600000000003,
+          "inclusive_cpu_seconds": 0.012507458
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 184,
+          "function": "get",
+          "primitive_calls": 10,
+          "calls": 10,
+          "exclusive_cpu_seconds": 3.8918e-05,
+          "inclusive_cpu_seconds": 0.012336834000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1419,
+          "function": "execute",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 9.4e-05,
+          "inclusive_cpu_seconds": 0.010669708000000002
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 524,
+          "function": "_execute_on_connection",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 5.646e-05,
+          "inclusive_cpu_seconds": 0.010575708000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1633,
+          "function": "_execute_clauseelement",
+          "primitive_calls": 20,
+          "calls": 20,
+          "exclusive_cpu_seconds": 0.00033979100000000004,
+          "inclusive_cpu_seconds": 0.010519248
+        }
+      ],
+      "shape_observation": [
+        {
+          "phase": "shape",
+          "operation": "validateContractPayload",
+          "queries": {
+            "('auth_sessions', ('token_hash',), None, 1)": 1,
+            "('users', ('id',), None, 1)": 1,
+            "('project_members', ('active', 'project_id', 'user_id'), None, 1)": 1,
+            "('projects', ('id',), None, 1)": 1
+          },
+          "authenticate_calls": 1,
+          "status": 200,
+          "thread_cpu_ms": 4.8075,
+          "handler_wall_ms": 6.805458
+        }
+      ]
+    },
+    "transitionTask": {
+      "unprofiled_samples": 20,
+      "unprofiled_handler_cpu_median_ms": 20.3978335,
+      "unprofiled_handler_wall_median_ms": 24.3858125,
+      "profile_samples": 5,
+      "instrumented_profile_cpu_mean_ms": 55.48263179999999,
+      "exclusive_groups_instrumented_ms_per_request": {
+        "sqlalchemy_sql_expression": 13.650844800000007,
+        "other": 21.685924800000006,
+        "jsonschema_referencing": 10.997979800000005,
+        "sqlalchemy_other": 8.608461000000002,
+        "t44_wire": 0.5394214
+      },
+      "top_exclusive": [
+        {
+          "file": "site-packages/sqlalchemy/sql/coercions.py",
+          "line": 323,
+          "function": "expect",
+          "primitive_calls": 2387,
+          "calls": 2387,
+          "exclusive_cpu_seconds": 0.012472180000000001,
+          "inclusive_cpu_seconds": 0.035303992000000006
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Cursor' objects>",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.012386622,
+          "inclusive_cpu_seconds": 0.012386622
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.isinstance>",
+          "primitive_calls": 21349,
+          "calls": 21349,
+          "exclusive_cpu_seconds": 0.012186450000000001,
+          "inclusive_cpu_seconds": 0.015429420000000003
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/cache_key.py",
+          "line": 209,
+          "function": "_generate_cache_key",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.009495251,
+          "inclusive_cpu_seconds": 0.022182629000000002
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 42,
+          "calls": 1116,
+          "exclusive_cpu_seconds": 0.008056774,
+          "inclusive_cpu_seconds": 0.071960832
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 131,
+          "calls": 131,
+          "exclusive_cpu_seconds": 0.005704052000000001,
+          "inclusive_cpu_seconds": 0.09322978800000001
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 339,
+          "function": "evolve",
+          "primitive_calls": 951,
+          "calls": 951,
+          "exclusive_cpu_seconds": 0.005188504,
+          "inclusive_cpu_seconds": 0.011934222000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "primitive_calls": 5564,
+          "calls": 5564,
+          "exclusive_cpu_seconds": 0.00495706,
+          "inclusive_cpu_seconds": 0.005385801000000001
+        },
+        {
+          "file": "site-packages/referencing/_core.py",
+          "line": 254,
+          "function": "pointer",
+          "primitive_calls": 286,
+          "calls": 286,
+          "exclusive_cpu_seconds": 0.004830239,
+          "inclusive_cpu_seconds": 0.013080833000000002
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method builtins.getattr>",
+          "primitive_calls": 7384,
+          "calls": 7384,
+          "exclusive_cpu_seconds": 0.0043154940000000004,
+          "inclusive_cpu_seconds": 0.0043154940000000004
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 106,
+          "calls": 106,
+          "exclusive_cpu_seconds": 0.0038887360000000007,
+          "inclusive_cpu_seconds": 0.13046024900000003
+        },
+        {
+          "file": "site-packages/sqlalchemy/util/langhelpers.py",
+          "line": 1452,
+          "function": "__get__",
+          "primitive_calls": 318,
+          "calls": 424,
+          "exclusive_cpu_seconds": 0.003623295,
+          "inclusive_cpu_seconds": 0.008046455000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 2060,
+          "function": "__init__",
+          "primitive_calls": 507,
+          "calls": 507,
+          "exclusive_cpu_seconds": 0.003512691,
+          "inclusive_cpu_seconds": 0.014656815000000002
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 39,
+          "function": "_fields",
+          "primitive_calls": 330,
+          "calls": 330,
+          "exclusive_cpu_seconds": 0.0034733800000000003,
+          "inclusive_cpu_seconds": 0.012306744000000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/util/langhelpers.py",
+          "line": 553,
+          "function": "get_cls_kwargs",
+          "primitive_calls": 220,
+          "calls": 1320,
+          "exclusive_cpu_seconds": 0.003437325,
+          "inclusive_cpu_seconds": 0.004953993
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/default.py",
+          "line": 1564,
+          "function": "_init_compiled",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.0030882590000000003,
+          "inclusive_cpu_seconds": 0.009065374000000001
+        },
+        {
+          "file": "site-packages/jsonschema/_types.py",
+          "line": 94,
+          "function": "is_type",
+          "primitive_calls": 1497,
+          "calls": 1497,
+          "exclusive_cpu_seconds": 0.002995555,
+          "inclusive_cpu_seconds": 0.006880873
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 282,
+          "function": "__attrs_post_init__",
+          "primitive_calls": 981,
+          "calls": 981,
+          "exclusive_cpu_seconds": 0.0029597860000000003,
+          "inclusive_cpu_seconds": 0.007059494
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 6025,
+          "function": "safe_construct_with_key",
+          "primitive_calls": 507,
+          "calls": 507,
+          "exclusive_cpu_seconds": 0.002791753,
+          "inclusive_cpu_seconds": 0.008419338000000002
+        },
+        {
+          "file": "backend/t44/services/common.py",
+          "line": 20,
+          "function": "wire",
+          "primitive_calls": 35,
+          "calls": 895,
+          "exclusive_cpu_seconds": 0.0026971070000000002,
+          "inclusive_cpu_seconds": 0.0044463720000000005
+        }
+      ],
+      "top_inclusive_do_not_sum": [
+        {
+          "file": "backend/t44/api.py",
+          "line": 216,
+          "function": "handle",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00041504700000000004,
+          "inclusive_cpu_seconds": 0.277735294
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 244,
+          "function": "execute",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000307041,
+          "inclusive_cpu_seconds": 0.237660209
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 78,
+          "function": "rows",
+          "primitive_calls": 106,
+          "calls": 106,
+          "exclusive_cpu_seconds": 0.001627916,
+          "inclusive_cpu_seconds": 0.13217316299999998
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 143,
+          "function": "rows",
+          "primitive_calls": 106,
+          "calls": 106,
+          "exclusive_cpu_seconds": 0.0038887360000000007,
+          "inclusive_cpu_seconds": 0.13046024900000003
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 45,
+          "function": "prepare",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.00012021300000000001,
+          "inclusive_cpu_seconds": 0.096476708
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 85,
+          "function": "_execute",
+          "primitive_calls": 131,
+          "calls": 131,
+          "exclusive_cpu_seconds": 0.005704052000000001,
+          "inclusive_cpu_seconds": 0.09322978800000001
+        },
+        {
+          "file": "backend/t44/contracts/__init__.py",
+          "line": 38,
+          "function": "violations",
+          "primitive_calls": 30,
+          "calls": 30,
+          "exclusive_cpu_seconds": 0.00041354200000000003,
+          "inclusive_cpu_seconds": 0.082210376
+        },
+        {
+          "file": "harness/diagnose.py",
+          "line": 86,
+          "function": "authenticate",
+          "primitive_calls": 15,
+          "calls": 15,
+          "exclusive_cpu_seconds": 0.000130664,
+          "inclusive_cpu_seconds": 0.07669029000000001
+        },
+        {
+          "file": "backend/t44/services/identity.py",
+          "line": 45,
+          "function": "authenticate",
+          "primitive_calls": 15,
+          "calls": 15,
+          "exclusive_cpu_seconds": 0.000765402,
+          "inclusive_cpu_seconds": 0.076545
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 349,
+          "function": "iter_errors",
+          "primitive_calls": 30,
+          "calls": 66,
+          "exclusive_cpu_seconds": 0.000288513,
+          "inclusive_cpu_seconds": 0.076525003
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2406,
+          "function": "execute",
+          "primitive_calls": 131,
+          "calls": 131,
+          "exclusive_cpu_seconds": 0.00046296300000000005,
+          "inclusive_cpu_seconds": 0.07583858900000001
+        },
+        {
+          "file": "site-packages/sqlalchemy/orm/session.py",
+          "line": 2201,
+          "function": "_execute_internal",
+          "primitive_calls": 131,
+          "calls": 131,
+          "exclusive_cpu_seconds": 0.002317136,
+          "inclusive_cpu_seconds": 0.075375626
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 274,
+          "function": "ref",
+          "primitive_calls": 32,
+          "calls": 360,
+          "exclusive_cpu_seconds": 0.001031874,
+          "inclusive_cpu_seconds": 0.074969373
+        },
+        {
+          "file": "site-packages/jsonschema/validators.py",
+          "line": 396,
+          "function": "descend",
+          "primitive_calls": 42,
+          "calls": 1116,
+          "exclusive_cpu_seconds": 0.008056774,
+          "inclusive_cpu_seconds": 0.071960832
+        },
+        {
+          "file": "site-packages/jsonschema/_keywords.py",
+          "line": 290,
+          "function": "properties",
+          "primitive_calls": 15,
+          "calls": 106,
+          "exclusive_cpu_seconds": 0.0010043370000000001,
+          "inclusive_cpu_seconds": 0.070341334
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1419,
+          "function": "execute",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.0005945820000000001,
+          "inclusive_cpu_seconds": 0.06918317000000002
+        },
+        {
+          "file": "site-packages/sqlalchemy/sql/elements.py",
+          "line": 524,
+          "function": "_execute_on_connection",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.000416333,
+          "inclusive_cpu_seconds": 0.068588588
+        },
+        {
+          "file": "site-packages/sqlalchemy/engine/base.py",
+          "line": 1633,
+          "function": "_execute_clauseelement",
+          "primitive_calls": 141,
+          "calls": 141,
+          "exclusive_cpu_seconds": 0.0021139139999999997,
+          "inclusive_cpu_seconds": 0.068172255
+        },
+        {
+          "file": "backend/t44/persistence/rows.py",
+          "line": 184,
+          "function": "get",
+          "primitive_calls": 53,
+          "calls": 53,
+          "exclusive_cpu_seconds": 0.00023217300000000001,
+          "inclusive_cpu_seconds": 0.058523255
+        },
+        {
+          "file": "backend/t44/services/runtime.py",
+          "line": 140,
+          "function": "_claim",
+          "primitive_calls": 5,
+          "calls": 5,
+          "exclusive_cpu_seconds": 0.000332541,
+          "inclusive_cpu_seconds": 0.05177375
+        }
+      ],
+      "shape_observation": [
+        {
+          "phase": "shape",
+          "operation": "transitionTask",
+          "queries": {
+            "('auth_sessions', ('token_hash',), None, 1)": 1,
+            "('users', ('id',), None, 1)": 3,
+            "('project_members', ('active', 'project_id', 'user_id'), None, 1)": 3,
+            "('projects', ('id',), None, 1)": 4,
+            "('auth_sessions', ('token_hash',), 'share', 1)": 2,
+            "('idempotency_requests', ('actor_id', 'actor_kind', 'idempotency_key', 'operation_id'), 'update', 1)": 1,
+            "('idempotency_requests', ('id',), None, 1)": 1,
+            "('idempotency_requests', ('id',), 'update', 1)": 1,
+            "('project_members', ('project_id',), 'share', None)": 1,
+            "('tasks', ('id', 'project_id'), 'update', 1)": 1,
+            "('tasks', ('id',), None, 1)": 1,
+            "('tasks', ('id', 'project_id'), None, 1)": 1
+          },
+          "authenticate_calls": 3,
+          "status": 200,
+          "thread_cpu_ms": 20.898208,
+          "handler_wall_ms": 23.243792
+        }
+      ]
+    }
+  },
+  "formal_acceptance": false,
+  "root_cause": "NOT_PROVEN",
+  "pure_query_candidate": {
+    "guards": {
+      "tables": 18,
+      "cases": 99,
+      "dialects": [
+        "mysql",
+        "sqlite"
+      ],
+      "signature_pairs_equal": 198,
+      "checks": "SQL text, bound params, selected column key/type order, exception class/message",
+      "one_source_AST_expression_changed": true
+    },
+    "timings": [
+      {
+        "phase": "A1",
+        "statements": 500,
+        "batch_mean_us_per_statement": [
+          25.53709,
+          21.33833,
+          21.665,
+          20.285,
+          22.94291
+        ],
+        "median_batch_mean_us_per_statement": 21.665
+      },
+      {
+        "phase": "B1",
+        "statements": 500,
+        "batch_mean_us_per_statement": [
+          15.806659999999999,
+          16.93,
+          17.81541,
+          15.615419999999999,
+          16.77958
+        ],
+        "median_batch_mean_us_per_statement": 16.77958
+      },
+      {
+        "phase": "B2",
+        "statements": 500,
+        "batch_mean_us_per_statement": [
+          16.01333,
+          16.155,
+          15.45875,
+          16.10084,
+          15.88709
+        ],
+        "median_batch_mean_us_per_statement": 16.01333
+      },
+      {
+        "phase": "A2",
+        "statements": 500,
+        "batch_mean_us_per_statement": [
+          21.49208,
+          22.70166,
+          19.97875,
+          21.147080000000003,
+          21.03375
+        ],
+        "median_batch_mean_us_per_statement": 21.147080000000003
+      }
+    ],
+    "A1_over_B1": 1.2911526986968684,
+    "A2_over_B2": 1.3205922815554294,
+    "A1_to_B1_reduction_percent": 22.549826909762295,
+    "A2_to_B2_reduction_percent": 24.276401280933356,
+    "expected_net_effective_line_change": 0,
+    "end_to_end_candidate_run": false
+  }
+}
