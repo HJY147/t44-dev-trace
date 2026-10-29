@@ -1,6 +1,6 @@
 {
   "role": "backend",
-  "stage": "backend-a12-contrast-fixture-v2-awaiting-root-review-and-cloud",
+  "stage": "id-selector-security-contract-fix-candidate",
   "implementation_status": "V2-SNAPSHOT-ALIAS-01 reproduced2red then repaired; domain172+unchangedHTTP143 pass; current fixed-cloc net370; narrow review/combinedCI/global size/formal performance pending",
   "artifacts": [
     {
@@ -3822,5 +3822,40 @@
     "claimed_350_500_line_reduction": false,
     "original_tests_modified": false,
     "actual_cloud_SUT_sessions": 0
+  },
+  "id_selector_security_fix": {
+    "source_commit": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+    "base": "356f29983c904e949245aedfad464efc1bf7b63d",
+    "source_branch": "codex/backend-id-selector-security",
+    "evidence_branch": "codex/backend-id-selector-security-evidence",
+    "application_change": "backend/t44/api.py existing selector attack regex only",
+    "regression": "tmp/backend/contracts/986_http.py::test_numeric_id_sql_expression_is_security_rejection_before_task_query",
+    "local_before": {
+      "tests": 1,
+      "failures": 1
+    },
+    "local_after": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 118
+    },
+    "ruff": "pass original backend config",
+    "report": "agents/backend/id-selector-security/report.md",
+    "prompt": "agents/backend/id-selector-security/design-and-prompt.md",
+    "validation": "agents/backend/id-selector-security/validation.json",
+    "ci_initial": "agents/backend/id-selector-security/ci-initial.json",
+    "product_run": 40928297882,
+    "docker_run": 40928465279,
+    "pr": 46,
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/3#issuecomment-6504708481",
+    "github_exact_readback": true,
+    "status": "candidate pending full new-source CI/build/review",
+    "new_dependency_or_migration": false,
+    "measured_356f_sut_unchanged": true,
+    "private_qa_read": false,
+    "tester_contact": false,
+    "cloud_or_service_operation": false
   }
 }

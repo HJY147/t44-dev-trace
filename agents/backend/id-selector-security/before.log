@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-id-selector-security/backend
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 124 items / 123 deselected / 1 selected
+
+backend F                                                                [100%]
+
+=================================== FAILURES ===================================
+____ test_numeric_id_sql_expression_is_security_rejection_before_task_query ____
+
+application = (<starlette.testclient.TestClient object at 0x104fbd610>, <t44.persistence.uow.SqlAlchemyUnitOfWorkFactory object at 0x104e766f0>)
+
+    def test_numeric_id_sql_expression_is_security_rejection_before_task_query(application):
+        from sqlalchemy import event
+        from t44.services.codes import ERROR_IDS
+    
+        client, factory = application
+        tokens, pid, iid = setup_project(client)
+        task = create_task(client, tokens, pid, iid)
+        url = f"/api/v1/projects/{pid}/tasks?owner_id=1%20OR%201%3D1"
+        engine = factory._sessions.kw["bind"]
+        task_selects = []
+    
+        def selected(_connection, _cursor, _sql, _parameters, context, _many):
+            statement = context.compiled.statement
+            if statement.is_select and any(t.name == "tasks" for t in statement.get_final_froms()):
+                task_selects.append(1)
+    
+        event.listen(engine, "before_cursor_execute", selected)
+        try:
+            response = client.get(url, headers={"Authorization": f"Bearer {tokens['manager']}"})
+        finally:
+            event.remove(engine, "before_cursor_execute", selected)
+>       assert response.status_code == 400
+E       assert 422 == 400
+E        +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+
+tmp/backend/contracts/986_http.py:1498: AssertionError
+=============================== warnings summary ===============================
+../backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-id-selector-security/agents/backend/id-selector-security/before.xml -
+=========================== short test summary info ============================
+FAILED backend::test_numeric_id_sql_expression_is_security_rejection_before_task_query
+================= 1 failed, 123 deselected, 1 warning in 0.43s =================

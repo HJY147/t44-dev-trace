@@ -1,0 +1,50 @@
+{
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "base": "356f29983c904e949245aedfad464efc1bf7b63d",
+  "application_diff": [
+    "backend/t44/api.py"
+  ],
+  "unchanged_roots": [
+    "specs",
+    "backend/t44/contracts",
+    "backend/requirements.lock",
+    "backend/t44/services",
+    "backend/t44/persistence",
+    "backend/t44/messaging",
+    "backend/t44/scheduling",
+    "deployment",
+    ".github",
+    "compose.yaml"
+  ],
+  "before": {
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "after": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests": "real SQLite/TestClient; task SELECT cursor observation, no business-query mock",
+  "local_mysql_or_cloud_or_sut_load": false,
+  "production_diff": "existing selector _ATTACK only: one extra numeric OR/AND equality alternative",
+  "source_files": {
+    "backend/t44/api.py": {
+      "sha256": "9205098a81518b3febca4ed2f7061d13003caac04c1b6e85668abde6923bbe30",
+      "blob": "a71dea390b21cf0638985e4b6f003973b68a3673"
+    },
+    "tmp/backend/contracts/986_http.py": {
+      "sha256": "4200e05e9b8e43b2671b136178cd822fea787b68c0fe4d14dbdaa4aa57c765ef",
+      "blob": "a5c38b3d5de2d5615f9427346e557aecf1632c8e"
+    }
+  },
+  "limitations": [
+    "Full new-source CI/Docker pending",
+    "No independent acceptance or P04 result inferred",
+    "Measured356f SUT unchanged",
+    "No new whole-source LOC result asserted"
+  ]
+}

@@ -1,0 +1,7 @@
+# 数字ID筛选SQL表达式：契约错误分类窄修
+
+后端AI；设计先2c45a229，source 90b734f65ce6ee9f5c217e885bc7ea4857e32b48，基冻结356f29983c904e949245aedfad464efc1bf7b63d；DraftPR46。唯一生产差异是api._ATTACK添加明确数字OR/AND数字等式模式（多1个非空代码行，非新整库cloc统计），继续在既有selector校验点执行；没有新SQL/事务/锁/缓存/依赖/配置或Schema，不改正文中的合法引号处理。
+
+公开冻结listTasks要求该类ID/枚举/排序SQL表达式400 SECURITY_INPUT_REJECTED；原缺此模式而落到整数解码422。准确URL owner_id=1%20OR%201%3D1本地旧源1红422，修后新HTTP回归400/冻结Schema通过/独立拒绝audit固定reason_code持久化，真实SQLAlchemy事件确认业务tasks SELECT为0，任务version未变。普通owner=one仍422、合法owner仍200、缺身份先401。新目标及原query/security/标题引号/auth邻接共6passed/0failure/error/skip、118deselected；原backend Ruff通过，原TestClient弃用警告保留。before/after.log/xml与validation.json保存实际结果；不是MySQL锁/独立复测或性能证明。
+
+本轮只在自己的worktree改两文件；原986中追加，无新脚本编号、无样式大改。服务/数据库/测量源356f与P04时段都未操作，未读QA私有或联系tester。当前新CI/Docker需正常完成并核准确source/实际checkout，不移植旧356f结果；PR46已建立自然触发。规格/运行契约/锁文件/整个services/persistence/messaging/scheduling/deployment逐字同base。后续纯E记录不再改产品head。

@@ -817,3 +817,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 九集合统一只读scope/filter/model投影，Member/Dependency20项页SQL SELECT22→3、23→4，完整结果/顺序/total与精确586基线同；空页不增关联查询。原权限/事务/锁阶段、版本、审计/MQ不删改。
 - 同原jsonschema4.26 validator/_absolute_refs算法，仅冻结SPEC对象复用预编译实例；任意动态schema仍原构造/全枚举，包含root/nested$id/oneOf/late-$ref异常。冻结有效schema只枚举前100错误，保完全相同前100/顺序；并发与全冻结组件差分。186→最终188项1.27s全绿；原SQLiteHTTP/错误优先级/domain可信边界305项29.92s全绿。原tests/断言未改，真实红与fixture/文本补丁失败保留。
 - root请求DB候选依赖已隔离4c71161f锁sqlglot30.25.0，唯一pin新增，其他依赖版本不动；未在共享runtime/云安装。若DB拒绝需要撤该独立依赖。微基准/精确cloc/免费native CI另随冻结SHA实证，不当规模或正式性能通过。0云/SUT/实际session。
+
+## F04公开单一契约缺陷：数字ID selector SQL分类
+
+- 根派工后仅读AGENTS/公开契约与源码，新worktree/backend-id-selector-security基准确356f29983c904e949245aedfad464efc1bf7b63d，先2c45a229设计/实际prompt，source90b734f65ce6ee9f5c217e885bc7ea4857e32b48。只api._ATTACK增加数字OR/AND等式模式，原鉴权/类型解码/参数化SQL/锁/事务/Schema/正文引号/性能资源不改，未读QA私有/不联系tester/不碰正在P04测量356f源或服务。
+- 现有tmp986新增单一有意义TestClient回归，准确编码URL旧422真红1→候选400 SECURITY_INPUT_REJECTED/响应Schema/拒绝audit固定code持久化，SQL事件tasks SELECT0、version不变；非法owner422/合法200/缺auth401。新目标及原query/security/引号/auth邻接6pass/118deselected，Ruff原backend配置绿，原TestClient警告保留。无真库/外部HTTP/云/负载/新编号，无机会性重构。
+- 正常push自然新product40928297882和Docker40928465279首次in_progress，PR46准确head90b734f/draft/正文读回相同；新backend镜像需要新构建，无迁移/依赖变化。完整CI/实际Dockercheckout证据待后续，不移植旧356f/P04结果，不称独立验收/性能通过。报告与原件agents/backend/id-selector-security，Issue3 6504708481 body-file+精确GET全文相同。作者/修复AI，非学生手改；E仅记录不推产品head。
