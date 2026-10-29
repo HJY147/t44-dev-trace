@@ -506,3 +506,5 @@ AI后端岗在准确a92e独立分支实施Reviews两处最新上线评估查询�
 最终27项唯一检查通过1.66s；额外过期service入口红→绿前置，避免先签三人再发现service不足。实际字段仍root采证冻结，未执行任何服务器动作。公开阶段回执Issue#3#6492148126。
 GEN04修复后36项1.83s全绿：真实GEN命名/同原binding rawSHA/stop绑定、G35/C40/Pcutoff分开、空ID先seed再实际counts范围。code-manifest.PUBLIC.json供唯一root预算wrapper核代码；原probe与锁内live readmission区别已记录，直接admin不授权。源码/独立源及actual服务器均未操作。
 实际GEN字段名纠错：cryptographic_transport_proofs，不收错短名/缺proof；全部16必需键已对公开GEN字典独立AST核，只有这一个guard字符串变化。真实3红1绿→全部40项1.90s绿，GEN未改，source/G/C/targets均不变；17文件manifest更新供owner复核。
+
+中性运输闭环已新目录交付：复用原790原字节/算法wire，仅新0b/C薄政策；JSON mirror承载五件tar.gz，操作员解出原NEUTRAL五件。7本地真实crypto/TLS检查绿0.66s，producer17原66ab不动；0云/SUT/session，实际root仅有限窗口/授权搬运。命令neutral-transport-r30/RUNBOOK.md。
