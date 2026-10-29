@@ -208,6 +208,20 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(receipt["status"], "FAILED_PREFIX_PRESERVED" if fail else "CHILD_EXITED_ZERO_NOT_ACCEPTANCE")
             self.assertEqual((self.args.output_dir / "logs/http.stdout.private").read_bytes(), b"original prefix\n")
             self.assertEqual(self.args.plan.read_bytes(), (self.args.output_dir / "inputs/plan.json").read_bytes())
+        name = "only-this-new-child"
+        row = {"Name": "/" + name, "Image": self.proof["actual_id"],
+               "Config": {"Labels": {"io.t44.r30.http.owner": self.value["project"]}},
+               "State": {"Running": True}}
+        exited = copy.deepcopy(row)
+        exited["State"]["Running"] = False
+        response = lambda data: subprocess.CompletedProcess([], 0, json.dumps([data]).encode(), b"")
+        with patch.object(R.subprocess, "run", side_effect=[response(row), subprocess.CompletedProcess([], 0), response(exited)]) as host:
+            R.owned_exit(self.value, name, stop=True)
+            self.assertEqual(host.call_args_list[1].args[0], [*R.DOCKER, "stop", "--time", "5", name])
+        row["Config"]["Labels"]["io.t44.r30.http.owner"] = "different-owner"
+        with patch.object(R.subprocess, "run", return_value=response(row)) as host, self.assertRaises(ValueError):
+            R.owned_exit(self.value, name, stop=True)
+        self.assertEqual(host.call_count, 1)
 
 
 if __name__ == "__main__":
