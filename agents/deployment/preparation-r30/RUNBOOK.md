@@ -9,7 +9,9 @@ deployment AI；本文件是可审查准备，不是开机授权。root 在制�
 - backend bundle manifest SHA256 `b2db2e1c5cf56fa5df4f20f7003d44d6b3b9ab4cd484b45d921c82640295d345`；source manifest `0c5b0c0e027578b0f62711175beac4680aab8331bfbc4af2547f02398f38cc1b`；Git source tar SHA `275970aa18117751e3a4fc8c404d0750cb9698310a70146d64061a634c37bf09`。
 - 一个新backend：`t44-backend-r30:src-0bffe0c535e5897890aebf30879fdd3839dc52d6-r30ci40833943007`；保存的config `sha256:8e3e2a9d1f2d4706072eb0502b041d3db49d32b7a2fc48ac6b39fc2162336845`；压缩镜像94620657B、SHA `650ad1a2782396bdebfb05d722685d7ba9a65e519786447972612f0a1c407656`。源上下文62件（完整53backend），真实CI非root/read-only/network-none文件探针匹配全部60运行件。
 - 官方Python pin、CI实际RepoDigest和四层有序DiffID前缀单列；新backend每层归档SHA/DiffID、config/labels/platform/ordered-rootfs单列。APP Docker29 containerd的实际 `inspect.Id` 可是descriptor，必须用原 `image-proof.prove_role` 从保存的原字节证明descriptor→config→各层，不能只比较 `.Id==8e...`，也不能跳过检查。
-- 新 `r30-window.py` 只适配该backend-only manifest。旧v4预算模块305f9e原字节继承；原arm/infra/actual-budget/migrate/idle/scheduler/stop等函数不变，只有verified_images接口和prepare新run-id约束改变。旧935/f4/f7 builder、grant、截止、成绩不动。
+- 新 `r30-window.py` 只适配该backend-only manifest。R30-BUDGET-KIND-01已真实红绿复核：旧v4预算305f9e原件保留，R30只派生一处KIND literal，预算新SHA `9e98632fa1885bf4327b04a95daeba5cee4ad909b536e91ac8b11a1e58488a61`，反向pin入generator并继续resource链；全部预算方法/门禁不改，旧v4 kind仍拒绝。原arm/infra/actual-budget/migrate/idle/scheduler/stop等方法不变。旧935/f4/f7 builder、grant、截止、成绩不动。
+
+**a605及此前派生的R30 profile因预算kind链不兼容没有运行准入，不能继续使用。** root复审修复commit后须重新在新目录派生并核新budget/GEN/resource SHA链；两个官方manifest和backend镜像保持原字节，无需重建。原20项漏了该跨文件接口，不能作为兼容性接受证明；新增5项实际derive→磁盘binding→预算入口红绿证据另列，未做SQL或云执行。
 
 ## boot 前 ready 清单（root逐项打勾）
 
@@ -22,6 +24,8 @@ deployment AI；本文件是可审查准备，不是开机授权。root 在制�
 7. [ ] root核定原APP/LOAD、保存盘和已取消自动释放的复核步骤，准备失败即封存/停机的执行人。当前OFF状态只来自root明确回执，本岗未重新登录云核验。
 
 当前清单仍有root/QA/跨owner门禁，不能把本文件写成“已准许boot”。
+
+两原manifest绝对路径、未来loaded/import60的PUBLIC schema/path/hash及真实服务/scheduler枚举见 [LOADED-PROOF-INTERFACE.md](LOADED-PROOF-INTERFACE.md)。当前没有真实loaded proof/hash；CI文件表不能代替。
 
 ## 开机前最后本地绑定（不需要云）
 

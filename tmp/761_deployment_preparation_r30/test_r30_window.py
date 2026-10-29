@@ -40,7 +40,9 @@ class WindowBoundaries(unittest.TestCase):
             self.assertEqual([n for n in before if before[n] != after[n]], ["verified_images", "prepare"])
             self.assertEqual(value["source_probe_backend_files"], 53)
             self.assertEqual(value["full_runtime_context_files"], 60)
-            self.assertEqual(value["inherited_budget_sha256"], "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d")
+            self.assertEqual(value["original_budget_sha256"], "305f9eaeea96b0ef882ec17a457f51852bafc8c34b5fe2e47056bd12625dd82d")
+            self.assertEqual(value["derived_budget_sha256"], a.sha(output / "mysql-budget.py"))
+            self.assertNotEqual(value["derived_budget_sha256"], value["original_budget_sha256"])
             self.assertIn("EXACT_R30_WINDOW_RUN_ID_REQUIRED", (output / "generation.py").read_text())
             for name, metadata in value["derived_files"].items():
                 self.assertEqual(a.sha(output / name), metadata["sha256"])
