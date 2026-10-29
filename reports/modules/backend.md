@@ -483,4 +483,4 @@ v2原56未覆盖两项新v4预算契约：GEN无receipt flags/direct SQL无锁�
 
 
 ### 2026-10-29 新时窗准备
-准确f7原产品不变，新的profile/P64保持业务和旧断言；完成九项本地窄检查/原安装raw与JSON回放。无云或正式性能结论，runtime输出与root部署接口见agents/backend/window-20261029。
+准确f7原产品不变，新的profile/P64保持业务和旧断言；完成九项核心+三项完整sh wrapper共12唯一本地窄检查；raw与JSON安装20件/只读权限/拒覆盖/篡改写入前拒绝，完整UI与编码均<18000。无云或正式性能结论，runtime输出与root部署接口见agents/backend/window-20261029。

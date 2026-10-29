@@ -2,7 +2,7 @@
   "operator": "backend_AI",
   "executed_UTC": "2026-10-29T03:19:44.985418+00:00",
   "local_python": "Python 3.12.10",
-  "unique_unittest_cases": 9,
+  "unique_unittest_cases": 12,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
@@ -28,5 +28,12 @@
     }
   ],
   "framework_choice": "stdlib unittest; no dependencies installed",
-  "scope_note": "Time-condition tests isolate exact unchanged AST predicates; context/HTTP/routing are stubbed and not claimed as validated."
+  "scope_note": "Time-condition tests isolate exact unchanged AST predicates; context/HTTP/routing are stubbed and not claimed as validated.",
+  "core_unique_cases": 9,
+  "wrapper_unique_cases": 3,
+  "wrapper_executed_UTC": "2026-10-29T03:25:17.536139+00:00",
+  "wrapper_stderr_SHA256": "82c408ad381fc9846d56da6c582b6de1f09d46b1c457eec76cc01fcecf09ac21",
+  "wrapper_actual_POSIX_sh_raw_and_JSON_install_and_tamper_rejection": true,
+  "wrapper_network": "fake local curl returning fixed PUBLIC bytes; no cloud/network execution",
+  "wrapper_transport_flags": "--ipv4 --http1.1"
 }

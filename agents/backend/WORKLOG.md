@@ -764,4 +764,4 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 
 
 ## 2026-10-29 新窗口准备（ROLE-backend-WINDOW-20261029-v1）
-已先合并594b08f0 pin修正；新29日profile/P64严格派生，不改产品/旧窗口。九项本地标准库检查通过，无云/SUT/新会话；详细摘要、真实失败与边界见agents/backend/window-20261029/report.md。固定commit单下载wrapper另封。
+已先合并594b08f0 pin修正；新29日profile/P64严格派生，不改产品/旧窗口。九项核心+三项完整sh wrapper共12唯一本地检查通过；真实raw/JSON安装20件，篡改前拒绝，无云/SUT/新会话。5228B wrapper固定f1fff60f代码包，含--ipv4 --http1.1，完整UI和整体编码均<18000。详细摘要、真实环境错误与边界见agents/backend/window-20261029/report.md。
