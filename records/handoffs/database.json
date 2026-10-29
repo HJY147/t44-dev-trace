@@ -1,7 +1,7 @@
 {
   "role": "database",
-  "stage": "r29-frozen-ddl-adapter-local-candidate-size-target-not-met",
-  "implementation_status": "局部产品274e2e6b仅schema适配；应用5898→5887净减11仍超787，100–250未达；本地联合168通过/43未选，新增最后41通过；原988无测试库17跳过。待根决定是否采用，未独立/native/云验收。",
+  "stage": "r29b-local-catalog-registration-candidate-size-target-not-met",
+  "implementation_status": "R29B局部产品8f290307仅原生catalog查询注册结构；应用5887→5883净减4，仍超783，未找到百行/≥798安全方案。新6+原联合133通过/43未选；非native/CI/云验收，待root取舍。",
   "artifacts": [
     {
       "path": "agents/database/WORKLOG.md",
@@ -647,7 +647,22 @@
     "agents/database/scale-r29/before-cloc.json",
     "agents/database/scale-r29/after-cloc.json",
     "agents/database/scale-r29/boundaries.json",
-    "agents/database/prompts/ROLE-database-SCALE-R29-20261029-v1.md"
+    "agents/database/prompts/ROLE-database-SCALE-R29-20261029-v1.md",
+    {
+      "path": "agents/database/dry-r29b/report.md",
+      "kind": "R29B actual candidate and local validation",
+      "status": "local only; size target not met"
+    },
+    {
+      "path": "tmp/765_database_dry_r29b/765_catalog_equivalence.py",
+      "kind": "Exact parent differential regression",
+      "status": "6 passed within final133"
+    },
+    {
+      "path": "agents/database/dry-r29b/verification.json",
+      "kind": "Actual source-bound results and LOC",
+      "status": "created"
+    }
   ],
   "interfaces": [
     {
@@ -1149,9 +1164,20 @@
       "archive": "agents/database/prompts/ROLE-database-SCALE-R29-20261029-v1.md",
       "actual_prompt_source": "本轮总协调派工原文",
       "improvement_reason": "先落地并同口径量度候选、拒绝净增和格式收益，明确字节不变边界与本地/native验收差别，不编造百行收益"
+    },
+    {
+      "id": "ROLE-database-DRY-R29B-20261029-v1",
+      "archive": "agents/database/prompts/ROLE-database-DRY-R29B-20261029-v1.md",
+      "actual_prompt_source": "Root task and follow-up verbatim",
+      "improvement_reason": "Actual small candidate first; reject unsupported large savings, preserve all gates, exact-parent transcript plus fixed committed count",
+      "outputs": [
+        "backend/t44/persistence/migrations.py",
+        "tmp/765_database_dry_r29b/765_catalog_equivalence.py",
+        "agents/database/dry-r29b/report.md"
+      ]
     }
   ],
-  "updated_at": "2026-10-29T05:01:10.246571+00:00",
+  "updated_at": "2026-10-29",
   "publication": {
     "branch": "codex/database-output-guard",
     "worktree": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-output-guard",
@@ -1824,5 +1850,67 @@
       "pr": null,
       "integrated": false
     }
+  },
+  "dry_r29b_20261029": {
+    "base": "a92e5e73da93ba23748c3bab113103036c395d50",
+    "design": "4e317333eb93f9c7fa768b68fbbaf2096ea69fa3",
+    "product_source": "8f29030756139061341e0a636c8774ca790964bd",
+    "branch": "codex/database-dry-r29b",
+    "application_before": 5887,
+    "application_after": 5883,
+    "application_net": -4,
+    "application_files": 65,
+    "persistence_before": 1661,
+    "persistence_after": 1657,
+    "migrations_before": 374,
+    "migrations_after": 370,
+    "above_limit": 783,
+    "require_range_exit": 1,
+    "original_and_new_local": {
+      "passed": 133,
+      "deselected": 43,
+      "warnings": 3,
+      "seconds": 52.26,
+      "includes_new_cases": 6
+    },
+    "first_targeted": {
+      "passed": 56,
+      "seconds": 1.25,
+      "overlaps_final": true
+    },
+    "real_mysql": false,
+    "full_ci": false,
+    "cloud": false,
+    "independent_acceptance": false,
+    "scope": "only migrations._catalog_defects registration shape",
+    "issue": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6489314712",
+    "evidence": "agents/database/dry-r29b",
+    "interfaces": {
+      "input": "No public input changes",
+      "output": "Same schema check report and defect order",
+      "errors": "All exception classes and text unchanged",
+      "versions": "Same frozen DDL/SCHEMA_VERSION/hash"
+    },
+    "unresolved": [
+      "StrictLOC still 783 over limit",
+      "Root review/integration and CI decision"
+    ],
+    "publication": {
+      "method": "GitHub plugin add_comment_to_issue and exact GET",
+      "repo": "HJY147/t44-dev-trace",
+      "issue": 4,
+      "comment_id": 6489314712,
+      "url": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6489314712",
+      "created_at": "2026-10-29T06:05:26Z",
+      "created_result": {
+        "id": 6489314712
+      },
+      "exact_body_match": true,
+      "body": "Agent-Role: database AI\nPrompt-Ref: ROLE-database-DRY-R29B-20261029-v1\n\nR29B 已形成并推送实际小候选，基准 a92e5e73da93ba23748c3bab113103036c395d50，精确产品/测试源 8f29030756139061341e0a636c8774ca790964bd，分支 codex/database-dry-r29b；待总协调决定是否采用，没有代根合并。\n\n唯一产品diff是 migrations._catalog_defects 四项查询注册从有序 (label, query, expected) 三元组序列改为 label: (query, expected) 映射，按.items()原顺序执行，删除重复中间结构。四份只读SQL、预期签名、全部原生catalog比较、CHECK parser、DDLhash/版本/锁逐字不动；seed/rows/scans、冻结接口/DDL、依赖和原测试断言均无修改。\n\n原固定 cloc 2.10 与 source_count 对精确提交实测应用5887→5883/65文件，净减4，migrations374→370；严格范围仍exit1，超5100上限783。未找到≥798或百行安全方案，不将这个小整理说成规模闭合，也不通过计数口径、excluded资源或压缩语句取得数字。\n\n本地新6个精确父源差分加原persistence/812/消息980/扫描990+974联合133通过、43未选、3原警告，52.26秒，包含原默认6000任务seed exact摘要与V2全量性质。先行56目标与此重叠不累加。差分覆盖成功、组合缺陷顺序、四个query阶段异常的SQL前缀和连接上下文退出；原CHECK/原生catalog/迁移顺序回归未修改。限定Ruff/format/Bandit通过，AST边界校验确认除注册和循环解包外完整产品模块相同。\n\n首次新增临时文件format红及初次push TLS失败真实保留，修正/重试后通过。没有真实MySQL、完整CI、coverage、HTTP、独立验收、云或性能执行；无PRIVATE/未公开测试读取，无测试岗联系。证据与本岗四件归档 agents/database/dry-r29b/，后续封档只补证据，不改产品源。",
+      "source": "8f29030756139061341e0a636c8774ca790964bd"
+    },
+    "full_staged_diff_check_exit": 2,
+    "full_staged_diff_check_reason": "Raw git push stderr remote lines retain trailing whitespace",
+    "source_docs_json_diff_check_exit": 0
   }
 }

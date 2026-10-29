@@ -1,0 +1,30 @@
+unformatted: File would be reformatted
+  --> tmp/765_database_dry_r29b/765_catalog_equivalence.py:32:33
+   |
+31 |     source.write_bytes(
+   -         subprocess.check_output(
+   -             ["git", "show", f"{BASE}:backend/t44/persistence/migrations.py"]
+   -         )
+32 +         subprocess.check_output(["git", "show", f"{BASE}:backend/t44/persistence/migrations.py"])
+33 |     )
+   |
+
+unformatted: File would be reformatted
+  --> tmp/765_database_dry_r29b/run_checks.py:20:29
+   |
+19 |     started = datetime.now(UTC).isoformat()
+   -     result = subprocess.run(
+   -         arguments, cwd=ROOT, env=environment, capture_output=True, check=False
+   -     )
+20 +     result = subprocess.run(arguments, cwd=ROOT, env=environment, capture_output=True, check=False)
+21 |     (EVIDENCE / f"{label}.stdout.txt").write_bytes(result.stdout)
+--------------------------------------------------------------------------------
+28 |             cwd=str(ROOT),
+   -             source=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT)
+   -             .decode()
+   -             .strip(),
+29 +             source=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip(),
+30 |             started_utc=started,
+   |
+
+2 files would be reformatted, 1 file already formatted

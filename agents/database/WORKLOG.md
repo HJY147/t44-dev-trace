@@ -384,3 +384,13 @@
 - 无显式可丢弃测试库配置：原988实际17跳过，不冒充真实MySQL。没有读取生产凭据或新建DB连接，没有完整CI/覆盖率/HTTP/独立/云性能。
 - 原source_count/cloc2.10对精确274e2e6b实测5887/65files、exit1；persistence1661/schema106，真实净减11，仍超787。主动排除formatter额外两行收益，本岗100–250目标未达到。历史SQL必须保留；没有找到能保持完整语义的可信百行去重块。
 - 风险：适配器只针对checksum已通过的既有声明格式，新DDL版本必须重审；约束set迭代顺序不承诺，已独立核列顺序和完整DDL声明内容；原生MySQL/完整门禁仍待总协调安排。只交局部候选，不自行整合。完整命令/日志/JSON在agents/database/scale-r29/，四件及提示词归档。
+
+
+## 2026-10-29 — ROLE-database-DRY-R29B-20261029-v1，本地查询注册小候选
+
+- 按准确a92e5e73建独立codex/database-dry-r29b，先读AGENTS/责任范围；设计4e317333，产品/测试8f29030756139061341e0a636c8774ca790964bd已真实push，远端HEAD核一致。只migrations四项原生catalog注册由三元组序列变label映射，删除重复中间结构；完整SQL、预期、比较、CHECK/hash/版本/锁逐字保留，seed/rows/scans/冻结/依赖/原断言/计数器全不改。
+- 原cloc2.10/原统计对提交源实测5887→5883/65文件，migrations374→370、persistence1661→1657，净减4，仍超783，两次--require-range exit1。未发现百行或≥798安全方案，不把局部整理当规模闭合；不使用格式、资源迁移或多语句挤行。
+- 新6精确父源差分覆盖成功、四类组合缺陷顺序、各query失败SQL前缀及context退出。首轮新旧56通过；最终新6+原persistence/812/消息980/扫描990+974联合133通过/43未选/3原警告52.26秒，包含原6000seed exact摘要及V2全性质；重叠不累加。AST正规化仅注册/解包后完整模块同，原测试不改。
+- 首次新增临时文件format红后只格式化临时文件；首push TLS exit128原摘录保留、同命令retry成功。两次探索路径不存在及首轮runner并发metadata丢一条，真实记录exploration.json；stdout/stderr保存，runner现增加单命令JSON，最终顺序Ruff/format/Bandit绿，不掩盖失败。
+- 仅本地非integration开发验证，无MySQL/完整CI/coverage/HTTP/独立/云/性能，没有PRIVATE/未公开测试读取或测试岗联系，不代根merge。四件、prompt、命令/原日志/JUnit/计数/边界在dry-r29b。Issue4实际评论6489314712，经GitHub插件按单ID精确GET逐字一致，回执github-publication.json。根待取舍，当前规模目标未达。
+- 封档全量暂存diff-check真实exit2，4行原push成功stderr的remote尾空格，原字节保留；限定排除stdout/stderr/JUnit后的源码/说明/JSON检查exit0，不称整包绿。两个实际输出/command均归档。

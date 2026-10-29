@@ -1,0 +1,28 @@
+{
+  "label": "diff-check-source",
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    ".",
+    ":(exclude)agents/database/dry-r29b/*.stdout.txt",
+    ":(exclude)agents/database/dry-r29b/*.stderr.txt",
+    ":(exclude)agents/database/dry-r29b/*.xml"
+  ],
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-dry-r29b",
+  "source": "8f29030756139061341e0a636c8774ca790964bd",
+  "started_utc": "2026-10-29T06:07:35.390789+00:00",
+  "exit": 0,
+  "environment": {
+    "PYTHONPATH": "backend"
+  },
+  "unset_environment": [
+    "DATABASE_URL",
+    "T44_TEST_CREDENTIALS",
+    "CI"
+  ],
+  "stdout": "diff-check-source.stdout.txt",
+  "stderr": "diff-check-source.stderr.txt"
+}

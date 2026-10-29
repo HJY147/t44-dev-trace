@@ -1,0 +1,27 @@
+{
+  "label": "ruff-final",
+  "command": [
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--config",
+    "backend/pyproject.toml",
+    "backend/t44/persistence/migrations.py",
+    "tmp/765_database_dry_r29b"
+  ],
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-dry-r29b",
+  "source": "8f29030756139061341e0a636c8774ca790964bd",
+  "started_utc": "2026-10-29T06:02:44.233370+00:00",
+  "exit": 0,
+  "environment": {
+    "PYTHONPATH": "backend"
+  },
+  "unset_environment": [
+    "DATABASE_URL",
+    "T44_TEST_CREDENTIALS",
+    "CI"
+  ],
+  "stdout": "ruff-final.stdout.txt",
+  "stderr": "ruff-final.stderr.txt"
+}

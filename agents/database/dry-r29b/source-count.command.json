@@ -1,0 +1,26 @@
+{
+  "label": "source-count",
+  "command": [
+    "python3",
+    "scripts/metrics/source_count.py",
+    "--cloc",
+    "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/cloc-2.10.pl",
+    "--output",
+    "agents/database/dry-r29b/source-count.json",
+    "--require-range"
+  ],
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-dry-r29b",
+  "source": "8f29030756139061341e0a636c8774ca790964bd",
+  "started_utc": "2026-10-29T06:02:24.449895+00:00",
+  "exit": 1,
+  "environment": {
+    "PYTHONPATH": "backend"
+  },
+  "unset_environment": [
+    "DATABASE_URL",
+    "T44_TEST_CREDENTIALS",
+    "CI"
+  ],
+  "stdout": "source-count.stdout.txt",
+  "stderr": "source-count.stderr.txt"
+}

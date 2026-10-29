@@ -1,0 +1,33 @@
+[
+  {
+    "command": "rg --files services | rg '/persistence/(seed|migrations|rows|scans)\\.py$'",
+    "exit": 1,
+    "result": "rg: services: IO error for operation on services: No such file or directory (os error 2)",
+    "resolution": "Used actual backend/t44/persistence paths; no product change."
+  },
+  {
+    "command": "sed -n 1,220p tmp/812_database_size/812_migration_diff.py",
+    "exit": 1,
+    "result": "sed: tmp/812_database_size/812_migration_diff.py: No such file or directory",
+    "resolution": "Listed the owner directory and read test_migration_order.py."
+  },
+  {
+    "command": "git push -u origin codex/database-dry-r29b",
+    "exit": 128,
+    "result": "fatal: unable to access 'https://github.com/HJY147/t44-dev-trace.git/': LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443",
+    "resolution": "Exact same push retried successfully; push-retry outputs retained."
+  },
+  {
+    "command": "Initial parallel run_checks.py ruff-first and format-first",
+    "ruff_exit": 0,
+    "format_exit": 1,
+    "result": "commands.json lost the ruff-first structured row due to concurrent read/write. Original stdout/stderr files exist; first format diagnostics remain unchanged.",
+    "resolution": "Runner also records each command in a separate label.command.json; final sequential Ruff/format pass has full records."
+  },
+  {
+    "command": "Number reservation check via git ls-tree and rg --files for prefix765 in this and root tree",
+    "exit": 1,
+    "result": "No matching path; prefix765 unused at check time. No private file contents read.",
+    "resolution": "Created tmp/765_database_dry_r29b."
+  }
+]

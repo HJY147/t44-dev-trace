@@ -1,0 +1,23 @@
+{
+  "label": "diff-check-raw",
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "cwd": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-dry-r29b",
+  "source": "8f29030756139061341e0a636c8774ca790964bd",
+  "started_utc": "2026-10-29T06:07:35.240594+00:00",
+  "exit": 2,
+  "environment": {
+    "PYTHONPATH": "backend"
+  },
+  "unset_environment": [
+    "DATABASE_URL",
+    "T44_TEST_CREDENTIALS",
+    "CI"
+  ],
+  "stdout": "diff-check-raw.stdout.txt",
+  "stderr": "diff-check-raw.stderr.txt"
+}

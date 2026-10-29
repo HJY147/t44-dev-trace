@@ -1,0 +1,38 @@
+{
+  "base": "a92e5e73da93ba23748c3bab113103036c395d50",
+  "design": "4e317333eb93f9c7fa768b68fbbaf2096ea69fa3",
+  "product_source": "8f29030756139061341e0a636c8774ca790964bd",
+  "branch": "codex/database-dry-r29b",
+  "application_before": 5887,
+  "application_after": 5883,
+  "application_net": -4,
+  "application_files": 65,
+  "persistence_before": 1661,
+  "persistence_after": 1657,
+  "migrations_before": 374,
+  "migrations_after": 370,
+  "above_limit": 783,
+  "require_range_exit": 1,
+  "original_and_new_local": {
+    "passed": 133,
+    "deselected": 43,
+    "warnings": 3,
+    "seconds": 52.26,
+    "includes_new_cases": 6
+  },
+  "first_targeted": {
+    "passed": 56,
+    "seconds": 1.25,
+    "overlaps_final": true
+  },
+  "real_mysql": false,
+  "full_ci": false,
+  "cloud": false,
+  "independent_acceptance": false,
+  "scope": "only migrations._catalog_defects registration shape",
+  "issue": "https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6489314712",
+  "evidence": "agents/database/dry-r29b",
+  "full_staged_diff_check_exit": 2,
+  "full_staged_diff_check_reason": "Raw git push stderr remote lines retain trailing whitespace",
+  "source_docs_json_diff_check_exit": 0
+}
