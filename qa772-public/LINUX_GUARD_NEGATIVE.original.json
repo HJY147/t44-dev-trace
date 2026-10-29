@@ -1,0 +1,20 @@
+{
+  "scope": "OBSERVED_UNCONSTRAINED_LINUX_GUARD_NEGATIVE",
+  "actual": {
+    "utc": "2026-10-29T06:47:53.633363+00:00",
+    "python": "3.12.16 (main, Oct 28 2026, 02:01:20) [GCC 14.2.0]",
+    "system": "Linux",
+    "machine": "x86_64",
+    "os_cpu_count": 4,
+    "affinity_count": 4,
+    "ssl": "OpenSSL 3.5.7 9 Jun 2026",
+    "cgroup": {
+      "cpu.max": "max 100000",
+      "memory.max": "max",
+      "pids.max": "17432"
+    }
+  },
+  "guard_outcome": "CPU_CGROUP",
+  "expected_reject": true,
+  "SUT_calls": 0
+}

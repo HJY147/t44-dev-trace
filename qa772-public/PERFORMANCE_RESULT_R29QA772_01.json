@@ -1,0 +1,62 @@
+{
+  "schema": "772-independent-performance-result-v1",
+  "run_id": "r29qa772-01",
+  "benchmark": "772-v1",
+  "scope": "THIS_SINGLE_PERFORMANCE_RUN_ONLY",
+  "verdict": "NP_NO_RUNTIME_RESULT",
+  "observed": {
+    "unit_start_utc": "2026-10-29T04:36:29Z",
+    "unit_exit_utc": "2026-10-29T04:51:29Z",
+    "unit_result": "exit-code",
+    "exec_main_status": 241,
+    "runtime_result_present": false,
+    "cipher_bytes": 76,
+    "supervisor_status": "NP",
+    "supervisor_reason": "HARD_DEADLINE",
+    "supervisor_stop_utc": "2026-10-29T04:51:29.397479Z",
+    "supervisor_elapsed_seconds": 899.7860585360002,
+    "safe_journal_exception_classes": {},
+    "safe_journal_error_categories": {}
+  },
+  "metrics": {
+    "full_400_client_cohort": null,
+    "complete_600s_steady": null,
+    "minute_buckets": null,
+    "query_p95_ms": null,
+    "transition_p95_ms": null,
+    "contract_p95_ms": null,
+    "escalation_p95_ms": null,
+    "business_errors": null,
+    "http_errors": null,
+    "transport_errors": null,
+    "SUT_requests_observed": null
+  },
+  "postconditions": {
+    "task_and_audit": null,
+    "mq_delivery_or_fallback": null,
+    "independent_data_scale_acceptance": null
+  },
+  "independent_conclusion": "No performance acceptance can be made from this run. Dispatch and 900 seconds of process lifetime do not establish 400 active clients or 600 seconds of steady work. The UI/control failure does not establish SUT failure.",
+  "history_policy": "Original NP result/runtime/cases remain unchanged; only a separate local repair version may be developed. No new cloud grant or SUT request is authorized.",
+  "functional_gate_52": "NOT_IN_SCOPE",
+  "actual_runtime_sha256": "745f4d8b369729fab59a59bfbba17f0baace8541d7b627a43bbe117c09dea085",
+  "original_public_evidence": {
+    "R29QA772_STATUS.original.json": {
+      "sha256": "0a265a4cb5240d031370d5225f423912b61fa8032c65b2f8aa991a56d9f933ce",
+      "source": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/resume-20261029/QA-PUBLIC-export01/qa772-readonly-status.json"
+    },
+    "R29QA772_SCOPE.original.json": {
+      "sha256": "36d97a59548d0e5aab4c8d8a5a154dec9f03dcd5a558c4f2b5e16f595db37b03",
+      "source": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/resume-20261029/QA-PUBLIC-export01/qa772-final-scope.json"
+    },
+    "R29QA772_UNIT.original.properties": {
+      "sha256": "9c83ead5abd82a5b416c8bbb40015f7a9a2cb8800c590428f2eafa3af94fc8a6",
+      "source": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/resume-20261029/QA-PUBLIC-export01/qa772-unit.properties"
+    },
+    "R29QA772_SAFE_DIAGNOSTIC.original.json": {
+      "sha256": "9970b3cde3440bea3ea64e2231080c4ce2e955205200eb884f7d4e683a1d2c48",
+      "source": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/resume-20261029/LOAD-own-QA-safe-diagnostic.original.PUBLIC.json"
+    }
+  },
+  "privacy": "No private test source, case, key, account, token or raw request body is published."
+}

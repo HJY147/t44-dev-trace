@@ -1,0 +1,35 @@
+{
+  "schema": "772-transport-rsa-v1",
+  "scope": "TRANSPORT_OUTER_LAYER_ONLY",
+  "sut_authorized": false,
+  "sut_requests": 0,
+  "cloud_or_ui_actions_by_tester": 0,
+  "created_at": "2026-10-29T04:17:12.903710+00:00",
+  "load_identity_provenance": "neutral observation supplied by coordinator; no remote probe by tester",
+  "load_instance": "i-bp13uag4r4u9r2hge0mu",
+  "load_private_ip": "172.21.182.244",
+  "app_private_ip": "172.21.182.245",
+  "source_free_python_image_id": "sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1",
+  "rsa_public_pem_sha256": "1752c101a1182690a1d320b000d3259fea92eb90b45edf8005ff701319d17b12",
+  "rsa_padding": "OAEP",
+  "oaep_digest": "SHA256",
+  "mgf1_digest": "SHA256",
+  "wrapped_key": {
+    "file": "capsule-key.rsa-oaep-sha256",
+    "bytes": 384,
+    "sha256": "878fb5ed4df9ae8246e3c11145ecd4bb1f00a1385b15e1b5f04748506995f690"
+  },
+  "runtime_capsule": {
+    "file": "runtime.772seal",
+    "bytes": 66014,
+    "sha256": "79edc21c71556ccdaeb5c591e772195f2df5764fcee37420affc5fb8a419165c",
+    "unchanged": true
+  },
+  "fragment_count": 6,
+  "fragment_shell_max_bytes": 16634,
+  "fragment_local_reassembly": "PASS",
+  "private_rsa_key_location": "LOAD only; never read by tester or coordinator",
+  "load_unwrap_status": "NOT_RUN_BY_TESTER",
+  "benchmark_runtime_sha256": "745f4d8b369729fab59a59bfbba17f0baace8541d7b627a43bbe117c09dea085",
+  "frozen_interface_unchanged": true
+}

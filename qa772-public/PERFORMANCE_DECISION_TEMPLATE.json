@@ -1,0 +1,51 @@
+{
+  "schema": "772-performance-adjudication-template-v1",
+  "template_only": true,
+  "run_id": "r29qa772-01",
+  "scope": "THIS_SINGLE_INDEPENDENT_PERFORMANCE_COHORT_ONLY",
+  "frozen_benchmark": "772-v1",
+  "authorization": {
+    "dispatch_observed_by_coordinator": true,
+    "grant_start_utc": "2026-10-29T04:36:29.366675Z",
+    "grant_end_utc": "2026-10-29T04:51:29.366675Z",
+    "runtime_sha256": "745f4d8b369729fab59a59bfbba17f0baace8541d7b627a43bbe117c09dea085",
+    "environment_sha256": "8aced8a883c590e3a61b7530cac6e9c0b0bca6d4f693f3774c436f3ba56e1732"
+  },
+  "observation": {
+    "last_coordinator_unit_state": "active/running at approximately04:38Z",
+    "browser_control": "UNAVAILABLE_REPORTED_BY_COORDINATOR",
+    "actual_runtime_result_received": false,
+    "actual_authenticated_recomputation_received": false
+  },
+  "metrics": {
+    "verdict": null,
+    "full_400_client_cohort": null,
+    "actual_warmup_seconds": null,
+    "actual_steady_seconds": null,
+    "minute_buckets": null,
+    "query_p95_ms": null,
+    "transition_p95_ms": null,
+    "contract_p95_ms": null,
+    "escalation_p95_ms": null,
+    "business_errors": null,
+    "http_errors": null,
+    "transport_errors": null,
+    "response_assertion_errors": null
+  },
+  "postconditions": {
+    "successful_audit_observed": null,
+    "final_task_snapshots_observed": null,
+    "mq_delivery_or_fallback_observed": null,
+    "fixture_scale_independently_verified": null,
+    "load_generator_resource_observation": null
+  },
+  "independent_conclusion": "NOT_ADJUDICATED_PENDING_REAL_EVIDENCE",
+  "must_not_infer": [
+    "UI control failure is not a measured SUT failure",
+    "Dispatch/platform/Python PASS is not performance acceptance",
+    "No short-window splicing or relabeling of older results",
+    "Unknown/null error count is not zero errors",
+    "No 52-functional-gate acceptance from this performance report"
+  ],
+  "next_permitted_work": "Read and authenticate retained evidence for this same run; no new grant/login/retry/cohort"
+}

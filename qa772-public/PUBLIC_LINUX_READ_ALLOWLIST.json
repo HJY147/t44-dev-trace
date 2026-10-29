@@ -1,0 +1,36 @@
+{
+  "scope": "PUBLIC_LOAD_OBSERVATIONS_ONLY",
+  "readable_files": [
+    "/root/t44-r9/independent772/public/linux-capabilities.json",
+    "/root/t44-r9/independent772/public/neutral-preparation.json",
+    "/root/t44-r9/independent772/public/launch-receipt.json",
+    "/root/t44-r9/independent772/public/adapter-stop.json",
+    "/root/t44-r9/independent772/public/qa772-unit.properties",
+    "/root/t44-r9/independent772/public/qa772-readonly-status.json",
+    "/root/t44-r9/independent772/public/qa772-metrics.json",
+    "/root/t44-r9/independent772/public/qa772-evidence-analysis.json",
+    "/root/t44-r9/independent772/public/qa772-final-scope.json"
+  ],
+  "allowed_fields": [
+    "actual Python version",
+    "actual Linux architecture",
+    "SSL version",
+    "UTC and monotonic time",
+    "CPU/memory/PID cgroup limits",
+    "count-only neutral inventory summary",
+    "actual session expiration timestamps without tokens or user IDs",
+    "SUT and LOAD image identities and source digests",
+    "new grant time window and aggregate stop reason"
+  ],
+  "do_not_read": [
+    "installed private runtime source",
+    "capsule.key",
+    "LOAD RSA private key",
+    "neutral inputs/session.private.json",
+    "per-run sessions.json or inventory.json",
+    "encrypted evidence keys or decrypted raw request/response bodies",
+    "/root/t44-r9/independent772/retained/r29qa772-01 raw private journal logs"
+  ],
+  "platform_check_network": "none",
+  "runtime_grant_preflight": "NOT_RUN_UNTIL_EXPLICIT_SINGLE_GRANT"
+}

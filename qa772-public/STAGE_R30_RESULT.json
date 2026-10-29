@@ -1,0 +1,51 @@
+{
+  "schema": "772-r30-handoff-stage-v1",
+  "created_utc": "2026-10-29T07:21:12.016759Z",
+  "phase": "READ_ONLY_TOOL_REVIEW_HANDOFF_AND_PUBLIC_ARCHIVE",
+  "status": "READY",
+  "four_publishable_result_artifacts": [
+    {
+      "name": "PERFORMANCE_RESULT_R29QA772_01.json",
+      "sha256": "c62301ddac3b656dfe26b951f1a8048b38745f40fa949fb5ac5943b59853ce3d"
+    },
+    {
+      "name": "LOCAL_V2_4_SELFTEST_RESULT.json",
+      "sha256": "40383db3d0917976794b819712318398170e6840ec0314fa5f9ced15aa3aa64d"
+    },
+    {
+      "name": "LINUX_GENERIC_VALIDATION.json",
+      "sha256": "b95006466627cfeb3015315c651438e26c0356a4080b6d79640f96bae10747d4"
+    },
+    {
+      "name": "V2_4_REVIEW_FREEZE.json",
+      "sha256": "f4918b21db981861f68a102661bd01244a20d9f887a7923b0656989cd0bd6f71"
+    }
+  ],
+  "review_index": {
+    "name": "ADMISSION_R30_REVIEW_INDEX.json",
+    "sha256": "c04a66275ff233984317fe830460709aad08fcd642869831815aecfa550650b1"
+  },
+  "runtime_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "capsule": {
+    "name": "runtime-v2.4.772seal",
+    "bytes": 69195,
+    "sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f"
+  },
+  "reviewer_access": "Restricted exact allowlist only, after root grants; no source/cases published to Git",
+  "stage_activity": {
+    "new_SUT_requests": 0,
+    "cloud_actions": 0,
+    "new_long_tests": 0,
+    "GB_raw_evidence_copies": 0,
+    "developer_agent_contacts": 0,
+    "reviewer_agent_contacts": 0
+  },
+  "scope": [
+    "Historical cloud NP remains unchanged",
+    "v2.4 local native-TLS full-chain tool qualification is not SUT acceptance",
+    "Free Linux result is generic subset only, not full private executor or original LOAD image",
+    "No acceptance conclusion is imposed on the newly frozen independent reviewer"
+  ],
+  "public_git_policy": "Only the explicitly PUBLIC directory is copied, including opaque sealed artifacts and hashes. REVIEW_R30_ONLY and PRIVATE are excluded.",
+  "human_claims": "This is AI-agent execution evidence and coordination, not a human student research report."
+}

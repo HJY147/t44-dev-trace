@@ -1,0 +1,11 @@
+# LOAD RSA transport only (772-v1)
+
+No benchmark case, metric or source was changed. The capsule key is now RSA-OAEP-SHA256 wrapped to the exact LOAD-generated public key, fingerprint 1752c101a1182690a1d320b000d3259fea92eb90b45edf8005ff701319d17b12. OAEP and MGF1 both use SHA256. The 384-byte wrapped key is opaque to the coordinator. No actual RSA private key, capsule key, account or inventory is printed or placed in PUBLIC.
+
+Fast path: upload runtime.772seal unchanged to /root/t44-r9/independent772/public/runtime.772seal using the official cloud assistant. Then execute the complete PUBLIC LOAD_INSTALL_OPAQUE.sh as a cloud-assistant command (or upload it and run sh on that file). It embeds only the RSA-wrapped capsule key, the PUBLIC generic bootstrap and launcher; it verifies all hashes, unwraps the capsule key using the existing LOAD-only RSA private key, and installs the private runtime through the exact already available source-free Python image. --pull=never and --network none prevent registry/network access for installation. Root reviews only returned hashes/status, never private files.
+
+Fallback when binary upload is inconvenient: execute LOAD_APPEND_01.sh through LOAD_APPEND_06.sh, in order, as separate cloud-assistant commands; then execute LOAD_INSTALL_OPAQUE.sh. Each append command is <= 16634 bytes and writes only a base64 ciphertext fragment. Local reassembly was checked against the original capsule hash. The installer joins and decodes only the six ciphertext fragments; no plaintext source is exposed to root.
+
+Expected final bootstrap output is INSTALLED_PRIVATE with capsule hash and file count, followed by an explicit SUT NOT RUN notice. Do not cat, inspect or copy /root/t44-r9/independent772/runtime or capsule.key. Runtime installation does not consume or imply a SUT grant. Actual environment/CA/sessions/inventory and a fresh allow=true single grant are still required before the benchmark invocation. The fresh 900-second window and actual expires_at > window_end rule remain as frozen.
+
+Exact image ID: sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1. LOAD-only RSA private path: /root/t44-r9/r29-load-key-01/load-only-private.pem. Private destination: /root/t44-r9/independent772/runtime. The coordinator may copy/hash only PUBLIC allowlisted files. Tester's cloud/UI actions remain zero.

@@ -1,0 +1,106 @@
+{
+  "schema": "772-preparation-v1",
+  "status": "READY_OFFLINE",
+  "updated_at": "2026-10-29T04:00:57.567450+00:00",
+  "sut_requests": 0,
+  "cloud_actions": 0,
+  "linux_preflight": "NOT_RUN_REQUIRES_FRESH_SINGLE_GRANT",
+  "sut_performance": "NOT_RUN",
+  "local_semantics": {
+    "status": "PASS",
+    "passed_checks": 29,
+    "details": "PRIVATE; only aggregate preparation receipt is public"
+  },
+  "finite_local_calibration": {
+    "status": "PASS",
+    "sut_requests": 0,
+    "loopback_https_exchanges": 17013,
+    "elapsed_seconds": 7.182277166983113,
+    "clients": 400,
+    "actual_short_warmup_seconds": 2,
+    "actual_short_steady_seconds": 4,
+    "not_sut_acceptance": true,
+    "raw_evidence_sha256": "6898e0da360861f9c86301694d2bdc1dab0a25183860c072e604fb7a68c902ea",
+    "writer_highwater": 143,
+    "writer_enqueue_block_ns": 1336669319168,
+    "connection_setup": "local_mock_serial_preconnect_before_barrier_only",
+    "classes_observed": [
+      "contract",
+      "escalation",
+      "query",
+      "transition"
+    ],
+    "failures": {}
+  },
+  "local_600s_timer_gate": {
+    "kind": "OFFLINE_REAL_TIMER_GATE",
+    "sut_requests": 0,
+    "cloud_actions": 0,
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "observed_total_seconds": 660.0051172079984,
+    "observed_steady_seconds": 600.0051172079984,
+    "all_samples_400": true,
+    "short_599_999_rejected": true,
+    "partial_399_rejected": true,
+    "full_600_accepted": true,
+    "status": "PASS"
+  },
+  "authenticated_raw_recomputation": {
+    "status": "PASS",
+    "source_sha256": "6898e0da360861f9c86301694d2bdc1dab0a25183860c072e604fb7a68c902ea",
+    "serialized_records": 17021,
+    "all_four_class_counts_and_p95_equal": true,
+    "local_short_window_verdict": "NP"
+  },
+  "opaque_capsule": {
+    "bootstrap_roundtrip": "PASS",
+    "wrong_key_rejected_before_write": true,
+    "stdlib_only": true,
+    "files": 7,
+    "cipher_bytes": 66014,
+    "sha256": "79edc21c71556ccdaeb5c591e772195f2df5764fcee37420affc5fb8a419165c",
+    "runtime_sha256": "745f4d8b369729fab59a59bfbba17f0baace8541d7b627a43bbe117c09dea085"
+  },
+  "private_case_freeze_sha256": "638c15e9f3c7764051a42ac912b3727d54478b07a70f6099c2443dad6c89663b",
+  "raw_evidence_envelope": "772-SEAL-v1; SHAKE256 stream plus independent HMAC-SHA256, chained per-frame authentication",
+  "independent_conclusion": "OFFLINE_TOOLS_READY_ONLY; NO_SUT_ACCEPTANCE",
+  "open_items": [
+    "Fresh exact Linux image/origin/private-IP/CA and immutable identities",
+    "Private real sessions with expiry through complete new grant end",
+    "Private neutral 400+400 task/event inventory",
+    "Single explicit grant for Linux preflight and one full cohort",
+    "Separate server resource collector and independently observable MQ/data-scale/transaction postconditions"
+  ],
+  "neutral_interface_addendum": {
+    "files": [
+      "QUICKSTART.md",
+      "stage_opaque.sh",
+      "FROZEN_INTERFACE.json"
+    ],
+    "status": "PUBLIC_ONLY_OFFLINE",
+    "stage_shell_syntax": "PASS",
+    "remote_stage_executions": 0,
+    "private_runtime_unchanged": true,
+    "recommended_fresh_grant_window_seconds": 900,
+    "minimum_actual_session_expiry": "strictly later than new window_end_utc"
+  },
+  "rsa_transport": {
+    "status": "OFFLINE_WRAPPED_ONLY",
+    "manifest": "LOAD_TRANSPORT.json",
+    "public_key_sha256": "1752c101a1182690a1d320b000d3259fea92eb90b45edf8005ff701319d17b12",
+    "load_unwrap": "NOT_RUN_BY_TESTER",
+    "source_cases_metrics_unchanged": true
+  },
+  "neutral_load_adapter": {
+    "status": "PUBLIC_READY_PENDING_NEUTRAL_READY_AND_TAB_AUTHORIZATION",
+    "synthetic_checks": "PUBLIC_ADAPTER_CHECKS.json",
+    "linux_public_probe": "COMMAND_READY_NOT_EXECUTED_BY_TESTER",
+    "sut_run": "NOT_AUTHORIZED",
+    "source_cases_metrics_unchanged": true,
+    "schema": "NEUTRAL_772_INPUTS_V1",
+    "cost_stop_utc": "2026-10-29T04:56:19Z",
+    "latest_eligible_start_utc": "2026-10-29T04:41:49Z"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "772-v2.4-review-freeze-v1",
+  "status": "FROZEN_LOCAL_TOOL_QUALIFIED",
+  "runtime_revision": "2.4",
+  "benchmark_criteria": "772-v1 unchanged",
+  "source_sha256": "81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf",
+  "opaque_capsule": "runtime-v2.4.772seal",
+  "opaque_capsule_sha256": "60daf8ac0e1a7fcdc1714dacd421d04fd4f280ef06c90d77b90d322f71e6d71f",
+  "opaque_capsule_bytes": 69195,
+  "case_freeze_sha256": "638c15e9f3c7764051a42ac912b3727d54478b07a70f6099c2443dad6c89663b",
+  "full_local_result": "LOCAL_V2_4_SELFTEST_RESULT.json",
+  "full_local_result_sha256": "40383db3d0917976794b819712318398170e6840ec0314fa5f9ced15aa3aa64d",
+  "finite_post_regression": "FINITE_POST_V2_4_RESULT.json",
+  "finite_post_regression_sha256": "fa0a04af0a85b5fa22a3e6f0cf6eed5014bbc2fe545a029280fe4fd7bdc7a9da",
+  "linux_generic_subset": "LINUX_GENERIC_VALIDATION.json",
+  "scope_limits": [
+    "No new real SUT run; original cloud r29qa772-01 remains NP",
+    "Local full E2E uses native TLS against a simulated service",
+    "Linux CI validates only the publicly approved generic subset on actual4CPU host/2CPU quota; not full private executor or original4f3b image",
+    "MQ delivery/new-event throughput and 52 functional gates not established"
+  ],
+  "future_SUT_authorization": false,
+  "old_runtime_and_existing_results_unchanged": true
+}

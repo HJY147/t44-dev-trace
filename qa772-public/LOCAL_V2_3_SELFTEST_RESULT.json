@@ -1,0 +1,154 @@
+{
+  "schema": "772-local-tool-selftest-result-v1",
+  "runtime_revision": "2.3",
+  "status": "NP_POSTCONDITION_INCOMPLETE_AND_LOCAL_FIXTURE_BUDGET_MISMATCH",
+  "scope": "LOCAL_NATIVE_TLS_SIMULATION_ONLY_NOT_SUT_ACCEPTANCE",
+  "actual_start_utc": "2026-10-29T05:58:57.014651Z",
+  "actual_finish_utc": "2026-10-29T06:10:13.225976Z",
+  "actual_elapsed_seconds": 676.268074749969,
+  "full_400_client_60plus600_network_cohort": true,
+  "runtime_metrics_verdict": "PASS",
+  "independent_conclusion": "NP",
+  "classes": {
+    "query": {
+      "count": 323901,
+      "p95_ms": 55.071083
+    },
+    "transition": {
+      "count": 647797,
+      "p95_ms": 55.20025
+    },
+    "contract": {
+      "count": 323897,
+      "p95_ms": 54.785792
+    },
+    "escalation": {
+      "count": 323905,
+      "p95_ms": 55.310667
+    }
+  },
+  "minute_buckets": [
+    {
+      "index": 0,
+      "completed": 178407,
+      "classes": {
+        "transition": 71348,
+        "escalation": 35693,
+        "contract": 35675,
+        "query": 35691
+      }
+    },
+    {
+      "index": 1,
+      "completed": 185581,
+      "classes": {
+        "query": 37111,
+        "transition": 74245,
+        "contract": 37111,
+        "escalation": 37114
+      }
+    },
+    {
+      "index": 2,
+      "completed": 140352,
+      "classes": {
+        "query": 28071,
+        "contract": 28081,
+        "transition": 56135,
+        "escalation": 28065
+      }
+    },
+    {
+      "index": 3,
+      "completed": 147559,
+      "classes": {
+        "query": 29529,
+        "contract": 29500,
+        "transition": 59017,
+        "escalation": 29513
+      }
+    },
+    {
+      "index": 4,
+      "completed": 157856,
+      "classes": {
+        "transition": 63153,
+        "query": 31558,
+        "contract": 31571,
+        "escalation": 31574
+      }
+    },
+    {
+      "index": 5,
+      "completed": 160219,
+      "classes": {
+        "transition": 64090,
+        "query": 32031,
+        "contract": 32053,
+        "escalation": 32045
+      }
+    },
+    {
+      "index": 6,
+      "completed": 161875,
+      "classes": {
+        "transition": 64752,
+        "escalation": 32363,
+        "contract": 32379,
+        "query": 32381
+      }
+    },
+    {
+      "index": 7,
+      "completed": 161745,
+      "classes": {
+        "transition": 64695,
+        "contract": 32346,
+        "escalation": 32354,
+        "query": 32350
+      }
+    },
+    {
+      "index": 8,
+      "completed": 161165,
+      "classes": {
+        "contract": 32233,
+        "query": 32233,
+        "transition": 64466,
+        "escalation": 32233
+      }
+    },
+    {
+      "index": 9,
+      "completed": 164619,
+      "classes": {
+        "escalation": 32927,
+        "contract": 32930,
+        "query": 32925,
+        "transition": 65837
+      }
+    }
+  ],
+  "steady_failures": {},
+  "postconditions": {
+    "final_task_snapshot": 114,
+    "audit_complete_clients": 100,
+    "post_budget_not_observed": 286
+  },
+  "capacity_or_writer_stop": null,
+  "actual_local_input": {
+    "request_timeout_seconds": 5,
+    "postcheck_seconds": 15
+  },
+  "required_e2e_input": {
+    "request_timeout_seconds": 15,
+    "postcheck_seconds": 40
+  },
+  "fixture_error_acknowledgement": "The local long-window driver inherited 5/15 short-calibration auxiliary budgets. This run does not satisfy the requested complete same-budget E2E; the original result/evidence is retained unchanged.",
+  "raw_cipher_bytes": 724533928,
+  "runtime_sha256": "5f4a5bbec57752c73746eedbebc1733bb29dbe210c54c05ef38c0f30d19fabaa",
+  "formal_linux_cgroup_guard_locally": "NOT_EXECUTED_DARWIN_NOT_WEAKENED",
+  "cloud_run_r29qa772_01": "NP_UNCHANGED",
+  "SUT_or_cloud_calls": 0,
+  "next_gate": "Correct 15/40 readback and finite postcondition replay must pass; then require coordinator authorization for one fresh complete E2E."
+}

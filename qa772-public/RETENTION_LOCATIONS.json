@@ -1,0 +1,26 @@
+{
+  "schema": "772-own-run-retention-v1",
+  "run_id": "r29qa772-01",
+  "meaning": "Locations only; file existence and final contents have not yet been observed by this tester",
+  "private_load_paths": [
+    "/root/t44-r9/independent772/authorization/r29qa772-01/environment.json",
+    "/root/t44-r9/independent772/authorization/r29qa772-01/grant.json",
+    "/root/t44-r9/independent772/authorization/r29qa772-01/grant.consumed",
+    "/root/t44-r9/independent772/authorization/r29qa772-01/sessions.json",
+    "/root/t44-r9/independent772/authorization/r29qa772-01/inventory.json",
+    "/root/t44-r9/independent772/authorization/r29qa772-01/neutral-extra.json",
+    "/root/t44-r9/independent772/results/r29qa772-01/evidence.772seal",
+    "/root/t44-r9/independent772/results/r29qa772-01/evidence.key",
+    "/root/t44-r9/independent772/results/r29qa772-01/result.json",
+    "/root/t44-r9/independent772/results/r29qa772-01/raw-recomputed.private.json",
+    "/root/t44-r9/independent772/retained/r29qa772-01/unit-log.first.private.log",
+    "/root/t44-r9/independent772/retained/r29qa772-01/unit-log.latest.private.log"
+  ],
+  "root_read_policy": "Root may read only PUBLIC_LINUX_READ_ALLOWLIST.json listed public reports and own unit metadata; no private keys/source/accounts/inventory/raw bodies",
+  "recovery_priority": [
+    "Preserve original volumes and all evidence including failed prefixes",
+    "Provider economical stop and automatic-release review within fixed cost window",
+    "Postprocess retained evidence later if necessary; no SUT access or new cohort needed"
+  ],
+  "network_policy": "Existing analyzer operates network-none on retained local evidence"
+}
