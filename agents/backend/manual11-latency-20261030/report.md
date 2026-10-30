@@ -50,3 +50,17 @@ Root cause remains unresolved. Next discriminating evidence: APP per-worker CPU/
 - Product/evidence commit: `5331b658df6428fafe93a65664bf97b1f92c46b8`.
 - Configured combined149 regressions passed in31.58s, one upstream Starlette/httpx deprecation warning; no unknown project markers after correct `-c backend/pyproject.toml`. Baseline invalidation5 passed in1.31s.
 - Frozen cloc2.10 application count FAIL:90b baseline5818, candidate5821, net+3, ceiling5100. Exact committed candidate and original90b tree counted with same classifier and pinned cloc. Baseline script binding replaced only rev-parse HEAD with explicit90b, leaving archive/classification/count intact. No source counter/assertion modified. This candidate cannot satisfy the source-size gate; removing unrelated requirements or compressing source to hide this is outside scope.
+
+## Existing core/auxiliary source grouping clarification
+
+Coordinator clarified the already-adopted grouping; verified against committed `6a17d788:reports/final/requirements-report.md` and `docs/reports/FINAL90b-core-runtime-groups.json` (the90b worktree retained older final-report bytes). Applying that exact existing62/3file partition to the candidate's original pinned-cloc per-file output gives:
+
+| Existing category | Files |90b lines|Candidate lines|
+| --- | ---: | ---: | ---: |
+| Main core runtime |62|5038|5041|
+| Offline auxiliary |3|780|780|
+| Full original application |65|5818|5821|
+
+All+3lines are in core `services/runtime.py`. Auxiliary CLI147/migrations307/seed326 are unchanged. The main-core figure is within the user-adopted3500–5100 range. The original full `--require-range` FAIL remains unchanged; no teacher approval of exclusions is asserted. Exact group membership and measured sum are in `source-groups-candidate.json`; no statistics script, assertion or threshold changed, and no unrelated historical source-size repair is opened.
+
+GET candidate and regression artifacts are preserved and **not integrated**, pending more direct root-cause evidence. Coordinator relayed a separate database-owner hypothesis concerning growth-sensitive `confirmed_missing` scanning; this role neither verified it nor modified database/consumer paths.

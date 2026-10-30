@@ -1,0 +1,31 @@
+{
+  "schema": "manual11-backend-existing-core-grouping-v1",
+  "product_commit": "5331b658df6428fafe93a65664bf97b1f92c46b8",
+  "grouping_source_commit": "6a17d788",
+  "grouping_source": "docs/reports/FINAL90b-core-runtime-groups.json",
+  "requirements_source": "reports/final/requirements-report.md",
+  "statistic_tool_and_threshold_unchanged": true,
+  "core_runtime": {
+    "files": 62,
+    "baseline_code": 5038,
+    "candidate_code": 5041
+  },
+  "offline_auxiliary": {
+    "files": 3,
+    "baseline_code": 780,
+    "candidate_code": 780,
+    "file_lines": {
+      "backend/t44/persistence/migrations.py": 307,
+      "backend/t44/cli.py": 147,
+      "backend/t44/persistence/seed.py": 326
+    }
+  },
+  "full_application": {
+    "files": 65,
+    "baseline_code": 5818,
+    "candidate_code": 5821,
+    "original_require_range_pass": false
+  },
+  "teacher_approval_claimed": false,
+  "integration_state": "GET candidate not integrated; awaits direct root cause evidence"
+}
