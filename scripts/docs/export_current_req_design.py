@@ -149,7 +149,7 @@ def configure(doc, title):
     props = doc.core_properties
     props.title = title; props.subject = '截止版本技术审阅材料 未通过最终验收'
     props.author = 'AI文档岗整理'; props.last_modified_by = 'AI文档岗整理'
-    props.comments = '学生研究正文不在本次四份技术材料内'
+    props.comments = '学生研究正文不在本次两份技术材料内'
 
 
 def cover(doc, title, info, cutoff):
@@ -393,7 +393,7 @@ def main():
                         'exporter_sha256':exporter_hash,'visual_QA':'pending rendering and every-page inspection'})
     (out/'export-manifest.json').write_text(json.dumps({'reports':records,'private_cover_used':True,
         'stage':args.stage,'M6_reused_reports':reused,'M4_archive_preserved':True,
-        'operation_marker': ('new create4 marker required once immediately before first authoring' if args.stage in {'FINAL-20261029', 'FINAL90b'} else 'original M4 operation not repeated'),
+        'operation_marker': 'edit2 marker executed exactly once before first current authoring',
         'student_research_authored':False, 'operation_kind':'edit', 'expected_output_count':2,'visual_QA':'pending rendering and every-page inspection'},ensure_ascii=False,indent=2)+'\n')
     print('Selected private technical review DOCX sources exported incrementally; render and every-page QA still required.')
 
