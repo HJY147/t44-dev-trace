@@ -178,3 +178,6 @@ AI总协调实收官方0b制品并核实际60文件/身份链、384连接预算�
 
 
 2026-10-31 / P13 LOAD连接检查：仅按用户提供地址更新全新load-only配置，保留原严格hostkey与所有其他选项。实际SSH exit255，publickey拒绝，尚未传包或发压；等待用户执行原USER_ONLY临时授权脚本，APP保持停止。公开回执agents/coordinator/manualp13-preparation/LOAD_SSH_CHECK.PUBLIC.json；实际IP只留本地private runtime。
+
+
+2026-10-31 00:36 CST：用户完成临时授权后LOAD实际SSH/root+原hostpin成功；确认16CPU、原W存在、p13新输出全不存在、无运行容器。传包并远端核32文件及archive exact bytes通过，授权实际expiry读回18:35:01Z/剩7118秒。该读回不是原安装receipt。已通知用户启动APP并提供当前IP；正式压测未开始。回执manualp13-preparation/LOAD_READY.PUBLIC.json。
