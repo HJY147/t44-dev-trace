@@ -821,3 +821,7 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 2026-10-31 ROLE-backend-LOCKED-TASK-REUSE-v1: second candidate original90b claim retained, same-main locked target reuse;137 original tests pass/3 exact SQL count fails retained,4 context checks pass, Ruff pass. No cloud/performance; native RC and test-owner reconciliation pending. See agents/backend/locked-task-reuse/DESIGN.md.
 
 CI completion audit: exact69dff6f4 run41109743811 static/frontend PASS; complete797suite795pass+2same native SQL-budgetfail. Lines90.27%,branches84.50%,full production measurement. Authorized test-only13acb43a starts41111111033 pending; no full local duplicate/remote workflow dispatch/cloud/SUT. Raw CI logs preserved gzip+hash. Classroom documentation/REA/hardware scope acknowledged; no REA or hardware action performed.
+
+2026-10-31 ROLE-backend-NEW-SOURCE-MATERIAL-v2: explicit old90b history/new13ac rawsource/bundle/actualimport dualchain tooling, packet legacy81e vs QA9cf kept distinct;7 offline synthetic tests+3.10 AST. No product or cloud action; live08 admission pending. See agents/backend/new-source-material/RUNBOOK.md.
+
+Reviewed defect correction: a60 new receipt reference path/future observation gap fixed with actual APP canonical path+producer stat observation, local copy explicit remote path and UTC/nonfuture check.9local synthetic checks pass; original7log preserved. No actualAPP stat or live material claim.
