@@ -1,0 +1,30 @@
+{
+  "run_id": "r30manualp12",
+  "actual_trigger_utc": "2026-10-30T14:34:25.342503Z",
+  "public_running_marker_utc": "2026-10-30T14:34:26.105413Z",
+  "clients_started_at_barrier": 400,
+  "independent_grant_sha256": "461136aab2ed864210e57d6f527c8dbb86649d9e03c35485e8c4f8419641dc81",
+  "latest_trigger_before_utc": "2026-10-30T14:40:00Z",
+  "performance_conclusion": false,
+  "formal_trigger_count": 1,
+  "status": "FORMAL_COMPLETE_NOT_ACCEPTED_EVIDENCE_LOCAL",
+  "measurement": {
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "p95_max_ms": 270,
+    "throughput_min_per_minute": 1000,
+    "business_errors": 0
+  },
+  "notification_intent": "Immediately notify user after process exit, sealed evidence download, and SHA/bytes verification; local analysis thereafter.",
+  "entry_exit_code": 1,
+  "entry_exited_utc": "2026-10-30T14:46:06.491785+00:00",
+  "cipher_bytes": 640683683,
+  "cipher_sha256": "a4fb290cf53003f958c798d72eaaf63a048bf3f675dfa575bc6802d7c6fcf6c0",
+  "user_notified_both_instances_can_economically_stop": true,
+  "cloud_access_after_stop_notice": false,
+  "independent_performance_verdict": "FAIL",
+  "independent_acceptance_conclusion": "NOT_ACCEPTED_P95_EXCEEDS270MS_AND_POSTCONDITIONS_INCOMPLETE",
+  "postconditions_complete": false,
+  "all_original_assertions_satisfied": false
+}

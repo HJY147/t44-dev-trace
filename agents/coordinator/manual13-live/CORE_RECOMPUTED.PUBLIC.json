@@ -1,0 +1,101 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECOMPUTATION_COMPLETE",
+  "run_id": "r30manualp12",
+  "backup_integrity_verified": true,
+  "raw_evidence_authenticated_footer_verified": true,
+  "raw_plain_bytes": 1984906944,
+  "raw_compressed_bytes": 308843107,
+  "raw_records": 544965,
+  "footer_counts_match_authenticated_stream": true,
+  "result_counter_snapshot_delta": {
+    "plain_bytes_footer_minus_result_snapshot": 39413,
+    "compressed_bytes_footer_minus_result_snapshot": 30394
+  },
+  "record_types": {
+    "cohort_start": 1,
+    "load_resource": 651,
+    "exchange": 544296,
+    "client_stop": 16,
+    "result": 1
+  },
+  "phase_counts": {
+    "warmup": 57041,
+    "steady": 482100,
+    "postcheck": 5155
+  },
+  "full_cohort_recomputed": true,
+  "warmup_seconds_recomputed": 60.0,
+  "steady_seconds_recomputed": 600.0,
+  "classes_recomputed": {
+    "query": {
+      "count": 96410,
+      "p95_ms": 1065.937272
+    },
+    "transition": {
+      "count": 192829,
+      "p95_ms": 1622.151004
+    },
+    "contract": {
+      "count": 96432,
+      "p95_ms": 1048.957214
+    },
+    "escalation": {
+      "count": 96429,
+      "p95_ms": 1205.1211
+    }
+  },
+  "steady_started_requests": 482100,
+  "minute_completed_requests": [
+    51019,
+    50137,
+    49161,
+    48800,
+    47990,
+    45257,
+    47295,
+    47648,
+    47263,
+    47130
+  ],
+  "minimum_minute_completed_requests": 45257,
+  "steady_completed_inside_10minutes": 481700,
+  "steady_started_requests_complete_inside_window": false,
+  "steady_request_failures_recomputed": {},
+  "raw_steady_status_counts": {
+    "200": 385671,
+    "202": 96429
+  },
+  "independent_steady_wire_checks_failed": {},
+  "all_phase_exchange_errors": {
+    "TimeoutError:": 1,
+    "RemoteDisconnected:Remote end closed connection without response": 15
+  },
+  "error_phase_counts": {
+    "postcheck": 16
+  },
+  "steady_alive_sample_count": 592,
+  "steady_alive_sample_min": 400,
+  "steady_inflight_sample_range": [
+    131,
+    400
+  ],
+  "client_completion_min": 633,
+  "client_completion_max": 1522,
+  "raw_postcheck_task_success_clients": 398,
+  "raw_postcheck_audit_clients_any_page": 398,
+  "tool_postconditions": {
+    "final_task_snapshot": 398,
+    "audit_complete_clients": 383,
+    "post_budget_not_observed": 1
+  },
+  "tool_metrics_verdict": "FAIL",
+  "independent_performance_verdict": "FAIL",
+  "independent_acceptance_conclusion": "NOT_ACCEPTED_P95_EXCEEDS270MS_AND_POSTCONDITIONS_INCOMPLETE",
+  "tool_independent_conclusion": "NP",
+  "all_original_assertions_satisfied": false,
+  "mq_delivery_postcondition": "NOT_OBSERVED",
+  "cloud_access_after_completion": false,
+  "original_result_file_sha256": "06f7036f20393be64675c967e803c249bcc0295ea8f5bb184ea54d7447aa7114",
+  "exact_match_to_tool_classes_minutes_errors": true,
+  "client_stop_count": 16
+}
