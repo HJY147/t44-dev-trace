@@ -1,0 +1,82 @@
+{
+  "status": "FINAL_INDEPENDENT_REVIEW",
+  "run_id": "r30manualp12",
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "schema_supplement_sha256": "31bef8ab5b87feb864b18d58bd7e791dd96d41e20a05b5abe06a5d783648e8d8",
+  "actual_trigger_utc": "2026-10-30T14:34:25.342503Z",
+  "grant_deadline_met": true,
+  "sealed_current_grant_environment_trigger_binding_verified": true,
+  "backup_integrity": "AUTHENTICATED_FOOTER_COMPRESSED_STREAM_AND_ALL53_FILE_HASHES_VERIFIED",
+  "raw_evidence_integrity": "AUTHENTICATED_FOOTER_GZIP_COMPLETE_RECORD_AND_BYTE_COUNTS_VERIFIED",
+  "full_cohort": true,
+  "clients": 400,
+  "warmup_seconds": 60,
+  "steady_seconds": 600,
+  "steady_alive400_samples": 592,
+  "concurrency_scope": "400 live workload clients; sampled simultaneous HTTP in-flight131..400; not400 continuously in-flight HTTP requests",
+  "steady_request_count_started": 482100,
+  "steady_request_count_completed_inside_window": 481700,
+  "classes": {
+    "query": {
+      "count": 96410,
+      "p95_ms": 1065.937272
+    },
+    "transition": {
+      "count": 192829,
+      "p95_ms": 1622.151004
+    },
+    "contract": {
+      "count": 96432,
+      "p95_ms": 1048.957214
+    },
+    "escalation": {
+      "count": 96429,
+      "p95_ms": 1205.1211
+    }
+  },
+  "minute_completed": [
+    51019,
+    50137,
+    49161,
+    48800,
+    47990,
+    45257,
+    47295,
+    47648,
+    47263,
+    47130
+  ],
+  "minimum_per_minute": 45257,
+  "throughput_verdict": "PASS_THRESHOLD1000_EACH_MINUTE",
+  "steady_request_error_count": 0,
+  "independent_steady_wire_check_error_count": 0,
+  "postcheck_exchange_errors": {
+    "TimeoutError": 1,
+    "RemoteDisconnected": 15
+  },
+  "postconditions": {
+    "final_task_snapshot": {
+      "observed": 398,
+      "required": 400,
+      "source": "successful raw postcheck client responses and original tool counter"
+    },
+    "audit_complete_clients": {
+      "observed": 383,
+      "required": 400,
+      "source": "original fixed tool full audit assertion counter"
+    },
+    "post_budget_not_observed": 1,
+    "mq_delivery": "NOT_OBSERVED"
+  },
+  "all_original_assertions_satisfied": false,
+  "performance_verdict": "FAIL_CLASS_P95",
+  "independent_conclusion": "NP_NOT_ACCEPTED",
+  "reason": [
+    "All four class P95 exceed270ms",
+    "Final task snapshots and complete success-audit postconditions did not cover all400 clients"
+  ],
+  "raw_recomputation_matches_original_class_counts_p95_minute_buckets_and_steady_errors": true,
+  "no_retry_or_successor_executed": true,
+  "cloud_access_after_completion": false,
+  "published_utc": "2026-10-30T14:55:47.986016+00:00"
+}
