@@ -11,3 +11,7 @@ Rejected first attempt: INSERT-first a2839e17 under native RC16same-key caused11
 ## Root-authorized public developer test maintenance
 
 These3 exact SQL-budget checks are backend public development tests, not frozen independent cases. Root explicitly authorized a separate test change: tasks SELECT budgets block3→2, pending UNBLOCK4→3, START3→2; task_dependencies expectations and every original semantic/rejection/audit/replay assertion remain. Additional interception checks retain original sorted scalar FOR UPDATE IDs, exact project and same main gateway. Updated original140tests all pass;4 separate negative context checks also pass. Old137/3 failure stdout/XML are retained as gzip original bytes with SHA/uncompressed lengths in ORIGINAL_FAILED_EVIDENCE.PUBLIC.json; no content cleaning. Runtime/application/workflow source SHA unchanged from DB handoff.
+
+## Native developer SQL-ledger maintenance
+
+Exact69dff6f4 product CI41109743811 static/frontend passed. Contracts contract182passed+2failed/integration100passed+2failed/fault19passed; complete coverage795passed+2failed. The only two distinct test failures are985 native developer ledger block(20,5,2)→actual(19,5,2), unblock(22,5,2)→actual(21,5,2). Coverage report combined line/branch88.90%; line threshold and all-production measurement need artifact gate verification. Root and DB owner explicitly authorize updating only the two SELECT expectations, preserving DML5/control2 and all semantic/transaction/lock assertions. No independent test changed. Native concurrency separate DB owner still pending.

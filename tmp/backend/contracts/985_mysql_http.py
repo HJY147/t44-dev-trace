@@ -920,8 +920,8 @@ def test_preflight_real_mysql_transaction_and_unchanged_sql_ledger(real_task, mo
         monkeypatch.setattr(engine, "connect", connect)
     counts = Counter(kind for kind, _ in statements)
     expected = {
-        "block": (20, 5, 2),
-        "unblock": (22, 5, 2),
+        "block": (19, 5, 2),
+        "unblock": (21, 5, 2),
         "plan": (20, 6, 2),
         "escalation": (26, 7, 6),
         "replay": (9, 0, 0),
