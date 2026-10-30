@@ -1,0 +1,54 @@
+{
+  "early": {
+    "samples": 12,
+    "seconds": 64.80792764900002,
+    "source_sha256": "41169ef083fd531c5bfdf2d21a30acabba37d3bc42896dafda52d4df0eb25800",
+    "sample_start_utc": "2026-10-30T17:31:31.551379+00:00",
+    "sample_end_utc": "2026-10-30T17:32:36.359285+00:00",
+    "cpu": {
+      "api": {
+        "mean_cores": 17.680897901966482,
+        "throttled_usec_delta": 0
+      },
+      "mysql": {
+        "mean_cores": 3.8450319897529535,
+        "throttled_usec_delta": 0
+      }
+    },
+    "mysql_io": {
+      "259:0": {
+        "wios_per_second": 3207.030490554607,
+        "wbytes_per_second": 66141233.69621648,
+        "rios_per_second": 3.055181783814609,
+        "rbytes_per_second": 68384.72021514151
+      }
+    }
+  },
+  "late": {
+    "samples": 12,
+    "seconds": 63.62113830199996,
+    "source_sha256": "0d009738b45c167458fb77f781936d427cfda23b74de45bc9605db9606fc4084",
+    "sample_start_utc": "2026-10-30T17:37:43.818156+00:00",
+    "sample_end_utc": "2026-10-30T17:38:47.439280+00:00",
+    "cpu": {
+      "api": {
+        "mean_cores": 15.13607951226689,
+        "throttled_usec_delta": 0
+      },
+      "mysql": {
+        "mean_cores": 3.3134381060480527,
+        "throttled_usec_delta": 0
+      }
+    },
+    "mysql_io": {
+      "259:0": {
+        "wios_per_second": 3199.7541294164585,
+        "wbytes_per_second": 65852226.34830314,
+        "rios_per_second": 4.463925160406511,
+        "rbytes_per_second": 73136.94982810027
+      }
+    }
+  },
+  "scope": "Two bounded neutral windows; no end-to-end causality or performance acceptance inferred",
+  "next_user_goal": "Improve real business use of all64 CPU cores; current workload/criteria unchanged, no automatic successor"
+}
