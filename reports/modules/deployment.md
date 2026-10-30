@@ -691,3 +691,6 @@ Added original-device block counters to the same bounded observer: derive major:
 
 
 2026-10-31 / ROLE-deployment-P13-STORAGE-READY-v1：用户报告PL1升级；离线构建新material06/maintenance06精确wrapper与18文件continuation。19项本地seam检查、17项observer检查通过。真实数据库岗CLI原输出揭示meb:: instrument冒号兼容性问题，已修并三组输出解析通过。未云/SSH/SUT，Linux设备链、真实PL1/readback、当前准入和正式性能均未验证。接口agents/deployment/manual13-retest/P13_RUNBOOK.md及P13-BUNDLE.PUBLIC.json。
+
+
+2026-10-31 / P13现场中断：真实APP64核、原七容器身份/索引/800IDs通过，实际MySQL卷位于nvme0n1p3→唯一40G nvme0n1，未guest读取PL。维护156解阻成功，四业务count守恒；原链进入material06后用户明确不能立即发压则停机。对自有wrapper18492 SIGINT，child退出-15、wrapper退出2，保存公开前缀；APP-ready不存在，未QA/正式发压，不证明所有worker停止；不重试不后继，无KILL或数据库signal。证据LIVE-STOP.PUBLIC.json，原件受限runtime保存。
