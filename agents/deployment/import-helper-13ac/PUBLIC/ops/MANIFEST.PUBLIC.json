@@ -1,0 +1,36 @@
+{
+  "kind": "minimal-original-import-helper-v1",
+  "original_ref": "e523bf082a95f3af70697bcf4d3a00a4cfddde8e",
+  "files": {
+    "final-image-bundle.py": {
+      "bytes": 25188,
+      "sha256": "7d6ea9d8990ef2200ac73e062ade9962035247513ad46a5554114f0596618b9e"
+    },
+    "image-bundle.py": {
+      "bytes": 18373,
+      "sha256": "0a1c2cd5bf57717ba5218ff6bb5086d6acbb60ff54713940a6da73f495a1cfcd"
+    },
+    "image-proof.py": {
+      "bytes": 18067,
+      "sha256": "47b50d0111737d2b4ff7b47ce37c46bc5d7fc208d2f3933088b8a08dab326fc0"
+    }
+  },
+  "allowed_actions": [
+    "verify",
+    "import",
+    "prove-loaded"
+  ],
+  "forbidden_actions": [
+    "build",
+    "derive",
+    "verify-cache"
+  ],
+  "not_included": [
+    "factory.py",
+    "v4/derive-profile.py",
+    "GEN",
+    "VM stop timers",
+    "product images and source manifests"
+  ],
+  "local_Docker_import_executed": false
+}
