@@ -1,0 +1,24 @@
+{
+  "reviewer": "reviewer_dry_r29b",
+  "scope": "Local temporary SSH script and pinned-config generator only",
+  "result": "PASS_LIMITED_LOCAL",
+  "checks": [
+    "9 host-pinning tests",
+    "bash -n",
+    "default direct, optional proxy",
+    "no SG/firewall/password/sshd config edits",
+    "no private-key reads"
+  ],
+  "caveat": "expiry-time blocks new authentication only; existing sessions and processes do not end automatically. README clarified.",
+  "remote_connection_or_SCP_verified": false,
+  "files": {
+    "agents/coordinator/manual-recovery/01_INSTALL_TEMP_SSH.USER_ONLY.sh": {
+      "sha256": "3fb0514905ad991c420e590817710f2e1faf198ee90e893a5f9c91668f37800b",
+      "bytes": 2745
+    },
+    "agents/coordinator/manual-recovery/pin_ssh_host.py": {
+      "sha256": "3eb2126ef754b46ae4a599e680d10f96c89d18222a0ca59c66933022780d29af",
+      "bytes": 5012
+    }
+  }
+}

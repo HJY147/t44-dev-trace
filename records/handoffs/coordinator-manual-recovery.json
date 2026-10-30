@@ -1,0 +1,31 @@
+{
+  "stage": "LOCAL_SSH_PREPARATION_REVIEWED_NOT_REMOTE_VERIFIED",
+  "user_latest_instruction": "我把网卡tun模式关闭了",
+  "default_route": "direct; both public-IP local routes en0",
+  "ECS_state": "user confirmed stopped; no further stop verification per user",
+  "remote_actions_in_this_preparation": 0,
+  "local_tests": "9 host pinning cases, bash-n and Python3.10 AST passed",
+  "limited_review": "reviewer_dry_r29b PASS; expiry only blocks new authentication, README clarified",
+  "not_completed": [
+    "SSH login",
+    "SCP",
+    "remote manual tool installation",
+    "fresh real session/inventory/packet",
+    "independent once grant",
+    "formal pressure execution"
+  ],
+  "files": {
+    "agents/coordinator/manual-recovery/pin_ssh_host.py": {
+      "sha256": "3eb2126ef754b46ae4a599e680d10f96c89d18222a0ca59c66933022780d29af",
+      "bytes": 5012
+    },
+    "agents/coordinator/manual-recovery/01_INSTALL_TEMP_SSH.USER_ONLY.sh": {
+      "sha256": "3fb0514905ad991c420e590817710f2e1faf198ee90e893a5f9c91668f37800b",
+      "bytes": 2745
+    },
+    "agents/coordinator/manual-recovery/README.md": {
+      "sha256": "b7700d531a272b1697bb22c0e2d4ef018de21a7ae675ce1a588c9cc3cc548c7b",
+      "bytes": 3893
+    }
+  }
+}
