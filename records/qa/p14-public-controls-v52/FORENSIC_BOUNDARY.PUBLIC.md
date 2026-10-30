@@ -23,4 +23,4 @@ python3 CHECK_FORENSIC_RECEIPT.py /本地/r30manualp14.failure01.forensic.753bac
 
 密文与receipt成功生成、已停止所有写者且至少一份本地下载bytes/SHA匹配、密文本地保存可持续访问后，就可让用户及时手动保留磁盘停机；无需等待P95/业务/测量raw判定通过。独立认证解密可在本地停机后继续；若下载/传输校验失败必须明确尚未回收，不能谎称证据安全。若封存/磁盘/工具hash失败，原W保留，不强行绕过hash或伪造receipt；汇报失败并区分保留云盘现场与已回收本地。
 
-本轮仅4项参数/default拒绝与静态自检通过，未调用Docker、真实Seal或任何实际服务器/结果/key；checker只做AST核验。成功归档与当前LOAD能力尚未现场验证。本PUBLIC路径不构成执行、环境身份或grant授权。
+本轮4项参数/default拒绝与静态自检通过；新增1个正向往返测试覆盖两种合成W（缺result及writer_finalized=false），使用本轮本地新生成临时key执行真实Seal编码→原verify_backup认证解密/压缩流/全部文件hash核验→逐字比较恢复文件。PUBLIC receipt checker亦在这两个合成归档上核bytes/SHA通过。原false/missing及不完整合成raw保留不变，证明归档兼容性不依赖测量完整。原verify_backup字节SHA保持382fe87d...；没有调用Docker、旧PRIVATE或任何实际服务器/key/结果。成功格式兼容已离线验证，当前LOAD能力尚未现场验证。本PUBLIC路径不构成执行、环境身份或grant授权。
