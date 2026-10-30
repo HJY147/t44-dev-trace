@@ -1,0 +1,32 @@
+{
+  "schema": "independent-tool-candidate-offline-v5",
+  "status": "FROZEN_OFFLINE_CANDIDATE_NOT_EXECUTION_READY",
+  "source_candidate": "13acb43a804e717e7485091895378511fe3d9b76",
+  "original_tool_manifest_sha256": "78a0aca6e90b61695338a332f7adb1becb5f7eebd13d0c8bd28d3f6ff4f09a05",
+  "original_runtime_sha256": "3da34780a224bb3a9462e750f1cae9af316bab3ef457d75c8e0c2f2dcd7df339",
+  "files": {
+    "runtime.py": "2b3d95088960c1a967a930f0beafa38cc48d76caa35708b5656aa11e88e4fce9",
+    "functional.py": "0e9245fc9cbc1f801907a47ec0aa8a00695358f09f5332f661fa13742c0b4b64",
+    "backup.py": "be8827eaf3b655167404c5cdbbc4ba3229848176a58f958211772f888b346bed",
+    "verify_backup.py": "382fe87da1d857a1532f86b871d07f36fdc6d13ab37d47639eccebc9d7709426",
+    "openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "test_sink_offline.py": "9a40579e1195635d9a5e63c1e3498852003dea2b43e61fab657ffe17e57724c5"
+  },
+  "scope_verified": "Only Sink replacement and response-failure metadata arguments; remainder byte-equal; functional/openapi/backup/verify unchanged",
+  "local_synthetic_logger_tests": {
+    "total": 11,
+    "passed": 11,
+    "command": "python3 private-next-tools/test_sink_offline.py"
+  },
+  "server_access": false,
+  "SUT_requests": 0,
+  "grant_issued": false,
+  "original_p13_np_unchanged": true,
+  "remaining": [
+    "new adapter/ENTRY and prepare/tool-manifest must bind new runtime; legacy interface hashes cannot be reused",
+    "stress/queue-stall/writer IO and all reserve/cipher boundary tests not yet exhaustive",
+    "independent full raw/footer acceptance validator still required",
+    "current environment and fresh identity/material/nonce/prepare/grant not present"
+  ],
+  "utc": "2026-10-30T19:13:25.985496+00:00"
+}
