@@ -1,0 +1,29 @@
+{
+  "status": "OFFLINE_PROJECTION_CHECKED_MYSQL84_DICTIONARY_VALIDATION_PENDING",
+  "issue": 47,
+  "source_original_sha256": "7f323030a0cd1f7ebede4bffa2878fbb216d1b9ebca994d594abfa3a730b3dc0",
+  "observer_sha256": "db33b133256a7c90c8d42ed04577ae089bca90af59486730299f6a1801136ef8",
+  "offline_tests_passed": 11,
+  "real_mysql84_sql_checked": false,
+  "additional_bounded_queries_per_sample": 1,
+  "docker_command_calls_per_sample_spy": 20,
+  "original_deadline_seconds": 120,
+  "original_roles_count": 7,
+  "measurement_core_changed": false,
+  "cloud_requests": 0,
+  "read_only": true,
+  "files": {
+    "deployment/cloud-reuse/manual13-observe.py": {
+      "bytes": 18448,
+      "sha256": "db33b133256a7c90c8d42ed04577ae089bca90af59486730299f6a1801136ef8"
+    },
+    "agents/deployment/manual13-retest/test_observer.py": {
+      "bytes": 8032,
+      "sha256": "39d8f4422ef590842d730f304a41600c75acfd1469121a333c54780eb692e1ae"
+    },
+    "agents/deployment/manual13-retest/observer-offline-checks.log": {
+      "bytes": 110,
+      "sha256": "4c3b3b2f85f7f81206f2731efca1a5c61f58b2f6c54d820b4003b988757b84ec"
+    }
+  }
+}

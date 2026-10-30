@@ -5,3 +5,8 @@ User instruction: 继续检查问题然后修改好，重新启动测试 / 你�
 Coordinator scope: prepare the next window offline under Issue#47, preserve consumed p12/material05/maintenance05, reserve p13/material06/maintenance06, check SSH lifetime margin before long preparation, and wait for final performance candidate source/image before changing executable identity pins. No cloud contact or benchmark; do not read independent PRIVATE.
 
 This revision adds a small local public-receipt guard using existing hostpin/report parsing. It does not create a new pipeline or relax original admission. Actual candidate-dependent wrapper work is explicitly pending.
+
+
+# ROLE-deployment-MANUAL13-OBSERVER-v1
+
+Coordinator requested read-only original-observer expansion for redo/checkpoint/autoinc and P_S waits; preserve120s total deadline, measurement core, worker/config and no-cloud boundary. Real local8.4 dictionary verification waits for exclusive DB baselines to finish.

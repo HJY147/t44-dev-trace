@@ -828,3 +828,8 @@ ROLE-deployment-MANUAL13-PREFLIGHT-v1. Imported 9d60b8ef wrapper and its16 check
 ## MANUAL13 next-window offline contract (#47)
 
 Added a local strict original-host/public-recovery-receipt check requiring3600s remaining SSH lifetime (preparation1800/formal900/recovery900), preserving original2h authorization and original900s runtime bound. Seven local tests pass. Reserved p13/material06/maintenance06; consumed paths/grants cannot be reused. Existing90b/material05 wrapper is explicitly not a material06 launcher; final source/image/tool pins wait for coordinator candidate selection. No cloud/SSH/SUT action, no PRIVATE access. Prompt ROLE-deployment-MANUAL13-RETEST-v1; evidence agents/deployment/manual13-retest/.
+
+
+## MANUAL13 bounded observer extension (#47)
+
+Copied original reviewed observer SHA7f323030a0cd1f7ebede4bffa2878fbb216d1b9ebca994d594abfa3a730b3dc0 into manual13-observe.py, retained original7 roles/120s total limit/resource projection and added available redo LSN/checkpoint/resize state, autoinc/IO global configuration, plus one optional bounded P_S wait-event numeric query per sample. Strict missing/null/permission/disabled-instrument projections are unavailable rather than zero; raw SQL/digest text/params/credentials are never selected or emitted. Eleven pure local projection/spy/deadline tests pass; Python3.10 AST parses. Real MySQL8.4 SQL/dictionary check is pending coordinator permission after the exclusive DB baseline ends, not claimed PASS. No Docker/DB/network/SUT/cloud action occurred in these checks. Prompt ROLE-deployment-MANUAL13-OBSERVER-v1.
