@@ -3888,5 +3888,27 @@
     "login_issuance_is_side_effect_even_on_later_failure": true,
     "transport": "TCP192.168.96.4:8443 original HTTPS172.21.182.245:26445 strict CA/certificate identity",
     "next": "Coordinator runs reviewed helper in new output dir; preserve material04 and separately create material05 and p12 grant"
+  },
+  "manual11_cohort_maintenance_v2": {
+    "prompt_ref": "ROLE-backend-MANUAL11-MAINTENANCE-V2-20261030-v1",
+    "status": "OFFLINE_READY_NO_CLOUD_OR_API_EXECUTION",
+    "helper": "agents/backend/manual11-maintenance/v2/cohort_maintenance.py",
+    "manifest": "agents/backend/manual11-maintenance/v2/MANIFEST.PUBLIC.json",
+    "runbook": "agents/backend/manual11-maintenance/v2/RUNBOOK.md",
+    "helper_sha256": "993f375c9c519f49e9a3d1355c23988e2d522bdbafed340f3f405b895d4a0fbb",
+    "mock_checks_passed": 10,
+    "mock_seconds": 0.302,
+    "actual_remote_checks_or_logins": 0,
+    "new_tasks": 0,
+    "target_original_transition": 400,
+    "target_original_disjoint_task_ids": 800,
+    "gateway": "existing host_runner dynamic same-owner exact shared NetworkID/originalHostPort discovery",
+    "tls": "existing strict runtime_support original origin/SNI/CA verification",
+    "on_unknown_post": "STOP; separate inspect mode reads actual audit and task; exits4 even if proven; coordinator new explicit decision required",
+    "material04": "preserved failed original",
+    "material05_generated": false,
+    "p12_prepared": false,
+    "deployment_integration": "pre-material explicit hook/CLI, no modification of deployment-owned files",
+    "original_fixed_gateway_v1": "preserved historical, superseded for execution"
   }
 }
