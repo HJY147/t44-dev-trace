@@ -1,0 +1,32 @@
+{
+  "schema": "p14-forensic-only-interface-v1",
+  "status": "OFFLINE_INTERFACE_ONLY_NOT_EXECUTION_APPROVAL",
+  "files": {
+    "SEAL_FORENSIC_P14_V52.sh": "5a981caaf625230f3f5b059cc9219b995a6cf8cece825522d62985dab94af6d1",
+    "FORENSIC_BACKUP_P14.py": "56144d91d29c7b6c970ce82783e25d06ff8b8d07efe7f180c5cffaadf79ba1a6",
+    "CHECK_FORENSIC_RECEIPT.py": "a7b4ff34d07a998a19ba22876c5ea91bb1e264be5e2394abb448b53a030dbff4",
+    "FORENSIC_BOUNDARY.PUBLIC.md": "b56ba4cda6ff6de824faf7408e84746c7fe85b5b17886caa52616a466031c68f"
+  },
+  "parameter_default_rejection_tests_passed": 4,
+  "test_source_sha256": "e52cd83917e136190990c65e1d0af297ecc818ff364aede496b68a763525a062",
+  "measurement_gate_changed": false,
+  "result_modified": false,
+  "actual_forensic_seal_executed": false,
+  "old_private_key_or_results_read": false,
+  "cloud_docker_SUT_access": false,
+  "positive_roundtrip_test": {
+    "tests": 1,
+    "synthetic_scenarios": [
+      "missing_result",
+      "writer_finalized_false"
+    ],
+    "actual_encode_original_verify_backup_full_hash_roundtrip_pass": true,
+    "recovered_files_byte_equal": true,
+    "source_files_unchanged": true,
+    "public_receipt_checker_pass": true,
+    "original_verify_backup_sha256": "382fe87da1d857a1532f86b871d07f36fdc6d13ab37d47639eccebc9d7709426",
+    "test_source_sha256": "7b316e4a5b72299a206ef791421488fc8399a7ebb823f5b8950076d7e30bd53b",
+    "key_scope": "fresh local temporary synthetic keys only",
+    "actual_runtime_or_server_evidence_used": false
+  }
+}

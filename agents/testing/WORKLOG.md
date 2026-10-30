@@ -68,3 +68,5 @@
 按新授权补齐可运输密文包及PUBLIC INSTALL：新backup/transport key独立产生，旧LOAD公钥DER指纹核实，仅公钥读取；8项本地安装/运输测试通过；具体PUBLIC目录records/qa/next-install-v52.PUBLIC。未执行Docker/真实安装/云/SSH/SUT或allow=true。
 
 p14 PUBLIC控制补充：OBSERVE原字节复用；旧p12 SEAL/issuer不得复用，已新发SEAL_P14_V52.sh与ISSUE_ONCE_P14.py及未批准decision模板，见records/qa/p14-public-controls-v52。6项纯本地控制自检通过，未生成任何实际grant，未运行Docker/封存/SUT。
+
+新增FORENSIC独立保存失败现场路径，不要求result或writer完整，不改原测量门禁。4项默认拒绝及1项包含缺result/false finalized两场景的真实合成编码→原verify_backup认证解密/全文件hash往返通过，恢复文件逐字相同，PUBLIC receipt核对通过。原工具/key hash门禁不变，新helper仅forensic-only流式封存，当前无Docker/云/实际key或grant。PUBLIC接口：records/qa/p14-public-controls-v52/FORENSIC_BOUNDARY.PUBLIC.md及FORENSIC_DELIVERY.PUBLIC.json。
