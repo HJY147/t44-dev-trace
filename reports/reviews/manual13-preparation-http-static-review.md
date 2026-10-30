@@ -45,3 +45,17 @@
 对 `manual13-ssh-preparation` worktree 的 `deployment/cloud-reuse/ssh-reconnect/update_ssh_addresses.py` 做代码审核，实测 SHA256 `fd0fafdd650fb9a30674879135e7220782cdf97202bd79eb8242890d72436a18` 与同目录 MANIFEST.PUBLIC.json 一致。该 worktree HEAD 为 `5bc5762a9c78ea755611771837827d5898993da9`；未读取 identity、known_hosts 或任何凭据内容，未执行 SSH 或网络连接。
 
 结论 `PASS_STATIC_LOCAL_CONFIG_ONLY`：脚本仅读取原两实例的已信任 pins，校验 Ed25519 wire；identity 只 stat、验证常规文件和 owner-only 权限，不读取私钥字节。两地址必须是互异公网IPv4，输出目录为新建独占且权限0700。新配置使用原实例 HostKeyAlias、StrictHostKeyChecking=yes、UpdateHostKeys=no、限定新 known_hosts，关闭代理/转发/agent/连接复用，保留原配置和 pins。未发现本次本地配置范围内的阻断缺陷。该结论不证明临时授权仍有效、远端实例在线、当前远端 host identity 或实际 SSH 成功；总协调报告的8项测试不作为本审核执行的测试。
+
+## 修复候选复核（保留上述旧包拒绝结论）
+
+新 helper 实测 SHA256 `be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a`，读取位置 `manual13-backend-preparation/agents/backend/manual11-maintenance/v2/cohort_maintenance.py`。新 wrapper 提交 `51b35e9cf34f591e834b4d175d0c56b8763c8ae3`，实测 SHA256 `06c2f08e172b080a009831676003193413c25dc7d07cd87d5bd41d2a621bd08f`，读取位置 `manual13-ssh-preparation/deployment/cloud-reuse/manual12-resume-prepare.py`；wrapper 正确 pin 上述新 helper。
+
+结论 `PASS_STATIC_PREPARATION_REVIEW_NOT_EXECUTED`，仅绑定这两个精确文件摘要。上述三个旧缺陷在此候选配对中已消除，未发现新的静态阻断问题：
+
+* helper 在任何 UNBLOCK 前真实登录三人类账号，核其原主体及 exact40 项目/逐项目角色，核 developer 当前有效成员、400原空依赖、800原任务范围快照、400状态/归属/版本/到期时间、全部原升级事件绑定、冻结规则内容及统一版本，以及当前至+900秒的稳定升级窗口。
+* wrapper 在调用 helper 前以只读参数化SQL查询原service账号，核原ID/active/namespace；五张业务表总数映射逐项与旧packet一致。原index及800IDs门禁继续保留。原容器启动/停worker/token轮换/scan/CMS链及限制未变。
+* POST200返回任务解析、scope/owner/version/state/audit_id校验失败统一转UNKNOWN；外层所有未预期异常仍UNKNOWN。原审计inspect和禁止自动重试未被移除。后验readback若拒绝仍不能被解读为此前零写入。
+
+本审核另实际执行纯函数检查：新helper FROZEN_RULES 与90b真实JSON资源语义相等；8个升级边界（-86401、-86400、-1、0、1、86399、86400、86401秒）均符合90b解释器；新wrapper接受合法counts/service，拒绝五个业务表各+1漂移，以及service错ID/inactive/错namespace三种情况。未启动SUT、未执行HTTP/云/DB/systemctl/SSH。总协调和后端另行执行的18项部署/16项本地产品HTTP验证不计为本审核亲自执行，其结果应以各岗精确证据为准。
+
+该限定静态PASS可以支持重新封装本地准备包，不能替代真实APP运行、用户开机授权、正式准入或独立验收。升级窗口及transition horizon按检查当时判定，材料生成时继续原有最终时钟重验；链路耗时/未来真实依赖故障可能产生安全拒绝。400/60/600不变，无benchmark授权。
