@@ -1,0 +1,37 @@
+{
+  "status": "CANDIDATE_REJECTED_NATIVE_MYSQL_RC_DEADLOCK",
+  "candidate_runtime_sha256": "347efe971362ec3ae6d145bedc9a61ab6400c498499642c2bb4c66ce5c51a86b",
+  "baseline_runtime_sha256": "a8b6a6711f2a88249f760e05badd80c911ead6e25824e9d4400d8b3b1844a239",
+  "candidate_samekey": {
+    "IDEMPOTENCY_IN_PROGRESS": 4,
+    "PersistenceUnavailable": 11,
+    "claimed": 1
+  },
+  "baseline_samekey": {
+    "IDEMPOTENCY_IN_PROGRESS": 15,
+    "claimed": 1
+  },
+  "candidate_deadlocks": 11,
+  "baseline_checks": {
+    "same_key_16_one_owner": true,
+    "completed_replay": true,
+    "hash_conflict": true,
+    "different_keys_same_prefix_16": true,
+    "expired_lease_owner_fencing": true,
+    "insert_transaction_rollback": true,
+    "revocation_before_claim": true,
+    "expired_before_claim": true,
+    "service_scope_claim": true,
+    "revoked_human_before_service_scope": true
+  },
+  "owned_servers_shutdown": [
+    0,
+    0
+  ],
+  "sockets_absent": [
+    true,
+    true
+  ],
+  "cloud_requests": 0,
+  "performance_acceptance": false
+}

@@ -1,0 +1,32 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {
+    "same_key_16_one_owner": true,
+    "completed_replay": true,
+    "hash_conflict": true,
+    "different_keys_same_prefix_16": true,
+    "expired_lease_owner_fencing": true,
+    "insert_transaction_rollback": true,
+    "revocation_before_claim": true,
+    "expired_before_claim": true,
+    "service_scope_claim": true,
+    "revoked_human_before_service_scope": true
+  },
+  "runtime_sha256": "a8b6a6711f2a88249f760e05badd80c911ead6e25824e9d4400d8b3b1844a239",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "same_key_outcomes": {
+    "IDEMPOTENCY_IN_PROGRESS": 15,
+    "claimed": 1
+  },
+  "driver_errors": [],
+  "status": "NATIVE_MYSQL_RC_CLAIM_CORRECTNESS_PASS",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}
