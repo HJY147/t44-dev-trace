@@ -11,3 +11,5 @@
 构建41112638628实际success，artifact13004032596已完整下载到private目录（下载约4分钟，无云等待）。原final适配器verify exit0，VERIFIED_NOT_LOADED；独立逐文件核全部94个context文件与准确13ac Git blob的SHA/bytes一致，CI原runtime证明60个文件。manifest SHA见VERIFIED.PUBLIC.json。未保留官方zip原件，官方zip digest仅API元数据，不冒本地zip校验；解压各文件及镜像tar的bytes/SHA均实际校验。无本机Dockerload/云导入/发压。
 
 追加root授权：提供只读locked-task-plan.py，精确七角色身份/资源与原config SHA门禁，输出新/回滚overlay及显式apply命令。完整Env/Cmd和worker/pool一致性仍由root现场preflight，未伪称已验证。只做静态/参数拒绝，无Docker调用或线上变更。
+
+静态补查：PATH无ruff（127），改用已存在database-scale-r29-venv的ruff；首轮I001/F401（import排序/未使用os）真实失败，自动修正后format及check通过，diff --check通过。无依赖安装。
