@@ -519,3 +519,6 @@ SRS和概设/详设重组，7个Mermaid块对应边界/用例/状态/进程/核�
 
 
 2026-10-31 / ROLE-documentation-SCOPE-AUDIT-v1：离线复核原题/提交要求/十一岗档案，最新FINAL90b四Word精确hash仍符但当前MD已漂移，未纳p13完整状态。固定规模5818超718、研究本人正文及12/3/5未证实，独立p13 NP，不把performance调优当全作业。详见agents/documentation/project-scope-audit-20261031/AUDIT.md。无云访问/产品修改/私人测试读取。
+
+
+2026-10-31 / ROLE-documentation-CURRENT-REQ-DESIGN-20261031：用户授权两独立主文档重版，真实基线66cb保存在history/CURRENT-20261031；需规和设计正文已实质扩充并按审查改写current HOW、去旧拟实现段/通用复制。首轮图经审查否决，已受限归档，不进入当前交付；等frontend新图。仅两文档A4增量导出器已准备，未运行operation marker、未author DOCX、未渲染，不宣称可交。见current-req-design/DRAFT_CHANGELOG.PUBLIC.json。未改产品/无云。
