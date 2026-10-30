@@ -153,28 +153,27 @@ class Runtime:
             "idempotency_key": call.key,
         }
         authenticate(g, call, lock="share")
-        existing = g.rows("idempotency_requests", scope, lock="update", limit=1)
-        if not existing:
-            try:
-                with g.savepoint():
-                    identifier = g.insert(
-                        "idempotency_requests",
-                        {
-                            **scope,
-                            "request_hash": digest,
-                            "status": 1,
-                            "owner_token": secrets.token_bytes(16),
-                            "lease_until": call.clock
-                            + timedelta(seconds=self.settings.idempotency_lease_seconds),
-                            "created_at": call.clock,
-                        },
-                    )
-                call.idem = g.get("idempotency_requests", identifier)
-                return None
-            except PersistenceIntegrityError as error:
-                if error.kind != "duplicate":
-                    raise
-                existing = g.rows("idempotency_requests", scope, lock="update", limit=1)
+        # The unique scope arbitrates new claims without an empty-range locking read.
+        try:
+            with g.savepoint():
+                identifier = g.insert(
+                    "idempotency_requests",
+                    {
+                        **scope,
+                        "request_hash": digest,
+                        "status": 1,
+                        "owner_token": secrets.token_bytes(16),
+                        "lease_until": call.clock
+                        + timedelta(seconds=self.settings.idempotency_lease_seconds),
+                        "created_at": call.clock,
+                    },
+                )
+            call.idem = g.get("idempotency_requests", identifier)
+            return None
+        except PersistenceIntegrityError as error:
+            if error.kind != "duplicate":
+                raise
+            existing = g.rows("idempotency_requests", scope, lock="update", limit=1)
         row = existing[0]
         require(row["request_hash"] == digest, "IDEMPOTENCY_CONTENT_CONFLICT")
         if row["status"] == 2:

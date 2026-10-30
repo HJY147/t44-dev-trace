@@ -1,0 +1,1 @@
+ROLE-backend-CLAIM-INSERT-FIRST-20261031-v1: User asks inspect repository code and fix before new pressure run. Root selects minimal source90b backend investigation, no cloud/startup/pressure or database-layer edits. Preserve authentication/durability/idempotency/lease/fencing/audit and original test assertions.
