@@ -3064,5 +3064,24 @@
     "cloud_actions_performed": false,
     "push_performed": false,
     "prompt_id": "ROLE-deployment-USER-EXEC-P08-v1"
+  },
+  "complete_user_p08_handoff": {
+    "status": "LOCAL_REVIEWABLE_FILES_ONLY_NOT_CLOUD_REHEARSAL",
+    "files_manifest": "agents/deployment/final-window/P08-user-handoff-manifest.PUBLIC.json",
+    "instructions": "agents/deployment/final-window/P08-USER-COMMAND-GENERATION.PUBLIC.md",
+    "APP_offline_paste_bytes": 8185,
+    "LOAD_offline_paste_bytes": 6685,
+    "dynamic_inputs": [
+      "actual APP and LOAD public facts",
+      "new cap50 fee approval",
+      "verified platform protection and current quote",
+      "actual new P08 bootstrap and import receipt",
+      "independent QA target approval",
+      "actual default-false prepare receipt and separately approved allow-true grant"
+    ],
+    "local_test": "tests/check_user_handoff_local.py synthetic boundaries passed; no generated command executed",
+    "cloud_Docker_HTTP_QA_executed": false,
+    "push_performed": false,
+    "prompt_id": "ROLE-deployment-COMPLETE-USER-HANDOFF-v1"
   }
 }

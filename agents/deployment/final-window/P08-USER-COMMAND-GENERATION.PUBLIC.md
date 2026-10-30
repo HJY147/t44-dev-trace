@@ -1,0 +1,39 @@
+# P08完整用户命令交付（本地生成，不代执行）
+
+所有云动作均由用户亲自执行；下列`python3`生成器命令在root本地运行，只写新的粘贴文件。动态输入缺失、原SHA不符、超期或未批准时拒绝生成；不能把本地校对通过写成云端演练或性能达标。
+
+1. 用户亲自开原两机前，root先核实际余额、原实例及平台侧定时经济停机/保盘保护。用户分别粘贴APP的`P08-USER-APP-PREPARE-v2.INLINE.PUBLIC.sh`（8185B）和LOAD的`P08-USER-LOAD-FACTS.INLINE.PUBLIC.sh`（6685B）。两者均离线自包含，不依赖新GitHub下载。LOAD只读取公开元数据和PUBLIC工具SHA，以`network none`原镜像做限制探针，不执行QA、不读PRIVATE/密钥；它可重复生成新的事实回执，不改旧回执时间。
+
+2. root保存用户原PUBLIC输出，自动校对：
+
+```sh
+python3 P08-FACTS-CHECK.PUBLIC.py --app ACTUAL_APP_OUTPUT.json --load ACTUAL_LOAD_OUTPUT.json
+```
+
+APP v2新增实际私网IP，旧8100B脚本输出缺此字段会被校对拒绝。校对核真实boot/UTC/NTP、双机固定私网IP、source346/90b manifests、镜像身份、8CPU/8GiB/PID2048/nofile4096与无活动QA；freshLOAD超过120秒时显示不能准入，用户须重取，不能retime。
+
+3. root只根据本次现场事实填写新费用原件和`P08-PLATFORM-PROOF.TEMPLATE.PUBLIC.json`，复核后才分别置批准字段。新费用cap50、计价起点取本次实际恢复观察，不复用昨晚起点；原历史boot仅审计。平台证明要有原两实例ID、相同停机截止和已核单价，不是guest关机说明。生成用户APP首次freeze粘贴文件：
+
+```sh
+python3 P08-USER-COMMANDS.PUBLIC.py freeze --app-facts APP.json --load-facts LOAD.json --fee NEW_FEE.json --platform-proof VERIFIED_PLATFORM.json --root-reviewed-facts --output NEW_APP_FREEZE.sh
+```
+
+用户执行该文件才会异步开始准备；生成器本身不启动。它包含费用/就绪原字节，LOAD观察时间保持原值，APP仍会实查≤120秒与35分钟外余量。S10/E23/G25/C30、400/60/600/780及原门禁保持。
+
+4. 与新phase无关的QA工具资料提前核完。参考`P08-QA-PUBLIC-PINS.TEMPLATE.PUBLIC.json`，逐个与新LOAD事实和独立QA公开发布件核对，不能默认模板路径/校验和在远端存在；初始`root_reviewed=false`。LOAD第一条不读取公钥封装的transport-key文件；后续获准的原INSTALL/790才会使用既有LOAD密钥路径，密钥不出机。用户给回新APP bootstrap、原import receipt，独立QA提供新target及其批准原件后，root生成用户LOAD准备文件：
+
+```sh
+python3 P08-USER-COMMANDS.PUBLIC.py load-prepare --load-facts LOAD.json --bootstrap ORIGINAL_BOOTSTRAP.json --qa-target NEW_TARGET.json --qa-approval INDEPENDENT_APPROVAL.json --backend-import-receipt ORIGINAL_IMPORT.json --qa-public-pins REVIEWED_PINS.json --root-reviewed-facts --output NEW_LOAD_PREPARE.sh
+```
+
+该命令只生成本地文件。用户执行后新建独立`QA753P08`，仅复制精确PUBLIC原件，调用原INSTALL、原790解密/五件提取和原ENTRY prepare；不发SUT请求，不创建allow-true grant。已有workspace/transfer拒绝重放，失败前缀保留。源90b的两份manifest、原service同字节root副本修正均保留。
+
+5. 用户发回`PREPARED_DEFAULT_FALSE`公开结果；root/独立QA审定另给完整allow-true grant，生成用户唯一arm文件：
+
+```sh
+python3 P08-USER-COMMANDS.PUBLIC.py load-arm --load-facts LOAD.json --grant INDEPENDENT_ALLOW_TRUE_GRANT.json --prepare-receipt USER_PREPARE_OUTPUT.json --root-reviewed-facts --output NEW_LOAD_ARM.sh
+```
+
+用户须在S−30前执行，脚本再次核时钟/入口/grant SHA，单次systemd定时S+1调用原ENTRY。执行器只接受S+1≤真实now<S+20；迟到拒绝、无重试、无继任轮。不把尚未发生的动作写成成功。
+
+**已执行的本地检查**：运行`python3 tests/check_user_handoff_local.py`（从本目录对应路径），日志见`P08-local-user-boundaries.PUBLIC.log`。使用明确标记的合成事实，验证120/120.001秒新鲜度、NTP/IP/镜像/内存/活动QA负例、过期费用起点和未核平台保护拒绝、QA未批准/PRIVATE工具路径/allow-false拒绝、S−29.999不能arm、S+0.999/1/19.999/20边界（exec spy）。三类生成粘贴均核Python3.10语法且≤16KiB。没有执行任何生成的云命令、Docker探针、HTTP或QA；完整两机流程仍未远端演练。
