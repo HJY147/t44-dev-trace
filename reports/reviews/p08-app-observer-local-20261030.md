@@ -1,0 +1,9 @@
+# P08 urgent read-only user APP observer
+
+Delivered immediately to root before administrative recording. Artifact agents/reviewer/tools/P08-USER-APP-OBSERVE.INLINE.PUBLIC.sh is4947B/SHA7a7e59981bfdd1b694a6943cd772b22f0fe4d4ccb1b332d8c748bd2a0289a676. bash-n0, Python3.10 AST pass. Static Docker verbs only ps/inspect/stats/top. One pure local PUBLIC collector fixture preserved original whitespace/bytes through zlib/base64 and SHA and rejected an outside-root path; no Docker, cloud, SQL or QA invoked here.
+
+Root supplies current T0=02:06:50Z/S02:16:50Z/E02:29:50Z and packet expectation02:12:56Z. Script observes actual target project t44-cloud-r30finalp08-p roles, State/Image, CPU/memory limits/usage/network, other T44 running, and API configured workers/observed spawn workers. API process argv is classified in memory and never returned; no Env or credentials output. Missing or transient resource probes are labeled, not converted to success. No service change, HTTP or QA command.
+
+Collects existing P08 PUBLIC timeplan, preparation, LOAD bootstrap, and its preparation-referenced public backend import receipt (or exact public packet-receipt candidate), each original SHA/size/zlib-base64. No PRIVATE sessions/accounts read; no SQL. Only counts already present in PUBLIC preparation may be reported. Missing bootstrap is explicit and this read-only observation may be user-repeated; no retime/replay of measurement is implied. Root should decode original bytes and verify SHA, never reserialize bootstrap/import originals before next tools.
+
+Actual role/resources/files remain unobserved by reviewer until user executes and returns facts; no readiness, grant or acceptance claim. Root/user retain all cloud execution control. Evidence tmp/751_reviewer_final_window/p08-app-observer-local.json.

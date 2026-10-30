@@ -730,3 +730,7 @@ Prepared5099B/8a5eeca5 helper, Python3.10 AST only, no execution/cloud/private c
 ### P08 user command bounded review (2026-10-30)
 
 Owner1671457: APP8185/a4f0, LOAD6777/28da, generator e1f90 exact Git bytes,12-entry ae157 manifest valid. Two initial user-facts commands locally admissible, no new P1; no cloud/root execution. Syntax/blob hashes/actual90b six files and real manifest guard negative cases checked. P-only INSTALL does not require external FENTRY at runtime; package consistency separate. One P2 later arm accepts eight-field-truncated grant, while original PUBLIC adapter exact equality rejects; full public-grant positive3543B passed syntax. Root+QA full grant review before arm or owner local check; not a BOOT/facts blocker. Report reports/reviews/p08-user-execution-local-20261030.md.
+
+### P08 urgent user APP observer (2026-10-30)
+
+Delivered4947B/7a7e5998 script immediately for user-only read observation. bash0/AST3.10/static ps-inspect-stats-top only; pure local collector raw-byte roundtrip and outside-root rejection checked. No cloud/Docker/SQL/QA. Collect four existingPUBLIC originals plus7role/resource/APIworker facts; no private sessions/actors or SQL. Report reports/reviews/p08-app-observer-local-20261030.md.

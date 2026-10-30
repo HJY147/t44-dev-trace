@@ -4764,5 +4764,23 @@
     "two_initial_fact_commands": "LIMITED_LOCAL_ADMISSIBLE_USER_EXECUTES",
     "cloud_or_QA_PRIVATE_access": false,
     "report": "reports/reviews/p08-user-execution-local-20261030.md"
+  },
+  "p08_user_APP_observer": {
+    "script_bytes": 4947,
+    "script_sha256": "7a7e59981bfdd1b694a6943cd772b22f0fe4d4ccb1b332d8c748bd2a0289a676",
+    "python310_ast": true,
+    "bash_n": 0,
+    "docker_verbs": [
+      "inspect",
+      "ps",
+      "stats",
+      "top"
+    ],
+    "PUBLIC_original_bytes_roundtrip": true,
+    "outside_root_rejected": true,
+    "script_cloud_Docker_SQL_or_QA_execution": false,
+    "script": "agents/reviewer/tools/P08-USER-APP-OBSERVE.INLINE.PUBLIC.sh",
+    "report": "reports/reviews/p08-app-observer-local-20261030.md",
+    "actual_runtime_observed_by_reviewer": false
   }
 }
