@@ -622,7 +622,7 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 
 本轮仍为同步FastAPI与SQLAlchemy/PyMySQL、MySQL、RabbitMQ、APScheduler的单体分层实现。前端、API、consumer和scheduler可分进程部署，但不把业务拆成服务集群。Python方案与Java Spring方案的性能/成本/维护维度比较见architecture.md；框架选择不是实测速度结论，事务和角色边界比语言口号更关键。
 
-当前已采用分页关系批读、冻结契约validator复用、保守历史理由投影与通知原子批写；它们须保留读集、错误优先级和回滚语义。2026-10-31的INSERT-first幂等claim候选实际实现后，在真实MySQL 8.4 READ COMMITTED、16并发同key验证中发生11个1213死锁，已拒绝采用；原90b基线对照无该死锁。第二候选a59a90a1仅在同一main UoW局部复用已X锁target row，原claim保持不变；目前原140项与4项负向检查及Ruff通过，真实RC复核和审核尚未完成。局部SQL计数减少不等性能结果，两候选均不是当前已部署基线，也未证明P95改善。全局移除pool rollback方案曾被真实反例否决，不作为建议。
+当前已采用分页关系批读、冻结契约validator复用、保守历史理由投影与通知原子批写；它们须保留读集、错误优先级和回滚语义。2026-10-31的INSERT-first幂等claim候选实际实现后，在真实MySQL 8.4 READ COMMITTED、16并发同key验证中发生11个1213死锁，已拒绝采用；原90b基线对照无该死锁。第二候选a59a90a1仅在同一main UoW局部复用已X锁target row，原claim保持不变；候选阶段原140项与4项负向检查及Ruff通过；数据库岗在542b5784发布真实READ COMMITTED开发正确性通过，其native脚本只验证隔离事务层，不等HTTP或性能。完整CI曾因两项旧SELECT预算不符而失败，原失败保留；DB owner批准13acb43a只更新相应预算后重跑，本文此截止仍待完整CI、集成和性能验证。局部SQL计数减少不等性能结果，两候选均不是当前已部署基线，也未证明P95改善。全局移除pool rollback方案曾被真实反例否决，不作为建议。
 
 当前开发CI797/89通过且行覆盖90.23%/93.33%；p13独立NP，四P95约1011–1096ms，原raw prefix完整性和后置断言不足。不得把吞吐达标或400核心窗完整当整体验收。数据库盘PL1为用户控制台报告，guest只核MySQL卷到唯一40G盘映射；环境变更不能写成产品源码已修复。
 
