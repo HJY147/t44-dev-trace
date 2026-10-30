@@ -546,3 +546,5 @@ future运行时边界已明确：APP-only actualbinding官方backend8e，edge/UI
 2026-10-31 / ROLE-backend-MATERIAL07-20261031-v1: unchanged backend07 synthetic authorization800/new-output checks pass. Interrupted06 effects and scanner gate analyzed; scan proof equivalence is only proposal awaiting review, not adopted. No cloud/SUT. See agents/backend/material07-ready/INTERFACE.md.
 
 2026-10-31 / ROLE-backend-P13-ALGORITHM-20261031-v1: offline source90b candidate analysis only; unique-first idempotency claim and same-UoW locked-row reuse. Not implemented or measured; must not delay shutdown. See agents/backend/p13-algorithm-analysis/DESIGN.md.
+
+2026-10-31 / ROLE-backend-DOC-FACTS-V12-v1: supplied exactsource90b function/state/transaction/scanner/MQ/complexity factpack for requirements and design authoring. Analysis only, no product change, cloud call or new test. See agents/backend/doc-facts-v12/FACTS.md and SOURCE_SHA.PUBLIC.json.
