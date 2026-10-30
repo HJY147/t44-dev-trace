@@ -1,0 +1,126 @@
+{
+  "containers": [
+    {
+      "id": "299de739c929159b31d3d916d7ad6bac7532d7a45541242ba5b2fd0f07939271",
+      "image_id": "sha256:8e7fed199fb103a9946a14149a7f248efac0fb8655c4ed30b9167b8455ef26a3",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 1073741824,
+        "MemorySwap": 2147483648,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-scheduler-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "scheduler",
+      "user": "10001:10001"
+    },
+    {
+      "id": "855882b40173e31083a95e06eca62da94a57a8a765d17df3c74709ea21f010bf",
+      "image_id": "sha256:ffd136ccde8154eff64f7ceeb3ba67a1fcb5fe2339eb37ff2f28cb6af502cce8",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 268435456,
+        "MemorySwap": 536870912,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-tls-gateway-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "tls-gateway",
+      "user": "101:101"
+    },
+    {
+      "id": "188dd16f10a8b2956a9a61f0ec119c523e678a8f92f14a4ff6671dc3c60d689e",
+      "image_id": "sha256:642c21790ebcef63df76c37767272e9ce0a698f458bd753e7601e9591a468e99",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 268435456,
+        "MemorySwap": 536870912,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-web-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "web",
+      "user": "nginx"
+    },
+    {
+      "id": "a8b343ad47b48ff736a58a01cf3e3330d2f2fc1d23e7a5bc224dbfefd8fc16ac",
+      "image_id": "sha256:8e7fed199fb103a9946a14149a7f248efac0fb8655c4ed30b9167b8455ef26a3",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 10737418240,
+        "MemorySwap": 21474836480,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-api-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "api",
+      "user": "10001:10001"
+    },
+    {
+      "id": "9df0849304df9bece5e4c00aec5317189f48eb6cb946458ff1cdc427eceb1506",
+      "image_id": "sha256:8e7fed199fb103a9946a14149a7f248efac0fb8655c4ed30b9167b8455ef26a3",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 1073741824,
+        "MemorySwap": 2147483648,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-consumer-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "consumer",
+      "user": "10001:10001"
+    },
+    {
+      "id": "97918f928d25ae8ad235337bab3d9c547ac1836c92942e97d07fd510b60f711e",
+      "image_id": "sha256:c28902361a33b5bb10be304eaea11e07dda484715dcc8a08477351c79a0646f9",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 2147483648,
+        "MemorySwap": 4294967296,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-rabbitmq-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "rabbitmq",
+      "user": ""
+    },
+    {
+      "id": "ecb591df0b96f4ab774225b478f26fbd6652d16ef57bc277b54600e8e830cc9e",
+      "image_id": "sha256:b8d06da71f6a65cce2ea38fce20cc0ce67bc985a84bc191d0544c2e948722625",
+      "limits": {
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "Memory": 12884901888,
+        "MemorySwap": 25769803776,
+        "NanoCpus": 0,
+        "PidsLimit": null,
+        "Ulimits": null
+      },
+      "name": "/t44-cloud-r30finalp09-p-mysql-1",
+      "project": "t44-cloud-r30finalp09-p",
+      "role": "mysql",
+      "user": ""
+    }
+  ],
+  "kind": "EXACT_EXISTING_P09_CONTAINER_RESUME_IDENTITIES",
+  "observation_sha256": "0a63aaa99a44ba9538c41a9c5f2f9c212f58ba4449aa27aca496728a599c9041",
+  "project": "t44-cloud-r30finalp09-p"
+}

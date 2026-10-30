@@ -8,14 +8,27 @@
   },
   "cloud_or_SSH_executed": false,
   "does_not_modify_QA_package_or90b": true,
+  "existing_P09_resume": {
+    "backend_service_and_scheduler_token_refresh": "external helper must actually complete between infra and workers",
+    "cloud_or_Docker_executed": false,
+    "scope": "docker start only original exact7 IDs/config/image/resource pins"
+  },
   "files": {
     "agents/deployment/manual-handoff/CMS-SCP.PUBLIC.md": {
       "bytes": 3945,
       "sha256": "e4a1653af972338df93df8e180167f98212e2f9cc77d6f780ee575b2e1778740"
     },
+    "agents/deployment/manual-handoff/P09-existing-containers.PUBLIC.json": {
+      "bytes": 4010,
+      "sha256": "a5d5fe7a71064bff89b5bded39fdcdfeb7315b7879df8b2ef57e23c2a049230e"
+    },
     "agents/deployment/manual-handoff/README.PUBLIC.md": {
       "bytes": 5249,
       "sha256": "0dde7e80cff526fabcbdd01f0921e04438b39ae1c2e0659c6506762b861f1e20"
+    },
+    "agents/deployment/manual-handoff/RESUME-P09.PUBLIC.md": {
+      "bytes": 3079,
+      "sha256": "09f9c02ff21a2b48b5cf08ba092e1c2c4684f46390386412b1210292660c095b"
     },
     "agents/deployment/manual-handoff/build_user_transport.py": {
       "bytes": 3508,
@@ -29,6 +42,10 @@
       "bytes": 3434,
       "sha256": "c3858af5174b48bec06697711bb6e4cb71e6cfa17d2371fba484a96240c33122"
     },
+    "agents/deployment/manual-handoff/resume_existing_p09.py": {
+      "bytes": 4686,
+      "sha256": "6e805e1d653a65c77c6763b08a45253c7212b98c90b0fc4d25d0b7460a618962"
+    },
     "tmp/748_manual_transport/cms-validation.PUBLIC.log": {
       "bytes": 526,
       "sha256": "8893c975dc0dded7c71afce2bc9ef06386589c5556d0f66ea5544b2090ec869b"
@@ -37,6 +54,10 @@
       "bytes": 4153,
       "sha256": "60fe33efadaea0861b444ede9124759578bd3f652aa3b649e78e190254704eb5"
     },
+    "tmp/748_manual_transport/resume-validation.PUBLIC.log": {
+      "bytes": 400,
+      "sha256": "e1e9fadfe6e913d92e92a4f0c371bba07b5fc49690a3a13322f2162eefa8135c"
+    },
     "tmp/748_manual_transport/test_cms_five.py": {
       "bytes": 3314,
       "sha256": "e56a6c2d5d67cad4aa7ea655592f38230df109c5bc75c1e2f6725f29137f040d"
@@ -44,6 +65,10 @@
     "tmp/748_manual_transport/test_public_transport.py": {
       "bytes": 4581,
       "sha256": "bd88808d02232b96f4926be2e204bb31e25c52a464bf6a75184cc1cd6b89735e"
+    },
+    "tmp/748_manual_transport/test_resume_existing_p09.py": {
+      "bytes": 2479,
+      "sha256": "821001c0463ddd0261553e87290a53ffb322b045f64e72bf32f545ad9a1f44f8"
     }
   },
   "old790_expired_cost_policy_seam_unresolved_without_existing_opened_five": "Optional new user-authorized CMS host-five transport bypasses old790 without modifying old timestamps; local only, not remote verified",
