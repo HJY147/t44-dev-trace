@@ -131,11 +131,39 @@ def maintenance_endpoint(args, auth, old):
             'benchmark_connect_ip_unchanged': old['environment']['connect_ip']}
 
 
+def validate_import_observation(auth, receipt_path, observation_path, *, remote_path=None):
+    """APP uses actual canonical path/stat; local copies need explicit remote provenance."""
+    receipt_path, observation_path = Path(receipt_path), Path(observation_path)
+    raw = read(receipt_path)
+    receipt, observed = json.loads(raw), json.loads(read(observation_path))
+    actual = str(receipt_path.resolve(strict=True))
+    declared = actual if remote_path is None else remote_path
+    if not isinstance(declared, str) or not declared.startswith('/root/') or str(Path(declared)) != declared or '..' in Path(declared).parts:
+        raise ValueError('CANONICAL_REMOTE_IMPORT_PATH_REQUIRED')
+    ref = auth['loaded_receipt_reference']
+    if not (observed.get('kind') == 'actual-APP-import-file-observation-v1'
+            and declared == ref['original_path'] == observed['receipt_path']
+            and hashlib.sha256(raw).hexdigest() == ref['sha256'] == observed['receipt_sha256']
+            and len(raw) == observed['receipt_bytes']
+            and ref['observed_at'] == observed['observed_utc'] == receipt['observed_utc']
+            and observed['receipt_uid'] == 0 and observed['receipt_mode'] == 0o600
+            and type(observed['receipt_mtime_ns']) is int and observed['receipt_mtime_ns'] > 0):
+        raise ValueError('ORIGINAL_IMPORT_OBSERVATION_BINDING_REQUIRED')
+    if remote_path is None:
+        st = receipt_path.stat()
+        if (receipt_path.is_symlink() or actual != str(receipt_path)
+                or (st.st_uid, st.st_mode & 0o777, st.st_mtime_ns, st.st_size) !=
+                (observed['receipt_uid'], observed['receipt_mode'], observed['receipt_mtime_ns'], observed['receipt_bytes'])):
+            raise ValueError('ACTUAL_HOST_IMPORT_STAT_REQUIRED')
+    return observed
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['old-packet', 'accounts', 'authorization', 'ca', 'source-manifest',
                  'bundle-manifest', 'import-receipt', 'output']:
         parser.add_argument('--' + name, required=True, type=Path)
+    parser.add_argument('--import-observation', required=True, type=Path)
     parser.add_argument('--api-container', required=True)
     parser.add_argument('--expected-api-image-id', required=True)
     parser.add_argument('--discover-maintenance-gateway', action='store_true')
@@ -160,6 +188,7 @@ def main():
              'backend-bundle-manifest.json': read(args.bundle_manifest),
              'backend-import-receipt.json': read(args.import_receipt)}
     core.validate_new_source(auth, original_packet, files)
+    import_observation = validate_import_observation(auth, args.import_receipt, args.import_observation)
     core.require(auth['expected_api_image_id'] == args.expected_api_image_id, 'ADMITTED_ACTUAL_CONFIG_REQUIRED')
     observed = inspect_api(args.api_container, auth['namespace'], args.expected_api_image_id)
     maintenance = maintenance_endpoint(args, auth, original_packet)
@@ -223,6 +252,7 @@ def main():
     put(args.output / 'service-cli.original.private.json', service_raw)
     summary = {**value['public'], 'api_owner_observation': observed,
                'maintenance_endpoint_observation': maintenance,
+               'import_observation': import_observation,
                'material_process_exit_proof': proof,
                'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs.iterdir()},
                'private_packet_dir': str(inputs), 'benchmark_started': False,

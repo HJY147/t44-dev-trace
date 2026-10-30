@@ -138,7 +138,9 @@ def validate_new_source(auth, old, manifests):
     config = bundle['images']['backend']['image_id']
     require(config == identity['sut_image_config_digest'] == auth['expected_api_image_id'], 'NEW_ACTUAL_CONFIG_REQUIRED')
     require(receipt['identity']['config_id'] == config and receipt['identity']['actual_id'] == config and receipt['identity']['success'] is True, 'ACTUAL_IMPORT_CONFIG_PROOF_REQUIRED')
+    require(timestamp(receipt['observed_utc']) <= datetime.now(timezone.utc), 'NONFUTURE_UTC_IMPORT_OBSERVATION_REQUIRED')
     ref=auth['loaded_receipt_reference']
+    require(ref['original_path'] != old.get('loaded_receipt_reference', {}).get('original_path'), 'NEW_IMPORT_PATH_NOT_HISTORY_REQUIRED')
     require(ref['sha256'] == sha(manifests['backend-import-receipt.json']) and ref['observed_at'] == receipt['observed_utc'] and ref['original_path'].startswith('/root/'), 'ACTUAL_NEW_RECEIPT_REFERENCE_REQUIRED')
     require(sha(manifests['ca.pem']) == old['environment']['ca_sha256'], 'EXACT_CA')
     require(identity['openapi_sha256'] == old['identity']['openapi_sha256'], 'FROZEN_OPENAPI_UNCHANGED')

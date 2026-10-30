@@ -13,7 +13,7 @@ Missing live originals: new actual import+observation, original800 current versi
 ## Executable local preflight
 
 ```
-python3 -B /BUNDLE/backend/check_inputs.py --old-packet /HISTORY/inputs/session.private.json --authorization /CURRENT/material08-authorization.json --ca /CURRENT/ca.pem --source-manifest /CURRENT/source-manifest.json --bundle-manifest /CURRENT/backend-bundle-manifest.json --import-receipt /CURRENT/backend-import-receipt.json
+python3 -B /BUNDLE/backend/check_inputs.py --old-packet /HISTORY/inputs/session.private.json --authorization /CURRENT/material08-authorization.json --ca /CURRENT/ca.pem --source-manifest /CURRENT/source-manifest.json --bundle-manifest /CURRENT/backend-bundle-manifest.json --import-receipt /CURRENT/backend-import-receipt.json --import-observation /CURRENT/backend-import-receipt.json.observation.PUBLIC.json --remote-import-receipt-path /root/ACTUAL_CURRENT/backend-import-receipt.json
 ```
 
 Runs no Docker/network and releases no session; default false template refuses. Real credentials stay in files, not stdout. No preflight can prove supplied receipt is a true current APP observation without separate owner/independent verification.
@@ -21,7 +21,7 @@ Runs no Docker/network and releases no session; default false template refuses. 
 ## Later admitted APP material generation (NOT executed now)
 
 ```
-python3 -B /BUNDLE/backend/host_runner.py --api-container ACTUAL_CURRENT_API_ID --expected-api-image-id sha256:766701c81ee873258930346b1fa30986035dd341810ad170a2bcca271ee088fc --discover-maintenance-gateway --old-packet /HISTORY/inputs/session.private.json --accounts /HISTORY/accounts.private.json --authorization /CURRENT/material08-authorization.json --ca /CURRENT/ca.pem --source-manifest /CURRENT/source-manifest.json --bundle-manifest /CURRENT/backend-bundle-manifest.json --import-receipt /CURRENT/backend-import-receipt.json --output /NEW/material08
+python3 -B /BUNDLE/backend/host_runner.py --api-container ACTUAL_CURRENT_API_ID --expected-api-image-id sha256:766701c81ee873258930346b1fa30986035dd341810ad170a2bcca271ee088fc --discover-maintenance-gateway --old-packet /HISTORY/inputs/session.private.json --accounts /HISTORY/accounts.private.json --authorization /CURRENT/material08-authorization.json --ca /CURRENT/ca.pem --source-manifest /CURRENT/source-manifest.json --bundle-manifest /CURRENT/backend-bundle-manifest.json --import-receipt /root/ACTUAL_CURRENT/backend-import-receipt.json --import-observation /root/ACTUAL_CURRENT/backend-import-receipt.json.observation.PUBLIC.json --output /NEW/material08
 ```
 
 Root/private staging, bounded GNU timeout/process exit proof, partial prefix preservation and exclusive output behavior are inherited. On any failure preserve everything; no overwrite/retry. Host emits only original safe material summary; runtime private stdout stays root-private. Fresh packet identity/schema/new receipt reference are rebuilt explicitly, historical identity retained only in additional provenance; original inventory/4sessions/800disjoint/canonical binding gates retained.
@@ -31,3 +31,9 @@ This tool does not install the new product, change seven-service identities, per
 ## Offline checks
 
 python3 -B offline_checks.py:7 pure synthetic checks using real source/bundle originals and a synthetic receipt; positive dual chain/old-byte preservation, default false and consumed IDs, history source mismatch, changed source/bundle/import raw bytes, wrong config/runtime and stale receipt reference. All runtime Python parsed under3.10 grammar. These do not prove live file permissions/session/scan/import truth, full end-to-end material08 or acceptance. No cloud/SSH/Docker/SUT called.
+
+## Reviewed reference binding correction
+
+a60b2d28 had a verified preparation-tool defect: new receipt bytes could be combined with arbitrary /root/ reference and a future timestamp. The reviewer synthetic reproduction remains historical evidence; original OFFLINE.log7check report is retained, not rewritten. This fix adds producer observation as an explicit input. APP host requires actual receipt canonical path==auth reference==producer receipt_path; original actual file sha/bytes/uid0/mode0600/mtime_ns must match observation and all three observation times must agree. Core additionally requires legal UTC and nonfuture observed_utc, without a maximum-age policy. New reference path cannot be historical packet receipt path. All checks run before Docker/session issuance.
+
+Local downloaded copy preflight uses mandatory --remote-import-receipt-path and verifies reference/producer path+raw SHA/bytes; it explicitly does not equate local copy path/mtime/ownership to remote original. The original positive host filesystem observation cannot be proven on this macOS local copy; actual APP stat remains pending.9 synthetic checks now cover legal actual13ac source/bundle with a fake import observation, wrong old path/ref/hash/size/uid/mode/mtime, host rejecting a local path, future/nonUTC/malformed timestamps, wrong source/config/runtime and default false/consumed IDs. No real import or source08 material was created. All8 scripts parse Python3.10.
