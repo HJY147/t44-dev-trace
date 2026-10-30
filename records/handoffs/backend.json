@@ -3895,9 +3895,9 @@
     "helper": "agents/backend/manual11-maintenance/v2/cohort_maintenance.py",
     "manifest": "agents/backend/manual11-maintenance/v2/MANIFEST.PUBLIC.json",
     "runbook": "agents/backend/manual11-maintenance/v2/RUNBOOK.md",
-    "helper_sha256": "993f375c9c519f49e9a3d1355c23988e2d522bdbafed340f3f405b895d4a0fbb",
-    "mock_checks_passed": 10,
-    "mock_seconds": 0.302,
+    "helper_sha256": "efb42edc3b117a892b1067a57a49fc2e33ff386f0c6077dcb1f4b154a9b9c915",
+    "mock_checks_passed": 12,
+    "mock_seconds": 0.45,
     "actual_remote_checks_or_logins": 0,
     "new_tasks": 0,
     "target_original_transition": 400,
@@ -3909,6 +3909,9 @@
     "material05_generated": false,
     "p12_prepared": false,
     "deployment_integration": "pre-material explicit hook/CLI, no modification of deployment-owned files",
-    "original_fixed_gateway_v1": "preserved historical, superseded for execution"
+    "original_fixed_gateway_v1": "preserved historical, superseded for execution",
+    "credentials_never_written_to_public_or_private_logs": true,
+    "token_lifetime": "RAM only; fresh readonly recovery login as needed",
+    "before_first_post_horizon": "All400 planned_end > actual_now+900s+1day; fixed rejection and zeroPOST if not; no plan change"
   }
 }

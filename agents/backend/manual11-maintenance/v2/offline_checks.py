@@ -29,7 +29,7 @@ def contract_inputs():
     for i in range(400):
         pid=i//10+1
         task={'id':i+1,'project_id':pid,'owner_id':2,'state':3 if i<138 else 2,
-              'blocked_from_state':2 if i<138 else None,'version':99}
+              'blocked_from_state':2 if i<138 else None,'version':99,'plan':{'planned_end':'2099-01-01T00:00:00Z'}}
         esc={'id':i+401,'project_id':pid,'owner_id':2,'state':2,'blocked_from_state':None,'version':11}
         rows.append({'client_id':i,'project_id':pid,'transition_task':task,'escalation_task':esc})
     old={'identity':{'git_commit':m.SOURCE},'run_id':'r30originalp09','environment':{'origin':'https://172.21.182.245:26445','connect_ip':'172.21.182.245','ca_sha256':'0'*64},'sessions':{r:{'user_id':a['user_id']} for r,a in accounts.items()},'inventory':{'clients':rows},'additional_neutral_snapshots':{'namespace':'t44-test-owned','database':'t44_test_owned'}}
@@ -126,7 +126,7 @@ class Checks(unittest.TestCase):
         self.assertEqual(self.api.posts,[])
         self.assertIn('NOT_PROOF',self.summary['recovery_findings'][0]['classification'])
     def test_transport_private_raw_and_unknown_no_retry(self):
-        envelope={'data':{'access_token':'fake-private-token','user':{'id':2},'expires_at':'2099'},'meta':{}}
+        envelope={'data':{'access_token':'fake-private-token','user':{'id':2},'expires_at':'2099-01-01T00:00:00Z'},'meta':{}}
         class Response:
             status=200
             def read(self,limit):return json.dumps(envelope).encode()
@@ -141,7 +141,8 @@ class Checks(unittest.TestCase):
         import time
         api=m.API(runtime,self.old,Path('unused-ca'),{'connect_ip':'192.168.96.99','connect_port':8443},self.ev,time.monotonic()+10)
         api.request('/auth/login',body={'username':'dev','password':'fake-password'})
-        self.assertIn('fake-private-token',(self.ev.private/'00001.response.private.bin').read_text())
+        self.assertFalse((self.ev.private/'00001.response.private.bin').exists())
+        self.assertTrue((self.ev.private/'00001.login-metadata.private.json').exists())
         self.assertNotIn('fake-password',self.ev.journal.read_text())
         self.assertNotIn('fake-private-token',self.ev.progress.read_text())
         envelope.clear();envelope.update({'code':'TRANSACTION_UNCERTAIN'})
@@ -151,6 +152,31 @@ class Checks(unittest.TestCase):
         self.assertEqual(raised.exception.category,'UNKNOWN')
         self.assertEqual(api.connection.count,2)
         self.assertIn('persisted-idempotency',self.ev.journal.read_text())
+        for file in self.ev.root.rglob('*'):
+            if file.is_file():
+                for secret in ('fake-private-token','fake-password','Bearer fake-private-token'):
+                    self.assertNotIn(secret.encode(),file.read_bytes())
+    def test_horizon_strict_boundary_and_no_first_post(self):
+        from datetime import datetime,timedelta,timezone
+        at=datetime(2026,10,30,tzinfo=timezone.utc)
+        task={'plan':{'planned_end':(at+timedelta(days=1,seconds=900)).isoformat()}}
+        with self.assertRaisesRegex(m.Stop,'EXISTING_TRANSITION_TASK_NOT_ELIGIBLE'):
+            m.guard_transition_horizon([task],at)
+        task['plan']['planned_end']=(at+timedelta(days=1,seconds=900,microseconds=1)).isoformat()
+        m.guard_transition_horizon([task],at)
+        self.api.tasks[400]['plan']['planned_end']='2020-01-01T00:00:00Z'
+        with self.assertRaisesRegex(m.Stop,'EXISTING_TRANSITION_TASK_NOT_ELIGIBLE'):
+            m.restore(self.api,self.old,self.items,self.accounts,self.ev,self.summary)
+        self.assertEqual(self.api.posts,[])
+    def test_main_stdout_stderr_and_all_logs_exclude_credentials(self):
+        from contextlib import redirect_stdout,redirect_stderr
+        out,err=io.StringIO(),io.StringIO()
+        with redirect_stdout(out),redirect_stderr(err):
+            m.restore(self.api,self.old,self.items,self.accounts,self.ev,self.summary)
+        combined=out.getvalue()+err.getvalue()+''.join(p.read_text() for p in self.ev.root.rglob('*') if p.is_file())
+        for secret in ('fake-manager','fake-developer','fake-reviewer','fake-token-1','fake-token-2','Authorization','Bearer '):
+            self.assertNotIn(secret,combined)
+
     def test_dedicated_authorization_contract_and_no_material_grant(self):
         raw=m.canonical(self.old)
         auth={'schema':'manual11-cohort-maintenance-authorization-v2','root_approved':True,'benchmark_grant_allow':False,'operations':m.OPS,'operation_id':'cohort-maintenance-only','source_sha':m.SOURCE,'old_packet_sha256':m.sha(raw),'namespace':'t44-test-owned','database':'t44_test_owned','original_ids_sha256':m.sha(m.canonical(self.ids)),'require_infrastructure_and_old_controller_guards':True,'require_exclusive_no_benchmark_or_other_writer':True}

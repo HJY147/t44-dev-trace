@@ -10,7 +10,7 @@ import signal
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -157,10 +157,18 @@ class API:
             self.connection.request(method, '/api/v1'+path, None if body is None else canonical(body), headers)
             response = self.connection.getresponse()
             raw = response.read(2*1024*1024+1)
-            self.evidence.response(self.calls, raw)
+            if path != '/auth/login':
+                self.evidence.response(self.calls, raw)
             self.evidence.event('RESPONSE_RECEIVED', {'number':self.calls, 'status':response.status, 'response_sha256':sha(raw)})
             need(len(raw) <= 2*1024*1024, 'BOUNDED_HTTP_RESPONSE_REQUIRED')
             envelope = json.loads(raw)
+            if path == '/auth/login':
+                # Maintenance logs never retain credentials, including in PRIVATE.
+                metadata = safe_login_metadata(envelope.get('data', {}))
+                request_id = envelope.get('meta', {}).get('request_id')
+                metadata['request_id'] = request_id if isinstance(request_id,str) and re.fullmatch('[0-9a-f-]{36}',request_id) else None
+                metadata.update(status=response.status,response_sha256=sha(raw),response_bytes=len(raw))
+                put(self.evidence.private/f'{self.calls:05d}.login-metadata.private.json',canonical(metadata))
             if response.status != 200 or 'data' not in envelope:
                 code = envelope.get('code')
                 safe = code if isinstance(code,str) and re.fullmatch('[A-Z0-9_]{1,80}',code) else 'HTTP_REJECTED'
@@ -172,7 +180,10 @@ class API:
         except BaseException as error:
             partial=getattr(error,'partial',None)
             if isinstance(partial,bytes):
-                put(self.evidence.private/f'{self.calls:05d}.partial-response.private.bin',partial)
+                if path != '/auth/login':
+                    put(self.evidence.private/f'{self.calls:05d}.partial-response.private.bin',partial)
+                else:
+                    self.evidence.event('LOGIN_PARTIAL_RESPONSE_METADATA',{'number':self.calls,'bytes':len(partial),'sha256':sha(partial)})
             if isinstance(error,(KeyboardInterrupt,SystemExit)):
                 code = 'INTERRUPTED_OUTCOME_REQUIRES_INSPECTION'
             else:
@@ -195,10 +206,32 @@ class API:
         self.connection.close()
 
 
+def safe_login_metadata(value):
+    actor_id=value.get('user', {}).get('id')
+    expiry=None
+    try:
+        parsed=datetime.fromisoformat(value['expires_at'].replace('Z','+00:00'))
+        if parsed.utcoffset()==timedelta(0):expiry=parsed.isoformat()
+    except (ValueError,KeyError,TypeError,AttributeError):pass
+    return {'actor_id':actor_id if type(actor_id) is int else None,'expires_at':expiry}
+
+
+def guard_transition_horizon(tasks,at=None):
+    at=at or datetime.now(timezone.utc)
+    cutoff=at+timedelta(seconds=900,days=1)
+    for task in tasks:
+        try:
+            due=datetime.fromisoformat(task['plan']['planned_end'].replace('Z','+00:00'))
+            valid=due.utcoffset()==timedelta(0) and due>cutoff
+        except (ValueError,TypeError,KeyError,AttributeError):valid=False
+        need(valid,'EXISTING_TRANSITION_TASK_NOT_ELIGIBLE')
+    return cutoff.isoformat()
+
+
 def login(api, role, account, evidence):
     value = api.request('/auth/login',body={'username':account['username'],'password':account['password']})
-    # Login body and token are retained only in root-only raw response prefix.
-    evidence.event('ACTUAL_LOGIN_ISSUED',{'role':role,'expires_at':value['expires_at']},public=True)
+    # Token remains in RAM; only nonsecret actor/expiry evidence is retained.
+    evidence.event('ACTUAL_LOGIN_ISSUED',{'role':role,**safe_login_metadata(value)},public=True)
     need(value['user']['id']==account['user_id'],'LIVE_ACCOUNT_SUBJECT_MISMATCH')
     return value['access_token']
 
@@ -242,6 +275,8 @@ def restore(api,old,items,accounts,evidence,summary):
         before[tid]=task
         evidence.event('TASK_PREFLIGHT',{'project_id':pid,'task_id':tid,'state':task['state'],'version':task['version']},public=True)
     summary['preflight400']=len(before)
+    cutoff=guard_transition_horizon(before.values())
+    evidence.event('ALL400_TRANSITION_HORIZON_CHECKED',{'required_planned_end_after':cutoff,'count':len(before)},public=True)
     for pid,tid,_ in items:
         task=before[tid]
         if task['state']==2:
