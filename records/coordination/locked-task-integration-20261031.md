@@ -12,13 +12,16 @@
 
 - 数据库542b5784：自建socket-only MySQL8.4.11，实际会话READ COMMITTED。12请求竞争同任务版本，1成功、11 VERSION_CONFLICT；持久任务仅递增一次，1成功+11拒绝审计；等待行锁后看到最新提交行；跨gateway/错project拒绝；无驱动错误。原夹具漏evidence导致422完整保留，修正夹具后另开实例验证。自建实例正常关闭，未触碰其他本地实例。
 - 审核e4450c5d已核产品、RC与预算维护，无额外代码阻塞；当时保留待exact CI的条件，不伪改原审核快照。
-- exact 13acb43a804e717e7485091895378511fe3d9b76的GitHub product运行41111111033最终success，frontend、contracts、coverage、static四项均success。原API回执保存在agents/coordinator/locked-task-ci-20261031/CI_CURRENT.PUBLIC.json。当前运行覆盖原件继续由审核岗核验留存；旧69d的行覆盖率90.27%不能冒充新运行重新计算值。
+- exact 13acb43a804e717e7485091895378511fe3d9b76的GitHub product运行41111111033最终success，frontend、contracts、coverage、static四项均success。原API回执保存在agents/coordinator/locked-task-ci-20261031/CI_CURRENT.PUBLIC.json。
+- 审核6276a371另行回收并核验本次coverage制品：329568字节/SHA daf8b447eee4aaf749c63a9f475bc41318ae7e9add53283bf4cc031d8e5f8e1d；JUnit 797通过、0失败/错误/跳过，全部43个生产Python文件纳入，实际行覆盖2495/2764=90.27%。FINAL_COVERAGE_GATE.PUBLIC.json保留gate/JUnit/源文件集合原值，代码本地集成准入已关闭。旧69d覆盖记录单独保留，不冒充本次重算。
 
 ## 整合身份
 
 候选产品与开发测试已整合到codex/manual13-preparation-integration。整合分支此前尚未带入90b的数字SQL选择器安全分类及其开发回归，现直接cherry-pick原90b734f6，未另造实现。整合后backend/t44、tmp/backend、scripts/ci、.github/workflows、frontend/src、specs、deployment与compose.yaml逐字比较准确测试源13ac，无差异。文档068adbab也已合入，不修改以上产品/测试/配置范围。
 
 需规与设计分别为20页8图、26页10图；实际Word SHA与文档交付manifest逐字一致，文档岗记录全部46页渲染检查。两份文档保留各自事实截止与历史版本，不能因本次整合把旧待验证内容伪装为当时已通过。学生本人手写研究报告不由AI冒充。
+
+固定cloc2.10于整合源af4039c1重新计量：65个应用文件5832有效行；用户采用的核心口径扣CLI/迁移/seed三个辅助文件780行后为62文件5052行。相较旧公开5818/5038净增14行，未压格式或改变统计集合。固定全量口径仍超5100上限732行；核心口径的采用不是老师批准辅助文件排除。原始统计见records/metrics/locked-task-20261031.json，不能宣称全量规模通过。
 
 ## 尚未完成
 
