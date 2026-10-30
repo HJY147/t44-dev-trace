@@ -1,0 +1,127 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {},
+  "runtime_sha256": "347efe971362ec3ae6d145bedc9a61ab6400c498499642c2bb4c66ce5c51a86b",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "same_key_outcomes": {
+    "IDEMPOTENCY_IN_PROGRESS": 4,
+    "PersistenceUnavailable": 11,
+    "claimed": 1
+  },
+  "driver_errors": [
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "IntegrityError",
+      "errno": 1062
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    },
+    {
+      "exception": "OperationalError",
+      "errno": 1213
+    }
+  ],
+  "status": "NATIVE_MYSQL_RC_SAME_KEY_FAILED",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}

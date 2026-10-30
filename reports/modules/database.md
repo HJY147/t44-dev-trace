@@ -98,3 +98,6 @@
 - 原975业务断言未降低，按VERSION选择快照；V1两golden与935来源显式保留但当前未执行V1历史代码。V2快照在语义/重现性质后才冻结；旧黄金小数据真实红保留。只是开发候选，无MySQL/独立/性能或组合CI成功声明。
 - 最终精确1076677当前源975/新性质小目标14绿1.84s（2未选）+975默认6000单目标1绿25.95s（2未选），原JUnit warning保留；原全性质13绿属于最后旧marker查询保护前，分范围记录不相加。
 - 原计数器当前完整产品6245/exit1，净90仍超1145；持久签名AST全同、冻结specs/DDL净差异0，Ruff通过。两分支已push；[Issue4交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591)单ID GET全文一致。根待采用稳定68或V2额外22、精确审核与CI/freshMySQL；不称规模/独立/正式性能闭合。
+
+
+2026-10-31 / ROLE-database-CLAIM-NATIVE-20261031-v1：真实MySQL8.4.11/RC拒绝INSERT-first候选，16同key出现11个1213，原90b同场景及后续10检查通过。原pool rollback/durability不减，独立socket-only server已停，无云或产品修改。详agents/database/claim-insert-first-native/REPORT.md及原PUBLIC。
