@@ -1,0 +1,231 @@
+{
+  "status": "EXISTING_P12_EVIDENCE_ONLY_TIMING_RESOURCE_AGGREGATES",
+  "run_id": "r30manualp12",
+  "raw_authenticated_footer_rechecked": true,
+  "request_scope": "start_monotonic in original600second steady window",
+  "request_counts": {
+    "contract": 96432,
+    "query": 96410,
+    "transition": 192829,
+    "escalation": 96429
+  },
+  "available_response_header_names_counts_by_class": {
+    "contract": {
+      "server": 96432,
+      "date": 96432,
+      "content-type": 96432,
+      "content-length": 96432,
+      "connection": 96432,
+      "cache-control": 96432,
+      "idempotency-replayed": 96432,
+      "server-timing": 96432,
+      "x-content-type-options": 96432,
+      "referrer-policy": 96432,
+      "x-frame-options": 96432,
+      "x-request-id": 96432
+    },
+    "query": {
+      "server": 96410,
+      "date": 96410,
+      "content-type": 96410,
+      "content-length": 96410,
+      "connection": 96410,
+      "cache-control": 96410,
+      "idempotency-replayed": 96410,
+      "server-timing": 96410,
+      "x-content-type-options": 96410,
+      "referrer-policy": 96410,
+      "x-frame-options": 96410,
+      "x-request-id": 96410
+    },
+    "transition": {
+      "server": 192829,
+      "date": 192829,
+      "content-type": 192829,
+      "content-length": 192829,
+      "connection": 192829,
+      "cache-control": 192829,
+      "idempotency-replayed": 192829,
+      "server-timing": 192829,
+      "x-content-type-options": 192829,
+      "referrer-policy": 192829,
+      "x-frame-options": 192829,
+      "x-request-id": 192829
+    },
+    "escalation": {
+      "server": 96429,
+      "date": 96429,
+      "content-type": 96429,
+      "content-length": 96429,
+      "connection": 96429,
+      "cache-control": 96429,
+      "idempotency-replayed": 96429,
+      "server-timing": 96429,
+      "x-content-type-options": 96429,
+      "referrer-policy": 96429,
+      "x-frame-options": 96429,
+      "x-request-id": 96429
+    }
+  },
+  "timing_header_names_seen": [
+    "server-timing"
+  ],
+  "server_duration_aggregates": [
+    {
+      "class": "contract",
+      "header_name": "server-timing",
+      "metric": "app",
+      "unit": "ms",
+      "samples": 96432,
+      "server_p50": 15.992,
+      "server_p95": 940.286,
+      "same_exchange_elapsed_ms_p50": 62.869427,
+      "same_exchange_elapsed_ms_p95": 1048.957214,
+      "elapsed_minus_server_ms_p50": 47.614054,
+      "elapsed_minus_server_ms_p95": 65.63411500000001
+    },
+    {
+      "class": "query",
+      "header_name": "server-timing",
+      "metric": "app",
+      "unit": "ms",
+      "samples": 96410,
+      "server_p50": 28.648,
+      "server_p95": 957.313,
+      "same_exchange_elapsed_ms_p50": 71.162613,
+      "same_exchange_elapsed_ms_p95": 1065.937272,
+      "elapsed_minus_server_ms_p50": 46.68706599999996,
+      "elapsed_minus_server_ms_p95": 61.942767
+    },
+    {
+      "class": "transition",
+      "header_name": "server-timing",
+      "metric": "app",
+      "unit": "ms",
+      "samples": 192829,
+      "server_p50": 640.273,
+      "server_p95": 1040.715,
+      "same_exchange_elapsed_ms_p50": 680.760639,
+      "same_exchange_elapsed_ms_p95": 1622.151004,
+      "elapsed_minus_server_ms_p50": 49.260504999999995,
+      "elapsed_minus_server_ms_p95": 101.89773600000035
+    },
+    {
+      "class": "escalation",
+      "header_name": "server-timing",
+      "metric": "app",
+      "unit": "ms",
+      "samples": 96429,
+      "server_p50": 129.674,
+      "server_p95": 1038.544,
+      "same_exchange_elapsed_ms_p50": 180.09941,
+      "same_exchange_elapsed_ms_p95": 1205.1211,
+      "elapsed_minus_server_ms_p50": 48.311550999999994,
+      "elapsed_minus_server_ms_p95": 70.09927600000003
+    }
+  ],
+  "server_duration_missing": false,
+  "server_duration_absence_consequence": null,
+  "load_resource": {
+    "total_samples": 651,
+    "inside_steady_samples": 592,
+    "first_elapsed_seconds": 60.012973192,
+    "last_elapsed_seconds": 659.930514539,
+    "observed_difference_seconds": 599.917541347,
+    "exact600second_boundary_samples_present": false,
+    "cgroup_file_sample_counts": {
+      "cpu.stat": 592,
+      "memory.current": 592,
+      "memory.events": 592,
+      "pids.current": 592,
+      "pids.events": 592
+    },
+    "cgroup_cpu_stat_first": {
+      "usage_usec": 34931401,
+      "user_usec": 32607370,
+      "system_usec": 2324031,
+      "nr_periods": 561,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "cgroup_cpu_stat_last": {
+      "usage_usec": 327484827,
+      "user_usec": 307262930,
+      "system_usec": 20221897,
+      "nr_periods": 5890,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "cgroup_cpu_stat_delta": {
+      "usage_usec": 292553426,
+      "user_usec": 274655560,
+      "system_usec": 17897866,
+      "nr_periods": 5329,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "cpu_usage_core_equivalent": 0.4876560624367264,
+    "process_rusage_delta": {
+      "utime_seconds": 274.528019,
+      "stime_seconds": 17.870767999999998,
+      "minor_page_faults": 10311,
+      "major_page_faults": 0,
+      "voluntary_context_switches": 8141859,
+      "involuntary_context_switches": 3164,
+      "maxrss_first_last_kib": [
+        63432,
+        104564
+      ]
+    },
+    "memory_current_bytes_first_last_min_max": [
+      183037952,
+      470306816,
+      183037952,
+      470306816
+    ],
+    "pids_current_first_last_min_max": [
+      403,
+      403,
+      403,
+      403
+    ],
+    "cgroup_event_delta": {
+      "memory.events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "pids.events": {
+        "max": 0
+      }
+    },
+    "queue_first_last_min_max": [
+      0,
+      0,
+      0,
+      67
+    ],
+    "missing_fields": [
+      "cpu.max not included in original load_resource",
+      "memory.max not included in original load_resource",
+      "instantaneous per-sample CPU utilization absent; available as cumulative cpu.stat/rusage deltas",
+      "no sample at exact steady start/end; delta uses strictly-inside earliest/latest samples"
+    ],
+    "cgroup_cpu_seconds_delta": {
+      "usage_seconds": 292.553426,
+      "user_seconds": 274.65556,
+      "system_seconds": 17.897866,
+      "throttled_seconds": 0.0
+    },
+    "memory_current_bytes_delta": 287268864
+  },
+  "no_cloud_access": true,
+  "no_test_change_or_new_run": true,
+  "new_execution_authorization": false,
+  "new_acceptance_verdict": false,
+  "paired_delta_method": "For each same exchange compute elapsed_ms - server_timing_app_dur_ms first, then nearest-rank p50/p95; not subtraction of independently ranked percentiles.",
+  "instrumentation_scope_limitation": "Server-Timing app is the captured server-reported duration. Existing neutral contract does not define its exact instrumentation boundaries; these data do not split queue, database, CPU, proxy, network or client costs.",
+  "published_utc": "2026-10-30T15:15:00.150160+00:00"
+}
