@@ -27,8 +27,8 @@
       "sha256": "0dde7e80cff526fabcbdd01f0921e04438b39ae1c2e0659c6506762b861f1e20"
     },
     "agents/deployment/manual-handoff/RESUME-P09.PUBLIC.md": {
-      "bytes": 3079,
-      "sha256": "09f9c02ff21a2b48b5cf08ba092e1c2c4684f46390386412b1210292660c095b"
+      "bytes": 5025,
+      "sha256": "34058f97e115e0f60f85437ceec804850bb28c00d8b96011aecac5e224e1a96f"
     },
     "agents/deployment/manual-handoff/build_user_transport.py": {
       "bytes": 3508,
@@ -46,6 +46,10 @@
       "bytes": 4686,
       "sha256": "6e805e1d653a65c77c6763b08a45253c7212b98c90b0fc4d25d0b7460a618962"
     },
+    "agents/deployment/manual-handoff/rotate_scheduler_token.py": {
+      "bytes": 5348,
+      "sha256": "47640ba975f210b9ca7e7f66e718711f42766093bf6a0e3749f0f60ae210fe8f"
+    },
     "tmp/748_manual_transport/cms-validation.PUBLIC.log": {
       "bytes": 526,
       "sha256": "8893c975dc0dded7c71afce2bc9ef06386589c5556d0f66ea5544b2090ec869b"
@@ -58,6 +62,10 @@
       "bytes": 400,
       "sha256": "e1e9fadfe6e913d92e92a4f0c371bba07b5fc49690a3a13322f2162eefa8135c"
     },
+    "tmp/748_manual_transport/rotate-validation.PUBLIC.log": {
+      "bytes": 458,
+      "sha256": "8d82a5dc17fff8ffb47156658c0a87e2a68e15defb75d16d13a5f72dd456270c"
+    },
     "tmp/748_manual_transport/test_cms_five.py": {
       "bytes": 3314,
       "sha256": "e56a6c2d5d67cad4aa7ea655592f38230df109c5bc75c1e2f6725f29137f040d"
@@ -69,9 +77,19 @@
     "tmp/748_manual_transport/test_resume_existing_p09.py": {
       "bytes": 2479,
       "sha256": "821001c0463ddd0261553e87290a53ffb322b045f64e72bf32f545ad9a1f44f8"
+    },
+    "tmp/748_manual_transport/test_rotate_scheduler_token.py": {
+      "bytes": 3613,
+      "sha256": "1c92d63b655786ed9b5a7d404ac8b1d238c5477dadd357c4a3609862a6a2f7bd"
     }
   },
   "old790_expired_cost_policy_seam_unresolved_without_existing_opened_five": "Optional new user-authorized CMS host-five transport bypasses old790 without modifying old timestamps; local only, not remote verified",
   "preferred": "user single whole-file ECS OOS upload plus short receiver with embedded original bootstrap",
+  "scheduler_token_rotation": {
+    "Docker_or_real_key_or_cloud_executed": false,
+    "backend_schema_commit": "fff073110762a7646d556c08acf6475e1041e7d6",
+    "scanner_HTTP_success_proven": false,
+    "scope": "APP-local exact-byte atomic replacement and root private backup only"
+  },
   "status": "LOCAL_ENCODE_HASH_UNPACK_TESTED_ONLY"
 }

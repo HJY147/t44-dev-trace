@@ -3155,7 +3155,15 @@
       "actual_observation_pins": "agents/deployment/manual-handoff/P09-existing-containers.PUBLIC.json",
       "validation": "tmp/748_manual_transport/resume-validation.PUBLIC.log",
       "backend_service_refresh_and_scheduler_token": "external real helper prerequisite between infra and workers; operator flag is not credential proof",
-      "cloud_actions": 0
+      "cloud_actions": 0,
+      "atomic_token_rotation": {
+        "tool": "agents/deployment/manual-handoff/rotate_scheduler_token.py",
+        "backend_material_commit": "fff07311",
+        "local_test": "tmp/748_manual_transport/test_rotate_scheduler_token.py",
+        "actual_filesystem_test": true,
+        "Docker_and_root_UID_chown_spied": true,
+        "scanner_HTTP_success_proven": false
+      }
     }
   }
 }
