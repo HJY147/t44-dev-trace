@@ -248,46 +248,46 @@ D008由用户选择先更新上线评估再重新批准。仅当发布已通过�
 
 下表来自当前冻结OpenAPI原字节的操作目录。字段级可空性、枚举范围、required、分页与Envelope定义以同一文件为准；本表不重新发明一套接口。认证失败、父资源归属与错误优先级须联合业务场景检查。
 
-| 操作 | 方法与路径 | 用途 | 输出类别 |
+| 操作 | 方法与路径 | 用途 | 成功结果 |
 |---|---|---|---|
-| login | POST /auth/login | 凭部署初始化账号登录 | 写入或鉴权结果 |
-| logout | POST /auth/logout | 撤销当前会话 | 写入或鉴权结果 |
-| getMe | GET /auth/me | 查询当前身份 | 分页查询 |
-| getDictionaries | GET /dictionaries | 查询统一枚举字典 | 分页查询 |
-| createProject | POST /projects | 创建项目并成为经理 | 写入或鉴权结果 |
-| listProjects | GET /projects | 分页查询本人参与项目 | 分页查询 |
-| getProject | GET /projects/{project_id} | 查询项目 | 分页查询 |
-| listProjectMembers | GET /projects/{project_id}/members | 查询本项目成员 | 分页查询 |
-| addProjectMember | POST /projects/{project_id}/members | 添加已初始化账号为成员 | 写入或鉴权结果 |
-| changeProjectMember | PATCH /projects/{project_id}/members/{user_id} | 修改成员角色 | 写入或鉴权结果 |
-| removeProjectMember | POST /projects/{project_id}/members/{user_id}/removal | 移除项目成员 | 写入或鉴权结果 |
-| createIteration | POST /projects/{project_id}/iterations | 登记迭代与人力产能 | 写入或鉴权结果 |
-| listIterations | GET /projects/{project_id}/iterations | 查询迭代 | 分页查询 |
-| changeIteration | PATCH /projects/{project_id}/iterations/{iteration_id} | 修改迭代计划并留差异 | 写入或鉴权结果 |
-| createTask | POST /projects/{project_id}/tasks | 研发流程登记（三类主接口之一） | 写入或鉴权结果 |
-| listTasks | GET /projects/{project_id}/tasks | 分页查询项目任务 | 分页查询 |
-| getTask | GET /projects/{project_id}/tasks/{task_id} | 查询权威最新任务快照 | 分页查询 |
-| changeTaskPlan | PATCH /projects/{project_id}/tasks/{task_id}/plan | 经理改期并保留前后差异 | 写入或鉴权结果 |
-| changeTaskAssignment | PATCH /projects/{project_id}/tasks/{task_id}/assignment | 经理调整负责人 | 写入或鉴权结果 |
-| listTaskDependencies | GET /projects/{project_id}/tasks/{task_id}/dependencies | 查询依赖与当前满足情况 | 分页查询 |
-| addTaskDependency | POST /projects/{project_id}/tasks/{task_id}/dependencies | 添加依赖并拒绝环/自依赖 | 写入或鉴权结果 |
-| removeTaskDependency | POST /projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal | 删除依赖关系并留依据 | 写入或鉴权结果 |
-| transitionTask | POST /projects/{project_id}/tasks/{task_id}/transitions | 服务端状态流转（三类主接口之一） | 写入或鉴权结果 |
-| getReviewTemplate | GET /projects/{project_id}/review-template | 查询带版本八段式与十项模板 | 分页查询 |
-| createTaskReview | POST /projects/{project_id}/tasks/{task_id}/reviews | 发布带证据代码评审 | 写入或鉴权结果 |
-| listTaskReviews | GET /projects/{project_id}/tasks/{task_id}/reviews | 查询完整评审历史 | 分页查询 |
-| createReleaseAssessment | POST /projects/{project_id}/tasks/{task_id}/release-assessments | 四视角上线评估（三类主接口之一） | 写入或鉴权结果 |
-| listReleaseAssessments | GET /projects/{project_id}/tasks/{task_id}/release-assessments | 查询评估及预案版本历史 | 分页查询 |
-| reviewReleaseAssessment | POST /projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews | 评审当前风险评估及回滚预案 | 写入或鉴权结果 |
-| listTaskDecisions | GET /projects/{project_id}/tasks/{task_id}/decisions | 查询经理交付/回滚/返工决定 | 分页查询 |
-| validateContractPayload | POST /projects/{project_id}/contract-validations | 真实契约校验性能入口 | 写入或鉴权结果 |
-| getEscalationRules | GET /projects/{project_id}/escalation-rules | 查询当前或历史升级规则版本 | 分页查询 |
-| listEscalations | GET /projects/{project_id}/escalations | 查询本项目升级记录及处理计数 | 分页查询 |
-| createEscalation | POST /internal/projects/{project_id}/tasks/{task_id}/escalations | 服务身份升级通知性能入口 | 写入或鉴权结果 |
-| listMyNotifications | GET /me/notifications | 查询本人当前可访问通知 | 分页查询 |
-| markNotificationRead | POST /projects/{project_id}/notifications/{notification_id}/read | 标记本人通知已读 | 写入或鉴权结果 |
-| handleNotification | POST /projects/{project_id}/notifications/{notification_id}/handling | 记录本人通知处理结果 | 写入或鉴权结果 |
-| listProjectAuditEvents | GET /projects/{project_id}/audit-events | 只读查询本项目审计和计划差异 | 分页查询 |
+| login | POST /auth/login | 凭部署初始化账号登录 | 200 登录结果 |
+| logout | POST /auth/logout | 撤销当前会话 | 200 确认结果 |
+| getMe | GET /auth/me | 查询当前身份 | 200 用户对象 |
+| getDictionaries | GET /dictionaries | 查询统一枚举字典 | 200 字典对象 |
+| createProject | POST /projects | 创建项目并成为经理 | 201 项目对象 |
+| listProjects | GET /projects | 分页查询本人参与项目 | 200 项目分页 |
+| getProject | GET /projects/{project_id} | 查询项目 | 200 项目对象 |
+| listProjectMembers | GET /projects/{project_id}/members | 查询本项目成员 | 200 成员分页 |
+| addProjectMember | POST /projects/{project_id}/members | 添加已初始化账号为成员 | 201 成员对象 |
+| changeProjectMember | PATCH /projects/{project_id}/members/{user_id} | 修改成员角色 | 200 成员对象 |
+| removeProjectMember | POST /projects/{project_id}/members/{user_id}/removal | 移除项目成员 | 200 确认结果 |
+| createIteration | POST /projects/{project_id}/iterations | 登记迭代与人力产能 | 201 迭代对象 |
+| listIterations | GET /projects/{project_id}/iterations | 查询迭代 | 200 迭代分页 |
+| changeIteration | PATCH /projects/{project_id}/iterations/{iteration_id} | 修改迭代计划并留差异 | 200 迭代对象 |
+| createTask | POST /projects/{project_id}/tasks | 研发流程登记（三类主接口之一） | 201 任务变更 |
+| listTasks | GET /projects/{project_id}/tasks | 分页查询项目任务 | 200 任务分页 |
+| getTask | GET /projects/{project_id}/tasks/{task_id} | 查询权威最新任务快照 | 200 任务对象 |
+| changeTaskPlan | PATCH /projects/{project_id}/tasks/{task_id}/plan | 经理改期并保留前后差异 | 200 任务变更 |
+| changeTaskAssignment | PATCH /projects/{project_id}/tasks/{task_id}/assignment | 经理调整负责人 | 200 任务变更 |
+| listTaskDependencies | GET /projects/{project_id}/tasks/{task_id}/dependencies | 查询依赖与当前满足情况 | 200 依赖分页 |
+| addTaskDependency | POST /projects/{project_id}/tasks/{task_id}/dependencies | 添加依赖并拒绝环/自依赖 | 201 依赖变更 |
+| removeTaskDependency | POST /projects/{project_id}/tasks/{task_id}/dependencies/{dependency_id}/removal | 删除依赖关系并留依据 | 200 任务变更 |
+| transitionTask | POST /projects/{project_id}/tasks/{task_id}/transitions | 服务端状态流转（三类主接口之一） | 200 状态变更 |
+| getReviewTemplate | GET /projects/{project_id}/review-template | 查询带版本八段式与十项模板 | 200 评审模板 |
+| createTaskReview | POST /projects/{project_id}/tasks/{task_id}/reviews | 发布带证据代码评审 | 201 评审变更 |
+| listTaskReviews | GET /projects/{project_id}/tasks/{task_id}/reviews | 查询完整评审历史 | 200 评审分页 |
+| createReleaseAssessment | POST /projects/{project_id}/tasks/{task_id}/release-assessments | 四视角上线评估（三类主接口之一） | 201 评估变更 |
+| listReleaseAssessments | GET /projects/{project_id}/tasks/{task_id}/release-assessments | 查询评估及预案版本历史 | 200 评估分页 |
+| reviewReleaseAssessment | POST /projects/{project_id}/tasks/{task_id}/release-assessments/{assessment_id}/reviews | 评审当前风险评估及回滚预案 | 200 评估变更 |
+| listTaskDecisions | GET /projects/{project_id}/tasks/{task_id}/decisions | 查询经理交付/回滚/返工决定 | 200 决定分页 |
+| validateContractPayload | POST /projects/{project_id}/contract-validations | 真实契约校验性能入口 | 200 校验结果 |
+| getEscalationRules | GET /projects/{project_id}/escalation-rules | 查询当前或历史升级规则版本 | 200 规则对象 |
+| listEscalations | GET /projects/{project_id}/escalations | 查询本项目升级记录及处理计数 | 200 升级分页 |
+| createEscalation | POST /internal/projects/{project_id}/tasks/{task_id}/escalations | 服务身份升级通知性能入口 | 202 升级受理 |
+| listMyNotifications | GET /me/notifications | 查询本人当前可访问通知 | 200 通知分页 |
+| markNotificationRead | POST /projects/{project_id}/notifications/{notification_id}/read | 标记本人通知已读 | 200 通知对象 |
+| handleNotification | POST /projects/{project_id}/notifications/{notification_id}/handling | 记录本人通知处理结果 | 200 通知对象 |
+| listProjectAuditEvents | GET /projects/{project_id}/audit-events | 只读查询本项目审计和计划差异 | 200 审计分页 |
 
 ## 10 非功能条件的观察与判定
 
