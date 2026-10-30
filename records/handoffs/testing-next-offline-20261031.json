@@ -8,7 +8,9 @@
     "reports/independent-tests/next-offline-20261031/RELEASE_V52.PUBLIC.json",
     "records/qa/next-install-v52.PUBLIC/INSTALL_README.PUBLIC.md",
     "records/qa/next-install-v52.PUBLIC/DELIVERY_MANIFEST.PUBLIC.json",
-    "records/qa/next-install-v52.PUBLIC/OFFLINE_INSTALL_CHECKS.PUBLIC.json"
+    "records/qa/next-install-v52.PUBLIC/OFFLINE_INSTALL_CHECKS.PUBLIC.json",
+    "records/qa/p14-public-controls-v52/CONTROLS.PUBLIC.md",
+    "records/qa/p14-public-controls-v52/DELIVERY_MANIFEST.PUBLIC.json"
   ],
   "interfaces": [
     "original PUBLIC wrapper protocol; not run"
@@ -19,7 +21,7 @@
     "public wrapper AST parsing",
     "public delivery manifest 6 SHA256 checks"
   ],
-  "results": "21 logger/raw + 1 synthetic default-false prepare + 8 installation/transport offline tests passed; encrypted new package available; live blocked",
+  "results": "21 logger/raw + 1 synthetic default-false prepare + 8 installation/transport offline tests passed; encrypted new package available; live blocked; 6 offline public control checks passed; observer exact reuse, p14 issuer/seal new versions; no grant output",
   "unverified": [
     "Linux/cgroup/image actual tool execution (local platform macOS)",
     "long-duration throughput/memory/disk sizing under actual workload",
