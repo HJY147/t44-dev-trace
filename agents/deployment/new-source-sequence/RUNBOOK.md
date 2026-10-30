@@ -2,7 +2,7 @@
 
 实际源13acb43a804e717e7485091895378511fe3d9b76；旧packet90b只证明原400client/800task/40project/CA/角色/namespace/database历史来源。新source691422…、bundle414e3069…、新final-backend-web-import-v1 receipt及真实config766701…证明实际运行身份。两链不能互换，旧receipt路径/时间不能伪填新值。后台仍原七服务/资源；不seed/新建task/重建库，不触云，不创建VMstop timer。
 
-本目录MANIFEST绑定后端a60b2d28的精确工具SHA。backend目录从该提交agents/backend/new-source-material原字节复制；不要把host_runner新SHA当旧ee72 pin。新maintenance_v3保留原SOURCE90b历史资格和审计/断点逻辑；新增core双链校验及新host pin，不冒称原文件未改。rotation原文件字节未改，wrapper另核新快照再调用。原prepare_next_manual/resume硬钉旧ID且自动旧授权，不能运行。
+本目录MANIFEST绑定后端4a5401ac的精确工具SHA。backend目录从该提交agents/backend/new-source-material原字节复制；不要把host_runner新SHA当旧ee72 pin。新maintenance_v3保留原SOURCE90b历史资格和审计/断点逻辑；新增core双链校验及新host pin，不冒称原文件未改。rotation原文件字节未改，wrapper另核新快照再调用。原prepare_next_manual/resume硬钉旧ID且自动旧授权，不能运行。
 
 ## 现场必需输入，当前全部待实际取得
 
@@ -14,14 +14,14 @@
 
 ## 手工顺序（变量均为现场真实路径，不是预填成功）
 
-设置 KIT 为本目录绝对路径，BACKEND为a60b2d28新后端工具绝对目录；NEW_SOURCE/NEW_BUNDLE/NEW_IMPORT为新链三文件，OLD_PACKET/CA/ACCOUNTS为旧来源私密文件，NEW_AUTH/MAINT_AUTH为现场真实批准文件；API_ID为新快照的api ID，API_IMAGE为完整766701 config digest。所有输出须全新，保留失败前缀不自动重试。
+设置 KIT 为本目录绝对路径，BACKEND为4a5401ac新后端工具绝对目录；NEW_SOURCE/NEW_BUNDLE/NEW_IMPORT为新链三文件，NEW_IMPORT_OBSERVATION为原producer生成的NEW_IMPORT.observation.PUBLIC.json sidecar，REMOTE_IMPORT_PATH为APP上receipt真实canonical /root路径（本机复制路径不得替代），OLD_PACKET/CA/ACCOUNTS为旧来源私密文件，NEW_AUTH/MAINT_AUTH为现场真实批准文件；API_ID为新快照的api ID，API_IMAGE为完整766701 config digest。所有输出须全新，保留失败前缀不自动重试。
 
 1. 将真实新快照存KIT/P09-existing-containers.PUBLIC.json。先核本目录与后端MANIFEST SHA、旧controller闲置、七角色身份/资源/TLS/数据库volume/schema/index/current worker/pool，以及完整服务健康。旧resume脚本不用于这一步。新配置/Env/overlay漂移必须重plan重核。
 2. 执行backend零Docker双链检查，再维护：
 
 ```sh
-python3 "$BACKEND/check_inputs.py" --old-packet "$OLD_PACKET" --authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT"
-python3 "$KIT/cohort_maintenance_v3.py" --mode apply --root-admit-maintenance --backend-tools "$BACKEND" --old-packet "$OLD_PACKET" --accounts "$ACCOUNTS" --authorization "$MAINT_AUTH" --new-authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT" --api-container "$API_ID" --expected-api-image-id "$API_IMAGE" --output "$NEW_MAINTENANCE_OUTPUT"
+python3 "$BACKEND/check_inputs.py" --remote-import-receipt-path "$REMOTE_IMPORT_PATH" --old-packet "$OLD_PACKET" --authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT" --import-observation "$NEW_IMPORT_OBSERVATION"
+python3 "$KIT/cohort_maintenance_v3.py" --mode apply --root-admit-maintenance --backend-tools "$BACKEND" --old-packet "$OLD_PACKET" --accounts "$ACCOUNTS" --authorization "$MAINT_AUTH" --new-authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT" --import-observation "$NEW_IMPORT_OBSERVATION" --api-container "$API_ID" --expected-api-image-id "$API_IMAGE" --output "$NEW_MAINTENANCE_OUTPUT"
 ```
 
 确认原400 transition state2、800全资格/原断点审计均满足，保留真实维护receipt；任何未知结果须使用原inspect/previous路径，不直接重跑apply。maintenance接口模式/previous守卫保留。
@@ -29,7 +29,7 @@ python3 "$KIT/cohort_maintenance_v3.py" --mode apply --root-admit-maintenance --
 3. 执行backend fresh material-v2（原400/800角色、horizon、binding、process_exit全部保持）：
 
 ```sh
-python3 "$BACKEND/host_runner.py" --api-container "$API_ID" --expected-api-image-id "$API_IMAGE" --discover-maintenance-gateway --old-packet "$OLD_PACKET" --accounts "$ACCOUNTS" --authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT" --output "$NEW_MATERIAL_OUTPUT"
+python3 "$BACKEND/host_runner.py" --api-container "$API_ID" --expected-api-image-id "$API_IMAGE" --discover-maintenance-gateway --old-packet "$OLD_PACKET" --accounts "$ACCOUNTS" --authorization "$NEW_AUTH" --ca "$CA" --source-manifest "$NEW_SOURCE" --bundle-manifest "$NEW_BUNDLE" --import-receipt "$NEW_IMPORT" --import-observation "$NEW_IMPORT_OBSERVATION" --output "$NEW_MATERIAL_OUTPUT"
 ```
 
 必须实际FRESH_MATERIAL_NOT_BENCHMARK_AUTHORIZATION且material_process_exit_proof.process_exit_proven=true，不能用exit0单独替代资格通过。
@@ -48,3 +48,5 @@ python3 "$KIT/observe_full_scan.py" --api "$API_ID" --rotation "$NEW_ROTATION_BA
 ## 本地验证范围
 
 仅脚本语法/3.10 AST、manifest及少量未批准/旧source/旧image拒绝检查。未运行任何实际维护、发行会话、凭据轮换、scanner/DB查询、封包或发压；现场排他、旧timer闲置、真实新快照与import receipt均仍待实核。测试退出/证据停止写入并回收核验后立即告知用户手动停机。
+
+4a5401ac新门禁：APP live maintenance/host均以真实receipt canonical path对auth ref及producer receipt_path三方绑定，验证原文件uid0/mode0600/mtime_ns/bytes/SHA；ref/receipt/observation三时间必须相等且UTC非未来。离线check_inputs只以显式remote路径验证来源，不能声称本机fsstat等于APP现场。缺sidecar不得自造；需原import producer现场生成。原144d/a60包作为历史draft保留，不是最终kit pin。

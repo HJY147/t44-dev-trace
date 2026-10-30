@@ -14,13 +14,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
-NEW_CORE_SHA = '2dc3527669ddb327805622fb8bf8ee43ae0c2173b44fea31bd74eb1f99f50639'
+NEW_CORE_SHA = '40bfa5def96fab71e63f0b67da725d70c9e5d575d9c1ed466f96da6fc9f245b4'
 SOURCE = '90b734f65ce6ee9f5c217e885bc7ea4857e32b48'
 # Exact source90b resources/escalation-rules.json data; no product import or rule edits.
 FROZEN_RULES = {'version': 1, 'scan_interval_seconds': 60, 'selection': 'highest_priority_matching', 'rules': [{'level': 1, 'label': '临期', 'start_offset_seconds': -86400, 'start_inclusive': True, 'end_offset_seconds': 0, 'end_inclusive': True, 'recipient_kinds': [1], 'priority': 1}, {'level': 2, 'label': '超期', 'start_offset_seconds': 0, 'start_inclusive': False, 'end_offset_seconds': 86400, 'end_inclusive': False, 'recipient_kinds': [1, 2], 'priority': 2}, {'level': 3, 'label': '严重超期', 'start_offset_seconds': 86400, 'start_inclusive': True, 'end_offset_seconds': None, 'end_inclusive': False, 'recipient_kinds': [1, 2], 'priority': 3}], 'effective_at': '2026-10-23T05:33:29Z', 'decided_by': 1}
 OPS = ['login', 'readonly-inventory', 'unblock-existing-owned', 'readonly-audit', 'final-inventory']
 BASIS = 'Restore original cohort after completed MANUAL11 BLOCK/UNBLOCK cycle'
-OWNER_MODULE_HASHES = {'host_runner.py':'17bbfc546cd7c3acd9a108371b9318c274be22898417f5149e9fd6bc50440c49',
+OWNER_MODULE_HASHES = {'host_runner.py':'60b3f4dadefa95655ce54a803ab0eef3014e8c28ba3a5356cd1c5b8073b962b5',
                        'runtime_support.py':'bec01e4038ef4ca5d6ba6d048e96fb8c7cb32933f705fd65a6995d24d9753170'}
 
 
@@ -464,7 +464,7 @@ def build_parser():
     p.add_argument('--expected-api-image-id',required=True)
     p.add_argument('--root-admit-maintenance',action='store_true')
     p.add_argument('--previous',type=Path)
-    for name in ['new-authorization','source-manifest','bundle-manifest','import-receipt']:
+    for name in ['new-authorization','source-manifest','bundle-manifest','import-receipt','import-observation']:
         p.add_argument('--'+name,type=Path,required=True)
     return p
 
@@ -486,6 +486,10 @@ def main(argv=None):
                    'backend-bundle-manifest.json':read(args.bundle_manifest),
                    'backend-import-receipt.json':read(args.import_receipt)}
     core.validate_new_source(current_auth,admitted_old,current_files)
+    host_path=args.backend_tools/'host_runner.py'
+    need(sha(read(host_path))==OWNER_MODULE_HASHES['host_runner.py'],'NEW_SOURCE_HOST_PIN_REQUIRED')
+    current_host=load_module('maintenance_new_source_host',host_path)
+    current_host.validate_import_observation(current_auth,args.import_receipt,args.import_observation)
     need(auth['operation_id']=='r30restoretransition08' and current_auth['maintenance_id']==auth['operation_id'],
          'EXACT_NEW_MAINTENANCE_ID_REQUIRED')
     need(args.expected_api_image_id==current_auth['expected_api_image_id'],'NEW_CURRENT_API_CONFIG_REQUIRED')

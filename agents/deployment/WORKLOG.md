@@ -817,3 +817,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 - 2026-10-31 locked-task candidate：准确13ac仅离线build。旧generic run41111887081因历史lock pin拒绝，原失败保留；改用原已成功final适配器run41112638628，尚构建中，无云/SSH/发压。记录agents/deployment/locked-task-candidate-20261031，操作者AI。
 
 - 新source顺序包f9b55bd8：旧cohort维护资格与90b历史链不动，v3新增13ac/core/receipt授权；rotation旧原字节与新快照wrapper，完整scan原函数提取。AST3.10/三类拒绝pass，无Docker/云/真实材料。false模板与待现场缺口见agents/deployment/new-source-sequence。
+
+- 4a5401ac接口修订：旧144d顺序包保留draft，更新8py manifest及maintenance新host/core SHA，必填producer sidecar且在Docker/维护前验证真实路径/stat/三时间。RUNBOOK补remote路径与APP原路径区别；7项合成拒绝边界通过、AST3.10 pass，无Docker/云/真实材料。
