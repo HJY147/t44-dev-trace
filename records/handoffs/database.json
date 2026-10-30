@@ -1902,5 +1902,14 @@
         "resolution": "lexeme variable name; original four complete SQL literals restored, no rule suppression"
       }
     ]
+  },
+  "manual12_diagnosis": {
+    "issue": 47,
+    "prompt_ref": "ROLE-database-MANUAL12-DIAGNOSIS-20261030-v1",
+    "status": "MEASURED_HOTSPOT_IDENTIFIED_UNSAFE_POOL_SHORTCUT_REJECTED",
+    "evidence": "agents/database/manual12-diagnosis/",
+    "cloud_actions": false,
+    "product_changed": false,
+    "next": "native synthetic idempotency insert reproduction"
   }
 }

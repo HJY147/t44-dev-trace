@@ -1,0 +1,96 @@
+{
+  "scope": "isolated local MySQL8.4.11; synthetic rows only",
+  "variants": [
+    {
+      "reset": "rollback",
+      "cases": [
+        {
+          "name": "normal_uow_commit",
+          "calls": {
+            "commit": 1,
+            "rollback": 1
+          }
+        },
+        {
+          "name": "connection_close_without_commit",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 2
+          }
+        },
+        {
+          "name": "exception_uow_rollback",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 3
+          }
+        },
+        {
+          "name": "integrity_error_uow_rollback",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 3
+          }
+        },
+        {
+          "name": "raw_dbapi_return_without_rollback",
+          "visible_on_recheckout": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 3
+          },
+          "safe": true
+        }
+      ]
+    },
+    {
+      "reset": null,
+      "cases": [
+        {
+          "name": "normal_uow_commit",
+          "calls": {
+            "commit": 1,
+            "rollback": 0
+          }
+        },
+        {
+          "name": "connection_close_without_commit",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 2
+          }
+        },
+        {
+          "name": "exception_uow_rollback",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 2
+          }
+        },
+        {
+          "name": "integrity_error_uow_rollback",
+          "visible": 0,
+          "calls": {
+            "commit": 0,
+            "rollback": 2
+          }
+        },
+        {
+          "name": "raw_dbapi_return_without_rollback",
+          "visible_on_recheckout": 1,
+          "calls": {
+            "commit": 0,
+            "rollback": 1
+          },
+          "safe": false
+        }
+      ]
+    }
+  ],
+  "production_changed": false
+}

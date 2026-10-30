@@ -98,3 +98,8 @@
 - 原975业务断言未降低，按VERSION选择快照；V1两golden与935来源显式保留但当前未执行V1历史代码。V2快照在语义/重现性质后才冻结；旧黄金小数据真实红保留。只是开发候选，无MySQL/独立/性能或组合CI成功声明。
 - 最终精确1076677当前源975/新性质小目标14绿1.84s（2未选）+975默认6000单目标1绿25.95s（2未选），原JUnit warning保留；原全性质13绿属于最后旧marker查询保护前，分范围记录不相加。
 - 原计数器当前完整产品6245/exit1，净90仍超1145；持久签名AST全同、冻结specs/DDL净差异0，Ruff通过。两分支已push；[Issue4交接](https://github.com/HJY147/t44-dev-trace/issues/4#issuecomment-6397356591)单ID GET全文一致。根待采用稳定68或V2额外22、精确审核与CI/freshMySQL；不称规模/独立/正式性能闭合。
+
+
+## MANUAL12 diagnosis 2026-10-30 — Issue #47
+
+Two SHA-bound neutral telemetry groups were differenced; source90b exact local MySQL digest mapping proves idempotency INSERT75–158ms dominates observed SQL wait, COMMIT16ms; CPU not saturated, locks/log_wait counters do not explain the delay. Confirmed-missing scan remains16000rows/call despite new index. Real native SQLAlchemy pool cleanup probe rejects global reset=None: raw DBAPI return exposes an uncommitted row while existing fallback cleans it. Product unchanged. Script/results/limitations in agents/database/manual12-diagnosis/. All work local skip-networking synthetic MySQL; own server shut down, no cloud/SUT/QA PRIVATE access. Prompt ROLE-database-MANUAL12-DIAGNOSIS-20261030-v1. Next: exact DDL/claim accumulated-row concurrency reproduction before accepted fix.

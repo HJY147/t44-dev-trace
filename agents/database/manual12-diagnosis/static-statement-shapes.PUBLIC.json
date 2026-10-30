@@ -1,0 +1,18 @@
+[
+  {
+    "name": "insert_audit_events",
+    "sql": "INSERT INTO audit_events (project_id, task_id, attempted_project_id, attempted_task_id, actor_kind, actor_id, request_id, operation_id, outcome, reason_code, expected_version, observed_version, before_values, after_values, evidence, created_at) VALUES ('synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic')"
+  },
+  {
+    "name": "insert_idempotency_requests",
+    "sql": "INSERT INTO idempotency_requests (actor_kind, actor_id, operation_id, idempotency_key, request_hash, status, owner_token, lease_until, created_at) VALUES ('synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic')"
+  },
+  {
+    "name": "insert_outbox_events",
+    "sql": "INSERT INTO outbox_events (event_type, project_id, task_id, payload, recipients, status, next_attempt_at, created_at, updated_at) VALUES ('synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic', 'synthetic')"
+  },
+  {
+    "name": "complete_idempotency",
+    "sql": "UPDATE idempotency_requests SET status='synthetic', response_status='synthetic', response_body='synthetic', response_request_id='synthetic', completed_at='synthetic' WHERE idempotency_requests.id = 'synthetic' AND idempotency_requests.status = 'synthetic' AND idempotency_requests.owner_token = 'synthetic'"
+  }
+]

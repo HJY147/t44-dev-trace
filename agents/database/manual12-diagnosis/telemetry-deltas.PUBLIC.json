@@ -1,0 +1,1507 @@
+{
+  "inputs": {
+    "t44-manual13-early.PUBLIC.jsonl": {
+      "samples": 12,
+      "sha256": "8624bc1870ba050645c81dc831a18c576d24b84f97d4b914b9d2dd8fc04d6843"
+    },
+    "t44-manual13-late.PUBLIC.jsonl": {
+      "samples": 12,
+      "sha256": "a0251fd11fb116fd2dc1c8f78a718f90ce4ea99b11bacde857ba2696e9df1824"
+    }
+  },
+  "intervals": {
+    "between_groups": {
+      "config_unchanged": true,
+      "confirmed_missing_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 0.3944257798084716,
+            "delta": {
+              "count_star": 101,
+              "sum_lock_time_ps": 193000000,
+              "sum_rows_examined": 1616000,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 3082668948000
+            },
+            "digest_hash": "91fd940a96c368e5a0d50ed1cf3baea8aa128f4f6d2fd204482e749040d9be54",
+            "mean_statement_ms": 30.521474732673266,
+            "rows_examined_per_call": 16000.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": []
+      },
+      "cpu": {
+        "api": {
+          "mean_cores": 12.228808224268334,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "consumer": {
+          "mean_cores": 0.09112924124537963,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "mysql": {
+          "mean_cores": 2.5212320053443094,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "rabbitmq": {
+          "mean_cores": 0.6896912744814766,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "scheduler": {
+          "mean_cores": 0.20048840465046386,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "tls-gateway": {
+          "mean_cores": 0.15210815411997972,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "web": {
+          "mean_cores": 0.10925761243500363,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        }
+      },
+      "effective_global_config": {
+        "available": true,
+        "unavailable_fields": [],
+        "values": {
+          "innodb_buffer_pool_instances": 16,
+          "innodb_buffer_pool_size": 8589934592,
+          "innodb_dedicated_server": 0,
+          "innodb_flush_log_at_trx_commit": 1,
+          "innodb_log_buffer_size": 67108864,
+          "innodb_page_size": 16384,
+          "innodb_redo_log_capacity": 104857600,
+          "sync_binlog": 1
+        }
+      },
+      "end_utc": "2026-10-30T14:41:21.364878+00:00",
+      "file_io_delta": {
+        "bytes_read": 3801088,
+        "bytes_write": 12512630988,
+        "count_read": 232,
+        "count_write": 707362,
+        "sum_timer_read_ps": 2409354262720,
+        "sum_timer_write_ps": 1141160634601136
+      },
+      "seconds": 256.068454879,
+      "start_utc": "2026-10-30T14:37:05.296406+00:00",
+      "statement_total_delta": {
+        "count_star": 4855857,
+        "digest_rows": 0,
+        "sum_lock_time_ps": 2882532000000,
+        "sum_rows_examined": 5290801,
+        "sum_timer_wait_ps": 33248725704638000
+      },
+      "status_counter_deltas": {
+        "Com_commit": 391983,
+        "Com_rollback": 391962,
+        "Connections": 92,
+        "Handler_commit": 5028696,
+        "Innodb_buffer_pool_read_requests": 25533383,
+        "Innodb_buffer_pool_reads": 232,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 135153,
+        "Innodb_data_read": 3801088,
+        "Innodb_data_reads": 232,
+        "Innodb_data_writes": 612635,
+        "Innodb_data_written": 6365544960,
+        "Innodb_log_waits": 0,
+        "Innodb_log_writes": 275535,
+        "Innodb_os_log_fsyncs": 118060,
+        "Innodb_os_log_written": 659163136,
+        "Innodb_row_lock_time": 79,
+        "Innodb_row_lock_waits": 7,
+        "Uptime": 256
+      },
+      "status_gauges": {
+        "Innodb_buffer_pool_bytes_data": {
+          "end": 781107200,
+          "start": 501366784
+        },
+        "Innodb_buffer_pool_bytes_dirty": {
+          "end": 73744384,
+          "start": 74448896
+        },
+        "Innodb_buffer_pool_pages_data": {
+          "end": 47675,
+          "start": 30601
+        },
+        "Innodb_buffer_pool_pages_dirty": {
+          "end": 4501,
+          "start": 4544
+        },
+        "Innodb_buffer_pool_pages_free": {
+          "end": 476569,
+          "start": 493643
+        },
+        "Innodb_buffer_pool_pages_total": {
+          "end": 524288,
+          "start": 524288
+        },
+        "Innodb_row_lock_current_waits": {
+          "end": 0,
+          "start": 0
+        },
+        "Max_used_connections": {
+          "end": 261,
+          "start": 241
+        },
+        "Threads_connected": {
+          "end": 261,
+          "start": 240
+        },
+        "Threads_running": {
+          "end": 145,
+          "start": 174
+        }
+      },
+      "status_rates_per_second": {
+        "Com_commit": 1530.7742618481595,
+        "Com_rollback": 1530.6922525276054,
+        "Connections": 0.35927892814237017,
+        "Handler_commit": 19638.09248732418,
+        "Innodb_buffer_pool_read_requests": 99713.11387052844,
+        "Innodb_buffer_pool_reads": 0.9060077318372813,
+        "Innodb_buffer_pool_wait_free": 0.0,
+        "Innodb_data_fsyncs": 527.8002714698451,
+        "Innodb_data_read": 14844.030678422017,
+        "Innodb_data_reads": 0.9060077318372813,
+        "Innodb_data_writes": 2392.465718940228,
+        "Innodb_data_written": 24858762.720335506,
+        "Innodb_log_waits": 0.0,
+        "Innodb_log_writes": 1076.0208637576952,
+        "Innodb_os_log_fsyncs": 461.0485897444372,
+        "Innodb_os_log_written": 2574167.6627504714,
+        "Innodb_row_lock_time": 0.308511253513557,
+        "Innodb_row_lock_waits": 0.027336440184745556,
+        "Uptime": 0.9997326696135518
+      },
+      "top20_common_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 489.6581270006438,
+            "delta": {
+              "count_star": 125386,
+              "sum_lock_time_ps": 91570000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 17575674947942000
+            },
+            "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "mean_statement_ms": 140.17254675914376,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 1520.9761006447986,
+            "delta": {
+              "count_star": 389474,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 6424147711325000
+            },
+            "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "mean_statement_ms": 16.494419939007482,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 490.07207880915564,
+            "delta": {
+              "count_star": 125492,
+              "sum_lock_time_ps": 103395000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 2038253219100000
+            },
+            "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+            "mean_statement_ms": 16.24209685956077,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 490.1306568952658,
+            "delta": {
+              "count_star": 125507,
+              "sum_lock_time_ps": 102065000000,
+              "sum_rows_examined": 125525,
+              "sum_rows_sent": 125532,
+              "sum_timer_wait_ps": 943269595506000
+            },
+            "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+            "mean_statement_ms": 7.515673193574861,
+            "rows_examined_per_call": 1.0001434182953939
+          },
+          {
+            "calls_per_second": 490.1267516895251,
+            "delta": {
+              "count_star": 125506,
+              "sum_lock_time_ps": 99308000000,
+              "sum_rows_examined": 125513,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 846853234702000
+            },
+            "digest_hash": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+            "mean_statement_ms": 6.747511949245455,
+            "rows_examined_per_call": 1.0000557742259335
+          },
+          {
+            "calls_per_second": 969.7602155538486,
+            "delta": {
+              "count_star": 248325,
+              "sum_lock_time_ps": 249487000000,
+              "sum_rows_examined": 248343,
+              "sum_rows_sent": 248361,
+              "sum_timer_wait_ps": 776388327987000
+            },
+            "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "mean_statement_ms": 3.1265008677620054,
+            "rows_examined_per_call": 1.000072485653881
+          },
+          {
+            "calls_per_second": 490.20876101007934,
+            "delta": {
+              "count_star": 125527,
+              "sum_lock_time_ps": 181408000000,
+              "sum_rows_examined": 125540,
+              "sum_rows_sent": 125543,
+              "sum_timer_wait_ps": 178039157169000
+            },
+            "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+            "mean_statement_ms": 1.4183335630501805,
+            "rows_examined_per_call": 1.0001035633768034
+          },
+          {
+            "calls_per_second": 490.28295991915223,
+            "delta": {
+              "count_star": 125546,
+              "sum_lock_time_ps": 84800000000,
+              "sum_rows_examined": 125547,
+              "sum_rows_sent": 125548,
+              "sum_timer_wait_ps": 156553423182000
+            },
+            "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+            "mean_statement_ms": 1.2469805743074251,
+            "rows_examined_per_call": 1.0000079652079716
+          },
+          {
+            "calls_per_second": 489.8963445508251,
+            "delta": {
+              "count_star": 125447,
+              "sum_lock_time_ps": 94097000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 140434101079000
+            },
+            "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "mean_statement_ms": 1.1194695853946286,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 2439.6523199048393,
+            "delta": {
+              "count_star": 624718,
+              "sum_lock_time_ps": 396820000000,
+              "sum_rows_examined": 624836,
+              "sum_rows_sent": 624859,
+              "sum_timer_wait_ps": 112651970642000
+            },
+            "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "mean_statement_ms": 0.1803245154485704,
+            "rows_examined_per_call": 1.0001888852250136
+          },
+          {
+            "calls_per_second": 1440.0602376979518,
+            "delta": {
+              "count_star": 368754,
+              "sum_lock_time_ps": 239368000000,
+              "sum_rows_examined": 368797,
+              "sum_rows_sent": 368807,
+              "sum_timer_wait_ps": 77190288797000
+            },
+            "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "mean_statement_ms": 0.2093273260683274,
+            "rows_examined_per_call": 1.0001166089045814
+          },
+          {
+            "calls_per_second": 1440.071953315174,
+            "delta": {
+              "count_star": 368757,
+              "sum_lock_time_ps": 234258000000,
+              "sum_rows_examined": 368787,
+              "sum_rows_sent": 368805,
+              "sum_timer_wait_ps": 71257913913000
+            },
+            "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "mean_statement_ms": 0.1932381321927448,
+            "rows_examined_per_call": 1.0000813543878488
+          },
+          {
+            "calls_per_second": 979.8707932164638,
+            "delta": {
+              "count_star": 250914,
+              "sum_lock_time_ps": 214295000000,
+              "sum_rows_examined": 250953,
+              "sum_rows_sent": 250961,
+              "sum_timer_wait_ps": 28635530863000
+            },
+            "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "mean_statement_ms": 0.11412488288019003,
+            "rows_examined_per_call": 1.0001554317415529
+          },
+          {
+            "calls_per_second": 509.78165218235716,
+            "delta": {
+              "count_star": 130539,
+              "sum_lock_time_ps": 89754000000,
+              "sum_rows_examined": 130547,
+              "sum_rows_sent": 130547,
+              "sum_timer_wait_ps": 22153768861000
+            },
+            "digest_hash": "41ae9943079294f7fe381cd37a3bc9ed163f7d857bf02444731f8654289b6120",
+            "mean_statement_ms": 0.1697099630072239,
+            "rows_examined_per_call": 1.000061284367124
+          },
+          {
+            "calls_per_second": 490.1697089526726,
+            "delta": {
+              "count_star": 125517,
+              "sum_lock_time_ps": 88234000000,
+              "sum_rows_examined": 376611,
+              "sum_rows_sent": 376596,
+              "sum_timer_wait_ps": 15094961190000
+            },
+            "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+            "mean_statement_ms": 0.12026228471043764,
+            "rows_examined_per_call": 3.0004780228972967
+          },
+          {
+            "calls_per_second": 1529.1614118772598,
+            "delta": {
+              "count_star": 391570,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 9347529692000
+            },
+            "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "mean_statement_ms": 0.02387192505043798,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 489.9861642828607,
+            "delta": {
+              "count_star": 125470,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 3388504674000
+            },
+            "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "mean_statement_ms": 0.02700649297840121,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 489.8729133163811,
+            "delta": {
+              "count_star": 125441,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 3236736482000
+            },
+            "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+            "mean_statement_ms": 0.02580285936814917,
+            "rows_examined_per_call": 0.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": [
+          "59c4a8e628b32c181e1dded53c40ef4c4c3daea205f5024e88cca4d1f4160a8a",
+          "ab413d5b0ae672d349d7e6149ee3915f24b8555f933aa104986de280726539f9",
+          "b7adf5eff80b7f3fb53f8db4d9acdfab5b1050d3210677f1549ef65a5f2559ac",
+          "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef"
+        ]
+      }
+    },
+    "early": {
+      "config_unchanged": true,
+      "confirmed_missing_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 0.3961425325717103,
+            "delta": {
+              "count_star": 25,
+              "sum_lock_time_ps": 37000000,
+              "sum_rows_examined": 400000,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 891493056000
+            },
+            "digest_hash": "91fd940a96c368e5a0d50ed1cf3baea8aa128f4f6d2fd204482e749040d9be54",
+            "mean_statement_ms": 35.65972224,
+            "rows_examined_per_call": 16000.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": []
+      },
+      "cpu": {
+        "api": {
+          "mean_cores": 13.09631763123304,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "consumer": {
+          "mean_cores": 0.09791302858842456,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "mysql": {
+          "mean_cores": 2.696623143212186,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "rabbitmq": {
+          "mean_cores": 0.7002314916741733,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "scheduler": {
+          "mean_cores": 0.19428227388171587,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "tls-gateway": {
+          "mean_cores": 0.16532043593670984,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "web": {
+          "mean_cores": 0.1222677764167255,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        }
+      },
+      "effective_global_config": {
+        "available": true,
+        "unavailable_fields": [],
+        "values": {
+          "innodb_buffer_pool_instances": 16,
+          "innodb_buffer_pool_size": 8589934592,
+          "innodb_dedicated_server": 0,
+          "innodb_flush_log_at_trx_commit": 1,
+          "innodb_log_buffer_size": 67108864,
+          "innodb_page_size": 16384,
+          "innodb_redo_log_capacity": 104857600,
+          "sync_binlog": 1
+        }
+      },
+      "end_utc": "2026-10-30T14:37:05.296406+00:00",
+      "file_io_delta": {
+        "bytes_read": 1720320,
+        "bytes_write": 3073797209,
+        "count_read": 105,
+        "count_write": 174889,
+        "sum_timer_read_ps": 361484383928,
+        "sum_timer_write_ps": 281838067568840
+      },
+      "seconds": 63.108598407000045,
+      "start_utc": "2026-10-30T14:36:02.187830+00:00",
+      "statement_total_delta": {
+        "count_star": 1249225,
+        "digest_rows": 5,
+        "sum_lock_time_ps": 844349000000,
+        "sum_rows_examined": 1351018,
+        "sum_timer_wait_ps": 9176151444762000
+      },
+      "status_counter_deltas": {
+        "Com_commit": 100739,
+        "Com_rollback": 100735,
+        "Connections": 59,
+        "Handler_commit": 1294652,
+        "Innodb_buffer_pool_read_requests": 6523174,
+        "Innodb_buffer_pool_reads": 108,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 33138,
+        "Innodb_data_read": 1769472,
+        "Innodb_data_reads": 108,
+        "Innodb_data_writes": 151132,
+        "Innodb_data_written": 1566761472,
+        "Innodb_log_waits": 0,
+        "Innodb_log_writes": 68513,
+        "Innodb_os_log_fsyncs": 29012,
+        "Innodb_os_log_written": 168751616,
+        "Innodb_row_lock_time": 113,
+        "Innodb_row_lock_waits": 4,
+        "Uptime": 63
+      },
+      "status_gauges": {
+        "Innodb_buffer_pool_bytes_data": {
+          "end": 501366784,
+          "start": 430915584
+        },
+        "Innodb_buffer_pool_bytes_dirty": {
+          "end": 74448896,
+          "start": 74203136
+        },
+        "Innodb_buffer_pool_pages_data": {
+          "end": 30601,
+          "start": 26301
+        },
+        "Innodb_buffer_pool_pages_dirty": {
+          "end": 4544,
+          "start": 4529
+        },
+        "Innodb_buffer_pool_pages_free": {
+          "end": 493643,
+          "start": 497943
+        },
+        "Innodb_buffer_pool_pages_total": {
+          "end": 524288,
+          "start": 524288
+        },
+        "Innodb_row_lock_current_waits": {
+          "end": 0,
+          "start": 0
+        },
+        "Max_used_connections": {
+          "end": 241,
+          "start": 241
+        },
+        "Threads_connected": {
+          "end": 240,
+          "start": 240
+        },
+        "Threads_running": {
+          "end": 174,
+          "start": 26
+        }
+      },
+      "status_rates_per_second": {
+        "Com_commit": 1596.280103549661,
+        "Com_rollback": 1596.2167207444495,
+        "Connections": 0.9348963768692363,
+        "Handler_commit": 20514.668883161194,
+        "Innodb_buffer_pool_read_requests": 103364.26675063735,
+        "Innodb_buffer_pool_reads": 1.7113357407097884,
+        "Innodb_buffer_pool_wait_free": 0.0,
+        "Innodb_data_fsyncs": 525.0948497744535,
+        "Innodb_data_read": 28038.524775789174,
+        "Innodb_data_reads": 1.7113357407097884,
+        "Innodb_data_writes": 2394.792529305109,
+        "Innodb_data_written": 24826434.298154432,
+        "Innodb_log_waits": 0.0,
+        "Innodb_log_writes": 1085.6365333634235,
+        "Innodb_os_log_fsyncs": 459.7154861988184,
+        "Innodb_os_log_written": 2673987.70151235,
+        "Innodb_row_lock_time": 1.7905642472241305,
+        "Innodb_row_lock_waits": 0.06338280521147364,
+        "Uptime": 0.99827918208071
+      },
+      "top20_common_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 510.12066204324276,
+            "delta": {
+              "count_star": 32193,
+              "sum_lock_time_ps": 23385000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 5091060568210000
+            },
+            "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "mean_statement_ms": 158.14184972540616,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 1581.6703669484164,
+            "delta": {
+              "count_star": 99817,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 1569719411538000
+            },
+            "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "mean_statement_ms": 15.725972645320937,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 510.50095887451164,
+            "delta": {
+              "count_star": 32217,
+              "sum_lock_time_ps": 26866000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 500045658860000
+            },
+            "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+            "mean_statement_ms": 15.521173879007979,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 510.67526158884317,
+            "delta": {
+              "count_star": 32228,
+              "sum_lock_time_ps": 26752000000,
+              "sum_rows_examined": 32235,
+              "sum_rows_sent": 32235,
+              "sum_timer_wait_ps": 299963191988000
+            },
+            "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+            "mean_statement_ms": 9.30753357291796,
+            "rows_examined_per_call": 1.0002172024326672
+          },
+          {
+            "calls_per_second": 1011.2092743438506,
+            "delta": {
+              "count_star": 63816,
+              "sum_lock_time_ps": 65476000000,
+              "sum_rows_examined": 63830,
+              "sum_rows_sent": 63831,
+              "sum_timer_wait_ps": 208314936937000
+            },
+            "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "mean_statement_ms": 3.2643057687257113,
+            "rows_examined_per_call": 1.0002193807195687
+          },
+          {
+            "calls_per_second": 510.50095887451164,
+            "delta": {
+              "count_star": 32217,
+              "sum_lock_time_ps": 22215000000,
+              "sum_rows_examined": 32212,
+              "sum_rows_sent": 32216,
+              "sum_timer_wait_ps": 55170411179000
+            },
+            "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+            "mean_statement_ms": 1.7124627115808424,
+            "rows_examined_per_call": 0.9998448024334978
+          },
+          {
+            "calls_per_second": 510.6594158875403,
+            "delta": {
+              "count_star": 32227,
+              "sum_lock_time_ps": 139318000000,
+              "sum_rows_examined": 32232,
+              "sum_rows_sent": 32234,
+              "sum_timer_wait_ps": 45166463612000
+            },
+            "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+            "mean_statement_ms": 1.4015100261271605,
+            "rows_examined_per_call": 1.0001551494088807
+          },
+          {
+            "calls_per_second": 2542.2209342269966,
+            "delta": {
+              "count_star": 160436,
+              "sum_lock_time_ps": 103091000000,
+              "sum_rows_examined": 160467,
+              "sum_rows_sent": 160476,
+              "sum_timer_wait_ps": 27698338851000
+            },
+            "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "mean_statement_ms": 0.1726441624760029,
+            "rows_examined_per_call": 1.000193223466055
+          },
+          {
+            "calls_per_second": 1503.5193681226692,
+            "delta": {
+              "count_star": 94885,
+              "sum_lock_time_ps": 62723000000,
+              "sum_rows_examined": 94900,
+              "sum_rows_sent": 94901,
+              "sum_timer_wait_ps": 24378315301000
+            },
+            "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "mean_statement_ms": 0.25692485957738315,
+            "rows_examined_per_call": 1.0001580861042314
+          },
+          {
+            "calls_per_second": 1503.4718310187607,
+            "delta": {
+              "count_star": 94882,
+              "sum_lock_time_ps": 60994000000,
+              "sum_rows_examined": 94887,
+              "sum_rows_sent": 94891,
+              "sum_timer_wait_ps": 16290487468000
+            },
+            "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "mean_statement_ms": 0.17169207508273435,
+            "rows_examined_per_call": 1.000052697034211
+          },
+          {
+            "calls_per_second": 510.3108104588772,
+            "delta": {
+              "count_star": 32205,
+              "sum_lock_time_ps": 24752000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 12835465219000
+            },
+            "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "mean_statement_ms": 0.3985550448377581,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 1020.8434607359945,
+            "delta": {
+              "count_star": 64424,
+              "sum_lock_time_ps": 55596000000,
+              "sum_rows_examined": 64437,
+              "sum_rows_sent": 64442,
+              "sum_timer_wait_ps": 7513028092000
+            },
+            "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "mean_statement_ms": 0.11661846659629951,
+            "rows_examined_per_call": 1.0002017881534833
+          },
+          {
+            "calls_per_second": 528.7235153728103,
+            "delta": {
+              "count_star": 33367,
+              "sum_lock_time_ps": 23301000000,
+              "sum_rows_examined": 33368,
+              "sum_rows_sent": 33366,
+              "sum_timer_wait_ps": 5455621431000
+            },
+            "digest_hash": "41ae9943079294f7fe381cd37a3bc9ed163f7d857bf02444731f8654289b6120",
+            "mean_statement_ms": 0.16350350439056552,
+            "rows_examined_per_call": 1.0000299697305721
+          },
+          {
+            "calls_per_second": 510.6594158875403,
+            "delta": {
+              "count_star": 32227,
+              "sum_lock_time_ps": 22908000000,
+              "sum_rows_examined": 96693,
+              "sum_rows_sent": 96693,
+              "sum_timer_wait_ps": 3986279814000
+            },
+            "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+            "mean_statement_ms": 0.12369379135507494,
+            "rows_examined_per_call": 3.000372358581314
+          },
+          {
+            "calls_per_second": 196.16978212951093,
+            "delta": {
+              "count_star": 12380,
+              "sum_lock_time_ps": 9014000000,
+              "sum_rows_examined": 12379,
+              "sum_rows_sent": 12380,
+              "sum_timer_wait_ps": 3432045937000
+            },
+            "digest_hash": "b7adf5eff80b7f3fb53f8db4d9acdfab5b1050d3210677f1549ef65a5f2559ac",
+            "mean_statement_ms": 0.27722503529886916,
+            "rows_examined_per_call": 0.999919224555735
+          },
+          {
+            "calls_per_second": 1590.1002800415422,
+            "delta": {
+              "count_star": 100349,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 2461874195000
+            },
+            "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "mean_statement_ms": 0.02453312135646593,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 185.47393375007476,
+            "delta": {
+              "count_star": 11705,
+              "sum_lock_time_ps": 8506000000,
+              "sum_rows_examined": 11706,
+              "sum_rows_sent": 11706,
+              "sum_timer_wait_ps": 1297439627000
+            },
+            "digest_hash": "ab413d5b0ae672d349d7e6149ee3915f24b8555f933aa104986de280726539f9",
+            "mean_statement_ms": 0.11084490619393421,
+            "rows_examined_per_call": 1.000085433575395
+          },
+          {
+            "calls_per_second": 510.4851131732088,
+            "delta": {
+              "count_star": 32216,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 895059935000
+            },
+            "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "mean_statement_ms": 0.027783087130618327,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 510.3108104588772,
+            "delta": {
+              "count_star": 32205,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 832255469000
+            },
+            "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+            "mean_statement_ms": 0.025842430336904205,
+            "rows_examined_per_call": 0.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": [
+          "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+          "e942d6463ddb088f9e1bacdeda78b4967c523d699238eab49682bdcd56655994"
+        ]
+      }
+    },
+    "late": {
+      "config_unchanged": true,
+      "confirmed_missing_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 0.3999007455243416,
+            "delta": {
+              "count_star": 25,
+              "sum_lock_time_ps": 39000000,
+              "sum_rows_examined": 400000,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 1076558847000
+            },
+            "digest_hash": "91fd940a96c368e5a0d50ed1cf3baea8aa128f4f6d2fd204482e749040d9be54",
+            "mean_statement_ms": 43.06235388,
+            "rows_examined_per_call": 16000.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": []
+      },
+      "cpu": {
+        "api": {
+          "mean_cores": 11.770736065486707,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "consumer": {
+          "mean_cores": 0.09418156834419714,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "mysql": {
+          "mean_cores": 2.388923506498662,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "rabbitmq": {
+          "mean_cores": 0.7006172443581258,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "scheduler": {
+          "mean_cores": 0.145670053016812,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "tls-gateway": {
+          "mean_cores": 0.1504581286270942,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        },
+        "web": {
+          "mean_cores": 0.1050929401659779,
+          "oom_events_end": [
+            "low 0",
+            "high 0",
+            "max 0",
+            "oom 0",
+            "oom_kill 0"
+          ],
+          "quota": [
+            "max 100000"
+          ],
+          "throttled_usec_delta": 0
+        }
+      },
+      "effective_global_config": {
+        "available": true,
+        "unavailable_fields": [],
+        "values": {
+          "innodb_buffer_pool_instances": 16,
+          "innodb_buffer_pool_size": 8589934592,
+          "innodb_dedicated_server": 0,
+          "innodb_flush_log_at_trx_commit": 1,
+          "innodb_log_buffer_size": 67108864,
+          "innodb_page_size": 16384,
+          "innodb_redo_log_capacity": 104857600,
+          "sync_binlog": 1
+        }
+      },
+      "end_utc": "2026-10-30T14:42:23.880382+00:00",
+      "file_io_delta": {
+        "bytes_read": 983040,
+        "bytes_write": 2955782886,
+        "count_read": 60,
+        "count_write": 172085,
+        "sum_timer_read_ps": 62907594604,
+        "sum_timer_write_ps": 282670919542836
+      },
+      "seconds": 62.515512360999764,
+      "start_utc": "2026-10-30T14:41:21.364878+00:00",
+      "statement_total_delta": {
+        "count_star": 1147748,
+        "digest_rows": 0,
+        "sum_lock_time_ps": 705966000000,
+        "sum_rows_examined": 1273286,
+        "sum_timer_wait_ps": 5768927655358000
+      },
+      "status_counter_deltas": {
+        "Com_commit": 92722,
+        "Com_rollback": 92713,
+        "Connections": 67,
+        "Handler_commit": 1188211,
+        "Innodb_buffer_pool_read_requests": 6095574,
+        "Innodb_buffer_pool_reads": 60,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 34823,
+        "Innodb_data_read": 983040,
+        "Innodb_data_reads": 60,
+        "Innodb_data_writes": 148613,
+        "Innodb_data_written": 1513513984,
+        "Innodb_log_waits": 0,
+        "Innodb_log_writes": 68862,
+        "Innodb_os_log_fsyncs": 30735,
+        "Innodb_os_log_written": 157345280,
+        "Innodb_row_lock_time": 46,
+        "Innodb_row_lock_waits": 1,
+        "Uptime": 63
+      },
+      "status_gauges": {
+        "Innodb_buffer_pool_bytes_data": {
+          "end": 844840960,
+          "start": 781107200
+        },
+        "Innodb_buffer_pool_bytes_dirty": {
+          "end": 65781760,
+          "start": 73744384
+        },
+        "Innodb_buffer_pool_pages_data": {
+          "end": 51565,
+          "start": 47675
+        },
+        "Innodb_buffer_pool_pages_dirty": {
+          "end": 4015,
+          "start": 4501
+        },
+        "Innodb_buffer_pool_pages_free": {
+          "end": 472679,
+          "start": 476569
+        },
+        "Innodb_buffer_pool_pages_total": {
+          "end": 524288,
+          "start": 524288
+        },
+        "Innodb_row_lock_current_waits": {
+          "end": 0,
+          "start": 0
+        },
+        "Max_used_connections": {
+          "end": 269,
+          "start": 261
+        },
+        "Threads_connected": {
+          "end": 269,
+          "start": 261
+        },
+        "Threads_running": {
+          "end": 160,
+          "start": 145
+        }
+      },
+      "status_rates_per_second": {
+        "Com_commit": 1483.1838770603201,
+        "Com_rollback": 1483.0399127919313,
+        "Connections": 1.0717339980052356,
+        "Handler_commit": 19006.65858960894,
+        "Innodb_buffer_pool_read_requests": 97504.98347995173,
+        "Innodb_buffer_pool_reads": 0.9597617892584199,
+        "Innodb_buffer_pool_wait_free": 0.0,
+        "Innodb_data_fsyncs": 557.0297464557659,
+        "Innodb_data_read": 15724.737155209952,
+        "Innodb_data_reads": 0.9597617892584199,
+        "Innodb_data_writes": 2377.217979784359,
+        "Innodb_data_written": 24210214.82252466,
+        "Innodb_log_waits": 0.0,
+        "Innodb_log_writes": 1101.5186055318886,
+        "Innodb_os_log_fsyncs": 491.6379765476256,
+        "Innodb_os_log_written": 2516899.7910694513,
+        "Innodb_row_lock_time": 0.7358173717647886,
+        "Innodb_row_lock_waits": 0.015996029820973666,
+        "Uptime": 1.0077498787213408
+      },
+      "top20_common_digest_deltas": {
+        "available": true,
+        "common_rows": [
+          {
+            "calls_per_second": 473.3385184324317,
+            "delta": {
+              "count_star": 29591,
+              "sum_lock_time_ps": 22718000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 2234829838019000
+            },
+            "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "mean_statement_ms": 75.52397141086817,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 1473.7142274063037,
+            "delta": {
+              "count_star": 92130,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 1511813292434000
+            },
+            "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "mean_statement_ms": 16.409565748768046,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 474.10632786383843,
+            "delta": {
+              "count_star": 29639,
+              "sum_lock_time_ps": 23617000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 518009698063000
+            },
+            "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+            "mean_statement_ms": 17.477300113465365,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 473.6584390288512,
+            "delta": {
+              "count_star": 29611,
+              "sum_lock_time_ps": 23450000000,
+              "sum_rows_examined": 29614,
+              "sum_rows_sent": 29614,
+              "sum_timer_wait_ps": 272081864723000
+            },
+            "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+            "mean_statement_ms": 9.188540229070277,
+            "rows_examined_per_call": 1.0001013137009895
+          },
+          {
+            "calls_per_second": 473.786407267419,
+            "delta": {
+              "count_star": 29619,
+              "sum_lock_time_ps": 22981000000,
+              "sum_rows_examined": 29629,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 231415725160000
+            },
+            "digest_hash": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+            "mean_statement_ms": 7.813083667915865,
+            "rows_examined_per_call": 1.0003376211215773
+          },
+          {
+            "calls_per_second": 623.205321825134,
+            "delta": {
+              "count_star": 38960,
+              "sum_lock_time_ps": 26099000000,
+              "sum_rows_examined": 38964,
+              "sum_rows_sent": 38964,
+              "sum_timer_wait_ps": 199266123930000
+            },
+            "digest_hash": "59c4a8e628b32c181e1dded53c40ef4c4c3daea205f5024e88cca4d1f4160a8a",
+            "mean_statement_ms": 5.114633571098563,
+            "rows_examined_per_call": 1.0001026694045174
+          },
+          {
+            "calls_per_second": 473.0825819552961,
+            "delta": {
+              "count_star": 29575,
+              "sum_lock_time_ps": 20555000000,
+              "sum_rows_examined": 29596,
+              "sum_rows_sent": 29600,
+              "sum_timer_wait_ps": 186997946253000
+            },
+            "digest_hash": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+            "mean_statement_ms": 6.322838419374472,
+            "rows_examined_per_call": 1.0007100591715976
+          },
+          {
+            "calls_per_second": 942.070180276423,
+            "delta": {
+              "count_star": 58894,
+              "sum_lock_time_ps": 58271000000,
+              "sum_rows_examined": 58902,
+              "sum_rows_sent": 58908,
+              "sum_timer_wait_ps": 64621666297000
+            },
+            "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "mean_statement_ms": 1.0972538169762625,
+            "rows_examined_per_call": 1.0001358372669542
+          },
+          {
+            "calls_per_second": 473.770411237598,
+            "delta": {
+              "count_star": 29618,
+              "sum_lock_time_ps": 19558000000,
+              "sum_rows_examined": 29620,
+              "sum_rows_sent": 29621,
+              "sum_timer_wait_ps": 59504330263000
+            },
+            "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+            "mean_statement_ms": 2.009059702309407,
+            "rows_examined_per_call": 1.000067526504153
+          },
+          {
+            "calls_per_second": 473.67443505867215,
+            "delta": {
+              "count_star": 29612,
+              "sum_lock_time_ps": 70218000000,
+              "sum_rows_examined": 29614,
+              "sum_rows_sent": 29615,
+              "sum_timer_wait_ps": 37277604610000
+            },
+            "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+            "mean_statement_ms": 1.258868182155883,
+            "rows_examined_per_call": 1.000067540186411
+          },
+          {
+            "calls_per_second": 2363.5893623768898,
+            "delta": {
+              "count_star": 147761,
+              "sum_lock_time_ps": 95216000000,
+              "sum_rows_examined": 147781,
+              "sum_rows_sent": 147787,
+              "sum_timer_wait_ps": 23073426860000
+            },
+            "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "mean_statement_ms": 0.1561536999614242,
+            "rows_examined_per_call": 1.0001353537130908
+          },
+          {
+            "calls_per_second": 1403.0437676572421,
+            "delta": {
+              "count_star": 87712,
+              "sum_lock_time_ps": 57277000000,
+              "sum_rows_examined": 87726,
+              "sum_rows_sent": 87729,
+              "sum_timer_wait_ps": 17682987406000
+            },
+            "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "mean_statement_ms": 0.201602829783838,
+            "rows_examined_per_call": 1.000159613279825
+          },
+          {
+            "calls_per_second": 1403.0437676572421,
+            "delta": {
+              "count_star": 87712,
+              "sum_lock_time_ps": 56317000000,
+              "sum_rows_examined": 87723,
+              "sum_rows_sent": 87724,
+              "sum_timer_wait_ps": 14167849445000
+            },
+            "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "mean_statement_ms": 0.16152692271296973,
+            "rows_examined_per_call": 1.0001254104341482
+          },
+          {
+            "calls_per_second": 474.3302722813321,
+            "delta": {
+              "count_star": 29653,
+              "sum_lock_time_ps": 23062000000,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 8176762629000
+            },
+            "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "mean_statement_ms": 0.2757482423026338,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 947.9727152803623,
+            "delta": {
+              "count_star": 59263,
+              "sum_lock_time_ps": 49908000000,
+              "sum_rows_examined": 59267,
+              "sum_rows_sent": 59273,
+              "sum_timer_wait_ps": 6594690506000
+            },
+            "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "mean_statement_ms": 0.11127837784114877,
+            "rows_examined_per_call": 1.0000674957393314
+          },
+          {
+            "calls_per_second": 487.17508422757396,
+            "delta": {
+              "count_star": 30456,
+              "sum_lock_time_ps": 20821000000,
+              "sum_rows_examined": 30456,
+              "sum_rows_sent": 30457,
+              "sum_timer_wait_ps": 6290621214000
+            },
+            "digest_hash": "41ae9943079294f7fe381cd37a3bc9ed163f7d857bf02444731f8654289b6120",
+            "mean_statement_ms": 0.20654784653270292,
+            "rows_examined_per_call": 1.0
+          },
+          {
+            "calls_per_second": 473.6584390288512,
+            "delta": {
+              "count_star": 29611,
+              "sum_lock_time_ps": 20172000000,
+              "sum_rows_examined": 88842,
+              "sum_rows_sent": 88845,
+              "sum_timer_wait_ps": 3364639127000
+            },
+            "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+            "mean_statement_ms": 0.11362801415014691,
+            "rows_examined_per_call": 3.0003039411029686
+          },
+          {
+            "calls_per_second": 1482.1281390921358,
+            "delta": {
+              "count_star": 92656,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 2194822288000
+            },
+            "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "mean_statement_ms": 0.023687859264375753,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 474.25029213222723,
+            "delta": {
+              "count_star": 29648,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 782383202000
+            },
+            "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+            "mean_statement_ms": 0.026389071842957367,
+            "rows_examined_per_call": 0.0
+          },
+          {
+            "calls_per_second": 473.49847873064147,
+            "delta": {
+              "count_star": 29601,
+              "sum_lock_time_ps": 0,
+              "sum_rows_examined": 0,
+              "sum_rows_sent": 0,
+              "sum_timer_wait_ps": 774274405000
+            },
+            "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "mean_statement_ms": 0.026157035404209317,
+            "rows_examined_per_call": 0.0
+          }
+        ],
+        "unmatched_hashes_not_assumed_zero": []
+      }
+    }
+  },
+  "limitations": [
+    "statement waits sum concurrent calls and cannot be interpreted as one request duration",
+    "top20 set is truncated and may change; unmatched hashes are not zero",
+    "cgroup CPU is all container processes; api process projection lists only supervisor and does not prove one worker",
+    "no cloud actions, SUT requests or QA PRIVATE reads"
+  ],
+  "scope": "two bounded neutral snapshots, not all steady measurements; global counters include background and observer contribution",
+  "units": {
+    "cpu": "microseconds",
+    "innodb_row_lock_time": "milliseconds",
+    "statement_timer": "picoseconds"
+  }
+}

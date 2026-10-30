@@ -402,3 +402,8 @@
 - 全部原生目录函数 AST/四完整 SQL 与 Frozen DDL 字节保留；CLI 列诊断合并为 column_definition，API错误码不变。原 769 双方言、6000 seed golden/V2、消息/查询/池及新18 owner 联合239通过/27 integration未选；新196表达式38416对等价差分和真实SQLite批写/失败回滚通过。Ruff/format/Bandit最终通过；早期失败及修正如实记录。
 - 原工具对提交源5880→5806/65文件，真实净减74，仍超706/范围exit1，未达250–350。没有可信百行seed重复块，保持原字节，不压格式/搬实现/删门禁。
 - 未运行native MySQL/完整CI/覆盖率/HTTP/独立/云/正式性能，需根对全新镜像检查MySQL真实全部CHECK返回形式。未读QA私件或操作云。证据见 `agents/database/final-20261029/`，源先提交并推送，记录另封。
+
+
+## MANUAL12 diagnosis 2026-10-30 — Issue #47
+
+Two SHA-bound neutral telemetry groups were differenced; source90b exact local MySQL digest mapping proves idempotency INSERT75–158ms dominates observed SQL wait, COMMIT16ms; CPU not saturated, locks/log_wait counters do not explain the delay. Confirmed-missing scan remains16000rows/call despite new index. Real native SQLAlchemy pool cleanup probe rejects global reset=None: raw DBAPI return exposes an uncommitted row while existing fallback cleans it. Product unchanged. Script/results/limitations in agents/database/manual12-diagnosis/. All work local skip-networking synthetic MySQL; own server shut down, no cloud/SUT/QA PRIVATE access. Prompt ROLE-database-MANUAL12-DIAGNOSIS-20261030-v1. Next: exact DDL/claim accumulated-row concurrency reproduction before accepted fix.
