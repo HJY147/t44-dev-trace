@@ -23,7 +23,7 @@
 
 ## Word截止与当前导航漂移
 
-最新documentation分支codex/docs-final90b，head66cb2b20；模块报告记四技术Word13/15/5/5页，共38页。本次重新核四Word全部存在且精确SHA等于docs/reports/FINAL90b-deliverable-manifest.json。但当前四份MD源码SHA均不等于该manifest的source_sha256，因此只能证明历史Word原字节完整，不能称已与当前MD同步。最新模块说明仍停P07性能准备截止；p12/p13后发结果须另版增补/重导受影响稿并新QA，不能回写旧快照。
+最新documentation分支codex/docs-final90b，head66cb2b20；模块报告记四技术Word13/15/5/5页，共38页。本次重新核四Word全部存在且精确SHA等于docs/reports/FINAL90b-deliverable-manifest.json。但当前四份MD源码SHA均不等于该manifest的source_sha256，另逐项git show复核manifest所记documentation_ref，四份历史来源blob均准确匹配source_sha256：历史绑定有效，不是manifest造假或输出损坏。当前只能证明该历史Word截止与原字节完整，不能称已与当前MD同步。最新模块说明仍停P07性能准备截止；p12/p13后发结果须另版增补/重导受影响稿并新QA，不能回写旧快照。
 
 coordinator当前reports/final/submission-map.md仍夹有M6/M7旧35页、6307等历史截止，它们本身明确为历史。问题在缺乏一份当前统一入口，而非应删除历史失败。后续需新版本导航列出每份报告截止、source SHA、最新独立结论、Word来源与最终包manifest。
 
