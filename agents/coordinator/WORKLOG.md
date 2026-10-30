@@ -166,3 +166,6 @@ AI总协调实收官方0b制品并核实际60文件/身份链、384连接预算�
 用户提供原APP/LOAD当前IP后，以原hostkey严格校验并恢复临时SSH授权。新恢复入口实际解除138个合法阻塞任务、跳过262个原开发中任务，400读回和原800守恒；新material05完成。独立新岗签本轮identity、原零请求prepare与一次grant，根只触发一次r30manualp12，实际14:34:25.342503Z（北京时间22:34:25），于14:46:06.491785Z以exit1退出。两组只读采样成功完成。确认LOAD无容器/dispatch writer退出后按原工具密封并下载640683683字节，SHAa4fb290cf53003f958c798d72eaaf63a048bf3f675dfa575bc6802d7c6fcf6c0匹配，已立即通知用户原两机均可节省停机。未代用户停机或现场复核停止状态；停止通知后不再访问云。独立原verify本地解密、footer/stream/53件SHA通过；性能与后置结果最终复算另见本轮PUBLIC报告，不将exit或完整性等同验收通过。
 
 独立原始复算已完成：544965条认证records，400客户端完整60/600，稳态错误0，P95 query1065.937272/transition1622.151004/contract1048.957214/escalation1205.1211ms，四类均超过270ms；十分钟最低45257/min。后置快照398/400、完整审计383/400，16个HTTP exchange错误仅在postcheck，MQ delivery未观察，故性能FAIL且整体独立NP/不接受，不能记通过。详细精确摘要见本轮CORE_RECOMPUTED.PUBLIC.json。停止通知后仅本地分析，没有重新SSH。
+
+
+2026-10-31 / U-storage-upgrade-20261031：复核原公开CPU/IO证据，记录用户PL0 40GiB参数及直接PL1升级后正式复测路线，不再安排AB。实际升级和正式测试未执行。详情 agents/coordinator/storage-upgrade-20261031/CHECK.md。

@@ -1,0 +1,37 @@
+{
+  "status": "OFFLINE_REVIEW_COMPLETE_UPGRADE_AND_FORMAL_RETEST_PENDING",
+  "user_reported_app_disk": {
+    "type": "ESSD",
+    "level": "PL0",
+    "capacity_gib": 40,
+    "iops": 2280
+  },
+  "source_sha256": "27affcb6411b0d314734c87b8ad3011a937ee9ba376eaed7f2e57b3f6def41a8",
+  "observations": [
+    {
+      "window": "early",
+      "mysql_write_ops_s": 2073.3307869738173,
+      "mysql_write_bytes_s": 49869956.225345485,
+      "api_mean_cores": 13.09631763123304,
+      "api_throttled_usec_delta": 0
+    },
+    {
+      "window": "late",
+      "mysql_write_ops_s": 2067.102949645143,
+      "mysql_write_bytes_s": 48642312.23828314,
+      "api_mean_cores": 11.770736065486707,
+      "api_throttled_usec_delta": 0
+    }
+  ],
+  "candidate": {
+    "level": "PL1",
+    "capacity_gib": 40,
+    "nominal_iops": 3800,
+    "nominal_throughput_MB_s": 140
+  },
+  "device_to_cloud_disk_id_verified": false,
+  "cloud_changed": false,
+  "server_started": false,
+  "formal_retest_started": false,
+  "additional_AB_experiment_planned": false
+}
