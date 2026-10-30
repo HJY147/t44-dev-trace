@@ -344,6 +344,25 @@ def inspect_previous(api,old,items,accounts,evidence,summary,previous):
     summary.update(status='READONLY_RECOVERY_INSPECTED_COORDINATOR_DECISION_REQUIRED',original800_after=len(tasks),recovery_findings=findings,automatic_resume=False)
 
 
+def controller_idle(unit,runner=None):
+    runner=runner or subprocess.run
+    result=runner(['systemctl','show',unit,'--property=Id,LoadState,ActiveState'],capture_output=True,timeout=10,check=False)
+    try:
+        pairs=[line.split('=',1) for line in result.stdout.decode().splitlines()]
+        valid=all(len(pair)==2 for pair in pairs)
+        row=dict(pairs) if valid else {}
+        valid=valid and len(pairs)==len(row)==3 and set(row)=={'Id','LoadState','ActiveState'} and row['Id']==unit
+        stderr=result.stderr.strip()
+        missing=(row.get('LoadState')=='not-found' and row.get('ActiveState')=='inactive'
+                 and result.returncode in (0,1) and stderr in (b'',f'Unit {unit} could not be found.'.encode()))
+        loaded=(row.get('LoadState')=='loaded' and row.get('ActiveState') in ('inactive','failed')
+                and result.returncode==0 and stderr==b'')
+    except (ValueError,UnicodeDecodeError,AttributeError):
+        valid=missing=loaded=False
+    need(valid and (missing or loaded),'OLD_CONTROLLER_NOT_PROVEN_INACTIVE')
+    return {**row,'ReturnCode':result.returncode}
+
+
 def build_parser():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--mode',choices=['apply','inspect'],required=True)
@@ -386,10 +405,7 @@ def main(argv=None):
         runtime=load_module('cohort_runtime_support',args.backend_tools/'runtime_support.py')
         controller_states = {}
         for unit in (auth['namespace']+'-stop.service','t44-final-p09-continuous.service'):
-            result = subprocess.run(['systemctl','show',unit,'--property=ActiveState'],capture_output=True,timeout=10,check=False)
-            state = result.stdout.decode().strip()
-            need(result.returncode==0 and state in ('ActiveState=inactive','ActiveState=failed'),'OLD_CONTROLLER_NOT_PROVEN_INACTIVE')
-            controller_states[unit]=state.split('=',1)[1]
+            controller_states[unit]=controller_idle(unit)
         evidence.event('OLD_CONTROLLERS_IDLE',controller_states,public=True)
         host.inspect_api(args.api_container,auth['namespace'],args.expected_api_image_id)
         gateway_args=argparse.Namespace(api_container=args.api_container,discover_maintenance_gateway=True,maintenance_gateway_container=None,maintenance_connect_ip=None,maintenance_connect_port=None)

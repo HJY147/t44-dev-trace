@@ -184,6 +184,28 @@ class Checks(unittest.TestCase):
         auth['benchmark_grant_allow']=True
         with self.assertRaisesRegex(m.Stop,'DEDICATED'):m.authorization(self.old,raw,auth,self.accounts)
 
+    def test_historical_not_found_inactive_rc1_is_accepted(self):
+        original=Path('/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/manual11-live/old-timer.PUBLIC.json')
+        evidence=json.loads(original.read_bytes())
+        unit='t44-final-p09-continuous.service'
+        before=evidence['after'][unit]
+        def runner(argv,**kwargs):
+            self.assertEqual(argv,['systemctl','show',unit,'--property=Id,LoadState,ActiveState'])
+            return SimpleNamespace(returncode=1,stdout=''.join(k+'='+before[k]+'\n' for k in ('Id','LoadState','ActiveState')).encode(),stderr=b'')
+        self.assertEqual(m.controller_idle(unit,runner)['LoadState'],'not-found')
+        self.assertEqual(m.controller_idle(unit,runner)['ReturnCode'],1)
+    def test_systemd_unknown_rc1_or_active_daemon_permission_are_rejected(self):
+        unit='t44-final-p09-continuous.service'
+        for rc,load,active,err in [(1,'loaded','inactive',b''),(1,'not-found','inactive',b'Access denied'),(1,'not-found','inactive',b'Failed to connect to bus'),(0,'loaded','active',b''),(0,'loaded','activating',b''),(1,'not-found','failed',b''),(2,'not-found','inactive',b''),(0,'masked','inactive',b'')]:
+            raw=f'Id={unit}\nLoadState={load}\nActiveState={active}\n'.encode()
+            with self.subTest(rc=rc,load=load,active=active,err=err),self.assertRaisesRegex(m.Stop,'OLD_CONTROLLER'):
+                m.controller_idle(unit,lambda *a,**k:SimpleNamespace(returncode=rc,stdout=raw,stderr=err))
+        with self.assertRaises(m.Stop):
+            m.controller_idle(unit,lambda *a,**k:SimpleNamespace(returncode=1,stdout=b'ActiveState=inactive\n',stderr=b''))
+        for state in ('inactive','failed'):
+            raw=f'Id={unit}\nLoadState=loaded\nActiveState={state}\n'.encode()
+            self.assertEqual(m.controller_idle(unit,lambda *a,**k:SimpleNamespace(returncode=0,stdout=raw,stderr=b''))['ActiveState'],state)
+
     def test_existing_owner_gateway_discovery_dynamic_not_old_ip(self):
         host=m.load_module('existing_host',EXISTING/'host_runner.py')
         networks={'owned-net':{'IPAddress':'192.168.96.99','NetworkID':'same-net-id'}}
