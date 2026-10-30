@@ -51,3 +51,5 @@ persistence/delivery.py22起：短事务claim含租约和SKIP LOCKED；messaging
 scan：C个候选、页大小P，至少ceil(C/P)+1页查询、C次checkpoint，scope内任务各有Runtime事务；总体工作随C和候选业务成本增长。keyset避免offset随页加深重复跳过，但若索引不覆盖state/planned_end/id，扫描行数可大于C；不能承诺总O(C) IO或每tick固定耗时。
 
 MQ batch B：单轮至多B发布、B消费，计数循环O(B)，收件人R的通知写入另有O(R)；租约、unique索引、磁盘/网络/重试影响耗时，exactly-once业务效果来自DB约束和事务去重，不是MQ传输exactly-once。
+
+勘误补注：exactsource90b persistence/engine.py97明确READ COMMITTED。早期算法候选报告的RR空键gap及RR可见性内容不是本项目实际隔离级别，不能进入正式文档作为项目事实。数据库锁语义需按RC验证；禁止将性能候选未验证的gap解释当成既成缺陷。
