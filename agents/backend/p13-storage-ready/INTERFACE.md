@@ -1,0 +1,9 @@
+# p13 backend offline interface
+
+Candidate is unchanged source90b and original runtime tool bytes; only user-reported APP storage PL1/40GiB/3800IOPS changes. No backend or pool/redo change is adopted. No runtime tool file was modified.
+
+The existing host_runner/refresh_core/runtime chain takes the material authorization field new_packet_run_id=r30materialresume06. It validates original packet bytes/binding, source90b, scope, dedicated operations and actual fresh factual inputs. Existing maintenance v2 accepts operation_id=r30restoretransition06; preserve original800 IDs, four factual sessions, phase horizon and whole-batch guards. QA identifier r30manualp13 is separate. Deployment must bind these three exact identifiers and use fresh exclusive outputs; generic owner tools alone do not enforce all coordinator-level cross-ID exclusions.
+
+Runtime files and SHA are listed in CONTRACT.PUBLIC.json. Source is immutable .runtime/manual12-repair-kit/backend; maintenance helper remains agents/backend/manual11-maintenance/v2/cohort_maintenance.py at be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a. Put helper beside original backend tool files. Original RUNBOOK.md documents invoke_before_material and CLI; deployment remains owner of exact infrastructure/idle gates, foreground subprocess exit, counts, scheduler token rotation, packet encryption and source/image/schema/disk identity evidence.
+
+Executed: python3 -B agents/backend/manual11-maintenance/v2/offline_checks.py (14 passed); python3 -B agents/backend/p13-storage-ready/verify_contract.py (synthetic06 authorization plus new-output guard passed). These use fake account data and no cloud, SSH, Docker, SUT or QA PRIVATE. They do not create real sessions/material or imply formal acceptance. Actual corpus may again contain blocked tasks after p12; helper reads real state and only restores admissible owned tasks, with no automatic retry. A time/horizon rejection cannot be bypassed.
