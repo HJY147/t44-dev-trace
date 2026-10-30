@@ -587,7 +587,7 @@ def test_dependencies_cycle_guard_and_edit_lock(application):
 
 
 @pytest.mark.parametrize("operation", ["block", "unblock_pending", "start_empty"])
-def test_transition_reads_only_dependencies_consumed_by_its_guard(application, operation):
+def test_transition_reads_only_dependencies_consumed_by_its_guard(application, operation, monkeypatch):
     import re
     from collections import Counter
 
@@ -612,6 +612,18 @@ def test_transition_reads_only_dependencies_consumed_by_its_guard(application, o
         )
     counts = Counter()
     engine = factory._sessions.kw["bind"]
+
+    from t44.persistence.rows import RowsGateway
+
+    lock_reads = []
+    original_rows = RowsGateway.rows
+
+    def checked_rows(gateway, table, where=None, **options):
+        if table == "tasks" and options.get("lock") == "update":
+            lock_reads.append((id(gateway), where["project_id"], where["id"]))
+        return original_rows(gateway, table, where, **options)
+
+    monkeypatch.setattr(RowsGateway, "rows", checked_rows)
 
     def selected_tables(connection, cursor, statement, parameters, context, executemany):
         if statement.lstrip().upper().startswith("SELECT"):
@@ -645,6 +657,12 @@ def test_transition_reads_only_dependencies_consumed_by_its_guard(application, o
         )
     finally:
         event.remove(engine, "before_cursor_execute", selected_tables)
+    expected_locks = sorted(
+        [task["id"], predecessor["id"]] if operation == "unblock_pending" else [task["id"]]
+    )
+    assert [entry[2] for entry in lock_reads] == expected_locks
+    assert {entry[1] for entry in lock_reads} == {pid}
+    assert len({entry[0] for entry in lock_reads}) == 1
     changed = response.json()["data"]["task"]
     assert changed["version"] == task["version"] + 1
     assert changed["state"] == {"block": 3, "unblock_pending": 1, "start_empty": 2}[operation]
@@ -671,10 +689,11 @@ def test_transition_reads_only_dependencies_consumed_by_its_guard(application, o
             rejected_audit = uow.gateway.get("audit_events", rejected.json()["audit_id"])
             assert rejected_audit["outcome"] == 2
             assert uow.gateway.get("tasks", task["id"])["version"] == changed["version"]
-    # Two task reads are Business.task and audit scope; scalar locks add K=1/2/1 reads.
+    # The same-main-UoW locked target replaces Business.task; audit scope still reads.
+    # Original sorted scalar FOR UPDATE locks add K=1/2/1 reads.
     # Pending UNBLOCK locks its predecessor but does not consume it in the business guard.
     assert counts == Counter(
-        tasks={"block": 3, "unblock_pending": 4, "start_empty": 3}[operation],
+        tasks={"block": 2, "unblock_pending": 3, "start_empty": 2}[operation],
         task_dependencies={"block": 0, "unblock_pending": 1, "start_empty": 2}[operation],
     )
 

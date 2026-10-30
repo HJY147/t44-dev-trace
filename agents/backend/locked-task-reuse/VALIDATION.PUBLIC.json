@@ -16,5 +16,26 @@
   "mysql_concurrency": "PENDING_DATABASE_OWNER",
   "integration_approved": false,
   "performance_effect": "UNMEASURED",
-  "cloud_calls": 0
+  "cloud_calls": 0,
+  "original_unmodified_tests_retained": {
+    "passed": 137,
+    "failed": 3,
+    "raw_archive": "ORIGINAL_FAILED_EVIDENCE.PUBLIC.json"
+  },
+  "maintained_public_developer_tests": {
+    "passed": 140,
+    "failed": 0,
+    "original_semantic_assertions_unchanged": true,
+    "count_budget_before": [
+      3,
+      4,
+      3
+    ],
+    "count_budget_after": [
+      2,
+      3,
+      2
+    ],
+    "extra_guards": "original FOR UPDATE scalar target/predecessor order/same gateway/project observed"
+  }
 }
