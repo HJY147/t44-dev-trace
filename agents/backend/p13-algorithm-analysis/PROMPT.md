@@ -1,0 +1,1 @@
+ROLE-backend-P13-ALGORITHM-20261031-v1: Offline exactsource analysis only, user asks algorithm opportunity and shutdown timing; formal p13 running, no cloud/SUT/product/resource changes and no extra performance AB. Preserve all safety and original formal assertions.
