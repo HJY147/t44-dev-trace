@@ -65,3 +65,6 @@ P7后发实测：8000/8000请求、零HTTP错，四类P95仍1370–1840ms，资�
 
 
 2026-10-31 / 用户要求不能立即压测就停机：实际尚无APP-ready、identity/prepare/grant/execute。原helper现场预检发现156合法阻塞任务，恢复链在03阶段；已通知用户两VM可节省停机保盘，要求部署岗仅优雅中断本轮自有编排/维护、保留UNKNOWN前缀，禁止后继/自动重试。实际ECS停止状态尚未核实。证据manualp13-preparation/STOP_REQUEST.PUBLIC.json。
+
+
+2026-10-31 / U-resume-offline-before-boot-20261031：完成42文件material07受限包，archive SHA 6935611dacad3ccb8a174ee0d2b8171f8625e7ed6cbaf37b3efa9a6a5edf2396。历史06精确原件保留；当前400仍就绪可省重复恢复，原material资格不减；修正部署额外等待150→900且全链1800单调预算，不改产品或独立测量。独立工具/key已实际本地验证，所有当前批准false。23prepare+6scan、字节/语法、篡改/旧run负例通过，未访问云。用户追加不自动关机，完成密封回收即通知手动停机；仍有真实会话/完整扫描/当前独立准入需现场执行，不能承诺开机即发压。
