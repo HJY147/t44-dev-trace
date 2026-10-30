@@ -37,7 +37,7 @@ The prior profiling script is an already-published backend author tool, not inde
 
 ## Follow-up: async direct-Runtime hypothesis rejected
 
-Exact source90b `backend/t44/api.py` defines `endpoint(operation)` returning ordinary `def handle(request: Request)` (lines 212–214), with `Runtime.execute` called inside that synchronous function at line 227. All 38 registered `/api/v1` routes introspected locally have synchronous endpoints; none is async. The async `capture` middleware reads the request body then awaits `call_next`; it does not invoke Runtime synchronously on the event loop.
+Exact source90b `backend/t44/api.py` defines `endpoint(operation)` returning ordinary `def handle(request: Request)` (lines 216–217), with `Runtime.execute` called inside that synchronous function at line 227. All 38 registered `/api/v1` routes introspected locally have synchronous endpoints; none is async. The async `capture` middleware reads the request body then awaits `call_next`; it does not invoke Runtime synchronously on the event loop.
 
 Local FastAPI 0.161.1 `run_endpoint_function` source explicitly dispatches the non-coroutine branch through `run_in_threadpool`. `endpoint-dispatch.PUBLIC.json` retains the exact local function source/hash and product API hash. Cloud framework version was not accessed or inferred from this local package. There is no source evidence for the proposed async Runtime/event-loop blocking defect; adding offload to an already synchronous endpoint would be unjustified, so no corresponding change or expanded concurrency experiment was made.
 
