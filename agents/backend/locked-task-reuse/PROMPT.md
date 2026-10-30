@@ -1,0 +1,1 @@
+ROLE-backend-LOCKED-TASK-REUSE-v1: Root authorizes minimal second candidate from90b after native rejection of INSERT-first; same-main-UoW local context only, preserve all guards and original tests, no cloud/server/pressure.

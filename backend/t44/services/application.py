@@ -90,7 +90,11 @@ class Business(Projects, Tasks, Reviews, Workflow):
             )
         return model(schema, row)
 
-    def dispatch(self, g, call):
+    def dispatch(self, g, call, *, locked_task=None):
+        if locked_task is not None:
+            gateway, row = locked_task
+            require(gateway is g and call.operation == "transitionTask", "INTERNAL_ERROR")
+            return self.transitionTask(g, call, locked_task=row)
         if call.operation in _COLLECTIONS:
             table, schema = _COLLECTIONS[call.operation]
             if "task_id" in call.path:

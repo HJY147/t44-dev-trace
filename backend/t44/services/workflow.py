@@ -25,8 +25,12 @@ DOMAIN_ERRORS = {
 
 
 class Workflow:
-    def transitionTask(self, g, c):
-        row, b = c.task(g), c.body
+    def transitionTask(self, g, c, *, locked_task=None):
+        row, b = c.task(g) if locked_task is None else locked_task, c.body
+        require(
+            row["id"] == c.path["task_id"] and row["project_id"] == c.project_id,
+            "RESOURCE_NOT_FOUND",
+        )
         action = b["action"]
         # Optimistic version is checked after authorization/replay and before proof resolution.
         require(
