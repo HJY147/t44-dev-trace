@@ -39,3 +39,9 @@
 纯函数证据：`check_task` 对 mutation 返回错误 owner 抛 `LIVE_ORIGINAL_OWNER_MISMATCH GUARD`；`check_probe` 对正确index/ID但五张业务表总数均999999的 before 仍接受。它们是本地逻辑检查，不是400规模运行或独立验收。系统 `python` 命令不存在；改用 python3。系统 python3 的 jsonschema 导入失败，因此未运行完整 schema validator。
 
 本审核使用提示词：总协调对 review_preparation 的原始只读审核派工及后续要求完整对照 refresh_core/runtime_support 门禁。改进理由为补充原16项部署离线检查未覆盖的真实产品接口/业务前置条件；产物就是本文。未修改任何产品或准备脚本。
+
+## 附加审核：本地 SSH 地址更新工具
+
+对 `manual13-ssh-preparation` worktree 的 `deployment/cloud-reuse/ssh-reconnect/update_ssh_addresses.py` 做代码审核，实测 SHA256 `fd0fafdd650fb9a30674879135e7220782cdf97202bd79eb8242890d72436a18` 与同目录 MANIFEST.PUBLIC.json 一致。该 worktree HEAD 为 `5bc5762a9c78ea755611771837827d5898993da9`；未读取 identity、known_hosts 或任何凭据内容，未执行 SSH 或网络连接。
+
+结论 `PASS_STATIC_LOCAL_CONFIG_ONLY`：脚本仅读取原两实例的已信任 pins，校验 Ed25519 wire；identity 只 stat、验证常规文件和 owner-only 权限，不读取私钥字节。两地址必须是互异公网IPv4，输出目录为新建独占且权限0700。新配置使用原实例 HostKeyAlias、StrictHostKeyChecking=yes、UpdateHostKeys=no、限定新 known_hosts，关闭代理/转发/agent/连接复用，保留原配置和 pins。未发现本次本地配置范围内的阻断缺陷。该结论不证明临时授权仍有效、远端实例在线、当前远端 host identity 或实际 SSH 成功；总协调报告的8项测试不作为本审核执行的测试。
