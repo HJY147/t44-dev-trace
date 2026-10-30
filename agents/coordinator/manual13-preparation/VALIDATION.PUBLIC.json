@@ -1,0 +1,71 @@
+{
+  "status": "OFFLINE_PREPARATION_VERIFIED_LIVE_GATES_PENDING",
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "helper_sha256": "be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a",
+  "wrapper_sha256": "06c2f08e172b080a009831676003193413c25dc7d07cd87d5bd41d2a621bd08f",
+  "source_commits": {
+    "backend": "10c1eb79",
+    "deployment": "51b35e9cf34f591e834b4d175d0c56b8763c8ae3",
+    "review": "a3e2f0dc"
+  },
+  "checks": {
+    "backend_offline": 14,
+    "source90b_http_schema_sqlite": 16,
+    "rule_boundary_test": {
+      "tests": 1,
+      "combinations": 24
+    },
+    "deployment_offline": 18,
+    "ssh_offline": 8,
+    "bundle_verifier_positive_negative": 6
+  },
+  "review": "PASS_STATIC_PREPARATION_REVIEW_NOT_EXECUTED",
+  "cloud_requests": 0,
+  "benchmark_started": false,
+  "pending": [
+    "user starts original VMs and supplies actual current IPs",
+    "strict actual SSH and temporary authorization verification",
+    "live task roles/states/rules/events/time windows and restoration",
+    "new material05, resources, schema supplement and independent once admission"
+  ],
+  "author_validation_original": {
+    "status": "LOCAL_AUTHOR_VALIDATION_PASSED_CLOUD_NOT_RUN",
+    "prompt_id": "ROLE-backend-MANUAL13-PREPARATION-20261030-v1",
+    "source_sha": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+    "helper_sha256": "be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a",
+    "runtime_dependencies_unchanged": true,
+    "offline_checks": {
+      "passed": 14,
+      "seconds": 0.559,
+      "evidence": "agents/backend/manual11-maintenance/v2/offline-final-manual13-r2.log"
+    },
+    "real_source90b_http_schema_sqlite": {
+      "passed": 16,
+      "seconds": 54.88,
+      "evidence": "agents/backend/manual11-maintenance/v2/http-selftest-source90b-final4.log"
+    },
+    "real_rule_boundary_comparison": {
+      "passed": 1,
+      "combinations": 24,
+      "evidence": "agents/backend/manual11-maintenance/v2/http-rule-boundaries-source90b.log"
+    },
+    "lint": "ruff check --config backend/pyproject.toml tmp/backend/contracts/819_cohort_maintenance_http.py PASS",
+    "source_identity_evidence": "agents/backend/manual11-maintenance/v2/http-source-identity.PUBLIC.json",
+    "test_source": "tmp/backend/contracts/819_cohort_maintenance_http.py",
+    "guard_changes": [
+      "all three live roles exact original40 scope and required my_roles",
+      "all400 original empty dependencies and active developer membership",
+      "all40 exact source90b rules and original400 escalation-event identity/schedule/rule binding",
+      "nonterminal escalation tasks and stable window actual now through +900 seconds",
+      "POST-success malformed payload is UNKNOWN, readonly inspection, no automatic retry"
+    ],
+    "unverified": [
+      "real TCP/TLS and cloud task restoration not run",
+      "live deadlines/state/rules/role/event inputs may change before next boot",
+      "no material05 or p12 prepare/execute or performance conclusion",
+      "independent review pending"
+    ],
+    "cloud_requests": 0,
+    "benchmark_started": false
+  }
+}

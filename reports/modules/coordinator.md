@@ -35,3 +35,8 @@ P7后发实测：8000/8000请求、零HTTP错，四类P95仍1370–1840ms，资�
 ## R30 保盘停机与真实准备失败 2026-10-29
 
 本轮完成实际制品/预算/造数和保盘停机；API准备失败，不是正式压测失败或成功。费用未结算，无新增充值/购买；15元为操作预算。过程详见上述验证记录，所有AI操作与人工选择分开，学生研究报告仍本人撰写。
+
+
+## MANUAL13 离线恢复准备修订（2026-10-30）
+
+按用户 USER-MANUAL13-OFFLINE-PREPARE-20261030，补齐原cohort恢复前全部可读材料资格检查、原五表counts与service scope前置；POST成功异常归UNKNOWN。后端14离线+16 source90b真实FastAPI/schema/SQLite联接+1规则边界（24组合）、部署18离线、SSH8离线分别通过；独立代码审核对helper be486ee9与wrapper06c2f08e给限定静态PASS，原FAIL保留。协调者6项包校验器检查通过，新30件白名单包及archive逐字节校验成功。源分支和确切SHA、审核及最终包回执见agents/coordinator/manual13-preparation/。未连接服务器或执行云恢复/材料05/正式p12；现场SSH、任务时效、材料及独立一次性许可仍待开机后实际检查。
