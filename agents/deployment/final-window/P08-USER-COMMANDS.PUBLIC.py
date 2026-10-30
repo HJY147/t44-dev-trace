@@ -4,6 +4,8 @@ from pathlib import Path
 HERE=Path(__file__).resolve().parent
 spec=importlib.util.spec_from_file_location('p08facts',HERE/'P08-FACTS-CHECK.PUBLIC.py');f=importlib.util.module_from_spec(spec);spec.loader.exec_module(f)
 R=f.R;T=f.T;W=R+'/QA753P08';P08='r30finalp08'
+GRANT_KEYS={'clients', 'warmup_seconds', 'permissions', 'environment_sha256', 'runtime_sha256', 'image_digest', 'created_at', 'steady_seconds', 'prohibitions', 'window_start_utc', 'limits', 'source_sha256', 'run_id', 'schema', 'fixture_sha256', 'request_timeout_seconds', 'cost_stop_utc', 'postcheck_seconds', 'window_end_utc', 'allow', 'origin'}
+GRANT_FIXED={'schema': '772-grant-v1', 'clients': 400, 'warmup_seconds': 60, 'steady_seconds': 600, 'request_timeout_seconds': 15, 'postcheck_seconds': 40, 'permissions': ['linux-preflight', 'one-cohort', 'read-postconditions'], 'prohibitions': ['cloud-control', 'install', 'login', 'session-extension', 'request-retry', 'restart', 'successor-run'], 'limits': {'cpu': 8, 'memory_bytes': 8589934592, 'pids': 2048, 'plain_bytes': 10737418240, 'compressed_bytes': 11811160064, 'cipher_bytes': 12884901888}}
 def raw(p):
  p=Path(p)
  if p.is_symlink() or p.stat().st_size>2000000:raise ValueError('BOUNDED_ORIGINAL_INPUT_REQUIRED')
@@ -59,7 +61,7 @@ def load_prepare(a):
   need(load.get('public_files',{}).get(item['source'],{}).get('sha256')==item['sha256'],'QA_TOOL_NOT_IN_USER_FACTS:'+n)
  need(pins['files']['ADAPTER_753.py']['sha256']==f.ADAPTER and pins['files']['ENTRY_PERF_753.sh']['sha256']==f.ENTRY,'ORIGINAL_ENTRY_ADAPTER_REQUIRED')
  need(time.time()<f.epoch(clock['start_utc'])-30,'S_MINUS30_PREPARE_MARGIN_ALREADY_MISSED')
- uid=uuid.uuid4().hex;payload={'bootstrap':blob(raw(a.bootstrap)),'target':blob(raw(a.qa_target)),'approval':blob(raw(a.qa_approval)),'public_files':pins['files'],'workspace':W,'bootstrap_path':R+'/P08-user-bootstrap-'+uid+'.PUBLIC.json','driver':T+'/P08-USER-TRANSPORT-LOAD.PUBLIC.py','driver_sha256':'d1ed953dc7c0dd9d048dc3318c27015d3f71968499ba7d17dcd1841422d84601','transport_profile':T+'/final-transport-profile05.py','transport_profile_sha256':'a5425e961f486c78253a6ba319030c86b4057056622882086e686a642e61bc8a','start_utc':clock['start_utc']}
+ uid=uuid.uuid4().hex;payload={'bootstrap':blob(raw(a.bootstrap)),'target':blob(raw(a.qa_target)),'approval':blob(raw(a.qa_approval)),'public_files':pins['files'],'workspace':W,'bootstrap_path':R+'/P08-user-bootstrap-'+uid+'.PUBLIC.json','driver':T+'/P08-USER-TRANSPORT-LOAD.PUBLIC.py','driver_sha256':'d1ed953dc7c0dd9d048dc3318c27015d3f71968499ba7d17dcd1841422d84601','transport_profile':T+'/final-transport-profile05.py','transport_profile_sha256':'a5425e961f486c78253a6ba319030c86b4057056622882086e686a642e61bc8a','start_utc':clock['start_utc'],'grant_keys':sorted(GRANT_KEYS)}
  body="""assert time.time()<datetime.datetime.fromisoformat(D['start_utc'].replace('Z','+00:00')).timestamp()-30,'PREPARATION_LATE_NO_OVERRIDE'
 W=Path(D['workspace']);assert not W.exists() and not Path('/root/t44-final-20261029/r30finalp08-transfer').exists(),'EXISTING_P08_WORKSPACE_OR_TRANSFER_NO_REPLAY'
 assert digest(D['driver'])==D['driver_sha256'] and digest(D['transport_profile'])==D['transport_profile_sha256'],'ORIGINAL_790_TRANSPORT_TOOLS_CHANGED'
@@ -75,19 +77,36 @@ step('install',['/bin/sh',str(W/'public/INSTALL_753.sh'),str(W),'/root/t44-r9/r2
 step('transport',['python3','-B',D['driver'],'--bootstrap',D['bootstrap_path'],'--bootstrap-sha256',D['bootstrap']['sha256']])
 result=step('prepare',['/bin/sh',str(W/'public/ENTRY_PERF_753.sh'),'prepare',str(W),'r30finalp08','/root/t44-final-20261029/r30finalp08-transfer/extracted'])
 prepared=json.loads(result);assert prepared.get('status')=='PREPARED_DEFAULT_FALSE' and prepared.get('SUT_requests')==0,'QA_PREPARE_DID_NOT_PASS'
-print(json.dumps({'status':'P08_PREPARED_DEFAULT_FALSE_NOT_AUTHORIZED','prepare':prepared,'prepare_raw_sha256':hashlib.sha256(result).hexdigest(),'workspace':str(W),'QA_or_SUT_requests':0},sort_keys=True))"""
+default_path=W/'runs/r30finalp08/grant.default-false.json'
+assert not default_path.is_symlink() and default_path.stat().st_size<=16384,'ORIGINAL_PUBLIC_DEFAULT_GRANT_REQUIRED'
+default_raw=default_path.read_bytes();default=json.loads(default_raw)
+assert set(default)==set(D['grant_keys']) and default.get('allow') is False,'ORIGINAL_COMPLETE_DEFAULT_FALSE_GRANT_REQUIRED'
+assert default.get('environment_sha256')==prepared['environment_sha256'],'DEFAULT_GRANT_PREPARE_ENV_BINDING_REQUIRED'
+print(json.dumps({'status':'P08_PREPARED_DEFAULT_FALSE_NOT_AUTHORIZED','prepare':prepared,'prepare_raw_sha256':hashlib.sha256(result).hexdigest(),'workspace':str(W),'default_false_grant_original':{'path':str(default_path),'sha256':hashlib.sha256(default_raw).hexdigest(),'original_b64':base64.b64encode(default_raw).decode(),'grant':default},'QA_or_SUT_requests':0},sort_keys=True))"""
  return shell(payload,body)
 def load_arm(a):
- load,lh=f.load_facts(a.load_facts);g=obj(a.grant);pr=obj(a.prepare_receipt);pr=pr.get('prepare',pr)
+ load,lh=f.load_facts(a.load_facts);g=obj(a.grant);returned=obj(a.prepare_receipt);pr=returned.get('prepare',returned)
+ if getattr(a,'default_false_grant',None) is not None:
+  need(bool(getattr(a,'default_false_grant_sha256',None)),'ORIGINAL_DEFAULT_FALSE_RAW_SHA_REQUIRED');default_raw=raw(a.default_false_grant);default_pin=a.default_false_grant_sha256
+ else:
+  original=returned.get('default_false_grant_original',{});need(bool(original.get('original_b64')) and bool(original.get('sha256')),'ORIGINAL_DEFAULT_FALSE_GRANT_MISSING_SUPPLY_PUBLIC_RAW_COPY_AND_SHA')
+  default_raw=base64.b64decode(original['original_b64'],validate=True);default_pin=original['sha256']
+ need(len(default_raw)<=16384 and sha(default_raw)==default_pin,'ORIGINAL_DEFAULT_FALSE_RAW_SHA_MISMATCH');default=json.loads(default_raw)
+ need(set(default)==GRANT_KEYS and default.get('allow') is False and default.get('run_id')==P08,'ORIGINAL_COMPLETE_DEFAULT_FALSE_SCHEMA_REQUIRED')
+ need(all(default.get(k)==v for k,v in GRANT_FIXED.items()),'ORIGINAL_DEFAULT_FALSE_FIXED_FIELDS_REQUIRED')
+ need(default.get('environment_sha256')==pr.get('environment_sha256'),'DEFAULT_FALSE_ENV_BINDING_MISMATCH')
+ need(g=={**default,'allow':True} and g.get('allow') is True,'APPROVED_GRANT_MUST_ONLY_FLIP_ORIGINAL_ALLOW_FALSE_TO_TRUE')
  need(pr.get('status')=='PREPARED_DEFAULT_FALSE' and pr.get('run_id')==P08 and pr.get('supports_source')==f.SOURCE and pr.get('qa_adapter_sha256')==f.ADAPTER and pr.get('SUT_requests')==0,'ACTUAL_QA_PREPARE_RECEIPT_REQUIRED')
  need(g.get('schema')=='772-grant-v1' and g.get('runtime_sha256')=='81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf' and g.get('source_sha256')==f.SM and g.get('image_digest')=='sha256:47c3383fedcdaa882257ccf2338bfd93fe4d7f67c1bf69b6fda25e3bb159e07a','ORIGINAL_GRANT_SCHEMA_AND_IDENTITY_REQUIRED')
  need(g.get('allow') is True and g.get('run_id')==P08 and g.get('environment_sha256')==pr.get('environment_sha256') and (g.get('clients'),g.get('warmup_seconds'),g.get('steady_seconds'))==(400,60,600),'INDEPENDENT_EXACT_SINGLE_ALLOW_TRUE_GRANT_REQUIRED')
  start=f.epoch(g['window_start_utc']);need(time.time()<start-30 and f.epoch(g['window_end_utc'])-start==780,'ARM_S_MINUS30_REQUIRED_NO_LATE_OVERRIDE')
  helper=T+'/P08-SPLUS1-EXEC.PUBLIC.py';pin='7cba1f0cd9925ba92da12849e4789af8378d1fe870698be02be292017796bb02';need(load['public_files'].get(helper,{}).get('sha256')==pin,'SPLUS1_TOOL_NOT_IN_USER_FACTS')
- target=datetime.datetime.fromtimestamp(start+1,datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC');payload={'grant':blob(raw(a.grant)),'grant_path':W+'/root-approved-P08.grant.PUBLIC.json','entry':W+'/public/ENTRY_PERF_753.sh','entry_sha256':f.ENTRY,'helper':helper,'helper_sha256':pin,'workspace':W,'start_epoch':start,'target':target}
+ target=datetime.datetime.fromtimestamp(start+1,datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC');payload={'grant':blob(raw(a.grant)),'grant_path':W+'/root-approved-P08.grant.PUBLIC.json','entry':W+'/public/ENTRY_PERF_753.sh','entry_sha256':f.ENTRY,'helper':helper,'helper_sha256':pin,'workspace':W,'start_epoch':start,'target':target,'default_false_path':W+'/runs/r30finalp08/grant.default-false.json','default_false_sha256':default_pin}
  body="""assert time.time()<D['start_epoch']-30,'TOO_LATE_TO_ARM_NO_OVERRIDE'
 assert digest(D['entry'])==D['entry_sha256'] and digest(D['helper'])==D['helper_sha256'],'ORIGINAL_EXECUTION_TOOLS_CHANGED'
 assert not Path('/root/t44-final-20261029/QA753P08/results/r30finalp08').exists(),'P08_ALREADY_EXECUTED_NO_REPLAY'
+default_path=Path(D['default_false_path']);assert not default_path.is_symlink() and digest(default_path)==D['default_false_sha256'],'ON_LOAD_ORIGINAL_DEFAULT_GRANT_CHANGED'
+default=json.loads(default_path.read_bytes());approved=json.loads(original(D['grant']));assert default.get('allow') is False and approved=={**default,'allow':True} and approved.get('allow') is True,'ON_LOAD_APPROVAL_MUST_ONLY_FLIP_ALLOW'
 put(D['grant_path'],original(D['grant']))
 base=['python3','-B',D['helper'],'execute','--entry',D['entry'],'--entry-sha256',D['entry_sha256'],'--workspace',D['workspace'],'--grant-file',D['grant_path'],'--grant-sha256',D['grant']['sha256'],'--run-id','r30finalp08']
 argv=['systemd-run','--unit=qa753-p08-user-splus1','--on-calendar='+D['target'],'--timer-property=AccuracySec=1s','--timer-property=RandomizedDelaySec=0','--property=Type=exec','--collect',*base]
@@ -96,7 +115,8 @@ print(json.dumps({'status':'P08_SINGLE_SPLUS1_TIMER_ARMED_NOT_YET_MEASUREMENT_RE
  return shell(payload,body)
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['freeze','load-prepare','load-arm']);p.add_argument('--output',type=Path,required=True);p.add_argument('--root-reviewed-facts',action='store_true')
- for n in ['app-facts','load-facts','fee','platform-proof','bootstrap','qa-target','qa-approval','backend-import-receipt','qa-public-pins','grant','prepare-receipt']:p.add_argument('--'+n,type=Path)
+ for n in ['app-facts','load-facts','fee','platform-proof','bootstrap','qa-target','qa-approval','backend-import-receipt','qa-public-pins','grant','prepare-receipt','default-false-grant']:p.add_argument('--'+n,type=Path)
+ p.add_argument('--default-false-grant-sha256')
  a=p.parse_args();need(a.root_reviewed_facts,'EXPLICIT_ROOT_REVIEW_OF_USER_FACTS_REQUIRED');required={'freeze':['app_facts','load_facts','fee','platform_proof'],'load-prepare':['load_facts','bootstrap','qa_target','qa_approval','backend_import_receipt','qa_public_pins'],'load-arm':['load_facts','grant','prepare_receipt']}[a.action]
  need(all(getattr(a,k) is not None for k in required),'MISSING_ACTUAL_DYNAMIC_INPUTS:'+','.join(required));s={'freeze':freeze,'load-prepare':load_prepare,'load-arm':load_arm}[a.action](a);need(len(s.encode())<=16384,'USER_PASTE_EXCEEDS16K')
  with a.output.open('x') as out:out.write(s)

@@ -58,8 +58,27 @@ with tempfile.TemporaryDirectory() as tmp:
  write(ap,approval);badpins=copy.deepcopy(pinfiles);badpins['capsule_tool.py']['source']=f.R+'/PRIVATE/capsule_tool.py';write(pp,{'root_reviewed':True,'files':badpins})
  try:g.load_prepare(a);raise AssertionError('PRIVATE source accepted')
  except ValueError:pass
- receipt={'status':'PREPARED_DEFAULT_FALSE','run_id':'r30finalp08','supports_source':f.SOURCE,'qa_adapter_sha256':f.ADAPTER,'SUT_requests':0,'environment_sha256':'b'*64};rp=write(r/'prepare.json',{'prepare':receipt})
- grant={'schema':'772-grant-v1','allow':True,'run_id':'r30finalp08','clients':400,'warmup_seconds':60,'steady_seconds':600,'window_start_utc':clock['start_utc'],'window_end_utc':clock['end_utc'],'cost_stop_utc':clock['cost_stop_utc'],'environment_sha256':'b'*64,'runtime_sha256':target['runtime_sha256'],'source_sha256':f.SM,'image_digest':target['sut_image_config_digest']};gp=write(r/'grant.json',grant);a=types.SimpleNamespace(load_facts=loadfile,grant=gp,prepare_receipt=rp);arm=g.load_arm(a);heredoc_syntax(arm)
+ receipt={'status':'PREPARED_DEFAULT_FALSE','run_id':'r30finalp08','supports_source':f.SOURCE,'qa_adapter_sha256':f.ADAPTER,'SUT_requests':0,'environment_sha256':'b'*64}
+ grant={**copy.deepcopy(g.GRANT_FIXED),'allow':True,'run_id':'r30finalp08','created_at':'2026-10-30T04:07:00Z','origin':'https://172.21.182.245:26445','window_start_utc':clock['start_utc'],'window_end_utc':clock['end_utc'],'cost_stop_utc':clock['cost_stop_utc'],'environment_sha256':'b'*64,'runtime_sha256':target['runtime_sha256'],'source_sha256':f.SM,'image_digest':target['sut_image_config_digest'],'fixture_sha256':'c'*64}
+ default={**grant,'allow':False};default_raw=(json.dumps(default,ensure_ascii=False,separators=(',',':'),sort_keys=True)+'\n').encode();default_info={'original_b64':base64.b64encode(default_raw).decode(),'sha256':hashlib.sha256(default_raw).hexdigest(),'grant':default}
+ rp=write(r/'prepare.json',{'prepare':receipt,'default_false_grant_original':default_info});gp=write(r/'grant.json',grant);a=types.SimpleNamespace(load_facts=loadfile,grant=gp,prepare_receipt=rp);arm=g.load_arm(a);heredoc_syntax(arm)
+ for key in g.GRANT_KEYS:
+  truncated=copy.deepcopy(grant);truncated.pop(key);write(gp,truncated)
+  try:g.load_arm(a);raise AssertionError('truncated grant accepted:'+key)
+  except ValueError:pass
+ extra={**grant,'unexpected_extra':'not-original'};write(gp,extra)
+ try:g.load_arm(a);raise AssertionError('extra grant field accepted')
+ except ValueError:pass
+ for key,value in [('origin','https://172.21.182.245:9999'),('created_at','2026-10-30T04:07:01Z'),('fixture_sha256','d'*64),('request_timeout_seconds',14),('postcheck_seconds',39),('permissions',[]),('prohibitions',[]),('limits',{})]:
+  changed=copy.deepcopy(grant);changed[key]=value;write(gp,changed)
+  try:g.load_arm(a);raise AssertionError('changed grant accepted:'+key)
+  except ValueError:pass
+ write(gp,grant);bad_info={**default_info,'sha256':'0'*64};write(rp,{'prepare':receipt,'default_false_grant_original':bad_info})
+ try:g.load_arm(a);raise AssertionError('wrong original default SHA accepted')
+ except ValueError:pass
+ write(rp,{'prepare':receipt});dp=r/'default-original.json';dp.write_bytes(default_raw);a.default_false_grant=dp;a.default_false_grant_sha256=hashlib.sha256(default_raw).hexdigest();heredoc_syntax(g.load_arm(a));a.default_false_grant=None;a.default_false_grant_sha256=None
+ write(rp,{'prepare':receipt,'default_false_grant_original':default_info})
+ print('LOCAL COMPLETE-GRANT TESTS PASSED: exact original21 fields with only allow flip accepted; each missing field, extra field, changed origin/created/fixture/timeout/postcheck/limits/permissions/prohibitions and wrong raw SHA rejected; existing CLI plus optional original-default-file recovery validated. No arm executed.')
  grant['allow']=False;write(gp,grant)
  try:g.load_arm(a);raise AssertionError('false grant accepted')
  except ValueError:pass

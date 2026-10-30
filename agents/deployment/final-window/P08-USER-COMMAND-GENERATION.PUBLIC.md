@@ -30,16 +30,18 @@ python3 P08-USER-COMMANDS.PUBLIC.py load-prepare --load-facts LOAD.json --bootst
 
 该命令只生成本地文件。用户执行后新建独立`QA753P08`，仅复制精确PUBLIC原件，调用原INSTALL、原790解密/五件提取和原ENTRY prepare；不发SUT请求，不创建allow-true grant。已有workspace/transfer拒绝重放，失败前缀保留。源90b的两份manifest、原service同字节root副本修正均保留。
 
-5. 用户发回`PREPARED_DEFAULT_FALSE`公开结果；root/独立QA审定另给完整allow-true grant，生成用户唯一arm文件：
+5. 用户发回`PREPARED_DEFAULT_FALSE`公开结果，现同时附原adapter实际创建的`runs/r30finalp08/grant.default-false.json`完整21字段原字节base64和SHA（中性元数据，无令牌）；root/独立QA审定另给完整allow-true grant，生成用户唯一arm文件：
 
 ```sh
 python3 P08-USER-COMMANDS.PUBLIC.py load-arm --load-facts LOAD.json --grant INDEPENDENT_ALLOW_TRUE_GRANT.json --prepare-receipt USER_PREPARE_OUTPUT.json --root-reviewed-facts --output NEW_LOAD_ARM.sh
 ```
 
-用户须在S−30前执行，脚本再次核时钟/入口/grant SHA，单次systemd定时S+1调用原ENTRY。执行器只接受S+1≤真实now<S+20；迟到拒绝、无重试、无继任轮。不把尚未发生的动作写成成功。
+arm生成器必须核原defaultfalse SHA/完整21字段及固定工具参数，批准grant只能与该原件逐字段相同、仅allow false→true；截断、额外字段或任何其他改值均在本地提前拒绝。用户须在S−30前执行，生成脚本再次在LOAD核原defaultfalse文件SHA和同一精确差分，再核时钟/入口/grant SHA，单次systemd定时S+1调用原ENTRY。执行器只接受S+1≤真实now<S+20；迟到拒绝、无重试、无继任轮。不把尚未发生的动作写成成功。
 
 **已执行的本地检查**：运行`python3 tmp/753_deployment_final_window/test_p08_user_handoff_local.py`（在仓库根目录），日志见`P08-local-user-boundaries.PUBLIC.log`。使用明确标记的合成事实，验证120/120.001秒新鲜度、NTP/IP/镜像/内存/活动QA负例、过期费用起点和未核平台保护拒绝、QA未批准/PRIVATE工具路径/allow-false拒绝、S−29.999不能arm、S+0.999/1/19.999/20边界（exec spy）。三类生成粘贴均核Python3.10语法且≤16KiB。没有执行任何生成的云命令、Docker探针、HTTP或QA；完整两机流程仍未远端演练。
 
 平台配置更新：根据root现场报告，任务生效中，T44TimedStopRole只对原两实例授权，14:00北京时间之后操作权限DateLess失效；这不是本岗云端复核或成功触发证据。用户预计09:45开机、S约09:55/E约10:08只是计划，实际T0必须由新freeze产生，03:00Z平台截止不能倒填进旧窗口。
 
 原INSTALL调用链已核：直接读取transport-key密文、capsule_tool.py、tools.753capsule、tool-manifest.json；不直接读取外部F ENTRY或DELIVERY。九件是独立QA完整公开交付要求，不能把缺F ENTRY描述成已证实安装失败；本流程只复制校SHA，不运行F。PUBLIC原件清单来源与本地逐字节核验见P08-QA-REQUIRED-PUBLIC.PUBLIC.json。
+
+兼容CLI：原load-prepare/load-arm参数不变。旧prepare输出若没有新增默认grant字段，无须重跑prepare；由用户仅导出指定中性默认grant原件及SHA后，root可在原load-arm命令追加`--default-false-grant ORIGINAL_PUBLIC_COPY.json --default-false-grant-sha256 RAW_SHA`。不得填造默认值或读取其他PRIVATE文件。原adapter、ENTRY、SPLUS1及两条已审事实粘贴脚本完全未改。
