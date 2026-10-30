@@ -1,0 +1,43 @@
+         782454 function calls (756378 primitive calls) in 0.248 seconds
+
+   Ordered by: cumulative time
+   List reduced from 666 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       30    0.000    0.000    0.214    0.007 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/runtime.py:244(execute)
+      630    0.003    0.000    0.108    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/persistence/rows.py:143(rows)
+       30    0.000    0.000    0.090    0.003 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/runtime.py:45(prepare)
+       90    0.000    0.000    0.086    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/contracts/__init__.py:42(violations)
+   750/90    0.000    0.000    0.085    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/validators.py:349(iter_errors)
+  2775/90    0.001    0.000    0.085    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/_keywords.py:274(ref)
+      780    0.004    0.000    0.085    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/persistence/rows.py:85(_execute)
+  7755/90    0.010    0.000    0.083    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/validators.py:396(descend)
+  795/180    0.001    0.000    0.072    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/_keywords.py:290(properties)
+      780    0.000    0.000    0.071    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2406(execute)
+      780    0.002    0.000    0.071    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2201(_execute_internal)
+      840    0.000    0.000    0.066    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1419(execute)
+      840    0.000    0.000    0.065    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:524(_execute_on_connection)
+      840    0.002    0.000    0.065    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1633(_execute_clauseelement)
+       90    0.001    0.000    0.063    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/identity.py:45(authenticate)
+      315    0.000    0.000    0.047    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/persistence/rows.py:184(get)
+       30    0.000    0.000    0.044    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/runtime.py:140(_claim)
+       30    0.000    0.000    0.040    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/runtime.py:197(locked_scope)
+      840    0.001    0.000    0.039    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1782(_execute_context)
+       30    0.000    0.000    0.031    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/application.py:151(validate_data)
+      690    0.003    0.000    0.030    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/persistence/rows.py:59(_clauses)
+      840    0.003    0.000    0.030    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1841(_exec_single_context)
+     2040    0.001    0.000    0.026    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/validators.py:459(_validate_reference)
+     7679    0.009    0.000    0.026    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py:323(expect)
+     2040    0.002    0.000    0.026    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/referencing/_core.py:653(lookup)
+       90    0.000    0.000    0.025    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/persistence/rows.py:283(insert)
+      120    0.000    0.000    0.023    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/common.py:137(members)
+       30    0.000    0.000    0.022    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/agents/backend/manual11-latency-20261030/local_profile.py:39(validate)
+     2250    0.001    0.000    0.021    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/sql/base.py:289(_generative)
+      840    0.001    0.000    0.021    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:694(_compile_w_cache)
+       30    0.000    0.000    0.020    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/backend/t44/services/runtime.py:54(audit)
+      570    0.001    0.000    0.020    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/_keywords.py:337(anyOf)
+       30    0.000    0.000    0.019    0.001 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/jsonschema/_keywords.py:351(oneOf)
+2250/1125    0.001    0.000    0.019    0.000 {built-in method _operator.eq}
+2250/1125    0.001    0.000    0.019    0.000 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/sqlalchemy/sql/operators.py:741(__eq__)
+
+

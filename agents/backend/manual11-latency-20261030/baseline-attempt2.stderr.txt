@@ -1,0 +1,8 @@
+/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/.venv-manual11/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+internal_error request_id=44869076-4e9a-4447-9d54-0d75db5ffc74 operation=transitionTask
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/manual11-latency-backend-20261030/agents/backend/manual11-latency-20261030/local_profile.py", line 46, in <module>
+    assert status == 200, (operation, status, result)
+           ^^^^^^^^^^^^^
+AssertionError: ('transitionTask', 500, {'code': 'INTERNAL_ERROR', 'message': 'Internal error', 'request_id': '44869076-4e9a-4447-9d54-0d75db5ffc74', 'audit_id': 10, 'current_version': None, 'current_state': None, 'original_error_code': None, 'violations': []})

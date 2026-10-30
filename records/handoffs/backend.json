@@ -3822,5 +3822,35 @@
     "claimed_350_500_line_reduction": false,
     "original_tests_modified": false,
     "actual_cloud_SUT_sessions": 0
+  },
+  "manual11_latency_20261030": {
+    "operator": "backend AI",
+    "prompt_ref": "ROLE-backend-MANUAL11-LATENCY-20261030-v1",
+    "base_sha": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+    "status": "LOCAL_READ_UOW_CANDIDATE_NOT_ROOT_CAUSE_OR_PERFORMANCE_ACCEPTANCE",
+    "branch": "codex/manual11-latency-backend-20261030",
+    "product_paths": [
+      "backend/t44/services/runtime.py"
+    ],
+    "evidence": "agents/backend/manual11-latency-20261030",
+    "getTask_checkouts_before_after": [
+      2,
+      1
+    ],
+    "getTask_commits_before_after": [
+      2,
+      1
+    ],
+    "getTask_selects_before_after": [
+      9,
+      9
+    ],
+    "per_operation_profile_samples": 30,
+    "live_auth_before_and_after_validation_preserved": true,
+    "cross_request_identity_cache_added": false,
+    "real_mysql_lock_or_performance_validation": false,
+    "cloud_connections_or_load": 0,
+    "independent_private_accessed": false,
+    "remaining": "APP worker/pool/DB wait/commit/scan telemetry needed to determine shared four-class tail latency; coordinator owns formal retest admission"
   }
 }

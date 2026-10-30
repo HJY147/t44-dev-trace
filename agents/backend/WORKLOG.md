@@ -817,3 +817,10 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 九集合统一只读scope/filter/model投影，Member/Dependency20项页SQL SELECT22→3、23→4，完整结果/顺序/total与精确586基线同；空页不增关联查询。原权限/事务/锁阶段、版本、审计/MQ不删改。
 - 同原jsonschema4.26 validator/_absolute_refs算法，仅冻结SPEC对象复用预编译实例；任意动态schema仍原构造/全枚举，包含root/nested$id/oneOf/late-$ref异常。冻结有效schema只枚举前100错误，保完全相同前100/顺序；并发与全冻结组件差分。186→最终188项1.27s全绿；原SQLiteHTTP/错误优先级/domain可信边界305项29.92s全绿。原tests/断言未改，真实红与fixture/文本补丁失败保留。
 - root请求DB候选依赖已隔离4c71161f锁sqlglot30.25.0，唯一pin新增，其他依赖版本不动；未在共享runtime/云安装。若DB拒绝需要撤该独立依赖。微基准/精确cloc/免费native CI另随冻结SHA实证，不当规模或正式性能通过。0云/SUT/实际session。
+
+## 2026-10-30 MANUAL11 latency local diagnosis
+- Backend AI / `ROLE-backend-MANUAL11-LATENCY-20261030-v1`; source90b isolated branch `codex/manual11-latency-backend-20261030`.
+- PUBLIC-only failure/diagnostics; no tester contact/PRIVATE/cloud/VM/load. Real SQLite+SQLAlchemy/cProfile showed GET9SELECT/2checkout/2commit, contract4/1/1, BLOCK/UNBLOCK20–22/2/2.
+- Kept both live pre/post-validation auth checks; GET read preparation now shares one UoW, measured9/1/1. No write, schema, persistence or deployment modifications; common P95 root cause unresolved.
+- Original144 regressions and new5 invalidation cases passed; baseline also passes same5. Project-configured combined rerun and cloc proof in `agents/backend/manual11-latency-20261030/`.
+- Harness errors and limits are recorded in report; local SQLite cannot establish remote MySQL locks or formal P95.

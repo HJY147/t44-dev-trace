@@ -1,0 +1,860 @@
+{
+  "scope": "Sequential local SQLite, real Runtime and jsonschema; not MySQL/lock/network/formal evidence",
+  "phases": {
+    "getTask": {
+      "samples": [
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 3.098167013376951
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.639707992784679
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.7024169685319066
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.818249980919063
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6729170931503177
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.7167079970240593
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.932916977442801
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.8672500047832727
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6959169190376997
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.64512503053993
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.587374998256564
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6361250784248114
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6255829725414515
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.8061249759048223
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.629708033055067
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.841375069692731
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.759333001449704
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.7970419032499194
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.613582997582853
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.663374994881451
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.5935829617083073
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.614583005197346
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.5900000473484397
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6519589591771364
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.6688340585678816
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.79000005684793
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.5895839789882302
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.8497499879449606
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.654207986779511
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 9,
+            "COMMIT": 1
+          },
+          "ms": 2.722208038903773
+        }
+      ],
+      "mean_ms": 2.715790302803119
+    },
+    "validateContractPayload": {
+      "samples": [
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.711290911771357
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4189999783411622
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.42858293838799
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.515915966592729
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.507833949290216
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.485832966864109
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.3795830309391022
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4273750130087137
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4589999336749315
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4889159938320518
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4921670081093907
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4588750200346112
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4027919387444854
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4619999565184116
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.5160000184550881
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.3841670006513596
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.439166022464633
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4893750194460154
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.5239580534398556
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4715000288560987
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.3930830173194408
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4293750282377005
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4874590560793877
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.469166949391365
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.509083085693419
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.435082987882197
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4048339799046516
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4317919267341495
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.5505420742556453
+        },
+        {
+          "sql": {
+            "CHECKOUT": 1,
+            "SELECT": 4,
+            "COMMIT": 1
+          },
+          "ms": 1.4112089993432164
+        }
+      ],
+      "mean_ms": 1.4661652618087828
+    },
+    "transitionTask": {
+      "samples": [
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.999207988381386
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.681625011377037
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.851290982216597
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.205624995753169
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.76033301372081
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.246458950452507
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.930750027298927
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.610542048700154
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.979375077411532
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.584540919400752
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.081624982878566
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.593957987613976
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.981959031894803
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.63737496547401
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.049249998293817
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.527625002898276
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.05187493097037
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.206041995435953
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.923417026177049
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.708833018317819
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.7864580089226365
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.491124957799911
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.219084003940225
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.815250010229647
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.743207970634103
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.68887489195913
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.259458001703024
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.765832986682653
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 7.904500002041459
+        },
+        {
+          "sql": {
+            "CHECKOUT": 2,
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "COMMIT": 2,
+            "UPDATE": 2
+          },
+          "ms": 8.413540897890925
+        }
+      ],
+      "mean_ms": 8.28996798954904
+    }
+  }
+}

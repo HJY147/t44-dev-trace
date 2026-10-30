@@ -1,0 +1,680 @@
+{
+  "scope": "Sequential local SQLite, real Runtime and jsonschema; not MySQL/lock/network/formal evidence",
+  "phases": {
+    "getTask": {
+      "samples": [
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 3.1199579825624824
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.7764580445364118
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8212920296937227
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.780916984193027
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8822500025853515
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.896249992772937
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.9194580856710672
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.9492920730262995
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.9132500058040023
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8994580497965217
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.924417029134929
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.681917045265436
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.688957960344851
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.706040977500379
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8286660090088844
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8588749701157212
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.9097499791532755
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8786249458789825
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.814540988765657
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.869167015887797
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8334170347079635
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.9282920295372605
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.860874985344708
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.891250071115792
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8684159042313695
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.976583084091544
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.8657499933615327
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.896249992772937
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.933874959126115
+        },
+        {
+          "sql": {
+            "SELECT": 9
+          },
+          "ms": 2.7764580445364118
+        }
+      ],
+      "mean_ms": 2.865023542350779
+    },
+    "validateContractPayload": {
+      "samples": [
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.630334067158401
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4299580361694098
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5088749350979924
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5422920696437359
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5043749008327723
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5321250539273024
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.539791002869606
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4901249669492245
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4795829774811864
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4874580083414912
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.518791075795889
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.485208049416542
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4947080053389072
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5310830203816295
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.39029195997864
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4713749988004565
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5451249200850725
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.508665969595313
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.479041064158082
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.496667042374611
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5324170235544443
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.387041062116623
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4793329173699021
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5583749627694488
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.6495418967679143
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4432090101763606
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4382499502971768
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.5471249353140593
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.4220000011846423
+        },
+        {
+          "sql": {
+            "SELECT": 4
+          },
+          "ms": 1.3949580024927855
+        }
+      ],
+      "mean_ms": 1.4972707295479875
+    },
+    "transitionTask": {
+      "samples": [
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 9.126499993726611
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 9.10833291709423
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 7.701750029809773
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.67904198821634
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 7.68933305516839
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.700417005456984
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.22591595351696
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.904292015358806
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.479792042635381
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.619959000498056
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.297832915559411
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.837750065140426
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.141041966155171
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.991542039439082
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.305750088766217
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.734375005587935
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.315250044688582
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.711874950677156
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.3165830001235
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.885458111763
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 7.740165921859443
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.563040988519788
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 7.970458013005555
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.377082995139062
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 7.704458897933364
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.710292051546276
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.340374915860593
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.65154096391052
+        },
+        {
+          "sql": {
+            "SELECT": 20,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.328833035193384
+        },
+        {
+          "sql": {
+            "SELECT": 22,
+            "SAVEPOINT": 1,
+            "INSERT": 3,
+            "RELEASE": 1,
+            "UPDATE": 2
+          },
+          "ms": 8.747999905608594
+        }
+      ],
+      "mean_ms": 8.463567995931953
+    }
+  }
+}

@@ -514,3 +514,10 @@ GEN04修复后36项1.83s全绿：真实GEN命名/同原binding rawSHA/stop绑定
 future运行时边界已明确：APP-only actualbinding官方backend8e，edge/UID10001/read-only/drop caps/无DB-AMQP业务env/保原PYTHONPATH，旧source-free4f拒绝，不向LOAD/QA传产品源。helper只读--check-runtime-only缺t44明确非READY；本机正例用真实项目函数，label LOCAL_PROJECT_RUNTIME_ONLY，不是Docker8e。verifier移至tmp756，严格全部.py=18manifest内9个.py；新入口81项4.33s及静态全绿，旧78/命令历史保留。首P1红原件runtime-entry-red保留；未云/SUT/真实session或额外CI，仍需owner未来实际包/image/loaded验证。
 
 2026-10-29最终候选：准确586独立树，九只读集合投影统一，20条Member/Dependency SQL22→3、23→4，完整payload/顺序/总数同；冻结schema缓存保原构造/URI算法、不evolve，动态schema含nested$id/late-$ref仍原行为，冻结错误迭代限100。188新差分1.27s+原305HTTP/domain29.92s通过，未改原断言。规模目标未证明、不能声称净减350-500；固定committed cloc另报。sqlglot30.25 root授权依赖隔离4c71161f且其他pin不变。0云/SUT/真实session；免费native796由准确冻结/集成CI另证，非本机305替代。详agents/backend/final-20261029。
+
+## 2026-10-30 MANUAL11 local diagnostic candidate
+- Source90b; AI-authored isolated branch `codex/manual11-latency-backend-20261030`, prompt `ROLE-backend-MANUAL11-LATENCY-20261030-v1`.
+- Artifact/evidence: `agents/backend/manual11-latency-20261030/report.md`, raw local SQL/cProfile JSON/text, regressions, `tmp/backend/contracts/818_manual11_read_uow.py`.
+- Minimal product change: GET validation+read one UoW, preserving full live auth before/after validation; checkout/commit2→1 while9SELECT unchanged. Contract and all writes unchanged.
+- Original144 regressions and5 new invalidation tests pass; same5 pass on90b. Root-cause/remote MySQL/independent formal retest remain unproven. No database/deployment file, cloud, load, VM, tester PRIVATE or assertions changed.
+- I/O: frozen API1.2.0 and status/error/response contracts unchanged. Upstream coordinator owns APP/DB wait evidence and any future formal admission. This candidate alone cannot support claiming P95 fixed.

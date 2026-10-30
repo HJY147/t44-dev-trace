@@ -243,11 +243,14 @@ class Runtime:
 
     def execute(self, call, validate, source="unknown"):
         try:
-            if call.operation == "validateContractPayload":
+            if call.operation == "validateContractPayload" or OPERATIONS[call.operation]["method"] == "get":
                 with self.factory() as uow:
                     authenticate(uow.gateway, call)
                     validate(call)
-                    require(call.actor["expires_at"] > now(), "TOKEN_EXPIRED")
+                    if call.operation == "validateContractPayload":
+                        require(call.actor["expires_at"] > now(), "TOKEN_EXPIRED")
+                    else:
+                        authenticate(uow.gateway, call)
                     result = self.business.dispatch(uow.gateway, call)
                 return self.business.status(call.operation), wire(result), False, None
             replay = self.prepare(call, validate)
