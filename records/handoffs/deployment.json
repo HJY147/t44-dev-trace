@@ -3048,5 +3048,21 @@
     "platform_protection": "Verify platform scheduled economic stop and data retention before future boot; guest shutdown not sufficient billing proof",
     "push": "not performed; local commit only",
     "prompt_id": "ROLE-deployment-LOCAL-CLOSURE-FREEZE-v1"
+  },
+  "user_operated_p08": {
+    "status": "LOCAL_ONLY_NOT_REMOTE_INSTALLED_OR_REHEARSED",
+    "user_executes": [
+      "VM boot",
+      "cloud assistant commands",
+      "LOAD prepare and approved single timer arm"
+    ],
+    "root_scope": "review user-returned PUBLIC facts and coordinate independent QA approval only",
+    "APP_paste": "agents/deployment/final-window/P08-USER-APP-PREPARE.INLINE.PUBLIC.sh",
+    "APP_paste_bytes": 8100,
+    "APP_paste_sha256": "d092d34a81f70e48255159344738ac07c852d615f9384afe76a5c19aa5d102b5",
+    "stages": "agents/deployment/final-window/P08-USER-EXECUTION-STAGES.PUBLIC.md",
+    "cloud_actions_performed": false,
+    "push_performed": false,
+    "prompt_id": "ROLE-deployment-USER-EXEC-P08-v1"
   }
 }

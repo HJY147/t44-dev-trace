@@ -5,7 +5,7 @@
 | 阶段 | 用户动作 | 自动化边界 |
 | --- | --- | --- |
 | 0 | root先核实际充值/欠费/可用额和平台保盘定时经济停机保护，用户再亲自开原两机 | 不新增资源；guest关机不等于计算停费。未验证平台保护则不开机 |
-| 1 APP准备 | 一次粘贴`P08-USER-APP-PREPARE.INLINE.PUBLIC.sh` | 8049B级自包含，无GitHub下载；核真实APP boot/NTP、盘上P07/90b原SHA，安装未上传P08v2/S+1原字节并派生cap50工具；不freeze、不启动容器、不发SUT/QA请求、不创建费用批准 |
+| 1 APP准备 | 一次粘贴`P08-USER-APP-PREPARE.INLINE.PUBLIC.sh` | 8100B自包含，无GitHub下载；核真实APP boot/NTP、盘上P07/90b原SHA，安装未上传P08v2/S+1原字节并派生cap50工具；不freeze、不启动容器、不发SUT/QA请求、不创建费用批准 |
 | 2 LOAD事实 | 用户执行root随后给的LOAD事实命令，发回原PUBLIC输出 | 只核本次LOAD boot/NTP、原Python/资源限制、QA公开安装和无旧负载；root先核两机事实。不能拿旧proof改时间 |
 | 3 新费用+窗口 | root根据两个本次实际boot另写批准cap50费用原件；用户按给定命令在APP启动P08准备 | 计价起点取本次两机最早真实boot，不复用昨晚17:29或旧deadline；新LOAD就绪≤120秒。APP固定phase→新3账号/seed→service根副本→scheduler→新packet/790可自动；S10/E23/G25/C30不改 |
 | 4 LOAD准备 | 用户把APP原PUBLIC bootstrap传到LOAD并执行原解密/ENTRY prepare命令，发回PUBLIC准备结果 | 加密传输和原五文件校验可自动；新binding/CA/import尽早收齐。独立QA核新target和一次grant，绝不绕过grant |
