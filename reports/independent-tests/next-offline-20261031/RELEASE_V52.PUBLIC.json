@@ -1,0 +1,59 @@
+{
+  "schema": "independent-offline-release-v5.2",
+  "status": "OFFLINE_SELF_CHECKS_COMPLETE_NOT_CURRENT_ENVIRONMENT_APPROVAL",
+  "candidate": "13acb43a804e717e7485091895378511fe3d9b76",
+  "private_tool_root": "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/independent-next-offline-20261031/private-next-tools",
+  "files": {
+    "backup.py": "be8827eaf3b655167404c5cdbbc4ba3229848176a58f958211772f888b346bed",
+    "runtime.py": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "test_prepare_offline.py": "7e44065e5be4ba5608199436a0aebec2c9cf74d38cca14bfa755ac215c9e3ace",
+    "ENTRY_MANUAL_753.sh": "d15874c477fef0d92bc68ab77802a5354d15be237c853621b56467005c20d43e",
+    "ADAPTER_MANUAL_753.py": "44451456d63d94b612924d215ece822dfce127f4cc67926294f33b643fd14cf3",
+    "functional.py": "0e9245fc9cbc1f801907a47ec0aa8a00695358f09f5332f661fa13742c0b4b64",
+    "test_sink_offline.py": "3946478aca2db338117886b7f58f0c82a44a0f4f9e71302dc4deda8f8d80d064",
+    "verify_raw.py": "7658f324aeb57ad66ae4a76515e0d7abfca936609a62ba218a5ad1094bb3a742",
+    "openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "verify_backup.py": "382fe87da1d857a1532f86b871d07f36fdc6d13ab37d47639eccebc9d7709426"
+  },
+  "no_backup_key_read_or_reused": true,
+  "prior_freezes_preserved": [
+    "TOOL_CANDIDATE_FREEZE.PUBLIC.json",
+    "TOOL_COMPONENTS_V51.PUBLIC.json"
+  ],
+  "checks": {
+    "logger_raw_tests": 21,
+    "synthetic_prepare_tests": 1,
+    "all_pass": true,
+    "all_python_ast": true,
+    "entry_shell_syntax": true,
+    "business_case_files_byte_equal": true,
+    "runtime_outside_sink_only_metadata_and_producer_binding_changed": true,
+    "adapter_only_CORE_hash_changed": true,
+    "original_ENTRY_unchanged": true
+  },
+  "server_access": false,
+  "SUT_requests": 0,
+  "current_identity_issued": false,
+  "allow_true_issued": false,
+  "resource_limits_unchanged": {
+    "cpu": 8,
+    "memory_bytes": 8589934592,
+    "pids": 2048,
+    "queue_slots": 800,
+    "response_bytes": 1048576,
+    "record_and_each_inflight_reserve_bytes": 3145728,
+    "plain_bytes": 10737418240,
+    "compressed_bytes": 11811160064,
+    "cipher_bytes": 12884901888,
+    "initial_headroom_bytes": 1526726656
+  },
+  "unverified": [
+    "Linux/cgroup/image actual tool execution (local platform macOS)",
+    "long-duration throughput/memory/disk sizing under actual workload",
+    "real CA/session/source/config/schema/fixture/exclusion facts",
+    "fresh nonce/material identity and network-none real prepare",
+    "independent tool release approval before formal run",
+    "all actual business/performance/MQ/postconditions"
+  ],
+  "utc": "2026-10-30T19:18:11.342589+00:00"
+}

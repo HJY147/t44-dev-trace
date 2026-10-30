@@ -1,0 +1,29 @@
+{
+  "schema": "independent-offline-tools-v5.1",
+  "status": "OFFLINE_COMPONENTS_VALIDATED_END_TO_END_BLOCKED",
+  "previous_freeze_preserved": "TOOL_CANDIDATE_FREEZE.PUBLIC.json",
+  "files": {
+    "backup.py": "be8827eaf3b655167404c5cdbbc4ba3229848176a58f958211772f888b346bed",
+    "runtime.py": "2b3d95088960c1a967a930f0beafa38cc48d76caa35708b5656aa11e88e4fce9",
+    "ENTRY_MANUAL_753.sh": "d15874c477fef0d92bc68ab77802a5354d15be237c853621b56467005c20d43e",
+    "ADAPTER_MANUAL_753.py": "fd96886835b141ff1239f01b15c7a058f33b82674afff621c59fc92364d83630",
+    "functional.py": "0e9245fc9cbc1f801907a47ec0aa8a00695358f09f5332f661fa13742c0b4b64",
+    "test_sink_offline.py": "bd82bded96776204d45d5414445d74efbbc12892823986f9af4117afafcf7e33",
+    "verify_raw.py": "fbbb25fff5966fe25aaaf67aa2a1f20d65e5f6a155f8ed89b33cbbbf5ca229b2",
+    "openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "verify_backup.py": "382fe87da1d857a1532f86b871d07f36fdc6d13ab37d47639eccebc9d7709426"
+  },
+  "logger_tests_passed": 19,
+  "syntax_checks": "all local tool Python AST and ENTRY shell syntax pass",
+  "source": "13acb43a804e717e7485091895378511fe3d9b76",
+  "original_business_cases_unchanged": true,
+  "adapter_change": "CORE hash only; original ENTRY unchanged",
+  "server_access": false,
+  "SUT_requests": 0,
+  "grant_issued": false,
+  "remaining": [
+    "producer lifecycle/finalization protocol needs stronger proof against producers arriving after footer",
+    "full workspace release manifest/prepare binding and synthetic zero-request prepare roundtrip not yet complete",
+    "current environment and new material/nonce/grant remain absent by design"
+  ]
+}
