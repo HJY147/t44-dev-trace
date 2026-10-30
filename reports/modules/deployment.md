@@ -697,3 +697,6 @@ Added original-device block counters to the same bounded observer: derive major:
 
 
 2026-10-31 / ROLE-deployment-MATERIAL07-LOCAL-v1：用户继续但先离线准备再通知开机，不新增强制停机。07入口精确历史06 SHA并独立当前400/800/schema/五表counts/service检查；全400 state2省重复维护apply，原材料资格不减，后端da484fd8确认。经总协调明确决定仅部署scanner等待150→900、成功条件不变；共享单调准备1800上界、SSH3600余量，timeout仅停自有流程保前缀无VM stop。23prepare07+6scan07本地测试通过，真实历史原件纯函数校验通过。新19文件受限包含历史PUBLIC内网拓扑，原件/归档不上传GitHub。实际新扫描/APP-ready07/QA/正式性能均未执行。接口P13_07_RUNBOOK和P13-07-VALIDATION.PUBLIC.json。
+
+
+2026-10-31 / MATERIAL07现场：用户本轮开原LOAD/APP并授权正式复测。APP64CPU/七容器身份resource/42file包精确SHA通过，当前400state2跳维护HTTP。原材料07真实606请求/进程退出、新token轮换后freshscan97从17:19:03.739883Z开始至17:19:44.900425Z完成3000、status2/errorNone，APP-ready及continuation已正常exit0。schema只读原件/当前source/config/resource/全部中性PUBLIC与CMS已回收并校验；密文送LOAD新运输目录并直交独立岗。无QA/grant/benchmark部署执行，未新增诊断/AB/自动关机。公开摘要LIVE07-READY.PUBLIC.json，原件受限runtime不上传GitHub。
