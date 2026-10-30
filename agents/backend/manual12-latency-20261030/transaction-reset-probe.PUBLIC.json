@@ -1,0 +1,89 @@
+{
+  "scope": "local_sqlalchemy_sqlite_lifecycle_only_no_cloud_latency_claim",
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "sqlalchemy_version": "2.1.6",
+  "variants": {
+    "rollback": {
+      "successful_read": {
+        "dbapi_calls": {
+          "dbapi_commit": 1,
+          "dbapi_rollback": 1
+        },
+        "durable_ids": []
+      },
+      "successful_write": {
+        "dbapi_calls": {
+          "dbapi_commit": 1,
+          "dbapi_rollback": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "failed_uow": {
+        "dbapi_calls": {
+          "dbapi_rollback": 2
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "unclosed_connection_transaction": {
+        "dbapi_calls": {
+          "dbapi_rollback": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "unclosed_session_transaction": {
+        "dbapi_calls": {
+          "dbapi_rollback": 2
+        },
+        "durable_ids": [
+          1
+        ]
+      }
+    },
+    "none": {
+      "successful_read": {
+        "dbapi_calls": {
+          "dbapi_commit": 1
+        },
+        "durable_ids": []
+      },
+      "successful_write": {
+        "dbapi_calls": {
+          "dbapi_commit": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "failed_uow": {
+        "dbapi_calls": {
+          "dbapi_rollback": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "unclosed_connection_transaction": {
+        "dbapi_calls": {
+          "dbapi_rollback": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      },
+      "unclosed_session_transaction": {
+        "dbapi_calls": {
+          "dbapi_rollback": 1
+        },
+        "durable_ids": [
+          1
+        ]
+      }
+    }
+  }
+}
