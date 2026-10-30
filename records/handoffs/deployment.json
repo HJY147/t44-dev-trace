@@ -3070,7 +3070,7 @@
     "files_manifest": "agents/deployment/final-window/P08-user-handoff-manifest.PUBLIC.json",
     "instructions": "agents/deployment/final-window/P08-USER-COMMAND-GENERATION.PUBLIC.md",
     "APP_offline_paste_bytes": 8185,
-    "LOAD_offline_paste_bytes": 6685,
+    "LOAD_offline_paste_bytes": 6777,
     "dynamic_inputs": [
       "actual APP and LOAD public facts",
       "new cap50 fee approval",
@@ -3079,7 +3079,7 @@
       "independent QA target approval",
       "actual default-false prepare receipt and separately approved allow-true grant"
     ],
-    "local_test": "tests/check_user_handoff_local.py synthetic boundaries passed; no generated command executed",
+    "local_test": "tmp/753_deployment_final_window/test_p08_user_handoff_local.py synthetic boundaries passed; no generated command executed",
     "cloud_Docker_HTTP_QA_executed": false,
     "push_performed": false,
     "prompt_id": "ROLE-deployment-COMPLETE-USER-HANDOFF-v1",
@@ -3094,6 +3094,8 @@
       "permissions_fully_validated": false,
       "known_warning": "UI generic * Stop permission check warning retained",
       "agent_cloud_actions": false
-    }
+    },
+    "public_tools_delivery": "independent QA exact9 PUBLIC members, F entry copied only; original INSTALL direct reads audited, no fabricated missing-F-entry failure",
+    "final_manifest": "agents/deployment/final-window/P08-user-handoff-manifest.PUBLIC.json"
   }
 }

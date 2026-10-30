@@ -1,12 +1,13 @@
 from pathlib import Path
 import importlib.util,hashlib,json,tempfile,types,copy,ast,sys
-D=Path(__file__).resolve().parents[1]
+D=Path(__file__).resolve().parents[2]/'agents/deployment/final-window'
 def module(n,p):s=importlib.util.spec_from_file_location(n,p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
 f=module('facts',D/'P08-FACTS-CHECK.PUBLIC.py');g=module('commands',D/'P08-USER-COMMANDS.PUBLIC.py');now=f.epoch('2026-10-30T04:00:00Z');g.time.time=lambda:now
 app={'kind':'USER_EXECUTED_APP_P08_TOOL_PREPARATION_ONLY','observed_utc':'2026-10-30T03:59:00Z','actual_APP_resume_boot_utc':'2026-10-30T03:40:00Z','NTP_synchronized':'yes','private_ip':'172.21.182.245','profile_sha256':'346d19344281b9e02046a27cf9d24f07ebceb9c8f920105a981d7bfdc056ac1f','actual90b_public_file_shas':{'source-manifest.json':f.SM,'backend-bundle-manifest.json':f.BUNDLE},'backend_alias':'t44-backend:src-'+f.SOURCE,'active_P07_units':'','fresh_window_frozen':False,'tool_derivation':{'status':'P08_TOOLS_PREPARED_ONLY','tools':{'P08-CONTINUOUS-fast10-cap50.PUBLIC.py':'a'*64}}}
 files={f.T+'/P08-USER-TRANSPORT-LOAD.PUBLIC.py':{'sha256':'d1ed953dc7c0dd9d048dc3318c27015d3f71968499ba7d17dcd1841422d84601'},f.T+'/P08-SPLUS1-EXEC.PUBLIC.py':{'sha256':'7cba1f0cd9925ba92da12849e4789af8378d1fe870698be02be292017796bb02'},f.T+'/final-transport-profile05.py':{'sha256':'a5425e961f486c78253a6ba319030c86b4057056622882086e686a642e61bc8a'},f.R+'/ops01/qa-public/ENTRY_PERF_753.sh':{'sha256':f.ENTRY},f.R+'/ops01/qa-public/ADAPTER_753.py':{'sha256':f.ADAPTER}}
 probe={'uid':10001,'python':'3.12.15','cpu_max':'800000 100000','memory_max':'8589934592','pids_max':'2048','nofile':[4096,4096],'affinity_cpus':16,'t44_absent':True,'business_env_absent':True}
-load={'kind':'USER_LOAD_P08_FACTS_ONLY','observed_utc':'2026-10-30T03:59:10Z','actual_LOAD_resume_boot_utc':'2026-10-30T03:41:00Z','NTP_synchronized':'yes','private_ip':'172.21.182.244','actual_image_id':f.IMAGE,'image_descriptor_layers_match':True,'runtime_probe':probe,'active_QA_containers':[],'active_T44_units':'','public_files':files,'PRIVATE_or_key_contents_read':False,'QA_or_SUT_requests':0}
+load={'kind':'USER_LOAD_P08_FACTS_ONLY','observed_utc':'2026-10-30T03:59:10Z','actual_LOAD_resume_boot_utc':'2026-10-30T03:41:00Z','NTP_synchronized':'yes','private_ip':'172.21.182.244','actual_image_id':f.IMAGE,'image_descriptor_layers_match':True,'runtime_probe':probe,'active_QA_containers':[],'active_T44_units':'','public_files':files,'PRIVATE_or_plaintext_key_contents_read':False,'QA_or_SUT_requests':0}
+for n,h in f.QA_REQUIRED.items():load['public_files'][f.R+'/QA753P07/public/'+n]={'sha256':h}
 assert not f.check(app,load,now)['errors'];assert f.check(app,load,now+70)['fresh_for_APP_admission_now'];assert not f.check(app,load,now+70.001)['fresh_for_APP_admission_now']
 for key,value in [('NTP_synchronized','no'),('private_ip','172.21.182.245'),('active_QA_containers',[{'name':'qa753-p-old'}]),('actual_image_id','sha256:'+'0'*64)]:
  bad=copy.deepcopy(load);bad[key]=value;assert f.check(app,bad,now)['errors']
@@ -46,9 +47,9 @@ with tempfile.TemporaryDirectory() as tmp:
  import base64
  cr=json.dumps(clock).encode();boot={'timeplan_b64':base64.b64encode(cr).decode(),'timeplan_sha256':hashlib.sha256(cr).hexdigest()};bp=write(r/'bootstrap.json',boot)
  pinfiles={}
- for n in ['ADAPTER_753.py','ENTRY_PERF_753.sh','INSTALL_753.sh','capsule_tool.py','tool-manifest.json','tools.753capsule','transport-key.rsa-oaep-sha256']:
-  path=f.R+'/QA753P07/public/'+n;h={'ADAPTER_753.py':f.ADAPTER,'ENTRY_PERF_753.sh':f.ENTRY,'transport-key.rsa-oaep-sha256':'19609563d296299deb7aa0a04a95abbe32ecbae7e7cf5161728e0866a6fc61f5'}.get(n,'e'*64);pinfiles[n]={'source':path,'sha256':h}
-  if n!='transport-key.rsa-oaep-sha256':load['public_files'][path]={'sha256':h}
+ for n in f.QA_REQUIRED:
+  path=f.R+'/QA753P07/public/'+n;h=f.QA_REQUIRED[n];pinfiles[n]={'source':path,'sha256':h}
+  load['public_files'][path]={'sha256':h}
  write(loadfile,load);pp=write(r/'pins.json',{'root_reviewed':True,'files':pinfiles});a=types.SimpleNamespace(load_facts=loadfile,bootstrap=bp,qa_target=tp,qa_approval=ap,backend_import_receipt=ip,qa_public_pins=pp)
  prep=g.load_prepare(a);heredoc_syntax(prep)
  bad={**approval,'approved':False};write(ap,bad)

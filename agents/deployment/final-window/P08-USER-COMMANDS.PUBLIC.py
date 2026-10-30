@@ -52,11 +52,11 @@ raise SystemExit(subprocess.run(argv,check=False).returncode)"""
  return shell(payload,body)
 def load_prepare(a):
  load,lh=f.load_facts(a.load_facts);b,clock=clock_from_bootstrap(a.bootstrap);check_target(a.qa_target,a.qa_approval,a.backend_import_receipt);pins=obj(a.qa_public_pins)
- need(pins.get('root_reviewed') is True,'QA_PUBLIC_TOOL_PINS_ROOT_REVIEW_REQUIRED');names={'ADAPTER_753.py','ENTRY_PERF_753.sh','INSTALL_753.sh','capsule_tool.py','tool-manifest.json','tools.753capsule','transport-key.rsa-oaep-sha256'};need(set(pins['files'])==names,'EXACT_QA_PUBLIC_TOOL_SET_REQUIRED')
+ need(pins.get('root_reviewed') is True,'QA_PUBLIC_TOOL_PINS_ROOT_REVIEW_REQUIRED');names=set(f.QA_REQUIRED);need(set(pins['files'])==names,'EXACT_QA_PUBLIC_TOOL_SET_REQUIRED')
  for n,item in pins['files'].items():
   need(Path(item['source']).name==n and ('/public/' in item['source'] or item['source'].startswith(R+'/ops01/qa-public/')),'PUBLIC_TOOL_SOURCE_ONLY')
-  if n=='transport-key.rsa-oaep-sha256':need(item['sha256']=='19609563d296299deb7aa0a04a95abbe32ecbae7e7cf5161728e0866a6fc61f5','ORIGINAL_PUBLIC_WRAPPED_TRANSPORT_KEY_REQUIRED')
-  else:need(load.get('public_files',{}).get(item['source'],{}).get('sha256')==item['sha256'],'QA_TOOL_NOT_IN_USER_FACTS:'+n)
+  need(item['sha256']==f.QA_REQUIRED[n],'INDEPENDENT_PUBLIC_RELEASE_SHA_REQUIRED:'+n)
+  need(load.get('public_files',{}).get(item['source'],{}).get('sha256')==item['sha256'],'QA_TOOL_NOT_IN_USER_FACTS:'+n)
  need(pins['files']['ADAPTER_753.py']['sha256']==f.ADAPTER and pins['files']['ENTRY_PERF_753.sh']['sha256']==f.ENTRY,'ORIGINAL_ENTRY_ADAPTER_REQUIRED')
  need(time.time()<f.epoch(clock['start_utc'])-30,'S_MINUS30_PREPARE_MARGIN_ALREADY_MISSED')
  uid=uuid.uuid4().hex;payload={'bootstrap':blob(raw(a.bootstrap)),'target':blob(raw(a.qa_target)),'approval':blob(raw(a.qa_approval)),'public_files':pins['files'],'workspace':W,'bootstrap_path':R+'/P08-user-bootstrap-'+uid+'.PUBLIC.json','driver':T+'/P08-USER-TRANSPORT-LOAD.PUBLIC.py','driver_sha256':'d1ed953dc7c0dd9d048dc3318c27015d3f71968499ba7d17dcd1841422d84601','transport_profile':T+'/final-transport-profile05.py','transport_profile_sha256':'a5425e961f486c78253a6ba319030c86b4057056622882086e686a642e61bc8a','start_utc':clock['start_utc']}
