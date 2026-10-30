@@ -1,0 +1,124 @@
+{
+  "prefix_sha256": "e485eabd7cc3c436e60545dba885c0e235e0bed3d69c7dd5eb5d4617255a6f7f",
+  "material": {
+    "status": "FRESH_MATERIAL_NOT_BENCHMARK_AUTHORIZATION",
+    "packet_run_id": "r30materialresume06",
+    "http_request_count": 606,
+    "material_process_exit_proof": {
+      "active_group_members": [],
+      "captured_at": "2026-10-30T16:46:23.174659+00:00",
+      "marker": "fd97ebd5f7e32036596dac54f04e64bd8bf8d7f8a6710acfe03d81b15ca628e0",
+      "process_exit_proven": true,
+      "recorded_job": {
+        "code_sha256": "105c84f1d083e9ceb3fa3e33d19250441847a6778f1cedeb02680889da24f1fa",
+        "lock_path": "/tmp/t44-manual-material-3f657bd6ada32ff38ef9cc5247cc4af46b8c31cf9eb1921b34306ba0c1435242.lock",
+        "marker": "fd97ebd5f7e32036596dac54f04e64bd8bf8d7f8a6710acfe03d81b15ca628e0",
+        "pgid": 3474,
+        "pid": 3480,
+        "process_exit_proven": false,
+        "run_id": "r30materialresume06",
+        "start_ticks": "34386",
+        "started_at": "2026-10-30T16:45:49.103101+00:00"
+      },
+      "state_changed": false,
+      "status": "MATERIAL_PROCESS_GROUP_EXIT_PROVEN"
+    },
+    "new_tasks": 0,
+    "seed_calls": 0
+  },
+  "rotation": {
+    "status": "SCHEDULER_TOKEN_FILE_ATOMICALLY_REPLACED_NOT_SCANNER_USE_PROOF",
+    "rotation_completed_utc": "2026-10-30T16:46:23.250147+00:00",
+    "scanner_HTTP_success_proven": false,
+    "business_event_created": false
+  },
+  "scans": [
+    {
+      "observed_utc": "2026-10-30T16:46:30.428942+00:00",
+      "latest_scan": {
+        "created_count": 10,
+        "duplicate_count": 614,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:30.356167Z",
+        "id": 92,
+        "scanned_count": 624,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    },
+    {
+      "observed_utc": "2026-10-30T16:46:36.173656+00:00",
+      "latest_scan": {
+        "created_count": 20,
+        "duplicate_count": 997,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:36.106287Z",
+        "id": 92,
+        "scanned_count": 1017,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    },
+    {
+      "observed_utc": "2026-10-30T16:46:41.920973+00:00",
+      "latest_scan": {
+        "created_count": 32,
+        "duplicate_count": 1386,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:41.847264Z",
+        "id": 92,
+        "scanned_count": 1418,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    },
+    {
+      "observed_utc": "2026-10-30T16:46:47.664325+00:00",
+      "latest_scan": {
+        "created_count": 42,
+        "duplicate_count": 1775,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:47.592100Z",
+        "id": 92,
+        "scanned_count": 1817,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    },
+    {
+      "observed_utc": "2026-10-30T16:46:53.398757+00:00",
+      "latest_scan": {
+        "created_count": 52,
+        "duplicate_count": 2168,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:53.323555Z",
+        "id": 92,
+        "scanned_count": 2220,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    },
+    {
+      "observed_utc": "2026-10-30T16:46:59.140524+00:00",
+      "latest_scan": {
+        "created_count": 64,
+        "duplicate_count": 2552,
+        "error_code": null,
+        "finished_at": null,
+        "heartbeat_at": "2026-10-30T16:46:59.071463Z",
+        "id": 92,
+        "scanned_count": 2616,
+        "started_at": "2026-10-30T14:47:59.789970Z",
+        "status": 1
+      }
+    }
+  ],
+  "original_scan_wait_upper_bound_seconds": 150,
+  "APP_ready_present": false,
+  "cause_not_yet_proven": "old persistent scan92 started before rotation; latest heartbeat and progress do not meet fresh postrotation-start assertion"
+}

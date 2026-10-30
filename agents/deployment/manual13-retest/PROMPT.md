@@ -18,3 +18,6 @@ Coordinator requested device major:minor mapping from owned cgroup io.stat to ho
 
 
 ROLE-deployment-P13-STORAGE-READY-v1：总协调指定存储唯一候选，source90b/原7镜像/已应用schema不变，用户不要额外AB；完成06精确wrapper、原工具复用及字典原字节解析，准备后再开机，禁止云SSH/SUT。真实字典revealed冒号instrument兼容问题，限定修复并保留旧观测缺失解释。
+
+
+ROLE-deployment-MATERIAL07-LOCAL-v1：总协调指示基于已回收partial06，离线新material07/maintenance07、QA p13待现场未消费核查。用户不加自动停机；总协调批准部署等待900/共享准备1800，原fresh scan成功条件及正式测量时长/断言不变。先实际工具和包准备/审查后再通知开机，禁止云SSH/SUT。

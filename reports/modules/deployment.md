@@ -694,3 +694,6 @@ Added original-device block counters to the same bounded observer: derive major:
 
 
 2026-10-31 / P13现场中断：真实APP64核、原七容器身份/索引/800IDs通过，实际MySQL卷位于nvme0n1p3→唯一40G nvme0n1，未guest读取PL。维护156解阻成功，四业务count守恒；原链进入material06后用户明确不能立即发压则停机。对自有wrapper18492 SIGINT，child退出-15、wrapper退出2，保存公开前缀；APP-ready不存在，未QA/正式发压，不证明所有worker停止；不重试不后继，无KILL或数据库signal。证据LIVE-STOP.PUBLIC.json，原件受限runtime保存。
+
+
+2026-10-31 / ROLE-deployment-MATERIAL07-LOCAL-v1：用户继续但先离线准备再通知开机，不新增强制停机。07入口精确历史06 SHA并独立当前400/800/schema/五表counts/service检查；全400 state2省重复维护apply，原材料资格不减，后端da484fd8确认。经总协调明确决定仅部署scanner等待150→900、成功条件不变；共享单调准备1800上界、SSH3600余量，timeout仅停自有流程保前缀无VM stop。23prepare07+6scan07本地测试通过，真实历史原件纯函数校验通过。新19文件受限包含历史PUBLIC内网拓扑，原件/归档不上传GitHub。实际新扫描/APP-ready07/QA/正式性能均未执行。接口P13_07_RUNBOOK和P13-07-VALIDATION.PUBLIC.json。
