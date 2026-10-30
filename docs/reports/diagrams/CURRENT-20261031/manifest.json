@@ -1,0 +1,524 @@
+{
+  "schema_version": 1,
+  "source_commit": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "spec": "v1.2",
+  "generator": "draw.py (bundled Python + Pillow)",
+  "not_adopted": "INSERT-first optimization candidate",
+  "figures": [
+    {
+      "id": "sdd1",
+      "title": "前后端分离的单体分层",
+      "subtitle": "独立进程用于持续工作，不表示业务微服务拆分",
+      "sources": [
+        "docs/collaboration/implementation-layout.md",
+        "backend/t44/services/runtime.py"
+      ],
+      "scope_note": "进程均可部署同一APP；消息确认细节见sdd9。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd1.png",
+          "sha256": "1df23f1d524951547c9cfd37ed771687fc65e597d434414c8cc9372a4cfd1cfd"
+        },
+        "svg": {
+          "path": "assets/sdd1.svg",
+          "sha256": "6d6a2afcdc538be6443667b92735e815899b60c6bc34b2ceb3953d0195383203"
+        }
+      },
+      "size_px": [
+        2200,
+        1450
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd1.png",
+      "sha256": "1df23f1d524951547c9cfd37ed771687fc65e597d434414c8cc9372a4cfd1cfd"
+    },
+    {
+      "id": "sdd2",
+      "title": "模块依赖与组合根",
+      "subtitle": "组合根注入实例；调用箭头指向被依赖组件，纯状态机无数据库依赖",
+      "sources": [
+        "backend/t44/services/runtime.py",
+        "backend/t44/services/workflow.py",
+        "backend/t44/domain/state_machine.py"
+      ],
+      "scope_note": "组合根边为装配，其余边为调用；纯函数与事务适配边界分开。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd2.png",
+          "sha256": "43c2db2fe38fa7709ae6f91e64faf5cf8a34a9827a0af9b2223bb539be612648"
+        },
+        "svg": {
+          "path": "assets/sdd2.svg",
+          "sha256": "257e09dd592da41a0ef05684c3b9a198cba531e3dce9ab120a474f19ab6d1362"
+        }
+      },
+      "size_px": [
+        2200,
+        1350
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd2.png",
+      "sha256": "43c2db2fe38fa7709ae6f91e64faf5cf8a34a9827a0af9b2223bb539be612648"
+    },
+    {
+      "id": "sdd3",
+      "title": "四核心表与必要支撑关联",
+      "subtitle": "无向关系线标注1:N基数；字段中的箭头说明外键，不表示执行顺序",
+      "sources": [
+        "backend/t44/persistence/schema_v1.sql",
+        "backend/t44/persistence/rows.py",
+        "backend/t44/domain/models.py"
+      ],
+      "scope_note": "主要关联摘录；成员/迭代/评估/审计等支撑实体完整ER及字段见正文DDL。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd3.png",
+          "sha256": "9037a10508658842b62ca4b242d8a49a771aa5c7f060998345cc25f72c61eaf8"
+        },
+        "svg": {
+          "path": "assets/sdd3.svg",
+          "sha256": "8b1378cf782ebb5eb78b12bb2623f498c7e501beb7c92cf2fd50ddd1e150badb"
+        }
+      },
+      "size_px": [
+        2200,
+        1500
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd3.png",
+      "sha256": "9037a10508658842b62ca4b242d8a49a771aa5c7f060998345cc25f72c61eaf8"
+    },
+    {
+      "id": "sdd4",
+      "title": "转换准入与拒绝出口",
+      "subtitle": "固定守卫、领域决定和持久化有明确先后；不把前端按钮视为权限检查",
+      "sources": [
+        "backend/t44/domain/state_machine.py",
+        "backend/t44/services/workflow.py"
+      ],
+      "scope_note": "准入概览；真实函数签名、输入、错误见设计正文。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd4.png",
+          "sha256": "516991174bb79eec196755814482884c84e911d0f78cac8cc543842753f1ad89"
+        },
+        "svg": {
+          "path": "assets/sdd4.svg",
+          "sha256": "b7b90df79d9a4d2c095f1a932447168bc80474effeacfac2eb383052737f3990"
+        }
+      },
+      "size_px": [
+        2200,
+        1350
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd4.png",
+      "sha256": "516991174bb79eec196755814482884c84e911d0f78cac8cc543842753f1ad89"
+    },
+    {
+      "id": "sdd5",
+      "title": "事务边界与成功拒绝分支",
+      "subtitle": "适用于受幂等保护的写请求；成功同主事务提交，拒绝回滚后另记审计",
+      "sources": [
+        "backend/t44/services/runtime.py",
+        "backend/t44/services/workflow.py"
+      ],
+      "scope_note": "仅幂等保护写请求；不是所有失败均可声称业务未写。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd5.png",
+          "sha256": "35ddd2d886ae5096566414f78cdee231961d377b82fb42ca407d8c1ed9deec4d"
+        },
+        "svg": {
+          "path": "assets/sdd5.svg",
+          "sha256": "df9df89ea9180c6ffea8b30f1ef9cef65f7f0ef724e1a23f574535bdb0843484"
+        }
+      },
+      "size_px": [
+        2200,
+        1450
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd5.png",
+      "sha256": "35ddd2d886ae5096566414f78cdee231961d377b82fb42ca407d8c1ed9deec4d"
+    },
+    {
+      "id": "sdd6",
+      "title": "幂等请求与owner fencing",
+      "subtitle": "业务幂等键与运输nonce不同；摘要、租约与owner共同防止重复生效",
+      "sources": [
+        "backend/t44/services/runtime.py"
+      ],
+      "scope_note": "幂等业务结果重放不要求HTTP元数据逐字节重放。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd6.png",
+          "sha256": "161cd78c427ad1526b2cde3019ffde70115bf73646c98053f2904c92f814905e"
+        },
+        "svg": {
+          "path": "assets/sdd6.svg",
+          "sha256": "f11c5ea5e718a59186f1a22016225981d2d37e375c6d2bac6be6f9dd4031d85f"
+        }
+      },
+      "size_px": [
+        2200,
+        1500
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd6.png",
+      "sha256": "161cd78c427ad1526b2cde3019ffde70115bf73646c98053f2904c92f814905e"
+    },
+    {
+      "id": "sdd7",
+      "title": "前端会话与迟到响应隔离",
+      "subtitle": "每次身份变化更新会话代次；旧响应不得回写新工作区",
+      "sources": [
+        "frontend/src/"
+      ],
+      "scope_note": "会话代次为浏览器隔离机制；不撤销已发送服务端写事务。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd7.png",
+          "sha256": "26f6f1fd7f746e4e02c27a15e1f8d9ff499872cb3a7aee9f291068014b77b7cc"
+        },
+        "svg": {
+          "path": "assets/sdd7.svg",
+          "sha256": "dfda1606077f47719f927f8b9e31df90f8ddf1e79ec769ba256bfcb664b23390"
+        }
+      },
+      "size_px": [
+        2200,
+        1450
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd7.png",
+      "sha256": "26f6f1fd7f746e4e02c27a15e1f8d9ff499872cb3a7aee9f291068014b77b7cc"
+    },
+    {
+      "id": "sdd8",
+      "title": "有序锁与依赖防环算法",
+      "subtitle": "锁定顺序与图遍历是两类约束，不能把CAS直接放在成员锁之后",
+      "sources": [
+        "backend/t44/services/runtime.py",
+        "backend/t44/services/tasks.py",
+        "backend/t44/services/projects.py"
+      ],
+      "scope_note": "N任务、E依赖、K新增前驱；数据库成本另计；并非候选优化设计。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd8.png",
+          "sha256": "b4191d37dec15b381094208efb7105aa70c9832118f979f1992d7c3aa3b94cac"
+        },
+        "svg": {
+          "path": "assets/sdd8.svg",
+          "sha256": "aaed48bf66debe4f63c7896daed5bb53f36028d2d98f1db715ae46336eab108e"
+        }
+      },
+      "size_px": [
+        2200,
+        1450
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd8.png",
+      "sha256": "b4191d37dec15b381094208efb7105aa70c9832118f979f1992d7c3aa3b94cac"
+    },
+    {
+      "id": "sdd9",
+      "title": "扫描恢复与异步消息确认",
+      "subtitle": "发布确认与消费处理是独立链路；consumer在数据库提交后ACK",
+      "sources": [
+        "backend/t44/scheduling/scanner.py",
+        "backend/t44/persistence/scans.py",
+        "backend/t44/messaging/worker.py",
+        "backend/t44/persistence/delivery.py"
+      ],
+      "scope_note": "上下两阶段不表示DB/MQ分布式原子提交；旧run保留started与cursor。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd9.png",
+          "sha256": "47492ec639880e0b20c783ddb919bedd00fd784eeac8de636f802726496806aa"
+        },
+        "svg": {
+          "path": "assets/sdd9.svg",
+          "sha256": "b8ea1512aa4ff7ae205080d27d68ab1f92970159e03ae5f3fe4f8eb60dd235a3"
+        }
+      },
+      "size_px": [
+        2200,
+        1550
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd9.png",
+      "sha256": "47492ec639880e0b20c783ddb919bedd00fd784eeac8de636f802726496806aa"
+    },
+    {
+      "id": "sdd10",
+      "title": "单机应用与独立发压及证据回收",
+      "subtitle": "测试完成后保留实例与云盘，由用户手动决定节省停机",
+      "sources": [
+        "docs/collaboration/implementation-layout.md",
+        "用户手动停机与证据回收要求"
+      ],
+      "scope_note": "仅部署及证据回收概览；正式测试前备份恢复完整性校验仍须完成；无自动云停机。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/sdd10.png",
+          "sha256": "79599a75d60e45edfea97bed08d650c4b78a4a34bafeff4f1004260fecd014ec"
+        },
+        "svg": {
+          "path": "assets/sdd10.svg",
+          "sha256": "d1365d905b5a4913a8ab4c296998a6922d60fc57a3c8ee8434f6ad0e96485408"
+        }
+      },
+      "size_px": [
+        2200,
+        1500
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/sdd10.png",
+      "sha256": "363330e6de12ef392279ace2825e141ddc47327a8e30f98fd545b0ccec027dd3",
+      "integrated_svg_sha256": "94709e3ef766dbcea3afec869a13463b74d3db65d373c051aecd4bcec48a8d1a"
+    },
+    {
+      "id": "srs1",
+      "title": "系统上下文与业务边界",
+      "subtitle": "三类人类角色共同操作同一流程系统；数据和中间件是基础设施",
+      "sources": [
+        "docs/collaboration/implementation-layout.md"
+      ],
+      "scope_note": "范围图只列主要业务角色；数据库和MQ为基础设施。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs1.png",
+          "sha256": "6bd837e6deba4f9473c5f71d25235ed247c32b0e56d991c25238ab4e7fb18438"
+        },
+        "svg": {
+          "path": "assets/srs1.svg",
+          "sha256": "daa3d2ae58f239c04c037837db602b9be754e1365f0ebb8020b69ab747ee6277"
+        }
+      },
+      "size_px": [
+        2200,
+        1300
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs1.png",
+      "sha256": "6bd837e6deba4f9473c5f71d25235ed247c32b0e56d991c25238ab4e7fb18438"
+    },
+    {
+      "id": "srs2",
+      "title": "角色与主要用例",
+      "subtitle": "连线表示参与；每个动作仍受项目范围、版本、状态及独立责任约束",
+      "sources": [
+        "backend/t44/domain/state_machine.py",
+        "backend/t44/services/projects.py"
+      ],
+      "scope_note": "主要用例而非完整权限矩阵；跨线不表示关联节点。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs2.png",
+          "sha256": "9761e10409788a197e0b442911ba4dbf6e6589956d61bd93df633465c925a256"
+        },
+        "svg": {
+          "path": "assets/srs2.svg",
+          "sha256": "1597bfa95fe81eec4c29a1cf5f658189e54268f5593f45c1d9c3ddbe843b33c7"
+        }
+      },
+      "size_px": [
+        2200,
+        1400
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs2.png",
+      "sha256": "9761e10409788a197e0b442911ba4dbf6e6589956d61bd93df633465c925a256"
+    },
+    {
+      "id": "srs3",
+      "title": "业务对象与规则组织",
+      "subtitle": "对象间的关联用于解释业务责任，不表示按框逐一执行",
+      "sources": [
+        "backend/t44/domain/models.py",
+        "backend/t44/services/workflow.py"
+      ],
+      "scope_note": "业务关联，不替代技术ER或数据库完整约束。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs3.png",
+          "sha256": "9ec4c48967717bf869f1722b748580784c53533d0a364df2498bfe5a12c0dc6b"
+        },
+        "svg": {
+          "path": "assets/srs3.svg",
+          "sha256": "04b53fac204b5da200ec7def09189f04820897827a53f1d6ca36bef8480f0f69"
+        }
+      },
+      "size_px": [
+        2200,
+        1300
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs3.png",
+      "sha256": "9ec4c48967717bf869f1722b748580784c53533d0a364df2498bfe5a12c0dc6b"
+    },
+    {
+      "id": "srs4",
+      "title": "依赖有向图与人力前置条件",
+      "subtitle": "示例：C依赖A和B，D依赖C；新增边不得形成回路",
+      "sources": [
+        "backend/t44/services/tasks.py",
+        "backend/t44/services/projects.py"
+      ],
+      "scope_note": "A/B/C/D为无真实数据的规则示例；人力变更的成员保护与工时保护须区分。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs4.png",
+          "sha256": "2a0cf0641b2598daf596a62bccd9cf201fc044d67d6f2c193f23ddfaed3baf50"
+        },
+        "svg": {
+          "path": "assets/srs4.svg",
+          "sha256": "cb51ef5095f18c88bb359680e4ff1a147fdfb739039a11ab666649237fdcd85d"
+        }
+      },
+      "size_px": [
+        2200,
+        1350
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs4.png",
+      "sha256": "2a0cf0641b2598daf596a62bccd9cf201fc044d67d6f2c193f23ddfaed3baf50"
+    },
+    {
+      "id": "srs5",
+      "title": "上线评估与经理决定",
+      "subtitle": "仅在原批准引用不匹配的分支细化D008错误顺序",
+      "sources": [
+        "backend/t44/services/workflow.py",
+        "backend/t44/domain/state_machine.py"
+      ],
+      "scope_note": "D008只细化原批准引用不匹配分支；匹配分支的领域顺序不变。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs5.png",
+          "sha256": "e80775c9d6dc195db564c277c0847bc019d7617308859603353f9c224a4ebefa"
+        },
+        "svg": {
+          "path": "assets/srs5.svg",
+          "sha256": "6995f53eb7676796be1b5d7de550f66b363e4dee89283b37ab663c04c79573e5"
+        }
+      },
+      "size_px": [
+        2200,
+        1500
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs5.png",
+      "sha256": "e80775c9d6dc195db564c277c0847bc019d7617308859603353f9c224a4ebefa"
+    },
+    {
+      "id": "srs6",
+      "title": "七状态与阻塞解除",
+      "subtitle": "主链、拒审和返工分别标识；阻塞保留来源状态",
+      "sources": [
+        "backend/t44/domain/state_machine.py"
+      ],
+      "scope_note": "进入阻塞的示意线代表1/2/4/5；恢复字段动态指向四者之一。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs6.png",
+          "sha256": "a3eb56d75a662aa351d7ebfb0722efe7af52671da11414098358851604b59077"
+        },
+        "svg": {
+          "path": "assets/srs6.svg",
+          "sha256": "829bff98d1c42004eaea34dfd431a5a08a5548176bf9c7ced0719a286feadd4a"
+        }
+      },
+      "size_px": [
+        2200,
+        1400
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs6.png",
+      "sha256": "a3eb56d75a662aa351d7ebfb0722efe7af52671da11414098358851604b59077"
+    },
+    {
+      "id": "srs7",
+      "title": "超期升级与通知场景",
+      "subtitle": "同任务、计划版本、规则版本与级别的重复处理不得产生重复业务效果",
+      "sources": [
+        "backend/t44/scheduling/scanner.py",
+        "backend/t44/messaging/worker.py"
+      ],
+      "scope_note": "202为可靠受理；站内通知完成不等于任务迁移。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs7.png",
+          "sha256": "90560b6eda85d70035c28187200375c1ce49b5e225e01411149b45e2cd3b78dc"
+        },
+        "svg": {
+          "path": "assets/srs7.svg",
+          "sha256": "337bc4452584174a008dbbf446b3a4d1cfc6b9eeb0b996bd9f01f8e0f083ae5c"
+        }
+      },
+      "size_px": [
+        2200,
+        1300
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs7.png",
+      "sha256": "90560b6eda85d70035c28187200375c1ce49b5e225e01411149b45e2cd3b78dc"
+    },
+    {
+      "id": "srs8",
+      "title": "需求到实现和证据的追踪",
+      "subtitle": "目标、设计、代码与验证相互绑定，结果按实际证据分别判定",
+      "sources": [
+        "records/spec-freezes/",
+        "docs/reports/"
+      ],
+      "scope_note": "只表达证据出口；开发CI不等于独立验收。图中NP为本轮公开状态。",
+      "legend": "海军蓝=正文与组件；蓝绿=正常关系或主路径；琥珀=拒绝、故障或特殊约束；箭头含义以图题和边标签为准",
+      "visual_check": "PNG individually opened and inspected; no product or cloud test performed",
+      "files": {
+        "png": {
+          "path": "assets/srs8.png",
+          "sha256": "4aa301110fe0fec25530b2c168f57fe161339df7a6f438755799a862012bc2a8"
+        },
+        "svg": {
+          "path": "assets/srs8.svg",
+          "sha256": "991fca14a2c79931c04787ee7342f4919c229c114dda95d4829fc6ea69181935"
+        }
+      },
+      "size_px": [
+        2200,
+        1300
+      ],
+      "png": "docs/reports/diagrams/CURRENT-20261031/srs8.png",
+      "sha256": "4aa301110fe0fec25530b2c168f57fe161339df7a6f438755799a862012bc2a8"
+    }
+  ],
+  "visual_source_commit": "04dfee880e71c2f75bc87e10367f4a8dd50a060c",
+  "integration_revision": {
+    "reason": "Explicit stop prerequisites per reviewer; original creator source commit and 18 original file hashes retained in figures.files",
+    "changed": [
+      "sdd10.png",
+      "sdd10.svg",
+      "draw.py"
+    ]
+  }
+}

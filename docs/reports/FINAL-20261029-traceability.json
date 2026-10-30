@@ -1,0 +1,181 @@
+{
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "forward": [
+    {
+      "requirement": "FR01",
+      "modules": [
+        "API/contracts",
+        "Runtime",
+        "Business.dispatch"
+      ],
+      "developer_evidence": [
+        "backend188new",
+        "backend305original",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR02",
+      "modules": [
+        "Rows/UoW",
+        "migrations",
+        "schema/engine"
+      ],
+      "developer_evidence": [
+        "DB239includes18new",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR03",
+      "modules": [
+        "Reviews",
+        "templates"
+      ],
+      "developer_evidence": [
+        "HTTP/domain",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR04",
+      "modules": [
+        "Projects/Tasks",
+        "page.prepare/row_model",
+        "history"
+      ],
+      "developer_evidence": [
+        "capacity/dependency",
+        "N+1/collection differential",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR05",
+      "modules": [
+        "Workflow",
+        "D008"
+      ],
+      "developer_evidence": [
+        "error precedence/HTTP",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR06",
+      "modules": [
+        "domain.decide",
+        "Runtime/CAS/idempotency"
+      ],
+      "developer_evidence": [
+        "domain/HTTP",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR07",
+      "modules": [
+        "scanner",
+        "outbox/worker",
+        "notifications"
+      ],
+      "developer_evidence": [
+        "scan/MQ",
+        "DB batch rollback",
+        "fullCI797"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    },
+    {
+      "requirement": "FR08",
+      "modules": [
+        "CI/reviewer",
+        "deployment",
+        "frontend"
+      ],
+      "developer_evidence": [
+        "FE89",
+        "local static",
+        "image build",
+        "source count fail"
+      ],
+      "independent_current": "F05 PUBLIC partial 18 PASS 1 FAIL 11 UNEXECUTED; full acceptance not established"
+    }
+  ],
+  "reverse": {
+    "API/contracts": [
+      "FR01"
+    ],
+    "Runtime": [
+      "FR01"
+    ],
+    "Business.dispatch": [
+      "FR01"
+    ],
+    "Rows/UoW": [
+      "FR02"
+    ],
+    "migrations": [
+      "FR02"
+    ],
+    "schema/engine": [
+      "FR02"
+    ],
+    "Reviews": [
+      "FR03"
+    ],
+    "templates": [
+      "FR03"
+    ],
+    "Projects/Tasks": [
+      "FR04"
+    ],
+    "page.prepare/row_model": [
+      "FR04"
+    ],
+    "history": [
+      "FR04"
+    ],
+    "Workflow": [
+      "FR05"
+    ],
+    "D008": [
+      "FR05"
+    ],
+    "domain.decide": [
+      "FR06"
+    ],
+    "Runtime/CAS/idempotency": [
+      "FR06"
+    ],
+    "scanner": [
+      "FR07"
+    ],
+    "outbox/worker": [
+      "FR07"
+    ],
+    "notifications": [
+      "FR07"
+    ],
+    "CI/reviewer": [
+      "FR08"
+    ],
+    "deployment": [
+      "FR08"
+    ],
+    "frontend": [
+      "FR08"
+    ]
+  },
+  "requirements_report": "reports/final/requirements-report.md",
+  "design_report": "reports/final/design-report.md",
+  "test_report": "reports/final/test-results-report.md",
+  "test_counts_overlap_not_additive": true,
+  "current_fullCI_counts": "source356f/bdaa814c official receipt; docs static gzip field verification in FINAL-20261029-CI-readback.json"
+}
