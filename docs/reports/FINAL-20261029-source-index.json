@@ -1,0 +1,1725 @@
+{
+  "product_source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "actor": "documentation AI; static Git/hash/AST only, not product execution",
+  "application_files": 65,
+  "python_files": 43,
+  "application_code": 5818,
+  "within_range": false,
+  "over_upper_bound": 718,
+  "frozen_version": "1.2.0",
+  "frozen_inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a1521e70637c7a214d5b6c605ad940457817635579751a4095bd390a7a86f8a4",
+      "matches": true
+    },
+    {
+      "path": "specs/requirements.md",
+      "sha256": "2e4608e26e51def9d2dd1d1ed6f51ba76cd62b91a20e288f9fd6163e141bcc7a",
+      "matches": true
+    },
+    {
+      "path": "specs/business-rules.md",
+      "sha256": "79573ac1f7e230ab2c2a7814bacc163e5c4848f1822787f5585c3317c8b5fa83",
+      "matches": true
+    },
+    {
+      "path": "specs/backend-design.md",
+      "sha256": "06a2e97702041473c0e28e66312a458d64a35b71f94aa652bac2f1e9d0b6b38e",
+      "matches": true
+    },
+    {
+      "path": "specs/contracts/openapi.json",
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "matches": true
+    },
+    {
+      "path": "specs/contracts/README.md",
+      "sha256": "8ef9ef7d8fbf6a2c56c1a2692fa50cb72c2b0829409533ffeaef79486d74174e",
+      "matches": true
+    },
+    {
+      "path": "specs/database/field-dictionary.md",
+      "sha256": "458d0b6b300c44719e5e5f26318a742099b0c5276b4da9dc19c1c4da103d51f8",
+      "matches": true
+    },
+    {
+      "path": "specs/database/schema.sql",
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "matches": true
+    },
+    {
+      "path": "specs/database/persistence-contract.md",
+      "sha256": "953c85b5862eed796c51614f6a12d4e2870bdf54b7bd0edd76d679db7a698c23",
+      "matches": true
+    },
+    {
+      "path": "docs/collaboration/implementation-layout.md",
+      "sha256": "fd58394f755a024297b7a8f75961c5889d19d62288bf3a709110efedf9638fa5",
+      "matches": true
+    },
+    {
+      "path": "docs/reviews/review-protocol.md",
+      "sha256": "27e2a524f84451bb1887113fb4d7bca3cb4397c0286e29797d95bf313c66dc36",
+      "matches": true
+    },
+    {
+      "path": "backend/t44/contracts/openapi.json",
+      "sha256": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+      "matches": true
+    },
+    {
+      "path": "backend/t44/persistence/schema_v1.sql",
+      "sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+      "matches": true
+    },
+    {
+      "path": "specs/changes/capacity-lifecycle-v1.1.md",
+      "sha256": "a6271ef7f6180c29b7aa3e0bfa373b25b76fbf19f1d11233768388d495682d98",
+      "matches": true
+    },
+    {
+      "path": "specs/changes/release-error-priority-rfc.md",
+      "sha256": "78e3f0a68b0a679e72cdc363c99e6a712da48cf343b04a70dc1562ca959215d3",
+      "matches": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "backend/t44/__init__.py",
+      "sha256": "e572411e3ef110b4976da10aee2744cc33c2fa864f1d6a9f4005c49275643c38",
+      "blob": "3b013aa0eb1152de43b5a6f4760226d6290ede3c",
+      "cloc_code": 0,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/api.py",
+      "sha256": "9205098a81518b3febca4ed2f7061d13003caac04c1b6e85668abde6923bbe30",
+      "blob": "1eee200e034cc8a4e52423aa52cc40729995c413",
+      "cloc_code": 244,
+      "functions": [
+        {
+          "name": "_security",
+          "line": 29,
+          "signature": "value"
+        },
+        {
+          "name": "_unique_object",
+          "line": 41,
+          "signature": "pairs"
+        },
+        {
+          "name": "_schema_type",
+          "line": 50,
+          "signature": "schema"
+        },
+        {
+          "name": "_parameters",
+          "line": 56,
+          "signature": "operation"
+        },
+        {
+          "name": "_body_schema",
+          "line": 63,
+          "signature": "schema, payload"
+        },
+        {
+          "name": "_body_error",
+          "line": 79,
+          "signature": "schema, payload, operation"
+        },
+        {
+          "name": "validate_request",
+          "line": 104,
+          "signature": "request, operation, c"
+        },
+        {
+          "name": "LazyFactory.__init__",
+          "line": 172,
+          "signature": "self, settings"
+        },
+        {
+          "name": "LazyFactory.__call__",
+          "line": 175,
+          "signature": "self"
+        },
+        {
+          "name": "create_app",
+          "line": 190,
+          "signature": "*, factory=None, settings=None, notifications=_DEFAULT, escalations=_DEFAULT"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/cli.py",
+      "sha256": "da88377aed1131fb82aea31ef2783e02af01c6b620518f3d1b9e8b01175112db",
+      "blob": "ade2b414a344f5c73ab0e2299124249697c510e0",
+      "cloc_code": 147,
+      "functions": [
+        {
+          "name": "_parser",
+          "line": 18,
+          "signature": ""
+        },
+        {
+          "name": "main",
+          "line": 46,
+          "signature": "argv=None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/contracts/__init__.py",
+      "sha256": "4deb53ebb5b4f1ee678bb5ad0ba76be3d96ed9501703704587691c66f9b603b6",
+      "blob": "5c74cd30f714f36bc54ddbcc94daf8987f6ba1f2",
+      "cloc_code": 73,
+      "functions": [
+        {
+          "name": "validator",
+          "line": 20,
+          "signature": "schema"
+        },
+        {
+          "name": "_absolute_refs",
+          "line": 28,
+          "signature": "value"
+        },
+        {
+          "name": "violations",
+          "line": 42,
+          "signature": "schema, value"
+        },
+        {
+          "name": "normalized",
+          "line": 57,
+          "signature": "value"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/domain/__init__.py",
+      "sha256": "6aae9b1fb4fcc87a0766c807ed8f036f09629811544c8b7db50485634cc4348e",
+      "blob": "8fc488011351d856d0aa8516fbcf02523561b015",
+      "cloc_code": 0,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/domain/models.py",
+      "sha256": "67406cec4592a1d113ec68eb93ee952127b701688db5950340a779dacf983547",
+      "blob": "ba002ae1727f471d571e1943c8e94668d1a72657",
+      "cloc_code": 111,
+      "functions": [
+        {
+          "name": "_dictionary",
+          "line": 11,
+          "signature": "name"
+        },
+        {
+          "name": "DomainViolation.__init__",
+          "line": 30,
+          "signature": "self, code"
+        },
+        {
+          "name": "_counter",
+          "line": 35,
+          "signature": "value"
+        },
+        {
+          "name": "Transition.__post_init__",
+          "line": 55,
+          "signature": "self"
+        },
+        {
+          "name": "Decision.__post_init__",
+          "line": 128,
+          "signature": "self"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/domain/state_machine.py",
+      "sha256": "65a743e2f30e3459568491dfb25e3db387bfb019db5a05dd7125c07fcd1ec9a8",
+      "blob": "6b0324f99f91521e1e3b1ae3158b7ecc41871767",
+      "cloc_code": 164,
+      "functions": [
+        {
+          "name": "_require",
+          "line": 36,
+          "signature": "condition, code"
+        },
+        {
+          "name": "_present",
+          "line": 41,
+          "signature": "value"
+        },
+        {
+          "name": "_stage_role",
+          "line": 45,
+          "signature": "state, context"
+        },
+        {
+          "name": "_review",
+          "line": 55,
+          "signature": "identifier, version, accepted, context"
+        },
+        {
+          "name": "decide",
+          "line": 73,
+          "signature": "context: Transition"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/__init__.py",
+      "sha256": "0223fc2eea2e0bc490de900bcac14f7b17bf7ce8d83d4bbc02bbe11d569a8a63",
+      "blob": "6a5a7adea28cafd9830e492285e12e7426b2b461",
+      "cloc_code": 0,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/messaging/__main__.py",
+      "sha256": "356ef3c0eeb5be3750df311fa2dd33cb420e3bf8218eedf9dd86e03ebe32493c",
+      "blob": "c6d6d4599795fe74a45de7448aa7faffa4aa3d17",
+      "cloc_code": 49,
+      "functions": [
+        {
+          "name": "main",
+          "line": 17,
+          "signature": ""
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/broker.py",
+      "sha256": "41e3d755b556f508d9adfdd2af30f2817edbb67fdbd01f6907bfa67f1320f15a",
+      "blob": "fb73e3d1f09c9d06d4bcc67076c6e5fe459b45fc",
+      "cloc_code": 126,
+      "functions": [
+        {
+          "name": "BrokerSettings.__post_init__",
+          "line": 25,
+          "signature": "self"
+        },
+        {
+          "name": "PikaBroker.__init__",
+          "line": 33,
+          "signature": "self, settings, *, publisher=False, connect=pika.BlockingConnection"
+        },
+        {
+          "name": "PikaBroker._operation",
+          "line": 38,
+          "signature": "self, code, *, extra=()"
+        },
+        {
+          "name": "PikaBroker._channel",
+          "line": 45,
+          "signature": "self"
+        },
+        {
+          "name": "PikaBroker.publish",
+          "line": 75,
+          "signature": "self, event"
+        },
+        {
+          "name": "PikaBroker.get",
+          "line": 99,
+          "signature": "self"
+        },
+        {
+          "name": "PikaBroker.keepalive",
+          "line": 106,
+          "signature": "self"
+        },
+        {
+          "name": "PikaBroker.close",
+          "line": 111,
+          "signature": "self"
+        },
+        {
+          "name": "consume_delivery",
+          "line": 121,
+          "signature": "store, channel, method, body"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/facade.py",
+      "sha256": "c6fbff3852f6ad31a66fba2121cfcde4da044a3694fa6907de176353c4af6680",
+      "blob": "b926a95685434d6c5d48b0b24799e4effa97afad",
+      "cloc_code": 67,
+      "functions": [
+        {
+          "name": "notification",
+          "line": 8,
+          "signature": "row"
+        },
+        {
+          "name": "NotificationFacade._projects",
+          "line": 13,
+          "signature": "self, g, actor_id, project_id=None"
+        },
+        {
+          "name": "NotificationFacade.list",
+          "line": 28,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "NotificationFacade._update",
+          "line": 55,
+          "signature": "self, g, c, values"
+        },
+        {
+          "name": "NotificationFacade.mark_read",
+          "line": 64,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "NotificationFacade.handle",
+          "line": 67,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/messaging/worker.py",
+      "sha256": "266b39185b946484599584f0e49a1dfb6b14cde2566cc7efb73f5386cc86648b",
+      "blob": "4fe0c6335bbe97c3347bc9638c672890738d6f88",
+      "cloc_code": 84,
+      "functions": [
+        {
+          "name": "DeliveryWorker.__init__",
+          "line": 17,
+          "signature": "self, store, publisher, consumer, *, batch_size=50, lease_seconds=30, confirmed_recovery=None, confirmation_timeout=120"
+        },
+        {
+          "name": "DeliveryWorker.cycle",
+          "line": 33,
+          "signature": "self"
+        },
+        {
+          "name": "DeliveryWorker.run",
+          "line": 83,
+          "signature": "self, stop, *, poll_seconds=1"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/__init__.py",
+      "sha256": "3a114365e08b4154ec9d5c4399559ee1d512d3cf1e9adeadb5bb9f10bc93d071",
+      "blob": "b7423623f15cb8ab92b47d78a09e738193bd2d95",
+      "cloc_code": 24,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/persistence/accounts.py",
+      "sha256": "6717761266ad853fd861ba041e13e56aa30fe4e4d0c286302a14081de869df2b",
+      "blob": "09c4fca7afd6ec3cf63cf396aee2b88f359e3cde",
+      "cloc_code": 61,
+      "functions": [
+        {
+          "name": "initialize_user",
+          "line": 20,
+          "signature": "factory, *, username: str, display_name: str, password_hash: str, request_id: str | None=None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/codecs.py",
+      "sha256": "67ce7fe9d9492f8e92c66aa4080203114aaa578702663681c3d88d4a5b6b1c4e",
+      "blob": "77ddf604afb5f8584cefb3e78b30ffb6c8aebe65",
+      "cloc_code": 27,
+      "functions": [
+        {
+          "name": "utc_now",
+          "line": 8,
+          "signature": ""
+        },
+        {
+          "name": "to_db_time",
+          "line": 12,
+          "signature": "value: datetime"
+        },
+        {
+          "name": "from_db_time",
+          "line": 21,
+          "signature": "value: datetime"
+        },
+        {
+          "name": "hours_to_quarters",
+          "line": 25,
+          "signature": "value"
+        },
+        {
+          "name": "quarters_to_hours",
+          "line": 34,
+          "signature": "value: int"
+        },
+        {
+          "name": "uuid_to_bytes",
+          "line": 38,
+          "signature": "value: str | UUID"
+        },
+        {
+          "name": "bytes_to_uuid",
+          "line": 42,
+          "signature": "value: bytes"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/delivery.py",
+      "sha256": "8923427ad0a7e1ba8c22f04c52a23a7fe30ce39efaeec9eb854b2561d883e895",
+      "blob": "4c8eadbf8155bb9dc3bc06e12d3af44c987e7275",
+      "cloc_code": 153,
+      "functions": [
+        {
+          "name": "OutboxStore.__init__",
+          "line": 12,
+          "signature": "self, factory"
+        },
+        {
+          "name": "OutboxStore._update",
+          "line": 15,
+          "signature": "self, g, where, now, **values"
+        },
+        {
+          "name": "OutboxStore.get",
+          "line": 18,
+          "signature": "self, event_id"
+        },
+        {
+          "name": "OutboxStore.claim",
+          "line": 22,
+          "signature": "self, *, now=None, limit=100, lease_seconds=30"
+        },
+        {
+          "name": "OutboxStore.confirm",
+          "line": 55,
+          "signature": "self, event_id, lease_token, *, now=None"
+        },
+        {
+          "name": "OutboxStore._notices",
+          "line": 73,
+          "signature": "self, g, event, *, fallback, now"
+        },
+        {
+          "name": "OutboxStore.consume",
+          "line": 98,
+          "signature": "self, event_id, *, now=None"
+        },
+        {
+          "name": "OutboxStore.recover_confirmed",
+          "line": 109,
+          "signature": "self, *, confirmed_before, now=None, limit=100"
+        },
+        {
+          "name": "OutboxStore.fallback",
+          "line": 129,
+          "signature": "self, event_id, *, now=None, lease_token=None, error_code='MQ_UNAVAILABLE'"
+        },
+        {
+          "name": "OutboxStore.retry",
+          "line": 151,
+          "signature": "self, event_id, lease_token, *, now=None, delay_seconds=5, error_code='PUBLISH_FAILED'"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/engine.py",
+      "sha256": "36e778444a42cf403a1aeed967809ebc1c5321eece3aa7edfe04e3ade3d4efd5",
+      "blob": "04f56a28235eb4abf2e7df86057cdd0ca290daed",
+      "cloc_code": 88,
+      "functions": [
+        {
+          "name": "validate_identifier",
+          "line": 19,
+          "signature": "value: str"
+        },
+        {
+          "name": "MySQLSettings.__post_init__",
+          "line": 40,
+          "signature": "self"
+        },
+        {
+          "name": "initialize_mysql_session",
+          "line": 66,
+          "signature": "dbapi_connection, _connection_record"
+        },
+        {
+          "name": "create_mysql_engine",
+          "line": 79,
+          "signature": "settings: MySQLSettings"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/errors.py",
+      "sha256": "76fabd26e20706ba606a8904c23ebaef5b9306e0b65b4757c7d9d999f9156248",
+      "blob": "4b912d8ffc88991e32601ce8509d57a053f4a240",
+      "cloc_code": 9,
+      "functions": [
+        {
+          "name": "PersistenceIntegrityError.__init__",
+          "line": 15,
+          "signature": "self, message, *, kind='other', constraint=None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/migrations.py",
+      "sha256": "ff0388cdb04d95d4971128d02cc15d08a68e1c5e6715e5c8016a7e136b2b9f6e",
+      "blob": "b4c3f7f08066ddb071f9e06d214f643451d71678",
+      "cloc_code": 307,
+      "functions": [
+        {
+          "name": "_check_signature",
+          "line": 18,
+          "signature": "expression"
+        },
+        {
+          "name": "_index_signature",
+          "line": 55,
+          "signature": "index"
+        },
+        {
+          "name": "_column_signature",
+          "line": 70,
+          "signature": "kind, nullable, default"
+        },
+        {
+          "name": "_foreign_signature",
+          "line": 79,
+          "signature": "foreign, database"
+        },
+        {
+          "name": "_catalog_defects",
+          "line": 102,
+          "signature": "engine"
+        },
+        {
+          "name": "check_schema",
+          "line": 171,
+          "signature": "engine"
+        },
+        {
+          "name": "migrate",
+          "line": 243,
+          "signature": "engine, *, expected_database: str"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/rows.py",
+      "sha256": "e76f196812d6154c7108c892374a630a988a47648d3a96e8719ca4bc989ecd55",
+      "blob": "4bc873f80c28cf1f9af8ecb4f3e74b9a4d9ba825",
+      "cloc_code": 293,
+      "functions": [
+        {
+          "name": "RowsGateway.__init__",
+          "line": 30,
+          "signature": "self, active_session, mark_failed"
+        },
+        {
+          "name": "RowsGateway._table",
+          "line": 34,
+          "signature": "self, name"
+        },
+        {
+          "name": "RowsGateway._fields",
+          "line": 39,
+          "signature": "self, table, values"
+        },
+        {
+          "name": "RowsGateway._clauses",
+          "line": 59,
+          "signature": "self, table, where, predicates"
+        },
+        {
+          "name": "RowsGateway._execute",
+          "line": 85,
+          "signature": "self, statement, mode, parameters=None"
+        },
+        {
+          "name": "RowsGateway._failed",
+          "line": 122,
+          "signature": "self"
+        },
+        {
+          "name": "RowsGateway.savepoint",
+          "line": 129,
+          "signature": "self"
+        },
+        {
+          "name": "RowsGateway.rows",
+          "line": 143,
+          "signature": "self, table, where=None, *, columns=None, order_by=('id',), limit=None, offset=0, lock=None, skip_locked=False, predicates=()"
+        },
+        {
+          "name": "RowsGateway.get",
+          "line": 184,
+          "signature": "self, table, id, *, lock=None"
+        },
+        {
+          "name": "RowsGateway.task_schedule_changes",
+          "line": 188,
+          "signature": "self, project_id: int, pairs: tuple[tuple[int, int], ...]"
+        },
+        {
+          "name": "RowsGateway.confirmed_missing",
+          "line": 257,
+          "signature": "self, *, confirmed_before, limit"
+        },
+        {
+          "name": "RowsGateway.insert",
+          "line": 283,
+          "signature": "self, table, values"
+        },
+        {
+          "name": "RowsGateway.insert_many",
+          "line": 289,
+          "signature": "self, table, values"
+        },
+        {
+          "name": "RowsGateway.update_many",
+          "line": 298,
+          "signature": "self, table, values"
+        },
+        {
+          "name": "RowsGateway.update",
+          "line": 312,
+          "signature": "self, table, where, values, *, predicates=()"
+        },
+        {
+          "name": "RowsGateway.delete",
+          "line": 323,
+          "signature": "self, table, where"
+        },
+        {
+          "name": "RowsGateway.count",
+          "line": 329,
+          "signature": "self, table, where=None, *, predicates=()"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/scans.py",
+      "sha256": "479fd65effbcc476654c2e76994d4573bb17f34c430ac5cc75e4c12646ec146b",
+      "blob": "4fbe3c378387c569107d75cbc405fa9b9d631e5f",
+      "cloc_code": 103,
+      "functions": [
+        {
+          "name": "ScanStore.__init__",
+          "line": 11,
+          "signature": "self, factory"
+        },
+        {
+          "name": "ScanStore._run",
+          "line": 14,
+          "signature": "self, g, run_id, *, lock=None"
+        },
+        {
+          "name": "ScanStore.start",
+          "line": 20,
+          "signature": "self, run_id, *, rule_version, rule_snapshot, rule_hash, cutoff_at=None"
+        },
+        {
+          "name": "ScanStore.get",
+          "line": 48,
+          "signature": "self, run_id"
+        },
+        {
+          "name": "ScanStore.recoverable",
+          "line": 52,
+          "signature": "self, *, heartbeat_before, limit=100"
+        },
+        {
+          "name": "ScanStore.page",
+          "line": 61,
+          "signature": "self, run_id, *, limit=200"
+        },
+        {
+          "name": "ScanStore.checkpoint",
+          "line": 79,
+          "signature": "self, run_id, *, last_task_id, scanned_delta=0, created_delta=0, duplicate_delta=0, finished=False, error_code=None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/schema.py",
+      "sha256": "fb79576cb70c2f6296dabe46e9e9f51bb95c0f731db1f7660e0e69b28ca80393",
+      "blob": "f944a6ce89028555e61a3eceb4499fd9517a4aab",
+      "cloc_code": 106,
+      "functions": [
+        {
+          "name": "ddl_text",
+          "line": 28,
+          "signature": ""
+        },
+        {
+          "name": "_parts",
+          "line": 35,
+          "signature": "body: str"
+        },
+        {
+          "name": "_type",
+          "line": 40,
+          "signature": "spec: str"
+        },
+        {
+          "name": "_foreign_key",
+          "line": 60,
+          "signature": "part: str"
+        },
+        {
+          "name": "build_metadata",
+          "line": 69,
+          "signature": ""
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/seed.py",
+      "sha256": "7fe5f623d56c0e16ea8395edd67fdd961563a04a8d73661d78133fe4f80ac141",
+      "blob": "2e4374a6a328eb942c7d8a1cfefe472fae869bfa",
+      "cloc_code": 326,
+      "functions": [
+        {
+          "name": "_snapshot",
+          "line": 32,
+          "signature": "name, path"
+        },
+        {
+          "name": "_populate",
+          "line": 37,
+          "signature": "g, manifest, template, actors, batch_size"
+        },
+        {
+          "name": "seed_demo",
+          "line": 253,
+          "signature": "factory, *, projects=40, tasks=6000, dependencies=9000, records=15000, manager_username='synthetic-manager', seed=44, anchor_at=None, template_path=None, rules_path=None, batch_size=250"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/persistence/uow.py",
+      "sha256": "3063b8b29a07dd29f188720df637d4e31e0fbc9e8b401be1f2ecbc3188d5897f",
+      "blob": "6d66b7f24436ffd0646f1b60ef0efb7a3e25c408",
+      "cloc_code": 86,
+      "functions": [
+        {
+          "name": "SqlAlchemyUnitOfWork.__init__",
+          "line": 14,
+          "signature": "self, session_factory: Callable[[], Session]"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.__enter__",
+          "line": 21,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._require_active",
+          "line": 36,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.gateway",
+          "line": 44,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._mark_failed",
+          "line": 48,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.commit",
+          "line": 51,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.rollback",
+          "line": 66,
+          "signature": "self"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork._close",
+          "line": 76,
+          "signature": "self, *, suppress_errors: bool=False"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWork.__exit__",
+          "line": 87,
+          "signature": "self, exc_type, exc, traceback"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWorkFactory.__init__",
+          "line": 100,
+          "signature": "self, engine: Engine"
+        },
+        {
+          "name": "SqlAlchemyUnitOfWorkFactory.__call__",
+          "line": 103,
+          "signature": "self"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/__init__.py",
+      "sha256": "13546feadd8867b987928a9178a984c1d96aae3e85f66ef6fe71662fb935f21b",
+      "blob": "510b148bfc4a94f84c1033c0b8881b2893523de2",
+      "cloc_code": 21,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/scheduling/__main__.py",
+      "sha256": "66743cc75f1558356c2c605690803310f5c9ecec0abdac579afe21c23fdbefbe",
+      "blob": "a94cc1b6f7da6d636b53dfdd259e9405881b70f0",
+      "cloc_code": 96,
+      "functions": [
+        {
+          "name": "read_token",
+          "line": 26,
+          "signature": "path"
+        },
+        {
+          "name": "single_instance",
+          "line": 37,
+          "signature": "path"
+        },
+        {
+          "name": "main",
+          "line": 48,
+          "signature": "argv=None"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/facade.py",
+      "sha256": "17e293ec0389020f9269e75dbf9dd927eee877426181165c46cd7951c68f8ab6",
+      "blob": "b607887aa76b9b697cb3d400114197244e4824c7",
+      "cloc_code": 205,
+      "functions": [
+        {
+          "name": "EscalationFacade.__init__",
+          "line": 13,
+          "signature": "self, rules=None"
+        },
+        {
+          "name": "EscalationFacade.current",
+          "line": 16,
+          "signature": "self"
+        },
+        {
+          "name": "EscalationFacade.rules",
+          "line": 19,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "EscalationFacade.event",
+          "line": 28,
+          "signature": "self, g, row"
+        },
+        {
+          "name": "EscalationFacade.list",
+          "line": 58,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "EscalationFacade._run",
+          "line": 70,
+          "signature": "self, g, c, rules"
+        },
+        {
+          "name": "EscalationFacade.create",
+          "line": 106,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/rules.py",
+      "sha256": "4b182e8f531f22f86e8bfd019a84ce9a844ef29eca1a58ed341d38e86e1d1428",
+      "blob": "f4c47145f7f11678799edaf65c5d6885aeecbcb4",
+      "cloc_code": 140,
+      "functions": [
+        {
+          "name": "EscalationRules.rule_version",
+          "line": 46,
+          "signature": "self"
+        },
+        {
+          "name": "EscalationRules.snapshot",
+          "line": 49,
+          "signature": "self"
+        },
+        {
+          "name": "WindowMatch.code",
+          "line": 61,
+          "signature": "self"
+        },
+        {
+          "name": "WindowMatch.recipient_roles",
+          "line": 65,
+          "signature": "self"
+        },
+        {
+          "name": "_unique_object",
+          "line": 69,
+          "signature": "pairs"
+        },
+        {
+          "name": "load_rules",
+          "line": 78,
+          "signature": "path: str | Path | None=None"
+        },
+        {
+          "name": "parse_utc_timestamp",
+          "line": 137,
+          "signature": "value: datetime | str"
+        },
+        {
+          "name": "select_window",
+          "line": 153,
+          "signature": "now: datetime | str, planned_end: datetime | str, rules: EscalationRules"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/runtime.py",
+      "sha256": "19ccc353d794fb7d22ab39a3c2ad720d435c0e3fe0760ce508a2918b08fe3778",
+      "blob": "46c9e69a0083eab82d1132c8cacbb7ee1a84899f",
+      "cloc_code": 39,
+      "functions": [
+        {
+          "name": "build_scheduler",
+          "line": 15,
+          "signature": "scan_callback: Callable[[], None], *, rules: EscalationRules | None=None"
+        },
+        {
+          "name": "run_scheduler",
+          "line": 44,
+          "signature": "scheduler: BlockingScheduler"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/scheduling/scanner.py",
+      "sha256": "6c724d7f0360128e9474cce631f9b2b9bf282072e8aeb9876457f9a720401ed4",
+      "blob": "88878915490a5b57ffdc0fd10c68daa67633bae0",
+      "cloc_code": 141,
+      "functions": [
+        {
+          "name": "ScanFailure.__init__",
+          "line": 16,
+          "signature": "self, code"
+        },
+        {
+          "name": "validate_call",
+          "line": 21,
+          "signature": "c"
+        },
+        {
+          "name": "Scanner.__init__",
+          "line": 40,
+          "signature": "self, runtime, token_provider, *, page_size=200, clock=now, store=None"
+        },
+        {
+          "name": "Scanner._scope",
+          "line": 47,
+          "signature": "self"
+        },
+        {
+          "name": "Scanner._execute",
+          "line": 67,
+          "signature": "self, candidate, run_id, rules"
+        },
+        {
+          "name": "Scanner.run",
+          "line": 102,
+          "signature": "self, run_id=None"
+        },
+        {
+          "name": "Scanner.tick",
+          "line": 145,
+          "signature": "self"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/__init__.py",
+      "sha256": "f9adfcf32ee8df41e7ff3e330b17ba03fbca641dd5c55a8ffdb8b03954dc7df0",
+      "blob": "7e7cc0fb7c3638449494a46b056ac5792a03a61d",
+      "cloc_code": 0,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/services/application.py",
+      "sha256": "feb342101fa8d5d27a22b223d1cd2c83c88477b77bdbc6edd4069247f9a795ff",
+      "blob": "01a296fbd3fd133ce3ee9bb87bcb245be7c587de",
+      "cloc_code": 187,
+      "functions": [
+        {
+          "name": "Business.__init__",
+          "line": 56,
+          "signature": "self, *, notifications=None, escalations=None"
+        },
+        {
+          "name": "Business.status",
+          "line": 59,
+          "signature": "self, operation"
+        },
+        {
+          "name": "Business.row_model",
+          "line": 62,
+          "signature": "self, g, schema, row, related=None"
+        },
+        {
+          "name": "Business.dispatch",
+          "line": 93,
+          "signature": "self, g, call"
+        },
+        {
+          "name": "Business.finalize",
+          "line": 145,
+          "signature": "self, result, call"
+        },
+        {
+          "name": "Business.validate_data",
+          "line": 151,
+          "signature": "self, operation, result"
+        },
+        {
+          "name": "Business.outbox",
+          "line": 154,
+          "signature": "self, c, project"
+        },
+        {
+          "name": "Business.getMe",
+          "line": 166,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Business.getDictionaries",
+          "line": 169,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Business.validateContractPayload",
+          "line": 190,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/codes.py",
+      "sha256": "bab51291d86feb0575796eab666cdd4170c2e6efcfc9a1c6d34b05d42ddea104",
+      "blob": "083479c5f5e61bcca03e16711f98a515d989fb12",
+      "cloc_code": 11,
+      "functions": []
+    },
+    {
+      "path": "backend/t44/services/common.py",
+      "sha256": "c06c95316007f55be28c949dfcee0740bd95670261559366df98e3d2652d9815",
+      "blob": "c5d081139ad291c24ae8584dd49c1c6a6a61ef9f",
+      "cloc_code": 143,
+      "functions": [
+        {
+          "name": "now",
+          "line": 16,
+          "signature": ""
+        },
+        {
+          "name": "wire",
+          "line": 20,
+          "signature": "value"
+        },
+        {
+          "name": "time",
+          "line": 32,
+          "signature": "value"
+        },
+        {
+          "name": "roles",
+          "line": 36,
+          "signature": "mask"
+        },
+        {
+          "name": "mask",
+          "line": 40,
+          "signature": "values"
+        },
+        {
+          "name": "model",
+          "line": 44,
+          "signature": "name, row, **extra"
+        },
+        {
+          "name": "plan",
+          "line": 49,
+          "signature": "row, *, iteration=False"
+        },
+        {
+          "name": "plan_values",
+          "line": 59,
+          "signature": "payload"
+        },
+        {
+          "name": "task_model",
+          "line": 73,
+          "signature": "row"
+        },
+        {
+          "name": "page",
+          "line": 77,
+          "signature": "g, table, where, query, serialize, *, predicates=(), prepare=None"
+        },
+        {
+          "name": "Call.project_id",
+          "line": 116,
+          "signature": "self"
+        },
+        {
+          "name": "Call.actor_id",
+          "line": 120,
+          "signature": "self"
+        },
+        {
+          "name": "Call.manager",
+          "line": 123,
+          "signature": "self"
+        },
+        {
+          "name": "Call.reviewer",
+          "line": 126,
+          "signature": "self"
+        },
+        {
+          "name": "Call.task",
+          "line": 129,
+          "signature": "self, g, *, lock=None"
+        },
+        {
+          "name": "Call.resource",
+          "line": 132,
+          "signature": "self, g, table, identifier, *, parent='project_id', lock=None"
+        },
+        {
+          "name": "Call.members",
+          "line": 137,
+          "signature": "self, g, where=None, **options"
+        },
+        {
+          "name": "Call.create",
+          "line": 142,
+          "signature": "self, g, table, values, **options"
+        },
+        {
+          "name": "Call.insert",
+          "line": 145,
+          "signature": "self, g, table, values, *, actor_field=None, updated=False, project=True"
+        },
+        {
+          "name": "Call.check_version",
+          "line": 156,
+          "signature": "self, row, *, expected=None"
+        },
+        {
+          "name": "Call.cas",
+          "line": 166,
+          "signature": "self, g, table, row, values, *, expected=None, record_diff=True"
+        },
+        {
+          "name": "uuid_text",
+          "line": 183,
+          "signature": "value"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/errors.py",
+      "sha256": "95148fc2086e6ff924a7077beb0be8ef282db54a084410be426fe0394408ded7",
+      "blob": "3f4272e322283d78638b398a4b084c313b7734e3",
+      "cloc_code": 28,
+      "functions": [
+        {
+          "name": "Rejected.__init__",
+          "line": 13,
+          "signature": "self, code, *, violations=(), current_version=None, current_state=None"
+        },
+        {
+          "name": "Rejected.payload",
+          "line": 21,
+          "signature": "self, request_id, audit_id=None, original=None"
+        },
+        {
+          "name": "require",
+          "line": 34,
+          "signature": "condition, code, **details"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/history.py",
+      "sha256": "36b2fb1aed476bff3d852e113da4584e1906b53f1f5e3d476b730f9f8a1d98ae",
+      "blob": "94789c0891be8f84f3dcf706a58bc2e1a7c3b1a3",
+      "cloc_code": 96,
+      "functions": [
+        {
+          "name": "_snapshot",
+          "line": 11,
+          "signature": "audit"
+        },
+        {
+          "name": "_matches",
+          "line": 57,
+          "signature": "audit, snapshot, change, project_id"
+        },
+        {
+          "name": "project_reasons",
+          "line": 93,
+          "signature": "g, project_id, result"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/identity.py",
+      "sha256": "9ec1537da5cad83ae99ec68872be5ea4ad8477f99519a03d0bf8439317132985",
+      "blob": "4653b465d5ccfe622c319ca617311acbd3cb3d67",
+      "cloc_code": 107,
+      "functions": [
+        {
+          "name": "token_digest",
+          "line": 21,
+          "signature": "token"
+        },
+        {
+          "name": "LoginLimiter.__init__",
+          "line": 26,
+          "signature": "self, attempts, seconds"
+        },
+        {
+          "name": "LoginLimiter.check",
+          "line": 30,
+          "signature": "self, username, source"
+        },
+        {
+          "name": "authenticate",
+          "line": 45,
+          "signature": "g, call, *, lock=None"
+        },
+        {
+          "name": "login",
+          "line": 87,
+          "signature": "g, call, settings"
+        },
+        {
+          "name": "issue_session",
+          "line": 103,
+          "signature": "g, *, clock, ttl, user_id=None, service_account_id=None, project_ids=(), scopes=()"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/projects.py",
+      "sha256": "566076089026bc3c52c281842c996c2adb2ff1d24f297a364698ed678a4ae270",
+      "blob": "c142e009da32f6849992d23362b03f7f9443086c",
+      "cloc_code": 139,
+      "functions": [
+        {
+          "name": "Projects.project_model",
+          "line": 9,
+          "signature": "self, row, membership"
+        },
+        {
+          "name": "Projects.createProject",
+          "line": 12,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.getProject",
+          "line": 27,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.addProjectMember",
+          "line": 30,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects._change_member",
+          "line": 45,
+          "signature": "self, g, c, remove"
+        },
+        {
+          "name": "Projects.changeProjectMember",
+          "line": 77,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.removeProjectMember",
+          "line": 80,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.capacity",
+          "line": 83,
+          "signature": "self, g, c, payload"
+        },
+        {
+          "name": "Projects.createIteration",
+          "line": 93,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.changeIteration",
+          "line": 98,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Projects.schedule_diff",
+          "line": 125,
+          "signature": "self, g, c, before, after, *, iteration=False"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/reviews.py",
+      "sha256": "f92a5d886ab019673ab2df0c1f944852f0bf57e20ae242107aaca94650576337",
+      "blob": "31d3222aede6cdfc3c518e09fc4a2f8bd40e179f",
+      "cloc_code": 137,
+      "functions": [
+        {
+          "name": "Reviews._latest_assessments",
+          "line": 17,
+          "signature": "self, g, task_id"
+        },
+        {
+          "name": "Reviews.getReviewTemplate",
+          "line": 25,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Reviews.review_complete",
+          "line": 31,
+          "signature": "self, review"
+        },
+        {
+          "name": "Reviews.createTaskReview",
+          "line": 36,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Reviews.createReleaseAssessment",
+          "line": 72,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Reviews.reviewReleaseAssessment",
+          "line": 106,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/runtime.py",
+      "sha256": "a8b6a6711f2a88249f760e05badd80c911ead6e25824e9d4400d8b3b1844a239",
+      "blob": "538765ab49bfdbfcf0ceae48d6f101673def3307",
+      "cloc_code": 284,
+      "functions": [
+        {
+          "name": "_audit_integer",
+          "line": 31,
+          "signature": "value, maximum, minimum=0"
+        },
+        {
+          "name": "Runtime.__init__",
+          "line": 36,
+          "signature": "self, factory, settings, business"
+        },
+        {
+          "name": "Runtime.authorize",
+          "line": 40,
+          "signature": "self, call"
+        },
+        {
+          "name": "Runtime.prepare",
+          "line": 45,
+          "signature": "self, call, validate"
+        },
+        {
+          "name": "Runtime.audit",
+          "line": 54,
+          "signature": "self, g, call, error=None"
+        },
+        {
+          "name": "Runtime.rejection",
+          "line": 85,
+          "signature": "self, call, error"
+        },
+        {
+          "name": "Runtime.complete",
+          "line": 119,
+          "signature": "self, g, call, status, result"
+        },
+        {
+          "name": "Runtime.claim",
+          "line": 136,
+          "signature": "self, call"
+        },
+        {
+          "name": "Runtime._claim",
+          "line": 140,
+          "signature": "self, g, call"
+        },
+        {
+          "name": "Runtime.locked_scope",
+          "line": 197,
+          "signature": "self, g, call"
+        },
+        {
+          "name": "Runtime.execute",
+          "line": 244,
+          "signature": "self, call, validate, source='unknown'"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/tasks.py",
+      "sha256": "6aaf2323fdcca0553a55b2a9dd9e1582f52f273129cd74d882ba16e8a7961768",
+      "blob": "c848f33d717d81966f81de8ce9639fbc2f52dbbb",
+      "cloc_code": 127,
+      "functions": [
+        {
+          "name": "Tasks.owner",
+          "line": 9,
+          "signature": "self, g, c, identifier, *, code='OWNER_NOT_PROJECT_DEVELOPER'"
+        },
+        {
+          "name": "Tasks.capacity_owner",
+          "line": 13,
+          "signature": "self, g, c, identifier, iteration_id"
+        },
+        {
+          "name": "Tasks.iteration",
+          "line": 20,
+          "signature": "self, g, c, identifier"
+        },
+        {
+          "name": "Tasks.prestart",
+          "line": 23,
+          "signature": "self, row"
+        },
+        {
+          "name": "Tasks.check_graph",
+          "line": 28,
+          "signature": "self, g, c, identifier, dependencies"
+        },
+        {
+          "name": "Tasks.createTask",
+          "line": 48,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Tasks.getTask",
+          "line": 78,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Tasks.changeTaskPlan",
+          "line": 81,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Tasks.changeTaskAssignment",
+          "line": 103,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Tasks.addTaskDependency",
+          "line": 113,
+          "signature": "self, g, c"
+        },
+        {
+          "name": "Tasks.removeTaskDependency",
+          "line": 132,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/services/workflow.py",
+      "sha256": "e30455418a474eaf9a82809327c9567508610162cd3dc67dbed801f1d29c4d3c",
+      "blob": "3f34c13191c3b0ceee740d93367db0618e56bd08",
+      "cloc_code": 140,
+      "functions": [
+        {
+          "name": "Workflow.transitionTask",
+          "line": 28,
+          "signature": "self, g, c"
+        }
+      ]
+    },
+    {
+      "path": "backend/t44/settings.py",
+      "sha256": "2a45946c57fc3f30e4be9a284cb5b72e80c27b9a27948b24c1faa66f1d273474",
+      "blob": "58a1d93ce7c25c533aed52a365d3c2e83a92cb4b",
+      "cloc_code": 38,
+      "functions": [
+        {
+          "name": "Settings.__post_init__",
+          "line": 19,
+          "signature": "self"
+        },
+        {
+          "name": "Settings.from_env",
+          "line": 24,
+          "signature": "cls"
+        },
+        {
+          "name": "Settings.mysql_settings",
+          "line": 30,
+          "signature": "self"
+        },
+        {
+          "name": "Settings.__repr__",
+          "line": 47,
+          "signature": "self"
+        }
+      ]
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "bbb674db7d50707598c7a1442f98b43226a9651c525c772c6be6da3ad4f145b5",
+      "blob": "e90a50025fd4f69d29b8f89669d4b9d73efac51c",
+      "cloc_code": 15
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "sha256": "941eb6ec4c731dce169bfa37c69d99f9064b6f45c87905512eedd088e83bf0d7",
+      "blob": "0015e0515ded06cb2013fd09e2f6c4b925e7b258",
+      "cloc_code": 59
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "sha256": "d143992ac9b29b7fdb41951be88652cccd29fe0ae2f36008c4e890841cce5c26",
+      "blob": "db997d75040989d980293c5baf7e53cbda012550",
+      "cloc_code": 37
+    },
+    {
+      "path": "frontend/src/audit.ts",
+      "sha256": "b6f896d39a3f29eb9896a9a0ec47334e8a7aaf9e70aed377dceece86318dd36a",
+      "blob": "14bb69b1d407ed1b54323ce514d0a2a0766ee761",
+      "cloc_code": 14
+    },
+    {
+      "path": "frontend/src/components/DataState.vue",
+      "sha256": "670cbc15d00ca4dca88aa23bae85082cc7e194a598bccc2538021feefc868909",
+      "blob": "bb8a31b495f2eb4f8c9ab1a8302d6d61e9ed0a2c",
+      "cloc_code": 38
+    },
+    {
+      "path": "frontend/src/components/FieldEditor.vue",
+      "sha256": "afc5c4a0e5f650bfc98796e22b4d7457ade793e5aa058d77fe0a3d348cb16be1",
+      "blob": "029f12d9cdcc88eacf24cad1804c53b22ea2d90f",
+      "cloc_code": 61
+    },
+    {
+      "path": "frontend/src/components/LoginView.vue",
+      "sha256": "33af8c787d761b290de45a5bd4538c117d834d0eace194a0451dc212a970c57c",
+      "blob": "bfc0e7e38aba6e64b72007d26224b822f605e172",
+      "cloc_code": 47
+    },
+    {
+      "path": "frontend/src/components/OperationForm.vue",
+      "sha256": "b0e4c56d2fc224f066ae297905fab41f45807092c83dc928ca121e184f2ce6c7",
+      "blob": "7c23a7fecf2e45694e2091e258ac1421ff365d66",
+      "cloc_code": 75
+    },
+    {
+      "path": "frontend/src/components/PageHeading.vue",
+      "sha256": "078260a7b6166571502c340bdf6b6874e8091be277ce36473eda21217348c97f",
+      "blob": "be96b5b3ae3cf358bcd2b0a41300b58aa9550db5",
+      "cloc_code": 13
+    },
+    {
+      "path": "frontend/src/components/RecordList.vue",
+      "sha256": "1b088ad8bea3b88cc7f03a91f10a47d106c5318cbedb61533ef296d9b4ac234b",
+      "blob": "2abc660038d8be4145f803de3cd1761811c33277",
+      "cloc_code": 20
+    },
+    {
+      "path": "frontend/src/components/RecordView.vue",
+      "sha256": "a4dafaf96a3ceee85051ca8c66b59d103b09caaab88fcd1006cc70444d3a15ad",
+      "blob": "d02a9875712300d7e72aabf5b01cda33ca93a035",
+      "cloc_code": 20
+    },
+    {
+      "path": "frontend/src/components/SidebarNavigation.vue",
+      "sha256": "f60218c203995d1d1eddc65ae6fb0630171b655763b128f96c25ff88c87e9f2f",
+      "blob": "f65089f88c8d658d951541472ea3fd92e74a62d3",
+      "cloc_code": 31
+    },
+    {
+      "path": "frontend/src/components/TaskDrawer.vue",
+      "sha256": "3a4287ac7bf94f91806812b41580e99e93fbc0b1b1a6ad80f6295e6897399f33",
+      "blob": "6da7bdab6015ccd8f152adc6779cbe735ea4efb6",
+      "cloc_code": 62
+    },
+    {
+      "path": "frontend/src/contract.ts",
+      "sha256": "757bc0d65b5e5f595208922c21770733298982db684ee5ca6700ea482f6dc1a2",
+      "blob": "ee57b60fbdf241c87af47b7438acdd2df4f6b562",
+      "cloc_code": 83
+    },
+    {
+      "path": "frontend/src/forms.ts",
+      "sha256": "24137ed703aa66c479327708f95c5d2bbcac592b299c48c84271345ce6f37543",
+      "blob": "203ebfbbd87e25a5385132b7136a90f2a61256f8",
+      "cloc_code": 33
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "sha256": "13972d284151fa2cc1cc92fb86398771c593d5f8848892708604f6994cd2accf",
+      "blob": "27d92cb17cf0288d2622cf6eecab8270fe21146a",
+      "cloc_code": 6
+    },
+    {
+      "path": "frontend/src/navigation.ts",
+      "sha256": "70ca6c35619b5d9a9a8f91fcfe3142760ef23d1afb618388bcf3acd66bebfd39",
+      "blob": "4f21be57e869589de2117db207d89b43803f7b41",
+      "cloc_code": 15
+    },
+    {
+      "path": "frontend/src/router.ts",
+      "sha256": "52f93c818c875f5b2c654063084cd20c3913fe96626dd86766564738280437db",
+      "blob": "bc65ff774e5507aba38f7cd10c9b44ca48925f1b",
+      "cloc_code": 26
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "9bd7c63afe82495711024e4c796d4f4014af0f1b414c078c7377c4ceccb0e46f",
+      "blob": "414d11990081ed198b855a38996d63f892d8cd89",
+      "cloc_code": 258
+    },
+    {
+      "path": "frontend/src/views/NotFoundView.vue",
+      "sha256": "2448a1c0f8b244f6cfadf428d2fc5a583a8a4c78e4efd6f2b4c056d3b52174bc",
+      "blob": "b150954a6730cfe7227f9291ea694d73c6db0d63",
+      "cloc_code": 8
+    },
+    {
+      "path": "frontend/src/views/WorkspaceView.vue",
+      "sha256": "f03ff257777c79d860d8761ca9c78ad02a8035772ccd86d92d434c8599de6b36",
+      "blob": "bcde829fb2337567ba16cb95c311c4e3ba5feba2",
+      "cloc_code": 101
+    },
+    {
+      "path": "frontend/src/workspace.ts",
+      "sha256": "847a3269f25315a159fb6b25345b118dbc18c62a0977fc5996ffdd0d55f41716",
+      "blob": "14a60769cacb3e569cd9243650287cb8dece6e75",
+      "cloc_code": 68
+    }
+  ],
+  "core_application_code": 5038,
+  "offline_auxiliary_code": 780
+}
