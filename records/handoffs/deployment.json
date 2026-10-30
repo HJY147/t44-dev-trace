@@ -3104,5 +3104,15 @@
       "CLI": "existing flags unchanged; optional default-false-grant and default-false-grant-sha256 recover older prepare output",
       "facts_scripts_changed": false
     }
+  },
+  "P09_user_local_handoff": {
+    "status": "LOCAL_TESTS_PASSED_NOT_REMOTE_EXECUTED",
+    "manifest": "agents/deployment/final-window/P09-user-handoff-manifest.PUBLIC.json",
+    "README": "agents/deployment/final-window/P09-USER-HANDOFF.PUBLIC.md",
+    "test": "tmp/753_deployment_final_window/test_p09_user_handoff_local.py",
+    "dynamic_new_boot_fee_cutoff_required": true,
+    "old55a4_fee_excluded": true,
+    "freeze_cloud_assistant_timeout_seconds": 900,
+    "cloud_or_QA_actions": 0
   }
 }

@@ -1,0 +1,88 @@
+{
+  "P08_original_failure_retained": "PREPARATION_LATE_NO_OVERRIDE",
+  "authoritative_command_generator": "P09-USER-COMMANDS.PUBLIC.py",
+  "cloud_or_QA_executed_by_this_delivery": false,
+  "dynamic_new_fee_boot_and_platform_cutoff_required": true,
+  "excluded_obsolete_local_drafts": {
+    "P09-USER-APP-CLONE-FREEZE.PUBLIC.py": "55a4c081 old embedded01:57 boot/03:00 fee: DO NOT EXECUTE",
+    "P09-current-resume-cost.PUBLIC.json": "obsolete prior campaign fee: NOT INPUT TO NEXT BOOT"
+  },
+  "files": {
+    "agents/deployment/final-window/P09-COLLECT-UNPACK.PUBLIC.py": {
+      "bytes": 1962,
+      "sha256": "f5e8107f528e2f87051fc5700cf7ae905f500d3ca8b3f8b301cd07bc345c81a3"
+    },
+    "agents/deployment/final-window/P09-DERIVE-TOOLS.PUBLIC.py": {
+      "bytes": 2029,
+      "sha256": "deb4a2cf8d0768e24cbc9ec138621c0b25a89aad9f2a39f8a860da956d23a146"
+    },
+    "agents/deployment/final-window/P09-FACTS-CHECK.PUBLIC.py": {
+      "bytes": 5836,
+      "sha256": "e4ae637a26b238287abd2a6f4052a87949f52803d972c9cd069b1d69c80ef896"
+    },
+    "agents/deployment/final-window/P09-FEE-TEMPLATE.PUBLIC.json": {
+      "bytes": 715,
+      "sha256": "05673406b86fd18e8acb51a8b1bf29613c432ad1ceba7025139fd210c15a5044"
+    },
+    "agents/deployment/final-window/P09-SPLUS1-EXEC.PUBLIC.py": {
+      "bytes": 2226,
+      "sha256": "b1e43bc0737f92a341d3e4e7f49d6b4798619d023c6879e5ec031cdb53df6387"
+    },
+    "agents/deployment/final-window/P09-USER-APP-COLLECT.PUBLIC.py": {
+      "bytes": 6307,
+      "sha256": "781e7b5b347eb600bcdd4081aa11f4d07b8538e027523248f2426a304fa18c85"
+    },
+    "agents/deployment/final-window/P09-USER-APP-FACTS.PUBLIC.py": {
+      "bytes": 3199,
+      "sha256": "b7623b3b434f50264986691afaaed53c40f1bf2aa51016accc8124e972f9b276"
+    },
+    "agents/deployment/final-window/P09-USER-APP_FACTS.INLINE.PUBLIC.sh": {
+      "bytes": 7454,
+      "sha256": "df1c83e89f9ed9d5ee9eee8b881b1d713dc94d62869ba6d38a2652b90c699eb5"
+    },
+    "agents/deployment/final-window/P09-USER-COMMANDS.PUBLIC.py": {
+      "bytes": 19560,
+      "sha256": "b813ebec4443b4f57187a967a28b860bf68854975cf69786a5e1e42512b3a3da"
+    },
+    "agents/deployment/final-window/P09-USER-HANDOFF.PUBLIC.md": {
+      "bytes": 5299,
+      "sha256": "837b0a5fefe84d5ccbed6bbb53bae1705fee35c70b03af883b7e2d9fcc2ab46a"
+    },
+    "agents/deployment/final-window/P09-USER-LOAD-FACTS.PUBLIC.py": {
+      "bytes": 4854,
+      "sha256": "95ce762b5be980e993f3864bbe027048e9b1d8b4c0b52a017a204faa409b318d"
+    },
+    "agents/deployment/final-window/P09-USER-LOAD_FACTS.INLINE.PUBLIC.sh": {
+      "bytes": 6785,
+      "sha256": "b982c292f7713f93d2e67be254f57fe9354fb0f45f31be54f6b4f3e917835333"
+    },
+    "agents/deployment/final-window/P09-local-user-boundaries.PUBLIC.log": {
+      "bytes": 1760,
+      "sha256": "ae68e78b734f8373c95474e9a651efbafd1341464dfb8792bd2a68daa73b1138"
+    },
+    "tmp/753_deployment_final_window/build_p09_handoff.py": {
+      "bytes": 6887,
+      "sha256": "267523c8affc8b95d929c00973db8d9def2ea4a7bb68dcebd50ca3833265db78"
+    },
+    "tmp/753_deployment_final_window/test_p09_user_handoff_local.py": {
+      "bytes": 21484,
+      "sha256": "8df97d8be0805a66344e58440be99889effd3addcaa0cf07b461f225dad79158"
+    }
+  },
+  "formal_P_measurement_completed": false,
+  "measurement_unchanged": {
+    "C_offset_seconds": 1800,
+    "E_offset_seconds": 1380,
+    "G_offset_seconds": 1500,
+    "S_offset_seconds": 600,
+    "clients": 400,
+    "steady_seconds": 600,
+    "warmup_seconds": 60
+  },
+  "required_cloud_assistant_timeout_seconds": {
+    "freeze": 900,
+    "load_arm": 300,
+    "load_prepare": 300
+  },
+  "status": "LOCAL_VALIDATED_USER_EXECUTION_REQUIRED_NOT_REMOTE_TEST"
+}
