@@ -676,3 +676,8 @@ ROLE-deployment-MANUAL13-SSH-v1; AI deployment operator. New deployment/cloud-re
 ## 2026-10-30 MANUAL13 restoration preflight repair
 
 ROLE-deployment-MANUAL13-PREFLIGHT-v1. Imported 9d60b8ef wrapper and its16 checks with Git-blob SHA provenance. Before maintenance authorization/first HTTP child, compare all five live business counts against original packet counts, and read only original service account id/active/name to require active+namespace. Public probe exposes only id/active/scope_match. Five-table drift and inactive/wrong-namespace negatives prove zero maintenance invocation and zero material chain. Exact helper pin updated to be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a and actual new helper pure authorization used in18 passing local checks. Wrapper manifest/evidence at agents/deployment/manual12-resume-prepare/MANUAL13-WRAPPER.PUBLIC.json and manual13-final-helper-test.log. Original058d package unchanged; no actual cloud, SSH, Docker, SQL or HTTP operations. Local seam checks do not establish independent acceptance or live restoration.
+
+
+## MANUAL13 next-window offline contract (#47)
+
+Added a local strict original-host/public-recovery-receipt check requiring3600s remaining SSH lifetime (preparation1800/formal900/recovery900), preserving original2h authorization and original900s runtime bound. Seven local tests pass. Reserved p13/material06/maintenance06; consumed paths/grants cannot be reused. Existing90b/material05 wrapper is explicitly not a material06 launcher; final source/image/tool pins wait for coordinator candidate selection. No cloud/SSH/SUT action, no PRIVATE access. Prompt ROLE-deployment-MANUAL13-RETEST-v1; evidence agents/deployment/manual13-retest/.
