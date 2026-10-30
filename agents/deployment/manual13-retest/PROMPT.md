@@ -10,3 +10,8 @@ This revision adds a small local public-receipt guard using existing hostpin/rep
 # ROLE-deployment-MANUAL13-OBSERVER-v1
 
 Coordinator requested read-only original-observer expansion for redo/checkpoint/autoinc and P_S waits; preserve120s total deadline, measurement core, worker/config and no-cloud boundary. Real local8.4 dictionary verification waits for exclusive DB baselines to finish.
+
+
+# ROLE-deployment-MANUAL13-DISK-OBSERVE-v1
+
+Coordinator requested device major:minor mapping from owned cgroup io.stat to host/proc/diskstats and minimal sysfs metadata, with IO pressure, strict missing/reset handling and no utilization/quota inference. Keep120s bound and no-cloud boundary; obtain real local SQL dictionary only through root/DB owner.

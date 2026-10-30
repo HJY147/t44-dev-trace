@@ -3060,12 +3060,14 @@
     "prompt_ref": "ROLE-deployment-MANUAL13-RETEST-v1"
   },
   "manual13_observer": {
-    "status": "OFFLINE_CHECKED_SQL_DICTIONARY_PENDING",
+    "status": "OFFLINE_CHECKED_MYSQL84_AND_LINUX_PENDING",
     "source": "deployment/cloud-reuse/manual13-observe.py",
     "evidence": "agents/deployment/manual13-retest/OBSERVER.PUBLIC.json",
-    "offline_tests_passed": 11,
+    "offline_tests_passed": 17,
     "real_mysql84_sql_checked": false,
     "cloud_requests": 0,
-    "prompt_ref": "ROLE-deployment-MANUAL13-OBSERVER-v1"
+    "prompt_ref": "ROLE-deployment-MANUAL13-OBSERVER-v1",
+    "linux_host_counter_checked": false,
+    "dictionary_queries": "agents/deployment/manual13-retest/observer-dictionary-queries.PUBLIC.json"
   }
 }

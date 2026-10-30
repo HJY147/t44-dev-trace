@@ -4,6 +4,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -12,7 +13,7 @@ ROLES = ('api', 'mysql', 'rabbitmq', 'consumer', 'scheduler', 'web', 'tls-gatewa
 DOCKER = ['docker', '--context', 'default']
 DEADLINE = None
 FORMAT = '{{json .Id}}\n{{json .Image}}\n{{json .State.Running}}\n{{json .HostConfig}}'
-CGROUP = '''for f in cpu.stat cpu.max cpuset.cpus.effective memory.current memory.max memory.events pids.current pids.max io.stat; do
+CGROUP = '''for f in cpu.stat cpu.max cpuset.cpus.effective memory.current memory.max memory.events pids.current pids.max io.stat io.pressure; do
 printf '%s\\n' "FILE:$f"; cat "/sys/fs/cgroup/$f" 2>/dev/null || true; done'''
 PROCESS = r'''import json,os
 from pathlib import Path
@@ -89,6 +90,11 @@ WAITS_SQL = ("SELECT 'WAIT_COVERAGE',COUNT(*),SUM(i.ENABLED='YES'),SUM(i.TIMED='
              'e.MIN_TIMER_WAIT,e.MAX_TIMER_WAIT' + WAIT_JOIN +
              ' ORDER BY e.SUM_TIMER_WAIT DESC,e.EVENT_NAME LIMIT 20;')
 
+DISK_COUNTER_FIELDS = ('reads_completed', 'reads_merged', 'sectors_read_512b', 'read_milliseconds',
+                       'writes_completed', 'writes_merged', 'sectors_written_512b', 'write_milliseconds',
+                       'io_inflight', 'io_milliseconds', 'weighted_io_milliseconds')
+DISK_CUMULATIVE_FIELDS = tuple(name for name in DISK_COUNTER_FIELDS if name != 'io_inflight')
+
 
 def command(argv):
     remaining = 8 if DEADLINE is None else min(8, DEADLINE - time.monotonic())
@@ -122,6 +128,127 @@ def cgroup(container):
         else:
             raise ValueError('CGROUP_PROJECTION_REJECTED')
     return fields
+
+
+def io_pressure(lines):
+    try:
+        rows = {}
+        for line in lines:
+            fields = line.split()
+            if len(fields) != 5 or fields[0] not in ('some', 'full') or fields[0] in rows:
+                raise ValueError('PRESSURE_PROJECTION_REQUIRED')
+            values = dict(field.split('=', 1) for field in fields[1:])
+            if (set(values) != {'avg10', 'avg60', 'avg300', 'total'} or not values['total'].isdigit()
+                    or any(not re.fullmatch(r'\d+(?:\.\d+)?', values[key]) for key in ('avg10', 'avg60', 'avg300'))):
+                raise ValueError('PRESSURE_NUMERIC_REQUIRED')
+            averages = {key: float(values[key]) for key in ('avg10', 'avg60', 'avg300')}
+            if any(not 0 <= value <= 100 for value in averages.values()):
+                raise ValueError('PRESSURE_PERCENT_RANGE_REQUIRED')
+            rows[fields[0]] = {**averages, 'total_microseconds': int(values['total'])}
+        if set(rows) != {'some', 'full'}:
+            raise ValueError('PRESSURE_BOTH_SCOPES_REQUIRED')
+        return {'available': True, 'scopes': rows,
+                'units': 'avg10/60/300 are kernel PSI percentages; total is cumulative microseconds',
+                'meaning': 'owned service cgroup IO stall pressure, not disk utilization or per-request latency'}
+    except (ValueError, TypeError):
+        return {'available': False, 'scopes': None, 'missing_reason': 'CGROUP_V2_IO_PRESSURE_UNAVAILABLE_OR_INVALID'}
+
+
+def bounded_text(path, cap):
+    if DEADLINE is not None and time.monotonic() >= DEADLINE:
+        raise ValueError('OBSERVER_120_SECOND_LIMIT')
+    with Path(path).open() as stream:
+        value = stream.read(cap + 1)
+    if len(value) > cap:
+        raise ValueError('HOST_COUNTER_FILE_LIMIT')
+    return value
+
+
+def parse_diskstats(raw, device):
+    matches = []
+    for line in raw.splitlines():
+        fields = line.split()
+        if len(fields) < 2 or not fields[0].isdigit() or not fields[1].isdigit():
+            continue
+        if fields[0] + ':' + fields[1] == device:
+            matches.append(fields)
+    if len(matches) != 1:
+        raise ValueError('DISKSTATS_DEVICE_MISSING_OR_AMBIGUOUS')
+    fields = matches[0]
+    if (len(fields) < 14 or not re.fullmatch(r'[A-Za-z0-9_.!+-]{1,128}', fields[2])
+            or any(not value.isdigit() for value in fields[3:14])):
+        raise ValueError('DISKSTATS_FIELDS_UNAVAILABLE_OR_INVALID')
+    return fields[2], dict(zip(DISK_COUNTER_FIELDS, map(int, fields[3:14]), strict=True))
+
+
+def parse_device_mapping(raw, device, diskstats_name):
+    fields = {}
+    for line in raw.splitlines():
+        if '=' not in line:
+            continue
+        key, value = line.split('=', 1)
+        if key in ('MAJOR', 'MINOR', 'DEVNAME', 'DEVTYPE'):
+            if key in fields:
+                raise ValueError('SYSFS_DEVICE_MAPPING_AMBIGUOUS')
+            fields[key] = value
+    if (set(fields) != {'MAJOR', 'MINOR', 'DEVNAME', 'DEVTYPE'}
+            or fields['MAJOR'] + ':' + fields['MINOR'] != device
+            or fields['DEVNAME'] != diskstats_name or fields['DEVTYPE'] not in ('disk', 'partition')):
+        raise ValueError('SYSFS_DISKSTATS_MAPPING_UNCONFIRMED')
+    return {'device_name': diskstats_name, 'device_type': fields['DEVTYPE']}
+
+
+def disk_delta(previous, current, elapsed):
+    if elapsed <= 0 or any(key not in previous or key not in current for key in DISK_CUMULATIVE_FIELDS):
+        return {'available': False, 'counts': None, 'missing_reason': 'PREVIOUS_SAMPLE_OR_INTERVAL_UNAVAILABLE'}
+    if any(current[key] < previous[key] for key in DISK_CUMULATIVE_FIELDS):
+        return {'available': False, 'counts': None, 'missing_reason': 'COUNTER_RESET_WRAP_OR_DEVICE_REPLACEMENT'}
+    return {'available': True, 'elapsed_seconds': elapsed,
+            'counts': {key: current[key] - previous[key] for key in DISK_CUMULATIVE_FIELDS},
+            'io_inflight_current': current['io_inflight'],
+            'await_utilization_queue_depth_or_quota_calculated': False}
+
+
+def host_block_io(services, previous=None, reader=bounded_text, platform=None, clock=None):
+    platform = sys.platform if platform is None else platform
+    if platform != 'linux':
+        return {'available': False, 'devices': None, 'missing_reason': 'LINUX_HOST_COUNTERS_REQUIRED'}
+    sources = {}
+    try:
+        for role, service in services.items():
+            for line in service['cgroup'].get('io.stat', []):
+                device = line.split()[0]
+                if not re.fullmatch(r'\d{1,10}:\d{1,10}', device):
+                    raise ValueError('CGROUP_IO_DEVICE_PROJECTION_INVALID')
+                sources.setdefault(device, set()).add(role)
+        if not sources or len(sources) > 32:
+            raise ValueError('CGROUP_DEVICE_SET_EMPTY_OR_OUT_OF_BOUND')
+        raw = reader('/proc/diskstats', 1024 * 1024)
+    except (ValueError, OSError, KeyError, IndexError, TypeError):
+        return {'available': False, 'devices': None, 'missing_reason': 'HOST_DISKSTATS_OR_CGROUP_DEVICE_SET_UNAVAILABLE'}
+    observed = time.monotonic() if clock is None else clock()
+    devices = {}
+    for device, roles in sorted(sources.items()):
+        try:
+            name, counters = parse_diskstats(raw, device)
+            mapping = parse_device_mapping(reader('/sys/dev/block/' + device + '/uevent', 4096), device, name)
+            row = {'available': True, **mapping, 'source_owned_roles': sorted(roles), 'counters': counters}
+            old = None if previous is None else (previous.get('devices') or {}).get(device)
+            if (old and old.get('available') is True and old.get('device_name') == name
+                    and old.get('device_type') == mapping['device_type'] and 'observed_monotonic' in previous):
+                row['delta'] = disk_delta(old['counters'], counters, observed - previous['observed_monotonic'])
+            else:
+                row['delta'] = {'available': False, 'counts': None, 'missing_reason': 'NO_PREVIOUS_CONFIRMED_SAME_DEVICE_SAMPLE'}
+            devices[device] = row
+        except (ValueError, OSError):
+            devices[device] = {'available': False, 'counters': None, 'source_owned_roles': sorted(roles),
+                               'missing_reason': 'DISKSTATS_FIELDS_OR_SYSFS_DEVICE_MAPPING_UNAVAILABLE_OR_AMBIGUOUS'}
+    return {'available': all(row['available'] for row in devices.values()), 'devices': devices,
+            'observed_monotonic': observed, 'observed_utc': datetime.now(timezone.utc).isoformat(),
+            'units': 'completion/merge counts, kernel512-byte sectors, milliseconds, instantaneous io_inflight count',
+            'scope': 'host-wide device counters only for major:minor observed in owned cgroup io.stat; no device-layer aggregation',
+            'meaning': 'cumulative counters and reset-aware deltas; not request latency, true device utilization, queue depth or provisioned limits',
+            'serial_numbers_paths_or_user_data_collected': False}
 
 
 def mysql(container):
@@ -253,11 +380,12 @@ def mysql_digests(container, sql):
                 'sql_or_digest_text_exported': False}
 
 
-def observe(containers):
+def observe(containers, previous_disks=None):
     row = {'utc': datetime.now(timezone.utc).isoformat(), 'monotonic': time.monotonic(), 'services': {}}  # noqa: UP017
     for role, container in containers.items():
         state = identity(container)
         state['cgroup'] = cgroup(container)
+        state['io_pressure'] = io_pressure(state['cgroup'].get('io.pressure', []))
         if role == 'api':
             state['api_processes'] = json.loads(command([*DOCKER, 'exec', container, 'python', '-c', PROCESS]))
         if role == 'mysql':
@@ -267,6 +395,7 @@ def observe(containers):
             state['mysql']['top20_digests_by_count'] = mysql_digests(container, DIGEST_TOP_SQL)
             state['mysql']['global_waits'] = mysql_waits(container)
         row['services'][role] = state
+    row['host_block_io'] = host_block_io(row['services'], previous_disks)
     return row
 
 
@@ -290,11 +419,13 @@ def main():
     fd = os.open(args.output, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
     deadline = time.monotonic() + 120
     DEADLINE = deadline
+    previous_disks = None
     with os.fdopen(fd, 'w') as stream:
         for index in range(args.samples):
             if time.monotonic() >= deadline:
                 raise ValueError('OBSERVER_120_SECOND_LIMIT')
-            row = observe(containers)
+            row = observe(containers, previous_disks)
+            previous_disks = row['host_block_io']
             stream.write(json.dumps(row, sort_keys=True) + '\n')
             stream.flush()
             if index + 1 < args.samples:

@@ -149,5 +149,94 @@ class Observer(unittest.TestCase):
         self.assertNotIn('MYSQL_ROOT_PASSWORD', json.dumps(value))
 
 
+class HostBlockCounters(unittest.TestCase):
+    RAW = '259 0 nvme0n1 1 2 3 4 5 6 7 8 9 10 11 0 0 0 0 0 0\n'
+    MAPPING = 'MAJOR=259\nMINOR=0\nDEVNAME=nvme0n1\nDEVTYPE=disk\nDISKSEQ=123\nSERIAL=secret-serial\n'
+
+    def sources(self):
+        return {'mysql': {'cgroup': {'io.stat': ['259:0 rbytes=1 wbytes=2 rios=3 wios=4']}},
+                'api': {'cgroup': {'io.stat': ['259:0 rbytes=5 wbytes=6 rios=7 wios=8']}}}
+
+    def test_one_host_read_per_sample_and_minimal_mapping(self):
+        calls = []
+        def reader(path, cap):
+            calls.append((path, cap))
+            return self.RAW if path == '/proc/diskstats' else self.MAPPING
+        value = observe.host_block_io(self.sources(), reader=reader, platform='linux', clock=lambda: 100)
+        self.assertTrue(value['available'])
+        self.assertEqual(len(calls), 2)  # once diskstats plus one deduplicated device mapping
+        device = value['devices']['259:0']
+        self.assertEqual(device['source_owned_roles'], ['api', 'mysql'])
+        self.assertEqual(device['counters']['read_milliseconds'], 4)
+        self.assertEqual(device['counters']['weighted_io_milliseconds'], 11)
+        self.assertFalse(device['delta']['available'])
+        self.assertNotIn('SERIAL', json.dumps(value))
+        self.assertNotIn('secret-serial', json.dumps(value))
+        self.assertFalse(value['serial_numbers_paths_or_user_data_collected'])
+
+    def test_missing_fields_and_ambiguous_device_refused(self):
+        for raw in ('259 0 nvme0n1 1 2 3', self.RAW + self.RAW, self.RAW.replace(' 8 ', ' NULL ')):
+            with self.assertRaises(ValueError):
+                observe.parse_diskstats(raw, '259:0')
+        for mapping in (self.MAPPING.replace('DEVNAME=nvme0n1', 'DEVNAME=sda'),
+                        self.MAPPING + 'DEVNAME=nvme0n1\n',
+                        self.MAPPING.replace('MINOR=0', 'MINOR=1')):
+            with self.assertRaises(ValueError):
+                observe.parse_device_mapping(mapping, '259:0', 'nvme0n1')
+
+    def test_permission_nonlinux_missing_mapping_are_not_zero(self):
+        with patch.object(observe, 'bounded_text', side_effect=AssertionError('no host access')):
+            value = observe.host_block_io(self.sources(), platform='darwin')
+        self.assertFalse(value['available'])
+        self.assertIsNone(value['devices'])
+        def denied(path, cap):
+            raise PermissionError('must never escape')
+        value = observe.host_block_io(self.sources(), reader=denied, platform='linux')
+        self.assertFalse(value['available'])
+        self.assertIsNone(value['devices'])
+        self.assertNotIn('must never escape', json.dumps(value))
+        value = observe.host_block_io(self.sources(), reader=lambda path, cap: self.RAW if path == '/proc/diskstats' else '',
+                                      platform='linux')
+        self.assertFalse(value['available'])
+        self.assertIsNone(value['devices']['259:0']['counters'])
+
+    def test_reset_aware_deltas_keep_inflight_as_gauge(self):
+        _, first = observe.parse_diskstats(self.RAW, '259:0')
+        current = dict(first, reads_completed=3, read_milliseconds=8, io_inflight=0)
+        value = observe.disk_delta(first, current, 5)
+        self.assertTrue(value['available'])
+        self.assertEqual(value['counts']['reads_completed'], 2)
+        self.assertEqual(value['counts']['read_milliseconds'], 4)
+        self.assertNotIn('io_inflight', value['counts'])
+        self.assertEqual(value['io_inflight_current'], 0)
+        self.assertFalse(value['await_utilization_queue_depth_or_quota_calculated'])
+        current['writes_completed'] = 0
+        value = observe.disk_delta(first, current, 5)
+        self.assertFalse(value['available'])
+        self.assertIsNone(value['counts'])
+        self.assertIn('RESET_WRAP', value['missing_reason'])
+        self.assertFalse(observe.disk_delta(first, first, 0)['available'])
+
+    def test_second_sample_uses_its_own_monotonic_interval(self):
+        reader = lambda path, cap: self.RAW if path == '/proc/diskstats' else self.MAPPING
+        first = observe.host_block_io(self.sources(), reader=reader, platform='linux', clock=lambda: 100)
+        second = observe.host_block_io(self.sources(), first, reader=reader, platform='linux', clock=lambda: 105)
+        self.assertTrue(second['devices']['259:0']['delta']['available'])
+        self.assertEqual(second['devices']['259:0']['delta']['elapsed_seconds'], 5)
+        self.assertEqual(second['devices']['259:0']['delta']['counts']['read_milliseconds'], 0)
+
+    def test_pressure_numeric_scopes_and_missing_are_explicit(self):
+        value = observe.io_pressure(['some avg10=1.00 avg60=2.00 avg300=3.00 total=456',
+                                     'full avg10=0.10 avg60=0.20 avg300=0.30 total=123'])
+        self.assertTrue(value['available'])
+        self.assertEqual(value['scopes']['some']['total_microseconds'], 456)
+        self.assertEqual(value['scopes']['full']['avg10'], .1)
+        for lines in ([], ['some avg10=0 avg60=0 avg300=0 total=0'],
+                      ['some avg10=NaN avg60=0 avg300=0 total=0', 'full avg10=0 avg60=0 avg300=0 total=0']):
+            missing = observe.io_pressure(lines)
+            self.assertFalse(missing['available'])
+            self.assertIsNone(missing['scopes'])
+
+
 if __name__ == '__main__':
     unittest.main()
