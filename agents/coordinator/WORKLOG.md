@@ -175,3 +175,6 @@ AI总协调实收官方0b制品并核实际60文件/身份链、384连接预算�
 
 
 2026-10-31 / U-storage-upgrade-confirmed-20261031：32文件p13/06整包SHA 3c0b6548f9aefbe6299bd0834cba563806ba78d122febadfebf6bfd4fa788e25；整包/归档/语法及旧run、篡改拒绝核验通过。backend9558dd42无需改产品，deployment0fd91a62修正新入口和真实MySQL instrument冒号解析，独立PUBLIC725cd78c无实际许可。只存储候选，无额外AB；当前SSH/盘映射/会话/独立准入/正式复测尚未执行。交接见agents/coordinator/manualp13-preparation/DELIVERY.PUBLIC.json。
+
+
+2026-10-31 / P13 LOAD连接检查：仅按用户提供地址更新全新load-only配置，保留原严格hostkey与所有其他选项。实际SSH exit255，publickey拒绝，尚未传包或发压；等待用户执行原USER_ONLY临时授权脚本，APP保持停止。公开回执agents/coordinator/manualp13-preparation/LOAD_SSH_CHECK.PUBLIC.json；实际IP只留本地private runtime。
