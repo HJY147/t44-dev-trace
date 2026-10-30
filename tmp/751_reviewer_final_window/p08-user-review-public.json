@@ -1,0 +1,96 @@
+{
+  "scope": "pure local public schemas and syntax; no cloud/HTTP/Docker/QA execution",
+  "files": {
+    "P08-USER-COMMANDS.PUBLIC.py": {
+      "bytes": 14739,
+      "sha256": "e1f90da76dd09e91b9c789da3dd69037fcd6a0b42e469020142cbf5e79e468d8"
+    },
+    "P08-FACTS-CHECK.PUBLIC.py": {
+      "bytes": 5836,
+      "sha256": "fb7b24ec9dcc6679e772d340bd54c7dc2f5ac1a27b257e55341241978e895fa5"
+    },
+    "P08-USER-LOAD-FACTS.PUBLIC.py": {
+      "bytes": 4854,
+      "sha256": "2f356aba3fa439a86289a375b70a25ed11190b8a76787dbdb30492e6bacbd711"
+    }
+  },
+  "shells": {
+    "P08-USER-APP-PREPARE-v2.INLINE.PUBLIC.sh": {
+      "bytes": 8185,
+      "sha256": "a4f0bbaf8a0287b18d014238dc34b019b470d8e38bfaa058aef761601bdd9059",
+      "blob_sha256": "368e06ab4a451b9e71a7711054548983da5f04a6b0c7a846d762501ca6c22314",
+      "payloads": [
+        "P08-FRESH-PREPARE-v2.PUBLIC.py",
+        "P08-SPLUS1-EXEC.PUBLIC.py"
+      ],
+      "bash_n": 0,
+      "python310_ast": true
+    },
+    "P08-USER-LOAD-FACTS.INLINE.PUBLIC.sh": {
+      "bytes": 6777,
+      "sha256": "28da16513e18ea34939505c4ccf1c39390467a1630f64af6b066e60667cc6618",
+      "blob_sha256": "5279849df37af4a8fe45167a8d4c06a48315f121e6cbeb9a35fa09fbccd17438",
+      "payloads": [
+        "P08-USER-LOAD-FACTS.PUBLIC.py",
+        "P08-SPLUS1-EXEC.PUBLIC.py",
+        "P08-USER-TRANSPORT-LOAD.PUBLIC.py"
+      ],
+      "bash_n": 0,
+      "python310_ast": true
+    }
+  },
+  "boundaries": {
+    "real90b_manifest_guard": true,
+    "wrong_size_rejected": true,
+    "wrong_actual_bytes_rejected": true,
+    "full_public_grant_arm_generated": {
+      "bytes": 3543,
+      "bash_n": 0,
+      "python310_ast": true
+    },
+    "partial_grant_accepted": true,
+    "partial_grant_missing_keys": [
+      "created_at",
+      "origin",
+      "fixture_sha256",
+      "request_timeout_seconds",
+      "postcheck_seconds",
+      "limits",
+      "permissions",
+      "prohibitions"
+    ],
+    "partial_matches_original_public_exact_grant": false
+  },
+  "official_source90b": {
+    "backend-bundle-manifest.json": {
+      "bytes": 6793,
+      "sha256": "72962423358660cf206c4651681b0994f61dc911867805ac5043615db8830b8c"
+    },
+    "source-manifest.json": {
+      "bytes": 29749,
+      "sha256": "501cda41825b84a5d036a702c7e6e7a4750f73614433378ee8cb7b32b590df2e"
+    },
+    "actual-runtime-files.json": {
+      "bytes": 11363,
+      "sha256": "9a0cd2ec2b6287a6b09fbb9570159e143fdd7e1f249c2e3545c9f5444132827e"
+    },
+    "source-profile.PUBLIC.json": {
+      "bytes": 7746,
+      "sha256": "c72b7ccac3a7c8934160ae8388edc7271062a50b3300901f475d23a38f77f2fb"
+    },
+    "source-runtime-context.tar.gz": {
+      "bytes": 393953,
+      "sha256": "4cefa8979d0842d76a83fc059f7e63e812602097afc9162c1ab624d537490434"
+    },
+    "images.tar.gz": {
+      "bytes": 125027611,
+      "sha256": "ea39bae997663bf76c71297b40f5c5dcc8697087f0aa85aa4d5ad497eeb9d93f"
+    }
+  },
+  "owner_commit": "1671457f582364d9c7e276922a0966a2e2131c69",
+  "handoff_manifest": {
+    "entries": 12,
+    "mismatches": [],
+    "sha256": "ae1572594b498af1ed61af1c7b2c62b8369ce0a94b3dc1c4bbbc1c62d46cbadc"
+  }
+}
