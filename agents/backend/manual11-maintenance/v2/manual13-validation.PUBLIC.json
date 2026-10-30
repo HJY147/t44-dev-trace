@@ -1,0 +1,40 @@
+{
+  "status": "LOCAL_AUTHOR_VALIDATION_PASSED_CLOUD_NOT_RUN",
+  "prompt_id": "ROLE-backend-MANUAL13-PREPARATION-20261030-v1",
+  "source_sha": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "helper_sha256": "be486ee976308000e5323321f20f91e26a562c494ad402fe0714996cfb61823a",
+  "runtime_dependencies_unchanged": true,
+  "offline_checks": {
+    "passed": 14,
+    "seconds": 0.559,
+    "evidence": "agents/backend/manual11-maintenance/v2/offline-final-manual13-r2.log"
+  },
+  "real_source90b_http_schema_sqlite": {
+    "passed": 16,
+    "seconds": 54.88,
+    "evidence": "agents/backend/manual11-maintenance/v2/http-selftest-source90b-final4.log"
+  },
+  "real_rule_boundary_comparison": {
+    "passed": 1,
+    "combinations": 24,
+    "evidence": "agents/backend/manual11-maintenance/v2/http-rule-boundaries-source90b.log"
+  },
+  "lint": "ruff check --config backend/pyproject.toml tmp/backend/contracts/819_cohort_maintenance_http.py PASS",
+  "source_identity_evidence": "agents/backend/manual11-maintenance/v2/http-source-identity.PUBLIC.json",
+  "test_source": "tmp/backend/contracts/819_cohort_maintenance_http.py",
+  "guard_changes": [
+    "all three live roles exact original40 scope and required my_roles",
+    "all400 original empty dependencies and active developer membership",
+    "all40 exact source90b rules and original400 escalation-event identity/schedule/rule binding",
+    "nonterminal escalation tasks and stable window actual now through +900 seconds",
+    "POST-success malformed payload is UNKNOWN, readonly inspection, no automatic retry"
+  ],
+  "unverified": [
+    "real TCP/TLS and cloud task restoration not run",
+    "live deadlines/state/rules/role/event inputs may change before next boot",
+    "no material05 or p12 prepare/execute or performance conclusion",
+    "independent review pending"
+  ],
+  "cloud_requests": 0,
+  "benchmark_started": false
+}

@@ -15,6 +15,8 @@ from pathlib import Path
 from uuid import uuid4
 
 SOURCE = '90b734f65ce6ee9f5c217e885bc7ea4857e32b48'
+# Exact source90b resources/escalation-rules.json data; no product import or rule edits.
+FROZEN_RULES = {'version': 1, 'scan_interval_seconds': 60, 'selection': 'highest_priority_matching', 'rules': [{'level': 1, 'label': '临期', 'start_offset_seconds': -86400, 'start_inclusive': True, 'end_offset_seconds': 0, 'end_inclusive': True, 'recipient_kinds': [1], 'priority': 1}, {'level': 2, 'label': '超期', 'start_offset_seconds': 0, 'start_inclusive': False, 'end_offset_seconds': 86400, 'end_inclusive': False, 'recipient_kinds': [1, 2], 'priority': 2}, {'level': 3, 'label': '严重超期', 'start_offset_seconds': 86400, 'start_inclusive': True, 'end_offset_seconds': None, 'end_inclusive': False, 'recipient_kinds': [1, 2], 'priority': 3}], 'effective_at': '2026-10-23T05:33:29Z', 'decided_by': 1}
 OPS = ['login', 'readonly-inventory', 'unblock-existing-owned', 'readonly-audit', 'final-inventory']
 BASIS = 'Restore original cohort after completed MANUAL11 BLOCK/UNBLOCK cycle'
 OWNER_MODULE_HASHES = {'host_runner.py':'ee72bcb22ae9a95d9333b91921b9aa91767abbe96c92e751bc804df4c954f67d',
@@ -261,9 +263,88 @@ def project_snapshot(api,items,manager):
     return totals,selected
 
 
+def selected_level(at,end):
+    elapsed=(at-end).total_seconds()
+    for rule in sorted(FROZEN_RULES['rules'],key=lambda x:x['priority'],reverse=True):
+        start,stop=rule['start_offset_seconds'],rule['end_offset_seconds']
+        lower=start is None or elapsed>start or (elapsed==start and rule['start_inclusive'])
+        upper=stop is None or elapsed<stop or (elapsed==stop and rule['end_inclusive'])
+        if lower and upper:return rule['level']
+    return None
+
+
+def preflight_roles(api,items,tokens,evidence):
+    ids=sorted({pid for pid,_,_ in items})
+    for role,expected in (('manager',1),('developer',2),('reviewer',3)):
+        projects,total=api.pages('/projects',tokens[role])
+        need(total==len(ids) and sorted(p['id'] for p in projects)==ids,
+             'REAL_ROLE_PROJECT_SCOPE_'+role)
+        need(all(isinstance(p.get('my_roles'),list) and expected in p['my_roles']
+                 and all(type(r) is int and r in (1,2,3) for r in p['my_roles']) for p in projects),
+             'REAL_PROJECT_ROLE_'+role)
+    evidence.event('ALL_THREE_ROLE_SCOPES_CHECKED',{'projects':len(ids)},public=True)
+
+
+def preflight_escalations(api,old,tasks,manager,evidence):
+    groups={}
+    for client in old['inventory']['clients']:groups.setdefault(client['project_id'],[]).append(client)
+    versions=set();checks=[]
+    for pid,clients in sorted(groups.items()):
+        rules=api.request(f'/projects/{pid}/escalation-rules',manager)
+        need(canonical(rules)==canonical(FROZEN_RULES),'ACTUAL_FROZEN_RULES_READBACK')
+        versions.add(rules['version'])
+        rows,total=api.pages(f'/projects/{pid}/escalations',manager)
+        events={row['id']:row for row in rows}
+        need(len(events)==total,'LIVE_ESCALATION_READBACK_REQUIRED')
+        for client in clients:
+            tid=client['escalation_task']['id'];task=tasks[tid]
+            event=events.get(client['escalation_event']['id'])
+            need(event is not None and task['state'] not in (6,7)
+                 and task['project_id']==event['project_id']==pid and event['task_id']==tid
+                 and event['schedule_version']==task['schedule_version']
+                 and event['rule_version']==rules['version'],'CURRENT_ESCALATION_NOT_ELIGIBLE')
+            end=datetime.fromisoformat(task['plan']['planned_end'].replace('Z','+00:00'))
+            need(end.utcoffset()==timedelta(0),'ESCALATION_END_UTC_REQUIRED')
+            checks.append((end,event['level']))
+    need(len(versions)==1,'ONE_ACTUAL_CURRENT_RULE_VERSION')
+    at=datetime.now(timezone.utc)
+    for end,level in checks:
+        need(all(selected_level(point,end)==level for point in (at,at+timedelta(seconds=900))),
+             'ACTUAL_STABLE_ESCALATION_LEVEL_NOT_ELIGIBLE')
+    evidence.event('ALL400_ESCALATION_BINDINGS_AND_WINDOW_CHECKED',{'count':len(checks),'at':at.isoformat(),
+                   'through':(at+timedelta(seconds=900)).isoformat(),'rule_version':versions.pop()},public=True)
+
+
+def preflight_business_guards(api,items,developer_id,manager,developer,evidence):
+    """Check current frozen UNBLOCK role/dependency predicates for the entire cohort."""
+    for pid in sorted({pid for pid,_,_ in items}):
+        members,total=api.pages(f'/projects/{pid}/members',manager)
+        need(len(members)==total,'LIVE_MEMBERSHIP_READBACK_REQUIRED')
+        owned=[member for member in members if member['user']['id']==developer_id]
+        need(len(owned)==1 and owned[0]['project_id']==pid and owned[0]['active'] is True
+             and 2 in owned[0]['roles'],'LIVE_DEVELOPER_PROJECT_ROLE_REQUIRED')
+    dependency_count=0
+    for pid,tid,_ in items:
+        dependencies,total=api.pages(f'/projects/{pid}/tasks/{tid}/dependencies',developer)
+        need(len(dependencies)==total and len({d['id'] for d in dependencies})==total,
+             'LIVE_DEPENDENCY_READBACK_REQUIRED')
+        for dependency in dependencies:
+            need(dependency['project_id']==pid and dependency['task_id']==tid
+                 and dependency['depends_on_task_id']!=tid and dependency['satisfied'] is True,
+                 'LIVE_TRANSITION_DEPENDENCY_UNSATISFIED')
+        # The frozen refresh pipeline additionally requires the original empty graph.
+        # Even a delivered newly-added predecessor would reject material after writes.
+        need(total==0,'ORIGINAL_EMPTY_TRANSITION_DEPENDENCIES_CHANGED')
+        dependency_count+=total
+    evidence.event('ALL400_BUSINESS_GUARDS_CHECKED',{'projects':40,'transition_tasks':400,
+                   'satisfied_dependencies':dependency_count},public=True)
+
+
 def restore(api,old,items,accounts,evidence,summary):
     developer=login(api,'developer',accounts['developer'],evidence)
     manager=login(api,'manager',accounts['manager'],evidence)
+    reviewer=login(api,'reviewer',accounts['reviewer'],evidence)
+    preflight_roles(api,items,{'manager':manager,'developer':developer,'reviewer':reviewer},evidence)
     totals,all_before=project_snapshot(api,items,manager)
     evidence.event('BEFORE800_SNAPSHOT',{'project_totals':totals,'tasks':all_before})
     summary['original800_before']=len(all_before)
@@ -275,6 +356,8 @@ def restore(api,old,items,accounts,evidence,summary):
         before[tid]=task
         evidence.event('TASK_PREFLIGHT',{'project_id':pid,'task_id':tid,'state':task['state'],'version':task['version']},public=True)
     summary['preflight400']=len(before)
+    preflight_business_guards(api,items,accounts['developer']['user_id'],manager,developer,evidence)
+    preflight_escalations(api,old,all_before,manager,evidence)
     cutoff=guard_transition_horizon(before.values())
     evidence.event('ALL400_TRANSITION_HORIZON_CHECKED',{'required_planned_end_after':cutoff,'count':len(before)},public=True)
     for pid,tid,_ in items:
@@ -288,10 +371,17 @@ def restore(api,old,items,accounts,evidence,summary):
               'evidence':[{'kind':2,'locator':marker,'description':'Existing original task restore after completed MANUAL11; no new task'}]}
         evidence.event('UNBLOCK_ACTION_PLANNED',{'task_id':tid,'project_id':pid,'before_version':task['version'],'idempotency_key':action_key,'marker':marker})
         value=api.request(f'/projects/{pid}/tasks/{tid}/transitions',developer,body,key=action_key)
-        actual=value['task']
-        check_task(actual,pid,tid,accounts['developer']['user_id'],True)
-        if not (actual['state']==2 and actual['blocked_from_state'] is None and actual['version']==task['version']+1 and type(value.get('audit_id')) is int):
-            raise Stop('UNBLOCK_RESPONSE_OR_AUDIT_MISMATCH','UNKNOWN')
+        # The write may already be committed: any invalid success payload is UNKNOWN,
+        # never a zero-write admission rejection and never eligible for automatic retry.
+        try:
+            actual=value['task']
+            check_task(actual,pid,tid,accounts['developer']['user_id'],True)
+            need(actual['state']==2 and actual['blocked_from_state'] is None
+                 and actual['version']==task['version']+1
+                 and type(value.get('audit_id')) is int and value['audit_id']>0,
+                 'UNBLOCK_RESPONSE_OR_AUDIT_MISMATCH')
+        except (Stop,KeyError,TypeError):
+            raise Stop('UNBLOCK_RESPONSE_OR_AUDIT_MISMATCH','UNKNOWN') from None
         expected[tid]=actual['version'];summary['unblocked']+=1
         evidence.event('UNBLOCK_CONFIRMED',{'task_id':tid,'project_id':pid,'before_version':task['version'],'after_version':actual['version'],'audit_id':value['audit_id'],'idempotency_key':action_key},public=True)
     for pid,tid,_ in items:

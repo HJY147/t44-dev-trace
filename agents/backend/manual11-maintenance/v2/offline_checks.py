@@ -30,8 +30,8 @@ def contract_inputs():
         pid=i//10+1
         task={'id':i+1,'project_id':pid,'owner_id':2,'state':3 if i<138 else 2,
               'blocked_from_state':2 if i<138 else None,'version':99,'plan':{'planned_end':'2099-01-01T00:00:00Z'}}
-        esc={'id':i+401,'project_id':pid,'owner_id':2,'state':2,'blocked_from_state':None,'version':11}
-        rows.append({'client_id':i,'project_id':pid,'transition_task':task,'escalation_task':esc})
+        esc={'id':i+401,'project_id':pid,'owner_id':2,'state':2,'blocked_from_state':None,'version':11,'schedule_version':1,'plan':{'planned_end':'2020-01-01T00:00:00Z'}}
+        rows.append({'client_id':i,'project_id':pid,'transition_task':task,'escalation_task':esc,'escalation_event':{'id':i+1001}})
     old={'identity':{'git_commit':m.SOURCE},'run_id':'r30originalp09','environment':{'origin':'https://172.21.182.245:26445','connect_ip':'172.21.182.245','ca_sha256':'0'*64},'sessions':{r:{'user_id':a['user_id']} for r,a in accounts.items()},'inventory':{'clients':rows},'additional_neutral_snapshots':{'namespace':'t44-test-owned','database':'t44_test_owned'}}
     old['binding_sha256']=m.sha(m.canonical(old))
     return old,accounts
@@ -40,12 +40,14 @@ def contract_inputs():
 class FakeAPI:
     def __init__(self,old):
         self.tasks={t['id']:copy.deepcopy(t) for c in old['inventory']['clients'] for t in (c['transition_task'],c['escalation_task'])}
+        self.old=old
         self.calls=0;self.posts=[];self.audits={};self.fail_unknown=False;self.sent_unknown=False
     def request(self,path,token=None,body=None,key=None):
         self.calls+=1
         if path=='/auth/login':
-            uid=2 if body['username']=='synthetic-developer' else 1
+            uid=2 if body['username']=='synthetic-developer' else 3 if body['username']=='synthetic-reviewer' else 1
             return {'user':{'id':uid},'access_token':'fake-token-'+str(uid),'expires_at':'2099-01-01T00:00:00Z'}
+        if path.endswith('/escalation-rules'):return copy.deepcopy(m.FROZEN_RULES)
         tid=int(path.split('/')[4])
         if body:
             self.posts.append((path,body,key))
@@ -57,7 +59,19 @@ class FakeAPI:
         return copy.deepcopy(self.tasks[tid])
     def pages(self,path,token):
         self.calls+=1
+        if path=='/projects':
+            role=1 if token=='fake-token-1' else 2 if token=='fake-token-2' else 3
+            rows=[{'id':pid,'my_roles':[role]} for pid in range(1,41)]
+            return rows,len(rows)
         pid=int(path.split('/')[2])
+        if path.endswith('/escalations'):
+            rows=[{'id':c['escalation_event']['id'],'project_id':pid,'task_id':c['escalation_task']['id'],
+                   'schedule_version':1,'rule_version':1,'level':3} for c in self.old['inventory']['clients'] if c['project_id']==pid]
+            return rows,len(rows)
+        if path.endswith('/members'):
+            rows=[{'project_id':pid,'user':{'id':2},'roles':[2],'active':True}]
+            return rows,len(rows)
+        if path.endswith('/dependencies'):return [],0
         if '/audit-events' in path:
             tid=int(path.split('task_id=')[1].split('&')[0]);rows=self.audits.get(tid,[])
             return copy.deepcopy(rows),len(rows)
