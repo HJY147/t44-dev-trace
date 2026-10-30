@@ -9,6 +9,8 @@ import json
 import os
 import re
 import subprocess
+import ipaddress
+import urllib.parse
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -61,6 +63,47 @@ def process_audit(container, marker, expected_code):
     return {'status': 'PROCESS_EXIT_AUDIT_UNAVAILABLE', 'process_exit_proven': False}
 
 
+def maintenance_endpoint(args, auth, old):
+    values = [args.maintenance_gateway_container, args.maintenance_connect_ip, args.maintenance_connect_port]
+    if not any(value is not None for value in values):
+        return None
+    if not all(value is not None for value in values):
+        raise ValueError('ALL_MAINTENANCE_GATEWAY_ARGUMENTS_REQUIRED')
+    gateway = args.maintenance_gateway_container
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,127}', gateway):
+        raise ValueError('EXPLICIT_OWNED_GATEWAY_ID_REQUIRED')
+    address = ipaddress.ip_address(args.maintenance_connect_ip)
+    if not address.is_private or address.is_loopback or address.is_unspecified:
+        raise ValueError('PRIVATE_SHARED_GATEWAY_IP_REQUIRED')
+    def inspect(container, fmt):
+        return json.loads(subprocess.run(['docker', '--context', 'default', 'inspect', '--format', fmt,
+                                          container], capture_output=True, check=True, timeout=15).stdout)
+    api_networks = inspect(args.api_container, '{{json .NetworkSettings.Networks}}')
+    fmt = ('{"id":{{json .Id}},"running":{{json .State.Running}},"labels":{{json .Config.Labels}},'
+           '"networks":{{json .NetworkSettings.Networks}},"ports":{{json .NetworkSettings.Ports}}}')
+    row = inspect(gateway, fmt)
+    if not (row['running'] and row['labels'].get('com.docker.compose.project') == auth['namespace']
+            and row['labels'].get('com.docker.compose.service') == 'tls-gateway'):
+        raise ValueError('SAME_OWNER_RUNNING_TLS_GATEWAY_REQUIRED')
+    owned = subprocess.run(['docker', '--context', 'default', 'ps', '--quiet', '--no-trunc',
+                             '--filter', 'label=com.docker.compose.project=' + auth['namespace'],
+                             '--filter', 'label=com.docker.compose.service=tls-gateway'],
+                            capture_output=True, check=True, timeout=15).stdout.decode().split()
+    if owned != [row['id']]:
+        raise ValueError('UNIQUE_SAME_OWNER_TLS_GATEWAY_REQUIRED')
+    shared = [name for name, network in row['networks'].items()
+              if name in api_networks and network.get('IPAddress') == str(address)
+              and network.get('NetworkID') == api_networks[name].get('NetworkID')]
+    port = args.maintenance_connect_port
+    original_port = urllib.parse.urlsplit(old['environment']['origin']).port or 443
+    bindings = row['ports'].get(str(port) + '/tcp') or []
+    if len(shared) != 1 or not any(int(binding['HostPort']) == original_port for binding in bindings):
+        raise ValueError('SHARED_API_GATEWAY_NETWORK_AND_ORIGINAL_PORT_BINDING_REQUIRED')
+    return {'connect_ip': str(address), 'connect_port': port, 'shared_network': shared[0],
+            'gateway_id': row['id'], 'original_origin_unchanged': old['environment']['origin'],
+            'benchmark_connect_ip_unchanged': old['environment']['connect_ip']}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['old-packet', 'accounts', 'authorization', 'ca', 'source-manifest',
@@ -68,6 +111,9 @@ def main():
         parser.add_argument('--' + name, required=True, type=Path)
     parser.add_argument('--api-container', required=True)
     parser.add_argument('--expected-api-image-id', required=True)
+    parser.add_argument('--maintenance-gateway-container')
+    parser.add_argument('--maintenance-connect-ip')
+    parser.add_argument('--maintenance-connect-port', type=int)
     args = parser.parse_args()
     if os.geteuid() != 0:
         raise ValueError('APP_HOST_ROOT_ONLY_PRIVATE_STAGING')
@@ -79,10 +125,11 @@ def main():
     spec = importlib.util.spec_from_file_location('manual_refresh_core', HERE / 'refresh_core.py')
     core = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(core)
-    core.authorization(auth, old)
+    original_packet = core.authorization(auth, old)
     if args.output.exists() or args.output.is_symlink():
         raise ValueError('EXCLUSIVE_NEW_OUTPUT_DIRECTORY_REQUIRED')
     observed = inspect_api(args.api_container, auth['namespace'], args.expected_api_image_id)
+    maintenance = maintenance_endpoint(args, auth, original_packet)
     timeout_probe = subprocess.run(['docker', '--context', 'default', 'exec', args.api_container,
                                     'timeout', '--version'], capture_output=True, timeout=15, check=False)
     if timeout_probe.returncode or not timeout_probe.stdout.startswith(b'timeout (GNU coreutils)'):
@@ -92,6 +139,7 @@ def main():
              'backend-import-receipt.json': read(args.import_receipt)}
     payload = {'old_packet_b64': base64.b64encode(old).decode(),
                'accounts': json.loads(read(args.accounts)), 'authorization': auth,
+               'maintenance_endpoint': maintenance,
                'public_files_b64': {n: base64.b64encode(b).decode() for n, b in files.items()}}
     code = (read(HERE / 'refresh_core.py').decode() + '\n' + read(HERE / 'runtime_support.py').decode()
             + '\n' + read(HERE / 'refresh_runtime.py').decode())
@@ -144,6 +192,7 @@ def main():
                  'ORIGINAL_SERVICE_CREDENTIAL_RAW_SHA')
     put(args.output / 'service-cli.original.private.json', service_raw)
     summary = {**value['public'], 'api_owner_observation': observed,
+               'maintenance_endpoint_observation': maintenance,
                'material_process_exit_proof': proof,
                'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs.iterdir()},
                'private_packet_dir': str(inputs), 'benchmark_started': False,

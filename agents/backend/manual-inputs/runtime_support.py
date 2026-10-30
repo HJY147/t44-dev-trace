@@ -47,7 +47,7 @@ def required(value, code):
 
 class PinnedHTTPSConnection(http.client.HTTPSConnection):
     def __init__(self, origin, connect_ip, ca, *, connector=socket.create_connection,
-                 context_factory=ssl.create_default_context):
+                 context_factory=ssl.create_default_context, connect_port=None):
         target = urllib.parse.urlsplit(origin)
         required(target.scheme == 'https' and target.hostname and not target.username
                  and not target.password and not target.query and not target.fragment
@@ -59,11 +59,14 @@ class PinnedHTTPSConnection(http.client.HTTPSConnection):
         required(context.verify_mode == ssl.CERT_REQUIRED and context.check_hostname is True,
                  'CERTIFICATE_AND_ORIGIN_HOSTNAME_VERIFICATION_REQUIRED')
         super().__init__(target.hostname, target.port or 443, timeout=20, context=context)
+        required(connect_port is None or (type(connect_port) is int and 1 <= connect_port <= 65535),
+                 'EXPLICIT_MAINTENANCE_PORT_REQUIRED')
         self.connect_ip, self.connector = str(address), connector
+        self.connect_port = self.port if connect_port is None else connect_port
 
     def connect(self):
         required(not self._tunnel_host, 'NO_UNAPPROVED_HTTP_TUNNEL')
-        raw = self.connector((self.connect_ip, self.port), timeout=self.timeout,
+        raw = self.connector((self.connect_ip, self.connect_port), timeout=self.timeout,
                              source_address=self.source_address)
         try:
             # TCP uses connect_ip. SNI, Host, and certificate hostname use original origin.
@@ -74,9 +77,10 @@ class PinnedHTTPSConnection(http.client.HTTPSConnection):
 
 
 class PinnedAPI:
-    def __init__(self, origin, connect_ip, ca, *, connection_type=PinnedHTTPSConnection):
+    def __init__(self, origin, connect_ip, ca, *, connection_type=PinnedHTTPSConnection, connect_port=None):
         self.requests = []
-        self.connection = connection_type(origin, connect_ip, ca)
+        options = {} if connect_port is None else {'connect_port': connect_port}
+        self.connection = connection_type(origin, connect_ip, ca, **options)
         # This live TLS handshake occurs before any session issuance by runtime().
         self.connection.connect()
 

@@ -50,7 +50,10 @@ def runtime(payload):
         ca = folder / 'ca.pem'
         ca.write_bytes(manifests['ca.pem'])
         os.chmod(ca, 0o600)
-        api = PinnedAPI(old['environment']['origin'], old['environment']['connect_ip'], ca)
+        maintenance = payload.get('maintenance_endpoint')
+        api = PinnedAPI(old['environment']['origin'],
+                        maintenance['connect_ip'] if maintenance else old['environment']['connect_ip'], ca,
+                        connect_port=maintenance['connect_port'] if maintenance else None)
         requests = api.requests
         with factory() as uow:
             service = uow.gateway.get('service_accounts', old['sessions']['service']['user_id'])

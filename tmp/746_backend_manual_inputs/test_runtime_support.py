@@ -9,7 +9,7 @@ import types
 import unittest
 from unittest.mock import patch
 
-from test_refresh import HERE, fixture, load
+from test_refresh import HERE, fixture, load, host
 
 support = load('manual_support_test', HERE / 'runtime_support.py')
 guard = load('manual_guard_test', HERE / 'process_guard.py')
@@ -32,6 +32,48 @@ class FakeConnection:
 
 
 class SupportTests(unittest.TestCase):
+    def test_maintenance_tcp_port_keeps_original_host_header_sni_and_benchmark_origin(self):
+        calls, sent = [], []
+        raw = types.SimpleNamespace(close=lambda: None, sendall=lambda data: sent.append(data))
+        context = types.SimpleNamespace(verify_mode=ssl.CERT_REQUIRED, check_hostname=True,
+                   wrap_socket=lambda sock, server_hostname: calls.append(('SNI', server_hostname)) or raw)
+        connection = support.PinnedHTTPSConnection('https://synthetic.example:26445', '192.168.96.4',
+                        '/fake/ca', connect_port=8443,
+                        connector=lambda address, **kw: calls.append(('TCP', address)) or raw,
+                        context_factory=lambda **kw: context)
+        connection.connect(); connection.request('GET', '/api/v1/projects')
+        self.assertEqual(calls, [('TCP', ('192.168.96.4', 8443)), ('SNI', 'synthetic.example')])
+        self.assertEqual(connection.port, 26445)
+        self.assertIn(b'Host: synthetic.example:26445', b''.join(sent))
+
+    def test_maintenance_endpoint_requires_actual_same_owner_shared_network_and_port_mapping(self):
+        args = types.SimpleNamespace(api_container='api-test', maintenance_gateway_container='gateway-test',
+                                     maintenance_connect_ip='192.168.96.4', maintenance_connect_port=8443)
+        auth = {'namespace': 't44-cloud-r30finalp09-p'}
+        original = {'environment': {'origin': 'https://172.21.182.245:26445', 'connect_ip': '172.21.182.245'}}
+        before = copy.deepcopy(original)
+        gateway = {'id': '8' * 64, 'running': True,
+                   'labels': {'com.docker.compose.project': auth['namespace'], 'com.docker.compose.service': 'tls-gateway'},
+                   'networks': {'application': {'IPAddress': '192.168.96.4', 'NetworkID': 'network-1'}},
+                   'ports': {'8443/tcp': [{'HostPort': '26445'}]}}
+        def command(argv, **kw):
+            if 'ps' in argv:
+                return types.SimpleNamespace(stdout=(gateway['id'] + '\n').encode())
+            value = gateway if argv[-1] == 'gateway-test' else {
+                'application': {'IPAddress': '192.168.96.2', 'NetworkID': 'network-1'}}
+            return types.SimpleNamespace(stdout=json.dumps(value).encode())
+        with patch.object(host.subprocess, 'run', side_effect=command):
+            value = host.maintenance_endpoint(args, auth, original)
+            self.assertEqual(value['connect_port'], 8443)
+            self.assertEqual(original, before)
+            gateway['labels']['com.docker.compose.project'] = 'unrelated'
+            with self.assertRaisesRegex(ValueError, 'SAME_OWNER'):
+                host.maintenance_endpoint(args, auth, original)
+            gateway['labels']['com.docker.compose.project'] = auth['namespace']
+            gateway['networks']['application']['NetworkID'] = 'different'
+            with self.assertRaisesRegex(ValueError, 'SHARED_API_GATEWAY'):
+                host.maintenance_endpoint(args, auth, original)
+
     def test_tcp_ip_and_tls_sni_are_distinct_and_strict(self):
         calls = []
         raw = types.SimpleNamespace(close=lambda: calls.append('closed'))

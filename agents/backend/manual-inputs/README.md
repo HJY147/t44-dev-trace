@@ -58,3 +58,6 @@ source90b的`backend/t44/scheduling/__main__.py`将`lambda: read_token(...)`交�
 `python3 -B tmp/746_backend_manual_inputs/test_refresh.py`：7项通过，覆盖旧window保留/新binding、真实expiry不足、当前任务state/owner、原800 ID/计数/source原件变化、授权范围，以及fake Docker执行下敏感数据只经stdin/APP私有捕获、公开stdout与argv不含模拟凭据。`python3 -B tmp/746_backend_manual_inputs/test_runtime_support.py`另6项通过：严格TCP-IP/SNI分离及CA/hostname、证书失败、真实HTTP mock逐项目my_roles校验、560次GET的400client读回loop/变更依赖拒绝、残留孤儿进程组/同库锁拒并发。五个脚本通过Python3.10 AST。没有启动VM、连接SSH、Docker、MySQL、API或QA。
 
 仍待live：实际账号/packet路径、64核及LOAD资源/排他、指定API image ID、原API环境DB身份、API容器到原HTTPS origin的网络与证书、800任务资格和原事件仍有效、真实TTL覆盖、scheduler轮换及成功扫描、APP密封→LOAD恢复、manualV4 prepare/defaultfalse→独立一次grant。任何失败应带公开错误码交责任岗，不自动重造数据或降低断言。
+
+
+恢复现场若API仅有internal桥、不能回到宿主VPC映射端口，可显式增加`--maintenance-gateway-container ACTUAL_ID --maintenance-connect-ip ACTUAL_SHARED_GATEWAY_IP --maintenance-connect-port ACTUAL_TLS_INTERNAL_PORT`。host会核唯一同owner TLSgateway、同NetworkID/IP及内部端口映射回原origin端口。只有准备HTTP的TCP目标改变；原origin作SNI/Host、严格CA，以及新packet给LOAD的VPC origin/connect_ip均不变。此项为root报告的现场网络适配，2个新mock通过，未由本agent远程验证。
