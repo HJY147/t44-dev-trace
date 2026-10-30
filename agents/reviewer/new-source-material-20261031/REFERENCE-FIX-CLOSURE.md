@@ -1,0 +1,11 @@
+# Material08 actual receipt reference fix closure
+
+Exact owner4a5401ac supersedes earliera60 finding; old review remains historical. Status OFFLINE_TOOL_REVIEW_NO_BLOCKER_LIVE_GATES_PENDING. Prompt-Ref review_p13_preparation/new-source-reference-fix.
+
+Required --import-observation added tohost. Before inspect/Docker, validate_new_source verifies newsource and UTC nonfuture actualreceipt timestamp, no arbitrary maxage; rejects copiedhistoricalrefpath. validate_import_observation requires producerkind, actualcanonical inputreceiptpath == authreference.original_path == producerreceipt_path, exactrawSHA/bytes and same ref/producer/receipt observation timestamp. Producer uid0/mode0600/positiveinteger mtime are required; onAPP path itself must canonical/non-symlink and actual st_uid/st_mode/st_mtime_ns/st_size must equal producerfields. Thus original inputfile and releasednewpacket reference bind to same observed artifact.
+
+ZeroDockercheck_inputs requires explicit --remote-import-receipt-path and producerobservation; its remote-copy mode checks originalremote path/hash/bytes/metadata rather than wrongly comparing localcopy stat toAPP. It does not prove live importedtruth. Host cannot selectremote-copy mode fromCLI. RealAPP metadata/currentauthority remains unexecuted and pending.
+
+Independent reviewer reran9 purelocal ownerchecks, allpassed;7manifest hashes and all8Python files parsed with3.10 grammar. Included invalid/future/nonUTC timestamps, wrongpath/SHA/uid/mode/mtime/size and localcopy-vs-host separation. NoDocker/network/credentials/productsuite. No product source changed; refresh_runtime/runtime_support/process_guard unchanged from initial dualchain candidate. Original roles/qualification/400/800/conservation/sessionlifetime and60runtime signature guards remain. UpdatedhostSHA60b3f4dadefa95655ce54a803ab0eef3014e8c28ba3a5356cd1c5b8073b962b5/core40bfa5def96fab71e63f0b67da725d70c9e5d575d9c1ed466f96da6fc9f245b4 must be used by next deployment integration.
+
+Original two findings CLOSED for exact4a5401ac. No actualimport observation/session/material08/newQA identity/rotation/fullscan/authorization is preissued; no cloud/SSH/SUT/independentPRIVATE access, no formal admission. Wait for deployment adaptation pins andrequiredobservation argument to review integratedchain. p13NP/performanceunmeasured unchanged.

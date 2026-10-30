@@ -589,3 +589,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 planner364c76bf static review: no read-only planning blocker;2local refusal checks no externalcalls, image/manifest binds match ownerverified. No liveDocker/cloud/import/apply/rollback; deploymentblocked/fullconfiguration gatespending. Two RUNBOOK clarifications sentowner; 22independent checks outside scope/notread. Prompt-Ref review_p13_preparation/deployment-planner; agents/reviewer/deployment-locked-task-20261031/REVIEW.md.
 
 2026-10-31 material08 dualchain a60b2d28: NEEDS_REFERENCE_BINDING_FIX. Original qualification/full60source guards retained; purelocal reproduction accepts arbitraryoldroot receipt ref and future2099timestamp. Sentowner/root for fix; no live execution/PRIVATE/testsuites. Prompt-Ref review_p13_preparation/new-source-material; agents/reviewer/new-source-material-20261031/REVIEW.md.
+
+2026-10-31 material08 referencefix4a5401ac: two originalfindingsCLOSED,9localchecks+7hashes+8ASTpassed. Offline tools no blocker; livecurrentimport/stat/identity/rotation/fullscan/QAadmission pending. Prompt-Ref review_p13_preparation/new-source-reference-fix; REFERENCE-FIX-CLOSURE.md.
