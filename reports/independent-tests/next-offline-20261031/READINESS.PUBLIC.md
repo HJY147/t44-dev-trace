@@ -57,3 +57,7 @@
 预算不变：LOAD8CPU/8GiB/2048pids，800队列×3MiB理论记录队列上界2400MiB（不含Python对象、400在途响应、序列化、线程栈与其他工作集）。400×512KiB配置线程栈为200MiB，400在途预留1200MiB是容量记账而非实际分配。原MAX_RESPONSE约束正文1MiB，不应把它误作所有wire/header内存的绝对上界；单记录3MiB越界继续NP，不放宽。实际Linux/镜像/cgroup、长时CPU/RAM/disk水位仍需下一轮中性现场证据，不能由本机小型单元担保8GiB一定足够。备份磁盘预算须测W实际总大小，含旧历史再加新12GiB上限，在线密文与备份、下载副本/临时文件峰值分别核算，不能用固定33GiB或旧采样认定满足。
 
 未验证项：Linux实际运行、真实零请求prepare、真实身份/会话/CA/配置/隔离schema/库存/排他、实际磁盘及整W封存预算、工具发布独立批准，以及全部业务/正式性能/MQ/后置。任何新正式run仍必须另有用户授权与当前独立审核；本轮没有allow=true或一次许可。
+
+## 可搬运安装交付
+
+新包及精确PUBLIC安装入口已完成，见records/qa/next-install-v52.PUBLIC/INSTALL_README.PUBLIC.md及DELIVERY_MANIFEST.PUBLIC.json。新backup key只留独立岗本地及新密文内；用旧LOAD公开收件公钥密封，未读取旧私钥。密文74721字节，SHA f4ac699408a3c00d8cd547cde90be547279c009dda4a94360f8fb0ef3e5d7939。8项安装离线测试通过，仍未执行现场INSTALL/Docker/云/SSH/SUT，未签任何allow=true。新workspace不得复用/覆盖旧W。
