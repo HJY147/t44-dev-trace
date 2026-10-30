@@ -234,12 +234,15 @@ class Runtime:
                     ids.add(call.body["depends_on_task_id"])
             # Unique-PK statements make acquisition order independent of a multi-ID query plan.
             for identifier in sorted(ids):
-                g.rows(
+                rows = g.rows(
                     "tasks",
                     {"project_id": call.project_id, "id": identifier},
                     limit=1,
                     lock="update",
                 )
+                if identifier == call.path["task_id"]:
+                    target = rows[0] if rows else None
+            return target
 
     def execute(self, call, validate, source="unknown"):
         try:
@@ -271,7 +274,7 @@ class Runtime:
             with self.factory() as uow:
                 g = uow.gateway
                 if write:
-                    self.locked_scope(g, call)
+                    locked_task = self.locked_scope(g, call)
                 else:
                     authenticate(g, call)
                 if call.operation == "logout":
@@ -279,7 +282,10 @@ class Runtime:
                     g.update("auth_sessions", {"id": call.actor["id"]}, {"revoked_at": call.clock})
                     result = {"acknowledged": True}
                 else:
-                    result = self.business.dispatch(g, call)
+                    if call.operation == "transitionTask" and locked_task is not None:
+                        result = self.business.dispatch(g, call, locked_task=(g, locked_task))
+                    else:
+                        result = self.business.dispatch(g, call)
                 if write:
                     call.audit_id = self.audit(g, call)
                     result = self.business.finalize(result, call)
