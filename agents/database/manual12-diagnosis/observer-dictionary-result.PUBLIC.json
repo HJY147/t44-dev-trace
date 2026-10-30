@@ -1,0 +1,121 @@
+{
+  "status": "ALL_STATIC_DICTIONARY_QUERIES_EXECUTED",
+  "scope": "owned local MySQL8.4 dictionary-only; no pressure, business write or cloud action",
+  "query_bundle_sha256": "29fc7cd853aa216fb163e3f84a59dabc44386db41472defa00b67bd899b21d54",
+  "observer_sha256": "52c3e7850e01d6c117c65c6efd00fe79f47825644fd0e1ed9f18116b4d392535",
+  "read_only_independently_reviewed": true,
+  "query_stdout_matches_skip_column_names_cli": true,
+  "column_metadata_second_read": true,
+  "stderr_included": false,
+  "business_schemas_accessed": false,
+  "queries": {
+    "status": {
+      "returncode": 0,
+      "stdout": "CAPACITY\t151\nCom_commit\t0\nCom_rollback\t0\nConnections\t9\nHandler_commit\t645\nInnodb_buffer_pool_pages_data\t5214\nInnodb_buffer_pool_bytes_data\t85426176\nInnodb_buffer_pool_pages_dirty\t38\nInnodb_buffer_pool_bytes_dirty\t622592\nInnodb_buffer_pool_pages_flushed\t142\nInnodb_buffer_pool_pages_free\t2977\nInnodb_buffer_pool_pages_total\t8192\nInnodb_buffer_pool_read_requests\t20124\nInnodb_buffer_pool_reads\t5069\nInnodb_buffer_pool_wait_free\t0\nInnodb_data_fsyncs\t81\nInnodb_data_read\t83151360\nInnodb_data_reads\t5152\nInnodb_data_writes\t329\nInnodb_data_written\t2416128\nInnodb_redo_log_checkpoint_lsn\t1851332309\nInnodb_redo_log_current_lsn\t1851385548\nInnodb_redo_log_flushed_to_disk_lsn\t1851385548\nInnodb_redo_log_logical_size\t53760\nInnodb_redo_log_physical_size\t3276800\nInnodb_redo_log_capacity_resized\t104857600\nInnodb_redo_log_resize_status\tOK\nInnodb_log_waits\t0\nInnodb_log_writes\t18\nInnodb_os_log_fsyncs\t26\nInnodb_os_log_written\t66560\nInnodb_row_lock_current_waits\t0\nInnodb_row_lock_time\t0\nInnodb_row_lock_waits\t0\nMax_used_connections\t1\nThreads_connected\t1\nThreads_running\t2\nUptime\t1\nLOCKS\t0\nDIGEST_TOTAL\t6\t8\t2439000000\t3000000\t43\nFILE_IO_TOTAL\t335\t12404468000\t118398622\t21268\t100253559000\t233308346\n",
+      "stdout_bytes": 1184,
+      "result_sets": [
+        {
+          "column_names": [
+            "CAPACITY",
+            "@@GLOBAL.max_connections"
+          ],
+          "row_count": 1
+        },
+        {
+          "column_names": [
+            "Variable_name",
+            "Value"
+          ],
+          "row_count": 37
+        },
+        {
+          "column_names": [
+            "LOCKS",
+            "COUNT(*)"
+          ],
+          "row_count": 1
+        },
+        {
+          "column_names": [
+            "DIGEST_TOTAL",
+            "COUNT(*)",
+            "COALESCE(SUM(COUNT_STAR),0)",
+            "COALESCE(SUM(SUM_TIMER_WAIT),0)",
+            "COALESCE(SUM(SUM_LOCK_TIME),0)",
+            "COALESCE(SUM(SUM_ROWS_EXAMINED),0)"
+          ],
+          "row_count": 1
+        },
+        {
+          "column_names": [
+            "FILE_IO_TOTAL",
+            "COALESCE(SUM(COUNT_WRITE),0)",
+            "COALESCE(SUM(SUM_TIMER_WRITE),0)",
+            "COALESCE(SUM(SUM_NUMBER_OF_BYTES_WRITE),0)",
+            "COALESCE(SUM(COUNT_READ),0)",
+            "COALESCE(SUM(SUM_TIMER_READ),0)",
+            "COALESCE(SUM(SUM_NUMBER_OF_BYTES_READ),0)"
+          ],
+          "row_count": 1
+        }
+      ],
+      "stderr_included": false,
+      "column_names_available": true
+    },
+    "config": {
+      "returncode": 0,
+      "stdout": "innodb_autoinc_lock_mode\t2\ninnodb_buffer_pool_instances\t1\ninnodb_buffer_pool_size\t134217728\ninnodb_dedicated_server\tOFF\ninnodb_flush_log_at_trx_commit\t1\ninnodb_flush_neighbors\t0\ninnodb_io_capacity\t10000\ninnodb_io_capacity_max\t20000\ninnodb_log_buffer_size\t67108864\ninnodb_page_size\t16384\ninnodb_redo_log_capacity\t104857600\nsync_binlog\t1\n",
+      "stdout_bytes": 336,
+      "result_sets": [
+        {
+          "column_names": [
+            "Variable_name",
+            "Value"
+          ],
+          "row_count": 12
+        }
+      ],
+      "stderr_included": false,
+      "column_names_available": true
+    },
+    "waits": {
+      "returncode": 0,
+      "stdout": "WAIT_COVERAGE\t115\t9\t9\t22121\t169927237000\nwait/io/file/innodb/innodb_data_file\tYES\tYES\t5547\t72654411000\t0\t2447114000\nwait/io/file/innodb/innodb_log_file\tYES\tYES\t340\t58874463000\t0\t9226809000\nwait/io/file/sql/binlog\tYES\tYES\t16134\t33022279000\t0\t923236000\nwait/io/file/innodb/innodb_dblwr_file\tYES\tYES\t10\t3003615000\t3375000\t2202348000\nwait/io/file/innodb/innodb_temp_file\tYES\tYES\t90\t2372469000\t417000\t114487000\nwait/io/file/innodb/innodb_arch_file\tYES\tYES\t0\t0\t0\t0\nwait/io/file/innodb/innodb_clone_file\tYES\tYES\t0\t0\t0\t0\nwait/io/file/innodb/innodb_tablespace_open_file\tYES\tYES\t0\t0\t0\t0\nwait/io/file/innodb/meb::redo_log_archive_file\tYES\tYES\t0\t0\t0\t0\nwait/synch/cond/innodb/commit_cond\tNO\tNO\t0\t0\t0\t0\nwait/synch/cond/innodb/resume_encryption_cond\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/ahi_enabled_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/alter_stage_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/autoinc_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/autoinc_persisted_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/buf_pool_chunks_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/buf_pool_flush_state_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/buf_pool_free_list_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/buf_pool_LRU_list_mutex\tNO\tNO\t0\t0\t0\t0\nwait/synch/mutex/innodb/buf_pool_zip_free_mutex\tNO\tNO\t0\t0\t0\t0\n",
+      "stdout_bytes": 1287,
+      "result_sets": [
+        {
+          "column_names": [
+            "WAIT_COVERAGE",
+            "COUNT(*)",
+            "SUM(i.ENABLED='YES')",
+            "SUM(i.TIMED='YES')",
+            "SUM(e.COUNT_STAR)",
+            "SUM(e.SUM_TIMER_WAIT)"
+          ],
+          "row_count": 1
+        },
+        {
+          "column_names": [
+            "EVENT_NAME",
+            "ENABLED",
+            "TIMED",
+            "COUNT_STAR",
+            "SUM_TIMER_WAIT",
+            "MIN_TIMER_WAIT",
+            "MAX_TIMER_WAIT"
+          ],
+          "row_count": 20
+        }
+      ],
+      "stderr_included": false,
+      "column_names_available": true
+    }
+  },
+  "version": {
+    "returncode": 0,
+    "stdout": "8.4.11\tMySQL Community Server - GPL\t1\t0\n"
+  },
+  "own_server_shutdown_returncode": 0,
+  "own_socket_exists_after": false,
+  "finished_utc": "2026-10-30T15:41:21.440936+00:00"
+}
