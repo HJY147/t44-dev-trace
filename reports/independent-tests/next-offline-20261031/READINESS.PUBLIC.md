@@ -39,3 +39,11 @@
 新工具候选将已接受计数移到队列接纳之后、footer采用writer实际消费计数，保存首因分支/时钟/磁盘/预留/计数并同步落盘，关闭后拒绝新生产者并排空先前记录；writer异常使流不完整并阻止接受。单响应原完整性检查和所有业务门槛原样保留。该候选尚非端到端READY：还缺更新adapter/ENTRY/prepare绑定、完整原始流独立验收器与更全面异常边界测试；本轮不宣称这些已通过。
 
 工具精确预算现已可读：单响应1MiB、单记录/单在途预留3MiB、400预留共1200MiB，队列原上限800记录，FRAME256KiB；reserve磁盘余量门槛128MiB+实时reserved+3MiB，初始门槛256MiB+400×3MiB=1456MiB。工具在线压缩加密，不落明文/压缩中间文件；33GiB仅三种全量另行保留时的保守和，不是本工具实际三份同时落盘。12GiB raw密文之外，整个W备份还可能含历史run，峰值必须按W实际大小/备份压缩上界/复制份数另算，不能只依据旧1.03GB备份。
+
+## 组件离线补充 v5.1
+
+已自行定位并核原公开ADAPTER及ENTRY预期SHA。新adapter仅CORE改绑新runtime，ENTRY保持原字节；未执行ENTRY、prepare或execute。新增独立流核验器检查认证逐帧、唯一终端footer、gzip结束/尾部、多余数据、JSON行及单记录上限、plain/compressed/cipher上限、实际/accepted/attempted/rejected计数，prefix不准作完整记录。扩充至19项合成本地单元，全部通过；含停止后拒绝、关闭排空、并发close、首因唯一、记录/plain/reserve/disk边界、元数据写失败、队列停滞、writer IO、压缩/密文上限、篡改/截断、缺footer及伪造计数。准确冻结SHA见TOOL_COMPONENTS_V51.PUBLIC.json；前v5冻结保留不覆盖。
+
+原任务三件已只读抽取并留SHA：任务书 d772bde097e77082f433c5bbb1bca5ab154fbb0316a5555c211cb532488b0177；提交注意 c688f2a25c8a1c73803e7e958e8c50681a0484ef1f34a679fa8b100ce2d64f32；要求txt 2193bf6c1cc49f3404ae37332759f785e6362c0eb7e3a5e720724a0be0487c3a。400并发、270ms、1000次/分钟及数据规模原约束存在；本轮不声称完成所有非性能交付项验收。
+
+仍BLOCKED：组件单元通过不等于完整工具准入。特别是需要加强并证明全体producer生命周期先终止再footer的协议，防止close/footer之后迟到生产者的拒绝计数未进入终端流；当前合成并发用例只核已接受记录完整，不能当全体生产者时序证明。还需完整release/prepare hash链及合成零请求prepare往返核对。本轮不将这些未完成项移交用户执行，也不签环境准入。
