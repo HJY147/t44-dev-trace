@@ -1,0 +1,7 @@
+# P13 material07 PUBLIC包
+
+本目录可整体打包，只含PUBLIC包装/说明、未签空白模板与中性字节检查程序。QA候选r30manualp13；material候选r30materialresume07；maintenance候选r30restoretransition07。无旧身份/旧grant；不含PRIVATE密钥/实现/用例/结果。原四份p13脚本字节不变；仅README/收件说明采用新07链。
+
+先读READY_INTERFACE.PUBLIC.md和INTERFACE.PUBLIC.md。所有真实identity/prepare/grant/execute均未签发或执行。模板approved/actual_loaded/functional_authorized/benchmark_authorized/grant_allow全部false；不得直接把空白模板交原入口。未来是否可用p13必须现场确认未消费/输出新鲜性；当前证据、四会话及独立审查齐备后才能推进。没有当前身份，连prepare --check-only也不运行。
+
+HASH_MANIFEST.PUBLIC.json覆盖全部payload（不含manifest自身及SHA256SUMS），SHA256SUMS.PUBLIC.txt覆盖全部文件（除自身），两者可用于传输核对。包装hash沿用e92b18416324f8ec436808ee7edf0a67febed561；本地工具可用性证据来自67b9fbaab5d64573d375ffa889661d1b0bf0a6ec。实际源及产品身份仍UNDETERMINED。

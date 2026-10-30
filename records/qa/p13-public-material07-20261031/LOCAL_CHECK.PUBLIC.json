@@ -1,0 +1,39 @@
+{
+  "status": "LOCAL_FROZEN_TOOLS_KEY_AND_HISTORICAL_BACKUP_INTEGRITY_VERIFIED",
+  "frozen_tool_files_match": true,
+  "entry_adapter_match": true,
+  "original_capsule_opened": true,
+  "runtime_import": true,
+  "runtime_help": "original CLI has no --help; emits usage and exits 1",
+  "adapter_verify_help": true,
+  "historical_backup_authenticated_all_files_verified": true,
+  "historical_results_reassessed": false,
+  "historical_files_extracted": false,
+  "current_identity_issued": false,
+  "prepare": false,
+  "grant": false,
+  "execute": false,
+  "server_access": false,
+  "local_runner_image_checked": false,
+  "current_p13_unused_verified": false,
+  "historical_schema_hash_checks": {
+    "schema-before.PUBLIC.json": true,
+    "schema-after.PUBLIC.json": true,
+    "migration-sql.PUBLIC.sql": true,
+    "migration.original.PUBLIC.stdout": true,
+    "schema-current.PUBLIC.json": true,
+    "APP-storage-seven.PUBLIC.json": {
+      "sha256": "bac38a8c5ddcb7b81b801ebb2b31eec1e25a0ee209c6c41caa752e8696c33457",
+      "use": "HISTORICAL_PROVENANCE_ONLY"
+    },
+    "APP-ssh-expiry.PUBLIC.json": {
+      "sha256": "d384502c64bbbeba2ffddd392f2875db2589a29d9797e5adb44491b3a2e77e27",
+      "use": "HISTORICAL_PROVENANCE_ONLY"
+    }
+  },
+  "qa_run": "r30manualp13",
+  "material_id": "r30materialresume07",
+  "maintenance_id": "r30restoretransition07",
+  "unsigned_template_rejected": true,
+  "intake_cli_help": true
+}
