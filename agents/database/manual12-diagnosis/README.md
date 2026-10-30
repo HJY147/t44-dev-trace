@@ -35,3 +35,22 @@ Open: reproduce the INSERT wait with exact DDL, original claim transaction and a
 `native_claim_probe.py` runs the original source90b `Runtime.prepare`/`_claim` and `Runtime.complete` on a separate synthetic schema with the exact frozen DDL and active constraints. Each variant uses 64 clients and 1280 operations. Empty baseline INSERT mean/P95 is 7.32/13.11ms; with 501280 accumulated synthetic rows it is 6.87/11.58ms. Fragment end-to-end P95 is 211.45/169.10ms. This short native case does not reproduce the cloud INSERT75–158ms and does not support row count alone as the cause. It excludes HTTP and the complete main audit/outbox transaction and uses local hardware; it is not a formal load result. Own server was shut down afterward.
 
 A subsequent controlled redo comparison is running separately, with two initially identical cloned synthetic datasets (502560 rows and identical actual extended checksum1696289492), source90b frozen DDL, 64clients,20s warmup/180s measured per phase,100MiB versus1GiB,2s sampling. The pre-run plan is posted in Issue#47 comment6526405915. No outcome is asserted until it completes. Fixed AB order/cache, local buffer1GiB versus cloud8GiB and fragment scope will remain explicit.
+
+## Kernel versus InnoDB IO scope
+
+The analyzer now also differences cgroup `io.stat` for common actual devices, leaving unmatched/empty projections explicit. For MySQL device259:0: early kernel writes are49869956B/s and2073.33 write operations/s; late48642312B/s and2067.10/s. These are block-layer counters. The earlier24–25MB/s `Innodb_data_written` is an InnoDB-layer counter and must not be substituted for kernel bytes; doublewrite/redo and other file paths may contribute. No current cloud disk size/tier/cap was observed in this task, so a historical purchase record cannot establish the live cap or prove throttling. Next actual cloud diagnostic should capture diskstats/await/queue, IO pressure and the relevant P_S wait-event deltas alongside exact current volume/tier/limits, without exporting SQL text or credentials.
+
+## Controlled native redo result — negative for adopting a fix
+
+Both original frozen-schema clones initially had502560 rows, min/max id1/502560 and actual CHECKSUM TABLE EXTENDED1696289492. Two phases used the same original source90b prepare/claim+complete fragment,64clients,20s warmup+180s measurement, pool320/maxconnections384/buffer1GiB, flush-at-commit1/sync_binlog1; only redo capacity changed. Each phase used a clean restart of this exclusive socket-only server and enabled the same local wait instrumentation.
+
+| Capacity | Measured operations | Client INSERT mean/P95 | Fragment client P95 | Actual server INSERT mean | Actual server COMMIT mean |
+|---|---:|---:|---:|---:|---:|
+|100MiB|77385|7.13/12.03ms|173.40ms|0.054ms|0.118ms|
+|1GiB|67578|8.17/13.78ms|200.43ms|0.065ms|0.131ms|
+
+Both phases had0 transaction errors and0 sample failures. The100MiB phase's bounded samples cover178.88s,187.18MB redo (1.785× configured capacity),26 distinct checkpoint advances, checkpoint age9.66–16.97MB,0 log waits. The1GiB phase covers178.99s,163.85MB redo, age22.45–97.48MB,0 log waits. InnoDB data-write rate drops8.48→3.20MB/s with the larger capacity, but INSERT/fragment latency does not improve. These results do not support adopting redo size as an established fix.
+
+Native server INSERT0.054–0.065ms and COMMIT0.118–0.131ms are far below cloud server INSERT75–158ms and COMMIT16ms. Native client INSERT7–8ms includes Python scheduling/transport overhead and must not be compared as if it were server statement time. Native redo rate≈1MB/s is lower than cloud2.5–2.7MB/s; the full main audit/outbox transaction is excluded. Fixed AB order, OS cache and appended warmup/test rows remain confounders despite identical initial clones. Thus the experiment neither proves a cloud cause nor excludes cloud storage/checkpoint pressure. It rejects a speculative fix without the needed live wait/disk evidence.
+
+`native_redo_probe.py`, two `redo-*.PUBLIC.json` files, `native-redo-comparison.PUBLIC.json`, `derive_redo.py` and `native-redo-derived.PUBLIC.json` preserve the run and2-second samples. The local runner completed, disposed pools and shut down its own process; the task socket no longer exists. No cloud, product settings, constraints, original tool or durability policy were changed.

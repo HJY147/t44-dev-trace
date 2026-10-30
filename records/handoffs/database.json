@@ -1906,10 +1906,13 @@
   "manual12_diagnosis": {
     "issue": 47,
     "prompt_ref": "ROLE-database-MANUAL12-DIAGNOSIS-20261030-v1",
-    "status": "MEASURED_HOTSPOT_IDENTIFIED_UNSAFE_POOL_SHORTCUT_REJECTED",
+    "status": "DIAGNOSTICS_COMPLETE_NO_SAFE_EFFECTIVE_DB_FIX_ESTABLISHED",
     "evidence": "agents/database/manual12-diagnosis/",
     "cloud_actions": false,
     "product_changed": false,
-    "next": "native synthetic idempotency insert reproduction"
+    "next": "capture actual cloud block-device/P_S wait evidence; do not infer disk cap from old purchase record",
+    "redo_experiment": "LOCAL_NO_BENEFIT_NOT_ADOPTED",
+    "native_redo_evidence": "agents/database/manual12-diagnosis/native-redo-derived.PUBLIC.json",
+    "local_server_stopped": true
   }
 }

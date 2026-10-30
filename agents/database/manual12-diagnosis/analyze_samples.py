@@ -3,6 +3,11 @@ import argparse,hashlib,json
 from pathlib import Path
 GAUGES={'Threads_connected','Threads_running','Max_used_connections','Innodb_row_lock_current_waits','Innodb_buffer_pool_pages_total','Innodb_buffer_pool_pages_data','Innodb_buffer_pool_pages_dirty','Innodb_buffer_pool_pages_free','Innodb_buffer_pool_bytes_data','Innodb_buffer_pool_bytes_dirty'}
 def keyvalues(values):return dict(x.split() for x in values)
+def block_io(values):
+ result={}
+ for line in values:
+  device,*pairs=line.split();result[device]={k:int(v) for k,v in (p.split('=',1) for p in pairs)}
+ return result
 def digest_rows(value):return {x['digest_hash']:x for x in value['rows']} if value.get('available') else None
 def difference(x,y):
  keys=x.keys()&y.keys();result={k:y[k]-x[k] for k in keys}
@@ -24,6 +29,10 @@ def interval(x,y):
  for role,a in x['services'].items():
   b=y['services'][role];assert a['container_id']==b['container_id'] and a['image_id']==b['image_id']
   ca,cb=keyvalues(a['cgroup']['cpu.stat']),keyvalues(b['cgroup']['cpu.stat']);d=difference({k:int(v) for k,v in ca.items()},{k:int(v) for k,v in cb.items()})
+  ix,iy=block_io(a['cgroup']['io.stat']),block_io(b['cgroup']['io.stat']);io={}
+  for device in ix.keys()&iy.keys():
+   delta=difference(ix[device],iy[device]);io[device]={'deltas':delta,'rates_per_second':{k:v/dt for k,v in delta.items()}}
+  result.setdefault('kernel_block_io',{})[role]={'common_devices':io,'unmatched_devices_not_assumed_zero':sorted(ix.keys()^iy.keys()),'empty_projection_not_claimed_zero':not bool(ix) or not bool(iy)}
   result['cpu'][role]={'mean_cores':d['usage_usec']/dt/1e6,'throttled_usec_delta':d.get('throttled_usec'),'quota':b['cgroup']['cpu.max'],'oom_events_end':b['cgroup']['memory.events']}
  sx,sy=mysqlx['status'],mysqly['status'];counts=difference({k:v for k,v in sx.items() if k not in GAUGES},{k:v for k,v in sy.items() if k not in GAUGES});result['status_counter_deltas']=counts;result['status_rates_per_second']={k:v/dt for k,v in counts.items()};result['status_gauges']={k:{'start':sx[k],'end':sy[k]} for k in sx.keys()&sy.keys()&GAUGES}
  result['file_io_delta']=difference(mysqlx['aggregates']['FILE_IO_TOTAL'],mysqly['aggregates']['FILE_IO_TOTAL'])

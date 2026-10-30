@@ -1,0 +1,73 @@
+{
+  "status": "LOCAL_REDO_COMPARISON_COMPLETE_NO_BENEFIT_OBSERVED",
+  "phases": [
+    {
+      "capacity": 104857600,
+      "sample_seconds": 178.87662049999926,
+      "redo_lsn_delta": 187181201,
+      "redo_turnover_of_config_capacity": 1.7850990390777588,
+      "checkpoint_age_range": [
+        9659835,
+        16968450
+      ],
+      "checkpoint_advancements": 26,
+      "log_waits_delta": 0,
+      "data_written_delta": 1517707264,
+      "data_written_bytes_per_second": 8484659.760217274,
+      "redo_fsync_per_second": 1971.5321041633915,
+      "dirty_bytes_range": [
+        37945344,
+        48693248
+      ],
+      "digests": {
+        "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c": {
+          "calls": 76899,
+          "mean_ms": 0.05446243774301356
+        },
+        "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520": {
+          "calls": 153831,
+          "mean_ms": 0.007127828591116225
+        },
+        "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c": {
+          "calls": 153824,
+          "mean_ms": 0.11846521999167882
+        }
+      }
+    },
+    {
+      "capacity": 1073741824,
+      "sample_seconds": 178.992981916992,
+      "redo_lsn_delta": 163848103,
+      "redo_turnover_of_config_capacity": 0.1525954371318221,
+      "checkpoint_age_range": [
+        22451024,
+        97477641
+      ],
+      "checkpoint_advancements": 22,
+      "log_waits_delta": 0,
+      "data_written_delta": 573066240,
+      "data_written_bytes_per_second": 3201612.900475391,
+      "redo_fsync_per_second": 1785.1314424616949,
+      "dirty_bytes_range": [
+        73678848,
+        105463808
+      ],
+      "digests": {
+        "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c": {
+          "calls": 67135,
+          "mean_ms": 0.06473499664854399
+        },
+        "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520": {
+          "calls": 134324,
+          "mean_ms": 0.009219767130222446
+        },
+        "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c": {
+          "calls": 134320,
+          "mean_ms": 0.13094511614055984
+        }
+      }
+    }
+  ],
+  "recommendation": "Do not adopt a redo-size change as an established fix; native baseline already lacked capacity pressure and cloud wait was not reproduced. Need actual block-device await/queue/limits and P_S wait evidence.",
+  "own_socket_exists_after": false
+}

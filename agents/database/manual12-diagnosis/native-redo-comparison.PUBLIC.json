@@ -1,0 +1,68 @@
+{
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "scope": "local synthetic original prepare/claim plus complete fragment; not HTTP/cloud performance",
+  "initial_clones": [
+    {
+      "database": "manual12_redo100",
+      "rows": 502560,
+      "min_id": 1,
+      "max_id": 502560,
+      "checksum": 1696289492
+    },
+    {
+      "database": "manual12_redo1024",
+      "rows": 502560,
+      "min_id": 1,
+      "max_id": 502560,
+      "checksum": 1696289492
+    }
+  ],
+  "hardware": {
+    "machine": "arm64",
+    "cpu_count": 8
+  },
+  "fixed_order": [
+    "100MiB",
+    "1GiB"
+  ],
+  "phases": [
+    {
+      "database": "manual12_redo100",
+      "redo_capacity": 104857600,
+      "clients": 64,
+      "warmup_seconds": 20,
+      "measurement_seconds": 180,
+      "warmup_operations": 8285,
+      "measured_operations": 77385,
+      "errors": [],
+      "sample_errors": [],
+      "sample_interval_seconds": 2,
+      "insert_client_mean_ms": 7.133916864111995,
+      "insert_client_p95_ms": 12.032500002533197,
+      "fragment_client_p95_ms": 173.39783406350762
+    },
+    {
+      "database": "manual12_redo1024",
+      "redo_capacity": 1073741824,
+      "clients": 64,
+      "warmup_seconds": 20,
+      "measurement_seconds": 180,
+      "warmup_operations": 8818,
+      "measured_operations": 67578,
+      "errors": [],
+      "sample_errors": [],
+      "sample_interval_seconds": 2,
+      "insert_client_mean_ms": 8.17274865941332,
+      "insert_client_p95_ms": 13.779832981526852,
+      "fragment_client_p95_ms": 200.43033291585743
+    }
+  ],
+  "limitations": [
+    "fixed AB order, OS cache and monotonically appended rows may affect results",
+    "own buffer pool1GiB, local hardware differs from cloud8GiB and64CPU",
+    "no complete audit/outbox main transaction or HTTP route is simulated",
+    "samples include observer overhead, missing events are not zero",
+    "initial clone copies use local setup-only foreign-key disable restored before workload; original frozen constraints remain active during all measured operations"
+  ]
+}
