@@ -38,7 +38,7 @@ python3 "$BACKEND/host_runner.py" --api-container "$API_ID" --expected-api-image
 
 ```sh
 python3 "$KIT/rotate_current.py" --material "$NEW_MATERIAL_OUTPUT/material.PUBLIC.json" --backup-dir "$NEW_ROTATION_BACKUP"
-python3 "$KIT/observe_full_scan.py" --api "$API_ID" --rotation "$NEW_ROTATION_BACKUP/rotation-with-time.PUBLIC.json" --output "$NEW_SCAN_OUTPUT"
+python3 "$KIT/observe_full_scan.py" --api "$API_ID" --rotation "$NEW_ROTATION_BACKUP/rotation-with-time.PUBLIC.json" --material "$NEW_MATERIAL_OUTPUT/material.PUBLIC.json" --output "$NEW_SCAN_OUTPUT"
 ```
 
 原rotation守卫：0600/single-link/原CLI原字节SHA/原挂载目录只读bind/原uid gid/原子replace/fsync/回读；保存旧token私密备份，不打印。只改现有token文件，不创建第二scheduler。确认现有scheduler/consumer已按原资源健康运行；若未运行，只能root核新快照精确ID后显式docker start对应ID，不能用旧resume预期ID。不得停掉正在推进的旧未完成scan去凑新扫描：原tick会续旧run，observer须等待rotation后真正新started且finished、status2/error空/scanned_count>0。900秒仅observer边界，非VM停止时间。错误/超时保留每条观察，不能降判据。
@@ -50,3 +50,5 @@ python3 "$KIT/observe_full_scan.py" --api "$API_ID" --rotation "$NEW_ROTATION_BA
 仅脚本语法/3.10 AST、manifest及少量未批准/旧source/旧image拒绝检查。未运行任何实际维护、发行会话、凭据轮换、scanner/DB查询、封包或发压；现场排他、旧timer闲置、真实新快照与import receipt均仍待实核。测试退出/证据停止写入并回收核验后立即告知用户手动停机。
 
 4a5401ac新门禁：APP live maintenance/host均以真实receipt canonical path对auth ref及producer receipt_path三方绑定，验证原文件uid0/mode0600/mtime_ns/bytes/SHA；ref/receipt/observation三时间必须相等且UTC非未来。离线check_inputs只以显式remote路径验证来源，不能声称本机fsstat等于APP现场。缺sidecar不得自造；需原import producer现场生成。原144d/a60包作为历史draft保留，不是最终kit pin。
+
+Observer修订：--material必填并对rotation.material_sha256原字节绑定、本轮packet_run_id08与process_exit_proven绑定，rotation.scheduler_id须当前批准快照scheduler；rotation时间必须UTC非未来。command返回后再次严格检查monotonic<deadline，超900秒的成功结果拒绝，不作为新完整扫描通过。原status/error/count及started/finished相对rotation的判据保持；900秒不控制VM。

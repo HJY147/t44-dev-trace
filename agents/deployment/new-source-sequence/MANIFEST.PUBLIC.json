@@ -16,14 +16,16 @@
   "files": {
     "cohort_maintenance_v3.py": "38f04af2ccc19acc99f6612bd1b511f7a328681ccd5c027e2353670b6950dc36",
     "rotate_scheduler_token.py": "47640ba975f210b9ca7e7f66e718711f42766093bf6a0e3749f0f60ae210fe8f",
-    "observe_full_scan.py": "407eae2e183a7119e2d27175ee641a217a62446c4aa1627a2f7612ea7beb1e0e",
-    "rotate_current.py": "cc0c58c990e43d5a390630cbda95479f5e4b22177d9b6bf6ca25d09a5ceb1b45"
+    "observe_full_scan.py": "4ba2aec77196fc9e2929835b8ed1272b8b43141a1442dc63e3d9c88f0931a6ea",
+    "rotate_current.py": "cc0c58c990e43d5a390630cbda95479f5e4b22177d9b6bf6ca25d09a5ceb1b45",
+    "observer_checks.py": "29f2cb6b4052c38dac72c10e7906444f02642bd48072c1a476b88566352aa86f"
   },
   "unchanged_rotation": true,
-  "scan_logic": "original scan_after_rotation byte-exact function; explicit900s bounded observation, no VM stop",
+  "scan_logic": "Original scan status/error/count/start/finish guards retained; restored strict post-command deadline and explicit material08/current scheduler/UTC rotation admission",
   "local_checks": {
     "ast_310": true,
     "unapproved_wrong_source_old_image_rejected": true,
     "no_Docker_or_cloud": true
-  }
+  },
+  "observer_checks": "7 pure-local tests passed, synthetic fixtures, no Docker"
 }

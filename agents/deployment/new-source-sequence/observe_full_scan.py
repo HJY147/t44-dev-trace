@@ -46,6 +46,7 @@ def scan_after_rotation(api, completed, output, seconds=150):
         need(remaining > 0, 'NO_SUCCESSFUL_POST_ROTATION_SCAN_WITHIN_BOUND')
         rows = json.loads(command(['docker', '--context', 'default', 'exec', api, 'python', '-B', '-c', SCAN_CODE],
                                   timeout=min(10, remaining)))
+        need(time.monotonic() < deadline, 'POST_COMMAND_SCAN_DEADLINE_EXCEEDED')
         receipt = {'rotation_completed_utc': completed, 'rows': rows,
                    'observed_utc': datetime.now(timezone.utc).isoformat(),
                    'new_scanner_started': False, 'business_event_manually_created': False,
@@ -72,5 +73,44 @@ def verify_current_api(api):
  row=json.loads(command(['docker','--context','default','inspect','--format','{{json .Image}}',api]))
  need(row==rotate_current.IMAGE,'CURRENT_API_IMAGE_REQUIRED')
 
-if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--api',required=True);p.add_argument('--rotation',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();v=json.loads(a.rotation.read_bytes());need(v['status']=='SCHEDULER_TOKEN_FILE_ATOMICALLY_REPLACED_NOT_SCANNER_USE_PROOF','ROTATION_RECEIPT_REQUIRED');verify_current_api(a.api);a.output.mkdir(mode=0o700);scan_after_rotation(a.api,v['rotation_completed_utc'],a.output,seconds=900)
+def utc_nonfuture(value):
+    stamp = datetime.fromisoformat(value.replace('Z', '+00:00'))
+    need(stamp.tzinfo is not None and stamp.utcoffset().total_seconds() == 0,
+         'ROTATION_UTC_REQUIRED')
+    need(stamp <= datetime.now(timezone.utc), 'ROTATION_NONFUTURE_REQUIRED')
+    return stamp
+
+
+def validate_rotation_material(rotation, material_raw, snapshot):
+    import rotate_current
+    rotate_current.validate_snapshot(snapshot)
+    material = json.loads(material_raw)
+    need(material.get('status') == 'FRESH_MATERIAL_NOT_BENCHMARK_AUTHORIZATION'
+         and material.get('packet_run_id') == 'r30materialresume08'
+         and material.get('material_process_exit_proof', {}).get('process_exit_proven') is True,
+         'THIS_MATERIAL08_EXIT_PROOF_REQUIRED')
+    need(rotation.get('status') == 'SCHEDULER_TOKEN_FILE_ATOMICALLY_REPLACED_NOT_SCANNER_USE_PROOF'
+         and rotation.get('material_sha256') == digest(material_raw),
+         'ROTATION_EXACT_MATERIAL_BYTES_REQUIRED')
+    scheduler = next(r for r in snapshot['containers'] if r['role'] == 'scheduler')
+    need(rotation.get('scheduler_id') == scheduler['id'], 'ROTATION_CURRENT_SCHEDULER_REQUIRED')
+    utc_nonfuture(rotation['rotation_completed_utc'])
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--api', required=True)
+    p.add_argument('--rotation', type=Path, required=True)
+    p.add_argument('--material', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True)
+    a = p.parse_args()
+    rotation = json.loads(a.rotation.read_bytes())
+    snapshot = json.loads((Path(__file__).parent/'P09-existing-containers.PUBLIC.json').read_bytes())
+    validate_rotation_material(rotation, a.material.read_bytes(), snapshot)
+    verify_current_api(a.api)
+    a.output.mkdir(mode=0o700)
+    scan_after_rotation(a.api, rotation['rotation_completed_utc'], a.output, seconds=900)
+
+
+if __name__ == '__main__':
+    main()
