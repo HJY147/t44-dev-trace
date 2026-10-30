@@ -1,0 +1,140 @@
+{
+  "schema": "p13-independent-final-public-v1",
+  "qa_run": "r30manualp13",
+  "material": "r30materialresume07",
+  "maintenance": "r30restoretransition07",
+  "source_commit": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "independent_conclusion": "NP_NOT_ACCEPTED",
+  "original_tool_verdict": "NP",
+  "raw_original_metrics_recompute_verdict": "FAIL",
+  "performance_pass": false,
+  "measurement_all_gates_satisfied": false,
+  "full_cohort_flag": true,
+  "full_cohort_meaning": "Original pre-postcheck snapshot: monotonic end of 60s warmup+600s steady reached without stop being set then. Does not include postcheck/evidence completeness or all assertions acceptance.",
+  "original_runtime_sha256": "3da34780a224bb3a9462e750f1cae9af316bab3ef457d75c8e0c2f2dcd7df339",
+  "measurement": {
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "p95_limit_ms": 270,
+    "per_minute_minimum": 1000,
+    "original_observed_elapsed_including_postcheck_seconds": 700.280046515,
+    "classes": {
+      "query": {
+        "count": 124335,
+        "p95_ms": 1024.79851
+      },
+      "transition": {
+        "count": 248637,
+        "p95_ms": 1094.086631
+      },
+      "contract": {
+        "count": 124344,
+        "p95_ms": 1010.615312
+      },
+      "escalation": {
+        "count": 124333,
+        "p95_ms": 1095.600419
+      }
+    },
+    "minute_completions": [
+      68896,
+      64851,
+      64348,
+      60466,
+      60491,
+      61442,
+      61237,
+      60807,
+      59767,
+      58944
+    ],
+    "steady_recorded_request_errors": {},
+    "recorded_steady_requests": 621649,
+    "client_completion_min": 1001,
+    "client_completion_max": 1955,
+    "raw_recompute_matches": {
+      "classes": true,
+      "minute_buckets": true,
+      "failures": true,
+      "client_completion_min": true,
+      "client_completion_max": true
+    }
+  },
+  "cohort_evidence": {
+    "original_marker_400_60_600_verified": true,
+    "sample_count": 647,
+    "sampled_alive_min": 400,
+    "sampled_alive_max": 400,
+    "last_sample_elapsed_seconds": 659.062120412,
+    "not_simultaneous_http_400_proof": true
+  },
+  "postconditions": {
+    "final_task_snapshot": 281,
+    "audit_complete_clients": 265,
+    "post_budget_not_observed": 119
+  },
+  "postcheck_recorded_errors": {
+    "postcheck|TimeoutError:": 5,
+    "postcheck|RemoteDisconnected:Remote end closed connection without response": 1
+  },
+  "mq_delivery_postcondition": "NOT_OBSERVED_REQUIRES_SEPARATE_NEUTRAL_EVIDENCE",
+  "capacity": {
+    "original_stop_reason": "CAPACITY_INCOMPLETE",
+    "authenticated_footer_reason": "CAPACITY_INCOMPLETE",
+    "raw_footer_actual_count_match": {
+      "plain_bytes": false,
+      "compressed_bytes": true,
+      "records": false
+    },
+    "authenticated_prefix_actual": {
+      "plain_bytes": 2500483333,
+      "compressed_bytes": 389816995,
+      "records": 701765
+    },
+    "authenticated_footer_declared": {
+      "kind": "authenticated-prefix",
+      "records": 701786,
+      "plain_bytes": 2500821235,
+      "compressed_bytes": 389816995,
+      "reason": "CAPACITY_INCOMPLETE",
+      "utc": "2026-10-30T17:42:05.774964Z"
+    },
+    "missing_declared_records": 21,
+    "missing_declared_plain_bytes": 337902,
+    "configured_total_limits_bytes": {
+      "plain": 10737418240,
+      "compressed": 11811160064,
+      "cipher": 12884901888
+    },
+    "total_byte_limits_reached": false,
+    "exact_trigger_branch_proven": false,
+    "explanation": "Original capacity/complete-evidence gate failed; authenticated prefix does not identify the precise first triggering branch. Do not infer APP cause or insufficient CPU/RAM. Missing prefix records prevent claiming all postconditions/assertions observed."
+  },
+  "load_resource_sampling": {
+    "memory_current_max": 550109184,
+    "pids_current_max": 403,
+    "queue_size_max": 81,
+    "rss_kib_max": 112632,
+    "last_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\n",
+    "last_pids_events": "max 0\n",
+    "last_cpu_stat": "usage_usec 437871394\nuser_usec 409589211\nsystem_usec 28282182\nnr_periods 6302\nnr_throttled 0\nthrottled_usec 0\n"
+  },
+  "backup_integrity": {
+    "status": "ORIGINAL_VERIFY_AUTH_DECRYPT_COMPRESSED_STREAM_ALL75_FILE_HASHES_PASSED",
+    "cipher_bytes": 1033156012,
+    "cipher_sha256": "7d18e8b9365027bd59187c93696c946d0605260f2718cc65809cdf22a7ed23b5",
+    "compressed_tar_sha256": "3344aa53733b6f94dc6cc114c14b94484620890e08d159e34cddf06408ca4157",
+    "files": 75,
+    "distinct_from_raw_prefix_completeness": true
+  },
+  "runtime_finalization": {
+    "writer_finalized": true,
+    "post_validator_pool_stopped": true,
+    "original_exit_code": 2,
+    "original_exit_utc": "2026-10-30T17:42:05.905086+00:00"
+  },
+  "no_server_access_after_download": true,
+  "no_retry_or_successor": true,
+  "original_measurement_implementation_or_assertions_changed": false
+}
