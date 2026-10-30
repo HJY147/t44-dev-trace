@@ -12,7 +12,7 @@ for key,value in [('NTP_synchronized','no'),('private_ip','172.21.182.245'),('ac
  bad=copy.deepcopy(load);bad[key]=value;assert f.check(app,bad,now)['errors']
 bad=copy.deepcopy(load);bad['runtime_probe']['memory_max']='max';assert 'LOAD_LIMIT_memory_max' in f.check(app,bad,now)['errors']
 fee={'root_approved':True,'remaining_budget_CNY':50,'historical_APP_first_boot_utc':'2026-10-29T13:45:26Z','resume_observed_utc':'2026-10-30T03:40:00Z','actual_APP_resume_boot_utc':app['actual_APP_resume_boot_utc'],'actual_LOAD_resume_boot_utc':load['actual_LOAD_resume_boot_utc'],'absolute_cost_cutoff_utc':'2026-10-30T05:00:00Z'}
-platform={'APP_instance_id':'i-appsynthetic123','LOAD_instance_id':'i-loadsynthetic123','root_verified':True,'APP_stop_retains_disks':True,'LOAD_stop_retains_disks':True,'stop_utc':fee['absolute_cost_cutoff_utc'],'hourly_APP_CNY':12.436,'hourly_LOAD_CNY':3.1405}
+platform={'verification_scope':'CREATED_SCHEDULED_CONFIGURATION_ONLY','platform_task_created':True,'schedule_enabled':True,'task_execution_id':'exec-synthetic123','configured_stopped_mode':'StopCharging','configured_force_stop':False,'target_instance_ids':['i-appsynthetic123','i-loadsynthetic123'],'actual_trigger_observed':False,'platform_permissions_fully_validated':False,'known_warning':'synthetic generic permission warning retained','APP_instance_id':'i-appsynthetic123','LOAD_instance_id':'i-loadsynthetic123','root_verified':True,'APP_stop_retains_disks':True,'LOAD_stop_retains_disks':True,'stop_utc':fee['absolute_cost_cutoff_utc'],'hourly_APP_CNY':12.436,'hourly_LOAD_CNY':3.1405}
 def write(p,v):p.write_text(json.dumps(v));return p
 def heredoc_syntax(s):assert len(s.encode())<=16384;ast.parse(s.split("<<'USER_P08_COMMAND'\n",1)[1].rsplit('\nUSER_P08_COMMAND',1)[0],feature_version=(3,10))
 with tempfile.TemporaryDirectory() as tmp:
@@ -32,7 +32,7 @@ with tempfile.TemporaryDirectory() as tmp:
   try:m.main();assert allowed
   except ValueError:assert not allowed
   assert (len(calls)>before)==allowed
-print('LOCAL SYNTHETIC BOUNDARIES PASSED: valid facts;120s/120.001 freshness; NTP/IP/activeQA/image/memory negatives; fresh fee script AST<=16KiB; stale fee/unverified platform refusal; S+1 edges0.999/1/19.999/20 via exec spy. No cloud, Docker, HTTP or QA executed.')
+print('LOCAL SYNTHETIC BOUNDARIES PASSED (scheduled-created configuration accepted with not-triggered and permission-warning preserved): valid facts;120s/120.001 freshness; NTP/IP/activeQA/image/memory negatives; fresh fee script AST<=16KiB; stale fee/unverified platform refusal; S+1 edges0.999/1/19.999/20 via exec spy. No cloud, Docker, HTTP or QA executed.')
 
 g.time.time=lambda:now
 with tempfile.TemporaryDirectory() as tmp:

@@ -12,7 +12,7 @@ python3 P08-FACTS-CHECK.PUBLIC.py --app ACTUAL_APP_OUTPUT.json --load ACTUAL_LOA
 
 APP v2新增实际私网IP，旧8100B脚本输出缺此字段会被校对拒绝。校对核真实boot/UTC/NTP、双机固定私网IP、source346/90b manifests、镜像身份、8CPU/8GiB/PID2048/nofile4096与无活动QA；freshLOAD超过120秒时显示不能准入，用户须重取，不能retime。
 
-3. root只根据本次现场事实填写新费用原件和`P08-PLATFORM-PROOF.TEMPLATE.PUBLIC.json`，复核后才分别置批准字段。新费用cap50、计价起点取本次实际恢复观察，不复用昨晚起点；原历史boot仅审计。平台证明要有原两实例ID、相同停机截止和已核单价，不是guest关机说明。生成用户APP首次freeze粘贴文件：
+3. root只根据本次现场事实填写新费用原件和`P08-PLATFORM-PROOF.TEMPLATE.PUBLIC.json`，复核后才分别置批准字段。新费用cap50、计价起点取本次实际恢复观察，不复用昨晚起点；原历史boot仅审计。平台证明只要求已真实创建并核对的定时配置：原两实例ID、OOS execution ID、已启用、StopCharging/force=false、相同停机截止和已核单价；不要求虚构一次live停机测试。root_verified仅指配置证据审阅。模板记录root报告的exec-5dd521c335ce4a88a2e7、2026-10-30T03:00:00Z；尚未触发、未观察最终停机、UI通用Stop权限警告均明确保留，不冒称权限完全验证。不是guest关机说明。生成用户APP首次freeze粘贴文件：
 
 ```sh
 python3 P08-USER-COMMANDS.PUBLIC.py freeze --app-facts APP.json --load-facts LOAD.json --fee NEW_FEE.json --platform-proof VERIFIED_PLATFORM.json --root-reviewed-facts --output NEW_APP_FREEZE.sh
@@ -37,3 +37,5 @@ python3 P08-USER-COMMANDS.PUBLIC.py load-arm --load-facts LOAD.json --grant INDE
 用户须在S−30前执行，脚本再次核时钟/入口/grant SHA，单次systemd定时S+1调用原ENTRY。执行器只接受S+1≤真实now<S+20；迟到拒绝、无重试、无继任轮。不把尚未发生的动作写成成功。
 
 **已执行的本地检查**：运行`python3 tests/check_user_handoff_local.py`（从本目录对应路径），日志见`P08-local-user-boundaries.PUBLIC.log`。使用明确标记的合成事实，验证120/120.001秒新鲜度、NTP/IP/镜像/内存/活动QA负例、过期费用起点和未核平台保护拒绝、QA未批准/PRIVATE工具路径/allow-false拒绝、S−29.999不能arm、S+0.999/1/19.999/20边界（exec spy）。三类生成粘贴均核Python3.10语法且≤16KiB。没有执行任何生成的云命令、Docker探针、HTTP或QA；完整两机流程仍未远端演练。
+
+平台配置更新：根据root现场报告，任务生效中，T44TimedStopRole只对原两实例授权，14:00北京时间之后操作权限DateLess失效；这不是本岗云端复核或成功触发证据。用户预计09:45开机、S约09:55/E约10:08只是计划，实际T0必须由新freeze产生，03:00Z平台截止不能倒填进旧窗口。
