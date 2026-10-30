@@ -181,3 +181,8 @@ AI总协调实收官方0b制品并核实际60文件/身份链、384连接预算�
 
 
 2026-10-31 00:36 CST：用户完成临时授权后LOAD实际SSH/root+原hostpin成功；确认16CPU、原W存在、p13新输出全不存在、无运行容器。传包并远端核32文件及archive exact bytes通过，授权实际expiry读回18:35:01Z/剩7118秒。该读回不是原安装receipt。已通知用户启动APP并提供当前IP；正式压测未开始。回执manualp13-preparation/LOAD_READY.PUBLIC.json。
+
+
+2026-10-31 / 用户要求不能立即压测就停机：实际尚无APP-ready、identity/prepare/grant/execute。原helper现场预检发现156合法阻塞任务，恢复链在03阶段；已通知用户两VM可节省停机保盘，要求部署岗仅优雅中断本轮自有编排/维护、保留UNKNOWN前缀，禁止后继/自动重试。实际ECS停止状态尚未核实。证据manualp13-preparation/STOP_REQUEST.PUBLIC.json。
+
+本轮编排优雅中断完成：原维护03与后验04实际exit0，156恢复后400全state2、800守恒；材料06 child在停止时exit-15，APP-ready不存在。保留前缀，不自动重发/重跑，不宣称writer全停或ECS已停。公开摘要STOPPED_PREFIX.PUBLIC.json。
