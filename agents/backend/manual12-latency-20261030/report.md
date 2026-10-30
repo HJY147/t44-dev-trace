@@ -34,3 +34,13 @@ No claim that pool reset is the sole bottleneck or that an index change caused t
 - `PYTHONPATH=backend:. <existing-local-venv>/bin/python -B <prior-backend-worktree>/agents/backend/manual11-latency-20261030/local_profile.py agents/backend/manual12-latency-20261030/runtime-baseline.PUBLIC.json`
 
 The prior profiling script is an already-published backend author tool, not independent cases. Its exact source hash is recorded in `provenance.PUBLIC.json`. All data created by those scripts is synthetic and local.
+
+## Follow-up: async direct-Runtime hypothesis rejected
+
+Exact source90b `backend/t44/api.py` defines `endpoint(operation)` returning ordinary `def handle(request: Request)` (lines 212–214), with `Runtime.execute` called inside that synchronous function at line 227. All 38 registered `/api/v1` routes introspected locally have synchronous endpoints; none is async. The async `capture` middleware reads the request body then awaits `call_next`; it does not invoke Runtime synchronously on the event loop.
+
+Local FastAPI 0.161.1 `run_endpoint_function` source explicitly dispatches the non-coroutine branch through `run_in_threadpool`. `endpoint-dispatch.PUBLIC.json` retains the exact local function source/hash and product API hash. Cloud framework version was not accessed or inferred from this local package. There is no source evidence for the proposed async Runtime/event-loop blocking defect; adding offload to an already synchronous endpoint would be unjustified, so no corresponding change or expanded concurrency experiment was made.
+
+`LazyFactory.__call__` initializes an engine once behind a threading lock, caching the UoW factory per worker. There is no per-request engine construction/disposal in this API path. The unchanged engine intentionally enables pre-ping, LIFO and rollback reset; this evidence alone does not justify removing pre-ping or safety behavior.
+
+Coordinator-received database mapping supersedes any unclassified timer speculation: largest measured digest is `INSERT idempotency_requests`, COMMIT is a smaller wait, and server-side ROLLBACK averages only about 0.025ms. The reset probe remains command-opportunity evidence, and reset is not selected as the principal repair. Source/database evidence directs the next investigation toward concurrent claims and I/O. No additional product changes are made by this backend diagnosis.
