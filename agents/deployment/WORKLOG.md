@@ -842,4 +842,4 @@ P09审核窄修：APP freeze与LOADprepare在任何写入/停旧unit/派发前�
 
 
 ## 2026-10-30 root takeover: preparation progress evidence
-Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten. Five offline regression cases and the existing complete local handoff chain passed. No cloud actions or pressure result. Prompt ROOT-P09-PROGRESS-EVIDENCE-20261030; unpack-only independent review pending.
+Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten. Five offline regression cases and the existing complete local handoff chain passed. No cloud actions or pressure result. Prompt ROOT-P09-PROGRESS-EVIDENCE-20261030; Unpack-only independent review subsequently PASS: 5 tests plus independent fixed-three-file and symlink negatives; source SHA bound in tmp/750_p09_root_handoff/review-received.PUBLIC.json.

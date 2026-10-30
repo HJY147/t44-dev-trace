@@ -76,6 +76,10 @@
     "tmp/750_p09_root_handoff/progress-regression.log": {
       "bytes": 103,
       "sha256": "1f11b6e880045ee35de832b81b45d06257342e13b5c79bbf0034379d4ca220b9"
+    },
+    "tmp/750_p09_root_handoff/review-received.PUBLIC.json": {
+      "bytes": 563,
+      "sha256": "f559e3ccc698cbc520f477924984424b45245bec3e0ceec4a3e902522eec89ce"
     }
   },
   "formal_P_measurement_completed": false,
@@ -98,5 +102,6 @@
     "load_prepare": "actualLOADbtime_equals_reviewedfacts"
   },
   "status": "LOCAL_VALIDATED_USER_EXECUTION_REQUIRED_NOT_REMOTE_TEST",
-  "preparation_progress_policy": "Versioned original bytes per SHA; top-level is first observation; fixed clock/import/bootstrap remain immutable."
+  "preparation_progress_policy": "Versioned original bytes per SHA; top-level is first observation; fixed clock/import/bootstrap remain immutable.",
+  "unpack_progress_limited_independent_review": "PASS; SHA-bound receipt in tmp/750_p09_root_handoff/review-received.PUBLIC.json"
 }
