@@ -1,0 +1,67 @@
+{
+  "schema": "p13-current07-partial-neutral-review-v1",
+  "run_id": "r30manualp13",
+  "material": "r30materialresume07",
+  "maintenance": "r30restoretransition07",
+  "files": {
+    "schema-current.PUBLIC.json": {
+      "bytes": 51754,
+      "sha256": "f32a26bba7790f29347ee5cbaaf3327912bceb1997276e189734790cfb1c77f8"
+    },
+    "t44-p13-material07-identity.PUBLIC.json": {
+      "bytes": 6937,
+      "sha256": "e59fde3a2f06972224880aad0aef887dfb1734d132b88e339820896b4ef51dfa"
+    },
+    "before-maintenance.PUBLIC.json": {
+      "bytes": 1186,
+      "sha256": "555588b28b3d2f7e3054ad3ed6e9b590db80a582505ed9b5c10c9caf8d0cbd19"
+    },
+    "maintenance-skipped.PUBLIC.json": {
+      "bytes": 353,
+      "sha256": "c701800bcd87c2fadc8a043e45b075e2aac21468d45006fd92a0604089dd7a2f"
+    },
+    "material.PUBLIC.json": {
+      "bytes": 6778,
+      "sha256": "639ebc90c9c85c0b95fec350611ecc918f54f320d0798cb3320775b0567afcdd"
+    },
+    "rotation.PUBLIC.json": {
+      "bytes": 927,
+      "sha256": "0c0f7e83f8a4982df831e1a2775b5536d1bd0119e42033e8af6772167d28b9b9"
+    }
+  },
+  "schema_index_constraint_equal_historical": true,
+  "show_create_differences": {
+    "scan_runs": {
+      "only_auto_increment_counter": true
+    },
+    "audit_events": {
+      "only_auto_increment_counter": true
+    },
+    "outbox_events": {
+      "only_auto_increment_counter": true
+    },
+    "auth_sessions": {
+      "only_auto_increment_counter": true
+    },
+    "escalation_events": {
+      "only_auto_increment_counter": true
+    },
+    "idempotency_requests": {
+      "only_auto_increment_counter": true
+    }
+  },
+  "current_schema_fingerprint_sha256": "f8d21ec7c5a6f7c950a02f78fe547668cb64bff9ef59b71ceb113fe07796ca92",
+  "app_cpus": 64,
+  "material_four_real_sessions_minimum_expiry": "2026-10-30T18:18:29.388508Z",
+  "latest_possible_trigger_from_expiry": "2026-10-30T18:03:29.388508Z",
+  "identity_issued": false,
+  "prepare_executed": false,
+  "grant_issued": false,
+  "execute_executed": false,
+  "pending": [
+    "fresh scan/readiness receipt",
+    "current exclusion/APP-ready/CMS facts",
+    "sealed material transport receipt and opened originals to verify original packet bindings/source/config/import/CA identities"
+  ],
+  "disk_cloud_id_is_original_tool_hard_gate": false
+}

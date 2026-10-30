@@ -5,3 +5,5 @@ P13 PUBLIC离线核对；原接口字节不改；无当前身份/许可/执行�
 发布records/qa/p13-public-material07-20261031整体可打包PUBLIC目录；原p13四脚本字节不变；新07收件说明、未签模板、本地工具就绪证据及双hash清单。无06新建指示，无PRIVATE内容或旧identity/grant。角色提示词ROLE-testing-P13-PACKAGE07-20261031-v1。
 
 授权仅LOAD现场就位：17:18:05Z实际原ENTRY/ADAPTER/manifest/六项installed字节相符，原runner存在，p13五路径不存在且无running容器；17:18:22Z原runner network none+只读W成功import runtime并读回8CPU/8GiB/2048pids。未调用测量、identity、prepare、grant或execute；未访问APP。证据 records/qa/p13-public-material07-20261031-live/LOAD_CHECK.PUBLIC.json。提示词ROLE-testing-P13-LOAD-READONLY-20261031-v1。
+
+本轮current07独立实际准入：给定当前中性原件、现机排他元数据/受控声明、current schema与历史结构/计数差异已审。以公钥匹配找到原CMS key并原CLI解封五件；首次因opened父目录缺失在写目录前失败，补建空父目录成功。原ADAPTER验证四会话/400-800资格/身份输入；签IDENTITY_ONLY_FOR_ZERO_SUT_PREPARE，真实prepare=PREPARED_DEFAULT_FALSE/SUT_requests0。17:30:00.769785Z独立决策，原ISSUE_ONCE仅allow变化，签一次性grant；原测量未执行，交root唯一触发。证据records/qa/p13-public-material07-20261031-live/{schema-supplement.current07.PUBLIC.json,ONCE_GRANT_RECEIPT.PUBLIC.json}。提示词ROLE-testing-P13-CURRENT07-ADMISSION-v1。不把未知外部访问不可证明作为新增自动门禁，不新增磁盘ID门禁。
