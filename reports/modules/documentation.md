@@ -129,3 +129,8 @@ AI文档岗独立归档准确f7的product40692462131与Docker40692462380：5arti
 
 
 2026-10-31 / ROLE-documentation-CURRENT-REQ-DESIGN-20261031：用户授权两独立主文档重版，真实基线66cb保存在history/CURRENT-20261031；需规和设计正文已实质扩充并按审查改写current HOW、去旧拟实现段/通用复制。首轮图经审查否决，已受限归档，不进入当前交付；等frontend新图。仅两文档A4增量导出器已准备，未运行operation marker、未author DOCX、未渲染，不宣称可交。见current-req-design/DRAFT_CHANGELOG.PUBLIC.json。未改产品/无云。
+
+
+### CURRENT 20261031 两主文档图文与Word实际交付
+
+以66cb2b20两稿真实历史为起点，当前业务基线保持v1.2/source90b。首批错误六格图拒绝并保留局部草稿历史，整合frontend04dfee的18幅异型语义图；按本图内容重写说明，按root批准补sdd10停机前提。需规20页8图，设计26页10图，私密封面字段原样沿用且日期空，历史Word未覆盖。唯一edit2 marker成功一次；bundledPython/LO render后逐页native144dpi PNG实看全部46页，修正覆盖率typo、物理表名和接口成功结果概括错误。正文与输出hash、逐页hash及真实修订说明见current-req-design/DELIVERY.PUBLIC.json。正文当前p13仍NP；候选事务RC开发验证不等HTTP或性能，未访问云或运行新产品测试。技术review与root集成待完成。
