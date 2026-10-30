@@ -1,0 +1,3 @@
+# Manual inputs module, 2026-10-30
+
+New root-admitted material preparation on the restored P09 API container, retaining source90b and original800 task IDs/data. See agents/backend/manual-inputs/README.md for exact private/public outputs and live dependencies. Thirteen local tests, five-file and combined-runtime Python3.10 AST passed; zero cloud, SSH, Docker, API, SQL or independent QA execution. Host timeout is not exit proof: container GNU timeout, same-DB flock, unique process marker and separate process-group/lock audit precede any packet release. Strict TLS separates connect_ip from original SNI/Host, and real /projects my_roles are read per role/project. This is not performance evidence or deployment approval.

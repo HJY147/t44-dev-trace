@@ -811,3 +811,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - 新manifest18件，15原runtime逐字不变，2改+1新增；部署owner未来需审新helper，9e wrapper/产品source0b/冻结契约/计数/角色不动。原40断言AST全同，新78项4.23s绿；Ruff/格式/diff及旧producer/运输/产品冻结零diff全部exit0。报告/真实prompt/命令/输入PUBLIC SHA/红绿/log/XML在新目录，0云/SUT/真实session/额外CI，未merge。
 - 自测真实失败保留：负例state mutation误2→2（77绿1红）后仅纠正数据；lint imports/unused报错；verify runner少main guard被原导入测试发现并触发嵌套本地pytest，主动Ctrl-C130后加guard并确认无遗留，再一次完整验证通过。原独立用例/断言无改。
 - 运行时P1续修：root明确future HTTP只用APP actualbinding官方backend config8e，edge/UID10001/read-only/no caps、不注入DB/AMQP业务env、保镜像PYTHONPATH；source-free4f不可用，不向LOAD/QA投产品源。现有helper增加--check-runtime-only，原2红0绿0.25s保留；缺t44明确NOT_READY，真实本机package/validator/rules纯函数正例label仅LOCAL_PROJECT_RUNTIME_ONLY，实际Docker8e未跑。verify-local.py迁tmp756，18运行件只9个.py，严格集合自测通过，旧5635命令/78日志留Git历史。最终新入口81项4.33s与静态全绿，manifest更新，0云/SUT/session，不把本机绿当云READY。
+
+
+## 2026-10-30 manual material restoration (backend agent)
+Explicit offline-only task; no cloud/SSH/Docker/API/SQL/QA invocation. Added agents/backend/manual-inputs host/private-runtime/pure-core helper: original CLI service issuance + persistent readback, real HTTPS human login, read current original800 task/event IDs, new factual packet/binding and private host capture. No seed/task writes/product edits/old budget replay/grant. 6 local tests and Python3.10 AST passed; remote compatibility/qualification/current resource evidence/scheduler rotation remain unverified. Prompt ROLE-backend-MANUAL-INPUTS-20261030.
+
+Root limited review followup: added strict connect_ip TCP/origin TLS-SNI separation before signing; real my_roles1/2/3 readbacks; container-side GNU timeout with same-DB flock/unique marker, separate PID/PGID process exit audit, no packet release if exit unproven. Thirteen local tests plus combined-runtime Python3.10 AST passed; no remote actions. Source/measurement/QA untouched.
