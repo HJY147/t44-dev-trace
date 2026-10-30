@@ -67,3 +67,13 @@ with tempfile.TemporaryDirectory() as tmp:
  try:g.load_arm(a);raise AssertionError('late arm accepted')
  except ValueError:pass
  print('LOCAL GENERATOR TESTS PASSED: LOAD prepare/arm original-approval paths generated and AST<=16KiB; rejects QA approvedfalse, PRIVATE tool source, allowfalse grant and S-29.999 late arm. No generated command executed.')
+# Optional dual-host paste: execute only the pure routing function, never its IP/subprocess main.
+dual=D/'P08-USER-DUAL-PREPARE.INLINE.PUBLIC.sh';text=dual.read_text();body=text.split("<<'USER_P08_DUAL_PREPARE'\n",1)[1].rsplit('\nUSER_P08_DUAL_PREPARE',1)[0];tree=ast.parse(body,feature_version=(3,10));fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef));ns={};exec(compile(ast.Module(body=[fn],type_ignores=[]),'route-only','exec'),ns)
+for primary,assigned,allowed in [('172.21.182.245',['172.21.182.245'],True),('172.21.182.244',['172.21.182.244'],True),('172.21.182.246',['172.21.182.245'],False),('172.21.182.245',['172.21.182.245','172.21.182.244'],False),('172.21.182.245',[],False)]:
+ try:assert ns['choose_route'](primary,assigned)==primary;assert allowed
+ except ValueError:assert not allowed
+import re,zlib
+payload=base64.b64decode(re.search("blob=base64.b64decode\\('([^']+)'\\)",body).group(1));members=json.loads(zlib.decompress(payload))
+for ip,n in [('172.21.182.245','P08-USER-APP-PREPARE-v2.INLINE.PUBLIC.sh'),('172.21.182.244','P08-USER-LOAD-FACTS.INLINE.PUBLIC.sh')]:assert members[ip]['text'].encode()==(D/n).read_bytes()
+assert len(text.encode())<=16384
+print('LOCAL DUAL-ROUTE BOUNDARIES PASSED: APP/LOAD accepted; other/mixed/missing IP rejected; both embedded fact scripts byte-exact,16KiB cap/AST3.10 passed. No IP/subprocess/cloud main executed.')

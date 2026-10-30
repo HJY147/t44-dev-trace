@@ -2,6 +2,8 @@
 
 所有云动作均由用户亲自执行；下列`python3`生成器命令在root本地运行，只写新的粘贴文件。动态输入缺失、原SHA不符、超期或未批准时拒绝生成；不能把本地校对通过写成云端演练或性能达标。
 
+可选单条方式：`P08-USER-DUAL-PREPARE.INLINE.PUBLIC.sh`（14930B）可由用户在云助手同时选择原两机执行一次，仅按真实私网IP245/244精确路由，其他/混合IP拒绝；两条事实脚本保持原字节。与分别执行两条的方式二选一，不为统一界面重复APP派生。它不启动实例、freeze或发压。
+
 1. 用户亲自开原两机前，root先核实际余额、原实例及平台侧定时经济停机/保盘保护。用户分别粘贴APP的`P08-USER-APP-PREPARE-v2.INLINE.PUBLIC.sh`（8185B）和LOAD的`P08-USER-LOAD-FACTS.INLINE.PUBLIC.sh`（6777B）。两者均离线自包含，不依赖新GitHub下载。LOAD只读取公开元数据和PUBLIC工具SHA，以`network none`原镜像做限制探针，不执行QA、不读PRIVATE/密钥；它可重复生成新的事实回执，不改旧回执时间。
 
 2. root保存用户原PUBLIC输出，自动校对：
