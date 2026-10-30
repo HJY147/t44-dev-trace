@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-claim-validation-20261031/agents/database/locked-task-native/check.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/database-claim-validation-20261031/agents/database/locked-task-native/check.py", line 54, in main
+    assert sum(r['status']==200 for r in results)==1,results
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [{'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 5}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 9}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 6}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 13}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 3}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 8}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 10}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 12}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 7}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 11}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 4}, {'status': 422, 'error': 'EVIDENCE_REQUIRED', 'audit_id': 2}]

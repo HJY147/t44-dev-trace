@@ -1,0 +1,96 @@
+"""Socket-only synthetic MySQL correctness checks for exact Runtime claim candidate."""
+import concurrent.futures,datetime,hashlib,importlib.util,json,subprocess,threading,time,uuid,sys
+from pathlib import Path
+import pymysql
+from sqlalchemy import create_engine,event
+from t44.persistence import SqlAlchemyUnitOfWorkFactory
+from t44.persistence.engine import initialize_mysql_session
+from t44.persistence.schema import ddl_text
+from t44.persistence.seed import seed_demo
+from t44.services.common import Call
+from t44.services.identity import issue_session
+from t44.services.errors import Rejected
+from t44.settings import Settings
+ROOT=Path('/Users/yang/Desktop/nothing/软件开发大作业');RT=ROOT/'.agent-worktrees/.runtime';BIN=RT/'mysql-8.4/mysql-8.4.11-macos15-arm64/bin';HERE=Path(__file__).parent
+CAND=ROOT/'.agent-worktrees/backend-locked-task-reuse-20261031/backend/t44/services/runtime.py'
+MODE=sys.argv[1];DATA=RT/('locked-native-20261031-'+MODE);SOCKET='/tmp/t44-locked-native-20261031-'+MODE+'.sock'
+if MODE.startswith('baseline'):CAND=Path(__file__).resolve().parents[3]/'backend/t44/services/runtime.py'
+def main():
+ assert not DATA.exists() and not Path(SOCKET).exists();DATA.mkdir(mode=0o700)
+ log=(RT/('claim-native-'+MODE+'.private.log')).open('ab');engine=None;server=None;out={'scope':'owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance','checks':{},'runtime_sha256':hashlib.sha256(CAND.read_bytes()).hexdigest(),'ddl_sha256':hashlib.sha256(ddl_text().encode()).hexdigest()}
+ try:
+  subprocess.run([str(BIN/'mysqld'),'--no-defaults','--initialize-insecure','--datadir='+str(DATA)],stdout=log,stderr=log,check=True,timeout=90)
+  server=subprocess.Popen([str(BIN/'mysqld'),'--no-defaults','--datadir='+str(DATA),'--skip-networking','--mysqlx=OFF','--socket='+SOCKET,'--pid-file='+str(DATA/'server.pid'),'--innodb-buffer-pool-size=128M','--max-connections=64'],stdout=log,stderr=log)
+  for _ in range(100):
+   if subprocess.run([str(BIN/'mysql'),'--no-defaults','--socket='+SOCKET,'-uroot','-e','SELECT 1'],capture_output=True).returncode==0:break
+   time.sleep(.1)
+  c=pymysql.connect(unix_socket=SOCKET,user='root',autocommit=True)
+  with c.cursor()as q:q.execute('CREATE DATABASE claim_candidate');q.execute('SELECT VERSION(),@@transaction_isolation,@@innodb_flush_log_at_trx_commit,@@sync_binlog');out['server']=q.fetchone()
+  c.close()
+  engine=create_engine('mysql+pymysql://root@localhost/claim_candidate',connect_args={'unix_socket':SOCKET},pool_size=32,max_overflow=0,isolation_level='READ COMMITTED',pool_reset_on_return='rollback');event.listen(engine,'connect',initialize_mysql_session,insert=True)
+  errors=[]
+  def on_error(ctx):
+   original=ctx.original_exception;errors.append({'exception':type(original).__name__,'errno':original.args[0] if original.args else None})
+  event.listen(engine,'handle_error',on_error);factory=SqlAlchemyUnitOfWorkFactory(engine)
+  with engine.connect()as con:
+   for s in '\n'.join(x for x in ddl_text().splitlines()if not x.lstrip().startswith('--')).split(';'):
+    if s.strip():con.exec_driver_sql(s)
+   con.commit();out['effective_isolation']=con.exec_driver_sql('SELECT @@transaction_isolation').scalar()
+  seed_demo(factory,projects=1,tasks=10,dependencies=0,records=20,anchor_at=datetime.datetime.now(datetime.timezone.utc))
+  from t44.services.runtime import Runtime
+  from t44.services.application import Business
+  runtime=Runtime(factory,Settings(),Business())
+  with factory() as u:
+   task=u.gateway.rows('tasks',{'state':2},limit=1)[0]
+   session=issue_session(u.gateway,user_id=task['owner_id'],clock=datetime.datetime.now(datetime.timezone.utc),ttl=3600)
+  token=session['access_token'];tid=task['id'];pid=task['project_id'];version=task['version']
+  def transition(expected=version):
+   return Call('transitionTask',str(uuid.uuid4()),token,path={'project_id':pid,'task_id':tid},body={'action':2,'expected_version':expected,'reason':'synthetic concurrency block','responsibility_stage':1,'evidence':[{'kind':2,'locator':'synthetic/native-check','description':'Synthetic development fixture'}]},key=str(uuid.uuid4()))
+  barrier=threading.Barrier(12)
+  def compete(i):
+   c=transition();barrier.wait();r=runtime.execute(c,lambda _:None);return {'status':r[0],'error':r[1].get('code'),'audit_id':c.audit_id}
+  with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:results=list(ex.map(compete,range(12)))
+  out['competition']=results
+  assert sum(r['status']==200 for r in results)==1,results
+  assert sum(r['error']=='VERSION_CONFLICT' for r in results)==11,results
+  assert not errors,errors
+  with factory() as u:
+   current=u.gateway.get('tasks',tid);assert current['version']==version+1 and current['state']==3
+   audits=u.gateway.rows('audit_events',{'task_id':tid,'operation_id':'transitionTask'})
+   assert sum(r['outcome']==1 for r in audits)==1
+   assert sum(r['outcome']==2 for r in audits)==11
+  out['checks']['same_task_same_version_12_one_commit_11_version_conflicts']=True
+  out['checks']['success_and_rejection_audits']=True
+  # A waiting main transaction must see committed latest row after lock acquisition.
+  entered=threading.Event()
+  def waiting():
+   c=transition(version+1);runtime.prepare(c,lambda _:None);entered.set()
+   with factory() as u:
+    locked=runtime.locked_scope(u.gateway,c)
+    return {'version':locked['version'],'reason':locked['block_reason']}
+  with factory() as holder:
+   holder.gateway.get('tasks',tid,lock='update')
+   with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+    future=ex.submit(waiting);assert entered.wait(5);time.sleep(.1);assert not future.done()
+    holder.gateway.update('tasks',{'id':tid},{'version':version+2,'block_reason':'synthetic latest committed'})
+    holder.commit()
+    observed=future.result(timeout=10)
+  assert observed=={'version':version+2,'reason':'synthetic latest committed'},observed
+  out['checks']['waiting_scope_observes_committed_latest']=True
+  # Gateway identity and project mismatch are rejected before use.
+  c=transition(version+2)
+  with factory() as a, factory() as b:
+   row=a.gateway.get('tasks',tid)
+   for supplied,code in [((b.gateway,row),'INTERNAL_ERROR'),((a.gateway,{**row,'project_id':pid+99}),'RESOURCE_NOT_FOUND')]:
+    try:runtime.business.dispatch(a.gateway,c,locked_task=supplied)
+    except Rejected as e:assert e.code==code
+    else:raise AssertionError('invalid context accepted')
+  out['checks']['cross_gateway_and_wrong_project_rejected']=True
+  out['driver_errors']=errors;assert not errors
+  out['status']='NATIVE_MYSQL_RC_LOCKED_TASK_CORRECTNESS_PASS'
+ finally:
+  if engine:engine.dispose()
+  if server:
+   stopped=subprocess.run([str(BIN/'mysqladmin'),'--no-defaults','--socket='+SOCKET,'-uroot','shutdown'],capture_output=True);server.wait(timeout=30);out['owned_server_shutdown_exit']=stopped.returncode;out['socket_absent']=not Path(SOCKET).exists()
+  (HERE/(MODE+'.PUBLIC.json')).write_text(json.dumps(out,indent=2,default=str)+'\n')
+if __name__=='__main__':main()

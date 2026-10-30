@@ -1,0 +1,1 @@
+实际派工：root要求接续database岗，只用本地socket-only原生MySQL RC验证第二候选a59a90a1/69dff6f4；不得访问云、压测、无关PID7980/13306；覆盖同任务版本并发、最新行可见及跨gateway作用域，失败如实记录，不修改产品。另经root授权：本岗确认985_mysql_http.py两项纯SELECT预算20→19/22→21可由后端责任岗单独提交，写/commit/业务/锁断言保持，原CI红灯保留。

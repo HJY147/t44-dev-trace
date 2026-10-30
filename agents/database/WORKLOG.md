@@ -405,3 +405,6 @@
 
 
 2026-10-31 / ROLE-database-CLAIM-NATIVE-20261031-v1：真实MySQL8.4.11/RC拒绝INSERT-first候选，16同key出现11个1213，原90b同场景及后续10检查通过。原pool rollback/durability不减，独立socket-only server已停，无云或产品修改。详agents/database/claim-insert-first-native/REPORT.md及原PUBLIC。
+
+
+2026-10-31 已锁任务复用候选a59a90a1开发原生RC正确性通过，12并发1成功11版本冲突、最新锁行可见及上下文拒绝；原夹具缺证据422保留。非压测/独立验收，详agents/database/locked-task-native/REPORT.md。

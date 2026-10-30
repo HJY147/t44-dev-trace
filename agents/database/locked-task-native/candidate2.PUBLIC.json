@@ -1,0 +1,84 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {
+    "same_task_same_version_12_one_commit_11_version_conflicts": true,
+    "success_and_rejection_audits": true,
+    "waiting_scope_observes_committed_latest": true,
+    "cross_gateway_and_wrong_project_rejected": true
+  },
+  "runtime_sha256": "e90c3b933a2fd1e1e635a7ca6826f6847443bad7dc629a24e89cd0444f6fdc68",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "competition": [
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 7
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 8
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 6
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 5
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 12
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 9
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 3
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 13
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 10
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 11
+    },
+    {
+      "status": 409,
+      "error": "VERSION_CONFLICT",
+      "audit_id": 4
+    },
+    {
+      "status": 200,
+      "error": null,
+      "audit_id": 2
+    }
+  ],
+  "driver_errors": [],
+  "status": "NATIVE_MYSQL_RC_LOCKED_TASK_CORRECTNESS_PASS",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}
