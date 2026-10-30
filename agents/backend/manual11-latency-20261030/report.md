@@ -44,3 +44,9 @@ Five additional tests exercise real SQLite persistence changes between initial a
 ## Coordinator handoff
 
 Root cause remains unresolved. Next discriminating evidence: APP per-worker CPU/GIL distribution, AnyIO busy/queue, SQLAlchemy checkout wait/pre-ping, DB statement/commit wait, row locks and growth-sensitive queries. Database/deployment owners receive suggestions only through coordinator. Candidate has no API/schema/DDL/version change. Fresh independent retest is coordinator-owned after root cause work and admission.
+
+## Final measured gates
+
+- Product/evidence commit: `5331b658df6428fafe93a65664bf97b1f92c46b8`.
+- Configured combined149 regressions passed in31.58s, one upstream Starlette/httpx deprecation warning; no unknown project markers after correct `-c backend/pyproject.toml`. Baseline invalidation5 passed in1.31s.
+- Frozen cloc2.10 application count FAIL:90b baseline5818, candidate5821, net+3, ceiling5100. Exact committed candidate and original90b tree counted with same classifier and pinned cloc. Baseline script binding replaced only rev-parse HEAD with explicit90b, leaving archive/classification/count intact. No source counter/assertion modified. This candidate cannot satisfy the source-size gate; removing unrelated requirements or compressing source to hide this is outside scope.

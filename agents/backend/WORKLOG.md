@@ -824,3 +824,4 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - Kept both live pre/post-validation auth checks; GET read preparation now shares one UoW, measured9/1/1. No write, schema, persistence or deployment modifications; common P95 root cause unresolved.
 - Original144 regressions and new5 invalidation cases passed; baseline also passes same5. Project-configured combined rerun and cloc proof in `agents/backend/manual11-latency-20261030/`.
 - Harness errors and limits are recorded in report; local SQLite cannot establish remote MySQL locks or formal P95.
+- Final configured149passed/31.58s with one upstream warning. Product commit5331b658; pinned clocFAIL baseline5818/candidate5821(+3), ceiling5100. Coordinator notified of inherited and candidate source-budget failure; unrelated source not changed.

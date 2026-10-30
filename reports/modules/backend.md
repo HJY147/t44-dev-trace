@@ -521,3 +521,4 @@ future运行时边界已明确：APP-only actualbinding官方backend8e，edge/UI
 - Minimal product change: GET validation+read one UoW, preserving full live auth before/after validation; checkout/commit2→1 while9SELECT unchanged. Contract and all writes unchanged.
 - Original144 regressions and5 new invalidation tests pass; same5 pass on90b. Root-cause/remote MySQL/independent formal retest remain unproven. No database/deployment file, cloud, load, VM, tester PRIVATE or assertions changed.
 - I/O: frozen API1.2.0 and status/error/response contracts unchanged. Upstream coordinator owns APP/DB wait evidence and any future formal admission. This candidate alone cannot support claiming P95 fixed.
+- Final configured149passed/31.58s; baseline5invalidation passed too. Frozen clocFAIL persists:90b5818→candidate5821(+3), ceiling5100. Product commit5331b658; source gate is not waived and no full-performance success claimed.
