@@ -1,0 +1,9 @@
+# 第二候选构建准备
+
+操作者为deployment AI，无SSH/云操作/压力测试。准确产品源13acb43a804e717e7485091895378511fe3d9b76，产品字节来自a59a90a1，后续两个提交只维护开发测试。
+
+第一构建run41111887081真实失败。起初按旧generic cloud-image-bundle manual桥，实际拒绝DEPENDENCY_LOCK_CHANGED_REVIEW_REQUIRED；原脚本锁3b15a7，而当前已审源码锁6150cc（历史提交359925e6加入sqlglot）。原failure artifact及完整failed-job日志gzip/SHA保留。无镜像已构建/下载成功声明。
+
+改用本项目此前成功的final-image-bundle workflow400555323。当前实现ref codex/deployment-final-window=e523bf082a95f3af70697bcf4d3a00a4cfddde8e，相比此前成功run40928393094的3175dc8，workflow和适配器文件无diff。其从准确source导出lock、逐字验证context与source lock、核runtime uid/origin/全文件字节，保留generic门禁本体，不是删除锁检查。两新应用镜像运输包继承既有五基础服务镜像，不覆盖已有数据卷。新run41112638628构建中，精确输入仍13ac，当前不代表发布准入或性能通过。
+
+旧resume-source-package含stop_utc接口，本轮未执行，不添加自动停机。新测试不能复用已消费p13身份/材料/grant。现场资源/TLS配置需重新核实并明确组合新镜像overlay，不允许因新镜像包使用默认worker配置取代已核64CPU现场配置。
