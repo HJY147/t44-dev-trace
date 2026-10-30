@@ -2,6 +2,7 @@
   "P08_original_failure_retained": "PREPARATION_LATE_NO_OVERRIDE",
   "authoritative_command_generator": "P09-USER-COMMANDS.PUBLIC.py",
   "cloud_or_QA_executed_by_this_delivery": false,
+  "collector_shared_deadline": "min(monotonic600,S-minus30),each subprocess<=5sec,batched selected inspect,timeoutUNKNOWN",
   "dynamic_new_fee_boot_and_platform_cutoff_required": true,
   "excluded_obsolete_local_drafts": {
     "P09-USER-APP-CLONE-FREEZE.PUBLIC.py": "55a4c081 old embedded01:57 boot/03:00 fee: DO NOT EXECUTE",
@@ -29,24 +30,24 @@
       "sha256": "b1e43bc0737f92a341d3e4e7f49d6b4798619d023c6879e5ec031cdb53df6387"
     },
     "agents/deployment/final-window/P09-USER-APP-COLLECT.PUBLIC.py": {
-      "bytes": 6307,
-      "sha256": "781e7b5b347eb600bcdd4081aa11f4d07b8538e027523248f2426a304fa18c85"
+      "bytes": 8020,
+      "sha256": "4da89bcd0d3324606c19d217363de8f2d161c86e31233db6028529e229b9ebde"
     },
     "agents/deployment/final-window/P09-USER-APP-FACTS.PUBLIC.py": {
       "bytes": 3199,
       "sha256": "b7623b3b434f50264986691afaaed53c40f1bf2aa51016accc8124e972f9b276"
     },
     "agents/deployment/final-window/P09-USER-APP_FACTS.INLINE.PUBLIC.sh": {
-      "bytes": 7454,
-      "sha256": "df1c83e89f9ed9d5ee9eee8b881b1d713dc94d62869ba6d38a2652b90c699eb5"
+      "bytes": 8050,
+      "sha256": "ca469013960c09b558d0f3b9b42fe5fe2cd90c9dfb1692cd60f7f51018f2f5b0"
     },
     "agents/deployment/final-window/P09-USER-COMMANDS.PUBLIC.py": {
-      "bytes": 19560,
-      "sha256": "b813ebec4443b4f57187a967a28b860bf68854975cf69786a5e1e42512b3a3da"
+      "bytes": 20221,
+      "sha256": "abb8caf081844c407967463f5452ea09362144a9bb00303ec8379674bb13ac2f"
     },
     "agents/deployment/final-window/P09-USER-HANDOFF.PUBLIC.md": {
-      "bytes": 5299,
-      "sha256": "837b0a5fefe84d5ccbed6bbb53bae1705fee35c70b03af883b7e2d9fcc2ab46a"
+      "bytes": 5946,
+      "sha256": "d7cbb5bcd79551a706dd110c194b44fa6603827711735a40e049386f51c2a939"
     },
     "agents/deployment/final-window/P09-USER-LOAD-FACTS.PUBLIC.py": {
       "bytes": 4854,
@@ -57,16 +58,16 @@
       "sha256": "b982c292f7713f93d2e67be254f57fe9354fb0f45f31be54f6b4f3e917835333"
     },
     "agents/deployment/final-window/P09-local-user-boundaries.PUBLIC.log": {
-      "bytes": 1760,
-      "sha256": "ae68e78b734f8373c95474e9a651efbafd1341464dfb8792bd2a68daa73b1138"
+      "bytes": 2183,
+      "sha256": "7003d6af9e59f6d52cc9ebfb555cb15dbb3a53b5d03468ab05b13640c52c5a2e"
     },
     "tmp/753_deployment_final_window/build_p09_handoff.py": {
-      "bytes": 6887,
-      "sha256": "267523c8affc8b95d929c00973db8d9def2ea4a7bb68dcebd50ca3833265db78"
+      "bytes": 8034,
+      "sha256": "d2c42383a6f27f302f7e5ac3e439291eb4349e27117dca89c466c1cb079f1603"
     },
     "tmp/753_deployment_final_window/test_p09_user_handoff_local.py": {
-      "bytes": 21484,
-      "sha256": "8df97d8be0805a66344e58440be99889effd3addcaa0cf07b461f225dad79158"
+      "bytes": 24887,
+      "sha256": "b63e283adf61f6179dcf03f936670d696b6034d8010d28848a7fc613fa607a21"
     }
   },
   "formal_P_measurement_completed": false,
@@ -83,6 +84,10 @@
     "freeze": 900,
     "load_arm": 300,
     "load_prepare": 300
+  },
+  "reviewed_boot_checks_before_mutation": {
+    "freeze": "actualAPPbtime_equals_newfee",
+    "load_prepare": "actualLOADbtime_equals_reviewedfacts"
   },
   "status": "LOCAL_VALIDATED_USER_EXECUTION_REQUIRED_NOT_REMOTE_TEST"
 }

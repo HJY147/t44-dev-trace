@@ -32,3 +32,5 @@ python3 P09-USER-COMMANDS.PUBLIC.py load-arm --root-reviewed-facts --load-facts 
 用户必须在 S−30之前执行 arm；新 helper SHA 绑定 prepare回执及LOAD实际文件，无第三次facts刷新。定时 S+1 执行原ENTRY；仅 S+1≤实际now<S+20接受，不能晚启动。原21字段默认值仅allow一项可变；原adapter/ENTRY/core未改。timer已arm不等于已经发压，通过必须以原独立报告为准。任何失败真实输出，不自动追加一轮。
 
 本地检查：`python3 -B tmp/753_deployment_final_window/test_p09_user_handoff_local.py`。测试包括真实collector主循环的虚拟366秒延迟、365秒截断JSON、永不出现/截止/超时、两行原字节解包；完整grant差分、S+1边界spy、四工具派生函数fixture及生成器链。它们不是远程演练，不证明镜像、盘上工件、云助手输出流式展示或正式压测成功。实际4件预镜像 SHA 在用户 APP执行时校验，未本地伪造为已读取云盘。
+
+审核窄修：freeze 在任何 put/stop/systemd-run 前实读 `/proc/stat` btime，与 fee 中 APP 当前 boot 精确比较；LOAD prepare 同样比较已审核 LOAD facts boot，重启后旧 facts 不可用。collector 首行仅 PUBLIC 文件立即 flush（元数据标记 pending），随后补完整 early 元数据；子命令共用 `min(总600秒,S−30)` 截止，每条最多5秒，Docker selected-format一次批量 inspect，命令超时明确 UNKNOWN，不作为无其他 writer 证明。DB counts/scope 尚在写入则 pending；总协调应使用 metadata齐备且对应本轮的 early/ready 行审核，UNKNOWN不可冒充完成。

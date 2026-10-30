@@ -102,7 +102,7 @@ with tempfile.TemporaryDirectory()as tmp:
   if tick[0]>=366:(c.F/c.PUBLIC[3]).write_bytes(originals[c.PUBLIC[3]])
  c.time.sleep=sleep;sys.argv=['collector','--wait-seconds','600'];out=io.StringIO()
  with contextlib.redirect_stdout(out):c.main()
- lines=out.getvalue().splitlines();assert len(lines)==2 and json.loads(lines[0])['event']=='EARLY_PUBLIC_MATERIAL' and json.loads(lines[1])['event']=='BOOTSTRAP_READY' and tick[0]==366
+ lines=out.getvalue().splitlines();assert len(lines)==3 and json.loads(lines[0])['event']=='EARLY_PUBLIC_MATERIAL' and json.loads(lines[-1])['event']=='BOOTSTRAP_READY' and tick[0]==366
  dest=r/'decoded'
  for line in lines:u.unpack(line,dest)
  assert all((dest/n).read_bytes()==b for n,b in originals.items())
@@ -160,3 +160,41 @@ with tempfile.TemporaryDirectory()as tmp:
  try:g.load_arm(types.SimpleNamespace(load_facts=lp,grant=gp,prepare_receipt=rp));raise AssertionError('prepare helper tamper accepted')
  except ValueError:pass
 print('LOCAL RECEIPT CHAIN PASSED: two original JSONL rows→byteexact import/bootstrap→LOADprepare generation embedding helper→original21-field default diff→SPLUS1 arm generation; helper tamper blocked. Only generators executed, no generated cloud/INSTALL/790/QA command executed.')
+# Execute real generated boot guard prefixes (not cloud commands), same/changed btime.
+import datetime
+for fn,expected_key in [(g.freeze,'actual_APP_resume_boot_utc'),(g.load_prepare,'expected_LOAD_boot_utc')]:
+ body=next(x for x in fn.__code__.co_consts if isinstance(x,str)and 'CURRENT_'in x and 'current_boot='in x)
+ prefix=body[:body.index("assert not Path(")]if fn==g.freeze else body[:body.index('assert time.time()')]
+ class Proc:
+  def read_text(self):return 'cpu 0\nbtime '+str(int(f.epoch('2026-10-30T03:40:00Z')))+'\n'
+ def pathonly(name):assert name=='/proc/stat';return Proc()
+ for seconds,allowed in [(0,True),(1,False)]:
+  expected=datetime.datetime.fromtimestamp(f.epoch('2026-10-30T03:40:00Z')+seconds,datetime.timezone.utc).isoformat();dd={'fee':{'actual_APP_resume_boot_utc':expected},'expected_LOAD_boot_utc':expected}
+  ns={'D':dd,'Path':pathonly,'datetime':datetime,'json':json,'original':lambda item:json.dumps(item).encode()}
+  try:exec(prefix,ns);assert allowed
+  except AssertionError as e:
+   if allowed:raise
+   assert 'CURRENT_'in str(e)
+ assert body.index('current_boot=')<body.index('put(')
+print('LOCAL GENERATED BOOT-GUARD PREFIXES PASSED: same btime accepts, changed APP/LOAD btime rejects before any put/stop/dispatch. No generated lifecycle or QA command executed.')
+# Real collector subprocess wrapper shares S-30 deadline, catches timeout; immediate line precedes subprocess.
+c=module('collector_timeout',D/'P09-USER-APP-COLLECT.PUBLIC.py')
+with tempfile.TemporaryDirectory()as tmp:
+ c.F=Path(tmp);tick=[0];c.time.monotonic=lambda:tick[0];c.time.time=lambda:now+tick[0];c.time.sleep=lambda seconds:tick.__setitem__(0,tick[0]+seconds)
+ clock={'run_id':'r30finalp09','start_utc':datetime.datetime.fromtimestamp(now+38,datetime.timezone.utc).isoformat()}
+ for n,v in [('preparation.PUBLIC.json',{'status':'PREPARING'}),('timeplan.PUBLIC.json',clock),('backend-import-receipt.PUBLIC.json',{})]:(c.F/n).write_text(json.dumps(v))
+ for rel in ['P-counts/output/result/counts.json','P-http/output/result/factual-snapshots.json']:
+  p=c.F/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('{')
+ out=io.StringIO();calls=[];original_run=c.subprocess.run
+ def timeout(argv,**kwargs):
+  assert out.getvalue().splitlines() and json.loads(out.getvalue().splitlines()[0])['event']=='EARLY_PUBLIC_MATERIAL'
+  calls.append((argv,kwargs['timeout']));tick[0]+=kwargs['timeout'];raise c.subprocess.TimeoutExpired(argv,kwargs['timeout'])
+ c.subprocess.run=timeout;sys.argv=['collector','--wait-seconds','600']
+ try:
+  with contextlib.redirect_stdout(out):c.main()
+ finally:c.subprocess.run=original_run
+ rows=[json.loads(x)for x in out.getvalue().splitlines()];assert tick[0]==8 and [x[1]for x in calls]==[5,3]
+ assert rows[-1]['event']=='PREPARATION_MARGIN_EXPIRED_NO_OVERRIDE';assert rows[-1]['metadata_status']=='UNKNOWN_PARTIAL'
+ assert rows[-1]['DB_readback_records']['seeded']['status']=='PENDING_INCOMPLETE_OR_REFUSED_NEUTRAL_JSON'and rows[-1]['scope']['status']=='PENDING_INCOMPLETE_OR_REFUSED_NEUTRAL_JSON'
+ assert all(x[0][:4]!=['docker','--context','default','inspect']or '--format'in x[0]for x in calls)
+print('LOCAL SHARED DEADLINE REAL-WRAPPER PASSED: PUBLIC flush precedes subprocess; timeout5+3 exhausts shared S-30 8s budget and records UNKNOWN; no uncaught TimeoutExpired, no134s serial inspections; truncated DB/scope pending. Pure subprocess spies only.')

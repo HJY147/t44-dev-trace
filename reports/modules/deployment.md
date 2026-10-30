@@ -676,3 +676,5 @@ User-operated P08: delivered local <=16KiB offline APP preparation paste and exp
 Complete local user handoff: offline APP v2 (8185B) and LOAD facts (6685B), automatic fact comparison, root-reviewed dynamic APPfreeze/LOADprepare/LOADarm local generators and unapproved templates. Reproducible synthetic boundary tests passed; raw log and SHA manifest retained. Dynamic boot/fee/platform/QA documents must come from actual new user facts, never guessed timestamps; all cloud commands are only generated for the user. No cloud execution/rehearsal/QA result or budget guarantee claimed.
 
 2026-10-30 P09动态用户手动交付已完成本地生成与边界测试，见agents/deployment/final-window/P09-user-handoff-manifest.PUBLIC.json和P09-USER-HANDOFF.PUBLIC.md。只读collector两阶段流式输出，有界600秒；APP freeze云助手需900秒。使用新实际boots/newfee/newplatformcutoff；旧55a4账期不可用。保留原测量合同和独立QA授权，未运行云命令、QA或正式压测；局部mock不能证明远端成功。
+
+P09复审限定项已修：实时boot绑定、collector先PUBLICflush/共享总截止/批量inspect/超时UNKNOWN/截断pending，本地负例通过；远端与正式压测仍未运行。
