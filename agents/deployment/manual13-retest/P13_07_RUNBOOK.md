@@ -29,7 +29,7 @@ python3 -B /root/t44-p13-material07-kit/run/manual13-resume07-prepare.py \
  --ack-exclusive-no-benchmark-or-other-writer --openssl openssl
 ```
 
-工具先查原工具/7容器/当前schema/800IDs/五表counts/active service，再停止原consumer/scheduler并稳定读回。若当前400确为state2且blocked_from_state全空，只记只读跳过恢复回执，不发维护HTTP；全当前scope/owner/role/version/time/window/fixture仍由原材料资格校验，不以06成功豁免。若当前确需合法恢复则由原helper全批门禁后原UNBLOCK，部分/未知保留不重试。后端契约da484fd8支持，未改runtime。
+工具先核原工具、历史五件绑定及原7容器身份，再停止原consumer/scheduler；writer停稳后只读核当前schema、800IDs、五表counts、active service及400任务状态。若当前400确为state2且blocked_from_state全空，只记只读跳过恢复回执，不发维护HTTP；全当前scope/owner/role/version/time/window/fixture仍由原材料资格校验，不以06成功豁免。若当前确需合法恢复则由原helper全批门禁后原UNBLOCK，部分/未知保留不重试。后端契约da484fd8支持，未改runtime。
 
 原链实际新发四会话、原CLI service凭据、DB读回、轮换精确scheduler目录绑定token、恢复原workers，再等待原持久扫描成功。必须是rotation后新started且新finished、status2、errorNone、scanned>0；旧scan92恢复进度/heartbeat不能替代。唯一部署变化：准备观察等待150→900秒，有界只读观察，不新增scanner或造业务事件，不改正式测量/原断言。此工具字节SHA已更新，wrapper必须匹配新pin。
 
