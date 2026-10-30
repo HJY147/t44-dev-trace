@@ -819,3 +819,5 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - root请求DB候选依赖已隔离4c71161f锁sqlglot30.25.0，唯一pin新增，其他依赖版本不动；未在共享runtime/云安装。若DB拒绝需要撤该独立依赖。微基准/精确cloc/免费native CI另随冻结SHA实证，不当规模或正式性能通过。0云/SUT/实际session。
 
 2026-10-31 ROLE-backend-CLAIM-INSERT-FIRST-20261031-v1: implemented source90b fresh-key INSERT-first candidate;140 original HTTP/fault tests and configured Ruff pass; SQL shape removes one fresh scope preselect. MySQL concurrency and performance pending, no cloud actions. See agents/backend/claim-insert-first/DESIGN.md.
+
+Isolation correction: exact90b engine.py97 READ COMMITTED; earlier RR gap-lock project attribution withdrawn. Candidate a2839e17 only proves one fresh-key query removed; RC duplicate-insert/savepoint retained-lock safety pending DB owner, integration not approved.

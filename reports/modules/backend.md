@@ -516,3 +516,5 @@ future运行时边界已明确：APP-only actualbinding官方backend8e，edge/UI
 2026-10-29最终候选：准确586独立树，九只读集合投影统一，20条Member/Dependency SQL22→3、23→4，完整payload/顺序/总数同；冻结schema缓存保原构造/URI算法、不evolve，动态schema含nested$id/late-$ref仍原行为，冻结错误迭代限100。188新差分1.27s+原305HTTP/domain29.92s通过，未改原断言。规模目标未证明、不能声称净减350-500；固定committed cloc另报。sqlglot30.25 root授权依赖隔离4c71161f且其他pin不变。0云/SUT/真实session；免费native796由准确冻结/集成CI另证，非本机305替代。详agents/backend/final-20261029。
 
 2026-10-31 ROLE-backend-CLAIM-INSERT-FIRST-20261031-v1: implemented source90b fresh-key INSERT-first candidate;140 original HTTP/fault tests and configured Ruff pass; SQL shape removes one fresh scope preselect. MySQL concurrency and performance pending, no cloud actions. See agents/backend/claim-insert-first/DESIGN.md.
+
+Isolation correction: exact90b engine.py97 READ COMMITTED; earlier RR gap-lock project attribution withdrawn. Candidate a2839e17 only proves one fresh-key query removed; RC duplicate-insert/savepoint retained-lock safety pending DB owner, integration not approved.
