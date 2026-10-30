@@ -847,3 +847,6 @@ Added original-device block counters to the same bounded observer: derive major:
 
 
 2026-10-31 / MATERIAL07现场：用户本轮开原LOAD/APP并授权正式复测。APP64CPU/七容器身份resource/42file包精确SHA通过，当前400state2跳维护HTTP。原材料07真实606请求/进程退出、新token轮换后freshscan97从17:19:03.739883Z开始至17:19:44.900425Z完成3000、status2/errorNone，APP-ready及continuation已正常exit0。schema只读原件/当前source/config/resource/全部中性PUBLIC与CMS已回收并校验；密文送LOAD新运输目录并直交独立岗。无QA/grant/benchmark部署执行，未新增诊断/AB/自动关机。公开摘要LIVE07-READY.PUBLIC.json，原件受限runtime不上传GitHub。
+
+
+2026-10-31 / P13正式观测：root确认actual-trigger17:30:24.753603Z后，仅执行原EARLY/LATE两12x5s有界观测（各120s上界），均exit0/12原样本、下载字节及SHA与APP一致。未读QA PRIVATE/metrics，未改服务/配置、不新增case/AB或自动关机。必要APP原件已回收，待root确认正式退出即可通知用户手动停机，不等LOAD密封或本地分析。证据LIVE07-OBSERVER.PUBLIC.json。
