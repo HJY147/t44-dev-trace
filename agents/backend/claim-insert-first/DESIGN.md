@@ -13,3 +13,7 @@ DB-owner interface: validate actual MySQL8.4 READ COMMITTED concurrent distinct 
 ## Isolation-level correction and pending blocker
 
 The initial design and earlier algorithm factpack cited possible RR empty-range locking without checking engine.py97. That project attribution was wrong: create_mysql_engine uses READ COMMITTED. No measured gap-lock causality was established. This correction supersedes that reasoning; historical evidence and old source remain unchanged. Candidate is not approved for integration. Real RC duplicate-insert exceptions may retain record/shared locks after SAVEPOINT rollback and create lock-upgrade deadlocks when multiple duplicate contenders subsequently FOR UPDATE. The DB owner is specifically testing this; a semantic counterexample must reject or revise the candidate. SQLite140 pass proves neither lock safety nor improvement. RR, if tested at all, is supplementary sensitivity only. Do not modify/poll other owners database processes.
+
+## Rejection after native RC verification
+
+REJECTED_NOT_FOR_INTEGRATION. DB owner MySQL8.4.11/READ COMMITTED16 same-new-key: candidate1 claimed+4 normal IN_PROGRESS+11 PersistenceUnavailable/driver1213 deadlocks. Original90b:1 claimed+15 normal IN_PROGRESS and no driver errors;10 original boundary cases pass. Evidence owned by database-claim-validation-20261031/agents/database/claim-insert-first-native/{candidate3,baseline1}.PUBLIC.json. No blind retries or assertion changes; this branch is experimental failure evidence only.
