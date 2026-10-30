@@ -819,3 +819,5 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - root请求DB候选依赖已隔离4c71161f锁sqlglot30.25.0，唯一pin新增，其他依赖版本不动；未在共享runtime/云安装。若DB拒绝需要撤该独立依赖。微基准/精确cloc/免费native CI另随冻结SHA实证，不当规模或正式性能通过。0云/SUT/实际session。
 
 2026-10-31 ROLE-backend-LOCKED-TASK-REUSE-v1: second candidate original90b claim retained, same-main locked target reuse;137 original tests pass/3 exact SQL count fails retained,4 context checks pass, Ruff pass. No cloud/performance; native RC and test-owner reconciliation pending. See agents/backend/locked-task-reuse/DESIGN.md.
+
+2026-10-31 ROLE-backend-NEW-SOURCE-MATERIAL-v2: explicit old90b history/new13ac rawsource/bundle/actualimport dualchain tooling, packet legacy81e vs QA9cf kept distinct;7 offline synthetic tests+3.10 AST. No product or cloud action; live08 admission pending. See agents/backend/new-source-material/RUNBOOK.md.
