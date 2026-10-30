@@ -55,3 +55,5 @@
 后续经授权自行元数据定位原工具白名单并全部hash核实。新v5.2仅Sink/元数据/producer绑定及adapter CORE；21项日志/raw单元与1项合成default-false prepare测试通过。准确freeze在reports/independent-tests/next-offline-20261031/RELEASE_V52.PUBLIC.json。离线准备完成，真实环境准入BLOCKED；未读旧key、token、结果，未SSH/云/SUT/发grant。
 
 按新授权补齐可运输密文包及PUBLIC INSTALL：新backup/transport key独立产生，旧LOAD公钥DER指纹核实，仅公钥读取；8项本地安装/运输测试通过；具体PUBLIC目录records/qa/next-install-v52.PUBLIC。未执行Docker/真实安装/云/SSH/SUT或allow=true。
+
+p14 PUBLIC控制补充：OBSERVE原字节复用；旧p12 SEAL/issuer不得复用，已新发SEAL_P14_V52.sh与ISSUE_ONCE_P14.py及未批准decision模板，见records/qa/p14-public-controls-v52。6项纯本地控制自检通过，未生成任何实际grant，未运行Docker/封存/SUT。
