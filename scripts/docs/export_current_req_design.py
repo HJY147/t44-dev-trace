@@ -204,6 +204,8 @@ def table(doc, lines, source, root, cutoff):
             for edge in ['top','left','bottom','right']:
                 b = OxmlElement('w:'+edge);b.set(qn('w:val'),'single');b.set(qn('w:sz'),'4');b.set(qn('w:color'),'D9D9D9');borders.append(b)
             tcpr.append(borders)
+            if index > 0 and index % 2 == 0:
+                stripe=OxmlElement('w:shd');stripe.set(qn('w:fill'),'F5F5F5');tcpr.append(stripe)
             if index == 0:
                 shading=OxmlElement('w:shd');shading.set(qn('w:fill'),'E8EEF3');tcpr.append(shading)
             para=c.paragraphs[0];para.paragraph_format.space_after=Pt(0);para.paragraph_format.line_spacing=Pt(14)

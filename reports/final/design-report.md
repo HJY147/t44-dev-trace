@@ -242,14 +242,16 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 
 新增K个前驱时，当前算法构建项目邻接表，对每个新增前驱各自重置visited并作迭代DFS，遇目标即拒绝。项目N节点、E边，最坏Python遍历O(K(N+E))，内存O(N+E)；完整项目边读取还产生O(E)结果传输，不能用一次共享visited的O(N+E)描述现行实现。
 
-任务转换对D个前驱作O(D)状态检查，取行和有序锁定含O(DlogD)排序及D次数据库往返。CAS虽作用一行，仍有索引、锁、日志和提交成本。待优化的重复查找与同事务已锁行复用尚未实施，不能在设计图中画成已消除所有往返；任何优化仍须保留最新权限、版本、依赖和错误次序。
+任务转换对D个前驱作O(D)状态检查，取行和有序锁定含O(DlogD)排序及D次数据库往返。CAS虽作用一行，仍有索引、锁、日志和提交成本。重复查找与同事务已锁行复用尚未纳入本报告的90b产品基线，不能在设计图中画成已消除所有往返；任何优化仍须保留最新权限、版本、依赖和错误次序。
 
 ## 15 存储对象与约束设计索引
 
 字段以冻结DDL为准，最小类型、空值和约束逐表审核；下表提取实际列声明用于查找，不代替完整外键/CHECK与字段语义。迁移表不混计为业务表。
 
 
-### users
+### 用户
+
+物理表名：`users`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -262,7 +264,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### service_accounts
+### 服务主体
+
+物理表名：`service_accounts`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -272,7 +276,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### auth_sessions
+### 认证会话
+
+物理表名：`auth_sessions`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -288,7 +294,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### projects
+### 项目
+
+物理表名：`projects`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -301,7 +309,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### project_members
+### 项目成员
+
+物理表名：`project_members`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -315,7 +325,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### iterations
+### 迭代
+
+物理表名：`iterations`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -333,7 +345,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### tasks
+### 任务
+
+物理表名：`tasks`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -365,7 +379,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### task_dependencies
+### 任务依赖
+
+物理表名：`task_dependencies`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -377,7 +393,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### reviews
+### 评审
+
+物理表名：`reviews`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -397,7 +415,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### release_assessments
+### 上线评估
+
+物理表名：`release_assessments`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -419,7 +439,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### decisions
+### 决定
+
+物理表名：`decisions`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -438,7 +460,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | decided_at | DATETIME(6) NOT NULL |
 
 
-### schedule_changes
+### 排期变更
+
+物理表名：`schedule_changes`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -456,7 +480,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | changed_at | DATETIME(6) NOT NULL |
 
 
-### audit_events
+### 审计事件
+
+物理表名：`audit_events`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -479,7 +505,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### idempotency_requests
+### 幂等请求
+
+物理表名：`idempotency_requests`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -499,7 +527,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | completed_at | DATETIME(6) NULL |
 
 
-### outbox_events
+### 待投递事件
+
+物理表名：`outbox_events`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -522,7 +552,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | updated_at | DATETIME(6) NOT NULL |
 
 
-### escalation_events
+### 升级事件
+
+物理表名：`escalation_events`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -540,7 +572,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | event_id | INT UNSIGNED NOT NULL |
 
 
-### notifications
+### 通知
+
+物理表名：`notifications`。
 
 | 字段 | 存储声明 |
 |---|---|
@@ -561,7 +595,9 @@ consumer: 校验消息 → 数据库权威事件/锁outbox → 幂等写通知�
 | created_at | DATETIME(6) NOT NULL |
 
 
-### scan_runs
+### 扫描运行
+
+物理表名：`scan_runs`。
 
 | 字段 | 存储声明 |
 |---|---|
