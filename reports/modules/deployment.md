@@ -682,3 +682,6 @@ P09复审限定项已修：实时boot绑定、collector先PUBLICflush/共享总�
 
 ## 2026-10-30 root takeover: preparation progress evidence
 Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten. Five offline regression cases and the existing complete local handoff chain passed. No cloud actions or pressure result. Prompt ROOT-P09-PROGRESS-EVIDENCE-20261030; Unpack-only independent review subsequently PASS: 5 tests plus independent fixed-three-file and symlink negatives; source SHA bound in tmp/750_p09_root_handoff/review-received.PUBLIC.json.
+
+## 2026-10-30 manual-ready transport closure
+The new independent manual-handoff directory contains a local public-package receiver and standard CMS host-five transport with three user-run CLI stages. Offline tests passed using original public archive/bootstrap bytes and synthetic private fixtures only; logs and manifest bind the evidence. CMS restores all five unchanged bytes under opened/inputs, avoids old790/C, and leaves manual QA authorization intact. No product/QA change, remote transport verification, cloud execution or performance acceptance occurred. Prompt record: records/prompts/DEPLOY-MANUAL-CMS-20261030.PUBLIC.json.

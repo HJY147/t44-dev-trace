@@ -3135,5 +3135,20 @@
     "cloud_actions": 0,
     "formal_pressure_completed": false,
     "independent_review": "PASS: limited local unpack review; raw SHA bound in tmp/750_p09_root_handoff/review-received.PUBLIC.json"
+  },
+  "manual_CMS_user_transport": {
+    "status": "LOCAL_VALIDATION_PASSED_NOT_REMOTE_TESTED",
+    "manifest": "agents/deployment/manual-handoff/manifest.PUBLIC.json",
+    "instructions": "agents/deployment/manual-handoff/CMS-SCP.PUBLIC.md",
+    "test_commands": [
+      "python3 -B tmp/748_manual_transport/test_public_transport.py",
+      "python3 -B tmp/748_manual_transport/test_cms_five.py"
+    ],
+    "source_and_QA_package_unchanged": true,
+    "private_credentials_or_QA_PRIVATE_read": false,
+    "cloud_or_SSH_actions": 0,
+    "formal_measurement_completed": false,
+    "required_next": "User-controlled existing LOAD SSH/file transfer verification, then APP decision; original independent QA prepare/grant/execute remains required",
+    "prompt_id": "DEPLOY-MANUAL-CMS-20261030"
   }
 }
