@@ -15,3 +15,6 @@ Coordinator requested read-only original-observer expansion for redo/checkpoint/
 # ROLE-deployment-MANUAL13-DISK-OBSERVE-v1
 
 Coordinator requested device major:minor mapping from owned cgroup io.stat to host/proc/diskstats and minimal sysfs metadata, with IO pressure, strict missing/reset handling and no utilization/quota inference. Keep120s bound and no-cloud boundary; obtain real local SQL dictionary only through root/DB owner.
+
+
+ROLE-deployment-P13-STORAGE-READY-v1：总协调指定存储唯一候选，source90b/原7镜像/已应用schema不变，用户不要额外AB；完成06精确wrapper、原工具复用及字典原字节解析，准备后再开机，禁止云SSH/SUT。真实字典revealed冒号instrument兼容问题，限定修复并保留旧观测缺失解释。

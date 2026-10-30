@@ -312,7 +312,7 @@ def mysql_waits(container):
                 if not coverage['instruments'] or max(coverage['enabled_instruments'], coverage['timed_instruments']) > coverage['instruments']:
                     raise ValueError('WAITS_INSTRUMENT_COVERAGE_UNAVAILABLE')
                 continue
-            if (len(fields) != 7 or not re.fullmatch(r'wait/(?:io/file|synch/(?:mutex|rwlock|sxlock|cond))/[A-Za-z0-9_./-]{1,160}', fields[0])
+            if (len(fields) != 7 or not re.fullmatch(r'wait/(?:io/file|synch/(?:mutex|rwlock|sxlock|cond))/[A-Za-z0-9_./:-]{1,160}', fields[0])
                     or fields[0] in seen or fields[1] not in ('YES', 'NO') or fields[2] not in ('YES', 'NO')
                     or any(not value.isdigit() for value in fields[3:])):
                 raise ValueError('WAITS_EVENT_NUMERIC_PROJECTION_REQUIRED')

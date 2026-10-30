@@ -1,10 +1,10 @@
 {
-  "status": "OFFLINE_PROJECTION_CHECKED_MYSQL84_AND_LINUX_VALIDATION_PENDING",
+  "status": "OFFLINE_AND_NATIVE_PUBLIC_DICTIONARY_PARSE_CHECKED_LINUX_PENDING",
   "issue": 47,
   "source_original_sha256": "7f323030a0cd1f7ebede4bffa2878fbb216d1b9ebca994d594abfa3a730b3dc0",
-  "observer_sha256": "52c3e7850e01d6c117c65c6efd00fe79f47825644fd0e1ed9f18116b4d392535",
+  "observer_sha256": "67cb55f1d958f2245de464518dcfb6bf545e0755f99ca913f488c490f2a13c45",
   "offline_tests_passed": 17,
-  "real_mysql84_sql_checked": false,
+  "real_mysql84_sql_checked": true,
   "additional_bounded_queries_per_sample": 1,
   "docker_command_calls_per_sample_spy": 20,
   "original_deadline_seconds": 120,
@@ -14,8 +14,8 @@
   "read_only": true,
   "files": {
     "deployment/cloud-reuse/manual13-observe.py": {
-      "bytes": 26091,
-      "sha256": "52c3e7850e01d6c117c65c6efd00fe79f47825644fd0e1ed9f18116b4d392535"
+      "bytes": 26092,
+      "sha256": "67cb55f1d958f2245de464518dcfb6bf545e0755f99ca913f488c490f2a13c45"
     },
     "agents/deployment/manual13-retest/test_observer.py": {
       "bytes": 13337,
@@ -23,7 +23,7 @@
     },
     "agents/deployment/manual13-retest/observer-offline-checks.log": {
       "bytes": 116,
-      "sha256": "42e0f8db8968a646d85a7742f25969a30a439788af0b1b66c4cf035b2123532b"
+      "sha256": "4daab40b5c31aee0924067166c7d6b2cc07596caa8d23a9055cd15c5bb3c6bb9"
     },
     "agents/deployment/manual13-retest/observer-dictionary-queries.PUBLIC.json": {
       "bytes": 3321,
@@ -33,5 +33,6 @@
   "linux_host_counter_checked": false,
   "host_diskstats_reads_per_sample": 1,
   "sysfs_mapping_devices_maximum": 32,
-  "actual_disk_limits_or_utilization_inferred": false
+  "actual_disk_limits_or_utilization_inferred": false,
+  "real_mysql84_scope": "database owner executed static dictionaries; deployment parsed exact public CLI output; no database started by deployment"
 }

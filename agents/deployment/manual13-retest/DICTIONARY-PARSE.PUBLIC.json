@@ -1,0 +1,308 @@
+{
+  "cloud_or_database_calls": 0,
+  "linux_counter_validation": false,
+  "observer_sha256": "67cb55f1d958f2245de464518dcfb6bf545e0755f99ca913f488c490f2a13c45",
+  "original_observer_sha256": "52c3e7850e01d6c117c65c6efd00fe79f47825644fd0e1ed9f18116b4d392535",
+  "receipt_sha256": "d10eece907b59bb3e443ee5d96bc3e8d7e3cf96c162f24ad5f64a6d554137f5e",
+  "results": {
+    "config": {
+      "available": true,
+      "unavailable_fields": [],
+      "values": {
+        "innodb_autoinc_lock_mode": 2,
+        "innodb_buffer_pool_instances": 1,
+        "innodb_buffer_pool_size": 134217728,
+        "innodb_dedicated_server": 0,
+        "innodb_flush_log_at_trx_commit": 1,
+        "innodb_flush_neighbors": 0,
+        "innodb_io_capacity": 10000,
+        "innodb_io_capacity_max": 20000,
+        "innodb_log_buffer_size": 67108864,
+        "innodb_page_size": 16384,
+        "innodb_redo_log_capacity": 104857600,
+        "sync_binlog": 1
+      }
+    },
+    "status": {
+      "aggregates": {
+        "CAPACITY": {
+          "max_connections": 151
+        },
+        "DIGEST_TOTAL": {
+          "count_star": 8,
+          "digest_rows": 6,
+          "sum_lock_time_ps": 3000000,
+          "sum_rows_examined": 43,
+          "sum_timer_wait_ps": 2439000000
+        },
+        "FILE_IO_TOTAL": {
+          "bytes_read": 233308346,
+          "bytes_write": 118398622,
+          "count_read": 21268,
+          "count_write": 335,
+          "sum_timer_read_ps": 100253559000,
+          "sum_timer_write_ps": 12404468000
+        },
+        "LOCKS": {
+          "data_lock_waits_count": 0
+        }
+      },
+      "checkpoint_age": {
+        "available": true,
+        "bytes": 53239,
+        "meaning": "point-in-time current_lsn minus checkpoint_lsn, not request latency",
+        "source_fields": [
+          "Innodb_redo_log_current_lsn",
+          "Innodb_redo_log_checkpoint_lsn"
+        ]
+      },
+      "redo_resize_status": {
+        "Innodb_redo_log_resize_status": "OK"
+      },
+      "scope": "global cumulative counters; reset/restart and observer contribution must be considered",
+      "sql_text_or_digest_text_collected": false,
+      "status": {
+        "Com_commit": 0,
+        "Com_rollback": 0,
+        "Connections": 9,
+        "Handler_commit": 645,
+        "Innodb_buffer_pool_bytes_data": 85426176,
+        "Innodb_buffer_pool_bytes_dirty": 622592,
+        "Innodb_buffer_pool_pages_data": 5214,
+        "Innodb_buffer_pool_pages_dirty": 38,
+        "Innodb_buffer_pool_pages_flushed": 142,
+        "Innodb_buffer_pool_pages_free": 2977,
+        "Innodb_buffer_pool_pages_total": 8192,
+        "Innodb_buffer_pool_read_requests": 20124,
+        "Innodb_buffer_pool_reads": 5069,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 81,
+        "Innodb_data_read": 83151360,
+        "Innodb_data_reads": 5152,
+        "Innodb_data_writes": 329,
+        "Innodb_data_written": 2416128,
+        "Innodb_log_waits": 0,
+        "Innodb_log_writes": 18,
+        "Innodb_os_log_fsyncs": 26,
+        "Innodb_os_log_written": 66560,
+        "Innodb_redo_log_capacity_resized": 104857600,
+        "Innodb_redo_log_checkpoint_lsn": 1851332309,
+        "Innodb_redo_log_current_lsn": 1851385548,
+        "Innodb_redo_log_flushed_to_disk_lsn": 1851385548,
+        "Innodb_redo_log_logical_size": 53760,
+        "Innodb_redo_log_physical_size": 3276800,
+        "Innodb_row_lock_current_waits": 0,
+        "Innodb_row_lock_time": 0,
+        "Innodb_row_lock_waits": 0,
+        "Max_used_connections": 1,
+        "Threads_connected": 1,
+        "Threads_running": 2,
+        "Uptime": 1
+      },
+      "unavailable_status_fields": [
+        "Binlog_commits",
+        "Binlog_group_commits",
+        "Innodb_lsn_current",
+        "Innodb_lsn_flushed",
+        "Innodb_lsn_last_checkpoint"
+      ],
+      "unavailable_text_status_fields": []
+    },
+    "waits": {
+      "available": true,
+      "coverage": {
+        "count_star": 22121,
+        "enabled_instruments": 9,
+        "instruments": 115,
+        "sum_timer_wait_ps": 169927237000,
+        "timed_instruments": 9
+      },
+      "scope": "selected global cumulative instrument counters; disabled or untimed instrumentation is not zero waiting",
+      "sql_text_or_parameters_collected": false,
+      "top20_by_cumulative_timer": [
+        {
+          "count_star": 5547,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_data_file",
+          "max_timer_wait_ps": 2447114000,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 72654411000,
+          "timed": true
+        },
+        {
+          "count_star": 340,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_log_file",
+          "max_timer_wait_ps": 9226809000,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 58874463000,
+          "timed": true
+        },
+        {
+          "count_star": 16134,
+          "enabled": true,
+          "event_name": "wait/io/file/sql/binlog",
+          "max_timer_wait_ps": 923236000,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 33022279000,
+          "timed": true
+        },
+        {
+          "count_star": 10,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_dblwr_file",
+          "max_timer_wait_ps": 2202348000,
+          "min_timer_wait_ps": 3375000,
+          "sum_timer_wait_ps": 3003615000,
+          "timed": true
+        },
+        {
+          "count_star": 90,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_temp_file",
+          "max_timer_wait_ps": 114487000,
+          "min_timer_wait_ps": 417000,
+          "sum_timer_wait_ps": 2372469000,
+          "timed": true
+        },
+        {
+          "count_star": 0,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_arch_file",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": true
+        },
+        {
+          "count_star": 0,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_clone_file",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": true
+        },
+        {
+          "count_star": 0,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/innodb_tablespace_open_file",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": true
+        },
+        {
+          "count_star": 0,
+          "enabled": true,
+          "event_name": "wait/io/file/innodb/meb::redo_log_archive_file",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": true
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/cond/innodb/commit_cond",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/cond/innodb/resume_encryption_cond",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/ahi_enabled_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/alter_stage_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/autoinc_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/autoinc_persisted_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/buf_pool_chunks_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/buf_pool_flush_state_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/buf_pool_free_list_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/buf_pool_LRU_list_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        },
+        {
+          "count_star": 0,
+          "enabled": false,
+          "event_name": "wait/synch/mutex/innodb/buf_pool_zip_free_mutex",
+          "max_timer_wait_ps": 0,
+          "min_timer_wait_ps": 0,
+          "sum_timer_wait_ps": 0,
+          "timed": false
+        }
+      ]
+    }
+  },
+  "scope": "native MySQL dictionary CLI parse only, not live permissions or IO validation",
+  "status": "NATIVE_PUBLIC_CLI_BYTES_PARSED"
+}
