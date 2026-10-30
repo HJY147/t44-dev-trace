@@ -2,7 +2,7 @@
 
 操作者为deployment AI，无SSH/云操作/压力测试。准确产品源13acb43a804e717e7485091895378511fe3d9b76，产品字节来自a59a90a1，后续两个提交只维护开发测试。
 
-第一构建run41111887081真实失败。起初按旧generic cloud-image-bundle manual桥，实际拒绝DEPENDENCY_LOCK_CHANGED_REVIEW_REQUIRED；原脚本锁3b15a7，而当前已审源码锁6150cc（历史提交359925e6加入sqlglot）。原failure artifact及完整failed-job日志gzip/SHA保留。无镜像已构建/下载成功声明。
+run41111887081是失败的历史构建尝试；正确构建run41112638628已成功且产物已下载核验。第一构建run41111887081真实失败。起初按旧generic cloud-image-bundle manual桥，实际拒绝DEPENDENCY_LOCK_CHANGED_REVIEW_REQUIRED；原脚本锁3b15a7，而当前已审源码锁6150cc（历史提交359925e6加入sqlglot）。原failure artifact及完整failed-job日志gzip/SHA保留。无镜像已构建/下载成功声明。
 
 改用本项目此前成功的final-image-bundle workflow400555323。当前实现ref codex/deployment-final-window=e523bf082a95f3af70697bcf4d3a00a4cfddde8e，相比此前成功run40928393094的3175dc8，workflow和适配器文件无diff。其从准确source导出lock、逐字验证context与source lock、核runtime uid/origin/全文件字节，保留generic门禁本体，不是删除锁检查。两新应用镜像运输包继承既有五基础服务镜像，不覆盖已有数据卷。新run41112638628构建中，精确输入仍13ac，当前不代表发布准入或性能通过。
 
@@ -13,3 +13,5 @@
 追加root授权：提供只读locked-task-plan.py，精确七角色身份/资源与原config SHA门禁，输出新/回滚overlay及显式apply命令。完整Env/Cmd和worker/pool一致性仍由root现场preflight，未伪称已验证。只做静态/参数拒绝，无Docker调用或线上变更。
 
 静态补查：PATH无ruff（127），改用已存在database-scale-r29-venv的ruff；首轮I001/F401（import排序/未使用os）真实失败，自动修正后format及check通过，diff --check通过。无依赖安装。
+
+执行边界澄清：read-only planner只产生当时观察的计划，不是防篡改执行器。执行前任何config、环境或overlay漂移均使旧计划失效，必须重新plan，再次核对hash、七角色、镜像与配置后才可执行明确命令。独立测试岗22+8项工具自测不属于部署runner证据，本岗仅声明上述实际静态与参数拒绝检查。

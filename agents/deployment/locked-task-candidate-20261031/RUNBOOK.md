@@ -30,3 +30,5 @@ python3 deployment/cloud-reuse/locked-task-plan.py   --expected CURRENT_SEVEN_PU
 替换后重新观察全部七角色，核基础设施ID/卷不变，应用镜像ID为本包、平台/实际source/runtime正确，Env/Cmd、worker/pool、限制、网络/挂载/TLS/健康与原配置一致；原resume脚本硬钉旧七ID，不能用于替换后的成功声明。旧scheduler服务会话自然可能过期，需沿原合法材料入口重新发行/原子轮换，并由新独立冻结准入流程检查；本岗不生成测试grant。任何失败保留前缀，按rollback overlay恢复原应用镜像；不删卷、不重建schema、不seed。
 
 本地只执行py_compile、--help与错误manifest参数拒绝（在Docker调用前且无输出目录）；未运行现场planner/import/apply/rollback，未证明当前七角色配置或部署成功。
+
+执行前若config、环境或overlay发生任何漂移，旧计划立即失效：必须重新plan，再次核对hash、七角色身份、镜像与完整配置。只读planner不是防篡改执行器；不能在生成计划后跳过执行时核验。独立测试岗的工具自测与本部署runner验证分别记录，不互相替代。
