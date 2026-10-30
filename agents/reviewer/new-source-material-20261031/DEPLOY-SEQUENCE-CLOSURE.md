@@ -1,0 +1,11 @@
+# Material08 integrated offline tool review closure
+
+Exact deployment06e0abc516dd0bcd7651d6dbb36cf3f737e299c6 plus backend4a5401ac. Supersedes earlier5a47 scan findings without rewriting historicalreport. Prompt-Ref review_p13_preparation/material08-deployment-closure.
+
+Strict monotonic check after nativecommand returns now rejects t901success under900budget with POST_COMMAND_SCAN_DEADLINE_EXCEEDED and no scannerreceipt. CLIrequires --material, validatedFRESH_MATERIAL status/run08/actualprocess_exit proof, rotation.material_sha256 == currentrawmaterialSHA, rotation.scheduler_id == currentapprovedsnapshot schedulerID, rotationUTC/nonfuture. Original freshstarted/finished>=rotation, status2,noerror,positive scanned_count unchanged. CurrentAPIsnapshot/image preflight remains, no alternate scanner or synthetic business event added. RUNBOOK passes correct currentmaterial path.
+
+Reviewer reran7 purelocal observerchecks, allpassed (positivebinding, historicalhash, wrongscheduler, unapprovedsnapshot, old07/noexit, future/nonUTC/naive, late900boundary). All deploymentmanifestfiles and everybackendpin matched exact4a Git objects; Python3.10 AST passed. NoDocker/network/DB/product suite/cloud/SSH/SUT/independentPRIVATE or session issuance. Maintenancev3 prior400/800/fullbatchscope/role/version/horizon/audit/inspectprevious and actualimport canonicalstat bindings remain; originalatomicrotationbytesSHA47640... unchanged. False/empty currenttemplates and absenceofVMstop/seed/newtask/DDL preserved.
+
+Final verdict INTEGRATED_OFFLINE_TOOLS_REVIEW_NO_BLOCKER_LIVE_GATES_PENDING. Root may freeze exactreviewed offlinekit; no actualimport/deployment/material08/rotation/fullscan/QAidentity/prepare/grant/execute or performanceacceptance approved. Productsource13ac/performanceUNMEASURED and originalp13NP unchanged. Localtoolcorrectness is not neutralcurrentfacts.
+
+Nonblocking observation-retention note sentroot/owner: strictdeadline check currently precedes writing the last returned observation; a latecommand result is rejected and no scannerreceipt is emitted, but that lastreturnedrow is not saved aslate. Earlier observations/prefix remain; no false success. A future small improvement may recordlateclassified data before raising. This note does not reopen the two original acceptance-safety findings or require a productrerun.
