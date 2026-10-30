@@ -50,3 +50,9 @@ P7后发实测：8000/8000请求、零HTTP错，四类P95仍1370–1840ms，资�
 
 
 2026-10-31 / U-storage-upgrade-20261031：复核原公开CPU/IO证据，记录用户PL0 40GiB参数及直接PL1升级后正式复测路线，不再安排AB。实际升级和正式测试未执行。详情 agents/coordinator/storage-upgrade-20261031/CHECK.md。
+
+
+2026-10-31 / U-storage-upgrade-confirmed-20261031：用户报告APP云盘PL1/40GiB/3800IOPS；记录为用户证据，未冒称现场核实。候选限定存储升级，协调backend material06、deployment启动包及隔离p13 PUBLIC接口准备，不启动服务器或额外AB。
+
+
+2026-10-31 / U-storage-upgrade-confirmed-20261031：32文件p13/06整包SHA 3c0b6548f9aefbe6299bd0834cba563806ba78d122febadfebf6bfd4fa788e25；整包/归档/语法及旧run、篡改拒绝核验通过。backend9558dd42无需改产品，deployment0fd91a62修正新入口和真实MySQL instrument冒号解析，独立PUBLIC725cd78c无实际许可。只存储候选，无额外AB；当前SSH/盘映射/会话/独立准入/正式复测尚未执行。交接见agents/coordinator/manualp13-preparation/DELIVERY.PUBLIC.json。

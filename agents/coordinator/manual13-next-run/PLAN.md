@@ -17,9 +17,11 @@ Independent response-header analysis places most measured latency inside the ser
 - Per-request engine rebuild: LazyFactory is cached perworker; not supported by source.
 - Table row count alone:64-client local claim baseline at0 versus501280 synthetic existing rows did not reproduce the cloud wait.
 
-## Current bounded local experiment
+## Completed local experiment and selected candidate
 
-Exclusive local MySQL8.4; exact frozen schema and equal synthetic table clones,100MiB versus1GiB redo capacity;64 clients,20s warmup plus180s measurement each,2s checkpoint/IO samples. Flush-on-commit1 and sync_binlog1 stay unchanged. AB ordering, host cache effects, local1GiB buffer versus cloud8GiB, and omission of HTTP/audit/outbox from the claim fragment must be reported. A capacity change is not an adopted cloud fix until results support it.
+The exclusive local redo comparison has completed (database commit26f47fec); no latency benefit was observed, so no redo change is adopted. Global pool reset=None remains rejected. No further AB experiment is planned, per the user's explicit request.
+
+On2026-10-31 the user reported the APP's ESSD changed from PL0 to PL1,40GiB/3800IOPS. This is user-provided console evidence, not an agent live cloud readback. The candidate retains exact source90b, original seven images and applied schema indexes; only storage tier changes. DiskID, effective tier and actual MySQL volume mapping remain to be read back on the next live preparation.
 
 ## Next-run preparation
 
