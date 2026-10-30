@@ -3868,5 +3868,25 @@
     "grouped_source_evidence": "agents/backend/manual11-latency-20261030/source-groups-candidate.json",
     "source_grouping_reference_commit": "6a17d788",
     "integration_state": "CANDIDATE_PRESERVED_NOT_INTEGRATED_PENDING_DIRECT_ROOT_CAUSE_EVIDENCE"
+  },
+  "manual11_cohort_maintenance_20261030": {
+    "prompt_ref": "ROLE-backend-MANUAL11-MAINTENANCE-20261030-v1",
+    "operator": "backend AI author; coordinator remote executor",
+    "helper": "agents/backend/manual11-maintenance/restore_transition_cohort.py",
+    "sha256": "b435efab94f32d341967a680e60ce53a6974045c446c941f13021f91e6c820b0",
+    "status": "OFFLINE_HELPER_READY_NOT_REMOTE_EXECUTED_BY_BACKEND",
+    "mock_checks_passed": 4,
+    "mock_seconds": 0.004,
+    "target_existing_tasks": 400,
+    "expected_observed_blocked": 138,
+    "expected_http_requests": 939,
+    "new_tasks": 0,
+    "product_or_db_changes": false,
+    "cloud_connections_by_backend": 0,
+    "private_test_accessed": false,
+    "unknown_write_retry": false,
+    "login_issuance_is_side_effect_even_on_later_failure": true,
+    "transport": "TCP192.168.96.4:8443 original HTTPS172.21.182.245:26445 strict CA/certificate identity",
+    "next": "Coordinator runs reviewed helper in new output dir; preserve material04 and separately create material05 and p12 grant"
   }
 }

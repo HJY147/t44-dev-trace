@@ -523,3 +523,7 @@ future运行时边界已明确：APP-only actualbinding官方backend8e，edge/UI
 - I/O: frozen API1.2.0 and status/error/response contracts unchanged. Upstream coordinator owns APP/DB wait evidence and any future formal admission. This candidate alone cannot support claiming P95 fixed.
 - Final configured149passed/31.58s; baseline5invalidation passed too. Frozen clocFAIL persists:90b5818→candidate5821(+3), ceiling5100. Product commit5331b658; source gate is not waived and no full-performance success claimed.
 - Existing user-adopted core grouping (6a17d788 final report) gives62files5038→5041; auxiliary3files780 unchanged. Original full65files5818→5821FAIL retained. `source-groups-candidate.json` verifies exact membership against original cloc output. Candidate remains not integrated pending direct root-cause evidence.
+
+## 2026-10-30 Existing400 cohort maintenance helper
+- `agents/backend/manual11-maintenance/restore_transition_cohort.py`, prompt `ROLE-backend-MANUAL11-MAINTENANCE-20261030-v1`; standalone no product/DB changes. Reads original P09packet/accounts/CA, TLS-pinned existing internal gateway, fresh developer HTTPS login; all400GET preflight, owned state3/from2 UNBLOCK with actualversion, state2skip,400finalGET state2/version proof.
+- New PUBLIC logs/summary preserve side effects/failures and exclude token/password. Old material04 unmodified; no seed/newtask/retry. Expected939HTTP given138blocked. stdlib compile and4fake-API checks passed; no cloud execution performed by backend role. Coordinator executes and owns material05/p12 admission separately.

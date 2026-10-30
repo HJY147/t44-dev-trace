@@ -826,3 +826,9 @@ root实际预备LOAD keygen校验t-hz071f0gt2fylts在调用/新目录创建前�
 - Harness errors and limits are recorded in report; local SQLite cannot establish remote MySQL locks or formal P95.
 - Final configured149passed/31.58s with one upstream warning. Product commit5331b658; pinned clocFAIL baseline5818/candidate5821(+3), ceiling5100. Coordinator notified of inherited and candidate source-budget failure; unrelated source not changed.
 - Source grouping clarification verified from committed6a17d788 final reports: existing core62files5038→5041; auxiliary3files780 unchanged; original full65files5818→5821 remainsFAIL. Same cloc per-file output, no checker/threshold change. GET candidate is preserved/not integrated pending direct root-cause evidence. Database scanning hypothesis belongs to database owner via coordinator.
+
+## 2026-10-30 MANUAL11 original400 UNBLOCK maintenance preparation
+- Backend AI, `ROLE-backend-MANUAL11-MAINTENANCE-20261030-v1`, coordinator urgent dispatch. Authored standalone stdlib HTTPS helper under `agents/backend/manual11-maintenance/`, no product change/cloud execution.
+- Fixed current internal gateway TCP with original origin/strict CA+certificate identity; reads only original packet/account/CA, real developer login, preflights400GET before any mutations, UNBLOCK only state3/from2/owned rows using actual versions, skips state2, final400GETs state2/version evidence.
+- No DB/seed/newtask/expiry/inventory/material04 rewrite/retry. Partial successful actions and real login issuance are retained, not called rollback. PUBLIC journal/summary excludes credential material.
+- `py_compile` and4mock checks passed0.004s; helper SHA256b435efab94f32d341967a680e60ce53a6974045c446c941f13021f91e6c820b0 sent to coordinator for copy/execution. Actual remote repair/next material/benchmark is coordinator responsibility, unobserved here.
