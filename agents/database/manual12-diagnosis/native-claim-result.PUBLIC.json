@@ -1,0 +1,960 @@
+{
+  "source": "90b734f65ce6ee9f5c217e885bc7ea4857e32b48",
+  "scope": "local socket-only synthetic original prepare/claim fragment, not HTTP/cloud acceptance",
+  "samples": [
+    {
+      "existing_synthetic_rows": 0,
+      "clients": 64,
+      "operations": 1280,
+      "seconds": 3.1794640839798376,
+      "fragment_p95_ms": 211.44541702233255,
+      "insert_mean_ms": 7.317007969322731,
+      "insert_p95_ms": 13.112665968947113,
+      "before": {
+        "status": {
+          "Innodb_buffer_pool_wait_free": "0",
+          "Innodb_data_fsyncs": "782",
+          "Innodb_redo_log_read_only": "OFF",
+          "Innodb_redo_log_uuid": "267061489",
+          "Innodb_redo_log_checkpoint_lsn": "19443631",
+          "Innodb_redo_log_current_lsn": "21461757",
+          "Innodb_redo_log_flushed_to_disk_lsn": "21461749",
+          "Innodb_redo_log_logical_size": "2018816",
+          "Innodb_redo_log_physical_size": "6553600",
+          "Innodb_redo_log_capacity_resized": "104857600",
+          "Innodb_redo_log_resize_status": "OK",
+          "Innodb_log_waits": "0",
+          "Innodb_os_log_fsyncs": "614",
+          "Innodb_os_log_pending_fsyncs": "0",
+          "Innodb_os_log_pending_writes": "0",
+          "Innodb_os_log_written": "2171392",
+          "Innodb_redo_log_enabled": "ON",
+          "Innodb_row_lock_current_waits": "0",
+          "Innodb_row_lock_time": "0",
+          "Innodb_row_lock_time_avg": "0",
+          "Innodb_row_lock_time_max": "0",
+          "Innodb_row_lock_waits": "0",
+          "Threads_connected": "2",
+          "Threads_running": "2"
+        },
+        "waits": [
+          {
+            "event": "wait/io/file/innodb/innodb_data_file",
+            "count": 1230,
+            "timer_ps": 109110925000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_log_file",
+            "count": 1588,
+            "timer_ps": 80247609000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_files_mutex",
+            "count": 788,
+            "timer_ps": 6498081000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_dblwr_file",
+            "count": 8,
+            "timer_ps": 5649519000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_temp_file",
+            "count": 70,
+            "timer_ps": 3136458000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_mutex",
+            "count": 101950,
+            "timer_ps": 474643000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/hash_table_locks",
+            "count": 59968,
+            "timer_ps": 314126000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/index_tree_rw_lock",
+            "count": 20223,
+            "timer_ps": 140172000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/dict_sys_mutex",
+            "count": 3924,
+            "timer_ps": 102301000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/lock_sys_global_rw_lock",
+            "count": 16770,
+            "timer_ps": 91849000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/lock_sys_page_mutex",
+            "count": 16977,
+            "timer_ps": 66712000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/fil_system_mutex",
+            "count": 10351,
+            "timer_ps": 46785000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/fil_space_latch",
+            "count": 1764,
+            "timer_ps": 46069000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/log_sn_lock",
+            "count": 19220,
+            "timer_ps": 42923000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_undo_mutex",
+            "count": 6509,
+            "timer_ps": 24963000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_flusher_mutex",
+            "count": 701,
+            "timer_ps": 15278000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_write_notifier_mutex",
+            "count": 534,
+            "timer_ps": 15093000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/dict_table_mutex",
+            "count": 4055,
+            "timer_ps": 14715000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_sys_mutex",
+            "count": 3119,
+            "timer_ps": 13372000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/trx_purge_latch",
+            "count": 1177,
+            "timer_ps": 12963000
+          }
+        ],
+        "digests": [
+          {
+            "digest": "7b6593e4af8659eaf37bf42c6b8af4f8edc16f786fead6f0bd8764ef14af0017",
+            "count": 1,
+            "timer_ps": 25511000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "9f8e78eac8bcfc2850e998aeb71f22d989bd40aab8bc8dc4c7ca95fc2adc2583",
+            "count": 1,
+            "timer_ps": 10206000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "96edd329635f93e25e55c58184259d7683cb676d5a7849e93f9332a161b1e1d8",
+            "count": 1,
+            "timer_ps": 7339000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "014c088e593ca4e9aa7894ca2c95d27967ee45d8cb6983738554f39fbfa11702",
+            "count": 1,
+            "timer_ps": 7180000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "140206d73f79abd8677abfd9e6b7657c7bd28c3c8373a530b22ed4cafc81a62d",
+            "count": 1,
+            "timer_ps": 6840000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "87c14835993e1634db65448c16361b35722749939dbf1d95fe36dfbd01e57398",
+            "count": 1,
+            "timer_ps": 6585000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "173f3c0fbfe7cbe1d5443451393dc5f3b395d457b0d4e1e6107687e2752ff953",
+            "count": 1,
+            "timer_ps": 5755000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "7bba41a27be123de1e05e01b16a55a29bd7b0a76dc03001d05e8d2d0cf74b08c",
+            "count": 1,
+            "timer_ps": 5703000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "ca18c058ae6601c9361cc2b81a488f447eb620f88c9741192193894f708f7308",
+            "count": 1,
+            "timer_ps": 5683000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "5b54952de14dd016fa18839da5ffa1e5e183e1b865b1beb3773aa4e7df09ddc6",
+            "count": 1,
+            "timer_ps": 5514000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "33d2869b95f5befa3cc985054d851dc5187bfb2bea46f2a1c626d8c5b7bc8703",
+            "count": 1,
+            "timer_ps": 5068000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "2b6712cff3e4ac5e0c9204ff4fce4c0317269c42a24009a5036abed603abc507",
+            "count": 1,
+            "timer_ps": 4931000000,
+            "rows_examined": 24
+          },
+          {
+            "digest": "e43aa1f6c3297794536776ec0332c941b7f0804c128b754293aafa8d6795e8cb",
+            "count": 1,
+            "timer_ps": 4862000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6b55fd363d51ee3d4a4fe6dea234137f668c1f183075bc904c54e1852ab23648",
+            "count": 1,
+            "timer_ps": 4545000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6693e01c522216600b7fe99593fff4bdee94b44a23ef1721b24e37faca451b2e",
+            "count": 1,
+            "timer_ps": 4468000000,
+            "rows_examined": 393
+          }
+        ],
+        "config": {
+          "autoinc_lock_mode": 2,
+          "redo_capacity": 104857600,
+          "flush_at_commit": 1,
+          "sync_binlog": 1,
+          "buffer_pool_size": 1073741824,
+          "max_connections": 384
+        },
+        "innodb_log": {
+          "LSN": 21462058,
+          "LSN_checkpoint": 19443631
+        }
+      },
+      "after": {
+        "status": {
+          "Innodb_buffer_pool_wait_free": "0",
+          "Innodb_data_fsyncs": "6490",
+          "Innodb_redo_log_read_only": "OFF",
+          "Innodb_redo_log_uuid": "267061489",
+          "Innodb_redo_log_checkpoint_lsn": "19443631",
+          "Innodb_redo_log_current_lsn": "23965633",
+          "Innodb_redo_log_flushed_to_disk_lsn": "23965528",
+          "Innodb_redo_log_logical_size": "4522496",
+          "Innodb_redo_log_physical_size": "9830400",
+          "Innodb_redo_log_capacity_resized": "104857600",
+          "Innodb_redo_log_resize_status": "OK",
+          "Innodb_log_waits": "0",
+          "Innodb_os_log_fsyncs": "6280",
+          "Innodb_os_log_pending_fsyncs": "0",
+          "Innodb_os_log_pending_writes": "0",
+          "Innodb_os_log_written": "6618624",
+          "Innodb_redo_log_enabled": "ON",
+          "Innodb_row_lock_current_waits": "0",
+          "Innodb_row_lock_time": "0",
+          "Innodb_row_lock_time_avg": "0",
+          "Innodb_row_lock_time_max": "0",
+          "Innodb_row_lock_waits": "0",
+          "Threads_connected": "65",
+          "Threads_running": "2"
+        },
+        "waits": [
+          {
+            "event": "wait/io/file/innodb/innodb_log_file",
+            "count": 13473,
+            "timer_ps": 316119803000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_data_file",
+            "count": 1329,
+            "timer_ps": 112631856000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_pool_mutex",
+            "count": 2097,
+            "timer_ps": 73500206000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_files_mutex",
+            "count": 1144,
+            "timer_ps": 7045422000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_mutex",
+            "count": 481447,
+            "timer_ps": 6926521000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_dblwr_file",
+            "count": 10,
+            "timer_ps": 5679203000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_temp_file",
+            "count": 90,
+            "timer_ps": 4193186000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/hash_table_locks",
+            "count": 138806,
+            "timer_ps": 2164724000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/index_tree_rw_lock",
+            "count": 51933,
+            "timer_ps": 1030973000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/lock_sys_global_rw_lock",
+            "count": 40348,
+            "timer_ps": 504488000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/lock_sys_page_mutex",
+            "count": 39706,
+            "timer_ps": 448184000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_sys_mutex",
+            "count": 33506,
+            "timer_ps": 229086000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/log_sn_lock",
+            "count": 39857,
+            "timer_ps": 228150000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_flusher_mutex",
+            "count": 8564,
+            "timer_ps": 189931000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/undo_space_rseg_mutex",
+            "count": 14803,
+            "timer_ps": 164349000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_undo_mutex",
+            "count": 9125,
+            "timer_ps": 127197000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_writer_mutex",
+            "count": 4320,
+            "timer_ps": 126364000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/dict_sys_mutex",
+            "count": 8078,
+            "timer_ps": 122919000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/trx_purge_latch",
+            "count": 3997,
+            "timer_ps": 99410000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/fil_space_latch",
+            "count": 3044,
+            "timer_ps": 98698000
+          }
+        ],
+        "digests": [
+          {
+            "digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "count": 2627,
+            "timer_ps": 295145000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "count": 1280,
+            "timer_ps": 131168000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+            "count": 1280,
+            "timer_ps": 109964000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "count": 2560,
+            "timer_ps": 84720000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "count": 2560,
+            "timer_ps": 71580000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "count": 2560,
+            "timer_ps": 68477000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "count": 1280,
+            "timer_ps": 66437000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "count": 1280,
+            "timer_ps": 58771000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "count": 1280,
+            "timer_ps": 48158000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+            "count": 1280,
+            "timer_ps": 44063000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "7b6593e4af8659eaf37bf42c6b8af4f8edc16f786fead6f0bd8764ef14af0017",
+            "count": 1,
+            "timer_ps": 25511000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "count": 2564,
+            "timer_ps": 19828000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6693e01c522216600b7fe99593fff4bdee94b44a23ef1721b24e37faca451b2e",
+            "count": 2,
+            "timer_ps": 13288000000,
+            "rows_examined": 786
+          },
+          {
+            "digest": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "count": 1280,
+            "timer_ps": 10937000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "9f8e78eac8bcfc2850e998aeb71f22d989bd40aab8bc8dc4c7ca95fc2adc2583",
+            "count": 1,
+            "timer_ps": 10206000000,
+            "rows_examined": 0
+          }
+        ],
+        "config": {
+          "autoinc_lock_mode": 2,
+          "redo_capacity": 104857600,
+          "flush_at_commit": 1,
+          "sync_binlog": 1,
+          "buffer_pool_size": 1073741824,
+          "max_connections": 384
+        },
+        "innodb_log": {
+          "LSN": 23976888,
+          "LSN_checkpoint": 19443631
+        }
+      }
+    },
+    {
+      "existing_synthetic_rows": 501280,
+      "clients": 64,
+      "operations": 1280,
+      "seconds": 2.9290150409797207,
+      "fragment_p95_ms": 169.09808292984962,
+      "insert_mean_ms": 6.865421449310816,
+      "insert_p95_ms": 11.584332911297679,
+      "before": {
+        "status": {
+          "Innodb_buffer_pool_wait_free": "0",
+          "Innodb_data_fsyncs": "100039",
+          "Innodb_redo_log_read_only": "OFF",
+          "Innodb_redo_log_uuid": "267061489",
+          "Innodb_redo_log_checkpoint_lsn": "472684092",
+          "Innodb_redo_log_current_lsn": "499329157",
+          "Innodb_redo_log_flushed_to_disk_lsn": "499308544",
+          "Innodb_redo_log_logical_size": "26632704",
+          "Innodb_redo_log_physical_size": "95027200",
+          "Innodb_redo_log_capacity_resized": "104857600",
+          "Innodb_redo_log_resize_status": "OK",
+          "Innodb_log_waits": "0",
+          "Innodb_os_log_fsyncs": "98341",
+          "Innodb_os_log_pending_fsyncs": "0",
+          "Innodb_os_log_pending_writes": "0",
+          "Innodb_os_log_written": "498915328",
+          "Innodb_redo_log_enabled": "ON",
+          "Innodb_row_lock_current_waits": "0",
+          "Innodb_row_lock_time": "0",
+          "Innodb_row_lock_time_avg": "0",
+          "Innodb_row_lock_time_max": "0",
+          "Innodb_row_lock_waits": "0",
+          "Threads_connected": "65",
+          "Threads_running": "2"
+        },
+        "waits": [
+          {
+            "event": "wait/io/file/innodb/innodb_log_file",
+            "count": 208677,
+            "timer_ps": 4182324571000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_data_file",
+            "count": 61643,
+            "timer_ps": 1156276132000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_dblwr_file",
+            "count": 996,
+            "timer_ps": 366498162000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_pool_mutex",
+            "count": 2213,
+            "timer_ps": 73500706000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_mutex",
+            "count": 9486945,
+            "timer_ps": 55191999000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/hash_table_locks",
+            "count": 5151821,
+            "timer_ps": 23210354000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_writer_mutex",
+            "count": 26485,
+            "timer_ps": 20348078000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/lock_sys_global_rw_lock",
+            "count": 1601419,
+            "timer_ps": 9792071000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_files_mutex",
+            "count": 4147,
+            "timer_ps": 9643988000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/index_tree_rw_lock",
+            "count": 1580938,
+            "timer_ps": 9602334000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/lock_sys_page_mutex",
+            "count": 1657891,
+            "timer_ps": 7071830000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/log_sn_lock",
+            "count": 2078278,
+            "timer_ps": 6277300000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/fil_system_mutex",
+            "count": 421940,
+            "timer_ps": 5557371000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_undo_mutex",
+            "count": 509283,
+            "timer_ps": 4289657000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_temp_file",
+            "count": 90,
+            "timer_ps": 4193186000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/autoinc_persisted_mutex",
+            "count": 527180,
+            "timer_ps": 2576256000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/autoinc_mutex",
+            "count": 502129,
+            "timer_ps": 2336341000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/buf_pool_flush_state_mutex",
+            "count": 117988,
+            "timer_ps": 2186752000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/flush_list_mutex",
+            "count": 181085,
+            "timer_ps": 1797689000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/fil_space_latch",
+            "count": 61699,
+            "timer_ps": 1794810000
+          }
+        ],
+        "digests": [
+          {
+            "digest": "fae53e0927674f391b9b3b625be5e126abc8be14c4b6737cdef1c63a69aeb921",
+            "count": 500000,
+            "timer_ps": 15388714000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "count": 2727,
+            "timer_ps": 755437000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "count": 1280,
+            "timer_ps": 131168000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+            "count": 1280,
+            "timer_ps": 109964000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "count": 2560,
+            "timer_ps": 84720000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "count": 2560,
+            "timer_ps": 71580000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "count": 2560,
+            "timer_ps": 68477000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "count": 1280,
+            "timer_ps": 66437000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "count": 1280,
+            "timer_ps": 58771000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "count": 1280,
+            "timer_ps": 48158000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+            "count": 1280,
+            "timer_ps": 44063000000,
+            "rows_examined": 1280
+          },
+          {
+            "digest": "7b6593e4af8659eaf37bf42c6b8af4f8edc16f786fead6f0bd8764ef14af0017",
+            "count": 1,
+            "timer_ps": 25511000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6693e01c522216600b7fe99593fff4bdee94b44a23ef1721b24e37faca451b2e",
+            "count": 3,
+            "timer_ps": 22249000000,
+            "rows_examined": 1179
+          },
+          {
+            "digest": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "count": 2564,
+            "timer_ps": 19828000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "count": 1280,
+            "timer_ps": 10937000000,
+            "rows_examined": 0
+          }
+        ],
+        "config": {
+          "autoinc_lock_mode": 2,
+          "redo_capacity": 104857600,
+          "flush_at_commit": 1,
+          "sync_binlog": 1,
+          "buffer_pool_size": 1073741824,
+          "max_connections": 384
+        },
+        "innodb_log": {
+          "LSN": 499443059,
+          "LSN_checkpoint": 472684092
+        }
+      },
+      "after": {
+        "status": {
+          "Innodb_buffer_pool_wait_free": "0",
+          "Innodb_data_fsyncs": "105872",
+          "Innodb_redo_log_read_only": "OFF",
+          "Innodb_redo_log_uuid": "267061489",
+          "Innodb_redo_log_checkpoint_lsn": "472684092",
+          "Innodb_redo_log_current_lsn": "501756327",
+          "Innodb_redo_log_flushed_to_disk_lsn": "501756222",
+          "Innodb_redo_log_logical_size": "29072384",
+          "Innodb_redo_log_physical_size": "98304000",
+          "Innodb_redo_log_capacity_resized": "104857600",
+          "Innodb_redo_log_resize_status": "OK",
+          "Innodb_log_waits": "0",
+          "Innodb_os_log_fsyncs": "104075",
+          "Innodb_os_log_pending_fsyncs": "0",
+          "Innodb_os_log_pending_writes": "0",
+          "Innodb_os_log_written": "503147520",
+          "Innodb_redo_log_enabled": "ON",
+          "Innodb_row_lock_current_waits": "0",
+          "Innodb_row_lock_time": "0",
+          "Innodb_row_lock_time_avg": "0",
+          "Innodb_row_lock_time_max": "0",
+          "Innodb_row_lock_waits": "0",
+          "Threads_connected": "65",
+          "Threads_running": "2"
+        },
+        "waits": [
+          {
+            "event": "wait/io/file/innodb/innodb_log_file",
+            "count": 220556,
+            "timer_ps": 4384213712000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_data_file",
+            "count": 66014,
+            "timer_ps": 1241267727000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_dblwr_file",
+            "count": 1072,
+            "timer_ps": 394739082000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_pool_mutex",
+            "count": 2213,
+            "timer_ps": 73500706000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_mutex",
+            "count": 9857480,
+            "timer_ps": 61467567000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/hash_table_locks",
+            "count": 5251042,
+            "timer_ps": 25008286000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_writer_mutex",
+            "count": 30326,
+            "timer_ps": 20425428000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/index_tree_rw_lock",
+            "count": 1613098,
+            "timer_ps": 10511074000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/lock_sys_global_rw_lock",
+            "count": 1624767,
+            "timer_ps": 10160619000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/log_files_mutex",
+            "count": 4404,
+            "timer_ps": 9647613000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/lock_sys_page_mutex",
+            "count": 1680373,
+            "timer_ps": 7415467000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/log_sn_lock",
+            "count": 2098827,
+            "timer_ps": 6473499000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/fil_system_mutex",
+            "count": 444917,
+            "timer_ps": 6270744000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/trx_undo_mutex",
+            "count": 511843,
+            "timer_ps": 4428867000
+          },
+          {
+            "event": "wait/io/file/innodb/innodb_temp_file",
+            "count": 90,
+            "timer_ps": 4193186000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/autoinc_persisted_mutex",
+            "count": 528489,
+            "timer_ps": 2581920000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/buf_pool_flush_state_mutex",
+            "count": 126624,
+            "timer_ps": 2507478000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/autoinc_mutex",
+            "count": 503410,
+            "timer_ps": 2342291000
+          },
+          {
+            "event": "wait/synch/mutex/innodb/flush_list_mutex",
+            "count": 191336,
+            "timer_ps": 1979739000
+          },
+          {
+            "event": "wait/synch/sxlock/innodb/fil_space_latch",
+            "count": 63356,
+            "timer_ps": 1848507000
+          }
+        ],
+        "digests": [
+          {
+            "digest": "fae53e0927674f391b9b3b625be5e126abc8be14c4b6737cdef1c63a69aeb921",
+            "count": 500000,
+            "timer_ps": 15388714000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+            "count": 5287,
+            "timer_ps": 1028758000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+            "count": 2560,
+            "timer_ps": 207952000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+            "count": 2560,
+            "timer_ps": 171343000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+            "count": 5120,
+            "timer_ps": 156594000000,
+            "rows_examined": 5120
+          },
+          {
+            "digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+            "count": 2560,
+            "timer_ps": 135563000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+            "count": 5120,
+            "timer_ps": 132852000000,
+            "rows_examined": 5120
+          },
+          {
+            "digest": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+            "count": 5120,
+            "timer_ps": 128835000000,
+            "rows_examined": 5120
+          },
+          {
+            "digest": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+            "count": 2560,
+            "timer_ps": 112869000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+            "count": 2560,
+            "timer_ps": 92200000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+            "count": 2560,
+            "timer_ps": 85567000000,
+            "rows_examined": 2560
+          },
+          {
+            "digest": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+            "count": 5124,
+            "timer_ps": 37361000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "6693e01c522216600b7fe99593fff4bdee94b44a23ef1721b24e37faca451b2e",
+            "count": 4,
+            "timer_ps": 31289000000,
+            "rows_examined": 1572
+          },
+          {
+            "digest": "7b6593e4af8659eaf37bf42c6b8af4f8edc16f786fead6f0bd8764ef14af0017",
+            "count": 1,
+            "timer_ps": 25511000000,
+            "rows_examined": 0
+          },
+          {
+            "digest": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+            "count": 2560,
+            "timer_ps": 20607000000,
+            "rows_examined": 0
+          }
+        ],
+        "config": {
+          "autoinc_lock_mode": 2,
+          "redo_capacity": 104857600,
+          "flush_at_commit": 1,
+          "sync_binlog": 1,
+          "buffer_pool_size": 1073741824,
+          "max_connections": 384
+        },
+        "innodb_log": {
+          "LSN": 501771497,
+          "LSN_checkpoint": 472684092
+        }
+      }
+    }
+  ]
+}

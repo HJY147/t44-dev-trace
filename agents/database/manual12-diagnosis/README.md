@@ -29,3 +29,9 @@ However raw DBAPI return without rollback exposes an uncommitted row on the next
 - Initial local init failed because a log was inside the target datadir; preserved failed runtime directory, then used a fresh datadir with outside log. Initial DML digest calls lacked a default database and were rejected; the final run uses an isolated synthetic database and all 15 mapping calls succeeded. These were local setup failures, not cloud or performance failures.
 
 Open: reproduce the INSERT wait with exact DDL, original claim transaction and accumulated synthetic row volume; inspect real local wait-event/IO/checkpoint evidence before selecting a fix. This analysis and rejected shortcut are not a performance improvement or formal acceptance.
+
+## Accumulated-row native claim probe
+
+`native_claim_probe.py` runs the original source90b `Runtime.prepare`/`_claim` and `Runtime.complete` on a separate synthetic schema with the exact frozen DDL and active constraints. Each variant uses 64 clients and 1280 operations. Empty baseline INSERT mean/P95 is 7.32/13.11ms; with 501280 accumulated synthetic rows it is 6.87/11.58ms. Fragment end-to-end P95 is 211.45/169.10ms. This short native case does not reproduce the cloud INSERT75–158ms and does not support row count alone as the cause. It excludes HTTP and the complete main audit/outbox transaction and uses local hardware; it is not a formal load result. Own server was shut down afterward.
+
+A subsequent controlled redo comparison is running separately, with two initially identical cloned synthetic datasets (502560 rows and identical actual extended checksum1696289492), source90b frozen DDL, 64clients,20s warmup/180s measured per phase,100MiB versus1GiB,2s sampling. The pre-run plan is posted in Issue#47 comment6526405915. No outcome is asserted until it completes. Fixed AB order/cache, local buffer1GiB versus cloud8GiB and fragment scope will remain explicit.
