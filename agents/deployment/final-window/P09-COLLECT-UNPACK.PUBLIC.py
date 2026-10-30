@@ -16,13 +16,30 @@ def unpack(line,dest):
   json.loads(raw);decoded[name]=raw
  if 'timeplan.PUBLIC.json'in decoded and json.loads(decoded['timeplan.PUBLIC.json']).get('run_id')!='r30finalp09':raise ValueError('EXACT_NEW_P09_CLOCK_REQUIRED')
  dest=Path(dest);dest.mkdir(exist_ok=True)
+ observation=None
  for name,raw in decoded.items():
   p=dest/name
+  if name=='preparation.PUBLIC.json':
+   # Preparation progresses between collector rows. Preserve every original;
+   # the top-level file remains the first observation, never a rewritten one.
+   directory=dest/'preparation-observations'
+   if directory.is_symlink():raise ValueError('OBSERVATION_DIRECTORY_SYMLINK_REFUSED')
+   directory.mkdir(exist_ok=True)
+   version=directory/(hashlib.sha256(raw).hexdigest()+'.json')
+   if version.exists():
+    if version.is_symlink()or version.read_bytes()!=raw:raise ValueError('EXISTING_OBSERVATION_DIFFERS_NO_OVERWRITE')
+   else:
+    with version.open('xb')as f:f.write(raw)
+   observation=str(version.relative_to(dest))
+   if p.exists()and not p.is_symlink():
+    first=p.read_bytes();archive=directory/(hashlib.sha256(first).hexdigest()+'.json')
+    if not archive.is_file()or archive.is_symlink()or archive.read_bytes()!=first:raise ValueError('FIRST_OBSERVATION_ARCHIVE_MISSING_OR_CHANGED')
+    continue
   if p.exists():
    if p.is_symlink()or p.read_bytes()!=raw:raise ValueError('EXISTING_ORIGINAL_DIFFERS_NO_OVERWRITE')
   else:
    with p.open('xb')as f:f.write(raw)
- return {'status':'LOCAL_ORIGINAL_PUBLIC_BYTES_UNPACKED_NOT_EXECUTED','event':v['event'],'files':{n:hashlib.sha256(b).hexdigest()for n,b in decoded.items()}}
+ return {'status':'LOCAL_ORIGINAL_PUBLIC_BYTES_UNPACKED_NOT_EXECUTED','event':v['event'],'files':{n:hashlib.sha256(b).hexdigest()for n,b in decoded.items()},'preparation_observation':observation,'top_level_preparation_policy':'FIRST_OBSERVATION_PRESERVED'}
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--jsonl',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True);a=p.parse_args()
  for line in a.jsonl.read_text().splitlines():

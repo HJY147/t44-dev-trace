@@ -10,8 +10,8 @@
   },
   "files": {
     "agents/deployment/final-window/P09-COLLECT-UNPACK.PUBLIC.py": {
-      "bytes": 1962,
-      "sha256": "f5e8107f528e2f87051fc5700cf7ae905f500d3ca8b3f8b301cd07bc345c81a3"
+      "bytes": 3030,
+      "sha256": "65ad14b703e750702eca96a5776a922a8847148642d3e2a4508dc8faa22ca0b3"
     },
     "agents/deployment/final-window/P09-DERIVE-TOOLS.PUBLIC.py": {
       "bytes": 2029,
@@ -46,8 +46,8 @@
       "sha256": "abb8caf081844c407967463f5452ea09362144a9bb00303ec8379674bb13ac2f"
     },
     "agents/deployment/final-window/P09-USER-HANDOFF.PUBLIC.md": {
-      "bytes": 5946,
-      "sha256": "d7cbb5bcd79551a706dd110c194b44fa6603827711735a40e049386f51c2a939"
+      "bytes": 6346,
+      "sha256": "044b83486b1f240e9ccd021ab5a4273ee32b98ba29d410cbe7ed201a9691e9bd"
     },
     "agents/deployment/final-window/P09-USER-LOAD-FACTS.PUBLIC.py": {
       "bytes": 4854,
@@ -68,6 +68,14 @@
     "tmp/753_deployment_final_window/test_p09_user_handoff_local.py": {
       "bytes": 24887,
       "sha256": "b63e283adf61f6179dcf03f936670d696b6034d8010d28848a7fc613fa607a21"
+    },
+    "tmp/750_p09_root_handoff/test_preparation_observations.py": {
+      "bytes": 3948,
+      "sha256": "0b17a82829cfdbf7de3ffcedc45a0416e2052908f3e752dfcb7e6c968d046e41"
+    },
+    "tmp/750_p09_root_handoff/progress-regression.log": {
+      "bytes": 103,
+      "sha256": "1f11b6e880045ee35de832b81b45d06257342e13b5c79bbf0034379d4ca220b9"
     }
   },
   "formal_P_measurement_completed": false,
@@ -89,5 +97,6 @@
     "freeze": "actualAPPbtime_equals_newfee",
     "load_prepare": "actualLOADbtime_equals_reviewedfacts"
   },
-  "status": "LOCAL_VALIDATED_USER_EXECUTION_REQUIRED_NOT_REMOTE_TEST"
+  "status": "LOCAL_VALIDATED_USER_EXECUTION_REQUIRED_NOT_REMOTE_TEST",
+  "preparation_progress_policy": "Versioned original bytes per SHA; top-level is first observation; fixed clock/import/bootstrap remain immutable."
 }

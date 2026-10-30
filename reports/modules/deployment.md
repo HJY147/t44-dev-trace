@@ -678,3 +678,7 @@ Complete local user handoff: offline APP v2 (8185B) and LOAD facts (6685B), auto
 2026-10-30 P09动态用户手动交付已完成本地生成与边界测试，见agents/deployment/final-window/P09-user-handoff-manifest.PUBLIC.json和P09-USER-HANDOFF.PUBLIC.md。只读collector两阶段流式输出，有界600秒；APP freeze云助手需900秒。使用新实际boots/newfee/newplatformcutoff；旧55a4账期不可用。保留原测量合同和独立QA授权，未运行云命令、QA或正式压测；局部mock不能证明远端成功。
 
 P09复审限定项已修：实时boot绑定、collector先PUBLICflush/共享总截止/批量inspect/超时UNKNOWN/截断pending，本地负例通过；远端与正式压测仍未运行。
+
+
+## 2026-10-30 root takeover: preparation progress evidence
+Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten. Five offline regression cases and the existing complete local handoff chain passed. No cloud actions or pressure result. Prompt ROOT-P09-PROGRESS-EVIDENCE-20261030; unpack-only independent review pending.

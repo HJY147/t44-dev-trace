@@ -16,6 +16,8 @@ python3 P09-USER-COMMANDS.PUBLIC.py freeze --root-reviewed-facts --app-facts ACT
 
 4. 将两行完整 JSON 保存为 `COLLECTOR.jsonl`，立即本地解包：
 
+准备状态可能由进行中变为就绪。解包器将每次 `preparation.PUBLIC.json` 原字节按 SHA 保存在 `preparation-observations/<SHA>.json`，输出的 `preparation_observation` 指向当前行原件；顶层同名文件保留首次观察，不能当成最新状态。时间窗口、导入回执、bootstrap 仍不允许变化或覆盖。重复处理相同原件不产生新版本。
+
 ```sh
 python3 P09-COLLECT-UNPACK.PUBLIC.py --jsonl COLLECTOR.jsonl --output-dir NEW_P09_PUBLIC
 python3 P09-USER-COMMANDS.PUBLIC.py load-prepare --root-reviewed-facts --load-facts ACTUAL_LOAD.json --bootstrap NEW_P09_PUBLIC/LOAD-bootstrap.original.PUBLIC.json --qa-target NEW_QA_TARGET.json --qa-approval NEW_INDEPENDENT_QA_APPROVAL.json --backend-import-receipt NEW_P09_PUBLIC/backend-import-receipt.PUBLIC.json --qa-public-pins REVIEWED_NINE_PUBLIC_PINS.json --output USER_LOAD_PREPARE.sh

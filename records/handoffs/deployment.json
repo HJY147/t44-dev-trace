@@ -3122,5 +3122,18 @@
       "TimeoutExpired UNKNOWN",
       "truncated DB/scope pending"
     ]
+  },
+  "P09_root_progress_evidence": {
+    "status": "LOCAL_REGRESSION_PASSED_NOT_CLOUD_EXECUTED",
+    "actor": "root taking over after deployment agent capacity error",
+    "prompt_id": "ROOT-P09-PROGRESS-EVIDENCE-20261030",
+    "change": "Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten.",
+    "tests": [
+      "tmp/750_p09_root_handoff/test_preparation_observations.py",
+      "tmp/753_deployment_final_window/test_p09_user_handoff_local.py"
+    ],
+    "cloud_actions": 0,
+    "formal_pressure_completed": false,
+    "independent_review": "requested, pending for this unpack-only followup; previous boot/deadline review preserved"
   }
 }

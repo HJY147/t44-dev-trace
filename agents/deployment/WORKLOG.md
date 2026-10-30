@@ -839,3 +839,7 @@ Local P2 arm-gate correction: reviewer found truncated grants accepted by local 
 2026-10-30 P09用户执行交付：保持VM停机，本地从已发布P08链派生独立P09工具/facts/三阶段命令生成器/SPLUS1/流式PUBLIC collector。全部新boot/费用origin/cutoff动态，旧55a4嵌入fee草稿在README和manifest明确排除。collector真实主循环以虚拟366秒、截断JSON、截止/超时测试；两行PUBLIC原字节→解包→prepare命令生成→21字段onlyallow授权→arm命令生成通过。freeze要求云助手900秒超时。未执行任何云/INSTALL/790/QA命令，mock不是远程验证。P08晚准备失败保留，正式P结果仍无。提示词沿用本轮总协调P09限定交付指令，未扩展产品或测试合同。
 
 P09审核窄修：APP freeze与LOADprepare在任何写入/停旧unit/派发前校验真实当前btime；collector先flush PUBLIC，再以共享600/S−30截止做最多3条只读元数据命令（批量inspect），单条5秒，TimeoutExpired→UNKNOWN；DB/scope截断→pending。新增生成器boot guard前缀及shared deadline真实函数spy负例通过。无云执行。
+
+
+## 2026-10-30 root takeover: preparation progress evidence
+Preserve each preparation progress original under its SHA; keep first top-level observation. Fixed identity and clock originals still cannot be overwritten. Five offline regression cases and the existing complete local handoff chain passed. No cloud actions or pressure result. Prompt ROOT-P09-PROGRESS-EVIDENCE-20261030; unpack-only independent review pending.
