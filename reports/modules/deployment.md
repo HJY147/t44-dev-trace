@@ -668,3 +668,5 @@ Root reports VMs economically stopped10:26Z; no deployment cloud/Docker/SQL/HTTP
 Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HTTP children; argv assertions pass. First added assertion shadowed test-local value (1ERROR), retained cgroup-test-seam-first log before fix. Final corrected5/Ruff PASS.
 
 2026-10-31候选离线镜像准备：13ac源绑定构建中；旧generic锁不符拒绝完整保留，不删锁门禁，使用已有final适配器。未部署未验收，详情agents/deployment/locked-task-candidate-20261031/REPORT.md。
+
+新源material08顺序入口已离线准备，维护→后端fresh→原子轮换→完整新扫描，原七角色真实新ID/资源、import receipt/会话/nonce/grant未取得不预批准；见agents/deployment/new-source-sequence/RUNBOOK.md。
