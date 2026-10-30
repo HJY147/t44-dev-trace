@@ -11,6 +11,8 @@
 
 ## 下次运行顺序
 
+先处理旧的12:30保盘停机任务：下次恢复前由协调者查看它是否仍有未来触发，并取消尚有效的旧一次任务，避免它中断新的手动测量。不另设人为固定S或启动截止；本次离线阶段没有改动这个云端任务。正式运行后按真实完成和证据回收进度收尾，不能把旧任务或guest shutdown冒称已节省停机。
+
 1. 先只恢复原压力机 0mu（16核）。原64核应用机 0mt保持停止，直到连接、传包和工具安装完成。由用户决定何时恢复；不要提前启动两台等待排障。
 2. 在压力机云助手运行 `01_INSTALL_TEMP_SSH.USER_ONLY.sh`。脚本仅用于用户当次明确允许的临时root公钥连接：有效期从实际安装起2小时，禁止转发；不改安全组、网络防火墙、密码或实例状态。它校验现有sshd配置，保留已有authorized_keys，只启动已安装的SSH服务。若SSH未安装或不支持当前公钥登录配置，报告并停止，不自动放宽策略。
 
@@ -35,3 +37,12 @@ python3 pin_ssh_host.py --report LOAD_SSH_REPORT.json \
 ## 尚未验证
 
 服务器SSH/SCP、远端工具安装、新会话与新packet、正式压测和证据回收均须在用户恢复后实际执行。离线完成不等于这些步骤已经成功。
+
+## 已完成的本地模块
+
+- SSH脚本和主机公钥绑定：本分支 `285d3529`，9项测试及限定审核通过；此后仅补说明。
+- 标准CMS加密运输、原七容器恢复和scheduler原字节轮换：`codex/deployment-final-window`，提交 `e523bf082a95f3af70697bcf4d3a00a4cfddde8e`；合成数据往返、篡改/防覆盖及Docker CLI spy通过。说明在 `agents/deployment/manual-handoff/`，没有真实云操作。
+- 真实新会话和800任务资格读回：`codex/backend-manual-inputs-20261030`，提交 `fff073110762a7646d556c08acf6475e1041e7d6`；13项本地测试和五源码语法检查通过，三项有限修复独立复审PASS。说明在 `agents/backend/manual-inputs/`。
+- 独立manualV4：`tmp/753_fresh_acceptance_90b/PUBLIC/MANUAL_TOOL_V4/`，公开密封包SHA256 `0b3d4d6ba68dc1fa27930963b9442b0bf8e2c2ae61d2860233e1754f4dbb61a9`。身份审批仅允许prepare；正式发压仍须基于真实LOAD材料另签一次grant。
+
+不使用旧P09/P10固定时窗启动脚本；旧原件仅保留历史，不修改原clock或将未执行记为通过。
