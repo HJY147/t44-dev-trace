@@ -16,16 +16,31 @@
   ],
   "files": {
     "agents/coordinator/manual-recovery/pin_ssh_host.py": {
-      "sha256": "3eb2126ef754b46ae4a599e680d10f96c89d18222a0ca59c66933022780d29af",
-      "bytes": 5012
+      "bytes": 5012,
+      "sha256": "3eb2126ef754b46ae4a599e680d10f96c89d18222a0ca59c66933022780d29af"
     },
     "agents/coordinator/manual-recovery/01_INSTALL_TEMP_SSH.USER_ONLY.sh": {
-      "sha256": "3fb0514905ad991c420e590817710f2e1faf198ee90e893a5f9c91668f37800b",
-      "bytes": 2745
+      "bytes": 2745,
+      "sha256": "3fb0514905ad991c420e590817710f2e1faf198ee90e893a5f9c91668f37800b"
     },
     "agents/coordinator/manual-recovery/README.md": {
-      "sha256": "b7700d531a272b1697bb22c0e2d4ef018de21a7ae675ce1a588c9cc3cc548c7b",
-      "bytes": 3893
+      "bytes": 5373,
+      "sha256": "6b23614766986abff521ae3fa541219bd25b070211d99f71ede7c283885c63e3"
+    }
+  },
+  "modules": {
+    "backend_refresh": {
+      "commit": "fff073110762a7646d556c08acf6475e1041e7d6",
+      "local_tests": 13,
+      "limited_review": "PASS; not remote or pressure authorization"
+    },
+    "deployment_manual": {
+      "commit": "e523bf082a95f3af70697bcf4d3a00a4cfddde8e",
+      "local_tests": "public bundle, CMS authenticated roundtrip, existing-container CLI spy, atomic scheduler credential rotation"
+    },
+    "independent_manual_tool": {
+      "package_sha256": "0b3d4d6ba68dc1fa27930963b9442b0bf8e2c2ae61d2860233e1754f4dbb61a9",
+      "actual_grant_issued": false
     }
   }
 }
