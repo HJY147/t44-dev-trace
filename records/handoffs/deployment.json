@@ -3020,5 +3020,22 @@
       "resource_limits": "both children: 2CPU/1GiB/128PIDs/tmp32m; no expansion",
       "P2": "restored original limits; added assertion first test-local shadow1ERROR retained; final5 PASS"
     }
+  },
+  "manual13_ssh_preparation": {
+    "prompt_ref": "ROLE-deployment-MANUAL13-SSH-v1",
+    "implementation_status": "offline tool complete; live connection pending",
+    "public_delivery": "deployment/cloud-reuse/ssh-reconnect/MANIFEST.PUBLIC.json",
+    "tests": "8 passed; local ssh -G only; no connection",
+    "source_pins": "existing original two instance ED25519 pins; never auto replaced",
+    "inputs": "new observed APP/LOAD public IPv4, original known_hosts, local identity path, new output dir",
+    "outputs": "two strict original-instance SSH configs plus copied pins and non-authorizing receipt",
+    "continuation": "existing material05 restoration chain unchanged; no QA trigger",
+    "cloud_actions": false,
+    "credential_installation": false,
+    "unresolved": [
+      "current public IPs after user startup",
+      "actual temporary-key authentication",
+      "live restoration and formal independent admission"
+    ]
   }
 }
