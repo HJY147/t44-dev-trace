@@ -1,0 +1,123 @@
+[
+  {
+    "role": "frontend",
+    "scope": "页面、交互、错误提示与前端验证",
+    "required_paths": {
+      "agents/frontend/TASK.md": true,
+      "agents/frontend/WORKLOG.md": true,
+      "reports/modules/frontend.md": true,
+      "records/handoffs/frontend.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "backend",
+    "scope": "鉴权、项目权限、状态机、评审上线、事务",
+    "required_paths": {
+      "agents/backend/TASK.md": true,
+      "agents/backend/WORKLOG.md": true,
+      "reports/modules/backend.md": true,
+      "records/handoffs/backend.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "database",
+    "scope": "字段/DDL/迁移/约束/索引/数据生成",
+    "required_paths": {
+      "agents/database/TASK.md": true,
+      "agents/database/WORKLOG.md": true,
+      "reports/modules/database.md": true,
+      "records/handoffs/database.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "messaging",
+    "scope": "MQ投递消费、幂等、降级、站内通知",
+    "required_paths": {
+      "agents/messaging/TASK.md": true,
+      "agents/messaging/WORKLOG.md": true,
+      "reports/modules/messaging.md": true,
+      "records/handoffs/messaging.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "scheduler",
+    "scope": "规则、超期扫描、幂等、重启续扫",
+    "required_paths": {
+      "agents/scheduler/TASK.md": true,
+      "agents/scheduler/WORKLOG.md": true,
+      "reports/modules/scheduler.md": true,
+      "records/handoffs/scheduler.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "deployment",
+    "scope": "打包启动、资源环境、备份恢复、工程门禁",
+    "required_paths": {
+      "agents/deployment/TASK.md": true,
+      "agents/deployment/WORKLOG.md": true,
+      "reports/modules/deployment.md": true,
+      "records/handoffs/deployment.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "testing",
+    "scope": "隔离独立功能/安全/故障/并发/性能验收",
+    "required_paths": {
+      "agents/testing/TASK.md": true,
+      "agents/testing/WORKLOG.md": true,
+      "reports/modules/testing.md": true,
+      "records/handoffs/testing.json": true
+    },
+    "inspection_scope": "existence only for testing internal paths; no PRIVATE, test cases or testing internal log read"
+  },
+  {
+    "role": "documentation",
+    "scope": "收集真实资料，汇总各提交报告与当前导航",
+    "required_paths": {
+      "agents/documentation/TASK.md": true,
+      "agents/documentation/WORKLOG.md": true,
+      "reports/modules/documentation.md": true,
+      "records/handoffs/documentation.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "guidance",
+    "scope": "用户问题、操作教程、真实选择记录",
+    "required_paths": {
+      "agents/guidance/TASK.md": true,
+      "agents/guidance/WORKLOG.md": true,
+      "reports/modules/guidance.md": true,
+      "records/handoffs/guidance.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "prompt_engineering",
+    "scope": "原始提示、真实演进、上下文到产物映射",
+    "required_paths": {
+      "agents/prompt_engineering/TASK.md": true,
+      "agents/prompt_engineering/WORKLOG.md": true,
+      "reports/modules/prompt_engineering.md": true,
+      "records/handoffs/prompt_engineering.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  },
+  {
+    "role": "reviewer",
+    "scope": "按精确commit审核实现/证据/门禁",
+    "required_paths": {
+      "agents/reviewer/TASK.md": true,
+      "agents/reviewer/WORKLOG.md": true,
+      "reports/modules/reviewer.md": true,
+      "records/handoffs/reviewer.json": true
+    },
+    "inspection_scope": "presence and handoff stage snapshot; not evidence of final completion"
+  }
+]

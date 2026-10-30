@@ -123,3 +123,6 @@ T44原文硬指标3500–5100行、400并发/P95≤270ms、持续10分钟、≥1
 AI文档岗独立归档准确f7的product40692462131与Docker40692462380：5artifact官方大小/SHA一致，2原runlog只列本地SHA，7ZIP保护、REST完整集合及5实际checkout命令输出核同。原JUnit796唯一全过、0fail/error/skip，行2509/2780=90.25180%、分支721/856=84.22897%；标记union245属全套不累加。FE89通过；Docker4worker及19表恢复counts/checksums相等，预期flock拒绝保留。
 
 本岗另对准确f7静态计量5898/超798/range exit1。报告component-candidate-ci-f7-20261028.md和机器/原ZIP分别保留，不继承5d成绩、不把CI换作性能/独立验收或研究正文。首frontend下载Promise拒绝的未知详情和只补缺件事实留痕；不改产品/CI/口径，不运行SUT/云，不读独立私件。Prompt ROLE-documentation-CI-F7-20261028-v1。
+
+
+2026-10-31 / ROLE-documentation-SCOPE-AUDIT-v1：离线复核原题/提交要求/十一岗档案，最新FINAL90b四Word精确hash仍符但当前MD已漂移，未纳p13完整状态。固定规模5818超718、研究本人正文及12/3/5未证实，独立p13 NP，不把performance调优当全作业。详见agents/documentation/project-scope-audit-20261031/AUDIT.md。无云访问/产品修改/私人测试读取。
