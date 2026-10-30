@@ -57,3 +57,8 @@
 - 归档前检查：`git branch --show-current` 返回 `codex/team-bootstrap`；`git diff --cached --name-only` 输出为空；`git remote get-url origin` 返回 `https://github.com/HJY147/t44-dev-trace.git`。三条命令退出码均为 0。
 - 本轮仍为 bootstrap / independent-acceptance-design 的资料归档阶段；产品未实现，未运行验收，未运行任何软件测试，无覆盖率、性能或验收通过结论。
 - 本轮文档操作：追加本记录，并生成 `agents/testing/github-stage-comment.md`。归档提交与 Issue 中性状态登记的实际结果以总协调最终收到的提交 SHA、路径清单及评论 URL 为准。
+
+
+## 下一轮独立离线准备 2026-10-31
+
+本新实例owner base exact13acb43，仅本地规则/规格/公开p13交接/公开包装接口核对。15+1规格hash匹配、公开manifest6文件hash匹配。冻结工具层更正与小型日志单元方案，但缺原冻结tool-manifest及工具精确路径，未实施修正，状态BLOCKED。无云、SSH、SUT、负载或grant；未读取旧PRIVATE、key、token或旧内部记录。产物：reports/independent-tests/next-offline-20261031/READINESS.PUBLIC.md及.json。提示词标识ROLE-testing-next-offline-20261031-v1；该标识仅本次实际派工索引，不声称新增用户提示词版本。

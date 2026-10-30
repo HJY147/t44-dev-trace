@@ -46,3 +46,8 @@
 - 仅文档生成与源哈希核对完成，未生成或执行具体可运行用例。
 - 所有FR/AC、非功能指标与交付合规性仍未验证。
 - 后续须先收到批准的冻结规格、可运行快照及受控运行交接包。
+
+
+## 下一轮独立离线准备 2026-10-31
+
+本新实例owner base exact13acb43，仅本地规则/规格/公开p13交接/公开包装接口核对。15+1规格hash匹配、公开manifest6文件hash匹配。冻结工具层更正与小型日志单元方案，但缺原冻结tool-manifest及工具精确路径，未实施修正，状态BLOCKED。无云、SSH、SUT、负载或grant；未读取旧PRIVATE、key、token或旧内部记录。产物：reports/independent-tests/next-offline-20261031/READINESS.PUBLIC.md及.json。提示词标识ROLE-testing-next-offline-20261031-v1；该标识仅本次实际派工索引，不声称新增用户提示词版本。
