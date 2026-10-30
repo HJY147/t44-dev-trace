@@ -228,3 +228,7 @@
 - R30 39项资料检查通过：原文UTF-8精确字节、用户发送时刻未知、参考源hash/Git、旧历史保留、proposed/used、1385/6/未发grant边界、780差额、资料链接、独占写范围与diff-check；不计作产品/测试器/云验证。证据为R30目录08-document-checks.json。
 
 - R30实质commit/push `30a43d51e58212e729778515db97f836fdea9253`，11件本岗文件，远端精确branch经ls-remote逐字匹配且首次成功push后worktree clean。首次push真实exit128/SSL_ERROR_SYSCALL；只读进程名查看及限时ls-remote当时exit2/分支未发表，随后单次限时HTTP/1.1重试exit0。失败与成功均存09-publication.json，不将网络错误当产品错误。未发Issue评论/建PR；此后仅补本岗发布行政记录，不追后发运行结果。
+
+## 2026-10-31 全项目范围复核
+
+ROLE-prompt_engineering-SCOPE-AUDIT-20261031-v1，仅离线审计。复核最新本岗9a84646a、指导ebc42194、文档66cb2b20与原题要求；6个实际AI提示词源SHA逐一匹配，未重演历史执行。人工12/3/5仍待真实证据，R001与R002已有而本人最终研究正文未证明完成。发现指导文档新旧状态混排及专岗索引落后新正式测试；跨岗事项只报告总协调，不改指导或文档文件。详见scope-audit-20261031/AUDIT.md。无云访问、产品修改、新测试、PRIVATE读取或个人经历编造。
