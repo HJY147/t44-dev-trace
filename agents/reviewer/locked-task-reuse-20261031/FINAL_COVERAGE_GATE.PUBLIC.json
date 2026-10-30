@@ -1,0 +1,121 @@
+{
+  "gate": [
+    {
+      "suite": "all",
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "output": "xml",
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "output": "json",
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "output": "html",
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "output": "report",
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "unmeasured_production_files": [],
+      "exit_code": 0,
+      "real_success": true
+    },
+    {
+      "metric": "line_coverage",
+      "covered_lines": 2495,
+      "total_lines": 2764,
+      "threshold_percent": 80,
+      "branch_coverage": "reported without an extra threshold",
+      "exit_code": 0,
+      "real_success": true
+    }
+  ],
+  "junit": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "797",
+      "time": "502.694",
+      "timestamp": "2026-10-30T18:57:11.669312+00:00",
+      "hostname": "runnervm48cm3"
+    }
+  ],
+  "totals": {
+    "covered_lines": 2495,
+    "num_statements": 2764,
+    "percent_covered": 88.90115958034235,
+    "percent_covered_display": "88.90",
+    "missing_lines": 269,
+    "excluded_lines": 0,
+    "percent_statements_covered": 90.26772793053546,
+    "percent_statements_covered_display": "90.27",
+    "num_branches": 858,
+    "num_partial_branches": 83,
+    "covered_branches": 725,
+    "missing_branches": 133,
+    "percent_branches_covered": 84.4988344988345,
+    "percent_branches_covered_display": "84.50"
+  },
+  "files": [
+    "backend/t44/__init__.py",
+    "backend/t44/api.py",
+    "backend/t44/cli.py",
+    "backend/t44/contracts/__init__.py",
+    "backend/t44/domain/__init__.py",
+    "backend/t44/domain/models.py",
+    "backend/t44/domain/state_machine.py",
+    "backend/t44/messaging/__init__.py",
+    "backend/t44/messaging/__main__.py",
+    "backend/t44/messaging/broker.py",
+    "backend/t44/messaging/facade.py",
+    "backend/t44/messaging/worker.py",
+    "backend/t44/persistence/__init__.py",
+    "backend/t44/persistence/accounts.py",
+    "backend/t44/persistence/codecs.py",
+    "backend/t44/persistence/delivery.py",
+    "backend/t44/persistence/engine.py",
+    "backend/t44/persistence/errors.py",
+    "backend/t44/persistence/migrations.py",
+    "backend/t44/persistence/rows.py",
+    "backend/t44/persistence/scans.py",
+    "backend/t44/persistence/schema.py",
+    "backend/t44/persistence/seed.py",
+    "backend/t44/persistence/uow.py",
+    "backend/t44/scheduling/__init__.py",
+    "backend/t44/scheduling/__main__.py",
+    "backend/t44/scheduling/facade.py",
+    "backend/t44/scheduling/rules.py",
+    "backend/t44/scheduling/runtime.py",
+    "backend/t44/scheduling/scanner.py",
+    "backend/t44/services/__init__.py",
+    "backend/t44/services/application.py",
+    "backend/t44/services/codes.py",
+    "backend/t44/services/common.py",
+    "backend/t44/services/errors.py",
+    "backend/t44/services/history.py",
+    "backend/t44/services/identity.py",
+    "backend/t44/services/projects.py",
+    "backend/t44/services/reviews.py",
+    "backend/t44/services/runtime.py",
+    "backend/t44/services/tasks.py",
+    "backend/t44/services/workflow.py",
+    "backend/t44/settings.py"
+  ],
+  "artifact_id": 13004640755,
+  "artifact_bytes": 329568,
+  "artifact_sha256": "daf8b447eee4aaf749c63a9f475bc41318ae7e9add53283bf4cc031d8e5f8e1d",
+  "local_runtime_zip": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/reviewer-coverage-13ac-13004640755.zip",
+  "git_tree_all_python43_match": true
+}
