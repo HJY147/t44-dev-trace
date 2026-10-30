@@ -1,19 +1,19 @@
 {
   "role": "deployment",
   "stage": "offline_candidate_build",
-  "implementation_status": "RUNNING_NOT_DEPLOYED",
+  "implementation_status": "DOWNLOADED_VERIFIED_NOT_LOADED",
   "source": "13acb43a804e717e7485091895378511fe3d9b76",
   "run": 41112638628,
   "original_failure": 41111887081,
   "cloud_calls": 0,
   "artifacts": [
+    "agents/deployment/locked-task-candidate-20261031/VERIFIED.PUBLIC.json",
     "agents/deployment/locked-task-candidate-20261031/REPORT.md"
   ],
   "unverified": [
-    "build completion",
-    "download and verification",
-    "cloud import",
-    "benchmark admission and acceptance"
+    "cloud import and current configuration",
+    "new independent admission",
+    "formal performance acceptance"
   ],
   "prompt_refs": [
     "agents/deployment/locked-task-candidate-20261031/PROMPT.md"

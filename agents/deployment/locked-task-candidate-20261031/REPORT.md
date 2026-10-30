@@ -7,3 +7,5 @@
 改用本项目此前成功的final-image-bundle workflow400555323。当前实现ref codex/deployment-final-window=e523bf082a95f3af70697bcf4d3a00a4cfddde8e，相比此前成功run40928393094的3175dc8，workflow和适配器文件无diff。其从准确source导出lock、逐字验证context与source lock、核runtime uid/origin/全文件字节，保留generic门禁本体，不是删除锁检查。两新应用镜像运输包继承既有五基础服务镜像，不覆盖已有数据卷。新run41112638628构建中，精确输入仍13ac，当前不代表发布准入或性能通过。
 
 旧resume-source-package含stop_utc接口，本轮未执行，不添加自动停机。新测试不能复用已消费p13身份/材料/grant。现场资源/TLS配置需重新核实并明确组合新镜像overlay，不允许因新镜像包使用默认worker配置取代已核64CPU现场配置。
+
+构建41112638628实际success，artifact13004032596已完整下载到private目录（下载约4分钟，无云等待）。原final适配器verify exit0，VERIFIED_NOT_LOADED；独立逐文件核全部94个context文件与准确13ac Git blob的SHA/bytes一致，CI原runtime证明60个文件。manifest SHA见VERIFIED.PUBLIC.json。未保留官方zip原件，官方zip digest仅API元数据，不冒本地zip校验；解压各文件及镜像tar的bytes/SHA均实际校验。无本机Dockerload/云导入/发压。
