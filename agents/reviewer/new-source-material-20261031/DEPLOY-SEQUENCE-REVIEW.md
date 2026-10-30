@@ -1,0 +1,14 @@
+# Material08 deployment integration review
+
+Exact5a47eeea036c2ff5367bad533417db1264d5b700, backend4a5401ac. Status NEEDS_SCAN_RECEIPT_BINDING_AND_DEADLINE_FIX. No offline integratedkit admission yet. Prompt-Ref review_p13_preparation/material08-deployment.
+
+Maintenancev3 compared originalbe486ee9 source: retains old90b cohort authorization/400/800/role/scope/version/plan/event/rule/horizon/fullbatch-before-write/audit/inspect_previous guards; adds exact08 maintenanceID, new13ac auth/source/bundle/import proof, coreSHA40bfa5...,hostSHA60b3f4..., actualproducer observation validation before Evidence creation/Docker/HTTP. RUNBOOK passes requiredsidecar and explicitremote-copy path only to localcheck_inputs, APPmaintenance/hostactualstatmode remains enforced. Current snapshots defaultfalse/empty, not prefilled. No oldsource constants silently reinterpreted as newruntime.
+
+Originalrotation fileSHA47640... unchanged: actualscheduler identity and readonly directorybind, originalCLI bytes hash/mode/singlelink, oldbackup, uid/gid preservation, CAS-like oldinode+bytes check, same-directory atomicreplace+fsync+readback; wrapper validates new13ac/currentimages/rootapproval before invoking it. RUNBOOK requires fresh process_exit proof, stopped/exclusivewriters, health/currentresources and manual sequence; no oldresume hardpinned IDs used. NoVMstop/timer creation, no seed/newtask/DDL/newscanner. Strict fresh started+finished >=rotation/status2/noerror/positive scanned criterion remains.
+
+Required findings sentowner/root:
+
+1. observe_full_scan.py reused older scanfunction and omitted previously reviewedpost-command monotonicdeadline check. Purelocal mockcommand advancedclock from0 to901 while900budget, returned otherwisevalidsuccess; function accepted and wrote scannerreceipt. Restore strict post-commanddeadline and recordlate-success negative.
+2. Observer accepts anyrotationJSON with expectedstatus and rotation_completed_utc; it does not bind rotation.material_sha256 to actualnew08material or rotation.scheduler_id to currentapprovedsnapshot. Wronghistoricalrotation may therefore provide an oldthreshold while being read as currentpostrotationproof. Add explicitcurrentmaterial input boundrawSHA/new08/process_exit and schedulerID, UTC/nonfuture time; actualrotationproof still must originate from live wrapper. Do not loosen nativefreshscan success conditions or impose newVMdeadline.
+
+These findings concern newCLI seams and removed deadlineguard, not historicalproductperformance or an actualobservedlivefalseproof. No realDocker, scanner, DB/network/SUT operation; only synthetic mockclock reproduction. Owner7rejection receipt+AST are source-stage evidence, not proof these missingbindings are covered. Await minimalfixexactcommit for final offlineintegrationverdict. Existingp13NP and liveadmissionpending remain unchanged.
