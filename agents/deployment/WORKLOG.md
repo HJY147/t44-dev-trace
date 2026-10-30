@@ -821,3 +821,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 - 4a5401ac接口修订：旧144d顺序包保留draft，更新8py manifest及maintenance新host/core SHA，必填producer sidecar且在Docker/维护前验证真实路径/stat/三时间。RUNBOOK补remote路径与APP原路径区别；7项合成拒绝边界通过、AST3.10 pass，无Docker/云/真实材料。
 
 - observer审核指出5a缺严格post-command deadline及本轮rotation绑定；已修，--material必填，rawSHA/08/exitproof/current scheduler/UTC非未来检查；7纯local合成测试通过，含超900返回成功拒绝且不生成scanner成功receipt。旧5a历史保留，无Docker/云。
+
+- 最小import helper：e523原字节3py（final/image-bundle/image-proof）及SHA清单，同行无derive依赖；同一最小目录verify exit0、AST310 pass。无Docker/import/prove/云；READMЕ白名单只准verify/import/prove-loaded，125MB包未复制。
