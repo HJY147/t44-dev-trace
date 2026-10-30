@@ -9,3 +9,5 @@ P13 PUBLIC离线核对；原接口字节不改；无当前身份/许可/执行�
 本轮current07独立实际准入：给定当前中性原件、现机排他元数据/受控声明、current schema与历史结构/计数差异已审。以公钥匹配找到原CMS key并原CLI解封五件；首次因opened父目录缺失在写目录前失败，补建空父目录成功。原ADAPTER验证四会话/400-800资格/身份输入；签IDENTITY_ONLY_FOR_ZERO_SUT_PREPARE，真实prepare=PREPARED_DEFAULT_FALSE/SUT_requests0。17:30:00.769785Z独立决策，原ISSUE_ONCE仅allow变化，签一次性grant；原测量未执行，交root唯一触发。证据records/qa/p13-public-material07-20261031-live/{schema-supplement.current07.PUBLIC.json,ONCE_GRANT_RECEIPT.PUBLIC.json}。提示词ROLE-testing-P13-CURRENT07-ADMISSION-v1。不把未知外部访问不可证明作为新增自动门禁，不新增磁盘ID门禁。
 
 本轮唯一p13已退出exit2；原SEAL成功，cipher/receipt下载准确bytes/SHA后立即报LOAD可停机，此后无服务器访问。本地原verify完整75文件通过；raw原Metrics精确复算但prefix与footer计数不一致，保留失败不改原断言。最终PUBLIC NP，cohort/指标/容量证据门禁/后置分列。详见records/qa/p13-public-material07-20261031-live/FINAL_CONCLUSION.PUBLIC.{md,json}。提示词ROLE-testing-P13-SEALED-FINAL-v1。无重试/后继。
+
+仅离线调查p13容量与日志差异：未修改原工具，极小logger单元确认停止后被拒日志仍增加footer计数（无并发亦复现），不等于定位本轮首因；既有raw尺寸复扫无新测量。已证实/仍未定/后续最小工作见CAPACITY_OFFLINE_ADDENDUM.PUBLIC.{md,json}。原NP不改，无云访问/后继run。提示词ROLE-testing-P13-CAPACITY-OFFLINE-v1。

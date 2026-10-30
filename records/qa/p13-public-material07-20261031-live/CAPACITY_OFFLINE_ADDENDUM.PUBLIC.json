@@ -1,0 +1,80 @@
+{
+  "schema": "p13-capacity-offline-public-addendum-v1",
+  "original_run": "r30manualp13",
+  "original_np_unchanged": true,
+  "source_scope": "original frozen runtime and existing authenticated p13 evidence only; one tiny original logger local unit, no SUT/performance case",
+  "confirmed": [
+    "Original logger counts attempted record/plain bytes before enqueue acceptance; after capacity stop it can return rejection while retaining increased counters.",
+    "Original-logger local unit: one accepted record and one rejected after stop produces authenticated footer2 vs stored1, extra46 counted bytes exactly equal rejected event size; no concurrency needed.",
+    "P13 authenticated prefix has21 fewer records and337902 fewer plain bytes than footer; mechanism is sufficient to explain this signature but exact per-record provenance was not retained.",
+    "All retained steady exchanges complete; postcheck contains one incomplete recorded response and6 recorded request errors; original NP and postconditions remain incomplete."
+  ],
+  "local_unit": {
+    "scope": "LOCAL_ORIGINAL_LOGGER_UNIT_ONLY_NO_SUT_OR_MEASUREMENT",
+    "original_runtime_sha256": "3da34780a224bb3a9462e750f1cae9af316bab3ef457d75c8e0c2f2dcd7df339",
+    "control_put_return": true,
+    "after_fail_put_return": false,
+    "actual_records": 1,
+    "footer_records": 2,
+    "record_delta": 1,
+    "plain_bytes_delta": 46,
+    "expected_unqueued_record_bytes": 46,
+    "mechanism_confirmed": true,
+    "first_trigger_branch_proven_for_p13": false
+  },
+  "existing_retained_exchange_sizes": {
+    "warmup": {
+      "records": 74011,
+      "max_record_bytes": 3573,
+      "max_response_wire_bytes": 1422,
+      "max_request_wire_bytes": 577,
+      "max_content_length": 1048,
+      "responses_declaring_over_original_body_cap": 0,
+      "incomplete_response_records": 0
+    },
+    "steady": {
+      "records": 621649,
+      "max_record_bytes": 3573,
+      "max_response_wire_bytes": 1422,
+      "max_request_wire_bytes": 577,
+      "max_content_length": 1048,
+      "responses_declaring_over_original_body_cap": 0,
+      "incomplete_response_records": 0
+    },
+    "postcheck": {
+      "records": 5451,
+      "max_record_bytes": 76393,
+      "max_response_wire_bytes": 56342,
+      "max_request_wire_bytes": 256,
+      "max_content_length": 55968,
+      "responses_declaring_over_original_body_cap": 0,
+      "incomplete_response_records": 1
+    }
+  },
+  "unresolved": [
+    "Exact first CAPACITY_INCOMPLETE trigger and timestamp were not recorded distinctly; no retained event identifies unique response/record/reservation/disk branch.",
+    "No event-time free-disk/reserved-bytes snapshot; disk-headroom branch cannot be conclusively excluded from initial free-disk observation alone.",
+    "Cannot assign all21 missing records to particular clients/responses or reconstruct their original bytes.",
+    "Missing-record mechanism is proven sufficient, not proof that every p13 difference used exactly that path or that concurrent close added no other effects."
+  ],
+  "ruled_out_or_limited": {
+    "total_compressed_or_cipher_caps_reached": false,
+    "retained_total_plain_plus_max400_inflight_reservations_near_plain_cap": false,
+    "recorded_responses_declaring_over_body_cap": 0,
+    "retained_largest_postcheck_body_bytes": 55968,
+    "retained_largest_postcheck_record_bytes": 76393,
+    "unretained_responses_or_records_excluded": false,
+    "load_cpu_memory_exhaustion_established": false
+  },
+  "future_minimum_work_no_implementation_done": [
+    "Persist first-stop reason/context once before shutting down normal logging: exact stage/time plus size/reservation/disk/counter metadata, without secrets or payloads.",
+    "Separate attempted/accepted/written counters; footer should describe successfully authenticated emitted stream, with rejected records explicitly counted separately.",
+    "Ensure producer and writer close ordering is explicit; fail closed on any accounting discrepancy; never weaken the original capacity or completeness gates.",
+    "Validate future tool changes with tiny logger-only tests: reject after stop, queued drain on close, concurrent producers at close, first-stop metadata persistence. Freeze a new tool revision and independent approval before any new formal run; no such run prepared here."
+  ],
+  "original_runtime_sha256": "3da34780a224bb3a9462e750f1cae9af316bab3ef457d75c8e0c2f2dcd7df339",
+  "server_access": false,
+  "frozen_tool_changed": false,
+  "original_result_or_assertions_changed": false,
+  "new_measurement": false
+}
