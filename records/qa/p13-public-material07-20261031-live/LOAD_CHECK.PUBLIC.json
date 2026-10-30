@@ -1,0 +1,39 @@
+{
+  "schema": "independent-load-readonly-checks-v1",
+  "hash_check_observed_utc": "2026-10-30T17:18:05.113112+00:00",
+  "capability_observed_utc": "2026-10-30T17:18:22.531468+00:00",
+  "entry_adapter_manifest_match": true,
+  "installed_frozen_file_count": 6,
+  "installed_frozen_files_match": true,
+  "runner_actual_id_matches": true,
+  "host_cpus": 16,
+  "p13_paths_at_hash_check": {
+    "runs/r30manualp13": false,
+    "results/r30manualp13": false,
+    "results/r30manualp13.phase.json": false,
+    "identity-history/r30manualp13-before-bind": false,
+    "operator/r30manualp13": false
+  },
+  "running_container_names_at_hash_check": [],
+  "runtime_capability_probe": {
+    "network": "none",
+    "workspace_mount": "readonly",
+    "platform": "Linux",
+    "runtime_imported": true,
+    "measurement_constants": [
+      400,
+      60,
+      600
+    ],
+    "cpu_max": "800000 100000",
+    "memory_max": "8589934592",
+    "pids_max": "2048"
+  },
+  "SUT_requests": 0,
+  "benchmark_started": false,
+  "identity_issued": false,
+  "prepare_executed": false,
+  "grant_issued": false,
+  "execute_executed": false,
+  "limitation": "Snapshot only; output freshness and exclusion require recheck before admission and consume."
+}
