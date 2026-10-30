@@ -23,6 +23,10 @@ with tempfile.TemporaryDirectory() as tmp:
  write(a.fee,fee);bad=copy.deepcopy(platform);bad['LOAD_stop_retains_disks']=False;write(a.platform_proof,bad)
  try:g.freeze(a);raise AssertionError('unverified platform stop accepted')
  except ValueError:pass
+ for key,value in [('target_instance_ids',['i-othersynthetic123','i-loadsynthetic123']),('configured_force_stop',True),('schedule_enabled',False)]:
+  bad=copy.deepcopy(platform);bad[key]=value;write(a.platform_proof,bad)
+  try:g.freeze(a);raise AssertionError('invalid scheduled config accepted:'+key)
+  except ValueError:pass
  # Exercise original S+1 helper boundary using an exec spy only; no subprocess/cloud/QA calls.
  m=module('splus',D/'P08-SPLUS1-EXEC.PUBLIC.py');entry=r/'entry.sh';entry.write_text('#!/bin/sh\nexit 0\n');grant={'allow':True,'run_id':'r30finalp08','clients':400,'warmup_seconds':60,'steady_seconds':600,'window_start_utc':'2026-10-30T04:10:00Z','window_end_utc':'2026-10-30T04:23:00Z','cost_stop_utc':'2026-10-30T04:30:00Z'};gp=write(r/'grant.json',grant);calls=[];m.os.execv=lambda *args:calls.append(args)
  sys.argv=['x','execute','--entry',str(entry),'--entry-sha256',hashlib.sha256(entry.read_bytes()).hexdigest(),'--workspace',str(r),'--grant-file',str(gp),'--grant-sha256',hashlib.sha256(gp.read_bytes()).hexdigest()]
@@ -32,7 +36,7 @@ with tempfile.TemporaryDirectory() as tmp:
   try:m.main();assert allowed
   except ValueError:assert not allowed
   assert (len(calls)>before)==allowed
-print('LOCAL SYNTHETIC BOUNDARIES PASSED (scheduled-created configuration accepted with not-triggered and permission-warning preserved): valid facts;120s/120.001 freshness; NTP/IP/activeQA/image/memory negatives; fresh fee script AST<=16KiB; stale fee/unverified platform refusal; S+1 edges0.999/1/19.999/20 via exec spy. No cloud, Docker, HTTP or QA executed.')
+print('LOCAL SYNTHETIC BOUNDARIES PASSED (scheduled-created configuration accepted with not-triggered and permission-warning preserved): valid facts;120s/120.001 freshness; NTP/IP/activeQA/image/memory negatives; fresh fee script AST<=16KiB; stale fee/unverified platform/OOS target-force-enabled refusal; S+1 edges0.999/1/19.999/20 via exec spy. No cloud, Docker, HTTP or QA executed.')
 
 g.time.time=lambda:now
 with tempfile.TemporaryDirectory() as tmp:
