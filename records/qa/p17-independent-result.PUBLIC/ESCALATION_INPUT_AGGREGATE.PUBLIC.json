@@ -1,0 +1,60 @@
+{
+  "schema": "P17_ESCALATION_INPUT_AGGREGATE_V1",
+  "run_id": "r30posttools17",
+  "scope": "Authenticated startup inventory only; no escalation HTTP execution inferred",
+  "task_count": 400,
+  "task_state_distribution": {
+    "1": 80,
+    "2": 80,
+    "3": 80,
+    "4": 80,
+    "5": 80
+  },
+  "pairing_counts": {
+    "event_present": 400,
+    "schedule_version_match": 400,
+    "rule_version_match": 400,
+    "task_identity_match": 400,
+    "project_identity_match": 400,
+    "cohort_selected_level_matches_event": 400,
+    "event_missing": 0,
+    "schedule_version_mismatch": 0,
+    "schedule_version_missing": 0,
+    "rule_version_mismatch": 0,
+    "rule_version_missing": 0,
+    "task_identity_mismatch": 0,
+    "project_identity_mismatch": 0,
+    "window_computation_unknown": 0,
+    "cohort_selected_level_differs_from_event": 0
+  },
+  "event_level_distribution": {
+    "3": 400
+  },
+  "conditional_frozen_rule_computation": {
+    "cohort_utc": "2026-10-31T11:09:54.477064+00:00",
+    "horizon_hours": 24,
+    "inventory_rule_version": 1,
+    "frozen_resource_rule_version": 1,
+    "cohort_selected_level_distribution": {
+      "3": 400
+    },
+    "at_plus_24h_level_distribution": {
+      "3": 400
+    },
+    "within_24h_counts": {
+      "no_higher_level_within_24h": 400,
+      "higher_level_within_24h": 0
+    },
+    "method": "Exact frozen select_window/parse_utc_timestamp AST; evaluate endpoints and all rule boundaries plus/minus one microsecond within interval; fixed task planned_end and frozen rule resource",
+    "rule_content_status": "Frozen source resource authenticated against source manifest; actual active database rule content was not recovered as separate authenticated evidence. Numeric rule version agreement does not prove identical content. Live future rules/tasks unknown."
+  },
+  "frozen_source_sha256": {
+    "backend/t44/scheduling/rules.py": "4b182e8f531f22f86e8bfd019a84ce9a844ef29eca1a58ed341d38e86e1d1428",
+    "backend/t44/resources/escalation-rules.json": "63bda0d3931bb7d34b3fd745c8a9ba14f489f7288badbf422dfc7ba4f6bc8f41"
+  },
+  "causal_inference": "NONE",
+  "unknowns": [
+    "No task-state field exists in paired event snapshot; task/event state equality is not evaluable.",
+    "Actual future task/schedule/rule changes and live escalation endpoint behavior were not observed."
+  ]
+}
