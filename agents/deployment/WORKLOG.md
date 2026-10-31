@@ -823,3 +823,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 - observer审核指出5a缺严格post-command deadline及本轮rotation绑定；已修，--material必填，rawSHA/08/exitproof/current scheduler/UTC非未来检查；7纯local合成测试通过，含超900返回成功拒绝且不生成scanner成功receipt。旧5a历史保留，无Docker/云。
 
 - 最小import helper：e523原字节3py（final/image-bundle/image-proof）及SHA清单，同行无derive依赖；同一最小目录verify exit0、AST310 pass。无Docker/import/prove/云；READMЕ白名单只准verify/import/prove-loaded，125MB包未复制。
+
+- 全局延迟审8a53c734：只PUBLIC+官方primary，p12重尾已在handler内，p13两窗非全程，历史64×5预算非p13Cmd/Env。默认nginx requestid与appUUID join缺口已报告；未凭直觉增worker/pool、无云/build。先交CPU/wall/DBwait及默认关闭双hop观测设计，AUDIT明确未证明配置根因。

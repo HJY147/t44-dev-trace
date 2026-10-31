@@ -1,0 +1,20 @@
+{
+  "role": "deployment",
+  "stage": "global_latency_evidence_and_design",
+  "baseline": "bceb7ec5e8bfab0bf7b58b7f1b13c14b24f350c5",
+  "artifacts": [
+    "agents/deployment/global-latency-20261031/AUDIT.md",
+    "agents/deployment/global-latency-20261031/SOURCES.PUBLIC.json"
+  ],
+  "result": "NO_PROVEN_CONFIG_ROOT_CAUSE; HANDLER_INTERNAL_TAIL_PRIORITIZED",
+  "cloud_calls": 0,
+  "product_or_resources_changed": false,
+  "unverified": [
+    "p13 current actual Cmd/Env per-worker distribution",
+    "DB native wait and connection wait",
+    "thread CPU vs wall spans"
+  ],
+  "prompt_refs": [
+    "agents/deployment/global-latency-20261031/PROMPT.md"
+  ]
+}
