@@ -54,6 +54,18 @@ def main():
   must_fail(lambda:m.execute(FakeSSH(bad_backup=True),b'kit','f'*64,CONTRACT,Path(tmp),notify=lambda x:None))
   assert not (Path(tmp)/'RECOVERY.PUBLIC.json').exists()
   print('PASS wrong backup digest cannot claim recovered/safe stop')
+ class OptionalFailure(FakeSSH):
+  def __init__(self):super().__init__();self.polls=0
+  def run(self,host,argv,data=None,timeout=180):
+   if any('wrapper-exit.PUBLIC.json'in str(x)for x in argv):
+    self.polls+=1
+    if self.polls==1:return b'{"done":false,"value":null}'
+   if any(str(x).endswith('OBSERVE_DIRECT.py')for x in argv):raise RuntimeError('OPTIONAL_OBSERVER_UNAVAILABLE')
+   return super().run(host,argv,data,timeout)
+ with tempfile.TemporaryDirectory()as tmp:
+  ssh=OptionalFailure();result=m.execute(ssh,b'kit','f'*64,CONTRACT,Path(tmp),notify=lambda x:None,sleep=lambda x:None)
+  assert result['status']=='EVIDENCE_RECOVERED_CAN_STOP_BOTH_SERVERS'and ssh.polls==2
+  print('PASS missing optional observation cannot abandon active run or final backup')
  with tempfile.TemporaryDirectory()as tmp:
   for name,label in [('data.txt','valid'),('../escape','unsafe')]:
    raw=archive(name);target=Path(tmp)/label
@@ -69,5 +81,5 @@ def main():
   with patch.object(sys,'argv',argv),patch.object(launch.subprocess,'Popen')as pop:
    pop.return_value.pid=123;launch.main();must_fail(launch.main);assert pop.call_count==1
   print('PASS once-only detached launch; controller outside sealed workspace')
- print('ALL 5 CONTROLLER CHECK GROUPS PASS; actual SSH/VM calls=0')
+ print('ALL 6 CONTROLLER CHECK GROUPS PASS; actual SSH/VM calls=0')
 if __name__=='__main__':main()

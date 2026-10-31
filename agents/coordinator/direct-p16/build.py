@@ -16,6 +16,7 @@ def main():
    expected=v if isinstance(v,str)else v['sha256']
    if sha(selected[folder+'/'+name])!=expected:raise ValueError('OWNER_MANIFEST_MISMATCH:'+name)
  for name in ('launch.py','run.py'):selected['coordinator/'+name]=(Path(__file__).parent/name).read_bytes()
+ selected['coordinator/ssh/update_ssh_addresses.py']=(ROOT/'agents/coordinator/manualp15-preparation/ssh/update_ssh_addresses.py').read_bytes()
  old=ROOT/'agents/coordinator/manualp15-preparation/coordinator/manual13-observe.py'
  selected['coordinator/manual13-observe.py']=old.read_bytes()
  common=__import__('subprocess').check_output(['git','rev-parse','--git-common-dir'],cwd=ROOT,text=True).strip();common=Path(common)

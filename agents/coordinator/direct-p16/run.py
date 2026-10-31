@@ -150,8 +150,20 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
     sampled = {}
     while time.monotonic() < deadline:
         probe = "from pathlib import Path;import json;p=Path(" + repr(channel + "/wrapper-exit.PUBLIC.json") + ");print(json.dumps({'done':p.is_file(),'value':json.loads(p.read_bytes())if p.is_file()else None}))"
-        state = json.loads(ssh.run("load", ["python3", "-c", probe]))
-        phase = json.loads(ssh.run("load", template(contract["observe_argv"], W=W)))
+        try:
+            state = json.loads(ssh.run("load", ["python3", "-c", probe]))
+        except Exception:
+            # Retry only this read-only status read, never initialization or dispatch.
+            notify({"status": "STATUS_UNAVAILABLE_RUN_NOT_REDISPATCHED"})
+            sleep(15)
+            continue
+        if state["done"]:
+            (local / "wrapper-exit.PUBLIC.json").write_text(json.dumps(state["value"]) + "\n")
+            break
+        try:
+            phase = json.loads(ssh.run("load", template(contract["observe_argv"], W=W)))
+        except Exception:
+            phase = {"available": False, "missing_is_not_zero": True}
         elapsed = phase.get("seconds_since_public_RUNNING_marker")
         if isinstance(elapsed, (float, int)):
             for label, at in (("early", 70), ("late", 550)):
@@ -166,9 +178,6 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
         if text != last_phase:
             notify(phase)
             last_phase = text
-        if state["done"]:
-            (local / "wrapper-exit.PUBLIC.json").write_text(json.dumps(state["value"]) + "\n")
-            break
         sleep(15)
     else:
         raise RuntimeError("DIRECT_RUNNER_TIMEOUT_NO_AUTOMATIC_RETRY_OR_VM_SHUTDOWN")
@@ -218,7 +227,9 @@ def main():
     if sha(a.kit) != a.kit_sha256:
         raise ValueError("EXACT_OFFLINE_KIT_REQUIRED")
     a.output.mkdir(mode=0o700)
-    helper = Path(__file__).resolve().parents[1] / "manualp15-preparation/ssh/update_ssh_addresses.py"
+    helper = Path(__file__).resolve().parent / "ssh/update_ssh_addresses.py"
+    if not helper.is_file():
+        helper = Path(__file__).resolve().parents[1] / "manualp15-preparation/ssh/update_ssh_addresses.py"
     spec = importlib.util.spec_from_file_location("direct_ssh", helper)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
