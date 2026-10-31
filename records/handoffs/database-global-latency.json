@@ -1,0 +1,74 @@
+{
+  "role": "database",
+  "stage": "LOCAL_DIAGNOSTIC_CANDIDATE",
+  "shared_dependency": "backend owner t44.diagnostics",
+  "existing_tests": 69,
+  "boundary_tests": 5,
+  "artifacts": [
+    "agents/database/global-latency/REPORT.md",
+    "backend/t44/persistence/rows.py",
+    "backend/t44/persistence/uow.py"
+  ],
+  "live_validation": false,
+  "p95_effect": "UNMEASURED",
+  "native_get_rc": {
+    "candidate": "dc556cd3",
+    "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+    "checks": 4,
+    "passed": true,
+    "owned_server_stopped": true,
+    "http_or_performance": false
+  },
+  "native_http_segments": {
+    "backend": "bf1de3ec",
+    "database": "e07eff0d",
+    "http_requests": 17,
+    "artificial_calibrations": 2,
+    "clock_and_counter_fault_business_semantics": "PASS",
+    "owned_server_stopped": true,
+    "scope": "sequential socket MySQL with TestClient, no TCP/TLS/proxy/production attribution"
+  },
+  "native_marker": {
+    "shared_commit": "4590e788",
+    "requests": 3,
+    "marker_all_complete": true,
+    "header_lengths": [
+      1134,
+      1134,
+      1476
+    ],
+    "owned_server_stopped": true,
+    "raw_status_label_inherited_inaccurate": "see REPORT final section; no artificial calibration repeated"
+  },
+  "p13_real_evidence": {
+    "windows": 2,
+    "samples": 24,
+    "source": "P13 APP07 PUBLIC early/late",
+    "dominant_digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+    "mapped_operation": "INSERT/idempotency_requests",
+    "mapping": "MySQL8.4 STATEMENT_DIGEST on actual synthetic local current HTTP SQL shapes, no SQL text published",
+    "server_side_mean_ms": [
+      87.3111792384015,
+      56.252994292420034
+    ],
+    "mysql_config_candidate": {
+      "innodb_redo_log_capacity": 2147483648,
+      "innodb_io_capacity": 1000,
+      "innodb_io_capacity_max": 2000,
+      "innodb_flush_log_at_trx_commit": 1,
+      "sync_binlog": 1
+    },
+    "root_cause_mechanism": "UNRESOLVED, hotspot identified; latch/logspace/checkpoint/IO candidates need evidence",
+    "ddl_changed": false,
+    "deployment_changed": false,
+    "own_mapping_servers_stopped": true
+  },
+  "ci_observer_regression": {
+    "path": "tmp/backend/diagnostics/995_database_observer.py",
+    "marker": "contract",
+    "tests": 5,
+    "passed": 5,
+    "backend_shared": "7f445172",
+    "source_changes": false
+  }
+}

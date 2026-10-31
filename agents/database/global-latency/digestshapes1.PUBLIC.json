@@ -1,0 +1,132 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {},
+  "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "http_requests": [
+    {
+      "phase": "getTask",
+      "client_wall_ns": 13902416,
+      "server_timing": "app;dur=4.707, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.527, diag-business-dispatch-wall;dur=0.578, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.066, diag-db-acquire-wall;dur=0.067, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.009, diag-db-close-wall;dur=0.009, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.079, diag-db-commit-wall;dur=0.102, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=2.445, diag-db-execute_fetch-wall;dur=2.907, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.869, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=4.268, diag-handle-wall;dur=4.755, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.204, diag-request-validate-wall;dur=0.204, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.035, diag-response-encode-wall;dur=0.035, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=3.530, diag-runtime-execute-wall;dur=4.016, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.752, diag-schema-validate-wall;dur=0.752, diag-incomplete;desc=\"0\""
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 3463708,
+      "server_timing": "app;dur=1.497, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.022, diag-business-dispatch-wall;dur=0.022, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.040, diag-db-acquire-wall;dur=0.041, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.006, diag-db-close-wall;dur=0.006, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.056, diag-db-commit-wall;dur=0.072, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.553, diag-db-execute_fetch-wall;dur=0.682, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.500, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.375, diag-handle-wall;dur=1.520, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.222, diag-request-validate-wall;dur=0.222, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.014, diag-response-encode-wall;dur=0.014, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=1.219, diag-runtime-execute-wall;dur=1.364, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.267, diag-schema-validate-wall;dur=0.266, diag-incomplete;desc=\"0\""
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 12043750,
+      "server_timing": "app;dur=9.853, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.390, diag-business-dispatch-wall;dur=0.499, diag-db-acquire-calls;desc=\"24\", diag-db-acquire-cpu;dur=0.151, diag-db-acquire-wall;dur=0.170, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.013, diag-db-close-wall;dur=0.012, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.128, diag-db-commit-wall;dur=0.549, diag-db-execute_fetch-calls;desc=\"24\", diag-db-execute_fetch-cpu;dur=4.663, diag-db-execute_fetch-wall;dur=6.216, diag-db-statements;desc=\"24\", diag-dispatch_wait-wall;dur=0.433, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=7.884, diag-handle-wall;dur=9.890, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.280, diag-request-validate-wall;dur=0.280, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.026, diag-response-encode-wall;dur=0.026, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=2.200, diag-runtime-claim-wall;dur=2.899, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=7.292, diag-runtime-execute-wall;dur=9.297, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.505, diag-runtime-locked_scope-wall;dur=1.757, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=3.230, diag-runtime-prepare-wall;dur=4.231, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=1.027, diag-schema-validate-wall;dur=1.027, diag-incomplete;desc=\"0\""
+    }
+  ],
+  "source_statement_mappings": [
+    {
+      "category": "SELECT",
+      "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "59c4a8e628b32c181e1dded53c40ef4c4c3daea205f5024e88cca4d1f4160a8a",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SAVEPOINT",
+      "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "INSERT/idempotency_requests",
+      "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "RELEASE",
+      "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "UPDATE/tasks",
+      "digest_hash": "8c69d9b3994f5caa52d0e86ef183d20ebcbf1335ec53532fe4fb326f38417121",
+      "matches_p13_top20": false
+    },
+    {
+      "category": "SELECT",
+      "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "INSERT/audit_events",
+      "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+      "matches_p13_top20": true
+    },
+    {
+      "category": "INSERT/outbox_events",
+      "digest_hash": "34aaebfe29c86dce4dc288015c954292035a56db5241376c62316cfd45cd8f18",
+      "matches_p13_top20": false
+    },
+    {
+      "category": "UPDATE/idempotency_requests",
+      "digest_hash": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+      "matches_p13_top20": true
+    }
+  ],
+  "http_total_requests": 3,
+  "driver_errors": [],
+  "status": "LOCAL_TRUSTED_HTTP_STATEMENT_DIGEST_MAPPING_FINISHED",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}

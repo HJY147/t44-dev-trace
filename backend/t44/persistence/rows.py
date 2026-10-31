@@ -9,6 +9,8 @@ from sqlalchemy import DateTime, bindparam, delete, func, insert, select, text, 
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.sql import ClauseElement
 
+from t44.diagnostics import active, count, span
+
 from .codecs import from_db_time, to_db_time
 from .errors import (
     PersistenceIntegrityError,
@@ -84,15 +86,13 @@ class RowsGateway:
 
     def _execute(self, statement, mode, parameters=None):
         try:
-            with self._session().execute(statement, parameters) as result:
-                if mode == "rows":
-                    return [
-                        {k: from_db_time(v) if hasattr(v, "tzinfo") else v for k, v in row.items()}
-                        for row in result.mappings()
-                    ]
-                if mode == "id":
-                    return int(result.inserted_primary_key[0])
-                return result.scalar_one() if mode == "count" else result.rowcount
+            if active():
+                with span("db.acquire"):
+                    self._session().connection()
+                count("db.statements")
+                with span("db.execute_fetch"):
+                    return self._run_statement(statement, mode, parameters)
+            return self._run_statement(statement, mode, parameters)
         except SQLAlchemyError as error:
             self._failed()
             original = getattr(error, "orig", None)
@@ -118,6 +118,17 @@ class RowsGateway:
             raise PersistenceIntegrityError(
                 "Database constraint rejected the operation", kind=kind, constraint=constraint
             ) from None
+
+    def _run_statement(self, statement, mode, parameters):
+        with self._session().execute(statement, parameters) as result:
+            if mode == "rows":
+                return [
+                    {k: from_db_time(v) if hasattr(v, "tzinfo") else v for k, v in row.items()}
+                    for row in result.mappings()
+                ]
+            if mode == "id":
+                return int(result.inserted_primary_key[0])
+            return result.scalar_one() if mode == "count" else result.rowcount
 
     def _failed(self):
         if self._scopes:

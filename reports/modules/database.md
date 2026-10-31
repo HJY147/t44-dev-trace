@@ -104,3 +104,13 @@
 
 
 2026-10-31 已锁任务复用候选a59a90a1开发原生RC正确性通过，12并发1成功11版本冲突、最新锁行可见及上下文拒绝；原夹具缺证据422保留。非压测/独立验收，详agents/database/locked-task-native/REPORT.md。
+
+2026-10-31 global DB latency: disabled-by-default acquire/execute_fetch/commit/rollback/close wall+CPU spans;69 existing SQLite+5 synthetic boundaries pass, real P95/root cause unproven. No cloud/durability change. See agents/database/global-latency/REPORT.md.
+
+2026-10-31 GET dc556cd3 native MySQL8.4.11 actualRC four auth/expiry/validation priority checks passed; own socket server shutdown0, no cloud/HTTP/P95 proof. Raw getrc1.PUBLIC.json retained.
+
+2026-10-31 bf1+e07 short native HTTP:17schema-checked requests, artificial pool/SQLwait calibration and diagnostic self-fault preservation PASS; owned server stopped; not production root cause/P95 proof. See getsegments1.PUBLIC.json/sourceSHA.
+
+2026-10-31 realP13 PUBLIC24sample delta audit + two own short-lived MySQL digest mapping runs: dominant78cee strictly INSERT/idempotency_requests avg87/56ms, COMMITf2b avg8.64ms. 100MiB redo/10000-20000IO budget mismatch tuning proposal2GiB/1000-2000 retainsdurability1/1. No production/DDL/deployment edit; ownmappingserversstopped. Details P13_IO_FINDINGS.md and rawhash/deltas.
+
+2026-10-31 CI收口：原5observer检查迁入tmp/backend/diagnostics/995_database_observer.py contract marker，原脚本/日志保留；补off不得读clock和diag自身clock故障不得误报成功commit uncertainty；准确7f共享源码核SHA，strict pytest5pass/Ruff及format通过，无新native/云/生产源改动。证据CI_OBSERVER_995.PUBLIC.json/log。

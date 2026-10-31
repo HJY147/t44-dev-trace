@@ -1,0 +1,21 @@
+{
+  "test_file": "tmp/backend/diagnostics/995_database_observer.py",
+  "marker": "contract",
+  "pytest_config": "backend/pyproject.toml",
+  "discovery_pattern": "[0-9][0-9][0-9]_*.py",
+  "test_count": 5,
+  "passed": 5,
+  "shared_backend_commit": "7f445172",
+  "shared_diagnostics_sha256": "c307886c30c508c8bb044006967efd82f50793cf45d3583679a130900026be31",
+  "preserved_original": "agents/database/global-latency/check_diagnostics.py and diagnostics-checks.log remain unchanged",
+  "strengthened_guards": [
+    "disabled clock reads forbidden",
+    "enabled diagnostic clock failure keeps successful commit, no rollback or CommitUncertain"
+  ],
+  "ruff_backend_config": "PASS",
+  "format_check": "PASS",
+  "native_repeated": false,
+  "product_source_changed": false,
+  "full_suite": "root will run after integration",
+  "initial_ruff": "one unused import automatically fixed before final check"
+}

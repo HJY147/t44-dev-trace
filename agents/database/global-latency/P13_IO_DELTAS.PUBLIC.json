@@ -1,0 +1,558 @@
+{
+  "early": {
+    "source_path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/p13-app07-live-20261031/t44-p13-material07-observe-early.PUBLIC.jsonl",
+    "source_sha256": "41169ef083fd531c5bfdf2d21a30acabba37d3bc42896dafda52d4df0eb25800",
+    "source_bytes": 275137,
+    "samples": 12,
+    "seconds": 64.80792764900002,
+    "utc_start": "2026-10-30T17:31:31.551379+00:00",
+    "utc_end": "2026-10-30T17:32:36.359285+00:00",
+    "config": {
+      "innodb_autoinc_lock_mode": 2,
+      "innodb_buffer_pool_instances": 16,
+      "innodb_buffer_pool_size": 8589934592,
+      "innodb_dedicated_server": 0,
+      "innodb_flush_log_at_trx_commit": 1,
+      "innodb_flush_neighbors": 0,
+      "innodb_io_capacity": 10000,
+      "innodb_io_capacity_max": 20000,
+      "innodb_log_buffer_size": 67108864,
+      "innodb_page_size": 16384,
+      "innodb_redo_log_capacity": 104857600,
+      "sync_binlog": 1
+    },
+    "counters_delta": {
+      "Com_commit": 140973,
+      "Com_rollback": 140981,
+      "Handler_commit": 1811853,
+      "Innodb_buffer_pool_pages_flushed": 106233,
+      "Innodb_buffer_pool_read_requests": 9217110,
+      "Innodb_buffer_pool_reads": 183,
+      "Innodb_buffer_pool_wait_free": 0,
+      "Innodb_data_fsyncs": 63797,
+      "Innodb_data_read": 2998272,
+      "Innodb_data_reads": 183,
+      "Innodb_data_writes": 435462,
+      "Innodb_data_written": 2180469248,
+      "Innodb_log_waits": 0,
+      "Innodb_log_writes": 327799,
+      "Innodb_os_log_fsyncs": 59375,
+      "Innodb_os_log_written": 332714496,
+      "Innodb_redo_log_current_lsn": 209758446,
+      "Innodb_redo_log_checkpoint_lsn": 227378362,
+      "Innodb_row_lock_time": 103,
+      "Innodb_row_lock_waits": 7,
+      "Connections": 70
+    },
+    "rates_per_second": {
+      "Com_commit": 2175.2431394429136,
+      "Com_rollback": 2175.3665811311485,
+      "Handler_commit": 27957.274144191164,
+      "Innodb_buffer_pool_pages_flushed": 1639.1976082827139,
+      "Innodb_buffer_pool_read_requests": 142221.9523808862,
+      "Innodb_buffer_pool_reads": 2.8237286183741084,
+      "Innodb_buffer_pool_wait_free": 0.0,
+      "Innodb_data_fsyncs": 984.4011730405081,
+      "Innodb_data_read": 46263.96968344139,
+      "Innodb_data_reads": 2.8237286183741084,
+      "Innodb_data_writes": 6719.270555270087,
+      "Innodb_data_written": 33645100.63968454,
+      "Innodb_log_waits": 0.0,
+      "Innodb_log_writes": 5058.007745215379,
+      "Innodb_os_log_fsyncs": 916.1687798686485,
+      "Innodb_os_log_written": 5133854.885809387,
+      "Innodb_redo_log_current_lsn": 3236617.086972022,
+      "Innodb_redo_log_checkpoint_lsn": 3508496.109171737,
+      "Innodb_row_lock_time": 1.5893117360247713,
+      "Innodb_row_lock_waits": 0.10801147720556699,
+      "Connections": 1.0801147720556699
+    },
+    "checkpoint_age_bytes": {
+      "first": 35812030,
+      "last": 18192114,
+      "min": 18192114,
+      "max": 38599044,
+      "fraction_capacity_min": 0.17349351882934572,
+      "fraction_capacity_max": 0.36810916900634766
+    },
+    "nominal_capacity_seconds_at_observed_redo_rate": 32.39728308364653,
+    "age_seconds_at_observed_redo_rate_range": [
+      5.620718642692273,
+      11.92573695398453
+    ],
+    "aggregate_deltas": {
+      "FILE_IO_TOTAL": {
+        "bytes_read": 2899968,
+        "bytes_write": 4120962077,
+        "count_read": 177,
+        "count_write": 476339,
+        "sum_timer_read_ps": 538945812340,
+        "sum_timer_write_ps": 239898997695380
+      },
+      "DIGEST_TOTAL": {
+        "count_star": 1746598,
+        "sum_lock_time_ps": 1127717000000,
+        "sum_rows_examined": 1882596,
+        "sum_timer_wait_ps": 7090956204794000
+      }
+    },
+    "wait_deltas": [
+      {
+        "event": "wait/io/file/innodb/innodb_dblwr_file",
+        "delta_calls": 1099,
+        "delta_aggregate_seconds": 121.360715092176,
+        "mean_ms_per_event": 110.42831218578344
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_data_file",
+        "delta_calls": 109333,
+        "delta_aggregate_seconds": 110.248955119452,
+        "mean_ms_per_event": 1.0083776638293287
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_log_file",
+        "delta_calls": 387651,
+        "delta_aggregate_seconds": 48.517617230408,
+        "mean_ms_per_event": 0.12515798290319902
+      },
+      {
+        "event": "wait/io/file/sql/binlog",
+        "delta_calls": 69583,
+        "delta_aggregate_seconds": 44.026853984912,
+        "mean_ms_per_event": 0.6327242858875299
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_arch_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_clone_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_tablespace_open_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_temp_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/meb::redo_log_archive_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      }
+    ],
+    "common_top20_digest_deltas": [
+      {
+        "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+        "calls": 45092,
+        "aggregate_seconds": 3937.035694218,
+        "mean_ms": 87.3111792384015
+      },
+      {
+        "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+        "calls": 139917,
+        "aggregate_seconds": 1208.172129972,
+        "mean_ms": 8.634920202491477
+      },
+      {
+        "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+        "calls": 89140,
+        "aggregate_seconds": 315.373213649,
+        "mean_ms": 3.5379539336885797
+      },
+      {
+        "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+        "calls": 45101,
+        "aggregate_seconds": 302.457860325,
+        "mean_ms": 6.706234015321169
+      },
+      {
+        "digest_hash": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+        "calls": 45106,
+        "aggregate_seconds": 161.867333574,
+        "mean_ms": 3.5885987135636057
+      },
+      {
+        "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+        "calls": 45090,
+        "aggregate_seconds": 136.90586164,
+        "mean_ms": 3.0362799210467952
+      },
+      {
+        "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+        "calls": 224453,
+        "aggregate_seconds": 33.868748694,
+        "mean_ms": 0.15089461354492922
+      },
+      {
+        "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+        "calls": 45105,
+        "aggregate_seconds": 26.574285353,
+        "mean_ms": 0.5891649562797916
+      },
+      {
+        "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+        "calls": 131898,
+        "aggregate_seconds": 22.611986405,
+        "mean_ms": 0.17143540011978953
+      },
+      {
+        "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+        "calls": 45089,
+        "aggregate_seconds": 20.211882614,
+        "mean_ms": 0.44826637570139055
+      },
+      {
+        "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+        "calls": 131901,
+        "aggregate_seconds": 18.103333621,
+        "mean_ms": 0.13724940387866658
+      },
+      {
+        "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+        "calls": 45131,
+        "aggregate_seconds": 11.714404152,
+        "mean_ms": 0.25956447125036003
+      },
+      {
+        "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+        "calls": 90227,
+        "aggregate_seconds": 10.292778444,
+        "mean_ms": 0.11407647870371396
+      },
+      {
+        "digest_hash": "41ae9943079294f7fe381cd37a3bc9ed163f7d857bf02444731f8654289b6120",
+        "calls": 47489,
+        "aggregate_seconds": 9.059790233,
+        "mean_ms": 0.1907766058034492
+      },
+      {
+        "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+        "calls": 45092,
+        "aggregate_seconds": 5.448481601,
+        "mean_ms": 0.12083033799787103
+      },
+      {
+        "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+        "calls": 140531,
+        "aggregate_seconds": 3.369640005,
+        "mean_ms": 0.02397791238232134
+      },
+      {
+        "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+        "calls": 45109,
+        "aggregate_seconds": 1.213703216,
+        "mean_ms": 0.02690601024185861
+      },
+      {
+        "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+        "calls": 45125,
+        "aggregate_seconds": 1.157391818,
+        "mean_ms": 0.025648572144044323
+      }
+    ],
+    "buffer_free_fraction_range": [
+      0.9324169158935547,
+      0.9437084197998047
+    ],
+    "threads_connected_range": [
+      248,
+      249
+    ]
+  },
+  "late": {
+    "source_path": "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/p13-app07-live-20261031/t44-p13-material07-observe-late.PUBLIC.jsonl",
+    "source_sha256": "0d009738b45c167458fb77f781936d427cfda23b74de45bc9605db9606fc4084",
+    "source_bytes": 276029,
+    "samples": 12,
+    "seconds": 63.62113830199996,
+    "utc_start": "2026-10-30T17:37:43.818156+00:00",
+    "utc_end": "2026-10-30T17:38:47.439280+00:00",
+    "config": {
+      "innodb_autoinc_lock_mode": 2,
+      "innodb_buffer_pool_instances": 16,
+      "innodb_buffer_pool_size": 8589934592,
+      "innodb_dedicated_server": 0,
+      "innodb_flush_log_at_trx_commit": 1,
+      "innodb_flush_neighbors": 0,
+      "innodb_io_capacity": 10000,
+      "innodb_io_capacity_max": 20000,
+      "innodb_log_buffer_size": 67108864,
+      "innodb_page_size": 16384,
+      "innodb_redo_log_capacity": 104857600,
+      "sync_binlog": 1
+    },
+    "counters_delta": {
+      "Com_commit": 124695,
+      "Com_rollback": 124712,
+      "Handler_commit": 1597733,
+      "Innodb_buffer_pool_pages_flushed": 106028,
+      "Innodb_buffer_pool_read_requests": 8252642,
+      "Innodb_buffer_pool_reads": 284,
+      "Innodb_buffer_pool_wait_free": 0,
+      "Innodb_data_fsyncs": 62717,
+      "Innodb_data_read": 4653056,
+      "Innodb_data_reads": 284,
+      "Innodb_data_writes": 385993,
+      "Innodb_data_written": 2124194304,
+      "Innodb_log_waits": 0,
+      "Innodb_log_writes": 279007,
+      "Innodb_os_log_fsyncs": 58511,
+      "Innodb_os_log_written": 288681472,
+      "Innodb_redo_log_current_lsn": 186325837,
+      "Innodb_redo_log_checkpoint_lsn": 204197228,
+      "Innodb_row_lock_time": 23,
+      "Innodb_row_lock_waits": 5,
+      "Connections": 71
+    },
+    "rates_per_second": {
+      "Com_commit": 1959.961788298908,
+      "Com_rollback": 1960.2289950866789,
+      "Handler_commit": 25113.24133208372,
+      "Innodb_buffer_pool_pages_flushed": 1666.5530172802166,
+      "Innodb_buffer_pool_read_requests": 129715.4093789701,
+      "Innodb_buffer_pool_reads": 4.463925160406511,
+      "Innodb_buffer_pool_wait_free": 0.0,
+      "Innodb_data_fsyncs": 985.7887122718843,
+      "Innodb_data_read": 73136.94982810027,
+      "Innodb_data_reads": 4.463925160406511,
+      "Innodb_data_writes": 6067.055860707008,
+      "Innodb_data_written": 33388184.504288018,
+      "Innodb_log_waits": 0.0,
+      "Innodb_log_writes": 4385.444955033589,
+      "Innodb_os_log_fsyncs": 919.6786093681175,
+      "Innodb_os_log_written": 4537508.754239393,
+      "Innodb_redo_log_current_lsn": 2928678.140204586,
+      "Innodb_redo_log_checkpoint_lsn": 3209581.4920931864,
+      "Innodb_row_lock_time": 0.36151506580756954,
+      "Innodb_row_lock_waits": 0.07859023169729773,
+      "Connections": 1.1159812901016277
+    },
+    "checkpoint_age_bytes": {
+      "first": 35096188,
+      "last": 17224797,
+      "min": 17224797,
+      "max": 35096188,
+      "fraction_capacity_min": 0.16426846504211426,
+      "fraction_capacity_max": 0.33470333099365235
+    },
+    "nominal_capacity_seconds_at_observed_redo_rate": 35.80372952579728,
+    "age_seconds_at_observed_redo_rate_range": [
+      5.881423691985744,
+      11.98362753428013
+    ],
+    "aggregate_deltas": {
+      "FILE_IO_TOTAL": {
+        "bytes_read": 4653056,
+        "bytes_write": 4070648079,
+        "count_read": 284,
+        "count_write": 426374,
+        "sum_timer_read_ps": 391213525896,
+        "sum_timer_write_ps": 267482085931812
+      },
+      "DIGEST_TOTAL": {
+        "count_star": 1542684,
+        "sum_lock_time_ps": 914400000000,
+        "sum_rows_examined": 1712015,
+        "sum_timer_wait_ps": 4762461676291000
+      }
+    },
+    "wait_deltas": [
+      {
+        "event": "wait/io/file/innodb/innodb_data_file",
+        "delta_calls": 109538,
+        "delta_aggregate_seconds": 134.897298872064,
+        "mean_ms_per_event": 1.2315114286554805
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_dblwr_file",
+        "delta_calls": 1037,
+        "delta_aggregate_seconds": 122.42100149692,
+        "mean_ms_per_event": 118.05303905199614
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_log_file",
+        "delta_calls": 339278,
+        "delta_aggregate_seconds": 51.647651405884,
+        "mean_ms_per_event": 0.15222811796191912
+      },
+      {
+        "event": "wait/io/file/sql/binlog",
+        "delta_calls": 67162,
+        "delta_aggregate_seconds": 48.9319168739,
+        "mean_ms_per_event": 0.7285655113591019
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_arch_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_clone_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_tablespace_open_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/innodb_temp_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      },
+      {
+        "event": "wait/io/file/innodb/meb::redo_log_archive_file",
+        "delta_calls": 0,
+        "delta_aggregate_seconds": 0.0,
+        "mean_ms_per_event": null
+      }
+    ],
+    "common_top20_digest_deltas": [
+      {
+        "digest_hash": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+        "calls": 39987,
+        "aggregate_seconds": 2249.388482771,
+        "mean_ms": 56.252994292420034
+      },
+      {
+        "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+        "calls": 124361,
+        "aggregate_seconds": 1074.333151474,
+        "mean_ms": 8.638826894878619
+      },
+      {
+        "digest_hash": "6ebc7155785a4364362234cfaa7b291f1934bc325fe06cc5ac2d6809b7157eeb",
+        "calls": 40033,
+        "aggregate_seconds": 347.168406736,
+        "mean_ms": 8.672055722428995
+      },
+      {
+        "digest_hash": "59c4a8e628b32c181e1dded53c40ef4c4c3daea205f5024e88cca4d1f4160a8a",
+        "calls": 51823,
+        "aggregate_seconds": 196.078297595,
+        "mean_ms": 3.7836153367230767
+      },
+      {
+        "digest_hash": "3e8dd975b05c270076897205e926ce59010e303ce3f03330c08666a0227d079b",
+        "calls": 40020,
+        "aggregate_seconds": 176.134389009,
+        "mean_ms": 4.401159145652174
+      },
+      {
+        "digest_hash": "d056833365f8ea9a456c03b8eff3fb64c46f28ed5967754ca527ac90b6888881",
+        "calls": 40047,
+        "aggregate_seconds": 173.537930335,
+        "mean_ms": 4.333356564411816
+      },
+      {
+        "digest_hash": "c24570b926e47423f5cd65ece1b2de2aaf0c68ac9df73f4bc43cb1038cea08ef",
+        "calls": 39984,
+        "aggregate_seconds": 156.020893432,
+        "mean_ms": 3.902083169067627
+      },
+      {
+        "digest_hash": "6a2068a8ab7c134080cb6de3ad31ea713a8e7caaf35637a40933dde6d6aab759",
+        "calls": 78802,
+        "aggregate_seconds": 42.404591661,
+        "mean_ms": 0.5381156780411664
+      },
+      {
+        "digest_hash": "c1a45c10df5575dafd8eb06a9d1d7e23103bd04db6d8144c94ab43b6058847f7",
+        "calls": 40011,
+        "aggregate_seconds": 29.452910581,
+        "mean_ms": 0.7361203314338557
+      },
+      {
+        "digest_hash": "8ca991df6f3d432b41d266b9e6f637b298fdfd3e57a133c223cad0fcbbcd44e8",
+        "calls": 40018,
+        "aggregate_seconds": 28.095127271,
+        "mean_ms": 0.7020622537608077
+      },
+      {
+        "digest_hash": "95ded3bc296e6a801c43e16a6681ddb7f057b0c7559346f002bee1d86ddb53a3",
+        "calls": 198728,
+        "aggregate_seconds": 20.848624562,
+        "mean_ms": 0.10491035265287227
+      },
+      {
+        "digest_hash": "58312ec8ce22009acabfda1290d6230cb931cf6aa2f882350bc7328145d617a3",
+        "calls": 116544,
+        "aggregate_seconds": 12.806502223,
+        "mean_ms": 0.10988555586731191
+      },
+      {
+        "digest_hash": "3a88b144f32d911a0ef0f4507f35e2b85d8b1f6204a29d8dd378752f46cd78ea",
+        "calls": 116535,
+        "aggregate_seconds": 11.42215797,
+        "mean_ms": 0.09801482790577938
+      },
+      {
+        "digest_hash": "dda0820a062fc1ccb4b3fe02c28b149b9f8aa66f91130a019ca868867b15a057",
+        "calls": 79956,
+        "aggregate_seconds": 8.700329153,
+        "mean_ms": 0.10881396209165041
+      },
+      {
+        "digest_hash": "4afdb08908508c57765625b3d52583da3dda15ebedb23ddda97c4d8cf268be19",
+        "calls": 39941,
+        "aggregate_seconds": 8.119664694,
+        "mean_ms": 0.2032914722716006
+      },
+      {
+        "digest_hash": "2574bb301d97b5b362a465cd9a4eb673d764f6b6f902600301c45b010d0b1671",
+        "calls": 40018,
+        "aggregate_seconds": 4.490550401,
+        "mean_ms": 0.11221326405617474
+      },
+      {
+        "digest_hash": "41ae9943079294f7fe381cd37a3bc9ed163f7d857bf02444731f8654289b6120",
+        "calls": 42224,
+        "aggregate_seconds": 3.751555657,
+        "mean_ms": 0.08884889297555892
+      },
+      {
+        "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+        "calls": 125105,
+        "aggregate_seconds": 2.890192341,
+        "mean_ms": 0.02310213293633348
+      },
+      {
+        "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+        "calls": 39937,
+        "aggregate_seconds": 1.027432204,
+        "mean_ms": 0.02572632406039512
+      },
+      {
+        "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+        "calls": 40010,
+        "aggregate_seconds": 1.02025692,
+        "mean_ms": 0.025500047988003
+      }
+    ],
+    "buffer_free_fraction_range": [
+      0.8730888366699219,
+      0.8834495544433594
+    ],
+    "threads_connected_range": [
+      279,
+      280
+    ]
+  }
+}

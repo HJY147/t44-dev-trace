@@ -1,0 +1,90 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {},
+  "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "candidate_mappings": {
+    "commit": {
+      "mysql_statement_digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+      "sha256_digest_text": "79663c1d3b43ceaf9ee728e501c64b57ae2e4d6cb36ff5c65eddcda1de27342f",
+      "sha256_lowercase_digest": "ecb33afda8caadb190ccc74fe9602fcb1020a55508913db6cf4b7d0f07dc3559"
+    },
+    "rollback": {
+      "mysql_statement_digest": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520",
+      "sha256_digest_text": "587fa628a9fe4642ac0e22825a97e81d388af674f7251a9fb699f96901dcb710",
+      "sha256_lowercase_digest": "b544bd6eaf13262e0c074e966af8ce6e1f540fbf683f60604f218664374dc159"
+    },
+    "select_literal": {
+      "mysql_statement_digest": "d1b44b0c19af710b5a679907e284acd2ddc285201794bc69a2389d77baedddae",
+      "sha256_digest_text": "66cbb3a40d4bbd150b75825ad291a6545399f3098fc1079e4d8b5bb061a6a481",
+      "sha256_lowercase_digest": "e687e19c0adbaf839396ecc0cb4dd83a46de65daa238b21fe35a25e66a15c79a"
+    },
+    "begin": {
+      "mysql_statement_digest": "55fa5810fbb2760e86d578526176c1497b134d4ef3dd0863dd78b1c5e819848c",
+      "sha256_digest_text": "a8402858d4f1e1d27afee976520485ebb4b96a5387355b823f0d0b8079729032",
+      "sha256_lowercase_digest": "44d61a267d983b87262949e41c416369c33e9ba4b89b1aeb9d4e61ec0e80a9cb"
+    },
+    "start_transaction": {
+      "mysql_statement_digest": "b57cf422fbfb5629759554d7a60a31947a2333a6e1b55d7dce60a94aa1eed044",
+      "sha256_digest_text": "c694dd4d8f76a81fe0ca5c11301c3b1d7c0ebeb4e5a7f996714ecbd1f282ab9a",
+      "sha256_lowercase_digest": "8dd0794e9ea85096ccc49027608beafdc7a87d2994b19469ba67c9a221649233"
+    },
+    "savepoint": {
+      "mysql_statement_digest": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b",
+      "sha256_digest_text": "d86d7ac2e887be028c6cf11f69681a351b24da172b9a58c3c8f4620fb5fd7bf0",
+      "sha256_lowercase_digest": "135d57e5df6362b52e34f179cc4f8007a5cf1aa7661dfe11ee4f9a0437d3ce6d"
+    },
+    "release_savepoint": {
+      "mysql_statement_digest": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3",
+      "sha256_digest_text": "202bc16ab9ca13d6fea82cb9453f88a34cd336d665a82632e837fc2f4627c048",
+      "sha256_lowercase_digest": "6c9c61750818f82db226f7cd7c092b3ac0924d80f7ddc8ba267ce5da6e57eaa2"
+    },
+    "set_names": {
+      "mysql_statement_digest": "6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee",
+      "sha256_digest_text": "dafc7aa1a1ca5d97695cd63a5313f6b3dd6f984b58a2f9bbc9f865d13688b2d1",
+      "sha256_lowercase_digest": "84d0315859f70742cdedfe0ff67d7a598de1c87e8e1302e7d6543bf9b525f10d"
+    },
+    "set_isolation": {
+      "mysql_statement_digest": "184b254cf8a04dc02dde13544f6b8fc2abe37037886cd02a153350b3909cf70e",
+      "sha256_digest_text": "2195e059c00bf390104bac34673c3af69939482968ffbc17c7ea7e267d7dd3d8",
+      "sha256_lowercase_digest": "0b5eabbfbe3ffc40e0b99de16c6993824e2a6a2d07eaedcea7d55eaa5271cb65"
+    },
+    "select_version": {
+      "mysql_statement_digest": "b715edd335c8ab2a3c43087e726bbc978f59bc64c69c2ff9f0f7f1ef75c8d651",
+      "sha256_digest_text": "5d547ef87fed95a6ba720caa381379665b2daa493597ef2314be2c5ce1c276e5",
+      "sha256_lowercase_digest": "34ec3f2a962442fba2e4c73aaca79fd7cb47e848c0ff57534db6886c9bd720df"
+    }
+  },
+  "matches": [
+    {
+      "operation": "commit",
+      "method": "mysql_statement_digest",
+      "digest_hash": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c"
+    },
+    {
+      "operation": "rollback",
+      "method": "mysql_statement_digest",
+      "digest_hash": "3e67fa9d38d82054e7fc01fe3ee8844dc76faaaefbd74d213a2af42e60e95520"
+    },
+    {
+      "operation": "savepoint",
+      "method": "mysql_statement_digest",
+      "digest_hash": "465341a44d06dbe41f925b4c77ce8c7f39cd16008138524090b79cd1f2838d3b"
+    },
+    {
+      "operation": "release_savepoint",
+      "method": "mysql_statement_digest",
+      "digest_hash": "2eb7ce02dd4d24662ee2f9892ddfe3dea9ad2d95d10bf2c48a044a81bd5bccb3"
+    }
+  ],
+  "status": "CHEAP_TRUSTED_STATEMENT_DIGEST_MAPPING_FINISHED",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}
