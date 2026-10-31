@@ -1,0 +1,11 @@
+{
+  "frozen_utc": "2026-10-31T12:02:30.825553+00:00",
+  "before_actual_result_access": true,
+  "checks": [
+    "aggregate state distribution from each of 400 clients first query",
+    "compare first query state/version/owner to launch inventory, aggregate matches and mismatches",
+    "aggregate first BLOCK pre-state and HTTP successes, verify against frozen state machine"
+  ],
+  "expected_values": null,
+  "publication": "counts only; no task IDs, raw response bodies or credentials"
+}
