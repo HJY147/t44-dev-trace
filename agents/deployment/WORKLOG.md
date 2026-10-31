@@ -825,3 +825,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 - 最小import helper：e523原字节3py（final/image-bundle/image-proof）及SHA清单，同行无derive依赖；同一最小目录verify exit0、AST310 pass。无Docker/import/prove/云；READMЕ白名单只准verify/import/prove-loaded，125MB包未复制。
 
 - 全局延迟审8a53c734：只PUBLIC+官方primary，p12重尾已在handler内，p13两窗非全程，历史64×5预算非p13Cmd/Env。默认nginx requestid与appUUID join缺口已报告；未凭直觉增worker/pool、无云/build。先交CPU/wall/DBwait及默认关闭双hop观测设计，AUDIT明确未证明配置根因。
+
+- proxy诊断cad1/c615：默认部署不变，显式enable+hash+hop生成新配置；保留原日志，追加1/256按response UUID相关采样日志，数值handler不记整头。四拒绝/AST310通过；首ruff一项import整理已修，最终check通过。首freeCI41165579016 web成功/TLS只读cache失败原log保留，fixture补cache tmpfs后41165691784两hop官方pinned nginx -t成功。无SUT/build/云。P13原PUBLIC窗口配置已补审，不再概括全无实际pool配置。

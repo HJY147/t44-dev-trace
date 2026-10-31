@@ -38,3 +38,8 @@ app monotonic duration与客户端monotonic elapsed相减不需要两机器wall-
 4. 当前不实施默认配置修改：没有证据证明nginx并发限制或worker不足。p12 handle内大尾优先由backend/database分解，若证明主因已在代码/SQL，先修该主因，勿再把可用服务器时间花在泛化对照压测。
 
 当前缺少逐p13请求handler细分、pool分布、DB wait、逐worker压力；停机前无法补造。没有性能改善/根因关闭声明，原NP结论不改。
+
+
+## 后续取得P13原始PUBLIC采样，替代配置未知部分
+
+root定位并准许读取.runtime/p13-app07-live-20261031/t44-p13-material07-observe-{early,late}.PUBLIC.jsonl。实际services.api.api_processes.pool采得T44_DB_POOL_SIZE=5、MAX_OVERFLOW=0；processes只记录supervisor configured_workers=64，不等于逐PID证明64活worker，更不能算其CPU总和。services.mysql.mysql.effective_global_config可核8GiB bufferpool/16instances、100MiB redo、io_capacity10000/max20000、flush_at_trx_commit1、sync_binlog1；因此P13并非完全没有有效pool/MySQL配置证据。以上只对应17:31–17:38的两窗口，不伪造全程恒定值或alive worker分布。此前表格中历史预算来源仍仅为历史链，现在由此新采样直接支持该窗口的pool与configuredworker数。数据库岗正分析tiny redo/flush写放大；本岗不擅改buffer/worker/持久性参数。
