@@ -1,0 +1,1 @@
+ROLE-backend-BCEC-MATERIAL-P15-v1: User asks all offline preparation before boot/immediate new original measurement. Root locks bcec product, p15/material09/maintenance09/QA53 and assigns backend owner-only exactsource material adaptation/failclosed issuer. No application changes, servers, SSH/SUT or pressure; root/dep/QA coordinate independent original facts.
