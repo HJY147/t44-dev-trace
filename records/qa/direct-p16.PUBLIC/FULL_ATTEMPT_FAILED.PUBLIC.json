@@ -1,0 +1,26 @@
+{
+  "status": "FULL_DURATION_LOCAL_ATTEMPT_POSTCONDITION_FAILED_PRESERVED",
+  "configured_clients": 400,
+  "warmup_seconds": 60,
+  "steady_seconds": 600,
+  "observed_elapsed_seconds": 660.329516917,
+  "full_cohort": true,
+  "metrics_verdict": "FAIL",
+  "postconditions": {
+    "final_task_snapshot": 16,
+    "post_budget_not_observed": 14
+  },
+  "writer_finalized": true,
+  "post_validator_pool_stopped": true,
+  "raw_verification": {
+    "records": 132610,
+    "plain_bytes": 381266513,
+    "compressed_bytes": 47020657,
+    "complete": true
+  },
+  "raw_sha256": "9df1c16aae717398a16823223cd13a1f6d7a39c79f947175e466d0b9de29c1ff",
+  "original_W_backup_not_created": true,
+  "cause": "Local synthetic audit responder did not paginate when >100 audit entries accumulated; frozen schema correctly rejected; test driver asserted before planned backup. Not product evidence.",
+  "production_core_changed": false,
+  "formal_acceptance": false
+}
