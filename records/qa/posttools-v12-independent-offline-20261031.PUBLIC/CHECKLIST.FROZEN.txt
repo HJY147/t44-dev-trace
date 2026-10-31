@@ -1,0 +1,9 @@
+Independent offline audit checklist frozen before source inspection.
+1 Verify candidate hashes and neutral replay identity; immutable original/candidate source.
+2 Compare original measurement clients/warmup/steady metrics/assertions and schema/history semantics.
+3 Verify absolute 40 second post deadline, no dispatch at/after deadline, late completions excluded.
+4 Exercise synthetic positive/negative responses and exceptions with isolated local fixtures only.
+5 Inspect concurrent ownership, connections, validation pools, writer lifecycle, quota and evidence sealing.
+6 Verify process result/exit consistency including failures; bind identity across all changed modules.
+7 Distinguish executed local evidence, static reasoning, and untested Linux/runtime boundaries.
+No network, SUT, cloud, SSH, author tests/logs/reports or other-agent communications.

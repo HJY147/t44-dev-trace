@@ -1,0 +1,47 @@
+{
+  "scope": "LOCAL_OFFLINE_ONLY",
+  "tests": [
+    {
+      "name": "frozen identity and measurement preservation",
+      "status": "PASS",
+      "detail": "5 frozen module hashes, replay hash, original runtime/schema bytes, 5 inherited measurement/assertion methods verified"
+    },
+    {
+      "name": "neutral replay schema differential",
+      "status": "PASS",
+      "detail": {
+        "replay_pages": 25,
+        "positive_and_mutated_cases": 100,
+        "real_content_published": false
+      }
+    },
+    {
+      "name": "expired dispatch gates",
+      "status": "PASS",
+      "detail": "both dispatch gates refuse expired budget"
+    },
+    {
+      "name": "complete pagination and scope negative",
+      "status": "PASS",
+      "detail": "snapshot plus all three pages; wrong task scope rejected"
+    },
+    {
+      "name": "late completion excluded",
+      "status": "PASS",
+      "detail": "late snapshot excluded"
+    },
+    {
+      "name": "combined exit gate matrix",
+      "status": "PASS",
+      "detail": {
+        "positive": 1,
+        "negative": 12
+      }
+    },
+    {
+      "name": "reservation refusal and writer seal",
+      "status": "PASS",
+      "detail": "normal and refused reserved dispatch authenticated footer; reservation balance zero"
+    }
+  ]
+}

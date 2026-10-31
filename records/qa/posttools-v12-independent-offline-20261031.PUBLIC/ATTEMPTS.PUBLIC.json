@@ -1,0 +1,27 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "HARNESS_ADAPTER_ERROR",
+      "reason": "replay route included server prefix; no candidate defect inferred"
+    },
+    {
+      "attempt": 2,
+      "result": "HARNESS_ADAPTER_ERROR",
+      "reason": "replay third tuple field incorrectly treated as HTTP status; adapter corrected to documented response schema 200"
+    },
+    {
+      "attempt": 3,
+      "result": "7_GROUPS_PASS"
+    },
+    {
+      "attempt": 4,
+      "result": "7_GROUPS_PASS_WITH_EXPLICIT_REPLAY_POSITIVE_ACCEPTANCE"
+    }
+  ],
+  "commands": [
+    "python3 /tmp/t44-independent-v12-audit/audit.py",
+    "python3 /tmp/t44-independent-v12-audit/concurrency.py"
+  ],
+  "platform": "macOS-27.0.1-arm64-arm-64bit"
+}
