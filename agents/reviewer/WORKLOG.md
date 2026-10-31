@@ -749,3 +749,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 DirectP16 offline components: backend53ac/deploy2cf/PUBLIC14hash checked; cold-start readiness and pre-rotation worker-stop order need closure, sent root/owner. No SSH/cloud/Docker/PRIVATE/productsuite. Prompt-Ref review_p13_preparation/direct-p16; COMPONENT-REVIEW.md.
 
 2026-10-31 DirectP16 controller3d741: a7ad startup findings closed; optional observer exception blocks NP evidence recovery reproduced with purelocal FakeSSH (backup downloads0), root notified. Actual finalarchive pending. Prompt-Ref review_p13_preparation/direct-p16-controller; CONTROLLER-REVIEW.md.
+
+2026-10-31 DirectP16 dd5a94e4 observer recovery closed; exact6purelocalFakeSSHgroups exit0, helper packaged/main resolves kit. Reviewed source no blocker; finalarchive and second660s evidence pending. Prompt-Ref review_p13_preparation/direct-p16-controller-closure; CONTROLLER-CLOSURE.md.

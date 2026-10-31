@@ -1,0 +1,9 @@
+# DirectP16 控制器缺陷闭环
+
+准确 dd5a94e4feb2562345a0d6ac4fb1d7725dcede65：可选observe异常隔离为available=false/missing_is_not_zero，已发现wrapper退出先保存结果再回收，不再调用observe；只重读无副作用status，不重发初始化/launch/seal。原bad-backuphash拒绝安全停机声明保持。
+
+本岗从git准确提取run/launch/offline_checks至临时树，仅复制PUBLIC契约，实际运行全部6组FakeSSH检查exit0，包括首次notdone/observe故障/次次doneNP仍回收；没有SSH/VM/真实Docker/产品suite/QA PRIVATE。初始失败复现和旧审核报告保持，不回写。
+
+builder新增coordinator/ssh/update_ssh_addresses.py，main优先同包helper，仓库入口fallback原相邻路径，解决仅解包Mac入口缺helper风险。实际最终包尚未交审，待核helper与全部owner清单原字节。
+
+结论：此前冷启动、worker停机顺序和可选观察中断回收三项源码问题已闭环，当前已审DirectP16源码无阻塞。该结论不代表第二次全660秒本地演练、实际archive、真实APP初始化/压测/封存已完成，更不是正式验收通过。云保持关闭。
