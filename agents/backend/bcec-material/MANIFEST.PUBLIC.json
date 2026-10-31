@@ -1,5 +1,5 @@
 {
-  "status": "PREPARING_NOT_READY_AWAITING_REAL_NEW_BUNDLE_FREEZE",
+  "status": "OFFLINE_RELEASE_FROZEN_LIVE_ADMISSION_PENDING",
   "source_sha": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "source_git_archive_sha256": "6eb9d3d4c871b607be4a796694b285d734cb3274d4633863cd029da68febd25b",
   "source_comparison_gzip_sha256": "c0c8e294ac3bc7df6dffac83e42d988ae1c6cc94ac1f07ebbf6cfd93f6655209",
@@ -15,11 +15,20 @@
     "refresh_runtime.py": "083b3836bf702351322a302e16ecf71bd8186269510bc43a50c4697c4818a6c4",
     "refresh_core.py": "c9fce60cd2f9cc90901265a321b09127ae569bd507e853011ba77bf4aee91301",
     "process_guard.py": "d2e225b6816d2adb9a2aa7c399c53f0dc4ecdb8ad375fb39c864416a660b3708",
-    "freeze_release.py": "0bea8e2beedd059ce589b1cfdb1a8167f21dea6fc906c220be30afc033548224",
+    "freeze_release.py": "165c232d1d3de546bab2e391bc16b81072077eea342a5e02cb946281a9e5efb0",
     "runtime_support.py": "bec01e4038ef4ca5d6ba6d048e96fb8c7cb32933f705fd65a6995d24d9753170",
-    "offline_checks.py": "5c535fffada10fdc885eca596827c84f54c9819dc558d87cb23b6d1689dc4fa6",
+    "offline_checks.py": "99699556e4b876833ec26599bfe605aef8f7cf0f87fdc16d72946d26b40d953c",
     "check_inputs.py": "4d3dc6c108ca429b19cf73c72387f12093af31995603d6d88558b6e053a097c4"
   },
   "cloud_calls": 0,
-  "product_changed": false
+  "product_changed": false,
+  "release": "agents/backend/bcec-material/release",
+  "actual_release_receipt_sha256": "e2cf59533e6ce2970abe3f57f47f2daab21bd99b3beaaa7c87913b6a0e807abf",
+  "actual_source_manifest_sha256": "52d74144437ad77140ccb8cab44bf82c4826e4ba00b9d2dc04895f35100bcfd7",
+  "actual_bundle_manifest_sha256": "3e09cc1bfe5074832fbb61bc2e500f5b27bc23a987c3d68f9744dd650c126d29",
+  "actual_backend_config": "sha256:479c406502b2e4834a0e8ab9ed3fd35e60df60601a041348b1e4a97825056f0e",
+  "actual_complete_runtime_files": 61,
+  "initial_comparison_archive_scope": "backend-only54; use release/SOURCE_COMPARISON for all61 runtime",
+  "release_py_count": 7,
+  "source_owner_py_count": 8
 }
