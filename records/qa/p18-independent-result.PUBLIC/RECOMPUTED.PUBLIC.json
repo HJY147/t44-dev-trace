@@ -1,0 +1,86 @@
+{
+  "all_exchange_runtime_errors": 0,
+  "independent_business_violations": {},
+  "raw_integrity": {
+    "records": 148487,
+    "plain_bytes": 1546004220,
+    "compressed_bytes": 271924201,
+    "complete": true
+  },
+  "record_count": 148487,
+  "record_types": {
+    "cohort_start": 1,
+    "load_resource": 299,
+    "exchange": 148186,
+    "result": 1
+  },
+  "wire_decode_errors": 0,
+  "cohort_clients": 400,
+  "warmup_seconds": 60.0,
+  "steady_seconds": 600.0,
+  "steady_classes": {
+    "query": {
+      "count": 24705,
+      "p95_ms": 58.994292
+    },
+    "contract": {
+      "count": 24716,
+      "p95_ms": 99.951703
+    },
+    "transition": {
+      "count": 49404,
+      "p95_ms": 81.731685
+    },
+    "escalation": {
+      "count": 24710,
+      "p95_ms": 85.548265
+    }
+  },
+  "steady_requests": 123535,
+  "steady_errors": {},
+  "completion_minute_buckets": [
+    12325,
+    12345,
+    12106,
+    12180,
+    12248,
+    12539,
+    12443,
+    12528,
+    12436,
+    12373
+  ],
+  "steady_client_coverage": 400,
+  "post_final_snapshots": 400,
+  "post_complete_audits": 400,
+  "post_late_responses_excluded": 0,
+  "post_http_or_runtime_errors": 0,
+  "post_snapshot_mismatches": 0,
+  "post_missing_expected_audits": 0,
+  "last_post_response_seconds_after_steady": 29.380077379,
+  "initial_conditions": {
+    "first_query_clients": 400,
+    "first_query_state_distribution": {
+      "2": 400
+    },
+    "inventory_state_version_owner_matches": 400,
+    "first_BLOCK_clients": 400,
+    "first_BLOCK_prestate_distribution": {
+      "2": 400
+    },
+    "first_BLOCK_HTTP_200": 400
+  },
+  "runtime_binding_matches": true,
+  "recomputed_metrics_match_result": true,
+  "scope_verdict": "PASS_DIRECT_DIAGNOSTIC_PERFORMANCE_AND_400_POSTCHECKS",
+  "full_formal_acceptance": "NOT_CLAIMED",
+  "run_id": "r30posttools18",
+  "source_sha": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "cipher_bytes": 274039561,
+  "cipher_sha256": "63aaaf6a98ba52a185dacb2dbe3c93e2cbe51a98e1219c57a3cd830e2d8fcc35",
+  "backup_member_count": 20,
+  "compressed_tar_sha256": "6c7ec410c2706a9ce5cf668c9b6759ef5af9e839689a92f9390c7853151b0cd4",
+  "receipt_bytes_SHA_match": true,
+  "all_20_archive_member_hashes_match": true,
+  "all_five_archived_input_hashes_match": true
+}
