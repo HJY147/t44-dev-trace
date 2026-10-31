@@ -414,3 +414,5 @@
 2026-10-31 GET dc556cd3 native MySQL8.4.11 actualRC four auth/expiry/validation priority checks passed; own socket server shutdown0, no cloud/HTTP/P95 proof. Raw getrc1.PUBLIC.json retained.
 
 2026-10-31 bf1+e07 short native HTTP:17schema-checked requests, artificial pool/SQLwait calibration and diagnostic self-fault preservation PASS; owned server stopped; not production root cause/P95 proof. See getsegments1.PUBLIC.json/sourceSHA.
+
+2026-10-31 realP13 PUBLIC24sample delta audit + two own short-lived MySQL digest mapping runs: dominant78cee strictly INSERT/idempotency_requests avg87/56ms, COMMITf2b avg8.64ms. 100MiB redo/10000-20000IO budget mismatch tuning proposal2GiB/1000-2000 retainsdurability1/1. No production/DDL/deployment edit; ownmappingserversstopped. Details P13_IO_FINDINGS.md and rawhash/deltas.
