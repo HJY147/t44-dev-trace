@@ -607,3 +607,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 p15components:0ccpersistentSSH/p15PUBLICmanifests/ENTRY/runonlywrap and5c874backend61runtimeallsha+mode reviewednoblocker. Purelocal2fakeIPssh-G+exclusiveout only, installerunrun/noPRIVATE/cloud/productsuite. Finalsequence/kitpending. Prompt-Ref review_p13_preparation/p15-offline-preparation; INITIAL-REVIEW.md.
 
 2026-10-31 finalp15r2:69b6/a72/5c exact195508Btar6b498...manifest6fd43...67payload+68members/all5ownerhashes/PythonAST/sourcebcecdiffempty verified. Createphase/fullconfig/noVMstop/permanentSSH/falsegrant/originalassertions intact. EXACT_P15_R2_OFFLINE_TECHNICAL_CONFIRMATION_NO_BLOCKER_LIVE_GATES_PENDING; r1incompletehistory retained. Prompt-Ref review_p13_preparation/p15-final-r2; FINAL-R2-REVIEW.md.
+
+2026-10-31 p15 OCI9b6: strict dual identity/producer implementation/release hashes reviewed; authorized read-only APP receipt92c61 stat and adapter minimal diffs verified, no blocker for ops compatibility only. Fresh material/scan/grant/press pending. Prompt-Ref review_p13_preparation/p15-oci-live-adapter; OCI-LIVE-ADAPTER-REVIEW.md.
