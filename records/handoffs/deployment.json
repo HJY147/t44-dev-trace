@@ -3063,5 +3063,17 @@
     "live_startup_verified": false,
     "remote_calls": 0,
     "prompt": "ROLE-deployment-DIRECT-P17-v1"
+  },
+  "direct_p18_20261101": {
+    "role": "deployment",
+    "stage": "p18_offline_release",
+    "artifacts": "agents/deployment/direct-p18",
+    "backend_commit": "0db79c50",
+    "run": "r30posttools18",
+    "output": "/root/t44-direct-p18/app-init",
+    "checks": "4 mixed-Chinese host/collect/normalize/rotation +7 startup +3 actualbcec router +contract +AST310 PASS",
+    "original_p17_changed": false,
+    "remote_calls": 0,
+    "prompt": "ROLE-deployment-P18-v1"
   }
 }

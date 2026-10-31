@@ -1,0 +1,47 @@
+{
+  "schema": "T44_P18_DEPLOYMENT_CONTRACT_V1",
+  "run_id": "r30posttools18",
+  "remote_root": "/root/t44-direct-p18",
+  "kit": "/root/t44-direct-p18/kit",
+  "exclusive_output": "/root/t44-direct-p18/app-init",
+  "private_inputs": "/root/t44-direct-p18/app-init/bootstrap/current-inputs.private.json",
+  "qa_workspace": "/root/t44-final-20261101/QA753_DIRECT_P18",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "existing_container_ids": {
+    "mysql": "ecb591df0b96f4ab774225b478f26fbd6652d16ef57bc277b54600e8e830cc9e",
+    "rabbitmq": "97918f928d25ae8ad235337bab3d9c547ac1836c92942e97d07fd510b60f711e",
+    "tls": "855882b40173e31083a95e06eca62da94a57a8a765d17df3c74709ea21f010bf",
+    "api": "a92f1db5890ab8b2b0c8a2cb3104d1c96520ac18cbbe348125a4c7598f3c6f44",
+    "web": "402ff7e0601826bfcbf8873f58e6034749827ac626e8f2251bf6b716f144c9cc",
+    "consumer": "6147918a252aa31ffba89af4706960f020a7a12d568fceabb63961124bfe4e4f",
+    "scheduler": "d2ea97d46f7b9c0f482447598054cc70c654ae0e2085a1ec017adcebc9d2eb49"
+  },
+  "release_files": {
+    "agents/deployment/direct-p18/start.py": "c5a90f6e7732415fb2d7c150632ca9c04a7cb371fa987152e0b1b070a02ad818",
+    "agents/deployment/direct-p18/readiness.py": "bcf6d3565c6259946c91594ce24f0b81c1f1a7520ed14da52e218f6c79a95db4",
+    "agents/backend/direct-p18-bootstrap/bootstrap.py": "c7e77a5f6d0c2a3c2cf4792ff599e84124387d932307196704cf10b5dfdfd42c",
+    "agents/backend/direct-p18-bootstrap/runtime_support.py": "ebbf9a15b8ea9dd8f4294b6d48aacd9f603b2ab9881cce797e4945f09711b77e"
+  },
+  "argv": [
+    "python3",
+    "-B",
+    "/root/t44-direct-p18/kit/deployment/start.py",
+    "--backend-dir",
+    "/root/t44-direct-p18/kit/backend",
+    "--run-id",
+    "r30posttools18",
+    "--output",
+    "/root/t44-direct-p18/app-init"
+  ],
+  "old_packet": "/root/t44-final-20261029/P09/P-packet/output/packet/inputs/session.private.json",
+  "accounts": "/root/t44-final-20261029/P09/P-accounts/output/accounts.initialized.private.json",
+  "ca": "/root/t44-final-20261029/P09/P-packet/output/packet/inputs/ca.pem",
+  "historical_import": "/root/t44-p15-live-20261031/backend-import-receipt.json",
+  "future_run_allocated_not_executed": true,
+  "remote_absence_verified": false,
+  "permanent_restrict_ssh_and_original_hostpins_preserved": true,
+  "automatic_vm_shutdown": false,
+  "backend_owner_commit": "0db79c50",
+  "producer_schema": "T44_REPEATABLE_BOOTSTRAP_V2"
+}

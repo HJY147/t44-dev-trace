@@ -686,3 +686,5 @@ DIRECT首次现场误拒修正：bcec项目路径POST先GET后，FastAPI405只�
 UTF8交付同步：start.py正式pin改为backenddfef9a82/cc94bea2，保原完整UTF8 canonical+newline绑定与原文件rawSHA。现场成功属于root独占utf8-tools正确pin派生入口，非旧包直接成功。2中文完整packet/实际hostbootstrap集成检查、7原检查、3真实路由检查通过；原子轮换不变，全程本地，不升级运行准入。
 
 P17仅离线发布初始化契约：`agents/deployment/direct-p17`冻结新run/输出/QA工作区、原七ID及准确UTF8工具hash；复用已修正start逻辑，增加P17完整中文集成。contract+3中文+7初始化+3真路由及AST310通过。历史公开镜像/实采IDs及持久配置记录支持保留服务复用，非停机后新卷事实核验。无SSH/云/启动；不宣称旧direct waiver成为全门禁验收。
+
+P18独立部署目录：绑定新backend0db79c50/c7e77a5+ebbf9a15，r30posttools18和独占app-init路径；原P17包保留。全中文/混合400初态集成4组、启动7组、实际bcecrouter3组及contract/AST310通过。只初始化合法解除+新CAS支持，不改生产规则或测量，无真实VM操作或准入声明。
