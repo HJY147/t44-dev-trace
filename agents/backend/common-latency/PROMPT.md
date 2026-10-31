@@ -1,0 +1,1 @@
+ROLE-backend-COMMON-LATENCY-DIAGNOSTIC-v1: User requests first-principles/web peer implementation analysis and true common latency root cause. Root pauses documents and cloud, asks real local wall/threadCPU/SQL evidence plus opt-in nonsecret diagnosis, no unjustified async conversion/auth removal/criteria relaxation.

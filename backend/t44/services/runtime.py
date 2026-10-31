@@ -7,6 +7,7 @@ import secrets
 from datetime import timedelta
 
 from t44.contracts import OPERATIONS
+from t44.diagnostics import measured
 from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
 
 from .codes import ERROR_IDS, Action
@@ -42,6 +43,7 @@ class Runtime:
             with self.factory() as uow:
                 authenticate(uow.gateway, call)
 
+    @measured("runtime.prepare")
     def prepare(self, call, validate):
         if call.operation != "login":
             with self.factory() as uow:
@@ -137,6 +139,7 @@ class Runtime:
         with self.factory() as uow:
             return self._claim(uow.gateway, call)
 
+    @measured("runtime.claim")
     def _claim(self, g, call):
         digest = hashlib.sha256(
             json.dumps(
@@ -194,6 +197,7 @@ class Runtime:
         call.idem = {**row, "owner_token": owner}
         return None
 
+    @measured("runtime.locked_scope")
     def locked_scope(self, g, call):
         authenticate(g, call, lock="update" if call.operation == "logout" else "share")
         if call.idem:
@@ -244,6 +248,7 @@ class Runtime:
                     target = rows[0] if rows else None
             return target
 
+    @measured("runtime.execute")
     def execute(self, call, validate, source="unknown"):
         try:
             if call.operation == "validateContractPayload":
@@ -251,6 +256,14 @@ class Runtime:
                     authenticate(uow.gateway, call)
                     validate(call)
                     require(call.actor["expires_at"] > now(), "TOKEN_EXPIRED")
+                    result = self.business.dispatch(uow.gateway, call)
+                return self.business.status(call.operation), wire(result), False, None
+            if OPERATIONS[call.operation]["method"] == "get":
+                with self.factory() as uow:
+                    authenticate(uow.gateway, call)
+                    validate(call)
+                    # RC statements re-read revocation/membership after validation.
+                    authenticate(uow.gateway, call)
                     result = self.business.dispatch(uow.gateway, call)
                 return self.business.status(call.operation), wire(result), False, None
             replay = self.prepare(call, validate)

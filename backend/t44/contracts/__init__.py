@@ -8,6 +8,8 @@ from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 from referencing.jsonschema import DRAFT202012
 
+from t44.diagnostics import measured
+
 SPEC = json.loads(files(__package__).joinpath("openapi.json").read_text())
 FROZEN_ERROR_NAMES = tuple(SPEC["components"]["schemas"]["ErrorCode"]["enum"])
 VERSION = SPEC["info"]["version"]
@@ -39,6 +41,7 @@ def _absolute_refs(value):
 _COMPILED = {}
 
 
+@measured("schema.validate")
 def violations(schema, value):
     entry = _COMPILED.get(id(schema))
     prepared = entry[1] if entry is not None and entry[0] is schema else None
