@@ -193,6 +193,9 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
         except Exception:
             (local / (label + "-observer-unavailable.PUBLIC.json")).write_text(
                 json.dumps({"available": False, "missing_is_not_zero": True}) + "\n")
+    notify({"status": "APP_EVIDENCE_RECOVERED_CAN_STOP_APP",
+            "load_must_stay_on_until_backup_download_verified": True,
+            "automatic_vm_shutdown": False})
     # Recover even when the original measurement reports NP/nonzero.
     archive = local / (RUN + ".753backup")
     receipt = local / (RUN + ".753backup.receipt.json")
