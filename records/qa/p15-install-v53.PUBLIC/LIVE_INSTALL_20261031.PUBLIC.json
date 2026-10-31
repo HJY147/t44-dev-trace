@@ -1,0 +1,20 @@
+{
+  "status": "INSTALLED_NO_SUT_ENVIRONMENT_ADMISSION_BLOCKED",
+  "observed_utc": "2026-10-31T05:36:44Z",
+  "workspace": "/root/t44-final-20261031/QA753_NEXT_V53",
+  "receipt_path": "/root/t44-final-20261031/QA753_NEXT_V53/INSTALL.receipt.PUBLIC.json",
+  "install_status": "OPAQUE_INSTALLED_NO_SUT_CONTACT",
+  "SUT_requests": 0,
+  "allow_true_issued": false,
+  "workspace_bytes": 1081810,
+  "rootfs_free_bytes": 19409133568,
+  "cpu": 16,
+  "memory_bytes": 32421552128,
+  "running_containers": 0,
+  "blockers": [
+    "19.4GB rootfs free does not cover original 12GiB raw plus same-filesystem backup worst-case peak",
+    "Original backup receipt computes ciphertext SHA using whole-file read_bytes; 2GiB seal container not guaranteed sufficient for large backup",
+    "actual APP identity/import/session/inventory/TLS/exclusion/scan not yet received or reviewed"
+  ],
+  "measurement_assertions_unchanged": true
+}
