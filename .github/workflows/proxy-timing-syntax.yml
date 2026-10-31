@@ -31,5 +31,5 @@ jobs:
       - name: Official pinned Nginx syntax only, no listeners or application
         run: |
           for hop in web tls; do
-            docker run --rm --network none --read-only --tmpfs /tmp --add-host api:127.0.0.1 --add-host web:127.0.0.1 --mount type=bind,src=/tmp/proxy-diag-qa/$hop.conf,dst=/etc/nginx/nginx.conf,readonly --mount type=bind,src=$PWD/deployment/nginx/api.conf,dst=/etc/nginx/t44-api.conf,readonly --mount type=bind,src=/tmp/proxy-diag-qa/tls,dst=/run/t44-tls,readonly --entrypoint nginx nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 -t
+            docker run --rm --network none --read-only --tmpfs /tmp --tmpfs /var/cache/nginx --add-host api:127.0.0.1 --add-host web:127.0.0.1 --mount type=bind,src=/tmp/proxy-diag-qa/$hop.conf,dst=/etc/nginx/nginx.conf,readonly --mount type=bind,src=$PWD/deployment/nginx/api.conf,dst=/etc/nginx/t44-api.conf,readonly --mount type=bind,src=/tmp/proxy-diag-qa/tls,dst=/run/t44-tls,readonly --entrypoint nginx nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 -t
           done
