@@ -1,0 +1,34 @@
+{
+  "case": "REAL_LOCAL_TLS_POST_ONLY_400_FULL_HISTORY",
+  "original_budget_seconds": 40,
+  "post_phase_wall_seconds": 29.452932332991622,
+  "TLS_bootstrap_seconds": 0.35875291703268886,
+  "clients": 400,
+  "postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400,
+    "validation_pending_at_shutdown": 0
+  },
+  "states": {
+    "COMPLETE": 400
+  },
+  "all400_postconditions_complete": true,
+  "deadline_seen": false,
+  "outer_thread_errors": [],
+  "all_threads_stopped": true,
+  "pool_stopped": true,
+  "writer_stopped": true,
+  "reservation_bytes_final": 0,
+  "raw_verification": {
+    "records": 8582,
+    "plain_bytes": 609229172,
+    "compressed_bytes": 74085878,
+    "complete": true
+  },
+  "linux_cgroup": false,
+  "host_cpu_count": 8,
+  "host_memory_bytes": 25769803776,
+  "transport": "Python actual HTTPSConnection + TLS1.2+ CA/SNI verified localhost fixture; original post schemas/headers/audit assertions",
+  "not_production_or_steady_performance_acceptance": true,
+  "post_only": true
+}
