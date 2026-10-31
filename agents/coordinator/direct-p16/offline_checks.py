@@ -69,7 +69,7 @@ def main():
  with tempfile.TemporaryDirectory()as tmp:
   for name,label in [('data.txt','valid'),('../escape','unsafe')]:
    raw=archive(name);target=Path(tmp)/label
-   code=m.INSTALL.replace("'/root/t44-direct-p16'",repr(str(target)))
+   code=m.INSTALL.replace(repr(m.REMOTE),repr(str(target)))
    run=subprocess.run([sys.executable,'-c',code,hashlib.sha256(raw).hexdigest()],input=raw,capture_output=True)
    assert (run.returncode==0)==(label=='valid')
   assert not (Path(tmp)/'unsafe/escape').exists()

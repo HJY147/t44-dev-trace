@@ -15,8 +15,8 @@ import tarfile
 import time
 
 RUN = "r30directp16"
-W = "/root/t44-final-20261031/QA753_DIRECT_P16"
-REMOTE = "/root/t44-direct-p16"
+W = "/root/t44-final-20261031/QA753_DIRECT_P16_R3"
+REMOTE = "/root/t44-direct-p16-r3"
 KIT = REMOTE + "/kit"
 CMS = KIT + "/transport/cms_five_transport.py"
 RSA = "/root/t44-r9/r29-load-key-01/load-only-private.pem"
@@ -32,7 +32,7 @@ IDS = {
 
 INSTALL = r'''import hashlib,io,json,os,tarfile
 from pathlib import Path
-root=Path('/root/t44-direct-p16');root.mkdir(mode=0o700)
+root=Path('/root/t44-direct-p16-r3');root.mkdir(mode=0o700)
 raw=__import__('sys').stdin.buffer.read(16*1024*1024+1)
 assert len(raw)<=16*1024*1024
 assert hashlib.sha256(raw).hexdigest()==__import__('sys').argv[1]
