@@ -1,0 +1,37 @@
+{
+  "status": "CANDIDATE_FULL_DURATION_EXERCISE_RUNNING_NOT_RELEASED",
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "original_core_byte_equal": true,
+  "original_functional_byte_equal": true,
+  "loopback_400_reduced_duration": {
+    "actual_warmup_seconds": 1,
+    "actual_steady_seconds": 12.5,
+    "cohort_barrier": 400,
+    "postconditions": {
+      "final_task_snapshot": 400,
+      "audit_complete_clients": 400
+    },
+    "metrics_verdict": "FAIL",
+    "not_product_acceptance": true,
+    "raw_authenticated": true,
+    "backup_all_file_hashes_verified": true
+  },
+  "network_interrupted_loopback": {
+    "metrics_verdict": "NP",
+    "full_cohort": false,
+    "writer_finalized": true,
+    "all_client_threads_joined": true
+  },
+  "boot_initialization_units_passed": 3,
+  "capsule_exact_roundtrip_all_member_SHA_pass": true,
+  "shell_syntax_and_embedded_python_AST": true,
+  "full_duration_exercise": {
+    "status": "RUNNING",
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "core_time_constants_unmodified": true,
+    "prior_local_driver_directory_argument_failure_preserved": true
+  },
+  "server_connections": 0
+}

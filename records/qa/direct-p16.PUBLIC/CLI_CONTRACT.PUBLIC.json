@@ -1,0 +1,52 @@
+{
+  "schema": "DIRECT_P16_PUBLIC_CLI_V1",
+  "run_id": "r30directp16",
+  "workspace": "/root/t44-final-20261031/QA753_DIRECT_P16",
+  "install_argv": [
+    "sh",
+    "{W}/public/INSTALL_DIRECT.sh",
+    "{W}",
+    "/root/t44-r9/r29-load-key-01/load-only-private.pem"
+  ],
+  "launch_argv": [
+    "sh",
+    "{W}/public/DIRECT_PRESSURE.sh",
+    "{W}",
+    "{OPENED}/inputs/session.private.json"
+  ],
+  "input_kind": "FILE",
+  "external_detach_supported": true,
+  "detach_logs_must_be_outside_workspace": true,
+  "automatic_seal": true,
+  "observe_argv": [
+    "python3",
+    "{W}/public/OBSERVE_DIRECT.py",
+    "{W}",
+    "r30directp16"
+  ],
+  "phase_path": "{W}/results/r30directp16.phase.json",
+  "once_marker": "{W}/runs/r30directp16/consumed.json",
+  "exit_path": "{W}/operator-channel/r30directp16/exit.PUBLIC.json",
+  "outer_conclusion": "{W}/runs/r30directp16/DIRECT_CONCLUSION.PUBLIC.json",
+  "backup_path": "/root/t44-sealed-directp16-tmpfs/r30directp16.753backup",
+  "backup_receipt_path": "/root/t44-sealed-directp16-tmpfs/r30directp16.753backup.receipt.json",
+  "seal_argv": [
+    "sh",
+    "{W}/public/SEAL_DIRECT.sh",
+    "{W}",
+    "r30directp16",
+    "/root/t44-sealed-directp16-tmpfs/r30directp16.753backup",
+    "EXITED_ALL_PRODUCERS_AND_WRITERS_STOPPED"
+  ],
+  "seal_is_automatic_do_not_call_twice": true,
+  "measurement_limits": {
+    "cpu": 8,
+    "memory_bytes": 8589934592,
+    "pids": 2048,
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600
+  },
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "download_backup_even_on_nonzero_exit": true
+}
