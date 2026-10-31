@@ -1,1 +1,28 @@
-{"status":"OFFLINE_REHEARSAL_RUNNING_DO_NOT_START_SERVERS","run_id":"r30directp16","actual_server_calls_during_preparation":0,"automatic_vm_shutdown":false}
+{
+  "status": "READY_FOR_USER_BOOT",
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "run_id": "r30directp16",
+  "archive_name": "direct16-ready-20261031-r2.tar.gz",
+  "archive_sha256": "377ffcb2c33ac53a7fb0d4a41457be332e40bcbf371677590113ee47fbd55c85",
+  "archive_bytes": 148424,
+  "payload_files": 37,
+  "review_commit": "ec73f682",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "original_measurement": {
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600
+  },
+  "local_full_flow": {
+    "wall_seconds": 693.119,
+    "postconditions400": true,
+    "raw_authenticated_records": 133158,
+    "backup_all_files_verified": 13,
+    "not_a_production_performance_result": true
+  },
+  "controller_offline_groups_passed": 6,
+  "servers": "USER_REPORTED_POWERED_OFF_NO_FURTHER_CONNECTIONS",
+  "actual_server_calls_during_new_offline_preparation": 0,
+  "automatic_vm_shutdown": false,
+  "next_user_action": "Start original APP and LOAD; supply actual public IPs. Coordinator invokes after_boot.py once; no old manual preparation sequence."
+}
