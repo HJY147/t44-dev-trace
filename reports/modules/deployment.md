@@ -674,3 +674,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 2026-10-31全局延迟审：agents/deployment/global-latency-20261031/AUDIT.md。停止上轮准备，按用户新优先级核公共证据与官方源码。设计先交root，现无充分证据支持配置改动；原正式性能NP保留。
 
 DB证据支持APP64CPU128GiB/PL1唯一40GiB候选调优入口已离线准备，redo2GiB/io1000/max2000，SET PERSIST与受控恢复，真实apply/resize/重启/性能均未验证。见agents/deployment/mysql-pl1-profile/README.md。
+
+P15离线物料已准备，路径agents/deployment/p15-ready；新准确bcec镜像build41171011125与身份、创建/启动分阶段、diag1、PL1profile和backend5c真实pins均可核；APP实际image导入/调优/maintenance09/material09/完整scan/独立许可仍未运行，不把离线完成当性能通过。

@@ -829,3 +829,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 - proxy诊断cad1/c615：默认部署不变，显式enable+hash+hop生成新配置；保留原日志，追加1/256按response UUID相关采样日志，数值handler不记整头。四拒绝/AST310通过；首ruff一项import整理已修，最终check通过。首freeCI41165579016 web成功/TLS只读cache失败原log保留，fixture补cache tmpfs后41165691784两hop官方pinned nginx -t成功。无SUT/build/云。P13原PUBLIC窗口配置已补审，不再概括全无实际pool配置。
 
 - DB df166675明确PL1候选离线落实：mysql_pl1_profile.py默认只plan，当前root批准/planSHA/原mysqlimage/project/DB/volume/space/effective/persisted/resize门禁；只3 SET PERSIST，非原子partial，保durability等KEEP，恢复须fresh restoreplan和独立批准。7纯local拒绝通过/AST310/Ruff最终pass，首lint兼容修正留README；无Docker/SQL/云/build，不宣称P95改善。
+
+- P15部署准备：准确bcec build41171011125成功，下载125MB级新包、原helper verify与95context逐Git字节核验，runtime61。独立p15-ready钉backend5c874a32真实7py release/core62296a/hoste31ec，维护09/材料09/新image479c+866c，create-only+APIflag1、三phase原配置/卷/网络/资源核验与分阶段start、原PL1profile。7observer/phase/wrongbundle检查、AST310/Ruff通过；原模板false、无VM/SSH/SQL/导入/材料/QA。永久SSH无2h gate，业务TTL保持。MANIFEST冻结25文件，root待整合/审核，全部现场门禁仍pending。
