@@ -1,0 +1,56 @@
+{
+  "run_id": "r30posttools17",
+  "source_sha": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "overall": "NP",
+  "backup": {
+    "cipher_sha256": "1af91c64a99169f5ea12c0fce2a20872fb941e33cea6cf4115a26e12aaec2ae8",
+    "compressed_tar_sha256": "10ab4b390707df395fd18b236f669bce10ec43731bcfee000803ec8d8990a5fc",
+    "files": 20,
+    "status": "LOCAL_BACKUP_DECRYPT_AND_ALL_FILE_HASHES_VERIFIED"
+  },
+  "raw": {
+    "records": 410,
+    "plain_bytes": 2326792,
+    "compressed_bytes": 411433,
+    "complete": true
+  },
+  "raw_cipher_bytes": 412588,
+  "raw_cipher_sha256": "5a27011f55e4efa19626ad542986e0b79a1567bf0fe1e63a794cbc27f694f2c8",
+  "exchange_records": 406,
+  "warmup_exchanges": 406,
+  "steady_exchanges": 0,
+  "clients_with_exchanges": 400,
+  "warmup_errors": 1,
+  "warmup_classes": {
+    "query": 400,
+    "transition": 5,
+    "contract": 1
+  },
+  "observed_elapsed_seconds": 1.013942096,
+  "post_validation_jobs": 0,
+  "post_budget_seconds": 40,
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_schema_sha256": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d",
+    "boot_sha256": "09e917ec74711a9b3a331107dacb902e3a2c78b9523ddd2a85723c7045d14c89"
+  },
+  "effective_runtime_binding_sha256": "7c8c47b6ea17ce9ba730ced6fd1f83efe0ca1c0d6ea4c1b9b4b02342d95b39f6",
+  "first_error": {
+    "class": "transition",
+    "phase": "warmup",
+    "start_utc": "2026-10-31T11:09:54.615034Z",
+    "end_utc": "2026-10-31T11:09:54.665249Z",
+    "status": 409,
+    "code": "STATE_CONFLICT",
+    "message": "State conflict",
+    "route_template": "POST /api/v1/projects/{project_id}/tasks/{task_id}/transitions",
+    "expected_version": 2086,
+    "current_version": null,
+    "current_state": 3,
+    "previous_query_state": 3,
+    "previous_query_version": 2086,
+    "client_stop_utc": "2026-10-31T11:09:54.665305Z",
+    "exception": "ValueError:ValueError:HTTP_409"
+  }
+}
