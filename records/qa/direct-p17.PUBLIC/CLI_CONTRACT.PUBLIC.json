@@ -1,0 +1,52 @@
+{
+  "schema": "DIRECT_P17_PUBLIC_CLI_V1",
+  "run_id": "r30posttools17",
+  "material_run_id": "r30materialposttools17",
+  "workspace": "/root/t44-final-20261101/QA753_POSTTOOLS_V12_P17",
+  "remote_root": "/root/t44-direct-p17",
+  "install_argv": [
+    "sh",
+    "{W}/public/INSTALL_DIRECT.sh",
+    "{W}",
+    "/root/t44-r9/r29-load-key-01/load-only-private.pem"
+  ],
+  "launch_argv": [
+    "sh",
+    "{W}/public/DIRECT_PRESSURE.sh",
+    "{W}",
+    "{OPENED}/inputs/session.private.json"
+  ],
+  "input_kind": "FILE",
+  "direct_shell_sha256": "6046d06ac66e4404c293fab4b065b24bc82f84a93a4059428fdacc67c519e1ff",
+  "install_sha256": "bb96e7ab3e9b9c7a36d91fa9882126f438c70dee365bcdbfd6c02cab00f07c61",
+  "observe_argv": [
+    "python3",
+    "{W}/public/OBSERVE_DIRECT.py",
+    "{W}",
+    "r30posttools17"
+  ],
+  "phase_path": "{W}/results/r30posttools17.phase.json",
+  "once_marker": "{W}/runs/r30posttools17/consumed.json",
+  "exit_path": "{W}/operator-channel/r30posttools17/exit.PUBLIC.json",
+  "outer_conclusion": "{W}/runs/r30posttools17/DIRECT_CONCLUSION.PUBLIC.json",
+  "backup_path": "/root/t44-sealed-posttools17-tmpfs/r30posttools17.753backup",
+  "backup_receipt_path": "/root/t44-sealed-posttools17-tmpfs/r30posttools17.753backup.receipt.json",
+  "automatic_seal": true,
+  "seal_is_automatic_do_not_call_twice": true,
+  "external_detach_supported": true,
+  "detach_logs_must_be_outside_workspace": true,
+  "download_backup_even_on_nonzero_exit": true,
+  "source_candidate": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_schema_sha256": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d",
+    "boot_sha256": "09e917ec74711a9b3a331107dacb902e3a2c78b9523ddd2a85723c7045d14c89"
+  },
+  "effective_runtime_binding_sha256": "7c8c47b6ea17ce9ba730ced6fd1f83efe0ca1c0d6ea4c1b9b4b02342d95b39f6",
+  "tool_manifest_sha256": "97ba9017def97ea3b600462cbb98378a51cb66bae88bb1fbdf2f8eeec2297ba9",
+  "legacy_profile_approval_or_grant_required": false,
+  "current_environment_verified": false,
+  "Linux_resource_validation": "PENDING_LOCAL_ATTEMPT_NOT_CLOUD",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE"
+}
