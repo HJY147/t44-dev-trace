@@ -215,7 +215,11 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
         request.state.raw_body = b"".join(chunks)
         request.state.too_large = size > 1048576
         request.state.request_id = str(uuid4())
-        request.state.diagnostic_dispatch_ready_ns = time.perf_counter_ns()
+        if diagnostics_enabled:
+            try:
+                request.state.diagnostic_dispatch_ready_ns = time.perf_counter_ns()
+            except Exception:
+                request.state.diagnostic_dispatch_ready_ns = None
         return await call_next(request)
 
     def endpoint(operation):
