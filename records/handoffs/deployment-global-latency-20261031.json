@@ -7,7 +7,10 @@
     "agents/deployment/global-latency-20261031/SOURCES.PUBLIC.json",
     "deployment/diagnostics/proxy_timing.py",
     "deployment/diagnostics/README.md",
-    "agents/deployment/proxy-timing-20261031/SYNTAX.PUBLIC.json"
+    "agents/deployment/proxy-timing-20261031/SYNTAX.PUBLIC.json",
+    "deployment/diagnostics/mysql_pl1_profile.py",
+    "agents/deployment/mysql-pl1-profile/README.md",
+    "agents/deployment/mysql-pl1-profile/MANIFEST.PUBLIC.json"
   ],
   "result": "NO_PROVEN_CONFIG_ROOT_CAUSE; HANDLER_INTERNAL_TAIL_PRIORITIZED",
   "cloud_calls": 0,
@@ -16,7 +19,9 @@
     "live opt-in config selection/overhead",
     "per-worker alive PID distribution",
     "DB native wait and connection wait",
-    "thread CPU vs wall spans"
+    "thread CPU vs wall spans",
+    "real SET PERSIST application/resize/restart/performance",
+    "current data filesystem free bytes and original owner after boot"
   ],
   "prompt_refs": [
     "agents/deployment/global-latency-20261031/PROMPT.md"
