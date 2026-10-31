@@ -1,0 +1,33 @@
+{
+  "status": "TMPFS_MOUNTED_POSTPROCESSING_RESOURCES_PREPARED_NOT_ONCE_ADMISSION",
+  "measurement_runtime_unchanged": true,
+  "backup_cipher_protocol_unchanged": true,
+  "tmpfs_path": "/root/t44-sealed-p15-tmpfs",
+  "tmpfs_limit_bytes": 15032385536,
+  "tmpfs_used_bytes_at_mount": 0,
+  "memavailable_kib_observed": 30723564,
+  "postseal_container_memory_bytes": 30064771072,
+  "required_memavailable_bytes": 31138512896,
+  "file_limit": 8192,
+  "max_tar_bound_bytes": 13690208256,
+  "max_cipher_bound_bytes": 14066017894,
+  "heap_tmpfs_max_bytes": 28132035788,
+  "original_backup_actual_roundtrip_tests": [
+    {
+      "input_bytes": 31,
+      "cipher_bytes": 794,
+      "all_hashes_verified": true
+    },
+    {
+      "input_bytes": 1073741824,
+      "cipher_bytes": 1049042,
+      "all_hashes_verified": true
+    }
+  ],
+  "shell_syntax": true,
+  "embedded_python_AST": true,
+  "SUT_requests": 0,
+  "grant_issued": false,
+  "wrapper_sha256": "c11378d75216be3db627dcfa13c1e0e3731d5e5617ae17e3f2874d5e7ca56ca8",
+  "warning": "tmpfs is volatile; download ciphertext and receipt and verify local bytes/hash/authentication before any stop or reboot. No original records deleted."
+}
