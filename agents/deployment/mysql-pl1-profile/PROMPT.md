@@ -1,0 +1,1 @@
+root实际派工：落实DB df166675明确PL1 profile，redo2GiB/io1000/max2000，保持durability/doublewrite与其它buffer/page/flush变量。默认只plan，apply须当前root批准事实/源hash、原project/role/DB/image/volume/free空间；优先SET PERSIST三变量并核effective/persisted/resize，非原子失败真实记录，不自动后继/rollback/VMstop。恢复同样核preconditions，不改默认Compose，不build/云，只少量本地拒绝与官方机制核验。操作者部署AI，非学生手测。

@@ -1,0 +1,31 @@
+{
+  "role": "deployment",
+  "stage": "global_latency_evidence_and_design",
+  "baseline": "bceb7ec5e8bfab0bf7b58b7f1b13c14b24f350c5",
+  "artifacts": [
+    "agents/deployment/global-latency-20261031/AUDIT.md",
+    "agents/deployment/global-latency-20261031/SOURCES.PUBLIC.json",
+    "deployment/diagnostics/proxy_timing.py",
+    "deployment/diagnostics/README.md",
+    "agents/deployment/proxy-timing-20261031/SYNTAX.PUBLIC.json",
+    "deployment/diagnostics/mysql_pl1_profile.py",
+    "agents/deployment/mysql-pl1-profile/README.md",
+    "agents/deployment/mysql-pl1-profile/MANIFEST.PUBLIC.json"
+  ],
+  "result": "NO_PROVEN_CONFIG_ROOT_CAUSE; HANDLER_INTERNAL_TAIL_PRIORITIZED",
+  "cloud_calls": 0,
+  "product_or_resources_changed": false,
+  "unverified": [
+    "live opt-in config selection/overhead",
+    "per-worker alive PID distribution",
+    "DB native wait and connection wait",
+    "thread CPU vs wall spans",
+    "real SET PERSIST application/resize/restart/performance",
+    "current data filesystem free bytes and original owner after boot"
+  ],
+  "prompt_refs": [
+    "agents/deployment/global-latency-20261031/PROMPT.md"
+  ],
+  "optional_proxy_diagnostic": "EXPLICIT_DERIVATION_ONLY_DEFAULT_OFF",
+  "syntax_ci": 41165691784
+}

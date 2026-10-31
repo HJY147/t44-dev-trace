@@ -1,0 +1,54 @@
+syntax	Official pinned Nginx syntax only, no listeners or application	﻿2026-10-31T03:43:27.0384682Z ##[group]Run for hop in web tls; do
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.0385062Z ^[[36;1mfor hop in web tls; do^[[0m
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.0386768Z ^[[36;1m  docker run --rm --network none --read-only --tmpfs /tmp --add-host api:127.0.0.1 --add-host web:127.0.0.1 --mount type=bind,src=/tmp/proxy-diag-qa/$hop.conf,dst=/etc/nginx/nginx.conf,readonly --mount type=bind,src=$PWD/deployment/nginx/api.conf,dst=/etc/nginx/t44-api.conf,readonly --mount type=bind,src=/tmp/proxy-diag-qa/tls,dst=/run/t44-tls,readonly --entrypoint nginx nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 -t^[[0m
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.0388488Z ^[[36;1mdone^[[0m
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.0408458Z shell: /usr/bin/bash -e {0}
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.0408741Z ##[endgroup]
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.1267749Z Unable to find image 'nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951' locally
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.3616174Z docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951: Pulling from library/nginx
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4492597Z 7b229517ed22: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4493723Z 9f0afb44f10e: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4494237Z f19a2d3b6951: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4494689Z 885725a63a7c: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4495072Z e125989d16f0: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4495581Z 81b64ae234ef: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4495825Z bb658a254196: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4496253Z 5b8cb54cfa40: Pulling fs layer
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4496690Z 885725a63a7c: Waiting
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4496944Z 81b64ae234ef: Waiting
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4497206Z e125989d16f0: Waiting
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4497565Z bb658a254196: Waiting
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.4497776Z 5b8cb54cfa40: Waiting
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5278961Z f19a2d3b6951: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5584660Z f19a2d3b6951: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5585224Z 9f0afb44f10e: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5585649Z 9f0afb44f10e: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5659090Z 7b229517ed22: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5659569Z 7b229517ed22: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5761755Z 885725a63a7c: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.5767744Z 885725a63a7c: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6075327Z e125989d16f0: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6076101Z e125989d16f0: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6150810Z 81b64ae234ef: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6151497Z 81b64ae234ef: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6262692Z bb658a254196: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6263098Z bb658a254196: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.6828763Z 7b229517ed22: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.7595724Z 5b8cb54cfa40: Verifying Checksum
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:27.7596201Z 5b8cb54cfa40: Download complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6401721Z 9f0afb44f10e: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6505911Z f19a2d3b6951: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6607661Z 885725a63a7c: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6689137Z e125989d16f0: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6784928Z 81b64ae234ef: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:28.6865731Z bb658a254196: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.1085276Z 5b8cb54cfa40: Pull complete
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.1125385Z Digest: sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.1133342Z Status: Downloaded newer image for nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.2578542Z nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.2580290Z nginx: configuration file /etc/nginx/nginx.conf test is successful
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.4052646Z nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.4054404Z 2026/10/31 03:43:29 [emerg] 1#1: mkdir() "/var/cache/nginx/fastcgi_temp" failed (30: Read-only file system)
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.4055517Z nginx: [emerg] mkdir() "/var/cache/nginx/fastcgi_temp" failed (30: Read-only file system)
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.4056377Z nginx: configuration file /etc/nginx/nginx.conf test failed
+syntax	Official pinned Nginx syntax only, no listeners or application	2026-10-31T03:43:29.4430209Z ##[error]Process completed with exit code 1.
