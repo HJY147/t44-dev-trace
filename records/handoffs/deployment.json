@@ -3020,5 +3020,29 @@
       "resource_limits": "both children: 2CPU/1GiB/128PIDs/tmp32m; no expansion",
       "P2": "restored original limits; added assertion first test-local shadow1ERROR retained; final5 PASS"
     }
+  },
+  "direct_start_20261031": {
+    "role": "deployment",
+    "stage": "offline-direct-init",
+    "implementation_status": "implemented_local_mock_verified_not_live",
+    "artifacts": [
+      "agents/deployment/direct-start/start.py",
+      "agents/deployment/direct-start/README.md",
+      "agents/deployment/direct-start/MANIFEST.PUBLIC.json"
+    ],
+    "interfaces": "backend53ac DIRECT_INPUTS_V1 + original serviceCLI bytes; output INIT_DONE paths to root",
+    "commands_executed": [
+      "python3 -B agents/deployment/direct-start/offline_checks.py",
+      "ast.parse feature_version(3,10)"
+    ],
+    "results": "5 local groups PASS; no actual Docker/SSH/cloud",
+    "unverified": [
+      "live startup readiness",
+      "real bootstrap/rotation/worker use",
+      "pressure results"
+    ],
+    "prompt_refs": [
+      "ROLE-deployment-DIRECT-START-v1"
+    ]
   }
 }

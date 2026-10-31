@@ -676,3 +676,5 @@ Review P2: restored original fixed2CPU/1GiB/128PID/tmp32m on both runtime and HT
 DB证据支持APP64CPU128GiB/PL1唯一40GiB候选调优入口已离线准备，redo2GiB/io1000/max2000，SET PERSIST与受控恢复，真实apply/resize/重启/性能均未验证。见agents/deployment/mysql-pl1-profile/README.md。
 
 P15离线物料已准备，路径agents/deployment/p15-ready；新准确bcec镜像build41171011125与身份、创建/启动分阶段、diag1、PL1profile和backend5c真实pins均可核；APP实际image导入/调优/maintenance09/material09/完整scan/独立许可仍未运行，不把离线完成当性能通过。
+
+2026-10-31 DIRECT初始化补充：`agents/deployment/direct-start`是用户变更后直接诊断入口，不代表原完整准入验收。只启动既有容器，调用backend53ac真实bootstrap，然后保原CLI字节原子轮换凭据，立即启动两worker输出路径；任何失败停链保私密证据。5组本地mock/真实临时文件检查及Python3.10AST通过，无服务器调用，真实启动及性能仍未验证。准确CLI与限制见该目录README，提示词与MANIFEST同存。
