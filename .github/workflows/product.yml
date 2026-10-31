@@ -6,12 +6,19 @@ on:
   push:
     branches: [main, 'codex/**']
   workflow_dispatch:
+    inputs:
+      diagnostics:
+        description: Request diagnostic instrumentation mode
+        required: true
+        type: choice
+        options: ['0', '1']
+        default: '0'
 
 permissions:
   contents: read
 
 concurrency:
-  group: product-${{ github.workflow }}-${{ github.ref }}
+  group: product-${{ github.workflow }}-${{ github.ref }}-${{ github.event.inputs.diagnostics || '0' }}
   cancel-in-progress: true
 
 jobs:
@@ -61,6 +68,7 @@ jobs:
       T44_DATABASE: t44_ci
       AMQP_URL: amqp://t44:ci-mq-disposable@127.0.0.1:5672/t44_ci
       T44_SESSION_TTL_SECONDS: '3600'
+      T44_REQUEST_DIAGNOSTICS: ${{ github.event.inputs.diagnostics || '0' }}
     services:
       mysql:
         image: mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
@@ -128,6 +136,7 @@ jobs:
       T44_DATABASE: t44_ci
       AMQP_URL: amqp://t44:ci-mq-disposable@127.0.0.1:5672/t44_ci
       T44_SESSION_TTL_SECONDS: '3600'
+      T44_REQUEST_DIAGNOSTICS: ${{ github.event.inputs.diagnostics || '0' }}
     services:
       mysql:
         image: mysql:8.4@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
