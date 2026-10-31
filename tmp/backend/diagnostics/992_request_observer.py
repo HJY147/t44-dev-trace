@@ -54,7 +54,13 @@ class Checks(unittest.TestCase):
 
     def test_clock_and_export_failure_do_not_change_business(self):
         request = SimpleNamespace(state=SimpleNamespace(diagnostic_dispatch_ready_ns=0))
-        for target in ["perf_counter_ns", "thread_time_ns", "_export", "count"]:
+        for target in [
+            "perf_counter_ns",
+            "thread_time_ns",
+            "_export",
+            "count",
+            "getpid",
+        ]:
             response = SimpleNamespace(headers={"Server-Timing": "app;dur=1"})
             calls = []
 
@@ -68,6 +74,11 @@ class Checks(unittest.TestCase):
                 patch.object(d, target, side_effect=ValueError("measurement fault")),
             ):
                 self.assertIs(handle(request), response)
+            if target == "getpid":
+                self.assertNotIn("diag-worker-pid", response.headers["Server-Timing"])
+                self.assertIn(
+                    'diag-incomplete;desc="1"', response.headers["Server-Timing"]
+                )
             self.assertEqual(calls, ["business"])
             self.assertFalse(d.active())
 
@@ -119,9 +130,16 @@ class Checks(unittest.TestCase):
                 tokens, pid, iid = http.setup_project(client)
                 task = http.create_task(client, tokens, pid, iid)
                 if flag == "0":
-                    with patch(
-                        "t44.api.time.perf_counter_ns",
-                        side_effect=RuntimeError("must not read optional clock"),
+                    with (
+                        patch(
+                            "t44.api.time.perf_counter_ns",
+                            side_effect=RuntimeError("must not read optional clock"),
+                        ),
+                        patch.object(
+                            d,
+                            "getpid",
+                            side_effect=RuntimeError("must not read optional PID"),
+                        ),
                     ):
                         response = http.request(
                             client,
@@ -142,6 +160,9 @@ class Checks(unittest.TestCase):
                     )
                 timing = response.headers["server-timing"]
                 self.assertEqual("diag-handle-wall" in timing, flag == "1")
+                self.assertEqual("diag-worker-pid" in timing, flag == "1")
+                if flag == "1":
+                    self.assertIn(f'diag-worker-pid;desc="{os.getpid()}"', timing)
                 self.assertNotIn(tokens["manager"], timing)
                 self.assertNotIn("SELECT", timing)
                 self.assertFalse(d.active())

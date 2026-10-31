@@ -1,7 +1,8 @@
-"""Opt-in numeric request spans; measurement/export failures never change business results."""
+"""Opt-in operational worker PID and numeric spans; diagnostics never change business results."""
 from contextlib import contextmanager, suppress
 from contextvars import ContextVar
 from functools import wraps
+from os import getpid
 from time import perf_counter_ns, thread_time_ns
 
 _CURRENT = ContextVar('t44_numeric_request_trace', default=None)
@@ -66,7 +67,11 @@ def _export(response, trace):
     value = original
     incomplete = bool(trace.get('diagnostic.incomplete'))
     marker = ', diag-incomplete;desc="0"'
-    for name in sorted(key for key in trace if key != 'diagnostic.incomplete'):
+    names = sorted(key for key in trace if key != 'diagnostic.incomplete')
+    if 'worker.pid' in names:
+        names.remove('worker.pid')
+        names.insert(0, 'worker.pid')
+    for name in names:
         number = trace[name]
         if name.endswith('_ns'):
             metric = f"diag-{name[:-3].replace('.', '-')};dur={number / 1e6:.3f}"
@@ -94,6 +99,15 @@ def diagnosed(enabled):
             except Exception:
                 return function(request)
             try:
+                with suppress(Exception):
+                    try:
+                        pid = getpid()
+                        if type(pid) is int and pid > 0:
+                            count('worker.pid', pid)
+                        else:
+                            count('diagnostic.incomplete')
+                    except Exception:
+                        count('diagnostic.incomplete')
                 try:
                     ready = getattr(request.state, 'diagnostic_dispatch_ready_ns', None)
                     if ready is not None:
