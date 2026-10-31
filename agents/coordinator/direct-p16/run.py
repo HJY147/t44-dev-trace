@@ -200,7 +200,7 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
     archive = local / (RUN + ".753backup")
     receipt = local / (RUN + ".753backup.receipt.json")
     ssh.get("load", contract["backup_receipt_path"], receipt)
-    ssh.get("load", contract["backup_path"], archive)
+    ssh.get("load", contract["backup_path"], archive, timeout=1800)
     value = json.loads(receipt.read_bytes())
     if archive.stat().st_size != value["cipher_bytes"] or sha(archive) != value["cipher_sha256"]:
         raise RuntimeError("BACKUP_BYTES_OR_SHA_MISMATCH")
