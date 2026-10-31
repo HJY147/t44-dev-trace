@@ -1,0 +1,1 @@
+P18 backend AI operator: fixed repeat-run initial-state omission; no product or frozen-spec changes. Original cc94 artifact retained. Prompt ROLE-backend-P18-fixture-reset from coordinator; local only. Actual commands/results and limits in INTERFACE and HTTP_CHECK.log. Runtime files frozen before deployment handoff; subsequent changes only tests/docs.
