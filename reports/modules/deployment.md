@@ -684,3 +684,5 @@ DIRECT冷启动审核修复：停止两个可能随VM自动启动的既有worker
 DIRECT首次现场误拒修正：bcec项目路径POST先GET后，FastAPI405只报告首个部分匹配方法，旧GET-only假定错误。仅修readiness为405/合法POST或GETAllow/标准body，原TLS和超时不变；真实bcec TestClient与双顺序回归3组及7原组均通过，无Runtime执行，无远程重测。原现场readiness失败保留，未转述成性能结果。
 
 UTF8交付同步：start.py正式pin改为backenddfef9a82/cc94bea2，保原完整UTF8 canonical+newline绑定与原文件rawSHA。现场成功属于root独占utf8-tools正确pin派生入口，非旧包直接成功。2中文完整packet/实际hostbootstrap集成检查、7原检查、3真实路由检查通过；原子轮换不变，全程本地，不升级运行准入。
+
+P17仅离线发布初始化契约：`agents/deployment/direct-p17`冻结新run/输出/QA工作区、原七ID及准确UTF8工具hash；复用已修正start逻辑，增加P17完整中文集成。contract+3中文+7初始化+3真路由及AST310通过。历史公开镜像/实采IDs及持久配置记录支持保留服务复用，非停机后新卷事实核验。无SSH/云/启动；不宣称旧direct waiver成为全门禁验收。

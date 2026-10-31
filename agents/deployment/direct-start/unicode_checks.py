@@ -29,7 +29,7 @@ fixtures = load('backend_public_fixture', BACKEND/'offline_checks.py')
 
 
 class UnicodeChecks(unittest.TestCase):
-    def exercise(self, tampered=False):
+    def exercise(self, tampered=False, run_id='unicode-direct'):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp).resolve()
             p09 = folder/'P09'
@@ -67,7 +67,7 @@ class UnicodeChecks(unittest.TestCase):
                 self.assertEqual(payload['old'], old)
                 self.assertEqual(b.canonical({k:v for k,v in payload['old'].items()
                                              if k != 'binding_sha256'}), original_canonical)
-                value = {'schema':'DIRECT_INPUTS_V1', 'run_id':'unicode-direct',
+                value = {'schema':'DIRECT_INPUTS_V1', 'run_id':run_id,
                     'sessions': {'service': {'token':'NEW-SYNTHETIC'}},
                     'captured_at':'2026-10-31T00:00:00Z', 'initialization_http_requests':123,
                     'missing_current_escalation_events':[],
@@ -89,13 +89,13 @@ class UnicodeChecks(unittest.TestCase):
             with patch.object(m, 'P09', p09):
                 if tampered:
                     with self.assertRaisesRegex(ValueError, 'ORIGINAL_PACKET_BINDING_REQUIRED'):
-                        m.execute(BACKEND,'unicode-direct',out,runner,target)
+                        m.execute(BACKEND,run_id,out,runner,target)
                     self.assertEqual(container_calls, [])
                     self.assertEqual(len(calls), 4)  # stop/start/readiness/host, no worker start
                     self.assertEqual(target.read_bytes(), b'{"access_token":"OLD-SYNTHETIC"}\n')
                     self.assertTrue((out/'bootstrap/FAILED.PUBLIC.json').exists())
                 else:
-                    result = m.execute(BACKEND,'unicode-direct',out,runner,target)
+                    result = m.execute(BACKEND,run_id,out,runner,target)
                     self.assertEqual(result['status'],'INIT_DONE')
                     self.assertEqual(len(container_calls),1)
                     self.assertEqual(target.read_bytes(), original_cli)
@@ -105,6 +105,9 @@ class UnicodeChecks(unittest.TestCase):
 
     def test_full_chinese_packet_host_bootstrap_and_atomic_rotation(self):
         self.exercise()
+
+    def test_p17_complete_chinese_packet_initialization(self):
+        self.exercise(run_id='r30posttools17')
 
     def test_chinese_binding_tamper_fails_before_container_session(self):
         self.exercise(tampered=True)

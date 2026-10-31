@@ -1,0 +1,22 @@
+{
+  "scope": "historical published PUBLIC observations only; no current remote facts",
+  "runtime_observation": {
+    "path": "agents/coordinator/direct-p16/actual-run-20261031/late.PUBLIC.jsonl",
+    "last_sample_utc": "2026-10-31T09:39:54.274566+00:00",
+    "seven_fixed_ids_match": true
+  },
+  "import": {
+    "path": "records/qa/p15-live.PUBLIC/neutral/backend-import-receipt.json",
+    "sha256": "92c61bac4a89f08fa0b4624c6dcccda5a9a77b866104c5847126664f38ad7ed3",
+    "actual_api_image": "sha256:f1061d9299bbc5733619c8afab92f4631db3ab696f1a29b717cd03f6eb8b3d69",
+    "config": "sha256:479c406502b2e4834a0e8ab9ed3fd35e60df60601a041348b1e4a97825056f0e",
+    "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47"
+  },
+  "persistent_profile_public_record": "records/coordination/p15-stopped-direct-p16-20261031.md",
+  "original_compose": "/root/t44-final-20261029/P09/campaign/p/compose.json",
+  "original_env_file": "/root/t44-final-20261029/P09/campaign/p/application.env",
+  "data_policy": "start existing containers; no Compose up/recreate/import/prune/volume or schema operation",
+  "volume_mount_live_revalidated": false,
+  "no_volume_mount_inventory_in_selected_public_runtime_samples": true,
+  "meaning": "prior persisted configuration and actual later running IDs support reuse; not fresh proof of VM filesystem after shutdown"
+}

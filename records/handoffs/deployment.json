@@ -3052,5 +3052,16 @@
     "live_claim": "root successful utf8-tools derived entry, not unchanged original package",
     "cloud_operations": false,
     "prompt": "ROLE-deployment-DIRECT-UTF8-PIN-v1"
+  },
+  "direct_p17_20261031": {
+    "role": "deployment",
+    "stage": "p17_local_initialization_release",
+    "artifacts": "agents/deployment/direct-p17/{RUN.PUBLIC.json,PERSISTENCE.PUBLIC.json,MANIFEST.PUBLIC.json,README.md,check.py}",
+    "run": "r30posttools17",
+    "output": "/root/t44-direct-p17/app-init",
+    "checks": "contract +3 Chinese integration incl exact P17 +7 initialization/localTLS +3 actualbcec router +AST310 PASS",
+    "live_startup_verified": false,
+    "remote_calls": 0,
+    "prompt": "ROLE-deployment-DIRECT-P17-v1"
   }
 }
