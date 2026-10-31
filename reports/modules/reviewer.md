@@ -603,3 +603,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 global latency finalsource review:7f failopenfaultclosed;GET/DBnative evidencebounded,proxy602/staticprofiled498 noblocker; exactmergedCI+LOCpending,maincauseUNRESOLVED/newP95UNMEASURED. Purelocaldiagnosticfaultchecks only, noSQL/cloud/productsuite. Prompt-Ref review_p13_preparation/global-latency-final-source; FINAL-SOURCE-REVIEW.md.
 
 2026-10-31 a71minimalstaticclosure:3suppressdiagnostic-only,no business/yield/commit swallowed;purelocalfaultsentinelchecks pass. CIa02 preserves4jobs/gates,20ecflagonly. CandidateSOURCECLOSED_FINAL_EXACT_OFF_ON_CI_PENDING;dd320809uniquecases+5subchecks/XML814 retained,LOC5993/core5213trueexcess. Prompt-Ref review_p13_preparation/final-static-closure; STATIC-CLOSURE.md.
+
+2026-10-31 p15components:0ccpersistentSSH/p15PUBLICmanifests/ENTRY/runonlywrap and5c874backend61runtimeallsha+mode reviewednoblocker. Purelocal2fakeIPssh-G+exclusiveout only, installerunrun/noPRIVATE/cloud/productsuite. Finalsequence/kitpending. Prompt-Ref review_p13_preparation/p15-offline-preparation; INITIAL-REVIEW.md.
