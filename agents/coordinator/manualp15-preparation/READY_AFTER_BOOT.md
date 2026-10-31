@@ -20,7 +20,7 @@ APP：新images包本机路径为主项目.submission-private/build-candidates/g
 4. 使用backend新release和deployment/sequence做原资格维护及fresh material09，不seed/重建库/新建任务，不覆盖旧800任务来源；新run=r30manualp15/material=r30materialresume09/maintenance=r30restoretransition09。所有模板仍false，root仅在实核现场owner/原件/排他后填写自身批准。当前七角色snapshot和root生产批准不能替代独立QA审核。
 5. 原子轮换scheduler token后，再启动实际新consumer/scheduler ID，取得rotation后真正新started且完整finished的扫描。失败保持现场，900秒仅scanner observer边界，不停止VM。最终七角色必须真实healthy并重核配置/卷/排他，原session最短余量须覆盖真正触发后的900秒。
 6. 原cms_five_transport.py原字节运输新五件（原片保存byte/SHA）；全新source/bundle/import链与旧cohort历史链分别保留。LOAD独立测试岗根据真实中性事实核profile/工具/会话/资源/排他/fixture/未消费路径，再运行新的ISSUE_ONCE_P15；协调者不自行填写independent-review=true。
-7. 新独立once grant实际成立后，coordinator/dispatch_once.py只调用原ENTRY execute一次。400客户端、60秒预热、600秒稳态、四类P95≤270ms、逐分钟≥1000、零错误和原业务/后置断言全部保留。raw所有elapsed/status/完整headers保留；diag缺失是unknown，不丢慢请求、不补0。代理抽样诊断本轮不开启。
+7. 新独立once grant实际成立后，coordinator/dispatch_once.py只调用原ENTRY execute一次。400客户端、60秒预热、600秒稳态、四类P95≤270ms、逐分钟≥1000、零错误和原业务/后置断言全部保留。raw所有elapsed/status/完整headers保留；diag缺失是unknown，不丢慢请求、不补0。代理抽样诊断本轮不开启。沿用已审原字节coordinator/manual13-observe.py（SHA67cb55f1…，文件名为历史名字但不硬钉旧source/ID）；只绑定本轮真实七role ID，在同一正式稳态的前段与后段各取12个5秒间隔样本，保存MySQL摘要计数/redo/checkpoint/已有wait覆盖、cgroup与实际worker进程CPU ticks，输出全新路径。单次120秒仅观察进程期限、无变更SQL/压测启动/VM控制，不是额外对照实验。
 
 ## 结束及用户停机
 
