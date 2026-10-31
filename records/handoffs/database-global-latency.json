@@ -87,5 +87,25 @@
     "owned_server_stopped": true,
     "cause_of_P13_insert_delay": "NOT_PROVEN",
     "raw_sha256": "10e0e5a13d1a9b1a41cca4c817d81438f90037b67e09f9a4263c624fce986729"
+  },
+  "direct16_offline_comparison": {
+    "input_ref": "3d6f7eab",
+    "report": "agents/database/global-latency/DIRECT16_DATABASE_FINDINGS.PUBLIC.md",
+    "deltas": "agents/database/global-latency/DIRECT16_DATABASE_DELTAS.PUBLIC.json",
+    "script": "agents/database/global-latency/aggregate_direct16.py",
+    "deltas_sha256": "0252f50ff53f3b331235b20f74e32325a45062a4e9c2fb462639fe7608decb1c",
+    "insert_mean_ms_early_late": [
+      0.07809242154849619,
+      0.07650740074706511
+    ],
+    "commit_mean_ms_early_late": [
+      0.4155022647088137,
+      0.4648416018969561
+    ],
+    "overall_status": "NP_POSTCONDITIONS_INCOMPLETE",
+    "new_cloud_or_SUT_or_DB_calls": false,
+    "product_or_DDL_or_config_changed": false,
+    "single_change_causality": "NOT_ESTABLISHED",
+    "checks": "offline aggregate assertions + Ruff check/format; no new experiment"
   }
 }

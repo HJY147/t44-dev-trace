@@ -420,3 +420,5 @@
 2026-10-31 CI收口：原5observer检查迁入tmp/backend/diagnostics/995_database_observer.py contract marker，原脚本/日志保留；补off不得读clock和diag自身clock故障不得误报成功commit uncertainty；准确7f共享源码核SHA，strict pytest5pass/Ruff及format通过，无新native/云/生产源改动。证据CI_OBSERVER_995.PUBLIC.json/log。
 
 2026-10-31 single64 real claim→complete lifecycle probe: JSON58432B/clustered1→7pages/INSERT-boundary splits5/UPDATE0/global7. No strategyAB or P13 cause proof; secondary indexes stay1page; ownsocket server stopped. See IDEMPOTENCY_GROWTH.PUBLIC.md and raw.
+
+2026-10-31 ROLE-database-DIRECT16-PUBLIC-v1：仅读3d6f7eab已发布24采样及独立SUMMARY/DIAGNOSTICS，复核INSERT均0.07809/0.07651ms、COMMIT0.41550/0.46484ms，旧P13热点未重现但不同负载/源/参数不可唯一归因。API窗口平均2.247/2.284核不等于峰值/实际worker数；四类稳态P95通过、整体NP后置未完成。新增可复核脚本/原输入SHA/报告，离线assert和Ruff通过（初次B905已修），无SUT/云/SSH/DB调用或应用/DDL/配置变更。证据agents/database/global-latency/DIRECT16_DATABASE_FINDINGS.PUBLIC.md。

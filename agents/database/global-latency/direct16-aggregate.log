@@ -1,0 +1,664 @@
+{
+  "source_scope": "PUBLIC Git bytes only; no new experiment",
+  "git_commit": "3d6f7eab84149024481176c58406132e17b2a632",
+  "windows": {
+    "early": {
+      "input": {
+        "git_ref": "3d6f7eab",
+        "path": "agents/coordinator/direct-p16/actual-run-20261031/early.PUBLIC.jsonl",
+        "sha256": "3a0b0620a5eb8dbe8ac65fb397408e6caffb58e0996d1f5aff95a333c970cea5",
+        "bytes": 274304
+      },
+      "samples": 12,
+      "seconds": 62.23354762099996,
+      "utc_start": "2026-10-31T09:30:51.093023+00:00",
+      "utc_end": "2026-10-31T09:31:53.326565+00:00",
+      "config": {
+        "innodb_autoinc_lock_mode": 2,
+        "innodb_buffer_pool_instances": 16,
+        "innodb_buffer_pool_size": 8589934592,
+        "innodb_dedicated_server": 0,
+        "innodb_flush_log_at_trx_commit": 1,
+        "innodb_flush_neighbors": 0,
+        "innodb_io_capacity": 1000,
+        "innodb_io_capacity_max": 2000,
+        "innodb_log_buffer_size": 67108864,
+        "innodb_page_size": 16384,
+        "innodb_redo_log_capacity": 2147483648,
+        "sync_binlog": 1
+      },
+      "digests": {
+        "INSERT/idempotency_requests": {
+          "digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+          "calls": 8279,
+          "calls_per_second": 133.03114343438702,
+          "mean_ms": 0.07809242154849619,
+          "parallel_aggregate_seconds": 0.646527158,
+          "share_of_digest_timer": 0.021980046599302944
+        },
+        "COMMIT": {
+          "digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+          "calls": 30101,
+          "calls_per_second": 483.67803460786126,
+          "mean_ms": 0.4155022647088137,
+          "parallel_aggregate_seconds": 12.50703367,
+          "share_of_digest_timer": 0.4252028387114574
+        }
+      },
+      "counter_deltas": {
+        "Com_commit": 30089,
+        "Com_rollback": 30089,
+        "Connections": 70,
+        "Innodb_buffer_pool_pages_flushed": 2880,
+        "Innodb_buffer_pool_reads": 1157,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 55228,
+        "Innodb_data_read": 18956288,
+        "Innodb_data_writes": 85714,
+        "Innodb_data_written": 142996480,
+        "Innodb_log_waits": 0,
+        "Innodb_os_log_written": 64064000,
+        "Innodb_redo_log_current_lsn": 39686225,
+        "Innodb_row_lock_waits": 0,
+        "Innodb_row_lock_time": 0
+      },
+      "counter_rates_per_second": {
+        "Com_commit": 483.485212561574,
+        "Com_rollback": 483.485212561574,
+        "Connections": 1.1247952700093116,
+        "Innodb_buffer_pool_pages_flushed": 46.277291108954536,
+        "Innodb_buffer_pool_reads": 18.591258962868192,
+        "Innodb_buffer_pool_wait_free": 0.0,
+        "Innodb_data_fsyncs": 887.4313310296324,
+        "Innodb_data_read": 304599.18684763246,
+        "Innodb_data_writes": 1377.2957396225447,
+        "Innodb_data_written": 2297739.490456873,
+        "Innodb_log_waits": 0.0,
+        "Innodb_os_log_written": 1029412.631112522,
+        "Innodb_redo_log_current_lsn": 637698.2594932185,
+        "Innodb_row_lock_waits": 0.0,
+        "Innodb_row_lock_time": 0.0
+      },
+      "checkpoint_age_bytes_range": [
+        83341377,
+        119395773
+      ],
+      "checkpoint_capacity_fraction_range": [
+        0.03880885289981961,
+        0.05559798935428262
+      ],
+      "buffer_pool_free_fraction_range": [
+        0.9543781280517578,
+        0.9584407806396484
+      ],
+      "threads_connected_range": [
+        231,
+        231
+      ],
+      "wait_deltas": [
+        {
+          "event": "wait/io/file/innodb/innodb_arch_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_clone_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_data_file",
+          "calls": 5522,
+          "parallel_aggregate_seconds": 0.27754616954,
+          "mean_ms": 0.050261892346975735
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_dblwr_file",
+          "calls": 988,
+          "parallel_aggregate_seconds": 0.601846070808,
+          "mean_ms": 0.6091559421133603
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_log_file",
+          "calls": 135723,
+          "parallel_aggregate_seconds": 7.091739270776,
+          "mean_ms": 0.05225156584201646
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_tablespace_open_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_temp_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/meb::redo_log_archive_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/sql/binlog",
+          "calls": 39052,
+          "parallel_aggregate_seconds": 7.383404111856,
+          "mean_ms": 0.18906596619522686
+        }
+      ],
+      "cpu_deltas": {
+        "api": {
+          "usage_usec": 139841123,
+          "user_usec": 133604258,
+          "system_usec": 6236865,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "average_cores_over_top_level_window": 2.247037624331291
+        },
+        "mysql": {
+          "usage_usec": 25275019,
+          "user_usec": 20197553,
+          "system_usec": 5077466,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "average_cores_over_top_level_window": 0.40613174029422117
+        }
+      },
+      "host_block_io": {
+        "259:0": {
+          "device_name": "nvme0n1",
+          "seconds": 62.23028677399998,
+          "deltas": {
+            "io_milliseconds": 54540,
+            "read_milliseconds": 250,
+            "reads_completed": 1149,
+            "reads_merged": 0,
+            "sectors_read_512b": 37096,
+            "sectors_written_512b": 1967568,
+            "weighted_io_milliseconds": 14675,
+            "write_milliseconds": 14425,
+            "writes_completed": 124204,
+            "writes_merged": 87551
+          },
+          "read_bytes_per_second": 305207.52811210573,
+          "write_bytes_per_second": 16188175.697446616,
+          "completions_per_second": 2014.340709295476
+        }
+      },
+      "resize_status_samples": [
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        }
+      ]
+    },
+    "late": {
+      "input": {
+        "git_ref": "3d6f7eab",
+        "path": "agents/coordinator/direct-p16/actual-run-20261031/late.PUBLIC.jsonl",
+        "sha256": "6518fef080d4f12dc18a5dc4b7ab9a767e11dd29e33c180927e00a71c87bb931",
+        "bytes": 275452
+      },
+      "samples": 12,
+      "seconds": 62.258953711000004,
+      "utc_start": "2026-10-31T09:38:52.015621+00:00",
+      "utc_end": "2026-10-31T09:39:54.274566+00:00",
+      "config": {
+        "innodb_autoinc_lock_mode": 2,
+        "innodb_buffer_pool_instances": 16,
+        "innodb_buffer_pool_size": 8589934592,
+        "innodb_dedicated_server": 0,
+        "innodb_flush_log_at_trx_commit": 1,
+        "innodb_flush_neighbors": 0,
+        "innodb_io_capacity": 1000,
+        "innodb_io_capacity_max": 2000,
+        "innodb_log_buffer_size": 67108864,
+        "innodb_page_size": 16384,
+        "innodb_redo_log_capacity": 2147483648,
+        "sync_binlog": 1
+      },
+      "digests": {
+        "INSERT/idempotency_requests": {
+          "digest": "78ceeee04e3c5f9d92f1e2375cb142031ccd5252a477e2b768ebad7d110cf45c",
+          "calls": 11244,
+          "calls_per_second": 180.6005293984469,
+          "mean_ms": 0.07650740074706511,
+          "parallel_aggregate_seconds": 0.860249214,
+          "share_of_digest_timer": 0.02186914861373572
+        },
+        "COMMIT": {
+          "digest": "f2b9be5f0f32ca7507e4ddf133cd2fad0993a1c26fde9caa6f067b1af2b7603c",
+          "calls": 38799,
+          "calls_per_second": 623.1874724413324,
+          "mean_ms": 0.4648416018969561,
+          "parallel_aggregate_seconds": 18.035389312,
+          "share_of_digest_timer": 0.45849342580243124
+        }
+      },
+      "counter_deltas": {
+        "Com_commit": 38808,
+        "Com_rollback": 38806,
+        "Connections": 70,
+        "Innodb_buffer_pool_pages_flushed": 6048,
+        "Innodb_buffer_pool_reads": 58,
+        "Innodb_buffer_pool_wait_free": 0,
+        "Innodb_data_fsyncs": 69977,
+        "Innodb_data_read": 950272,
+        "Innodb_data_writes": 110295,
+        "Innodb_data_written": 222214656,
+        "Innodb_log_waits": 0,
+        "Innodb_os_log_written": 82588160,
+        "Innodb_redo_log_current_lsn": 51932752,
+        "Innodb_row_lock_waits": 0,
+        "Innodb_row_lock_time": 0
+      },
+      "counter_rates_per_second": {
+        "Com_commit": 623.3320299621955,
+        "Com_rollback": 623.2999060686703,
+        "Connections": 1.1243362733805835,
+        "Innodb_buffer_pool_pages_flushed": 97.14265402008242,
+        "Innodb_buffer_pool_reads": 0.9315929122296264,
+        "Innodb_buffer_pool_wait_free": 0.0,
+        "Innodb_data_fsyncs": 1123.9668486050443,
+        "Innodb_data_read": 15263.218273970198,
+        "Innodb_data_writes": 1771.5524181787353,
+        "Innodb_data_written": 3569199.9745369763,
+        "Innodb_log_waits": 0.0,
+        "Innodb_os_log_written": 1326526.6291394196,
+        "Innodb_redo_log_current_lsn": 834141.0978582578,
+        "Innodb_row_lock_waits": 0.0,
+        "Innodb_row_lock_time": 0.0
+      },
+      "checkpoint_age_bytes_range": [
+        242721153,
+        251983707
+      ],
+      "checkpoint_capacity_fraction_range": [
+        0.11302584456279874,
+        0.11733905738219619
+      ],
+      "buffer_pool_free_fraction_range": [
+        0.9336185455322266,
+        0.9360790252685547
+      ],
+      "threads_connected_range": [
+        231,
+        231
+      ],
+      "wait_deltas": [
+        {
+          "event": "wait/io/file/innodb/innodb_arch_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_clone_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_data_file",
+          "calls": 7905,
+          "parallel_aggregate_seconds": 0.055904443712,
+          "mean_ms": 0.007072035890196079
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_dblwr_file",
+          "calls": 987,
+          "parallel_aggregate_seconds": 0.989164247392,
+          "mean_ms": 1.002192753183384
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_log_file",
+          "calls": 171370,
+          "parallel_aggregate_seconds": 8.862979105608,
+          "mean_ms": 0.05171838189652798
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_tablespace_open_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/innodb_temp_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/innodb/meb::redo_log_archive_file",
+          "calls": 0,
+          "parallel_aggregate_seconds": 0.0,
+          "mean_ms": null
+        },
+        {
+          "event": "wait/io/file/sql/binlog",
+          "calls": 56191,
+          "parallel_aggregate_seconds": 10.41073246782,
+          "mean_ms": 0.18527402017796446
+        }
+      ],
+      "cpu_deltas": {
+        "api": {
+          "usage_usec": 142210343,
+          "user_usec": 136065447,
+          "system_usec": 6144896,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "average_cores_over_top_level_window": 2.284174958354208
+        },
+        "mysql": {
+          "usage_usec": 31986885,
+          "user_usec": 25735629,
+          "system_usec": 6251255,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "average_cores_over_top_level_window": 0.5137716439707612
+        }
+      },
+      "host_block_io": {
+        "259:0": {
+          "device_name": "nvme0n1",
+          "seconds": 62.246324713000035,
+          "deltas": {
+            "io_milliseconds": 59240,
+            "read_milliseconds": 12,
+            "reads_completed": 58,
+            "reads_merged": 0,
+            "sectors_read_512b": 2072,
+            "sectors_written_512b": 2720344,
+            "weighted_io_milliseconds": 20263,
+            "write_milliseconds": 20250,
+            "writes_completed": 168651,
+            "writes_merged": 113071
+          },
+          "read_bytes_per_second": 17042.998199352973,
+          "write_bytes_per_second": 22375877.361786034,
+          "completions_per_second": 2710.3447597568024
+        }
+      },
+      "resize_status_samples": [
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        },
+        {
+          "Innodb_redo_log_resize_status": "OK"
+        }
+      ]
+    }
+  },
+  "SUMMARY.PUBLIC.json": {
+    "input": {
+      "git_ref": "3d6f7eab",
+      "path": "records/qa/directp16-result-20261031.PUBLIC/SUMMARY.PUBLIC.json",
+      "sha256": "1c3df6ade34b68eb03c59eb74db0c2e08c8b97e0a14f3257317a68a0e2dc5259",
+      "bytes": 3637
+    },
+    "selected": {
+      "status": "DIAGNOSTIC_METRICS_PASS_OVERALL_NP_POSTCONDITIONS_INCOMPLETE",
+      "classes": {
+        "query": {
+          "count": 25806,
+          "p95_ms": 57.388297
+        },
+        "transition": {
+          "count": 51597,
+          "p95_ms": 77.296637
+        },
+        "contract": {
+          "count": 25801,
+          "p95_ms": 99.256754
+        },
+        "escalation": {
+          "count": 25785,
+          "p95_ms": 81.441719
+        }
+      }
+    }
+  },
+  "DIAGNOSTICS.PUBLIC.json": {
+    "input": {
+      "git_ref": "3d6f7eab",
+      "path": "records/qa/directp16-result-20261031.PUBLIC/DIAGNOSTICS.PUBLIC.json",
+      "sha256": "d32a4087d1555dbaa19f7c45dacd9ab9da3b60aab5965bb9c87f4be1a5d69261",
+      "bytes": 10981
+    },
+    "selected": {
+      "status": "SEPARATE_OBSERVATIONAL_DIAGNOSTICS_NOT_MEASUREMENT_FILTER",
+      "universe_steady_requests": 128989,
+      "diag_incomplete_values": {
+        "0": 128989
+      },
+      "app_ms": {
+        "count": 128989,
+        "min": 3.228,
+        "p50": 14.08,
+        "p95": 32.08,
+        "max": 138.314,
+        "mean": 14.183453976695686
+      },
+      "paired_e2e_minus_app_ms": {
+        "count": 128989,
+        "min": 1.034757,
+        "p50": 43.737039,
+        "p95": 88.951085,
+        "max": 126.452923,
+        "mean": 35.81964204946933
+      },
+      "paired_e2e_ms": {
+        "count": 128989,
+        "min": 4.573889,
+        "p50": 56.064922,
+        "p95": 94.211498,
+        "max": 190.525936,
+        "mean": 50.003096026165025
+      },
+      "database_spans": {
+        "diag-db-acquire-calls": {
+          "count": 128989,
+          "min": 5.0,
+          "p50": 24.0,
+          "p95": 27.0,
+          "max": 27.0,
+          "mean": 17.798347145880655,
+          "missing_unknown_count": 0,
+          "unit": "numeric_desc_count"
+        },
+        "diag-db-acquire-cpu": {
+          "count": 128989,
+          "min": 0.105,
+          "p50": 0.4,
+          "p95": 0.567,
+          "max": 29.411,
+          "mean": 0.3388032390358868,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-acquire-wall": {
+          "count": 128989,
+          "min": 0.108,
+          "p50": 0.439,
+          "p95": 2.172,
+          "max": 88.219,
+          "mean": 0.689883377652358,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-close-calls": {
+          "count": 128989,
+          "min": 1.0,
+          "p50": 2.0,
+          "p95": 2.0,
+          "max": 2.0,
+          "mean": 1.5999116203707293,
+          "missing_unknown_count": 0,
+          "unit": "numeric_desc_count"
+        },
+        "diag-db-close-cpu": {
+          "count": 128989,
+          "min": 0.009,
+          "p50": 0.024,
+          "p95": 0.03,
+          "max": 0.08,
+          "mean": 0.020207335509229468,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-close-wall": {
+          "count": 128989,
+          "min": 0.009,
+          "p50": 0.024,
+          "p95": 0.03,
+          "max": 0.079,
+          "mean": 0.0202165766073076,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-commit-calls": {
+          "count": 128989,
+          "min": 1.0,
+          "p50": 2.0,
+          "p95": 2.0,
+          "max": 2.0,
+          "mean": 1.5999116203707293,
+          "missing_unknown_count": 0,
+          "unit": "numeric_desc_count"
+        },
+        "diag-db-commit-cpu": {
+          "count": 128989,
+          "min": 0.1,
+          "p50": 0.208,
+          "p95": 0.336,
+          "max": 0.741,
+          "mean": 0.20419441192659837,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-commit-wall": {
+          "count": 128989,
+          "min": 0.114,
+          "p50": 1.347,
+          "p95": 3.128,
+          "max": 33.299,
+          "mean": 1.308739078526076,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-execute_fetch-calls": {
+          "count": 128989,
+          "min": 5.0,
+          "p50": 24.0,
+          "p95": 27.0,
+          "max": 27.0,
+          "mean": 17.798347145880655,
+          "missing_unknown_count": 0,
+          "unit": "numeric_desc_count"
+        },
+        "diag-db-execute_fetch-cpu": {
+          "count": 128989,
+          "min": 1.162,
+          "p50": 5.504,
+          "p95": 7.385,
+          "max": 41.748,
+          "mean": 4.414900673700858,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-execute_fetch-wall": {
+          "count": 128989,
+          "min": 1.303,
+          "p50": 6.815,
+          "p95": 20.226,
+          "max": 83.559,
+          "mean": 7.7508414360914495,
+          "missing_unknown_count": 0,
+          "unit": "ms"
+        },
+        "diag-db-statements": {
+          "count": 128989,
+          "min": 5.0,
+          "p50": 24.0,
+          "p95": 27.0,
+          "max": 27.0,
+          "mean": 17.798347145880655,
+          "missing_unknown_count": 0,
+          "unit": "numeric_desc_count"
+        }
+      }
+    }
+  }
+}
