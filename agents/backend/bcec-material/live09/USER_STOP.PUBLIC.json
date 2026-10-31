@@ -1,0 +1,41 @@
+{
+  "status": "USER_STOP_REQUESTED",
+  "benchmark_status": "NOT_BENCHMARK_STARTED",
+  "frozen_application_source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "tool_commit": "9b6bbd87",
+  "repair_evidence_commit": "fc0cc95f",
+  "remote_root": "/root/t44-p15-backend09-20261031",
+  "maintenance_before_plan": {
+    "status": "REFUSED",
+    "error": "EXISTING_TRANSITION_TASK_NOT_ELIGIBLE",
+    "unblocked": 0,
+    "prefix": "maintenance09"
+  },
+  "replan": {
+    "status": "COMPLETE",
+    "confirmed": 400,
+    "http_requests": 881,
+    "original800_preserved": true,
+    "escalation400_unchanged": true,
+    "shift_seconds": 172800
+  },
+  "maintenance_after_plan": {
+    "status": "COMPLETE_EXISTING400_STATE2_ORIGINAL800_PRESERVED",
+    "unblocked": 139,
+    "skipped_state2": 261,
+    "final400_state2": 400,
+    "original800_preserved": true,
+    "http_requests": 1625,
+    "prefix": "maintenance09-after-plan"
+  },
+  "material09_remote_outcome": "UNKNOWN_NOT_RECONNECTED",
+  "last_local_ssh_session": 97538,
+  "last_local_ssh_exit": 255,
+  "last_local_ssh_result": "connect to host port22 Operation timed out; no MATERIAL_EXIT or material result received",
+  "local_owned_active_ssh_after_stop": false,
+  "new_remote_connections_after_stop": 0,
+  "rotation_scan_benchmark_started_by_backend": false,
+  "automatic_resume": false,
+  "automatic_vm_stop": false,
+  "next_action": "NONE; preserve remote prefixes and do not reconnect or resume without a new instruction"
+}
