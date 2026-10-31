@@ -258,6 +258,14 @@ class Runtime:
                     require(call.actor["expires_at"] > now(), "TOKEN_EXPIRED")
                     result = self.business.dispatch(uow.gateway, call)
                 return self.business.status(call.operation), wire(result), False, None
+            if OPERATIONS[call.operation]["method"] == "get":
+                with self.factory() as uow:
+                    authenticate(uow.gateway, call)
+                    validate(call)
+                    # RC statements re-read revocation/membership after validation.
+                    authenticate(uow.gateway, call)
+                    result = self.business.dispatch(uow.gateway, call)
+                return self.business.status(call.operation), wire(result), False, None
             replay = self.prepare(call, validate)
             if call.operation == "login":
                 self.limiter.check(call.body["username"], source)
